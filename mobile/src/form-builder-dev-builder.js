@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import DWKitFormBuilder from './dwkit/builder';
+import DWKitFormBuilder from './builder';
 import { isUndefined, lang } from 'optimajet-builder-shared';
-import registerDWKitEventListener from './dwkit-event-listener';
+import registerEventListener from './event-listener';
 
 export default class FormBuilderDevBuilder extends Component {
 
@@ -94,7 +94,7 @@ export default class FormBuilderDevBuilder extends Component {
             else{
                 this.formBuilder.load('./form-data/application-form.json')
             }
-            registerDWKitEventListener(this.formBuilder, this);
+            registerEventListener(this.formBuilder, this);
         });
     }
 

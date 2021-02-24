@@ -10,10 +10,10 @@
     "@ui-kitten/eva-icons": "^5.0.0",
     "clone": "2.1.2",
     "deepmerge": "4.2.2",
-    "json5": "2.1.3",
-    "moment": "2.25.3",
+    "json5": "^2.2.0",
+    "moment": "^2.29.1",
     "numeral": "2.0.6",
-    "optimajet-builder-shared": "file:../optimajet-builder-shared",
+    "optimajet-builder-shared": "file:../shared",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-fast-compare": "3.0.2",
@@ -32,15 +32,15 @@
     "react-number-format": "4.4.1",
     "react-scripts": "3.4.1",
     "reflux": "6.4.1",
-    "uuid": "3.3.2"
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
-    "dist": "webpack --env.prod",
-    "dist-dev": "webpack --env.NODE_ENV=development"
+    "dist": "webpack build --mode=production",
+    "dist-dev": "webpack build --mode=development"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -58,9 +58,10 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.11.0",
-    "@babel/core": "^7.11.0",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.1",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/plugin-proposal-throw-expressions": "^7.12.13",
     "@babel/polyfill": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "babel-plugin-react-native-web": "^0.13.12",
@@ -68,8 +69,7 @@
     "react-app-rewired": "^2.1.3",
     "react-native-svg": "^12.1.0",
     "react-native-svg-web": "^1.0.9",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11"
+    "webpack": "4.42.0",
+    "webpack-cli": "^4.5.0"
   }
 }

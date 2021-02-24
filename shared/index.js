@@ -65,7 +65,7 @@ import FormBuilderStore from './src/store.jsx';
 import StructureConverter from './src/structure-converter';
 import Timeout from './src/timeout';
 import WebForm from './src/web-form.jsx';
-import {initDefaultState, validate, checkConditions, initDefaultStateFormUrl} from "./src/formdata.jsx"
+import {initDefaultState, validate, checkConditions, initDefaultStateFormUrl} from "./src/formdata"
 import { RegisterLicense } from './src/license';
 
 export {

@@ -6,7 +6,7 @@ import Timeout from './timeout';
 import Const from './const';
 import JSON5 from 'json5';
 import sendRequest from './data-loader';
-import {initDefaultState, validate, checkConditions, updateEventsFormat} from "./formdata.jsx"
+import {initDefaultState, validate, checkConditions, updateEventsFormat} from "./formdata"
 import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only'
 import { vl, sle } from './license';
 export default class BaseForm extends Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DWKitFormViewer from './dwkit/viewer';
+import DWKitFormViewer from './viewer';
 import fetch from 'isomorphic-fetch';
 
 export default class FormBuilderDevViewer extends Component {

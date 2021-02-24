@@ -1,10 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = (isDevBuild, isWebBuild) => {
     const plugins = [
-        '@babel/plugin-proposal-class-properties'
+        '@babel/plugin-proposal-class-properties',
+        '@babel/plugin-proposal-throw-expressions'
     ];
    
     return {
@@ -22,16 +22,7 @@ const config = (isDevBuild, isWebBuild) => {
                 { test: /\.scss$/, use: 'style-loader!css-loader!sass-loader' }
             ]
         },
-        devtool: 'inline-source-map',
-        optimization: {
-            minimizer: [
-                new UglifyJsPlugin({
-                    cache: true,
-                    parallel: true,
-                    sourceMap: false,                    
-                })
-            ]
-        },
+        devtool: 'inline-source-map',        
         resolve: {
             extensions: ['*', '.js', '.json', '.jsx', '.css', '.scss']
         },
@@ -40,9 +31,7 @@ const config = (isDevBuild, isWebBuild) => {
                 'process.env': {
                     'NODE_ENV': JSON.stringify(isDevBuild ? 'development' : 'production')
                 }
-            }),
-            new webpack.optimize.OccurrenceOrderPlugin(),
-            new webpack.optimize.AggressiveMergingPlugin()
+            })
         ],
         externals: [
             'clone',
@@ -150,18 +139,7 @@ module.exports = (env) => {
                 libraryTarget: 'umd'
             },
         }),
-
-        Object.assign({}, config(isDevBuild, false), {
-            name: 'optimajet-mobile-form',
-            entry: './form.js',
-            mode: isDevBuild ? 'development' : 'production',
-            output: {
-                filename: 'optimajet-mobile-form.js',
-                path: __dirname + '/build',
-                library: 'optimajet-mobile-nform',
-                libraryTarget: 'umd'
-            },
-        }),
+        
         Object.assign({}, configReactNativeWeb(isDevBuild), {
             name: 'optimajet-mobile-web',
             entry: ["@babel/polyfill", "./index.web.js"],

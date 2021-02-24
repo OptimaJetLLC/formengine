@@ -13,6 +13,7 @@ module.exports = override(
     ),
     ...addBabelPlugins(
         '@babel/plugin-proposal-class-properties',
+        '@babel/plugin-proposal-throw-expressions',
         ['react-native-web', { commonjs: true }],
     ),
     //For icons
@@ -38,7 +39,7 @@ module.exports = override(
         path.resolve(__dirname, 'node_modules/react-native-vector-icons'),
         path.resolve(__dirname, 'node_modules/react-native-modal-datetime-picker'),   
         path.resolve(__dirname, 'node_modules/@react-native-community/datetimepicker'),   
-        path.resolve(__dirname, '../optimajet-builder-shared'),
+        path.resolve(__dirname, '../shared'),
         path.resolve(__dirname, 'src'),
     ]),
     // disableChunk() todo uncomment
