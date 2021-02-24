@@ -1,9 +1,5 @@
 /* eslint-disable eqeqeq */
-
 import React, { Component } from 'react';
-import { Button, Tag, Input, ButtonToolbar } from 'rsuite';
-import JSON5 from 'json5';
-
 export default class Window extends Component {
 
     constructor(props) {
