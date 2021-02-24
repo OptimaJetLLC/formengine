@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>FormBuilder Pure JS | OptimaJet</title>
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <script src="/scripts/jquery.js" type="text/javascript"></script>
+    <script src="/build/optimajet-formbuilder-javascript.js" type="text/javascript"></script>
+    <link href="/css/semantic.min.css" rel="stylesheet" type="text/css" />
+    <link href="/css/optimajet-formbuilder.css" rel="stylesheet" type="text/css" />
+
+    <div style="margin: 20px">
+        <a href="/"><img src="/images/logo.svg"/></a>
+    </div>
+    <div id="container" class="container"></div>
+    <script>
+        function getFormFunc(formname)
+        {
+            var formurl = formname + ".json";
+            var source = $.ajax({
+                url: formurl,
+                async: false,
+            }).responseJSON;
+            return source;
+        }
+
+        function getAdditionalDataForControl(control,
+            {startIndex, pageSize, filters, sort, model},
+            callback)
+        {
+            var me = this;
+            if(control.props["data-buildertype"] == "dictionary"){
+                if(model == undefined){
+                    model = "item";
+                }
+                var items = [];
+                for(var i = 0 ; i < 3; i++){
+                    items.push({
+                        text: model + "_" + i,
+                        value: i
+                    });
+                }
+                callback({items});
+            }
+            else{
+                var rowsCount = 5;
+                var items = [];
+                for(var i = 0 ; i < pageSize; i++){
+                    var obj = {};
+                    if(control.props.columns == undefined){
+                        obj["col1"] = "col1_" + (Number(startIndex) + Number(i));
+                        obj["col2"] = "col2_" + (Number(startIndex) + Number(i));
+                        obj["col3"] = "col3_" + (Number(startIndex) + Number(i));
+                    }
+                    else{
+                        control.props.columns.forEach(function(c){
+                            obj[c.key] = c.key + "_" + (Number(startIndex) + Number(i));
+                        });
+                    }
+                    items.push(obj);
+                }
+                callback({startIndex, pageSize, rowsCount, items});
+            }
+        }
+
+        function eventProcess(obj, p)
+        {
+            console.log("Event from form:", obj, p);
+        }
+
+        var actions= [
+            {text: "validate", icon: "browser"},
+            {text:'refresh', icon: "browser"},
+            {text:'save', icon: "browser"},
+            {text:'saveandexit', icon: "browser"},
+            {text:'cancel', icon: "browser"},
+            {text:'add', icon: "browser"},
+            {text:'edit', icon: "browser"},
+            {text:'delete', icon: "browser"},
+        ];
+
+        var settings = {
+            container: document.getElementById("container"),
+            actions: actions,
+            getFormFunc: getFormFunc,
+            getAdditionalDataForControl: getAdditionalDataForControl,
+            downloadUrl: "download.html?file=",
+            uploadUrl: "upload.html?file=",
+            templates: ["contactform", "toolbarbuttons"]
+        };
+
+        //window.OptimaJetFormBuilderLicense("<your license key");
+     
+        let formbuilder = new OptimaJetFormBuilder(settings);        
+        formbuilder.load('./samples/forms/application-form');
+    </script>
+</body>
+</html>

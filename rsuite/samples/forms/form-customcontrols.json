@@ -1,0 +1,62 @@
+[
+  {
+    "key": "__settings",
+    "data-buildertype": "__settings",
+    "testvalues": "{\n  \"title\": \"Test application\",\n  \"firstname\": \"John\",\n  \"lastname\": \"Doe\",\n  \"type\": 2,\n  \"comment\": \"This is a test application for John Doe\"\n}",
+    "errors": "{}"
+  },
+  {
+    "key": "title",
+    "data-buildertype": "input",
+    "label": "Title",
+    "fluid": true,
+    "other-required": false
+  },
+  {
+    "key": "newcontrol_1",
+    "data-buildertype": "newcontrol",
+    "content": "Text..."
+  },
+  {
+    "key": "btnSave",
+    "data-buildertype": "button",
+    "content": "Save",
+    "primary": true,
+    "fluid": false,
+    "events-onclick-actions": [
+      "validate",
+      "saveandexit"
+    ],
+    "events": {
+      "onClick": {
+        "active": true,
+        "actions": [
+          "save"
+        ],
+        "targets": [],
+        "parameters": []
+      }
+    }
+  },
+  {
+    "key": "btnCancel",
+    "data-buildertype": "button",
+    "content": "Cancel",
+    "primary": false,
+    "fluid": false,
+    "events-onclick-actions": [
+      "validate",
+      "saveandexit"
+    ],
+    "events": {
+      "onClick": {
+        "active": true,
+        "actions": [
+          "cancel"
+        ],
+        "targets": [],
+        "parameters": []
+      }
+    }
+  }
+]

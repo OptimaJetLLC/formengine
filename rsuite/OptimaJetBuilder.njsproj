@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{44e37e76-6f9e-4c84-ba2c-99ffd9681cd9}</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectView>ProjectFiles</ProjectView>
+    <StartupFile>
+    </StartupFile>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <ItemGroup>
+    <Content Include="shared-data\application-form-data.json" />
+    <Content Include="shared-data\application-form.json" />
+    <Content Include="builder.html" />
+    <Content Include="contactform.json" />
+    <Content Include="css\fonts\lato-bold-700-latin-ext.woff2" />
+    <Content Include="css\fonts\lato-bold-700-latin.woff2" />
+    <Content Include="css\fonts\lato-bolditalic-700-latin-ext.woff2" />
+    <Content Include="css\fonts\lato-bolditalic-700-latin.woff2" />
+    <Content Include="css\fonts\lato-italic-400-latin-ext.woff2" />
+    <Content Include="css\fonts\lato-italic-400-latin.woff2" />
+    <Content Include="css\fonts\lato-regular-400-latin-ext.woff2" />
+    <Content Include="css\fonts\lato-regular-400-latin.woff2" />
+    <Content Include="css\fonts\semantic-font.css" />
+    <Content Include="css\themes\default\assets\fonts\icons.eot" />
+    <Content Include="css\themes\default\assets\fonts\icons.ttf" />
+    <Content Include="css\themes\default\assets\fonts\icons.woff" />
+    <Content Include="css\themes\default\assets\fonts\icons.woff2" />
+    <Content Include="download.html" />
+    <Content Include="images\builder.png" />
+    <Content Include="images\dwkitbuilder-copy.svg" />
+    <Content Include="images\dwkitbuilder-delete.svg" />
+    <Content Include="images\dwkitbuilder-edit.svg" />
+    <Content Include="images\dwkitbuilder-move.svg" />
+    <Content Include="images\dwkitbuilder-toolbar-move.png" />
+    <Content Include="images\logoviewer.svg" />
+    <Content Include="images\viewer.png" />
+    <Content Include="index.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="package-lock.json" />
+    <Content Include="package.json" />
+    <Content Include="form.js" />
+    <Content Include="index.js" />
+    <Content Include="src\control\file-control.js" />
+    <Content Include="toolbarbuttons.json" />
+    <Content Include="tsconfig.json">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="upload.html" />
+    <Content Include="viewer.html" />
+    <Content Include="webpack.config.js" />
+    <Content Include="css\optimajet-formbuilder.css" />
+    <Content Include="css\semantic.min.css" />
+    <Content Include="images\dwkitbuilder-info.png" />
+    <Content Include="images\unknown.png" />
+    <Content Include="images\collapse.svg" />
+    <Content Include="images\expand.svg" />
+    <Content Include="images\logo.svg" />
+    <Content Include="scripts\ace.js" />
+    <Content Include="scripts\jquery.js" />
+    <Content Include="scripts\json5.js" />
+    <Content Include="scripts\mode-csharp.js" />
+    <Content Include="scripts\mode-javascript.js" />
+    <Content Include="scripts\mode-json.js" />
+    <Content Include="scripts\react-data-grid.js" />
+    <Content Include="scripts\theme-monokai.js" />
+    <Content Include="scripts\worker-javascript.js" />
+    <Content Include="scripts\worker-json.js" />
+    <Content Include="src\functional-filter.js" />
+    <Content Include="src\timeout.js" />
+    <Content Include="src\actions.jsx" />
+    <Content Include="src\builder.jsx" />
+    <Content Include="src\control-bar.js" />
+    <Content Include="src\controls.js" />
+    <Content Include="src\editform-controls.js" />
+    <Content Include="src\edit-form.js" />
+    <Content Include="src\form.jsx" />
+    <Content Include="src\lang.jsx" />
+    <Content Include="src\preview.jsx" />
+    <Content Include="src\store.jsx" />
+    <Content Include="src\toolbar.jsx" />
+    <Content Include="css\themes\default\assets\fonts\icons.svg" />
+    <Content Include="src\control\chart-view.js" />
+    <Content Include="src\control\collection-editor.js" />
+    <Content Include="src\control\container.js" />
+    <Content Include="src\control\date-picker.js" />
+    <Content Include="src\control\dictionary.js" />
+    <Content Include="src\control\dropdown-trigger.js" />
+    <Content Include="src\control\dropzone.js" />
+    <Content Include="src\control\events-editor.js" />
+    <Content Include="src\control\grid-view.js" />
+    <Content Include="src\control\menu-group.js" />
+    <Content Include="src\control\radio-group.js" />
+    <Content Include="src\control\search.js" />
+    <Content Include="src\control\semantic-control.js" />
+    <Content Include="src\control\static-content.js" />
+    <Content Include="src\control\upload.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="css" />
+    <Folder Include="css\fonts\" />
+    <Folder Include="css\themes" />
+    <Folder Include="css\themes\default" />
+    <Folder Include="css\themes\default\assets" />
+    <Folder Include="css\themes\default\assets\fonts" />
+    <Folder Include="images" />
+    <Folder Include="scripts" />
+    <Folder Include="src" />
+    <Folder Include="src\common\" />
+    <Folder Include="src\control" />
+    <Folder Include="src\control\collectioneditor\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="formbuilderdev-builder.js" />
+    <Compile Include="src\common\structure-converter.js" />
+    <Compile Include="src\control\collectioneditor\base-control.js" />
+    <Compile Include="src\control\collectioneditor\checkbox-control.js" />
+    <Compile Include="src\control\collectioneditor\custom-control.js" />
+    <Compile Include="src\control\collectioneditor\date-time-control.js" />
+    <Compile Include="src\control\collectioneditor\input-control.js" />
+    <Compile Include="src\control\collectioneditor\dropdown-control.js" />
+    <Compile Include="src\control\collectioneditor\upload-control.js" />
+    <Compile Include="src\control\grid-layout.js" />
+    <Compile Include="src\control\repeater.js" />
+    <Compile Include="src\control\repeater-control.js" />
+    <Compile Include="src\control\tab-group.js" />
+    <Compile Include="src\control\tree-picker-header.js" />
+    <Compile Include="src\control\tree-picker.js" />
+    <Compile Include="src\viewer.jsx" />
+    <Compile Include="webpack.config.forsitepack.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

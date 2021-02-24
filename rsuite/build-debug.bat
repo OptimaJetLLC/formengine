@@ -1,0 +1,1 @@
+powershell "& "".\build-debug.ps1"""

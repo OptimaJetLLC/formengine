@@ -1,0 +1,17 @@
+import React from 'react';
+import { register, Camera } from 'optimajet-builder-shared';
+
+register('collection-camera', options => {
+    return (<Camera
+        name={options.props.colName}
+        error={options.props.errorFlag}
+        value={options.props.value}
+        readOnly={options.props.readOnly}
+        onChange={options.me.handleChange}
+        downloadUrl={options.props.downloadUrl}
+        uploadUrl={options.props.uploadUrl}
+        additionalData={options.props.additionalData}
+        additionalDataContext={options.props.row}
+        compact fluid isForm
+    />);
+});
