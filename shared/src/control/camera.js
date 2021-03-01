@@ -82,6 +82,7 @@ export default class Camera extends Component {
             onUpload,
             props: this.props,
             state: this.state,
+            model
         });
     }
 }

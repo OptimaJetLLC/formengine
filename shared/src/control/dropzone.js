@@ -22,7 +22,8 @@ export default class Dropzone extends Component {
     render() {
         const me = this;
         const parentItem = this.props.additionalParams.parentItem;
-
+        let model = this.props.additionalParams.model;
+        
         let iconFiletypes = undefined;
         if (this.props.iconFiletypes) {
             let types = this.props.iconFiletypes.split(',');
@@ -55,6 +56,7 @@ export default class Dropzone extends Component {
             eventHandlers: eventHandlers,
             isForm: this.isForm(parentItem),
             props: this.props,
+            model
         })
     }
 

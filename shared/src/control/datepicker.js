@@ -21,7 +21,8 @@ export default class DatePicker extends Component {
 
         return draw('datepicker', {
             props: this.props,
-            controlProps: controlProps
+            controlProps: controlProps,
+            model
         });
     }
 }

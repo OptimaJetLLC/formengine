@@ -33,11 +33,11 @@ register('message', options => {
         status = 'warning';
     }
 
-    const controlParams = builderStyles.controlParams(options.propsControl);
-    options.propsControl.style = [controlParams.style, options.propsControl.style];
+    const controlParams = builderStyles.controlParams(options.controlProps);
+    options.controlProps.style = [controlParams.style, options.controlProps.style];
 
-    return (<Card style={[options.propsControl.style]} status={status}>
-        <View {...options.propsControl}>
+    return (<Card style={[options.controlProps.style]} status={status}>
+        <View {...options.controlProps}>
                 <Text style={headerStyle} category='h6'>{options.props.header}</Text>
                 <Text style={[messageStyles.contentStyle, contentStyle]} category='s1'>{options.props.content}</Text>
             </View>

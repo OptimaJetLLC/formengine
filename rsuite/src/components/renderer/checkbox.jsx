@@ -3,7 +3,7 @@ import { Checkbox, ControlLabel, Icon } from 'rsuite';
 import { register } from 'optimajet-builder-shared';
 
 register('checkbox', options => {   
-    let model = options.props.additionalParams.model;
+    let model = options.model;
 
     let inputProps = {};
     if(options.props.error){

@@ -8,8 +8,11 @@ export default class Container extends Component {
     }
 
     render() {
+        let model = this.props.additionalParams.model;
+        
         return draw('container', {
-            props: this.props
+            props: this.props,
+            model
         });
     }
 }

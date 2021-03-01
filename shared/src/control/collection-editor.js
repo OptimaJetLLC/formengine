@@ -400,7 +400,7 @@ export default class CollectionEditor extends Component {
             onDragOver: this.onDragOver,
             onDrop: this.onDrop,
             props: this.props,
-            state: this.state,
+            state: this.state
         });
     }
 }

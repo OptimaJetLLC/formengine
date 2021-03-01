@@ -148,6 +148,7 @@ export default class ChartView extends Component {
             divId: this.getDivId(),
             props: this.props,
             state: this.state,
+            model
         });
     }
 

@@ -45,8 +45,6 @@
     
         var data = {
             title: 'Test application',
-            firstname: 'John',
-            lastname: 'Doe',
             type: 2,
             comment: 'This is a test application for John Doe'
         };
@@ -56,6 +54,15 @@
              var value = changeSet.value;
              data[name] = value;
         };
+
+        settings.onInitialData = function(initData){
+            for(var field in initData){
+                if(!data[field]){
+                    data[field] = initData[field];
+                }
+            }
+        };
+
         //window.OptimaJetFormBuilderLicense("<your license key");
         
         var form = new OptimaJetForm(settings);   

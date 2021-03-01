@@ -33,7 +33,8 @@ export default class Dropdown extends Component {
             controlProps: controlProps,
             label: model.label,
             items: items,
-            onChange: this.onChange.bind(this)
+            onChange: this.onChange.bind(this),
+            model
         });
     }
 

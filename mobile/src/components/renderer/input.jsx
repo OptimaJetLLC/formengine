@@ -9,36 +9,46 @@ import builderStyles from '../../builder-styles';
 register('input', options => {
 
     function drawInput(formSize) {
-        const controlParams = builderStyles.controlParams(options.propsControl);
-        options.propsControl.style = [controlParams.style, options.propsControl.style];
-        if (formSize) options.propsControl.size = formSize;
-        if (options.propsControl.onChange) {
-            options.propsControl.onChangeText = options.propsControl.onChange;
-            options.propsControl.onValueChange = options.propsControl.onChange;
-            delete options.propsControl.onChange;
+        let model = options.model;
+        const controlParams = builderStyles.controlParams(model);
+        let inputProps = {
+            placeholder: model.placeholder,
+            value: options.props.value ? options.props.value : "",
+            onChange: onChange,
+            disabled: options.props.readOnly || model.readOnly,
+        };
+
+        inputProps.style = 
+
+        options.controlProps.style = [controlParams.style, options.props.style];
+        if (formSize) options.controlProps.size = formSize;
+        if (options.controlProps.onChange) {
+            options.controlProps.onChangeText = options.controlProps.onChange;
+            options.controlProps.onValueChange = options.controlProps.onChange;
+            delete options.controlProps.onChange;
         }
 
-        if (options.propsControl.type === 'file') {
-            options.propsControl.isForm = options.isForm;
-            return <Upload {...options.propsControl}
+        if (options.controlProps.type === 'file') {
+            options.controlProps.isForm = options.isForm;
+            return <Upload {...options.controlProps}
                            downloadUrl={options.props.additionalParams.downloadUrl}
                            uploadUrl={options.props.additionalParams.uploadUrl}/>;
         }
-        if (options.propsControl.type === 'date' ||
-            options.propsControl.type === 'time' ||
-            options.propsControl.type === 'datetime') {
-            options.propsControl.isForm = options.isForm;
-            return <DatePicker {...options.propsControl} />;
+        if (options.controlProps.type === 'date' ||
+            options.controlProps.type === 'time' ||
+            options.controlProps.type === 'datetime') {
+            options.controlProps.isForm = options.isForm;
+            return <DatePicker {...options.controlProps} />;
         }
-        if (options.propsControl.type === 'number') {
-            let stringValue = Number.isInteger(options.propsControl.value) ? options.propsControl.value.toString() : options.propsControl.value;
-            return <DWKitInput label={options.propsControl.label} {...options.propsControl} value={stringValue} />;
+        if (options.controlProps.type === 'number') {
+            let stringValue = Number.isInteger(options.controlProps.value) ? options.controlProps.value.toString() : options.controlProps.value;
+            return <DWKitInput label={options.controlProps.label} {...options.controlProps} value={stringValue} />;
         }
-        if (options.propsControl.type === 'password') {
-            options.propsControl.secureTextEntry = true;
+        if (options.controlProps.type === 'password') {
+            options.controlProps.secureTextEntry = true;
         }
         // todo implement (use react-native elements
-        return <DWKitInput label={options.propsControl.label} {...options.propsControl}/>;
+        return <DWKitInput label={options.label} {...options.controlProps}/>;
     }
 
     function drawContainer(formWidthStyle, formSize) {
@@ -47,11 +57,11 @@ register('input', options => {
         return (<View style={[{flexGrow: 1}, formWidthStyle]}>{drawInput(formSize)}</View>);
     }
 
-    if (options.propsControl.onChange) {
-        const onChangeFn = options.propsControl.onChange;
-        options.propsControl.onChange = value => onChangeFn(
+    if (options.controlProps.onChange) {
+        const onChangeFn = options.controlProps.onChange;
+        options.controlProps.onChange = value => onChangeFn(
             value,
-            { name: options.propsControl.name, value }
+            { name: options.controlProps.name, value }
         );
     }
 

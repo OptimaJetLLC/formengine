@@ -26,6 +26,7 @@ export default class WebForm extends BaseForm {
                 model: this.state.model,
                 data: this.state.data,
                 errors: this.state.errors ? this.state.errors : this.props.errors,
+                buildermode: this.props.buildermode,
                 handleEvent: this.handleEvent,
                 getFormFunc: this.props.getFormFunc,
                 getAdditionalDataForControl: this.props.getAdditionalDataForControl,

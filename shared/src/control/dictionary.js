@@ -142,6 +142,7 @@ export default class Dictionary extends Component {
         //     }
 
         var me = this;
+        let model = this.props.additionalParams.model;
         let controlProps = {};
         for (const p in this.props) {
             if (p === 'parentIsForm' ||
@@ -198,6 +199,7 @@ export default class Dictionary extends Component {
         return draw('dictionary', {
             propsControl: controlProps,
             props: this.props,
+            model
         });
     }
 

@@ -28,6 +28,7 @@ export default class Upload extends Component {
     }
 
     render() {
+        let model = this.props.additionalParams.model;
         return draw('upload', {
             getCustomContentType: this.getCustomContentType,
             getCustomFileName: this.getCustomFileName,
@@ -35,6 +36,7 @@ export default class Upload extends Component {
             onChange: this.onChange,
             onClear: this.onClear,
             props: this.props,
+            model
         });
     }
 

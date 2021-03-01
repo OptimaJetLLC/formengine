@@ -3,7 +3,7 @@ import { Input, ControlLabel, Icon } from 'rsuite';
 import { isNotEmptyString, register } from 'optimajet-builder-shared';
 
 register('textarea', options => {
-    let model = options.props.additionalParams.model;
+    let model = options.model;
 
     let inputProps = {};
     if(options.props.error){

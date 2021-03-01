@@ -6,13 +6,13 @@ import DWKitCheckBox from '../edit-control/dwkit/dwkit-check-box.jsx';
 import builderStyles from '../../builder-styles';
 
 register('checkbox', options => {
-    const controlProps = { ...options.propsControl };    
-    controlProps.onChange = options.propsControl.readOnly === true
+    const controlProps = { ...options.controlProps };    
+    controlProps.onChange = options.controlProps.readOnly === true
         ? undefined
         : controlProps.onChange.bind(this, null, { name: controlProps.name, checked: !controlProps.checked });
 
     // todo style
-    if (options.propsControl.toggle === true) {        
+    if (options.controlProps.toggle === true) {        
         controlProps.style = StyleSheet.flatten([controlProps.style, builderStyles.controls.dwKitCheckBox]);
         return <Toggle {...controlProps} children={controlProps.label}/>;
     }

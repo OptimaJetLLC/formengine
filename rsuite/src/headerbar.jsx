@@ -6,7 +6,7 @@ export default class HeaderBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            settingsActiveTab: "testvalues"
+            settingsActiveTab: "defaultvalues"
         };
     }
 
@@ -51,8 +51,8 @@ export default class HeaderBar extends React.Component {
 
             <div className="formbuilder-editform-form">
                 <Nav appearance="subtle" activeKey={this.state.settingsActiveTab} onSelect={this.onSettingsSelect.bind(this)} >               
-                    {/* <Nav.Item eventKey="parameters">{local.parameters ? local.parameters : "Parameters"}</Nav.Item>
-                    <Nav.Item eventKey="defaultvalues">{local.defaultvalues ? local.defaultvalues : "Default Values"}</Nav.Item> */}
+                    {/*<Nav.Item eventKey="parameters">{local.parameters ? local.parameters : "Parameters"}</Nav.Item>*/}
+                    <Nav.Item eventKey="defaultvalues">{local.defaultvalues ? local.defaultvalues : "Default Values"}</Nav.Item> 
                     <Nav.Item eventKey="testvalues">{local.testvalues ? local.testvalues : "Test Values"}</Nav.Item>
                     {/* <Nav.Item eventKey="css">{local.css ? local.css : "CSS"}</Nav.Item>
                     <Nav.Item eventKey="javascript">{local.javascript ? local.javascript : "JavaScript"}</Nav.Item> */}

@@ -40,13 +40,13 @@ class NativeNumberInput extends React.Component {
 register('number-format', options => {
     
     var controlProps = {
-        ...options.propsControl,
-        status: options.propsControl.error ? "danger" : undefined
+        ...options.controlProps,
+        status: options.controlProps.error ? "danger" : undefined
     };
 
-    if (options.propsControl.onChange || options.propsControl.onValueChange) {
-        controlProps.onValueChange = options.propsControl.onChange || options.propsControl.onValueChange;
-        delete options.propsControl.onChange;
+    if (options.controlProps.onChange || options.controlProps.onValueChange) {
+        controlProps.onValueChange = options.controlProps.onChange || options.controlProps.onValueChange;
+        delete options.controlProps.onChange;
     }
 
     delete controlProps.type;

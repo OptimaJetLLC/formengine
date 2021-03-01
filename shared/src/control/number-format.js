@@ -21,7 +21,8 @@ export default class NumberFormatControl extends Component {
             props: this.props,
             controlProps: controlProps,
             label: model.label,
-            onChange: this.onChange.bind(this)
+            onChange: this.onChange.bind(this),
+            model
         });
     }
 

@@ -94,7 +94,7 @@ export default class Files extends Component {
     };
 
     render() {
-
+        let model = this.props.additionalParams.model;
         // else if (control === Files) {
 
         //     props.iconFiletypes = model.iconFiletypes;
@@ -145,6 +145,7 @@ export default class Files extends Component {
             onUploadChange: this.onUploadChange,
             onUploadFail: this.onUploadFail,
             props: this.props,
+            model
         });
     }
 

@@ -17,13 +17,12 @@ export default class Checkbox extends Component {
         let replaceControlValue = this.props.replaceControlValue;
         let model = this.props.additionalParams.model;
 
-        
-
         return draw('checkbox', {
             props: this.props,
             controlProps: controlProps,
             label: replaceControlValue(model.label),
-            onChange: this.onChange.bind(this)
+            onChange: this.onChange.bind(this),
+            model
         });
     }
 

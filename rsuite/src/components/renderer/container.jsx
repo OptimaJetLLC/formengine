@@ -4,7 +4,7 @@ import { register, BaseControls } from 'optimajet-builder-shared';
 register('container', options => {
 
     const props = options.props;
-    let model = props.additionalParams.model;
+    let model = options.model;
     let parentItem = props.additionalParams.parentItem;
 
     let controlProps = {

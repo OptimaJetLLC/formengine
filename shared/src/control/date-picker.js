@@ -46,6 +46,8 @@ export default class DatePicker extends Component {
             date = undefined;
         }
 
+        let model = this.props.additionalParams.model;
+
         let controlProps = {
             style: this.props.style,
             className: this.props.className,
@@ -93,6 +95,7 @@ export default class DatePicker extends Component {
             state: this.state,
             placeholder: this.placeholder,
             props: this.props,
+            model
         });
     }
 

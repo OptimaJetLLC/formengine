@@ -1,26 +1,54 @@
+const JSON5 = require("json5");
+const { setState } = require("reflux");
+
 function initDefaultState({model, data}) {
     if(!Array.isArray(model) || data === undefined)
         return;
 
-    for(let i=0; i < model.length; i++){
-        var key = model[i].propertyName ? model[i].propertyName : model[i].key;
-        if(model[i]["defaultValue"] && !data[key]){
-            data[key] = model[i]["defaultValue"];
+    let settings;
+    model.forEach(m => {
+        if(m.key == "__settings"){
+            settings = m;
         }
+    });
 
-        if(Array.isArray(model[i].children)){
-            initDefaultState({model: model[i].children, data});
-        }
+    if(settings){
+        if(settings.defaultvalues){
+            let tmp
+            try{                
+                tmp = JSON5.parse(settings.defaultvalues);
+            }
+            catch{}
 
-        if(model[i].placeholders !== undefined){
-            for(let ps in model[i].placeholders){
-                initDefaultState({model: model[i].placeholders[ps], data});
+            if(tmp){
+                for(let p in tmp){
+                    data[p] = tmp[p];
+                }
             }
         }
+    }
+    else{//depricated. it will be removed in the next version
+        
+        for(let i=0; i < model.length; i++){
+            var key = model[i].propertyName ? model[i].propertyName : model[i].key;
+            if(model[i]["defaultValue"] && !data[key]){
+                data[key] = model[i]["defaultValue"];
+            }
 
-        if(model[i]["data-buildertype"] === "customblock" && model[i].sourceType === "source" && model[i].source != undefined){
-            var children = JSON5.parse(model[i].source);
-            initDefaultState({model: children, data});
+            if(Array.isArray(model[i].children)){
+                initDefaultState({model: model[i].children, data});
+            }
+
+            if(model[i].placeholders !== undefined){
+                for(let ps in model[i].placeholders){
+                    initDefaultState({model: model[i].placeholders[ps], data});
+                }
+            }
+
+            if(model[i]["data-buildertype"] === "customblock" && model[i].sourceType === "source" && model[i].source != undefined){
+                var children = JSON5.parse(model[i].source);
+                initDefaultState({model: children, data});
+            }
         }
     }
 }

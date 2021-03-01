@@ -16,7 +16,7 @@ class NewControlComponent extends React.Component {
         };
   
         let replaceControlValue = this.props.replaceControlValue;
-        let model = this.props.additionalParams.model;       
+        let model = this.props.model;       
   
         return <h1 {...controlProps}>This is a custom control: {replaceControlValue(model.content)}</h1>;
     }

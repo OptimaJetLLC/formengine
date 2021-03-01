@@ -22,7 +22,7 @@ register('image', options => {
     
     let control = undefined;
     const controlProps = {
-        ...options.propsControl,
+        ...options.controlProps,
         source: { uri: src },
     };
     delete controlProps.src;

@@ -45,7 +45,7 @@ export default class MenuGroup extends Component {
     }
 
     render() {
-
+        let model = this.props.additionalParams.model;
         // else if (control === MenuGroup) {
         //     props['data-items'] = replaceControlValue(model.items);
         //     props.pointing = model.pointing;
@@ -74,6 +74,7 @@ export default class MenuGroup extends Component {
             me: this,
             props: this.props,
             state: this.state,
+            model
         });
     }
 }

@@ -49,7 +49,8 @@ export default class SignatureCanvas extends Component {
 
     render() {
         const { onClear, onUpload } = this;
-
+        let model = this.props.additionalParams.model;
+        
         // else if (control === SignatureCanvas) {
         //     props = { ...props, ...model };
         //     props.uploadUrl = uploadUrl;
@@ -79,6 +80,7 @@ export default class SignatureCanvas extends Component {
             onUpload,
             props: this.props,
             state: this.state,
+            model
         });
     }
 }

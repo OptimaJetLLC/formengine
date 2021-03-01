@@ -63,7 +63,8 @@ export default class RadioGroup extends Component {
             controlProps: controlProps,
             onChange: this.onChange.bind(this),
             label: replaceControlValue(model.label),
-            items: replaceControlValue(model["data-elements"])
+            items: replaceControlValue(model["data-elements"]),
+            model
         });
     }
 }

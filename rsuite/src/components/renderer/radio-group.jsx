@@ -51,7 +51,7 @@ register('radio-group', options => {
     //     </div>
     // </div>);
 
-    let model = options.props.additionalParams.model;
+    let model = options.model;
 
     let inputProps = {};
     if(options.props.error){

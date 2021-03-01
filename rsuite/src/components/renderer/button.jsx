@@ -10,7 +10,7 @@ const sizes = {
 };
 
 register('button', options => {
-    let model = options.props.additionalParams.model;
+    let model = options.model;
 
     let appearance = "default";
     if(model.primary)

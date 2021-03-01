@@ -15,7 +15,7 @@ register('header', options => {
     };
     // todo use global styles!
     return (<View>
-        <Text style={headerStyle} category='h1'>{options.props.content}</Text>
-        <Text style={subHeaderStyle} category='h6'>{options.props.subheader}</Text>
+        <Text style={headerStyle} category='h1'>{options.content}</Text>
+        <Text style={subHeaderStyle} category='h6'>{options.subheader}</Text>
     </View>);
 });

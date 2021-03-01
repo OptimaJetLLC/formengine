@@ -21,7 +21,8 @@ export default class Formgroup extends Component {
 
         return draw('formgroup', {
             props: this.props,
-            controlProps: controlProps
+            controlProps: controlProps,
+            model
         });
     }
 }

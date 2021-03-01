@@ -6,9 +6,7 @@ import { RegisterLicense } from "optimajet-builder-shared";
 //RegisterLicense("<your license key>");
 
 const data = {
-    title: 'Test application',
-    firstname: 'John',
-    lastname: 'Doe',
+    title: 'Test application',    
     type: 2,
     comment: 'This is a test application for John Doe'
 };
@@ -33,7 +31,6 @@ const form = <Form
                 }
             }
         }
-
     }}
     getAdditionalDataForControl={(control, { startIndex, pageSize, filters, sort, model }, callback) => {
         console.log('getAdditionalDataForControl');

@@ -43,7 +43,8 @@ export default class Button extends Component {
             props: this.props,
             controlProps: controlProps,
             content,
-            onClick: onClickFunc
+            onClick: onClickFunc,
+            model
         });
     }
 }

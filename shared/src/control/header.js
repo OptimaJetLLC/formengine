@@ -27,7 +27,8 @@ export default class Header extends Component {
             content,
             subheader,
             size: model.subheader,
-            textAlign: model.textAlign
+            textAlign: model.textAlign,
+            model
         });
     }
 }

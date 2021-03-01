@@ -16,11 +16,11 @@ register('formgroup', options => {
         return builderStyles.formGroupWidthEqual;
     }
 
-    const props = options.propsControl;
+    const props = options.controlProps;
     props.notStretchItems = true;
     props.style.flexDirection = options.orientation === 'grouped' ? 'column' : 'row';
     props.style =  [builderStyles.containerView.base, props.style];
-    removeUnsupportedProps(options.propsControl);
+    removeUnsupportedProps(options.controlProps);
     const childStyle = options.widths === 'custom' ? getWidth() : builderStyles.formGroupWidthEqual;
     const isColumn = options.orientation !== 'grouped';
     const formWidthContext = {

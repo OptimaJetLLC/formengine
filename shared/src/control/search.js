@@ -18,6 +18,7 @@ export default class SearchControl extends Component {
         //     res = (<SearchControl {...props} />);
         //     }
 
+        let model = this.props.additionalParams.model;
         let controlProps = {};
         for (let p in this.props) {
             if (p === 'value' ||
@@ -32,6 +33,7 @@ export default class SearchControl extends Component {
             handleResultSelect: this.handleResultSelect.bind(this),
             handleSearchChange: this.handleSearchChange.bind(this),
             state: this.state,
+            model
         });
     }
 

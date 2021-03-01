@@ -31,7 +31,8 @@ export default class Card extends Component {
             me: this,
             header: replaceControlValue(model.header),
             imgurl: replaceControlValue(model.imgurl),
-            onClick
+            onClick,
+            model
         });
     }
 

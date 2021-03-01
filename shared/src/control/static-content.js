@@ -26,7 +26,8 @@ export default class StaticContent extends Component {
             props: this.props,
             spanProps: spanProps,
             content,
-            isHtml
+            isHtml,
+            model
         });
     }
 }

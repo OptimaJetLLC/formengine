@@ -3,7 +3,8 @@
     "key": "__settings",
     "data-buildertype": "__settings",
     "testvalues": "{\n  \"title\": \"Test application\",\n  \"firstname\": \"John\",\n  \"lastname\": \"Doe\",\n  \"type\": 2,\n  \"comment\": \"This is a test application for John Doe\"\n}",
-    "errors": "{}"
+    "errors": "{}",
+    "defaultvalues": "{\n  \"title\": \"Empty\",\n  \"firstname\": \"No\",\n  \"lastname\": \"Name\",\n  \"type\": 3\n}"
   },
   {
     "key": "header_1",

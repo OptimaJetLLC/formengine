@@ -29,7 +29,7 @@ register('label', options => {
         style.borderRadius = '500rem';
     }
     return (<View style={{ flexDirection: 'row' }}>
-        <Label {...options.propsControl} style={StyleSheet.compose(style, options.propsControl.style)}>
+        <Label {...options.controlProps} style={StyleSheet.compose(style, options.controlProps.style)}>
             {options.props.content}
         </Label>
     </View>);

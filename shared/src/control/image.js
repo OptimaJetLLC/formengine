@@ -17,13 +17,12 @@ export default class Image extends Component {
         let replaceControlValue = this.props.replaceControlValue;
         let model = this.props.additionalParams.model;
 
-        
-
         return draw('image', {
             props: this.props,
             controlProps: controlProps,
             src: replaceControlValue(model.src),
-            href: replaceControlValue(model.href)
+            href: replaceControlValue(model.href),
+            model
         });
     }
 }

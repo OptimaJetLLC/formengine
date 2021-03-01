@@ -54,7 +54,7 @@ export default class RichTextEditorControl extends Component {
             }
         }
 
-        const model = this.props.additionalParams.model;
+        const model = this.props.model;
         const handleEvent = this.props.additionalParams.handleEvent;
         const parentItem = this.props.additionalParams.parentItem;
 

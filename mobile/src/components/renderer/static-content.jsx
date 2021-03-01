@@ -5,7 +5,7 @@ import { removeUnsupportedProps } from './utils';
 import StaticHtml from './static-html.jsx';
 
 register('static-content', options => {
-    const content = isDefined(options.props.content) ?
+    const content = isDefined(options.content) ?
         options.props.content.replace('\n', '<br/>') :
         undefined;
     if (!content) {

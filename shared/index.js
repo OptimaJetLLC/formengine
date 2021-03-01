@@ -26,7 +26,6 @@ import RadioGroup from './src/control/radio-group';
 import Repeater from './src/control/repeater';
 import RepeaterControl from './src/control/repeater-control';
 import SearchControl from './src/control/search';
-import SemanticControl from './src/control/semantic-control';
 import SignatureCanvas from './src/control/signature-canvas';
 import StaticContent from './src/control/static-content';
 import TabGroup from './src/control/tab-group';
@@ -97,7 +96,6 @@ export {
     Repeater,
     RepeaterControl,
     SearchControl,
-    SemanticControl,
     SignatureCanvas,
     StaticContent,
     TabGroup,

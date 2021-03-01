@@ -4,7 +4,7 @@ import { isNotEmptyString, register, isDefined } from 'optimajet-builder-shared'
 
 register('dropdown', options => {
 
-    let model = options.props.additionalParams.model;
+    let model = options.model;
 
     let inputProps = {};
     if(options.props.error){
@@ -12,7 +12,7 @@ register('dropdown', options => {
     }
 
     let onChange = function(value, e){
-        options.onChange(e, {name: options.props.name, value});
+        options && options.onChange(e, {name: options.props.name, value});
     };
 
     let picker;

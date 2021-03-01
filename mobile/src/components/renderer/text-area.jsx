@@ -3,37 +3,20 @@ import DWKitInput from '../edit-control/dwkit/dwkit-input.jsx'
 import { register } from 'optimajet-builder-shared';
 
 register('textarea', options => {
-    // todo
-    // if (options.isForm) {
-    //     return (<Form.TextArea {...options.propsControl} />);
-    // }
-    // todo
-    // let divClass = 'ui labeled input';
-    // if (options.propsControl.fluid) {
-    //     divClass += ' fluid';
-    // }
-    //
-    // if (options.propsControl.error) {
-    //     divClass += ' error';
-    // }
-    //
-    // if (isNotEmptyString(options.props.className)) {
-    //     divClass += ' ' + options.props.className;
-    // }
-
-    const propsControl = {
+    let model = options.model;
+    const controlProps = {
         multiline: true,
-        numberOfLines: options.propsControl.rows ? options.propsControl.rows : 3,
-        disabled: options.propsControl.readOnly,
-        onChange: value => options.propsControl.onChange(
+        numberOfLines: model.rows ? model.rows : 3,
+        disabled: options.props.readOnly || model.readOnly,
+        onChange: value => options.onChange(
             value,
-            { name: options.propsControl.name, value }
+            { name: options.props.name, value }
         ),
-        value: options.propsControl.value,
-        placeholder: options.propsControl.placeholder,
+        value: options.props.value,
+        placeholder: model.placeholder,
         style: {marginTop: 7},
-        error: options.propsControl.error
+        error: options.props.error
     };
     // todo remove all styles from renderer code!!!!
-    return <DWKitInput label={options.propsControl.label} {...propsControl}/>;
+    return <DWKitInput label={options.label} {...controlProps}/>;
 });

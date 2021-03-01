@@ -28,7 +28,8 @@ export default class Breadcrumb extends Component {
             props: this.props,
             controlProps: controlProps,
             children,
-            onClick: this.onClick
+            onClick: this.onClick,
+            model
         });
     }
 

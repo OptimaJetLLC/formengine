@@ -23,6 +23,7 @@ export default class Message extends Component {
             controlProps: controlProps,
             content: replaceControlValue(model.content),
             header: replaceControlValue(model.header),
+            model
         });
     }
 }

@@ -59,6 +59,14 @@ window.OptimaJetForm = function FormBuilder(settings){
   };
 
   this.eventFunc = function(args){
+    if(settings.onInitialData){
+      if(Array.isArray(args.actions) && args.actions.includes("initSystem") && 
+              args.parameters && args.parameters["initialData"])
+        {
+            var initialData = args.parameters["initialData"];
+            settings.onInitialData(initialData);
+        }
+    }
     return settings.eventFunc && settings.eventFunc(args);
   }
 
@@ -66,7 +74,7 @@ window.OptimaJetForm = function FormBuilder(settings){
       <Form
         getFormFunc={settings.getFormFunc}
         getAdditionalDataForControl={settings.getAdditionalDataForControl}
-        eventFunc={settings.eventFunc}
+        eventFunc={this.eventFunc}
         ref={(form) => { me.form = form }}
         downloadUrl={settings.downloadUrl}
         uploadUrl={settings.uploadUrl}

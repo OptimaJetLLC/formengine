@@ -148,7 +148,7 @@ export default class Repeater extends Component {
     }
 
     render() {
-
+        let model = this.props.additionalParams.model;
 
         // else if (control === Repeater) {
         //     props.slider = model.slider;
@@ -195,7 +195,8 @@ export default class Repeater extends Component {
             props: this.props,
             psTemplate: this.psTemplate,
             state: this.state,
-            handleChange: this.handleChange
+            handleChange: this.handleChange,
+            model
         });
     }
 

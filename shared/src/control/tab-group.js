@@ -38,7 +38,8 @@ export default class TabGroup extends Component {
             controlProps,
             onTabChange: this.onTabChange,
             panes: panes,
-            vertical            
+            vertical,
+            model           
         });
     }
 

@@ -4,7 +4,7 @@ import { register } from 'optimajet-builder-shared';
 
 register('breadcrumb', options => {
     let itemIndex = 0;
-    let model = options.props.additionalParams.model;
+    let model = options.model;
     return <Breadcrumb {...options.controlProps} separator={model.separator ? model.separator : undefined}>
             {options.children.map((c)=>{
                 let key = options.controlProps.key + "_" + itemIndex++;

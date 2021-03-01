@@ -3,24 +3,34 @@ import FormBuilderStore from './store.jsx';
 import BuilderActions from './actions';
 import { isDefined } from './helpers';
 import BaseControls from './base-controls';
+import JSON5 from 'json5';
 
 export default class BasePreview extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
-            editElement: null,
-            //buildermode: props.buildermode || true 
+            model: [],
+            data: {},
+            editElement: null
         };
 
-        FormBuilderStore.listen(this.dataChanged.bind(this));
+        FormBuilderStore.listen(this.modelChanged.bind(this));
     }
 
-    dataChanged(data) {
-        let tdata = FormBuilderStore.getTemporaryData();
+    modelChanged() {
+        let model = FormBuilderStore.getTemporaryData();
+        let settings = this.getSettings();
+        let data = {};
+        if(settings && settings.defaultvalues){
+            try{
+                data = JSON5.parse(settings.defaultvalues);
+            }
+            catch{}
+        }
         this.setState({
-            data: tdata,
+            model,
+            data: data,
             editElement: null
         });
     }
@@ -38,7 +48,21 @@ export default class BasePreview extends Component {
     }
 
     _handleEvent(p) {
-      
+      if(p.eventName == "onChange"){
+          this.state.data[p.propertyName] = p.value;
+
+          var settings = this.getSettings();
+          settings.defaultvalues = JSON5.stringify(this.state.data, null, 4);
+
+          this.forceUpdate();
+      }
+    }
+
+    getSettings(){
+        let settings = FormBuilderStore.getByKey("__settings");
+        if(!settings)
+            settings = {key: "__settings", "data-buildertype": "__settings"};
+        return settings;
     }
 
     getPreview() {
@@ -55,14 +79,14 @@ export default class BasePreview extends Component {
         const items = this.props.controls.createControls(
             this,
             {
-                model: this.state.data,
-                data: undefined,
+                model: this.state.model,
+                data: this.state.data,
                 buildermode: this.props.buildermode,
                 eventOnEdit: this._onEdit,
                 eventOnDelete: this._onDestroy,
                 eventOnCopy: this._onCopy,
                 parentItem: undefined,
-                handleEvent: this._handleEvent,
+                handleEvent: this._handleEvent.bind(this),
                 getFormFunc: this.props.getFormFunc,
                 getFormFist: this.props.getFormFist,
                 getAdditionalDataForControl: this.props.getAdditionalDataForControl,

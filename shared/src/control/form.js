@@ -21,7 +21,8 @@ export default class Form extends Component {
 
         return draw('form', {
             props: this.props,
-            controlProps: controlProps
+            controlProps: controlProps,
+            model
         });
     }
 }

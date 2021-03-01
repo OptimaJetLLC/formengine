@@ -5,33 +5,24 @@ import DWKitDropdown from '../edit-control/dwkit/dwkit-dropdown.jsx';
 
 
 register('dropdown', options => {
-    const controlParams = builderStyles.controlParams(options.propsControl);
-    const controlProps = { 
-        ...options.propsControl,
-        style: [options.propsControl.style, controlParams.style] };
-    if (options.propsControl.onChange) {
-        controlProps.onValueChange = (value) => options.propsControl.onChange(null, { name: controlProps.name, value });
+    let model = options.model;
+    const controlParams = builderStyles.controlParams(model);
+    const cProps = { 
+        ...options.controlProps,
+        label: options.label,
+        name: options.name,
+        value: options.props.value,
+        multiple: options.multiple,
+        clearable: options.clearable,
+        placeholder: options.placeholder,
+        options: options.items,
+        disabled: options.props.readOnly || model.readOnly,
+        style: [options.controlProps.style, controlParams.style] };
+    
+    if (options.onChange) {
+        cProps.onValueChange = (value) => options.onChange(null, { name: cProps.name, value });
     }
-    delete controlProps.onChange;
 
-    // todo form
-    // if (options.isForm) {
-    //     return (<Form.Dropdown {...options.propsControl} />);
-    // }
-    // todo style
-    // let divClass = 'ui labeled input';
-    // if (options.propsControl.fluid) {
-    //     divClass += ' fluid';
-    // }
-    //
-    // if (options.propsControl.error) {
-    //     divClass += ' error';
-    // }
-    //
-    // if (isNotEmptyString(options.props.className)) {
-    //     divClass += ' ' + options.props.className;
-    // }
-
-    return (<DWKitDropdown {...controlProps}/>);
+    return (<DWKitDropdown {...cProps}/>);
 });
 

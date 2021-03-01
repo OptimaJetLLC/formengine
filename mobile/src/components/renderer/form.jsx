@@ -7,17 +7,17 @@ import BuilderContainerWrapper from '../../builder/builder-container-wrapper.jsx
 import builderStyles from '../../builder-styles';
 
 register('form', options => {
-    removeUnsupportedProps(options.propsControl);
+    removeUnsupportedProps(options.controlProps);
     const formSizeContext = {     
         formSize: options.model.size,
     }
-    const props = options.propsControl;
+    const props = options.controlProps;
     props.style =  [builderStyles.containerView.base, props.style];
 
     return (
         <BuilderContainerWrapper>
             <FormSizeContext.Provider value={formSizeContext}>
-                    <View {...props} children={options.children} />
+                    <View {...props} children={options.props.children} />
                 </FormSizeContext.Provider>
         </BuilderContainerWrapper>
     );

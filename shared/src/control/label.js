@@ -22,7 +22,8 @@ export default class Label extends Component {
         return draw('label', {
             props: this.props,
             controlProps: controlProps,
-            content: replaceControlValue(model.content)
+            content: replaceControlValue(model.content),
+            model
         });
     }
 }
