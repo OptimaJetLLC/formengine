@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, IconButton, ButtonToolbar, Icon, Toggle, Input, Nav } from 'rsuite';
 import Window from './components/window'
-
+import JSON5 from 'json5'
 export default class HeaderBar extends React.Component {
     constructor(props) {
         super(props);
@@ -99,7 +99,14 @@ export default class HeaderBar extends React.Component {
             this.setState({settingsOpen: false});
         }
         else{
-            this.state.data = this.props.builder.getSettings();            
+            this.state.data = this.props.builder.getSettings();
+            if(this.state.data.defaultvalues == undefined){
+                let tmp = {};
+                debugger;
+                let model = this.props.builder.getData();
+                this.getOldDefaultState({model, data: tmp});
+                this.state.data.defaultvalues = JSON5.stringify(tmp, null, 4);
+            }            
             this.setState({settingsOpen: true});
         }
     }
@@ -108,5 +115,29 @@ export default class HeaderBar extends React.Component {
         this.props.builder.setSettings(this.state.data);  
         this.setState({settingsOpen: false});
         this.props.builder.forceUpdate();
+    }
+
+    getOldDefaultState({model, data}){
+        for(let i=0; i < model.length; i++){
+            var key = model[i].propertyName ? model[i].propertyName : model[i].key;
+            if(model[i]["defaultValue"] && !data[key]){
+                data[key] = model[i]["defaultValue"];
+            }
+
+            if(Array.isArray(model[i].children)){
+                this.getOldDefaultState({model: model[i].children, data});
+            }
+
+            if(model[i].placeholders !== undefined){
+                for(let ps in model[i].placeholders){
+                    this.getOldDefaultState({model: model[i].placeholders[ps], data});
+                }
+            }
+
+            if(model[i]["data-buildertype"] === "customblock" && model[i].sourceType === "source" && model[i].source != undefined){
+                var children = JSON5.parse(model[i].source);
+                this.getOldDefaultState({model: children, data});
+            }
+        }
     }
 }

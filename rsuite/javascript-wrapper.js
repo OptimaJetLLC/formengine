@@ -59,12 +59,12 @@ window.OptimaJetForm = function FormBuilder(settings){
   };
 
   this.eventFunc = function(args){
-    if(settings.onInitialData){
+    if(settings.onInit){
       if(Array.isArray(args.actions) && args.actions.includes("initSystem") && 
               args.parameters && args.parameters["initialData"])
         {
             var initialData = args.parameters["initialData"];
-            settings.onInitialData(initialData);
+            settings.onInit(initialData);
         }
     }
     return settings.eventFunc && settings.eventFunc(args);

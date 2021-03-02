@@ -55,7 +55,7 @@
              data[name] = value;
         };
 
-        settings.onInitialData = function(initData){
+        settings.onInit = function(initData){
             for(var field in initData){
                 if(!data[field]){
                     data[field] = initData[field];
