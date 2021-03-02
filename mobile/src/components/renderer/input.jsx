@@ -14,7 +14,7 @@ register('input', options => {
         let inputProps = {
             placeholder: model.placeholder,
             value: options.props.value ? options.props.value : "",
-            onChange: onChange,
+            onChange: options.onChange,
             disabled: options.props.readOnly || model.readOnly,
         };
 

@@ -100,13 +100,16 @@ export default class HeaderBar extends React.Component {
         }
         else{
             this.state.data = this.props.builder.getSettings();
+
+            //depricated. it will be removed in the next version
             if(this.state.data.defaultvalues == undefined){
                 let tmp = {};
-                debugger;
                 let model = this.props.builder.getData();
                 this.getOldDefaultState({model, data: tmp});
                 this.state.data.defaultvalues = JSON5.stringify(tmp, null, 4);
-            }            
+            }
+            //depricated - end.
+            
             this.setState({settingsOpen: true});
         }
     }
@@ -117,6 +120,7 @@ export default class HeaderBar extends React.Component {
         this.props.builder.forceUpdate();
     }
 
+    //depricated. it will be removed in the next version
     getOldDefaultState({model, data}){
         for(let i=0; i < model.length; i++){
             var key = model[i].propertyName ? model[i].propertyName : model[i].key;
