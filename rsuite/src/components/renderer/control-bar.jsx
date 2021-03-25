@@ -122,8 +122,8 @@ register('control-bar', options => {
 
         let offset = $('.formbuilder-preview').offset();
 
-        lastPageX = e.pageX - offset.left - e.pageX % 5 - (mouseDX ?? 0);
-        lastPageY = e.pageY - offset.top - e.pageY % 5 - (mouseDY ?? 0);
+        lastPageX = e.pageX - offset.left - (mouseDX ?? 0);
+        lastPageY = e.pageY - offset.top - (mouseDY ?? 0);
 
         var control = undefined;
         if(options.me.controlRef.current){
@@ -140,13 +140,17 @@ register('control-bar', options => {
 
     var onMouseDown = (e) => {
         let offset = $('.formbuilder-preview').offset();
+
+        var control = undefined;
+        if(options.me.controlRef.current)
+            control = ReactDOM.findDOMNode(options.me.controlRef.current);
         
-        if(model.pinnedPositionX)
-            mouseDX = e.pageX - offset.left - model.pinnedPositionX;
-
-        if(model.pinnedPositionY)
-            mouseDY = e.pageY - offset.top - model.pinnedPositionY;
-
+        if(control){
+            var rect = control.getBoundingClientRect();
+            mouseDX = e.pageX - rect.left;
+            mouseDY = e.pageY - rect.top;
+        }
+        
         document.addEventListener('mousemove', mouseMove);
         document.addEventListener('mouseup', function(){
             document.removeEventListener('mousemove', mouseMove);
