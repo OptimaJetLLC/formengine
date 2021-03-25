@@ -71,7 +71,9 @@ var templates = ["contactform", "toolbarbuttons"];
 var formbuilder;
 ReactDOM.render(
     <FormBuilder
-      showHeader={true}
+      //showHeader={false}
+      //viewerMode="builder" // builder || viewer
+      //blockChangeViewerMode={true}
       actions={actions}
       getFormFunc={getform}
       getAdditionalDataForControl={getAdditionalDataForControl}

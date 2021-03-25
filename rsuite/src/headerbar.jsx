@@ -20,9 +20,9 @@ export default class HeaderBar extends React.Component {
                     <IconButton onClick={this.props.onChooseFileUpload} icon={<Icon icon="upload" />}>{local.upload ? local.upload : "Upload"}</IconButton>
                     <IconButton onClick={this.onSettings.bind(this)} icon={<Icon icon="setting" />}>{local.settings ? local.settings : "Settings"}</IconButton>
                     {/* <IconButton onClick={this.onLibrary.bind(this)} icon={<Icon icon="info" />}>{local.library ? local.library : "Library"}</IconButton> */}
-                    <Toggle checked={this.props.viewerMode} onChange={this.props.onBuilderSwitch} checkedChildren={local.viewer ? local.viewer : "Viewer"} unCheckedChildren={local.builder ? local.builder : "Builder"} />
+                    {!this.props.blockChangeViewerMode && <Toggle checked={this.props.viewerMode} onChange={this.props.onBuilderSwitch} checkedChildren={local.viewer ? local.viewer : "Viewer"} unCheckedChildren={local.builder ? local.builder : "Builder"} />}
                     {this.props.viewerMode && <IconButton onClick={this.props.onPrint} icon={<Icon icon="print" />}>{local.print ? local.print : "Print"}</IconButton>}
-                    {!this.props.viewerMode && <IconButton onClick={this.props.onClear} style={{ float: "right", marginRight: "15px"}} icon={<Icon icon="file-o" />}>{local.clear ? local.clear : "Clear"}</IconButton>}
+                    {!this.props.viewerMode && <IconButton onClick={this.props.onClear} style={{ float: "right", marginRight: "15px"}} appearance="ghost" icon={<Icon icon="file-o" />}>{local.clear ? local.clear : "Clear"}</IconButton>}
                 </ButtonToolbar>
                 <form action="/" method="post" style={{ display: 'none' }}
                       onSubmit={this.props.onUpload}>

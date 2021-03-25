@@ -138,6 +138,18 @@ export default class BaseControls {
             BaseControls.getCustomStyle(model['style-mobilesource'], style);
         }
 
+        if(model.pinned){
+            style.position = "absolute";
+
+            if(model.pinnedPositionX){
+                style.left = model.pinnedPositionX + "px"
+            }
+
+            if(model.pinnedPositionY){
+                style.top = model.pinnedPositionY + "px"
+            }
+        }
+
         return style;
     }
 

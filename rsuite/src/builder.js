@@ -13,7 +13,15 @@ export default class FormBuilder extends BaseFormBuilder {
     constructor(props) {
         super(props);
         this.controls = controls;
-        this.state.viewerMode = false;
+        this.state.viewerMode = props.viewerMode == "viewer";
+
+        this.onDownload = this.onDownload.bind(this);
+        this.onClear = this.create.bind(this);
+        this.onPrint = this.onPrint.bind(this);
+        this.onBuilderSwitch = this.onBuilderSwitch.bind(this);
+        this.onChooseFileUpload = this.onChooseFileUpload.bind(this);
+        this.onUpload = this.onUpload.bind(this);
+        this.onChangeFileUpload = this.onChangeFileUpload.bind(this);
     }
 
     onBuilderSwitch(checked, e) {
@@ -84,18 +92,22 @@ export default class FormBuilder extends BaseFormBuilder {
     }
 
     renderHeaderBar(){
+        if(this.props.showHeader == false){
+            return <div></div>;
+        }
         const localization = this.getCurrentLocalization();
         return <HeaderBar 
             builder={this}
             viewerMode={this.state.viewerMode}
+            blockChangeViewerMode={this.props.blockChangeViewerMode}
             localization={localization.headerbar}
-            onDownload={this.onDownload.bind(this)}
-            onClear={this.create.bind(this)}
-            onPrint={this.onPrint.bind(this)}
-            onBuilderSwitch={this.onBuilderSwitch.bind(this)}
-            onChooseFileUpload={this.onChooseFileUpload.bind(this)}
-            onUpload={this.onUpload.bind(this)}
-            onChangeFileUpload={this.onChangeFileUpload.bind(this)}
+            onDownload={this.onDownload}
+            onClear={this.create}
+            onPrint={this.onPrint}
+            onBuilderSwitch={this.onBuilderSwitch}
+            onChooseFileUpload={this.onChooseFileUpload}
+            onUpload={this.onUpload}
+            onChangeFileUpload={this.onChangeFileUpload}
         />;
     }
 

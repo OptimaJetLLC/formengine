@@ -20,6 +20,7 @@ var FormBuilderStore = Reflux.createStore({
         this.listenTo(BuilderActions.save, this.save);
         this.listenTo(BuilderActions.saveData, this._updateOrder);
         this.listenTo(BuilderActions.insert, this.insert);
+        this.listenTo(BuilderActions.changeItem, this.changeItem);
 
         _data = [];
         _temporaryValues = {};   
@@ -544,7 +545,15 @@ var FormBuilderStore = Reflux.createStore({
             }
         }
         return res;
-    }
+    },
+    changeItem: function (key, changeset) {
+        var model = this.getByKey(key);       
+        for(let p in changeset){
+            model[p] = changeset[p];
+        }
+
+        this.trigger(_data);
+    },
 });
 
 export default FormBuilderStore;

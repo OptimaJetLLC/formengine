@@ -393,9 +393,9 @@ input .formbuilder-item-toolbar-header:hover {
     color: #F24D00!important;
 }
 
-.formbuilder-item-toolbar-header-buttons > img {
+.formbuilder-item-toolbar-header-buttons > i {
     cursor: pointer;
-    margin-left: 8px;
+    margin-right: 7px;
 }
 
 .formbuilder-viewer-form{
