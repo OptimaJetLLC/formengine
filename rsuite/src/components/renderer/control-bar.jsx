@@ -116,36 +116,43 @@ register('control-bar', options => {
 
     var lastPageX = undefined;
     var lastPageY = undefined;
+    var mouseDX = undefined;
+    var mouseDY = undefined;
     var mouseMove = (e) => {
-        lastPageX = e.pageX;
-        lastPageY = e.pageY;
+
+        let offset = $('.formbuilder-preview').offset();
+
+        lastPageX = e.pageX - offset.left - e.pageX % 5 - (mouseDX ?? 0);
+        lastPageY = e.pageY - offset.top - e.pageY % 5 - (mouseDY ?? 0);
 
         var control = undefined;
         if(options.me.controlRef.current){
             control = ReactDOM.findDOMNode(options.me.controlRef.current);
 
             if(control){
-                control.style.top = e.pageY + "px";
-                control.style.left = e.pageX + "px";
+                control.style.top = lastPageY + "px";
+                control.style.left = lastPageX + "px";
             }
         }
 
-        var bar = undefined;
-        if(options.me.barRef.current){
-            bar = ReactDOM.findDOMNode(options.me.barRef.current);
-
-            if(bar){
-                bar.style.top = e.pageY + "px";
-                bar.style.left = e.pageX + "px";
-            }
-        }
+        options.me.updateBarPosition();
     }
 
-    var onMouseDown = () => {
+    var onMouseDown = (e) => {
+        let offset = $('.formbuilder-preview').offset();
+        
+        if(model.pinnedPositionX)
+            mouseDX = e.pageX - offset.left - model.pinnedPositionX;
+
+        if(model.pinnedPositionY)
+            mouseDY = e.pageY - offset.top - model.pinnedPositionY;
+
         document.addEventListener('mousemove', mouseMove);
         document.addEventListener('mouseup', function(){
             document.removeEventListener('mousemove', mouseMove);
             BuilderActions.changeItem(model.key, { pinnedPositionX: lastPageX, pinnedPositionY: lastPageY });
+            mouseDX = undefined;
+            mouseDY = undefined;
         });
     }    
     var className = "formbuilder-item-toolbar-header";

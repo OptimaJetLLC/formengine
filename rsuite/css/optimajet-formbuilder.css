@@ -16,6 +16,10 @@
     user-select: none; 
 }
 
+.formbuilder-form {
+  position: relative;
+}
+
 .formbuilder-preview{
     margin: 15px;
     position: relative;
