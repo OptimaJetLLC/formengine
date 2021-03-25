@@ -4,7 +4,6 @@ import { BuilderActions, DropzoneContext, isDefined, register } from 'optimajet-
 import { getDisplayStyle } from './style-helper';
 import $ from 'jquery';
 import { Icon } from 'rsuite';
-import { IgnorePlugin } from 'webpack';
 
 register('control-bar', options => {
     options.me.updateBarPosition = function(){
