@@ -9,6 +9,7 @@ export default class ControlBar extends Component {
         this.state = {};
         this.controlRef = React.createRef();
         this.barRef = React.createRef();
+        this.resizeRef = React.createRef();
     }
 
     render() {

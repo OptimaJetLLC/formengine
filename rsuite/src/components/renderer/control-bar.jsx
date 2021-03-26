@@ -6,11 +6,16 @@ import $ from 'jquery';
 import { Icon } from 'rsuite';
 
 register('control-bar', options => {
+    let pos = {};
     options.me.updateBarPosition = function(){
         if(!options.me.controlRef || !options.me.controlRef.current || !options.me.barRef || !options.me.barRef.current)
           return;
     
         var control = ReactDOM.findDOMNode(options.me.controlRef.current);
+        var style = control.currentStyle || window.getComputedStyle(control);
+        var dx = parseFloat(style.marginLeft);
+        var dy = parseFloat(style.marginTop);
+
         var bar = ReactDOM.findDOMNode(options.me.barRef.current);
     
         var pos = $( control ).position();
@@ -27,8 +32,31 @@ register('control-bar', options => {
             y = pos.top - barPos.height/2;
         }
         
+        x += dx;
+        y += dy;
+
         if (x < 15) x = 15;        
         bar.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
+
+        if(options.me.resizeRef && options.me.resizeRef.current){
+            var resize = ReactDOM.findDOMNode(options.me.resizeRef.current);
+            var resizePos = resize.getBoundingClientRect();   
+            
+            if ($( control ).parents('table').length) { //hack for correct position in table (customElement in collectonEditor)
+                const resizeSize = resize.children[0].getBoundingClientRect();
+                x = controlPos.width - resizeSize.width / 2;
+                y = -controlPos.height - resizeSize.height/2;
+            }
+            else {
+                x = pos.left + controlPos.width - resizePos.width / 2;
+                y = pos.top + controlPos.height - resizePos.height / 2;
+            }
+            
+            x += dx;
+            y += dy;
+
+            resize.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
+        }
     }
 
     let model = options.props.model;
@@ -119,23 +147,18 @@ register('control-bar', options => {
     var mouseDX = undefined;
     var mouseDY = undefined;
     var mouseMove = (e) => {
-
         let offset = $('.formbuilder-preview').offset();
-
         lastPageX = e.pageX - offset.left - (mouseDX ?? 0);
         lastPageY = e.pageY - offset.top - (mouseDY ?? 0);
-
         var control = undefined;
         if(options.me.controlRef.current){
             control = ReactDOM.findDOMNode(options.me.controlRef.current);
-
             if(control){
                 control.style.top = lastPageY + "px";
                 control.style.left = lastPageX + "px";
+                options.me.updateBarPosition();
             }
         }
-
-        options.me.updateBarPosition();
     }
 
     var onMouseDown = (e) => {
@@ -147,18 +170,56 @@ register('control-bar', options => {
             var rect = control.getBoundingClientRect();
             mouseDX = e.pageX - rect.left - $(document).scrollLeft();
             mouseDY = e.pageY - rect.top - $(document).scrollTop();
+            document.addEventListener('mousemove', mouseMove);
+            document.addEventListener('mouseup', mouseUp);
         }
-        
-        document.addEventListener('mousemove', mouseMove);
-        document.addEventListener('mouseup', function(){
-            document.removeEventListener('mousemove', mouseMove);
-            BuilderActions.changeItem(model.key, { pinnedPositionX: lastPageX, pinnedPositionY: lastPageY });
-            mouseDX = undefined;
-            mouseDY = undefined;
-        });
-    }    
+    }  
+    
+    var mouseUp = () => {
+        document.removeEventListener('mousemove', mouseMove);
+        document.removeEventListener('mouseup', mouseUp);
+
+        BuilderActions.changeItem(model.key, { pinnedPositionX: lastPageX, pinnedPositionY: lastPageY });
+        mouseDX = undefined;
+        mouseDY = undefined;
+    }
+
+    var startResize = (e) => {
+        e.preventDefault();
+        window.addEventListener('mousemove', onResize);
+        window.addEventListener('mouseup', stopResize);
+    }
+
+    var lastWidth = undefined;
+    var lastHeight = undefined;
+    var onResize = (e) => {
+        if(options.me.controlRef.current){
+            var control = ReactDOM.findDOMNode(options.me.controlRef.current);
+            if(control){
+                var width = e.clientX - control.getBoundingClientRect().left;
+                var height = e.clientY - control.getBoundingClientRect().top;
+
+                control.style.width = width  + 'px';
+                control.style.height = height  + 'px';
+
+                lastWidth = width;
+                lastHeight = height;
+                options.me.updateBarPosition();
+            }
+        }
+    }
+      
+    var stopResize = () => {
+        window.removeEventListener('mousemove', onResize);
+        window.removeEventListener('mouseup', stopResize);
+        BuilderActions.changeItem(model.key, { "style-width": lastWidth + "px", "style-height": lastHeight + "px" });
+        lastWidth = undefined;
+        lastHeight = undefined;
+    }
+
     var className = "formbuilder-item-toolbar-header";
     let controlBarKey = options.props.model["key"] + "_controlbar";
+    let controlResizeKey = options.props.model["key"] + "_controlresize";
     return <DropzoneContext.Consumer>
         {({ visible }) => {
             var bar = (
@@ -182,7 +243,15 @@ register('control-bar', options => {
                     </div>
                 </div>
             );
-            return [React.cloneElement(options.props.control, { ref: options.me.controlRef }), bar];
+
+            var resize = (
+                <div key={controlResizeKey} ref={options.me.resizeRef}
+                    style={getDisplayStyle(visible)}
+                    className="formbuilder-item-toolbar-container">
+                        <div className="formbuilder-toolbar-resize" onMouseDown={startResize}/>
+                </div>
+            ); 
+            return [React.cloneElement(options.props.control, { ref: options.me.controlRef }), resize, bar];
         }}
         </DropzoneContext.Consumer>;
 });
