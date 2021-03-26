@@ -6,7 +6,7 @@ import $ from 'jquery';
 import { Icon } from 'rsuite';
 
 register('control-bar', options => {
-    let pos = {};
+
     options.me.updateBarPosition = function(){
         if(!options.me.controlRef || !options.me.controlRef.current || !options.me.barRef || !options.me.barRef.current)
           return;
@@ -139,26 +139,44 @@ register('control-bar', options => {
 
     var onPinned = () => {
         let pinned = !model.pinned;
-        BuilderActions.changeItem(model.key, { pinned, pinnedPositionX: undefined, pinnedPositionY: undefined });
+        BuilderActions.changeItem(model.key, { pinned, pinnedLeft: undefined, pinnedTop: undefined });
     }
 
-    var lastPageX = undefined;
-    var lastPageY = undefined;
+    var lastPageLeft = undefined;
+    var lastPageTop = undefined;
+
     var mouseDX = undefined;
     var mouseDY = undefined;
     var mouseMove = (e) => {
-        let offset = $('.formbuilder-preview').offset();
-        lastPageX = e.pageX - offset.left - (mouseDX ?? 0);
-        lastPageY = e.pageY - offset.top - (mouseDY ?? 0);
-        var control = undefined;
-        if(options.me.controlRef.current){
-            control = ReactDOM.findDOMNode(options.me.controlRef.current);
-            if(control){
-                control.style.top = lastPageY + "px";
-                control.style.left = lastPageX + "px";
-                options.me.updateBarPosition();
-            }
-        }
+        if(!options.me.controlRef.current)
+            return;
+        
+        var control = ReactDOM.findDOMNode(options.me.controlRef.current);
+        if(!control)
+            return;
+    
+        var style = control.currentStyle || window.getComputedStyle(control);
+        var dx = parseFloat(style.marginLeft);
+        var dy = parseFloat(style.marginTop);    
+
+        var parent = $('.formbuilder-preview');
+        let offset = parent.offset();
+        lastPageLeft = e.pageX - offset.left - (mouseDX ?? 0) - dx;
+        lastPageTop = e.pageY - offset.top - (mouseDY ?? 0) - dy;
+
+        if(lastPageLeft < 0) lastPageLeft = 0;
+        if(lastPageTop < 0) lastPageTop = 0;
+                
+        var rect = control.getBoundingClientRect();
+        let maxX = parent.width() - rect.width;
+        let maxY = parent.height() - rect.height;
+        
+        if(lastPageLeft > maxX) lastPageLeft = maxX;
+        if(lastPageTop > maxY) lastPageTop = maxY;
+
+        control.style.top = lastPageTop + "px";
+        control.style.left = lastPageLeft + "px";
+        options.me.updateBarPosition();
     }
 
     var onMouseDown = (e) => {
@@ -179,7 +197,7 @@ register('control-bar', options => {
         document.removeEventListener('mousemove', mouseMove);
         document.removeEventListener('mouseup', mouseUp);
 
-        BuilderActions.changeItem(model.key, { pinnedPositionX: lastPageX, pinnedPositionY: lastPageY });
+        BuilderActions.changeItem(model.key, { pinnedLeft: lastPageLeft, pinnedTop: lastPageTop });
         mouseDX = undefined;
         mouseDY = undefined;
     }

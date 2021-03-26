@@ -2,12 +2,15 @@ import React from 'react';
 import { Button, IconButton, ButtonToolbar, Icon, Toggle, Input, Nav } from 'rsuite';
 import Window from './components/window'
 import JSON5 from 'json5'
+import drawcontrol from './components/drawcontrol'
 export default class HeaderBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            settingsActiveTab: "defaultvalues"
+            settingsActiveTab: "parameters"
         };
+
+        this.onChange = this.onChange.bind(this);
     }
 
     render() {
@@ -51,26 +54,28 @@ export default class HeaderBar extends React.Component {
 
             <div className="formbuilder-editform-form">
                 <Nav appearance="subtle" activeKey={this.state.settingsActiveTab} onSelect={this.onSettingsSelect.bind(this)} >               
-                    {/*<Nav.Item eventKey="parameters">{local.parameters ? local.parameters : "Parameters"}</Nav.Item>*/}
+                    <Nav.Item eventKey="parameters">{local.settings ? local.parameters : "Parameters"}</Nav.Item>
                     <Nav.Item eventKey="defaultvalues">{local.defaultvalues ? local.defaultvalues : "Default Values"}</Nav.Item> 
-                    <Nav.Item eventKey="testvalues">{local.testvalues ? local.testvalues : "Test Values"}</Nav.Item>
-                    {/* <Nav.Item eventKey="css">{local.css ? local.css : "CSS"}</Nav.Item>
-                    <Nav.Item eventKey="javascript">{local.javascript ? local.javascript : "JavaScript"}</Nav.Item> */}
+                    <Nav.Item eventKey="testvalues">{local.testvalues ? local.testvalues : "Test Values"}</Nav.Item>                    
                 </Nav>
                 {this.state.settingsActiveTab == "parameters" && 
-                    <Input style={fullHeightStyle} name="parameters" value={data.parameters} onChange={this.onChange.bind(this, "parameters")} componentClass="textarea" placeholder={testdata_ps} />
+                    this.renderParameters(data, local)
                 }
                 {this.state.settingsActiveTab == "defaultvalues" && 
-                    <Input style={fullHeightStyle} name="defaultvalues" value={data.defaultvalues} onChange={this.onChange.bind(this, "defaultvalues")} componentClass="textarea" placeholder={testdata_ps} />
+                    drawcontrol('textarea', {
+                        name: "defaultvalues", 
+                        value: data.defaultvalues, 
+                        onChange: this.onChange, 
+                        placeholder: testdata_ps, 
+                        style: fullHeightStyle})
                 }
                 {this.state.settingsActiveTab == "testvalues" && 
-                    <Input style={fullHeightStyle} name="testvalues" value={data.testvalues} onChange={this.onChange.bind(this, "testvalues")} componentClass="textarea" placeholder={testdata_ps} />
-                }
-                {this.state.settingsActiveTab == "css" && 
-                    <Input style={fullHeightStyle} name="css" value={data.css} onChange={this.onChange.bind(this, "css")} componentClass="textarea" placeholder={css_ps} />
-                }
-                {this.state.settingsActiveTab == "javascript" && 
-                    <Input style={fullHeightStyle} name="javascript" value={data.javascript} onChange={this.onChange.bind(this, "javascript")} componentClass="textarea" placeholder={js_ps} />
+                    drawcontrol('textarea', {
+                        name: "testvalues", 
+                        value: data.testvalues, 
+                        onChange: this.onChange, 
+                        placeholder: testdata_ps, 
+                        style: fullHeightStyle})
                 }
             </div>            
             <div className="formbuilder-editform-buttons">
@@ -89,7 +94,7 @@ export default class HeaderBar extends React.Component {
         })
     }
 
-    onChange(name, value){
+    onChange(e, {name, value}){
         this.state.data[name] = value;
         this.forceUpdate();
     }
@@ -143,5 +148,11 @@ export default class HeaderBar extends React.Component {
                 this.getOldDefaultState({model: children, data});
             }
         }
+    }
+
+    renderParameters(data, local){
+        return <div>
+            {drawcontrol('checkbox', {name: "pinned", value: data.pinned, label: local.pinned ? local.pinned : "Pinned", onChange: this.onChange })}
+        </div>
     }
 }

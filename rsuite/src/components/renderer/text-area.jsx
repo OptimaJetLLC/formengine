@@ -5,7 +5,11 @@ import { isNotEmptyString, register } from 'optimajet-builder-shared';
 register('textarea', options => {
     let model = options.model;
 
-    let inputProps = {};
+    let inputProps = {
+        style: {
+            height: options.label ? "calc(100% - 20px)" : "calc(100%)"
+        }
+    };
     if(options.props.error){
         inputProps.className = "formbuilder-input-error";
     }

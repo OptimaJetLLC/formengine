@@ -201,6 +201,11 @@ var FormBuilderStore = Reflux.createStore({
             'data-buildertype': item.builderType !== undefined ? item.builderType : item.key
         }, item.defaultValues);
 
+        let settings = this.getByKey("__settings");
+        if(settings.pinned){
+            res.pinned = true;
+        }
+
         if (el == undefined) {
             if (_data.length > 0 && _data[_data.length - 1]['data-buildertype'] === 'form') {
                 var p = _data[_data.length - 1];
