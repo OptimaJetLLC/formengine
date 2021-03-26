@@ -139,16 +139,14 @@ register('control-bar', options => {
     }
 
     var onMouseDown = (e) => {
-        let offset = $('.formbuilder-preview').offset();
-
         var control = undefined;
         if(options.me.controlRef.current)
             control = ReactDOM.findDOMNode(options.me.controlRef.current);
         
         if(control){
             var rect = control.getBoundingClientRect();
-            mouseDX = e.pageX - rect.left;
-            mouseDY = e.pageY - rect.top;
+            mouseDX = e.pageX - rect.left - $(document).scrollLeft();
+            mouseDY = e.pageY - rect.top - $(document).scrollTop();
         }
         
         document.addEventListener('mousemove', mouseMove);
