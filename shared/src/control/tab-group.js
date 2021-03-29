@@ -82,29 +82,9 @@ export default class TabGroup extends Component {
                 element = this.props.createControls(this, {
                     ...this.props.additionalParams,
                     model: model,
-                    parentPlaceholder: pane.psid
+                    parentPlaceholder: pane.psid,
+                    parentItem: tabModel
                 });
-
-                let dzkey = pane.psid;
-
-                if (this.props.buildermode && this.props.createBuilderDropzone) {
-                    if (element.length > 0 && model.length > 0) {
-                        element.unshift(this.props.createBuilderDropzone(
-                            dzkey + 'tab_dropzone_header',
-                            this.props.name,
-                            undefined,
-                            pane.title,
-                            pane.psid
-                        ));
-                    }
-                    element.push(this.props.createBuilderDropzone(
-                        dzkey + 'tab_dropzone_footer',
-                        this.props.name,
-                        model[model.length - 1].key,
-                        pane.title,
-                        pane.psid
-                    ));
-                }
             }
         }
         else if (this.props.buildermode && this.props.createBuilderDropzone) {

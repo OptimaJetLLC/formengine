@@ -27,7 +27,7 @@ export default class BaseToolbar extends Component {
         }
 
         if (Array.isArray(nextProps.templates) && nextProps.templates.length > 0) {
-            items.push({ key: 'sepTemplates', title: 'Templates', isseparate: true, defaultopen: false });
+            items.push({ key: 'sepTemplates', title: 'Templates', separator: true, defaultopen: false });
 
             nextProps.templates.forEach(function (template) {
                 items.push({

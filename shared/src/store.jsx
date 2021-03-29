@@ -74,13 +74,15 @@ var FormBuilderStore = Reflux.createStore({
                 else if (el.attributes['name'] != undefined && el.attributes['name'].value.includes('dropzone_header')) {
                     container.unshift(item);
                 }
-                else {
-                    var afterKey = el.attributes['elementafter'];
-                    var afterControl;
-                    if (afterKey != undefined) {
-                        afterControl = this.findItemByKey(afterKey.value, container);
-                        container.splice(container.indexOf(afterControl), 0, item);
-                    }
+                else if(el.attributes['elementafter'] != undefined) {
+                    let afterKey = el.attributes['elementafter'];
+                    let afterControl = this.findItemByKey(afterKey.value, container);
+                    container.splice(container.indexOf(afterControl), 0, item);                    
+                }
+                else if(el.attributes['elementbefore'] != undefined) {
+                    let beforeKey = el.attributes['elementbefore'];
+                    let beforeControl = this.findItemByKey(beforeKey.value, container);
+                    container.splice(container.indexOf(beforeControl) + 1, 0, item);                    
                 }
             }
             else {
@@ -99,6 +101,20 @@ var FormBuilderStore = Reflux.createStore({
             }
             else {
                 console.error('ERROR: element is not found', afterKey, item, el);
+            }
+        }
+        else if (el.attributes['elementbefore'] != undefined) {
+            var control;
+            var beforeKey = el.attributes['elementbefore'];
+            if (beforeKey != undefined) {
+                control = this.findItemByKey(beforeKey.value, sortedArray);
+            }
+
+            if (control != undefined) {
+                sortedArray.splice(sortedArray.indexOf(control) + 1, 0, item);
+            }
+            else {
+                console.error('ERROR: element is not found', beforeKey, item, el);
             }
         }
 
@@ -258,13 +274,15 @@ var FormBuilderStore = Reflux.createStore({
                 else if (el.attributes['name'] != undefined && el.attributes['name'].value.includes('dropzone_header')) {
                     container.unshift(res);
                 }
-                else {
+                else if(el.attributes['elementafter'] != undefined) {
                     var afterKey = el.attributes['elementafter'];
-                    var afterControl;
-                    if (afterKey != undefined) {
-                        afterControl = this.findItemByKey(afterKey.value, container);
-                    }
+                    var afterControl = this.findItemByKey(afterKey.value, container);
                     container.splice(container.indexOf(afterControl), 0, res);
+                }
+                else if(el.attributes['elementbefore'] != undefined) {
+                    var beforeKey = el.attributes['elementbefore'];
+                    var beforeControl = this.findItemByKey(beforeKey.value, container);
+                    container.splice(container.indexOf(beforeControl) + 1, 0, res);
                 }
             }
             else {
@@ -283,6 +301,20 @@ var FormBuilderStore = Reflux.createStore({
             }
             else {
                 console.error('ERROR: element is not found', afterKey, el);
+            }
+        }
+        else if (el.attributes['elementbefore'] != undefined) {
+            var control;
+            var beforeKey = el.attributes['elementbefore'];
+            if (beforeKey != undefined) {
+                control = this.findItemByKey(beforeKey.value, _data);
+            }
+
+            if (control != undefined) {
+                _data.splice(_data.indexOf(control) + 1, 0, res);
+            }
+            else {
+                console.error('ERROR: element is not found', beforeKey, el);
             }
         }
 

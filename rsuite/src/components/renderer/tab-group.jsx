@@ -25,7 +25,8 @@ class TabGrouo extends React.Component {
             className += " " + options.controlProps.className;
         }
     
-        const activePane = options.panes[this.state.activeIndex].pane;
+        let obj = options.panes ? options.panes[this.state.activeIndex] : undefined;
+        const activePane = obj ? obj.pane : undefined;
         let i = -1;
         return  <div {...options.controlProps} className={className}> 
             <Nav appearance="subtle" 
@@ -39,7 +40,7 @@ class TabGrouo extends React.Component {
                 })}
             </Nav>   
             <div key={this.state.activeIndex} className="formbuilder-tabgroup-panel">
-                {activePane.content}
+                {activePane && activePane.content}
             </div>
         </div>;
 

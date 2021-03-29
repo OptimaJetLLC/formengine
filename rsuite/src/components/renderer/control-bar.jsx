@@ -35,6 +35,17 @@ register('control-bar', options => {
         x += dx;
         y += dy;
 
+        let type = model['data-buildertype'];
+        let isContainer = type == "container" || type == "form" || type == "repeater" || type == "formgroup";
+        if(isContainer){
+            dx -= 5;
+            y -= 15;
+        }
+
+        if(type == "label"){
+            y -= 15;
+        }
+
         if (x < 15) x = 15;        
         bar.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
 
@@ -260,7 +271,12 @@ register('control-bar', options => {
         document.removeEventListener('mousemove', mouseMove);
         document.removeEventListener('mouseup', mouseUp);
 
-        BuilderActions.changeItem(model.key, { pinnedLeft: moveState.left + "px", pinnedTop: moveState.top + "px" });
+        let fields = {            
+            pinnedLeft: moveState.left != undefined ? moveState.left + "px" : undefined, 
+            pinnedTop: moveState.top != undefined ? moveState.top + "px" : undefined
+        };
+
+        BuilderActions.changeItem(model.key, fields);
         mouseDX = undefined;
         mouseDY = undefined;
     }
@@ -351,15 +367,15 @@ register('control-bar', options => {
                         if(!moveState.originalBottom)
                             moveState.originalBottom = moveState.marginTop + rect.height;
 
-                        if(moveState.originalBottom - moveState.marginTop < 0){
-                            moveState.marginTop = moveState.originalBottom;
-                        }
+                        // if(moveState.originalBottom - moveState.marginTop < 0){
+                        //     moveState.marginTop = moveState.originalBottom;
+                        // }
                                 
                         control.style.marginTop = moveState.marginTop + "px";
 
-                        let height = moveState.originalBottom - moveState.marginTop;
-                        control.style.height = height  + 'px';
-                        moveState.height = height;
+                        // let height = moveState.originalBottom - moveState.marginTop;
+                        // control.style.height = height  + 'px';
+                        // moveState.height = height;
                     }
                 }
 
@@ -392,16 +408,16 @@ register('control-bar', options => {
                         if(!moveState.originalRight)
                             moveState.originalRight = moveState.marginLeft + rect.width;
 
-                        if(moveState.originalRight - moveState.marginLeft < 0){
-                            moveState.marginLeft = moveState.originalRight;
-                        }
+                        // if(moveState.originalRight - moveState.marginLeft < 0){
+                        //     moveState.marginLeft = moveState.originalRight;
+                        // }
                                 
                         control.style.marginLeft = moveState.marginLeft + "px";
-                        if(control.style.width != ""){
-                            let width = moveState.originalRight - moveState.marginLeft;
-                            control.style.width = width  + 'px';
-                            moveState.width = width;
-                        }
+                        // if(control.style.width != ""){
+                        //     let width = moveState.originalRight - moveState.marginLeft;
+                        //     control.style.width = width  + 'px';
+                        //     moveState.width = width;
+                        // }
                     }
                 }
                 
@@ -428,12 +444,19 @@ register('control-bar', options => {
                         onMouseOver={onDragOver}
                         onMouseLeave={onDragLeave}>
                         <div className="formbuilder-item-toolbar-header-buttons" >
-                            <div className="formbuilder-item-toolbar-header-title" title={options.props.text} onDoubleClick={options.onCopyControl}>
+                            <div className="formbuilder-item-toolbar-header-title" 
+                                title={options.props.text} 
+                                onDoubleClick={options.onCopyControl}                                
+                                onMouseDown={model.pinned ? onMouseDown : undefined}
+                                draggable={!model.pinned}
+                                onDragStart={model.pinned ? undefined : onDragStart} 
+                                onDragEnd={model.pinned ? undefined : onDragEnd}
+                                >
                                 {options.props.model["key"]}                
                             </div>
                             <Icon onClick={onPinned} icon={model.pinned ? 'star' : 'star-o'} />
-                            {!model.pinned && <Icon draggable={true} onDragStart={onDragStart} onDragEnd={onDragEnd} icon='arrows' />}
-                            {model.pinned && <Icon onMouseDown={onMouseDown} icon='arrows' />}
+                            {/* {!model.pinned && <Icon draggable={true} onDragStart={onDragStart} onDragEnd={onDragEnd} icon='arrows' />}
+                            {model.pinned && <Icon onMouseDown={onMouseDown} icon='arrows' />} */}
                             <Icon onClick={options.me.props.onEdit.bind(options.props.parent, options.props.model)} icon='edit2' />
                             <Icon onClick={options.me.props.onCopy.bind(options.props.parent, options.props.model)} icon='copy-o' />
                             <Icon onClick={options.me.props.onDelete.bind(options.props.parent, options.props.model)} icon='trash' />
@@ -444,31 +467,56 @@ register('control-bar', options => {
 
             let resize = (
                 <div key={controlResizeKey} ref={options.me.resizeRef} style={getDisplayStyle(visible)} className="formbuilder-item-toolbar-container">
-                    <div className="formbuilder-toolbar-resize" onMouseDown={(e) => { startResize(e) }}/>
+                    <div className="formbuilder-toolbar-resize" onMouseDown={(e) => { startResize(e) }} />
                 </div>
             );
 
+            let baseClassName = "formbuilder-toolbar-point";
+            if(!model.pinned){
+                baseClassName += " formbuilder-zone";
+            }
+
             let pointTop = (
                 <div key={pointTopKey} ref={options.me.pointTopRef} style={getDisplayStyle(visible)} className="formbuilder-item-toolbar-container">
-                    <div className="formbuilder-toolbar-point-top" onMouseDown={(e) => { startResize(e, "top") }}/>
+                    <div className={baseClassName + " formbuilder-toolbar-point-top"} 
+                        onMouseDown={(e) => { startResize(e, "top") }}
+                        elementafter={model.key}
+                        elementtoinsert={options.props.elementtoinsert}
+                        placeholderkey={options.props.placeholderKey}
+                    />
                 </div>
             );
 
             let pointLeft = (
                 <div key={pointLeftKey} ref={options.me.pointLeftRef} style={getDisplayStyle(visible)} className="formbuilder-item-toolbar-container">
-                    <div className="formbuilder-toolbar-point-left" onMouseDown={(e) => { startResize(e, "left") }}/>
+                    <div className={baseClassName + " formbuilder-toolbar-point-left"}
+                        onMouseDown={(e) => { startResize(e, "left") }}
+                        elementafter={model.key}
+                        elementtoinsert={options.props.elementtoinsert}
+                        placeholderkey={options.props.placeholderKey}
+                    />
                 </div>
             );
 
             let pointBottom = (
                 <div key={pointBottomKey} ref={options.me.pointBottomRef} style={getDisplayStyle(visible)} className="formbuilder-item-toolbar-container">
-                    <div className="formbuilder-toolbar-point-bottom" onMouseDown={(e) => { startResize(e, "bottom") }}/>
+                    <div className={baseClassName + " formbuilder-toolbar-point-bottom"}
+                        onMouseDown={(e) => { startResize(e, "bottom") }}
+                        elementbefore={model.key}
+                        elementtoinsert={options.props.elementtoinsert}
+                        placeholderkey={options.props.placeholderKey}
+                    />
                 </div>
             );
 
             let pointRight = (
                 <div key={pointRightKey} ref={options.me.pointRightRef} style={getDisplayStyle(visible)} className="formbuilder-item-toolbar-container">
-                    <div className="formbuilder-toolbar-point-right" onMouseDown={(e) => { startResize(e, "right") }}/>
+                    <div className={baseClassName + " formbuilder-toolbar-point-right"}
+                        onMouseDown={(e) => { startResize(e, "right") }}                        
+                        elementbefore={model.key}
+                        elementtoinsert={options.props.elementtoinsert}
+                        placeholderkey={options.props.placeholderKey}
+                    />
                 </div>
             );
             

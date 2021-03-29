@@ -7,7 +7,7 @@ export default class Preview extends BasePreview {
         const preview = this.getPreview();
         return (
             <div className="formbuilder-preview">
-                {preview.dropzoneHeader}
+                {/* {preview.dropzoneHeader} */}
                 {preview.items}
                 {preview.dropzoneFooter}
             </div>

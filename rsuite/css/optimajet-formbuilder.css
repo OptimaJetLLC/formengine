@@ -47,11 +47,11 @@
     border: 1px dashed #E1E9F6;
 }
 
-.formbuilder-zone{
+.formbuilder-zone:not(.formbuilder-toolbar-point){
     min-height: 5px;
-    padding: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     font-style: bold;
     font-size: 8px;
     line-height: 10px;
@@ -63,16 +63,44 @@
     clear: both;
 }
 
-.formbuilder-zone-active{
+.formbuilder-zone-active.formbuilder-toolbar-point-top,
+.formbuilder-zone-active.formbuilder-toolbar-point-bottom{
+  height: 10px;
+}
+
+.formbuilder-zone-active.formbuilder-toolbar-point-top{
+  margin-left: 10px;
+}
+
+.formbuilder-zone-active.formbuilder-toolbar-point-left,
+.formbuilder-zone-active.formbuilder-toolbar-point-right{
+  width: 10px;
+}
+
+.formbuilder-zone-active:not(.formbuilder-toolbar-point),
+.formbuilder-zone-active.formbuilder-toolbar-point{
     opacity: 0.5;
     background: #E1E9F6;
     border: 1px dashed #1262E2;
 }
 
-.formbuilder-zone-select{
+.formbuilder-zone-active.formbuilder-toolbar-point{
+  background:rgba(0, 0, 0, 0.1);
+}
+
+.formbuilder-zone-active.formbuilder-toolbar-point{
+  border: none;
+}
+
+.formbuilder-zone-select:not(.formbuilder-toolbar-point){
     opacity: 1;
     background: #E1E9F6;
     border: 1px solid #1262E2;
+}
+
+.formbuilder-zone-select.formbuilder-toolbar-point{
+    opacity: 1;
+    background: #E1E9F6;
 }
 
 .formbuilder-toolbox{
@@ -183,17 +211,17 @@
     opacity: 1;
 }
 
-.formbuilder-dropzoneactive .formbuilder-item-container{
+/* .formbuilder-dropzoneactive .formbuilder-item-container{
     border-style: ridge;
     border-width: 2px;
     border-color: rgba(249, 204, 157, 0.5);
     padding: 5px;
-}
+} */
 
-.formbuilder-dropzoneactive .ui.form .fields.formbuilder-item-container[data-buildertype='formgroup']{
+/* .formbuilder-dropzoneactive .ui.form .fields.formbuilder-item-container[data-buildertype='formgroup']{
     margin-left: 5px;
     margin-right: 5px;
-}
+} */
 
 .formbuilder-card{
   width: 290px;
@@ -264,6 +292,7 @@
 .formbuilder-item-toolbar-header-title{
     display: inline;
     margin-right: 5px;
+    cursor: move;
 }
 
 .formbuilder-item-toolbar-header:hover {
@@ -606,7 +635,7 @@ input .formbuilder-item-toolbar-header:hover {
     margin: 0;
 }
 
-.formbuilder-dropzoneactive .formbuilder-item-container {
+/* .formbuilder-dropzoneactive .formbuilder-item-container {
     background-color: rgba(0,0,0,0.02);
     border-style: solid;
     border-width: 1px;
@@ -646,7 +675,7 @@ input .formbuilder-item-toolbar-header:hover {
   .formbuilder-dropzoneactive:not(.grouped) .header {
     margin-top: 16px;
     margin-bottom: 0;
-  }
+  } */
 
 .formviewer-form{
     border-width: 1px;

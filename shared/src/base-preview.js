@@ -105,7 +105,7 @@ export default class BasePreview extends Component {
             dropzoneText = this.props.localization.preview.dropzonetext;
         }
         const dropzoneHeader = getDropzone('dropzone_header', dropzoneText);
-        const dropzoneFooter = items.length > 0 ? getDropzone('dropzone_footer', dropzoneText) : null;
+        const dropzoneFooter = getDropzone('dropzone_footer', dropzoneText);
         return {
             dropzoneHeader: dropzoneHeader,
             dropzoneFooter: dropzoneFooter,

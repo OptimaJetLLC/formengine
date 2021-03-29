@@ -52,8 +52,8 @@ export default class Card extends Component {
     }
 
     renderPanel(id){
-        let model = this.props.additionalParams.model;
-        let placeholders = model.placeholders;
+        let parentItem = this.props.additionalParams.model;
+        let placeholders = parentItem.placeholders;
         let element = undefined;
         if(placeholders != undefined && 
             Array.isArray(placeholders[id]) &&
@@ -63,17 +63,9 @@ export default class Card extends Component {
                 element = this.props.createControls(this, {
                     ...this.props.additionalParams,
                     model: model,
-                    parentPlaceholder: id                    
+                    parentPlaceholder: id,
+                    parentItem: parentItem
                 });
-
-                let dzkey = id;
-                
-                if(this.props.buildermode && this.props.createBuilderDropzone){
-                    if (element.length > 0 && model.length > 0) {
-                        element.unshift(this.props.createBuilderDropzone(dzkey + "tab_dropzone_header", this.props.name, undefined, id, id));
-                    }
-                    element.push(this.props.createBuilderDropzone(dzkey + "tab_dropzone_footer", this.props.name, model[model.length - 1].key, id, id));
-                } 
             }
         }
         else if(this.props.buildermode && this.props.createBuilderDropzone){

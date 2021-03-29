@@ -480,8 +480,8 @@ export default class BaseControls {
                         if (children === undefined) {
                             children = [];
                         }
-
-                        if (children.length > 0) {
+                        
+                        if (children.length == 0) {
                             let dz_footer = BaseControls.createBuilderDropzone(
                                 model[i].key + '_dropzone_footer',
                                 newFormItem === undefined ? undefined : newFormItem.key,//parentItem === undefined ? undefined : parentItem.key,
@@ -491,15 +491,6 @@ export default class BaseControls {
                             );
                             children.push(dz_footer);
                         }
-
-                        let dz = BaseControls.createBuilderDropzone(
-                            model[i].key + '_dropzone_header',
-                            newFormItem === undefined ? undefined : newFormItem.key,//parentItem === undefined ? undefined : parentItem.key,
-                            undefined,
-                            model[i].key,
-                            model[i].key
-                        );
-                        children.unshift(dz);
                     }
 
                     item = React.createElement(
@@ -564,7 +555,7 @@ export default class BaseControls {
                             }
                         );
                         if (buildermode) {
-                            if (children.length > 0) {
+                            if (children.length == 0) {
                                 let textDZ = isHorizontalGroup ? '...' : '... ' + model[i].key + ' down ...';
                                 const dropzone_footer = BaseControls.createBuilderDropzone(
                                     model[i].key + '-dropzone_footer',
@@ -575,14 +566,14 @@ export default class BaseControls {
                                 children.push(dropzone_footer);
                             }
 
-                            let textDZ = isHorizontalGroup ? '...' : '... ' + model[i].key + ' up ...';
-                            const dropzone_header = BaseControls.createBuilderDropzone(
-                                model[i].key + '-dropzone_header',
-                                model[i].key,
-                                undefined,
-                                textDZ
-                            );
-                            children.unshift(dropzone_header);
+                            // let textDZ = isHorizontalGroup ? '...' : '... ' + model[i].key + ' up ...';
+                            // const dropzone_header = BaseControls.createBuilderDropzone(
+                            //     model[i].key + '-dropzone_header',
+                            //     model[i].key,
+                            //     undefined,
+                            //     textDZ
+                            // );
+                            // children.unshift(dropzone_header);
                         }
                         item = this.createControl(parentComponent, control,
                             {
@@ -648,23 +639,13 @@ export default class BaseControls {
             }
 
             if (buildermode) {
-                if (i > 0 && res.length > 0 && i < model.length) {
-                    const dropzone_bw = BaseControls.createBuilderDropzone(
-                        model[i].key + '-dropzone_bw',
-                        parentItem === undefined ? undefined : parentItem.key,
-                        model[i].key,
-                        '...',
-                        parentPlaceholder
-                    );
-                    res.push(dropzone_bw);
-                }
-
                 res.push(<ControlBar key={item.key + "_controlbar"}
                     control={item}
                     text={model[i]["data-buildertype"]}
                     model={model[i]} parent={parentComponent}
                     onDelete={eventOnDelete} onEdit={eventOnEdit} onCopy={eventOnCopy}
-                    isGroup={model[i]["data-buildertype"] === "formgroup"}
+                    elementtoinsert={parentItem === undefined ? undefined : parentItem.key}
+                    placeholderKey={parentPlaceholder}
                 />);
             }
             else {
