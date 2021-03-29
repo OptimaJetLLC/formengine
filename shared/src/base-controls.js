@@ -142,11 +142,11 @@ export default class BaseControls {
             style.position = "absolute";
 
             if(model.pinnedLeft){
-                style.left = model.pinnedLeft + "px"
+                style.left = model.pinnedLeft;
             }
 
             if(model.pinnedTop){
-                style.top = model.pinnedTop + "px"
+                style.top = model.pinnedTop;
             }
         }
 

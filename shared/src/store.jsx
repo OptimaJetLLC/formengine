@@ -202,7 +202,7 @@ var FormBuilderStore = Reflux.createStore({
         }, item.defaultValues);
 
         let settings = this.getByKey("__settings");
-        if(settings.pinned){
+        if(settings && settings.pinned){
             res.pinned = true;
         }
 

@@ -499,6 +499,29 @@ input .formbuilder-item-toolbar-header:hover {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMCAxMCIgZmlsbD0iI0JCQkJCQiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iOC40Nzk1NCIgY3k9IjguNDc5MyIgcj0iMS4yMjA3NSIgZmlsbD0iaW5oZXJpdCIvPgo8Y2lyY2xlIGN4PSI0Ljg1MDE1IiBjeT0iOC40NzkzIiByPSIxLjIyMDc1IiBmaWxsPSJpbmhlcml0Ii8+CjxjaXJjbGUgY3g9IjEuMjIwNzUiIGN5PSI4LjQ3OTMiIHI9IjEuMjIwNzUiIGZpbGw9ImluaGVyaXQiLz4KPGNpcmNsZSBjeD0iOC40Nzk1NCIgY3k9IjQuODUwMDMiIHI9IjEuMjIwNzUiIGZpbGw9ImluaGVyaXQiLz4KPGNpcmNsZSBjeD0iNC44NTAxNSIgY3k9IjQuODUwMDMiIHI9IjEuMjIwNzUiIGZpbGw9ImluaGVyaXQiLz4KPGNpcmNsZSBjeD0iOC40Nzk1NCIgY3k9IjEuMjIwNzUiIHI9IjEuMjIwNzUiIGZpbGw9ImluaGVyaXQiLz4KPC9zdmc+Cg==");
 }
 
+.formbuilder-toolbar-point-left,
+.formbuilder-toolbar-point-right{
+  width: 5px;
+  height: 100%;
+  cursor: ew-resize;
+}
+
+.formbuilder-toolbar-point-top,
+.formbuilder-toolbar-point-bottom{
+  width: 100%;
+  height: 5px;
+  cursor: ns-resize;
+}
+
+.formbuilder-toolbar-point-left:hover,
+.formbuilder-toolbar-point-right:hover,
+.formbuilder-toolbar-point-top:hover,
+.formbuilder-toolbar-point-bottom:hover{
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+
 .formbuilder-editform-close {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHrSURBVHgB7Zg9bsJAEEbHNkgp0/Jzh1ggenOCkI4uuUnIDXKDcATaVNCDkOlIlzSQkguAMyMBcqy18ezOdvMkBF4b7/e89u7IAIqiKIqiKNYEwCSO46TRaDyeTqfNer2eggAu52QJUEdRFM0v21mWTbDDN3Cg1+u9BkEwuQYKguFqtVrU/X8IDMIwTPLb1DEFAEuK4QkchQQYsATw6s/w65BvowD9fv8ZmJjC44geUGAKDCLOwbvd7rfdbn/hz3Fh1wjbv/f7/abOeSrCD9M03QIDlgCBIbetVusHA4wKu2pJ3AifAhO2AIEhUxsJ6fCElQDBlfARnrAWIOpK+ApPsBcyExjwBQN+GHY9YdAHX+EJEQGiQuIfkuEJp1soD91OnU6HLkhSdox0eEJMgMB1YlEm4SM8wVqJ64AhM1M73l7QbDZBGrFngDDNNgUOWE8Nl8ul2CiIjUDZVFk47B5HaD4YDGIQQkSgap7H9mK5LSrh/BDfWqRKHuw7PGbc7XY/qUAEB5wE6q6wPiWsBbjlgS8JKwHb2saHBFvAtTCTlmAJnOud93ybzQorKcGaRrGDpLBtXR7gm4eJaYo9Ho8jYMASwA6vQSVqG5MErtQLYMAuJc63UYxXaipVmF3OiZ8Z552QoiiKoiiKI39iMbpo8KMOEwAAAABJRU5ErkJggg==")
     round;
