@@ -13,8 +13,15 @@ register('card', options => {
     let showDescriptionPanel = options.me.existPanel("description");
     let showExtraPanel = options.me.existPanel("extra");
     
+    let panelProps = {};
+    if(options.controlProps.style.width){
+        panelProps.style = {
+            width: "100%"
+        }
+    }
+
     return <div {...options.controlProps} className={className} onClick={options.onClick}>
-        <Panel shaded bordered bodyFill >
+        <Panel {...panelProps} shaded bordered bodyFill >
             {options.imgurl && <img className="formbuilder-card-image" src={options.imgurl} height="240" />}
             <Panel header={header}>
                 {showDescriptionPanel && options.me.renderPanel("description")}

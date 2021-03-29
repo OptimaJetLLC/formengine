@@ -227,6 +227,10 @@
   width: 290px;
 }
 
+.formbuilder-card > .rs-panel{
+  height: 100%;
+}
+
 .formbuilder-card-eventable:hover {
   cursor: pointer;
   -webkit-transform: translateY(-3px);
