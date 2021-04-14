@@ -24,6 +24,7 @@ register('grid-layout', options => {
     //                 handleEvent: options.props.handleEvent,
     //                 getFormFunc: options.props.getFormFunc,
     //                 getAdditionalDataForControl: options.props.getAdditionalDataForControl,
+    //                  hideControls: options.props.hideControls,
     //                 readOnlyControls: options.props.readOnlyControls,
     //                 readOnly: options.props.readOnly,
     //                 disableRefs: options.props.disableRefs,

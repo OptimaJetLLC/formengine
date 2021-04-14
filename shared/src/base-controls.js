@@ -586,6 +586,7 @@ export default class BaseControls {
                                 handleEvent,
                                 getFormFunc,
                                 getAdditionalDataForControl,
+                                hideControls,
                                 readOnlyControls,
                                 readOnly,
                                 disableRefs,
@@ -616,6 +617,7 @@ export default class BaseControls {
                                 handleEvent,
                                 getFormFunc,
                                 getAdditionalDataForControl,
+                                hideControls,
                                 readOnlyControls,
                                 readOnly,
                                 disableRefs,
@@ -703,6 +705,7 @@ export default class BaseControls {
         const needCheckReplace = params.needCheckReplace;
         const controlsToReplace = params.controlsToReplace;
         const readOnly = params.readOnly;
+        const hideControls = params.hideControls;
         const readOnlyControls = params.readOnlyControls;
         const data = params.data;
         const errors = params.errors;

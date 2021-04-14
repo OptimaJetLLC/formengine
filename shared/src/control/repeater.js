@@ -178,7 +178,7 @@ export default class Repeater extends Component {
         //         children, getAdditionalDataForControl, disableRefs, uploadUrl,
         //         downloadUrl, extendedData, controlsToReplace, eventOnEdit, eventOnDelete, eventOnCopy,
         //         adaptiveViewType, handleEvent, externalControlList, externalControlRender,
-        //         readOnlyControls, buildermode
+        //         hideControls, readOnlyControls, buildermode
         //     });
     
         //     if(model["childrenView"]){

@@ -332,6 +332,11 @@ export default class BaseForm extends Component {
                 else if (Array.isArray(model[i].children)) {
                     enableCheckConditions = this.checkConditions(model[i].children, true);
                 }
+                else if (Array.isArray(model[i].placeholders)) {
+                    for (let ph in model[i].placeholders) {
+                        enableCheckConditions = this.checkConditions(model[i].placeholders[ph], true);
+                    }
+                }
 
                 if (enableCheckConditions) {
                     break;

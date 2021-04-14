@@ -23,7 +23,7 @@ export default class GridLayout extends Component {
         //     this.setCreateControlsProps(props, {
         //         data, buildermode, model, children, getFormFunc, getAdditionalDataForControl, disableRefs, uploadUrl,
         //         downloadUrl, extendedData, controlsToReplace, eventOnEdit, eventOnDelete, eventOnCopy,
-        //         adaptiveViewType, handleEvent, errors, readOnlyControls, readOnly, needCheckReplace
+        //         adaptiveViewType, handleEvent, errors, hideControls, readOnlyControls, readOnly, needCheckReplace
         //     });
     
         //     res = (<GridLayout {...props} />);
