@@ -268,7 +268,7 @@ export default class CollectionEditor extends Component {
         return false;
     }
 
-    handleChange = (item, e, { name, propertyName, value, checked }) => {
+    handleChange = (item, e, { name, propertyName, value, checked, additionalValues }) => {
         if (!this.props.handleEvent && !this.props.onChange) {
             return;
         }
@@ -279,6 +279,13 @@ export default class CollectionEditor extends Component {
         }
         else {
             item[pn] = value;
+        }
+
+        if(typeof(additionalValues) == "object"){
+            for(let p in additionalValues){
+                let field = pn + "_" + p;
+                item[field] = additionalValues[p];
+            }
         }
 
         this.sendChangesToParent();
