@@ -407,6 +407,20 @@ export default class Dictionary extends Component {
             isFetching: false,
             lastLoadPage: page
         });
+
+        if (this.props.handleEvent) {
+            this.props.handleEvent({
+                syntheticEvent: undefined,
+                key: this.props.name,
+                eventName: 'onDataReceived',
+                name: this.props.name,
+                propertyName: this.props.propertyName,
+                value: this.props.value,
+                parameters: {
+                    options: options
+                }
+            });
+        }
     }
 
     getArrayValues(value) {

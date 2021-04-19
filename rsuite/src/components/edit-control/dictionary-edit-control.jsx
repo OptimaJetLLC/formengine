@@ -94,6 +94,6 @@ export default class DictionaryEditControl extends BaseEditControl {
     }
 
     getEventsList() {
-        return ['onChange'];
+        return ['onChange', 'onDataReceived'];
     }
 }
