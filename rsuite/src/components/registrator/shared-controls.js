@@ -54,3 +54,4 @@ import '../renderer/tree-picker-trigger';
 import '../renderer/unknown';
 import '../renderer/upload';
 import '../renderer/card';
+import '../renderer/accordion';

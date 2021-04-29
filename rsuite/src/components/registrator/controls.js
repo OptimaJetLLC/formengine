@@ -29,7 +29,8 @@ import {
     Message,
     Image,
     Form,
-    FormGroup
+    FormGroup,
+    Accordion
 } from 'optimajet-builder-shared';
 import TreePicker from '../renderer/tree-picker';
 import RichTextEditorControl from '../renderer/rich-text-editor';
@@ -62,6 +63,16 @@ const controls = [
             ]
         }
     },
+    {
+        key: 'accordion', title: 'Accordion', control: Accordion,
+        defaultValues: {
+            panels: [
+                { title: 'Panel 1', psid: 'p1' },
+                { title: 'Panel 2', psid: 'p2' },
+                { title: 'Panel 3', psid: 'p3' }
+            ]
+        }
+    },    
     {
         key: 'customblock',
         title: 'Custom block',

@@ -29,6 +29,7 @@ import SearchControl from './src/control/search';
 import SignatureCanvas from './src/control/signature-canvas';
 import StaticContent from './src/control/static-content';
 import TabGroup from './src/control/tab-group';
+import Accordion from './src/control/accordion';
 import Card from './src/control/card';
 import TreePickerHeader from './src/control/tree-picker-header';
 import Upload from './src/control/upload';
@@ -99,6 +100,7 @@ export {
     SignatureCanvas,
     StaticContent,
     TabGroup,
+    Accordion,
     Card,
     TreePickerHeader,
     Upload,

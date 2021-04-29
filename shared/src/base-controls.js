@@ -710,6 +710,7 @@ export default class BaseControls {
         const data = params.data;
         const errors = params.errors;
         const parentItem = params.parentItem;
+        const externalControlRender = params.externalControlRender;
 
         let res = undefined;
 
@@ -806,7 +807,7 @@ export default class BaseControls {
         }
 
         if(params.children){
-                props.children = params.children;
+            props.children = params.children;
         }
 
         if(control){
@@ -820,7 +821,7 @@ export default class BaseControls {
             res = React.createElement(control, props);
         }
         else{
-            let customRenderer = externalControlRender || dwKitExternalControlRender();
+            let customRenderer = externalControlRender || (window.dwKitExternalControlRender && window.dwKitExternalControlRender());
             if (customRenderer) {
                 props.parentIsForm = BaseControls.isForm(parentItem);
                 res = customRenderer(parentComponent, control,
@@ -833,7 +834,7 @@ export default class BaseControls {
             }
 
             if (!res) {
-                console.error('Control is unsupported!', control, model);
+                res = <div>Control is unsupported!</div>;                
             }
         }
 

@@ -35,6 +35,8 @@ import TextAreaEditControl from '../edit-control/text-area-edit-control';
 import TreePickerEditControl from '../edit-control/tree-picker-edit-control';
 import { getItems, registerItems } from 'optimajet-builder-shared';
 import CardEditControl from '../edit-control/card-edit-control';
+import AccordionEditControl from '../edit-control/accordion-edit-control';
+
 
 const items = {
     'container': ContainerEditControl,
@@ -76,6 +78,7 @@ const items = {
     'radarchart': ChartEditControl,
     'card': CardEditControl,
     'signaturecanvas': SignatureCanvasEditControl,
+    'accordion': AccordionEditControl
 };
 
 function registerEditControls() {
