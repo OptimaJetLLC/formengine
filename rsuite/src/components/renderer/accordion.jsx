@@ -4,8 +4,10 @@ import { register } from 'optimajet-builder-shared';
 
 register('accordion', options => {
     let props = {};
-    props.fluid = options.props.fluid;
-    props.styled = options.props.styled;
+
+    let model = options.model;
+    props.fluid = model.fluid;
+    props.styled = model.styled;
     let className = options.props.className;
     return (<div className={className} style={options.props.style}>
         <Accordion {...props} panels={options.panels}/>
