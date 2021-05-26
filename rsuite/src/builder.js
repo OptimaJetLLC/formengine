@@ -1,7 +1,11 @@
 import React from 'react';
+import { Button, Icon, IconButton } from 'rsuite';
 import { BaseFormBuilder, DropzoneContext, EditForm } from 'optimajet-builder-shared';
+import Split from 'react-split'
 import Preview from './preview';
 import ToolBar from './toolbar';
+import ControlTree from './control-tree';
+import {dispatchWindowResize} from './utils';
 import HeaderBar from './headerbar';
 import controls from './builder/controls-for-builder';
 import CustomBlockEditControl from './components/edit-control/custom-block-edit-control';
@@ -42,35 +46,55 @@ export default class FormBuilder extends BaseFormBuilder {
         return {};
     }
 
+    changeShowControlTree = () => {
+        const {showControlTree} = this.state;
+        this.setState({showControlTree: !showControlTree}, () => dispatchWindowResize());
+    }
+
     renderBuilder(){
+        const {showControlTree} = this.state;
         const localization = this.getCurrentLocalization();
         const style = this.state.viewerMode ? {display:"none"} : {};
+        const editForm = <EditForm actions={this.props.actions} localization={localization.editforms}
+                externalControlList={this.props.externalControlList}
+                controls={this.controls}
+        />
 
-        return <div style={style} className="formbuilder formbuilder-dropzoneactive" onDragOver={this.onDragOver}>
-            <div className="formbuilder-content">
-                {this.renderHeaderBar()}
-                <Preview
-                    buildermode={true}
-                    getFormFunc={this.props.getFormFunc}
-                    getFormFist={this.props.getFormFist}
-                    getAdditionalDataForControl={this.props.getAdditionalDataForControl}
-                    localization={localization.preview}
-                    downloadUrl={this.props.downloadUrl}
-                    uploadUrl={this.props.uploadUrl}
-                    externalControlRender={this.props.externalControlRender}
-                    externalControlList={this.props.externalControlList}
-                    controls={this.controls}
-                />
-                <EditForm actions={this.props.actions} localization={localization.editforms}
-                        externalControlList={this.props.externalControlList}
-                        controls={this.controls}
-                />
+        const sizes = showControlTree ? [72.2, 27.8] : [80, 20];
+
+        return <div>
+            {this.renderHeaderBar()}     
+            <div style={style} className="formbuilder formbuilder-dropzoneactive" onDragOver={this.onDragOver}>                
+                <Split style={{ display: 'flex', flex: 1 }}  sizes={sizes}  onDrag={() => this.forceUpdate()}>
+                    <div className="formbuilder-content" style={{ marginRight: 20 }}>
+                        <Preview
+                            buildermode={true}
+                            getFormFunc={this.props.getFormFunc}
+                            getFormFist={this.props.getFormFist}
+                            getAdditionalDataForControl={this.props.getAdditionalDataForControl}
+                            localization={localization.preview}
+                            downloadUrl={this.props.downloadUrl}
+                            uploadUrl={this.props.uploadUrl}
+                            externalControlRender={this.props.externalControlRender}
+                            externalControlList={this.props.externalControlList}
+                            controls={this.controls}
+                        />
+                    </div>
+                    <div style={{ display: 'flex', flex: 1, height: "calc(100vh - 90px)"}} onDrag={() => this.forceUpdate()}>
+                        {showControlTree
+                            ?   <ControlTree style={{ marginRight: 10, width: 180 }} onClose={this.changeShowControlTree}/> 
+                            :   <div className="formbuilder-control-tree-button">
+                                    <IconButton onClick={this.changeShowControlTree} 
+                                                appearance="primary" icon={<Icon icon="sitemap" size="lg"/>}/>
+                                </div>
+                        }
+                        <ToolBar localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
+                            externalControlList={this.props.externalControlList}
+                            externalControlsOnly={this.props.externalControlsOnly}
+                            controls={this.controls} editControl={CustomBlockEditControl} />    
+                    </div>            
+                </Split>            
             </div>
-            <ToolBar localization={localization.toolbar} templates={this.props.templates}
-                    externalControlList={this.props.externalControlList}
-                    externalControlsOnly={this.props.externalControlsOnly}
-                    controls={this.controls} editControl={CustomBlockEditControl}
-            />
         </div>;
     }
 
@@ -80,7 +104,6 @@ export default class FormBuilder extends BaseFormBuilder {
             show={this.state.viewerMode}
             builder={this}
             localization={localization.viewer}
-            header={this.renderHeaderBar()}
             getFormFunc={this.props.getFormFunc}
             downloadUrl={this.props.downloadUrl}
             uploadUrl={this.props.uploadUrl}

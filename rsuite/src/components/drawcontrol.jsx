@@ -1,24 +1,25 @@
 import { draw } from 'optimajet-builder-shared';
 
-export default function drawcontrol(name, options){
+export default function drawcontrol(name, { placeholder, value, style, label, onChange, ...options}){
     let model = options.model ? options.model : {};
 
-    if(options.placeholder){
-        model.placeholder = options.placeholder;
+    if(placeholder){
+        model.placeholder = placeholder;
     }
     return draw(name, 
         { props: 
             { name: options.name, 
-                value: options.value, 
+                value: value, 
                 additionalParams: {
                     model
                 } 
             }, 
             model,
             controlProps: {
-                style: options.style
+                style: style
             },
-            label: options.label, 
-            onChange: options.onChange 
+            label: label, 
+            onChange: onChange,
+            ...options
         });
 }

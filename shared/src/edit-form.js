@@ -23,7 +23,10 @@ export default class EditForm extends Component {
         if (isUndefined(value)) {
             data[name] = checked;
         }
-        else {
+        else if (typeof value === 'object') {
+            for (const key in value)
+                data[key] = value[key];            
+        } else {
             data[name] = value;
         }
         
@@ -62,7 +65,8 @@ export default class EditForm extends Component {
         }
         
         this.setState({ item: data });
-        FormBuilderStore.setTemporaryValue(this.state.key, data);
+        //FormBuilderStore.setTemporaryValue(this.state.key, data);
+        this.onSave();
     }
 
     onShow(key) {
@@ -147,7 +151,7 @@ export default class EditForm extends Component {
 
     onCloseConfirmed() {
         this.setState({ open: false, confirm: false });
-        FormBuilderStore.resetTemporaryValue(this.state.key);
+        ///FormBuilderStore.resetTemporaryValue(this.state.key);
     }
 
     render() {

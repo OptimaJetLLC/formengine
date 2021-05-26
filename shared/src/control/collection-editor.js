@@ -18,6 +18,43 @@ export default class CollectionEditor extends Component {
             expanded: {},
             data: []
         };
+        
+        this.extendedProps = {...this.props};
+        const model =  this.props.additionalParams?.model || this.props.model || this.props
+        const {handleEvent, downloadUrl, uploadUrl} = this.props.additionalParams ? this.props.additionalParams : this.props;
+
+        this.extendedProps.columns = model.columns;
+        this.extendedProps.draggable = model.draggable;
+        this.extendedProps.hierarchical = model.hierarchical;
+        this.extendedProps.parentIdField = model.parentIdField;
+        this.extendedProps.idField = model.idField;
+        this.extendedProps.childrenField = model.childrenField;
+        this.extendedProps.collapseAll = model.collapseAll;
+        this.extendedProps.disableAdd = model.disableAdd;            
+        this.extendedProps.disableCopy = model.disableCopy;
+        this.extendedProps.disableDelete = model.disableDelete;
+        
+        this.extendedProps.placeholders = clone(model.placeholders);
+
+        if (this.extendedProps.placeholders) {
+
+            this.extendedProps.data = data;
+            this.extendedProps.adaptiveViewType = adaptiveViewType;
+
+            this.extendedProps.controlBarParams = {
+                adaptiveViewType,
+                eventOnDelete,
+                eventOnEdit,
+                eventOnCopy,
+                parentComponent
+            };
+
+            this.extendedProps.getAdditionalDataForControl = getAdditionalDataForControl;
+            this.extendedProps.createControl = this.createCollectionEditorControl.bind(this);
+        }
+        this.extendedProps.handleEvent = handleEvent;
+        this.extendedProps.downloadUrl = downloadUrl;
+        this.extendedProps.uploadUrl = uploadUrl;
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -62,7 +99,7 @@ export default class CollectionEditor extends Component {
     }
 
     btnDelete(index, rows) {
-        if (!this.props.handleEvent && !this.props.onChange) {
+        if (!this.extendedProps.handleEvent && !this.extendedProps.onChange) {
             return;
         }
 
@@ -73,10 +110,10 @@ export default class CollectionEditor extends Component {
         const obj = rows[index];
         rows.splice(index, 1);
 
-        if (this.props.handleEvent) {
-            this.props.handleEvent({
-                key: this.props.name,
-                propertyName: this.props.propertyName,
+        if (this.extendedProps.handleEvent) {
+            this.extendedProps.handleEvent({
+                key: this.extendedProps.name,
+                propertyName: this.extendedProps.propertyName,
                 eventName: 'onDelete',
                 parameters: { rowIdx: index, row: obj }
             });
@@ -91,28 +128,28 @@ export default class CollectionEditor extends Component {
         }
 
         let objParent = rows[index];
-        let obj = isUndefined(this.props.defaultrow) ? {} : { ...this.props.defaultrow };
+        let obj = isUndefined(this.extendedProps.defaultrow) ? {} : { ...this.extendedProps.defaultrow };
         //set temporary id to the new row
         obj.__id = 'CLIENT_' + uuidv1();
-        this.fillDefaultValues(obj, this.props.columns, this.props.placeholders);
+        this.fillDefaultValues(obj, this.extendedProps.columns, this.extendedProps.placeholders);
 
-        if (this.props.parentIdField) {
-            obj[this.props.parentIdField] = objParent[this.props.idField] || objParent['__id'];
+        if (this.extendedProps.parentIdField) {
+            obj[this.extendedProps.parentIdField] = objParent[this.extendedProps.idField] || objParent['__id'];
             rows.push(obj);
         }
         else {
-            if (!Array.isArray(objParent[this.props.childrenField])) // parent has no child elements
+            if (!Array.isArray(objParent[this.extendedProps.childrenField])) // parent has no child elements
             {
-                objParent[this.props.childrenField] = [];
+                objParent[this.extendedProps.childrenField] = [];
             }
 
-            objParent[this.props.childrenField].push(obj);
+            objParent[this.extendedProps.childrenField].push(obj);
         }
 
-        if (this.props.handleEvent) {
-            this.props.handleEvent({
-                key: this.props.name,
-                propertyName: this.props.propertyName,
+        if (this.extendedProps.handleEvent) {
+            this.extendedProps.handleEvent({
+                key: this.extendedProps.name,
+                propertyName: this.extendedProps.propertyName,
                 eventName: 'onAddChild',
                 parameters: { rowIdx: rows.length - 1, row: obj }
             });
@@ -121,16 +158,16 @@ export default class CollectionEditor extends Component {
     }
 
     btnAdd = () => {
-        let obj = isUndefined(this.props.defaultrow) ? {} : this.props.defaultrow;
+        let obj = isUndefined(this.extendedProps.defaultrow) ? {} : this.extendedProps.defaultrow;
         //set temporary id to the new row
         obj.__id = 'CLIENT_' + uuidv1();
-        this.fillDefaultValues(obj, this.props.columns, this.props.placeholders);
+        this.fillDefaultValues(obj, this.extendedProps.columns, this.extendedProps.placeholders);
         this.state.data.push(obj);
 
-        if (this.props.handleEvent) {
-            this.props.handleEvent({
-                key: this.props.name,
-                propertyName: this.props.propertyName,
+        if (this.extendedProps.handleEvent) {
+            this.extendedProps.handleEvent({
+                key: this.extendedProps.name,
+                propertyName: this.extendedProps.propertyName,
                 eventName: 'onAdd',
                 parameters: { rowIdx: this.state.data.length - 1, row: obj }
             });
@@ -173,10 +210,10 @@ export default class CollectionEditor extends Component {
     copyForParentId(rows, sourceObj, newParentId) {
         const copied = clone(sourceObj);
         copied['__id'] = 'CLIENT_' + uuidv1();
-        delete copied[this.props.idField];
-        copied[this.props.parentIdField] = newParentId;
+        delete copied[this.extendedProps.idField];
+        copied[this.extendedProps.parentIdField] = newParentId;
 
-        rows.filter(r => r[this.props.parentIdField] === (sourceObj[this.props.idField] || sourceObj['__id']))
+        rows.filter(r => r[this.extendedProps.parentIdField] === (sourceObj[this.extendedProps.idField] || sourceObj['__id']))
             .forEach(r => this.copyForParentId(rows, r, copied['__id']));
 
         rows.push(copied);
@@ -186,10 +223,10 @@ export default class CollectionEditor extends Component {
 
     resetIdsRecursive(obj) {
         obj['__id'] = 'CLIENT_' + uuidv1();
-        delete obj[this.props.idField];
+        delete obj[this.extendedProps.idField];
 
-        if (Array.isArray(obj[this.props.childrenField])) {
-            obj[this.props.childrenField].forEach(c => this.resetIdsRecursive(c));
+        if (Array.isArray(obj[this.extendedProps.childrenField])) {
+            obj[this.extendedProps.childrenField].forEach(c => this.resetIdsRecursive(c));
         }
     }
 
@@ -202,8 +239,8 @@ export default class CollectionEditor extends Component {
 
         let copied;
 
-        if (this.props.parentIdField && sourceObj.hasOwnProperty(this.props.parentIdField)) {
-            copied = this.copyForParentId(rows, sourceObj, sourceObj[this.props.parentIdField]);
+        if (this.extendedProps.parentIdField && sourceObj.hasOwnProperty(this.extendedProps.parentIdField)) {
+            copied = this.copyForParentId(rows, sourceObj, sourceObj[this.extendedProps.parentIdField]);
         }
         else {
             copied = clone(sourceObj);
@@ -211,10 +248,10 @@ export default class CollectionEditor extends Component {
             rows.push(copied);
         }
 
-        if (this.props.handleEvent) {
-            this.props.handleEvent({
-                key: this.props.name,
-                propertyName: this.props.propertyName,
+        if (this.extendedProps.handleEvent) {
+            this.extendedProps.handleEvent({
+                key: this.extendedProps.name,
+                propertyName: this.extendedProps.propertyName,
                 eventName: 'onCopy',
                 parameters: { rowIdx: rows.length - 1, row: copied }
             });
@@ -257,8 +294,8 @@ export default class CollectionEditor extends Component {
         let rowsB = rows;
         if (isDefined(rowIndexA)) {
             if (rowIndexB !== rowIndexA) {
-                if (this.props.parentIdField !== undefined && this.props.parentIdField !== '') {
-                    rowsA[rowIndexA][this.props.parentIdField] = rowsB[rowIndexB][this.props.parentIdField];
+                if (this.extendedProps.parentIdField !== undefined && this.extendedProps.parentIdField !== '') {
+                    rowsA[rowIndexA][this.extendedProps.parentIdField] = rowsB[rowIndexB][this.extendedProps.parentIdField];
                 }
                 rowsB.splice(rowIndexB, 0, rowsA.splice(rowIndexA, 1)[0]);
                 this.sendChangesToParent();
@@ -269,7 +306,7 @@ export default class CollectionEditor extends Component {
     }
 
     handleChange = (item, e, { name, propertyName, value, checked, additionalValues }) => {
-        if (!this.props.handleEvent && !this.props.onChange) {
+        if (!this.extendedProps.handleEvent && !this.extendedProps.onChange) {
             return;
         }
 
@@ -302,95 +339,63 @@ export default class CollectionEditor extends Component {
         let rows = this.state.data;
         let res = this.state.stringmode ? (rows.length ? JSON5.stringify(rows) : []) : rows;
 
-        if (this.props.buildermode) {
-            // do nothing, this.props.value is read only
-            // this.props.value = res;
+        if (this.extendedProps.buildermode) {
+            // do nothing, this.extendedProps.value is read only
+            // this.extendedProps.value = res;
         }
         else {
-            if (this.props.onChange) {
-                this.props.onChange(null, { name: this.props.name, propertyName: this.props.propertyName, value: res });
+            if (this.extendedProps.onChange) {
+                this.extendedProps.onChange(null, { name: this.extendedProps.name, propertyName: this.extendedProps.propertyName, value: res });
             }
             else {
-                this.props.handleEvent({
+                this.extendedProps.handleEvent({
                     syntheticEvent: null,
-                    key: this.props.name,
+                    key: this.extendedProps.name,
                     eventName: 'onChange',
-                    name: this.props.name,
+                    name: this.extendedProps.name,
                     value: res,
-                    propertyName: this.props.propertyName
+                    propertyName: this.extendedProps.propertyName
                 });
             }
         }
     }
 
-    render() {
+    render() {    
+        const controlProps = {
+            className: this.extendedProps.className,
+            style: this.extendedProps.style,
+        };
 
-        // else if (control === CollectionEditor) {
-        //     props.columns = model.columns;
-        //     props.draggable = model.draggable;
-        //     props.hierarchical = model.hierarchical;
-        //     props.parentIdField = model.parentIdField;
-        //     props.idField = model.idField;
-        //     props.childrenField = model.childrenField;
-        //     props.collapseAll = model.collapseAll;
-        //     props.disableAdd = model.disableAdd;            
-        //     props.disableCopy = model.disableCopy;
-        //     props.disableDelete = model.disableDelete;
-            
-        //     props.placeholders = clone(model.placeholders);
+            // if (buildermode && controlProps.value === undefined && controlProps.columns !== undefined) {
+            //     controlProps.buildermode = buildermode;
+            //     controlProps.createBuilderDropzone = BaseControls.createBuilderDropzone;
     
-        //     if (props.placeholders) {
+            //     controlProps.value = [];
+            //     for (i = 0; i < 5; i++) {
+            //         controlProps.value.push({});
+            //     }
     
-        //         props.data = data;
-        //         props.adaptiveViewType = adaptiveViewType;
+            //     if (Boolean(model.hierarchical) &&
+            //         model.parentIdField !== undefined && model.parentIdField !== '' &&
+            //         model.idField !== undefined && model.idField !== '') {
+            //         for (i = 1; i < 5; i++) {
+            //             const parent = controlProps.value[i];
+            //             if (parent[model.idField] === undefined) {
+            //                 parent[model.idField] = i;
+            //             }
     
-        //         props.controlBarParams = {
-        //             adaptiveViewType,
-        //             eventOnDelete,
-        //             eventOnEdit,
-        //             eventOnCopy,
-        //             parentComponent
-        //         };
+            //             for (let j = 0; j < 2; j++) {
+            //                 const child = {};
+            //                 child[model.parentIdField] = parent[model.idField];
+            //                 controlProps.value.push(child);
+            //             }
+            //         }
+            //     }
+            // }
     
-        //         props.getAdditionalDataForControl = getAdditionalDataForControl;
-        //         props.createControl = this.createCollectionEditorControl.bind(this);
-        //     }
-        //     props.handleEvent = handleEvent;
-        //     props.downloadUrl = downloadUrl;
-        //     props.uploadUrl = uploadUrl;
-    
-        //     if (buildermode && props.value === undefined && props.columns !== undefined) {
-        //         props.buildermode = buildermode;
-        //         props.createBuilderDropzone = BaseControls.createBuilderDropzone;
-    
-        //         props.value = [];
-        //         for (i = 0; i < 5; i++) {
-        //             props.value.push({});
-        //         }
-    
-        //         if (Boolean(model.hierarchical) &&
-        //             model.parentIdField !== undefined && model.parentIdField !== '' &&
-        //             model.idField !== undefined && model.idField !== '') {
-        //             for (i = 1; i < 5; i++) {
-        //                 const parent = props.value[i];
-        //                 if (parent[model.idField] === undefined) {
-        //                     parent[model.idField] = i;
-        //                 }
-    
-        //                 for (let j = 0; j < 2; j++) {
-        //                     const child = {};
-        //                     child[model.parentIdField] = parent[model.idField];
-        //                     props.value.push(child);
-        //                 }
-        //             }
-        //         }
-        //     }
-    
-        //     if (extendedData !== undefined && extendedData.filters !== undefined && extendedData.filters[props.key] !== undefined) {
-        //         props.filter = new FunctionalFilter(extendedData.filters[props.key], props.columns.map(c => c.key));
-        //     }
-    
-        //     res = (<CollectionEditor {...props} />);
+            // if (extendedData !== undefined && extendedData.filters !== undefined && extendedData.filters[controlProps.key] !== undefined) {
+            //     controlProps.filter = new FunctionalFilter(extendedData.filters[controlProps.key], controlProps.columns.map(c => c.key));
+            // }
 
         return draw('collection-editor', {
             applyCollapseAll: this.applyCollapseAll,
@@ -406,8 +411,9 @@ export default class CollectionEditor extends Component {
             onDragEnd: this.onDragEnd,
             onDragOver: this.onDragOver,
             onDrop: this.onDrop,
-            props: this.props,
-            state: this.state
+            props: this.extendedProps,
+            state: this.state,
+            controlProps
         });
     }
 }

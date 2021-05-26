@@ -8,7 +8,10 @@ const BuilderActions = Reflux.createActions([
     'save',
     'move',
     'insert',
-    'changeItem'
+    'changeItem',
+    'undo',
+    'redo',
+    'select'
 ]);
 
 export default BuilderActions;

@@ -13,9 +13,30 @@ var config = {
           presets: ['@babel/preset-env', ["@babel/preset-react", {"runtime": "automatic"}]],
           plugins: [
             "@babel/plugin-proposal-class-properties",
-            "@babel/plugin-proposal-throw-expressions"
+            "@babel/plugin-proposal-throw-expressions",
+            "babel-plugin-react-scoped-css"
           ]
         }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              importLoaders: 2,
+            },
+          },
+          // You have to put it after `css-loader` and before any `pre-precessing loader`
+          { loader: 'scoped-css-loader' },
+          {
+            loader: 'sass-loader',
+          },
+        ],
       },
       {
         test: /\.scss$/,
@@ -36,7 +57,8 @@ var config = {
               }
             }
           }]
-      }]
+      }
+    ]
   },
   resolve: {
     extensions: ['*', '.js', '.json', '.jsx', '.css', '.scss', '.less']

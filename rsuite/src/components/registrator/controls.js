@@ -121,16 +121,52 @@ const controls = [
         defaultValues: { label: 'Input', fluid: true, onChangeTimeout: 200 }
     },
     {
+        key: 'input',
+        title: 'Number Input',
+        control: Input,
+        defaultValues: { label: 'Number Input', fluid: true, onChangeTimeout: 200, type: "number" }
+    },
+    {
+        key: 'input',
+        title: 'Password Input',
+        control: Input,
+        defaultValues: { label: 'Password Input', fluid: true, onChangeTimeout: 200, type: "password" }
+    },
+    {
+        key: 'input',
+        title: 'File Input',
+        control: Input,
+        defaultValues: { label: 'File Input', fluid: true, onChangeTimeout: 200, type: "file" }
+    },
+    {
+        key: 'input',
+        title: 'Date Picker',
+        control: Input,
+        defaultValues: { label: 'Date Picker', fluid: true, onChangeTimeout: 200, type: "date" }
+    },
+    {
+        key: 'input',
+        title: 'Time Picker',
+        control: Input,
+        defaultValues: { label: 'Time Picker', fluid: true, onChangeTimeout: 200, type: "time" }
+    },
+    {
+        key: 'input',
+        title: 'Date-Time Picker',
+        control: Input,
+        defaultValues: { label: 'Date-Time Picker', fluid: true, onChangeTimeout: 200, type: "datetime" }
+    },
+    {
         key: 'numberformat',
         title: 'Number Format',
         control: NumberFormatControl,
-        defaultValues: { label: 'NumberFormat', fluid: true, onChangeTimeout: 200 }
+        defaultValues: { label: 'Number Format', fluid: true, onChangeTimeout: 200 }
     },
     {
         key: 'textarea',
         title: 'TextArea',
         control: Textarea,
-        defaultValues: { label: 'TextArea', fluid: true }
+        defaultValues: { label: 'Text Area', fluid: true }
     },
     {
         key: 'dictionary',
@@ -142,7 +178,7 @@ const controls = [
         key: 'treepicker',
         title: 'TreePicker',
         control: TreePicker,
-        defaultValues: { label: 'TreePicker', selection: true, fluid: true, parentIdField: 'ParentId' }
+        defaultValues: { label: 'Tree Picker', selection: true, fluid: true, parentIdField: 'ParentId' }
     },
     {
         key: 'dropdown',
@@ -233,7 +269,7 @@ const controls = [
     },
     {
         key: 'signaturecanvas',
-        title: 'SignatureCanvas',
+        title: 'Signature Canvas',
         control: SignatureCanvas,
         defaultValues: { showPreview: true}
     },

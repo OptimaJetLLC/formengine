@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BuilderActions, DropzoneContext, isDefined, register } from 'optimajet-builder-shared';
 import { getDisplayStyle } from './style-helper';
 import $ from 'jquery';
-import { Icon } from 'rsuite';
+import { Icon, IconStack } from 'rsuite';
 
 register('control-bar', options => {
 
@@ -454,7 +454,7 @@ register('control-bar', options => {
                                 >
                                 {options.props.model["key"]}                
                             </div>
-                            <Icon onClick={onPinned} icon={model.pinned ? 'star' : 'star-o'} />
+                            <Icon onClick={onPinned} icon='thumb-tack' style={{color: model.pinned ? '#ffb818' : 'initial'}} />
                             {/* {!model.pinned && <Icon draggable={true} onDragStart={onDragStart} onDragEnd={onDragEnd} icon='arrows' />}
                             {model.pinned && <Icon onMouseDown={onMouseDown} icon='arrows' />} */}
                             <Icon onClick={options.me.props.onEdit.bind(options.props.parent, options.props.model)} icon='edit2' />

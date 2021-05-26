@@ -26,7 +26,7 @@ register('edit-form', options => {
     }
 
     if (isUndefined(options.state.item)) {
-        return (<div/>);
+        return (<div style={{flex: 1, backgroundColor: "white"}}/>);
     }
 
     const editForm = options.controls.getEditControlByType(
@@ -46,7 +46,7 @@ register('edit-form', options => {
         questionTitle = options.props.localization.base.questiontitle;
     }
 
-    return (<div>
+    return (<>
         {React.createElement(editForm, {
             key: 'editform',
             data: options.state.item,
@@ -70,5 +70,5 @@ register('edit-form', options => {
                 <Button className="buttontype2" onClick={options.confirmHandleCancel}>{cancelBtn}</Button>
             </Modal.Actions>
         </Modal>
-    </div>)
+    </>)
 });

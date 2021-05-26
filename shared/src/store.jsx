@@ -10,6 +10,7 @@ var Reflux = require('reflux');
 const clone = require('clone');
 
 var _data;
+var _history = [];
 var _temporaryValues;
 
 var FormBuilderStore = Reflux.createStore({
@@ -21,6 +22,8 @@ var FormBuilderStore = Reflux.createStore({
         this.listenTo(BuilderActions.saveData, this._updateOrder);
         this.listenTo(BuilderActions.insert, this.insert);
         this.listenTo(BuilderActions.changeItem, this.changeItem);
+        this.listenTo(BuilderActions.undo, this.undo);        
+        this.listenTo(BuilderActions.redo, this.redo);
 
         _data = [];
         _temporaryValues = {};   
@@ -318,33 +321,33 @@ var FormBuilderStore = Reflux.createStore({
             }
         }
 
-        this.trigger(_data);
+        this.setData(_data);
     },
 
     remove: function (item) {
         this.removeItemByKey(item.key, _data);
-        this.trigger(_data);
+        this.setData(_data);
     },
 
     copy: function (item) {
         var newItem = this.copyObj(item);
         this.insertAfterKey(newItem, item.key, _data);
         this.makeUniqueKeys(newItem);
-        this.trigger(_data);
+        this.setData(_data);
     },
 
     getData: function () {
         return _data;
     },
 
-    setData: function (data) {
+    setData: function (data) {        
+        _history.push(this.copyObj(_data));
         _data = data;
         this.trigger(_data);
     },
 
     _updateOrder: function (elements) {
-        _data = elements;
-        this.trigger(_data);
+        this.setData(elements);
     },
 
     getDefaultKey: function (name) {
@@ -461,7 +464,7 @@ var FormBuilderStore = Reflux.createStore({
             this.replaceDepensKeys(key, item.key);
         }
 
-        this.trigger(_data);
+        this.setData(_data);
     },
 
     replaceDepensKeys: function (oldKey, newKey, items) {
@@ -555,12 +558,12 @@ var FormBuilderStore = Reflux.createStore({
 
     setTemporaryValue: function(key, data){
         _temporaryValues[key] = data;
-        this.trigger(_data);
+        this.setData(_data);
     },
 
     resetTemporaryValue: function(key){
         delete _temporaryValues[key];
-        this.trigger(_data);
+        this.setData(_data);
     },
 
     getTemporaryValues: function(key){
@@ -589,7 +592,17 @@ var FormBuilderStore = Reflux.createStore({
             model[p] = changeset[p];
         }
 
-        this.trigger(_data);
+        this.setData(_data);
+    },
+    undo() {
+      // retrieve cached data
+      _data = _history.pop();
+      this.trigger(_data);
+    },
+    redo() {
+      // retrieve cached data
+      var data = _history.pop();
+      this.setData(data);
     },
 });
 

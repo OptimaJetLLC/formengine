@@ -34,9 +34,8 @@ export default class Viewer extends BaseFormViewer {
         var local = this.props.localization ? this.props.localization : {}; 
 
         return (<div style={style} className="formbuilder-viewer">
-            <Split style={{ display: 'flex' }} sizes={[75, 25]} onDrag={() => this.forceUpdate()}>
+            <Split style={{ display: 'flex' }} sizes={[80, 20]} onDrag={() => this.forceUpdate()}>
                 <div>
-                    {this.props.header}
                     <div className="formbuilder-viewer-form" style={{ overflow: 'auto' }}>                    
                         <Form
                             model={this.state.model}

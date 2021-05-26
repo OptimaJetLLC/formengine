@@ -52,6 +52,7 @@ import BaseControls from './src/base-controls';
 import BaseFormBuilder from './src/base-form-builder';
 import BaseFormViewer from './src/base-form-viewer';
 import BasePreview from './src/base-preview';
+import BaseControlTree from './src/base-control-tree';
 import BaseToolbar from './src/base-toolbar';
 import { getItems, registerItems } from './src/component-item-registry';
 import { draw, register } from './src/component-render-registry';
@@ -120,6 +121,7 @@ export {
     BaseFormBuilder,
     BaseFormViewer,
     BasePreview,
+    BaseControlTree,
     BaseToolbar,
     registerItems, getItems,
     register, draw,

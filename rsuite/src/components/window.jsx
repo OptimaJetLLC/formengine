@@ -7,7 +7,11 @@ export default class Window extends Component {
 
         this.window = React.createRef();
         this.isDown = false;        
-        this.offset = [];        
+        this.offset = [];       
+        
+        this.state = {
+            focused: true,
+        }
     }
 
     componentDidMount(){
@@ -22,6 +26,23 @@ export default class Window extends Component {
             if(savedValueWidth) element.style.width = savedValueWidth;        
             var savedValueHeight = this.getParam("height");
             if(savedValueHeight) element.style.height = savedValueHeight;  
+        }
+        document.addEventListener('mousedown', this.handleClickOutside);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClickOutside);
+    }
+
+    handleClickOutside = e => {
+        if (this.window && this.window.current.contains(e.target)) {
+            if (!this.state.focused) {
+                this.setState({focused: true});
+            }
+        } else {
+            if (this.state.focused) {                    
+                this.setState({focused: false});
+            }
         }
     }
 
@@ -45,6 +66,9 @@ export default class Window extends Component {
         if(this.props.className){
             className += " " + this.props.className;
         }
+
+        windowProps.style = windowProps.style || {};
+        windowProps.style.zIndex = this.state.focused ? 6 : 5;
 
         return (
             <div ref={this.window} className={className} {...windowProps}>

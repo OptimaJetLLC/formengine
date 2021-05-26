@@ -19,7 +19,8 @@ class TabGrouo extends React.Component {
     }
 
     render() {
-        let options = this.props.options;
+        const {options} = this.props;
+        const {model} = options
         let className = "formbuilder-tabgroup";
         if(options.controlProps.className){
             className += " " + options.controlProps.className;
@@ -29,9 +30,9 @@ class TabGrouo extends React.Component {
         const activePane = obj ? obj.pane : undefined;
         let i = -1;
         return  <div {...options.controlProps} className={className}> 
-            <Nav appearance="subtle" 
+            <Nav appearance={model?.tabular ? "tabs" : "subtle" }
                 activeKey={this.state.activeIndex}
-                justified 
+                justified={model?.fluid} 
                 vertical={options.vertical} 
                 onSelect={this.onTabChange.bind(this)}>
                 {options.panes && options.panes.map((pane)=>{
