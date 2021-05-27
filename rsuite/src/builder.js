@@ -64,9 +64,9 @@ export default class FormBuilder extends BaseFormBuilder {
 
         return <div>
             {this.renderHeaderBar()}     
-            <div style={style} className="formbuilder formbuilder-dropzoneactive" onDragOver={this.onDragOver}>                
+            <div style={style} className="formbuilder">                
                 <Split style={{ display: 'flex', flex: 1 }}  sizes={sizes}  onDrag={() => this.forceUpdate()}>
-                    <div className="formbuilder-content" style={{ marginRight: 20 }}>
+                    <div className="formbuilder-content formbuilder-dropzoneactive" style={{ marginRight: 20 }} onDragOver={this.onDragOver}>
                         <Preview
                             buildermode={true}
                             getFormFunc={this.props.getFormFunc}
@@ -80,7 +80,7 @@ export default class FormBuilder extends BaseFormBuilder {
                             controls={this.controls}
                         />
                     </div>
-                    <div style={{ display: 'flex', flex: 1, height: "calc(100vh - 90px)"}} onDrag={() => this.forceUpdate()}>
+                    <div style={{ display: 'flex', flex: 1, height: "calc(100vh - 90px)"}}>
                         {showControlTree
                             ?   <ControlTree style={{ marginRight: 10, width: 180 }} onClose={this.changeShowControlTree}/> 
                             :   <div className="formbuilder-control-tree-button">
