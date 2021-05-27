@@ -19,18 +19,15 @@ export default class HeaderBar extends React.Component {
                
         return (
             <div className="formbuilder-headerbar">
-                <div style={{display: "flex"}}>
-                    <a href="/"><img src="/images/logo.svg"/></a>
-                    <ButtonToolbar style={{marginLeft: 20}}>
-                        <IconButton onClick={this.props.onDownload} icon={<Icon icon="download" />}>{local.download ? local.download : "Download"}</IconButton>
-                        <IconButton onClick={this.props.onChooseFileUpload} icon={<Icon icon="upload" />}>{local.upload ? local.upload : "Upload"}</IconButton>
-                        <IconButton onClick={this.onSettings.bind(this)} icon={<Icon icon="setting" />}>{local.settings ? local.settings : "Settings"}</IconButton>
-                        <IconButton onClick={BuilderActions.undo} icon={<Icon icon="undo" />}>Undo</IconButton>
-                        {/* <IconButton onClick={this.onLibrary.bind(this)} icon={<Icon icon="info" />}>{local.library ? local.library : "Library"}</IconButton> */}
-                        {!this.props.blockChangeViewerMode && <Toggle checked={this.props.viewerMode} onChange={this.props.onBuilderSwitch} checkedChildren={local.viewer ? local.viewer : "Viewer"} unCheckedChildren={local.builder ? local.builder : "Builder"} />}
-                        {this.props.viewerMode && <IconButton onClick={this.props.onPrint} icon={<Icon icon="print" />}>{local.print ? local.print : "Print"}</IconButton>}
-                    </ButtonToolbar>
-                </div>
+                <ButtonToolbar>
+                    <IconButton onClick={this.props.onDownload} icon={<Icon icon="download" />}>{local.download ? local.download : "Download"}</IconButton>
+                    <IconButton onClick={this.props.onChooseFileUpload} icon={<Icon icon="upload" />}>{local.upload ? local.upload : "Upload"}</IconButton>
+                    <IconButton onClick={this.onSettings.bind(this)} icon={<Icon icon="setting" />}>{local.settings ? local.settings : "Settings"}</IconButton>
+                    <IconButton onClick={BuilderActions.undo} icon={<Icon icon="undo" />}>Undo</IconButton>
+                    {/* <IconButton onClick={this.onLibrary.bind(this)} icon={<Icon icon="info" />}>{local.library ? local.library : "Library"}</IconButton> */}
+                    {!this.props.blockChangeViewerMode && <Toggle checked={this.props.viewerMode} onChange={this.props.onBuilderSwitch} checkedChildren={local.viewer ? local.viewer : "Viewer"} unCheckedChildren={local.builder ? local.builder : "Builder"} />}
+                    {this.props.viewerMode && <IconButton onClick={this.props.onPrint} icon={<Icon icon="print" />}>{local.print ? local.print : "Print"}</IconButton>}
+                </ButtonToolbar>
                 {!this.props.viewerMode && <IconButton onClick={this.props.onClear} style={{ float: "right", marginRight: "15px"}} appearance="ghost" icon={<Icon icon="file-o" />}>{local.clear ? local.clear : "Clear"}</IconButton>}
                 <form action="/" method="post" style={{ display: 'none' }}
                       onSubmit={this.props.onUpload}>
