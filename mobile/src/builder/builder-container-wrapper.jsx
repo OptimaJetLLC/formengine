@@ -6,9 +6,9 @@ import builderStyles from '../builder-styles';
 export default function BuilderContainerWrapper({children}) {
     return (
         <DropzoneContext.Consumer>
-            {({ visible }) => {
-                return (visible 
-                    ? <View style={visible ? builderStyles.itemContainer : {}}>
+            {({ isBuilder }) => {
+                return (isBuilder 
+                    ? <View style={isBuilder ? builderStyles.itemContainer : {}}>
                             {children}
                       </View>
                     : children

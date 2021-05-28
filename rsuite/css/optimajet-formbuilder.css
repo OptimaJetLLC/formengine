@@ -5,6 +5,7 @@
 
 :root {
   --toolbox-header-color: #1262E2;
+  --control-tree-width: 160px;
 }
 
 body, h1, h2, h3, h4, h5 {
@@ -34,11 +35,11 @@ body, h1, h2, h3, h4, h5 {
 }
 
 .formbuilder-content{
-    width: calc(100% - 200px);
+    width: 100%;
     float: left;
-    /*background-color: #F9F9F9;*/
     min-height: 400px;
     overflow-y: auto;
+    padding-top: 15px;
 }
 
 .formbuilder-empty{
@@ -116,15 +117,18 @@ body, h1, h2, h3, h4, h5 {
   width: 357px;
   height: calc(100vh - 70px);
   margin-right: 5px;
+  padding-top: 15px;
 }
 
 .formbuilder-rightbar .rs-panel-body-fill {
   width: 100%;
 }
 
-.formbuilder-control-tree-button {
-  margin-left: -42px;
-  position: absolute;
+.formbuilder-control-tree {
+  box-shadow: inset 0px 0px 15px rgb(0 0 0 / 25%);
+  width: var(--control-tree-width);
+  padding-right: 10px;
+  padding-top: 15px;
 }
 
 .formbuilder-control-tree-button > button {
@@ -433,7 +437,6 @@ body, h1, h2, h3, h4, h5 {
 /*ITEM-HEADER*/
 
 .formbuilder-item-toolbar-header {
-    opacity: 0.2;
     z-index: 100;
     white-space: nowrap;
     height: 0px;
@@ -446,15 +449,11 @@ body, h1, h2, h3, h4, h5 {
     line-height: 20px;
     color: black;
     font-weight: 400;
+    background: white;
+    -webkit-box-shadow: 0px 6px 10px rgba(18, 83, 204, 0.12), 0px 1px 18px rgba(18, 83, 204, 0.12), 0px 3px 5px rgba(18, 83, 204, 0.15);
+    box-shadow: 0px 6px 10px rgba(18, 83, 204, 0.12), 0px 1px 18px rgba(18, 83, 204, 0.12), 0px 3px 5px rgba(18, 83, 204, 0.15);
+    border-radius: 11px;
 }
-
-.formbuilder-item-toolbar-header:hover {
-  background: white;
-  -webkit-box-shadow: 0px 6px 10px rgba(18, 83, 204, 0.12), 0px 1px 18px rgba(18, 83, 204, 0.12), 0px 3px 5px rgba(18, 83, 204, 0.15);
-  box-shadow: 0px 6px 10px rgba(18, 83, 204, 0.12), 0px 1px 18px rgba(18, 83, 204, 0.12), 0px 3px 5px rgba(18, 83, 204, 0.15);
-  border-radius: 11px;
-}
-
 .formbuilder-item-toolbar-header-buttons {
     float: right;
  }
@@ -465,20 +464,23 @@ body, h1, h2, h3, h4, h5 {
     cursor: move;
 }
 
-.formbuilder-item-toolbar-header:hover {
-    opacity: 1;
+.formbuilder-item-container {
+  cursor: pointer !important;  
 }
 
-.formbuilder-item-selected{
-    outline-style: solid;
-    outline-width: 1px;
-    outline-color: rgba(242, 77, 0, 0.5)
+.formbuilder-item-toolbar-container.hovered{
+    outline: 2px dashed #3498ff !important;
+    cursor: pointer !important;
+}
+
+.formbuilder-item-toolbar-container.selected{
+    outline: 2px solid #3498ff !important;
+    cursor: pointer !important;
 }
 
 select .formbuilder-item-toolbar-header:hover,
 input .formbuilder-item-toolbar-header:hover {
     cursor: move;
-    opacity: 1;
 }
 
 .toolbar-header {
@@ -573,7 +575,6 @@ input .formbuilder-item-toolbar-header:hover {
   flex: 1;
   box-shadow: 0px 0px 15px rgb(0 0 0 / 25%);
   padding: 10px;
-  margin-bottom: 15px;
 }
 
 .formbuilder-selector{
@@ -602,6 +603,14 @@ input .formbuilder-item-toolbar-header:hover {
 .formbuilder-item-toolbar-header-buttons > i {
     cursor: pointer;
     margin-right: 7px;
+}
+
+.formbuilder-viewer {
+  padding-top: 15px;
+}
+
+.formbuilder-viewer.with-control-tree {
+  margin-left: var(--control-tree-width);
 }
 
 .formbuilder-viewer-form{
@@ -731,34 +740,70 @@ input .formbuilder-item-toolbar-header:hover {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMCAxMCIgZmlsbD0iI0JCQkJCQiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iOC40Nzk1NCIgY3k9IjguNDc5MyIgcj0iMS4yMjA3NSIgZmlsbD0iaW5oZXJpdCIvPgo8Y2lyY2xlIGN4PSI0Ljg1MDE1IiBjeT0iOC40NzkzIiByPSIxLjIyMDc1IiBmaWxsPSJpbmhlcml0Ii8+CjxjaXJjbGUgY3g9IjEuMjIwNzUiIGN5PSI4LjQ3OTMiIHI9IjEuMjIwNzUiIGZpbGw9ImluaGVyaXQiLz4KPGNpcmNsZSBjeD0iOC40Nzk1NCIgY3k9IjQuODUwMDMiIHI9IjEuMjIwNzUiIGZpbGw9ImluaGVyaXQiLz4KPGNpcmNsZSBjeD0iNC44NTAxNSIgY3k9IjQuODUwMDMiIHI9IjEuMjIwNzUiIGZpbGw9ImluaGVyaXQiLz4KPGNpcmNsZSBjeD0iOC40Nzk1NCIgY3k9IjEuMjIwNzUiIHI9IjEuMjIwNzUiIGZpbGw9ImluaGVyaXQiLz4KPC9zdmc+Cg==");
 }
 
-.formbuilder-toolbar-resize{
-  width: 17px;
-  height: 17px;
-  cursor: nwse-resize;
-  background-repeat: no-repeat;
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMCAxMCIgZmlsbD0iI0JCQkJCQiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iOC40Nzk1NCIgY3k9IjguNDc5MyIgcj0iMS4yMjA3NSIgZmlsbD0iaW5oZXJpdCIvPgo8Y2lyY2xlIGN4PSI0Ljg1MDE1IiBjeT0iOC40NzkzIiByPSIxLjIyMDc1IiBmaWxsPSJpbmhlcml0Ii8+CjxjaXJjbGUgY3g9IjEuMjIwNzUiIGN5PSI4LjQ3OTMiIHI9IjEuMjIwNzUiIGZpbGw9ImluaGVyaXQiLz4KPGNpcmNsZSBjeD0iOC40Nzk1NCIgY3k9IjQuODUwMDMiIHI9IjEuMjIwNzUiIGZpbGw9ImluaGVyaXQiLz4KPGNpcmNsZSBjeD0iNC44NTAxNSIgY3k9IjQuODUwMDMiIHI9IjEuMjIwNzUiIGZpbGw9ImluaGVyaXQiLz4KPGNpcmNsZSBjeD0iOC40Nzk1NCIgY3k9IjEuMjIwNzUiIHI9IjEuMjIwNzUiIGZpbGw9ImluaGVyaXQiLz4KPC9zdmc+Cg==");
-}
-
 .formbuilder-toolbar-point-left,
 .formbuilder-toolbar-point-right{
-  width: 5px;
+  width: 3px;
   height: 100%;
+  margin: 0px 8px;
+}
+
+.formbuilder-item-toolbar-container.point-right {
   cursor: ew-resize;
+}
+
+.formbuilder-item-toolbar-container.point-left {
+  cursor: col-resize;
 }
 
 .formbuilder-toolbar-point-top,
 .formbuilder-toolbar-point-bottom{
   width: 100%;
-  height: 5px;
+  height: 3px;
+  margin: 8px 0px;
+}
+
+.formbuilder-item-toolbar-container.point-top {
+  cursor: row-resize;
+}
+
+.formbuilder-item-toolbar-container.point-bottom {
   cursor: ns-resize;
 }
 
-.formbuilder-toolbar-point-left:hover,
-.formbuilder-toolbar-point-right:hover,
-.formbuilder-toolbar-point-top:hover,
-.formbuilder-toolbar-point-bottom:hover{
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+.formbuilder-item-toolbar-container {
+  opacity: 0;
+  z-index: 6;
+}
+
+.formbuilder-item-toolbar-container:hover{
+  opacity: 1;
+}
+
+.formbuilder-toolbar-point-left,
+.formbuilder-toolbar-point-right,
+.formbuilder-toolbar-point-top,
+.formbuilder-toolbar-point-bottom{
+  background-color: var(--toolbox-header-color);
+}
+
+.formbuilder-item-toolbar-container.selection,
+.formbuilder-item-toolbar-container.bar,
+.formbuilder-item-toolbar-container.resize {
+  opacity: 1;
+}
+
+.formbuilder-item-toolbar-container.resize {
+  cursor: nwse-resize;
+}
+
+.formbuilder-item-toolbar-container.resize .dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 6px;
+  margin: 8px;
+  border: 1px solid var(--toolbox-header-color);
+  cursor: nwse-resize;
+  background-color: white;
 }
 
 

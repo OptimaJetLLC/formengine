@@ -10,6 +10,7 @@ var Reflux = require('reflux');
 const clone = require('clone');
 
 var _data;
+var _selected;
 var _history = [];
 var _temporaryValues;
 
@@ -344,6 +345,9 @@ var FormBuilderStore = Reflux.createStore({
         _history.push(this.copyObj(_data));
         _data = data;
         this.trigger(_data);
+        if (_history.length <= 1) {
+            this.select(_data[1]?.key);
+        }
     },
 
     _updateOrder: function (elements) {
@@ -604,6 +608,14 @@ var FormBuilderStore = Reflux.createStore({
       var data = _history.pop();
       this.setData(data);
     },
+    select(key) {
+        _selected = key;
+        BuilderActions.showEditForm(key);
+    },
+
+    getSelected() {
+        return _selected;
+    }
 });
 
 export default FormBuilderStore;

@@ -36,7 +36,7 @@ export default class BasePreview extends Component {
     }
 
     _onEdit(item) {
-        BuilderActions.showEditForm(item.key);
+        FormBuilderStore.select(item.key);
     }
 
     _onCopy(item) {

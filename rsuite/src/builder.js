@@ -18,6 +18,7 @@ export default class FormBuilder extends BaseFormBuilder {
         super(props);
         this.controls = controls;
         this.state.viewerMode = props.viewerMode == "viewer";
+        this.state.showControlTree = true;
 
         this.onDownload = this.onDownload.bind(this);
         this.onClear = this.create.bind(this);
@@ -46,7 +47,7 @@ export default class FormBuilder extends BaseFormBuilder {
         return {};
     }
 
-    changeShowControlTree = () => {
+    toggleControlTree = () => {
         const {showControlTree} = this.state;
         this.setState({showControlTree: !showControlTree}, () => dispatchWindowResize());
     }
@@ -60,13 +61,13 @@ export default class FormBuilder extends BaseFormBuilder {
                 controls={this.controls}
         />
 
-        const sizes = showControlTree ? [72.2, 27.8] : [80, 20];
-
         return <div>
             {this.renderHeaderBar()}     
             <div style={style} className="formbuilder">                
-                <Split style={{ display: 'flex', flex: 1 }}  sizes={sizes}  onDrag={() => this.forceUpdate()}>
-                    <div className="formbuilder-content formbuilder-dropzoneactive" style={{ marginRight: 20 }} onDragOver={this.onDragOver}>
+                <Split style={{ display: 'flex', flex: 1 }}  sizes={[80, 20]}  onDrag={() => this.forceUpdate()}>
+                    <div style={{ display: 'flex'}}>
+                    {showControlTree && <ControlTree style={{ marginRight: 10, width: 180 }} onClose={this.toggleControlTree}/>}
+                    <div className="formbuilder-content formbuilder-dropzoneactive" onDragOver={this.onDragOver}>
                         <Preview
                             buildermode={true}
                             getFormFunc={this.props.getFormFunc}
@@ -80,14 +81,9 @@ export default class FormBuilder extends BaseFormBuilder {
                             controls={this.controls}
                         />
                     </div>
+                    </div>
                     <div style={{ display: 'flex', flex: 1, height: "calc(100vh - 90px)"}}>
-                        {showControlTree
-                            ?   <ControlTree style={{ marginRight: 10, width: 180 }} onClose={this.changeShowControlTree}/> 
-                            :   <div className="formbuilder-control-tree-button">
-                                    <IconButton onClick={this.changeShowControlTree} 
-                                                appearance="primary" icon={<Icon icon="sitemap" size="lg"/>}/>
-                                </div>
-                        }
+                        
                         <ToolBar localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
                             externalControlList={this.props.externalControlList}
                             externalControlsOnly={this.props.externalControlsOnly}
@@ -109,7 +105,7 @@ export default class FormBuilder extends BaseFormBuilder {
             uploadUrl={this.props.uploadUrl}
             externalControlList={this.props.externalControlList}
             externalControlRender={this.props.externalControlRender} 
-            
+            isShowControlTree={this.state.showControlTree}            
             ref={(viewer) => { this.viewer = viewer; }}
         />;
     }
@@ -131,6 +127,8 @@ export default class FormBuilder extends BaseFormBuilder {
             onChooseFileUpload={this.onChooseFileUpload}
             onUpload={this.onUpload}
             onChangeFileUpload={this.onChangeFileUpload}
+            onToggleControlTree={this.toggleControlTree}
+            isShowControlTree={this.state.showControlTree}
         />;
     }
 

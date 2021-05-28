@@ -20,6 +20,7 @@ export default class Viewer extends BaseFormViewer {
 
     render() {
         let data = {};
+        const {isShowControlTree} = this.props;
         let errors = undefined;
         try {
             data = JSON5.parse(this.state.values);
@@ -33,7 +34,7 @@ export default class Viewer extends BaseFormViewer {
         const style = this.props.show ? {} : {display:"none"};
         var local = this.props.localization ? this.props.localization : {}; 
 
-        return (<div style={style} className="formbuilder-viewer">
+        return (<div style={style} className={("formbuilder-viewer" + (isShowControlTree ? " with-control-tree" : ""))}>
             <Split style={{ display: 'flex' }} sizes={[80, 20]} onDrag={() => this.forceUpdate()}>
                 <div>
                     <div className="formbuilder-viewer-form" style={{ overflow: 'auto' }}>                    

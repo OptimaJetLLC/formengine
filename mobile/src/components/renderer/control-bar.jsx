@@ -62,14 +62,14 @@ const Control = ({options}) => {
     }
 
     return <DropzoneContext.Consumer>
-        {({ visible }) => {
+        {({ isBuilder }) => {
             var bar = isHovered => {
                 setHovered(isHovered);
                 const style = [
                         isHovered ? builderStyles.controlBar.containerHovered : builderStyles.controlBar.container,
                         getPosition(options.me.state)
                 ];
-                return visible && <View 
+                return isBuilder && <View 
                     ref={view => { options.me.barRef = view}}
                     style={style}                
                     >

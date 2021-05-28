@@ -11,7 +11,7 @@ export default class BaseFormBuilder extends Component {
             apiurl: props.apiurl,
             imagefolder: props.imagefolder,
             dropzoneContext: {
-                visible: true,
+                isBuilder: true,
             },
         };
     }
@@ -23,7 +23,7 @@ export default class BaseFormBuilder extends Component {
     setBuilderMode(enabled) {
         this.setState({
             dropzoneContext: {
-                visible: enabled,
+                isBuilder: enabled,
             },
         });
     }

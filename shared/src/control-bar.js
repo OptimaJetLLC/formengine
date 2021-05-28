@@ -14,7 +14,7 @@ export default class ControlBar extends Component {
         this.pointLeftRef = React.createRef();
         this.pointRightRef = React.createRef();
         this.pointBottomRef = React.createRef();
-
+        this.selectionRef = React.createRef();
     }
 
     render() {

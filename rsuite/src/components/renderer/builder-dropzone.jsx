@@ -13,9 +13,9 @@ register('builder-dropzone', options => {
     }
 
     return (<DropzoneContext.Consumer>
-            {({ visible }) => (
+            {({ isBuilder }) => (
                 <Popup
-                    trigger={getDz(visible)}
+                    trigger={getDz(isBuilder)}
                     onClose={options.onClosePopup}
                     content={<TextArea rows="10" width="200px" onChange={options.onChangeDZ}
                                        placeholder="Insert a model control"/>}

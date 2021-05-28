@@ -11,21 +11,22 @@ export default class BaseControlTree extends Component {
             selectedKey: null,
         };
 
-        //FormBuilderStore.listen(this.modelChanged);
+        FormBuilderStore.listen(this.onModelChanged);
+        FormBuilderStore.listenTo(BuilderActions.showEditForm, this.onSelect);
     }
 
-    modelChanged = () => {
+    onModelChanged = () => {
         let model = FormBuilderStore.getTemporaryData();
-        this.setState({ model });
+        
+        this.setState({ model: model.filter(item => item["data-buildertype"] !== "__settings") });
     }
 
     onSelect = selectedKey => {
-        if (this.state.selectedKey !== selectedKey) this.setState({ selectedKey });
-        this.select(selectedKey);
+        this.setState({ selectedKey });
     }
 
-    select = key => {        
-        BuilderActions.showEditForm(key);
+    select = key => {   
+        FormBuilderStore.select(key);
     }
 
 }

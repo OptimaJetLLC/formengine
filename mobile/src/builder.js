@@ -30,8 +30,8 @@ export default class FormBuilder extends BaseFormBuilder {
             });
         }
 
-        const previewTextStyle = !this.state.dropzoneContext.visible ? 'label' : 'c2';
-        const builderTextStyle = this.state.dropzoneContext.visible ? 'label' : 'c2';
+        const previewTextStyle = !this.state.dropzoneContext.isBuilder ? 'label' : 'c2';
+        const builderTextStyle = this.state.dropzoneContext.isBuilder ? 'label' : 'c2';
 
         const topStyle = {
             paddingLeft: 30, 
@@ -56,11 +56,11 @@ export default class FormBuilder extends BaseFormBuilder {
             </View>
             {extraButtons}
             <TouchableWithoutFeedback style={builderStyles.dwkitFormBuilderHeaderRight}
-              onPress={() => this.switchBuilderMode(!this.state.dropzoneContext.visible)}>
+              onPress={() => this.switchBuilderMode(!this.state.dropzoneContext.isBuilder)}>
                 <View style={builderStyles.dwkitFormBuilderHeaderRight}>
 
                     <Text category={builderTextStyle} style={{marginLeft: 10, marginBottom: 6, fontSize: 15, width: 60}}>Builder</Text>
-                    <Toggle checked={this.state.dropzoneContext.visible}
+                    <Toggle checked={this.state.dropzoneContext.isBuilder}
                             onChange={(state) => this.switchBuilderMode(state)}
                             status='primary'
                             appearance='switcher'
@@ -102,7 +102,7 @@ export default class FormBuilder extends BaseFormBuilder {
                         externalControlRender={this.props.externalControlRender}
                         externalControlList={this.props.externalControlList}
                         controls={this.controls}
-                        buildermode={this.state.dropzoneContext.visible}
+                        buildermode={this.state.dropzoneContext.isBuilder}
                     />
                     <ReactNativeEditForm actions={this.props.actions} localization={localization.editforms}
                                               externalControlList={this.props.externalControlList}

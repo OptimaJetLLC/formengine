@@ -68,7 +68,7 @@ export default class Window extends Component {
         }
 
         windowProps.style = windowProps.style || {};
-        windowProps.style.zIndex = this.state.focused ? 6 : 5;
+        windowProps.style.zIndex = this.state.focused ? 8 : 7;
 
         return (
             <div ref={this.window} className={className} {...windowProps}>
