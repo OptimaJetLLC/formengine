@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, IconButton, ButtonToolbar, Icon, Toggle, Input, Nav } from 'rsuite';
-import { BuilderActions } from 'optimajet-builder-shared';
+import { BuilderActions, FormBuilderStore } from 'optimajet-builder-shared';
 import Window from './components/window'
 import JSON5 from 'json5'
 import drawcontrol from './components/drawcontrol'
@@ -8,13 +8,22 @@ export default class HeaderBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            settingsActiveTab: "parameters"
+            settingsActiveTab: "parameters",
+            canUndo: false,
+            canRedo: false
         };
 
         this.onChange = this.onChange.bind(this);
+        FormBuilderStore.listenTo(BuilderActions.dataChanged, () => {
+            this.setState({
+                canUndo: FormBuilderStore.canUndo(),
+                canRedo: FormBuilderStore.canRedo()
+            })
+        });
     }
 
     render() {
+        const { canUndo, canRedo } = this.state;
         var local = this.props.localization ? this.props.localization : {}; 
         const {
             viewerMode,
@@ -39,7 +48,8 @@ export default class HeaderBar extends React.Component {
                     <IconButton onClick={onDownload} icon={<Icon icon="download" />}>{local.download ? local.download : "Download"}</IconButton>
                     <IconButton onClick={onChooseFileUpload} icon={<Icon icon="upload" />}>{local.upload ? local.upload : "Upload"}</IconButton>
                     <IconButton onClick={this.onSettings.bind(this)} icon={<Icon icon="setting" />}>{local.settings ? local.settings : "Settings"}</IconButton>
-                    <IconButton onClick={BuilderActions.undo} icon={<Icon icon="undo" />}>Undo</IconButton>
+                    <IconButton onClick={BuilderActions.undo} disabled={!canUndo} icon={<Icon icon="undo" />}>Undo</IconButton>
+                    <IconButton onClick={BuilderActions.redo} disabled={!canRedo} icon={<Icon icon="repeat" />}>Redo</IconButton>
                     {/* <IconButton onClick={this.onLibrary.bind(this)} icon={<Icon icon="info" />}>{local.library ? local.library : "Library"}</IconButton> */}
                     {!blockChangeViewerMode && <Toggle checked={this.props.viewerMode} onChange={this.props.onBuilderSwitch} checkedChildren={local.viewer ? local.viewer : "Viewer"} unCheckedChildren={local.builder ? local.builder : "Builder"} />}
                     {viewerMode && <IconButton onClick={this.props.onPrint} icon={<Icon icon="print" />}>{local.print ? local.print : "Print"}</IconButton>}

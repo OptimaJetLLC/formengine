@@ -11,7 +11,9 @@ const BuilderActions = Reflux.createActions([
     'changeItem',
     'undo',
     'redo',
-    'select'
+    'select',
+    'dataChanged',
+    'treeChanged'
 ]);
 
 export default BuilderActions;

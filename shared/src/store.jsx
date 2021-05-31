@@ -9,10 +9,11 @@ import BuilderActions from './actions';
 var Reflux = require('reflux');
 const clone = require('clone');
 
-var _data;
-var _selected;
-var _history = [];
-var _temporaryValues;
+let _data;
+let _selected;
+let _history = [];
+let _historyPosition = -1;
+const HISTORY_LIMIT = 100;
 
 var FormBuilderStore = Reflux.createStore({
     init: function () {
@@ -23,11 +24,10 @@ var FormBuilderStore = Reflux.createStore({
         this.listenTo(BuilderActions.saveData, this._updateOrder);
         this.listenTo(BuilderActions.insert, this.insert);
         this.listenTo(BuilderActions.changeItem, this.changeItem);
-        this.listenTo(BuilderActions.undo, this.undo);        
+        this.listenTo(BuilderActions.undo, this.undo);
         this.listenTo(BuilderActions.redo, this.redo);
 
         _data = [];
-        _temporaryValues = {};   
     },
 
     move: function (key, el) {
@@ -78,15 +78,15 @@ var FormBuilderStore = Reflux.createStore({
                 else if (el.attributes['name'] != undefined && el.attributes['name'].value.includes('dropzone_header')) {
                     container.unshift(item);
                 }
-                else if(el.attributes['elementafter'] != undefined) {
+                else if (el.attributes['elementafter'] != undefined) {
                     let afterKey = el.attributes['elementafter'];
                     let afterControl = this.findItemByKey(afterKey.value, container);
-                    container.splice(container.indexOf(afterControl), 0, item);                    
+                    container.splice(container.indexOf(afterControl), 0, item);
                 }
-                else if(el.attributes['elementbefore'] != undefined) {
+                else if (el.attributes['elementbefore'] != undefined) {
                     let beforeKey = el.attributes['elementbefore'];
                     let beforeControl = this.findItemByKey(beforeKey.value, container);
-                    container.splice(container.indexOf(beforeControl) + 1, 0, item);                    
+                    container.splice(container.indexOf(beforeControl) + 1, 0, item);
                 }
             }
             else {
@@ -123,7 +123,9 @@ var FormBuilderStore = Reflux.createStore({
         }
 
         this.setData(sortedArray);
+        this.saveCurrentState();
     },
+
     insert: function (item, name, elementtoinsert, elementafter, placeholderKey) {
         if (!item) {
             return;
@@ -187,8 +189,11 @@ var FormBuilderStore = Reflux.createStore({
                 console.error('ERROR: element is not found', elementafter, item);
             }
         }
+
         this.setData(sortedArray);
+        this.saveCurrentState();
     },
+
     _excludeItemByKey: function (key, data) {
         var sortedArray = [];
         for (var i = 0; i < data.length; i++) {
@@ -215,6 +220,7 @@ var FormBuilderStore = Reflux.createStore({
         }
         return sortedArray;
     },
+
     add: function (item, el) {
         var res = BaseControls.fillDefaultValues({
             key: this.getDefaultKey(item.key),
@@ -222,7 +228,7 @@ var FormBuilderStore = Reflux.createStore({
         }, item.defaultValues);
 
         let settings = this.getByKey("__settings");
-        if(settings && settings.pinned){
+        if (settings && settings.pinned) {
             res.pinned = true;
         }
 
@@ -278,12 +284,12 @@ var FormBuilderStore = Reflux.createStore({
                 else if (el.attributes['name'] != undefined && el.attributes['name'].value.includes('dropzone_header')) {
                     container.unshift(res);
                 }
-                else if(el.attributes['elementafter'] != undefined) {
+                else if (el.attributes['elementafter'] != undefined) {
                     var afterKey = el.attributes['elementafter'];
                     var afterControl = this.findItemByKey(afterKey.value, container);
                     container.splice(container.indexOf(afterControl), 0, res);
                 }
-                else if(el.attributes['elementbefore'] != undefined) {
+                else if (el.attributes['elementbefore'] != undefined) {
                     var beforeKey = el.attributes['elementbefore'];
                     var beforeControl = this.findItemByKey(beforeKey.value, container);
                     container.splice(container.indexOf(beforeControl) + 1, 0, res);
@@ -321,33 +327,26 @@ var FormBuilderStore = Reflux.createStore({
                 console.error('ERROR: element is not found', beforeKey, el);
             }
         }
-
-        this.setData(_data);
+        BuilderActions.treeChanged();
+        this.saveCurrentState();
     },
 
     remove: function (item) {
         this.removeItemByKey(item.key, _data);
-        this.setData(_data);
+        BuilderActions.treeChanged();
+        this.saveCurrentState();
     },
 
     copy: function (item) {
         var newItem = this.copyObj(item);
         this.insertAfterKey(newItem, item.key, _data);
         this.makeUniqueKeys(newItem);
-        this.setData(_data);
+        BuilderActions.treeChanged();
+        this.saveCurrentState();
     },
 
     getData: function () {
         return _data;
-    },
-
-    setData: function (data) {        
-        _history.push(this.copyObj(_data));
-        _data = data;
-        this.trigger(_data);
-        if (_history.length <= 1) {
-            this.select(_data[1]?.key);
-        }
     },
 
     _updateOrder: function (elements) {
@@ -370,6 +369,7 @@ var FormBuilderStore = Reflux.createStore({
 
         return tmp;
     },
+
     getAllKeys: function (items) {
         var res = [];
         if (items != undefined) {
@@ -393,13 +393,15 @@ var FormBuilderStore = Reflux.createStore({
 
         return res;
     },
+
     getByKey: function (key) {
         return this.findItemByKey(key, _data);
     },
+
     findItemByKey: function (key, items) {
-        if(!Array.isArray(items))
+        if (!Array.isArray(items))
             return undefined;
-            
+
         for (var i = 0; i < items.length; i++) {
             var item = items[i];
             if (item.key == key) {
@@ -424,6 +426,7 @@ var FormBuilderStore = Reflux.createStore({
         }
         return undefined;
     },
+
     insertAfterKey: function (insertItem, key, items) {
         for (var i = 0; i < items.length; i++) {
             var item = items[i];
@@ -450,13 +453,14 @@ var FormBuilderStore = Reflux.createStore({
         }
         return undefined;
     },
+
     updateItemByKey: function (key, item) {
         var data = this.getByKey(key);
-        if(!item) 
+        if (!item)
             return;
 
-        if(!data){
-            data = {key};
+        if (!data) {
+            data = { key };
             this.insert(data, "dropzone_header");
         }
 
@@ -468,7 +472,7 @@ var FormBuilderStore = Reflux.createStore({
             this.replaceDepensKeys(key, item.key);
         }
 
-        this.setData(_data);
+        this.saveCurrentState();
     },
 
     replaceDepensKeys: function (oldKey, newKey, items) {
@@ -500,6 +504,7 @@ var FormBuilderStore = Reflux.createStore({
             }
         }
     },
+
     removeItemByKey: function (key, items) {
         for (var i = 0; i < items.length; i++) {
             var item = items[i];
@@ -520,7 +525,11 @@ var FormBuilderStore = Reflux.createStore({
                 }
             }
         }
+
+        BuilderActions.treeChanged();
+        this.saveCurrentState();
     },
+
     copyObj(obj) {
         if (null == obj || 'object' !== typeof obj) {
             return obj;
@@ -534,6 +543,7 @@ var FormBuilderStore = Reflux.createStore({
         }
         return copy;
     },
+
     makeUniqueKeys(obj, allKeys) {
         var me = this;
         var buildertype = obj['data-buildertype'];
@@ -560,55 +570,74 @@ var FormBuilderStore = Reflux.createStore({
         }
     },
 
-    setTemporaryValue: function(key, data){
-        _temporaryValues[key] = data;
-        this.setData(_data);
-    },
-
-    resetTemporaryValue: function(key){
-        delete _temporaryValues[key];
-        this.setData(_data);
-    },
-
-    getTemporaryValues: function(key){
-        return _temporaryValues;
-    },
-
-    getTemporaryData(){
-        let res = clone(_data);
-        let temp = _temporaryValues;
-        for(let p in temp){
-            let item = temp[p];
-            if(item){
-                var source = this.findItemByKey(p, res);
-                if(source){
-                    for (var i in item) {
-                        source[i] = item[i];
-                    }
-                }
-            }
-        }
-        return res;
-    },
     changeItem: function (key, changeset) {
-        var model = this.getByKey(key);       
-        for(let p in changeset){
+
+        var model = this.getByKey(key);
+        for (let p in changeset) {
             model[p] = changeset[p];
         }
+        this.saveCurrentState();
+    },    
 
-        this.setData(_data);
+    saveCurrentState() {
+        if (_historyPosition < (_history?.length - 1)) {            
+            _history.splice(_historyPosition + 1);
+        }
+
+        _history.push(this.copyObj(_data));
+        ++_historyPosition;        
+
+        if (_history?.length > HISTORY_LIMIT) {
+            _history.splice(0, _history.length - HISTORY_LIMIT);
+            _historyPosition = HISTORY_LIMIT - 1;
+        }
+
+        this.trigger(_data);
+        BuilderActions.dataChanged();
     },
+
+    setData: function (data) {
+        _data = data;
+        this.trigger(_data);
+        BuilderActions.treeChanged();
+        if (_history.length <= 0) {
+            this.saveCurrentState();
+            this.select(_data[1]?.key);
+        }
+    },
+
+    canUndo() {
+        return _historyPosition > 0;
+    },
+
+    canRedo() {
+        return _historyPosition < (_history?.length - 1);
+    },
+
     undo() {
-      // retrieve cached data
-      _data = _history.pop();
-      this.trigger(_data);
+        // retrieve cached data
+        if (!this.canUndo()) {
+            return;
+        }
+        --_historyPosition;
+        _data = this.copyObj(_history[_historyPosition]);
+        this.trigger(_data);
+        BuilderActions.dataChanged();
     },
+
     redo() {
-      // retrieve cached data
-      var data = _history.pop();
-      this.setData(data);
+        // retrieve cached data
+        if (!this.canRedo()) {
+            return;
+        }
+        ++_historyPosition;
+        _data = this.copyObj(_history[_historyPosition]);
+        this.trigger(_data);
+        BuilderActions.dataChanged();
     },
+
     select(key) {
+        if (!key) return;
         _selected = key;
         BuilderActions.showEditForm(key);
     },

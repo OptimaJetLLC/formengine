@@ -34,10 +34,10 @@ export default class Viewer extends BaseFormViewer {
         const style = this.props.show ? {} : {display:"none"};
         var local = this.props.localization ? this.props.localization : {}; 
 
-        return (<div style={style} className={("formbuilder-viewer" + (isShowControlTree ? " with-control-tree" : ""))}>
+        return (<div style={style} className="formbuilder-viewer">
             <Split style={{ display: 'flex' }} sizes={[80, 20]} onDrag={() => this.forceUpdate()}>
                 <div>
-                    <div className="formbuilder-viewer-form" style={{ overflow: 'auto' }}>                    
+                    <div className={("formbuilder-viewer-form" + (isShowControlTree ? " with-control-tree" : ""))} style={{ overflow: 'auto' }}>                    
                         <Form
                             model={this.state.model}
                             data={data}

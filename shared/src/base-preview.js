@@ -19,7 +19,7 @@ export default class BasePreview extends Component {
     }
 
     modelChanged() {
-        let model = FormBuilderStore.getTemporaryData();
+        let model = FormBuilderStore.getData();
         let settings = this.getSettings();
         let data = {};
         if(settings && settings.defaultvalues){

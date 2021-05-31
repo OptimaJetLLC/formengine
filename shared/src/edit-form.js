@@ -14,7 +14,9 @@ export default class EditForm extends Component {
             open: false
         };
 
-        FormBuilderStore.listenTo(BuilderActions.showEditForm, this.onShow.bind(this));
+
+        FormBuilderStore.listen(() =>  this.onShow(this.state.key));
+        FormBuilderStore.listenTo(BuilderActions.showEditForm, this.onShow);
     }
 
     handleChange(e, { name, value, checked }) {
@@ -65,11 +67,10 @@ export default class EditForm extends Component {
         }
         
         this.setState({ item: data });
-        //FormBuilderStore.setTemporaryValue(this.state.key, data);
         this.onSave();
     }
 
-    onShow(key) {
+    onShow = (key) => {
         const data = FormBuilderStore.getByKey(key);
         let item = {};
         for (let i in data) {
@@ -132,26 +133,25 @@ export default class EditForm extends Component {
 
     onSave() {
         FormBuilderStore.updateItemByKey(this.state.key, this.state.item);
-        this.onCloseConfirmed();
+        // this.onCloseConfirmed();
 
-        if (this.state.item['data-buildertype'] === 'gridlayout') {
-            setTimeout(function () {
-                if (typeof (Event) === 'function') {
-                    window.dispatchEvent(new Event('resize'));
-                }
-                else {
-                    const evt = window.document.createEvent('UIEvents');
-                    evt.initUIEvent('resize', true, false, window, 0);
-                    window.dispatchEvent(evt);
-                }
-            }, 100);
-        }
+        // if (this.state.item['data-buildertype'] === 'gridlayout') {
+        //     setTimeout(function () {
+        //         if (typeof (Event) === 'function') {
+        //             window.dispatchEvent(new Event('resize'));
+        //         }
+        //         else {
+        //             const evt = window.document.createEvent('UIEvents');
+        //             evt.initUIEvent('resize', true, false, window, 0);
+        //             window.dispatchEvent(evt);
+        //         }
+        //     }, 100);
+        // }
 
     }
 
     onCloseConfirmed() {
         this.setState({ open: false, confirm: false });
-        ///FormBuilderStore.resetTemporaryValue(this.state.key);
     }
 
     render() {

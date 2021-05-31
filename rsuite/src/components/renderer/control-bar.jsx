@@ -522,7 +522,7 @@ register('control-bar', options => {
                                     onMouseOver={onMouseOver}
                                     onMouseLeave={onMouseLeave}
                                     onMouseDown={onMouseDown}
-                                    draggable={!model.pinned}
+                                    draggable={true}
                                     onDragStart={model.pinned ? undefined : onDragStart}
                                     onDragEnd={model.pinned ? undefined : onDragEnd}
                                 >
@@ -598,7 +598,7 @@ register('control-bar', options => {
                 </div>
             );
 
-            let selectionClassName = "formbuilder-item-toolbar-container selection";
+            let selectionClassName = baseClassName + " formbuilder-item-toolbar-container selection";
             if (selected) {
                 selectionClassName += " selected";
             }
@@ -607,15 +607,15 @@ register('control-bar', options => {
             }
             let selection = (
                 <div key={selectionKey} ref={options.me.selectionRef}
-                    style={{...stylePinned(10)}}
+                    style={{...stylePinned(10)}} 
                     className={selectionClassName}
                     onMouseClick={onControlMouseDown}
                     onMouseOver={onMouseOver}
                     onMouseLeave={onMouseLeave}
-                    onMouseDown={onMouseDown}
+                    onClick={onMouseDown}
                     draggable={!model.pinned}
-                    onDragStart={model.pinned ? undefined : onDragStart}
-                    onDragEnd={model.pinned ? undefined : onDragEnd}
+                    onDragStart={onDragStart}
+                    onDragEnd={onDragEnd}
                 />
             );
 

@@ -7,16 +7,16 @@ export default class BaseControlTree extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            model: FormBuilderStore.getTemporaryData() || [],
+            model: FormBuilderStore.getData() || [],
             selectedKey: null,
         };
 
-        FormBuilderStore.listen(this.onModelChanged);
+        FormBuilderStore.listenTo(BuilderActions.treeChanged, this.onTreeChanged);
         FormBuilderStore.listenTo(BuilderActions.showEditForm, this.onSelect);
     }
 
-    onModelChanged = () => {
-        let model = FormBuilderStore.getTemporaryData();
+    onTreeChanged = () => {
+        let model = FormBuilderStore.getData();
         
         this.setState({ model: model.filter(item => item["data-buildertype"] !== "__settings") });
     }

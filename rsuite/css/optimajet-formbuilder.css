@@ -126,7 +126,7 @@ body, h1, h2, h3, h4, h5 {
 
 .formbuilder-control-tree {
   box-shadow: inset 0px 0px 15px rgb(0 0 0 / 25%);
-  width: var(--control-tree-width);
+  min-width: var(--control-tree-width);
   padding-right: 10px;
   padding-top: 15px;
 }
@@ -609,7 +609,7 @@ input .formbuilder-item-toolbar-header:hover {
   padding-top: 15px;
 }
 
-.formbuilder-viewer.with-control-tree {
+.formbuilder-viewer-form.with-control-tree {
   margin-left: var(--control-tree-width);
 }
 
