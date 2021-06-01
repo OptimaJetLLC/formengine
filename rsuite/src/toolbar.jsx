@@ -13,46 +13,7 @@ export default class Toolbar extends BaseToolbar {
     }
 
     onDragStart(item, e) {
-        let selector = '.formbuilder-zone';
-        e.dataTransfer.setData('text', '');
-
-        if (isDefined(item.forContainerType)) {
-            let cTypes = item.forContainerType.split(',');
-            let subSelector = '';
-            cTypes.forEach(function (c) {
-                if (subSelector.length > 0) {
-                    subSelector += ',';
-                }
-                subSelector += '[data-buildertype=\'' + c + '\'] > ' + selector;
-            });
-            selector = subSelector;
-        }
-
-        $(selector)
-            .addClass('formbuilder-zone-active')
-            .on('dragenter', this.onTargetDragEnter.bind(this, item, 'formbuilder-zone-select'))
-            .on('dragleave', this.onTargetDragLeave.bind(this, item, 'formbuilder-zone-select'))
-            .on('dragover', function (e) {
-                e.preventDefault();
-            })
-            .on('drop', this.onDrop.bind(this, item));
-    }
-
-    onTargetDragEnter(item, css, e) {
-        $(e.target).addClass(css);
-    }
-
-    onTargetDragLeave(item, css, e) {
-        $(e.target).removeClass(css);
-    }
-
-    onDragEnd(item) {
-        this.stop = false;
-        const zones = $('.formbuilder-zone');
-
-        zones.removeClass('formbuilder-zone-active');
-        zones.removeClass('formbuilder-zone-select');
-        zones.off();
+        e.dataTransfer.setData('data', JSON.stringify({key: item, new: true}));
     }
 
     onDrop(item, e) {
@@ -138,7 +99,6 @@ export default class Toolbar extends BaseToolbar {
                                         return (<li draggable="true" className="formbuilder-toolbox-control"
                                                     key={(item.key + String(index))}
                                                     onDragStart={this.onDragStart.bind(this, item)}
-                                                    onDragEnd={this.onDragEnd.bind(this, item)}
                                                     onDoubleClick={this.onDoubleClick.bind(this, item)}>
                                             <Icon icon='check2' />
                                             <div className="formbuilder-toolbox-control-text">{title}</div>

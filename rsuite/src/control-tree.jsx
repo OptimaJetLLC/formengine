@@ -18,9 +18,6 @@ export default class ControlTree extends BaseControlTree {
                 onSelect={({key}) => this.select(key)}
                 style={{maxHeight: "100%"}}
                 defaultExpandAll
-                onDrop={({ createUpdateDataFunction }, event) =>
-                    this.setState({model: createUpdateDataFunction(model)})
-                }
         />
     }
 }

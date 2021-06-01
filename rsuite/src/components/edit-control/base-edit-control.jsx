@@ -104,7 +104,7 @@ export default class BaseEditControl extends Component {
 
         return (<Modal.Description>
             <Nav activeKey={activeItem} onSelect={activeItem => this.setState({activeItem})} appearance="subtle">
-                {this.menuItems.map(item => <Nav.Item eventKey={item.key}>{item.name}</Nav.Item>)}                
+                {this.menuItems.map(item => <Nav.Item  key={item.key} eventKey={item.key}>{item.name}</Nav.Item>)}                
             </Nav>
             {this.getDetailDescription(activeItem)}
         </Modal.Description>);

@@ -35,6 +35,9 @@ register('control-bar', options => {
     });
 
     options.me.updateBarPosition = () => {
+        if (state.dragOverTop || state.dragOverBottom) {
+            return;
+        }
         if (!options.me.controlRef || !options.me.controlRef.current || !options.me.barRef || !options.me.barRef.current)
             return;
 
@@ -148,22 +151,17 @@ register('control-bar', options => {
         }
     }
 
-    var showBarElements = (show) => {
-        // if (show) {
-        //     $(".formbuilder-item-toolbar-header-buttons").show();
-        //     $(".formbuilder-toolbar-resize").show();
-        // }
-        // else {
-        //     $(".formbuilder-item-toolbar-header-buttons").hide();
-        //     $(".formbuilder-toolbar-resize").hide();
-        // }
-    }
-
     var onDrop = (e) => {
         var el = $(e.target);
+        var data = JSON.parse(e.dataTransfer.getData('data'));
+        e.dataTransfer.clearData();
 
         if (el.length > 0) {
-            BuilderActions.move(model.key, el[0]);
+            if (data.new) {                
+                BuilderActions.add(data.key, el[0]);
+            } else {
+                BuilderActions.move(data.key, el[0]);
+            }
         }
 
         onDragEnd();
@@ -171,54 +169,37 @@ register('control-bar', options => {
     }
 
     var onDragStart = (e) => {
-        let targetCss = 'formbuilder-zone-select';
-
-        var onTargetDragEnter = (e) => {
-            $(e.target).addClass(targetCss);
-        }
-
-        var onTargetDragLeave = (e) => {
-            $(e.target).removeClass(targetCss);
-        }
-
-        let selector = '.formbuilder-zone';
-
-        e.dataTransfer.setData('text', '');
+        me.setState({dragging: true});
+        e.dataTransfer.setData('data', JSON.stringify({key: model.key, new: false}));
 
         if (options.me.controlRef.current) {
             var control = ReactDOM.findDOMNode(options.me.controlRef.current);
             var controlPos = control.getBoundingClientRect();
             e.dataTransfer.setDragImage(control, controlPos.width / 2, 0);
         }
-
-        if (isDefined(model.forContainerType)) {
-            let cTypes = model.forContainerType.split(',');
-            let subSelector = '';
-            cTypes.forEach((c) => {
-                if (subSelector.length > 0) {
-                    subSelector += ',';
-                }
-                subSelector += '[data-buildertype=\'' + c + '\'] > ' + selector;
-            });
-            selector = subSelector;
-        }
-
-        $(selector)
-            .addClass('formbuilder-zone-active')
-            .on('dragenter', onTargetDragEnter)
-            .on('dragleave', onTargetDragLeave)
-            .on('dragover', (e) => {
-                e.preventDefault();
-            })
-            .on('drop', onDrop);
     }
 
-    var onDragEnd = () => {
-        var zones = $('.formbuilder-zone');
+    var onDragOver = (e) => {
+        e.preventDefault();
+        let controlPos = e.currentTarget.getBoundingClientRect();
+        if (e.clientY <= (controlPos.top + controlPos.height / 2)) 
+        {
+            me.setState({dragOverTop: true, dragOverBottom: false});
+        } else {
+            me.setState({dragOverTop: false, dragOverBottom: true});
+        }
+    }
 
-        zones.removeClass('formbuilder-zone-active');
-        zones.removeClass('formbuilder-zone-select')
-        zones.off();
+    var onDragEnd = (e) => {   
+        me.setState({dragging: false, dragOverTop: false, dragOverBottom: false});
+    }
+
+    var onDragEnter = (e) => {   
+        onDragOver(e);
+    }
+
+    var onDragLeave = (e) => { 
+        me.setState({dragOverTop: false, dragOverBottom: false });
     }
 
     var onMouseOver = (e) => {
@@ -228,17 +209,6 @@ register('control-bar', options => {
         if (!hovered) {
             me.setState({ hovered: true });
         }
-        // var control = undefined;
-        // if(options.me.controlRef.current)
-        //     control = ReactDOM.findDOMNode(options.me.controlRef.current);
-        // var previousSelectedElements = document.getElementsByClassName("formbuilder-item-hovered");
-        // Array.prototype.forEach.call(previousSelectedElements, el => {
-        //     if (el !== control) {
-        //         $(el).removeClass("formbuilder-item-hovered");
-        //     }
-        // })
-        // if(control)
-        //     $(control).addClass("formbuilder-item-hovered");
     }
 
     var onMouseLeave = (e) => {
@@ -246,11 +216,6 @@ register('control-bar', options => {
         if (hovered) {
             me.setState({ hovered: false });
         }
-        // var control = undefined;
-        // if(options.me.controlRef.current)
-        //     control = ReactDOM.findDOMNode(options.me.controlRef.current);
-        // if(control)
-        //     $(control).removeClass("formbuilder-item-hovered");
     }
 
     var onPinned = () => {
@@ -306,8 +271,6 @@ register('control-bar', options => {
     }
 
     var onMouseDown = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
         var control = undefined;
         
         options.me.props.onEdit(options.props.model);
@@ -315,7 +278,7 @@ register('control-bar', options => {
         if (options.me.controlRef.current)
             control = ReactDOM.findDOMNode(options.me.controlRef.current);
 
-        if (control) {
+        if (control && !!model.pinned) {
             var rect = control.getBoundingClientRect();
             mouseDX = e.pageX - rect.left - $(document).scrollLeft();
             mouseDY = e.pageY - rect.top - $(document).scrollTop();
@@ -352,7 +315,6 @@ register('control-bar', options => {
         e.preventDefault();
         window.addEventListener('mousemove', onResize);
         window.addEventListener('mouseup', stopResize);
-        showBarElements(false);
     }
 
     var stopResize = () => {
@@ -367,7 +329,6 @@ register('control-bar', options => {
         if (moveState.marginLeft != undefined) fields["style-marginLeft"] = moveState.marginLeft + "px";
         if (moveState.marginTop != undefined) fields["style-marginTop"] = moveState.marginTop + "px";
 
-        showBarElements(true);
         BuilderActions.changeItem(model.key, fields);
         moveState = {};
         mouseDX = undefined;
@@ -483,38 +444,39 @@ register('control-bar', options => {
         }
     }
 
-    var onControlMouseDown = (e) => {
+    var onClick = (e) => {
         e.preventDefault();
         e.stopPropagation();
         options.me.props.onEdit(options.props.model);
         options.me.setState({ selected: true })
     };
 
-    var { selected, hovered } = state;
+    var { selected, hovered, dragging, dragOverTop, dragOverBottom } = state;
+    const makeKey = key => options.props.model.key + "_" + key;
 
-    var className = "formbuilder-item-toolbar-header";
-    let controlBarKey = options.props.model["key"] + "_controlbar";
-    let controlResizeKey = options.props.model["key"] + "_controlresize";
-    let pointTopKey = options.props.model["key"] + "_pointTop";
-    let pointBottomKey = options.props.model["key"] + "_pointBottom";
-    let pointLeftKey = options.props.model["key"] + "_pointLeft";
-    let pointRightKey = options.props.model["key"] + "_pointRight";
-    let selectionKey = options.props.model["key"] + "_selection";
+    const stylePinned = zIndex => model.pinned ? {zIndex} : {};    
 
-    const stylePinned = zIndex => model.pinned ? {zIndex} : {};
+    let baseClassName = "formbuilder-toolbar-point";
+    if (!model.pinned) baseClassName += " formbuilder-zone";
 
-
+    const point = (key, ref) =>  (
+        <div key={makeKey(key)} ref={ref} onMouseDown={e => startResize(e, key)}
+             style={{...getDisplayStyle(selected), ...stylePinned(11)}}
+             className={`formbuilder-item-toolbar-container point-${key}`}>
+            <div className={baseClassName + ` formbuilder-toolbar-point-${key}`}/>
+        </div>
+    );
 
     return <DropzoneContext.Consumer>
 
         {({ isBuilder }) => {
-            const visible = isBuilder && state.selected;
-            let bar = (
-                <VisibilityWrapper currentKey={model.key}>
-                    <div key={controlBarKey} ref={options.me.barRef}
+            const visible = isBuilder && selected;
+            const bar = (
+                <VisibilityWrapper currentKey={model.key} key={makeKey("wrapper")}>
+                    <div key={makeKey("controlbar")} ref={options.me.barRef}
                         className={'formbuilder-item-toolbar-container bar'}
                         style={{...getDisplayStyle(visible), ...stylePinned(12)}}>
-                        <div className={className} >
+                        <div className={"formbuilder-item-toolbar-header"}>
                             <div className="formbuilder-item-toolbar-header-buttons" >
                                 <div className="formbuilder-item-toolbar-header-title"
                                     title={options.props.text}
@@ -529,97 +491,70 @@ register('control-bar', options => {
                                     {options.props.model["key"]}
                                 </div>
                                 <Icon onClick={onPinned} icon='thumb-tack' style={{ color: model.pinned ? '#ffb818' : 'initial' }} />
-                                <Icon onClick={options.me.props.onCopy.bind(options.props.parent, options.props.model)} icon='copy-o' />
-                                <Icon onClick={options.me.props.onDelete.bind(options.props.parent, options.props.model)} icon='trash' />
+                                <Icon onClick={options.me.props.onCopy.bind(options.props.parent, options.props.model)} icon='copy' />
+                                <Icon onClick={options.me.props.onDelete.bind(options.props.parent, options.props.model)} icon='trash-o' />
                             </div>
                         </div>
                     </div>
                 </VisibilityWrapper>
             );
 
-            let resize = (
-                <div key={controlResizeKey} ref={options.me.resizeRef} onMouseDown={(e) => { startResize(e) }}
+            const resize = (
+                <div key={makeKey("resize")} ref={options.me.resizeRef} onMouseDown={(e) => { startResize(e) }}
                 style={{...getDisplayStyle(visible), ...stylePinned(11)}} className="formbuilder-item-toolbar-container resize">
                     <div className="dot" />
                 </div>
             );
 
-            let baseClassName = "formbuilder-toolbar-point";
-            if (!model.pinned) {
-                baseClassName += " formbuilder-zone";
-            }
+            const selectionClassName = baseClassName 
+                + " formbuilder-item-toolbar-container selection"
+                + (selected ? " selected" : "")
+                + (hovered ? " hovered" : "")
 
-            let pointTop = (
-                <div key={pointTopKey} ref={options.me.pointTopRef}
-                        onMouseDown={(e) => { startResize(e, "top") }}
-                        style={{...getDisplayStyle(visible), ...stylePinned(11)}} className="formbuilder-item-toolbar-container point-top">
-                    <div className={baseClassName + " formbuilder-toolbar-point-top"}
-                        elementafter={model.key}
-                        elementtoinsert={options.props.elementtoinsert}
-                        placeholderkey={options.props.placeholderKey}
-                    />
-                </div>
-            );
-
-            let pointLeft = (
-                <div key={pointLeftKey} ref={options.me.pointLeftRef}
-                    onMouseDown={(e) => { startResize(e, "left") }}
-                    style={{...getDisplayStyle(visible), ...stylePinned(11)}} className="formbuilder-item-toolbar-container point-left">
-                    <div className={baseClassName + " formbuilder-toolbar-point-left"}
-                        elementafter={model.key}
-                        elementtoinsert={options.props.elementtoinsert}
-                        placeholderkey={options.props.placeholderKey}
-                    />
-                </div>
-            );
-
-            let pointBottom = (
-                <div key={pointBottomKey} ref={options.me.pointBottomRef}
-                    onMouseDown={(e) => { startResize(e, "bottom") }}
-                    style={{...getDisplayStyle(visible), ...stylePinned(11)}} className="formbuilder-item-toolbar-container point-bottom">
-                    <div className={baseClassName + " formbuilder-toolbar-point-bottom"}
-                       
-                        elementbefore={model.key}
-                        elementtoinsert={options.props.elementtoinsert}
-                        placeholderkey={options.props.placeholderKey}
-                    />
-                </div>
-            );
-
-            let pointRight = (
-                <div key={pointRightKey} ref={options.me.pointRightRef} 
-                    onMouseDown={(e) => { startResize(e, "right") }}
-                    style={{...getDisplayStyle(visible), ...stylePinned(11)}} className="formbuilder-item-toolbar-container point-right">
-                    <div className={baseClassName + " formbuilder-toolbar-point-right"}
-                        elementbefore={model.key}
-                        elementtoinsert={options.props.elementtoinsert}
-                        placeholderkey={options.props.placeholderKey}
-                    />
-                </div>
-            );
-
-            let selectionClassName = baseClassName + " formbuilder-item-toolbar-container selection";
-            if (selected) {
-                selectionClassName += " selected";
-            }
-            if (hovered) {
-                selectionClassName += " hovered";
-            }
-            let selection = (
-                <div key={selectionKey} ref={options.me.selectionRef}
+            const selection = (
+                <div key={makeKey("selection")} ref={options.me.selectionRef}
                     style={{...stylePinned(10)}} 
                     className={selectionClassName}
-                    onMouseClick={onControlMouseDown}
+                    onClick={onClick}
                     onMouseOver={onMouseOver}
                     onMouseLeave={onMouseLeave}
-                    onClick={onMouseDown}
+                    onMouseDown={onMouseDown}
                     draggable={!model.pinned}
                     onDragStart={onDragStart}
                     onDragEnd={onDragEnd}
+                    onDragEnter={dragging ? undefined : onDragEnter} onDragLeave={dragging ? undefined : onDragLeave}
+                    onDragOver={dragging ? undefined : onDragOver} onDrop={dragging ? undefined : onDrop}
+                    elementafter={dragOverTop ? model.key : undefined}
+                    elementbefore={dragOverBottom ? model.key : undefined}
+                    elementtoinsert={options.props.elementtoinsert}
+                    placeholderkey={options.props.placeholderKey}
                 />
             );
 
-            return [ selection, React.cloneElement(options.props.control, { ref: options.me.controlRef }),pointTop, pointBottom, pointLeft, pointRight, bar, resize];
+            const dragOverTopEl = (
+                <div  key={makeKey("drag-over-top")}
+                      className={("drag-over-animation top" + (dragOverTop ? " active" : ""))}
+                      onDragOver={dragging ? undefined : _=> me.setState({dragOverTop: true, dragOverBottom: false})} />
+            )
+            
+            const dragOverBottomEl = (
+                <div key={makeKey("drag-over-bottom")}
+                     className={("drag-over-animation bottom" + (dragOverBottom ? " active" : ""))}
+                     onDragOver={dragging ? undefined : _=> me.setState({dragOverBottom: true, dragOverTop: false})} />
+            );
+
+            return [ 
+                selection,
+                dragOverTopEl,
+                React.cloneElement(options.props.control, { ref: options.me.controlRef }),
+                point("top", options.me.pointTopRef),
+                point("bottom", options.me.pointBottomRef),
+                point("left", options.me.pointLeftRef),
+                point("right", options.me.pointRightRef),
+                bar,
+                resize, 
+                dragOverBottomEl               
+            ];
         }}
     </DropzoneContext.Consumer>
 }

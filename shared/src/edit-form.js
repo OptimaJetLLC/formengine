@@ -13,10 +13,14 @@ export default class EditForm extends Component {
             item: undefined,
             open: false
         };
+    }
 
-
-        FormBuilderStore.listen(() =>  this.onShow(this.state.key));
+    componentDidMount() {
         FormBuilderStore.listenTo(BuilderActions.showEditForm, this.onShow);
+    }
+
+    componentWillUnmount() {
+        FormBuilderStore.stopListeningTo(BuilderActions.showEditForm);
     }
 
     handleChange(e, { name, value, checked }) {

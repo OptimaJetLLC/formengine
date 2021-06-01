@@ -109,7 +109,6 @@ body, h1, h2, h3, h4, h5 {
 
 .formbuilder-zone-select.formbuilder-toolbar-point{
     opacity: 1;
-    background: #E1E9F6;
 }
 
 .formbuilder-rightbar {
@@ -481,6 +480,24 @@ body, h1, h2, h3, h4, h5 {
 select .formbuilder-item-toolbar-header:hover,
 input .formbuilder-item-toolbar-header:hover {
     cursor: move;
+}
+
+.drag-over-animation {
+  transition: height .2s ease, margin-top .2s ease, margin-bottom .2s ease;
+  width: auto;
+  height: 0px;  
+  margin-top: 0px;
+  margin-bottom: 0px;
+  opacity: 0;
+  background-color: #a4c4ff;
+}
+
+.drag-over-animation.active{
+  transition: height .2s ease, margin-top .2s ease, margin-bottom .2s ease;
+  height: 4px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  opacity: 1;
 }
 
 .toolbar-header {
