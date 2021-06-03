@@ -20,7 +20,7 @@ export default class Viewer extends BaseFormViewer {
 
     render() {
         let data = {};
-        const {isShowControlTree} = this.props;
+        const {isShowControlTree, splitSizes, onDragSizes} = this.props;
         let errors = undefined;
         try {
             data = JSON5.parse(this.state.values);
@@ -35,7 +35,7 @@ export default class Viewer extends BaseFormViewer {
         var local = this.props.localization ? this.props.localization : {}; 
 
         return (<div style={style} className="formbuilder-viewer">
-            <Split style={{ display: 'flex' }} sizes={[80, 20]} onDrag={() => this.forceUpdate()}>
+            <Split style={{ display: 'flex' }} sizes={splitSizes} onDrag={onDragSizes}>
                 <div>
                     <div className={("formbuilder-viewer-form" + (isShowControlTree ? " with-control-tree" : ""))} style={{ overflow: 'auto' }}>                    
                         <Form
@@ -70,13 +70,11 @@ export default class Viewer extends BaseFormViewer {
                     <Input rows={20} onChange={this.handleChange.bind(this)} value={this.state.values} componentClass="textarea"/>
                     <h3>{local.errors ? local.errors : "Errors"}</h3>
                     <Input rows={6} onChange={this.handleChangeErrors.bind(this)}
-                            value={this.state.errors} componentClass="textarea"/>
+                            value={this.state.errors} componentClass="textarea"/>                            
+                    <h3>{local.events ? local.events : "Events"}</h3>
+                    <Input rows={5} readOnly={true} value={this.state.eventslog} componentClass="textarea"/>
                 </div>
             </Split>
-            <div className="formbuilder-viewer-footer">
-                <h3>{local.events ? local.events : "Events"}</h3>
-                <Input rows={5} readOnly={true} value={this.state.eventslog} componentClass="textarea"/>
-            </div>
         </div>);
     }
 

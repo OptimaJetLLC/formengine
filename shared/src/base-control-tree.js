@@ -15,6 +15,10 @@ export default class BaseControlTree extends Component {
         FormBuilderStore.listenTo(BuilderActions.showEditForm, this.onSelect);
     }
 
+    onRemoveControl = (key) => {
+        FormBuilderStore.remove({key});
+    }
+
     onTreeChanged = () => {
         let model = FormBuilderStore.getData();
         

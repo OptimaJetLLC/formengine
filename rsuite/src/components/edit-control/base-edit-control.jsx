@@ -14,7 +14,6 @@ export default class BaseEditControl extends Component {
         super(props);
       
         this.state = {
-            activeItem: 'general',
             defaultValuePreferInt: false
         };
 
@@ -96,18 +95,21 @@ export default class BaseEditControl extends Component {
     }
 
     getDescription() {
-        const activeItem = this.state.activeItem;
+        const {parent} = this.props;
+        const activeItem = parent.state.activeItem;
 
         this.menuItems.forEach(function (item) {
             item.active = item.name === activeItem;
         });
 
-        return (<Modal.Description>
-            <Nav activeKey={activeItem} onSelect={activeItem => this.setState({activeItem})} appearance="subtle">
+        return (<div className="formbuilder-editform-description">
+            <Nav activeKey={activeItem} onSelect={parent.setActiveItem} appearance="subtle">
                 {this.menuItems.map(item => <Nav.Item  key={item.key} eventKey={item.key}>{item.name}</Nav.Item>)}                
             </Nav>
-            {this.getDetailDescription(activeItem)}
-        </Modal.Description>);
+            <div className="form">
+                {this.getDetailDescription(activeItem)}
+            </div>
+        </div>);
     }
 
     getDetailDescription(activeItem) {
@@ -370,7 +372,7 @@ export default class BaseEditControl extends Component {
 
     render() {
         return (
-            <ToolbarPanel style={{height: "auto"}}
+            <ToolbarPanel style={{height: "auto"}} className="formbuilder-editform-panel"
                 header={
                     <>
                         <h6 style={{color: "white"}}>{this.props.data['key']}</h6>

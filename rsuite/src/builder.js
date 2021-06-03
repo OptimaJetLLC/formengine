@@ -19,6 +19,7 @@ export default class FormBuilder extends BaseFormBuilder {
         this.controls = controls;
         this.state.viewerMode = props.viewerMode == "viewer";
         this.state.showControlTree = true;
+        this.state.splitSizes = [77, 23];
 
         this.onDownload = this.onDownload.bind(this);
         this.onClear = this.create.bind(this);
@@ -52,8 +53,13 @@ export default class FormBuilder extends BaseFormBuilder {
         this.setState({showControlTree: !showControlTree}, () => dispatchWindowResize());
     }
 
+    onDragSplit = (splitSizes) => {
+        this.setState({splitSizes})
+        this.forceUpdate()
+    }
+
     renderBuilder(){
-        const {showControlTree} = this.state;
+        const {showControlTree, splitSizes} = this.state;
         const localization = this.getCurrentLocalization();
         const style = this.state.viewerMode ? {display:"none"} : {};
         const editForm = <EditForm actions={this.props.actions} localization={localization.editforms}
@@ -64,7 +70,7 @@ export default class FormBuilder extends BaseFormBuilder {
         return <div>
             {this.renderHeaderBar()}     
             <div style={style} className="formbuilder">                
-                <Split style={{ display: 'flex', flex: 1 }}  sizes={[80, 20]}  onDrag={() => this.forceUpdate()}>
+                <Split style={{ display: 'flex', flex: 1 }}  sizes={splitSizes}  onDrag={this.onDragSplit}>
                     <div style={{ display: 'flex'}}>
                     {showControlTree && <ControlTree style={{ marginRight: 10, width: 180 }} onClose={this.toggleControlTree}/>}
                     <div className="formbuilder-content formbuilder-dropzoneactive" onDragOver={this.onDragOver}>
@@ -82,7 +88,7 @@ export default class FormBuilder extends BaseFormBuilder {
                         />
                     </div>
                     </div>
-                    <div style={{ display: 'flex', flex: 1, height: "calc(100vh - 90px)"}}>
+                    <div style={{ display: 'flex', flex: 1}}>
                         
                         <ToolBar localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
                             externalControlList={this.props.externalControlList}
@@ -95,16 +101,17 @@ export default class FormBuilder extends BaseFormBuilder {
     }
 
     renderViewer(){
+        const { getFormFunc, downloadUrl, uploadUrl, externalControlList, externalControlRender } = this.props;
         const localization = this.getCurrentLocalization();
         return <Viewer
             show={this.state.viewerMode}
-            builder={this}
+            builder={this} splitSizes={this.state.splitSizes} onDrag={this.onDragSplit}
             localization={localization.viewer}
-            getFormFunc={this.props.getFormFunc}
-            downloadUrl={this.props.downloadUrl}
-            uploadUrl={this.props.uploadUrl}
-            externalControlList={this.props.externalControlList}
-            externalControlRender={this.props.externalControlRender} 
+            getFormFunc={getFormFunc}
+            downloadUrl={downloadUrl}
+            uploadUrl={uploadUrl}
+            externalControlList={externalControlList}
+            externalControlRender={externalControlRender} 
             isShowControlTree={this.state.showControlTree}            
             ref={(viewer) => { this.viewer = viewer; }}
         />;

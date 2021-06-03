@@ -467,6 +467,13 @@ register('control-bar', options => {
         </div>
     );
 
+    const onKeyDown = (e) => {        
+        e.preventDefault();
+        if (e.key === "Delete" || e.key === "Backspace") {
+            options.me.onRemoveControl(model.key);
+        }
+    }
+
     return <DropzoneContext.Consumer>
 
         {({ isBuilder }) => {
@@ -513,9 +520,10 @@ register('control-bar', options => {
 
             const selection = (
                 <div key={makeKey("selection")} ref={options.me.selectionRef}
-                    style={{...stylePinned(10)}} 
+                    style={{...stylePinned(10)}}  tabIndex="0"
                     className={selectionClassName}
                     onClick={onClick}
+                    onKeyDown ={onKeyDown }
                     onMouseOver={onMouseOver}
                     onMouseLeave={onMouseLeave}
                     onMouseDown={onMouseDown}

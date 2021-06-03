@@ -202,15 +202,30 @@ export default class BaseControls {
             }
         };
 
-        return draw('builder-dropzone', {
-            key: key,
-            elementToInsert: elementToInsert,
-            elementAfter: elementAfter,
-            onChangeDZ: onChangeDZ,
-            onClosePopup: onClosePopup,
-            placeholderKey: placeholderKey,
-            text: 'DROP ZONE',
-        });
+        class Dropzone extends React.Component {
+            constructor(props) {
+                super(props);
+            
+                this.state = {};
+                this.dropzoneRef = React.createRef();
+                this.dropzoneFrontRef = React.createRef();
+            }
+
+            render() {
+                return draw('builder-dropzone', {
+                    key: key, me: this,
+                    elementToInsert: elementToInsert,
+                    elementAfter: elementAfter,
+                    onChangeDZ: onChangeDZ,
+                    onClosePopup: onClosePopup,
+                    placeholderKey: placeholderKey,
+                    text: 'DROP ZONE',
+                });
+
+            }
+        }
+
+        return <Dropzone/>
     }
 
     isContainer(key) {
@@ -483,8 +498,8 @@ export default class BaseControls {
                         
                         if (children.length == 0) {
                             let dz_footer = BaseControls.createBuilderDropzone(
-                                model[i].key + '_dropzone_footer',
                                 newFormItem === undefined ? undefined : newFormItem.key,//parentItem === undefined ? undefined : parentItem.key,
+                                model[i].key + '_dropzone_footer',
                                 children[children.length - 1].key,
                                 model[i].key,
                                 model[i].key

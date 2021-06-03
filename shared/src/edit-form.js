@@ -9,18 +9,29 @@ export default class EditForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            activeItem: 'general',
             key: undefined,
             item: undefined,
             open: false
         };
     }
 
-    componentDidMount() {
+    setActiveItem = (activeItem) => {
+        this.setState({activeItem});
+    }
+
+    componentDidMount() {        
+        FormBuilderStore.listenTo(BuilderActions.changeItem, this.onChangeItem);
         FormBuilderStore.listenTo(BuilderActions.showEditForm, this.onShow);
     }
 
     componentWillUnmount() {
+        FormBuilderStore.stopListeningTo(BuilderActions.changeItem);
         FormBuilderStore.stopListeningTo(BuilderActions.showEditForm);
+    }
+
+    onChangeItem = () => {
+        this.onShow(this.state.key);
     }
 
     handleChange(e, { name, value, checked }) {

@@ -11,13 +11,22 @@ export default class ControlTree extends BaseControlTree {
         super(props);
     }
 
+    onKeyDown = (e) => {        
+        e.preventDefault();
+        if (e.key === "Delete" || e.key === "Backspace") {
+            this.onRemoveControl(this.state.selectedKey);
+        }
+    }
+
     render() {
         const { model, selectedKey } = this.state;
-        return <Tree className="formbuilder-control-tree" value={selectedKey}
+        return <div  onKeyDown={this.onKeyDown}>
+            <Tree className="formbuilder-control-tree" value={selectedKey}
                 data={model} valueKey="key" labelKey="key"
                 onSelect={({key}) => this.select(key)}
                 style={{maxHeight: "100%"}}
-                defaultExpandAll
-        />
+                defaultExpandAll tabIndex="0"
+            />
+        </div>
     }
 }

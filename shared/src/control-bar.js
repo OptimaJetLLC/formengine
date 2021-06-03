@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import JSON5 from 'json5';
+import FormBuilderStore from './store.jsx';
 import { draw } from './component-render-registry';
 
 export default class ControlBar extends Component {
@@ -23,6 +24,10 @@ export default class ControlBar extends Component {
             onCopyControl: this.onCopyControl.bind(this, this.props.model),
             me: this,
         });
+    }
+
+    onRemoveControl = (key) => {
+        FormBuilderStore.remove({key});
     }
 
     onCopyControl(model, e) {

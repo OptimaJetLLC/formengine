@@ -123,6 +123,7 @@ var FormBuilderStore = Reflux.createStore({
         }
 
         this.setData(sortedArray);
+        BuilderActions.treeChanged();
         this.saveCurrentState();
     },
 
@@ -191,6 +192,7 @@ var FormBuilderStore = Reflux.createStore({
         }
 
         this.setData(sortedArray);
+        BuilderActions.treeChanged();
         this.saveCurrentState();
     },
 
@@ -334,6 +336,7 @@ var FormBuilderStore = Reflux.createStore({
     remove: function (item) {
         this.removeItemByKey(item.key, _data);
         BuilderActions.treeChanged();
+        this.select(_data[1]?.key);
         this.saveCurrentState();
     },
 
@@ -527,7 +530,6 @@ var FormBuilderStore = Reflux.createStore({
         }
 
         BuilderActions.treeChanged();
-        this.saveCurrentState();
     },
 
     copyObj(obj) {
@@ -622,6 +624,7 @@ var FormBuilderStore = Reflux.createStore({
         --_historyPosition;
         _data = this.copyObj(_history[_historyPosition]);
         this.trigger(_data);
+        BuilderActions.treeChanged();
         BuilderActions.dataChanged();
     },
 
@@ -633,6 +636,7 @@ var FormBuilderStore = Reflux.createStore({
         ++_historyPosition;
         _data = this.copyObj(_history[_historyPosition]);
         this.trigger(_data);
+        BuilderActions.treeChanged();
         BuilderActions.dataChanged();
     },
 

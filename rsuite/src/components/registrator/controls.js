@@ -36,77 +36,6 @@ import TreePicker from '../renderer/tree-picker';
 import RichTextEditorControl from '../renderer/rich-text-editor';
 
 const controls = [
-    { key: 'sepContainers', title: 'Containers', separator: true, defaultopen: true },
-    { key: 'container', title: 'Container', control: Container },
-    {
-        key: 'staticcontent',
-        title: 'Static Content',
-        control: StaticContent,
-        defaultValues: { content: 'Text...' }
-    },
-    { key: 'form', title: 'Form', control: Form },
-    {
-        key: 'formgroup',
-        title: 'Form Group',
-        control: FormGroup,
-        defaultValues: { widths: 'equal' }
-    },
-    {key: "card", title: 'Card', control: Card, 
-        defaultValues:{ header: "Card", subheader: "Description" }},
-    {
-        key: 'tab', title: 'Tab', control: TabGroup,
-        defaultValues: {
-            panes: [
-                { title: 'Tab 1', psid: 't1' },
-                { title: 'Tab 2', psid: 't2' },
-                { title: 'Tab 3', psid: 't3' }
-            ]
-        }
-    },
-    {
-        key: 'accordion', title: 'Accordion', control: Accordion,
-        defaultValues: {
-            panels: [
-                { title: 'Panel 1', psid: 'p1' },
-                { title: 'Panel 2', psid: 'p2' },
-                { title: 'Panel 3', psid: 'p3' }
-            ]
-        }
-    },    
-    {
-        key: 'customblock',
-        title: 'Custom block',
-        control: undefined,
-        defaultValues: { sourceType: 'form' }
-    },   
-    { key: 'sepCollection', title: 'Collections', separator: true },
-    {
-        key: 'gridview', title: 'GridView', control: GridView, defaultValues: {
-            columns: [
-                { key: 'id', name: 'ID' },
-                { key: 'title', name: 'Title' },
-                { key: 'count', name: 'Count' }
-            ]
-        }
-    },
-    {
-        key: 'collectioneditor',
-        title: 'Collection Editor',
-        control: CollectionEditor,
-        defaultValues: {
-            columns: [
-                { key: 'Id', name: 'ID' },
-                { key: 'Title', name: 'Title' },
-                { key: 'Count', name: 'Count' }
-            ]
-        }
-    },
-    {
-        key: 'repeater',
-        title: 'Repeater',
-        control: Repeater,
-        defaultValues: {}
-    },
     { key: 'sepControls', title: 'Controls', separator: true },
     {
         key: 'header',
@@ -314,6 +243,77 @@ const controls = [
         key: 'richtexteditor',
         title: 'Rich Text Editor',
         control: RichTextEditorControl,
+        defaultValues: {}
+    },
+    { key: 'sepContainers', title: 'Containers', separator: true, defaultopen: true },
+    { key: 'container', title: 'Container', control: Container },
+    {
+        key: 'staticcontent',
+        title: 'Static Content',
+        control: StaticContent,
+        defaultValues: { content: 'Text...' }
+    },
+    { key: 'form', title: 'Form', control: Form },
+    {
+        key: 'formgroup',
+        title: 'Form Group',
+        control: FormGroup,
+        defaultValues: { widths: 'equal' }
+    },
+    {key: "card", title: 'Card', control: Card, 
+        defaultValues:{ header: "Card", subheader: "Description" }},
+    {
+        key: 'tab', title: 'Tab', control: TabGroup,
+        defaultValues: {
+            panes: [
+                { title: 'Tab 1', psid: 't1' },
+                { title: 'Tab 2', psid: 't2' },
+                { title: 'Tab 3', psid: 't3' }
+            ]
+        }
+    },
+    {
+        key: 'accordion', title: 'Accordion', control: Accordion,
+        defaultValues: {
+            panels: [
+                { title: 'Panel 1', psid: 'p1' },
+                { title: 'Panel 2', psid: 'p2' },
+                { title: 'Panel 3', psid: 'p3' }
+            ]
+        }
+    },    
+    {
+        key: 'customblock',
+        title: 'Custom block',
+        control: undefined,
+        defaultValues: { sourceType: 'form' }
+    },   
+    { key: 'sepCollection', title: 'Collections', separator: true },
+    {
+        key: 'gridview', title: 'GridView', control: GridView, defaultValues: {
+            columns: [
+                { key: 'id', name: 'ID' },
+                { key: 'title', name: 'Title' },
+                { key: 'count', name: 'Count' }
+            ]
+        }
+    },
+    {
+        key: 'collectioneditor',
+        title: 'Collection Editor',
+        control: CollectionEditor,
+        defaultValues: {
+            columns: [
+                { key: 'Id', name: 'ID' },
+                { key: 'Title', name: 'Title' },
+                { key: 'Count', name: 'Count' }
+            ]
+        }
+    },
+    {
+        key: 'repeater',
+        title: 'Repeater',
+        control: Repeater,
         defaultValues: {}
     },
     // { key: 'sepCharts', title: 'Charts', separator: true },
