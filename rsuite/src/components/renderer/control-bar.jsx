@@ -313,6 +313,7 @@ register('control-bar', options => {
         moveState.pageY = e.pageY;
 
         e.preventDefault();
+        e.stopPropagation();
         window.addEventListener('mousemove', onResize);
         window.addEventListener('mouseup', stopResize);
     }
@@ -474,6 +475,19 @@ register('control-bar', options => {
         }
     }
 
+    const dragProps = {
+        onMouseOver: onMouseOver,
+        onMouseLeave: onMouseLeave,
+        onMouseDown: onMouseDown,
+        draggable: !model.pinned,
+        onDragStart: onDragStart,
+        onDragEnd: onDragEnd,
+        onDragEnter: dragging ? undefined : onDragEnter,
+        onDragLeave: dragging ? undefined : onDragLeave,
+        onDragOver: dragging ? undefined : onDragOver,
+        onDrop: dragging ? undefined : onDrop
+    }
+
     return <DropzoneContext.Consumer>
 
         {({ isBuilder }) => {
@@ -482,18 +496,12 @@ register('control-bar', options => {
                 <VisibilityWrapper currentKey={model.key} key={makeKey("wrapper")}>
                     <div key={makeKey("controlbar")} ref={options.me.barRef}
                         className={'formbuilder-item-toolbar-container bar'}
-                        style={{...getDisplayStyle(visible), ...stylePinned(12)}}>
+                        style={{...getDisplayStyle(visible), ...stylePinned(12)}}
+                        {...dragProps}>
                         <div className={"formbuilder-item-toolbar-header"}>
                             <div className="formbuilder-item-toolbar-header-buttons" >
                                 <div className="formbuilder-item-toolbar-header-title"
                                     title={options.props.text}
-                                    onDoubleClick={options.onCopyControl}
-                                    onMouseOver={onMouseOver}
-                                    onMouseLeave={onMouseLeave}
-                                    onMouseDown={onMouseDown}
-                                    draggable={true}
-                                    onDragStart={model.pinned ? undefined : onDragStart}
-                                    onDragEnd={model.pinned ? undefined : onDragEnd}
                                 >
                                     {options.props.model["key"]}
                                 </div>
@@ -515,8 +523,7 @@ register('control-bar', options => {
 
             const selectionClassName = baseClassName 
                 + " formbuilder-item-toolbar-container selection"
-                + (selected ? " selected" : "")
-                + (hovered ? " hovered" : "")
+                + (dragging ? "" : ((selected ? " selected" : "") + (hovered ? " hovered" : "")) ) 
 
             const selection = (
                 <div key={makeKey("selection")} ref={options.me.selectionRef}
@@ -524,14 +531,7 @@ register('control-bar', options => {
                     className={selectionClassName}
                     onClick={onClick}
                     onKeyDown ={onKeyDown }
-                    onMouseOver={onMouseOver}
-                    onMouseLeave={onMouseLeave}
-                    onMouseDown={onMouseDown}
-                    draggable={!model.pinned}
-                    onDragStart={onDragStart}
-                    onDragEnd={onDragEnd}
-                    onDragEnter={dragging ? undefined : onDragEnter} onDragLeave={dragging ? undefined : onDragLeave}
-                    onDragOver={dragging ? undefined : onDragOver} onDrop={dragging ? undefined : onDrop}
+                    {...dragProps}
                     elementafter={dragOverTop ? model.key : undefined}
                     elementbefore={dragOverBottom ? model.key : undefined}
                     elementtoinsert={options.props.elementtoinsert}
@@ -555,12 +555,12 @@ register('control-bar', options => {
                 selection,
                 dragOverTopEl,
                 React.cloneElement(options.props.control, { ref: options.me.controlRef }),
-                point("top", options.me.pointTopRef),
-                point("bottom", options.me.pointBottomRef),
-                point("left", options.me.pointLeftRef),
-                point("right", options.me.pointRightRef),
+                !dragging && point("top", options.me.pointTopRef),
+                !dragging && point("bottom", options.me.pointBottomRef),
+                !dragging && point("left", options.me.pointLeftRef),
+                !dragging && point("right", options.me.pointRightRef),
                 bar,
-                resize, 
+                !dragging && resize, 
                 dragOverBottomEl               
             ];
         }}
