@@ -88,7 +88,7 @@ export default class FormBuilder extends BaseFormBuilder {
                         />
                     </div>
                     </div>
-                    <div style={{ display: 'flex', flex: 1}}>
+                    <div style={{ display: 'flex'}}>
                         
                         <ToolBar localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
                             externalControlList={this.props.externalControlList}

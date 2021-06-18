@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion } from 'semantic-ui-react';
+import { PanelGroup, Panel } from 'rsuite';
 import { register } from 'optimajet-builder-shared';
 
 register('accordion', options => {
@@ -9,7 +9,9 @@ register('accordion', options => {
     props.fluid = model.fluid;
     props.styled = model.styled;
     let className = options.props.className;
-    return (<div className={className} style={options.props.style}>
-        <Accordion {...props} panels={options.panels}/>
-    </div>);
+    return (
+        <PanelGroup {...props} className={className} style={options.props.style} accordion defaultActiveKey={options.panels[0]?.key} bordered>
+            {options.panels?.map(panel => <Panel defaultExpanded header={panel.title} eventKey={panel.key}>{panel?.content?.content}</Panel>)}
+        </PanelGroup>
+    );
 });

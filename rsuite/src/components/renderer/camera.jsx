@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Modal, Image } from 'semantic-ui-react';
+import { Button, ButtonGroup, IconButton, Icon } from 'rsuite';
 import { Camera, FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
 import { register } from 'optimajet-builder-shared';
+import BaseModal from '../common/BaseModal';
 
 const imageType = 'image/png';
 const defaultFileName = 'camera-shot';
@@ -54,51 +55,50 @@ class CameraControl extends React.Component {
         const updloadedPreview = () => ((props.showPreview && state.dataUrl) && 
             <div className={'image-uploaded-preview' + (props.compact ? ' compact' : '')}>
                     {props.compact 
-                        ? <Image rounded src={state.dataUrl} className='compact-image-preview'/>
+                        ? <img src={state.dataUrl} className='compact-image-preview'/>
                         : <img src={state.dataUrl} className={'image-preview'} />}
             </div>
         );
 
+        const modalContent = state.dataUrl
+            ? <div className={'react-html5-camera-photo'}>
+                <img src={state.dataUrl} className={'image-preview'} />
+              </div>
+            : <Camera onTakePhotoAnimationDone={this.onTakePhoto}
+                isFullscreen={false}
+                idealFacingMode={FACING_MODES.ENVIRONMENT}
+                imageType={IMAGE_TYPES.PNG}
+                imageCompression={0.97}
+                isMaxResolution={true}
+                isImageMirror={true}
+              />
+        const modalButtons = [
+            <IconButton appearance="primary" className="buttontype1" children={'Upload'} src={state.dataUrl} download={true}
+                        onClick={this.onUpload} icon={<Icon icon="check"/>} disabled={!state.dataUrl}/>,
+            (state.dataUrl && <IconButton appearance="subtle" children={'Reset'} className="ui button"
+                        onClick={this.onClear} icon={<Icon icon="undo"/>}/>
+            ),
+            <Button  appearance="subtle" children={'Cancel'} onClick={this.onCancel}/>
+        ]
+
         const cameraModal = () => (
-            <Modal open={this.state.open}>
-                <Modal.Header>
-                    Take shot
-                </Modal.Header>
-                <Modal.Content>
-                    {(state.dataUrl)
-                        ? <div className={'react-html5-camera-photo'}>
-                            <img src={state.dataUrl} className={'image-preview'} />
-                            <Button fluid content={'Reset'} className="ui button" onClick={this.onClear} icon='cancel'/>
-                        </div>
-                        : 
-                        <Camera onTakePhotoAnimationDone={this.onTakePhoto}
-                            isFullscreen={false}
-                            idealFacingMode={FACING_MODES.ENVIRONMENT}
-                            imageType={IMAGE_TYPES.PNG}
-                            imageCompression={0.97}
-                            isMaxResolution={true}
-                            isImageMirror={true}
-                        />
-                    }
-                </Modal.Content>
-                <Modal.Actions>
-                    <Button className="buttontype1" content={'Upload'} src={state.dataUrl} download={true}
-                        onClick={this.onUpload} icon='check' disabled={!state.dataUrl}/>
-                    <Button className="buttontype2" content={'Cancel'} onClick={this.onCancel}/>
-                </Modal.Actions>
-            </Modal>
+            <BaseModal show={this.state.open}
+                title="Take shot" onCancel={this.onCancel}
+                content={modalContent}
+                buttons={modalButtons}
+            />
         );
 
         return (props.value
             ? <div style={props.compact ? {display: 'flex'} : {}}>
                 {updloadedPreview()}
-                <Button.Group basic {...(props.fluid ? {fluid: true, widths: '2'} : {})}>
-                    <Button icon="download" content={props.compact ? null : 'Download'} fluid={props.fluid} onClick={props.onDownload}/>
-                    <Button icon="cancel" content={props.compact ? null : 'Clear'} fluid={props.fluid} onClick={props.onClear}/>
-                </Button.Group>
+                <ButtonGroup block={props.fluid}>
+                    <IconButton icon={<Icon icon="download"/>} children={props.compact ? null : 'Download'} block={props.fluid} onClick={props.onDownload}/>
+                    <IconButton icon={<Icon icon="close"/>} children={props.compact ? null : 'Clear'} block={props.fluid} onClick={props.onClear}/>
+                </ButtonGroup>
             </div>
             : <div>
-                <Button content={'Take shot'} basic fluid={props.fluid} onClick={this.showCameraModal} icon='photo'/>
+                <IconButton icon={<Icon icon="camera"/>} children={'Take shot'} block={props.fluid} onClick={this.showCameraModal}/>
                 {cameraModal()}
             </div>
         );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Checkbox } from 'rsuite';
-import { FormInput, FormSelect } from './components/FormInput';
+import { FormInput, FormSelect } from '../common/FormInput';
 import BaseEditControl from './base-edit-control';
 export default class InputEditControl extends BaseEditControl {
     getGeneralDescription() {

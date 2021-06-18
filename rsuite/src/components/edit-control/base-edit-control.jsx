@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { EventsEditor, isDefined, isUndefined } from 'optimajet-builder-shared';
 import { Message, Modal, Segment, Icon } from 'semantic-ui-react';
 import { Form, Checkbox, Button, Tag, Input, Nav } from 'rsuite';
-import { FormInput, FormSelect } from './components/FormInput';
+import { FormInput, FormSelect } from '../common/FormInput';
 import ToolbarPanel from '../common/ToolbarPanel';
 import JSON5 from 'json5';
 

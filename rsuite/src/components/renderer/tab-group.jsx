@@ -32,7 +32,7 @@ class TabGrouo extends React.Component {
         return  <div {...options.controlProps} className={className}> 
             <Nav appearance={model?.tabular ? "tabs" : "subtle" }
                 activeKey={this.state.activeIndex}
-                justified={model?.fluid} 
+                justified={model?.fluid} style={{zIndex: 6}}
                 vertical={options.vertical} 
                 onSelect={this.onTabChange.bind(this)}>
                 {options.panes && options.panes.map((pane)=>{

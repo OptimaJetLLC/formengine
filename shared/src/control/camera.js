@@ -50,39 +50,39 @@ export default class Camera extends Component {
     }
 
     render() {
-
-
-        // else if (control === Camera) {
-        //     props = { ...props, ...model };
-        //     props.uploadUrl = uploadUrl;
-        //     props.downloadUrl = downloadUrl;
-        //     if (handleEvent != null) {
-        //         props.onChange = function (e, { name, value, parameters }) {
-        //             let res = value;
-        //             handleEvent({
-        //                 syntheticEvent: e,
-        //                 key: props.name,
-        //                 propertyName: props.propertyName,
-        //                 eventName: 'onChange',
-        //                 name: name,
-        //                 value: res,
-        //                 parameters
-        //             });
-        //         };
-        //     }
-    
-        //     res = <Camera {...props} additionalParams={{ model, data, errors, children, handleEvent, parentItem }}/>;
-
         const { onClear, onUpload } = this;
+        const additionalParams = this.props.additionalParams;
+
+        let additional = {}
+        if (additionalParams.handleEvent != null) {
+            additional.onChange = function (e, { name, value, parameters }) {
+                let res = value;
+                additionalParams.handleEvent({
+                    syntheticEvent: e,
+                    key: this.props.name,
+                    propertyName: this.props.propertyName,
+                    eventName: 'onChange',
+                    name: name,
+                    value: res,
+                    parameters
+                });
+            };
+        }
 
         return draw('camera', {
             handleChange: this.handleChange,
             me: this,
             onClear,
             onUpload,
-            props: this.props,
+            props: {
+                uploadUrl: additionalParams.uploadUrl,
+                downloadUrl: additionalParams.downloadUrl,
+                ...this.props,
+                ...additionalParams.model,
+                ...additional
+            },
             state: this.state,
-            model
+            model: additionalParams.model
         });
     }
 }

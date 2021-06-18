@@ -139,7 +139,6 @@ body, h1, h2, h3, h4, h5 {
 .formbuilder-control-tree {
   box-shadow: inset 0px 0px 15px rgb(0 0 0 / 25%);
   min-width: var(--control-tree-width);
-  padding-right: 10px;
   padding-top: 15px;
 }
 
@@ -499,15 +498,18 @@ input .formbuilder-item-toolbar-header:hover {
 
 .drag-over-animation {
   transition: height .2s ease, margin-top .2s ease, margin-bottom .2s ease;
-  width: auto;
+  width: 0px;
   height: 0px;  
   margin-top: 0px;
   margin-bottom: 0px;
   opacity: 0;
   background-color: #a4c4ff;
+  position: absolute;
 }
 
 .drag-over-animation.active{
+  width: auto;
+  position: relative;
   transition: height .2s ease, margin-top .2s ease, margin-bottom .2s ease;
   height: 4px;
   margin-top: 15px;
@@ -768,6 +770,11 @@ input .formbuilder-item-toolbar-header:hover {
   width: calc(100% - 50px);
   height: 20px;
   cursor: move;
+}
+
+.formbuilder-preview .rs-panel .rs-panel-title {
+  z-index: 11;
+  position: relative;
 }
 
 .formbuilder-editform-resize {
@@ -1939,6 +1946,7 @@ input .formbuilder-item-toolbar-header:hover {
   display: inline-flex;
   width: auto;
   height: 38px;
+  border-radius: 38px;
 }
 
 .image-uploaded-preview.compact {

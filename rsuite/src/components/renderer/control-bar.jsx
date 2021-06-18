@@ -5,7 +5,7 @@ import { getDisplayStyle } from './style-helper';
 import $ from 'jquery';
 import { Icon, IconStack } from 'rsuite';
 
-var VisibilityWrapper = ({ children, currentKey }) => {
+var VisibilityWrapper = ({ children, currentKey, style }) => {
     var [selected, setSelected] = React.useState(false);
     FormBuilderStore.listenTo(BuilderActions.showEditForm, selectedKey => {
         var isCurrent = selectedKey === currentKey;
@@ -14,7 +14,7 @@ var VisibilityWrapper = ({ children, currentKey }) => {
         }
     });
 
-    return <div style={{ opacity: selected ? 1 : 0 }}>{children}</div>;
+    return <div style={{ opacity: selected ? 1 : 0, ...style }}>{children}</div>;
 };
 
 register('control-bar', options => {
@@ -68,7 +68,6 @@ register('control-bar', options => {
         let type = model['data-buildertype'];
         let isContainer = type == "container" || type == "form" || type == "repeater" || type == "formgroup";
         if (isContainer) {
-            dx -= 5;
             y -= 15;
         }
 
@@ -460,7 +459,7 @@ register('control-bar', options => {
     let baseClassName = "formbuilder-toolbar-point";
     if (!model.pinned) baseClassName += " formbuilder-zone";
 
-    const point = (key, ref) =>  (
+    const point = (key, ref) =>  (!dragging && 
         <div key={makeKey(key)} ref={ref} onMouseDown={e => startResize(e, key)}
              style={{...getDisplayStyle(selected), ...stylePinned(11)}}
              className={`formbuilder-item-toolbar-container point-${key}`}>
@@ -493,10 +492,9 @@ register('control-bar', options => {
         {({ isBuilder }) => {
             const visible = isBuilder && selected;
             const bar = (
-                <VisibilityWrapper currentKey={model.key} key={makeKey("wrapper")}>
+                <VisibilityWrapper currentKey={model.key} key={makeKey("wrapper")} style={{...getDisplayStyle(visible), ...stylePinned(12)}}>
                     <div key={makeKey("controlbar")} ref={options.me.barRef}
                         className={'formbuilder-item-toolbar-container bar'}
-                        style={{...getDisplayStyle(visible), ...stylePinned(12)}}
                         {...dragProps}>
                         <div className={"formbuilder-item-toolbar-header"}>
                             <div className="formbuilder-item-toolbar-header-buttons" >
@@ -555,10 +553,10 @@ register('control-bar', options => {
                 selection,
                 dragOverTopEl,
                 React.cloneElement(options.props.control, { ref: options.me.controlRef }),
-                !dragging && point("top", options.me.pointTopRef),
-                !dragging && point("bottom", options.me.pointBottomRef),
-                !dragging && point("left", options.me.pointLeftRef),
-                !dragging && point("right", options.me.pointRightRef),
+                point("top", options.me.pointTopRef),
+                point("bottom", options.me.pointBottomRef),
+                point("left", options.me.pointLeftRef),
+                point("right", options.me.pointRightRef),
                 bar,
                 !dragging && resize, 
                 dragOverBottomEl               

@@ -18,10 +18,15 @@ export default class BaseModal extends React.Component {
 
     render() {
       let { show, buttons, title, content, onCancel, ...props } = this.props;
-      show = _.isUndefined(show)
-        ? this.state.show
-        : show;
+      show = show ?? this.state.show;
       buttons = buttons || this.buttons || [];
+      if (buttons[0] && !(buttons[0]?.type)) {
+        buttons = buttons.map(({label, handler, ...props}) => (
+          <Button onClick={handler} {...props}>
+            {label}
+          </Button>
+        ))
+      }
 
       return (
         <Modal backdrop={true} show={show} onHide={this.onCancel} {...props}>
@@ -34,11 +39,7 @@ export default class BaseModal extends React.Component {
               {this.content || this.props.content}
             </Modal.Body>
             <Modal.Footer>
-              {buttons.map(({label, handler, ...props}) => (
-                <Button onClick={handler} {...props}>
-                  {label}
-                </Button>
-              ))}
+              {buttons}
             </Modal.Footer>
           </Modal>
           
