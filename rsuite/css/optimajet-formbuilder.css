@@ -126,6 +126,7 @@ body, h1, h2, h3, h4, h5 {
   padding-top: 15px;
   flex-direction: column;
   display: flex;
+  flex: 1;
 }
 
 .formbuilder-rightbar .formbuilder-panel {
@@ -219,6 +220,8 @@ body, h1, h2, h3, h4, h5 {
 
 .formbuilder-toolbox{
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .formbuilder-toolbox > .ui.input {
@@ -258,7 +261,7 @@ body, h1, h2, h3, h4, h5 {
   width: inherit;
 }
 
-.formbuilder-toolbox > ul{
+.formbuilder-toolbox ul{
     -webkit-padding-start: 0px;
     padding-left: 2px;
     display: flex;
@@ -343,17 +346,17 @@ body, h1, h2, h3, h4, h5 {
     color: white;
 }
 
-.formbuilder-toolbox > ul > li .icon{
+.formbuilder-toolbox ul li .icon{
     float: right;
     margin-right: -5px;
 }
 
-.formbuilder-toolbox > ul > li .icon > .right{
+.formbuilder-toolbox ul li .icon > .right{
   float: right;
   margin-right: -5px;
 }
 
-.formbuilder-toolbox > ul > li.formbuilder-toolbox-subheader {
+.formbuilder-toolbox .formbuilder-toolbox-subheader {
     list-style: none;
     padding: 5px 10px;
     font-weight:bold;
@@ -364,7 +367,7 @@ body, h1, h2, h3, h4, h5 {
     text-align: left;
 }
 
-.formbuilder-toolbox > ul > li.formbuilder-toolbox-subheader:hover {
+.formbuilder-toolbox .formbuilder-toolbox-subheader:hover {
   color: #1262E2;
 }
 
@@ -3028,8 +3031,14 @@ textarea:read-only,
 
 .dwkit-inline-form.checkboxes {
   align-items: flex-start;
+  justify-content: space-between;
 }
 
+
+
+.dwkit-inline-form.checkboxes > * {
+  flex-grow: initial;
+}
 .dwkit-inline-form.widths-not-equal > * {  
   flex-basis: initial;
 }

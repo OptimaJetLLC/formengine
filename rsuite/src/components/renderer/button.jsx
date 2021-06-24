@@ -11,38 +11,34 @@ const sizes = {
 
 register('button', options => {
     let model = options.model;
-
-    let appearance = "default";
-    if(model.primary)
-        appearance = "primary";
-    else if(model.secondary)
-        appearance = "ghost";
+    let props = {
+        appearance: model.appearance ?? "default",
+        size: (model.size && sizes[model.size]) ? sizes[model.size] : undefined,
+        style: {
+            float: model.floated,
+            ...options?.controlProps?.style
+        },
+        loading: model.loading,
+        block: model.fluid,
+        onClick: options.onClick,
+        children: !model.circular ? options.content : undefined,
+        disabled: model.disabled,
+        circle: !!model.circular
+    };
     
-    let size;
-    if(model.size && sizes[model.size])
-        size = sizes[model.size];
-
-    if(model.link){
-        options.controlProps.style.cursor = "pointer";
-        return <a {...options.controlProps} onClick={options.onClick}>{options.content}</a>;
+    if (!model.appearance) {
+        if(model.primary)
+            props.appearance = "primary";
+        else if(model.secondary)
+            appearance = "ghost";
+        else if(model.link)
+            appearance = "link";
     }
-    else if(model.icon){
-        return <IconButton {...options.controlProps}
-            appearance={appearance}
-            icon={<Icon icon={model.icon} />}
-            size={size}
-            loading={model.loading}
-            block={model.fluid}
-            onClick={options.onClick}
-            >{options.content}</IconButton>;
+
+    if(model.icon){
+        return <IconButton {...options.controlProps} {...props} icon={<Icon icon={model.icon} />} />;
     }
     else{
-        return <Button {...options.controlProps}
-            appearance={appearance}
-            size={size}
-            loading={model.loading}
-            block={model.fluid}
-            onClick={options.onClick}
-            >{options.content}</Button>;
+        return <Button {...options.controlProps} {...props} />;
     }
 });

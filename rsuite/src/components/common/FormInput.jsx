@@ -1,5 +1,5 @@
 import React from "react";
-import { FormGroup, FormControl, ControlLabel, SelectPicker, ErrorMessage, TagPicker } from 'rsuite';
+import { FormGroup, FormControl, ControlLabel, SelectPicker, ErrorMessage, TagPicker, InputGroup } from 'rsuite';
 
 const setDefault = (prop, defaultValue) => (prop != undefined)  ? prop : defaultValue;
 
@@ -10,7 +10,7 @@ const fontSizes = {
   lg: 16
 };
 
-const FormInput = ({label, errorMessage, style, ...props}) => {
+const FormInput = ({label, errorMessage, style, children, ...props}) => {
   const size = setDefault(props.size,"sm");
   const labelStyle = {
     fontSize: fontSizes[size]
@@ -19,8 +19,11 @@ const FormInput = ({label, errorMessage, style, ...props}) => {
   return (    
     <FormGroup className={("dwkit-input-form" + ((errorMessage != undefined)  ? " error" : ""))} style={{marginTop: 5, marginBottom: 5, ...style}}>
       <ControlLabel style={labelStyle} >{label}</ControlLabel>
-      <div className="rs-form-control-wrapper">        
+      <div className="rs-form-control-wrapper">    
+      <InputGroup inside style={{width: "auto"}} size={setDefault(size,"sm")}>
         <FormControl {...props} size={setDefault(size,"sm")}/>
+        {children}
+      </InputGroup>    
         {!!errorMessage && <ErrorMessage show={!!errorMessage} placement="bottomStart">
               {errorMessage}
         </ErrorMessage>}

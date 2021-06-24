@@ -2,6 +2,7 @@ import React from 'react';
 import { BuilderActions, BaseToolbar, isDefined, isUndefined } from 'optimajet-builder-shared';
 import SearchForm from './components/common/SearchForm'
 import ToolbarPanel from './components/common/ToolbarPanel'
+import Grid from './components/common/Grid'
 import { Icon, Button } from 'rsuite';
 import Split from 'react-split'
 import $ from 'jquery';
@@ -39,6 +40,17 @@ export default class Toolbar extends BaseToolbar {
         const me = this;
         let expandedbock = true;
         const items = this.state.filtered ? this.state.filtered : this.state.items;
+        let itemsMap = [];
+        for (let i=0, item, section; i < items.length; ++i) {
+            item = items[i];
+            if (item.separator) {
+                itemsMap.push(item);
+                section = itemsMap[itemsMap.length - 1];
+                section.items = [];
+            } else {
+                section.items.push(item);
+            }
+        }
         return (
             <div className="formbuilder-rightbar">
                 <ToolbarPanel  style={{ marginBottom: 15}}
@@ -49,64 +61,66 @@ export default class Toolbar extends BaseToolbar {
                         </>
                     }
                     content={
-                        <div className="formbuilder-toolbox">
-                            <ul>
-                                {this.state.filtered && 
-                                    <li className="formbuilder-toolbox-subheader">
-                                        Search results:
-                                        {!this.state.filtered.length && 
-                                            <div className="formbuilder-toolbox-search-nothing">
-                                                Not found<br/>
-                                                <Button block onClick={() => this.searchForm.current.reset()}>Reset</Button>
-                                            </div>
-                                        }
-                                    </li>
+                        <div className="formbuilder-toolbox">                        
+                            {this.state.filtered && 
+                                <li className="formbuilder-toolbox-subheader">
+                                    Search results:
+                                    {!this.state.filtered.length && 
+                                        <div className="formbuilder-toolbox-search-nothing">
+                                            Not found<br/>
+                                            <Button block onClick={() => this.searchForm.current.reset()}>Reset</Button>
+                                        </div>
+                                    }
+                                </li>
+                            }
+                            {itemsMap.map((parentItem, index) => {
+                                let iconName;
+                                let onclick;
+
+                                if (isUndefined(parentItem.isexpanded)) {
+                                    const cookievalue = me.getCookie('toolbar_' + parentItem.key);
+                                    parentItem.isexpanded = isDefined(cookievalue) ? (cookievalue === 'true') : parentItem.defaultopen;
                                 }
-                                {
-                                    items.map((item, index) => {
-                                        let title = item.title;
-                                        if (isDefined(me.props.localization) && isDefined(me.props.localization[item.key])) {
-                                            title = me.props.localization[item.key];
-                                        }
 
-                                        if (item.separator) {
-                                            let iconName;
-                                            let onclick;
-
-                                            if (isUndefined(item.isexpanded)) {
-                                                const cookievalue = me.getCookie('toolbar_' + item.key);
-                                                item.isexpanded = isDefined(cookievalue) ? (cookievalue === 'true') : item.defaultopen;
-                                            }
-
-                                            if (item.isexpanded) {
-                                                expandedbock = true;
-                                                onclick = me.onExpand.bind(me, item, false);
-                                                iconName = 'angle down';
-                                            }
-                                            else {
-                                                expandedbock = false;
-                                                onclick = me.onExpand.bind(me, item, true);
-                                                iconName = 'angle right';
-                                            }
-
-                                            return <li draggable="false" onClick={onclick}
-                                                    className="formbuilder-toolbox-subheader" key={(item.key + String(index))}>
-                                                {title}
-                                                <Icon name={iconName}/></li>;
-                                        }
-
-                                        if (expandedbock || this.state.filtered) {
-                                            return (<li draggable="true" className="formbuilder-toolbox-control"
-                                                        key={(item.key + String(index))}
-                                                        onDragStart={this.onDragStart.bind(this, item)}
-                                                        onDoubleClick={this.onDoubleClick.bind(this, item)}>
-                                                <Icon icon='check2' />
-                                                <div className="formbuilder-toolbox-control-text">{title}</div>
-                                            </li>);
-                                        }
-                                    })
+                                if (parentItem.isexpanded) {
+                                    expandedbock = true;
+                                    onclick = me.onExpand.bind(me, parentItem, false);
+                                    iconName = 'angle down';
                                 }
-                            </ul>
+                                else {
+                                    expandedbock = false;
+                                    onclick = me.onExpand.bind(me, parentItem, true);
+                                    iconName = 'angle right';
+                                }
+
+                                return <>
+                                    <h5 draggable="false" onClick={onclick} style={{flexGrow: 1}}
+                                        className="formbuilder-toolbox-subheader" key={(parentItem.key + String(index))}>
+                                        {parentItem.title}
+                                        <Icon name={iconName}/>
+                                    </h5>                                    
+                                    {(expandedbock || this.state.filtered) && <Grid itemMinWidth='129px'>
+                                        {
+                                            parentItem.items.map((item, index) => {
+                                                let title = item.title;
+                                                if (isDefined(me.props.localization) && isDefined(me.props.localization[item.key])) {
+                                                    title = me.props.localization[item.key];
+                                                }
+
+                                                return (<li draggable="true" className="formbuilder-toolbox-control"
+                                                                key={(item.key + String(index))}
+                                                                onDragStart={this.onDragStart.bind(this, item)}
+                                                                onDoubleClick={this.onDoubleClick.bind(this, item)}>
+                                                        <Icon icon='check2' />
+                                                        <div className="formbuilder-toolbox-control-text">{title}</div>
+                                                    </li>);
+                                            })
+                                        }
+                                    </Grid>
+                                    }
+                                </>
+                            })}
+                            
                         </div>
                     }
                 />                          

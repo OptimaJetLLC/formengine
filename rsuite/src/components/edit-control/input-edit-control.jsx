@@ -20,7 +20,7 @@ export default class InputEditControl extends BaseEditControl {
                  <FormSelect name="labelPosition" data={this.labelPositions} label={this.getLocalValue('labelpositionfield', 'Label position', 'inputform')}/>
                  <FormSelect name="size" data={this.sizeData} label={this.getLocalValue('sizefield', 'Size', 'inputform')}/>
              </Form>
-             <p style={{textAlign: "center", marginTop: 10}}>Options</p>
+             <p style={{textAlign: "center", marginTop: 10}}>{this.getLocalValue('optionsfield', 'Options', 'buttonform')}</p>
              <Form formValue={data} onChange={this.formChange} className="dwkit-inline-form checkboxes" fluid>
                 <Checkbox name="disabled" onChange={this.checkboxChange} checked={data.disabled}
                           children={this.getLocalValue('disabledfield', 'Disabled', 'inputform')}/>

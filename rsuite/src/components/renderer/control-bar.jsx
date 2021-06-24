@@ -14,7 +14,7 @@ var VisibilityWrapper = ({ children, currentKey, style }) => {
         }
     });
 
-    return <div style={{ opacity: selected ? 1 : 0, ...style }}>{children}</div>;
+    return <div style={{ opacity: selected ? 1 : 0, display: "inline", ...style }}>{children}</div>;
 };
 
 register('control-bar', options => {
