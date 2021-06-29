@@ -2,11 +2,12 @@
 
 import React, { Component } from 'react';
 import { EventsEditor, isDefined, isUndefined } from 'optimajet-builder-shared';
-import { Message, Modal, Segment, Icon } from 'semantic-ui-react';
-import { Form, Checkbox, Button, Tag, Input, Nav } from 'rsuite';
+import { Message, Modal, Segment } from 'semantic-ui-react';
+import { Form, Checkbox, Button, Tag, Input, Nav, Icon } from 'rsuite';
 import { FormInput, FormSelect } from '../common/FormInput';
 import ToolbarPanel from '../common/ToolbarPanel';
 import JSON5 from 'json5';
+import ThrowPropWrapper from '../common/ThrowPropWrapper';
 
 export default class BaseEditControl extends Component {
 
@@ -50,6 +51,13 @@ export default class BaseEditControl extends Component {
                 key: 'other',
                 name: 'other',
                 content: this.getLocalValue('othertab', 'Other'),
+                active: false,
+                onClick: this.handleItemClick.bind(this)
+            },
+            {
+                key: 'json',
+                name: 'json',
+                content: this.getLocalValue('jsontab', 'JSON'),
                 active: false,
                 onClick: this.handleItemClick.bind(this)
             }
@@ -103,7 +111,7 @@ export default class BaseEditControl extends Component {
         });
 
         return (<div className="formbuilder-editform-description">
-            <Nav activeKey={activeItem} onSelect={parent.setActiveItem} appearance="subtle">
+            <Nav activeKey={activeItem} onSelect={parent.setActiveItem} appearance="subtle" justified>
                 {this.menuItems.map(item => <Nav.Item  key={item.key} eventKey={item.key}>{item.name}</Nav.Item>)}                
             </Nav>
             <div className="form">
@@ -129,6 +137,9 @@ export default class BaseEditControl extends Component {
         }
         else if (activeItem === 'other') {
             segment = this.getOtherDescription();
+        }
+        else if (activeItem === 'json') {
+            segment = this.getJSONEditor();
         }
 
         return segment;
@@ -177,13 +188,20 @@ export default class BaseEditControl extends Component {
             </Form>
 
             <Form formValue={data} onChange={this.formChange} className="dwkit-inline-form checkboxes" fluid>
-                <Checkbox name="style-hidden" checked={data["style-hidden"]}
+                <Checkbox name="pinned" checked={data.pinned} onChange={this.checkboxChange}
+                          children={<>
+                              {this.getLocalValue('pinnedfield', <>Pinned <Icon icon="thumb-tack"/> (absolute position)</>)}
+                        </>}/>
+                <Checkbox name="style-hidden" checked={data["style-hidden"]} onChange={this.checkboxChange}
                           children={this.getLocalValue('hiddenfield', 'Hidden')}/>
-                <Checkbox name="style-hiddeninprint" checked={data["style-hiddeninprint"]}
-                          children={this.getLocalValue('hiddeninprintfield', 'Hidden in Print mode')}/>
-                <Checkbox name="style-adaptive" checked={data["style-adaptive"]}
-                          children={this.getLocalValue('adaptivefield', 'Adaptive Layout')}/>
              </Form>
+
+            <Form formValue={data} onChange={this.formChange} className="dwkit-inline-form checkboxes" fluid>
+                <Checkbox name="style-hiddeninprint" checked={data["style-hiddeninprint"]} onChange={this.checkboxChange}
+                        children={this.getLocalValue('hiddeninprintfield', 'Hidden in Print mode')}/>
+                <Checkbox name="style-adaptive" checked={data["style-adaptive"]} onChange={this.checkboxChange}
+                        children={this.getLocalValue('adaptivefield', 'Adaptive Layout')}/>
+            </Form>
 {/* 
             {data['style-adaptive'] &&
             <Form.Dropdown name="style-renderwhen" selection fluid search options={showtypes} placeholder="Any"
@@ -212,7 +230,7 @@ export default class BaseEditControl extends Component {
         let content;
         if (!Array.isArray(events) || events.length === 0) {
             content = <Message icon>
-                <Icon name="info"/>
+                <Icon icon="info"/>
                 <Message.Content>
                     {this.getLocalValue('controlhasnoeventsmsg', 'This control has no events.')}
                 </Message.Content>
@@ -248,7 +266,7 @@ export default class BaseEditControl extends Component {
 
         return (<Form key="eventsDescriptionForm">
             <Message icon>
-                <Icon name="info"/>
+                <Icon icon="info"/>
                 <Message.Content>
                     {this.getLocalValue('eventsinfomsg', 'These flags enable processing from this element.')}
                 </Message.Content>
@@ -260,107 +278,89 @@ export default class BaseEditControl extends Component {
 
     getToolTipDescription() {
         const toolTipPositions = [
-            { text: this.getLocalValue('tooltipdefault', 'Default'), value: '' },
-            { text: this.getLocalValue('tooltiptopcenter', 'Top Center'), value: 'top center' },
-            { text: this.getLocalValue('tooltiptopleft', 'Top Left'), value: 'top left' },
-            { text: this.getLocalValue('tooltiptopright', 'Top Right'), value: 'top right' },
-            { text: this.getLocalValue('tooltipbottomcenter', 'Bottom Center'), value: 'bottom center' },
-            { text: this.getLocalValue('tooltipbottomleft', 'Bottom Left'), value: 'bottom left' },
-            { text: this.getLocalValue('tooltipbottomright', 'Bottom right'), value: 'bottom right' },
-            { text: this.getLocalValue('tooltiprightright', 'Right Center'), value: 'right center' },
-            { text: this.getLocalValue('tooltipleftcenter', 'Left Center'), value: 'left center' }
+            { label: this.getLocalValue('tooltipdefault', 'Default'), value: '' },
+            { label: this.getLocalValue('tooltiptopcenter', 'Top Center'), value: 'top center' },
+            { label: this.getLocalValue('tooltiptopleft', 'Top Left'), value: 'top left' },
+            { label: this.getLocalValue('tooltiptopright', 'Top Right'), value: 'top right' },
+            { label: this.getLocalValue('tooltipbottomcenter', 'Bottom Center'), value: 'bottom center' },
+            { label: this.getLocalValue('tooltipbottomleft', 'Bottom Left'), value: 'bottom left' },
+            { label: this.getLocalValue('tooltipbottomright', 'Bottom right'), value: 'bottom right' },
+            { label: this.getLocalValue('tooltiprightright', 'Right Center'), value: 'right center' },
+            { label: this.getLocalValue('tooltipleftcenter', 'Left Center'), value: 'left center' }
         ];
 
         const showtypes = [
-            { text: this.getLocalValue('tooltipdefault', 'Default'), value: '' },
-            { text: this.getLocalValue('tooltiphover', 'Hover'), value: 'hover' },
-            { text: this.getLocalValue('tooltipclick', 'Click'), value: 'click' },
-            { text: this.getLocalValue('tooltipfocus', 'Focus'), value: 'focus' }
+            { label: this.getLocalValue('tooltipdefault', 'Default'), value: '' },
+            { label: this.getLocalValue('tooltiphover', 'Hover'), value: 'hover' },
+            { label: this.getLocalValue('tooltipclick', 'Click'), value: 'click' },
+            { label: this.getLocalValue('tooltipfocus', 'Focus'), value: 'focus' }
         ];
 
         const data = this.props.data;
-        const handleChange = this.props.parent.handleChange.bind(this.props.parent);
-
-        const tooltipart = data['tooltip-enabled'] ?
-            (<Segment vertical>
-                <Form.Checkbox name="tooltip-enabled" label={this.getLocalValue('tooltipenabledfield', 'Enabled')}
-                               checked={data['tooltip-enabled']} onChange={handleChange}/>
-                <Form.Input name="tooltip-header" label={this.getLocalValue('tooltipheaderfield', 'Tooltip Header')}
-                            value={data['tooltip-header']} onChange={handleChange}/>
-                <Form.Input name="tooltip-content" label={this.getLocalValue('tooltipcontentfield', 'Tooltip Content')}
-                            value={data['tooltip-content']} onChange={handleChange}/>
-                <Form.Group>
-                    <Form.Input name="tooltip-classname"
-                                label={this.getLocalValue('tooltipclassnamefield', 'ClassName')}
-                                value={data['tooltip-classname']} onChange={handleChange}/>
-                    <Form.Dropdown name="tooltip-showtype" selection fluid search options={showtypes}
-                                   placeholder="Default"
-                                   label={this.getLocalValue('tooltipshowtypefield', 'Tooptip showing type')}
-                                   value={data['tooltip-showtype']} onChange={handleChange}/>
-                    <Form.Dropdown name="tooltip-position" selection fluid search options={toolTipPositions}
-                                   placeholder="Default"
-                                   label={this.getLocalValue('tooltippositionfield', 'Tooptip position')}
-                                   value={data['tooltip-position']} onChange={handleChange}/>
-                </Form.Group>
-            </Segment>) :
-            (<Segment vertical>
-                <Form.Checkbox name="tooltip-enabled" label={this.getLocalValue('tooltipenabledfield', 'Enabled')}
-                               checked={data['tooltip-enabled']} onChange={handleChange}/>
-            </Segment>);
-
-        return (<Form key="tooltipDescriptionForm">
-            <Segment vertical>
-                <Form.Group>
-                    <Form.Checkbox name="tooltip-errordisabled"
-                                   label={this.getLocalValue('errortooltipdisabledfield', 'Disable error tooptip')}
-                                   checked={data['tooltip-errordisabled']} onChange={handleChange}/>
-                    <Form.Dropdown name="tooltip-errorshowtype" selection fluid search options={showtypes}
-                                   placeholder="Default"
-                                   label={this.getLocalValue('tooltiperrorshowtypefield', 'Error tooptip showing type')}
-                                   value={data['tooltip-errorshowtype']} onChange={handleChange}/>
-                    <Form.Dropdown name="tooltip-errorposition" selection fluid search options={toolTipPositions}
-                                   placeholder="Default"
-                                   label={this.getLocalValue('errortooltippositionfield', 'Error tooptip position')}
-                                   value={data['tooltip-errorposition']} onChange={handleChange}/>
-                </Form.Group>
-            </Segment>
-            {tooltipart}
-        </Form>);
+        return (<>
+            <Checkbox name="tooltip-enabled" checked={data["tooltip-enabled"]} onChange={this.checkboxChange}
+                      children={<b>{this.getLocalValue('tooltipenabledfield', 'Tooltip')}</b>}
+                      />
+            <ThrowPropWrapper disabled={!data['tooltip-enabled'] }>
+                <Form formValue={data} onChange={this.formChange} className="dwkit-inline-form" fluid>
+                    <FormInput name="tooltip-header" label={this.getLocalValue('tooltipheaderfield', 'Tooltip Header')}/>                    
+                    <FormInput name="tooltip-classname" label={this.getLocalValue('tooltipclassnamefield', 'ClassName')}/>
+                </Form>                
+                <Form formValue={data} onChange={this.formChange} className="dwkit-list-form" fluid>
+                    <FormInput name="tooltip-content" label={this.getLocalValue('tooltipcontentfield', 'Tooltip Content')} componentClass="textarea" rows={2}/>
+                </Form>
+                <Form formValue={data} onChange={this.formChange} className="dwkit-inline-form" fluid>
+                    <FormSelect name="tooltip-showtype" data={showtypes} label={this.getLocalValue('tooltipshowtypefield', 'Tooptip showing type')}/>
+                    <FormSelect name="tooltip-position" data={toolTipPositions} label={this.getLocalValue('tooltippositionfield', 'Tooptip position')}/>
+                </Form>
+            </ThrowPropWrapper>
+            
+        
+            <Checkbox name="tooltip-errordisabled" checked={data["tooltip-errordisabled"]} onChange={this.checkboxChange}
+                      children={<b>{this.getLocalValue('errortooltipdisabledfield', 'Error tooptip')}</b>}
+                      style={{marginTop: 10}}
+                      />
+            <ThrowPropWrapper disabled={!data['tooltip-errordisabled']}>
+                <Form formValue={data} onChange={this.formChange} className="dwkit-inline-form" fluid>
+                    <FormSelect name="tooltip-errorshowtype" data={showtypes} label={this.getLocalValue('tooltiperrorshowtypefield', 'Error tooptip showing type')}/>
+                    <FormSelect name="tooltip-errorposition" data={toolTipPositions} label={this.getLocalValue('errortooltippositionfield', 'Error tooptip position')}/>
+                </Form>                
+            </ThrowPropWrapper>
+        </>);
     }
 
     getOtherDescription() {
         const data = this.props.data;
-        const handleChange = this.props.parent.handleChange.bind(this.props.parent);
         const customvalidation_ps = '/*** Example Code ***/\nvalue > 10 ? true : \'Must be more 10\'';
         const visibleconition_ps = '/*** Example Code ***/\ndata.type == 1 ? true : false';
         const readOnlyconition_ps = '/*** Example Code ***/\ndata.type == 1 ? true : false';
 
-        const defaultValueHandle = this.state.defaultValuePreferInt ? function (e, { name, value }) {
+        const defaultValueHandle = !this.state.defaultValuePreferInt ? value => {
             if (value && value.match && value.match(/^-?\d+$/)) {
                 value = parseInt(value);
             }
-            handleChange(e, { name, value });
-        } : handleChange;
+            this.formChange({defaultValue: value});
+        } : undefined;
 
-        return (<Form key="otherDescriptionForm">
-            <Form.Input name="propertyName" label={this.getLocalValue('propertynamefield', 'Property Name')}
-                        value={data['propertyName']} onChange={handleChange}/>
-            <Form.Checkbox name="other-required" label={this.getLocalValue('requiredfield', 'Required')}
-                           checked={data['other-required']} onChange={handleChange}/>
-            <Form.Input name="defaultValue" label={this.getLocalValue('defaultvaluefield', 'Default value')}
-                        value={data['defaultValue']} onChange={defaultValueHandle}/>
-            <Form.TextArea name="other-customValidation"
-                           label={this.getLocalValue('customvalidationfield', 'Custom Validation')}
-                           placeholder={customvalidation_ps} value={data['other-customValidation']}
-                           onChange={handleChange}/>
-            <Form.TextArea name="other-visibleConition"
-                           label={this.getLocalValue('visibleconditionfield', 'Visible condition')}
-                           placeholder={visibleconition_ps} value={data['other-visibleConition']}
-                           onChange={handleChange}/>
-            <Form.TextArea name="other-readOnlyConition"
-                           label={this.getLocalValue('readonlyconditionfield', 'ReadOnly condition')}
-                           placeholder={readOnlyconition_ps} value={data['other-readOnlyConition']}
-                           onChange={handleChange}/>
+        return (<Form formValue={data} onChange={this.formChange} className="dwkit-list-form" fluid>
+            <FormInput name="propertyName" label={this.getLocalValue('propertynamefield', 'Property Name')}/>
+            <Checkbox name="other-required" checked={data["other-required"]} onChange={this.checkboxChange}
+                    children={this.getLocalValue('requiredfield', 'Required')}/>                        
+            <FormInput name="defaultValue" label={this.getLocalValue('defaultvaluefield', 'Default value')}
+                onChange={defaultValueHandle}
+            />
+            <FormInput name="other-customValidation"
+                        label={this.getLocalValue('customvalidationfield', 'Custom Validation')}
+                        placeholder={customvalidation_ps} value={data['other-customValidation']}
+                        componentClass="textarea" rows={2}/>
+            <FormInput name="other-visibleConition"
+                        label={this.getLocalValue('visibleconditionfield', 'Visible condition')}
+                        placeholder={visibleconition_ps} value={data['other-visibleConition']}
+                        componentClass="textarea" rows={2}/>
+            <FormInput name="other-readOnlyConition"
+                        label={this.getLocalValue('readonlyconditionfield', 'ReadOnly condition')}
+                        placeholder={readOnlyconition_ps} value={data['other-readOnlyConition']}
+                        componentClass="textarea" rows={2}/>
         </Form>);
     }
 
@@ -379,22 +379,7 @@ export default class BaseEditControl extends Component {
                         <Tag className="formbuilder-editform-controltype">{this.props.data['data-buildertype']}</Tag>
                     </>
                 }
-                content={
-                    <div className="formbuilder-editform-default">
-                        <div className="formbuilder-editform-form">
-                            {this.state.jsoneditor && this.getJSONEditor()}
-                            {!this.state.jsoneditor && this.getDescription()}
-                        </div>
-                        <div className="formbuilder-editform-buttons">
-                            <Button appearance="subtle"
-                                    onClick={this.onSwitchJson.bind(this)}>
-                                    {this.state.jsoneditor ? 
-                                        this.getLocalValue('switchform','Switch to Form')
-                                        : this.getLocalValue('switchjson','Switch to JSON Editor')}
-                            </Button>
-                        </div>
-                    </div>
-                }
+                content={this.getDescription()}
             />            
         );
     }

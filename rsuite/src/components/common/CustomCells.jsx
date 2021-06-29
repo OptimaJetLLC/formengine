@@ -54,11 +54,11 @@ const InputCell = ({ rowData, dataKey, onChange, ...props }) => {
     );
   };
   
-  const TagPickerCell = ({ rowData, rowIndex, dataKey, options, onChange, onSelect, errorMap, ...props }) => {
+  const TagPickerCell = ({ rowData, rowIndex, dataKey, options, onChange, onSelect, errorMap, pickerProps, ...props }) => {
     return (
       <Cell {...props}>
         <ErrorWrapper rowIndex={rowIndex} dataKey={dataKey} errorMap={errorMap}>
-            <TagPicker value={rowData[dataKey]} data={options} onSelect={onSelect}
+            <TagPicker value={rowData[dataKey]} data={options} onSelect={onSelect} {...pickerProps}
                 onChange={value => {
                     rowData[dataKey] = value;
                     if (onChange) onChange(value);

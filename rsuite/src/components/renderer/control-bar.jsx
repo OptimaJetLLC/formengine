@@ -5,18 +5,6 @@ import { getDisplayStyle } from './style-helper';
 import $ from 'jquery';
 import { Icon, IconStack } from 'rsuite';
 
-var VisibilityWrapper = ({ children, currentKey, style }) => {
-    var [selected, setSelected] = React.useState(false);
-    FormBuilderStore.listenTo(BuilderActions.showEditForm, selectedKey => {
-        var isCurrent = selectedKey === currentKey;
-        if (selected != isCurrent) {
-            setSelected(isCurrent);
-        }
-    });
-
-    return <div style={{ opacity: selected ? 1 : 0, display: "inline", ...style }}>{children}</div>;
-};
-
 register('control-bar', options => {
     let model = options.props.model;
     let state = options.me.state;
@@ -313,6 +301,8 @@ register('control-bar', options => {
 
         e.preventDefault();
         e.stopPropagation();
+        me.props.parent.setState({resizing: true});
+        me.setState({thisResizing: true});
         window.addEventListener('mousemove', onResize);
         window.addEventListener('mouseup', stopResize);
     }
@@ -320,6 +310,8 @@ register('control-bar', options => {
     var stopResize = () => {
         window.removeEventListener('mousemove', onResize);
         window.removeEventListener('mouseup', stopResize);
+        me.props.parent.setState({resizing: false});
+        me.setState({thisResizing: false});
 
         let fields = {};
         if (moveState.left != undefined) fields["pinnedLeft"] = moveState.left + "px";
@@ -487,13 +479,15 @@ register('control-bar', options => {
         onDrop: dragging ? undefined : onDrop
     }
 
+    const { resizing } = me.props.parent.state;    
+    const { thisResizing } = me.state;
+
     return <DropzoneContext.Consumer>
 
         {({ isBuilder }) => {
             const visible = isBuilder && selected;
             const bar = (
-                <VisibilityWrapper currentKey={model.key} key={makeKey("wrapper")} style={{...getDisplayStyle(visible), ...stylePinned(12)}}>
-                    <div key={makeKey("controlbar")} ref={options.me.barRef}
+                    <div key={makeKey("controlbar")} ref={options.me.barRef} style={{...getDisplayStyle(visible), ...stylePinned(12)}}
                         className={'formbuilder-item-toolbar-container bar'}
                         {...dragProps}>
                         <div className={"formbuilder-item-toolbar-header"}>
@@ -503,16 +497,15 @@ register('control-bar', options => {
                                 >
                                     {options.props.model["key"]}
                                 </div>
-                                <Icon onClick={onPinned} icon='thumb-tack' style={{ color: model.pinned ? '#ffb818' : 'initial' }} />
+                                <Icon onClick={onPinned} icon='thumb-tack' style={{ color: model.pinned ? '#1262e2' : 'initial' }} />
                                 <Icon onClick={options.me.props.onCopy.bind(options.props.parent, options.props.model)} icon='copy' />
                                 <Icon onClick={options.me.props.onDelete.bind(options.props.parent, options.props.model)} icon='trash-o' />
                             </div>
                         </div>
                     </div>
-                </VisibilityWrapper>
             );
 
-            const resize = (
+            const resize = (   
                 <div key={makeKey("resize")} ref={options.me.resizeRef} onMouseDown={(e) => { startResize(e) }}
                 style={{...getDisplayStyle(visible), ...stylePinned(11)}} className="formbuilder-item-toolbar-container resize">
                     <div className="dot" />
@@ -550,7 +543,7 @@ register('control-bar', options => {
             );
 
             return [ 
-                selection,
+                (!resizing || thisResizing) && selection,
                 dragOverTopEl,
                 React.cloneElement(options.props.control, { ref: options.me.controlRef }),
                 point("top", options.me.pointTopRef),

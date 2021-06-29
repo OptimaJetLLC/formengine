@@ -85,19 +85,19 @@ export default class Toolbar extends BaseToolbar {
                                 if (parentItem.isexpanded) {
                                     expandedbock = true;
                                     onclick = me.onExpand.bind(me, parentItem, false);
-                                    iconName = 'angle down';
+                                    iconName = 'angle-down';
                                 }
                                 else {
                                     expandedbock = false;
                                     onclick = me.onExpand.bind(me, parentItem, true);
-                                    iconName = 'angle right';
+                                    iconName = 'angle-right';
                                 }
 
                                 return <>
                                     <h5 draggable="false" onClick={onclick} style={{flexGrow: 1}}
                                         className="formbuilder-toolbox-subheader" key={(parentItem.key + String(index))}>
+                                        <Icon icon={iconName}/>
                                         {parentItem.title}
-                                        <Icon name={iconName}/>
                                     </h5>                                    
                                     {(expandedbock || this.state.filtered) && <Grid itemMinWidth='129px'>
                                         {

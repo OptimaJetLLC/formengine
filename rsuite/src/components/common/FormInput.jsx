@@ -17,7 +17,7 @@ const FormInput = ({label, errorMessage, style, children, ...props}) => {
   };
 
   return (    
-    <FormGroup className={("dwkit-input-form" + ((errorMessage != undefined)  ? " error" : ""))} style={{marginTop: 5, marginBottom: 5, ...style}}>
+    <FormGroup className={("dwkit-input-form" + ((errorMessage != undefined)  ? " error" : ""))} style={{marginTop: 10, marginBottom: 5, ...style}}>
       <ControlLabel style={labelStyle} >{label}</ControlLabel>
       <div className="rs-form-control-wrapper">    
       <InputGroup inside style={{width: "auto"}} size={setDefault(size,"sm")}>
@@ -33,7 +33,8 @@ const FormInput = ({label, errorMessage, style, children, ...props}) => {
 };
 
 const FormSelect = ({searchable, cleanable, ...props}) => {
-  return <FormInput {...props} accepter={SelectPicker} block searchable={setDefault(searchable, false)} cleanable={setDefault(cleanable, false)} />
+  return <FormInput {...props} accepter={SelectPicker} block placement="auto"
+                    searchable={setDefault(searchable, false)} cleanable={setDefault(cleanable, false)} />
 }
 const FormMultiSelect = props => <FormInput {...props} accepter={TagPicker} cleanable={false} creatable block/>
 

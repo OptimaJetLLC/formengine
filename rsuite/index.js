@@ -6,6 +6,9 @@ import FormBuilderControls from './src/builder/controls-for-builder';
 import Window from './src/components/window'
 import drawcontrol from './src/components/drawcontrol'
 
+//Global vars
+const _ = require('lodash');
+
 export {
     FormBuilder, Form, BaseEditControl,
     FormBuilderControls, Window, drawcontrol,

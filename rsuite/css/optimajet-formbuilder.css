@@ -367,6 +367,15 @@ body, h1, h2, h3, h4, h5 {
     text-align: left;
 }
 
+.formbuilder-toolbox .formbuilder-toolbox-subheader i {
+  font-size: 20px; 
+  font-weight: bold;
+  width: 14px; 
+  margin-right: 3px;
+  display: inline-flex;
+  justify-content: center;
+}
+
 .formbuilder-toolbox .formbuilder-toolbox-subheader:hover {
   color: #1262E2;
 }
@@ -491,7 +500,7 @@ body, h1, h2, h3, h4, h5 {
 
 .formbuilder-item-toolbar-container.selected{
     outline: 2px solid #3498ff !important;
-    cursor: pointer !important;
+    cursor: move !important;
 }
 
 select .formbuilder-item-toolbar-header:hover,
@@ -696,11 +705,6 @@ input .formbuilder-item-toolbar-header:hover {
   white-space: nowrap;
 }
 
-.formbuilder-editform-form {
-  height: calc(100% - 100px);
-  overflow: auto;
-}
-
 .formbuilder-editform-form .rs-nav {
   margin: 0 5px;
 }
@@ -743,8 +747,13 @@ input .formbuilder-item-toolbar-header:hover {
   overflow-y: auto;
 }
 
+.formbuilder-editform-panel .formbuilder-panel-content {
+  padding: 0 5px;
+}
+
 .formbuilder-editform-description .form {
   overflow-y: auto;  
+  padding: 8px 0;
 }
 
 /* .formbuilder-editform-panel .formbuilder-panel-content{
@@ -867,17 +876,6 @@ input .formbuilder-item-toolbar-header:hover {
   width: 20px;
   height: 20px;
   cursor: pointer;
-}
-
-.formbuilder-editform-default {
-  background-color: rgba(255,255,255,1);
-  color: black;
-  flex: 1;
-}
-
-.formbuilder-editform-default.formbuilder-editform-settings{  
-  width: 450px;
-  height: 520px;
 }
 
 .formbuilder-editform-buttons {
@@ -3018,7 +3016,6 @@ textarea:read-only,
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 20px;
   padding: 0 5px;
 }
 
@@ -3034,11 +3031,6 @@ textarea:read-only,
   justify-content: space-between;
 }
 
-
-
-.dwkit-inline-form.checkboxes > * {
-  flex-grow: initial;
-}
 .dwkit-inline-form.widths-not-equal > * {  
   flex-basis: initial;
 }
