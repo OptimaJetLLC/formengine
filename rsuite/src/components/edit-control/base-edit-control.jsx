@@ -372,12 +372,12 @@ export default class BaseEditControl extends Component {
 
     render() {
         return (
-            <ToolbarPanel style={{height: "auto"}} className="formbuilder-editform-panel"
+            <ToolbarPanel style={{height: "auto"}} className="formbuilder-editform-panel" minimizable
                 header={
-                    <>
+                    <div style={{display: "flex", flex: 1, justifyContent: "space-between"}}>
                         <h6 style={{color: "white"}}>{this.props.data['key']}</h6>
                         <Tag className="formbuilder-editform-controltype">{this.props.data['data-buildertype']}</Tag>
-                    </>
+                    </div>
                 }
                 content={this.getDescription()}
             />            

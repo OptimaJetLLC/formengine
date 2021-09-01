@@ -15,15 +15,19 @@ const FormInput = ({label, errorMessage, style, children, ...props}) => {
   const labelStyle = {
     fontSize: fontSizes[size]
   };
+  const formControl = <FormControl {...props} size={setDefault(size,"sm")}/>;
 
   return (    
     <FormGroup className={("dwkit-input-form" + ((errorMessage != undefined)  ? " error" : ""))} style={{marginTop: 10, marginBottom: 5, ...style}}>
       <ControlLabel style={labelStyle} >{label}</ControlLabel>
       <div className="rs-form-control-wrapper">    
-      <InputGroup inside style={{width: "auto"}} size={setDefault(size,"sm")}>
-        <FormControl {...props} size={setDefault(size,"sm")}/>
-        {children}
-      </InputGroup>    
+      {children 
+        ? <InputGroup inside style={{width: "auto"}} size={setDefault(size,"sm")}>
+          {formControl}
+          {children}
+        </InputGroup>
+        : formControl
+      }   
         {!!errorMessage && <ErrorMessage show={!!errorMessage} placement="bottomStart">
               {errorMessage}
         </ErrorMessage>}

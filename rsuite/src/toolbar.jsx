@@ -54,6 +54,7 @@ export default class Toolbar extends BaseToolbar {
         return (
             <div className="formbuilder-rightbar">
                 <ToolbarPanel  style={{ marginBottom: 15}}
+                    minimizable={true}
                     header={
                         <>
                         <h6 style={{marginRight: 10}}>Controls</h6>                    

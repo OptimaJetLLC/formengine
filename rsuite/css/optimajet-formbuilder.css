@@ -737,7 +737,6 @@ input .formbuilder-item-toolbar-header:hover {
   background-color: var(--toolbox-header-color);
   color: white;
   display: flex;
-  justify-content: space-between;
   padding: 6px 15px;
 }
 
@@ -753,7 +752,7 @@ input .formbuilder-item-toolbar-header:hover {
 
 .formbuilder-editform-description .form {
   overflow-y: auto;  
-  padding: 8px 0;
+  padding: 8px 5px;
 }
 
 /* .formbuilder-editform-panel .formbuilder-panel-content{
