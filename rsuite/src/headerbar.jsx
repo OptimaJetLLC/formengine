@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, IconButton, ButtonToolbar, Icon, Toggle, Input, Nav } from 'rsuite';
+import { Button, IconButton, ButtonToolbar, Icon, Toggle, Dropdown, Nav } from 'rsuite';
 import { BuilderActions, FormBuilderStore } from 'optimajet-builder-shared';
 import Window from './components/window'
 import JSON5 from 'json5'
@@ -28,33 +28,20 @@ export default class HeaderBar extends React.Component {
         const {
             viewerMode,
             blockChangeViewerMode,
-            isShowControlTree,
-            onToggleControlTree,
-            onDownload,
             onChooseFileUpload
         } = this.props;
                
         return (
             <div className="formbuilder-headerbar">
                 <ButtonToolbar>
-                    <IconButton onClick={onToggleControlTree} 
-                                className="formbuilder-control-tree-button"
-                                icon={<Icon icon="sitemap" size="lg"/>}
-                                appearance={isShowControlTree ? "primary" : "default"}
-                                style={{marginRight: 30}} disabled={viewerMode}
-                                >
-                        {local.controlTree ? local.controlTree : "Control tree"}
-                    </IconButton>
-                    <IconButton onClick={onDownload} icon={<Icon icon="download" />}>{local.download ? local.download : "Download"}</IconButton>
-                    <IconButton onClick={onChooseFileUpload} icon={<Icon icon="upload" />}>{local.upload ? local.upload : "Upload"}</IconButton>
-                    <IconButton onClick={this.onSettings.bind(this)} icon={<Icon icon="setting" />}>{local.settings ? local.settings : "Settings"}</IconButton>
+                    <Dropdown appearance="default" title="Form"></Dropdown>
                     <IconButton onClick={BuilderActions.undo} disabled={!canUndo} icon={<Icon icon="undo" />}>Undo</IconButton>
                     <IconButton onClick={BuilderActions.redo} disabled={!canRedo} icon={<Icon icon="repeat" />}>Redo</IconButton>
                     {/* <IconButton onClick={this.onLibrary.bind(this)} icon={<Icon icon="info" />}>{local.library ? local.library : "Library"}</IconButton> */}
                     {!blockChangeViewerMode && <Toggle checked={this.props.viewerMode} onChange={this.props.onBuilderSwitch} checkedChildren={local.viewer ? local.viewer : "Viewer"} unCheckedChildren={local.builder ? local.builder : "Builder"} />}
                     {viewerMode && <IconButton onClick={this.props.onPrint} icon={<Icon icon="print" />}>{local.print ? local.print : "Print"}</IconButton>}
                 </ButtonToolbar>
-                {!viewerMode && <IconButton onClick={this.props.onClear} style={{ float: "right", marginRight: "15px"}} appearance="ghost" icon={<Icon icon="file-o" />}>{local.clear ? local.clear : "Clear"}</IconButton>}
+                
                 <form action="/" method="post" style={{ display: 'none' }}
                       onSubmit={this.props.onUpload}>
                     <input id="builderUploadFile" type="file" onChange={this.props.onChangeFileUpload}/>

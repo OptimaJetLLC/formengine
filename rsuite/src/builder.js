@@ -67,13 +67,29 @@ export default class FormBuilder extends BaseFormBuilder {
                 controls={this.controls}
         />
 
-        return <div>
-            {this.renderHeaderBar()}     
+        return <div> 
             <div style={style} className="formbuilder">                
-                <Split style={{ display: 'flex', flex: 1 }}  sizes={splitSizes}  onDrag={this.onDragSplit}>
-                    <div style={{ display: 'flex'}}>
+                <div style={{ display: 'flex', flex: 1 }} >
+                    <div>
+                        
+                        <div className="formbuilder-headerbar" style={{display: "flex", alignItems: "center", backgroundColor: this.state.showControlTree ? "#1262E2" : "initial"}}>
+                            <IconButton onClick={this.toggleControlTree} 
+                                    className="formbuilder-control-tree-button"
+                                    icon={<Icon icon="sitemap" size="lg" inverse={!!this.state.showControlTree}/>}
+                                    appearance={"subtle"}/>  
+
+                        <h6 style={{flex: 1, color: this.state.showControlTree ? "white" : "initial"}}>
+                            
+
+                            {this.state.showControlTree ? (localization.controlTree ? localization.controlTree : "Control tree") : ""}
+                            </h6>
+                        </div>
                     {showControlTree && <ControlTree style={{ marginRight: 10, width: 180 }} onClose={this.toggleControlTree}/>}
+                    </div>
+                    <div style={{flex: 1}}>
+                    {this.renderHeaderBar()}   
                     <div className="formbuilder-content formbuilder-dropzoneactive" onDragOver={this.onDragOver}>
+ 
                         <Preview
                             buildermode={true}
                             getFormFunc={this.props.getFormFunc}
@@ -88,14 +104,26 @@ export default class FormBuilder extends BaseFormBuilder {
                         />
                     </div>
                     </div>
-                    <div style={{ display: 'flex'}}>
+                    <div>
                         
+                        <div className="formbuilder-headerbar" style={{display: "flex", alignItems: "center", backgroundColor: this.state.showControlTree ? "#1262E2" : "initial"}}>
+                            <IconButton onClick={this.toggleControlTree} 
+                                    className="formbuilder-control-tree-button"
+                                    icon={<Icon icon="sitemap" size="lg" inverse={!!this.state.showControlTree}/>}
+                                    appearance={"subtle"}/>  
+
+                        <h6 style={{flex: 1, color: this.state.showControlTree ? "white" : "initial"}}>
+                            
+
+                            {this.state.showControlTree ? (localization.controlTree ? localization.controlTree : "Control tree") : ""}
+                            </h6>
+                        </div>
                         <ToolBar localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
                             externalControlList={this.props.externalControlList}
                             externalControlsOnly={this.props.externalControlsOnly}
-                            controls={this.controls} editControl={CustomBlockEditControl} />    
-                    </div>            
-                </Split>            
+                            controls={this.controls} editControl={CustomBlockEditControl} /> 
+                    </div>           
+                </div>            
             </div>
         </div>;
     }

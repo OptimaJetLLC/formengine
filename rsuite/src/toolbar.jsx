@@ -57,7 +57,7 @@ export default class Toolbar extends BaseToolbar {
                     minimizable={true}
                     header={
                         <>
-                        <h6 style={{marginRight: 10}}>Controls</h6>                    
+                        <h6 style={{marginRight: 10}}>Elements</h6>                    
                             <SearchForm ref={this.searchForm} items={this.state.items} handleChange={this.handleSearchChange.bind(this)}/>
                         </>
                     }
