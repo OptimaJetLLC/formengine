@@ -35,9 +35,7 @@ export default class Viewer extends BaseFormViewer {
         var local = this.props.localization ? this.props.localization : {}; 
 
         return (<div style={style} className="formbuilder-viewer">
-            <Split style={{ display: 'flex' }} sizes={splitSizes} onDrag={onDragSizes}>
-                <div>
-                    <div className={("formbuilder-viewer-form" + (isShowControlTree ? " with-control-tree" : ""))} style={{ overflow: 'auto' }}>                    
+                <div className={("formbuilder-viewer-form" + (isShowControlTree ? " with-control-tree" : ""))} style={{ overflow: 'auto' }}>                    
                         <Form
                             model={this.state.model}
                             data={data}
@@ -57,8 +55,7 @@ export default class Viewer extends BaseFormViewer {
                             ref={(form) => { this.form = form; }}      
                         />
                     </div>
-                </div>
-                <div className="formbuilder-viewer-info">
+                <div className="formbuilder-viewer-info" style={this.props.isShowRightPanel ? {} : {display:"none"}}>
                     <div>
                         <RadioGroup inline name="adaptiveViewTypeDesktop" value={this.state.adaptiveViewType}
                             onChange={(value) => {this.setState({ adaptiveViewType: value })}}>
@@ -74,7 +71,6 @@ export default class Viewer extends BaseFormViewer {
                     <h3>{local.events ? local.events : "Events"}</h3>
                     <Input rows={5} readOnly={true} value={this.state.eventslog} componentClass="textarea"/>
                 </div>
-            </Split>
         </div>);
     }
 

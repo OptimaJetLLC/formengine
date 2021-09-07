@@ -5,8 +5,9 @@
 
 :root {
   --toolbox-header-color: #1262E2;
-  --control-tree-width: 160px;
+  --control-tree-width: 180px;
   --global-height: calc(100vh - 77px);
+  --right-bar-width: 400px;
 }
 
 body, h1, h2, h3, h4, h5 {
@@ -19,7 +20,6 @@ body, h1, h2, h3, h4, h5 {
 }
 
 .formbuilder{
-    display: flex;
     height: var(--global-height);
     align-items: stretch;
     min-height: 400px;
@@ -37,17 +37,21 @@ body, h1, h2, h3, h4, h5 {
 }
 
 .formbuilder-preview{
-    margin: 15px;
+    flex: 1;
+    padding: 15px;
     position: relative;
+    overflow-y: auto;
 }
 
 .formbuilder-content{
     width: 100%;
     float: left;
     min-height: 400px;
-    overflow-y: auto;
-    margin-top: 15px;
-    height: var(--global-height);;
+    padding-top: 15px;
+}
+
+.formbuilder-content > * {
+  height: calc(var(--global-height) - 62px);
 }
 
 .formbuilder-empty{
@@ -121,10 +125,9 @@ body, h1, h2, h3, h4, h5 {
 
 .formbuilder-rightbar {
   float: right;
-  width: 400px;
-  height: calc(var(--global-height) - 57px);
+  width: var(--right-bar-width);
+  height: calc(var(--global-height) - 62px);
   margin-right: 5px;
-  padding-top: 15px;
   flex-direction: column;
   display: flex;
 }
@@ -141,10 +144,11 @@ body, h1, h2, h3, h4, h5 {
   box-shadow: inset 0px 0px 15px rgb(0 0 0 / 25%);
   min-width: var(--control-tree-width);
   padding-top: 15px;
+  background-color: #f7f7fa;
 }
 
-.formbuilder-control-tree-button > button {
-  background-color: var(--toolbox-header-color);
+.formbuilder-control-tree .rs-tree {
+  background-color: initial;
 }
 
 .formbuilder-clickable-icon {
@@ -617,10 +621,40 @@ input .formbuilder-item-toolbar-header:hover {
 
 .formbuilder-headerbar{
   display: flex;
-  justify-content: space-between;
   flex: 1;
   box-shadow: 0px 15px 15px -15px rgb(0 0 0 / 25%);
+}
+
+.formbuilder-headerbar > * {
+  display: flex;
   padding: 5px;
+}
+
+
+
+.formbuilder-headerbar .panel .label {
+  flex: 1;
+  align-self: center;
+}
+
+.formbuilder-headerbar .left.panel {
+  width: 180px;
+}
+
+.formbuilder-headerbar .right.panel {
+  width: 400px;  
+  justify-content: flex-end;
+}
+.formbuilder-headerbar .toolbar {
+  flex: 1;
+}
+
+.formbuilder-headerbar .toolbar .center {
+  justify-content: center;
+}
+
+.formbuilder-headerbar .toolbar > * {
+  flex: 1;
 }
 
 .formbuilder-selector{
@@ -652,20 +686,20 @@ input .formbuilder-item-toolbar-header:hover {
 }
 
 .formbuilder-viewer {
-  padding-top: 15px;
-}
-
-.formbuilder-viewer-form.with-control-tree {
-  margin-left: var(--control-tree-width);
+  display: flex;
 }
 
 .formbuilder-viewer-form{
+  flex: 1;
   padding: 15px;
-  height: 640px;
+  position: relative;
+  overflow-y: auto;
 }
 
 .formbuilder-viewer-info{
+  width: var(--right-bar-width);
   padding: 0px 15px 0px 0px;
+  margin-right: 5px;
 }
 
 .formbuilder-viewer-footer{
@@ -3056,26 +3090,30 @@ textarea:read-only,
   background: rgb(133 133 133);
 }
 
-.formbuilder-panel-content::-webkit-scrollbar {
+.formbuilder-container *::-webkit-scrollbar {
   width: 12px;
   border-radius: 4px;
   background-color: rgba(255,255,255,0);
 } 
 
-.formbuilder-panel-content::-webkit-scrollbar-thumb {
+.formbuilder-container *::-webkit-scrollbar-thumb {
     border: 3px solid rgba(255,255,255,0);
     border-radius: 4px;
     background-clip: padding-box;
 }
 
-.formbuilder-panel-content::-webkit-scrollbar-track {
+.formbuilder-container *::-webkit-scrollbar-track {
     border: 3px solid rgba(255,255,255,0);
     background-clip: padding-box;
-  background-color: #ccc;
+  background-color: #cccccc47;
 }
 
 /* Handle on hover */
-.formbuilder-panel-content::-webkit-scrollbar-thumb:hover {
+.formbuilder-container *::-webkit-scrollbar-thumb:hover {
   background-color: rgb(133 133 133);
-  border: 3px solid rgba(255,255,255,0);
+  border: 2px solid rgba(255,255,255,0);
+}
+
+.rs-dropdown .rs-dropdown-menu {
+  z-index: 7;
 }

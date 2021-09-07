@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, IconButton, ButtonToolbar, Icon, Toggle, Dropdown, Nav } from 'rsuite';
+import { Button, ButtonGroup, IconButton, ButtonToolbar, Icon, Dropdown, Input, Nav } from 'rsuite';
 import { BuilderActions, FormBuilderStore } from 'optimajet-builder-shared';
 import Window from './components/window'
 import JSON5 from 'json5'
@@ -22,33 +22,98 @@ export default class HeaderBar extends React.Component {
         });
     }
 
+    toggleModeButtons = () => {
+        const {viewerMode, onBuilderSwitch} = this.props;
+        return <ButtonGroup style={{flex: 1, display: "flex", justifyContent: "center"}}>
+            <Button
+                onClick={_=>onBuilderSwitch(!viewerMode)}
+                appearance={!viewerMode ? "primary" : "ghost"}>
+                Builder
+            </Button>
+            <Button
+                onClick={_=>onBuilderSwitch(!viewerMode)}
+                appearance={viewerMode ? "primary" : "ghost"}>
+                Viewer
+            </Button>
+        </ButtonGroup>;
+    }
+
+    fileActions = () => {
+        const {
+            onDownload,
+            onChooseFileUpload,
+            onClear,
+            onPrint
+        } = this.props;
+        var local = this.props.localization ? this.props.localization : {}; 
+
+        return <Dropdown appearance="default" title="Form">
+            <Dropdown.Item onSelect={onDownload} icon={<Icon icon="download" />}>
+                {local.download ?? "Download"}
+            </Dropdown.Item>
+            <Dropdown.Item onSelect={onChooseFileUpload} icon={<Icon icon="upload" />}>
+                {local.upload ?? "Upload"}
+            </Dropdown.Item>
+            <Dropdown.Item onSelect={onPrint} icon={<Icon icon="print" />}>
+                {local.print ?? "Print"}
+            </Dropdown.Item>
+            <Dropdown.Item onSelect={this.onSettings} icon={<Icon icon="setting" />}>
+                {local.settings ?? "Settings"}
+            </Dropdown.Item>
+            <Dropdown.Item onSelect={onClear} icon={<Icon icon="file-o" />}>
+                {local.clear ?? "Clear"}
+            </Dropdown.Item>
+        </Dropdown>
+    }
+
     render() {
         const { canUndo, canRedo } = this.state;
         var local = this.props.localization ? this.props.localization : {}; 
         const {
             viewerMode,
             blockChangeViewerMode,
-            onChooseFileUpload
+            isShowLeftPanel,
+            isShowRightPanel,
+            onToggleLeftPanel,
+            onToggleRightPanel,
         } = this.props;
                
         return (
-            <div className="formbuilder-headerbar">
-                <ButtonToolbar>
-                    <Dropdown appearance="default" title="Form"></Dropdown>
-                    <IconButton onClick={BuilderActions.undo} disabled={!canUndo} icon={<Icon icon="undo" />}>Undo</IconButton>
-                    <IconButton onClick={BuilderActions.redo} disabled={!canRedo} icon={<Icon icon="repeat" />}>Redo</IconButton>
-                    {/* <IconButton onClick={this.onLibrary.bind(this)} icon={<Icon icon="info" />}>{local.library ? local.library : "Library"}</IconButton> */}
-                    {!blockChangeViewerMode && <Toggle checked={this.props.viewerMode} onChange={this.props.onBuilderSwitch} checkedChildren={local.viewer ? local.viewer : "Viewer"} unCheckedChildren={local.builder ? local.builder : "Builder"} />}
-                    {viewerMode && <IconButton onClick={this.props.onPrint} icon={<Icon icon="print" />}>{local.print ? local.print : "Print"}</IconButton>}
-                </ButtonToolbar>
-                
+            <div className="formbuilder-headerbar" style={{display: "flex"}}>
+            <div className="left panel" >            
+                <IconButton onClick={onToggleLeftPanel} 
+                        className="formbuilder-left-panel-button"
+                        icon={<Icon icon="sitemap" size="lg"/>}
+                        appearance={isShowLeftPanel ? "primary" : "subtle"}/>  
+            </div>            
+            <div className="toolbar">
+                <div className="left">
+                    <ButtonToolbar>
+                        {this.fileActions()}
+                        <IconButton onClick={BuilderActions.undo} disabled={!canUndo} icon={<Icon icon="undo" />}>Undo</IconButton>
+                        <IconButton onClick={BuilderActions.redo} disabled={!canRedo} icon={<Icon icon="repeat" />}>Redo</IconButton>
+                        {/* <IconButton onClick={this.onLibrary.bind(this)} icon={<Icon icon="info" />}>{local.library ? local.library : "Library"}</IconButton> */}
+                    </ButtonToolbar>
+                </div>            
+                <div className="center">
+                    {!blockChangeViewerMode && this.toggleModeButtons()}
+                </div>            
+                <div className="right"></div>
                 <form action="/" method="post" style={{ display: 'none' }}
-                      onSubmit={this.props.onUpload}>
+                    onSubmit={this.props.onUpload}>
                     <input id="builderUploadFile" type="file" onChange={this.props.onChangeFileUpload}/>
                     <input id="builderUploadSubmit" type="submit" />
                 </form>
                 {this.state.settingsOpen && this.renderSettings()}
             </div>
+            <div className="right panel">
+                <IconButton onClick={onToggleRightPanel} 
+                        className="formbuilder-right-panel-button"
+                        icon={<Icon icon="bars" size="lg"/>}
+                        appearance={isShowRightPanel ? "primary" : "subtle"}/>  
+            </div>   
+            </div>
+            
         );
     }
 
@@ -114,7 +179,7 @@ export default class HeaderBar extends React.Component {
         this.forceUpdate();
     }
 
-    onSettings(){
+    onSettings = () => {
         if(this.state.settingsOpen){
             this.setState({settingsOpen: false});
         }

@@ -19,6 +19,8 @@ export default class FormBuilder extends BaseFormBuilder {
         this.controls = controls;
         this.state.viewerMode = props.viewerMode == "viewer";
         this.state.showControlTree = true;
+        
+        this.state.showRightPanel = true;
         this.state.splitSizes = [77, 23];
 
         this.onDownload = this.onDownload.bind(this);
@@ -36,10 +38,27 @@ export default class FormBuilder extends BaseFormBuilder {
     }
 
     render() {
+        const {showControlTree, splitSizes} = this.state;
+        const localization = this.getCurrentLocalization();
+        const style = this.state.viewerMode ? {display:"none"} : {};
+        const editForm = <EditForm actions={this.props.actions} localization={localization.editforms}
+                externalControlList={this.props.externalControlList}
+                controls={this.controls}
+        />
         return (<div className="formbuilder-container">
             <DropzoneContext.Provider value={this.state.dropzoneContext}>
-                {this.renderBuilder()}
-                {this.renderViewer()}
+            <div className="formbuilder">            
+                {this.renderHeaderBar()}   
+                <div style={{ display: 'flex', flex: 1 }} >
+                    {showControlTree && <ControlTree show={!this.state.viewerMode} style={{ marginRight: 10, width: 180 }} onClose={this.toggleLeftPanel}/>}
+                    <div style={{flex: 1}}>
+                        <div className="formbuilder-content formbuilder-dropzoneactive" onDragOver={this.onDragOver}>
+                            {this.renderBuilder()}
+                            {this.renderViewer()}
+                        </div>
+                    </div>                                 
+                </div>            
+            </div>
             </DropzoneContext.Provider>
         </div>);
     }
@@ -48,9 +67,14 @@ export default class FormBuilder extends BaseFormBuilder {
         return {};
     }
 
-    toggleControlTree = () => {
+    toggleLeftPanel = () => {
         const {showControlTree} = this.state;
         this.setState({showControlTree: !showControlTree}, () => dispatchWindowResize());
+    }
+
+    toggleRightPanel = () => {
+        const {showRightPanel} = this.state;
+        this.setState({showRightPanel: !showRightPanel}, () => dispatchWindowResize());
     }
 
     onDragSplit = (splitSizes) => {
@@ -59,90 +83,50 @@ export default class FormBuilder extends BaseFormBuilder {
     }
 
     renderBuilder(){
-        const {showControlTree, splitSizes} = this.state;
+        const {showRightPanel, splitSizes} = this.state;
         const localization = this.getCurrentLocalization();
-        const style = this.state.viewerMode ? {display:"none"} : {};
+        const visibility = this.state.viewerMode ? {display:"none"} : {};
         const editForm = <EditForm actions={this.props.actions} localization={localization.editforms}
                 externalControlList={this.props.externalControlList}
                 controls={this.controls}
         />
 
-        return <div> 
-            <div style={style} className="formbuilder">                
-                <div style={{ display: 'flex', flex: 1 }} >
-                    <div>
-                        
-                        <div className="formbuilder-headerbar" style={{display: "flex", alignItems: "center", backgroundColor: this.state.showControlTree ? "#1262E2" : "initial"}}>
-                            <IconButton onClick={this.toggleControlTree} 
-                                    className="formbuilder-control-tree-button"
-                                    icon={<Icon icon="sitemap" size="lg" inverse={!!this.state.showControlTree}/>}
-                                    appearance={"subtle"}/>  
-
-                        <h6 style={{flex: 1, color: this.state.showControlTree ? "white" : "initial"}}>
-                            
-
-                            {this.state.showControlTree ? (localization.controlTree ? localization.controlTree : "Control tree") : ""}
-                            </h6>
-                        </div>
-                    {showControlTree && <ControlTree style={{ marginRight: 10, width: 180 }} onClose={this.toggleControlTree}/>}
-                    </div>
-                    <div style={{flex: 1}}>
-                    {this.renderHeaderBar()}   
-                    <div className="formbuilder-content formbuilder-dropzoneactive" onDragOver={this.onDragOver}>
- 
-                        <Preview
-                            buildermode={true}
-                            getFormFunc={this.props.getFormFunc}
-                            getFormFist={this.props.getFormFist}
-                            getAdditionalDataForControl={this.props.getAdditionalDataForControl}
-                            localization={localization.preview}
-                            downloadUrl={this.props.downloadUrl}
-                            uploadUrl={this.props.uploadUrl}
-                            externalControlRender={this.props.externalControlRender}
-                            externalControlList={this.props.externalControlList}
-                            controls={this.controls}
-                        />
-                    </div>
-                    </div>
-                    <div>
-                        
-                        <div className="formbuilder-headerbar" style={{display: "flex", alignItems: "center", backgroundColor: this.state.showControlTree ? "#1262E2" : "initial"}}>
-                            <IconButton onClick={this.toggleControlTree} 
-                                    className="formbuilder-control-tree-button"
-                                    icon={<Icon icon="sitemap" size="lg" inverse={!!this.state.showControlTree}/>}
-                                    appearance={"subtle"}/>  
-
-                        <h6 style={{flex: 1, color: this.state.showControlTree ? "white" : "initial"}}>
-                            
-
-                            {this.state.showControlTree ? (localization.controlTree ? localization.controlTree : "Control tree") : ""}
-                            </h6>
-                        </div>
-                        <ToolBar localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
-                            externalControlList={this.props.externalControlList}
+        return <div style={{display: "flex", ...visibility}}>
+            <Preview
+                    buildermode={true}
+                    getFormFunc={this.props.getFormFunc}
+                    getFormFist={this.props.getFormFist}
+                    getAdditionalDataForControl={this.props.getAdditionalDataForControl}
+                    localization={localization.preview}
+                    downloadUrl={this.props.downloadUrl}
+                    uploadUrl={this.props.uploadUrl}
+                    externalControlRender={this.props.externalControlRender}
+                    externalControlList={this.props.externalControlList}
+                    controls={this.controls}
+                />         
+               <ToolBar localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
+                            externalControlList={this.props.externalControlList} style={this.state.showRightPanel ? {} : {display:"none"}}
                             externalControlsOnly={this.props.externalControlsOnly}
-                            controls={this.controls} editControl={CustomBlockEditControl} /> 
-                    </div>           
-                </div>            
-            </div>
-        </div>;
+                            controls={this.controls} editControl={CustomBlockEditControl} />
+        </div>
     }
 
     renderViewer(){
         const { getFormFunc, downloadUrl, uploadUrl, externalControlList, externalControlRender } = this.props;
         const localization = this.getCurrentLocalization();
         return <Viewer
-            show={this.state.viewerMode}
-            builder={this} splitSizes={this.state.splitSizes} onDrag={this.onDragSplit}
-            localization={localization.viewer}
-            getFormFunc={getFormFunc}
-            downloadUrl={downloadUrl}
-            uploadUrl={uploadUrl}
-            externalControlList={externalControlList}
-            externalControlRender={externalControlRender} 
-            isShowControlTree={this.state.showControlTree}            
-            ref={(viewer) => { this.viewer = viewer; }}
-        />;
+        show={this.state.viewerMode}
+        builder={this} splitSizes={this.state.splitSizes} onDrag={this.onDragSplit}
+        localization={localization.viewer}
+        getFormFunc={getFormFunc}
+        downloadUrl={downloadUrl}
+        uploadUrl={uploadUrl}
+        externalControlList={externalControlList}
+        externalControlRender={externalControlRender} 
+        isShowControlTree={this.state.showControlTree}  
+            isShowRightPanel={this.state.showRightPanel}          
+        ref={(viewer) => { this.viewer = viewer; }}
+    />;
     }
 
     renderHeaderBar(){
@@ -162,8 +146,10 @@ export default class FormBuilder extends BaseFormBuilder {
             onChooseFileUpload={this.onChooseFileUpload}
             onUpload={this.onUpload}
             onChangeFileUpload={this.onChangeFileUpload}
-            onToggleControlTree={this.toggleControlTree}
-            isShowControlTree={this.state.showControlTree}
+            onToggleLeftPanel={this.toggleLeftPanel}
+            isShowLeftPanel={this.state.showControlTree}
+            onToggleRightPanel={this.toggleRightPanel}
+            isShowRightPanel={this.state.showRightPanel}
         />;
     }
 

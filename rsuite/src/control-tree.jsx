@@ -20,13 +20,13 @@ export default class ControlTree extends BaseControlTree {
 
     render() {
         const { model, selectedKey } = this.state;
-        return <div  onKeyDown={this.onKeyDown}>
-            <Tree className="formbuilder-control-tree" value={selectedKey}
+        return <div  onKeyDown={this.onKeyDown} className="formbuilder-control-tree">
+            {this.props.show && <Tree value={selectedKey} style={{backgroundColor: "initial"}}
                 data={model} valueKey="key" labelKey="key"
                 onSelect={({key}) => this.select(key)}
                 style={{maxHeight: "100%"}}
                 defaultExpandAll tabIndex="0"
-            />
+            />}
         </div>
     }
 }

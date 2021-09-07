@@ -52,7 +52,7 @@ export default class Toolbar extends BaseToolbar {
             }
         }
         return (
-            <div className="formbuilder-rightbar">
+            <div className="formbuilder-rightbar" style={this.props.style}>
                 <ToolbarPanel  style={{ marginBottom: 15}}
                     minimizable={true}
                     header={
