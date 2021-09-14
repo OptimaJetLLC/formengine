@@ -20,7 +20,6 @@ export default class Viewer extends BaseFormViewer {
 
     render() {
         let data = {};
-        const {isShowControlTree, splitSizes, onDragSizes} = this.props;
         let errors = undefined;
         try {
             data = JSON5.parse(this.state.values);
@@ -34,35 +33,29 @@ export default class Viewer extends BaseFormViewer {
         const style = this.props.show ? {} : {display:"none"};
         var local = this.props.localization ? this.props.localization : {}; 
 
-        return (<div style={style} className="formbuilder-viewer">
-                <div className={("formbuilder-viewer-form" + (isShowControlTree ? " with-control-tree" : ""))} style={{ overflow: 'auto' }}>                    
-                        <Form
-                            model={this.state.model}
-                            data={data}
-                            errors={errors}
-                            eventFunc={this.eventFunc.bind(this)}
-                            eventErrFunc={this.eventErrProcess.bind(this)}
-                            getFormFunc={this.props.getFormFunc}
-                            dataChanged={this.formDataChaged.bind(this)}
-                            getAdditionalDataForControl={this.getAdditionalDataForControl.bind(this)}
-                            downloadUrl={this.props.downloadUrl}
-                            uploadUrl={this.props.uploadUrl}
-                            externalControlList={this.props.externalControlList}
-                            externalControlRender={this.props.externalControlRender}
-                            adaptiveViewType={this.state.adaptiveViewType}
-                            autoCheckConditions={true}
-                            autoValidate={true}
-                            ref={(form) => { this.form = form; }}      
-                        />
-                    </div>
+        return (<>
+                <div className="form-container">
+                    <Form
+                        model={this.state.model}
+                        className={"formbuilder-form"}
+                        data={data}
+                        errors={errors}
+                        eventFunc={this.eventFunc.bind(this)}
+                        eventErrFunc={this.eventErrProcess.bind(this)}
+                        getFormFunc={this.props.getFormFunc}
+                        dataChanged={this.formDataChaged.bind(this)}
+                        getAdditionalDataForControl={this.getAdditionalDataForControl.bind(this)}
+                        downloadUrl={this.props.downloadUrl}
+                        uploadUrl={this.props.uploadUrl}
+                        externalControlList={this.props.externalControlList}
+                        externalControlRender={this.props.externalControlRender}
+                        adaptiveViewType={this.state.adaptiveViewType}
+                        autoCheckConditions={true}
+                        autoValidate={true}
+                        ref={(form) => { this.form = form; }}      
+                    />                    
+                </div>      
                 <div className="formbuilder-viewer-info" style={this.props.isShowRightPanel ? {} : {display:"none"}}>
-                    <div>
-                        <RadioGroup inline name="adaptiveViewTypeDesktop" value={this.state.adaptiveViewType}
-                            onChange={(value) => {this.setState({ adaptiveViewType: value })}}>
-                            <Radio value="desktop">{local.desktop ? local.desktop : "Desktop"}</Radio>
-                            <Radio value="mobile">{local.mobile ? local.mobile : "Mobile"}</Radio>
-                        </RadioGroup>
-                    </div>
                     <h3>{local.values ? local.values : "Values"}</h3>
                     <Input rows={20} onChange={this.handleChange.bind(this)} value={this.state.values} componentClass="textarea"/>
                     <h3>{local.errors ? local.errors : "Errors"}</h3>
@@ -71,7 +64,7 @@ export default class Viewer extends BaseFormViewer {
                     <h3>{local.events ? local.events : "Events"}</h3>
                     <Input rows={5} readOnly={true} value={this.state.eventslog} componentClass="textarea"/>
                 </div>
-        </div>);
+        </>);
     }
 
     formDataChaged(form, { key, value }) {

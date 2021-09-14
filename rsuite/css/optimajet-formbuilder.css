@@ -32,15 +32,47 @@ body, h1, h2, h3, h4, h5 {
     user-select: none; 
 }
 
-.formbuilder-form {
-  position: relative;
+
+
+.formbuilder .view{
+  flex: 1;
+  display: flex;
 }
 
-.formbuilder-preview{
-    flex: 1;
+
+.view > .form-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  overflow: visible;
+}
+
+.formbuilder-form {
+    width: 100%;
+    height: 100%;
     padding: 15px;
     position: relative;
     overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0 15px;
+    box-shadow: 0px 0px 15px rgb(0 0 0 / 25%);
+    background-color: white;
+    border-radius: 10px;    
+    transition: height .2s ease, width .2s ease, border-radius .2s ease;
+}
+
+
+.formbuilder-headerbar .desktop-mode-select{
+  position: absolute;
+  margin-left: 230px;
+}
+
+.view.mobile .formbuilder-form {
+  width: 400px;
+  height: 700px;  
+  border-radius: 30px;
+  padding: 10px;
+  padding-top: 30px;
 }
 
 .formbuilder-content{
@@ -48,6 +80,7 @@ body, h1, h2, h3, h4, h5 {
     float: left;
     min-height: 400px;
     padding-top: 15px;
+    background-color: #f7f7fa;
 }
 
 .formbuilder-content > * {
@@ -141,10 +174,8 @@ body, h1, h2, h3, h4, h5 {
 }
 
 .formbuilder-control-tree {
-  box-shadow: inset 0px 0px 15px rgb(0 0 0 / 25%);
   min-width: var(--control-tree-width);
   padding-top: 15px;
-  background-color: #f7f7fa;
 }
 
 .formbuilder-control-tree .rs-tree {
@@ -627,7 +658,7 @@ input .formbuilder-item-toolbar-header:hover {
 
 .formbuilder-headerbar > * {
   display: flex;
-  padding: 5px;
+  padding: 10px;
 }
 
 
@@ -651,6 +682,7 @@ input .formbuilder-item-toolbar-header:hover {
 
 .formbuilder-headerbar .toolbar .center {
   justify-content: center;
+  display: flex;
 }
 
 .formbuilder-headerbar .toolbar > * {
@@ -683,10 +715,6 @@ input .formbuilder-item-toolbar-header:hover {
 .formbuilder-item-toolbar-header-buttons > i {
     cursor: pointer;
     margin-right: 7px;
-}
-
-.formbuilder-viewer {
-  display: flex;
 }
 
 .formbuilder-viewer-form{

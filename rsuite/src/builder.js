@@ -17,11 +17,13 @@ export default class FormBuilder extends BaseFormBuilder {
     constructor(props) {
         super(props);
         this.controls = controls;
-        this.state.viewerMode = props.viewerMode == "viewer";
-        this.state.showControlTree = true;
-        
-        this.state.showRightPanel = true;
-        this.state.splitSizes = [77, 23];
+        this.state = {
+            ...this.state,
+            viewerMode: props.viewerMode == "viewer",
+            desktopMode: "desktop",
+            showControlTree: true,
+            showRightPanel: true,
+        }
 
         this.onDownload = this.onDownload.bind(this);
         this.onClear = this.create.bind(this);
@@ -38,29 +40,19 @@ export default class FormBuilder extends BaseFormBuilder {
     }
 
     render() {
-        const {showControlTree, splitSizes} = this.state;
-        const localization = this.getCurrentLocalization();
-        const style = this.state.viewerMode ? {display:"none"} : {};
-        const editForm = <EditForm actions={this.props.actions} localization={localization.editforms}
-                externalControlList={this.props.externalControlList}
-                controls={this.controls}
-        />
-        return (<div className="formbuilder-container">
-            <DropzoneContext.Provider value={this.state.dropzoneContext}>
+        const {showControlTree, desktopMode} = this.state;
+        const viewClassName = "view" + " " + desktopMode;
+        const showIf = (condition, child) => <div style={condition ? {} : {display: 'none'}} className={viewClassName}>{child}</div>;
+        return (<DropzoneContext.Provider value={this.state.dropzoneContext}>
             <div className="formbuilder">            
                 {this.renderHeaderBar()}   
-                <div style={{ display: 'flex', flex: 1 }} >
+                <div className="formbuilder-content formbuilder-dropzoneactive" style={{ display: 'flex', flex: 1 }}  onDragOver={this.onDragOver}>
                     {showControlTree && <ControlTree show={!this.state.viewerMode} style={{ marginRight: 10, width: 180 }} onClose={this.toggleLeftPanel}/>}
-                    <div style={{flex: 1}}>
-                        <div className="formbuilder-content formbuilder-dropzoneactive" onDragOver={this.onDragOver}>
-                            {this.renderBuilder()}
-                            {this.renderViewer()}
-                        </div>
-                    </div>                                 
+                    {showIf(!this.state.viewerMode, this.renderBuilder())}
+                    {showIf(this.state.viewerMode, this.renderViewer())}                         
                 </div>            
             </div>
-            </DropzoneContext.Provider>
-        </div>);
+            </DropzoneContext.Provider>);
     }
 
     getCurrentLocalization(){
@@ -77,38 +69,35 @@ export default class FormBuilder extends BaseFormBuilder {
         this.setState({showRightPanel: !showRightPanel}, () => dispatchWindowResize());
     }
 
-    onDragSplit = (splitSizes) => {
-        this.setState({splitSizes})
-        this.forceUpdate()
+    onChangeDesktopMode = desktopMode => {
+        this.setState({desktopMode}, () => dispatchWindowResize());
     }
 
     renderBuilder(){
-        const {showRightPanel, splitSizes} = this.state;
         const localization = this.getCurrentLocalization();
-        const visibility = this.state.viewerMode ? {display:"none"} : {};
         const editForm = <EditForm actions={this.props.actions} localization={localization.editforms}
                 externalControlList={this.props.externalControlList}
                 controls={this.controls}
         />
 
-        return <div style={{display: "flex", ...visibility}}>
-            <Preview
-                    buildermode={true}
-                    getFormFunc={this.props.getFormFunc}
-                    getFormFist={this.props.getFormFist}
-                    getAdditionalDataForControl={this.props.getAdditionalDataForControl}
-                    localization={localization.preview}
-                    downloadUrl={this.props.downloadUrl}
-                    uploadUrl={this.props.uploadUrl}
-                    externalControlRender={this.props.externalControlRender}
-                    externalControlList={this.props.externalControlList}
-                    controls={this.controls}
-                />         
+        return <>
+                <Preview
+                        buildermode={true} show={!this.state.viewerMode}
+                        getFormFunc={this.props.getFormFunc}
+                        getFormFist={this.props.getFormFist}
+                        getAdditionalDataForControl={this.props.getAdditionalDataForControl}
+                        localization={localization.preview}
+                        downloadUrl={this.props.downloadUrl}
+                        uploadUrl={this.props.uploadUrl}
+                        externalControlRender={this.props.externalControlRender}
+                        externalControlList={this.props.externalControlList}
+                        controls={this.controls}
+                />     
                <ToolBar localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
                             externalControlList={this.props.externalControlList} style={this.state.showRightPanel ? {} : {display:"none"}}
                             externalControlsOnly={this.props.externalControlsOnly}
                             controls={this.controls} editControl={CustomBlockEditControl} />
-        </div>
+        </>
     }
 
     renderViewer(){
@@ -116,7 +105,7 @@ export default class FormBuilder extends BaseFormBuilder {
         const localization = this.getCurrentLocalization();
         return <Viewer
         show={this.state.viewerMode}
-        builder={this} splitSizes={this.state.splitSizes} onDrag={this.onDragSplit}
+        builder={this}
         localization={localization.viewer}
         getFormFunc={getFormFunc}
         downloadUrl={downloadUrl}
@@ -137,6 +126,8 @@ export default class FormBuilder extends BaseFormBuilder {
         return <HeaderBar 
             builder={this}
             viewerMode={this.state.viewerMode}
+            desktopMode={this.state.desktopMode}
+            onChangeDesktopMode={this.onChangeDesktopMode}
             blockChangeViewerMode={this.props.blockChangeViewerMode}
             localization={localization.headerbar}
             onDownload={this.onDownload}

@@ -26,9 +26,7 @@ export default class Form extends WebForm {
     }
 
     render() {
-        const className = 'formbuilder-form' + (this.props.className === undefined ?
-            '' :
-            (' ' + this.props.className));
+        const className = 'formbuilder-form' + ' ' + (this.props.className === undefined ?? this.props.className);
 
         const items = this.getItemsForRender();
         return (

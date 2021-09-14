@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonGroup, IconButton, ButtonToolbar, Icon, Dropdown, Input, Nav } from 'rsuite';
+import { Button, ButtonGroup, IconButton, ButtonToolbar, Icon, Dropdown, SelectPicker , Nav } from 'rsuite';
 import { BuilderActions, FormBuilderStore } from 'optimajet-builder-shared';
 import Window from './components/window'
 import JSON5 from 'json5'
@@ -76,6 +76,8 @@ export default class HeaderBar extends React.Component {
             isShowRightPanel,
             onToggleLeftPanel,
             onToggleRightPanel,
+            onChangeDesktopMode,
+            desktopMode
         } = this.props;
                
         return (
@@ -96,7 +98,9 @@ export default class HeaderBar extends React.Component {
                     </ButtonToolbar>
                 </div>            
                 <div className="center">
-                    {!blockChangeViewerMode && this.toggleModeButtons()}
+                    {!blockChangeViewerMode && this.toggleModeButtons()}                    
+                    <SelectPicker className={"desktop-mode-select"} appearance="subtle" value={desktopMode} data={[{value: "desktop", label: "Desktop"}, {value: "mobile", label: "Mobile"}]} 
+                        searchable={false} cleanable={false} onSelect={onChangeDesktopMode}/>
                 </div>            
                 <div className="right"></div>
                 <form action="/" method="post" style={{ display: 'none' }}

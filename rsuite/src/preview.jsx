@@ -5,12 +5,15 @@ export default class Preview extends BasePreview {
 
     render() {
         const preview = this.getPreview();
+        const style = this.props.show ? {} : {display:"none"};
         return (
-            <div className="formbuilder-preview">
-                {/* {preview.dropzoneHeader} */}
-                {preview.items}
-                {preview.dropzoneFooter}
-            </div>
+            <div className="form-container">
+                <div className="formbuilder-form" style={style}>
+                    {/* {preview.dropzoneHeader} */}
+                    {preview.items}
+                    {preview.dropzoneFooter}
+                </div>                
+            </div> 
         )
     }
 }
