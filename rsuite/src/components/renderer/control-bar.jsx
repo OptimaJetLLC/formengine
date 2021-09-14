@@ -141,7 +141,6 @@ register('control-bar', options => {
     var onDrop = (e) => {
         var el = $(e.target);
         var data = JSON.parse(e.dataTransfer.getData('data'));
-        e.dataTransfer.clearData();
 
         if (el.length > 0) {
             if (data.new) {                
@@ -157,6 +156,7 @@ register('control-bar', options => {
 
     var onDragStart = (e) => {
         me.setState({dragging: true});
+        e.dataTransfer.clearData();
         e.dataTransfer.setData('data', JSON.stringify({key: model.key, new: false}));
 
         if (options.me.controlRef.current) {
