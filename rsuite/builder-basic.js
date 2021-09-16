@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { FormBuilder } from "./index";
 import { RegisterLicense } from "optimajet-builder-shared";
+import rSuiteComponentDefinition from 'optimajet-builder-rsuite-components';
 
 //RegisterLicense("<your license key>");
 
@@ -81,6 +82,7 @@ ReactDOM.render(
       downloadUrl="download.html?file="
       uploadUrl="upload.html?file="
       templates={templates}
+      controlLibrary={rSuiteComponentDefinition}
       />,
     document.getElementById('container')
 );

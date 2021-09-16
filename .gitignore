@@ -21,7 +21,6 @@ DLL/
 
 #node.js
 node_modules/
-package-lock.json
 
 # MSTest test Results
 [Tt]est[Rr]esult*/

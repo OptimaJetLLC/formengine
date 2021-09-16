@@ -20,7 +20,7 @@ export default class EditForm extends Component {
         this.setState({activeItem});
     }
 
-    componentDidMount() {        
+    componentDidMount() {
         FormBuilderStore.listenTo(BuilderActions.changeItem, this.onChangeItem);
         FormBuilderStore.listenTo(BuilderActions.showEditForm, this.onShow);
     }
@@ -42,20 +42,20 @@ export default class EditForm extends Component {
         }
         else if (typeof value === 'object') {
             for (const key in value)
-                data[key] = value[key];            
+                data[key] = value[key];
         } else {
             data[name] = value;
         }
-        
+
         // For Tab and CollectionEditor controls
         // Remove unused placeholders if bounded pane or column was deleted
         if ((data["data-buildertype"] === 'tab' && data.placeholders != null) ||
             (data["data-buildertype"] === 'collectioneditor' && data.placeholders != null)) {
-            
+
             for (let placeholder in data.placeholders) {
                 if (Object.prototype.hasOwnProperty.call(data.placeholders, placeholder)) {
                     let shouldBeDeleted = true;
-                    
+
                     // Condition for Tab-control
                     if (data.panes != null) {
                         data.panes.forEach(pane => {
@@ -63,8 +63,8 @@ export default class EditForm extends Component {
                                 shouldBeDeleted = false;
                             }
                         });
-                    } 
-                    
+                    }
+
                     //Condition for CollectionEditor-control
                     if (data.columns != null) {
                         data.columns.forEach(column => {
@@ -76,11 +76,11 @@ export default class EditForm extends Component {
 
                     if (shouldBeDeleted) {
                         delete data.placeholders[placeholder];
-                    }   
+                    }
                 }
             }
         }
-        
+
         this.setState({ item: data });
         this.onSave();
     }

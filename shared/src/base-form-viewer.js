@@ -2,7 +2,7 @@
 
 import { Component } from 'react';
 import JSON5 from 'json5';
-import sendRequest from './data-loader';
+import { sendRequest } from './data-loader';
 import { isDefined, isUndefined } from './helpers';
 
 export default class BaseFormViewer extends Component {
@@ -35,9 +35,9 @@ export default class BaseFormViewer extends Component {
                       newData[i] = initial[i];
                     }
                   }
-                } catch(e){ 
+                } catch(e){
                 }
-        
+
                 me.setState({data: JSON5.stringify(newData, null, 4)});
               }, null, this.props.fetchFunc);
         }

@@ -1,20 +1,7 @@
-/**
- * Components registry
- */
-class ItemRegistry {
-    items = [];
+import ComponentRegistry from './component-registry';
 
-    registerItems(components) {
-        registry.items = components;
-    }
-
-    getItems() {
-        return registry.items;
-    }
-}
-
-const registry = new ItemRegistry();
-const registerItems = registry.registerItems;
-const getItems = registry.getItems;
+const registry = new ComponentRegistry();
+const registerItems = registry.registerItems.bind(registry);
+const getItems = registry.getItems.bind(registry);
 
 export { registerItems, getItems };

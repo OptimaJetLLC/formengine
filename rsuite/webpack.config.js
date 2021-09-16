@@ -3,6 +3,11 @@ const webpack = require('webpack');
 var config = {
   module: {
     rules: [
+        {
+            test: /\.tsx?$/,
+            use: 'ts-loader',
+            exclude: '/node_modules/'
+        },
       {
         test: /.jsx?$/,
         loader: 'babel-loader',
@@ -61,7 +66,7 @@ var config = {
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.json', '.jsx', '.css', '.scss', '.less']
+    extensions: ['*', '.ts', '.tsx', '.js', '.json', '.jsx', '.css', '.scss', '.less']
   },
   plugins: [
     new webpack.EnvironmentPlugin({RUN_ENV: 'none'})
@@ -99,7 +104,7 @@ var appConfig = Object.assign({}, config, {
 
 var wrapperConfig = Object.assign({}, config, {
     name: "app",
-    entry: ["babel-polyfill", "./javascript-wrapper.js"],  
+    entry: ["babel-polyfill", "./javascript-wrapper.js"],
     output: {
         filename: 'optimajet-formbuilder-javascript.js',
         path: __dirname + "/build"
@@ -108,7 +113,7 @@ var wrapperConfig = Object.assign({}, config, {
 
 var builderBasicConfig = Object.assign({}, config, {
   name: "app",
-  entry: ["babel-polyfill", "./builder-basic.js"],  
+  entry: ["babel-polyfill", "./builder-basic.js"],
   output: {
       filename: 'builder-basic.js',
       path: __dirname + "/build"
@@ -117,7 +122,7 @@ var builderBasicConfig = Object.assign({}, config, {
 
 var builderCustomConfig = Object.assign({}, config, {
   name: "app",
-  entry: ["babel-polyfill", "./builder-custom.js"],  
+  entry: ["babel-polyfill", "./builder-custom.js"],
   output: {
       filename: 'builder-custom.js',
       path: __dirname + "/build"
@@ -126,7 +131,7 @@ var builderCustomConfig = Object.assign({}, config, {
 
 var formBasicConfig = Object.assign({}, config, {
   name: "app",
-  entry: ["babel-polyfill", "./form-basic.js"],  
+  entry: ["babel-polyfill", "./form-basic.js"],
   output: {
       filename: 'form-basic.js',
       path: __dirname + "/build"
@@ -135,7 +140,7 @@ var formBasicConfig = Object.assign({}, config, {
 
 var formCustomConfig = Object.assign({}, config, {
   name: "app",
-  entry: ["babel-polyfill", "./form-custom.js"],  
+  entry: ["babel-polyfill", "./form-custom.js"],
   output: {
       filename: 'form-custom.js',
       path: __dirname + "/build"
@@ -149,7 +154,7 @@ var modules = [
 
 module.exports = (env, argv) => {
     if (argv.mode === 'development') {
-        appConfig.devtool = 'eval-source-map';  
+        appConfig.devtool = 'eval-source-map';
         return modules;
     } else {
         appConfig.target = ['web', 'es5'];

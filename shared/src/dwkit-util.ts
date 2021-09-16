@@ -1,3 +1,6 @@
+// @ts-nocheck
+// todo remove it from formBuilder!!!
+
 function dwKitDateFormat(defaultValue) {
     if (window.DWKitLang && window.DWKitLang.common && window.DWKitLang.common.dateFormat) {
         return window.DWKitLang.common.dateFormat;

@@ -4,6 +4,11 @@ const config = isDevBuild => {
         module: {
             rules: [
                 {
+                    test: /\.tsx?$/,
+                    use: 'ts-loader',
+                    exclude: '/node_modules/'
+                },
+                {
                     test: /.jsx?$/, exclude: /node_modules/, use: {
                         loader: 'babel-loader',
                         options: {
@@ -16,7 +21,7 @@ const config = isDevBuild => {
             ]
         },
         resolve: {
-            extensions: ['*', '.js', '.json', '.jsx', '.css', '.scss']
+            extensions: ['*', '.ts', '.tsx', '.js', '.json', '.jsx', '.css', '.scss']
         },
         plugins: [
             new webpack.DefinePlugin({

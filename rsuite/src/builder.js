@@ -1,21 +1,22 @@
 import React from 'react';
-import { Button, Icon, IconButton } from 'rsuite';
 import { BaseFormBuilder, DropzoneContext, EditForm } from 'optimajet-builder-shared';
-import Split from 'react-split'
 import Preview from './preview';
 import ToolBar from './toolbar';
 import ControlTree from './control-tree';
-import {dispatchWindowResize} from './utils';
+import { dispatchWindowResize } from './utils';
 import HeaderBar from './headerbar';
 import controls from './builder/controls-for-builder';
 import CustomBlockEditControl from './components/edit-control/custom-block-edit-control';
-import Viewer from "./viewer";
+import Viewer from './viewer';
 import 'rsuite/lib/styles/index.less';
+import { initControls } from './contol-library-wrapper';
 
 export default class FormBuilder extends BaseFormBuilder {
 
     constructor(props) {
         super(props);
+        console.log(JSON.stringify(this.props.controlLibrary));
+        this._controlLibrary = initControls(this.props.controlLibrary);
         this.controls = controls;
         this.state = {
             ...this.state,
@@ -44,13 +45,13 @@ export default class FormBuilder extends BaseFormBuilder {
         const viewClassName = "view" + " " + desktopMode;
         const showIf = (condition, child) => <div style={condition ? {} : {display: 'none'}} className={viewClassName}>{child}</div>;
         return (<DropzoneContext.Provider value={this.state.dropzoneContext}>
-            <div className="formbuilder">            
-                {this.renderHeaderBar()}   
+            <div className="formbuilder">
+                {this.renderHeaderBar()}
                 <div className="formbuilder-content formbuilder-dropzoneactive" style={{ display: 'flex', flex: 1 }}  onDragOver={this.onDragOver}>
                     {showControlTree && <ControlTree show={!this.state.viewerMode} style={{ marginRight: 10, width: 180 }} onClose={this.toggleLeftPanel}/>}
                     {showIf(!this.state.viewerMode, this.renderBuilder())}
-                    {showIf(this.state.viewerMode, this.renderViewer())}                         
-                </div>            
+                    {showIf(this.state.viewerMode, this.renderViewer())}
+                </div>
             </div>
             </DropzoneContext.Provider>);
     }
@@ -92,30 +93,35 @@ export default class FormBuilder extends BaseFormBuilder {
                         externalControlRender={this.props.externalControlRender}
                         externalControlList={this.props.externalControlList}
                         controls={this.controls}
-                />     
+                        controlLibrary={this._controlLibrary}
+                />
                <ToolBar localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
                             externalControlList={this.props.externalControlList} style={this.state.showRightPanel ? {} : {display:"none"}}
                             externalControlsOnly={this.props.externalControlsOnly}
-                            controls={this.controls} editControl={CustomBlockEditControl} />
+                            controls={this.controls} editControl={CustomBlockEditControl}
+                            controlLibrary={this._controlLibrary}
+               />
         </>
     }
 
-    renderViewer(){
+    renderViewer() {
         const { getFormFunc, downloadUrl, uploadUrl, externalControlList, externalControlRender } = this.props;
         const localization = this.getCurrentLocalization();
         return <Viewer
-        show={this.state.viewerMode}
-        builder={this}
-        localization={localization.viewer}
-        getFormFunc={getFormFunc}
-        downloadUrl={downloadUrl}
-        uploadUrl={uploadUrl}
-        externalControlList={externalControlList}
-        externalControlRender={externalControlRender} 
-        isShowControlTree={this.state.showControlTree}  
-            isShowRightPanel={this.state.showRightPanel}          
-        ref={(viewer) => { this.viewer = viewer; }}
-    />;
+            show={this.state.viewerMode}
+            builder={this}
+            localization={localization.viewer}
+            getFormFunc={getFormFunc}
+            downloadUrl={downloadUrl}
+            uploadUrl={uploadUrl}
+            externalControlList={externalControlList}
+            externalControlRender={externalControlRender}
+            isShowControlTree={this.state.showControlTree}
+            isShowRightPanel={this.state.showRightPanel}
+            ref={(viewer) => {
+                this.viewer = viewer;
+            }}
+        />;
     }
 
     renderHeaderBar(){
@@ -123,7 +129,7 @@ export default class FormBuilder extends BaseFormBuilder {
             return <div></div>;
         }
         const localization = this.getCurrentLocalization();
-        return <HeaderBar 
+        return <HeaderBar
             builder={this}
             viewerMode={this.state.viewerMode}
             desktopMode={this.state.desktopMode}
@@ -147,5 +153,5 @@ export default class FormBuilder extends BaseFormBuilder {
     onPrint(){
         if(this.viewer)
             this.viewer.print();
-    }    
+    }
 }

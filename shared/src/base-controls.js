@@ -1,6 +1,6 @@
 /* eslint-disable no-mixed-operators */
 
-import React, { useDebugValue } from 'react';
+import React from 'react';
 import Numeral from 'numeral';
 import moment from 'moment';
 import { dwKitDateFormat, dwKitExternalControlList } from './dwkit-util';
@@ -10,6 +10,8 @@ import BuilderActions from './actions';
 import { draw } from './component-render-registry';
 import ControlBar from './control-bar';
 import FormBuilderConst from './const';
+import dateUtil from './date-util';
+
 export default class BaseControls {
 
     static containers = {
@@ -23,6 +25,7 @@ export default class BaseControls {
     };
 
     items = [];
+    newItems = [];
 
     static isAdaptiveRender(model, adaptiveViewType) {
         if (model['style-adaptive'] && adaptiveViewType !== undefined && adaptiveViewType !== null && adaptiveViewType !== '' && model['style-renderwhen']) {
@@ -41,45 +44,7 @@ export default class BaseControls {
     }
 
     static getFormattedDate(str, data) {
-        if (data === undefined || data === null) {
-            return '';
-        }
-
-        let propertyName;
-        let format = undefined;
-        let indexSep = str.indexOf(':');
-        if (indexSep > 0) {
-            propertyName = str.substring(0, indexSep);
-            format = str.substring(indexSep + 1, str.length)
-        }
-        else {
-            propertyName = str;
-        }
-
-        let value = data[propertyName];
-        if (value === null || value === undefined) {
-            value = '';
-        }
-
-        if (isDefined(format)) {
-            if (typeof (value) == 'number') {
-                value = Numeral(value).format(format);
-            }
-            else {
-                const dateValue = moment(value);
-                if (dateValue.isValid()) {
-                    if (format === 'local') {
-                        let localFormat = dwKitDateFormat('L');
-                        value = dateValue.format(localFormat);
-                    }
-                    else {
-                        value = dateValue.format(format);
-                    }
-                }
-            }
-        }
-
-        return value;
+        return dateUtil.getFormattedDate(str, data);
     }
 
     static getStyle(model, builderMode, adaptiveViewType) {
@@ -205,7 +170,7 @@ export default class BaseControls {
         class Dropzone extends React.Component {
             constructor(props) {
                 super(props);
-            
+
                 this.state = {};
                 this.dropzoneRef = React.createRef();
                 this.dropzoneFrontRef = React.createRef();
@@ -332,6 +297,8 @@ export default class BaseControls {
 
             let item;
             const dbtype = model[i]['data-buildertype'];
+
+            console.log('dbtype: ' + dbtype);
 
             if(dbtype == "__settings")
                 continue;
@@ -495,7 +462,7 @@ export default class BaseControls {
                         if (children === undefined) {
                             children = [];
                         }
-                        
+
                         if (children.length == 0) {
                             let dz_footer = BaseControls.createBuilderDropzone(
                                 newFormItem === undefined ? undefined : newFormItem.key,//parentItem === undefined ? undefined : parentItem.key,
@@ -539,10 +506,10 @@ export default class BaseControls {
                             containerReadOnly = true;
                         }
 
-                        var isHorizontalGroup = buildermode && 
-                            (model[i]["data-buildertype"] === "formgroup" && model[i].orientation !== "grouped" || 
+                        var isHorizontalGroup = buildermode &&
+                            (model[i]["data-buildertype"] === "formgroup" && model[i].orientation !== "grouped" ||
                             model[i]["data-buildertype"] === "container" && model[i]["style-display"] === "flex");
-                     
+
                         let children = this.createControls(
                             parentComponent,
                             {
@@ -713,7 +680,47 @@ export default class BaseControls {
         return item;
     }
 
+    getControlJsx(control, props,
+                  { model, data, errors, children, handleEvent, parentItem, uploadUrl, downloadUrl }
+    ) {
+        // todo rename data-buildertype to data-builder-type
+        const dataBuilderType = model['data-buildertype'];
+        const component = rSuiteComponentDefinition[dataBuilderType];
+
+        if (!component) {
+            console.log('Error! Cannot find component ' + dataBuilderType);
+            // todo
+            // return draw('null-control', {
+            //     key: model.key,
+            //     text: `${dataBuilderType} is unsupported`
+            // });
+        }
+
+        const defaults = Object.assign({}, component.defaultProps);
+        if (isDefined(children)) {
+            defaults.children = children;
+        }
+        const Renderer = component.renderer;
+        const dataProps = component.getDataProps ? component.getDataProps(model) : {};
+        const controlProps = {
+            ...merge(defaults, props),
+            ...this.getControlProps(model, component.propertyTypes),
+            ...dataProps,
+        };
+
+        // todo remove
+        // delete unsupported props
+        if (controlProps.className) {
+            delete controlProps.className;
+        }
+
+        return (<Renderer {...controlProps}/>);
+    }
+
     createControl(parentComponent, control, params) {
+    // todo implement button
+
+
         const model = params.model;
         const buildermode = params.buildermode;
         const adaptiveViewType = params.adaptiveViewType;
@@ -842,20 +849,20 @@ export default class BaseControls {
                 res = customRenderer(parentComponent, control,
                     {
                         ...params,
-                        controlProps: props, 
+                        controlProps: props,
                         replaceControlValue
                     }
                 );
             }
 
             if (!res) {
-                res = <div>Control is unsupported!</div>;                
+                res = <div>Control is unsupported!</div>;
             }
         }
 
         if (model['tooltip-errordisabled'] !== true &&
             errors && errors[model.key] !== undefined && typeof (errors[model.key]) != 'boolean' && !Array.isArray(errors[model.key])) {
-        
+
             let popupposition = model['tooltip-errorposition'] == '' ? undefined : model['tooltip-errorposition'];
             let popupon = model['tooltip-errorshowtype'] == '' ? undefined : model['tooltip-errorshowtype'];
 
@@ -884,5 +891,5 @@ export default class BaseControls {
         }
 
         return res;
-    }    
+    }
 }
