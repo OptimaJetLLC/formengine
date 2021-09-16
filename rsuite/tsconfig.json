@@ -1,17 +1,15 @@
 {
-  "compilerOptions": {
-    "noImplicitAny": false,
-    "module": "commonjs",
-    "noEmitOnError": true,
-    "removeComments": false,
-    "sourceMap": true,
-    "target": "es5",
-    "allowJs": true,
-    "noEmit": true,
-    "jsx": "preserve",
-    "esModuleInterop": false
-  },
-  "exclude": [
-    "node_modules"
-  ]
+    "compilerOptions": {
+        "outDir": "./dist",
+        "target": "es5",
+        "module": "es6",
+        "jsx": "react",
+        "noImplicitAny": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "moduleResolution": "Node"
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }

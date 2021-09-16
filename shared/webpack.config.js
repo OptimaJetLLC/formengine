@@ -17,7 +17,7 @@ const config = isDevBuild => {
                         }
                     }
                 },
-                { test: /\.scss$/, use: 'style-loader!css-loader!sass-loader' }
+                {test: /\.scss$/, use: 'style-loader!css-loader!sass-loader'}
             ]
         },
         resolve: {
@@ -31,7 +31,11 @@ const config = isDevBuild => {
             })
         ],
         externals: [
+            '@types/isomorphic-fetch',
+            '@types/numeral',
+            'abortcontroller-polyfill',
             'clone',
+            'isomorphic-fetch',
             'json5',
             'moment',
             'numeral',

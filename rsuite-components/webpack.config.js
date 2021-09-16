@@ -22,6 +22,10 @@ module.exports = {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist')
     },
+    externals: [
+        'optimajet-builder-component-api',
+        'rsuite'
+    ],
     plugins: [
     ],
     devServer: {
