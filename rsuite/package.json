@@ -72,7 +72,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "bugs": {
-    "url": "http://formbuilder.dev"
+    "url": "https://formbuilder.dev"
   },
-  "homepage": "http://formbuilder.dev"
+  "homepage": "https://formbuilder.dev"
 }
