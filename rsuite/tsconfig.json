@@ -5,10 +5,11 @@
     "noEmitOnError": true,
     "removeComments": false,
     "sourceMap": true,
-    "target": "es6",
+    "target": "es5",
     "allowJs": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "esModuleInterop": false
   },
   "exclude": [
     "node_modules"

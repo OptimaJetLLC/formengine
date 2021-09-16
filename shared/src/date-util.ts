@@ -1,7 +1,8 @@
 import { isDefined } from './helpers';
 import Numeral from 'numeral';
-import moment from 'moment';
 import { dwKitDateFormat } from './dwkit-util';
+
+const moment = require('moment');
 
 function getFormattedDate(str: string | null | undefined, data: any) {
     if (!str) {

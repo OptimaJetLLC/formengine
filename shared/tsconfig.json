@@ -7,7 +7,8 @@
         "noImplicitAny": true,
         "allowSyntheticDefaultImports": true,
         "strict": true,
-        "moduleResolution": "Node"
+        "moduleResolution": "Node",
+        "esModuleInterop": true
     },
     "exclude": [
         "node_modules"

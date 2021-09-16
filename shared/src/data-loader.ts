@@ -1,7 +1,9 @@
 import fetch from 'isomorphic-fetch';
 
 type FailFunc = (data: any) => void;
-export type FetchFunc = (input: RequestInfo, init?: RequestInit) => Promise<Response>
+export type FetchFunc = {
+    (input: RequestInfo, init?: RequestInit): Promise<Response>
+}
 
 export function sendRequest(url: string,
                             successFunc: (data: any) => void,
