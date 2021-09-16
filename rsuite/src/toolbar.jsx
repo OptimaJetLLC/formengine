@@ -6,6 +6,8 @@ import Grid from './components/common/Grid'
 import { Icon, Button } from 'rsuite';
 import Split from 'react-split'
 import $ from 'jquery';
+
+// todo remove
 export default class Toolbar extends BaseToolbar {
     constructor(props) {
         super(props);
@@ -57,16 +59,16 @@ export default class Toolbar extends BaseToolbar {
                     minimizable={true}
                     header={
                         <>
-                        <h6 style={{marginRight: 10}}>Elements</h6>                    
+                        <h6 style={{marginRight: 10}}>Elements</h6>
                             <SearchForm ref={this.searchForm} items={this.state.items} handleChange={this.handleSearchChange.bind(this)}/>
                         </>
                     }
                     content={
-                        <div className="formbuilder-toolbox">                        
-                            {this.state.filtered && 
+                        <div className="formbuilder-toolbox">
+                            {this.state.filtered &&
                                 <li className="formbuilder-toolbox-subheader">
                                     Search results:
-                                    {!this.state.filtered.length && 
+                                    {!this.state.filtered.length &&
                                         <div className="formbuilder-toolbox-search-nothing">
                                             Not found<br/>
                                             <Button block onClick={() => this.searchForm.current.reset()}>Reset</Button>
@@ -99,7 +101,7 @@ export default class Toolbar extends BaseToolbar {
                                         className="formbuilder-toolbox-subheader" key={(parentItem.key + String(index))}>
                                         <Icon icon={iconName}/>
                                         {parentItem.title}
-                                    </h5>                                    
+                                    </h5>
                                     {(expandedbock || this.state.filtered) && <Grid itemMinWidth='129px'>
                                         {
                                             parentItem.items.map((item, index) => {
@@ -121,10 +123,10 @@ export default class Toolbar extends BaseToolbar {
                                     }
                                 </>
                             })}
-                            
+
                         </div>
                     }
-                />                          
+                />
                 {this.props.editForm}
             </div>
         );

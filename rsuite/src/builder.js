@@ -10,6 +10,7 @@ import CustomBlockEditControl from './components/edit-control/custom-block-edit-
 import Viewer from './viewer';
 import 'rsuite/lib/styles/index.less';
 import { initControls } from './contol-library-wrapper';
+import ToolbarNew from "./toolbar-new";
 
 export default class FormBuilder extends BaseFormBuilder {
 
@@ -95,6 +96,12 @@ export default class FormBuilder extends BaseFormBuilder {
                         controls={this.controls}
                         controlLibrary={this._controlLibrary}
                 />
+            <ToolbarNew localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
+                     externalControlList={this.props.externalControlList} style={this.state.showRightPanel ? {} : {display:"none"}}
+                     externalControlsOnly={this.props.externalControlsOnly}
+                     controls={this.controls} editControl={CustomBlockEditControl}
+                     controlLibrary={this._controlLibrary}
+            />
                <ToolBar localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
                             externalControlList={this.props.externalControlList} style={this.state.showRightPanel ? {} : {display:"none"}}
                             externalControlsOnly={this.props.externalControlsOnly}

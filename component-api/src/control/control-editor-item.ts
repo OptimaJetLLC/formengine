@@ -5,6 +5,7 @@ export default interface ControlEditorItem {
     title: string;
     separator?: boolean;
     defaultopen?: boolean;
+    name: string;
     control?: ControlDefinition;
     defaultValues?: any;
 }
