@@ -20,10 +20,12 @@ import EditorPropertyArray from './src/property/editor-property-array';
 import { defaultProperty, optionalProperty } from './src/property/helpers';
 import ControlDefinition from './src/control/control-definition';
 import ControlDefinitionArray from './src/control/control-definition-array';
+import ControlEditorGroup from './src/control/control-editor-group';
 
 export {
     ControlDefinition,
     ControlDefinitionArray,
+    ControlEditorGroup,
     ControlEditorItem,
     EditorPropertyItem,
     EnumPropertyType,

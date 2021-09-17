@@ -4,7 +4,6 @@ import {
     ControlDefinition,
     ControlDefinitionArray,
     defaultProperty,
-    EditorPropertyArray,
     FunctionType,
     optionalProperty,
     StringType
@@ -22,8 +21,8 @@ const rSuiteButton = <ControlDefinition>{
     ],
 };
 
-const rSuiteComponentDefinition = <ControlDefinitionArray<ControlDefinition>>{
+const rSuiteViewerControls = <ControlDefinitionArray<ControlDefinition>>{
     'rSuiteButton': rSuiteButton,
 }
 
-export default rSuiteComponentDefinition;
+export default rSuiteViewerControls;

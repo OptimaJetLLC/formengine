@@ -9,15 +9,14 @@ import controls from './builder/controls-for-builder';
 import CustomBlockEditControl from './components/edit-control/custom-block-edit-control';
 import Viewer from './viewer';
 import 'rsuite/lib/styles/index.less';
-import { initControls } from './contol-library-wrapper';
 import ToolbarNew from "./toolbar-new";
+import extractViewerControls from './builder-util';
 
 export default class FormBuilder extends BaseFormBuilder {
 
     constructor(props) {
         super(props);
-        console.log(JSON.stringify(this.props.controlLibrary));
-        this._controlLibrary = initControls(this.props.controlLibrary);
+        this._viewerLibrary = extractViewerControls(this.props.builderControls)
         this.controls = controls;
         this.state = {
             ...this.state,
@@ -94,20 +93,20 @@ export default class FormBuilder extends BaseFormBuilder {
                         externalControlRender={this.props.externalControlRender}
                         externalControlList={this.props.externalControlList}
                         controls={this.controls}
-                        controlLibrary={this._controlLibrary}
+                        viewerLibrary={this._viewerLibrary}
                 />
             <ToolbarNew localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
                      externalControlList={this.props.externalControlList} style={this.state.showRightPanel ? {} : {display:"none"}}
                      externalControlsOnly={this.props.externalControlsOnly}
                      controls={this.controls} editControl={CustomBlockEditControl}
-                     controlLibrary={this._controlLibrary}
+                     builderControls={this.props.builderControls}
             />
-               <ToolBar localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
-                            externalControlList={this.props.externalControlList} style={this.state.showRightPanel ? {} : {display:"none"}}
-                            externalControlsOnly={this.props.externalControlsOnly}
-                            controls={this.controls} editControl={CustomBlockEditControl}
-                            controlLibrary={this._controlLibrary}
-               />
+            {/*todo remove*/}
+            {/*   <ToolBar localization={localization.toolbar} templates={this.props.templates} editForm={editForm}*/}
+            {/*                externalControlList={this.props.externalControlList} style={this.state.showRightPanel ? {} : {display:"none"}}*/}
+            {/*                externalControlsOnly={this.props.externalControlsOnly}*/}
+            {/*                controls={this.controls} editControl={CustomBlockEditControl}*/}
+            {/*   />*/}
         </>
     }
 

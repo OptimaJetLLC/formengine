@@ -1,3 +1,7 @@
-import rSuiteComponentDefinition from './src/rsuite-components';
+import rSuiteBuilderControls from './src/rsuite-builder-controls';
+import rSuiteViewerControls from './src/rsuite-viewer-controls';
 
-export default rSuiteComponentDefinition;
+export {
+    rSuiteBuilderControls,
+    rSuiteViewerControls,
+}
