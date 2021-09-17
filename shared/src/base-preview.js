@@ -5,6 +5,7 @@ import { isDefined } from './helpers';
 import BaseControls from './base-controls';
 import JSON5 from 'json5';
 import { loadForm } from '../index';
+import { ControlFactory } from './control-factory';
 
 export default class BasePreview extends Component {
 
@@ -78,7 +79,9 @@ export default class BasePreview extends Component {
             );
         }
 
-        const items = this.props.controls.createControls(
+        const controlFactory = new ControlFactory(this.props.editorControls);
+        // const items = this.props.controls.createControls(
+        const items = controlFactory.createControls(
             this,
             {
                 model: this.state.model,

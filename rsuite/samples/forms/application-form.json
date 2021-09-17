@@ -22,6 +22,20 @@
     },
     {
         "key": "btnOk",
+        "data-buildertype": "rSuiteButton",
+        "control-model": {
+            "content": "Ok"
+        }
+    },
+    {
+        "key": "btnCancel",
+        "data-buildertype": "rSuiteButton",
+        "control-model": {
+            "content": "Cancel"
+        }
+    },
+    {
+        "key": "btnEmpty",
         "data-buildertype": "rSuiteButton"
     }
 ]

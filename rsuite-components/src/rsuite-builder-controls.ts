@@ -11,7 +11,8 @@ const rSuiteBuilderControls: ControlEditorGroup[] = [
                 title: 'Button',
                 name: 'rSuiteButton',
                 control: rSuiteViewerControls['rSuiteButton'],
-                defaultValues: { content: 'Button' },
+                // todo вернуть?
+                // defaultValues: { content: 'Button' },
             },
         ],
     }

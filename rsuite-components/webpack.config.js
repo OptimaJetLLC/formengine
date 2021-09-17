@@ -23,7 +23,9 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     externals: [
+        '@types/react',
         'optimajet-builder-component-api',
+        'react',
         'rsuite'
     ],
     plugins: [

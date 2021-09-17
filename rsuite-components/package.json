@@ -18,7 +18,9 @@
     "webpack-cli": "^4.5.0"
   },
   "dependencies": {
+    "@types/react": "^17.0.21",
     "optimajet-builder-component-api": "file:../component-api",
+    "react": "^16.14.0",
     "rsuite": "^4.10.3"
   }
 }

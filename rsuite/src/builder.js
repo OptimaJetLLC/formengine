@@ -10,13 +10,13 @@ import CustomBlockEditControl from './components/edit-control/custom-block-edit-
 import Viewer from './viewer';
 import 'rsuite/lib/styles/index.less';
 import ToolbarNew from "./toolbar-new";
-import extractViewerControls from './builder-util';
+import extractEditorControls from './builder-util';
 
 export default class FormBuilder extends BaseFormBuilder {
 
     constructor(props) {
         super(props);
-        this._viewerLibrary = extractViewerControls(this.props.builderControls);
+        this._editorControls = extractEditorControls(this.props.builderControls);
         this.controls = controls;
         this.state = {
             ...this.state,
@@ -97,14 +97,13 @@ export default class FormBuilder extends BaseFormBuilder {
                 externalControlRender={this.props.externalControlRender}
                 externalControlList={this.props.externalControlList}
                 controls={this.controls}
-                viewerLibrary={this._viewerLibrary}
+                editorControls={this._editorControls}
             />
             <ToolbarNew localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
                         externalControlList={this.props.externalControlList}
                         style={this.state.showRightPanel ? {} : { display: "none" }}
                         externalControlsOnly={this.props.externalControlsOnly}
-                        controls={this.controls} editControl={CustomBlockEditControl}
-                        builderControls={this.props.builderControls}
+                        builderControls={this.props.builderControls} editControl={CustomBlockEditControl}
             />
             {/*todo remove*/}
             {/*   <ToolBar localization={localization.toolbar} templates={this.props.templates} editForm={editForm}*/}

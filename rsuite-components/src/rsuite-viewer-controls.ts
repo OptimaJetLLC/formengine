@@ -8,13 +8,13 @@ import {
     optionalProperty,
     StringType
 } from 'optimajet-builder-component-api';
-import { Button } from 'rsuite';
+import rsButton from './controls/rs-button';
 
 const rSuiteButton = <ControlDefinition>{
-    renderer: Button,
+    renderer: rsButton,
     propertyTypes: [
         defaultProperty('onPress', FunctionType, () => console.log('Set me a handler!')),
-        defaultProperty('title', StringType, 'Button'),
+        defaultProperty('content', StringType, 'Button'),
         optionalProperty('accessibilityLabel', StringType),
         optionalProperty('color', ColorType),
         optionalProperty('disabled', BoolType),
@@ -23,6 +23,6 @@ const rSuiteButton = <ControlDefinition>{
 
 const rSuiteViewerControls = <ControlDefinitionArray<ControlDefinition>>{
     'rSuiteButton': rSuiteButton,
-}
+};
 
 export default rSuiteViewerControls;

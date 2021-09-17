@@ -1,9 +1,7 @@
 /* eslint-disable no-mixed-operators */
 
 import React from 'react';
-import Numeral from 'numeral';
-import moment from 'moment';
-import { dwKitDateFormat, dwKitExternalControlList } from './dwkit-util';
+import { dwKitExternalControlList } from './dwkit-util';
 import { isDefined, isUndefined } from './helpers';
 import JSON5 from 'json5';
 import BuilderActions from './actions';
@@ -195,10 +193,6 @@ export default class BaseControls {
 
     isContainer(key) {
         return isDefined(BaseControls.containers[key]);
-    }
-
-    getItems() {
-        return this.items;
     }
 
     setItems(items) {
@@ -678,43 +672,6 @@ export default class BaseControls {
             return res;
         }
         return item;
-    }
-
-    getControlJsx(control, props,
-                  { model, data, errors, children, handleEvent, parentItem, uploadUrl, downloadUrl }
-    ) {
-        // todo rename data-buildertype to data-builder-type
-        const dataBuilderType = model['data-buildertype'];
-        const component = rSuiteComponentDefinition[dataBuilderType];
-
-        if (!component) {
-            console.log('Error! Cannot find component ' + dataBuilderType);
-            // todo
-            // return draw('null-control', {
-            //     key: model.key,
-            //     text: `${dataBuilderType} is unsupported`
-            // });
-        }
-
-        const defaults = Object.assign({}, component.defaultProps);
-        if (isDefined(children)) {
-            defaults.children = children;
-        }
-        const Renderer = component.renderer;
-        const dataProps = component.getDataProps ? component.getDataProps(model) : {};
-        const controlProps = {
-            ...merge(defaults, props),
-            ...this.getControlProps(model, component.propertyTypes),
-            ...dataProps,
-        };
-
-        // todo remove
-        // delete unsupported props
-        if (controlProps.className) {
-            delete controlProps.className;
-        }
-
-        return (<Renderer {...controlProps}/>);
     }
 
     createControl(parentComponent, control, params) {

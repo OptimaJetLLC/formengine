@@ -41,6 +41,7 @@ const config = isDevBuild => {
             'numeral',
             'react',
             'react-fast-compare',
+            'ts-deepmerge',
             'reflux',
             'uuid'
         ],

@@ -19,6 +19,7 @@ export default class ToolbarNew extends BaseToolbar {
     }
 
     onDrop(item, e) {
+        // todo remove $
         const el = $(e.target);
         if (el.length > 0) {
             BuilderActions.add(item, el[0]);
@@ -43,22 +44,7 @@ export default class ToolbarNew extends BaseToolbar {
     render() {
         const me = this;
         let expandedbock = true;
-        // const items = this.state.filtered ? this.state.filtered : this.props.builderControls;
         const itemsMap = this.state.filtered ? this.state.filtered : this.props.builderControls;
-        // const itemsMap = this.props.builderControls;
-        // let itemsMap = [];
-        // let section = { };
-        // section.items = [];
-        // for (let i = 0; i < items.length; ++i) {
-        //     const item = items[i];
-        //     if (item.separator) {
-        //         itemsMap.push(item);
-        //         section = itemsMap[itemsMap.length - 1];
-        //         section.items = [];
-        //     } else {
-        //         section.items.push(item);
-        //     }
-        // }
 
         return (
             <div className="formbuilder-rightbar" style={this.props.style}>
