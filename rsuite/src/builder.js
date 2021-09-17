@@ -16,7 +16,7 @@ export default class FormBuilder extends BaseFormBuilder {
 
     constructor(props) {
         super(props);
-        this._viewerLibrary = extractViewerControls(this.props.builderControls)
+        this._viewerLibrary = extractViewerControls(this.props.builderControls);
         this.controls = controls;
         this.state = {
             ...this.state,
@@ -24,7 +24,7 @@ export default class FormBuilder extends BaseFormBuilder {
             desktopMode: "desktop",
             showControlTree: true,
             showRightPanel: true,
-        }
+        };
 
         this.onDownload = this.onDownload.bind(this);
         this.onClear = this.create.bind(this);
@@ -41,65 +41,70 @@ export default class FormBuilder extends BaseFormBuilder {
     }
 
     render() {
-        const {showControlTree, desktopMode} = this.state;
+        const { showControlTree, desktopMode } = this.state;
         const viewClassName = "view" + " " + desktopMode;
-        const showIf = (condition, child) => <div style={condition ? {} : {display: 'none'}} className={viewClassName}>{child}</div>;
+        const showIf = (condition, child) => <div style={condition ? {} : { display: 'none' }}
+                                                  className={viewClassName}>{child}</div>;
         return (<DropzoneContext.Provider value={this.state.dropzoneContext}>
             <div className="formbuilder">
                 {this.renderHeaderBar()}
-                <div className="formbuilder-content formbuilder-dropzoneactive" style={{ display: 'flex', flex: 1 }}  onDragOver={this.onDragOver}>
-                    {showControlTree && <ControlTree show={!this.state.viewerMode} style={{ marginRight: 10, width: 180 }} onClose={this.toggleLeftPanel}/>}
+                <div className="formbuilder-content formbuilder-dropzoneactive" style={{ display: 'flex', flex: 1 }}
+                     onDragOver={this.onDragOver}>
+                    {showControlTree &&
+                    <ControlTree show={!this.state.viewerMode} style={{ marginRight: 10, width: 180 }}
+                                 onClose={this.toggleLeftPanel}/>}
                     {showIf(!this.state.viewerMode, this.renderBuilder())}
                     {showIf(this.state.viewerMode, this.renderViewer())}
                 </div>
             </div>
-            </DropzoneContext.Provider>);
+        </DropzoneContext.Provider>);
     }
 
-    getCurrentLocalization(){
+    getCurrentLocalization() {
         return {};
     }
 
     toggleLeftPanel = () => {
-        const {showControlTree} = this.state;
-        this.setState({showControlTree: !showControlTree}, () => dispatchWindowResize());
-    }
+        const { showControlTree } = this.state;
+        this.setState({ showControlTree: !showControlTree }, () => dispatchWindowResize());
+    };
 
     toggleRightPanel = () => {
-        const {showRightPanel} = this.state;
-        this.setState({showRightPanel: !showRightPanel}, () => dispatchWindowResize());
-    }
+        const { showRightPanel } = this.state;
+        this.setState({ showRightPanel: !showRightPanel }, () => dispatchWindowResize());
+    };
 
     onChangeDesktopMode = desktopMode => {
-        this.setState({desktopMode}, () => dispatchWindowResize());
-    }
+        this.setState({ desktopMode }, () => dispatchWindowResize());
+    };
 
-    renderBuilder(){
+    renderBuilder() {
         const localization = this.getCurrentLocalization();
         const editForm = <EditForm actions={this.props.actions} localization={localization.editforms}
-                externalControlList={this.props.externalControlList}
-                controls={this.controls}
-        />
+                                   externalControlList={this.props.externalControlList}
+                                   controls={this.controls}
+        />;
 
         return <>
-                <Preview
-                        buildermode={true} show={!this.state.viewerMode}
-                        getFormFunc={this.props.getFormFunc}
-                        getFormFist={this.props.getFormFist}
-                        getAdditionalDataForControl={this.props.getAdditionalDataForControl}
-                        localization={localization.preview}
-                        downloadUrl={this.props.downloadUrl}
-                        uploadUrl={this.props.uploadUrl}
-                        externalControlRender={this.props.externalControlRender}
-                        externalControlList={this.props.externalControlList}
-                        controls={this.controls}
-                        viewerLibrary={this._viewerLibrary}
-                />
+            <Preview
+                buildermode={true} show={!this.state.viewerMode}
+                getFormFunc={this.loadForm}
+                getFormFist={this.props.getFormFist}
+                getAdditionalDataForControl={this.props.getAdditionalDataForControl}
+                localization={localization.preview}
+                downloadUrl={this.props.downloadUrl}
+                uploadUrl={this.props.uploadUrl}
+                externalControlRender={this.props.externalControlRender}
+                externalControlList={this.props.externalControlList}
+                controls={this.controls}
+                viewerLibrary={this._viewerLibrary}
+            />
             <ToolbarNew localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
-                     externalControlList={this.props.externalControlList} style={this.state.showRightPanel ? {} : {display:"none"}}
-                     externalControlsOnly={this.props.externalControlsOnly}
-                     controls={this.controls} editControl={CustomBlockEditControl}
-                     builderControls={this.props.builderControls}
+                        externalControlList={this.props.externalControlList}
+                        style={this.state.showRightPanel ? {} : { display: "none" }}
+                        externalControlsOnly={this.props.externalControlsOnly}
+                        controls={this.controls} editControl={CustomBlockEditControl}
+                        builderControls={this.props.builderControls}
             />
             {/*todo remove*/}
             {/*   <ToolBar localization={localization.toolbar} templates={this.props.templates} editForm={editForm}*/}
@@ -107,17 +112,17 @@ export default class FormBuilder extends BaseFormBuilder {
             {/*                externalControlsOnly={this.props.externalControlsOnly}*/}
             {/*                controls={this.controls} editControl={CustomBlockEditControl}*/}
             {/*   />*/}
-        </>
+        </>;
     }
 
     renderViewer() {
-        const { getFormFunc, downloadUrl, uploadUrl, externalControlList, externalControlRender } = this.props;
+        const { downloadUrl, uploadUrl, externalControlList, externalControlRender } = this.props;
         const localization = this.getCurrentLocalization();
         return <Viewer
             show={this.state.viewerMode}
             builder={this}
             localization={localization.viewer}
-            getFormFunc={getFormFunc}
+            getFormFunc={this.loadForm}
             downloadUrl={downloadUrl}
             uploadUrl={uploadUrl}
             externalControlList={externalControlList}
@@ -130,8 +135,8 @@ export default class FormBuilder extends BaseFormBuilder {
         />;
     }
 
-    renderHeaderBar(){
-        if(this.props.showHeader == false){
+    renderHeaderBar() {
+        if (this.props.showHeader == false) {
             return <div></div>;
         }
         const localization = this.getCurrentLocalization();
@@ -156,8 +161,8 @@ export default class FormBuilder extends BaseFormBuilder {
         />;
     }
 
-    onPrint(){
-        if(this.viewer)
+    onPrint() {
+        if (this.viewer)
             this.viewer.print();
     }
 }

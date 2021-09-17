@@ -13,7 +13,7 @@ export default class Form extends WebForm {
     }
 
     load(code){
-        const model = this.props.getFormFunc(code);
+        const model = this.loadForm(code);
         this.setState({model});
     }
 
@@ -42,13 +42,13 @@ export default class Form extends WebForm {
 
         var source = this.currentElement.innerHTML;
         var options = "toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes";
-        
+
         var win = window.open("", this.props.formName, options);
         if(!title){
-            win.document.title = this.props.formName;     
+            win.document.title = this.props.formName;
         }
-        win.document.title = title ? title : "PrintForm"; 
-                    
+        win.document.title = title ? title : "PrintForm";
+
         var stylenotprint = "<style type='text/css'>body, html { height: auto!important; width:auto!important;} body{margin:10px!important;} .dwkit-notprint{display:none!important;}</style>";
 
         win.document.head.insertAdjacentHTML("beforeend", stylenotprint);
@@ -69,9 +69,9 @@ export default class Form extends WebForm {
                 win.document.head.insertAdjacentHTML("beforeend", el);
             }
         }
-        
+
         win.document.body.innerHTML = source;
-        
+
         var images = win.document.getElementsByTagName("img");
         for(var i=0; i < images.length; i++){
             var image = images[i];
@@ -82,12 +82,12 @@ export default class Form extends WebForm {
                         image.src = location.origin + (imgurl[0] != "/" ? "/" : "") + imgurl;
                     }
                 }
-            }   
+            }
         }
-        
+
         win.focus();
         setTimeout(function(){
-            win.print();  
+            win.print();
         }, 1000);
     }
 }
