@@ -1,7 +1,7 @@
 import React from "react";
 import './grid.css'; 
 
-export default ({children, maxItemsInRow, itemMinWidth, style, ...props}) => {
+export default ({children, maxItemsInRow, itemMinWidth, style, className, ...props}) => {
   const childrenArr = children?.length ? children : [children];
 
   const fillingItems = [];
@@ -10,7 +10,7 @@ export default ({children, maxItemsInRow, itemMinWidth, style, ...props}) => {
     fillingItems.push(<div className="empty" style={{minWidth: itemMinWidth || "50%"}}/>);
   }
 
-  return <div className="wfs-flex-grid" style={{display: "flex", flexWrap: "wrap", ...style}} {...props}>
+  return <div className={("wfs-flex-grid " + className ?? "")} style={{display: "flex", flexWrap: "wrap", ...style}} {...props}>
     {childrenArr.map(item => <div style={{minWidth: itemMinWidth || "50%"}}>
       {item}
     </div>)}

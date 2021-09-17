@@ -305,6 +305,10 @@ body, h1, h2, h3, h4, h5 {
     padding: 5px;
 }
 
+.formbuilder-toolbox-group > div:not(.formbuilder-toolbox-control) {
+  display: none !important;
+}
+
 .formbuilder-toolbox-control:hover{
   color: rgba(255, 255, 255, 1);
 }

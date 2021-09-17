@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Icon, IconButton } from 'rsuite';
-import { BaseFormBuilder, DropzoneContext, EditForm } from 'optimajet-builder-shared';
+import { FormBuilderStore, BuilderActions, BaseFormBuilder, DropzoneContext, EditForm } from 'optimajet-builder-shared';
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Split from 'react-split'
 import Preview from './preview';
 import ToolBar from './toolbar';
@@ -43,16 +44,30 @@ export default class FormBuilder extends BaseFormBuilder {
         const {showControlTree, desktopMode} = this.state;
         const viewClassName = "view" + " " + desktopMode;
         const showIf = (condition, child) => <div style={condition ? {} : {display: 'none'}} className={viewClassName}>{child}</div>;
-        return (<DropzoneContext.Provider value={this.state.dropzoneContext}>
-            <div className="formbuilder">            
-                {this.renderHeaderBar()}   
-                <div className="formbuilder-content formbuilder-dropzoneactive" style={{ display: 'flex', flex: 1 }}  onDragOver={this.onDragOver}>
-                    {showControlTree && <ControlTree show={!this.state.viewerMode} style={{ marginRight: 10, width: 180 }} onClose={this.toggleLeftPanel}/>}
-                    {showIf(!this.state.viewerMode, this.renderBuilder())}
-                    {showIf(this.state.viewerMode, this.renderViewer())}                         
-                </div>            
-            </div>
-            </DropzoneContext.Provider>);
+        return (
+            <DropzoneContext.Provider value={this.state.dropzoneContext}>
+                <DragDropContext onDragEnd={result => {
+        const { source, destination, draggableId } = result;
+        console.log('==> result', result);
+        
+        if (source.droppableId == "TOOLBAR") {                
+                BuilderActions.add({key: draggableId});
+            } else {
+                BuilderActions.move(draggableId);
+            }
+        }    
+        }>
+                    <div className="formbuilder">            
+                        {this.renderHeaderBar()}   
+                        <div className="formbuilder-content formbuilder-dropzoneactive" style={{ display: 'flex', flex: 1 }}  onDragOver={this.onDragOver}>
+                            {showControlTree && <ControlTree show={!this.state.viewerMode} style={{ marginRight: 10, width: 180 }} onClose={this.toggleLeftPanel}/>}
+                            {showIf(!this.state.viewerMode, this.renderBuilder())}
+                            {showIf(this.state.viewerMode, this.renderViewer())}                         
+                        </div>            
+                    </div>
+                </DragDropContext>
+            </DropzoneContext.Provider>
+        );
     }
 
     getCurrentLocalization(){
