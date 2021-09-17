@@ -452,13 +452,12 @@ register('control-bar', options => {
     let baseClassName = "formbuilder-toolbar-point";
     if (!model.pinned) baseClassName += " formbuilder-zone";
 
-    const point = (key, ref) =>  (!dragging && 
+    const point = (key, ref) =>  
         <div key={makeKey(key)} ref={ref} onMouseDown={e => startResize(e, key)}
              style={{...getDisplayStyle(selected), ...stylePinned(11)}}
              className={`formbuilder-item-toolbar-container point-${key}`}>
             <div className={baseClassName + ` formbuilder-toolbar-point-${key}`}/>
-        </div>
-    );
+        </div>;
 
     const onKeyDown = (e) => {        
         e.preventDefault();
@@ -545,14 +544,16 @@ register('control-bar', options => {
                                     {...provided.dragHandleProps}
                                 >
                                     {[ 
-                                        ((!resizing && !cs.isDraggingOver) || thisResizing) && selection,
+                                        ((!resizing && !cp.isDraggingOver) || thisResizing) && selection,
                                         React.cloneElement(options.props.control, { ref: options.me.controlRef }),
-                                        point("top", options.me.pointTopRef),
-                                        point("bottom", options.me.pointBottomRef),
-                                        point("left", options.me.pointLeftRef),
-                                        point("right", options.me.pointRightRef),
-                                        bar,
-                                        !dragging && resize,           
+                                        ... !snapshot.isDragging ? [
+                                            point("top", options.me.pointTopRef, snapshot.isDragging),
+                                            point("bottom", options.me.pointBottomRef, snapshot.isDragging),
+                                            point("left", options.me.pointLeftRef, snapshot.isDragging),
+                                            point("right", options.me.pointRightRef, snapshot.isDragging),
+                                            bar,
+                                            resize
+                                        ] : [],           
                                     ]}
                                 </div>
                             )}
