@@ -7,6 +7,6 @@ export default function loadForm(loader: FormLoader, code?: string): object | ((
         return loader.getFormFunc;
     }
 
-    const formData = loader.getFormFunc(code);
+    const formData = loader.getFormFunc(code) ?? {};
     return JSON.parse(JSON.stringify(formData));
 }
