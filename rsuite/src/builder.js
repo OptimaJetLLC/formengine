@@ -83,6 +83,7 @@ export default class FormBuilder extends BaseFormBuilder {
         const editForm = <EditForm actions={this.props.actions} localization={localization.editforms}
                                    externalControlList={this.props.externalControlList}
                                    controls={this.controls}
+                                   editorControls={this._editorControls}
         />;
 
         return <>

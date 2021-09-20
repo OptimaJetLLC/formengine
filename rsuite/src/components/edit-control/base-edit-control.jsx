@@ -13,7 +13,7 @@ export default class BaseEditControl extends Component {
 
     constructor(props) {
         super(props);
-      
+
         this.state = {
             defaultValuePreferInt: false
         };
@@ -69,7 +69,7 @@ export default class BaseEditControl extends Component {
     formChange = (value, e) => {
         this.handleChange(e, {value});
     }
-    
+
     checkboxChange = (value, checked, e) => this.handleChange(e, {name: e.currentTarget.name, value, checked})
 
     getParam(name){
@@ -112,7 +112,7 @@ export default class BaseEditControl extends Component {
 
         return (<div className="formbuilder-editform-description">
             <Nav activeKey={activeItem} onSelect={parent.setActiveItem} appearance="subtle" justified>
-                {this.menuItems.map(item => <Nav.Item  key={item.key} eventKey={item.key}>{item.name}</Nav.Item>)}                
+                {this.menuItems.map(item => <Nav.Item  key={item.key} eventKey={item.key}>{item.name}</Nav.Item>)}
             </Nav>
             <div className="form">
                 {this.getDetailDescription(activeItem)}
@@ -166,12 +166,12 @@ export default class BaseEditControl extends Component {
 
         const LeftLabel = props => <b {...props} style={{textAlign: "left", marginBottom: 11, alignSelf: "flex-end", minWidth: 50, flexGrow: 0}}/>
 
-        return (<div key="styleDescriptionForm">        
+        return (<div key="styleDescriptionForm">
             <Form formValue={data} onChange={this.formChange} className="dwkit-inline-form" fluid>
                 <LeftLabel>Size: </LeftLabel>
                 <FormInput name="style-width" label={this.getLocalValue('widthfield', 'Width')} placeholder="100px"/>
                 <FormInput name="style-height" label={this.getLocalValue('heightfield', 'Height')} placeholder="50px"/>
-            </Form>                
+            </Form>
             <Form formValue={data} onChange={this.formChange} className="dwkit-inline-form" fluid>
                 <LeftLabel>Margin: </LeftLabel>
                 <FormInput name="style-marginTop" label={this.getLocalValue('margintopfield', 'Top')} placeholder="0px"/>
@@ -179,7 +179,7 @@ export default class BaseEditControl extends Component {
                 <FormInput name="style-marginLeft" label={this.getLocalValue('marginleftfield', 'Left')} placeholder="0px"/>
                 <FormInput name="style-marginRight" label={this.getLocalValue('marginrightfield', 'Right')} placeholder="0px"/>
             </Form>
-            
+
             <Form formValue={data} onChange={this.formChange} className="dwkit-list-form" fluid>
                 <FormInput name="style-customcss" label={this.getLocalValue('customcssclassfield', 'Custom CSS class')}
                            placeholder="application-css (without '.')"/>
@@ -202,7 +202,7 @@ export default class BaseEditControl extends Component {
                 <Checkbox name="style-adaptive" checked={data["style-adaptive"]} onChange={this.checkboxChange}
                         children={this.getLocalValue('adaptivefield', 'Adaptive Layout')}/>
             </Form>
-{/* 
+{/*
             {data['style-adaptive'] &&
             <Form.Dropdown name="style-renderwhen" selection fluid search options={showtypes} placeholder="Any"
                            label={this.getLocalValue('style-renderwhenfield', 'Render when')}
@@ -303,9 +303,9 @@ export default class BaseEditControl extends Component {
                       />
             <ThrowPropWrapper disabled={!data['tooltip-enabled'] }>
                 <Form formValue={data} onChange={this.formChange} className="dwkit-inline-form" fluid>
-                    <FormInput name="tooltip-header" label={this.getLocalValue('tooltipheaderfield', 'Tooltip Header')}/>                    
+                    <FormInput name="tooltip-header" label={this.getLocalValue('tooltipheaderfield', 'Tooltip Header')}/>
                     <FormInput name="tooltip-classname" label={this.getLocalValue('tooltipclassnamefield', 'ClassName')}/>
-                </Form>                
+                </Form>
                 <Form formValue={data} onChange={this.formChange} className="dwkit-list-form" fluid>
                     <FormInput name="tooltip-content" label={this.getLocalValue('tooltipcontentfield', 'Tooltip Content')} componentClass="textarea" rows={2}/>
                 </Form>
@@ -314,8 +314,8 @@ export default class BaseEditControl extends Component {
                     <FormSelect name="tooltip-position" data={toolTipPositions} label={this.getLocalValue('tooltippositionfield', 'Tooptip position')}/>
                 </Form>
             </ThrowPropWrapper>
-            
-        
+
+
             <Checkbox name="tooltip-errordisabled" checked={data["tooltip-errordisabled"]} onChange={this.checkboxChange}
                       children={<b>{this.getLocalValue('errortooltipdisabledfield', 'Error tooptip')}</b>}
                       style={{marginTop: 10}}
@@ -324,7 +324,7 @@ export default class BaseEditControl extends Component {
                 <Form formValue={data} onChange={this.formChange} className="dwkit-inline-form" fluid>
                     <FormSelect name="tooltip-errorshowtype" data={showtypes} label={this.getLocalValue('tooltiperrorshowtypefield', 'Error tooptip showing type')}/>
                     <FormSelect name="tooltip-errorposition" data={toolTipPositions} label={this.getLocalValue('errortooltippositionfield', 'Error tooptip position')}/>
-                </Form>                
+                </Form>
             </ThrowPropWrapper>
         </>);
     }
@@ -345,7 +345,7 @@ export default class BaseEditControl extends Component {
         return (<Form formValue={data} onChange={this.formChange} className="dwkit-list-form" fluid>
             <FormInput name="propertyName" label={this.getLocalValue('propertynamefield', 'Property Name')}/>
             <Checkbox name="other-required" checked={data["other-required"]} onChange={this.checkboxChange}
-                    children={this.getLocalValue('requiredfield', 'Required')}/>                        
+                    children={this.getLocalValue('requiredfield', 'Required')}/>
             <FormInput name="defaultValue" label={this.getLocalValue('defaultvaluefield', 'Default value')}
                 onChange={defaultValueHandle}
             />
@@ -380,7 +380,7 @@ export default class BaseEditControl extends Component {
                     </div>
                 }
                 content={this.getDescription()}
-            />            
+            />
         );
     }
 

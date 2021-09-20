@@ -1,10 +1,10 @@
-import { ControlDefinitionArray, ControlEditorGroup } from 'optimajet-builder-component-api';
+import { ControlEditorGroup } from 'optimajet-builder-component-api';
 import { BuilderControlDefinition, initControl } from './contol-library-wrapper';
 
 export default function extractEditorControls(
-    builderControls: ControlEditorGroup[]): ControlDefinitionArray<BuilderControlDefinition> {
-    const result = <ControlDefinitionArray<BuilderControlDefinition>>{};
+    builderControls: ControlEditorGroup[]): Map<string, BuilderControlDefinition> {
+    const result = new Map<string, BuilderControlDefinition>();
     builderControls.forEach(group => group.items
-        .forEach(value => result[value.name] = initControl(value)));
+        .forEach(value => result.set(value.name, initControl(value))));
     return result;
 }

@@ -1,13 +1,12 @@
 import React from 'react';
 import merge from 'ts-deepmerge';
 import { isDefined } from './helpers';
-import { ControlDefinitionArray } from '../../component-api';
 import EditorPropertyItem from '../../component-api/src/property/editor-property-item';
 import { BuilderControlDefinition } from '../../rsuite/src/contol-library-wrapper';
 
 export class ControlFactory {
 
-    constructor(private _controls: ControlDefinitionArray<BuilderControlDefinition>) {
+    constructor(private _controls: Map<string, BuilderControlDefinition>) {
     }
 
     createControls(parentComponent: any,
@@ -165,7 +164,7 @@ export class ControlFactory {
     ) {
         // todo rename data-buildertype to data-builder-type
         const dataBuilderType = model['data-buildertype'];
-        const builderControl = this._controls[dataBuilderType];
+        const builderControl = this._controls.get(dataBuilderType);
 
         if (!builderControl) {
             console.log('Error! Cannot find control ' + dataBuilderType);
@@ -179,9 +178,9 @@ export class ControlFactory {
 
         // todo use editor components?
         const defaults = Object.assign({}, builderControl.defaultProps);
-        if (isDefined(children)) {
-            defaults.children = children;
-        }
+        // if (isDefined(children)) {
+        //     defaults.children = children;
+        // }
         const controlProps = {
             ...merge(defaults, props),
             ...ControlFactory.getControlProps(model, builderControl.control.propertyTypes),

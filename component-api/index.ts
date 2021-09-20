@@ -1,4 +1,4 @@
-import ControlEditorItem from './src/control/control-editor-item'
+import ControlEditorItem from './src/control/control-editor-item';
 import EnumPropertyType from './src/property/enum-property-type';
 import LocalizedValue from './src/locale/localized-value';
 import PropertyType from './src/property/property-type';
@@ -16,21 +16,17 @@ import {
     StyleType,
 } from './src/property/property-types';
 import EditorPropertyItem from './src/property/editor-property-item';
-import EditorPropertyArray from './src/property/editor-property-array';
 import { defaultProperty, optionalProperty } from './src/property/helpers';
 import ControlDefinition from './src/control/control-definition';
-import ControlDefinitionArray from './src/control/control-definition-array';
 import ControlEditorGroup from './src/control/control-editor-group';
 
 export {
     ControlDefinition,
-    ControlDefinitionArray,
     ControlEditorGroup,
     ControlEditorItem,
     EditorPropertyItem,
     EnumPropertyType,
     LocalizedValue,
-    EditorPropertyArray,
     PropertyType,
     PropertyTypeBuilder,
     //

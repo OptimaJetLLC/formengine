@@ -170,9 +170,11 @@ export default class EditForm extends Component {
     }
 
     render() {
+        // todo add generic edit form
         return draw('edit-form', {
             confirmHandleCancel: () => this.setState({ confirm: false }),
             controls: this.props.controls,
+            editorControls: this.props.editorControls,
             parent: this,
             props: this.props,
             onClose: this.onClose.bind(this),

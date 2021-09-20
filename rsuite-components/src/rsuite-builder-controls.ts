@@ -10,7 +10,8 @@ const rSuiteBuilderControls: ControlEditorGroup[] = [
                 key: 'button',
                 title: 'Button',
                 name: 'rSuiteButton',
-                control: rSuiteViewerControls['rSuiteButton'],
+                // todo control names to enum
+                control: rSuiteViewerControls.get('rSuiteButton')!,
                 // todo вернуть?
                 // defaultValues: { content: 'Button' },
             },

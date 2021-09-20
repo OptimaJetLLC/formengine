@@ -80,7 +80,6 @@ export default class BasePreview extends Component {
         }
 
         const controlFactory = new ControlFactory(this.props.editorControls);
-        // const items = this.props.controls.createControls(
         const items = controlFactory.createControls(
             this,
             {

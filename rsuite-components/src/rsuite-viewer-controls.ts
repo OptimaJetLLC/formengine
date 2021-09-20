@@ -2,7 +2,6 @@ import {
     BoolType,
     ColorType,
     ControlDefinition,
-    ControlDefinitionArray,
     defaultProperty,
     FunctionType,
     optionalProperty,
@@ -21,8 +20,8 @@ const rSuiteButton = <ControlDefinition>{
     ],
 };
 
-const rSuiteViewerControls = <ControlDefinitionArray<ControlDefinition>>{
-    'rSuiteButton': rSuiteButton,
-};
+const rSuiteViewerControls = new Map<string, ControlDefinition>([
+    ['rSuiteButton', rSuiteButton],
+]);
 
 export default rSuiteViewerControls;

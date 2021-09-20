@@ -3,8 +3,8 @@ import { Icon, IconButton, Panel } from 'rsuite';
 
 // todo check args type, remove any
 interface ToolbarArgs {
-    header: string;
-    content: string;
+    header: any;
+    content: any;
     className: string;
     minimizable: boolean;
     style: any;

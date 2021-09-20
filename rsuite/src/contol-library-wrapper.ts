@@ -1,27 +1,22 @@
-import { ControlEditorItem, EditorPropertyArray } from 'optimajet-builder-component-api';
+import { ControlEditorItem, EditorPropertyItem } from 'optimajet-builder-component-api';
 
 export interface BuilderControlDefinition extends ControlEditorItem {
-    propertyByName: any;
-    defaultProps: any;
+    propertyByName: Map<string, EditorPropertyItem>;
+    defaultProps: Map<string, EditorPropertyItem>;
 }
 
 export function initControl(definition: ControlEditorItem): BuilderControlDefinition {
-    const result: BuilderControlDefinition = {
-        ...definition,
-        propertyByName: {},
-        defaultProps: {},
-    };
-
-    let propertyByName: EditorPropertyArray = {};
-    let defaultProps: EditorPropertyArray = {};
+    let propertyByName = new Map<string, EditorPropertyItem>();
+    let defaultProps = new Map<string, EditorPropertyItem>();
     for (let item of definition.control.propertyTypes) {
-        propertyByName[item.name] = item;
+        propertyByName.set(item.name, item);
         if (item.defaultValue !== null && typeof item.defaultValue !== 'undefined') {
-            defaultProps[item.name] = item.defaultValue;
+            defaultProps.set(item.name, item.defaultValue);
         }
     }
-
-    result.defaultProps = defaultProps;
-    result.propertyByName = propertyByName;
-    return result;
+    return <BuilderControlDefinition>{
+        ...definition,
+        propertyByName: propertyByName,
+        defaultProps: defaultProps,
+    };
 }
