@@ -6,10 +6,10 @@ import {
     optionalProperty,
 } from "optimajet-builder-component-api";
 import {  SizeType } from "./rs-property-types";
-import rsButton from "../controls/rs-button";
+import rsInput from "../controls/rs-input";
 
 const rSuiteInput = <ControlDefinition>{
-    renderer: rsButton,
+    renderer: rsInput,
     propertyTypes: [
         defaultProperty("onChange", FunctionType, () =>
             console.log("Set me a handler!")

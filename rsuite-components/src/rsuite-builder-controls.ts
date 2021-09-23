@@ -15,6 +15,18 @@ const rSuiteBuilderControls: ControlEditorGroup[] = [
                 // todo вернуть?
                 // defaultValues: { content: 'Button' },
             },
+            {
+                key: 'input',
+                title: 'Input',
+                name: 'rSuiteInput',
+                control: rSuiteViewerControls.get('rSuiteInput')!,
+            },
+            {
+                key: 'select',
+                title: 'Select Dropdown',
+                name: 'rSuiteSelectDropdown',
+                control: rSuiteViewerControls.get('rSuiteSelectDropdown')!,
+            },
         ],
     }
 ];

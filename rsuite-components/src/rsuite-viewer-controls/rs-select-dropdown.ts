@@ -8,18 +8,18 @@ import {
     MapType
 } from "optimajet-builder-component-api";
 import { SubtleAppearanceType, SizeType } from "./rs-property-types";
-import rsButton from "../controls/rs-button";
+import rsSelectDropdown from "../controls/rs-select-dropdown";
 
 const rSuiteSelectDropdown = <ControlDefinition>{
-    renderer: rsButton,
+    renderer: rsSelectDropdown,
     propertyTypes: [
         defaultProperty("onSelect", FunctionType, () =>
             console.log("Set me a handler!")
         ),
-        defaultProperty("appearance", SubtleAppearanceType, "default"),,
-        optionalProperty("placeholder", StringType),
+        defaultProperty("appearance", SubtleAppearanceType, "default"),
         defaultProperty("size", SizeType, "md"),
         defaultProperty("data", MapType, []),
+        optionalProperty("placeholder", StringType),
         optionalProperty("searchable", BoolType),
         optionalProperty("disabled", BoolType),
         optionalProperty("cleanable", BoolType),
