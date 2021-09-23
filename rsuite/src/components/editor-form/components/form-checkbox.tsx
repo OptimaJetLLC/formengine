@@ -1,5 +1,5 @@
 import React from 'react';
-import { ControlLabel, ErrorMessage, FormControl, FormGroup, InputGroup, SelectPicker } from 'rsuite';
+import { ControlLabel, ErrorMessage, FormControl, FormGroup, InputGroup, SelectPicker, Slider } from 'rsuite';
 
 const setDefault = (prop: any, defaultValue: any) => typeof prop !== 'undefined' ? prop : defaultValue;
 

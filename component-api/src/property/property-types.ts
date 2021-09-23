@@ -8,6 +8,14 @@ const ArrayType = PropertyTypeBuilder.from('array')
     .description('array of values')
     .build();
 
+const MapType = PropertyTypeBuilder.from('map')
+    .description('array of key-value pairs')
+    .build();
+
+const EnumType = PropertyTypeBuilder.enum('enum')
+    .description('one value from enum')
+    .build();
+
 const BoolType = PropertyTypeBuilder.enum('bool')
     .description('true or false')
     .withValue('default', 'Default')
@@ -45,6 +53,7 @@ const StyleType = PropertyTypeBuilder.from('style')
 export {
     AnyType,
     ArrayType,
+    EnumType,
     BoolType,
     ColorType,
     ComponentType,
@@ -53,4 +62,5 @@ export {
     ObjectType,
     StringType,
     StyleType,
+    MapType
 };

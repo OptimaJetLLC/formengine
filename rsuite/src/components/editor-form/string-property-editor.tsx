@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormInput } from './form-input';
+import { FormInput } from './components/form-input';
 import { localize } from './localization';
 
 interface StringPropertyEditorProps {

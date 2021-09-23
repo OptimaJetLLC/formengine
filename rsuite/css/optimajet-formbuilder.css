@@ -3145,3 +3145,7 @@ textarea:read-only,
 .rs-dropdown .rs-dropdown-menu {
   z-index: 7;
 }
+
+.EditableTableRow.compact .rs-table-cell-content {
+  padding: 7px 4px;
+}

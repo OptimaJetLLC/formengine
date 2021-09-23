@@ -6,6 +6,7 @@ import PropertyTypeBuilder from './src/property/property-type-builder';
 import {
     AnyType,
     ArrayType,
+    EnumType,
     BoolType,
     ColorType,
     ComponentType,
@@ -14,6 +15,7 @@ import {
     ObjectType,
     StringType,
     StyleType,
+    MapType
 } from './src/property/property-types';
 import EditorPropertyItem from './src/property/editor-property-item';
 import { defaultProperty, optionalProperty } from './src/property/helpers';
@@ -32,6 +34,7 @@ export {
     //
     AnyType,
     ArrayType,
+    EnumType,
     BoolType,
     ColorType,
     ComponentType,
@@ -40,6 +43,7 @@ export {
     ObjectType,
     StringType,
     StyleType,
+    MapType,
     //
     defaultProperty,
     optionalProperty

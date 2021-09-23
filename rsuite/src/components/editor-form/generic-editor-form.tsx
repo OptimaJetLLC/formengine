@@ -4,7 +4,7 @@ import JSON5 from 'json5';
 import { Form, Checkbox, Button, Tag, Input, Nav, Icon } from 'rsuite';
 import { Message } from 'semantic-ui-react';
 import ToolbarPanel from '../common/ToolbarPanel';
-import { FormInput, FormSelect } from './form-input';
+import { FormInput, FormSelect } from './components/form-input';
 import ThrowPropWrapper from './ThrowPropWrapper';
 import { GeneralDescription } from './general-description';
 import L10n from './l10n';
