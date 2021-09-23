@@ -1,16 +1,16 @@
+import { BaseFormBuilder, BuilderActions, DropzoneContext, EditForm } from 'optimajet-builder-shared';
 import React from 'react';
-import { BaseFormBuilder, DropzoneContext, EditForm } from 'optimajet-builder-shared';
-import Preview from './preview';
-import ToolBar from './toolbar';
-import ControlTree from './control-tree';
-import { dispatchWindowResize } from './utils';
-import HeaderBar from './headerbar';
+import { DragDropContext } from "react-beautiful-dnd";
+import 'rsuite/lib/styles/index.less';
+import extractEditorControls from './builder-util';
 import controls from './builder/controls-for-builder';
 import CustomBlockEditControl from './components/edit-control/custom-block-edit-control';
-import Viewer from './viewer';
-import 'rsuite/lib/styles/index.less';
+import ControlTree from './control-tree';
+import HeaderBar from './headerbar';
+import Preview from './preview';
 import ToolbarNew from "./toolbar-new";
-import extractEditorControls from './builder-util';
+import { dispatchWindowResize } from './utils';
+import Viewer from './viewer';
 
 export default class FormBuilder extends BaseFormBuilder {
 
@@ -35,7 +35,7 @@ export default class FormBuilder extends BaseFormBuilder {
         this.onChangeFileUpload = this.onChangeFileUpload.bind(this);
     }
 
-    onBuilderSwitch(checked, e) {
+    onBuilderSwitch(checked, _e) {
         this.state.viewerMode = checked;
         this.forceUpdate();
     }
@@ -43,21 +43,31 @@ export default class FormBuilder extends BaseFormBuilder {
     render() {
         const { showControlTree, desktopMode } = this.state;
         const viewClassName = "view" + " " + desktopMode;
-        const showIf = (condition, child) => <div style={condition ? {} : { display: 'none' }}
-                                                  className={viewClassName}>{child}</div>;
-        return (<DropzoneContext.Provider value={this.state.dropzoneContext}>
-            <div className="formbuilder">
-                {this.renderHeaderBar()}
-                <div className="formbuilder-content formbuilder-dropzoneactive" style={{ display: 'flex', flex: 1 }}
-                     onDragOver={this.onDragOver}>
-                    {showControlTree &&
-                    <ControlTree show={!this.state.viewerMode} style={{ marginRight: 10, width: 180 }}
-                                 onClose={this.toggleLeftPanel}/>}
-                    {showIf(!this.state.viewerMode, this.renderBuilder())}
-                    {showIf(this.state.viewerMode, this.renderViewer())}
-                </div>
-            </div>
-        </DropzoneContext.Provider>);
+        const showIf = (condition, child) => <div style={condition ? {} : {display: 'none'}} className={viewClassName}>{child}</div>;
+        return (
+            <DropzoneContext.Provider value={this.state.dropzoneContext}>
+                <DragDropContext onDragEnd={result => {
+        const { source, destination, draggableId } = result;
+        console.log('==> result', result);
+        
+        if (source.droppableId == "TOOLBAR") {                
+                BuilderActions.add({key: draggableId});
+            } else {
+                BuilderActions.move(draggableId);
+            }
+        }    
+        }>
+                    <div className="formbuilder">            
+                        {this.renderHeaderBar()}   
+                        <div className="formbuilder-content formbuilder-dropzoneactive" style={{ display: 'flex', flex: 1 }}  onDragOver={this.onDragOver}>
+                            {showControlTree && <ControlTree show={!this.state.viewerMode} style={{ marginRight: 10, width: 180 }} onClose={this.toggleLeftPanel}/>}
+                            {showIf(!this.state.viewerMode, this.renderBuilder())}
+                            {showIf(this.state.viewerMode, this.renderViewer())}                         
+                        </div>            
+                    </div>
+                </DragDropContext>
+            </DropzoneContext.Provider>
+        );
     }
 
     getCurrentLocalization() {

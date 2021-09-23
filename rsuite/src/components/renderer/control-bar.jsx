@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { FormBuilderStore, BuilderActions, DropzoneContext, isDefined, register } from 'optimajet-builder-shared';
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { getDisplayStyle } from './style-helper';
 import $ from 'jquery';
 import { Icon, IconStack } from 'rsuite';
@@ -14,6 +15,8 @@ register('control-bar', options => {
     let mouseDY = undefined;
     let moveState = {};
     let resizeType = undefined;
+    let type = model['data-buildertype'];
+    let isContainer = type == "container" || type == "form" || type == "repeater" || type == "formgroup";
 
     FormBuilderStore.listenTo(BuilderActions.showEditForm, selectedKey => {
         var isCurrent = selectedKey === model.key;
@@ -53,8 +56,6 @@ register('control-bar', options => {
         x += dx;
         y += dy;
 
-        let type = model['data-buildertype'];
-        let isContainer = type == "container" || type == "form" || type == "repeater" || type == "formgroup";
         if (isContainer) {
             y -= 15;
         }
@@ -451,13 +452,12 @@ register('control-bar', options => {
     let baseClassName = "formbuilder-toolbar-point";
     if (!model.pinned) baseClassName += " formbuilder-zone";
 
-    const point = (key, ref) =>  (!dragging && 
+    const point = (key, ref) =>  
         <div key={makeKey(key)} ref={ref} onMouseDown={e => startResize(e, key)}
              style={{...getDisplayStyle(selected), ...stylePinned(11)}}
              className={`formbuilder-item-toolbar-container point-${key}`}>
             <div className={baseClassName + ` formbuilder-toolbar-point-${key}`}/>
-        </div>
-    );
+        </div>;
 
     const onKeyDown = (e) => {        
         e.preventDefault();
@@ -469,14 +469,14 @@ register('control-bar', options => {
     const dragProps = {
         onMouseOver: onMouseOver,
         onMouseLeave: onMouseLeave,
-        onMouseDown: onMouseDown,
-        draggable: !model.pinned,
-        onDragStart: onDragStart,
-        onDragEnd: onDragEnd,
-        onDragEnter: dragging ? undefined : onDragEnter,
-        onDragLeave: dragging ? undefined : onDragLeave,
-        onDragOver: dragging ? undefined : onDragOver,
-        onDrop: dragging ? undefined : onDrop
+        // onMouseDown: onMouseDown,
+        // draggable: !model.pinned,
+        // onDragStart: onDragStart,
+        // onDragEnd: onDragEnd,
+        // onDragEnter: dragging ? undefined : onDragEnter,
+        // onDragLeave: dragging ? undefined : onDragLeave,
+        // onDragOver: dragging ? undefined : onDragOver,
+        // onDrop: dragging ? undefined : onDrop
     }
 
     const { resizing } = me.props.parent.state;    
@@ -523,37 +523,45 @@ register('control-bar', options => {
                     onClick={onClick}
                     onKeyDown ={onKeyDown }
                     {...dragProps}
-                    elementafter={dragOverTop ? model.key : undefined}
-                    elementbefore={dragOverBottom ? model.key : undefined}
-                    elementtoinsert={options.props.elementtoinsert}
-                    placeholderkey={options.props.placeholderKey}
                 />
             );
-
-            const dragOverTopEl = (
-                <div  key={makeKey("drag-over-top")}
-                      className={("drag-over-animation top" + (dragOverTop ? " active" : ""))}
-                      onDragOver={dragging ? undefined : _=> me.setState({dragOverTop: true, dragOverBottom: false})} />
-            )
+ 
             
-            const dragOverBottomEl = (
-                <div key={makeKey("drag-over-bottom")}
-                     className={("drag-over-animation bottom" + (dragOverBottom ? " active" : ""))}
-                     onDragOver={dragging ? undefined : _=> me.setState({dragOverBottom: true, dragOverTop: false})} />
-            );
+            const getContainerStyle = (isDraggingOver) => ({
+                backgroundColor: (isDraggingOver) ? "lightpink" : "initial"
+            })
 
-            return [ 
-                (!resizing || thisResizing) && selection,
-                dragOverTopEl,
-                React.cloneElement(options.props.control, { ref: options.me.controlRef }),
-                point("top", options.me.pointTopRef),
-                point("bottom", options.me.pointBottomRef),
-                point("left", options.me.pointLeftRef),
-                point("right", options.me.pointRightRef),
-                bar,
-                !dragging && resize, 
-                dragOverBottomEl               
-            ];
+            
+
+            return <Droppable droppableId={options.props.model.key} isDropDisabled={!!isContainer}>
+                  {(cp, cs) => (
+                    <div ref={cp.innerRef} className="formbuilder-item">
+                        <Draggable key={options.props.model.key} draggableId={options.props.model.key} index={0}>
+                            {(provided, snapshot) => (
+                                <div
+                                    ref={provided.innerRef}
+                                    {...provided.draggableProps}
+                                    {...provided.dragHandleProps}
+                                >
+                                    {[ 
+                                        ((!resizing && !cp.isDraggingOver) || thisResizing) && selection,
+                                        React.cloneElement(options.props.control, { ref: options.me.controlRef }),
+                                        ... !snapshot.isDragging ? [
+                                            point("top", options.me.pointTopRef, snapshot.isDragging),
+                                            point("bottom", options.me.pointBottomRef, snapshot.isDragging),
+                                            point("left", options.me.pointLeftRef, snapshot.isDragging),
+                                            point("right", options.me.pointRightRef, snapshot.isDragging),
+                                            bar,
+                                            resize
+                                        ] : [],           
+                                    ]}
+                                </div>
+                            )}
+                        </Draggable>
+                        {cp.placeholder}
+                    </div>
+                    )}
+            </Droppable>
         }}
     </DropzoneContext.Consumer>
 }

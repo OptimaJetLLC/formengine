@@ -1,10 +1,10 @@
-import React from 'react';
+import $ from 'jquery';
 import { BaseToolbar, BuilderActions, isDefined, isUndefined } from 'optimajet-builder-shared';
+import React from 'react';
+import { Draggable, Droppable } from "react-beautiful-dnd";
+import { Button, Icon } from 'rsuite';
 import SearchForm from './components/common/SearchForm';
 import ToolbarPanel from './components/common/ToolbarPanel';
-import Grid from './components/common/Grid';
-import { Button, Icon } from 'rsuite';
-import $ from 'jquery';
 
 export default class ToolbarNew extends BaseToolbar {
 
@@ -12,21 +12,6 @@ export default class ToolbarNew extends BaseToolbar {
         super(props);
         this.state = { ...this.state, filtered: undefined };
         this.searchForm = React.createRef();
-    }
-
-    onDragStart(item, e) {
-        e.dataTransfer.setData('data', JSON.stringify({ key: item, new: true }));
-    }
-
-    onDrop(item, e) {
-        // todo remove $
-        const el = $(e.target);
-        if (el.length > 0) {
-            BuilderActions.add(item, el[0]);
-        }
-
-        this.onDragEnd(item);
-        return false;
     }
 
     handleSearchChange(value) {
@@ -97,7 +82,9 @@ export default class ToolbarNew extends BaseToolbar {
                                                   <Icon icon={iconName}/>
                                                   {parentItem.title}
                                               </h5>
-                                              {(expandedbock || this.state.filtered) && <Grid itemMinWidth="129px">
+                                              {(expandedbock || this.state.filtered) && <Droppable droppableId={"TOOLBAR"} isDropDisabled={true}>
+                                            {(cp) => (
+                                                <div ref={cp.innerRef} className="formbuilder-toolbox-group">
                                                   {
                                                       parentItem.items.map((item, index) => {
                                                           let title = item.title;
@@ -105,18 +92,33 @@ export default class ToolbarNew extends BaseToolbar {
                                                               title = me.props.localization[item.key];
                                                           }
 
-                                                          return (<li draggable="true"
-                                                                      className="formbuilder-toolbox-control"
-                                                                      key={(item.key + String(index))}
-                                                                      onDragStart={this.onDragStart.bind(this, item)}
-                                                                      onDoubleClick={this.onDoubleClick.bind(this, item)}>
-                                                              <Icon icon="check2"/>
-                                                              <div
-                                                                  className="formbuilder-toolbox-control-text">{title}</div>
-                                                          </li>);
+                                                          return (
+                                                            <Draggable key={(item.key + String(index))} draggableId={(item.key + String(index))} index={index}>
+                                                            {(provided, snapshot) => (
+                                                                <>
+                                                                    <div className="formbuilder-toolbox-control"
+                                                                    ref={provided.innerRef}
+                                                                    {...provided.draggableProps}
+                                                                    {...provided.dragHandleProps}
+                                                                    >
+                                                                        <Icon icon='check2' />
+                                                                        <div className="formbuilder-toolbox-control-text">{title}</div>
+                                                                    </div>
+                                                                    {snapshot.isDragging && (
+                                                                        <div className="formbuilder-toolbox-control">
+                                                                            <Icon icon='check2' />
+                                                                            <div className="formbuilder-toolbox-control-text">{title}</div>
+                                                                        </div>     
+                                                                    )}
+                                                                </>
+                                                            )}
+                                                        </Draggable>
+                                                          );
                                                       })
                                                   }
-                                              </Grid>
+                                               </div>
+                                                )}
+                                        </Droppable>
                                               }
                                           </>;
                                       })}
