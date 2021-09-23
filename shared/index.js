@@ -56,7 +56,6 @@ import BaseControlTree from './src/base-control-tree';
 import BaseToolbar from './src/base-toolbar';
 import { getItems, registerItems } from './src/component-item-registry';
 import { draw, register } from './src/component-render-registry';
-import ControlBar from './src/control-bar';
 import { DropzoneContext } from './src/dropzone-context';
 import Const from './src/const';
 import EditForm from './src/edit-form';
@@ -126,7 +125,6 @@ export {
     BaseToolbar,
     registerItems, getItems,
     register, draw,
-    ControlBar,
     DropzoneContext,
     Const,
     EditForm,

@@ -1,568 +1,585 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { FormBuilderStore, BuilderActions, DropzoneContext, isDefined, register } from 'optimajet-builder-shared';
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { getDisplayStyle } from './style-helper';
 import $ from 'jquery';
-import { Icon, IconStack } from 'rsuite';
+import { BuilderActions, DropzoneContext, FormBuilderStore } from 'optimajet-builder-shared';
+import React from 'react';
+import { Draggable, Droppable } from "react-beautiful-dnd";
+import ReactDOM from 'react-dom';
+import { Icon } from 'rsuite';
+import { getDisplayStyle } from './style-helper';
 
-register('control-bar', options => {
-    let model = options.props.model;
-    let state = options.me.state;
-    let me = options.me;
+class CC extends React.Component {
+    
+    controlRef = React.createRef();
+    barRef = React.createRef();
+    resizeRef = React.createRef();
+    pointTopRef = React.createRef();
+    pointLeftRef = React.createRef();
+    pointRightRef = React.createRef();
+    pointBottomRef = React.createRef();
+    selectionRef = React.createRef();
 
-    let mouseDX = undefined;
-    let mouseDY = undefined;
-    let moveState = {};
-    let resizeType = undefined;
-    let type = model['data-buildertype'];
-    let isContainer = type == "container" || type == "form" || type == "repeater" || type == "formgroup";
+    constructor(props) {
+        super(props);
+    
+        this.state = {};
+    }
 
-    FormBuilderStore.listenTo(BuilderActions.showEditForm, selectedKey => {
-        var isCurrent = selectedKey === model.key;
-        if (state.selected != isCurrent) {
-            me.setState({ selected: isCurrent });
+    draw(options) {
+        return '';
+    }
+
+    render() {
+        return this?.draw({
+            props: this.props,
+            me: this,
+        });
+    }
+
+    onRemoveControl = (key) => {
+        //FormBuilderStore.remove({key});
+    }
+
+    onCopyControl(model, e) {
+        // const str = JSON5.stringify(model);
+        // const el = document.createElement('textarea');
+        // el.value = str;
+        // el.setAttribute('readonly', '');
+        // el.style.position = 'absolute';
+        // el.style.left = '-9999px';
+        // document.body.appendChild(el);
+        // const selected = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false;
+        // el.select();
+        // document.execCommand('copy');
+        // document.body.removeChild(el);
+        // if (selected) {
+        //     document.getSelection().removeAllRanges();
+        //     document.getSelection().addRange(selected);
+        // }
+    }
+
+    updateBarPosition() {}
+
+    componentDidMount(){
+        if (this.updateBarPosition) {
+            window.addEventListener('resize', this.updateBarPosition);
+            this.updateBarPosition();
         }
-    });
+    }
 
-    options.me.updateBarPosition = () => {
-        if (state.dragOverTop || state.dragOverBottom) {
-            return;
-        }
-        if (!options.me.controlRef || !options.me.controlRef.current || !options.me.barRef || !options.me.barRef.current)
-            return;
+    componentDidUpdate(){
+        this.updateBarPosition && this.updateBarPosition();
+    }
+    
+    componentWillUnmount() {
+        this.updateBarPosition && window.removeEventListener('resize', this.updateBarPosition);
+    }
+}
+export default class extends CC {
 
-        let control = ReactDOM.findDOMNode(options.me.controlRef.current);
-        let style = control.currentStyle || window.getComputedStyle(control);
-        let dx = parseFloat(style.marginLeft);
-        let dy = parseFloat(style.marginTop);
+    constructor(props) {
+        super(props);
+    }
+ 
+    draw = options => {
+        let model = options.props.model;
+        let state = options.me.state;
+        let me = options.me;
 
-        let bar = ReactDOM.findDOMNode(options.me.barRef.current);
+        let mouseDX = undefined;
+        let mouseDY = undefined;
+        let moveState = {};
+        let resizeType = undefined;
+        let type = model['data-buildertype'];
+        let isContainer = type == "container" || type == "form" || type == "repeater" || type == "formgroup";
 
-        let pos = $(control).position();
-        let controlPos = control.getBoundingClientRect();
-        let barPos = bar.getBoundingClientRect();
-        let x, y;
-        if ($(control).parents('table').length) { //hack for correct position in table (customElement in collectonEditor)
-            var barSize = bar.children[0].getBoundingClientRect();
-            x = controlPos.width / 2 - barSize.width / 2;
-            y = -controlPos.height - barSize.height / 2;
-        }
-        else {
-            x = pos.left + controlPos.width / 2 - barPos.width / 2;
-            y = pos.top - barPos.height / 2;
-        }
+        FormBuilderStore.listenTo(BuilderActions.showEditForm, selectedKey => {
+            var isCurrent = selectedKey === model.key;
+            if (state.selected != isCurrent) {
+                me.setState({ selected: isCurrent });
+            }
+        });
 
-        x += dx;
-        y += dy;
+        options.me.updateBarPosition = () => {
+            if (state.dragOverTop || state.dragOverBottom) {
+                return;
+            }
+            if (!options.me.controlRef || !options.me.controlRef.current || !options.me.barRef || !options.me.barRef.current)
+                return;
 
-        if (isContainer) {
-            y -= 15;
-        }
+            let control = ReactDOM.findDOMNode(options.me.controlRef.current);
+            let style = control.currentStyle || window.getComputedStyle(control);
+            let dx = parseFloat(style.marginLeft);
+            let dy = parseFloat(style.marginTop);
 
-        if (type == "label") {
-            y -= 15;
-        }
+            let bar = ReactDOM.findDOMNode(options.me.barRef.current);
 
-        if (x < 15) x = 15;
-        bar.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
-
-        if (options.me.resizeRef && options.me.resizeRef.current) {
-            let resize = ReactDOM.findDOMNode(options.me.resizeRef.current);
-            let resizePos = resize.getBoundingClientRect();
-
+            let pos = $(control).position();
+            let controlPos = control.getBoundingClientRect();
+            let barPos = bar.getBoundingClientRect();
+            let x, y;
             if ($(control).parents('table').length) { //hack for correct position in table (customElement in collectonEditor)
-                var resizeSize = resize.children[0].getBoundingClientRect();
-                x = controlPos.width - resizeSize.width / 2;
-                y = -controlPos.height - resizeSize.height / 2;
+                var barSize = bar.children[0].getBoundingClientRect();
+                x = controlPos.width / 2 - barSize.width / 2;
+                y = -controlPos.height - barSize.height / 2;
             }
             else {
-                x = pos.left + controlPos.width - resizePos.width / 2;
-                y = pos.top + controlPos.height - resizePos.height / 2;
+                x = pos.left + controlPos.width / 2 - barPos.width / 2;
+                y = pos.top - barPos.height / 2;
             }
 
             x += dx;
             y += dy;
 
-            resize.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
-        }
-
-        if (options.me.pointTopRef && options.me.pointTopRef.current) {
-            let pointTop = ReactDOM.findDOMNode(options.me.pointTopRef.current);
-
-            x = pos.left; y = pos.top - 9;
-            x += dx; y += dy;
-
-            pointTop.style.width = controlPos.width + "px";
-            pointTop.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
-        }
-
-        if (options.me.pointBottomRef && options.me.pointBottomRef.current) {
-            let pointBottom = ReactDOM.findDOMNode(options.me.pointBottomRef.current);
-
-            x = pos.left - 2; y = pos.top + controlPos.height - 9;
-            x += dx; y += dy;
-
-            pointBottom.style.width = controlPos.width + "px";
-            pointBottom.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
-        }
-
-        if (options.me.pointLeftRef && options.me.pointLeftRef.current) {
-            let pointLeft = ReactDOM.findDOMNode(options.me.pointLeftRef.current);
-
-            x = pos.left - 9; y = pos.top;
-            x += dx; y += dy;
-
-            pointLeft.style.height = controlPos.height + "px";
-            pointLeft.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
-        }
-
-        if (options.me.pointRightRef && options.me.pointRightRef.current) {
-            let pointRight = ReactDOM.findDOMNode(options.me.pointRightRef.current);
-
-            x = pos.left + controlPos.width - 9; y = pos.top - 2;
-            x += dx; y += dy;
-
-            pointRight.style.height = controlPos.height + "px";
-            pointRight.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
-        }
-
-        if (options.me.selectionRef && options.me.selectionRef.current) {
-            let selection = ReactDOM.findDOMNode(options.me.selectionRef.current);
-
-            x = pos.left; y = pos.top;
-            x += dx; y += dy;
-
-            selection.style.width = controlPos.width + "px";
-            selection.style.height = controlPos.height + "px";
-            selection.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
-        }
-    }
-
-    var onDrop = (e) => {
-        var el = $(e.target);
-        var data = JSON.parse(e.dataTransfer.getData('data'));
-
-        if (el.length > 0) {
-            if (data.new) {                
-                BuilderActions.add(data.key, el[0]);
-            } else {
-                BuilderActions.move(data.key, el[0]);
+            if (isContainer) {
+                y -= 15;
             }
-        }
 
-        onDragEnd();
-        return false;
-    }
+            if (type == "label") {
+                y -= 15;
+            }
 
-    var onDragStart = (e) => {
-        me.setState({dragging: true});
-        e.dataTransfer.clearData();
-        e.dataTransfer.setData('data', JSON.stringify({key: model.key, new: false}));
+            if (x < 15) x = 15;
+            bar.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
 
-        if (options.me.controlRef.current) {
-            var control = ReactDOM.findDOMNode(options.me.controlRef.current);
-            var controlPos = control.getBoundingClientRect();
-            e.dataTransfer.setDragImage(control, controlPos.width / 2, 0);
-        }
-    }
+            if (options.me.resizeRef && options.me.resizeRef.current) {
+                let resize = ReactDOM.findDOMNode(options.me.resizeRef.current);
+                let resizePos = resize.getBoundingClientRect();
 
-    var onDragOver = (e) => {
-        e.preventDefault();
-        let controlPos = e.currentTarget.getBoundingClientRect();
-        if (e.clientY <= (controlPos.top + controlPos.height / 2)) 
-        {
-            me.setState({dragOverTop: true, dragOverBottom: false});
-        } else {
-            me.setState({dragOverTop: false, dragOverBottom: true});
-        }
-    }
-
-    var onDragEnd = (e) => {   
-        me.setState({dragging: false, dragOverTop: false, dragOverBottom: false});
-    }
-
-    var onDragEnter = (e) => {   
-        onDragOver(e);
-    }
-
-    var onDragLeave = (e) => { 
-        me.setState({dragOverTop: false, dragOverBottom: false });
-    }
-
-    var onMouseOver = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        var { hovered } = state;
-        if (!hovered) {
-            me.setState({ hovered: true });
-        }
-    }
-
-    var onMouseLeave = (e) => {
-        var { hovered } = state;
-        if (hovered) {
-            me.setState({ hovered: false });
-        }
-    }
-
-    var onPinned = () => {
-        let pinned = !model.pinned;
-        let fields = {
-            pinned
-        };
-
-        if (!pinned) {
-            fields.pinnedLeft = undefined;
-            fields.pinnedTop = undefined;
-            fields["style-width"] = undefined;
-            fields["style-height"] = undefined;
-        }
-        else {
-            fields["style-marginLeft"] = undefined;
-            fields["style-marginTop"] = undefined;
-            fields.pinnedLeft = model["style-marginLeft"];
-            fields.pinnedTop = model["style-marginTop"];
-        }
-
-        BuilderActions.changeItem(model.key, fields);
-    }
-
-    var mouseMove = (e) => {
-        if (!options.me.controlRef.current)
-            return;
-
-        var control = ReactDOM.findDOMNode(options.me.controlRef.current);
-        if (!control)
-            return;
-
-        var style = control.currentStyle || window.getComputedStyle(control);
-        var dx = parseFloat(style.marginLeft);
-        var dy = parseFloat(style.marginTop);
-
-        var parent = $('.formbuilder-preview');
-        let offset = parent.offset();
-        moveState.left = e.pageX - offset.left - (mouseDX ?? 0) - dx;
-        moveState.top = e.pageY - offset.top - (mouseDY ?? 0) - dy;
-
-        if (moveState.left < 0) moveState.left = 0;
-        if (moveState.top < 0) moveState.top = 0;
-
-        var rect = control.getBoundingClientRect();
-        let maxX = parent.width() - rect.width;
-
-        if (moveState.left > maxX) moveState.left = maxX;
-
-        control.style.top = moveState.top + "px";
-        control.style.left = moveState.left + "px";
-        options.me.updateBarPosition();
-    }
-
-    var onMouseDown = (e) => {
-        var control = undefined;
-        
-        options.me.props.onEdit(options.props.model);
-        options.me.setState({ selected: true })
-        if (options.me.controlRef.current)
-            control = ReactDOM.findDOMNode(options.me.controlRef.current);
-
-        if (control && !!model.pinned) {
-            var rect = control.getBoundingClientRect();
-            mouseDX = e.pageX - rect.left - $(document).scrollLeft();
-            mouseDY = e.pageY - rect.top - $(document).scrollTop();
-            document.addEventListener('mousemove', mouseMove);
-            document.addEventListener('mouseup', mouseUp);
-        }
-    }
-
-    var mouseUp = () => {
-        document.removeEventListener('mousemove', mouseMove);
-        document.removeEventListener('mouseup', mouseUp);
-
-        let fields = {
-            pinnedLeft: moveState.left != undefined ? moveState.left + "px" : undefined,
-            pinnedTop: moveState.top != undefined ? moveState.top + "px" : undefined
-        };
-
-        BuilderActions.changeItem(model.key, fields);
-        mouseDX = undefined;
-        mouseDY = undefined;
-    }
-
-    var startResize = (e, type) => {
-        resizeType = type;
-
-        var control = ReactDOM.findDOMNode(options.me.controlRef.current);
-        var rect = control.getBoundingClientRect();
-        mouseDX = e.pageX - rect.left - $(document).scrollLeft();
-        mouseDY = e.pageY - rect.top - $(document).scrollTop();
-
-        moveState.pageX = e.pageX;
-        moveState.pageY = e.pageY;
-
-        e.preventDefault();
-        e.stopPropagation();
-        me.props.parent.setState({resizing: true});
-        me.setState({thisResizing: true});
-        window.addEventListener('mousemove', onResize);
-        window.addEventListener('mouseup', stopResize);
-    }
-
-    var stopResize = () => {
-        window.removeEventListener('mousemove', onResize);
-        window.removeEventListener('mouseup', stopResize);
-        me.props.parent.setState({resizing: false});
-        me.setState({thisResizing: false});
-
-        let fields = {};
-        if (moveState.left != undefined) fields["pinnedLeft"] = moveState.left + "px";
-        if (moveState.top != undefined) fields["pinnedTop"] = moveState.top + "px";
-        if (moveState.width != undefined) fields["style-width"] = moveState.width + "px";
-        if (moveState.height != undefined) fields["style-height"] = moveState.height + "px";
-        if (moveState.marginLeft != undefined) fields["style-marginLeft"] = moveState.marginLeft + "px";
-        if (moveState.marginTop != undefined) fields["style-marginTop"] = moveState.marginTop + "px";
-
-        BuilderActions.changeItem(model.key, fields);
-        moveState = {};
-        mouseDX = undefined;
-        mouseDY = undefined;
-    }
-
-    var onResize = (e) => {
-        if (options.me.controlRef.current) {
-            e.preventDefault();
-            e.stopPropagation();
-            var control = ReactDOM.findDOMNode(options.me.controlRef.current);
-            if (control) {
-                let rect = control.getBoundingClientRect();
-                if (!resizeType || resizeType == "right") {
-                    let width = e.clientX - rect.left;
-                    control.style.width = width + 'px';
-                    moveState.width = width;
+                if ($(control).parents('table').length) { //hack for correct position in table (customElement in collectonEditor)
+                    var resizeSize = resize.children[0].getBoundingClientRect();
+                    x = controlPos.width - resizeSize.width / 2;
+                    y = -controlPos.height - resizeSize.height / 2;
+                }
+                else {
+                    x = pos.left + controlPos.width - resizePos.width / 2;
+                    y = pos.top + controlPos.height - resizePos.height / 2;
                 }
 
-                if (!resizeType || resizeType == "bottom") {
-                    let height = e.clientY - rect.top;
-                    control.style.height = height + 'px';
-                    moveState.height = height;
+                x += dx;
+                y += dy;
+
+                resize.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
+            }
+
+            if (options.me.pointTopRef && options.me.pointTopRef.current) {
+                let pointTop = ReactDOM.findDOMNode(options.me.pointTopRef.current);
+
+                x = pos.left; y = pos.top - 9;
+                x += dx; y += dy;
+
+                pointTop.style.width = controlPos.width + "px";
+                pointTop.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
+            }
+
+            if (options.me.pointBottomRef && options.me.pointBottomRef.current) {
+                let pointBottom = ReactDOM.findDOMNode(options.me.pointBottomRef.current);
+
+                x = pos.left - 2; y = pos.top + controlPos.height - 9;
+                x += dx; y += dy;
+
+                pointBottom.style.width = controlPos.width + "px";
+                pointBottom.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
+            }
+
+            if (options.me.pointLeftRef && options.me.pointLeftRef.current) {
+                let pointLeft = ReactDOM.findDOMNode(options.me.pointLeftRef.current);
+
+                x = pos.left - 9; y = pos.top;
+                x += dx; y += dy;
+
+                pointLeft.style.height = controlPos.height + "px";
+                pointLeft.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
+            }
+
+            if (options.me.pointRightRef && options.me.pointRightRef.current) {
+                let pointRight = ReactDOM.findDOMNode(options.me.pointRightRef.current);
+
+                x = pos.left + controlPos.width - 9; y = pos.top - 2;
+                x += dx; y += dy;
+
+                pointRight.style.height = controlPos.height + "px";
+                pointRight.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
+            }
+
+            if (options.me.selectionRef && options.me.selectionRef.current) {
+                let selection = ReactDOM.findDOMNode(options.me.selectionRef.current);
+
+                x = pos.left; y = pos.top;
+                x += dx; y += dy;
+
+                selection.style.width = controlPos.width + "px";
+                selection.style.height = controlPos.height + "px";
+                selection.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
+            }
+            }
+
+
+
+            var onDragOver = (e) => {
+                e.preventDefault();
+                let controlPos = e.currentTarget.getBoundingClientRect();
+                if (e.clientY <= (controlPos.top + controlPos.height / 2)) 
+                {
+                    me.setState({dragOverTop: true, dragOverBottom: false});
+                } else {
+                    me.setState({dragOverTop: false, dragOverBottom: true});
+                }
+            }
+
+            var onDragEnd = () => {   
+                me.setState({dragging: false, dragOverTop: false, dragOverBottom: false});
+            }
+
+
+
+            var onMouseOver = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                var { hovered } = state;
+                if (!hovered) {
+                    me.setState({ hovered: true });
+                }
+            }
+
+            var onMouseLeave = () => {
+                var { hovered } = state;
+                if (hovered) {
+                    me.setState({ hovered: false });
+                }
+            }
+
+            var onPinned = () => {
+                let pinned = !model.pinned;
+                let fields = {
+                    pinned
+                };
+
+                if (!pinned) {
+                    fields.pinnedLeft = undefined;
+                    fields.pinnedTop = undefined;
+                    fields["style-width"] = undefined;
+                    fields["style-height"] = undefined;
+                }
+                else {
+                    fields["style-marginLeft"] = undefined;
+                    fields["style-marginTop"] = undefined;
+                    fields.pinnedLeft = model["style-marginLeft"];
+                    fields.pinnedTop = model["style-marginTop"];
                 }
 
-                if (resizeType == "top") {
-                    var style = control.currentStyle || window.getComputedStyle(control);
-                    var dy = parseFloat(style.marginTop);
+                BuilderActions.changeItem(model.key, fields);
+            }
 
-                    var parent = $('.formbuilder-preview');
-                    let offset = parent.offset();
+            var mouseMove = (e) => {
+                if (!options.me.controlRef.current)
+                    return;
 
-                    if (model.pinned) {
-                        moveState.top = e.pageY - offset.top - (mouseDY ?? 0) - dy;
+                var control = ReactDOM.findDOMNode(options.me.controlRef.current);
+                if (!control)
+                    return;
 
-                        if (!moveState.originalBottom)
-                            moveState.originalBottom = moveState.top + rect.height;
+                var style = control.currentStyle || window.getComputedStyle(control);
+                var dx = parseFloat(style.marginLeft);
+                var dy = parseFloat(style.marginTop);
 
-                        if (moveState.originalBottom - moveState.top < 0) {
-                            moveState.top = moveState.originalBottom;
-                        }
+                var parent = $('.formbuilder-preview');
+                let offset = parent.offset();
+                moveState.left = e.pageX - offset.left - (mouseDX ?? 0) - dx;
+                moveState.top = e.pageY - offset.top - (mouseDY ?? 0) - dy;
 
-                        if (moveState.top < 0) moveState.top = 0;
+                if (moveState.left < 0) moveState.left = 0;
+                if (moveState.top < 0) moveState.top = 0;
 
-                        control.style.top = moveState.top + "px";
+                var rect = control.getBoundingClientRect();
+                let maxX = parent.width() - rect.width;
 
-                        let height = moveState.originalBottom - moveState.top;
-                        control.style.height = height + 'px';
-                        moveState.height = height;
-                    }
-                    else {
-                        moveState.marginTop = e.pageY - moveState.pageY + parseFloat(model["style-marginTop"] ?? 0);
+                if (moveState.left > maxX) moveState.left = maxX;
 
-                        if (!moveState.originalBottom)
-                            moveState.originalBottom = moveState.marginTop + rect.height;
-
-                        // if(moveState.originalBottom - moveState.marginTop < 0){
-                        //     moveState.marginTop = moveState.originalBottom;
-                        // }
-
-                        control.style.marginTop = moveState.marginTop + "px";
-
-                        // let height = moveState.originalBottom - moveState.marginTop;
-                        // control.style.height = height  + 'px';
-                        // moveState.height = height;
-                    }
-                }
-
-                if (resizeType == "left") {
-                    let style = control.currentStyle || window.getComputedStyle(control);
-                    let parent = $('.formbuilder-preview');
-                    let offset = parent.offset();
-
-                    if (model.pinned) {
-                        moveState.left = e.pageX - offset.left - (mouseDX ?? 0) - parseFloat(style["margin-left"] ?? 0);
-
-                        if (!moveState.originalRight)
-                            moveState.originalRight = moveState.left + rect.width;
-
-                        if (moveState.originalRight - moveState.left < 0) {
-                            moveState.left = moveState.originalRight;
-                        }
-
-                        if (moveState.left < 0) moveState.left = 0;
-
-                        control.style.left = moveState.left + "px";
-
-                        let width = moveState.originalRight - moveState.left;
-                        control.style.width = width + 'px';
-                        moveState.width = width;
-                    }
-                    else {
-                        moveState.marginLeft = e.pageX - moveState.pageX + parseFloat(model["style-marginLeft"] ?? 0);
-
-                        if (!moveState.originalRight)
-                            moveState.originalRight = moveState.marginLeft + rect.width;
-
-                        // if(moveState.originalRight - moveState.marginLeft < 0){
-                        //     moveState.marginLeft = moveState.originalRight;
-                        // }
-
-                        control.style.marginLeft = moveState.marginLeft + "px";
-                        // if(control.style.width != ""){
-                        //     let width = moveState.originalRight - moveState.marginLeft;
-                        //     control.style.width = width  + 'px';
-                        //     moveState.width = width;
-                        // }
-                    }
-                }
-
+                control.style.top = moveState.top + "px";
+                control.style.left = moveState.left + "px";
                 options.me.updateBarPosition();
             }
-        }
-    }
 
-    var onClick = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        options.me.props.onEdit(options.props.model);
-        options.me.setState({ selected: true })
-    };
 
-    var { selected, hovered, dragging, dragOverTop, dragOverBottom } = state;
-    const makeKey = key => options.props.model.key + "_" + key;
+            var mouseUp = () => {
+                document.removeEventListener('mousemove', mouseMove);
+                document.removeEventListener('mouseup', mouseUp);
 
-    const stylePinned = zIndex => model.pinned ? {zIndex} : {};    
+                let fields = {
+                    pinnedLeft: moveState.left != undefined ? moveState.left + "px" : undefined,
+                    pinnedTop: moveState.top != undefined ? moveState.top + "px" : undefined
+                };
 
-    let baseClassName = "formbuilder-toolbar-point";
-    if (!model.pinned) baseClassName += " formbuilder-zone";
+                BuilderActions.changeItem(model.key, fields);
+                mouseDX = undefined;
+                mouseDY = undefined;
+            }
 
-    const point = (key, ref) =>  
-        <div key={makeKey(key)} ref={ref} onMouseDown={e => startResize(e, key)}
-             style={{...getDisplayStyle(selected), ...stylePinned(11)}}
-             className={`formbuilder-item-toolbar-container point-${key}`}>
-            <div className={baseClassName + ` formbuilder-toolbar-point-${key}`}/>
-        </div>;
+            var startResize = (e, type) => {
+                resizeType = type;
 
-    const onKeyDown = (e) => {        
-        e.preventDefault();
-        if (e.key === "Delete" || e.key === "Backspace") {
-            options.me.onRemoveControl(model.key);
-        }
-    }
+                var control = ReactDOM.findDOMNode(options.me.controlRef.current);
+                var rect = control.getBoundingClientRect();
+                mouseDX = e.pageX - rect.left - $(document).scrollLeft();
+                mouseDY = e.pageY - rect.top - $(document).scrollTop();
 
-    const dragProps = {
-        onMouseOver: onMouseOver,
-        onMouseLeave: onMouseLeave,
-        // onMouseDown: onMouseDown,
-        // draggable: !model.pinned,
-        // onDragStart: onDragStart,
-        // onDragEnd: onDragEnd,
-        // onDragEnter: dragging ? undefined : onDragEnter,
-        // onDragLeave: dragging ? undefined : onDragLeave,
-        // onDragOver: dragging ? undefined : onDragOver,
-        // onDrop: dragging ? undefined : onDrop
-    }
+                moveState.pageX = e.pageX;
+                moveState.pageY = e.pageY;
 
-    const { resizing } = me.props.parent.state;    
-    const { thisResizing } = me.state;
+                e.preventDefault();
+                e.stopPropagation();
+                options.me.props.parent.setState({resizing: true});
+                me.setState({thisResizing: true});
+                window.addEventListener('mousemove', onResize);
+                window.addEventListener('mouseup', stopResize);
+            }
 
-    return <DropzoneContext.Consumer>
+            var stopResize = () => {
+                window.removeEventListener('mousemove', onResize);
+                window.removeEventListener('mouseup', stopResize);
+                options.me.props.parent.setState({resizing: false});
+                me.setState({thisResizing: false});
 
-        {({ isBuilder }) => {
-            const visible = isBuilder && selected;
-            const bar = (
-                    <div key={makeKey("controlbar")} ref={options.me.barRef} style={{...getDisplayStyle(visible), ...stylePinned(12)}}
-                        className={'formbuilder-item-toolbar-container bar'}
-                        {...dragProps}>
-                        <div className={"formbuilder-item-toolbar-header"}>
-                            <div className="formbuilder-item-toolbar-header-buttons" >
-                                <div className="formbuilder-item-toolbar-header-title"
-                                    title={options.props.text}
-                                >
-                                    {options.props.model["key"]}
+                let fields = {};
+                if (moveState.left != undefined) fields["pinnedLeft"] = moveState.left + "px";
+                if (moveState.top != undefined) fields["pinnedTop"] = moveState.top + "px";
+                if (moveState.width != undefined) fields["style-width"] = moveState.width + "px";
+                if (moveState.height != undefined) fields["style-height"] = moveState.height + "px";
+                if (moveState.marginLeft != undefined) fields["style-marginLeft"] = moveState.marginLeft + "px";
+                if (moveState.marginTop != undefined) fields["style-marginTop"] = moveState.marginTop + "px";
+
+                BuilderActions.changeItem(model.key, fields);
+                moveState = {};
+                mouseDX = undefined;
+                mouseDY = undefined;
+            }
+
+            var onResize = (e) => {
+                if (options.me.controlRef.current) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var control = ReactDOM.findDOMNode(options.me.controlRef.current);
+                    if (control) {
+                        let rect = control.getBoundingClientRect();
+                        if (!resizeType || resizeType == "right") {
+                            let width = e.clientX - rect.left;
+                            control.style.width = width + 'px';
+                            moveState.width = width;
+                        }
+
+                        if (!resizeType || resizeType == "bottom") {
+                            let height = e.clientY - rect.top;
+                            control.style.height = height + 'px';
+                            moveState.height = height;
+                        }
+
+                        if (resizeType == "top") {
+                            var style = control.currentStyle || window.getComputedStyle(control);
+                            var dy = parseFloat(style.marginTop);
+
+                            var parent = $('.formbuilder-preview');
+                            let offset = parent.offset();
+
+                            if (model.pinned) {
+                                moveState.top = e.pageY - offset.top - (mouseDY ?? 0) - dy;
+
+                                if (!moveState.originalBottom)
+                                    moveState.originalBottom = moveState.top + rect.height;
+
+                                if (moveState.originalBottom - moveState.top < 0) {
+                                    moveState.top = moveState.originalBottom;
+                                }
+
+                                if (moveState.top < 0) moveState.top = 0;
+
+                                control.style.top = moveState.top + "px";
+
+                                let height = moveState.originalBottom - moveState.top;
+                                control.style.height = height + 'px';
+                                moveState.height = height;
+                            }
+                            else {
+                                moveState.marginTop = e.pageY - moveState.pageY + parseFloat(model["style-marginTop"] ?? 0);
+
+                                if (!moveState.originalBottom)
+                                    moveState.originalBottom = moveState.marginTop + rect.height;
+
+                                // if(moveState.originalBottom - moveState.marginTop < 0){
+                                //     moveState.marginTop = moveState.originalBottom;
+                                // }
+
+                                control.style.marginTop = moveState.marginTop + "px";
+
+                                // let height = moveState.originalBottom - moveState.marginTop;
+                                // control.style.height = height  + 'px';
+                                // moveState.height = height;
+                            }
+                        }
+
+                        if (resizeType == "left") {
+                            let style = control.currentStyle || window.getComputedStyle(control);
+                            let parent = $('.formbuilder-preview');
+                            let offset = parent.offset();
+
+                            if (model.pinned) {
+                                moveState.left = e.pageX - offset.left - (mouseDX ?? 0) - parseFloat(style["margin-left"] ?? 0);
+
+                                if (!moveState.originalRight)
+                                    moveState.originalRight = moveState.left + rect.width;
+
+                                if (moveState.originalRight - moveState.left < 0) {
+                                    moveState.left = moveState.originalRight;
+                                }
+
+                                if (moveState.left < 0) moveState.left = 0;
+
+                                control.style.left = moveState.left + "px";
+
+                                let width = moveState.originalRight - moveState.left;
+                                control.style.width = width + 'px';
+                                moveState.width = width;
+                            }
+                            else {
+                                moveState.marginLeft = e.pageX - moveState.pageX + parseFloat(model["style-marginLeft"] ?? 0);
+
+                                if (!moveState.originalRight)
+                                    moveState.originalRight = moveState.marginLeft + rect.width;
+
+                                // if(moveState.originalRight - moveState.marginLeft < 0){
+                                //     moveState.marginLeft = moveState.originalRight;
+                                // }
+
+                                control.style.marginLeft = moveState.marginLeft + "px";
+                                // if(control.style.width != ""){
+                                //     let width = moveState.originalRight - moveState.marginLeft;
+                                //     control.style.width = width  + 'px';
+                                //     moveState.width = width;
+                                // }
+                            }
+                        }
+
+                        options.me.updateBarPosition();
+                    }
+                }
+            }
+
+            var onClick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                options.me.props.onEdit(options.props.model);
+                options.me.setState({ selected: true })
+            };
+
+            var { selected, hovered, dragging } = state;
+            const makeKey = key => options.props.model.key + "_" + key;
+
+            const stylePinned = zIndex => model.pinned ? {zIndex} : {};    
+
+            let baseClassName = "formbuilder-toolbar-point";
+            if (!model.pinned) baseClassName += " formbuilder-zone";
+
+            const point = (key, ref) =>  
+                <div key={makeKey(key)} ref={ref} onMouseDown={e => startResize(e, key)}
+                    style={{...getDisplayStyle(selected), ...stylePinned(11)}}
+                    className={`formbuilder-item-toolbar-container point-${key}`}>
+                    <div className={baseClassName + ` formbuilder-toolbar-point-${key}`}/>
+                </div>;
+
+            const onKeyDown = (e) => {        
+                e.preventDefault();
+                if (e.key === "Delete" || e.key === "Backspace") {
+                    options.me.onRemoveControl(model.key);
+                }
+            }
+
+            const dragProps = {
+                onMouseOver: onMouseOver,
+                onMouseLeave: onMouseLeave,
+                // onMouseDown: onMouseDown,
+                // draggable: !model.pinned,
+                // onDragStart: onDragStart,
+                // onDragEnd: onDragEnd,
+                // onDragEnter: dragging ? undefined : onDragEnter,
+                // onDragLeave: dragging ? undefined : onDragLeave,
+                // onDragOver: dragging ? undefined : onDragOver,
+                // onDrop: dragging ? undefined : onDrop
+            }
+
+            const resizing = options.me.props?.parent?.state.resizing || false;    
+            const { thisResizing } = me.state;
+
+            const visible = selected;
+                    const bar = (
+                            <div key={makeKey("controlbar")} ref={options.me.barRef} style={{...getDisplayStyle(visible), ...stylePinned(12)}}
+                                className={'formbuilder-item-toolbar-container bar'}
+                                {...dragProps}>
+                                <div className={"formbuilder-item-toolbar-header"}>
+                                    <div className="formbuilder-item-toolbar-header-buttons" >
+                                        <div className="formbuilder-item-toolbar-header-title"
+                                            title={options.props.text}
+                                        >
+                                            {options.props.model["key"]}
+                                        </div>
+                                        <Icon onClick={onPinned} icon='thumb-tack' style={{ color: model.pinned ? '#1262e2' : 'initial' }} />
+                                        <Icon onClick={options.me.props.onCopy.bind(options.props.parent, options.props.model)} icon='copy' />
+                                        <Icon onClick={options.me.props.onDelete.bind(options.props.parent, options.props.model)} icon='trash-o' />
+                                    </div>
                                 </div>
-                                <Icon onClick={onPinned} icon='thumb-tack' style={{ color: model.pinned ? '#1262e2' : 'initial' }} />
-                                <Icon onClick={options.me.props.onCopy.bind(options.props.parent, options.props.model)} icon='copy' />
-                                <Icon onClick={options.me.props.onDelete.bind(options.props.parent, options.props.model)} icon='trash-o' />
                             </div>
+                    );
+
+                    const resize = (   
+                        <div key={makeKey("resize")} ref={options.me.resizeRef} onMouseDown={(e) => { startResize(e) }}
+                        style={{...getDisplayStyle(visible), ...stylePinned(11)}} className="formbuilder-item-toolbar-container resize">
+                            <div className="dot" />
                         </div>
-                    </div>
-            );
+                    );
 
-            const resize = (   
-                <div key={makeKey("resize")} ref={options.me.resizeRef} onMouseDown={(e) => { startResize(e) }}
-                style={{...getDisplayStyle(visible), ...stylePinned(11)}} className="formbuilder-item-toolbar-container resize">
-                    <div className="dot" />
-                </div>
-            );
+                    const selectionClassName = baseClassName 
+                        + " formbuilder-item-toolbar-container selection"
+                        + (dragging ? "" : ((selected ? " selected" : "") + (hovered ? " hovered" : "")) ) 
 
-            const selectionClassName = baseClassName 
-                + " formbuilder-item-toolbar-container selection"
-                + (dragging ? "" : ((selected ? " selected" : "") + (hovered ? " hovered" : "")) ) 
+                    const selection = (
+                        <div key={makeKey("selection")} ref={options.me.selectionRef}
+                            style={{...stylePinned(10)}}  tabIndex="0"
+                            className={selectionClassName}
+                            onClick={onClick}
+                            onKeyDown ={onKeyDown }
+                            {...dragProps}
+                        />
+                    );
+        
+                    
 
-            const selection = (
-                <div key={makeKey("selection")} ref={options.me.selectionRef}
-                    style={{...stylePinned(10)}}  tabIndex="0"
-                    className={selectionClassName}
-                    onClick={onClick}
-                    onKeyDown ={onKeyDown }
-                    {...dragProps}
-                />
-            );
- 
-            
-            const getContainerStyle = (isDraggingOver) => ({
-                backgroundColor: (isDraggingOver) ? "lightpink" : "initial"
-            })
+                    
 
-            
-
-            return <Droppable droppableId={options.props.model.key} isDropDisabled={!!isContainer}>
-                  {(cp, cs) => (
-                    <div ref={cp.innerRef} className="formbuilder-item">
-                        <Draggable key={options.props.model.key} draggableId={options.props.model.key} index={0}>
-                            {(provided, snapshot) => (
-                                <div
-                                    ref={provided.innerRef}
-                                    {...provided.draggableProps}
-                                    {...provided.dragHandleProps}
-                                >
-                                    {[ 
-                                        ((!resizing && !cp.isDraggingOver) || thisResizing) && selection,
-                                        React.cloneElement(options.props.control, { ref: options.me.controlRef }),
-                                        ... !snapshot.isDragging ? [
-                                            point("top", options.me.pointTopRef, snapshot.isDragging),
-                                            point("bottom", options.me.pointBottomRef, snapshot.isDragging),
-                                            point("left", options.me.pointLeftRef, snapshot.isDragging),
-                                            point("right", options.me.pointRightRef, snapshot.isDragging),
-                                            bar,
-                                            resize
-                                        ] : [],           
-                                    ]}
-                                </div>
+                    return <Droppable droppableId={options.props.control?.key || 'dsfsdf'} isDropDisabled={!!isContainer}>
+                        {(cp, dd) => (
+                            <div ref={cp.innerRef} className="formbuilder-item">
+                                <Draggable key={options.props.control?.key || 'dsfsdf'} draggableId={options.props.control?.key || 'dsfsdf'} index={0}>
+                                    {(provided, snapshot) => (
+                                        <div
+                                            ref={provided.innerRef}
+                                            {...provided.draggableProps}
+                                            {...provided.dragHandleProps}
+                                        >
+                                            {[ 
+                                                ((!resizing && !cp.isDraggingOver) || thisResizing) && selection,
+                                                (options.props.control ? React.cloneElement(options.props.control, { ref: options.me.controlRef }) : ''),
+                                                ... !snapshot.isDragging ? [
+                                                    point("top", options.me.pointTopRef, snapshot.isDragging),
+                                                    point("bottom", options.me.pointBottomRef, snapshot.isDragging),
+                                                    point("left", options.me.pointLeftRef, snapshot.isDragging),
+                                                    point("right", options.me.pointRightRef, snapshot.isDragging),
+                                                    bar,
+                                                    resize
+                                                ] : [],           
+                                            ]}
+                                        </div>
+                                    )}
+                                </Draggable>
+                                {cp.placeholder}
+                            </div>
                             )}
-                        </Draggable>
-                        {cp.placeholder}
-                    </div>
-                    )}
-            </Droppable>
-        }}
-    </DropzoneContext.Consumer>
-}
-);
+                    </Droppable>
+        }
+};

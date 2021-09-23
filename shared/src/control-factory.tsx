@@ -3,6 +3,7 @@ import merge from 'ts-deepmerge';
 import { isDefined } from './helpers';
 import EditorPropertyItem from '../../component-api/src/property/editor-property-item';
 import { BuilderControlDefinition } from '../../rsuite/src/contol-library-wrapper';
+const ControlBar = require('../../rsuite/src/components/renderer/control-bar.jsx').default;
 
 export class ControlFactory {
 
@@ -125,7 +126,15 @@ export class ControlFactory {
                     formData
                 }
             );
-            res.push(item);
+
+            
+            res.push(<ControlBar key={model.key + '_controlbar'} {...{
+                model, control: item,
+                onDelete: eventOnDelete,
+                onEdit: eventOnEdit,
+                onCopy: eventOnCopy,
+                parent: parentItem
+            }}/>);
         }
 
         return res;
