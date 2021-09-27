@@ -170,7 +170,7 @@ const controls = [
         title: 'Custom control',
         control: undefined,
         defaultValues: { props: '{  }' }
-    },   
+    },
     {
         key: 'dropzonecontrol',
         title: 'Dropzone',
@@ -238,7 +238,7 @@ const controls = [
                 { title: 'Menu 3' }
             ]
         }
-    },    
+    },
     {
         key: 'richtexteditor',
         title: 'Rich Text Editor',
@@ -260,7 +260,7 @@ const controls = [
         control: FormGroup,
         defaultValues: { widths: 'equal' }
     },
-    {key: "card", title: 'Card', control: Card, 
+    {key: "card", title: 'Card', control: Card,
         defaultValues:{ header: "Card", subheader: "Description" }},
     {
         key: 'tab', title: 'Tab', control: TabGroup,
@@ -281,13 +281,13 @@ const controls = [
                 { title: 'Panel 3', psid: 'p3' }
             ]
         }
-    },    
+    },
     {
         key: 'customblock',
         title: 'Custom block',
         control: undefined,
         defaultValues: { sourceType: 'form' }
-    },   
+    },
     { key: 'sepCollection', title: 'Collections', separator: true },
     {
         key: 'gridview', title: 'GridView', control: GridView, defaultValues: {

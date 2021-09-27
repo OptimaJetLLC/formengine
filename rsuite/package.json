@@ -19,6 +19,7 @@
   "author": "OptimaJet LLC",
   "license": "SEE LICENSE IN eula.txt",
   "dependencies": {
+    "@types/numeral": "^2.0.1",
     "babel-plugin-react-scoped-css": "^1.1.1",
     "clone": "^2.1.2",
     "draft-convert": "2.1.8",
@@ -29,8 +30,11 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "numeral": "^2.0.6",
+    "optimajet-builder-component-api": "file:../component-api",
+    "optimajet-builder-rsuite-components": "file:../rsuite-components",
     "optimajet-builder-shared": "file:../shared",
     "react": "^17.0.1",
+    "react-beautiful-dnd": "10.0.4",
     "react-dom": "16.8.3",
     "react-dropzone-component": "3.2.0",
     "react-fast-compare": "^3.2.0",
@@ -53,18 +57,23 @@
     "@babel/plugin-proposal-throw-expressions": "^7.12.13",
     "@babel/preset-env": "^7.12.16",
     "@babel/preset-react": "^7.12.13",
+    "@types/react": "^17.0.21",
+    "@types/react-dom": "^17.0.9",
+    "@types/webpack": "^5.28.0",
     "babel-loader": "^8.2.2",
     "babel-polyfill": "^6.26.0",
     "css-loader": "^5.0.2",
     "less": "^4.1.1",
     "less-loader": "^8.0.0",
     "style-loader": "^2.0.0",
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.4.3",
     "webpack": "^5.22.0",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"
   },
   "bugs": {
-    "url": "http://formbuilder.dev"
+    "url": "https://formbuilder.dev"
   },
-  "homepage": "http://formbuilder.dev"
+  "homepage": "https://formbuilder.dev"
 }

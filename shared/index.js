@@ -8,7 +8,7 @@ import UploadControl from './src/control/collection-editor/upload-control';
 import CameraControl from './src/control/collection-editor/camera-control';
 import SignatureControl from './src/control/collection-editor/signature-control';
 
-import Camera from './src/control/camera'
+import Camera from './src/control/camera';
 import ChartView from './src/control/chart-view';
 import CollectionEditor from './src/control/collection-editor';
 import Container from './src/control/container';
@@ -33,19 +33,19 @@ import Accordion from './src/control/accordion';
 import Card from './src/control/card';
 import TreePickerHeader from './src/control/tree-picker-header';
 import Upload from './src/control/upload';
-import Breadcrumb from './src/control/breadcrumb'
-import Header from './src/control/header'
+import Breadcrumb from './src/control/breadcrumb';
+import Header from './src/control/header';
 
-import Input from './src/control/input'
-import Textarea from './src/control/textarea'
-import Dropdown from './src/control/dropdown'
-import Checkbox from './src/control/checkbox'
-import Button from './src/control/button'
-import Label from './src/control/label'
-import Message from './src/control/message'
-import Image from './src/control/image'
-import Form from './src/control/form'
-import FormGroup from './src/control/formgroup'
+import Input from './src/control/input';
+import Textarea from './src/control/textarea';
+import Dropdown from './src/control/dropdown';
+import Checkbox from './src/control/checkbox';
+import Button from './src/control/button';
+import Label from './src/control/label';
+import Message from './src/control/message';
+import Image from './src/control/image';
+import Form from './src/control/form';
+import FormGroup from './src/control/formgroup';
 
 import BuilderActions from './src/actions';
 import BaseControls from './src/base-controls';
@@ -56,7 +56,6 @@ import BaseControlTree from './src/base-control-tree';
 import BaseToolbar from './src/base-toolbar';
 import { getItems, registerItems } from './src/component-item-registry';
 import { draw, register } from './src/component-render-registry';
-import ControlBar from './src/control-bar';
 import { DropzoneContext } from './src/dropzone-context';
 import Const from './src/const';
 import EditForm from './src/edit-form';
@@ -66,8 +65,9 @@ import FormBuilderStore from './src/store.jsx';
 import StructureConverter from './src/structure-converter';
 import Timeout from './src/timeout';
 import WebForm from './src/web-form.jsx';
-import {initDefaultState, validate, checkConditions, initDefaultStateFormUrl} from "./src/formdata"
+import { initDefaultState, validate, checkConditions, initDefaultStateFormUrl } from "./src/formdata";
 import { RegisterLicense } from './src/license';
+import loadForm from "./src/form-loader";
 
 export {
     BaseControl,
@@ -125,7 +125,6 @@ export {
     BaseToolbar,
     registerItems, getItems,
     register, draw,
-    ControlBar,
     DropzoneContext,
     Const,
     EditForm,
@@ -136,5 +135,6 @@ export {
     Timeout,
     WebForm,
     initDefaultState, validate, checkConditions, initDefaultStateFormUrl,
-    RegisterLicense
-}
+    RegisterLicense,
+    loadForm
+};

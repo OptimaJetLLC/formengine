@@ -2,10 +2,12 @@ import { Component } from 'react';
 import FormBuilderStore from './store.jsx';
 import { isDefined } from './helpers';
 import { vl, sle } from './license';
+import { loadForm } from '../index';
 export default class BaseFormBuilder extends Component {
 
     constructor(props) {
         super(props);
+        this.loadForm = loadForm(this.props);
         sle(vl());
         this.state = {
             apiurl: props.apiurl,
@@ -33,7 +35,7 @@ export default class BaseFormBuilder extends Component {
     }
 
     setData(data) {
-        FormBuilderStore.setData(data);        
+        FormBuilderStore.setData(data);
     }
 
     getData() {
@@ -52,7 +54,7 @@ export default class BaseFormBuilder extends Component {
     }
 
     load(code) {
-        let data = this.props.getFormFunc(code);
+        let data = this.loadForm(code);
         if(!data)
             data = [];
         FormBuilderStore.setData(data);

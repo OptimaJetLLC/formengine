@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Modal } from 'semantic-ui-react';
 import { isDefined, isUndefined, register } from 'optimajet-builder-shared';
+import GenericEditorForm from '../editor-form/generic-editor-form';
 
 register('edit-form', options => {
 
@@ -27,6 +28,18 @@ register('edit-form', options => {
 
     if (isUndefined(options.state.item)) {
         return (<div style={{flex: 1, backgroundColor: "white"}}/>);
+    }
+
+    const controlType = options.state.item['data-buildertype'];
+    const editorForm = options.editorControls.get(controlType);
+    console.log(options);
+    if (editorForm) {
+        return (<GenericEditorForm
+            control={options.state.item}
+            data={options.state.item}
+            parent={options.parent}
+            editorControls={options.editorControls}
+        />);
     }
 
     const editForm = options.controls.getEditControlByType(

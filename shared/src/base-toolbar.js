@@ -23,9 +23,10 @@ export default class BaseToolbar extends Component {
         let items = [];
 
         if (!externalControlsOnly) {
-            items = [...nextProps.controls.getItems()];
+            items = [...nextProps.builderControls];
         }
 
+        // todo remove all templates, use only builderControls
         if (Array.isArray(nextProps.templates) && nextProps.templates.length > 0) {
             items.push({ key: 'sepTemplates', title: 'Templates', separator: true, defaultopen: false });
 
@@ -41,6 +42,7 @@ export default class BaseToolbar extends Component {
             });
         }
 
+        // todo remove all external controls, use only builderControls
         let externalControls = nextProps.externalControlList || dwKitExternalControlList();
         if (externalControls) {
             items = items.concat(externalControls);
@@ -50,7 +52,7 @@ export default class BaseToolbar extends Component {
             if (!props.localization) {
                 return;
             }
-    
+
             const local = props.localization;
             for (let i = 0; i < items.length; i++) {
                 if (isDefined(local[items[i].key])) {

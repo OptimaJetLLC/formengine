@@ -5,10 +5,11 @@ import { Component } from 'react';
 import Timeout from './timeout';
 import Const from './const';
 import JSON5 from 'json5';
-import sendRequest from './data-loader';
+import { sendRequest } from './data-loader';
 import {initDefaultState, validate, checkConditions, updateEventsFormat} from "./formdata"
 import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only'
 import { vl, sle } from './license';
+import { loadForm } from '../index';
 export default class BaseForm extends Component {
 
     _asyncGetData = null;
@@ -16,6 +17,7 @@ export default class BaseForm extends Component {
 
     constructor(props) {
         super(props);
+        this.loadForm = loadForm(this.props);
         sle(vl());
         this.state = {
             data: props.data,
@@ -58,7 +60,7 @@ export default class BaseForm extends Component {
                     data: stateDelta.data,
                     model: stateDelta.model ? stateDelta.model : prevState.model
                 });
-    
+
                 stateDelta.hideControls = res.hideControls;
                 stateDelta.readOnlyControls = res.readOnlyControls;
             }
@@ -233,7 +235,7 @@ export default class BaseForm extends Component {
         if (item.events !== undefined &&
             item.events[eventName] !== undefined &&
             item.events[eventName].active) {
-            
+
             item.events = updateEventsFormat(item.events);
             var event = item.events[eventName];
 
@@ -247,7 +249,7 @@ export default class BaseForm extends Component {
                                     eventParameters[p.name] = p.value.replace(
                                         Const.regexForReplace,
                                         (m) => me.applySubstitution(m, (parameters ? parameters.row : undefined), me.state.data)
-                                    );                        
+                                    );
                                 }
                                 else {
                                     eventParameters[p.name] = p.value;
@@ -421,7 +423,7 @@ export default class BaseForm extends Component {
             if (array[i]['data-buildertype'] === 'customblock' && array[i].sourceType === 'form' &&
                 array[i].formname !== undefined && array[i].formname !== '') {
 
-                const children = array[i].children ? array[i].children : this.props.getFormFunc(array[i].formname);
+                const children = array[i].children ? array[i].children : this.loadForm(array[i].formname);
 
                 const item = this.findModelItembyKey(key, children);
                 if (item !== undefined) {

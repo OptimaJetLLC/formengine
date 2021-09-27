@@ -4,6 +4,11 @@ const config = isDevBuild => {
         module: {
             rules: [
                 {
+                    test: /\.tsx?$/,
+                    use: 'ts-loader',
+                    exclude: '/node_modules/'
+                },
+                {
                     test: /.jsx?$/, exclude: /node_modules/, use: {
                         loader: 'babel-loader',
                         options: {
@@ -12,11 +17,11 @@ const config = isDevBuild => {
                         }
                     }
                 },
-                { test: /\.scss$/, use: 'style-loader!css-loader!sass-loader' }
+                {test: /\.scss$/, use: 'style-loader!css-loader!sass-loader'}
             ]
         },
         resolve: {
-            extensions: ['*', '.js', '.json', '.jsx', '.css', '.scss']
+            extensions: ['*', '.ts', '.tsx', '.js', '.json', '.jsx', '.css', '.scss']
         },
         plugins: [
             new webpack.DefinePlugin({
@@ -26,12 +31,17 @@ const config = isDevBuild => {
             })
         ],
         externals: [
+            '@types/isomorphic-fetch',
+            '@types/numeral',
+            'abortcontroller-polyfill',
             'clone',
+            'isomorphic-fetch',
             'json5',
             'moment',
             'numeral',
             'react',
             'react-fast-compare',
+            'ts-deepmerge',
             'reflux',
             'uuid'
         ],

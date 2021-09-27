@@ -4,11 +4,14 @@ import BuilderActions from './actions';
 import { isDefined } from './helpers';
 import BaseControls from './base-controls';
 import JSON5 from 'json5';
+import { loadForm } from '../index';
+import { ControlFactory } from './control-factory';
 
 export default class BasePreview extends Component {
 
     constructor(props) {
         super(props);
+        this.loadForm = loadForm(this.props);
         this.state = {
             model: [],
             data: {},
@@ -76,7 +79,8 @@ export default class BasePreview extends Component {
             );
         }
 
-        const items = this.props.controls.createControls(
+        const controlFactory = new ControlFactory(this.props.editorControls);
+        const items = controlFactory.createControls(
             this,
             {
                 model: this.state.model,
@@ -87,7 +91,7 @@ export default class BasePreview extends Component {
                 eventOnCopy: this._onCopy,
                 parentItem: undefined,
                 handleEvent: this._handleEvent.bind(this),
-                getFormFunc: this.props.getFormFunc,
+                getFormFunc: this.loadForm,
                 getFormFist: this.props.getFormFist,
                 getAdditionalDataForControl: this.props.getAdditionalDataForControl,
                 disableRefs: true,

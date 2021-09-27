@@ -305,6 +305,10 @@ body, h1, h2, h3, h4, h5 {
     padding: 5px;
 }
 
+.formbuilder-toolbox-group > div:not(.formbuilder-toolbox-control) {
+  display: none !important;
+}
+
 .formbuilder-toolbox-control:hover{
   color: rgba(255, 255, 255, 1);
 }
@@ -3144,4 +3148,8 @@ textarea:read-only,
 
 .rs-dropdown .rs-dropdown-menu {
   z-index: 7;
+}
+
+.EditableTableRow.compact .rs-table-cell-content {
+  padding: 7px 4px;
 }
