@@ -672,12 +672,7 @@ input .formbuilder-item-toolbar-header:hover {
   align-self: center;
 }
 
-.formbuilder-headerbar .left.panel {
-  width: 180px;
-}
-
 .formbuilder-headerbar .right.panel {
-  width: 400px;  
   justify-content: flex-end;
 }
 .formbuilder-headerbar .toolbar {
@@ -3152,4 +3147,10 @@ textarea:read-only,
 
 .EditableTableRow.compact .rs-table-cell-content {
   padding: 7px 4px;
+}
+
+.formbuilder-add-button {
+  transform: scale(1.4);
+  margin: 0 16px;
+  position: absolute;
 }

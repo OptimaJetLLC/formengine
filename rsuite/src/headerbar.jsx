@@ -1,9 +1,9 @@
-import React from 'react';
-import { Button, ButtonGroup, IconButton, ButtonToolbar, Icon, Dropdown, SelectPicker , Nav } from 'rsuite';
+import JSON5 from 'json5';
 import { BuilderActions, FormBuilderStore } from 'optimajet-builder-shared';
-import Window from './components/window'
-import JSON5 from 'json5'
-import drawcontrol from './components/drawcontrol'
+import React from 'react';
+import { Button, ButtonToolbar, Dropdown, Icon, IconButton, Nav, SelectPicker } from 'rsuite';
+import drawcontrol from './components/drawcontrol';
+import Window from './components/window';
 export default class HeaderBar extends React.Component {
     constructor(props) {
         super(props);
@@ -22,20 +22,14 @@ export default class HeaderBar extends React.Component {
         });
     }
 
-    toggleModeButtons = () => {
+    toggleModeButton = () => {
         const {viewerMode, onBuilderSwitch} = this.props;
-        return <ButtonGroup style={{flex: 1, display: "flex", justifyContent: "center"}}>
-            <Button
-                onClick={_=>onBuilderSwitch(!viewerMode)}
-                appearance={!viewerMode ? "primary" : "ghost"}>
-                Builder
-            </Button>
-            <Button
-                onClick={_=>onBuilderSwitch(!viewerMode)}
-                appearance={viewerMode ? "primary" : "ghost"}>
-                Viewer
-            </Button>
-        </ButtonGroup>;
+        return <IconButton
+            onClick={_=>onBuilderSwitch(!viewerMode)}
+            appearance={"primary"}
+            icon={<Icon icon={viewerMode ? "edit" : "play"} />}>
+            {viewerMode ? "Edit" : "Preview"}
+        </IconButton>;
     }
 
     fileActions = () => {
@@ -67,7 +61,7 @@ export default class HeaderBar extends React.Component {
     }
 
     render() {
-        const { canUndo, canRedo } = this.state;
+        const { canUndo, canRedo, toolboxOpen } = this.state;
         var local = this.props.localization ? this.props.localization : {}; 
         const {
             viewerMode,
@@ -82,14 +76,11 @@ export default class HeaderBar extends React.Component {
                
         return (
             <div className="formbuilder-headerbar" style={{display: "flex"}}>
-            <div className="left panel" >            
-                <IconButton onClick={onToggleLeftPanel} 
-                        className="formbuilder-left-panel-button"
-                        icon={<Icon icon="sitemap" size="lg"/>}
-                        appearance={isShowLeftPanel ? "primary" : "subtle"}/>  
-            </div>            
-            <div className="toolbar">
-                <div className="left">
+                <div className="left panel" >            
+                    <IconButton onClick={onToggleLeftPanel} style={{marginRight: 20}}
+                            className="formbuilder-panel-button left"
+                            icon={<Icon icon="sitemap" size="lg"/>}
+                            appearance={isShowLeftPanel ? "primary" : "subtle"}/>  
                     <ButtonToolbar>
                         {this.fileActions()}
                         <IconButton onClick={BuilderActions.undo} disabled={!canUndo} icon={<Icon icon="undo" />}>Undo</IconButton>
@@ -97,25 +88,34 @@ export default class HeaderBar extends React.Component {
                         {/* <IconButton onClick={this.onLibrary.bind(this)} icon={<Icon icon="info" />}>{local.library ? local.library : "Library"}</IconButton> */}
                     </ButtonToolbar>
                 </div>            
-                <div className="center">
-                    {!blockChangeViewerMode && this.toggleModeButtons()}                    
-                    <SelectPicker className={"desktop-mode-select"} appearance="subtle" value={desktopMode} data={[{value: "desktop", label: "Desktop"}, {value: "mobile", label: "Mobile"}]} 
-                        searchable={false} cleanable={false} onSelect={onChangeDesktopMode}/>
-                </div>            
-                <div className="right"></div>
-                <form action="/" method="post" style={{ display: 'none' }}
-                    onSubmit={this.props.onUpload}>
-                    <input id="builderUploadFile" type="file" onChange={this.props.onChangeFileUpload}/>
-                    <input id="builderUploadSubmit" type="submit" />
-                </form>
-                {this.state.settingsOpen && this.renderSettings()}
-            </div>
-            <div className="right panel">
-                <IconButton onClick={onToggleRightPanel} 
-                        className="formbuilder-right-panel-button"
-                        icon={<Icon icon="bars" size="lg"/>}
-                        appearance={isShowRightPanel ? "primary" : "subtle"}/>  
-            </div>   
+                <div className="toolbar">
+                    <div className="left">
+                    </div>            
+                    <div className="center">                    
+                        <IconButton className="formbuilder-add-button" icon={<Icon icon="plus" />} color="green" circle onMouseOver={()=> {
+                            console.log('df')
+                            this.setState({toolboxOpen: true})
+                        }}/>              
+                    </div>            
+                    <div className="right"> </div>
+                    <form action="/" method="post" style={{ display: 'none' }}
+                        onSubmit={this.props.onUpload}>
+                        <input id="builderUploadFile" type="file" onChange={this.props.onChangeFileUpload}/>
+                        <input id="builderUploadSubmit" type="submit" />
+                    </form>
+                    {this.state.settingsOpen && this.renderSettings()}
+                </div>
+                <div className="right panel">
+                    <ButtonToolbar>                
+                        <SelectPicker appearance="subtle" value={desktopMode} data={[{value: "desktop", label: "Desktop"}, {value: "mobile", label: "Mobile"}]} 
+                                searchable={false} cleanable={false} onSelect={onChangeDesktopMode}/> 
+                            {!blockChangeViewerMode && this.toggleModeButton()}     
+                        <IconButton onClick={onToggleRightPanel} style={{marginLeft: 20}}
+                                className="formbuilder-panel-button right"
+                                icon={<Icon icon="bars" size="lg"/>}
+                                appearance={isShowRightPanel ? "primary" : "subtle"}/>  
+                    </ButtonToolbar>
+                </div>   
             </div>
             
         );
