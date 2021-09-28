@@ -9,6 +9,9 @@ import {TypeToClass} from "../utils/constants";
 import toModel from "../utils/toModel";
 import {Container} from "../models/Container/Container";
 import {Tree} from "../utils/Tree";
+import {ComponentStore} from "./ComponentStore";
+import {AHeader} from "../views/AHeader";
+import {define, Renderer} from "../utils/Renderer";
 
 
 class Store {
@@ -22,6 +25,17 @@ class Store {
     }
 
     models: AbstractModel[] = []
+
+    componentStores: ComponentStore[] = [new ComponentStore("header 2", "AHeader")]
+
+    renderer = Renderer.create([
+        define(AHeader, {
+            "main.content": {title: 'Content', type: 'string', defaultValue: ''},
+            "main.subheader": {title: 'Subheader', type: 'string', defaultValue: ''},
+            key: {title: 'Key', type: 'string', defaultValue: ''},
+            main: null
+        })
+    ])
 
     get components() {
         console.log("Computing...")
@@ -42,7 +56,9 @@ class Store {
             upload: action.bound,
             clear: action.bound,
             fillFormModel: action.bound,
-            add: action.bound
+            add: action.bound,
+
+            componentStores: observable,
         })
     }
 

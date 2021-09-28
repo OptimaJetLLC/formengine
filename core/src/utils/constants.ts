@@ -1,5 +1,6 @@
 import AbstractModel from "../models/AbstractModel";
-import {ReactNode} from "react";
+import {FunctionComponent, ReactNode} from "react";
+import EditorPropertyItem from "../../../component-api/src/property/editor-property-item";
 
 export enum Control {
     Input,
@@ -55,6 +56,8 @@ type Paths<T, D extends number = 10> = [D] extends [never] ? never : T extends o
 
 export type PropDescription = {
     title: string
+    type?: string
+    defaultValue?: any
     description?: string
 }
 
@@ -71,3 +74,11 @@ type Replace<T, B> = T extends object
     : T;
 
 export type accumulator<U> = {[key: string]: U}
+
+export default interface ComponentDefinition<T extends object> {
+    type: string
+    view: FunctionComponent<T>;
+    description: AllPropsDescriptionOf<T>;
+    // todo event types
+    // todo styles
+}

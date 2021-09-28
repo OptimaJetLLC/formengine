@@ -19,8 +19,7 @@ export default abstract class AbstractModel {
     abstract getComponent: () => ReactNode
 
 
-    static wrapComponent = <P extends object>(
-        key: string, props: P, view: React.FunctionComponent<P>) => {
+    static wrapComponent = <P extends object>(key: string, props: P, view: React.FunctionComponent<P>) => {
 
         const ObservableComponent = observer(view);
 

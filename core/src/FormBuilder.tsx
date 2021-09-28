@@ -7,6 +7,7 @@ import {Control} from "./utils/constants";
 import _ from "lodash";
 import {Node} from "./utils/Tree";
 import {ItemDataType} from "rsuite/esm/@types/common";
+import {configure} from "mobx";
 
 
 export interface FormBuilderProps {
@@ -99,11 +100,12 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                     value={active}
                     labelKey="key"
                     valueKey="key"
-                    style={{maxHeight:'inherit', height:'inherit'}}
+                    style={{maxHeight: 'inherit', height: 'inherit'}}
                     data={store.tree.root.children as unknown as ItemDataType[]}/>
             </Col>
 
-            <Col md={15}>{store.components}</Col>
+            {/*<Col md={15}>{store.components}</Col>*/}
+            <Col md={15}>{store.renderer.render()}</Col>
 
             <Col md={5}>
                 <Nav appearance={"tabs"} activeKey={activeTab} onSelect={setActiveTab} style={styles}>
@@ -121,6 +123,15 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                             />
                         </div>
                     )}
+                    {Object.keys(store.componentStores[0].props.main ?? {}).map(key =>
+                        <div key={key}>
+                            <Form.ControlLabel>{key}</Form.ControlLabel>
+                            <RInput
+                                value={_.get(store.componentStores[0].props.main, key, "")}
+                                onChange={value => _.set(store.componentStores[0].props.main as object, key, value)}
+                            />
+                        </div>
+                    )}
                 </div>
             </Col>
         </Row>
@@ -128,3 +139,6 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
 })
 
 const styles = {width: 150};
+
+//State can be changed from anywhere
+configure({enforceActions:"never"})
