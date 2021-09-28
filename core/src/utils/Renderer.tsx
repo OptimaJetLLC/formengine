@@ -23,6 +23,8 @@ export class Renderer {
             return <ObservableComponent key={store.key} {...store.props} />
         })
     }
+
+
 }
 
 export const define = <T extends object>(view: FunctionComponent<T>, description: AllPropsDescriptionOf<T>): ComponentDefinition<any> => {

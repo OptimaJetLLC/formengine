@@ -4,8 +4,10 @@ import {store} from "./stores/Store";
 import {Button, Col, Dropdown, Form, Input as RInput, Input, Nav, Row, Tree} from "rsuite";
 import {Control} from "./utils/constants";
 import _ from "lodash";
-import {configure} from "mobx";
+import {configure, toJS} from "mobx";
 import {ComponentStore} from "./stores/ComponentStore";
+import {ItemDataType} from "rsuite/esm/@types/common";
+import {Node} from "./utils/Tree";
 
 
 export interface FormBuilderProps {
@@ -17,65 +19,17 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
 
     const [activeTab, setActiveTab] = useState('main');
 
-    const [model, setModel] = useState<ComponentStore | null>(null);
-
-    /*useEffect(() => {
+    useEffect(() => {
         let a: Node | null = store.tree.find(active);
-        setModel(a?.value ?? null)
+        store.activeModel = a?.value ?? null
         console.log(active)
-    }, [active]);*/
+    }, [active]);
 
 
     useEffect(() => {
         store.fillFormModel("test", props.getForm);
     }, []);
 
-
-    var controls = Object.values(Control).filter(value => _.isString(value)) as string[];
-
-    /*const TreeViewer = () => {
-        //TODO correct depth or recursive call
-        let result = store.tree.reduce(
-            (temp, accumulator, node, depthLevel, rootNode) => {
-
-                if (accumulator[node.key] == undefined)
-                    accumulator[node.key] = []
-
-                //First call - create main parent
-                if (node.isRoot) {
-                    temp = (<Nav
-                        style={{marginLeft: depthLevel * 15, ...styles}}
-                        appearance={"subtle"}
-                        vertical
-                        activeKey={active}
-                        onSelect={setActive}>
-                        {accumulator[node.key]}
-                    </Nav>)
-                    return temp
-                }
-
-                //Usual call
-                accumulator[node.parent?.key ?? ""].push(<Nav.Item eventKey={node.key} children={node.key}/>)
-
-                //If have children
-                if (node.children)
-                    accumulator[node.parent?.key ?? ""].push(
-                        <Nav
-                            style={{marginLeft: depthLevel * 15, ...styles}}
-                            appearance={"subtle"}
-                            vertical
-                            activeKey={active}
-                            onSelect={setActive}>
-                            {accumulator[node.key]}
-                        </Nav>
-                    )
-
-                return temp;
-            })
-
-
-        return (result)
-    }*/
 
     console.log(store.models)
     //TODO upgrade tree now its so poorly
@@ -84,21 +38,22 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
         <Button onClick={store.upload}>Upload</Button>
         <Button onClick={store.clear}>Clear</Button>
         <Dropdown title={"Components"}>
-            {controls.map(value => <Dropdown.Item onClick={() => store.add(value)}>{value}</Dropdown.Item>)}
+            {_.keys(store.renderer.mapper).map(value =>
+                <Dropdown.Item onClick={() => store.add(value)}>{value}</Dropdown.Item>)}
         </Dropdown>
 
         <br/><br/>
 
         <Row>
             <Col md={4}>
-                {/*<Tree
+                <Tree
                     draggable
                     onSelect={(activeNode, value) => setActive(value as string)}
                     value={active}
                     labelKey="key"
                     valueKey="key"
                     style={{maxHeight: 'inherit', height: 'inherit'}}
-                    data={store.tree.root.children as unknown as ItemDataType[]}/>*/}
+                    data={store.tree.root.children as unknown as ItemDataType[]}/>
             </Col>
 
             {/*<Col md={15}>{store.components}</Col>*/}
@@ -111,14 +66,39 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                     <Nav.Item eventKey={"other"} children={"Other"}/>
                 </Nav>
                 <div>
-                    {Object.keys(model?.props ?? {}).map(key =>
-                        <div key={key}>
-                            <Form.ControlLabel>{key}</Form.ControlLabel>
-                            <RInput
-                                value={_.get(model?.props, key, "")}
-                                onChange={value => _.set(model?.props as object, key, value)}
-                            />
-                        </div>
+                    {/*{Object.keys(store.activeModel?.props ?? {}).map(key => {
+                        console.log(toJS(store.activeModel?.props))
+                            return <div key={key}>
+                                <Form.ControlLabel>{key}</Form.ControlLabel>
+                                <RInput
+                                    value={_.get(store.activeModel?.props, key, "")}
+                                    onChange={value => _.set(store.activeModel?.props as object, key, value)}
+                                />
+                            </div>;
+                        }
+                    )}*/}
+
+                    {Object.keys(store.renderer.mapper[store.activeModel?.type ?? ""]?.description ?? {}).map(key => {
+                            if (key === "key")
+                                return <div key={key}>
+                                    <Form.ControlLabel>{key}</Form.ControlLabel>
+                                    <RInput
+                                        value={_.get(store.activeModel, key, "")}
+                                        onChange={value => {
+                                            store.activeModel!.key = value as string;
+                                            //store.models[0]!.key = value as string;
+                                        }}
+                                    />
+                                </div>;
+
+                            return <div key={key}>
+                                <Form.ControlLabel>{key}</Form.ControlLabel>
+                                <RInput
+                                    value={_.get(store.activeModel?.props, key, "")}
+                                    onChange={value => _.set(store.activeModel?.props as object, key, value)}
+                                />
+                            </div>;
+                        }
                     )}
 
                     {/*{Object.keys(store.models[0]?.props.main ?? {}).map(key =>
@@ -139,4 +119,4 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
 const styles = {width: 150};
 
 //State can be changed from anywhere
-configure({enforceActions:"never"})
+configure({enforceActions: "never"})

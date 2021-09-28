@@ -14,6 +14,7 @@ import _ from "lodash";
 
 class Store {
 
+    activeModel: ComponentStore | null = null
     models: ComponentStore[] = []
 
     renderer = Renderer.create([
@@ -26,15 +27,17 @@ class Store {
     }*/
 
     //TODO optimize?
-    /*get tree(): Tree {
+    get tree(): Tree {
         return new Tree(this.models)
-    }*/
+    }
+
 
     constructor() {
         makeObservable(this, {
+            activeModel: observable,
             models: observable,
             //components: computed,
-            //tree: computed,
+            tree: computed,
             download: action.bound,
             upload: action.bound,
             clear: action.bound,

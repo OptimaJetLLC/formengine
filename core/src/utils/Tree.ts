@@ -92,8 +92,7 @@ export class Node {
         this.parent = parent;
 
         if (value?.children) {
-            //TODO
-            //this.children = value.children.map(child => new Node(child, value));
+            this.children = value.children.map(child => new Node(child, value));
         }
     }
 }
