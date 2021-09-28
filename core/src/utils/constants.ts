@@ -1,6 +1,6 @@
-import AbstractModel from "../models/AbstractModel";
 import {FunctionComponent} from "react";
 import {Paths} from "./UtilityTypes";
+import {ComponentStore} from "../stores/ComponentStore";
 
 export enum Control {
     Input,
@@ -28,14 +28,14 @@ export type ControlString = keyof typeof Control
  * Type for correlation between name of control and their model
  */
 export type TypeToClass = {
-    [key in keyof typeof Control]: new (key: string) => AbstractModel
+    [key in keyof typeof Control]: new (key: string) => ComponentStore
 };
 
 
 export type PropDescription = {
     title: string
     type?: string
-    defaultValue?: any
+    defaultValue: any
     description?: string
 }
 

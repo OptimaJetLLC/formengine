@@ -2,10 +2,10 @@ import {store} from "./stores/Store";
 import {observer} from "mobx-react-lite";
 import {useEffect} from "react";
 import {Button} from "rsuite";
-import AbstractModel from "./models/AbstractModel";
+import {ComponentStore} from "./stores/ComponentStore";
 
 export interface FormViewProps {
-    getForm: ((code: string) => AbstractModel[])
+    getForm: ((code: string) => ComponentStore[])
 }
 
 export const FormViewer = observer((props: FormViewProps) => {
@@ -17,7 +17,7 @@ export const FormViewer = observer((props: FormViewProps) => {
         <Button onClick={store.download}>Download</Button>
         <Button onClick={store.upload}>Upload</Button>
         <Button onClick={store.clear}>Clear</Button>
-        {store.components}
+        {/*{store.components}*/}
     </div>;
 })
 

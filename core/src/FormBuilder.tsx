@@ -2,16 +2,14 @@ import {observer} from "mobx-react-lite";
 import React, {ReactNode, useEffect, useState} from "react";
 import {store} from "./stores/Store";
 import {Button, Col, Dropdown, Form, Input as RInput, Input, Nav, Row, Tree} from "rsuite";
-import AbstractModel from "./models/AbstractModel";
 import {Control} from "./utils/constants";
 import _ from "lodash";
-import {Node} from "./utils/Tree";
-import {ItemDataType} from "rsuite/esm/@types/common";
 import {configure} from "mobx";
+import {ComponentStore} from "./stores/ComponentStore";
 
 
 export interface FormBuilderProps {
-    getForm: ((code: string) => AbstractModel[])
+    getForm: ((code: string) => ComponentStore[])
 }
 
 export const FormBuilder = observer((props: FormBuilderProps) => {
@@ -19,15 +17,14 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
 
     const [activeTab, setActiveTab] = useState('main');
 
-    const [model, setModel] = useState<AbstractModel | null>(null);
+    const [model, setModel] = useState<ComponentStore | null>(null);
 
-    useEffect(() => {
+    /*useEffect(() => {
         let a: Node | null = store.tree.find(active);
         setModel(a?.value ?? null)
         console.log(active)
-    }, [active]);
+    }, [active]);*/
 
-    console.log(model?.getDescription())
 
     useEffect(() => {
         store.fillFormModel("test", props.getForm);
@@ -36,7 +33,7 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
 
     var controls = Object.values(Control).filter(value => _.isString(value)) as string[];
 
-    const TreeViewer = () => {
+    /*const TreeViewer = () => {
         //TODO correct depth or recursive call
         let result = store.tree.reduce(
             (temp, accumulator, node, depthLevel, rootNode) => {
@@ -78,9 +75,9 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
 
 
         return (result)
-    }
+    }*/
 
-    console.log(store.tree)
+    console.log(store.models)
     //TODO upgrade tree now its so poorly
     return <div>
         <Button onClick={store.download}>Download</Button>
@@ -94,14 +91,14 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
 
         <Row>
             <Col md={4}>
-                <Tree
+                {/*<Tree
                     draggable
                     onSelect={(activeNode, value) => setActive(value as string)}
                     value={active}
                     labelKey="key"
                     valueKey="key"
                     style={{maxHeight: 'inherit', height: 'inherit'}}
-                    data={store.tree.root.children as unknown as ItemDataType[]}/>
+                    data={store.tree.root.children as unknown as ItemDataType[]}/>*/}
             </Col>
 
             {/*<Col md={15}>{store.components}</Col>*/}
@@ -114,24 +111,25 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                     <Nav.Item eventKey={"other"} children={"Other"}/>
                 </Nav>
                 <div>
-                    {Object.keys(model?.getDescription() ?? {}).map(key =>
-                        <div key={key}>
-                            <Form.ControlLabel>{model?.getDescription()?.[key]?.title ?? key}</Form.ControlLabel>
-                            <RInput
-                                value={_.get(model, key, "")}
-                                onChange={value => _.set(model as object, key, value)}
-                            />
-                        </div>
-                    )}
-                    {Object.keys(store.componentStores[0].props.main ?? {}).map(key =>
+                    {Object.keys(model?.props ?? {}).map(key =>
                         <div key={key}>
                             <Form.ControlLabel>{key}</Form.ControlLabel>
                             <RInput
-                                value={_.get(store.componentStores[0].props.main, key, "")}
-                                onChange={value => _.set(store.componentStores[0].props.main as object, key, value)}
+                                value={_.get(model?.props, key, "")}
+                                onChange={value => _.set(model?.props as object, key, value)}
                             />
                         </div>
                     )}
+
+                    {/*{Object.keys(store.models[0]?.props.main ?? {}).map(key =>
+                        <div key={key}>
+                            <Form.ControlLabel>{key}</Form.ControlLabel>
+                            <RInput
+                                value={_.get(store.models[0].props.main, key, "")}
+                                onChange={value => _.set(store.models[0].props.main as object, key, value)}
+                            />
+                        </div>
+                    )}*/}
                 </div>
             </Col>
         </Row>

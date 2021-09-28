@@ -1,64 +1,46 @@
 import {action, computed, makeObservable, observable} from "mobx";
-import {Input} from "../models/Input/Input";
-import {Header} from "../models/Header/Header";
-import AbstractModel from "../models/AbstractModel";
-import {Button} from "../models/Button/Button";
-import {Dropdown} from "../models/Dropdown/Dropdown";
-import {TextArea} from "../models/TextArea/TextArea";
-import {TypeToClass} from "../utils/constants";
 import toModel from "../utils/toModel";
-import {Container} from "../models/Container/Container";
 import {Tree} from "../utils/Tree";
 import {ComponentStore} from "./ComponentStore";
-import {AHeader} from "../views/AHeader";
-import {define, Renderer} from "../utils/Renderer";
+import {Renderer} from "../utils/Renderer";
+import {button} from "../views/Button";
+import {container} from "../views/Container";
+import {dropdown} from "../views/Dropdown";
+import {header} from "../views/Header";
+import {input} from "../views/Input";
+import {textArea} from "../views/TextArea";
+import _ from "lodash";
 
 
 class Store {
-    readonly ModelType: TypeToClass = {
-        Input: Input,
-        Button: Button,
-        Header: Header,
-        TextArea: TextArea,
-        Dropdown: Dropdown,
-        Container: Container
-    }
 
-    models: AbstractModel[] = []
-
-    componentStores: ComponentStore[] = [new ComponentStore("header 2", "AHeader")]
+    models: ComponentStore[] = []
 
     renderer = Renderer.create([
-        define(AHeader, {
-            "main.content": {title: 'Content', type: 'string', defaultValue: ''},
-            "main.subheader": {title: 'Subheader', type: 'string', defaultValue: ''},
-            key: {title: 'Key', type: 'string', defaultValue: ''},
-            main: null
-        })
+        button, container, dropdown, header, input, textArea
     ])
 
-    get components() {
+    /*get components() {
         console.log("Computing...")
-        return this.models.map(value => value.getComponent());
-    }
+        //return this.models.map(value => value.getComponent());
+    }*/
 
     //TODO optimize?
-    get tree(): Tree {
+    /*get tree(): Tree {
         return new Tree(this.models)
-    }
+    }*/
 
     constructor() {
         makeObservable(this, {
             models: observable,
-            components: computed,
-            tree: computed,
+            //components: computed,
+            //tree: computed,
             download: action.bound,
             upload: action.bound,
             clear: action.bound,
             fillFormModel: action.bound,
             add: action.bound,
 
-            componentStores: observable,
         })
     }
 
@@ -110,16 +92,16 @@ class Store {
 
     setModelSnapshot(jsonString: string) {
         let json = JSON.parse(jsonString);
-        this.models = json.map(toModel)
+        //this.models = json.map(toModel)
     }
 
     add(type: string) {
         console.log(type)
         //console.log(Control[Control[type]])
-        let modelType = this.ModelType[type as any];
-        let key = (Math.random() + 1).toString(36).substring(7);
-        let model = new modelType(key)
-        this.models.push(model)
+        //let modelType = this.ModelType[type as any];
+        //let key = (Math.random() + 1).toString(36).substring(7);
+        //let model = new modelType(key)
+        //this.models.push(model)
     }
 
 
@@ -128,50 +110,52 @@ class Store {
         //this.model = getForm(code);
         if (this.models.length > 0) return
 
-        let header = new Header("header 1")
-        header.main.content = "Application Form"
-        header.main.subheader = "Make it easier"
-        this.models.push(header);
+        let formHeader = new ComponentStore("header 1", header)
+        _.set(formHeader, "props.main.content",  "Application Form")
+        _.set(formHeader, "props.main.subheader", "Make it easier")
+        this.models.push(formHeader);
 
-        let title = new Input("title")
-        title.main.label = "Title"
+        let title = new ComponentStore("title", input)
+        _.set(title, "props.main.label",  "Title")
         this.models.push(title)
 
-        let nameContainer = new Container("name container")
+        let nameContainer = new ComponentStore("name container", container)
+        nameContainer.children = []
         this.models.push(nameContainer)
 
-        let firstName = new Input("first name")
-        firstName.main.label = "First Name"
+        let firstName = new ComponentStore("first name", input)
+        _.set(firstName, "props.main.label",  "First Name")
         nameContainer.children.push(firstName)
 
-        let lastName = new Input("last name")
-        lastName.main.label = "Last Name"
+        let lastName = new ComponentStore("last name", input)
+        _.set(lastName, "props.main.label", "Last Name")
         nameContainer.children.push(lastName)
 
-        let type = new Dropdown("type")
-        type.main.label = "Type"
-        type.main.data.push(
+        let type = new ComponentStore("type", dropdown)
+        _.set(type, "props.main.label",  "Type")
+        _.set(type, "props.main.data", [
             {label: "Internal", value: "Internal"},
             {label: "External", value: "External"},
-            {label: "Direct", value: "Direct"})
-        type.design.block = true
+            {label: "Direct", value: "Direct"}])
+        _.set(type, "props.design.block",  true)
         this.models.push(type)
 
-        let comment = new TextArea("comment");
-        comment.main.label = "Comment"
-        comment.main.rows = 5
+        let comment = new ComponentStore("comment", textArea);
+        _.set(comment, "props.main.label", "Comment")
+        _.set(comment, "props.main.rows",  5)
         this.models.push(comment)
 
-        let buttonContainer = new Container("button container")
+        let buttonContainer = new ComponentStore("button container", container)
+        buttonContainer.children = []
         this.models.push(buttonContainer)
 
-        let saveButton = new Button("save")
-        saveButton.main.content = "Save"
-        saveButton.main.appearance = "primary"
+        let saveButton = new ComponentStore("save", button)
+        _.set(saveButton, "props.main.content",  "Save")
+        _.set(saveButton, "props.main.appearance" , "primary")
         buttonContainer.children.push(saveButton);
 
-        let cancelButton = new Button("cancel")
-        cancelButton.main.content = "Cancel"
+        let cancelButton = new ComponentStore("cancel", button)
+        _.set(cancelButton, "props.main.content", "Cancel")
         buttonContainer.children.push(cancelButton);
 
     }

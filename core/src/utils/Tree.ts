@@ -1,7 +1,7 @@
-import AbstractModel from "../models/AbstractModel";
 import _, {functions} from "lodash";
 import {accumulator} from "./constants";
 import {ItemDataType} from "rsuite/esm/@types/common";
+import {ComponentStore} from "../stores/ComponentStore";
 
 
 export class Tree {
@@ -9,7 +9,7 @@ export class Tree {
     //[index: number]: Node;
 
     //TODO autorun and Observable Arrays?
-    constructor(models: AbstractModel[]) {
+    constructor(models: ComponentStore[]) {
         this.root.children = models.map(child => new Node(child));
     }
 
@@ -79,11 +79,11 @@ export class Node {
         return _.isNull(this.value);
     }
 
-    value: AbstractModel | null = null
-    parent?: AbstractModel
+    value: ComponentStore | null = null
+    parent?: ComponentStore
     children?: Node[]
 
-    constructor(value?: AbstractModel, parent?: AbstractModel) {
+    constructor(value?: ComponentStore, parent?: ComponentStore) {
         this.key = value?.key ?? "";
 
         if (value)
@@ -92,7 +92,8 @@ export class Node {
         this.parent = parent;
 
         if (value?.children) {
-            this.children = value.children.map(child => new Node(child, value));
+            //TODO
+            //this.children = value.children.map(child => new Node(child, value));
         }
     }
 }
