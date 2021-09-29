@@ -1,8 +1,7 @@
-import {action, computed, makeObservable, observable} from "mobx";
+import {action, autorun, computed, makeObservable, observable} from "mobx";
 import toModel from "../utils/toModel";
-import {Tree} from "../utils/Tree";
 import {ComponentStore} from "./ComponentStore";
-import {Renderer} from "../utils/Renderer";
+import {Node, Renderer} from "../utils/Renderer";
 import {button} from "../views/Button";
 import {container} from "../views/Container";
 import {dropdown} from "../views/Dropdown";
@@ -14,28 +13,26 @@ import _ from "lodash";
 
 class Store {
 
-    activeModel: ComponentStore | null = null
+    currentModel: Node | null = null
     models: ComponentStore[] = []
 
-    renderer = Renderer.create([
-        button, container, dropdown, header, input, textArea
-    ])
+    renderer = new Renderer()
 
     /*get components() {
         console.log("Computing...")
         //return this.models.map(value => value.getComponent());
     }*/
 
-    //TODO optimize?
-    get tree(): Tree {
-        return new Tree(this.models)
+    get tree(): Node {
+        let root = new Node()
+        root.children = this.models.map(child => new Node(child));
+        return root
     }
-
 
     constructor() {
         makeObservable(this, {
-            activeModel: observable,
-            models: observable,
+            currentModel: observable.ref,
+            models: observable.shallow,
             //components: computed,
             tree: computed,
             download: action.bound,
@@ -45,6 +42,7 @@ class Store {
             add: action.bound,
 
         })
+
     }
 
     download() {
