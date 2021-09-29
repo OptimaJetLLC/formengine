@@ -153,9 +153,10 @@ class Store {
         this.models.push(buttonContainer)
 
         let saveButton = new ComponentStore("save", button)
-        _.set(saveButton, "props.main.content",  "Save")
-        _.set(saveButton, "props.main.appearance" , "primary")
-        buttonContainer.children.push(saveButton);
+        _.set(saveButton, "props.children",  "Save")
+        _.set(saveButton, "props.appearance" , "primary")
+        //buttonContainer.children.push(saveButton);
+        this.models.push(saveButton);
 
         let cancelButton = new ComponentStore("cancel", button)
         _.set(cancelButton, "props.main.content", "Cancel")

@@ -39,16 +39,16 @@ export type PropDescription = {
     description?: string
 }
 
-export type AllPropsDescriptionOf<T extends object> = {
+export type AllKeysOf<T extends object> = {
     [keys in Paths<T> | 'key']: PropDescription | null;
 };
 
-export type accumulator<U> = {[key: string]: U}
+export type accumulator<U> = Record<string, U>
 
 export default interface ComponentDefinition<T extends object> {
     type: string
     view: FunctionComponent<T>;
-    description: AllPropsDescriptionOf<T>;
+    description: Partial<AllKeysOf<T>>;
     // todo event types
     // todo styles
 }

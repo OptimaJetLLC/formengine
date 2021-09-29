@@ -1,7 +1,8 @@
-import React, {FunctionComponent, ReactNode} from "react";
+import React, {Component, FunctionComponent, ReactNode} from "react";
 import {observer} from "mobx-react-lite";
 import {store} from "../stores/Store";
-import ComponentDefinition, {AllPropsDescriptionOf} from "./constants";
+import ComponentDefinition, {AllKeysOf} from "./constants";
+import {extend} from "lodash";
 
 export class Renderer {
     mapper!: Record<string, ComponentDefinition<any>>
@@ -17,8 +18,11 @@ export class Renderer {
     render(): JSX.Element[] {
 
         return store.models.map(store => {
-            let component = this.mapper[store.type]
-            const ObservableComponent = observer(component.view);
+            let definition = this.mapper[store.type]
+
+            let component = hoc(definition.view)
+
+            const ObservableComponent = observer(component);
 
             return <ObservableComponent key={store.key} {...store.props} />
         })
@@ -27,11 +31,18 @@ export class Renderer {
 
 }
 
-export const define = <T extends object>(view: FunctionComponent<T>, description: AllPropsDescriptionOf<T>): ComponentDefinition<any> => {
+export const define = <T extends object>(view: FunctionComponent<T>, description: Partial<AllKeysOf<T>>)
+    : ComponentDefinition<any> => {
     return ({
-        type: view.name,
+        type: view.name || view.displayName || "Component",
         view,
         description
     })
 }
 
+
+export function hoc<T extends object>(WrappedComponent: React.ComponentType<T>) {
+    const ComponentWithTheme = (props: T) => <WrappedComponent {...props} />;
+
+    return ComponentWithTheme;
+}
