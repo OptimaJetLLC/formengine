@@ -1,5 +1,5 @@
 import {Form, Input} from "rsuite";
-import {define} from "../utils/Renderer";
+import {define} from "../utils/define";
 
 export interface TextAreaProps {
     main: {

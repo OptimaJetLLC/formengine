@@ -1,4 +1,4 @@
-import {define} from "../utils/Renderer";
+import {define} from "../utils/define";
 
 export interface HeaderProps {
     main: {

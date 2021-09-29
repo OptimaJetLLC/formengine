@@ -1,6 +1,6 @@
 import {Form, InputPicker} from "rsuite";
 import {CSSProperties} from "react";
-import {define} from "../utils/Renderer";
+import {define} from "../utils/define";
 
 export interface DropdownProps {
     main: {

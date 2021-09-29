@@ -1,5 +1,5 @@
 import {Button as RButton, ButtonProps} from "rsuite";
-import {define} from "../utils/Renderer";
+import {define} from "../utils/define";
 
 
 /*export interface ButtonProps {
@@ -31,5 +31,5 @@ export const button = define(RButton, {
     key: null,
     children: {title: 'Content', defaultValue: "Button"},
     appearance: {title: "Appearance", defaultValue: "default"},
-    style: null
+    style: null,
 })

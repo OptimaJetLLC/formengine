@@ -1,6 +1,6 @@
 import {Form, Input as RInput} from "rsuite";
 import {CSSProperties, SyntheticEvent} from "react";
-import {define} from "../utils/Renderer";
+import {define} from "../utils/define";
 
 export interface InputProps {
     value: string | number | readonly string[];

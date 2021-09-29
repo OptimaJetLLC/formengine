@@ -1,5 +1,5 @@
 import {ReactNode} from "react";
-import {define} from "../utils/Renderer";
+import {define} from "../utils/define";
 
 export interface ContainerProps {
     children: ReactNode[]
