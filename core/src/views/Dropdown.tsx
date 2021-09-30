@@ -3,37 +3,31 @@ import {CSSProperties} from "react";
 import {define} from "../utils/define";
 
 export interface DropdownProps {
-    main: {
-        label: string,
-        data: { label: string, value: string }[]
-        placeholder: string
-    }
-    design: {
-        style: CSSProperties | undefined
-        className: string
-        block: boolean
-    }
+    label: string,
+    data: { label: string, value: string }[]
+    placeholder: string
+    style: CSSProperties | undefined
+    className: string
+    block: boolean
 }
 
 export const Dropdown = (props : DropdownProps ) => {
 
     return (
         <div>
-            <Form.ControlLabel>{props.main.label}</Form.ControlLabel>
-            <InputPicker {...props.design} data={props.main.data} placeholder={props.main.placeholder}/>
+            <Form.ControlLabel>{props.label}</Form.ControlLabel>
+            <InputPicker data={props.data} placeholder={props.placeholder}/>
         </div>
     )
 }
 
 export const dropdown = define(Dropdown, {
     key: null,
-    "design.block": null,
-    "design.className": null,
-    "design.style": {title: 'Style', defaultValue: undefined},
-    "main.data": null,
-    "main.label": null,
-    "main.placeholder": null,
-    design: null,
-    main: null,
+    "block": null,
+    "className": null,
+    "style": {title: 'Style', defaultValue: undefined},
+    "data": null,
+    "label": null,
+    "placeholder": null,
 
 })

@@ -14,10 +14,12 @@ export type AllKeysOf<T extends object> = {
 
 export type accumulator<U> = Record<string, U>
 
+export type Annotations<T extends object> = Partial<AllKeysOf<T>>
+
 export default interface ComponentDefinition<T extends object> {
     type: string
     view: FunctionComponent<T>;
-    description: Partial<AllKeysOf<T>>;
+    annotations: Annotations<T>;
     groupBy?: string;
     // todo event types
     // todo styles

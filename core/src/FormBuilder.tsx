@@ -58,7 +58,7 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                     <Nav.Item eventKey={"other"} children={"Other"}/>
                 </Nav>
                 <div>
-                    {Object.keys(mapper[store.currentModel?.data?.type ?? ""]?.description ?? {}).map(key => {
+                    {Object.keys(mapper[store.currentModel?.data?.type ?? ""]?.annotations ?? {}).map(key => {
                             if (key === "key")
                                 return <div key={key}>
                                     <Form.ControlLabel>{key}</Form.ControlLabel>

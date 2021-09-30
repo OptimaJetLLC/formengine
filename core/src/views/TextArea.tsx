@@ -2,18 +2,16 @@ import {Form, Input} from "rsuite";
 import {define} from "../utils/define";
 
 export interface TextAreaProps {
-    main: {
-        label: string,
-        rows: number,
-        placeholder: string,
-    }
+    label: string,
+    rows: number,
+    placeholder: string,
 }
 
 export const TextArea = (props :TextAreaProps) => {
     return (
         <div>
-            <Form.ControlLabel>{props.main.label}</Form.ControlLabel>
-            <Textarea {...props.main}/>
+            <Form.ControlLabel>{props.label}</Form.ControlLabel>
+            <Textarea {...props}/>
         </div>
     )
 }
@@ -23,8 +21,7 @@ const Textarea = (props: any) =>
 
 export const textArea = define(TextArea, {
     key: null,
-    "main.label": null,
-    "main.placeholder": null,
-    "main.rows": null,
-    main: null
+    "label": null,
+    "placeholder": null,
+    "rows": null,
 })

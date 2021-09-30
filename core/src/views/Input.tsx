@@ -6,24 +6,21 @@ export interface InputProps {
     value: string | number | readonly string[];
     onChange: ((value: string | number | readonly string[], event: SyntheticEvent<Element, Event>) => void);
 
-    main: {
-        label: string
-        type: InputType
-        labelPosition: InputLabelPosition
-        placeholder: string
-        size: Size
-        disabled: boolean
-        transparent: boolean
-        fluid: boolean
-        readOnly: boolean
-    }
-    design: {
-        style: CSSProperties | undefined
-        className: string
-        hidden: boolean
-        hiddenInPrintMode: boolean
-        adaptiveLayout: boolean
-    }
+    label: string
+    type: InputType
+    labelPosition: InputLabelPosition
+    placeholder: string
+    size: Size
+    disabled: boolean
+    transparent: boolean
+    fluid: boolean
+    readOnly: boolean
+
+    style: CSSProperties | undefined
+    className: string
+    hidden: boolean
+    hiddenInPrintMode: boolean
+    adaptiveLayout: boolean
 
     /*events: {
         "onChange timeout": number
@@ -74,12 +71,13 @@ export class Action {
 export const Input = (props: InputProps ) => {
 
     return (
-        <div style={props.design.style} className={props.design.className}>
-            {props.main.label &&
-            <Form.ControlLabel>{props.main.label}</Form.ControlLabel>}
+        <div style={props.style} className={props.className}>
+            {props.label &&
+            <Form.ControlLabel>{props.label}</Form.ControlLabel>}
             <RInput
-                placeholder={props.main.placeholder}
-                disabled={props.main.disabled || props.main.readOnly}
+                placeholder={props.placeholder}
+                disabled={props.disabled}
+                readOnly={props.readOnly}
                 onChange={props.onChange}
                 value={props.value}
             />
@@ -89,22 +87,20 @@ export const Input = (props: InputProps ) => {
 
 export const input = define(Input, {
     key: null,
-    "design.adaptiveLayout": {title: "Adaptive Layout", defaultValue: ""},
-    "design.className": {title: "Class name", defaultValue: ""},
-    "design.hidden": {title: "Hidden", defaultValue: ""},
-    "design.hiddenInPrintMode": {title: "Hidden In PrintMode", defaultValue: ""},
-    "design.style": {title: "Style", defaultValue: undefined},
-    "main.disabled": {title: "Disabled", defaultValue: false},
-    "main.fluid": {title: "Fluid", defaultValue: ""},
-    "main.label": {title: "Label", defaultValue: ""},
-    "main.labelPosition": {title: "Label position", defaultValue: ""},
-    "main.placeholder": {title: "Placeholder", defaultValue: ""},
-    "main.readOnly": {title: "Readonly", defaultValue: false},
-    "main.size": {title: "Size", defaultValue: ""},
-    "main.transparent": {title: "Transparent", defaultValue: ""},
-    "main.type": {title: "Type", defaultValue: ""},
-    design: null,
-    main: null,
+    "adaptiveLayout": {title: "Adaptive Layout", defaultValue: ""},
+    "className": {title: "Class name", defaultValue: ""},
+    "hidden": {title: "Hidden", defaultValue: ""},
+    "hiddenInPrintMode": {title: "Hidden In PrintMode", defaultValue: ""},
+    "style": {title: "Style", defaultValue: undefined},
+    "disabled": {title: "Disabled", defaultValue: false},
+    "fluid": {title: "Fluid", defaultValue: ""},
+    "label": {title: "Label", defaultValue: ""},
+    "labelPosition": {title: "Label position", defaultValue: ""},
+    "placeholder": {title: "Placeholder", defaultValue: ""},
+    "readOnly": {title: "Readonly", defaultValue: false},
+    "size": {title: "Size", defaultValue: ""},
+    "transparent": {title: "Transparent", defaultValue: ""},
+    "type": {title: "Type", defaultValue: ""},
     onChange: null,
     value: null
 })

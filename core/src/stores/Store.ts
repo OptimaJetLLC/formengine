@@ -1,4 +1,4 @@
-import {action, autorun, computed, makeObservable, observable} from "mobx";
+import {action, autorun, computed, makeObservable, observable, toJS} from "mobx";
 import toModel from "../utils/toModel";
 import {ComponentStore} from "./ComponentStore";
 import {Node} from "../utils/Node";
@@ -89,9 +89,18 @@ class Store {
     }
 
     getModelSnapshot() {
-        return JSON.stringify(this.models, null, 2)
+        return JSON.stringify(toJS(this.models), removeReactChildren, 2)
+
+        function removeReactChildren(key: any, value: any) {
+            if (key === "children" && value?.[0] && value[0].$$typeof === Symbol.for('react.element')) {
+                return undefined
+            }
+
+            return value;
+        }
     }
 
+    //TODO Fix it
     setModelSnapshot(jsonString: string) {
         let json = JSON.parse(jsonString);
         //this.models = json.map(toModel)
@@ -113,12 +122,12 @@ class Store {
         if (this.models.length > 0) return
 
         let formHeader = new ComponentStore("header 1", header)
-        _.set(formHeader, "props.main.content",  "Application Form")
-        _.set(formHeader, "props.main.subheader", "Make it easier")
+        _.set(formHeader, "props.content",  "Application Form")
+        _.set(formHeader, "props.subheader", "Make it easier")
         this.models.push(formHeader);
 
         let title = new ComponentStore("title", input)
-        _.set(title, "props.main.label",  "Title")
+        _.set(title, "props.label",  "Title")
         this.models.push(title)
 
         let nameContainer = new ComponentStore("name container", container)
@@ -126,16 +135,16 @@ class Store {
         this.models.push(nameContainer)
 
         let firstName = new ComponentStore("first name", input)
-        _.set(firstName, "props.main.label",  "First Name")
+        _.set(firstName, "props.label",  "First Name")
         nameContainer.children.push(firstName)
 
         let lastName = new ComponentStore("last name", input)
-        _.set(lastName, "props.main.label", "Last Name")
+        _.set(lastName, "props.label", "Last Name")
         nameContainer.children.push(lastName)
 
         let type = new ComponentStore("type", dropdown)
-        _.set(type, "props.main.label",  "Type")
-        _.set(type, "props.main.data", [
+        _.set(type, "props.label",  "Type")
+        _.set(type, "props.data", [
             {label: "Internal", value: "Internal"},
             {label: "External", value: "External"},
             {label: "Direct", value: "Direct"}])
@@ -143,8 +152,8 @@ class Store {
         this.models.push(type)
 
         let comment = new ComponentStore("comment", textArea);
-        _.set(comment, "props.main.label", "Comment")
-        _.set(comment, "props.main.rows",  5)
+        _.set(comment, "props.label", "Comment")
+        _.set(comment, "props.rows",  5)
         this.models.push(comment)
 
         let buttonContainer = new ComponentStore("button container", container)
