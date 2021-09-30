@@ -1,4 +1,3 @@
-import {ReactNode} from "react";
 import {makeAutoObservable} from "mobx";
 import ComponentDefinition from "../utils/constants";
 import _ from "lodash";
@@ -6,15 +5,13 @@ import _ from "lodash";
 export class ComponentStore {
     key: string = ""
     type: string = ""
-    props: { [key: string]: any } = {}
-    //props: T
+    props: Record<string, any> = {}
     children?: ComponentStore[]
 
     constructor(key: string, definition: ComponentDefinition<any>) {
         initDefaultValue(this, definition)
         this.key = key
         this.type = definition.type
-        //this.props = props
         makeAutoObservable(this);
     }
 }

@@ -32,4 +32,7 @@ export const button = define(RButton, {
     children: {title: 'Content', defaultValue: "Button"},
     appearance: {title: "Appearance", defaultValue: "default"},
     style: null,
+    title: {title: 'Title', defaultValue: "Button"},
+
 })
+

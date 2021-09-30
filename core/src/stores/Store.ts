@@ -1,7 +1,7 @@
 import {action, autorun, computed, makeObservable, observable} from "mobx";
 import toModel from "../utils/toModel";
 import {ComponentStore} from "./ComponentStore";
-import {Node, Renderer} from "../utils/Renderer";
+import {Node} from "../utils/Node";
 import {button} from "../views/Button";
 import {container} from "../views/Container";
 import {dropdown} from "../views/Dropdown";
@@ -9,19 +9,14 @@ import {header} from "../views/Header";
 import {input} from "../views/Input";
 import {textArea} from "../views/TextArea";
 import _ from "lodash";
+import React from "react";
+import {TreeNode} from "../components/TreeNode";
+
 
 
 class Store {
-
     currentModel: Node | null = null
     models: ComponentStore[] = []
-
-    renderer = new Renderer()
-
-    /*get components() {
-        console.log("Computing...")
-        //return this.models.map(value => value.getComponent());
-    }*/
 
     get tree(): Node {
         let root = new Node()
@@ -33,7 +28,7 @@ class Store {
         makeObservable(this, {
             currentModel: observable.ref,
             models: observable.shallow,
-            //components: computed,
+            //render: computed,
             tree: computed,
             download: action.bound,
             upload: action.bound,
@@ -43,6 +38,12 @@ class Store {
 
         })
 
+    }
+
+    render() {
+        return this.models.map(store => {
+            return React.createElement(TreeNode, {key: store.key, store})
+        })
     }
 
     download() {
@@ -153,11 +154,11 @@ class Store {
         let saveButton = new ComponentStore("save", button)
         _.set(saveButton, "props.children",  "Save")
         _.set(saveButton, "props.appearance" , "primary")
-        //buttonContainer.children.push(saveButton);
-        this.models.push(saveButton);
+        buttonContainer.children.push(saveButton);
+        //this.models.push(saveButton);
 
         let cancelButton = new ComponentStore("cancel", button)
-        _.set(cancelButton, "props.main.content", "Cancel")
+        _.set(cancelButton, "props.children", "Cancel")
         buttonContainer.children.push(cancelButton);
 
     }

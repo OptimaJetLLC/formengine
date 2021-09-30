@@ -7,7 +7,7 @@ import {configure, toJS} from "mobx";
 import {ComponentStore} from "./stores/ComponentStore";
 import {ItemDataType} from "rsuite/esm/@types/common";
 import {mapper} from "./views";
-import {Node} from "./utils/Renderer";
+import {Node} from "./utils/Node";
 
 
 export interface FormBuilderProps {
@@ -49,8 +49,7 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                     data={store.tree.children as ItemDataType[]}/>
             </Col>
 
-            {/*<Col md={15}>{store.components}</Col>*/}
-            <Col md={15}>{store.renderer.render()}</Col>
+            <Col md={15}>{store.render()}</Col>
 
             <Col md={5}>
                 <Nav appearance={"tabs"} activeKey={activeTab} onSelect={setActiveTab} style={styles}>
