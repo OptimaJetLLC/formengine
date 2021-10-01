@@ -264,13 +264,6 @@ body, h1, h2, h3, h4, h5 {
   width: calc(100% - 29px);
 }
 
-.formbuilder-toolbox > h4{
-    margin: 5px;
-    padding: 10px;
-    height: 50%;
-    overflow-y: auto;
-}
-
 .formbuilder-toolbox-search {
   margin-left: 10px;
   background-color: inherit;
@@ -305,16 +298,13 @@ body, h1, h2, h3, h4, h5 {
     padding: 5px;
 }
 
-.formbuilder-toolbox-group > div:not(.formbuilder-toolbox-control) {
-  display: none !important;
-}
-
-.formbuilder-toolbox-control:hover{
+.formbuilder-toolbox .control:hover{
   color: rgba(255, 255, 255, 1);
 }
 
-.formbuilder-toolbox-control
+.formbuilder-toolbox .control
 {
+  color: rgba(255, 255, 255, 1);
   cursor: grab;
   list-style: none;
   text-align: left;
@@ -334,13 +324,13 @@ body, h1, h2, h3, h4, h5 {
   font-size: 14px;
 }
 
-.formbuilder-toolbox-control .rs-icon {
+.formbuilder-toolbox .control .rs-icon {
   margin-right: 7px;
   font-size: 29px;
 }
 
 /* for other items orientation */
-/* .formbuilder-toolbox-control
+/* .formbuilder-toolbox .control
 {
     cursor: grab;
     list-style: none;
@@ -359,18 +349,18 @@ body, h1, h2, h3, h4, h5 {
     color: rgba(255, 255, 255, 0.8);
 }
 
-.formbuilder-toolbox-control .rs-icon {
+.formbuilder-toolbox .control .rs-icon {
   margin-bottom: 5px;
   font-size: 19px;
 } */
 
-.formbuilder-toolbox-control-text{
+.formbuilder-toolbox .control-text{
   /* margin-left: 10px; */
   /* opacity: 0.7; */
   font-weight: bold;
 }
 
-.formbuilder-toolbox-control-icon {
+.formbuilder-toolbox .control-icon {
     height: 14px;
     width: 14px;
     margin-right: 6px;
@@ -378,8 +368,11 @@ body, h1, h2, h3, h4, h5 {
     margin-top: 3px;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 4.00012L1.5 2.50012V3.50012H3.5V1.50012H2.5L4 0.00012207L5.5 1.50012H4.5V3.50012H6.5V2.50012L8 4.00012L6.5 5.50012V4.50012H4.5V6.50012H5.5L4 8.00012L2.5 6.50012H3.5V4.50012H1.5V5.50012L0 4.00012Z' fill='white' fill-opacity='0.8'/%3E%3C/svg%3E");
   }
+  .formbuilder-toolbox .control {
+    color: white;
+  }
 
-.formbuilder-toolbox-control:hover
+.formbuilder-toolbox .control:hover
 {
     background: #1262E2;
     color: white;
@@ -2748,8 +2741,8 @@ div.filepicker {
 }
 
 .formbuilder-toolbox{
-  /* overflow-y: scroll; */
-  /* height: 100vh; */
+  padding: 15px;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 12%);
 }
 
 
@@ -3153,4 +3146,13 @@ textarea:read-only,
   transform: scale(1.4);
   margin: 0 16px;
   position: absolute;
+}
+
+.formbuilder-popover-backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0; top: 0;
+    background: #0000004a;
+    z-index: 100;
 }

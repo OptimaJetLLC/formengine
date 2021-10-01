@@ -11,6 +11,7 @@ import Preview from './preview';
 import ToolbarNew from "./toolbar-new";
 import { dispatchWindowResize } from './utils';
 import Viewer from './viewer';
+import DraggingContext from './dragging-context';
 
 export default class FormBuilder extends BaseFormBuilder {
 
@@ -41,31 +42,34 @@ export default class FormBuilder extends BaseFormBuilder {
     }
 
     render() {
-        const { showControlTree, desktopMode } = this.state;
+        const { showControlTree, desktopMode, isDragging, dragEnded } = this.state;
+        const setDragging = (isDragging) => this.setState({isDragging, dragEnded: !isDragging});
         const viewClassName = "view" + " " + desktopMode;
         const showIf = (condition, child) => <div style={condition ? {} : {display: 'none'}} className={viewClassName}>{child}</div>;
         return (
             <DropzoneContext.Provider value={this.state.dropzoneContext}>
-                <DragDropContext onDragEnd={result => {
-        const { source, destination, draggableId } = result;
-        console.log('==> result', result);
-        
-        if (source.droppableId == "TOOLBAR") {                
-                BuilderActions.add({key: draggableId});
-            } else {
-                BuilderActions.move(draggableId);
-            }
-        }    
-        }>
-                    <div className="formbuilder">            
-                        {this.renderHeaderBar()}   
-                        <div className="formbuilder-content formbuilder-dropzoneactive" style={{ display: 'flex', flex: 1 }}  onDragOver={this.onDragOver}>
-                            {showControlTree && <ControlTree show={!this.state.viewerMode} style={{ marginRight: 10, width: 180 }} onClose={this.toggleLeftPanel}/>}
-                            {showIf(!this.state.viewerMode, this.renderBuilder())}
-                            {showIf(this.state.viewerMode, this.renderViewer())}                         
-                        </div>            
-                    </div>
-                </DragDropContext>
+                <DraggingContext.Provider value={{isDragging, dragEnded}}>
+                    <DragDropContext onDragStart={setDragging.bind(this, true)} onDragEnd={result => {
+                        const { source, destination, draggableId } = result;
+                        console.log('==> result', result);
+                        setDragging(false);
+                        this.setState({dragEnded: false})
+                        if (source.droppableId == "TOOLBAR") {                
+                                BuilderActions.add({key: draggableId});
+                            } else {
+                                BuilderActions.move(draggableId);
+                            }
+                        }}>
+                        <div className="formbuilder">            
+                            {this.renderHeaderBar()}   
+                            <div className="formbuilder-content formbuilder-dropzoneactive" style={{ display: 'flex', flex: 1 }}  onDragOver={this.onDragOver}>
+                                {showControlTree && <ControlTree show={!this.state.viewerMode} style={{ marginRight: 10, width: 180 }} onClose={this.toggleLeftPanel}/>}
+                                {showIf(!this.state.viewerMode, this.renderBuilder())}
+                                {showIf(this.state.viewerMode, this.renderViewer())}                         
+                            </div>            
+                        </div>
+                    </DragDropContext>
+                </DraggingContext.Provider>
             </DropzoneContext.Provider>
         );
     }
@@ -90,12 +94,6 @@ export default class FormBuilder extends BaseFormBuilder {
 
     renderBuilder() {
         const localization = this.getCurrentLocalization();
-        const editForm = <EditForm actions={this.props.actions} localization={localization.editforms}
-                                   externalControlList={this.props.externalControlList}
-                                   controls={this.controls}
-                                   editorControls={this._editorControls}
-        />;
-
         return <>
             <Preview
                 buildermode={true} show={!this.state.viewerMode}
@@ -110,12 +108,12 @@ export default class FormBuilder extends BaseFormBuilder {
                 controls={this.controls}
                 editorControls={this._editorControls}
             />
-            <ToolbarNew localization={localization.toolbar} templates={this.props.templates} editForm={editForm}
-                        externalControlList={this.props.externalControlList}
-                        style={this.state.showRightPanel ? {} : { display: "none" }}
-                        externalControlsOnly={this.props.externalControlsOnly}
-                        builderControls={this.props.builderControls} editControl={CustomBlockEditControl}
-            />
+            <div className="formbuilder-rightbar">
+                <EditForm actions={this.props.actions} localization={localization.editforms}
+                                    externalControlList={this.props.externalControlList}
+                                    controls={this.controls}
+                                    editorControls={this._editorControls} />
+            </div>
             {/*todo remove*/}
             {/*   <ToolBar localization={localization.toolbar} templates={this.props.templates} editForm={editForm}*/}
             {/*                externalControlList={this.props.externalControlList} style={this.state.showRightPanel ? {} : {display:"none"}}*/}
@@ -155,7 +153,6 @@ export default class FormBuilder extends BaseFormBuilder {
             viewerMode={this.state.viewerMode}
             desktopMode={this.state.desktopMode}
             onChangeDesktopMode={this.onChangeDesktopMode}
-            blockChangeViewerMode={this.props.blockChangeViewerMode}
             localization={localization.headerbar}
             onDownload={this.onDownload}
             onClear={this.create}
@@ -168,6 +165,7 @@ export default class FormBuilder extends BaseFormBuilder {
             isShowLeftPanel={this.state.showControlTree}
             onToggleRightPanel={this.toggleRightPanel}
             isShowRightPanel={this.state.showRightPanel}
+            {...this.props}
         />;
     }
 

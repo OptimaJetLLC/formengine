@@ -33,13 +33,12 @@ export default class SearchForm extends Component<SearchFormProps, SearchFormSta
         return (<InputGroup inside size="xs">
             <Input
                 onChange={this.handleChange.bind(this)}
-                className="formbuilder-toolbox-search"
                 placeholder="Search..."
                 value={this.state.value}
-                size="xs" appearance="subtle" style={{ marginLeft: 0, fontSize: '14px', background: '#0000001c' }}
+                size="xs" appearance="subtle" style={{ marginLeft: 10 }}
             />
             <InputGroup.Addon style={{ cursor: 'pointer' }} onClick={this.handleChange.bind(this, '')}>
-                <Icon icon={icon} inverse/>
+                <Icon icon={icon}/>
             </InputGroup.Addon>
         </InputGroup>)
     }
