@@ -10,7 +10,7 @@ import {input} from "../views/Input";
 import {textArea} from "../views/TextArea";
 import _ from "lodash";
 import React from "react";
-import {TreeNode} from "../components/TreeNode";
+import {Control} from "../components/Control";
 
 
 
@@ -42,7 +42,7 @@ class Store {
 
     render() {
         return this.models.map(store => {
-            return React.createElement(TreeNode, {key: store.key, store})
+            return React.createElement(Control, {key: store.key, store})
         })
     }
 

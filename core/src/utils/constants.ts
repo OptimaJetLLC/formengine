@@ -1,9 +1,11 @@
-import {FunctionComponent} from "react";
+import {FunctionComponent, ReactNode} from "react";
 import {Paths} from "./UtilityTypes";
 
 export type PropDescription = {
     title: string
     type?: string
+    section?: string
+    input?: ReactNode
     defaultValue: any
     description?: string
 }

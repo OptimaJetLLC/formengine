@@ -25,7 +25,7 @@ export const dropdown = define(Dropdown, {
     key: null,
     "block": null,
     "className": null,
-    "style": {title: 'Style', defaultValue: undefined},
+    "style": {title: 'Style', type: "string", input: <div/>, section: "Design", defaultValue: undefined},
     "data": null,
     "label": null,
     "placeholder": null,
