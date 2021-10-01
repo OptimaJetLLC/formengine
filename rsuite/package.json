@@ -19,6 +19,7 @@
   "author": "OptimaJet LLC",
   "license": "SEE LICENSE IN eula.txt",
   "dependencies": {
+    "@tippyjs/react": "^4.2.5",
     "@types/numeral": "^2.0.1",
     "babel-plugin-react-scoped-css": "^1.1.1",
     "clone": "^2.1.2",

@@ -6,4 +6,5 @@ export default interface ControlEditorItem {
     title: string;
     name: string;
     control: ControlDefinition;
+    defaultValues?: any;
 }
