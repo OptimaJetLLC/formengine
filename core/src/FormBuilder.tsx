@@ -15,9 +15,6 @@ export interface FormBuilderProps {
 }
 
 export const FormBuilder = observer((props: FormBuilderProps) => {
-    const [activeTab, setActiveTab] = useState('main');
-
-
     useEffect(() => {
         store.fillFormModel("test", props.getForm);
     }, []);
@@ -52,41 +49,58 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
             <Col md={15}>{store.render()}</Col>
 
             <Col md={5}>
-                <Nav appearance={"tabs"} activeKey={activeTab} onSelect={setActiveTab} style={styles}>
-                    <Nav.Item eventKey={"main"} children={"Main"}/>
-                    <Nav.Item eventKey={"design"} children={"Design"}/>
-                    <Nav.Item eventKey={"other"} children={"Other"}/>
-                </Nav>
-                <div>
-                    {Object.keys(mapper[store.currentModel?.data?.type ?? ""]?.annotations ?? {}).map(key => {
-                            if (key === "key")
-                                return <div key={key}>
-                                    <Form.ControlLabel>{key}</Form.ControlLabel>
-                                    <RInput
-                                        value={_.get(store.currentModel?.data, key, "")}
-                                        onChange={value => {
-                                            store.currentModel!.data!.key = value as string;
-                                            //store.models[0]!.key = value as string;
-                                        }}
-                                    />
-                                </div>;
-
-                            return <div key={key}>
-                                <Form.ControlLabel>{key}</Form.ControlLabel>
-                                <RInput
-                                    value={_.get(store.currentModel?.data?.props, key, "")}
-                                    onChange={value => _.set(store.currentModel?.data?.props as object, key, value)}
-                                />
-                            </div>;
-                        }
-                    )}
-                </div>
+                <PropertiesEditor/>
             </Col>
         </Row>
     </div>;
 })
 
-const styles = {width: 150};
+const PropertiesEditor = () => {
+    const [activeTab, setActiveTab] = useState('main');
+    const currentModel = store.currentModel?.data
 
+    if (!currentModel) return null
+
+    const annotations = mapper[currentModel.type].annotations
+
+    let a = _.values(annotations).map(value => value.render())
+
+    return (
+        <>
+            <Nav appearance={"tabs"} activeKey={activeTab} onSelect={setActiveTab} style={{width: 150}}>
+                <Nav.Item eventKey={"main"} children={"Main"}/>
+                <Nav.Item eventKey={"design"} children={"Design"}/>
+                <Nav.Item eventKey={"other"} children={"Other"}/>
+            </Nav>
+            <div>
+                {a}
+                {/*{Object.keys(mapper[store.currentModel?.data?.type ?? ""]?.annotations ?? {}).map(key => {
+                        if (key === "key")
+                            return <div key={key}>
+                                <Form.ControlLabel>{key}</Form.ControlLabel>
+                                <RInput
+                                    value={_.get(store.currentModel?.data, key, "")}
+                                    onChange={value => {
+                                        store.currentModel!.data!.key = value as string;
+                                        //store.models[0]!.key = value as string;
+                                    }}
+                                />
+                            </div>;
+
+                        return <div key={key}>
+                            <Form.ControlLabel>{_.startCase(key)}</Form.ControlLabel>
+                            <RInput
+                                value={_.get(store.currentModel?.data?.props, key, "")}
+                                onChange={value => _.set(store.currentModel?.data?.props as object, key, value)}
+                            />
+                        </div>;
+                    }
+                )}*/}
+            </div>
+        </>
+    )
+};
+
+//TODO move to other common place
 //State can be changed from anywhere
 configure({enforceActions: "never"})

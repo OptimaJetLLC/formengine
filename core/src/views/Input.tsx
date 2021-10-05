@@ -85,8 +85,9 @@ export const Input = (props: InputProps ) => {
     );
 }
 
-export const input = define(Input, {
-    key: null,
+export const input = define(RInput, {
+
+    /*key: null,
     "adaptiveLayout": {title: "Adaptive Layout", defaultValue: ""},
     "className": {title: "Class name", defaultValue: ""},
     "hidden": {title: "Hidden", defaultValue: ""},
@@ -102,5 +103,5 @@ export const input = define(Input, {
     "transparent": {title: "Transparent", defaultValue: ""},
     "type": {title: "Type", defaultValue: ""},
     onChange: null,
-    value: null
+    value: null*/
 })

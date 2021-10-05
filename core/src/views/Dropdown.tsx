@@ -1,6 +1,9 @@
 import {Form, InputPicker} from "rsuite";
 import {CSSProperties} from "react";
 import {define} from "../utils/define";
+import {InputPickerProps} from "rsuite/esm/InputPicker/InputPicker";
+import {Annotations1} from "../utils/constants";
+import {boolean, booleanOptional, string} from "../utils/AnnotationBuilder";
 
 export interface DropdownProps {
     label: string,
@@ -22,12 +25,18 @@ export const Dropdown = (props : DropdownProps ) => {
 }
 
 export const dropdown = define(Dropdown, {
-    key: null,
-    "block": null,
-    "className": null,
-    "style": {title: 'Style', type: "string", input: <div/>, section: "Design", defaultValue: undefined},
-    "data": null,
-    "label": null,
-    "placeholder": null,
+    "block": boolean,
+    "data": undefined,
+    "label": string,
+    "placeholder": string,
 
 })
+
+let a: Annotations1<InputPickerProps> = {
+    data: undefined,
+    block: booleanOptional,
+    appearance: undefined,
+    placeholder: string.setTitle(""),
+}
+
+export const inputPicker = define(InputPicker, a)

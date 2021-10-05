@@ -18,6 +18,6 @@ export class ComponentStore {
 
 function initDefaultValue(store: ComponentStore, definition: ComponentDefinition<any>) {
     Object.keys(definition.annotations).filter(value => value.includes(".")).forEach(key => {
-        _.set(store.props, key, definition.annotations[key]?.defaultValue )
+        _.set(store.props, key, definition.annotations[key]?.initValue )
     })
 }

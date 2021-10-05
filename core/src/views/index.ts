@@ -14,3 +14,4 @@ components.reduce((temp, value) => {
     temp[value.type] = value
     return temp;
 }, mapper)
+
