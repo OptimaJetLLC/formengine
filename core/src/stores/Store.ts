@@ -10,7 +10,7 @@ import {input} from "../views/Input";
 import {textArea} from "../views/TextArea";
 import _ from "lodash";
 import React from "react";
-import {Control} from "../components/Control";
+import {Component} from "../components/Component";
 
 
 
@@ -43,7 +43,7 @@ class Store {
     get render() {
         //Костыль. Надеюсь временный. Заставляет перерендерить кмопоненты :)
         let a = _.values(store.currentModel?.data?.props)[0] && null
-        return  this.models.map(store => React.createElement(Control, {key: store.key, store}))
+        return  this.models.map(store => React.createElement(Component, {key: store.key, store}))
     }
 
     download() {
