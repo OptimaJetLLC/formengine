@@ -46,7 +46,7 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                     data={store.tree.children as ItemDataType[]}/>
             </Col>
 
-            <Col md={15}>{store.render()}</Col>
+            <Col md={15}>{store.render}</Col>
 
             <Col md={5}>
                 <PropertiesEditor/>

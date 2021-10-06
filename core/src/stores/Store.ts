@@ -28,7 +28,7 @@ class Store {
         makeObservable(this, {
             currentModel: observable.ref,
             models: observable.shallow,
-            //render: computed,
+            render: computed,
             tree: computed,
             download: action.bound,
             upload: action.bound,
@@ -40,10 +40,10 @@ class Store {
 
     }
 
-    render() {
-        return this.models.map(store => {
-            return React.createElement(Control, {key: store.key, store})
-        })
+    get render() {
+        //Костыль. Надеюсь временный. Заставляет перерендерить кмопоненты :)
+        let a = _.values(store.currentModel?.data?.props)[0] && null
+        return  this.models.map(store => React.createElement(Control, {key: store.key, store}))
     }
 
     download() {
