@@ -6,9 +6,6 @@ export type AllKeysOf<T extends object> = {
     [keys in Paths<T> | 'key']: PropDescription | null;
 };
 
-export type Annotations<T extends object> = Partial<AllKeysOf<T>>
-
-
 export type PropDescription = {
     title?: string
     type?: string
@@ -19,7 +16,7 @@ export type PropDescription = {
 }
 
 
-export type Annotations1<T extends object> =
+export type Annotations<T extends object> =
     {
         //[key in keyof OmitUnimportant<T>]: undefined | Annotation<T[key]> | AnnotationBuilder<T[key]>;
         [key in keyof OmitUnimportant<T>]: undefined | AnnotationBuilder<T[key]>;

@@ -85,7 +85,21 @@ export const Input = (props: InputProps ) => {
     );
 }
 
-export const input = define(RInput, {
+export const input = define(Input, {
+    adaptiveLayout: undefined,
+    disabled: undefined,
+    fluid: undefined,
+    hidden: undefined,
+    hiddenInPrintMode: undefined,
+    label: undefined,
+    labelPosition: undefined,
+    onChange: undefined,
+    placeholder: undefined,
+    readOnly: undefined,
+    size: undefined,
+    transparent: undefined,
+    type: undefined,
+    value: undefined
 
     /*key: null,
     "adaptiveLayout": {title: "Adaptive Layout", defaultValue: ""},

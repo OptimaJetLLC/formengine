@@ -2,7 +2,7 @@ import {Form, InputPicker} from "rsuite";
 import {CSSProperties} from "react";
 import {define} from "../utils/define";
 import {InputPickerProps} from "rsuite/esm/InputPicker/InputPicker";
-import {Annotations1} from "../utils/constants";
+import {Annotations} from "../utils/constants";
 import {boolean, booleanOptional, string} from "../utils/AnnotationBuilder";
 
 export interface DropdownProps {
@@ -32,11 +32,11 @@ export const dropdown = define(Dropdown, {
 
 })
 
-let a: Annotations1<InputPickerProps> = {
+let a: Annotations<InputPickerProps> = {
     data: undefined,
     block: booleanOptional,
     appearance: undefined,
-    placeholder: string.setTitle(""),
+    placeholder: string,
 }
 
 export const inputPicker = define(InputPicker, a)
