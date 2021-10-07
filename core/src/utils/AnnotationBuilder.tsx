@@ -1,53 +1,28 @@
-import React, {ClassicComponent, Component, ComponentClass, FunctionComponent, ReactNode} from "react";
+import React, {ComponentClass, FunctionComponent} from "react";
 import _ from "lodash";
 import {Checkbox, Form, Input} from "rsuite";
 import {store} from "../stores/Store";
 import {ComponentStore} from "../stores/ComponentStore";
-import {observer} from "mobx-react-lite";
-
-/*export class Builder<T> {
-    constructor(private creator: Annotation<string>) {
-    }
-
-    with<K extends keyof T>(obj: Pick<T, K>): this & Pick<T, K> {
-        return Object.assign(this, obj);
-    }
-
-    build(this: this & T): T {
-        return new this.creator(this);
-    }
-}*/
 
 export class Annotation<T> {
     key!: string
     title?: string;
     type?: string;
     section?: string;
-    input!: FunctionComponent<PropertyEditProps>;
+    input!: ComponentClass<PropertyEditProps> | FunctionComponent<PropertyEditProps>;
     initValue: T;
     data?: T[] | Record<string, T>;
     description?: string;
 
-    constructor(initValue: T, override?: Partial<Omit<Annotation<T>, "initValue">>) {
+    constructor(initValue: T) {
         this.initValue = initValue
     }
-    /*constructor(builder: Builder<Annotation<T>> & Annotation<T>) {
-        this.key = builder.key;
-        this.title = builder.title;
-        this.type = builder.type;
-        this.section = builder.section;
-        this.input = builder.input;
-        this.initValue = builder.initValue
-        this.data = builder.data;
-        this.description = builder.description;
-    }*/
 
     render() {
         if (!store.currentModel?.data) return null
         if (!this.input) return null
-        const Input1 = this.input
-
-        return (<Input1 key={this.key} model={store.currentModel.data} annotation={this}/>);
+        const Input = this.input
+        return (<Input key={this.key} model={store.currentModel.data} annotation={this}/>);
         //return observer(React.createElement(this.input, {key:this.key, model:store.currentModel.data, annotation:this}))
     }
 }
@@ -55,68 +30,67 @@ export class Annotation<T> {
 
 //TODO validation? or value by default
 export class AnnotationBuilder<T> {
-    private annotation: Annotation<T>;
+    private template: Annotation<T>;
     private readonly initValue: T
 
-    constructor(initValue: T) {
-        this.annotation = new Annotation<T>(initValue)
+    constructor(initValue: T, obj?: Partial<Omit<Annotation<T>, 'render' | 'initValue'>>) {
+        this.template = new Annotation<T>(initValue)
         this.initValue = initValue
+        if (obj) Object.assign(this.template, obj)
     }
 
+    /** Create builder with sent template */
     static from<T>(template: Annotation<T>) {
         let builder = new AnnotationBuilder<T>(_.cloneDeep(template.initValue))
-        builder.annotation = _.cloneDeep(template)
+        builder.template = _.cloneDeep(template)
         return builder
     }
 
-    setTitle(title: string) {
-        this.annotation.title = title
-        return this
+
+    /** Create new builder with template assigned with passed object */
+    with(obj: Partial<Omit<Annotation<T>, 'render'>>) {
+        let builder = AnnotationBuilder.from(this.template)
+        Object.assign(builder.template, obj)
+        return builder
     }
 
-    set() {
-
-        return this
+    /** Create new builder with template assigned with passed object */
+    withTitle(title?: string) {
+        return this.with({title})
     }
 
-    //setInput(input: FunctionComponent<PropertyEditProps> | ComponentClass<PropertyEditProps>) {
-    setInput(input: FunctionComponent<PropertyEditProps>) {
-        this.annotation.input = observer(input)
-        return this
+    /** Create new builder with template assigned with passed object */
+    withInput(input: FunctionComponent<PropertyEditProps> | ComponentClass<PropertyEditProps>) {
+    //withInput(input: FunctionComponent<PropertyEditProps>) {
+        return this.with({input})
     }
 
-    build(key: string) {
-        let builtAnnotation = new Annotation<T>(this.initValue)
+    //TODO validation?
+    /** Create annotation from template settled before. Set key if passed and title from key. */
+    build(key?: string) {
+        let annotation = _.cloneDeep(this.template)
 
-        this.annotation.key = key
-        //this.annotation.title = this.annotation.title || _.startCase(key)
-        this.annotation.title = _.startCase(key)
-        this.annotation.type = this.annotation.type ?? typeof this.annotation.initValue
-        this.annotation.section = this.annotation.section ?? "main"
-        //TODO validation
-        //this.annotation.input = this.annotation.input ?? ""
-        //value.data = value.data ?? ""
-        this.annotation.description = this.annotation.description ?? ""
+        if (key) {
+            annotation.key = key
+            annotation.title = annotation.title ?? _.startCase(key)
+        }
 
-        //return this.annotation
-        return _.cloneDeep(this.annotation)
-        //return builtAnnotation
+        annotation.type = annotation.type ?? typeof annotation.initValue
+        annotation.section = annotation.section ?? "main"
+        annotation.description = annotation.description ?? ""
+
+        return annotation
     }
-
 }
 
 
-const keyTemplate = new AnnotationBuilder("").setInput(KeyInput).build("")
-export const key = AnnotationBuilder.from(keyTemplate)
+export const key = new AnnotationBuilder("", {input: KeyInput})
 
-const stringTemplate = new AnnotationBuilder("").setInput(StringInput).build("")
-export const string = AnnotationBuilder.from(stringTemplate)
-export const stringOptional = AnnotationBuilder.from<string | undefined>(stringTemplate)
+export const string = new AnnotationBuilder("", {input: StringInput})
+export const stringOptional = new AnnotationBuilder("" as string | undefined, {input: StringInput})
 
-const booleanTemplate = new AnnotationBuilder(false).setInput(BooleanInput).build("")
-export const boolean = AnnotationBuilder.from(booleanTemplate)
-export const booleanOptional = AnnotationBuilder.from<boolean | undefined>(booleanTemplate)
-
+export const boolean = new AnnotationBuilder(false, {input: BooleanInput})
+export const booleanOptional = new AnnotationBuilder(false as boolean | undefined, {input: BooleanInput})
 
 
 interface PropertyEditProps {
@@ -151,7 +125,6 @@ function StringInput({model, annotation}: PropertyEditProps) {
         </div>
     )
 }
-
 
 function BooleanInput({model, annotation}: PropertyEditProps) {
 

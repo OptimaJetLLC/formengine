@@ -30,7 +30,6 @@ class Store {
             models: observable.shallow,
             render: computed,
             tree: computed,
-            download: action.bound,
             upload: action.bound,
             clear: action.bound,
             fillFormModel: action.bound,
