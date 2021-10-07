@@ -30,7 +30,6 @@ export interface InputProps {
     other: {
         Required: boolean
     }*/
-
 }
 
 export enum InputType {
@@ -100,22 +99,4 @@ export const input = define(Input, {
     transparent: undefined,
     type: undefined,
     value: undefined
-
-    /*key: null,
-    "adaptiveLayout": {title: "Adaptive Layout", defaultValue: ""},
-    "className": {title: "Class name", defaultValue: ""},
-    "hidden": {title: "Hidden", defaultValue: ""},
-    "hiddenInPrintMode": {title: "Hidden In PrintMode", defaultValue: ""},
-    "style": {title: "Style", defaultValue: undefined},
-    "disabled": {title: "Disabled", defaultValue: false},
-    "fluid": {title: "Fluid", defaultValue: ""},
-    "label": {title: "Label", defaultValue: ""},
-    "labelPosition": {title: "Label position", defaultValue: ""},
-    "placeholder": {title: "Placeholder", defaultValue: ""},
-    "readOnly": {title: "Readonly", defaultValue: false},
-    "size": {title: "Size", defaultValue: ""},
-    "transparent": {title: "Transparent", defaultValue: ""},
-    "type": {title: "Type", defaultValue: ""},
-    onChange: null,
-    value: null*/
 })

@@ -1,6 +1,5 @@
 import React from 'react';
 import {Container, Content, Footer, Header} from 'rsuite';
-import {FormViewer} from "./FormViewer";
 import {FormBuilder} from "./FormBuilder";
 
 

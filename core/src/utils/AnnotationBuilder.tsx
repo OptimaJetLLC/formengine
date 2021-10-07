@@ -23,7 +23,6 @@ export class Annotation<T> {
         if (!this.input) return null
         const Input = this.input
         return (<Input key={this.key} model={store.currentModel.data} annotation={this}/>);
-        //return observer(React.createElement(this.input, {key:this.key, model:store.currentModel.data, annotation:this}))
     }
 }
 

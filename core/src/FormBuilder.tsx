@@ -1,13 +1,16 @@
 import {observer} from "mobx-react-lite";
-import React, {ReactNode, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {store} from "./stores/Store";
-import {Button, Col, Dropdown, Form, Input as RInput, Input, Nav, Row, Tree} from "rsuite";
+import {Button, Col, Dropdown, Nav, Row, Tree} from "rsuite";
 import _ from "lodash";
-import {configure, toJS} from "mobx";
+import {configure} from "mobx";
 import {ComponentStore} from "./stores/ComponentStore";
 import {ItemDataType} from "rsuite/esm/@types/common";
 import {mapper} from "./views";
 import {Node} from "./utils/Node";
+import {downloadForm} from "./utils/downloadForm";
+import {uploadForm} from "./utils/uploadForm";
+import {getForm} from "./utils/getForm";
 
 
 export interface FormBuilderProps {
@@ -16,14 +19,14 @@ export interface FormBuilderProps {
 
 export const FormBuilder = observer((props: FormBuilderProps) => {
     useEffect(() => {
-        store.fillFormModel("test", props.getForm);
+        getForm("test", props.getForm);
     }, []);
 
 
     //TODO upgrade tree now its so poorly
     return <div>
-        <Button onClick={store.download}>Download</Button>
-        <Button onClick={store.upload}>Upload</Button>
+        <Button onClick={downloadForm}>Download</Button>
+        <Button onClick={uploadForm}>Upload</Button>
         <Button onClick={store.clear}>Clear</Button>
         <Dropdown title={"Components"}>
             {_.keys(mapper).map(value =>
