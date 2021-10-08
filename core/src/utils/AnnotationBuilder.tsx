@@ -19,10 +19,10 @@ export class Annotation<T> {
     }
 
     render() {
-        if (!store.currentModel?.data) return null
+        if (!store.currentNode?.item) return null
         if (!this.input) return null
         const Input = this.input
-        return (<Input key={this.key} model={store.currentModel.data} annotation={this}/>);
+        return (<Input key={this.key} model={store.currentNode.item} annotation={this}/>);
     }
 }
 

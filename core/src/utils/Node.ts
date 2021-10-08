@@ -1,30 +1,25 @@
 import _ from "lodash";
 import {ComponentStore} from "../stores/ComponentStore";
-import {ItemDataType} from "rsuite/esm/@types/common";
 
-
-export class Node implements ItemDataType {
+export class Node {
     key: string
     parent?: Node
     children?: Node[]
-    data?: ComponentStore
+    item?: ComponentStore
 
-    constructor(data?: ComponentStore, parent?: Node) {
-        this.key = data?.key ?? "";
-
-        if (data) {
-            this.data = data
-        }
-
-        this.parent = parent;
-
-        if (data?.children) {
-            this.children = data.children.map(child => new Node(child, this));
-        }
+    get isRoot() {
+        return _.isEmpty(this.item);
     }
 
-    get isRoot(): boolean {
-        return _.isEmpty(this.key);
+    constructor(item?: ComponentStore, parent?: Node) {
+        this.key = item?.key ?? "";
+        this.parent = parent;
+
+        if (item) this.item = item
+
+        if (item?.children) {
+            this.children = item.children.map(child => new Node(child, this));
+        }
     }
 }
 

@@ -40,13 +40,15 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                 <Tree
                     draggable
                     onSelect={(activeNode) => {
-                        store.currentModel = activeNode as Node
+                        store.currentNode = activeNode as Node
                     }}
-                    value={store.currentModel?.key ?? ""}
+                    value={store.currentNode?.key ?? ""}
                     labelKey="key"
                     valueKey="key"
                     style={{maxHeight: 'inherit', height: 'inherit'}}
-                    data={store.tree.children as ItemDataType[]}/>
+                    data={store.tree.children as ItemDataType[]}
+                    //data={store.form.components as ItemDataType[]}
+                />
             </Col>
 
             <Col md={15}>{store.render}</Col>
@@ -60,7 +62,7 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
 
 const PropertiesEditor = () => {
     const [activeTab, setActiveTab] = useState('main');
-    const currentModel = store.currentModel?.data
+    const currentModel = store.currentNode?.item
 
     if (!currentModel) return null
 

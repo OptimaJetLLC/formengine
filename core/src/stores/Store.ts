@@ -7,7 +7,7 @@ import {Component} from "../components/Component";
 
 
 class Store {
-    currentModel: Node | null = null
+    currentNode: Node | null = null
 
     form = {
         //name?
@@ -23,7 +23,7 @@ class Store {
 
     constructor() {
         makeObservable(this, {
-            currentModel: observable.ref,
+            currentNode: observable.ref,
             form: observable,
             render: computed,
             tree: computed,
@@ -36,8 +36,8 @@ class Store {
 
     get render() {
         //Костыль. Надеюсь временный. Заставляет перерендерить кмопоненты :)
-        let a = _.values(store.currentModel?.data?.props)[0] && null
-        return  this.form.components.map(store => React.createElement(Component, {key: store.key, store}))
+        let a = _.values(store.currentNode?.item?.props)[0] && null
+        return  this.tree.children?.map(node => React.createElement(Component, {key: node.key, node}))
     }
 
     clear() {
@@ -49,6 +49,9 @@ class Store {
 
         function removeReactChildren(key: any, value: any) {
             if (key === "children" && value?.[0] && value[0].$$typeof === Symbol.for('react.element')) {
+                return undefined
+            }
+            if (key === "parent" && value && value.key && value.type && value.props){
                 return undefined
             }
 
