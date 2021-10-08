@@ -16,7 +16,7 @@ export const Header = (props : HeaderProps ) => {
     );
 }
 
-export const header = define(Header, {
+export const header = define("Header", Header, {
     //"content": {title: 'Content', type: 'string', defaultValue: ''},
     //"subheader": {title: 'Subheader', type: 'string', defaultValue: ''},
 

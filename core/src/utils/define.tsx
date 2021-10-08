@@ -3,8 +3,9 @@ import ComponentDefinition, {Annotations} from "./constants";
 import _ from "lodash";
 import {Annotation, key, string} from "./AnnotationBuilder";
 
-export const define = <T extends object>(view: FunctionComponent<T>, annotations: Annotations<T>)
+export const define = <T extends object>(name: string, view: FunctionComponent<T>, annotations: Annotations<T>)
     : ComponentDefinition<any> => {
+    if (_.isEmpty(name)) throw Error("Name cannot be empty!")
 
     let properties = {} as Record<string, Annotation<any>>
 
@@ -15,7 +16,7 @@ export const define = <T extends object>(view: FunctionComponent<T>, annotations
     })
 
     return ({
-        type: view.name || view.displayName || "Component",
+        type: name,
         view,
         annotations: properties
     })

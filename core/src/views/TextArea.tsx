@@ -19,7 +19,7 @@ export const TextArea = (props :TextAreaProps) => {
 const Textarea = (props: any) =>
     <Input rows={5} as="textarea" {...props}/>;
 
-export const textArea = define(TextArea, {
+export const textArea = define("TextArea", TextArea, {
     "label": undefined,
     "placeholder": undefined,
     "rows": undefined,

@@ -84,7 +84,7 @@ export const Input = (props: InputProps ) => {
     );
 }
 
-export const input = define(Input, {
+export const input = define("Input", Input, {
     adaptiveLayout: undefined,
     disabled: undefined,
     fluid: undefined,

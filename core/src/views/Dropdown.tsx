@@ -24,19 +24,10 @@ export const Dropdown = (props : DropdownProps ) => {
     )
 }
 
-export const dropdown = define(Dropdown, {
+export const dropdown = define("Dropdown", Dropdown, {
     "block": boolean,
     "data": undefined,
     "label": string,
     "placeholder": string,
 
 })
-
-let a: Annotations<InputPickerProps> = {
-    data: undefined,
-    block: booleanOptional,
-    appearance: undefined,
-    placeholder: string,
-}
-
-export const inputPicker = define(InputPicker, a)

@@ -30,7 +30,7 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
         <Button onClick={store.clear}>Clear</Button>
         <Dropdown title={"Components"}>
             {_.keys(mapper).map(value =>
-                <Dropdown.Item onClick={() => store.add(value)}>{value}</Dropdown.Item>)}
+                <Dropdown.Item key={value} onClick={() => store.add(value)}>{value}</Dropdown.Item>)}
         </Dropdown>
 
         <br/><br/>
@@ -39,15 +39,12 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
             <Col md={4}>
                 <Tree
                     draggable
-                    onSelect={(activeNode) => {
-                        store.currentNode = activeNode as Node
-                    }}
+                    onSelect={(activeNode) => store.currentNode = activeNode as Node}
                     value={store.currentNode?.key ?? ""}
                     labelKey="key"
                     valueKey="key"
                     style={{maxHeight: 'inherit', height: 'inherit'}}
                     data={store.tree.children as ItemDataType[]}
-                    //data={store.form.components as ItemDataType[]}
                 />
             </Col>
 
