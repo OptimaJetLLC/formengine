@@ -1,9 +1,7 @@
 import {Form, InputPicker} from "rsuite";
 import {CSSProperties} from "react";
 import {define} from "../utils/define";
-import {InputPickerProps} from "rsuite/esm/InputPicker/InputPicker";
-import {Annotations} from "../utils/constants";
-import {boolean, booleanOptional, string} from "../utils/AnnotationBuilder";
+import {boolean, string} from "../utils/DefaultAnnotations";
 
 export interface DropdownProps {
     label: string,

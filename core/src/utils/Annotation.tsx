@@ -1,0 +1,25 @@
+import {PropertyEditorProps} from "./Types";
+import React, {ComponentClass, FunctionComponent} from "react";
+import {store} from "../stores/Store";
+
+export class Annotation<T> {
+    key!: string
+    title?: string;
+    type?: string;
+    section?: string;
+    input!: ComponentClass<PropertyEditorProps> | FunctionComponent<PropertyEditorProps>;
+    initValue: T;
+    data?: T[] | Record<string, T>;
+    description?: string;
+
+    constructor(initValue: T) {
+        this.initValue = initValue
+    }
+
+    render(): JSX.Element | null {
+        if (!store.currentNode?.item) return null
+        if (!this.input) return null
+        const Input = this.input
+        return (<Input key={this.key} model={store.currentNode.item} annotation={this}/>);
+    }
+}

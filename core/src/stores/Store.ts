@@ -1,4 +1,4 @@
-import {action, computed, makeObservable, observable, toJS} from "mobx";
+import {action, autorun, computed, intercept, makeObservable, observable, toJS} from "mobx";
 import {ComponentStore} from "./ComponentStore";
 import {Node} from "../utils/Node";
 import _ from "lodash";
@@ -21,6 +21,13 @@ class Store {
         return root
     }
 
+    get render() {
+        //Костыль. Надеюсь временный. Заставляет перерендерить кмопоненты :)
+        let a = _.values(store.currentNode?.item?.props)[0] && null
+        //for (let a in store.currentNode?.item?.props) break
+        return this.tree.children?.map(node => React.createElement(Component, {key: node.key, node}))
+    }
+
     constructor() {
         makeObservable(this, {
             currentNode: observable.ref,
@@ -29,15 +36,10 @@ class Store {
             tree: computed,
             clear: action.bound,
             add: action.bound,
-
         })
-
-    }
-
-    get render() {
-        //Костыль. Надеюсь временный. Заставляет перерендерить кмопоненты :)
-        let a = _.values(store.currentNode?.item?.props)[0] && null
-        return  this.tree.children?.map(node => React.createElement(Component, {key: node.key, node}))
+        /*autorun(() => {
+            debugger
+        })*/
     }
 
     clear() {

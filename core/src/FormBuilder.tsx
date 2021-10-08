@@ -20,7 +20,7 @@ export interface FormBuilderProps {
 export const FormBuilder = observer((props: FormBuilderProps) => {
     useEffect(() => {
         getForm("test", props.getForm);
-    }, []);
+    }, [props.getForm]);
 
 
     //TODO upgrade tree now its so poorly
@@ -76,28 +76,6 @@ const PropertiesEditor = () => {
             </Nav>
             <div>
                 {a}
-                {/*{Object.keys(mapper[store.currentModel?.data?.type ?? ""]?.annotations ?? {}).map(key => {
-                        if (key === "key")
-                            return <div key={key}>
-                                <Form.ControlLabel>{key}</Form.ControlLabel>
-                                <RInput
-                                    value={_.get(store.currentModel?.data, key, "")}
-                                    onChange={value => {
-                                        store.currentModel!.data!.key = value as string;
-                                        //store.models[0]!.key = value as string;
-                                    }}
-                                />
-                            </div>;
-
-                        return <div key={key}>
-                            <Form.ControlLabel>{_.startCase(key)}</Form.ControlLabel>
-                            <RInput
-                                value={_.get(store.currentModel?.data?.props, key, "")}
-                                onChange={value => _.set(store.currentModel?.data?.props as object, key, value)}
-                            />
-                        </div>;
-                    }
-                )}*/}
             </div>
         </>
     )

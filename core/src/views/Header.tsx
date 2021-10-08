@@ -1,5 +1,5 @@
 import {define} from "../utils/define";
-import {string} from "../utils/AnnotationBuilder";
+import {string} from "../utils/DefaultAnnotations";
 
 export interface HeaderProps {
     content: string

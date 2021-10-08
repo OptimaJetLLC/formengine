@@ -13,6 +13,8 @@ export const FormViewer = observer((props: FormViewProps) => {
         getForm("test", props.getForm);
     }, []);
 
+
+
     return <div>
         {store.render}
     </div>;
