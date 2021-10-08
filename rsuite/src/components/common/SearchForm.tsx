@@ -3,6 +3,7 @@ import { Icon, Input, InputGroup } from 'rsuite';
 
 interface SearchFormProps {
     handleChange: (value: string) => void;
+    style?: Object
 }
 
 interface SearchFormState {
@@ -30,7 +31,7 @@ export default class SearchForm extends Component<SearchFormProps, SearchFormSta
 
     render() {
         const icon = this.state.value.length ? 'close-circle' : 'search';
-        return (<InputGroup inside size="xs">
+        return (<InputGroup inside size="xs" style={this.props.style}>
             <Input
                 onChange={this.handleChange.bind(this)}
                 placeholder="Search..."

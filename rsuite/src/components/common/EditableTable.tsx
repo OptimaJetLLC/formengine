@@ -62,7 +62,7 @@ export default class EditableTable extends Component<EditableTableProps, Editabl
   }
 
   componentDidUpdate(prevProps: EditableTableProps) {
-    setTimeout(_=> this.updateSize(), 10);
+    setTimeout(()=> this.updateSize(), 10);
   
     const {data} = this.props;
     if(prevProps.data != data) {

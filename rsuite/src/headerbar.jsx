@@ -1,14 +1,33 @@
 import JSON5 from 'json5';
 import { BuilderActions, FormBuilderStore } from 'optimajet-builder-shared';
 import React from 'react';
-import { Button, ButtonToolbar, Dropdown, Icon, IconButton, Nav, SelectPicker, Popover, Whisper  } from 'rsuite';
+import { Button, ButtonToolbar, Dropdown, Icon, IconButton, Nav, SelectPicker  } from 'rsuite';
 import drawcontrol from './components/drawcontrol';
 import Window from './components/window';
-import ToolbarNew from './toolbar-new';
+import Toolbar from './toolbar';
 import DraggingContext from './dragging-context';
+import styled from '@emotion/styled'
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import 'tippy.js/animations/scale.css';
+
+const Backdrop = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    background-color: black;
+    height: ${props => (!props.popupShow || props.isDragging ) ? 0 : '100%' };
+    opacity: ${props => (!props.popupShow || props.isDragging ) ? 0 : 0.25 };
+    z-index: 10;
+    transition: opacity 0.2s ease;
+`
+
+const Popover = styled(Tippy)`
+    border-radius: 10px;
+    background-color: rgb(51 51 51 / 80%);
+    box-shadow: 0px 0px 15px rgb(0 0 0 / 25%);
+`
+
 export default class HeaderBar extends React.Component {
     constructor(props) {
         super(props);
@@ -53,21 +72,29 @@ export default class HeaderBar extends React.Component {
 
     addButton() {
         const {localization} = this.props;
-        const content =  <ToolbarNew localization={localization?.toolbar} templates={this.props.templates}
+        const content = (
+            <Toolbar
+                localization={localization?.toolbar}
+                templates={this.props.templates}
                 externalControlList={this.props.externalControlList}
                 style={this.state.showRightPanel ? {} : { display: "none" }}
                 externalControlsOnly={this.props.externalControlsOnly}
-                builderControls={this.props.builderControls} />
-
-        return ( <DraggingContext.Consumer>
-            {({isDragging}) => (<Tippy maxWidth='none' content={content} arrow disabled={isDragging} interactive={true} animation='fade' duration={[null, 0]} animateFill={true}>
-                <div>
-                <IconButton onMouseOver={_=>this.setState({showPanel: true})} className="formbuilder-add-button" icon={<Icon icon="plus" />} color="green" circle />
-                    </div>
-                </Tippy>
-                 )}
-
-                 </DraggingContext.Consumer>
+                builderControls={this.props.builderControls}
+            />
+        );
+        return (
+            <DraggingContext.Consumer>
+                {({isDragging}) => (<>
+                    <Backdrop {...{popupShow: this.state.popupShow, isDragging}}/>
+                    <Popover  content={content} maxWidth='none' placement='bottom'
+                            arrow disabled={isDragging} interactive={true} animation='fade'
+                            onShow={_=>this.setState({popupShow: true})} onHide={_=>this.setState({popupShow: false})} 
+                            duration={[null, 0]} animateFill={true}>
+                        <div><IconButton className="formbuilder-add-button" style={{zIndex: 11, margin: 0}} icon={<Icon icon="plus" />}
+                                        color="green" circle /></div>
+                    </Popover>
+                </>)}
+            </DraggingContext.Consumer>
         )
     }
 
