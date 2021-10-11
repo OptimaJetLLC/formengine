@@ -18,16 +18,14 @@ export interface FormBuilderProps {
     getForm: ((code: string) => ComponentStore[])
 }
 
+const Tree = RTree as RsRefForwardingComponent<'div', TreeProps<ComponentStore | undefined>>;
+
 export const FormBuilder = observer((props: FormBuilderProps) => {
     useEffect(() => {
         getForm("test", props.getForm);
     }, [props.getForm]);
 
-
-    const Tree = RTree as RsRefForwardingComponent<'div', TreeProps<ComponentStore | undefined>>;
-
     //TODO upgrade tree now its so poorly
-    // @ts-ignore
     return <div>
         <Button onClick={downloadForm}>Download</Button>
         <Button onClick={uploadForm}>Upload</Button>
