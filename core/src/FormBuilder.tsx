@@ -49,7 +49,7 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
     </div>;
 })
 
-const PropertiesEditor = () => {
+const PropertiesEditor = observer(() => {
     const [activeTab, setActiveTab] = useState('main');
     const currentModel = store.currentNode?.data
 
@@ -71,7 +71,7 @@ const PropertiesEditor = () => {
             </div>
         </>
     )
-};
+});
 
 //TODO move to other common place
 //State can be changed from anywhere
