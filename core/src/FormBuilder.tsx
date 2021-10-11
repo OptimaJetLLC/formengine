@@ -1,7 +1,7 @@
 import {observer} from "mobx-react-lite";
 import React, {useEffect, useState} from "react";
 import {store} from "./stores/Store";
-import {Button, Col, Dropdown, Nav, Row, Tree as RTree} from "rsuite";
+import {Button, Col, Dropdown, Nav, Row, Tree} from "rsuite";
 import _ from "lodash";
 import {configure} from "mobx";
 import {ComponentStore} from "./stores/ComponentStore";
@@ -11,14 +11,11 @@ import {Node} from "./utils/Node";
 import {downloadForm} from "./utils/downloadForm";
 import {uploadForm} from "./utils/uploadForm";
 import {getForm} from "./utils/getForm";
-import {TreeProps} from "rsuite/esm/Tree/Tree";
 
 
 export interface FormBuilderProps {
     getForm: ((code: string) => ComponentStore[])
 }
-
-const Tree = RTree as RsRefForwardingComponent<'div', TreeProps<ComponentStore | undefined>>;
 
 export const FormBuilder = observer((props: FormBuilderProps) => {
     useEffect(() => {
@@ -42,10 +39,9 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                 <Tree
                     draggable
                     onSelect={(activeNode) => store.currentNode = activeNode as Node}
-                    value={store.currentNode?.data}
-                    defaultValue={store.currentNode?.data}
+                    value={store.currentNode?.data?.key ?? ""}
                     labelKey="key"
-                    valueKey="data"
+                    valueKey="key"
                     style={{maxHeight: 'inherit', height: 'inherit'}}
                     data={store.tree.children as ItemDataType[]}
                 />
