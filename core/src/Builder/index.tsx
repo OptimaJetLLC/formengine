@@ -1,29 +1,28 @@
 import {observer} from "mobx-react-lite";
 import React, {useEffect, useState} from "react";
-import {store} from "./stores/Store";
+import {store} from "../stores/Store";
 import {Button, Col, Dropdown, Nav, Row, Tree as RTree} from "rsuite";
 import _ from "lodash";
 import {configure} from "mobx";
-import {ComponentStore} from "./stores/ComponentStore";
+import {ComponentStore} from "../stores/ComponentStore";
 import {ItemDataType, RsRefForwardingComponent} from "rsuite/esm/@types/common";
-import {mapper} from "./views";
-import {Node} from "./utils/Node";
-import {downloadForm} from "./utils/downloadForm";
-import {uploadForm} from "./utils/uploadForm";
-import {getForm} from "./utils/getForm";
+import {mapper} from "../views";
+import {Node} from "../utils/Node";
+import {downloadForm} from "../utils/downloadForm";
+import {uploadForm} from "../utils/uploadForm";
+import {getForm} from "../utils/getForm";
 import {TreeProps} from "rsuite/esm/Tree/Tree";
+import wrapper from "./components/BuilderWrapper";
 
 
-export interface FormBuilderProps {
-    getForm: ((code: string) => ComponentStore[])
-}
 
-export const FormBuilder = observer((props: FormBuilderProps) => {
+const FormBuilder = observer((props: FormBuilderProps) => {
     useEffect(() => {
         getForm("test", props.getForm);
     }, [props.getForm]);
 
 
+    store.wrapper = wrapper;
     const Tree = RTree as RsRefForwardingComponent<'div', TreeProps<ComponentStore | undefined>>;
 
     //TODO upgrade tree now its so poorly
@@ -87,3 +86,8 @@ const PropertiesEditor = () => {
 //TODO move to other common place
 //State can be changed from anywhere
 configure({enforceActions: "never"})
+
+export interface FormBuilderProps {
+    getForm: ((code: string) => ComponentStore[])
+}
+export default FormBuilder;

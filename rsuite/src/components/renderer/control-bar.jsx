@@ -34,28 +34,6 @@ class CC extends React.Component {
         });
     }
 
-    onRemoveControl = (key) => {
-        //FormBuilderStore.remove({key});
-    }
-
-    onCopyControl(model, e) {
-        // const str = JSON5.stringify(model);
-        // const el = document.createElement('textarea');
-        // el.value = str;
-        // el.setAttribute('readonly', '');
-        // el.style.position = 'absolute';
-        // el.style.left = '-9999px';
-        // document.body.appendChild(el);
-        // const selected = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false;
-        // el.select();
-        // document.execCommand('copy');
-        // document.body.removeChild(el);
-        // if (selected) {
-        //     document.getSelection().removeAllRanges();
-        //     document.getSelection().addRange(selected);
-        // }
-    }
-
     updateBarPosition() {}
 
     componentDidMount(){
@@ -211,25 +189,6 @@ export default class extends CC {
                 selection.style.transform = "translate3d(" + x + "px, " + y + "px, 0)";
             }
             }
-
-
-
-            var onDragOver = (e) => {
-                e.preventDefault();
-                let controlPos = e.currentTarget.getBoundingClientRect();
-                if (e.clientY <= (controlPos.top + controlPos.height / 2)) 
-                {
-                    me.setState({dragOverTop: true, dragOverBottom: false});
-                } else {
-                    me.setState({dragOverTop: false, dragOverBottom: true});
-                }
-            }
-
-            var onDragEnd = () => {   
-                me.setState({dragging: false, dragOverTop: false, dragOverBottom: false});
-            }
-
-
 
             var onMouseOver = (e) => {
                 e.preventDefault();
@@ -495,13 +454,6 @@ export default class extends CC {
                 onMouseOver: onMouseOver,
                 onMouseLeave: onMouseLeave,
                 // onMouseDown: onMouseDown,
-                // draggable: !model.pinned,
-                // onDragStart: onDragStart,
-                // onDragEnd: onDragEnd,
-                // onDragEnter: dragging ? undefined : onDragEnter,
-                // onDragLeave: dragging ? undefined : onDragLeave,
-                // onDragOver: dragging ? undefined : onDragOver,
-                // onDrop: dragging ? undefined : onDrop
             }
 
             const resizing = options.me.props?.parent?.state.resizing || false;    

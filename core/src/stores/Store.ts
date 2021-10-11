@@ -8,6 +8,10 @@ import {Component} from "../components/Component";
 
 class Store {
     currentNode: Node | null = null
+    isDragging?: boolean
+    isResizing?: boolean
+    isMoving?: boolean
+    wrapper?: Function
 
     form = {
         //name?
@@ -25,7 +29,7 @@ class Store {
         //Костыль. Надеюсь временный. Заставляет перерендерить кмопоненты :)
         let a = _.values(store.currentNode?.data?.props)[0] && null
         //for (let a in store.currentNode?.item?.props) break
-        return this.tree.children?.map(node => React.createElement(Component, {key: node.key, node}))
+        return this.tree.children?.map(node => React.createElement(Component, {key: node.key, node, wrapper: this.wrapper}))
     }
 
     constructor() {

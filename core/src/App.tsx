@@ -1,6 +1,6 @@
 import React from 'react';
 import {Container, Content, Footer, Header} from 'rsuite';
-import {FormBuilder} from "./FormBuilder";
+import FormBuilder from "./Builder";
 
 
 function App() {
