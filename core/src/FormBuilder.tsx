@@ -5,7 +5,7 @@ import {Button, Col, Dropdown, Nav, Row, Tree} from "rsuite";
 import _ from "lodash";
 import {configure} from "mobx";
 import {ComponentStore} from "./stores/ComponentStore";
-import {ItemDataType, RsRefForwardingComponent} from "rsuite/esm/@types/common";
+import {ItemDataType} from "rsuite/esm/@types/common";
 import {mapper} from "./views";
 import {Node} from "./utils/Node";
 import {downloadForm} from "./utils/downloadForm";
@@ -39,7 +39,7 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                 <Tree
                     draggable
                     onSelect={(activeNode) => store.currentNode = activeNode as Node}
-                    value={store.currentNode?.data?.key ?? ""}
+                    value={store.currentNode?.data?.key}
                     labelKey="key"
                     valueKey="key"
                     style={{maxHeight: 'inherit', height: 'inherit'}}
