@@ -1,16 +1,17 @@
 import {observer} from "mobx-react-lite";
 import React, {useEffect, useState} from "react";
 import {store} from "./stores/Store";
-import {Button, Col, Dropdown, Nav, Row, Tree} from "rsuite";
+import {Button, Col, Dropdown, Nav, Row, Tree as RTree} from "rsuite";
 import _ from "lodash";
 import {configure} from "mobx";
 import {ComponentStore} from "./stores/ComponentStore";
-import {ItemDataType} from "rsuite/esm/@types/common";
+import {ItemDataType, RsRefForwardingComponent} from "rsuite/esm/@types/common";
 import {mapper} from "./views";
 import {Node} from "./utils/Node";
 import {downloadForm} from "./utils/downloadForm";
 import {uploadForm} from "./utils/uploadForm";
 import {getForm} from "./utils/getForm";
+import {TreeProps} from "rsuite/esm/Tree/Tree";
 
 
 export interface FormBuilderProps {
@@ -23,7 +24,10 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
     }, [props.getForm]);
 
 
+    const Tree = RTree as RsRefForwardingComponent<'div', TreeProps<ComponentStore | undefined>>;
+
     //TODO upgrade tree now its so poorly
+    // @ts-ignore
     return <div>
         <Button onClick={downloadForm}>Download</Button>
         <Button onClick={uploadForm}>Upload</Button>
@@ -40,9 +44,10 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                 <Tree
                     draggable
                     onSelect={(activeNode) => store.currentNode = activeNode as Node}
-                    value={store.currentNode?.key ?? ""}
+                    value={store.currentNode?.data}
+                    defaultValue={store.currentNode?.data}
                     labelKey="key"
-                    valueKey="key"
+                    valueKey="data"
                     style={{maxHeight: 'inherit', height: 'inherit'}}
                     data={store.tree.children as ItemDataType[]}
                 />
@@ -50,16 +55,14 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
 
             <Col md={15}>{store.render}</Col>
 
-            <Col md={5}>
-                <PropertiesEditor/>
-            </Col>
+            <Col md={5}> <PropertiesEditor/> </Col>
         </Row>
     </div>;
 })
 
 const PropertiesEditor = () => {
     const [activeTab, setActiveTab] = useState('main');
-    const currentModel = store.currentNode?.item
+    const currentModel = store.currentNode?.data
 
     if (!currentModel) return null
 

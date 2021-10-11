@@ -23,7 +23,7 @@ class Store {
 
     get render() {
         //Костыль. Надеюсь временный. Заставляет перерендерить кмопоненты :)
-        let a = _.values(store.currentNode?.item?.props)[0] && null
+        let a = _.values(store.currentNode?.data?.props)[0] && null
         //for (let a in store.currentNode?.item?.props) break
         return this.tree.children?.map(node => React.createElement(Component, {key: node.key, node}))
     }

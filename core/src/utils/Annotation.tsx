@@ -17,9 +17,9 @@ export class Annotation<T> {
     }
 
     render(): JSX.Element | null {
-        if (!store.currentNode?.item) return null
+        if (!store.currentNode?.data) return null
         if (!this.input) return null
         const Input = this.input
-        return (<Input key={this.key} model={store.currentNode.item} annotation={this}/>);
+        return (<Input key={this.key} model={store.currentNode.data} annotation={this}/>);
     }
 }
