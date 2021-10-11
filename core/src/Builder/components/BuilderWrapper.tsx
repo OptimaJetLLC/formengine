@@ -43,7 +43,8 @@ class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapper
     // };
 
     isSelected = () => {
-        return store.currentNode == this.props?.node;
+        let key = store.currentNode;
+        return key == this.props?.node;
     }
 
     setSelected = () => {
