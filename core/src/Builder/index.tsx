@@ -1,32 +1,26 @@
-import {observer} from "mobx-react-lite";
-import React, {useEffect, useState} from "react";
-import {store} from "../stores/Store";
-import {Button, Col, Dropdown, Nav, Row, Tree as RTree} from "rsuite";
 import _ from "lodash";
-import {configure} from "mobx";
-import {ComponentStore} from "../stores/ComponentStore";
-import {ItemDataType, RsRefForwardingComponent} from "rsuite/esm/@types/common";
-import {mapper} from "../views";
-import {Node} from "../utils/Node";
-import {downloadForm} from "../utils/downloadForm";
-import {uploadForm} from "../utils/uploadForm";
-import {getForm} from "../utils/getForm";
-import {TreeProps} from "rsuite/esm/Tree/Tree";
+import { configure } from "mobx";
+import { observer } from "mobx-react-lite";
+import React, { useState } from "react";
+import { Button, Col, Dropdown, Nav, Row, Tree } from "rsuite";
+import { ItemDataType } from "rsuite/esm/@types/common";
+import { ComponentStore } from "../stores/ComponentStore";
+import { store } from "../stores/Store";
+import { downloadForm } from "../utils/downloadForm";
+import { Node } from "../utils/Node";
+import { uploadForm } from "../utils/uploadForm";
+import { mapper } from "../views";
 import wrapper from "./components/BuilderWrapper";
+import { FormViewer, FormViewerProps } from "../FormViewer";
+import BuilderWrapper from './components/BuilderWrapper'
 
 
+export interface FormBuilderProps extends FormViewerProps {
 
-const FormBuilder = observer((props: FormBuilderProps) => {
-    useEffect(() => {
-        getForm("test", props.getForm);
-    }, [props.getForm]);
+}
 
-
+export const FormBuilder = observer((props: FormBuilderProps) => {
     store.wrapper = wrapper;
-    const Tree = RTree as RsRefForwardingComponent<'div', TreeProps<ComponentStore | undefined>>;
-
-    //TODO upgrade tree now its so poorly
-    // @ts-ignore
     return <div>
         <Button onClick={downloadForm}>Download</Button>
         <Button onClick={uploadForm}>Upload</Button>
@@ -43,23 +37,22 @@ const FormBuilder = observer((props: FormBuilderProps) => {
                 <Tree
                     draggable
                     onSelect={(activeNode) => store.currentNode = activeNode as Node}
-                    value={store.currentNode?.data}
-                    defaultValue={store.currentNode?.data}
+                    value={store.currentNode?.data?.key}
                     labelKey="key"
-                    valueKey="data"
+                    valueKey="key"
                     style={{maxHeight: 'inherit', height: 'inherit'}}
                     data={store.tree.children as ItemDataType[]}
                 />
             </Col>
 
-            <Col md={15}>{store.render}</Col>
+            <Col md={15}><FormViewer {...props} wrapper={BuilderWrapper}/></Col>
 
             <Col md={5}> <PropertiesEditor/> </Col>
         </Row>
     </div>;
 })
 
-const PropertiesEditor = () => {
+const PropertiesEditor = observer(() => {
     const [activeTab, setActiveTab] = useState('main');
     const currentModel = store.currentNode?.data
 
@@ -81,7 +74,7 @@ const PropertiesEditor = () => {
             </div>
         </>
     )
-};
+});
 
 //TODO move to other common place
 //State can be changed from anywhere

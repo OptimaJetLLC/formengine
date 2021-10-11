@@ -1,9 +1,6 @@
-import {action, autorun, computed, intercept, makeObservable, observable, toJS} from "mobx";
+import {action,  computed, makeObservable, observable, toJS} from "mobx";
 import {ComponentStore} from "./ComponentStore";
 import {Node} from "../utils/Node";
-import _ from "lodash";
-import React from "react";
-import {Component} from "../components/Component";
 
 
 class Store {
@@ -15,7 +12,6 @@ class Store {
 
     form = {
         //name?
-        //IRL
         components: new Array<ComponentStore>()
     }
 
@@ -25,18 +21,10 @@ class Store {
         return root
     }
 
-    get render() {
-        //Костыль. Надеюсь временный. Заставляет перерендерить кмопоненты :)
-        let a = _.values(store.currentNode?.data?.props)[0] && null
-        //for (let a in store.currentNode?.item?.props) break
-        return this.tree.children?.map(node => React.createElement(Component, {key: node.key, node, wrapper: this.wrapper}))
-    }
-
     constructor() {
         makeObservable(this, {
             currentNode: observable.ref,
             form: observable,
-            render: computed,
             tree: computed,
             clear: action.bound,
             add: action.bound,

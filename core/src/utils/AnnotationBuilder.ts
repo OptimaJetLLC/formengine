@@ -35,8 +35,8 @@ export class AnnotationBuilder<T> {
     }
 
     /** Create new builder with template assigned with passed object */
-    withInput(input: FunctionComponent<PropertyEditorProps> | ComponentClass<PropertyEditorProps>) {
-    //withInput(input: FunctionComponent<PropertyEditProps>) {
+    //withInput(input: FunctionComponent<PropertyEditorProps> | ComponentClass<PropertyEditorProps>) {
+    withInput(input: FunctionComponent<PropertyEditorProps>) {
         return this.with({input})
     }
 
