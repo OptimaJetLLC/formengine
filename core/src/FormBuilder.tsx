@@ -1,28 +1,23 @@
 import {observer} from "mobx-react-lite";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {store} from "./stores/Store";
 import {Button, Col, Dropdown, Nav, Row, Tree} from "rsuite";
 import _ from "lodash";
 import {configure} from "mobx";
-import {ComponentStore} from "./stores/ComponentStore";
 import {ItemDataType} from "rsuite/esm/@types/common";
 import {mapper} from "./views";
 import {Node} from "./utils/Node";
 import {downloadForm} from "./utils/downloadForm";
 import {uploadForm} from "./utils/uploadForm";
-import {getForm} from "./utils/getForm";
+import {FormViewer, FormViewerProps} from "./FormViewer";
 
 
-export interface FormBuilderProps {
-    getForm: ((code: string) => ComponentStore[])
+export interface FormBuilderProps extends FormViewerProps {
+
 }
 
 export const FormBuilder = observer((props: FormBuilderProps) => {
-    useEffect(() => {
-        getForm("test", props.getForm);
-    }, [props.getForm]);
 
-    //TODO upgrade tree now its so poorly
     return <div>
         <Button onClick={downloadForm}>Download</Button>
         <Button onClick={uploadForm}>Upload</Button>
@@ -47,7 +42,7 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                 />
             </Col>
 
-            <Col md={15}>{store.render}</Col>
+            <Col md={15}><FormViewer {...props}/></Col>
 
             <Col md={5}> <PropertiesEditor/> </Col>
         </Row>

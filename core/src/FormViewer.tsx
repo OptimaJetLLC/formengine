@@ -4,16 +4,14 @@ import {useEffect} from "react";
 import {ComponentStore} from "./stores/ComponentStore";
 import {getForm} from "./utils/getForm";
 
-export interface FormViewProps {
+export interface FormViewerProps {
     getForm: ((code: string) => ComponentStore[])
 }
 
-export const FormViewer = observer((props: FormViewProps) => {
+export const FormViewer = observer((props: FormViewerProps) => {
     useEffect(() => {
         getForm("test", props.getForm);
-    }, []);
-
-
+    }, [props.getForm]);
 
     return <div>
         {store.render}
