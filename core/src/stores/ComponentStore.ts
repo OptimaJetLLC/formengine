@@ -1,4 +1,4 @@
-import {makeAutoObservable, observe, reaction} from "mobx";
+import {makeAutoObservable} from "mobx";
 import {ComponentDefinition} from "../api/Types";
 import _ from "lodash";
 

@@ -19,7 +19,7 @@ export interface ComponentDefinition<T extends object> {
 }
 
 /** Interface for property editor */
-export interface PropertyEditorProps {
+export interface PropertyEditorProps<T> {
     model: ComponentStore
-    annotation: Annotation<any>
+    annotation: Annotation<T>
 }
