@@ -17,8 +17,8 @@ interface BuilderWrapperState {
     hovered?: boolean,
 }
 
-@observer
-class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapperState > {
+const BuilderWrapper = observer(
+    class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapperState > {
     containerRef: any = React.createRef();
 
     constructor(props: BuilderWrapperProps) {
@@ -29,18 +29,18 @@ class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapper
     }
 
     isSelected = () => {
-        return store.currentNode?.key == this.props?.node?.key;
+        return store.currentNode?.data?.key == this.props?.node?.key;
     }
 
     setSelected = () => {
         store.currentNode = this.props?.node;
     }
-    
+
     onMouseOver = (e: any) => {
         e.preventDefault();
         e.stopPropagation();
         const { isDragging, isResizing, isMoving } = store;
-        this.setState({ 
+        this.setState({
             hovered: true && !(isDragging && isResizing && isMoving)
         })
         store.add("ff")
@@ -68,20 +68,20 @@ class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapper
                                     <Container ref={this.containerRef}>
                                         <Selection onClick={this.setSelected}
                                             onMouseOver={this.onMouseOver} onMouseLeave={this.onMouseLeave}
-                                            hovered={hovered} selected={selected}/> 
+                                            hovered={hovered} selected={selected}/>
                                         {selected && <ControlBar referenceElement={this.containerRef} content={this.props?.node?.key}/>}
                                         {children}
                                     </Container>
                                 </div>
                             )}
-                        </Draggable>                        
+                        </Draggable>
                         {cp.placeholder}
                     </div>
                 )}
             </Droppable>
         )
     }
-}
+})
 
 const Container = styled.div`
     position: relative;

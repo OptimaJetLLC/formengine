@@ -1,5 +1,5 @@
 import {store} from "./stores/Store";
-import {observer} from "mobx-react-lite";
+import {observer} from "mobx-react";
 import React, {useEffect} from "react";
 import {ComponentStore} from "./stores/ComponentStore";
 import {getForm as getStandardForm} from "./utils/getForm";
