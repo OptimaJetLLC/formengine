@@ -1,7 +1,7 @@
 import {FunctionComponent} from "react";
-import {AnnotationBuilder} from "./AnnotationBuilder";
+import {AnnotationBuilder} from "./annotation/AnnotationBuilder";
 import {ComponentStore} from "../stores/ComponentStore";
-import {Annotation} from "./Annotation";
+import {Annotation} from "./annotation/Annotation";
 
 export type Annotations<T extends object> =
     {

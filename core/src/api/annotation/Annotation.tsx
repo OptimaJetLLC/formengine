@@ -1,6 +1,6 @@
-import {PropertyEditorProps} from "./Types";
+import {PropertyEditorProps} from "../Types";
 import React, {ComponentClass, FunctionComponent} from "react";
-import {store} from "../stores/Store";
+import {store} from "../../stores/Store";
 import {observer} from "mobx-react-lite";
 
 export class Annotation<T> {

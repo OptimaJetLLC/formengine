@@ -1,5 +1,5 @@
 import {Button} from "rsuite";
-import {define} from "../utils/define";
+import {define} from "../api/define";
 
 export const button = define("Button", Button, {
     //children: {title: 'Content', defaultValue: "Button"},

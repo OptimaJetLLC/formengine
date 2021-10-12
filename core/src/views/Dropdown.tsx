@@ -1,7 +1,7 @@
 import {Form, InputPicker} from "rsuite";
 import {CSSProperties} from "react";
-import {define} from "../utils/define";
-import {boolean, string} from "../utils/DefaultAnnotations";
+import {define} from "../api/define";
+import {boolean, string} from "../api/annotation";
 
 export interface DropdownProps {
     label: string,

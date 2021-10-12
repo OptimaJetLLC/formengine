@@ -1,8 +1,8 @@
 import {FunctionComponent} from "react";
 import {ComponentDefinition, Annotations} from "./Types";
 import _ from "lodash";
-import {Annotation} from "./Annotation";
-import {key, string} from "./DefaultAnnotations";
+import {Annotation} from "./annotation/Annotation";
+import {key, string} from "./annotation";
 
 export const define = <T extends object>(name: string, view: FunctionComponent<T>, annotations: Annotations<T>)
     : ComponentDefinition<any> => {

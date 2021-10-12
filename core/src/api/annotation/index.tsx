@@ -1,9 +1,10 @@
 import React from "react";
-import {PropertyEditorProps} from "./Types";
+import {PropertyEditorProps} from "../Types";
 import {Checkbox, Form, Input} from "rsuite";
 import {AnnotationBuilder} from "./AnnotationBuilder";
 
 //TODO следует ли компоновать их и засунуть в один объект?
+//TODO избавиться от опционалов?
 export const key = new AnnotationBuilder("", {input: KeyInput})
 export const string = new AnnotationBuilder("", {input: StringInput})
 export const stringOptional = new AnnotationBuilder("" as string | undefined, {input: StringInput})
