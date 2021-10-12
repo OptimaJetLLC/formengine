@@ -1,7 +1,7 @@
-import {ComponentClass, FunctionComponent} from "react";
 import _ from "lodash";
-import {PropertyEditorProps} from "../Types";
 import {Annotation} from "./Annotation";
+import {PropertyEditorProps} from "../Types";
+import {ComponentClass, FunctionComponent} from "react";
 
 //TODO validation? or value by default
 export class AnnotationBuilder<T> {
@@ -22,9 +22,9 @@ export class AnnotationBuilder<T> {
     }
 
 
-    isRequired() {
+    /*get isRequired() {
         //return
-    }
+    }*/
 
     /** Create new builder with template assigned with passed object */
     with(obj: Partial<Omit<Annotation<T>, 'render'>>) {
