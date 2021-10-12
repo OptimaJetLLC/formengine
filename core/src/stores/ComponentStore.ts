@@ -1,5 +1,5 @@
 import {makeAutoObservable, observe, reaction} from "mobx";
-import {ComponentDefinition} from "../utils/Types";
+import {ComponentDefinition} from "../api/Types";
 import _ from "lodash";
 
 export class ComponentStore {

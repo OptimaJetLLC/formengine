@@ -1,4 +1,4 @@
-import {define} from "../utils/define";
+import {define} from "../api/define";
 import {Container} from "rsuite";
 
 //TODO property what say it is a container and can have children. Create smth like reactnode property?

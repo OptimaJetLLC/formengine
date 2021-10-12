@@ -1,5 +1,5 @@
-import {define} from "../utils/define";
-import {string} from "../utils/DefaultAnnotations";
+import {define} from "../api/define";
+import {string} from "../api/annotation";
 
 export interface HeaderProps {
     content: string
