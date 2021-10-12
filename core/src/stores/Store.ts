@@ -24,6 +24,7 @@ class Store {
     constructor() {
         makeObservable(this, {
             currentNode: observable.ref,
+            isDragging: observable.ref,
             form: observable,
             tree: computed,
             clear: action.bound,

@@ -1,7 +1,9 @@
 import React from "react";
 import {Node} from "../../utils/Node";
 import styled from '@emotion/styled';
+import { Draggable, Droppable } from "react-beautiful-dnd";
 import {store} from "../../stores/Store";
+import { observer } from "mobx-react";
 import ControlBar from './ControlBar';
 import Selection from './Selection'
 
@@ -15,6 +17,7 @@ interface BuilderWrapperState {
     hovered?: boolean,
 }
 
+@observer
 class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapperState > {
     containerRef: any = React.createRef();
     constructor(props: BuilderWrapperProps) {
@@ -23,8 +26,6 @@ class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapper
             containerRef:  React.createRef()
         };
     } 
-
-
 
     // renderSelection = () => {
     //     const selectionClassName = baseClassName 
@@ -43,8 +44,7 @@ class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapper
     // };
 
     isSelected = () => {
-        let key = store.currentNode;
-        return key == this.props?.node;
+        return store.currentNode?.key == this.props?.node?.key;
     }
 
     setSelected = () => {
@@ -58,6 +58,7 @@ class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapper
         this.setState({ 
             hovered: true && !(isDragging && isResizing && isMoving)
         })
+        store.add("ff")
     }
 
     onMouseLeave = (e: any) => {
@@ -68,13 +69,32 @@ class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapper
         const { children } = this.props;
         const { hovered} = this.state;
         const selected = this.isSelected();
-        return <Container ref={this.containerRef}>
-            <Selection onClick={this.setSelected}
-                onMouseOver={this.onMouseOver} onMouseLeave={this.onMouseLeave}
-                hovered={hovered} selected={selected}/>
-            {selected && <ControlBar referenceElement={this.containerRef} content={this.props?.node?.key}/>}
-            {children}
-        </Container>
+        const {key} = this.props?.node;
+        const k = store.currentNode?.key == this.props?.node?.key;
+        return (
+            <Droppable droppableId={key} isDropDisabled={!!this.props?.node?.children}>
+                {(cp: any, dd: any) => (
+                    <div ref={cp.innerRef}>
+                        <Draggable key={key} draggableId={key} index={0}>
+                            {(provided: any, snapshot: any) => (
+                                <div ref={provided.innerRef}
+                                     {...provided.draggableProps}
+                                     {...provided.dragHandleProps}>
+                                    <Container ref={this.containerRef}>
+                                        <Selection onClick={this.setSelected}
+                                            onMouseOver={this.onMouseOver} onMouseLeave={this.onMouseLeave}
+                                            hovered={hovered} selected={selected}/> 
+                                        {selected && <ControlBar referenceElement={this.containerRef} content={this.props?.node?.key}/>}
+                                        {children}
+                                    </Container>
+                                </div>
+                            )}
+                        </Draggable>                        
+                        {cp.placeholder}
+                    </div>
+                )}
+            </Droppable>
+        )
     }
 }
 

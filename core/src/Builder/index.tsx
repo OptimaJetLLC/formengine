@@ -3,6 +3,7 @@ import { configure } from "mobx";
 import { observer } from "mobx-react-lite";
 import React, { useState } from "react";
 import { Button, Col, Dropdown, Nav, Row, Tree } from "rsuite";
+import { DragDropContext } from "react-beautiful-dnd";
 import { ItemDataType } from "rsuite/esm/@types/common";
 import { ComponentStore } from "../stores/ComponentStore";
 import { store } from "../stores/Store";
@@ -21,6 +22,16 @@ export interface FormBuilderProps extends FormViewerProps {
 
 export const FormBuilder = observer((props: FormBuilderProps) => {
     store.wrapper = wrapper;
+
+    const expandedNodesKeys: string[] | never = [];
+    const extractParentNodesKeys = (node: Node | null) => {            
+        if (node?.parent?.data?.key) {
+            expandedNodesKeys.push(node.parent.data.key);
+            extractParentNodesKeys(node.parent);
+        }
+    }
+    extractParentNodesKeys(store.currentNode);
+
     return <div>
         <Button onClick={downloadForm}>Download</Button>
         <Button onClick={uploadForm}>Upload</Button>
@@ -31,24 +42,34 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
         </Dropdown>
 
         <br/><br/>
+        <DragDropContext onDragEnd={(result: any) => {
+                        const { source, destination, draggableId } = result;
+                        console.log('==> result', result);
+                        if (source.droppableId == "TOOLBAR") {   
+                                console.log('TOOLBAR', draggableId);      
+                            } else {                                
+                                console.log('builder', draggableId);
+                            }
+                        }}>
+            <Row>
+                <Col md={4}>
+                    <Tree
+                        draggable
+                        onSelect={(activeNode) => store.currentNode = activeNode as Node}
+                        value={store.currentNode?.data?.key}
+                        expandItemValues={expandedNodesKeys}
+                        labelKey="key"
+                        valueKey="key"
+                        style={{maxHeight: 'inherit', height: 'inherit'}}
+                        data={store.tree.children as ItemDataType[]}
+                    />
+                </Col>
 
-        <Row>
-            <Col md={4}>
-                <Tree
-                    draggable
-                    onSelect={(activeNode) => store.currentNode = activeNode as Node}
-                    value={store.currentNode?.data?.key}
-                    labelKey="key"
-                    valueKey="key"
-                    style={{maxHeight: 'inherit', height: 'inherit'}}
-                    data={store.tree.children as ItemDataType[]}
-                />
-            </Col>
-
-            <Col md={15}><FormViewer {...props} wrapper={BuilderWrapper}/></Col>
-
-            <Col md={5}> <PropertiesEditor/> </Col>
-        </Row>
+                <Col md={15}>                
+                    <FormViewer {...props} wrapper={BuilderWrapper}/></Col>
+                <Col md={5}> <PropertiesEditor/> </Col>
+            </Row>
+        </DragDropContext>
     </div>;
 })
 
