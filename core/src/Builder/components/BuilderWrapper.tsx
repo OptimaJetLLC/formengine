@@ -20,28 +20,13 @@ interface BuilderWrapperState {
 @observer
 class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapperState > {
     containerRef: any = React.createRef();
+
     constructor(props: BuilderWrapperProps) {
         super(props);
         this.state = {
             containerRef:  React.createRef()
         };
-    } 
-
-    // renderSelection = () => {
-    //     const selectionClassName = baseClassName 
-    //         + " formbuilder-item-toolbar-container selection"
-    //         + (dragging ? "" : ((selected ? " selected" : "") + (hovered ? " hovered" : ""))) 
-
-    //     return (
-    //         <div ref={options.me.selectionRef}
-    //             style={{...stylePinned(10)}}  tabIndex="0"
-    //             className={selectionClassName}
-    //             onClick={onClick}
-    //             onKeyDown ={onKeyDown }
-    //             {...dragProps}
-    //         />
-    //     )
-    // };
+    }
 
     isSelected = () => {
         return store.currentNode?.key == this.props?.node?.key;
@@ -72,7 +57,7 @@ class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapper
         const {key} = this.props?.node;
         const k = store.currentNode?.key == this.props?.node?.key;
         return (
-            <Droppable droppableId={key} isDropDisabled={!!this.props?.node?.children}>
+            <Droppable droppableId={key} isDropDisabled={!!this.props?.node?.children} direction={!!this.props?.node?.children ? 'horizontal' : 'vertical'}>
                 {(cp: any, dd: any) => (
                     <div ref={cp.innerRef}>
                         <Draggable key={key} draggableId={key} index={0}>

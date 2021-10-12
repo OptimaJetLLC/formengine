@@ -8,7 +8,6 @@ class Store {
     isDragging?: boolean
     isResizing?: boolean
     isMoving?: boolean
-    wrapper?: Function
 
     form = {
         //name?

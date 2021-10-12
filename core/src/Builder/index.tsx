@@ -13,7 +13,6 @@ import { uploadForm } from "../utils/uploadForm";
 import { mapper } from "../views";
 import wrapper from "./components/BuilderWrapper";
 import { FormViewer, FormViewerProps } from "../FormViewer";
-import BuilderWrapper from './components/BuilderWrapper'
 
 
 export interface FormBuilderProps extends FormViewerProps {
@@ -21,8 +20,6 @@ export interface FormBuilderProps extends FormViewerProps {
 }
 
 export const FormBuilder = observer((props: FormBuilderProps) => {
-    store.wrapper = wrapper;
-
     const expandedNodesKeys: string[] | never = [];
     const extractParentNodesKeys = (node: Node | null) => {            
         if (node?.parent?.data?.key) {
@@ -66,7 +63,7 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                 </Col>
 
                 <Col md={15}>                
-                    <FormViewer {...props} wrapper={BuilderWrapper}/></Col>
+                    <FormViewer {...props} wrapper={wrapper}/></Col>
                 <Col md={5}> <PropertiesEditor/> </Col>
             </Row>
         </DragDropContext>

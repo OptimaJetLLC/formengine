@@ -17,7 +17,13 @@ const ControlBar = (props: any) => {
                 options: {
                     altAxis: false,
                 }
-            }
+            },
+            {
+                name: 'offset',
+                options: {
+                  offset: [0, -10],
+                },
+            },
         ]
     });
     return (
