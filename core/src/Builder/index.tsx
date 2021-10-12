@@ -54,7 +54,7 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                         draggable
                         onSelect={(activeNode) => store.currentNode = activeNode as Node}
                         value={store.currentNode?.data?.key}
-                        expandItemValues={expandedNodesKeys}
+                        //expandItemValues={expandedNodesKeys}
                         labelKey="key"
                         valueKey="key"
                         style={{maxHeight: 'inherit', height: 'inherit'}}
