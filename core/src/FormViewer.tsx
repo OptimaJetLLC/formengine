@@ -2,7 +2,7 @@ import {store} from "./stores/Store";
 import {observer} from "mobx-react-lite";
 import React, {useEffect} from "react";
 import {ComponentStore} from "./stores/ComponentStore";
-import {getForm as standartGetForm} from "./utils/getForm";
+import {getForm as getStandardForm} from "./utils/getForm";
 import {Component} from "./components/Component";
 
 export interface FormViewerProps {
@@ -13,7 +13,7 @@ export interface FormViewerProps {
 
 export const FormViewer = observer(({getForm, wrapper}: FormViewerProps) => {
     useEffect(() => {
-        standartGetForm("test", getForm);
+        getStandardForm("test", getForm);
     }, [getForm]);
 
     return <div>
