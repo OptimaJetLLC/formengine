@@ -30,9 +30,6 @@ class Store {
             clear: action.bound,
             add: action.bound,
         })
-        /*autorun(() => {
-            debugger
-        })*/
     }
 
     clear() {
