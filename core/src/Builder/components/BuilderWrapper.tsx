@@ -17,20 +17,20 @@ interface BuilderWrapperState {
     hovered?: boolean,
 }
 
-@observer
-class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapperState > {
+const BuilderWrapper = observer(
+    class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapperState > {
     containerRef: any = React.createRef();
     constructor(props: BuilderWrapperProps) {
         super(props);
         this.state = {
             containerRef:  React.createRef()
         };
-    } 
+    }
 
     // renderSelection = () => {
-    //     const selectionClassName = baseClassName 
+    //     const selectionClassName = baseClassName
     //         + " formbuilder-item-toolbar-container selection"
-    //         + (dragging ? "" : ((selected ? " selected" : "") + (hovered ? " hovered" : ""))) 
+    //         + (dragging ? "" : ((selected ? " selected" : "") + (hovered ? " hovered" : "")))
 
     //     return (
     //         <div ref={options.me.selectionRef}
@@ -50,12 +50,12 @@ class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapper
     setSelected = () => {
         store.currentNode = this.props?.node;
     }
-    
+
     onMouseOver = (e: any) => {
         e.preventDefault();
         e.stopPropagation();
         const { isDragging, isResizing, isMoving } = store;
-        this.setState({ 
+        this.setState({
             hovered: true && !(isDragging && isResizing && isMoving)
         })
         store.add("ff")
@@ -83,20 +83,20 @@ class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapper
                                     <Container ref={this.containerRef}>
                                         <Selection onClick={this.setSelected}
                                             onMouseOver={this.onMouseOver} onMouseLeave={this.onMouseLeave}
-                                            hovered={hovered} selected={selected}/> 
+                                            hovered={hovered} selected={selected}/>
                                         {selected && <ControlBar referenceElement={this.containerRef} content={this.props?.node?.key}/>}
                                         {children}
                                     </Container>
                                 </div>
                             )}
-                        </Draggable>                        
+                        </Draggable>
                         {cp.placeholder}
                     </div>
                 )}
             </Droppable>
         )
     }
-}
+})
 
 const Container = styled.div`
     position: relative;

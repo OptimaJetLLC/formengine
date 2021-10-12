@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { configure } from "mobx";
-import { observer } from "mobx-react-lite";
+import { observer } from "mobx-react";
 import React, { useState } from "react";
 import { Button, Col, Dropdown, Nav, Row, Tree } from "rsuite";
 import { DragDropContext } from "react-beautiful-dnd";
@@ -24,7 +24,7 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
     store.wrapper = wrapper;
 
     const expandedNodesKeys: string[] | never = [];
-    const extractParentNodesKeys = (node: Node | null) => {            
+    const extractParentNodesKeys = (node: Node | null) => {
         if (node?.parent?.data?.key) {
             expandedNodesKeys.push(node.parent.data.key);
             extractParentNodesKeys(node.parent);
@@ -45,9 +45,9 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
         <DragDropContext onDragEnd={(result: any) => {
                         const { source, destination, draggableId } = result;
                         console.log('==> result', result);
-                        if (source.droppableId == "TOOLBAR") {   
-                                console.log('TOOLBAR', draggableId);      
-                            } else {                                
+                        if (source.droppableId == "TOOLBAR") {
+                                console.log('TOOLBAR', draggableId);
+                            } else {
                                 console.log('builder', draggableId);
                             }
                         }}>
@@ -65,7 +65,7 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                     />
                 </Col>
 
-                <Col md={15}>                
+                <Col md={15}>
                     <FormViewer {...props} wrapper={BuilderWrapper}/></Col>
                 <Col md={5}> <PropertiesEditor/> </Col>
             </Row>
