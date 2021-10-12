@@ -8,7 +8,7 @@ import {Component} from "./components/Component";
 export interface FormViewerProps {
 
     getForm: ((code: string) => ComponentStore[]),
-    wrapper?: Function
+    wrapper?: Function //TODO change type of wrapper
 }
 
 export const FormViewer = observer(({getForm, wrapper}: FormViewerProps) => {
