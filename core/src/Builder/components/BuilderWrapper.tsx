@@ -44,7 +44,7 @@ const BuilderWrapper = observer(
     // };
 
     isSelected = () => {
-        return store.currentNode?.key == this.props?.node?.key;
+        return store.currentNode?.data?.key == this.props?.node?.key;
     }
 
     setSelected = () => {
