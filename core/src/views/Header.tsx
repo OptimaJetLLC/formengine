@@ -3,7 +3,7 @@ import {string} from "../api/annotation";
 
 export interface HeaderProps {
     content: string
-    subheader: string
+    subheader?: string
 }
 
 export const Header = (props : HeaderProps ) => {
@@ -17,9 +17,6 @@ export const Header = (props : HeaderProps ) => {
 }
 
 export const header = define("Header", Header, {
-    //"content": {title: 'Content', type: 'string', defaultValue: ''},
-    //"subheader": {title: 'Subheader', type: 'string', defaultValue: ''},
-
-    content: string,
+    content: string.isRequired,
     subheader: string,
 })

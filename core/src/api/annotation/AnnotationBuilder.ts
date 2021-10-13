@@ -1,16 +1,24 @@
-import {ComponentClass, FunctionComponent} from "react";
 import _ from "lodash";
+import {Annotation, Type} from "./Annotation";
 import {PropertyEditorProps} from "../Types";
-import {Annotation} from "./Annotation";
+import {ComponentClass, FunctionComponent} from "react";
 
 //TODO validation? or value by default
 export class AnnotationBuilder<T> {
     private template: Annotation<T>;
-    private readonly initValue: T
+    //private readonly initValue: T
 
-    constructor(initValue: T, obj?: Partial<Omit<Annotation<T>, 'render' | 'initValue'>>) {
-        this.template = new Annotation<T>(initValue)
-        this.initValue = initValue
+    get isRequired() {
+        //let builder = this.with({})
+        //builder.template.types.delete(Type.undefined)
+        //return builder
+        let builder = AnnotationBuilder.from<NonNullable<T>>(this.template as unknown as Annotation<NonNullable<T>>)
+        return builder
+    }
+
+    constructor(obj?: Partial<Omit<Annotation<T>, 'render'>>) {
+        this.template = new Annotation<T>()
+        //this.initValue = initValue
         if (obj) Object.assign(this.template, obj)
     }
 
@@ -19,11 +27,6 @@ export class AnnotationBuilder<T> {
         let builder = new AnnotationBuilder<T>(_.cloneDeep(template.initValue))
         builder.template = _.cloneDeep(template)
         return builder
-    }
-
-
-    isRequired() {
-        //return
     }
 
     /** Create new builder with template assigned with passed object */
@@ -39,8 +42,8 @@ export class AnnotationBuilder<T> {
     }
 
     /** Create new builder with template assigned with passed object */
-    //withInput(input: FunctionComponent<PropertyEditorProps> | ComponentClass<PropertyEditorProps>) {
-    withInput(input: FunctionComponent<PropertyEditorProps>) {
+    withInput(input: FunctionComponent<PropertyEditorProps<T>> | ComponentClass<PropertyEditorProps<T>>) {
+    //withInput(input: FunctionComponent<PropertyEditorProps>) {
         return this.with({input})
     }
 
@@ -54,7 +57,7 @@ export class AnnotationBuilder<T> {
             annotation.title = annotation.title ?? _.startCase(key)
         }
 
-        annotation.type = annotation.type ?? typeof annotation.initValue
+        //annotation.type = annotation.type ?? typeof annotation.initValue
         annotation.section = annotation.section ?? "main"
         annotation.description = annotation.description ?? ""
 
