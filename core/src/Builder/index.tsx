@@ -3,7 +3,7 @@ import { configure } from "mobx";
 import { observer } from "mobx-react";
 import React, { useState } from "react";
 import { Button, Col, Dropdown, Nav, Row, Tree } from "rsuite";
-import { DragDropContext } from "react-beautiful-dnd";
+import { DragDropContext, DragStart, ResponderProvided, DropResult } from "react-beautiful-dnd";
 import { ItemDataType } from "rsuite/esm/@types/common";
 import { ComponentStore } from "../stores/ComponentStore";
 import { store } from "../stores/Store";
@@ -13,6 +13,7 @@ import { uploadForm } from "../utils/uploadForm";
 import { mapper } from "../views";
 import BuilderWrapper from "./components/BuilderWrapper";
 import { FormViewer, FormViewerProps } from "../FormViewer";
+import {treeMap, treeSearch} from "../utils/treeFunctions";
 
 
 export interface FormBuilderProps extends FormViewerProps {
@@ -20,14 +21,36 @@ export interface FormBuilderProps extends FormViewerProps {
 }
 
 export const FormBuilder = observer((props: FormBuilderProps) => {
-    const expandedNodesKeys: string[] | never = [];
+    const [currentExpandedKeys, setCurrentExpandedKeys] = useState<any[]>([]);
+    let expandedNodesKeys: string[] | never = [];
     const extractParentNodesKeys = (node: Node | null) => {
         if (node?.parent?.data?.key) {
             expandedNodesKeys.push(node.parent.data.key);
             extractParentNodesKeys(node.parent);
         }
+        expandedNodesKeys = expandedNodesKeys.concat(currentExpandedKeys);
     }
     extractParentNodesKeys(store.currentNode);
+
+    const onDragStart = (initial: DragStart, provided: ResponderProvided) => {
+        const draggingKey: string = initial.draggableId;
+        const draggingNode = treeSearch(store.tree.children, draggingKey);
+        treeMap(draggingNode, (node: any) => {
+            console.log("node", node)
+        })
+        console.log("draggingNode", draggingNode)
+    }
+
+    const onDragEnd= (result: DropResult) => {
+        const { source, destination, draggableId } = result;
+        console.log('==> result', result);
+        if (!source || !destination?.droppableId) return;
+        if (source.droppableId == "TOOLBAR") {
+                console.log('TOOLBAR', draggableId);
+            } else {
+                store.move(draggableId, destination.droppableId, destination?.index);
+            }
+        }
 
     return <div>
         <Button onClick={downloadForm}>Download</Button>
@@ -39,22 +62,18 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
         </Dropdown>
 
         <br/><br/>
-        <DragDropContext onDragEnd={(result: any) => {
-                        const { source, destination, draggableId } = result;
-                        console.log('==> result', result);
-                        if (source.droppableId == "TOOLBAR") {
-                                console.log('TOOLBAR', draggableId);
-                            } else {
-                                console.log('builder', draggableId);
-                            }
-                        }}>
+        <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
             <Row>
                 <Col md={4}>
                     <Tree
                         draggable
                         onSelect={(activeNode) => store.currentNode = activeNode as Node}
                         value={store.currentNode?.data?.key}
-                        //expandItemValues={expandedNodesKeys}
+                        expandItemValues={expandedNodesKeys}
+                        onExpand={(expandItemValues: any []) => {
+                            setCurrentExpandedKeys(expandItemValues);
+
+                        }}
                         labelKey="key"
                         valueKey="key"
                         style={{maxHeight: 'inherit', height: 'inherit'}}

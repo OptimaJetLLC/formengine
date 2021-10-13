@@ -11,10 +11,12 @@ export const Component = observer(({ node, wrapper }: { node: Node, wrapper?: Fu
     const { props } = node.data;
 
     props.children = props.children || node.children?.map(
-        childNode => (
-            <Component key={childNode.key} node={childNode}
-                wrapper={wrapper} />
-        )
+        childNode => {
+            return (
+                <Component key={childNode.key} node={childNode}
+                    wrapper={wrapper} />
+            )
+        }
     )
 
     const element = React.createElement(componentDefinition.view, node.data.props);
