@@ -6,7 +6,7 @@ export default <T extends boolean | undefined>({model, annotation}: PropertyEdit
         <Form.ControlLabel>{annotation.title}</Form.ControlLabel>
         <Checkbox
             value={model.props[annotation.key]}
-            onChange={value => model.props[annotation.key] = value}
+            onChange={(value, checked) => model.props[annotation.key] = checked}
         />
     </div>
 );
