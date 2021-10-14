@@ -3,8 +3,10 @@ import {ComponentStore} from "../stores/ComponentStore";
 
 export class Node {
     key: string
+    /** Don't exists only for virtual root in tree */
     parent?: Node
     children?: Node[]
+    /** Don't exists only for virtual root in tree*/
     data?: ComponentStore
 
     get isRoot() {
