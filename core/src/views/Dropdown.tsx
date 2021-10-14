@@ -23,9 +23,9 @@ export const Dropdown = (props : DropdownProps ) => {
 }
 
 export const dropdown = define("Dropdown", Dropdown, {
-    "block": boolean.isRequired,
+    "block": boolean.isRequired(false),
     "data": undefined,
-    "label": string.isRequired,
-    "placeholder": string.isRequired,
+    "label": string.isRequired(""),
+    "placeholder": string.isRequired(""),
 
 })

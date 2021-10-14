@@ -1,6 +1,5 @@
 import {makeAutoObservable} from "mobx";
 import {ComponentDefinition} from "../api/Types";
-import _ from "lodash";
 
 export class ComponentStore {
     key: string = ""
@@ -9,15 +8,8 @@ export class ComponentStore {
     children?: ComponentStore[]
 
     constructor(key: string, definition: ComponentDefinition<any>) {
-        initDefaultValue(this, definition)
         this.key = key
         this.type = definition.type
         makeAutoObservable(this);
     }
-}
-
-function initDefaultValue(store: ComponentStore, definition: ComponentDefinition<any>) {
-    Object.keys(definition.annotations).filter(value => value.includes(".")).forEach(key => {
-        _.set(store.props, key, definition.annotations[key]?.initValue )
-    })
 }

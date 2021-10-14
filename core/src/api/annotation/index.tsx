@@ -6,7 +6,15 @@ import Boolean from "./inputs/Boolean";
 
 //TODO следует ли компоновать их и засунуть в один объект?
 //TODO избавиться от опционалов?
-export const key = new AnnotationBuilder<string>({input: Key})
+export const key = new AnnotationBuilder<string>({input: Key, isSystem: true}).isRequired("")
 export const string = new AnnotationBuilder<string | undefined>({input: String})
 export const boolean = new AnnotationBuilder<boolean | undefined>({input: Boolean})
+
+//Аннотация: спсиок допустимых параметров - просто массив
+//Аннотация: список допустимых параметров с его label - value. Label всегда текст, а значение принимает заданный тип
+//Аннотация: построитель объекта?
+//Аннотация: ReactNode
+export const list = new AnnotationBuilder<string[] | undefined>()
+export const l1 = new AnnotationBuilder<object | undefined>()
+export const l2 = new AnnotationBuilder<Record<string, any> | undefined>()
 

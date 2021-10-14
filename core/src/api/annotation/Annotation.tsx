@@ -6,18 +6,18 @@ import {observer} from "mobx-react";
 export class Annotation<T> {
     key!: string
     title?: string;
-    // Допустимые типы значений //TODO?
-    types: Set<Type> = new Set<Type>();
+    //type: string = Type.string;
     section?: string;
     input!: FunctionComponent<PropertyEditorProps<T>> | ComponentClass<PropertyEditorProps<T>>;
-    //input!: FunctionComponent<PropertyEditorProps>;
-    initValue!: T;
+    defaultValue?: T;
     data?: T[] | Record<string, T>;
     description?: string;
+    isSystem: boolean = false
+    isRequired: boolean = false
 
     constructor() {
         //this.initValue = initValue
-        this.types.add(Type.undefined)
+        //this.types.add(Type.undefined)
     }
 
     render(): JSX.Element | null {
@@ -28,13 +28,3 @@ export class Annotation<T> {
     }
 }
 
-export enum Type {
-    undefined ="undefined",
-    object ="object",
-    boolean ="boolean",
-    number ="number",
-    string ="string",
-    function ="function",
-    symbol ="symbol",
-    bigint ="bigint",
-}

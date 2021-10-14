@@ -1,31 +1,29 @@
 import _ from "lodash";
-import {Annotation, Type} from "./Annotation";
+import {Annotation} from "./Annotation";
 import {PropertyEditorProps} from "../Types";
 import {ComponentClass, FunctionComponent} from "react";
+
 
 //TODO validation? or value by default
 export class AnnotationBuilder<T> {
     private template: Annotation<T>;
-    //private readonly initValue: T
 
-    get isRequired() {
-        //let builder = this.with({})
-        //builder.template.types.delete(Type.undefined)
-        //return builder
+    isRequired(defaultValue: NonNullable<T>) {
         let builder = AnnotationBuilder.from<NonNullable<T>>(this.template as unknown as Annotation<NonNullable<T>>)
+        builder.template.isRequired = true
+        builder.template.defaultValue = defaultValue
         return builder
     }
 
     constructor(obj?: Partial<Omit<Annotation<T>, 'render'>>) {
         this.template = new Annotation<T>()
-        //this.initValue = initValue
         if (obj) Object.assign(this.template, obj)
     }
 
     /** Create builder with sent template */
     static from<T>(template: Annotation<T>) {
-        let builder = new AnnotationBuilder<T>(_.cloneDeep(template.initValue))
-        builder.template = _.cloneDeep(template)
+        let cloneTemplate = _.cloneDeep(template)
+        let builder = new AnnotationBuilder<T>(cloneTemplate)
         return builder
     }
 
@@ -43,7 +41,6 @@ export class AnnotationBuilder<T> {
 
     /** Create new builder with template assigned with passed object */
     withInput(input: FunctionComponent<PropertyEditorProps<T>> | ComponentClass<PropertyEditorProps<T>>) {
-    //withInput(input: FunctionComponent<PropertyEditorProps>) {
         return this.with({input})
     }
 

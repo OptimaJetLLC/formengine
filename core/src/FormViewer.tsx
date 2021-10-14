@@ -14,6 +14,10 @@ export interface FormViewerProps {
 export const FormViewer = observer(({getForm, wrapper}: FormViewerProps) => {
     useEffect(() => {
         getStandardForm("test", getForm);
+        //Получаем форму
+        //Иницилизируем значения по умолчания или делать это в компонентах?
+        //Потом можно рендерить
+
     }, [getForm]);
 
     return <div>
