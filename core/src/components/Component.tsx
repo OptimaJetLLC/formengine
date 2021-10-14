@@ -19,9 +19,9 @@ export const Component = observer(({node, wrapper}: { node: Node, wrapper?: Func
     useEffect(() => {
         if (!node.children) return
 
-        if (node.children.length !== props.children?.length)
+        if (isDifferent(node.children, props.children))
             props.children = node.children.map(childNode =>
-                <Component key={childNode.key} node={childNode} wrapper={wrapper}/>)
+            <Component key={childNode.key} node={childNode} wrapper={wrapper}/>)
 
     }, [node.children])
 
@@ -29,6 +29,15 @@ export const Component = observer(({node, wrapper}: { node: Node, wrapper?: Func
 
     return wrapper ? wrapper({node, children: element}) : element;
 });
+
+function isDifferent(nodes: Node[], propsChildren: any) {
+    if (nodes.length !== propsChildren?.length) return true
+
+    for (let i = 0; i < nodes.length; i++)
+        if (nodes[i].key !== propsChildren[i].key) return true
+
+    return false
+}
 
 //Функция для инициализации значений по умолчанию
 
