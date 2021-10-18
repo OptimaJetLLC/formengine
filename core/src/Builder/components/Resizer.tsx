@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { store } from '../../stores/Store';
 
 const BorderContainer = styled.div`
     position: absolute;
@@ -48,7 +49,20 @@ const Border = styled.div`
 `
 
 const Resizer = (position: string) => {
-    return <BorderContainer key={position} className={position}><Border className={position}/></BorderContainer>
+    return <BorderContainer key={position} onMouseDown={(e: any) => {
+        store.isResizing = true;
+        e.preventDefault();
+        e.stopPropagation();
+        const move = (e: MouseEvent) => {
+            console.log(e.clientX)
+        };
+        window.addEventListener('mousemove', move);
+        window.addEventListener('mouseup', (e) => {
+            store.isResizing = false;
+            window.removeEventListener('mousemove', move);
+        }, { once: true });
+
+    }} className={position}><Border className={position}/></BorderContainer>
 }
 
 export default Resizer;

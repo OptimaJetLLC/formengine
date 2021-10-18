@@ -61,7 +61,7 @@ const BuilderWrapper = observer(
             <Droppable droppableId={key} isDropDisabled={!!this.props?.node?.children} direction={!!this.props?.node?.children ? 'horizontal' : 'vertical'}>
                 {(cp: any, dd: any) => (
                     <div ref={cp.innerRef}>
-                        <Draggable key={key}  draggableId={key} index={0}>
+                        <Draggable key={key}  draggableId={key} index={0} isDragDisabled={store.isResizing}>
                             {(provided: any, snapshot: any) => (
                                     <Container ref={(ref: any) => {
                                             provided.innerRef(ref);
