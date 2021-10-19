@@ -6,7 +6,7 @@ import {getForm as getStandardForm} from "./utils/getForm";
 import {Component} from "./components/Component";
 
 export interface FormViewerProps {
-
+    //TODO onEvent?: (key: string, action: any, eventName: string) => void
     getForm: ((code: string) => ComponentStore[]),
     wrapper?: Function //TODO change type of wrapper
 }
@@ -21,7 +21,8 @@ export const FormViewer = observer(({getForm, wrapper}: FormViewerProps) => {
     }, [getForm]);
 
     return <div>
-        {store.tree.children?.map(node => React.createElement(Component, {key: node.key, node, wrapper}))}
+        {store.tree.children?.map(node =>
+            React.createElement(Component, {key: node.key, node, wrapper}))}
     </div>;
 })
 

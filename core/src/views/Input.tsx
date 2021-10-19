@@ -1,7 +1,7 @@
 import {Form, Input as RInput, InputProps as RInputProps} from "rsuite";
 import {CSSProperties, SyntheticEvent} from "react";
 import {define} from "../api/define";
-import {boolean, select, string} from "../api/annotation";
+import {boolean, func, select, string} from "../api/annotation";
 import {AnnotationBuilder} from "../api/annotation/AnnotationBuilder";
 
 export interface InputProps extends RInputProps {
@@ -20,8 +20,8 @@ export enum Size {
     Large = "lg",
 }
 
-export class Action {
-    name: string = ""
+export class Event {
+    actions: string[] = []
     parameters: { name: string, value: string }[] = [{name: "", value: ""}]
     targets: string[] = []
 }
@@ -38,13 +38,33 @@ export const Input = ({style, className, label, ...props}: InputProps) => {
 }
 // "lg" | "md" | "sm" | "xs"
 export const input = define<InputProps>("Input", Input, {
-    disabled: boolean,
-    label: string.isRequired("Input"),
-    placeholder: string,
-    readOnly: boolean,
-    //size: new AnnotationBuilder<InputProps["size"]>(),
-    size: select,
-    //size: new AnnotationBuilder<"lg" | "md" | "sm" | "xs" | undefined>()
-    onChange: new AnnotationBuilder<InputProps["onChange"]>(),
-    value: undefined
-})
+        disabled: boolean,
+        label: string.isRequired("Input"),
+        placeholder: string,
+        readOnly: boolean,
+        //size: new AnnotationBuilder<InputProps["size"]>(),
+        size: select,
+        //size: new AnnotationBuilder<"lg" | "md" | "sm" | "xs" | undefined>()
+        onChange: func,
+        value: undefined
+    },
+    [
+        {
+            name: "Action1", arguments: [], description: "", func() {
+                let a = 1
+                debugger
+            },
+        },
+        {
+            name: "Action2", arguments: [], description: "", func() {
+                let a = 2
+                debugger
+            },
+        },
+        {
+            name: "Action3", arguments: [], description: "", func() {
+                let a = 3
+                debugger
+            },
+        },
+    ])

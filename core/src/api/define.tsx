@@ -3,8 +3,9 @@ import {ComponentDefinition, Annotations} from "./Types";
 import _ from "lodash";
 import {Annotation} from "./annotation/Annotation";
 import {key, string} from "./annotation";
+import {Action} from "../utils/Types";
 
-export const define = <T extends object>(name: string, view: FunctionComponent<T>, annotations: Annotations<T>)
+export const define = <T extends object>(name: string, view: FunctionComponent<T>, annotations: Annotations<T>, actions?: Action[])
     : ComponentDefinition<any> => {
     if (_.isEmpty(name)) throw Error("Name cannot be empty!")
 
@@ -19,6 +20,7 @@ export const define = <T extends object>(name: string, view: FunctionComponent<T
     return ({
         type: name,
         view,
-        annotations: properties
+        annotations: properties,
+        actions
     })
 }
