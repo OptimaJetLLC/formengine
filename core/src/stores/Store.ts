@@ -58,7 +58,6 @@ class Store {
     }
 
     add(type: string) {
-        console.log(type)
         //console.log(Control[Control[type]])
         //let modelType = this.ModelType[type as any];
         //let key = (Math.random() + 1).toString(36).substring(7);
@@ -66,7 +65,7 @@ class Store {
         //this.models.push(model)
     }
 
-    move(sourceKey: string, targetKey: string, index: number = 0 ) {
+    move(sourceKey?: string, targetKey?: string, index: number = 0 ) {
         const sourceNode = treeSearch(this.tree.children, sourceKey);
         const targetNode = treeSearch(this.tree.children, targetKey);
         if (!sourceNode?.data || !targetNode?.data) return;
@@ -82,6 +81,10 @@ class Store {
             targetParent?.splice(targetIndex + index, 0, sourceNode.data);
             sourceParent?.splice(sourceIndex, 1);
         }
+        treeMap(this.form.components, (node: ComponentStore) => {      
+            if (typeof node.props.children !== typeof "")          
+                delete node.props.children;
+        })
     }
 }
 
@@ -97,6 +100,13 @@ const treeSearch: (data?: Node[], key?: string, found?: {node?: Node}) => Node |
         return found.node;
     }
     return found.node;
+};
+
+const treeMap = (data: ComponentStore[], callback: Function)  => {
+    data.forEach((node: ComponentStore) => {
+        callback(node);
+        if (node.children) treeMap(node.children, callback);
+    });
 };
 
 const moveArrayElement = (arr: any[], fromIndex: number, toIndex: number) =>  {

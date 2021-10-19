@@ -15,15 +15,9 @@ export const Component = observer(({node, wrapper}: { node: Node, wrapper?: Func
 
     useEffect(() => initDefaultValue(node.data!, componentDefinition), [])
 
-    //TODO start using feng shui principal? Now exists extra re-rendering. Look on dependence
-    useEffect(() => {
-        if (!node.children) return
-
-        if (node.children.length !== props.children?.length)
-            props.children = node.children.map(childNode =>
-                <Component key={childNode.key} node={childNode} wrapper={wrapper}/>)
-
-    }, [node.children])
+    props.children = props.children
+        || node.children?.map(childNode =>
+            <Component key={childNode.key} node={childNode} wrapper={wrapper}/>) 
 
     const element = React.createElement(componentDefinition.view, props);
 
