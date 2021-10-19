@@ -24,8 +24,6 @@ export const Component = observer(({node, wrapper}: { node: Node, wrapper?: Func
     return wrapper ? wrapper({node, children: element}) : element;
 });
 
-//Функция для инициализации значений по умолчанию
-
 function initDefaultValue(store: ComponentStore, definition: ComponentDefinition<any>) {
 
     _.forIn(definition.annotations, (value, key) => {

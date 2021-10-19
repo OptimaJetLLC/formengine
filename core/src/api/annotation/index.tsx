@@ -3,11 +3,14 @@ import {AnnotationBuilder} from "./AnnotationBuilder";
 import Key from "./inputs/Key";
 import String from "./inputs/String";
 import Boolean from "./inputs/Boolean";
+import Picker from "./inputs/Picker";
 
 //TODO следует ли компоновать их и засунуть в один объект?
 export const key = new AnnotationBuilder<string>({input: Key, isSystem: true}).isRequired("")
 export const string = new AnnotationBuilder<string | undefined>({input: String})
 export const boolean = new AnnotationBuilder<boolean | undefined>({input: Boolean})
+//TODO Like function
+export const select = new AnnotationBuilder<"lg" | "md" | "sm" | "xs" | undefined>({input: Picker})
 
 //Аннотация: спсиок допустимых параметров - просто массив
 //Аннотация: список допустимых параметров с его label - value. Label всегда текст, а значение принимает заданный тип

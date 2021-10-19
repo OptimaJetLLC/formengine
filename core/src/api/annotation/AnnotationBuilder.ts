@@ -1,7 +1,5 @@
 import _ from "lodash";
 import {Annotation} from "./Annotation";
-import {PropertyEditorProps} from "../Types";
-import {ComponentClass, FunctionComponent} from "react";
 
 
 //TODO validation? or value by default
@@ -32,16 +30,6 @@ export class AnnotationBuilder<T> {
         let builder = AnnotationBuilder.from(this.template)
         Object.assign(builder.template, obj)
         return builder
-    }
-
-    /** Create new builder with template assigned with passed object */
-    withTitle(title?: string) {
-        return this.with({title})
-    }
-
-    /** Create new builder with template assigned with passed object */
-    withInput(input: FunctionComponent<PropertyEditorProps<T>> | ComponentClass<PropertyEditorProps<T>>) {
-        return this.with({input})
     }
 
     //TODO validation?

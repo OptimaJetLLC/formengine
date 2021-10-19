@@ -6,6 +6,7 @@ import {store} from "../../stores/Store";
 import { observer } from "mobx-react";
 import ControlBar from './ControlBar';
 import Selection from './Selection'
+import Resizer from './Resizer';
 
 interface BuilderWrapperProps {
     node: Node,
@@ -55,24 +56,31 @@ const BuilderWrapper = observer(
         const { hovered} = this.state;
         const selected = this.isSelected();
         const {key} = this.props?.node;
-        const k = store.currentNode?.key == this.props?.node?.key;
+        
         return (
             <Droppable droppableId={key} isDropDisabled={!!this.props?.node?.children} direction={!!this.props?.node?.children ? 'horizontal' : 'vertical'}>
                 {(cp: any, dd: any) => (
                     <div ref={cp.innerRef}>
-                        <Draggable key={key} draggableId={key} index={0}>
+                        <Draggable key={key}  draggableId={key} index={0}>
                             {(provided: any, snapshot: any) => (
-                                <div ref={provided.innerRef}
-                                     {...provided.draggableProps}
-                                     {...provided.dragHandleProps}>
-                                    <Container ref={this.containerRef}>
+                                    <Container ref={(ref: any) => {
+                                            provided.innerRef(ref);
+                                            this.containerRef.current = ref;
+                                        }}
+                                        {...provided.draggableProps}
+                                        {...provided.dragHandleProps}>
                                         <Selection onClick={this.setSelected}
                                             onMouseOver={this.onMouseOver} onMouseLeave={this.onMouseLeave}
                                             hovered={hovered} selected={selected}/>
-                                        {selected && <ControlBar referenceElement={this.containerRef} content={this.props?.node?.key}/>}
+                                        {selected && <>
+                                            {Resizer("left")}
+                                            {Resizer("top")}
+                                            {Resizer("right")}
+                                            {Resizer("bottom")}
+                                            <ControlBar referenceElement={this.containerRef} content={this.props?.node?.key}/>
+                                        </>}
                                         {children}
                                     </Container>
-                                </div>
                             )}
                         </Draggable>
                         {cp.placeholder}
