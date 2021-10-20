@@ -1,15 +1,20 @@
-import {makeAutoObservable} from "mobx";
+import {makeAutoObservable, observable} from "mobx";
 import {ComponentDefinition} from "../api/Types";
+import {Event, EventName} from "../utils/Types";
 
 export class ComponentStore {
     key: string = ""
     type: string = ""
     props: Record<string, any> = {}
+    events: Record<EventName, Event> = {}
     children?: ComponentStore[]
 
     constructor(key: string, definition: ComponentDefinition<any>) {
         this.key = key
         this.type = definition.type
-        makeAutoObservable(this);
+        makeAutoObservable(this, {
+            events: observable.deep
+        });
     }
 }
+

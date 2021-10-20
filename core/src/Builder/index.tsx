@@ -32,23 +32,13 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
     }
     extractParentNodesKeys(store.currentNode);
 
-    const onDragStart = (initial: DragStart, provided: ResponderProvided) => {
-        const draggingKey: string = initial.draggableId;
-        const draggingNode = treeSearch(store.tree.children, draggingKey);
-        treeMap(draggingNode, (node: any) => {
-            console.log("node", node)
-        })
-        console.log("draggingNode", draggingNode)
-    }
-
     const onDragEnd= (result: DropResult) => {
         const { source, destination, draggableId } = result;
-        console.log('==> result', result);
-        if (!source || !destination?.droppableId) return;
-        if (source.droppableId == "TOOLBAR") {
-                console.log('TOOLBAR', draggableId);
+
+        if (source?.droppableId === "TOOLBAR") {
+                //console.log('TOOLBAR', draggableId);
             } else {
-                store.move(draggableId, destination.droppableId, destination?.index);
+                store.move(draggableId, destination?.droppableId, destination?.index);
             }
         }
 
@@ -62,7 +52,7 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
         </Dropdown>
 
         <br/><br/>
-        <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
+        <DragDropContext onDragEnd={onDragEnd}>
             <Row>
                 <Col md={4}>
                     <Tree

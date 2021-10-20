@@ -1,8 +1,9 @@
-import {action,  computed, makeObservable, observable, toJS} from "mobx";
+import {action, autorun, computed, makeObservable, observable, toJS} from "mobx";
 import {ComponentStore} from "./ComponentStore";
 import {Node} from "../utils/Node";
 import _ from "lodash";
 import {doNeatly} from "../components/Component";
+import {AllEvents} from "../utils/Types";
 
 
 class Store {
@@ -10,6 +11,8 @@ class Store {
     isDragging?: boolean
     isResizing?: boolean
     isMoving?: boolean
+
+    allEvents: AllEvents = []
 
     form = {
         //name?
@@ -24,12 +27,30 @@ class Store {
 
     constructor() {
         makeObservable(this, {
+            allEvents: observable,
             currentNode: observable.ref,
             isDragging: observable.ref,
             form: observable,
             tree: computed,
             clear: action.bound,
             add: action.bound,
+        })
+
+        autorun(() => {
+            //TODO
+            let sources = _.groupBy(this.allEvents, 'source.key')
+            _.forIn(sources, (values, key) => {
+                let source = _.first(values)!.source
+                values.forEach((value) => {
+                    source.events[value.eventName] = source.events[value.eventName] ?? {targets: []}
+                    source.events[value.eventName].targets.push({
+                        active: value.active,
+                        targetKey: value.target.key,
+                        action: value.action.name,
+                        args: value.args
+                    })
+                })
+            })
         })
     }
 
@@ -58,7 +79,6 @@ class Store {
     }
 
     add(type: string) {
-        console.log(type)
         //console.log(Control[Control[type]])
         //let modelType = this.ModelType[type as any];
         //let key = (Math.random() + 1).toString(36).substring(7);
@@ -66,9 +86,12 @@ class Store {
         //this.models.push(model)
     }
 
-    move(sourceKey: string, targetKey: string, index: number = 0 ) {
-        const sourceNode = treeSearch(this.tree.children, sourceKey);
-        const targetNode = treeSearch(this.tree.children, targetKey);
+    move(sourceKey?: string, targetKey?: string, index: number = 0) {
+        if (!sourceKey) return;
+        if (!targetKey) return;
+
+        const sourceNode = findNode(sourceKey);
+        const targetNode = findNode(targetKey);
         if (!sourceNode?.data || !targetNode?.data) return;
 
         const targetParent = targetNode.parent?.data?.children || this.form.components;
@@ -77,26 +100,59 @@ class Store {
         const sourceIndex = sourceParent?.indexOf(sourceNode?.data);
         if (targetParent == sourceParent) {
             moveArrayElement(targetParent, sourceIndex, targetIndex - 1 + index);
-        }
-        else {
+        } else {
             targetParent?.splice(targetIndex + index, 0, sourceNode.data);
             sourceParent?.splice(sourceIndex, 1);
         }
+        treeMap(this.form.components, (node: ComponentStore) => {
+            if (typeof node.props.children !== typeof "")
+                delete node.props.children;
+        })
     }
 }
 
-const treeSearch: (data?: Node[], key?: string, found?: {node?: Node}) => Node | undefined = (data, key, found = {}) => {
-    if (key && data) {
-        data.find((node: Node) => {
-            if (node.key == key) {
-                found.node = node;
-                return node;
-            }
-            if (node.children) return treeSearch(node.children, key, found);
-        });
-        return found.node;
+export const findNode = (key: string) => {
+    return find(store.tree);
+
+    function find(node: Node): Node | null {
+        if (node.key == key) return node
+
+        let childNode = node.children?.find(find)
+        if (childNode) return childNode
+
+        return null
     }
-    return found.node;
+}
+
+export const getAllNodes = () => {
+    const nodes: Node[] = []
+    getKey(store.tree)
+    return nodes
+
+    function getKey(node: Node) {
+        if (node.key) nodes.push(node)
+
+        if (node.children) node.children.map(getKey)
+    }
+}
+
+export const getAllKeys = () => {
+    const keys: string[] = []
+    getKey(store.tree)
+    return keys
+
+    function getKey(node: Node) {
+        if (node.key) keys.push(node.key)
+
+        if (node.children) node.children.map(getKey)
+    }
+}
+
+const treeMap = (data: ComponentStore[], callback: Function)  => {
+    data.forEach((node: ComponentStore) => {
+        callback(node);
+        if (node.children) treeMap(node.children, callback);
+    });
 };
 
 const moveArrayElement = (arr: any[], fromIndex: number, toIndex: number) =>  {

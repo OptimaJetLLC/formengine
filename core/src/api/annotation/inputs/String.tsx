@@ -1,12 +1,12 @@
 import {PropertyEditorProps} from "../../Types";
 import {Form, Input} from "rsuite";
 
-export default <T extends string | undefined>({model, annotation}: PropertyEditorProps<T>) => (
+export default ({model, annotation}: PropertyEditorProps<string | undefined>) => (
     <div>
         <Form.ControlLabel>{annotation.title}</Form.ControlLabel>
         <Input
             value={model.props[annotation.key]}
-            onChange={value => model.props[annotation.key] = value as T}
+            onChange={value => model.props[annotation.key] = value as string | undefined}
         />
     </div>
 )

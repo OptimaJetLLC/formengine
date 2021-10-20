@@ -1,7 +1,7 @@
 import {PropertyEditorProps} from "../../Types";
 import {Checkbox, Form} from "rsuite";
 
-export default <T extends boolean | undefined>({model, annotation}: PropertyEditorProps<T>) => (
+export default ({model, annotation}: PropertyEditorProps<boolean | undefined>) => (
     <div>
         <Form.ControlLabel>{annotation.title}</Form.ControlLabel>
         <Checkbox

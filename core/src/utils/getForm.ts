@@ -18,14 +18,14 @@ export function getForm(code: string, getForm: (code: string) => any[]) {
     _.set(formHeader, "props.subheader", "Make it easier")
     store.form.components.push(formHeader);
 
-    let anotherContainer = new ComponentStore("input container", container)
-    anotherContainer.children = []
-    store.form.components.push(anotherContainer)
-
     let title = new ComponentStore("title", input)
     _.set(title, "props.label",  "Title")
     //this.models.push(title)
-    anotherContainer.children.push(title)
+    store.form.components.push(title)
+
+    let anotherContainer = new ComponentStore("input container", container)
+    anotherContainer.children = []
+    store.form.components.push(anotherContainer)
 
     let nameContainer = new ComponentStore("name container", container)
     nameContainer.children = []

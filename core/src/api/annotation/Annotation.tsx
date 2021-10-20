@@ -14,6 +14,7 @@ export class Annotation<T> {
     description?: string;
     isSystem: boolean = false
     isRequired: boolean = false
+    isFunction: boolean = false
 
     constructor() {
         //this.initValue = initValue

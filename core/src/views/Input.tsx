@@ -1,17 +1,15 @@
 import {Form, Input as RInput, InputProps as RInputProps} from "rsuite";
 import {CSSProperties, SyntheticEvent} from "react";
 import {define} from "../api/define";
-import {boolean, select, string} from "../api/annotation";
+import {boolean, func, select, string} from "../api/annotation";
 import {AnnotationBuilder} from "../api/annotation/AnnotationBuilder";
+import defineLocalAction from "../api/defineAction";
 
 export interface InputProps extends RInputProps {
-    //value: string | number | readonly string[];
-    //onChange: ((value: string | number | readonly string[], event: SyntheticEvent<Element, Event>) => void);
     label: string
     style: CSSProperties | undefined
     className: string
 }
-
 
 export enum Size {
     XSmall = "xs",
@@ -20,8 +18,8 @@ export enum Size {
     Large = "lg",
 }
 
-export class Action {
-    name: string = ""
+export class Event {
+    actions: string[] = []
     parameters: { name: string, value: string }[] = [{name: "", value: ""}]
     targets: string[] = []
 }
@@ -38,13 +36,30 @@ export const Input = ({style, className, label, ...props}: InputProps) => {
 }
 // "lg" | "md" | "sm" | "xs"
 export const input = define<InputProps>("Input", Input, {
-    disabled: boolean,
-    label: string.isRequired("Input"),
-    placeholder: string,
-    readOnly: boolean,
-    //size: new AnnotationBuilder<InputProps["size"]>(),
-    size: select,
-    //size: new AnnotationBuilder<"lg" | "md" | "sm" | "xs" | undefined>()
-    onChange: new AnnotationBuilder<InputProps["onChange"]>(),
-    value: undefined
-})
+        disabled: boolean,
+        label: string.isRequired("Input"),
+        placeholder: string,
+        readOnly: boolean,
+        //size: new AnnotationBuilder<InputProps["size"]>(),
+        size: select,
+        //size: new AnnotationBuilder<"lg" | "md" | "sm" | "xs" | undefined>()
+        onChange: func,
+        value: undefined
+    },
+    [
+        defineLocalAction("Action1", (...args) => {
+            let a = 1
+            let b = args
+            debugger
+        }),
+        defineLocalAction("Action2", (...args) => {
+            let a = 2
+            let b = args
+            debugger
+        }),
+        defineLocalAction("Action3", (...args) => {
+            let a = 3
+            let b = args
+            debugger
+        }),
+    ])
