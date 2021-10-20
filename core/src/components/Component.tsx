@@ -49,7 +49,7 @@ function initDefaultValue(store: ComponentStore, definition: ComponentDefinition
     _.forIn(definition.annotations, (value, key) => {
         if (value.isSystem) return
 
-        if (key.startsWith("on"))
+        if (value.isFunction)
             store.props[key] = parseFunc(key, store, definition)
         else
             store.props[key] = store.props[key] ?? value.defaultValue
@@ -63,7 +63,7 @@ export function doNeatly(store: ComponentStore) {
         if (value.isSystem) return
 
         //TODO delete react element
-        if (key.startsWith("on") || store.props[key] === value.defaultValue) store.props[key] = undefined
+        if (typeof value === "function" || store.props[key] === value.defaultValue) store.props[key] = undefined
     })
 
     if (store.children)

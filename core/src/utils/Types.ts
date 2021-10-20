@@ -1,4 +1,5 @@
 import {ComponentStore} from "../stores/ComponentStore";
+import {Action} from "../api/Types";
 
 export type EventName = string
 export type Target = string
@@ -18,4 +19,3 @@ export type AllEvents = {
     args: any[]
 }[]
 
-export type Action = { name: string, description: string, func: Function, arguments: string[] }

@@ -3,15 +3,13 @@ import {CSSProperties, SyntheticEvent} from "react";
 import {define} from "../api/define";
 import {boolean, func, select, string} from "../api/annotation";
 import {AnnotationBuilder} from "../api/annotation/AnnotationBuilder";
+import defineLocalAction from "../api/defineAction";
 
 export interface InputProps extends RInputProps {
-    //value: string | number | readonly string[];
-    //onChange: ((value: string | number | readonly string[], event: SyntheticEvent<Element, Event>) => void);
     label: string
     style: CSSProperties | undefined
     className: string
 }
-
 
 export enum Size {
     XSmall = "xs",
@@ -49,22 +47,19 @@ export const input = define<InputProps>("Input", Input, {
         value: undefined
     },
     [
-        {
-            name: "Action1", arguments: [], description: "", func() {
-                let a = 1
-                debugger
-            },
-        },
-        {
-            name: "Action2", arguments: [], description: "", func() {
-                let a = 2
-                debugger
-            },
-        },
-        {
-            name: "Action3", arguments: [], description: "", func() {
-                let a = 3
-                debugger
-            },
-        },
+        defineLocalAction("Action1", (...args) => {
+            let a = 1
+            let b = args
+            debugger
+        }),
+        defineLocalAction("Action2", (...args) => {
+            let a = 2
+            let b = args
+            debugger
+        }),
+        defineLocalAction("Action3", (...args) => {
+            let a = 3
+            let b = args
+            debugger
+        }),
     ])

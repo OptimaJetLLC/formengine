@@ -1,4 +1,4 @@
-import {ComponentDefinition, PropertyEditorProps} from "../../Types";
+import {Action, ComponentDefinition, PropertyEditorProps} from "../../Types";
 import {Form, Input, InputPicker} from "rsuite";
 import {SyntheticEvent, useEffect, useState} from "react";
 import {action, autorun, observable, toJS} from "mobx";
@@ -7,10 +7,10 @@ import {findNode, getAllKeys, getAllNodes, store} from "../../../stores/Store";
 import {Annotation} from "../Annotation";
 import {mapper} from "../../../views";
 import {Node} from "../../../utils/Node"
-import {Action} from "../../../utils/Types";
 import {ComponentStore} from "../../../stores/ComponentStore";
 
 export default ({model, annotation}: PropertyEditorProps<Function | undefined>) => {
+
     const [target, setTarget] = useState<Node | null>()
     const [targetDefinition, setTargetDefinition] = useState<ComponentDefinition<any> | null>()
     const [targetAction, setTargetAction] = useState<Action | null>()
