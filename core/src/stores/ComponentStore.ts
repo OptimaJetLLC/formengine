@@ -11,7 +11,7 @@ export class ComponentStore {
 
     constructor(key: string, definition: ComponentDefinition<any>) {
         this.key = key
-        this.type = definition.type
+        this.type = definition.name
         makeAutoObservable(this, {
             events: observable.deep
         });

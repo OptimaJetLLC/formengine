@@ -10,8 +10,8 @@ export const components = [button, container, dropdown, header, input, textArea]
 
 export const mapper: Record<string, ComponentDefinition<any>> = {}
 
-components.reduce((temp, value) => {
-    temp[value.type] = value
-    return temp;
+components.reduce((acc, value) => {
+    acc[value.name] = value
+    return acc;
 }, mapper)
 

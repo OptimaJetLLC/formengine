@@ -15,7 +15,7 @@ export type Annotations<T extends object> =
 type OmitUnimportant<T extends object> = Omit<T, "style" | "className" | "classPrefix">
 
 export interface ComponentDefinition<T extends object> {
-    type: string
+    name: string
     view: FunctionComponent<T>;
     annotations: Record<string, Annotation<T>>;
     actions?: Action[];

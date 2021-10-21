@@ -17,8 +17,7 @@ export const define = <T extends object>(name: string, view: FunctionComponent<T
     })
 
     return ({
-        type: name,
-        view,
+        name, view,
         annotations: properties,
         actions
     })
