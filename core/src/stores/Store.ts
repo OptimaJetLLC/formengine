@@ -4,6 +4,7 @@ import {Node} from "../utils/Node";
 import _ from "lodash";
 import {doNeatly} from "../components/Component";
 import {AllEvents} from "../utils/Types";
+import {Action} from "../api/Types";
 
 
 class Store {
@@ -52,6 +53,10 @@ class Store {
                 })
             })
         })
+    }
+
+    addEvent(action: Action, eventName: string, args: [], source: ComponentStore, target: ComponentStore, active: boolean) {
+        this.allEvents.push({action, eventName, args, source, target, active})
     }
 
     clear() {
@@ -148,14 +153,14 @@ export const getAllKeys = () => {
     }
 }
 
-const treeMap = (data: ComponentStore[], callback: Function)  => {
+const treeMap = (data: ComponentStore[], callback: Function) => {
     data.forEach((node: ComponentStore) => {
         callback(node);
         if (node.children) treeMap(node.children, callback);
     });
 };
 
-const moveArrayElement = (arr: any[], fromIndex: number, toIndex: number) =>  {
+const moveArrayElement = (arr: any[], fromIndex: number, toIndex: number) => {
     var element = arr[fromIndex];
     arr.splice(fromIndex, 1);
     arr.splice(toIndex, 0, element);

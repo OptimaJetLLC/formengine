@@ -1,63 +1,47 @@
-import {Action, ComponentDefinition, PropertyEditorProps} from "../../Types";
-import {Form, Input, InputPicker} from "rsuite";
-import {SyntheticEvent, useEffect, useState} from "react";
-import {action, autorun, observable, toJS} from "mobx";
 import _ from "lodash";
-import {findNode, getAllKeys, getAllNodes, store} from "../../../stores/Store";
-import {Annotation} from "../Annotation";
+import {Action, ComponentDefinition, PropertyEditorProps} from "../../Types";
+import {InputPicker} from "rsuite";
+import {useEffect, useState} from "react";
+import {computed} from "mobx";
+import {getAllNodes, store} from "../../../stores/Store";
 import {mapper} from "../../../views";
 import {Node} from "../../../utils/Node"
 import {ComponentStore} from "../../../stores/ComponentStore";
+import {useLocalObservable} from "mobx-react";
+
+const nodes = computed(() => getAllNodes().map(node => ({label: node.key, value: node.key, node})))
 
 export default ({model, annotation}: PropertyEditorProps<Function | undefined>) => {
+    const target = useLocalObservable(() => ({
+        node: null as Node | null,
+        chosenAction: null as Action | null,
 
-    const [target, setTarget] = useState<Node | null>()
-    const [targetDefinition, setTargetDefinition] = useState<ComponentDefinition<any> | null>()
-    const [targetAction, setTargetAction] = useState<Action | null>()
-    const [eventName, setEventName] = useState<string>("")
-    const [count, setCount] = useState(0);
+        get definition() {
+            return mapper[this.node?.data?.type ?? ""] ?? null
+        },
 
-    useEffect(() => {
-        if (!target) return
-
-        setTargetDefinition(mapper[target.data!.type]);
-    }, [target])
-
-    useEffect(() => {
-        if (!targetDefinition) return
-
-        setCount(count + 1)
-    }, [targetDefinition])
+        get actions() {
+            return this.definition?.actions?.map(action => ({label: action.name, value: action.name, action}))
+        },
+    }))
 
     useEffect(() => {
-        if (!targetAction) return
+        let action = target.chosenAction
+        if (!action) return
 
-        let a = {action: targetAction, eventName, args: [], source: model, target: target?.data!, active: true}
-        store.allEvents.push(a)
-    }, [targetAction]);
-
-
-
-
-    let nodes = getAllNodes().map(node => {
-        return {label: node.key, value: node.key, node}
-    })
-
-    let events = _.keys(targetDefinition?.annotations).filter(key => key.startsWith("on")).map(key => {
-        return {label: key, value: key}
-    })
-
-    let actions = targetDefinition?.actions?.map(action => {
-        return {label: action.name, value: action.name, action}
-    })
+        store.addEvent(action, annotation.key, [], model, target.node!.data!, true)
+    }, [target.chosenAction]);
 
 
     return (
         <div>
-            <Form.ControlLabel>{annotation.title}</Form.ControlLabel>
-            <InputPicker data={nodes} onSelect={(value, item) => setTarget(item.node)}/>
-            {events && <InputPicker data={events} onSelect={(value, item) => setEventName(value)}/>}
-            {actions && <InputPicker data={actions} onSelect={(value, item) => setTargetAction(item.action)}/>}
+            <label>{annotation.title}:</label>
+            <InputPicker block placeholder={"Target"} data={nodes.get()}
+                         onSelect={(value, item) => target.node = item.node}/>
+            {target.actions &&
+            <InputPicker block placeholder={"Action"} data={target.actions}
+                         onSelect={(value, item) => target.chosenAction = item.action}/>}
+            {/*Блок с параметрами от экшина*/}
             {/*<Input
                 value={model.props[annotation.key].source}
                 onChange={source => {

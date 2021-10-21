@@ -5,7 +5,8 @@ import {observer} from "mobx-react";
 
 export class Annotation<T> {
     key!: string
-    title?: string;
+    //TODO title to get with transformation if empty
+    title!: string;
     //type: string = Type.string;
     section?: string;
     input!: FunctionComponent<PropertyEditorProps<T>> | ComponentClass<PropertyEditorProps<T>>;

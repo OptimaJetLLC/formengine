@@ -6,6 +6,7 @@ export default <T extends unknown>({model, annotation}: PropertyEditorProps<T>) 
     <div>
         <Form.ControlLabel>{annotation.title}</Form.ControlLabel>
         <InputPicker
+            block
             value={model.props[annotation.key]}
             onChange={value => model.props[annotation.key] = value as T}
             data={[
