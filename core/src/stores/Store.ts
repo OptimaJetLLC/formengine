@@ -3,7 +3,7 @@ import {ComponentStore} from "./ComponentStore";
 import {Node} from "../utils/Node";
 import _ from "lodash";
 import {doNeatly} from "../components/Component";
-import {AllEvents} from "../utils/Types";
+import {AllEvents, Arg} from "../utils/Types";
 import {Action} from "../api/Types";
 
 
@@ -55,7 +55,7 @@ class Store {
         })
     }
 
-    addEvent(action: Action, eventName: string, args: [], source: ComponentStore, target: ComponentStore, active: boolean) {
+    addEvent(action: Action, eventName: string, args: Arg[], source: ComponentStore, target: ComponentStore, active: boolean) {
         this.allEvents.push({action, eventName, args, source, target, active})
     }
 

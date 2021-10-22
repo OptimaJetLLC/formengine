@@ -7,7 +7,7 @@ export type Target = string
 export interface Event {
 
     //targets: Record<target, { method: name, parameters: object }[]>
-    targets: {active: boolean, targetKey: string, action: string, args: any[] }[]
+    targets: {active: boolean, targetKey: string, action: string, args: Arg[] }[]
 }
 
 export type AllEvents = {
@@ -16,6 +16,7 @@ export type AllEvents = {
     source: ComponentStore,
     target: ComponentStore,
     action: Action,
-    args: any[]
+    args: Arg[]
 }[]
 
+export type Arg = {name: string, key: string, prop: string}

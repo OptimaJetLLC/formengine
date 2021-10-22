@@ -1,5 +1,9 @@
 import _ from "lodash";
 import {ComponentStore} from "../stores/ComponentStore";
+import {ComponentDefinition} from "../api/Types";
+import {mapper} from "../views";
+import {computed} from "mobx";
+import {getAllNodes} from "../stores/Store";
 
 export class Node {
     key: string
@@ -8,19 +12,21 @@ export class Node {
     children?: Node[]
     /** Don't exists only for virtual root in tree*/
     data?: ComponentStore
+    definition?: ComponentDefinition<any>
 
     get isRoot() {
         return _.isEmpty(this.data);
     }
 
-    constructor(item?: ComponentStore, parent?: Node) {
-        this.key = item?.key ?? "";
+    constructor(data?: ComponentStore, parent?: Node) {
+        this.key = data?.key ?? "";
         this.parent = parent;
 
-        if (item) this.data = item
+        this.data = data
+        this.definition = mapper[this.data?.type ?? ""]
 
-        if (item?.children) {
-            this.children = item.children.map(child => new Node(child, this));
+        if (data?.children) {
+            this.children = data.children.map(child => new Node(child, this));
         }
     }
 }

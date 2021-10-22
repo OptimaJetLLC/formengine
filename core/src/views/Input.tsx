@@ -47,16 +47,16 @@ export const input = define<InputProps>("Input", Input, {
         value: undefined
     },
     [
-        defineLocalAction("Action1", (...args) => {
+        defineLocalAction("Action1", (actionArgs, eventArgs) => {
             let a = 1
-            let b = args
+            //let b = args
             debugger
-        }),
-        defineLocalAction("Action2", (...args) => {
+        }, ["param1", "param2"]),
+        defineLocalAction("Action2", ({name, value, isActive}, eventArgs) => {
             let a = 2
-            let b = args
+            //let b = args
             debugger
-        }),
+        }, ["name", "value", "isActive"]),
         defineLocalAction("Action3", (...args) => {
             let a = 3
             let b = args

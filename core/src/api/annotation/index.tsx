@@ -22,4 +22,5 @@ export const func = new AnnotationBuilder<Function | undefined>({input: Func, se
 export const list = new AnnotationBuilder<string[] | undefined>()
 export const l1 = new AnnotationBuilder<object | undefined>()
 export const l2 = new AnnotationBuilder<Record<string, any> | undefined>()
+export const number = new AnnotationBuilder<number | undefined>()
 
