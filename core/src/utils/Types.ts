@@ -1,22 +1,34 @@
 import {ComponentStore} from "../stores/ComponentStore";
-import {Action} from "../api/Types";
-
 export type EventName = string
+export type ArgumentName = string
 export type Target = string
 
-export interface Event {
-
-    //targets: Record<target, { method: name, parameters: object }[]>
-    targets: {active: boolean, targetKey: string, action: string, args: Arg[] }[]
+export type WeakEvent = {
+    targetKey: string | null
+    actionName: string
+    args: Args
+    modifiers?: Modifiers
 }
 
-export type AllEvents = {
-    active: boolean,
-    eventName: string,
-    source: ComponentStore,
-    target: ComponentStore,
-    action: Action,
-    args: Arg[]
-}[]
+export type FullEvent = {
+    target: ComponentStore | null
+    action: Action
+    args: Args
+    modifiers?: Modifiers
+}
 
-export type Arg = {name: string, key: string, prop: string}
+export type Modifiers = { name: string, params: any }
+
+export type Action = {
+    name: string,
+    func: (...args: any[]) => any,
+    args?: string[],
+    description?: string
+}
+
+export type ArgDef = { type: ArgType, key: string, prop: string }
+export type Args = Record<ArgumentName, string | number | boolean | ArgDef>
+
+export enum ArgType {
+    Foreign = "Foreign"
+}

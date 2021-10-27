@@ -3,9 +3,15 @@ import {ComponentStore} from "./ComponentStore";
 import {Node} from "../utils/Node";
 import _ from "lodash";
 import {doNeatly} from "../components/Component";
-import {AllEvents, Arg} from "../utils/Types";
-import {Action} from "../api/Types";
+import {Action, FullEvent, ArgDef, Args, WeakEvent, EventName, Modifiers} from "../utils/Types";
+import {createTransformer} from "mobx-utils";
 
+const eventTransformer = createTransformer((event: FullEvent): WeakEvent => ({
+    targetKey: event.target?.key ?? null,
+    actionName: event.action.name,
+    args: event.args,
+    modifiers: event.modifiers
+}))
 
 class Store {
     currentNode: Node | null = null
@@ -13,7 +19,7 @@ class Store {
     isResizing?: boolean
     isMoving?: boolean
 
-    allEvents: AllEvents = []
+    allEvents = new Map<ComponentStore, Record<EventName, FullEvent[]>>()
 
     form = {
         //name?
@@ -28,7 +34,7 @@ class Store {
 
     constructor() {
         makeObservable(this, {
-            allEvents: observable,
+            allEvents: observable.deep,
             currentNode: observable.ref,
             isDragging: observable.ref,
             form: observable,
@@ -38,25 +44,31 @@ class Store {
         })
 
         autorun(() => {
-            //TODO
-            let sources = _.groupBy(this.allEvents, 'source.key')
-            _.forIn(sources, (values, key) => {
-                let source = _.first(values)!.source
-                values.forEach((value) => {
-                    source.events[value.eventName] = source.events[value.eventName] ?? {targets: []}
-                    source.events[value.eventName].targets.push({
-                        active: value.active,
-                        targetKey: value.target.key,
-                        action: value.action.name,
-                        args: value.args
-                    })
-                })
-            })
+            this.allEvents.forEach(toWeak)
         })
+
+
+        function toWeak(value: Record<EventName, FullEvent[]>, key: ComponentStore) {
+            let result = {} as Record<EventName, WeakEvent[]>
+
+            _.forIn(value, (actions, eventName) => {
+                result[eventName] = actions.map(eventTransformer)
+            })
+
+            key.events = result
+        }
     }
 
-    addEvent(action: Action, eventName: string, args: Arg[], source: ComponentStore, target: ComponentStore, active: boolean) {
-        this.allEvents.push({action, eventName, args, source, target, active})
+    addEvent(action: Action, eventKey: string, args: Args, source: ComponentStore, target: ComponentStore, modifiers?: Modifiers) {
+        //this.allEvents.push({action, name: eventName, args, source, target})
+        let event = this.allEvents.get(source)
+        if (!event) {
+            event = {}
+        }
+        if (!event[eventKey]) event[eventKey] = []
+        event[eventKey].push({action, args, target, modifiers})
+
+        this.allEvents.set(source, event)
     }
 
     clear() {
