@@ -3,13 +3,13 @@ import {ComponentStore} from "./ComponentStore";
 import {Node} from "../utils/Node";
 import _ from "lodash";
 import {doNeatly} from "../components/Component";
-import {Action, FullEvent, ArgDef, Args, WeakEvent, EventName, Modifiers} from "../utils/Types";
+import {Action, FullActionDefinition, OverArgs, WeakActionDefinition, EventName, Modifiers} from "../utils/Types";
 import {createTransformer} from "mobx-utils";
 
-const eventTransformer = createTransformer((event: FullEvent): WeakEvent => ({
+const eventTransformer = createTransformer((event: FullActionDefinition): WeakActionDefinition => ({
     targetKey: event.target?.key ?? null,
     actionName: event.action.name,
-    args: event.args,
+    overArgs: event.overArgs,
     modifiers: event.modifiers
 }))
 
@@ -19,7 +19,7 @@ class Store {
     isResizing?: boolean
     isMoving?: boolean
 
-    allEvents = new Map<ComponentStore, Record<EventName, FullEvent[]>>()
+    allEvents = new Map<ComponentStore, Record<EventName, FullActionDefinition[]>>()
 
     form = {
         //name?
@@ -48,8 +48,8 @@ class Store {
         })
 
 
-        function toWeak(value: Record<EventName, FullEvent[]>, key: ComponentStore) {
-            let result = {} as Record<EventName, WeakEvent[]>
+        function toWeak(value: Record<EventName, FullActionDefinition[]>, key: ComponentStore) {
+            let result = {} as Record<EventName, WeakActionDefinition[]>
 
             _.forIn(value, (actions, eventName) => {
                 result[eventName] = actions.map(eventTransformer)
@@ -59,14 +59,14 @@ class Store {
         }
     }
 
-    addEvent(action: Action, eventKey: string, args: Args, source: ComponentStore, target: ComponentStore, modifiers?: Modifiers) {
+    addEvent(action: Action, eventKey: string, args: OverArgs, source: ComponentStore, target: ComponentStore, modifiers?: Modifiers) {
         //this.allEvents.push({action, name: eventName, args, source, target})
         let event = this.allEvents.get(source)
         if (!event) {
             event = {}
         }
         if (!event[eventKey]) event[eventKey] = []
-        event[eventKey].push({action, args, target, modifiers})
+        event[eventKey].push({action, overArgs: args, target, modifiers})
 
         this.allEvents.set(source, event)
     }
