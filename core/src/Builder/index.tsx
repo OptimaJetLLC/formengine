@@ -72,8 +72,8 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
                 </Col>
 
                 <Col md={15}>
-                    {/*<FormViewer {...props} wrapper={BuilderWrapper}/></Col>*/}
-                    <FormViewer {...props} /></Col>
+                    <FormViewer {...props} wrapper={BuilderWrapper}/></Col>
+                    {/*<FormViewer {...props} /></Col>*/}
                 <Col md={5}> <PropertiesEditor/> </Col>
             </Row>
         </DragDropContext>
