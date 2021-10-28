@@ -3,7 +3,7 @@ import {ComponentStore} from "./ComponentStore";
 import {Node} from "../utils/Node";
 import _ from "lodash";
 import {doNeatly} from "../components/Component";
-import {Action, FullEvent, ArgDef, Args, WeakEvent, EventName, Modifiers} from "../utils/Types";
+import {Action, Args, EventName, FullEvent, Modifiers, WeakEvent} from "../utils/Types";
 import {createTransformer} from "mobx-utils";
 
 const eventTransformer = createTransformer((event: FullEvent): WeakEvent => ({
@@ -15,9 +15,10 @@ const eventTransformer = createTransformer((event: FullEvent): WeakEvent => ({
 
 class Store {
     currentNode: Node | null = null
-    isDragging?: boolean
+    isDragging: boolean = false
     isResizing?: boolean
     isMoving?: boolean
+    isBuilderMode: boolean = true
 
     allEvents = new Map<ComponentStore, Record<EventName, FullEvent[]>>()
 
@@ -37,6 +38,7 @@ class Store {
             allEvents: observable.deep,
             currentNode: observable.ref,
             isDragging: observable.ref,
+            isBuilderMode: observable.ref,
             form: observable,
             tree: computed,
             clear: action.bound,
@@ -57,6 +59,11 @@ class Store {
 
             key.events = result
         }
+    }
+
+    toggleBuilderMode() {
+        this.isBuilderMode = !this.isBuilderMode;
+        this.cleanReactChildrens();
     }
 
     addEvent(action: Action, eventKey: string, args: Args, source: ComponentStore, target: ComponentStore, modifiers?: Modifiers) {
@@ -103,6 +110,13 @@ class Store {
         //this.models.push(model)
     }
 
+    cleanReactChildrens() {
+        treeMap(this.form.components, (node: ComponentStore) => {
+            if (typeof node.props.children !== typeof "")
+                delete node.props.children;
+        })
+    }
+
     move(sourceKey?: string, targetKey?: string, index: number = 0) {
         if (!sourceKey) return;
         if (!targetKey) return;
@@ -121,10 +135,7 @@ class Store {
             targetParent?.splice(targetIndex + index, 0, sourceNode.data);
             sourceParent?.splice(sourceIndex, 1);
         }
-        treeMap(this.form.components, (node: ComponentStore) => {
-            if (typeof node.props.children !== typeof "")
-                delete node.props.children;
-        })
+        this.cleanReactChildrens();
     }
 }
 

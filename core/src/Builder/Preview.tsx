@@ -1,12 +1,11 @@
 import {Col, Row} from "rsuite";
-import {FormViewer, FormViewerProps} from "./FormViewer";
+import {FormViewer, FormViewerProps} from "../FormViewer";
 import React from "react";
 
 export interface FormPreviewProps extends FormViewerProps {
-
 }
 
-export const FormPreviewer = (props: FormPreviewProps) => {
+export const Preview = (props: FormPreviewProps) => {
 
     return <div>
         <Row>
