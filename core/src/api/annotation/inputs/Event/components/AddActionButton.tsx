@@ -13,7 +13,7 @@ const AddActionButton = ({eventKey, componentStore} : {eventKey: string, compone
                         <Popover ref={ref} className={className} style={{left, top}} full>
                             <Dropdown.Menu onSelect={(value: any) => {
                                 onClose();
-                                store.addEvent(value.action, eventKey, {}, componentStore, value.node.data!)
+                                store.addEvent(eventKey, value.action, {}, componentStore, value.node.data!)
                             }}>
                                 {getAllNodes()
                                     .filter(node => !_.isEmpty(node.definition?.actions))

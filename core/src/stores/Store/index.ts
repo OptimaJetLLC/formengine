@@ -1,17 +1,10 @@
-import {action, autorun, computed, makeObservable, observable, toJS} from "mobx";
-import {ComponentStore} from "./ComponentStore";
-import {Node} from "../utils/Node";
 import _ from "lodash";
-import {doNeatly} from "../components/Component";
-import {Action, FullActionDefinition, OverArgs, WeakActionDefinition, EventName, Modifiers} from "../utils/Types";
-import {createTransformer} from "mobx-utils";
-
-const eventTransformer = createTransformer((event: FullActionDefinition): WeakActionDefinition => ({
-    targetKey: event.target?.key ?? null,
-    actionName: event.action.name,
-    overArgs: event.overArgs,
-    modifiers: event.modifiers
-}))
+import {action, autorun, computed, makeObservable, observable, toJS} from "mobx";
+import {ComponentStore} from "../ComponentStore";
+import {Node} from "../../utils/Node";
+import {doNeatly} from "../../components/Component";
+import {Action, EventName, FullActionDefinition, Modifiers, OverArgs, WeakActionDefinition} from "../../utils/Types";
+import toWeakEvent from "./utils/toWeakEvent";
 
 class Store {
     currentNode: Node | null = null
@@ -21,14 +14,15 @@ class Store {
 
     allEvents = new Map<ComponentStore, Record<EventName, FullActionDefinition[]>>()
 
-    form = {
+    mould = {
         //name?
+        //common style?
         components: new Array<ComponentStore>()
     }
 
     get tree(): Node {
         let root = new Node()
-        root.children = this.form.components.map(child => new Node(child));
+        root.children = this.mould.components.map(child => new Node(child));
         return root
     }
 
@@ -37,46 +31,31 @@ class Store {
             allEvents: observable.deep,
             currentNode: observable.ref,
             isDragging: observable.ref,
-            form: observable,
+            mould: observable,
             tree: computed,
             clear: action.bound,
             add: action.bound,
         })
 
         autorun(() => {
-            this.allEvents.forEach(toWeak)
+            this.allEvents.forEach(toWeakEvent)
         })
-
-
-        function toWeak(value: Record<EventName, FullActionDefinition[]>, key: ComponentStore) {
-            let result = {} as Record<EventName, WeakActionDefinition[]>
-
-            _.forIn(value, (actions, eventName) => {
-                result[eventName] = actions.map(eventTransformer)
-            })
-
-            key.events = result
-        }
     }
 
-    addEvent(action: Action, eventKey: string, args: OverArgs, source: ComponentStore, target: ComponentStore, modifiers?: Modifiers) {
-        //this.allEvents.push({action, name: eventName, args, source, target})
-        let event = this.allEvents.get(source)
-        if (!event) {
-            event = {}
-        }
-        if (!event[eventKey]) event[eventKey] = []
+    addEvent(eventKey: string, action: Action, args: OverArgs, source: ComponentStore, target: ComponentStore, modifiers?: Modifiers) {
+        let event = this.allEvents.get(source) ?? {[eventKey]: []}
+
         event[eventKey].push({action, overArgs: args, target, modifiers})
 
         this.allEvents.set(source, event)
     }
 
     clear() {
-        this.form.components = [];
+        this.mould.components = [];
     }
 
     stringifyForm() {
-        let clone = _.cloneDeep(toJS(this.form))
+        let clone = _.cloneDeep(toJS(this.mould))
         clone.components.forEach(doNeatly)
 
         return JSON.stringify(clone, removeReactChildren, 2)
@@ -90,9 +69,9 @@ class Store {
         }
     }
 
-    //TODO Fix it
+    //TODO post processing
     parseForm(text: string) {
-        this.form = JSON.parse(text);
+        this.mould = JSON.parse(text);
     }
 
     add(type: string) {
@@ -111,8 +90,8 @@ class Store {
         const targetNode = findNode(targetKey);
         if (!sourceNode?.data || !targetNode?.data) return;
 
-        const targetParent = targetNode.parent?.data?.children || this.form.components;
-        const sourceParent = sourceNode.parent?.data?.children || this.form.components;
+        const targetParent = targetNode.parent?.data?.children || this.mould.components;
+        const sourceParent = sourceNode.parent?.data?.children || this.mould.components;
         const targetIndex = targetParent?.indexOf(targetNode?.data);
         const sourceIndex = sourceParent?.indexOf(sourceNode?.data);
         if (targetParent == sourceParent) {
@@ -121,7 +100,7 @@ class Store {
             targetParent?.splice(targetIndex + index, 0, sourceNode.data);
             sourceParent?.splice(sourceIndex, 1);
         }
-        treeMap(this.form.components, (node: ComponentStore) => {
+        treeMap(this.mould.components, (node: ComponentStore) => {
             if (typeof node.props.children !== typeof "")
                 delete node.props.children;
         })
