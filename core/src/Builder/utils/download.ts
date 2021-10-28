@@ -1,6 +1,6 @@
-import {store} from "../stores/Store";
+import {store} from "../../stores/Store";
 
-export function downloadForm() {
+export default () => {
     var data = "data:text/json;charset=utf-8," + encodeURIComponent(store.stringifyForm());
 
     const link = document.createElement('a');

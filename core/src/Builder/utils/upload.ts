@@ -1,6 +1,6 @@
-import {store} from "../stores/Store";
+import {store} from "../../stores/Store";
 
-export function uploadForm() {
+export default () => {
     var input = document.createElement('input');
     input.type = 'file';
 
