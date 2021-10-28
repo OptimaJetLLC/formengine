@@ -16,7 +16,7 @@ export interface FormBuilderProps extends FormViewerProps {
 
 }
 
-export const FormBuilder = observer(() => {
+export const FormBuilder = observer((props: FormBuilderProps) => {
     const [currentExpandedKeys, setCurrentExpandedKeys] = useState<any[]>([]);
     let expandedNodesKeys: string[] | never = [];
     const extractParentNodesKeys = (node: Node | null) => {
