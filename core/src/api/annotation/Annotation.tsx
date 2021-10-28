@@ -26,7 +26,7 @@ export class Annotation<T> {
         if (!store.currentNode?.data) return null
         if (!this.input) return null
         const Input = observer(this.input)
-        return (<Input key={this.key} model={store.currentNode.data} annotation={this}/>);
+        return (<Input key={this.key} componentStore={store.currentNode.data} annotation={this}/>);
     }
 }
 

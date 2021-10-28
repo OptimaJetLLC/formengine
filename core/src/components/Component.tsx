@@ -5,7 +5,7 @@ import {observer} from "mobx-react";
 import {Node} from "../utils/Node";
 import {ComponentDefinition} from "../api/Types";
 import {ComponentStore} from "../stores/ComponentStore";
-import {parseFunc} from "../api/annotation/inputs/Func";
+import {transformEvent} from "../api/annotation/inputs/Func";
 import {autorun} from "mobx";
 
 interface ComponentProps {
@@ -27,7 +27,7 @@ export const Component = observer(({node, wrapper}: ComponentProps) => {
             let a = node.data?.events
             if (_.isEmpty(a)) return
             _.forIn(a, (value, key) => {
-                node.data!.props[key] = parseFunc(key, node.data!, componentDefinition)
+                node.data!.props[key] = transformEvent(key, node.data!, componentDefinition)
             })
             console.log(a)
         })
@@ -50,7 +50,7 @@ function initDefaultValue(store: ComponentStore, definition: ComponentDefinition
         if (value.isSystem) return
 
         if (value.isFunction)
-            store.props[key] = parseFunc(key, store, definition)
+            store.props[key] = transformEvent(key, store, definition)
         else
             store.props[key] = store.props[key] ?? value.defaultValue
     })

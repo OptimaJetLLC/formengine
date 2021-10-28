@@ -2,6 +2,7 @@ import {FunctionComponent} from "react";
 import {AnnotationBuilder} from "./annotation/AnnotationBuilder";
 import {ComponentStore} from "../stores/ComponentStore";
 import {Annotation} from "./annotation/Annotation";
+import {Action} from "../utils/Types";
 
 export type Annotations<T extends object> =
     {
@@ -22,10 +23,8 @@ export interface ComponentDefinition<T extends object> {
     groupBy?: string;
 }
 
-export type Action = { name: string, func: (...args: any[]) => any, args?: string[], description?: string }
-
 /** Interface for property editor */
 export interface PropertyEditorProps<T> {
-    model: ComponentStore
+    componentStore: ComponentStore
     annotation: Annotation<T>
 }
