@@ -3,7 +3,7 @@ import {ComponentStore} from "../../ComponentStore";
 import _ from "lodash";
 import {createTransformer} from "mobx-utils";
 
-export default (value: Record<EventName, FullActionDefinition[]>, key: ComponentStore) => {
+export const toWeakEvent = (value: Record<EventName, FullActionDefinition[]>, key: ComponentStore) => {
     let result = {} as Record<EventName, WeakActionDefinition[]>
 
     _.forIn(value, (actions, eventName) => {

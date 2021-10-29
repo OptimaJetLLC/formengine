@@ -3,8 +3,10 @@ import {action, autorun, computed, makeObservable, observable, toJS} from "mobx"
 import {ComponentStore} from "../ComponentStore";
 import {Node} from "../../utils/Node";
 import {doNeatly} from "../../components/Component";
-import {Action, EventName, FullActionDefinition, Modifiers, OverArgs, WeakActionDefinition} from "../../utils/Types";
-import toWeakEvent from "./utils/toWeakEvent";
+import {Action, EventName, FullActionDefinition, Modifiers, OverArgs} from "../../utils/Types";
+import {toWeakEvent} from "./utils/toWeakEvent";
+import {findNode} from "../../utils/tree/findNode";
+import {treeMap} from "../../utils/tree/treeMap";
 
 class Store {
     currentNode: Node | null = null
@@ -106,50 +108,6 @@ class Store {
         })
     }
 }
-
-export const findNode = (key: string) => {
-    return find(store.tree);
-
-    function find(node: Node): Node | null {
-        if (node.key == key) return node
-
-        let childNode = node.children?.find(find)
-        if (childNode) return childNode
-
-        return null
-    }
-}
-
-export const getAllNodes = () => {
-    const nodes: Node[] = []
-    getKey(store.tree)
-    return nodes
-
-    function getKey(node: Node) {
-        if (node.key) nodes.push(node)
-
-        if (node.children) node.children.map(getKey)
-    }
-}
-
-export const getAllKeys = () => {
-    const keys: string[] = []
-    getKey(store.tree)
-    return keys
-
-    function getKey(node: Node) {
-        if (node.key) keys.push(node.key)
-
-        if (node.children) node.children.map(getKey)
-    }
-}
-
-const treeMap = (data: ComponentStore[], callback: Function) => {
-    data.forEach((node: ComponentStore) => {
-        callback(node);
-        if (node.children) treeMap(node.children, callback);
-    });
-};
 
 const moveArrayElement = (arr: any[], fromIndex: number, toIndex: number) => {
     var element = arr[fromIndex];
