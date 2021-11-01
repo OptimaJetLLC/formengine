@@ -3,17 +3,17 @@ export type EventName = string
 export type ArgumentName = string
 export type Target = string
 
-export type WeakEvent = {
+export type WeakActionDefinition = {
     targetKey: string | null
     actionName: string
-    args: Args
+    overArgs: OverArgs
     modifiers?: Modifiers
 }
 
-export type FullEvent = {
+export type FullActionDefinition = {
     target: ComponentStore | null
     action: Action
-    args: Args
+    overArgs: OverArgs
     modifiers?: Modifiers
 }
 
@@ -26,9 +26,13 @@ export type Action = {
     description?: string
 }
 
-export type ArgDef = { type: ArgType, key: string, prop: string }
-export type Args = Record<ArgumentName, string | number | boolean | ArgDef>
+export type TransformativeArg = { type: TransformativeType, key: string, prop: string }
 
-export enum ArgType {
+/**
+* It will be transformed in arguments before passing in action.
+*/
+export type OverArgs = Record<ArgumentName, string | number | boolean | TransformativeArg>
+
+export enum TransformativeType {
     Foreign = "Foreign"
 }

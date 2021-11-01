@@ -12,12 +12,12 @@ export interface DropdownProps {
     block: boolean
 }
 
-export const Dropdown = (props : DropdownProps ) => {
+export const Dropdown = ({label, ...props} : DropdownProps ) => {
 
     return (
         <div>
-            <Form.ControlLabel>{props.label}</Form.ControlLabel>
-            <InputPicker data={props.data} placeholder={props.placeholder}/>
+            <Form.ControlLabel>{label}</Form.ControlLabel>
+            <InputPicker {...props}/>
         </div>
     )
 }

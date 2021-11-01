@@ -2,8 +2,6 @@ import _ from "lodash";
 import {ComponentStore} from "../stores/ComponentStore";
 import {ComponentDefinition} from "../api/Types";
 import {mapper} from "../views";
-import {computed} from "mobx";
-import {getAllNodes} from "../stores/Store";
 
 export class Node {
     key: string

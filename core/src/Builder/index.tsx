@@ -11,22 +11,26 @@ import HeaderBar from "./components/Headerbar";
 import BuilderView from "./BuilderView"
 import {Preview} from "./Preview";
 
+import _ from "lodash";
+import {configure} from "mobx";
+import {observer} from "mobx-react";
+import React from "react";
+import {Button, Col, Dropdown, Row} from "rsuite";
+import {DragDropContext, DropResult} from "react-beautiful-dnd";
+import {store} from "../stores/Store";
+import download from "./utils/download";
+import upload from "./utils/upload";
+import {mapper} from "../views";
+import BuilderWrapper from "./components/BuilderWrapper";
+import {FormViewer, FormViewerProps} from "../FormViewer";
+import PropertiesEditor from "./components/PropertiesEditor";
+import ComponentTree from "./components/ComponentTree";
 
 export interface FormBuilderProps extends FormViewerProps {
 
 }
 
-export const FormBuilder = observer((props: FormBuilderProps) => {
-    const [currentExpandedKeys, setCurrentExpandedKeys] = useState<any[]>([]);
-    let expandedNodesKeys: string[] | never = [];
-    const extractParentNodesKeys = (node: Node | null) => {
-        if (node?.parent?.data?.key) {
-            expandedNodesKeys.push(node.parent.data.key);
-            extractParentNodesKeys(node.parent);
-        }
-        expandedNodesKeys = expandedNodesKeys.concat(currentExpandedKeys);
-    }
-    extractParentNodesKeys(store.currentNode);
+const FormBuilder = observer((props: FormBuilderProps) => {
 
     const onDragStart = () => {
         store.isDragging = true;
@@ -57,7 +61,7 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
             </Content>
         </DragDropContext>
     </div>;
-})
+});
 
 const Content = styled.div`
   display: flex;

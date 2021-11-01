@@ -5,8 +5,9 @@ import {observer} from "mobx-react";
 import {Node} from "../utils/Node";
 import {ComponentDefinition} from "../api/Types";
 import {ComponentStore} from "../stores/ComponentStore";
-import {transformEvent} from "../api/annotation/inputs/Func";
 import {autorun} from "mobx";
+import {TransformativeType} from "../utils/Types";
+import {findNode} from "../utils/tree/findNode";
 
 interface ComponentProps {
     node: Node,
@@ -43,6 +44,38 @@ export const Component = observer(({node, wrapper}: ComponentProps) => {
 
     return wrapper ? wrapper({node, children: element}) : element;
 });
+
+function transformEvent(key: string, store: ComponentStore, definition: ComponentDefinition<any>) {
+    let event = store.events[key]
+    if (!event) return
+    let actions = event.map(value => {
+        let action = definition.actions?.find((val) => val.name === value.actionName)
+        if (!action) return
+
+        //TODO трансформировать непосредственно перед вызовом
+        let args = _.transform(value.overArgs, (result, value, key) => {
+            if (typeof value === "object" && value.type === TransformativeType.Foreign) {
+                let node = findNode(value.key)
+                if (node?.data?.props[value.prop])
+                    result[key] = node?.data?.props[value.prop]
+                return
+            }
+
+            result[key] = value
+        }, {} as Record<string, any>)
+
+        return _.bind(action.func as (...args: any[]) => any, null, args)
+    })
+
+    let func = function (...arg: any[]) {
+        actions.forEach(value => {
+            value?.(arg)
+        })
+        debugger
+    }
+
+    return func
+}
 
 function initDefaultValue(store: ComponentStore, definition: ComponentDefinition<any>) {
 

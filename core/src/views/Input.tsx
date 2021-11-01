@@ -1,7 +1,7 @@
 import {Form, Input as RInput, InputProps as RInputProps} from "rsuite";
 import {CSSProperties, SyntheticEvent} from "react";
 import {define} from "../api/define";
-import {boolean, func, select, string} from "../api/annotation";
+import {boolean, event, select, string} from "../api/annotation";
 import {AnnotationBuilder} from "../api/annotation/AnnotationBuilder";
 import defineLocalAction from "../api/defineAction";
 
@@ -43,7 +43,7 @@ export const input = define<InputProps>("Input", Input, {
         //size: new AnnotationBuilder<InputProps["size"]>(),
         size: select,
         //size: new AnnotationBuilder<"lg" | "md" | "sm" | "xs" | undefined>()
-        onChange: func,
+        onChange: event,
         value: undefined
     },
     [

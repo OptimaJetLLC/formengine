@@ -11,21 +11,21 @@ import {store} from "../stores/Store";
 //TODO can stringify and parse to form
 export function getForm(code: string, getForm: (code: string) => any[]) {
     //this.model = getForm(code);
-    if (store.form.components.length > 0) return
+    if (store.mould.components.length > 0) return
 
     let formHeader = new ComponentStore("header 1", header)
     _.set(formHeader, "props.content",  "Application Form")
     _.set(formHeader, "props.subheader", "Make it easier")
-    store.form.components.push(formHeader);
+    store.mould.components.push(formHeader);
 
     let title = new ComponentStore("title", input)
     _.set(title, "props.label",  "Title")
     //this.models.push(title)
-    store.form.components.push(title)
+    store.mould.components.push(title)
 
     let anotherContainer = new ComponentStore("input container", container)
     anotherContainer.children = []
-    store.form.components.push(anotherContainer)
+    store.mould.components.push(anotherContainer)
 
     let nameContainer = new ComponentStore("name container", container)
     nameContainer.children = []
@@ -47,17 +47,17 @@ export function getForm(code: string, getForm: (code: string) => any[]) {
         {label: "Internal", value: "Internal"},
         {label: "External", value: "External"},
         {label: "Direct", value: "Direct"}])
-    _.set(type, "props.design.block",  true)
-    store.form.components.push(type)
+    _.set(type, "props.block",  true)
+    store.mould.components.push(type)
 
     let comment = new ComponentStore("comment", textArea);
     _.set(comment, "props.label", "Comment")
     _.set(comment, "props.rows",  5)
-    store.form.components.push(comment)
+    store.mould.components.push(comment)
 
     let buttonContainer = new ComponentStore("button container", container)
     buttonContainer.children = []
-    store.form.components.push(buttonContainer)
+    store.mould.components.push(buttonContainer)
 
     let saveButton = new ComponentStore("save", button)
     _.set(saveButton, "props.children",  "Save")

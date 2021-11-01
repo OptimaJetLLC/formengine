@@ -1,12 +1,12 @@
 import {makeAutoObservable, observable} from "mobx";
 import {ComponentDefinition} from "../api/Types";
-import {WeakEvent, EventName} from "../utils/Types";
+import {WeakActionDefinition, EventName} from "../utils/Types";
 
 export class ComponentStore {
     key: string = ""
     type: string = ""
     props: Record<string, any> = {}
-    events: Record<EventName, WeakEvent[]> = {}
+    events: Record<EventName, WeakActionDefinition[]> = {}
     children?: ComponentStore[]
 
     constructor(key: string, definition: ComponentDefinition<any>) {
