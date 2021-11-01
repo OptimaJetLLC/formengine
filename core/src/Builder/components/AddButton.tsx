@@ -24,11 +24,12 @@ const AddButton = observer(({style}: any) => {
         animation: 'fade', duration: [null, 0], animateFill: true
     }
 
-    return <div style={{width: 65, ...style}}>
+    return <div style={{width: 60, ...style}}>
         <Backdrop {...backdropProps}/>
         <Popover {...popoverProps}>
             <HoverZone>
-                <AddButton icon={<PlusIcon/>} color="green" appearance={"primary"} circle/>
+                <AddButton onMouseOver={() => setShowPopup(true)} icon={<PlusIcon/>} color="green"
+                           appearance={"primary"} circle/>
             </HoverZone>
         </Popover>
     </div>
@@ -49,7 +50,7 @@ const Backdrop = styled.div<{ showPopup: boolean, isDragging: boolean }>`
 const HoverZone = styled.div`
   padding: 25px;
   position: absolute;
-  left: -15px;
+  left: -10px;
   top: -15px;
   z-index: 12;
 `

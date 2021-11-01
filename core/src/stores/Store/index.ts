@@ -7,6 +7,8 @@ import {Action, EventName, FullActionDefinition, Modifiers, OverArgs} from "../.
 import {toWeakEvent} from "./utils/toWeakEvent";
 import {findNode} from "../../utils/tree/findNode";
 import {treeMap} from "../../utils/tree/treeMap";
+import {mapper} from "../../views";
+
 
 class Store {
     currentNode: Node | null = null
@@ -83,12 +85,12 @@ class Store {
         this.mould = JSON.parse(text);
     }
 
-    add() {
-        //console.log(Control[Control[type]])
-        //let modelType = this.ModelType[type as any];
-        //let key = (Math.random() + 1).toString(36).substring(7);
-        //let model = new modelType(key)
-        //this.models.push(model)
+    add(name: string, targetKey?: string, index: number = 0) {
+        const componentDefinition = mapper[name];
+        const key = name + (Math.random() + 1).toString(36).substring(7);
+        const component = new ComponentStore(key, componentDefinition);
+        this.mould.components.push(component);
+        this.move(key, targetKey, index);
     }
 
     cleanReactChildrens() {
@@ -111,7 +113,7 @@ class Store {
         const targetIndex = targetParent?.indexOf(targetNode?.data);
         const sourceIndex = sourceParent?.indexOf(sourceNode?.data);
         if (targetParent == sourceParent) {
-            moveArrayElement(targetParent, sourceIndex, targetIndex - 1 + index);
+            moveArrayElement(targetParent, sourceIndex, targetIndex + index);
         } else {
             targetParent?.splice(targetIndex + index, 0, sourceNode.data);
             sourceParent?.splice(sourceIndex, 1);
@@ -121,7 +123,7 @@ class Store {
 }
 
 const moveArrayElement = (arr: any[], fromIndex: number, toIndex: number) => {
-    var element = arr[fromIndex];
+    const element = arr[fromIndex];
     arr.splice(fromIndex, 1);
     arr.splice(toIndex, 0, element);
 }

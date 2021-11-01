@@ -65,7 +65,7 @@ export class Toolbar extends React.Component<any, ToolbarState> {
         const key = control.name + String(index);
         const ControlView = control?.view ?? (() => 'none')
         return (
-            <Draggable key={key} draggableId={key} index={index} disableInteractiveElementBlocking>
+            <Draggable key={key} draggableId={control.name} index={index} disableInteractiveElementBlocking>
                 {
                     (p: any, s: any) => {
                         const {isDragging} = s;

@@ -24,7 +24,7 @@ const FormBuilder = observer((props: FormBuilderProps) => {
         const {source, destination, draggableId} = result;
 
         if (source?.droppableId === "TOOLBAR") {
-            //console.log('TOOLBAR', draggableId);
+            store.add(draggableId, destination?.droppableId, destination?.index);
         } else {
             store.move(draggableId, destination?.droppableId, destination?.index);
         }
@@ -35,20 +35,19 @@ const FormBuilder = observer((props: FormBuilderProps) => {
         <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
             <HeaderBar/>
             <Content>
-                {/*<LeftMenuBar/>*/}
-                <div style={{padding: 20, flex: 1}}>
-                    {store.isBuilderMode
-                        ? <BuilderView getForm={() => []}/>
-                        : <Preview getForm={() => []}/>
-                    }
-                </div>
+                {store.isBuilderMode
+                    ? <BuilderView getForm={() => []}/>
+                    : <Preview getForm={() => []}/>
+                }
             </Content>
         </DragDropContext>
     </div>;
 });
 
 const Content = styled.div`
-  display: flex;
+  padding: 20px;
+  padding-top: 30px;
+  flex: 1;
   flex-direction: row;
 `
 
