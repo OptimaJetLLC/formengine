@@ -1,30 +1,14 @@
 import {configure} from "mobx";
 import {observer} from "mobx-react";
-import React, {useState} from "react";
+import React from "react";
 import styled from '@emotion/styled';
 import {DragDropContext, DropResult} from "react-beautiful-dnd";
 import {ComponentStore} from "../stores/ComponentStore";
 import {store} from "../stores/Store";
-import {Node} from "../utils/Node";
 import {FormViewerProps} from "../FormViewer";
 import HeaderBar from "./components/Headerbar";
 import BuilderView from "./BuilderView"
 import {Preview} from "./Preview";
-
-import _ from "lodash";
-import {configure} from "mobx";
-import {observer} from "mobx-react";
-import React from "react";
-import {Button, Col, Dropdown, Row} from "rsuite";
-import {DragDropContext, DropResult} from "react-beautiful-dnd";
-import {store} from "../stores/Store";
-import download from "./utils/download";
-import upload from "./utils/upload";
-import {mapper} from "../views";
-import BuilderWrapper from "./components/BuilderWrapper";
-import {FormViewer, FormViewerProps} from "../FormViewer";
-import PropertiesEditor from "./components/PropertiesEditor";
-import ComponentTree from "./components/ComponentTree";
 
 export interface FormBuilderProps extends FormViewerProps {
 

@@ -1,9 +1,9 @@
 import React from "react";
 import {Node} from "../../utils/Node";
 import styled from '@emotion/styled';
-import { Draggable, Droppable } from "react-beautiful-dnd";
+import {Draggable, Droppable} from "react-beautiful-dnd";
 import {store} from "../../stores/Store";
-import { observer } from "mobx-react";
+import {observer} from "mobx-react";
 import ControlBar from './ControlBar';
 import Selection from './Selection'
 import Resizer from './Resizer';
@@ -42,14 +42,13 @@ const BuilderWrapper = observer(
         e.stopPropagation();
         const { isDragging, isResizing, isMoving } = store;
         this.setState({
-            hovered: true && !(isDragging && isResizing && isMoving)
+            hovered: !(isDragging && isResizing && isMoving)
         })
-        store.add("ff")
     }
 
-    onMouseLeave = (e: any) => {
-        this.setState({ hovered: false });
-    }
+        onMouseLeave = () => {
+            this.setState({hovered: false});
+        }
 
     render() {
         const { children } = this.props;
@@ -59,20 +58,20 @@ const BuilderWrapper = observer(
         
         return (
             <Droppable droppableId={key} isDropDisabled={!!this.props?.node?.children} direction={!!this.props?.node?.children ? 'horizontal' : 'vertical'}>
-                {(cp: any, dd: any) => (
+                {(cp: any) => (
                     <div ref={cp.innerRef}>
-                        <Draggable key={key}  draggableId={key} index={0} isDragDisabled={store.isResizing}>
-                            {(provided: any, snapshot: any) => (
-                                    <Container ref={(ref: any) => {
-                                            provided.innerRef(ref);
-                                            this.containerRef.current = ref;
-                                        }}
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}>
-                                        <Selection onClick={this.setSelected}
-                                            onMouseOver={this.onMouseOver} onMouseLeave={this.onMouseLeave}
-                                            hovered={hovered} selected={selected}/>
-                                        {selected && <>
+                        <Draggable key={key} draggableId={key} index={0} isDragDisabled={store.isResizing}>
+                            {(provided: any) => (
+                                <Container ref={(ref: any) => {
+                                    provided.innerRef(ref);
+                                    this.containerRef.current = ref;
+                                }}
+                                           {...provided.draggableProps}
+                                           {...provided.dragHandleProps}>
+                                    <Selection onClick={this.setSelected}
+                                               onMouseOver={this.onMouseOver} onMouseLeave={this.onMouseLeave}
+                                               hovered={hovered} selected={selected}/>
+                                    {selected && <>
                                             {Resizer("left")}
                                             {Resizer("top")}
                                             {Resizer("right")}

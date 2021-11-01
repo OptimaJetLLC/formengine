@@ -10,9 +10,10 @@ import {treeMap} from "../../utils/tree/treeMap";
 
 class Store {
     currentNode: Node | null = null
-    isDragging?: boolean
+    isDragging: boolean = false
     isResizing?: boolean
     isMoving?: boolean
+    isBuilderMode: boolean = true
 
     allEvents = new Map<ComponentStore, Record<EventName, FullActionDefinition[]>>()
 
@@ -33,6 +34,7 @@ class Store {
             allEvents: observable.deep,
             currentNode: observable.ref,
             isDragging: observable.ref,
+            isBuilderMode: observable.ref,
             mould: observable,
             tree: computed,
             clear: action.bound,
@@ -42,6 +44,11 @@ class Store {
         autorun(() => {
             this.allEvents.forEach(toWeakEvent)
         })
+    }
+
+    toggleBuilderMode() {
+        this.isBuilderMode = !this.isBuilderMode;
+        this.cleanReactChildrens();
     }
 
     addEvent(eventKey: string, action: Action, args: OverArgs, source: ComponentStore, target: ComponentStore, modifiers?: Modifiers) {
@@ -76,12 +83,19 @@ class Store {
         this.mould = JSON.parse(text);
     }
 
-    add(type: string) {
+    add() {
         //console.log(Control[Control[type]])
         //let modelType = this.ModelType[type as any];
         //let key = (Math.random() + 1).toString(36).substring(7);
         //let model = new modelType(key)
         //this.models.push(model)
+    }
+
+    cleanReactChildrens() {
+        treeMap(this.mould.components, (node: ComponentStore) => {
+            if (typeof node.props.children !== typeof "")
+                delete node.props.children;
+        })
     }
 
     move(sourceKey?: string, targetKey?: string, index: number = 0) {
@@ -102,10 +116,7 @@ class Store {
             targetParent?.splice(targetIndex + index, 0, sourceNode.data);
             sourceParent?.splice(sourceIndex, 1);
         }
-        treeMap(this.mould.components, (node: ComponentStore) => {
-            if (typeof node.props.children !== typeof "")
-                delete node.props.children;
-        })
+        this.cleanReactChildrens();
     }
 }
 
