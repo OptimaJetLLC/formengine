@@ -5,7 +5,7 @@ import {Dropdown, Input, InputGroup, Popover, Whisper} from "rsuite";
 import ArrowDownIcon from "@rsuite/icons/ArrowDown";
 import _ from "lodash";
 import {computed} from "mobx";
-import {getAllNodes} from "../../../../../utils/tree/getAllNodes";
+import {getAllNodes} from "../../../../../utils/tree";
 
 const nodes = computed(() => getAllNodes().map(node => ({label: node.key, value: node.key, item: node})))
 

@@ -4,7 +4,7 @@ import _ from "lodash";
 import PlusIcon from "@rsuite/icons/Plus";
 import {observer} from "mobx-react";
 import {ComponentStore} from "../../../../../stores/ComponentStore";
-import {getAllNodes} from "../../../../../utils/tree/getAllNodes";
+import {getAllNodes} from "../../../../../utils/tree";
 
 const AddActionButton = ({eventKey, componentStore} : {eventKey: string, componentStore: ComponentStore}) => {
 

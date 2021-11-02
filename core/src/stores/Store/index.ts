@@ -5,10 +5,9 @@ import {Node} from "../../utils/Node";
 import {doNeatly} from "../../components/Component";
 import {Action, EventName, FullActionDefinition, Modifiers, OverArgs} from "../../utils/Types";
 import {toWeakEvent} from "./utils/toWeakEvent";
-import {findNode} from "../../utils/tree/findNode";
-import {treeMap} from "../../utils/tree/treeMap";
 import {mapper} from "../../views";
 import {moveArrayItem} from "../../utils/moveArrayItem";
+import {findNode, treeMap} from "../../utils/tree";
 
 
 class Store {

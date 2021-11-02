@@ -8,7 +8,6 @@ export class Node {
     /** Don't exists only for virtual root in tree */
     parent?: Node
     children?: Node[]
-    /** Don't exists only for virtual root in tree*/
     data: ComponentStore
     definition?: ComponentDefinition<any>
 

@@ -8,7 +8,7 @@ import ControlBar from './ControlBar';
 import Selection from './Selection'
 import Resizer from './Resizer';
 import {ComponentStore} from "../../stores/ComponentStore";
-import {findNode} from "../../utils/tree/findNode";
+import {findNode} from "../../utils/tree";
 
 interface BuilderWrapperProps {
     componentStore: ComponentStore,

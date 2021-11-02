@@ -7,7 +7,7 @@ import {ComponentDefinition} from "../api/Types";
 import {ComponentStore} from "../stores/ComponentStore";
 import {autorun} from "mobx";
 import {TransformativeType} from "../utils/Types";
-import {findNode} from "../utils/tree/findNode";
+import {findNode} from "../utils/tree";
 
 interface ComponentProps {
     componentStore: ComponentStore,
