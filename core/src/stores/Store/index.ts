@@ -8,6 +8,7 @@ import {toWeakEvent} from "./utils/toWeakEvent";
 import {findNode} from "../../utils/tree/findNode";
 import {treeMap} from "../../utils/tree/treeMap";
 import {mapper} from "../../views";
+import {moveArrayItem} from "../../utils/moveArrayItem";
 
 
 class Store {
@@ -26,8 +27,10 @@ class Store {
     }
 
     get tree(): Node {
-        let root = new Node()
-        root.children = this.mould.components.map(child => new Node(child));
+        let store = new ComponentStore("")
+        let root = new Node(store)
+        store.children = this.mould.components
+        root.children = this.mould.components.map(child => new Node(child, root));
         return root
     }
 
@@ -85,8 +88,9 @@ class Store {
         this.mould = JSON.parse(text);
     }
 
-    add(name: string, targetKey?: string, index: number = 0) {
+    add(name: string, targetKey: string, index: number = 0) {
         const componentDefinition = mapper[name];
+        if (!componentDefinition) return
         const key = name + (Math.random() + 1).toString(36).substring(7);
         const component = new ComponentStore(key, componentDefinition);
         this.mould.components.push(component);
@@ -94,38 +98,33 @@ class Store {
     }
 
     cleanReactChildrens() {
-        treeMap(this.mould.components, (node: ComponentStore) => {
-            if (typeof node.props.children !== typeof "")
-                delete node.props.children;
+        console.log(toJS(this.mould.components))
+        treeMap(this.mould.components, (componentStore: ComponentStore) => {
+            if (typeof componentStore.props.children !== typeof "")
+                delete componentStore.props.children;
         })
     }
 
-    move(sourceKey?: string, targetKey?: string, index: number = 0) {
-        if (!sourceKey) return;
-        if (!targetKey) return;
-
+    move(sourceKey: string, targetKey: string, index: number = 0) {
         const sourceNode = findNode(sourceKey);
         const targetNode = findNode(targetKey);
-        if (!sourceNode?.data || !targetNode?.data) return;
 
-        const targetParent = targetNode.parent?.data?.children || this.mould.components;
-        const sourceParent = sourceNode.parent?.data?.children || this.mould.components;
-        const targetIndex = targetParent?.indexOf(targetNode?.data);
-        const sourceIndex = sourceParent?.indexOf(sourceNode?.data);
+        if (!sourceNode || !targetNode) return;
+
+        const sourceParent = sourceNode.parent?.data.children!;
+        const targetParent = targetNode.parent?.data.children!;
+
+        const sourceIndex = sourceParent.indexOf(sourceNode.data);
+        const targetIndex = targetParent.indexOf(targetNode.data);
+
         if (targetParent == sourceParent) {
-            moveArrayElement(targetParent, sourceIndex, targetIndex + index);
+            moveArrayItem(targetParent, sourceIndex, targetIndex + index);
         } else {
-            targetParent?.splice(targetIndex + index, 0, sourceNode.data);
-            sourceParent?.splice(sourceIndex, 1);
+            const [removed] = sourceParent.splice(sourceIndex, 1)
+            targetParent.splice(targetIndex + index, 0, removed);
         }
         this.cleanReactChildrens();
     }
-}
-
-const moveArrayElement = (arr: any[], fromIndex: number, toIndex: number) => {
-    const element = arr[fromIndex];
-    arr.splice(fromIndex, 1);
-    arr.splice(toIndex, 0, element);
 }
 
 export const store = new Store()

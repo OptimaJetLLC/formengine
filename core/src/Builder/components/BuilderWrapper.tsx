@@ -1,15 +1,17 @@
 import React from "react";
 import {Node} from "../../utils/Node";
 import styled from '@emotion/styled';
-import {Draggable, Droppable} from "react-beautiful-dnd";
+import {Draggable, DraggableProvided, Droppable, DroppableProvided} from "react-beautiful-dnd";
 import {store} from "../../stores/Store";
 import {observer} from "mobx-react";
 import ControlBar from './ControlBar';
 import Selection from './Selection'
 import Resizer from './Resizer';
+import {ComponentStore} from "../../stores/ComponentStore";
+import {findNode} from "../../utils/tree/findNode";
 
 interface BuilderWrapperProps {
-    node: Node,
+    componentStore: ComponentStore,
     children: any
 }
 
@@ -30,11 +32,11 @@ const BuilderWrapper = observer(
     }
 
     isSelected = () => {
-        return store.currentNode?.data?.key == this.props?.node?.key;
+        return store.currentNode?.data?.key == this.props?.componentStore?.key;
     }
 
     setSelected = () => {
-        store.currentNode = this.props?.node;
+        store.currentNode = findNode(this.props?.componentStore.key);
     }
 
     onMouseOver = (e: any) => {
@@ -54,14 +56,14 @@ const BuilderWrapper = observer(
         const { children } = this.props;
         const { hovered} = this.state;
         const selected = this.isSelected();
-        const {key} = this.props?.node;
+        const {key} = this.props.componentStore;
         
         return (
-            <Droppable droppableId={key} isDropDisabled={!!this.props?.node?.children} direction={!!this.props?.node?.children ? 'horizontal' : 'vertical'}>
-                {(cp: any) => (
-                    <div ref={cp.innerRef}>
+            <Droppable droppableId={key} isDropDisabled={!!this.props?.componentStore?.children} direction={!!this.props?.componentStore?.children ? 'horizontal' : 'vertical'}>
+                {(provider: DroppableProvided) => (
+                    <div ref={provider.innerRef} {...provider.droppableProps}>
                         <Draggable key={key} draggableId={key} index={0} isDragDisabled={store.isResizing}>
-                            {(provided: any) => (
+                            {(provided: DraggableProvided) => (
                                 <Container ref={(ref: any) => {
                                     provided.innerRef(ref);
                                     this.containerRef.current = ref;
@@ -76,13 +78,13 @@ const BuilderWrapper = observer(
                                             {Resizer("top")}
                                             {Resizer("right")}
                                             {Resizer("bottom")}
-                                            <ControlBar referenceElement={this.containerRef} content={this.props?.node?.key}/>
+                                            <ControlBar referenceElement={this.containerRef} content={this.props?.componentStore?.key}/>
                                         </>}
                                         {children}
                                     </Container>
                             )}
                         </Draggable>
-                        {cp.placeholder}
+                        {provider.placeholder}
                     </div>
                 )}
             </Droppable>

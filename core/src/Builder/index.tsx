@@ -3,7 +3,6 @@ import {observer} from "mobx-react";
 import React from "react";
 import styled from '@emotion/styled';
 import {DragDropContext, DropResult} from "react-beautiful-dnd";
-import {ComponentStore} from "../stores/ComponentStore";
 import {store} from "../stores/Store";
 import {FormViewerProps} from "../FormViewer";
 import HeaderBar from "./components/Headerbar";
@@ -14,21 +13,24 @@ export interface FormBuilderProps extends FormViewerProps {
 
 }
 
-const FormBuilder = observer((props: FormBuilderProps) => {
+const onDragEnd = (result: DropResult) => {
+    const {source, destination} = result;
+
+    if (!destination) return;
+
+    if (source.droppableId === "TOOLBAR")
+        store.add(source.droppableId, destination.droppableId, destination.index);
+    else {
+        store.move(source.droppableId, destination.droppableId, destination.index);
+    }
+
+    store.isDragging = false;
+}
+
+const FormBuilder = (props: FormBuilderProps) => {
 
     const onDragStart = () => {
         store.isDragging = true;
-    }
-
-    const onDragEnd = (result: DropResult) => {
-        const {source, destination, draggableId} = result;
-
-        if (source?.droppableId === "TOOLBAR") {
-            store.add(draggableId, destination?.droppableId, destination?.index);
-        } else {
-            store.move(draggableId, destination?.droppableId, destination?.index);
-        }
-        store.isDragging = false;
     }
 
     return <div>
@@ -42,7 +44,7 @@ const FormBuilder = observer((props: FormBuilderProps) => {
             </Content>
         </DragDropContext>
     </div>;
-});
+}
 
 const Content = styled.div`
   padding: 20px;
@@ -51,12 +53,8 @@ const Content = styled.div`
   flex-direction: row;
 `
 
-
 //TODO move to other common place
 //State can be changed from anywhere
 configure({enforceActions: "never"})
 
-export interface FormBuilderProps {
-    getForm: ((code: string) => ComponentStore[])
-}
-export default FormBuilder;
+export default observer(FormBuilder);

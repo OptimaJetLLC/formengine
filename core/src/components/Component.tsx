@@ -10,25 +10,23 @@ import {TransformativeType} from "../utils/Types";
 import {findNode} from "../utils/tree/findNode";
 
 interface ComponentProps {
-    node: Node,
+    componentStore: ComponentStore,
     wrapper?: Function
 }
 
-export const Component = observer(({node, wrapper}: ComponentProps) => {
-    if (!node.data) return null
+export const Component = observer(({componentStore, wrapper}: ComponentProps) => {
+    const {props} = componentStore;
+    const componentDefinition = mapper[componentStore.type];
 
-    const {props} = node.data;
-    const componentDefinition = mapper[node.data.type];
-
-    useEffect(() => initDefaultValue(node.data!, componentDefinition), [])
+    useEffect(() => initDefaultValue(componentStore, componentDefinition), [])
 
     //TODO
     useEffect(() => {
         let disposer = autorun(() => {
-            let a = node.data?.events
+            let a = componentStore.events
             if (_.isEmpty(a)) return
             _.forIn(a, (value, key) => {
-                node.data!.props[key] = transformEvent(key, node.data!, componentDefinition)
+                componentStore.props[key] = transformEvent(key, componentStore, componentDefinition)
             })
             console.log(a)
         })
@@ -37,12 +35,12 @@ export const Component = observer(({node, wrapper}: ComponentProps) => {
     }, []);
 
     props.children = props.children
-        || node.children?.map(childNode =>
-            <Component key={childNode.key} node={childNode} wrapper={wrapper}/>)
+        || componentStore.children?.map(child =>
+            <Component key={child.key} componentStore={child} wrapper={wrapper}/>)
 
     const element = React.createElement(componentDefinition.view, props);
 
-    return wrapper ? wrapper({node, children: element}) : element;
+    return wrapper ? wrapper({componentStore, children: element}) : element;
 });
 
 function transformEvent(key: string, store: ComponentStore, definition: ComponentDefinition<any>) {

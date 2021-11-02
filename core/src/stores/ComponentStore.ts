@@ -9,9 +9,10 @@ export class ComponentStore {
     events: Record<EventName, WeakActionDefinition[]> = {}
     children?: ComponentStore[]
 
-    constructor(key: string, definition: ComponentDefinition<any>) {
+    constructor(key: string, definition?: ComponentDefinition<any>) {
         this.key = key
-        this.type = definition.name
+        if (definition) this.type = definition.name
+
         makeAutoObservable(this, {
             events: observable.deep
         });

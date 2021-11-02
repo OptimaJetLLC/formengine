@@ -9,23 +9,20 @@ export class Node {
     parent?: Node
     children?: Node[]
     /** Don't exists only for virtual root in tree*/
-    data?: ComponentStore
+    data: ComponentStore
     definition?: ComponentDefinition<any>
 
     get isRoot() {
-        return _.isEmpty(this.data);
+        return _.isEmpty(this.key);
     }
 
-    constructor(data?: ComponentStore, parent?: Node) {
-        this.key = data?.key ?? "";
+    constructor(data: ComponentStore, parent?: Node) {
+        this.key = data.key;
         this.parent = parent;
 
         this.data = data
-        this.definition = mapper[this.data?.type ?? ""]
+        this.definition = mapper[this.data.type]
 
-        if (data?.children) {
-            this.children = data.children.map(child => new Node(child, this));
-        }
+        this.children = data.children?.map(child => new Node(child, this));
     }
 }
-
