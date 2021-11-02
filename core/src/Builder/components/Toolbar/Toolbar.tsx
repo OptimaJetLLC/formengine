@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from '@emotion/styled'
-import {Draggable, Droppable, DroppableProvided} from "react-beautiful-dnd";
+import {Draggable, DraggableProvided, DraggableStateSnapshot, Droppable, DroppableProvided} from "react-beautiful-dnd";
 import {Button} from 'rsuite';
 import SearchForm from '../SearchForm';
 import {ToolbarItem, ToolbarItems} from "./Items";
@@ -67,7 +67,7 @@ export class Toolbar extends React.Component<any, ToolbarState> {
         return (
             <Draggable key={key} draggableId={control.name} index={index} disableInteractiveElementBlocking>
                 {
-                    (p: any, s: any) => {
+                    (p: DraggableProvided, s: DraggableStateSnapshot) => {
                         const {isDragging} = s;
                         const element = (
                             <ControlContainer ref={p.innerRef} {...p.dragHandleProps} {...p.draggableProps}>
