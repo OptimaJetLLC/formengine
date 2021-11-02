@@ -14,14 +14,14 @@ export interface FormBuilderProps extends FormViewerProps {
 }
 
 const onDragEnd = (result: DropResult) => {
-    const {source, destination} = result;
+    const {source, destination, draggableId} = result;
 
     if (!destination) return;
 
     if (source.droppableId === "TOOLBAR")
-        store.add(source.droppableId, destination.droppableId, destination.index);
+        store.add(draggableId, destination.droppableId, destination.index);
     else {
-        store.move(source.droppableId, destination.droppableId, destination.index);
+        store.move(draggableId, destination.droppableId, destination.index);
     }
 
     store.isDragging = false;
