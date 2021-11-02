@@ -19,8 +19,12 @@ const BuilderView = observer((props: FormBuilderProps) => {
         </Col>
 
         <Col md={15}>
-            <FormViewer {...props} wrapper={BuilderWrapper}/></Col>
-        <Col md={5}> <PropertiesEditor/> </Col>
+            <FormViewer {...props} wrapper={BuilderWrapper}/>
+        </Col>
+
+        <Col md={5}>
+            <PropertiesEditor/>
+        </Col>
     </Row>;
 })
 
