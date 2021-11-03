@@ -21,7 +21,7 @@ export const FormViewer = observer(({getForm, wrapper}: FormViewerProps) => {
     }, [getForm]);
 
     return <div>
-        {store.mould.components?.map(componentStore => {
+        {store.model.components?.map(componentStore => {
             return React.createElement(Component, {key: componentStore.key, componentStore, wrapper});
         })}
     </div>;
