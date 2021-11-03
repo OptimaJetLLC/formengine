@@ -9,7 +9,7 @@ export class Node {
     parent?: Node
     children?: Node[]
     data: ComponentStore
-    definition?: ComponentDefinition<any>
+    definition: ComponentDefinition<any>
 
     get isRoot() {
         return _.isEmpty(this.key);

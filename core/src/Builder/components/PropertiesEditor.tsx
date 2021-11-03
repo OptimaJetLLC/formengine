@@ -17,7 +17,8 @@ const PropertiesEditor = () => {
 
     return (
         <>
-            <Nav appearance={"tabs"} activeKey={activeTab} onSelect={setActiveTab} style={{width: 150}}>
+            <Nav appearance="subtle" activeKey={activeTab} onSelect={setActiveTab}
+                 style={{width: 150, marginBottom: 10}}>
                 <Nav.Item eventKey={"main"} children={"Main"}/>
                 <Nav.Item eventKey={"design"} children={"Design"}/>
                 <Nav.Item eventKey={"other"} children={"Other"}/>

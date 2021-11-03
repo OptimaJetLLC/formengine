@@ -2,7 +2,6 @@ import _ from "lodash";
 import React, {useEffect} from "react";
 import {mapper} from "../views";
 import {observer} from "mobx-react";
-import {Node} from "../utils/Node";
 import {ComponentDefinition} from "../api/Types";
 import {ComponentStore} from "../stores/ComponentStore";
 import {autorun} from "mobx";
@@ -66,6 +65,8 @@ function transformEvent(key: string, store: ComponentStore, definition: Componen
     })
 
     let func = function (...arg: any[]) {
+        //TODO use object for arg (eventArgs)
+        arg.push(store);
         actions.forEach(value => {
             value?.(arg)
         })

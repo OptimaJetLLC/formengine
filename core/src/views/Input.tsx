@@ -1,9 +1,9 @@
 import {Form, Input as RInput, InputProps as RInputProps} from "rsuite";
-import {CSSProperties, SyntheticEvent} from "react";
+import {CSSProperties} from "react";
 import {define} from "../api/define";
 import {boolean, event, select, string} from "../api/annotation";
-import {AnnotationBuilder} from "../api/annotation/AnnotationBuilder";
 import defineLocalAction from "../api/defineAction";
+import {ComponentStore} from "../stores/ComponentStore";
 
 export interface InputProps extends RInputProps {
     label: string
@@ -47,11 +47,13 @@ export const input = define<InputProps>("Input", Input, {
         value: undefined
     },
     [
-        defineLocalAction("Action1", (actionArgs, eventArgs) => {
+        defineLocalAction("setValue", (actionArgs, eventArgs) => {
             let a = 1
+            const store: ComponentStore = eventArgs[2];
+            store.props.value = actionArgs.param1;
             //let b = args
             debugger
-        }, ["param1", "param2"]),
+        }, ["param1"]),
         defineLocalAction("Action2", ({name, value, isActive}, eventArgs) => {
             let a = 2
             //let b = args

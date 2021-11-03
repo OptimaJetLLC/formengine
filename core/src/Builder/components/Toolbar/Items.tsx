@@ -11,9 +11,5 @@ export const ToolbarItems: ToolbarItem[] = [
     {
         title: "Base controls",
         controls: components
-    },
-    {
-        title: "Premium controls",
-        controls: components
     }
 ]

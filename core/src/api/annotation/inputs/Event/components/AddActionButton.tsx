@@ -5,9 +5,16 @@ import PlusIcon from "@rsuite/icons/Plus";
 import {observer} from "mobx-react";
 import {ComponentStore} from "../../../../../stores/ComponentStore";
 import {getAllNodes} from "../../../../../utils/tree";
+import {Node} from "../../../../../utils/Node";
 
 const AddActionButton = ({eventKey, componentStore} : {eventKey: string, componentStore: ComponentStore}) => {
-
+    const nodes = getAllNodes().filter(node => !_.isEmpty(node.definition?.actions))
+    const groups = nodes.reduce((groups: any, node: Node) => {
+        const group: Node[] = (groups[node.definition.name] || []);
+        group.push(node);
+        groups[node.definition.name] = group;
+        return groups;
+    }, {});
 
     return <Whisper placement="bottomStart" trigger="click"
                     speaker={({onClose, left, top, className}, ref) =>
@@ -16,22 +23,31 @@ const AddActionButton = ({eventKey, componentStore} : {eventKey: string, compone
                                 onClose();
                                 store.addEvent(eventKey, value.action, {}, componentStore, value.node.data!)
                             }}>
-                                {getAllNodes()
-                                    .filter(node => !_.isEmpty(node.definition?.actions))
-                                    .map((node) =>
+                                {
+                                    Object.keys(groups).map((group, i) => (
                                         <Dropdown.Menu
-                                            key={node.key}
-                                            title={node.key}
+                                            key={group}
+                                            title={group}
                                             children={
-                                                node.definition?.actions?.map((action) =>
-                                                    <Dropdown.Item
-                                                        key={action.name}
-                                                        eventKey={{node, action}}
-                                                        children={action.name}
-                                                    />)
+                                                groups[group].map((node: Node) => (
+                                                    <Dropdown.Menu
+                                                        key={node.key}
+                                                        title={node.key}
+                                                        children={
+                                                            node.definition?.actions?.map((action) =>
+                                                                <Dropdown.Item
+                                                                    key={action.name}
+                                                                    eventKey={{node, action}}
+                                                                    children={action.name}
+                                                                />
+                                                            )
+                                                        }
+                                                    />
+                                                ))
                                             }
                                         />
-                                    )}
+                                    ))
+                                }
                             </Dropdown.Menu>
                         </Popover>
                     }>
