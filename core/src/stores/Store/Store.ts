@@ -19,7 +19,7 @@ class Store {
 
     allEvents = new Map<ComponentStore, Record<EventName, FullActionDefinition[]>>()
 
-    mould = {
+    model = {
         //name?
         //common style?
         components: new Array<ComponentStore>()
@@ -28,8 +28,8 @@ class Store {
     get tree(): Node {
         let store = new ComponentStore("")
         let root = new Node(store)
-        store.children = this.mould.components
-        root.children = this.mould.components.map(child => new Node(child, root));
+        store.children = this.model.components
+        root.children = this.model.components.map(child => new Node(child, root));
         return root
     }
 
@@ -39,7 +39,7 @@ class Store {
             currentNode: observable.ref,
             isDragging: observable.ref,
             isBuilderMode: observable.ref,
-            mould: observable,
+            model: observable,
             tree: computed,
             clear: action.bound,
             add: action.bound,
@@ -64,11 +64,11 @@ class Store {
     }
 
     clear() {
-        this.mould.components = [];
+        this.model.components = [];
     }
 
     stringifyForm() {
-        let clone = _.cloneDeep(toJS(this.mould))
+        let clone = _.cloneDeep(toJS(this.model))
         clone.components.forEach(doNeatly)
 
         return JSON.stringify(clone, removeReactChildren, 2)
@@ -84,7 +84,7 @@ class Store {
 
     //TODO post processing
     parseForm(text: string) {
-        this.mould = JSON.parse(text);
+        this.model = JSON.parse(text);
     }
 
     add(name: string, targetKey: string, index: number = 0) {
@@ -92,13 +92,13 @@ class Store {
         if (!componentDefinition) return
         const key = name + (Math.random() + 1).toString(36).substring(7);
         const component = new ComponentStore(key, componentDefinition);
-        this.mould.components.push(component);
+        this.model.components.push(component);
         this.move(key, targetKey, index);
     }
 
     cleanReactChildrens() {
-        console.log(toJS(this.mould.components))
-        treeMap(this.mould.components, (componentStore: ComponentStore) => {
+        console.log(toJS(this.model.components))
+        treeMap(this.model.components, (componentStore: ComponentStore) => {
             if (typeof componentStore.props.children !== typeof "")
                 delete componentStore.props.children;
         })
