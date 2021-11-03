@@ -17,9 +17,13 @@ const ComponentTree = () => {
         expandedNodesKeys = expandedNodesKeys.concat(currentExpandedKeys);
     }
     extractParentNodesKeys(store.currentNode);
+    const onDrop = ({dragNode, dropNode, dropNodePosition}: any,
+                    e: React.DragEvent) => {
+        store.move(dragNode.key, dropNode.key, dropNodePosition - 1);
+    };
 
     return <Tree
-        draggable
+        draggable onDrop={onDrop}
         onSelect={(activeNode) => store.currentNode = activeNode as Node}
         value={store.currentNode?.data?.key}
         expandItemValues={expandedNodesKeys}
