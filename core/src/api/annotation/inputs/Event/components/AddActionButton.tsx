@@ -16,7 +16,7 @@ const AddActionButton = ({eventKey, componentStore} : {eventKey: string, compone
         return groups;
     }, {});
 
-    return <Whisper placement="bottomStart" trigger="click"
+    return <Whisper placement="auto" trigger="click"
                     speaker={({onClose, left, top, className}, ref) =>
                         <Popover ref={ref} className={className} style={{left, top}} full>
                             <Dropdown.Menu onSelect={(value: any) => {

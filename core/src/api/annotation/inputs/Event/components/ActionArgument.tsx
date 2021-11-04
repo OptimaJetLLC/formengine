@@ -1,6 +1,6 @@
 import {observer} from "mobx-react";
 import {FullActionDefinition, TransformativeArg, TransformativeType} from "../../../../../utils/Types";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Dropdown, Input, InputGroup, Popover, Whisper} from "rsuite";
 import ArrowDownIcon from "@rsuite/icons/ArrowDown";
 import _ from "lodash";
@@ -24,25 +24,32 @@ const ActionArgument = ({name, data}: { name: string, data: FullActionDefinition
 
     }, [])
 
+    const onChange = (eventKey: any) => {
+        let value = eventKey;
+        data.overArgs[name] = eventKey
+        if (typeof eventKey === "object") {
+            value = `${eventKey.key}[${eventKey.prop}]`;
+        }
+        setValue(value);
+    };
+
     return <>
         <label>{name}</label>
         <InputGroup>
-            <InputGroup.Addon>
-                <Whisper
-                    placement="leftEnd" trigger="click"
-                    children={<ArrowDownIcon/>}
-                    speaker={
-                        ({onClose, left, top, className}, ref) => {
-                            const handleSelect = (eventKey: any) => {
-                                onClose();
-                                data.overArgs[name] = eventKey
-                                setValue(`${eventKey.key}[${eventKey.prop}]`)
-                                console.log(eventKey);
-                            };
-                            return <Popover ref={ref} className={className} style={{left, top}} full>
-                                    <Dropdown.Menu onSelect={handleSelect}>
-                                        {nodes.get().map((node) =>
-                                            <Dropdown.Menu
+            <Whisper
+                placement="leftEnd" trigger="click"
+                children={<InputGroup.Button><ArrowDownIcon/>
+                </InputGroup.Button>}
+                speaker={
+                    ({onClose, left, top, className}, ref) => {
+                        const handleSelect = (eventKey: any) => {
+                            onClose();
+                            onChange(eventKey);
+                        };
+                        return <Popover ref={ref} className={className} style={{left, top}} full>
+                            <Dropdown.Menu onSelect={handleSelect}>
+                                {nodes.get().map((node) =>
+                                    <Dropdown.Menu
                                                 key={node.item.key}
                                                 title={node.item.key}
                                                 children={_.keys((node.item).definition?.annotations).map((key) =>
@@ -54,12 +61,11 @@ const ActionArgument = ({name, data}: { name: string, data: FullActionDefinition
                                                             prop: key
                                                         } as TransformativeArg}
                                                         children={key}/>)}/>
-                                        )}
-                                    </Dropdown.Menu>
-                                </Popover>;
-                        }}/>
-            </InputGroup.Addon>
-            <Input value={value}/>
+                                )}
+                            </Dropdown.Menu>
+                        </Popover>;
+                    }}/>
+            <Input value={value} onChange={onChange}/>
 
         </InputGroup>
     </>

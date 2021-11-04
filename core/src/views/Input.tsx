@@ -3,7 +3,7 @@ import {CSSProperties} from "react";
 import {define} from "../api/define";
 import {boolean, event, select, string} from "../api/annotation";
 import defineLocalAction from "../api/defineAction";
-import {ComponentStore} from "../stores/ComponentStore";
+import {setValue} from "../utils/Actions";
 
 export interface InputProps extends RInputProps {
     label: string
@@ -17,13 +17,6 @@ export enum Size {
     Medium = "md",
     Large = "lg",
 }
-
-export class Event {
-    actions: string[] = []
-    parameters: { name: string, value: string }[] = [{name: "", value: ""}]
-    targets: string[] = []
-}
-
 
 export const Input = ({style, className, label, ...props}: InputProps) => {
 
@@ -47,13 +40,7 @@ export const input = define<InputProps>("Input", Input, {
         value: undefined
     },
     [
-        defineLocalAction("setValue", (actionArgs, eventArgs) => {
-            let a = 1
-            const store: ComponentStore = eventArgs[2];
-            store.props.value = actionArgs.param1;
-            //let b = args
-            debugger
-        }, ["param1"]),
+        setValue,
         defineLocalAction("Action2", ({name, value, isActive}, eventArgs) => {
             let a = 2
             //let b = args

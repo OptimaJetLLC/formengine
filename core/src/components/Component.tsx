@@ -27,7 +27,6 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
             _.forIn(a, (value, key) => {
                 componentStore.props[key] = transformEvent(key, componentStore, componentDefinition)
             })
-            console.log(a)
         })
 
         return () => disposer();
@@ -61,6 +60,10 @@ function transformEvent(key: string, store: ComponentStore, definition: Componen
             result[key] = value
         }, {} as Record<string, any>)
 
+        if (value.targetKey) {
+            let node = findNode(value.targetKey);
+            if (node) args.target = node?.data;
+        }
         return _.bind(action.func as (...args: any[]) => any, null, args)
     })
 

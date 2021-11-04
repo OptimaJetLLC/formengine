@@ -1,11 +1,11 @@
 import {observer} from "mobx-react";
-import {List} from "rsuite";
 import ActionItem from "./ActionItem";
 import {useEffect, useState} from "react";
 import {FullActionDefinition} from "../../../../../utils/Types";
-import {autorun, toJS} from "mobx";
+import {autorun} from "mobx";
 import {store} from "../../../../../stores/Store";
 import {ComponentStore} from "../../../../../stores/ComponentStore";
+import {Rows} from "../../../../../components/GroupItems"
 
 const ActionList = ({eventKey, componentStore} : {eventKey: string, componentStore: ComponentStore}) => {
     const [state, setState] = useState<undefined | FullActionDefinition[]>()
@@ -13,14 +13,11 @@ const ActionList = ({eventKey, componentStore} : {eventKey: string, componentSto
     useEffect(() => {
         autorun(() => {
             setState(store.allEvents.get(componentStore)?.[eventKey])
-            console.log(toJS(store.allEvents.get(componentStore)?.[eventKey]))
         })
     }, [])
 
     /*TODO Draggable List*/
-    return <List>
-        {state?.map(data => <ActionItem key={data.action.name} data={data}/>)}
-    </List>
+    return <Rows>{state?.map(data => <ActionItem key={data.action.name} data={data}/>)}</Rows>
 }
 
 export default observer(ActionList)
