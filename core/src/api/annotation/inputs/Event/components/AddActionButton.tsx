@@ -16,7 +16,7 @@ const AddActionButton = ({eventKey, componentStore} : {eventKey: string, compone
         return groups;
     }, {});
 
-    return <Whisper placement="auto" trigger="click"
+    return <Whisper placement="autoVertical" trigger="click"
                     speaker={({onClose, left, top, className}, ref) =>
                         <Popover ref={ref} className={className} style={{left, top}} full>
                             <Dropdown.Menu onSelect={(value: any) => {
@@ -24,11 +24,10 @@ const AddActionButton = ({eventKey, componentStore} : {eventKey: string, compone
                                 store.addEvent(eventKey, value.action, {}, componentStore, value.node.data!)
                             }}>
                                 {
-                                    Object.keys(groups).map((group, i) => (
-                                        <Dropdown.Menu
-                                            key={group}
-                                            title={group}
-                                            children={
+                                    Object.keys(groups).map((group) => (
+                                        <div style={{padding: "0 15px", marginTop: 5}}>
+                                            <h6>{group + "s"}</h6>
+                                            {
                                                 groups[group].map((node: Node) => (
                                                     <Dropdown.Menu
                                                         key={node.key}
@@ -45,13 +44,13 @@ const AddActionButton = ({eventKey, componentStore} : {eventKey: string, compone
                                                     />
                                                 ))
                                             }
-                                        />
+                                        </div>
                                     ))
                                 }
                             </Dropdown.Menu>
                         </Popover>
                     }>
-        <IconButton block icon={<PlusIcon/>} appearance="subtle" placement="left" children="Add another action"/>
+        <IconButton block icon={<PlusIcon/>} appearance="default" style={{marginTop: 20}}/>
     </Whisper>
 }
 

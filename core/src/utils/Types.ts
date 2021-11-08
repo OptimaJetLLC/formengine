@@ -1,18 +1,19 @@
 import {ComponentStore} from "../stores/ComponentStore";
+
 export type EventName = string
 export type ArgumentName = string
 export type Target = string
 
 export type WeakActionDefinition = {
     targetKey: string | null
-    actionName: string
+    actionName: string | null
     overArgs: OverArgs
     modifiers?: Modifiers
 }
 
 export type FullActionDefinition = {
     target: ComponentStore | null
-    action: Action
+    action: Action | null
     overArgs: OverArgs
     modifiers?: Modifiers
 }

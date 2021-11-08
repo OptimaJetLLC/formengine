@@ -15,7 +15,7 @@ export const toWeakEvent = (value: Record<EventName, FullActionDefinition[]>, ke
 
 const eventTransformer = createTransformer((event: FullActionDefinition): WeakActionDefinition => ({
     targetKey: event.target?.key ?? null,
-    actionName: event.action.name,
+    actionName: event.action?.name ?? null,
     overArgs: event.overArgs,
     modifiers: event.modifiers,
 }));

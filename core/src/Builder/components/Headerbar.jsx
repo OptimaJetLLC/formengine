@@ -19,23 +19,23 @@ import * as faRedo from '@fortawesome/free-solid-svg-icons/faRedo';
 
 import {store} from "../../stores/Store";
 import AddButton from "./AddButton";
+import upload from "../utils/upload";
+import download from "../utils/download";
 
 const HeaderBar = observer((props = {}) => {
 
     const fileActions = () => {
         const {
-            onDownload,
-            onChooseFileUpload,
             onClear,
             onPrint
         } = props;
         const local = props.localization ? props.localization : {};
 
         return <Dropdown appearance="default" title="Form">
-            <Dropdown.Item onSelect={onDownload} icon={<FileDownloadIcon/>}>
+            <Dropdown.Item onSelect={download} icon={<FileDownloadIcon/>}>
                 {local.download ?? "Download"}
             </Dropdown.Item>
-            <Dropdown.Item onSelect={onChooseFileUpload} icon={<FileUploadIcon/>}>
+            <Dropdown.Item onSelect={upload} icon={<FileUploadIcon/>}>
                 {local.upload ?? "Upload"}
             </Dropdown.Item>
             <Dropdown.Item onSelect={onPrint} icon={<Icon as={FaSvgIcon} faIcon={faPrint}/>}>
@@ -99,9 +99,10 @@ const HeaderBar = observer((props = {}) => {
 
     return (
         <Container>
-            <StyledAddButton/>
             {leftPanel()}
-            <div className="center"/>
+            <div className="center">
+                <StyledAddButton/>
+            </div>
             {rightPanel()}
         </Container>
     );
@@ -109,7 +110,6 @@ const HeaderBar = observer((props = {}) => {
 
 const StyledAddButton = styled(AddButton)`
   position: absolute;
-  left: 50%;
   transform: translateX(-18px);
 `
 

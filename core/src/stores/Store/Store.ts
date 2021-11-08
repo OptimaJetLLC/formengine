@@ -55,9 +55,14 @@ class Store {
         this.cleanReactChildrens();
     }
 
-    addEvent(eventKey: string, action: Action, args: OverArgs, source: ComponentStore, target: ComponentStore, modifiers?: Modifiers) {
-        let event = this.allEvents.get(source) ?? {[eventKey]: []}
+    addEvent(
+        eventKey: string, action: Action | null, args: OverArgs,
+        source: ComponentStore, target: ComponentStore | null,
+        modifiers?: Modifiers) {
 
+        let event = this.allEvents.get(source) ?? {}
+
+        if (!event[eventKey]) event[eventKey] = [];
         event[eventKey].push({action, overArgs: args, target, modifiers})
 
         this.allEvents.set(source, event)

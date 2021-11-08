@@ -33,11 +33,13 @@ const ActionArgument = ({name, data}: { name: string, data: FullActionDefinition
         setValue(value);
     };
 
-    return <>
+    return <div style={{display: "flex", flexDirection: "column", flex: 1}}>
         <label>{name}</label>
         <InputGroup>
+
+            <Input value={value} onChange={onChange}/>
             <Whisper
-                placement="leftEnd" trigger="click"
+                trigger="click" placement={"auto"}
                 children={<InputGroup.Button><ArrowDownIcon/>
                 </InputGroup.Button>}
                 speaker={
@@ -65,10 +67,9 @@ const ActionArgument = ({name, data}: { name: string, data: FullActionDefinition
                             </Dropdown.Menu>
                         </Popover>;
                     }}/>
-            <Input value={value} onChange={onChange}/>
 
         </InputGroup>
-    </>
+    </div>
 }
 
 export default observer(ActionArgument)

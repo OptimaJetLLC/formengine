@@ -20,7 +20,7 @@ const AddButton = observer(({style}: any) => {
     const popoverProps: TippyProps = {
         content: <Toolbar/>, arrow: true, disabled: isDragging, interactive: true,
         onShow: () => setShowPopup(true), onHide: () => setShowPopup(false),
-        maxWidth: 'none', placement: 'bottom', offset: [0, -15],
+        maxWidth: 'none', placement: 'bottom', offset: [0, -5],
         animation: 'fade', duration: [null, 0], animateFill: true
     }
 
@@ -48,10 +48,10 @@ const Backdrop = styled.div<{ showPopup: boolean, isDragging: boolean }>`
 `
 
 const HoverZone = styled.div`
-  padding: 25px;
+  padding: 10px 25px;
   position: absolute;
-  left: -10px;
-  top: -15px;
+  margin-left: -15px;
+  margin-top: -10px;
   z-index: 12;
 `
 
