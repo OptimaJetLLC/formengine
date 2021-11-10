@@ -50,7 +50,7 @@ const AddActionButton = ({eventKey, componentStore} : {eventKey: string, compone
                             </Dropdown.Menu>
                         </Popover>
                     }>
-        <IconButton block icon={<PlusIcon/>} appearance="default" style={{marginTop: 20}}/>
+        <IconButton block icon={<PlusIcon/>} appearance="default" size={"sm"}/>
     </Whisper>
 }
 

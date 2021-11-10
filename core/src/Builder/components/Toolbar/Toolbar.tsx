@@ -155,20 +155,13 @@ const Subheader = styled.li`
 const ControlItem = styled.div`
   color: white;
   cursor: grab;
-  margin: 0 5px;
-  width: 200px;
+  margin: 7px 5px;
+  min-width: 180px;
+  max-width: 180px;
   height: 100px;
   font-size: 14px;
   display: flex;
   flex-direction: column;
-
-  &:first-child {
-    margin-left: 0;
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
 `
 
 const ControlContainer = styled.div`
@@ -191,6 +184,7 @@ const ControlsGroup = styled.div``
 const Controls = styled.div`
   display: flex;
   margin-bottom: 5px;
+  flex-flow: wrap;
 `
 
 export default Toolbar;

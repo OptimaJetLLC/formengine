@@ -12,7 +12,7 @@ export const string = new AnnotationBuilder<string | undefined>({input: String})
 export const boolean = new AnnotationBuilder<boolean | undefined>({input: Boolean})
 //TODO Like function
 export const select = new AnnotationBuilder<"lg" | "md" | "sm" | "xs" | undefined>({input: Picker})
-export const event = new AnnotationBuilder<Function | undefined>({input: Event, section: "Event", isFunction: true})
+export const event = new AnnotationBuilder<Function | undefined>({input: Event, section: "Actions", isFunction: true})
 
 //Аннотация: спсиок допустимых параметров - просто массив
 //Аннотация: список допустимых параметров с его label - value. Label всегда текст, а значение принимает заданный тип

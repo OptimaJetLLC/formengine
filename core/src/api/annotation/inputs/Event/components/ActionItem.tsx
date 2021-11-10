@@ -1,16 +1,18 @@
 import {observer} from "mobx-react";
 import {FullActionDefinition} from "../../../../../utils/Types";
-import {Button, Dropdown} from "rsuite";
+import {Animation, Button, Dropdown} from "rsuite";
 import ParameterInput from "./ActionArgument";
-import {Columns} from "../../../../../components/GroupItems";
-import {ArrowDownLine} from '@rsuite/icons';
+import {Rows} from "../../../../../components/GroupItems";
+import {ArrowDownLine, ArrowUpLine} from '@rsuite/icons';
 import {ComponentStore} from "../../../../../stores/ComponentStore";
 import {getAllNodes} from "../../../../../utils/tree";
 import _ from "lodash";
 import {Node} from "../../../../../utils/Node";
 import {mapper} from "../../../../../views";
+import {useState} from "react";
+import styled from "@emotion/styled";
 
-const ChooseTargetButton = ({data}: { data: FullActionDefinition }) => {
+const ChooseTargetButton = observer(({data}: { data: FullActionDefinition }) => {
     const nodes = getAllNodes().filter(node => !_.isEmpty(node.definition?.actions))
     const groups = nodes.reduce((groups: any, node: Node) => {
         const group: Node[] = (groups[node.definition.name] || []);
@@ -19,14 +21,19 @@ const ChooseTargetButton = ({data}: { data: FullActionDefinition }) => {
         return groups;
     }, {});
 
-    return <Dropdown renderToggle={(props, ref) => (
-        <Button {...props} ref={ref}
-                appearance={"subtle"} style={{paddingRight: 5}}>
+    return <Dropdown style={{display: "flex"}} renderToggle={(props, ref) => (
+        <Button {...props} ref={ref} block
+                appearance={"subtle"} style={{padding: "2px 10px"}}>
 
-            <p style={{fontSize: 18}}>
-                For {`${data.target?.type.toLowerCase() ?? ""} `}
-                <a style={{marginLeft: 5}}>{(data.target?.key ? `"${data.target?.key}"` : "Target")}</a>
-                <ArrowDownLine/>
+            <p style={{display: "flex"}}>
+                <p>For {`${data.target?.type.toLowerCase() ?? ""} `}</p>
+                <div>
+                    <a style={{
+                        fontWeight: "bold",
+                        marginLeft: 5
+                    }}>{(data.target?.key ? `"${data.target?.key}"` : "Target")}</a>
+                    <ArrowDownLine/>
+                </div>
             </p>
         </Button>
     )}>
@@ -49,9 +56,9 @@ const ChooseTargetButton = ({data}: { data: FullActionDefinition }) => {
             ))
         }
     </Dropdown>
-}
+})
 
-const ChooseActionButton = ({data}: { data: FullActionDefinition }) => {
+const ChooseActionButton = observer(({data}: { data: FullActionDefinition }) => {
     const nodes = getAllNodes().filter(node => !_.isEmpty(node.definition?.actions))
     const groups = nodes.reduce((groups: any, node: Node) => {
         const group: Node[] = (groups[node.definition.name] || []);
@@ -103,12 +110,19 @@ const ChooseActionButton = ({data}: { data: FullActionDefinition }) => {
 
 
     return (
-        <Dropdown renderToggle={(props, ref) => (
-            <Button {...props} ref={ref} appearance={"subtle"} style={{paddingLeft: 5}}>
-                <p style={{fontSize: 18}}>
-                    do <a style={{color: "blueviolet", marginLeft: 5}}>{`${data.action?.name || "Action"}`}</a>
-                    <ArrowDownLine/>
-                </p>
+        <Dropdown style={{display: "flex"}} renderToggle={(props, ref) => (
+            <Button {...props} ref={ref} appearance={"subtle"} block style={{padding: "2px 10px"}}>
+                <label style={{display: "flex"}}>
+                    <p>do </p>
+                    <div>
+                        <a style={{
+                            fontWeight: "bold",
+                            color: "blueviolet",
+                            marginLeft: 5
+                        }}>{`${data.action?.name || "Action"}`}</a>
+                        <ArrowDownLine/>
+                    </div>
+                </label>
             </Button>
         )}>
             {
@@ -117,23 +131,50 @@ const ChooseActionButton = ({data}: { data: FullActionDefinition }) => {
                     : FullActionsList()
             }
         </Dropdown>)
-}
+})
 
 const ActionItem = ({data}: { data: FullActionDefinition }) => {
+    const [showParams, setShowParams] = useState(false);
+    const ExpandIcon = showParams ? ArrowUpLine : ArrowDownLine;
     return <div style={{
         backgroundColor: "rgb(247, 247, 250)",
-        borderRadius: 10, padding: "15px 5px"
+        borderRadius: 10, padding: "10px 5px 0"
     }}>
         <div>
             <ChooseTargetButton data={data}/>
             <ChooseActionButton data={data}/>
         </div>
-        <Columns>
-            {data.action?.args?.map(argName => (
-                <ParameterInput key={argName} name={argName} data={data}/>
-            ))}
-        </Columns>
+        <div style={{padding: "0 10px"}}>
+            <Animation.Collapse in={showParams}>
+                {(props, ref) => <div {...props} ref={ref}>
+                    <Rows margin={1} style={{marginTop: 8}}>
+                        {data.action?.args?.map(argName => (
+                            <ParameterInput key={argName} name={argName} data={data}/>
+                        ))}
+                    </Rows>
+                </div>}
+            </Animation.Collapse>
+        </div>
+        <ExpandButton
+            onClick={() => setShowParams(!showParams)}
+            block>
+            <ExpandIcon style={{marginTop: -6}}/>
+        </ExpandButton>
     </div>
 }
+
+const ExpandButton = styled(Button)`
+  padding: 0;
+  margin: 0px -2%;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  width: 104%;
+  outline: 0 !important;
+
+  &:focus {
+    box-shadow: none;
+    background-color: initial;
+  }
+`
 
 export default observer(ActionItem)

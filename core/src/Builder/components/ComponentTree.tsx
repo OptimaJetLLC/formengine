@@ -4,6 +4,7 @@ import {store} from "../../stores/Store";
 import {Tree} from "rsuite";
 import {ItemDataType} from "rsuite/esm/@types/common";
 import {observer} from "mobx-react";
+import styled from "@emotion/styled";
 
 const ComponentTree = () => {
     const [currentExpandedKeys, setCurrentExpandedKeys] = useState<any[]>([]);
@@ -17,12 +18,11 @@ const ComponentTree = () => {
         expandedNodesKeys = expandedNodesKeys.concat(currentExpandedKeys);
     }
     extractParentNodesKeys(store.currentNode);
-    const onDrop = ({dragNode, dropNode, dropNodePosition}: any,
-                    e: React.DragEvent) => {
+    const onDrop = ({dragNode, dropNode, dropNodePosition}: any) => {
         store.move(dragNode.key, dropNode.key, dropNodePosition - 1);
     };
 
-    return <Tree
+    return <StyledTree
         draggable onDrop={onDrop}
         onSelect={(activeNode) => store.currentNode = activeNode as Node}
         value={store.currentNode?.data?.key}
@@ -31,11 +31,30 @@ const ComponentTree = () => {
             setCurrentExpandedKeys(expandItemValues);
 
         }}
+        renderTreeNode={(node) => {
+            return <TreeNode>
+                <div>{`${node.key}`}</div>
+                <label>{` (${node.definition.name.toLowerCase()})`}</label>
+            </TreeNode>
+        }}
         labelKey="key"
         valueKey="key"
         style={{maxHeight: 'inherit', height: 'inherit'}}
         data={store.tree.children as ItemDataType[]}
     />
 }
+
+const TreeNode = styled.div`
+  margin-top: -3px;
+  display: flex;
+  flex-direction: row;
+
+  label {
+    opacity: 0.3;
+    margin-left: 10px;
+  }
+`
+
+const StyledTree = styled(Tree)``
 
 export default observer(ComponentTree)

@@ -6,6 +6,7 @@ import ArrowDownIcon from "@rsuite/icons/ArrowDown";
 import _ from "lodash";
 import {computed} from "mobx";
 import {getAllNodes} from "../../../../../utils/tree";
+import {LabeledInput} from "../../../../../components/GroupItems";
 
 const nodes = computed(() => getAllNodes().map(node => ({label: node.key, value: node.key, item: node})))
 
@@ -33,9 +34,9 @@ const ActionArgument = ({name, data}: { name: string, data: FullActionDefinition
         setValue(value);
     };
 
-    return <div style={{display: "flex", flexDirection: "column", flex: 1}}>
+    return <LabeledInput style={{display: "flex", flexDirection: "column", flex: 1}}>
         <label>{name}</label>
-        <InputGroup>
+        <InputGroup size={"sm"}>
 
             <Input value={value} onChange={onChange}/>
             <Whisper
@@ -69,7 +70,7 @@ const ActionArgument = ({name, data}: { name: string, data: FullActionDefinition
                     }}/>
 
         </InputGroup>
-    </div>
+    </LabeledInput>
 }
 
 export default observer(ActionArgument)

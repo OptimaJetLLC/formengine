@@ -25,6 +25,7 @@ const Columns = styled.div<{ margin?: number }>`
 
   & > * {
     margin: 0 ${(props: any) => (props.margin ?? '5') + 'px'};
+    flex: 1;
   }
 
   & :first-child {
@@ -36,4 +37,14 @@ const Columns = styled.div<{ margin?: number }>`
   }
 `
 
-export {Rows, Columns};
+const LabeledInput = styled.div`
+  label {
+    margin-left: 5px;
+  }
+
+  input, div {
+    margin-top: 2px;
+  }
+`
+
+export {Rows, Columns, LabeledInput};

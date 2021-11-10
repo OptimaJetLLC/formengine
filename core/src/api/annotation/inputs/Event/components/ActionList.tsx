@@ -17,7 +17,7 @@ const ActionList = ({eventKey, componentStore} : {eventKey: string, componentSto
     }, [])
 
     /*TODO Draggable List*/
-    return <Rows margin={10}
+    return <Rows margin={5}
         //style={{maxHeight: 500, overflowY: "auto"}}
     >{state?.map(data => <ActionItem key={data.action?.name} data={data}/>)}</Rows>
 }

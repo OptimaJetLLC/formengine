@@ -1,12 +1,13 @@
 import {PropertyEditorProps} from "../../Types";
-import {Form, Input} from "rsuite";
+import {Input} from "rsuite";
+import {LabeledInput} from "../../../components/GroupItems";
 
 export default ({componentStore, annotation}: PropertyEditorProps<string>) => (
-    <div>
-        <Form.ControlLabel>{annotation.title}</Form.ControlLabel>
+    <LabeledInput>
+        <label>{annotation.title}</label>
         <Input
             value={componentStore.key}
             onChange={value => componentStore.key = value as string}
         />
-    </div>
+    </LabeledInput>
 );

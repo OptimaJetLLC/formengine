@@ -20,9 +20,8 @@ export class AnnotationBuilder<T> {
 
     /** Create builder with sent template */
     static from<T>(template: Annotation<T>) {
-        let cloneTemplate = _.cloneDeep(template)
-        let builder = new AnnotationBuilder<T>(cloneTemplate)
-        return builder
+        let cloneTemplate = _.cloneDeep(template);
+        return new AnnotationBuilder<T>(cloneTemplate)
     }
 
     /** Create new builder with template assigned with passed object */
@@ -43,7 +42,7 @@ export class AnnotationBuilder<T> {
         }
 
         //annotation.type = annotation.type ?? typeof annotation.initValue
-        annotation.section = annotation.section ?? "main"
+        annotation.section = annotation.section ?? "Main"
         annotation.description = annotation.description ?? ""
 
         return annotation

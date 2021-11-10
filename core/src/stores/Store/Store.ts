@@ -13,9 +13,12 @@ import {findNode, treeMap} from "../../utils/tree";
 class Store {
     currentNode: Node | null = null
     isDragging: boolean = false
+    draggingOverKey?: string
     isResizing?: boolean
     isMoving?: boolean
     isBuilderMode: boolean = true
+    showRightPanel: boolean = true
+    showLeftPanel: boolean = true
 
     allEvents = new Map<ComponentStore, Record<EventName, FullActionDefinition[]>>()
 
@@ -39,6 +42,9 @@ class Store {
             currentNode: observable.ref,
             isDragging: observable.ref,
             isBuilderMode: observable.ref,
+            showRightPanel: observable.ref,
+            showLeftPanel: observable.ref,
+            draggingOverKey: observable.ref,
             model: observable,
             tree: computed,
             clear: action.bound,

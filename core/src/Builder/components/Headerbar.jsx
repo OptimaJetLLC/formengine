@@ -3,9 +3,7 @@ import {observer} from "mobx-react";
 import styled from '@emotion/styled'
 import 'tippy.js/dist/tippy.css';
 import {ButtonToolbar, Dropdown, IconButton, SelectPicker} from 'rsuite';
-import FaSvgIcon from "../../components/FaSvgIcon";
-
-import {Icon} from '@rsuite/icons';
+import {FaIcon} from "../../components/Icons";
 import MenuIcon from '@rsuite/icons/Menu';
 import FileDownloadIcon from '@rsuite/icons/FileDownload';
 import FileUploadIcon from '@rsuite/icons/FileUpload';
@@ -16,6 +14,7 @@ import * as faPrint from '@fortawesome/free-solid-svg-icons/faPrint';
 import * as faTrash from '@fortawesome/free-solid-svg-icons/faTrash';
 import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo';
 import * as faRedo from '@fortawesome/free-solid-svg-icons/faRedo';
+import * as faSitemap from '@fortawesome/free-solid-svg-icons/faSitemap';
 
 import {store} from "../../stores/Store";
 import AddButton from "./AddButton";
@@ -38,14 +37,14 @@ const HeaderBar = observer((props = {}) => {
             <Dropdown.Item onSelect={upload} icon={<FileUploadIcon/>}>
                 {local.upload ?? "Upload"}
             </Dropdown.Item>
-            <Dropdown.Item onSelect={onPrint} icon={<Icon as={FaSvgIcon} faIcon={faPrint}/>}>
+            <Dropdown.Item onSelect={onPrint} icon={<FaIcon icon={faPrint}/>}>
                 {local.print ?? "Print"}
             </Dropdown.Item>
             <Dropdown.Item onSelect={() => {
             }} icon={<SettingIcon/>}>
                 {local.settings ?? "Settings"}
             </Dropdown.Item>
-            <Dropdown.Item onSelect={onClear} icon={<Icon as={FaSvgIcon} faIcon={faTrash}/>}>
+            <Dropdown.Item onSelect={onClear} icon={<FaIcon icon={faTrash}/>}>
                 {local.clear ?? "Clear"}
             </Dropdown.Item>
         </Dropdown>
@@ -55,15 +54,18 @@ const HeaderBar = observer((props = {}) => {
         {/*<IconButton onClick={props.onToggleLeftPanel} style={{marginRight: 20}}*/}
         {/*            icon={<TreeIcon/>} appearance={props.isShowLeftPanel ? "primary" : "subtle"}/>*/}
         <ButtonToolbar>
+            <IconButton onClick={() => store.showLeftPanel = !store.showLeftPanel}
+                        style={{marginRight: 20}} icon={<FaIcon icon={faSitemap}
+                                                                color={store.showLeftPanel ? "var(--rs-btn-primary-bg)" : "initial"}/>}/>
             {fileActions()}
             <IconButton onClick={_ => {
             }} disabled={!!store.canUndo}
-                        icon={<Icon as={FaSvgIcon} faIcon={faUndo}/>}>
+                        icon={<FaIcon icon={faUndo}/>}>
                 Undo
             </IconButton>
             <IconButton onClick={_ => {
-            }} disabled={!store.canRedo} size="xs"
-                        icon={<Icon as={FaSvgIcon} faIcon={faRedo}/>}/>
+            }} disabled={!store.canRedo}
+                        icon={<FaIcon icon={faRedo}/>}/>
             {/* <IconButton onClick={this.onLibrary.bind(this)} icon={<Icon icon="info" />}>{local.library ? local.library : "Library"}</IconButton> */}
         </ButtonToolbar>
     </div>
@@ -76,9 +78,9 @@ const HeaderBar = observer((props = {}) => {
                     <SelectPicker appearance="subtle" value={props.desktopMode} style={{marginLeft: 10}}
                                   data={[{value: "desktop", label: "Desktop"}, {value: "mobile", label: "Mobile"}]}
                                   searchable={false} cleanable={false} onSelect={props.onChangeDesktopMode}/>
-                    <IconButton onClick={props.onToggleRightPanel} style={{marginLeft: 20}}
-                                icon={<MenuIcon size="lg"/>}
-                                appearance={props.isShowRightPanel ? "primary" : "subtle"}/>
+                    <IconButton onClick={() => store.showRightPanel = !store.showRightPanel}
+                                style={{marginLeft: 20}} icon={<MenuIcon
+                        fill={store.showRightPanel ? "var(--rs-btn-primary-bg)" : "initial"}/>}/>
                 </ButtonToolbar>
             </div>
         );
@@ -92,7 +94,7 @@ const HeaderBar = observer((props = {}) => {
         return <IconButton
             onClick={onClick}
             appearance={"primary"}
-            icon={<Icon as={FaSvgIcon} faIcon={icon}/>}>
+            icon={<FaIcon icon={icon}/>}>
             {store.isBuilderMode ? "Preview" : "Edit"}
         </IconButton>;
     }
