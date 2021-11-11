@@ -58,7 +58,7 @@ class Store {
 
     toggleBuilderMode() {
         this.isBuilderMode = !this.isBuilderMode;
-        this.cleanReactChildrens();
+        this.cleanReactChildren();
     }
 
     addEvent(
@@ -107,8 +107,7 @@ class Store {
         this.move(key, targetKey, index);
     }
 
-    cleanReactChildrens() {
-        console.log(toJS(this.model.components))
+    cleanReactChildren() {
         treeMap(this.model.components, (componentStore: ComponentStore) => {
             if (typeof componentStore.props.children !== typeof "")
                 delete componentStore.props.children;
@@ -133,7 +132,7 @@ class Store {
             const [removed] = sourceParent.splice(sourceIndex, 1)
             targetParent.splice(targetIndex + index, 0, removed);
         }
-        this.cleanReactChildrens();
+        this.cleanReactChildren();
     }
 }
 

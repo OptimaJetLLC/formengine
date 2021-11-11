@@ -9,7 +9,7 @@ import HeaderBar from "./components/Headerbar";
 import BuilderView from "./BuilderView"
 import {Preview} from "./Preview";
 import ComponentTree from "./components/ComponentTree";
-import PropertiesEditor from "./components/PropertiesEditor";
+import PropertiesEditor from "./components/PropertiesEditor/PropertiesEditor";
 import {findNode} from "../utils/tree";
 
 export interface FormBuilderProps extends FormViewerProps {

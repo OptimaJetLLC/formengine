@@ -1,5 +1,6 @@
 import _ from "lodash";
 import {Annotation} from "./Annotation";
+import {Section} from "../../Builder/components/PropertiesEditor/Section";
 
 
 //TODO validation? or value by default
@@ -42,7 +43,7 @@ export class AnnotationBuilder<T> {
         }
 
         //annotation.type = annotation.type ?? typeof annotation.initValue
-        annotation.section = annotation.section ?? "Main"
+        annotation.section = annotation.section ?? Section.Main
         annotation.description = annotation.description ?? ""
 
         return annotation

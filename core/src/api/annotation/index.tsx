@@ -5,14 +5,15 @@ import String from "./inputs/String";
 import Boolean from "./inputs/Boolean";
 import Picker from "./inputs/Picker";
 import Event from "./inputs/Event";
+import {Section} from "../../Builder/components/PropertiesEditor/Section";
 
 //TODO следует ли компоновать их и засунуть в один объект?
-export const key = new AnnotationBuilder<string>({input: Key, isSystem: true}).isRequired("")
-export const string = new AnnotationBuilder<string | undefined>({input: String})
-export const boolean = new AnnotationBuilder<boolean | undefined>({input: Boolean})
+export const key = new AnnotationBuilder<string>({component: Key, isSystem: true}).isRequired("")
+export const string = new AnnotationBuilder<string | undefined>({component: String})
+export const boolean = new AnnotationBuilder<boolean | undefined>({component: Boolean})
 //TODO Like function
-export const select = new AnnotationBuilder<"lg" | "md" | "sm" | "xs" | undefined>({input: Picker})
-export const event = new AnnotationBuilder<Function | undefined>({input: Event, section: "Actions", isFunction: true})
+export const select = new AnnotationBuilder<"lg" | "md" | "sm" | "xs" | undefined>({component: Picker})
+export const event = new AnnotationBuilder<Function | undefined>({component: Event, section: Section.Actions, isFunction: true})
 
 //Аннотация: спсиок допустимых параметров - просто массив
 //Аннотация: список допустимых параметров с его label - value. Label всегда текст, а значение принимает заданный тип
