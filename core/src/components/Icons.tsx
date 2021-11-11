@@ -1,4 +1,4 @@
-import {createIconFont, Icon} from '@rsuite/icons';
+import {Icon} from '@rsuite/icons';
 import React from "react";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 
@@ -16,13 +16,5 @@ export const FaIcon = ({icon, size, ...props}: {
     icon: IconDefinition, size?: number, props?: any
 }) => (
     <Icon as={FaSvgIcon} {...{faIcon: icon, size, ...props}}/>)
-
-export const IconFont = createIconFont({
-    scriptUrl: '//at.alicdn.com/t/font_7781069_1998910419.js',
-    commonProps: {style: {fontSize: 30, color: '#1675e0'}},
-    onLoaded: () => {
-        console.log('onLoaded');
-    }
-});
 
 export default FaSvgIcon;
