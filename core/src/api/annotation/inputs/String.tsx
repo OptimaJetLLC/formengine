@@ -4,25 +4,23 @@ import {LabeledInput} from "../../../components/GroupItems";
 import {FieldHelperProps, FieldInputProps, FieldProps} from "formik";
 
 
-export default ({componentStore, annotation, fields, helpers}:
-                    PropertyEditorProps<string | undefined> & { fields?: FieldInputProps<any>, helpers?:  FieldHelperProps<any> }) => {
-    let a = 4
-    if (!fields) return null
-    if (!helpers) return null
+export default (props: PropertyEditorProps<string | undefined>) => {
+    const {componentStore, annotation, onChange, onBlur, value} = props
+
+    //if (!fields) return null
+    //if (!helpers) return null
+
+    console.log(value)
     return (
         <LabeledInput>
         <label>{annotation.title}</label>
         <Input
+            name={annotation.key}
             /*value={componentStore.props[annotation.key]}*/
-            value={componentStore.props[annotation.key]}
+            value={value}
             /*onChange={value => componentStore.props[annotation.key] = value as string | undefined}*/
-            onChange={(value) => {
-
-                helpers.setValue(value, true)
-                componentStore.props[annotation.key] = value as string | undefined
-
-                let b = 5
-            }}
+            onChange={onChange}
+            onBlur={onBlur}
         />
     </LabeledInput>
     );

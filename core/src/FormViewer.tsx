@@ -4,6 +4,8 @@ import React, {useEffect} from "react";
 import {ComponentStore} from "./stores/ComponentStore";
 import {getForm as getStandardForm} from "./utils/getForm";
 import {Component} from "./components/Component";
+import {Formik} from "formik";
+import {Form} from "./features/validation/components/Form";
 
 export interface FormViewerProps {
     //TODO onEvent?: (key: string, action: any, eventName: string) => void
@@ -20,11 +22,32 @@ export const FormViewer = observer(({getForm, wrapper}: FormViewerProps) => {
 
     }, [getForm]);
 
-    return <div>
+
+    /*return <div>
         {store.model.components?.map(componentStore => {
             return React.createElement(Component, {key: componentStore.key, componentStore, wrapper});
         })}
-    </div>;
+    </div>;*/
+    return <Formik
+        initialValues={{}}
+        onSubmit={(values, {setSubmitting}) => {
+            setTimeout(() => {
+                alert(JSON.stringify(values, null, 2));
+                setSubmitting(false);
+            }, 1000);
+        }}
+    >
+        <Form>
+            {store.model.components?.map(componentStore => {
+
+
+                /*return <WithValidation annotation={componentStore.key} Component={Component}
+                                       componentStore={componentStore}/>*/
+
+                return React.createElement(Component, {key: componentStore.key, componentStore, wrapper});
+            })}
+        </Form>
+    </Formik>;
 })
 
 

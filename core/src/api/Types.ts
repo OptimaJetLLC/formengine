@@ -3,6 +3,8 @@ import {AnnotationBuilder} from "./annotation/AnnotationBuilder";
 import {ComponentStore} from "../stores/ComponentStore";
 import {Annotation} from "./annotation/Annotation";
 import {Action} from "../utils/Types";
+import {FormikHandlers} from "formik/dist/types";
+import * as React from "react";
 
 export type Annotations<T extends object> =
     {
@@ -27,4 +29,8 @@ export interface ComponentDefinition<T extends object> {
 export interface PropertyEditorProps<T> {
     componentStore: ComponentStore
     annotation: Annotation<T>
+
+    value?: any;
+    onChange?: (...args: any[]) => void
+    onBlur?: (...args: any[]) => void
 }

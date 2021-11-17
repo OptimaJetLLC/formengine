@@ -22,9 +22,9 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
     //TODO
     useEffect(() => {
         let disposer = autorun(() => {
-            let a = componentStore.events
-            if (_.isEmpty(a)) return
-            _.forIn(a, (value, key) => {
+            let events = componentStore.events
+            if (_.isEmpty(events)) return
+            _.forIn(events, (value, key) => {
                 componentStore.props[key] = transformEvent(key, componentStore, componentDefinition)
             })
         })
@@ -73,7 +73,6 @@ function transformEvent(key: string, store: ComponentStore, definition: Componen
         actions.forEach(value => {
             value?.(arg)
         })
-        debugger
     }
 
     return func
