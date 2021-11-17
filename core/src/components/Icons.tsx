@@ -12,9 +12,15 @@ const FaSvgIcon = ({faIcon, size, ...rest}: { faIcon: any, size?: number }) => {
     );
 };
 
-export const FaIcon = ({icon, size, ...props}: {
-    icon: IconDefinition, size?: number, props?: any
-}) => (
+
+interface FaIconProps {
+    icon: IconDefinition,
+    size?: number,
+    color?: string,
+    props?: any
+}
+
+export const FaIcon = ({icon, size, ...props}: FaIconProps) => (
     <Icon as={FaSvgIcon} {...{faIcon: icon, size, ...props}}/>)
 
 export default FaSvgIcon;

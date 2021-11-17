@@ -20,31 +20,35 @@ import {store} from "../../stores/Store";
 import AddButton from "./AddButton";
 import upload from "../utils/upload";
 import download from "../utils/download";
+import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 
-const HeaderBar = observer((props = {}) => {
+interface HeaderBarProps {
+
+}
+
+const HeaderBar = observer((props: HeaderBarProps) => {
 
     const fileActions = () => {
-        const {
-            onClear,
-            onPrint
-        } = props;
-        const local = props.localization ? props.localization : {};
+        //TODO
+        //const {onClear, onPrint} = props;
+        //const local = props.localization ? props.localization : {};
+        const local: any = {}
 
-        return <Dropdown appearance="default" title="Form">
+        return <Dropdown title="Form">
             <Dropdown.Item onSelect={download} icon={<FileDownloadIcon/>}>
                 {local.download ?? "Download"}
             </Dropdown.Item>
             <Dropdown.Item onSelect={upload} icon={<FileUploadIcon/>}>
                 {local.upload ?? "Upload"}
             </Dropdown.Item>
-            <Dropdown.Item onSelect={onPrint} icon={<FaIcon icon={faPrint}/>}>
+            <Dropdown.Item /*onSelect={onPrint}*/ icon={<FaIcon icon={faPrint as unknown as IconDefinition}/>}>
                 {local.print ?? "Print"}
-            </Dropdown.Item>
+            </Dropdown.Item >
             <Dropdown.Item onSelect={() => {
             }} icon={<SettingIcon/>}>
                 {local.settings ?? "Settings"}
             </Dropdown.Item>
-            <Dropdown.Item onSelect={onClear} icon={<FaIcon icon={faTrash}/>}>
+            <Dropdown.Item /*onSelect={onClear}*/ icon={<FaIcon icon={faTrash as unknown as IconDefinition}/>}>
                 {local.clear ?? "Clear"}
             </Dropdown.Item>
         </Dropdown>
@@ -55,17 +59,18 @@ const HeaderBar = observer((props = {}) => {
         {/*            icon={<TreeIcon/>} appearance={props.isShowLeftPanel ? "primary" : "subtle"}/>*/}
         <ButtonToolbar>
             <IconButton onClick={() => store.showLeftPanel = !store.showLeftPanel}
-                        style={{marginRight: 20}} icon={<FaIcon icon={faSitemap}
-                                                                color={store.showLeftPanel ? "var(--rs-btn-primary-bg)" : "initial"}/>}/>
+                        style={{marginRight: 20}}
+                        icon={<FaIcon icon={faSitemap as unknown as IconDefinition}
+                                      color={store.showLeftPanel ? "var(--rs-btn-primary-bg)" : "initial"}/>}/>
             {fileActions()}
             <IconButton onClick={_ => {
-            }} disabled={!!store.canUndo}
-                        icon={<FaIcon icon={faUndo}/>}>
+            }} disabled={true /*TODO !!store.canUndo*/}
+                        icon={<FaIcon icon={faUndo as unknown as IconDefinition}/>}>
                 Undo
             </IconButton>
             <IconButton onClick={_ => {
-            }} disabled={!store.canRedo}
-                        icon={<FaIcon icon={faRedo}/>}/>
+            }} disabled={true /*TODO !store.canRedo*/}
+                        icon={<FaIcon icon={faRedo as unknown as IconDefinition}/>}/>
             {/* <IconButton onClick={this.onLibrary.bind(this)} icon={<Icon icon="info" />}>{local.library ? local.library : "Library"}</IconButton> */}
         </ButtonToolbar>
     </div>
@@ -75,9 +80,11 @@ const HeaderBar = observer((props = {}) => {
             <div className="right panel">
                 <ButtonToolbar>
                     {toggleModeButton()}
-                    <SelectPicker appearance="subtle" value={props.desktopMode} style={{marginLeft: 10}}
+                    <SelectPicker appearance="subtle" value={undefined /*TODO props.desktopMode*/}
+                                  style={{marginLeft: 10}}
                                   data={[{value: "desktop", label: "Desktop"}, {value: "mobile", label: "Mobile"}]}
-                                  searchable={false} cleanable={false} onSelect={props.onChangeDesktopMode}/>
+                                  searchable={false} cleanable={false}
+                                  onSelect={undefined /*TODO props.onChangeDesktopMode*/}/>
                     <IconButton onClick={() => store.showRightPanel = !store.showRightPanel}
                                 style={{marginLeft: 20}} icon={<MenuIcon
                         fill={store.showRightPanel ? "var(--rs-btn-primary-bg)" : "initial"}/>}/>
@@ -94,7 +101,7 @@ const HeaderBar = observer((props = {}) => {
         return <IconButton
             onClick={onClick}
             appearance={"primary"}
-            icon={<FaIcon icon={icon}/>}>
+            icon={<FaIcon icon={icon as unknown as IconDefinition}/>}>
             {store.isBuilderMode ? "Preview" : "Edit"}
         </IconButton>;
     }
