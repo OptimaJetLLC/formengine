@@ -2,7 +2,7 @@ import _ from "lodash";
 import React, {useEffect} from "react";
 import {mapper} from "../views";
 import {observer} from "mobx-react";
-import {ComponentDefinition} from "../api/Types";
+import {ComponentDefinition} from "../api/types";
 import {ComponentStore} from "../stores/ComponentStore";
 import {autorun} from "mobx";
 import {TransformativeType} from "../utils/Types";

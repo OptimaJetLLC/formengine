@@ -1,5 +1,5 @@
 import React from 'react';
-import {ComponentDefinition} from "../../../api/Types";
+import {ComponentDefinition} from "../../../api/types";
 import {components} from "../../../views";
 
 export interface ToolbarItem {

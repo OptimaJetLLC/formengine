@@ -1,5 +1,5 @@
 import {makeAutoObservable, observable} from "mobx";
-import {ComponentDefinition} from "../api/Types";
+import {ComponentDefinition} from "../api/types";
 import {WeakActionDefinition, EventName} from "../utils/Types";
 
 export class ComponentStore {

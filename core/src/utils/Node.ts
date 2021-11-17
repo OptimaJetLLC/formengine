@@ -1,6 +1,6 @@
 import _ from "lodash";
 import {ComponentStore} from "../stores/ComponentStore";
-import {ComponentDefinition} from "../api/Types";
+import {ComponentDefinition} from "../api/types";
 import {mapper} from "../views";
 
 export class Node {

@@ -1,5 +1,5 @@
 import {FunctionComponent} from "react";
-import {ComponentDefinition, Annotations} from "./Types";
+import {ComponentDefinition, Annotations} from "./types";
 import _ from "lodash";
 import {Annotation} from "./annotation/Annotation";
 import {key, string} from "./annotation";

@@ -1,4 +1,4 @@
-import {PropertyEditorProps} from "../Types";
+import {PropertyEditorProps} from "../types";
 import React, {ComponentType} from "react";
 import {observer} from "mobx-react";
 import {Section} from "../../Builder/components/PropertiesEditor/Section";

@@ -1,4 +1,4 @@
-import {PropertyEditorProps} from "../../../Types";
+import {PropertyEditorProps} from "../../../types";
 import AddActionButton from "./components/AddActionButton";
 import ActionList from "./components/ActionList";
 import {store} from "../../../../stores/Store";

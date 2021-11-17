@@ -4,7 +4,7 @@ import {dropdown} from "./Dropdown";
 import {header} from "./Header";
 import {input} from "./Input";
 import {textArea} from "./TextArea";
-import {ComponentDefinition} from "../api/Types";
+import {ComponentDefinition} from "../api/types";
 
 export const components = [button, container, dropdown, header, input, textArea]
 
