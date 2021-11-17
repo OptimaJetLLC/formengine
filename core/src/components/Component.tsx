@@ -4,9 +4,8 @@ import {mapper} from "../views";
 import {observer} from "mobx-react";
 import {ComponentDefinition} from "../api/types";
 import {ComponentStore} from "../stores/ComponentStore";
-import {autorun} from "mobx";
-import {TransformativeType} from "../utils/Types";
-import {findNode} from "../utils/tree";
+import {transformEvent} from "../features/event/transformEvent";
+import {useEvent} from "../features/event/useEvent";
 
 interface ComponentProps {
     componentStore: ComponentStore,
@@ -19,18 +18,7 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
 
     useEffect(() => initDefaultValue(componentStore, componentDefinition), [])
 
-    //TODO
-    useEffect(() => {
-        let disposer = autorun(() => {
-            let events = componentStore.events
-            if (_.isEmpty(events)) return
-            _.forIn(events, (value, key) => {
-                componentStore.props[key] = transformEvent(key, componentStore, componentDefinition)
-            })
-        })
-
-        return () => disposer();
-    }, []);
+    useEvent(componentStore, componentDefinition);
 
     props.children = props.children
         || componentStore.children?.map(child =>
@@ -40,43 +28,6 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
 
     return wrapper ? wrapper({componentStore, children: element}) : element;
 });
-
-function transformEvent(key: string, store: ComponentStore, definition: ComponentDefinition<any>) {
-    let event = store.events[key]
-    if (!event) return
-    let actions = event.map(value => {
-        let action = definition.actions?.find((val) => val.name === value.actionName)
-        if (!action) return
-
-        //TODO трансформировать непосредственно перед вызовом
-        let args = _.transform(value.overArgs, (result, value, key) => {
-            if (typeof value === "object" && value.type === TransformativeType.Foreign) {
-                let node = findNode(value.key)
-                if (node?.data?.props[value.prop])
-                    result[key] = node?.data?.props[value.prop]
-                return
-            }
-
-            result[key] = value
-        }, {} as Record<string, any>)
-
-        if (value.targetKey) {
-            let node = findNode(value.targetKey);
-            if (node) args.target = node?.data;
-        }
-        return _.bind(action.func as (...args: any[]) => any, null, args)
-    })
-
-    let func = function (...arg: any[]) {
-        //TODO use object for arg (eventArgs)
-        arg.push(store);
-        actions.forEach(value => {
-            value?.(arg)
-        })
-    }
-
-    return func
-}
 
 function initDefaultValue(store: ComponentStore, definition: ComponentDefinition<any>) {
 
@@ -90,16 +41,3 @@ function initDefaultValue(store: ComponentStore, definition: ComponentDefinition
     })
 }
 
-export function doNeatly(store: ComponentStore) {
-    const definition = mapper[store.type];
-
-    _.forIn(definition.annotations, (value, key) => {
-        if (value.isSystem) return
-
-        //TODO delete react element
-        if (typeof value === "function" || store.props[key] === value.defaultValue) store.props[key] = undefined
-    })
-
-    if (store.children)
-        store.children.map(doNeatly)
-}

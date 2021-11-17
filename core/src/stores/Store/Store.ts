@@ -2,12 +2,12 @@ import _ from "lodash";
 import {action, autorun, computed, makeObservable, observable, toJS} from "mobx";
 import {ComponentStore} from "../ComponentStore";
 import {Node} from "../../utils/Node";
-import {doNeatly} from "../../components/Component";
 import {Action, EventName, FullActionDefinition, Modifiers, OverArgs} from "../../utils/Types";
 import {toWeakEvent} from "./utils/toWeakEvent";
 import {mapper} from "../../views";
 import {moveArrayItem} from "../../utils/moveArrayItem";
 import {findNode, treeMap} from "../../utils/tree";
+import {removeEventAndDefaultValue} from "./utils/removeEventAndDefaultValue";
 
 
 class Store {
@@ -80,7 +80,7 @@ class Store {
 
     stringifyForm() {
         let clone = _.cloneDeep(toJS(this.model))
-        clone.components.forEach(doNeatly)
+        clone.components.forEach(removeEventAndDefaultValue)
 
         return JSON.stringify(clone, removeReactChildren, 2)
 
