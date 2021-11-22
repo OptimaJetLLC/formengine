@@ -1,0 +1,56 @@
+import {useState} from "react";
+import styled from "@emotion/styled";
+import {AutoComplete} from "rsuite";
+
+//TODO нормальную сортировку выпадающих вариантов
+const CompactCell = ({rowData, dataKey, rowIndex, onBlur, options, ...props}: any) => {
+    const [isEmpty, setIsEmpty] = useState(!rowData[dataKey]?.length);
+    return (
+        <Column style={{padding: 4}}>
+            <StyledInput className={isEmpty ? "empty" : ""} data={options}
+                         style={{color: dataKey == "styleName" ? "var(--rs-text-secondary)" : "initial"}}
+                         defaultValue={rowData[dataKey]}
+                         onChange={(value) => {
+                             rowData[dataKey] = value;
+                             setIsEmpty(!rowData[dataKey]?.length)
+                         }}
+                         onBlur={onBlur}
+                         {...props}
+            />
+        </Column>
+    )
+}
+
+const Column = styled.div`
+  display: flex;
+  flex: 1;
+`
+
+const Row = styled.div`
+  display: flex;
+  flex: 1;
+`
+const StyledInput = styled(AutoComplete)`
+  input {
+    padding: 2px 4px;
+    line-height: 1.35;
+    //border-radius: 0;
+    border: none;
+    word-break: break-word !important;
+    //&:focus, &:active, 
+    &:hover {
+      outline: 1px solid var(--rs-border-primary) !important;
+      //box-shadow: var(--rs-state-focus-shadow);
+    }
+  }
+
+  &.empty > input {
+    background-color: var(--rs-listbox-option-selected-bg);
+  }
+`
+
+export {
+    CompactCell, Row
+}
+
+

@@ -6,6 +6,7 @@ import {ComponentDefinition} from "../api/types";
 import {ComponentStore} from "../stores/ComponentStore";
 import {transformEvent} from "../features/event/transformEvent";
 import {useEvent} from "../features/event/useEvent";
+import {useStyle} from "../features/style/useStyle";
 
 interface ComponentProps {
     componentStore: ComponentStore,
@@ -19,6 +20,7 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
     useEffect(() => initDefaultValue(componentStore, componentDefinition), [])
 
     useEvent(componentStore, componentDefinition);
+    useStyle(componentStore);
 
     props.children = props.children
         || componentStore.children?.map(child =>

@@ -3,14 +3,21 @@ import React, {useState} from "react";
 import {NavTab} from "./components/NavTab";
 import {Section} from "./Section";
 import {Properties} from "./components/Properties";
+import styled from "@emotion/styled";
 
 const PropertiesEditor = () => {
     const [activeTab, setActiveTab] = useState(Section.Main);
 
-    return <div>
+    return <Container>
         <NavTab activeTab={activeTab} setActiveTab={setActiveTab}/>
         <Properties activeTab={activeTab}/>
-    </div>
+    </Container>
 };
+
+const Container = styled.div`
+  .placement-left .rs-popover {
+    margin-left: -14px;
+  }
+`
 
 export default observer(PropertiesEditor)

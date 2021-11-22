@@ -1,6 +1,6 @@
 import {observer} from "mobx-react";
 import {FullActionDefinition} from "../../../../../utils/Types";
-import {Animation, Button, Dropdown} from "rsuite";
+import {Animation, Button, Dropdown, Nav} from "rsuite";
 import ParameterInput from "./ActionArgument";
 import {Rows} from "../../../../../components/GroupItems";
 import {ArrowDownLine, ArrowUpLine} from '@rsuite/icons';
@@ -11,6 +11,7 @@ import {Node} from "../../../../../utils/Node";
 import {mapper} from "../../../../../views";
 import {useState} from "react";
 import styled from "@emotion/styled";
+import {NavIconItem} from "../../../../../components/NavIconItem";
 
 const ChooseTargetButton = observer(({data}: { data: FullActionDefinition }) => {
     const nodes = getAllNodes().filter(node => !_.isEmpty(node.definition?.actions))
@@ -26,14 +27,17 @@ const ChooseTargetButton = observer(({data}: { data: FullActionDefinition }) => 
                 appearance={"subtle"} style={{padding: "2px 10px"}}>
 
             <p style={{display: "flex"}}>
-                <p>For {`${data.target?.type.toLowerCase() ?? ""} `}</p>
-                <div>
+                <p>For </p>
+                <div style={{
+                    marginRight: 3
+                }}>
                     <a style={{
                         fontWeight: "bold",
                         marginLeft: 5
-                    }}>{(data.target?.key ? `"${data.target?.key}"` : "Target")}</a>
+                    }}>{(data.target?.key ? `${data.target?.key}` : "Target")}</a>
                     <ArrowDownLine/>
                 </div>
+                <p style={{opacity: .8}}>{`${data.target?.type.toLowerCase() ?? ""} `}</p>
             </p>
         </Button>
     )}>
@@ -110,7 +114,7 @@ const ChooseActionButton = observer(({data}: { data: FullActionDefinition }) => 
 
 
     return (
-        <Dropdown style={{display: "flex"}} renderToggle={(props, ref) => (
+        <Dropdown style={{display: "flex"}} placement={"leftStart"} renderToggle={(props, ref) => (
             <Button {...props} ref={ref} appearance={"subtle"} block style={{padding: "2px 10px"}}>
                 <label style={{display: "flex"}}>
                     <p>do </p>
@@ -118,13 +122,17 @@ const ChooseActionButton = observer(({data}: { data: FullActionDefinition }) => 
                         <a style={{
                             fontWeight: "bold",
                             color: "blueviolet",
-                            marginLeft: 5
+                            marginLeft: 8
                         }}>{`${data.action?.name || "Action"}`}</a>
                         <ArrowDownLine/>
                     </div>
                 </label>
             </Button>
         )}>
+            <Nav appearance="subtle" activeKey={"With target"} style={{marginBottom: 10}}>
+                {NavIconItem("With target")}
+                {NavIconItem("Without target")}
+            </Nav>
             {
                 data.target
                     ? TargetActionsList(data.target)

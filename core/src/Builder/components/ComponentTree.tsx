@@ -50,7 +50,7 @@ const TreeNode = styled.div`
   flex-direction: row;
 
   label {
-    opacity: 0.3;
+    opacity: 0.4;
     margin-left: 10px;
   }
 `

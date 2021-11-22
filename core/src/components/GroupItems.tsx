@@ -38,6 +38,9 @@ const Columns = styled.div<{ margin?: number }>`
 `
 
 const LabeledInput = styled.div`
+  display: flex;
+  flex-direction: column;
+
   label {
     margin-left: 5px;
   }

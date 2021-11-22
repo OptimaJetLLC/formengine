@@ -16,22 +16,23 @@ const AddActionButton = ({eventKey, componentStore} : {eventKey: string, compone
         return groups;
     }, {});
 
-    return <Whisper placement="autoVertical" trigger="click"
+    return <Whisper placement="left" trigger="click"
                     speaker={({onClose, left, top, className}, ref) =>
-                        <Popover ref={ref} className={className} style={{left, top}} full>
+                        <Popover ref={ref} className={className} style={{left, top, marginLeft: -14}} full>
                             <Dropdown.Menu onSelect={(value: any) => {
                                 onClose();
                                 store.addEvent(eventKey, value.action, {}, componentStore, value.node.data!)
                             }}>
                                 {
                                     Object.keys(groups).map((group) => (
-                                        <div style={{padding: "0 15px", marginTop: 5}}>
+                                        <div style={{padding: "0 15px", marginTop: 5}} key={group}>
                                             <h6>{group + "s"}</h6>
                                             {
-                                                groups[group].map((node: Node) => (
+                                                groups[group].map((node: Node, i: number) => (
                                                     <Dropdown.Menu
-                                                        key={node.key}
+                                                        key={node.key + i}
                                                         title={node.key}
+                                                        onClick={event => event.preventDefault()}
                                                         children={
                                                             node.definition?.actions?.map((action) =>
                                                                 <Dropdown.Item

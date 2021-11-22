@@ -78,7 +78,7 @@ const FormBuilder = (props: FormBuilderProps) => {
 
 const PanelContainer = styled.div`
   width: 270px;
-  margin: 20px 0;
+  margin: 15px 0;
   padding: 10px 10px 0;
   background-color: white;
   border-radius: 10px;
@@ -92,13 +92,16 @@ const TreeContainer = styled(PanelContainer)`
   border-bottom-left-radius: 0;
   margin-left: 0;
   padding-left: 0;
+
+  //background-color: inherit; 
+  box-shadow: none;
 `
 
 const FormContainer = styled(PanelContainer)`
   flex: 1;
   display: block;
   width: initial;
-  margin: 20px 15px;
+  margin: 15px;
   padding: 10px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -117,6 +120,9 @@ const Content = styled.div`
 const PropertiesEditorContainer = styled(PanelContainer)`
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+
+  //background-color: inherit;
+  box-shadow: none;
 `
 
 //TODO move to other common place

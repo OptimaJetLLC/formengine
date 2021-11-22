@@ -1,5 +1,4 @@
 import {Input as RInput, InputProps as RInputProps} from "rsuite";
-import {CSSProperties} from "react";
 import {define} from "../api/define";
 import {boolean, event, select, string} from "../api/annotation";
 import defineLocalAction from "../api/defineAction";
@@ -8,7 +7,6 @@ import {LabeledInput} from "../components/GroupItems";
 
 export interface InputProps extends RInputProps {
     label: string
-    style: CSSProperties | undefined
     className: string
 }
 

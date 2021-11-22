@@ -11,6 +11,10 @@ label {
     opacity: .8;
 }
 
+.rs-popover, .rs-picker-menu {
+    z-index: 2000 !important;
+}
+
 /* Scrollbar */
 
 ::-webkit-scrollbar {

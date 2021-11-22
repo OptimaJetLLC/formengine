@@ -1,7 +1,8 @@
-import {FaIcon} from "../../../../components/Icons";
+import {FaIcon} from "./Icons";
 import React from "react";
 import styled from "@emotion/styled";
 import {Nav} from "rsuite";
+import {LabeledIcon} from "./Labels";
 
 export const NavIconItem = (label: string, icon?: any, props?: any) => {
     return <ColoredNavItem eventKey={label} color={props?.color}>
@@ -22,19 +23,5 @@ const ColoredNavItem = styled(Nav.Item)`
     height: 3px !important;
     margin: 0 12px;
     background-color: ${(props: any) => props.color} !important;
-  }
-`
-
-const LabeledIcon = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  & :first-child {
-    margin-bottom: 2px;
-  }
-
-  & label {
-      //color: ${(props: any) => props.color ?? "var(--rs-btn-default-text)"};
   }
 `

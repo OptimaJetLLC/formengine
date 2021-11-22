@@ -21,6 +21,7 @@ interface FaIconProps {
 }
 
 export const FaIcon = ({icon, size, ...props}: FaIconProps) => (
-    <Icon as={FaSvgIcon} {...{faIcon: icon, size, ...props}}/>)
+    <Icon as={FaSvgIcon} {...{faIcon: icon, size, ...props}}/>
+)
 
 export default FaSvgIcon;
