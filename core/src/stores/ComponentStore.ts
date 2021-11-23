@@ -9,7 +9,8 @@ export class ComponentStore {
     type: string = ""
     props: Record<string, any> = {}
     events: Record<EventName, WeakActionDefinition[]> = {}
-    styles?: StyleItem[]
+    styles?: Record<string, string>
+    cssStyles?: StyleItem[]
     validation?: ParsableValidateSchema
     children?: ComponentStore[]
 

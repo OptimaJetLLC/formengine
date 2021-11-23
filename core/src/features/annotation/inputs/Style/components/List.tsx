@@ -21,6 +21,14 @@ const CompactCell = ({rowData, dataKey, rowIndex, onBlur, options, ...props}: an
     )
 }
 
+const LabelCell = ({label, ...props}: any) => {
+    return (
+        <Column {...props}>
+            <label>{label}</label>
+        </Column>
+    )
+}
+
 const Column = styled.div`
   display: flex;
   flex: 1;
@@ -52,7 +60,7 @@ const StyledInput = styled(AutoComplete)`
 `
 
 export {
-    CompactCell, Row
+    CompactCell, LabelCell, Row
 }
 
 

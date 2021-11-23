@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import _ from "lodash";
 import React, {useEffect} from "react";
 import {mapper} from "../views";
@@ -9,7 +10,7 @@ import {useEvent} from "../features/event/useEvent";
 import {useValidation} from "../features/validation/useValidation";
 import {toValidateScheme} from "../features/validation/toValidateScheme";
 import {WithErrorMessage} from "../features/validation/withErrorMessage";
-import makeStyled from "../features/style";
+import {transformStyles} from "../features/style";
 
 interface ComponentProps {
     componentStore: ComponentStore,
@@ -43,10 +44,11 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
 
     props.children = props.children
         || componentStore.children?.map(child =>
-            <Component key={child.key} componentStore={child} wrapper={wrapper}/>)
+            <Component key={child.key} componentStore={child} wrapper={wrapper}/>);
 
-    const view = makeStyled(componentStore, componentDefinition.view);
-    const element = React.createElement(view, props);
+    props.className = transformStyles(componentStore);
+
+    const element = React.createElement(componentDefinition.view, props)
 
     //TODO for builder need render another component without error message and events
     const withError = React.createElement(WithErrorMessage, {child: element, meta})
