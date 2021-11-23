@@ -48,6 +48,7 @@ const TreeNode = styled.div`
   margin-top: -3px;
   display: flex;
   flex-direction: row;
+  font-weight: bold;
 
   label {
     opacity: 0.4;

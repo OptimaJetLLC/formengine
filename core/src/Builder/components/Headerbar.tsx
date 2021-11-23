@@ -22,11 +22,7 @@ import upload from "../utils/upload";
 import download from "../utils/download";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 
-interface HeaderBarProps {
-
-}
-
-const HeaderBar = observer((props: HeaderBarProps) => {
+const HeaderBar = observer(() => {
 
     const fileActions = () => {
         //TODO
@@ -125,7 +121,7 @@ const StyledAddButton = styled(AddButton)`
 const Container = styled.div`
   display: flex;
   flex: 1;
-  box-shadow: 0 15px 15px -15px rgb(0 0 0 / 25%);
+  //box-shadow: 0 15px 15px -15px rgb(0 0 0 / 25%);
 
   & > * {
     display: flex;

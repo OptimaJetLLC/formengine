@@ -18,7 +18,7 @@ export interface FormBuilderProps extends FormViewerProps {
 
 const FormBuilder = (props: FormBuilderProps) => {
     const isDragOver = store.draggingOverKey == "";
-    return <div>
+    return <Container>
         <DragDropContext onDragStart={onDragStart} onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
             <HeaderBar/>
             <Content>
@@ -48,7 +48,7 @@ const FormBuilder = (props: FormBuilderProps) => {
                 </PropertiesEditorContainer>}
             </Content>
         </DragDropContext>
-    </div>;
+    </Container>;
 }
 
 //TODO вынести функционал DnD в features
@@ -81,7 +81,7 @@ const PanelContainer = styled.div`
   width: 270px;
   margin: 15px 0;
   padding: 10px;
-  background-color: white;
+  background-color: #ffffffa1;
   border-radius: 10px;
   box-shadow: 0 0 8px -2px rgb(0 0 0 / 25%);
   display: flex;
@@ -102,6 +102,7 @@ const FormContainer = styled(PanelContainer)`
   flex: 1;
   display: block;
   width: initial;
+  background-color: white;
   margin: 15px;
   padding: 10px;
   overflow-y: auto;
@@ -109,13 +110,17 @@ const FormContainer = styled(PanelContainer)`
   transition: height .2s ease, width .2s ease, border-radius .2s ease;
 `
 
+const Container = styled.div`
+  background-color: #f7f7fa;
+`
+
 const Content = styled.div`
   display: flex;
   flex: 1;
   height: calc(100vh - 56px);
   flex-direction: row;
-  background-color: #f7f7fa;
-  box-shadow: inset 0 0 4px 0 rgb(0 0 0 / 25%);
+  //background-color: #f7f7fa;
+  //box-shadow: inset 0 0 4px 0 rgb(0 0 0 / 25%);
 `
 
 const PropertiesEditorContainer = styled(PanelContainer)`
