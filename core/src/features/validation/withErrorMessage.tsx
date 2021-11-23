@@ -1,5 +1,8 @@
 import * as React from "react";
-import {ComponentClass} from "react";
+import {ComponentClass, ComponentType, ReactNode} from "react";
+import {FieldMetaProps} from "formik";
+import {ErrorMessage} from "./components/ErrorMessage";
+import {observer} from "mobx-react";
 
 type CompositeComponent<P> =
     | React.ComponentClass<P>
@@ -10,10 +13,11 @@ interface ComponentDecorator<TOwnProps, TMergedProps> {
 }
 
 interface withValidationConfig {
+    meta: FieldMetaProps<any>,
 
 }
 
-export function withValidation<OuterProps extends object>(config: withValidationConfig): ComponentDecorator<OuterProps, OuterProps> {
+export function withErrorMessage<OuterProps extends object>(config: withValidationConfig): ComponentDecorator<OuterProps, OuterProps> {
     return function (Component: CompositeComponent<OuterProps>): ComponentClass<OuterProps> {
         const componentDisplayName =
             Component.displayName ||
@@ -27,11 +31,20 @@ export function withValidation<OuterProps extends object>(config: withValidation
             renderComponent = () => <Component {...this.props}/>
 
             render() {
-                return this.renderComponent();
+                return <div>
+                    {this.renderComponent()}
+                    <ErrorMessage {...config.meta}/>
+                </div>
             }
         }
 
         return Class
     }
+}
 
+export const WithErrorMessage = ({meta, child}: {meta: FieldMetaProps<any>, child: ReactNode}) => {
+  return <div>
+      {child}
+      <ErrorMessage {...meta}/>
+  </div>
 }

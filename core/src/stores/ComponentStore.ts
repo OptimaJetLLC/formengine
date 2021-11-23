@@ -1,6 +1,7 @@
 import {makeAutoObservable, observable} from "mobx";
 import {ComponentDefinition} from "../api/types";
-import {EventName, WeakActionDefinition} from "../utils/Types";
+import {WeakActionDefinition, EventName} from "../utils/Types";
+import {ParsableValidateSchema} from "../features/validation/types";
 
 export class ComponentStore {
     key: string = ""
@@ -8,6 +9,7 @@ export class ComponentStore {
     props: Record<string, any> = {}
     events: Record<EventName, WeakActionDefinition[]> = {}
     styles: Record<string, string>[] = [{"": ""}]
+    validation?: ParsableValidateSchema
     children?: ComponentStore[]
 
     constructor(key: string, definition?: ComponentDefinition<any>) {
@@ -16,6 +18,7 @@ export class ComponentStore {
 
         makeAutoObservable(this, {
             events: observable.deep,
+            validation: observable.deep,
             props: observable.shallow
         });
     }

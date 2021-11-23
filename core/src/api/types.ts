@@ -6,9 +6,11 @@ import {Action} from "../utils/Types";
 import {FormikHandlers} from "formik/dist/types";
 import * as React from "react";
 
+type validated = AnnotationBuilder<Function | undefined>
+
 export type Annotations<T extends object> =
     {
-        [key in keyof OmitUnimportant<T>]:
+        [key in keyof OmitUnimportant<T> ]:
             T[key] extends (Function | undefined) ?
                 AnnotationBuilder<Function | undefined> :
                 AnnotationBuilder<T[key]> | undefined

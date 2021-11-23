@@ -4,7 +4,9 @@ import {observable} from "mobx";
 import {Form} from "./Form";
 
 export const ObservableFormik = withFormik({
-    mapPropsToValues: () => store.currentNode!.data.props,
+    //mapPropsToValues: () => store.currentNode!.data.props,
+    mapPropsToValues: () => store.currentNode?.data.props ?? observable({}),
+    //mapPropsToValues: () => observable({}),
     mapPropsToStatus: () => observable({}),
     mapPropsToErrors: () => observable({}),
     mapPropsToTouched: () => observable({}),

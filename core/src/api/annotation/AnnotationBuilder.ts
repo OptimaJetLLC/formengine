@@ -14,7 +14,7 @@ export class AnnotationBuilder<T> {
         return builder
     }
 
-    constructor(obj?: Partial<Omit<Annotation<T>, 'render'>>) {
+    constructor(obj?: Partial<Annotation<T>>) {
         this.template = new Annotation<T>()
         if (obj) Object.assign(this.template, obj)
     }

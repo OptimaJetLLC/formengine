@@ -7,6 +7,7 @@ import Picker from "./inputs/Picker";
 import Event from "./inputs/Event";
 import Style from "./inputs/Style";
 import {Section} from "../../Builder/components/PropertiesEditor/Section";
+import {ValidateEditor} from "../../features/validation/components/ValidateEditor";
 
 //TODO следует ли компоновать их и засунуть в один объект?
 export const key = new AnnotationBuilder<string>({component: Key, isSystem: true}).isRequired("")
@@ -23,6 +24,7 @@ export const event = new AnnotationBuilder<Function | undefined>({
     section: Section.Actions,
     isFunction: true
 })
+export const validation = new AnnotationBuilder<any>({component: ValidateEditor, section: Section.Validation})
 
 //Аннотация: спсиок допустимых параметров - просто массив
 //Аннотация: список допустимых параметров с его label - value. Label всегда текст, а значение принимает заданный тип

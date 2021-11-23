@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import {FieldMetaProps} from "formik";
+import {observer} from "mobx-react";
 
 
 interface ErrorMessageProps extends FieldMetaProps<any>{

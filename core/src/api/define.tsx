@@ -1,8 +1,8 @@
 import {FunctionComponent} from "react";
-import {Annotations, ComponentDefinition} from "./types";
+import {ComponentDefinition, Annotations} from "./types";
 import _ from "lodash";
 import {Annotation} from "./annotation/Annotation";
-import {key, string, style} from "./annotation";
+import {key, string, style, validation} from "./annotation";
 import {Action} from "../utils/Types";
 
 export const define = <T extends object>(name: string, view: FunctionComponent<T>, annotations: Annotations<T>, actions?: Action[])
@@ -11,8 +11,9 @@ export const define = <T extends object>(name: string, view: FunctionComponent<T
 
     let properties = {} as Record<string, Annotation<any>>
 
-    properties["key"] = key.build("key");
+    properties["key"] = key.build("key")
     properties["style"] = style.build("style");
+    properties["validation"] = validation.build("validation")
 
     _.forIn(annotations, (value, key) => {
         properties[key] = value?.build(key) ?? string.build(key)

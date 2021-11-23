@@ -4,18 +4,27 @@ import {useEffect} from "react";
 import {autorun} from "mobx";
 import _ from "lodash";
 import {transformEvent} from "./transformEvent";
+import {useLocalObservable} from "mobx-react";
 
 //TODO Optimize?
 export function useEvent(componentStore: ComponentStore, componentDefinition: ComponentDefinition<any>) {
+    const innerActions = useLocalObservable<Record<string, any[]>>(() => ({}))
+
     useEffect(() => {
         let disposer = autorun(() => {
             let events = componentStore.events
+
             if (_.isEmpty(events)) return
+
             _.forIn(events, (value, key) => {
-                componentStore.props[key] = transformEvent(key, componentStore, componentDefinition)
+                const [handle, actions] = transformEvent(key, componentStore, componentDefinition)
+                componentStore.props[key] = handle
+                innerActions[key] = actions
             })
         })
 
         return () => disposer();
     }, []);
+
+    return innerActions
 }

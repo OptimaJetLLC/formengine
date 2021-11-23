@@ -6,6 +6,7 @@ import {getForm as getStandardForm} from "./utils/getForm";
 import {Component} from "./components/Component";
 import {Formik} from "formik";
 import {Form} from "./features/validation/components/Form";
+import {ObservableFormik} from "./features/validation/components/ObserableFormik";
 
 export interface FormViewerProps {
     //TODO onEvent?: (key: string, action: any, eventName: string) => void
@@ -22,32 +23,11 @@ export const FormViewer = observer(({getForm, wrapper}: FormViewerProps) => {
 
     }, [getForm]);
 
-
-    /*return <div>
+    return <ObservableFormik>
         {store.model.components?.map(componentStore => {
             return React.createElement(Component, {key: componentStore.key, componentStore, wrapper});
         })}
-    </div>;*/
-    return <Formik
-        initialValues={{}}
-        onSubmit={(values, {setSubmitting}) => {
-            setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-            }, 1000);
-        }}
-    >
-        <Form>
-            {store.model.components?.map(componentStore => {
-
-
-                /*return <WithValidation annotation={componentStore.key} Component={Component}
-                                       componentStore={componentStore}/>*/
-
-                return React.createElement(Component, {key: componentStore.key, componentStore, wrapper});
-            })}
-        </Form>
-    </Formik>;
+    </ObservableFormik>
 })
 
 

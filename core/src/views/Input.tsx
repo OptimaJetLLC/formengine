@@ -36,7 +36,8 @@ export const input = define<InputProps>("Input", Input, {
         size: select,
         //size: new AnnotationBuilder<"lg" | "md" | "sm" | "xs" | undefined>()
         onChange: event,
-        value: undefined
+        value: undefined,
+
     },
     [
         setValue,

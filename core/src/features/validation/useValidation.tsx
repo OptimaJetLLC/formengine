@@ -1,71 +1,70 @@
 import {ComponentStore} from "../../stores/ComponentStore";
 import _ from "lodash";
-import {FormikContext, FormikContextType} from "formik";
+import {FieldMetaProps, FormikContext, FormikContextType, useField} from "formik";
 import {useContext} from "react";
 import * as Yup from "yup";
-import {ValidationError} from "yup";
+import {BaseSchema, ValidationError} from "yup";
 import {toJS} from "mobx";
 
 interface ValidationConfig {
     key: string
-    value?: any;
-    onChange?: (...args: any[]) => void
-    onBlur?: (...args: any[]) => void
+    //validate?: (value: any) => string | void
+    scheme?: BaseSchema
 }
 
-export const useValidation = <T extends any = any>(keyOrConfig: string | ValidationConfig, store: ComponentStore) => {
-    const {key, ...props}: ValidationConfig = _.isObject(keyOrConfig) ? keyOrConfig : {key: keyOrConfig}
+interface FieldProps {
+    setTouched: (value?: boolean, shouldValidate?: boolean) => void;
+    setError: (value: any) => void;
+    setValue: (value: any, shouldValidate?: boolean) => void;
+    value: any
+}
+
+export const useValidation = <T extends any = any>(keyOrConfig: string | ValidationConfig): [FieldProps, FieldMetaProps<any>] => {
+    const {key, scheme}: ValidationConfig = _.isObject(keyOrConfig) ? keyOrConfig : {key: keyOrConfig}
 
     //TODO check exists formik context?
     const formik: FormikContextType<any> = useContext<FormikContextType<any>>(FormikContext);
 
-    if (_.isEmpty(formik)) return []
-
-    //TODO temporarily
-    const scheme = Yup.string()
-        .required('Required')
-        .min(2, 'Too Short!')
-        .max(50, 'Too Long!')
-
-
-    //useEffect(() => formik.setValues(store.props), [])
-
     const getValue = () => toJS(formik.values[key]);
-
-    const onChange = props.onChange ? _.flow(handleChange, props.onChange) : handleChange
-
-    const onBlur = props.onBlur ? _.flow(handleBlur, props.onBlur) : handleBlur
 
     const meta = formik.getFieldMeta(key)
 
     return [
-        getValue(),
-        onChange,
-        onBlur,
+        {
+            value: getValue(),
+            setValue,
+            setTouched,
+            setError,
+        },
         meta,
     ]
 
 
-    function handleChange(value: any) {
+    function setValue(value: any, shouldValidate?: boolean) {
         if (_.isArray(value)) formik.values[key] = _.first(value)
         else formik.values[key] = value
 
-        if (formik.validateOnChange) validate()
+        if (formik.validateOnChange || shouldValidate) validate(getValue())
     }
 
-    function handleBlur() {
-        formik.touched[key] = true;
+    function setTouched(value?: boolean, shouldValidate?: boolean) {
+        formik.touched[key] = value ?? true;
 
-        if (formik.validateOnBlur) validate()
+        if (formik.validateOnBlur || shouldValidate) validate(getValue())
     }
 
-    function validate() {
+    function setError(value: any | undefined) {
+        if (value) formik.errors[key] = value
+        else delete formik.errors[key]
+    }
+
+    function validate(value: any) {
         try {
-            scheme.validateSync(formik.values[key])
-            formik.errors[key] = undefined
+            scheme?.validateSync(value)
+            setError(undefined)
         } catch (e: any) {
             if (e instanceof ValidationError)
-                formik.errors[key] = e.message
+                setError(e.message)
         }
     }
 }
