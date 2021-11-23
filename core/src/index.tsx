@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import 'antd/dist/antd.less';
 import 'rsuite/dist/rsuite.min.css';
 import './app.css';
 
