@@ -5,7 +5,7 @@ import {Draggable, DraggableProvided, DraggableStateSnapshot, Droppable, Droppab
 import {Button} from 'rsuite';
 import SearchForm from '../SearchForm';
 import {ToolbarItem, ToolbarItems} from "./Items";
-import {ComponentDefinition} from "../../../api/types";
+import {ComponentDefinition} from "../../../features/annotation/types";
 import _ from "lodash";
 
 interface ToolbarState {

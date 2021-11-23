@@ -7,7 +7,7 @@ import Picker from "./inputs/Picker";
 import Event from "./inputs/Event";
 import Style from "./inputs/Style";
 import {Section} from "../../Builder/components/PropertiesEditor/Section";
-import {ValidateEditor} from "../../features/validation/components/ValidateEditor";
+import {ValidateEditor} from "../validation/components/ValidateEditor";
 
 //TODO следует ли компоновать их и засунуть в один объект?
 export const key = new AnnotationBuilder<string>({component: Key, isSystem: true}).isRequired("")

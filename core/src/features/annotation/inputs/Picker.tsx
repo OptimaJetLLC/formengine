@@ -1,4 +1,4 @@
-import {PropertyEditorProps} from "../../types";
+import {PropertyEditorProps} from "../types";
 import {Form, InputPicker} from "rsuite";
 
 //TODO this uncompleted

@@ -1,4 +1,4 @@
-import defineLocalAction from "../api/defineAction";
+import defineLocalAction from "../features/annotation/defineAction";
 import {ComponentStore} from "../stores/ComponentStore";
 
 const setValue = defineLocalAction("setValue", (actionArgs, eventArgs) => {

@@ -1,7 +1,7 @@
 import React, {ComponentType} from "react";
 import {ErrorMessage} from "./ErrorMessage";
-import {PropertyEditorProps} from "../../../api/types";
-import {Annotation} from "../../../api/annotation/Annotation";
+import {PropertyEditorProps} from "../../annotation/types";
+import {Annotation} from "../../annotation/Annotation";
 import {ComponentStore} from "../../../stores/ComponentStore";
 import {observer} from "mobx-react";
 import {useValidation} from "../useValidation";

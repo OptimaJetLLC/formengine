@@ -1,5 +1,5 @@
 import {ComponentStore} from "../../stores/ComponentStore";
-import {ComponentDefinition} from "../../api/types";
+import {ComponentDefinition} from "../annotation/types";
 import _ from "lodash";
 import {TransformativeType} from "../../utils/Types";
 import {findNode} from "../../utils/tree";

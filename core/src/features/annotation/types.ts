@@ -1,8 +1,8 @@
 import {FunctionComponent} from "react";
-import {AnnotationBuilder} from "./annotation/AnnotationBuilder";
-import {ComponentStore} from "../stores/ComponentStore";
-import {Annotation} from "./annotation/Annotation";
-import {Action} from "../utils/Types";
+import {AnnotationBuilder} from "./AnnotationBuilder";
+import {ComponentStore} from "../../stores/ComponentStore";
+import {Annotation} from "./Annotation";
+import {Action} from "../../utils/Types";
 import {FormikHandlers} from "formik/dist/types";
 import * as React from "react";
 

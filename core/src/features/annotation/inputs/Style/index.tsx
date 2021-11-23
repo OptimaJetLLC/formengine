@@ -1,7 +1,7 @@
-import {PropertyEditorProps} from "../../../types";
+import {PropertyEditorProps} from "../../types";
 import {useState} from "react";
 import {Button} from "rsuite";
-import {StyleItem} from "../../../../features/style/transformStyles";
+import {StyleItem} from "../../../style/transformStyles";
 import _ from "lodash/fp";
 import {CompactCell, Row} from "./components/List";
 import {Rows} from "../../../../components/GroupItems";

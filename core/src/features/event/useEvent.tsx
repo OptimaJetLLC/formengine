@@ -1,5 +1,5 @@
 import {ComponentStore} from "../../stores/ComponentStore";
-import {ComponentDefinition} from "../../api/types";
+import {ComponentDefinition} from "../annotation/types";
 import {useEffect} from "react";
 import {autorun} from "mobx";
 import _ from "lodash";

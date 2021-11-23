@@ -1,4 +1,4 @@
-import {PropertyEditorProps} from "../../types";
+import {PropertyEditorProps} from "../types";
 import {Checkbox, Form} from "rsuite";
 
 export default ({componentStore, annotation}: PropertyEditorProps<boolean | undefined>) => (

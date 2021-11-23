@@ -1,4 +1,4 @@
-import {PropertyEditorProps} from "../../types";
+import {PropertyEditorProps} from "../types";
 import {Input} from "rsuite";
 import {LabeledInput} from "../../../components/GroupItems";
 

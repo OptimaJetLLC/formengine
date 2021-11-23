@@ -1,6 +1,6 @@
 import {Button} from "rsuite";
-import {define} from "../api/define";
-import {event, string} from "../api/annotation";
+import {define} from "../features/annotation/define";
+import {event, string} from "../features/annotation";
 import {setProperty, setValue} from "../utils/Actions";
 
 export const button = define("Button", Button, {

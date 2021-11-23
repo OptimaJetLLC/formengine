@@ -1,5 +1,5 @@
 import {makeAutoObservable, observable} from "mobx";
-import {ComponentDefinition} from "../api/types";
+import {ComponentDefinition} from "../features/annotation/types";
 import {WeakActionDefinition, EventName} from "../utils/Types";
 import {ParsableValidateSchema} from "../features/validation/types";
 

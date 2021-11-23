@@ -1,6 +1,6 @@
 import _ from "lodash";
 import {Button, Dropdown, Input} from "rsuite";
-import {PropertyEditorProps} from "../../../api/types";
+import {PropertyEditorProps} from "../../annotation/types";
 import {StringRules, ValueType} from "../const";
 
 export const ValidateEditor = ({annotation, componentStore, onBlur, onChange, value}: PropertyEditorProps<any>) => {
