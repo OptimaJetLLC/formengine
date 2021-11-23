@@ -51,6 +51,7 @@ const FormBuilder = (props: FormBuilderProps) => {
     </div>;
 }
 
+//TODO вынести функционал DnD в features
 const onDragEnd = (result: DropResult) => {
     const {source, destination, draggableId} = result;
 

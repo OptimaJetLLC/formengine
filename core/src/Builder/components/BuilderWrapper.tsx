@@ -19,6 +19,7 @@ interface BuilderWrapperState {
     hovered?: boolean,
 }
 
+//TODO вынести функционал DnD в features
 const BuilderWrapper = observer(
     class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapperState> {
         containerRef: any = React.createRef();
