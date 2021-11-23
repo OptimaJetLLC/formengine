@@ -1,10 +1,12 @@
 import {ComponentStore} from "../../stores/ComponentStore";
-import {ComponentDefinition} from "../annotation/types";
 import styled from "@emotion/styled";
+import {FunctionComponent} from "react";
 
-export const makeStyled = (store: ComponentStore, definition: ComponentDefinition<any>) => {
+export const makeStyled = (store: ComponentStore, view: FunctionComponent) => {
+    if (!store.styles) return view;
+
     const transformedStyles = transformStyles(store);
-    return styled(definition.view)`${transformedStyles}`
+    return styled(view)`${transformedStyles}`
 }
 
 function transformStyles(store: ComponentStore) {

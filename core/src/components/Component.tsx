@@ -45,10 +45,7 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
         || componentStore.children?.map(child =>
             <Component key={child.key} componentStore={child} wrapper={wrapper}/>)
 
-    const view = componentStore.styles
-        ? makeStyled(componentStore, componentDefinition)
-        : componentDefinition.view;
-
+    const view = makeStyled(componentStore, componentDefinition.view);
     const element = React.createElement(view, props);
 
     //TODO for builder need render another component without error message and events

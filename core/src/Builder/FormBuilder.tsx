@@ -16,31 +16,6 @@ export interface FormBuilderProps extends FormViewerProps {
 
 }
 
-const onDragEnd = (result: DropResult) => {
-    const {source, destination, draggableId} = result;
-
-    if (!destination) return;
-
-    if (source.droppableId === "TOOLBAR")
-        store.add(draggableId, destination.droppableId, destination.index);
-    else {
-        store.move(draggableId, destination.droppableId, destination.index);
-    }
-
-    store.isDragging = false;
-    store.draggingOverKey = undefined;
-}
-
-const onDragStart = () => {
-    store.isDragging = true;
-}
-
-const onDragUpdate = ({destination}: DragUpdate) => {
-    if (!destination?.droppableId) return;
-    const node = findNode(destination?.droppableId);
-    store.draggingOverKey = node?.parent?.key || "";
-}
-
 const FormBuilder = (props: FormBuilderProps) => {
     const isDragOver = store.draggingOverKey == "";
     return <div>
@@ -74,6 +49,31 @@ const FormBuilder = (props: FormBuilderProps) => {
             </Content>
         </DragDropContext>
     </div>;
+}
+
+const onDragEnd = (result: DropResult) => {
+    const {source, destination, draggableId} = result;
+
+    if (!destination) return;
+
+    if (source.droppableId === "TOOLBAR")
+        store.add(draggableId, destination.droppableId, destination.index);
+    else {
+        store.move(draggableId, destination.droppableId, destination.index);
+    }
+
+    store.isDragging = false;
+    store.draggingOverKey = undefined;
+}
+
+const onDragStart = () => {
+    store.isDragging = true;
+}
+
+const onDragUpdate = ({destination}: DragUpdate) => {
+    if (!destination?.droppableId) return;
+    const node = findNode(destination?.droppableId);
+    store.draggingOverKey = node?.parent?.key || "";
 }
 
 const PanelContainer = styled.div`
