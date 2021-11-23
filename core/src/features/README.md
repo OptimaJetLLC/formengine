@@ -2,7 +2,7 @@
 
 * [Валидация](validation/README.md)
 * События
-* [Стили]](style/README.md)
+* [Стили](style/README.md)
 * Аннотации
 
 # Потенциальные фичи будущего
