@@ -6,11 +6,10 @@ import {ComponentDefinition} from "../features/annotation/types";
 import {ComponentStore} from "../stores/ComponentStore";
 import {transformEvent} from "../features/event/transformEvent";
 import {useEvent} from "../features/event/useEvent";
-import {useStyle} from "../features/style/useStyle";
 import {useValidation} from "../features/validation/useValidation";
 import {toValidateScheme} from "../features/validation/toValidateScheme";
-import {WithErrorMessage, withErrorMessage} from "../features/validation/withErrorMessage";
-import * as Yup from "yup";
+import {WithErrorMessage} from "../features/validation/withErrorMessage";
+import makeStyled from "../features/style";
 
 interface ComponentProps {
     componentStore: ComponentStore,
@@ -24,7 +23,6 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
     useEffect(() => initDefaultValue(componentStore, componentDefinition), [])
 
     const actions = useEvent(componentStore, componentDefinition);
-    useStyle(componentStore);
 
     const [field, meta] = useValidation({
         key: componentStore.key,
@@ -47,9 +45,13 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
         || componentStore.children?.map(child =>
             <Component key={child.key} componentStore={child} wrapper={wrapper}/>)
 
-    //TODO for builder need render another component without error message and events
-    const element = React.createElement(componentDefinition.view, props);
+    const view = componentStore.styles
+        ? makeStyled(componentStore, componentDefinition)
+        : componentDefinition.view;
 
+    const element = React.createElement(view, props);
+
+    //TODO for builder need render another component without error message and events
     const withError = React.createElement(WithErrorMessage, {child: element, meta})
 
     return wrapper ? wrapper({componentStore, children: element}) : withError;
@@ -66,4 +68,3 @@ function initDefaultValue(store: ComponentStore, definition: ComponentDefinition
             store.props[key] = store.props[key] ?? value.defaultValue
     })
 }
-

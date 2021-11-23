@@ -19,6 +19,7 @@ class Store {
     isBuilderMode: boolean = true
     showRightPanel: boolean = true
     showLeftPanel: boolean = true
+    styles?: any
 
     allEvents = new Map<ComponentStore, Record<EventName, FullActionDefinition[]>>()
 
@@ -82,12 +83,17 @@ class Store {
         let clone = _.cloneDeep(toJS(this.model))
         clone.components.forEach(removeEventAndDefaultValue)
 
-        return JSON.stringify(clone, removeReactChildren, 2)
+        return JSON.stringify(clone, removeRedundantProps, 2)
 
-        function removeReactChildren(key: any, value: any) {
+        function removeRedundantProps(key: any, value: any) {
             if (key === "children" && value?.[0] && value[0].$$typeof === Symbol.for('react.element')) {
                 return undefined
             }
+
+            if (key === "style") {
+                return undefined
+            }
+
 
             return value;
         }

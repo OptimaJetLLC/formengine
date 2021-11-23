@@ -6,13 +6,13 @@ import {AutoComplete} from "rsuite";
 const CompactCell = ({rowData, dataKey, rowIndex, onBlur, options, ...props}: any) => {
     const [isEmpty, setIsEmpty] = useState(!rowData[dataKey]?.length);
     return (
-        <Column style={{padding: 4}}>
+        <Column {...props}>
             <StyledInput className={isEmpty ? "empty" : ""} data={options}
                          style={{color: dataKey == "styleName" ? "var(--rs-text-secondary)" : "initial"}}
                          defaultValue={rowData[dataKey]}
                          onChange={(value) => {
                              rowData[dataKey] = value;
-                             setIsEmpty(!rowData[dataKey]?.length)
+                             setIsEmpty(!rowData[dataKey]?.length);
                          }}
                          onBlur={onBlur}
                          {...props}
@@ -24,17 +24,19 @@ const CompactCell = ({rowData, dataKey, rowIndex, onBlur, options, ...props}: an
 const Column = styled.div`
   display: flex;
   flex: 1;
+  padding: 4px 2px;
 `
 
 const Row = styled.div`
   display: flex;
   flex: 1;
 `
+
 const StyledInput = styled(AutoComplete)`
   input {
     padding: 2px 4px;
     line-height: 1.35;
-    //border-radius: 0;
+    border-radius: 0;
     border: none;
     word-break: break-word !important;
     //&:focus, &:active, 

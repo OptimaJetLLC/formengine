@@ -1,14 +1,15 @@
 import {makeAutoObservable, observable} from "mobx";
 import {ComponentDefinition} from "../features/annotation/types";
-import {WeakActionDefinition, EventName} from "../utils/Types";
+import {EventName, WeakActionDefinition} from "../utils/Types";
 import {ParsableValidateSchema} from "../features/validation/types";
+import {StyleItem} from "../features/style";
 
 export class ComponentStore {
     key: string = ""
     type: string = ""
     props: Record<string, any> = {}
     events: Record<EventName, WeakActionDefinition[]> = {}
-    styles: Record<string, string>[] = [{"": ""}]
+    styles?: StyleItem[]
     validation?: ParsableValidateSchema
     children?: ComponentStore[]
 

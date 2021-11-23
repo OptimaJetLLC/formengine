@@ -79,7 +79,7 @@ const FormBuilder = (props: FormBuilderProps) => {
 const PanelContainer = styled.div`
   width: 270px;
   margin: 15px 0;
-  padding: 10px 10px 0;
+  padding: 10px;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 0 8px -2px rgb(0 0 0 / 25%);

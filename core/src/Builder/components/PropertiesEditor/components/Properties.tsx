@@ -6,6 +6,7 @@ import {WithValidation} from "../../../../features/validation/components/WithVal
 import React from "react";
 import {ObservableFormik} from "../../../../features/validation/components/ObserableFormik";
 import {CenteredLabel} from "../../../../components/Labels";
+import styled from "@emotion/styled";
 
 interface PropertiesProps {
     activeTab: Section
@@ -26,9 +27,16 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
                             componentStore={store.currentNode!.data}/>
         )
 
-    return <ObservableFormik>
-        {properties}
-    </ObservableFormik>
+    return <Container>
+        <ObservableFormik>
+            {properties}
+        </ObservableFormik>
+    </Container>
 });
+
+const Container = styled.div`
+  margin-right: 10px;
+`
+
 
 export {Properties}
