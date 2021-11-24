@@ -6,7 +6,6 @@ import {AutoComplete} from "rsuite";
 const CompactCell = ({rowData, dataKey, rowIndex, onBlur, options, ...props}: any) => {
     const [isEmpty, setIsEmpty] = useState(!rowData[dataKey]?.length);
     return (
-        <Column {...props}>
             <StyledInput className={isEmpty ? "empty" : ""} data={options}
                          style={{color: dataKey == "styleName" ? "var(--rs-text-secondary)" : "initial"}}
                          defaultValue={rowData[dataKey]}
@@ -17,19 +16,14 @@ const CompactCell = ({rowData, dataKey, rowIndex, onBlur, options, ...props}: an
                          onBlur={onBlur}
                          {...props}
             />
-        </Column>
     )
 }
 
 const LabelCell = ({label, ...props}: any) => {
-    return (
-        <Column {...props}>
-            <label>{label}</label>
-        </Column>
-    )
+    return <Label {...props}>{label}</Label>;
 }
 
-const Column = styled.div`
+const Label = styled.label`
   display: flex;
   flex: 1;
   padding: 4px 2px;
@@ -41,12 +35,17 @@ const Row = styled.div`
 `
 
 const StyledInput = styled(AutoComplete)`
+  display: flex;
+  flex: 1;
+  padding: 4px 2px;
+
   input {
     padding: 2px 4px;
     line-height: 1.35;
     border-radius: 0;
     border: none;
     word-break: break-word !important;
+    //font-weight: bold;
     //&:focus, &:active, 
     &:hover {
       outline: 1px solid var(--rs-border-primary) !important;
@@ -55,7 +54,9 @@ const StyledInput = styled(AutoComplete)`
   }
 
   &.empty > input {
-    background-color: var(--rs-listbox-option-selected-bg);
+    //background-color: var(--rs-listbox-option-selected-bg);
+    //font-weight: initial;
+    border-bottom: 1px solid var(--rs-border-primary);
   }
 `
 

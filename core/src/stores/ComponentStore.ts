@@ -11,6 +11,7 @@ export class ComponentStore {
     events: Record<EventName, WeakActionDefinition[]> = {}
     styles?: Record<string, string>
     cssStyles?: StyleItem[]
+    cssBlock?: string
     validation?: ParsableValidateSchema
     children?: ComponentStore[]
 

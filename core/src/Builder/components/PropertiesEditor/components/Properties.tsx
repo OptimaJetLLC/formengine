@@ -35,7 +35,7 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
 });
 
 const Container = styled.div`
-  height: 100%;
+  overflow-y: auto;
   margin-right: 10px;
 `
 

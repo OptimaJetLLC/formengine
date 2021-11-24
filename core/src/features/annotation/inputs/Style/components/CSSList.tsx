@@ -9,7 +9,10 @@ const properties: any = require('known-css-properties').all.map((value: any) => 
 
 export default ({componentStore}: { componentStore: ComponentStore }) => {
     //TODO mobx.createViewModel (непонятно как заставить работать с массивами) https://github.com/mobxjs/mobx-utils/issues/209
-    const [styles, setStyles] = useState(_.cloneDeep(componentStore.cssStyles) || [{}]);
+    const [styles, setStyles] = useState([
+        ...(_.cloneDeep(componentStore.cssStyles || [])),
+        {}
+    ]);
 
     return <>
         {styles.map((item, index) => {

@@ -1,11 +1,13 @@
 import {PropertyEditorProps} from "../../types";
 import {Rows} from "../../../../components/Containers";
 import CSSList from "./components/CSSList";
-import StandardStyles, {inPX, StandardStyleItem} from "./components/StandardStyles";
+import StandardStyles from "./components/StandardStyles";
+import {StandardStylesDefinitions} from "../../../style";
+import CSSBlock from "./components/CSSBlock";
 
 export default ({componentStore}: PropertyEditorProps<Record<string, string>[] | undefined>) => {
     //TODO mobx.createViewModel (непонятно как заставить работать с массивами) https://github.com/mobxjs/mobx-utils/issues/209
-    return <Rows>
+    return <Rows ml={"5px"} my={0}>
         <div>
             <h6>Size</h6>
             <StandardStyles componentStore={componentStore} stylesDefinition={SizeStyles}/>
@@ -22,27 +24,22 @@ export default ({componentStore}: PropertyEditorProps<Record<string, string>[] |
             <h6>CSS styles</h6>
             <CSSList componentStore={componentStore}/>
         </div>
+        <div>
+            <h6 style={{marginBottom: 5}}>CSS style block</h6>
+            <CSSBlock componentStore={componentStore}/>
+        </div>
     </Rows>;
 }
 
-const SizeStyles: StandardStyleItem = {
-    "Width": inPX("width"),
-    "Height": inPX("height"),
-}
-
-const IndentStyles: StandardStyleItem = {
-    "Left": inPX("margin-left"),
-    "Right": inPX("margin-right"),
-    "Top": inPX("margin-top"),
-    "Bottom": inPX("margin-bottom"),
-}
-
-const OtherStyles: StandardStyleItem = {
-    "Corner radius": inPX("border-radius"),
-    "Rotation": {
-        cssName: "transform",
-        measure: (val: string) => `rotate(${val}deg)`
-    }
-}
+const pick = (object: any, keys: string[]) => {
+    const result: any = {};
+    keys.forEach(key => {
+        if (object[key]) result[key] = object[key];
+    })
+    return result;
+};
+const SizeStyles = pick(StandardStylesDefinitions, ["Width", "Height"])
+const IndentStyles = pick(StandardStylesDefinitions, ["Left", "Right", "Top", "Bottom"])
+const OtherStyles = pick(StandardStylesDefinitions, ["Corner radius", "Rotation"])
 
 

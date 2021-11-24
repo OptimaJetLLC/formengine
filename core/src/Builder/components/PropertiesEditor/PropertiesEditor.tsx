@@ -15,6 +15,9 @@ const PropertiesEditor = () => {
 };
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
   .placement-left .rs-popover {
     margin-left: -14px;
   }
