@@ -1,28 +1,28 @@
 import * as Yup from "yup";
 import {BooleanSchema, NumberSchema, StringSchema} from "yup";
 import _ from "lodash";
-import {ParsableValidateSchema} from "./types";
-import {StringRules, ValueType} from "./const";
+import {ParsableValidateSchema, Rule, StringRuleKey, ValueType} from "./types";
+import {StringRules} from "./rules/StringRules";
 
+//TODO
 export function toValidateScheme(object?: ParsableValidateSchema) {
     if (!object) return
 
     switch (object.type) {
         case ValueType.string:
-            return addStringChain(Yup.string(), object)
+            return buildStringScheme(object)
         case ValueType.number:
-            return addNumberChain(Yup.number(), object)
+            //return buildNumberScheme(object)
         case ValueType.boolean:
-            return addBooleanChain(Yup.boolean(), object)
+            //return buildBooleanScheme(object)
     }
 }
 
-
-function addStringChain(scheme: StringSchema, object: ParsableValidateSchema) {
-    let result = scheme
+function buildStringScheme(object: ParsableValidateSchema) {
+    let scheme = Yup.string()
 
     _.forIn(object.rules, (value, key) => {
-        const descRule = _.find(StringRules, {key})
+        const descRule = StringRules[key as StringRuleKey]
 
         if (!descRule) return
 
@@ -30,100 +30,43 @@ function addStringChain(scheme: StringSchema, object: ParsableValidateSchema) {
         //TODO Handle required value
         let params = descRule.params.map((param) => value[param.name]).filter(Boolean)
 
-        result = chain(key, params)
+        scheme = params.length && descRule.apply(scheme, ...params) || descRule.apply(scheme)
     })
 
-
-    return result
-
-    //TODO
-    function chain(method: string, ...args: any[]): StringSchema {
-        switch (method) {
-            case "email":
-                // @ts-ignore
-                return result.email([...args])
-            case "min":
-                // @ts-ignore
-                return result.min([...args])
-            case "max":
-                // @ts-ignore
-                return result.max([...args])
-            case "required":
-                // @ts-ignore
-                return result.required([...args])
-            default:
-                throw Error("Unknown validate method!")
-        }
-    }
+    return scheme
 }
 
-function addNumberChain(scheme: NumberSchema, object: ParsableValidateSchema) {
-    let result = scheme
+/*function buildNumberScheme(object: ParsableValidateSchema) {
+    let scheme = Yup.number()
 
-    _.forIn(object.rules, (value, key) => {
-        const descRule = _.find(StringRules, {key})
+        _.forIn(object.rules, (value, key) => {
+        const descRule: Rule | undefined = StringRules[key as Rules]
 
         if (!descRule) return
 
         let params = descRule.params.map((param) => value.params[param.name])
 
-        result = chain(key, params)
+        scheme = chain(key, params)
     })
 
 
-    return result
+    return scheme
+}*/
 
-    //TODO
-    function chain(method: string, ...args: any[]): NumberSchema {
-        switch (method) {
-            case "integer":
-                // @ts-ignore
-                return result.integer([...args])
-            case "min":
-                // @ts-ignore
-                return result.min([...args])
-            case "max":
-                // @ts-ignore
-                return result.max([...args])
-            case "required":
-                // @ts-ignore
-                return result.required([...args])
-            default:
-                throw Error("Unknown validate method!")
-        }
-    }
-}
-
-function addBooleanChain(scheme: BooleanSchema, object: ParsableValidateSchema) {
-    let result = scheme
+/*
+function buildBooleanScheme(object: ParsableValidateSchema) {
+    let scheme = Yup.boolean()
 
     _.forIn(object.rules, (value, key) => {
-        const descRule = _.find(StringRules, {key})
+        const descRule: Rule | undefined = StringRules[key as Rules]
 
         if (!descRule) return
 
         let params = descRule.params.map((param) => value.params[param.name])
 
-        result = chain(key, params)
+        scheme = chain(key, params)
     })
 
 
-    return result
-
-    //TODO
-    function chain(method: string, ...args: any[]): BooleanSchema {
-        switch (method) {
-            case "isFalse":
-                // @ts-ignore
-                return result.isFalse([...args])
-            case "isTrue":
-                // @ts-ignore
-                return result.isTrue([...args])
-            case "required":
-                // @ts-ignore
-                return result.required([...args])
-            default:
-                throw Error("Unknown validate method!")
-        }
-    }
-}
+    return scheme
+}*/
