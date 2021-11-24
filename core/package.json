@@ -19,24 +19,26 @@
       "known-css-properties": "^0.23.0",
       "lodash": "^4.17.21",
       "mobx": "^6.3.3",
-        "mobx-react": "^7.2.0",
-        "mobx-utils": "^6.0.4",
-        "react": "^17.0.2",
-        "react-beautiful-dnd": "^13.1.0",
-        "react-dom": "^17.0.2",
-        "react-popper": "^2.2.5",
-        "react-scripts": "4.0.3",
-        "rsuite": "^5.0.2",
-        "web-vitals": "^2.1.0",
-        "yup": "^0.32.11"
+      "mobx-react": "^7.2.0",
+      "mobx-utils": "^6.0.4",
+      "react": "^17.0.2",
+      "react-beautiful-dnd": "^13.1.0",
+      "react-dom": "^17.0.2",
+      "react-popper": "^2.2.5",
+      "react-scripts": "4.0.3",
+      "rsuite": "^5.0.2",
+      "styled-system": "^5.1.5",
+      "web-vitals": "^2.1.0",
+      "yup": "^0.32.11"
     },
     "devDependencies": {
-        "@types/lodash": "^4.14.173",
-        "@types/node": "^16.9.4",
-        "@types/react": "^17.0.22",
-        "@types/react-beautiful-dnd": "^13.1.2",
-        "@types/react-dom": "^17.0.9",
-        "typescript": "^4.4.3"
+      "@types/lodash": "^4.14.173",
+      "@types/node": "^16.9.4",
+      "@types/react": "^17.0.22",
+      "@types/react-beautiful-dnd": "^13.1.2",
+      "@types/react-dom": "^17.0.9",
+      "@types/styled-system": "^5.1.13",
+      "typescript": "^4.4.3"
     },
     "eslintConfig": {
         "extends": [

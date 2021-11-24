@@ -14,9 +14,9 @@ interface PropertiesProps {
 
 const Properties = observer(({activeTab}: PropertiesProps) => {
     if (!store.currentNode)
-        return (
+        return (<Container>
             <CenteredLabel style={{height: "40%"}}>Select element on form for edit properties</CenteredLabel>
-        )
+        </Container>)
 
     const annotations = _.values(store.currentNode.definition.annotations)
 
@@ -35,6 +35,7 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
 });
 
 const Container = styled.div`
+  height: 100%;
   margin-right: 10px;
 `
 

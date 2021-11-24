@@ -1,6 +1,6 @@
 import {PropertyEditorProps} from "../types";
 import {Input} from "rsuite";
-import {LabeledInput} from "../../../components/GroupItems";
+import {LabeledInput} from "../../../components/Containers";
 
 export default ({componentStore, annotation}: PropertyEditorProps<string>) => (
     <LabeledInput>

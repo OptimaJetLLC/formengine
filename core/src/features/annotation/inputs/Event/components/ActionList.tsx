@@ -5,7 +5,7 @@ import {FullActionDefinition} from "../../../../../utils/Types";
 import {autorun} from "mobx";
 import {store} from "../../../../../stores/Store";
 import {ComponentStore} from "../../../../../stores/ComponentStore";
-import {Rows} from "../../../../../components/GroupItems"
+import {Rows} from "../../../../../components/Containers"
 
 const ActionList = ({eventKey, componentStore} : {eventKey: string, componentStore: ComponentStore}) => {
     const [state, setState] = useState<undefined | FullActionDefinition[]>()

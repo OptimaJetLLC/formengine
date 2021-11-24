@@ -2,7 +2,7 @@ import {observer} from "mobx-react";
 import {FullActionDefinition} from "../../../../../utils/Types";
 import {Animation, Button, Dropdown, Nav} from "rsuite";
 import ParameterInput from "./ActionArgument";
-import {Rows} from "../../../../../components/GroupItems";
+import {Box, Rows} from "../../../../../components/Containers";
 import {ArrowDownLine, ArrowUpLine} from '@rsuite/icons';
 import {ComponentStore} from "../../../../../stores/ComponentStore";
 import {getAllNodes} from "../../../../../utils/tree";
@@ -152,7 +152,7 @@ const ActionItem = ({data}: { data: FullActionDefinition }) => {
             <ChooseTargetButton data={data}/>
             <ChooseActionButton data={data}/>
         </div>
-        <div style={{padding: "0 10px"}}>
+        <Box px={10}>
             <Animation.Collapse in={showParams}>
                 {(props, ref) => <div {...props} ref={ref}>
                     <Rows margin={1} style={{marginTop: 8}}>
@@ -162,7 +162,7 @@ const ActionItem = ({data}: { data: FullActionDefinition }) => {
                     </Rows>
                 </div>}
             </Animation.Collapse>
-        </div>
+        </Box>
         <ExpandButton
             onClick={() => setShowParams(!showParams)}
             block>

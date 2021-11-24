@@ -1,11 +1,9 @@
 import {PropertyEditorProps} from "../types";
 import {Input} from "rsuite";
-import {LabeledInput} from "../../../components/GroupItems";
-import {FieldHelperProps, FieldInputProps, FieldProps} from "formik";
-
+import {LabeledInput} from "../../../components/Containers";
 
 export default (props: PropertyEditorProps<string | undefined>) => {
-    const {componentStore, annotation, onChange, onBlur, value} = props
+    const {annotation, onChange, onBlur, value} = props
 
     //if (!fields) return null
     //if (!helpers) return null
@@ -14,14 +12,14 @@ export default (props: PropertyEditorProps<string | undefined>) => {
     return (
         <LabeledInput>
         <label>{annotation.title}</label>
-        <Input
-            name={annotation.key}
-            /*value={componentStore.props[annotation.key]}*/
-            value={value}
-            /*onChange={value => componentStore.props[annotation.key] = value as string | undefined}*/
-            onChange={onChange}
-            onBlur={onBlur}
-        />
-    </LabeledInput>
+            <Input
+                name={annotation.key}
+                /*value={componentStore.props[annotation.key]}*/
+                value={value}
+                /*onChange={value => componentStore.props[annotation.key] = value as string | undefined}*/
+                onChange={onChange}
+                onBlur={onBlur}
+            />
+        </LabeledInput>
     );
-}
+};

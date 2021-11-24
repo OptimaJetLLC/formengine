@@ -5,7 +5,7 @@ import {IconButton, Input, InputGroup, Nav, Popover, SelectPicker, TreePicker, W
 import ArrowDownIcon from "@rsuite/icons/ArrowDown";
 import CloseIcon from '@rsuite/icons/Close';
 import _ from "lodash";
-import {LabeledInput} from "../../../../../components/GroupItems";
+import {LabeledInput} from "../../../../../components/Containers";
 import {store} from "../../../../../stores/Store";
 import {Node} from "../../../../../utils/Node";
 import {ItemDataType} from "rsuite/esm/@types/common";
@@ -82,7 +82,7 @@ const ActionArgument = ({name, data}: { name: string, data: FullActionDefinition
                                 </LabeledInput>
                                 <LabeledInput>
                                     <label>Property</label>
-                                    <SelectPicker data={options}
+                                    <SelectPicker data={options} value={prop}
                                                   onSelect={onChange}/>
                                 </LabeledInput>
 

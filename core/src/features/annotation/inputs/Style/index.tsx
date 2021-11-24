@@ -1,5 +1,5 @@
 import {PropertyEditorProps} from "../../types";
-import {Rows} from "../../../../components/GroupItems";
+import {Rows} from "../../../../components/Containers";
 import CSSList from "./components/CSSList";
 import StandardStyles, {inPX, StandardStyleItem} from "./components/StandardStyles";
 

@@ -55,7 +55,6 @@ const HeaderBar = observer(() => {
         {/*            icon={<TreeIcon/>} appearance={props.isShowLeftPanel ? "primary" : "subtle"}/>*/}
         <ButtonToolbar>
             <IconButton onClick={() => store.showLeftPanel = !store.showLeftPanel}
-                        style={{marginRight: 20}}
                         icon={<FaIcon icon={faSitemap as unknown as IconDefinition}
                                       color={store.showLeftPanel ? "var(--rs-btn-primary-bg)" : "initial"}/>}/>
             {fileActions()}
@@ -77,13 +76,12 @@ const HeaderBar = observer(() => {
                 <ButtonToolbar>
                     {toggleModeButton()}
                     <SelectPicker appearance="subtle" value={undefined /*TODO props.desktopMode*/}
-                                  style={{marginLeft: 10}}
                                   data={[{value: "desktop", label: "Desktop"}, {value: "mobile", label: "Mobile"}]}
                                   searchable={false} cleanable={false}
                                   onSelect={undefined /*TODO props.onChangeDesktopMode*/}/>
                     <IconButton onClick={() => store.showRightPanel = !store.showRightPanel}
-                                style={{marginLeft: 20}} icon={<MenuIcon
-                        fill={store.showRightPanel ? "var(--rs-btn-primary-bg)" : "initial"}/>}/>
+                                icon={<MenuIcon
+                                    fill={store.showRightPanel ? "var(--rs-btn-primary-bg)" : "initial"}/>}/>
                 </ButtonToolbar>
             </div>
         );

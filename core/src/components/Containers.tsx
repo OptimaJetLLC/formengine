@@ -1,6 +1,13 @@
 import styled from "@emotion/styled";
+import {color, layout, space} from 'styled-system';
 
-const Rows = styled.div<{ margin?: number }>`
+const Box = styled('div')(
+    layout,
+    space,
+    color
+);
+
+const Rows = styled(Box)<{ margin?: number }>`
   display: flex;
   flex-direction: column;
   margin: 10px 0;
@@ -18,7 +25,7 @@ const Rows = styled.div<{ margin?: number }>`
   }
 `
 
-const Columns = styled.div<{ margin?: number }>`
+const Columns = styled(Box)<{ margin?: number }>`
   display: flex;
   flex-direction: row;
   margin: 0 10px;
@@ -50,4 +57,4 @@ const LabeledInput = styled.div`
   }
 `
 
-export {Rows, Columns, LabeledInput};
+export {Box, Rows, Columns, LabeledInput};

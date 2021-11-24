@@ -8,7 +8,7 @@ import {FormViewerProps} from "../FormViewer";
 import HeaderBar from "./components/Headerbar";
 import BuilderView from "./BuilderView"
 import {Preview} from "./Preview";
-import ComponentTree from "./components/ComponentTree";
+import Tree from "./components/Tree";
 import PropertiesEditor from "./components/PropertiesEditor/PropertiesEditor";
 import {findNode} from "../utils/tree";
 
@@ -24,7 +24,7 @@ const FormBuilder = (props: FormBuilderProps) => {
             <Content>
                 {store.showLeftPanel && <TreeContainer>
                     {store.isBuilderMode
-                        ? <ComponentTree/>
+                        ? <Tree/>
                         : null
                     }
                 </TreeContainer>}
@@ -78,12 +78,12 @@ const onDragUpdate = ({destination}: DragUpdate) => {
 }
 
 const PanelContainer = styled.div`
-  width: 270px;
+  width: 280px;
   margin: 15px 0;
   padding: 10px;
   background-color: #ffffffa1;
   border-radius: 10px;
-  box-shadow: 0 0 8px -2px rgb(0 0 0 / 25%);
+  box-shadow: 0 5px 20px 0 rgb(0 0 0 / 15%);
   display: flex;
 `
 
@@ -91,8 +91,6 @@ const TreeContainer = styled(PanelContainer)`
   //width: 200px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  margin-left: 0;
-  padding-left: 0;
 
   //background-color: inherit; 
   box-shadow: none;
