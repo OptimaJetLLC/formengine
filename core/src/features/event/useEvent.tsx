@@ -8,7 +8,7 @@ import {useLocalObservable} from "mobx-react";
 
 //TODO Optimize?
 export function useEvent(componentStore: ComponentStore, componentDefinition: ComponentDefinition<any>) {
-    const innerActions = useLocalObservable<Record<string, any[]>>(() => ({}))
+    const eventToActionsMap = useLocalObservable<Record<string, any[]>>(() => ({}))
 
     useEffect(() => {
         let disposer = autorun(() => {
@@ -19,12 +19,12 @@ export function useEvent(componentStore: ComponentStore, componentDefinition: Co
             _.forIn(events, (value, key) => {
                 const [handle, actions] = transformEvent(key, componentStore, componentDefinition)
                 componentStore.props[key] = handle
-                innerActions[key] = actions
+                eventToActionsMap[key] = actions
             })
         })
 
         return () => disposer();
     }, []);
 
-    return innerActions
+    return eventToActionsMap
 }

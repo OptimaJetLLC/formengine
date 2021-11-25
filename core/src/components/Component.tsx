@@ -23,20 +23,19 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
 
     useEffect(() => initDefaultValue(componentStore, componentDefinition), [])
 
-    const actions = useEvent(componentStore, componentDefinition);
+    const eventMap = useEvent(componentStore, componentDefinition);
 
     const [field, meta] = useValidation({
         key: componentStore.key,
         scheme: toValidateScheme(componentStore.validation),
-        //scheme: Yup.string().required().min(3),
     })
 
     //injectValidation()
     useEffect(() => {
-        if (actions["onChange"]) actions["onChange"].push(field.setValue)
+        if (eventMap["onChange"]) eventMap["onChange"].push(field.setValue)
         else props.onChange = field.setValue
 
-        if (actions["onBlur"]) actions["onBlur"].push(() => field.setTouched())
+        if (eventMap["onBlur"]) eventMap["onBlur"].push(() => field.setTouched())
         else props.onBlur = () => field.setTouched()
 
         props.value = field.value

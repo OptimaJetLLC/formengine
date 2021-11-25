@@ -1,15 +1,15 @@
 import {observer} from "mobx-react";
-import {FullActionDefinition, TransformativeType} from "../../../../../utils/Types";
+import {FullActionDefinition, TransformativeType} from "../../../utils/Types";
 import React, {useEffect, useState} from "react";
 import {IconButton, Input, InputGroup, Nav, Popover, SelectPicker, TreePicker, Whisper} from "rsuite";
 import ArrowDownIcon from "@rsuite/icons/ArrowDown";
 import CloseIcon from '@rsuite/icons/Close';
 import _ from "lodash";
-import {LabeledInput} from "../../../../../components/Containers";
-import {store} from "../../../../../stores/Store";
-import {Node} from "../../../../../utils/Node";
+import {LabeledInput} from "../../../components/Containers";
+import {store} from "../../../stores/Store";
+import {Node} from "../../../utils/Node";
 import {ItemDataType} from "rsuite/esm/@types/common";
-import {NavIconItem} from "../../../../../components/NavIconItem";
+import {NavIconItem} from "../../../components/NavIconItem";
 import * as faLink from "@fortawesome/free-solid-svg-icons/faLink"
 import * as faCode from "@fortawesome/free-solid-svg-icons/faCode"
 import styled from "@emotion/styled";

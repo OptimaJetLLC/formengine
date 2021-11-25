@@ -4,7 +4,7 @@ import Key from "./inputs/Key";
 import String from "./inputs/String";
 import Boolean from "./inputs/Boolean";
 import Picker from "./inputs/Picker";
-import Event from "./inputs/Event";
+import Event from "../event/components/EventEditor";
 import Style from "./inputs/Style";
 import {Section} from "../../Builder/components/PropertiesEditor/Section";
 import {ValidateEditor} from "../validation/components/ValidateEditor";

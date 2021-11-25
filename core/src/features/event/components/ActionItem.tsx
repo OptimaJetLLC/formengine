@@ -1,17 +1,17 @@
 import {observer} from "mobx-react";
-import {FullActionDefinition} from "../../../../../utils/Types";
+import {FullActionDefinition} from "../../../utils/Types";
 import {Animation, Button, Dropdown, Nav} from "rsuite";
 import ParameterInput from "./ActionArgument";
-import {Box, Rows} from "../../../../../components/Containers";
+import {Box, Rows} from "../../../components/Containers";
 import {ArrowDownLine, ArrowUpLine} from '@rsuite/icons';
-import {ComponentStore} from "../../../../../stores/ComponentStore";
-import {getAllNodes} from "../../../../../utils/tree";
+import {ComponentStore} from "../../../stores/ComponentStore";
+import {getAllNodes} from "../../../utils/tree";
 import _ from "lodash";
-import {Node} from "../../../../../utils/Node";
-import {mapper} from "../../../../../views";
+import {Node} from "../../../utils/Node";
+import {mapper} from "../../../views";
 import {useState} from "react";
 import styled from "@emotion/styled";
-import {NavIconItem} from "../../../../../components/NavIconItem";
+import {NavIconItem} from "../../../components/NavIconItem";
 
 const ChooseTargetButton = observer(({data}: { data: FullActionDefinition }) => {
     const nodes = getAllNodes().filter(node => !_.isEmpty(node.definition?.actions))

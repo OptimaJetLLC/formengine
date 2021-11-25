@@ -1,7 +1,7 @@
-import {PropertyEditorProps} from "../../types";
-import AddActionButton from "./components/AddActionButton";
-import ActionList from "./components/ActionList";
-import {store} from "../../../../stores/Store";
+import {PropertyEditorProps} from "../../annotation/types";
+import AddActionButton from "./AddActionButton";
+import ActionList from "./ActionList";
+import {store} from "../../../stores/Store";
 import styled from "@emotion/styled";
 
 //EventEditor: one event - one editor

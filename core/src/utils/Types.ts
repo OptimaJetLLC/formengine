@@ -11,6 +11,8 @@ export type WeakActionDefinition = {
     modifiers?: Modifiers
 }
 
+export type Func = (...arg: any[]) => void
+
 export type FullActionDefinition = {
     target: ComponentStore | null
     action: Action | null
@@ -22,7 +24,7 @@ export type Modifiers = { name: string, params: any }
 
 export type Action = {
     name: string,
-    func: (...args: any[]) => any,
+    func: Func,
     args?: string[],
     description?: string
 }

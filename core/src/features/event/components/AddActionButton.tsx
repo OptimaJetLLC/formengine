@@ -1,11 +1,11 @@
 import {Dropdown, IconButton, Popover, Whisper} from "rsuite";
-import {store} from "../../../../../stores/Store";
+import {store} from "../../../stores/Store";
 import _ from "lodash";
 import PlusIcon from "@rsuite/icons/Plus";
 import {observer} from "mobx-react";
-import {ComponentStore} from "../../../../../stores/ComponentStore";
-import {getAllNodes} from "../../../../../utils/tree";
-import {Node} from "../../../../../utils/Node";
+import {ComponentStore} from "../../../stores/ComponentStore";
+import {getAllNodes} from "../../../utils/tree";
+import {Node} from "../../../utils/Node";
 
 const AddActionButton = ({eventKey, componentStore} : {eventKey: string, componentStore: ComponentStore}) => {
     const nodes = getAllNodes().filter(node => !_.isEmpty(node.definition?.actions))
