@@ -15,6 +15,10 @@ label {
     z-index: 2000 !important;
 }
 
+#FormbuilderContainer {
+    scrollbar-gutter: stable;
+}
+
 /* Scrollbar */
 
 ::-webkit-scrollbar {

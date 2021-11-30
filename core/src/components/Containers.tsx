@@ -18,10 +18,7 @@ const Rows = styled(Box)<{ margin?: number, mx?: number | string }>`
   display: flex;
   flex-direction: column;
 
-  ${(props: any) => {
-    console.log(props)
-    return (props.my != undefined) ? "" : "margin: 10px 0;"
-  }}
+  ${(props: any) => (props.my !== undefined) ? "" : "margin: 10px 0;"}
   & > * {
     margin: ${(props: any) => (props.margin ?? '5') + 'px'} 0;
   }

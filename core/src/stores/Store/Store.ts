@@ -8,6 +8,7 @@ import {mapper} from "../../views";
 import {moveArrayItem} from "../../utils/moveArrayItem";
 import {findNode, treeMap} from "../../utils/tree";
 import {removeEventAndDefaultValue} from "./utils/removeEventAndDefaultValue";
+import {FormikContextType} from "formik";
 
 
 class Store {
@@ -20,6 +21,7 @@ class Store {
     showRightPanel: boolean = true
     showLeftPanel: boolean = true
     styles?: any
+    formContext?: FormikContextType<any>
 
     allEvents = new Map<ComponentStore, Record<EventName, FullActionDefinition[]>>()
 
@@ -41,6 +43,7 @@ class Store {
         makeObservable(this, {
             allEvents: observable.deep,
             currentNode: observable.ref,
+            formContext: observable.ref,
             isDragging: observable.ref,
             isBuilderMode: observable.ref,
             showRightPanel: observable.ref,
@@ -132,7 +135,7 @@ class Store {
         const sourceIndex = sourceParent.indexOf(sourceNode.data);
         const targetIndex = targetParent.indexOf(targetNode.data);
 
-        if (targetParent == sourceParent) {
+        if (targetParent === sourceParent) {
             moveArrayItem(targetParent, sourceIndex, targetIndex + index);
         } else {
             const [removed] = sourceParent.splice(sourceIndex, 1)

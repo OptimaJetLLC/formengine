@@ -6,7 +6,7 @@ import FormBuilder from "./Builder";
 
 const App = observer(() => {
     return (
-        <Container>
+        <Container id={"FormbuilderContainer"} className={"formbuilder-container"}>
             <Content>
                 <FormBuilder getForm={() => []}/>
             </Content>

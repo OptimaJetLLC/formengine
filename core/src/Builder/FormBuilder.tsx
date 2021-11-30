@@ -11,23 +11,24 @@ import {Preview} from "./Preview";
 import Tree from "./components/Tree";
 import PropertiesEditor from "./components/PropertiesEditor/PropertiesEditor";
 import {findNode} from "../utils/tree";
+import Errors from "./components/Errors";
 
 export interface FormBuilderProps extends FormViewerProps {
 
 }
 
 const FormBuilder = (props: FormBuilderProps) => {
-    const isDragOver = store.draggingOverKey == "";
+    const isDragOver = store.draggingOverKey === "";
     return <Container>
         <DragDropContext onDragStart={onDragStart} onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
             <HeaderBar/>
             <Content>
-                {store.showLeftPanel && <TreeContainer>
+                {store.showLeftPanel && <LeftPanel>
                     {store.isBuilderMode
                         ? <Tree/>
-                        : null
+                        : <Errors style={{margin: 20}}/>
                     }
-                </TreeContainer>}
+                </LeftPanel>}
 
                 <FormContainer style={
                     isDragOver
@@ -40,12 +41,12 @@ const FormBuilder = (props: FormBuilderProps) => {
                     }
                 </FormContainer>
 
-                {store.showRightPanel && <PropertiesEditorContainer>
+                {store.showRightPanel && <RightPanel>
                     {store.isBuilderMode
                         ? <PropertiesEditor/>
                         : null
                     }
-                </PropertiesEditorContainer>}
+                </RightPanel>}
             </Content>
         </DragDropContext>
     </Container>;
@@ -87,7 +88,7 @@ const PanelContainer = styled.div`
   display: flex;
 `
 
-const TreeContainer = styled(PanelContainer)`
+const LeftPanel = styled(PanelContainer)`
   //width: 200px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -121,7 +122,7 @@ const Content = styled.div`
   //box-shadow: inset 0 0 4px 0 rgb(0 0 0 / 25%);
 `
 
-const PropertiesEditorContainer = styled(PanelContainer)`
+const RightPanel = styled(PanelContainer)`
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 
