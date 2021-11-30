@@ -11,6 +11,8 @@ import {useValidation} from "../features/validation/useValidation";
 import {toValidateScheme} from "../features/validation/toValidateScheme";
 import {WithErrorMessage} from "../features/validation/withErrorMessage";
 import {transformStyles} from "../features/style";
+import {useSubstitution} from "../features/substitution/useSubstitution";
+import {FormikContext} from "formik";
 
 interface ComponentProps {
     componentStore: ComponentStore,
@@ -38,8 +40,11 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
         if (eventMap["onBlur"]) eventMap["onBlur"].push(() => field.setTouched())
         else props.onBlur = () => field.setTouched()
 
-        props.value = field.value
+        //props.value = field.value
     }, [])
+
+
+    useSubstitution(props, componentDefinition)
 
     props.children = props.children
         || componentStore.children?.map(child =>
