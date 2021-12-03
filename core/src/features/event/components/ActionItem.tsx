@@ -1,8 +1,8 @@
 import {observer} from "mobx-react";
 import {FullActionDefinition} from "../../../utils/Types";
-import {Animation, Button, Dropdown, Nav} from "rsuite";
+import {Animation, Button, Dropdown, Nav, Popover, Whisper} from "rsuite";
 import ParameterInput from "./ActionArgument";
-import {Box, Rows} from "../../../components/Containers";
+import {Box, Rows} from "../../../components/UI/Containers";
 import {ArrowDownLine, ArrowUpLine} from '@rsuite/icons';
 import {ComponentStore} from "../../../stores/ComponentStore";
 import {getAllNodes} from "../../../utils/tree";
@@ -11,7 +11,7 @@ import {Node} from "../../../utils/Node";
 import {mapper} from "../../../views";
 import {useState} from "react";
 import styled from "@emotion/styled";
-import {NavIconItem} from "../../../components/NavIconItem";
+import {NavIconItem} from "../../../components/UI/NavIconItem";
 
 const ChooseTargetButton = observer(({data}: { data: FullActionDefinition }) => {
     const nodes = getAllNodes().filter(node => !_.isEmpty(node.definition?.actions))
@@ -22,8 +22,34 @@ const ChooseTargetButton = observer(({data}: { data: FullActionDefinition }) => 
         return groups;
     }, {});
 
-    return <Dropdown style={{display: "flex"}} renderToggle={(props, ref) => (
-        <Button {...props} ref={ref} block
+    const Menu = ({onClose, left, top, className}: any, ref: any) =>
+        <Popover ref={ref} className={className} style={{left, top, marginLeft: -14}} full>
+            <Dropdown.Menu>
+                {
+                    Object.keys(groups).map((group) => (
+                        <div style={{padding: "0 15px", marginTop: 5}}>
+                            <h6>{group + "s"}</h6>
+                            {
+                                groups[group].map((node: Node) => (
+                                    <Dropdown.Item
+                                        key={node.key}
+                                        children={node.key}
+                                        onSelect={() => {
+                                            onClose();
+                                            data.target = node.data;
+                                        }}
+                                    />
+                                ))
+                            }
+                        </div>
+                    ))
+                }
+            </Dropdown.Menu>
+        </Popover>
+
+    return <Whisper placement="left" trigger="click"
+                    speaker={Menu}>
+        <Button block
                 appearance={"subtle"} style={{padding: "2px 10px"}}>
 
             <p style={{display: "flex"}}>
@@ -31,35 +57,16 @@ const ChooseTargetButton = observer(({data}: { data: FullActionDefinition }) => 
                 <div style={{
                     marginRight: 3
                 }}>
-                    <a style={{
-                        fontWeight: "bold",
+                    <b style={{
+                        color: "var(--rs-text-link)",
                         marginLeft: 5
-                    }}>{(data.target?.key ? `${data.target?.key}` : "Target")}</a>
+                    }}>{(data.target?.key ? `${data.target?.key}` : "Target")}</b>
                     <ArrowDownLine/>
                 </div>
                 <p style={{opacity: .8}}>{`${data.target?.type.toLowerCase() ?? ""} `}</p>
             </p>
         </Button>
-    )}>
-        {
-            Object.keys(groups).map((group) => (
-                <div style={{padding: "0 15px", marginTop: 5}}>
-                    <h6>{group + "s"}</h6>
-                    {
-                        groups[group].map((node: Node) => (
-                            <Dropdown.Item
-                                key={node.key}
-                                children={node.key}
-                                onSelect={() => {
-                                    data.target = node.data;
-                                }}
-                            />
-                        ))
-                    }
-                </div>
-            ))
-        }
-    </Dropdown>
+    </Whisper>
 })
 
 const ChooseActionButton = observer(({data}: { data: FullActionDefinition }) => {
@@ -112,23 +119,8 @@ const ChooseActionButton = observer(({data}: { data: FullActionDefinition }) => 
             />
         ))
 
-
-    return (
-        <Dropdown style={{display: "flex"}} placement={"leftStart"} renderToggle={(props, ref) => (
-            <Button {...props} ref={ref} appearance={"subtle"} block style={{padding: "2px 10px"}}>
-                <label style={{display: "flex"}}>
-                    <p>do </p>
-                    <div>
-                        <a style={{
-                            fontWeight: "bold",
-                            color: "blueviolet",
-                            marginLeft: 8
-                        }}>{`${data.action?.name || "Action"}`}</a>
-                        <ArrowDownLine/>
-                    </div>
-                </label>
-            </Button>
-        )}>
+    const Menu = ({onClose, left, top, className}: any, ref: any) => (
+        <Popover ref={ref} className={className} style={{left, top, marginLeft: -14}} full>
             <Nav appearance="subtle" activeKey={"With target"} style={{marginBottom: 10}}>
                 {NavIconItem("With target")}
                 {NavIconItem("Without target")}
@@ -138,7 +130,25 @@ const ChooseActionButton = observer(({data}: { data: FullActionDefinition }) => 
                     ? TargetActionsList(data.target)
                     : FullActionsList()
             }
-        </Dropdown>)
+        </Popover>
+    )
+
+    return (
+        <Whisper placement="left" trigger="click"
+                 speaker={Menu}>
+            <Button appearance={"subtle"} block style={{padding: "2px 10px"}}>
+                <label style={{display: "flex"}}>
+                    <p>do </p>
+                    <div>
+                        <b style={{
+                            color: "blueviolet",
+                            marginLeft: 8
+                        }}>{`${data.action?.name || "Action"}`}</b>
+                        <ArrowDownLine/>
+                    </div>
+                </label>
+            </Button>
+        </Whisper>)
 })
 
 const ActionItem = ({data}: { data: FullActionDefinition }) => {

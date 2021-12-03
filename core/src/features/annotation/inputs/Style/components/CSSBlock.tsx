@@ -2,9 +2,9 @@ import {useState} from "react";
 import {ComponentStore} from "../../../../../stores/ComponentStore";
 import {Input} from "rsuite";
 import styled from "@emotion/styled";
-import {AutoSize} from "../../../../../components/Containers";
+import {AutoSize} from "../../../../../components/UI/Containers";
 
-export default ({componentStore}: { componentStore: ComponentStore }) => {
+const CSSBlock = ({componentStore}: { componentStore: ComponentStore }) => {
     //TODO mobx.createViewModel (непонятно как заставить работать с массивами) https://github.com/mobxjs/mobx-utils/issues/209
     const [value, setValue] = useState(componentStore.cssBlock);
     const onBlur = () => {
@@ -22,3 +22,4 @@ const TextArea = styled(Input)`
   resize: vertical !important;
 `
 
+export default CSSBlock;

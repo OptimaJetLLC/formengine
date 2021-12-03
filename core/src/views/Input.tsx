@@ -3,7 +3,7 @@ import {define} from "../features/annotation/define";
 import {boolean, event, select, string} from "../features/annotation";
 import defineLocalAction from "../features/annotation/defineAction";
 import {setValue} from "../features/event/Actions";
-import {LabeledInput} from "../components/Containers";
+import {LabeledInput} from "../components/UI/Containers";
 
 export interface InputProps extends RInputProps {
     label: string

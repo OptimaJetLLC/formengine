@@ -15,42 +15,41 @@ const AddActionButton = ({eventKey, componentStore} : {eventKey: string, compone
         groups[node.definition.name] = group;
         return groups;
     }, {});
+    const Menu = ({onClose, left, top, className}: any, ref: any) =>
+        <Popover ref={ref} className={className} style={{left, top, marginLeft: -14}} full>
+            <Dropdown.Menu onSelect={(value: any) => {
+                onClose();
+                store.addEvent(eventKey, value.action, {}, componentStore, value.node.data!)
+            }}>
+                {
+                    Object.keys(groups).map((group) => (
+                        <div style={{padding: "0 15px", marginTop: 5}} key={group}>
+                            <h6>{group + "s"}</h6>
+                            {
+                                groups[group].map((node: Node, i: number) => (
+                                    <Dropdown.Menu
+                                        key={node.key + i}
+                                        title={node.key}
+                                        onClick={event => event.preventDefault()}
+                                        children={
+                                            node.definition?.actions?.map((action) =>
+                                                <Dropdown.Item
+                                                    key={action.name}
+                                                    eventKey={{node, action}}
+                                                    children={action.name}
+                                                />
+                                            )
+                                        }
+                                    />
+                                ))
+                            }
+                        </div>
+                    ))
+                }
+            </Dropdown.Menu>
+        </Popover>
 
-    return <Whisper placement="left" trigger="click"
-                    speaker={({onClose, left, top, className}, ref) =>
-                        <Popover ref={ref} className={className} style={{left, top, marginLeft: -14}} full>
-                            <Dropdown.Menu onSelect={(value: any) => {
-                                onClose();
-                                store.addEvent(eventKey, value.action, {}, componentStore, value.node.data!)
-                            }}>
-                                {
-                                    Object.keys(groups).map((group) => (
-                                        <div style={{padding: "0 15px", marginTop: 5}} key={group}>
-                                            <h6>{group + "s"}</h6>
-                                            {
-                                                groups[group].map((node: Node, i: number) => (
-                                                    <Dropdown.Menu
-                                                        key={node.key + i}
-                                                        title={node.key}
-                                                        onClick={event => event.preventDefault()}
-                                                        children={
-                                                            node.definition?.actions?.map((action) =>
-                                                                <Dropdown.Item
-                                                                    key={action.name}
-                                                                    eventKey={{node, action}}
-                                                                    children={action.name}
-                                                                />
-                                                            )
-                                                        }
-                                                    />
-                                                ))
-                                            }
-                                        </div>
-                                    ))
-                                }
-                            </Dropdown.Menu>
-                        </Popover>
-                    }>
+    return <Whisper placement="left" trigger="click" speaker={Menu}>
         <IconButton block icon={<PlusIcon/>} appearance="default" size={"sm"}/>
     </Whisper>
 }

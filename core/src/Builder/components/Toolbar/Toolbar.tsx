@@ -7,6 +7,7 @@ import SearchForm from '../SearchForm';
 import {ToolbarItem, ToolbarItems} from "./Items";
 import {ComponentDefinition} from "../../../features/annotation/types";
 import _ from "lodash";
+import {Centered} from "../../../components/UI/Containers";
 
 interface ToolbarState {
     filtered?: ToolbarItem | null,
@@ -23,28 +24,30 @@ export class Toolbar extends React.Component<any, ToolbarState> {
     render() {
         return (
             <Droppable droppableId={"TOOLBAR"} isDropDisabled={true}>
-                {(provider: DroppableProvided) => (
-                    <div ref={provider.innerRef} className="formbuilder-toolbox">
+                {(provided: DroppableProvided) => (
+                    <Container ref={provided.innerRef}>
                         <Header>
-                            Elements
-                            <StyledSearch ref={this.searchForm} style={{marginLeft: 20}}
-                                          handleChange={this.handleSearchChange.bind(this)}/>
+                            <h4>Elements</h4>
+                            <Centered>
+                                <StyledSearch ref={this.searchForm} style={{maxWidth: 300}}
+                                              handleChange={this.handleSearchChange.bind(this)}/>
+                            </Centered>
+                            <h4 style={{opacity: 0}}>Elements</h4>
                         </Header>
 
                         {this.state.filtered && !this.state.filtered.controls?.length &&
-                        <Subheader>
-                            <div className="formbuilder-toolbox-search-nothing">
-                                Not found<br/>
-                                <Button block
-                                        onClick={() => {
-                                            this.setState({filtered: null})
-                                            this.searchForm.current?.reset()
-                                        }}>Reset</Button>
-                            </div>
-                        </Subheader>
+
+                        <Centered alignItems={"baseline"}>
+                            <Subheader>Not found<br/></Subheader>
+                            <Button style={{marginLeft: 20}} size={"xs"} onClick={() => {
+                                this.setState({filtered: null})
+                                this.searchForm.current?.reset()
+                            }}>Reset</Button>
+                        </Centered>
                         }
                         {this.items()}
-                    </div>
+                        {provided.placeholder}
+                    </Container>
                 )}
             </Droppable>
         );
@@ -53,8 +56,8 @@ export class Toolbar extends React.Component<any, ToolbarState> {
     items = () => {
         const itemsMap = this.state.filtered?.controls?.length ? [this.state.filtered] : ToolbarItems;
 
-        return itemsMap?.map((item: ToolbarItem, i: number) => <ControlsGroup>
-            <Subheader key={(item.title + i)}>
+        return itemsMap?.map((item: ToolbarItem, i: number) => <ControlsGroup key={(item.title + i)}>
+            <Subheader>
                 {item.title}
             </Subheader>
             <Controls> {item.controls?.map(this.controlItem)} </Controls>
@@ -114,10 +117,18 @@ function getDefaultValue(definition: ComponentDefinition<any>) {
     return props;
 }
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  min-width: 800px;
+`
+
 const StyledSearch = styled(SearchForm)`
   margin-left: 20px;
   flex: 1;
   justify-content: center;
+  max-width: 200px;
 
   > * {
     color: white !important;
@@ -127,12 +138,11 @@ const StyledSearch = styled(SearchForm)`
 `
 
 
-const Header = styled.h4`
+const Header = styled.div`
   display: flex;
   flex: 1;
   justify-content: space-between;
-  align-items: baseline;
-  max-width: 400px;
+  align-items: center;
   font-weight: normal;
 
   > * {
@@ -147,7 +157,6 @@ const Subheader = styled.li`
   font-weight: normal;
   cursor: pointer;
   border: none;
-  min-width: 100%;
   font-size: 17px;
   text-align: left;
 `

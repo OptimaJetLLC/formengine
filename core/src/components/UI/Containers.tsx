@@ -23,11 +23,11 @@ const Rows = styled(Box)<{ margin?: number, mx?: number | string }>`
     margin: ${(props: any) => (props.margin ?? '5') + 'px'} 0;
   }
 
-  & :first-child {
+  & > *:first-of-type {
     margin-top: 0;
   }
 
-  & :last-child {
+  & > *:last-of-type {
     margin-bottom: 0;
   }
 `
@@ -42,11 +42,11 @@ const Columns = styled(Box)<{ margin?: number }>`
     flex: 1;
   }
 
-  & :first-child {
+  & > *:first-of-type {
     margin-left: 0;
   }
 
-  & :last-child {
+  & > *:last-of-type {
     margin-right: 0;
   }
 `
@@ -64,6 +64,14 @@ const LabeledInput = styled.div`
   }
 `
 
+const Centered = styled(Box)`
+  display: flex;
+  flex: 1;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+`
+
 class AutoSize extends Component {
     componentDidMount() {
         const domNode = ReactDOM.findDOMNode(this);
@@ -75,4 +83,4 @@ class AutoSize extends Component {
     }
 }
 
-export {Box, Rows, Columns, LabeledInput, AutoSize};
+export {Box, Rows, Columns, LabeledInput, AutoSize, Centered};

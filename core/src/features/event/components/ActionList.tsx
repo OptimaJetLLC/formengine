@@ -5,7 +5,7 @@ import {FullActionDefinition} from "../../../utils/Types";
 import {autorun} from "mobx";
 import {store} from "../../../stores/Store";
 import {ComponentStore} from "../../../stores/ComponentStore";
-import {Rows} from "../../../components/Containers"
+import {Rows} from "../../../components/UI/Containers"
 
 const ActionList = ({eventKey, componentStore} : {eventKey: string, componentStore: ComponentStore}) => {
     const [state, setState] = useState<undefined | FullActionDefinition[]>()
@@ -14,7 +14,7 @@ const ActionList = ({eventKey, componentStore} : {eventKey: string, componentSto
         autorun(() => {
             setState(store.allEvents.get(componentStore)?.[eventKey])
         })
-    }, [])
+    });
 
     /*TODO Draggable List*/
     return <Rows margin={5}

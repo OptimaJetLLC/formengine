@@ -1,8 +1,8 @@
 import {PropertyEditorProps} from "../types";
 import {Input} from "rsuite";
-import {LabeledInput} from "../../../components/Containers";
+import {LabeledInput} from "../../../components/UI/Containers";
 
-export default ({componentStore, annotation}: PropertyEditorProps<string>) => (
+const KeyInput = ({componentStore, annotation}: PropertyEditorProps<string>) => (
     <LabeledInput>
         <label>{annotation.title}</label>
         <Input
@@ -11,3 +11,5 @@ export default ({componentStore, annotation}: PropertyEditorProps<string>) => (
         />
     </LabeledInput>
 );
+
+export default KeyInput;

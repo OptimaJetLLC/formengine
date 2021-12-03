@@ -1,11 +1,11 @@
 import {PropertyEditorProps} from "../../types";
-import {Rows} from "../../../../components/Containers";
+import {Rows} from "../../../../components/UI/Containers";
 import CSSList from "./components/CSSList";
 import StandardStyles from "./components/StandardStyles";
 import {StandardStylesDefinitions} from "../../../style";
 import CSSBlock from "./components/CSSBlock";
 
-export default ({componentStore}: PropertyEditorProps<Record<string, string>[] | undefined>) => {
+const Style = ({componentStore}: PropertyEditorProps<Record<string, string>[] | undefined>) => {
     //TODO mobx.createViewModel (непонятно как заставить работать с массивами) https://github.com/mobxjs/mobx-utils/issues/209
     return <Rows ml={"5px"} my={0}>
         <div>
@@ -42,4 +42,4 @@ const SizeStyles = pick(StandardStylesDefinitions, ["Width", "Height"])
 const IndentStyles = pick(StandardStylesDefinitions, ["Left", "Right", "Top", "Bottom"])
 const OtherStyles = pick(StandardStylesDefinitions, ["Corner radius", "Rotation"])
 
-
+export default Style;

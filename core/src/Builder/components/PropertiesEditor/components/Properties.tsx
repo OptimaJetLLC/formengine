@@ -5,7 +5,7 @@ import {store} from "../../../../stores/Store";
 import {WithValidation} from "../../../../features/validation/components/WithValidation";
 import React from "react";
 import {ObservableFormik} from "../../../../features/validation/components/ObserableFormik";
-import {CenteredLabel} from "../../../../components/Labels";
+import {CenteredLabel} from "../../../../components/UI/Labels";
 import styled from "@emotion/styled";
 
 interface PropertiesProps {
@@ -21,9 +21,9 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
     const annotations = _.values(store.currentNode.definition.annotations)
 
     const properties = annotations
-        .filter(annotation => annotation.section == activeTab)
+        .filter(annotation => annotation.section === activeTab)
         .map(annotation =>
-            <WithValidation annotation={annotation} Component={annotation.component}
+            <WithValidation annotation={annotation} Component={annotation.component} key={annotation.key}
                             componentStore={store.currentNode!.data}/>
         )
 

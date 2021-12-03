@@ -19,6 +19,11 @@ label {
     scrollbar-gutter: stable;
 }
 
+.rs-dropdown-item:hover {
+    background-color: var(--rs-menuitem-active-bg);
+    color: var(--rs-menuitem-active-text);
+}
+
 /* Scrollbar */
 
 ::-webkit-scrollbar {

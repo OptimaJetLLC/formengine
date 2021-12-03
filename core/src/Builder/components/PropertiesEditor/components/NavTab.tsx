@@ -1,5 +1,5 @@
 import {Nav as RNav} from "rsuite";
-import {NavIconItem} from "../../../../components/NavIconItem";
+import {NavIconItem} from "../../../../components/UI/NavIconItem";
 import * as faCircle from "@fortawesome/free-solid-svg-icons/faCircle";
 import * as faPaintBrush from "@fortawesome/free-solid-svg-icons/faPaintBrush";
 import * as faBolt from "@fortawesome/free-solid-svg-icons/faBolt";

@@ -3,7 +3,7 @@ import {observer} from "mobx-react";
 import styled from '@emotion/styled'
 import 'tippy.js/dist/tippy.css';
 import {ButtonToolbar, Dropdown, IconButton, SelectPicker} from 'rsuite';
-import {FaIcon} from "../../components/Icons";
+import {FaIcon} from "../../components/UI/Icons";
 import MenuIcon from '@rsuite/icons/Menu';
 import FileDownloadIcon from '@rsuite/icons/FileDownload';
 import FileUploadIcon from '@rsuite/icons/FileUpload';

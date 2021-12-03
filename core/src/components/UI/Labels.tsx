@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "@emotion/styled";
 
 export const LabeledIcon = styled.div`
@@ -6,7 +5,7 @@ export const LabeledIcon = styled.div`
   flex-direction: column;
   align-items: center;
 
-  & :first-child {
+  & > *:first-of-type {
     margin-bottom: 2px;
   }
 

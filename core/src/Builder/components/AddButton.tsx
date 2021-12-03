@@ -18,17 +18,21 @@ const AddButton = observer(({style}: any) => {
     const {isDragging} = store;
     const backdropProps = {showPopup, isDragging};
     const popoverProps: TippyProps = {
+        visible: showPopup,
         content: <Toolbar/>, arrow: true, disabled: isDragging, interactive: true,
         onShow: () => setShowPopup(true), onHide: () => setShowPopup(false),
         maxWidth: '800px', placement: 'bottom', offset: [0, -25],
-        animation: 'fade', duration: [null, 0], animateFill: true
+        animation: 'fade', duration: [null, 0]
     }
 
+    //TODO заменить Tippy на свой компонент тултипа, который при скрывании не удаляется из дерева,
+    //а делается невидимым (иначе DnD выдает много ошибок в консоль)
     return <div style={{width: 60, ...style}}>
-        <Backdrop {...backdropProps}/>
+        <Backdrop {...backdropProps} />
         <Popover {...popoverProps}>
             <HoverZone>
-                <AddButton onMouseOver={() => setShowPopup(true)} icon={<PlusIcon/>} color="green"
+                <AddButton onMouseOver={() => setShowPopup(true)} onMouseLeave={() => setShowPopup(false)}
+                           icon={<PlusIcon/>} color="green"
                            appearance={"primary"} circle/>
             </HoverZone>
         </Popover>

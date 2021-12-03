@@ -1,7 +1,7 @@
 import React from "react";
 import {store} from "../../stores/Store";
 import {observer} from "mobx-react";
-import {Rows} from "../../components/Containers";
+import {Rows} from "../../components/UI/Containers";
 
 
 const Errors = (props: any) => {

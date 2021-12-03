@@ -5,8 +5,8 @@ import {Button, Tree as RTree} from "rsuite";
 import {ItemDataType} from "rsuite/esm/@types/common";
 import {observer} from "mobx-react";
 import styled from "@emotion/styled";
-import {Columns, Rows} from "../../components/Containers";
-import {FaIcon} from "../../components/Icons";
+import {Columns, Rows} from "../../components/UI/Containers";
+import {FaIcon} from "../../components/UI/Icons";
 import * as faCaretDown from "@fortawesome/free-solid-svg-icons/faCaretDown";
 import * as faCaretUp from "@fortawesome/free-solid-svg-icons/faCaretUp";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
@@ -80,7 +80,7 @@ const SubtleIconButton = styled(Button)`
   display: flex;
   align-items: center;
 
-  & :first-child {
+  & > *:first-of-type {
     margin-right: 3px;
   }
 `

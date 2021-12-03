@@ -21,7 +21,6 @@ DLL/
 
 #node.js
 node_modules/
-package-lock.json
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
@@ -48,7 +47,6 @@ package-lock.json
 *.vssscc
 .builds
 *.pidb
-*.log
 *.scc
 
 # Visual C++ cache files
@@ -164,7 +162,6 @@ $RECYCLE.BIN/
 Logs/
 Optimajet.DWKit.StarterApplication/bower_components/
 Samples/VacationRequest/OptimaJet.DWKit.StarterApplication/bower_components/
-.vs/
 *.lock
 
 .archives

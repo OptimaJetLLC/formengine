@@ -5,11 +5,11 @@ import {IconButton, Input, InputGroup, Nav, Popover, SelectPicker, TreePicker, W
 import ArrowDownIcon from "@rsuite/icons/ArrowDown";
 import CloseIcon from '@rsuite/icons/Close';
 import _ from "lodash";
-import {LabeledInput} from "../../../components/Containers";
+import {LabeledInput} from "../../../components/UI/Containers";
 import {store} from "../../../stores/Store";
 import {Node} from "../../../utils/Node";
 import {ItemDataType} from "rsuite/esm/@types/common";
-import {NavIconItem} from "../../../components/NavIconItem";
+import {NavIconItem} from "../../../components/UI/NavIconItem";
 import * as faLink from "@fortawesome/free-solid-svg-icons/faLink"
 import * as faCode from "@fortawesome/free-solid-svg-icons/faCode"
 import styled from "@emotion/styled";
@@ -33,7 +33,7 @@ const ActionArgument = ({name, data}: { name: string, data: FullActionDefinition
             setValue(arg.toString())
         }
 
-    }, [])
+    })
 
     const onChange = (prop: string) => {
         if (!node?.key || !prop) return;

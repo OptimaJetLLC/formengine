@@ -1,17 +1,15 @@
 import {PropertyEditorProps} from "../types";
 import {Input} from "rsuite";
-import {LabeledInput} from "../../../components/Containers";
+import {LabeledInput} from "../../../components/UI/Containers";
 
-export default (props: PropertyEditorProps<string | undefined>) => {
+const StringInput = (props: PropertyEditorProps<string | undefined>) => {
     const {annotation, onChange, onBlur, value} = props
 
     //if (!fields) return null
     //if (!helpers) return null
-
-    console.log(value)
     return (
         <LabeledInput>
-        <label>{annotation.title}</label>
+            <label>{annotation.title}</label>
             <Input
                 name={annotation.key}
                 /*value={componentStore.props[annotation.key]}*/
@@ -23,3 +21,5 @@ export default (props: PropertyEditorProps<string | undefined>) => {
         </LabeledInput>
     );
 };
+
+export default StringInput;
