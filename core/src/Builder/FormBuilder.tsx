@@ -54,14 +54,15 @@ const FormBuilder = (props: FormBuilderProps) => {
 
 //TODO вынести функционал DnD в features
 const onDragEnd = (result: DropResult) => {
-    const {source, destination, draggableId} = result;
-
-    if (!destination) return;
+    const {source, destination, draggableId, combine} = result;
+    const droppableId: string | undefined = combine
+        ? combine.draggableId ?? combine.droppableId
+        : destination?.droppableId;
 
     if (source.droppableId === "TOOLBAR")
-        store.add(draggableId, destination.droppableId, destination.index);
+        store.add(draggableId, droppableId || "", destination?.index ?? 0, !!combine);
     else {
-        store.move(draggableId, destination.droppableId, destination.index);
+        store.move(draggableId, droppableId || "", destination?.index ?? 0, !!combine);
     }
 
     store.isDragging = false;
@@ -72,10 +73,14 @@ const onDragStart = () => {
     store.isDragging = true;
 }
 
-const onDragUpdate = ({destination}: DragUpdate) => {
-    if (!destination?.droppableId) return;
-    const node = findNode(destination?.droppableId);
-    store.draggingOverKey = node?.parent?.key || "";
+const onDragUpdate = ({destination, combine}: DragUpdate) => {
+    const droppableId = destination?.droppableId ?? combine?.droppableId;
+    const node = findNode(droppableId);
+    if (!node) return;
+
+    store.draggingOverKey = !!combine
+        ? node.key
+        : node.parent?.key ?? "";
 }
 
 const PanelContainer = styled.div`

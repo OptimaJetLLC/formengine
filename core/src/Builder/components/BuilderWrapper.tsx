@@ -8,6 +8,8 @@ import Selection from './Selection'
 import Resizer from './Resizer';
 import {ComponentStore} from "../../stores/ComponentStore";
 import {findNode} from "../../utils/tree";
+import {Box} from "../../components/UI/Containers";
+import {isCombineEnabled} from "../../features/dnd/utils";
 
 interface BuilderWrapperProps {
     componentStore: ComponentStore,
@@ -32,11 +34,7 @@ const BuilderWrapper = observer(
         }
 
         isSelected = () => {
-            return store.currentNode?.data?.key == this.props?.componentStore?.key;
-        }
-
-        isDragOver = () => {
-            return store.draggingOverKey == this.props?.componentStore?.key;
+            return store.currentNode?.data?.key === this.props?.componentStore?.key;
         }
 
         setSelected = () => {
@@ -57,55 +55,69 @@ const BuilderWrapper = observer(
         }
 
         render() {
-            const {children} = this.props;
-        const { hovered} = this.state;
+            const {children, componentStore} = this.props;
+            const {hovered} = this.state;
             const selected = this.isSelected();
-            const isDragOver = this.isDragOver();
             const {key} = this.props.componentStore;
-        
-        return (
-            <Droppable droppableId={key}
-                       isDropDisabled={!!this.props?.componentStore?.children}
-                       direction={!!this.props?.componentStore?.children ? 'horizontal' : 'vertical'}>
-                {(provider: DroppableProvided) => (
-                    <div ref={provider.innerRef} {...provider.droppableProps}
-                         style={
-                             isDragOver
-                                 ? {backgroundColor: "var(--hightlight-color)"}
-                                 : {}
-                         }
-                    >
-                        <Draggable key={key} draggableId={key} index={0} isDragDisabled={store.isResizing}>
-                            {(provided: DraggableProvided) => (
-                                <Container ref={(ref: any) => {
-                                    provided.innerRef(ref);
-                                    this.containerRef.current = ref;
-                                }}
-                                           {...provided.draggableProps}
-                                           {...provided.dragHandleProps}
-                                >
-                                    <Selection onClick={this.setSelected}
-                                               onMouseOver={this.onMouseOver} onMouseLeave={this.onMouseLeave}
-                                               hovered={hovered} selected={selected}
-                                    />
-                                    {selected && <>
-                                        {Resizer("left")}
-                                        {Resizer("top")}
-                                        {Resizer("right")}
-                                        {Resizer("bottom")}
-                                        <ControlBar referenceElement={this.containerRef}
-                                                    content={this.props?.componentStore?.key}/>
-                                    </>}
-                                        {children}
-                                    </Container>
-                            )}
-                        </Draggable>
-                        {provider.placeholder}
-                    </div>
-                )}
-            </Droppable>
-        )
-    }
+
+            const isCombine = isCombineEnabled(componentStore);
+            return (
+                <Droppable droppableId={key} isCombineEnabled={isCombine}
+                    //isDropDisabled={isCombine}
+                    //direction={!!this.props?.componentStore?.children ? 'horizontal' : 'vertical'}
+                >
+                    {(provider: DroppableProvided, dropSnap) => {
+                        if (isCombine && dropSnap.isDraggingOver) console.log((key + "__over"))
+                        return (
+                            <div ref={provider.innerRef} {...provider.droppableProps}
+                                 style={
+                                     ((store.draggingOverKey === key))
+                                         ? {backgroundColor: "var(--highlight-color)", outline: "2px dashed #3498ff"}
+                                         : {}
+                                 }
+                            >
+                                <Draggable key={key} draggableId={key} index={0}
+                                           isDragDisabled={
+                                               store.isResizing || (componentStore.type === "DropZone")}>
+                                    {(provided: DraggableProvided, snapshot) => {
+
+                                        if (snapshot.combineWith && isCombine) console.log("snapshot.combineWith", snapshot.combineWith);
+                                        return (
+                                            <Container ref={(ref: any) => {
+                                                provided.innerRef(ref);
+                                                this.containerRef.current = ref;
+                                            }}
+                                                       {...provided.draggableProps}
+                                                       {...provided.dragHandleProps}
+                                            >
+                                                <Selection onMouseDown={this.setSelected}
+                                                           onMouseOver={this.onMouseOver}
+                                                           onMouseLeave={this.onMouseLeave}
+                                                           hovered={hovered} selected={selected}
+                                                />
+                                                {selected && <>
+                                                    {Resizer("left")}
+                                                    {Resizer("top")}
+                                                    {Resizer("right")}
+                                                    {Resizer("bottom")}
+                                                    <ControlBar referenceElement={this.containerRef}
+                                                                content={this.props?.componentStore?.key}/>
+                                                </>}
+                                                {isCombineEnabled(componentStore)
+                                                    ? <Box p={30}>DROP HERE</Box>
+                                                    : children
+                                                }
+                                            </Container>
+                                        )
+                                    }}
+                                </Draggable>
+                                {provider.placeholder}
+                            </div>
+                        )
+                    }}
+                </Droppable>
+            )
+        }
 })
 
 const Container = styled.div`

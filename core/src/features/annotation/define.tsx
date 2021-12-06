@@ -1,12 +1,15 @@
 import {FunctionComponent} from "react";
-import {ComponentDefinition, Annotations} from "./types";
+import {Annotations, ComponentDefinition} from "./types";
 import _ from "lodash";
 import {Annotation} from "./Annotation";
 import {key, string, style, validation} from "./index";
 import {Action} from "../../utils/Types";
 
-export const define = <T extends object>(name: string, view: FunctionComponent<T>, annotations: Annotations<T>, actions?: Action[])
-    : ComponentDefinition<any> => {
+export const define = <T extends object>(
+    name: string, view: FunctionComponent<T>,
+    annotations: Annotations<T>, actions?: Action[],
+    isContainer?: boolean
+): ComponentDefinition<any> => {
     if (_.isEmpty(name)) throw Error("Name cannot be empty!")
 
     let properties = {} as Record<string, Annotation<any>>
@@ -22,6 +25,6 @@ export const define = <T extends object>(name: string, view: FunctionComponent<T
     return ({
         name, view,
         annotations: properties,
-        actions
+        actions, isContainer
     })
 }

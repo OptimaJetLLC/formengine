@@ -3,10 +3,6 @@ import {AnnotationBuilder} from "./AnnotationBuilder";
 import {ComponentStore} from "../../stores/ComponentStore";
 import {Annotation} from "./Annotation";
 import {Action} from "../../utils/Types";
-import {FormikHandlers} from "formik/dist/types";
-import * as React from "react";
-
-type validated = AnnotationBuilder<Function | undefined>
 
 export type Annotations<T extends object> =
     {
@@ -25,6 +21,7 @@ export interface ComponentDefinition<T extends object> {
     annotations: Record<string, Annotation<T>>;
     actions?: Action[];
     groupBy?: string;
+    isContainer?: boolean;
 }
 
 /** Interface for property editor */

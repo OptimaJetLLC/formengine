@@ -16,8 +16,8 @@ export class ComponentStore {
     children?: ComponentStore[]
 
     constructor(key: string, definition?: ComponentDefinition<any>) {
-        this.key = key
-        if (definition) this.type = definition.name
+        this.key = key;
+        if (definition) this.type = definition.name;
 
         makeAutoObservable(this, {
             events: observable.deep,

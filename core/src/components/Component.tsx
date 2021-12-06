@@ -12,7 +12,6 @@ import {toValidateScheme} from "../features/validation/toValidateScheme";
 import {WithErrorMessage} from "../features/validation/withErrorMessage";
 import {transformStyles} from "../features/style";
 import {useSubstitution} from "../features/substitution/useSubstitution";
-import {FormikContext} from "formik";
 
 interface ComponentProps {
     componentStore: ComponentStore,
@@ -22,8 +21,9 @@ interface ComponentProps {
 export const Component = observer(({componentStore, wrapper}: ComponentProps) => {
     const {props} = componentStore;
     const componentDefinition = mapper[componentStore.type];
+    //if (componentStore.type === "DropZone" && !store.isBuilderMode) return null;
 
-    useEffect(() => initDefaultValue(componentStore, componentDefinition), [])
+    useEffect(() => initDefaultValue(componentStore, componentDefinition))
 
     const eventMap = useEvent(componentStore, componentDefinition);
 
@@ -41,10 +41,9 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
         else props.onBlur = () => field.setTouched()
 
         //props.value = field.value
-    }, [])
+    })
 
-
-    useSubstitution(props, componentDefinition)
+    useSubstitution(props, componentDefinition);
 
     props.children = props.children
         || componentStore.children?.map(child =>

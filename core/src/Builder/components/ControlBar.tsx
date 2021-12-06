@@ -8,8 +8,8 @@ import styled from '@emotion/styled';
 const ControlBar = (props: any) => {
     const {referenceElement, content} = props;
     const popperRef: any = React.useRef(null);
-    const [arrowRef, setArrowRef]: any = useState(null);
-    const { styles, attributes } = usePopper(referenceElement.current, popperRef.current, {
+    const [setArrowRef]: any = useState(null);
+    const {styles, attributes} = usePopper(referenceElement.current, popperRef.current, {
         placement: 'top',
         modifiers: [
             {
@@ -53,8 +53,8 @@ const ControlBarContainer = styled.div`
   color: black;
   font-weight: 400;
   background: white;
-  -webkit-box-shadow: 0px 6px 10px rgba(18, 83, 204, 0.12), 0px 1px 18px rgba(18, 83, 204, 0.12), 0px 3px 5px rgba(18, 83, 204, 0.15);
-  box-shadow: 0px 6px 10px rgba(18, 83, 204, 0.12), 0px 1px 18px rgba(18, 83, 204, 0.12), 0px 3px 5px rgba(18, 83, 204, 0.15);
+  -webkit-box-shadow: 0 6px 10px rgba(18, 83, 204, 0.12), 0 1px 18px rgba(18, 83, 204, 0.12), 0 3px 5px rgba(18, 83, 204, 0.15);
+  box-shadow: 0 6px 10px rgba(18, 83, 204, 0.12), 0 1px 18px rgba(18, 83, 204, 0.12), 0 3px 5px rgba(18, 83, 204, 0.15);
   border-radius: 11px;
 `
 

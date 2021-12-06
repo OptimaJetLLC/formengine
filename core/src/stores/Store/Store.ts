@@ -107,13 +107,13 @@ class Store {
         this.model = JSON.parse(text);
     }
 
-    add(name: string, targetKey: string, index: number = 0) {
+    add(name: string, targetKey: string, index: number = 0, combine?: boolean) {
         const componentDefinition = mapper[name];
         if (!componentDefinition) return
         const key = name + (Math.random() + 1).toString(36).substring(7);
         const component = new ComponentStore(key, componentDefinition);
         this.model.components.push(component);
-        this.move(key, targetKey, index);
+        this.move(key, targetKey, index, combine);
     }
 
     cleanReactChildren() {
@@ -123,14 +123,16 @@ class Store {
         })
     }
 
-    move(sourceKey: string, targetKey: string, index: number = 0) {
+    move(sourceKey: string, targetKey: string, index: number = 0, combine?: boolean) {
         const sourceNode = findNode(sourceKey);
         const targetNode = findNode(targetKey);
 
         if (!sourceNode || !targetNode) return;
 
         const sourceParent = sourceNode.parent?.data.children!;
-        const targetParent = targetNode.parent?.data.children!;
+        const targetParent = combine
+            ? targetNode.data.children!
+            : targetNode.parent?.data.children!;
 
         const sourceIndex = sourceParent.indexOf(sourceNode.data);
         const targetIndex = targetParent.indexOf(targetNode.data);

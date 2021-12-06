@@ -2,11 +2,11 @@ import {store} from "../stores/Store";
 import {Node} from "./Node";
 import {ComponentStore} from "../stores/ComponentStore";
 
-export const findNode = (key: string) => {
+export const findNode = (key?: string) => {
     return find(store.tree)
 
     function find(node: Node): Node | null {
-        if (node.key == key) return node
+        if (node.key === key) return node
 
         if (!node.children) return null
 
