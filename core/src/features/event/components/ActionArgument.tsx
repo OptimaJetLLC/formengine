@@ -33,7 +33,7 @@ const ActionArgument = ({name, data}: { name: string, data: FullActionDefinition
             setValue(arg.toString())
         }
 
-    })
+    }, []);
 
     const onChange = (prop: string) => {
         if (!node?.key || !prop) return;

@@ -63,11 +63,12 @@ const BuilderWrapper = observer(
             const isCombine = isCombineEnabled(componentStore);
             return (
                 <Droppable droppableId={key} isCombineEnabled={isCombine}
-                    //isDropDisabled={isCombine}
+                           isDropDisabled={!isCombine && !!this.props?.componentStore?.children}
                     //direction={!!this.props?.componentStore?.children ? 'horizontal' : 'vertical'}
                 >
                     {(provider: DroppableProvided, dropSnap) => {
                         if (isCombine && dropSnap.isDraggingOver) console.log((key + "__over"))
+                        console.log("store.draggingOverKey", store.draggingOverKey)
                         return (
                             <div ref={provider.innerRef} {...provider.droppableProps}
                                  style={

@@ -14,7 +14,7 @@ const ActionList = ({eventKey, componentStore} : {eventKey: string, componentSto
         autorun(() => {
             setState(store.allEvents.get(componentStore)?.[eventKey])
         })
-    });
+    }, []);
 
     /*TODO Draggable List*/
     return <Rows margin={5}
