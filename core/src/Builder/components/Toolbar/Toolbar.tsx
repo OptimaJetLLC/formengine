@@ -73,17 +73,20 @@ export class Toolbar extends React.Component<any, ToolbarState> {
                     (p: DraggableProvided, s: DraggableStateSnapshot) => {
                         const {isDragging} = s;
                         const element = (
-                            <ControlContainer ref={p.innerRef} {...p.dragHandleProps} {...p.draggableProps}>
+                            <div ref={p.innerRef}  {...p.draggableProps}>
                                 <ControlView {...getDefaultValue(control)}
-                                             style={{border: isDragging ? '2px solid #1262E2' : 'none'}}/>
-                            </ControlContainer>
+                                             style={{
+                                                 outline: isDragging ? '2px solid #1262E2' : 'none',
+                                                 boxShadow: isDragging ? 'var(--dragging-shadow)' : 'none'
+                                             }}/>
+                            </div>
                         );
 
                         const mainContainer: any = document.getElementById('root');
                         const portal = ReactDOM.createPortal(element, mainContainer);
-                        return <ControlItem>
-                            {isDragging ? portal : element}
-                            {this.props?.localization?.[control.name] ?? control.name}
+                        return <ControlItem {...p.dragHandleProps}>
+                            {isDragging ? portal : <ControlContainer>{element}</ControlContainer>}
+                            {!isDragging && (this.props?.localization?.[control.name] ?? control.name)}
                         </ControlItem>
                     }
                 }
@@ -183,7 +186,7 @@ const ControlContainer = styled.div`
   background-color: rgb(255 255 255 / 21%);
 
   &:hover {
-    border: 2px solid #1262e2;
+    outline: 2px solid #1262e2;
   }
 `
 

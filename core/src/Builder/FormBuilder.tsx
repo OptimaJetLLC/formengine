@@ -30,11 +30,13 @@ const FormBuilder = (props: FormBuilderProps) => {
                     }
                 </LeftPanel>}
 
-                <FormContainer style={
-                    isDragOver
-                        ? {backgroundColor: "var(--highlight-color)"}
-                        : {}
-                }>
+                <FormContainer
+                    // style={
+                    //     isDragOver
+                    //         ? {backgroundColor: "var(--highlight-color)"}
+                    //         : {}
+                    // }
+                >
                     {store.isBuilderMode
                         ? <BuilderView getForm={props.getForm}/>
                         : <Preview getForm={props.getForm}/>
@@ -67,6 +69,7 @@ const onDragEnd = (result: DropResult) => {
 
     store.isDragging = false;
     store.draggingOverKey = undefined;
+    store.draggingElementKey = undefined;
 }
 
 const onDragStart = () => {

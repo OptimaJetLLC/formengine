@@ -1,42 +1,40 @@
 import React, {useEffect, useState} from 'react';
 import styled from '@emotion/styled'
-import {IconButton, Popover, Whisper} from 'rsuite';
+import {IconButton, Popover as RPopover, Whisper} from 'rsuite';
 import {store} from "../../stores/Store";
 import Toolbar from "./Toolbar";
 import PlusIcon from "@rsuite/icons/Plus";
 import {observer} from "mobx-react";
 
 const AddButton = observer(() => {
-    const [showPopup, setShowPopup] = useState(false);
+    const [open, setOpen] = useState(false);
 
     const {isDragging} = store;
     useEffect(() => {
-        if (isDragging) setShowPopup(false);
+        if (isDragging) setOpen(false)
     }, [isDragging]);
 
-    const backdropProps = {showPopup, isDragging};
-
-    const Popover = <STooltip children={<Toolbar/>} showPopup={showPopup} full/>;
+    const Popover = <SPopover children={<Toolbar/>} open={open} full/>;
     return <div>
-        <Backdrop {...backdropProps} onClick={() => setShowPopup(!showPopup)}/>
-        <Whisper open={showPopup} placement="bottom" speaker={Popover} trigger={"none"}>
-            <SButton onClick={() => setShowPopup(!showPopup)}
-                     icon={<ButtonIcon className={showPopup ? "active" : ""}/>} color="green"
+        <Backdrop open={open} onClick={() => setOpen(!open)}/>
+        <Whisper open placement="bottom" speaker={Popover} trigger={"none"}>
+            <SButton onClick={() => setOpen(!open)}
+                     icon={<ButtonIcon className={open ? "active" : ""}/>} color="green"
                      appearance={"primary"} circle/>
         </Whisper>
     </div>
 })
 
-const Backdrop = styled.div<{ showPopup: boolean }>`
+const Backdrop = styled.div<{ open: boolean }>`
   position: absolute;
   width: 100%;
   top: 0;
   left: 0;
   background-color: black;
-  height: ${(props: any) => props.showPopup ? '100%' : 0};
-  opacity: ${(props: any) => props.showPopup ? 0.25 : 0};
+  height: ${({open}) => open ? '100%' : 0};
+  opacity: ${({open}) => open ? 0.25 : 0};
   z-index: 11;
-  transition: opacity 0.2s ease;
+  transition: opacity .2s ease;
 `
 
 const SButton = styled(IconButton)`
@@ -46,14 +44,15 @@ const SButton = styled(IconButton)`
   z-index: 14;
 `
 
-const STooltip = styled(Popover)<{ showPopup: boolean }>`
-  maxWidth: 800px;
+const SPopover = styled(RPopover)<{ open: boolean }>`
+  max-width: 800px;
   padding: 20px;
   border-radius: 10px;
   color: white;
   box-shadow: 0 0 15px rgb(0 0 0 / 25%);
-  opacity: ${(props: any) => props.showPopup ? 1 : 0};
-  display: ${(props: any) => props.showPopup ? "initial" : "none"};
+  transition: opacity .1s ease, visibility .1s linear !important;
+  opacity: ${({open}) => open ? 1 : 0} !important;
+  visibility: ${({open}) => open ? 'visible' : 'hidden'};
   background-color: rgb(51 51 51 / 80%);
 
   .rs-popover-arrow::after {

@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import PinIcon from '@rsuite/icons/Pin';
-import CopyIcon from '@rsuite/icons/Copy';
-import TrashIcon from '@rsuite/icons/Trash';
 import {usePopper} from 'react-popper';
 import styled from '@emotion/styled';
 import {store} from "../../stores/Store";
+import {FaIcon} from "../../components/UI/Icons";
+import * as faClone from '@fortawesome/free-regular-svg-icons/faClone'
+import * as faTrash from "@fortawesome/free-regular-svg-icons/faTrashAlt";
+import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 
 const ControlBar = (props: any) => {
     const {referenceElement, elementKey} = props;
@@ -33,9 +35,12 @@ const ControlBar = (props: any) => {
             <div ref={setArrowRef}/>
             <ControlBarContent>
                 <Title>{elementKey}</Title>
-                <PinIcon/>
-                <CopyIcon onClick={() => store.clone(elementKey)}/>
-                <TrashIcon onClick={() => store.remove(elementKey)}/>
+                <PinIcon onClick={() => {
+                }}/>
+                <FaIcon onClick={() => store.clone(elementKey)}
+                        icon={faClone as unknown as IconDefinition}/>
+                <FaIcon onClick={() => store.remove(elementKey)}
+                        icon={faTrash as unknown as IconDefinition}/>
             </ControlBarContent>
         </ControlBarContainer>
     )
@@ -46,12 +51,9 @@ const ControlBarContainer = styled.div`
   z-index: 10;
   cursor: pointer !important;
   white-space: nowrap;
-  padding-top: 3px;
-  height: 25px;
+  height: 20px;
   width: fit-content;
-  padding-bottom: 20px;
   padding-left: 10px;
-  line-height: 20px;
   color: black;
   font-weight: 400;
   background: white;
@@ -61,11 +63,14 @@ const ControlBarContainer = styled.div`
 `
 
 const ControlBarContent = styled.div`
-    display: flex;
-    & > .rs-icon {
-        cursor: pointer;
-        margin-right: 7px;
-    }
+  display: flex;
+  color: var(--rs-text-primary);
+  align-items: center;
+
+  & > .rs-icon {
+    cursor: pointer;
+    margin-right: 7px;
+  }
 `
 
 const Title = styled.div`

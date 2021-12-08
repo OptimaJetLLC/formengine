@@ -21,6 +21,7 @@ interface FaIconProps {
     viewBox?: string,
     width?: string,
     height?: string,
+    onClick?: any,
 }
 
 export const FaIcon = ({icon, size, ...props}: FaIconProps) => (

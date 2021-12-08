@@ -1,6 +1,7 @@
 
 :root {
     --highlight-color: rgb(52 152 255 / 15%);
+    --dragging-shadow: rgb(0 0 0 / 22%) 5px 5px 12px -2px;
 }
 
 body {

@@ -80,7 +80,7 @@ const BuilderWrapper = observer(
                                                store.isResizing || (componentStore.type === "DropZone")}>
                                     {(provided: DraggableProvided, snapshot) => {
 
-                                        if (snapshot.combineWith && isCombine) console.log("snapshot.combineWith", snapshot.combineWith);
+                                        if (snapshot.isDragging) store.draggingElementKey = key;
                                         return (
                                             <Container ref={(ref: any) => {
                                                 provided.innerRef(ref);
@@ -94,7 +94,7 @@ const BuilderWrapper = observer(
                                                            onMouseLeave={this.onMouseLeave}
                                                            hovered={hovered} selected={selected}
                                                 />
-                                                {selected && <>
+                                                {(selected && !snapshot.isDragging) && <>
                                                     {Resizer("left")}
                                                     {Resizer("top")}
                                                     {Resizer("right")}
@@ -104,7 +104,11 @@ const BuilderWrapper = observer(
                                                 </>}
                                                 {isCombineEnabled(componentStore)
                                                     ? <Box p={30}>DROP HERE</Box>
-                                                    : children
+                                                    : React.cloneElement(children, {
+                                                        style: {
+                                                            boxShadow: snapshot.isDragging ? 'var(--dragging-shadow)' : 'none'
+                                                        }
+                                                    })
                                                 }
                                             </Container>
                                         )

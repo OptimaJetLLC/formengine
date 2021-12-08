@@ -15,6 +15,7 @@ class Store {
     currentNode: Node | null = null
     isDragging: boolean = false
     draggingOverKey?: string
+    draggingElementKey?: string
     isResizing?: boolean
     isMoving?: boolean
     isBuilderMode: boolean = true
@@ -49,6 +50,7 @@ class Store {
             showRightPanel: observable.ref,
             showLeftPanel: observable.ref,
             draggingOverKey: observable.ref,
+            draggingElementKey: observable.ref,
             model: observable,
             tree: computed,
             clear: action.bound,
@@ -174,6 +176,7 @@ class Store {
             targetParent.splice(targetIndex + index, 0, removed);
         }
         this.cleanReactChildren();
+        this.currentNode = sourceNode;
     }
 
     private _generateKey(name: string) {
