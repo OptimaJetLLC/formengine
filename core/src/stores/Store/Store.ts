@@ -127,15 +127,18 @@ class Store {
         const sourceNode = findNode(sourceKey);
         const targetNode = findNode(targetKey);
 
-        if (!sourceNode || !targetNode) return;
+        if (!sourceNode || !targetNode?.key?.length) return;
 
         const sourceParent = sourceNode.parent?.data.children!;
-        const targetParent = combine
-            ? targetNode.data.children!
-            : targetNode.parent?.data.children!;
+        const targetData = combine
+            ? targetNode.data!
+            : targetNode.parent?.data!;
+
+        if (!targetData.children) targetData.children = [];
+        const targetParent = targetData.children;
 
         const sourceIndex = sourceParent.indexOf(sourceNode.data);
-        const targetIndex = targetParent.indexOf(targetNode.data);
+        const targetIndex = targetParent?.indexOf(targetNode.data);
 
         if (targetParent === sourceParent) {
             moveArrayItem(targetParent, sourceIndex, targetIndex + index);
