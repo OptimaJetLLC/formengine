@@ -1,18 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import styled from '@emotion/styled'
-import {IconButton} from 'rsuite';
+import {IconButton, Popover, Whisper} from 'rsuite';
 import {store} from "../../stores/Store";
 import Toolbar from "./Toolbar";
 import PlusIcon from "@rsuite/icons/Plus";
-import Tippy, {TippyProps} from "@tippyjs/react";
 import {observer} from "mobx-react";
 
-const AddButton = observer(({style}: any) => {
+const AddButton = observer(() => {
     const [showPopup, setShowPopup] = useState(false);
-    const AddButton = styled(IconButton)`
-      transform: scale(1.2);
-      z-index: 14;
-    `
 
     const {isDragging} = store;
     useEffect(() => {
@@ -20,24 +15,15 @@ const AddButton = observer(({style}: any) => {
     }, [isDragging]);
 
     const backdropProps = {showPopup, isDragging};
-    const popoverProps: TippyProps = {
-        visible: true,
-        content: <Toolbar/>, arrow: true, disabled: isDragging, interactive: true,
-        maxWidth: '800px', placement: 'bottom', offset: [0, 0],
-        animation: 'fade', duration: [null, 0]
-    }
 
-    //TODO заменить Tippy на свой компонент тултипа, который при скрывании не удаляется из дерева,
-    //а делается невидимым (иначе DnD выдает много ошибок в консоль)
-    return <div style={{width: 60, ...style}}>
+    const Popover = <STooltip children={<Toolbar/>} showPopup={showPopup} full/>;
+    return <div>
         <Backdrop {...backdropProps} onClick={() => setShowPopup(!showPopup)}/>
-        <Popover {...popoverProps} showPopup={showPopup}>
-            <HoverZone onClick={() => setShowPopup(!showPopup)}>
-                <AddButton onClick={() => setShowPopup(!showPopup)}
-                           icon={<ButtonIcon className={showPopup ? "active" : ""}/>} color="green"
-                           appearance={"primary"} circle/>
-            </HoverZone>
-        </Popover>
+        <Whisper open={showPopup} placement="bottom" speaker={Popover} trigger={"none"}>
+            <SButton onClick={() => setShowPopup(!showPopup)}
+                     icon={<ButtonIcon className={showPopup ? "active" : ""}/>} color="green"
+                     appearance={"primary"} circle/>
+        </Whisper>
     </div>
 })
 
@@ -53,21 +39,26 @@ const Backdrop = styled.div<{ showPopup: boolean }>`
   transition: opacity 0.2s ease;
 `
 
-const HoverZone = styled.div`
-  padding: 10px 25px;
+const SButton = styled(IconButton)`
   position: absolute;
-  left: calc(50% - 43px);
-  cursor: pointer;
-  margin-top: -10px;
-  z-index: 12;
+  left: calc(50% - 20px);
+  transform: scale(1.2);
+  z-index: 14;
 `
 
-const Popover = styled(Tippy)<{ showPopup: boolean }>`
+const STooltip = styled(Popover)<{ showPopup: boolean }>`
+  maxWidth: 800px;
+  padding: 20px;
   border-radius: 10px;
-  background-color: rgb(51 51 51 / 80%);
+  color: white;
   box-shadow: 0 0 15px rgb(0 0 0 / 25%);
-  visibility: ${(props: any) => props.showPopup ? "visible" : "none"};
   opacity: ${(props: any) => props.showPopup ? 1 : 0};
+  display: ${(props: any) => props.showPopup ? "initial" : "none"};
+  background-color: rgb(51 51 51 / 80%);
+
+  .rs-popover-arrow::after {
+    border-bottom-color: rgb(51 51 51 / 80%) !important;
+  }
 `
 
 const ButtonIcon = styled(PlusIcon)`

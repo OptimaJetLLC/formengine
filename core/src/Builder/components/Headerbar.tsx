@@ -1,7 +1,6 @@
 import React from 'react';
 import {observer} from "mobx-react";
 import styled from '@emotion/styled'
-import 'tippy.js/dist/tippy.css';
 import {ButtonToolbar, Dropdown, IconButton, SelectPicker} from 'rsuite';
 import {FaIcon} from "../../components/UI/Icons";
 import MenuIcon from '@rsuite/icons/Menu';

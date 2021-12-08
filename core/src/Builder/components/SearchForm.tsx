@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Input, InputGroup} from 'rsuite';
-import CloseOutlineIcon from '@rsuite/icons/CloseOutline';
+import CloseIcon from '@rsuite/icons/Close';
 import SearchIcon from '@rsuite/icons/Search';
 
 interface SearchFormProps {
@@ -32,7 +32,7 @@ export default class SearchForm extends Component<SearchFormProps, SearchFormSta
     }
 
     render() {
-        const Icon = this.state.value.length ? CloseOutlineIcon : SearchIcon;
+        const Icon = this.state.value.length ? CloseIcon : SearchIcon;
         return (<InputGroup inside size="xs" style={this.props.style}>
             <Input
                 onChange={this.handleChange.bind(this)}
