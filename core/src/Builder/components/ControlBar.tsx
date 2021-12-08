@@ -4,11 +4,13 @@ import CopyIcon from '@rsuite/icons/Copy';
 import TrashIcon from '@rsuite/icons/Trash';
 import {usePopper} from 'react-popper';
 import styled from '@emotion/styled';
+import {store} from "../../stores/Store";
 
 const ControlBar = (props: any) => {
-    const {referenceElement, content} = props;
+    const {referenceElement, elementKey} = props;
     const popperRef: any = React.useRef(null);
-    const [setArrowRef]: any = useState(null);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [arrowRef, setArrowRef]: any = useState(null);
     const {styles, attributes} = usePopper(referenceElement.current, popperRef.current, {
         placement: 'top',
         modifiers: [
@@ -28,12 +30,12 @@ const ControlBar = (props: any) => {
     });
     return (
         <ControlBarContainer ref={popperRef} style={styles.popper} {...attributes.popper}>
-            <div ref={setArrowRef} />
+            <div ref={setArrowRef}/>
             <ControlBarContent>
-                <Title>{content}</Title>
+                <Title>{elementKey}</Title>
                 <PinIcon/>
-                <CopyIcon/>
-                <TrashIcon/>
+                <CopyIcon onClick={() => store.clone(elementKey)}/>
+                <TrashIcon onClick={() => store.remove(elementKey)}/>
             </ControlBarContent>
         </ControlBarContainer>
     )

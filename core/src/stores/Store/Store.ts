@@ -107,13 +107,40 @@ class Store {
         this.model = JSON.parse(text);
     }
 
+    remove(targetKey: string) {
+        const targetNode = findNode(targetKey);
+        if (!targetNode) return;
+
+        const targetParent = targetNode.parent?.data?.children;
+        const targetIndex = targetParent?.indexOf(targetNode.data);
+
+        if (_.isUndefined(targetIndex)) return;
+        targetNode.parent?.data?.children?.splice(targetIndex, 1);
+        this.cleanReactChildren();
+    }
+
     add(name: string, targetKey: string, index: number = 0, combine?: boolean) {
         const componentDefinition = mapper[name];
         if (!componentDefinition) return
-        const key = name + (Math.random() + 1).toString(36).substring(7);
+        const key = this._generateKey(name);
         const component = new ComponentStore(key, componentDefinition);
         this.model.components.push(component);
         this.move(key, targetKey, index, combine);
+    }
+
+    clone(sourceKey: string) {
+        const sourceNode = findNode(sourceKey);
+        if (!sourceNode) return;
+
+        const clonedComponent = _.cloneDeep(sourceNode.data);
+        clonedComponent.key = this._generateKey(sourceNode.definition.name);
+        treeMap(clonedComponent?.children, (componentStore: ComponentStore) => {
+            componentStore.key = this._generateKey(componentStore.type);
+        })
+
+        this.model.components.push(clonedComponent);
+        this.move(clonedComponent.key, sourceKey, 1);
+        this.cleanReactChildren();
     }
 
     cleanReactChildren() {
@@ -147,6 +174,10 @@ class Store {
             targetParent.splice(targetIndex + index, 0, removed);
         }
         this.cleanReactChildren();
+    }
+
+    private _generateKey(name: string) {
+        return name + (Math.random() + 1).toString(36).substring(7);
     }
 }
 

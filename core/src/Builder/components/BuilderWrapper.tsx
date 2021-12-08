@@ -67,8 +67,6 @@ const BuilderWrapper = observer(
                     //direction={!!this.props?.componentStore?.children ? 'horizontal' : 'vertical'}
                 >
                     {(provider: DroppableProvided, dropSnap) => {
-                        if (isCombine && dropSnap.isDraggingOver) console.log((key + "__over"))
-                        console.log("store.draggingOverKey", store.draggingOverKey)
                         return (
                             <div ref={provider.innerRef} {...provider.droppableProps}
                                  style={
@@ -102,7 +100,7 @@ const BuilderWrapper = observer(
                                                     {Resizer("right")}
                                                     {Resizer("bottom")}
                                                     <ControlBar referenceElement={this.containerRef}
-                                                                content={this.props?.componentStore?.key}/>
+                                                                elementKey={this.props?.componentStore?.key}/>
                                                 </>}
                                                 {isCombineEnabled(componentStore)
                                                     ? <Box p={30}>DROP HERE</Box>

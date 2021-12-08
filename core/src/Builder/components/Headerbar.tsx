@@ -44,7 +44,7 @@ const HeaderBar = observer(() => {
             }} icon={<SettingIcon/>}>
                 {local.settings ?? "Settings"}
             </Dropdown.Item>
-            <Dropdown.Item /*onSelect={onClear}*/ icon={<FaIcon icon={faTrash as unknown as IconDefinition}/>}>
+            <Dropdown.Item onSelect={store.clear} icon={<FaIcon icon={faTrash as unknown as IconDefinition}/>}>
                 {local.clear ?? "Clear"}
             </Dropdown.Item>
         </Dropdown>
