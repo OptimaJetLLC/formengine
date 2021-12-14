@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {observer} from "mobx-react";
 import styled from '@emotion/styled'
 import {ButtonToolbar, Dropdown, IconButton, SelectPicker} from 'rsuite';
@@ -15,13 +15,14 @@ import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo';
 import * as faRedo from '@fortawesome/free-solid-svg-icons/faRedo';
 import * as faSitemap from '@fortawesome/free-solid-svg-icons/faSitemap';
 
-import {store} from "../../stores/Store";
 import AddButton from "./AddButton";
 import upload from "../utils/upload";
 import download from "../utils/download";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
+import {useStore} from "../../utils/StoreContext";
 
 const HeaderBar = observer(() => {
+    const store = useStore()
 
     const fileActions = () => {
         //TODO

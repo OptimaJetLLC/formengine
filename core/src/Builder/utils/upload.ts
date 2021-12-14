@@ -1,6 +1,8 @@
-import {store} from "../../stores/Store";
+import {useContext} from "react";
+import {useStore} from "../../utils/StoreContext";
 
 export default () => {
+    const store = useStore()
     var input = document.createElement('input');
     input.type = 'file';
 

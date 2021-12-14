@@ -1,6 +1,5 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {Node} from "../../utils/Node";
-import {store} from "../../stores/Store";
 import {Button, Tree as RTree} from "rsuite";
 import {ItemDataType} from "rsuite/esm/@types/common";
 import {observer} from "mobx-react";
@@ -10,9 +9,10 @@ import {FaIcon} from "../../components/UI/Icons";
 import * as faCaretDown from "@fortawesome/free-solid-svg-icons/faCaretDown";
 import * as faCaretUp from "@fortawesome/free-solid-svg-icons/faCaretUp";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
-import {treeMap} from "../../utils/tree";
+import {useStore} from "../../utils/StoreContext";
 
 const Tree = () => {
+    const store = useStore()
     const [currentExpandedKeys, setCurrentExpandedKeys] = useState<string[]>([]);
 
     let expandedNodesKeys: string[] | never = [];
@@ -53,7 +53,7 @@ const Tree = () => {
             <SubtleIconButton
                 onClick={() => {
                     const keys: string[] = [];
-                    treeMap(store.model.components, (node: Node) => keys.push(node.key))
+                    store.treeMap(store.model.components, (node: Node) => keys.push(node.key))
                     setCurrentExpandedKeys(keys)
                 }}
                 size={"sm"} appearance={"subtle"}><ExpandIcon/>Expand</SubtleIconButton>

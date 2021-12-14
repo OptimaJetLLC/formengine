@@ -1,13 +1,15 @@
 import {ComponentStore} from "../../stores/ComponentStore";
 import {ComponentDefinition} from "../annotation/types";
-import {useEffect} from "react";
+import {useContext, useEffect} from "react";
 import {autorun} from "mobx";
 import _ from "lodash";
 import {transformEvent} from "./transformEvent";
 import {useLocalObservable} from "mobx-react";
+import {useStore} from "../../utils/StoreContext";
 
 //TODO Optimize?
 export function useEvent(componentStore: ComponentStore, componentDefinition: ComponentDefinition<any>) {
+    const store = useStore()
     const eventToActionsMap = useLocalObservable<Record<string, any[]>>(() => ({}))
 
     useEffect(() => {
@@ -17,7 +19,7 @@ export function useEvent(componentStore: ComponentStore, componentDefinition: Co
             if (_.isEmpty(events)) return
 
             _.forIn(events, (value, key) => {
-                const [handle, actions] = transformEvent(key, componentStore, componentDefinition)
+                const [handle, actions] = transformEvent(store, key, componentStore, componentDefinition)
                 componentStore.props[key] = handle
                 eventToActionsMap[key] = actions
             })

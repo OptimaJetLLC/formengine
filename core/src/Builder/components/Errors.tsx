@@ -1,10 +1,11 @@
-import React from "react";
-import {store} from "../../stores/Store";
+import React, {useContext} from "react";
 import {observer} from "mobx-react";
 import {Rows} from "../../components/UI/Containers";
+import {useStore} from "../../utils/StoreContext";
 
 
 const Errors = (props: any) => {
+    const store = useStore()
     if (!store.formContext) return null;
     const {errors, values} = store.formContext;
     return (<Rows {...props} margin={10}>

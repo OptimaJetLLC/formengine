@@ -2,11 +2,11 @@ import {ComponentStore} from "../../stores/ComponentStore";
 import {ComponentDefinition} from "../annotation/types";
 import _ from "lodash";
 import {Func, OverArgs, TransformativeType} from "../../utils/Types";
-import {findNode} from "../../utils/tree";
 import {toJS} from "mobx";
+import {Store} from "../../stores/Store";
 
-export function transformEvent(key: string, store: ComponentStore, definition: ComponentDefinition<any>): [Func, Func[]] {
-    let event = store.events[key]
+export function transformEvent(store: Store, key: string, componentStore: ComponentStore, definition: ComponentDefinition<any>): [Func, Func[]] {
+    let event = componentStore.events[key]
     let actions: Func[] = []
 
     if (!event) return [handle, actions]
@@ -20,7 +20,7 @@ export function transformEvent(key: string, store: ComponentStore, definition: C
                 throw Error(`Action ${value.actionName} didn't found!`)
 
 
-            return _.isEmpty(value.overArgs) ? action.func : withComputedArgs(action.func, value.overArgs)
+            return _.isEmpty(value.overArgs) ? action.func : withComputedArgs(store, action.func, value.overArgs)
         })
 
     /*if (value.targetKey) {
@@ -29,7 +29,7 @@ export function transformEvent(key: string, store: ComponentStore, definition: C
     }*/
 
     function handle(...arg: any[]) {
-        let addArgs = {source: store}
+        let addArgs = {source: componentStore}
 
 
         actions.forEach(value => {
@@ -47,11 +47,11 @@ export function transformEvent(key: string, store: ComponentStore, definition: C
  * Возвращает функцию, которая первыми параметрами передаст вычесленные аргументы при вызове.
  * Аргументы вычисляются перед вызовом.
  */
-function withComputedArgs(func: Func, overArgs: OverArgs) {
+function withComputedArgs(store: Store, func: Func, overArgs: OverArgs) {
     let ac = _.overArgs(func, (value: OverArgs) => {
         let args = _.transform(value, (result, value, key) => {
             if (typeof value === "object" && value.type === TransformativeType.Foreign) {
-                let node = findNode(value.key)
+                let node = store.findNode(value.key)
                 if (node?.data.props[value.prop])
                     result[key] = node?.data.props[value.prop]
                 return

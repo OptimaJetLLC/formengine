@@ -1,20 +1,21 @@
 import {observer} from "mobx-react";
 import {FullActionDefinition, TransformativeType} from "../../../utils/Types";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {IconButton, Input, InputGroup, Nav, Popover, SelectPicker, TreePicker, Whisper} from "rsuite";
 import ArrowDownIcon from "@rsuite/icons/ArrowDown";
 import CloseIcon from '@rsuite/icons/Close';
 import _ from "lodash";
 import {LabeledInput} from "../../../components/UI/Containers";
-import {store} from "../../../stores/Store";
 import {Node} from "../../../utils/Node";
 import {ItemDataType} from "rsuite/esm/@types/common";
 import {NavIconItem} from "../../../components/UI/NavIconItem";
 import * as faLink from "@fortawesome/free-solid-svg-icons/faLink"
 import * as faCode from "@fortawesome/free-solid-svg-icons/faCode"
 import styled from "@emotion/styled";
+import {useStore} from "../../../utils/StoreContext";
 
 const ActionArgument = ({name, data}: { name: string, data: FullActionDefinition }) => {
+    const store = useStore()
     const [value, setValue] = useState("")
     const [node, setNode] = useState<Node>();
     const [prop, setProp] = useState<string>();

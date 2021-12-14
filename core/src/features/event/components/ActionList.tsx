@@ -1,13 +1,14 @@
 import {observer} from "mobx-react";
 import ActionItem from "./ActionItem";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {FullActionDefinition} from "../../../utils/Types";
 import {autorun} from "mobx";
-import {store} from "../../../stores/Store";
 import {ComponentStore} from "../../../stores/ComponentStore";
 import {Rows} from "../../../components/UI/Containers"
+import {useStore} from "../../../utils/StoreContext";
 
 const ActionList = ({eventKey, componentStore} : {eventKey: string, componentStore: ComponentStore}) => {
+    const store = useStore()
     const [state, setState] = useState<undefined | FullActionDefinition[]>()
 
     useEffect(() => {

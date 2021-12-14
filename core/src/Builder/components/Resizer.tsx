@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import {store} from '../../stores/Store';
+import {useContext} from "react";
+import {useStore} from "../../utils/StoreContext";
 
 const BorderContainer = styled.div`
   position: absolute;
@@ -57,6 +58,7 @@ const Border = styled.div`
 `
 
 const Resizer = (position: string) => {
+    const store = useStore()
     return <BorderContainer key={position} onMouseDown={(e: any) => {
         store.isResizing = true;
         e.preventDefault();

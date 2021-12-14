@@ -1,19 +1,20 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from '@emotion/styled';
 import {Draggable, DraggableProvided, Droppable, DroppableProvided} from "react-beautiful-dnd";
-import {store} from "../../stores/Store";
 import {observer} from "mobx-react";
 import ControlBar from './ControlBar';
 import Selection from './Selection'
 import Resizer from './Resizer';
 import {ComponentStore} from "../../stores/ComponentStore";
-import {findNode} from "../../utils/tree";
 import {Box} from "../../components/UI/Containers";
 import {isCombineEnabled} from "../../features/dnd/utils";
+import {useStore} from "../../utils/StoreContext";
+import {Store} from "../../stores/Store";
 
 interface BuilderWrapperProps {
     componentStore: ComponentStore,
     children: any
+    store: Store
 }
 
 interface BuilderWrapperState {
@@ -34,17 +35,17 @@ const BuilderWrapper = observer(
         }
 
         isSelected = () => {
-            return store.currentNode?.data?.key === this.props?.componentStore?.key;
+            return this.props.store.currentNode?.data?.key === this.props?.componentStore?.key;
         }
 
         setSelected = () => {
-            store.currentNode = findNode(this.props?.componentStore.key);
+            this.props.store.currentNode = this.props.store.findNode(this.props?.componentStore.key);
         }
 
         onMouseOver = (e: any) => {
             e.preventDefault();
             e.stopPropagation();
-            const {isDragging, isResizing, isMoving} = store;
+            const {isDragging, isResizing, isMoving} = this.props.store;
             this.setState({
                 hovered: !(isDragging && isResizing && isMoving)
             })
@@ -60,7 +61,7 @@ const BuilderWrapper = observer(
             const selected = this.isSelected();
             const {key} = this.props.componentStore;
 
-            const isCombine = isCombineEnabled(componentStore);
+            const isCombine = isCombineEnabled(componentStore, this.props.store);
             return (
                 <Droppable droppableId={key} isCombineEnabled={isCombine}
                            isDropDisabled={!isCombine && !!this.props?.componentStore?.children}
@@ -70,17 +71,17 @@ const BuilderWrapper = observer(
                         return (
                             <div ref={provider.innerRef} {...provider.droppableProps}
                                  style={
-                                     ((store.draggingOverKey === key))
+                                     ((this.props.store.draggingOverKey === key))
                                          ? {backgroundColor: "var(--highlight-color)", outline: "2px dashed #3498ff"}
                                          : {}
                                  }
                             >
                                 <Draggable key={key} draggableId={key} index={0}
                                            isDragDisabled={
-                                               store.isResizing || (componentStore.type === "DropZone")}>
+                                               this.props.store.isResizing || (componentStore.type === "DropZone")}>
                                     {(provided: DraggableProvided, snapshot) => {
 
-                                        if (snapshot.isDragging) store.draggingElementKey = key;
+                                        if (snapshot.isDragging) this.props.store.draggingElementKey = key;
                                         return (
                                             <Container ref={(ref: any) => {
                                                 provided.innerRef(ref);
@@ -102,7 +103,7 @@ const BuilderWrapper = observer(
                                                     <ControlBar referenceElement={this.containerRef}
                                                                 elementKey={this.props?.componentStore?.key}/>
                                                 </>}
-                                                {isCombineEnabled(componentStore)
+                                                {isCombine
                                                     ? <Box p={30}>DROP HERE</Box>
                                                     : React.cloneElement(children, {
                                                         style: {
@@ -127,6 +128,9 @@ const Container = styled.div`
     position: relative;
 `
 
-const wrapperHoc = (props: BuilderWrapperProps) => <BuilderWrapper {...props}/>
+const WrapperHoc = (props: BuilderWrapperProps) => {
+    const store = useStore()
+    return <BuilderWrapper {...props} store={store}/>;
+}
 
-export default wrapperHoc;
+export default WrapperHoc;

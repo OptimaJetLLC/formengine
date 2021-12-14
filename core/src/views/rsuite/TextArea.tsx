@@ -1,5 +1,5 @@
 import {Form, Input} from "rsuite";
-import {define} from "../features/annotation/define";
+import {define} from "../../features/annotation/define";
 
 export interface TextAreaProps {
     label: string,

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {observer} from "mobx-react";
 import styled from '@emotion/styled'
 import {IconButton} from 'rsuite';
 import MenuIcon from '@rsuite/icons/Menu';
+import {useStore} from "../../utils/StoreContext";
 
-import {store} from "../../stores/Store";
 
 const LeftMenuBar = observer(() => {
+    const store = useStore()
 
     const toggleModeButton = () => {
         const onClick = () => {

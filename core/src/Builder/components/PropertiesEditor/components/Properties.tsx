@@ -1,18 +1,20 @@
 import _ from "lodash";
 import {observer} from "mobx-react"
 import {Section} from "../Section";
-import {store} from "../../../../stores/Store";
 import {WithValidation} from "../../../../features/validation/components/WithValidation";
-import React from "react";
+import React, {useContext} from "react";
 import {ObservableFormik} from "../../../../features/validation/components/ObserableFormik";
 import {CenteredLabel} from "../../../../components/UI/Labels";
 import styled from "@emotion/styled";
+import {useStore} from "../../../../utils/StoreContext";
 
 interface PropertiesProps {
     activeTab: Section
 }
 
 const Properties = observer(({activeTab}: PropertiesProps) => {
+    const store = useStore()
+
     if (!store.currentNode)
         return (<Container>
             <CenteredLabel style={{height: "40%"}}>Select element on form for edit properties</CenteredLabel>

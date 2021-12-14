@@ -1,11 +1,12 @@
 import {PropertyEditorProps} from "../../annotation/types";
 import AddActionButton from "./AddActionButton";
 import ActionList from "./ActionList";
-import {store} from "../../../stores/Store";
 import styled from "@emotion/styled";
+import {useStore} from "../../../utils/StoreContext";
 
 //EventEditor: one event - one editor
 export default ({componentStore, annotation}: PropertyEditorProps<Function | undefined>) => {
+    const store = useStore()
     if (!componentStore.events[annotation.key])
         store.addEvent(annotation.key, null, {}, componentStore, null);
 

@@ -1,8 +1,7 @@
 import * as React from "react";
-import {ComponentClass, ComponentType, ReactNode} from "react";
+import {ComponentClass, ReactNode} from "react";
 import {FieldMetaProps} from "formik";
 import {ErrorMessage} from "./components/ErrorMessage";
-import {observer} from "mobx-react";
 
 type CompositeComponent<P> =
     | React.ComponentClass<P>

@@ -1,9 +1,12 @@
 import {Form as FormikForm, FormikContext, FormikContextType} from "formik";
 import React, {useContext} from "react";
-import {store} from "../../../stores/Store";
+import {useStore} from "../../../utils/StoreContext";
+import {observable} from "mobx";
 
 export const Form = (props: any) => {
+    const store = useStore()
     store.formContext = useContext<FormikContextType<any>>(FormikContext);
+    store.formContext.values = store.currentNode?.data.props ?? observable({})
 
     //TODO вывод данных об значениях поля, ошибках и тд для инспекции
 

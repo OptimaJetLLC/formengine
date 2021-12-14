@@ -1,5 +1,5 @@
-import {define} from "../features/annotation/define";
-import {string} from "../features/annotation";
+import {define} from "../../features/annotation/define";
+import {string} from "../../features/annotation";
 
 export interface HeaderProps {
     content: string
@@ -20,3 +20,4 @@ export const header = define("Header", Header, {
     content: string.isRequired(""),
     subheader: string,
 })
+

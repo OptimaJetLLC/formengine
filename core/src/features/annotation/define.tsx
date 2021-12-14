@@ -22,9 +22,10 @@ export const define = <T extends object>(
         properties[key] = value?.build(key) ?? string.build(key)
     })
 
-    return ({
+    let result = ({
         name, view,
         annotations: properties,
         actions, isContainer
     })
+    return result
 }

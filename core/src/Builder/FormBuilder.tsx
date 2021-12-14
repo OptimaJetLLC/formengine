@@ -1,26 +1,30 @@
 import {configure} from "mobx";
 import {observer} from "mobx-react";
-import React from "react";
+import React, {useContext} from "react";
 import styled from '@emotion/styled';
 import {DragDropContext, DragUpdate, DropResult} from "react-beautiful-dnd";
-import {store} from "../stores/Store";
 import {FormViewerProps} from "../FormViewer";
 import HeaderBar from "./components/Headerbar";
 import BuilderView from "./BuilderView"
 import {Preview} from "./Preview";
 import Tree from "./components/Tree";
 import PropertiesEditor from "./components/PropertiesEditor/PropertiesEditor";
-import {findNode} from "../utils/tree";
 import Errors from "./components/Errors";
+import {useStore} from "../utils/StoreContext";
+import {Store} from "../stores/Store";
 
 export interface FormBuilderProps extends FormViewerProps {
 
 }
 
 const FormBuilder = (props: FormBuilderProps) => {
+    const store = useStore()
     const isDragOver = store.draggingOverKey === "";
     return <Container>
-        <DragDropContext onDragStart={onDragStart} onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
+        <DragDropContext
+            onDragStart={onDragStart.bind(null, store)}
+            onDragUpdate={onDragUpdate.bind(null, store)}
+            onDragEnd={onDragEnd.bind(null, store)}>
             <HeaderBar/>
             <Content>
                 {store.showLeftPanel && <LeftPanel>
@@ -38,8 +42,8 @@ const FormBuilder = (props: FormBuilderProps) => {
                     // }
                 >
                     {store.isBuilderMode
-                        ? <BuilderView getForm={props.getForm}/>
-                        : <Preview getForm={props.getForm}/>
+                        ? <BuilderView getForm={props.getForm} view={props.view}/>
+                        : <Preview getForm={props.getForm} view={props.view}/>
                     }
                 </FormContainer>
 
@@ -51,11 +55,11 @@ const FormBuilder = (props: FormBuilderProps) => {
                 </RightPanel>}
             </Content>
         </DragDropContext>
-    </Container>;
+    </Container>
 }
 
 //TODO вынести функционал DnD в features
-const onDragEnd = (result: DropResult) => {
+const onDragEnd = (store: Store, result: DropResult) => {
     const {source, destination, draggableId, combine} = result;
     const droppableId: string | undefined = combine
         ? combine.draggableId ?? combine.droppableId
@@ -72,13 +76,13 @@ const onDragEnd = (result: DropResult) => {
     store.draggingElementKey = undefined;
 }
 
-const onDragStart = () => {
+const onDragStart = (store: Store) => {
     store.isDragging = true;
 }
 
-const onDragUpdate = ({destination, combine}: DragUpdate) => {
+const onDragUpdate = (store: Store, {destination, combine}: DragUpdate) => {
     const droppableId = destination?.droppableId ?? combine?.droppableId;
-    const node = findNode(droppableId);
+    const node = store.findNode(droppableId);
     if (!node) return;
 
     store.draggingOverKey = !!combine

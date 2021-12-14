@@ -1,14 +1,15 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import PinIcon from '@rsuite/icons/Pin';
 import {usePopper} from 'react-popper';
 import styled from '@emotion/styled';
-import {store} from "../../stores/Store";
 import {FaIcon} from "../../components/UI/Icons";
 import * as faClone from '@fortawesome/free-regular-svg-icons/faClone'
 import * as faTrash from "@fortawesome/free-regular-svg-icons/faTrashAlt";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
+import {useStore} from "../../utils/StoreContext";
 
 const ControlBar = (props: any) => {
+    const store = useStore()
     const {referenceElement, elementKey} = props;
     const popperRef: any = React.useRef(null);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

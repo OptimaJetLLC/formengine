@@ -5,16 +5,16 @@ import ParameterInput from "./ActionArgument";
 import {Box, Rows} from "../../../components/UI/Containers";
 import {ArrowDownLine, ArrowUpLine} from '@rsuite/icons';
 import {ComponentStore} from "../../../stores/ComponentStore";
-import {getAllNodes} from "../../../utils/tree";
 import _ from "lodash";
 import {Node} from "../../../utils/Node";
-import {mapper} from "../../../views";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import styled from "@emotion/styled";
 import {NavIconItem} from "../../../components/UI/NavIconItem";
+import {useStore} from "../../../utils/StoreContext";
 
 const ChooseTargetButton = observer(({data}: { data: FullActionDefinition }) => {
-    const nodes = getAllNodes().filter(node => !_.isEmpty(node.definition?.actions))
+    const store = useStore()
+    const nodes = store.getAllNodes().filter(node => !_.isEmpty(node.definition?.actions))
     const groups = nodes.reduce((groups: any, node: Node) => {
         const group: Node[] = (groups[node.definition.name] || []);
         group.push(node);
@@ -70,7 +70,8 @@ const ChooseTargetButton = observer(({data}: { data: FullActionDefinition }) => 
 })
 
 const ChooseActionButton = observer(({data}: { data: FullActionDefinition }) => {
-    const nodes = getAllNodes().filter(node => !_.isEmpty(node.definition?.actions))
+    const store = useStore()
+    const nodes = store.getAllNodes().filter(node => !_.isEmpty(node.definition?.actions))
     const groups = nodes.reduce((groups: any, node: Node) => {
         const group: Node[] = (groups[node.definition.name] || []);
         group.push(node);
@@ -79,7 +80,7 @@ const ChooseActionButton = observer(({data}: { data: FullActionDefinition }) => 
     }, {});
 
     const TargetActionsList: any = (target: ComponentStore) => {
-        const definition = mapper[target.type]
+        const definition = store.view.get(target.type)
         return definition?.actions?.map((action) =>
             <Dropdown.Item
                 key={action.name}

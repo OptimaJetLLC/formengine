@@ -1,12 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import styled from '@emotion/styled'
 import {IconButton, Popover as RPopover, Whisper} from 'rsuite';
-import {store} from "../../stores/Store";
 import Toolbar from "./Toolbar";
 import PlusIcon from "@rsuite/icons/Plus";
 import {observer} from "mobx-react";
+import {useStore} from "../../utils/StoreContext";
 
 const AddButton = observer(() => {
+    const store = useStore()
     const [open, setOpen] = useState(false);
 
     const {isDragging} = store;
@@ -14,7 +15,7 @@ const AddButton = observer(() => {
         if (isDragging) setOpen(false)
     }, [isDragging]);
 
-    const Popover = <SPopover children={<Toolbar/>} open={open} full/>;
+    const Popover = <SPopover children={<Toolbar store={store}/>} open={open} full/>;
     return <div>
         <Backdrop open={open} onClick={() => setOpen(!open)}/>
         <Whisper open placement="bottom" speaker={Popover} trigger={"none"}>

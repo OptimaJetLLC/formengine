@@ -1,8 +1,6 @@
-import {ComponentStore} from "../../stores/ComponentStore";
 import _ from "lodash";
-import {FieldMetaProps, FormikContext, FormikContextType, useField} from "formik";
+import {FieldMetaProps, FormikContext, FormikContextType} from "formik";
 import {useContext} from "react";
-import * as Yup from "yup";
 import {BaseSchema, ValidationError} from "yup";
 import {toJS} from "mobx";
 
@@ -19,7 +17,7 @@ interface FieldProps {
     value: any
 }
 
-export const useValidation = <T extends any = any>(keyOrConfig: string | ValidationConfig): [FieldProps, FieldMetaProps<any>] => {
+export const useValidation = (keyOrConfig: string | ValidationConfig): [FieldProps, FieldMetaProps<any>] => {
     const {key, scheme}: ValidationConfig = _.isObject(keyOrConfig) ? keyOrConfig : {key: keyOrConfig}
 
     //TODO check exists formik context?

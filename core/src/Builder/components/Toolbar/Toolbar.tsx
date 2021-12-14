@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import ReactDOM from 'react-dom';
 import styled from '@emotion/styled'
 import {Draggable, DraggableProvided, DraggableStateSnapshot, Droppable, DroppableProvided} from "react-beautiful-dnd";
@@ -8,6 +8,7 @@ import {ToolbarItem, ToolbarItems} from "./Items";
 import {ComponentDefinition} from "../../../features/annotation/types";
 import _ from "lodash";
 import {Centered} from "../../../components/UI/Containers";
+import {useStore} from "../../../utils/StoreContext";
 
 interface ToolbarState {
     filtered?: ToolbarItem | null,
@@ -54,7 +55,12 @@ export class Toolbar extends React.Component<any, ToolbarState> {
     }
 
     items = () => {
-        const itemsMap = this.state.filtered?.controls?.length ? [this.state.filtered] : ToolbarItems;
+        const itemsMap = this.state.filtered?.controls?.length ? [this.state.filtered] : [
+            {
+                title: "Base controls",
+                controls: this.props.store.view.all()
+            }
+        ];
 
         return itemsMap?.map((item: ToolbarItem, i: number) => <ControlsGroup key={(item.title + i)}>
             <Subheader>

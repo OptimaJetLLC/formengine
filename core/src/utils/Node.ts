@@ -1,7 +1,7 @@
 import _ from "lodash";
 import {ComponentStore} from "../stores/ComponentStore";
 import {ComponentDefinition} from "../features/annotation/types";
-import {mapper} from "../views";
+import {Store} from "../stores/Store";
 
 export class Node {
     key: string
@@ -15,13 +15,13 @@ export class Node {
         return _.isEmpty(this.key);
     }
 
-    constructor(data: ComponentStore, parent?: Node) {
+    constructor(store: Store, data: ComponentStore, parent?: Node) {
         this.key = data.key;
         this.parent = parent;
 
         this.data = data
-        this.definition = mapper[this.data.type]
+        this.definition = store.view.get(this.data.type)
 
-        this.children = data.children?.map(child => new Node(child, this));
+        this.children = data.children?.map(child => new Node(store, child, this));
     }
 }

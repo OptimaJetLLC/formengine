@@ -1,7 +1,7 @@
 import {Form, InputPicker} from "rsuite";
 import {CSSProperties} from "react";
-import {define} from "../features/annotation/define";
-import {boolean, string} from "../features/annotation";
+import {define} from "../../features/annotation/define";
+import {boolean, string} from "../../features/annotation";
 
 export interface DropdownProps {
     label: string,
@@ -29,3 +29,4 @@ export const dropdown = define("Dropdown", Dropdown, {
     "placeholder": string.isRequired(""),
 
 })
+

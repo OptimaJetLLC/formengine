@@ -1,9 +1,10 @@
 import {ComponentDefinition} from "../annotation/types";
 import {useContext, useEffect, useMemo, useRef} from "react";
 import {FormikContext} from "formik";
-import {store} from "../../stores/Store";
+import {useStore} from "../../utils/StoreContext";
 
 export const useSubstitution = (props: Record<string, any>, {annotations}: ComponentDefinition<any>) => {
+    const store = useStore()
     let formik = useContext(FormikContext)
 
     const originalProps: any = useRef({})

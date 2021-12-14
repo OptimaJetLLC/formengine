@@ -1,7 +1,6 @@
 import * as Yup from "yup";
-import {BooleanSchema, NumberSchema, StringSchema} from "yup";
 import _ from "lodash";
-import {ParsableValidateSchema, Rule, StringRuleKey, ValueType} from "./types";
+import {ParsableValidateSchema, StringRuleKey, ValueType} from "./types";
 import {StringRules} from "./rules/StringRules";
 
 //TODO

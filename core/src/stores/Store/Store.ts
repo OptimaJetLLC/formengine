@@ -4,11 +4,10 @@ import {ComponentStore} from "../ComponentStore";
 import {Node} from "../../utils/Node";
 import {Action, EventName, FullActionDefinition, Modifiers, OverArgs} from "../../utils/Types";
 import {toWeakEvent} from "./utils/toWeakEvent";
-import {mapper} from "../../views";
 import {moveArrayItem} from "../../utils/moveArrayItem";
-import {findNode, treeMap} from "../../utils/tree";
 import {removeEventAndDefaultValue} from "./utils/removeEventAndDefaultValue";
 import {FormikContextType} from "formik";
+import {DefineRegistry} from "../../utils/DefineRegistry";
 
 
 class Store {
@@ -33,14 +32,20 @@ class Store {
     }
 
     get tree(): Node {
-        let store = new ComponentStore("")
-        let root = new Node(store)
-        store.children = this.model.components
-        root.children = this.model.components.map(child => new Node(child, root));
+        let componentStore = new ComponentStore("")
+        let root = new Node(this, componentStore)
+        componentStore.children = this.model.components
+        root.children = this.model.components.map(child => new Node(this, child, root));
         return root
     }
 
-    constructor() {
+    //TODO init in constructor?
+    readonly view: DefineRegistry
+
+    //TODO set in provider
+    //TODO new instance for each form view
+    constructor(view: DefineRegistry) {
+        this.view = view
         makeObservable(this, {
             allEvents: observable.deep,
             currentNode: observable.ref,
@@ -86,7 +91,7 @@ class Store {
 
     stringifyForm() {
         let clone = _.cloneDeep(toJS(this.model))
-        clone.components.forEach(removeEventAndDefaultValue)
+        clone.components.forEach(removeEventAndDefaultValue.bind(null, this))
 
         return JSON.stringify(clone, removeRedundantProps, 2)
 
@@ -110,7 +115,7 @@ class Store {
     }
 
     remove(targetKey: string) {
-        const targetNode = findNode(targetKey);
+        const targetNode = this.findNode(targetKey);
         if (!targetNode) return;
 
         const targetParent = targetNode.parent?.data?.children;
@@ -122,7 +127,7 @@ class Store {
     }
 
     add(name: string, targetKey: string, index: number = 0, combine?: boolean) {
-        const componentDefinition = mapper[name];
+        const componentDefinition = this.view.get(name);
         if (!componentDefinition) return
         const key = this._generateKey(name);
         const component = new ComponentStore(key, componentDefinition);
@@ -131,12 +136,12 @@ class Store {
     }
 
     clone(sourceKey: string) {
-        const sourceNode = findNode(sourceKey);
+        const sourceNode = this.findNode(sourceKey);
         if (!sourceNode) return;
 
         const clonedComponent = _.cloneDeep(sourceNode.data);
         clonedComponent.key = this._generateKey(sourceNode.definition.name);
-        treeMap(clonedComponent?.children, (componentStore: ComponentStore) => {
+        this.treeMap(clonedComponent?.children, (componentStore: ComponentStore) => {
             componentStore.key = this._generateKey(componentStore.type);
         })
 
@@ -146,15 +151,15 @@ class Store {
     }
 
     cleanReactChildren() {
-        treeMap(this.model.components, (componentStore: ComponentStore) => {
+        this.treeMap(this.model.components, (componentStore: ComponentStore) => {
             if (typeof componentStore.props.children !== typeof "")
                 delete componentStore.props.children;
         })
     }
 
     move(sourceKey: string, targetKey: string, index: number = 0, combine?: boolean) {
-        const sourceNode = findNode(sourceKey);
-        const targetNode = findNode(targetKey);
+        const sourceNode = this.findNode(sourceKey);
+        const targetNode = this.findNode(targetKey);
 
         if (!sourceNode || !targetNode?.key?.length) return;
 
@@ -182,6 +187,54 @@ class Store {
     private _generateKey(name: string) {
         return name + (Math.random() + 1).toString(36).substring(7);
     }
+
+    findNode = (key?: string) => {
+        return find(this.tree)
+
+        function find(node: Node): Node | null {
+            if (node.key === key) return node
+
+            if (!node.children) return null
+
+            for (let child of node.children) {
+                let childNode = find(child)
+                if (childNode) return childNode
+            }
+
+            return null
+        }
+    }
+
+    getAllKeys = () => {
+        const keys: string[] = []
+        getKey(this.tree)
+        return keys
+
+        function getKey(node: Node) {
+            if (node.key) keys.push(node.key)
+
+            if (node.children) node.children.map(getKey)
+        }
+    }
+
+    getAllNodes = () => {
+        const nodes: Node[] = []
+        getKey(this.tree)
+        return nodes
+
+        function getKey(node: Node) {
+            if (node.key) nodes.push(node)
+
+            if (node.children) node.children.map(getKey)
+        }
+    }
+
+    treeMap = (data?: ComponentStore[], callback?: Function) => {
+        data?.forEach((node: ComponentStore) => {
+            callback?.(node);
+            if (node.children) this.treeMap(node.children, callback);
+        });
+    };
 }
 
 export {Store}

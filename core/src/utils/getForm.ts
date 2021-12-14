@@ -1,47 +1,41 @@
 import {ComponentStore} from "../stores/ComponentStore";
-import {header} from "../views/Header";
 import _ from "lodash";
-import {container} from "../views/Container";
-import {input} from "../views/Input";
-import {dropdown} from "../views/Dropdown";
-import {textArea} from "../views/TextArea";
-import {button} from "../views/Button";
-import {store} from "../stores/Store";
+import {Store} from "../stores/Store";
 
 //TODO can stringify and parse to form
-export function getForm(code: string, getForm: (code: string) => any[]) {
+export function getForm(code: string, getForm: (code: string) => any[], store: Store) {
     //this.model = getForm(code);
     if (store.model.components.length > 0) return
 
-    let formHeader = new ComponentStore("header 1", header)
+    let formHeader = new ComponentStore("header 1", store.view.get("Header"))
     _.set(formHeader, "props.content",  "Application Form")
     _.set(formHeader, "props.subheader", "Make it easier")
     store.model.components.push(formHeader);
 
-    let title = new ComponentStore("title", input)
+    let title = new ComponentStore("title", store.view.get("Input"))
     _.set(title, "props.label",  "Title")
     //this.models.push(title)
     store.model.components.push(title)
 
-    let anotherContainer = new ComponentStore("input container", container)
+    let anotherContainer = new ComponentStore("input container", store.view.get("Container"))
     anotherContainer.children = []
     store.model.components.push(anotherContainer)
 
-    let nameContainer = new ComponentStore("name container", container)
+    let nameContainer = new ComponentStore("name container", store.view.get("Container"))
     nameContainer.children = []
     anotherContainer.children.push(nameContainer)
     //this.models.push(nameContainer)
 
 
-    let firstName = new ComponentStore("first name", input)
+    let firstName = new ComponentStore("first name", store.view.get("Input"))
     _.set(firstName, "props.label",  "First Name")
     nameContainer.children.push(firstName)
 
-    let lastName = new ComponentStore("last name", input)
+    let lastName = new ComponentStore("last name", store.view.get("Input"))
     _.set(lastName, "props.label", "Last Name")
     nameContainer.children.push(lastName)
 
-    let type = new ComponentStore("type", dropdown)
+    let type = new ComponentStore("type", store.view.get("Dropdown"))
     _.set(type, "props.label",  "Type")
     _.set(type, "props.data", [
         {label: "Internal", value: "Internal"},
@@ -50,22 +44,22 @@ export function getForm(code: string, getForm: (code: string) => any[]) {
     _.set(type, "props.block",  true)
     store.model.components.push(type)
 
-    let comment = new ComponentStore("comment", textArea);
+    let comment = new ComponentStore("comment", store.view.get("TextArea"));
     _.set(comment, "props.label", "Comment")
     _.set(comment, "props.rows",  5)
     store.model.components.push(comment)
 
-    let buttonContainer = new ComponentStore("button container", container)
+    let buttonContainer = new ComponentStore("button container", store.view.get("Container"))
     buttonContainer.children = []
     store.model.components.push(buttonContainer)
 
-    let saveButton = new ComponentStore("save", button)
+    let saveButton = new ComponentStore("save", store.view.get("Button"))
     _.set(saveButton, "props.children",  "Save")
     _.set(saveButton, "props.appearance" , "primary")
     buttonContainer.children.push(saveButton);
     //this.models.push(saveButton);
 
-    let cancelButton = new ComponentStore("cancel", button)
+    let cancelButton = new ComponentStore("cancel", store.view.get("Button"))
     _.set(cancelButton, "props.children", "Cancel")
     buttonContainer.children.push(cancelButton);
 

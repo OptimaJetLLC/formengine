@@ -1,6 +1,5 @@
 import React from 'react';
 import {ComponentDefinition} from "../../../features/annotation/types";
-import {components} from "../../../views";
 
 export interface ToolbarItem {
     title: string,
@@ -8,8 +7,8 @@ export interface ToolbarItem {
 }
 
 export const ToolbarItems: ToolbarItem[] = [
-    {
+    /*{
         title: "Base controls",
-        controls: components
-    }
+        controls: store.view.all()
+    }*/
 ]
