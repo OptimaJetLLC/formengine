@@ -1,5 +1,5 @@
 import {observer} from "mobx-react";
-import {FullActionDefinition, TransformativeType} from "../../../utils/Types";
+import {FullActionDefinition, TransformativeArg, TransformativeType} from "../../../utils/Types";
 import React, {useContext, useEffect, useState} from "react";
 import {IconButton, Input, InputGroup, Nav, Popover, SelectPicker, TreePicker, Whisper} from "rsuite";
 import ArrowDownIcon from "@rsuite/icons/ArrowDown";
@@ -36,18 +36,30 @@ const ActionArgument = ({name, data}: { name: string, data: FullActionDefinition
 
     }, []);
 
-    const onChange = (prop: string) => {
-        if (!node?.key || !prop) return;
-        setProp(prop);
-        data.overArgs[name] = prop;
-        setValue(`${node?.key}[${prop}]`);
+
+    const onChange = (value: string) => {
+        setValue(value)
+        data.overArgs[name] = value;
+    };
+
+    const onPropertyChange = (propertyName: string) => {
+        if (!node?.key || !propertyName) return;
+        setProp(propertyName)
+
+        data.overArgs[name] = {
+            type: TransformativeType.Foreign,
+            key: node.key,
+            prop: propertyName
+        } as TransformativeArg;
+        setValue(`${node?.key}[${propertyName}]`);
     };
 
     return <LabeledInput style={{display: "flex", flexDirection: "column", flex: 1}}>
         <label>{name}</label>
         <InputGroup size={"sm"}>
 
-            <Input value={value} onChange={(val) => setValue(val as string)}/>
+            <Input value={value} onChange={value1 => onChange(value1 as string)}/>
+
             <Whisper
                 trigger="none" placement={"auto"} open={showPopup}
                 children={<InputGroup.Button onClick={() => setShowPopup(!showPopup)}><ArrowDownIcon/>
@@ -84,7 +96,7 @@ const ActionArgument = ({name, data}: { name: string, data: FullActionDefinition
                                 <LabeledInput>
                                     <label>Property</label>
                                     <SelectPicker data={options} value={prop}
-                                                  onSelect={onChange}/>
+                                                  onSelect={onPropertyChange}/>
                                 </LabeledInput>
 
                             </div>
