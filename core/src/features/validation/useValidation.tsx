@@ -3,6 +3,7 @@ import {FieldMetaProps, FormikContext, FormikContextType} from "formik";
 import {useContext} from "react";
 import {BaseSchema, ValidationError} from "yup";
 import {toJS} from "mobx";
+import {useStore} from "../../utils/StoreContext";
 
 interface ValidationConfig {
     key: string
@@ -19,6 +20,7 @@ interface FieldProps {
 
 export const useValidation = (keyOrConfig: string | ValidationConfig): [FieldProps, FieldMetaProps<any>] => {
     const {key, scheme}: ValidationConfig = _.isObject(keyOrConfig) ? keyOrConfig : {key: keyOrConfig}
+    const store = useStore()
 
     //TODO check exists formik context?
     const formik: FormikContextType<any> = useContext<FormikContextType<any>>(FormikContext);
@@ -26,6 +28,7 @@ export const useValidation = (keyOrConfig: string | ValidationConfig): [FieldPro
     const getValue = () => toJS(formik.values[key]);
 
     const meta = formik.getFieldMeta(key)
+    store.registeredFields[key] = validate.bind(null, getValue())
 
     return [
         {

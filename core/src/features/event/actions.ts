@@ -1,8 +1,10 @@
-import defineLocalAction from "../annotation/defineAction";
+import {defineLocalAction} from "../annotation/defineAction";
 import {ComponentStore} from "../../stores/ComponentStore";
+import {useStore} from "../../utils/StoreContext";
+import {Store} from "../../stores/Store";
+import {ValidationError} from "yup";
 
 const setValue = defineLocalAction("Set value", (actionArgs, eventArgs, c, e) => {
-    let a = 1
     const componentStore: ComponentStore = eventArgs[2];
     //actionArgs.target.props.value = actionArgs.param1;
     //let b = args
@@ -15,8 +17,11 @@ const setProperty = defineLocalAction("Set property", ({propertyName, value, tar
     debugger
 }, ["propertyName", "value"]);
 
-/*const setValue = defineLocalAction("setProperty", ({property, value}, eventArgs) => {
-    property = value;
-}, ["property", "value"]);*/
+const validate = defineLocalAction("Validate", ({}, eventArgs) => {
+    let a = 4
+    let c: Store = eventArgs.store
+    c.validateForm()
 
-export {setValue, setProperty};
+}, []);
+
+export {setValue, setProperty, validate};

@@ -31,6 +31,12 @@ class Store {
         components: new Array<ComponentStore>()
     }
 
+    registeredFields: Record<string, () => void> = {}
+
+    validateForm() {
+        _.values(this.registeredFields).forEach(value => value())
+    }
+
     get tree(): Node {
         let componentStore = new ComponentStore("")
         let root = new Node(this, componentStore)

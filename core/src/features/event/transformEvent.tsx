@@ -29,7 +29,7 @@ export function transformEvent(store: Store, key: string, componentStore: Compon
     }*/
 
     function handle(...arg: any[]) {
-        let addArgs = {source: componentStore}
+        let addArgs = {source: componentStore, store}
 
 
         actions.forEach(value => {
