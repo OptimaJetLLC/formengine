@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from '@emotion/styled'
 import {Draggable, DraggableProvided, DraggableStateSnapshot, Droppable, DroppableProvided} from "react-beautiful-dnd";
@@ -8,7 +8,6 @@ import {ToolbarItem, ToolbarItems} from "./Items";
 import {ComponentDefinition} from "../../../features/annotation/types";
 import _ from "lodash";
 import {Centered} from "../../../components/UI/Containers";
-import {useStore} from "../../../utils/StoreContext";
 
 interface ToolbarState {
     filtered?: ToolbarItem | null,

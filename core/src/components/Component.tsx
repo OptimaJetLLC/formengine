@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import _ from "lodash";
-import React, {useContext, useEffect} from "react";
+import React, {useEffect} from "react";
 import {observer} from "mobx-react";
 import {ComponentDefinition} from "../features/annotation/types";
 import {ComponentStore} from "../stores/ComponentStore";

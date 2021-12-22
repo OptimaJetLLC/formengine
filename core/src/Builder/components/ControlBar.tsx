@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useState} from "react";
 import PinIcon from '@rsuite/icons/Pin';
 import {usePopper} from 'react-popper';
 import styled from '@emotion/styled';

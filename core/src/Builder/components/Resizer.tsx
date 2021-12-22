@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import {useContext} from "react";
 import {useStore} from "../../utils/StoreContext";
 
 const BorderContainer = styled.div`

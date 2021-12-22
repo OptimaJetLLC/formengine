@@ -1,5 +1,5 @@
 import {ComponentDefinition} from "../annotation/types";
-import {useContext, useEffect, useMemo, useRef} from "react";
+import {useContext, useEffect, useRef} from "react";
 import {FormikContext} from "formik";
 import {useStore} from "../../utils/StoreContext";
 

@@ -7,8 +7,7 @@ import {Action} from "../../utils/Types";
 
 export const define = <T extends object>(
     name: string, view: FunctionComponent<T>,
-    annotations: Annotations<T>, actions?: Action[],
-    isContainer?: boolean
+    annotations: Annotations<T>, actions?: Action[]
 ): ComponentDefinition<any> => {
     if (_.isEmpty(name)) throw Error("Name cannot be empty!")
 
@@ -22,10 +21,9 @@ export const define = <T extends object>(
         properties[key] = value?.build(key) ?? string.build(key)
     })
 
-    let result = ({
+    return ({
         name, view,
         annotations: properties,
-        actions, isContainer
+        actions
     })
-    return result
 }

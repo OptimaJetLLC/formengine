@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from '@emotion/styled'
 import {IconButton, Popover as RPopover, Whisper} from 'rsuite';
 import Toolbar from "./Toolbar";

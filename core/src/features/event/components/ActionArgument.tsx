@@ -1,6 +1,6 @@
 import {observer} from "mobx-react";
 import {FullActionDefinition, TransformativeArg, TransformativeType} from "../../../utils/Types";
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {IconButton, Input, InputGroup, Nav, Popover, SelectPicker, TreePicker, Whisper} from "rsuite";
 import ArrowDownIcon from "@rsuite/icons/ArrowDown";
 import CloseIcon from '@rsuite/icons/Close';

@@ -10,6 +10,5 @@ const MyDiv = () => {
     );
 }
 
-export const root = define("root", MyDiv, {
-})
+export const root = define("root", MyDiv, {})
 

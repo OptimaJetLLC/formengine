@@ -1,6 +1,6 @@
 import {ComponentStore} from "../../stores/ComponentStore";
 import {ComponentDefinition} from "../annotation/types";
-import {useContext, useEffect} from "react";
+import {useEffect} from "react";
 import {autorun} from "mobx";
 import _ from "lodash";
 import {transformEvent} from "./transformEvent";
