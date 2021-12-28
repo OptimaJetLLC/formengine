@@ -75,7 +75,6 @@ class Store {
 
     toggleBuilderMode() {
         this.isBuilderMode = !this.isBuilderMode;
-        this.cleanReactChildren();
     }
 
     addEvent(
@@ -129,7 +128,6 @@ class Store {
 
         if (_.isUndefined(targetIndex)) return;
         targetNode.parent?.data?.children?.splice(targetIndex, 1);
-        this.cleanReactChildren();
     }
 
     add(name: string, targetKey: string, index: number = 0, combine?: boolean) {
@@ -153,14 +151,6 @@ class Store {
 
         this.model.components.push(clonedComponent);
         this.move(clonedComponent.key, sourceKey, 1);
-        this.cleanReactChildren();
-    }
-
-    cleanReactChildren() {
-        this.treeMap(this.model.components, (componentStore: ComponentStore) => {
-            if (typeof componentStore.props.children !== typeof "")
-                delete componentStore.props.children;
-        })
     }
 
     move(sourceKey: string, targetKey: string, index: number = 0, combine?: boolean) {
@@ -186,7 +176,6 @@ class Store {
             const [removed] = sourceParent.splice(sourceIndex, 1)
             targetParent.splice(targetIndex + index, 0, removed);
         }
-        this.cleanReactChildren();
         this.currentNode = sourceNode;
     }
 

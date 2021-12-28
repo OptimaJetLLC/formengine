@@ -21,7 +21,6 @@ export interface ComponentDefinition<T extends object> {
     annotations: Record<string, Annotation<T>>;
     actions?: Action[];
     groupBy?: string;
-    isContainer?: boolean;
 }
 
 /** Interface for property editor */

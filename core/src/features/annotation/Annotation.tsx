@@ -1,5 +1,5 @@
 import {PropertyEditorProps} from "./types";
-import React, {ComponentType} from "react";
+import {ComponentType} from "react";
 import {observer} from "mobx-react";
 import {Section} from "../../Builder/components/PropertiesEditor/Section";
 
@@ -17,15 +17,16 @@ export class Annotation<T> {
     isSystem: boolean = false
     isRequired: boolean = false
     isFunction: boolean = false
+    isContainer: boolean = false
 
-    get component(): React.ComponentType<PropertyEditorProps<T>> {
+    get component(): ComponentType<PropertyEditorProps<T>> {
         //TODO set input in constructor?
         if (!this._component) throw Error("Input is required")
 
         return observer(this._component);
     }
 
-    set component(value: React.ComponentType<PropertyEditorProps<T>>) {
+    set component(value: ComponentType<PropertyEditorProps<T>>) {
         this._component = value;
     }
 

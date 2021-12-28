@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ReactNode} from "react";
 import {AnnotationBuilder} from "./AnnotationBuilder";
 import Key from "./inputs/Key";
 import String from "./inputs/String";
@@ -8,6 +8,7 @@ import Event from "../event/components/EventEditor";
 import Style from "./inputs/Style";
 import {Section} from "../../Builder/components/PropertiesEditor/Section";
 import {ValidateEditor} from "../validation/components/ValidateEditor";
+import {Container} from "./inputs/Container";
 
 //TODO следует ли компоновать их и засунуть в один объект?
 export const key = new AnnotationBuilder<string>({component: Key, isSystem: true}).isRequired("")
@@ -25,6 +26,8 @@ export const event = new AnnotationBuilder<Function | undefined>({
     isFunction: true
 })
 export const validation = new AnnotationBuilder<any>({component: ValidateEditor, section: Section.Validation})
+
+export const reactnode = new AnnotationBuilder<ReactNode>({isContainer: true, component: Container})
 
 //Аннотация: спсиок допустимых параметров - просто массив
 //Аннотация: список допустимых параметров с его label - value. Label всегда текст, а значение принимает заданный тип

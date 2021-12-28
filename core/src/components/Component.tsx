@@ -1,10 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import _ from "lodash";
-import React, {useEffect} from "react";
+import React, {useEffect, useMemo} from "react";
 import {observer} from "mobx-react";
 import {ComponentDefinition} from "../features/annotation/types";
 import {ComponentStore} from "../stores/ComponentStore";
-import {transformEvent} from "../features/event/transformEvent";
 import {useEvent} from "../features/event/useEvent";
 import {useValidation} from "../features/validation/useValidation";
 import {toValidateScheme} from "../features/validation/toValidateScheme";
@@ -12,7 +11,7 @@ import {WithErrorMessage} from "../features/validation/withErrorMessage";
 import {transformStyles} from "../features/style";
 import {useSubstitution} from "../features/substitution/useSubstitution";
 import {useStore} from "../utils/StoreContext";
-import {Store} from "../stores/Store";
+import {toJS} from "mobx";
 
 interface ComponentProps {
     componentStore: ComponentStore,
@@ -21,13 +20,11 @@ interface ComponentProps {
 
 export const Component = observer(({componentStore, wrapper}: ComponentProps) => {
     const store = useStore()
-    const {props} = componentStore;
+    const currentProps: Record<string, any> = {}
     const componentDefinition = store.view.get(componentStore.type);
 
-    useEffect(() => initDefaultValue(store, componentStore, componentDefinition), [])
-
-    const eventMap = useEvent(componentStore, componentDefinition);
-
+    const defaultProps = useDefaultProps(componentDefinition)
+    const [events, eventActions] = useEvent(componentStore, componentDefinition);
     const [field, meta] = useValidation({
         key: componentStore.key,
         scheme: toValidateScheme(componentStore.validation),
@@ -35,25 +32,28 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
 
     //injectValidation()
     useEffect(() => {
-        if (eventMap["onChange"]) eventMap["onChange"].push(field.setValue)
-        else props.onChange = field.setValue
+        if (eventActions["onChange"]) eventActions["onChange"].push(field.setValue)
+        else events.onChange = field.setValue
 
-        if (eventMap["onBlur"]) eventMap["onBlur"].push(() => field.setTouched())
-        else props.onBlur = () => field.setTouched()
+        if (eventActions["onBlur"]) eventActions["onBlur"].push(() => field.setTouched())
+        else events.onBlur = () => field.setTouched()
 
         //props.value = field.value
-    }, [])
+    }, [events])
 
+    useSubstitution(currentProps, componentDefinition)
 
-    useSubstitution(props, componentDefinition)
-
-    props.children = props.children
+    currentProps.children = currentProps.children
         || componentStore.children?.map(child =>
             <Component key={child.key} componentStore={child} wrapper={wrapper}/>);
 
-    props.className = transformStyles(componentStore);
+    currentProps.className = transformStyles(componentStore);
 
+    const storedProps = toJS(componentStore.props)
+    const props = Object.assign(defaultProps, currentProps, events, storedProps)
     const element = React.createElement(componentDefinition.view, props)
+
+    //const element = React.createElement(componentDefinition.view, {...props, ...eventMap, ...componentStore.props})
 
     //TODO for builder need render another component without error message and events
     const withError = React.createElement(WithErrorMessage, {child: element, meta})
@@ -61,14 +61,18 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
     return wrapper ? wrapper({componentStore, children: element}) : withError;
 });
 
-function initDefaultValue(store: Store, componentStore: ComponentStore, definition: ComponentDefinition<any>) {
+function useDefaultProps(definition: ComponentDefinition<any>) {
+    return useMemo(() => {
+        const props: Record<string, any> = {}
 
-    _.forIn(definition.annotations, (value, key) => {
-        if (value.isSystem) return
+        _.forIn(definition.annotations, (value, key) => {
+            if (value.isSystem) return
+            if (value.isFunction) return
+            if (value.isContainer) return
 
-        if (value.isFunction)
-            componentStore.props[key] = transformEvent(store, key, componentStore, definition)
-        else
-            componentStore.props[key] = componentStore.props[key] ?? value.defaultValue
-    })
+            props[key] = value.defaultValue
+        })
+
+        return props
+    }, [])
 }

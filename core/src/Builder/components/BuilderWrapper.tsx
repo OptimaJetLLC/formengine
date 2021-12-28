@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component, createRef, ReactElement, ReactNode, RefObject} from "react";
 import styled from '@emotion/styled';
 import {Draggable, DraggableProvided, Droppable, DroppableProvided} from "react-beautiful-dnd";
 import {observer} from "mobx-react";
@@ -7,31 +7,39 @@ import Selection from './Selection'
 import Resizer from './Resizer';
 import {ComponentStore} from "../../stores/ComponentStore";
 import {Box} from "../../components/UI/Containers";
-import {isCombineEnabled} from "../../features/dnd/utils";
 import {useStore} from "../../utils/StoreContext";
 import {Store} from "../../stores/Store";
+import {ComponentDefinition} from "../../features/annotation/types";
+import _ from "lodash";
 
 interface BuilderWrapperProps {
     componentStore: ComponentStore,
-    children: any
+    children: ReactElement
     store: Store
 }
 
 interface BuilderWrapperState {
-    containerRef: any,
     hovered?: boolean,
 }
 
 //TODO вынести функционал DnD в features
 const BuilderWrapper = observer(
-    class BuilderWrapper extends React.Component<BuilderWrapperProps, BuilderWrapperState> {
-        containerRef: any = React.createRef();
+    class BuilderWrapper extends Component<BuilderWrapperProps, BuilderWrapperState> {
+        containerRef: RefObject<HTMLDivElement> = createRef();
+        componentDefinition: ComponentDefinition<any>
+
+        //TODO сейчас неоптимальный поиск по аннотациям каждый раз. Не учитвает возможность нескольких свойств контейнеров
+        get isCombine(): boolean {
+            return Boolean(_.find(this.componentDefinition.annotations, {isContainer: true}))
+                && !this.props.componentStore.children?.length
+        }
 
         constructor(props: BuilderWrapperProps) {
             super(props);
-            this.state = {
-                containerRef: React.createRef()
-            };
+
+            this.componentDefinition = props.store.view.get(props.componentStore.type);
+
+            this.state = {};
         }
 
         isSelected = () => {
@@ -60,11 +68,11 @@ const BuilderWrapper = observer(
             const {hovered} = this.state;
             const selected = this.isSelected();
             const {key} = this.props.componentStore;
+            //const isCombine = isCombineEnabled(componentStore, this.props.store);
 
-            const isCombine = isCombineEnabled(componentStore, this.props.store);
             return (
-                <Droppable droppableId={key} isCombineEnabled={isCombine}
-                           isDropDisabled={!isCombine && !!this.props?.componentStore?.children}
+                <Droppable droppableId={key} isCombineEnabled={this.isCombine}
+                           isDropDisabled={!this.isCombine && !!this.props.componentStore?.children}
                     //direction={!!this.props?.componentStore?.children ? 'horizontal' : 'vertical'}
                 >
                     {(provider: DroppableProvided, dropSnap) => {
@@ -85,7 +93,7 @@ const BuilderWrapper = observer(
                                         return (
                                             <Container ref={(ref: any) => {
                                                 provided.innerRef(ref);
-                                                this.containerRef.current = ref;
+                                                this.containerRef = ref;
                                             }}
                                                        {...provided.draggableProps}
                                                        {...provided.dragHandleProps}
@@ -103,7 +111,7 @@ const BuilderWrapper = observer(
                                                     <ControlBar referenceElement={this.containerRef}
                                                                 elementKey={this.props?.componentStore?.key}/>
                                                 </>}
-                                                {isCombine
+                                                {this.isCombine
                                                     ? <Box p={30}>DROP HERE</Box>
                                                     : React.cloneElement(children, {
                                                         style: {
@@ -122,10 +130,10 @@ const BuilderWrapper = observer(
                 </Droppable>
             )
         }
-})
+    })
 
 const Container = styled.div`
-    position: relative;
+  position: relative;
 `
 
 const WrapperHoc = (props: BuilderWrapperProps) => {

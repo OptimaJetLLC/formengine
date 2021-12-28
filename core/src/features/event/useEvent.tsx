@@ -10,7 +10,8 @@ import {useStore} from "../../utils/StoreContext";
 //TODO Optimize?
 export function useEvent(componentStore: ComponentStore, componentDefinition: ComponentDefinition<any>) {
     const store = useStore()
-    const eventToActionsMap = useLocalObservable<Record<string, any[]>>(() => ({}))
+    const eventMap = useLocalObservable<Record<string, any>>(() => ({}))
+    const eventActionMap = useLocalObservable<Record<string, any[]>>(() => ({}))
 
     useEffect(() => {
         let disposer = autorun(() => {
@@ -20,13 +21,13 @@ export function useEvent(componentStore: ComponentStore, componentDefinition: Co
 
             _.forIn(events, (value, key) => {
                 const [handle, actions] = transformEvent(store, key, componentStore, componentDefinition)
-                componentStore.props[key] = handle
-                eventToActionsMap[key] = actions
+                eventMap[key] = handle
+                eventActionMap[key] = actions
             })
         })
 
         return () => disposer();
     }, []);
 
-    return eventToActionsMap
+    return [eventMap, eventActionMap]
 }

@@ -6,6 +6,7 @@ import {header} from "./Header";
 import {dropdown} from "./Dropdown";
 import {container} from "./Container";
 import {button} from "./Button";
+import {tab} from "./Tab";
 
 export const rsuite = new DefineRegistry([
     textArea,
@@ -15,6 +16,7 @@ export const rsuite = new DefineRegistry([
     dropdown,
     container,
     button,
+    tab,
 ])
 
 
