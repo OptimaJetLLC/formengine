@@ -8,6 +8,7 @@ import {moveArrayItem} from "../../utils/moveArrayItem";
 import {removeEventAndDefaultValue} from "./utils/removeEventAndDefaultValue";
 import {FormikContextType} from "formik";
 import {DefineRegistry} from "../../utils/DefineRegistry";
+import {useStore} from "../../utils/StoreContext";
 
 
 class Store {
@@ -183,7 +184,7 @@ class Store {
         return name + (Math.random() + 1).toString(36).substring(7);
     }
 
-    findNode = (key?: string) => {
+    findNode(key?: string) {
         return find(this.tree)
 
         function find(node: Node): Node | null {
@@ -200,7 +201,7 @@ class Store {
         }
     }
 
-    getAllKeys = () => {
+    getAllKeys() {
         const keys: string[] = []
         getKey(this.tree)
         return keys
@@ -212,7 +213,7 @@ class Store {
         }
     }
 
-    getAllNodes = () => {
+    getAllNodes() {
         const nodes: Node[] = []
         getKey(this.tree)
         return nodes
@@ -224,12 +225,51 @@ class Store {
         }
     }
 
-    treeMap = (data?: ComponentStore[], callback?: Function) => {
+    treeMap(data?: ComponentStore[], callback?: Function) {
         data?.forEach((node: ComponentStore) => {
             callback?.(node);
             if (node.children) this.treeMap(node.children, callback);
         });
+    }
+
+    download = () => {
+        const data = "data:text/json;charset=utf-8," + encodeURIComponent(this.stringifyForm());
+
+        const link = document.createElement('a');
+        link.setAttribute('href', data);
+        link.setAttribute('download', "form.json");
+        document.body.appendChild(link);
+        link.onclick = () => {
+            document.body.removeChild(link);
+        };
+        link.click();
     };
+
+    upload = () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+
+        input.onchange = e => {
+
+            const target = e.target as HTMLInputElement;
+            const file: File = (target.files as FileList)[0];
+
+            // setting up the reader
+            const reader = new FileReader();
+            reader.readAsText(file, 'UTF-8');
+
+            // here we tell the reader what to do when it's done reading...
+            reader.onload = readerEvent => {
+                const content: string = readerEvent.target?.result as string ?? ""; // this is the content!
+
+                this.parseForm(content)
+            }
+
+        }
+
+        input.click();
+    };
+
 }
 
 export {Store}

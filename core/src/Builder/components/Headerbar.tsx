@@ -16,8 +16,6 @@ import * as faRedo from '@fortawesome/free-solid-svg-icons/faRedo';
 import * as faSitemap from '@fortawesome/free-solid-svg-icons/faSitemap';
 
 import AddButton from "./AddButton";
-import upload from "../utils/upload";
-import download from "../utils/download";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 import {useStore} from "../../utils/StoreContext";
 
@@ -31,10 +29,10 @@ const HeaderBar = observer(() => {
         const local: any = {}
 
         return <Dropdown title="Form">
-            <Dropdown.Item onSelect={download} icon={<FileDownloadIcon/>}>
+            <Dropdown.Item onSelect={store.download} icon={<FileDownloadIcon/>}>
                 {local.download ?? "Download"}
             </Dropdown.Item>
-            <Dropdown.Item onSelect={upload} icon={<FileUploadIcon/>}>
+            <Dropdown.Item onSelect={store.upload} icon={<FileUploadIcon/>}>
                 {local.upload ?? "Upload"}
             </Dropdown.Item>
             <Dropdown.Item /*onSelect={onPrint}*/ icon={<FaIcon icon={faPrint as unknown as IconDefinition}/>}>
