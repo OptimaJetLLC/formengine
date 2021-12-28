@@ -5,7 +5,7 @@ import {observer} from "mobx-react";
 import {ComponentDefinition} from "../features/annotation/types";
 import {ComponentStore} from "../stores/ComponentStore";
 import {useEvent} from "../features/event/useEvent";
-import {useValidation} from "../features/validation/useValidation";
+import {FieldProps, useValidation} from "../features/validation/useValidation";
 import {toValidateScheme} from "../features/validation/toValidateScheme";
 import {WithErrorMessage} from "../features/validation/withErrorMessage";
 import {transformStyles} from "../features/style";
@@ -29,19 +29,9 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
         key: componentStore.key,
         scheme: toValidateScheme(componentStore.validation),
     })
+    const substitutedValues = useSubstitution(componentStore.props)
 
-    //injectValidation()
-    useEffect(() => {
-        if (eventActions["onChange"]) eventActions["onChange"].push(field.setValue)
-        else events.onChange = field.setValue
-
-        if (eventActions["onBlur"]) eventActions["onBlur"].push(() => field.setTouched())
-        else events.onBlur = () => field.setTouched()
-
-        //props.value = field.value
-    }, [events])
-
-    useSubstitution(currentProps, componentDefinition)
+    useInjectedValidation(events, eventActions, field)
 
     currentProps.children = currentProps.children
         || componentStore.children?.map(child =>
@@ -50,7 +40,7 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
     currentProps.className = transformStyles(componentStore);
 
     const storedProps = toJS(componentStore.props)
-    const props = Object.assign(defaultProps, currentProps, events, storedProps)
+    const props = Object.assign(defaultProps, events, storedProps, currentProps, substitutedValues)
     const element = React.createElement(componentDefinition.view, props)
 
     //const element = React.createElement(componentDefinition.view, {...props, ...eventMap, ...componentStore.props})
@@ -75,4 +65,16 @@ function useDefaultProps(definition: ComponentDefinition<any>) {
 
         return props
     }, [])
+}
+
+function useInjectedValidation(events: Record<string, any>, eventActions: Record<string, any[]>, field: FieldProps) {
+    useEffect(() => {
+        if (eventActions["onChange"]) eventActions["onChange"].push(field.setValue)
+        else events.onChange = field.setValue
+
+        if (eventActions["onBlur"]) eventActions["onBlur"].push(() => field.setTouched())
+        else events.onBlur = () => field.setTouched()
+
+        //props.value = field.value
+    }, [events])
 }

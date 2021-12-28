@@ -1,37 +1,31 @@
-import {ComponentDefinition} from "../annotation/types";
-import {useContext, useEffect, useRef} from "react";
+import {useContext} from "react";
 import {FormikContext} from "formik";
 import {useStore} from "../../utils/StoreContext";
+import {useObserver} from "mobx-react";
 
-export const useSubstitution = (props: Record<string, any>, {annotations}: ComponentDefinition<any>) => {
+export const useSubstitution = (props: Readonly<Record<string, any>>) => {
     const store = useStore()
-    let formik = useContext(FormikContext)
+    const formik = useContext(FormikContext)
 
-    const originalProps: any = useRef({})
+    return useObserver(() => {
+        let result: Record<string, any> = {}
 
-    useEffect(() => {
         for (let key in props) {
-            let value = props[key]
+            const value = props[key]
             if (typeof value !== "string" || key === "value") continue
 
             if (store.isBuilderMode) continue
 
-            if (!originalProps.current[key])
-                originalProps.current[key] = props[key]
-
-            props[key] = substitute(originalProps.current[key], formik.values)
+            result[key] = substitute(value, formik.values)
         }
 
-        return () => {
-            Object.assign(props, originalProps.current)
-        }
-
+        return result
     })
-}
 
-const substitute = (value: string, values: any) => {
 
-    return value.replace(/{([\w ]+)}/g, (match, replaceable) => {
-        return values[replaceable] ? values[replaceable] : match
-    })
+    function substitute(value: string, values: any) {
+        return value.replace(/{([\w ]+)}/g, (match, replaceable) => {
+            return values[replaceable] ? values[replaceable] : match
+        })
+    }
 }

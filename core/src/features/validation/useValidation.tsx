@@ -11,7 +11,7 @@ interface ValidationConfig {
     scheme?: BaseSchema
 }
 
-interface FieldProps {
+export interface FieldProps {
     setTouched: (value?: boolean, shouldValidate?: boolean) => void;
     setError: (value: any) => void;
     setValue: (value: any, shouldValidate?: boolean) => void;
