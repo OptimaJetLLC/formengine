@@ -33,8 +33,8 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
 
     useInjectedValidation(events, eventActions, field)
 
-    currentProps.children = currentProps.children
-        || componentStore.children?.map(child =>
+    if (componentStore.children)
+        currentProps.children = componentStore.children.map(child =>
             <Component key={child.key} componentStore={child} wrapper={wrapper}/>);
 
     currentProps.className = transformStyles(componentStore);
