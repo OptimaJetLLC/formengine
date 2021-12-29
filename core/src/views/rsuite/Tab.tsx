@@ -1,16 +1,19 @@
 import {define} from "../../features/annotation/define";
 import {Nav} from "rsuite";
 import {useState} from "react";
+import {reactElements, string} from "../../features/annotation";
 
-//TODO
+
+interface TabProps {
+    //navItems:
+}
+
 const Tab = () => {
     const [active, setActive] = useState('home');
 
     return (
-        <Nav activeKey={active} onSelect={setActive} >
-            <Nav.Item eventKey="home">
-                Home
-            </Nav.Item>
+        <Nav  activeKey={active} onSelect={setActive}>
+            <Nav.Item eventKey="home"> Home </Nav.Item>
             <Nav.Item eventKey="news">News</Nav.Item>
             <Nav.Item eventKey="solutions">Solutions</Nav.Item>
             <Nav.Item eventKey="products">Products</Nav.Item>
@@ -22,3 +25,13 @@ const Tab = () => {
 
 export const tab = define("Tab", Tab, {})
 
+export const nav = define("Nav", Nav, {
+    children: reactElements,
+    activeKey: string,
+    appearance: string,
+})
+
+export const navItem = define("NavItem", Nav.Item, {
+    eventKey: string,
+    children: string,
+})

@@ -1,7 +1,7 @@
-import {define} from "../../features/annotation/define";
+import {define} from "./annotation/define";
 
 //TODO remove it? Or сделать копмонентом непривязанным к rsuite
-const MyDiv = () => {
+const Page = () => {
 
     return (
         <div>
@@ -10,5 +10,5 @@ const MyDiv = () => {
     );
 }
 
-export const root = define("root", MyDiv, {})
+export const page = define("Page", Page, {})
 

@@ -1,14 +1,16 @@
 import {ComponentDefinition} from "../features/annotation/types";
+import {page} from "../features/Page";
 
 export class DefineRegistry {
     #map = new Map<string, ComponentDefinition<any>>()
 
     constructor(defines: ComponentDefinition<any>[] = []) {
+        this.define(page)
         defines.forEach(this.define.bind(this))
     }
 
     define(definition: ComponentDefinition<any>) {
-        this.#map.set(definition.name === "root" ? "" : definition.name, definition)
+        this.#map.set(definition.name, definition)
     }
 
     get (name: string): ComponentDefinition<any>{

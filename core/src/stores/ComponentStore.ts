@@ -15,9 +15,9 @@ export class ComponentStore {
     validation?: ParsableValidateSchema
     children?: ComponentStore[]
 
-    constructor(key: string, definition?: ComponentDefinition<any>) {
+    constructor(key: string, type: string) {
         this.key = key;
-        if (definition) this.type = definition.name;
+        this.type = type;
 
         makeAutoObservable(this, {
             events: observable.deep,

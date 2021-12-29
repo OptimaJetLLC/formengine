@@ -7,7 +7,7 @@ import {StoreProvider} from "./utils/StoreContext";
 
 
 const App = observer(() => {
-    console.log(rsuite)
+    
     if (rsuite.all().length === 0) return null
     //TODO push StoreProvider in form builder like hoc or smt
     return (

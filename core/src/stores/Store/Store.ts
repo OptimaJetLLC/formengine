@@ -5,10 +5,9 @@ import {Node} from "../../utils/Node";
 import {Action, EventName, FullActionDefinition, Modifiers, OverArgs} from "../../utils/Types";
 import {toWeakEvent} from "./utils/toWeakEvent";
 import {moveArrayItem} from "../../utils/moveArrayItem";
-import {removeEventAndDefaultValue} from "./utils/removeEventAndDefaultValue";
 import {FormikContextType} from "formik";
 import {DefineRegistry} from "../../utils/DefineRegistry";
-import {useStore} from "../../utils/StoreContext";
+import {page} from "../../features/Page";
 
 
 class Store {
@@ -39,7 +38,7 @@ class Store {
     }
 
     get tree(): Node {
-        let componentStore = new ComponentStore("")
+        let componentStore = new ComponentStore(page.name, page.name)
         let root = new Node(this, componentStore)
         componentStore.children = this.model.components
         root.children = this.model.components.map(child => new Node(this, child, root));
@@ -96,23 +95,7 @@ class Store {
     }
 
     stringifyForm() {
-        let clone = _.cloneDeep(toJS(this.model))
-        clone.components.forEach(removeEventAndDefaultValue.bind(null, this))
-
-        return JSON.stringify(clone, removeRedundantProps, 2)
-
-        function removeRedundantProps(key: any, value: any) {
-            if (key === "children" && value?.[0] && value[0].$$typeof === Symbol.for('react.element')) {
-                return undefined
-            }
-
-            if (key === "style") {
-                return undefined
-            }
-
-
-            return value;
-        }
+        return JSON.stringify(this.model, null, 2)
     }
 
     //TODO post processing
@@ -132,10 +115,8 @@ class Store {
     }
 
     add(name: string, targetKey: string, index: number = 0, combine?: boolean) {
-        const componentDefinition = this.view.get(name);
-        if (!componentDefinition) return
         const key = this._generateKey(name);
-        const component = new ComponentStore(key, componentDefinition);
+        const component = new ComponentStore(key, name);
         this.model.components.push(component);
         this.move(key, targetKey, index, combine);
     }
@@ -181,7 +162,7 @@ class Store {
     }
 
     private _generateKey(name: string) {
-        return name + (Math.random() + 1).toString(36).substring(7);
+        return name + " " + (Math.random() + 1).toString(36).substring(7);
     }
 
     findNode(key?: string) {

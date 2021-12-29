@@ -27,7 +27,7 @@ export const event = new AnnotationBuilder<Function | undefined>({
 })
 export const validation = new AnnotationBuilder<any>({component: ValidateEditor, section: Section.Validation})
 
-export const reactnode = new AnnotationBuilder<ReactNode>({isContainer: true, component: Container})
+export const reactElements = new AnnotationBuilder<ReactNode>({isContainer: true, component: Container})
 
 //Аннотация: спсиок допустимых параметров - просто массив
 //Аннотация: список допустимых параметров с его label - value. Label всегда текст, а значение принимает заданный тип
