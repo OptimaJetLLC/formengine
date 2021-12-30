@@ -1,4 +1,4 @@
-import React, {Component, createRef, ReactElement, ReactNode, RefObject} from "react";
+import React, {Component, createRef, ReactElement, RefObject} from "react";
 import styled from '@emotion/styled';
 import {Draggable, DraggableProvided, Droppable, DroppableProvided} from "react-beautiful-dnd";
 import {observer} from "mobx-react";
@@ -53,7 +53,7 @@ const BuilderWrapper = observer(
         onMouseOver = (e: any) => {
             e.preventDefault();
             e.stopPropagation();
-            const {isDragging, isResizing, isMoving} = this.props.store;
+            const {isDragging, isResizing, isMoving} = this.props.store.dnd;
             this.setState({
                 hovered: !(isDragging && isResizing && isMoving)
             })
@@ -79,17 +79,17 @@ const BuilderWrapper = observer(
                         return (
                             <div ref={provider.innerRef} {...provider.droppableProps}
                                  style={
-                                     ((this.props.store.draggingOverKey === key))
+                                     ((this.props.store.dnd.draggingOverKey === key))
                                          ? {backgroundColor: "var(--highlight-color)", outline: "2px dashed #3498ff"}
                                          : {}
                                  }
                             >
                                 <Draggable key={key} draggableId={key} index={0}
                                            isDragDisabled={
-                                               this.props.store.isResizing || (componentStore.type === "DropZone")}>
+                                               this.props.store.dnd.isResizing || (componentStore.type === "DropZone")}>
                                     {(provided: DraggableProvided, snapshot) => {
 
-                                        if (snapshot.isDragging) this.props.store.draggingElementKey = key;
+                                        if (snapshot.isDragging) this.props.store.dnd.draggingElementKey = key;
                                         return (
                                             <Container ref={(ref: any) => {
                                                 provided.innerRef(ref);

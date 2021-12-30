@@ -10,7 +10,7 @@ const AddButton = observer(() => {
     const store = useStore()
     const [open, setOpen] = useState(false);
 
-    const {isDragging} = store;
+    const {isDragging} = store.dnd;
     useEffect(() => {
         if (isDragging) setOpen(false)
     }, [isDragging]);

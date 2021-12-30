@@ -1,6 +1,5 @@
 import {createContext, ReactNode, useContext} from "react";
 import {Store} from "../stores/Store";
-import {DefineRegistry} from "./DefineRegistry";
 
 //const StoreContext = createContext<Store | undefined>(new Store(new DefineRegistry()));
 const StoreContext = createContext<Store | undefined>(undefined);
@@ -23,11 +22,15 @@ const useStore = () => {
     throw new Error("Context didn't found!")
 }
 
-const StoreProvider = ({view, children}: { view: DefineRegistry, children: ReactNode }) => {
-    const store = useContext(StoreContext)
+interface StoreProviderProps {
+    store: Store
+    children: ReactNode
+}
+
+const StoreProvider = ({store, children}: StoreProviderProps) => {
 
     return (
-        <StoreContext.Provider value={store ?? new Store(view)}>
+        <StoreContext.Provider value={store}>
             {children}
         </StoreContext.Provider>
     )

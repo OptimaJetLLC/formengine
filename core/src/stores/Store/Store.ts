@@ -7,20 +7,22 @@ import {toWeakEvent} from "./utils/toWeakEvent";
 import {moveArrayItem} from "../../utils/moveArrayItem";
 import {FormikContextType} from "formik";
 import {DefineRegistry} from "../../utils/DefineRegistry";
-import {page} from "../../features/Page";
+import {page} from "../../components/Page";
+import {DndStore} from "../DndStore";
 
 
-class Store {
+export class Store {
+    readonly view: DefineRegistry
+
+    dnd: DndStore = new DndStore()
+    //tree: TreeStore
+
     currentNode: Node | null = null
-    isDragging: boolean = false
-    draggingOverKey?: string
-    draggingElementKey?: string
-    isResizing?: boolean
-    isMoving?: boolean
     isBuilderMode: boolean = true
     showRightPanel: boolean = true
     showLeftPanel: boolean = true
     styles?: any
+
     formContext?: FormikContextType<any>
 
     allEvents = new Map<ComponentStore, Record<EventName, FullActionDefinition[]>>()
@@ -45,23 +47,19 @@ class Store {
         return root
     }
 
-    //TODO init in constructor?
-    readonly view: DefineRegistry
-
     //TODO set in provider
     //TODO new instance for each form view
     constructor(view: DefineRegistry) {
         this.view = view
+
         makeObservable(this, {
+            dnd: observable.deep,
             allEvents: observable.deep,
             currentNode: observable.ref,
             formContext: observable.ref,
-            isDragging: observable.ref,
             isBuilderMode: observable.ref,
             showRightPanel: observable.ref,
             showLeftPanel: observable.ref,
-            draggingOverKey: observable.ref,
-            draggingElementKey: observable.ref,
             model: observable,
             tree: computed,
             clear: action.bound,
@@ -252,5 +250,3 @@ class Store {
     };
 
 }
-
-export {Store}

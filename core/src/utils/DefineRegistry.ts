@@ -1,5 +1,5 @@
 import {ComponentDefinition} from "../features/annotation/types";
-import {page} from "../features/Page";
+import {page} from "../components/Page";
 
 export class DefineRegistry {
     #map = new Map<string, ComponentDefinition<any>>()

@@ -10,53 +10,57 @@ import {Preview} from "./Preview";
 import Tree from "./components/Tree";
 import PropertiesEditor from "./components/PropertiesEditor/PropertiesEditor";
 import Errors from "./components/Errors";
-import {useStore} from "../utils/StoreContext";
+import {StoreProvider} from "../utils/StoreContext";
 import {Store} from "../stores/Store";
 
 export interface FormBuilderProps extends FormViewerProps {
 
 }
 
-const FormBuilder = (props: FormBuilderProps) => {
-    const store = useStore()
-    const isDragOver = store.draggingOverKey === "";
-    return <Container>
-        <DragDropContext
-            onDragStart={onDragStart.bind(null, store)}
-            onDragUpdate={onDragUpdate.bind(null, store)}
-            onDragEnd={onDragEnd.bind(null, store)}>
-            <HeaderBar/>
-            <Content>
-                {store.showLeftPanel && <LeftPanel>
-                    {store.isBuilderMode
-                        ? <Tree/>
-                        : <Errors style={{margin: 20}}/>
-                    }
-                </LeftPanel>}
+const FormBuilder = observer((props: FormBuilderProps) => {
+    const store = new Store(props.view)
 
-                <FormContainer
-                    // style={
-                    //     isDragOver
-                    //         ? {backgroundColor: "var(--highlight-color)"}
-                    //         : {}
-                    // }
-                >
-                    {store.isBuilderMode
-                        ? <BuilderView getForm={props.getForm} view={props.view}/>
-                        : <Preview getForm={props.getForm} view={props.view}/>
-                    }
-                </FormContainer>
+    return (
+        <StoreProvider store={store}>
+            <Container>
+                <DragDropContext
+                    onDragStart={onDragStart.bind(null, store)}
+                    onDragUpdate={onDragUpdate.bind(null, store)}
+                    onDragEnd={onDragEnd.bind(null, store)}>
+                    <HeaderBar/>
+                    <Content>
+                        {store.showLeftPanel && <LeftPanel>
+                            {store.isBuilderMode
+                                ? <Tree/>
+                                : <Errors style={{margin: 20}}/>
+                            }
+                        </LeftPanel>}
 
-                {store.showRightPanel && <RightPanel>
-                    {store.isBuilderMode
-                        ? <PropertiesEditor/>
-                        : null
-                    }
-                </RightPanel>}
-            </Content>
-        </DragDropContext>
-    </Container>
-}
+                        <FormContainer
+                            // style={
+                            //     isDragOver
+                            //         ? {backgroundColor: "var(--highlight-color)"}
+                            //         : {}
+                            // }
+                        >
+                            {store.isBuilderMode
+                                ? <BuilderView getForm={props.getForm} view={props.view}/>
+                                : <Preview getForm={props.getForm} view={props.view}/>
+                            }
+                        </FormContainer>
+
+                        {store.showRightPanel && <RightPanel>
+                            {store.isBuilderMode
+                                ? <PropertiesEditor/>
+                                : null
+                            }
+                        </RightPanel>}
+                    </Content>
+                </DragDropContext>
+            </Container>
+        </StoreProvider>
+    )
+})
 
 //TODO вынести функционал DnD в features
 const onDragEnd = (store: Store, result: DropResult) => {
@@ -71,13 +75,13 @@ const onDragEnd = (store: Store, result: DropResult) => {
         store.move(draggableId, droppableId || "", destination?.index ?? 0, !!combine);
     }
 
-    store.isDragging = false;
-    store.draggingOverKey = undefined;
-    store.draggingElementKey = undefined;
+    store.dnd.isDragging = false;
+    store.dnd.draggingOverKey = undefined;
+    store.dnd.draggingElementKey = undefined;
 }
 
 const onDragStart = (store: Store) => {
-    store.isDragging = true;
+    store.dnd.isDragging = true;
 }
 
 const onDragUpdate = (store: Store, {destination, combine}: DragUpdate) => {
@@ -85,7 +89,7 @@ const onDragUpdate = (store: Store, {destination, combine}: DragUpdate) => {
     const node = store.findNode(droppableId);
     if (!node) return;
 
-    store.draggingOverKey = !!combine
+    store.dnd.draggingOverKey = !!combine
         ? node.key
         : node.parent?.key ?? "";
 }
@@ -146,4 +150,4 @@ const RightPanel = styled(PanelContainer)`
 //State can be changed from anywhere
 configure({enforceActions: "never"})
 
-export default observer(FormBuilder);
+export {FormBuilder}

@@ -59,7 +59,7 @@ const Border = styled.div`
 const Resizer = (position: string) => {
     const store = useStore()
     return <BorderContainer key={position} onMouseDown={(e: any) => {
-        store.isResizing = true;
+        store.dnd.isResizing = true;
         e.preventDefault();
         e.stopPropagation();
         const move = (e: MouseEvent) => {
@@ -67,7 +67,7 @@ const Resizer = (position: string) => {
         };
         window.addEventListener('mousemove', move);
         window.addEventListener('mouseup', (e) => {
-            store.isResizing = false;
+            store.dnd.isResizing = false;
             window.removeEventListener('mousemove', move);
         }, { once: true });
 
