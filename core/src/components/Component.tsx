@@ -12,14 +12,15 @@ import {transformStyles} from "../features/style";
 import {useSubstitution} from "../features/substitution/useSubstitution";
 import {useStore} from "../utils/StoreContext";
 import {toJS} from "mobx";
+import {ComponentStoreProvider, useComponentStore} from "../utils/ComponentStoreContext";
 
 interface ComponentProps {
-    componentStore: ComponentStore,
     wrapper?: Function
 }
 
-export const Component = observer(({componentStore, wrapper}: ComponentProps) => {
+export const Component = observer(({wrapper}: ComponentProps) => {
     const store = useStore()
+    const componentStore = useComponentStore()
     const currentProps: Record<string, any> = {}
     const componentDefinition = store.view.get(componentStore.type);
 
@@ -35,7 +36,11 @@ export const Component = observer(({componentStore, wrapper}: ComponentProps) =>
 
     if (componentStore.children)
         currentProps.children = componentStore.children.map(child =>
-            <Component key={child.key} componentStore={child} wrapper={wrapper}/>);
+            (
+                <ComponentStoreProvider store={child}>
+                    <Component key={child.key} wrapper={wrapper}/>
+                </ComponentStoreProvider>
+            ));
 
     currentProps.className = transformStyles(componentStore);
 
