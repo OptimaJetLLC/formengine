@@ -13,6 +13,7 @@ import {useSubstitution} from "../features/substitution/useSubstitution";
 import {useStore} from "../utils/StoreContext";
 import {toJS} from "mobx";
 import {ComponentStoreProvider, useComponentStore} from "../utils/ComponentStoreContext";
+import {Components} from "./Components";
 
 interface ComponentProps {
     wrapper?: Function
@@ -35,12 +36,7 @@ export const Component = observer(({wrapper}: ComponentProps) => {
     useInjectedValidation(events, eventActions, field)
 
     if (componentStore.children)
-        currentProps.children = componentStore.children.map(child =>
-            (
-                <ComponentStoreProvider store={child}>
-                    <Component key={child.key} wrapper={wrapper}/>
-                </ComponentStoreProvider>
-            ));
+        currentProps.children = <Components components={componentStore.children} wrapper={wrapper}/>
 
     currentProps.className = transformStyles(componentStore);
 

@@ -7,6 +7,7 @@ import {ObservableFormik} from "./features/validation/components/ObserableFormik
 import {DefineRegistry} from "./utils/DefineRegistry";
 import {useStore} from "./utils/StoreContext";
 import {ComponentStoreProvider} from "./utils/ComponentStoreContext";
+import {Components} from "./components/Components";
 
 export interface FormViewerProps {
     //TODO onEvent?: (key: string, action: any, eventName: string) => void
@@ -30,14 +31,7 @@ export const FormViewer = observer((props: FormViewerProps) => {
     return (
         //<StoreProvider view={rsuite}>
         <ObservableFormik>
-            {store.model.components?.map(componentStore => {
-                return (
-                    <ComponentStoreProvider store={componentStore}>
-                        <Component key={componentStore.key} wrapper={wrapper}/>
-                    </ComponentStoreProvider>
-                )
-                //return React.createElement(Component, {key: componentStore.key, componentStore, wrapper});
-            })}
+            <Components components={store.model.components} wrapper={wrapper}/>
         </ObservableFormik>
         //</StoreProvider>
     )
