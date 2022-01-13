@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import {useStore} from "../../utils/StoreContext";
+import {useStore} from "../../../../utils/StoreContext";
 
 const BorderContainer = styled.div`
   position: absolute;

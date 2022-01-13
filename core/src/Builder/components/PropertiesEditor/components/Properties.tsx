@@ -7,6 +7,7 @@ import {ObservableFormik} from "../../../../features/validation/components/Obser
 import {CenteredLabel} from "../../../../components/UI/Labels";
 import styled from "@emotion/styled";
 import {useStore} from "../../../../utils/StoreContext";
+import {Button} from "rsuite";
 
 interface PropertiesProps {
     activeTab: Section
@@ -32,6 +33,9 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
     return <Container>
         <ObservableFormik>
             {properties}
+
+
+            <Button style={{marginTop: 15}} block appearance="primary" color="red"  children="Delete"/>
         </ObservableFormik>
     </Container>
 });

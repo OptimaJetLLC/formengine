@@ -2,11 +2,11 @@ import React, {useState} from "react";
 import PinIcon from '@rsuite/icons/Pin';
 import {usePopper} from 'react-popper';
 import styled from '@emotion/styled';
-import {FaIcon} from "../../components/UI/Icons";
+import {FaIcon} from "../../../../components/UI/Icons";
 import * as faClone from '@fortawesome/free-regular-svg-icons/faClone'
 import * as faTrash from "@fortawesome/free-regular-svg-icons/faTrashAlt";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
-import {useStore} from "../../utils/StoreContext";
+import {useStore} from "../../../../utils/StoreContext";
 
 const ControlBar = (props: any) => {
     const store = useStore()

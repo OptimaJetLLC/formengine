@@ -1,24 +1,21 @@
 import {configure} from "mobx";
 import {observer} from "mobx-react";
-import React from "react";
+import React, {useMemo} from "react";
 import styled from '@emotion/styled';
 import {DragDropContext, DragUpdate, DropResult} from "react-beautiful-dnd";
 import {FormViewerProps} from "../FormViewer";
-import HeaderBar from "./components/Headerbar";
-import BuilderView from "./BuilderView"
-import {Preview} from "./Preview";
-import Tree from "./components/Tree";
-import PropertiesEditor from "./components/PropertiesEditor/PropertiesEditor";
-import Errors from "./components/Errors";
 import {StoreProvider} from "../utils/StoreContext";
 import {Store} from "../stores/Store";
+import {Header} from "./components/Header/Header";
+import {BuilderView} from "./BuilderView";
+import {Preview} from "./Preview";
 
 export interface FormBuilderProps extends FormViewerProps {
 
 }
 
 const FormBuilder = observer((props: FormBuilderProps) => {
-    const store = new Store(props.view)
+    const store = useMemo(() => new Store(props.view), [])
 
     return (
         <StoreProvider store={store}>
@@ -27,34 +24,13 @@ const FormBuilder = observer((props: FormBuilderProps) => {
                     onDragStart={onDragStart.bind(null, store)}
                     onDragUpdate={onDragUpdate.bind(null, store)}
                     onDragEnd={onDragEnd.bind(null, store)}>
-                    <HeaderBar/>
+
+                    <Header/>
                     <Content>
-                        {store.showLeftPanel && <LeftPanel>
-                            {store.isBuilderMode
-                                ? <Tree/>
-                                : <Errors style={{margin: 20}}/>
-                            }
-                        </LeftPanel>}
-
-                        <FormContainer
-                            // style={
-                            //     isDragOver
-                            //         ? {backgroundColor: "var(--highlight-color)"}
-                            //         : {}
-                            // }
-                        >
-                            {store.isBuilderMode
-                                ? <BuilderView getForm={props.getForm} view={props.view}/>
-                                : <Preview getForm={props.getForm} view={props.view}/>
-                            }
-                        </FormContainer>
-
-                        {store.showRightPanel && <RightPanel>
-                            {store.isBuilderMode
-                                ? <PropertiesEditor/>
-                                : null
-                            }
-                        </RightPanel>}
+                        {store.isBuilderMode
+                            ? <BuilderView getForm={props.getForm} view={props.view}/>
+                            : <Preview getForm={props.getForm} view={props.view}/>
+                        }
                     </Content>
                 </DragDropContext>
             </Container>
@@ -71,6 +47,9 @@ const onDragEnd = (store: Store, result: DropResult) => {
 
     if (source.droppableId === "TOOLBAR")
         store.add(draggableId, droppableId || "", destination?.index ?? 0, !!combine);
+    else if (source.droppableId === "FORM") {
+        store.move(draggableId, "", destination?.index ?? 0, !!combine);
+    }
     else {
         store.move(draggableId, droppableId || "", destination?.index ?? 0, !!combine);
     }
@@ -104,7 +83,7 @@ const PanelContainer = styled.div`
   display: flex;
 `
 
-const LeftPanel = styled(PanelContainer)`
+export const LeftPanel = styled(PanelContainer)`
   //width: 200px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -113,7 +92,7 @@ const LeftPanel = styled(PanelContainer)`
   box-shadow: none;
 `
 
-const FormContainer = styled(PanelContainer)`
+export const FormContainer = styled(PanelContainer)`
   flex: 1;
   display: block;
   width: initial;
@@ -138,7 +117,7 @@ const Content = styled.div`
   //box-shadow: inset 0 0 4px 0 rgb(0 0 0 / 25%);
 `
 
-const RightPanel = styled(PanelContainer)`
+export const RightPanel = styled(PanelContainer)`
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 

@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import styled from '@emotion/styled'
 import {IconButton, Popover as RPopover, Whisper} from 'rsuite';
-import Toolbar from "./Toolbar";
+import Toolbar from "../../Toolbar";
 import PlusIcon from "@rsuite/icons/Plus";
 import {observer} from "mobx-react";
-import {useStore} from "../../utils/StoreContext";
+import {useStore} from "../../../../utils/StoreContext";
 
-const AddButton = observer(() => {
+const UnstyledAddButton = observer(() => {
     const store = useStore()
     const [open, setOpen] = useState(false);
 
@@ -25,6 +25,11 @@ const AddButton = observer(() => {
         </Whisper>
     </div>
 })
+
+export const AddButton = styled(UnstyledAddButton)`
+  position: absolute;
+  transform: translateX(-18px);
+`
 
 const Backdrop = styled.div<{ open: boolean }>`
   position: absolute;
@@ -68,5 +73,3 @@ const ButtonIcon = styled(PlusIcon)`
     transform: rotate(45deg);
   }
 `
-
-export default AddButton;

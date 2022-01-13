@@ -4,7 +4,7 @@ import {Rows} from "../../components/UI/Containers";
 import {useStore} from "../../utils/StoreContext";
 
 
-const Errors = (props: any) => {
+const Errors = observer((props: any) => {
     const store = useStore()
     if (!store.formContext) return null;
     const {errors, values} = store.formContext;
@@ -19,7 +19,7 @@ const Errors = (props: any) => {
             </div>
         </Rows>
     );
-};
+})
 
 const prettyPrint = (obj: Object) => {
     return <pre style={{whiteSpace: "pre-wrap", marginTop: 5}}>{JSON.stringify(filterObj(obj), null, 2)}</pre>;
@@ -40,4 +40,4 @@ const filterObj = (obj: Object) => {
     return filtered;
 }
 
-export default observer(Errors)
+export {Errors}

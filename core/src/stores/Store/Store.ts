@@ -71,10 +71,6 @@ export class Store {
         })
     }
 
-    toggleBuilderMode() {
-        this.isBuilderMode = !this.isBuilderMode;
-    }
-
     addEvent(
         eventKey: string, action: Action | null, args: OverArgs,
         source: ComponentStore, target: ComponentStore | null,

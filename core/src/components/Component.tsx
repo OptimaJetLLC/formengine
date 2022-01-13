@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import _ from "lodash";
-import React, {useEffect, useMemo} from "react";
+import React, {ComponentType, createElement, ReactElement, useEffect, useMemo} from "react";
 import {observer} from "mobx-react";
 import {ComponentDefinition} from "../features/annotation/types";
 import {ComponentStore} from "../stores/ComponentStore";
@@ -12,11 +12,11 @@ import {transformStyles} from "../features/style";
 import {useSubstitution} from "../features/substitution/useSubstitution";
 import {useStore} from "../utils/StoreContext";
 import {toJS} from "mobx";
-import {ComponentStoreProvider, useComponentStore} from "../utils/ComponentStoreContext";
+import {useComponentStore} from "../utils/ComponentStoreContext";
 import {Components} from "./Components";
 
 interface ComponentProps {
-    wrapper?: Function
+    wrapper?: ComponentType<{ child: ReactElement }>
 }
 
 export const Component = observer(({wrapper}: ComponentProps) => {
@@ -49,7 +49,8 @@ export const Component = observer(({wrapper}: ComponentProps) => {
     //TODO for builder need render another component without error message and events
     const withError = React.createElement(WithErrorMessage, {child: element, meta})
 
-    return wrapper ? wrapper({componentStore, children: element}) : withError;
+    //return wrapper ? wrapper({componentStore, children: element}) : withError;
+    return wrapper ? createElement(wrapper, {child: element}) : withError;
 });
 
 function useDefaultProps(definition: ComponentDefinition<any>) {

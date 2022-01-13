@@ -2,14 +2,14 @@ import React, {Component, createRef, ReactElement, RefObject} from "react";
 import styled from '@emotion/styled';
 import {Draggable, DraggableProvided, Droppable, DroppableProvided} from "react-beautiful-dnd";
 import {observer} from "mobx-react";
-import ControlBar from './ControlBar';
-import Selection from './Selection'
-import Resizer from './Resizer';
-import {ComponentStore} from "../../stores/ComponentStore";
-import {Box} from "../../components/UI/Containers";
-import {useStore} from "../../utils/StoreContext";
-import {Store} from "../../stores/Store";
-import {ComponentDefinition} from "../../features/annotation/types";
+import ControlBar from './components/ControlBar';
+import Selection from './components/Selection'
+import Resizer from './components/Resizer';
+import {ComponentStore} from "../../../stores/ComponentStore";
+import {Box} from "../../../components/UI/Containers";
+import {useStore} from "../../../utils/StoreContext";
+import {Store} from "../../../stores/Store";
+import {ComponentDefinition} from "../../annotation/types";
 import _ from "lodash";
 
 interface BuilderWrapperProps {

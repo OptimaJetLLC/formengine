@@ -82,7 +82,7 @@ export class Toolbar extends React.Component<any, ToolbarState> {
                                 <ControlView {...getDefaultValue(control)}
                                              style={{
                                                  outline: isDragging ? '2px solid #1262E2' : 'none',
-                                                 boxShadow: isDragging ? 'var(--dragging-shadow)' : 'none'
+                                                 boxShadow: isDragging ? '#00000038' : 'none'
                                              }}/>
                             </div>
                         );

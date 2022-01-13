@@ -1,5 +1,5 @@
 import {observer} from "mobx-react";
-import React, {useEffect} from "react";
+import React, {ComponentType, ReactElement, useEffect} from "react";
 import {ComponentStore} from "./stores/ComponentStore";
 import {getForm as getStandardForm} from "./utils/getForm";
 import {Component} from "./components/Component";
@@ -12,7 +12,7 @@ import {Components} from "./components/Components";
 export interface FormViewerProps {
     //TODO onEvent?: (key: string, action: any, eventName: string) => void
     getForm: ((code: string) => ComponentStore[]),
-    wrapper?: Function //TODO change type of wrapper
+    wrapper?: ComponentType<{ child: ReactElement }> //TODO change type of wrapper
     view: DefineRegistry
 }
 
