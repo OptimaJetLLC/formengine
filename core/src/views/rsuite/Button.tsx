@@ -1,6 +1,6 @@
 import {Button} from "rsuite";
 import {define} from "../../features/annotation/define";
-import {event, string} from "../../features/annotation";
+import {boolean, event, string} from "../../features/annotation";
 import {setProperty, setValue, validate} from "../../features/event/actions";
 
 export const button = define("Button", Button, {
@@ -8,6 +8,7 @@ export const button = define("Button", Button, {
     //appearance: {title: "Appearance", defaultValue: "default"},
     //title: {title: 'Title', defaultValue: "Button"},
     onClick: event,
+    block: boolean.with({defaultValue: true}),
     //onMouseOver: event,
     //onMouseLeave: event,
 }, [setValue, setProperty, validate])
