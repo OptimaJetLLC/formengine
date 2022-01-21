@@ -17,6 +17,8 @@ export enum Size {
     Large = "lg",
 }
 
+// todo этот компонент должен поддерижвать numeric input only (number format в старом фб)
+
 export const Input = ({style, className, label, ...props}: InputProps) => {
 
     return (
