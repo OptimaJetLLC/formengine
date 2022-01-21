@@ -1,9 +1,11 @@
 import {Input as RInput, InputProps as RInputProps} from "rsuite";
 import {define} from "../../features/annotation/define";
-import {boolean, event, select, string} from "../../features/annotation";
+import {boolean, event, string} from "../../features/annotation";
 import {defineLocalAction} from "../../features/annotation/defineAction";
 import {setValue} from "../../features/event/actions";
 import {LabeledInput} from "../../components/UI/Containers";
+import { AnnotationBuilder } from '../../features/annotation/AnnotationBuilder';
+import { WithPicker } from '../../features/annotation/inputs/Picker';
 
 export interface InputProps extends RInputProps {
     label: string
@@ -35,7 +37,14 @@ export const input = define<InputProps>("Input", Input, {
     placeholder: string,
     readOnly: boolean,
     //size: new AnnotationBuilder<InputProps["size"]>(),
-    size: select,
+    size: new AnnotationBuilder<"lg" | "md" | "sm" | "xs" | undefined>({
+        component: WithPicker([
+            { label: 'Extra small', value: 'xs' },
+            { label: 'Small', value: 'sm' },
+            { label: 'Medium', value: 'md' },
+            { label: 'Large', value: 'lg' },
+        ]),
+    }),
     //size: new AnnotationBuilder<"lg" | "md" | "sm" | "xs" | undefined>()
     onChange: event,
     value: undefined,

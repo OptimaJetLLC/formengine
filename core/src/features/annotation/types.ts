@@ -1,22 +1,22 @@
-import {FunctionComponent} from "react";
-import {AnnotationBuilder} from "./AnnotationBuilder";
-import {ComponentStore} from "../../stores/ComponentStore";
-import {Annotation} from "./Annotation";
-import {Action} from "../../utils/Types";
+import { FunctionComponent } from 'react';
+import { AnnotationBuilder } from './AnnotationBuilder';
+import { ComponentStore } from '../../stores/ComponentStore';
+import { Annotation } from './Annotation';
+import { Action } from '../../utils/Types';
 
 export type Annotations<T extends object> =
     {
-        [key in keyof OmitUnimportant<T> ]:
-            T[key] extends (Function | undefined) ?
-                AnnotationBuilder<Function | undefined> :
-                AnnotationBuilder<T[key]> | undefined
+        [key in keyof OmitUnimportant<T>]:
+        T[key] extends (Function | undefined) ?
+            AnnotationBuilder<Function | undefined> :
+            AnnotationBuilder<T[key]> | undefined;
     };
 
 /** Remove some useless property for annotation defining which we define automatics */
-type OmitUnimportant<T extends object> = Omit<T, "style" | "className" | "classPrefix">
+type OmitUnimportant<T extends object> = Omit<T, 'style' | 'className' | 'classPrefix'>;
 
 export interface ComponentDefinition<T extends object> {
-    name: string
+    name: string;
     view: FunctionComponent<T>;
     annotations: Record<string, Annotation<T>>;
     actions?: Action[];
@@ -25,10 +25,10 @@ export interface ComponentDefinition<T extends object> {
 
 /** Interface for property editor */
 export interface PropertyEditorProps<T> {
-    componentStore: ComponentStore
-    annotation: Annotation<T>
+    componentStore: ComponentStore;
+    annotation: Annotation<T>;
 
     value?: any;
-    onChange?: (...args: any[]) => void
-    onBlur?: (...args: any[]) => void
+    onChange?: (...args: any[]) => void;
+    onBlur?: (...args: any[]) => void;
 }

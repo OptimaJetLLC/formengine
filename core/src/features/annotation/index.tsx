@@ -3,7 +3,6 @@ import {AnnotationBuilder} from "./AnnotationBuilder";
 import Key from "./inputs/Key";
 import String from "./inputs/String";
 import Boolean from "./inputs/Boolean";
-import Picker from "./inputs/Picker";
 import Event from "../event/components/EventEditor";
 import Style from "./inputs/Style";
 import {Section} from "../../Builder/components/PropertiesEditor/Section";
@@ -14,8 +13,6 @@ import {Container} from "./inputs/Container";
 export const key = new AnnotationBuilder<string>({component: Key, isSystem: true}).isRequired("")
 export const string = new AnnotationBuilder<string | undefined>({component: String})
 export const boolean = new AnnotationBuilder<boolean | undefined>({component: Boolean})
-//TODO Like function
-export const select = new AnnotationBuilder<"lg" | "md" | "sm" | "xs" | undefined>({component: Picker})
 export const style = new AnnotationBuilder<Record<string, string>[] | undefined>({
     component: Style,
     section: Section.Style

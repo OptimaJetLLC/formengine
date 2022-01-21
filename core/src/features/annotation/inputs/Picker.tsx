@@ -1,20 +1,24 @@
-import {PropertyEditorProps} from "../types";
-import {Form, InputPicker} from "rsuite";
+import { PropertyEditorProps } from '../types';
+import { Form, InputPicker } from 'rsuite';
+
+export interface PickerValue {
+    label: string;
+    value: string;
+}
 
 //TODO this uncompleted
-export default <T extends unknown>({componentStore, annotation}: PropertyEditorProps<T>) => (
-    <div>
-        <Form.ControlLabel>{annotation.title}</Form.ControlLabel>
-        <InputPicker
-            block
-            value={componentStore.props[annotation.key]}
-            onChange={value => componentStore.props[annotation.key] = value as T}
-            data={[
-                {label: "XSmall", value: "xs"},
-                {label: "Small", value: "sm"},
-                {label: "Medium", value: "md"},
-                {label: "Large", value: "lg"}
-            ]}
-        />
-    </div>
-)
+export const WithPicker = (pickerValues: PickerValue[]) => {
+    return <T extends unknown>({ componentStore, annotation }: PropertyEditorProps<T>) => {
+        return (
+            <div>
+                <Form.ControlLabel>{annotation.title}</Form.ControlLabel>
+                <InputPicker
+                    block
+                    value={componentStore.props[annotation.key]}
+                    onChange={value => componentStore.props[annotation.key] = value as T}
+                    data={pickerValues}
+                />
+            </div>
+        )
+    }
+}
