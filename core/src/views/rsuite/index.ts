@@ -6,6 +6,7 @@ import {dropdown} from "./Dropdown";
 import {container} from "./Container";
 import {button} from "./Button";
 import {nav, navItem, tab} from "./Tab";
+import { staticContent } from './StaticContent';
 
 export const rsuite = new DefineRegistry([
     textArea,
@@ -16,6 +17,7 @@ export const rsuite = new DefineRegistry([
     button,
     tab,
     nav, navItem,
+    staticContent,
 ])
 
 
