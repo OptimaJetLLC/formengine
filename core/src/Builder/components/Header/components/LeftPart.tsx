@@ -1,17 +1,18 @@
-import {observer} from "mobx-react";
-import {useStore} from "../../../../utils/StoreContext";
-import {ButtonToolbar, Dropdown, IconButton} from "rsuite";
-import {FaIcon} from "../../../../components/UI/Icons";
-import * as faSitemap from "@fortawesome/free-solid-svg-icons/faSitemap";
-import {IconDefinition} from "@fortawesome/fontawesome-common-types";
-import * as faUndo from "@fortawesome/free-solid-svg-icons/faUndo";
-import * as faRedo from "@fortawesome/free-solid-svg-icons/faRedo";
-import React from "react";
-import FileDownloadIcon from "@rsuite/icons/FileDownload";
-import FileUploadIcon from "@rsuite/icons/FileUpload";
-import * as faPrint from "@fortawesome/free-solid-svg-icons/faPrint";
-import SettingIcon from "@rsuite/icons/Setting";
-import * as faTrash from "@fortawesome/free-solid-svg-icons/faTrash";
+import { observer } from 'mobx-react';
+import { useStore } from '../../../../utils/StoreContext';
+import { ButtonToolbar, Dropdown, IconButton } from 'rsuite';
+import { FaIcon } from '../../../../components/UI/Icons';
+import * as faSitemap from '@fortawesome/free-solid-svg-icons/faSitemap';
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
+import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo';
+import * as faRedo from '@fortawesome/free-solid-svg-icons/faRedo';
+import React from 'react';
+import FileDownloadIcon from '@rsuite/icons/FileDownload';
+import FileUploadIcon from '@rsuite/icons/FileUpload';
+import * as faPrint from '@fortawesome/free-solid-svg-icons/faPrint';
+import SettingIcon from '@rsuite/icons/Setting';
+import * as faTrash from '@fortawesome/free-solid-svg-icons/faTrash';
+import { useTranslation } from 'react-i18next';
 
 export const LeftPart = observer(() => {
     const store = useStore()
@@ -33,6 +34,7 @@ export const LeftPart = observer(() => {
             }} disabled={true /*TODO !store.canRedo*/}
                         icon={<FaIcon icon={faRedo as unknown as IconDefinition}/>}/>
             {/* <IconButton onClick={this.onLibrary.bind(this)} icon={<Icon icon="info" />}>{local.library ? local.library : "Library"}</IconButton> */}
+            <LangSwitch/>
         </ButtonToolbar>
     </div>;
 })
@@ -63,3 +65,21 @@ const FileActions = observer(() => {
         </Dropdown.Item>
     </Dropdown>
 })
+
+const LangSwitch = observer(() => {
+    const { t } = useTranslation();
+    const store = useStore()
+
+    const languages = ['en', 'ru'];
+
+    const children: any[] = [];
+    languages.forEach((value, index) => {
+        children.push(<Dropdown.Item key={index} onSelect={store.changeLang} eventKey={value}>
+            {value}
+        </Dropdown.Item>);
+    });
+
+    return <Dropdown title={t('translation')}>
+        {children}
+    </Dropdown>;
+});

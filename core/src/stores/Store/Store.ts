@@ -9,7 +9,7 @@ import {FormikContextType} from "formik";
 import {DefineRegistry} from "../../utils/DefineRegistry";
 import {page} from "../../components/Page";
 import {DndStore} from "../DndStore";
-
+import i18n from 'i18next';
 
 export class Store {
     readonly view: DefineRegistry
@@ -244,5 +244,9 @@ export class Store {
 
         input.click();
     };
+
+    changeLang = async (lang: string) => {
+        await i18n.changeLanguage(lang);
+    }
 
 }
