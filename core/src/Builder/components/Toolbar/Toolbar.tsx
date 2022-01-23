@@ -8,6 +8,7 @@ import {ToolbarItem, ToolbarItems} from "./Items";
 import {ComponentDefinition} from "../../../features/annotation/types";
 import _ from "lodash";
 import {Centered} from "../../../components/UI/Containers";
+import { Trans } from 'react-i18next';
 
 interface ToolbarState {
     filtered?: ToolbarItem | null,
@@ -27,22 +28,22 @@ export class Toolbar extends React.Component<any, ToolbarState> {
                 {(provided: DroppableProvided) => (
                     <Container ref={provided.innerRef}>
                         <Header>
-                            <h4>Elements</h4>
+                            <h4><Trans i18nKey="toolbar.elements">Elements</Trans></h4>
                             <Centered>
                                 <StyledSearch ref={this.searchForm} style={{maxWidth: 300}}
                                               handleChange={this.handleSearchChange.bind(this)}/>
                             </Centered>
-                            <h4 style={{opacity: 0}}>Elements</h4>
+                            <h4 style={{opacity: 0}}><Trans i18nKey="toolbar.elements">Elements</Trans></h4>
                         </Header>
 
                         {this.state.filtered && !this.state.filtered.controls?.length &&
 
                         <Centered alignItems={"baseline"}>
-                            <Subheader>Not found<br/></Subheader>
+                            <Subheader><Trans i18nKey="toolbar.notFound">Not found</Trans><br/></Subheader>
                             <Button style={{marginLeft: 20}} size={"xs"} onClick={() => {
                                 this.setState({filtered: null})
                                 this.searchForm.current?.reset()
-                            }}>Reset</Button>
+                            }}><Trans i18nKey="toolbar.reset">Reset</Trans></Button>
                         </Centered>
                         }
                         {this.items()}
@@ -56,7 +57,7 @@ export class Toolbar extends React.Component<any, ToolbarState> {
     items = () => {
         const itemsMap = this.state.filtered?.controls?.length ? [this.state.filtered] : [
             {
-                title: "Base controls",
+                title: (<Trans i18nKey="toolbar.baseControls">Base controls</Trans>),
                 controls: this.props.store.view.all()
             }
         ];

@@ -1,6 +1,6 @@
 export enum Section {
-    Main = "Main",
-    Style = "Style",
-    Actions = "Actions",
-    Validation = "Validation",
+    Main = "main",
+    Style = "style",
+    Actions = "actions",
+    Validation = "validation",
 }

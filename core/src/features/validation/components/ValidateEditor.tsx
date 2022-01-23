@@ -2,16 +2,18 @@ import {Button, Dropdown, Input} from "rsuite";
 import {PropertyEditorProps} from "../../annotation/types";
 import {StringRules} from "../rules/StringRules";
 import {StringRuleKey, ValueType} from "../types";
+import { useTranslation } from 'react-i18next';
 
 export const ValidateEditor = ({annotation, componentStore, onBlur, onChange, value}: PropertyEditorProps<any>) => {
-    const schema = componentStore.validation
+    const schema = componentStore.validation;
+    const { t } = useTranslation();
 
-    if (!schema)
+    if (!schema) {
         return <div>
-            <Dropdown style={{display: "flex"}}
+            <Dropdown style={{ display: "flex" }}
                       renderToggle={(props, ref) => (
                           <Button {...props} ref={ref} block>
-                              <h6> Choose your type </h6>
+                              <h6>{t('validation.chooseValidation')}</h6>
                           </Button>
                       )}>
                 {
@@ -21,14 +23,14 @@ export const ValidateEditor = ({annotation, componentStore, onBlur, onChange, va
                             children={type}
                             eventKey={type}
                             onSelect={(eventKey) => {
-                                componentStore.validation = {type: eventKey, rules: {}}
+                                componentStore.validation = { type: eventKey, rules: {} }
                             }}
                         />
                     ))
                 }
             </Dropdown>
         </div>
-
+    }
 
     //TODO для правил валидации проверять обязательность поля
     return <div>
@@ -55,7 +57,7 @@ export const ValidateEditor = ({annotation, componentStore, onBlur, onChange, va
         {schema.type && <Dropdown style={{display: "flex"}}
                                   renderToggle={(props, ref) => (
                                       <Button {...props} ref={ref} block>
-                                          <h6> AddRule </h6>
+                                          <h6> {t('validation.addRule')} </h6>
                                       </Button>
                                   )}>
             {schema.type === ValueType.string ?

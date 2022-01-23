@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
-import {Input, InputGroup} from 'rsuite';
+import React, { Component } from 'react';
+import { Input, InputGroup } from 'rsuite';
 import CloseIcon from '@rsuite/icons/Close';
 import SearchIcon from '@rsuite/icons/Search';
+import { Translation } from 'react-i18next';
 
 interface SearchFormProps {
     handleChange: (value: string) => void;
@@ -34,12 +35,16 @@ export default class SearchForm extends Component<SearchFormProps, SearchFormSta
     render() {
         const Icon = this.state.value.length ? CloseIcon : SearchIcon;
         return (<InputGroup inside size="xs" style={this.props.style}>
-            <Input
-                onChange={this.handleChange.bind(this)}
-                placeholder="Search..."
-                value={this.state.value}
-                size="xs"
-            />
+            <Translation>
+                {
+                    t => <Input
+                        onChange={this.handleChange.bind(this)}
+                        placeholder={t('searchForm.search')}
+                        value={this.state.value}
+                        size="xs"
+                    />
+                }
+            </Translation>
             <InputGroup.Addon style={{cursor: 'pointer'}} onClick={this.handleChange.bind(this, '')}>
                 <Icon/>
             </InputGroup.Addon>

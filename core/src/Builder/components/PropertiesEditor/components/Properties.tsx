@@ -8,17 +8,19 @@ import {CenteredLabel} from "../../../../components/UI/Labels";
 import styled from "@emotion/styled";
 import {useStore} from "../../../../utils/StoreContext";
 import {Button} from "rsuite";
+import { useTranslation } from 'react-i18next';
 
 interface PropertiesProps {
     activeTab: Section
 }
 
 const Properties = observer(({activeTab}: PropertiesProps) => {
-    const store = useStore()
+    const store = useStore();
+    const { t } = useTranslation();
 
     if (!store.currentNode)
         return (<Container>
-            <CenteredLabel style={{height: "40%"}}>Select element on form for edit properties</CenteredLabel>
+            <CenteredLabel style={{height: "40%"}}>{t('propertiesEditor.selectElementForEdit')}</CenteredLabel>
         </Container>)
 
     const annotations = _.values(store.currentNode.definition.annotations)

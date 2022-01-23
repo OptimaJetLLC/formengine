@@ -10,9 +10,11 @@ import * as faCaretDown from "@fortawesome/free-solid-svg-icons/faCaretDown";
 import * as faCaretUp from "@fortawesome/free-solid-svg-icons/faCaretUp";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 import {useStore} from "../../utils/StoreContext";
+import { useTranslation } from 'react-i18next';
 
 const Tree = () => {
-    const store = useStore()
+    const store = useStore();
+    const { t } = useTranslation();
     const [currentExpandedKeys, setCurrentExpandedKeys] = useState<string[]>([]);
 
     let expandedNodesKeys: string[] | never = [];
@@ -56,10 +58,10 @@ const Tree = () => {
                     store.treeMap(store.model.components, (node: Node) => keys.push(node.key))
                     setCurrentExpandedKeys(keys)
                 }}
-                size={"sm"} appearance={"subtle"}><ExpandIcon/>Expand</SubtleIconButton>
+                size={"sm"} appearance={"subtle"}><ExpandIcon/>{t('tree.expand')}</SubtleIconButton>
             <SubtleIconButton
                 onClick={() => setCurrentExpandedKeys([])}
-                size={"sm"} appearance={"subtle"}><CollapseIcon/>Collapse</SubtleIconButton>
+                size={"sm"} appearance={"subtle"}><CollapseIcon/>{t('tree.collapse')}</SubtleIconButton>
         </Columns>
     </Rows>
 }

@@ -1,3 +1,56 @@
 {
-  "translation": "Translation"
+  "leftMenu": {
+    "translation": "Translation",
+    "undo": "Undo",
+    "formMenu": "Form",
+    "download": "Download",
+    "upload": "Upload",
+    "print": "Print",
+    "settings": "Settings",
+    "clear": "Clear"
+  },
+  "rightMenu": {
+    "desktop": "Desktop",
+    "mobile": "Mobile",
+    "resolution": "Resolution",
+    "previewMode": "Preview",
+    "editMode": "Edit"
+  },
+  "propertiesEditor": {
+    "selectElementForEdit": "Select element on form for edit properties",
+    "sectionName": {
+      "main": "Main",
+      "style": "Style",
+      "actions": "Actions",
+      "validation": "Validation"
+    }
+  },
+  "toolbar": {
+    "elements": "Elements",
+    "notFound": "Not found",
+    "reset": "Reset",
+    "baseControls": "Base controls"
+  },
+  "errorsPanel": {
+    "data": "Data",
+    "errors": "Errors"
+  },
+  "searchForm": {
+    "search": "Search..."
+  },
+  "tree": {
+    "expand": "Expand",
+    "collapse": "Collapse"
+  },
+  "style": {
+    "size": "Size",
+    "indent": "Indent",
+    "other": "Other",
+    "cssStyles": "CSS styles",
+    "cssStyleBlock": "CSS style block"
+  },
+  "validation": {
+    "chooseValidation": "Choose your type",
+    "addRule": "Add rule"
+  }
 }

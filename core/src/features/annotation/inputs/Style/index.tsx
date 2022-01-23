@@ -4,28 +4,31 @@ import CSSList from "./components/CSSList";
 import StandardStyles from "./components/StandardStyles";
 import {StandardStylesDefinitions} from "../../../style";
 import CSSBlock from "./components/CSSBlock";
+import { useTranslation } from 'react-i18next';
 
 const Style = ({componentStore}: PropertyEditorProps<Record<string, string>[] | undefined>) => {
+    const { t } = useTranslation();
+
     //TODO mobx.createViewModel (непонятно как заставить работать с массивами) https://github.com/mobxjs/mobx-utils/issues/209
     return <Rows ml={"5px"} my={0}>
         <div>
-            <h6>Size</h6>
+            <h6>{t('style.size')}</h6>
             <StandardStyles componentStore={componentStore} stylesDefinition={SizeStyles}/>
         </div>
         <div>
-            <h6>Indent</h6>
+            <h6>{t('style.indent')}</h6>
             <StandardStyles componentStore={componentStore} stylesDefinition={IndentStyles}/>
         </div>
         <div>
-            <h6>Other</h6>
+            <h6>{t('style.other')}</h6>
             <StandardStyles componentStore={componentStore} stylesDefinition={OtherStyles}/>
         </div>
         <div>
-            <h6>CSS styles</h6>
+            <h6>{t('style.cssStyles')}</h6>
             <CSSList componentStore={componentStore}/>
         </div>
         <div>
-            <h6 style={{marginBottom: 5}}>CSS style block</h6>
+            <h6 style={{marginBottom: 5}}>{t('style.cssStyleBlock')}</h6>
             <CSSBlock componentStore={componentStore}/>
         </div>
     </Rows>;
