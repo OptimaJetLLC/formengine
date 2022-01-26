@@ -9,6 +9,21 @@ import {Store} from "../stores/Store";
 import {Header} from "./components/Header/Header";
 import {BuilderView} from "./BuilderView";
 import {Preview} from "./Preview";
+import createCache from '@emotion/cache';
+import { BiDi } from './language';
+import rtlPlugin from 'stylis-plugin-rtl';
+import { CacheProvider } from '@emotion/react';
+
+const emotionCache = {
+    LTR: createCache({
+        key: BiDi.ltr
+    }),
+    RTL: createCache({
+        key: BiDi.rtl,
+        stylisPlugins: [rtlPlugin],
+        prepend: true
+    }),
+};
 
 export interface FormBuilderProps extends FormViewerProps {
 
@@ -16,26 +31,29 @@ export interface FormBuilderProps extends FormViewerProps {
 
 const FormBuilder = observer((props: FormBuilderProps) => {
     const store = useMemo(() => new Store(props.view), [])
+    const selectedCache = store.language.biDi === BiDi.rtl ? emotionCache.RTL : emotionCache.LTR;
 
     return (
-        <StoreProvider store={store}>
-            <Container>
-                <DragDropContext
-                    onDragStart={onDragStart.bind(null, store)}
-                    onDragUpdate={onDragUpdate.bind(null, store)}
-                    onDragEnd={onDragEnd.bind(null, store)}>
+        <CacheProvider value={selectedCache}>
+            <StoreProvider store={store}>
+                <Container>
+                    <DragDropContext
+                        onDragStart={onDragStart.bind(null, store)}
+                        onDragUpdate={onDragUpdate.bind(null, store)}
+                        onDragEnd={onDragEnd.bind(null, store)}>
 
-                    <Header/>
-                    <Content>
-                        {store.isBuilderMode
-                            ? <BuilderView getForm={props.getForm} view={props.view}/>
-                            : <Preview getForm={props.getForm} view={props.view}/>
-                        }
-                    </Content>
-                </DragDropContext>
-            </Container>
-        </StoreProvider>
-    )
+                        <Header/>
+                        <Content>
+                            {store.isBuilderMode
+                                ? <BuilderView getForm={props.getForm} view={props.view}/>
+                                : <Preview getForm={props.getForm} view={props.view}/>
+                            }
+                        </Content>
+                    </DragDropContext>
+                </Container>
+            </StoreProvider>
+        </CacheProvider>
+    );
 })
 
 //TODO вынести функционал DnD в features

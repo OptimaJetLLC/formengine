@@ -6,6 +6,7 @@ import {setValue} from "../../features/event/actions";
 import {LabeledInput} from "../../components/UI/Containers";
 import { AnnotationBuilder } from '../../features/annotation/AnnotationBuilder';
 import { WithPicker } from '../../features/annotation/inputs/Picker';
+import styled from '@emotion/styled';
 
 export interface InputProps extends RInputProps {
     label: string
@@ -21,11 +22,15 @@ export enum Size {
 
 // todo этот компонент должен поддерижвать numeric input only (number format в старом фб)
 
+const RtlLabel = styled.label`
+    text-align: left;
+`
+
 export const Input = ({style, className, label, ...props}: InputProps) => {
 
     return (
         <LabeledInput style={style} className={className}>
-            <label>{label}</label>
+            <RtlLabel>{label}</RtlLabel>
             <RInput {...props}/>
         </LabeledInput>
     );

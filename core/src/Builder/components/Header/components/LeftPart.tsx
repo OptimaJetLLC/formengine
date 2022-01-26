@@ -13,6 +13,7 @@ import * as faPrint from '@fortawesome/free-solid-svg-icons/faPrint';
 import SettingIcon from '@rsuite/icons/Setting';
 import * as faTrash from '@fortawesome/free-solid-svg-icons/faTrash';
 import { useTranslation } from 'react-i18next';
+import { LangSwitch } from './LangSwitch';
 
 export const LeftPart = observer(() => {
     const store = useStore();
@@ -68,20 +69,3 @@ const FileActions = observer(() => {
     </Dropdown>
 })
 
-const LangSwitch = observer(() => {
-    const { t } = useTranslation();
-    const store = useStore()
-
-    const languages = ['en', 'ru'];
-
-    const children: any[] = [];
-    languages.forEach((value, index) => {
-        children.push(<Dropdown.Item key={index} onSelect={store.changeLang} eventKey={value}>
-            {value}
-        </Dropdown.Item>);
-    });
-
-    return <Dropdown title={t('leftMenu.translation')}>
-        {children}
-    </Dropdown>;
-});

@@ -23,3 +23,6 @@
 -[ ] Templates.
 -[x] Json file format.
 -[x] Inline parameters.
+
+
+RTL guide - https://carbon-for-ibm-dotcom.mybluemix.net/guidelines/right-to-left/

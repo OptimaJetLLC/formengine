@@ -1,5 +1,5 @@
 import _ from "lodash";
-import {action, autorun, computed, makeObservable, observable, toJS} from "mobx";
+import { action, autorun, computed, makeObservable, observable, reaction, toJS } from 'mobx';
 import {ComponentStore} from "../ComponentStore";
 import {Node} from "../../utils/Node";
 import {Action, EventName, FullActionDefinition, Modifiers, OverArgs} from "../../utils/Types";
@@ -10,6 +10,8 @@ import {DefineRegistry} from "../../utils/DefineRegistry";
 import {page} from "../../components/Page";
 import {DndStore} from "../DndStore";
 import i18n from 'i18next';
+import { Language } from '../../Builder/language';
+import languages from '../../Builder/languages';
 
 export class Store {
     readonly view: DefineRegistry
@@ -34,6 +36,8 @@ export class Store {
     }
 
     registeredFields: Record<string, () => void> = {}
+
+    language: Language = languages[0];
 
     validateForm() {
         _.values(this.registeredFields).forEach(value => value())
@@ -64,11 +68,14 @@ export class Store {
             tree: computed,
             clear: action.bound,
             add: action.bound,
+            language: observable.ref
         })
 
         autorun(() => {
             this.allEvents.forEach(toWeakEvent)
-        })
+        });
+
+        reaction(() => this.language, this.onLanguageChange);
     }
 
     addEvent(
@@ -245,8 +252,8 @@ export class Store {
         input.click();
     };
 
-    changeLang = async (lang: string) => {
-        await i18n.changeLanguage(lang);
+    async onLanguageChange(lang: Language) {
+        await i18n.changeLanguage(lang.code);
     }
 
 }
