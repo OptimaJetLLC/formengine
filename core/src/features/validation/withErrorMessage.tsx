@@ -1,14 +1,10 @@
 import * as React from "react";
-import {ComponentClass, ReactNode} from "react";
+import {ComponentClass, ComponentType, ReactNode} from "react";
 import {FieldMetaProps} from "formik";
 import {ErrorMessage} from "./components/ErrorMessage";
 
-type CompositeComponent<P> =
-    | React.ComponentClass<P>
-    | React.FunctionComponent<P>;
-
 interface ComponentDecorator<TOwnProps, TMergedProps> {
-    (component: CompositeComponent<TMergedProps>): React.ComponentType<TOwnProps>;
+    (component: ComponentType<TMergedProps>): React.ComponentType<TOwnProps>;
 }
 
 interface withValidationConfig {
@@ -17,7 +13,7 @@ interface withValidationConfig {
 }
 
 export function withErrorMessage<OuterProps extends object>(config: withValidationConfig): ComponentDecorator<OuterProps, OuterProps> {
-    return function (Component: CompositeComponent<OuterProps>): ComponentClass<OuterProps> {
+    return function (Component: ComponentType<OuterProps>): ComponentClass<OuterProps> {
         const componentDisplayName =
             Component.displayName ||
             Component.name ||

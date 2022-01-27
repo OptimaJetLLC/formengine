@@ -6,7 +6,7 @@ interface PageProps {
     children: ReactNode
 }
 
-const Page = (props: PageProps) => {
+const Screen = (props: PageProps) => {
 
     return (
         <div>
@@ -15,7 +15,7 @@ const Page = (props: PageProps) => {
     );
 }
 
-export const page = define("Page", Page, {
+export const screen = define("Screen", Screen, {
     children: reactElements
 })
 

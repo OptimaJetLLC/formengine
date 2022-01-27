@@ -1,111 +1,151 @@
-import React, {ReactElement} from "react";
+import _ from "lodash";
+import React, {cloneElement, ComponentType, createElement, CSSProperties, ReactElement, useRef} from "react";
 import {observer} from "mobx-react";
 import {useComponentStore} from "../../utils/ComponentStoreContext";
-import {Draggable, DraggableProvided, Droppable, DroppableProvided} from "react-beautiful-dnd";
+import {Draggable, DraggableProvided, Droppable, DroppableProvided, DropResult} from "react-beautiful-dnd";
 import Selection from "./old/components/Selection";
 import Resizer from "./old/components/Resizer";
 import ControlBar from "./old/components/ControlBar";
 import {Box} from "../../components/UI/Containers";
 import {useStore} from "../../utils/StoreContext";
-import _ from "lodash";
+import {Containerized} from "./components/Containerized";
+import {DragSourceMonitor, useDrag, useDrop} from "react-dnd";
+import {DragItem, DropZone} from "./components/DropZone";
 
 interface EditableProps {
     child: ReactElement
 }
 
-export const Editable = observer(({child}: EditableProps) => {
+const style: CSSProperties = {
+    border: "1px dashed black",
+    padding: "0.5rem 1rem",
+    backgroundColor: "white",
+    cursor: "move"
+};
+
+interface Item {
+    key: string
+}
+
+export const Editable = ({child}: EditableProps) => {
+    const store = useStore()
+    const componentStore = useComponentStore()
+    const componentDefinition = store.view.get(componentStore.type)
+    const key = componentStore.key
+    const ref = useRef(null)
+
+    const containers = componentDefinition.annotations.filter(value => value.isContainer)
+
+    const node = store.findNode(key)
+    if (!node) throw Error("")
+
+    /*const [{isOver, canDrop}, drop] = useDrop({
+        accept: "Component",
+        drop: (item: DragItem, monitor) => {
+            store.move1(item.key, key, 0)
+        },
+        canDrop: (item, monitor) => {
+            if (key === item.key) return false
+
+            return true
+        },
+        collect: (monitor) => ({
+            isOver: monitor.isOver(),
+            canDrop: monitor.canDrop(),
+        }),
+        hover: (item, monitor) => {
+            let a = 4
+        }
+    });*/
+
+    const [{isDragging, opacity}, drag] = useDrag(() => ({
+        type: "Component",
+        item: {key, node},
+        collect: (monitor: DragSourceMonitor<DragItem, DropResult>) => ({
+            isDragging: monitor.isDragging(),
+            opacity: monitor.isDragging() ? 0.4 : 1
+        })
+    }));
+
+    if (containers.length) {
+        //let wrappedChildren = createElement(Containerized, {key: componentStore.key, children: child.props.children})
+        //element = cloneElement(child, {children: wrappedChildren})
+    }
+
+    if (componentStore.type === "Screen")
+        return child
+
+
+    /*if (child.props.content) {
+        //child.props.content = child.props.content = "Asdasd"
+        return cloneElement(child, {content: child.props.content + "Asdasdsa"})
+    }*/
+
+    //drop(drag(ref))
+
+    return (
+        <>
+            <div ref={drag} style={{opacity}}>
+                <DropZone index={0}/>
+                {child}
+                <DropZone index={1}/>
+            </div>
+        </>
+    )
+}
+
+/*export const Editable = observer(({child}: EditableProps) => {
     const store = useStore()
     const componentStore = useComponentStore()
     const componentDefinition = store.view.get(componentStore.type)
 
-    const isCombine = Boolean(_.find(componentDefinition.annotations, {isContainer: true}))
-        && !componentStore.children?.length
+    const containers = componentDefinition.annotations.filter(value => value.isContainer)
 
+    let element = child
 
-    const isSelected = store.currentNode?.data.key === componentStore.key;
-
-
-    const setSelected = () => {
-        store.currentNode = store.findNode(componentStore.key);
+    if (containers.length) {
+         let wrappedChildren = createElement(Containerized, {key: componentStore.key, children: child.props.children})
+        element = cloneElement(child, {children: wrappedChildren})
     }
 
-    const onMouseOver = (e: any) => {
-        e.preventDefault();
-        e.stopPropagation();
-        //const {isDragging, isResizing, isMoving} = this.props.store.dnd;
-        /*this.setState({
-            hovered: !(isDragging && isResizing && isMoving)
-        })*/
-    }
+    if (componentStore.type === "Screen")
+        return element
 
-    const onMouseLeave = () => {
-        //this.setState({hovered: false});
-    }
+
+    /!*if (child.props.content) {
+        //child.props.content = child.props.content = "Asdasd"
+        return cloneElement(child, {content: child.props.content + "Asdasdsa"})
+    }*!/
 
     return (
-        <Droppable
-            droppableId={componentStore.key}
-            //isCombineEnabled={isCombine}
-            isDropDisabled={!isCombine && !!componentStore.children}
-        >
-            {(provider: DroppableProvided, dropSnap) => {
-                return (
+        <Draggable
+            key={componentStore.key}
+            draggableId={componentStore.key}
+            index={0}
+            isDragDisabled={
+                store.dnd.isResizing || (componentStore.type === "DropZone")}>
+            {(provided: DraggableProvided, snapshot) =>
+                (
                     <div
-                        ref={provider.innerRef}
-                        style={dropSnap.isDraggingOver ? {
-                            backgroundColor: '#3498FF26',
-                            outline: "2px dashed #3498ff",
-                            padding: 8,
-                        } : undefined}
-                        {...provider.droppableProps}
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
                     >
-
-                        <Draggable
-                            key={componentStore.key}
-                            draggableId={componentStore.key}
-                            index={0}
-                            isDragDisabled={
-                                store.dnd.isResizing || (componentStore.type === "DropZone")}>
-                            {(provided: DraggableProvided, snapshot) => {
-
-                                //if (snapshot.isDragging) store.dnd.draggingElementKey = componentStore.key;
-                                return (
-                                    <div
-                                        ref={provided.innerRef}
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                        //style={{width:"auto", height:"auto"}}
-                                    >
-                                        {/*<Selection onMouseDown={setSelected}
-                                                   onMouseOver={onMouseOver}
-                                                   onMouseLeave={onMouseLeave}
-                                            //hovered={hovered}
-                                                   selected={isSelected}
-                                        />*/}
-                                        {(isSelected && !snapshot.isDragging) && <>
-                                            {Resizer("left")}
-                                            {Resizer("top")}
-                                            {Resizer("right")}
-                                            {Resizer("bottom")}
-                                            {/*<ControlBar referenceElement={this.containerRef}
-                                                        elementKey={this.props?.componentStore?.key}/>*/}
-                                        </>}
-                                        {isCombine
-                                            ? <Box p={30}>DROP HERE</Box>
-                                            : React.cloneElement(child, {
-                                                style: {
-                                                    boxShadow: snapshot.isDragging ? '#00000038' : 'none'
-                                                }
-                                            })
-                                        }
-                                    </div>
-                                )
-                            }}
-                        </Draggable>
-                        {provider.placeholder}
+                        {element}
                     </div>
-                )
-            }}
-        </Droppable>
+                )}
+        </Draggable>
     )
-})
+})*/
+
+
+interface Interface {
+    Component: ComponentType<any>
+}
+
+const AD = ({Component}: Interface) => {
+
+    return <>
+        <Component a={3}/>
+    </>
+}

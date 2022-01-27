@@ -1,25 +1,30 @@
 import {ComponentStore} from "../stores/ComponentStore";
 import _ from "lodash";
 import {Store} from "../stores/Store";
+import {screen} from "../components/Screen";
 
 //TODO can stringify and parse to form
 export function getForm(code: string, getForm: (code: string) => any[], store: Store) {
     //this.model = getForm(code);
     if (store.model.components.length > 0) return
 
+    let formScreen = new ComponentStore("screen 1", screen.name)
+    formScreen.children = []
+    store.model.components.push(formScreen)
+
     let formHeader = new ComponentStore("header 1", "Header")
     _.set(formHeader, "props.content",  "Application Form")
     _.set(formHeader, "props.subheader", "Make it easier")
-    store.model.components.push(formHeader);
+    formScreen.children.push(formHeader);
 
     let title = new ComponentStore("title", "Input")
     _.set(title, "props.label",  "Title")
     //this.models.push(title)
-    store.model.components.push(title)
+    formScreen.children.push(title)
 
     let anotherContainer = new ComponentStore("input container", "Container")
     anotherContainer.children = []
-    store.model.components.push(anotherContainer)
+    formScreen.children.push(anotherContainer)
 
     let nameContainer = new ComponentStore("name container", "Container")
     nameContainer.children = []
@@ -42,16 +47,16 @@ export function getForm(code: string, getForm: (code: string) => any[], store: S
         {label: "External", value: "External"},
         {label: "Direct", value: "Direct"}])
     _.set(type, "props.block",  true)
-    store.model.components.push(type)
+    formScreen.children.push(type)
 
     let comment = new ComponentStore("comment", "TextArea")
     _.set(comment, "props.label", "Comment")
     _.set(comment, "props.rows",  5)
-    store.model.components.push(comment)
+    formScreen.children.push(comment)
 
     let buttonContainer = new ComponentStore("button container", "Container")
     buttonContainer.children = []
-    store.model.components.push(buttonContainer)
+    formScreen.children.push(buttonContainer)
 
     let saveButton = new ComponentStore("save", "Button")
     _.set(saveButton, "props.children",  "Save")

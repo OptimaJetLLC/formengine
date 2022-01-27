@@ -18,7 +18,7 @@ type OmitUnimportant<T extends object> = Omit<T, 'style' | 'className' | 'classP
 export interface ComponentDefinition<T extends object> {
     name: string;
     view: FunctionComponent<T>;
-    annotations: Record<string, Annotation<T>>;
+    annotations: Annotation<T>[];
     actions?: Action[];
     groupBy?: string;
 }

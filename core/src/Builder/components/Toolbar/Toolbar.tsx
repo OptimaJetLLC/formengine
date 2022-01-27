@@ -22,7 +22,11 @@ export class Toolbar extends React.Component<any, ToolbarState> {
         this.state = {filtered: null};
     }
 
+
     render() {
+        //TODO
+        return null
+
         return (
             <Droppable droppableId={"TOOLBAR"} isDropDisabled={true}>
                 {(provided: DroppableProvided) => (
@@ -117,10 +121,10 @@ export class Toolbar extends React.Component<any, ToolbarState> {
 function getDefaultValue(definition: ComponentDefinition<any>) {
     const props: any = {};
 
-    _.forIn(definition.annotations, (value, key) => {
+    definition.annotations.forEach((value) => {
         if (value.isSystem) return
 
-        props[key] = props[key] ?? value.defaultValue
+        props[value.key] = props[value.key] ?? value.defaultValue
     })
 
     return props;

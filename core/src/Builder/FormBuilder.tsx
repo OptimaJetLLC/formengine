@@ -10,9 +10,12 @@ import {Header} from "./components/Header/Header";
 import {BuilderView} from "./BuilderView";
 import {Preview} from "./Preview";
 import createCache from '@emotion/cache';
-import { BiDi } from './language';
+import {BiDi} from './language';
 import rtlPlugin from 'stylis-plugin-rtl';
-import { CacheProvider } from '@emotion/react';
+import {CacheProvider} from '@emotion/react';
+
+import {DndProvider} from "react-dnd";
+import {HTML5Backend} from "react-dnd-html5-backend";
 
 const emotionCache = {
     LTR: createCache({
@@ -37,10 +40,11 @@ const FormBuilder = observer((props: FormBuilderProps) => {
         <CacheProvider value={selectedCache}>
             <StoreProvider store={store}>
                 <Container>
-                    <DragDropContext
+                    <DndProvider backend={HTML5Backend}>
+                        {/*<DragDropContext
                         onDragStart={onDragStart.bind(null, store)}
                         onDragUpdate={onDragUpdate.bind(null, store)}
-                        onDragEnd={onDragEnd.bind(null, store)}>
+                        onDragEnd={onDragEnd.bind(null, store)}>*/}
 
                         <Header/>
                         <Content>
@@ -49,11 +53,12 @@ const FormBuilder = observer((props: FormBuilderProps) => {
                                 : <Preview getForm={props.getForm} view={props.view}/>
                             }
                         </Content>
-                    </DragDropContext>
+                        {/*</DragDropContext>*/}
+                    </DndProvider>
                 </Container>
             </StoreProvider>
         </CacheProvider>
-    );
+    )
 })
 
 //TODO вынести функционал DnD в features
@@ -67,8 +72,7 @@ const onDragEnd = (store: Store, result: DropResult) => {
         store.add(draggableId, droppableId || "", destination?.index ?? 0, !!combine);
     else if (source.droppableId === "FORM") {
         store.move(draggableId, "", destination?.index ?? 0, !!combine);
-    }
-    else {
+    } else {
         store.move(draggableId, droppableId || "", destination?.index ?? 0, !!combine);
     }
 

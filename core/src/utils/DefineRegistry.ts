@@ -1,11 +1,11 @@
 import {ComponentDefinition} from "../features/annotation/types";
-import {page} from "../components/Page";
+import {screen} from "../components/Screen";
 
 export class DefineRegistry {
     #map = new Map<string, ComponentDefinition<any>>()
 
     constructor(defines: ComponentDefinition<any>[] = []) {
-        this.define(page)
+        this.define(screen)
         defines.forEach(this.define.bind(this))
     }
 

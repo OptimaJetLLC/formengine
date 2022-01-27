@@ -7,7 +7,7 @@ import {toWeakEvent} from "./utils/toWeakEvent";
 import {moveArrayItem} from "../../utils/moveArrayItem";
 import {FormikContextType} from "formik";
 import {DefineRegistry} from "../../utils/DefineRegistry";
-import {page} from "../../components/Page";
+import {screen} from "../../components/Screen";
 import {DndStore} from "../DndStore";
 import i18n from 'i18next';
 import { Language } from '../../Builder/language';
@@ -44,7 +44,7 @@ export class Store {
     }
 
     get tree(): Node {
-        let componentStore = new ComponentStore(page.name, page.name)
+        let componentStore = new ComponentStore(screen.name, screen.name)
         let root = new Node(this, componentStore)
         componentStore.children = this.model.components
         root.children = this.model.components.map(child => new Node(this, child, root));
@@ -134,6 +134,31 @@ export class Store {
 
         this.model.components.push(clonedComponent);
         this.move(clonedComponent.key, sourceKey, 1);
+    }
+
+    move1(sourceKey: string, targetKey: string, index: number = 0) {
+        const sourceNode = this.findNode(sourceKey);
+        const targetNode = this.findNode(targetKey);
+
+        if (!sourceNode || !targetNode) return;
+
+        const sourceParent = sourceNode.parent?.data.children!;
+        const targetData = targetNode.parent?.data!;
+
+        const targetParent = targetData.children!;
+
+        const sourceIndex = sourceParent.indexOf(sourceNode.data);
+        const targetIndex = targetParent.indexOf(targetNode.data);
+
+        if (targetParent === sourceParent) {
+            const toIndex = targetIndex + index;
+            //if (index === )
+            moveArrayItem(targetParent, sourceIndex, targetIndex);
+        } else {
+            const [removed] = sourceParent.splice(sourceIndex, 1)
+            targetParent.splice(targetIndex + index, 0, removed);
+        }
+        this.currentNode = sourceNode;
     }
 
     move(sourceKey: string, targetKey: string, index: number = 0, combine?: boolean) {

@@ -57,12 +57,12 @@ function useDefaultProps(definition: ComponentDefinition<any>) {
     return useMemo(() => {
         const props: Record<string, any> = {}
 
-        _.forIn(definition.annotations, (value, key) => {
+        definition.annotations.forEach((value) => {
             if (value.isSystem) return
             if (value.isFunction) return
             if (value.isContainer) return
 
-            props[key] = value.defaultValue
+            props[value.key] = value.defaultValue
         })
 
         return props
