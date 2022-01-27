@@ -10,7 +10,7 @@ import {Box} from "../../components/UI/Containers";
 import {useStore} from "../../utils/StoreContext";
 import {Containerized} from "./components/Containerized";
 import {DragSourceMonitor, useDrag, useDrop} from "react-dnd";
-import {DragItem, DropZone} from "./components/DropZone";
+import {DragItem, DropZone, DropZone1} from "./components/DropZone";
 
 interface EditableProps {
     child: ReactElement
@@ -36,59 +36,40 @@ export const Editable = ({child}: EditableProps) => {
 
     const containers = componentDefinition.annotations.filter(value => value.isContainer)
 
-    const node = store.findNode(key)
-    if (!node) throw Error("")
-
-    /*const [{isOver, canDrop}, drop] = useDrop({
+    const [{isOver, canDrop, isActive}, drop] = useDrop({
         accept: "Component",
-        drop: (item: DragItem, monitor) => {
-            store.move1(item.key, key, 0)
-        },
-        canDrop: (item, monitor) => {
-            if (key === item.key) return false
-
-            return true
-        },
+        canDrop: (item: DragItem, monitor) => key !== item.key,
         collect: (monitor) => ({
             isOver: monitor.isOver(),
             canDrop: monitor.canDrop(),
+            isActive: monitor.isOver() && monitor.canDrop(),
         }),
-        hover: (item, monitor) => {
-            let a = 4
-        }
-    });*/
+    });
 
     const [{isDragging, opacity}, drag] = useDrag(() => ({
         type: "Component",
-        item: {key, node},
+        item: {key},
         collect: (monitor: DragSourceMonitor<DragItem, DropResult>) => ({
             isDragging: monitor.isDragging(),
             opacity: monitor.isDragging() ? 0.4 : 1
         })
     }));
 
-    if (containers.length) {
-        //let wrappedChildren = createElement(Containerized, {key: componentStore.key, children: child.props.children})
-        //element = cloneElement(child, {children: wrappedChildren})
-    }
 
     if (componentStore.type === "Screen")
         return child
 
 
-    /*if (child.props.content) {
-        //child.props.content = child.props.content = "Asdasd"
-        return cloneElement(child, {content: child.props.content + "Asdasdsa"})
-    }*/
+    const padding = isActive ? 10 : 0
 
-    //drop(drag(ref))
+    drop(drag(ref))
 
     return (
         <>
-            <div ref={drag} style={{opacity}}>
-                <DropZone index={0}/>
+            <div ref={ref} style={{opacity, padding}}>
+                {isActive && <DropZone1 index={0}/>}
                 {child}
-                <DropZone index={1}/>
+                {isActive && <DropZone1 index={1}/>}
             </div>
         </>
     )

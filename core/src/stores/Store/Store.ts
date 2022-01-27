@@ -151,9 +151,12 @@ export class Store {
         const targetIndex = targetParent.indexOf(targetNode.data);
 
         if (targetParent === sourceParent) {
-            const toIndex = targetIndex + index;
-            //if (index === )
-            moveArrayItem(targetParent, sourceIndex, targetIndex);
+
+            const toIndex = sourceIndex < targetIndex
+                ? targetIndex + index - 1
+                : targetIndex + index;
+
+            moveArrayItem(targetParent, sourceIndex, toIndex);
         } else {
             const [removed] = sourceParent.splice(sourceIndex, 1)
             targetParent.splice(targetIndex + index, 0, removed);
