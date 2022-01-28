@@ -9,9 +9,9 @@ import {FormikContextType} from "formik";
 import {DefineRegistry} from "../../utils/DefineRegistry";
 import {screen} from "../../components/Screen";
 import {DndStore} from "../DndStore";
-import i18n from 'i18next';
-import { Language } from '../../Builder/language';
-import languages from '../../Builder/languages';
+import { defaultLanguage } from '../../localization/languages';
+import { findLanguage, getFullLangCode, onLanguageChange } from '../../localization/i18n-utils';
+import { onI18nInit } from '../../localization/i18n';
 
 export class Store {
     readonly view: DefineRegistry
@@ -37,7 +37,7 @@ export class Store {
 
     registeredFields: Record<string, () => void> = {}
 
-    language: Language = languages[0];
+    language = defaultLanguage;
 
     validateForm() {
         _.values(this.registeredFields).forEach(value => value())
@@ -75,7 +75,14 @@ export class Store {
             this.allEvents.forEach(toWeakEvent)
         });
 
-        reaction(() => this.language, this.onLanguageChange);
+        onI18nInit((language: string) => {
+            let foundLanguage = findLanguage(language);
+            if (getFullLangCode(foundLanguage) !== getFullLangCode(this.language)) {
+                this.language = foundLanguage;
+            }
+        });
+
+        reaction(() => this.language, onLanguageChange);
     }
 
     addEvent(
@@ -279,9 +286,5 @@ export class Store {
 
         input.click();
     };
-
-    async onLanguageChange(lang: Language) {
-        await i18n.changeLanguage(lang.code);
-    }
 
 }

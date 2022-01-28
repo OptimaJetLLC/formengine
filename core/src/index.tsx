@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import 'rsuite/dist/rsuite.min.css';
-import './i18n';
+// todo import 'rsuite/dist/rsuite-rtl.min.css';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -10,12 +10,13 @@ import {Header} from "./components/Header/Header";
 import {BuilderView} from "./BuilderView";
 import {Preview} from "./Preview";
 import createCache from '@emotion/cache';
-import {BiDi} from './language';
+import {BiDi} from '../localization/language';
 import rtlPlugin from 'stylis-plugin-rtl';
 import {CacheProvider} from '@emotion/react';
 
 import {DndProvider} from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
+import { CustomProvider } from 'rsuite';
 
 const emotionCache = {
     LTR: createCache({
@@ -38,25 +39,27 @@ const FormBuilder = observer((props: FormBuilderProps) => {
 
     return (
         <CacheProvider value={selectedCache}>
-            <StoreProvider store={store}>
-                <Container>
-                    <DndProvider backend={HTML5Backend}>
-                        {/*<DragDropContext
+            <CustomProvider rtl={store.language.biDi === BiDi.rtl}>
+                <StoreProvider store={store}>
+                    <Container>
+                        <DndProvider backend={HTML5Backend}>
+                            {/*<DragDropContext
                         onDragStart={onDragStart.bind(null, store)}
                         onDragUpdate={onDragUpdate.bind(null, store)}
                         onDragEnd={onDragEnd.bind(null, store)}>*/}
 
-                        <Header/>
-                        <Content>
-                            {store.isBuilderMode
-                                ? <BuilderView getForm={props.getForm} view={props.view}/>
-                                : <Preview getForm={props.getForm} view={props.view}/>
-                            }
-                        </Content>
-                        {/*</DragDropContext>*/}
-                    </DndProvider>
-                </Container>
-            </StoreProvider>
+                            <Header/>
+                            <Content>
+                                {store.isBuilderMode
+                                    ? <BuilderView getForm={props.getForm} view={props.view}/>
+                                    : <Preview getForm={props.getForm} view={props.view}/>
+                                }
+                            </Content>
+                            {/*</DragDropContext>*/}
+                        </DndProvider>
+                    </Container>
+                </StoreProvider>
+            </CustomProvider>
         </CacheProvider>
     )
 })
