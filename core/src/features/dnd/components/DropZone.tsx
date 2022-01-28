@@ -5,6 +5,7 @@ import {observer} from "mobx-react";
 import {Node} from "../../../utils/Node";
 import {useStore} from "../../../utils/StoreContext";
 import {useComponentStore} from "../../../utils/ComponentStoreContext";
+import {ItemType} from "../consts";
 
 export interface DragItem {
     key: string
@@ -34,7 +35,7 @@ const DropZone = (({index, isLast, className}: DropZoneProps) => {
     const key = componentStore.key
 
     const [{isOver, canDrop, isActive}, drop] = useDrop({
-        accept: "Component",
+        accept: [ItemType.Component],
         drop: (item: DragItem, monitor) => {
             store.move1(item.key, key, index)
         },

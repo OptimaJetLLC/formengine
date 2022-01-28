@@ -11,6 +11,7 @@ import {useStore} from "../../utils/StoreContext";
 import {Containerized} from "./components/Containerized";
 import {DragSourceMonitor, useDrag, useDrop} from "react-dnd";
 import {DragItem, DropZone, DropZone1} from "./components/DropZone";
+import {useDnd} from "./hooks/useDnd";
 
 interface EditableProps {
     child: ReactElement
@@ -23,50 +24,22 @@ const style: CSSProperties = {
     cursor: "move"
 };
 
-interface Item {
-    key: string
-}
 
 export const Editable = ({child}: EditableProps) => {
     const store = useStore()
     const componentStore = useComponentStore()
     const componentDefinition = store.view.get(componentStore.type)
-    const key = componentStore.key
-    const ref = useRef(null)
+
+    const [{isActive, opacity, padding}, dnd] = useDnd()
 
     const containers = componentDefinition.annotations.filter(value => value.isContainer)
-
-    const [{isOver, canDrop, isActive}, drop] = useDrop({
-        accept: "Component",
-        canDrop: (item: DragItem, monitor) => key !== item.key,
-        collect: (monitor) => ({
-            isOver: monitor.isOver(),
-            canDrop: monitor.canDrop(),
-            isActive: monitor.isOver() && monitor.canDrop(),
-        }),
-    });
-
-    const [{isDragging, opacity}, drag] = useDrag(() => ({
-        type: "Component",
-        item: {key},
-        collect: (monitor: DragSourceMonitor<DragItem, DropResult>) => ({
-            isDragging: monitor.isDragging(),
-            opacity: monitor.isDragging() ? 0.4 : 1
-        })
-    }));
-
 
     if (componentStore.type === "Screen")
         return child
 
-
-    const padding = isActive ? 10 : 0
-
-    drop(drag(ref))
-
     return (
         <>
-            <div ref={ref} style={{opacity, padding}}>
+            <div ref={dnd} style={{opacity, padding}}>
                 {isActive && <DropZone1 index={0}/>}
                 {child}
                 {isActive && <DropZone1 index={1}/>}
