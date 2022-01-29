@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useStore } from '../../../../utils/StoreContext';
 import { Dropdown } from 'rsuite';
 import React from 'react';
-import {languages} from '../../../../localization/languages';
+import {languages} from '../../../../features/localization/languages';
 
 export const LangSwitch = observer(() => {
     const { t } = useTranslation();

@@ -9,9 +9,9 @@ import {FormikContextType} from "formik";
 import {DefineRegistry} from "../../utils/DefineRegistry";
 import {screen} from "../../components/Screen";
 import {DndStore} from "../DndStore";
-import { defaultLanguage } from '../../localization/languages';
-import { findLanguage, getFullLangCode, onLanguageChange } from '../../localization/i18n-utils';
-import { onI18nInit } from '../../localization/i18n';
+import { defaultLanguage } from '../../features/localization/languages';
+import { findLanguage, getFullLangCode, onLanguageChange } from '../../features/localization/i18n-utils';
+import { onI18nInit } from '../../features/localization/i18n';
 
 export class Store {
     readonly view: DefineRegistry

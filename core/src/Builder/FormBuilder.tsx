@@ -10,7 +10,7 @@ import {Header} from "./components/Header/Header";
 import {BuilderView} from "./BuilderView";
 import {Preview} from "./Preview";
 import createCache from '@emotion/cache';
-import {BiDi} from '../localization/language';
+import {BiDi} from '../features/localization/language';
 import rtlPlugin from 'stylis-plugin-rtl';
 import {CacheProvider} from '@emotion/react';
 
