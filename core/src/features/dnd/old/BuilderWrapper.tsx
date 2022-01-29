@@ -50,7 +50,7 @@ const BuilderWrapper = observer(
             this.props.store.currentNode = this.props.store.findNode(this.props?.componentStore.key);
         }
 
-        onMouseOver = (e: any) => {
+        onMouseOver = (e: React.MouseEvent) => {
             e.preventDefault();
             e.stopPropagation();
             const {isDragging, isResizing, isMoving} = this.props.store.dnd;

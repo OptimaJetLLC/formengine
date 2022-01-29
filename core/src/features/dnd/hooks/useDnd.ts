@@ -5,7 +5,7 @@ import {DropResult} from "react-beautiful-dnd";
 import {useComponentStore} from "../../../utils/ComponentStoreContext";
 import {ItemType} from "../consts";
 
-interface Collect {
+interface DndState {
     isDragging: boolean,
     isActive: boolean,
     isOver: boolean,
@@ -14,7 +14,7 @@ interface Collect {
     padding: number
 }
 
-export const useDnd = (): [Collect, RefObject<any>] => {
+export const useDnd = (): [DndState, RefObject<any>] => {
     const dnd = useRef(null)
     const {key} = useComponentStore()
 
@@ -26,7 +26,6 @@ export const useDnd = (): [Collect, RefObject<any>] => {
             canDrop: monitor.canDrop(),
             isActive: monitor.isOver() && monitor.canDrop(),
             padding: monitor.isOver() && monitor.canDrop() ? 10 : 0,
-
         }),
     }, []);
 
@@ -35,13 +34,13 @@ export const useDnd = (): [Collect, RefObject<any>] => {
         item: {key},
         collect: (monitor: DragSourceMonitor<DragItem, DropResult>) => ({
             isDragging: monitor.isDragging(),
-            opacity: monitor.isDragging() ? 0.4 : 1
-        })
+            opacity: monitor.isDragging() ? 0.4 : 1,
+        }),
     }), []);
 
-    const collect: Collect = useMemo(() => ({...dropProps, ...dragProps}), [dropProps, dragProps])
+    const state: DndState = useMemo(() => ({...dropProps, ...dragProps}), [dropProps, dragProps])
 
     drop(drag(dnd))
 
-    return [collect, dnd]
+    return [state, dnd]
 }

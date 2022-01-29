@@ -1,17 +1,12 @@
-import _ from "lodash";
-import React, {cloneElement, ComponentType, createElement, CSSProperties, ReactElement, useRef} from "react";
+import React, {ComponentType, CSSProperties, ReactElement, useRef} from "react";
 import {observer} from "mobx-react";
 import {useComponentStore} from "../../utils/ComponentStoreContext";
-import {Draggable, DraggableProvided, Droppable, DroppableProvided, DropResult} from "react-beautiful-dnd";
-import Selection from "./old/components/Selection";
-import Resizer from "./old/components/Resizer";
-import ControlBar from "./old/components/ControlBar";
-import {Box} from "../../components/UI/Containers";
 import {useStore} from "../../utils/StoreContext";
-import {Containerized} from "./components/Containerized";
-import {DragSourceMonitor, useDrag, useDrop} from "react-dnd";
-import {DragItem, DropZone, DropZone1} from "./components/DropZone";
+import {DropZone1} from "./components/DropZone";
 import {useDnd} from "./hooks/useDnd";
+import {useSelection} from "./hooks/useSelection";
+import {css} from "@emotion/css";
+import classNames from "classnames";
 
 interface EditableProps {
     child: ReactElement
@@ -24,28 +19,64 @@ const style: CSSProperties = {
     cursor: "move"
 };
 
+//TODO Selection
+//TODO Resizer
+//TODO ControlBar
 
-export const Editable = ({child}: EditableProps) => {
+export const Editable = observer(({child}: EditableProps) => {
     const store = useStore()
     const componentStore = useComponentStore()
-    const componentDefinition = store.view.get(componentStore.type)
-
+    const componentDefinition = useComponentDefinition()
     const [{isActive, opacity, padding}, dnd] = useDnd()
+    const [{hovered, selected}, selectionHandlers] = useSelection()
 
     const containers = componentDefinition.annotations.filter(value => value.isContainer)
 
     if (componentStore.type === "Screen")
         return child
 
+    const hoveredStyles = css`
+      outline: 2px dashed #3498ff !important;
+      cursor: pointer !important;
+    `
+
+    const selectedStyles = css`
+      outline: 2px solid #3498ff !important;
+      cursor: move !important;
+    `
+
+    const className = classNames({
+        [hoveredStyles]: hovered && !selected,
+        [selectedStyles]: selected,
+    })
+
     return (
         <>
-            <div ref={dnd} style={{opacity, padding}}>
+            <div
+                className={className}
+                ref={dnd}
+                style={{opacity, padding}}
+                {...selectionHandlers}
+            >
                 {isActive && <DropZone1 index={0}/>}
                 {child}
                 {isActive && <DropZone1 index={1}/>}
             </div>
         </>
     )
+})
+
+const useCommonData = () => {
+
+}
+
+//TODO этот хук правда нужен?
+const useComponentDefinition = () => {
+    const store = useStore()
+    const componentStore = useComponentStore()
+    const componentDefinition = useRef(store.view.get(componentStore.type))
+
+    return componentDefinition.current
 }
 
 /*export const Editable = observer(({child}: EditableProps) => {
