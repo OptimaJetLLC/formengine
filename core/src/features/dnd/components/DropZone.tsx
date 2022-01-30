@@ -24,7 +24,7 @@ const dropzone: CSSProperties = {
     background: "#00a2ff",
 }
 const active: CSSProperties = {
-    background: "#00a2ff",
+    background: "#4caf50",
     transition: "100ms all",
 }
 
