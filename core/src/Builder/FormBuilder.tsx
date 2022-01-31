@@ -1,68 +1,50 @@
-import {configure} from "mobx";
-import {observer} from "mobx-react";
-import React, {useMemo} from "react";
+import { configure } from 'mobx';
+import { observer } from 'mobx-react';
+import React, { useMemo } from 'react';
 import styled from '@emotion/styled';
-import {DragDropContext, DragUpdate, DropResult} from "react-beautiful-dnd";
-import {FormViewerProps} from "../FormViewer";
-import {StoreProvider} from "../utils/StoreContext";
-import {Store} from "../stores/Store";
-import {Header} from "./components/Header/Header";
-import {BuilderView} from "./BuilderView";
-import {Preview} from "./Preview";
-import createCache from '@emotion/cache';
-import {BiDi} from '../features/localization/language';
-import rtlPlugin from 'stylis-plugin-rtl';
-import {CacheProvider} from '@emotion/react';
+import { DragUpdate, DropResult } from 'react-beautiful-dnd';
+import { FormViewerProps } from '../FormViewer';
+import { StoreProvider } from '../utils/StoreContext';
+import { Store } from '../stores/Store';
+import { Header } from './components/Header/Header';
+import { BuilderView } from './BuilderView';
+import { Preview } from './Preview';
 
-import {DndProvider} from "react-dnd";
-import {HTML5Backend} from "react-dnd-html5-backend";
-import { CustomProvider } from 'rsuite';
-
-const emotionCache = {
-    LTR: createCache({
-        key: BiDi.ltr
-    }),
-    RTL: createCache({
-        key: BiDi.rtl,
-        stylisPlugins: [rtlPlugin],
-        prepend: true
-    }),
-};
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { Localization } from '../features/localization/Localization';
 
 export interface FormBuilderProps extends FormViewerProps {
 
 }
 
 const FormBuilder = observer((props: FormBuilderProps) => {
-    const store = useMemo(() => new Store(props.view), [])
-    const selectedCache = store.language.biDi === BiDi.rtl ? emotionCache.RTL : emotionCache.LTR;
+    const store = useMemo(() => new Store(props.view), []);
 
     return (
-        <CacheProvider value={selectedCache}>
-            <CustomProvider rtl={store.language.biDi === BiDi.rtl}>
-                <StoreProvider store={store}>
-                    <Container>
-                        <DndProvider backend={HTML5Backend}>
-                            {/*<DragDropContext
+        <Localization store={store}>
+            <StoreProvider store={store}>
+                <Container>
+                    <DndProvider backend={HTML5Backend}>
+                        {/*<DragDropContext
                         onDragStart={onDragStart.bind(null, store)}
                         onDragUpdate={onDragUpdate.bind(null, store)}
                         onDragEnd={onDragEnd.bind(null, store)}>*/}
 
-                            <Header/>
-                            <Content>
-                                {store.isBuilderMode
-                                    ? <BuilderView getForm={props.getForm} view={props.view}/>
-                                    : <Preview getForm={props.getForm} view={props.view}/>
-                                }
-                            </Content>
-                            {/*</DragDropContext>*/}
-                        </DndProvider>
-                    </Container>
-                </StoreProvider>
-            </CustomProvider>
-        </CacheProvider>
-    )
-})
+                        <Header/>
+                        <Content>
+                            {store.isBuilderMode
+                                ? <BuilderView getForm={props.getForm} view={props.view}/>
+                                : <Preview getForm={props.getForm} view={props.view}/>
+                            }
+                        </Content>
+                        {/*</DragDropContext>*/}
+                    </DndProvider>
+                </Container>
+            </StoreProvider>
+        </Localization>
+    );
+});
 
 //TODO вынести функционал DnD в features
 const onDragEnd = (store: Store, result: DropResult) => {
