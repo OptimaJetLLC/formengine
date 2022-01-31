@@ -1,4 +1,4 @@
-import { BiDi, Language } from './language';
+import { BiDi } from './language';
 import React from 'react';
 import { Store } from '../../stores/Store';
 import { CacheProvider } from '@emotion/react';
@@ -8,8 +8,6 @@ import rtlPlugin from 'stylis-plugin-rtl';
 import { observer } from 'mobx-react';
 import { getFullLangCode } from './i18n-utils';
 import { defaultRSuiteLanguage, rSuiteLanguages } from './rsuite-lang';
-import 'rsuite/dist/rsuite.min.css';
-// import 'rsuite/dist/rsuite-rtl.min.css'; todo
 
 const emotionCache = {
     LTR: createCache({
@@ -22,34 +20,31 @@ const emotionCache = {
     }),
 };
 
-const loadCssFile = (href: string) => {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    document.head.appendChild(link);
-    return link;
+const cssStyles = {
+    [BiDi.ltr]: '/css/rsuite.min.css',
+    [BiDi.rtl]: '/css/rsuite-rtl.min.css',
 };
 
-/*
 let currentCssEl: any = null;
-let biDi: BiDi | undefined;
+let currentBiDi: BiDi | undefined;
 
-function switchDirection(lang: Language) {
-    if (biDi === lang.biDi) {
+const loadCssFile = (biDi: BiDi) => {
+    if (currentBiDi === biDi) {
         return;
     }
-    biDi = lang.biDi;
-    const link = lang.biDi === BiDi.ltr ? 'rsuite/dist/rsuite.min.css' : 'rsuite/dist/rsuite-rtl.min.css';
-    const cssEl = loadCssFile(link);
 
-    cssEl.onload = () => {
+    const link = document.createElement('link');
+    link.id = `rsuite-${biDi}`;
+    link.rel = 'stylesheet';
+    link.href = cssStyles[biDi];
+    document.head.appendChild(link);
+    link.onload = () => {
         if (currentCssEl) {
             currentCssEl.parentNode.removeChild(currentCssEl);
         }
-        currentCssEl = cssEl;
+        currentCssEl = link;
     };
-}
-*/
+};
 
 interface LocalizationProps {
     children: any;
@@ -57,13 +52,11 @@ interface LocalizationProps {
 }
 
 export const Localization = observer((props: LocalizationProps) => {
-    // todo load rtl css
+    loadCssFile(props.store.language.biDi);
 
     const rSuiteLang: any = rSuiteLanguages[getFullLangCode(props.store.language)]
         || rSuiteLanguages[props.store.language.code]
         || defaultRSuiteLanguage;
-
-    // todo switchDirection(props.store.language);
 
     const selectedCache = props.store.language.biDi === BiDi.rtl ? emotionCache.RTL : emotionCache.LTR;
     return (<CacheProvider value={selectedCache}>
