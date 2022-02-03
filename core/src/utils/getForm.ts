@@ -26,7 +26,7 @@ export function getForm(code: string, getForm: (code: string) => any[], store: S
     anotherContainer.children = []
     formScreen.children.push(anotherContainer)
 
-    /*let nameContainer = new ComponentStore("name container", "Container")
+    let nameContainer = new ComponentStore("name container", "Container")
     nameContainer.children = []
     anotherContainer.children.push(nameContainer)
     //this.models.push(nameContainer)
@@ -66,7 +66,7 @@ export function getForm(code: string, getForm: (code: string) => any[], store: S
 
     let cancelButton = new ComponentStore("cancel", "Button")
     _.set(cancelButton, "props.children", "Cancel")
-    buttonContainer.children.push(cancelButton);*/
+    buttonContainer.children.push(cancelButton);
 
 
 }

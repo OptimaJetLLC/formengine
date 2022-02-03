@@ -1,20 +1,20 @@
-import React, {ComponentType, CSSProperties, ReactElement, useEffect, useLayoutEffect, useRef, useState} from "react";
+import React, {ComponentType, ReactElement, useRef} from "react";
 import {observer} from "mobx-react";
 import {useComponentStore} from "../../utils/ComponentStoreContext";
 import {useStore} from "../../utils/StoreContext";
 import {DropZone1} from "./components/DropZone";
 import {useDnd} from "./hooks/useDnd";
 import {useSelection} from "./hooks/useSelection";
-import {Resizable} from "re-resizable";
 import {Toolbar} from "./components/Toolbar";
+import {Resizers} from "./components/Resizers/Resizers";
 
 interface EditableProps {
     child: ReactElement
 }
 
-//TODO Resizer
-//TODO ControlBar
-
+//TODO z-Index увеличивать его для вложенных компонентов, чтобы выор компонентов был корректным
+//TODO По двойному клику выделять компонент, в который вложен компонент
+//TODO Повесить плашку над элементом, за которую можно будет дергать и которая предотвращает взаимодействие с инпутами??
 export const Editable = observer(({child}: EditableProps) => {
     const store = useStore()
     const componentStore = useComponentStore()
@@ -30,14 +30,17 @@ export const Editable = observer(({child}: EditableProps) => {
 
     return (
         <div
-            className={className + " "}
+            className={className}
             ref={dnd}
             style={{
                 opacity, padding,
+                position: "relative"
             }}
             {...selectionHandlers}
         >
             <Toolbar show={selected} parent={dnd.current}/>
+            <Resizers show={selected}/>
+
             {isActive && <DropZone1 index={0}/>}
             {child}
             {isActive && <DropZone1 index={1}/>}
@@ -46,67 +49,6 @@ export const Editable = observer(({child}: EditableProps) => {
 })
 
 
-function useContainerDimensions(myRef: React.RefObject<any>) {
-    const [dimensions, setDimensions] = useState({width: 0, height: 0});
-
-    useEffect(() => {
-        const getDimensions = () => ({
-            width: (myRef && myRef.current.offsetWidth) || 0,
-            height: (myRef && myRef.current.offsetHeight) || 0,
-        });
-
-        const handleResize = () => {
-            setDimensions(getDimensions());
-        };
-
-        if (myRef.current) {
-            setDimensions(getDimensions());
-        }
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [myRef]);
-
-    return dimensions;
-}
-
-const useResizer1 = (selected: boolean, child: ReactElement) => {
-    if (selected)
-        return <Resizable
-            handleComponent={{
-                bottom: <span>asd</span>
-            }}
-        >
-            {child}
-        </Resizable>
-
-    return child
-}
-
-//TODO обработка событий сдвига
-//TODO добавление четырех точек? Шести? Посмотреть на референс.
-const useResizer = (ref: React.RefObject<any>) => {
-    const [size, setSize] = useState([0, 0]);
-    useEffect(() => {
-        function updateSize() {
-            //setSize([window.innerWidth, window.innerHeight]);
-            setSize([ref.current.offsetWidth, ref.current.offsetHeight]);
-        }
-
-        if (!ref.current) return
-
-        //ref.current.addEventListener('resize', updateSize);
-        window.addEventListener('resize', updateSize);
-        updateSize();
-
-        //return () => ref.current.removeEventListener('resize', updateSize);
-    }, [ref]);
-
-    return size;
-}
 
 const useCommonData = () => {
 
