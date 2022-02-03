@@ -18,9 +18,6 @@ export function initI18n(onInit: OnI18nInitCallback) {
                 interpolation: {
                     escapeValue: false,
                 },
-                react: {
-                    useSuspense: false,
-                }
             },
             (error) => {
                 if (error) {
