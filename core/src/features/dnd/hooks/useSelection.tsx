@@ -1,6 +1,8 @@
 import {useStore} from "../../../utils/StoreContext";
 import {useComponentStore} from "../../../utils/ComponentStoreContext";
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useCallback, useEffect, useMemo, useState} from "react";
+import classNames from "classnames";
+import {hoveredStyles, selectedStyles} from "../styles";
 
 export interface SelectionState {
     hovered: boolean
@@ -13,7 +15,10 @@ export interface SelectionHandlers {
     onMouseLeave: () => void
 }
 
-export const useSelection = (): [SelectionState, SelectionHandlers] => {
+export type ClassName = string
+
+//TODO bug выбор внутреннего контейнера работает не корректно
+export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] => {
     const store = useStore()
     const componentStore = useComponentStore()
     const [hovered, setHovered] = useState(false)
@@ -38,6 +43,10 @@ export const useSelection = (): [SelectionState, SelectionHandlers] => {
         setHovered(false)
     }, [])
 
+    const className = useMemo(() => (classNames({
+        [hoveredStyles]: hovered && !selected,
+        [selectedStyles]: selected,
+    })), [hovered, selected])
 
-    return [{hovered, selected}, {onMouseDown, onMouseOver, onMouseLeave}]
+    return [{hovered, selected}, {onMouseDown, onMouseOver, onMouseLeave}, className]
 }

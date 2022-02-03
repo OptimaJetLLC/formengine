@@ -30,14 +30,15 @@ const BorderContainer = styled.div`
   }
 
   &.top {
-        left: 0;
-        top: -10px;
-        cursor: row-resize;
-    }
-    &.bottom {
-        bottom: -10px;
-        cursor: ns-resize;
-    }
+    left: 0;
+    top: -10px;
+    cursor: row-resize;
+  }
+
+  &.bottom {
+    bottom: -10px;
+    cursor: ns-resize;
+  }
 `
 
 const Border = styled.div`
@@ -58,20 +59,25 @@ const Border = styled.div`
 
 const Resizer = (position: string) => {
     const store = useStore()
-    return <BorderContainer key={position} onMouseDown={(e: any) => {
-        store.dnd.isResizing = true;
-        e.preventDefault();
-        e.stopPropagation();
-        const move = (e: MouseEvent) => {
-            console.log(e.clientX)
-        };
-        window.addEventListener('mousemove', move);
-        window.addEventListener('mouseup', (e) => {
-            store.dnd.isResizing = false;
-            window.removeEventListener('mousemove', move);
-        }, { once: true });
-
-    }} className={position}><Border className={position}/></BorderContainer>
+    return <BorderContainer
+        key={position}
+        className={position}
+        onMouseDown={(e: any) => {
+            store.dnd.isResizing = true;
+            e.preventDefault();
+            e.stopPropagation();
+            const move = (e: MouseEvent) => {
+                console.log(e.clientX)
+            };
+            window.addEventListener('mousemove', move);
+            window.addEventListener('mouseup', (e) => {
+                store.dnd.isResizing = false;
+                window.removeEventListener('mousemove', move);
+            }, {once: true});
+        }}
+    >
+        <Border className={position}/>
+    </BorderContainer>
 }
 
 export default Resizer;

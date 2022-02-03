@@ -1,25 +1,17 @@
-import React, {ComponentType, CSSProperties, ReactElement, useRef} from "react";
+import React, {ComponentType, CSSProperties, ReactElement, useEffect, useLayoutEffect, useRef, useState} from "react";
 import {observer} from "mobx-react";
 import {useComponentStore} from "../../utils/ComponentStoreContext";
 import {useStore} from "../../utils/StoreContext";
 import {DropZone1} from "./components/DropZone";
 import {useDnd} from "./hooks/useDnd";
 import {useSelection} from "./hooks/useSelection";
-import {css} from "@emotion/css";
-import classNames from "classnames";
+import {Resizable} from "re-resizable";
+import {Toolbar} from "./components/Toolbar";
 
 interface EditableProps {
     child: ReactElement
 }
 
-const style: CSSProperties = {
-    border: "1px dashed black",
-    padding: "0.5rem 1rem",
-    backgroundColor: "white",
-    cursor: "move"
-};
-
-//TODO Selection
 //TODO Resizer
 //TODO ControlBar
 
@@ -28,43 +20,93 @@ export const Editable = observer(({child}: EditableProps) => {
     const componentStore = useComponentStore()
     const componentDefinition = useComponentDefinition()
     const [{isActive, opacity, padding}, dnd] = useDnd()
-    const [{hovered, selected}, selectionHandlers] = useSelection()
+    const [{hovered, selected}, selectionHandlers, className] = useSelection()
 
     const containers = componentDefinition.annotations.filter(value => value.isContainer)
 
     if (componentStore.type === "Screen")
         return child
 
-    const hoveredStyles = css`
-      outline: 2px dashed #3498ff !important;
-      cursor: pointer !important;
-    `
-
-    const selectedStyles = css`
-      outline: 2px solid #3498ff !important;
-      cursor: move !important;
-    `
-
-    const className = classNames({
-        [hoveredStyles]: hovered && !selected,
-        [selectedStyles]: selected,
-    })
 
     return (
-        <>
-            <div
-                className={className}
-                ref={dnd}
-                style={{opacity, padding}}
-                {...selectionHandlers}
-            >
-                {isActive && <DropZone1 index={0}/>}
-                {child}
-                {isActive && <DropZone1 index={1}/>}
-            </div>
-        </>
+        <div
+            className={className + " "}
+            ref={dnd}
+            style={{
+                opacity, padding,
+            }}
+            {...selectionHandlers}
+        >
+            <Toolbar show={selected} parent={dnd.current}/>
+            {isActive && <DropZone1 index={0}/>}
+            {child}
+            {isActive && <DropZone1 index={1}/>}
+        </div>
     )
 })
+
+
+function useContainerDimensions(myRef: React.RefObject<any>) {
+    const [dimensions, setDimensions] = useState({width: 0, height: 0});
+
+    useEffect(() => {
+        const getDimensions = () => ({
+            width: (myRef && myRef.current.offsetWidth) || 0,
+            height: (myRef && myRef.current.offsetHeight) || 0,
+        });
+
+        const handleResize = () => {
+            setDimensions(getDimensions());
+        };
+
+        if (myRef.current) {
+            setDimensions(getDimensions());
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [myRef]);
+
+    return dimensions;
+}
+
+const useResizer1 = (selected: boolean, child: ReactElement) => {
+    if (selected)
+        return <Resizable
+            handleComponent={{
+                bottom: <span>asd</span>
+            }}
+        >
+            {child}
+        </Resizable>
+
+    return child
+}
+
+//TODO обработка событий сдвига
+//TODO добавление четырех точек? Шести? Посмотреть на референс.
+const useResizer = (ref: React.RefObject<any>) => {
+    const [size, setSize] = useState([0, 0]);
+    useEffect(() => {
+        function updateSize() {
+            //setSize([window.innerWidth, window.innerHeight]);
+            setSize([ref.current.offsetWidth, ref.current.offsetHeight]);
+        }
+
+        if (!ref.current) return
+
+        //ref.current.addEventListener('resize', updateSize);
+        window.addEventListener('resize', updateSize);
+        updateSize();
+
+        //return () => ref.current.removeEventListener('resize', updateSize);
+    }, [ref]);
+
+    return size;
+}
 
 const useCommonData = () => {
 
