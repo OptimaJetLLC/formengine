@@ -1,7 +1,7 @@
-import i18n, { InitOptions } from 'i18next';
+import i18n, {InitOptions} from 'i18next';
 import XHR from 'i18next-xhr-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import { initReactI18next } from 'react-i18next';
+import {initReactI18next} from 'react-i18next';
 
 export type OnI18nInitCallback = (language: string) => void;
 
@@ -17,9 +17,12 @@ export function initI18n(onInit: OnI18nInitCallback) {
                 load: 'currentOnly',
                 interpolation: {
                     escapeValue: false,
+                },
+                react: {
+                    useSuspense: false,
                 }
-            } as InitOptions,
-            (error: any) => {
+            },
+            (error) => {
                 if (error) {
                     console.log('An error occurred while initializing the language', error);
                     return;
