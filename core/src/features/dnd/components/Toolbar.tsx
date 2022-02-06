@@ -4,7 +4,6 @@ import React, {useCallback, useState} from "react";
 import {observer} from "mobx-react";
 import {usePopper} from "react-popper";
 import styled from "@emotion/styled";
-import PinIcon from "@rsuite/icons/Pin";
 import {FaIcon} from "../../../components/UI/Icons";
 import * as faClone from "@fortawesome/free-regular-svg-icons/faClone";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
@@ -32,7 +31,6 @@ export const Toolbar = observer(({parent, show}: ToolbarProps) => {
         ]
     });
 
-    const onPin = useCallback(() => ({}), [])
     const onClone = useCallback(() => store.clone(key), [])
     const onRemove = useCallback(() => store.remove(key), [])
 
@@ -45,7 +43,6 @@ export const Toolbar = observer(({parent, show}: ToolbarProps) => {
         {...attributes.popper}
     >
         <Title>{key}</Title>
-        <PinIcon onClick={onPin}/>
         <FaIcon onClick={onClone} icon={faClone as unknown as IconDefinition}/>
         <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition}/>
     </div>
