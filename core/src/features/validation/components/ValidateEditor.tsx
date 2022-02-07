@@ -3,6 +3,7 @@ import {PropertyEditorProps} from "../../annotation/types";
 import {StringRules} from "../rules/StringRules";
 import {StringRuleKey, ValueType} from "../types";
 import { useTranslation } from 'react-i18next';
+import {RefObject} from "react";
 
 export const ValidateEditor = ({annotation, componentStore, onBlur, onChange, value}: PropertyEditorProps<any>) => {
     const schema = componentStore.validation;
@@ -11,7 +12,7 @@ export const ValidateEditor = ({annotation, componentStore, onBlur, onChange, va
     if (!schema) {
         return <div>
             <Dropdown style={{ display: "flex" }}
-                      renderToggle={(props, ref) => (
+                      renderToggle={(props: any, ref: any) => (
                           <Button {...props} ref={ref} block>
                               <h6>{t('validation.chooseValidation')}</h6>
                           </Button>
@@ -55,7 +56,7 @@ export const ValidateEditor = ({annotation, componentStore, onBlur, onChange, va
         })}
 
         {schema.type && <Dropdown style={{display: "flex"}}
-                                  renderToggle={(props, ref) => (
+                                  renderToggle={(props: any, ref: any) => (
                                       <Button {...props} ref={ref} block>
                                           <h6> {t('validation.addRule')} </h6>
                                       </Button>
