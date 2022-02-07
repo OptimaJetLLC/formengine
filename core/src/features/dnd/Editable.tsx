@@ -21,6 +21,7 @@ export const Editable = observer(({child}: EditableProps) => {
     const componentDefinition = useComponentDefinition()
     const [{isActive, opacity, padding}, dnd] = useDnd()
     const [{hovered, selected}, selectionHandlers, className] = useSelection()
+    //attach node for parent
 
     const containers = componentDefinition.annotations.filter(value => value.isContainer)
 
