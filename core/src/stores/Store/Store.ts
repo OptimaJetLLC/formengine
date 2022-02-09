@@ -16,8 +16,7 @@ import { onI18nInit } from '../../features/localization/i18n';
 export class Store {
     readonly view: DefineRegistry
 
-    dnd: DndStore = new DndStore()
-    //tree: TreeStore
+    readonly dnd: DndStore = new DndStore()
 
     currentNode: Node | null = null
     isBuilderMode: boolean = true
@@ -57,7 +56,6 @@ export class Store {
         this.view = view
 
         makeObservable(this, {
-            dnd: observable.deep,
             allEvents: observable.deep,
             currentNode: observable.ref,
             formContext: observable.ref,
@@ -122,9 +120,9 @@ export class Store {
         targetNode.parent?.data?.children?.splice(targetIndex, 1);
     }
 
-    add(name: string, targetKey: string, index: number = 0, combine?: boolean) {
-        const key = this._generateKey(name);
-        const component = new ComponentStore(key, name);
+    add(type: string, targetKey: string, index: number = 0, combine?: boolean) {
+        const key = this._generateKey(type);
+        const component = new ComponentStore(key, type);
         this.model.components.push(component);
         this.move(key, targetKey, index, combine);
     }

@@ -53,7 +53,7 @@ export const Component = observer(({wrapper}: ComponentProps) => {
     return wrapper ? createElement(wrapper, {child: element}) : withError;
 });
 
-function useDefaultProps(definition: ComponentDefinition<any>) {
+export function useDefaultProps(definition: ComponentDefinition<any>) {
     return useMemo(() => {
         const props: Record<string, any> = {}
 

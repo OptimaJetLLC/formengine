@@ -1,35 +1,49 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import styled from '@emotion/styled'
-import {IconButton, Popover as RPopover, Whisper} from 'rsuite';
-import Toolbar from "../../Toolbar";
+import {IconButton} from 'rsuite';
 import PlusIcon from "@rsuite/icons/Plus";
 import {observer} from "mobx-react";
-import {useStore} from "../../../../utils/StoreContext";
+import {ComponentBar} from "../../ComponentBar";
+import {Popover} from "../../../../components/UI/Popover";
+import {css} from "@emotion/css";
+import {useDragLayer} from "react-dnd";
 
 const UnstyledAddButton = observer(() => {
-    const store = useStore()
-    const [open, setOpen] = useState(false);
+    const [show, setShow] = useState(false);
+    const ref = useRef(null)
 
-    const {isDragging} = store.dnd;
+    const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
+
     useEffect(() => {
-        if (isDragging) setOpen(false)
+        //Задержка нужна, чтобы не срабатывало слишком быстро)
+        if (isDragging) setTimeout(() => setShow(false))
     }, [isDragging]);
 
-    const Popover = <SPopover children={<Toolbar store={store}/>} open={open} full/>;
-    return <div>
-        <Backdrop open={open} onClick={() => setOpen(!open)}/>
-        <Whisper open placement="bottom" speaker={Popover} trigger={"none"}>
-            <SButton onClick={() => setOpen(!open)}
-                     icon={<ButtonIcon className={open ? "active" : ""}/>} color="green"
-                     appearance={"primary"} circle/>
-        </Whisper>
-    </div>
-})
+    const openToggle = useCallback(() => setShow(show => !show), [])
 
-export const AddButton = styled(UnstyledAddButton)`
+    return <>
+        <Backdrop open={show} onClick={openToggle}/>
+        <SButton ref={ref}
+                 onClick={openToggle}
+                 icon={<ButtonIcon className={show ? "active" : ""}/>}
+                 color="green"
+                 appearance={"primary"}
+                 circle
+        />
+        <Popover
+            parent={ref.current}
+            show={show}
+            className={PopoverStyle}
+        >
+            <ComponentBar/>
+        </Popover>
+    </>
+})
+export const AddButton = UnstyledAddButton
+/*export const AddButton = styled(UnstyledAddButton)`
   position: absolute;
   transform: translateX(-18px);
-`
+`*/
 
 const Backdrop = styled.div<{ open: boolean }>`
   position: absolute;
@@ -50,20 +64,15 @@ const SButton = styled(IconButton)`
   z-index: 14;
 `
 
-const SPopover = styled(RPopover)<{ open: boolean }>`
+const PopoverStyle = css`
+  z-index: 11;
   max-width: 800px;
   padding: 20px;
   border-radius: 10px;
   color: white;
   box-shadow: 0 0 15px rgb(0 0 0 / 25%);
   transition: opacity .1s ease, visibility .1s linear !important;
-  opacity: ${({open}) => open ? 1 : 0} !important;
-  visibility: ${({open}) => open ? 'visible' : 'hidden'};
   background-color: rgb(51 51 51 / 80%);
-
-  .rs-popover-arrow::after {
-    border-bottom-color: rgb(51 51 51 / 80%) !important;
-  }
 `
 
 const ButtonIcon = styled(PlusIcon)`

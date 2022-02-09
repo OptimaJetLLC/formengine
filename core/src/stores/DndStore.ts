@@ -1,3 +1,5 @@
+import {makeAutoObservable} from "mobx";
+
 export class DndStore {
     isDragging: boolean = false
     draggingOverKey?: string
@@ -6,5 +8,6 @@ export class DndStore {
     isMoving?: boolean
 
     constructor() {
+        makeAutoObservable(this)
     }
 }

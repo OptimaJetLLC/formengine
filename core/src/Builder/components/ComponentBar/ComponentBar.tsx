@@ -1,0 +1,199 @@
+import {ComponentDefinition} from "../../../features/annotation/types";
+import styled from "@emotion/styled";
+import SearchForm from "../SearchForm";
+import React, {useRef, useState} from "react";
+import {Trans} from "react-i18next";
+import {Centered} from "../../../components/UI/Containers";
+import {Button} from "rsuite";
+import {ToolbarItem} from "./Items";
+import {useStore} from "../../../utils/StoreContext";
+import {css} from "@emotion/css";
+import {useDefaultProps} from "../../../components/Component";
+import {DragSourceMonitor, useDrag} from "react-dnd";
+import {ItemType} from "../../../features/dnd/consts";
+import {DragItem} from "../../../features/dnd/components/DropZone";
+import {observer} from "mobx-react";
+
+interface ComponentBarProps {
+
+}
+
+export const ComponentBar = (props: ComponentBarProps) => {
+    const searchForm = useRef<SearchForm | null>(null)
+    const [filter, setFilter] = useState<ToolbarItem | null>(null)
+
+    const handleSearchChange = (value: string) => {
+        const isMatch = (el: ComponentDefinition<any>) =>
+            el.name.toLowerCase().includes(value.toLowerCase());
+
+        //TODO
+        /*setFilter({
+            title: 'Filtered',
+            controls: ToolbarItems.flatMap((item) => item.controls).filter(isMatch)
+        })*/
+
+    }
+
+    return <Container>
+        <Header>
+            <h4><Trans i18nKey="toolbar.elements">Elements</Trans></h4>
+            <Centered>
+                <StyledSearch ref={searchForm} style={{maxWidth: 300}}
+                              handleChange={handleSearchChange}/>
+            </Centered>
+            <h4 style={{opacity: 0}}><Trans i18nKey="toolbar.elements">Elements</Trans></h4>
+        </Header>
+
+        {filter && filter.controls?.length &&
+            <Centered alignItems={"baseline"}>
+                <Subheader>
+                    <Trans i18nKey="toolbar.notFound">Not found</Trans>
+                    <br/>
+                </Subheader>
+                <Button style={{marginLeft: 20}} size={"xs"} onClick={() => {
+                    setFilter(null)
+                    searchForm.current?.reset()
+                }}>
+                    <Trans i18nKey="toolbar.reset">Reset</Trans>
+                </Button>
+            </Centered>
+        }
+
+        <Items filter={filter}/>
+    </Container>
+}
+
+const Items = ({filter}: { filter: ToolbarItem | null }) => {
+    const store = useStore()
+    const itemsMap = filter?.controls.length ? [filter] : [
+        {
+            title: (<Trans i18nKey="toolbar.baseControls">Base controls</Trans>),
+            controls: store.view.all()
+        }
+    ];
+
+    return <>
+        {itemsMap?.map((item: ToolbarItem, i: number) => <ControlsGroup key={(item.title + i)}>
+            <Subheader>
+                {item.title}
+            </Subheader>
+            <Controls>
+                {item.controls.map((value, index) =>
+                    <DraggableComponent componentDefinition={value} index={index}/>
+                )}
+            </Controls>
+        </ControlsGroup>)}
+    </>
+}
+
+interface ControlItemProps {
+    index: number
+    componentDefinition: ComponentDefinition<any>,
+}
+
+const DraggableComponent = observer(({componentDefinition, index}: ControlItemProps) => {
+    const key = componentDefinition.name;
+    const View = componentDefinition.view
+
+    const store = useStore()
+    const defaultProps = useDefaultProps(componentDefinition)
+    const [{isDragging, style}, drag] = useDrag(() => ({
+        type: ItemType.AddedComponent,
+        item: {key},
+
+        collect: (monitor: DragSourceMonitor<DragItem, unknown>) => ({
+            isDragging: monitor.isDragging(),
+            style: {
+                outline: monitor.isDragging() ? '2px solid #1262E2' : 'none',
+                boxShadow: monitor.isDragging() ? '#00000038' : 'none'
+            }
+        }),
+    }), []);
+
+    return <div className={ControlItemStyle} ref={drag}>
+        {componentDefinition.name}
+        <ControlContainer>
+            <View {...defaultProps} style={style}/>
+        </ControlContainer>
+    </div>
+})
+
+
+const ControlItemStyle = css`
+  color: white;
+  cursor: grab;
+  margin: 7px 5px;
+  min-width: 180px;
+  max-width: 180px;
+  height: 100px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+`
+
+const ControlContainer = styled.div`
+  padding: 8px;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  background-color: rgb(255 255 255 / 21%);
+
+  &:hover {
+    outline: 2px solid #1262e2;
+  }
+`
+
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  min-width: 800px;
+`
+
+const StyledSearch = styled(SearchForm)`
+  margin-left: 20px;
+  flex: 1;
+  justify-content: center;
+  max-width: 200px;
+
+  > * {
+    color: white !important;
+    background-color: transparent;
+    margin-left: 0;
+  }
+`
+
+const Header = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: normal;
+
+  > * {
+    flex: 1;
+  }
+`
+
+const Subheader = styled.li`
+  list-style: none;
+  padding: 10px 0;
+  margin-top: 5px;
+  font-weight: normal;
+  cursor: pointer;
+  border: none;
+  font-size: 17px;
+  text-align: left;
+`
+
+
+const ControlsGroup = styled.div``
+
+const Controls = styled.div`
+  display: flex;
+  margin-bottom: 5px;
+  flex-flow: wrap;
+`

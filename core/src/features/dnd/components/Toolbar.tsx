@@ -9,43 +9,33 @@ import * as faClone from "@fortawesome/free-regular-svg-icons/faClone";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 import * as faTrash from "@fortawesome/free-regular-svg-icons/faTrashAlt";
 import {css} from "@emotion/css";
+import {Popover} from "../../../components/UI/Popover";
 
 interface ToolbarProps {
     show: boolean
-    parent: HTMLElement
+    parent: Element
 }
 
 export const Toolbar = observer(({parent, show}: ToolbarProps) => {
     const store = useStore()
     const {key} = useComponentStore()
-    const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
-    const {styles, attributes} = usePopper(parent, popperElement, {
-        placement: 'top',
-        modifiers: [
-            {
-                name: 'offset',
-                options: {
-                    offset: [150, -10],
-                },
-            },
-        ]
-    });
 
     const onClone = useCallback(() => store.clone(key), [])
     const onRemove = useCallback(() => store.remove(key), [])
 
     if (!show) return null
 
-    return <div
+    return <Popover
+        show={show}
+        placement='top'
+        parent={parent}
+        modifiers={[{name: 'offset', options: {offset: [150, -10]}}]}
         className={ToolbarContainer}
-        ref={setPopperElement}
-        style={styles.popper}
-        {...attributes.popper}
     >
         <Title>{key}</Title>
         <FaIcon onClick={onClone} icon={faClone as unknown as IconDefinition}/>
         <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition}/>
-    </div>
+    </Popover>
 })
 
 const ToolbarContainer = css`

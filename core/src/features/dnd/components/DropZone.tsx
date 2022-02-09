@@ -1,11 +1,9 @@
 import React, {CSSProperties} from "react";
 import classNames from "classnames";
 import {useDrop} from "react-dnd";
-import {observer} from "mobx-react";
-import {Node} from "../../../utils/Node";
 import {useStore} from "../../../utils/StoreContext";
 import {useComponentStore} from "../../../utils/ComponentStoreContext";
-import {ItemType} from "../consts";
+import {AcceptDrop, ItemType} from "../consts";
 
 export interface DragItem {
     key: string
@@ -35,11 +33,18 @@ const DropZone = (({index, isLast, className}: DropZoneProps) => {
     const key = componentStore.key
 
     const [{isOver, canDrop, isActive}, drop] = useDrop({
-        accept: [ItemType.Component],
+        accept: AcceptDrop,
         drop: (item: DragItem, monitor) => {
-            store.move1(item.key, key, index)
+            let type = monitor.getItemType() as ItemType
+            switch (type) {
+                case ItemType.AddedComponent:
+                    store.add(item.key, key, index)
+                    break
+                case ItemType.Component:
+                    store.move1(item.key, key, index)
+                    break
+            }
         },
-        canDrop: (item, monitor) => key !== item.key,
         collect: (monitor) => ({
             isOver: monitor.isOver(),
             canDrop: monitor.canDrop(),
@@ -49,56 +54,6 @@ const DropZone = (({index, isLast, className}: DropZoneProps) => {
 
     let height = 0
     let marginTop = 0
-
-    if (isActive) {
-        height = 40
-    } else if (canDrop) {
-        height = 10
-        marginTop = 5
-
-    } else {
-        height = 0
-
-    }
-
-    const isActiveStyle = isActive ? active : {}
-
-    return (
-        <div
-            className={classNames(
-                "dropZone",
-                {active: isActive, isLast},
-                className
-            )}
-            style={{...dropzone, ...isActiveStyle, height, marginTop}}
-            ref={drop}
-        >
-        </div>
-    );
-});
-
-const DropZone1 = (({index, isLast, className}: DropZoneProps) => {
-    const store = useStore()
-    const componentStore = useComponentStore()
-    const key = componentStore.key
-
-    const [{isOver, canDrop}, drop] = useDrop({
-        accept: "Component",
-        drop: (item: DragItem, monitor) => {
-            store.move1(item.key, key, index)
-        },
-        collect: (monitor) => ({
-            isOver: monitor.isOver(),
-            canDrop: monitor.canDrop(),
-        }),
-        hover: (item, monitor) => {
-            let a = 4
-        }
-    });
-
-    let height = 0
-    let marginTop = 0
-    const isActive = isOver && canDrop
 
     if (isActive) {
         height = 40
@@ -122,4 +77,4 @@ const DropZone1 = (({index, isLast, className}: DropZoneProps) => {
     );
 });
 
-export {DropZone, DropZone1};
+export {DropZone};
