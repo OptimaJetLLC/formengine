@@ -9,7 +9,7 @@ const Container = (props: PropertyEditorProps<ReactNode | undefined>) => {
         <LabeledInput>
             <label>{annotation.title}</label>
             <ul>
-                {componentStore.children?.map((item) => (<li>{item.key}</li>))}
+                {componentStore.children?.map((item) => (<li key={item.key}>{item.key}</li>))}
             </ul>
         </LabeledInput>
     );

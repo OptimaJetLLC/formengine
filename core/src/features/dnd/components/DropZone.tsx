@@ -1,16 +1,18 @@
-import React, {CSSProperties} from "react";
+import React, {CSSProperties, useMemo} from "react";
 import classNames from "classnames";
 import {useDrop} from "react-dnd";
 import {useStore} from "../../../utils/StoreContext";
 import {useComponentStore} from "../../../utils/ComponentStoreContext";
 import {AcceptDrop, ItemType} from "../consts";
+import {ComponentStore} from "../../../stores/ComponentStore";
+import {ComponentDefinition} from "../../annotation/types";
 
 export interface DragItem {
     key: string
 }
 
 interface DropZoneProps {
-    index: number
+    isBefore: boolean
     isLast?: any
     className?: any
 }
@@ -26,22 +28,40 @@ const active: CSSProperties = {
     transition: "100ms all",
 }
 
+export type NodeData = {
+    readonly componentStore: ComponentStore
+    readonly parent?: ComponentStore
+    readonly definition: ComponentDefinition<any>
+}
 
-const DropZone = (({index, isLast, className}: DropZoneProps) => {
+export const useNodeData = () => {
     const store = useStore()
     const componentStore = useComponentStore()
-    const key = componentStore.key
+    return useMemo<NodeData>(() => {
+        let node = store.findNode(componentStore.key)
+
+        if (!node) throw Error("Node didn't find!")
+
+        return {
+            componentStore,
+            parent: node.parent?.data,
+            definition: node.definition
+        }
+    }, [])
+}
+
+const DropZone = (({isBefore, isLast, className}: DropZoneProps) => {
+    const store = useStore()
+    const target = useNodeData()
 
     const [{isOver, canDrop, isActive}, drop] = useDrop({
         accept: AcceptDrop,
-        drop: (item: DragItem, monitor) => {
+        drop: (source: NodeData, monitor) => {
             let type = monitor.getItemType() as ItemType
             switch (type) {
                 case ItemType.AddedComponent:
-                    store.add(item.key, key, index)
-                    break
                 case ItemType.Component:
-                    store.move1(item.key, key, index)
+                    store.move(source, target, isBefore)
                     break
             }
         },

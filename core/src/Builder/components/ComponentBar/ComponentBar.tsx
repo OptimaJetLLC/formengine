@@ -7,12 +7,7 @@ import {Centered} from "../../../components/UI/Containers";
 import {Button} from "rsuite";
 import {ToolbarItem} from "./Items";
 import {useStore} from "../../../utils/StoreContext";
-import {css} from "@emotion/css";
-import {useDefaultProps} from "../../../components/Component";
-import {DragSourceMonitor, useDrag} from "react-dnd";
-import {ItemType} from "../../../features/dnd/consts";
-import {DragItem} from "../../../features/dnd/components/DropZone";
-import {observer} from "mobx-react";
+import {DraggableComponent} from "../../../features/dnd/components/DraggableComponent";
 
 interface ComponentBarProps {
 
@@ -79,71 +74,12 @@ const Items = ({filter}: { filter: ToolbarItem | null }) => {
             </Subheader>
             <Controls>
                 {item.controls.map((value, index) =>
-                    <DraggableComponent componentDefinition={value} index={index}/>
+                    <DraggableComponent definition={value} index={index}/>
                 )}
             </Controls>
         </ControlsGroup>)}
     </>
 }
-
-interface ControlItemProps {
-    index: number
-    componentDefinition: ComponentDefinition<any>,
-}
-
-const DraggableComponent = observer(({componentDefinition, index}: ControlItemProps) => {
-    const key = componentDefinition.name;
-    const View = componentDefinition.view
-
-    const store = useStore()
-    const defaultProps = useDefaultProps(componentDefinition)
-    const [{isDragging, style}, drag] = useDrag(() => ({
-        type: ItemType.AddedComponent,
-        item: {key},
-
-        collect: (monitor: DragSourceMonitor<DragItem, unknown>) => ({
-            isDragging: monitor.isDragging(),
-            style: {
-                outline: monitor.isDragging() ? '2px solid #1262E2' : 'none',
-                boxShadow: monitor.isDragging() ? '#00000038' : 'none'
-            }
-        }),
-    }), []);
-
-    return <div className={ControlItemStyle} ref={drag}>
-        {componentDefinition.name}
-        <ControlContainer>
-            <View {...defaultProps} style={style}/>
-        </ControlContainer>
-    </div>
-})
-
-
-const ControlItemStyle = css`
-  color: white;
-  cursor: grab;
-  margin: 7px 5px;
-  min-width: 180px;
-  max-width: 180px;
-  height: 100px;
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
-`
-
-const ControlContainer = styled.div`
-  padding: 8px;
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  border-radius: 7px;
-  background-color: rgb(255 255 255 / 21%);
-
-  &:hover {
-    outline: 2px solid #1262e2;
-  }
-`
 
 
 const Container = styled.div`

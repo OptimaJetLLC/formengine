@@ -12,6 +12,8 @@ import {DndStore} from "../DndStore";
 import { defaultLanguage } from '../../features/localization/languages';
 import { findLanguage, getFullLangCode, onLanguageChange } from '../../features/localization/i18n-utils';
 import { onI18nInit } from '../../features/localization/i18n';
+import {NodeData} from "../../features/dnd/components/DropZone";
+import {gen4Symbols} from "../../utils/gen4Symbols";
 
 export class Store {
     readonly view: DefineRegistry
@@ -65,7 +67,6 @@ export class Store {
             model: observable,
             tree: computed,
             clear: action.bound,
-            add: action.bound,
             language: observable.ref
         })
 
@@ -109,94 +110,47 @@ export class Store {
         this.model = JSON.parse(text);
     }
 
-    remove(targetKey: string) {
-        const targetNode = this.findNode(targetKey);
-        if (!targetNode) return;
+    clone(source: NodeData) {
+        const clone = _.cloneDeep(source.componentStore)
+        clone.key =  clone.key + " " + gen4Symbols();
 
-        const targetParent = targetNode.parent?.data?.children;
-        const targetIndex = targetParent?.indexOf(targetNode.data);
-
-        if (_.isUndefined(targetIndex)) return;
-        targetNode.parent?.data?.children?.splice(targetIndex, 1);
-    }
-
-    add(type: string, targetKey: string, index: number = 0, combine?: boolean) {
-        const key = this._generateKey(type);
-        const component = new ComponentStore(key, type);
-        this.model.components.push(component);
-        this.move(key, targetKey, index, combine);
-    }
-
-    clone(sourceKey: string) {
-        const sourceNode = this.findNode(sourceKey);
-        if (!sourceNode) return;
-
-        const clonedComponent = _.cloneDeep(sourceNode.data);
-        clonedComponent.key = this._generateKey(sourceNode.definition.name);
-        this.treeMap(clonedComponent?.children, (componentStore: ComponentStore) => {
-            componentStore.key = this._generateKey(componentStore.type);
+        this.treeMap(clone?.children, (child: ComponentStore) => {
+            child.key = child.key  + " " + gen4Symbols();
         })
 
-        this.model.components.push(clonedComponent);
-        this.move(clonedComponent.key, sourceKey, 1);
+        this.move({
+            componentStore: clone,
+            definition: source.definition
+        }, source, false)
     }
 
-    move1(sourceKey: string, targetKey: string, index: number = 0) {
-        const sourceNode = this.findNode(sourceKey);
-        const targetNode = this.findNode(targetKey);
+    move(source: NodeData, target: NodeData, isBefore: boolean = true) {
+        this.remove(source)
+        const index = getIndexToPush(target, isBefore)
+        push(source, target, index)
 
-        if (!sourceNode || !targetNode) return;
 
-        const sourceParent = sourceNode.parent?.data.children!;
-        const targetData = targetNode.parent?.data!;
-
-        const targetParent = targetData.children!;
-
-        const sourceIndex = sourceParent.indexOf(sourceNode.data);
-        const targetIndex = targetParent.indexOf(targetNode.data);
-
-        if (targetParent === sourceParent) {
-
-            const toIndex = sourceIndex < targetIndex
-                ? targetIndex + index - 1
-                : targetIndex + index;
-
-            moveArrayItem(targetParent, sourceIndex, toIndex);
-        } else {
-            const [removed] = sourceParent.splice(sourceIndex, 1)
-            targetParent.splice(targetIndex + index, 0, removed);
+        function push(source: NodeData, target: NodeData, index: number) {
+            target.parent?.children?.splice(index,0, source.componentStore)
         }
-        this.currentNode = sourceNode;
-    }
 
-    move(sourceKey: string, targetKey: string, index: number = 0, combine?: boolean) {
-        const sourceNode = this.findNode(sourceKey);
-        const targetNode = this.findNode(targetKey);
-
-        if (!sourceNode || !targetNode?.key?.length) return;
-
-        const sourceParent = sourceNode.parent?.data.children!;
-        const targetData = combine
-            ? targetNode.data!
-            : targetNode.parent?.data!;
-
-        if (!targetData.children) targetData.children = [];
-        const targetParent = targetData.children;
-
-        const sourceIndex = sourceParent.indexOf(sourceNode.data);
-        const targetIndex = targetParent?.indexOf(targetNode.data);
-
-        if (targetParent === sourceParent) {
-            moveArrayItem(targetParent, sourceIndex, targetIndex + index);
-        } else {
-            const [removed] = sourceParent.splice(sourceIndex, 1)
-            targetParent.splice(targetIndex + index, 0, removed);
+        function getIndexToPush(target: NodeData, isBefore: boolean) {
+            const index = Store.getIndexInParent(target)
+            return isBefore ? index : index + 1
         }
-        this.currentNode = sourceNode;
     }
 
-    private _generateKey(name: string) {
-        return name + " " + (Math.random() + 1).toString(36).substring(7);
+    remove(source: NodeData) {
+        const index = Store.getIndexInParent(source)
+        source.parent?.children?.splice(index, 1)
+    }
+
+    static getIndexInParent(node: NodeData){
+        const child = node.componentStore
+        const parent = node.parent
+        if (!parent) return -1
+
+        return parent.children!.indexOf(child)
     }
 
     findNode(key?: string) {

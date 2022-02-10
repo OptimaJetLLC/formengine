@@ -11,8 +11,9 @@ import * as faCaretUp from "@fortawesome/free-solid-svg-icons/faCaretUp";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 import {useStore} from "../../utils/StoreContext";
 import { useTranslation } from 'react-i18next';
+import {DropData} from "rsuite/esm/Tree/Tree";
 
-const Tree = () => {
+const Tree = observer(() => {
     const store = useStore();
     const { t } = useTranslation();
     const [currentExpandedKeys, setCurrentExpandedKeys] = useState<string[]>([]);
@@ -26,12 +27,15 @@ const Tree = () => {
         expandedNodesKeys = expandedNodesKeys.concat(currentExpandedKeys);
     }
     extractParentNodesKeys(store.currentNode);
-    const onDrop = ({dragNode, dropNode, dropNodePosition}: any) => {
-        store.move(dragNode.key, dropNode.key, dropNodePosition - 1);
+
+    //TODO починить перенос по дереву. Похоже, проблема связана со стилями
+    //TODO читывать dropNodePosition, чтобы вычислить позицию isBefore
+    const onDrop = ({dragNode, dropNode, dropNodePosition}: DropData<ItemDataType>) => {
+        //store.move(dragNode as Node, dropNode as Node, true);
     };
 
     return <Rows style={{width: "100%"}}>
-        <StyledTree
+        <RTree
             draggable onDrop={onDrop}
             onSelect={(activeNode) => store.currentNode = activeNode as Node}
             value={store.currentNode?.data?.key}
@@ -51,6 +55,7 @@ const Tree = () => {
             style={{maxHeight: 'inherit', height: 'inherit'}}
             data={store.tree.children as ItemDataType[]}
         />
+
         <Columns>
             <SubtleIconButton
                 onClick={() => {
@@ -64,7 +69,7 @@ const Tree = () => {
                 size={"sm"} appearance={"subtle"}><CollapseIcon/>{t('tree.collapse')}</SubtleIconButton>
         </Columns>
     </Rows>
-}
+})
 
 const TreeNode = styled.div`
   margin-top: -3px;
@@ -102,6 +107,4 @@ const ExpandIcon = (p: any) => <CombineIconsVertical {...p} style={{transform: "
     <FaIcon icon={faCaretDown as unknown as IconDefinition} height={"0.4em"} viewBox={"0 170 320 200"}/>
 </CombineIconsVertical>
 
-const StyledTree = styled(RTree)``
-
-export default observer(Tree)
+export {Tree}

@@ -10,6 +10,7 @@ import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 import * as faTrash from "@fortawesome/free-regular-svg-icons/faTrashAlt";
 import {css} from "@emotion/css";
 import {Popover} from "../../../components/UI/Popover";
+import {useNodeData} from "./DropZone";
 
 interface ToolbarProps {
     show: boolean
@@ -18,10 +19,10 @@ interface ToolbarProps {
 
 export const Toolbar = observer(({parent, show}: ToolbarProps) => {
     const store = useStore()
-    const {key} = useComponentStore()
+    const data = useNodeData()
 
-    const onClone = useCallback(() => store.clone(key), [])
-    const onRemove = useCallback(() => store.remove(key), [])
+    const onClone = useCallback(() => store.clone(data), [])
+    const onRemove = useCallback(() => store.remove(data), [])
 
     if (!show) return null
 
@@ -32,7 +33,7 @@ export const Toolbar = observer(({parent, show}: ToolbarProps) => {
         modifiers={[{name: 'offset', options: {offset: [150, -10]}}]}
         className={ToolbarContainer}
     >
-        <Title>{key}</Title>
+        <Title>{data.componentStore.key}</Title>
         <FaIcon onClick={onClone} icon={faClone as unknown as IconDefinition}/>
         <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition}/>
     </Popover>

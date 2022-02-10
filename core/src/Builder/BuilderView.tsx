@@ -4,7 +4,7 @@ import {ComponentStore} from "../stores/ComponentStore";
 import {FormViewer, FormViewerProps} from "../FormViewer";
 import {Editable} from "../features/dnd/Editable";
 import {FormContainer, LeftPanel, RightPanel} from "./FormBuilder";
-import Tree from "./components/Tree";
+import {Tree} from "./components/Tree";
 import PropertiesEditor from "./components/PropertiesEditor/PropertiesEditor";
 import {useStore} from "../utils/StoreContext";
 
