@@ -19,9 +19,8 @@ export const Editable = observer(({child}: EditableProps) => {
     const {componentStore, definition} = useNodeData()
     const [{isActive, style}, dnd] = useDnd()
     const [{hovered, selected}, selectionHandlers, className] = useSelection()
-    //attach node for parent
 
-    const containers = definition.annotations.filter(value => value.isContainer)
+    const containers = definition.annotations.filter(value => value.isContainer);
 
     if (componentStore.type === "Screen")
         return child

@@ -9,15 +9,14 @@ interface ComponentsProps {
     wrapper?: ComponentType<any>
 }
 
+//TODO passed component definition?
 export const Components = observer((props: ComponentsProps) => {
 
     return <>
-        {props.components.map(componentStore => {
-            return (
-                <ComponentStoreProvider key={componentStore.key} store={componentStore}>
-                    <Component key={componentStore.key} wrapper={props.wrapper}/>
-                </ComponentStoreProvider>
-            )
-        })}
+        {props.components.map(componentStore => (
+            <ComponentStoreProvider key={componentStore.key} store={componentStore}>
+                <Component key={componentStore.key} wrapper={props.wrapper}/>
+            </ComponentStoreProvider>
+        ))}
     </>
 })

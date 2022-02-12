@@ -1,8 +1,6 @@
 import {useStore} from "../../../utils/StoreContext";
-import {useComponentStore} from "../../../utils/ComponentStoreContext";
-import React, {useCallback, useState} from "react";
+import React, {useCallback} from "react";
 import {observer} from "mobx-react";
-import {usePopper} from "react-popper";
 import styled from "@emotion/styled";
 import {FaIcon} from "../../../components/UI/Icons";
 import * as faClone from "@fortawesome/free-regular-svg-icons/faClone";

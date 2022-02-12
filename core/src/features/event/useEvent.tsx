@@ -6,12 +6,14 @@ import _ from "lodash";
 import {transformEvent} from "./transformEvent";
 import {useLocalObservable} from "mobx-react";
 import {useStore} from "../../utils/StoreContext";
+import {useComponentStore} from "../../utils/ComponentStoreContext";
 
 //TODO Optimize?
-export function useEvent(componentStore: ComponentStore, componentDefinition: ComponentDefinition<any>) {
+export function useEvent(componentDefinition: ComponentDefinition<any>) {
     const store = useStore()
     const eventMap = useLocalObservable<Record<string, any>>(() => ({}))
     const eventActionMap = useLocalObservable<Record<string, any[]>>(() => ({}))
+    const componentStore = useComponentStore()
 
     useEffect(() => {
         let disposer = autorun(() => {

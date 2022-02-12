@@ -1,7 +1,7 @@
 import {ComponentDefinition} from "../../annotation/types";
 import {observer} from "mobx-react";
 import {useStore} from "../../../utils/StoreContext";
-import {useDefaultProps} from "../../../components/Component";
+import {useDefaultProps} from "../../../components/Component/hooks/useDefaultProps";
 import {DragSourceMonitor, useDrag} from "react-dnd";
 import {ItemType} from "../consts";
 import {DragItem, NodeData} from "./DropZone";
@@ -16,6 +16,7 @@ interface ControlItemProps {
     definition: ComponentDefinition<any>,
 }
 
+//TODO Dragabble часть оставить здесь, а остальное вынести обратно в компонент бар
 export const DraggableComponent = observer(({definition, index}: ControlItemProps) => {
     const View = definition.view
 

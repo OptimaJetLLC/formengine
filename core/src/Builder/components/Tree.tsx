@@ -30,6 +30,7 @@ const Tree = observer(() => {
 
     //TODO починить перенос по дереву. Похоже, проблема связана со стилями
     //TODO читывать dropNodePosition, чтобы вычислить позицию isBefore
+    //TODO учитывать новые параметры для move
     const onDrop = ({dragNode, dropNode, dropNodePosition}: DropData<ItemDataType>) => {
         //store.move(dragNode as Node, dropNode as Node, true);
     };

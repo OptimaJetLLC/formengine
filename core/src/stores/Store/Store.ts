@@ -4,7 +4,6 @@ import {ComponentStore} from "../ComponentStore";
 import {Node} from "../../utils/Node";
 import {Action, EventName, FullActionDefinition, Modifiers, OverArgs} from "../../utils/Types";
 import {toWeakEvent} from "./utils/toWeakEvent";
-import {moveArrayItem} from "../../utils/moveArrayItem";
 import {FormikContextType} from "formik";
 import {DefineRegistry} from "../../utils/DefineRegistry";
 import {screen} from "../../components/Screen";
@@ -124,6 +123,7 @@ export class Store {
         }, source, false)
     }
 
+    //TODO definition для этих методов не нужен, создать еще тип, в котором он не обязателен?
     move(source: NodeData, target: NodeData, isBefore: boolean = true) {
         this.remove(source)
         const index = getIndexToPush(target, isBefore)

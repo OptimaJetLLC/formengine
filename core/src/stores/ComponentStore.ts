@@ -7,6 +7,8 @@ import {StyleItem} from "../features/style";
 export class ComponentStore {
     key: string = ""
     type: string = ""
+    //Bind to parent property
+    bindTo?: string
     props: Record<string, any> = {}
     events: Record<EventName, WeakActionDefinition[]> = {}
     styles?: Record<string, string>
