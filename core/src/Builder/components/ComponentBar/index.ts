@@ -1,3 +1,1 @@
-import {ComponentBar} from "./ComponentBar";
-
-export {ComponentBar}
+export * from "./ComponentBar";

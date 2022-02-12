@@ -1,4 +1,1 @@
-import {Store} from "./Store";
-
-export {Store}
-//export const store = new Store()
+export * from "./Store";
