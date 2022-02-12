@@ -1,6 +1,6 @@
 import React, {ComponentType, ReactElement, useRef} from "react";
 import {observer} from "mobx-react";
-import {useComponentStore} from "../../utils/ComponentStoreContext";
+import {useComponentData} from "../../utils/ComponenDataContext";
 import {useStore} from "../../utils/StoreContext";
 import {DropZone, useNodeData} from "./components/DropZone";
 import {useDnd} from "./hooks/useDnd";
@@ -11,10 +11,13 @@ import {Resizers} from "./components/Resizers/Resizers";
 interface EditableProps {
     child: ReactElement
 }
-
 //TODO z-Index увеличивать его для вложенных компонентов, чтобы выор компонентов был корректным
 //TODO По двойному клику выделять компонент, в который вложен компонент
 //TODO Повесить плашку над элементом, за которую можно будет дергать и которая предотвращает взаимодействие с инпутами??
+
+//TODO Drop зоны в компонентах с биндингом к родителю - контейнерное свойство
+//TODO Зона в контейнерах, если отсутствуют элементы
+//TODO Видимая заглушка в контейнерах без детей
 export const Editable = observer(({child}: EditableProps) => {
     const {componentStore, definition} = useNodeData()
     const [{isActive, style}, dnd] = useDnd()
@@ -47,19 +50,6 @@ export const Editable = observer(({child}: EditableProps) => {
 })
 
 
-
-const useCommonData = () => {
-
-}
-
-//TODO этот хук правда нужен?
-const useComponentDefinition = () => {
-    const store = useStore()
-    const componentStore = useComponentStore()
-    const componentDefinition = useRef(store.view.get(componentStore.type))
-
-    return componentDefinition.current
-}
 
 /*export const Editable = observer(({child}: EditableProps) => {
     const store = useStore()

@@ -2,10 +2,11 @@ import React, {CSSProperties, useMemo} from "react";
 import classNames from "classnames";
 import {useDrop} from "react-dnd";
 import {useStore} from "../../../utils/StoreContext";
-import {useComponentStore} from "../../../utils/ComponentStoreContext";
+import {useComponentData} from "../../../utils/ComponenDataContext";
 import {AcceptDrop, ItemType} from "../consts";
 import {ComponentStore} from "../../../stores/ComponentStore";
 import {ComponentDefinition} from "../../annotation/types";
+import {observer} from "mobx-react";
 
 export interface DragItem {
     key: string
@@ -36,7 +37,7 @@ export type NodeData = {
 
 export const useNodeData = () => {
     const store = useStore()
-    const componentStore = useComponentStore()
+    const {componentStore} = useComponentData()
     return useMemo<NodeData>(() => {
         let node = store.findNode(componentStore.key)
 
@@ -50,11 +51,11 @@ export const useNodeData = () => {
     }, [])
 }
 
-const DropZone = (({isBefore, isLast, className}: DropZoneProps) => {
+const DropZone = observer(({isBefore, isLast, className}: DropZoneProps) => {
     const store = useStore()
     const target = useNodeData()
 
-    const [{isOver, canDrop, isActive}, drop] = useDrop({
+    const [{isOver, isActive}, drop] = useDrop({
         accept: AcceptDrop,
         drop: (source: NodeData, monitor) => {
             let type = monitor.getItemType() as ItemType
@@ -67,7 +68,7 @@ const DropZone = (({isBefore, isLast, className}: DropZoneProps) => {
         },
         collect: (monitor) => ({
             isOver: monitor.isOver(),
-            canDrop: monitor.canDrop(),
+            //canDrop: monitor.canDrop(),
             isActive: monitor.isOver() && monitor.canDrop(),
         }),
     });

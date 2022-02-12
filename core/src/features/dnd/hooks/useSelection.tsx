@@ -1,5 +1,5 @@
 import {useStore} from "../../../utils/StoreContext";
-import {useComponentStore} from "../../../utils/ComponentStoreContext";
+import {useComponentData} from "../../../utils/ComponenDataContext";
 import React, {useCallback, useEffect, useMemo, useState} from "react";
 import classNames from "classnames";
 import {hoveredStyles, selectedStyles} from "../styles";
@@ -20,7 +20,7 @@ export type ClassName = string
 //TODO bug выбор внутреннего контейнера работает не корректно
 export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] => {
     const store = useStore()
-    const componentStore = useComponentStore()
+    const {componentStore} = useComponentData()
     const [hovered, setHovered] = useState(false)
     const [selected, setSelected] = useState(false)
 

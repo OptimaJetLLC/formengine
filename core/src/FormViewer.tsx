@@ -2,11 +2,9 @@ import {observer} from "mobx-react";
 import React, {ComponentType, ReactElement, useEffect} from "react";
 import {ComponentStore} from "./stores/ComponentStore";
 import {getForm as getStandardForm} from "./utils/getForm";
-import {Component} from "./components/Component";
 import {ObservableFormik} from "./features/validation/components/ObserableFormik";
 import {DefineRegistry} from "./utils/DefineRegistry";
 import {useStore} from "./utils/StoreContext";
-import {ComponentStoreProvider} from "./utils/ComponentStoreContext";
 import {Components} from "./components/Components";
 
 export interface FormViewerProps {

@@ -1,7 +1,7 @@
 import {RefObject, useMemo, useRef} from "react";
 import {DragSourceMonitor, useDrag, useDrop} from "react-dnd";
 import {DragItem, NodeData, useNodeData} from "../components/DropZone";
-import {useComponentStore} from "../../../utils/ComponentStoreContext";
+import {useComponentData} from "../../../utils/ComponenDataContext";
 import {AcceptDrop, ItemType} from "../consts";
 import _ from "lodash/fp";
 

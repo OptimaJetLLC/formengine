@@ -9,7 +9,7 @@ import {transformStyles} from "../../features/style";
 import {useSubstitution} from "../../features/substitution/useSubstitution";
 import {useStore} from "../../utils/StoreContext";
 import {toJS} from "mobx";
-import {useComponentStore} from "../../utils/ComponentStoreContext";
+import {useComponentData} from "../../utils/ComponenDataContext";
 import {useDefaultProps} from "./hooks/useDefaultProps";
 import {useInjectedValidation} from "./hooks/useInjectedValidation";
 import {useChildren} from "./hooks/useChildren";
@@ -23,7 +23,7 @@ interface ComponentProps {
 //TODO transformStyles to hook
 export const Component = observer(({wrapper}: ComponentProps) => {
     const store = useStore()
-    const componentStore = useComponentStore()
+    const {componentStore} = useComponentData()
     const currentProps: Record<string, any> = {}
     const definition = store.view.get(componentStore.type);
 

@@ -1,22 +1,23 @@
 import {ComponentStore} from "../stores/ComponentStore";
-import {ComponentStoreProvider} from "../utils/ComponentStoreContext";
+import {ComponentDataProvider} from "../utils/ComponenDataContext";
 import {Component} from "./Component";
 import React, {ComponentType} from "react";
 import {observer} from "mobx-react";
 
 interface ComponentsProps {
+    parent?: ComponentStore
     components: ComponentStore[]
     wrapper?: ComponentType<any>
 }
 
 //TODO passed component definition?
-export const Components = observer((props: ComponentsProps) => {
+export const Components = observer(({parent, components, wrapper}: ComponentsProps) => {
 
     return <>
-        {props.components.map(componentStore => (
-            <ComponentStoreProvider key={componentStore.key} store={componentStore}>
-                <Component key={componentStore.key} wrapper={props.wrapper}/>
-            </ComponentStoreProvider>
+        {components.map(componentStore => (
+            <ComponentDataProvider key={componentStore.key} parent={parent} componentStore={componentStore}>
+                <Component wrapper={wrapper}/>
+            </ComponentDataProvider>
         ))}
     </>
 })
