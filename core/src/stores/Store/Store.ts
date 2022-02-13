@@ -130,7 +130,9 @@ export class Store {
 
 
         function push(source: NodeData, target: NodeData, index: number) {
-            target.parent?.children?.splice(index,0, source.componentStore)
+            let purpose = target.parent ||  target.componentStore
+            purpose.children ??= []
+            purpose.children?.splice(index, 0, source.componentStore)
         }
 
         function getIndexToPush(target: NodeData, isBefore: boolean) {
@@ -147,7 +149,7 @@ export class Store {
     static getIndexInParent(node: NodeData){
         const child = node.componentStore
         const parent = node.parent
-        if (!parent) return -1
+        if (!parent) return 0
 
         return parent.children!.indexOf(child)
     }

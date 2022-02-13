@@ -25,6 +25,7 @@ import { search } from './Search';
 import { menu } from './Menu';
 import { richTextEditor } from './RichTextEditor';
 import { image } from './Image';
+import {grid} from "./Grid";
 
 export const rsuite = new DefineRegistry([
     textArea,
@@ -54,6 +55,7 @@ export const rsuite = new DefineRegistry([
     menu,
     richTextEditor,
     image,
+    grid
 ])
 
 

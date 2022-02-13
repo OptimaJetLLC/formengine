@@ -14,8 +14,9 @@ export interface DragItem {
 
 interface DropZoneProps {
     isBefore: boolean
-    isLast?: any
     className?: any
+    bindTo?: string
+    inner?: boolean
 }
 
 const dropzone: CSSProperties = {
@@ -34,7 +35,7 @@ export type NodeData = {
     readonly parent?: ComponentStore
 }
 
-const DropZone = observer(({isBefore, isLast, className}: DropZoneProps) => {
+const DropZone = observer(({isBefore, className, bindTo, inner}: DropZoneProps) => {
     const store = useStore()
     const target = useComponentData()
 
@@ -45,7 +46,13 @@ const DropZone = observer(({isBefore, isLast, className}: DropZoneProps) => {
             switch (type) {
                 case ItemType.AddedComponent:
                 case ItemType.Component:
-                    store.move(source, target, isBefore)
+                    source.componentStore.bindTo = bindTo
+                    if (inner)
+                        store.move(source, {
+                            componentStore: target.componentStore,
+                        }, isBefore)
+                    else
+                        store.move(source, target, isBefore)
                     break
             }
         },
@@ -71,7 +78,7 @@ const DropZone = observer(({isBefore, isLast, className}: DropZoneProps) => {
         <div
             className={classNames(
                 "dropZone",
-                {active: isActive, isLast},
+                {active: isActive},
                 className
             )}
             style={{...dropzone, ...isActiveStyle, height, marginTop}}

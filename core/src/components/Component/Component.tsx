@@ -20,7 +20,7 @@ interface ComponentProps {
 export const Component = observer(({Wrapper}: ComponentProps) => {
     const currentProps: Record<string, any> = {}
 
-    const {componentStore, definition: {view: View}} = useComponentData()
+    const {componentStore, definition: {view}} = useComponentData()
     const defaultProps = useDefaultProps()
     const [events, eventActions] = useEvent();
     const [field, meta] = useComponentValidation()
@@ -28,22 +28,20 @@ export const Component = observer(({Wrapper}: ComponentProps) => {
     useInjectedValidation(events, eventActions, field)
     useChildren(currentProps, Wrapper);
     currentProps.className = useTransformStyles();
-
     //TODO inline
+
     const storedProps = toJS(componentStore.props)
     const props = Object.assign(defaultProps, events, storedProps, currentProps, substitutedValues)
-
     //const element = createElement(View, props)
-
 
     //TODO for builder need render another component without error message and events
     //TODO to Component Type
     //const withError = createElement(WithErrorMessage, {child: element, meta})
 
-    //return wrapper ? createElement(wrapper, {child: element}) : withError;
 
+    const View = observer(view)
     if (Wrapper)
-        return <Wrapper View={View} componentProps={props}/>
+        return <Wrapper View={View} viewProps={props}/>
 
     return <View {...props}/>
 });

@@ -21,7 +21,7 @@ export const Resizers = ({show}: ResizersProps) => {
 
     if (!show) return null
 
-    return <>
+    return <div>
         {positions.map(value => <Resizer key={value} position={value}/>)}
-    </>
+    </div>
 }

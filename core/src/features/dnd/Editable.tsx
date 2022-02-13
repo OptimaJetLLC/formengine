@@ -7,10 +7,11 @@ import {useDnd} from "./hooks/useDnd";
 import {useSelection} from "./hooks/useSelection";
 import {Toolbar} from "./components/Toolbar";
 import {Resizers} from "./components/Resizers/Resizers";
+import {useInnerDropZone} from "./hooks/useInnerDropZone";
 
 export interface EditableProps {
     View: ComponentType<any>
-    componentProps: Record<string, any>
+    viewProps: Record<string, any>
 }
 //TODO z-Index увеличивать его для вложенных компонентов, чтобы выор компонентов был корректным
 //TODO По двойному клику выделять компонент, в который вложен компонент
@@ -19,15 +20,15 @@ export interface EditableProps {
 //TODO Drop зоны в компонентах с биндингом к родителю - контейнерное свойство
 //TODO Зона в контейнерах, если отсутствуют элементы
 //TODO Видимая заглушка в контейнерах без детей
-export const Editable = observer(({View, componentProps}: EditableProps) => {
+export const Editable = observer(({View, viewProps}: EditableProps) => {
     const {componentStore, definition} = useComponentData()
     const [{isActive, style}, dnd] = useDnd()
     const [{hovered, selected}, selectionHandlers, className] = useSelection()
 
-    const containers = definition.annotations.filter(value => value.isContainer);
+    useInnerDropZone(viewProps)
 
     if (componentStore.type === "Screen")
-        return <View {...componentProps}/>
+        return <View {...viewProps}/>
 
 
     return (
@@ -43,9 +44,9 @@ export const Editable = observer(({View, componentProps}: EditableProps) => {
             <Toolbar show={selected} parent={dnd.current}/>
             <Resizers show={selected}/>
 
-            {isActive && <DropZone isBefore={true}/>}
-            <View {...componentProps}/>
-            {isActive && <DropZone isBefore={false}/>}
+            {isActive && <DropZone bindTo={componentStore.bindTo} isBefore={true}/>}
+            <View {...viewProps}/>
+            {isActive && <DropZone bindTo={componentStore.bindTo} isBefore={false}/>}
         </div>
     )
 })

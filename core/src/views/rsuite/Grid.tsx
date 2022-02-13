@@ -1,0 +1,32 @@
+import { define } from '../../features/annotation/define';
+import {Col, Grid as RGrid, Row} from "rsuite";
+import {reactElements} from "../../features/annotation";
+import {ReactNode} from "react";
+
+export interface GridProps {
+    child1: ReactNode
+    child2: ReactNode
+}
+
+//TODO this used for tested inner drop zones
+export const Grid = (props: GridProps) => {
+    // todo implement
+    return (
+        <RGrid>
+            <Row>
+                {[].map(()=> <Col></Col>)}
+                <Col xs={12}>
+                    {props.child1}
+                </Col>
+                <Col xs={12}>
+                    {props.child2}
+                </Col>
+            </Row>
+        </RGrid>
+    )
+}
+
+export const grid = define('Grid', Grid, {
+    child1: reactElements,
+    child2: reactElements,
+}, []);

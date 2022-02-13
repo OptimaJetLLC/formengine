@@ -11,6 +11,7 @@ import {DraggableComponent} from "../../../features/dnd/components/DraggableComp
 import {ComponentDataProvider} from "../../../utils/ComponenDataContext";
 import {ComponentStore} from "../../../stores/ComponentStore";
 import {gen4Symbols} from "../../../utils/gen4Symbols";
+import {observer} from "mobx-react";
 
 interface ComponentBarProps {
 
@@ -61,7 +62,7 @@ export const ComponentBar = (props: ComponentBarProps) => {
     </Container>
 }
 
-const Items = ({filter}: { filter: ToolbarItem | null }) => {
+const Items = observer(({filter}: { filter: ToolbarItem | null }) => {
     const store = useStore()
     const itemsMap = filter?.controls.length ? [filter] : [
         {
@@ -86,7 +87,7 @@ const Items = ({filter}: { filter: ToolbarItem | null }) => {
             </Controls>
         </ControlsGroup>)}
     </>
-}
+})
 
 
 const Container = styled.div`
