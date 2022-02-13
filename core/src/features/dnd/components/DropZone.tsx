@@ -32,28 +32,11 @@ const active: CSSProperties = {
 export type NodeData = {
     readonly componentStore: ComponentStore
     readonly parent?: ComponentStore
-    readonly definition: ComponentDefinition<any>
-}
-
-export const useNodeData = () => {
-    const store = useStore()
-    const {componentStore} = useComponentData()
-    return useMemo<NodeData>(() => {
-        let node = store.findNode(componentStore.key)
-
-        if (!node) throw Error("Node didn't find!")
-
-        return {
-            componentStore,
-            parent: node.parent?.data,
-            definition: node.definition
-        }
-    }, [])
 }
 
 const DropZone = observer(({isBefore, isLast, className}: DropZoneProps) => {
     const store = useStore()
-    const target = useNodeData()
+    const target = useComponentData()
 
     const [{isOver, isActive}, drop] = useDrop({
         accept: AcceptDrop,

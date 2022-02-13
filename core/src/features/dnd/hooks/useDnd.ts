@@ -1,6 +1,6 @@
 import {RefObject, useMemo, useRef} from "react";
 import {DragSourceMonitor, useDrag, useDrop} from "react-dnd";
-import {DragItem, NodeData, useNodeData} from "../components/DropZone";
+import {DragItem, NodeData} from "../components/DropZone";
 import {useComponentData} from "../../../utils/ComponenDataContext";
 import {AcceptDrop, ItemType} from "../consts";
 import _ from "lodash/fp";
@@ -18,7 +18,7 @@ interface DndState {
 
 export const useDnd = (): [DndState, RefObject<any>] => {
     const dnd = useRef(null)
-    const data = useNodeData()
+    const data = useComponentData()
 
     const [dropProps, drop] = useDrop({
         accept: AcceptDrop,

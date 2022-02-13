@@ -119,7 +119,6 @@ export class Store {
 
         this.move({
             componentStore: clone,
-            definition: source.definition
         }, source, false)
     }
 

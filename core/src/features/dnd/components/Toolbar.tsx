@@ -8,7 +8,7 @@ import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 import * as faTrash from "@fortawesome/free-regular-svg-icons/faTrashAlt";
 import {css} from "@emotion/css";
 import {Popover} from "../../../components/UI/Popover";
-import {useNodeData} from "./DropZone";
+import {useComponentData} from "../../../utils/ComponenDataContext";
 
 interface ToolbarProps {
     show: boolean
@@ -17,7 +17,7 @@ interface ToolbarProps {
 
 export const Toolbar = observer(({parent, show}: ToolbarProps) => {
     const store = useStore()
-    const data = useNodeData()
+    const data = useComponentData()
 
     const onClone = useCallback(() => store.clone(data), [])
     const onRemove = useCallback(() => store.remove(data), [])

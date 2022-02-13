@@ -2,7 +2,7 @@ import React, {ComponentType, ReactElement, useRef} from "react";
 import {observer} from "mobx-react";
 import {useComponentData} from "../../utils/ComponenDataContext";
 import {useStore} from "../../utils/StoreContext";
-import {DropZone, useNodeData} from "./components/DropZone";
+import {DropZone} from "./components/DropZone";
 import {useDnd} from "./hooks/useDnd";
 import {useSelection} from "./hooks/useSelection";
 import {Toolbar} from "./components/Toolbar";
@@ -19,7 +19,7 @@ interface EditableProps {
 //TODO Зона в контейнерах, если отсутствуют элементы
 //TODO Видимая заглушка в контейнерах без детей
 export const Editable = observer(({child}: EditableProps) => {
-    const {componentStore, definition} = useNodeData()
+    const {componentStore, definition} = useComponentData()
     const [{isActive, style}, dnd] = useDnd()
     const [{hovered, selected}, selectionHandlers, className] = useSelection()
 
