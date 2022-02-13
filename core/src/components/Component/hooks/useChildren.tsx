@@ -1,10 +1,10 @@
-import {ComponentDefinition} from "../../../features/annotation/types";
-import {ComponentType, ReactElement} from "react";
+import {ComponentType} from "react";
 import {useComponentData} from "../../../utils/ComponenDataContext";
 import {Components} from "../../Components";
+import {EditableProps} from "../../../features/dnd/Editable";
 
-export function useChildren(currentProps: Record<string, any>, definition: ComponentDefinition<any>, wrapper?: ComponentType<{ child: ReactElement }>) {
-    const {componentStore} = useComponentData()
+export function useChildren(currentProps: Record<string, any>, Wrapper?: ComponentType<EditableProps>) {
+    const {componentStore, definition} = useComponentData()
 
     if (!componentStore.children?.length) return
 
@@ -17,7 +17,7 @@ export function useChildren(currentProps: Record<string, any>, definition: Compo
                 components={componentStore.children
                     .filter(child =>
                         child.bindTo === container.key || !child.bindTo && container.key === "children"
-                    )} wrapper={wrapper}/>
+                    )} Wrapper={Wrapper}/>
 
     }
 }

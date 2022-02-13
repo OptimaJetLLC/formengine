@@ -6,16 +6,17 @@ import {ObservableFormik} from "./features/validation/components/ObserableFormik
 import {DefineRegistry} from "./utils/DefineRegistry";
 import {useStore} from "./utils/StoreContext";
 import {Components} from "./components/Components";
+import {EditableProps} from "./features/dnd/Editable";
 
 export interface FormViewerProps {
     //TODO onEvent?: (key: string, action: any, eventName: string) => void
     getForm: ((code: string) => ComponentStore[]),
-    wrapper?: ComponentType<{ child: ReactElement }> //TODO change type of wrapper
+    Wrapper?: ComponentType<EditableProps>
     view: DefineRegistry
 }
 
 export const FormViewer = observer((props: FormViewerProps) => {
-    const {getForm, wrapper, view} = props
+    const {getForm, Wrapper, view} = props
     const store = useStore()
     //const store = useMemo(() => new Store(view), [])
     useEffect(() => {
@@ -29,7 +30,7 @@ export const FormViewer = observer((props: FormViewerProps) => {
     return (
         //<StoreProvider view={rsuite}>
         <ObservableFormik>
-            <Components components={store.model.components} wrapper={wrapper}/>
+            <Components components={store.model.components} Wrapper={Wrapper}/>
         </ObservableFormik>
         //</StoreProvider>
     )

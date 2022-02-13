@@ -1,7 +1,9 @@
-import {ComponentDefinition} from "../../../features/annotation/types";
 import {useMemo} from "react";
+import {useComponentData} from "../../../utils/ComponenDataContext";
 
-export function useDefaultProps(definition: ComponentDefinition<any>) {
+export function useDefaultProps() {
+    const {definition} = useComponentData()
+
     return useMemo(() => {
         const props: Record<string, any> = {}
 

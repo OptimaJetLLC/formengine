@@ -8,8 +8,9 @@ import {useSelection} from "./hooks/useSelection";
 import {Toolbar} from "./components/Toolbar";
 import {Resizers} from "./components/Resizers/Resizers";
 
-interface EditableProps {
-    child: ReactElement
+export interface EditableProps {
+    View: ComponentType<any>
+    componentProps: Record<string, any>
 }
 //TODO z-Index увеличивать его для вложенных компонентов, чтобы выор компонентов был корректным
 //TODO По двойному клику выделять компонент, в который вложен компонент
@@ -18,7 +19,7 @@ interface EditableProps {
 //TODO Drop зоны в компонентах с биндингом к родителю - контейнерное свойство
 //TODO Зона в контейнерах, если отсутствуют элементы
 //TODO Видимая заглушка в контейнерах без детей
-export const Editable = observer(({child}: EditableProps) => {
+export const Editable = observer(({View, componentProps}: EditableProps) => {
     const {componentStore, definition} = useComponentData()
     const [{isActive, style}, dnd] = useDnd()
     const [{hovered, selected}, selectionHandlers, className] = useSelection()
@@ -26,7 +27,7 @@ export const Editable = observer(({child}: EditableProps) => {
     const containers = definition.annotations.filter(value => value.isContainer);
 
     if (componentStore.type === "Screen")
-        return child
+        return <View {...componentProps}/>
 
 
     return (
@@ -43,66 +44,9 @@ export const Editable = observer(({child}: EditableProps) => {
             <Resizers show={selected}/>
 
             {isActive && <DropZone isBefore={true}/>}
-            {child}
+            <View {...componentProps}/>
             {isActive && <DropZone isBefore={false}/>}
         </div>
     )
 })
 
-
-
-/*export const Editable = observer(({child}: EditableProps) => {
-    const store = useStore()
-    const componentStore = useComponentStore()
-    const componentDefinition = store.view.get(componentStore.type)
-
-    const containers = componentDefinition.annotations.filter(value => value.isContainer)
-
-    let element = child
-
-    if (containers.length) {
-         let wrappedChildren = createElement(Containerized, {key: componentStore.key, children: child.props.children})
-        element = cloneElement(child, {children: wrappedChildren})
-    }
-
-    if (componentStore.type === "Screen")
-        return element
-
-
-    /!*if (child.props.content) {
-        //child.props.content = child.props.content = "Asdasd"
-        return cloneElement(child, {content: child.props.content + "Asdasdsa"})
-    }*!/
-
-    return (
-        <Draggable
-            key={componentStore.key}
-            draggableId={componentStore.key}
-            index={0}
-            isDragDisabled={
-                store.dnd.isResizing || (componentStore.type === "DropZone")}>
-            {(provided: DraggableProvided, snapshot) =>
-                (
-                    <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                    >
-                        {element}
-                    </div>
-                )}
-        </Draggable>
-    )
-})*/
-
-
-interface Interface {
-    Component: ComponentType<any>
-}
-
-const AD = ({Component}: Interface) => {
-
-    return <>
-        <Component a={3}/>
-    </>
-}

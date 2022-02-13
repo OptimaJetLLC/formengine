@@ -4,6 +4,8 @@ import {useContext} from "react";
 import {BaseSchema, ValidationError} from "yup";
 import {toJS} from "mobx";
 import {useStore} from "../../utils/StoreContext";
+import {toValidateScheme} from "./toValidateScheme";
+import {useComponentData} from "../../utils/ComponenDataContext";
 
 interface ValidationConfig {
     key: string
@@ -16,6 +18,15 @@ export interface FieldProps {
     setError: (value: any) => void;
     setValue: (value: any, shouldValidate?: boolean) => void;
     value: any
+}
+
+export const useComponentValidation = () => {
+    const {componentStore: {key, validation}} = useComponentData()
+
+    return useValidation({
+        key: key,
+        scheme: toValidateScheme(validation),
+    })
 }
 
 export const useValidation = (keyOrConfig: string | ValidationConfig): [FieldProps, FieldMetaProps<any>] => {

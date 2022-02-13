@@ -1,18 +1,21 @@
 import {ComponentStore} from "../../stores/ComponentStore";
 import {css} from "@emotion/css";
+import {useComponentData} from "../../utils/ComponenDataContext";
 
-export function transformStyles(store: ComponentStore) {
+export function useTransformStyles() {
+    const {componentStore} = useComponentData()
+
     let transformedStyles = "";
     const mergedStyles = [
-        ...(store.cssStyles ?? []),
-        ...transformStylesToCSS(store.styles)
+        ...(componentStore.cssStyles ?? []),
+        ...transformStylesToCSS(componentStore.styles)
     ];
 
     mergedStyles?.forEach(
         ({name, value}) => transformedStyles += styleToString(name, value)
     )
 
-    transformedStyles += store.cssBlock;
+    transformedStyles += componentStore.cssBlock;
 
     return css`${transformedStyles}`;
 }

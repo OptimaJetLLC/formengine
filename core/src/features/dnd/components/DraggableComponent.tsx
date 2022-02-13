@@ -8,27 +8,16 @@ import {DragItem, NodeData} from "./DropZone";
 import React from "react";
 import {css} from "@emotion/css";
 import styled from "@emotion/styled";
-import {ComponentStore} from "../../../stores/ComponentStore";
-import {gen4Symbols} from "../../../utils/gen4Symbols";
-
-interface ControlItemProps {
-    index: number
-    definition: ComponentDefinition<any>,
-}
+import {useComponentData} from "../../../utils/ComponenDataContext";
 
 //TODO Dragabble часть оставить здесь, а остальное вынести обратно в компонент бар
-export const DraggableComponent = observer(({definition, index}: ControlItemProps) => {
-    const View = definition.view
-
-    const store = useStore()
-    const defaultProps = useDefaultProps(definition)
+export const DraggableComponent = observer(() => {
+    const data = useComponentData()
+    const View = data.definition.view
+    const defaultProps = useDefaultProps()
     const [{isDragging, style}, drag] = useDrag(() => ({
         type: ItemType.AddedComponent,
-        item: {
-            componentStore: new ComponentStore(definition.name + " " + gen4Symbols(), definition.name),
-            definition
-        },
-
+        item: data,
         collect: (monitor: DragSourceMonitor<NodeData, unknown>) => ({
             isDragging: monitor.isDragging(),
             style: {
@@ -39,7 +28,7 @@ export const DraggableComponent = observer(({definition, index}: ControlItemProp
     }), []);
 
     return <div className={ControlItemStyle} ref={drag}>
-        {definition.name}
+        {data.definition.name}
         <ControlContainer>
             <View {...defaultProps} style={style}/>
         </ControlContainer>

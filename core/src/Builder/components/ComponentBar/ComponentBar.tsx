@@ -8,6 +8,9 @@ import {Button} from "rsuite";
 import {ToolbarItem} from "./Items";
 import {useStore} from "../../../utils/StoreContext";
 import {DraggableComponent} from "../../../features/dnd/components/DraggableComponent";
+import {ComponentDataProvider} from "../../../utils/ComponenDataContext";
+import {ComponentStore} from "../../../stores/ComponentStore";
+import {gen4Symbols} from "../../../utils/gen4Symbols";
 
 interface ComponentBarProps {
 
@@ -73,9 +76,13 @@ const Items = ({filter}: { filter: ToolbarItem | null }) => {
                 {item.title}
             </Subheader>
             <Controls>
-                {item.controls.map((value, index) =>
-                    <DraggableComponent definition={value} index={index}/>
-                )}
+                {item.controls.map((definition, index) => (
+                    <ComponentDataProvider
+                        key={definition.name}
+                        componentStore={new ComponentStore(definition.name + " " + gen4Symbols(), definition.name)}>
+                        <DraggableComponent/>
+                    </ComponentDataProvider>
+                ))}
             </Controls>
         </ControlsGroup>)}
     </>

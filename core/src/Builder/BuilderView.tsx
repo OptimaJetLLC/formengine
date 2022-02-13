@@ -21,7 +21,7 @@ const BuilderView = observer((props: FormBuilderProps) => {
         </LeftPanel>}
 
         <FormContainer>
-            <FormViewer {...props} wrapper={Editable}/>
+            <FormViewer {...props} Wrapper={Editable}/>
         </FormContainer>
 
         {store.showRightPanel && <RightPanel>
