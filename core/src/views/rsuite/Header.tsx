@@ -17,7 +17,7 @@ export const Header = (props : HeaderProps ) => {
 }
 
 export const header = define("Header", Header, {
-    content: string.isRequired(""),
+    content: string.isRequired("Header"),
     subheader: string,
 })
 
