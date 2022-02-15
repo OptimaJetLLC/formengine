@@ -1,4 +1,5 @@
 import {ComponentStore} from "../stores/ComponentStore";
+import {ComponentType} from "react";
 
 export type EventName = string
 export type ArgumentName = string
@@ -39,3 +40,10 @@ export type OverArgs = Record<ArgumentName, string | number | boolean | Transfor
 export enum TransformativeType {
     Foreign = "Foreign"
 }
+
+export interface WrapperProps {
+    View: ComponentType<any>
+    viewProps: Record<string, any>
+}
+
+export type Wrapper = ComponentType<WrapperProps>

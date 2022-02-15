@@ -11,10 +11,10 @@ import {useComponentData} from "../../utils/ComponenDataContext";
 import {useDefaultProps} from "./hooks/useDefaultProps";
 import {useInjectedValidation} from "./hooks/useInjectedValidation";
 import {useChildren} from "./hooks/useChildren";
-import {EditableProps} from "../../features/dnd/Editable";
+import {Wrapper} from "../../utils/Types";
 
 interface ComponentProps {
-    Wrapper?: ComponentType<EditableProps>
+    Wrapper?: Wrapper
 }
 
 export const Component = observer(({Wrapper}: ComponentProps) => {
@@ -32,7 +32,6 @@ export const Component = observer(({Wrapper}: ComponentProps) => {
 
     const storedProps = toJS(componentStore.props)
     const props = Object.assign(defaultProps, events, storedProps, currentProps, substitutedValues)
-    //const element = createElement(View, props)
 
     //TODO for builder need render another component without error message and events
     //TODO to Component Type

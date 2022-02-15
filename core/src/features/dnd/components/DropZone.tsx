@@ -1,11 +1,10 @@
-import React, {CSSProperties, useMemo} from "react";
+import React, {CSSProperties} from "react";
 import classNames from "classnames";
 import {useDrop} from "react-dnd";
 import {useStore} from "../../../utils/StoreContext";
 import {useComponentData} from "../../../utils/ComponenDataContext";
 import {AcceptDrop, ItemType} from "../consts";
 import {ComponentStore} from "../../../stores/ComponentStore";
-import {ComponentDefinition} from "../../annotation/types";
 import {observer} from "mobx-react";
 
 export interface DragItem {

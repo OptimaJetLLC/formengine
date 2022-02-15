@@ -6,12 +6,12 @@ import {ObservableFormik} from "./features/validation/components/ObserableFormik
 import {DefineRegistry} from "./utils/DefineRegistry";
 import {useStore} from "./utils/StoreContext";
 import {Components} from "./components/Components";
-import {EditableProps} from "./features/dnd/Editable";
+import {Wrapper} from "./utils/Types";
 
 export interface FormViewerProps {
     //TODO onEvent?: (key: string, action: any, eventName: string) => void
     getForm: ((code: string) => ComponentStore[]),
-    Wrapper?: ComponentType<EditableProps>
+    Wrapper?: Wrapper
     view: DefineRegistry
 }
 

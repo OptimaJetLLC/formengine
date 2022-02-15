@@ -1,14 +1,13 @@
 import {ComponentStore} from "../stores/ComponentStore";
 import {ComponentDataProvider} from "../utils/ComponenDataContext";
 import {Component} from "./Component";
-import React, {ComponentType} from "react";
 import {observer} from "mobx-react";
-import {EditableProps} from "../features/dnd/Editable";
+import {Wrapper} from "../utils/Types";
 
 interface ComponentsProps {
     parent?: ComponentStore
     components: ComponentStore[]
-    Wrapper?: ComponentType<EditableProps>
+    Wrapper?: Wrapper
 }
 
 //TODO passed component definition?
