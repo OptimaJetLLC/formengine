@@ -1,12 +1,12 @@
-import { observer } from 'mobx-react';
-import { useTranslation } from 'react-i18next';
-import { useStore } from '../../../../utils/StoreContext';
-import { Dropdown } from 'rsuite';
-import React from 'react';
-import {languages} from '../../../../features/localization/languages';
+import {observer} from "mobx-react";
+import {useTranslation} from "react-i18next";
+import {useStore} from "../../../utils/StoreContext";
+import {languages} from "../consts";
+import {Dropdown} from "rsuite";
+import React from "react";
 
 export const LangSwitch = observer(() => {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const store = useStore();
 
     const children: any[] = [];

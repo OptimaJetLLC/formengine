@@ -1,15 +1,38 @@
-import { Language } from './language';
-import { i18n } from './i18n';
-import { defaultLanguage, languages } from './languages';
+import {Language, OnInitCallback} from "./types";
+import {defaultLanguage, languages} from "./consts";
+import {initI18n} from "./index";
 
 export function getFullLangCode(lang: Language): string {
     return `${lang.code}-${lang.dialect}`;
 }
 
+let firstLang: string | undefined;
+let callbacks: OnInitCallback[] = [];
+
+export function onI18nInit(callback: OnInitCallback) {
+    if (firstLang) {
+        callback(firstLang);
+        return;
+    }
+    callbacks.push(callback);
+}
+
+function onInit(language: string) {
+    if (!firstLang) {
+        firstLang = language;
+    }
+    while (callbacks.length) {
+        const callback = callbacks.pop();
+        callback && callback(firstLang);
+    }
+}
+
+export const i18n = initI18n(onInit);
+
 export async function onLanguageChange(lang: Language) {
     const langCode = getFullLangCode(lang);
     document.documentElement.lang = langCode;
-    document.documentElement.dir = lang.biDi;
+    document.documentElement.dir = lang.bidi;
     await i18n.changeLanguage(langCode);
 }
 

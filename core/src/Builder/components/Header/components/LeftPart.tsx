@@ -13,7 +13,7 @@ import * as faPrint from '@fortawesome/free-solid-svg-icons/faPrint';
 import SettingIcon from '@rsuite/icons/Setting';
 import * as faTrash from '@fortawesome/free-solid-svg-icons/faTrash';
 import { useTranslation } from 'react-i18next';
-import { LangSwitch } from './LangSwitch';
+import {LangSwitch} from "../../../../features/localization";
 
 export const LeftPart = observer(() => {
     const store = useStore();

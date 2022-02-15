@@ -8,11 +8,10 @@ import {FormikContextType} from "formik";
 import {DefineRegistry} from "../../utils/DefineRegistry";
 import {screen} from "../../components/Screen";
 import {DndStore} from "../DndStore";
-import { defaultLanguage } from '../../features/localization/languages';
-import { findLanguage, getFullLangCode, onLanguageChange } from '../../features/localization/i18n-utils';
-import { onI18nInit } from '../../features/localization/i18n';
+import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../../features/localization/utils';
 import {NodeData} from "../../features/dnd/components/DropZone";
 import {gen4Symbols} from "../../utils/gen4Symbols";
+import {defaultLanguage} from "../../features/localization/consts";
 
 export class Store {
     readonly view: DefineRegistry

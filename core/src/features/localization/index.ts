@@ -1,11 +1,12 @@
-import i18n, {InitOptions} from 'i18next';
+import i18n from 'i18next';
 import XHR from 'i18next-xhr-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import {initReactI18next} from 'react-i18next';
+import {OnInitCallback} from "./types";
+import { Localization } from './components/Localization';
+import { LangSwitch } from './components/LangSwitch';
 
-export type OnI18nInitCallback = (language: string) => void;
-
-export function initI18n(onInit: OnI18nInitCallback) {
+export function initI18n(onInit: OnInitCallback) {
     i18n
         .use(XHR)
         .use(LanguageDetector)
@@ -28,3 +29,5 @@ export function initI18n(onInit: OnI18nInitCallback) {
             });
     return i18n;
 }
+
+export {Localization, LangSwitch}

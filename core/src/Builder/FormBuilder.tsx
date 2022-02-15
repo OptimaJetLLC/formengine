@@ -11,7 +11,7 @@ import {Preview} from './Preview';
 
 import {DndProvider} from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
-import {Localization} from '../features/localization/Localization';
+import {Localization} from '../features/localization';
 
 export interface FormBuilderProps extends FormViewerProps {
 
