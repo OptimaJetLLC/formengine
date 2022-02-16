@@ -108,6 +108,7 @@ export class Store {
         this.model = JSON.parse(text);
     }
 
+    //TODO clone for inner components without removing
     clone(source: NodeData) {
         const clone = _.cloneDeep(source.componentStore)
         clone.key =  clone.key + " " + gen4Symbols();

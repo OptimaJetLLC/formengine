@@ -1,4 +1,3 @@
-import React from "react";
 import {observer} from "mobx-react";
 import {useComponentData} from "../../utils/ComponenDataContext";
 import {DropZone} from "./components/DropZone";

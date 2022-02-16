@@ -11,11 +11,14 @@ export function useChildren(currentProps: Record<string, any>, Wrapper?: Wrapper
 
     for (let container of containers) {
         const components = componentStore.children.filter(child =>
-            child.bindTo === container.key || !child.bindTo && container.key === "children"
+            container.bindTo ? child.bindTo === componentStore.props[container.bindTo] :
+                (child.bindTo === container.key ||
+                    !child.bindTo && container.key === "children")
         )
 
-        if (!components.length) continue
-
-        currentProps[container.key] = <Components parent={componentStore} components={components} Wrapper={Wrapper}/>
+        currentProps[container.key] =
+            components.length
+                ? <Components parent={componentStore} components={components} Wrapper={Wrapper}/>
+                : null
     }
 }

@@ -22,6 +22,7 @@ export const event = new AnnotationBuilder<Function | undefined>({
     section: Section.Actions,
     isFunction: true
 })
+// set
 export const validation = new AnnotationBuilder<any>({component: ValidateEditor, section: Section.Validation})
 
 export const reactElements = new AnnotationBuilder<ReactNode>({isContainer: true, component: Container})

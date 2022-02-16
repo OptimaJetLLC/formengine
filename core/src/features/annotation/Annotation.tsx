@@ -18,6 +18,7 @@ export class Annotation<T> {
     isRequired: boolean = false
     isFunction: boolean = false
     isContainer: boolean = false
+    bindTo?: string
 
     get component(): ComponentType<PropertyEditorProps<T>> {
         //TODO set input in constructor?
