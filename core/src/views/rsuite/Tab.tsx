@@ -1,8 +1,9 @@
 import {define} from "../../features/annotation/define";
-import {Nav} from "rsuite";
+import {Button, Nav} from "rsuite";
 import {ReactNode, useCallback, useEffect, useState} from "react";
 import {boolean, reactElements, string} from "../../features/annotation";
 import {useComponentData} from "../../utils/ComponenDataContext";
+import _ from "lodash/fp";
 
 
 interface TabProps {
@@ -22,8 +23,10 @@ const Tab = (props: TabProps) => {
     const {componentStore} = useComponentData()
 
     useEffect(() => {
-        if (!componentStore.props.items)
-            componentStore.props.items = ['Home', 'News', 'About']
+        if (!componentStore.props.items) {
+            componentStore.props.items = ['Item1', 'Item2', 'Item3']
+            componentStore.props.active = _.first(componentStore.props.items)
+        }
     }, [])
 
     const setActive = useCallback((eventKey: string) => componentStore.props.active = eventKey, [])

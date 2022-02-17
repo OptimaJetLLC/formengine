@@ -9,12 +9,13 @@ export const useInnerDropZone = (props: Record<string, any>) => {
 
     for (let container of containers) {
         if (!props[container.key]) {
-            let bindTo = container.bindTo ? componentStore.props[container.bindTo] : container.key
+            let visible = container.bindTo ? componentStore.props[container.bindTo] : undefined
 
             props[container.key] =
                 <DropZone
                     inner
-                    bindTo={bindTo}
+                    bindTo={container.key}
+                    visible={visible}
                     isBefore={true}
                     className={css`
                       label: Empty;

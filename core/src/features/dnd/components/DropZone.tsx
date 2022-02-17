@@ -15,6 +15,7 @@ interface DropZoneProps {
     isBefore: boolean
     className?: any
     bindTo?: string
+    visible?: string
     inner?: boolean
 }
 
@@ -34,7 +35,7 @@ export type NodeData = {
     readonly parent?: ComponentStore
 }
 
-const DropZone = observer(({isBefore, className, bindTo, inner}: DropZoneProps) => {
+const DropZone = observer(({isBefore, className, bindTo, visible, inner}: DropZoneProps) => {
     const store = useStore()
     const target = useComponentData()
 
@@ -45,7 +46,9 @@ const DropZone = observer(({isBefore, className, bindTo, inner}: DropZoneProps) 
             switch (type) {
                 case ItemType.AddedComponent:
                 case ItemType.Component:
+                    //TODO механизм биндинга свойств
                     source.componentStore.bindTo = bindTo
+                    source.componentStore.visible = visible
                     if (inner)
                         store.move(source, {
                             componentStore: target.componentStore,

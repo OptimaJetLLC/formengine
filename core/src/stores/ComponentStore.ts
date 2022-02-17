@@ -11,10 +11,15 @@ export class ComponentStore {
     bindTo?: string
     props: Record<string, any> = {}
     events: Record<EventName, WeakActionDefinition[]> = {}
+    //TODO styles в отдельный блок - объеденить три поля в один
     styles?: Record<string, string>
     cssStyles?: StyleItem[]
     cssBlock?: string
+
+    //TODO rename to scheme, move to inner validation?
     validation?: ParsableValidateSchema
+    visible?: string
+
     children?: ComponentStore[]
 
     constructor(key: string, type: string) {
