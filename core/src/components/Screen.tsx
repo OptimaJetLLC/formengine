@@ -1,6 +1,6 @@
 import {define} from "../features/annotation/define";
 import {ReactNode} from "react";
-import {reactElements} from "../features/annotation";
+import {node} from "../features/annotation";
 
 interface PageProps {
     children: ReactNode
@@ -16,6 +16,6 @@ const Screen = (props: PageProps) => {
 }
 
 export const screen = define("Screen", Screen, {
-    children: reactElements
+    children: node
 })
 

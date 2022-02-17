@@ -1,7 +1,7 @@
 import {define} from "../../features/annotation/define";
 import {Button, Nav} from "rsuite";
 import {ReactNode, useCallback, useEffect, useState} from "react";
-import {boolean, reactElements, string} from "../../features/annotation";
+import {boolean, node, string} from "../../features/annotation";
 import {useComponentData} from "../../utils/ComponenDataContext";
 import _ from "lodash/fp";
 
@@ -22,6 +22,7 @@ type Item = {
 const Tab = (props: TabProps) => {
     const {componentStore} = useComponentData()
 
+    //TODO доделаю в рамках задачи об аннотациях
     useEffect(() => {
         if (!componentStore.props.items) {
             componentStore.props.items = ['Item1', 'Item2', 'Item3']
@@ -50,11 +51,11 @@ export const tab = define("Tab", Tab, {
     //items: reactElements.expandable(navItem, navDropdown)
     //onSelect: set("active")
 
-    children: reactElements.with({bindTo: "active"}),
+    children: node.with({bindTo: "active"}),
 })
 
 export const nav = define("Nav", Nav, {
-    children: reactElements,
+    children: node,
     activeKey: string,
     appearance: string,
 })

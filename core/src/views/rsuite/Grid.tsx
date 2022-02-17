@@ -1,6 +1,6 @@
 import { define } from '../../features/annotation/define';
 import {Col, Grid as RGrid, Row} from "rsuite";
-import {reactElements} from "../../features/annotation";
+import {node} from "../../features/annotation";
 import {ReactNode} from "react";
 
 export interface GridProps {
@@ -27,6 +27,6 @@ export const Grid = (props: GridProps) => {
 }
 
 export const grid = define('Grid', Grid, {
-    child1: reactElements,
-    child2: reactElements,
+    child1: node,
+    child2: node,
 }, []);
