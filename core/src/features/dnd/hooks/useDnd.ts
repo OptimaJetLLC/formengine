@@ -1,9 +1,9 @@
+import _ from "lodash/fp";
 import {RefObject, useMemo, useRef} from "react";
 import {DragSourceMonitor, useDrag, useDrop} from "react-dnd";
-import {DragItem, NodeData} from "../components/DropZone";
 import {useComponentData} from "../../../utils/ComponenDataContext";
 import {AcceptDrop, ItemType} from "../consts";
-import _ from "lodash/fp";
+import {ComponentMove} from "../../../utils/Types";
 
 interface DndState {
     isDragging: boolean,
@@ -22,7 +22,7 @@ export const useDnd = (): [DndState, RefObject<any>] => {
 
     const [dropProps, drop] = useDrop({
         accept: AcceptDrop,
-        canDrop: (item: NodeData, monitor) => data.componentStore.key !== item.componentStore.key,
+        canDrop: (item: ComponentMove, monitor) => data.componentStore.key !== item.componentStore.key,
         collect: (monitor) => ({
             isOver: monitor.isOver(),
             canDrop: monitor.canDrop(),
@@ -36,7 +36,7 @@ export const useDnd = (): [DndState, RefObject<any>] => {
     const [dragState, drag] = useDrag(() => ({
         type: ItemType.Component,
         item: data,
-        collect: (monitor: DragSourceMonitor<NodeData, unknown>) => ({
+        collect: (monitor: DragSourceMonitor<ComponentMove, unknown>) => ({
             isDragging: monitor.isDragging(),
             style: {
                 opacity: monitor.isDragging() ? 0.4 : 1,

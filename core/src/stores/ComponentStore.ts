@@ -1,5 +1,4 @@
 import {makeAutoObservable, observable} from "mobx";
-import {ComponentDefinition} from "../features/annotation/types";
 import {EventName, WeakActionDefinition} from "../utils/Types";
 import {ParsableValidateSchema} from "../features/validation/types";
 import {StyleItem} from "../features/style";
@@ -18,6 +17,7 @@ export class ComponentStore {
 
     //TODO rename to scheme, move to inner validation?
     validation?: ParsableValidateSchema
+    //TODO add on validation page
     visible?: string
 
     children?: ComponentStore[]

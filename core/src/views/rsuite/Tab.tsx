@@ -1,9 +1,9 @@
+import _ from "lodash/fp";
+import {ReactNode, useCallback, useEffect} from "react";
 import {define} from "../../features/annotation/define";
-import {Button, Nav} from "rsuite";
-import {ReactNode, useCallback, useEffect, useState} from "react";
+import {Nav} from "rsuite";
 import {boolean, node, string} from "../../features/annotation";
 import {useComponentData} from "../../utils/ComponenDataContext";
-import _ from "lodash/fp";
 
 
 interface TabProps {

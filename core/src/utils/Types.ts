@@ -1,5 +1,6 @@
 import {ComponentStore} from "../stores/ComponentStore";
 import {ComponentType} from "react";
+import {ComponentData} from "./ComponenDataContext";
 
 export type EventName = string
 export type ArgumentName = string
@@ -47,3 +48,4 @@ export interface WrapperProps {
 }
 
 export type Wrapper = ComponentType<WrapperProps>
+export type ComponentMove = Omit<ComponentData, 'definition'>

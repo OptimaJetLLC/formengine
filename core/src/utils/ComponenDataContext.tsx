@@ -3,10 +3,10 @@ import {ComponentStore} from "../stores/ComponentStore";
 import {useStore} from "./StoreContext";
 import {ComponentDefinition} from "../features/annotation/types";
 
-type ComponentData = {
-    parent?: ComponentStore,
-    componentStore: ComponentStore,
-    definition: ComponentDefinition<any>,
+export type ComponentData = {
+    readonly parent?: ComponentStore,
+    readonly componentStore: ComponentStore,
+    readonly definition: ComponentDefinition<any>,
 }
 
 const ComponentDataContext = createContext<ComponentData | undefined>(undefined);

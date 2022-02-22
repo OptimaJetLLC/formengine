@@ -2,7 +2,7 @@ import {observer} from "mobx-react";
 import React from "react";
 import {ComponentStore} from "../stores/ComponentStore";
 import {FormViewer, FormViewerProps} from "../FormViewer";
-import {Editable} from "../features/dnd/Editable";
+import {Editable} from "../features/dnd/components/Editable";
 import {FormContainer, LeftPanel, RightPanel} from "./FormBuilder";
 import {Tree} from "./components/Tree";
 import PropertiesEditor from "./components/PropertiesEditor/PropertiesEditor";

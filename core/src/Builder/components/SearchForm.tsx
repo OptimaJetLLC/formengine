@@ -1,53 +1,33 @@
-import React, { Component } from 'react';
-import { Input, InputGroup } from 'rsuite';
-import CloseIcon from '@rsuite/icons/Close';
+import {CSSProperties, useCallback, useEffect, useState} from 'react';
+import {Input, InputGroup} from 'rsuite';
+import ClearIcon from '@rsuite/icons/Close';
 import SearchIcon from '@rsuite/icons/Search';
-import { Translation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 interface SearchFormProps {
-    handleChange: (value: string) => void;
-    style?: Object
+    onChange: (value: string) => void;
+    style?: CSSProperties
+    className?: string
 }
 
-interface SearchFormState {
-    value: string;
-}
+export const SearchForm = ({style, className, onChange}: SearchFormProps) => {
+    const [value, setValue] = useState<string>("")
+    const Icon = value.length ? ClearIcon : SearchIcon;
+    const {t} = useTranslation();
 
-export default class SearchForm extends Component<SearchFormProps, SearchFormState> {
+    const clear = useCallback(() => setValue(""), [])
 
-    constructor(props: SearchFormProps) {
-        super(props);
-        this.state = {value: ''};
-    }
+    useEffect(() => onChange(value), [value])
 
-    handleChange(value: string | any): void {
-        const newValue = value.toLowerCase();
-        this.setState({value: newValue});
-        if (this.props.handleChange) {
-            this.props.handleChange(newValue);
-        }
-    };
-
-    reset() {
-        this.handleChange('');
-    }
-
-    render() {
-        const Icon = this.state.value.length ? CloseIcon : SearchIcon;
-        return (<InputGroup inside size="xs" style={this.props.style}>
-            <Translation>
-                {
-                    t => <Input
-                        onChange={this.handleChange.bind(this)}
-                        placeholder={t('searchForm.search')}
-                        value={this.state.value}
-                        size="xs"
-                    />
-                }
-            </Translation>
-            <InputGroup.Addon style={{cursor: 'pointer'}} onClick={this.handleChange.bind(this, '')}>
-                <Icon/>
-            </InputGroup.Addon>
-        </InputGroup>)
-    }
+    return (
+        <InputGroup className={className} inside size="xs" style={style}>
+            <Input
+                onChange={setValue}
+                placeholder={t('searchForm.search')}
+                value={value}
+                size="xs"
+            />
+            <InputGroup.Addon style={{cursor: 'pointer'}} onClick={clear} children={<Icon/>}/>
+        </InputGroup>
+    )
 }

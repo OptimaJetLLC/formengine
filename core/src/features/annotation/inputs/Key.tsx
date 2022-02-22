@@ -11,14 +11,6 @@ const KeyInput = ({componentStore, annotation}: PropertyEditorProps<string>) => 
                 onChange={value => componentStore.key = value as string}
             />
         </LabeledInput>
-
-        <LabeledInput>
-            <label>bindTo</label>
-            <Input
-                value={componentStore.bindTo}
-                onChange={value => componentStore.bindTo = value as string}
-            />
-        </LabeledInput>
     </>
 );
 

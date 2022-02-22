@@ -2,15 +2,14 @@ import _ from "lodash";
 import { action, autorun, computed, makeObservable, observable, reaction, toJS } from 'mobx';
 import {ComponentStore} from "../ComponentStore";
 import {Node} from "../../utils/Node";
-import {Action, EventName, FullActionDefinition, Modifiers, OverArgs} from "../../utils/Types";
+import {Action, ComponentMove, EventName, FullActionDefinition, Modifiers, OverArgs} from "../../utils/Types";
 import {toWeakEvent} from "./utils/toWeakEvent";
 import {FormikContextType} from "formik";
 import {DefineRegistry} from "../../utils/DefineRegistry";
 import {screen} from "../../components/Screen";
 import {DndStore} from "../DndStore";
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../../features/localization/utils';
-import {NodeData} from "../../features/dnd/components/DropZone";
-import {gen4Symbols} from "../../utils/gen4Symbols";
+import {getKey} from "../../utils/getKey";
 import {defaultLanguage} from "../../features/localization/consts";
 
 export class Store {
@@ -109,12 +108,12 @@ export class Store {
     }
 
     //TODO clone for inner components without removing
-    clone(source: NodeData) {
+    clone(source: ComponentMove) {
         const clone = _.cloneDeep(source.componentStore)
-        clone.key =  clone.key + " " + gen4Symbols();
+        clone.key =  clone.key + " " + getKey();
 
         this.treeMap(clone?.children, (child: ComponentStore) => {
-            child.key = child.key  + " " + gen4Symbols();
+            child.key = child.key  + " " + getKey();
         })
 
         this.move({
@@ -123,30 +122,30 @@ export class Store {
     }
 
     //TODO definition для этих методов не нужен, создать еще тип, в котором он не обязателен?
-    move(source: NodeData, target: NodeData, isBefore: boolean = true) {
+    move(source: ComponentMove, target: ComponentMove, isBefore: boolean = true) {
         this.remove(source)
         const index = getIndexToPush(target, isBefore)
         push(source, target, index)
 
 
-        function push(source: NodeData, target: NodeData, index: number) {
+        function push(source: ComponentMove, target: ComponentMove, index: number) {
             let purpose = target.parent ||  target.componentStore
             purpose.children ??= []
             purpose.children?.splice(index, 0, source.componentStore)
         }
 
-        function getIndexToPush(target: NodeData, isBefore: boolean) {
+        function getIndexToPush(target: ComponentMove, isBefore: boolean) {
             const index = Store.getIndexInParent(target)
             return isBefore ? index : index + 1
         }
     }
 
-    remove(source: NodeData) {
+    remove(source: ComponentMove) {
         const index = Store.getIndexInParent(source)
         source.parent?.children?.splice(index, 1)
     }
 
-    static getIndexInParent(node: NodeData){
+    static getIndexInParent(node: ComponentMove){
         const child = node.componentStore
         const parent = node.parent
         if (!parent) return 0

@@ -1,8 +1,8 @@
 import {useStore} from "../../../utils/StoreContext";
 import {useComponentData} from "../../../utils/ComponenDataContext";
 import React, {useCallback, useEffect, useMemo, useState} from "react";
-import classNames from "classnames";
-import {hoveredStyles, selectedStyles} from "../styles";
+import {hoveredClass, selectedClass} from "../styles";
+import {cx} from "@emotion/css";
 
 export interface SelectionState {
     hovered: boolean
@@ -43,9 +43,9 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
         setHovered(false)
     }, [])
 
-    const className = useMemo(() => (classNames({
-        [hoveredStyles]: hovered && !selected,
-        [selectedStyles]: selected,
+    const className = useMemo(() => (cx({
+        [hoveredClass]: hovered && !selected,
+        [selectedClass]: selected,
     })), [hovered, selected])
 
     return [{hovered, selected}, {onMouseDown, onMouseOver, onMouseLeave}, className]

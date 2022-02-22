@@ -1,6 +1,6 @@
-import classNames from "classnames";
 import {useStore} from "../../../../utils/StoreContext";
 import {resizerStyles} from "./styles";
+import {cx} from "@emotion/css";
 
 type ResizerProps = {
     position: string
@@ -11,7 +11,7 @@ export const Resizer = ({position}: ResizerProps) => {
     const store = useStore()
 
     return <div
-        className={classNames(resizerStyles, position)}
+        className={cx(resizerStyles, position)}
         onMouseDown={(e: any) => {
             //TODO
             store.dnd.isResizing = true;

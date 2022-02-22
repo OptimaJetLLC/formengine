@@ -1,13 +1,13 @@
 import {observer} from "mobx-react";
-import {useComponentData} from "../../utils/ComponenDataContext";
-import {DropZone} from "./components/DropZone";
-import {useDnd} from "./hooks/useDnd";
-import {useSelection} from "./hooks/useSelection";
-import {Toolbar} from "./components/Toolbar";
-import {Resizers} from "./components/Resizers/Resizers";
-import {useInnerDropZone} from "./hooks/useInnerDropZone";
-import {screen} from "../../components/Screen";
-import {WrapperProps} from "../../utils/Types";
+import {useComponentData} from "../../../utils/ComponenDataContext";
+import {DropZone} from "./DropZone";
+import {useDnd} from "../hooks/useDnd";
+import {useSelection} from "../hooks/useSelection";
+import {Toolbar} from "./Toolbar";
+import {Resizers} from "./Resizers/Resizers";
+import {useInnerDropZone} from "../hooks/useInnerDropZone";
+import {screen} from "../../../components/Screen";
+import {WrapperProps} from "../../../utils/Types";
 
 //TODO z-Index увеличивать его для вложенных компонентов, чтобы выор компонентов был корректным
 //TODO По двойному клику выделять компонент, в который вложен компонент
@@ -29,8 +29,8 @@ export const Editable = observer(({View, viewProps}: WrapperProps) => {
 
     return (
         <div
-            className={className}
             ref={dnd}
+            className={className}
             style={{
                 ...style,
                 position: "relative"
