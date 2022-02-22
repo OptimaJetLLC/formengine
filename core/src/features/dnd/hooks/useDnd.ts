@@ -3,7 +3,7 @@ import {RefObject, useMemo, useRef} from "react";
 import {DragSourceMonitor, useDrag, useDrop} from "react-dnd";
 import {useComponentData} from "../../../utils/ComponenDataContext";
 import {AcceptDrop, ItemType} from "../consts";
-import {ComponentMove} from "../../../utils/Types";
+import {ComponentMove} from "../../../utils/types";
 
 interface DndState {
     isDragging: boolean,

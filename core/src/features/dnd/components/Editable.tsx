@@ -7,7 +7,7 @@ import {Toolbar} from "./Toolbar";
 import {Resizers} from "./Resizers/Resizers";
 import {useInnerDropZone} from "../hooks/useInnerDropZone";
 import {screen} from "../../../components/Screen";
-import {WrapperProps} from "../../../utils/Types";
+import {WrapperProps} from "../../../utils/types";
 
 //TODO z-Index увеличивать его для вложенных компонентов, чтобы выор компонентов был корректным
 //TODO По двойному клику выделять компонент, в который вложен компонент

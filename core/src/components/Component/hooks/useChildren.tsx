@@ -1,6 +1,6 @@
 import {useComponentData} from "../../../utils/ComponenDataContext";
 import {Components} from "../../Components";
-import {Wrapper} from "../../../utils/Types";
+import {Wrapper} from "../../../utils/types";
 import {ComponentStore} from "../../../stores/ComponentStore";
 
 export function useChildren(currentProps: Record<string, any>, Wrapper?: Wrapper) {

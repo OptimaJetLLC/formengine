@@ -1,7 +1,7 @@
 import {ComponentStore} from "../../stores/ComponentStore";
 import {ComponentDefinition} from "../annotation/types";
 import _ from "lodash";
-import {Func, OverArgs, TransformativeType} from "../../utils/Types";
+import {Func, OverArgs, TransformativeType} from "../../utils/types";
 import {Store} from "../../stores/Store";
 
 export function transformEvent(store: Store, key: string, componentStore: ComponentStore, definition: ComponentDefinition<any>): [Func, Func[]] {

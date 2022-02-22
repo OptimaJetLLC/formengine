@@ -11,7 +11,7 @@ import {useComponentData} from "../../utils/ComponenDataContext";
 import {useDefaultProps} from "./hooks/useDefaultProps";
 import {useInjectedValidation} from "./hooks/useInjectedValidation";
 import {useChildren} from "./hooks/useChildren";
-import {Wrapper} from "../../utils/Types";
+import {Wrapper} from "../../utils/types";
 
 interface ComponentProps {
     Wrapper?: Wrapper

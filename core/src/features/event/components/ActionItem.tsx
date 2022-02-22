@@ -1,5 +1,5 @@
 import {observer} from "mobx-react";
-import {FullActionDefinition} from "../../../utils/Types";
+import {FullActionDefinition} from "../../../utils/types";
 import {Animation, Button, Dropdown, Nav, Popover, Whisper} from "rsuite";
 import ParameterInput from "./ActionArgument";
 import {Box, Rows} from "../../../components/UI/Containers";

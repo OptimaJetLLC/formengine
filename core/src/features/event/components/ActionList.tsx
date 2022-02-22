@@ -1,7 +1,7 @@
 import {observer} from "mobx-react";
 import ActionItem from "./ActionItem";
 import {useEffect, useState} from "react";
-import {FullActionDefinition} from "../../../utils/Types";
+import {FullActionDefinition} from "../../../utils/types";
 import {autorun} from "mobx";
 import {ComponentStore} from "../../../stores/ComponentStore";
 import {Rows} from "../../../components/UI/Containers"

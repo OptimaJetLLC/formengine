@@ -5,7 +5,7 @@ import {useComponentData} from "../../../utils/ComponenDataContext";
 import {AcceptDrop, ItemType} from "../consts";
 import {observer} from "mobx-react";
 import {css, cx} from "@emotion/css";
-import {ComponentMove} from "../../../utils/Types";
+import {ComponentMove} from "../../../utils/types";
 
 interface DropZoneProps {
     isBefore: boolean

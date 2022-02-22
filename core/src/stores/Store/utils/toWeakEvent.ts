@@ -1,4 +1,4 @@
-import {EventName, FullActionDefinition, WeakActionDefinition} from "../../../utils/Types";
+import {EventName, FullActionDefinition, WeakActionDefinition} from "../../../utils/types";
 import {ComponentStore} from "../../ComponentStore";
 import _ from "lodash";
 import {createTransformer} from "mobx-utils";

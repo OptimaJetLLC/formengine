@@ -2,7 +2,7 @@ import _ from "lodash";
 import { action, autorun, computed, makeObservable, observable, reaction, toJS } from 'mobx';
 import {ComponentStore} from "../ComponentStore";
 import {Node} from "../../utils/Node";
-import {Action, ComponentMove, EventName, FullActionDefinition, Modifiers, OverArgs} from "../../utils/Types";
+import {Action, ComponentMove, EventName, FullActionDefinition, Modifiers, OverArgs} from "../../utils/types";
 import {toWeakEvent} from "./utils/toWeakEvent";
 import {FormikContextType} from "formik";
 import {DefineRegistry} from "../../utils/DefineRegistry";

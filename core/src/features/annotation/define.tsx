@@ -3,7 +3,7 @@ import {Annotations, ComponentDefinition} from "./types";
 import _ from "lodash";
 import {Annotation} from "./Annotation";
 import {key, string, style, validation} from "./index";
-import {Action} from "../../utils/Types";
+import {Action} from "../../utils/types";
 
 export const define = <T extends object>(
     name: string,

@@ -2,7 +2,7 @@ import {ComponentStore} from "../stores/ComponentStore";
 import {ComponentDataProvider} from "../utils/ComponenDataContext";
 import {Component} from "./Component";
 import {observer} from "mobx-react";
-import {Wrapper} from "../utils/Types";
+import {Wrapper} from "../utils/types";
 
 interface ComponentsProps {
     parent?: ComponentStore
