@@ -6,11 +6,12 @@ import {screen} from "../components/Screen";
 //TODO can stringify and parse to form
 export function getForm(code: string, getForm: (code: string) => any[], store: Store) {
     //this.model = getForm(code);
-    if (store.model.components.length > 0) return
+    if (store.screen.children?.length) return
 
     let formScreen = new ComponentStore("screen 1", screen.name)
     formScreen.children = []
-    store.model.components.push(formScreen)
+    //store.model.components.push(formScreen)
+    store.screen = formScreen
 
     let formHeader = new ComponentStore("header 1", "Header")
     _.set(formHeader, "props.content",  "Application Form")

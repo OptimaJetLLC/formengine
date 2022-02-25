@@ -14,7 +14,7 @@ export const Resizer = ({position}: ResizerProps) => {
         className={cx(resizerStyles, position)}
         onMouseDown={(e: any) => {
             //TODO
-            store.dnd.isResizing = true;
+            store.isResizing = true;
             e.preventDefault();
             e.stopPropagation();
             const move = (e: MouseEvent) => {
@@ -22,7 +22,7 @@ export const Resizer = ({position}: ResizerProps) => {
             };
             window.addEventListener('mousemove', move);
             window.addEventListener('mouseup', (e) => {
-                store.dnd.isResizing = false;
+                store.isResizing = false;
                 window.removeEventListener('mousemove', move);
             }, {once: true});
         }}

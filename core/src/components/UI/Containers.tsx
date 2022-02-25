@@ -7,6 +7,7 @@ import {color, layout, space} from 'styled-system';
 import {Component} from "react";
 import ReactDOM from "react-dom";
 
+//TODO remove styled-system library
 
 const Box = styled('div')(
     layout,

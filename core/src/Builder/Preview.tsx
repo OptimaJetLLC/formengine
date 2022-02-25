@@ -10,7 +10,7 @@ export interface FormPreviewProps extends FormViewerProps {
 
 export const Preview = observer((props: FormPreviewProps) => {
     const store = useStore()
-    store.currentNode = null
+    store.selected = null
 
     return <>
         {store.showLeftPanel && <LeftPanel>

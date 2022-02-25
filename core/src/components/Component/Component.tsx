@@ -31,7 +31,7 @@ export const Component = observer(({Wrapper}: ComponentProps) => {
     //TODO inline
 
     const storedProps = toJS(componentStore.props)
-    const props = Object.assign(defaultProps, events, storedProps, currentProps, substitutedValues)
+    const props = Object.assign({}, defaultProps, events, storedProps, currentProps, substitutedValues)
 
     //TODO for builder need render another component without error message and events
     //TODO to Component Type

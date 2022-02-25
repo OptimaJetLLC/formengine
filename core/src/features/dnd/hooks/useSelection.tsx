@@ -10,7 +10,7 @@ export interface SelectionState {
 }
 
 export interface SelectionHandlers {
-    onMouseDown: () => void
+    onMouseDown: (e: React.MouseEvent) => void
     onMouseOver: (e: React.MouseEvent) => void
     onMouseLeave: () => void
 }
@@ -25,12 +25,12 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
     const [selected, setSelected] = useState(false)
 
     useEffect(() => {
-        setSelected(store.currentNode?.key === componentStore.key)
+        setSelected(store.selected?.key === componentStore.key)
+    }, [store.selected])
 
-    }, [store.currentNode])
-
-    const onMouseDown = useCallback(() => {
-        store.currentNode = store.findNode(componentStore.key)
+    const onMouseDown = useCallback((event) => {
+        event.stopPropagation();
+        store.selected = store.findNode(componentStore.key)
     }, [])
 
     const onMouseOver = useCallback((event: React.MouseEvent) => {

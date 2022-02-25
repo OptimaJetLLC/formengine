@@ -9,6 +9,7 @@ export class Node {
     parent?: Node
     children?: Node[]
     data: ComponentStore
+    //TODO remove it?
     definition: ComponentDefinition<any>
 
     get isRoot() {

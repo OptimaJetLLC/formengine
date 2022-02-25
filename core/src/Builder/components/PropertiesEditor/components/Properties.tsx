@@ -18,18 +18,18 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
     const store = useStore();
     const { t } = useTranslation();
 
-    if (!store.currentNode)
+    if (!store.selected)
         return (<Container>
             <CenteredLabel style={{height: "40%"}}>{t('propertiesEditor.selectElementForEdit')}</CenteredLabel>
         </Container>)
 
-    const annotations = _.values(store.currentNode.definition.annotations)
+    const annotations = _.values(store.selected.definition.annotations)
 
     const properties = annotations
         .filter(annotation => annotation.section === activeTab)
         .map(annotation =>
             <WithValidation annotation={annotation} Component={annotation.component} key={annotation.key}
-                            componentStore={store.currentNode!.data}/>
+                            componentStore={store.selected!.data}/>
         )
 
     return <Container>

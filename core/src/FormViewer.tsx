@@ -30,7 +30,7 @@ export const FormViewer = observer((props: FormViewerProps) => {
     return (
         //<StoreProvider view={rsuite}>
         <ObservableFormik>
-            <Components components={store.model.components} Wrapper={Wrapper}/>
+            <Components components={[store.screen]} Wrapper={Wrapper}/>
         </ObservableFormik>
         //</StoreProvider>
     )

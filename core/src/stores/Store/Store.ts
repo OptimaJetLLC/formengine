@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { action, autorun, computed, makeObservable, observable, reaction, toJS } from 'mobx';
+import {action, autorun, computed, makeObservable, observable, reaction} from 'mobx';
 import {ComponentStore} from "../ComponentStore";
 import {Node} from "../../utils/Node";
 import {Action, ComponentMove, EventName, FullActionDefinition, Modifiers, OverArgs} from "../../utils/types";
@@ -7,7 +7,6 @@ import {toWeakEvent} from "./utils/toWeakEvent";
 import {FormikContextType} from "formik";
 import {DefineRegistry} from "../../utils/DefineRegistry";
 import {screen} from "../../components/Screen";
-import {DndStore} from "../DndStore";
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../../features/localization/utils';
 import {getKey} from "../../utils/getKey";
 import {defaultLanguage} from "../../features/localization/consts";
@@ -15,23 +14,17 @@ import {defaultLanguage} from "../../features/localization/consts";
 export class Store {
     readonly view: DefineRegistry
 
-    readonly dnd: DndStore = new DndStore()
+    isResizing: boolean = false
 
-    currentNode: Node | null = null
     isBuilderMode: boolean = true
     showRightPanel: boolean = true
     showLeftPanel: boolean = true
     styles?: any
-
     formContext?: FormikContextType<any>
 
     allEvents = new Map<ComponentStore, Record<EventName, FullActionDefinition[]>>()
 
-    model = {
-        //name?
-        //common style?
-        components: new Array<ComponentStore>()
-    }
+    screen: ComponentStore = new ComponentStore(screen.name, screen.name)
 
     registeredFields: Record<string, () => void> = {}
 
@@ -41,12 +34,10 @@ export class Store {
         _.values(this.registeredFields).forEach(value => value())
     }
 
+    selected: Node | null = null
+
     get tree(): Node {
-        let componentStore = new ComponentStore(screen.name, screen.name)
-        let root = new Node(this, componentStore)
-        componentStore.children = this.model.components
-        root.children = this.model.components.map(child => new Node(this, child, root));
-        return root
+        return new Node(this, this.screen)
     }
 
     //TODO set in provider
@@ -56,12 +47,13 @@ export class Store {
 
         makeObservable(this, {
             allEvents: observable.deep,
-            currentNode: observable.ref,
+            selected: observable.ref,
+            isResizing: observable,
             formContext: observable.ref,
             isBuilderMode: observable.ref,
             showRightPanel: observable.ref,
             showLeftPanel: observable.ref,
-            model: observable,
+            screen: observable.deep,
             tree: computed,
             clear: action.bound,
             language: observable.ref
@@ -95,16 +87,16 @@ export class Store {
     }
 
     clear() {
-        this.model.components = [];
+        this.screen = new ComponentStore(screen.name, screen.name)
     }
 
     stringifyForm() {
-        return JSON.stringify(this.model, null, 2)
+        return JSON.stringify(this.screen, null, 2)
     }
 
     //TODO post processing
     parseForm(text: string) {
-        this.model = JSON.parse(text);
+        this.screen = JSON.parse(text);
     }
 
     //TODO clone for inner components without removing
@@ -121,7 +113,6 @@ export class Store {
         }, source, false)
     }
 
-    //TODO definition для этих методов не нужен, создать еще тип, в котором он не обязателен?
     move(source: ComponentMove, target: ComponentMove, isBefore: boolean = true) {
         this.remove(source)
         const index = getIndexToPush(target, isBefore)
