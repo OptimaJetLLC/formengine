@@ -1,5 +1,5 @@
 import {observer} from "mobx-react";
-import {useStore} from "../../../../utils/StoreContext";
+import {useStore} from "../../../../utils/contexts/StoreContext";
 import {ButtonToolbar, IconButton, SelectPicker} from "rsuite";
 import {ToggleModeButton} from "./ToggleModeButton";
 import MenuIcon from "@rsuite/icons/Menu";

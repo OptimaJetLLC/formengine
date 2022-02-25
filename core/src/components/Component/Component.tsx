@@ -7,7 +7,7 @@ import {WithErrorMessage} from "../../features/validation/withErrorMessage";
 import {useTransformStyles} from "../../features/style";
 import {useSubstitution} from "../../features/substitution/useSubstitution";
 import {toJS} from "mobx";
-import {useComponentData} from "../../utils/ComponenDataContext";
+import {useComponentData} from "../../utils/contexts/ComponenDataContext";
 import {useDefaultProps} from "./hooks/useDefaultProps";
 import {useInjectedValidation} from "./hooks/useInjectedValidation";
 import {useChildren} from "./hooks/useChildren";

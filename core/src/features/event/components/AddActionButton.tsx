@@ -4,7 +4,7 @@ import PlusIcon from "@rsuite/icons/Plus";
 import {observer} from "mobx-react";
 import {ComponentStore} from "../../../stores/ComponentStore";
 import {Node} from "../../../utils/Node";
-import {useStore} from "../../../utils/StoreContext";
+import {useStore} from "../../../utils/contexts/StoreContext";
 
 const AddActionButton = ({eventKey, componentStore} : {eventKey: string, componentStore: ComponentStore}) => {
     const store = useStore()

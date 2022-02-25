@@ -1,14 +1,14 @@
-import {useStore} from "../../../utils/StoreContext";
+import {useStore} from "../../../../../utils/contexts/StoreContext";
 import React, {useCallback} from "react";
 import {observer} from "mobx-react";
 import styled from "@emotion/styled";
-import {FaIcon} from "../../../components/UI/Icons";
+import {FaIcon} from "../../../../../components/UI/Icons";
 import * as faClone from "@fortawesome/free-regular-svg-icons/faClone";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 import * as faTrash from "@fortawesome/free-regular-svg-icons/faTrashAlt";
 import {css} from "@emotion/css";
-import {Popover} from "../../../components/UI/Popover";
-import {useComponentData} from "../../../utils/ComponenDataContext";
+import {Popover} from "../../../../../components/UI/Popover";
+import {useComponentData} from "../../../../../utils/contexts/ComponenDataContext";
 
 interface ToolbarProps {
     show: boolean

@@ -5,8 +5,8 @@ import {autorun} from "mobx";
 import _ from "lodash";
 import {transformEvent} from "./transformEvent";
 import {useLocalObservable} from "mobx-react";
-import {useStore} from "../../utils/StoreContext";
-import {useComponentData} from "../../utils/ComponenDataContext";
+import {useStore} from "../../utils/contexts/StoreContext";
+import {useComponentData} from "../../utils/contexts/ComponenDataContext";
 
 //TODO Optimize?
 export function useEvent() {

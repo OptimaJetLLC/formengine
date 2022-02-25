@@ -1,5 +1,5 @@
-import {useStore} from "../../utils/StoreContext";
-import {useComponentData} from "../../utils/ComponenDataContext";
+import {useStore} from "../../utils/contexts/StoreContext";
+import {useComponentData} from "../../utils/contexts/ComponenDataContext";
 import React, {ReactNode, useCallback, useState} from "react";
 import {usePopper} from "react-popper";
 import {Modifier, Placement, VirtualElement} from "@popperjs/core";

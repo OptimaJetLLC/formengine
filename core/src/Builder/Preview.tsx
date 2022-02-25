@@ -1,6 +1,6 @@
 import {FormViewer, FormViewerProps} from "../FormViewer";
 import React from "react";
-import {useStore} from "../utils/StoreContext";
+import {useStore} from "../utils/contexts/StoreContext";
 import {FormContainer, LeftPanel, RightPanel} from "./FormBuilder";
 import {Errors} from "./components/Errors";
 import {observer} from "mobx-react";

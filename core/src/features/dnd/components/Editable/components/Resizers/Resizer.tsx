@@ -1,4 +1,4 @@
-import {useStore} from "../../../../utils/StoreContext";
+import {useStore} from "../../../../../../utils/contexts/StoreContext";
 import {resizerStyles} from "./styles";
 import {cx} from "@emotion/css";
 

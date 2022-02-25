@@ -6,7 +6,7 @@ import React from "react";
 import {ObservableFormik} from "../../../../features/validation/components/ObserableFormik";
 import {CenteredLabel} from "../../../../components/UI/Labels";
 import styled from "@emotion/styled";
-import {useStore} from "../../../../utils/StoreContext";
+import {useStore} from "../../../../utils/contexts/StoreContext";
 import {Button} from "rsuite";
 import { useTranslation } from 'react-i18next';
 
@@ -35,9 +35,6 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
     return <Container>
         <ObservableFormik>
             {properties}
-
-
-            <Button style={{marginTop: 15}} block appearance="primary" color="red"  children="Delete"/>
         </ObservableFormik>
     </Container>
 });

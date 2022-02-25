@@ -3,9 +3,9 @@ import {FieldMetaProps, FormikContext, FormikContextType} from "formik";
 import {useContext} from "react";
 import {BaseSchema, ValidationError} from "yup";
 import {toJS} from "mobx";
-import {useStore} from "../../utils/StoreContext";
+import {useStore} from "../../utils/contexts/StoreContext";
 import {toValidateScheme} from "./toValidateScheme";
-import {useComponentData} from "../../utils/ComponenDataContext";
+import {useComponentData} from "../../utils/contexts/ComponenDataContext";
 
 interface ValidationConfig {
     key: string

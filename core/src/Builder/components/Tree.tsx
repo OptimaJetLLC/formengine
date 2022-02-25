@@ -9,7 +9,7 @@ import {FaIcon} from "../../components/UI/Icons";
 import * as faCaretDown from "@fortawesome/free-solid-svg-icons/faCaretDown";
 import * as faCaretUp from "@fortawesome/free-solid-svg-icons/faCaretUp";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
-import {useStore} from "../../utils/StoreContext";
+import {useStore} from "../../utils/contexts/StoreContext";
 import {useTranslation} from 'react-i18next';
 import {DropData} from "rsuite/esm/Tree/Tree";
 
@@ -61,7 +61,7 @@ const Tree = observer(() => {
                 onClick={() => {
                     const keys: string[] = [];
                     //TODO
-                    //store.treeMap(store.screen.components, (node: Node) => keys.push(node.key))
+                    store.treeMap(store.screen, (node) => keys.push(node.key))
                     setCurrentExpandedKeys(keys)
                 }}
                 size={"sm"} appearance={"subtle"}><ExpandIcon/>{t('tree.expand')}</SubtleIconButton>

@@ -102,11 +102,8 @@ export class Store {
     //TODO clone for inner components without removing
     clone(source: ComponentMove) {
         const clone = _.cloneDeep(source.componentStore)
-        clone.key =  clone.key + " " + getKey();
 
-        this.treeMap(clone?.children, (child: ComponentStore) => {
-            child.key = child.key  + " " + getKey();
-        })
+        this.treeMap(clone, (child) => child.key = child.key + " " + getKey())
 
         this.move({
             componentStore: clone,
@@ -120,7 +117,7 @@ export class Store {
 
 
         function push(source: ComponentMove, target: ComponentMove, index: number) {
-            let purpose = target.parent ||  target.componentStore
+            let purpose = target.parent || target.componentStore
             purpose.children ??= []
             purpose.children?.splice(index, 0, source.componentStore)
         }
@@ -136,7 +133,7 @@ export class Store {
         source.parent?.children?.splice(index, 1)
     }
 
-    static getIndexInParent(node: ComponentMove){
+    static getIndexInParent(node: ComponentMove) {
         const child = node.componentStore
         const parent = node.parent
         if (!parent) return 0
@@ -185,11 +182,9 @@ export class Store {
         }
     }
 
-    treeMap(data?: ComponentStore[], callback?: Function) {
-        data?.forEach((node: ComponentStore) => {
-            callback?.(node);
-            if (node.children) this.treeMap(node.children, callback);
-        });
+    treeMap(store: ComponentStore, callback: (store: ComponentStore) => void) {
+        callback(store);
+        store.children?.forEach((child: ComponentStore) => this.treeMap(child, callback));
     }
 
     download = () => {

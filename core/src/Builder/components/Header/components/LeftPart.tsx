@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react';
-import { useStore } from '../../../../utils/StoreContext';
+import { useStore } from '../../../../utils/contexts/StoreContext';
 import { ButtonToolbar, Dropdown, IconButton } from 'rsuite';
 import { FaIcon } from '../../../../components/UI/Icons';
 import * as faSitemap from '@fortawesome/free-solid-svg-icons/faSitemap';

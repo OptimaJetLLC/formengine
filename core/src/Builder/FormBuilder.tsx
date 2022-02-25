@@ -3,7 +3,7 @@ import {observer} from 'mobx-react';
 import React, {useMemo} from 'react';
 import styled from '@emotion/styled';
 import {FormViewerProps} from '../FormViewer';
-import {StoreProvider} from '../utils/StoreContext';
+import {StoreProvider} from '../utils/contexts/StoreContext';
 import {Store} from '../stores/Store';
 import {Header} from './components/Header/Header';
 import {BuilderView} from './BuilderView';

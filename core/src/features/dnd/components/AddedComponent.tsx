@@ -4,7 +4,7 @@ import {useDrag} from "react-dnd";
 import {ItemType} from "../consts";
 import {css, cx} from "@emotion/css";
 import styled from "@emotion/styled";
-import {useComponentData} from "../../../utils/ComponenDataContext";
+import {useComponentData} from "../../../utils/contexts/ComponenDataContext";
 
 interface AddedComponentProps {
 }

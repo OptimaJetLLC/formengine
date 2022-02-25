@@ -1,6 +1,6 @@
 import {ComponentStore} from "../stores/ComponentStore";
 import {ComponentType} from "react";
-import {ComponentData} from "./ComponenDataContext";
+import {ComponentData} from "./contexts/ComponenDataContext";
 
 export type EventName = string
 export type ArgumentName = string

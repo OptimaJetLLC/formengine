@@ -1,4 +1,4 @@
-import {useComponentData} from "../../../utils/ComponenDataContext";
+import {useComponentData} from "../../../utils/contexts/ComponenDataContext";
 import {Components} from "../../Components";
 import {Wrapper} from "../../../utils/types";
 import {ComponentStore} from "../../../stores/ComponentStore";

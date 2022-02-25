@@ -1,7 +1,7 @@
 import React from "react";
 import {observer} from "mobx-react";
 import {Rows} from "../../components/UI/Containers";
-import {useStore} from "../../utils/StoreContext";
+import {useStore} from "../../utils/contexts/StoreContext";
 import { useTranslation } from 'react-i18next';
 
 

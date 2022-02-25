@@ -1,6 +1,6 @@
 import {ComponentStore} from "../../stores/ComponentStore";
 import {css} from "@emotion/css";
-import {useComponentData} from "../../utils/ComponenDataContext";
+import {useComponentData} from "../../utils/contexts/ComponenDataContext";
 
 export function useTransformStyles() {
     const {componentStore} = useComponentData()

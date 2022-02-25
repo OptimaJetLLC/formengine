@@ -1,5 +1,5 @@
 import {observer} from "mobx-react";
-import {useStore} from "../../../../utils/StoreContext";
+import {useStore} from "../../../../utils/contexts/StoreContext";
 import * as faPlay from "@fortawesome/free-solid-svg-icons/faPlay";
 import * as faPaintBrush from "@fortawesome/free-solid-svg-icons/faPaintBrush";
 import {IconButton} from "rsuite";

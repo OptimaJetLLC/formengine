@@ -1,5 +1,5 @@
 import {ComponentStore} from "../stores/ComponentStore";
-import {ComponentDataProvider} from "../utils/ComponenDataContext";
+import {ComponentDataProvider} from "../utils/contexts/ComponenDataContext";
 import {Component} from "./Component";
 import {observer} from "mobx-react";
 import {Wrapper} from "../utils/types";

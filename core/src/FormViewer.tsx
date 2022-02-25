@@ -4,7 +4,7 @@ import {ComponentStore} from "./stores/ComponentStore";
 import {getForm as getStandardForm} from "./utils/getForm";
 import {ObservableFormik} from "./features/validation/components/ObserableFormik";
 import {DefineRegistry} from "./utils/DefineRegistry";
-import {useStore} from "./utils/StoreContext";
+import {useStore} from "./utils/contexts/StoreContext";
 import {Components} from "./components/Components";
 import {Wrapper} from "./utils/types";
 

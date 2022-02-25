@@ -1,5 +1,5 @@
 import {useMemo} from "react";
-import {useComponentData} from "../../../utils/ComponenDataContext";
+import {useComponentData} from "../../../utils/contexts/ComponenDataContext";
 
 export function useDefaultProps() {
     const {definition} = useComponentData()

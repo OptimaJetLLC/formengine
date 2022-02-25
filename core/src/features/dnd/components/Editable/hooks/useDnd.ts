@@ -1,9 +1,9 @@
 import _ from "lodash/fp";
 import {RefObject, useMemo, useRef} from "react";
 import {DragSourceMonitor, useDrag, useDrop} from "react-dnd";
-import {useComponentData} from "../../../utils/ComponenDataContext";
-import {AcceptDrop, ItemType} from "../consts";
-import {ComponentMove} from "../../../utils/types";
+import {useComponentData} from "../../../../../utils/contexts/ComponenDataContext";
+import {AcceptDrop, ItemType} from "../../../consts";
+import {ComponentMove} from "../../../../../utils/types";
 
 interface DndState {
     isDragging: boolean,

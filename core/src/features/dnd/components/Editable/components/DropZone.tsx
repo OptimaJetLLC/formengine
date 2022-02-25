@@ -1,11 +1,11 @@
 import React from "react";
 import {useDrop} from "react-dnd";
-import {useStore} from "../../../utils/StoreContext";
-import {useComponentData} from "../../../utils/ComponenDataContext";
-import {AcceptDrop, ItemType} from "../consts";
+import {useStore} from "../../../../../utils/contexts/StoreContext";
+import {useComponentData} from "../../../../../utils/contexts/ComponenDataContext";
+import {AcceptDrop, ItemType} from "../../../consts";
 import {observer} from "mobx-react";
 import {css, cx} from "@emotion/css";
-import {ComponentMove} from "../../../utils/types";
+import {ComponentMove} from "../../../../../utils/types";
 
 interface DropZoneProps {
     isBefore: boolean

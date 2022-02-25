@@ -2,7 +2,7 @@ import {PropertyEditorProps} from "../../annotation/types";
 import AddActionButton from "./AddActionButton";
 import ActionList from "./ActionList";
 import styled from "@emotion/styled";
-import {useStore} from "../../../utils/StoreContext";
+import {useStore} from "../../../utils/contexts/StoreContext";
 
 //EventEditor: one event - one editor
 export default ({componentStore, annotation}: PropertyEditorProps<Function | undefined>) => {

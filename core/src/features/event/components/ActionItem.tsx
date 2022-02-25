@@ -10,7 +10,7 @@ import {Node} from "../../../utils/Node";
 import {useState} from "react";
 import styled from "@emotion/styled";
 import {NavIconItem} from "../../../components/UI/NavIconItem";
-import {useStore} from "../../../utils/StoreContext";
+import {useStore} from "../../../utils/contexts/StoreContext";
 
 const ChooseTargetButton = observer(({data}: { data: FullActionDefinition }) => {
     const store = useStore()

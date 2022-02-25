@@ -1,7 +1,7 @@
-import {useStore} from "../../../utils/StoreContext";
-import {useComponentData} from "../../../utils/ComponenDataContext";
+import {useStore} from "../../../../../utils/contexts/StoreContext";
+import {useComponentData} from "../../../../../utils/contexts/ComponenDataContext";
 import React, {useCallback, useEffect, useMemo, useState} from "react";
-import {hoveredClass, selectedClass} from "../styles";
+import {hoveredClass, selectedClass} from "../../../styles";
 import {cx} from "@emotion/css";
 
 export interface SelectionState {
@@ -17,7 +17,6 @@ export interface SelectionHandlers {
 
 export type ClassName = string
 
-//TODO bug выбор внутреннего контейнера работает не корректно
 export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] => {
     const store = useStore()
     const {componentStore} = useComponentData()

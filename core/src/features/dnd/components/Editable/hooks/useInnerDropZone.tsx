@@ -1,4 +1,4 @@
-import {useComponentData} from "../../../utils/ComponenDataContext";
+import {useComponentData} from "../../../../../utils/contexts/ComponenDataContext";
 import {DropZone} from "../components/DropZone";
 import {css} from "@emotion/css";
 

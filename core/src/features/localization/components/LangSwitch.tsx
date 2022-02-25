@@ -1,6 +1,6 @@
 import {observer} from "mobx-react";
 import {useTranslation} from "react-i18next";
-import {useStore} from "../../../utils/StoreContext";
+import {useStore} from "../../../utils/contexts/StoreContext";
 import {languages} from "../consts";
 import {Dropdown} from "rsuite";
 import React from "react";

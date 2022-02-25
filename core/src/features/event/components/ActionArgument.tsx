@@ -12,7 +12,7 @@ import {NavIconItem} from "../../../components/UI/NavIconItem";
 import * as faLink from "@fortawesome/free-solid-svg-icons/faLink"
 import * as faCode from "@fortawesome/free-solid-svg-icons/faCode"
 import styled from "@emotion/styled";
-import {useStore} from "../../../utils/StoreContext";
+import {useStore} from "../../../utils/contexts/StoreContext";
 
 const ActionArgument = ({name, data}: { name: string, data: FullActionDefinition }) => {
     const store = useStore()

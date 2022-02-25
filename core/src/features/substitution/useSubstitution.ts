@@ -1,8 +1,8 @@
 import {useContext} from "react";
 import {FormikContext} from "formik";
-import {useStore} from "../../utils/StoreContext";
+import {useStore} from "../../utils/contexts/StoreContext";
 import {useObserver} from "mobx-react";
-import {useComponentData} from "../../utils/ComponenDataContext";
+import {useComponentData} from "../../utils/contexts/ComponenDataContext";
 
 export const useSubstitution = () => {
     const store = useStore()

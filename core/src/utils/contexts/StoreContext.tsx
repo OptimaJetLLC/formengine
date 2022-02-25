@@ -1,12 +1,12 @@
 import {createContext, ReactNode, useContext} from "react";
-import {Store} from "../stores/Store";
+import {Store} from "../../stores/Store";
 
 const StoreContext = createContext<Store | undefined>(undefined);
 
 const useStore = () => {
-    const store = useContext(StoreContext)
+    const context = useContext(StoreContext)
 
-    if (store) return store
+    if (context) return context
 
     throw new Error("Context didn't found!")
 }

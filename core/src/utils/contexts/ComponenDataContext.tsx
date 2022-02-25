@@ -1,7 +1,7 @@
 import {createContext, ReactNode, useContext, useRef} from "react";
-import {ComponentStore} from "../stores/ComponentStore";
+import {ComponentStore} from "../../stores/ComponentStore";
 import {useStore} from "./StoreContext";
-import {ComponentDefinition} from "../features/annotation/types";
+import {ComponentDefinition} from "../../features/annotation/types";
 
 export type ComponentData = {
     readonly parent?: ComponentStore,
@@ -12,9 +12,9 @@ export type ComponentData = {
 const ComponentDataContext = createContext<ComponentData | undefined>(undefined);
 
 const useComponentData = () => {
-    const store = useContext(ComponentDataContext)
+    const context = useContext(ComponentDataContext)
 
-    if (store) return store
+    if (context) return context
 
     throw new Error("Context didn't found!")
 }

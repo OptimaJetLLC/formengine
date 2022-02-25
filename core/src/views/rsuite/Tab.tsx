@@ -3,7 +3,7 @@ import {ReactNode, useCallback, useEffect} from "react";
 import {define} from "../../features/annotation/define";
 import {Nav} from "rsuite";
 import {boolean, node, string} from "../../features/annotation";
-import {useComponentData} from "../../utils/ComponenDataContext";
+import {useComponentData} from "../../utils/contexts/ComponenDataContext";
 
 
 interface TabProps {
