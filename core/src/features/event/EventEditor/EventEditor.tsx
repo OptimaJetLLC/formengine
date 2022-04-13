@@ -1,0 +1,15 @@
+import {PropertyEditorProps} from "../../annotation/types";
+import {AddActionButton} from "./components/AddActionButton";
+import {ActionList} from "./components/ActionList";
+
+//EventEditor: one eventName - one editor - some actions
+export const EventEditor = ({annotation}: PropertyEditorProps<Function | undefined>) => {
+    const title = annotation.title.split(" ").splice(1).join(" ") + " Actions"
+
+
+    return <div style={{marginBottom: 20}}>
+        <label style={{marginLeft: 10}}>{title}</label>
+        <ActionList eventName={annotation.key}/>
+        <AddActionButton eventKey={annotation.key}/>
+    </div>;
+}

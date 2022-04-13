@@ -3,13 +3,13 @@ import {Annotations, ComponentDefinition} from "./types";
 import _ from "lodash";
 import {Annotation} from "./Annotation";
 import {key, string, style, validation} from "./index";
-import {Action} from "../../utils/types";
+import {ActionDefinition} from "../event/types";
 
 export const define = <T extends object>(
     name: string,
     view: FunctionComponent<T>,
     annotations: Annotations<T>,
-    actions?: Action[]
+    actions?: ActionDefinition[]
 ): ComponentDefinition<any> => {
     if (_.isEmpty(name)) throw Error("Name cannot be empty!")
 

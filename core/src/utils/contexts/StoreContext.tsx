@@ -1,28 +1,6 @@
-import {createContext, ReactNode, useContext} from "react";
 import {Store} from "../../stores/Store";
+import {createContext} from "../createContextHook";
 
-const StoreContext = createContext<Store | undefined>(undefined);
-
-const useStore = () => {
-    const context = useContext(StoreContext)
-
-    if (context) return context
-
-    throw new Error("Context didn't found!")
-}
-
-interface StoreProviderProps {
-    store: Store
-    children: ReactNode
-}
-
-const StoreProvider = ({store, children}: StoreProviderProps) => {
-
-    return (
-        <StoreContext.Provider value={store}>
-            {children}
-        </StoreContext.Provider>
-    )
-}
+const [useStore, StoreProvider] = createContext<Store>("StoreContext")
 
 export {useStore, StoreProvider}

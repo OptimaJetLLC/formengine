@@ -6,8 +6,8 @@ import {FormViewerProps} from '../FormViewer';
 import {StoreProvider} from '../utils/contexts/StoreContext';
 import {Store} from '../stores/Store';
 import {Header} from './components/Header/Header';
-import {BuilderView} from './BuilderView';
-import {Preview} from './Preview';
+import {Building} from './components/Building';
+import {Preview} from './components/Preview';
 
 import {DndProvider} from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
@@ -19,17 +19,18 @@ export interface FormBuilderProps extends FormViewerProps {
 
 const FormBuilder = observer((props: FormBuilderProps) => {
     const store = useMemo(() => new Store(props.view), []);
+    const {event, ...builderProps} = props
 
     return (
         <Localization store={store}>
-            <StoreProvider store={store}>
+            <StoreProvider value={store}>
                 <Container>
                     <DndProvider  backend={HTML5Backend}>
                         <Header/>
                         <Content>
                             {store.isBuilderMode
-                                ? <BuilderView getForm={props.getForm} view={props.view}/>
-                                : <Preview getForm={props.getForm} view={props.view}/>
+                                ? <Building {...builderProps}/>
+                                : <Preview {...props}/>
                             }
                         </Content>
                     </DndProvider>

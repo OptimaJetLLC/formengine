@@ -1,24 +1,24 @@
-import React, {ReactNode} from "react";
+import {ReactNode} from "react";
 import {AnnotationBuilder} from "./AnnotationBuilder";
 import Key from "./inputs/Key";
 import String from "./inputs/String";
 import Boolean from "./inputs/Boolean";
-import Event from "../event/components/EventEditor";
-import Style from "./inputs/Style";
-import {Section} from "../../Builder/components/PropertiesEditor/Section";
+import {EventEditor} from "../event";
+import {StyleEditor} from "../style/StyleEditor";
 import {ValidateEditor} from "../validation/components/ValidateEditor";
 import {Container} from "./inputs/Container";
+import {Section} from "../../Builder/components/Building/components/PropertiesEditor/Section";
 
 //TODO следует ли компоновать их и засунуть в один объект?
 export const key = new AnnotationBuilder<string>({component: Key, isSystem: true}).isRequired("")
 export const string = new AnnotationBuilder<string | undefined>({component: String})
 export const boolean = new AnnotationBuilder<boolean | undefined>({component: Boolean})
 export const style = new AnnotationBuilder<Record<string, string>[] | undefined>({
-    component: Style,
+    component: StyleEditor,
     section: Section.Style
 })
 export const event = new AnnotationBuilder<Function | undefined>({
-    component: Event,
+    component: EventEditor,
     section: Section.Actions,
     isFunction: true
 })

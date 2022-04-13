@@ -1,24 +1,17 @@
-import {defineLocalAction} from "../annotation/defineAction";
-import {ComponentStore} from "../../stores/ComponentStore";
-import {Store} from "../../stores/Store";
+import {defineAction} from "./defineAction";
 
-const setValue = defineLocalAction("Set value", (actionArgs, eventArgs, c, e) => {
-    const componentStore: ComponentStore = eventArgs[2];
+const setValue = defineAction("Set value", (actionArgs, e) => {
+    //const componentStore: ComponentStore = eventArgs[2];
     //actionArgs.target.props.value = actionArgs.param1;
     //let b = args
-    debugger
-}, ["param1"]);
+    let a = actionArgs.propertyName
+}, ["propertyName", ["NumPar", "number"], ["BoolPar", "boolean"]]);
 
-const setProperty = defineLocalAction("Set property", ({propertyName, value, target}, eventArgs) => {
-    target.props[propertyName] = value;
-    //let b = args
-    debugger
-}, ["propertyName", "value"]);
+const setProperty = defineAction("Set property", ({propertyKey, targetKey, value}, e) => {
+    const component = e.store.findComponent(targetKey)
+    component.props[propertyKey] = value
+}, ["propertyKey", "targetKey", "value"]);
 
-const validate = defineLocalAction("Validate", ({}, eventArgs) => {
-    let c: Store = eventArgs.store
-    c.validateForm()
-
-}, []);
+const validate = defineAction("Validate", (e) => e.store.validateForm());
 
 export {setValue, setProperty, validate};

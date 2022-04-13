@@ -3,7 +3,7 @@ import {useStore} from "../../../../utils/contexts/StoreContext";
 import * as faPlay from "@fortawesome/free-solid-svg-icons/faPlay";
 import * as faPaintBrush from "@fortawesome/free-solid-svg-icons/faPaintBrush";
 import {IconButton} from "rsuite";
-import {FaIcon} from "../../../../components/UI/Icons";
+import {FaIcon} from "../../../../features/ui/Icons";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 import { useTranslation } from 'react-i18next';
 

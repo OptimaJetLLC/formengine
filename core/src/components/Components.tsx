@@ -3,6 +3,7 @@ import {ComponentDataProvider} from "../utils/contexts/ComponenDataContext";
 import {Component} from "./Component";
 import {observer} from "mobx-react";
 import {Wrapper} from "../utils/types";
+import {useStore} from "../utils/contexts/StoreContext";
 
 interface ComponentsProps {
     parent?: ComponentStore
@@ -12,10 +13,11 @@ interface ComponentsProps {
 
 //TODO passed component definition?
 export const Components = observer(({parent, components, Wrapper}: ComponentsProps) => {
+    const store = useStore()
 
     return <>
         {components.map(componentStore => (
-            <ComponentDataProvider key={componentStore.key} parent={parent} componentStore={componentStore}>
+            <ComponentDataProvider key={componentStore.key} value={{componentStore, parent, definition: store.view.get(componentStore.type)}}>
                 <Component Wrapper={Wrapper}/>
             </ComponentDataProvider>
         ))}

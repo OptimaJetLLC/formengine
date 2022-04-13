@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 import { AnnotationBuilder } from './AnnotationBuilder';
 import { ComponentStore } from '../../stores/ComponentStore';
 import { Annotation } from './Annotation';
-import { Action } from '../../utils/types';
+import {ActionDefinition} from "../event/types";
 
 export type Annotations<T extends object> =
     {
@@ -19,7 +19,7 @@ export interface ComponentDefinition<T extends object> {
     name: string;
     view: FunctionComponent<T>;
     annotations: Annotation<T>[];
-    actions?: Action[];
+    actions?: ActionDefinition[];
     groupBy?: string;
 }
 

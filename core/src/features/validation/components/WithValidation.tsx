@@ -6,15 +6,16 @@ import {ComponentStore} from "../../../stores/ComponentStore";
 import {observer} from "mobx-react";
 import {useValidation} from "../useValidation";
 import * as Yup from "yup";
+import {useComponentData} from "../../../utils/contexts/ComponenDataContext";
 
 interface WithValidationProps<T> {
     annotation: Annotation<any>
     Component: ComponentType<PropertyEditorProps<any>>
-    componentStore: ComponentStore
 }
 
 export const WithValidation = observer(<T extends any>(props: WithValidationProps<T> & T) => {
-    const {annotation, Component, componentStore} = props
+    const {annotation, Component} = props
+    const {componentStore} = useComponentData()
 
     const scheme = Yup.string().required().min(3) //TODO scheme from annotation
 

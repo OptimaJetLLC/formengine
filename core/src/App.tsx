@@ -1,14 +1,30 @@
-import React, { Suspense }  from 'react';
-import { observer } from 'mobx-react';
-import { FormBuilder } from './Builder';
-import { rsuite } from './views/rsuite';
+import {Suspense} from 'react';
+import {observer} from 'mobx-react';
+import {FormBuilder} from './Builder';
+import {rsuite} from './views/rsuite';
+import {getSampleForm} from "./utils/getSampleForm";
+import {Loader} from "rsuite";
 
 const App = observer(() => {
+
     return (
-        <Suspense fallback={<span>Loading...</span>}>
+        <Suspense fallback={<Loader size={"md"} content="loading..." center/>}>
             <FormBuilder
-                getForm={() => []}
+                getForm={getSampleForm}
                 view={rsuite}
+                event={(bus) => {
+                    bus.listen((e) => {
+                        let a = 4
+                    }, {eventName: "onChange", target :"title"})
+
+                    bus.listen((e) => {
+                        let a = 4
+                    }, {target: "title"})
+
+                    bus.listen((e) => {
+                        let a = 4
+                    })
+                }}
             />
         </Suspense>
     )

@@ -1,6 +1,6 @@
 import {PropertyEditorProps} from "../types";
 import {Input} from "rsuite";
-import {LabeledInput} from "../../../components/UI/Containers";
+import {LabeledInput} from "../../ui/Containers";
 
 const StringInput = (props: PropertyEditorProps<string | undefined>) => {
     const {annotation, onChange, onBlur, value} = props

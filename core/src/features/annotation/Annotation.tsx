@@ -1,7 +1,7 @@
 import {PropertyEditorProps} from "./types";
 import {ComponentType} from "react";
 import {observer} from "mobx-react";
-import {Section} from "../../Builder/components/PropertiesEditor/Section";
+import {Section} from "../../Builder/components/Building/components/PropertiesEditor/Section";
 
 export class Annotation<T> {
     private _component!: ComponentType<PropertyEditorProps<T>>;

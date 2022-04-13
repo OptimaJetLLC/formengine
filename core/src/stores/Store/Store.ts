@@ -1,15 +1,18 @@
 import _ from "lodash";
-import {action, autorun, computed, makeObservable, observable, reaction} from 'mobx';
+import {action, computed, makeObservable, observable, reaction} from 'mobx';
 import {ComponentStore} from "../ComponentStore";
 import {Node} from "../../utils/Node";
-import {Action, ComponentMove, EventName, FullActionDefinition, Modifiers, OverArgs} from "../../utils/types";
-import {toWeakEvent} from "./utils/toWeakEvent";
+import {ComponentMove} from "../../utils/types";
 import {FormikContextType} from "formik";
 import {DefineRegistry} from "../../utils/DefineRegistry";
 import {screen} from "../../components/Screen";
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../../features/localization/utils';
 import {getKey} from "../../utils/getKey";
 import {defaultLanguage} from "../../features/localization/consts";
+import {EventBus} from "../../features/event/utils/EventBus";
+import {ActionDefinition} from "../../features/event/types";
+import {setProperty, validate} from "../../features/event/actions";
+import { treeFind } from "../../utils";
 
 export class Store {
     readonly view: DefineRegistry
@@ -22,7 +25,10 @@ export class Store {
     styles?: any
     formContext?: FormikContextType<any>
 
-    allEvents = new Map<ComponentStore, Record<EventName, FullActionDefinition[]>>()
+    //TODO lazy initializing?
+    readonly eventBus = new EventBus()
+
+    actions: ActionDefinition[] = [setProperty, validate]
 
     screen: ComponentStore = new ComponentStore(screen.name, screen.name)
 
@@ -46,7 +52,7 @@ export class Store {
         this.view = view
 
         makeObservable(this, {
-            allEvents: observable.deep,
+            //allEvents: observable.deep,
             selected: observable.ref,
             isResizing: observable,
             formContext: observable.ref,
@@ -59,10 +65,6 @@ export class Store {
             language: observable.ref
         })
 
-        autorun(() => {
-            this.allEvents.forEach(toWeakEvent)
-        });
-
         onI18nInit((language: string) => {
             let foundLanguage = findLanguage(language);
             if (getFullLangCode(foundLanguage) !== getFullLangCode(this.language)) {
@@ -71,19 +73,6 @@ export class Store {
         });
 
         reaction(() => this.language, onLanguageChange);
-    }
-
-    addEvent(
-        eventKey: string, action: Action | null, args: OverArgs,
-        source: ComponentStore, target: ComponentStore | null,
-        modifiers?: Modifiers) {
-
-        let event = this.allEvents.get(source) ?? {}
-
-        if (!event[eventKey]) event[eventKey] = [];
-        event[eventKey].push({action, overArgs: args, target, modifiers})
-
-        this.allEvents.set(source, event)
     }
 
     clear() {
@@ -141,22 +130,27 @@ export class Store {
         return parent.children!.indexOf(child)
     }
 
-    findNode(key?: string) {
-        return find(this.tree)
+    findComponent(key: string) {
+        const result = treeFind(this.screen, key)
 
-        function find(node: Node): Node | null {
-            if (node.key === key) return node
+        if (!result)
+            throw Error(`Component ${key} didn't found!`)
 
-            if (!node.children) return null
-
-            for (let child of node.children) {
-                let childNode = find(child)
-                if (childNode) return childNode
-            }
-
-            return null
-        }
+        return result
     }
+
+    findAction(actionName: string, targetKey?: string) {
+        const target = targetKey ? this.findComponent(targetKey) : undefined
+        const actionList = target ? this.view.get(target.type).actions : this.actions
+        const action = actionList?.find((val) => val.name === actionName)
+
+        if (!action)
+            throw Error(`Action ${actionName} didn't found!`)
+
+        return action;
+    }
+
+    findNode = (key?: string) => treeFind(this.tree, key);
 
     getAllKeys() {
         const keys: string[] = []

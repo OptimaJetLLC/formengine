@@ -1,9 +1,9 @@
 import {Input as RInput, InputProps as RInputProps} from "rsuite";
 import {define} from "../../features/annotation/define";
 import {boolean, event, string} from "../../features/annotation";
-import {defineLocalAction} from "../../features/annotation/defineAction";
-import {setValue} from "../../features/event/actions";
-import {LabeledInput} from "../../components/UI/Containers";
+import {defineAction} from "../../features/event/defineAction";
+import {setProperty, setValue} from "../../features/event/actions";
+import {LabeledInput} from "../../features/ui/Containers";
 import { AnnotationBuilder } from '../../features/annotation/AnnotationBuilder';
 import { WithPicker } from '../../features/annotation/inputs/Picker';
 import styled from '@emotion/styled';
@@ -56,11 +56,12 @@ export const input = define<InputProps>("Input", Input, {
 
 }, [
     setValue,
-    defineLocalAction("Action2", ({name, value, isActive}, eventArgs) => {
+    defineAction("Action2", ({name, value, isActive}, eventArgs) => {
         console.log({name, value, isActive}, eventArgs);
     }, ["name", "value", "isActive"]),
-    defineLocalAction("Action3", (...args) => {
+    defineAction("Action3", (...args) => {
         console.log(args);
     }),
+    setProperty,
 ])
 

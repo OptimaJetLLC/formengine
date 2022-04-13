@@ -1,0 +1,28 @@
+import {observer} from "mobx-react";
+import {ActionItem} from "./ActionItem";
+import {Rows} from "../../../../ui/Containers"
+import {useComponentData} from "../../../../../utils/contexts/ComponenDataContext";
+
+interface ActionListProps {
+    eventName: string
+}
+
+export const ActionList = observer(({eventName}: ActionListProps) => {
+    const {componentStore} = useComponentData()
+    const weakActionsData = componentStore.events?.[eventName]
+
+    if (!weakActionsData) return null
+
+    /*TODO Draggable List*/
+    return <Rows margin={5}>
+        {weakActionsData.map((data, index) =>
+            <ActionItem
+                key={data.actionName}
+                eventName={eventName}
+                index={index}
+                weakData={data}
+                componentStore={componentStore}
+            />)}
+    </Rows>
+})
+

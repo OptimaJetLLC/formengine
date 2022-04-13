@@ -3,8 +3,8 @@ import styled from '@emotion/styled'
 import {IconButton} from 'rsuite';
 import PlusIcon from "@rsuite/icons/Plus";
 import {observer} from "mobx-react";
-import {ComponentBar} from "../../ComponentBar";
-import {Popover} from "../../../../components/UI/Popover";
+import {ComponentBar} from "./ComponentBar";
+import {Popover} from "../../../../features/ui/Popover";
 import {css, cx} from "@emotion/css";
 import {useDragLayer} from "react-dnd";
 

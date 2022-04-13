@@ -17,12 +17,14 @@ export const useInnerDropZone = (props: Record<string, any>) => {
                     bindTo={container.key}
                     visible={visibleBindTo}
                     isBefore={true}
-                    className={css`
-                      label: Empty;
-                      background-color: #9ab1ce;
-                      line-height: 50px;
-                    `
-                    }/>
+                    className={innerDropZone}
+                />
         }
     }
 }
+
+const innerDropZone = css`
+  label: Empty;
+  background-color: #9ab1ce;
+  line-height: 50px;
+`

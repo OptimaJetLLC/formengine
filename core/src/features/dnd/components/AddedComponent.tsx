@@ -25,14 +25,14 @@ export const AddedComponent = observer((props: AddedComponentProps) => {
         }),
     }), []);
 
-    return    <>
+    return (
         <div className={cx(draggableComponent)} ref={drag}>
             {data.definition.name}
             <ControlContainer>
                 <View {...defaultProps} style={style}/>
             </ControlContainer>
         </div>
-    </>
+    )
 })
 
 const draggableComponent = css`

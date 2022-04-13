@@ -1,0 +1,54 @@
+import _ from "lodash";
+import {observer} from "mobx-react"
+import {Section} from "../Section";
+import {WithValidation} from "../../../../../../features/validation/components/WithValidation";
+import React from "react";
+import {ObservableFormik} from "../../../../../../features/validation/components/ObserableFormik";
+import {CenteredLabel} from "../../../../../../features/ui/Labels";
+import styled from "@emotion/styled";
+import {useStore} from "../../../../../../utils/contexts/StoreContext";
+import {Button} from "rsuite";
+import {useTranslation} from 'react-i18next';
+import {ComponentDataProvider} from "../../../../../../utils/contexts/ComponenDataContext";
+
+interface PropertiesProps {
+    activeTab: Section
+}
+
+const Properties = observer(({activeTab}: PropertiesProps) => {
+    const {selected} = useStore();
+    const {t} = useTranslation();
+
+    if (!selected) return (
+        <Container>
+            <CenteredLabel style={{height: "40%"}}>{t('propertiesEditor.selectElementForEdit')}</CenteredLabel>
+        </Container>
+    )
+
+    const {data, definition, parent} = selected
+
+    const properties = definition.annotations
+        .filter(annotation => annotation.section === activeTab)
+        .map(annotation =>
+            <WithValidation annotation={annotation} Component={annotation.component} key={annotation.key}/>
+        )
+
+    return (
+        <ComponentDataProvider value={{componentStore: data, definition, parent: parent?.data}}>
+            <Container>
+                <ObservableFormik>
+                    {properties}
+                </ObservableFormik>
+            </Container>
+        </ComponentDataProvider>
+    )
+});
+
+const Container = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  margin-right: 10px;
+`
+
+
+export {Properties}

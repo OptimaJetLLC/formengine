@@ -1,7 +1,7 @@
 import {makeAutoObservable, observable} from "mobx";
-import {EventName, WeakActionDefinition} from "../utils/types";
 import {ParsableValidateSchema} from "../features/validation/types";
-import {StyleItem} from "../features/style";
+import {EventName, WeakActionData} from "../features/event/types";
+import {StyleItem} from "../features/style/types";
 
 export class ComponentStore {
     key: string = ""
@@ -9,7 +9,7 @@ export class ComponentStore {
     //Bind to parent property
     bindTo?: string
     props: Record<string, any> = {}
-    events: Record<EventName, WeakActionDefinition[]> = {}
+    events?: Record<EventName, WeakActionData[]>
     //TODO styles в отдельный блок - объеденить три поля в один
     styles?: Record<string, string>
     cssStyles?: StyleItem[]
@@ -27,7 +27,7 @@ export class ComponentStore {
         this.type = type;
 
         makeAutoObservable(this, {
-            events: observable.deep,
+            //events: observable.deep,
             validation: observable.deep,
             props: observable.shallow
         });

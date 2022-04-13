@@ -22,7 +22,11 @@
       "main": "Main",
       "style": "Style",
       "actions": "Actions",
-      "validation": "Validation"
+      "validation": "Validation",
+      "withTarget": "With Target",
+      "withoutTarget": "Without Target",
+      "linkedProperty": "Linked property",
+      "expression": "Expression"
     }
   },
   "toolbar": {
