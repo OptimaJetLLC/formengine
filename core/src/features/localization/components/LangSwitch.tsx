@@ -16,7 +16,7 @@ export const LangSwitch = observer(() => {
         </Dropdown.Item>);
     });
 
-    return <Dropdown title={t('leftMenu.translation')}>
+    return <Dropdown.Menu title={t('leftMenu.translation')}>
         {children}
-    </Dropdown>;
+    </Dropdown.Menu>;
 });

@@ -20,12 +20,11 @@ export const SearchForm = ({style, className, onChange}: SearchFormProps) => {
     useEffect(() => onChange(value), [value])
 
     return (
-        <InputGroup className={className} inside size="xs" style={style}>
+        <InputGroup className={className} inside size="sm" style={style}>
             <Input
                 onChange={setValue}
                 placeholder={t('searchForm.search')}
                 value={value}
-                size="xs"
             />
             <InputGroup.Addon style={{cursor: 'pointer'}} onClick={clear} children={<Icon/>}/>
         </InputGroup>

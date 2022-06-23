@@ -15,7 +15,7 @@ export const useStyles = () => {
         ({name, value}) => transformedStyles += styleToString(name, value)
     )
 
-    transformedStyles += componentStore.cssBlock;
+    transformedStyles += componentStore.cssBlock || "";
 
     return css`${transformedStyles}`;
 }

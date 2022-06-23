@@ -6,65 +6,56 @@ import {FaIcon} from "../../../../ui/Icons";
 import * as faClone from "@fortawesome/free-regular-svg-icons/faClone";
 import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 import * as faTrash from "@fortawesome/free-regular-svg-icons/faTrashAlt";
-import {css} from "@emotion/css";
-import {Popover} from "../../../../ui/Popover";
 import {useComponentData} from "../../../../../utils/contexts/ComponenDataContext";
 
-interface ToolbarProps {
-    show: boolean
-    parent: Element
-}
-
-export const Toolbar = observer(({parent, show}: ToolbarProps) => {
+export const Toolbar = observer(() => {
     const store = useStore()
     const data = useComponentData()
 
     const onClone = useCallback(() => store.clone(data), [])
     const onRemove = useCallback(() => store.remove(data), [])
 
-    if (!show) return null
-
-    return <Popover
-        show={show}
-        placement='top'
-        parent={parent}
-        modifiers={[{name: 'offset', options: {offset: [150, -10]}}]}
-        className={ToolbarContainer}
-    >
-        <Title>{data.componentStore.key}</Title>
+    return <ToolbarContainer>
+        <Title>
+            {data.componentStore.key}
+            <label>{` (${data.componentStore.type})`}</label>
+        </Title>
         <FaIcon onClick={onClone} icon={faClone as unknown as IconDefinition}/>
         <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition}/>
-    </Popover>
+    </ToolbarContainer>
 })
 
-const ToolbarContainer = css`
+const ToolbarContainer = styled.div`
+  inset: initial;
+  right: 5px;
+  top: -13px;
   label: Toolbar;
-
   position: absolute;
-  z-index: 10;
+  z-index: 11;
+  color: var(--rs-btn-ghost-text);
   cursor: pointer !important;
   white-space: nowrap;
+  border-radius: 5px;
   height: 20px;
   width: fit-content;
-  padding-left: 10px;
-  color: black;
+  padding-inline: 5px;
   font-weight: 400;
-  background: white;
-  -webkit-box-shadow: 0 6px 10px rgba(18, 83, 204, 0.12), 0 1px 18px rgba(18, 83, 204, 0.12), 0 3px 5px rgba(18, 83, 204, 0.15);
-  box-shadow: 0 6px 10px rgba(18, 83, 204, 0.12), 0 1px 18px rgba(18, 83, 204, 0.12), 0 3px 5px rgba(18, 83, 204, 0.15);
-  border-radius: 11px;
+  background-color: white;
+
+  .rs-theme-dark & {
+    background-color: #3b3f43;
+  }
+
   display: flex;
-  //color: var(--rs-text-primary);
+  gap: 5px;
   align-items: center;
 
   & > .rs-icon {
     cursor: pointer;
-    margin-right: 7px;
   }
 `
 
 const Title = styled.label`
   display: inline;
-  margin-right: 5px;
   cursor: move;
 `

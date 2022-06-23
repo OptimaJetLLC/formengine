@@ -4,13 +4,19 @@ export const resizerStyles = css`
   width: 10px;
   height: 10px;
   background: white;
-  border: 3px solid #4286f4;
+  border: 2px solid #4286f4;
+  border-radius: 10px;
+  z-index: 11;
   position: absolute;
 
   &.left {
-    left: -5px;
+    left: -2px;
     cursor: col-resize;
     top: 50%;
+    width: 3px;
+    background: #53a5ff;
+    border: none;
+    height: 20px;
     transform: translate(0, -50%);
   }
 
@@ -22,9 +28,12 @@ export const resizerStyles = css`
   }
 
   &.top {
-    top: 0;
+    top: -1px;
     cursor: row-resize;
-
+    height: 3px;
+    background: #53a5ff;
+    border: none;
+    width: 20px;
     left: 50%;
     transform: translate(0, -50%);
   }

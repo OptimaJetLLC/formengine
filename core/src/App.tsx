@@ -1,12 +1,11 @@
 import {Suspense} from 'react';
 import {observer} from 'mobx-react';
-import {FormBuilder} from './Builder';
 import {rsuite} from './views/rsuite';
 import {getSampleForm} from "./utils/getSampleForm";
 import {Loader} from "rsuite";
+import {FormBuilder} from "./Builder/FormBuilder";
 
 const App = observer(() => {
-
     return (
         <Suspense fallback={<Loader size={"md"} content="loading..." center/>}>
             <FormBuilder

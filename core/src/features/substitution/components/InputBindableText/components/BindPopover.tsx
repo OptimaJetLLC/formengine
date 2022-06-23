@@ -24,8 +24,8 @@ export const BindPopover = forwardRef<any, any>(({onClose, left, top, className,
     return (
         <Popover ref={ref} className={className} style={{left, top, marginLeft: -217}} full>
             <Nav appearance="subtle" activeKey={"linkedProperty"} style={{marginBottom: 10}}>
-                {NavIconItem("linkedProperty", faLink)}
-                {NavIconItem("expression", faCode)}
+                {NavIconItem("linkedProperty", "", faLink)}
+                {NavIconItem("expression", "", faCode)}
             </Nav>
 
             <CloseButton icon={<CloseIcon/>} onClick={onClose} appearance={"primary"} size={"xs"} circle/>

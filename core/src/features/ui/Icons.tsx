@@ -6,7 +6,7 @@ const FaSvgIcon = ({faIcon, size, ...rest}: { faIcon: any, size?: number }) => {
     const {width, height, svgPathData} = faIcon;
     return (
         <svg viewBox={`0 0 ${width} ${height}`} width={`${size ?? 1}em`} height={`${size ?? 1}em`}
-             fill="currentColor"  {...rest} >
+             fill="currentColor" {...rest}>
             <path d={svgPathData}/>
         </svg>
     );

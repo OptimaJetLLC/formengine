@@ -1,21 +1,4 @@
-import {define} from "../features/annotation/define";
-import {ReactNode} from "react";
-import {node} from "../features/annotation";
+import {container} from "../views/rsuite/Container";
 
-interface PageProps {
-    children: ReactNode
-}
-
-const Screen = (props: PageProps) => {
-
-    return (
-        <div>
-            {props.children}
-        </div>
-    );
-}
-
-export const screen = define("Screen", Screen, {
-    children: node
-})
+export const screen = {...container, name: "Screen"};
 

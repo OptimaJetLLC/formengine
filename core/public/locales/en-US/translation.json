@@ -2,7 +2,7 @@
   "leftMenu": {
     "translation": "Translation",
     "undo": "Undo",
-    "formMenu": "Form",
+    "menu": "Menu",
     "download": "Download",
     "upload": "Upload",
     "print": "Print",
@@ -12,7 +12,6 @@
   "rightMenu": {
     "desktop": "Desktop",
     "mobile": "Mobile",
-    "resolution": "Resolution",
     "previewMode": "Preview",
     "editMode": "Edit"
   },

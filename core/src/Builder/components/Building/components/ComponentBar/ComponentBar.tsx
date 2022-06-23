@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import {SearchForm} from "./components/SearchForm";
 import React, {useState} from "react";
 import {Trans, useTranslation} from "react-i18next";
-import {Centered} from "../../../../../features/ui/Containers";
 import {ToolbarItem} from "./Items";
 import {useStore} from "../../../../../utils/contexts/StoreContext";
 import {AddedComponent} from "../../../../../features/dnd";
@@ -27,7 +26,7 @@ export const ComponentBar = (props: ComponentBarProps) => {
         const isMatch = (el: ComponentDefinition<any>) => el.name.toLowerCase().includes(value.toLowerCase());
 
         setFiltered({
-            title: value || t("toolbar.baseControls"),
+            title: value ? "" : t("toolbar.baseControls"),
             controls: store.view.all().filter(isMatch)
         })
     }
@@ -35,11 +34,7 @@ export const ComponentBar = (props: ComponentBarProps) => {
 
     return <div className={componentBar}>
         <Header>
-            <h4><Trans i18nKey="toolbar.elements">Elements</Trans></h4>
-            <Centered>
-                <SearchForm style={{maxWidth: 300}} onChange={handleSearchChange}/>
-            </Centered>
-            <h4 style={{opacity: 0}}><Trans i18nKey="toolbar.elements">Elements</Trans></h4>
+            <SearchForm style={{maxWidth: 300}} onChange={handleSearchChange}/>
         </Header>
 
         <FilteredComponents filtered={filtered}/>
@@ -91,6 +86,8 @@ const componentBar = css`
   display: flex;
   margin-bottom: 5px;
   flex-flow: wrap;
+  overflow: hidden;
+  gap: 10px;
 `
 
 const Controls = styled.div`
@@ -122,4 +119,8 @@ const Subheader = styled.li`
   text-align: left;
 `
 
-const ControlsGroup = styled.div``
+const ControlsGroup = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+`

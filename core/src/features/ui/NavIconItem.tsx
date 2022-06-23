@@ -3,15 +3,13 @@ import React from "react";
 import styled from "@emotion/styled";
 import {Nav} from "rsuite";
 import {LabeledIcon} from "./Labels";
-import { useTranslation } from 'react-i18next';
 
-export const NavIconItem = (key: string, icon?: any, props?: any) => {
-    const { t } = useTranslation();
+export const NavIconItem = (key: string, title?: string, icon?: any, props?: any) => {
 
     return <ColoredNavItem eventKey={key} color={props?.color}>
         <LabeledIcon>
             {icon && <FaIcon icon={icon} {...{size: 1.2, ...props, color: undefined}}/>}
-            <label>{t('propertiesEditor.sectionName.' + key)}</label>
+            <label>{title}</label>
         </LabeledIcon>
     </ColoredNavItem>
 }

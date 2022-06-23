@@ -3,7 +3,7 @@
     [
       "@emotion",
       {
-        "labelFormat": "[filename]--[local]"
+        "labelFormat": "[filename]_[local]"
       }
     ]
   ]

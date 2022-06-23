@@ -12,7 +12,7 @@ import {defaultLanguage} from "../../features/localization/consts";
 import {EventBus} from "../../features/event/utils/EventBus";
 import {ActionDefinition} from "../../features/event/types";
 import {setProperty, validate} from "../../features/event/actions";
-import { treeFind } from "../../utils";
+import {treeFind} from "../../utils";
 
 export class Store {
     readonly view: DefineRegistry
@@ -20,8 +20,6 @@ export class Store {
     isResizing: boolean = false
 
     isBuilderMode: boolean = true
-    showRightPanel: boolean = true
-    showLeftPanel: boolean = true
     styles?: any
     formContext?: FormikContextType<any>
 
@@ -57,8 +55,6 @@ export class Store {
             isResizing: observable,
             formContext: observable.ref,
             isBuilderMode: observable.ref,
-            showRightPanel: observable.ref,
-            showLeftPanel: observable.ref,
             screen: observable.deep,
             tree: computed,
             clear: action.bound,

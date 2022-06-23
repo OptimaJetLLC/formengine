@@ -3,6 +3,7 @@ import {useComponentData} from "../../../../../utils/contexts/ComponenDataContex
 import React, {useCallback, useEffect, useMemo, useState} from "react";
 import {hoveredClass, selectedClass} from "../../../styles";
 import {cx} from "@emotion/css";
+import {useDragDropManager} from "react-dnd";
 
 export interface SelectionState {
     hovered: boolean
@@ -20,6 +21,7 @@ export type ClassName = string
 export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] => {
     const store = useStore()
     const {componentStore} = useComponentData()
+    const dndMonitor = useDragDropManager().getMonitor();
     const [hovered, setHovered] = useState(false)
     const [selected, setSelected] = useState(false)
 
@@ -43,8 +45,8 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
     }, [])
 
     const className = useMemo(() => (cx({
-        [hoveredClass]: hovered && !selected,
-        [selectedClass]: selected,
+        [hoveredClass]: hovered && !selected && !dndMonitor.isDragging(),
+        [selectedClass]: selected && !dndMonitor.isDragging(),
     })), [hovered, selected])
 
     return [{hovered, selected}, {onMouseDown, onMouseOver, onMouseLeave}, className]

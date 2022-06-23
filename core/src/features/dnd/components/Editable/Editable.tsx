@@ -27,7 +27,7 @@ export const Editable = observer(({View, viewProps}: WrapperProps) => {
             }}
             {...selectionHandlers}
         >
-            <Toolbar show={selected} parent={dnd.current}/>
+            {selected && <Toolbar/>}
             <Resizers show={selected}/>
 
             {isActive && <DropZone bindTo={componentStore.bindTo} isBefore={true}/>}

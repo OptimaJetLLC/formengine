@@ -1,42 +1,71 @@
 import React from 'react';
 import {observer} from "mobx-react";
 import styled from '@emotion/styled'
+import {ToggleModeButton} from "./components/ToggleModeButton";
+import {ButtonToolbar, IconButton, SelectPicker} from "rsuite";
+import {useTranslation} from "react-i18next";
 import {AddButton} from "./components/AddButton";
-import {LeftPart} from "./components/LeftPart";
-import {RightPart} from "./components/RightPart";
+import {FaIcon} from "../../../features/ui/Icons";
+import * as faUndo from "@fortawesome/free-solid-svg-icons/faUndo";
+import {IconDefinition} from "@fortawesome/fontawesome-common-types";
+import * as faRedo from "@fortawesome/free-solid-svg-icons/faRedo";
+import {Menu} from "./components/Menu";
+import useLocalStorageState from "use-local-storage-state";
+import {ToggleTheme} from "./components/ToggleTheme";
+
+const resolutions = ["desktop", "mobile"];
 
 const Header = observer(() => {
+    const {t} = useTranslation();
+    const resolutionsItems = resolutions.map(value => ({value, label: t('rightMenu.' + value)}))
+    const [resolution, setResolution] = useLocalStorageState("resolution", {
+        defaultValue: "desktop"
+    });
 
     return (
         <Container>
-            <LeftPart/>
-            <div className="center">
-                <AddButton/>
-            </div>
-            <RightPart/>
+            <LeftPart>
+                <ButtonToolbar>
+                    <Menu/>
+                    <AddButton/>
+                    <IconButton onClick={_ => {
+                    }} disabled={true /*TODO !!store.canUndo*/}
+                                icon={<FaIcon icon={faUndo as unknown as IconDefinition}/>}/>
+                    <IconButton onClick={_ => {
+                    }} disabled={true /*TODO !store.canRedo*/}
+                                icon={<FaIcon icon={faRedo as unknown as IconDefinition}/>}/>
+                </ButtonToolbar>
+            </LeftPart>
+
+            <CenterPart>
+                <SelectPicker value={resolution} data={resolutionsItems} onSelect={setResolution}
+                              searchable={false} cleanable={false} appearance="subtle" size={"sm"}/>
+                <ToggleModeButton/>
+            </CenterPart>
+
+            <RightPart>
+                <ToggleTheme/>
+            </RightPart>
         </Container>
     );
 });
 
+const LeftPart = styled.div``
+
+const RightPart = styled.div`justify-content: flex-end;`
+
+const CenterPart = styled.div`justify-content: center;`
 
 const Container = styled.div`
   display: flex;
   flex: 1;
-  //box-shadow: 0 15px 15px -15px rgb(0 0 0 / 25%);
 
   & > * {
-    display: flex;
-    padding: 10px;
-  }
-
-  & .right.panel {
-    justify-content: flex-end;
-  }
-
-  & .center {
     flex: 1;
-    justify-content: center;
     display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 4px
   }
 `
 
