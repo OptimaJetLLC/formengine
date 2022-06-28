@@ -1,19 +1,16 @@
 import _ from "lodash/fp";
 import {RefObject, useMemo, useRef} from "react";
-import {DragSourceMonitor, useDrag, useDrop} from "react-dnd";
+import {useDrop} from "react-dnd";
 import {useComponentData} from "../../../../../utils/contexts/ComponenDataContext";
 import {AcceptDrop, ItemType} from "../../../consts";
 import {ComponentMove} from "../../../../../utils/types";
+import {useDragWithPreview} from "./useDragWithPreview";
 
 interface DndState {
     isDragging: boolean,
     isActive: boolean,
     isOver: boolean,
     canDrop: boolean,
-    style: {
-        opacity: number,
-        padding: number,
-    }
 }
 
 export const useDnd = (): [DndState, RefObject<any>] => {
@@ -27,23 +24,10 @@ export const useDnd = (): [DndState, RefObject<any>] => {
             isOver: monitor.isOver(),
             canDrop: monitor.canDrop(),
             isActive: monitor.isOver() && monitor.canDrop(),
-            style: {
-                padding: monitor.isOver() && monitor.canDrop() ? 10 : 0,
-            }
         }),
     }, []);
 
-    const [dragState, drag] = useDrag(() => ({
-        type: ItemType.Component,
-        item: data,
-        collect: (monitor: DragSourceMonitor<ComponentMove, unknown>) => ({
-            isDragging: monitor.isDragging(),
-            style: {
-                opacity: monitor.isDragging() ? 0.4 : 1,
-            }
-        }),
-    }), []);
-
+    const [dragState, drag] = useDragWithPreview(ItemType.Component);
     const state: DndState = useMemo(() => (_.merge(dropProps, dragState)), [dropProps, dragState])
 
     drop(drag(dnd))

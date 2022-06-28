@@ -1,4 +1,4 @@
-import {makeAutoObservable, observable} from "mobx";
+import {computed, makeAutoObservable, observable} from "mobx";
 import {ParsableValidateSchema} from "../features/validation/types";
 import {EventName, WeakActionData} from "../features/event/types";
 import {StyleItem} from "../features/style/types";
@@ -29,8 +29,18 @@ export class ComponentStore {
         makeAutoObservable(this, {
             //events: observable.deep,
             validation: observable.deep,
-            props: observable.shallow
+            props: observable.shallow,
+            isRoot: computed,
+            isContainer: computed,
         });
+    }
+
+    get isRoot() {
+        return this.type === "Screen";
+    }
+
+    get isContainer() {
+        return !!this.children;
     }
 }
 

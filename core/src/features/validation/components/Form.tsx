@@ -11,7 +11,7 @@ export const Form = (props: any) => {
     //TODO вывод данных об значениях поля, ошибках и тд для инспекции
 
     return (
-        <FormikForm>
+        <FormikForm style={{display: 'flex', flexDirection: "column", flex: 1}}>
             {props.children}
         </FormikForm>
     );

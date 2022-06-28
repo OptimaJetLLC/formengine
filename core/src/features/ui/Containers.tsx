@@ -54,6 +54,7 @@ const Columns = styled(Box)<{ margin?: number }>`
 
 const LabeledInput = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
 
   label {

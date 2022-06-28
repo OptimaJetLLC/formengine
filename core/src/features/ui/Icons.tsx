@@ -5,8 +5,8 @@ import {IconDefinition} from "@fortawesome/fontawesome-common-types";
 const FaSvgIcon = ({faIcon, size, ...rest}: { faIcon: any, size?: number }) => {
     const {width, height, svgPathData} = faIcon;
     return (
-        <svg viewBox={`0 0 ${width} ${height}`} width={`${size ?? 1}em`} height={`${size ?? 1}em`}
-             fill="currentColor" {...rest}>
+        <svg {...rest} viewBox={`0 0 ${width} ${height}`} width={`${size ?? 1}em`} height={`${size ?? 1}em`}
+             fill="currentColor">
             <path d={svgPathData}/>
         </svg>
     );

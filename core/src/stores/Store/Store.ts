@@ -18,6 +18,7 @@ export class Store {
     readonly view: DefineRegistry
 
     isResizing: boolean = false
+    isDragging: boolean = false
 
     isBuilderMode: boolean = true
     styles?: any
@@ -95,9 +96,11 @@ export class Store {
         }, source, false)
     }
 
-    move(source: ComponentMove, target: ComponentMove, isBefore: boolean = true) {
+    move(source: ComponentMove, target: ComponentMove, isAfter: boolean = false, inner: boolean = false) {
         this.remove(source)
-        const index = getIndexToPush(target, isBefore)
+        const index = inner
+            ? target.componentStore.children?.length ?? 0
+            : getIndexToPush(target, isAfter)
         push(source, target, index)
 
 
@@ -107,9 +110,9 @@ export class Store {
             purpose.children?.splice(index, 0, source.componentStore)
         }
 
-        function getIndexToPush(target: ComponentMove, isBefore: boolean) {
+        function getIndexToPush(target: ComponentMove, isAfter: boolean) {
             const index = Store.getIndexInParent(target)
-            return isBefore ? index : index + 1
+            return isAfter ? index + 1 : index
         }
     }
 
