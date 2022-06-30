@@ -1,8 +1,7 @@
-import { FunctionComponent } from 'react';
-import { AnnotationBuilder } from './AnnotationBuilder';
-import { ComponentStore } from '../../stores/ComponentStore';
-import { Annotation } from './Annotation';
-import {ActionDefinition} from "../event/types";
+import {AnnotationBuilder} from './utils/AnnotationBuilder';
+import {ComponentStore} from '../../stores/ComponentStore';
+import {Annotation} from './utils/Annotation';
+import {DefineActionHelper, ActionDefinition, ActionEventHandler, EventName} from "../event/types";
 
 export type Annotations<T extends object> =
     {
@@ -15,14 +14,6 @@ export type Annotations<T extends object> =
 /** Remove some useless property for annotation defining which we define automatics */
 type OmitUnimportant<T extends object> = Omit<T, 'style' | 'className' | 'classPrefix'>;
 
-export interface ComponentDefinition<T extends object> {
-    name: string;
-    view: FunctionComponent<T>;
-    annotations: Annotation<T>[];
-    actions?: ActionDefinition[];
-    groupBy?: string;
-}
-
 /** Interface for property editor */
 export interface PropertyEditorProps<T> {
     componentStore: ComponentStore;
@@ -32,3 +23,7 @@ export interface PropertyEditorProps<T> {
     onChange?: (...args: any[]) => void;
     onBlur?: (...args: any[]) => void;
 }
+
+//TODO типизация для пропсов
+export type ActionsInitializer = (props: ComponentStore["props"], def: DefineActionHelper) => Record<EventName, ActionEventHandler | ActionDefinition>
+

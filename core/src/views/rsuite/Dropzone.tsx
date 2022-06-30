@@ -1,12 +1,12 @@
-import { define } from '../../features/annotation/define';
+import {define} from '../../features/annotation/utils/define';
 
-export interface DropzoneProps {
+interface DropzoneProps {
 
 }
 
-export const Dropzone = (props: DropzoneProps) => {
+const Dropzone = (props: DropzoneProps) => {
     // todo implement
     return (<>Dropzone</>)
 }
 
-export const dropzone = define('Dropzone', Dropzone, {}, []);
+export const dropzone = define(Dropzone)

@@ -1,12 +1,12 @@
-import { define } from '../../features/annotation/define';
+import {define} from '../../features/annotation/utils/define';
 
-export interface MenuProps {
+interface MenuProps {
 
 }
 
-export const Menu = (props: MenuProps) => {
+const Menu = (props: MenuProps) => {
     // todo implement
     return (<>Menu</>)
 }
 
-export const menu = define('Menu', Menu, {}, []);
+export const menu = define(Menu)

@@ -48,7 +48,7 @@ export const BindPopover = forwardRef<any, any>(({onClose, left, top, className,
                 {activeNode && <LabeledInput>
                     <label>Property</label>
                     <SelectPicker
-                        data={activeNode.definition.annotations.map(({key}) => ({value: key, label: key}))}
+                        data={activeNode.model.properties.map(({key}) => ({value: key, label: key}))}
                         value={propertyName}
                         onSelect={handlePropertySelect}
                     />

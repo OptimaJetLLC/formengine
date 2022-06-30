@@ -4,11 +4,11 @@ import {Wrapper} from "../../../utils/types";
 import {ComponentStore} from "../../../stores/ComponentStore";
 
 export function useChildren(currentProps: Record<string, any>, Wrapper?: Wrapper) {
-    const {componentStore, definition} = useComponentData()
+    const {componentStore, model} = useComponentData()
 
     if (!componentStore.children?.length) return
 
-    const containers = definition.annotations.filter(value => value.isContainer);
+    const containers = model.properties.filter(value => value.isContainer);
 
     for (let container of containers) {
         const isChild = (child: ComponentStore) =>

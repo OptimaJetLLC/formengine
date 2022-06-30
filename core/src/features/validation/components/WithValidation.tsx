@@ -1,8 +1,7 @@
 import React, {ComponentType} from "react";
 import {ErrorMessage} from "./ErrorMessage";
 import {PropertyEditorProps} from "../../annotation/types";
-import {Annotation} from "../../annotation/Annotation";
-import {ComponentStore} from "../../../stores/ComponentStore";
+import {Annotation} from "../../annotation/utils/Annotation";
 import {observer} from "mobx-react";
 import {useValidation} from "../useValidation";
 import * as Yup from "yup";

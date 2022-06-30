@@ -1,12 +1,12 @@
-import { define } from '../../features/annotation/define';
+import {define} from '../../features/annotation/utils/define';
 
-export interface CheckboxProps {
+interface CheckboxProps {
 
 }
 
-export const Checkbox = (props: CheckboxProps) => {
+const Checkbox = (props: CheckboxProps) => {
     // todo implement
     return (<>Checkbox</>)
 }
 
-export const checkbox = define('Checkbox', Checkbox, {}, []);
+export const checkbox = define(Checkbox)

@@ -12,4 +12,4 @@ const KeyInput = ({componentStore, annotation}: PropertyEditorProps<string>) => 
     </LabeledInput>
 );
 
-export default KeyInput;
+export {KeyInput}

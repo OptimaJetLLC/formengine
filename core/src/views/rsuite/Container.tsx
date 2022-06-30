@@ -1,10 +1,10 @@
-import {define} from "../../features/annotation/define";
-import {node} from "../../features/annotation";
+import {define} from "../../features/annotation/utils/define";
 import {forwardRef} from "react";
-import {AnnotationBuilder} from "../../features/annotation/AnnotationBuilder";
-import {WithRadioButton} from "../../features/annotation/inputs/RadioButton";
 import ColumnsIcon from '@rsuite/icons/Columns';
 import {css, cx} from "@emotion/css";
+import {node} from "../../features/annotation";
+import {AnnotationBuilder} from "../../features/annotation/utils/AnnotationBuilder";
+import {WithRadioButton} from "../../features/annotation/inputs/RadioButton";
 
 type Direction = "vertical" | "horizontal";
 
@@ -19,16 +19,19 @@ const Container = forwardRef(({direction, className, ...props}: any, ref: any) =
     return <div {...props} ref={ref} className={cx(className, {horizontal}, containerStyles)}/>
 });
 
+Container.displayName = "Container"
+
 //TODO property what say it is a container and can have children. Create smth like reactnode property?
-export const container = define("Container", Container, {
-    children: node,
-    direction: new AnnotationBuilder<Direction>({
-        component: WithRadioButton([
-            {value: 'vertical', icon: <ColumnsIcon rotate={90}/>},
-            {value: 'horizontal', icon: <ColumnsIcon/>},
-        ])
-    }).isRequired("vertical"),
-}, undefined)
+export const container = define(Container)
+    .props({
+        children: node,
+        direction: new AnnotationBuilder<Direction>({
+            component: WithRadioButton([
+                {value: 'vertical', icon: <ColumnsIcon rotate={90}/>},
+                {value: 'horizontal', icon: <ColumnsIcon/>},
+            ])
+        }).isRequired("vertical"),
+    })
 
 const containerStyles = css`
   display: flex;

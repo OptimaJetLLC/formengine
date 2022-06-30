@@ -7,4 +7,4 @@ export interface WrapperProps {
 }
 
 export type Wrapper = ComponentType<WrapperProps>
-export type ComponentMove = Omit<ComponentData, 'definition'>
+export type ComponentMove = Omit<ComponentData, 'model'>

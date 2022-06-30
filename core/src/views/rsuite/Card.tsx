@@ -1,12 +1,12 @@
-import { define } from '../../features/annotation/define';
+import {define} from '../../features/annotation/utils/define';
 
-export interface CardProps {
+interface CardProps {
 
 }
 
-export const Card = (props: CardProps) => {
+const Card = (props: CardProps) => {
     // todo implement
     return (<>Card</>)
 }
 
-export const card = define('Card', Card, {}, []);
+export const card = define(Card)

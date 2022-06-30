@@ -4,7 +4,7 @@ import {ComponentStore} from "../stores/ComponentStore";
 
 //TODO can stringify and parse to form
 export function getSampleForm() {
-    let formScreen = new ComponentStore("screen 1", screen.name)
+    let formScreen = new ComponentStore("screen 1", screen.type)
     formScreen.children = []
     //store.model.components.push(formScreen)
 

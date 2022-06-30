@@ -6,7 +6,7 @@ import {ActionEvent} from "../../utils/ActionEvent";
 
 export const useEventHandlers = (): EventTuple => {
     const store = useStore()
-    const {componentStore, definition: {annotations}} = useComponentData()
+    const {componentStore, model: {properties}} = useComponentData()
     const [handlers, setHandlers] = useState<Record<EventName, Function>>({})
     const actionsMap: Record<EventName, ActionEventHandler[]> = useRef({}).current
 
@@ -16,7 +16,7 @@ export const useEventHandlers = (): EventTuple => {
 
 
     function setEventHandlers() {
-        const eventNames = annotations.filter((value) => value.isFunction).map((value) => value.key)
+        const eventNames = properties.filter((value) => value.isFunction).map((value) => value.key)
         eventNames.forEach((name) => [handlers[name], actionsMap[name]] = getEmptyHandler(name))
         setHandlers({...handlers})
     }

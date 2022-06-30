@@ -15,9 +15,9 @@ export const ChoosenAction = observer(() => {
     const groups = useGroups()
 
     const TargetActionsList: any = (target: ComponentStore) => {
-        const definition = store.view.get(target.type)
+        const model = store.view.getModel(target)
         return <Dropdown.Menu> {
-            definition?.actions?.map((action) =>
+            model?.actions?.map((action) =>
                 <Dropdown.Item
                     key={action.name}
                     onSelect={() => {
@@ -41,7 +41,7 @@ export const ChoosenAction = observer(() => {
                             key={node.key}
                             title={node.key}
                             children={
-                                node.definition?.actions?.map((action) =>
+                                node.model?.actions?.map((action) =>
                                     <Dropdown.Item
                                         key={action.name}
                                         onSelect={() => {

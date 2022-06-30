@@ -9,7 +9,7 @@ import {useDragWithPreview} from "./Editable/hooks/useDragWithPreview";
 
 export const AddedComponent = observer(() => {
     const data = useComponentData();
-    const View = data.definition.view;
+    const View = data.model.view;
     const [{isDragging}, drag] = useDragWithPreview(ItemType.AddedComponent);
 
     const element = <Container><View {...useDefaultProps()}/></Container>
@@ -17,7 +17,7 @@ export const AddedComponent = observer(() => {
     return (isDragging
             ? <DragPreview>{element}</DragPreview>
             : <DraggableContainer ref={drag}>
-                <Label>{data.definition.name}</Label>
+                <Label>{data.model.name}</Label>
                 {element}
             </DraggableContainer>
     )

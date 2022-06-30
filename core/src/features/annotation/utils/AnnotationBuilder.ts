@@ -1,6 +1,6 @@
 import _ from "lodash";
 import {Annotation} from "./Annotation";
-import {Section} from "../../Builder/components/Building/components/PropertiesEditor/Section";
+import {Section} from "../../../Builder/components/Building/components/PropertiesEditor/Section";
 
 
 //TODO validation? or value by default

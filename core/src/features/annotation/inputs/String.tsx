@@ -22,4 +22,4 @@ const StringInput = (props: PropertyEditorProps<string | undefined>) => {
     );
 };
 
-export default StringInput;
+export {StringInput};

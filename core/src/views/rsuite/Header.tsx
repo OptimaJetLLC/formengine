@@ -1,12 +1,12 @@
-import {define} from "../../features/annotation/define";
+import {define} from "../../features/annotation/utils/define";
 import {string} from "../../features/annotation";
 
-export interface HeaderProps {
+interface HeaderProps {
     content: string
     subheader?: string
 }
 
-export const Header = (props : HeaderProps ) => {
+const Header = (props: HeaderProps) => {
 
     return (
         <div style={{textAlign: 'center'}}>
@@ -16,8 +16,9 @@ export const Header = (props : HeaderProps ) => {
     );
 }
 
-export const header = define("Header", Header, {
-    content: string.isRequired("Header"),
-    subheader: string,
-})
+export const header = define(Header)
+    .props({
+        content: string.isRequired("Header"),
+        subheader: string,
+    })
 

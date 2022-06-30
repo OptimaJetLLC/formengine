@@ -1,12 +1,12 @@
-import { define } from '../../features/annotation/define';
+import {define} from '../../features/annotation/utils/define';
 
-export interface ImageProps {
+interface ImageProps {
 
 }
 
-export const Image = (props: ImageProps) => {
+const Image = (props: ImageProps) => {
     // todo implement
     return (<>Image</>)
 }
 
-export const image = define('Image', Image, {}, []);
+export const image = define(Image);

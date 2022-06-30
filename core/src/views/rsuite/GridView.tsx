@@ -1,12 +1,13 @@
-import { define } from '../../features/annotation/define';
+import {define} from '../../features/annotation/utils/define';
 
-export interface GridViewProps {
+interface GridViewProps {
 
 }
 
-export const GridView = (props: GridViewProps) => {
+const GridView = (props: GridViewProps) => {
     // todo implement
     return (<>GridView</>)
 }
 
-export const gridView = define('Grid view', GridView, {}, []);
+export const gridView = define(GridView)
+    .named('Grid view')

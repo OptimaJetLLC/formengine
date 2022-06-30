@@ -1,12 +1,12 @@
-import { define } from '../../features/annotation/define';
+import {define} from '../../features/annotation/utils/define';
 
-export interface SearchProps {
+interface SearchProps {
 
 }
 
-export const Search = (props: SearchProps) => {
+const Search = (props: SearchProps) => {
     // todo implement
     return (<>Search</>)
 }
 
-export const search = define('Search', Search, {}, []);
+export const search = define(Search)

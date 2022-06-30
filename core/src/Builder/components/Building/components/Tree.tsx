@@ -48,7 +48,7 @@ const Tree = observer(() => {
             renderTreeNode={(node) =>
                 <TreeNode>
                     <div>{`${node.key}`}</div>
-                    <label>{` (${node.definition.name.toLowerCase()})`}</label>
+                    <label>{` (${node.model.name.toLowerCase()})`}</label>
                 </TreeNode>}
             labelKey="key"
             valueKey="key"

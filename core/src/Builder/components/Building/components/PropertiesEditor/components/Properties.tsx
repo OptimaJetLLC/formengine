@@ -25,16 +25,16 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
         </Container>
     )
 
-    const {data, definition, parent} = selected
+    const {data, model, parent} = selected
 
-    const properties = definition.annotations
+    const properties = model.properties
         .filter(annotation => annotation.section === activeTab)
         .map(annotation =>
             <WithValidation annotation={annotation} Component={annotation.component} key={annotation.key}/>
         )
 
     return (
-        <ComponentDataProvider value={{componentStore: data, definition, parent: parent?.data}}>
+        <ComponentDataProvider value={{componentStore: data, model, parent: parent?.data}}>
             <Container>
                 <ObservableFormik>
                     {properties}

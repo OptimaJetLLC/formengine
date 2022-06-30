@@ -1,18 +1,18 @@
 import {ReactNode} from "react";
-import {AnnotationBuilder} from "./AnnotationBuilder";
-import Key from "./inputs/Key";
-import String from "./inputs/String";
-import Boolean from "./inputs/Boolean";
+import {AnnotationBuilder} from "./utils/AnnotationBuilder";
+import {KeyInput} from "./inputs/Key";
+import {StringInput} from "./inputs/String";
+import {BooleanInput} from "./inputs/Boolean";
 import {EventEditor} from "../event";
-import {StyleEditor} from "../style/StyleEditor";
+import {StyleEditor} from "../style";
 import {ValidateEditor} from "../validation/components/ValidateEditor";
 import {Container} from "./inputs/Container";
 import {Section} from "../../Builder/components/Building/components/PropertiesEditor/Section";
 
 //TODO следует ли компоновать их и засунуть в один объект?
-export const key = new AnnotationBuilder<string>({component: Key, isSystem: true}).isRequired("")
-export const string = new AnnotationBuilder<string | undefined>({component: String})
-export const boolean = new AnnotationBuilder<boolean | undefined>({component: Boolean})
+export const key = new AnnotationBuilder<string>({component: KeyInput, isSystem: true}).isRequired("")
+export const string = new AnnotationBuilder<string | undefined>({component: StringInput})
+export const boolean = new AnnotationBuilder<boolean | undefined>({component: BooleanInput})
 export const style = new AnnotationBuilder<Record<string, string>[] | undefined>({
     component: StyleEditor,
     section: Section.Style

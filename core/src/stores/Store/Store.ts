@@ -29,7 +29,7 @@ export class Store {
 
     actions: ActionDefinition[] = [setProperty, validate]
 
-    screen: ComponentStore = new ComponentStore(screen.name, screen.name)
+    screen: ComponentStore = new ComponentStore(screen.name, screen.type)
 
     registeredFields: Record<string, () => void> = {}
 
@@ -73,7 +73,7 @@ export class Store {
     }
 
     clear() {
-        this.screen = new ComponentStore(screen.name, screen.name)
+        this.screen = new ComponentStore(screen.name, screen.type)
     }
 
     stringifyForm() {
@@ -140,7 +140,7 @@ export class Store {
 
     findAction(actionName: string, targetKey?: string) {
         const target = targetKey ? this.findComponent(targetKey) : undefined
-        const actionList = target ? this.view.get(target.type).actions : this.actions
+        const actionList = target ? this.view.getModel(target).actions : this.actions
         const action = actionList?.find((val) => val.name === actionName)
 
         if (!action)

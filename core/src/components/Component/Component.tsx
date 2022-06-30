@@ -21,7 +21,7 @@ interface ComponentProps {
 export const Component = observer(({Wrapper}: ComponentProps) => {
     const currentProps: Record<string, any> = {}
 
-    const {componentStore, definition: {view}} = useComponentData()
+    const {componentStore, model: {view}} = useComponentData()
     const defaultProps = useDefaultProps()
     const [eventHandlers, actionsMap] = useEvents();
     const [field, meta] = useComponentValidation()

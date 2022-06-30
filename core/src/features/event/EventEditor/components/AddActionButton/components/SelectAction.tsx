@@ -39,7 +39,7 @@ export const SelectAction = ({onSelect}: SelectActionProps) => {
                                         key={node.key}
                                         title={node.key}
                                         children={
-                                            node.definition.actions?.map((action) =>
+                                            node.model.actions?.map((action) =>
                                                 <Dropdown.Item
                                                     key={action.name}
                                                     eventKey={{target: node.data, action} as NewActionData}

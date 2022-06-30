@@ -1,13 +1,13 @@
 import {Form, Input} from "rsuite";
-import {define} from "../../features/annotation/define";
+import {define} from "../../features/annotation/utils/define";
 
-export interface TextAreaProps {
+interface TextAreaProps {
     label: string,
     rows: number,
     placeholder: string,
 }
 
-export const TextArea = (props :TextAreaProps) => {
+const TextArea = (props: TextAreaProps) => {
     return (
         <div>
             <Form.ControlLabel>{props.label}</Form.ControlLabel>
@@ -15,12 +15,12 @@ export const TextArea = (props :TextAreaProps) => {
         </div>
     )
 }
-
 const Textarea = (props: any) =>
     <Input rows={5} as="textarea" {...props}/>;
 
-export const textArea = define("TextArea", TextArea, {
-    "label": undefined,
-    "placeholder": undefined,
-    "rows": undefined,
-})
+export const textArea = define(TextArea)
+    .props({
+        "label": undefined,
+        "placeholder": undefined,
+        "rows": undefined,
+    })

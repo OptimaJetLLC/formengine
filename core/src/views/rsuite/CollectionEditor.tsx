@@ -1,12 +1,13 @@
-import { define } from '../../features/annotation/define';
+import {define} from '../../features/annotation/utils/define';
 
-export interface CollectionEditorProps {
+interface CollectionEditorProps {
 
 }
 
-export const CollectionEditor = (props: CollectionEditorProps) => {
+const CollectionEditor = (props: CollectionEditorProps) => {
     // todo implement
     return (<>CollectionEditor</>)
 }
 
-export const collectionEditor = define('Collection editor', CollectionEditor, {}, []);
+export const collectionEditor = define(CollectionEditor)
+    .named('Collection editor')

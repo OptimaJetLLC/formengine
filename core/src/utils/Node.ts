@@ -1,28 +1,19 @@
-import _ from "lodash";
 import {ComponentStore} from "../stores/ComponentStore";
-import {ComponentDefinition} from "../features/annotation/types";
 import {Store} from "../stores/Store";
+import {ComponentModel} from "../features/annotation/utils/ComponentModel";
 
 export class Node {
-    key: string
-    /** Don't exists only for virtual root in tree */
-    parent?: Node
-    children?: Node[]
-    data: ComponentStore
-    //TODO remove it?
-    definition: ComponentDefinition<any>
-
-    get isRoot() {
-        return _.isEmpty(this.key);
-    }
+    readonly key: string
+    readonly parent?: Node
+    readonly children?: Node[]
+    readonly data: ComponentStore
+    readonly model: ComponentModel<any>
 
     constructor(store: Store, data: ComponentStore, parent?: Node) {
         this.key = data.key;
-        this.parent = parent;
-
         this.data = data
-        this.definition = store.view.get(this.data.type)
-
+        this.parent = parent;
+        this.model = store.view.getModel(data)
         this.children = data.children?.map(child => new Node(store, child, this));
     }
 }

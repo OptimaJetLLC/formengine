@@ -1,12 +1,12 @@
-import { define } from '../../features/annotation/define';
+import {define} from '../../features/annotation/utils/define';
 
-export interface RepeaterProps {
+interface RepeaterProps {
 
 }
 
-export const Repeater = (props: RepeaterProps) => {
+const Repeater = (props: RepeaterProps) => {
     // todo implement
     return (<>Repeater</>)
 }
 
-export const repeater = define('Repeater', Repeater, {}, []);
+export const repeater = define(Repeater)

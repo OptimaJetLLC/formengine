@@ -1,12 +1,12 @@
-import { define } from '../../features/annotation/define';
+import {define} from '../../features/annotation/utils/define';
 
-export interface BreadcrumbProps {
+interface BreadcrumbProps {
 
 }
 
-export const Breadcrumb = (props: BreadcrumbProps) => {
+const Breadcrumb = (props: BreadcrumbProps) => {
     // todo implement
     return (<>Breadcrumb</>)
 }
 
-export const breadcrumb = define('Breadcrumb', Breadcrumb, {}, []);
+export const breadcrumb = define(Breadcrumb)

@@ -1,6 +1,6 @@
 import _ from "lodash/fp";
 import {ReactNode, useCallback, useEffect} from "react";
-import {define} from "../../features/annotation/define";
+import {define} from "../../features/annotation/utils/define";
 import {Nav} from "rsuite";
 import {boolean, node, string} from "../../features/annotation";
 import {useComponentData} from "../../utils/contexts/ComponenDataContext";
@@ -46,30 +46,36 @@ const Tab = (props: TabProps) => {
     );
 }
 
-export const tab = define("Tab", Tab, {
-    active: string,
-    //items: reactElements.expandable(navItem, navDropdown)
-    //onSelect: set("active")
+export const tab = define(Tab)
+    .props({
+        active: string,
+        //items: reactElements.expandable(navItem, navDropdown)
+        //onSelect: set("active")
 
-    children: node.with({bindTo: "active"}),
-})
+        children: node.with({bindTo: "active"}),
+    })
 
-export const nav = define("Nav", Nav, {
-    children: node,
-    activeKey: string,
-    appearance: string,
-})
+export const nav = define(Nav)
+    .props({
+        children: node,
+        activeKey: string,
+        appearance: string,
+    })
 
-export const navItem = define("NavItem", Nav.Item, {
-    active: boolean,
-    disabled: boolean,
-    eventKey: string,
-    children: string,
-    //onSelect:
-    //as
-})
+export const navItem = define(Nav.Item)
+    .named("NavItem")
+    .props({
+        active: boolean,
+        disabled: boolean,
+        eventKey: string,
+        children: string,
+        //onSelect:
+        //as
+    })
 
-export const navDropdown = define("NavDropdown", Nav.Dropdown, {
-    eventKey: string,
-    children: string,
-})
+export const navDropdown = define(Nav.Dropdown)
+    .named("NavDropdown")
+    .props({
+        eventKey: string,
+        children: string,
+    })

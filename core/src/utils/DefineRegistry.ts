@@ -1,5 +1,6 @@
-import {ComponentDefinition} from "../features/annotation/types";
 import {screen} from "../components/Screen";
+import {ComponentDefinition} from "../features/annotation/utils/ComponentDefinition";
+import {ComponentStore} from "../stores/ComponentStore";
 
 export class DefineRegistry {
     #map = new Map<string, ComponentDefinition<any>>()
@@ -10,16 +11,19 @@ export class DefineRegistry {
     }
 
     define(definition: ComponentDefinition<any>) {
-        this.#map.set(definition.name, definition)
+        this.#map.set(definition.type, definition)
     }
 
-    get (name: string): ComponentDefinition<any>{
-        const result = this.#map.get(name)
-
+    get(type: string): ComponentDefinition<any> {
+        const result = this.#map.get(type)
         if (result) return result
-
-        throw new Error(`The ${name} is not found!`)
+        throw new Error(`The ${type} is not found!`)
     }
+
+    getModel(store: ComponentStore) {
+        return this.get(store.type).init(store)
+    }
+
 
     all() {
         return [...this.#map.values()]

@@ -1,4 +1,3 @@
-import {ComponentDefinition} from "../../../../../features/annotation/types";
 import styled from "@emotion/styled";
 import {SearchForm} from "./components/SearchForm";
 import React, {useState} from "react";
@@ -11,6 +10,7 @@ import {ComponentStore} from "../../../../../stores/ComponentStore";
 import {getKey} from "../../../../../utils/getKey";
 import {observer} from "mobx-react";
 import {css} from "@emotion/css";
+import {ComponentDefinition} from "../../../../../features/annotation/utils/ComponentDefinition";
 
 interface ComponentBarProps {
 
@@ -63,21 +63,23 @@ interface AddedComponentsProps {
 }
 
 const AddedComponents = ({definitions}: AddedComponentsProps) => {
-
+    const {view} = useStore()
     return (
         <Controls>
-            {definitions.map(definition => (
-                <ComponentDataProvider
-                    key={definition.name}
-                    value={{
-                        componentStore: new ComponentStore(definition.name + " " + getKey(), definition.name),
-                        definition
-                    }}
-
-                >
-                    <AddedComponent/>
-                </ComponentDataProvider>
-            ))}
+            {definitions.map(definition => {
+                const componentStore = new ComponentStore(definition.type + " " + getKey(), definition.type)
+                return (
+                    <ComponentDataProvider
+                        key={definition.name}
+                        value={{
+                            componentStore,
+                            model: view.getModel(componentStore)
+                        }}
+                    >
+                        <AddedComponent/>
+                    </ComponentDataProvider>
+                );
+            })}
         </Controls>
     )
 }

@@ -1,12 +1,13 @@
-import { define } from '../../features/annotation/define';
+import {define} from '../../features/annotation/utils/define';
 
-export interface RichTextEditorProps {
+interface RichTextEditorProps {
 
 }
 
-export const RichTextEditor = (props: RichTextEditorProps) => {
+const RichTextEditor = (props: RichTextEditorProps) => {
     // todo implement
     return (<>RichTextEditor</>)
 }
 
-export const richTextEditor = define('Rich text editor', RichTextEditor, {}, []);
+export const richTextEditor = define(RichTextEditor)
+    .named('Rich text editor')

@@ -1,12 +1,13 @@
-import { define } from '../../features/annotation/define';
+import {define} from '../../features/annotation/utils/define';
 
-export interface CustomBlockProps {
+interface CustomBlockProps {
 
 }
 
-export const CustomBlock = (props: CustomBlockProps) => {
+const CustomBlock = (props: CustomBlockProps) => {
     // todo implement
     return (<>CustomBlock</>)
 }
 
-export const customBlock = define('Custom block', CustomBlock, {}, []);
+export const customBlock = define(CustomBlock)
+    .named('Custom block')

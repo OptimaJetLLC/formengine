@@ -17,7 +17,10 @@ export const Components = observer(({parent, components, Wrapper}: ComponentsPro
 
     return <>
         {components.map(componentStore => (
-            <ComponentDataProvider key={componentStore.key} value={{componentStore, parent, definition: store.view.get(componentStore.type)}}>
+            <ComponentDataProvider
+                key={componentStore.key}
+                value={{componentStore, parent, model: store.view.getModel(componentStore)}}
+            >
                 <Component Wrapper={Wrapper}/>
             </ComponentDataProvider>
         ))}

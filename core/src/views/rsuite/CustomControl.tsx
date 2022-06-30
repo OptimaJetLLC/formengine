@@ -1,12 +1,13 @@
-import { define } from '../../features/annotation/define';
+import {define} from '../../features/annotation/utils/define';
 
-export interface CustomControlProps {
+interface CustomControlProps {
 
 }
 
-export const CustomControl = (props: CustomControlProps) => {
+const CustomControl = (props: CustomControlProps) => {
     // todo implement
     return (<>CustomControl</>)
 }
 
-export const customControl = define('Custom control', CustomControl, {}, []);
+export const customControl = define(CustomControl)
+    .named('Custom control')

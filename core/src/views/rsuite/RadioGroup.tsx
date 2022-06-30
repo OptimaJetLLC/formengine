@@ -1,12 +1,12 @@
-import { define } from '../../features/annotation/define';
+import {define} from '../../features/annotation/utils/define';
 
-export interface RadioGroupProps {
+interface RadioGroupProps {
 
 }
 
-export const RadioGroup = (props: RadioGroupProps) => {
+const RadioGroup = (props: RadioGroupProps) => {
     // todo implement
     return (<>RadioGroup</>)
 }
 
-export const radioGroup = define('Radio group', RadioGroup, {}, []);
+export const radioGroup = define(RadioGroup)

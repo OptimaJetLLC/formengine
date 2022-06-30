@@ -1,5 +1,6 @@
 import {ComponentStore} from "../../stores/ComponentStore";
 import {ActionEvent} from "./utils/ActionEvent";
+import {defineAction} from "./defineAction";
 
 export type EventName = string
 export type ArgumentName = string
@@ -66,3 +67,5 @@ export type ActionEventHandler = (e: ActionEvent) => void
 export type EventListener = ActionEventHandler & {
     target?: string
 }
+
+export type DefineActionHelper = typeof defineAction
