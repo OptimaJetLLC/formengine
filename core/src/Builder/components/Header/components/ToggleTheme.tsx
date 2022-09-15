@@ -1,26 +1,26 @@
-import {FaIcon} from '../../../../features/ui/Icons';
-import React, {useContext, useEffect, useState} from 'react';
-import {StylesContext} from "../../../../styles";
-import * as faMoon from "@fortawesome/free-solid-svg-icons/faMoon";
-import * as faSun from "@fortawesome/free-solid-svg-icons/faSun";
-import styled from "@emotion/styled";
-import {cx} from "@emotion/css";
+import {cx} from '@emotion/css'
+import styled from '@emotion/styled'
+import * as faMoon from '@fortawesome/free-solid-svg-icons/faMoon'
+import * as faSun from '@fortawesome/free-solid-svg-icons/faSun'
+import React, {useContext, useEffect, useState} from 'react'
+import {FaIcon} from '../../../../features/ui/Icons'
+import {StylesContext} from '../../../../styles'
 
 export const ToggleTheme = () => {
-    const {theme, setTheme} = useContext(StylesContext);
-    const isDark = theme === "dark";
-    const [icon, setIcon] = useState(isDark ? faMoon : faSun);
-    const iconProps: any = {
-        icon,
-        color: isDark ? "var(--rs-yellow-300)" : "white",
-        size: 1.4,
-        onClick: () => setTheme(isDark ? "light" : "dark"),
-        className: cx({isDark})
-    }
-    useEffect(() => {
-        setTimeout(() => setIcon(isDark ? faMoon : faSun), 200)
-    }, [isDark]);
-    return <IconButton {...iconProps}/>
+  const {theme, setTheme} = useContext(StylesContext)
+  const isDark = theme === 'dark'
+  const [icon, setIcon] = useState(isDark ? faMoon : faSun)
+  const iconProps: any = {
+    icon,
+    color: isDark ? 'var(--rs-yellow-300)' : 'white',
+    size: 1.4,
+    onClick: () => setTheme(isDark ? 'light' : 'dark'),
+    className: cx({isDark})
+  }
+  useEffect(() => {
+    setTimeout(() => setIcon(isDark ? faMoon : faSun), 200)
+  }, [isDark])
+  return <IconButton {...iconProps}/>
 }
 
 const IconButton = styled(FaIcon)`

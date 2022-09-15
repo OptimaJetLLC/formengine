@@ -1,28 +1,28 @@
-import {DropZone} from "./DropZone";
-import styled from "@emotion/styled";
-import {useComponentData} from "../../../../../utils/contexts/ComponenDataContext";
-import {useDnd} from "../hooks/useDnd";
-import {cx} from "@emotion/css";
-import React, {ReactElement} from "react";
-import {DragPreview} from "./DragPreview";
+import {cx} from '@emotion/css'
+import styled from '@emotion/styled'
+import React, {ReactElement} from 'react'
+import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
+import {useDnd} from '../hooks/useDnd'
+import {DragPreview} from './DragPreview'
+import {DropZone} from './DropZone'
 
 interface DraggableProps extends React.ComponentProps<any> {
-    isInner?: boolean
-    viewForDragPreview?: ReactElement
+  isInner?: boolean
+  viewForDragPreview?: ReactElement
 }
 
 export const Draggable = ({children, viewForDragPreview, isInner, className, ...props}: DraggableProps) => {
-    const {isContainer, isRoot} = useComponentData().componentStore;
-    const [{isActive, isDragging}, dnd] = useDnd();
+  const {isContainer, isRoot} = useComponentData().componentStore
+  const [{isActive, isDragging}, dnd] = useDnd()
 
-    return isDragging
-        ? <DragPreview>{viewForDragPreview}</DragPreview>
-        : <Container ref={dnd} {...props}
-                     className={cx(className, {isActive, isContainer, isRoot, isInner})}>
-            {!isRoot && !isInner && <DropZone/>}
-            {children}
-            <DropZone isAfter={!isInner && true} isInner={isInner}/>
-        </Container>
+  return isDragging
+    ? <DragPreview>{viewForDragPreview}</DragPreview>
+    : <Container ref={dnd} {...props}
+                 className={cx(className, {isActive, isContainer, isRoot, isInner})}>
+      {!isRoot && !isInner && <DropZone/>}
+      {children}
+      <DropZone isAfter={!isInner && true} isInner={isInner}/>
+    </Container>
 }
 
 const Container = styled.div`

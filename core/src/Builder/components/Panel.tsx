@@ -1,32 +1,32 @@
-import {observer} from 'mobx-react';
-import React, {PropsWithChildren} from 'react';
-import styled from '@emotion/styled';
-import {ArrowLeftLine, ArrowRightLine} from "@rsuite/icons";
-import {cx} from "@emotion/css";
-import useLocalStorageState from "use-local-storage-state";
+import {cx} from '@emotion/css'
+import styled from '@emotion/styled'
+import {ArrowLeftLine, ArrowRightLine} from '@rsuite/icons'
+import {observer} from 'mobx-react'
+import React, {PropsWithChildren} from 'react'
+import useLocalStorageState from 'use-local-storage-state'
 
 export const enum PLACEMENT {RIGHT, LEFT}
 
 export interface PanelProps extends PropsWithChildren<any> {
-    rightPlacement?: boolean
-    name: string
+  rightPlacement?: boolean
+  name: string
 }
 
 export const Panel = observer(({children, name, rightPlacement}: PanelProps) => {
-    const [collapsed, setCollapsed] = useLocalStorageState(name, {
-        defaultValue: false
-    });
+  const [collapsed, setCollapsed] = useLocalStorageState(name, {
+    defaultValue: false
+  })
 
-    const collapsedIcon = !rightPlacement ? ArrowRightLine : ArrowLeftLine;
-    const openedIcon = !rightPlacement ? ArrowLeftLine : ArrowRightLine;
-    const Icon = collapsed ? collapsedIcon : openedIcon;
+  const collapsedIcon = !rightPlacement ? ArrowRightLine : ArrowLeftLine
+  const openedIcon = !rightPlacement ? ArrowLeftLine : ArrowRightLine
+  const Icon = collapsed ? collapsedIcon : openedIcon
 
-    return <PanelContainer className={cx({collapsed, rightPlacement})}>
-        <ContentContainer>{children}</ContentContainer>
-        <HideButton className={cx({rightPlacement})} onClick={() => setCollapsed(!collapsed)}>
-            <Icon/>
-        </HideButton>
-    </PanelContainer>
+  return <PanelContainer className={cx({collapsed, rightPlacement})}>
+    <ContentContainer>{children}</ContentContainer>
+    <HideButton className={cx({rightPlacement})} onClick={() => setCollapsed(!collapsed)}>
+      <Icon/>
+    </HideButton>
+  </PanelContainer>
 })
 
 

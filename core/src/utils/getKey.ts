@@ -1,3 +1,3 @@
 export const getKey = () => {
-    return (Math.random() * 1e18).toString(36).slice(0, 5).toUpperCase() + '';
+  return (Math.random() * 1e18).toString(36).slice(0, 5).toUpperCase() + ''
 }

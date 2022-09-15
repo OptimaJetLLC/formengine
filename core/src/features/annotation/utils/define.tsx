@@ -1,3 +1,3 @@
-import {ComponentDefinition} from "./ComponentDefinition";
+import {ComponentDefinition} from './ComponentDefinition'
 
 export const define = ComponentDefinition.define

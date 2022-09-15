@@ -1,4 +1,4 @@
-import {css} from "@emotion/css";
+import {css} from '@emotion/css'
 
 export const hoveredClass = css`
       outline: 2px dashed #3498ff !important;

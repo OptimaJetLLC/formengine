@@ -1,26 +1,26 @@
-import {ReactNode} from "react";
-import {AnnotationBuilder} from "./utils/AnnotationBuilder";
-import {KeyInput} from "./inputs/Key";
-import {StringInput} from "./inputs/String";
-import {BooleanInput} from "./inputs/Boolean";
-import {EventEditor} from "../event";
-import {StyleEditor} from "../style";
-import {ValidateEditor} from "../validation/components/ValidateEditor";
-import {Container} from "./inputs/Container";
-import {Section} from "../../Builder/components/Building/components/PropertiesEditor/Section";
+import {ReactNode} from 'react'
+import {Section} from '../../Builder/components/Building/components/PropertiesEditor/Section'
+import {EventEditor} from '../event'
+import {StyleEditor} from '../style'
+import {ValidateEditor} from '../validation/components/ValidateEditor'
+import {BooleanInput} from './inputs/Boolean'
+import {Container} from './inputs/Container'
+import {KeyInput} from './inputs/Key'
+import {StringInput} from './inputs/String'
+import {AnnotationBuilder} from './utils/AnnotationBuilder'
 
 //TODO следует ли компоновать их и засунуть в один объект?
-export const key = new AnnotationBuilder<string>({component: KeyInput, isSystem: true}).isRequired("")
+export const key = new AnnotationBuilder<string>({component: KeyInput, isSystem: true}).isRequired('')
 export const string = new AnnotationBuilder<string | undefined>({component: StringInput})
 export const boolean = new AnnotationBuilder<boolean | undefined>({component: BooleanInput})
 export const style = new AnnotationBuilder<Record<string, string>[] | undefined>({
-    component: StyleEditor,
-    section: Section.Style
+  component: StyleEditor,
+  section: Section.Style
 })
 export const event = new AnnotationBuilder<Function | undefined>({
-    component: EventEditor,
-    section: Section.Actions,
-    isFunction: true
+  component: EventEditor,
+  section: Section.Actions,
+  isFunction: true
 })
 // set
 export const validation = new AnnotationBuilder<any>({component: ValidateEditor, section: Section.Validation})

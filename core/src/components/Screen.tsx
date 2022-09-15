@@ -1,22 +1,22 @@
-import {define} from "../features/annotation/utils/define";
-import {ReactNode} from "react";
-import {node} from "../features/annotation";
+import {ReactNode} from 'react'
+import {node} from '../features/annotation'
+import {define} from '../features/annotation/utils/define'
 
 interface PageProps {
-    children: ReactNode
+  children: ReactNode
 }
 
 const Screen = (props: PageProps) => {
 
-    return (
-        <div>
-            {props.children}
-        </div>
-    );
+  return (
+    <div>
+      {props.children}
+    </div>
+  )
 }
 
 export const screen = define(Screen)
-    .props({
-        children: node
-    })
+  .props({
+    children: node
+  })
 

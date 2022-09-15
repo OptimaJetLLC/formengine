@@ -1,26 +1,26 @@
-import {observer} from "mobx-react";
-import {useDefaultProps} from "../../../components/Component/hooks/useDefaultProps";
-import {ItemType} from "../consts";
-import styled from "@emotion/styled";
-import {useComponentData} from "../../../utils/contexts/ComponenDataContext";
-import React from "react";
-import {DragPreview} from "./Editable/components/DragPreview";
-import {useDragWithPreview} from "./Editable/hooks/useDragWithPreview";
+import styled from '@emotion/styled'
+import {observer} from 'mobx-react'
+import React from 'react'
+import {useDefaultProps} from '../../../components/Component/hooks/useDefaultProps'
+import {useComponentData} from '../../../utils/contexts/ComponenDataContext'
+import {ItemType} from '../consts'
+import {DragPreview} from './Editable/components/DragPreview'
+import {useDragWithPreview} from './Editable/hooks/useDragWithPreview'
 
 export const AddedComponent = observer(() => {
-    const data = useComponentData();
-    const View = data.model.view;
-    const [{isDragging}, drag] = useDragWithPreview(ItemType.AddedComponent);
+  const data = useComponentData()
+  const View = data.model.view
+  const [{isDragging}, drag] = useDragWithPreview(ItemType.AddedComponent)
 
-    const element = <Container><View {...useDefaultProps()}/></Container>
+  const element = <Container><View {...useDefaultProps()}/></Container>
 
-    return (isDragging
-            ? <DragPreview>{element}</DragPreview>
-            : <DraggableContainer ref={drag}>
-                <Label>{data.model.name}</Label>
-                {element}
-            </DraggableContainer>
-    )
+  return (isDragging
+      ? <DragPreview>{element}</DragPreview>
+      : <DraggableContainer ref={drag}>
+        <Label>{data.model.name}</Label>
+        {element}
+      </DraggableContainer>
+  )
 })
 
 const Label = styled.div`

@@ -1,1 +1,1 @@
-export * from "./PropertiesEditor"
+export * from './PropertiesEditor'

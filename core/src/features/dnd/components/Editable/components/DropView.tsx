@@ -1,23 +1,23 @@
-import React from "react";
-import {useComponentData} from "../../../../../utils/contexts/ComponenDataContext";
-import {cx} from "@emotion/css";
-import styled from "@emotion/styled";
+import {cx} from '@emotion/css'
+import styled from '@emotion/styled'
+import React from 'react'
+import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
 
 interface DropViewProps extends React.ComponentProps<any> {
-    isAfter?: boolean
-    isActive?: boolean
-    isOver?: boolean
-    isInner?: boolean
+  isAfter?: boolean
+  isActive?: boolean
+  isOver?: boolean
+  isInner?: boolean
 }
 
 export const DropView = (props: DropViewProps) => {
-    const {isRoot, isContainer, key} = useComponentData().componentStore;
-    const dropClassNames = {isContainer, isRoot, ...props};
-    const label = `${(isRoot || props.isInner ? "" : props.isAfter ? "AFTER" : "BEFORE")} ${key}`;
+  const {isRoot, isContainer, key} = useComponentData().componentStore
+  const dropClassNames = {isContainer, isRoot, ...props}
+  const label = `${(isRoot || props.isInner ? '' : props.isAfter ? 'AFTER' : 'BEFORE')} ${key}`
 
-    return <Container className={cx({...dropClassNames})}>
-        <Label className={cx(dropClassNames)}>{label}</Label>
-    </Container>
+  return <Container className={cx({...dropClassNames})}>
+    <Label className={cx(dropClassNames)}>{label}</Label>
+  </Container>
 }
 
 const Container = styled.div`

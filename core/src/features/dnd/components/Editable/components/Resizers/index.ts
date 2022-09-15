@@ -1,1 +1,1 @@
-export * from "./Resizers"
+export * from './Resizers'

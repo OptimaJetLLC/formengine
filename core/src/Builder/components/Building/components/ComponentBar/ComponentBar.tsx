@@ -1,87 +1,88 @@
-import styled from "@emotion/styled";
-import {SearchForm} from "./components/SearchForm";
-import React, {useState} from "react";
-import {Trans, useTranslation} from "react-i18next";
-import {ToolbarItem} from "./Items";
-import {useStore} from "../../../../../utils/contexts/StoreContext";
-import {AddedComponent} from "../../../../../features/dnd";
-import {ComponentDataProvider} from "../../../../../utils/contexts/ComponenDataContext";
-import {ComponentStore} from "../../../../../stores/ComponentStore";
-import {getKey} from "../../../../../utils/getKey";
-import {observer} from "mobx-react";
-import {css} from "@emotion/css";
-import {ComponentDefinition} from "../../../../../features/annotation/utils/ComponentDefinition";
+import {css} from '@emotion/css'
+import styled from '@emotion/styled'
+import {observer} from 'mobx-react'
+import React, {useState} from 'react'
+import {Trans, useTranslation} from 'react-i18next'
+import {ComponentDefinition} from '../../../../../features/annotation/utils/ComponentDefinition'
+import {AddedComponent} from '../../../../../features/dnd'
+import {ComponentStore} from '../../../../../stores/ComponentStore'
+import {ComponentDataProvider} from '../../../../../utils/contexts/ComponenDataContext'
+import {useStore} from '../../../../../utils/contexts/StoreContext'
+import {getKey} from '../../../../../utils/getKey'
+import {SearchForm} from './components/SearchForm'
+import {ToolbarItem} from './Items'
 
 interface ComponentBarProps {
 
 }
 
 export const ComponentBar = (props: ComponentBarProps) => {
-    const store = useStore()
-    const {t} = useTranslation();
-    const [filtered, setFiltered] = useState<ToolbarItem>()
+  const store = useStore()
+  const {t} = useTranslation()
+  const [filtered, setFiltered] = useState<ToolbarItem>()
 
 
-    const handleSearchChange = (value: string) => {
-        const isMatch = (el: ComponentDefinition<any>) => el.name.toLowerCase().includes(value.toLowerCase());
+  const handleSearchChange = (value: string) => {
+    const isMatch = (el: ComponentDefinition<any>) => el.name.toLowerCase().includes(value.toLowerCase())
 
-        setFiltered({
-            title: value ? "" : t("toolbar.baseControls"),
-            controls: store.view.all().filter(isMatch)
-        })
-    }
+    setFiltered({
+      title: value ? '' : t('toolbar.baseControls'),
+      controls: store.view.all().filter(isMatch)
+    })
+  }
 
 
-    return <div className={componentBar}>
-        <Header>
-            <SearchForm style={{maxWidth: 300}} onChange={handleSearchChange}/>
-        </Header>
+  return <div className={componentBar}>
+    <Header>
+      <SearchForm style={{maxWidth: 300}} onChange={handleSearchChange}/>
+    </Header>
 
-        <FilteredComponents filtered={filtered}/>
-    </div>
+    <FilteredComponents filtered={filtered}/>
+  </div>
 }
 
 const FilteredComponents = observer(({filtered}: { filtered?: ToolbarItem }) => {
 
-    if (!filtered?.controls.length)
-        return (
-            <Subheader>
-                <Trans i18nKey="toolbar.notFound">Not found</Trans>
-            </Subheader>
-        )
-
+  if (!filtered?.controls.length) {
     return (
-        <ControlsGroup>
-            <Subheader children={filtered.title}/>
-            <AddedComponents definitions={filtered.controls}/>
-        </ControlsGroup>
+      <Subheader>
+        <Trans i18nKey="toolbar.notFound">Not found</Trans>
+      </Subheader>
     )
+  }
+
+  return (
+    <ControlsGroup>
+      <Subheader children={filtered.title}/>
+      <AddedComponents definitions={filtered.controls}/>
+    </ControlsGroup>
+  )
 })
 
 interface AddedComponentsProps {
-    definitions: ComponentDefinition<any>[]
+  definitions: ComponentDefinition<any>[]
 }
 
 const AddedComponents = ({definitions}: AddedComponentsProps) => {
-    const {view} = useStore()
-    return (
-        <Controls>
-            {definitions.map(definition => {
-                const componentStore = new ComponentStore(definition.type + " " + getKey(), definition.type)
-                return (
-                    <ComponentDataProvider
-                        key={definition.name}
-                        value={{
-                            componentStore,
-                            model: view.getModel(componentStore)
-                        }}
-                    >
-                        <AddedComponent/>
-                    </ComponentDataProvider>
-                );
-            })}
-        </Controls>
-    )
+  const {view} = useStore()
+  return (
+    <Controls>
+      {definitions.map(definition => {
+        const componentStore = new ComponentStore(definition.type + ' ' + getKey(), definition.type)
+        return (
+          <ComponentDataProvider
+            key={definition.name}
+            value={{
+              componentStore,
+              model: view.getModel(componentStore)
+            }}
+          >
+            <AddedComponent/>
+          </ComponentDataProvider>
+        )
+      })}
+    </Controls>
+  )
 }
 
 const componentBar = css`

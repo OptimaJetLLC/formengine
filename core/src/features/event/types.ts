@@ -1,33 +1,33 @@
-import {ComponentStore} from "../../stores/ComponentStore";
-import {ActionEvent} from "./utils/ActionEvent";
-import {defineAction} from "./defineAction";
+import {ComponentStore} from '../../stores/ComponentStore'
+import {defineAction} from './defineAction'
+import {ActionEvent} from './utils/ActionEvent'
 
 export type EventName = string
 export type ArgumentName = string
 
 export type WeakActionData = {
-    targetKey?: string
-    actionName: string
-    weakArgs?: WeakArgs
-    modifiers?: Modifiers
+  targetKey?: string
+  actionName: string
+  weakArgs?: WeakArgs
+  modifiers?: Modifiers
 }
 
 export type NewActionData = Pick<ActionData, 'action' | 'target'>
 export type ActionData = {
-    target?: ComponentStore
-    action: ActionDefinition
-    weakArgs?: WeakArgs
-    modifiers?: Modifiers
+  target?: ComponentStore
+  action: ActionDefinition
+  weakArgs?: WeakArgs
+  modifiers?: Modifiers
 }
 
 export type ActionDefinition = {
-    name: string,
-    func: Func,
-    args?: Arg[]
-    description?: string
+  name: string,
+  func: Func,
+  args?: Arg[]
+  description?: string
 }
 
-export type ArgumentType = "string" | "number" | "boolean"
+export type ArgumentType = 'string' | 'number' | 'boolean'
 
 export type Arg = ArgumentName | [ArgumentName, ArgumentType]
 
@@ -43,16 +43,16 @@ export type ArgumentValue = string | number | boolean
 export type WeakArgs = Record<ArgumentName, ArgumentValue>
 
 export type EventTuple = [
-    handlers: Record<EventName, Function>,
-    actionsMap: Record<EventName, ((e: ActionEvent) => void)[]>,
+  handlers: Record<EventName, Function>,
+  actionsMap: Record<EventName, ((e: ActionEvent) => void)[]>,
 ]
 
 export interface ListenerOptions {
-    readonly target?: string
-    readonly eventName?: string
+  readonly target?: string
+  readonly eventName?: string
 }
 
-export type NotifyTarget = Pick<ListenerOptions, "target" | "eventName">
+export type NotifyTarget = Pick<ListenerOptions, 'target' | 'eventName'>
 
 export type ActionHandler<T> = (params: { [k in keyof T]: any }, e: ActionEvent) => void
 
@@ -65,7 +65,7 @@ type TypedKey<T> = [Key<T>, ArgumentType]
 export type ActionEventHandler = (e: ActionEvent) => void
 
 export type EventListener = ActionEventHandler & {
-    target?: string
+  target?: string
 }
 
 export type DefineActionHelper = typeof defineAction

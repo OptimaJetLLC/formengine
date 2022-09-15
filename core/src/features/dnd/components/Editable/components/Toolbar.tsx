@@ -1,28 +1,28 @@
-import {useStore} from "../../../../../utils/contexts/StoreContext";
-import React, {useCallback} from "react";
-import {observer} from "mobx-react";
-import styled from "@emotion/styled";
-import {FaIcon} from "../../../../ui/Icons";
-import * as faClone from "@fortawesome/free-regular-svg-icons/faClone";
-import {IconDefinition} from "@fortawesome/fontawesome-common-types";
-import * as faTrash from "@fortawesome/free-regular-svg-icons/faTrashAlt";
-import {useComponentData} from "../../../../../utils/contexts/ComponenDataContext";
+import styled from '@emotion/styled'
+import {IconDefinition} from '@fortawesome/fontawesome-common-types'
+import * as faClone from '@fortawesome/free-regular-svg-icons/faClone'
+import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt'
+import {observer} from 'mobx-react'
+import React, {useCallback} from 'react'
+import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
+import {useStore} from '../../../../../utils/contexts/StoreContext'
+import {FaIcon} from '../../../../ui/Icons'
 
 export const Toolbar = observer(() => {
-    const store = useStore()
-    const data = useComponentData()
+  const store = useStore()
+  const data = useComponentData()
 
-    const onClone = useCallback(() => store.clone(data), [])
-    const onRemove = useCallback(() => store.remove(data), [])
+  const onClone = useCallback(() => store.clone(data), [])
+  const onRemove = useCallback(() => store.remove(data), [])
 
-    return <ToolbarContainer>
-        <Title>
-            {data.componentStore.key}
-            <label>{` (${data.componentStore.type})`}</label>
-        </Title>
-        <FaIcon onClick={onClone} icon={faClone as unknown as IconDefinition}/>
-        <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition}/>
-    </ToolbarContainer>
+  return <ToolbarContainer>
+    <Title>
+      {data.componentStore.key}
+      <label>{` (${data.componentStore.type})`}</label>
+    </Title>
+    <FaIcon onClick={onClone} icon={faClone as unknown as IconDefinition}/>
+    <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition}/>
+  </ToolbarContainer>
 })
 
 const ToolbarContainer = styled.div`

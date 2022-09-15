@@ -1,20 +1,20 @@
-import styled from "@emotion/styled";
-import {FieldMetaProps} from "formik";
+import styled from '@emotion/styled'
+import {FieldMetaProps} from 'formik'
 
 
-interface ErrorMessageProps extends FieldMetaProps<any>{
-    className?: string
+interface ErrorMessageProps extends FieldMetaProps<any> {
+  className?: string
 }
 
 const element = (props: ErrorMessageProps) => {
 
-    //if (!props.touched) return null
-    if (!props.error) return null
+  //if (!props.touched) return null
+  if (!props.error) return null
 
 
-    return <div className={props.className}>
-        {props.error}
-    </div>
+  return <div className={props.className}>
+    {props.error}
+  </div>
 }
 
 const ErrorMessage = styled(element)`
@@ -29,6 +29,6 @@ const ErrorMessage = styled(element)`
   @media (prefers-color-scheme: dark) {
     color: var(--red-300);
   }
-`;
+`
 
 export {ErrorMessage}

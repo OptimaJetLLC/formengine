@@ -1,25 +1,25 @@
-import styled from "@emotion/styled";
-import autosize from 'autosize';
+import styled from '@emotion/styled'
+import autosize from 'autosize'
+import {Component} from 'react'
+import ReactDOM from 'react-dom'
 //https://styled-system.com/#expressive-consistent-ui-components
 //https://styled-system.com/table
 //Позволяет прописывать стили в виде коротких пропсов
-import {color, layout, space} from 'styled-system';
-import {Component} from "react";
-import ReactDOM from "react-dom";
+import {color, layout, space} from 'styled-system'
 
 //TODO remove styled-system library
 
 const Box = styled('div')(
-    layout,
-    space,
-    color
-);
+  layout,
+  space,
+  color
+)
 
 const Rows = styled(Box)<{ margin?: number, mx?: number | string }>`
   display: flex;
   flex-direction: column;
 
-  ${(props: any) => (props.my !== undefined) ? "" : "margin: 10px 0;"}
+  ${(props: any) => (props.my !== undefined) ? '' : 'margin: 10px 0;'}
   & > * {
     margin: ${(props: any) => (props.margin ?? '5') + 'px'} 0;
   }
@@ -75,14 +75,14 @@ const Centered = styled(Box)`
 `
 
 class AutoSize extends Component {
-    componentDidMount() {
-        const domNode = ReactDOM.findDOMNode(this);
-        autosize(domNode as Element);
-    }
+  componentDidMount() {
+    const domNode = ReactDOM.findDOMNode(this)
+    autosize(domNode as Element)
+  }
 
-    render() {
-        return this.props.children;
-    }
+  render() {
+    return this.props.children
+  }
 }
 
-export {Box, Rows, Columns, LabeledInput, AutoSize, Centered};
+export {Box, Rows, Columns, LabeledInput, AutoSize, Centered}

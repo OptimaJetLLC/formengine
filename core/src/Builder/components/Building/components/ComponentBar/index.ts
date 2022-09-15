@@ -1,1 +1,1 @@
-export * from "./ComponentBar";
+export * from './ComponentBar'

@@ -1,7 +1,7 @@
 export class FormStore {
-    //data
-    //registeredFields
+  //data
+  //registeredFields
 
-    constructor() {
-    }
+  constructor() {
+  }
 }

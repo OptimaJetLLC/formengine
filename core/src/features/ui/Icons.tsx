@@ -1,31 +1,31 @@
-import {Icon} from '@rsuite/icons';
-import React from "react";
-import {IconDefinition} from "@fortawesome/fontawesome-common-types";
+import {IconDefinition} from '@fortawesome/fontawesome-common-types'
+import {Icon} from '@rsuite/icons'
+import React from 'react'
 
 const FaSvgIcon = ({faIcon, size, ...rest}: { faIcon: any, size?: number }) => {
-    const {width, height, svgPathData} = faIcon;
-    return (
-        <svg {...rest} viewBox={`0 0 ${width} ${height}`} width={`${size ?? 1}em`} height={`${size ?? 1}em`}
-             fill="currentColor">
-            <path d={svgPathData}/>
-        </svg>
-    );
-};
+  const {width, height, svgPathData} = faIcon
+  return (
+    <svg {...rest} viewBox={`0 0 ${width} ${height}`} width={`${size ?? 1}em`} height={`${size ?? 1}em`}
+         fill="currentColor">
+      <path d={svgPathData}/>
+    </svg>
+  )
+}
 
 
 interface FaIconProps {
-    icon: IconDefinition,
-    size?: number,
-    color?: string,
-    props?: any,
-    viewBox?: string,
-    width?: string,
-    height?: string,
-    onClick?: any,
+  icon: IconDefinition,
+  size?: number,
+  color?: string,
+  props?: any,
+  viewBox?: string,
+  width?: string,
+  height?: string,
+  onClick?: any,
 }
 
 export const FaIcon = ({icon, size, ...props}: FaIconProps) => (
-    <Icon as={FaSvgIcon} {...{faIcon: icon, size, ...props}}/>
+  <Icon as={FaSvgIcon} {...{faIcon: icon, size, ...props}}/>
 )
 
-export default FaSvgIcon;
+export default FaSvgIcon

@@ -1,38 +1,38 @@
-import * as Yup from "yup";
-import _ from "lodash";
-import {ParsableValidateSchema, StringRuleKey, ValueType} from "./types";
-import {StringRules} from "./rules/StringRules";
+import _ from 'lodash'
+import * as Yup from 'yup'
+import {StringRules} from './rules/StringRules'
+import {ParsableValidateSchema, StringRuleKey, ValueType} from './types'
 
 //TODO
 export function toValidateScheme(object?: ParsableValidateSchema) {
-    if (!object) return
+  if (!object) return
 
-    switch (object.type) {
-        case ValueType.string:
-            return buildStringScheme(object)
-        case ValueType.number:
-            //return buildNumberScheme(object)
-        case ValueType.boolean:
-            //return buildBooleanScheme(object)
-    }
+  switch (object.type) {
+    case ValueType.string:
+      return buildStringScheme(object)
+    case ValueType.number:
+    //return buildNumberScheme(object)
+    case ValueType.boolean:
+    //return buildBooleanScheme(object)
+  }
 }
 
 function buildStringScheme(object: ParsableValidateSchema) {
-    let scheme = Yup.string()
+  let scheme = Yup.string()
 
-    _.forIn(object.rules, (value, key) => {
-        const descRule = StringRules[key as StringRuleKey]
+  _.forIn(object.rules, (value, key) => {
+    const descRule = StringRules[key as StringRuleKey]
 
-        if (!descRule) return
+    if (!descRule) return
 
-        //TODO localized default value
-        //TODO Handle required value
-        let params = descRule.params.map((param) => value[param.name]).filter(Boolean)
+    //TODO localized default value
+    //TODO Handle required value
+    let params = descRule.params.map((param) => value[param.name]).filter(Boolean)
 
-        scheme = params.length && descRule.apply(scheme, ...params) || descRule.apply(scheme)
-    })
+    scheme = params.length && descRule.apply(scheme, ...params) || descRule.apply(scheme)
+  })
 
-    return scheme
+  return scheme
 }
 
 /*function buildNumberScheme(object: ParsableValidateSchema) {

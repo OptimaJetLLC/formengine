@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 export const LabeledIcon = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ export const LabeledIcon = styled.div`
   }
 
   & label {
-      //color: ${(props: any) => props.color ?? "var(--rs-btn-default-text)"};
+      //color: ${(props: any) => props.color ?? 'var(--rs-btn-default-text)'};
   }
 `
 

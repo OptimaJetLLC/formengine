@@ -1,26 +1,26 @@
-import {useState} from "react";
-import styled from "@emotion/styled";
-import {AutoComplete} from "rsuite";
+import styled from '@emotion/styled'
+import {useState} from 'react'
+import {AutoComplete} from 'rsuite'
 
 //TODO нормальную сортировку выпадающих вариантов
 const CompactCell = ({rowData, dataKey, rowIndex, onBlur, options, ...props}: any) => {
-    const [isEmpty, setIsEmpty] = useState(!rowData[dataKey]?.length);
-    return (
-            <StyledInput className={isEmpty ? "empty" : ""} data={options}
-                         style={{color: dataKey == "styleName" ? "var(--rs-text-secondary)" : "initial"}}
-                         defaultValue={rowData[dataKey]}
-                         onChange={(value) => {
-                             rowData[dataKey] = value;
-                             setIsEmpty(!rowData[dataKey]?.length);
-                         }}
-                         onBlur={onBlur}
-                         {...props}
-            />
-    )
+  const [isEmpty, setIsEmpty] = useState(!rowData[dataKey]?.length)
+  return (
+    <StyledInput className={isEmpty ? 'empty' : ''} data={options}
+                 style={{color: dataKey == 'styleName' ? 'var(--rs-text-secondary)' : 'initial'}}
+                 defaultValue={rowData[dataKey]}
+                 onChange={(value) => {
+                   rowData[dataKey] = value
+                   setIsEmpty(!rowData[dataKey]?.length)
+                 }}
+                 onBlur={onBlur}
+                 {...props}
+    />
+  )
 }
 
 const LabelCell = ({label, ...props}: any) => {
-    return <Label {...props}>{label}</Label>;
+  return <Label {...props}>{label}</Label>
 }
 
 const Label = styled.label`
@@ -61,7 +61,7 @@ const StyledInput = styled(AutoComplete)`
 `
 
 export {
-    CompactCell, LabelCell, Row
+  CompactCell, LabelCell, Row
 }
 
 

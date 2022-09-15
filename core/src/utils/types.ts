@@ -1,9 +1,9 @@
-import {ComponentType} from "react";
-import {ComponentData} from "./contexts/ComponenDataContext";
+import {ComponentType} from 'react'
+import {ComponentData} from './contexts/ComponenDataContext'
 
 export interface WrapperProps {
-    View: ComponentType<any>
-    viewProps: Record<string, any>
+  View: ComponentType<any>
+  viewProps: Record<string, any>
 }
 
 export type Wrapper = ComponentType<WrapperProps>

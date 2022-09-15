@@ -1,23 +1,23 @@
-import {useEffect} from "react";
-import {ConnectDragSource, useDrag} from "react-dnd";
-import {useComponentData} from "../../../../../utils/contexts/ComponenDataContext";
-import {ItemType} from "../../../consts";
-import {getEmptyImage} from "react-dnd-html5-backend";
+import {useEffect} from 'react'
+import {ConnectDragSource, useDrag} from 'react-dnd'
+import {getEmptyImage} from 'react-dnd-html5-backend'
+import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
+import {ItemType} from '../../../consts'
 
 interface DragState {
-    isDragging: boolean,
+  isDragging: boolean,
 }
 
 export const useDragWithPreview = (type: ItemType): [DragState, ConnectDragSource] => {
-    const item = useComponentData();
-    const [state, drag, preview] = useDrag(() => ({
-        type, item,
-        collect: (monitor) => ({isDragging: monitor.isDragging()}),
-    }), []);
+  const item = useComponentData()
+  const [state, drag, preview] = useDrag(() => ({
+    type, item,
+    collect: (monitor) => ({isDragging: monitor.isDragging()}),
+  }), [])
 
-    useEffect(() => {
-        preview(getEmptyImage());
-    }, [state.isDragging, preview]);
+  useEffect(() => {
+    preview(getEmptyImage())
+  }, [state.isDragging, preview])
 
-    return [state, drag]
+  return [state, drag]
 }

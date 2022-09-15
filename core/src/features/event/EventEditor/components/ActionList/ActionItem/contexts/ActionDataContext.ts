@@ -1,6 +1,6 @@
-import {createContext} from "../../../../../../../utils/createContextHook";
-import {ActionData} from "../../../../../types";
+import {createContext} from '../../../../../../../utils/createContextHook'
+import {ActionData} from '../../../../../types'
 
-const [useActionData, ActionDataProvider] = createContext<ActionData>("ActionDataContext")
+const [useActionData, ActionDataProvider] = createContext<ActionData>('ActionDataContext')
 
 export {useActionData, ActionDataProvider}

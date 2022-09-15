@@ -1,2 +1,2 @@
-export * from "./components/Editable";
-export * from "./components/AddedComponent";
+export * from './components/Editable'
+export * from './components/AddedComponent'

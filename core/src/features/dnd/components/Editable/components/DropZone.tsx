@@ -1,32 +1,32 @@
-import React from "react";
-import {useComponentData} from "../../../../../utils/contexts/ComponenDataContext";
-import {observer} from "mobx-react";
-import {cx} from "@emotion/css";
-import styled from "@emotion/styled";
-import {useDropZone} from "../hooks/useDropZone";
-import {DropView} from "./DropView";
+import {cx} from '@emotion/css'
+import styled from '@emotion/styled'
+import {observer} from 'mobx-react'
+import React from 'react'
+import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
+import {useDropZone} from '../hooks/useDropZone'
+import {DropView} from './DropView'
 
 interface DropZoneProps extends React.ComponentProps<any> {
-    isAfter?: boolean
-    isInner?: boolean
-    className?: any
-    children?: any
+  isAfter?: boolean
+  isInner?: boolean
+  className?: any
+  children?: any
 }
 
 const DropZone = observer(({isAfter = false, className, isInner, ...props}: DropZoneProps) => {
-    const {isRoot, isContainer} = useComponentData().componentStore;
-    const [{isActive, isOver}, drop] = useDropZone(isAfter, isRoot || isInner);
-    const dropClassNames = {isAfter, isActive, isContainer, isRoot, isInner};
+  const {isRoot, isContainer} = useComponentData().componentStore
+  const [{isActive, isOver}, drop] = useDropZone(isAfter, isRoot || isInner)
+  const dropClassNames = {isAfter, isActive, isContainer, isRoot, isInner}
 
-    const dropView = <DropView {...{...dropClassNames, isOver}}/>
+  const dropView = <DropView {...{...dropClassNames, isOver}}/>
 
-    return <>
-        <Container ref={drop} {...props} className={cx(dropClassNames, className)}>
-            {(isRoot || isInner) && dropView}
-        </Container>
-        {!isRoot && !isInner && dropView}
-    </>
-});
+  return <>
+    <Container ref={drop} {...props} className={cx(dropClassNames, className)}>
+      {(isRoot || isInner) && dropView}
+    </Container>
+    {!isRoot && !isInner && dropView}
+  </>
+})
 
 const Container = styled.div`
   position: absolute;
@@ -85,4 +85,4 @@ const Container = styled.div`
   }
 `
 
-export {DropZone};
+export {DropZone}

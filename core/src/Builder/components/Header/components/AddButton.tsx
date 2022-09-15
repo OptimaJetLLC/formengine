@@ -1,35 +1,35 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import {css, cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {IconButton} from 'rsuite';
-import PlusIcon from "@rsuite/icons/Plus";
-import {observer} from "mobx-react";
-import {ComponentBar} from "../../Building/components/ComponentBar";
-import {css, cx} from "@emotion/css";
-import {useDragLayer} from "react-dnd";
+import PlusIcon from '@rsuite/icons/Plus'
+import {observer} from 'mobx-react'
+import React, {useCallback, useEffect, useRef, useState} from 'react'
+import {useDragLayer} from 'react-dnd'
+import {IconButton} from 'rsuite'
+import {ComponentBar} from '../../Building/components/ComponentBar'
 
 export const AddButton = observer(() => {
-    const [show, setShow] = useState(false);
-    const [showPermanent, setShowPermanent] = useState(false);
-    const ref = useRef(null)
-    const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
+  const [show, setShow] = useState(false)
+  const [showPermanent, setShowPermanent] = useState(false)
+  const ref = useRef(null)
+  const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
 
-    useEffect(() => {
-        //Задержка нужна, чтобы не срабатывало слишком быстро)
-        setTimeout(() => setShow(!isDragging && showPermanent))
-    }, [isDragging]);
+  useEffect(() => {
+    //Задержка нужна, чтобы не срабатывало слишком быстро)
+    setTimeout(() => setShow(!isDragging && showPermanent))
+  }, [isDragging])
 
-    const openToggle = useCallback(() => {
-        setShow(show => !show)
-        setShowPermanent(showPermanent => !showPermanent)
-    }, [])
+  const openToggle = useCallback(() => {
+    setShow(show => !show)
+    setShowPermanent(showPermanent => !showPermanent)
+  }, [])
 
-    return <>
-        <IconButton ref={ref} onClick={openToggle} icon={<PlusIcon className={cx(plusIcon, {show})}/>}
-                    style={{padding: 8}} color="green" appearance={"primary"} circle/>
-        <Popover className={cx({show})}>
-            <ComponentBar/>
-        </Popover>
-    </>
+  return <>
+    <IconButton ref={ref} onClick={openToggle} icon={<PlusIcon className={cx(plusIcon, {show})}/>}
+                style={{padding: 8}} color="green" appearance={'primary'} circle/>
+    <Popover className={cx({show})}>
+      <ComponentBar/>
+    </Popover>
+  </>
 })
 
 const Popover = styled.div`

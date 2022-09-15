@@ -1,17 +1,17 @@
-import {defineAction} from "./defineAction";
+import {defineAction} from './defineAction'
 
-const setValue = defineAction("Set value", (actionArgs, e) => {
-    //const componentStore: ComponentStore = eventArgs[2];
-    //actionArgs.target.props.value = actionArgs.param1;
-    //let b = args
-    let a = actionArgs.propertyName
-}, ["propertyName", ["NumPar", "number"], ["BoolPar", "boolean"]]);
+const setValue = defineAction('Set value', (actionArgs, e) => {
+  //const componentStore: ComponentStore = eventArgs[2];
+  //actionArgs.target.props.value = actionArgs.param1;
+  //let b = args
+  let a = actionArgs.propertyName
+}, ['propertyName', ['NumPar', 'number'], ['BoolPar', 'boolean']])
 
-const setProperty = defineAction("Set property", ({propertyKey, targetKey, value}, e) => {
-    const component = e.store.findComponent(targetKey)
-    component.props[propertyKey] = value
-}, ["propertyKey", "targetKey", "value"]);
+const setProperty = defineAction('Set property', ({propertyKey, targetKey, value}, e) => {
+  const component = e.store.findComponent(targetKey)
+  component.props[propertyKey] = value
+}, ['propertyKey', 'targetKey', 'value'])
 
-const validate = defineAction("Validate", (e) => e.store.validateForm());
+const validate = defineAction('Validate', (e) => e.store.validateForm())
 
-export {setValue, setProperty, validate};
+export {setValue, setProperty, validate}

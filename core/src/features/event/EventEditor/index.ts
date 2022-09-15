@@ -1,1 +1,1 @@
-export * from "./EventEditor"
+export * from './EventEditor'

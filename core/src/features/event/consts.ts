@@ -1,1 +1,1 @@
-export const ANY_EVENT = Symbol("Any event")
+export const ANY_EVENT = Symbol('Any event')

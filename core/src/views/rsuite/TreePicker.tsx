@@ -1,13 +1,13 @@
-import {define} from '../../features/annotation/utils/define';
+import {define} from '../../features/annotation/utils/define'
 
 interface TreePickerProps {
 
 }
 
 const TreePicker = (props: TreePickerProps) => {
-    // todo implement
-    return (<>TreePicker</>)
+  // todo implement
+  return (<>TreePicker</>)
 }
 
 export const treePicker = define(TreePicker)
-    .named('Tree picker');
+  .named('Tree picker')
