@@ -6,6 +6,8 @@ slug: /getting-started
 
 # Overview
 
+![Architecture Diagram](/assets/architecture/architecture.png "Architecture Diagram")
+
 FormBuilder is a JavaScript library for designing forms in the browser with Drag&Drop.
 
 The library combines the best practices for building a user interface and uses several popular JavaScript libraries:
