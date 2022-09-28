@@ -1,8 +1,9 @@
-import {useEffect, useRef, useState} from 'react'
 import {useComponentData} from '../../../../utils/contexts/ComponenDataContext'
-import {useStore} from '../../../../utils/contexts/StoreContext'
 import {ActionEventHandler, EventName, EventTuple} from '../../types'
+import {useEffect, useRef, useState} from 'react'
+import {useStore} from '../../../../utils/contexts/StoreContext'
 import {ActionEvent} from '../../utils/ActionEvent'
+import {isFunc} from '../../../annotation/utils'
 
 export const useEventHandlers = (): EventTuple => {
   const store = useStore()
@@ -16,7 +17,7 @@ export const useEventHandlers = (): EventTuple => {
 
 
   function setEventHandlers() {
-    const eventNames = properties.filter((value) => value.isFunction).map((value) => value.key)
+    const eventNames = properties.filter(isFunc).map((value) => value.key)
     eventNames.forEach((name) => [handlers[name], actionsMap[name]] = getEmptyHandler(name))
     setHandlers({...handlers})
   }

@@ -30,7 +30,7 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
   const properties = model.properties
     .filter(annotation => annotation.section === activeTab)
     .map(annotation =>
-      <WithValidation annotation={annotation} Component={annotation.component} key={annotation.key}/>
+      <WithValidation annotation={annotation} Component={observer(annotation.editor)} key={annotation.key}/>
     )
 
   return (

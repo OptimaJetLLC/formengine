@@ -1,4 +1,4 @@
-import {define} from '../../features/annotation/utils/define'
+import {define} from '../../features/define'
 
 interface BreadcrumbProps {
 

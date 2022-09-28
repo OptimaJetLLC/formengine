@@ -1,5 +1,6 @@
 import {useMemo} from 'react'
 import {useComponentData} from '../../../utils/contexts/ComponenDataContext'
+import {isProperty} from '../../../features/annotation/utils'
 
 export function useDefaultProps() {
   const {model} = useComponentData()
@@ -8,11 +9,9 @@ export function useDefaultProps() {
     const props: Record<string, any> = {}
 
     model.properties.forEach((value) => {
-      if (value.isSystem) return
-      if (value.isFunction) return
-      if (value.isContainer) return
-
-      props[value.key] = value.defaultValue
+      if (isProperty(value)) {
+        props[value.key] = value.scheme?.getDefault()
+      }
     })
 
     return props

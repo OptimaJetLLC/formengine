@@ -6,7 +6,7 @@ import {CSSBlock} from './components/CSSBlock'
 import {CSSList} from './components/CSSList'
 import {StandardStyles} from './components/StandardStyles'
 
-export const StyleEditor = ({componentStore}: PropertyEditorProps<Record<string, string>[] | undefined>) => {
+export const StyleEditor = ({componentStore}: PropertyEditorProps) => {
   const {t} = useTranslation()
 
   //TODO mobx.createViewModel (непонятно как заставить работать с массивами) https://github.com/mobxjs/mobx-utils/issues/209

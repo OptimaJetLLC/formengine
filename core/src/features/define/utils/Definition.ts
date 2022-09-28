@@ -1,17 +1,18 @@
-import {forIn, startCase, transform} from 'lodash'
 import {ComponentType} from 'react'
-import {ComponentStore} from '../../../stores/ComponentStore'
-import {isFunction} from '../../../utils'
-import {defineAction} from '../../event/defineAction'
+import {Annotation} from '../../annotation/utils/annotations/Annotation'
+import {ActionsInitializer} from '../types'
 import {ActionDefinition, ActionEventHandler} from '../../event/types'
-import {key, string, style, validation} from '../index'
-import {ActionsInitializer, Annotations} from '../types'
-import {Annotation} from './Annotation'
-import {ComponentModel} from './ComponentModel'
-
+import {Annotations} from '../../annotation/types'
+import {defineAction} from '../../event/defineAction'
+import {ComponentStore} from '../../../stores/ComponentStore'
+import {key, string, style, validation} from '../../annotation'
+import {forIn, startCase, transform} from 'lodash'
+import {isFunction} from '../../../utils'
+import {Model} from './Model'
 
 //TODO проброс пропертей в инициализатор экшенов.
-export class ComponentDefinition<T extends object> {
+//TODO rename
+export class Definition<T extends object> {
   readonly #name?: string
 
   get name() {
@@ -39,7 +40,7 @@ export class ComponentDefinition<T extends object> {
 
   static define<T extends object>(view: ComponentType<T>) {
     checkExistName()
-    return new ComponentDefinition<T>(view)
+    return new Definition<T>(view)
 
 
     function checkExistName() {
@@ -51,7 +52,7 @@ export class ComponentDefinition<T extends object> {
   }
 
   init(store: ComponentStore) {
-    return new ComponentModel(
+    return new Model(
       this.view,
       initProperties(this.properties),
       this.#name,
@@ -63,7 +64,7 @@ export class ComponentDefinition<T extends object> {
     function initProperties(annotations?: Annotations<T>) {
       if (!annotations) return []
 
-      const properties: Annotation<any>[] = [
+      const properties: Annotation[] = [
         key.build('key'),
         style.build('style'),
         validation.build('validation'),
@@ -91,8 +92,8 @@ export class ComponentDefinition<T extends object> {
     }
   }
 
-  #cloneWith(opts: Partial<ComponentDefinition<T>>): ComponentDefinition<T> {
-    return new ComponentDefinition(
+  #cloneWith(opts: Partial<Definition<T>>): Definition<T> {
+    return new Definition(
       opts.view || this.view,
       opts.name || this.#name,
       opts.properties || this.properties,
@@ -101,4 +102,3 @@ export class ComponentDefinition<T extends object> {
     )
   }
 }
-

@@ -1,40 +1,55 @@
 import {ReactNode} from 'react'
+import * as yup from 'yup'
 import {Section} from '../../Builder/components/Building/components/PropertiesEditor/Section'
 import {EventEditor} from '../event'
 import {StyleEditor} from '../style'
 import {ValidateEditor} from '../validation/components/ValidateEditor'
-import {BooleanInput} from './inputs/Boolean'
-import {Container} from './inputs/Container'
-import {KeyInput} from './inputs/Key'
-import {StringInput} from './inputs/String'
-import {AnnotationBuilder} from './utils/AnnotationBuilder'
+import {BooleanInput} from './components/BooleanInput'
+import {ChildViewer} from './components/ChildViewer'
+import {KeyInput} from './components/KeyInput'
+import {NumberInput} from './components/NumberInput'
+import {Piker} from './components/Picker'
+import {RadioButton} from './components/RadioButton'
+import {StringInput} from './components/StringInput'
+import {createAnnotation, createProperty} from './utils'
 
-//TODO следует ли компоновать их и засунуть в один объект?
-export const key = new AnnotationBuilder<string>({component: KeyInput, isSystem: true}).isRequired('')
-export const string = new AnnotationBuilder<string | undefined>({component: StringInput})
-export const boolean = new AnnotationBuilder<boolean | undefined>({component: BooleanInput})
-export const style = new AnnotationBuilder<Record<string, string>[] | undefined>({
-  component: StyleEditor,
-  section: Section.Style
-})
-export const event = new AnnotationBuilder<Function | undefined>({
-  component: EventEditor,
-  section: Section.Actions,
-  isFunction: true
-})
-// set
-export const validation = new AnnotationBuilder<any>({component: ValidateEditor, section: Section.Validation})
+export const key = createAnnotation(KeyInput).schemed(yup.string())
+export const style = createAnnotation(StyleEditor).setup({section: Section.Style})
+export const validation = createAnnotation(ValidateEditor).setup({section: Section.Validation})
 
-export const node = new AnnotationBuilder<ReactNode>({isContainer: true, component: Container})
-export const element = new AnnotationBuilder<ReactNode>({isContainer: true, component: Container})
+//Primitives
+export const string = createProperty(StringInput).schemed(yup.string())
+export const boolean = createProperty(BooleanInput).schemed(yup.boolean())
+export const number = createProperty(NumberInput).schemed(yup.number())
 
-//Аннотация: спсиок допустимых параметров - просто массив
-//Аннотация: список допустимых параметров с его label - value. Label всегда текст, а значение принимает заданный тип
-//Аннотация: построитель объекта?
-//Аннотация: ReactNode: обозначает, что объект является контейнером. Также его можно инициировать как строку, бул
-// и другие совместимые с нодой свойства
-export const list = new AnnotationBuilder<string[] | undefined>()
-export const l1 = new AnnotationBuilder<object | undefined>()
-export const l2 = new AnnotationBuilder<Record<string, any> | undefined>()
-export const number = new AnnotationBuilder<number | undefined>()
+//TODO rename to func, or action, or to stay event?
+//Use for create functions for events
+export const event = createAnnotation(EventEditor).setup({type: 'Event', section: Section.Actions})
+//object
+//array
 
+//Now is container for another components. TODO? In global things is all that can be rendered: string, numbers, elements, arrays (or fragments) contain these types.
+export const node = createAnnotation<ReactNode>(ChildViewer).setup({type: 'Container'})
+
+//element - react element
+//elementType - react element with type
+//instanceOf(Message) - prop is instance of class
+
+//Enum
+//Without bind this in arrow function case do bad magic
+export const oneOf = createProperty(Piker).oneOf.bind(createProperty(Piker))
+
+//oneOfType([string, number, etc.]) - union - one of some types
+//arrayOf(string or etc) - array with some type
+
+/*
+Object with differently structure
+shape({
+     color: string,
+     fontSize: number
+  })
+*/
+
+//TODO in future: color, date
+
+//TIP for potentially customProp or arrayProp - use yup for validate

@@ -1,22 +1,22 @@
-import {observer} from 'mobx-react'
 import React, {ComponentType} from 'react'
+import {ErrorMessage} from './ErrorMessage'
+import {PropertyEditorProps} from '../../annotation/types'
+import {observer} from 'mobx-react'
+import {useValidation} from '../useValidation'
 import * as Yup from 'yup'
 import {useComponentData} from '../../../utils/contexts/ComponenDataContext'
-import {PropertyEditorProps} from '../../annotation/types'
-import {Annotation} from '../../annotation/utils/Annotation'
-import {useValidation} from '../useValidation'
-import {ErrorMessage} from './ErrorMessage'
+import {Annotation} from "../../annotation/utils/annotations/Annotation";
 
 interface WithValidationProps<T> {
-  annotation: Annotation<any>
-  Component: ComponentType<PropertyEditorProps<any>>
+  annotation: Annotation
+  Component: ComponentType<PropertyEditorProps>
 }
 
 export const WithValidation = observer(<T extends any>(props: WithValidationProps<T> & T) => {
   const {annotation, Component} = props
   const {componentStore} = useComponentData()
 
-  const scheme = Yup.string().required().min(3) //TODO scheme from annotation
+  const scheme = annotation?.scheme
 
   const [field, meta] = useValidation({key: annotation.key, scheme})
 

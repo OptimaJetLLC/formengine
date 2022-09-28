@@ -1,14 +1,14 @@
 import {Button} from 'rsuite'
-import {boolean, event, string} from '../../features/annotation'
-import {define} from '../../features/annotation/utils/define'
+import {boolean, event, oneOf, string} from '../../features/annotation'
+import {define} from '../../features/define'
 
 export const button = define(Button)
   .props({
-    children: string.isRequired('Button'),
-    //appearance: {title: "Appearance", defaultValue: "default"},
-    //title: {title: 'Title', defaultValue: "Button"},
+    children: string.required.named("Content").default('Button'),
+    appearance: oneOf('default', 'primary', 'link', 'subtle', 'ghost').default('default'),
     onClick: event,
-    block: boolean.with({defaultValue: true}),
+    block: boolean.default(true),
+    size: oneOf('xs', 'sm', 'md', 'lg').labeled('Extra small', 'Small', 'Medium', 'Large').default('md')
     //onMouseOver: event,
     //onMouseLeave: event,
   })

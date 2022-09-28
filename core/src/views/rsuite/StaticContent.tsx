@@ -1,5 +1,5 @@
+import {define} from '../../features/define'
 import {string} from '../../features/annotation'
-import {define} from '../../features/annotation/utils/define'
 
 interface StaticContentProps {
   content: string;
@@ -12,5 +12,5 @@ const StaticContent = (props: StaticContentProps) => {
 
 export const staticContent = define(StaticContent)
   .props({
-    content: string.isRequired('Text...'),
+    content: string.required.default('Text...'),
   })

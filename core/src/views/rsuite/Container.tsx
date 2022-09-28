@@ -1,10 +1,7 @@
 import {css, cx} from '@emotion/css'
-import ColumnsIcon from '@rsuite/icons/Columns'
 import {forwardRef} from 'react'
-import {node} from '../../features/annotation'
-import {WithRadioButton} from '../../features/annotation/inputs/RadioButton'
-import {AnnotationBuilder} from '../../features/annotation/utils/AnnotationBuilder'
-import {define} from '../../features/annotation/utils/define'
+import {node, oneOf} from '../../features/annotation'
+import {define} from '../../features/define'
 
 type Direction = 'vertical' | 'horizontal';
 
@@ -25,12 +22,7 @@ Container.displayName = 'Container'
 export const container = define(Container)
   .props({
     children: node,
-    direction: new AnnotationBuilder<Direction>({
-      component: WithRadioButton([
-        {value: 'vertical', icon: <ColumnsIcon rotate={90}/>},
-        {value: 'horizontal', icon: <ColumnsIcon/>},
-      ])
-    }).isRequired('vertical'),
+    direction: oneOf('vertical', 'horizontal').default('vertical').radio()
   })
 
 const containerStyles = css`

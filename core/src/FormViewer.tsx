@@ -6,14 +6,14 @@ import {EventBus} from './features/event/utils/EventBus'
 import {ObservableFormik} from './features/validation/components/ObserableFormik'
 import {ComponentStore} from './stores/ComponentStore'
 import {useStore} from './utils/contexts/StoreContext'
-import {DefineRegistry} from './utils/DefineRegistry'
+import {View} from './features/define/utils/View'
 import {Wrapper} from './utils/types'
 
 export interface FormViewerProps {
   event?: (bus: EventBus) => void,
   getForm?: (() => ComponentStore),
   Wrapper?: Wrapper
-  view: DefineRegistry
+  view: View
   actions?: ActionDefinition[]
 }
 

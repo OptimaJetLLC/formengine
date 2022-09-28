@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import {observer} from 'mobx-react'
 import React, {useState} from 'react'
 import {Trans, useTranslation} from 'react-i18next'
-import {ComponentDefinition} from '../../../../../features/annotation/utils/ComponentDefinition'
+import {Definition} from '../../../../../features/define'
 import {AddedComponent} from '../../../../../features/dnd'
 import {ComponentStore} from '../../../../../stores/ComponentStore'
 import {ComponentDataProvider} from '../../../../../utils/contexts/ComponenDataContext'
@@ -23,7 +23,7 @@ export const ComponentBar = (props: ComponentBarProps) => {
 
 
   const handleSearchChange = (value: string) => {
-    const isMatch = (el: ComponentDefinition<any>) => el.name.toLowerCase().includes(value.toLowerCase())
+    const isMatch = (el: Definition<any>) => el.name.toLowerCase().includes(value.toLowerCase())
 
     setFiltered({
       title: value ? '' : t('toolbar.baseControls'),
@@ -60,7 +60,7 @@ const FilteredComponents = observer(({filtered}: { filtered?: ToolbarItem }) => 
 })
 
 interface AddedComponentsProps {
-  definitions: ComponentDefinition<any>[]
+  definitions: Definition<any>[]
 }
 
 const AddedComponents = ({definitions}: AddedComponentsProps) => {

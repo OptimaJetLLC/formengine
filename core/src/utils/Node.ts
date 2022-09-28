@@ -1,4 +1,4 @@
-import {ComponentModel} from '../features/annotation/utils/ComponentModel'
+import {Model} from '../features/define'
 import {ComponentStore} from '../stores/ComponentStore'
 import {Store} from '../stores/Store'
 
@@ -7,7 +7,7 @@ export class Node {
   readonly parent?: Node
   readonly children?: Node[]
   readonly data: ComponentStore
-  readonly model: ComponentModel<any>
+  readonly model: Model<any>
 
   constructor(store: Store, data: ComponentStore, parent?: Node) {
     this.key = data.key

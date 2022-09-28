@@ -1,6 +1,6 @@
 import {ReactNode} from 'react'
 import {node} from '../features/annotation'
-import {define} from '../features/annotation/utils/define'
+import {define} from '../features/define/utils/define'
 
 interface PageProps {
   children: ReactNode

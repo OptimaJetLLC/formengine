@@ -1,7 +1,7 @@
 import React from 'react'
-import {ComponentDefinition} from '../../../../../features/annotation/utils/ComponentDefinition'
+import {Definition} from '../../../../../features/define'
 
 export interface ToolbarItem {
   title?: any,
-  controls: ComponentDefinition<any>[],
+  controls: Definition<any>[],
 }

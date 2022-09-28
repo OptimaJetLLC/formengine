@@ -1,9 +1,7 @@
 import styled from '@emotion/styled'
 import {Input as RInput, InputProps as RInputProps} from 'rsuite'
-import {boolean, event, string} from '../../features/annotation'
-import {WithPicker} from '../../features/annotation/inputs/Picker'
-import {AnnotationBuilder} from '../../features/annotation/utils/AnnotationBuilder'
-import {define} from '../../features/annotation/utils/define'
+import {boolean, event, oneOf, string} from '../../features/annotation'
+import {define} from '../../features/define'
 import {LabeledInput} from '../../features/ui/Containers'
 
 export interface InputProps extends RInputProps {
@@ -33,26 +31,16 @@ export const Input = ({style, className, label, ...props}: InputProps) => {
     </LabeledInput>
   )
 }
-// "lg" | "md" | "sm" | "xs"
+
 export const input = define(Input)
   .props({
     disabled: boolean,
-    label: string.isRequired('Input'),
+    label: string.default('Input'),
     placeholder: string,
     readOnly: boolean,
-    //size: new AnnotationBuilder<InputProps["size"]>(),
-    size: new AnnotationBuilder<'lg' | 'md' | 'sm' | 'xs' | undefined>({
-      component: WithPicker([
-        {label: 'Extra small', value: 'xs'},
-        {label: 'Small', value: 'sm'},
-        {label: 'Medium', value: 'md'},
-        {label: 'Large', value: 'lg'},
-      ]),
-    }),
-    //size: new AnnotationBuilder<"lg" | "md" | "sm" | "xs" | undefined>()
+    size: oneOf('xs', 'sm', 'md', 'lg').labeled('Extra small', 'Small', 'Medium', 'Large').default('md'),
     onChange: event,
     value: undefined,
-
   })
   .actions((props, def) => {
     return {

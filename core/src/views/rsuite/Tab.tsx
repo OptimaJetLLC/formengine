@@ -2,7 +2,7 @@ import _ from 'lodash/fp'
 import {ReactNode, useCallback, useEffect} from 'react'
 import {Nav} from 'rsuite'
 import {boolean, node, string} from '../../features/annotation'
-import {define} from '../../features/annotation/utils/define'
+import {define} from '../../features/define'
 import {useComponentData} from '../../utils/contexts/ComponenDataContext'
 
 
@@ -52,7 +52,7 @@ export const tab = define(Tab)
     //items: reactElements.expandable(navItem, navDropdown)
     //onSelect: set("active")
 
-    children: node.with({bindTo: 'active'}),
+    children: undefined//TODO node.setup({bindTo: 'active'}),
   })
 
 export const nav = define(Nav)

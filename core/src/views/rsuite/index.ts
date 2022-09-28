@@ -1,4 +1,4 @@
-import {DefineRegistry} from '../../utils/DefineRegistry'
+import {View} from '../../features/define/utils/View'
 import {breadcrumb} from './Breadcrumb'
 import {button} from './Button'
 import {card} from './Card'
@@ -27,7 +27,7 @@ import {nav, navItem, tab} from './Tab'
 import {textArea} from './TextArea'
 import {treePicker} from './TreePicker'
 
-export const rsuite = new DefineRegistry([
+export const rsuite = new View([
   textArea,
   input,
   header,

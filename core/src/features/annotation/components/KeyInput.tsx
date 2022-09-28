@@ -2,9 +2,9 @@ import {Input} from 'rsuite'
 import {LabeledInput} from '../../ui/Containers'
 import {PropertyEditorProps} from '../types'
 
-const KeyInput = ({componentStore, annotation}: PropertyEditorProps<string>) => (
+const KeyInput = ({componentStore, annotation}: PropertyEditorProps) => (
   <LabeledInput>
-    <label>{annotation.title}</label>
+    <label>{annotation.name}</label>
     <Input
       value={componentStore.key}
       onChange={value => componentStore.key = value as string}

@@ -1,7 +1,7 @@
 import {ReactNode} from 'react'
 import {Col, Grid as RGrid, Row} from 'rsuite'
 import {node} from '../../features/annotation'
-import {define} from '../../features/annotation/utils/define'
+import {define} from '../../features/define'
 
 interface GridProps {
   child1: ReactNode

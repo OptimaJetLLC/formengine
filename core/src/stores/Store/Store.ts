@@ -8,14 +8,14 @@ import {EventBus} from '../../features/event/utils/EventBus'
 import {defaultLanguage} from '../../features/localization/consts'
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../../features/localization/utils'
 import {treeFind} from '../../utils'
-import {DefineRegistry} from '../../utils/DefineRegistry'
+import {View} from '../../features/define'
 import {getKey} from '../../utils/getKey'
 import {Node} from '../../utils/Node'
 import {ComponentMove} from '../../utils/types'
 import {ComponentStore} from '../ComponentStore'
 
 export class Store {
-  readonly view: DefineRegistry
+  readonly view: View
 
   isResizing: boolean = false
   isDragging: boolean = false
@@ -47,7 +47,7 @@ export class Store {
 
   //TODO set in provider
   //TODO new instance for each form view
-  constructor(view: DefineRegistry) {
+  constructor(view: View) {
     this.view = view
 
     makeObservable(this, {

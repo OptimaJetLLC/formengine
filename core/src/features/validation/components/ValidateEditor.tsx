@@ -4,7 +4,7 @@ import {PropertyEditorProps} from '../../annotation/types'
 import {StringRules} from '../rules/StringRules'
 import {StringRuleKey, ValueType} from '../types'
 
-export const ValidateEditor = ({annotation, componentStore, onBlur, onChange, value}: PropertyEditorProps<any>) => {
+export const ValidateEditor = ({annotation, componentStore, onBlur, onChange, value}: PropertyEditorProps) => {
   const schema = componentStore.validation
   const {t} = useTranslation()
 

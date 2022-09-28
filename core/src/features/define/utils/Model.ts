@@ -1,8 +1,8 @@
 import {ComponentType} from 'react'
 import {ActionDefinition} from '../../event/types'
-import {Annotation} from './Annotation'
+import {Annotation} from "../../annotation/utils/annotations/Annotation";
 
-export class ComponentModel<T> {
+export class Model<T> {
   readonly #name?: string
 
   get name() {
@@ -15,7 +15,7 @@ export class ComponentModel<T> {
 
   constructor(
     readonly view: ComponentType<T>,
-    readonly properties: Annotation<T>[],
+    readonly properties: Annotation[],
     name?: string,
     readonly actions?: ActionDefinition[],
     readonly hint?: string,

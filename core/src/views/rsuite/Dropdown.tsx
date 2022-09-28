@@ -1,7 +1,7 @@
-import {CSSProperties} from 'react'
 import {Form, InputPicker} from 'rsuite'
+import {CSSProperties} from 'react'
+import {define} from '../../features/define'
 import {boolean, string} from '../../features/annotation'
-import {define} from '../../features/annotation/utils/define'
 
 interface DropdownProps {
   label: string,
@@ -13,21 +13,22 @@ interface DropdownProps {
 }
 
 const Dropdown = ({label, ...props}: DropdownProps) => {
-
+  let {data, ...otherProps} = props;
+  data = data ?? []
   return (
     <div>
       <Form.ControlLabel>{label}</Form.ControlLabel>
-      <InputPicker {...props}/>
+      <InputPicker {...otherProps} data={data}/>
     </div>
   )
 }
 
 export const dropdown = define(Dropdown)
   .props({
-    'block': boolean.isRequired(false),
+    'block': boolean.default(false),
     'data': undefined,
-    'label': string.isRequired(''),
-    'placeholder': string.isRequired(''),
+    'label': string.default(''),
+    'placeholder': string.default(''),
 
   })
 

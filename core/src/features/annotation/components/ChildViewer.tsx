@@ -3,7 +3,7 @@ import {ComponentStore} from '../../../stores/ComponentStore'
 import {LabeledInput} from '../../ui/Containers'
 import {PropertyEditorProps} from '../types'
 
-const Container = (props: PropertyEditorProps<ReactNode | undefined>) => {
+const ChildViewer = (props: PropertyEditorProps) => {
   const {annotation, value, componentStore} = props
 
   const isChild = (child: ComponentStore) =>
@@ -11,7 +11,7 @@ const Container = (props: PropertyEditorProps<ReactNode | undefined>) => {
 
   return (
     <LabeledInput>
-      <label>{annotation.title}</label>
+      <label>{annotation.name}</label>
       <ul>
         {componentStore.children?.filter(isChild)
           .map((item) => (<li key={item.key}>{item.key}</li>))}
@@ -20,4 +20,4 @@ const Container = (props: PropertyEditorProps<ReactNode | undefined>) => {
   )
 }
 
-export {Container}
+export {ChildViewer}

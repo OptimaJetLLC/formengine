@@ -10,7 +10,7 @@ export class ComponentStore {
   bindTo?: string
   props: Record<string, any> = {}
   events?: Record<EventName, WeakActionData[]>
-  //TODO styles в отдельный блок - объеденить три поля в один
+  //TODO styles в отдельный блок - объединить три поля в один
   styles?: Record<string, string>
   cssStyles?: StyleItem[]
   cssBlock?: string
