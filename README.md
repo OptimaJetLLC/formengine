@@ -1,4 +1,65 @@
-### Что должно быть в итоге:
+# Form Builder
+
+## Getting Started
+
+Install dependencies:
+
+```shell
+npm install
+```
+
+Start the app for developing:
+
+```shell
+npm run start
+```
+
+## Other commands
+
+To build all projects:
+
+```shell
+npm run build
+```
+
+Run tests
+```shell
+npm run test
+```
+
+For scoping (run command only for difenetly package) use --scope=[app]. For example:
+
+```shell
+npm run test --scope=app
+```
+
+To visual packages:
+
+```shell
+npm run graph
+```
+
+For installing packages can be used usual way:
+
+```shell
+npm i module-1 -w module-2
+```
+
+or lerna with
+
+```shell
+npx lerna add module-1 --scope=module-2
+```
+
+Create links of packages (unused):
+
+```shell
+npm run bootstrap
+```
+
+Для публикации обновления версий, создания тега и публикация существует команда `npx lerna publish`. Но ее пока не настраивал
+
+## Что должно быть в итоге:
 
 1. FormBuilder в отдельном npm пакете
 2. Отдельный пакет npm, содержащий визуальные компоненты
@@ -6,23 +67,13 @@
 4. FormBuilder не меняется при добавлении новых визуальных компонент
 5. Добавление новых визуальных компонент заключается в подключении библиотеки из npm и её регистрации
 
-### Что нужно сделать (Deprecated):
-1. Убрать jquery и все лишние библиотеки
-2. Иерархичный json с описанием компонент
-3. Привести в порядок скрипты вебпака - выкинуть лишнее и поименовать итоговый файл
-4. Сделать ещё один модуль, котрый увязывает билдер и визуальные компоненты
-5. Переименовать компоненты в контролы - нужно, чтобы именования были консистентные и понятные
-6. Модуль shared нужно убить
-7. Написать новую документацию
+## Features
 
-
-### Features
-
--[x] Drag&Drop.
--[x] Events.
--[ ] Templates.
--[x] Json file format.
--[x] Inline parameters.
+- [x] Drag&Drop.
+- [x] Events.
+- [ ] Templates.
+- [x] Json file format.
+- [x] Inline parameters.
 
 
 RTL guide - https://carbon-for-ibm-dotcom.mybluemix.net/guidelines/right-to-left/
