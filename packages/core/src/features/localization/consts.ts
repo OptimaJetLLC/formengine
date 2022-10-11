@@ -1,7 +1,5 @@
 import createCache from '@emotion/cache'
-import arEG from 'rsuite/esm/locales/ar_EG'
-import enUS from 'rsuite/esm/locales/en_US'
-import ruRU from 'rsuite/esm/locales/ru_RU'
+import {arEG, enUS, ruRU} from 'rsuite/locales'
 import rtlPlugin from 'stylis-plugin-rtl'
 import {Language} from './types'
 

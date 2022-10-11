@@ -22,7 +22,7 @@ export function initI18n(onInit: OnInitCallback) {
     .use(initReactI18next)
     .init({
         // todo отключать в продуктивной сборке
-        debug: true,
+        //debug: true,
         fallbackLng: 'en-US',
         load: 'currentOnly',
         interpolation: {

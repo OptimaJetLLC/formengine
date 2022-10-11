@@ -22,7 +22,7 @@ export class Store {
 
   isBuilderMode: boolean = true
   styles?: any
-  formContext?: FormikContextType<any>
+  formContext: FormikContextType<any> | null = null
 
   //TODO lazy initializing?
   readonly eventBus = new EventBus()
