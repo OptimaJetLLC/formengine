@@ -14,7 +14,7 @@ const properties: any = cssProperties.all.map((value: any) => {
 export const CSSList = ({componentStore}: { componentStore: ComponentStore }) => {
   //TODO mobx.createViewModel (непонятно как заставить работать с массивами) https://github.com/mobxjs/mobx-utils/issues/209
   const [styles, setStyles] = useState([
-    ...(_.cloneDeep(componentStore.cssStyles || [])),
+    ...(_.cloneDeep(componentStore.style.cssStyles || [])),
     {}
   ])
 
@@ -26,7 +26,7 @@ export const CSSList = ({componentStore}: { componentStore: ComponentStore }) =>
           if (styles[styles.length - 1].name || styles[styles.length - 1].value) {
             setStyles([...styles, {}])
           }
-          componentStore.cssStyles = styles.filter(style => style.name || style.value)
+          componentStore.style.cssStyles = styles.filter(style => style.name || style.value)
         }
       }
       return (

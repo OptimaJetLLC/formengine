@@ -1,16 +1,16 @@
 import ArrowDownIcon from '@rsuite/icons/ArrowDown'
-import React from 'react'
+import {annotate} from 'rc-marked-input'
+import React, {Ref} from 'react'
 import {Button, Whisper} from 'rsuite'
-import {PickerInstance, OverlayTriggerInstance} from 'rsuite/Picker'
+import {OverlayTriggerInstance, PickerInstance} from 'rsuite/Picker'
 import {componentMarkup} from '../../../consts'
-import {makeMentionsMarkup} from '../../../utils'
 import {BindPopover} from './BindPopover'
 
 export const AddBindButton = ({onAdd, name}: any) => {
-  const triggerRef = React.useRef<OverlayTriggerInstance | null>(null)
+  const triggerRef = React.useRef<PickerInstance | null>(null)
 
   const switchSpeaker = () => {
-    if (triggerRef.current?.root) {
+    if (triggerRef.current?.overlay) {
       triggerRef.current?.close?.()
     } else {
       triggerRef.current?.open?.()
@@ -19,14 +19,14 @@ export const AddBindButton = ({onAdd, name}: any) => {
 
   const handleSelect = ({componentStore, propertyName}: any) => {
     onAdd((previousValue: string) => {
-      let value = makeMentionsMarkup(componentMarkup, componentStore.key, propertyName)
+      let value = annotate(componentMarkup, componentStore.key, propertyName)
       return previousValue + value + ' '
     })
   }
 
   return (
     <Whisper
-      ref={triggerRef}
+      ref={triggerRef as Ref<OverlayTriggerInstance>}
       trigger="none"
       placement={'auto'}
       speaker={

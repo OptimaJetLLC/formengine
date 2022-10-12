@@ -6,9 +6,9 @@ import {AutoSize} from '../../../ui/Containers'
 
 const CSSBlock = ({componentStore}: { componentStore: ComponentStore }) => {
   //TODO mobx.createViewModel (непонятно как заставить работать с массивами) https://github.com/mobxjs/mobx-utils/issues/209
-  const [value, setValue] = useState(componentStore.cssBlock)
+  const [value, setValue] = useState(componentStore.style.cssBlock)
   const onBlur = () => {
-    if (value) componentStore.cssBlock = value
+    if (value) componentStore.style.cssBlock = value
   }
   return <AutoSize>
     <TextArea as={'textarea'} value={value} rows={3}

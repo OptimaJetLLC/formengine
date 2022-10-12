@@ -1,7 +1,7 @@
 import {FormikContextType} from 'formik'
 import _ from 'lodash'
 import {action, computed, makeObservable, observable, reaction} from 'mobx'
-import {screen} from '../../components/Screen'
+import {screen} from '../../features/ui/Screen'
 import {setProperty, validate} from '../../features/event/actions'
 import {ActionDefinition} from '../../features/event/types'
 import {EventBus} from '../../features/event/utils/EventBus'

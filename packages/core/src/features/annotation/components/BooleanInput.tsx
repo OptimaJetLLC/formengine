@@ -7,7 +7,7 @@ const BooleanInput = ({componentStore, annotation}: PropertyEditorProps) => {
     <Form.ControlLabel>{annotation.name}</Form.ControlLabel>
     <Checkbox
       checked={checked}
-      onChange={(value, checked) => componentStore.props[annotation.key] = !checked}
+      onChange={(value, checked) => componentStore.props[annotation.key] = checked}
     />
   </div>
 }

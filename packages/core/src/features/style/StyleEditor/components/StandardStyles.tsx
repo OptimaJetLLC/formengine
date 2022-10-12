@@ -7,14 +7,14 @@ export const StandardStyles = ({
                                  stylesDefinition
                                }: { componentStore: ComponentStore, stylesDefinition: any }) => {
   //TODO mobx.createViewModel (непонятно как заставить работать с массивами) https://github.com/mobxjs/mobx-utils/issues/209
-  const styles = _.cloneDeep(componentStore.styles) || {}
+  const styles = _.cloneDeep(componentStore.style.styles) || {}
 
   return <>
     {Object.entries(stylesDefinition).map((item, index) => {
       const cellProps = {
         rowData: styles, rowIndex: index, editable: true,
         onBlur: () => {
-          componentStore.styles = styles
+          componentStore.style.styles = styles
         }
       }
       return (

@@ -1,4 +1,4 @@
-import {Section} from '../../../Builder/components/Building/components/PropertiesEditor/Section'
+import {Section} from '../../builder/components/Building/components/PropertiesEditor/Section'
 import {AnnotationType, PropertyEditorProps} from '../types'
 import * as yup from 'yup'
 import {ComponentType} from 'react'

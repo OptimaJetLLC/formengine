@@ -1,6 +1,1 @@
-export enum PLACEHOLDERS {
-  id = '__id__',
-  display = '__display__',
-}
-
-export const componentMarkup = '@[__display__](component:__id__)'
+export const componentMarkup = '@[__label__](component:__value__)'

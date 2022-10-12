@@ -1,7 +1,7 @@
 import {ComponentType} from 'react'
 import {PropertyEditorProps} from '../../types'
 import * as yup from 'yup'
-import {Section} from '../../../../Builder/components/Building/components/PropertiesEditor/Section'
+import {Section} from '../../../builder/components/Building/components/PropertiesEditor/Section'
 
 export class Annotation {
   constructor(

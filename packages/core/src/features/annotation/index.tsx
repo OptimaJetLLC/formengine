@@ -1,6 +1,6 @@
 import {ReactNode} from 'react'
 import * as yup from 'yup'
-import {Section} from '../../Builder/components/Building/components/PropertiesEditor/Section'
+import {Section} from '../builder/components/Building/components/PropertiesEditor/Section'
 import {EventEditor} from '../event'
 import {StyleEditor} from '../style'
 import {ValidateEditor} from '../validation/components/ValidateEditor'

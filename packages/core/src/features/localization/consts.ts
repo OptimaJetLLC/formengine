@@ -39,7 +39,9 @@ export const rSuiteLanguages: { [key: string]: any } = {
   'ar': arEG
 }
 
-export const cssStyles = {
-  [BiDi.LTR]: () => import('../../../public/css/rsuite.min.css'),
-  [BiDi.RTL]: () => import('../../../public/css/rsuite-rtl.min.css'),
+const cssFiles = import.meta.glob('../../../public/css/*', { as: 'url' })
+
+export const cssUrls = {
+  [BiDi.LTR]: cssFiles['../../../public/css/rsuite.min.css'],
+  [BiDi.RTL]: cssFiles['../../../public/css/rsuite-rtl.min.css'],
 }

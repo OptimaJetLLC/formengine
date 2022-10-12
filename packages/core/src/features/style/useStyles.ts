@@ -7,15 +7,15 @@ export const useStyles = () => {
 
   let transformedStyles = ''
   const mergedStyles = [
-    ...(componentStore.cssStyles ?? []),
-    ...transformStylesToCSS(componentStore.styles)
+    ...(componentStore.style.cssStyles ?? []),
+    ...transformStylesToCSS(componentStore.style.styles)
   ]
 
   mergedStyles?.forEach(
     ({name, value}) => transformedStyles += styleToString(name, value)
   )
 
-  transformedStyles += componentStore.cssBlock || ''
+  transformedStyles += componentStore.style.cssBlock || ''
 
   return css`${transformedStyles}`
 }

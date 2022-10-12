@@ -1,4 +1,4 @@
-import {screen} from '../../../components/Screen'
+import {screen} from '../../ui/Screen'
 import {Definition} from '../index'
 import {ComponentStore} from '../../../stores/ComponentStore'
 

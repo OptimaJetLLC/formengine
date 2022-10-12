@@ -2,7 +2,7 @@ import {forIn, transform} from 'lodash'
 import {useEffect} from 'react'
 import {useComponentData} from '../../../../utils/contexts/ComponenDataContext'
 import {useStore} from '../../../../utils/contexts/StoreContext'
-import {processBinds} from '../../../substitution/utils'
+import {denoteBinds} from '../../../substitution'
 import {ActionEventHandler, EventName, Func, WeakActionData, WeakArgs} from '../../types'
 import {ActionEvent} from '../../utils/ActionEvent'
 
@@ -26,7 +26,7 @@ export const useActions = (actionsMap: Record<EventName, ActionEventHandler[]>) 
     return function (e: ActionEvent) {
       const actionArgs = !weakArgs ? {} :
         transform(weakArgs, (result: Record<string, any>, value, argumentName) =>
-          result[argumentName] = processBinds(value, store))
+          result[argumentName] = denoteBinds(value, store))
       func(actionArgs, e)
     }
   }

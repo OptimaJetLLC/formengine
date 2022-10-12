@@ -1,6 +1,6 @@
 import {computed, makeAutoObservable, observable} from 'mobx'
 import {EventName, WeakActionData} from '../features/event/types'
-import {StyleItem} from '../features/style/types'
+import {Style} from '../features/style/types'
 import {ParsableValidateSchema} from '../features/validation/types'
 
 export class ComponentStore {
@@ -10,10 +10,7 @@ export class ComponentStore {
   bindTo?: string
   props: Record<string, any> = {}
   events?: Record<EventName, WeakActionData[]>
-  //TODO styles в отдельный блок - объединить три поля в один
-  styles?: Record<string, string>
-  cssStyles?: StyleItem[]
-  cssBlock?: string
+  style: Style = {}
 
   //TODO rename to scheme, move to inner validation?
   validation?: ParsableValidateSchema

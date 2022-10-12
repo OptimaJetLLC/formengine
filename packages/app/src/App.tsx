@@ -1,11 +1,9 @@
-import {Suspense} from 'react'
 import {FormBuilder} from 'fb-core'
 import {getSampleForm} from './utils/getSampleForm'
 import {rsuite} from 'fb-rsuite'
 
 const App = () => {
   return (
-    <Suspense fallback={"Loading"}>
       <FormBuilder
         getForm={getSampleForm}
         view={rsuite}
@@ -24,7 +22,6 @@ const App = () => {
           })
         }}
       />
-    </Suspense>
   )
 }
 
