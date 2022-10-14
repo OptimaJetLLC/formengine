@@ -1,2 +1,2 @@
 import '@testing-library/jest-dom'
-import './matchMedia.mock.js'
+import './matchMedia.mock.ts'

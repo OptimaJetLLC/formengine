@@ -17,10 +17,11 @@ export default defineConfig(({command}) => ({
       fileName: 'index'
     },
     rollupOptions: {
-      external: ['react'],
+      external: ['react', 'react-dom'],
       output: {
         globals: {
-          react: 'React'
+          'react': 'React',
+          'react-dom': 'ReactDOM',
         }
       }
     }

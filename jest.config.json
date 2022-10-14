@@ -1,9 +1,0 @@
-{
-  "testEnvironment": "jsdom",
-  "moduleNameMapper": {
-    "\\.(css|less)$": "jest-transform-stub"
-  },
-  "rootDir": "./",
-  "verbose": true,
-  "setupFilesAfterEnv": ["<rootDir>/scripts/jest/jest-setup.ts"]
-}
