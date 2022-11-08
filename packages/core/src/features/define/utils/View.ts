@@ -1,13 +1,28 @@
-import {screen} from '../../ui/Screen'
-import {Definition} from '../index'
 import {ComponentStore} from '../../../stores/ComponentStore'
+import {screen} from '../../ui/Screen'
+import {defaultErrorMessage, ErrorMessageProps} from '../../validation/components/ErrorMessage'
+import {Definition} from '../index'
 
 export class View {
   #map = new Map<string, Definition<any>>()
+  #error?: Definition<ErrorMessageProps>
 
   constructor(defines: Definition<any>[] = []) {
     this.define(screen)
     defines.forEach(this.define.bind(this))
+  }
+
+  get error() {
+    return this.#error || defaultErrorMessage
+  }
+
+  static create<U extends Definition<any>, D extends [U, ...U[]]>(...defines: D) {
+    return new View(defines)
+  }
+
+  withError(definition: Definition<ErrorMessageProps>) {
+    this.#error = definition
+    return this
   }
 
   define(definition: Definition<any>) {
@@ -28,3 +43,5 @@ export class View {
     return [...this.#map.values()]
   }
 }
+
+export const createView = View.create

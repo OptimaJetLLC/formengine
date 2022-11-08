@@ -1,8 +1,8 @@
+import * as cssProperties from 'known-css-properties'
 import _ from 'lodash/fp'
 import {useState} from 'react'
 import {ComponentStore} from '../../../../stores/ComponentStore'
 import {CompactCell, Row} from './List'
-import * as cssProperties from 'known-css-properties'
 
 /*const properties: any = require('known-css-properties').all.map((value: any) => {
   return {label: value, value}

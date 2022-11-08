@@ -2,11 +2,11 @@ import {ReactNode} from 'react'
 import {node} from '../annotation'
 import {define} from '../define'
 
-interface PageProps {
+interface ScreenProps {
   children: ReactNode
 }
 
-const Screen = (props: PageProps) => {
+const Screen = (props: ScreenProps) => {
 
   return (
     <div>

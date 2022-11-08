@@ -1,7 +1,7 @@
+import {boolean, define, node, string, useComponentData} from 'fb-core'
 import _ from 'lodash/fp'
 import {ReactNode, useCallback, useEffect} from 'react'
 import {Nav} from 'rsuite'
-import {boolean, node, string, define, useComponentData} from 'fb-core'
 
 
 interface TabProps {

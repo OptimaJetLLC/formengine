@@ -1,4 +1,4 @@
-import {Checkbox, Form, InputNumber} from 'rsuite'
+import {Form, InputNumber} from 'rsuite'
 import {PropertyEditorProps} from '../types'
 
 const NumberInput = ({componentStore, annotation}: PropertyEditorProps) => <div>

@@ -12,6 +12,8 @@ const setProperty = defineAction('Set property', ({propertyKey, targetKey, value
   component.props[propertyKey] = value
 }, ['propertyKey', 'targetKey', 'value'])
 
-const validate = defineAction('Validate', (e) => e.store.validateForm())
+const validate = defineAction('Validate', (e) => e.store.form.validate())
+const clear = defineAction('Clear', (e) => e.store.form.clear())
+const reset = defineAction('Reset', (e) => e.store.form.reset())
 
-export {setValue, setProperty, validate}
+export {setValue, setProperty, validate, reset, clear}

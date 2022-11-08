@@ -1,2 +1,2 @@
 export {LangSwitch} from './components/LangSwitch'
-export {Localization} from './components/Localization'
+export {LocalizationProvider} from './components/LocalizationProvider'

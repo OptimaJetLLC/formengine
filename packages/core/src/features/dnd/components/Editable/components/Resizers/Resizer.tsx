@@ -1,5 +1,5 @@
 import {cx} from '@emotion/css'
-import {useStore} from '../../../../../../utils/contexts/StoreContext'
+import {useBuilderStore} from '../../../../../../utils/contexts/BuilderStoreContext'
 import {resizerStyles} from './styles'
 
 type ResizerProps = {
@@ -8,7 +8,7 @@ type ResizerProps = {
 
 //TODO допилить изменение ширины и высоты. Для этого получать componentStore и сетиться на его стили
 export const Resizer = ({position}: ResizerProps) => {
-  const store = useStore()
+  const store = useBuilderStore()
 
   return <div
     className={cx(resizerStyles, position)}

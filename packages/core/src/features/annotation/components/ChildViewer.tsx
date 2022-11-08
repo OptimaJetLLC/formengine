@@ -1,4 +1,3 @@
-import {ReactNode} from 'react'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {LabeledInput} from '../../ui/Containers'
 import {PropertyEditorProps} from '../types'

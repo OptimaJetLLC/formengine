@@ -18,12 +18,12 @@ const createProvider = <T, >(context: Context<T>) => {
 /**
  * Return tuple with hook and provider for context using
  */
-export const createContext = <T, >(name: string): [() => T, Provider<NonNullable<T>>] => {
+export const createContext = <T, >(name: string): [() => T, Provider<NonNullable<T>>, Context<T | undefined>] => {
   const context = React.createContext<T | undefined>(undefined)
   context.displayName = name
 
   const hook = createContextHook(context)
   const provider = createProvider(context)
 
-  return [hook, provider]
+  return [hook, provider, context]
 }

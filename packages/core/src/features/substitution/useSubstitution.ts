@@ -1,11 +1,8 @@
-import {FormikContext} from 'formik'
-import {useContext} from 'react'
 import {useComponentData} from '../../utils/contexts/ComponenDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 
 export const useSubstitution = () => {
   const store = useStore()
-  const formik = useContext(FormikContext)
   const {componentStore: {props}} = useComponentData()
 
   return getSubstitutedValue()
@@ -18,9 +15,9 @@ export const useSubstitution = () => {
       const value = props[key]
 
       if (typeof value !== 'string' || key === 'value') continue
-      if (store.isBuilderMode) continue
+      //if (store.isBuilderMode) continue
 
-      result[key] = substitute(value, formik.values)
+      result[key] = substitute(value, store.form.data)
     }
 
     return result

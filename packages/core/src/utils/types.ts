@@ -6,5 +6,5 @@ export interface WrapperProps {
   viewProps: Record<string, any>
 }
 
-export type Wrapper = ComponentType<WrapperProps>
+export type Wrapper = ComponentType<WrapperProps> | null
 export type ComponentMove = Omit<ComponentData, 'model'>

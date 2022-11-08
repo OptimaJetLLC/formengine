@@ -4,12 +4,12 @@ import * as faClone from '@fortawesome/free-regular-svg-icons/faClone'
 import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt'
 import {observer} from 'mobx-react'
 import React, {useCallback} from 'react'
+import {useBuilderStore} from '../../../../../utils/contexts/BuilderStoreContext'
 import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
-import {useStore} from '../../../../../utils/contexts/StoreContext'
 import {FaIcon} from '../../../../ui/Icons'
 
 export const Toolbar = observer(() => {
-  const store = useStore()
+  const store = useBuilderStore()
   const data = useComponentData()
 
   const onClone = useCallback(() => store.clone(data), [])

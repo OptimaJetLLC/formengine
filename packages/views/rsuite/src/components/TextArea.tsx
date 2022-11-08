@@ -1,5 +1,5 @@
-import {Form, Input} from 'rsuite'
 import {define} from 'fb-core'
+import {Form, Input} from 'rsuite'
 
 interface TextAreaProps {
   label: string,

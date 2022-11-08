@@ -1,10 +1,9 @@
-import {useComponentData} from '../../../../utils/contexts/ComponenDataContext'
-import {Components} from '../../Components'
-import {Wrapper} from '../../../../utils/types'
 import {ComponentStore} from '../../../../stores/ComponentStore'
+import {useComponentData} from '../../../../utils/contexts/ComponenDataContext'
 import {isContainer} from '../../../annotation/utils'
+import {ComponentTree} from '../../ComponentTree'
 
-export function useChildren(currentProps: Record<string, any>, Wrapper?: Wrapper) {
+export function useChildren(currentProps: Record<string, any>) {
   const {componentStore, model} = useComponentData()
 
   if (!componentStore.children?.length) return
@@ -23,7 +22,7 @@ export function useChildren(currentProps: Record<string, any>, Wrapper?: Wrapper
 
     currentProps[container.key] =
       components.length
-        ? <Components parent={componentStore} components={components} Wrapper={Wrapper}/>
+        ? <ComponentTree parent={componentStore} data={components}/>
         : null
   }
 }

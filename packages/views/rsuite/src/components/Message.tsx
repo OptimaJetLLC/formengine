@@ -1,4 +1,4 @@
-import {boolean, oneOf, string, define} from 'fb-core'
+import {boolean, define, oneOf, string} from 'fb-core'
 import {Message} from 'rsuite'
 
 export const message = define(Message)

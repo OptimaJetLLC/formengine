@@ -1,4 +1,4 @@
-import {string, define} from 'fb-core'
+import {define, string} from 'fb-core'
 
 interface StaticContentProps {
   content: string;

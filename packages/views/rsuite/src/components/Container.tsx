@@ -1,6 +1,6 @@
 import {css, cx} from '@emotion/css'
+import {define, node, oneOf} from 'fb-core'
 import {forwardRef} from 'react'
-import {node, oneOf, define} from 'fb-core'
 
 type Direction = 'vertical' | 'horizontal';
 

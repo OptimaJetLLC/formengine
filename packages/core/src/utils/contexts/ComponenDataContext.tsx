@@ -1,4 +1,4 @@
-import {Model} from '../../features/define/utils/Model'
+import {Model} from '../../features/define'
 import {ComponentStore} from '../../stores/ComponentStore'
 import {createContext} from '../createContextHook'
 

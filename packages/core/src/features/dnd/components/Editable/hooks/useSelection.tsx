@@ -1,8 +1,8 @@
 import {cx} from '@emotion/css'
 import React, {useCallback, useEffect, useMemo, useState} from 'react'
 import {useDragDropManager} from 'react-dnd'
+import {useBuilderStore} from '../../../../../utils/contexts/BuilderStoreContext'
 import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
-import {useStore} from '../../../../../utils/contexts/StoreContext'
 import {hoveredClass, selectedClass} from '../../../styles'
 
 export interface SelectionState {
@@ -19,7 +19,7 @@ export interface SelectionHandlers {
 export type ClassName = string
 
 export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] => {
-  const store = useStore()
+  const store = useBuilderStore()
   const {componentStore} = useComponentData()
   const dndMonitor = useDragDropManager().getMonitor()
   const [hovered, setHovered] = useState(false)

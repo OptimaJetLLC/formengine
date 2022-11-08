@@ -1,9 +1,9 @@
-import {useComponentData} from '../../../../utils/contexts/ComponenDataContext'
-import {ActionEventHandler, EventName, EventTuple} from '../../types'
 import {useEffect, useRef, useState} from 'react'
+import {useComponentData} from '../../../../utils/contexts/ComponenDataContext'
 import {useStore} from '../../../../utils/contexts/StoreContext'
-import {ActionEvent} from '../../utils/ActionEvent'
 import {isFunc} from '../../../annotation/utils'
+import {ActionEventHandler, EventName, EventTuple} from '../../types'
+import {ActionEvent} from '../../utils/ActionEvent'
 
 export const useEventHandlers = (): EventTuple => {
   const store = useStore()
@@ -17,7 +17,8 @@ export const useEventHandlers = (): EventTuple => {
 
 
   function setEventHandlers() {
-    const eventNames = properties.filter(isFunc).map((value) => value.key)
+    const eventNames = new Set<string>(properties.filter(isFunc).map((value) => value.key))
+    eventNames.add('onChange').add('onBlur')
     eventNames.forEach((name) => [handlers[name], actionsMap[name]] = getEmptyHandler(name))
     setHandlers({...handlers})
   }
@@ -33,7 +34,7 @@ export const useEventHandlers = (): EventTuple => {
         try {
           action(actionEvent)
         } catch (e) {
-          //TODO прерываемость
+          //TODO прерываемость?
           throw e
         }
       }

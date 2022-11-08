@@ -1,5 +1,5 @@
+import {boolean, define, event, oneOf, string} from 'fb-core'
 import {Button} from 'rsuite'
-import {boolean, event, oneOf, string, define} from 'fb-core'
 
 export const button = define(Button)
   .props({

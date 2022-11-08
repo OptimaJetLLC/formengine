@@ -3,11 +3,15 @@ import {AnnotationMap} from '../../consts'
 import {Annotation} from '../annotations/Annotation'
 import {Options} from '../Options'
 
-export  class BaseBuilder<T> {
+export class BaseBuilder<T> {
   options!: Options
 
   named(name: string) {
     return this.setup({name})
+  }
+
+  hinted(hint: string) {
+    return this.setup({hint})
   }
 
   setup(options: Partial<Options>): this {
@@ -26,7 +30,7 @@ export  class BaseBuilder<T> {
   build(key: string): Annotation {
     const name = this.getName(key)
     const Annotation = AnnotationMap[this.options.type]
-    return new Annotation(key, name, this.options.editor, this.options.scheme, this.options.description, this.options.section)
+    return new Annotation(key, name, this.options.editor, this.options.scheme, this.options.hint, this.options.section)
   }
 
   protected getName(key: string) {

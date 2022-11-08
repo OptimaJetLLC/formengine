@@ -1,6 +1,6 @@
-import {Form, InputPicker} from 'rsuite'
+import {boolean, define, string} from 'fb-core'
 import {CSSProperties} from 'react'
-import {boolean, string, define} from 'fb-core'
+import {Form, InputPicker} from 'rsuite'
 
 interface DropdownProps {
   label: string,

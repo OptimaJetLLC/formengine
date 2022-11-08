@@ -1,4 +1,4 @@
-import {View} from 'fb-core'
+import {createView} from 'fb-core'
 import {breadcrumb} from './components/Breadcrumb'
 import {button} from './components/Button'
 import {card} from './components/Card'
@@ -9,6 +9,7 @@ import {customBlock} from './components/CustomBlock'
 import {customControl} from './components/CustomControl'
 import {dropdown} from './components/Dropdown'
 import {dropzone} from './components/Dropzone'
+import {errorMessage} from './components/ErrorMessage'
 import {grid} from './components/Grid'
 import {gridLayout} from './components/GridLayout'
 import {gridView} from './components/GridView'
@@ -26,7 +27,7 @@ import {staticContent} from './components/StaticContent'
 import {textArea} from './components/TextArea'
 import {treePicker} from './components/TreePicker'
 
-export const rsuite = new View([
+export const rsuite = createView(
   textArea,
   input,
   header,
@@ -55,7 +56,7 @@ export const rsuite = new View([
   richTextEditor,
   image,
   grid
-])
+).withError(errorMessage)
 
 
 

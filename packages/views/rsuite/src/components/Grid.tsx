@@ -1,6 +1,6 @@
+import {define, node} from 'fb-core'
 import {ReactNode} from 'react'
 import {Col, Grid as RGrid, Row} from 'rsuite'
-import {node, define} from 'fb-core'
 
 interface GridProps {
   child1: ReactNode

@@ -10,11 +10,13 @@ import {useSelection} from './hooks/useSelection'
 //TODO По двойному клику выделять компонент, в который вложен компонент?
 export const Editable = observer(({View, viewProps}: WrapperProps) => {
   const [{selected}, selectionHandlers, selectionClassName] = useSelection()
+
   useInnerDropZone(viewProps)
+
   const completeView = <View {...viewProps}/>
+
   return (
-    <Draggable className={cx(selectionClassName, viewProps.className)} {...selectionHandlers}
-               viewForDragPreview={completeView}>
+    <Draggable className={cx(selectionClassName, viewProps.className)} {...selectionHandlers} viewForDragPreview={completeView}>
       {completeView}
       {selected && <Toolbar/>}
       <Resizers show={selected}/>

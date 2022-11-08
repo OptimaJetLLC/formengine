@@ -1,7 +1,7 @@
 import {useDrop} from 'react-dnd'
 import {ConnectDropTarget} from 'react-dnd/dist/types/types'
+import {useBuilderStore} from '../../../../../utils/contexts/BuilderStoreContext'
 import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
-import {useStore} from '../../../../../utils/contexts/StoreContext'
 import {ComponentMove} from '../../../../../utils/types'
 import {AcceptDrop, ItemType} from '../../../consts'
 
@@ -11,7 +11,7 @@ interface DropState {
 }
 
 export const useDropZone = (isAfter: boolean, isInner?: boolean): [DropState, ConnectDropTarget] => {
-  const store = useStore()
+  const store = useBuilderStore()
   const target = useComponentData()
   const {bindTo} = target.componentStore
 

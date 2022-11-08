@@ -1,5 +1,5 @@
-import {PropertyEditorProps} from '../types'
 import {Form, InputPicker} from 'rsuite'
+import {PropertyEditorProps} from '../types'
 import {isProperty} from '../utils'
 
 export const Piker = ({componentStore, annotation}: PropertyEditorProps) => {

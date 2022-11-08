@@ -1,6 +1,6 @@
 import {PropertyEditorProps} from '../../annotation/types'
-import {AddActionButton} from './components/AddActionButton'
 import {ActionList} from './components/ActionList'
+import {AddActionButton} from './components/AddActionButton'
 
 //EventEditor: one eventName - one editor - some actions
 export const EventEditor = ({annotation}: PropertyEditorProps) => {

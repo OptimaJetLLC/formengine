@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
+import {boolean, define, event, oneOf, string} from 'fb-core'
 import {Input as RInput, InputProps as RInputProps} from 'rsuite'
-import {boolean, event, oneOf, string, define} from 'fb-core'
 
 export interface InputProps extends RInputProps {
   label: string
@@ -50,7 +50,7 @@ export const input = define(Input)
     readOnly: boolean,
     size: oneOf('xs', 'sm', 'md', 'lg').labeled('Extra small', 'Small', 'Medium', 'Large').default('md'),
     onChange: event,
-    value: undefined,
+    value: string.default(''),
   })
   .actions((props, def) => {
     return {

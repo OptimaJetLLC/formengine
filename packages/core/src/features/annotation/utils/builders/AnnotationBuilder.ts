@@ -1,9 +1,9 @@
 import {ComponentType} from 'react'
 import * as yup from 'yup'
 import {Enum, PropertyEditorProps} from '../../types'
+import {Options} from '../Options'
 import {BaseBuilder} from './BaseBuilder'
 import {OneOfBuilder} from './OneOfBuilder'
-import {Options} from '../Options'
 import {FromYup, SchemedBuilder} from './SchemedBuilder'
 
 export class AnnotationBuilder<T> extends BaseBuilder<T> {

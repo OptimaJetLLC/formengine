@@ -4,14 +4,14 @@ import CloseIcon from '@rsuite/icons/Close'
 import React, {forwardRef, useState} from 'react'
 import {Nav, Popover, SelectPicker, TreePicker} from 'rsuite'
 import {ItemDataType} from 'rsuite/esm/@types/common'
-import {useStore} from '../../../../../utils/contexts/StoreContext'
+import {useBuilderStore} from '../../../../../utils/contexts/BuilderStoreContext'
 import {Node} from '../../../../../utils/Node'
 import {LabeledInput} from '../../../../ui/Containers'
 import {NavIconItem} from '../../../../ui/NavIconItem'
 import {CloseButton} from './CloseButton'
 
 export const BindPopover = forwardRef<any, any>(({onClose, left, top, className, onSelect}: any, ref) => {
-  const store = useStore()
+  const store = useBuilderStore()
   const [activeNode, setActiveNode] = useState<Node>()
   const [propertyName, setPropertyName] = useState<string>()
 

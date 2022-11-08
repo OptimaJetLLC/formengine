@@ -1,6 +1,6 @@
 import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
-import {DropZone} from '../components/DropZone'
 import {isContainer} from '../../../../annotation/utils'
+import {DropZone} from '../components/DropZone'
 
 export const useInnerDropZone = (props: Record<string, any>) => {
   const {model} = useComponentData()

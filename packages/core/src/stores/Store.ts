@@ -1,0 +1,48 @@
+import {makeObservable, observable} from 'mobx'
+import {clear, reset, setProperty, validate} from '../features/event/actions'
+import {ActionDefinition} from '../features/event/types'
+import {EventBus} from '../features/event/utils/EventBus'
+import {FormViewerProps} from '../features/form-viewer/FormViewer'
+import {screen} from '../features/ui/Screen'
+import {Form} from '../features/validation'
+import {treeFind} from '../utils'
+import {Wrapper} from '../utils/types'
+import {ComponentStore} from './ComponentStore'
+
+export class Store {
+  readonly eventBus = new EventBus()
+  readonly form = new Form()
+
+  actions: ActionDefinition[] = [setProperty, validate, reset, clear]
+  screen = new ComponentStore(screen.name, screen.type)
+  Wrapper: Wrapper = null
+
+  constructor(public props: FormViewerProps) {
+    makeObservable(this, {
+      screen: observable,
+      Wrapper: observable.ref,
+    })
+  }
+
+  findComponent(key: string) {
+    const result = treeFind(this.screen, key)
+
+    if (!result) {
+      throw Error(`Component ${key} didn't found!`)
+    }
+
+    return result
+  }
+
+  findAction(actionName: string, targetKey?: string) {
+    const target = targetKey ? this.findComponent(targetKey) : undefined
+    const actionList = target ? this.props.view.getModel(target).actions : this.actions
+    const action = actionList?.find((val) => val.name === actionName)
+
+    if (!action) {
+      throw Error(`Action ${actionName} didn't found!`)
+    }
+
+    return action
+  }
+}

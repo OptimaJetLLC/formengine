@@ -1,27 +1,19 @@
-import {ComponentType} from 'react'
-import {Annotation} from '../../annotation/utils/annotations/Annotation'
-import {ActionsInitializer} from '../types'
-import {ActionDefinition, ActionEventHandler} from '../../event/types'
-import {Annotations} from '../../annotation/types'
-import {defineAction} from '../../event/defineAction'
-import {ComponentStore} from '../../../stores/ComponentStore'
-import {key, string, style, validation} from '../../annotation'
 import {forIn, startCase, transform} from 'lodash'
+import {ComponentType} from 'react'
+import {ComponentStore} from '../../../stores/ComponentStore'
 import {isFunction} from '../../../utils'
+import {key, string, style, validation} from '../../annotation'
+import {Annotations} from '../../annotation/types'
+import {Annotation} from '../../annotation/utils/annotations/Annotation'
+import {defineAction} from '../../event/defineAction'
+import {ActionDefinition, ActionEventHandler} from '../../event/types'
+import {ActionsInitializer} from '../types'
 import {Model} from './Model'
 
 //TODO проброс пропертей в инициализатор экшенов.
 //TODO rename
 export class Definition<T extends object> {
   readonly #name?: string
-
-  get name() {
-    return this.#name ?? this.type
-  }
-
-  get type(): string {
-    return this.view.displayName || this.view.name
-  }
 
   private constructor(
     readonly view: ComponentType<T>,
@@ -33,12 +25,15 @@ export class Definition<T extends object> {
     this.#name = name
   }
 
-  named = (name: string) => this.#cloneWith({name})
-  props = (properties: Annotations<T>) => this.#cloneWith({properties})
-  actions = (fn: ActionsInitializer) => this.#cloneWith({actionsInitializer: fn})
-  hinted = (hint: string) => this.#cloneWith({hint})
+  get name() {
+    return this.#name ?? this.type
+  }
 
-  static define<T extends object>(view: ComponentType<T>) {
+  get type(): string {
+    return this.view.displayName || this.view.name
+  }
+
+  static define<T extends object, U>(view: ComponentType<T>) {
     checkExistName()
     return new Definition<T>(view)
 
@@ -50,6 +45,14 @@ export class Definition<T extends object> {
       }
     }
   }
+
+  named = (name: string) => this.#cloneWith({name})
+
+  props = (properties: Annotations<T>) => this.#cloneWith({properties})
+
+  actions = (fn: ActionsInitializer) => this.#cloneWith({actionsInitializer: fn})
+
+  hinted = (hint: string) => this.#cloneWith({hint})
 
   init(store: ComponentStore) {
     return new Model(

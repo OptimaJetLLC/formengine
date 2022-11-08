@@ -20,7 +20,6 @@
         "@popperjs/core": "^2.10.2",
         "@rsuite/icons": "^1.0.2",
         "autosize": "^5.0.1",
-        "formik": "^2.2.9",
         "i18next": "^21.6.7",
         "i18next-browser-languagedetector": "^6.1.2",
         "i18next-resources-to-backend": "^1.0.0",

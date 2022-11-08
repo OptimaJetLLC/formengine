@@ -1,7 +1,7 @@
 import {ComponentType} from 'react'
-import {PropertyEditorProps} from '../../types'
 import * as yup from 'yup'
-import {Section} from '../../../builder/components/Building/components/PropertiesEditor/Section'
+import {Section} from '../../../form-builder/components/RightPanel/PropertiesEditor/Section'
+import {PropertyEditorProps} from '../../types'
 
 export class Annotation {
   constructor(
@@ -9,7 +9,7 @@ export class Annotation {
     readonly name: string,
     readonly editor: ComponentType<PropertyEditorProps>,
     readonly scheme?: yup.AnySchema,
-    readonly description?: string,
+    readonly hint?: string,
     readonly section: Section = Section.Main,
   ) {
   }

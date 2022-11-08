@@ -1,6 +1,6 @@
 import {ComponentType} from 'react'
+import {Annotation} from '../../annotation/utils/annotations/Annotation'
 import {ActionDefinition} from '../../event/types'
-import {Annotation} from "../../annotation/utils/annotations/Annotation";
 
 export class Model<T> {
   readonly #name?: string
