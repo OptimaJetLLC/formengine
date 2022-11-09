@@ -3,10 +3,9 @@ import React from 'react'
 import {Button, ButtonGroup, Form, IconButton, IconButtonProps} from 'rsuite'
 import {PropertyEditorProps} from '../types'
 import {isProperty} from '../utils'
+import {LabeledValue} from '../utils/LabeledValue'
 
-export interface RadioButtonProps extends IconButtonProps {
-  value: string;
-  label?: string;
+export interface RadioButtonProps extends IconButtonProps, LabeledValue {
   icon?: React.ReactElement<IconProps>;
 }
 

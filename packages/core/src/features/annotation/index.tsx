@@ -4,6 +4,7 @@ import {EventEditor} from '../event'
 import {Section} from '../form-builder/components/RightPanel/PropertiesEditor/Section'
 import {StyleEditor} from '../style'
 import {ValidateEditor} from '../validation/components/ValidateEditor'
+import {ArrayInput} from './components/ArrayInput'
 import {BooleanInput} from './components/BooleanInput'
 import {ChildViewer} from './components/ChildViewer'
 import {KeyInput} from './components/KeyInput'
@@ -20,6 +21,9 @@ export const validation = createAnnotation(ValidateEditor).setup({section: Secti
 export const string = createProperty(StringInput).schemed(yup.string())
 export const boolean = createProperty(BooleanInput).schemed(yup.boolean())
 export const number = createProperty(NumberInput).schemed(yup.number())
+
+//Array
+export const array = createProperty(ArrayInput).schemed(yup.array())
 
 //TODO rename to func, or action, or to stay event?
 //Use for create functions for events

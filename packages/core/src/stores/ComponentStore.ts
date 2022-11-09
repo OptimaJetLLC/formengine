@@ -26,7 +26,7 @@ export class ComponentStore {
     makeAutoObservable(this, {
       //events: observable.deep,
       validation: observable.deep,
-      props: observable.shallow,
+      props: observable.deep,
       isRoot: computed,
       isContainer: computed,
     })
