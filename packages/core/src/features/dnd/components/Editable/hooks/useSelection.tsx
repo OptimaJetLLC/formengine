@@ -1,6 +1,6 @@
 import {cx} from '@emotion/css'
 import React, {useCallback, useEffect, useMemo, useState} from 'react'
-import {useDragDropManager} from 'react-dnd'
+import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/contexts/BuilderStoreContext'
 import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
 import {hoveredClass, selectedClass} from '../../../styles'
@@ -21,7 +21,7 @@ export type ClassName = string
 export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] => {
   const store = useBuilderStore()
   const {componentStore} = useComponentData()
-  const dndMonitor = useDragDropManager().getMonitor()
+  const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
   const [hovered, setHovered] = useState(false)
   const [selected, setSelected] = useState(false)
 
@@ -45,9 +45,9 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
   }, [])
 
   const className = useMemo(() => (cx({
-    [hoveredClass]: hovered && !selected && !dndMonitor.isDragging(),
-    [selectedClass]: selected && !dndMonitor.isDragging(),
-  })), [hovered, selected])
+    [hoveredClass]: hovered && !selected && !isDragging,
+    [selectedClass]: selected && !isDragging,
+  })), [hovered, selected, isDragging])
 
   return [{hovered, selected}, {onMouseDown, onMouseOver, onMouseLeave}, className]
 }

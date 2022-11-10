@@ -1,16 +1,6 @@
-import type {CSSProperties, FC} from 'react'
+import styled from '@emotion/styled'
 import {useDragLayer, XYCoord} from 'react-dnd'
 import {ItemType} from '../consts'
-
-const layerStyles: CSSProperties = {
-  position: 'fixed',
-  pointerEvents: 'none',
-  zIndex: 100,
-  left: 0,
-  top: 0,
-  width: '100%',
-  height: '100%',
-}
 
 function getItemStyles(
   initialOffset: XYCoord | null,
@@ -32,18 +22,11 @@ function getItemStyles(
     transform,
     WebkitTransform: transform,
     width: isFromAddElements ? 'max-content' : 400,
-    overflow: 'hidden',
-    background: 'white',
-    boxShadow: '0 5px 20px 0 rgb(0 0 0 / 35%)',
-    borderRadius: 5,
   }
 }
 
-export interface CustomDragLayerProps {
-}
-
-export const CustomDragLayer: FC<CustomDragLayerProps> = (props) => {
-  const {itemType, isDragging, item, initialOffset, currentOffset} =
+export const CustomDragLayer = () => {
+  const {itemType, isDragging, initialOffset, currentOffset} =
     useDragLayer((monitor) => ({
       item: monitor.getItem(),
       itemType: monitor.getItemType(),
@@ -56,8 +39,29 @@ export const CustomDragLayer: FC<CustomDragLayerProps> = (props) => {
     return null
   }
   return (
-    <div style={layerStyles}>
-      <div style={getItemStyles(initialOffset, currentOffset, itemType)} id={'fb-drag-preview'}/>
-    </div>
+    <Layer>
+      <Container style={getItemStyles(initialOffset, currentOffset, itemType)} id={'fb-drag-preview'}/>
+    </Layer>
   )
 }
+
+const Layer = styled.div`
+  position: fixed;
+  pointer-events: none;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+`
+
+const Container = styled.div`
+  overflow: hidden;
+  box-shadow: 0 5px 20px 0 rgb(0 0 0 / 35%);
+  border-radius: 5px;
+  background-color: white;
+
+  .rs-theme-dark & {
+    background-color: #414549;
+  }
+`

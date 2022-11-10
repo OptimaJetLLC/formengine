@@ -46,6 +46,10 @@ const Container = styled.div`
   flex: 1;
   overflow-y: auto;
   margin-right: 10px;
+
+  & > * {
+    margin-bottom: 5px;
+  }
 `
 
 

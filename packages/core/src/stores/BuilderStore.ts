@@ -4,7 +4,6 @@ import {defaultLanguage} from '../features/localization/consts'
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../features/localization/utils'
 import {screen} from '../features/ui/Screen'
 import {treeFind} from '../utils'
-import {getKey} from '../utils/getKey'
 import {Node} from '../utils/Node'
 import {ComponentMove} from '../utils/types'
 import {ComponentStore} from './ComponentStore'
@@ -75,13 +74,8 @@ export class BuilderStore {
 
   //TODO clone for inner components without removing
   clone(source: ComponentMove) {
-    const clone = _.cloneDeep(source.componentStore)
-
-    this.treeMap(clone, (child) => child.key = child.key + ' ' + getKey())
-
-    this.move({
-      componentStore: clone,
-    }, source, false)
+    const cloned = this.add(source, source, true)
+    this.selected = this.findNode(cloned.key)
   }
 
   move(source: ComponentMove, target: ComponentMove, isAfter: boolean = false, inner: boolean = false) {
@@ -104,9 +98,28 @@ export class BuilderStore {
     }
   }
 
+  add(source: ComponentMove, target: ComponentMove, isAfter: boolean = false, inner: boolean = false) {
+    const clone = _.cloneDeep(source.componentStore)
+    this.unifyComponentKeys(clone)
+    this.move({componentStore: clone}, target, isAfter, inner)
+    this.selected = this.findNode(clone.key)
+    return clone
+  }
+
   remove(source: ComponentMove) {
     const index = BuilderStore.getIndexInParent(source)
     source.parent?.children?.splice(index, 1)
+  }
+
+  unifyComponentKeys(source: ComponentStore) {
+    const keysList: string[] = []
+    this.treeMap(this.viewer.screen, ({key}) => keysList.push(key))
+    this.treeMap(source, item => {
+      let count = 1
+      const withCount = () => item.type + ' ' + count
+      while (keysList.includes(withCount())) count++
+      keysList.push(item.key = withCount())
+    })
   }
 
   clear() {

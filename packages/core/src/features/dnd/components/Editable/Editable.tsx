@@ -1,5 +1,6 @@
 import {cx} from '@emotion/css'
 import {observer} from 'mobx-react'
+import {useDragLayer} from 'react-dnd'
 import {WrapperProps} from '../../../../utils/types'
 import {Draggable} from './components/Draggable'
 import {Resizers} from './components/Resizers'
@@ -12,14 +13,17 @@ export const Editable = observer(({View, viewProps}: WrapperProps) => {
   const [{selected}, selectionHandlers, selectionClassName] = useSelection()
 
   useInnerDropZone(viewProps)
-
+  const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
   const completeView = <View {...viewProps}/>
 
   return (
-    <Draggable className={cx(selectionClassName, viewProps.className)} {...selectionHandlers} viewForDragPreview={completeView}>
+    <Draggable className={cx(selectionClassName, viewProps.className)} {...selectionHandlers}
+               viewForDragPreview={completeView}>
       {completeView}
-      {selected && <Toolbar/>}
-      <Resizers show={selected}/>
+      {selected && !isDragging && <>
+        <Toolbar/>
+        <Resizers show={selected}/>
+      </>}
     </Draggable>
   )
 })

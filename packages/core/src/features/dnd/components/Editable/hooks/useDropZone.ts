@@ -19,18 +19,15 @@ export const useDropZone = (isAfter: boolean, isInner?: boolean): [DropState, Co
     accept: AcceptDrop,
     drop: (source: ComponentMove, monitor) => {
       let type = monitor.getItemType() as ItemType
+      const {componentStore} = target
       switch (type) {
         case ItemType.AddedComponent:
+          store.add(source, isInner ? {componentStore} : target, isAfter, isInner)
+          break
         case ItemType.Component:
           //TODO механизм биндинга свойств
           source.componentStore.bindTo = bindTo
-          if (isInner) {
-            store.move(source, {
-              componentStore: target.componentStore,
-            }, isAfter, isInner)
-          } else {
-            store.move(source, target, isAfter, isInner)
-          }
+          store.move(source, isInner ? {componentStore} : target, isAfter, isInner)
           break
       }
     },

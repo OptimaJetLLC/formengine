@@ -52,6 +52,10 @@ const Popover = styled.div`
   box-shadow: 0 0 15px rgb(0 0 0 / 25%);
   transition: opacity .1s ease, visibility .1s linear !important;
   background-color: rgb(68 68 68);
+
+  .rs-theme-dark & {
+    background-color: #414549;
+  }
 `
 
 const plusIcon = css`
