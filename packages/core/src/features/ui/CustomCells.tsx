@@ -13,7 +13,7 @@ const InputCell = ({rowData, dataKey, rowIndex, ...props}: InputCellProps) => {
   }
   return (
     <SCell {...props}>
-      <Input defaultValue={rowData[dataKey]} onChange={onChange} size="sm"/>
+      <Input value={rowData[dataKey]} onChange={onChange} size="sm"/>
     </SCell>
   )
 }

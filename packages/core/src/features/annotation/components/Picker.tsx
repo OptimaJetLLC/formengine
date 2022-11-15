@@ -1,18 +1,15 @@
-import {Form, InputPicker} from 'rsuite'
+import {InputPicker} from 'rsuite'
+import {LabeledInput} from '../../ui/Containers'
 import {PropertyEditorProps} from '../types'
-import {isProperty} from '../utils'
+import {isProperty, makeAnnotationProps} from '../utils'
 
-export const Piker = ({componentStore, annotation}: PropertyEditorProps) => {
-  return (
-    <div>
-      <Form.ControlLabel>{annotation.name}</Form.ControlLabel>
-      <InputPicker
-        block
-        value={componentStore.props[annotation.key]}
-        defaultValue={annotation.scheme?.getDefault()}
-        onChange={value => componentStore.props[annotation.key] = value}
-        data={isProperty(annotation) ? annotation.data : []}
-      />
-    </div>
-  )
-}
+export const Picker = ({componentStore, annotation}: PropertyEditorProps) => (
+  <LabeledInput>
+    <label>{annotation.name}</label>
+    <InputPicker
+      block
+      {...makeAnnotationProps({componentStore, annotation})}
+      data={isProperty(annotation) ? annotation.data : []}
+    />
+  </LabeledInput>
+)

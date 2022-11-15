@@ -3,6 +3,7 @@ import {Close, Plus} from '@rsuite/icons'
 import React, {FormEventHandler, useEffect, useState} from 'react'
 import {Button, Form, Table, TableProps} from 'rsuite'
 import {RowDataType} from 'rsuite-table/lib/@types/common'
+import {labeledValue} from '../annotation/utils/LabeledValue'
 import {ActionCell} from './CustomCells'
 
 const {ErrorMessage} = Form
@@ -21,32 +22,34 @@ export interface EditableTableProps extends TableProps {
 export interface EditableTableState {
   autoHeight?: boolean
   maxHeight?: number
-  shouldUpdateScroll?: boolean
 }
 
 export const EditableTable = (props: EditableTableProps) => {
   const [state, setState] = useState<EditableTableState>({})
+  const [shouldScroll, setShouldScroll] = useState(false)
 
   const {data, onChange, columns, label, errorMessage, ...tableProps} = props
-  const {autoHeight, maxHeight, shouldUpdateScroll} = state
+  const {autoHeight, maxHeight} = state
 
   const headerHeight = props.headerHeight ?? 40
   const rowHeight = (props.rowHeight as number) ?? 46
-  const maxRows = props.maxRows ?? 4
+  const maxRows = props.maxRows ?? 5
 
-  const onAddColumn = () => onChange?.([
-    ...(data ?? []),
-    {value: '', label: ''}
-  ] as any)
+  const onAddColumn = () => {
+    onChange?.([...data, labeledValue] as any)
+    setShouldScroll(true)
+    updateHeight()
+  }
 
   const onRemoveColumn = (index: any) => {
     data.splice(index, 1)
-    onChange?.([...data] as any)
+    onChange?.(data as any)
+    updateHeight()
   }
 
   const updateHeight = () => {
     const emptyHeight = props.renderEmpty ? headerHeight + rowHeight : 0
-    const maxHeight = (props.headerHeight ?? 0) + rowHeight * maxRows
+    const maxHeight = headerHeight + rowHeight * maxRows
 
     setState({
       autoHeight: data.length <= maxRows,
@@ -58,11 +61,11 @@ export const EditableTable = (props: EditableTableProps) => {
     onChange: () => onChange?.([...data] as any)
   }))
 
-  const calcShouldUpdateScroll = () => {
+  const shouldUpdateScroll = () => {
     const scrollPos: { y?: number } = {}
-    if (shouldUpdateScroll) {
-      setState({...state, shouldUpdateScroll: false})
+    if (shouldScroll) {
       scrollPos.y = Number.MAX_SAFE_INTEGER
+      setShouldScroll(false)
     }
     return scrollPos
   }
@@ -76,7 +79,7 @@ export const EditableTable = (props: EditableTableProps) => {
             rowHeight={rowHeight}
             height={maxHeight}
             autoHeight={autoHeight}
-            shouldUpdateScroll={calcShouldUpdateScroll}
+            shouldUpdateScroll={shouldUpdateScroll}
             {...tableProps}>
       {prepareColumns()}
       <Column width={45}>

@@ -2,10 +2,12 @@ import {Table} from 'rsuite'
 import {InputCell} from '../../ui/CustomCells'
 import {EditableTable} from '../../ui/EditableTable'
 import {PropertyEditorProps} from '../types'
+import {makeAnnotationProps} from '../utils'
 
 const {Column, HeaderCell} = Table
 
-export const ArrayInput = ({componentStore, annotation}: PropertyEditorProps) => {
+export const ArrayInput = (props: PropertyEditorProps) => {
+  const {value, onChange} = makeAnnotationProps(props)
   const columns = [
     <Column flexGrow={1} key={'value'}>
       <HeaderCell>Value</HeaderCell>
@@ -18,12 +20,5 @@ export const ArrayInput = ({componentStore, annotation}: PropertyEditorProps) =>
     </Column>
   ]
 
-  return (
-    <div>
-      <EditableTable data={componentStore.props[annotation.key] ?? annotation.scheme?.getDefault()} label={'Items'} columns={columns}
-                     onChange={(value: any) => {
-                       componentStore.props[annotation.key] = value
-                     }}/>
-    </div>
-  )
+  return <EditableTable data={value} onChange={onChange} label={'Items'} columns={columns}/>
 }

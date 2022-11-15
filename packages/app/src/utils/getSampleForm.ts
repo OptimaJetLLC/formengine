@@ -32,17 +32,10 @@ export function getSampleForm() {
   nameContainer.children.push(lastName)
 
   const type = new ComponentStore('type', 'Dropdown')
-  type.props.label = 'Type'
-  type.props.data = ([
-    {label: 'Internal', value: 'Internal'},
-    {label: 'External', value: 'External'},
-    {label: 'Direct', value: 'Direct'}])
   type.props.block = true
   formScreen.children.push(type)
 
   const comment = new ComponentStore('comment', 'TextArea')
-  comment.props.label = 'Comment'
-  comment.props.rows = 5
   formScreen.children.push(comment)
 
   const buttonContainer = new ComponentStore('button container', 'Container')
@@ -57,6 +50,9 @@ export function getSampleForm() {
   const cancelButton = new ComponentStore('cancel', 'Button')
   cancelButton.props.children = 'Cancel'
   buttonContainer.children.push(cancelButton)
+
+  formScreen.children.push(new ComponentStore('RadioGroup', 'RadioGroup'))
+
 
   return formScreen
 }

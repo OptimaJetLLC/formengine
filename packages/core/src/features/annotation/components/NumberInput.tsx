@@ -1,12 +1,10 @@
 import {Form, InputNumber} from 'rsuite'
 import {PropertyEditorProps} from '../types'
+import {makeAnnotationProps} from '../utils'
 
-const NumberInput = ({componentStore, annotation}: PropertyEditorProps) => <div>
-  <Form.ControlLabel>{annotation.name}</Form.ControlLabel>
-  <InputNumber
-    value={componentStore.props[annotation.key]}
-    onChange={value => componentStore.props[annotation.key] = value}
-  />
+const NumberInput = (props: PropertyEditorProps) => <div>
+  <Form.ControlLabel>{props.annotation.name}</Form.ControlLabel>
+  <InputNumber {...makeAnnotationProps(props)}/>
 </div>
 
 export {NumberInput}

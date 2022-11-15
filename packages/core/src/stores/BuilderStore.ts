@@ -13,7 +13,7 @@ export class BuilderStore {
 
   isBuilderMode: boolean = true
   isResizing: boolean = false
-  selected: Node | null = null
+  selected?: Node
   language = defaultLanguage
 
   constructor(

@@ -1,4 +1,4 @@
-import {define} from 'fb-core'
+import {define, number, string} from 'fb-core'
 import {Form, Input} from 'rsuite'
 
 interface TextAreaProps {
@@ -11,16 +11,14 @@ const TextArea = (props: TextAreaProps) => {
   return (
     <div>
       <Form.ControlLabel>{props.label}</Form.ControlLabel>
-      <Textarea {...props}/>
+      <Input as="textarea" {...props}/>
     </div>
   )
 }
-const Textarea = (props: any) =>
-  <Input rows={5} as="textarea" {...props}/>
 
 export const textArea = define(TextArea)
   .props({
-    'label': undefined,
-    'placeholder': undefined,
-    'rows': undefined,
+    label: string.default('Text area'),
+    placeholder: string,
+    rows: number.default(5),
   })

@@ -13,12 +13,11 @@ export const Resizer = ({position}: ResizerProps) => {
   return <div
     className={cx(resizerStyles, position)}
     onMouseDown={(e: any) => {
-      //TODO
       store.isResizing = true
       e.preventDefault()
       e.stopPropagation()
       const move = (e: MouseEvent) => {
-        console.log(e.clientX)
+        //TODO
       }
       window.addEventListener('mousemove', move)
       window.addEventListener('mouseup', (e) => {

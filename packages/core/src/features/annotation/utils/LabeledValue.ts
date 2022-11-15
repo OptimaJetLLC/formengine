@@ -5,6 +5,8 @@ export interface LabeledValue {
   label?: string;
 }
 
+export const labeledValue: LabeledValue = {label: '', value: ''}
+
 export const toLabeledValues = (items: string[] | LabeledValue[]) =>
   items.map(item => ({
     value: isObject(item) ? item.value : item,

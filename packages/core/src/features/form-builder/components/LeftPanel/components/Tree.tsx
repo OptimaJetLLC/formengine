@@ -1,9 +1,7 @@
 import styled from '@emotion/styled'
-import {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import * as faCaretDown from '@fortawesome/free-solid-svg-icons/faCaretDown'
-import * as faCaretUp from '@fortawesome/free-solid-svg-icons/faCaretUp'
+import {CollaspedOutline, ExpandOutline} from '@rsuite/icons'
 import {observer} from 'mobx-react'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, Tree as RTree} from 'rsuite'
 import {ItemDataType} from 'rsuite/esm/@types/common'
@@ -11,7 +9,6 @@ import {DropData} from 'rsuite/esm/Tree/Tree'
 import {useBuilderStore} from '../../../../../utils/contexts/BuilderStoreContext'
 import {Node} from '../../../../../utils/Node'
 import {Columns, Rows} from '../../../../ui/Containers'
-import {FaIcon} from '../../../../ui/Icons'
 
 const Tree = observer(() => {
   const store = useBuilderStore()
@@ -19,7 +16,7 @@ const Tree = observer(() => {
   const [currentExpandedKeys, setCurrentExpandedKeys] = useState<string[]>([])
 
   let expandedNodesKeys: string[] | never = []
-  const extractParentNodesKeys = (node: Node | null) => {
+  const extractParentNodesKeys = (node?: Node) => {
     if (node?.parent?.data?.key) {
       expandedNodesKeys.push(node.parent.data.key)
       extractParentNodesKeys(node.parent)
@@ -27,6 +24,7 @@ const Tree = observer(() => {
     expandedNodesKeys = expandedNodesKeys.concat(currentExpandedKeys)
   }
   extractParentNodesKeys(store.selected)
+  useEffect(() => extractParentNodesKeys(store.tree.children?.[0]), [])
 
   //TODO починить перенос по дереву. Проблема связана со Suspense
   //TODO учитывать dropNodePosition, чтобы вычислить позицию isBefore
@@ -64,10 +62,10 @@ const Tree = observer(() => {
           store.treeMap(store.viewer.screen, (node) => keys.push(node.key))
           setCurrentExpandedKeys(keys)
         }}
-        size={'sm'} appearance={'subtle'}><ExpandIcon/>{t('tree.expand')}</SubtleIconButton>
+        size={'sm'} appearance={'subtle'}><ExpandOutline/>{t('tree.expand')}</SubtleIconButton>
       <SubtleIconButton
         onClick={() => setCurrentExpandedKeys([])}
-        size={'sm'} appearance={'subtle'}><CollapseIcon/>{t('tree.collapse')}</SubtleIconButton>
+        size={'sm'} appearance={'subtle'}><CollaspedOutline/>{t('tree.collapse')}</SubtleIconButton>
     </Columns>
   </Rows>
 })
@@ -85,27 +83,12 @@ const TreeNode = styled.div`
 `
 
 const SubtleIconButton = styled(Button)`
-  display: flex;
+  display: flex !important;
   align-items: center;
 
   & > *:first-of-type {
-    margin-right: 3px;
+    margin-right: 10px;
   }
 `
-
-const CombineIconsVertical = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const CollapseIcon = (p: any) => <CombineIconsVertical {...p} style={{transform: 'scale(1.3)'}}>
-  <FaIcon icon={faCaretDown as unknown as IconDefinition} height={'0.4em'} viewBox={'0 160 320 200'}/>
-  <FaIcon icon={faCaretUp as unknown as IconDefinition} height={'0.4em'} viewBox={'0 150 320 200'}/>
-</CombineIconsVertical>
-
-const ExpandIcon = (p: any) => <CombineIconsVertical {...p} style={{transform: 'scale(1.3)'}}>
-  <FaIcon icon={faCaretUp as unknown as IconDefinition} height={'0.4em'} viewBox={'0 170 320 200'}/>
-  <FaIcon icon={faCaretDown as unknown as IconDefinition} height={'0.4em'} viewBox={'0 170 320 200'}/>
-</CombineIconsVertical>
 
 export {Tree}

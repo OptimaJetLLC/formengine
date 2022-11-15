@@ -1,14 +1,16 @@
-import {boolean, define, string} from 'fb-core'
+import {array, boolean, define, event, string} from 'fb-core'
+import {LabeledValue, toLabeledValues} from 'fb-core/src/features/annotation/utils/LabeledValue'
 import {CSSProperties} from 'react'
 import {Form, InputPicker} from 'rsuite'
+import {InputPickerProps} from 'rsuite/esm/InputPicker/InputPicker'
+import {placement, size} from '../commonProperties'
 
-interface DropdownProps {
+interface DropdownProps extends InputPickerProps {
   label: string,
-  data: { label: string, value: string }[]
+  data: LabeledValue[]
   placeholder: string
   style: CSSProperties | undefined
   className: string
-  block: boolean
 }
 
 const Dropdown = ({label, ...props}: DropdownProps) => {
@@ -24,10 +26,24 @@ const Dropdown = ({label, ...props}: DropdownProps) => {
 
 export const dropdown = define(Dropdown)
   .props({
-    'block': boolean.default(false),
-    'data': undefined,
-    'label': string.default(''),
-    'placeholder': string.default(''),
+    label: string.default('Select'),
+    placement,
+    size,
+    defaultValue: string.default('a'),
+    placeholder: string,
+    data: array.default(toLabeledValues(['a', 'b', 'c'])),
 
+    block: boolean.default(false),
+    cleanable: boolean.default(false),
+    creatable: boolean.default(false),
+    disabled: boolean.default(false),
+    groupBy: string.default(''),
+
+    onSelect: event,
+    onClean: event,
+    onClose: event,
+    onCreate: event,
+    onChange: event,
+    onSearch: event,
   })
 

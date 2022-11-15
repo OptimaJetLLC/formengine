@@ -1,4 +1,4 @@
-import {FirstParameter} from '../types'
+import {FirstParameter, PropertyEditorProps} from '../types'
 import {Annotation} from './annotations/Annotation'
 import {Container} from './annotations/Container'
 import {Event} from './annotations/Event'
@@ -23,6 +23,14 @@ export const isModule = (value: Annotation): value is Module => {
 }
 
 export const createAnnotation = AnnotationBuilder.create
+
+export const makeAnnotationProps = ({componentStore, annotation}: PropertyEditorProps) => {
+  const value = componentStore.props[annotation.key] ?? annotation.scheme?.getDefault()
+  const onChange = (value: any) => {
+    componentStore.props[annotation.key] = value
+  }
+  return {value, onChange}
+}
 
 export function createProperty(editors: FirstParameter<typeof createAnnotation>) {
   return createAnnotation(editors).setup({type: 'Property'})

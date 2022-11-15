@@ -9,7 +9,7 @@ import {BooleanInput} from './components/BooleanInput'
 import {ChildViewer} from './components/ChildViewer'
 import {KeyInput} from './components/KeyInput'
 import {NumberInput} from './components/NumberInput'
-import {Piker} from './components/Picker'
+import {Picker} from './components/Picker'
 import {StringInput} from './components/StringInput'
 import {createAnnotation, createProperty} from './utils'
 
@@ -40,7 +40,7 @@ export const node = createAnnotation<ReactNode>(ChildViewer).setup({type: 'Conta
 
 //Enum
 //Without bind this in arrow function case do bad magic
-export const oneOf = createProperty(Piker).oneOf.bind(createProperty(Piker))
+export const oneOf = createProperty(Picker).oneOf.bind(createProperty(Picker))
 
 //oneOfType([string, number, etc.]) - union - one of some types
 //arrayOf(string or etc) - array with some type
