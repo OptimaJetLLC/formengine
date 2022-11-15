@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import {ArrowDownLine, ArrowUpLine} from '@rsuite/icons'
+import {t} from 'i18next'
 import {observer} from 'mobx-react'
 import {useState} from 'react'
 import {Animation, Button} from 'rsuite'
@@ -30,19 +31,21 @@ export const ArgumentList = observer(() => {
       </Animation.Collapse>
 
       <ExpandButton block onClick={() => setShow(!show)}>
-        <ExpandIcon style={{marginTop: -6}}/>
+        {t('actions.arguments')}
+        <ExpandIcon style={{marginTop: -2}}/>
       </ExpandButton>
     </>
   )
 })
 
 const ExpandButton = styled(Button)`
-  padding: 0;
-  margin: 0px -2%;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  width: 104%;
+  position: absolute !important;
+  padding: 5px !important;
+  left: 0;
+  bottom: 0;
+  border-radius: 0 !important;
   outline: 0 !important;
+  color: var(--rs-btn-subtle-text) !important;
 
   &:focus {
     box-shadow: none;

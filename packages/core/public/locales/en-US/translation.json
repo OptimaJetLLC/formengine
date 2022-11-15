@@ -52,6 +52,9 @@
     "cssStyles": "CSS styles",
     "cssStyleBlock": "CSS style block"
   },
+  "actions": {
+    "arguments": "Arguments"
+  },
   "validation": {
     "chooseValidation": "Choose your type",
     "addRule": "Add rule"

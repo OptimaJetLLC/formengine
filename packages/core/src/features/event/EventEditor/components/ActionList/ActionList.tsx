@@ -14,7 +14,7 @@ export const ActionList = observer(({eventName}: ActionListProps) => {
   if (!weakActionsData) return null
 
   /*TODO Draggable List*/
-  return <Rows margin={5}>
+  return <Rows my={0}>
     {weakActionsData.map((data, index) =>
       <ActionItem
         key={data.actionName}

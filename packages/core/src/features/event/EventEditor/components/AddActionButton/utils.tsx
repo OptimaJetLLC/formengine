@@ -13,4 +13,8 @@ function addActionToEvent(componentStore: ComponentStore, eventKey: string, {act
   })
 }
 
-export {initEvent, addActionToEvent}
+function removeAction(componentStore: ComponentStore, eventKey: string, index: number) {
+  componentStore.events![eventKey]?.splice(index, 1)
+}
+
+export {initEvent, addActionToEvent, removeAction}
