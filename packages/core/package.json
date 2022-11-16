@@ -11,10 +11,10 @@
         "react-dom": ">=17.0.2"
     },
     "dependencies": {
-        "@emotion/cache": "^11.7.1",
-        "@emotion/css": "^11.5.0",
-        "@emotion/react": "^11.4.1",
-        "@emotion/styled": "^11.3.0",
+        "@emotion/cache": "^11.10.5",
+        "@emotion/css": "^11.10.5",
+        "@emotion/react": "^11.10.5",
+        "@emotion/styled": "^11.10.5",
         "@fortawesome/free-regular-svg-icons": "^5.15.4",
         "@fortawesome/free-solid-svg-icons": "^5.15.4",
         "@popperjs/core": "^2.10.2",
@@ -40,7 +40,7 @@
         "yup": "^0.32.11"
     },
     "devDependencies": {
-        "@emotion/babel-plugin": "^11.7.2",
+        "@emotion/babel-plugin": "^11.10.5",
         "@types/autosize": "^4.0.0",
         "@types/lodash": "^4.14.179",
         "@types/node": "^16.11.26",

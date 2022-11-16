@@ -7,7 +7,12 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 export default defineConfig(({command}) => ({
-  plugins: [react()],
+  plugins: [react({
+    jsxImportSource: "@emotion/react",
+    babel: {
+      plugins: [["@emotion/babel-plugin", { "labelFormat": "[filename]_[local]" }]],
+    },
+  })],
   test: {
     globals: true,
     environment: 'jsdom',
