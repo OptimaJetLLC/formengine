@@ -1,7 +1,7 @@
 import {isObject, upperFirst} from 'lodash'
 
 export interface LabeledValue {
-  value: string;
+  value: string | number;
   label?: string;
 }
 

@@ -1,28 +1,23 @@
-import styled from '@emotion/styled'
-import {array, boolean, define, event, oneOf, string} from 'fb-core'
-import {LabeledValue, toLabeledValues} from 'fb-core/src/features/annotation/utils/LabeledValue'
+import {array, boolean, define, event, LabeledValue, oneOf, string, toLabeledValues} from 'fb-core'
+import React from 'react'
 import {Radio, RadioGroup as RRadioGroup, RadioGroupProps as RRadioGroupProps} from 'rsuite'
 
-export interface RadioGroupProps extends RRadioGroupProps<string> {
+interface RadioGroupProps extends RRadioGroupProps<string> {
   items: LabeledValue[]
   label?: string
 }
 
-const Label = styled.div`
-  padding: 8px 2px 8px 10px;
-  display: inline-block;
-  vertical-align: middle;
-`
-
-export const RadioGroup = ({items, label, ...props}: RadioGroupProps) => {
+const RadioGroup = ({items, label, ...props}: RadioGroupProps) => {
   return (
-    <RRadioGroup {...props as any}>
-      {label && <Label>{label}</Label>}
-      {toLabeledValues(items).map(({value, label}, i) => (
-        <Radio value={value} key={i}>{label ?? value}</Radio>
-      ))
-      }
-    </RRadioGroup>
+    <div>
+      <label>{label}</label>
+      <RRadioGroup {...props as any}>
+        {items.map(({value, label}, i) => (
+          <Radio value={value} key={i}>{label ?? value}</Radio>
+        ))
+        }
+      </RRadioGroup>
+    </div>
   )
 }
 
@@ -31,7 +26,7 @@ export const radioGroup = define(RadioGroup)
     appearance: oneOf('default', 'picker').labeled('Default', 'Picker').default('default'),
     label: string.default('Radio'),
     defaultValue: string.default('a'),
-    inline: boolean.default(true),
+    inline: boolean,
     onChange: event,
     items: array.default(toLabeledValues(['a', 'b', 'c'])),
   })

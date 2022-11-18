@@ -33,10 +33,10 @@ export const dropdown = define(Dropdown)
     placeholder: string,
     data: array.default(toLabeledValues(['a', 'b', 'c'])),
 
-    block: boolean.default(false),
+    block: boolean.default(true),
     cleanable: boolean.default(false),
     creatable: boolean.default(false),
-    disabled: boolean.default(false),
+    disabled: boolean,
     groupBy: string.default(''),
 
     onSelect: event,

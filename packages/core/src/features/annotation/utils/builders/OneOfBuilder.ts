@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import {RadioButton} from '../../components/RadioButton'
+import {RadioButtonInput} from '../../components/RadioButtonInput'
 import {Annotation} from '../annotations/Annotation'
 import {Property} from '../annotations/Property'
 import {SchemedBuilder} from './SchemedBuilder'
@@ -15,7 +15,7 @@ export class OneOfBuilder<T> extends SchemedBuilder<T> {
   }
 
   radio() {
-    return this.setup({editor: RadioButton})
+    return this.setup({editor: RadioButtonInput})
   }
 
   build(key: string): Annotation {

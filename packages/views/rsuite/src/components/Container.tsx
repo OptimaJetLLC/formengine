@@ -2,8 +2,6 @@ import {css, cx} from '@emotion/css'
 import {define, node, oneOf} from 'fb-core'
 import {forwardRef} from 'react'
 
-type Direction = 'vertical' | 'horizontal';
-
 const isHorizontal = (element?: Element) => {
   if (!element) return false
   const style = getComputedStyle(element)
