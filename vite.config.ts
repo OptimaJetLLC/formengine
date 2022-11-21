@@ -10,7 +10,8 @@ export default defineConfig(({command}) => ({
   plugins: [react({
     jsxImportSource: "@emotion/react",
     babel: {
-      plugins: [["@emotion/babel-plugin", { "labelFormat": "[filename]_[local]" }]],
+      configFile: true,
+      rootMode: "upward",
     },
   })],
   test: {
