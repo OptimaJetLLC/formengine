@@ -1,23 +1,37 @@
-import {define, string} from 'fb-core'
+import {define, oneOf, string} from 'fb-core'
+import {textStyles} from '../commonProperties'
+import {TextProps} from '../commonTypes'
 
-interface HeaderProps {
+interface HeaderProps extends TextProps {
   content: string
-  subheader?: string
+  level: string
+  alignment: string
 }
 
-const Header = (props: HeaderProps) => {
+interface Levels {
+  [key: string]: (p?: any) => JSX.Element;
+}
 
+const levelMap: Levels = {
+  'h1': p => <h1 {...p}/>,
+  'h2': p => <h2 {...p}/>,
+  'h3': p => <h3 {...p}/>,
+  'h4': p => <h4 {...p}/>,
+  'h5': p => <h5 {...p}/>,
+  'h6': p => <h6 {...p}/>,
+}
+
+const Header = ({content, level, ...props}: HeaderProps) => {
+  const Element = levelMap[level]
   return (
-    <div style={{textAlign: 'center'}}>
-      <h4>{props.content}</h4>
-      <label>{props.subheader}</label>
-    </div>
+    <Element {...props}>{content}</Element>
   )
 }
 
 export const header = define(Header)
   .props({
     content: string.required.default('Header'),
-    subheader: string,
+    level: oneOf('h1', 'h2', 'h3', 'h4', 'h5', 'h6').default('h4'),
+    ...textStyles
   })
 

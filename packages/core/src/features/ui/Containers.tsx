@@ -54,15 +54,13 @@ const Columns = styled(Box)<{ margin?: number }>`
 
 const LabeledInput = styled.div`
   display: flex;
-  flex: 1;
-  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
 
   label {
-    margin-left: 5px;
-  }
-
-  input, div {
-    margin-top: 2px;
+    width: 100px;
+    min-width: 80px;
   }
 `
 

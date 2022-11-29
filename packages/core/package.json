@@ -34,6 +34,7 @@
         "react-i18next": "^11.15.3",
         "react-popper": "^2.2.5",
         "rsuite": "^5.6.2",
+        "rsuite-color-picker": "^0.2.0",
         "styled-system": "^5.1.5",
         "stylis-plugin-rtl": "^2.1.1",
         "use-local-storage-state": "^17.2.0",

@@ -6,7 +6,7 @@ import {useComponentData} from '../../../utils/contexts/ComponenDataContext'
 import {useStore} from '../../../utils/contexts/StoreContext'
 import {Wrapper} from '../../../utils/types'
 import {useEvents} from '../../event'
-import {useStyles} from '../../style'
+import {removePropsStyles, useStyles} from '../../style'
 import {useSubstitution} from '../../substitution'
 import {Erroneous, useValidation} from '../../validation'
 import {useChildren} from './hooks/useChildren'
@@ -26,7 +26,7 @@ export const ComponentNode = observer(() => {
   currentProps.value = field.value ?? undefined
 
   const storedProps = toJS(componentStore.props)
-  const props = assign({key: componentStore.key}, defaultProps, eventHandlers, storedProps, currentProps, substitutedValues)
+  const props = removePropsStyles(assign({key: componentStore.key}, defaultProps, eventHandlers, storedProps, currentProps, substitutedValues))
 
   //TODO for form-builder need render another component without error message and events
   //TODO to Component Type

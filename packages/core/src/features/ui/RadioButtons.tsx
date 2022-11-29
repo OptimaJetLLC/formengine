@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
-import {IconProps} from '@rsuite/icons/lib/Icon'
 import React from 'react'
-import {Button, ButtonGroup, IconButton, IconButtonProps} from 'rsuite'
+import {Radio, RadioGroup as RRadioGroup} from 'rsuite'
 import {LabeledValue} from '../annotation/utils/LabeledValue'
 
 export interface RadioButtonsProps {
@@ -11,19 +10,16 @@ export interface RadioButtonsProps {
   items?: LabeledValue[]
 }
 
-export const RadioButtons = ({label, items, value, onChange, ...props}: RadioButtonsProps) => {
+export const RadioButtons = ({label, items, ...props}: RadioButtonsProps) => {
   return (
-    <Container {...props}>
+    <Container>
       <label>{label}</label>
-      <ButtonGroup>
-        {items?.map(({value: itemValue, label}) =>
-          <InnerRadioButton
-            key={itemValue} value={itemValue} label={label}
-            onClick={() => onChange(itemValue)}
-            appearance={itemValue === value ? 'primary' : 'default'}
-          />
-        )}
-      </ButtonGroup>
+      <RRadioGroup {...props as any} size={'xs'} inline appearance={'picker'}>
+        {items?.map(({value, label}, i) => (
+          <Radio value={value} key={i}>{label ?? value}</Radio>
+        ))
+        }
+      </RRadioGroup>
     </Container>
   )
 }
@@ -31,13 +27,16 @@ export const RadioButtons = ({label, items, value, onChange, ...props}: RadioBut
 const Container = styled.div`
   display: flex;
   gap: 10px;
+  justify-content: space-between;
   align-items: center;
+
+  .rs-radio-checker {
+    min-height: 27px;
+    max-height: 27px;
+
+    label {
+      line-height: 14px !important;
+      padding: 4px 0 !important;
+    }
+  }
 `
-
-export interface RadioButtonProps extends IconButtonProps, LabeledValue {
-  icon?: React.ReactElement<IconProps>;
-}
-
-export const InnerRadioButton = ({label, icon, value, ...props}: RadioButtonProps) => icon
-  ? <IconButton icon={icon} {...props}>{label}</IconButton>
-  : <Button {...props}>{label}</Button>

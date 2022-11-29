@@ -3,6 +3,8 @@ import {EventName, WeakActionData} from '../features/event/types'
 import {Style} from '../features/style/types'
 import {ParsableValidateSchema} from '../features/validation/types'
 
+export type Props = Record<string, any>
+
 export class ComponentStore {
   key: string = ''
   type: string = ''

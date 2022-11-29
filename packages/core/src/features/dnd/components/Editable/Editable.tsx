@@ -17,7 +17,7 @@ export const Editable = observer(({View, viewProps}: WrapperProps) => {
   const completeView = <View {...viewProps}/>
 
   return (
-    <Draggable className={cx(selectionClassName, viewProps.className)} {...selectionHandlers}
+    <Draggable className={cx(selectionClassName)} {...selectionHandlers}
                viewForDragPreview={completeView}>
       {completeView}
       {selected && !isDragging && <>

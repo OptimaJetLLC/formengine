@@ -8,6 +8,7 @@ const KeyInput = ({componentStore, annotation}: PropertyEditorProps) => (
     <Input
       value={componentStore.key}
       onChange={value => componentStore.key = value as string}
+      size={'xs'}
     />
   </LabeledInput>
 )

@@ -1,4 +1,4 @@
-import {oneOf} from 'fb-core'
+import {color, number, oneOf} from 'fb-core'
 import {TypeAttributes} from 'rsuite/cjs/@types/common'
 
 type Placement = TypeAttributes.Placement;
@@ -25,3 +25,11 @@ export const size = oneOf(
   'Medium',
   'Large'
 ).default('md')
+
+export const textStyles = {
+  alignment: oneOf('start', 'center', 'end').default('start').radio(),
+  fontSize: number.default(14),
+  fontWeight: oneOf('lighter', 'normal', 'bold').default('normal'),
+  color: color.default('var(--rs-text-primary)'),
+  background: color.default('rgba(169, 169, 169, 0.24)')
+}

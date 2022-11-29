@@ -1,21 +1,19 @@
 import {StandardStylesDefinitions} from './conts'
 import {StyleItem} from './types'
 
-export const styleToString = (name?: string, value?: string) => {
-  return (name?.length && value?.length)
-    ? `${name}:${value};`
-    : ''
-}
+export const styleToString = ({name, value}: StyleItem) =>
+  (name && value) ? `${name}:${value};` : ''
+
 export const transformStylesToCSS = (styles?: Record<string, string>) => {
   if (!styles) return []
   let CSSStyles: StyleItem[] = []
-  Object.entries(styles).forEach((style) => {
-    const definition = StandardStylesDefinitions[style[0]]
+  Object.entries(styles).forEach(([key, val]) => {
+    const definition = StandardStylesDefinitions[key]
     if (!definition) return
 
     const value = (typeof definition.measure == 'string')
-      ? `${style[1]}${definition.measure}`
-      : definition.measure(style[1])
+      ? `${val}${definition.measure}`
+      : definition.measure?.(val) ?? val
     CSSStyles.push({
       name: definition.cssName,
       value
@@ -26,6 +24,10 @@ export const transformStylesToCSS = (styles?: Record<string, string>) => {
 
 export function inPX(cssName: string) {
   return {cssName, measure: 'px'}
+}
+
+export function rgb(cssName: string) {
+  return {cssName, measure: (rgb: { r: number; g: number; b: number; a: number }) => `rgb(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a})`}
 }
 
 export const pick = (object: any, keys: string[]) => {

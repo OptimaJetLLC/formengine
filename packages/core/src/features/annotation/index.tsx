@@ -7,6 +7,7 @@ import {ValidateEditor} from '../validation/components/ValidateEditor'
 import {ArrayInput} from './components/ArrayInput'
 import {BooleanInput} from './components/BooleanInput'
 import {ChildViewer} from './components/ChildViewer'
+import {ColorInput} from './components/ColorInput'
 import {KeyInput} from './components/KeyInput'
 import {NumberInput} from './components/NumberInput'
 import {Picker} from './components/Picker'
@@ -24,6 +25,8 @@ export const number = createProperty(NumberInput).schemed(yup.number())
 
 //Array
 export const array = createProperty(ArrayInput).schemed(yup.array())
+
+export const color = createProperty(ColorInput).schemed(yup.string())
 
 //TODO rename to func, or action, or to stay event?
 //Use for create functions for events

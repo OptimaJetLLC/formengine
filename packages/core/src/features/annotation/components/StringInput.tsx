@@ -8,7 +8,7 @@ const StringInput = (props: PropertyEditorProps) => {
   return (
     <LabeledInput>
       <label>{annotation.name}</label>
-      <Input name={annotation.key} onBlur={onBlur} {...makeAnnotationProps(props)}/>
+      <Input name={annotation.key} onBlur={onBlur} {...makeAnnotationProps(props)} size={'xs'}/>
     </LabeledInput>
   )
 }

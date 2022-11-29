@@ -10,7 +10,7 @@ export const StandardStyles = ({
   const styles = _.cloneDeep(componentStore.style.styles) || {}
 
   return <>
-    {Object.entries(stylesDefinition).map((item, index) => {
+    {Object.entries(stylesDefinition).map(([name], index) => {
       const cellProps = {
         rowData: styles, rowIndex: index, editable: true,
         onBlur: () => {
@@ -19,8 +19,8 @@ export const StandardStyles = ({
       }
       return (
         <Row key={index}>
-          <LabelCell label={item[0]}/>
-          <CompactCell dataKey={item[0]} placeholder={'default'} {...cellProps} />
+          <LabelCell label={name}/>
+          <CompactCell dataKey={name} placeholder={'default'} {...cellProps} />
         </Row>
       )
     })}

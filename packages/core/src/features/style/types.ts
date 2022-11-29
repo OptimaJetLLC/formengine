@@ -3,7 +3,9 @@ export type StyleItem = {
   value?: string
 }
 
-export type StandardStyleItem = Record<string, { cssName: string, measure: string | Function }>
+type Measure = string | ((value: any) => string)
+
+export type StandardStyleItem = Record<string, { cssName: string, measure?: Measure }>
 
 export type Style = {
   styles?: Record<string, string>

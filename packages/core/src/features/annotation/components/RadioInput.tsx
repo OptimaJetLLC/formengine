@@ -4,7 +4,7 @@ import {PropertyEditorProps} from '../types'
 import {makeAnnotationProps} from '../utils'
 import {Property} from '../utils/annotations/Property'
 
-export const RadioButtonInput = ({componentStore, annotation}: PropertyEditorProps) => (
+export const RadioInput = ({componentStore, annotation}: PropertyEditorProps) => (
   <RadioButtons label={annotation.name} items={(annotation as Property).data}
                 {...makeAnnotationProps({componentStore, annotation})}/>
 )
