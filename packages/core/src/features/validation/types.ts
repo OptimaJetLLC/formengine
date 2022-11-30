@@ -1,25 +1,14 @@
-import {StringRules} from './rules/StringRules'
-
-export type StringRuleKey = keyof typeof StringRules
-
-export enum ValueType {
-  mixed = 'mixed', //Need this? TI think yes
-  string = 'string',
-  number = 'number',
-  boolean = 'boolean',
-  date = 'date',
-  object = 'object',
-  array = 'array'
-}
-
-export interface ParsableValidateSchema {
-  type: ValueType
-  rules: { [name: string]: { [parameterName: string]: any } }
-}
+import {BaseSchema} from 'yup'
 
 export type Rules<T> = {
-  [key in keyof Partial<T>]: Rule<T>;
-};
+  [key in keyof Partial<T>]: Rule<T>
+}
+
+export type ValidationSchema = {
+  autoTransform?: boolean
+  rules: string[]
+  data?: Record<string, any[]>
+}
 
 //TODO parameters from type of function
 export class Rule<T> {
@@ -42,3 +31,5 @@ export class RuleParam {
   ) {
   }
 }
+
+export type SchemaCtor = new () => BaseSchema

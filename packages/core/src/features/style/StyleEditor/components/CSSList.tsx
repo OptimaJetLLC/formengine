@@ -1,3 +1,4 @@
+// @ts-ignore
 import * as cssProperties from 'known-css-properties'
 import _ from 'lodash/fp'
 import {useState} from 'react'

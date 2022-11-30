@@ -53,6 +53,8 @@ export function getSampleForm() {
 
   formScreen.children.push(new ComponentStore('RadioGroup', 'RadioGroup'))
 
+  const checkbox = new ComponentStore('checkbox', 'Checkbox')
+  formScreen.children.push(checkbox)
 
   return formScreen
 }

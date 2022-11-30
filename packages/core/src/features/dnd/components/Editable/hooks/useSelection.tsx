@@ -29,7 +29,7 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
     setSelected(store.selected?.key === componentStore.key)
   }, [store.selected])
 
-  const onMouseDown = useCallback((event) => {
+  const onMouseDown = useCallback((event: React.MouseEvent) => {
     event.stopPropagation()
     store.selected = store.findNode(componentStore.key)
   }, [])

@@ -5,11 +5,11 @@ import * as faPlay from '@fortawesome/free-solid-svg-icons/faPlay'
 import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
 import {Button} from 'rsuite'
-import {useBuilderStore} from '../../../../../utils/contexts/BuilderStoreContext'
+import {useStore} from '../../../../../utils/contexts/StoreContext'
 import {FaIcon} from '../../../../ui/Icons'
 
 export const ToggleModeButton = observer(() => {
-  const store = useBuilderStore()
+  const store = useStore()
   const {t} = useTranslation()
   const icon = store.isBuilderMode ? faPlay : faPaintBrush
 

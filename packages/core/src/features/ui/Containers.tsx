@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import autosize from 'autosize'
-import {Component} from 'react'
+import {Component, ReactNode} from 'react'
 import ReactDOM from 'react-dom'
 //https://styled-system.com/#expressive-consistent-ui-components
 //https://styled-system.com/table
@@ -72,7 +72,7 @@ const Centered = styled(Box)`
   justify-content: center;
 `
 
-class AutoSize extends Component {
+class AutoSize extends Component<{ children: ReactNode }> {
   componentDidMount() {
     const domNode = ReactDOM.findDOMNode(this)
     autosize(domNode as Element)

@@ -1,20 +1,11 @@
 import {boolean, define, event, string} from 'fb-core'
-import {Checkbox as RCheckbox, CheckboxProps as RCheckboxProps} from 'rsuite'
-
-interface CheckboxProps extends RCheckboxProps {
-  label: string,
-}
-
-const Checkbox = ({label, ...props}: CheckboxProps) => (
-  <RCheckbox {...props}>{label}</RCheckbox>
-)
+import {Checkbox} from 'rsuite'
 
 export const checkbox = define(Checkbox)
   .props({
-    label: string.default('Checkbox'),
-    checked: boolean,
+    children: string.named('Label').default('Checkbox'),
+    checked: boolean.valued.default(true),
     indeterminate: boolean,
     disabled: boolean,
-
     onChange: event,
   })

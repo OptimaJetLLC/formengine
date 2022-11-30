@@ -11,7 +11,8 @@ import {ComponentStore} from './ComponentStore'
 
 export class Store {
   readonly eventBus = new EventBus()
-  readonly form = new Form()
+  readonly form = new Form(this)
+  isBuilderMode: boolean = false
 
   actions: ActionDefinition[] = [setProperty, validate, reset, clear]
   screen = new ComponentStore(screen.name, screen.type)
@@ -19,8 +20,10 @@ export class Store {
 
   constructor(public props: FormViewerProps) {
     makeObservable(this, {
+      props: observable,
       screen: observable,
       Wrapper: observable.ref,
+      isBuilderMode: true,
     })
   }
 

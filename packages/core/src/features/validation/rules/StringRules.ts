@@ -12,18 +12,18 @@ export const StringRules: Rules<StringSchema> = {
       new RuleParam('message', 'string')
     ]),
   min: new Rule('Min',
-    (scheme, min: number, message?: string) => scheme.min(min, message), [
-      new RuleParam('min', 'number', true),
+    (scheme, limit: number, message?: string) => scheme.min(limit, message), [
+      new RuleParam('limit', 'number', true),
       new RuleParam('message', 'string')
     ]),
   max: new Rule('Max',
-    (scheme, min: number, message?: string) => scheme.max(min, message), [
-      new RuleParam('min', 'number', true),
+    (scheme, limit: number, message?: string) => scheme.max(limit, message), [
+      new RuleParam('limit', 'number', true),
       new RuleParam('message', 'string')
     ]),
   matches: new Rule('Matches',
     (scheme, regex: RegExp, message?: string) => scheme.matches(new RegExp(regex), message), [
-      new RuleParam('regex', 'RegExp', true),
+      new RuleParam('regex pattern', 'string', true),
       new RuleParam('message', 'string')
     ]),
   email: new Rule('Email',
@@ -38,8 +38,6 @@ export const StringRules: Rules<StringSchema> = {
     (scheme, message?: string) => scheme.uuid(message), [
       new RuleParam('message', 'string')
     ]),
-  ensure: new Rule('Ensure',
-    (scheme) => scheme.ensure(), []),
   trim: new Rule('Trim',
     (scheme, message?: string) => scheme.strict().trim(message), [
       new RuleParam('message', 'string')

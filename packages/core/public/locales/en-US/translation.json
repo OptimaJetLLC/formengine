@@ -21,7 +21,7 @@
       "main": "Main",
       "style": "Style",
       "actions": "Actions",
-      "validation": "Validation",
+      "rules": "Rules",
       "withTarget": "With Target",
       "withoutTarget": "Without Target",
       "linkedProperty": "Linked property",

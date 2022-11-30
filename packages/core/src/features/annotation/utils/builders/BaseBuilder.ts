@@ -1,10 +1,19 @@
-import _ from 'lodash'
+import _, {assign} from 'lodash'
 import {AnnotationMap} from '../../consts'
+import {PreAnnotation} from '../../types'
 import {Annotation} from '../annotations/Annotation'
 import {Options} from '../Options'
 
 export class BaseBuilder<T> {
-  options!: Options
+  annotation!: PreAnnotation
+  options = new Options()
+
+  /**
+   * The main property of a component that used like form data and for validation rules.
+   */
+  get valued() {
+    return this.setup({valued: true})
+  }
 
   named(name: string) {
     return this.setup({name})
@@ -14,27 +23,32 @@ export class BaseBuilder<T> {
     return this.setup({hint})
   }
 
-  setup(options: Partial<Options>): this {
+  setup(options: Partial<PreAnnotation & Options>): this {
+    const {type, autoName, ...annotation} = options
     const clone = this.clone()
-    _.assign(clone.options, options)
+    clone.options.type = type ?? clone.options.type
+    clone.options.autoName = autoName ?? clone.options.autoName
+    _.assign(clone.annotation, annotation)
     return clone
   }
 
   clone(): this {
     const clone = _.clone(this)
     clone.options = _.clone(this.options)
-    clone.options ??= {} as Options
+    clone.annotation = _.clone(this.annotation)
+    clone.annotation ??= {} as PreAnnotation
     return clone
   }
 
   build(key: string): Annotation {
     const name = this.getName(key)
-    const Annotation = AnnotationMap[this.options.type]
-    return new Annotation(key, name, this.options.editor, this.options.scheme, this.options.hint, this.options.section)
+    const annotation = new AnnotationMap[this.options.type](key, name)
+    assign(annotation, this.annotation)
+    return annotation
   }
 
   protected getName(key: string) {
-    return this.options.name ?? (this.options.autoName ? _.startCase(key) : key)
+    return this.annotation.name ?? (this.options.autoName ? _.startCase(key) : key)
   }
 }
 

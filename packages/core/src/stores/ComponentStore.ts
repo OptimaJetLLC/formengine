@@ -1,22 +1,25 @@
 import {computed, makeAutoObservable, observable} from 'mobx'
 import {EventName, WeakActionData} from '../features/event/types'
 import {Style} from '../features/style/types'
-import {ParsableValidateSchema} from '../features/validation/types'
-
-export type Props = Record<string, any>
+import {ValidationSchema} from '../features/validation/types'
 
 export class ComponentStore {
   key: string = ''
   type: string = ''
-  props: Record<string, any> = {}
+  props: Record<string, any> = {} //TODO do nullable
   events?: Record<EventName, WeakActionData[]>
-  style: Style = {}
+  style: Style = {} //TODO do nullable
   children?: ComponentStore[]
+
+  schema?: ValidationSchema
+
+  /*rules = {
+    visible: [],
+    enabled: [],
+  }*/
 
   //Bind to parent property
   bindTo?: string
-  //TODO rename to scheme, move to inner validation?
-  validation?: ParsableValidateSchema
   //TODO add on validation page
   visible?: string
 
@@ -27,7 +30,7 @@ export class ComponentStore {
 
     makeAutoObservable(this, {
       //events: observable.deep,
-      validation: observable.deep,
+      schema: observable.deep,
       props: observable.deep,
       isRoot: computed,
       isContainer: computed,

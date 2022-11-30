@@ -17,11 +17,10 @@ interface BuilderProvidersProps {
 
 export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {
   const store = useMemo(() => new Store(props), [])
-  const buildStore = useMemo(() => new BuilderStore(store), [])
-
-  useEffect(() => {
-    store.props = props
-  }, [props])
+  const buildStore = useMemo(() => {
+    store.isBuilderMode = true
+    return new BuilderStore(store)
+  }, [])
 
   return (
     <BuilderStoreProvider value={buildStore}>

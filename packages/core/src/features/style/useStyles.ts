@@ -1,6 +1,5 @@
 import {css} from '@emotion/css'
 import {keys} from 'lodash'
-import {Props} from '../../stores/ComponentStore'
 import {useComponentData} from '../../utils/contexts/ComponenDataContext'
 import {StylesFromProps} from './conts'
 import {styleToString, transformStylesToCSS} from './utils'
@@ -29,7 +28,7 @@ export const useStyles = () => {
   return css`${styleString}`
 }
 
-export const removePropsStyles = (props: Props) => {
+export const removePropsStyles = (props: Record<string, any>) => {
   keys(props)?.forEach(key => {
     if (StylesFromProps[key]) delete props[key]
   })

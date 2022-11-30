@@ -4,7 +4,7 @@ import {WrapperProps} from '../../../utils/types'
 import {Field} from '../utils/Field'
 
 export interface ErroneousProps extends WrapperProps {
-  field: Field
+  field?: Field
 }
 
 export const Erroneous = observer(({View, viewProps, field}: ErroneousProps) => {
@@ -14,7 +14,7 @@ export const Erroneous = observer(({View, viewProps, field}: ErroneousProps) => 
   if (store.props.erroneous) return <View {...viewProps}/>
 
   return (
-    <Error error={field.error}>
+    <Error error={field?.error}>
       <View {...viewProps}/>
     </Error>
   )

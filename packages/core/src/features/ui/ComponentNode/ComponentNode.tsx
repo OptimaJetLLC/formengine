@@ -12,8 +12,9 @@ import {Erroneous, useValidation} from '../../validation'
 import {useChildren} from './hooks/useChildren'
 import {useDefaultProps} from './hooks/useDefaultProps'
 
+//TODO useLocalObservable instead of hooks and states?
 //TODO часть хуков используется только в режиме вью и превью - вынести?
-export const ComponentNode = observer(() => {
+const _ComponentNode = () => {
   const currentProps: Record<string, any> = {}
   const {componentStore, model: {view}} = useComponentData()
   const defaultProps = useDefaultProps()
@@ -23,14 +24,12 @@ export const ComponentNode = observer(() => {
   useChildren(currentProps)
   currentProps.className = useStyles()
 
-  currentProps.value = field.value ?? undefined
+  if (field) currentProps[field.valuedAn.key] = field.value
 
   const storedProps = toJS(componentStore.props)
   const props = removePropsStyles(assign({key: componentStore.key}, defaultProps, eventHandlers, storedProps, currentProps, substitutedValues))
 
   //TODO for form-builder need render another component without error message and events
-  //TODO to Component Type
-  //const withError = createElement(WithErrorMessage, {child: element, meta})
 
   const View = useMemo(() => observer(view), [])
 
@@ -38,5 +37,6 @@ export const ComponentNode = observer(() => {
   if (Wrapper) return <Wrapper View={View} viewProps={props}/>
 
   return <Erroneous field={field} View={View} viewProps={props}/>
-})
+}
 
+export const ComponentNode = observer(_ComponentNode)

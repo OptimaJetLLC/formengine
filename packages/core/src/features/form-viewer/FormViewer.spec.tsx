@@ -3,7 +3,7 @@ import {View} from '../define'
 import {FormViewer} from './FormViewer'
 
 describe(`Component ${FormViewer.name}`, function () {
-  it.skip('should render', function () {
+  it('should render', function () {
     render(<FormViewer view={new View()}/>)
   })
 })

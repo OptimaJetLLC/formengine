@@ -51,7 +51,7 @@ export const input = define(Input)
     readOnly: boolean,
     size,
     onChange: event,
-    value: string.default(''),
+    value: string.default('').valued,
   })
   .actions((props, def) => {
     return {

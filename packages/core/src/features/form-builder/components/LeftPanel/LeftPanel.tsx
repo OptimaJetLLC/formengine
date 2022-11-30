@@ -1,12 +1,12 @@
 import {observer} from 'mobx-react'
 import React from 'react'
-import {useBuilderStore} from '../../../../utils/contexts/BuilderStoreContext'
+import {useStore} from '../../../../utils/contexts/StoreContext'
 import {Panel} from '../Panel'
 import {Errors} from './components/Errors'
 import {Tree} from './components/Tree'
 
 export const LeftPanel = observer(() => {
-  const store = useBuilderStore()
+  const store = useStore()
 
   return (
     <Panel name={'leftPanel'}>

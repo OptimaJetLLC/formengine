@@ -34,7 +34,7 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
     )
 
   return (
-    <ComponentDataProvider value={{componentStore: data, model, parent: parent?.data}}>
+    <ComponentDataProvider value={{componentStore: data, model, parentStore: parent?.data}}>
       <Container>
           {properties}
       </Container>

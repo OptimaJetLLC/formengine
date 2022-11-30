@@ -16,7 +16,7 @@ export class ActionEvent {
   }
 
   get value() {
-    return this.args.find(this.#isNotEvent)
+    return this.args.filter(v => v !== undefined).find(this.#isNotEvent)
   }
 
   #isEvent = (value: any) => Boolean(value && value.target && value.type && value.preventDefault)

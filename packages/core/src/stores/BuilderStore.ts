@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import _, {assign} from 'lodash'
 import {makeAutoObservable, observable, reaction} from 'mobx'
 import {defaultLanguage} from '../features/localization/consts'
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../features/localization/utils'
@@ -10,8 +10,6 @@ import {ComponentStore} from './ComponentStore'
 import {Store} from './Store'
 
 export class BuilderStore {
-
-  isBuilderMode: boolean = true
   isResizing: boolean = false
   selected?: Node
   language = defaultLanguage
@@ -40,7 +38,7 @@ export class BuilderStore {
 
   static getIndexInParent(node: ComponentMove) {
     const child = node.componentStore
-    const parent = node.parent
+    const parent = node.parentStore
     if (!parent) return 0
 
     return parent.children!.indexOf(child)
@@ -87,7 +85,7 @@ export class BuilderStore {
 
 
     function push(source: ComponentMove, target: ComponentMove, index: number) {
-      let purpose = target.parent || target.componentStore
+      let purpose = target.parentStore || target.componentStore
       purpose.children ??= []
       purpose.children?.splice(index, 0, source.componentStore)
     }
@@ -99,7 +97,7 @@ export class BuilderStore {
   }
 
   add(source: ComponentMove, target: ComponentMove, isAfter: boolean = false, inner: boolean = false) {
-    const clone = _.cloneDeep(source.componentStore)
+    const clone = assign(new ComponentStore('', ''), _.cloneDeep(source.componentStore))
     this.unifyComponentKeys(clone)
     this.move({componentStore: clone}, target, isAfter, inner)
     this.selected = this.findNode(clone.key)
@@ -108,7 +106,7 @@ export class BuilderStore {
 
   remove(source: ComponentMove) {
     const index = BuilderStore.getIndexInParent(source)
-    source.parent?.children?.splice(index, 1)
+    source.parentStore?.children?.splice(index, 1)
   }
 
   unifyComponentKeys(source: ComponentStore) {

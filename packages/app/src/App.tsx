@@ -2,12 +2,14 @@ import {FormBuilder} from 'fb-core'
 import {rsuite} from 'fb-rsuite'
 import {getSampleForm} from './utils/getSampleForm'
 
+const data = {title: 'Hello! Hello!'}
+
 const App = () => {
   return (
       <FormBuilder
         getForm={getSampleForm}
         view={rsuite}
-        data={{title: 'Hello! Hello!'}}
+        data={data}
         event={(bus) => {
           bus.listen((e) => {
             //alert(e.value)

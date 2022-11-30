@@ -1,22 +1,44 @@
-import {makeAutoObservable} from 'mobx'
-import * as yup from 'yup'
+import {autorun, makeAutoObservable} from 'mobx'
+import {Annotation} from '../../annotation/utils/annotations/Annotation'
 import {Form} from './Form'
+import {parseSchema} from './parseSchema'
 
 export class Field {
-  schema?: yup.AnySchema
   error?: string
   touched = false
   value: unknown = undefined
-  initialValue: unknown = null
+
+  get schema() {
+    return parseSchema(this.componentStore.schema, this.valuedAn)
+  }
+
+  get initialValue () {
+    return this.componentStore.props[this.valuedAn.key] ?? this.valuedAn.schema?.getDefault()
+  }
+
+  get componentStore() {
+    return this.form.store.findComponent(this.key)
+  }
+
+  get autoTransform() {
+    return this.componentStore.schema?.autoTransform
+  }
 
   constructor(
     readonly form: Form,
+    readonly key: string,
+    readonly valuedAn: Annotation
   ) {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {
+      valuedAn: false
+    })
+    autorun(() => {
+      this.value = this.form.store.props.data?.[this.componentStore.key] ?? this.initialValue
+    })
   }
 
   setValue(value: unknown) {
-    this.value = value
+    this.value = (this.autoTransform && this.schema?.cast(value)) || value
     this.validate()
   }
 
@@ -39,8 +61,7 @@ export class Field {
   }
 
   clear() {
-    //TODO typed clear value
-    this.value = ''
+    this.value = this.schema?.getDefault()
     this.touched = false
     this.error = undefined
   }

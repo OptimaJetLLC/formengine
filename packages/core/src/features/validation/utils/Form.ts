@@ -1,11 +1,13 @@
-import {assign} from 'lodash'
 import {makeAutoObservable} from 'mobx'
+import {ComponentStore} from '../../../stores/ComponentStore'
+import {Store} from '../../../stores/Store'
+import {Annotation} from '../../annotation/utils/annotations/Annotation'
 import {Field} from './Field'
 
 export class Form {
   fields = new Map<string, Field>()
 
-  constructor() {
+  constructor(readonly store: Store) {
     makeAutoObservable(this)
   }
 
@@ -15,13 +17,6 @@ export class Form {
       result[key] = field.value
     }
     return result
-  }
-
-  set data(data) {
-    for (let [key, value] of Object.entries(data)) {
-      let field = this.set(key, {value})
-      field.initialValue ??= value
-    }
   }
 
   get errors() {
@@ -36,14 +31,12 @@ export class Form {
     return this.fields.get(key)
   }
 
-  set(key: string, props: Partial<Field>) {
-    let field = this.fields.get(key)
+  set(componentStore: ComponentStore, valuedAn: Annotation) {
+    let field = this.fields.get(componentStore.key)
     if (!field) {
-      field = new Field(this)
-      this.fields.set(key, field)
+      field = new Field(this, componentStore.key, valuedAn)
+      this.fields.set(componentStore.key, field)
     }
-
-    assign(field, props)
     return field
   }
 

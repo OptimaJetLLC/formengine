@@ -16,9 +16,6 @@ export const Viewer = observer(() => {
     if (getForm) store.screen = getForm()
   }, [getForm])
 
-  useEffect(() => {
-    if (data) store.form.data = data
-  }, [data])
 
   return <ComponentTree data={[store.screen]}/>
 })

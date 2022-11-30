@@ -10,7 +10,7 @@ export function useDefaultProps() {
 
     model.properties.forEach((value) => {
       if (isProperty(value)) {
-        props[value.key] = value.scheme?.getDefault()
+        props[value.key] = value.schema?.getDefault()
       }
     })
 

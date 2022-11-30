@@ -1,18 +1,18 @@
 import styled from '@emotion/styled'
 import {observer} from 'mobx-react'
 import React from 'react'
-import {useBuilderStore} from '../../../utils/contexts/BuilderStoreContext'
+import {useStore} from '../../../utils/contexts/StoreContext'
 import {Editable} from '../../dnd'
 import {FormViewer} from '../../form-viewer/FormViewer'
 import {PanelContainer} from './Panel'
 
 export const CentralPanel = observer(() => {
-  const store = useBuilderStore()
-  store.viewer.Wrapper = store.isBuilderMode ? Editable : null
+  const store = useStore()
+  store.Wrapper = store.isBuilderMode ? Editable : null
 
   return (
     <FormContainer>
-      <FormViewer {...store.viewer.props} erroneous/>
+      <FormViewer {...store.props}/>
     </FormContainer>
   )
 })

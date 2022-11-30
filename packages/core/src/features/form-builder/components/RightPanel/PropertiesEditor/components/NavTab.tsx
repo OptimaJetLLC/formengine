@@ -22,6 +22,6 @@ export const NavTab = observer(({activeTab, setActiveTab}: NavProps) => {
     {NavIconItem(Section.Main, title(Section.Main), faCircle, {color: 'var(--rs-navs-selected)'})}
     {NavIconItem(Section.Style, title(Section.Style), faPaintBrush, {color: '#f67f1f'})}
     {NavIconItem(Section.Actions, title(Section.Actions), faBolt, {color: 'blueviolet'})}
-    {NavIconItem(Section.Validation, title(Section.Validation), faSpellCheck, {color: 'green'})}
+    {NavIconItem(Section.Rules, title(Section.Rules), faSpellCheck, {color: 'green'})}
   </RNav>
 })

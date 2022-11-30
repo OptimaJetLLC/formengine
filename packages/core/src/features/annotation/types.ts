@@ -44,3 +44,4 @@ export type AnnotationTypeMap = {
   [key in AnnotationType]: typeof Annotation
 }
 export type FirstParameter<T extends (...args: any) => any> = Parameters<T>[0]
+export type PreAnnotation = Partial<Omit<Annotation, 'key'>> & Pick<Annotation, 'editor'>

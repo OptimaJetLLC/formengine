@@ -22,7 +22,7 @@ export function useChildren(currentProps: Record<string, any>) {
 
     currentProps[container.key] =
       components.length
-        ? <ComponentTree parent={componentStore} data={components}/>
+        ? <ComponentTree parentStore={componentStore} data={components}/>
         : null
   }
 }

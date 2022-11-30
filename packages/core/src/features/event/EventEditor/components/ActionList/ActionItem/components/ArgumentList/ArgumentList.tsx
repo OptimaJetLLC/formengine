@@ -31,8 +31,10 @@ export const ArgumentList = observer(() => {
       </Animation.Collapse>
 
       <ExpandButton block onClick={() => setShow(!show)}>
-        {t('actions.arguments')}
-        <ExpandIcon style={{marginTop: -2}}/>
+        <>
+          {t('actions.arguments')}
+          <ExpandIcon style={{marginTop: -2}}/>
+        </>
       </ExpandButton>
     </>
   )

@@ -16,7 +16,7 @@ import {createAnnotation, createProperty} from './utils'
 
 export const key = createAnnotation(KeyInput).schemed(yup.string())
 export const style = createAnnotation(StyleEditor).setup({section: Section.Style})
-export const validation = createAnnotation(ValidateEditor).setup({section: Section.Validation})
+export const validation = createAnnotation(ValidateEditor).setup({section: Section.Rules})
 
 //Primitives
 export const string = createProperty(StringInput).schemed(yup.string())

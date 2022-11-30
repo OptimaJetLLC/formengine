@@ -4,13 +4,16 @@ import {Section} from '../../../form-builder/components/RightPanel/PropertiesEdi
 import {PropertyEditorProps} from '../../types'
 
 export class Annotation {
-  constructor(
-    readonly key: string,
-    readonly name: string,
-    readonly editor: ComponentType<PropertyEditorProps>,
-    readonly scheme?: yup.AnySchema,
-    readonly hint?: string,
-    readonly section: Section = Section.Main,
-  ) {
+  readonly key: string
+  readonly name: string
+  readonly editor!: ComponentType<PropertyEditorProps>
+  readonly schema?: yup.AnySchema
+  readonly hint?: string
+  readonly section: Section = Section.Main
+  readonly valued: boolean = false
+
+  constructor(key: string, name: string) {
+    this.key = key
+    this.name = name
   }
 }
