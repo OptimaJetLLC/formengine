@@ -20,7 +20,7 @@ interface SchemaRuleProps {
 export const SchemaRule = observer(({ruleKey}: SchemaRuleProps) => {
   const {componentStore, model} = useComponentData()
   const schema = componentStore.schema
-  const valuedAn = model.properties.find((p) => p.valued) ?? model.properties.find((p) => p.name === 'value')
+  const valuedAn = model.valuedAn
   const rule = getSchemaRules(valuedAn?.schema?.constructor)?.[ruleKey]
   if (!rule || !schema) return null
 

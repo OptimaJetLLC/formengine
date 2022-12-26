@@ -1,21 +1,26 @@
 import {observer} from 'mobx-react'
+import {ReactNode, useEffect} from 'react'
+import {useComponentData} from '../../../utils/contexts/ComponenDataContext'
 import {useStore} from '../../../utils/contexts/StoreContext'
-import {WrapperProps} from '../../../utils/types'
-import {Field} from '../utils/Field'
 
-export interface ErroneousProps extends WrapperProps {
-  field?: Field
+export interface ErroneousProps {
+  children: ReactNode
 }
 
-export const Erroneous = observer(({View, viewProps, field}: ErroneousProps) => {
+export const Erroneous = observer(({children}: ErroneousProps) => {
   const store = useStore()
+  const {field} = useComponentData()
   const Error = store.props.view.error.view
 
-  if (store.props.erroneous) return <View {...viewProps}/>
+  useEffect(() => {
+    if (field) field.error = undefined
+  }, [store.isBuilderMode])
+
+  if (store.props.erroneous) return <>{children}</>
 
   return (
     <Error error={field?.error}>
-      <View {...viewProps}/>
+      {children}
     </Error>
   )
 })

@@ -3,7 +3,7 @@ import {useEffect} from 'react'
 import {useStore} from '../../../utils/contexts/StoreContext'
 import {ComponentTree} from '../../ui/ComponentTree'
 
-export const Viewer = observer(() => {
+const _Viewer = () => {
   const store = useStore()
   const {getForm, data, view, event, actions} = store.props
 
@@ -18,4 +18,6 @@ export const Viewer = observer(() => {
 
 
   return <ComponentTree data={[store.screen]}/>
-})
+}
+
+export const Viewer = observer(_Viewer)

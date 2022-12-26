@@ -25,12 +25,12 @@ const ErrorMessageStyle = css`
 `
 
 const ErrorMessage = ({children, error}: ErrorMessageProps) => {
-  if (!error) return <> {children} </>
+  const className = error ? ErrorMessageStyle : undefined
 
   return (
     <>
       {children}
-      <div className={ErrorMessageStyle}>
+      <div className={className}>
         {error}
       </div>
     </>

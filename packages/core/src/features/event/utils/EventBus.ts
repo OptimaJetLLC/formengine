@@ -1,49 +1,36 @@
 import {ANY_EVENT} from '../consts'
-import {ActionEventHandler, EventListener, ListenerOptions, NotifyTarget} from '../types'
-import {ActionEvent} from './ActionEvent'
+import {ActionEventHandler, EventFilter, EventListener} from '../types'
+import {ActionEventArgs} from './ActionEventArgs'
 
 export class EventBus {
-  readonly #listeners: { [eventName: string | symbol]: EventListener[] }
+  readonly #listeners: Record<string | symbol, Set<EventListener>> = {}
 
-  constructor() {
-    this.#listeners = {}
+  notify(filter: EventFilter, eventArgs: ActionEventArgs) {
+    const targets = this.#getTargets(filter)
+    targets.forEach((listener) => listener(eventArgs))
   }
 
-  notify(target: NotifyTarget, arg: ActionEvent) {
-    const notified = this.#getNotified(target)
-    if (!notified.length) return
-    notified.forEach((func) => func(arg))
+  listen(callback: ActionEventHandler, filter?: EventFilter): () => void {
+    const type = filter?.type ?? ANY_EVENT
+    const listener = callback as EventListener
+    listener.target = filter?.target
+
+    this.#listeners[type] ??= new Set()
+    this.#listeners[type].add(listener)
+
+    return () => this.#listeners[type].delete(listener)
   }
 
-  listen(callback: ActionEventHandler, options?: ListenerOptions) {
-    const eventName = options?.eventName ?? ANY_EVENT
-    const listener: EventListener = callback
-    listener.target = options?.target
-
-    this.#listeners[eventName] ??= []
-    this.#listeners[eventName].push(listener)
-
-    const unlisten = () => {
-      this.#listeners[eventName] =
-        this.#listeners[eventName]
-          .filter((subscriber) => subscriber !== listener)
-
-      if (this.#listeners[eventName].length === 0) delete this.#listeners[eventName]
-    }
-
-    return unlisten
-  }
-
-  #getNotified({eventName, target}: NotifyTarget) {
+  #getTargets({type, target}: EventFilter) {
     const notified: EventListener[] = []
 
-    //Filter by event
+    //Listeners by any event
     if (this.#listeners[ANY_EVENT]) {
       notified.push(...this.#listeners[ANY_EVENT])
     }
 
-    if (eventName && this.#listeners[eventName]) {
-      notified.push(...this.#listeners[eventName])
+    if (type && this.#listeners[type]) {
+      notified.push(...this.#listeners[type])
     }
 
     //Filter by target

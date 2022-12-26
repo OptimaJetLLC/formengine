@@ -13,7 +13,7 @@ export class Node {
     this.key = data.key
     this.data = data
     this.parent = parent
-    this.model = store.props.view.getModel(data)
+    this.model = store.props.view.initModel(data)
     this.children = data.children?.map(child => new Node(store, child, this))
   }
 }

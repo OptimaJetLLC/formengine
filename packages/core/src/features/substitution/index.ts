@@ -1,3 +1,3 @@
 export {InputBindableText} from './components/InputBindableText'
-export {useSubstitution} from './useSubstitution'
+export {getSubstitutedValue} from './getSubstitutedValue'
 export {denoteBinds} from './utils'

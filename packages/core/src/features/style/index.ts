@@ -1,2 +1,3 @@
 export * from './StyleEditor'
-export * from './useStyles'
+export * from './getClassName'
+export {removePropsStyles} from "./removePropsStyles";

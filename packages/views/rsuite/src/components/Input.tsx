@@ -47,7 +47,7 @@ export const input = define(Input)
   .props({
     disabled: boolean,
     label: string.default('Input'),
-    placeholder: string,
+    placeholder: string.default(''),
     readOnly: boolean,
     size,
     onChange: event,

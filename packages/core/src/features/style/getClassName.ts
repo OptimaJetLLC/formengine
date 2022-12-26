@@ -1,11 +1,11 @@
 import {css} from '@emotion/css'
 import {keys} from 'lodash'
-import {useComponentData} from '../../utils/contexts/ComponenDataContext'
+import {ComponentStore} from '../../stores/ComponentStore'
 import {StylesFromProps} from './conts'
 import {styleToString, transformStylesToCSS} from './utils'
 
-export const useStyles = () => {
-  const {style, props} = useComponentData().componentStore
+export const getClassName = (componentStore: ComponentStore) => {
+  const {style, props} = componentStore
 
 
   const stylesFromProps: Record<string, string> = {}
@@ -25,13 +25,6 @@ export const useStyles = () => {
 
   styleString += style.cssBlock || ''
 
-  return css`${styleString}`
+  return {className: css`${styleString}`}
 }
 
-export const removePropsStyles = (props: Record<string, any>) => {
-  keys(props)?.forEach(key => {
-    if (StylesFromProps[key]) delete props[key]
-  })
-
-  return props
-}

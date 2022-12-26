@@ -1,4 +1,5 @@
 import {makeObservable, observable} from 'mobx'
+import {FunctionComponent} from 'react'
 import {clear, reset, setProperty, validate} from '../features/event/actions'
 import {ActionDefinition} from '../features/event/types'
 import {EventBus} from '../features/event/utils/EventBus'
@@ -6,7 +7,7 @@ import {FormViewerProps} from '../features/form-viewer/FormViewer'
 import {screen} from '../features/ui/Screen'
 import {Form} from '../features/validation'
 import {treeFind} from '../utils'
-import {Wrapper} from '../utils/types'
+import {WrapperProps} from '../utils/types'
 import {ComponentStore} from './ComponentStore'
 
 export class Store {
@@ -16,7 +17,7 @@ export class Store {
 
   actions: ActionDefinition[] = [setProperty, validate, reset, clear]
   screen = new ComponentStore(screen.name, screen.type)
-  Wrapper: Wrapper = null
+  Wrapper?: FunctionComponent<WrapperProps>
 
   constructor(public props: FormViewerProps) {
     makeObservable(this, {
@@ -39,7 +40,7 @@ export class Store {
 
   findAction(actionName: string, targetKey?: string) {
     const target = targetKey ? this.findComponent(targetKey) : undefined
-    const actionList = target ? this.props.view.getModel(target).actions : this.actions
+    const actionList = target ? this.props.view.initModel(target).actions : this.actions
     const action = actionList?.find((val) => val.name === actionName)
 
     if (!action) {

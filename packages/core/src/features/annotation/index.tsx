@@ -59,3 +59,5 @@ shape({
 //TODO in future: color, date
 
 //TIP for potentially customProp or arrayProp - use yup for validate
+
+export * from './utils'

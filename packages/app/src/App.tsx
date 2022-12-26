@@ -14,7 +14,7 @@ const App = () => {
           bus.listen((e) => {
             //alert(e.value)
             let a = 4
-          }, {eventName: 'onChange', target: 'title'})
+          }, {type: 'onChange', target: 'title'})
 
           bus.listen((e) => {
             let a = 4

@@ -6,16 +6,18 @@ import {Editable} from '../../dnd'
 import {FormViewer} from '../../form-viewer/FormViewer'
 import {PanelContainer} from './Panel'
 
-export const CentralPanel = observer(() => {
+const _CentralPanel = () => {
   const store = useStore()
-  store.Wrapper = store.isBuilderMode ? Editable : null
+  store.Wrapper = store.isBuilderMode ? Editable : undefined
 
   return (
     <FormContainer>
       <FormViewer {...store.props}/>
     </FormContainer>
   )
-})
+}
+
+export const CentralPanel = observer(_CentralPanel)
 
 const FormContainer = styled(PanelContainer)`
   flex: 1;

@@ -1,6 +1,6 @@
 import {ComponentStore} from '../../stores/ComponentStore'
 import {defineAction} from './defineAction'
-import {ActionEvent} from './utils/ActionEvent'
+import {ActionEventArgs} from './utils/ActionEventArgs'
 
 export type EventName = string
 export type ArgumentName = string
@@ -42,19 +42,12 @@ export type ArgumentValue = string | number | boolean
  */
 export type WeakArgs = Record<ArgumentName, ArgumentValue>
 
-export type EventTuple = [
-  handlers: Record<EventName, Function>,
-  actionsMap: Record<EventName, ((e: ActionEvent) => void)[]>,
-]
-
-export interface ListenerOptions {
+export interface EventFilter {
   readonly target?: string
-  readonly eventName?: string
+  readonly type?: string
 }
 
-export type NotifyTarget = Pick<ListenerOptions, 'target' | 'eventName'>
-
-export type ActionHandler<T> = (params: { [k in keyof T]: any }, e: ActionEvent) => void
+export type ActionHandler<T> = (params: { [k in keyof T]: any }, e: ActionEventArgs) => void
 
 export type ArgsDefinition<T> = (Key<T> | TypedKey<T>)
 
@@ -62,7 +55,7 @@ type Key<T> = (keyof T & string)
 
 type TypedKey<T> = [Key<T>, ArgumentType]
 
-export type ActionEventHandler = (e: ActionEvent) => void
+export type ActionEventHandler = (e: ActionEventArgs) => void
 
 export type EventListener = ActionEventHandler & {
   target?: string

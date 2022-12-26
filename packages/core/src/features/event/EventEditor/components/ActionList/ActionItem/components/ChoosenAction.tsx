@@ -14,7 +14,7 @@ export const ChoosenAction = observer(() => {
   const groups = useGroups()
 
   const TargetActionsList: any = (target: ComponentStore) => {
-    const model = store.props.view.getModel(target)
+    const model = store.props.view.initModel(target)
     return <Dropdown.Menu> {
       model?.actions?.map((action) =>
         <Dropdown.Item

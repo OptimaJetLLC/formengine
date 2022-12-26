@@ -2,7 +2,7 @@ import {SyntheticEvent} from 'react'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {Store} from '../../../stores/Store'
 
-export class ActionEvent {
+export class ActionEventArgs {
   constructor(
     readonly eventName: string,
     readonly sender: ComponentStore,

@@ -35,7 +35,7 @@ export class View {
     throw new Error(`The ${type} is not found!`)
   }
 
-  getModel(store: ComponentStore) {
+  initModel(store: ComponentStore) {
     return this.get(store.type).init(store)
   }
 

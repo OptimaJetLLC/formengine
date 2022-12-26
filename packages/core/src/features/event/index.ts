@@ -1,2 +1,2 @@
 export * from './EventEditor'
-export * from './useEvent/useEvents'
+export {initEvents} from './utils/initEvents'

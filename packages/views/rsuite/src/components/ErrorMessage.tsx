@@ -8,9 +8,9 @@ interface ErrorMessageProps {
 }
 
 const ErrorMessage = ({error, children}: ErrorMessageProps) => {
-  if (!error) return <div> {children} </div>
+  const className = error ? 'rs-form-control-wrapper' : undefined
 
-  return <div className={'rs-form-control-wrapper'}>
+  return <div className={className}>
     {children}
     <Form.ErrorMessage show={Boolean(error)}>
       {error}

@@ -1,6 +1,7 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import React, {ReactElement} from 'react'
+import {observer} from 'mobx-react'
+import React, {ReactNode} from 'react'
 import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
 import {useDnd} from '../hooks/useDnd'
 import {DragPreview} from './DragPreview'
@@ -8,10 +9,10 @@ import {DropZone} from './DropZone'
 
 interface DraggableProps extends React.ComponentProps<any> {
   isInner?: boolean
-  viewForDragPreview?: ReactElement
+  viewForDragPreview?: ReactNode
 }
 
-export const Draggable = ({children, viewForDragPreview, isInner, className, ...props}: DraggableProps) => {
+export const Draggable = observer(({children, viewForDragPreview, isInner, className, ...props}: DraggableProps) => {
   const {isContainer, isRoot} = useComponentData().componentStore
   const [{isActive, isDragging}, dnd] = useDnd()
 
@@ -23,7 +24,7 @@ export const Draggable = ({children, viewForDragPreview, isInner, className, ...
       {children}
       <DropZone isAfter={!isInner && true} isInner={isInner}/>
     </Container>
-}
+})
 
 const Container = styled.div`
   position: relative;

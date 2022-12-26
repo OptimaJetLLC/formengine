@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import {observer} from 'mobx-react'
 import React from 'react'
 import {useComponentData} from '../../../utils/contexts/ComponenDataContext'
-import {useDefaultProps} from '../../ui/ComponentNode/hooks/useDefaultProps'
+import {getDefaultProps} from '../../../utils/getDefaultProps'
 import {ItemType} from '../consts'
 import {DragPreview} from './Editable/components/DragPreview'
 import {useDragWithPreview} from './Editable/hooks/useDragWithPreview'
@@ -12,7 +12,7 @@ export const AddedComponent = observer(() => {
   const View = data.model.view
   const [{isDragging}, drag] = useDragWithPreview(ItemType.AddedComponent)
 
-  const element = <Container><View {...useDefaultProps()}/></Container>
+  const element = <Container><View {...getDefaultProps(data)}/></Container>
 
   return (isDragging
       ? <DragPreview>{element}</DragPreview>

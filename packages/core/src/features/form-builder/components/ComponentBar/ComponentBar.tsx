@@ -74,7 +74,7 @@ const AddedComponents = ({definitions}: AddedComponentsProps) => {
             key={definition.name}
             value={{
               componentStore,
-              model: view.getModel(componentStore)
+              model: view.initModel(componentStore)
             }}
           >
             <AddedComponent/>
