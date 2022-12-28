@@ -38,13 +38,6 @@ export const InputBoolean = observer(({name}: InputProps) => {
 })
 
 const useSyncBoolean = (name: ArgumentName): [0 | 1, Dispatch<SetStateAction<0 | 1>>] => {
-  const data = useActionData()
-  const [value, setValue] = useState<0 | 1>(getInitialState)
-  useChangeConnectedData()
-
-  return [value, setValue]
-
-
   function getInitialState() {
     const value = data.weakArgs?.[name] ?? false
     return value ? 1 : 0
@@ -55,4 +48,10 @@ const useSyncBoolean = (name: ArgumentName): [0 | 1, Dispatch<SetStateAction<0 |
       data.weakArgs = Object.assign({}, data.weakArgs, {[name]: Boolean(value)})
     }, [value])
   }
+
+  const data = useActionData()
+  const [value, setValue] = useState<0 | 1>(getInitialState)
+  useChangeConnectedData()
+
+  return [value, setValue]
 }

@@ -15,13 +15,6 @@ export const InputNumber = ({name}: InputProps) => {
 }
 
 const useSyncNumber = (name: ArgumentName): [number, Dispatch<SetStateAction<number>>] => {
-  const data = useActionData()
-  const [value, setValue] = useState<number>(getInitialState)
-  useChangeConnectedData()
-
-  return [value, setValue]
-
-
   function getInitialState() {
     return Number(data.weakArgs?.[name])
   }
@@ -31,4 +24,10 @@ const useSyncNumber = (name: ArgumentName): [number, Dispatch<SetStateAction<num
       data.weakArgs = Object.assign({}, data.weakArgs, {[name]: Number(value)})
     }, [value])
   }
+
+  const data = useActionData()
+  const [value, setValue] = useState<number>(getInitialState)
+  useChangeConnectedData()
+
+  return [value, setValue]
 }

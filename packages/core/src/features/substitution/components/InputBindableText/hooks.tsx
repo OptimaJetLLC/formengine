@@ -3,14 +3,6 @@ import {useActionData} from '../../../event/EventEditor/components/ActionList/Ac
 import {ArgumentName} from '../../../event/types'
 
 export const useSyncText = (name: ArgumentName): [string, Dispatch<SetStateAction<string>>] => {
-  const data = useActionData()
-  const [value, setValue] = useState<string>(getInitialState)
-
-  useChangeConnectedData()
-
-  return [value, setValue]
-
-
   function getInitialState() {
     return String(data.weakArgs?.[name] ?? '')
   }
@@ -20,4 +12,11 @@ export const useSyncText = (name: ArgumentName): [string, Dispatch<SetStateActio
       data.weakArgs = Object.assign({}, data.weakArgs, {[name]: value})
     }, [value])
   }
+
+  const data = useActionData()
+  const [value, setValue] = useState<string>(getInitialState)
+
+  useChangeConnectedData()
+
+  return [value, setValue]
 }
