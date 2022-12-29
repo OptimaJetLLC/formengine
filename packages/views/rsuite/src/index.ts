@@ -19,6 +19,7 @@ import {input} from './components/Input'
 import {label} from './components/Label'
 import {menu} from './components/Menu'
 import {message} from './components/Message'
+import {progressCircle, progressLine} from './components/Progress'
 import {radioGroup} from './components/RadioGroup'
 import {repeater} from './components/Repeater'
 import {richTextEditor} from './components/RichTextEditor'
@@ -55,7 +56,9 @@ export const rsuite = createView(
   menu,
   richTextEditor,
   image,
-  grid
+  grid,
+  progressCircle,
+  progressLine
 ).withError(errorMessage)
 
 

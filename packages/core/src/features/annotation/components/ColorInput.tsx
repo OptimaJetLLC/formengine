@@ -7,10 +7,14 @@ import {makeAnnotationProps} from '../utils'
 
 export const ColorInput = ({componentStore, annotation}: PropertyEditorProps) => {
   const {value, onChange} = makeAnnotationProps({componentStore, annotation})
+  const handleChange = ({rgb}: any) => {
+    const {r, g, b, a} = rgb
+    onChange(`rgba(${r}, ${g}, ${b}, ${a})`)
+  }
   return (
     <Container>
       <label>{annotation.name}</label>
-      <ColorPicker value={value} onChange={({rgb}) => onChange(rgb)}/>
+      <ColorPicker value={value} onChange={handleChange}/>
     </Container>
   )
 }
