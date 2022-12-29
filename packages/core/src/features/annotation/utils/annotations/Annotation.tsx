@@ -11,6 +11,7 @@ export class Annotation {
   readonly hint?: string
   readonly section: Section = Section.Main
   readonly valued: boolean = false
+  readonly editorProps?: any;
 
   constructor(key: string, name: string) {
     this.key = key

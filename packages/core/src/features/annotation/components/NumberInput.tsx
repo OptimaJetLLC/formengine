@@ -12,9 +12,11 @@ const NumberInput = (props: PropertyEditorProps) => {
     }
     onChange(value)
   }
+  const inputNumberProps = {...props.annotation.editorProps, ...inputProps}
+
   return <LabeledInput>
     <Form.ControlLabel>{props.annotation.name}</Form.ControlLabel>
-    <InputNumber {...inputProps} onChange={handleChange} size={'xs'}/>
+    <InputNumber {...inputNumberProps} onChange={handleChange} size={'xs'}/>
   </LabeledInput>
 }
 

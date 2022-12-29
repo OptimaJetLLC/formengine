@@ -47,6 +47,12 @@ export class BaseBuilder<T> {
     return annotation
   }
 
+  withEditorProps(props: any): this {
+    const clone = this.clone()
+    _.assign(clone.annotation, {editorProps: props})
+    return clone
+  }
+
   protected getName(key: string) {
     return this.annotation.name ?? (this.options.autoName ? _.startCase(key) : key)
   }

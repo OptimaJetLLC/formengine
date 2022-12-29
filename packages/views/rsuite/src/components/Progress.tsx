@@ -3,8 +3,7 @@ import {Progress} from 'rsuite'
 
 const commonProgressProps = {
   classPrefix: string.default('progress').hinted('The prefix of the component CSS class'),
-  // todo min = 0, max = 100
-  percent: number.default(50).hinted('Percent of progress'),
+  percent: number.default(50).withEditorProps({min: 0, max: 100}).hinted('Percent of progress'),
   showInfo: boolean.default(true).hinted('Show text'),
   status: oneOf('success', 'fail', 'active')
     .default('active')
@@ -17,8 +16,7 @@ export const progressCircle = define(Progress.Circle)
   .named('ProgressCircle')
   .props({
     ...commonProgressProps,
-    // todo min: 0, max: 360
-    gapDegree: number.hinted('number  the gap degree of half circle, 0 ~ 360'),
+    gapDegree: number.withEditorProps({min: 0, max: 360}).hinted('The gap degree of half circle, 0 ~ 360'),
     gapPosition: oneOf('right', 'top', 'bottom', 'left')
       .default('top')
       .hinted('Circular progress bar Notch position'),
