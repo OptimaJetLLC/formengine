@@ -26,10 +26,12 @@ export const size = oneOf(
   'Large'
 ).default('md')
 
+export const backgroundColor = color.named('Background').default('rgba(169, 169, 169, 0.24)')
+
 export const textStyles = {
   alignment: oneOf('start', 'center', 'end').default('start').radio(),
   fontSize: number.default(14),
   fontWeight: oneOf('lighter', 'normal', 'bold').default('normal'),
   color: color.default('var(--rs-text-primary)'),
-  background: color.default('rgba(169, 169, 169, 0.24)')
+  backgroundColor
 }

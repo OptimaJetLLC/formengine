@@ -1,5 +1,6 @@
+import {OtherMeasure} from '../annotation/components/SizeInput'
 import {StandardStylesDefinitions} from './conts'
-import {StyleItem} from './types'
+import {Measured, StyleItem} from './types'
 
 export const styleToString = ({name, value}: StyleItem) =>
   (name && value) ? `${name}:${value};` : ''
@@ -24,6 +25,13 @@ export const transformStylesToCSS = (styles?: Record<string, string>) => {
 
 export function inPX(cssName: string) {
   return {cssName, measure: 'px'}
+}
+
+export function size(cssName: string) {
+  const measure = ({value, measure}: Measured) => {
+    return (!measure || measure !== OtherMeasure) ? `${value}${measure}` : value
+  }
+  return {cssName, measure}
 }
 
 export function rgb(cssName: string) {

@@ -32,6 +32,7 @@ const Container = styled(LabeledInput)`
     .rsuite-color-picker-overlay {
       left: initial;
       right: 0;
+      z-index: 10;
     }
   }
 `

@@ -11,6 +11,7 @@ import {ColorInput} from './components/ColorInput'
 import {KeyInput} from './components/KeyInput'
 import {NumberInput} from './components/NumberInput'
 import {Picker} from './components/Picker'
+import {SizeInput} from './components/SizeInput'
 import {StringInput} from './components/StringInput'
 import {createAnnotation, createProperty} from './utils'
 
@@ -22,6 +23,7 @@ export const validation = createAnnotation(ValidateEditor).setup({section: Secti
 export const string = createProperty(StringInput).schemed(yup.string())
 export const boolean = createProperty(BooleanInput).schemed(yup.boolean())
 export const number = createProperty(NumberInput).schemed(yup.number())
+export const size = createProperty(SizeInput).schemed(yup.object({}))
 
 //Array
 export const array = createProperty(ArrayInput).schemed(yup.array())

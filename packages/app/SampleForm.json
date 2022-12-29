@@ -1,0 +1,125 @@
+{
+  "key": "screen 1",
+  "type": "Screen",
+  "props": {},
+  "style": {},
+  "children": [
+    {
+      "key": "Image 1",
+      "type": "Image",
+      "props": {
+        "height": {
+          "value": "40",
+          "measure": "px"
+        },
+        "width": {
+          "value": "100",
+          "measure": "%"
+        },
+        "fit": "scale-down",
+        "position": "center"
+      },
+      "style": {}
+    },
+    {
+      "key": "header 1",
+      "type": "Header",
+      "props": {
+        "content": "Application Form",
+        "alignment": "center"
+      },
+      "style": {}
+    },
+    {
+      "key": "title",
+      "type": "Input",
+      "props": {
+        "label": "Title"
+      },
+      "style": {}
+    },
+    {
+      "key": "input container",
+      "type": "Container",
+      "props": {},
+      "style": {},
+      "children": [
+        {
+          "key": "name container",
+          "type": "Container",
+          "props": {},
+          "style": {},
+          "children": [
+            {
+              "key": "first name",
+              "type": "Input",
+              "props": {
+                "label": "First Name"
+              },
+              "style": {}
+            },
+            {
+              "key": "last name",
+              "type": "Input",
+              "props": {
+                "label": "Last Name"
+              },
+              "style": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "type",
+      "type": "Dropdown",
+      "props": {
+        "block": true
+      },
+      "style": {}
+    },
+    {
+      "key": "comment",
+      "type": "TextArea",
+      "props": {},
+      "style": {}
+    },
+    {
+      "key": "button container",
+      "type": "Container",
+      "props": {},
+      "style": {},
+      "children": [
+        {
+          "key": "save",
+          "type": "Button",
+          "props": {
+            "children": "Save",
+            "appearance": "primary"
+          },
+          "style": {}
+        },
+        {
+          "key": "cancel",
+          "type": "Button",
+          "props": {
+            "children": "Cancel"
+          },
+          "style": {}
+        }
+      ]
+    },
+    {
+      "key": "RadioGroup",
+      "type": "RadioGroup",
+      "props": {},
+      "style": {}
+    },
+    {
+      "key": "checkbox",
+      "type": "Checkbox",
+      "props": {},
+      "style": {}
+    }
+  ]
+}

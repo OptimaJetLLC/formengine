@@ -58,7 +58,7 @@ const LabeledInput = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  label {
+  & > label {
     width: 100px;
     min-width: 80px;
   }

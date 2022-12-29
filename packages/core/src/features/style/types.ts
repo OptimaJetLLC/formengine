@@ -5,6 +5,11 @@ export type StyleItem = {
 
 type Measure = string | ((value: any) => string)
 
+export type Measured = {
+  value?: any,
+  measure: string
+}
+
 export type StandardStyleItem = Record<string, { cssName: string, measure?: Measure }>
 
 export type Style = {

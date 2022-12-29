@@ -2,12 +2,12 @@ import ArrowDownIcon from '@rsuite/icons/ArrowDown'
 import {annotate} from 'rc-marked-input'
 import React, {Ref} from 'react'
 import {Button, Whisper} from 'rsuite'
-import {OverlayTriggerHandle, PickerHandle} from 'rsuite/Picker'
+import {OverlayTriggerInstance, PickerInstance} from 'rsuite/Picker'
 import {componentMarkup} from '../../../consts'
 import {BindPopover} from './BindPopover'
 
 export const AddBindButton = ({onAdd, name}: any) => {
-  const triggerRef = React.useRef<PickerHandle | null>(null)
+  const triggerRef = React.useRef<PickerInstance | null>(null)
 
   const switchSpeaker = () => {
     if (triggerRef.current?.overlay) {
@@ -26,7 +26,7 @@ export const AddBindButton = ({onAdd, name}: any) => {
 
   return (
     <Whisper
-      ref={triggerRef as Ref<OverlayTriggerHandle>}
+      ref={triggerRef as Ref<OverlayTriggerInstance>}
       trigger="none"
       placement={'auto'}
       speaker={

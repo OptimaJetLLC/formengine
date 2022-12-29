@@ -7,8 +7,10 @@ export interface LabeledValue {
 
 export const labeledValue: LabeledValue = {label: '', value: ''}
 
-export const toLabeledValues = (items: string[] | LabeledValue[]) =>
+export const toLabeledValues = (items: string[] | LabeledValue[], upper = true) =>
   items.map(item => ({
     value: isObject(item) ? item.value : item,
-    label: isObject(item) ? item.label : upperFirst(item)
+    label: isObject(item)
+      ? item.label
+      : (upper ? upperFirst(item) : item)
   }))

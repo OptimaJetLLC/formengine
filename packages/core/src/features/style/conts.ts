@@ -1,5 +1,6 @@
+import {backgroundColor} from 'fb-rsuite/src/commonProperties'
 import {StandardStyleItem} from './types'
-import {inPX, pick, rgb} from './utils'
+import {inPX, pick, rgb, size} from './utils'
 
 export const StandardStylesDefinitions: StandardStyleItem = {
   'Width': inPX('width'),
@@ -17,12 +18,24 @@ export const StandardStylesDefinitions: StandardStyleItem = {
   'fontSize': inPX('font-size'),
   'fontWeight': {cssName: 'font-weight'},
   'color': rgb('color'),
-  'background': rgb('background-color'),
+  'backgroundColor': rgb('background-color'),
+  'width': size('width'),
+  'height': size('height'),
+  'fit': {cssName: 'object-fit'},
+  'position': {cssName: 'object-position'},
 }
 
 export const SizeStyles = pick(StandardStylesDefinitions, ['Width', 'Height'])
 export const IndentStyles = pick(StandardStylesDefinitions, ['Left', 'Right', 'Top', 'Bottom'])
 export const OtherStyles = pick(StandardStylesDefinitions, ['Corner radius', 'Rotation'])
 export const StylesFromProps = pick(StandardStylesDefinitions, [
-  'alignment', 'fontSize', 'fontWeight', 'color', 'background'
+  'alignment',
+  'fontSize',
+  'fontWeight',
+  'color',
+  'backgroundColor',
+  'width',
+  'height',
+  'fit',
+  'position'
 ])
