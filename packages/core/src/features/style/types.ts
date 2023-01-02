@@ -3,7 +3,7 @@ export type StyleItem = {
   value?: string
 }
 
-type Measure = string | ((value: any) => string)
+type Measure = string | ((value: any) => string | undefined)
 
 export type Measured = {
   value?: any,

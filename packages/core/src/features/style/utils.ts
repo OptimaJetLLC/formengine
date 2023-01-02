@@ -35,7 +35,7 @@ export function size(cssName: string) {
 }
 
 export function rgb(cssName: string) {
-  return {cssName, measure: (rgb: { r: number; g: number; b: number; a: number }) => `rgb(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a})`}
+  return {cssName, measure: (rgb?: { r: number; g: number; b: number; a: number }) => rgb && `rgb(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a})`}
 }
 
 export const pick = (object: any, keys: string[]) => {
