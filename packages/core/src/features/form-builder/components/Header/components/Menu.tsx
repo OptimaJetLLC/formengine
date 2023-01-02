@@ -17,17 +17,17 @@ export const Menu = observer(() => {
   const local: any = {}
 
   return <Dropdown title={t('leftMenu.menu')} size={'sm'}>
-    <Dropdown.Item onSelect={store.download} icon={<FileDownloadIcon/>}>
+    <Dropdown.Item onSelect={store.download.bind(store)} icon={<FileDownloadIcon/>}>
       {local.download ?? t('leftMenu.download')}
     </Dropdown.Item>
-    <Dropdown.Item onSelect={store.upload} icon={<FileUploadIcon/>}>
+    <Dropdown.Item onSelect={store.upload.bind(store)} icon={<FileUploadIcon/>}>
       {local.upload ?? t('leftMenu.upload')}
     </Dropdown.Item>
     <LangSwitch/>
     <Dropdown.Item /*onSelect={onPrint}*/ icon={<FaIcon icon={faPrint as unknown as IconDefinition}/>}>
       {local.print ?? t('leftMenu.print')}
     </Dropdown.Item>
-    <Dropdown.Item onSelect={store.clear} icon={<FaIcon icon={faTrash as unknown as IconDefinition}/>}>
+    <Dropdown.Item onSelect={store.clear.bind(store)} icon={<FaIcon icon={faTrash as unknown as IconDefinition}/>}>
       {local.clear ?? t('leftMenu.clear')}
     </Dropdown.Item>
   </Dropdown>
