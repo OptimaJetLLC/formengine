@@ -8,13 +8,6 @@ export interface InputProps extends RInputProps {
   className: string
 }
 
-export enum Size {
-  XSmall = 'xs',
-  Small = 'sm',
-  Medium = 'md',
-  Large = 'lg',
-}
-
 // todo этот компонент должен поддерижвать numeric input only (number format в старом фб)
 
 const RtlLabel = styled.label`
@@ -46,8 +39,8 @@ export const Input = ({style, className, label, ...props}: InputProps) => {
 export const input = define(Input)
   .props({
     disabled: boolean,
-    label: string.default('Input'),
-    placeholder: string.default(''),
+    label: string.default('Input').hinted('Input label'),
+    placeholder: string.default('').hinted('Input placeholder'),
     readOnly: boolean,
     size,
     onChange: event,

@@ -1,31 +1,20 @@
 import styled from '@emotion/styled'
-import {MouseEvent} from 'react'
-import {Checkbox, Form} from 'rsuite'
+import {Checkbox} from 'rsuite'
+import {LabeledProperty} from '../../ui/Containers'
 import {PropertyEditorProps} from '../types'
 import {makeAnnotationProps} from '../utils'
 
-const BooleanInput = ({componentStore, annotation}: PropertyEditorProps) => {
+export const BooleanInput = ({componentStore, annotation}: PropertyEditorProps) => {
   const {value, onChange} = makeAnnotationProps({componentStore, annotation})
-  const onClick = (e: MouseEvent) => {
-    e.preventDefault()
-    onChange(!value)
-  }
-  return <Container onClick={onClick}>
-    <label>{annotation.name}</label>
-    <Checkbox checked={!!value} onChange={(value, checked) => onChange(checked)}/>
-    {/*//TODO Fix style for hint*/}
-    {annotation.hint && <Form.HelpText tooltip>{annotation.hint}</Form.HelpText>}
-  </Container>
+  return <LabeledProperty annotation={annotation}>
+    <SCheckbox checked={!!value} onChange={(value, checked) => onChange(checked)}/>
+  </LabeledProperty>
 }
 
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  &, & > * {
-    cursor: pointer;
+const SCheckbox = styled(Checkbox)`
+  width: 100%;
+  .rs-checkbox-checker {
+    padding-left: 0;
+    margin-left: -10px;
   }
 `
-
-export {BooleanInput}

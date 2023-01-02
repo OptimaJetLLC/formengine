@@ -1,7 +1,7 @@
+import styled from '@emotion/styled'
 import {isUndefined} from 'lodash'
 import {InputPicker} from 'rsuite'
-import useUniqueId from 'rsuite/cjs/utils/useUniqueId'
-import {LabeledInput} from '../../ui/Containers'
+import {LabeledProperty} from '../../ui/Containers'
 import {PropertyEditorProps} from '../types'
 import {makeAnnotationProps} from '../utils'
 import {Property} from '../utils/annotations/Property'
@@ -22,13 +22,13 @@ export const Picker = ({componentStore, annotation}: PropertyEditorProps) => {
   const {value, onChange} = makeAnnotationProps({componentStore, annotation})
   const onClean = () => onChange(annotation.schema?.getDefault())
   const data = addCustomValue(annotation as Property, value)
-  const id = useUniqueId('picker-')
 
-  return (
-    <LabeledInput>
-      <label htmlFor={id}>{annotation.name}</label>
-      <InputPicker id={id} block cleanable creatable value={value} onChange={onChange}
-                   onClean={onClean} data={data} size={'xs'}/>
-    </LabeledInput>
-  )
+  return <LabeledProperty annotation={annotation}>
+    <SInputPicker block cleanable creatable value={value} onChange={onChange}
+                 onClean={onClean} data={data} size={'xs'}/>
+  </LabeledProperty>
 }
+
+const SInputPicker = styled(InputPicker)`
+  width: 100%;
+ `

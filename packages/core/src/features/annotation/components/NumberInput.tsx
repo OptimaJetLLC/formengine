@@ -1,5 +1,5 @@
-import {Form, InputNumber} from 'rsuite'
-import {LabeledInput} from '../../ui/Containers'
+import {InputNumber} from 'rsuite'
+import {LabeledProperty} from '../../ui/Containers'
 import {PropertyEditorProps} from '../types'
 import {makeAnnotationProps} from '../utils'
 
@@ -14,10 +14,9 @@ const NumberInput = (props: PropertyEditorProps) => {
   }
   const inputNumberProps = {...props.annotation.editorProps, ...inputProps}
 
-  return <LabeledInput>
-    <Form.ControlLabel>{props.annotation.name}</Form.ControlLabel>
+  return <LabeledProperty annotation={props.annotation}>
     <InputNumber {...inputNumberProps} onChange={handleChange} size={'xs'}/>
-  </LabeledInput>
+  </LabeledProperty>
 }
 
 export {NumberInput}

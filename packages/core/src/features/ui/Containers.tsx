@@ -1,11 +1,14 @@
 import styled from '@emotion/styled'
 import autosize from 'autosize'
-import {Component, ReactNode} from 'react'
+import {cloneElement, Component, ReactElement, ReactNode} from 'react'
 import ReactDOM from 'react-dom'
+import useUniqueId from 'rsuite/cjs/utils/useUniqueId'
 //https://styled-system.com/#expressive-consistent-ui-components
 //https://styled-system.com/table
 //Позволяет прописывать стили в виде коротких пропсов
 import {color, layout, space} from 'styled-system'
+import {HintedLabel} from '../annotation/components/HintedLabel'
+import {Annotation} from '../annotation/utils/annotations/Annotation'
 
 //TODO remove styled-system library
 
@@ -63,6 +66,20 @@ const LabeledInput = styled.div`
     min-width: 80px;
   }
 `
+
+export interface LabeledPropertyProps {
+  idPrefix?: string
+  annotation: Annotation
+  children?: ReactElement
+}
+
+export const LabeledProperty = ({idPrefix, annotation, children}: LabeledPropertyProps) => {
+  const id = useUniqueId(idPrefix || 'id-')
+  return <LabeledInput>
+    <HintedLabel htmlFor={id} hint={annotation.hint}>{annotation.name}</HintedLabel>
+    {children ? cloneElement(children, {id}) : undefined}
+  </LabeledInput>
+}
 
 const Centered = styled(Box)`
   display: flex;

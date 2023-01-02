@@ -1,8 +1,8 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import React from 'react'
-import {Form, Input, InputNumber, InputPicker} from 'rsuite'
-import {LabeledInput} from '../../ui/Containers'
+import {Input, InputNumber, InputPicker} from 'rsuite'
+import {LabeledProperty} from '../../ui/Containers'
 import {PropertyEditorProps} from '../types'
 import {makeAnnotationProps} from '../utils'
 import {toLabeledValues} from '../utils/LabeledValue'
@@ -24,15 +24,14 @@ const SizeInput = ({componentStore, annotation}: PropertyEditorProps) => {
     : <InputNumber value={value} size={'xs'} onChange={onChangeValue}/>
 
   return (
-    <LabeledInput>
-      <Form.ControlLabel>{annotation.name}</Form.ControlLabel>
+    <LabeledProperty annotation={annotation}>
       <Container>
         {needValue(measure) && input}
         <SPicker value={measure} onChange={onChangeMeasure} data={options}
                  className={cx({withValue: needValue(measure)})}
                  creatable cleanable={false} placement={'bottomEnd'} size={'xs'}/>
       </Container>
-    </LabeledInput>
+    </LabeledProperty>
   )
 }
 

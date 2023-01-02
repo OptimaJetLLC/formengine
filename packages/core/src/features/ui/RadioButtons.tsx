@@ -29,6 +29,12 @@ const Container = styled.div`
   gap: 10px;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  
+  .rs-radio-group {
+    width: 100%;
+    justify-content: space-evenly;
+  }
 
   .rs-radio-checker {
     min-height: 27px;

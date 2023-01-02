@@ -1,4 +1,5 @@
 import {Table} from 'rsuite'
+import {LabeledProperty} from '../../ui/Containers'
 import {InputCell} from '../../ui/CustomCells'
 import {EditableTable} from '../../ui/EditableTable'
 import {PropertyEditorProps} from '../types'
@@ -20,5 +21,8 @@ export const ArrayInput = (props: PropertyEditorProps) => {
     </Column>
   ]
 
-  return <EditableTable data={value} onChange={onChange} label={'Items'} columns={columns}/>
+  return <>
+    <LabeledProperty annotation={props.annotation}/>
+    <EditableTable data={value} onChange={onChange} columns={columns}/>
+  </>
 }

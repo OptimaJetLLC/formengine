@@ -15,11 +15,11 @@ const Image = ({alt, ...props}: ImageProps) => {
 
 export const image = define(Image)
   .props({
-    src: string.required.default(logo),
-    alt: string.named('Description').default('Image'),
-    height: size.default({measure: 'auto'}),
-    width: size.default({value: '100', measure: '%'}),
-    backgroundColor,
+    src: string.required.default(logo).hinted('Image source'),
+    alt: string.named('Description').default('Image').hinted('Image description'),
+    height: size.default({measure: 'auto'}).hinted('Image height'),
+    width: size.default({value: '100', measure: '%'}).hinted('Image width'),
+    backgroundColor: backgroundColor.hinted('Background color'),
     position: oneOf('top', 'bottom', 'left', 'right', 'center').default('left'),
     fit: oneOf('contain', 'cover', 'fill', 'none', 'scale-down').default('scale-down')
   })

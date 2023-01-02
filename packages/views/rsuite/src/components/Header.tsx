@@ -31,7 +31,9 @@ const Header = ({content, level, ...props}: HeaderProps) => {
 export const header = define(Header)
   .props({
     content: string.required.default('Header'),
-    level: oneOf('h1', 'h2', 'h3', 'h4', 'h5', 'h6').default('h4'),
+    level: oneOf('h1', 'h2', 'h3', 'h4', 'h5', 'h6')
+      .default('h4')
+      .hinted('Header level'),
     ...textStyles
   })
 

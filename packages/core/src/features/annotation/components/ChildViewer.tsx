@@ -1,22 +1,23 @@
+import styled from '@emotion/styled'
 import {ComponentStore} from '../../../stores/ComponentStore'
-import {LabeledInput} from '../../ui/Containers'
+import {LabeledProperty} from '../../ui/Containers'
 import {PropertyEditorProps} from '../types'
 
-const ChildViewer = (props: PropertyEditorProps) => {
-  const {annotation, value, componentStore} = props
-
+export const ChildViewer = ({annotation, componentStore}: PropertyEditorProps) => {
   const isChild = (child: ComponentStore) =>
     child.bindTo === annotation.key || !child.bindTo && annotation.key === 'children'
 
   return (
-    <LabeledInput>
-      <label>{annotation.name}</label>
-      <ul>
+    <LabeledProperty annotation={annotation}>
+      <Sul>
         {componentStore.children?.filter(isChild)
           .map((item) => (<li key={item.key}>{item.key}</li>))}
-      </ul>
-    </LabeledInput>
+      </Sul>
+    </LabeledProperty>
   )
 }
 
-export {ChildViewer}
+const Sul = styled.ul`
+  width: 100%;
+  padding-left: 12px;
+`

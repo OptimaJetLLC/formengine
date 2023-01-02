@@ -31,7 +31,9 @@ export const dropdown = define(Dropdown)
     size,
     defaultValue: string.default('a'),
     placeholder: string,
-    data: array.default(toLabeledValues(['a', 'b', 'c'])),
+    data: array.default(toLabeledValues(['a', 'b', 'c']))
+      .named('Items')
+      .hinted('Dropdown items'),
 
     block: boolean.default(true),
     cleanable: boolean.default(false),

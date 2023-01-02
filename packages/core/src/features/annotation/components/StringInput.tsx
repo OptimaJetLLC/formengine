@@ -1,16 +1,13 @@
 import {Input} from 'rsuite'
-import {LabeledInput} from '../../ui/Containers'
+import {LabeledProperty} from '../../ui/Containers'
 import {PropertyEditorProps} from '../types'
 import {makeAnnotationProps} from '../utils'
 
-const StringInput = (props: PropertyEditorProps) => {
+export const StringInput = (props: PropertyEditorProps) => {
   const {annotation, onBlur} = props
   return (
-    <LabeledInput>
-      <label>{annotation.name}</label>
+    <LabeledProperty annotation={annotation}>
       <Input name={annotation.key} onBlur={onBlur} {...makeAnnotationProps(props)} size={'xs'}/>
-    </LabeledInput>
+    </LabeledProperty>
   )
 }
-
-export {StringInput}
