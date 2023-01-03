@@ -1,5 +1,5 @@
 import {FormBuilder} from 'fb-core'
-import {rsuite} from 'fb-rsuite'
+import {rSuite} from 'fb-rsuite'
 import {getSampleForm} from './utils/getSampleForm'
 
 const data = {title: 'Hello! Hello!'}
@@ -8,7 +8,7 @@ const App = () => {
   return (
       <FormBuilder
         getForm={getSampleForm}
-        view={rsuite}
+        view={rSuite}
         data={data}
         event={(bus) => {
           bus.listen((e) => {

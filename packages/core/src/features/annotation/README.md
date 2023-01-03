@@ -45,7 +45,7 @@ export const myComponent = define(MyComponent)
     size: oneOf('xs', 'sm', 'md', 'lg').labeled("Extra small", "Small", "Medium", "Large"),
     direction: oneOf("vertical", "horizontal").default("horizontal").radio,
     onChange: event.setTo("value"),
-    tabs: arrayOf(navItem, navDropdown),
+    tabs: arrayOf(rsNavItem, rsNavDropdown),
     onClick: event,
     onFocus: event.default(() => console.log("I'm focused!")).sealed,
     oBlur: event.default((props) => props[count]++),

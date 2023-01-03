@@ -1,15 +1,15 @@
 import {define, string} from 'fb-core'
 
-interface StaticContentProps {
+interface RsStaticContentProps {
   content: string;
 }
 
-const StaticContent = (props: StaticContentProps) => {
+const RsStaticContent = (props: RsStaticContentProps) => {
   const {content, ...otherProps} = props
   return (<span {...otherProps}>{content}</span>)
 }
 
-export const staticContent = define(StaticContent)
+export const rsStaticContent = define(RsStaticContent)
   .props({
     content: string.required.default('Text...'),
   })

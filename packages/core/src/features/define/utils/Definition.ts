@@ -33,6 +33,11 @@ export class Definition<T extends object> {
     return this.view.displayName || this.view.name
   }
 
+  typed = (displayName: string) => {
+    this.view.displayName = displayName;
+    return this;
+  }
+
   static define<T extends object, U>(view: ComponentType<T>) {
     checkExistName()
     return new Definition<T>(view)

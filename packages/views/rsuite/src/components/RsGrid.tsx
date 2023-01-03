@@ -1,17 +1,17 @@
 import {define, node} from 'fb-core'
 import {ReactNode} from 'react'
-import {Col, Grid as RGrid, Row} from 'rsuite'
+import {Col, Grid, Row} from 'rsuite'
 
-interface GridProps {
+interface RsGridProps {
   child1: ReactNode
   child2: ReactNode
 }
 
 //TODO this used for tested inner drop zones
-const Grid = (props: GridProps) => {
+const RsGrid = (props: RsGridProps) => {
   // todo implement
   return (
-    <RGrid>
+    <Grid>
       <Row>
         {[].map(() => <Col></Col>)}
         <Col xs={12}>
@@ -21,11 +21,11 @@ const Grid = (props: GridProps) => {
           {props.child2}
         </Col>
       </Row>
-    </RGrid>
+    </Grid>
   )
 }
 
-export const grid = define(Grid)
+export const rsGrid = define(RsGrid)
   .props({
     child1: node,
     child2: node,

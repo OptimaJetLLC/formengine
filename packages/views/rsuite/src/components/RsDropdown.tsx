@@ -5,7 +5,7 @@ import {Form, InputPicker} from 'rsuite'
 import {InputPickerProps} from 'rsuite/esm/InputPicker/InputPicker'
 import {placement, size} from '../commonProperties'
 
-interface DropdownProps extends InputPickerProps {
+interface RsDropdownProps extends InputPickerProps {
   label: string,
   data: LabeledValue[]
   placeholder: string
@@ -13,7 +13,7 @@ interface DropdownProps extends InputPickerProps {
   className: string
 }
 
-const Dropdown = ({label, ...props}: DropdownProps) => {
+const RsDropdown = ({label, ...props}: RsDropdownProps) => {
   let {data, ...otherProps} = props;
   data = data ?? []
   return (
@@ -24,7 +24,7 @@ const Dropdown = ({label, ...props}: DropdownProps) => {
   )
 }
 
-export const dropdown = define(Dropdown)
+export const rsDropdown = define(RsDropdown)
   .props({
     label: string.default('Select'),
     placement,

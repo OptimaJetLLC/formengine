@@ -1,8 +1,8 @@
 import {array, define, event, number, oneOf, string} from 'fb-core'
 import {CheckCell, InputCell} from 'fb-core/src/features/ui/CustomCells'
-import {Breadcrumb as RBreadcrumb, BreadcrumbProps as RBreadcrumbProps} from 'rsuite'
+import {Breadcrumb, BreadcrumbProps} from 'rsuite'
 
-interface BreadcrumbItemProps {
+interface RsBreadcrumbItemProps {
   active?: boolean
   href?: string
   title?: string
@@ -10,10 +10,10 @@ interface BreadcrumbItemProps {
 
 const makeItems = (data: string[]) => data.map(title => ({title, href: title}))
 
-interface BreadcrumbProps extends RBreadcrumbProps {
-  items: BreadcrumbItemProps[]
+interface RsBreadcrumbProps extends BreadcrumbProps {
+  items: RsBreadcrumbItemProps[]
   justifyContent: string
-  onItemClick: (item: BreadcrumbItemProps) => {}
+  onItemClick: (item: RsBreadcrumbItemProps) => {}
 }
 
 const columns = [
@@ -22,21 +22,21 @@ const columns = [
   {name: 'active', input: CheckCell}
 ]
 
-const Breadcrumb = ({items, onItemClick, ...props}: BreadcrumbProps) => (
-  <RBreadcrumb {...props} style={{display: 'flex'}}>
+const RsBreadcrumb = ({items, onItemClick, ...props}: RsBreadcrumbProps) => (
+  <Breadcrumb {...props} style={{display: 'flex'}}>
     {items?.map(item => {
         const {title = '', ...itemProps} = item
         const handleClick = () => onItemClick?.(item)
         return (
-          <RBreadcrumb.Item {...itemProps} onClick={handleClick} key={title}>
+          <Breadcrumb.Item {...itemProps} onClick={handleClick} key={title}>
             {title}
-          </RBreadcrumb.Item>)
+          </Breadcrumb.Item>)
       }
     )}
-  </RBreadcrumb>
+  </Breadcrumb>
 )
 
-export const breadcrumb = define(Breadcrumb)
+export const rsBreadcrumb = define(RsBreadcrumb)
   .props({
     separator: string.default('/'),
     maxItems: number

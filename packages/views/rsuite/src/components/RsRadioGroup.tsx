@@ -1,27 +1,27 @@
 import {array, boolean, define, event, LabeledValue, oneOf, string, toLabeledValues} from 'fb-core'
 import React from 'react'
-import {Radio, RadioGroup as RRadioGroup, RadioGroupProps as RRadioGroupProps} from 'rsuite'
+import {Radio, RadioGroup, RadioGroupProps} from 'rsuite'
 
-interface RadioGroupProps extends RRadioGroupProps<string> {
+interface RsRadioGroupProps extends RadioGroupProps<string> {
   items: LabeledValue[]
   label?: string
 }
 
-const RadioGroup = ({items, label, ...props}: RadioGroupProps) => {
+const RsRadioGroup = ({items, label, ...props}: RsRadioGroupProps) => {
   return (
     <div>
       <label>{label}</label>
-      <RRadioGroup {...props as any}>
+      <RadioGroup {...props as any}>
         {items.map(({value, label}, i) => (
           <Radio value={value} key={i}>{label ?? value}</Radio>
         ))
         }
-      </RRadioGroup>
+      </RadioGroup>
     </div>
   )
 }
 
-export const radioGroup = define(RadioGroup)
+export const rsRadioGroup = define(RsRadioGroup)
   .props({
     appearance: oneOf('default', 'picker').labeled('Default', 'Picker').default('default'),
     label: string.default('Radio'),

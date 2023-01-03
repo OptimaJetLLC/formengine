@@ -2,7 +2,8 @@ import {boolean, define, event, oneOf, string} from 'fb-core'
 import {Button} from 'rsuite'
 import {size} from '../commonProperties'
 
-export const button = define(Button)
+export const rsButton = define(Button)
+  .typed('RsButton')
   .props({
     active: boolean.hinted('A button can show it is currently the active user selection'),
     appearance: oneOf('default', 'primary', 'link', 'subtle', 'ghost')

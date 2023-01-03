@@ -1,7 +1,7 @@
 import {boolean, color, define, number, oneOf, string} from 'fb-core'
 import {Progress} from 'rsuite'
 
-const commonProgressProps = {
+const rsCommonProgressProps = {
   classPrefix: string.default('progress').hinted('The prefix of the component CSS class'),
   percent: number.default(50).withEditorProps({min: 0, max: 100}).hinted('Percent of progress'),
   showInfo: boolean.default(true).hinted('Show text'),
@@ -12,10 +12,11 @@ const commonProgressProps = {
   strokeWidth: number.hinted('Line width'),
 }
 
-export const progressCircle = define(Progress.Circle)
+export const rsProgressCircle = define(Progress.Circle)
   .named('ProgressCircle')
+  .typed('RsProgressCircle')
   .props({
-    ...commonProgressProps,
+    ...rsCommonProgressProps,
     gapDegree: number.withEditorProps({min: 0, max: 360}).hinted('The gap degree of half circle, 0 ~ 360'),
     gapPosition: oneOf('right', 'top', 'bottom', 'left')
       .default('top')
@@ -28,9 +29,10 @@ export const progressCircle = define(Progress.Circle)
     trailWidth: number.default(6).hinted('Trail width')
   })
 
-export const progressLine = define(Progress.Line)
+export const rsProgressLine = define(Progress.Line)
   .named('ProgressLine')
+  .typed('RsProgressLine')
   .props({
-    ...commonProgressProps,
+    ...rsCommonProgressProps,
     vertical: boolean.default(false).hinted('The progress bar is displayed vertically')
   })

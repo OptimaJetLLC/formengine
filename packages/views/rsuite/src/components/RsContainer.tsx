@@ -8,15 +8,16 @@ const isHorizontal = (element?: Element) => {
   return style.display === 'flex' && style.flexDirection === 'row'
 }
 
-const Container = forwardRef(({direction, className, ...props}: any, ref: any) => {
+const RsContainer = forwardRef(({direction, className, ...props}: any, ref: any) => {
   const horizontal = direction === 'horizontal' || isHorizontal(ref?.current)
   return <div {...props} ref={ref} className={cx(className, {horizontal}, containerStyles)}/>
 })
 
-Container.displayName = 'Container'
+RsContainer.displayName = 'Container'
 
 //TODO property what say it is a container and can have children. Create smth like reactnode property?
-export const container = define(Container)
+export const rsContainer = define(RsContainer)
+  .typed('RsContainer')
   .props({
     children: node.hinted('Component children'),
     direction: oneOf('vertical', 'horizontal')

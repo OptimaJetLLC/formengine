@@ -1,68 +1,70 @@
 import {createView} from 'fb-core'
-import {breadcrumb} from './components/Breadcrumb'
-import {button} from './components/Button'
-import {card} from './components/Card'
-import {checkbox} from './components/Checkbox'
-import {collectionEditor} from './components/CollectionEditor'
-import {container} from './components/Container'
-import {customBlock} from './components/CustomBlock'
-import {customControl} from './components/CustomControl'
-import {dropdown} from './components/Dropdown'
-import {dropzone} from './components/Dropzone'
-import {errorMessage} from './components/ErrorMessage'
-import {grid} from './components/Grid'
-import {gridLayout} from './components/GridLayout'
-import {gridView} from './components/GridView'
-import {header} from './components/Header'
-import {image} from './components/Image'
-import {input} from './components/Input'
-import {label} from './components/Label'
-import {menu} from './components/Menu'
-import {message} from './components/Message'
-import {progressCircle, progressLine} from './components/Progress'
-import {radioGroup} from './components/RadioGroup'
-import {repeater} from './components/Repeater'
-import {richTextEditor} from './components/RichTextEditor'
-import {search} from './components/Search'
-import {staticContent} from './components/StaticContent'
-import {textArea} from './components/TextArea'
-import {treePicker} from './components/TreePicker'
+import {rsBreadcrumb} from './components/RsBreadcrumb'
+import {rsButton} from './components/RsButton'
+import {rsCard} from './components/RsCard'
+import {rsCheckbox} from './components/RsCheckbox'
+import {rsCollectionEditor} from './components/RsCollectionEditor'
+import {rsContainer} from './components/RsContainer'
+import {rsCustomBlock} from './components/RsCustomBlock'
+import {rsCustomControl} from './components/RsCustomControl'
+import {rsDropdown} from './components/RsDropdown'
+import {rsDropzone} from './components/RsDropzone'
+import {rsErrorMessage} from './components/RsErrorMessage'
+import {rsGrid} from './components/RsGrid'
+import {rsGridLayout} from './components/RsGridLayout'
+import {rsGridView} from './components/RsGridView'
+import {rsHeader} from './components/RsHeader'
+import {rsImage} from './components/RsImage'
+import {rsInput} from './components/RsInput'
+import {rsLabel} from './components/RsLabel'
+import {rsMenu} from './components/RsMenu'
+import {rsMessage} from './components/RsMessage'
+import {rsProgressCircle, rsProgressLine} from './components/RsProgress'
+import {rsRadioGroup} from './components/RsRadioGroup'
+import {rsRepeater} from './components/RsRepeater'
+import {rsRichTextEditor} from './components/RsRichTextEditor'
+import {rsSearch} from './components/RsSearch'
+import {rsStaticContent} from './components/RsStaticContent'
+import {rsTextArea} from './components/RsTextArea'
+import {rsTreePicker} from './components/RsTreePicker'
 
-export const rsuite = createView(
-  textArea,
-  input,
-  header,
-  dropdown,
-  container,
-  button,
-  //tab,
-  //nav, navItem,
-  staticContent,
-  card,
-  customBlock,
-  customControl,
-  gridLayout,
-  gridView,
-  collectionEditor,
-  repeater,
-  breadcrumb,
-  treePicker,
-  checkbox,
-  radioGroup,
-  label,
-  message,
-  dropzone,
-  search,
-  menu,
-  richTextEditor,
-  image,
-  grid,
-  progressCircle,
-  progressLine
-).withError(errorMessage)
+const components = [
+  rsBreadcrumb,
+  rsButton,
+  rsCard,
+  rsCheckbox,
+  rsCollectionEditor,
+  rsContainer,
+  rsCustomBlock,
+  rsCustomControl,
+  rsDropdown,
+  rsDropzone,
+  rsErrorMessage,
+  rsGrid,
+  rsGridLayout,
+  rsGridView,
+  rsHeader,
+  rsImage,
+  rsInput,
+  rsLabel,
+  rsMenu,
+  rsMessage,
+  rsProgressCircle,
+  rsProgressLine,
+  rsRadioGroup,
+  rsRepeater,
+  rsRichTextEditor,
+  rsSearch,
+  rsStaticContent,
+  rsTextArea,
+  rsTreePicker,
+]
 
+components.forEach(c => {
+  const prefix = 'Rs'
+  if (!c.type.startsWith(prefix)) {
+    throw new Error(`The component type must start with '${prefix}', type: '${c.type}'`)
+  }
+})
 
-
-
-
-
+export const rSuite = createView(...components).withError(rsErrorMessage)

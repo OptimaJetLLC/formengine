@@ -6,13 +6,13 @@
   "children": [
     {
       "key": "Breadcrumb 1",
-      "type": "Breadcrumb",
+      "type": "RsBreadcrumb",
       "props": {},
       "style": {}
     },
     {
       "key": "Image 1",
-      "type": "Image",
+      "type": "RsImage",
       "props": {
         "height": {
           "value": "40",
@@ -29,7 +29,7 @@
     },
     {
       "key": "header 1",
-      "type": "Header",
+      "type": "RsHeader",
       "props": {
         "content": "Application Form",
         "alignment": "center"
@@ -38,7 +38,7 @@
     },
     {
       "key": "title",
-      "type": "Input",
+      "type": "RsInput",
       "props": {
         "label": "Title"
       },
@@ -46,19 +46,19 @@
     },
     {
       "key": "input container",
-      "type": "Container",
+      "type": "RsContainer",
       "props": {},
       "style": {},
       "children": [
         {
           "key": "name container",
-          "type": "Container",
+          "type": "RsContainer",
           "props": {},
           "style": {},
           "children": [
             {
               "key": "first name",
-              "type": "Input",
+              "type": "RsInput",
               "props": {
                 "label": "First Name"
               },
@@ -66,7 +66,7 @@
             },
             {
               "key": "last name",
-              "type": "Input",
+              "type": "RsInput",
               "props": {
                 "label": "Last Name"
               },
@@ -78,7 +78,7 @@
     },
     {
       "key": "type",
-      "type": "Dropdown",
+      "type": "RsDropdown",
       "props": {
         "block": true
       },
@@ -86,19 +86,19 @@
     },
     {
       "key": "comment",
-      "type": "TextArea",
+      "type": "RsTextArea",
       "props": {},
       "style": {}
     },
     {
       "key": "button container",
-      "type": "Container",
+      "type": "RsContainer",
       "props": {},
       "style": {},
       "children": [
         {
           "key": "save",
-          "type": "Button",
+          "type": "RsButton",
           "props": {
             "children": "Save",
             "appearance": "primary"
@@ -107,7 +107,7 @@
         },
         {
           "key": "cancel",
-          "type": "Button",
+          "type": "RsButton",
           "props": {
             "children": "Cancel"
           },
@@ -117,13 +117,13 @@
     },
     {
       "key": "RadioGroup",
-      "type": "RadioGroup",
+      "type": "RsRadioGroup",
       "props": {},
       "style": {}
     },
     {
       "key": "checkbox",
-      "type": "Checkbox",
+      "type": "RsCheckbox",
       "props": {},
       "style": {}
     }

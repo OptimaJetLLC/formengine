@@ -1,7 +1,8 @@
 import {boolean, define, oneOf, string} from 'fb-core'
 import {Message} from 'rsuite'
 
-export const message = define(Message)
+export const rsMessage = define(Message)
+  .typed('RsMessage')
   .props({
     // children: reactElements,
     closeable: boolean,

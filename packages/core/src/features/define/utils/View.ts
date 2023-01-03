@@ -16,7 +16,7 @@ export class View {
     return this.#error || defaultErrorMessage
   }
 
-  static create<U extends Definition<any>, D extends [U, ...U[]]>(...defines: D) {
+  static create<U extends Definition<any>>(...defines: U[]) {
     return new View(defines)
   }
 

@@ -3,21 +3,20 @@ import _ from 'lodash/fp'
 import {ReactNode, useCallback, useEffect} from 'react'
 import {Nav} from 'rsuite'
 
-
-interface TabProps {
+interface RsTabProps {
   active?: string,
   onSelect?: Function
   items?: string[] //TODO поддержку ReactNode {key: string, label: ReactNode}?
   children: ReactNode
 }
 
-type Item = {
+type RsItem = {
   key: string
   label: ReactNode
   type: string //"Dropdown"
 }
 
-const Tab = (props: TabProps) => {
+const RsTab = (props: RsTabProps) => {
   const {componentStore} = useComponentData()
 
   //TODO доделаю в рамках задачи об аннотациях
@@ -44,7 +43,7 @@ const Tab = (props: TabProps) => {
   )
 }
 
-export const tab = define(Tab)
+export const rsTab = define(RsTab)
   .props({
     active: string,
     //items: reactElements.expandable(navItem, navDropdown)
@@ -53,14 +52,14 @@ export const tab = define(Tab)
     children: undefined//TODO node.setup({bindTo: 'active'}),
   })
 
-export const nav = define(Nav)
+export const rsNav = define(Nav)
   .props({
     children: node,
     activeKey: string,
     appearance: string,
   })
 
-export const navItem = define(Nav.Item)
+export const rsNavItem = define(Nav.Item)
   .named('NavItem')
   .props({
     active: boolean,
@@ -71,7 +70,7 @@ export const navItem = define(Nav.Item)
     //as
   })
 
-export const navDropdown = define(Nav.Dropdown)
+export const rsNavDropdown = define(Nav.Dropdown)
   .named('NavDropdown')
   .props({
     eventKey: string,
