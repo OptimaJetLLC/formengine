@@ -1,7 +1,7 @@
-import styled from '@emotion/styled'
 import {boolean, define, event, string} from 'fb-core'
 import {Input, InputProps} from 'rsuite'
 import {size} from '../commonProperties'
+import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
 
 export interface RsInputProps extends InputProps {
   label: string
@@ -9,23 +9,6 @@ export interface RsInputProps extends InputProps {
 }
 
 // todo этот компонент должен поддерижвать numeric input only (number format в старом фб)
-
-const RsRtlLabel = styled.label`
-  text-align: left;
-`
-const RsLabeledInput = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-
-  label {
-    margin-left: 5px;
-  }
-
-  input, div {
-    margin-top: 2px;
-  }
-`
 export const RsInput = ({style, className, label, ...props}: RsInputProps) =>
   <RsLabeledInput style={style} className={className}>
     <RsRtlLabel>{label}</RsRtlLabel>
@@ -34,13 +17,13 @@ export const RsInput = ({style, className, label, ...props}: RsInputProps) =>
 
 export const rsInput = define(RsInput)
   .props({
-    disabled: boolean,
     label: string.default('Input').hinted('Input label'),
-    placeholder: string.default('').hinted('Input placeholder'),
-    readOnly: boolean,
-    size,
-    onChange: event,
     value: string.default('').valued,
+    placeholder: string.default('').hinted('Input placeholder'),
+    size,
+    disabled: boolean,
+    readOnly: boolean,
+    onChange: event,
   })
   .actions((props, def) => {
     return {
