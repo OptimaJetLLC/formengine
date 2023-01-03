@@ -1,3 +1,4 @@
+import {isString, isUndefined} from 'lodash'
 import {OtherMeasure} from '../annotation/components/SizeInput'
 import {StandardStylesDefinitions} from './conts'
 import {Measured, StyleItem} from './types'
@@ -12,7 +13,7 @@ export const transformStylesToCSS = (styles?: Record<string, string>) => {
     const definition = StandardStylesDefinitions[key]
     if (!definition) return
 
-    const value = (typeof definition.measure == 'string')
+    const value = (typeof definition.measure === 'string')
       ? `${val}${definition.measure}`
       : definition.measure?.(val) ?? val
     CSSStyles.push({
@@ -34,8 +35,16 @@ export function size(cssName: string) {
   return {cssName, measure}
 }
 
+type CssColor = { r: number; g: number; b: number; a: number } | string | undefined
+
 export function rgb(cssName: string) {
-  return {cssName, measure: (rgb?: { r: number; g: number; b: number; a: number }) => rgb && `rgb(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a})`}
+  return {
+    cssName,
+    measure: (rgb: CssColor) => {
+      if (isUndefined(rgb) || isString(rgb)) return rgb
+      return rgb && `rgb(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a})`
+    }
+  }
 }
 
 export const pick = (object: any, keys: string[]) => {
