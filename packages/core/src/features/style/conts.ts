@@ -23,6 +23,7 @@ export const StandardStylesDefinitions: StandardStyleItem = {
   'height': size('height'),
   'fit': {cssName: 'object-fit'},
   'position': {cssName: 'object-position'},
+  'justifyContent': {cssName: 'justify-content'},
 }
 
 export const SizeStyles = pick(StandardStylesDefinitions, ['Width', 'Height'])
@@ -37,5 +38,6 @@ export const StylesFromProps = pick(StandardStylesDefinitions, [
   'width',
   'height',
   'fit',
-  'position'
+  'position',
+  'justifyContent'
 ])

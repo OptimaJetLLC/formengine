@@ -5,6 +5,12 @@
   "style": {},
   "children": [
     {
+      "key": "Breadcrumb 1",
+      "type": "Breadcrumb",
+      "props": {},
+      "style": {}
+    },
+    {
       "key": "Image 1",
       "type": "Image",
       "props": {

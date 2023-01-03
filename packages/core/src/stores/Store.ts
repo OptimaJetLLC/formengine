@@ -1,6 +1,6 @@
 import {makeObservable, observable} from 'mobx'
 import {FunctionComponent} from 'react'
-import {clear, reset, setProperty, validate} from '../features/event/actions'
+import {clear, log, reset, setProperty, validate} from '../features/event/actions'
 import {ActionDefinition} from '../features/event/types'
 import {EventBus} from '../features/event/utils/EventBus'
 import {FormViewerProps} from '../features/form-viewer/FormViewer'
@@ -15,7 +15,7 @@ export class Store {
   readonly form = new Form(this)
   isBuilderMode: boolean = false
 
-  actions: ActionDefinition[] = [setProperty, validate, reset, clear]
+  actions: ActionDefinition[] = [setProperty, log, validate, reset, clear]
   screen = new ComponentStore(screen.name, screen.type)
   Wrapper?: FunctionComponent<WrapperProps>
 

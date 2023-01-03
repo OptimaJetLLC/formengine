@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {IconProps} from '@rsuite/icons/lib/Icon'
 import React from 'react'
-import {IconButton, Input, Table} from 'rsuite'
+import {Checkbox, IconButton, Input, Table} from 'rsuite'
 import {InnerCellProps} from 'rsuite-table/lib/Cell'
 
 const {Cell} = Table
@@ -14,6 +14,18 @@ const InputCell = ({rowData, dataKey, rowIndex, ...props}: InputCellProps) => {
   return (
     <SCell {...props}>
       <Input value={rowData[dataKey]} onChange={onChange} size="sm"/>
+    </SCell>
+  )
+}
+
+const CheckCell = ({rowData, dataKey, rowIndex, onChange, ...props}: InputCellProps) => {
+  const handleChange = (value: any, checked: boolean) => {
+    rowData[dataKey] = checked
+    onChange?.(checked, dataKey, rowIndex)
+  }
+  return (
+    <SCell {...props}>
+      <SCheckbox inline checked={rowData[dataKey] ?? false} onChange={handleChange}/>
     </SCell>
   )
 }
@@ -38,6 +50,13 @@ const SCell = styled(Cell)`
   }
 `
 
+const SCheckbox = styled(Checkbox)`
+  & .rs-checkbox-wrapper {
+    left: 4px;
+    top: 6px;
+  }
+`
+
 interface InputCellProps extends InnerCellProps {
   onChange?: (value?: any, dataKey?: string, rowIndex?: number) => void
   dataKey: string
@@ -48,4 +67,4 @@ interface ActionCellProps extends InnerCellProps {
   icon: () => React.ReactElement<IconProps>
 }
 
-export {InputCell, ActionCell}
+export {InputCell, ActionCell, CheckCell}
