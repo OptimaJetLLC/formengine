@@ -1,6 +1,6 @@
 {
   "key": "screen 1",
-  "type": "Screen",
+  "type": "FbScreen",
   "props": {},
   "style": {},
   "children": [

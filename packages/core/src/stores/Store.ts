@@ -4,7 +4,7 @@ import {clear, log, reset, setProperty, validate} from '../features/event/action
 import {ActionDefinition} from '../features/event/types'
 import {EventBus} from '../features/event/utils/EventBus'
 import {FormViewerProps} from '../features/form-viewer/FormViewer'
-import {screen} from '../features/ui/Screen'
+import {fbScreen} from '../features/ui/FbScreen'
 import {Form} from '../features/validation'
 import {treeFind} from '../utils'
 import {WrapperProps} from '../utils/types'
@@ -16,7 +16,7 @@ export class Store {
   isBuilderMode: boolean = false
 
   actions: ActionDefinition[] = [setProperty, log, validate, reset, clear]
-  screen = new ComponentStore(screen.name, screen.type)
+  screen = new ComponentStore(fbScreen.name, fbScreen.type)
   Wrapper?: FunctionComponent<WrapperProps>
 
   constructor(public props: FormViewerProps) {

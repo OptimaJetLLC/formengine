@@ -2,7 +2,7 @@ import _, {assign} from 'lodash'
 import {makeAutoObservable, observable, reaction} from 'mobx'
 import {defaultLanguage} from '../features/localization/consts'
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../features/localization/utils'
-import {screen} from '../features/ui/Screen'
+import {fbScreen} from '../features/ui/FbScreen'
 import {treeFind} from '../utils'
 import {Node} from '../utils/Node'
 import {ComponentMove} from '../utils/types'
@@ -121,7 +121,7 @@ export class BuilderStore {
   }
 
   clear() {
-    this.viewer.screen = new ComponentStore(screen.name, screen.type)
+    this.viewer.screen = new ComponentStore(fbScreen.name, fbScreen.type)
   }
 
   stringifyForm() {

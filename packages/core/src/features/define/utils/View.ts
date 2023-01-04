@@ -1,5 +1,5 @@
 import {ComponentStore} from '../../../stores/ComponentStore'
-import {screen} from '../../ui/Screen'
+import {fbScreen} from '../../ui/FbScreen'
 import {defaultErrorMessage, ErrorMessageProps} from '../../validation/components/ErrorMessage'
 import {Definition} from '../index'
 
@@ -8,7 +8,7 @@ export class View {
   #error?: Definition<ErrorMessageProps>
 
   constructor(defines: Definition<any>[] = []) {
-    this.define(screen)
+    this.define(fbScreen)
     defines.forEach(this.define.bind(this))
   }
 
