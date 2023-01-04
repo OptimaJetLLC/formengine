@@ -19,6 +19,7 @@ import {rsInput} from './components/RsInput'
 import {rsLabel} from './components/RsLabel'
 import {rsMenu} from './components/RsMenu'
 import {rsMessage} from './components/RsMessage'
+import {rsNav, rsNavItem} from './components/RsNav'
 import {rsProgressCircle, rsProgressLine} from './components/RsProgress'
 import {rsRadioGroup} from './components/RsRadioGroup'
 import {rsRepeater} from './components/RsRepeater'
@@ -49,6 +50,8 @@ const components = [
   rsLabel,
   rsMenu,
   rsMessage,
+  rsNav,
+  rsNavItem,
   rsProgressCircle,
   rsProgressLine,
   rsRadioGroup,
