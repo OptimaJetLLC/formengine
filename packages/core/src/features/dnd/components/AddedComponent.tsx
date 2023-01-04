@@ -12,7 +12,9 @@ export const AddedComponent = observer(() => {
   const View = data.model.view
   const [{isDragging}, drag] = useDragWithPreview(ItemType.AddedComponent)
 
-  const element = <Container><View {...getDefaultProps(data)}/></Container>
+  const element = <Container>
+    {data.model.customPreview ?? <View {...getDefaultProps(data)}/>}
+  </Container>
 
   return (isDragging
       ? <DragPreview>{element}</DragPreview>

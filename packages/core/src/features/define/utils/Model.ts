@@ -1,5 +1,5 @@
 import {observer} from 'mobx-react'
-import {ComponentType} from 'react'
+import {ComponentType, ReactNode} from 'react'
 import {Annotation} from '../../annotation/utils/annotations/Annotation'
 import {ActionDefinition} from '../../event/types'
 
@@ -26,6 +26,7 @@ export class Model<T> {
     name?: string,
     readonly actions?: ActionDefinition[],
     readonly hint?: string,
+    readonly customPreview?: ReactNode,
   ) {
     this.view = observer(view)
     this.view.displayName = view.displayName || view.name

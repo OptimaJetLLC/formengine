@@ -1,5 +1,5 @@
 import {forIn, startCase, transform} from 'lodash'
-import {ComponentType} from 'react'
+import {ComponentType, ReactNode} from 'react'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {isFunction} from '../../../utils'
 import {key, string, style, validation} from '../../annotation'
@@ -21,6 +21,7 @@ export class Definition<T extends object> {
     readonly properties?: Annotations<T>,
     readonly actionsInitializer?: ActionsInitializer,
     readonly hint?: string,
+    readonly customPreview?: ReactNode,
   ) {
     this.#name = name
   }
@@ -34,8 +35,8 @@ export class Definition<T extends object> {
   }
 
   typed = (displayName: string) => {
-    this.view.displayName = displayName;
-    return this;
+    this.view.displayName = displayName
+    return this
   }
 
   static define<T extends object, U>(view: ComponentType<T>) {
@@ -59,6 +60,8 @@ export class Definition<T extends object> {
 
   hinted = (hint: string) => this.#cloneWith({hint})
 
+  preview = (customPreview: ReactNode) => this.#cloneWith({customPreview})
+
   init(store: ComponentStore) {
     return new Model(
       this.view,
@@ -66,8 +69,8 @@ export class Definition<T extends object> {
       this.#name,
       initActions(this.actionsInitializer?.(store.props, defineAction)),
       this.hint,
+      this.customPreview
     )
-
 
     function initProperties(annotations?: Annotations<T>) {
       if (!annotations) return []
@@ -107,6 +110,7 @@ export class Definition<T extends object> {
       opts.properties || this.properties,
       opts.actionsInitializer || this.actionsInitializer,
       opts.hint || this.hint,
+      opts.customPreview || this.customPreview,
     )
   }
 }
