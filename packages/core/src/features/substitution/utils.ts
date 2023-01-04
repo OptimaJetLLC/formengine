@@ -8,7 +8,7 @@ export function denoteBinds(value: ArgumentValue, store: Store) {
   if (!isString(value)) return value
 
   return denote(value, mark => {
-    let componentStore = store.findComponent(mark.value)
+    const componentStore = store.getComponent(mark.value)
     return componentStore.props[mark.label] ?? ''
   }, componentMarkup)
 }

@@ -17,7 +17,7 @@ export class Field {
   }
 
   get componentStore() {
-    return this.form.store.findComponent(this.key)
+    return this.form.store.getComponent(this.key)
   }
 
   get autoTransform() {
@@ -32,8 +32,13 @@ export class Field {
     makeAutoObservable(this, {
       valuedAn: false
     })
-    autorun(() => {
-      this.value = this.form.store.props.data?.[this.componentStore.key] ?? this.initialValue
+    const disposer = autorun(() => {
+      const component = this.form.store.findComponent(this.key)
+      if (!component) {
+        disposer()
+        return
+      }
+      this.value = this.form.store.props.data?.[component.key] ?? this.initialValue
     })
   }
 

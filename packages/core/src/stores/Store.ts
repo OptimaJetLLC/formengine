@@ -28,8 +28,8 @@ export class Store {
     })
   }
 
-  findComponent(key: string) {
-    const result = treeFind(this.screen, key)
+  getComponent(key: string) {
+    const result = this.findComponent(key)
 
     if (!result) {
       throw Error(`Component ${key} didn't found!`)
@@ -38,8 +38,12 @@ export class Store {
     return result
   }
 
+  findComponent(key: string) {
+    return treeFind(this.screen, key)
+  }
+
   findAction(actionName: string, targetKey?: string) {
-    const target = targetKey ? this.findComponent(targetKey) : undefined
+    const target = targetKey ? this.getComponent(targetKey) : undefined
     const actionList = target ? this.props.view.initModel(target).actions : this.actions
     const action = actionList?.find((val) => val.name === actionName)
 

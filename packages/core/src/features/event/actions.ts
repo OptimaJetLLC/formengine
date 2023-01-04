@@ -8,7 +8,7 @@ const setValue = defineAction('Set value', (actionArgs, e) => {
 }, ['propertyName', ['NumPar', 'number'], ['BoolPar', 'boolean']])
 
 const setProperty = defineAction('Set property', ({propertyKey, targetKey, value}, e) => {
-  const component = e.store.findComponent(targetKey)
+  const component = e.store.getComponent(targetKey)
   component.props[propertyKey] = value
 }, ['propertyKey', 'targetKey', 'value'])
 
