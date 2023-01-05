@@ -1,10 +1,11 @@
 import {makeAutoObservable} from 'mobx'
 import {initEvents} from '../features/event'
+import {getHtmlAttributes} from '../features/html-attributes'
 import {getClassName} from '../features/style'
 import {getSubstitutedValue} from '../features/substitution'
+import {ComponentData} from '../utils/contexts/ComponenDataContext'
 import {getChildren} from '../utils/getChildren'
 import {getDefaultProps} from '../utils/getDefaultProps'
-import {ComponentData} from '../utils/contexts/ComponenDataContext'
 import {Store} from './Store'
 
 export class ComponentState {
@@ -21,7 +22,8 @@ export class ComponentState {
       this.substitutedValue,
       this.className,
       this.value,
-      this.events
+      this.events,
+      this.htmlAttributes
     )
   }
 
@@ -43,6 +45,10 @@ export class ComponentState {
 
   get className() {
     return getClassName(this.data.componentStore)
+  }
+
+  get htmlAttributes() {
+    return getHtmlAttributes(this.data.componentStore)
   }
 
   get children() {

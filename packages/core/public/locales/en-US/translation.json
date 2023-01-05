@@ -1,4 +1,13 @@
 {
+  "common": {
+    "apply": "Apply"
+  },
+  "annotation": {
+    "htmlAttributes": {
+      "name": "HTML attributes",
+      "hint": "HTML attributes in React (camelCase) format"
+    }
+  },
   "leftMenu": {
     "translation": "Translation",
     "undo": "Undo",
@@ -26,6 +35,9 @@
       "withoutTarget": "Without Target",
       "linkedProperty": "Linked property",
       "expression": "Expression"
+    },
+    "subSection": {
+      "additionalProperties": "Additional properties"
     }
   },
   "toolbar": {

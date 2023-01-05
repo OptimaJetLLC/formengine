@@ -1,5 +1,6 @@
 import {computed, makeAutoObservable, observable} from 'mobx'
 import {EventName, WeakActionData} from '../features/event/types'
+import {HtmlAttribute} from '../features/html-attributes'
 import {Style} from '../features/style/types'
 import {ValidationSchema} from '../features/validation/types'
 
@@ -9,6 +10,7 @@ export class ComponentStore {
   props: Record<string, any> = {} //TODO do nullable
   events?: Record<EventName, WeakActionData[]>
   style: Style = {} //TODO do nullable
+  htmlAttributes?: HtmlAttribute[]
   children?: ComponentStore[]
 
   schema?: ValidationSchema

@@ -1,10 +1,11 @@
 import {ReactNode} from 'react'
 import * as yup from 'yup'
 import {EventEditor} from '../event'
-import {Section} from '../form-builder/components/RightPanel/PropertiesEditor/Section'
+import {Section, SubSection} from '../form-builder/components/RightPanel/PropertiesEditor/Section'
 import {StyleEditor} from '../style'
 import {ValidateEditor} from '../validation/components/ValidateEditor'
 import {ArrayInput} from './components/ArrayInput'
+import AttributesInput from './components/AttributesInput'
 import {BooleanInput} from './components/BooleanInput'
 import {ChildViewer} from './components/ChildViewer'
 import {ColorInput} from './components/ColorInput'
@@ -16,6 +17,8 @@ import {StringInput} from './components/StringInput'
 import {createAnnotation, createProperty} from './utils'
 
 export const key = createAnnotation(KeyInput).schemed(yup.string()).hinted('Unique component key')
+export const htmlAttributes = createAnnotation(AttributesInput)
+  .setup({subsection: SubSection.Additional})
 export const style = createAnnotation(StyleEditor).setup({section: Section.Style})
 export const validation = createAnnotation(ValidateEditor).setup({section: Section.Rules})
 

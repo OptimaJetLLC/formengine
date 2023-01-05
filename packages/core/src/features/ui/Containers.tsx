@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import autosize from 'autosize'
-import {cloneElement, Component, ReactElement, ReactNode} from 'react'
+import {cloneElement, Component, ComponentProps} from 'react'
 import ReactDOM from 'react-dom'
 import useUniqueId from 'rsuite/cjs/utils/useUniqueId'
 //https://styled-system.com/#expressive-consistent-ui-components
@@ -9,6 +9,7 @@ import useUniqueId from 'rsuite/cjs/utils/useUniqueId'
 import {color, layout, space} from 'styled-system'
 import {HintedLabel} from '../annotation/components/HintedLabel'
 import {Annotation} from '../annotation/utils/annotations/Annotation'
+import {useTranslationPart} from '../localization/hooks'
 
 //TODO remove styled-system library
 
@@ -67,16 +68,17 @@ const LabeledInput = styled.div`
   }
 `
 
-export interface LabeledPropertyProps {
+export interface LabeledPropertyProps extends ComponentProps<any> {
   idPrefix?: string
   annotation: Annotation
-  children?: ReactElement
 }
 
 export const LabeledProperty = ({idPrefix, annotation, children}: LabeledPropertyProps) => {
   const id = useUniqueId(idPrefix || 'id-')
+  const getLabel = useTranslationPart(`annotation.${annotation.key}`)
+
   return <LabeledInput>
-    <HintedLabel htmlFor={id} hint={annotation.hint}>{annotation.name}</HintedLabel>
+    <HintedLabel htmlFor={id} hint={getLabel('hint') || annotation.hint}>{getLabel('name') || annotation.name}</HintedLabel>
     {children ? cloneElement(children, {id}) : undefined}
   </LabeledInput>
 }
@@ -89,7 +91,7 @@ const Centered = styled(Box)`
   justify-content: center;
 `
 
-class AutoSize extends Component<{ children: ReactNode }> {
+class AutoSize extends Component<{ children: Component }> {
   componentDidMount() {
     const domNode = ReactDOM.findDOMNode(this)
     autosize(domNode as Element)

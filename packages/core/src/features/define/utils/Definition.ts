@@ -2,7 +2,7 @@ import {forIn, startCase, transform} from 'lodash'
 import {ComponentType, ReactNode} from 'react'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {isFunction} from '../../../utils'
-import {key, string, style, validation} from '../../annotation'
+import {htmlAttributes, key, string, style, validation} from '../../annotation'
 import {Annotations} from '../../annotation/types'
 import {Annotation} from '../../annotation/utils/annotations/Annotation'
 import {defineAction} from '../../event/defineAction'
@@ -77,6 +77,7 @@ export class Definition<T extends object> {
 
       const properties: Annotation[] = [
         key.build('key'),
+        htmlAttributes.build('htmlAttributes'),
         style.build('style'),
         validation.build('validation'),
       ]

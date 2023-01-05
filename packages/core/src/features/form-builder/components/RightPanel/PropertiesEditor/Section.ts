@@ -4,3 +4,7 @@ export enum Section {
   Actions = 'actions',
   Rules = 'rules',
 }
+
+export enum SubSection {
+  Additional = 'additional',
+}

@@ -3,7 +3,6 @@ import {Close, Plus} from '@rsuite/icons'
 import React, {FormEventHandler, useEffect, useState} from 'react'
 import {Button, Form, Table, TableProps} from 'rsuite'
 import {RowDataType} from 'rsuite-table/lib/@types/common'
-import {labeledValue} from '../annotation/utils/LabeledValue'
 import {ActionCell} from './CustomCells'
 
 const {ErrorMessage} = Form
@@ -28,7 +27,7 @@ export const EditableTable = (props: EditableTableProps) => {
   const [state, setState] = useState<EditableTableState>({})
   const [shouldScroll, setShouldScroll] = useState(false)
 
-  const {data, onChange, columns, label, errorMessage, ...tableProps} = props
+  const {data = [], onChange, columns, label, errorMessage, ...tableProps} = props
   const {autoHeight, maxHeight} = state
 
   const headerHeight = props.headerHeight ?? 40
@@ -36,7 +35,7 @@ export const EditableTable = (props: EditableTableProps) => {
   const maxRows = props.maxRows ?? 5
 
   const onAddColumn = () => {
-    onChange?.([...data, labeledValue] as any)
+    onChange?.([...data, {}] as any)
     setShouldScroll(true)
     updateHeight()
   }

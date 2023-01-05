@@ -1,6 +1,6 @@
 import {ComponentType} from 'react'
 import * as yup from 'yup'
-import {Section} from '../../../form-builder/components/RightPanel/PropertiesEditor/Section'
+import {Section, SubSection} from '../../../form-builder/components/RightPanel/PropertiesEditor/Section'
 import {PropertyEditorProps} from '../../types'
 
 export class Annotation {
@@ -10,6 +10,7 @@ export class Annotation {
   readonly schema?: yup.AnySchema
   readonly hint?: string
   readonly section: Section = Section.Main
+  readonly subsection?: SubSection
   readonly valued: boolean = false
   readonly editorProps?: any;
 

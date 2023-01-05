@@ -1,5 +1,5 @@
 import {array, define, event, number, oneOf, string} from 'fb-core'
-import {CheckCell, InputCell} from 'fb-core/src/features/ui/CustomCells'
+import {CheckCell, InputCell} from 'fb-core/src/features/ui/EditableTable'
 import {Breadcrumb, BreadcrumbProps} from 'rsuite'
 
 interface RsBreadcrumbItemProps {

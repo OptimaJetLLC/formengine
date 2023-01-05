@@ -1,24 +1,25 @@
 import styled from '@emotion/styled'
 import {IconProps} from '@rsuite/icons/lib/Icon'
 import React from 'react'
-import {Checkbox, IconButton, Input, Table} from 'rsuite'
+import {Checkbox, IconButton, Input, InputPicker, Table} from 'rsuite'
 import {InnerCellProps} from 'rsuite-table/lib/Cell'
+import {LabeledValue} from '../../annotation/utils/LabeledValue'
 
 const {Cell} = Table
 
-const InputCell = ({rowData, dataKey, rowIndex, ...props}: InputCellProps) => {
+export const InputCell = ({rowData, dataKey, rowIndex, ...props}: InputCellProps) => {
   const onChange = (value: any) => {
     rowData[dataKey] = value
     props.onChange?.(value, dataKey, rowIndex)
   }
   return (
     <SCell {...props}>
-      <Input value={rowData[dataKey]} onChange={onChange} size="sm"/>
+      <Input value={rowData[dataKey] ?? ''} onChange={onChange} size="sm"/>
     </SCell>
   )
 }
 
-const CheckCell = ({rowData, dataKey, rowIndex, onChange, ...props}: InputCellProps) => {
+export const CheckCell = ({rowData, dataKey, rowIndex, onChange, ...props}: InputCellProps) => {
   const handleChange = (value: any, checked: boolean) => {
     rowData[dataKey] = checked
     onChange?.(checked, dataKey, rowIndex)
@@ -30,7 +31,21 @@ const CheckCell = ({rowData, dataKey, rowIndex, onChange, ...props}: InputCellPr
   )
 }
 
-const ActionCell = ({rowData, rowIndex, onAction, icon, ...props}: ActionCellProps) => {
+export const SelectCell = ({rowData, dataKey, rowIndex, options, onChange, ...props}: SelectCellProps) => {
+  const handleChange = (value: any) => {
+    rowData[dataKey] = value
+    onChange?.(value, dataKey, rowIndex)
+  }
+  return (
+    <SCell {...props}>
+      <InputPicker value={rowData[dataKey] ?? ''} data={options} onChange={handleChange}
+                   cleanable={false} creatable={true} block size="sm" placement={'auto'}
+      />
+    </SCell>
+  )
+}
+
+export const ActionCell = ({rowData, rowIndex, onAction, icon, ...props}: ActionCellProps) => {
   return (
     <SCell {...props}>
       <IconButton
@@ -62,9 +77,11 @@ interface InputCellProps extends InnerCellProps {
   dataKey: string
 }
 
+interface SelectCellProps extends InputCellProps {
+  options: LabeledValue[]
+}
+
 interface ActionCellProps extends InnerCellProps {
   onAction: (rowIndex?: number) => void
   icon: () => React.ReactElement<IconProps>
 }
-
-export {InputCell, ActionCell, CheckCell}
