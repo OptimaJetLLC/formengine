@@ -34,7 +34,7 @@ export const CSSList = ({componentStore}: { componentStore: ComponentStore }) =>
         <Row key={index}>
           <CompactCell dataKey={'name'} placeholder={'style'}
                        options={properties} {...cellProps} />
-          <CompactCell dataKey={'value'} placeholder={'value'} editable={true} {...cellProps} />
+          <CompactCell dataKey={'value'} placeholder={'value'} {...cellProps} />
         </Row>
       )
     })}

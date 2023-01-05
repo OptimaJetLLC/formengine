@@ -12,7 +12,7 @@ export const StandardStyles = ({
   return <>
     {Object.entries(stylesDefinition).map(([name], index) => {
       const cellProps = {
-        rowData: styles, rowIndex: index, editable: true,
+        rowData: styles, rowIndex: index,
         onBlur: () => {
           componentStore.style.styles = styles
         }
