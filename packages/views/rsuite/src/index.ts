@@ -13,10 +13,11 @@ import {rsErrorMessage} from './components/RsErrorMessage'
 import {rsGrid} from './components/RsGrid'
 import {rsGridLayout} from './components/RsGridLayout'
 import {rsGridView} from './components/RsGridView'
-import {rsHeader} from './components/RsHeader'
+import {rsTitle} from './components/RsHeader'
 import {rsImage} from './components/RsImage'
 import {rsInput} from './components/RsInput'
 import {rsLabel} from './components/RsLabel'
+import {rsContent, rsFooter, rsHeader, rsSidebar} from './components/RsLayout'
 import {rsMenu} from './components/RsMenu'
 import {rsMessage} from './components/RsMessage'
 import {rsNav, rsNavItem} from './components/RsNav'
@@ -44,10 +45,14 @@ const components = [
   rsGrid,
   rsGridLayout,
   rsGridView,
-  rsHeader,
+  rsTitle,
   rsImage,
   rsInput,
   rsLabel,
+  rsContent,
+  rsFooter,
+  rsHeader,
+  rsSidebar,
   rsMenu,
   rsMessage,
   rsNav,

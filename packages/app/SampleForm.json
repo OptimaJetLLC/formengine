@@ -29,7 +29,7 @@
     },
     {
       "key": "header 1",
-      "type": "RsHeader",
+      "type": "RsTitle",
       "props": {
         "content": "Application Form",
         "alignment": "center"
