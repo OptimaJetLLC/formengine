@@ -1,4 +1,3 @@
-import {backgroundColor} from 'fb-rsuite/src/commonProperties'
 import {StandardStyleItem} from './types'
 import {inPX, pick, rgb, size} from './utils'
 

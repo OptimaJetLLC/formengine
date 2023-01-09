@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import {LabeledValue, toLabeledValues} from 'fb-core/src/features/annotation/utils/LabeledValue'
 import {Radio, RadioGroup as RRadioGroup, RadioGroupProps as RRadioGroupProps} from 'rsuite'
+import {LabeledValue, toLabeledValues} from '../annotation/utils/LabeledValue'
 
 export interface RadioGroupProps extends RRadioGroupProps<string> {
   items: LabeledValue[]
