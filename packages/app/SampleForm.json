@@ -5,6 +5,15 @@
   "style": {},
   "children": [
     {
+      "key": "RsStaticContent 1",
+      "type": "RsStaticContent",
+      "props": {
+        "content": "Text... <a href=\"https://duckduckgo.com/\">DuckDuckGo</a>",
+        "allowHtml": true
+      },
+      "style": {}
+    },
+    {
       "key": "Breadcrumb 1",
       "type": "RsBreadcrumb",
       "props": {},
