@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
-import {useState} from 'react'
+import autosize from 'autosize'
+import {useEffect, useRef, useState} from 'react'
 import {Input} from 'rsuite'
 import {ComponentStore} from '../../../../stores/ComponentStore'
-import {AutoSize} from '../../../ui/Containers'
 
 const CSSBlock = ({componentStore}: { componentStore: ComponentStore }) => {
   //TODO mobx.createViewModel (непонятно как заставить работать с массивами) https://github.com/mobxjs/mobx-utils/issues/209
@@ -10,10 +10,13 @@ const CSSBlock = ({componentStore}: { componentStore: ComponentStore }) => {
   const onBlur = () => {
     if (value) componentStore.style.cssBlock = value
   }
-  return <AutoSize>
-    <TextArea as={'textarea'} value={value} rows={3}
-              onChange={(val: any) => setValue(val)} onBlur={onBlur}/>
-  </AutoSize>
+  const ref = useRef<Element | null>(null)
+  useEffect(() => {
+    if (ref.current) autosize(ref.current)
+  }, [ref.current])
+
+  return <TextArea as={'textarea'} value={value} rows={3} ref={ref}
+                   onChange={(val: any) => setValue(val)} onBlur={onBlur}/>
 }
 
 const TextArea = styled(Input)`

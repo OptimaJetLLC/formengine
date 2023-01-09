@@ -1,7 +1,5 @@
 import styled from '@emotion/styled'
-import autosize from 'autosize'
-import {cloneElement, Component, ComponentProps} from 'react'
-import ReactDOM from 'react-dom'
+import {cloneElement, ComponentProps} from 'react'
 import useUniqueId from 'rsuite/cjs/utils/useUniqueId'
 //https://styled-system.com/#expressive-consistent-ui-components
 //https://styled-system.com/table
@@ -91,15 +89,4 @@ const Centered = styled(Box)`
   justify-content: center;
 `
 
-class AutoSize extends Component<{ children: Component }> {
-  componentDidMount() {
-    const domNode = ReactDOM.findDOMNode(this)
-    autosize(domNode as Element)
-  }
-
-  render() {
-    return this.props.children
-  }
-}
-
-export {Box, Rows, Columns, LabeledInput, AutoSize, Centered}
+export {Box, Rows, Columns, LabeledInput, Centered}
