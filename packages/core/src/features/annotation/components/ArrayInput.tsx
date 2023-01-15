@@ -10,7 +10,7 @@ export const ArrayInput = ({...props}: PropertyEditorProps) => {
   const columns = makeColumns(props.annotation.editorProps?.columns ?? DEFAULT_COLUMNS)
 
   return <>
-    <LabeledProperty annotation={props.annotation}/>
+    <LabeledProperty annotation={props.annotation} componentStore={props.componentStore}/>
     <EditableTable data={value} onChange={onChange} columns={columns}/>
   </>
 }

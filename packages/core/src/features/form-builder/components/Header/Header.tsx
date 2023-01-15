@@ -58,7 +58,6 @@ const CenterPart = styled.div`justify-content: center;`
 
 const Container = styled.div`
   display: flex;
-  flex: 1;
 
   & > * {
     flex: 1;

@@ -4,10 +4,16 @@ import {HtmlAttribute} from '../features/html-attributes'
 import {Style} from '../features/style/types'
 import {ValidationSchema} from '../features/validation/types'
 
+export interface ComponentProperty {
+  value?: any
+  useFn?: boolean
+  fnSource?: string
+}
+
 export class ComponentStore {
   key: string = ''
   type: string = ''
-  props: Record<string, any> = {} //TODO do nullable
+  props: Record<string, ComponentProperty> = {} //TODO do nullable
   events?: Record<EventName, WeakActionData[]>
   style: Style = {} //TODO do nullable
   htmlAttributes?: HtmlAttribute[]
@@ -24,7 +30,6 @@ export class ComponentStore {
   bindTo?: string
   //TODO add on validation page
   visible?: string
-
 
   constructor(key: string, type: string) {
     this.key = key

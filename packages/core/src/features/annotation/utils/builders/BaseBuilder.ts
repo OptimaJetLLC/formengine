@@ -23,6 +23,10 @@ export class BaseBuilder<T> {
     return this.setup({hint})
   }
 
+  calculable(calculable: boolean) {
+    return this.setup({calculable})
+  }
+
   setup(options: Partial<PreAnnotation & Options>): this {
     const {type, autoName, ...annotation} = options
     const clone = this.clone()

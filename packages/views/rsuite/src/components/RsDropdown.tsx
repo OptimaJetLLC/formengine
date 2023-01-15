@@ -28,7 +28,8 @@ export const rsDropdown = define(RsDropdown)
     label: string.default('Select'),
     placement,
     size,
-    defaultValue: string.default('a'),
+    defaultValue: string,
+    value: string.valued,
     placeholder: string,
     data: array.default(toLabeledValues(['a', 'b', 'c']))
       .named('Items')

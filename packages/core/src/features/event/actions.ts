@@ -9,7 +9,7 @@ const setValue = defineAction('Set value', (actionArgs, e) => {
 
 const setProperty = defineAction('Set property', ({propertyKey, targetKey, value}, e) => {
   const component = e.store.getComponent(targetKey)
-  component.props[propertyKey] = value
+  component.props[propertyKey] = {value: value}
 }, ['propertyKey', 'targetKey', 'value'])
 
 const log = defineAction('Log event to console', console.log)

@@ -14,7 +14,7 @@ const NumberInput = (props: PropertyEditorProps) => {
   }
   const inputNumberProps = {...props.annotation.editorProps, ...inputProps}
 
-  return <LabeledProperty annotation={props.annotation}>
+  return <LabeledProperty annotation={props.annotation} componentStore={props.componentStore}>
     <InputNumber {...inputNumberProps} onChange={handleChange} size={'xs'}/>
   </LabeledProperty>
 }

@@ -3,7 +3,10 @@ import {Progress} from 'rsuite'
 
 const rsCommonProgressProps = {
   classPrefix: string.default('progress').hinted('The prefix of the component CSS class'),
-  percent: number.default(50).withEditorProps({min: 0, max: 100}).hinted('Percent of progress'),
+  percent: number.default(50)
+    .withEditorProps({min: 0, max: 100})
+    .hinted('Percent of progress')
+    .valued,
   showInfo: boolean.default(true).hinted('Show text'),
   status: oneOf('success', 'fail', 'active')
     .default('active')

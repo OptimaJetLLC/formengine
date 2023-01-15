@@ -33,7 +33,7 @@ export const Panel = observer(({children, name, rightPlacement}: PanelProps) => 
 export const ContentContainer = styled.div`
   overflow: hidden;
   display: flex;
-  width: 280px;
+  width: 300px;
   margin: 10px;
 
   .collapsed > & {

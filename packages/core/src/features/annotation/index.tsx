@@ -16,7 +16,10 @@ import {SizeInput} from './components/SizeInput'
 import {StringInput} from './components/StringInput'
 import {createAnnotation, createProperty} from './utils'
 
-export const key = createAnnotation(KeyInput).schemed(yup.string()).hinted('Unique component key')
+export const key = createAnnotation(KeyInput)
+  .schemed(yup.string())
+  .hinted('Unique component key')
+  .calculable(false)
 export const htmlAttributes = createAnnotation(AttributesInput)
   .setup({subsection: SubSection.Additional})
 export const style = createAnnotation(StyleEditor).setup({section: Section.Style})

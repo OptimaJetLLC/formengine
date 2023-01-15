@@ -6,6 +6,7 @@ import {getSubstitutedValue} from '../features/substitution'
 import {ComponentData} from '../utils/contexts/ComponenDataContext'
 import {getChildren} from '../utils/getChildren'
 import {getDefaultProps} from '../utils/getDefaultProps'
+import {calculateProperties} from '../utils/propertyCalculator'
 import {Store} from './Store'
 
 export class ComponentState {
@@ -17,7 +18,7 @@ export class ComponentState {
     return Object.assign(
       {key: this.data.componentStore.key},
       this.defaultProps,
-      this.data.componentStore.props,
+      this.calculatedProps,
       this.children,
       this.substitutedValue,
       this.className,
@@ -33,6 +34,10 @@ export class ComponentState {
 
   get defaultProps() {
     return getDefaultProps(this.data)
+  }
+
+  get calculatedProps() {
+    return calculateProperties(this.data.componentStore, this.store.form)
   }
 
   get events() {

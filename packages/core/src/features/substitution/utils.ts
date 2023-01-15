@@ -9,6 +9,6 @@ export function denoteBinds(value: ArgumentValue, store: Store) {
 
   return denote(value, mark => {
     const componentStore = store.getComponent(mark.value)
-    return componentStore.props[mark.label] ?? ''
+    return componentStore.props[mark.label]?.value ?? ''
   }, componentMarkup)
 }

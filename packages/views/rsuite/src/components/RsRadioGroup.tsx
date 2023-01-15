@@ -26,9 +26,10 @@ export const rsRadioGroup = define(RsRadioGroup)
     name: string.default('RadioGroup').hinted('Radio group name'),
     appearance: oneOf('default', 'picker').labeled('Default', 'Picker').default('default'),
     label: string.default('Radio'),
-    defaultValue: string.default('a'),
+    defaultValue: string,
     inline: boolean,
     onChange: event,
     items: array.default(toLabeledValues(['a', 'b', 'c'])),
+    value: string.valued.hinted('Radio group value')
   })
 

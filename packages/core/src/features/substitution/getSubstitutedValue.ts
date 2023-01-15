@@ -1,12 +1,13 @@
+import {ComponentProperty} from '../../stores/ComponentStore'
 import {Store} from '../../stores/Store'
 
-export const getSubstitutedValue = (props: Record<string, any>, store: Store) => {
+export const getSubstitutedValue = (props: Record<string, ComponentProperty>, store: Store) => {
   let result: Record<string, any> = {}
 
   for (let key in props) {
-    const value = props[key]
+    const value = props[key]?.value
 
-    if (typeof value !== 'string' || key === 'value') continue
+    if (props[key]?.useFn || typeof value !== 'string' || key === 'value') continue
     //if (store.isBuilderMode) continue
 
     result[key] = substitute(value, store.form.data)

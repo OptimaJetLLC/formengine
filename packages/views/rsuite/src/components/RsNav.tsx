@@ -22,12 +22,12 @@ const RsNav = (props: RsTabProps) => {
   //TODO доделаю в рамках задачи об аннотациях
   useEffect(() => {
     if (!componentStore.props.items) {
-      componentStore.props.items = ['Item1', 'Item2', 'Item3']
-      componentStore.props.active = _.first(componentStore.props.items)
+      componentStore.props.items = {value: ['Item1', 'Item2', 'Item3']}
+      componentStore.props.active = {value: _.first(componentStore.props.items.value)}
     }
   }, [])
 
-  const setActive = useCallback((eventKey: string) => componentStore.props.active = eventKey, [])
+  const setActive = useCallback((eventKey: string) => componentStore.props.active = {value: eventKey}, [])
 
   return (
     <>

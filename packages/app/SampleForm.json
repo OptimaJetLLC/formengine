@@ -8,8 +8,12 @@
       "key": "RsStaticContent 1",
       "type": "RsStaticContent",
       "props": {
-        "content": "Text... <a href=\"https://duckduckgo.com/\">DuckDuckGo</a>",
-        "allowHtml": true
+        "content": {
+          "value": "Text... <a href=\"https://duckduckgo.com/\">DuckDuckGo</a>"
+        },
+        "allowHtml": {
+          "value": true
+        }
       },
       "style": {}
     },
@@ -24,15 +28,23 @@
       "type": "RsImage",
       "props": {
         "height": {
-          "value": "40",
-          "measure": "px"
+          "value": {
+            "value": "40",
+            "measure": "px"
+          }
         },
         "width": {
-          "value": "100",
-          "measure": "%"
+          "value": {
+            "value": "100",
+            "measure": "%"
+          }
         },
-        "fit": "scale-down",
-        "position": "center"
+        "fit": {
+          "value": "scale-down"
+        },
+        "position": {
+          "value": "center"
+        }
       },
       "style": {}
     },
@@ -40,8 +52,12 @@
       "key": "header 1",
       "type": "RsTitle",
       "props": {
-        "content": "Application Form",
-        "alignment": "center"
+        "content": {
+          "value": "Application Form"
+        },
+        "alignment": {
+          "value": "center"
+        }
       },
       "style": {}
     },
@@ -49,7 +65,9 @@
       "key": "title",
       "type": "RsInput",
       "props": {
-        "label": "Title"
+        "label": {
+          "value": "Title"
+        }
       },
       "style": {}
     },
@@ -69,7 +87,9 @@
               "key": "first name",
               "type": "RsInput",
               "props": {
-                "label": "First Name"
+                "label": {
+                  "value": "First Name"
+                }
               },
               "style": {}
             },
@@ -77,7 +97,9 @@
               "key": "last name",
               "type": "RsInput",
               "props": {
-                "label": "Last Name"
+                "label": {
+                  "value": "Last Name"
+                }
               },
               "style": {}
             }
@@ -89,7 +111,9 @@
       "key": "type",
       "type": "RsDropdown",
       "props": {
-        "block": true
+        "block": {
+          "value": true
+        }
       },
       "style": {}
     },
@@ -109,8 +133,14 @@
           "key": "save",
           "type": "RsButton",
           "props": {
-            "children": "Save",
-            "appearance": "primary"
+            "children": {
+              "value": "Save",
+              "useFn": true,
+              "fnSource": "return `Save ${new Date().toISOString()}`"
+            },
+            "appearance": {
+              "value": "primary"
+            }
           },
           "style": {}
         },
@@ -118,7 +148,9 @@
           "key": "cancel",
           "type": "RsButton",
           "props": {
-            "children": "Cancel"
+            "children": {
+              "value": "Cancel"
+            }
           },
           "style": {}
         }
@@ -133,7 +165,17 @@
     {
       "key": "checkbox",
       "type": "RsCheckbox",
-      "props": {},
+      "props": {
+        "checked": {
+          "value": true,
+          "useFn": true,
+          "fnSource": "return new Date().getMinutes() % 2 === 0"
+        },
+        "children": {
+          "useFn": true,
+          "fnSource": "return `${form.data.title} ${form.data.checkbox} ${new Date().toISOString()}`"
+        }
+      },
       "style": {}
     }
   ]

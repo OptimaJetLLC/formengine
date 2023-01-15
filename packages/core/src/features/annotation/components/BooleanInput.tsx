@@ -6,7 +6,7 @@ import {makeAnnotationProps} from '../utils'
 
 export const BooleanInput = ({componentStore, annotation}: PropertyEditorProps) => {
   const {value, onChange} = makeAnnotationProps({componentStore, annotation})
-  return <LabeledProperty annotation={annotation}>
+  return <LabeledProperty componentStore={componentStore} annotation={annotation}>
     <SCheckbox checked={!!value} onChange={(value, checked) => onChange(checked)}/>
   </LabeledProperty>
 }

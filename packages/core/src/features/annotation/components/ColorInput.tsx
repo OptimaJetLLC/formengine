@@ -12,7 +12,7 @@ export const ColorInput = ({componentStore, annotation}: PropertyEditorProps) =>
     const {r, g, b, a} = rgb
     onChange(`rgba(${r}, ${g}, ${b}, ${a})`)
   }
-  return <LabeledProperty annotation={annotation}>
+  return <LabeledProperty componentStore={componentStore} annotation={annotation}>
     <SColorPicker><ColorPicker value={value} onChange={handleChange}/></SColorPicker>
   </LabeledProperty>
 }

@@ -1,7 +1,6 @@
 import {makeAutoObservable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {Store} from '../../../stores/Store'
-import {Annotation} from '../../annotation/utils/annotations/Annotation'
 import {Model} from '../../define'
 import {Field} from './Field'
 

@@ -13,6 +13,7 @@ export class Annotation {
   readonly subsection?: SubSection
   readonly valued: boolean = false
   readonly editorProps?: any;
+  readonly calculable: boolean = true
 
   constructor(key: string, name: string) {
     this.key = key

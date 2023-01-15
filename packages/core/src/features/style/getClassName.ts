@@ -11,7 +11,7 @@ export const getClassName = (componentStore: ComponentStore) => {
   const stylesFromProps: Record<string, string> = {}
   keys(props)?.forEach(key => {
     if (StylesFromProps[key]) {
-      stylesFromProps[key] = props[key]
+      stylesFromProps[key] = props[key]?.value
     }
   })
 
