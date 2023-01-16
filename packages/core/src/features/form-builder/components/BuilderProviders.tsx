@@ -21,6 +21,7 @@ export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {
     store.isBuilderMode = true
     return new BuilderStore(store)
   }, [])
+  useEffect(() => () => buildStore.destroy(), [])
 
   return (
     <BuilderStoreProvider value={buildStore}>

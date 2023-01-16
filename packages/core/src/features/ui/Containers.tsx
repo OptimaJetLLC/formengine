@@ -8,10 +8,10 @@ import useUniqueId from 'rsuite/cjs/utils/useUniqueId'
 //https://styled-system.com/table
 //Позволяет прописывать стили в виде коротких пропсов
 import {color, layout, space} from 'styled-system'
-import {ComponentStore} from '../../stores/ComponentStore'
+import {useBuilderStore} from '../../utils/contexts/BuilderStoreContext'
+import {useComponentData} from '../../utils/contexts/ComponenDataContext'
 import {HintedLabel} from '../annotation/components/HintedLabel'
 import {Annotation} from '../annotation/utils/annotations/Annotation'
-import {usePropertyContext} from '../form-builder/components/RightPanel/PropertiesEditor/PropertyContext'
 import {useTranslationPart} from '../localization/hooks'
 import {FaIcon} from './Icons'
 
@@ -75,28 +75,30 @@ const LabeledInput = styled.div`
 export interface LabeledPropertyProps extends ComponentProps<any> {
   idPrefix?: string
   annotation: Annotation
-  componentStore: ComponentStore
 }
 
-export const CodeButton = ({annotation, componentStore}: { annotation: Annotation, componentStore: ComponentStore }) => {
-  const {setCurrentProperty} = usePropertyContext()
+export const CodeButton = ({annotation}: { annotation: Annotation }) => {
+  const {componentStore} = useComponentData()
+  const store = useBuilderStore()
 
   if (!annotation.calculable) {
     // placeholder
     return <div style={{marginLeft: 27}}></div>
   }
 
+  const setCurrentCalculatedProperty = () => store.calculatedProperty = {componentStore, annotation}
+
   const iconColor = componentStore.props[annotation.key]?.useFn ? 'var(--rs-btn-primary-bg)' : undefined
-  return <IconButton onClick={() => setCurrentProperty(componentStore, annotation)}
+  return <IconButton onClick={setCurrentCalculatedProperty}
                      icon={<FaIcon icon={faCode as unknown as IconDefinition} color={iconColor}/>}/>
 }
 
-export const LabeledProperty = ({idPrefix, annotation, children, componentStore}: LabeledPropertyProps) => {
+export const LabeledProperty = ({idPrefix, annotation, children}: LabeledPropertyProps) => {
   const id = useUniqueId(idPrefix || 'id-')
   const getLabel = useTranslationPart(`annotation.${annotation.key}`)
 
   return <LabeledInput>
-    <CodeButton annotation={annotation} componentStore={componentStore}/>
+    <CodeButton annotation={annotation}/>
     <HintedLabel htmlFor={id} hint={getLabel('hint') || annotation.hint}>{getLabel('name') || annotation.name}</HintedLabel>
     {children ? cloneElement(children, {id}) : undefined}
   </LabeledInput>

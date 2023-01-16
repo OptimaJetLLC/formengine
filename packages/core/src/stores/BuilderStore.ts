@@ -1,5 +1,6 @@
 import _, {assign} from 'lodash'
-import {makeAutoObservable, observable, reaction} from 'mobx'
+import {IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
+import {Annotation} from '../features/annotation/utils/annotations/Annotation'
 import {defaultLanguage} from '../features/localization/consts'
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../features/localization/utils'
 import {fbScreen} from '../features/ui/FbScreen'
@@ -13,13 +14,20 @@ export class BuilderStore {
   isResizing: boolean = false
   selected?: Node
   language = defaultLanguage
+  readonly #disposer: IReactionDisposer
+  calculatedProperty?: {
+    readonly componentStore: ComponentStore
+    readonly annotation: Annotation
+  }
 
   constructor(
     readonly viewer: Store,
   ) {
     makeAutoObservable(this, {
       selected: observable.ref,
-      language: observable.ref
+      language: observable.ref,
+      destroy: false,
+      calculatedProperty: observable.ref
     })
 
     onI18nInit((language: string) => {
@@ -29,7 +37,7 @@ export class BuilderStore {
       }
     })
 
-    reaction(() => this.language, onLanguageChange)
+    this.#disposer = reaction(() => this.language, onLanguageChange)
   }
 
   get tree(): Node {
@@ -42,6 +50,10 @@ export class BuilderStore {
     if (!parent) return 0
 
     return parent.children!.indexOf(child)
+  }
+
+  destroy() {
+    this.#disposer()
   }
 
   treeMap(store: ComponentStore, callback: (store: ComponentStore) => void) {

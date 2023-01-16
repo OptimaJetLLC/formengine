@@ -1,6 +1,6 @@
-import {ComponentStore} from '../../../../../stores/ComponentStore'
-import {createContext} from '../../../../../utils/createContextHook'
-import {Annotation} from '../../../../annotation/utils/annotations/Annotation'
+import {ComponentStore} from '../../stores/ComponentStore'
+import {createContext} from '../../utils/createContextHook'
+import {Annotation} from '../annotation/utils/annotations/Annotation'
 
 export type PropertyData = {
   readonly componentKey: string

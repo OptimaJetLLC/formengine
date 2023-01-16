@@ -24,7 +24,7 @@ const SizeInput = ({componentStore, annotation}: PropertyEditorProps) => {
     : <InputNumber value={value} size={'xs'} onChange={onChangeValue}/>
 
   return (
-    <LabeledProperty componentStore={componentStore} annotation={annotation}>
+    <LabeledProperty annotation={annotation}>
       <Container>
         {needValue(measure) && input}
         <SPicker value={measure} onChange={onChangeMeasure} data={options}

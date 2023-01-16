@@ -1,4 +1,5 @@
 import {makeAutoObservable} from 'mobx'
+import {calculateProperties} from '../features/calculation/propertyCalculator'
 import {initEvents} from '../features/event'
 import {getHtmlAttributes} from '../features/html-attributes'
 import {getClassName} from '../features/style'
@@ -6,7 +7,6 @@ import {getSubstitutedValue} from '../features/substitution'
 import {ComponentData} from '../utils/contexts/ComponenDataContext'
 import {getChildren} from '../utils/getChildren'
 import {getDefaultProps} from '../utils/getDefaultProps'
-import {calculateProperties} from '../utils/propertyCalculator'
 import {Store} from './Store'
 
 export class ComponentState {

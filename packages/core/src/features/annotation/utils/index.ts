@@ -27,7 +27,7 @@ export const createAnnotation = AnnotationBuilder.create
 export const makeAnnotationProps = ({componentStore, annotation}: PropertyEditorProps) => {
   const value = componentStore.props[annotation.key]?.value ?? annotation.schema?.getDefault()
   const onChange = (value: any) => {
-    if (!componentStore.props[annotation.key]) componentStore.props[annotation.key] = {}
+    componentStore.props[annotation.key] ??= {}
     componentStore.props[annotation.key].value = value
   }
   return {value, onChange}

@@ -1,9 +1,12 @@
 import styled from '@emotion/styled'
+import {observer} from 'mobx-react'
 import React, {useEffect, useState} from 'react'
 import {Button, ButtonGroup, Checkbox, Panel} from 'rsuite'
-import {CompilationResult, compileFn} from '../../utils/propertyCalculator'
-import {CodeEditor} from './components/CodeEditor/CodeEditor'
-import {PropertyData} from './components/RightPanel/PropertiesEditor/PropertyContext'
+import {ComponentStore} from '../../../stores/ComponentStore'
+import {useBuilderStore} from '../../../utils/contexts/BuilderStoreContext'
+import {Annotation} from '../../annotation/utils/annotations/Annotation'
+import {CompilationResult, compileFn} from '../propertyCalculator'
+import {CodeEditor} from './CodeEditor'
 
 const codePlaceHolder = '// enter your code here'
 
@@ -37,10 +40,17 @@ const ErrorMessage = ({result}: { result?: CompilationResult }) => {
   return <span>Compilation result: <code style={{color: color}}>{message}</code></span>
 }
 
-export const CodeEditorPanel = ({property, onClose}: { property: PropertyData, onClose: () => void }) => {
-  const [sourceCode, setSourceCode] = useState(property.fnSource || codePlaceHolder)
+interface CodeEditorPanelProps {
+  componentStore: ComponentStore
+  annotation: Annotation
+  onClose: () => void
+}
+
+const _CodeEditorPanel = ({componentStore, annotation, onClose}: CodeEditorPanelProps) => {
+  const property = componentStore.props[annotation.key]
+  const [sourceCode, setSourceCode] = useState(property?.fnSource || codePlaceHolder)
   const [compilationError, setCompilationError] = useState<CompilationResult | undefined>()
-  const [useFn, setUseFn] = useState(property.useFn || false)
+  const [useFn, setUseFn] = useState(property?.useFn || false)
 
   const compileCode = () => {
     const result = compileFn(sourceCode)
@@ -48,24 +58,20 @@ export const CodeEditorPanel = ({property, onClose}: { property: PropertyData, o
   }
 
   const saveCode = () => {
-    if (!property.componentStore.props[property.annotation.key]) {
-      property.componentStore.props[property.annotation.key] = {}
-    }
-    const componentProperty = property.componentStore.props[property.annotation.key]
+    componentStore.props[annotation.key] ??= {}
+    const componentProperty = componentStore.props[annotation.key]
     componentProperty.useFn = useFn
     componentProperty.fnSource = sourceCode
   }
 
   useEffect(() => {
-    setSourceCode(property.fnSource || codePlaceHolder)
-    setUseFn(property.useFn || false)
+    setSourceCode(property?.fnSource || codePlaceHolder)
+    setUseFn(property?.useFn || false)
   }, [property])
 
-  if (!property.componentKey) return null
-
   const header = <p>Calculated property for &lt;
-    <code>{property.componentKey}.{property.annotation.name}</code> &gt;
-    (must return {property.annotation.schema?.type})</p>
+    <code>{componentStore.key}.{annotation.name}</code> &gt;
+    (must return {annotation.schema?.type})</p>
 
   return <SPanel bodyFill>
     <Header>{header}</Header>
@@ -83,6 +89,15 @@ export const CodeEditorPanel = ({property, onClose}: { property: PropertyData, o
     <ErrorMessage result={compilationError}/>
   </SPanel>
 }
+
+const CodeEditorPanelWrapper = () => {
+  const store = useBuilderStore()
+  if (!store.calculatedProperty) return null
+
+  return <_CodeEditorPanel {...store.calculatedProperty} onClose={() => store.calculatedProperty = undefined}/>
+}
+
+export const CodeEditorPanel = observer(CodeEditorPanelWrapper)
 
 const Header = styled.div`
   margin-bottom: 20px;

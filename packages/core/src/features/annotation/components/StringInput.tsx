@@ -6,7 +6,7 @@ import {makeAnnotationProps} from '../utils'
 export const StringInput = (props: PropertyEditorProps) => {
   const {annotation, onBlur} = props
   return (
-    <LabeledProperty componentStore={props.componentStore} annotation={annotation}>
+    <LabeledProperty annotation={annotation}>
       <Input name={annotation.key} onBlur={onBlur} {...makeAnnotationProps(props)} size={'xs'}/>
     </LabeledProperty>
   )

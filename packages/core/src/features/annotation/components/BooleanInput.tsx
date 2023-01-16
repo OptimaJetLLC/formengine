@@ -6,13 +6,14 @@ import {makeAnnotationProps} from '../utils'
 
 export const BooleanInput = ({componentStore, annotation}: PropertyEditorProps) => {
   const {value, onChange} = makeAnnotationProps({componentStore, annotation})
-  return <LabeledProperty componentStore={componentStore} annotation={annotation}>
+  return <LabeledProperty annotation={annotation}>
     <SCheckbox checked={!!value} onChange={(value, checked) => onChange(checked)}/>
   </LabeledProperty>
 }
 
 const SCheckbox = styled(Checkbox)`
   width: 100%;
+
   .rs-checkbox-checker {
     padding-left: 0;
     margin-left: -10px;

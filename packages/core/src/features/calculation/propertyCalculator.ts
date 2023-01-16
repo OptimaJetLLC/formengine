@@ -1,5 +1,5 @@
-import {Form} from '../features/validation'
-import {ComponentProperty, ComponentStore} from '../stores/ComponentStore'
+import {ComponentProperty, ComponentStore} from '../../stores/ComponentStore'
+import {Form} from '../validation'
 
 const fnCache = new Map<string, Function>()
 

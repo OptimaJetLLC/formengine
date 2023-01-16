@@ -23,7 +23,7 @@ export const Picker = ({componentStore, annotation}: PropertyEditorProps) => {
   const data = addCustomValue(annotation as Property, value)
   const clean = () => delete componentStore.props[annotation.key]
 
-  return <LabeledProperty componentStore={componentStore} annotation={annotation}>
+  return <LabeledProperty annotation={annotation}>
     <SInputPicker value={value ?? ''} data={data} onChange={onChange} onClean={clean}
                   block cleanable creatable size={'xs'}/>
   </LabeledProperty>
@@ -31,4 +31,4 @@ export const Picker = ({componentStore, annotation}: PropertyEditorProps) => {
 
 const SInputPicker = styled(InputPicker)`
   width: 100%;
- `
+`

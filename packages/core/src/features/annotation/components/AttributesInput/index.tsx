@@ -38,7 +38,7 @@ export default ({componentStore, annotation}: PropertyEditorProps) => {
   )
 
   return <>
-    <LabeledProperty annotation={annotation} componentStore={componentStore}>
+    <LabeledProperty annotation={annotation}>
       {changed && confirmButton}
     </LabeledProperty>
     <EditableTable data={value ?? []} onChange={handleChange} columns={COLUMNS}/>

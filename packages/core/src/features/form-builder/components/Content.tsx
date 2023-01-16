@@ -1,20 +1,21 @@
 import styled from '@emotion/styled'
+import {observer} from 'mobx-react'
 import React from 'react'
-import {CodeEditorPanel} from '../CodeEditorPanel'
+import {CodeEditorPanel} from '../../calculation/components/CodeEditorPanel'
 import {CentralPanel} from './CentralPanel'
 import {LeftPanel} from './LeftPanel'
 import {RightPanel} from './RightPanel'
-import {usePropertyContext} from './RightPanel/PropertiesEditor/PropertyContext'
 
-export default () => {
-  const {property, clear} = usePropertyContext()
+const _Content = () => {
   return <>
     <Container>
       <LeftPanel/> <CentralPanel/> <RightPanel/>
     </Container>
-    {property && <CodeEditorPanel property={property} onClose={clear}/>}
+    <CodeEditorPanel/>
   </>
 }
+
+export const Content = observer(_Content)
 
 const Container = styled.div`
   display: flex;

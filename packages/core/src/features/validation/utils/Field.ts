@@ -1,7 +1,7 @@
 import {autorun, makeAutoObservable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
-import {calculatePropertyValue} from '../../../utils/propertyCalculator'
 import {Annotation} from '../../annotation/utils/annotations/Annotation'
+import {calculatePropertyValue} from '../../calculation/propertyCalculator'
 import {Form} from './Form'
 import {parseSchema} from './parseSchema'
 
