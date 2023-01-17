@@ -8,7 +8,7 @@ interface CodeEditorProps {
 }
 
 export const CodeEditor = ({source, setSourceCode}: CodeEditorProps) => {
-  const onChange = useCallback(value => setSourceCode?.(value), [])
+  const onChange = useCallback((value: string) => setSourceCode?.(value), [])
   return (
     <CodeMirror
       value={source}

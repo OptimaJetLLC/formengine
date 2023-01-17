@@ -2,11 +2,10 @@ import styled from '@emotion/styled'
 import {isUndefined} from 'lodash'
 import {InputPicker} from 'rsuite'
 import {LabeledProperty} from '../../ui/Containers'
-import {PropertyEditorProps} from '../types'
-import {makeAnnotationProps} from '../utils'
-import {Property} from '../utils/annotations/Property'
+import {PropertyAn} from '../utils/annotations/PropertyAn'
+import {useEditor} from '../utils/useEditor'
 
-const addCustomValue = ({data}: Property, value: string) => {
+const addCustomValue = ({data}: PropertyAn, value: string) => {
   if (isUndefined(value)) {
     return data
   }
@@ -18,13 +17,12 @@ const addCustomValue = ({data}: Property, value: string) => {
   return data
 }
 
-export const Picker = ({componentStore, annotation}: PropertyEditorProps) => {
-  const {value, onChange} = makeAnnotationProps({componentStore, annotation})
-  const data = addCustomValue(annotation as Property, value)
-  const clean = () => delete componentStore.props[annotation.key]
+export const Picker = () => {
+  const {value, onChange, annotation, onRemove} = useEditor()
+  const data = addCustomValue(annotation as PropertyAn, value)
 
   return <LabeledProperty annotation={annotation}>
-    <SInputPicker value={value ?? ''} data={data} onChange={onChange} onClean={clean}
+    <SInputPicker value={value ?? ''} data={data} onChange={onChange} onClean={onRemove}
                   block cleanable creatable size={'xs'}/>
   </LabeledProperty>
 }

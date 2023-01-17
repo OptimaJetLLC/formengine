@@ -6,6 +6,7 @@ import {Panel} from 'rsuite'
 import {ComponentStore} from '../../../../../../stores/ComponentStore'
 import {useBuilderStore} from '../../../../../../utils/contexts/BuilderStoreContext'
 import {ComponentDataProvider} from '../../../../../../utils/contexts/ComponenDataContext'
+import {AnnotationProvider} from '../../../../../../utils/contexts/EditorContext'
 import {Annotation} from '../../../../../annotation/utils/annotations/Annotation'
 import {useTranslationPart} from '../../../../../localization/hooks'
 import {CenteredLabel} from '../../../../../ui/Labels'
@@ -31,6 +32,7 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
 
   const current = model.properties.filter(({section}) => section === activeTab)
   const properties = current.filter(({subsection}) => isUndefined(subsection))
+  const style = model.style.filter(({section}) => section === activeTab).filter(({subsection}) => isUndefined(subsection))
   const additionalProperties = current.filter(({subsection}) => subsection === SubSection.Additional)
 
   return (
@@ -38,22 +40,38 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
       <Container>
         <div>
           {renderProperties(properties, data)}
+          {renderStyleProperties(style, data)}
         </div>
         {!!additionalProperties?.length &&
-        <SPanel header={getLabel('subSection.additionalProperties')}
-                collapsible bodyFill>
-          {renderProperties(additionalProperties, data)}
-        </SPanel>
+          <SPanel header={getLabel('subSection.additionalProperties')}
+                  collapsible bodyFill>
+            {renderProperties(additionalProperties, data)}
+          </SPanel>
         }
       </Container>
     </ComponentDataProvider>
   )
 })
 
-const renderProperties = (properties: Annotation[], componentStore: ComponentStore) => properties.map(annotation =>
-  //TODO in editor the hook
-  createElement(observer(annotation.editor), {key: annotation.key, annotation, componentStore})
-)
+const renderProperties = (properties: Annotation[], cs: ComponentStore) => {
+  return properties.map(annotation =>
+    <AnnotationProvider key={annotation.key} value={{annotation, getContext: () => cs.props}}>
+      {createElement(observer(annotation.editor))}
+    </AnnotationProvider>)
+}
+
+const renderStyleProperties = (properties: Annotation[], cs: ComponentStore) => {
+  return properties.map(annotation =>
+    <AnnotationProvider key={annotation.key} value={{
+      annotation, getContext: () => {
+        cs.styles ??= {}
+        cs.styles.cssObject ??= {}
+        return cs.styles.cssObject
+      }
+    }}>
+      {createElement(observer(annotation.editor))}
+    </AnnotationProvider>)
+}
 
 const Container = styled.div`
   display: flex;

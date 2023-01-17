@@ -15,3 +15,40 @@
 
 * StyleEditror
 * use
+
+## Examples
+
+Добавилась аннотация `stylization`. Она не противоречит пропу `className` и позволяет настраивать:
+* Default значения стандартных стилей (что на вкладке Style)
+* Инлайновые стили
+* Стили что, что с помощью emotion превращаются в css стили
+
+```typescript jsx
+export const button = define(Button)
+  .props({
+    className: string.default('Red Button'),
+    style: stylization
+      .css({
+        margin: 20,
+      })
+      .css({
+        padding: 20,
+      })
+      .css(`
+        color: yellow;
+      `)
+      .css(`
+        color: black;
+      `)
+      .inline({
+        padding: 23,
+      })
+      .default({
+        cssObject: {
+          height: '200'
+        },
+        cssString: 'background-color: yellow;',
+        additional: [{name: 'background-color', value: 'black'}]
+      })
+  })
+```

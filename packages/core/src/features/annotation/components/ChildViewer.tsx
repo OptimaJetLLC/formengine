@@ -1,9 +1,12 @@
 import styled from '@emotion/styled'
 import {ComponentStore} from '../../../stores/ComponentStore'
+import {useComponentData} from '../../../utils/contexts/ComponenDataContext'
 import {LabeledProperty} from '../../ui/Containers'
-import {PropertyEditorProps} from '../types'
+import {useEditor} from '../utils/useEditor'
 
-export const ChildViewer = ({annotation, componentStore}: PropertyEditorProps) => {
+export const ChildViewer = () => {
+  const {annotation} = useEditor()
+  const {componentStore} = useComponentData()
   const isChild = (child: ComponentStore) =>
     child.bindTo === annotation.key || !child.bindTo && annotation.key === 'children'
 

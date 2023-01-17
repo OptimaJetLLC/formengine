@@ -12,17 +12,17 @@ export const useActions = () => {
 
 
   useEffect(() => {
-    const un = [] as Function[]
+    const unsubscribes = [] as Function[]
 
     forIn(componentStore.events, (weakActions: WeakActionData[], eventName) => {
       weakActions.forEach((data) => {
         const {args, func} = store.findAction(data.actionName, data.targetKey)
         const action = args ? getActionHandler(func, data.weakArgs) : func
-        un.push(store.eventBus.listen(action, {target: componentStore.key, type: eventName}))
+        unsubscribes.push(store.eventBus.listen(action, {target: componentStore.key, type: eventName}))
       })
     })
 
-    return () => un.forEach(value => value())
+    return () => unsubscribes.forEach(value => value())
 
     function getActionHandler(func: Func, weakArgs?: WeakArgs) {
       //TODO init in default value for arguments?

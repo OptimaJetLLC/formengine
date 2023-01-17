@@ -1,17 +1,17 @@
 import {ComponentType} from 'react'
 import * as yup from 'yup'
-import {Enum, PropertyEditorProps} from '../../types'
+import {Enum} from '../../types'
 import {BaseBuilder} from './BaseBuilder'
 import {OneOfBuilder} from './OneOfBuilder'
 import {FromYup, SchemedBuilder} from './SchemedBuilder'
 
 export class AnnotationBuilder<T> extends BaseBuilder<T> {
-  constructor(editor: ComponentType<PropertyEditorProps>) {
+  constructor(editor: ComponentType) {
     super()
     this.annotation = {editor}
   }
 
-  static create = <T>(editor: ComponentType<PropertyEditorProps>) => new this<T>(editor)
+  static create = <T>(editor: ComponentType) => new this<T>(editor)
 
   schemed<T extends yup.AnySchema>(schema: T) {
     return new SchemedBuilder<FromYup<T>>().setup({...this.options, ...this.annotation, schema: schema})

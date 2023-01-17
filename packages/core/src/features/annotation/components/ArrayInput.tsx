@@ -1,16 +1,15 @@
 import {LabeledProperty} from '../../ui/Containers'
 import {EditableTable, makeColumns} from '../../ui/EditableTable'
-import {PropertyEditorProps} from '../types'
-import {makeAnnotationProps} from '../utils'
+import {useEditor} from '../utils/useEditor'
 
 const DEFAULT_COLUMNS = [{name: 'value'}, {name: 'label'}]
 
-export const ArrayInput = ({...props}: PropertyEditorProps) => {
-  const {value, onChange} = makeAnnotationProps(props)
-  const columns = makeColumns(props.annotation.editorProps?.columns ?? DEFAULT_COLUMNS)
+export const ArrayInput = () => {
+  const {value, onChange, annotation} = useEditor()
+  const columns = makeColumns(annotation.editorProps?.columns ?? DEFAULT_COLUMNS)
 
   return <>
-    <LabeledProperty annotation={props.annotation}/>
+    <LabeledProperty annotation={annotation}/>
     <EditableTable data={value} onChange={onChange} columns={columns}/>
   </>
 }

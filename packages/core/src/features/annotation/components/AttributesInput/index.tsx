@@ -1,11 +1,12 @@
 import {Check} from '@rsuite/icons'
 import {useState} from 'react'
 import {IconButton} from 'rsuite'
+import {useComponentData} from '../../../../utils/contexts/ComponenDataContext'
 import {useTranslationPart} from '../../../localization/hooks'
 import {LabeledProperty} from '../../../ui/Containers'
 import {EditableTable, makeColumns, SelectCell} from '../../../ui/EditableTable'
-import {PropertyEditorProps} from '../../types'
 import {toLabeledValues} from '../../utils/LabeledValue'
+import {useEditor} from '../../utils/useEditor'
 import Attributes from './react-html-attributes.json'
 
 const COLUMNS = makeColumns([
@@ -17,7 +18,9 @@ const COLUMNS = makeColumns([
   {name: 'value'}
 ])
 
-export default ({componentStore, annotation}: PropertyEditorProps) => {
+export default () => {
+  const {componentStore} = useComponentData()
+  const {annotation} = useEditor()
   const getLabel = useTranslationPart('common')
   const [value, setValue] = useState(componentStore.htmlAttributes)
   const [changed, setChanged] = useState(false)

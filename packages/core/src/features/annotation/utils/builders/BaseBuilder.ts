@@ -1,7 +1,6 @@
 import _, {assign} from 'lodash'
 import {ReactNode} from 'react'
-import {AnnotationMap} from '../../consts'
-import {PreAnnotation} from '../../types'
+import {AnnotationMap, PreAnnotation} from '../../types'
 import {Annotation} from '../annotations/Annotation'
 import {Options} from '../Options'
 

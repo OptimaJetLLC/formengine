@@ -1,3 +1,5 @@
+import {CSSObject} from '@emotion/react'
+
 export type StyleItem = {
   name?: string,
   value?: string
@@ -12,8 +14,8 @@ export type Measured = {
 
 export type StandardStyleItem = Record<string, { cssName: string, measure?: Measure }>
 
-export type Style = {
-  styles?: Record<string, string>
-  cssStyles?: StyleItem[]
-  cssBlock?: string
+export type Styles = {
+  cssObject?: CSSObject
+  cssString?: string
+  additional?: StyleItem[]
 }

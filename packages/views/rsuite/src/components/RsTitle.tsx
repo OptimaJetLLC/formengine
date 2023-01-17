@@ -1,11 +1,10 @@
 import {define, oneOf, string} from 'fb-core'
-import {textStyles} from '../commonProperties'
+import {backgroundColor, textStyles} from '../commonProperties'
 import {TextProps} from '../commonTypes'
 
 interface RsHeaderProps extends TextProps {
   content: string
   level: string
-  alignment: string
 }
 
 interface Levels {
@@ -32,6 +31,10 @@ export const rsTitle = define(RsTitle)
     level: oneOf('h1', 'h2', 'h3', 'h4', 'h5', 'h6')
       .default('h4')
       .hinted('Header level'),
-    ...textStyles
+  })
+  .css({
+    backgroundColor,
+    ...textStyles,
+    fontSize: textStyles.fontSize.default(undefined),
   })
 

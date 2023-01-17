@@ -2,7 +2,7 @@ import {makeAutoObservable} from 'mobx'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
 import {initEvents} from '../features/event'
 import {getHtmlAttributes} from '../features/html-attributes'
-import {getClassName} from '../features/style'
+import {computeStylization} from '../features/style'
 import {getSubstitutedValue} from '../features/substitution'
 import {ComponentData} from '../utils/contexts/ComponenDataContext'
 import {getChildren} from '../utils/getChildren'
@@ -21,7 +21,7 @@ export class ComponentState {
       this.calculatedProps,
       this.children,
       this.substitutedValue,
-      this.className,
+      this.stylization,
       this.value,
       this.events,
       this.htmlAttributes
@@ -48,8 +48,8 @@ export class ComponentState {
     return getSubstitutedValue(this.data.componentStore.props, this.store)
   }
 
-  get className() {
-    return getClassName(this.data.componentStore)
+  get stylization() {
+    return computeStylization(this, this.data)
   }
 
   get htmlAttributes() {

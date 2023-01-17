@@ -23,6 +23,7 @@ export class Model<T> {
   constructor(
     view: ComponentType<T>,
     readonly properties: Annotation[],
+    readonly style: Annotation[],
     name?: string,
     readonly actions?: ActionDefinition[],
     readonly hint?: string,

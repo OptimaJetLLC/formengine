@@ -1,20 +1,15 @@
 import styled from '@emotion/styled'
-import {useState} from 'react'
 import {AutoComplete} from 'rsuite'
 
 //TODO нормальную сортировку выпадающих вариантов
-const CompactCell = ({rowData, dataKey, rowIndex, onBlur, options, ...props}: any) => {
-  const [isEmpty, setIsEmpty] = useState(!rowData[dataKey]?.length)
+const CompactCell = ({dataKey, rowIndex, value, onChange, options, ...props}: any) => {
   return (
-    <StyledInput className={isEmpty ? 'empty' : ''} data={options}
-                 style={{color: dataKey == 'styleName' ? 'var(--rs-text-secondary)' : 'initial'}}
-                 defaultValue={rowData[dataKey]}
-                 onChange={(value) => {
-                   rowData[dataKey] = value
-                   setIsEmpty(!rowData[dataKey]?.length)
-                 }}
-                 onBlur={onBlur}
-                 {...props}
+    <StyledInput
+      className={value?.length ? '' : 'empty'} data={options}
+      style={{color: dataKey == 'styleName' ? 'var(--rs-text-secondary)' : 'initial'}}
+      value={value}
+      onChange={onChange}
+      {...props}
     />
   )
 }
@@ -60,8 +55,6 @@ const StyledInput = styled(AutoComplete)`
   }
 `
 
-export {
-  CompactCell, LabelCell, Row
-}
+export {CompactCell, LabelCell, Row}
 
 

@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import {RadioInput} from '../../components/RadioInput'
 import {Annotation} from '../annotations/Annotation'
-import {Property} from '../annotations/Property'
+import {PropertyAn} from '../annotations/PropertyAn'
 import {SchemedBuilder} from './SchemedBuilder'
 
 export class OneOfBuilder<T> extends SchemedBuilder<T> {
@@ -19,7 +19,7 @@ export class OneOfBuilder<T> extends SchemedBuilder<T> {
   }
 
   build(key: string): Annotation {
-    const result = super.build(key) as Property
+    const result = super.build(key) as PropertyAn
     result.data = this.values.map((value, index) => {
       let label = this.labels?.[index] ?? _.startCase(value.toString())
       return {label, value}

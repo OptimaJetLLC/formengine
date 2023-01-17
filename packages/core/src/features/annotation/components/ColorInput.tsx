@@ -3,17 +3,12 @@ import React from 'react'
 import ColorPicker from 'rsuite-color-picker'
 import 'rsuite-color-picker/lib/styles.css'
 import {LabeledProperty} from '../../ui/Containers'
-import {PropertyEditorProps} from '../types'
-import {makeAnnotationProps} from '../utils'
+import {useEditor} from '../utils/useEditor'
 
-export const ColorInput = ({componentStore, annotation}: PropertyEditorProps) => {
-  const {value, onChange} = makeAnnotationProps({componentStore, annotation})
-  const handleChange = ({rgb}: any) => {
-    const {r, g, b, a} = rgb
-    onChange(`rgba(${r}, ${g}, ${b}, ${a})`)
-  }
+export const ColorInput = () => {
+  const {value, onChange, annotation} = useEditor()
   return <LabeledProperty annotation={annotation}>
-    <SColorPicker><ColorPicker value={value} onChange={handleChange}/></SColorPicker>
+    <SColorPicker><ColorPicker value={value} onChange={({hex}) => onChange(hex)}/></SColorPicker>
   </LabeledProperty>
 }
 

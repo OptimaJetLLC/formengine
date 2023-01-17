@@ -1,15 +1,15 @@
 import {StandardStyleItem} from './types'
-import {inPX, pick, rgb, size} from './utils'
+import {inPX, pick, rgb} from './utils'
 
 export const StandardStylesDefinitions: StandardStyleItem = {
-  'Width': inPX('width'),
-  'Height': inPX('height'),
-  'Left': inPX('margin-left'),
-  'Right': inPX('margin-right'),
-  'Top': inPX('margin-top'),
-  'Bottom': inPX('margin-bottom'),
-  'Corner radius': inPX('border-radius'),
-  'Rotation': {
+  'width': inPX('width'),
+  'height': inPX('height'),
+  'left': inPX('margin-left'),
+  'right': inPX('margin-right'),
+  'top': inPX('margin-top'),
+  'bottom': inPX('margin-bottom'),
+  'corner radius': inPX('border-radius'),
+  'rotation': {
     cssName: 'transform',
     measure: val => `rotate(${val}deg)`
   },
@@ -18,16 +18,14 @@ export const StandardStylesDefinitions: StandardStyleItem = {
   'fontWeight': {cssName: 'font-weight'},
   'color': rgb('color'),
   'backgroundColor': rgb('background-color'),
-  'width': size('width'),
-  'height': size('height'),
   'fit': {cssName: 'object-fit'},
   'position': {cssName: 'object-position'},
   'justifyContent': {cssName: 'justify-content'},
 }
 
-export const SizeStyles = pick(StandardStylesDefinitions, ['Width', 'Height'])
-export const IndentStyles = pick(StandardStylesDefinitions, ['Left', 'Right', 'Top', 'Bottom'])
-export const OtherStyles = pick(StandardStylesDefinitions, ['Corner radius', 'Rotation'])
+export const SizeStyles = pick(StandardStylesDefinitions, ['width', 'height'])
+export const IndentStyles = pick(StandardStylesDefinitions, ['left', 'right', 'top', 'bottom'])
+export const OtherStyles = pick(StandardStylesDefinitions, ['corner radius', 'rotation'])
 export const StylesFromProps = pick(StandardStylesDefinitions, [
   'alignment',
   'fontSize',
@@ -38,5 +36,5 @@ export const StylesFromProps = pick(StandardStylesDefinitions, [
   'height',
   'fit',
   'position',
-  'justifyContent'
+  'justifyContent',
 ])

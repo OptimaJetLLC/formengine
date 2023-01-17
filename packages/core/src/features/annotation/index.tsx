@@ -15,6 +15,7 @@ import {Picker} from './components/Picker'
 import {SizeInput} from './components/SizeInput'
 import {StringInput} from './components/StringInput'
 import {createAnnotation, createProperty} from './utils'
+import {StyleBuilder} from './utils/builders/StyleBuilder'
 
 export const key = createAnnotation(KeyInput)
   .schemed(yup.string())
@@ -22,7 +23,7 @@ export const key = createAnnotation(KeyInput)
   .calculable(false)
 export const htmlAttributes = createAnnotation(AttributesInput)
   .setup({subsection: SubSection.Additional})
-export const style = createAnnotation(StyleEditor).setup({section: Section.Style})
+export const stylization = new StyleBuilder(StyleEditor).setup({section: Section.Style})
 export const validation = createAnnotation(ValidateEditor).setup({section: Section.Rules})
 
 //Primitives
@@ -54,7 +55,7 @@ export const node = createAnnotation<ReactNode>(ChildViewer).setup({type: 'Conta
 export const oneOf = createProperty(Picker).oneOf.bind(createProperty(Picker))
 
 //oneOfType([string, number, etc.]) - union - one of some types
-//arrayOf(string or etc) - array with some type
+//arrayOf(string or etc.) - array with some type
 
 /*
 Object with differently structure

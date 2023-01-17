@@ -62,7 +62,10 @@
     "indent": "Indent",
     "other": "Other",
     "cssStyles": "CSS styles",
-    "cssStyleBlock": "CSS style block"
+    "cssStyleBlock": "CSS style block",
+    "inlineStyles": "Inline styles",
+    "cssString": "String of CSS",
+    "cssObject": "Object of CSS"
   },
   "actions": {
     "arguments": "Arguments"

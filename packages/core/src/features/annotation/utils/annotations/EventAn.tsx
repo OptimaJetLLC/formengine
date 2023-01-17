@@ -1,5 +1,5 @@
 import {Annotation} from './Annotation'
 
 //Определение функции - экшена
-export class Event extends Annotation {
+export class EventAn extends Annotation {
 }

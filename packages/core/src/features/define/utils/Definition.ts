@@ -1,8 +1,9 @@
+import {CSSObject} from '@emotion/serialize/dist/declarations/types'
 import {forIn, startCase, transform} from 'lodash'
 import {ComponentType, ReactNode} from 'react'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {isFunction} from '../../../utils'
-import {htmlAttributes, key, string, style, validation} from '../../annotation'
+import {htmlAttributes, key, string, stylization, validation} from '../../annotation'
 import {Annotations} from '../../annotation/types'
 import {Annotation} from '../../annotation/utils/annotations/Annotation'
 import {defineAction} from '../../event/defineAction'
@@ -19,6 +20,7 @@ export class Definition<T extends object> {
     readonly view: ComponentType<T>,
     name?: string,
     readonly properties?: Annotations<T>,
+    readonly style?: Annotations<object>,
     readonly actionsInitializer?: ActionsInitializer,
     readonly hint?: string,
     readonly customPreview?: ReactNode,
@@ -39,7 +41,7 @@ export class Definition<T extends object> {
     return this
   }
 
-  static define<T extends object, U>(view: ComponentType<T>) {
+  static define<T extends object>(view: ComponentType<T>) {
     checkExistName()
     return new Definition<T>(view)
 
@@ -56,6 +58,8 @@ export class Definition<T extends object> {
 
   props = (properties: Annotations<T>) => this.#cloneWith({properties})
 
+  css = (style: Annotations<CSSObject>) => this.#cloneWith({style})
+
   actions = (fn: ActionsInitializer) => this.#cloneWith({actionsInitializer: fn})
 
   hinted = (hint: string) => this.#cloneWith({hint})
@@ -66,6 +70,7 @@ export class Definition<T extends object> {
     return new Model(
       this.view,
       initProperties(this.properties),
+      initStyle(this.style),
       this.#name,
       initActions(this.actionsInitializer?.(store.props, defineAction)),
       this.hint,
@@ -78,13 +83,22 @@ export class Definition<T extends object> {
       const properties: Annotation[] = [
         key.build('key'),
         htmlAttributes.build('htmlAttributes'),
-        style.build('style'),
         validation.build('validation'),
       ]
+
+      if (!('style' in annotations)) properties.push(stylization.build('stylization'))
 
       forIn(annotations, (value, key) => properties.push(value?.build(key) ?? string.build(key)))
 
       return properties
+    }
+
+    function initStyle(annotations?: Annotations<any>) {
+      const styles: Annotation[] = []
+      if (!annotations) return styles
+      forIn(annotations, (value, key) =>
+        styles.push(value?.setup({type: 'Style'}).build(key) ?? string.build(key)))
+      return styles
     }
 
     function initActions(actions?: Record<string, ActionEventHandler | ActionDefinition>): ActionDefinition[] | undefined {
@@ -109,6 +123,7 @@ export class Definition<T extends object> {
       opts.view || this.view,
       opts.name || this.#name,
       opts.properties || this.properties,
+      opts.style || this.style,
       opts.actionsInitializer || this.actionsInitializer,
       opts.hint || this.hint,
       opts.customPreview || this.customPreview,

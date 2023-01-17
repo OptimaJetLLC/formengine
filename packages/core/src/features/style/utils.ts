@@ -1,28 +1,6 @@
 import {isString, isUndefined} from 'lodash'
-import {OtherMeasure} from '../annotation/components/SizeInput'
-import {StandardStylesDefinitions} from './conts'
-import {Measured, StyleItem} from './types'
-
-export const styleToString = ({name, value}: StyleItem) =>
-  (name && value) ? `${name}:${value};` : ''
-
-export const transformStylesToCSS = (styles?: Record<string, string>) => {
-  if (!styles) return []
-  let CSSStyles: StyleItem[] = []
-  Object.entries(styles).forEach(([key, val]) => {
-    const definition = StandardStylesDefinitions[key]
-    if (!definition) return
-
-    const value = (typeof definition.measure === 'string')
-      ? `${val}${definition.measure}`
-      : definition.measure?.(val) ?? val
-    CSSStyles.push({
-      name: definition.cssName,
-      value
-    })
-  })
-  return CSSStyles
-}
+import {OtherUnit} from '../annotation/components/SizeInput'
+import {Measured} from './types'
 
 export function inPX(cssName: string) {
   return {cssName, measure: 'px'}
@@ -30,7 +8,7 @@ export function inPX(cssName: string) {
 
 export function size(cssName: string) {
   const measure = ({value, measure}: Measured) => {
-    return (!measure || measure !== OtherMeasure) ? `${value}${measure}` : value
+    return (!measure || measure !== OtherUnit) ? `${value}${measure}` : value
   }
   return {cssName, measure}
 }

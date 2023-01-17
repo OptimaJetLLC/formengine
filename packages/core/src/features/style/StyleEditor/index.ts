@@ -1,1 +1,1 @@
-export * from './StyleEditor'
+export {StyleEditor} from './StyleEditor'

@@ -13,7 +13,6 @@ import {rsErrorMessage} from './components/RsErrorMessage'
 import {rsGrid} from './components/RsGrid'
 import {rsGridLayout} from './components/RsGridLayout'
 import {rsGridView} from './components/RsGridView'
-import {rsTitle} from './components/RsHeader'
 import {rsImage} from './components/RsImage'
 import {rsInput} from './components/RsInput'
 import {rsLabel} from './components/RsLabel'
@@ -28,6 +27,7 @@ import {rsRichTextEditor} from './components/RsRichTextEditor'
 import {rsSearch} from './components/RsSearch'
 import {rsStaticContent} from './components/RsStaticContent'
 import {rsTextArea} from './components/RsTextArea'
+import {rsTitle} from './components/RsTitle'
 import {rsTreePicker} from './components/RsTreePicker'
 
 const components = [
@@ -45,7 +45,6 @@ const components = [
   rsGrid,
   rsGridLayout,
   rsGridView,
-  rsTitle,
   rsImage,
   rsInput,
   rsLabel,
@@ -65,6 +64,7 @@ const components = [
   rsSearch,
   rsStaticContent,
   rsTextArea,
+  rsTitle,
   rsTreePicker,
 ]
 

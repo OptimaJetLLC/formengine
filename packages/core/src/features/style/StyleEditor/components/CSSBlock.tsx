@@ -1,23 +1,32 @@
 import styled from '@emotion/styled'
 import autosize from 'autosize'
-import {useEffect, useRef, useState} from 'react'
+import {observer} from 'mobx-react'
+import {useEffect, useRef} from 'react'
+import {useTranslation} from 'react-i18next'
 import {Input} from 'rsuite'
-import {ComponentStore} from '../../../../stores/ComponentStore'
+import {useComponentData} from '../../../../utils/contexts/ComponenDataContext'
+import {StyleAnnotationProps} from '../StyleEditor'
 
-const CSSBlock = ({componentStore}: { componentStore: ComponentStore }) => {
-  //TODO mobx.createViewModel (непонятно как заставить работать с массивами) https://github.com/mobxjs/mobx-utils/issues/209
-  const [value, setValue] = useState(componentStore.style.cssBlock)
-  const onBlur = () => {
-    if (value) componentStore.style.cssBlock = value
-  }
+const CSSBlock = observer(({annotation}: StyleAnnotationProps) => {
+  const {componentStore} = useComponentData()
+  const {t} = useTranslation()
+
   const ref = useRef<Element | null>(null)
   useEffect(() => {
     if (ref.current) autosize(ref.current)
   }, [ref.current])
 
-  return <TextArea as={'textarea'} value={value} rows={3} ref={ref}
-                   onChange={(val: any) => setValue(val)} onBlur={onBlur}/>
-}
+  return (
+    <div>
+      <h6 style={{marginBottom: 5}}>{t('style.cssStyleBlock')}</h6>
+      <TextArea
+        as={'textarea'}
+        value={componentStore.styles!.cssString ?? annotation.default?.cssString ?? ''}
+        rows={3}
+        onChange={(value: string) => componentStore.styles!.cssString = value}/>
+    </div>
+  )
+})
 
 const TextArea = styled(Input)`
   //max-height: 300px;

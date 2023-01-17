@@ -11,7 +11,6 @@ const makeItems = (data: string[]) => data.map(title => ({title, href: title}))
 
 interface RsBreadcrumbProps extends BreadcrumbProps {
   items: RsBreadcrumbItemProps[]
-  justifyContent: string
   onItemClick: (item: RsBreadcrumbItemProps) => {}
 }
 
@@ -41,11 +40,13 @@ export const rsBreadcrumb = define(RsBreadcrumb)
     maxItems: number
       .withEditorProps({min: 0})
       .hinted('Set the maximum number of breadcrumbs to display'),
-    justifyContent: oneOf('left', 'center', 'right')
-      .default('left').radio().named('Alignment'),
     items: array
       .default(makeItems(['one', 'two', 'three']))
       .withEditorProps({columns}),
     onItemClick: event,
     onExpand: event
+  })
+  .css({
+    justifyContent: oneOf('left', 'center', 'right')
+      .default('left').radio().named('Alignment'),
   })

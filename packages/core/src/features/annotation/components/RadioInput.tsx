@@ -1,13 +1,14 @@
 import React from 'react'
 import {LabeledProperty} from '../../ui/Containers'
 import {RadioButtons} from '../../ui/RadioButtons'
-import {PropertyEditorProps} from '../types'
-import {makeAnnotationProps} from '../utils'
-import {Property} from '../utils/annotations/Property'
+import {PropertyAn} from '../utils/annotations/PropertyAn'
+import {useEditor} from '../utils/useEditor'
 
-export const RadioInput = ({componentStore, annotation}: PropertyEditorProps) => (
-  <LabeledProperty annotation={annotation}>
-    <RadioButtons items={(annotation as Property).data}
-                  {...makeAnnotationProps({componentStore, annotation})}/>
-  </LabeledProperty>
-)
+export const RadioInput = () => {
+  const {value, onChange, annotation} = useEditor()
+  return (
+    <LabeledProperty annotation={annotation}>
+      <RadioButtons items={(annotation as PropertyAn).data} onChange={onChange} value={value}/>
+    </LabeledProperty>
+  )
+}

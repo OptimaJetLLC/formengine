@@ -1,28 +1,24 @@
-import _ from 'lodash/fp'
-import {ComponentStore} from '../../../../stores/ComponentStore'
-import {CompactCell, LabelCell, Row} from './List'
+import {useTranslation} from 'react-i18next'
+import {StandardStylesGroup} from './StandardStylesGroup'
+import {IndentStyles, OtherStyles, SizeStyles} from '../../conts'
 
-export const StandardStyles = ({
-                                 componentStore,
-                                 stylesDefinition
-                               }: { componentStore: ComponentStore, stylesDefinition: any }) => {
-  //TODO mobx.createViewModel (непонятно как заставить работать с массивами) https://github.com/mobxjs/mobx-utils/issues/209
-  const styles = _.cloneDeep(componentStore.style.styles) || {}
+export const StandardStyles = () => {
+  const {t} = useTranslation()
 
-  return <>
-    {Object.entries(stylesDefinition).map(([name], index) => {
-      const cellProps = {
-        rowData: styles, rowIndex: index,
-        onBlur: () => {
-          componentStore.style.styles = styles
-        }
-      }
-      return (
-        <Row key={index}>
-          <LabelCell label={name}/>
-          <CompactCell dataKey={name} placeholder={'default'} {...cellProps} />
-        </Row>
-      )
-    })}
-  </>
+  return (
+    <>
+      <div>
+        <h6>{t('style.size')}</h6>
+        <StandardStylesGroup stylesDefinition={SizeStyles}/>
+      </div>
+      <div>
+        <h6>{t('style.indent')}</h6>
+        <StandardStylesGroup stylesDefinition={IndentStyles}/>
+      </div>
+      <div>
+        <h6>{t('style.other')}</h6>
+        <StandardStylesGroup stylesDefinition={OtherStyles}/>
+      </div>
+    </>
+  )
 }

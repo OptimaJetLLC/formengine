@@ -1,11 +1,10 @@
 import styled from '@emotion/styled'
 import {Checkbox} from 'rsuite'
 import {LabeledProperty} from '../../ui/Containers'
-import {PropertyEditorProps} from '../types'
-import {makeAnnotationProps} from '../utils'
+import {useEditor} from '../utils/useEditor'
 
-export const BooleanInput = ({componentStore, annotation}: PropertyEditorProps) => {
-  const {value, onChange} = makeAnnotationProps({componentStore, annotation})
+export const BooleanInput = () => {
+  const {value, onChange, annotation} = useEditor()
   return <LabeledProperty annotation={annotation}>
     <SCheckbox checked={!!value} onChange={(value, checked) => onChange(checked)}/>
   </LabeledProperty>

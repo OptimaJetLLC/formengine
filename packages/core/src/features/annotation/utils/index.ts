@@ -1,37 +1,33 @@
-import {FirstParameter, PropertyEditorProps} from '../types'
+import {FirstParameter} from '../types'
 import {Annotation} from './annotations/Annotation'
-import {Container} from './annotations/Container'
-import {Event} from './annotations/Event'
-import {Module} from './annotations/Module'
-import {Property} from './annotations/Property'
+import {ContainerAn} from './annotations/ContainerAn'
+import {EventAn} from './annotations/EventAn'
+import {ModuleAn} from './annotations/ModuleAn'
+import {PropertyAn} from './annotations/PropertyAn'
+import {StyleAn} from './annotations/StyleAn'
 import {AnnotationBuilder} from './builders/AnnotationBuilder'
 
-export const isContainer = (value: Annotation): value is Container => {
-  return value instanceof Container
+export const isContainer = (value: Annotation): value is ContainerAn => {
+  return value instanceof ContainerAn
 }
 
-export const isProperty = (value: Annotation): value is Property => {
-  return value instanceof Property
+export const isStyle = (value: Annotation): value is StyleAn => {
+  return value instanceof StyleAn
 }
 
-export const isFunc = (value: Annotation): value is Event => {
-  return value instanceof Event
+export const isProperty = (value: Annotation): value is PropertyAn => {
+  return value instanceof PropertyAn
 }
 
-export const isModule = (value: Annotation): value is Module => {
-  return value instanceof Module
+export const isFunc = (value: Annotation): value is EventAn => {
+  return value instanceof EventAn
+}
+
+export const isModule = (value: Annotation): value is ModuleAn => {
+  return value instanceof ModuleAn
 }
 
 export const createAnnotation = AnnotationBuilder.create
-
-export const makeAnnotationProps = ({componentStore, annotation}: PropertyEditorProps) => {
-  const value = componentStore.props[annotation.key]?.value ?? annotation.schema?.getDefault()
-  const onChange = (value: any) => {
-    componentStore.props[annotation.key] ??= {}
-    componentStore.props[annotation.key].value = value
-  }
-  return {value, onChange}
-}
 
 export function createProperty(editors: FirstParameter<typeof createAnnotation>) {
   return createAnnotation(editors).setup({type: 'Property'})

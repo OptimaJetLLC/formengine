@@ -1,13 +1,7 @@
-import {define, node, string} from 'fb-core'
-import {ReactNode} from 'react'
+import {define, ErrorMessageProps, node, string} from 'fb-core'
 import {Form} from 'rsuite'
 
-interface RsErrorMessageProps {
-  error?: string
-  children?: ReactNode
-}
-
-const RsErrorMessage = ({error, children}: RsErrorMessageProps) => {
+const RsErrorMessage = ({error, children}: ErrorMessageProps) => {
   const className = error ? 'rs-form-control-wrapper' : undefined
 
   return <div className={className}>

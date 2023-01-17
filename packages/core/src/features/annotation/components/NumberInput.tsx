@@ -1,10 +1,9 @@
 import {InputNumber} from 'rsuite'
 import {LabeledProperty} from '../../ui/Containers'
-import {PropertyEditorProps} from '../types'
-import {makeAnnotationProps} from '../utils'
+import {useEditor} from '../utils/useEditor'
 
-const NumberInput = (props: PropertyEditorProps) => {
-  const {onChange, ...inputProps} = {...makeAnnotationProps(props)}
+const NumberInput = () => {
+  const {onChange, value, annotation} = useEditor()
   const handleChange = (value: any) => {
     if (typeof value === 'string') {
       onChange(Number(value))
@@ -12,9 +11,9 @@ const NumberInput = (props: PropertyEditorProps) => {
     }
     onChange(value)
   }
-  const inputNumberProps = {...props.annotation.editorProps, ...inputProps}
+  const inputNumberProps = {...annotation.editorProps, value}
 
-  return <LabeledProperty annotation={props.annotation}>
+  return <LabeledProperty annotation={annotation}>
     <InputNumber {...inputNumberProps} onChange={handleChange} size={'xs'}/>
   </LabeledProperty>
 }
