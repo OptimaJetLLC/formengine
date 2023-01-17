@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {isUndefined} from 'lodash'
 import {observer} from 'mobx-react'
-import React, {createElement} from 'react'
+import React, {createElement, useEffect} from 'react'
 import {Panel} from 'rsuite'
 import {ComponentStore} from '../../../../../../stores/ComponentStore'
 import {useBuilderStore} from '../../../../../../utils/contexts/BuilderStoreContext'
@@ -19,6 +19,13 @@ interface PropertiesProps {
 const Properties = observer(({activeTab}: PropertiesProps) => {
   const {selected} = useBuilderStore()
   const getLabel = useTranslationPart('propertiesEditor')
+
+  useEffect(() => {
+    if (selected) {
+      selected.data.styles ??= {}
+      selected.data.styles.cssObject ??= {}
+    }
+  }, [selected])
 
   if (!selected) {
     return (
@@ -61,13 +68,12 @@ const renderProperties = (properties: Annotation[], cs: ComponentStore) => {
 }
 
 const renderStyleProperties = (properties: Annotation[], cs: ComponentStore) => {
+  const cssObject = cs.styles?.cssObject
+  if (!cssObject) return null
+
   return properties.map(annotation =>
     <AnnotationProvider key={annotation.key} value={{
-      annotation, getContext: () => {
-        cs.styles ??= {}
-        cs.styles.cssObject ??= {}
-        return cs.styles.cssObject
-      }
+      annotation, getContext: () => cssObject
     }}>
       {createElement(observer(annotation.editor))}
     </AnnotationProvider>)

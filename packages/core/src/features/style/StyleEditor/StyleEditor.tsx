@@ -1,3 +1,4 @@
+import {useEffect} from 'react'
 import {useComponentData} from '../../../utils/contexts/ComponenDataContext'
 import {StyleAn} from '../../annotation/utils/annotations/StyleAn'
 import {useEditor} from '../../annotation/utils/useEditor'
@@ -14,7 +15,11 @@ export interface StyleAnnotationProps {
 export const StyleEditor = () => {
   const {componentStore} = useComponentData()
   const {annotation}: { annotation: StyleAn } = useEditor()
-  componentStore.styles ??= {}
+  useEffect(() => {
+    componentStore.styles ??= {}
+  }, [componentStore.styles])
+
+  if (!componentStore.styles) return null
 
   return (
     <Rows ml={'5px'} my={0}>

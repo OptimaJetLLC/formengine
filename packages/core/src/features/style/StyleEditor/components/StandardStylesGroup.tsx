@@ -22,7 +22,6 @@ export const StandardStylesGroup = observer(({stylesDefinition}: StandardStylesG
               dataKey={name}
               placeholder={'default'}
               rowIndex={index}
-              editable
               value={componentStore.styles!.cssObject?.[name] ?? annotation.default?.cssObject?.[name] ?? ''}
               onChange={(value: string) => {
                 componentStore.styles!.cssObject ??= {}
