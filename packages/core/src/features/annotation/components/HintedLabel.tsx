@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
-import React, {DetailedHTMLProps, LabelHTMLAttributes} from 'react'
+import React, {DetailedHTMLProps, LabelHTMLAttributes, ReactNode} from 'react'
 import {Tooltip, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../utils/contexts/BuilderStoreContext'
 import {BiDi} from '../../localization/consts'
 
 export interface HintedLabelProps extends DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement> {
-  hint?: string
+  hint?: ReactNode
 }
 
 export const HintedLabel = (props: HintedLabelProps) => {

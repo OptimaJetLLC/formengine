@@ -1,4 +1,5 @@
 import _, {assign} from 'lodash'
+import {ReactNode} from 'react'
 import {AnnotationMap} from '../../consts'
 import {PreAnnotation} from '../../types'
 import {Annotation} from '../annotations/Annotation'
@@ -19,7 +20,7 @@ export class BaseBuilder<T> {
     return this.setup({name})
   }
 
-  hinted(hint: string) {
+  hinted(hint: ReactNode) {
     return this.setup({hint})
   }
 

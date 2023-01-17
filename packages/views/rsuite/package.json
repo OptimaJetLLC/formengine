@@ -1,7 +1,7 @@
 {
     "name": "fb-rsuite",
     "version": "1.0.0",
-    "description": "Form Builder View - Rsuite",
+    "description": "Form Builder Components - RSuite",
     "main": "src/index.ts",
     "type": "module",
     "scripts": {

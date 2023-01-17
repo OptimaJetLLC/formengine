@@ -5,6 +5,12 @@
   "style": {},
   "children": [
     {
+      "key": "AntButton 1",
+      "type": "AntButton",
+      "props": {},
+      "style": {}
+    },
+    {
       "key": "RsStaticContent 1",
       "type": "RsStaticContent",
       "props": {

@@ -1,4 +1,4 @@
-import {createView} from 'fb-core'
+import {createView, Definition} from 'fb-core/src/features/define'
 import {rsBreadcrumb} from './components/RsBreadcrumb'
 import {rsButton} from './components/RsButton'
 import {rsCard} from './components/RsCard'
@@ -75,4 +75,8 @@ components.forEach(c => {
   }
 })
 
+export const rSuiteComponents: Definition<any>[] = components
+
 export const rSuite = createView(...components).withError(rsErrorMessage)
+
+export {rsErrorMessage}
