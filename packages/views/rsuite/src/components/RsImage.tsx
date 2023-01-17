@@ -21,3 +21,4 @@ export const rsImage = define(RsImage)
     height: size.hinted('Image height'),
     width: size.default('30%').hinted('Image width'),
   })
+  .preview(<img src={logo} width="200px" height="auto" alt="Image"/>)
