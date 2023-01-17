@@ -22,7 +22,8 @@
     "desktop": "Desktop",
     "mobile": "Mobile",
     "previewMode": "Preview",
-    "editMode": "Edit"
+    "editMode": "Edit",
+    "jsonMode": "JSON"
   },
   "propertiesEditor": {
     "selectElementForEdit": "Select element on form for edit properties",

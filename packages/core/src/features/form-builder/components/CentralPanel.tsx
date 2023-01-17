@@ -3,14 +3,16 @@ import {observer} from 'mobx-react'
 import React from 'react'
 import {useStore} from '../../../utils/contexts/StoreContext'
 import {FormViewer} from '../../form-viewer/FormViewer'
+import {JsonView} from './JsonView'
 import {PanelContainer} from './Panel'
 
 const _CentralPanel = () => {
   const store = useStore()
+  const view = store.builderMode === 'json' ? <JsonView/> : <FormViewer {...store.props}/>
 
   return (
     <FormContainer>
-      <FormViewer {...store.props}/>
+      {view}
     </FormContainer>
   )
 }

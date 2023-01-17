@@ -18,7 +18,7 @@ interface BuilderProvidersProps {
 export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {
   const store = useMemo(() => new Store(props), [])
   const buildStore = useMemo(() => {
-    store.isBuilderMode = true
+    store.builderMode = 'builder'
     return new BuilderStore(store)
   }, [])
   useEffect(() => () => buildStore.destroy(), [])

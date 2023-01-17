@@ -1,9 +1,9 @@
-import {ComponentStore} from '../stores/ComponentStore'
-import {Store} from '../stores/Store'
-import {ComponentData} from './contexts/ComponenDataContext'
 import {isContainer} from '../features/annotation'
 import {DropZone} from '../features/dnd'
 import {ComponentTree} from '../features/ui/ComponentTree'
+import {ComponentStore} from '../stores/ComponentStore'
+import {Store} from '../stores/Store'
+import {ComponentData} from './contexts/ComponenDataContext'
 
 export function getChildren(data: ComponentData, store: Store) {
   const containers = data.model.properties.filter(isContainer)
@@ -21,7 +21,7 @@ export function getChildren(data: ComponentData, store: Store) {
     currentProps[container.key] =
       components?.length
         ? <ComponentTree parentStore={data.componentStore} data={components}/>
-        : store.isBuilderMode ? <DropZone isInner={true}/> : null
+        : store.builderMode === 'builder' ? <DropZone isInner={true}/> : null
   }
   return currentProps
 }

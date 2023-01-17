@@ -14,7 +14,7 @@ interface ComponentNodeProps {
   componentStore: ComponentStore
 }
 
-const _ComponentNode = ({componentStore, parentStore}: ComponentNodeProps) =>{
+const _ComponentNode = ({componentStore, parentStore}: ComponentNodeProps) => {
   const store = useStore()
   const data = useLocalObservable(() => ({
     componentStore,
@@ -33,7 +33,7 @@ const _ComponentNode = ({componentStore, parentStore}: ComponentNodeProps) =>{
   useListener(componentStore.key, 'onBlur',
     _ => data.field?.setTouched(), [])
 
-  const Wrapper = store.isBuilderMode ? Editable : Fragment
+  const Wrapper = store.builderMode === 'builder' ? Editable : Fragment
 
   return (
     <ComponentDataProvider value={data}>
