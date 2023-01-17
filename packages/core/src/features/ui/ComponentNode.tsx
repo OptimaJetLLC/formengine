@@ -1,3 +1,4 @@
+import {runInAction} from 'mobx'
 import {observer, useLocalObservable} from 'mobx-react'
 import {Fragment} from 'react'
 import {ComponentStore} from '../../stores/ComponentStore'
@@ -20,7 +21,7 @@ const _ComponentNode = ({componentStore, parentStore}: ComponentNodeProps) =>{
     parentStore,
     model: store.props.view.initModel(componentStore),
     get field() {
-      return store.form.set(componentStore, this.model)
+      return runInAction(() => store.form.set(componentStore, this.model))
     },
 
   }), {
