@@ -35,5 +35,5 @@ const getDefaultCssObject = (data: ComponentData) => {
 }
 
 const styleItemToString = (sum: string, {name, value}: StyleItem) => {
-  return sum + (name && value) ? `${name}:${value};` : ''
+  return sum + (name && value ? `${name}:${value};` : '')
 }
