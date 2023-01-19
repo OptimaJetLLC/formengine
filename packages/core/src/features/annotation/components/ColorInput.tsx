@@ -1,13 +1,18 @@
 import styled from '@emotion/styled'
 import ColorPicker from 'rsuite-color-picker'
 import 'rsuite-color-picker/lib/styles.css'
+import {rgbFromString, rgbToString} from '../../style/utils'
 import {LabeledProperty} from '../../ui/Containers'
 import {useEditor} from '../utils/useEditor'
+
+const PLACEHOLDER_COLOR = {r: 255, g: 255, b: 255, a: 0}
 
 export const ColorInput = () => {
   const {value, onChange, annotation} = useEditor()
   return <LabeledProperty annotation={annotation}>
-    <SColorPicker><ColorPicker value={value} onChange={({hex}) => onChange(hex)}/></SColorPicker>
+    <SColorPicker>
+      <ColorPicker value={rgbFromString(value) ?? PLACEHOLDER_COLOR} onChange={({rgb}) => onChange(rgbToString(rgb))}/>
+    </SColorPicker>
   </LabeledProperty>
 }
 

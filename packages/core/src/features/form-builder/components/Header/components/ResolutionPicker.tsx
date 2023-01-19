@@ -16,7 +16,7 @@ const resolutions = [
   {name: 'tablet', icon: faTablet}
 ]
 
-const _ChangeResolution = () => {
+const _ResolutionPicker = () => {
   const store = useStore()
   const {t} = useTranslation()
 
@@ -31,7 +31,7 @@ const _ChangeResolution = () => {
   </RadioGroup>
 }
 
-export const ChangeResolution = observer(_ChangeResolution)
+export const ResolutionPicker = observer(_ResolutionPicker)
 
 const SFaIcon = styled(FaIcon)`
   margin-right: 6px;

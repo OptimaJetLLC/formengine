@@ -6,6 +6,18 @@
     "htmlAttributes": {
       "name": "HTML attributes",
       "hint": "HTML attributes in React (camelCase) format"
+    },
+    "objectPosition": {
+      "name": "Position"
+    },
+    "justifyContent": {
+      "name": "Alignment"
+    },
+    "objectFit": {
+      "name": "Fit"
+    },
+    "textAlign": {
+      "name": "Alignment"
     }
   },
   "leftMenu": {
@@ -40,6 +52,10 @@
     },
     "subSection": {
       "additionalProperties": "Additional properties"
+    },
+    "calculable": {
+      "hint": "Make this property calculable",
+      "edit": "Edit calculable"
     }
   },
   "toolbar": {

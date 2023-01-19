@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode'
+import {observer} from 'mobx-react'
 import React, {cloneElement, ComponentProps} from 'react'
 import {IconButton} from 'rsuite'
 import useUniqueId from 'rsuite/cjs/utils/useUniqueId'
@@ -10,7 +11,7 @@ import useUniqueId from 'rsuite/cjs/utils/useUniqueId'
 import {color, layout, space} from 'styled-system'
 import {useBuilderStore} from '../../utils/contexts/BuilderStoreContext'
 import {useComponentData} from '../../utils/contexts/ComponenDataContext'
-import {HintedLabel} from '../annotation/components/HintedLabel'
+import {Hinted, HintedLabel} from '../annotation/components/Hinted'
 import {Annotation} from '../annotation/utils/annotations/Annotation'
 import {useTranslationPart} from '../localization/hooks'
 import {FaIcon} from './Icons'
@@ -77,21 +78,23 @@ export interface LabeledPropertyProps extends ComponentProps<any> {
   annotation: Annotation
 }
 
-export const CodeButton = ({annotation}: { annotation: Annotation }) => {
+const _CodeButton = ({annotation}: { annotation: Annotation }) => {
   const {componentStore} = useComponentData()
   const store = useBuilderStore()
-
-  if (!annotation.calculable) {
-    // placeholder
-    return <div style={{marginLeft: 27}}></div>
-  }
+  const hasCode = componentStore.props[annotation.key]?.fnSource
+  const getLabel = useTranslationPart('propertiesEditor.calculable')
+  const hint = hasCode ? getLabel('edit') : getLabel('hint')
+  const color = hasCode ? 'var(--rs-btn-primary-bg)' : undefined
 
   const setCurrentCalculatedProperty = () => store.calculatedProperty = {componentStore, annotation}
-
-  const iconColor = componentStore.props[annotation.key]?.useFn ? 'var(--rs-btn-primary-bg)' : undefined
-  return <IconButton onClick={setCurrentCalculatedProperty}
-                     icon={<FaIcon icon={faCode as unknown as IconDefinition} color={iconColor}/>}/>
+  return <Hinted hint={hint}>
+    <SIconButton onClick={setCurrentCalculatedProperty} disabled={!annotation.calculable}
+                 icon={<FaIcon icon={faCode as unknown as IconDefinition} color={color}/>}
+                 size={'xs'} appearance={'subtle'}/>
+  </Hinted>
 }
+
+export const CodeButton = observer(_CodeButton)
 
 export const LabeledProperty = ({idPrefix, annotation, children}: LabeledPropertyProps) => {
   const id = useUniqueId(idPrefix || 'id-')
@@ -99,17 +102,17 @@ export const LabeledProperty = ({idPrefix, annotation, children}: LabeledPropert
 
   return <LabeledInput>
     <CodeButton annotation={annotation}/>
-    <HintedLabel htmlFor={id} hint={getLabel('hint') || annotation.hint}>{getLabel('name') || annotation.name}</HintedLabel>
+    <HintedLabel htmlFor={id} hint={getLabel('hint') || annotation.hint}>
+      <>{getLabel('name') || annotation.name}</>
+    </HintedLabel>
     {children ? cloneElement(children, {id}) : undefined}
   </LabeledInput>
 }
 
-const Centered = styled(Box)`
-  display: flex;
-  flex: 1;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+const SIconButton = styled(IconButton)`
+  min-width: 24px;
+  margin-inline-end: -6px;
+  margin-bottom: -2px !important;
 `
 
-export {Box, Rows, Columns, LabeledInput, Centered}
+export {Box, Rows, Columns, LabeledInput}

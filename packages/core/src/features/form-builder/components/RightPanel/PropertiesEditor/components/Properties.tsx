@@ -45,10 +45,10 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
   return (
     <ComponentDataProvider value={{componentStore: data, model, parentStore: parent?.data}}>
       <Container>
-        <div>
+        <PropertiesList>
           {renderProperties(properties, data)}
           {renderStyleProperties(style, data)}
-        </div>
+        </PropertiesList>
         {!!additionalProperties?.length &&
           <SPanel header={getLabel('subSection.additionalProperties')}
                   collapsible bodyFill>
@@ -79,11 +79,19 @@ const renderStyleProperties = (properties: Annotation[], cs: ComponentStore) => 
     </AnnotationProvider>)
 }
 
+const PropertiesList = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+`
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
   overflow-y: auto;
+  max-width: 256px;
   margin-right: 10px;
   justify-content: space-between;
 

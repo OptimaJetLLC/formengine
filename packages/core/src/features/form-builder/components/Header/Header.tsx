@@ -6,8 +6,8 @@ import {observer} from 'mobx-react'
 import {ButtonToolbar, IconButton} from 'rsuite'
 import {FaIcon} from '../../../ui/Icons'
 import {AddButton} from './components/AddButton'
-import {ChangeResolution} from './components/ChangeResolution'
 import {Menu} from './components/Menu'
+import {ResolutionPicker} from './components/ResolutionPicker'
 import {ToggleModeButton} from './components/ToggleModeButton'
 import {ToggleTheme} from './components/ToggleTheme'
 
@@ -28,7 +28,7 @@ const Header = observer(() => {
       </LeftPart>
 
       <CenterPart>
-        <ChangeResolution/>
+        <ResolutionPicker/>
         <ToggleModeButton/>
       </CenterPart>
 

@@ -13,16 +13,18 @@ export function size(cssName: string) {
   return {cssName, measure}
 }
 
-type CssColor = { r: number; g: number; b: number; a: number } | string | undefined
+type RgbColor = { r: number; g: number; b: number; a: number } | undefined
 
-export function rgb(cssName: string) {
-  return {
-    cssName,
-    measure: (rgb: CssColor) => {
-      if (isUndefined(rgb) || isString(rgb)) return rgb
-      return rgb && `rgb(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a})`
-    }
-  }
+export const rgbToString = (value?: RgbColor | string) => {
+  if (isUndefined(value) || isString(value)) return value
+  const {r, g, b, a} = value
+  return `rgb(${r}, ${g}, ${b}, ${a})`
+}
+
+export const rgbFromString = (value: string) => {
+  const matchColors = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
+  const [, r, g, b, a] = matchColors.exec(value) || []
+  return [r, g, b].some(isUndefined) ? undefined : {r, g, b, a}
 }
 
 export const pick = (object: any, keys: string[]) => {
