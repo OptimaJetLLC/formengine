@@ -6,18 +6,29 @@ import {FormViewer} from '../../form-viewer/FormViewer'
 import {JsonView} from './JsonView'
 import {PanelContainer} from './Panel'
 
+const resolutions = {
+  'desktop': {},
+  'mobile': {maxWidth: 400},
+  'tablet': {maxWidth: 800},
+}
+
 const _CentralPanel = () => {
   const store = useStore()
   const view = store.builderMode === 'json' ? <JsonView/> : <FormViewer {...store.props}/>
 
   return (
     <FormContainer>
-      {view}
+      <Viewport style={resolutions[store.viewMode]}>
+        {view}
+      </Viewport>
     </FormContainer>
   )
 }
 
 export const CentralPanel = observer(_CentralPanel)
+
+const Viewport = styled.div`
+`
 
 const FormContainer = styled(PanelContainer)`
   flex: 1;

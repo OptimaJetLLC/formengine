@@ -21,6 +21,7 @@
   "rightMenu": {
     "desktop": "Desktop",
     "mobile": "Mobile",
+    "tablet": "Tablet",
     "previewMode": "Preview",
     "editMode": "Edit",
     "jsonMode": "JSON"

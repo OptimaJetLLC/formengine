@@ -10,10 +10,13 @@ import {ComponentStore} from './ComponentStore'
 
 export type BuilderMode = 'builder' | 'viewer' | 'json'
 
+export type BuilderViewMode = 'desktop' | 'mobile' | 'tablet'
+
 export class Store {
   readonly eventBus = new EventBus()
   readonly form = new Form(this)
   builderMode: BuilderMode = 'viewer'
+  viewMode: BuilderViewMode = 'desktop'
 
   actions: ActionDefinition[] = [setProperty, log, validate, reset, clear]
   screen = new ComponentStore(fbScreen.name, fbScreen.type)
@@ -22,7 +25,8 @@ export class Store {
     makeObservable(this, {
       props: observable,
       screen: observable,
-      builderMode: true
+      builderMode: true,
+      viewMode: true
     })
   }
 

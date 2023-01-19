@@ -4,24 +4,15 @@ import * as faRedo from '@fortawesome/free-solid-svg-icons/faRedo'
 import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo'
 import {observer} from 'mobx-react'
 import React from 'react'
-import {useTranslation} from 'react-i18next'
-import {ButtonToolbar, IconButton, SelectPicker} from 'rsuite'
-import useLocalStorageState from 'use-local-storage-state'
+import {ButtonToolbar, IconButton} from 'rsuite'
 import {FaIcon} from '../../../ui/Icons'
 import {AddButton} from './components/AddButton'
+import {ChangeResolution} from './components/ChangeResolution'
 import {Menu} from './components/Menu'
 import {ToggleModeButton} from './components/ToggleModeButton'
 import {ToggleTheme} from './components/ToggleTheme'
 
-const resolutions = ['desktop', 'mobile']
-
 const Header = observer(() => {
-  const {t} = useTranslation()
-  const resolutionsItems = resolutions.map(value => ({value, label: t('rightMenu.' + value)}))
-  const [resolution, setResolution] = useLocalStorageState('resolution', {
-    defaultValue: 'desktop'
-  })
-
   return (
     <Container>
       <LeftPart>
@@ -38,8 +29,7 @@ const Header = observer(() => {
       </LeftPart>
 
       <CenterPart>
-        <SelectPicker value={resolution} data={resolutionsItems} onSelect={setResolution}
-                      searchable={false} cleanable={false} appearance="subtle" size={'sm'}/>
+        <ChangeResolution/>
         <ToggleModeButton/>
       </CenterPart>
 
