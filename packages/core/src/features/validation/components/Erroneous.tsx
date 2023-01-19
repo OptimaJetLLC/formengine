@@ -7,7 +7,7 @@ export interface ErroneousProps {
   children: ReactNode
 }
 
-export const Erroneous = observer(({children}: ErroneousProps) => {
+const _Erroneous = ({children}: ErroneousProps) => {
   const store = useStore()
   const {field} = useComponentData()
   const Error = store.props.view.error.view
@@ -23,4 +23,6 @@ export const Erroneous = observer(({children}: ErroneousProps) => {
       {children}
     </Error>
   )
-})
+}
+
+export const Erroneous = observer(_Erroneous)

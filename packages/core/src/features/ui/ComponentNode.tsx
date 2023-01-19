@@ -1,6 +1,5 @@
-import {runInAction} from 'mobx'
 import {observer, useLocalObservable} from 'mobx-react'
-import {Fragment} from 'react'
+import {Fragment, useEffect} from 'react'
 import {ComponentStore} from '../../stores/ComponentStore'
 import {ComponentDataProvider} from '../../utils/contexts/ComponenDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
@@ -21,12 +20,16 @@ const _ComponentNode = ({componentStore, parentStore}: ComponentNodeProps) => {
     parentStore,
     model: store.props.view.initModel(componentStore),
     get field() {
-      return runInAction(() => store.form.set(componentStore, this.model))
+      return store.form.get(componentStore.key)
     },
 
   }), {
     model: false
   })
+
+  useEffect(() => {
+    store.form.set(componentStore, data.model)
+  }, [])
 
   useListener(componentStore.key, 'onChange',
     e => data.field?.setValue(e.value), [])
