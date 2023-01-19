@@ -1,5 +1,4 @@
 import {array, boolean, define, event, LabeledValue, oneOf, string, toLabeledValues} from 'fb-core'
-import React from 'react'
 import {Radio, RadioGroup, RadioGroupProps} from 'rsuite'
 
 interface RsRadioGroupProps extends RadioGroupProps<string> {

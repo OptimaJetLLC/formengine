@@ -1,9 +1,7 @@
 import {observer} from 'mobx-react'
-import React from 'react'
 import {useTranslation} from 'react-i18next'
 import {useStore} from '../../../../../utils/contexts/StoreContext'
 import {Rows} from '../../../../ui/Containers'
-
 
 const Errors = observer((props: any) => {
   const store = useStore()

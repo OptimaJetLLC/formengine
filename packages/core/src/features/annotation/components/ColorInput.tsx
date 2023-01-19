@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import React from 'react'
 import ColorPicker from 'rsuite-color-picker'
 import 'rsuite-color-picker/lib/styles.css'
 import {LabeledProperty} from '../../ui/Containers'

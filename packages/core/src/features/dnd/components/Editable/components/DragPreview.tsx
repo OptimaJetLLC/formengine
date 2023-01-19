@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import React from 'react'
 import {createPortal} from 'react-dom'
 
 const getDragPreview = () => document.getElementById('fb-drag-preview') || document.body

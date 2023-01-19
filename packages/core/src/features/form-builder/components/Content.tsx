@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import {observer} from 'mobx-react'
-import React from 'react'
 import {CodeEditorPanel} from '../../calculation/components/CodeEditorPanel'
 import {CentralPanel} from './CentralPanel'
 import {LeftPanel} from './LeftPanel'

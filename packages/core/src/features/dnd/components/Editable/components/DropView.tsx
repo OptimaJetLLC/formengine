@@ -1,9 +1,9 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import React from 'react'
+import {ComponentProps} from 'react'
 import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
 
-interface DropViewProps extends React.ComponentProps<any> {
+interface DropViewProps extends ComponentProps<any> {
   isAfter?: boolean
   isActive?: boolean
   isOver?: boolean

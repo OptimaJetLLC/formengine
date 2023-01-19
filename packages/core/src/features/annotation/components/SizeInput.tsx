@@ -1,6 +1,5 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import React from 'react'
 import {Input, InputNumber, InputPicker} from 'rsuite'
 import {LabeledProperty} from '../../ui/Containers'
 import {toLabeledValues} from '../utils/LabeledValue'

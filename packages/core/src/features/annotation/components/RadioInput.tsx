@@ -1,4 +1,3 @@
-import React from 'react'
 import {LabeledProperty} from '../../ui/Containers'
 import {RadioButtons} from '../../ui/RadioButtons'
 import {PropertyAn} from '../utils/annotations/PropertyAn'

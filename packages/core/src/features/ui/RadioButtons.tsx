@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import React from 'react'
 import {Radio, RadioGroup as RRadioGroup} from 'rsuite'
 import {LabeledValue} from '../annotation/utils/LabeledValue'
 

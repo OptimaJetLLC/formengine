@@ -1,12 +1,12 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {observer} from 'mobx-react'
-import React from 'react'
+import {ComponentProps} from 'react'
 import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
 import {useDropZone} from '../hooks/useDropZone'
 import {DropView} from './DropView'
 
-interface DropZoneProps extends React.ComponentProps<any> {
+interface DropZoneProps extends ComponentProps<any> {
   isAfter?: boolean
   isInner?: boolean
   className?: any

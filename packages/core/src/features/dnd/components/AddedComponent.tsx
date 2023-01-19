@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import {observer} from 'mobx-react'
-import React from 'react'
 import {useComponentData} from '../../../utils/contexts/ComponenDataContext'
 import {getDefaultProps} from '../../../utils/getDefaultProps'
 import {ItemType} from '../consts'

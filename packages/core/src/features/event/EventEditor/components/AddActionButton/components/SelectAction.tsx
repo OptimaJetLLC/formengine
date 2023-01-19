@@ -1,5 +1,4 @@
 import _ from 'lodash'
-import React from 'react'
 import {Dropdown} from 'rsuite'
 import {useStore} from '../../../../../../utils/contexts/StoreContext'
 import {NewActionData} from '../../../../types'

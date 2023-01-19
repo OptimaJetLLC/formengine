@@ -1,8 +1,8 @@
 import _ from 'lodash'
 import {observe} from 'mobx'
-import {useLocalObservable} from 'mobx-react'
 import {useEffect} from 'react'
 import {useStore} from '../../../../utils/contexts/StoreContext'
+import {useMemoizedLocalObserver} from '../../../../utils/useMemoizedLocalObserver'
 import {WeakActionData} from '../../types'
 import {toActionData} from '../../utils/toActionData'
 import {toWeakActionData} from '../../utils/toWeakActionData'
@@ -12,7 +12,10 @@ import {toWeakActionData} from '../../utils/toWeakActionData'
  */
 export const useSyncActionData = (weakData: WeakActionData) => {
   const store = useStore()
-  const data = useLocalObservable(() => toActionData(weakData, store))
+  const data = useMemoizedLocalObserver(
+    () => toActionData(weakData, store),
+    undefined,
+    [weakData, store])
 
   useEffect(() => {
     const disposer = observe(data, () => {

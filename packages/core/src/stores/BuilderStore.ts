@@ -1,4 +1,4 @@
-import _, {assign} from 'lodash'
+import {assign, cloneDeep} from 'lodash'
 import {IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
 import {Annotation} from '../features/annotation/utils/annotations/Annotation'
 import {defaultLanguage} from '../features/localization/consts'
@@ -79,7 +79,7 @@ export class BuilderStore {
 
   //TODO post processing
   parseForm(text: string) {
-    this.viewer.screen = JSON.parse(text)
+    this.viewer.screen = assign(new ComponentStore('', ''), JSON.parse(text))
   }
 
   //TODO clone for inner components without removing
@@ -109,7 +109,7 @@ export class BuilderStore {
   }
 
   add(source: ComponentMove, target: ComponentMove, isAfter: boolean = false, inner: boolean = false) {
-    const clone = assign(new ComponentStore('', ''), _.cloneDeep(source.componentStore))
+    const clone = assign(new ComponentStore('', ''), cloneDeep(source.componentStore))
     this.unifyComponentKeys(clone)
     this.move({componentStore: clone}, target, isAfter, inner)
     this.selected = this.findNode(clone.key)

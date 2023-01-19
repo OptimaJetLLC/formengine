@@ -1,6 +1,5 @@
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import {Icon} from '@rsuite/icons'
-import React from 'react'
 
 const FaSvgIcon = ({faIcon, size, ...rest}: { faIcon: any, size?: number }) => {
   const {width, height, svgPathData} = faIcon

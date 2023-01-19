@@ -1,9 +1,10 @@
-import {observer, useLocalObservable} from 'mobx-react'
+import {observer} from 'mobx-react'
 import {Fragment, useEffect} from 'react'
 import {ComponentStore} from '../../stores/ComponentStore'
 import {ComponentDataProvider} from '../../utils/contexts/ComponenDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {useListener} from '../../utils/useListener'
+import {useMemoizedLocalObserver} from '../../utils/useMemoizedLocalObserver'
 import {Editable} from '../dnd'
 import {Erroneous} from '../validation'
 import {ComponentViewer} from './ComponentViewer'
@@ -15,17 +16,16 @@ interface ComponentNodeProps {
 
 const _ComponentNode = ({componentStore, parentStore}: ComponentNodeProps) => {
   const store = useStore()
-  const data = useLocalObservable(() => ({
+  const data = useMemoizedLocalObserver(() => ({
     componentStore,
     parentStore,
     model: store.props.view.initModel(componentStore),
     get field() {
       return store.form.get(componentStore.key)
     },
-
   }), {
     model: false
-  })
+  }, [componentStore, parentStore, store])
 
   useEffect(() => {
     store.form.set(componentStore, data.model)

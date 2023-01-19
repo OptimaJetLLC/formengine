@@ -1,5 +1,4 @@
 import {define, string} from 'fb-core'
-import React from 'react'
 import {textStyles} from '../commonProperties'
 import {TextProps} from '../commonTypes'
 

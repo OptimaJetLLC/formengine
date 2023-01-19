@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import {observer} from 'mobx-react'
-import React from 'react'
 import {useStore} from '../../../utils/contexts/StoreContext'
 import {FormViewer} from '../../form-viewer/FormViewer'
 import {JsonView} from './JsonView'

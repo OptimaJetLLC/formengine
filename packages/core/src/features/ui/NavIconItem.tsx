@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import React from 'react'
 import {Nav} from 'rsuite'
 import {FaIcon} from './Icons'
 import {LabeledIcon} from './Labels'

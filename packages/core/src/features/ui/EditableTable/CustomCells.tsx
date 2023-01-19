@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import {IconProps} from '@rsuite/icons/lib/Icon'
-import React from 'react'
 import {Checkbox, IconButton, Input, InputPicker, Table} from 'rsuite'
 import {InnerCellProps} from 'rsuite-table/lib/Cell'
 import {LabeledValue} from '../../annotation/utils/LabeledValue'
