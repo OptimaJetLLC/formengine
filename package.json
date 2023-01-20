@@ -6,7 +6,7 @@
         "graph": "npx nx graph",
         "bootstrap": "npx lerna bootstrap",
         "build": "npx lerna run build",
-        "start": "npx lerna run start --scope=app",
+        "start": "npx lerna run start --scope=form-builder-app",
         "test": "vitest run",
         "test:watch": "vitest",
         "test:related": "vitest related",

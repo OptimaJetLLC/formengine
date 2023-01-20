@@ -1,6 +1,6 @@
-import {createContext} from '../../../../../../../utils/createContextHook'
+import {createNamedContext} from 'form-viewer'
 import {ActionData} from '../../../../../types'
 
-const [useActionData, ActionDataProvider] = createContext<ActionData>('ActionDataContext')
+const [useActionData, ActionDataProvider] = createNamedContext<ActionData>('ActionDataContext')
 
 export {useActionData, ActionDataProvider}

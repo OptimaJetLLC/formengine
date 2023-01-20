@@ -1,5 +1,5 @@
+import {createNamedContext} from 'form-viewer'
 import {ComponentStore} from '../../stores/ComponentStore'
-import {createContext} from '../../utils/createContextHook'
 import {Annotation} from '../annotation/utils/annotations/Annotation'
 
 export type PropertyData = {
@@ -17,6 +17,6 @@ export type PropertyContextValue = {
   clear: () => void
 }
 
-const [usePropertyContext, PropertyContextProvider] = createContext<PropertyContextValue>('PropertyDataContext')
+const [usePropertyContext, PropertyContextProvider] = createNamedContext<PropertyContextValue>('PropertyDataContext')
 
 export {usePropertyContext, PropertyContextProvider}

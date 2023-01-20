@@ -1,6 +1,6 @@
+import {createNamedContext} from 'form-viewer'
 import {BuilderStore} from '../../stores/BuilderStore'
-import {createContext} from '../createContextHook'
 
-const [useBuilderStore, BuilderStoreProvider] = createContext<BuilderStore>('BuildStoreContext')
+const [useBuilderStore, BuilderStoreProvider] = createNamedContext<BuilderStore>('BuildStoreContext')
 
 export {useBuilderStore, BuilderStoreProvider}

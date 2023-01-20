@@ -1,0 +1,15 @@
+{
+    "name": "form-builder",
+    "version": "0.0.0",
+    "main": "src/index.ts",
+    "type": "module",
+    "description": "OptimaJet Form Builder",
+    "license": "ISC",
+    "scripts": {
+        "build": "vite build"
+    },
+    "dependencies": {
+        "fb-core": "*",
+        "form-viewer": "*"
+    }
+}

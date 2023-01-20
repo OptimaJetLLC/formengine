@@ -1,4 +1,4 @@
+import {createNamedContext} from 'form-viewer'
 import {Store} from '../../stores/Store'
-import {createContext} from '../createContextHook'
 
-export const [useStore, StoreProvider, StoreContext] = createContext<Store>('StoreContext')
+export const [useStore, StoreProvider, StoreContext] = createNamedContext<Store>('StoreContext')

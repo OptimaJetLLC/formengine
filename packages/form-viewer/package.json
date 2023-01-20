@@ -1,0 +1,15 @@
+{
+    "name": "form-viewer",
+    "version": "0.0.0",
+    "main": "src/index.ts",
+    "type": "module",
+    "description": "OptimaJet Form Viewer",
+    "keywords": [],
+    "license": "ISC",
+    "scripts": {
+        "build": "vite build"
+    },
+    "peerDependencies": {
+        "react": ">=17.0.2"
+    }
+}

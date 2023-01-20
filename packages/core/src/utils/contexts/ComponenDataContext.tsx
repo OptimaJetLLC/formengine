@@ -1,7 +1,7 @@
+import {createNamedContext} from 'form-viewer'
 import {Model} from '../../features/define'
 import {Field} from '../../features/validation'
 import {ComponentStore} from '../../stores/ComponentStore'
-import {createContext} from '../createContextHook'
 
 export type ComponentData = {
   readonly parentStore?: ComponentStore,
@@ -10,6 +10,6 @@ export type ComponentData = {
   readonly field?: Field,
 }
 
-const [useComponentData, ComponentDataProvider] = createContext<ComponentData>('ComponentDataContext')
+const [useComponentData, ComponentDataProvider] = createNamedContext<ComponentData>('ComponentDataContext')
 
 export {useComponentData, ComponentDataProvider}

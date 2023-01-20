@@ -1,0 +1,11 @@
+{
+    "name": "viewer-antd",
+    "version": "0.0.0",
+    "main": "src/index.ts",
+    "type": "module",
+    "description": "OptimaJet Form Viewer Components - Ant Design",
+    "license": "ISC",
+    "scripts": {
+        "build": "vite build"
+    }
+}
