@@ -4,12 +4,12 @@ import {useCallback} from 'react'
 
 interface CodeEditorProps {
   source: string
-  setSourceCode?: (value: string) => void,
+  setSource?: (value: string) => void,
   readonly?: boolean
 }
 
-export const CodeEditor = ({source, setSourceCode, readonly}: CodeEditorProps) => {
-  const onChange = useCallback((value: string) => setSourceCode?.(value), [])
+export const CodeEditor = ({source, setSource, readonly}: CodeEditorProps) => {
+  const onChange = useCallback(value => setSource?.(value), [])
   return (
     <CodeMirror
       value={source}

@@ -9,7 +9,7 @@ import './setupMobx'
 
 export interface FormViewerProps {
   event?: (bus: EventBus) => void
-  getForm?: (() => ComponentStore)
+  getForm?: () => ComponentStore
   view: View
   actions?: ActionDefinition[]
   data?: Record<string, unknown>

@@ -75,7 +75,7 @@ const _CodeEditorPanel = ({componentStore, annotation, onClose}: CodeEditorPanel
 
   return <SPanel bodyFill>
     <Header>{header}</Header>
-    <CodeEditor source={sourceCode} setSourceCode={setSourceCode}/>
+    <CodeEditor source={sourceCode} setSource={setSourceCode}/>
     <div style={{marginTop: 10}}>
       <ButtonGroup>
         <Button appearance="primary" onClick={compileCode}>Compile</Button>
