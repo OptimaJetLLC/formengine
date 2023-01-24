@@ -1,4 +1,5 @@
 import {observer} from 'mobx-react'
+import {ComponentType, ReactElement} from 'react'
 import {ComponentStore} from '../../stores/ComponentStore'
 import {View} from '../define'
 import {ActionDefinition} from '../event/types'
@@ -15,6 +16,8 @@ export interface FormViewerProps {
   data?: Record<string, unknown>
   /** No use a error wrap component. */
   erroneous?: boolean
+  componentWrapper?: ComponentType<any>
+  dropZone?: ReactElement
 }
 
 export const FormViewer = observer((props: FormViewerProps) => (

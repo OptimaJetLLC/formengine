@@ -5,7 +5,6 @@ import {ComponentDataProvider} from '../../utils/contexts/ComponenDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {useListener} from '../../utils/useListener'
 import {useMemoizedLocalObserver} from '../../utils/useMemoizedLocalObserver'
-import {Editable} from '../dnd'
 import {Erroneous} from '../validation'
 import {ComponentViewer} from './ComponentViewer'
 
@@ -36,7 +35,7 @@ const _ComponentNode = ({componentStore, parentStore}: ComponentNodeProps) => {
   useListener(componentStore.key, 'onBlur',
     _ => data.field?.setTouched(), [])
 
-  const Wrapper = store.builderMode === 'builder' ? Editable : Fragment
+  const Wrapper = store.props.componentWrapper || Fragment
 
   return (
     <ComponentDataProvider value={data}>

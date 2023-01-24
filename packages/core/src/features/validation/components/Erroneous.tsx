@@ -14,7 +14,7 @@ const _Erroneous = ({children}: ErroneousProps) => {
 
   useEffect(() => {
     if (field) field.error = undefined
-  }, [store.builderMode])
+  }, [])
 
   if (store.props.erroneous) return <>{children}</>
 

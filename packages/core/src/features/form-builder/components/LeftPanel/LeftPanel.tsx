@@ -1,5 +1,5 @@
 import {observer} from 'mobx-react'
-import {useStore} from '../../../../utils/contexts/StoreContext'
+import {useBuilderStore} from '../../../../utils/contexts/BuilderStoreContext'
 import {Panel} from '../Panel'
 import {Errors} from './components/Errors'
 import {Tree} from './components/Tree'
@@ -11,7 +11,7 @@ const leftPanelViews = {
 }
 
 export const LeftPanel = observer(() => {
-  const store = useStore()
+  const store = useBuilderStore()
   const view = leftPanelViews[store.builderMode]
 
   return (

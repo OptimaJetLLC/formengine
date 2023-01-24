@@ -6,17 +6,17 @@ import * as faPlay from '@fortawesome/free-solid-svg-icons/faPlay'
 import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
 import {Radio, RadioGroup} from 'rsuite'
-import {BuilderMode} from '../../../../../stores/Store'
-import {useStore} from '../../../../../utils/contexts/StoreContext'
+import {BuilderMode} from '../../../../../stores/BuilderStore'
+import {useBuilderStore} from '../../../../../utils/contexts/BuilderStoreContext'
 import {FaIcon} from '../../../../ui/Icons'
 
 export const ToggleModeButton = observer(() => {
-  const store = useStore()
+  const store = useBuilderStore()
   const {t} = useTranslation()
   const color = 'var(--rs-btn-primary-bg)'
 
   return <RadioGroup name="builderModeList" inline appearance="picker" value={store.builderMode}
-                     onChange={value => store.builderMode = value as BuilderMode}>
+                     onChange={value => store.changeBuilderMode(value as BuilderMode)}>
     <Radio value="viewer">
       <SFaIcon icon={faPlay as unknown as IconDefinition} color={color}/>
       {t('rightMenu.previewMode')}

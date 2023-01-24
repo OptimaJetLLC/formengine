@@ -6,8 +6,8 @@ import * as faTablet from '@fortawesome/free-solid-svg-icons/faTablet'
 import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
 import {Radio, RadioGroup} from 'rsuite'
-import {BuilderViewMode} from '../../../../../stores/Store'
-import {useStore} from '../../../../../utils/contexts/StoreContext'
+import {BuilderViewMode} from '../../../../../stores/BuilderStore'
+import {useBuilderStore} from '../../../../../utils/contexts/BuilderStoreContext'
 import {FaIcon} from '../../../../ui/Icons'
 
 const resolutions = [
@@ -17,7 +17,7 @@ const resolutions = [
 ]
 
 const _ResolutionPicker = () => {
-  const store = useStore()
+  const store = useBuilderStore()
   const {t} = useTranslation()
 
   return <RadioGroup name="changeResolutionList" inline appearance="picker" value={store.viewMode}

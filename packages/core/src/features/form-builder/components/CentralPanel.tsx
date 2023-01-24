@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import {observer} from 'mobx-react'
+import {useBuilderStore} from '../../../utils/contexts/BuilderStoreContext'
 import {useStore} from '../../../utils/contexts/StoreContext'
 import {FormViewer} from '../../form-viewer/FormViewer'
 import {JsonView} from './JsonView'
@@ -13,11 +14,12 @@ const resolutions = {
 
 const _CentralPanel = () => {
   const store = useStore()
-  const view = store.builderMode === 'json' ? <JsonView/> : <FormViewer {...store.props}/>
+  const builderStore = useBuilderStore()
+  const view = builderStore.builderMode === 'json' ? <JsonView/> : <FormViewer {...store.props}/>
 
   return (
     <FormContainer>
-      <Viewport style={resolutions[store.viewMode]}>
+      <Viewport style={resolutions[builderStore.viewMode]}>
         {view}
       </Viewport>
     </FormContainer>

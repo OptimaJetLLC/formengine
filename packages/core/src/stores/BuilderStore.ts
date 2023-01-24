@@ -1,5 +1,6 @@
 import {assign, cloneDeep} from 'lodash'
-import {IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
+import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
+import {ComponentType, ReactElement} from 'react'
 import {Annotation} from '../features/annotation/utils/annotations/Annotation'
 import {defaultLanguage} from '../features/localization/consts'
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../features/localization/utils'
@@ -10,7 +11,13 @@ import {ComponentMove} from '../utils/types'
 import {ComponentStore} from './ComponentStore'
 import {Store} from './Store'
 
+export type BuilderMode = 'builder' | 'viewer' | 'json'
+
+export type BuilderViewMode = 'desktop' | 'mobile' | 'tablet'
+
 export class BuilderStore {
+  builderMode: BuilderMode = 'viewer'
+  viewMode: BuilderViewMode = 'desktop'
   isResizing: boolean = false
   selected?: Node
   language = defaultLanguage
@@ -22,12 +29,17 @@ export class BuilderStore {
 
   constructor(
     readonly viewer: Store,
+    private readonly componentWrapper: ComponentType<any>,
+    private readonly dropZone?: ReactElement
   ) {
     makeAutoObservable(this, {
       selected: observable.ref,
       language: observable.ref,
       destroy: false,
-      calculatedProperty: observable.ref
+      calculatedProperty: observable.ref,
+      builderMode: true,
+      viewMode: true,
+      changeBuilderMode: action
     })
 
     onI18nInit((language: string) => {
@@ -54,6 +66,17 @@ export class BuilderStore {
 
   destroy() {
     this.#disposer()
+  }
+
+  changeBuilderMode(value: BuilderMode) {
+    this.builderMode = value
+    if (this.builderMode === 'builder') {
+      this.viewer.props.componentWrapper = this.componentWrapper
+      this.viewer.props.dropZone = this.dropZone
+      return
+    }
+    this.viewer.props.componentWrapper = undefined
+    this.viewer.props.dropZone = undefined
   }
 
   treeMap(store: ComponentStore, callback: (store: ComponentStore) => void) {

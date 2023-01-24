@@ -1,10 +1,10 @@
 import {autorun, IReactionDisposer} from 'mobx'
-import {BuilderViewMode, Store} from './Store'
+import {BuilderStore, BuilderViewMode} from './BuilderStore'
 
 export class LocalStorageSynchronizer {
   readonly #disposer: IReactionDisposer
 
-  constructor(private store: Store) {
+  constructor(private store: BuilderStore) {
     const resolutionKey = 'resolution'
     store.viewMode = this.getItem<BuilderViewMode>(resolutionKey, 'desktop')
     this.#disposer = autorun(() => this.setItem(resolutionKey, store.viewMode))
