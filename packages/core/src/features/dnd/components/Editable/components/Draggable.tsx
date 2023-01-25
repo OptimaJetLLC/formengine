@@ -2,6 +2,7 @@ import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {observer} from 'mobx-react'
 import React, {ReactNode} from 'react'
+import {useDragLayer} from 'react-dnd'
 import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
 import {useDnd} from '../hooks/useDnd'
 import {DragPreview} from './DragPreview'
@@ -14,15 +15,16 @@ interface DraggableProps extends React.ComponentProps<any> {
 
 export const Draggable = observer(({children, viewForDragPreview, isInner, className, ...props}: DraggableProps) => {
   const {isContainer, isRoot} = useComponentData().componentStore
-  const [{isActive, isDragging}, dnd] = useDnd()
+  const [{isActive, isDragging: isDraggingCurrent}, dnd] = useDnd()
+  const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
 
-  return isDragging
+  return isDraggingCurrent
     ? <DragPreview>{viewForDragPreview}</DragPreview>
     : <Container ref={dnd} {...props}
                  className={cx(className, {isActive, isContainer, isRoot, isInner})}>
-      {!isRoot && !isInner && <DropZone/>}
+      {isDragging && !isRoot && !isInner && <DropZone/>}
       {children}
-      <DropZone isAfter={!isInner && true} isInner={isInner}/>
+      {isDragging && !isRoot && <DropZone isAfter={!isInner && true} isInner={isInner}/>}
     </Container>
 })
 

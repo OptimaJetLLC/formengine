@@ -25,6 +25,7 @@ export const SearchForm = ({style, className, onChange}: SearchFormProps) => {
         onChange={setValue}
         placeholder={t('searchForm.search')}
         value={value}
+        autoFocus
       />
       <InputGroup.Addon style={{cursor: 'pointer'}} onClick={clear} children={<Icon/>}/>
     </InputGroup>

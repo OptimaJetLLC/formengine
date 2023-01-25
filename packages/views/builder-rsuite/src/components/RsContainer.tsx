@@ -1,5 +1,5 @@
 import {css, cx} from '@emotion/css'
-import {define, node, oneOf} from 'form-builder'
+import {define, node, oneOf, size} from 'form-builder'
 import {forwardRef} from 'react'
 
 const isHorizontal = (element?: Element) => {
@@ -25,10 +25,13 @@ export const rsContainer = define(RsContainer)
       .radio()
       .hinted('Component direction')
   })
+  .css({
+    gap: size.default('10px'),
+    alignItems: oneOf('start', 'center', 'baseline', 'end', 'stretch')
+  })
 
 const containerStyles = css`
   display: flex;
-  gap: 5px;
   flex-direction: column;
 
   &.horizontal {

@@ -38,6 +38,15 @@
     "editMode": "Edit",
     "jsonMode": "JSON"
   },
+  "componentsModal": {
+    "clickToAdd": "Click to add control"
+  },
+  "componentToolbar": {
+    "add": "Add new element",
+    "before": "Before",
+    "after": "After",
+    "inside": "Inside"
+  },
   "propertiesEditor": {
     "selectElementForEdit": "Select element on form for edit properties",
     "sectionName": {

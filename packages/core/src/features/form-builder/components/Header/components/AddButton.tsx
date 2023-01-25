@@ -27,7 +27,7 @@ export const AddButton = observer(() => {
     <IconButton ref={ref} onClick={openToggle} icon={<PlusIcon className={cx(plusIcon, {show})}/>}
                 style={{padding: 8}} color="green" appearance={'primary'} circle/>
     <Popover className={cx({show})}>
-      <ComponentBar/>
+      <ComponentBar draggable={true}/>
     </Popover>
   </>
 })
@@ -48,14 +48,9 @@ const Popover = styled.div`
   margin-top: 25px;
   padding: 10px;
   border-radius: 10px;
-  color: white;
   box-shadow: 0 0 15px rgb(0 0 0 / 25%);
   transition: opacity .1s ease, visibility .1s linear !important;
-  background-color: rgb(68 68 68);
-
-  .rs-theme-dark & {
-    background-color: #414549;
-  }
+  background-color: var(--rs-btn-default-bg);
 `
 
 const plusIcon = css`

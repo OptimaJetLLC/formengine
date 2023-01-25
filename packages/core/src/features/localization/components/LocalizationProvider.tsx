@@ -18,11 +18,11 @@ export const LocalizationProvider = observer((props: LocalizationProps) => {
     || rSuiteLanguages[store.language.code]
     || defaultRSuiteLanguage
 
-  const selectedCache = store.language.bidi === BiDi.RTL ? emotionCache.RTL : emotionCache.LTR
+  const selectedCache = store.isRTL ? emotionCache.RTL : emotionCache.LTR
 
   return (
     <CacheProvider value={selectedCache}>
-      <CustomProvider rtl={store.language.bidi === BiDi.RTL} locale={rSuiteLang}>
+      <CustomProvider rtl={store.isRTL} locale={rSuiteLang}>
         {props.children}
       </CustomProvider>
     </CacheProvider>

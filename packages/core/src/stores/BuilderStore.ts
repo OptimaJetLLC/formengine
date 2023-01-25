@@ -2,14 +2,16 @@ import {assign, cloneDeep} from 'lodash'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
 import {ComponentType, ReactElement} from 'react'
 import {Annotation} from '../features/annotation/utils/annotations/Annotation'
-import {defaultLanguage} from '../features/localization/consts'
+import {BiDi, defaultLanguage} from '../features/localization/consts'
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../features/localization/utils'
 import {fbScreen} from '../features/ui/FbScreen'
 import {treeFind} from '../utils'
 import {Node} from '../utils/Node'
-import {ComponentMove} from '../utils/types'
+import {ComponentMove, InsertPosition} from '../utils/types'
 import {ComponentStore} from './ComponentStore'
 import {Store} from './Store'
+
+const {After, Inner} = InsertPosition
 
 export type BuilderMode = 'builder' | 'viewer' | 'json'
 
@@ -54,6 +56,10 @@ export class BuilderStore {
 
   get tree(): Node {
     return new Node(this.viewer, this.viewer.screen)
+  }
+
+  get isRTL(): boolean {
+    return this.language.bidi === BiDi.RTL
   }
 
   static getIndexInParent(node: ComponentMove) {
@@ -107,34 +113,35 @@ export class BuilderStore {
 
   //TODO clone for inner components without removing
   clone(source: ComponentMove) {
-    const cloned = this.add(source, source, true)
+    const cloned = this.add(source, source)
     this.selected = this.findNode(cloned.key)
   }
 
-  move(source: ComponentMove, target: ComponentMove, isAfter: boolean = false, inner: boolean = false) {
+  move(source: ComponentMove, target: ComponentMove, insertPosition: InsertPosition = InsertPosition.After) {
     this.remove(source)
-    const index = inner
+    const isInner = insertPosition === Inner
+    const index = isInner
       ? target.componentStore.children?.length ?? 0
-      : getIndexToPush(target, isAfter)
+      : getIndexToPush(target)
     push(source, target, index)
 
 
     function push(source: ComponentMove, target: ComponentMove, index: number) {
-      let purpose = target.parentStore || target.componentStore
+      const purpose = isInner ? target.componentStore : target.parentStore ?? target.componentStore
       purpose.children ??= []
       purpose.children?.splice(index, 0, source.componentStore)
     }
 
-    function getIndexToPush(target: ComponentMove, isAfter: boolean) {
+    function getIndexToPush(target: ComponentMove) {
       const index = BuilderStore.getIndexInParent(target)
-      return isAfter ? index + 1 : index
+      return insertPosition === After ? index + 1 : index
     }
   }
 
-  add(source: ComponentMove, target: ComponentMove, isAfter: boolean = false, inner: boolean = false) {
+  add(source: ComponentMove, target: ComponentMove, insertPosition: InsertPosition = InsertPosition.After) {
     const clone = assign(new ComponentStore('', ''), cloneDeep(source.componentStore))
     this.unifyComponentKeys(clone)
-    this.move({componentStore: clone}, target, isAfter, inner)
+    this.move({componentStore: clone}, target, insertPosition)
     this.selected = this.findNode(clone.key)
     return clone
   }

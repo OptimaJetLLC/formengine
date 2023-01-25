@@ -1,7 +1,11 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {ComponentProps} from 'react'
+import PlusIcon from '@rsuite/icons/Plus'
+import React, {ComponentProps} from 'react'
+import {IconButton} from 'rsuite'
 import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
+import {InsertPosition} from '../../../../../utils/types'
+import {useComponentsModal} from '../../../../form-builder/components/ComponentBar/ComponentsModal'
 
 interface DropViewProps extends ComponentProps<any> {
   isAfter?: boolean
@@ -13,11 +17,25 @@ interface DropViewProps extends ComponentProps<any> {
 export const DropView = (props: DropViewProps) => {
   const {isRoot, isContainer, key} = useComponentData().componentStore
   const dropClassNames = {isContainer, isRoot, ...props}
-  const label = `${(isRoot || props.isInner ? '' : props.isAfter ? 'AFTER' : 'BEFORE')} ${key}`
+  const label = `${props.isAfter ? 'AFTER' : 'BEFORE'} ${key}`
 
   return <Container className={cx({...dropClassNames})}>
-    <Label className={cx(dropClassNames)}>{label}</Label>
+    <LabelContainer>
+      {isRoot || props.isInner
+        ? <AddButton/>
+        : <Label className={cx(dropClassNames)}>{label}</Label>
+      }
+    </LabelContainer>
   </Container>
+}
+
+const AddButton = () => {
+  const target = useComponentData()
+  const {openModal, ComponentsModal} = useComponentsModal(target)
+  return <>
+    <IconButton onClick={() => openModal(InsertPosition.Inner)} icon={<PlusIcon/>} color="green" appearance={'primary'} circle size={'xs'}/>
+    <ComponentsModal/>
+  </>
 }
 
 const Container = styled.div`
@@ -73,15 +91,22 @@ const Container = styled.div`
   }
 `
 
+
+const LabelContainer = styled.label`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+`
+
 const Label = styled.label`
   display: none;
-  position: absolute;
   opacity: 0.4;
   text-align: center;
   text-overflow: ellipsis;
-  overflow: hidden;
   line-height: 12px;
   font-size: 12px;
+  overflow: hidden;
 
   &.isActive, .isInner & {
     display: block;

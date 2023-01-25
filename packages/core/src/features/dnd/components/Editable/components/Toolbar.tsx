@@ -7,6 +7,7 @@ import React, {useCallback} from 'react'
 import {useBuilderStore} from '../../../../../utils/contexts/BuilderStoreContext'
 import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
 import {FaIcon} from '../../../../ui/Icons'
+import {AddButton} from './AddButton'
 
 export const Toolbar = observer(() => {
   const store = useBuilderStore()
@@ -20,6 +21,7 @@ export const Toolbar = observer(() => {
       {data.componentStore.key}
       <label>{` (${data.componentStore.type})`}</label>
     </Title>
+    <AddButton/>
     <FaIcon onClick={onClone} icon={faClone as unknown as IconDefinition}/>
     <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition}/>
   </ToolbarContainer>

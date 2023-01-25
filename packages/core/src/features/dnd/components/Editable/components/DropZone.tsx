@@ -15,6 +15,7 @@ interface DropZoneProps extends ComponentProps<any> {
 
 const DropZone = observer(({isAfter = false, className, isInner, ...props}: DropZoneProps) => {
   const {isRoot, isContainer} = useComponentData().componentStore
+
   const [{isActive, isOver}, drop] = useDropZone(isAfter, isRoot || isInner)
   const dropClassNames = {isAfter, isActive, isContainer, isRoot, isInner}
 

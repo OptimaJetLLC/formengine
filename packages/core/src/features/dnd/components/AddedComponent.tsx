@@ -1,28 +1,39 @@
 import styled from '@emotion/styled'
 import {observer} from 'mobx-react'
+import React, {ReactNode} from 'react'
 import {useComponentData} from '../../../utils/contexts/ComponenDataContext'
 import {getDefaultProps} from '../../../utils/getDefaultProps'
+import {DraggableProps} from '../../form-builder/components/ComponentBar'
 import {ItemType} from '../consts'
 import {DragPreview} from './Editable/components/DragPreview'
 import {useDragWithPreview} from './Editable/hooks/useDragWithPreview'
 
-export const AddedComponent = observer(() => {
+export const AddedComponent = observer(({draggable = true, onAdd}: DraggableProps) => {
   const data = useComponentData()
   const View = data.model.view
-  const [{isDragging}, drag] = useDragWithPreview(ItemType.AddedComponent)
 
-  const element = <Container>
+  const element = <Container onClick={() => onAdd?.(data)}>
+    <Label>{data.model.name}</Label>
     {data.model.customPreview ?? <View {...getDefaultProps(data)}/>}
   </Container>
 
-  return (isDragging
-      ? <DragPreview>{element}</DragPreview>
-      : <DraggableContainer ref={drag}>
-        <Label>{data.model.name}</Label>
-        {element}
-      </DraggableContainer>
+  return (draggable
+      ? <Draggable>{element}</Draggable>
+      : element
   )
 })
+
+
+const Draggable = ({children}: { children: ReactNode }) => {
+  const [{isDragging}, drag] = useDragWithPreview(ItemType.AddedComponent)
+
+  return (isDragging
+      ? <DragPreview>{children}</DragPreview>
+      : <DraggableContainer ref={drag}>
+        {children}
+      </DraggableContainer>
+  )
+}
 
 const Label = styled.div`
   opacity: 0.6;
@@ -30,19 +41,25 @@ const Label = styled.div`
 
 const Container = styled.div`
   display: flex;
-  flex: 1;
-  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  min-width: 249px;
+  max-width: 249px;
   border-radius: 7px;
+  background-color: var(--rs-input-bg);
+
+  &:hover {
+    box-shadow: var(--rs-state-focus-shadow);
+  }
+
+  &:active, &:focus {
+    outline: 2px solid var(--rs-btn-primary-bg);
+  }
 `
 
 const DraggableContainer = styled.div`
-  color: white;
   cursor: grab;
-  margin-block: 10px;
-  padding-right: 5px;
   min-width: 100%;
   line-height: 20px;
   font-size: 14px;
-  display: flex;
-  flex-direction: column;
 `
