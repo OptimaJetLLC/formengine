@@ -1,3 +1,2 @@
-import {createNamedContext} from './utils/createNamedContext'
-
-export {createNamedContext}
+export * from './features/define'
+export * from './utils'

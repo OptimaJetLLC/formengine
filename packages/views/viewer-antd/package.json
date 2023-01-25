@@ -7,5 +7,9 @@
     "license": "ISC",
     "scripts": {
         "build": "vite build"
+    },
+    "dependencies": {
+        "antd": "^5.1.5",
+        "form-viewer": "*"
     }
 }

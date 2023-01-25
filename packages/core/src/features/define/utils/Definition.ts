@@ -1,4 +1,5 @@
 import {CSSObject} from '@emotion/serialize/dist/declarations/types'
+import {ComponentDefinition} from 'form-viewer'
 import {forIn, startCase, transform} from 'lodash'
 import {ComponentType, ReactNode} from 'react'
 import {ComponentStore} from '../../../stores/ComponentStore'
@@ -24,6 +25,7 @@ export class Definition<T extends object> {
     readonly actionsInitializer?: ActionsInitializer,
     readonly hint?: string,
     readonly customPreview?: ReactNode,
+    readonly viewedWith?: ComponentDefinition<T>,
   ) {
     this.#name = name
   }
@@ -33,13 +35,19 @@ export class Definition<T extends object> {
   }
 
   get type(): string {
-    return this.view.displayName || this.view.name
+    return this.viewedWith?.typeName
+      || this.viewedWith?.view.displayName
+      || this.viewedWith?.view.name
+      || this.view.displayName
+      || this.view.name
   }
 
   typed = (displayName: string) => {
     this.view.displayName = displayName
     return this
   }
+
+  viewed = (viewedWith: ComponentDefinition<T>) => this.#cloneWith({viewedWith})
 
   static define<T extends object>(view: ComponentType<T>) {
     checkExistName()
@@ -54,9 +62,34 @@ export class Definition<T extends object> {
     }
   }
 
+  static defineBuilder<T extends object>(componentDefinition: ComponentDefinition<T>) {
+    return Definition.define(componentDefinition.view)
+      .typed(componentDefinition.typeName)
+      .viewed(componentDefinition)
+  }
+
   named = (name: string) => this.#cloneWith({name})
 
-  props = (properties: Annotations<T>) => this.#cloneWith({properties})
+  props = (properties: Annotations<T>) => {
+    if (this.viewedWith?.props) {
+      const viewProps = this.viewedWith?.props
+      let key: keyof typeof properties
+      for (key in properties) {
+        const annotation = properties[key]?.annotation
+        const viewProp = viewProps[key]
+        if (!annotation || !viewProp) continue
+
+        // rewrite with view properties
+        // todo remove @ts-ignore, we suppress TS here, later we will remove this props from annotation
+        // @ts-ignore
+        annotation.valued = viewProp.valued
+        // @ts-ignore
+        annotation.schema = viewProp.schema
+      }
+    }
+
+    return this.#cloneWith({properties})
+  }
 
   css = (style: Annotations<CSSObject>) => this.#cloneWith({style})
 
@@ -68,7 +101,7 @@ export class Definition<T extends object> {
 
   init(store: ComponentStore) {
     return new Model(
-      this.view,
+      this.viewedWith?.view || this.view,
       initProperties(this.properties),
       initStyle(this.style),
       this.#name,
@@ -127,6 +160,7 @@ export class Definition<T extends object> {
       opts.actionsInitializer || this.actionsInitializer,
       opts.hint || this.hint,
       opts.customPreview || this.customPreview,
+      opts.viewedWith || this.viewedWith,
     )
   }
 }

@@ -1,8 +1,8 @@
 import {Definition} from 'form-builder'
-import {AntButton} from './components/AntButton'
+import {antButton} from './components/AntButton'
 
 const components = [
-  AntButton
+  antButton,
 ]
 
 components.forEach(c => {
