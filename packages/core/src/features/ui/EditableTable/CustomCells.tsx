@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import {IconProps} from '@rsuite/icons/lib/Icon'
+import {ReactElement} from 'react'
 import {Checkbox, IconButton, Input, InputPicker, Table} from 'rsuite'
 import {InnerCellProps} from 'rsuite-table/lib/Cell'
 import {LabeledValue} from '../../annotation/utils/LabeledValue'
@@ -82,5 +83,5 @@ interface SelectCellProps extends InputCellProps {
 
 interface ActionCellProps extends InnerCellProps {
   onAction: (rowIndex?: number) => void
-  icon: () => React.ReactElement<IconProps>
+  icon: () => ReactElement<IconProps>
 }

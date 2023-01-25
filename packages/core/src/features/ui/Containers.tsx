@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode'
 import {observer} from 'mobx-react'
-import React, {cloneElement, ComponentProps} from 'react'
+import {cloneElement, ComponentProps} from 'react'
 import {IconButton} from 'rsuite'
 import useUniqueId from 'rsuite/cjs/utils/useUniqueId'
 //https://styled-system.com/#expressive-consistent-ui-components

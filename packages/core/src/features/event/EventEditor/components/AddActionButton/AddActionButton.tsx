@@ -1,7 +1,7 @@
 import {css} from '@emotion/css'
 import PlusIcon from '@rsuite/icons/Plus'
 import {observer} from 'mobx-react'
-import React, {useCallback, useRef, useState} from 'react'
+import {useCallback, useRef, useState} from 'react'
 import {IconButton} from 'rsuite'
 import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
 import {Popover} from '../../../../ui/Popover'

@@ -4,7 +4,7 @@ import * as faClone from '@fortawesome/free-regular-svg-icons/faClone'
 import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt'
 import {FaIcon, useBuilderStore, useComponentData} from 'fb-core'
 import {observer} from 'mobx-react'
-import React, {useCallback} from 'react'
+import {useCallback} from 'react'
 import {AddButton} from './AddButton'
 
 export const Toolbar = observer(() => {

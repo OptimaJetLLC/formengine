@@ -1,5 +1,5 @@
 import {Modifier, Placement, VirtualElement} from '@popperjs/core'
-import React, {ReactNode, useState} from 'react'
+import {ReactNode, useState} from 'react'
 import {usePopper} from 'react-popper'
 
 interface PopoverProps {

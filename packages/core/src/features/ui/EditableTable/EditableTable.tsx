@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import {Close, Plus} from '@rsuite/icons'
-import React, {FormEventHandler, useEffect, useState} from 'react'
+import {cloneElement, FormEventHandler, useEffect, useState} from 'react'
 import {Button, Form, Table, TableProps} from 'rsuite'
 import {RowDataType} from 'rsuite-table/lib/@types/common'
 import {ActionCell} from './CustomCells'
@@ -56,7 +56,7 @@ export const EditableTable = (props: EditableTableProps) => {
     })
   }
 
-  const prepareColumns = () => columns?.map(col => React.cloneElement(col, {
+  const prepareColumns = () => columns?.map(col => cloneElement(col, {
     onChange: () => onChange?.([...data] as any)
   }))
 

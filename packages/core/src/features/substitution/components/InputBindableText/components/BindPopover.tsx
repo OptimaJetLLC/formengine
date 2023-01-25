@@ -1,7 +1,7 @@
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode'
 import * as faLink from '@fortawesome/free-solid-svg-icons/faLink'
 import CloseIcon from '@rsuite/icons/Close'
-import React, {forwardRef, useState} from 'react'
+import {forwardRef, useState} from 'react'
 import {Nav, Popover, SelectPicker, TreePicker} from 'rsuite'
 import {ItemDataType} from 'rsuite/esm/@types/common'
 import {useBuilderStore} from '../../../../../utils/contexts/BuilderStoreContext'
