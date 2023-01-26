@@ -5,3 +5,7 @@ import {Annotation} from './Annotation'
 export class PropertyAn extends Annotation {
   data!: LabeledValue[]
 }
+
+export const isProperty = (value: Annotation): value is PropertyAn => {
+  return value instanceof PropertyAn
+}

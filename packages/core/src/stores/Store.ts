@@ -1,21 +1,17 @@
 import {makeObservable, observable} from 'mobx'
-import {clear, log, reset, setProperty, validate} from '../features/event/actions'
-import {ActionDefinition} from '../features/event/types'
-import {EventBus} from '../features/event/utils/EventBus'
-import {FormViewerProps} from '../features/form-viewer/FormViewer'
+import {ActionDefinition} from '../features/event/actionDefinition'
 import {fbScreen} from '../features/ui/FbScreen'
 import {Form} from '../features/validation'
 import {treeFind} from '../utils'
 import {ComponentStore} from './ComponentStore'
+import {StoreProps} from './StoreProps'
 
 export class Store {
-  readonly eventBus = new EventBus()
   readonly form = new Form(this)
 
-  actions: ActionDefinition[] = [setProperty, log, validate, reset, clear]
   screen = new ComponentStore(fbScreen.name, fbScreen.type)
 
-  constructor(public props: FormViewerProps) {
+  constructor(public props: StoreProps, public actions: ActionDefinition[] = []) {
     makeObservable(this, {
       props: observable,
       screen: observable,

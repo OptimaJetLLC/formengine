@@ -1,6 +1,6 @@
 import {useCallback, useState} from 'react'
 import {useAnnotation} from '../../../utils/contexts/EditorContext'
-import {isProperty} from './index'
+import {isProperty} from './annotations/PropertyAn'
 
 export const useEditor = () => {
   const {annotation, getContext} = useAnnotation()

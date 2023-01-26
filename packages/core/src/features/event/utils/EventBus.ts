@@ -1,6 +1,15 @@
+import {ActionEventHandler} from '../actionEventHandler'
 import {ANY_EVENT} from '../consts'
-import {ActionEventHandler, EventFilter, EventListener} from '../types'
 import {ActionEventArgs} from './ActionEventArgs'
+
+export interface EventFilter {
+  readonly target?: string
+  readonly type?: string
+}
+
+export type EventListener = ActionEventHandler & {
+  target?: string
+}
 
 export class EventBus {
   readonly #listeners: Record<string | symbol, Set<EventListener>> = {}

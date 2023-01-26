@@ -1,5 +1,6 @@
 import {Store} from '../../../stores/Store'
-import {ActionData, WeakActionData} from '../types'
+import {ActionData} from '../actionData'
+import {WeakActionData} from '../types'
 
 export const toActionData = (data: WeakActionData, store: Store): ActionData => {
   const {actionName, modifiers, weakArgs, targetKey} = data

@@ -1,4 +1,4 @@
-import {BiDi} from './consts'
+import {BiDi} from './bidi'
 
 export class Language {
   constructor(

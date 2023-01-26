@@ -1,16 +1,22 @@
 import {makeAutoObservable} from 'mobx'
+import {ComponentType} from 'react'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
 import {initEvents} from '../features/event'
+import {EventBus} from '../features/event/utils/EventBus'
 import {getHtmlAttributes} from '../features/html-attributes'
 import {computeStylization} from '../features/style'
 import {getSubstitutedValue} from '../features/substitution'
+import {ComponentNodeProps} from '../features/ui/ComponentNodeProps'
 import {ComponentData} from '../utils/contexts/ComponenDataContext'
 import {getChildren} from '../utils/getChildren'
 import {getDefaultProps} from '../utils/getDefaultProps'
 import {Store} from './Store'
 
 export class ComponentState {
-  constructor(readonly data: ComponentData, readonly store: Store) {
+  constructor(readonly data: ComponentData,
+              readonly store: Store,
+              readonly eventBus: EventBus,
+              readonly component: ComponentType<ComponentNodeProps>) {
     makeAutoObservable(this)
   }
 
@@ -41,7 +47,7 @@ export class ComponentState {
   }
 
   get events() {
-    return initEvents(this.data, this.store)
+    return initEvents(this.data, this.store, this.eventBus)
   }
 
   get substitutedValue() {
@@ -57,6 +63,6 @@ export class ComponentState {
   }
 
   get children() {
-    return getChildren(this.data, this.store)
+    return getChildren(this.data, this.store, this.component)
   }
 }

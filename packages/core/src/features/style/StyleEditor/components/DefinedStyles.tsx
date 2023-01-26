@@ -1,5 +1,5 @@
 import {LabeledPre} from '../../../ui/LabeledPre'
-import {StyleAnnotationProps} from '../StyleEditor'
+import {StyleAnnotationProps} from '../StyleAnnotationProps'
 
 export const DefinedStyles = ({annotation}: StyleAnnotationProps) => {
   return (

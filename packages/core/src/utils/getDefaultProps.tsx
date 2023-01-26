@@ -1,5 +1,5 @@
+import {isProperty} from '../features/annotation/utils/annotations/PropertyAn'
 import {ComponentData} from './contexts/ComponenDataContext'
-import {isProperty} from '../features/annotation'
 
 export function getDefaultProps(data: ComponentData) {
   return data.model.properties.reduce((props, value) => {

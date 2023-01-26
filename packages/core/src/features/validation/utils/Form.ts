@@ -1,6 +1,7 @@
 import {makeAutoObservable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {Store} from '../../../stores/Store'
+import {calculatePropertyValue} from '../../calculation/propertyCalculator'
 import {Model} from '../../define'
 import {Field} from './Field'
 
@@ -36,7 +37,7 @@ export class Form {
 
     let field = this.fields.get(componentStore.key)
     if (!field) {
-      field = new Field(this, componentStore.key, model.valuedAn)
+      field = new Field(this.store, componentStore.key, model.valuedAn, this.#updateFnValue)
       this.fields.set(componentStore.key, field)
     }
     return field
@@ -53,4 +54,14 @@ export class Form {
   clear() {
     this.fields.forEach(f => f.clear())
   }
+
+  #updateFnValue(component: ComponentStore, key: string): [boolean, any?] {
+    const property = component.props[key]
+    if (property && property.useFn) {
+      const value = calculatePropertyValue(component, property, this)
+      return [true, value]
+    }
+    return [false]
+  }
+
 }

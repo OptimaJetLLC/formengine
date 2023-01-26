@@ -8,10 +8,6 @@ import {CSSList} from './components/CSSList'
 import {DefinedStyles} from './components/DefinedStyles'
 import {StandardStyles} from './components/StandardStyles'
 
-export interface StyleAnnotationProps {
-  annotation: StyleAn
-}
-
 export const StyleEditor = () => {
   const {componentStore} = useComponentData()
   const {annotation}: { annotation: StyleAn } = useEditor()

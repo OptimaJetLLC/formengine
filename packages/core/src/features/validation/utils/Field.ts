@@ -1,8 +1,7 @@
 import {autorun, makeAutoObservable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
+import {Store} from '../../../stores/Store'
 import {Annotation} from '../../annotation/utils/annotations/Annotation'
-import {calculatePropertyValue} from '../../calculation/propertyCalculator'
-import {Form} from './Form'
 import {parseSchema} from './parseSchema'
 
 export class Field {
@@ -19,7 +18,7 @@ export class Field {
   }
 
   get componentStore() {
-    return this.form.store.getComponent(this.key)
+    return this.store.getComponent(this.key)
   }
 
   get autoTransform() {
@@ -27,36 +26,31 @@ export class Field {
   }
 
   constructor(
-    readonly form: Form,
+    readonly store: Store,
     readonly key: string,
-    readonly valuedAn: Annotation
+    readonly valuedAn: Annotation,
+    readonly valueCalculator: (component: ComponentStore, key: string) => [boolean, any?]
   ) {
     makeAutoObservable(this, {
-      valuedAn: false
+      valuedAn: false,
+      valueCalculator: false
     })
     const disposer = autorun(() => {
-      const component = this.form.store.findComponent(this.key)
+      const component = this.store.findComponent(this.key)
       if (!component) {
         // dispose async
         setTimeout(() => disposer(), 0)
         return
       }
 
-      if (this.updateFnValue(component)) {
+      const [calculated, value] = this.valueCalculator(component, this.valuedAn.key)
+      if (calculated) {
+        this.value = value
         return
       }
 
-      this.value = this.form.store.props.data?.[component.key] ?? this.initialValue
+      this.value = this.store.props.data?.[component.key] ?? this.initialValue
     })
-  }
-
-  updateFnValue(component: ComponentStore) {
-    const property = component.props[this.valuedAn.key]
-    if (property && property.useFn) {
-      this.value = calculatePropertyValue(component, property, this.form)
-      return true
-    }
-    return false
   }
 
   setValue(value: unknown) {

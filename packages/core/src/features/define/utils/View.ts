@@ -1,7 +1,7 @@
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {fbScreen} from '../../ui/FbScreen'
 import {defaultErrorMessage, ErrorMessageProps} from '../../validation/components/ErrorMessage'
-import {Definition} from '../index'
+import {Definition} from './Definition'
 
 export class View {
   #map = new Map<string, Definition<any>>()

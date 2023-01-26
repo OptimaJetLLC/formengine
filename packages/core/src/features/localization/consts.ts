@@ -1,12 +1,8 @@
 import createCache from '@emotion/cache'
 import {arEG, enUS, ruRU} from 'rsuite/locales'
 import rtlPlugin from 'stylis-plugin-rtl'
+import {BiDi} from './bidi'
 import {Language} from './types'
-
-export enum BiDi {
-  LTR = 'ltr',
-  RTL = 'rtl',
-}
 
 export const defaultLanguage: Language =
   new Language('en', 'US', 'English', 'American English')

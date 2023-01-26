@@ -1,6 +1,6 @@
 import {Dispatch, SetStateAction, useEffect, useState} from 'react'
+import {ArgumentName} from '../../../event/args'
 import {useActionData} from '../../../event/EventEditor/components/ActionList/ActionItem/contexts/ActionDataContext'
-import {ArgumentName} from '../../../event/types'
 
 export const useSyncText = (name: ArgumentName): [string, Dispatch<SetStateAction<string>>] => {
   function getInitialState() {

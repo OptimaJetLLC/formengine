@@ -1,9 +1,9 @@
 import {observer} from 'mobx-react'
 import {Dispatch, SetStateAction, useEffect, useState} from 'react'
 import {SelectPicker} from 'rsuite'
-import {ArgumentName} from '../../../../../../../../types'
+import {ArgumentName} from '../../../../../../../../args'
 import {useActionData} from '../../../../contexts/ActionDataContext'
-import {InputProps} from '../ArgumentItem'
+import {InputProps} from '../InputProps'
 
 const booleanData = [
   {label: 'True', value: 1},

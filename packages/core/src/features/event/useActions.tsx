@@ -1,15 +1,18 @@
 import {forIn, transform} from 'lodash'
 import {useEffect} from 'react'
 import {useComponentData} from '../../utils/contexts/ComponenDataContext'
+import {useEventBus} from '../../utils/contexts/EventBusContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {denoteBinds} from '../substitution'
-import {Func, WeakActionData, WeakArgs} from './types'
+import {WeakArgs} from './args'
+import {Func} from './func'
+import {WeakActionData} from './types'
 import {ActionEventArgs} from './utils/ActionEventArgs'
 
 export const useActions = () => {
   const store = useStore()
   const {componentStore} = useComponentData()
-
+  const eventBus = useEventBus()
 
   useEffect(() => {
     const unsubscribes = [] as Function[]
@@ -18,7 +21,7 @@ export const useActions = () => {
       weakActions.forEach((data) => {
         const {args, func} = store.findAction(data.actionName, data.targetKey)
         const action = args ? getActionHandler(func, data.weakArgs) : func
-        unsubscribes.push(store.eventBus.listen(action, {target: componentStore.key, type: eventName}))
+        unsubscribes.push(eventBus.listen(action, {target: componentStore.key, type: eventName}))
       })
     })
 

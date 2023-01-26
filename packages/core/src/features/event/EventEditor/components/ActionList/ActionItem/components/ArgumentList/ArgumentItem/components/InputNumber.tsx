@@ -1,8 +1,8 @@
 import {Dispatch, SetStateAction, useEffect, useState} from 'react'
 import {InputGroup, InputNumber as RInputNumber} from 'rsuite'
-import {ArgumentName} from '../../../../../../../../types'
+import {ArgumentName} from '../../../../../../../../args'
 import {useActionData} from '../../../../contexts/ActionDataContext'
-import {InputProps} from '../ArgumentItem'
+import {InputProps} from '../InputProps'
 
 export const InputNumber = ({name}: InputProps) => {
   const [value, setValue] = useSyncNumber(name)

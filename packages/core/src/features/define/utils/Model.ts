@@ -1,7 +1,7 @@
 import {observer} from 'mobx-react'
 import {ComponentType, ReactNode} from 'react'
 import {Annotation} from '../../annotation/utils/annotations/Annotation'
-import {ActionDefinition} from '../../event/types'
+import {ActionDefinition} from '../../event/actionDefinition'
 
 export class Model<T> {
   readonly #name?: string

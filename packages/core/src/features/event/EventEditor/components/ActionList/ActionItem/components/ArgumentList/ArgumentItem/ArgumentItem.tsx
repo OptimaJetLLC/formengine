@@ -1,8 +1,7 @@
 import {observer} from 'mobx-react'
 import {LabeledInput} from '../../../../../../../../ui/Containers'
-import {Arg} from '../../../../../../../types'
+import {Arg} from '../../../../../../../args'
 import {extractArgumentData, getArgumentInputByType} from './utils'
-
 
 interface ActionArgumentProps {
   data: Arg
@@ -17,8 +16,4 @@ export const ArgumentItem = observer(({data}: ActionArgumentProps) => {
     <ArgumentInput name={name}/>
   </LabeledInput>
 })
-
-export interface InputProps {
-  name: string
-}
 

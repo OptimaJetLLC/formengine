@@ -1,15 +1,19 @@
 import {observer} from 'mobx-react'
 import {useEffect} from 'react'
+import {useEventBus} from '../../../utils/contexts/EventBusContext'
 import {useStore} from '../../../utils/contexts/StoreContext'
+import {ComponentNode} from '../../ui/ComponentNode'
 import {ComponentTree} from '../../ui/ComponentTree'
+import {ViewerProps} from './ViewerProps'
 
-const _Viewer = () => {
+const _Viewer = ({event}: ViewerProps) => {
   const store = useStore()
-  const {getForm, data, view, event, actions} = store.props
+  const eventBus = useEventBus()
+  const {getForm, data, view, actions} = store.props
 
   useEffect(() => {
     if (actions) store.actions.push(...actions)
-    event?.(store.eventBus)
+    event?.(eventBus)
   }, [])
 
   useEffect(() => {
@@ -17,7 +21,7 @@ const _Viewer = () => {
   }, [getForm])
 
 
-  return <ComponentTree data={[store.screen]}/>
+  return <ComponentTree data={[store.screen]} component={ComponentNode}/>
 }
 
 export const Viewer = observer(_Viewer)

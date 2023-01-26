@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import {Dropdown} from 'rsuite'
 import {useStore} from '../../../../../../utils/contexts/StoreContext'
-import {NewActionData} from '../../../../types'
+import {NewActionData} from '../../../../actionData'
 import {useGroups} from '../../../hooks/useGroups'
 
 interface SelectActionProps {

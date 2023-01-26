@@ -1,17 +1,12 @@
 import {observer} from 'mobx-react'
 import {Fragment, useEffect} from 'react'
-import {ComponentStore} from '../../stores/ComponentStore'
 import {ComponentDataProvider} from '../../utils/contexts/ComponenDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {useListener} from '../../utils/useListener'
 import {useMemoizedLocalObserver} from '../../utils/useMemoizedLocalObserver'
 import {Erroneous} from '../validation'
+import {ComponentNodeProps} from './ComponentNodeProps'
 import {ComponentViewer} from './ComponentViewer'
-
-interface ComponentNodeProps {
-  parentStore?: ComponentStore
-  componentStore: ComponentStore
-}
 
 const _ComponentNode = ({componentStore, parentStore}: ComponentNodeProps) => {
   const store = useStore()
@@ -41,7 +36,7 @@ const _ComponentNode = ({componentStore, parentStore}: ComponentNodeProps) => {
     <ComponentDataProvider value={data}>
       <Wrapper>
         <Erroneous>
-          <ComponentViewer/>
+          <ComponentViewer component={ComponentNode}/>
         </Erroneous>
       </Wrapper>
     </ComponentDataProvider>

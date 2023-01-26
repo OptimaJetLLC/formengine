@@ -5,7 +5,7 @@ import {useEffect, useRef} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Input} from 'rsuite'
 import {useComponentData} from '../../../../utils/contexts/ComponenDataContext'
-import {StyleAnnotationProps} from '../StyleEditor'
+import {StyleAnnotationProps} from '../StyleAnnotationProps'
 
 const CSSBlock = observer(({annotation}: StyleAnnotationProps) => {
   const {componentStore} = useComponentData()

@@ -5,12 +5,21 @@ import {ComponentType, ReactNode} from 'react'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {isFunction} from '../../../utils'
 import {htmlAttributes, key, string, stylization, validation} from '../../annotation'
-import {Annotations} from '../../annotation/types'
 import {Annotation} from '../../annotation/utils/annotations/Annotation'
+import {BaseBuilder} from '../../annotation/utils/builders/BaseBuilder'
+import {ActionDefinition} from '../../event/actionDefinition'
+import {ActionEventHandler} from '../../event/actionEventHandler'
 import {defineAction} from '../../event/defineAction'
-import {ActionDefinition, ActionEventHandler} from '../../event/types'
 import {ActionsInitializer} from '../types'
 import {Model} from './Model'
+
+export type Annotations<T extends object> =
+  {
+    [key in keyof OmitUnimportant<T>]: BaseBuilder<T[key]> | undefined
+  }
+
+/** Remove some useless property for annotation defining which we define automatics */
+type OmitUnimportant<T extends object> = Omit<T, 'style' | 'className' | 'classPrefix'>
 
 //TODO проброс пропертей в инициализатор экшенов.
 //TODO rename

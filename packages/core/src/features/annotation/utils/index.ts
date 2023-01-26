@@ -3,7 +3,6 @@ import {Annotation} from './annotations/Annotation'
 import {ContainerAn} from './annotations/ContainerAn'
 import {EventAn} from './annotations/EventAn'
 import {ModuleAn} from './annotations/ModuleAn'
-import {PropertyAn} from './annotations/PropertyAn'
 import {StyleAn} from './annotations/StyleAn'
 import {AnnotationBuilder} from './builders/AnnotationBuilder'
 
@@ -13,10 +12,6 @@ export const isContainer = (value: Annotation): value is ContainerAn => {
 
 export const isStyle = (value: Annotation): value is StyleAn => {
   return value instanceof StyleAn
-}
-
-export const isProperty = (value: Annotation): value is PropertyAn => {
-  return value instanceof PropertyAn
 }
 
 export const isFunc = (value: Annotation): value is EventAn => {

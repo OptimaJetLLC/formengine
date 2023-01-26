@@ -1,5 +1,5 @@
 import {createNamedContext} from 'form-viewer'
-import {ActionData} from '../../../../../types'
+import {ActionData} from '../../../../../actionData'
 
 const [useActionData, ActionDataProvider] = createNamedContext<ActionData>('ActionDataContext')
 

@@ -1,5 +1,5 @@
 import {ComponentStore} from '../../../../../stores/ComponentStore'
-import {NewActionData} from '../../../types'
+import {NewActionData} from '../../../actionData'
 
 function initEvent(componentStore: ComponentStore, eventKey: string) {
   componentStore.events ??= {}

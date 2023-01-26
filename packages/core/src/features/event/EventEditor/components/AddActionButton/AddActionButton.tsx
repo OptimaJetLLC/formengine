@@ -5,7 +5,7 @@ import {useCallback, useRef, useState} from 'react'
 import {IconButton} from 'rsuite'
 import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
 import {Popover} from '../../../../ui/Popover'
-import {NewActionData} from '../../../types'
+import {NewActionData} from '../../../actionData'
 import {SelectAction} from './components/SelectAction'
 import {addActionToEvent, initEvent} from './utils'
 

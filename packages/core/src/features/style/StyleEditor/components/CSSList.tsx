@@ -4,7 +4,7 @@ import {observer} from 'mobx-react'
 import {useEffect} from 'react'
 import {useTranslation} from 'react-i18next'
 import {useComponentData} from '../../../../utils/contexts/ComponenDataContext'
-import {StyleAnnotationProps} from '../StyleEditor'
+import {StyleAnnotationProps} from '../StyleAnnotationProps'
 import {CompactCell, Row} from './List'
 
 const properties: any = cssProperties.all.map((value: string) => {

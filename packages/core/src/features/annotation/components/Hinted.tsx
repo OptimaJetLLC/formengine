@@ -3,7 +3,7 @@ import {ReactNode} from 'react'
 import {Tooltip, Whisper} from 'rsuite'
 import {WhisperProps} from 'rsuite/esm/Whisper/Whisper'
 import {useBuilderStore} from '../../../utils/contexts/BuilderStoreContext'
-import {BiDi} from '../../localization/consts'
+import {BiDi} from '../../localization/bidi'
 
 export interface HintedLabelProps extends HintedProps {
   htmlFor?: string
