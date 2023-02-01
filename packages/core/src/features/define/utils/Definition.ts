@@ -32,6 +32,7 @@ export class Definition<T extends object> {
     readonly properties?: Annotations<T>,
     readonly style?: Annotations<object>,
     readonly actionsInitializer?: ActionsInitializer,
+    // todo the hint is not used, instead we need to create a hint component
     readonly hint?: string,
     readonly customPreview?: ReactNode,
     readonly viewedWith?: ComponentDefinition<T>,
@@ -115,8 +116,6 @@ export class Definition<T extends object> {
       initStyle(this.style),
       this.#name,
       initActions(this.actionsInitializer?.(store.props, defineAction)),
-      this.hint,
-      this.customPreview
     )
 
     function initProperties(annotations?: Annotations<T>) {

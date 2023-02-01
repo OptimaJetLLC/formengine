@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {getDefaultProps, useComponentData} from 'fb-core'
+import {getDefaultProps, useComponentData, useStore} from 'fb-core'
 import {observer} from 'mobx-react'
 import {ReactNode} from 'react'
 import {DraggableProps} from '../../form-builder/components/ComponentBar'
@@ -9,11 +9,13 @@ import {useDragWithPreview} from './Editable/hooks/useDragWithPreview'
 
 export const AddedComponent = observer(({draggable = true, onAdd}: DraggableProps) => {
   const data = useComponentData()
+  const store = useStore()
+  const customPreview = store.props.view.get(data.model.type)?.customPreview
   const View = data.model.view
 
   const element = <Container onClick={() => onAdd?.(data)}>
     <Label>{data.model.name}</Label>
-    {data.model.customPreview ?? <View {...getDefaultProps(data)}/>}
+    {customPreview ?? <View {...getDefaultProps(data)}/>}
   </Container>
 
   return (draggable

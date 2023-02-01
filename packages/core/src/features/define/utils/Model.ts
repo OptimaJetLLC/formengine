@@ -26,8 +26,6 @@ export class Model<T> {
     readonly style: Annotation[],
     name?: string,
     readonly actions?: ActionDefinition[],
-    readonly hint?: string,
-    readonly customPreview?: ReactNode,
   ) {
     this.view = observer(view)
     this.view.displayName = view.displayName || view.name
