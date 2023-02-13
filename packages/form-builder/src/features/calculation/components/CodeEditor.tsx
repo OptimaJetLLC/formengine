@@ -1,3 +1,4 @@
+import {langs} from '@uiw/codemirror-extensions-langs'
 import CodeMirror from '@uiw/react-codemirror'
 import {FullScreenExpandable, useBuilderStore} from 'fb-core'
 import {observer} from 'mobx-react'
@@ -20,7 +21,7 @@ export const CodeEditor = observer(({source, setSource, readonly}: CodeEditorPro
       height="100%"
       style={{flex: 1}}
       minHeight="200px"
-      // extensions={[javascript()]}
+      extensions={[langs.javascript()]}
       onChange={onChange}
       readOnly={readonly}
     />
