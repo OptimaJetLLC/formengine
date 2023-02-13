@@ -5,8 +5,7 @@ import {PropertiesEditor} from './PropertiesEditor'
 
 const rightPanelViews = {
   'builder': <PropertiesEditor/>,
-  'viewer': null,
-  'json': null
+  'viewer': null
 }
 
 export const RightPanel = observer(() => {
@@ -14,7 +13,7 @@ export const RightPanel = observer(() => {
   const view = rightPanelViews[store.builderMode]
 
   return (
-    <Panel name={'rightPanel'} rightPlacement>
+    <Panel placement={'right'}>
       {view}
     </Panel>
   )

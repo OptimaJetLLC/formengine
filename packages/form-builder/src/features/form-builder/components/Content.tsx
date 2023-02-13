@@ -1,18 +1,16 @@
 import styled from '@emotion/styled'
 import {observer} from 'mobx-react'
-import {CodeEditorPanel} from '../../calculation/components/CodeEditorPanel'
+import {BottomPanel} from './BottomPanel'
 import {CentralPanel} from './CentralPanel'
 import {LeftPanel} from './LeftPanel'
 import {RightPanel} from './RightPanel'
 
-const _Content = () => {
-  return <>
-    <Container>
-      <LeftPanel/> <CentralPanel/> <RightPanel/>
-    </Container>
-    <CodeEditorPanel/>
-  </>
-}
+const _Content = () => <>
+  <Container>
+    <LeftPanel/> <CentralPanel/> <RightPanel/>
+  </Container>
+  <BottomPanel/>
+</>
 
 export const Content = observer(_Content)
 

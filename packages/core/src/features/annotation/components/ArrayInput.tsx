@@ -1,5 +1,5 @@
-import {LabeledProperty} from '../../ui/Containers'
 import {EditableTable, makeColumns} from '../../ui/EditableTable'
+import LabeledProperty from '../../ui/LabeledProperty'
 import {useEditor} from '../utils/useEditor'
 
 const DEFAULT_COLUMNS = [{name: 'value'}, {name: 'label'}]

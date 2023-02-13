@@ -2,7 +2,7 @@ import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import {Icon} from '@rsuite/icons'
 
 const FaSvgIcon = ({faIcon, size, ...rest}: { faIcon: any, size?: number }) => {
-  const {width, height, svgPathData} = faIcon
+  const {width, height, svgPathData} = extractFaIconData(faIcon)
   return (
     <svg viewBox={`0 0 ${width} ${height}`} width={`${size ?? 1}em`} height={`${size ?? 1}em`}
          fill="currentColor" {...rest}>
@@ -11,6 +11,13 @@ const FaSvgIcon = ({faIcon, size, ...rest}: { faIcon: any, size?: number }) => {
   )
 }
 
+const extractFaIconData = (faIcon: any) => {
+  if (faIcon?.icon) {
+    const [width, height, , , svgPathData] = faIcon.icon
+    return {width, height, svgPathData}
+  }
+  return faIcon
+}
 
 interface FaIconProps {
   icon: IconDefinition,

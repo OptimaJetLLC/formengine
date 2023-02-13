@@ -1,7 +1,7 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {Input, InputNumber, InputPicker} from 'rsuite'
-import {LabeledProperty} from '../../ui/Containers'
+import LabeledProperty from '../../ui/LabeledProperty'
 import {toLabeledValues} from '../utils/LabeledValue'
 import {useEditor} from '../utils/useEditor'
 

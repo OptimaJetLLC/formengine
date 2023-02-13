@@ -1,35 +1,37 @@
 import styled from '@emotion/styled'
-import {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import * as faCode from '@fortawesome/free-solid-svg-icons/faCode'
 import * as faPaintBrush from '@fortawesome/free-solid-svg-icons/faPaintBrush'
 import * as faPlay from '@fortawesome/free-solid-svg-icons/faPlay'
-import {BuilderMode, FaIcon, useBuilderStore} from 'fb-core'
+import {BuilderMode, FaIcon, SIconButton, useBuilderStore, useTranslationPart} from 'fb-core'
 import {observer} from 'mobx-react'
-import {useTranslation} from 'react-i18next'
-import {Radio, RadioGroup} from 'rsuite'
+
+const Modes: Record<BuilderMode, { icon: any, toggleTo: BuilderMode }> = {
+  viewer: {icon: faPaintBrush, toggleTo: 'builder'},
+  builder: {icon: faPlay, toggleTo: 'viewer'}
+}
 
 export const ToggleModeButton = observer(() => {
   const store = useBuilderStore()
-  const {t} = useTranslation()
-  const color = 'var(--rs-btn-primary-bg)'
+  const {icon, toggleTo} = Modes[store.builderMode]
+  const t = useTranslationPart('rightMenu.modes')
 
-  return <RadioGroup name="builderModeList" inline appearance="picker" value={store.builderMode}
-                     onChange={value => store.changeBuilderMode(value as BuilderMode)}>
-    <Radio value="viewer">
-      <SFaIcon icon={faPlay as unknown as IconDefinition} color={color}/>
-      {t('rightMenu.previewMode')}
-    </Radio>
-    <Radio value="builder">
-      <SFaIcon icon={faPaintBrush as unknown as IconDefinition} color={color}/>
-      {t('rightMenu.editMode')}
-    </Radio>
-    <Radio value="json">
-      <SFaIcon icon={faCode as unknown as IconDefinition} color={color}/>
-      {t('rightMenu.jsonMode')}
-    </Radio>
-  </RadioGroup>
+  return <AnimatedButton onClick={() => store.changeBuilderMode(toggleTo)}
+                         appearance={'primary'} className={store.builderMode}>
+    <FaIcon icon={icon} color={'white'}/>
+    {t(store.builderMode)}
+  </AnimatedButton>
 })
 
-const SFaIcon = styled(FaIcon)`
-  margin-right: 6px;
+const AnimatedButton = styled(SIconButton)`
+  min-width: 98px;
+  display: flex;
+  justify-content: center;
+  background-size: 200% 100%;
+  background-image: linear-gradient(to right, var(--rs-btn-primary-bg) 50%, var(--rs-green-700) 50%);
+  transition: background-position 200ms, box-shadow 600ms !important;
+  box-shadow: 2px 5px 20px -5px var(--rs-btn-primary-bg);
+
+  &.viewer {
+    background-position: 100% 0;
+    box-shadow: 2px 5px 20px -5px var(--rs-green-700);
+  }
 `

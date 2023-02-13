@@ -6,6 +6,7 @@ import {FaIcon} from 'fb-core'
 import {observer} from 'mobx-react'
 import {ButtonToolbar, IconButton} from 'rsuite'
 import {AddButton} from './components/AddButton'
+import {Export} from './components/Export'
 import {Menu} from './components/Menu'
 import {ResolutionPicker} from './components/ResolutionPicker'
 import {ToggleModeButton} from './components/ToggleModeButton'
@@ -30,6 +31,7 @@ const Header = observer(() => {
       <CenterPart>
         <ResolutionPicker/>
         <ToggleModeButton/>
+        <Export/>
       </CenterPart>
 
       <RightPart>
@@ -41,9 +43,14 @@ const Header = observer(() => {
 
 const LeftPart = styled.div``
 
-const RightPart = styled.div`justify-content: flex-end;`
+const RightPart = styled.div`
+  justify-content: flex-end;
+`
 
-const CenterPart = styled.div`justify-content: center;`
+const CenterPart = styled.div`
+  justify-content: center;
+  gap: 10px;
+`
 
 const Container = styled.div`
   display: flex;

@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
-import {Annotation, CompilationResult, compileFn, ComponentStore, useBuilderStore} from 'fb-core'
+import {Annotation, CompilationResult, compileFn, ComponentStore, useBuilderStore, useTranslationPart} from 'fb-core'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
-import {Button, ButtonGroup, Checkbox, Panel} from 'rsuite'
+import {Button, ButtonGroup, Checkbox} from 'rsuite'
 import {CodeEditor} from './CodeEditor'
 
 const codePlaceHolder = '// enter your code here'
@@ -70,10 +70,10 @@ const _CodeEditorPanel = ({componentStore, annotation, onClose}: CodeEditorPanel
     <code>{componentStore.key}.{annotation.name}</code> &gt;
     (must return {annotation.schema?.type})</p>
 
-  return <SPanel bodyFill>
+  return <>
     <Header>{header}</Header>
     <CodeEditor source={sourceCode} setSource={setSourceCode}/>
-    <div style={{marginTop: 10}}>
+    <SDiv>
       <ButtonGroup>
         <Button appearance="primary" onClick={compileCode}>Compile</Button>
         <Button appearance="ghost" onClick={saveCode}>Save</Button>
@@ -82,26 +82,34 @@ const _CodeEditorPanel = ({componentStore, annotation, onClose}: CodeEditorPanel
       <Checkbox checked={useFn} onChange={(_, checked) => setUseFn(checked)}>
         Use calculated property
       </Checkbox>
-    </div>
+    </SDiv>
     <ErrorMessage result={compilationError}/>
-  </SPanel>
+  </>
 }
 
 const CodeEditorPanelWrapper = () => {
   const store = useBuilderStore()
-  if (!store.calculatedProperty) return null
-
-  return <_CodeEditorPanel {...store.calculatedProperty} onClose={() => store.calculatedProperty = undefined}/>
+  const t = useTranslationPart('codeEditor')
+  return store.calculatedProperty?.componentStore.key
+      ? <_CodeEditorPanel {...store.calculatedProperty} onClose={() => store.calculatedProperty = undefined}/>
+      : <Placeholder>{t('placeholder')}</Placeholder>
 }
 
 export const CodeEditorPanel = observer(CodeEditorPanelWrapper)
 
-const Header = styled.div`
-  margin-bottom: 20px;
+const SDiv = styled.div`
+  padding: 10px;
+`
+
+const Placeholder = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   font-size: 16px;
 `
 
-const SPanel = styled(Panel)`
-  background-color: #ffffffa1;
-  padding: 20px
+const Header = styled.div`
+  padding: 10px;
+  font-size: 16px;
 `

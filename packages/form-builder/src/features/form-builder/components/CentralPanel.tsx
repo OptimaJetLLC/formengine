@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import {FormViewer, useBuilderStore, useStore} from 'fb-core'
 import {observer} from 'mobx-react'
-import {JsonView} from './JsonView'
 import {PanelContainer} from './Panel'
 
 const resolutions = {
@@ -13,12 +12,11 @@ const resolutions = {
 const _CentralPanel = () => {
   const store = useStore()
   const builderStore = useBuilderStore()
-  const view = builderStore.builderMode === 'json' ? <JsonView/> : <FormViewer {...store.props}/>
 
   return (
     <FormContainer>
       <Viewport style={resolutions[builderStore.viewMode]}>
-        {view}
+        <FormViewer {...store.props}/>
       </Viewport>
     </FormContainer>
   )

@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import ColorPicker from 'rsuite-color-picker'
 import 'rsuite-color-picker/lib/styles.css'
 import {rgbFromString, rgbToString} from '../../style/utils'
-import {LabeledProperty} from '../../ui/Containers'
+import LabeledProperty from '../../ui/LabeledProperty'
 import {useEditor} from '../utils/useEditor'
 
 const PLACEHOLDER_COLOR = {r: 255, g: 255, b: 255, a: 0}

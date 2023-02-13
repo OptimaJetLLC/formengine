@@ -1,30 +1,25 @@
+import {cx} from '@emotion/css'
+import {css} from '@emotion/react'
 import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import * as faCode from '@fortawesome/free-solid-svg-icons/faCode'
-import {observer} from 'mobx-react'
-import {cloneElement, ComponentProps} from 'react'
-import {IconButton} from 'rsuite'
-import useUniqueId from 'rsuite/cjs/utils/useUniqueId'
+import {faCompressAlt, faExpandAlt} from '@fortawesome/free-solid-svg-icons'
+import {PropsWithChildren, useState} from 'react'
+import {Button, IconButton} from 'rsuite'
 //https://styled-system.com/#expressive-consistent-ui-components
 //https://styled-system.com/table
 //Позволяет прописывать стили в виде коротких пропсов
 import {color, layout, space} from 'styled-system'
-import {useBuilderStore} from '../../utils/contexts/BuilderStoreContext'
-import {useComponentData} from '../../utils/contexts/ComponenDataContext'
-import {Hinted, HintedLabel} from '../annotation/components/Hinted'
-import {Annotation} from '../annotation/utils/annotations/Annotation'
-import {useTranslationPart} from '../localization/hooks'
 import {FaIcon} from './Icons'
 
 //TODO remove styled-system library
 
-const Box = styled('div')(
+export const Box = styled('div')(
   layout,
   space,
   color
 )
 
-const Rows = styled(Box)<{ margin?: number, mx?: number | string }>`
+export const Rows = styled(Box)<{ margin?: number, mx?: number | string }>`
   display: flex;
   flex-direction: column;
 
@@ -42,7 +37,7 @@ const Rows = styled(Box)<{ margin?: number, mx?: number | string }>`
   }
 `
 
-const Columns = styled(Box)<{ margin?: number }>`
+export const Columns = styled(Box)<{ margin?: number }>`
   display: flex;
   flex-direction: row;
   margin: 0 10px;
@@ -61,7 +56,7 @@ const Columns = styled(Box)<{ margin?: number }>`
   }
 `
 
-const LabeledInput = styled.div`
+export const LabeledInput = styled.div`
   display: flex;
   gap: 10px;
   justify-content: space-between;
@@ -73,46 +68,56 @@ const LabeledInput = styled.div`
   }
 `
 
-export interface LabeledPropertyProps extends ComponentProps<any> {
-  idPrefix?: string
-  annotation: Annotation
-}
+export const makeLabeledIconStyles = (gap: number = 10) => css`
+  && {
+    display: flex;
+    align-items: center;
+    gap: ${gap}px;
 
-const _CodeButton = ({annotation}: { annotation: Annotation }) => {
-  const {componentStore} = useComponentData()
-  const store = useBuilderStore()
-  const hasCode = componentStore.props[annotation.key]?.fnSource
-  const getLabel = useTranslationPart('propertiesEditor.calculable')
-  const hint = hasCode ? getLabel('edit') : getLabel('hint')
-  const color = hasCode ? 'var(--rs-btn-primary-bg)' : undefined
-
-  const setCurrentCalculatedProperty = () => store.calculatedProperty = {componentStore, annotation}
-  return <Hinted hint={hint}>
-    <SIconButton onClick={setCurrentCalculatedProperty} disabled={!annotation.calculable}
-                 icon={<FaIcon icon={faCode as unknown as IconDefinition} color={color}/>}
-                 size={'xs'} appearance={'subtle'}/>
-  </Hinted>
-}
-
-export const CodeButton = observer(_CodeButton)
-
-export const LabeledProperty = ({idPrefix, annotation, children}: LabeledPropertyProps) => {
-  const id = useUniqueId(idPrefix || 'id-')
-  const getLabel = useTranslationPart(`annotation.${annotation.key}`)
-
-  return <LabeledInput>
-    <CodeButton annotation={annotation}/>
-    <HintedLabel htmlFor={id} hint={getLabel('hint') || annotation.hint}>
-      <>{getLabel('name') || annotation.name}</>
-    </HintedLabel>
-    {children ? cloneElement(children, {id}) : undefined}
-  </LabeledInput>
-}
-
-const SIconButton = styled(IconButton)`
-  min-width: 24px;
-  margin-inline-end: -6px;
-  margin-bottom: -2px !important;
+    .rs-icon {
+      margin-block-start: 2px;
+    }
+  }
 `
 
-export {Box, Rows, Columns, LabeledInput}
+export const SIconButton = styled(Button)`
+  ${makeLabeledIconStyles()}
+`
+export const FullScreenExpandable = ({children}: PropsWithChildren<any>) => {
+  const [expanded, setExpanded] = useState(false)
+  const icon = <FaIcon icon={(expanded ? faCompressAlt : faExpandAlt) as unknown as IconDefinition}
+                       width={'1em'} height={'1em'}/>
+
+  return <SDiv className={cx({expanded})}>
+    <SExpandButton onClick={() => setExpanded(!expanded)} icon={icon} size={'sm'} appearance={'subtle'}/>
+    <div className={'content'}>
+      {children}
+    </div>
+  </SDiv>
+}
+
+const SExpandButton = styled(IconButton)`
+  z-index: 9999;
+  position: absolute !important;
+  inset-inline-end: 10px;
+  inset-block-start: 10px;
+`
+
+const SDiv = styled.div`
+  position: relative;
+  height: 100%;
+
+  & > .content {
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  &.expanded {
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+`

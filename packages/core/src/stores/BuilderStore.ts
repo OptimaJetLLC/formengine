@@ -1,3 +1,4 @@
+import {getSystemTheme, PanelPlacement} from 'form-builder'
 import {assign, cloneDeep} from 'lodash'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
 import {ComponentType, ReactElement} from 'react'
@@ -8,20 +9,17 @@ import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../fe
 import {fbScreen} from '../features/ui/FbScreen'
 import {treeFind} from '../utils'
 import {Node} from '../utils/Node'
-import {ComponentMove, InsertPosition} from '../utils/types'
+import {BuilderMode, BuilderTheme, BuilderViewMode, ComponentMove, InsertPosition} from '../utils/types'
 import {ComponentStore} from './ComponentStore'
 import {Store} from './Store'
 
 const {After, Inner} = InsertPosition
 
-export type BuilderMode = 'builder' | 'viewer' | 'json'
-
-export type BuilderViewMode = 'desktop' | 'mobile' | 'tablet'
-
 export class BuilderStore {
   builderMode: BuilderMode = 'viewer'
   viewMode: BuilderViewMode = 'desktop'
-  isResizing: boolean = false
+  theme: BuilderTheme = getSystemTheme()
+  openedPanels: PanelPlacement[] = ['left', 'right']
   selected?: Node
   language = defaultLanguage
   readonly #disposer: IReactionDisposer
@@ -42,6 +40,7 @@ export class BuilderStore {
       calculatedProperty: observable.ref,
       builderMode: true,
       viewMode: true,
+      openedPanels: true,
       changeBuilderMode: action
     })
 
@@ -207,5 +206,13 @@ export class BuilderStore {
     }
 
     input.click()
+  }
+
+  setPanelVisible(placement: PanelPlacement, visible: boolean) {
+    const filtered = this.openedPanels?.filter(key => key !== placement) ?? []
+    this.openedPanels = [
+      ...filtered,
+      ...visible ? [placement] : []
+    ]
   }
 }

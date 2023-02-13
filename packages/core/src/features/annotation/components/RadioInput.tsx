@@ -1,4 +1,4 @@
-import {LabeledProperty} from '../../ui/Containers'
+import LabeledProperty from '../../ui/LabeledProperty'
 import {RadioButtons} from '../../ui/RadioButtons'
 import {PropertyAn} from '../utils/annotations/PropertyAn'
 import {useEditor} from '../utils/useEditor'

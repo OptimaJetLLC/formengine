@@ -1,8 +1,8 @@
 import {css, Global} from '@emotion/react'
-import {ComponentProps, createContext} from 'react'
+import {useBuilderStore} from 'fb-core'
+import {observer} from 'mobx-react'
+import {ComponentProps} from 'react'
 import {CustomProvider} from 'rsuite'
-import {CustomProviderProps} from 'rsuite/esm/CustomProvider/CustomProvider'
-import useLocalStorageState from 'use-local-storage-state'
 
 const globalStyles = css`
   /* Scrollbar */
@@ -25,24 +25,12 @@ const globalStyles = css`
   }
 `
 
-type ThemeType = CustomProviderProps['theme'];
+export const StylesProvider = observer((props: ComponentProps<any>) => {
+  const store = useBuilderStore()
+  const {theme} = store
 
-interface StylesProviderProps extends CustomProviderProps {
-  setTheme: Function
-}
-
-export const StylesContext = createContext<StylesProviderProps>({
-  setTheme: () => {
-  }
-})
-
-export const StylesProvider = (props: ComponentProps<any>) => {
-  const isDarkThemeSystem = window.matchMedia('(prefers-color-scheme: dark)')?.matches
-  const [theme, setTheme] = useLocalStorageState<ThemeType>('fb-theme', {
-    defaultValue: isDarkThemeSystem ? 'dark' : 'light'
-  })
-  return <StylesContext.Provider value={{theme, setTheme}}><CustomProvider theme={theme}>
+  return <CustomProvider theme={theme}>
     {props.children}
     <Global styles={globalStyles}/>
-  </CustomProvider></StylesContext.Provider>
-}
+  </CustomProvider>
+})

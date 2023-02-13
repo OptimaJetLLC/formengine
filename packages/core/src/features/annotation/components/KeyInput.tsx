@@ -1,6 +1,6 @@
 import {Input} from 'rsuite'
 import {useComponentData} from '../../../utils/contexts/ComponenDataContext'
-import {LabeledProperty} from '../../ui/Containers'
+import LabeledProperty from '../../ui/LabeledProperty'
 import {useEditor} from '../utils/useEditor'
 
 const KeyInput = () => {

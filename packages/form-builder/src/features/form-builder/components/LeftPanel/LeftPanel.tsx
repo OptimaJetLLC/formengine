@@ -6,8 +6,7 @@ import {Tree} from './components/Tree'
 
 const leftPanelViews = {
   'builder': <Tree/>,
-  'viewer': <Errors style={{margin: 20}}/>,
-  'json': null
+  'viewer': <Errors style={{margin: 20}}/>
 }
 
 export const LeftPanel = observer(() => {
@@ -15,7 +14,7 @@ export const LeftPanel = observer(() => {
   const view = leftPanelViews[store.builderMode]
 
   return (
-    <Panel name={'leftPanel'}>
+    <Panel placement={'left'}>
       {view}
     </Panel>
   )

@@ -1,3 +1,5 @@
+import {BuilderTheme} from './types'
+
 export function isFunction(fn: any): fn is Function {
   return typeof fn === 'function'
 }
@@ -21,4 +23,9 @@ export function treeFind<T extends { key: string, children?: T[] }>(value: T, ke
   }
 
   return
+}
+
+export const getSystemTheme = (): BuilderTheme => {
+  return window.matchMedia('(prefers-color-scheme: dark)')?.matches
+    ? 'dark' : 'light'
 }

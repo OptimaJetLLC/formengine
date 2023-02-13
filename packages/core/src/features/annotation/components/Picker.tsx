@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {isUndefined} from 'lodash'
 import {InputPicker} from 'rsuite'
-import {LabeledProperty} from '../../ui/Containers'
+import LabeledProperty from '../../ui/LabeledProperty'
 import {PropertyAn} from '../utils/annotations/PropertyAn'
 import {useEditor} from '../utils/useEditor'
 

@@ -1,20 +1,32 @@
-import {BuilderStore, BuilderViewMode} from 'fb-core'
+import {BuilderStore, BuilderTheme, BuilderViewMode, getSystemTheme} from 'fb-core'
 import {autorun, IReactionDisposer} from 'mobx'
+import {parseJson} from '../utils/parseJson'
 
 export class LocalStorageSynchronizer {
-  readonly #disposer: IReactionDisposer
+  readonly #disposers: IReactionDisposer[]
 
   constructor(private store: BuilderStore) {
     const resolutionKey = 'resolution'
     store.viewMode = this.getItem<BuilderViewMode>(resolutionKey, 'desktop')
-    this.#disposer = autorun(() => this.setItem(resolutionKey, store.viewMode))
+
+    const openedPanelsKey = 'openedPanels'
+    store.openedPanels = parseJson(this.getItem<string>(openedPanelsKey)) ?? ['left', 'right']
+
+    const themeKey = 'theme'
+    store.theme = this.getItem<BuilderTheme>(themeKey, getSystemTheme())
+
+    this.#disposers = [
+      autorun(() => this.setItem(resolutionKey, store.viewMode)),
+      autorun(() => this.setItem(openedPanelsKey, JSON.stringify(store.openedPanels))),
+      autorun(() => this.setItem(themeKey, store.theme))
+    ]
   }
 
   destroy = () => {
-    this.#disposer()
+    this.#disposers.forEach(disposer => disposer())
   }
 
-  private getItem = <T>(key: string, defaultValue: T) => {
+  private getItem = <T>(key: string, defaultValue?: T) => {
     const value = localStorage.getItem(key) ?? defaultValue
     return value as T
   }

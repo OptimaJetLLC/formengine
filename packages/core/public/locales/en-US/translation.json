@@ -34,9 +34,16 @@
     "desktop": "Desktop",
     "mobile": "Mobile",
     "tablet": "Tablet",
-    "previewMode": "Preview",
-    "editMode": "Edit",
-    "jsonMode": "JSON"
+    "modes": {
+      "builder": "Preview",
+      "viewer": "Edit"
+    }
+  },
+  "bottomPanel": {
+    "panes": {
+      "json": "JSON",
+      "code": "Code"
+    }
   },
   "componentsModal": {
     "clickToAdd": "Click to add control"
@@ -46,6 +53,9 @@
     "before": "Before",
     "after": "After",
     "inside": "Inside"
+  },
+  "codeEditor": {
+    "placeholder": "Select component property to edit code"
   },
   "propertiesEditor": {
     "selectElementForEdit": "Select element on form for edit properties",
