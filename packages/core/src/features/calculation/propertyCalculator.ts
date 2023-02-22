@@ -1,3 +1,4 @@
+import {isUndefined} from 'lodash'
 import {ComponentProperty, ComponentStore} from '../../stores/ComponentStore'
 import {Form} from '../validation'
 
@@ -15,19 +16,6 @@ const getOrCreateFn = (source: string) => {
 export const calculatePropertyValue = (componentStore: ComponentStore, componentProperty: ComponentProperty, form: Form) => {
   const fn = getOrCreateFn(componentProperty.fnSource || '')
   return fn(form)
-}
-
-export const calculateProperty = (componentStore: ComponentStore, propertyName: string, form: Form) => {
-  const componentProperty = componentStore.props[propertyName]
-  if (!componentProperty) return
-
-  try {
-    return componentProperty.useFn
-      ? calculatePropertyValue(componentStore, componentProperty, form)
-      : componentProperty.value
-  } catch (e) {
-    console.error(e)
-  }
 }
 
 export type CompilationResult = {
@@ -48,7 +36,22 @@ export const compileFn = (source: string): CompilationResult => {
 export const calculateProperties = (componentStore: ComponentStore, form: Form) => {
   const data: Record<string, any> = {}
   Object.keys(componentStore.props).forEach(value => {
-    data[value] = calculateProperty(componentStore, value, form)
+    const componentProperty = componentStore.props[value]
+    if (!componentProperty) return
+
+    if (componentProperty.useFn) {
+      try {
+        data[value] = calculatePropertyValue(componentStore, componentProperty, form)
+      } catch (e) {
+        console.error(e)
+      }
+      return
+    }
+
+    // we do not want to set an undefined value, instead the default component property will be used
+    if (!isUndefined(componentProperty.value)) {
+      data[value] = componentProperty.value
+    }
   })
   return data
 }

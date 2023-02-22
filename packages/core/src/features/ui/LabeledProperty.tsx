@@ -22,9 +22,14 @@ const _CodeButton = ({annotation}: { annotation: Annotation }) => {
   const {componentStore} = useComponentData()
   const store = useBuilderStore()
   const hasCode = componentStore.props[annotation.key]?.fnSource
+  const useFn = componentStore.props[annotation.key]?.useFn
   const getLabel = useTranslationPart('propertiesEditor.calculable')
-  const hint = hasCode ? getLabel('edit') : getLabel('hint')
-  const color = hasCode ? 'var(--rs-btn-primary-bg)' : undefined
+  const hint = !annotation.calculable
+    ? getLabel('notCalculable')
+    : hasCode ? getLabel('edit') : getLabel('hint')
+  const color = hasCode && useFn
+    ? 'var(--rs-btn-primary-bg)'
+    : hasCode ? 'var(--rs-primary-200)' : undefined
 
   const setCurrentCalculatedProperty = () => store.calculatedProperty = {componentStore, annotation}
   return <Hinted hint={hint}>

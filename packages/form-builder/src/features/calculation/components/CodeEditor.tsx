@@ -1,6 +1,6 @@
 import {langs} from '@uiw/codemirror-extensions-langs'
 import CodeMirror from '@uiw/react-codemirror'
-import {FullScreenExpandable, useBuilderStore} from 'fb-core'
+import {useBuilderStore} from 'fb-core'
 import {observer} from 'mobx-react'
 import {useCallback} from 'react'
 
@@ -13,17 +13,15 @@ interface CodeEditorProps {
 export const CodeEditor = observer(({source, setSource, readonly}: CodeEditorProps) => {
   const {theme} = useBuilderStore()
   const onChange = useCallback(value => setSource?.(value), [])
-  return <FullScreenExpandable>
-    <CodeMirror
-      className={'editor'}
-      value={source}
-      theme={theme as 'light' | 'dark'}
-      height="100%"
-      style={{flex: 1}}
-      minHeight="200px"
-      extensions={[langs.javascript()]}
-      onChange={onChange}
-      readOnly={readonly}
-    />
-  </FullScreenExpandable>
+  return <CodeMirror
+    className={'editor'}
+    value={source}
+    theme={theme as 'light' | 'dark'}
+    height="100%"
+    style={{flex: 1}}
+    minHeight="200px"
+    extensions={[langs.javascript()]}
+    onChange={onChange}
+    readOnly={readonly}
+  />
 })

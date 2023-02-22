@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import {Annotation, CompilationResult, compileFn, ComponentStore, useBuilderStore, useTranslationPart} from 'fb-core'
+import {action} from 'mobx'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import {Button, ButtonGroup, Checkbox} from 'rsuite'
@@ -76,7 +77,7 @@ const _CodeEditorPanel = ({componentStore, annotation, onClose}: CodeEditorPanel
     <SDiv>
       <ButtonGroup>
         <Button appearance="primary" onClick={compileCode}>Compile</Button>
-        <Button appearance="ghost" onClick={saveCode}>Save</Button>
+        <Button appearance="ghost" onClick={action(() => saveCode())}>Save</Button>
         <Button appearance="ghost" onClick={onClose}>Close</Button>
       </ButtonGroup>
       <Checkbox checked={useFn} onChange={(_, checked) => setUseFn(checked)}>
@@ -91,8 +92,8 @@ const CodeEditorPanelWrapper = () => {
   const store = useBuilderStore()
   const t = useTranslationPart('codeEditor')
   return store.calculatedProperty?.componentStore.key
-      ? <_CodeEditorPanel {...store.calculatedProperty} onClose={() => store.calculatedProperty = undefined}/>
-      : <Placeholder>{t('placeholder')}</Placeholder>
+    ? <_CodeEditorPanel {...store.calculatedProperty} onClose={() => store.calculatedProperty = undefined}/>
+    : <Placeholder>{t('placeholder')}</Placeholder>
 }
 
 export const CodeEditorPanel = observer(CodeEditorPanelWrapper)
