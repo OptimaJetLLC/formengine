@@ -1,7 +1,16 @@
 {
   "key": "screen 1",
   "type": "FbScreen",
-  "props": {},
+  "props": {
+    "actions": {
+      "value": [
+        {
+          "name": "WeatherRequest",
+          "body": "try {\n  fetch(`https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.62&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`)\n      .then(v => v.json())\n      .then(v => {\n        e.sender.componentStore.props.children ??= {}\n        e.sender.componentStore.props.children.value = `Current weather is ${v.current_weather.temperature} °C`\n      })\n} catch (error) {\n  e.sender.componentStore.props.children ??= {}\n  e.sender.componentStore.props.children.value = `Current weather is not available`\n}"
+        }
+      ]
+    }
+  },
   "children": [
     {
       "key": "AntButton 1",
@@ -36,6 +45,26 @@
           "width": "100%",
           "height": "40px"
         }
+      }
+    },
+    {
+      "key": "RsButton 1",
+      "type": "RsButton",
+      "props": {
+        "children": {
+          "value": "Fetch weather"
+        }
+      },
+      "events": {
+        "onDidMount": [
+          {
+            "name": "WeatherRequest",
+            "type": "custom"
+          }
+        ]
+      },
+      "styles": {
+        "cssObject": {}
       }
     },
     {

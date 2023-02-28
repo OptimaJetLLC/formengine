@@ -1,6 +1,9 @@
 {
   "common": {
-    "apply": "Apply"
+    "apply": "Apply",
+    "name": "Name",
+    "save": "Save",
+    "cancel": "Cancel"
   },
   "annotation": {
     "htmlAttributes": {
@@ -55,7 +58,8 @@
     "inside": "Inside"
   },
   "codeEditor": {
-    "placeholder": "Select component property to edit code"
+    "placeholder": "Select component property to edit code",
+    "customActionHeader": "Custom action editor"
   },
   "propertiesEditor": {
     "selectElementForEdit": "Select element on form for edit properties",
@@ -106,7 +110,17 @@
     "cssObject": "Object of CSS"
   },
   "actions": {
-    "arguments": "Arguments"
+    "arguments": "Arguments",
+    "custom": "Custom",
+    "edit": "Edit",
+    "duplicate": "Duplicate",
+    "delete": "Delete",
+    "addCustomAction": "Add custom action",
+    "addAction": "Add action",
+    "parameters": "Parameters",
+    "add": "Add",
+    "name": "Name",
+    "type": "Type"
   },
   "validation": {
     "chooseValidation": "Choose your type",

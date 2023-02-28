@@ -8,9 +8,9 @@ interface DropState {
   isOver: boolean,
 }
 
-const {Before, After, Inner} = InsertPosition
-
 export const useDropZone = (isAfter: boolean, isInner?: boolean): [DropState, ConnectDropTarget] => {
+  const {Before, After, Inner} = InsertPosition
+
   const store = useBuilderStore()
   const target = useComponentData()
   const {bindTo} = target.componentStore

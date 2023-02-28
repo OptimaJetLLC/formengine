@@ -5,17 +5,23 @@ import {AddActionButton} from './components/AddActionButton'
 
 //EventEditor: one eventName - one editor - some actions
 export const EventEditor = () => {
-  const {annotation} = useAnnotation()
-  return <Container>
-    <h6 style={{marginLeft: 10}}>{annotation.key}</h6>
-    <ActionList eventName={annotation.key}/>
-    <AddActionButton eventKey={annotation.key}/>
-  </Container>
+  const eventName = useAnnotation().annotation.key
+  return (
+    <SDiv>
+      <SH6>{eventName}</SH6>
+      <ActionList/>
+      <AddActionButton/>
+    </SDiv>
+  )
 }
 
-const Container = styled.div`
+const SDiv = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 20px;
+`
+
+const SH6 = styled.h6`
+  margin-left: 10px;
 `

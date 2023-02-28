@@ -12,7 +12,6 @@ import {color, layout, space} from 'styled-system'
 import {FaIcon} from './Icons'
 
 //TODO remove styled-system library
-
 export const Box = styled('div')(
   layout,
   space,

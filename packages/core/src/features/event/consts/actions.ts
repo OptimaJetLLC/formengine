@@ -1,4 +1,4 @@
-import {defineAction} from './defineAction'
+import {defineAction} from '../utils/defineAction'
 
 const setValue = defineAction('Set value', (actionArgs, e) => {
   //const componentStore: ComponentStore = eventArgs[2];

@@ -1,23 +1,26 @@
 import {makeAutoObservable} from 'mobx'
 import {ComponentType} from 'react'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
-import {initEvents} from '../features/event'
-import {EventBus} from '../features/event/utils/EventBus'
+import {computeEvents} from '../features/event'
 import {getHtmlAttributes} from '../features/html-attributes'
 import {computeStylization} from '../features/style'
 import {getSubstitutedValue} from '../features/substitution'
 import {ComponentNodeProps} from '../features/ui/ComponentNodeProps'
 import {ComponentData} from '../utils/contexts/ComponenDataContext'
 import {getChildren} from '../utils/getChildren'
-import {getDefaultProps} from '../utils/getDefaultProps'
+import {initDefaultProps} from '../utils/initDefaultProps'
 import {Store} from './Store'
 
 export class ComponentState {
-  constructor(readonly data: ComponentData,
-              readonly store: Store,
-              readonly eventBus: EventBus,
-              readonly component: ComponentType<ComponentNodeProps>) {
+  readonly defaultProps
+
+  constructor(
+    readonly data: ComponentData,
+    readonly store: Store,
+    readonly component: ComponentType<ComponentNodeProps>
+  ) {
     makeAutoObservable(this)
+    this.defaultProps = initDefaultProps(data.model)
   }
 
   get get() {
@@ -38,16 +41,12 @@ export class ComponentState {
     if (this.data.field) return {[this.data.field.valuedAn.key]: this.data.field.value}
   }
 
-  get defaultProps() {
-    return getDefaultProps(this.data)
-  }
-
   get calculatedProps() {
     return calculateProperties(this.data.componentStore, this.store.form)
   }
 
   get events() {
-    return initEvents(this.data, this.store, this.eventBus)
+    return computeEvents(this.data, this.store)
   }
 
   get substitutedValue() {

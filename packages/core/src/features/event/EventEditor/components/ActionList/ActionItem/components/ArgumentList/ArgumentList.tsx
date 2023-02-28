@@ -2,20 +2,24 @@ import styled from '@emotion/styled'
 import {ArrowDownLine, ArrowUpLine} from '@rsuite/icons'
 import {t} from 'i18next'
 import {observer} from 'mobx-react'
-import {useState} from 'react'
+import {useReducer} from 'react'
 import {Animation, Button} from 'rsuite'
+import {useStore} from '../../../../../../../../utils/contexts/StoreContext'
+import {useComputed} from '../../../../../../../../utils/useComputed'
 import {Box, Rows} from '../../../../../../../ui/Containers'
 import {useActionData} from '../../contexts/ActionDataContext'
 import {ArgumentItem} from './ArgumentItem'
 import {useClearableArguments} from './hooks/useClearableArguments'
 
 export const ArgumentList = observer(() => {
-  const [show, setShow] = useState(false)
+  const store = useStore()
   const data = useActionData()
+  const action = useComputed(() => store.findAction(data))
+  const [show, toggleShow] = useReducer(state => !state, false)
   const ExpandIcon = show ? ArrowUpLine : ArrowDownLine
   useClearableArguments()
 
-  if (!data.action.args?.length) return null
+  if (!action.params) return null
 
   return (
     <>
@@ -23,14 +27,14 @@ export const ArgumentList = observer(() => {
         <Box px={10}>
           <div>
             <Rows margin={1} style={{marginTop: 8}}>
-              {data.action.args.map((arg, index) =>
+              {action.params.map((arg, index) =>
                 <ArgumentItem key={index} data={arg}/>)}
             </Rows>
           </div>
         </Box>
       </Animation.Collapse>
 
-      <ExpandButton block onClick={() => setShow(!show)}>
+      <ExpandButton block onClick={toggleShow}>
         <>
           {t('actions.arguments')}
           <ExpandIcon style={{marginTop: -2}}/>

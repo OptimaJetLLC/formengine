@@ -1,7 +1,7 @@
 import {FullScreenExpandable, useBuilderStore} from 'fb-core'
 import {observer} from 'mobx-react'
 import {useEffect, useRef, useState} from 'react'
-import {CodeEditor} from '../../calculation/components/CodeEditor'
+import {JsEditor} from '../../calculation/components/JsEditor'
 
 const _JsonView = () => {
   const builderStore = useBuilderStore()
@@ -16,7 +16,7 @@ const _JsonView = () => {
   useEffect(() => () => builderStore.parseForm(sourceRef.current), [])
 
   return <FullScreenExpandable>
-    <CodeEditor source={source} setSource={onSetSource}/>
+    <JsEditor value={source} onChange={onSetSource}/>
   </FullScreenExpandable>
 }
 

@@ -1,1 +1,0 @@
-export const ANY_EVENT = Symbol('Any event')

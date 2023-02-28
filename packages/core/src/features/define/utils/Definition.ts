@@ -4,12 +4,10 @@ import {forIn, startCase, transform} from 'lodash'
 import {ComponentType, ReactNode} from 'react'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {isFunction} from '../../../utils'
-import {htmlAttributes, key, string, stylization, validation} from '../../annotation'
+import {event, htmlAttributes, key, string, stylization, validation} from '../../annotation'
 import {Annotation} from '../../annotation/utils/annotations/Annotation'
 import {BaseBuilder} from '../../annotation/utils/builders/BaseBuilder'
-import {ActionDefinition} from '../../event/actionDefinition'
-import {ActionEventHandler} from '../../event/actionEventHandler'
-import {defineAction} from '../../event/defineAction'
+import {ActionDefinition, ActionEventHandler, defineAction, DidMountEvent, WillUnmountEvent} from '../../event'
 import {ActionsInitializer} from '../types'
 import {Model} from './Model'
 
@@ -52,13 +50,6 @@ export class Definition<T extends object> {
       || this.view.name
   }
 
-  typed = (displayName: string) => {
-    this.view.displayName = displayName
-    return this
-  }
-
-  viewed = (viewedWith: ComponentDefinition<T>) => this.#cloneWith({viewedWith})
-
   static define<T extends object>(view: ComponentType<T>) {
     checkExistName()
     return new Definition<T>(view)
@@ -77,6 +68,13 @@ export class Definition<T extends object> {
       .typed(componentDefinition.typeName)
       .viewed(componentDefinition)
   }
+
+  typed = (displayName: string) => {
+    this.view.displayName = displayName
+    return this
+  }
+
+  viewed = (viewedWith: ComponentDefinition<T>) => this.#cloneWith({viewedWith})
 
   named = (name: string) => this.#cloneWith({name})
 
@@ -125,6 +123,8 @@ export class Definition<T extends object> {
         key.build('key'),
         htmlAttributes.build('htmlAttributes'),
         validation.build('validation'),
+        event.build(DidMountEvent),
+        event.build(WillUnmountEvent),
       ]
 
       if (!('style' in annotations)) properties.push(stylization.build('stylization'))

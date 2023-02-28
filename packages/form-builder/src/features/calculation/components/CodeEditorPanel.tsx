@@ -4,7 +4,7 @@ import {action} from 'mobx'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import {Button, ButtonGroup, Checkbox} from 'rsuite'
-import {CodeEditor} from './CodeEditor'
+import {JsEditor} from './JsEditor'
 
 const codePlaceHolder = '// enter your code here'
 
@@ -73,7 +73,7 @@ const _CodeEditorPanel = ({componentStore, annotation, onClose}: CodeEditorPanel
 
   return <>
     <Header>{header}</Header>
-    <CodeEditor source={sourceCode} setSource={setSourceCode}/>
+    <JsEditor value={sourceCode} onChange={setSourceCode}/>
     <SDiv>
       <ButtonGroup>
         <Button appearance="primary" onClick={compileCode}>Compile</Button>

@@ -1,16 +1,17 @@
 import {observer} from 'mobx-react'
 import {Fragment, useEffect} from 'react'
-import {ComponentDataProvider} from '../../utils/contexts/ComponenDataContext'
+import {ComponentData, ComponentDataProvider} from '../../utils/contexts/ComponenDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
-import {useListener} from '../../utils/useListener'
 import {useMemoizedLocalObserver} from '../../utils/useMemoizedLocalObserver'
+import {useActionListener} from '../event'
 import {Erroneous} from '../validation'
 import {ComponentNodeProps} from './ComponentNodeProps'
 import {ComponentViewer} from './ComponentViewer'
 
 const _ComponentNode = ({componentStore, parentStore}: ComponentNodeProps) => {
   const store = useStore()
-  const data = useMemoizedLocalObserver(() => ({
+  const data = useMemoizedLocalObserver<ComponentData>(() => ({
+    key: componentStore.key,
     componentStore,
     parentStore,
     model: store.props.view.initModel(componentStore),
@@ -25,10 +26,8 @@ const _ComponentNode = ({componentStore, parentStore}: ComponentNodeProps) => {
     store.form.set(componentStore, data.model)
   }, [])
 
-  useListener(componentStore.key, 'onChange',
-    e => data.field?.setValue(e.value), [])
-  useListener(componentStore.key, 'onBlur',
-    _ => data.field?.setTouched(), [])
+  useActionListener(data.key, 'onChange', e => data.field?.setValue(e.value), [])
+  useActionListener(data.key, 'onBlur', _ => data.field?.setTouched(), [])
 
   const Wrapper = store.props.componentWrapper || Fragment
 

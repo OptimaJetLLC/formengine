@@ -2,9 +2,8 @@ import {observer} from 'mobx-react'
 import {ComponentType, createElement, useMemo} from 'react'
 import {ComponentState} from '../../stores/ComponentState'
 import {useComponentData} from '../../utils/contexts/ComponenDataContext'
-import {useEventBus} from '../../utils/contexts/EventBusContext'
 import {useStore} from '../../utils/contexts/StoreContext'
-import {useActions} from '../event/useActions'
+import {useActions} from '../event'
 import {ComponentNodeProps} from './ComponentNodeProps'
 
 export interface ComponentViewerProps {
@@ -13,9 +12,7 @@ export interface ComponentViewerProps {
 
 const _ComponentViewer = ({component}: ComponentViewerProps) => {
   const store = useStore(), data = useComponentData()
-  const eventBus = useEventBus()
-  const componentState = useMemo(() => new ComponentState(data, store, eventBus, component),
-    [data, store, eventBus])
+  const componentState = useMemo(() => new ComponentState(data, store, component), [data, store])
 
   useActions()
 

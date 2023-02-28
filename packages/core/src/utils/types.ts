@@ -8,8 +8,7 @@ export enum InsertPosition {
 }
 
 export type WrapperProps = { children: ReactNode }
-
-export type ComponentMove = Omit<ComponentData, 'model'>
+export type ComponentMove = Omit<ComponentData, 'model' | 'key'>
 
 export type BuilderMode = 'builder' | 'viewer'
 

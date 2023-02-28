@@ -31,9 +31,11 @@ const _CodeButton = ({annotation}: { annotation: Annotation }) => {
     ? 'var(--rs-btn-primary-bg)'
     : hasCode ? 'var(--rs-primary-200)' : undefined
 
-  const setCurrentCalculatedProperty = () => store.calculatedProperty = {componentStore, annotation}
+  const handleClick = () =>
+    store.calculatedProperty = store.calculatedProperty?.annotation === annotation ? undefined : {componentStore, annotation}
+
   return <Hinted hint={hint}>
-    <SIconButton onClick={setCurrentCalculatedProperty} disabled={!annotation.calculable}
+    <SIconButton onClick={handleClick} disabled={!annotation.calculable}
                  icon={<FaIcon icon={faCode as unknown as IconDefinition} color={color}/>}
                  size={'xs'} appearance={'subtle'}/>
   </Hinted>

@@ -4,6 +4,7 @@ import {Field} from '../../features/validation'
 import {ComponentStore} from '../../stores/ComponentStore'
 
 export type ComponentData = {
+  readonly key: string,
   readonly parentStore?: ComponentStore,
   readonly componentStore: ComponentStore,
   readonly model: Model<any>,

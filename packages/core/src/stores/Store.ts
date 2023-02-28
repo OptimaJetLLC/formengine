@@ -1,5 +1,6 @@
 import {makeObservable, observable} from 'mobx'
-import {ActionDefinition} from '../features/event/actionDefinition'
+import {Subject} from 'rxjs'
+import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
 import {fbScreen} from '../features/ui/FbScreen'
 import {Form} from '../features/validation'
 import {treeFind} from '../utils'
@@ -7,6 +8,7 @@ import {ComponentStore} from './ComponentStore'
 import {StoreProps} from './StoreProps'
 
 export class Store {
+  readonly eventSubject = new Subject<ActionEventArgs>()
   readonly form = new Form(this)
 
   screen = new ComponentStore(fbScreen.name, fbScreen.type)
@@ -32,15 +34,7 @@ export class Store {
     return treeFind(this.screen, key)
   }
 
-  findAction(actionName: string, targetKey?: string) {
-    const target = targetKey ? this.getComponent(targetKey) : undefined
-    const actionList = target ? this.props.view.initModel(target).actions : this.actions
-    const action = actionList?.find((val) => val.name === actionName)
-
-    if (!action) {
-      throw Error(`Action ${actionName} didn't found!`)
-    }
-
-    return action
+  findAction(actionData: ActionData) {
+    return findAction(this, actionData)
   }
 }

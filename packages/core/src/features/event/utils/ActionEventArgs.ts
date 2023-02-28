@@ -1,12 +1,12 @@
 import {SyntheticEvent} from 'react'
-import {ComponentStore} from '../../../stores/ComponentStore'
 import {Store} from '../../../stores/Store'
+import {ComponentData} from '../../../utils/contexts/ComponenDataContext'
 
 export class ActionEventArgs {
   constructor(
-    readonly eventName: string,
-    readonly sender: ComponentStore,
-    readonly store: Store, //TODO заменить тип в будущем на упрощенный стор - вью стор
+    readonly type: string,
+    readonly sender: ComponentData,
+    readonly store: Store,
     readonly args: any[]
   ) {
   }

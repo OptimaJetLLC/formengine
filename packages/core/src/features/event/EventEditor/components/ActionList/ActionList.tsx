@@ -1,28 +1,20 @@
 import {observer} from 'mobx-react'
 import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
+import {useAnnotation} from '../../../../../utils/contexts/EditorContext'
 import {Rows} from '../../../../ui/Containers'
 import {ActionItem} from './ActionItem'
 
-interface ActionListProps {
-  eventName: string
-}
+export const ActionList = observer(() => {
+  const eventName = useAnnotation().annotation.key
+  const actions = useComponentData().componentStore.events?.[eventName]
 
-export const ActionList = observer(({eventName}: ActionListProps) => {
-  const {componentStore} = useComponentData()
-  const weakActionsData = componentStore.events?.[eventName]
-
-  if (!weakActionsData) return null
+  if (!actions) return null
 
   /*TODO Draggable List*/
   return <Rows my={0}>
-    {weakActionsData.map((data, index) =>
-      <ActionItem
-        key={data.actionName}
-        eventName={eventName}
-        index={index}
-        weakData={data}
-        componentStore={componentStore}
-      />)}
+    {actions.map((action, index) => (
+      <ActionItem key={action.name} eventName={eventName} index={index} data={action}/>)
+    )}
   </Rows>
 })
 

@@ -8,8 +8,8 @@ export const useClearableArguments = () => {
 
   useEffect(() => {
     return () => {
-      if (_.isEmpty(data.weakArgs)) {
-        delete data.weakArgs
+      if (_.isEmpty(data.args)) {
+        delete data.args
       }
     }
   }, [])

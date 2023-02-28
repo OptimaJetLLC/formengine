@@ -46,7 +46,7 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
   const additionalProperties = current.filter(({subsection}) => subsection === SubSection.Additional)
 
   return (
-    <ComponentDataProvider value={{componentStore: data, model, parentStore: parent?.data}}>
+    <ComponentDataProvider value={{key: data.key, componentStore: data, model, parentStore: parent?.data}}>
       <Container>
         <PropertiesList>
           {renderProperties(properties, data)}

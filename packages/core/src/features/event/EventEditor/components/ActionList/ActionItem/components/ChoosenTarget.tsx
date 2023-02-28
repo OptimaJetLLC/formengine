@@ -1,6 +1,7 @@
 import {ArrowDownLine} from '@rsuite/icons'
 import {observer} from 'mobx-react'
 import {Button, Dropdown, Popover, Whisper} from 'rsuite'
+import {useStore} from '../../../../../../../utils/contexts/StoreContext'
 import {Node} from '../../../../../../../utils/Node'
 import {useGroups} from '../../../../hooks/useGroups'
 import {useActionData} from '../contexts/ActionDataContext'
@@ -8,6 +9,7 @@ import {useActionData} from '../contexts/ActionDataContext'
 export const ChoosenTarget = observer(() => {
   const groups = useGroups()
   const data = useActionData()
+  const store = useStore()
 
   const Menu = ({onClose, left, top, className}: any, ref: any) =>
     <Popover ref={ref} className={className} style={{left, top, marginLeft: -14}} full>
@@ -23,7 +25,7 @@ export const ChoosenTarget = observer(() => {
                     children={node.key}
                     onSelect={() => {
                       onClose()
-                      data.target = node.data
+                      data.target = node.data.key
                     }}
                   />
                 ))
@@ -44,12 +46,12 @@ export const ChoosenTarget = observer(() => {
             color: 'var(--rs-text-link)',
             marginLeft: 5
           }}>
-            {(data.target?.key ? `${data.target?.key}` : 'Target')}
+            {(data.target ? `${data.target}` : 'Target')}
           </b>
           <ArrowDownLine/>
         </div>
 
-        <p style={{opacity: .8}}>{`${data.target?.type.toLowerCase() ?? ''} `}</p>
+        <p style={{opacity: .8}}>{`${store.findComponent(data.target ?? '')?.type.toLowerCase() ?? ''} `}</p>
       </div>
     </Button>
   </Whisper>

@@ -31,7 +31,7 @@ export const rsInput = define(RsInput)
         console.log({name, value, isActive}, eventArgs)
       }, ['name', 'value', 'isActive']),
       valueLogger: def('Value console logger', e => console.log(e.value)),
-      setLabel: e => props.label = e.value,
+      setLabel: e => props.label.value = e.value,
     }
   })
 

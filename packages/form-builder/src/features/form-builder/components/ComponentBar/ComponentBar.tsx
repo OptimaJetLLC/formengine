@@ -54,6 +54,7 @@ const AddedComponents = ({definitions, ...componentProps}: AddedComponentsProps)
           <ComponentDataProvider
             key={definition.name}
             value={{
+              key: componentStore.key,
               componentStore,
               model: view.initModel(componentStore)
             }}

@@ -1,8 +1,10 @@
 import {ReactNode} from 'react'
 import {node} from '../annotation'
 import {define} from '../define'
+import {CustomActionDefinition} from '../event'
 
 interface FbScreenProps {
+  actions?: CustomActionDefinition[]
   children: ReactNode
 }
 

@@ -1,14 +1,14 @@
 import {ComponentType} from 'react'
-import {InputBindableText} from '../../../../../../../../substitution/components/InputBindableText'
-import {Arg, ArgumentName, ArgumentType} from '../../../../../../../args'
+import {InputBindableText} from '../../../../../../../../substitution'
+import {Parameter, ParameterName, ParameterType} from '../../../../../../../types'
 import {InputBoolean} from './components/InputBoolean'
 import {InputNumber} from './components/InputNumber'
 import {InputProps} from './InputProps'
 
-export const extractArgumentData = (data: Arg): [ArgumentName, ArgumentType] =>
+export const extractArgumentData = (data: Parameter): [ParameterName, ParameterType] =>
   typeof data === 'string' ? [data, 'string'] : data
 
-export const getArgumentInputByType = (type: ArgumentType): ComponentType<InputProps> => {
+export const getArgumentInputByType = (type: ParameterType): ComponentType<InputProps> => {
   switch (type) {
     case 'string':
       return InputBindableText

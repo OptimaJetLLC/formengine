@@ -14,20 +14,44 @@ const App = () => {
       getForm={getSampleForm}
       view={view}
       data={data}
-      event={(bus) => {
-        bus.listen((e) => {
-          //alert(e.value)
-          let a = 4
-        }, {type: 'onChange', target: 'title'})
-
-        bus.listen((e) => {
-          let a = 4
-        }, {target: 'title'})
-
-        bus.listen((e) => {
+      /*event={(stream) => {
+        stream.listen(value => {
           let a = 4
         })
-      }}
+
+        //stream.types('onDidMount').listen(value => console.log(value.sender.key, 'did mount'))
+        //stream.types('onWillUnmount').listen(value => console.log(value.sender.key, 'will Unmount'))
+
+        const countObserver = {
+          count: 1,
+          next(e: ActionEventArgs) {
+            console.log(`The 'onChange' event called: ${this.count++} times`)
+          },
+          error() {
+            // We actually could just remove this method,
+            // since we do not really care about errors right now.
+          },
+          complete() {
+            // We never complete this stream now, but can do it on will mount?
+          }
+        }
+        //stream.types('onChange').listen(countObserver)
+
+        stream
+          .keys('title')
+          .types('onChange')
+          .listen(e => {
+            //alert(e.value)
+            let a = 4
+          })
+
+        stream
+          .keys('title')
+          .listen(e => {
+            //alert(e.value)
+            let a = 4
+          })
+      }}*/
     />
   )
 }

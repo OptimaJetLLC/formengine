@@ -1,6 +1,6 @@
 import {ComponentType, ReactElement} from 'react'
 import {View} from '../features/define'
-import {ActionDefinition} from '../features/event/actionDefinition'
+import {ActionDefinition} from '../features/event'
 import {ComponentStore} from './ComponentStore'
 
 export interface StoreProps {

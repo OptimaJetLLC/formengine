@@ -1,8 +1,8 @@
 import {isProperty} from '../features/annotation/utils/annotations/PropertyAn'
-import {ComponentData} from './contexts/ComponenDataContext'
+import {Model} from '../features/define'
 
-export function getDefaultProps(data: ComponentData) {
-  return data.model.properties.reduce((props, value) => {
+export function initDefaultProps(model: Model<any>): Readonly<Record<string, any>> {
+  return model.properties.reduce((props, value) => {
     if (isProperty(value)) {
       props[value.key] = value.schema?.getDefault()
     }

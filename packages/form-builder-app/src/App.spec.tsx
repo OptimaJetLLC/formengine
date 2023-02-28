@@ -12,4 +12,9 @@ describe(`Component: ${App.name}`, function () {
     const {getByDisplayValue} = render(<App/>)
     expect(getByDisplayValue(/Hello! Hello!/)).toBeInTheDocument()
   })
+
+  it('should support custom actions execution on did mount', async () => {
+    const {findByRole} = render(<App/>)
+    expect(await findByRole('button', {name: /Current weather/})).toBeInTheDocument()
+  })
 })

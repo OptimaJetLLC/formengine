@@ -1,5 +1,5 @@
-import {EventBus} from '../../event/utils/EventBus'
+import {EventStream} from '../../event/utils/EventStream'
 
 export interface ViewerProps {
-  event?: (bus: EventBus) => void
+  event?: (stream: EventStream) => void
 }

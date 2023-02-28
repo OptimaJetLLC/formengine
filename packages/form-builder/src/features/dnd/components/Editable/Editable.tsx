@@ -1,5 +1,5 @@
 import {cx} from '@emotion/css'
-import {WrapperProps} from 'fb-core'
+import {useEventReactions, WrapperProps} from 'fb-core'
 import {observer} from 'mobx-react'
 import {useDragLayer} from 'react-dnd'
 import {Draggable} from './components/Draggable'
@@ -15,12 +15,10 @@ export const Editable = observer(({children}: WrapperProps) => {
   //useInnerDropZone(viewProps)
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
 
+  useEventReactions()
+
   return (
-    <Draggable
-      {...selectionHandlers}
-      className={cx(selectionClassName)}
-      viewForDragPreview={children}
-    >
+    <Draggable {...selectionHandlers} className={cx(selectionClassName)} viewForDragPreview={children}>
       {children}
       {selected && !isDragging &&
         <>
@@ -31,3 +29,4 @@ export const Editable = observer(({children}: WrapperProps) => {
     </Draggable>
   )
 })
+
