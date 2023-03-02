@@ -1,12 +1,12 @@
 import {antdComponents} from 'builder-antd'
-import {rsErrorMessage, rSuiteComponents} from 'builder-rsuite'
+import {rsErrorMessage, rsTooltip, rSuiteComponents} from 'builder-rsuite'
 import {createView, FormBuilder} from 'form-builder'
 import {getSampleForm} from './utils/getSampleForm'
 
 const data = {title: 'Hello! Hello!'}
 
 const components = [...rSuiteComponents, ...antdComponents]
-const view = createView(...components).withError(rsErrorMessage)
+const view = createView(...components).withError(rsErrorMessage).withTooltip(rsTooltip)
 
 const App = () => {
   return (

@@ -4,6 +4,7 @@ import {Enum} from '../../types'
 import {BaseBuilder} from './BaseBuilder'
 import {OneOfBuilder} from './OneOfBuilder'
 import {FromYup, SchemedBuilder} from './SchemedBuilder'
+import {SomeOfBuilder} from './SomeOfBuilder'
 
 export class AnnotationBuilder<T> extends BaseBuilder<T> {
   constructor(editor: ComponentType) {
@@ -18,7 +19,13 @@ export class AnnotationBuilder<T> extends BaseBuilder<T> {
   }
 
   oneOf<U extends string | number, D extends [U, ...U[]]>(...values: D) {
-    const result = new OneOfBuilder<Enum<D>>().setup({...this.options, ...this.annotation, schema: yup.mixed().oneOf(values)})
+    const result = new OneOfBuilder<Enum<D>>().setup({...this.options, ...this.annotation, schema: yup.mixed()})
+    result.values = values
+    return result
+  }
+
+  someOf<U extends string | number, D extends [U, ...U[]]>(...values: D) {
+    const result = new SomeOfBuilder<Enum<D>>().setup({...this.options, ...this.annotation, schema: yup.mixed()})
     result.values = values
     return result
   }

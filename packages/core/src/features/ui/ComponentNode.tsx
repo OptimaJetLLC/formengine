@@ -4,6 +4,7 @@ import {ComponentData, ComponentDataProvider} from '../../utils/contexts/Compone
 import {useStore} from '../../utils/contexts/StoreContext'
 import {useMemoizedLocalObserver} from '../../utils/useMemoizedLocalObserver'
 import {useActionListener} from '../event'
+import {TooltipWrapper} from '../tooltip/TooltipWrapper'
 import {Erroneous} from '../validation'
 import {ComponentNodeProps} from './ComponentNodeProps'
 import {ComponentViewer} from './ComponentViewer'
@@ -31,12 +32,16 @@ const _ComponentNode = ({componentStore, parentStore}: ComponentNodeProps) => {
 
   const Wrapper = store.props.componentWrapper || Fragment
 
+  const Tooltip = !!data.componentStore.tooltipProps ? TooltipWrapper : Fragment
+
   return (
     <ComponentDataProvider value={data}>
       <Wrapper>
-        <Erroneous>
-          <ComponentViewer component={ComponentNode}/>
-        </Erroneous>
+        <Tooltip>
+          <Erroneous>
+            <ComponentViewer component={ComponentNode}/>
+          </Erroneous>
+        </Tooltip>
       </Wrapper>
     </ComponentDataProvider>
   )

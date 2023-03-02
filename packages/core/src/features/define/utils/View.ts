@@ -1,11 +1,13 @@
+import {TooltipProps} from 'form-viewer'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {fbScreen} from '../../ui/FbScreen'
 import {defaultErrorMessage, ErrorMessageProps} from '../../validation/components/ErrorMessage'
-import {Definition} from './Definition'
+import {Annotations, Definition} from './Definition'
 
 export class View {
   #map = new Map<string, Definition<any>>()
   #error?: Definition<ErrorMessageProps>
+  #tooltips = new Map<string, Definition<any>>()
 
   constructor(defines: Definition<any>[] = []) {
     this.define(fbScreen)
@@ -16,12 +18,29 @@ export class View {
     return this.#error || defaultErrorMessage
   }
 
+  get tooltips() {
+    return Array.from(this.#tooltips.keys())
+  }
+
+  getTooltipAnnotations(name: string): Annotations<any> {
+    return this.#tooltips.get(name)?.properties ?? {} as Annotations<any>
+  }
+
+  getTooltipComponent(name: string): Definition<any> | undefined {
+    return this.#tooltips.get(name)
+  }
+
   static create<U extends Definition<any>>(...defines: U[]) {
     return new View(defines)
   }
 
   withError(definition: Definition<ErrorMessageProps>) {
     this.#error = definition
+    return this
+  }
+
+  withTooltip<T extends TooltipProps>(definition: Definition<T>): this {
+    this.#tooltips.set(definition.name, definition)
     return this
   }
 

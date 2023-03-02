@@ -17,6 +17,7 @@ export class ComponentStore {
   events?: Record<EventName, ActionData[]>
   styles?: Styles
   htmlAttributes?: HtmlAttribute[]
+  tooltipProps?: Record<string, ComponentProperty>
   children?: ComponentStore[]
 
   schema?: ValidationSchema
@@ -37,6 +38,7 @@ export class ComponentStore {
 
     makeAutoObservable(this, {
       //events: observable.deep,
+      tooltipProps: observable.deep,
       schema: observable.deep,
       props: observable.deep,
       isRoot: computed,

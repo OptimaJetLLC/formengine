@@ -10,10 +10,13 @@ import {BooleanInput} from './components/BooleanInput'
 import {ChildViewer} from './components/ChildViewer'
 import {ColorInput} from './components/ColorInput'
 import {KeyInput} from './components/KeyInput'
+import {MultiPicker} from './components/MultiPicker'
 import {NumberInput} from './components/NumberInput'
 import {Picker} from './components/Picker'
 import {SizeInput} from './components/SizeInput'
 import {StringInput} from './components/StringInput'
+import {TooltipPropertiesEditor} from './components/TooltipPropertiesEditor'
+import {TooltipTypePicker} from './components/TooltipTypePicker'
 import {createAnnotation, createProperty} from './utils'
 import {StyleBuilder} from './utils/builders/StyleBuilder'
 
@@ -37,6 +40,8 @@ export const array = createProperty(ArrayInput).schemed(yup.array())
 
 export const color = createProperty(ColorInput).schemed(yup.string())
 
+export const tooltipType = createAnnotation(TooltipTypePicker).schemed(yup.string())
+
 //TODO rename to func, or action, or to stay event?
 //Use for create functions for events
 export const event = createAnnotation(EventEditor).setup({type: 'Event', section: Section.Actions})
@@ -54,6 +59,8 @@ export const node = createAnnotation<ReactNode>(ChildViewer).setup({type: 'Conta
 //Without bind this in arrow function case do bad magic
 export const oneOf = createProperty(Picker).oneOf.bind(createProperty(Picker))
 
+export const someOf = createProperty(MultiPicker).someOf.bind(createProperty(MultiPicker))
+
 //oneOfType([string, number, etc.]) - union - one of some types
 //arrayOf(string or etc.) - array with some type
 
@@ -68,5 +75,9 @@ shape({
 //TODO in future: color, date
 
 //TIP for potentially customProp or arrayProp - use yup for validate
+
+export const tooltipProps = createAnnotation(TooltipPropertiesEditor).setup({subsection: SubSection.Tooltip})
+
+export const useTooltip = boolean.setup({subsection: SubSection.Tooltip})
 
 export * from './utils'

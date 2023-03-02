@@ -10,7 +10,7 @@ export const BooleanInput = () => {
   </LabeledProperty>
 }
 
-const SCheckbox = styled(Checkbox)`
+export const SCheckbox = styled(Checkbox)`
   width: 100%;
 
   .rs-checkbox-checker {

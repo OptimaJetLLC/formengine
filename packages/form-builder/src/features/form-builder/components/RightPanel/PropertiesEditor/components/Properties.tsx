@@ -20,7 +20,7 @@ interface PropertiesProps {
 }
 
 const Properties = observer(({activeTab}: PropertiesProps) => {
-  const {selected} = useBuilderStore()
+  const {selected, viewer} = useBuilderStore()
   const getLabel = useTranslationPart('propertiesEditor')
 
   useEffect(() => {
@@ -44,6 +44,7 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
   const properties = current.filter(({subsection}) => isUndefined(subsection))
   const style = model.style.filter(({section}) => section === activeTab).filter(({subsection}) => isUndefined(subsection))
   const additionalProperties = current.filter(({subsection}) => subsection === SubSection.Additional)
+  const tooltipProps = current.filter(({subsection}) => subsection === SubSection.Tooltip)
 
   return (
     <ComponentDataProvider value={{key: data.key, componentStore: data, model, parentStore: parent?.data}}>
@@ -52,9 +53,13 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
           {renderProperties(properties, data)}
           {renderStyleProperties(style, data)}
         </PropertiesList>
+        {!!tooltipProps?.length && viewer.tooltipType &&
+          <SPanel header={getLabel('subSection.tooltipProps')} collapsible bodyFill>
+            {renderProperties(tooltipProps, data)}
+          </SPanel>
+        }
         {!!additionalProperties?.length &&
-          <SPanel header={getLabel('subSection.additionalProperties')}
-                  collapsible bodyFill>
+          <SPanel header={getLabel('subSection.additionalProperties')} collapsible bodyFill>
             {renderProperties(additionalProperties, data)}
           </SPanel>
         }
@@ -63,11 +68,14 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
   )
 })
 
-const renderProperties = (properties: Annotation[], cs: ComponentStore) => {
-  return properties.map(annotation =>
-    <AnnotationProvider key={annotation.key} value={{annotation, getContext: () => cs.props}}>
-      {createElement(observer(annotation.editor))}
-    </AnnotationProvider>)
+export const renderProperties = (properties: Annotation[], cs: ComponentStore) => {
+  return renderSubsectionProperties(properties, () => cs.props)
+}
+
+export const renderSubsectionProperties = (properties: Annotation[], getContext: () => Record<string, any>) => {
+  return properties.map(annotation => <AnnotationProvider key={annotation.key} value={{annotation, getContext: getContext}}>
+    {createElement(observer(annotation.editor))}
+  </AnnotationProvider>)
 }
 
 const renderStyleProperties = (properties: Annotation[], cs: ComponentStore) => {

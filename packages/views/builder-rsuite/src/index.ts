@@ -28,6 +28,7 @@ import {rsSearch} from './components/RsSearch'
 import {rsStaticContent} from './components/RsStaticContent'
 import {rsTextArea} from './components/RsTextArea'
 import {rsTitle} from './components/RsTitle'
+import {rsTooltip} from './components/RsTooltip'
 import {rsTreePicker} from './components/RsTreePicker'
 
 const components = [
@@ -66,6 +67,7 @@ const components = [
   rsTextArea,
   rsTitle,
   rsTreePicker,
+  rsTooltip
 ]
 
 components.forEach(c => {
@@ -77,6 +79,6 @@ components.forEach(c => {
 
 export const rSuiteComponents: Definition<any>[] = components
 
-export const rSuite = createView(...components).withError(rsErrorMessage)
+export const rSuite = createView(...components).withError(rsErrorMessage).withTooltip(rsTooltip)
 
-export {rsErrorMessage}
+export {rsErrorMessage, rsTooltip}
