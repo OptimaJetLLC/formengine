@@ -27,7 +27,7 @@ export const useEventReactions = () => {
 
   //Remove custom actions from used places if it has been deleted
   useReaction(() => store.screen.props.actions?.value?.slice(), (arg: CustomActionDefinition[], prev: CustomActionDefinition[]) => {
-    if (!prev || arg.length !== prev.length - 1) return
+    if (!prev || !arg || arg.length !== prev.length - 1) return
     const [deleted] = prev.filter(x => !arg.includes(x))
     for (let event in data.componentStore.events) {
       data.componentStore.events[event] =
