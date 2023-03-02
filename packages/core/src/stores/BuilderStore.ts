@@ -1,7 +1,7 @@
 import {getSystemTheme, PanelPlacement} from 'form-builder'
 import {assign, cloneDeep} from 'lodash'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
-import {ComponentType, ReactElement} from 'react'
+import {ComponentType} from 'react'
 import {Annotation} from '../features/annotation/utils/annotations/Annotation'
 import {BiDi} from '../features/localization/bidi'
 import {defaultLanguage} from '../features/localization/consts'
@@ -12,6 +12,7 @@ import {Node} from '../utils/Node'
 import {BuilderMode, BuilderTheme, BuilderViewMode, ComponentMove, InsertPosition} from '../utils/types'
 import {ComponentStore} from './ComponentStore'
 import {Store} from './Store'
+import {DropZoneProps} from './StoreProps'
 
 const {After, Inner} = InsertPosition
 
@@ -22,16 +23,16 @@ export class BuilderStore {
   openedPanels: PanelPlacement[] = ['left', 'right']
   selected?: Node
   language = defaultLanguage
-  readonly #disposer: IReactionDisposer
   calculatedProperty?: {
     readonly componentStore: ComponentStore
     readonly annotation: Annotation
   }
+  readonly #disposer: IReactionDisposer
 
   constructor(
     readonly viewer: Store,
     private readonly componentWrapper: ComponentType<any>,
-    private readonly dropZone?: ReactElement
+    private readonly dropZone?: ComponentType<DropZoneProps>
   ) {
     makeAutoObservable(this, {
       selected: observable.ref,
@@ -138,8 +139,9 @@ export class BuilderStore {
     }
   }
 
-  add(source: ComponentMove, target: ComponentMove, insertPosition: InsertPosition = InsertPosition.After) {
+  add(source: ComponentMove, target: ComponentMove, insertPosition: InsertPosition = InsertPosition.After, bindTo?: string) {
     const clone = assign(new ComponentStore('', ''), cloneDeep(source.componentStore))
+    clone.bindTo = bindTo
     this.unifyComponentKeys(clone)
     this.move({componentStore: clone}, target, insertPosition)
     this.selected = this.findNode(clone.key)

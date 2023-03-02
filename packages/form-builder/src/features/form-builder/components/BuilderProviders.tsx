@@ -14,6 +14,10 @@ interface BuilderProvidersProps {
   children: ReactNode
 }
 
+const ComponentDropZone = ({bindTo}: { bindTo?: string }) => {
+  return <DropZone isInner={true} bindTo={bindTo}/>
+}
+
 export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {
   const callCount = useRef(0)
   const store = useMemo(() => {
@@ -23,7 +27,7 @@ export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {
     return new Store(storeProps, DefaultActions)
   }, [])
   const buildStore = useMemo(() => {
-    const builderStore = new BuilderStore(store, Editable, <DropZone isInner={true}/>)
+    const builderStore = new BuilderStore(store, Editable, ComponentDropZone)
     builderStore.changeBuilderMode('builder')
     return builderStore
   }, [])

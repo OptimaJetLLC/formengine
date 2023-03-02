@@ -1,11 +1,11 @@
-import {boolean, define, oneOf, string} from 'form-builder'
+import {boolean, define, node, oneOf} from 'form-builder'
 import {Message} from 'rsuite'
 
 export const rsMessage = define(Message)
   .typed('RsMessage')
   .props({
-    // children: reactElements,
+    children: node,
     closeable: boolean,
-    header: string.default('Test'),
+    header: node,
     type: oneOf('info', 'success', 'warning', 'error').default('info')
   })

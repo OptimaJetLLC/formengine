@@ -11,28 +11,31 @@ interface DropViewProps extends ComponentProps<any> {
   isActive?: boolean
   isOver?: boolean
   isInner?: boolean
+  bindTo?: string
 }
 
 export const DropView = (props: DropViewProps) => {
   const {isRoot, isContainer, key} = useComponentData().componentStore
-  const dropClassNames = {isContainer, isRoot, ...props}
+  const {bindTo, ...classNamesFromProps} = props
+  const dropClassNames = {isContainer, isRoot, ...classNamesFromProps}
   const label = `${props.isAfter ? 'AFTER' : 'BEFORE'} ${key}`
 
   return <Container className={cx({...dropClassNames})}>
     <LabelContainer>
       {isRoot || props.isInner
-        ? <AddButton/>
+        ? <AddButton bindTo={bindTo}/>
         : <Label className={cx(dropClassNames)}>{label}</Label>
       }
     </LabelContainer>
   </Container>
 }
 
-const AddButton = () => {
+const AddButton = ({bindTo}: { bindTo?: string }) => {
   const target = useComponentData()
   const {openModal, ComponentsModal} = useComponentsModal(target)
   return <>
-    <IconButton onClick={() => openModal(InsertPosition.Inner)} icon={<PlusIcon/>} color="green" appearance={'primary'} circle size={'xs'}/>
+    <IconButton onClick={() => openModal(InsertPosition.Inner, bindTo)} icon={<PlusIcon/>} color="green" appearance={'primary'} circle
+                size={'xs'}/>
     <ComponentsModal/>
   </>
 }

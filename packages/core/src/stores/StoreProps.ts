@@ -1,7 +1,11 @@
-import {ComponentType, ReactElement} from 'react'
+import {ComponentType} from 'react'
 import {View} from '../features/define'
 import {ActionDefinition} from '../features/event'
 import {ComponentStore} from './ComponentStore'
+
+export interface DropZoneProps {
+  bindTo?: string
+}
 
 export interface StoreProps {
   getForm?: () => ComponentStore
@@ -11,5 +15,5 @@ export interface StoreProps {
   /** No use a error wrap component. */
   erroneous?: boolean
   componentWrapper?: ComponentType<any>
-  dropZone?: ReactElement
+  dropZone?: ComponentType<DropZoneProps>
 }
