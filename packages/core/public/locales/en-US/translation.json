@@ -35,7 +35,14 @@
     "upload": "Upload",
     "print": "Print",
     "settings": "Settings",
-    "clear": "Clear"
+    "clear": "Clear",
+    "save": "Save",
+    "saveAs": "Save as...",
+    "currentFormName": "The name of the current form",
+    "formSaved": "The form is saved",
+    "formSaveError": "Failed to save form! See the logs in the browser console",
+    "enterFormName": "Please enter form name",
+    "formNamePlaceholder": "My beautiful form"
   },
   "rightMenu": {
     "desktop": "Desktop",
@@ -130,5 +137,15 @@
   "validation": {
     "chooseValidation": "Choose your type",
     "addRule": "Add rule"
+  },
+  "promptDialog": {
+    "ok": "OK",
+    "cancel": "Cancel"
+  },
+  "leftPanel": {
+    "sectionName": {
+      "tree": "Tree",
+      "forms": "Forms"
+    }
   }
 }

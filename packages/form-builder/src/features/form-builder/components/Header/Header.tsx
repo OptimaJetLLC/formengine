@@ -11,6 +11,7 @@ import {Menu} from './components/Menu'
 import {ResolutionPicker} from './components/ResolutionPicker'
 import {ToggleModeButton} from './components/ToggleModeButton'
 import {ToggleTheme} from './components/ToggleTheme'
+import {FormName} from './FormName'
 
 const Header = observer(() => {
   return (
@@ -26,6 +27,7 @@ const Header = observer(() => {
           }} disabled={true /*TODO !store.canRedo*/}
                       icon={<FaIcon icon={faRedo as unknown as IconDefinition}/>}/>
         </ButtonToolbar>
+        <FormName/>
       </LeftPart>
 
       <CenterPart>

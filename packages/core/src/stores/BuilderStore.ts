@@ -11,6 +11,7 @@ import {treeFind} from '../utils'
 import {Node} from '../utils/Node'
 import {BuilderMode, BuilderTheme, BuilderViewMode, ComponentMove, InsertPosition} from '../utils/types'
 import {ComponentStore} from './ComponentStore'
+import {kvCreateStore, kvDel, kvGet, kvKeys, kvSet} from './KeyValueStorage'
 import {Store} from './Store'
 import {DropZoneProps} from './StoreProps'
 
@@ -27,6 +28,9 @@ export class BuilderStore {
     readonly componentStore: ComponentStore
     readonly annotation: Annotation
   }
+  formName = 'SampleForm'
+  lastSaveTime = new Date()
+  readonly #customStore = kvCreateStore('form-builder-store', 'form-store')
   readonly #disposer: IReactionDisposer
 
   constructor(
@@ -208,6 +212,32 @@ export class BuilderStore {
     }
 
     input.click()
+  }
+
+  save() {
+    this.lastSaveTime = new Date()
+    return kvSet(this.formName, this.stringifyForm(), this.#customStore)
+  }
+
+  getFormList(onSuccess: (keys: string[]) => void) {
+    kvKeys(this.#customStore).then(keys => {
+      const strings = keys.map(value => `${value}`)
+      onSuccess(strings || [])
+    })
+  }
+
+  removeForm(value: string, onSuccess: () => void) {
+    kvDel(value, this.#customStore).then(onSuccess)
+  }
+
+  loadForm(value: string, onSuccess?: () => void, onError?: (err: any) => void) {
+    kvGet(value, this.#customStore)
+      .then(data => {
+        this.parseForm(data)
+        this.formName = value
+        onSuccess?.()
+      })
+      .catch(err => onError?.(err))
   }
 
   setPanelVisible(placement: PanelPlacement, visible: boolean) {
