@@ -20,7 +20,7 @@ const _LeftPanelNav = () => {
   const {t} = useTranslation()
   const title = (key: string) => t('leftPanel.sectionName.' + key)
 
-  return <div>
+  return <div style={{overflowY:'auto'}}>
     <RNav appearance="subtle" activeKey={activeTab} onSelect={setActiveTab} style={{marginBottom: 10}}>
       {NavIconItem('tree', title('tree'), faSitemap, {color: 'var(--rs-navs-selected)'})}
       {NavIconItem('forms', title('forms'), faList, {color: '#f67f1f'})}

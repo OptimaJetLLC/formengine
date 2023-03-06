@@ -17,6 +17,7 @@ const PropertiesEditor = observer(() => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 
   .placement-left .rs-popover {
     margin-left: -14px;
