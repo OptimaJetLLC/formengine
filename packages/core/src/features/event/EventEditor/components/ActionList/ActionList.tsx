@@ -1,5 +1,5 @@
 import {observer} from 'mobx-react'
-import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
+import {useComponentData} from '../../../../../utils/contexts/ComponentDataContext'
 import {useAnnotation} from '../../../../../utils/contexts/EditorContext'
 import {Rows} from '../../../../ui/Containers'
 import {ActionItem} from './ActionItem'

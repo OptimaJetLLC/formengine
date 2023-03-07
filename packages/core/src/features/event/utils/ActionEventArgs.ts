@@ -1,6 +1,6 @@
 import {SyntheticEvent} from 'react'
 import {Store} from '../../../stores/Store'
-import {ComponentData} from '../../../utils/contexts/ComponenDataContext'
+import {ComponentData} from '../../../utils/contexts/ComponentDataContext'
 
 export class ActionEventArgs {
   constructor(

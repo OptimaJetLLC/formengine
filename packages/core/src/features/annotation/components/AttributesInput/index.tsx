@@ -1,7 +1,7 @@
 import {Check} from '@rsuite/icons'
 import {useState} from 'react'
 import {IconButton} from 'rsuite'
-import {useComponentData} from '../../../../utils/contexts/ComponenDataContext'
+import {useComponentData} from '../../../../utils/contexts/ComponentDataContext'
 import {useTranslationPart} from '../../../localization/hooks'
 import {EditableTable, makeColumns, SelectCell} from '../../../ui/EditableTable'
 import LabeledProperty from '../../../ui/LabeledProperty'

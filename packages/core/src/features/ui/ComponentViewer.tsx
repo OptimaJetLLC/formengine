@@ -1,7 +1,7 @@
 import {observer} from 'mobx-react'
 import {ComponentType, createElement, useMemo} from 'react'
 import {ComponentState} from '../../stores/ComponentState'
-import {useComponentData} from '../../utils/contexts/ComponenDataContext'
+import {useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {useActions} from '../event'
 import {ComponentNodeProps} from './ComponentNodeProps'

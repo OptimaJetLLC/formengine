@@ -1,5 +1,5 @@
 import {values} from 'lodash'
-import {useComponentData} from '../../../utils/contexts/ComponenDataContext'
+import {useComponentData} from '../../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../../utils/contexts/StoreContext'
 import {useMultiReaction} from '../../../utils/useMultiReaction'
 import {useReaction} from '../../../utils/useReaction'

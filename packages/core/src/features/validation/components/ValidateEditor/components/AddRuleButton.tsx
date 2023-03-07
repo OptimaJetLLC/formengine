@@ -1,5 +1,5 @@
 import {observer} from 'mobx-react'
-import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
+import {useComponentData} from '../../../../../utils/contexts/ComponentDataContext'
 import {useTranslation} from 'react-i18next'
 import {Button, Dropdown} from 'rsuite'
 import {getSchemaRules} from '../../../utils/getSchemaRules'

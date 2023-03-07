@@ -1,6 +1,6 @@
 import {observer} from 'mobx-react'
 import {Fragment, useEffect} from 'react'
-import {ComponentData, ComponentDataProvider} from '../../utils/contexts/ComponenDataContext'
+import {ComponentData, ComponentDataProvider} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {useMemoizedLocalObserver} from '../../utils/useMemoizedLocalObserver'
 import {useActionListener} from '../event'

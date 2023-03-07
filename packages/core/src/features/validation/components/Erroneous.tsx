@@ -1,6 +1,6 @@
 import {observer} from 'mobx-react'
 import {ReactNode, useEffect} from 'react'
-import {useComponentData} from '../../../utils/contexts/ComponenDataContext'
+import {useComponentData} from '../../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../../utils/contexts/StoreContext'
 
 export interface ErroneousProps {

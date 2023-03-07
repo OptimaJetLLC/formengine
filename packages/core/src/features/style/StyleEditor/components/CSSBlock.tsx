@@ -4,7 +4,7 @@ import {observer} from 'mobx-react'
 import {useEffect, useRef} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Input} from 'rsuite'
-import {useComponentData} from '../../../../utils/contexts/ComponenDataContext'
+import {useComponentData} from '../../../../utils/contexts/ComponentDataContext'
 import {StyleAnnotationProps} from '../StyleAnnotationProps'
 
 const CSSBlock = observer(({annotation}: StyleAnnotationProps) => {

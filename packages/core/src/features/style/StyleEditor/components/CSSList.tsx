@@ -3,7 +3,7 @@ import * as cssProperties from 'known-css-properties'
 import {observer} from 'mobx-react'
 import {useEffect} from 'react'
 import {useTranslation} from 'react-i18next'
-import {useComponentData} from '../../../../utils/contexts/ComponenDataContext'
+import {useComponentData} from '../../../../utils/contexts/ComponentDataContext'
 import {StyleAnnotationProps} from '../StyleAnnotationProps'
 import {CompactCell, Row} from './List'
 

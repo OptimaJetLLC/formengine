@@ -1,5 +1,5 @@
 import {ReactNode} from 'react'
-import {ComponentData} from './contexts/ComponenDataContext'
+import {ComponentData} from './contexts/ComponentDataContext'
 
 export enum InsertPosition {
   Before,

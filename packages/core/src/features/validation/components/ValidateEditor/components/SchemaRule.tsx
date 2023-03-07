@@ -1,6 +1,6 @@
 import {observer} from 'mobx-react'
 import {Input as RInput, InputNumber} from 'rsuite'
-import {useComponentData} from '../../../../../utils/contexts/ComponenDataContext'
+import {useComponentData} from '../../../../../utils/contexts/ComponentDataContext'
 import {cast} from '../../../utils/cast'
 import {getSchemaRules} from '../../../utils/getSchemaRules'
 

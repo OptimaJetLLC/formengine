@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import {ComponentStore} from '../../../stores/ComponentStore'
-import {useComponentData} from '../../../utils/contexts/ComponenDataContext'
+import {useComponentData} from '../../../utils/contexts/ComponentDataContext'
 import LabeledProperty from '../../ui/LabeledProperty'
 import {useEditor} from '../utils/useEditor'
 

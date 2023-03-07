@@ -1,6 +1,6 @@
 import {keysIn} from 'lodash'
 import {Store} from '../../../stores/Store'
-import {ComponentData} from '../../../utils/contexts/ComponenDataContext'
+import {ComponentData} from '../../../utils/contexts/ComponentDataContext'
 import {DidMountEvent, WillUnmountEvent} from '../consts'
 import {EventName} from '../types'
 import {ActionEventArgs} from './ActionEventArgs'

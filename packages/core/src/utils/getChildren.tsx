@@ -4,7 +4,7 @@ import {ComponentNodeProps} from '../features/ui/ComponentNodeProps'
 import {ComponentTree} from '../features/ui/ComponentTree'
 import {ComponentStore} from '../stores/ComponentStore'
 import {Store} from '../stores/Store'
-import {ComponentData} from './contexts/ComponenDataContext'
+import {ComponentData} from './contexts/ComponentDataContext'
 
 const defaultContainerKey = 'children'
 

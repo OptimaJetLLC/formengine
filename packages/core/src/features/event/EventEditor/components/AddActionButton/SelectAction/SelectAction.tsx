@@ -1,7 +1,7 @@
 import {observer} from 'mobx-react'
 import React, {useCallback} from 'react'
 import {Dropdown} from 'rsuite'
-import {useComponentData} from '../../../../../../utils/contexts/ComponenDataContext'
+import {useComponentData} from '../../../../../../utils/contexts/ComponentDataContext'
 import {useAnnotation} from '../../../../../../utils/contexts/EditorContext'
 import {ActionData, CustomActionDefinition} from '../../../../types'
 import {CommonActions} from './components/CommonActions'

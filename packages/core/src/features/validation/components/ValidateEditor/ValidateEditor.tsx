@@ -1,5 +1,5 @@
 import {Checkbox} from 'rsuite'
-import {useComponentData} from '../../../../utils/contexts/ComponenDataContext'
+import {useComponentData} from '../../../../utils/contexts/ComponentDataContext'
 import {AddRuleButton} from './components/AddRuleButton'
 import {SchemaRule} from './components/SchemaRule'
 

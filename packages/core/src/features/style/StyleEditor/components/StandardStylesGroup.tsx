@@ -1,5 +1,5 @@
 import {observer} from 'mobx-react'
-import {useComponentData} from '../../../../utils/contexts/ComponenDataContext'
+import {useComponentData} from '../../../../utils/contexts/ComponentDataContext'
 import {StyleAn} from '../../../annotation/utils/annotations/StyleAn'
 import {useEditor} from '../../../annotation/utils/useEditor'
 import {CompactCell, LabelCell, Row} from './List'

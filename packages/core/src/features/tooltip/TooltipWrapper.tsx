@@ -3,7 +3,7 @@ import {observer} from 'mobx-react'
 import {ReactNode, useMemo} from 'react'
 import {ComponentState} from '../../stores/ComponentState'
 import {ComponentStore} from '../../stores/ComponentStore'
-import {ComponentData, useComponentData} from '../../utils/contexts/ComponenDataContext'
+import {ComponentData, useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 
 export interface TooltipWrapperProps {
