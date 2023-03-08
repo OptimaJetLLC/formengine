@@ -29,6 +29,7 @@ export class ComponentStore {
 
   //Bind to parent property
   bindTo?: string
+  bindCondition?: string
   //TODO add on validation page
   visible?: string
 

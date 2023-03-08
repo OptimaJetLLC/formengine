@@ -19,13 +19,13 @@ import {rsLabel} from './components/RsLabel'
 import {rsContent, rsFooter, rsHeader, rsSidebar} from './components/RsLayout'
 import {rsMenu} from './components/RsMenu'
 import {rsMessage} from './components/RsMessage'
-import {rsNav, rsNavItem} from './components/RsNav'
 import {rsProgressCircle, rsProgressLine} from './components/RsProgress'
 import {rsRadioGroup} from './components/RsRadioGroup'
 import {rsRepeater} from './components/RsRepeater'
 import {rsRichTextEditor} from './components/RsRichTextEditor'
 import {rsSearch} from './components/RsSearch'
 import {rsStaticContent} from './components/RsStaticContent'
+import {rsTab} from './components/RsTab'
 import {rsTextArea} from './components/RsTextArea'
 import {rsTitle} from './components/RsTitle'
 import {rsTooltip} from './components/RsTooltip'
@@ -55,8 +55,6 @@ const components = [
   rsSidebar,
   rsMenu,
   rsMessage,
-  rsNav,
-  rsNavItem,
   rsProgressCircle,
   rsProgressLine,
   rsRadioGroup,
@@ -64,6 +62,7 @@ const components = [
   rsRichTextEditor,
   rsSearch,
   rsStaticContent,
+  rsTab,
   rsTextArea,
   rsTitle,
   rsTreePicker,

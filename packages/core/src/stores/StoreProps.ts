@@ -5,6 +5,7 @@ import {ComponentStore} from './ComponentStore'
 
 export interface DropZoneProps {
   bindTo?: string
+  bindCondition?: string
 }
 
 export interface StoreProps {

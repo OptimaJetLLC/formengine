@@ -8,24 +8,54 @@ import {ComponentData} from './contexts/ComponentDataContext'
 
 const defaultContainerKey = 'children'
 
-export function getChildren(data: ComponentData, store: Store, componentTreeItem: ComponentType<ComponentTreeItemProps>) {
+const fnCache = new Map<string, Function>()
+
+const getOrCreateFn = (source: string) => {
+  const fn = fnCache.get(source)
+  if (fn) return fn
+
+  const result = new Function('parentProps', source)
+  fnCache.set(source, result)
+  return result
+}
+
+const executeCondition = (child: ComponentStore, parentProps: any) => {
+  const fnSource = child.bindCondition?.trim()
+  // it's OK - no condition to bind
+  if (!fnSource) return true
+  const fn = getOrCreateFn(fnSource)
+  try {
+    return fn(parentProps)
+  } catch (e) {
+    console.warn(e)
+    return false
+  }
+}
+
+export function getChildren(data: ComponentData, store: Store, componentTreeItem: ComponentType<ComponentTreeItemProps>,
+                            props: any) {
   const containers = data.model.properties.filter(isContainer)
   const currentProps: Record<string, any> = {}
   for (let container of containers) {
     const isChild = (child: ComponentStore) =>
       child.bindTo === container.key || !child.bindTo && container.key === defaultContainerKey
+    const isConditionSatisfied = (child: ComponentStore) => executeCondition(child, props)
 
     //TODO!
     /*const isVisible = (child: ComponentStore) =>
         container.bindTo ? child.visible === componentStore.props[container.bindTo] : true*/
 
-    const components = data.componentStore.children?.filter(isChild)//.filter(isVisible)
+    const components = data.componentStore.children?.filter(isChild)
+      .filter(isConditionSatisfied)//.filter(isVisible)
 
     let dropZoneElement = null
     if (store.props.dropZone) {
       const Dz = store.props.dropZone
       const bindTo = container.key === defaultContainerKey ? undefined : container.key
-      dropZoneElement = <Dz bindTo={bindTo}></Dz>
+      const bindCondition = data.model.properties
+        .find(property => property.key === container.key)
+        ?.bindConditionBuilder?.(props)
+      dropZoneElement = <Dz bindTo={bindTo} bindCondition={bindCondition}></Dz>
     }
 
     currentProps[container.key] =

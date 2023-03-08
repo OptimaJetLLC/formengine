@@ -14,8 +14,8 @@ interface BuilderProvidersProps {
   children: ReactNode
 }
 
-const ComponentDropZone = ({bindTo}: { bindTo?: string }) => {
-  return <DropZone isInner={true} bindTo={bindTo}/>
+const ComponentDropZone = ({bindTo, bindCondition}: { bindTo?: string, bindCondition?: string }) => {
+  return <DropZone isInner={true} bindTo={bindTo} bindCondition={bindCondition}/>
 }
 
 export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {

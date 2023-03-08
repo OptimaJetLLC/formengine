@@ -143,9 +143,11 @@ export class BuilderStore {
     }
   }
 
-  add(source: ComponentMove, target: ComponentMove, insertPosition: InsertPosition = InsertPosition.After, bindTo?: string) {
+  add(source: ComponentMove, target: ComponentMove, insertPosition: InsertPosition = InsertPosition.After,
+      bindTo?: string, bindCondition?: string) {
     const clone = assign(new ComponentStore('', ''), cloneDeep(source.componentStore))
     clone.bindTo = bindTo
+    clone.bindCondition = bindCondition
     this.unifyComponentKeys(clone)
     this.move({componentStore: clone}, target, insertPosition)
     this.selected = this.findNode(clone.key)

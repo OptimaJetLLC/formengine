@@ -13,6 +13,7 @@ export class Annotation {
   readonly valued: boolean = false
   readonly editorProps?: any
   readonly calculable: boolean = true
+  readonly bindConditionBuilder?: (props: any) => string
 
   constructor(key: string, name: string) {
     this.key = key

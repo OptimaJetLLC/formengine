@@ -12,30 +12,31 @@ interface DropViewProps extends ComponentProps<any> {
   isOver?: boolean
   isInner?: boolean
   bindTo?: string
+  bindCondition?: string
 }
 
 export const DropView = (props: DropViewProps) => {
   const {isRoot, isContainer, key} = useComponentData().componentStore
-  const {bindTo, ...classNamesFromProps} = props
+  const {bindTo, bindCondition, ...classNamesFromProps} = props
   const dropClassNames = {isContainer, isRoot, ...classNamesFromProps}
   const label = `${props.isAfter ? 'AFTER' : 'BEFORE'} ${key}`
 
   return <Container className={cx({...dropClassNames})}>
     <LabelContainer>
       {isRoot || props.isInner
-        ? <AddButton bindTo={bindTo}/>
+        ? <AddButton bindTo={bindTo} bindCondition={bindCondition}/>
         : <Label className={cx(dropClassNames)}>{label}</Label>
       }
     </LabelContainer>
   </Container>
 }
 
-const AddButton = ({bindTo}: { bindTo?: string }) => {
+const AddButton = ({bindTo, bindCondition}: { bindTo?: string, bindCondition?: string }) => {
   const target = useComponentData()
   const {openModal, ComponentsModal} = useComponentsModal(target)
   return <>
-    <IconButton onClick={() => openModal(InsertPosition.Inner, bindTo)} icon={<PlusIcon/>} color="green" appearance={'primary'} circle
-                size={'xs'}/>
+    <IconButton onClick={() => openModal(InsertPosition.Inner, bindTo, bindCondition)}
+                icon={<PlusIcon/>} color="green" appearance={'primary'} circle size={'xs'}/>
     <ComponentsModal/>
   </>
 }

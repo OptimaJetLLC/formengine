@@ -9,16 +9,18 @@ export const useComponentsModal = (target: ComponentData) => {
   const store = useBuilderStore()
   const t = useTranslationPart('componentsModal')
   const [insertPosition, setInsertPosition] = useState<InsertPosition | undefined>(undefined)
-  const [bindTo, setBindTo] = useState<string | undefined>()
+  const [bindTo, setBindTo] = useState<string>()
+  const [bindCondition, setBindCondition] = useState<string>()
 
   const close = () => setInsertPosition(undefined)
   const add = (source: ComponentMove) => {
     close()
-    store.add(source, target, insertPosition, bindTo)
+    store.add(source, target, insertPosition, bindTo, bindCondition)
   }
-  const openModal = (insertPosition: InsertPosition, bindTo?: string) => {
+  const openModal = (insertPosition: InsertPosition, bindTo?: string, bindCondition?: string) => {
     setInsertPosition(insertPosition)
     setBindTo(bindTo)
+    setBindCondition(bindCondition)
   }
 
   const ComponentsModal = () => <SModal open={!isUndefined(insertPosition)} onClose={close} size={'lg'}>

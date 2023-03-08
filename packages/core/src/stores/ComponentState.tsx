@@ -24,17 +24,17 @@ export class ComponentState {
   }
 
   get get() {
-    return Object.assign(
+    const propsWithoutChildren = Object.assign(
       {key: this.data.componentStore.key},
       this.defaultProps,
       this.calculatedProps,
-      this.children,
       this.substitutedValue,
       this.stylization,
       this.value,
       this.events,
-      this.htmlAttributes
+      this.htmlAttributes,
     )
+    return Object.assign(propsWithoutChildren, this.children(propsWithoutChildren))
   }
 
   get value() {
@@ -61,7 +61,7 @@ export class ComponentState {
     return getHtmlAttributes(this.data.componentStore)
   }
 
-  get children() {
-    return getChildren(this.data, this.store, this.componentTreeItem)
+  children(props: any) {
+    return getChildren(this.data, this.store, this.componentTreeItem, props)
   }
 }
