@@ -6,10 +6,10 @@ import {useMemoizedLocalObserver} from '../../utils/useMemoizedLocalObserver'
 import {useActionListener} from '../event'
 import {TooltipWrapper} from '../tooltip/TooltipWrapper'
 import {Erroneous} from '../validation'
-import {ComponentNodeProps} from './ComponentNodeProps'
+import {ComponentTreeItemProps} from './ComponentTreeItemProps'
 import {ComponentViewer} from './ComponentViewer'
 
-const _ComponentNode = ({componentStore, parentStore}: ComponentNodeProps) => {
+const _ComponentTreeItem = ({componentStore, parentStore}: ComponentTreeItemProps) => {
   const store = useStore()
   const data = useMemoizedLocalObserver<ComponentData>(() => ({
     key: componentStore.key,
@@ -39,7 +39,7 @@ const _ComponentNode = ({componentStore, parentStore}: ComponentNodeProps) => {
       <Wrapper>
         <Tooltip>
           <Erroneous>
-            <ComponentViewer component={ComponentNode}/>
+            <ComponentViewer componentTreeItem={ComponentTreeItem}/>
           </Erroneous>
         </Tooltip>
       </Wrapper>
@@ -47,4 +47,4 @@ const _ComponentNode = ({componentStore, parentStore}: ComponentNodeProps) => {
   )
 }
 
-export const ComponentNode = observer(_ComponentNode)
+export const ComponentTreeItem = observer(_ComponentTreeItem)

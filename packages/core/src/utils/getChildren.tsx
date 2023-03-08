@@ -1,6 +1,6 @@
 import {ComponentType} from 'react'
 import {isContainer} from '../features/annotation'
-import {ComponentNodeProps} from '../features/ui/ComponentNodeProps'
+import {ComponentTreeItemProps} from '../features/ui/ComponentTreeItemProps'
 import {ComponentTree} from '../features/ui/ComponentTree'
 import {ComponentStore} from '../stores/ComponentStore'
 import {Store} from '../stores/Store'
@@ -8,7 +8,7 @@ import {ComponentData} from './contexts/ComponentDataContext'
 
 const defaultContainerKey = 'children'
 
-export function getChildren(data: ComponentData, store: Store, component: ComponentType<ComponentNodeProps>) {
+export function getChildren(data: ComponentData, store: Store, componentTreeItem: ComponentType<ComponentTreeItemProps>) {
   const containers = data.model.properties.filter(isContainer)
   const currentProps: Record<string, any> = {}
   for (let container of containers) {
@@ -30,7 +30,7 @@ export function getChildren(data: ComponentData, store: Store, component: Compon
 
     currentProps[container.key] =
       components?.length
-        ? <ComponentTree parentStore={data.componentStore} data={components} component={component}/>
+        ? <ComponentTree parentStore={data.componentStore} data={components} treeItem={componentTreeItem}/>
         : dropZoneElement
   }
   return currentProps

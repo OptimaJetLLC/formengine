@@ -5,7 +5,7 @@ import {computeEvents} from '../features/event'
 import {getHtmlAttributes} from '../features/html-attributes'
 import {computeStylization} from '../features/style'
 import {getSubstitutedValue} from '../features/substitution'
-import {ComponentNodeProps} from '../features/ui/ComponentNodeProps'
+import {ComponentTreeItemProps} from '../features/ui/ComponentTreeItemProps'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {getChildren} from '../utils/getChildren'
 import {initDefaultProps} from '../utils/initDefaultProps'
@@ -17,7 +17,7 @@ export class ComponentState {
   constructor(
     readonly data: ComponentData,
     readonly store: Store,
-    readonly component: ComponentType<ComponentNodeProps>
+    readonly componentTreeItem: ComponentType<ComponentTreeItemProps>
   ) {
     makeAutoObservable(this)
     this.defaultProps = initDefaultProps(data.model)
@@ -62,6 +62,6 @@ export class ComponentState {
   }
 
   get children() {
-    return getChildren(this.data, this.store, this.component)
+    return getChildren(this.data, this.store, this.componentTreeItem)
   }
 }

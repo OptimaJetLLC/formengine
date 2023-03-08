@@ -1,18 +1,18 @@
 import {observer} from 'mobx-react'
 import {ComponentType} from 'react'
 import {ComponentStore} from '../../stores/ComponentStore'
-import {ComponentNodeProps} from './ComponentNodeProps'
+import {ComponentTreeItemProps} from './ComponentTreeItemProps'
 
 interface ComponentTreeProps {
   parentStore?: ComponentStore
   data: ComponentStore[]
-  component: ComponentType<ComponentNodeProps>
+  treeItem: ComponentType<ComponentTreeItemProps>
 }
 
-const _ComponentTree = ({parentStore, data, component}: ComponentTreeProps) => {
-  const NodeComponent = component
+const _ComponentTree = ({parentStore, data, treeItem}: ComponentTreeProps) => {
+  const TreeItem = treeItem
   return <>
-    {data.map(cs => <NodeComponent key={cs.key} componentStore={cs} parentStore={parentStore}/>)}
+    {data.map(cs => <TreeItem key={cs.key} componentStore={cs} parentStore={parentStore}/>)}
   </>
 }
 

@@ -4,15 +4,15 @@ import {ComponentState} from '../../stores/ComponentState'
 import {useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {useActions} from '../event'
-import {ComponentNodeProps} from './ComponentNodeProps'
+import {ComponentTreeItemProps} from './ComponentTreeItemProps'
 
 export interface ComponentViewerProps {
-  component: ComponentType<ComponentNodeProps>
+  componentTreeItem: ComponentType<ComponentTreeItemProps>
 }
 
-const _ComponentViewer = ({component}: ComponentViewerProps) => {
+const _ComponentViewer = ({componentTreeItem}: ComponentViewerProps) => {
   const store = useStore(), data = useComponentData()
-  const componentState = useMemo(() => new ComponentState(data, store, component), [data, store])
+  const componentState = useMemo(() => new ComponentState(data, store, componentTreeItem), [data, store])
 
   useActions()
 
