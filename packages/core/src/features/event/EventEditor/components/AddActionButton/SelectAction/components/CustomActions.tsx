@@ -5,7 +5,7 @@ import PlusIcon from '@rsuite/icons/Plus'
 import TrashIcon from '@rsuite/icons/Trash'
 import {toJS} from 'mobx'
 import {observer} from 'mobx-react'
-import {Dropdown, DropdownProps, IconButton} from 'rsuite'
+import {Divider, Dropdown, DropdownProps, IconButton} from 'rsuite'
 import {useStore} from '../../../../../../../utils/contexts/StoreContext'
 import {useTranslationPart} from '../../../../../../localization/hooks'
 import {ActionData, CustomActionDefinition} from '../../../../../types'
@@ -44,7 +44,9 @@ export const CustomActions = observer(({onOpen, onSelect}: CustomActionsProps) =
           }
         )}
 
-        {actions && <Dropdown.Item divider/>}
+        {actions && <Dropdown.Item disabled>
+          <Divider style={{marginTop: 0, marginBottom: 0}}/>
+        </Dropdown.Item>}
 
         <Dropdown.Item children={t('addCustomAction')} icon={<PlusIcon/>} onClick={onOpen as () => void}/>
       </Dropdown.Menu>

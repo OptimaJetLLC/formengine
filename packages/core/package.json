@@ -36,7 +36,7 @@
         "react-dnd-html5-backend": "^14.1.0",
         "react-i18next": "^11.15.3",
         "react-popper": "^2.2.5",
-        "rsuite": "^5.6.2",
+        "rsuite": "^5.28.1",
         "rsuite-color-picker": "^0.2.0",
         "rxjs": "^7.8.0",
         "styled-system": "^5.1.5",

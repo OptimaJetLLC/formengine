@@ -14,7 +14,7 @@ export const AddButton = observer(() => {
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
 
   useEffect(() => {
-    //Задержка нужна, чтобы не срабатывало слишком быстро)
+    //Задержка нужна, чтобы не срабатывало слишком быстро
     setTimeout(() => setShow(!isDragging && showPermanent))
   }, [isDragging])
 
