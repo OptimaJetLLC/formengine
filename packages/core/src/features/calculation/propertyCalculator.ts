@@ -13,9 +13,23 @@ const getOrCreateFn = (source: string) => {
   return result
 }
 
-export const calculatePropertyValue = (componentStore: ComponentStore, componentProperty: ComponentProperty, form: Form) => {
-  const fn = getOrCreateFn(componentProperty.fnSource || '')
-  return fn(form)
+const calculateValue = (fnSource: string, form: Form) => {
+  const fn = getOrCreateFn(fnSource)
+  try {
+    return fn(form)
+  } catch (e) {
+    console.warn(e)
+  }
+}
+
+export const calculatePropertyValue = (componentProperty: ComponentProperty, form: Form) => {
+  return calculateValue(componentProperty.fnSource || '', form)
+}
+
+export const calculateExpressionProperty = (componentProperty: ComponentProperty, form: Form) => {
+  if (componentProperty.useFn) return calculatePropertyValue(componentProperty, form)
+  const fnSource = componentProperty.value || ''
+  return calculateValue(`return ${fnSource}`, form)
 }
 
 export type CompilationResult = {
@@ -41,7 +55,7 @@ export const calculateProperties = (componentStore: ComponentStore, form: Form) 
 
     if (componentProperty.useFn) {
       try {
-        data[value] = calculatePropertyValue(componentStore, componentProperty, form)
+        data[value] = calculatePropertyValue(componentProperty, form)
       } catch (e) {
         console.error(e)
       }

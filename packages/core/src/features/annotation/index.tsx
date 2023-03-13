@@ -13,6 +13,7 @@ import {KeyInput} from './components/KeyInput'
 import {MultiPicker} from './components/MultiPicker'
 import {NumberInput} from './components/NumberInput'
 import {Picker} from './components/Picker'
+import {RenderWhenEditor} from './components/RenderWhenEditor'
 import {SizeInput} from './components/SizeInput'
 import {StringInput} from './components/StringInput'
 import {TooltipPropertiesEditor} from './components/TooltipPropertiesEditor'
@@ -79,5 +80,9 @@ shape({
 export const tooltipProps = createAnnotation(TooltipPropertiesEditor).setup({subsection: SubSection.Tooltip})
 
 export const useTooltip = boolean.setup({subsection: SubSection.Tooltip})
+
+export const renderWhen = createAnnotation(RenderWhenEditor)
+  .schemed(yup.boolean())
+  .setup({subsection: SubSection.Additional})
 
 export * from './utils'

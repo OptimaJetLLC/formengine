@@ -45,6 +45,11 @@
           "width": "100%",
           "height": "40px"
         }
+      },
+      "renderWhen": {
+        "value": "form.data.checkbox",
+        "useFn": false,
+        "fnSource": "// enter your code here\nreturn false"
       }
     },
     {
@@ -62,6 +67,24 @@
             "type": "custom"
           }
         ]
+      },
+      "styles": {
+        "cssObject": {}
+      }
+    },
+    {
+      "key": "checkbox",
+      "type": "RsCheckbox",
+      "props": {
+        "checked": {
+          "value": true,
+          "useFn": true,
+          "fnSource": "return new Date().getMinutes() % 2 === 0"
+        },
+        "children": {
+          "useFn": true,
+          "fnSource": "return `${form.data.title} ${form.data.checkbox} ${new Date().toISOString()}`"
+        }
       },
       "styles": {
         "cssObject": {}
@@ -170,21 +193,6 @@
       "key": "RadioGroup",
       "type": "RsRadioGroup",
       "props": {}
-    },
-    {
-      "key": "checkbox",
-      "type": "RsCheckbox",
-      "props": {
-        "checked": {
-          "value": true,
-          "useFn": true,
-          "fnSource": "return new Date().getMinutes() % 2 === 0"
-        },
-        "children": {
-          "useFn": true,
-          "fnSource": "return `${form.data.title} ${form.data.checkbox} ${new Date().toISOString()}`"
-        }
-      }
     }
   ]
 }

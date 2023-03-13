@@ -58,7 +58,7 @@ export class Form {
   #updateFnValue(component: ComponentStore, key: string): [boolean, any?] {
     const property = component.props[key]
     if (property && property.useFn) {
-      const value = calculatePropertyValue(component, property, this)
+      const value = calculatePropertyValue(property, this)
       return [true, value]
     }
     return [false]

@@ -1,7 +1,8 @@
 import {ComponentType} from 'react'
 import {isContainer} from '../features/annotation'
-import {ComponentTreeItemProps} from '../features/ui/ComponentTreeItemProps'
+import {calculateExpressionProperty} from '../features/calculation/propertyCalculator'
 import {ComponentTree} from '../features/ui/ComponentTree'
+import {ComponentTreeItemProps} from '../features/ui/ComponentTreeItemProps'
 import {ComponentStore} from '../stores/ComponentStore'
 import {Store} from '../stores/Store'
 import {ComponentData} from './contexts/ComponentDataContext'
@@ -32,6 +33,11 @@ const executeCondition = (child: ComponentStore, parentProps: any) => {
   }
 }
 
+const needRender = (child: ComponentStore, store: Store) => {
+  if (!child.renderWhen) return true
+  return calculateExpressionProperty(child.renderWhen, store.form) === true
+}
+
 export function getChildren(data: ComponentData, store: Store, componentTreeItem: ComponentType<ComponentTreeItemProps>,
                             props: any) {
   const containers = data.model.properties.filter(isContainer)
@@ -39,14 +45,12 @@ export function getChildren(data: ComponentData, store: Store, componentTreeItem
   for (let container of containers) {
     const isChild = (child: ComponentStore) =>
       child.bindTo === container.key || !child.bindTo && container.key === defaultContainerKey
-    const isConditionSatisfied = (child: ComponentStore) => executeCondition(child, props)
-
-    //TODO!
-    /*const isVisible = (child: ComponentStore) =>
-        container.bindTo ? child.visible === componentStore.props[container.bindTo] : true*/
+    const isBindConditionSatisfied = (child: ComponentStore) => executeCondition(child, props)
+    const isNeedRender = (child: ComponentStore) => store.isBuilderMode || needRender(child, store)
 
     const components = data.componentStore.children?.filter(isChild)
-      .filter(isConditionSatisfied)//.filter(isVisible)
+      .filter(isBindConditionSatisfied)
+      .filter(isNeedRender)
 
     let dropZoneElement = null
     if (store.props.dropZone) {

@@ -4,7 +4,7 @@ import {forIn, startCase, transform} from 'lodash'
 import {ComponentType, ReactNode} from 'react'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {isFunction} from '../../../utils'
-import {event, htmlAttributes, key, string, stylization, tooltipProps, validation} from '../../annotation'
+import {event, htmlAttributes, key, renderWhen, string, stylization, tooltipProps, validation} from '../../annotation'
 import {Annotation} from '../../annotation/utils/annotations/Annotation'
 import {BaseBuilder} from '../../annotation/utils/builders/BaseBuilder'
 import {ActionDefinition, ActionEventHandler, defineAction, DidMountEvent, WillUnmountEvent} from '../../event'
@@ -122,6 +122,7 @@ export class Definition<T extends object> {
       const properties: Annotation[] = [
         key.build('key'),
         tooltipProps.build('tooltipProps'),
+        renderWhen.build('renderWhen'),
         htmlAttributes.build('htmlAttributes'),
         validation.build('validation'),
         event.build(DidMountEvent),

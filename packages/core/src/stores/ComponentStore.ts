@@ -31,7 +31,7 @@ export class ComponentStore {
   bindTo?: string
   bindCondition?: string
   //TODO add on validation page
-  visible?: string
+  renderWhen?: ComponentProperty
 
   constructor(key: string, type: string) {
     this.key = key

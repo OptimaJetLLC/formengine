@@ -47,4 +47,8 @@ export class Store {
     if (!selectedTooltipType) return
     return this.props.view.getTooltipComponent(selectedTooltipType)
   }
+
+  get isBuilderMode() {
+    return !!this.props.dropZone
+  }
 }
