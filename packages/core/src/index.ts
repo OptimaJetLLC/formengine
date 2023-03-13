@@ -36,3 +36,4 @@ export type {BuilderMode, BuilderViewMode, ComponentMove, WrapperProps, BuilderT
 export {BiDi} from './features/localization/bidi'
 export {DefaultActions, ActionEventArgs, useEventReactions} from './features/event'
 export {useShowMessage} from './features/toast/toast'
+export type {EditableProperty} from './stores/BuilderStore'

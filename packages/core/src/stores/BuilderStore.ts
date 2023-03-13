@@ -10,12 +10,19 @@ import {fbScreen} from '../features/ui/FbScreen'
 import {treeFind} from '../utils'
 import {Node} from '../utils/Node'
 import {BuilderMode, BuilderTheme, BuilderViewMode, ComponentMove, InsertPosition} from '../utils/types'
-import {ComponentStore} from './ComponentStore'
+import {ComponentProperty, ComponentStore} from './ComponentStore'
 import {kvCreateStore, kvDel, kvGet, kvKeys, kvSet} from './KeyValueStorage'
 import {Store} from './Store'
 import {DropZoneProps} from './StoreProps'
 
 const {After, Inner} = InsertPosition
+
+export interface EditableProperty {
+  readonly componentKey: string
+  readonly annotation: Annotation
+  readonly property?: ComponentProperty
+  readonly saveProperty: (property: ComponentProperty) => ComponentProperty
+}
 
 export class BuilderStore {
   builderMode: BuilderMode = 'viewer'
@@ -24,10 +31,7 @@ export class BuilderStore {
   openedPanels: PanelPlacement[] = ['left', 'right']
   selected?: Node
   language = defaultLanguage
-  calculatedProperty?: {
-    readonly componentStore: ComponentStore
-    readonly annotation: Annotation
-  }
+  calculatedProperty?: EditableProperty
   formName = 'SampleForm'
   lastSaveTime = new Date()
   readonly #customStore = kvCreateStore('form-builder-store', 'form-store')

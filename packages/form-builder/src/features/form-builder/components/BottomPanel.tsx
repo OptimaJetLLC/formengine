@@ -24,7 +24,7 @@ export const BottomPanel = observer(() => {
   const [items, setItems] = useState<Pane[]>([jsonPane])
 
   useEffect(() => {
-    const hasCalc = !!store.calculatedProperty?.componentStore.key
+    const hasCalc = !!store.calculatedProperty?.componentKey
 
     setItems([jsonPane, ...hasCalc ? [codePane] : []])
     setActiveKey(hasCalc ? 'code' : 'json')

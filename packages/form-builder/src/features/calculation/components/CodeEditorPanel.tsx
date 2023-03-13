@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {Annotation, CompilationResult, compileFn, ComponentStore, useBuilderStore, useTranslationPart} from 'fb-core'
+import {CompilationResult, compileFn, EditableProperty, useBuilderStore, useTranslationPart} from 'fb-core'
 import {action} from 'mobx'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
@@ -39,37 +39,30 @@ const ErrorMessage = ({result}: { result?: CompilationResult }) => {
 }
 
 interface CodeEditorPanelProps {
-  componentStore: ComponentStore
-  annotation: Annotation
+  editableProperty: EditableProperty
   onClose: () => void
 }
 
-const _CodeEditorPanel = ({componentStore, annotation, onClose}: CodeEditorPanelProps) => {
-  const property = componentStore.props[annotation.key]
-  const [sourceCode, setSourceCode] = useState(property?.fnSource || codePlaceHolder)
+const _CodeEditorPanel = ({editableProperty, onClose}: CodeEditorPanelProps) => {
+  const [sourceCode, setSourceCode] = useState(editableProperty.property?.fnSource || codePlaceHolder)
   const [compilationError, setCompilationError] = useState<CompilationResult | undefined>()
-  const [useFn, setUseFn] = useState(property?.useFn || false)
+  const [useFn, setUseFn] = useState(editableProperty.property?.useFn || false)
 
   const compileCode = () => {
     const result = compileFn(sourceCode)
     setCompilationError(result)
   }
 
-  const saveCode = () => {
-    componentStore.props[annotation.key] ??= {}
-    const componentProperty = componentStore.props[annotation.key]
-    componentProperty.useFn = useFn
-    componentProperty.fnSource = sourceCode
-  }
+  const saveCode = () => editableProperty.saveProperty({useFn: useFn, fnSource: sourceCode})
 
   useEffect(() => {
-    setSourceCode(property?.fnSource || codePlaceHolder)
-    setUseFn(property?.useFn || false)
-  }, [property])
+    setSourceCode(editableProperty.property?.fnSource || codePlaceHolder)
+    setUseFn(editableProperty.property?.useFn || false)
+  }, [editableProperty])
 
   const header = <p>Calculated property for &lt;
-    <code>{componentStore.key}.{annotation.name}</code> &gt;
-    (must return {annotation.schema?.type})</p>
+    <code>{editableProperty.componentKey}.{editableProperty.annotation.name}</code> &gt;
+    (must return {editableProperty.annotation.schema?.type})</p>
 
   return <>
     <Header>{header}</Header>
@@ -91,8 +84,8 @@ const _CodeEditorPanel = ({componentStore, annotation, onClose}: CodeEditorPanel
 const CodeEditorPanelWrapper = () => {
   const store = useBuilderStore()
   const t = useTranslationPart('codeEditor')
-  return store.calculatedProperty?.componentStore.key
-    ? <_CodeEditorPanel {...store.calculatedProperty} onClose={() => store.calculatedProperty = undefined}/>
+  return store.calculatedProperty?.componentKey
+    ? <_CodeEditorPanel editableProperty={store.calculatedProperty} onClose={() => store.calculatedProperty = undefined}/>
     : <Placeholder>{t('placeholder')}</Placeholder>
 }
 
