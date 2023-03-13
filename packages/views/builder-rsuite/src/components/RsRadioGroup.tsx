@@ -1,5 +1,6 @@
 import {array, boolean, define, event, LabeledValue, oneOf, string, toLabeledValues} from 'form-builder'
 import {Radio, RadioGroup, RadioGroupProps} from 'rsuite'
+import {readOnly} from '../commonProperties'
 
 interface RsRadioGroupProps extends RadioGroupProps<string> {
   items: LabeledValue[]
@@ -25,6 +26,8 @@ export const rsRadioGroup = define(RsRadioGroup)
     name: string.default('RadioGroup').hinted('Radio group name'),
     appearance: oneOf('default', 'picker').labeled('Default', 'Picker').default('default'),
     label: string.default('Radio'),
+    disabled: boolean.hinted('The disable of component'),
+    readOnly,
     defaultValue: string,
     inline: boolean,
     onChange: event,

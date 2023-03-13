@@ -2,7 +2,7 @@ import {array, boolean, define, event, LabeledValue, string, toLabeledValues} fr
 import {CSSProperties} from 'react'
 import {Form, InputPicker} from 'rsuite'
 import {InputPickerProps} from 'rsuite/esm/InputPicker/InputPicker'
-import {placement, size} from '../commonProperties'
+import {placement, readOnly, size} from '../commonProperties'
 
 interface RsDropdownProps extends InputPickerProps {
   label: string,
@@ -38,7 +38,8 @@ export const rsDropdown = define(RsDropdown)
     block: boolean.default(true),
     cleanable: boolean.default(false),
     creatable: boolean.default(false),
-    disabled: boolean,
+    disabled: boolean.hinted('Whether or not component is disabled'),
+    readOnly,
     groupBy: string.default(''),
 
     onSelect: event,

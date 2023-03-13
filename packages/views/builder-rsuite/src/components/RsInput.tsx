@@ -1,6 +1,6 @@
 import {boolean, define, event, string} from 'form-builder'
 import {Input, InputProps} from 'rsuite'
-import {size} from '../commonProperties'
+import {readOnly, size} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
 
 export interface RsInputProps extends InputProps {
@@ -8,7 +8,7 @@ export interface RsInputProps extends InputProps {
   className: string
 }
 
-// todo этот компонент должен поддерижвать numeric input only (number format в старом фб)
+// todo этот компонент должен поддерживать numeric input only (number format в старом фб)
 export const RsInput = ({style, className, label, ...props}: RsInputProps) =>
   <RsLabeledInput style={style} className={className}>
     <RsRtlLabel>{label}</RsRtlLabel>
@@ -21,8 +21,8 @@ export const rsInput = define(RsInput)
     value: string.default('').valued,
     placeholder: string.default('').hinted('Input placeholder'),
     size,
-    disabled: boolean,
-    readOnly: boolean,
+    disabled: boolean.hinted('Disabled component'),
+    readOnly,
     onChange: event,
   })
   .actions((props, def) => {

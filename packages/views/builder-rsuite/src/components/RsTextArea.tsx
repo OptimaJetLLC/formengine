@@ -1,7 +1,7 @@
 import {boolean, define, event, number, string} from 'form-builder'
 import {Input} from 'rsuite'
 import {InputProps} from 'rsuite/esm/Input/Input'
-import {size} from '../commonProperties'
+import {readOnly, size} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
 
 interface RsTextAreaProps extends InputProps {
@@ -23,8 +23,8 @@ export const rsTextArea = define(RsTextArea)
     placeholder: string,
     rows: number.default(5).withEditorProps({min: 1}),
     size,
-    disabled: boolean,
-    readOnly: boolean,
+    disabled: boolean.hinted('Disabled component'),
+    readOnly,
     onChange: event,
     onPressEnter: event
   })

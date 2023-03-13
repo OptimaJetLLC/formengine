@@ -1,4 +1,4 @@
-import {color, number, oneOf} from 'form-builder'
+import {boolean, color, number, oneOf} from 'form-builder'
 import {TypeAttributes} from 'rsuite/cjs/@types/common'
 
 type Placement = TypeAttributes.Placement;
@@ -37,3 +37,5 @@ export const textStyles = {
   fontWeight: oneOf('lighter', 'normal', 'bold').default('normal'),
   color: color.default('var(--rs-text-primary)'),
 }
+
+export const readOnly = boolean.hinted('Read only component')

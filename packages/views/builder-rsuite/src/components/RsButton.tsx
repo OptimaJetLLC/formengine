@@ -1,6 +1,6 @@
 import {boolean, define, event, oneOf, string} from 'form-builder'
 import {Button} from 'rsuite'
-import {size} from '../commonProperties'
+import {readOnly, size} from '../commonProperties'
 
 export const rsButton = define(Button)
   .typed('RsButton')
@@ -14,6 +14,7 @@ export const rsButton = define(Button)
     color: oneOf('red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'violet')
       .hinted('A button can have different colors'),
     disabled: boolean.hinted('A button can show it is currently unable to be interacted with'),
+    readOnly,
     href: string.hinted('Providing a href will render an <a> element'),
     loading: boolean.hinted('A button can show a loading indicator'),
     size,
