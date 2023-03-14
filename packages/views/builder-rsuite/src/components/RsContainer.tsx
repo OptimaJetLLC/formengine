@@ -27,7 +27,9 @@ export const rsContainer = define(RsContainer)
   })
   .css({
     gap: size.default('10px'),
-    alignItems: oneOf('start', 'center', 'baseline', 'end', 'stretch')
+    alignItems: oneOf('start', 'center', 'baseline', 'end', 'stretch'),
+    justifyContent: oneOf('flex-start', 'flex-end', 'center', 'space-between', 'space-around',
+      'space-evenly', 'start', 'end', 'left', 'right'),
   })
 
 const containerStyles = css`

@@ -1,4 +1,4 @@
-import {makeAutoObservable} from 'mobx'
+import {makeAutoObservable, observable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {Store} from '../../../stores/Store'
 import {calculatePropertyValue} from '../../calculation/propertyCalculator'
@@ -7,9 +7,13 @@ import {Field} from './Field'
 
 export class Form {
   fields = new Map<string, Field>()
+  state: Record<string, any> = {}
 
   constructor(readonly store: Store) {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {
+      fields: true,
+      state: observable.deep
+    })
   }
 
   get data() {

@@ -2,6 +2,8 @@ import {define, ErrorMessageProps, node, string} from 'form-builder'
 import {Form} from 'rsuite'
 
 const RsErrorMessage = ({error, children}: ErrorMessageProps) => {
+  if (!error) return <>{children}</>
+
   const className = error ? 'rs-form-control-wrapper' : undefined
 
   return <div className={className}>
