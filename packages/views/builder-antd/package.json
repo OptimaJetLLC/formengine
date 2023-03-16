@@ -9,7 +9,7 @@
         "build": "vite build"
     },
     "dependencies": {
-        "form-builder": "*",
+        "fb-core": "*",
         "viewer-antd": "*"
     }
 }

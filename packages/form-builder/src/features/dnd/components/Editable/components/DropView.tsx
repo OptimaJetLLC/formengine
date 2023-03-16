@@ -1,10 +1,11 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import PlusIcon from '@rsuite/icons/Plus'
-import {InsertPosition, useComponentData} from 'fb-core'
+import {useComponentData} from 'fb-core'
 import {ComponentProps} from 'react'
 import {IconButton} from 'rsuite'
-import {useComponentsModal} from '../../../../form-builder/components/ComponentBar/ComponentsModal'
+import {InsertPosition} from '../../../../../utils/types'
+import {useComponentsModal} from '../../../../ui/ComponentBar/ComponentsModal'
 
 interface DropViewProps extends ComponentProps<any> {
   isAfter?: boolean

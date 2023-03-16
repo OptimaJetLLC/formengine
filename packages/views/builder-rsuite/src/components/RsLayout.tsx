@@ -1,4 +1,4 @@
-import {boolean, define, node, string} from 'form-builder'
+import {boolean, define, node, string} from 'fb-core'
 import {Content, Footer, Header, Sidebar} from 'rsuite'
 
 export const rsHeader = define(Header)

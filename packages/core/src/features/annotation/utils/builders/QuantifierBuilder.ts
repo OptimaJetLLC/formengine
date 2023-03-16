@@ -1,11 +1,15 @@
-import {startCase} from 'lodash'
-import {Annotation} from '../annotations/Annotation'
-import {PropertyAn} from '../annotations/PropertyAn'
+import {startCase} from 'lodash-es'
+import {Annotation} from '../../types/annotations/Annotation'
+import {PropertyAn} from '../../types/annotations/PropertyAn'
 import {SchemedBuilder} from './SchemedBuilder'
 
 export abstract class QuantifierBuilder<T> extends SchemedBuilder<T> {
   values!: (string | number)[]
   labels?: string[]
+
+  get required(): this {
+    return super.required as this
+  }
 
   labeled(...labels: string[]) {
     const clone = this.clone()
@@ -25,9 +29,5 @@ export abstract class QuantifierBuilder<T> extends SchemedBuilder<T> {
 
   default(value: T | T[]): this {
     return this.setup({schema: this.annotation.schema?.default(value)})
-  }
-
-  get required(): this {
-    return super.required as this
   }
 }

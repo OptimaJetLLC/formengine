@@ -6,16 +6,19 @@
         "graph": "npx nx graph",
         "bootstrap": "npx lerna bootstrap",
         "build": "npx lerna run build",
-        "start": "npx lerna run start --scope=form-builder-app",
+        "start": "npx lerna run start --scope=example-builder",
+        "dev:builder": "npx lerna run start --scope=example-builder",
+        "dev:viewer": "npx lerna run start --scope=example-viewer",
         "test": "vitest run",
         "test:watch": "vitest",
         "test:related": "vitest related",
         "test:ui": "vitest --ui",
         "coverage": "vitest run --coverage",
-        "check-circular-deps": "npx madge --extensions ts --circular ."
+        "check:circular-deps": "npx madge --extensions ts --circular ."
     },
     "workspaces": [
         "packages/*",
+        "packages/apps/*",
         "packages/views/*"
     ],
     "dependencies": {

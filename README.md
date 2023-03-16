@@ -11,7 +11,7 @@ npm install
 Start the app for developing:
 
 ```shell
-npm run start
+npm run dev:builder
 ```
 
 ## Other commands

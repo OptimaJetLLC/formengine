@@ -1,4 +1,4 @@
-import {isUndefined} from 'lodash'
+import {isUndefined} from 'lodash-es'
 import {ComponentProperty, ComponentStore} from '../../stores/ComponentStore'
 import {Form} from '../validation'
 

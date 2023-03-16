@@ -1,4 +1,4 @@
-import {array, boolean, define, event, LabeledValue, oneOf, string, toLabeledValues} from 'form-builder'
+import {array, boolean, define, event, LabeledValue, oneOf, string, toLabeledValues} from 'fb-core'
 import {Radio, RadioGroup, RadioGroupProps} from 'rsuite'
 import {readOnly} from '../commonProperties'
 

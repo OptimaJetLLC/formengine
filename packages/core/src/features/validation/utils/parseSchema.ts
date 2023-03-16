@@ -1,4 +1,4 @@
-import {Annotation} from '../../annotation/utils/annotations/Annotation'
+import {Annotation} from '../../annotation/types/annotations/Annotation'
 import {SchemaCtor, ValidationSchema} from '../types'
 import {getSchemaRules} from './getSchemaRules'
 

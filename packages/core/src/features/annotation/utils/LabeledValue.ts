@@ -1,4 +1,4 @@
-import {isObject, upperFirst} from 'lodash'
+import {isObject, upperFirst} from 'lodash-es'
 
 export interface LabeledValue {
   value: string | number;

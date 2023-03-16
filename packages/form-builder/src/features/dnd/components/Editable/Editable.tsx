@@ -1,7 +1,7 @@
 import {cx} from '@emotion/css'
-import {useEventReactions, WrapperProps} from 'fb-core'
 import {observer} from 'mobx-react'
 import {useDragLayer} from 'react-dnd'
+import {useEventReactions} from '../../../event/utils/useEventReactions'
 import {Draggable} from './components/Draggable'
 import {Resizers} from './components/Resizers'
 import {Toolbar} from './components/Toolbar'

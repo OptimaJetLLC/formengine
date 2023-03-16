@@ -1,4 +1,4 @@
-import {createView, Definition} from 'form-builder'
+import {createView, Definition} from 'fb-core'
 import {rsBreadcrumb} from './components/RsBreadcrumb'
 import {rsButton} from './components/RsButton'
 import {rsCard} from './components/RsCard'

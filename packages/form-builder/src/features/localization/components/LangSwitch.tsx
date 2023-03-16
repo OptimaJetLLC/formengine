@@ -1,7 +1,8 @@
-import {languages, useBuilderStore} from 'fb-core'
 import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
 import {Dropdown} from 'rsuite'
+import {useBuilderStore} from '../../../utils/BuilderStoreContext'
+import {languages} from '../consts'
 
 export const LangSwitch = observer(() => {
   const {t} = useTranslation()

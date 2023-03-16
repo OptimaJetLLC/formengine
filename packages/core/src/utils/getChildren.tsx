@@ -1,8 +1,6 @@
 import {ComponentType} from 'react'
 import {isContainer} from '../features/annotation'
 import {calculateExpressionProperty} from '../features/calculation/propertyCalculator'
-import {ComponentTree} from '../features/ui/ComponentTree'
-import {ComponentTreeItemProps} from '../features/ui/ComponentTreeItemProps'
 import {ComponentStore} from '../stores/ComponentStore'
 import {Store} from '../stores/Store'
 import {ComponentData} from './contexts/ComponentDataContext'
@@ -38,9 +36,10 @@ const needRender = (child: ComponentStore, store: Store) => {
   return calculateExpressionProperty(child.renderWhen, store.form) === true
 }
 
-export function getChildren(data: ComponentData, store: Store, componentTreeItem: ComponentType<ComponentTreeItemProps>,
+export function getChildren(data: ComponentData, store: Store, componentTreeItem: ComponentType<any>,
                             props: any) {
   const containers = data.model.properties.filter(isContainer)
+  const ComponentTree = componentTreeItem
   const currentProps: Record<string, any> = {}
   for (let container of containers) {
     const isChild = (child: ComponentStore) =>
@@ -64,7 +63,7 @@ export function getChildren(data: ComponentData, store: Store, componentTreeItem
 
     currentProps[container.key] =
       components?.length
-        ? <ComponentTree parentStore={data.componentStore} data={components} treeItem={componentTreeItem}/>
+        ? <ComponentTree parentStore={data.componentStore} data={components}/>
         : dropZoneElement
   }
   return currentProps

@@ -1,4 +1,4 @@
-import {forIn, transform} from 'lodash'
+import {forIn, transform} from 'lodash-es'
 import {useEffect} from 'react'
 import {filter, Subscription} from 'rxjs'
 import {Store} from '../../../stores/Store'

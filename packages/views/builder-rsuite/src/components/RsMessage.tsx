@@ -1,4 +1,4 @@
-import {boolean, define, node, oneOf} from 'form-builder'
+import {boolean, define, node, oneOf} from 'fb-core'
 import {Message} from 'rsuite'
 
 export const rsMessage = define(Message)

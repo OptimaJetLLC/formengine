@@ -1,4 +1,4 @@
-import {define, node} from 'form-builder'
+import {define, node} from 'fb-core'
 import {ReactNode} from 'react'
 import {Col, Grid, Row} from 'rsuite'
 

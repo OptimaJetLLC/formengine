@@ -1,0 +1,112 @@
+import styled from '@emotion/styled'
+import {CompilationResult, compileFn} from 'fb-core'
+import {action} from 'mobx'
+import {observer} from 'mobx-react'
+import {useEffect, useState} from 'react'
+import {Button, ButtonGroup, Checkbox} from 'rsuite'
+import {EditableProperty} from '../../stores/BuilderStore'
+import {useBuilderStore} from '../../utils/BuilderStoreContext'
+import {useTranslationPart} from '../localization/hooks'
+import {JsEditor} from '../ui/common/JsEditor'
+
+const codePlaceHolder = '// enter your code here'
+
+interface JsSyntaxError extends Error {
+  lineNumber: number
+  columnNumber: number
+}
+
+const isJsSyntaxError = (error: Error): error is JsSyntaxError => {
+  const e: any = error
+  return typeof e.lineNumber === 'number' && typeof e.columnNumber === 'number'
+}
+
+const ErrorMessage = ({result}: { result?: CompilationResult }) => {
+  if (!result) return null
+
+  const {error, exception} = result
+
+  let message = 'OK'
+  if (error && exception) {
+    message = exception.message
+    if (isJsSyntaxError(exception)) {
+      // omit the first two lines of the function declaration
+      const lineNumber = exception.lineNumber >= 3 ? exception.lineNumber - 2 : exception.lineNumber
+      message = `${exception.message} (${lineNumber}:${exception.columnNumber})`
+    }
+  }
+
+  const color = error ? 'red' : 'green'
+
+  return <span>Compilation result: <code style={{color: color}}>{message}</code></span>
+}
+
+interface CodeEditorPanelProps {
+  editableProperty: EditableProperty
+  onClose: () => void
+}
+
+const _CodeEditorPanel = ({editableProperty, onClose}: CodeEditorPanelProps) => {
+  const [sourceCode, setSourceCode] = useState(editableProperty.property?.fnSource || codePlaceHolder)
+  const [compilationError, setCompilationError] = useState<CompilationResult | undefined>()
+  const [useFn, setUseFn] = useState(editableProperty.property?.useFn || false)
+
+  const compileCode = () => {
+    const result = compileFn(sourceCode)
+    setCompilationError(result)
+  }
+
+  const saveCode = () => editableProperty.saveProperty({useFn: useFn, fnSource: sourceCode})
+
+  useEffect(() => {
+    setSourceCode(editableProperty.property?.fnSource || codePlaceHolder)
+    setUseFn(editableProperty.property?.useFn || false)
+  }, [editableProperty])
+
+  const header = <p>Calculated property for &lt;
+    <code>{editableProperty.componentKey}.{editableProperty.annotation.name}</code> &gt;
+    (must return {editableProperty.annotation.schema?.type})</p>
+
+  return <>
+    <Header>{header}</Header>
+    <JsEditor value={sourceCode} onChange={setSourceCode}/>
+    <SDiv>
+      <ButtonGroup>
+        <Button appearance="primary" onClick={compileCode}>Compile</Button>
+        <Button appearance="ghost" onClick={action(() => saveCode())}>Save</Button>
+        <Button appearance="ghost" onClick={onClose}>Close</Button>
+      </ButtonGroup>
+      <Checkbox checked={useFn} onChange={(_, checked) => setUseFn(checked)}>
+        Use calculated property
+      </Checkbox>
+    </SDiv>
+    <ErrorMessage result={compilationError}/>
+  </>
+}
+
+const CodeEditorPanelWrapper = () => {
+  const store = useBuilderStore()
+  const t = useTranslationPart('codeEditor')
+  return store.calculatedProperty?.componentKey
+    ? <_CodeEditorPanel editableProperty={store.calculatedProperty} onClose={() => store.calculatedProperty = undefined}/>
+    : <Placeholder>{t('placeholder')}</Placeholder>
+}
+
+export const CodeEditorPanel = observer(CodeEditorPanelWrapper)
+
+const SDiv = styled.div`
+  padding: 10px;
+`
+
+const Placeholder = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 16px;
+`
+
+const Header = styled.div`
+  padding: 10px;
+  font-size: 16px;
+`

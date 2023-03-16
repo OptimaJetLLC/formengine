@@ -1,9 +1,8 @@
-import {RadioInput} from '../../components/RadioInput'
 import {QuantifierBuilder} from './QuantifierBuilder'
 
 export class OneOfBuilder<T> extends QuantifierBuilder<T> {
   radio() {
-    return this.setup({editor: RadioInput})
+    return this.setup({editor: 'radio'})
   }
 
   default(value: T): this {

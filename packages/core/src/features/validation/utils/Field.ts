@@ -1,29 +1,13 @@
 import {autorun, makeAutoObservable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {Store} from '../../../stores/Store'
-import {Annotation} from '../../annotation/utils/annotations/Annotation'
+import {Annotation} from '../../annotation/types/annotations/Annotation'
 import {parseSchema} from './parseSchema'
 
 export class Field {
   error?: string
   touched = false
   value: unknown = undefined
-
-  get schema() {
-    return parseSchema(this.componentStore.schema, this.valuedAn)
-  }
-
-  get initialValue() {
-    return this.componentStore.props[this.valuedAn.key]?.value ?? this.valuedAn.schema?.getDefault()
-  }
-
-  get componentStore() {
-    return this.store.getComponent(this.key)
-  }
-
-  get autoTransform() {
-    return this.componentStore.schema?.autoTransform
-  }
 
   constructor(
     readonly store: Store,
@@ -51,6 +35,22 @@ export class Field {
 
       this.value = this.store.props.data?.[component.key] ?? this.initialValue
     })
+  }
+
+  get schema() {
+    return parseSchema(this.componentStore.schema, this.valuedAn)
+  }
+
+  get initialValue() {
+    return this.componentStore.props[this.valuedAn.key]?.value ?? this.valuedAn.schema?.getDefault()
+  }
+
+  get componentStore() {
+    return this.store.getComponent(this.key)
+  }
+
+  get autoTransform() {
+    return this.componentStore.schema?.autoTransform
   }
 
   setValue(value: unknown) {

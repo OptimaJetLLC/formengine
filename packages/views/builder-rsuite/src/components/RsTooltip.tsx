@@ -1,10 +1,9 @@
-import {define, node, oneOf, someOf, string} from 'form-builder'
-import {TooltipProps} from 'form-viewer'
+import {define, node, oneOf, someOf, string, WrapperProps} from 'fb-core'
 import {Tooltip, Whisper} from 'rsuite'
 import {TypeAttributes} from 'rsuite/esm/@types/common'
 import {OverlayTriggerType} from 'rsuite/esm/Overlay/OverlayTrigger'
 
-interface RsTooltipProps extends TooltipProps {
+interface RsTooltipProps extends WrapperProps {
   text: string
   placement: TypeAttributes.Placement
   trigger: OverlayTriggerType

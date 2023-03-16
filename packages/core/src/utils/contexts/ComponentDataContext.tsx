@@ -1,7 +1,7 @@
-import {createNamedContext} from 'form-viewer'
 import {Model} from '../../features/define'
 import {Field} from '../../features/validation'
 import {ComponentStore} from '../../stores/ComponentStore'
+import {createNamedContext} from '../createNamedContext'
 
 export type ComponentData = {
   readonly key: string,

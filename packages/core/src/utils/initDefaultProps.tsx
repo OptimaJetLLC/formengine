@@ -1,4 +1,4 @@
-import {isProperty} from '../features/annotation/utils/annotations/PropertyAn'
+import {isProperty} from '../features/annotation/types/annotations/PropertyAn'
 import {Model} from '../features/define'
 
 export function initDefaultProps(model: Model<any>): Readonly<Record<string, any>> {

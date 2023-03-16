@@ -1,4 +1,4 @@
-import {define, oneOf, string} from 'form-builder'
+import {define, oneOf, string} from 'fb-core'
 import {backgroundColor, textStyles} from '../commonProperties'
 import {TextProps} from '../commonTypes'
 

@@ -1,7 +1,8 @@
 import {cx} from '@emotion/css'
-import {useBuilderStore, useComponentData} from 'fb-core'
+import {useComponentData} from 'fb-core'
 import {MouseEvent, useCallback, useEffect, useMemo, useState} from 'react'
 import {useDragLayer} from 'react-dnd'
+import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {hoveredClass, selectedClass} from '../../../styles'
 
 export interface SelectionState {

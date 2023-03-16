@@ -1,4 +1,4 @@
-import {Definition} from 'form-builder'
+import {Definition} from 'fb-core'
 import {antButton} from './components/AntButton'
 
 const components = [

@@ -1,4 +1,4 @@
-import {array, boolean, define, event, LabeledValue, string, toLabeledValues} from 'form-builder'
+import {array, boolean, define, event, LabeledValue, string, toLabeledValues} from 'fb-core'
 import {CSSProperties} from 'react'
 import {Form, InputPicker} from 'rsuite'
 import {InputPickerProps} from 'rsuite/esm/InputPicker/InputPicker'

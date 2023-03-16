@@ -1,4 +1,4 @@
-import {boolean, define, event, number, string} from 'form-builder'
+import {boolean, define, event, number, string} from 'fb-core'
 import {Input} from 'rsuite'
 import {InputProps} from 'rsuite/esm/Input/Input'
 import {readOnly, size} from '../commonProperties'

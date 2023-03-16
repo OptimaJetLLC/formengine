@@ -1,4 +1,4 @@
-import {define} from 'form-builder'
+import {define} from 'fb-core'
 
 interface RsCardProps {
 

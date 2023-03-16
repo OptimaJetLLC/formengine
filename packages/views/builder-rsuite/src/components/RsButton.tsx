@@ -1,4 +1,4 @@
-import {boolean, define, event, oneOf, string} from 'form-builder'
+import {boolean, define, event, oneOf, string} from 'fb-core'
 import {Button} from 'rsuite'
 import {readOnly, size} from '../commonProperties'
 

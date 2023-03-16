@@ -1,4 +1,4 @@
-import {boolean, color, number, oneOf} from 'form-builder'
+import {boolean, color, number, oneOf} from 'fb-core'
 import {TypeAttributes} from 'rsuite/cjs/@types/common'
 
 type Placement = TypeAttributes.Placement;

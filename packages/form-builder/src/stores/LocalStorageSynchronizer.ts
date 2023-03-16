@@ -1,6 +1,8 @@
-import {BuilderStore, BuilderTheme, BuilderViewMode, getSystemTheme} from 'fb-core'
 import {autorun, IReactionDisposer} from 'mobx'
+import {getSystemTheme} from '../utils/getSystemTheme'
 import {parseJson} from '../utils/parseJson'
+import {BuilderTheme, BuilderViewMode} from '../utils/types'
+import {BuilderStore} from './BuilderStore'
 
 export class LocalStorageSynchronizer {
   readonly #disposers: IReactionDisposer[]

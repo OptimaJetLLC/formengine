@@ -1,4 +1,4 @@
-import {define, oneOf, size, string} from 'form-builder'
+import {define, oneOf, size, string} from 'fb-core'
 import {ComponentProps} from 'react'
 import logo from '../../public/images/logo.png'
 import {backgroundColor} from '../commonProperties'

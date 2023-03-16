@@ -1,6 +1,8 @@
-import {ComponentMove, InsertPosition, useBuilderStore, useComponentData} from 'fb-core'
+import {useComponentData} from 'fb-core'
 import {useDrop} from 'react-dnd'
 import {ConnectDropTarget} from 'react-dnd/dist/types/types'
+import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
+import {ComponentMove, InsertPosition} from '../../../../../utils/types'
 import {AcceptDrop, ItemType} from '../../../consts'
 
 interface DropState {

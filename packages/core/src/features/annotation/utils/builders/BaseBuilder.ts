@@ -1,12 +1,15 @@
-import _, {assign} from 'lodash'
+import {assign, clone as lodashClone, startCase} from 'lodash-es'
 import {ReactNode} from 'react'
-import {AnnotationMap, PreAnnotation} from '../../types'
-import {Annotation} from '../annotations/Annotation'
-import {Options} from '../Options'
+import {AnnotationMap} from '../../consts'
+import {Annotation} from '../../types/annotations/Annotation'
+import {BuilderOptions} from '../../types/BuilderOptions'
 
+export type PreAnnotation = Partial<Omit<Annotation, 'key'>> & Pick<Annotation, 'editor'>
+
+//TODO add constructor
 export class BaseBuilder<T> {
   annotation!: PreAnnotation
-  options = new Options()
+  options = new BuilderOptions()
 
   /**
    * The main property of a component that used like form data and for validation rules.
@@ -27,19 +30,19 @@ export class BaseBuilder<T> {
     return this.setup({calculable})
   }
 
-  setup(options: Partial<PreAnnotation & Options>): this {
+  setup(options: Partial<PreAnnotation & BuilderOptions>): this {
     const {type, autoName, ...annotation} = options
     const clone = this.clone()
     clone.options.type = type ?? clone.options.type
     clone.options.autoName = autoName ?? clone.options.autoName
-    _.assign(clone.annotation, annotation)
+    assign(clone.annotation, annotation)
     return clone
   }
 
   clone(): this {
-    const clone = _.clone(this)
-    clone.options = _.clone(this.options)
-    clone.annotation = _.clone(this.annotation)
+    const clone = lodashClone(this)
+    clone.options = lodashClone(this.options)
+    clone.annotation = lodashClone(this.annotation)
     clone.annotation ??= {} as PreAnnotation
     return clone
   }
@@ -53,12 +56,12 @@ export class BaseBuilder<T> {
 
   withEditorProps(props: any): this {
     const clone = this.clone()
-    _.assign(clone.annotation, {editorProps: props})
+    assign(clone.annotation, {editorProps: props})
     return clone
   }
 
   protected getName(key: string) {
-    return this.annotation.name ?? (this.options.autoName ? _.startCase(key) : key)
+    return this.annotation.name ?? (this.options.autoName ? startCase(key) : key)
   }
 }
 

@@ -1,4 +1,4 @@
-import {boolean, color, define, number, oneOf, string} from 'form-builder'
+import {boolean, color, define, number, oneOf, string} from 'fb-core'
 import {Progress} from 'rsuite'
 
 const rsCommonProgressProps = {

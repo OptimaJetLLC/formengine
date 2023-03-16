@@ -11,8 +11,8 @@
     "dependencies": {
         "@emotion/css": "^11.10.5",
         "@emotion/styled": "^11.10.5",
-        "form-builder": "*",
-        "rsuite": "^5.28.1",
+        "fb-core": "*",
+        "rsuite": ">=5.0.0",
         "viewer-rsuite": "*"
     }
 }

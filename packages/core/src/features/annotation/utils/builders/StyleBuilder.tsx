@@ -1,9 +1,10 @@
 import {css, cx} from '@emotion/css'
 import {CSSObject} from '@emotion/serialize/dist/declarations/types'
-import _, {assign} from 'lodash'
-import {ComponentType, CSSProperties} from 'react'
+import {assign, clone as lodashClone} from 'lodash-es'
+import {CSSProperties} from 'react'
 import {Styles} from '../../../style/types'
-import {StyleAn} from '../annotations/StyleAn'
+import {EditorType} from '../../types'
+import {StyleAn} from '../../types/annotations/StyleAn'
 import {BaseBuilder} from './BaseBuilder'
 
 export class StyleBuilder<T> extends BaseBuilder<T> {
@@ -13,7 +14,7 @@ export class StyleBuilder<T> extends BaseBuilder<T> {
   cssObject?: object
   cssString?: string
 
-  constructor(editor: ComponentType) {
+  constructor(editor: EditorType) {
     super()
     this.annotation = {editor}
     this.options.type = 'Style'
@@ -56,7 +57,7 @@ export class StyleBuilder<T> extends BaseBuilder<T> {
 function assignCssSource<T>(clone: StyleBuilder<T>, value: CSSObject | string) {
   if (typeof value === 'object') {
     clone.cssObject ??= {}
-    clone.cssObject = _.clone(clone.cssObject)
+    clone.cssObject = lodashClone(clone.cssObject)
     assign(clone.cssObject, value)
   } else {
     //Remove first and last \n symbol

@@ -1,4 +1,4 @@
-import {boolean, defineBuilder, event, oneOf, string} from 'form-builder'
+import {boolean, defineBuilder, event, oneOf, string} from 'fb-core'
 import {antButtonView} from 'viewer-antd'
 
 export const antButton = defineBuilder(antButtonView)

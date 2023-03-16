@@ -1,4 +1,4 @@
-import {array, boolean, define, event, node, oneOf, string, toLabeledValues, useComponentData} from 'form-builder'
+import {array, boolean, define, event, node, oneOf, string, toLabeledValues, useComponentData} from 'fb-core'
 import React, {ReactNode} from 'react'
 import {Nav} from 'rsuite'
 

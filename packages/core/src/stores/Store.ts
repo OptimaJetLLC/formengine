@@ -20,6 +20,20 @@ export class Store {
     })
   }
 
+  get tooltipType(): string | undefined {
+    return this.screen.props['tooltip']?.value ?? this.props.view.tooltips[0]
+  }
+
+  get tooltipComponent() {
+    const selectedTooltipType = this.tooltipType
+    if (!selectedTooltipType) return
+    return this.props.view.getTooltipComponent(selectedTooltipType)
+  }
+
+  get isBuilderMode() {
+    return !!this.props.dropZone
+  }
+
   getComponent(key: string) {
     const result = this.findComponent(key)
 
@@ -36,19 +50,5 @@ export class Store {
 
   findAction(actionData: ActionData) {
     return findAction(this, actionData)
-  }
-
-  get tooltipType(): string | undefined {
-    return this.screen.props['tooltip']?.value ?? this.props.view.tooltips[0]
-  }
-
-  get tooltipComponent() {
-    const selectedTooltipType = this.tooltipType
-    if (!selectedTooltipType) return
-    return this.props.view.getTooltipComponent(selectedTooltipType)
-  }
-
-  get isBuilderMode() {
-    return !!this.props.dropZone
   }
 }

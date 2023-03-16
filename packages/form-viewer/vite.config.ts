@@ -13,7 +13,7 @@ export default defineConfig(({command}) => ({
   build: {
     sourcemap: true,
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
+      entry: path.resolve(__dirname, './index.ts'),
       name: 'form-viewer',
       formats: ['es', 'umd'],
       fileName: 'index'

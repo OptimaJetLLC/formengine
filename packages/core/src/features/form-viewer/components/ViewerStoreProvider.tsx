@@ -1,4 +1,4 @@
-import {assign} from 'lodash'
+import {assign} from 'lodash-es'
 import {ReactNode, useContext, useEffect, useMemo} from 'react'
 import {Store} from '../../../stores/Store'
 import {StoreContext, StoreProvider} from '../../../utils/contexts/StoreContext'

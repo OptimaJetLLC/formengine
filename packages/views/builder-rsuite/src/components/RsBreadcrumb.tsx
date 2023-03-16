@@ -1,10 +1,58 @@
-import {array, CheckCell, define, event, InputCell, number, oneOf, string} from 'form-builder'
-import {Breadcrumb, BreadcrumbProps} from 'rsuite'
+import styled from '@emotion/styled'
+import {array, define, event, number, oneOf, string} from 'fb-core'
+import {Breadcrumb, BreadcrumbProps, Checkbox, Input, Table} from 'rsuite'
+import {InnerCellProps} from 'rsuite-table/lib/Cell'
 
 interface RsBreadcrumbItemProps {
   active?: boolean
   href?: string
   title?: string
+}
+
+const {Cell} = Table
+
+const SCell = styled(Cell)`
+  padding: 0;
+
+  & .rs-table-cell-content {
+    padding: 9px 3px;
+  }
+`
+
+interface InputCellProps extends InnerCellProps {
+  onChange?: (value?: any, dataKey?: string, rowIndex?: number) => void
+  dataKey: string
+}
+
+export const InputCell = ({rowData, dataKey, rowIndex, ...props}: InputCellProps) => {
+  const onChange = (value: any) => {
+    rowData[dataKey] = value
+    props.onChange?.(value, dataKey, rowIndex)
+  }
+  return (
+    <SCell {...props}>
+      <Input value={rowData[dataKey] ?? ''} onChange={onChange} size="sm"/>
+    </SCell>
+  )
+}
+
+const SCheckbox = styled(Checkbox)`
+  & .rs-checkbox-wrapper {
+    left: 4px;
+    top: 6px;
+  }
+`
+
+export const CheckCell = ({rowData, dataKey, rowIndex, onChange, ...props}: InputCellProps) => {
+  const handleChange = (value: any, checked: boolean) => {
+    rowData[dataKey] = checked
+    onChange?.(checked, dataKey, rowIndex)
+  }
+  return (
+    <SCell {...props}>
+      <SCheckbox inline checked={rowData[dataKey] ?? false} onChange={handleChange}/>
+    </SCell>
+  )
 }
 
 const makeItems = (data: string[]) => data.map(title => ({title, href: title}))

@@ -1,56 +1,37 @@
 import {ReactNode} from 'react'
 import * as yup from 'yup'
-import {EventEditor} from '../event'
-import {Section, SubSection} from '../form-builder/components/RightPanel/PropertiesEditor/Section'
-import {StyleEditor} from '../style'
-import {ValidateEditor} from '../validation/components/ValidateEditor'
-import {ArrayInput} from './components/ArrayInput'
-import AttributesInput from './components/AttributesInput'
-import {BooleanInput} from './components/BooleanInput'
-import {ChildViewer} from './components/ChildViewer'
-import {ColorInput} from './components/ColorInput'
-import {KeyInput} from './components/KeyInput'
-import {MultiPicker} from './components/MultiPicker'
-import {NumberInput} from './components/NumberInput'
-import {Picker} from './components/Picker'
-import {RenderWhenEditor} from './components/RenderWhenEditor'
-import {SizeInput} from './components/SizeInput'
-import {StringInput} from './components/StringInput'
-import {TooltipPropertiesEditor} from './components/TooltipPropertiesEditor'
-import {TooltipTypePicker} from './components/TooltipTypePicker'
 import {createAnnotation, createProperty} from './utils'
 import {StyleBuilder} from './utils/builders/StyleBuilder'
 
-export const key = createAnnotation(KeyInput)
+export const key = createAnnotation('key')
   .schemed(yup.string())
   .hinted('Unique component key')
   .calculable(false)
-export const htmlAttributes = createAnnotation(AttributesInput)
-  .setup({subsection: SubSection.Additional})
-export const stylization = new StyleBuilder(StyleEditor).setup({section: Section.Style})
-export const validation = createAnnotation(ValidateEditor).setup({section: Section.Rules})
+export const htmlAttributes = createAnnotation('htmlAttributes')
+export const stylization = new StyleBuilder('stylization')
+export const validation = createAnnotation('validation')
 
 //Primitives
-export const string = createProperty(StringInput).schemed(yup.string())
-export const boolean = createProperty(BooleanInput).schemed(yup.boolean())
-export const number = createProperty(NumberInput).schemed(yup.number())
-export const size = createProperty(SizeInput).schemed(yup.object({}))
+export const string = createProperty('string').schemed(yup.string())
+export const boolean = createProperty('boolean').schemed(yup.boolean())
+export const number = createProperty('number').schemed(yup.number())
+export const size = createProperty('size').schemed(yup.object({}))
 
 //Array
-export const array = createProperty(ArrayInput).schemed(yup.array())
+export const array = createProperty('array').schemed(yup.array())
 
-export const color = createProperty(ColorInput).schemed(yup.string())
+export const color = createProperty('color').schemed(yup.string())
 
-export const tooltipType = createAnnotation(TooltipTypePicker).schemed(yup.string())
+export const tooltipType = createAnnotation('tooltipType').schemed(yup.string())
 
 //TODO rename to func, or action, or to stay event?
 //Use for create functions for events
-export const event = createAnnotation(EventEditor).setup({type: 'Event', section: Section.Actions})
+export const event = createAnnotation('event').setup({type: 'Event'})
 //object
 //array
 
 //Now is container for another components. TODO? In global things is all that can be rendered: string, numbers, elements, arrays (or fragments) contain these types.
-export const node = createAnnotation<ReactNode>(ChildViewer).setup({type: 'Container'})
+export const node = createAnnotation<ReactNode>('node').setup({type: 'Container'})
 
 //element - react element
 //elementType - react element with type
@@ -58,9 +39,9 @@ export const node = createAnnotation<ReactNode>(ChildViewer).setup({type: 'Conta
 
 //Enum
 //Without bind this in arrow function case do bad magic
-export const oneOf = createProperty(Picker).oneOf.bind(createProperty(Picker))
+export const oneOf = createProperty('oneOf').oneOf.bind(createProperty('oneOf'))
 
-export const someOf = createProperty(MultiPicker).someOf.bind(createProperty(MultiPicker))
+export const someOf = createProperty('someOf').someOf.bind(createProperty('someOf'))
 
 //oneOfType([string, number, etc.]) - union - one of some types
 //arrayOf(string or etc.) - array with some type
@@ -77,12 +58,10 @@ shape({
 
 //TIP for potentially customProp or arrayProp - use yup for validate
 
-export const tooltipProps = createAnnotation(TooltipPropertiesEditor).setup({subsection: SubSection.Tooltip})
+export const tooltipProps = createAnnotation('tooltipProps')
 
-export const useTooltip = boolean.setup({subsection: SubSection.Tooltip})
+export const useTooltip = boolean.setup({editor: 'useTooltip'})
 
-export const renderWhen = createAnnotation(RenderWhenEditor)
-  .schemed(yup.boolean())
-  .setup({subsection: SubSection.Additional})
+export const renderWhen = createAnnotation('renderWhen').schemed(yup.boolean())
 
 export * from './utils'

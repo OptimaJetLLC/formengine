@@ -1,5 +1,5 @@
 import {css, cx} from '@emotion/css'
-import {assign} from 'lodash'
+import {assign} from 'lodash-es'
 import {ComponentState} from '../../stores/ComponentState'
 import {ComponentData} from '../../utils/contexts/ComponentDataContext'
 import {isStyle} from '../annotation'

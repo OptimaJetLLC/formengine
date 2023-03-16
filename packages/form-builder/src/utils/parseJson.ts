@@ -1,4 +1,4 @@
-import {isUndefined} from 'lodash'
+import {isUndefined} from 'lodash-es'
 
 export const parseJson = (value?: string) => {
   if (isUndefined(value)) return undefined

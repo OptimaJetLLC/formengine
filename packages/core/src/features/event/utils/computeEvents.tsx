@@ -1,4 +1,4 @@
-import {keysIn} from 'lodash'
+import {keysIn} from 'lodash-es'
 import {Store} from '../../../stores/Store'
 import {ComponentData} from '../../../utils/contexts/ComponentDataContext'
 import {DidMountEvent, WillUnmountEvent} from '../consts'

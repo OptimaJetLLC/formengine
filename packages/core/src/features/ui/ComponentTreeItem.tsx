@@ -1,13 +1,18 @@
 import {observer} from 'mobx-react'
 import {Fragment, useEffect} from 'react'
+import {ComponentStore} from '../../stores/ComponentStore'
 import {ComponentData, ComponentDataProvider} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {useMemoizedLocalObserver} from '../../utils/useMemoizedLocalObserver'
-import {useActionListener} from '../event'
+import {useEventListener} from '../event'
 import {TooltipWrapper} from '../tooltip/TooltipWrapper'
 import {Erroneous} from '../validation'
-import {ComponentTreeItemProps} from './ComponentTreeItemProps'
 import {ComponentViewer} from './ComponentViewer'
+
+export interface ComponentTreeItemProps {
+  parentStore?: ComponentStore
+  componentStore: ComponentStore
+}
 
 const _ComponentTreeItem = ({componentStore, parentStore}: ComponentTreeItemProps) => {
   const store = useStore()
@@ -27,8 +32,8 @@ const _ComponentTreeItem = ({componentStore, parentStore}: ComponentTreeItemProp
     store.form.set(componentStore, data.model)
   }, [])
 
-  useActionListener(data.key, 'onChange', e => data.field?.setValue(e.value), [])
-  useActionListener(data.key, 'onBlur', _ => data.field?.setTouched(), [])
+  useEventListener(data.key, 'onChange', e => data.field?.setValue(e.value), [])
+  useEventListener(data.key, 'onBlur', _ => data.field?.setTouched(), [])
 
   const Wrapper = store.props.componentWrapper || Fragment
 
@@ -39,7 +44,7 @@ const _ComponentTreeItem = ({componentStore, parentStore}: ComponentTreeItemProp
       <Wrapper>
         <Tooltip>
           <Erroneous>
-            <ComponentViewer componentTreeItem={ComponentTreeItem}/>
+            <ComponentViewer/>
           </Erroneous>
         </Tooltip>
       </Wrapper>

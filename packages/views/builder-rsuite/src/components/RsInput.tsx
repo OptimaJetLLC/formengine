@@ -1,4 +1,4 @@
-import {boolean, define, event, string} from 'form-builder'
+import {boolean, define, event, string} from 'fb-core'
 import {Input, InputProps} from 'rsuite'
 import {readOnly, size} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
