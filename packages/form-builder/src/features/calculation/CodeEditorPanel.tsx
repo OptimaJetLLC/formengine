@@ -5,8 +5,6 @@ import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import {Button, ButtonGroup, Checkbox} from 'rsuite'
 import {EditableProperty} from '../../stores/BuilderStore'
-import {useBuilderStore} from '../../utils/BuilderStoreContext'
-import {useTranslationPart} from '../localization/hooks'
 import {JsEditor} from '../ui/common/JsEditor'
 
 const codePlaceHolder = '// enter your code here'
@@ -84,26 +82,10 @@ const _CodeEditorPanel = ({editableProperty, onClose}: CodeEditorPanelProps) => 
   </>
 }
 
-const CodeEditorPanelWrapper = () => {
-  const store = useBuilderStore()
-  const t = useTranslationPart('codeEditor')
-  return store.calculatedProperty?.componentKey
-    ? <_CodeEditorPanel editableProperty={store.calculatedProperty} onClose={() => store.calculatedProperty = undefined}/>
-    : <Placeholder>{t('placeholder')}</Placeholder>
-}
-
-export const CodeEditorPanel = observer(CodeEditorPanelWrapper)
+export const CodeEditorPanel = observer(_CodeEditorPanel)
 
 const SDiv = styled.div`
   padding: 10px;
-`
-
-const Placeholder = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  font-size: 16px;
 `
 
 const Header = styled.div`

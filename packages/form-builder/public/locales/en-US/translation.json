@@ -53,12 +53,6 @@
       "viewer": "Edit"
     }
   },
-  "bottomPanel": {
-    "panes": {
-      "json": "JSON",
-      "code": "Code"
-    }
-  },
   "componentsModal": {
     "clickToAdd": "Click to add control"
   },
@@ -69,7 +63,6 @@
     "inside": "Inside"
   },
   "codeEditor": {
-    "placeholder": "Select component property to edit code",
     "customActionHeader": "Custom action editor"
   },
   "propertiesEditor": {
@@ -147,5 +140,6 @@
       "tree": "Tree",
       "forms": "Forms"
     }
-  }
+  },
+  "editJson": "Edit JSON"
 }

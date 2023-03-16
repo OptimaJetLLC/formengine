@@ -114,6 +114,9 @@ export class BuilderStore {
   //TODO post processing
   parseForm(text: string) {
     this.viewer.screen = assign(new ComponentStore('', ''), JSON.parse(text))
+    // restore selection
+    if (this.selected) this.selected = this.findNode(this.selected.key)
+    if (this.calculatedProperty) this.calculatedProperty = undefined
   }
 
   //TODO clone for inner components without removing

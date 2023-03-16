@@ -7,6 +7,7 @@ import {ButtonToolbar, IconButton} from 'rsuite'
 import {FaIcon} from '../common/Icons'
 import {AddButton} from './components/AddButton'
 import {Export} from './components/Export'
+import {JsonViewButton} from './components/JsonViewButton'
 import {Menu} from './components/Menu'
 import {ResolutionPicker} from './components/ResolutionPicker'
 import {ToggleModeButton} from './components/ToggleModeButton'
@@ -37,6 +38,7 @@ const Header = observer(() => {
       </CenterPart>
 
       <RightPart>
+        <JsonViewButton/>
         <ToggleTheme/>
       </RightPart>
     </Container>
@@ -47,6 +49,7 @@ const LeftPart = styled.div``
 
 const RightPart = styled.div`
   justify-content: flex-end;
+  gap: 10px;
 `
 
 const CenterPart = styled.div`
