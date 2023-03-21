@@ -4,6 +4,7 @@ import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../feat
 import {fbScreen} from '../features/ui/FbScreen'
 import {Form} from '../features/validation'
 import {treeFind} from '../utils'
+import {ViewMode} from '../utils/types'
 import {ComponentStore} from './ComponentStore'
 import {StoreProps} from './StoreProps'
 
@@ -32,6 +33,10 @@ export class Store {
 
   get isBuilderMode() {
     return !!this.props.dropZone
+  }
+
+  get viewMode(): ViewMode {
+    return this.props.viewMode ?? 'desktop'
   }
 
   getComponent(key: string) {

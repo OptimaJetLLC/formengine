@@ -1,6 +1,7 @@
 import {ComponentType} from 'react'
 import {View} from '../features/define'
 import {ActionDefinition} from '../features/event'
+import {ViewMode} from '../utils/types'
 import {ComponentStore} from './ComponentStore'
 
 export interface DropZoneProps {
@@ -17,4 +18,5 @@ export interface StoreProps {
   erroneous?: boolean
   componentWrapper?: ComponentType<any>
   dropZone?: ComponentType<DropZoneProps>
+  viewMode?: ViewMode
 }

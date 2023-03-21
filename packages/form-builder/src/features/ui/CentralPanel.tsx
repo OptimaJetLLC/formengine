@@ -6,27 +6,22 @@ import {PanelContainer} from './Panel'
 
 const resolutions = {
   'desktop': {},
-  'mobile': {maxWidth: 400},
+  'mobile': {maxWidth: 400, maxHeight: 800},
   'tablet': {maxWidth: 800},
 }
 
 const _CentralPanel = () => {
   const store = useStore()
-  const builderStore = useBuilderStore()
+  const {viewMode} = useBuilderStore()
 
   return (
-    <FormContainer>
-      <Viewport style={resolutions[builderStore.viewMode]}>
-        <FormViewer {...store.props}/>
-      </Viewport>
+    <FormContainer style={resolutions[viewMode]}>
+      <FormViewer {...store.props} viewMode={viewMode}/>
     </FormContainer>
   )
 }
 
 export const CentralPanel = observer(_CentralPanel)
-
-const Viewport = styled.div`
-`
 
 const FormContainer = styled(PanelContainer)`
   flex: 1;

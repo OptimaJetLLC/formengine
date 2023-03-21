@@ -53,7 +53,7 @@ export class ComponentState {
   }
 
   get stylization() {
-    return computeStylization(this, this.data)
+    return computeStylization(this, this.data, this.store.viewMode)
   }
 
   get htmlAttributes() {

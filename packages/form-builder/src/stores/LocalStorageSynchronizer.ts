@@ -1,7 +1,8 @@
+import {ViewMode} from 'fb-core'
 import {autorun, IReactionDisposer} from 'mobx'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {parseJson} from '../utils/parseJson'
-import {BuilderTheme, BuilderViewMode} from '../utils/types'
+import {BuilderTheme} from '../utils/types'
 import {BuilderStore} from './BuilderStore'
 
 export class LocalStorageSynchronizer {
@@ -9,7 +10,7 @@ export class LocalStorageSynchronizer {
 
   constructor(private store: BuilderStore) {
     const resolutionKey = 'resolution'
-    store.viewMode = this.getItem<BuilderViewMode>(resolutionKey, 'desktop')
+    store.viewMode = this.getItem<ViewMode>(resolutionKey, 'desktop')
 
     const openedPanelsKey = 'openedPanels'
     store.openedPanels = parseJson(this.getItem<string>(openedPanelsKey)) ?? ['left', 'right']

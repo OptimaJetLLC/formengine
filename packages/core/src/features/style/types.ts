@@ -17,5 +17,9 @@ export type StandardStyleItem = Record<string, { cssName: string, measure?: Meas
 export type Styles = {
   cssObject?: CSSObject
   cssString?: string
+  any?: string
+  mobile?: string
+  tablet?: string
+  desktop?: string
   additional?: StyleItem[]
 }

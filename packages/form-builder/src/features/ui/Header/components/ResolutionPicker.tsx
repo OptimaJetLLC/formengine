@@ -2,15 +2,15 @@ import styled from '@emotion/styled'
 import * as faDesktop from '@fortawesome/free-solid-svg-icons/faDesktop'
 import * as faMobile from '@fortawesome/free-solid-svg-icons/faMobile'
 import * as faTablet from '@fortawesome/free-solid-svg-icons/faTablet'
+import {ViewMode} from 'fb-core'
 import {observer} from 'mobx-react'
 import {SelectPicker} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
-import {BuilderViewMode} from '../../../../utils/types'
 import {useTranslationPart} from '../../../localization/hooks'
 import {makeLabeledIconStyles} from '../../common/Containers'
 import {FaIcon} from '../../common/Icons'
 
-const resolutions: [BuilderViewMode, any][] = [
+const resolutions: [ViewMode, any][] = [
   ['desktop', faDesktop],
   ['mobile', faMobile],
   ['tablet', faTablet]
@@ -21,7 +21,7 @@ const SItemContainer = styled.div`
 `
 
 type Item = {
-  value: BuilderViewMode
+  value: ViewMode
   label: string
   icon: any
 }

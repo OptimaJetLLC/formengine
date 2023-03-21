@@ -33,7 +33,7 @@ const _CssList = observer(() => {
   if (!styles) return null
 
   return <div>
-    <h6>{t('style.cssStyles')}</h6>
+    <h6>{t('style.cssList')}</h6>
     {styles?.map((item, index) => {
       return (
         <Row key={index}>

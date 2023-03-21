@@ -18,5 +18,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   flex: 1;
+  justify-content: space-between;
   min-height: 0;
 `

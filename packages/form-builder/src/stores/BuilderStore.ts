@@ -1,4 +1,4 @@
-import {Annotation, ComponentProperty, ComponentStore, DropZoneProps, fbScreen, Store, treeFind} from 'fb-core'
+import {Annotation, ComponentProperty, ComponentStore, DropZoneProps, fbScreen, Store, treeFind, ViewMode} from 'fb-core'
 import {assign, cloneDeep} from 'lodash-es'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
 import {ComponentType} from 'react'
@@ -8,7 +8,7 @@ import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../fe
 import {PanelPlacement} from '../features/ui/Panel'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {Node} from '../utils/Node'
-import {BuilderMode, BuilderTheme, BuilderViewMode, ComponentMove, InsertPosition} from '../utils/types'
+import {BuilderMode, BuilderTheme, ComponentMove, InsertPosition} from '../utils/types'
 import {kvCreateStore, kvDel, kvGet, kvKeys, kvSet} from './KeyValueStorage'
 
 const {After, Inner} = InsertPosition
@@ -22,7 +22,7 @@ export interface EditableProperty {
 
 export class BuilderStore {
   builderMode: BuilderMode = 'viewer'
-  viewMode: BuilderViewMode = 'desktop'
+  viewMode: ViewMode = 'desktop'
   theme: BuilderTheme = getSystemTheme()
   openedPanels: PanelPlacement[] = ['left', 'right']
   selected?: Node

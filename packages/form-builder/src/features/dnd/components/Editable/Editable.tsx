@@ -1,4 +1,5 @@
 import {cx} from '@emotion/css'
+import {WrapperProps} from 'fb-core'
 import {observer} from 'mobx-react'
 import {useDragLayer} from 'react-dnd'
 import {useEventReactions} from '../../../event/utils/useEventReactions'
