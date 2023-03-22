@@ -1,5 +1,5 @@
-import {observer} from 'mobx-react'
 import {useEffect} from 'react'
+import {namedObserver} from '../../../utils'
 import {useStore} from '../../../utils/contexts/StoreContext'
 import {EventStream} from '../../event/utils/EventStream'
 import {ComponentTree} from '../../ui/ComponentTree'
@@ -8,7 +8,7 @@ export interface ViewerProps {
   event?: (stream: EventStream) => void
 }
 
-const _Viewer = ({event}: ViewerProps) => {
+export const Viewer = namedObserver('Viewer', ({event}: ViewerProps) => {
   const store = useStore()
   const {getForm, actions} = store.props
 
@@ -22,6 +22,4 @@ const _Viewer = ({event}: ViewerProps) => {
   }, [getForm])
 
   return <ComponentTree data={[store.screen]}/>
-}
-
-export const Viewer = observer(_Viewer)
+})

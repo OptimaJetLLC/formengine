@@ -1,6 +1,6 @@
-import {observer} from 'mobx-react'
 import {Fragment, useEffect} from 'react'
 import {ComponentStore} from '../../stores/ComponentStore'
+import {namedObserver} from '../../utils'
 import {ComponentData, ComponentDataProvider} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {useMemoizedLocalObserver} from '../../utils/useMemoizedLocalObserver'
@@ -14,7 +14,7 @@ export interface ComponentTreeItemProps {
   componentStore: ComponentStore
 }
 
-const _ComponentTreeItem = ({componentStore, parentStore}: ComponentTreeItemProps) => {
+export const ComponentTreeItem = namedObserver('ComponentTreeItem', ({componentStore, parentStore}: ComponentTreeItemProps) => {
   const store = useStore()
   const data = useMemoizedLocalObserver<ComponentData>(() => ({
     key: componentStore.key,
@@ -50,6 +50,4 @@ const _ComponentTreeItem = ({componentStore, parentStore}: ComponentTreeItemProp
       </Wrapper>
     </ComponentDataProvider>
   )
-}
-
-export const ComponentTreeItem = observer(_ComponentTreeItem)
+})

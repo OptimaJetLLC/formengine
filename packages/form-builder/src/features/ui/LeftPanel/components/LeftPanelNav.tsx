@@ -1,6 +1,6 @@
 import * as faList from '@fortawesome/free-solid-svg-icons/faList'
 import * as faSitemap from '@fortawesome/free-solid-svg-icons/faSitemap'
-import {observer} from 'mobx-react'
+import {namedObserver} from 'fb-core'
 import {useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Nav as RNav} from 'rsuite'
@@ -15,7 +15,7 @@ const leftPanelTabs = {
   'forms': <FormList/>
 }
 
-const _LeftPanelNav = () => {
+export const LeftPanelNav = namedObserver('LeftPanelNav', () => {
   const [activeTab, setActiveTab] = useState<LeftPanelSection>('tree')
   const {t} = useTranslation()
   const title = (key: string) => t('leftPanel.sectionName.' + key)
@@ -27,6 +27,4 @@ const _LeftPanelNav = () => {
     </RNav>
     {leftPanelTabs[activeTab]}
   </div>
-}
-
-export const LeftPanelNav = observer(_LeftPanelNav)
+})

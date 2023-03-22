@@ -1,8 +1,7 @@
 import styled from '@emotion/styled'
 import {SortDown, SortUp} from '@rsuite/icons'
 import PlusIcon from '@rsuite/icons/Plus'
-import {useComponentData} from 'fb-core'
-import {observer} from 'mobx-react'
+import {namedObserver, useComponentData} from 'fb-core'
 import {useRef} from 'react'
 import {ButtonGroup, IconButton, Popover, Whisper, WhisperInstance} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
@@ -10,7 +9,7 @@ import {InsertPosition} from '../../../../../utils/types'
 import {useTranslationPart} from '../../../../localization/hooks'
 import {useComponentsModal} from '../../../../ui/ComponentBar/ComponentsModal'
 
-const _AddButton = () => {
+export const AddButton = namedObserver('AddButton', () => {
   const store = useBuilderStore()
   const {openModal, ComponentsModal} = useComponentsModal(useComponentData())
   const t = useTranslationPart('componentToolbar')
@@ -38,9 +37,7 @@ const _AddButton = () => {
     </Whisper>
     <ComponentsModal/>
   </>
-}
-
-export const AddButton = observer(_AddButton)
+})
 
 const SPopover = styled(Popover)`
   transform: translateX(24px) !important;

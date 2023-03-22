@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
-import {CompilationResult, compileFn} from 'fb-core'
+import {CompilationResult, compileFn, namedObserver} from 'fb-core'
 import {action} from 'mobx'
-import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import {Button, ButtonGroup, Checkbox} from 'rsuite'
 import {EditableProperty} from '../../stores/BuilderStore'
@@ -44,7 +43,7 @@ interface CodeEditorPanelProps {
   onClose: () => void
 }
 
-const _CodeEditorPanel = ({editableProperty, onClose}: CodeEditorPanelProps) => {
+export const CodeEditorPanel = namedObserver('CodeEditorPanel', ({editableProperty, onClose}: CodeEditorPanelProps) => {
   const [sourceCode, setSourceCode] = useState(editableProperty.property?.fnSource || codePlaceHolder)
   const [compilationError, setCompilationError] = useState<CompilationResult | undefined>()
   const [useFn, setUseFn] = useState(editableProperty.property?.useFn || false)
@@ -80,9 +79,7 @@ const _CodeEditorPanel = ({editableProperty, onClose}: CodeEditorPanelProps) => 
     </SDiv>
     <ErrorMessage result={compilationError}/>
   </>
-}
-
-export const CodeEditorPanel = observer(_CodeEditorPanel)
+})
 
 const SDiv = styled.div`
   padding: 10px;

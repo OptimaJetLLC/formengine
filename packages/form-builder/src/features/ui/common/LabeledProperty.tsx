@@ -1,8 +1,7 @@
 import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode'
-import {Annotation, ComponentProperty, useComponentData} from 'fb-core'
-import {observer} from 'mobx-react'
+import {Annotation, ComponentProperty, namedObserver, useComponentData} from 'fb-core'
 import {cloneElement, ComponentProps} from 'react'
 import {IconButton} from 'rsuite'
 import useUniqueId from 'rsuite/cjs/utils/useUniqueId'
@@ -25,7 +24,7 @@ interface CodeButtonProps {
   getEditableProperty: () => EditableProperty
 }
 
-const _CodeButton = ({annotation, property, getEditableProperty}: CodeButtonProps) => {
+const CodeButton = namedObserver('CodeButton', ({annotation, property, getEditableProperty}: CodeButtonProps) => {
   const store = useBuilderStore()
   const hasCode = property?.fnSource
   const useFn = property?.useFn
@@ -45,9 +44,7 @@ const _CodeButton = ({annotation, property, getEditableProperty}: CodeButtonProp
                  icon={<FaIcon icon={faCode as unknown as IconDefinition} color={color}/>}
                  size={'xs'} appearance={'subtle'}/>
   </Hinted>
-}
-
-const CodeButton = observer(_CodeButton)
+})
 
 export const LabeledProperty = ({idPrefix, annotation, getEditableProperty, children}: LabeledPropertyProps) => {
   const id = useUniqueId(idPrefix || 'id-')

@@ -1,13 +1,17 @@
 import styled from '@emotion/styled'
 import EditIcon from '@rsuite/icons/Edit'
 import TrashIcon from '@rsuite/icons/Trash'
-import {observer} from 'mobx-react'
+import {namedObserver} from 'fb-core'
 import {useEffect, useState} from 'react'
 import {ButtonToolbar, IconButton, List} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {useShowMessage} from '../../../toast/toast'
 
-const _FormList = () => {
+const SFormName = styled.span`
+  margin-right: 10px;
+`
+
+export const FormList = namedObserver('FormList', () => {
   const store = useBuilderStore()
   const [formList, setFormList] = useState<string[]>([])
   const reloadForms = () => store.getFormList(setFormList)
@@ -34,10 +38,4 @@ const _FormList = () => {
   })
 
   return <List>{items}</List>
-}
-
-const SFormName = styled.span`
-  margin-right: 10px;
-`
-
-export const FormList = observer(_FormList)
+})

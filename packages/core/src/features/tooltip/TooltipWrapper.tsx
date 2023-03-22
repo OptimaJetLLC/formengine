@@ -1,7 +1,7 @@
-import {observer} from 'mobx-react'
 import {ReactNode, useMemo} from 'react'
 import {ComponentState} from '../../stores/ComponentState'
 import {ComponentStore} from '../../stores/ComponentStore'
+import {namedObserver} from '../../utils'
 import {ComponentData, useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {getKey} from '../../utils/getKey'
@@ -10,7 +10,7 @@ export interface TooltipWrapperProps {
   children: ReactNode
 }
 
-export const _TooltipWrapper = ({children}: TooltipWrapperProps) => {
+export const TooltipWrapper = namedObserver('TooltipWrapper', ({children}: TooltipWrapperProps) => {
   const wrappedComponentData = useComponentData()
   const wrappedComponentStore = wrappedComponentData.componentStore
   const viewerStore = useStore()
@@ -42,7 +42,4 @@ export const _TooltipWrapper = ({children}: TooltipWrapperProps) => {
   const props = componentState.get
   const View = tooltipDefinition.view
   return <View {...props}>{children}</View>
-}
-
-export const TooltipWrapper = observer(_TooltipWrapper)
-
+})

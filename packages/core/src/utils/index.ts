@@ -1,3 +1,6 @@
+import {observer} from 'mobx-react'
+import {IReactComponent} from 'mobx-react/dist/types/IReactComponent'
+
 export function isFunction(fn: any): fn is Function {
   return typeof fn === 'function'
 }
@@ -21,4 +24,10 @@ export function treeFind<T extends { key: string, children?: T[] }>(value: T, ke
   }
 
   return
+}
+
+export function namedObserver(displayName: string, component: IReactComponent) {
+  const observerComponent = observer(component)
+  observerComponent.displayName = displayName
+  return observerComponent
 }

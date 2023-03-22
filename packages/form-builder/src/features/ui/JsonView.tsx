@@ -1,9 +1,9 @@
-import {observer} from 'mobx-react'
+import {namedObserver} from 'fb-core'
 import {useEffect, useRef, useState} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {JsEditor} from './common/JsEditor'
 
-const _JsonView = () => {
+export const JsonView = namedObserver('JsonView', () => {
   const builderStore = useBuilderStore()
   const [source, setSource] = useState(builderStore.stringifyForm())
   // we need sourceRef to track the actual value of the source
@@ -15,6 +15,4 @@ const _JsonView = () => {
   useEffect(() => () => builderStore.parseForm(sourceRef.current), [])
 
   return <JsEditor value={source} onChange={onSetSource}/>
-}
-
-export const JsonView = observer(_JsonView)
+})

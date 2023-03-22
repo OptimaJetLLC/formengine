@@ -1,18 +1,16 @@
 import styled from '@emotion/styled'
-import {observer} from 'mobx-react'
+import {namedObserver} from 'fb-core'
 import {BottomPanel} from './BottomPanel'
 import {CentralPanel} from './CentralPanel'
 import {LeftPanel} from './LeftPanel'
 import {RightPanel} from './RightPanel'
 
-const _Content = () => <>
+export const Content = namedObserver('Content', () => <>
   <Container>
     <LeftPanel/> <CentralPanel/> <RightPanel/>
   </Container>
   <BottomPanel/>
-</>
-
-export const Content = observer(_Content)
+</>)
 
 const Container = styled.div`
   display: flex;

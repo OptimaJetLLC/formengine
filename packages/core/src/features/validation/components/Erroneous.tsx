@@ -1,5 +1,5 @@
-import {observer} from 'mobx-react'
 import {ReactNode, useEffect} from 'react'
+import {namedObserver} from '../../../utils'
 import {useComponentData} from '../../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../../utils/contexts/StoreContext'
 
@@ -7,7 +7,7 @@ export interface ErroneousProps {
   children: ReactNode
 }
 
-const _Erroneous = ({children}: ErroneousProps) => {
+export const Erroneous = namedObserver('Erroneous', ({children}: ErroneousProps) => {
   const store = useStore()
   const {field} = useComponentData()
   const Error = store.props.view.error.view
@@ -23,6 +23,4 @@ const _Erroneous = ({children}: ErroneousProps) => {
       {children}
     </Error>
   )
-}
-
-export const Erroneous = observer(_Erroneous)
+})

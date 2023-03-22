@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
-import {FormViewer, useStore} from 'fb-core'
-import {observer} from 'mobx-react'
+import {FormViewer, namedObserver, useStore} from 'fb-core'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {PanelContainer} from './Panel'
 
@@ -10,7 +9,7 @@ const resolutions = {
   'tablet': {maxWidth: 800},
 }
 
-const _CentralPanel = () => {
+export const CentralPanel = namedObserver('CentralPanel', () => {
   const store = useStore()
   const {viewMode} = useBuilderStore()
 
@@ -19,9 +18,7 @@ const _CentralPanel = () => {
       <FormViewer {...store.props} viewMode={viewMode}/>
     </FormContainer>
   )
-}
-
-export const CentralPanel = observer(_CentralPanel)
+})
 
 const FormContainer = styled(PanelContainer)`
   flex: 1;
