@@ -1,16 +1,33 @@
-// @ts-ignore
 import {useComponentData} from 'fb-core'
 // @ts-ignore
 import * as cssProperties from 'known-css-properties'
 import {observer} from 'mobx-react'
 import {useEffect} from 'react'
 import {useTranslation} from 'react-i18next'
+import {AutocompleteCell, EditableTable, makeColumns} from '../../../ui/common/EditableTable'
 import {StyleAnnotationProps} from '../StyleAnnotationProps'
-import {CompactCell, Row} from './List'
 
 const properties: any = cssProperties.all.map((value: string) => {
   return {label: value, value}
 })
+
+const columns = makeColumns([
+  {
+    name: 'name',
+    input: AutocompleteCell as any,
+    inputProps: {
+      options: properties,
+      placeholder: 'style'
+    }
+  },
+  {
+    name: 'value',
+    input: AutocompleteCell as any,
+    inputProps: {
+      placeholder: 'value'
+    }
+  }
+])
 
 const CssListWrapper = ({annotation}: StyleAnnotationProps) => {
   const {componentStore} = useComponentData()
@@ -32,28 +49,13 @@ const _CssList = observer(() => {
   const styles = componentStore.styles!.additional
   if (!styles) return null
 
+  const handleChange = (data: any) => {
+    componentStore.styles!.additional = data
+  }
+
   return <div>
     <h6>{t('style.cssList')}</h6>
-    {styles?.map((item, index) => {
-      return (
-        <Row key={index}>
-          <CompactCell
-            rowIndex={index} dataKey={'name'} placeholder={'style'}
-            options={properties} value={item.name}
-            onChange={(value: string) => {
-              if (styles[styles.length - 1].name || styles[styles.length - 1].value) {
-                componentStore.styles!.additional = [...styles, {}]
-              }
-              item.name = value
-            }}
-          />
-          <CompactCell
-            rowIndex={index} dataKey={'value'} placeholder={'value'} value={item.value}
-            onChange={(value: string) => item.value = value}
-          />
-        </Row>
-      )
-    })}
+    <EditableTable data={styles} columns={columns} onChange={handleChange} autoAdd hideHeader/>
   </div>
 })
 

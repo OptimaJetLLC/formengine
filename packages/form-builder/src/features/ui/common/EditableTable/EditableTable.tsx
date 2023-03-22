@@ -1,3 +1,4 @@
+import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {Close, Plus} from '@rsuite/icons'
 import {cloneElement, FormEventHandler, useEffect, useState} from 'react'
@@ -16,6 +17,8 @@ export interface EditableTableProps extends TableProps {
   columns?: JSX.Element[]
   label?: string
   errorMessage?: string
+  autoAdd?: boolean
+  hideHeader?: boolean
 }
 
 export interface EditableTableState {
@@ -27,22 +30,39 @@ export const EditableTable = (props: EditableTableProps) => {
   const [state, setState] = useState<EditableTableState>({})
   const [shouldScroll, setShouldScroll] = useState(false)
 
-  const {data = [], onChange, columns, label, errorMessage, ...tableProps} = props
+  const {
+    data = [],
+    onChange,
+    columns,
+    label,
+    errorMessage,
+    autoAdd,
+    hideHeader,
+    ...tableProps
+  } = props
   const {autoHeight, maxHeight} = state
 
-  const headerHeight = props.headerHeight ?? 40
+  const headerHeight = hideHeader ? 0 : props.headerHeight ?? 40
   const rowHeight = (props.rowHeight as number) ?? 46
   const maxRows = props.maxRows ?? 5
 
+  const handleChange = (data: any) => {
+    if (autoAdd) {
+      const lastItem = data[data.length - 1]
+      if (!lastItem || Object.values(lastItem).some(val => val)) data.push({})
+    }
+    onChange?.(data)
+  }
+
   const onAddColumn = () => {
-    onChange?.([...data, {}] as any)
+    handleChange?.([...data, {}])
     setShouldScroll(true)
     updateHeight()
   }
 
   const onRemoveColumn = (index: any) => {
     data.splice(index, 1)
-    onChange?.(data as any)
+    handleChange?.(data)
     updateHeight()
   }
 
@@ -57,7 +77,7 @@ export const EditableTable = (props: EditableTableProps) => {
   }
 
   const prepareColumns = () => columns?.map(col => cloneElement(col, {
-    onChange: () => onChange?.([...data] as any)
+    onChange: () => handleChange?.([...data] as any)
   }))
 
   const shouldUpdateScroll = () => {
@@ -79,9 +99,10 @@ export const EditableTable = (props: EditableTableProps) => {
             height={maxHeight}
             autoHeight={autoHeight}
             shouldUpdateScroll={shouldUpdateScroll}
+            className={cx({hideHeader})}
             {...tableProps}>
       {prepareColumns()}
-      <Column width={45}>
+      <Column width={34}>
         <HeaderCell>
           <div/>
         </HeaderCell>
@@ -91,14 +112,28 @@ export const EditableTable = (props: EditableTableProps) => {
     {!!errorMessage && <ErrorMessage show={!!errorMessage} placement="bottomStart">
       {errorMessage}
     </ErrorMessage>}
-    <Button appearance="default" size="sm" onClick={onAddColumn} style={{marginTop: 10}} block>
-      <Plus/>
-    </Button>
+    {!autoAdd &&
+      <Button appearance="default" size="sm" onClick={onAddColumn} style={{marginTop: 10}} block>
+        <Plus/>
+      </Button>
+    }
   </>)
 }
 
 const STable = styled(Table)`
   .rs-table-cell, .rs-table-row {
     background-color: transparent !important;
+  }
+
+  &.hideHeader {
+    margin-bottom: -40px;
+
+    .rs-table-header-row-wrapper {
+      display: none !important;
+    }
+
+    .rs-table-body-row-wrapper {
+      top: 0 !important;
+    }
   }
 `
