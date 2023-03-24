@@ -20,7 +20,7 @@ export const StyleEditor = () => {
     <Rows ml={'5px'} my={0}>
       <StandardStyles/>
       <CSSList annotation={annotation}/>
-      <CSSBlock annotation={annotation}/>
+      <CSSBlock/>
       <DefinedStyles annotation={annotation}/>
     </Rows>
   )

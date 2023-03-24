@@ -6,7 +6,7 @@ import TrashIcon from '@rsuite/icons/Trash'
 import {ActionData, CustomActionDefinition, useStore} from 'fb-core'
 import {toJS} from 'mobx'
 import {observer} from 'mobx-react'
-import {Dropdown, DropdownProps, IconButton} from 'rsuite'
+import {Divider, Dropdown, DropdownProps, IconButton} from 'rsuite'
 import {useTranslationPart} from '../../../../../../localization/hooks'
 
 interface CustomActionsProps {

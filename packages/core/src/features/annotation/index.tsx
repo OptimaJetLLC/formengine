@@ -7,6 +7,8 @@ export const key = createAnnotation('key')
   .schemed(yup.string())
   .hinted('Unique component key')
   .calculable(false)
+  .build('key')
+
 export const htmlAttributes = createAnnotation('htmlAttributes')
 export const stylization = new StyleBuilder('stylization')
 export const validation = createAnnotation('validation')

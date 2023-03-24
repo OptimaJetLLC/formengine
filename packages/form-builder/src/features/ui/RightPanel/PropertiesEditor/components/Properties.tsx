@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {Annotation, ComponentDataProvider, ComponentStore} from 'fb-core'
+import {Annotation, ComponentDataProvider, key} from 'fb-core'
 import {observer} from 'mobx-react'
 import {createElement, useEffect} from 'react'
 import {Panel} from 'rsuite'
@@ -45,17 +45,20 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
     <ComponentDataProvider value={{key: data.key, componentStore: data, model, parentStore: parent?.data}}>
       <Container>
         <PropertiesList>
-          {renderProperties(properties, data)}
-          {renderStyleProperties(style, data)}
+          <Property annotation={key} getContext={() => ({})}/>
+          <PropertyBlock annotations={properties} context={data.props}/>
+          <PropertyBlock annotations={style} context={data.styles?.cssObject}/>
         </PropertiesList>
+
         {!!tooltipProps?.length && viewer.tooltipType &&
           <SPanel header={getLabel('subSection.tooltipProps')} collapsible bodyFill>
-            {renderProperties(tooltipProps, data)}
+            <PropertyBlock annotations={tooltipProps} context={data.props}/>
           </SPanel>
         }
+
         {!!additionalProperties?.length &&
           <SPanel header={getLabel('subSection.additionalProperties')} collapsible bodyFill>
-            {renderProperties(additionalProperties, data)}
+            <PropertyBlock annotations={additionalProperties} context={data.props}/>
           </SPanel>
         }
       </Container>
@@ -63,27 +66,19 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
   )
 })
 
-export const renderProperties = (properties: Annotation[], cs: ComponentStore) => {
-  return renderSubsectionProperties(properties, () => cs.props)
+export const PropertyBlock = ({annotations, context}: { annotations: Annotation[], context?: object }) => {
+  if (!context) return null
+
+  return <>
+    {annotations.map(annotation => <Property key={annotation.key} annotation={annotation} getContext={() => context}/>)}
+  </>
 }
 
-export const renderSubsectionProperties = (properties: Annotation[], getContext: () => Record<string, any>) => {
-  return properties.map(annotation => <AnnotationProvider key={annotation.key} value={{annotation, getContext: getContext}}>
+const Property = ({annotation, getContext}: { annotation: Annotation, getContext: () => object }) => (
+  <AnnotationProvider value={{annotation, getContext}}>
     {createElement(observer(EditorMap[annotation.editor]))}
-  </AnnotationProvider>)
-}
-
-const renderStyleProperties = (properties: Annotation[], cs: ComponentStore) => {
-  const cssObject = cs.styles?.cssObject
-  if (!cssObject) return null
-
-  return properties.map(annotation =>
-    <AnnotationProvider key={annotation.key} value={{
-      annotation, getContext: () => cssObject
-    }}>
-      {createElement(observer(EditorMap[annotation.editor]))}
-    </AnnotationProvider>)
-}
+  </AnnotationProvider>
+)
 
 const PropertiesList = styled.div`
   display: flex;
@@ -128,6 +123,5 @@ const SPanel = styled(Panel)`
     transform: rotate(0deg) !important;
   }
 `
-
 
 export {Properties}

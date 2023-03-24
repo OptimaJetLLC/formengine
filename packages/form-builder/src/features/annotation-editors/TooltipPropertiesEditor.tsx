@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {useTranslationPart} from '../localization/hooks'
 import {LabeledInput} from '../ui/common/Containers'
-import {renderSubsectionProperties} from '../ui/RightPanel/PropertiesEditor/components/Properties'
+import {PropertyBlock} from '../ui/RightPanel/PropertiesEditor/components/Properties'
 import {SCheckbox} from './BooleanInput'
 import {HintedLabel} from './Hinted'
 
@@ -31,7 +31,7 @@ export const TooltipPropertiesEditor = () => {
       <SCheckbox checked={useTooltip} onChange={(_, checked) => setUseTooltip(checked)}></SCheckbox>
     </LabeledInput>
     {!!selected?.data.tooltipProps &&
-      renderSubsectionProperties(tooltipAnnotationArray, () => selected?.data.tooltipProps!)
+      <PropertyBlock annotations={tooltipAnnotationArray} context={selected?.data.tooltipProps}/>
     }
   </>
 }
