@@ -1,4 +1,6 @@
+import {assign} from 'lodash-es'
 import {useEffect} from 'react'
+import {ComponentStore} from '../../../stores/ComponentStore'
 import {namedObserver} from '../../../utils'
 import {useStore} from '../../../utils/contexts/StoreContext'
 import {EventStream} from '../../event/utils/EventStream'
@@ -18,7 +20,16 @@ export const Viewer = namedObserver('Viewer', ({event}: ViewerProps) => {
   }, [])
 
   useEffect(() => {
-    if (getForm) store.screen = getForm()
+    if (getForm) {
+      const form = getForm()
+      if (typeof (form as Promise<ComponentStore>).then === 'function') {
+        (form as Promise<ComponentStore>).then(result => {
+          store.screen = assign(new ComponentStore('', ''), result)
+        })
+      } else {
+        store.screen = assign(new ComponentStore('', ''), form)
+      }
+    }
   }, [getForm])
 
   return <ComponentTree data={[store.screen]}/>

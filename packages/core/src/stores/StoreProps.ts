@@ -10,7 +10,7 @@ export interface DropZoneProps {
 }
 
 export interface StoreProps {
-  getForm?: () => ComponentStore
+  getForm?: () => ComponentStore | Promise<ComponentStore>
   view: View
   actions?: ActionDefinition[]
   data?: Record<string, unknown>
