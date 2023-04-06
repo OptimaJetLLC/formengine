@@ -38,6 +38,8 @@ export class Field {
   }
 
   get schema() {
+    // if data contains a component that is not on the form
+    if (!this.store.findComponent(this.key)) return
     return parseSchema(this.componentStore.schema, this.valuedAn)
   }
 
