@@ -96,6 +96,8 @@ const Container = styled.div`
 `
 
 const SPanel = styled(Panel)`
+  overflow: initial !important;
+
   .rs-panel-header {
     padding-inline: 0;
 
