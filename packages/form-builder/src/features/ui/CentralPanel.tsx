@@ -1,20 +1,15 @@
+import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {FormViewer, namedObserver, useStore} from 'fb-core'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {PanelContainer} from './Panel'
 
-const resolutions = {
-  'desktop': {},
-  'mobile': {maxWidth: 400, maxHeight: 800},
-  'tablet': {maxWidth: 800},
-}
-
 export const CentralPanel = namedObserver('CentralPanel', () => {
   const store = useStore()
-  const {viewMode} = useBuilderStore()
+  const {viewMode, landscapeMode} = useBuilderStore()
 
   return (
-    <FormContainer style={resolutions[viewMode]}>
+    <FormContainer className={cx(viewMode, {landscapeMode})}>
       <FormViewer {...store.props} viewMode={viewMode}/>
     </FormContainer>
   )
@@ -29,8 +24,28 @@ const FormContainer = styled(PanelContainer)`
   padding: 12px;
   overflow-y: auto;
   overflow-x: hidden;
-  transition: height .2s ease, width .2s ease, border-radius .2s ease;
+  transition: max-width .2s ease, max-height .2s ease, border-radius .2s ease;
   border-radius: 10px;
   box-shadow: 0 5px 20px 0 rgb(0 0 0 / 15%);
   background-color: white;
+
+  &.mobile {
+    max-width: 400px;
+    max-height: 800px;
+
+    &.landscapeMode {
+      max-width: 800px;
+      max-height: 400px;
+    }
+  }
+
+  &.tablet {
+    max-width: 800px;
+    max-height: 1200px;
+
+    &.landscapeMode {
+      max-width: 1200px;
+      max-height: 800px;
+    }
+  }
 `

@@ -23,6 +23,7 @@ export interface EditableProperty {
 export class BuilderStore {
   builderMode: BuilderMode = 'viewer'
   viewMode: ViewMode = 'desktop'
+  landscapeMode?: boolean
   theme: BuilderTheme = getSystemTheme()
   openedPanels: PanelPlacement[] = ['left', 'right']
   selected: Node[] = []
