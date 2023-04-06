@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {Annotation, ComponentDataProvider, key} from 'fb-core'
 import {observer} from 'mobx-react'
-import {createElement, useEffect} from 'react'
+import {createElement} from 'react'
 import {Panel} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {AnnotationProvider} from '../../../../../utils/EditorContext'
@@ -15,15 +15,9 @@ interface PropertiesProps {
 }
 
 const Properties = observer(({activeTab}: PropertiesProps) => {
-  const {selected, viewer} = useBuilderStore()
+  const store = useBuilderStore()
+  const selected = store.getSingleSelected()
   const getLabel = useTranslationPart('propertiesEditor')
-
-  useEffect(() => {
-    if (selected) {
-      selected.data.styles ??= {}
-      selected.data.styles.cssObject ??= {}
-    }
-  }, [selected])
 
   if (!selected) {
     return (
@@ -50,7 +44,7 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
           <PropertyBlock annotations={style} context={data.styles?.cssObject}/>
         </PropertiesList>
 
-        {!!tooltipProps?.length && viewer.tooltipType &&
+        {!!tooltipProps?.length && store.viewer.tooltipType &&
           <SPanel header={getLabel('subSection.tooltipProps')} collapsible bodyFill>
             <PropertyBlock annotations={tooltipProps} context={data.props}/>
           </SPanel>

@@ -14,6 +14,7 @@ const Tree = observer(() => {
   const store = useBuilderStore()
   const {t} = useTranslation()
   const [currentExpandedKeys, setCurrentExpandedKeys] = useState<string[]>([])
+  const selected = store.getSingleSelected()
 
   let expandedNodesKeys: string[] | never = []
   const extractParentNodesKeys = (node?: Node) => {
@@ -23,7 +24,7 @@ const Tree = observer(() => {
     }
     expandedNodesKeys = expandedNodesKeys.concat(currentExpandedKeys)
   }
-  extractParentNodesKeys(store.selected)
+  extractParentNodesKeys(selected)
   useEffect(() => extractParentNodesKeys(store.tree.children?.[0]), [])
 
   //TODO починить перенос по дереву. Проблема связана со Suspense
@@ -36,8 +37,8 @@ const Tree = observer(() => {
   return <Rows style={{width: '100%'}}>
     <RTree
       draggable onDrop={onDrop}
-      onSelect={(activeNode) => store.selected = activeNode as Node}
-      value={store.selected?.data?.key}
+      onSelect={({key}) => store.selectNode(key)}
+      value={selected?.data?.key}
       expandItemValues={expandedNodesKeys}
       onExpand={(expandItemValues: any []) => {
         setCurrentExpandedKeys(expandItemValues)

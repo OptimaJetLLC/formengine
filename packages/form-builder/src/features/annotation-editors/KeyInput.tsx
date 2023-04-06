@@ -11,7 +11,7 @@ const KeyInput = () => {
 
   const handleChange = (value: string) => {
     componentStore.key = value
-    store.selected = store.findNode(value)
+    store.selectNode(value)
   }
 
   return (

@@ -5,7 +5,7 @@ import {useAnnotation} from '../../utils/EditorContext'
 import LabeledProperty from '../ui/common/LabeledProperty'
 
 export const RenderWhenEditor = () => {
-  const {selected} = useBuilderStore()
+  const selected = useBuilderStore().getSingleSelected()
   const {annotation} = useAnnotation()
 
   if (!selected) return null

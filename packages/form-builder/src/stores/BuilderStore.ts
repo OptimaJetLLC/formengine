@@ -25,7 +25,7 @@ export class BuilderStore {
   viewMode: ViewMode = 'desktop'
   theme: BuilderTheme = getSystemTheme()
   openedPanels: PanelPlacement[] = ['left', 'right']
-  selected?: Node
+  selected: Node[] = []
   language = defaultLanguage
   calculatedProperty?: EditableProperty
   formName = 'SampleForm'
@@ -68,11 +68,11 @@ export class BuilderStore {
   }
 
   static getIndexInParent(node: ComponentMove) {
-    const child = node.componentStore
+    const {key} = node.componentStore
     const parent = node.parentStore
     if (!parent) return 0
 
-    return parent.children!.indexOf(child)
+    return parent.children!.findIndex(item => item.key === key)
   }
 
   destroy() {
@@ -115,17 +115,18 @@ export class BuilderStore {
   parseForm(text: string) {
     this.viewer.screen = assign(new ComponentStore('', ''), JSON.parse(text))
     // restore selection
-    if (this.selected) this.selected = this.findNode(this.selected.key)
+    if (this.selected.length) this.selectNode(this.selected[0].key)
     if (this.calculatedProperty) this.calculatedProperty = undefined
   }
 
   //TODO clone for inner components without removing
   clone(source: ComponentMove) {
-    const cloned = this.add(source, source)
-    this.selected = this.findNode(cloned.key)
+    this.add(source, source)
   }
 
   move(source: ComponentMove, target: ComponentMove, insertPosition: InsertPosition = InsertPosition.After) {
+    if (source.componentStore.key === target.componentStore.key) return
+
     this.remove(source)
     const isInner = insertPosition === Inner
     const index = isInner
@@ -146,6 +147,15 @@ export class BuilderStore {
     }
   }
 
+  multipleMove(target: ComponentMove, insertPosition: InsertPosition = InsertPosition.After) {
+    this.selected.forEach(({data, parent}) => this.move(
+      {componentStore: data, parentStore: parent?.data} as ComponentMove,
+      target,
+      insertPosition
+    ))
+    this.selected = this.selected.map(({key}) => this.findNode(key)!)
+  }
+
   add(source: ComponentMove, target: ComponentMove, insertPosition: InsertPosition = InsertPosition.After,
       bindTo?: string, bindCondition?: string) {
     const clone = assign(new ComponentStore('', ''), cloneDeep(source.componentStore))
@@ -153,7 +163,7 @@ export class BuilderStore {
     clone.bindCondition = bindCondition
     this.unifyComponentKeys(clone)
     this.move({componentStore: clone}, target, insertPosition)
-    this.selected = this.findNode(clone.key)
+    this.selectNode(clone.key)
     return clone
   }
 
@@ -251,5 +261,28 @@ export class BuilderStore {
       ...filtered,
       ...visible ? [placement] : []
     ]
+  }
+
+  isNodeSelected = (nodeKey: string) => {
+    return this.selected.some(({key}) => key === nodeKey)
+  }
+
+  getSingleSelected = () => {
+    return this.selected.length === 1 ? this.selected[0] : undefined
+  }
+
+  selectNode = (nodeKey: string, multipleSelection = false) => {
+    const node = this.findNode(nodeKey)
+    if (!node) return
+
+    const isSelected = this.isNodeSelected(nodeKey)
+
+    if (multipleSelection) {
+      this.selected = isSelected
+        ? this.selected.filter(({key}) => key !== nodeKey)
+        : [...this.selected, node]
+    } else if (!isSelected) {
+      this.selected = [node]
+    }
   }
 }

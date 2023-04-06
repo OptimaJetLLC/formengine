@@ -9,7 +9,7 @@ import {HintedLabel} from './Hinted'
 
 export const TooltipPropertiesEditor = () => {
   const t = useTranslationPart('annotation.tooltipProps')
-  const {selected} = useBuilderStore()
+  const selected = useBuilderStore().getSingleSelected()
   const store = useStore()
   const [useTooltip, setUseTooltip] = useState(!!selected?.data.tooltipProps)
   useEffect(() => {

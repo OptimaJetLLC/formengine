@@ -31,7 +31,11 @@ export const useDropZone = (isAfter: boolean, isInner?: boolean): [DropState, Co
         case ItemType.Component:
           //TODO механизм биндинга свойств
           source.componentStore.bindTo = bindTo
-          store.move(source, target, insertPosition)
+          if (store.selected.length > 1) {
+            store.multipleMove(target, insertPosition)
+          } else {
+            store.move(source, target, insertPosition)
+          }
           break
       }
     },

@@ -4,6 +4,7 @@ import {useComponentData} from 'fb-core'
 import {observer} from 'mobx-react'
 import {ComponentProps, ReactNode} from 'react'
 import {useDragLayer} from 'react-dnd'
+import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {useDnd} from '../hooks/useDnd'
 import {DragPreview} from './DragPreview'
 import {DropZone} from './DropZone'
@@ -14,18 +15,22 @@ interface DraggableProps extends ComponentProps<any> {
 }
 
 export const Draggable = observer(({children, viewForDragPreview, isInner, className, ...props}: DraggableProps) => {
-  const {isContainer, isRoot} = useComponentData().componentStore
+  const {isContainer, isRoot, key} = useComponentData().componentStore
+  const store = useBuilderStore()
   const [{isActive, isDragging: isDraggingCurrent}, dnd] = useDnd()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
 
-  return isDraggingCurrent
-    ? <DragPreview>{viewForDragPreview}</DragPreview>
-    : <Container ref={dnd} {...props}
-                 className={cx(className, {isActive, isContainer, isRoot, isInner})}>
+  const hidden = isDragging && store.isNodeSelected(key)
+
+  return <>
+    {isDraggingCurrent && <DragPreview>{viewForDragPreview}</DragPreview>}
+    <Container ref={dnd} {...props}
+               className={cx(className, {isActive, isContainer, isRoot, isInner, hidden})}>
       {isDragging && !isRoot && !isInner && <DropZone/>}
       {children}
       {isDragging && !isRoot && <DropZone isAfter={!isInner && true} isInner={isInner}/>}
     </Container>
+  </>
 })
 
 const Container = styled.div`
@@ -35,6 +40,10 @@ const Container = styled.div`
   flex-direction: column;
   transition: padding-block 200ms ease-in-out;
   transition-delay: 200ms;
+
+  &.hidden {
+    opacity: 0.4;
+  }
 
   &:not(.isRoot) {
     &.isActive.isContainer,

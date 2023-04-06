@@ -1,5 +1,7 @@
+import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {useDragLayer, XYCoord} from 'react-dnd'
+import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {ItemType} from '../consts'
 
 function getItemStyles(
@@ -20,12 +22,12 @@ function getItemStyles(
   const transform = `translate(${x}px, ${y}px) scale(${isFromAddElements ? 1 : 0.8})`
   return {
     transform,
-    WebkitTransform: transform,
-    width: isFromAddElements ? 'max-content' : 400,
+    WebkitTransform: transform
   }
 }
 
 export const CustomDragLayer = () => {
+  const isMultiSelection = useBuilderStore().selected.length > 1
   const {itemType, isDragging, initialOffset, currentOffset} =
     useDragLayer((monitor) => ({
       item: monitor.getItem(),
@@ -40,7 +42,7 @@ export const CustomDragLayer = () => {
   }
   return (
     <Layer>
-      <Container style={getItemStyles(initialOffset, currentOffset, itemType)} id={'fb-drag-preview'}/>
+      <Container className={cx({isMultiSelection})} style={getItemStyles(initialOffset, currentOffset, itemType)} id={'fb-drag-preview'}/>
     </Layer>
   )
 }
@@ -56,12 +58,42 @@ const Layer = styled.div`
 `
 
 const Container = styled.div`
-  overflow: hidden;
   box-shadow: 0 5px 20px 0 rgb(0 0 0 / 35%);
-  border-radius: 5px;
-  background-color: white;
+  width: fit-content;
+
+  &, & > *, &::before, &::after {
+    background-color: white;
+    border-radius: 5px;
+  }
+
+  &.isMultiSelection {
+    & > *, &::before, &::after {
+      box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.15);
+    }
+
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    &::before {
+      left: 7px;
+      top: 5px;
+      z-index: -1;
+    }
+
+    &::after {
+      left: 12px;
+      top: 10px;
+      z-index: -2;
+    }
+  }
 
   .rs-theme-dark & {
-    background-color: #414549;
+    &, & > *, &::before, &::after {
+      background-color: #414549;
+    }
   }
 `
