@@ -19,10 +19,12 @@
         "@uiw/react-codemirror": "^4.19.9",
         "autosize": "^5.0.1",
         "fb-core": "*",
+        "file-saver": "^2.0.5",
         "i18next": "^21.6.7",
         "i18next-browser-languagedetector": "^6.1.2",
         "i18next-resources-to-backend": "^1.0.0",
         "idb-keyval": "^6.2.0",
+        "jszip": "^3.10.1",
         "known-css-properties": "^0.23.0",
         "mobx": "^6.4.2",
         "mobx-react": "^7.3.0",
@@ -37,6 +39,7 @@
     },
     "devDependencies": {
         "@types/autosize": "^4.0.0",
+        "@types/file-saver": "^2.0.5",
         "@types/styled-system": "^5.1.13"
     },
     "peerDependencies": {

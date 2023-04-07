@@ -42,7 +42,13 @@
     "formSaved": "The form is saved",
     "formSaveError": "Failed to save form! See the logs in the browser console",
     "enterFormName": "Please enter form name",
-    "formNamePlaceholder": "My beautiful form"
+    "formNamePlaceholder": "My beautiful form",
+    "exportForms": "Export forms",
+    "exportFormsSuccess": "Forms exported",
+    "exportFormsError": "Failed to export forms! See the logs in the browser console",
+    "importForms": "Import forms",
+    "importFormsSuccess": "Forms imported",
+    "importFormsError": "Failed to import forms! See the logs in the browser console"
   },
   "rightMenu": {
     "desktop": "Desktop",

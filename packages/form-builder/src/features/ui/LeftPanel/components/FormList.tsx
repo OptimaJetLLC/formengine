@@ -14,7 +14,9 @@ const SFormName = styled.span`
 export const FormList = namedObserver('FormList', () => {
   const store = useBuilderStore()
   const [formList, setFormList] = useState<string[]>([])
-  const reloadForms = () => store.getFormList(setFormList)
+  const reloadForms = () => {
+    store.getFormKeys().then(setFormList)
+  }
   const showMessage = useShowMessage()
   useEffect(() => {
     reloadForms()

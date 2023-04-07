@@ -9,6 +9,7 @@ import {PanelPlacement} from '../features/ui/Panel'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {Node} from '../utils/Node'
 import {BuilderMode, BuilderTheme, ComponentMove, InsertPosition} from '../utils/types'
+import {uploadStringFile} from './fileUpload'
 import {kvCreateStore, kvDel, kvGet, kvKeys, kvSet} from './KeyValueStorage'
 
 const {After, Inner} = InsertPosition
@@ -206,40 +207,21 @@ export class BuilderStore {
   }
 
   upload = () => {
-    const input = document.createElement('input')
-    input.type = 'file'
-
-    input.onchange = e => {
-
-      const target = e.target as HTMLInputElement
-      const file: File = (target.files as FileList)[0]
-
-      // setting up the reader
-      const reader = new FileReader()
-      reader.readAsText(file, 'UTF-8')
-
-      // here we tell the reader what to do when it's done reading...
-      reader.onload = readerEvent => {
-        const content: string = readerEvent.target?.result as string ?? '' // this is the content!
-
-        this.parseForm(content)
-      }
-
-    }
-
-    input.click()
+    uploadStringFile(this.parseForm.bind(this))
   }
 
   save() {
-    this.lastSaveTime = new Date()
-    return kvSet(this.formName, this.stringifyForm(), this.#customStore)
+    return this.saveForm(this.formName, this.stringifyForm())
   }
 
-  getFormList(onSuccess: (keys: string[]) => void) {
-    kvKeys(this.#customStore).then(keys => {
-      const strings = keys.map(value => `${value}`)
-      onSuccess(strings || [])
-    })
+  saveForm(formName: string, formValue: string) {
+    this.lastSaveTime = new Date()
+    return kvSet(formName, formValue, this.#customStore)
+  }
+
+  async getFormKeys() {
+    const keys = await kvKeys(this.#customStore)
+    return keys.map(value => `${value}`) || []
   }
 
   removeForm(value: string, onSuccess: () => void) {
@@ -247,13 +229,17 @@ export class BuilderStore {
   }
 
   loadForm(value: string, onSuccess?: () => void, onError?: (err: any) => void) {
-    kvGet(value, this.#customStore)
+    this.getStoredFormJson(value)
       .then(data => {
         this.parseForm(data)
         this.formName = value
         onSuccess?.()
       })
       .catch(err => onError?.(err))
+  }
+
+  getStoredFormJson(formName: string) {
+    return kvGet(formName, this.#customStore)
   }
 
   setPanelVisible(placement: PanelPlacement, visible: boolean) {
