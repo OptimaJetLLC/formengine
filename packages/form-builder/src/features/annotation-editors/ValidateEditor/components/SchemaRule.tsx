@@ -1,6 +1,7 @@
 import {cast, getSchemaRules, useComponentData} from 'fb-core'
 import {observer} from 'mobx-react'
 import {Input as RInput, InputNumber} from 'rsuite'
+import {useMeta} from '../../../../utils/useMeta'
 
 const getInput = (type: string) => {
   switch (type) {
@@ -16,9 +17,11 @@ interface SchemaRuleProps {
 }
 
 export const SchemaRule = observer(({ruleKey}: SchemaRuleProps) => {
-  const {componentStore, model} = useComponentData()
+  const {componentStore} = useComponentData()
   const schema = componentStore.schema
-  const valuedAn = model.valuedAn
+  const meta = useMeta()
+
+  const valuedAn = meta?.valuedAn
   const rule = getSchemaRules(valuedAn?.schema?.constructor)?.[ruleKey]
   if (!rule || !schema) return null
 

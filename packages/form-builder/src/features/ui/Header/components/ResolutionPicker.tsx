@@ -7,9 +7,9 @@ import {ViewMode} from 'fb-core'
 import {observer} from 'mobx-react'
 import {IconButton, SelectPicker} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
+import {makeLabeledIconStyles} from '../../../components/Containers'
+import {FaIcon} from '../../../components/Icons'
 import {useTranslationPart} from '../../../localization/hooks'
-import {makeLabeledIconStyles} from '../../common/Containers'
-import {FaIcon} from '../../common/Icons'
 import {OrientationIcon} from './OrientationIcon'
 
 const resolutions: [ViewMode, any][] = [
@@ -61,7 +61,7 @@ const SDiv = styled.div`
   align-items: center;
 `
 
-const SPicker = styled(SelectPicker)`
+const SPicker = styled(SelectPicker<string>)`
   .rs-picker-toggle-value {
     color: var(--rs-btn-default-text) !important;
   }

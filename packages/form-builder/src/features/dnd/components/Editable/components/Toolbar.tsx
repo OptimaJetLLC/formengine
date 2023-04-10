@@ -6,7 +6,7 @@ import {useComponentData} from 'fb-core'
 import {observer} from 'mobx-react'
 import {useCallback} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
-import {FaIcon} from '../../../../ui/common/Icons'
+import {FaIcon} from '../../../../components/Icons'
 import {AddButton} from './AddButton'
 
 export const Toolbar = observer(() => {

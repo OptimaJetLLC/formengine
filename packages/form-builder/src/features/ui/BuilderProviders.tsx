@@ -5,7 +5,7 @@ import {HTML5Backend} from 'react-dnd-html5-backend'
 import {BuilderStore} from '../../stores/BuilderStore'
 import {LocalStorageSynchronizer} from '../../stores/LocalStorageSynchronizer'
 import {BuilderStoreProvider} from '../../utils/BuilderStoreContext'
-import {DropZone, Editable} from '../dnd'
+import {Editable} from '../dnd'
 import {CustomDragLayer} from '../dnd/components/CustomDragLayer'
 import {LocalizationProvider} from '../localization'
 import {StylesProvider} from './StylesProvider'
@@ -13,10 +13,6 @@ import {StylesProvider} from './StylesProvider'
 interface BuilderProvidersProps {
   props: FormViewerProps
   children: ReactNode
-}
-
-const ComponentDropZone = ({bindTo, bindCondition}: { bindTo?: string, bindCondition?: string }) => {
-  return <DropZone isInner={true} bindTo={bindTo} bindCondition={bindCondition}/>
 }
 
 export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {
@@ -30,7 +26,8 @@ export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {
   }, [])
 
   const buildStore = useMemo(() => {
-    const builderStore = new BuilderStore(store, Editable, ComponentDropZone)
+    const builderStore = new BuilderStore(store, Editable)
+
     builderStore.changeBuilderMode('builder')
     return builderStore
   }, [])

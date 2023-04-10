@@ -1,17 +1,18 @@
-import {getSchemaRules, useComponentData} from 'fb-core'
+import {getSchemaRules, SchemaType, useComponentData} from 'fb-core'
 import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
 import {Button, Dropdown} from 'rsuite'
+import {Nullable} from 'vitest'
+import {useMeta} from '../../../../utils/useMeta'
 
 export const AddRuleButton = observer(() => {
-  const {componentStore, model} = useComponentData()
-
+  const {componentStore} = useComponentData()
   const {t} = useTranslation()
+  const meta = useMeta()
 
-  const valuedAn = model.properties.find((p) => p.valued) ?? model.properties.find((p) => p.name === 'value')
-  const rules = getSchemaRules(valuedAn?.schema?.constructor)
-
-  if (!rules) return null
+  const rules = getSchemaRules(meta?.valuedAn?.schema?.constructor)
+  const type = meta?.valuedAn?.schema?.type as Nullable<SchemaType>
+  if (!rules || !type) return null
 
   return (
     <Dropdown
@@ -29,7 +30,7 @@ export const AddRuleButton = observer(() => {
             children={rule.name}
             eventKey={key}
             onSelect={(key) => {
-              componentStore.schema ??= {rules: []}
+              componentStore.schema ??= {type, rules: []}
               componentStore.schema.rules.push(key)
             }}
           />

@@ -1,7 +1,6 @@
 import {css} from '@emotion/css'
 import {ReactNode} from 'react'
-import {node, string} from '../../annotation'
-import {define} from '../../define'
+import {Model} from '../../define'
 
 export interface ErrorMessageProps {
   error?: string
@@ -37,8 +36,4 @@ const ErrorMessage = ({children, error}: ErrorMessageProps) => {
   )
 }
 
-export const defaultErrorMessage = define(ErrorMessage)
-  .props({
-    error: string,
-    children: node,
-  })
+export const errorMessageModel = new Model(ErrorMessage)

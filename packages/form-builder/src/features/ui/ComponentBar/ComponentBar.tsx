@@ -1,8 +1,7 @@
 import {css} from '@emotion/css'
 import styled from '@emotion/styled'
-import {ComponentDataProvider, ComponentStore, Definition, useStore} from 'fb-core'
+import {ComponentDataProvider, ComponentStore, getKey, Model, useStore} from 'fb-core'
 import {useState} from 'react'
-import {getKey} from '../../../../../core/src/utils/getKey'
 import {ComponentMove} from '../../../utils/types'
 import {AddedComponent} from '../../dnd'
 import {useTranslationPart} from '../../localization/hooks'
@@ -20,7 +19,7 @@ export const ComponentBar = (componentProps: DraggableProps) => {
   const [filtered, setFiltered] = useState<ToolbarItem>()
 
   const handleSearchChange = (value: string) => {
-    const isMatch = (el: Definition<any>) => el.name.toLowerCase().includes(value.toLowerCase())
+    const isMatch = (el: Model) => el.name.toLowerCase().includes(value.toLowerCase())
 
     setFiltered({
       title: value ? '' : t('baseControls'),
@@ -43,22 +42,22 @@ export const ComponentBar = (componentProps: DraggableProps) => {
 }
 
 interface AddedComponentsProps extends DraggableProps {
-  definitions: Definition<any>[]
+  definitions: Model[]
 }
 
 const AddedComponents = ({definitions, ...componentProps}: AddedComponentsProps) => {
   const {props: {view}} = useStore()
   return (
     <Controls>
-      {definitions.map(definition => {
-        const componentStore = new ComponentStore(definition.type + ' ' + getKey(), definition.type)
+      {definitions.map(model => {
+        const componentStore = new ComponentStore(model.type + ' ' + getKey(), model.type)
         return (
           <ComponentDataProvider
-            key={definition.name}
+            key={model.name}
             value={{
               key: componentStore.key,
               componentStore,
-              model: view.initModel(componentStore)
+              model: view.get(componentStore.type)
             }}
           >
             <AddedComponent {...componentProps}/>

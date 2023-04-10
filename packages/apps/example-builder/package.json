@@ -6,11 +6,12 @@
     "description": "OptimaJet Form Builder Application",
     "license": "ISC",
     "scripts": {
-        "start": "vite -c ../../../vite.config.ts --open"
+        "start": "vite -c ../../../vite.config.ts --open",
+        "show:bundle": "npx vite-bundle-visualizer"
     },
     "dependencies": {
-        "builder-antd": "*",
-        "builder-rsuite": "*",
+        "view-antd": "*",
+        "view-rsuite": "*",
         "form-builder": "*",
         "react": "^17.0.2",
         "react-dom": "^17.0.2"

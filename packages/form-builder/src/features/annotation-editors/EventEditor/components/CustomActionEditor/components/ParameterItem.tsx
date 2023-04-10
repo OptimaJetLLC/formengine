@@ -1,10 +1,11 @@
 import styled from '@emotion/styled'
 import {ArrowDownLine, ArrowUpLine, Close} from '@rsuite/icons'
-import {Parameter, toLabeledValues, toParameterWithType} from 'fb-core'
+import {Parameter, toParameterWithType} from 'fb-core'
 import React, {Dispatch, useReducer} from 'react'
 import {Animation, Input, InputPicker} from 'rsuite'
+import {toLabeledValues} from '../../../../../annotation/utils/LabeledValue'
+import {Rows} from '../../../../../components/Containers'
 import {useTranslationPart} from '../../../../../localization/hooks'
-import {Rows} from '../../../../../ui/common/Containers'
 import {ParamAction} from '../types'
 
 interface ParameterItemProps {

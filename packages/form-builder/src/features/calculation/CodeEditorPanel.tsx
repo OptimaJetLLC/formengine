@@ -4,7 +4,7 @@ import {action} from 'mobx'
 import {useEffect, useState} from 'react'
 import {Button, ButtonGroup, Checkbox} from 'rsuite'
 import {EditableProperty} from '../../stores/BuilderStore'
-import {JsEditor} from '../ui/common/JsEditor'
+import {JsEditor} from '../components/JsEditor'
 
 const codePlaceHolder = '// enter your code here'
 

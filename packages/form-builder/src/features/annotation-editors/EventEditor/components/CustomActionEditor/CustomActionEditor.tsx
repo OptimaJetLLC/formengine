@@ -2,7 +2,7 @@ import {CustomActionDefinition, Parameter, toParameterWithType} from 'fb-core'
 import React, {useReducer, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, Col, Grid, Input, Modal} from 'rsuite'
-import {JsEditor} from '../../../../ui/common/JsEditor'
+import {JsEditor} from '../../../../components/JsEditor'
 import {ParameterList} from './components/ParameterList'
 import {ParamAction} from './types'
 

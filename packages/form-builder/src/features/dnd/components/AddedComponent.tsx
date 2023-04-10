@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
-import {initDefaultProps, useComponentData, useStore} from 'fb-core'
+import {useComponentData} from 'fb-core'
 import {observer} from 'mobx-react'
 import {ReactNode} from 'react'
+import {useMeta} from '../../../utils/useMeta'
 import {DraggableProps} from '../../ui/ComponentBar'
 import {ItemType} from '../consts'
 import {DragPreview} from './Editable/components/DragPreview'
@@ -9,14 +10,14 @@ import {useDragWithPreview} from './Editable/hooks/useDragWithPreview'
 
 export const AddedComponent = observer(({draggable = true, onAdd}: DraggableProps) => {
   const data = useComponentData()
-  const store = useStore()
-  const customPreview = store.props.view.get(data.model.type)?.customPreview
+  const meta = useMeta()
+  const customPreview = meta?.customPreview
   const View = data.model.view
 
   const element = (
     <Container onClick={() => onAdd?.(data)}>
       <Label>{data.model.name}</Label>
-      {customPreview ?? <View {...initDefaultProps(data.model)}/>}
+      {customPreview ?? <View {...data.model.defaultProps}/>}
     </Container>
   )
 

@@ -1,8 +1,8 @@
 import {Parameter} from 'fb-core'
 import {Dispatch, useRef} from 'react'
 import {Button, Modal} from 'rsuite'
+import {Box} from '../../../../../components/Containers'
 import {useTranslationPart} from '../../../../../localization/hooks'
-import {Box} from '../../../../../ui/common/Containers'
 import {ParamAction} from '../types'
 import {ParameterItem} from './ParameterItem'
 

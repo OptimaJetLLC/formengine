@@ -1,11 +1,12 @@
 import {Check} from '@rsuite/icons'
-import {toLabeledValues, useComponentData} from 'fb-core'
+import {useComponentData} from 'fb-core'
 import {useState} from 'react'
 import {IconButton} from 'rsuite'
 import {useEditor} from '../../../utils/useEditor'
+import {toLabeledValues} from '../../annotation/utils/LabeledValue'
+import {EditableTable, makeColumns, SelectCell} from '../../components/EditableTable'
+import LabeledProperty from '../../components/LabeledProperty'
 import {useTranslationPart} from '../../localization/hooks'
-import {EditableTable, makeColumns, SelectCell} from '../../ui/common/EditableTable'
-import LabeledProperty from '../../ui/common/LabeledProperty'
 import Attributes from './react-html-attributes.json'
 
 const COLUMNS = makeColumns([

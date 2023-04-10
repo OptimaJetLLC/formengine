@@ -1,13 +1,15 @@
 import styled from '@emotion/styled'
-import {Annotation, ComponentDataProvider, key} from 'fb-core'
+import {ComponentDataProvider} from 'fb-core'
 import {observer} from 'mobx-react'
 import {createElement} from 'react'
 import {Panel} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {AnnotationProvider} from '../../../../../utils/EditorContext'
+import {key, stylization} from '../../../../annotation'
 import {bySection, bySubSection, EditorMap} from '../../../../annotation-editors'
+import {Annotation} from '../../../../annotation/types/annotations/Annotation'
+import {CenteredLabel} from '../../../../components/Labels'
 import {useTranslationPart} from '../../../../localization/hooks'
-import {CenteredLabel} from '../../../common/Labels'
 import {Section, SubSection} from '../Section'
 
 interface PropertiesProps {
@@ -27,21 +29,22 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
     )
   }
 
-  const {data, model, parent} = selected
+  const {data, model, meta, parent} = selected
 
-  const current = model.properties.filter(bySection(activeTab))
+  const current = meta.properties.concat(meta.modules).filter(bySection(activeTab))
   const properties = current.filter(bySubSection(undefined))
   const additionalProperties = current.filter(bySubSection(SubSection.Additional))
-  const style = model.style.filter(bySection(activeTab)).filter(bySubSection(undefined))
+  const style = meta.css.filter(bySection(activeTab)).filter(bySubSection(undefined))
   const tooltipProps = current.filter(bySubSection(SubSection.Tooltip))
 
   return (
     <ComponentDataProvider value={{key: data.key, componentStore: data, model, parentStore: parent?.data}}>
       <Container>
         <PropertiesList>
-          <Property annotation={key} getContext={() => ({})}/>
+          {activeTab === Section.Main && <Property annotation={key} getContext={() => ({})}/>}
           <PropertyBlock annotations={properties} context={data.props}/>
-          <PropertyBlock annotations={style} context={data.styles?.cssObject}/>
+          <PropertyBlock annotations={style} context={data.css?.object}/>
+          {activeTab === Section.Style && <Property annotation={stylization} getContext={() => ({})}/>}
         </PropertiesList>
 
         {!!tooltipProps?.length && store.viewer.tooltipType &&

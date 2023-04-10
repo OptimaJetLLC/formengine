@@ -1,6 +1,6 @@
 import {useEditor} from '../../utils/useEditor'
-import {EditableTable, makeColumns} from '../ui/common/EditableTable'
-import LabeledProperty from '../ui/common/LabeledProperty'
+import {EditableTable, makeColumns} from '../components/EditableTable'
+import LabeledProperty from '../components/LabeledProperty'
 
 const DEFAULT_COLUMNS = [{name: 'value'}, {name: 'label'}]
 

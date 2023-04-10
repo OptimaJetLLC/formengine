@@ -19,7 +19,7 @@ function getActionList(store: Store, type: string, target?: ComponentStore): Bas
     case 'common':
       return store.actions
     case 'linked':
-      if (target) return store.props.view.initModel(target).actions
+      if (target) return store.props.view.get(target.type).getActions(target)
       break
     case 'custom':
       return store.screen.props?.actions?.value as CustomActionDefinition[] | undefined

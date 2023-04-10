@@ -1,7 +1,7 @@
 import {useComponentData} from 'fb-core'
 import {observer} from 'mobx-react'
 import {useAnnotation} from '../../../../../utils/EditorContext'
-import {Rows} from '../../../../ui/common/Containers'
+import {Rows} from '../../../../components/Containers'
 import {ActionItem} from './ActionItem'
 
 export const ActionList = observer(() => {

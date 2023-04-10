@@ -45,19 +45,7 @@ For installing packages can be used usual way:
 npm i module-1 -w module-2
 ```
 
-or lerna with
-
-```shell
-npx lerna add module-1 --scope=module-2
-```
-
-Create links of packages (unused):
-
-```shell
-npm run bootstrap
-```
-
-Для публикации обновления версий, создания тега и публикация существует команда `npx lerna publish`. Но ее пока не настраивал
+Для публикации обновления версий, создания тега и публикация, гипотетически, существует команда `npx lerna publish`. Но ее пока не настраивал
 
 ## Что должно быть в итоге:
 

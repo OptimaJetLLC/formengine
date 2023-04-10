@@ -5,7 +5,7 @@ import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {BuilderTheme} from '../../../../utils/types'
-import {FaIcon} from '../../common/Icons'
+import {FaIcon} from '../../../components/Icons'
 
 const icons: Record<BuilderTheme, any> = {
   dark: faMoon,

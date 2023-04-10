@@ -1,1 +1,1 @@
-export * from './computeStylization'
+export * from './computeClassName'

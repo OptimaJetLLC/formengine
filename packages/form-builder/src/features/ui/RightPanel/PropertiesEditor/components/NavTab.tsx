@@ -5,7 +5,7 @@ import * as faSpellCheck from '@fortawesome/free-solid-svg-icons/faSpellCheck'
 import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
 import {Nav as RNav} from 'rsuite'
-import {NavIconItem} from '../../../common/NavIconItem'
+import {NavIconItem} from '../../../../components/NavIconItem'
 import {Section} from '../Section'
 
 interface NavProps {

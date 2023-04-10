@@ -1,13 +1,16 @@
-import {antdComponents} from 'builder-antd'
-import {rsErrorMessage, rsTooltip, rSuiteComponents} from 'builder-rsuite'
-import {createView} from 'fb-core'
-import {FormBuilder} from 'form-builder'
+import {BuilderView, FormBuilder} from 'form-builder'
+import {antdComponents} from 'view-antd'
+import {rsErrorMessage, rsTooltip, rSuiteComponents} from 'view-rsuite'
 import {getSampleForm} from './utils/getSampleForm'
 
 const data = {title: 'Hello! Hello!'}
 
-const components = [...rSuiteComponents, ...antdComponents]
-const view = createView(...components).withError(rsErrorMessage).withTooltip(rsTooltip)
+const components = [...rSuiteComponents, ...antdComponents].map(definer => definer.build())
+export const models = components.map(([model]) => model)
+export const metas = components.map(([_, meta]) => meta)
+const view = new BuilderView(models, metas)
+  .withErrorMeta(rsErrorMessage.build())
+  .withTooltipMeta(rsTooltip.build())
 
 const App = () => {
   return (

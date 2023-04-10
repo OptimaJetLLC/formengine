@@ -1,7 +1,7 @@
-import {PropertyAn} from 'fb-core'
 import {useEditor} from '../../utils/useEditor'
-import LabeledProperty from '../ui/common/LabeledProperty'
-import {RadioButtons} from '../ui/common/RadioButtons'
+import {PropertyAn} from '../annotation/types/annotations/PropertyAn'
+import LabeledProperty from '../components/LabeledProperty'
+import {RadioButtons} from '../components/RadioButtons'
 
 export const RadioInput = () => {
   const {value, onChange, annotation} = useEditor()

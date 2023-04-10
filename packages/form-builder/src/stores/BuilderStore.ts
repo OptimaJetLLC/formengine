@@ -1,13 +1,15 @@
-import {Annotation, ComponentProperty, ComponentStore, DropZoneProps, fbScreen, Store, treeFind, ViewMode} from 'fb-core'
+import {ComponentProperty, ComponentStore, screenModel, Store, treeFind, ViewMode} from 'fb-core'
 import {assign, cloneDeep} from 'lodash-es'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
 import {ComponentType} from 'react'
+import {Annotation} from '../features/annotation/types/annotations/Annotation'
+import {BuilderView} from '../features/define'
 import {BiDi} from '../features/localization/bidi'
 import {defaultLanguage} from '../features/localization/consts'
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../features/localization/utils'
 import {PanelPlacement} from '../features/ui/Panel'
+import {ComponentNode} from '../utils/ComponentNode'
 import {getSystemTheme} from '../utils/getSystemTheme'
-import {Node} from '../utils/Node'
 import {BuilderMode, BuilderTheme, ComponentMove, InsertPosition} from '../utils/types'
 import {uploadStringFile} from './fileUpload'
 import {kvCreateStore, kvDel, kvGet, kvKeys, kvSet} from './KeyValueStorage'
@@ -27,18 +29,18 @@ export class BuilderStore {
   landscapeMode?: boolean
   theme: BuilderTheme = getSystemTheme()
   openedPanels: PanelPlacement[] = ['left', 'right']
-  selected: Node[] = []
+  selected: ComponentNode[] = []
   language = defaultLanguage
   calculatedProperty?: EditableProperty
   formName = 'SampleForm'
   lastSaveTime = new Date()
   readonly #customStore = kvCreateStore('form-builder-store', 'form-store')
   readonly #disposer: IReactionDisposer
+  readonly view: BuilderView
 
   constructor(
     readonly viewer: Store,
     private readonly componentWrapper: ComponentType<any>,
-    private readonly dropZone?: ComponentType<DropZoneProps>
   ) {
     makeAutoObservable(this, {
       selected: observable.ref,
@@ -48,8 +50,14 @@ export class BuilderStore {
       builderMode: true,
       viewMode: true,
       openedPanels: true,
-      changeBuilderMode: action
+      changeBuilderMode: action,
+      view: false
     })
+
+    if (!(viewer.props.view instanceof BuilderView)) {
+      throw new Error(`The view prop is not instance of BuilderView`)
+    }
+    this.view = viewer.props.view
 
     onI18nInit((language: string) => {
       let foundLanguage = findLanguage(language)
@@ -61,8 +69,8 @@ export class BuilderStore {
     this.#disposer = reaction(() => this.language, onLanguageChange)
   }
 
-  get tree(): Node {
-    return new Node(this.viewer, this.viewer.screen)
+  get tree(): ComponentNode {
+    return new ComponentNode(this.viewer, this.viewer.screen)
   }
 
   get isRTL(): boolean {
@@ -85,11 +93,11 @@ export class BuilderStore {
     this.builderMode = value
     if (this.builderMode === 'builder') {
       this.viewer.props.componentWrapper = this.componentWrapper
-      this.viewer.props.dropZone = this.dropZone
+      this.viewer.isBuilderMode = true
       return
     }
     this.viewer.props.componentWrapper = undefined
-    this.viewer.props.dropZone = undefined
+    this.viewer.isBuilderMode = false
   }
 
   treeMap(store: ComponentStore, callback: (store: ComponentStore) => void) {
@@ -102,11 +110,11 @@ export class BuilderStore {
   //TODO set in provider
 
   getAllNodes() {
-    const nodes: Node[] = []
+    const nodes: ComponentNode[] = []
     getKey(this.tree)
     return nodes
 
-    function getKey(node: Node) {
+    function getKey(node: ComponentNode) {
       if (node.key) nodes.push(node)
 
       if (node.children) node.children.map(getKey)
@@ -186,7 +194,7 @@ export class BuilderStore {
   }
 
   clear() {
-    this.viewer.screen = new ComponentStore(fbScreen.name, fbScreen.type)
+    this.viewer.screen = new ComponentStore(screenModel.name, screenModel.type)
   }
 
   stringifyForm() {

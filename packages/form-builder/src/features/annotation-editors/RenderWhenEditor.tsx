@@ -2,7 +2,7 @@ import {ComponentProperty} from 'fb-core'
 import {Input} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {useAnnotation} from '../../utils/EditorContext'
-import LabeledProperty from '../ui/common/LabeledProperty'
+import LabeledProperty from '../components/LabeledProperty'
 
 export const RenderWhenEditor = () => {
   const selected = useBuilderStore().getSingleSelected()

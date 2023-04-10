@@ -1,5 +1,5 @@
-import {isProperty} from 'fb-core'
 import {useCallback, useState} from 'react'
+import {isProperty} from '../features/annotation/types/annotations/PropertyAn'
 import {useAnnotation} from './EditorContext'
 
 export const useEditor = () => {

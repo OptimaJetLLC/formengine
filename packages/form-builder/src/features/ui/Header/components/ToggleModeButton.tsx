@@ -4,9 +4,9 @@ import * as faPlay from '@fortawesome/free-solid-svg-icons/faPlay'
 import {observer} from 'mobx-react'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {BuilderMode} from '../../../../utils/types'
+import {SIconButton} from '../../../components/Containers'
+import {FaIcon} from '../../../components/Icons'
 import {useTranslationPart} from '../../../localization/hooks'
-import {SIconButton} from '../../common/Containers'
-import {FaIcon} from '../../common/Icons'
 
 const Modes: Record<BuilderMode, { icon: any, toggleTo: BuilderMode }> = {
   viewer: {icon: faPaintBrush, toggleTo: 'builder'},

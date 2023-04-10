@@ -4,7 +4,7 @@ import {observer} from 'mobx-react'
 import {useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {IconButton, Modal} from 'rsuite'
-import {FaIcon} from '../../common/Icons'
+import {FaIcon} from '../../../components/Icons'
 import {JsonView} from '../../JsonView'
 
 const icon = <FaIcon icon={faCode as any}/>

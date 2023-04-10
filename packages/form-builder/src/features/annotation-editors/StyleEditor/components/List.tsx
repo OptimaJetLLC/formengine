@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import {AutoComplete} from 'rsuite'
-import {compactInput} from '../../../ui/common/styles'
+import {compactInput} from '../../../components/styles'
 
 //TODO нормальную сортировку выпадающих вариантов
 const CompactCell = ({dataKey, rowIndex, value, onChange, options, ...props}: any) => {

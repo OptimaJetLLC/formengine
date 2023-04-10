@@ -1,10 +1,10 @@
 import {makeObservable, observable} from 'mobx'
 import {Subject} from 'rxjs'
 import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
-import {fbScreen} from '../features/ui/FbScreen'
+import {screenModel} from '../features/ui/screenModel'
 import {Form} from '../features/validation'
+import {ViewMode} from '../types'
 import {treeFind} from '../utils'
-import {ViewMode} from '../utils/types'
 import {ComponentStore} from './ComponentStore'
 import {StoreProps} from './StoreProps'
 
@@ -12,12 +12,14 @@ export class Store {
   readonly eventSubject = new Subject<ActionEventArgs>()
   readonly form = new Form(this)
 
-  screen = new ComponentStore(fbScreen.name, fbScreen.type)
+  screen = new ComponentStore(screenModel.name, screenModel.type)
+  viewMode: ViewMode = 'desktop'
 
-  constructor(public props: StoreProps, public actions: ActionDefinition[] = []) {
+  constructor(public props: StoreProps, public actions: ActionDefinition[] = [], public isBuilderMode: boolean = false) {
     makeObservable(this, {
       props: observable,
       screen: observable,
+      viewMode: true,
     })
   }
 
@@ -29,14 +31,6 @@ export class Store {
     const selectedTooltipType = this.tooltipType
     if (!selectedTooltipType) return
     return this.props.view.getTooltipComponent(selectedTooltipType)
-  }
-
-  get isBuilderMode() {
-    return !!this.props.dropZone
-  }
-
-  get viewMode(): ViewMode {
-    return this.props.viewMode ?? 'desktop'
   }
 
   getComponent(key: string) {

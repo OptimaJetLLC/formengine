@@ -27,11 +27,9 @@ export const TooltipWrapper = namedObserver('TooltipWrapper', ({children}: Toolt
     tooltipComponentStore.props[k] = wrappedComponentStore.tooltipProps![k]
   })
 
-  const tooltipModel = tooltipDefinition.init(tooltipComponentStore)
-
   const tooltipData = {
     componentStore: tooltipComponentStore,
-    model: tooltipModel,
+    model: tooltipDefinition,
     parentStore: wrappedComponentData.parentStore,
     field: undefined
   } as ComponentData

@@ -1,24 +1,28 @@
 import {autorun, makeAutoObservable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {Store} from '../../../stores/Store'
-import {Annotation} from '../../annotation/types/annotations/Annotation'
+import {Model} from '../../define'
 import {parseSchema} from './parseSchema'
 
 export class Field {
   error?: string
   touched = false
   value: unknown = undefined
+  valued: string
 
   constructor(
     readonly store: Store,
     readonly key: string,
-    readonly valuedAn: Annotation,
+    readonly model: Model,
     readonly valueCalculator: (component: ComponentStore, key: string) => [boolean, any?]
   ) {
+    if (!model.valued) throw `'model.valued' is falsy`
+    this.valued = model.valued
     makeAutoObservable(this, {
-      valuedAn: false,
+      model: false,
       valueCalculator: false
     })
+
     const disposer = autorun(() => {
       const component = this.store.findComponent(this.key)
       if (!component) {
@@ -27,7 +31,7 @@ export class Field {
         return
       }
 
-      const [calculated, value] = this.valueCalculator(component, this.valuedAn.key)
+      const [calculated, value] = this.valueCalculator(component, this.valued)
       if (calculated) {
         this.value = value
         return
@@ -40,11 +44,11 @@ export class Field {
   get schema() {
     // if data contains a component that is not on the form
     if (!this.store.findComponent(this.key)) return
-    return parseSchema(this.componentStore.schema, this.valuedAn)
+    return parseSchema(this.componentStore.schema)
   }
 
   get initialValue() {
-    return this.componentStore.props[this.valuedAn.key]?.value ?? this.valuedAn.schema?.getDefault()
+    return this.componentStore.props[this.valued]?.value ?? this.model.defaultProps?.[this.valued]
   }
 
   get componentStore() {
@@ -66,7 +70,7 @@ export class Field {
 
   validate() {
     this.schema?.validate(this.value)
-      .then(value => {
+      .then(() => {
         return this.error = undefined
       })
       .catch(reason => {

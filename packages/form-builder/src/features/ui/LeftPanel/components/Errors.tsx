@@ -1,7 +1,7 @@
 import {useStore} from 'fb-core'
 import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
-import {Rows} from '../../common/Containers'
+import {Rows} from '../../../components/Containers'
 
 const Errors = observer((props: any) => {
   const store = useStore()

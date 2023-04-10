@@ -1,0 +1,17 @@
+{
+    "name": "view-antd",
+    "version": "0.0.0",
+    "main": "src/index.ts",
+    "type": "module",
+    "description": "OptimaJet Form Builder Components - Ant Design",
+    "license": "ISC",
+    "scripts": {
+        "build": "vite build"
+    },
+    "dependencies": {
+        "form-builder": "*"
+    },
+    "peerDependencies": {
+
+    }
+}

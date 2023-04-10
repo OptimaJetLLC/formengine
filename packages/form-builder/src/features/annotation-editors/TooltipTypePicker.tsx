@@ -4,7 +4,7 @@ import {startCase} from 'lodash-es'
 import {InputPicker} from 'rsuite'
 import {ItemDataType} from 'rsuite/cjs/@types/common'
 import {useEditor} from '../../utils/useEditor'
-import LabeledProperty from '../ui/common/LabeledProperty'
+import LabeledProperty from '../components/LabeledProperty'
 
 export const TooltipTypePicker = () => {
   const {value, onChange, annotation, onRemove} = useEditor()

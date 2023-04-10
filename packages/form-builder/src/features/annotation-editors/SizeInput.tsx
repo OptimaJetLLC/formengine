@@ -1,9 +1,9 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {toLabeledValues} from 'fb-core'
 import {Input, InputNumber, InputPicker} from 'rsuite'
 import {useEditor} from '../../utils/useEditor'
-import LabeledProperty from '../ui/common/LabeledProperty'
+import {toLabeledValues} from '../annotation/utils/LabeledValue'
+import LabeledProperty from '../components/LabeledProperty'
 
 type InputValue = string | number;
 export const OtherUnit = 'other'

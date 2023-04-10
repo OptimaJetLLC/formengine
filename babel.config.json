@@ -1,5 +1,0 @@
-{
-  "only": ["**/packages/**/src"],
-  "ignore": ["**/node_modules/**"],
-  "plugins": [["@emotion/babel-plugin", { "labelFormat": "[filename]_[local]" }]]
-}

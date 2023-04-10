@@ -1,6 +1,6 @@
 import {Parameter} from 'fb-core'
 import {observer} from 'mobx-react'
-import {LabeledInput} from '../../../../../../../../ui/common/Containers'
+import {LabeledInput} from '../../../../../../../../components/Containers'
 import {extractArgumentData, getArgumentInputByType} from './utils'
 
 interface ActionArgumentProps {

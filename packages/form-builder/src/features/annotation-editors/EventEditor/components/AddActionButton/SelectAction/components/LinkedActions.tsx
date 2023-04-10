@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {ActionData} from 'fb-core'
+import {ActionData, emptyComponentStore} from 'fb-core'
 import {entries} from 'lodash-es'
 import React from 'react'
 import {Dropdown} from 'rsuite'
@@ -18,7 +18,7 @@ export const LinkedActions = ({onSelect}: { onSelect: (action: ActionData) => vo
               nodes.map((node) => (
                 <Dropdown.Menu key={node.key} title={node.key}>
                   {
-                    node.model.actions?.map((action) => {
+                    node.model.getActions(emptyComponentStore)?.map((action) => {
                       const actionData: ActionData = {target: node.data.key, name: action.name, type: 'linked'}
                       return (
                         <Dropdown.Item

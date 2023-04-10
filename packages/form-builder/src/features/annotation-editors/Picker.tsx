@@ -1,9 +1,9 @@
 import styled from '@emotion/styled'
-import {PropertyAn} from 'fb-core'
 import {isUndefined} from 'lodash-es'
 import {InputPicker} from 'rsuite'
 import {useEditor} from '../../utils/useEditor'
-import LabeledProperty from '../ui/common/LabeledProperty'
+import {PropertyAn} from '../annotation/types/annotations/PropertyAn'
+import LabeledProperty from '../components/LabeledProperty'
 
 const addCustomValue = ({data}: PropertyAn, value: string) => {
   if (isUndefined(value)) {

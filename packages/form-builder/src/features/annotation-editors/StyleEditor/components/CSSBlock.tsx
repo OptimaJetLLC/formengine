@@ -25,8 +25,8 @@ const CSSBlock = observer(() => {
     if (ref.current) autosize(ref.current)
   }, [ref.current])
 
-  const styleValue = componentStore.styles?.[device] ?? ''
-  const handleChange = (value: string) => componentStore.styles![device] = value
+  const styleValue = componentStore.css?.[device] ?? ''
+  const handleChange = (value: string) => componentStore.css![device] = value
 
   return (
     <div>

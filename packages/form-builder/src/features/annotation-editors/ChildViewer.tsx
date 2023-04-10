@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {ComponentStore, useComponentData} from 'fb-core'
 import {useEditor} from '../../utils/useEditor'
-import LabeledProperty from '../ui/common/LabeledProperty'
+import LabeledProperty from '../components/LabeledProperty'
 
 export const ChildViewer = () => {
   const {annotation} = useEditor()

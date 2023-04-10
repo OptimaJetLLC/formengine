@@ -1,7 +1,7 @@
 import {computed, makeAutoObservable, observable} from 'mobx'
 import {ActionData, EventName} from '../features/event'
 import {HtmlAttribute} from '../features/html-attributes'
-import {Styles} from '../features/style/types'
+import {Css} from '../features/style/types'
 import {ValidationSchema} from '../features/validation/types'
 
 export interface ComponentProperty {
@@ -14,13 +14,14 @@ export class ComponentStore {
   key: string = ''
   type: string = ''
   props: Record<string, ComponentProperty> = {} //TODO do nullable
+  css?: Css
   events?: Record<EventName, ActionData[]>
-  styles?: Styles
-  htmlAttributes?: HtmlAttribute[]
-  tooltipProps?: Record<string, ComponentProperty>
   children?: ComponentStore[]
 
   schema?: ValidationSchema
+
+  htmlAttributes?: HtmlAttribute[]
+  tooltipProps?: Record<string, ComponentProperty>
 
   /*rules = {
     visible: [],
@@ -44,6 +45,7 @@ export class ComponentStore {
       props: observable.deep,
       isRoot: computed,
       isContainer: computed,
+      children: observable,
     })
   }
 

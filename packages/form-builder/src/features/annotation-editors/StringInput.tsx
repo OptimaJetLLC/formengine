@@ -1,6 +1,6 @@
 import {Input} from 'rsuite'
 import {useEditor} from '../../utils/useEditor'
-import LabeledProperty from '../ui/common/LabeledProperty'
+import LabeledProperty from '../components/LabeledProperty'
 
 export const StringInput = () => {
   const {value, onChange, annotation} = useEditor()

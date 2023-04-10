@@ -20,7 +20,7 @@ export const ComponentTreeItem = namedObserver('ComponentTreeItem', ({componentS
     key: componentStore.key,
     componentStore,
     parentStore,
-    model: store.props.view.initModel(componentStore),
+    model: store.props.view.get(componentStore.type),
     get field() {
       return store.form.get(componentStore.key)
     },

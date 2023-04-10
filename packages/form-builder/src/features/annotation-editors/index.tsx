@@ -1,5 +1,5 @@
-import {Annotation} from 'fb-core'
 import {ComponentType} from 'react'
+import {Annotation} from '../annotation/types/annotations/Annotation'
 import {Section, SubSection} from '../ui/RightPanel/PropertiesEditor/Section'
 import {ArrayInput} from './ArrayInput'
 import AttributesInput from './AttributesInput'
@@ -44,7 +44,6 @@ export const EditorMap: Record<string, ComponentType> = {
 }
 
 const SectionMap: Record<string, Section> = {
-  stylization: Section.Style,
   validation: Section.Rules,
   event: Section.Actions,
 }

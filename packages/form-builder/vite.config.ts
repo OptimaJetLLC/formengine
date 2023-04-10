@@ -1,9 +1,9 @@
-import react from '@vitejs/plugin-react'
 import path from 'path'
 import {fileURLToPath} from 'url'
 import {defineConfig} from 'vite'
 
 import base from '../../vite.config'
+import {peerDependencies} from './package.json'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -11,20 +11,14 @@ const __dirname = path.dirname(__filename)
 export default defineConfig(({command}) => ({
   ...base,
   build: {
-    sourcemap: true,
+    sourcemap: false,
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'form-builder',
-      formats: ['es', 'umd'],
+      formats: ['es'],
       fileName: 'index'
     },
     rollupOptions: {
-      external: ['react'],
-      output: {
-        globals: {
-          'react': 'React',
-        }
-      }
+      external: Object.keys(peerDependencies),
     }
   },
 }))

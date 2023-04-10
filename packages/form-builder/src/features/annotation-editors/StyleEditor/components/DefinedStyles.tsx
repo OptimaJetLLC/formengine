@@ -1,12 +1,12 @@
-import {LabeledPre} from '../../../ui/common/LabeledPre'
-import {StyleAnnotationProps} from '../StyleAnnotationProps'
+import {useComponentData} from 'fb-core'
+import {LabeledPre} from '../../../components/LabeledPre'
 
-export const DefinedStyles = ({annotation}: StyleAnnotationProps) => {
+export const DefinedStyles = () => {
+  const data = useComponentData()
   return (
     <>
-      <LabeledPre code="style.inlineStyles" value={JSON.stringify(annotation.inline, null, ' ')}/>
-      <LabeledPre code="style.cssObject" value={JSON.stringify(annotation.css?.object, null, ' ')}/>
-      <LabeledPre code="style.cssString" value={annotation.css?.string}/>
+      <LabeledPre code="style.cssObject" value={JSON.stringify(data.model.css?.object, null, ' ')}/>
+      <LabeledPre code="style.cssString" value={data.model.css?.string}/>
     </>
   )
 }

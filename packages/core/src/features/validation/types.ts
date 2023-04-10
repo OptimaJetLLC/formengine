@@ -4,7 +4,10 @@ export type Rules<T> = {
   [key in keyof Partial<T>]: Rule<T>
 }
 
+export type SchemaType = 'string' | 'number' | 'boolean' | 'date' | 'object' | 'array'
+
 export type ValidationSchema = {
+  type: SchemaType
   autoTransform?: boolean
   rules: string[]
   data?: Record<string, any[]>

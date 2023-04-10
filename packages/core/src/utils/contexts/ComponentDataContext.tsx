@@ -7,7 +7,7 @@ export type ComponentData = {
   readonly key: string,
   readonly parentStore?: ComponentStore,
   readonly componentStore: ComponentStore,
-  readonly model: Model<any>,
+  readonly model: Model,
   readonly field?: Field,
 }
 

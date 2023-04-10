@@ -1,6 +1,6 @@
 {
   "key": "screen 1",
-  "type": "FbScreen",
+  "type": "Screen",
   "props": {
     "actions": {
       "value": [
@@ -15,8 +15,7 @@
     {
       "key": "AntButton 1",
       "type": "AntButton",
-      "props": {},
-      "style": {}
+      "props": {}
     },
     {
       "key": "RsStaticContent 1",
@@ -40,8 +39,8 @@
       "type": "RsImage",
       "props": {
       },
-      "styles": {
-        "cssObject": {
+      "css": {
+        "object": {
           "width": "100%",
           "height": "40px"
         }
@@ -68,8 +67,8 @@
           }
         ]
       },
-      "styles": {
-        "cssObject": {}
+      "css": {
+        "object": {}
       }
     },
     {
@@ -86,8 +85,8 @@
           "fnSource": "return `${form.data.title} ${form.data.checkbox} ${new Date().toISOString()}`"
         }
       },
-      "styles": {
-        "cssObject": {}
+      "css": {
+        "object": {}
       }
     },
     {
@@ -98,8 +97,8 @@
           "value": "Application Form"
         }
       },
-      "styles": {
-        "cssObject": {
+      "css": {
+        "object": {
           "textAlign": "center"
         }
       }

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {Checkbox} from 'rsuite'
 import {useEditor} from '../../utils/useEditor'
-import LabeledProperty from '../ui/common/LabeledProperty'
+import LabeledProperty from '../components/LabeledProperty'
 
 export const BooleanInput = () => {
   const {value, onChange, annotation} = useEditor()

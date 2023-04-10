@@ -1,4 +1,5 @@
-import {Annotation, createNamedContext} from 'fb-core'
+import {createNamedContext} from 'fb-core'
+import {Annotation} from '../features/annotation/types/annotations/Annotation'
 
 type AnnotationContext = {
   annotation: Annotation

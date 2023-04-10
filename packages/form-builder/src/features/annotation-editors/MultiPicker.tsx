@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
-import {PropertyAn} from 'fb-core'
 import {startCase} from 'lodash-es'
 import {TagPicker} from 'rsuite'
 import {ItemDataType} from 'rsuite/cjs/@types/common'
 import {useEditor} from '../../utils/useEditor'
-import LabeledProperty from '../ui/common/LabeledProperty'
+import {PropertyAn} from '../annotation/types/annotations/PropertyAn'
+import LabeledProperty from '../components/LabeledProperty'
 
 //TODO add custom items
 const prepareData = ({data}: PropertyAn, values: string[]) => {

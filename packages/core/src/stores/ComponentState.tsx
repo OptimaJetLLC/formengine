@@ -3,41 +3,40 @@ import {ComponentType} from 'react'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
 import {computeEvents} from '../features/event'
 import {getHtmlAttributes} from '../features/html-attributes'
-import {computeStylization} from '../features/style'
+import {computeClassName} from '../features/style'
 import {getSubstitutedValue} from '../features/substitution'
+import {OverrideRef} from '../features/ui/OverridesContext'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {getChildren} from '../utils/getChildren'
-import {initDefaultProps} from '../utils/initDefaultProps'
 import {Store} from './Store'
 
 export class ComponentState {
-  readonly defaultProps
-
   constructor(
     readonly data: ComponentData,
     readonly store: Store,
-    readonly componentTreeItem: ComponentType<any>
+    readonly componentTreeItem: ComponentType<any>,
+    readonly overrides?: OverrideRef,
   ) {
     makeAutoObservable(this)
-    this.defaultProps = initDefaultProps(data.model)
   }
 
-  get get() {
+  get get(): Record<string, any> {
     const propsWithoutChildren = Object.assign(
       {key: this.data.componentStore.key},
-      this.defaultProps,
+      this.data.model.defaultProps,
       this.calculatedProps,
       this.substitutedValue,
-      this.stylization,
+      this.className,
       this.value,
       this.events,
       this.htmlAttributes,
+      this.overrides?.current,
     )
     return Object.assign(propsWithoutChildren, this.children(propsWithoutChildren))
   }
 
   get value() {
-    if (this.data.field) return {[this.data.field.valuedAn.key]: this.data.field.value}
+    if (this.data.field) return {[this.data.field.valued]: this.data.field.value}
   }
 
   get calculatedProps() {
@@ -52,8 +51,9 @@ export class ComponentState {
     return getSubstitutedValue(this.data.componentStore.props, this.store)
   }
 
-  get stylization() {
-    return computeStylization(this, this.data, this.store.viewMode)
+  get className() {
+    const className = computeClassName(this, this.data, this.store.viewMode)
+    return {className}
   }
 
   get htmlAttributes() {

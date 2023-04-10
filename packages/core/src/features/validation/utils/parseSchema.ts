@@ -1,22 +1,20 @@
-import {Annotation} from '../../annotation/types/annotations/Annotation'
-import {SchemaCtor, ValidationSchema} from '../types'
-import {getSchemaRules} from './getSchemaRules'
+import {ValidationSchema} from '../types'
+import {getSchemaCtor, getSchemaRules} from './consts'
 
-export function parseSchema(validationSchema?: ValidationSchema, valuedAn?: Annotation) {
-  if (!validationSchema || !valuedAn?.schema?.constructor) return
+export function parseSchema(schema?: ValidationSchema) {
+  if (!schema) return
 
-  const Schema = valuedAn?.schema?.constructor as SchemaCtor
-  const rules = getSchemaRules(Schema)
-  let schema = new Schema()
+  const schemaCtor = getSchemaCtor(schema.type)
+  const rules = getSchemaRules(schemaCtor)
+  let schemaIns = new schemaCtor()
 
-  validationSchema.rules.forEach((key: string) => {
+  schema.rules.forEach((key: string) => {
     const desc = rules?.[key]
-    const args = validationSchema.data?.[key] ?? []
+    const args = schema.data?.[key] ?? []
     if (!desc) return
 
-    schema = desc.apply.call(undefined, schema, ...args)
+    schemaIns = desc.apply.call(null, schemaIns, ...args)
   })
 
-  return schema
+  return schemaIns
 }
-

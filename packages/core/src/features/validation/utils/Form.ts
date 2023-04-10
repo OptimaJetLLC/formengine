@@ -17,7 +17,7 @@ export class Form {
   }
 
   get data() {
-    let result: Record<string, unknown> = {}
+    const result: Record<string, unknown> = {}
     for (let [key, field] of this.fields) {
       result[key] = field.value
     }
@@ -36,12 +36,12 @@ export class Form {
     return this.fields.get(key)
   }
 
-  set(componentStore: ComponentStore, model: Model<any>) {
-    if (!model.valuedAn) return
+  set(componentStore: ComponentStore, model: Model) {
+    if (!model.valued) return
 
     let field = this.fields.get(componentStore.key)
     if (!field) {
-      field = new Field(this.store, componentStore.key, model.valuedAn, this.#updateFnValue)
+      field = new Field(this.store, componentStore.key, model, this.#updateFnValue)
       this.fields.set(componentStore.key, field)
     }
     return field

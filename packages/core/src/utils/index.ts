@@ -1,5 +1,6 @@
 import {observer} from 'mobx-react'
 import {IReactComponent} from 'mobx-react/dist/types/IReactComponent'
+import {ComponentStore} from '../stores/ComponentStore'
 
 export function isFunction(fn: any): fn is Function {
   return typeof fn === 'function'
@@ -31,3 +32,5 @@ export function namedObserver(displayName: string, component: IReactComponent) {
   observerComponent.displayName = displayName
   return observerComponent
 }
+
+export const emptyComponentStore = new ComponentStore('', '')

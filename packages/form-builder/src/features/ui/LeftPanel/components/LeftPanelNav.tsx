@@ -4,7 +4,7 @@ import {namedObserver} from 'fb-core'
 import {useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Nav as RNav} from 'rsuite'
-import {NavIconItem} from '../../common/NavIconItem'
+import {NavIconItem} from '../../../components/NavIconItem'
 import {FormList} from './FormList'
 import {Tree} from './Tree'
 

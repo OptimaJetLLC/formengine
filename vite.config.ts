@@ -1,4 +1,4 @@
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react-swc'
 import path from 'path'
 import {fileURLToPath} from 'url'
 import {defineConfig} from 'vite'
@@ -8,11 +8,8 @@ const __dirname = path.dirname(__filename)
 
 export default defineConfig(({command}) => ({
   plugins: [react({
-    jsxImportSource: "@emotion/react",
-    babel: {
-      configFile: true,
-      rootMode: "upward",
-    },
+    jsxImportSource: '@emotion/react',
+    plugins: [['@swc/plugin-emotion', {labelFormat: '[filename]_[local]'}]]
   })],
   test: {
     globals: true,

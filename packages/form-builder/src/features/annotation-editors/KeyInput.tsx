@@ -2,7 +2,7 @@ import {useComponentData} from 'fb-core'
 import {Input} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {useEditor} from '../../utils/useEditor'
-import LabeledProperty from '../ui/common/LabeledProperty'
+import LabeledProperty from '../components/LabeledProperty'
 
 const KeyInput = () => {
   const {annotation} = useEditor()
