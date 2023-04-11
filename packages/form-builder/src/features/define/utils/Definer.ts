@@ -4,6 +4,7 @@ import {ComponentType, ReactNode} from 'react'
 import {Annotation} from '../../annotation/types/annotations/Annotation'
 import {modules} from '../constants'
 import {Annotations, DefinerData} from '../types'
+import {BuilderComponent} from './BuilderComponent'
 import {Meta} from './Meta'
 import {toArray} from './toArray'
 
@@ -27,6 +28,8 @@ export class Definer<T extends object> {
 
   name = (name: string) => this.#updateWith({name})
 
+  category = (category: string) => this.#updateWith({category})
+
   type = (type: string) => {
     this.data.view.displayName = type
     return this
@@ -47,7 +50,7 @@ export class Definer<T extends object> {
     return this.data.view.displayName || this.data.view.name
   }
 
-  build() {
+  build(): BuilderComponent {
     const propAns = toArray(this.data.properties)
     const cssAns = toArray(this.data.cssObject, 'Style')
     const valuedAn = propAns.find(an => Boolean(an.valued)) ?? propAns.find(an => an.name === 'value')
@@ -73,7 +76,7 @@ export class Definer<T extends object> {
       valuedAn,
     )
 
-    return [model, meta] as const
+    return {model, meta, category: this.data.category} as const
   }
 
   #updateWith(opts: Partial<DefinerData<T>>): Definer<T> {

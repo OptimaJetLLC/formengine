@@ -11,6 +11,7 @@ export type Annotations<T extends object> =
 export type DefinerData<T extends object> = {
   readonly view: ComponentType<T>,
   name?: string,
+  category?: string,
   cssString?: string,
   cssObject?: Annotations<CSSObject>,
   readonly actionsInitializer?: ActionsInitializer,

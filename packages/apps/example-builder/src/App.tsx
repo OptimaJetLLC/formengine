@@ -6,9 +6,7 @@ import {getSampleForm} from './utils/getSampleForm'
 const data = {title: 'Hello! Hello!'}
 
 const components = [...rSuiteComponents, ...antdComponents].map(definer => definer.build())
-export const models = components.map(([model]) => model)
-export const metas = components.map(([_, meta]) => meta)
-const view = new BuilderView(models, metas)
+const view = new BuilderView(components)
   .withErrorMeta(rsErrorMessage.build())
   .withTooltipMeta(rsTooltip.build())
 

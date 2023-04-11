@@ -28,8 +28,7 @@
   "toolbar": {
     "elements": "Элементы",
     "notFound": "Не найдено",
-    "reset": "Сбросить",
-    "baseControls": "Базовые компоненты"
+    "reset": "Сбросить"
   },
   "errorsPanel": {
     "data": "Данные",

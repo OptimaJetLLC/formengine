@@ -1,6 +1,7 @@
-import {Model, View} from 'fb-core'
+import {View} from 'fb-core'
 import {Annotation} from '../../annotation/types/annotations/Annotation'
 import {screenMeta} from '../../components/screenMeta'
+import {BuilderComponent} from './BuilderComponent'
 import {Meta} from './Meta'
 
 export class BuilderView extends View {
@@ -17,22 +18,23 @@ export class BuilderView extends View {
     return this.#tooltipsMeta.get(name)?.properties
   }
 
-  withTooltipMeta(tuple: Readonly<[Model, Meta]>): this {
-    const [model, meta] = tuple
+  withTooltipMeta(builderComponent: BuilderComponent): this {
+    const {model, meta} = builderComponent
     super.withTooltip(model)
     this.#tooltipsMeta.set(model.type, meta)
     return this
   }
 
-  withErrorMeta(tuple: Readonly<[Model, Meta]>): this {
-    const [model, meta] = tuple
+  withErrorMeta(builderComponent: BuilderComponent): this {
+    const {model, meta} = builderComponent
     super.withError(model)
     //this.#errorMeta.set(model.type, meta)
     return this
   }
 
-  constructor(models: Model[], metas: Meta[]) {
-    super(models)
+  constructor(public builderComponents: BuilderComponent[]) {
+    super(builderComponents.map(({model}) => model))
+    const metas = builderComponents.map(({meta}) => meta)
     this.#metaMap.set(screenMeta.type, screenMeta)
 
     metas.forEach(meta => {

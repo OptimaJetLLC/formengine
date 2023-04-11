@@ -1,5 +1,5 @@
 export {createView} from 'fb-core'
-export {BuilderView, type Definer} from './features/define'
+export {BuilderView, type Definer, type BuilderComponent} from './features/define'
 
 export type {WrapperProps} from 'fb-core'
 

@@ -96,8 +96,7 @@
   "toolbar": {
     "elements": "Elements",
     "notFound": "Not found",
-    "reset": "Reset",
-    "baseControls": "Base controls"
+    "reset": "Reset"
   },
   "errorsPanel": {
     "data": "Data",

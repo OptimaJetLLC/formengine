@@ -13,8 +13,7 @@ definitions.forEach(c => {
 })
 
 const components = definitions.map(def => def.build())
-export const models = components.map(([model]) => model)
-export const metas = components.map(([_, meta]) => meta)
+export const models = components.map(({model}) => model)
 
-export const builderView = new BuilderView(models, metas)
+export const builderView = new BuilderView(components)
 export const view = createView(...models)

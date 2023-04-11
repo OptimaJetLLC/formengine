@@ -11,13 +11,13 @@ definitions.forEach(c => {
   if (!c.getType().startsWith(prefix)) {
     throw new Error(`The component type must start with '${prefix}', type: '${c.type}'`)
   }
+  c.category('Ant Design components')
 })
 
 export const antdComponents: Definer<any>[] = definitions
 
 const components = antdComponents.map(def => def.build())
-export const models = components.map(([model]) => model)
-export const metas = components.map(([_, meta]) => meta)
+export const models = components.map(({model}) => model)
 
-export const builderView = new BuilderView(models, metas)
+export const builderView = new BuilderView(components)
 export const view = createView(...models)
