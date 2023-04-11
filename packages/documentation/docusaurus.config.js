@@ -135,6 +135,21 @@ const config = {
         // ```
       },
     ],
+    [
+      'docusaurus-plugin-typedoc',
+      {
+        entryPoints: ['../core', '../form-builder', '../form-viewer'],
+        entryPointStrategy: 'packages',
+        tsconfig: '../../tsconfig.json',
+        out: 'api-reference',
+        sidebar: {
+          categoryLabel: 'API Reference',
+          collapsed: false,
+          position: 10,
+          fullNames: false,
+        },
+      },
+    ],
   ],
 };
 
