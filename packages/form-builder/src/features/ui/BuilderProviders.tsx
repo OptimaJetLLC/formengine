@@ -1,5 +1,5 @@
 import {DefaultActions, FormViewerProps, Store, StoreProvider} from 'fb-core'
-import {ReactNode, useEffect, useMemo, useRef} from 'react'
+import {ReactNode, useEffect, useMemo} from 'react'
 import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import {BuilderStore} from '../../stores/BuilderStore'
@@ -16,14 +16,7 @@ interface BuilderProvidersProps {
 }
 
 export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {
-  const callCount = useRef(0)
-
-  const store = useMemo(() => {
-    const {getForm, ...otherProps} = props
-    const cachedGetForm = () => callCount.current++ <= 0 && getForm ? getForm() : store.screen
-    const storeProps: FormViewerProps = {getForm: cachedGetForm, ...otherProps}
-    return new Store(storeProps, DefaultActions)
-  }, [])
+  const store = useMemo(() => new Store(props, DefaultActions), [])
 
   const buildStore = useMemo(() => {
     const builderStore = new BuilderStore(store, Editable)
