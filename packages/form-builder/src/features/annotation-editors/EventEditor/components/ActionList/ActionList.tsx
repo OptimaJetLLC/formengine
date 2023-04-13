@@ -11,7 +11,7 @@ export const ActionList = observer(() => {
   if (!actions) return null
 
   /*TODO Draggable List*/
-  return <Rows my={0}>
+  return <Rows>
     {actions.map((action, index) => (
       <ActionItem key={action.name} eventName={eventName} index={index} data={action}/>)
     )}

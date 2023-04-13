@@ -5,7 +5,7 @@ import {t} from 'i18next'
 import {observer} from 'mobx-react'
 import {useReducer} from 'react'
 import {Animation, Button} from 'rsuite'
-import {Box, Rows} from '../../../../../../../components/Containers'
+import {Rows} from '../../../../../../../components/Containers'
 import {useActionData} from '../../contexts/ActionDataContext'
 import {ArgumentItem} from './ArgumentItem'
 import {useClearableArguments} from './hooks/useClearableArguments'
@@ -23,14 +23,12 @@ export const ArgumentList = observer(() => {
   return (
     <>
       <Animation.Collapse in={show}>
-        <Box px={10}>
-          <div>
-            <Rows margin={1} style={{marginTop: 8}}>
-              {action.params.map((arg, index) =>
-                <ArgumentItem key={index} data={arg}/>)}
-            </Rows>
-          </div>
-        </Box>
+        <div>
+          <Rows gap={1} style={{marginTop: 8, paddingInline: 10}}>
+            {action.params.map((arg, index) =>
+              <ArgumentItem key={index} data={arg}/>)}
+          </Rows>
+        </div>
       </Animation.Collapse>
 
       <ExpandButton block onClick={toggleShow}>

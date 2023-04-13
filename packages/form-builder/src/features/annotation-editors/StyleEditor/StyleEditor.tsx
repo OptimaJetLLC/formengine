@@ -15,7 +15,7 @@ export const StyleEditor = () => {
   if (!componentStore.css) return null
 
   return (
-    <Rows ml={'5px'} my={0}>
+    <Rows style={{marginLeft: 5}}>
       <StandardStyles/>
       <CSSBlock/>
       <DefinedStyles/>

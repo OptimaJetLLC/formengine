@@ -1,7 +1,7 @@
 import {Parameter} from 'fb-core'
 import {Dispatch, useRef} from 'react'
 import {Button, Modal} from 'rsuite'
-import {Box} from '../../../../../components/Containers'
+import {Rows} from '../../../../../components/Containers'
 import {useTranslationPart} from '../../../../../localization/hooks'
 import {ParamAction} from '../types'
 import {ParameterItem} from './ParameterItem'
@@ -20,9 +20,9 @@ export const ParameterList = ({value, dispatch}: ParameterPanelProps) => {
     <div>
       <Modal.Title>{t('parameters')}</Modal.Title>
 
-      <Box px={10}>
+      <Rows style={{paddingBlock: 10}}>
         {value?.map((param, index) => <ParameterItem key={index} index={index} value={param} dispatch={dispatch}/>)}
-      </Box>
+      </Rows>
 
       <Button block children={t('add')} onClick={handleCreateParam}/>
     </div>

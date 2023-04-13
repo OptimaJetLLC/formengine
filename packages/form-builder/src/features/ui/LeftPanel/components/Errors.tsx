@@ -8,7 +8,7 @@ const Errors = observer((props: any) => {
   const {t} = useTranslation()
   const {errors, data} = store.form
 
-  return (<Rows {...props} margin={10}>
+  return (<Rows {...props} gap={10}>
       <div>
         <h6>{t('errorsPanel.data')}</h6>
         {prettyPrint(data)}
