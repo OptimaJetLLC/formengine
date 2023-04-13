@@ -14,6 +14,7 @@ const App = () => {
   return (
     <FormBuilder
       getForm={getSampleForm}
+      formName={'SampleForm'}
       view={view}
       data={data}
       /*event={(stream) => {
