@@ -3,6 +3,9 @@ import {assign} from 'lodash-es'
 import SampleForm from '../../SampleForm.json'
 
 //TODO can stringify and parse to form
-export function getSampleForm() {
-  return assign(new ComponentStore('', ''), SampleForm)
+export function getSampleForm(name?: string): ComponentStore | Promise<ComponentStore> {
+  if (name === 'SampleForm') return assign(new ComponentStore('', ''), SampleForm)
+  return new Promise((_, reject) => {
+    reject(`Failed to load form '${name}'`)
+  })
 }
