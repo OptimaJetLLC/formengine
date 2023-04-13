@@ -20,11 +20,11 @@ export const LeftPanelNav = namedObserver('LeftPanelNav', () => {
   const {t} = useTranslation()
   const title = (key: string) => t('leftPanel.sectionName.' + key)
 
-  return <div style={{overflowY: 'auto'}}>
+  return <>
     <RNav appearance="subtle" activeKey={activeTab} onSelect={setActiveTab} style={{marginBottom: 10}}>
       {NavIconItem('tree', title('tree'), faSitemap, {color: 'var(--rs-navs-selected)'})}
       {NavIconItem('forms', title('forms'), faList, {color: '#f67f1f'})}
     </RNav>
     {leftPanelTabs[activeTab]}
-  </div>
+  </>
 })

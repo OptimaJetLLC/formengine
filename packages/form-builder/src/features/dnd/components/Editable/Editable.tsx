@@ -1,4 +1,3 @@
-import {cx} from '@emotion/css'
 import {OverridesProvider, WrapperProps} from 'fb-core'
 import {observer} from 'mobx-react'
 import {useDragLayer} from 'react-dnd'
@@ -20,22 +19,19 @@ export const Editable = observer(({children}: WrapperProps) => {
 
   useEventReactions()
 
+  const toolbars = selected && !isDragging && <>
+    <Toolbar/>
+    <Resizers show={selected}/>
+  </>
+
   return (
-    <Draggable {...selectionHandlers} className={cx(selectionClassName)} viewForDragPreview={children}>
-      {
-        isTreeStruct
-          ? <TreeNode/>
-          : (
-            <OverridesProvider value={overrides}>
-              {children}
-              {selected && !isDragging &&
-                <>
-                  <Toolbar/>
-                  <Resizers show={selected}/>
-                </>
-              }
-            </OverridesProvider>
-          )
+    <Draggable {...selectionHandlers} className={!isTreeStruct && selectionClassName} viewForDragPreview={children}>
+      {isTreeStruct
+        ? <TreeNode className={selectionClassName}/>
+        : <OverridesProvider value={overrides}>
+          {children}
+          {toolbars}
+        </OverridesProvider>
       }
     </Draggable>
   )

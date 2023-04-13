@@ -42,10 +42,6 @@ export const ContentContainer = styled.div`
   &.collapsed.hideCollapsed {
     opacity: 0;
   }
-
-  & > * {
-    flex: 1;
-  }
 `
 
 export const HideButton = styled.div`

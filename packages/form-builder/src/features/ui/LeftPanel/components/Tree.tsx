@@ -14,11 +14,13 @@ const Tree = observer(() => {
   const {t} = useTranslation()
   const [currentExpandedKeys, setCurrentExpandedKeys] = useState<string[]>([])
 
-  return <Rows style={{width: '100%'}}>
+  return <Rows style={{overflow: 'hidden', flex: 1}}>
     {/*IsTreeProvider можно переоборудовать при необходимости в TreeHandler*/}
-    <IsTreeProvider value={true}>
-      <FormViewer {...store.viewer.props}/>
-    </IsTreeProvider>
+    <STreeContainer>
+      <IsTreeProvider value={true}>
+        <FormViewer {...store.viewer.props}/>
+      </IsTreeProvider>
+    </STreeContainer>
 
     <Columns>
       <SubtleIconButton
@@ -35,6 +37,11 @@ const Tree = observer(() => {
     </Columns>
   </Rows>
 })
+
+const STreeContainer = styled.div`
+  flex: 1;
+  overflow: auto;
+`
 
 const SubtleIconButton = styled(Button)`
   display: flex !important;

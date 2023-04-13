@@ -1,26 +1,40 @@
+import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faClone from '@fortawesome/free-regular-svg-icons/faClone'
 import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt'
 import {useComponentData} from 'fb-core'
 import {observer} from 'mobx-react'
-import {useCallback} from 'react'
+import {useCallback, useEffect, useRef} from 'react'
+import scrollIntoView from 'scroll-into-view-if-needed'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
+import {useIsTree} from '../../../../../utils/IsTreeContext'
 import {FaIcon} from '../../../../components/Icons'
+import {useSelection} from '../hooks/useSelection'
 import {AddButton} from './AddButton'
 
 export const Toolbar = observer(() => {
   const store = useBuilderStore()
   const data = useComponentData()
+  const [{selected}] = useSelection()
+  const ref = useRef<HTMLDivElement>(null)
 
   const onClone = useCallback(() => store.clone(data), [])
   const onRemove = useCallback(() => store.remove(data), [])
+  const isTreeStruct: boolean = useIsTree()
 
-  return <ToolbarContainer>
-    <Title>
+  useEffect(() => {
+    if (!isTreeStruct && selected && ref.current) {
+      scrollIntoView(ref.current, {scrollMode: 'if-needed'})
+    }
+  }, [selected, isTreeStruct, ref.current])
+
+  return <ToolbarContainer ref={ref} className={cx({isTreeStruct}, 'Toolbar')}>
+    {!isTreeStruct && <Title>
       {data.componentStore.key}
       <label>{` (${data.componentStore.type})`}</label>
     </Title>
+    }
     <AddButton/>
     <FaIcon onClick={onClone} icon={faClone as unknown as IconDefinition}/>
     <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition}/>
@@ -31,7 +45,11 @@ const ToolbarContainer = styled.div`
   inset: initial;
   right: 5px;
   top: -13px;
-  label: Toolbar;
+
+  &.isTreeStruct {
+    top: 8px;
+  }
+
   position: absolute;
   z-index: 11;
   color: var(--rs-btn-ghost-text);

@@ -18,6 +18,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  flex: 1;
 
   .placement-left .rs-popover {
     margin-left: -14px;

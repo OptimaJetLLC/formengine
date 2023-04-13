@@ -45,6 +45,16 @@ const Container = styled.div`
     opacity: 0.4;
   }
 
+  &.hovered {
+    outline: 2px dashed #3498ff !important;
+    cursor: pointer !important;
+  }
+
+  &.selected {
+    outline: 2px solid #3498ff !important;
+    cursor: move !important;
+  }
+
   &:not(.isRoot) {
     &.isActive.isContainer,
     .isContainer .isActive &.isContainer {

@@ -180,6 +180,7 @@ export class BuilderStore {
   remove(source: ComponentMove) {
     const index = BuilderStore.getIndexInParent(source)
     source.parentStore?.children?.splice(index, 1)
+    this.selected = this.selected.filter(({key}) => key !== source.componentStore.key)
   }
 
   unifyComponentKeys(source: ComponentStore) {

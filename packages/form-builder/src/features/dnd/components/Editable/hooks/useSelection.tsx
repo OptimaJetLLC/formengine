@@ -3,7 +3,6 @@ import {useComponentData} from 'fb-core'
 import {MouseEvent, useCallback, useMemo, useState} from 'react'
 import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
-import {hoveredClass, selectedClass} from '../../../styles'
 
 export interface SelectionState {
   hovered: boolean
@@ -13,7 +12,7 @@ export interface SelectionState {
 export interface SelectionHandlers {
   onClick: (e: MouseEvent) => void
   onMouseOver: (e: MouseEvent) => void
-  onMouseLeave: () => void
+  onMouseOut: () => void
 }
 
 export type ClassName = string
@@ -36,14 +35,14 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
     setHovered(true)
   }, [])
 
-  const onMouseLeave = useCallback(() => {
+  const onMouseOut = useCallback(() => {
     setHovered(false)
   }, [])
 
   const className = useMemo(() => (cx({
-    [hoveredClass]: hovered && !selected && !isDragging,
-    [selectedClass]: selected && !isDragging,
+    hovered: hovered && !selected && !isDragging,
+    selected: selected && !isDragging,
   })), [hovered, selected, isDragging])
 
-  return [{hovered, selected}, {onClick, onMouseOver, onMouseLeave}, className]
+  return [{hovered, selected}, {onClick, onMouseOver, onMouseOut}, className]
 }
