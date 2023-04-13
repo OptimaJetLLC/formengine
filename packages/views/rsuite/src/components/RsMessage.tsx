@@ -1,7 +1,14 @@
+import styled from '@emotion/styled'
 import {boolean, define, node, oneOf} from 'form-builder'
 import {Message} from 'rsuite'
 
-export const rsMessage = define(Message)
+const SMessage = styled(Message)`
+  .rs-message-header {
+    overflow: initial;
+  }
+`
+
+export const rsMessage = define(SMessage)
   .type('RsMessage')
   .props({
     children: node,
