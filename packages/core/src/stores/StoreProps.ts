@@ -5,8 +5,7 @@ import {ViewMode} from '../types'
 import {ComponentStore} from './ComponentStore'
 
 export interface StoreProps {
-  getForm?: (name?: string) => ComponentStore | Promise<ComponentStore>
-  formName?: string
+  getForm?: () => ComponentStore | Promise<ComponentStore>
   view: View
   actions?: ActionDefinition[]
   data?: Record<string, unknown>

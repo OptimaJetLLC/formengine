@@ -1,4 +1,3 @@
-import {assign} from 'lodash-es'
 import {makeObservable, observable} from 'mobx'
 import {Subject} from 'rxjs'
 import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
@@ -50,21 +49,5 @@ export class Store {
 
   findAction(actionData: ActionData) {
     return findAction(this, actionData)
-  }
-
-  loadForm() {
-    if (!this.props.getForm) return
-    const form = this.props.getForm(this.props.formName)
-    if (typeof (form as Promise<ComponentStore>).then === 'function') {
-      (form as Promise<ComponentStore>).then(result => {
-        this.#applyComponentStore(result)
-      })
-    } else {
-      this.#applyComponentStore(form as ComponentStore)
-    }
-  }
-
-  #applyComponentStore(componentStore: ComponentStore) {
-    this.screen = assign(new ComponentStore('', ''), componentStore)
   }
 }
