@@ -20,7 +20,8 @@ export class LocalStorageSynchronizer {
 
     const formNameKey = 'formName'
     store.formName = this.getItem<string>(formNameKey, store.formName)
-    store.loadForm(store.formName)
+    const formName = this.getItem<string>(formNameKey, store.formName)
+    store.loadForm(formName)
 
     this.#disposers = [
       autorun(() => this.setItem(resolutionKey, store.viewMode)),

@@ -16,7 +16,7 @@ export const useEventReactions = () => {
   //For name sync with custom actions
   useMultiReaction(
     () => values(data.componentStore.events).flat().filter(value => value.type === 'custom'),
-    (observer) => (store.screen.props.actions.value as CustomActionDefinition[])?.find(value => value.name === observer.name),
+    (observer) => (store.screen.props.actions?.value as CustomActionDefinition[])?.find(value => value.name === observer.name),
     (observable) => observable?.name,
     (observer, arg, prev?) => observer.name = arg!
   )
