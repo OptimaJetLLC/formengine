@@ -17,14 +17,13 @@ custom_edit_url: null
 
 ### constructor
 
-• **new BuilderView**(`models`, `metas`)
+• **new BuilderView**(`builderComponents`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `models` | [`Model`](fb_core.Model.md)[] |
-| `metas` | `Meta`[] |
+| `builderComponents` | [`BuilderComponent`](../interfaces/form_builder.BuilderComponent.md)[] |
 
 #### Overrides
 
@@ -71,6 +70,12 @@ ___
 ### #tooltipsMeta
 
 • `Private` **#tooltipsMeta**: `Map`<`string`, `Meta`\>
+
+___
+
+### builderComponents
+
+• **builderComponents**: [`BuilderComponent`](../interfaces/form_builder.BuilderComponent.md)[]
 
 ## Accessors
 
@@ -230,13 +235,13 @@ ___
 
 ### withErrorMeta
 
-▸ **withErrorMeta**(`tuple`): [`BuilderView`](form_builder.BuilderView.md)
+▸ **withErrorMeta**(`builderComponent`): [`BuilderView`](form_builder.BuilderView.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `tuple` | readonly [[`Model`](fb_core.Model.md), `Meta`] |
+| `builderComponent` | [`BuilderComponent`](../interfaces/form_builder.BuilderComponent.md) |
 
 #### Returns
 
@@ -266,13 +271,13 @@ ___
 
 ### withTooltipMeta
 
-▸ **withTooltipMeta**(`tuple`): [`BuilderView`](form_builder.BuilderView.md)
+▸ **withTooltipMeta**(`builderComponent`): [`BuilderView`](form_builder.BuilderView.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `tuple` | readonly [[`Model`](fb_core.Model.md), `Meta`] |
+| `builderComponent` | [`BuilderComponent`](../interfaces/form_builder.BuilderComponent.md) |
 
 #### Returns
 

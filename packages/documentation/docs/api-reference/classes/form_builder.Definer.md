@@ -73,11 +73,27 @@ ___
 
 ### build
 
-▸ **build**(): readonly [[`Model`](fb_core.Model.md), `Meta`]
+▸ **build**(): [`BuilderComponent`](../interfaces/form_builder.BuilderComponent.md)
 
 #### Returns
 
-readonly [[`Model`](fb_core.Model.md), `Meta`]
+[`BuilderComponent`](../interfaces/form_builder.BuilderComponent.md)
+
+___
+
+### category
+
+▸ **category**(`category`): [`Definer`](form_builder.Definer.md)<`T`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `category` | `string` |
+
+#### Returns
+
+[`Definer`](form_builder.Definer.md)<`T`\>
 
 ___
 

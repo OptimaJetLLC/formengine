@@ -1,5 +1,5 @@
-import {FbScreenProps} from '../../types'
+import {ScreenProps} from '../../types'
 import {Model} from '../define'
 
-const Screen = (props: FbScreenProps) => <div>{props.children}</div>
+const Screen = (props: ScreenProps) => <div>{props.children}</div>
 export const screenModel = new Model(Screen)

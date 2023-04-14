@@ -1,6 +1,6 @@
 export {getKey} from './utils/getKey'
 export {groupBy} from './utils/groupBy'
-export type {FbScreenProps} from './types'
+export type {ScreenProps} from './types'
 export {errorMessageModel} from './features/validation/components/ErrorMessage'
 export {screenModel} from './features/ui/screenModel'
 export {useComponentTree} from './features/ui/ComponentTreeContext'

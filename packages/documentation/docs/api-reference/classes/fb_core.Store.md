@@ -85,6 +85,22 @@ ___
 
 ## Methods
 
+### #applyComponentStore
+
+▸ `Private` **#applyComponentStore**(`componentStore`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `componentStore` | [`ComponentStore`](fb_core.ComponentStore.md) |
+
+#### Returns
+
+`void`
+
+___
+
 ### findAction
 
 ▸ **findAction**(`actionData`): `ActionDefinition`
@@ -130,3 +146,13 @@ ___
 #### Returns
 
 [`ComponentStore`](fb_core.ComponentStore.md)
+
+___
+
+### loadForm
+
+▸ **loadForm**(): `void`
+
+#### Returns
+
+`void`

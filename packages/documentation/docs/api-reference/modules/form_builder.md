@@ -13,6 +13,7 @@ custom_edit_url: null
 
 ## Interfaces
 
+- [BuilderComponent](../interfaces/form_builder.BuilderComponent.md)
 - [ErrorMessageProps](../interfaces/form_builder.ErrorMessageProps.md)
 - [FormBuilderProps](../interfaces/form_builder.FormBuilderProps.md)
 - [LabeledValue](../interfaces/form_builder.LabeledValue.md)

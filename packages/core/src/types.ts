@@ -8,7 +8,7 @@ export type ViewMode = 'desktop' | 'mobile' | 'tablet'
 
 export type Device = 'any' | ViewMode
 
-export interface FbScreenProps {
+export interface ScreenProps {
   actions?: CustomActionDefinition[]
   children: ReactNode,
   tooltipType: string

@@ -1,11 +1,11 @@
 ---
-id: "fb_core.FbScreenProps"
-title: "Interface: FbScreenProps"
-sidebar_label: "FbScreenProps"
+id: "fb_core.ScreenProps"
+title: "Interface: ScreenProps"
+sidebar_label: "ScreenProps"
 custom_edit_url: null
 ---
 
-[fb-core](../modules/fb_core.md).FbScreenProps
+[fb-core](../modules/fb_core.md).ScreenProps
 
 ## Properties
 

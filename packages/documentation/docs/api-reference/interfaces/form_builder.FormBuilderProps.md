@@ -81,13 +81,29 @@ ___
 
 ___
 
+### formName
+
+• `Optional` **formName**: `string`
+
+#### Inherited from
+
+[FormViewerProps](fb_core.FormViewerProps.md).[formName](fb_core.FormViewerProps.md#formname)
+
+___
+
 ### getForm
 
-• `Optional` **getForm**: () => [`ComponentStore`](../classes/fb_core.ComponentStore.md) \| `Promise`<[`ComponentStore`](../classes/fb_core.ComponentStore.md)\>
+• `Optional` **getForm**: (`name?`: `string`) => [`ComponentStore`](../classes/fb_core.ComponentStore.md) \| `Promise`<[`ComponentStore`](../classes/fb_core.ComponentStore.md)\>
 
 #### Type declaration
 
-▸ (): [`ComponentStore`](../classes/fb_core.ComponentStore.md) \| `Promise`<[`ComponentStore`](../classes/fb_core.ComponentStore.md)\>
+▸ (`name?`): [`ComponentStore`](../classes/fb_core.ComponentStore.md) \| `Promise`<[`ComponentStore`](../classes/fb_core.ComponentStore.md)\>
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `name?` | `string` |
 
 ##### Returns
 

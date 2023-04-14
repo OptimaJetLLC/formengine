@@ -19,8 +19,8 @@ custom_edit_url: null
 - [ComponentProperty](../interfaces/fb_core.ComponentProperty.md)
 - [CustomActionDefinition](../interfaces/fb_core.CustomActionDefinition.md)
 - [ErrorMessageProps](../interfaces/fb_core.ErrorMessageProps.md)
-- [FbScreenProps](../interfaces/fb_core.FbScreenProps.md)
 - [FormViewerProps](../interfaces/fb_core.FormViewerProps.md)
+- [ScreenProps](../interfaces/fb_core.ScreenProps.md)
 
 ## Type Aliases
 
