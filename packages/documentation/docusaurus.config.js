@@ -111,7 +111,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} OptimaJet LLC. All rights reserved.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Optimajet Limited. All rights reserved.`,
       },
       prism: {
         theme: lightCodeTheme,
