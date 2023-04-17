@@ -1,5 +1,5 @@
 import {ComponentType} from 'react'
 import {ComponentTreeProps} from '../../types'
-import {createNamedContext} from '../../utils/createNamedContext'
+import {createNonNullableContext} from '../../utils/createNonNullableContext'
 
-export const [useComponentTree, ComponentTreeProvider] = createNamedContext<ComponentType<ComponentTreeProps>>('ComponentTreeContext')
+export const [useComponentTree, ComponentTreeProvider] = createNonNullableContext<ComponentType<ComponentTreeProps>>('ComponentTreeContext')

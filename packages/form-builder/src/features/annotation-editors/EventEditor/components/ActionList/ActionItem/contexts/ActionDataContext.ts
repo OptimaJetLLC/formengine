@@ -1,5 +1,5 @@
-import {ActionData, createNamedContext} from 'fb-core'
+import {ActionData, createNonNullableContext} from 'fb-core'
 
-const [useActionData, ActionDataProvider] = createNamedContext<ActionData>('ActionDataContext')
+const [useActionData, ActionDataProvider] = createNonNullableContext<ActionData>('ActionDataContext')
 
 export {useActionData, ActionDataProvider}

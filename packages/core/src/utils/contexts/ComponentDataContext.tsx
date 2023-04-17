@@ -1,7 +1,7 @@
 import {Model} from '../../features/define'
 import {Field} from '../../features/validation'
 import {ComponentStore} from '../../stores/ComponentStore'
-import {createNamedContext} from '../createNamedContext'
+import {createNonNullableContext} from '../createNonNullableContext'
 
 export type ComponentData = {
   readonly key: string,
@@ -11,6 +11,6 @@ export type ComponentData = {
   readonly field?: Field,
 }
 
-const [useComponentData, ComponentDataProvider] = createNamedContext<ComponentData>('ComponentDataContext')
+const [useComponentData, ComponentDataProvider] = createNonNullableContext<ComponentData>('ComponentDataContext')
 
 export {useComponentData, ComponentDataProvider}

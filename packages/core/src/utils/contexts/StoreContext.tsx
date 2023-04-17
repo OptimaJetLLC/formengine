@@ -1,4 +1,4 @@
 import {Store} from '../../stores/Store'
-import {createNamedContext} from '../createNamedContext'
+import {createNonNullableContext} from '../createNonNullableContext'
 
-export const [useStore, StoreProvider, StoreContext] = createNamedContext<Store>('StoreContext')
+export const [useStore, StoreProvider, StoreContext] = createNonNullableContext<Store>('StoreContext')
