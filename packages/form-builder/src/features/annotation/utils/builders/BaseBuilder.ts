@@ -5,6 +5,7 @@ import {Annotation} from '../../types/annotations/Annotation'
 import {BuilderOptions} from '../../types/BuilderOptions'
 
 export type PreAnnotation = Partial<Omit<Annotation, 'key'>> & Pick<Annotation, 'editor'>
+export type BuilderSetup = Partial<PreAnnotation & BuilderOptions>
 
 //TODO add constructor
 export class BaseBuilder<T> {
@@ -30,7 +31,7 @@ export class BaseBuilder<T> {
     return this.setup({calculable})
   }
 
-  setup(options: Partial<PreAnnotation & BuilderOptions>): this {
+  setup(options: BuilderSetup): this {
     const {type, autoName, ...annotation} = options
     const clone = this.clone()
     clone.options.type = type ?? clone.options.type
