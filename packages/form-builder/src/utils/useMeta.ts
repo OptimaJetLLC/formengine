@@ -1,9 +1,8 @@
 import {useComponentData} from 'fb-core'
-import {useState} from 'react'
 import {useBuilderStore} from './BuilderStoreContext'
 
-export function useMeta() {
+export function useMeta(type?: string) {
   const store = useBuilderStore()
-  const {key} = useComponentData()
-  return useState(() => store.findNode(key)?.meta)[0]
+  type ??= useComponentData().model.type
+  return store.view.getMeta(type)
 }

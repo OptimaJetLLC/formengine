@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
-import {ComponentDataProvider} from 'fb-core'
+import {ComponentDataProvider, ComponentStore} from 'fb-core'
 import {observer} from 'mobx-react'
-import {createElement} from 'react'
+import {createElement, useEffect} from 'react'
 import {Panel} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {AnnotationProvider} from '../../../../../utils/EditorContext'
@@ -43,7 +43,7 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
         <PropertiesList>
           {activeTab === Section.Main && <Property annotation={key} getContext={() => ({})}/>}
           <PropertyBlock annotations={properties} context={data.props}/>
-          <PropertyBlock annotations={style} context={data.css?.object}/>
+          <StyleBlock key={data.key} annotations={style} store={data}/>
           {activeTab === Section.Style && <Property annotation={stylization} getContext={() => ({})}/>}
         </PropertiesList>
 
@@ -61,6 +61,14 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
       </Container>
     </ComponentDataProvider>
   )
+})
+
+const StyleBlock = observer(({annotations, store}: { annotations: Annotation[], store: ComponentStore }) => {
+  useEffect(() => {
+    if (annotations.length) store.css ??= {object: {}}
+  }, [])
+
+  return <PropertyBlock annotations={annotations} context={store.css?.object}/>
 })
 
 export const PropertyBlock = ({annotations, context}: { annotations: Annotation[], context?: object }) => {
