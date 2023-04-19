@@ -1,5 +1,4 @@
-import {createView} from 'fb-core'
-import {BuilderView, Definer} from 'form-builder'
+import {BuilderView, createView, Definer} from 'form-builder/view'
 import {antButton} from './components/AntButton'
 
 const definitions = [

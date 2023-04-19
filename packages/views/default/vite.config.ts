@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename)
 export default defineConfig(({command}) => ({
   ...base,
   build: {
-    sourcemap: true,
+    sourcemap: false,
     lib: {
       //entry: [path.resolve(__dirname, 'src/metaView.ts'), path.resolve(__dirname, 'src/modelView.ts')],
       entry: path.resolve(__dirname, 'src/index.ts'),

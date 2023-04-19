@@ -8,17 +8,17 @@ import {peerDependencies} from './package.json'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+const external: (string | RegExp)[] = Object.keys(peerDependencies)
+external.push(/monaco-editor/)
+
 export default defineConfig(({command}) => ({
   ...base,
   build: {
     sourcemap: false,
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
+      entry: [path.resolve(__dirname, './index.ts'), path.resolve(__dirname, './view.ts')],
       formats: ['es'],
-      fileName: 'index'
     },
-    rollupOptions: {
-      external: Object.keys(peerDependencies),
-    }
+    rollupOptions: {external}
   },
 }))

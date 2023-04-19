@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {array, define, event, number, oneOf, string} from 'form-builder'
+import {array, define, event, number, oneOf, string} from 'form-builder/view'
 import {Breadcrumb, BreadcrumbProps, Checkbox, Input, Table} from 'rsuite'
 
 interface RsBreadcrumbItemProps {

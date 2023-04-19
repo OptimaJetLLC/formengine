@@ -1,4 +1,4 @@
-import {define} from 'form-builder'
+import {define} from 'form-builder/view'
 
 interface RsCollectionEditorProps {
 

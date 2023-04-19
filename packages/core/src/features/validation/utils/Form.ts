@@ -69,3 +69,23 @@ export class Form {
   }
 
 }
+
+export const FormDeclaration = `declare class Form {
+  fields: Map<string, Field>
+  state: Record<string, any>
+  readonly store: Store
+
+  get data(): Record<string, unknown>
+
+  get errors(): Record<string, unknown>
+
+  get(key: string): Field
+
+  set(componentStore: ComponentStore, model: Model): Field
+
+  validate(): void
+
+  reset(): void
+
+  clear(): void
+}`

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {boolean, define, node, oneOf} from 'form-builder'
+import {boolean, define, node, oneOf} from 'form-builder/view'
 import {Message} from 'rsuite'
 
 const SMessage = styled(Message)`

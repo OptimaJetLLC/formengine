@@ -14,6 +14,14 @@ export default defineConfig(({command}) => ({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: [path.resolve(__dirname, 'scripts/test/setup.ts')]
+    setupFiles: [path.resolve(__dirname, 'scripts/test/setup.ts')],
+    alias: [
+      {
+        find: /^monaco-editor$/,
+        replacement:
+          __dirname + "/node_modules/monaco-editor/esm/vs/editor/editor.api",
+      },
+    ],
+
   },
 }))

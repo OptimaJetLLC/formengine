@@ -51,7 +51,7 @@ export class BuilderStore {
       viewMode: true,
       openedPanels: true,
       changeBuilderMode: action,
-      view: false
+      view: false,
     })
 
     if (!(viewer.props.view instanceof BuilderView)) {

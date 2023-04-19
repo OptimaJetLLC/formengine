@@ -1,8 +1,8 @@
 import {CustomActionDefinition, Parameter, toParameterWithType} from 'fb-core'
-import React, {useReducer, useState} from 'react'
+import {useReducer, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, Col, Grid, Input, Modal} from 'rsuite'
-import {JsEditor} from '../../../../components/JsEditor'
+import {CodeEditor} from '../../../../components/CodeEditor'
 import {ParameterList} from './components/ParameterList'
 import {ParamAction} from './types'
 
@@ -29,12 +29,15 @@ export const CustomActionEditor = ({onCancel, onSave, data, onEnter}: CustomActi
     }
   }
 
-  const functionHeader = `function (${getParamString(params)}e: ActionEventArgs):`
+  const functionHeader = `/**${getParamsType(params)}
+* @param {ActionEventArgs} e
+*/
+function Action (${params ? 'args, ' : ''}e) {`
 
   if (!data) return null
 
   return (
-    <Modal open={true} onClose={onCancel} size="lg" onEnter={onEnter}>
+    <Modal open={true} onClose={onCancel} style={{width: '100%'}} onEnter={onEnter}>
       <Modal.Header>
         <Modal.Title>{t('codeEditor.customActionHeader')}</Modal.Title>
       </Modal.Header>
@@ -48,8 +51,7 @@ export const CustomActionEditor = ({onCancel, onSave, data, onEnter}: CustomActi
         <Grid fluid>
           <Col md={17}>
             <Modal.Title style={{color: 'red'}}>{error}</Modal.Title>
-            <Modal.Title>{functionHeader}</Modal.Title>
-            <JsEditor value={body} onChange={setBody}/>
+            <CodeEditor key={functionHeader} contextLine={functionHeader} value={body} onChange={setBody}/>
           </Col>
           <Col md={6}>
             <ParameterList value={params} dispatch={dispatchParams}/>
@@ -69,7 +71,7 @@ function paramsReducer(params: Parameter[] | undefined, action: ParamAction) {
   const {index, param, type} = action
   switch (type) {
     case 'create':
-      const paramName = `param${(index)}`
+      const paramName = `prop${(index)}`
       return params ? [...params, paramName] : [paramName]
     case 'update':
       param && params?.splice(index, 1, param)
@@ -80,8 +82,8 @@ function paramsReducer(params: Parameter[] | undefined, action: ParamAction) {
   }
 }
 
-function getParamString(params?: Parameter[]) {
-  if (!params) return ''
+function getParamsType(params?: Parameter[]) {
+  if (!params?.length) return ''
   const names: string[] = params.map(toParameterWithType).map(([name, type]) => name + ': ' + type)
-  return `args: {${names.join(', ')}}, `
+  return `\n* @param {{${names.join(', ')}}} args`
 }

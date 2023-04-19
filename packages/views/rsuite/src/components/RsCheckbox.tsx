@@ -1,4 +1,4 @@
-import {boolean, define, event, string} from 'form-builder'
+import {boolean, define, event, string} from 'form-builder/view'
 import {Checkbox} from 'rsuite'
 import {readOnly} from '../commonProperties'
 

@@ -1,7 +1,7 @@
 import {namedObserver} from 'fb-core'
 import {useEffect, useRef, useState} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
-import {JsEditor} from '../components/JsEditor'
+import {CodeEditor} from '../components/CodeEditor'
 
 export const JsonView = namedObserver('JsonView', () => {
   const builderStore = useBuilderStore()
@@ -14,5 +14,5 @@ export const JsonView = namedObserver('JsonView', () => {
   }
   useEffect(() => () => builderStore.parseForm(sourceRef.current), [])
 
-  return <JsEditor value={source} onChange={onSetSource}/>
+  return <CodeEditor language='json' value={source} onChange={onSetSource}/>
 })

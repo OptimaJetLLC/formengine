@@ -22,3 +22,17 @@ export class ActionEventArgs {
   #isEvent = (value: any) => Boolean(value && value.target && value.type && value.preventDefault)
   #isNotEvent = (value: any) => !this.#isEvent(value)
 }
+
+export const ActionEventArgsDeclaration = `
+declare class ActionEventArgs {
+
+  readonly type: string
+  readonly sender: ComponentData
+  readonly store: Store
+  readonly args: any[]
+
+  get event(): SyntheticEvent | null
+
+  get value(): any
+}
+`

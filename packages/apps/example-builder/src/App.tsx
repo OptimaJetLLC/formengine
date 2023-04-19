@@ -1,4 +1,5 @@
-import {BuilderView, FormBuilder} from 'form-builder'
+import {FormBuilder} from 'form-builder'
+import {BuilderView} from 'form-builder/view'
 import {antdComponents} from 'view-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from 'view-rsuite'
 import {getSampleForm} from './utils/getSampleForm'

@@ -1,4 +1,4 @@
-import {define, string} from 'form-builder'
+import {define, string} from 'form-builder/view'
 import {textStyles} from '../commonProperties'
 import {TextProps} from '../commonTypes'
 

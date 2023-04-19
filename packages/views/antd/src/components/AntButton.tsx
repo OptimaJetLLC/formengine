@@ -1,5 +1,5 @@
 import {Button} from 'antd'
-import {boolean, define, event, oneOf, string} from 'form-builder'
+import {boolean, define, event, oneOf, string} from 'form-builder/view'
 
 export const antButton = define(Button)
   .name('AntButton')

@@ -1,4 +1,4 @@
-import {array, boolean, define, event, node, oneOf, string, toLabeledValues, useComponentData} from 'form-builder'
+import {array, boolean, define, event, node, oneOf, string, toLabeledValues, useComponentData} from 'form-builder/view'
 import React, {ReactNode} from 'react'
 import {Nav} from 'rsuite'
 

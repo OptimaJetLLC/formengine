@@ -1,4 +1,4 @@
-import {boolean, define, string} from 'form-builder'
+import {boolean, define, string} from 'form-builder/view'
 
 interface RsStaticContentProps {
   content: string

@@ -4,7 +4,7 @@ import {action} from 'mobx'
 import {useEffect, useState} from 'react'
 import {Button, ButtonGroup, Checkbox} from 'rsuite'
 import {EditableProperty} from '../../stores/BuilderStore'
-import {JsEditor} from '../components/JsEditor'
+import {CodeEditor} from '../components/CodeEditor'
 
 const codePlaceHolder = '// enter your code here'
 
@@ -60,13 +60,14 @@ export const CodeEditorPanel = namedObserver('CodeEditorPanel', ({editableProper
     setUseFn(editableProperty.property?.useFn || false)
   }, [editableProperty])
 
-  const header = <p>Calculated property for &lt;
-    <code>{editableProperty.componentKey}.{editableProperty.annotation.name}</code> &gt;
-    (must return {editableProperty.annotation.schema?.type})</p>
+  const functionHeader = `/**
+* @param {Form} form
+* @return {${editableProperty.annotation.schema?.type}}
+*/
+function Calculation (form) {`
 
   return <>
-    <Header>{header}</Header>
-    <JsEditor value={sourceCode} onChange={setSourceCode}/>
+    <CodeEditor key={editableProperty.annotation.key} contextLine={functionHeader} value={sourceCode} onChange={setSourceCode}/>
     <SDiv>
       <ButtonGroup>
         <Button appearance="primary" onClick={compileCode}>Compile</Button>
@@ -83,9 +84,4 @@ export const CodeEditorPanel = namedObserver('CodeEditorPanel', ({editableProper
 
 const SDiv = styled.div`
   padding: 10px;
-`
-
-const Header = styled.div`
-  padding: 10px;
-  font-size: 16px;
 `
