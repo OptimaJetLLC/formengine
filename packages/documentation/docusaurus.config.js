@@ -13,7 +13,7 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'OptimaJetLLC', // Usually your GitHub org/user name.
+  organizationName: 'Optimajet Limited', // Usually your GitHub org/user name.
   projectName: 'formbuilder', // Usually your repo name.
 
   scripts: [
