@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
-import autosize from 'autosize'
 import {Device, useComponentData} from 'fb-core'
 import {observer} from 'mobx-react'
-import {useEffect, useRef, useState} from 'react'
-import {Input, SelectPicker} from 'rsuite'
+import {useEffect, useState} from 'react'
+import {SelectPicker} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
+import {CodeEditor} from '../../../components/CodeEditor'
 import {useTranslationPart} from '../../../localization/hooks'
 
 const items: Device[] = ['any', 'desktop', 'mobile', 'tablet']
@@ -20,11 +20,6 @@ const CSSBlock = observer(() => {
     setDevice(viewMode === 'desktop' ? 'any' : viewMode)
   }, [viewMode])
 
-  const ref = useRef<Element | null>(null)
-  useEffect(() => {
-    if (ref.current) autosize(ref.current)
-  }, [ref.current])
-
   const styleValue = componentStore.css?.[device] ?? ''
   const handleChange = (value: string) => componentStore.css![device] = value
 
@@ -35,11 +30,24 @@ const CSSBlock = observer(() => {
         <SPicker value={device} data={translatedItems} onChange={val => setDevice(val as Device)} appearance={'subtle'} size={'xs'}
                  searchable={false} cleanable={false}/>
       </SHeader>
-      <TextArea
-        as={'textarea'}
+      <SCodeEditor
+        key={componentStore.key + device}
+        language="css"
+        contextLine={'element.style {'}
         value={styleValue}
-        rows={3}
-        onChange={handleChange}/>
+        onChange={handleChange}
+        height={'20vh'}
+        options={{
+          contextmenu: false,
+          lineNumbers: 'off',
+          minimap: {enabled: false},
+          glyphMargin: false,
+          folding: false,
+          lineDecorationsWidth: 0,
+          lineNumbersMinChars: 0,
+          autoIndent: 'none'
+        }}
+      />
     </div>
   )
 })
@@ -59,9 +67,12 @@ const SPicker = styled(SelectPicker)`
   }
 `
 
-const TextArea = styled(Input)`
-  overflow-y: auto;
-  resize: vertical !important;
+const SCodeEditor = styled(CodeEditor)`
+  .suggest-widget {
+    width: 100% !important;
+    left: 0 !important;
+    overflow: hidden;
+  }
 `
 
 export {CSSBlock}

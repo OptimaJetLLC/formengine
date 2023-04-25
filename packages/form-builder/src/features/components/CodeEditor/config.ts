@@ -32,4 +32,5 @@ if (!isDev || !isFirefox) {
 loader.init().then(monaco => {
   monaco?.languages.typescript?.javascriptDefaults.addExtraLib(ActionEventArgsDeclaration, 'ActionEventArgs')
   monaco?.languages.typescript?.javascriptDefaults.addExtraLib(FormDeclaration, 'Form')
+  monaco?.languages.css?.cssDefaults.setOptions({lint: {emptyRules: "ignore"}})
 })
