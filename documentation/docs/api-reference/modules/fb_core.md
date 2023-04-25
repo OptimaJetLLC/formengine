@@ -141,6 +141,12 @@ ___
 
 ## Variables
 
+### ActionEventArgsDeclaration
+
+• `Const` **ActionEventArgsDeclaration**: ``"\ndeclare class ActionEventArgs {\n\n  readonly type: string\n  readonly sender: ComponentData\n  readonly store: Store\n  readonly args: any[]\n\n  get event(): SyntheticEvent | null\n\n  get value(): any\n}\n"``
+
+___
+
 ### DefaultActions
 
 • `Const` **DefaultActions**: `ActionDefinition`[]
@@ -150,6 +156,12 @@ ___
 ### DidMountEvent
 
 • `Const` **DidMountEvent**: ``"onDidMount"``
+
+___
+
+### FormDeclaration
+
+• `Const` **FormDeclaration**: ``"declare class Form {\n  fields: Map<string, Field>\n  state: Record<string, any>\n  readonly store: Store\n\n  get data(): Record<string, unknown>\n\n  get errors(): Record<string, unknown>\n\n  get(key: string): Field\n\n  set(componentStore: ComponentStore, model: Model): Field\n\n  validate(): void\n\n  reset(): void\n\n  clear(): void\n}"``
 
 ___
 
@@ -179,7 +191,7 @@ ___
 
 ### StoreContext
 
-• **StoreContext**: `Context`<`undefined` \| [`Store`](../classes/fb_core.Store.md)\>
+• **StoreContext**: `Context`<``null`` \| [`Store`](../classes/fb_core.Store.md)\>
 
 ___
 
@@ -300,11 +312,11 @@ ___
 
 ___
 
-### createNamedContext
+### createNonNullableContext
 
-▸ **createNamedContext**<`T`\>(`name`): [() => `T`, `Provider`<`NonNullable`<`T`\>\>, `Context`<`undefined` \| `T`\>]
+▸ **createNonNullableContext**<`T`\>(`name`): [() => `T`, `Provider`<`T`\>, `Context`<`T` \| ``null``\>]
 
-Return tuple with hook and provider for context using
+Return the tuple [hook, provider, and common context] for interactions with a non-nullable context
 
 #### Type parameters
 
@@ -320,7 +332,7 @@ Return tuple with hook and provider for context using
 
 #### Returns
 
-[() => `T`, `Provider`<`NonNullable`<`T`\>\>, `Context`<`undefined` \| `T`\>]
+[() => `T`, `Provider`<`T`\>, `Context`<`T` \| ``null``\>]
 
 ___
 

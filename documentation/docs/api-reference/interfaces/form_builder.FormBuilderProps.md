@@ -117,7 +117,7 @@ ___
 
 ### view
 
-• **view**: [`BuilderView`](../classes/form_builder.BuilderView.md)
+• **view**: `BuilderView`
 
 #### Overrides
 

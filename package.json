@@ -6,10 +6,12 @@
         "graph": "npx nx graph",
         "show:bundle": "npx lerna run show:bundle --scope=example-builder",
         "bootstrap": "npx lerna bootstrap",
-        "build": "npx lerna run build",
+        "build": "npx lerna run build --ignore fb-docs",
         "start": "npx lerna run start --scope=example-builder",
         "dev:builder": "npx lerna run start --scope=example-builder",
         "dev:viewer": "npx lerna run start --scope=example-viewer",
+        "docs:start": "npx lerna run start --scope=fb-docs",
+        "docs:build": "npx lerna run build --scope=fb-docs",
         "test": "vitest run",
         "test:watch": "vitest",
         "test:related": "vitest related",
@@ -20,7 +22,8 @@
     "workspaces": [
         "packages/*",
         "packages/apps/*",
-        "packages/views/*"
+        "packages/views/*",
+        "documentation/website"
     ],
     "dependencies": {
         "react": "^17.0.2",

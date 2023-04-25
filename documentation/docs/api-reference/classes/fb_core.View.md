@@ -7,12 +7,6 @@ custom_edit_url: null
 
 [fb-core](../modules/fb_core.md).View
 
-## Hierarchy
-
-- **`View`**
-
-  ↳ [`BuilderView`](form_builder.BuilderView.md)
-
 ## Constructors
 
 ### constructor

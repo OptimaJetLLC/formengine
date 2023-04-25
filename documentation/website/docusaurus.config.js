@@ -26,6 +26,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path: '../docs',
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
@@ -125,6 +126,7 @@ const config = {
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
         docsRouteBasePath: "/",
+        docsDir: "../docs",
         indexBlog: false,
         // ... Your options.
         // `hashed` is recommended as long-term-cache of index file is possible.
@@ -138,10 +140,14 @@ const config = {
     [
       'docusaurus-plugin-typedoc',
       {
-        entryPoints: ['../core', '../form-builder', '../form-viewer'],
+        entryPoints: [
+          '../../packages/core',
+          '../../packages/form-builder',
+          '../../packages/form-viewer'
+        ],
         entryPointStrategy: 'packages',
         tsconfig: '../../tsconfig.json',
-        out: 'api-reference',
+        out: '../../docs/api-reference',
         sidebar: {
           categoryLabel: 'API Reference',
           collapsed: false,
