@@ -91,7 +91,7 @@ export const EditableTable = (props: EditableTableProps) => {
 
   useEffect(updateHeight, [])
 
-  return (<>
+  return (<div>
     {!!label && <label>{label}</label>}
     <STable data={data}
             headerHeight={headerHeight}
@@ -117,7 +117,7 @@ export const EditableTable = (props: EditableTableProps) => {
         <Plus/>
       </Button>
     }
-  </>)
+  </div>)
 }
 
 const STable = styled(Table)`

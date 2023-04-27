@@ -4,13 +4,13 @@ import * as faCode from '@fortawesome/free-solid-svg-icons/faCode'
 import {ComponentProperty, namedObserver, useComponentData} from 'fb-core'
 import {cloneElement, ComponentProps} from 'react'
 import {IconButton} from 'rsuite'
-import useUniqueId from 'rsuite/cjs/utils/useUniqueId'
+import useUniqueId from 'rsuite/esm/utils/useUniqueId'
 import {EditableProperty} from '../../stores/BuilderStore'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {Hinted, HintedLabel} from '../annotation-editors/Hinted'
 import {Annotation} from '../annotation/types/annotations/Annotation'
 import {useTranslationPart} from '../localization/hooks'
-import {LabeledInput} from './Containers'
+import {Columns, LabeledInput} from './Containers'
 import {FaIcon} from './Icons'
 
 export interface LabeledPropertyProps extends ComponentProps<any> {
@@ -47,7 +47,7 @@ const CodeButton = namedObserver('CodeButton', ({annotation, property, getEditab
   </Hinted>
 })
 
-export const LabeledProperty = ({idPrefix, annotation, getEditableProperty, children}: LabeledPropertyProps) => {
+export const LabeledProperty = ({idPrefix, annotation, getEditableProperty, children, ...props}: LabeledPropertyProps) => {
   const id = useUniqueId(idPrefix || 'id-')
   const getLabel = useTranslationPart(`annotation.${annotation.key}`)
   const {componentStore} = useComponentData()
@@ -68,11 +68,13 @@ export const LabeledProperty = ({idPrefix, annotation, getEditableProperty, chil
 
   const property = defaultGetEditableProperty().property
 
-  return <LabeledInput>
-    <CodeButton annotation={annotation} property={property} getEditableProperty={defaultGetEditableProperty}/>
-    <HintedLabel htmlFor={id} hint={getLabel('hint') || annotation.hint}>
-      <>{getLabel('name') || annotation.name}</>
-    </HintedLabel>
+  return <LabeledInput {...props}>
+    <Columns gap={10}>
+      <CodeButton annotation={annotation} property={property} getEditableProperty={defaultGetEditableProperty}/>
+      <HintedLabel htmlFor={id} hint={getLabel('hint') || annotation.hint}>
+        <>{getLabel('name') || annotation.name}</>
+      </HintedLabel>
+    </Columns>
     {children ? cloneElement(children, {id}) : undefined}
   </LabeledInput>
 }

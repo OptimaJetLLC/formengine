@@ -1,5 +1,5 @@
 import {boolean, color, number, oneOf} from 'form-builder/view'
-import {TypeAttributes} from 'rsuite/cjs/@types/common'
+import {TypeAttributes} from 'rsuite/esm/@types/common'
 
 type Placement = TypeAttributes.Placement;
 

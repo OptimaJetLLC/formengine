@@ -11,7 +11,7 @@
       "hint": "HTML attributes in React (camelCase) format"
     },
     "tooltipProps": {
-      "useTooltip": "Use tooltip",
+      "tooltip": "Tooltip",
       "hint": "Use tooltip for this element"
     },
     "objectPosition": {
@@ -84,8 +84,7 @@
       "expression": "Expression"
     },
     "subSection": {
-      "additionalProperties": "Additional properties",
-      "tooltipProps": "Tooltip"
+      "additionalProperties": "Additional properties"
     },
     "calculable": {
       "hint": "Make this property calculable",

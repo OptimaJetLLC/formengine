@@ -5,7 +5,7 @@ import LabeledProperty from '../components/LabeledProperty'
 
 export const BooleanInput = () => {
   const {value, onChange, annotation} = useEditor()
-  return <LabeledProperty annotation={annotation}>
+  return <LabeledProperty annotation={annotation} style={{height: 23}}>
     <SCheckbox checked={!!value} onChange={(value, checked) => onChange(checked)}/>
   </LabeledProperty>
 }

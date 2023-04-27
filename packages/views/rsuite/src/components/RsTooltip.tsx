@@ -20,7 +20,7 @@ const RsTooltip = ({text, placement, trigger, children}: RsTooltipProps) => {
 export const rsTooltip = define(RsTooltip)
   .type('RsTooltip')
   .props({
-    text: string.required.default('Tooltip message...'),
+    text: string.required.default('Tooltip message...').hinted('Tooltip text'),
     children: node,
     placement: oneOf('top', 'bottom', 'right', 'left', 'bottomStart', 'bottomEnd',
       'topStart', 'topEnd', 'leftStart', 'rightStart', 'leftEnd', 'rightEnd', 'auto',

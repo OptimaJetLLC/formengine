@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import {useStore} from 'fb-core'
 import {startCase} from 'lodash-es'
 import {InputPicker} from 'rsuite'
-import {ItemDataType} from 'rsuite/cjs/@types/common'
+import {ItemDataType} from 'rsuite/esm/@types/common'
 import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
 

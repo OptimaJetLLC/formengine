@@ -15,9 +15,9 @@ export interface HintedProps extends Omit<WhisperProps, 'speaker'> {
 }
 
 export const HintedLabel = ({hint, children, ...labelProps}: HintedLabelProps) => {
-  if (!hint) return <label {...labelProps}>{children}</label>
+  if (!hint) return <SLabel {...labelProps}>{children}</SLabel>
   return <Hinted hint={hint}>
-    <SLabel {...labelProps}>{children}</SLabel>
+    <SLabel {...labelProps} hinted>{children}</SLabel>
   </Hinted>
 }
 
@@ -32,13 +32,13 @@ export const Hinted = ({hint, children, speaker, ...props}: HintedProps) => {
   </Whisper>
 }
 
-
-const SLabel = styled.label`
-  width: 100px;
+const SLabel = styled.label<{ hinted?: boolean }>`
   min-width: 80px;
 
-  :hover {
-    text-decoration: underline;
-    text-decoration-style: dotted;
-  }
+  ${({hinted}) => hinted && `
+    :hover {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+  `};
 `

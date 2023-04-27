@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react'
+import useUniqueId from 'rsuite/esm/utils/useUniqueId'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {LabeledInput} from '../components/Containers'
 import {useTranslationPart} from '../localization/hooks'
@@ -8,6 +9,7 @@ import {HintedLabel} from './Hinted'
 
 export const TooltipPropertiesEditor = () => {
   const t = useTranslationPart('annotation.tooltipProps')
+  const id = useUniqueId('tooltip-')
   const selected = useBuilderStore().getSingleSelected()
   const store = useBuilderStore()
   const [useTooltip, setUseTooltip] = useState(!!selected?.data.tooltipProps)
@@ -26,10 +28,10 @@ export const TooltipPropertiesEditor = () => {
 
   return <>
     <LabeledInput>
-      <HintedLabel hint={<>{t('hint')}</>}>
-        <>{t('useTooltip')}</>
+      <HintedLabel hint={<>{t('hint')}</>} htmlFor={id}>
+        <h6>{t('tooltip')}</h6>
       </HintedLabel>
-      <SCheckbox checked={useTooltip} onChange={(_, checked) => setUseTooltip(checked)}></SCheckbox>
+      <SCheckbox checked={useTooltip} onChange={(_, checked) => setUseTooltip(checked)} id={id}></SCheckbox>
     </LabeledInput>
     {!!selected?.data.tooltipProps &&
       <PropertyBlock annotations={tooltipAnnotations} context={selected?.data.tooltipProps}/>

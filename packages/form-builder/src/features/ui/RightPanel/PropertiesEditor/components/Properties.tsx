@@ -48,15 +48,12 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
         </PropertiesList>
 
         {!!tooltipProps?.length && store.viewer.tooltipType &&
-          <SPanel header={getLabel('subSection.tooltipProps')} collapsible bodyFill>
-            <PropertyBlock annotations={tooltipProps} context={data.props}/>
-          </SPanel>
+          <PropertyBlock annotations={tooltipProps} context={data.props}/>
         }
 
         {!!additionalProperties?.length &&
-          <SPanel header={getLabel('subSection.additionalProperties')} collapsible bodyFill>
-            <PropertyBlock annotations={additionalProperties} context={data.props}/>
-          </SPanel>
+          <PropertyBlock annotations={additionalProperties} context={data.props}
+                         header={getLabel('subSection.additionalProperties')}/>
         }
       </Container>
     </ComponentDataProvider>
@@ -71,10 +68,11 @@ const StyleBlock = observer(({annotations, store}: { annotations: Annotation[], 
   return <PropertyBlock annotations={annotations} context={store.css?.object}/>
 })
 
-export const PropertyBlock = ({annotations, context}: { annotations: Annotation[], context?: object }) => {
+export const PropertyBlock = ({annotations, context, header}: { annotations: Annotation[], context?: object, header?: string }) => {
   if (!context) return null
 
   return <>
+    {!!header && <h6>{header}</h6>}
     {annotations.map(annotation => <Property key={annotation.key} annotation={annotation} getContext={() => context}/>)}
   </>
 }
