@@ -16,7 +16,7 @@ const Tree = observer(() => {
     {/*IsTreeProvider можно переоборудовать при необходимости в TreeHandler*/}
     <STreeContainer>
       <IsTreeProvider value={true}>
-        <FormViewer {...store.viewer.props}/>
+        <FormViewer {...store.viewer.props} getForm={undefined}/>
       </IsTreeProvider>
     </STreeContainer>
 
