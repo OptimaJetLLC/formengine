@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import {Close} from '@rsuite/icons'
 import {isString, isUndefined} from 'lodash-es'
+import {Button} from 'rsuite'
 import ColorPicker from 'rsuite-color-picker'
 import 'rsuite-color-picker/lib/styles.css'
 import {useEditor} from '../../utils/useEditor'
@@ -16,13 +17,25 @@ export const ColorInput = () => {
   return <LabeledProperty annotation={annotation}>
     <SColorPicker>
       <ColorPicker value={rgbFromString(value) ?? PLACEHOLDER_COLOR} onChange={({rgb}) => onChange(rgbToString(rgb))}/>
-
-      <Close onClick={onRemove} style={{cursor: 'pointer'}}/>
+      <SButton onClick={onRemove} size={'xs'}>
+        <Close/>
+      </SButton>
     </SColorPicker>
   </LabeledProperty>
 }
 
+const SButton = styled(Button)`
+  && {
+    position: absolute;
+    inset-inline-end: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    padding: 6px 8px;
+  }
+`
+
 const SColorPicker = styled.div`
+  position: relative;
   display: flex;
   gap: 5px;
   align-items: center;
@@ -45,10 +58,11 @@ const SColorPicker = styled.div`
     }
 
     .rsuite-color-picker-review {
-      left: 2px;
-      top: 2px;
-      height: calc(100% - 4px);
-      width: calc(100% - 4px);
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      border-radius: 6px;
     }
   }
 `

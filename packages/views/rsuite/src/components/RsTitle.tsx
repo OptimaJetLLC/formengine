@@ -25,6 +25,8 @@ const RsTitle = ({content, level, ...props}: RsHeaderProps) => {
   return <Element {...props}>{content}</Element>
 }
 
+const {textAlign, color} = textStyles
+
 export const rsTitle = define(RsTitle)
   .props({
     content: string.required.default('Header'),
@@ -34,7 +36,7 @@ export const rsTitle = define(RsTitle)
   })
   .css({
     backgroundColor,
-    ...textStyles,
-    fontSize: textStyles.fontSize.default(undefined),
+    textAlign,
+    color
   })
 
