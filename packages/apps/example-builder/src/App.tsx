@@ -5,7 +5,7 @@ import {assign} from 'lodash-es'
 import {observer} from 'mobx-react'
 import {antdComponents} from 'view-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from 'view-rsuite'
-import {getSampleForm} from './utils/getSampleForm'
+import {getSampleForm, sampleComponentStore, sampleFormName} from './utils/getSampleForm'
 import {IndexedDbFormStorage} from './utils/IndexedDbFormStorage'
 
 const data = {title: 'Hello! Hello!'}
@@ -22,9 +22,17 @@ const formStorage = indexedDbExists
 
 async function getForm(name?: string): Promise<ComponentStore> {
   if (!formStorage) throw new Error('IndexedDB not supported')
-  const form = await formStorage.getForm(name || formStorage.formName)
-  const componentStore = JSON.parse(form)
-  return assign(new ComponentStore('', ''), componentStore)
+  try {
+    const form = await formStorage.getForm(name || formStorage.formName)
+    const componentStore = JSON.parse(form)
+    return assign(new ComponentStore('', ''), componentStore)
+  } catch (e) {
+    if (name === sampleFormName) {
+      formStorage.formName = name
+      return sampleComponentStore()
+    }
+    throw e
+  }
 }
 
 // tests don't wait for promises now
@@ -33,7 +41,7 @@ const getFormFn = indexedDbExists ? getForm : getSampleForm
 const FormBuilderApp = observer(() =>
   <FormBuilder
     getForm={getFormFn}
-    formName={formStorage?.formName || 'SampleForm'}
+    formName={formStorage?.formName || sampleFormName}
     view={view}
     data={data}
     formStorage={formStorage}
