@@ -11,8 +11,9 @@ import {PanelPlacement} from '../features/ui/Panel'
 import {ComponentNode} from '../utils/ComponentNode'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {BuilderMode, BuilderTheme, ComponentMove, InsertPosition} from '../utils/types'
+import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
 import {uploadStringFile} from './fileUpload'
-import {kvCreateStore, kvDel, kvGet, kvKeys, kvSet} from './KeyValueStorage'
+import {FormStorage} from './FormStorage'
 
 const {After, Inner} = InsertPosition
 
@@ -32,15 +33,16 @@ export class BuilderStore {
   selected: ComponentNode[] = []
   language = defaultLanguage
   calculatedProperty?: EditableProperty
-  formName = 'SampleForm'
   lastSaveTime = new Date()
-  readonly #customStore = kvCreateStore('form-builder-store', 'form-store')
   readonly #disposer: IReactionDisposer
   readonly view: BuilderView
+  readonly formStorageEnabled: boolean
+  private formStorage: FormStorage
 
   constructor(
     readonly viewer: Store,
     private readonly componentWrapper: ComponentType<any>,
+    formStorage?: FormStorage
   ) {
     makeAutoObservable(this, {
       selected: observable.ref,
@@ -53,6 +55,8 @@ export class BuilderStore {
       changeBuilderMode: action,
       view: false,
     })
+    this.formStorageEnabled = !!formStorage
+    this.formStorage = formStorage || new AlwaysRejectFormStorage()
 
     if (!(viewer.props.view instanceof BuilderView)) {
       throw new Error(`The view prop is not instance of BuilderView`)
@@ -67,6 +71,10 @@ export class BuilderStore {
     })
 
     this.#disposer = reaction(() => this.language, onLanguageChange)
+  }
+
+  get formName() {
+    return this.viewer.props.formName || '__DefaultForm__'
   }
 
   get tree(): ComponentNode {
@@ -219,36 +227,35 @@ export class BuilderStore {
     uploadStringFile(this.parseForm.bind(this))
   }
 
-  save() {
-    return this.saveForm(this.formName, this.stringifyForm())
+  save(formName?: string) {
+    return this.saveForm(formName || this.formName, this.stringifyForm())
   }
 
   saveForm(formName: string, formValue: string) {
     this.lastSaveTime = new Date()
-    return kvSet(formName, formValue, this.#customStore)
+    return this.formStorage.saveForm(formName, formValue)
   }
 
   async getFormKeys() {
-    const keys = await kvKeys(this.#customStore)
+    const keys = await this.formStorage.getFormNames()
     return keys.map(value => `${value}`) || []
   }
 
   removeForm(value: string, onSuccess: () => void) {
-    kvDel(value, this.#customStore).then(onSuccess)
+    this.formStorage.removeForm(value).then(onSuccess)
   }
 
   loadForm(value: string, onSuccess?: () => void, onError?: (err: any) => void) {
     this.getStoredFormJson(value)
       .then(data => {
         this.parseForm(data)
-        this.formName = value
         onSuccess?.()
       })
       .catch(err => onError?.(err))
   }
 
   getStoredFormJson(formName: string) {
-    return kvGet(formName, this.#customStore)
+    return this.formStorage.getForm(formName)
   }
 
   setPanelVisible(placement: PanelPlacement, visible: boolean) {

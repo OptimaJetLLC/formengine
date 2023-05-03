@@ -61,8 +61,8 @@ export const Menu = namedObserver('Menu', () => {
   const store = useBuilderStore()
   const {t} = useTranslation()
   const showMessage = useShowMessage()
-  const onSave = () => {
-    store.save()
+  const onSave = (formName?: string) => {
+    store.save(formName)
       .then(() => showMessage({type: 'success', message: t('leftMenu.formSaved')}))
       .catch(err => {
         console.error(err)
@@ -72,10 +72,7 @@ export const Menu = namedObserver('Menu', () => {
   const [onSaveAs, promptDialog] = usePromptDialog({
     title: t('leftMenu.enterFormName'), placeholder: t('leftMenu.formNamePlaceholder'),
     onOk: (value) => {
-      if (value) {
-        store.formName = value
-        onSave()
-      }
+      if (value) onSave(value)
     }
   })
 
@@ -88,14 +85,16 @@ export const Menu = namedObserver('Menu', () => {
         {t('leftMenu.upload')}
       </Dropdown.Item>
       <LangSwitch/>
-      <Dropdown.Item onSelect={onSave} icon={<FaIcon icon={faSave as unknown as IconDefinition}/>}>
-        {t('leftMenu.save')}
-      </Dropdown.Item>
-      <Dropdown.Item onSelect={onSaveAs} icon={<FaIcon icon={faSave as unknown as IconDefinition}/>}>
-        {t('leftMenu.saveAs')}
-      </Dropdown.Item>
-      <ExportFormsButton/>
-      <ImportFormsButton/>
+      {store.formStorageEnabled && <>
+        <Dropdown.Item onSelect={onSave} icon={<FaIcon icon={faSave as unknown as IconDefinition}/>}>
+          {t('leftMenu.save')}
+        </Dropdown.Item>
+        <Dropdown.Item onSelect={onSaveAs} icon={<FaIcon icon={faSave as unknown as IconDefinition}/>}>
+          {t('leftMenu.saveAs')}
+        </Dropdown.Item>
+        <ExportFormsButton/>
+        <ImportFormsButton/>
+      </>}
       <Dropdown.Item /*onSelect={onPrint}*/ icon={<FaIcon icon={faPrint as unknown as IconDefinition}/>}>
         {t('leftMenu.print')}
       </Dropdown.Item>
