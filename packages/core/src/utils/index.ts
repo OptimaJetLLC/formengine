@@ -27,7 +27,7 @@ export function treeFind<T extends { key: string, children?: T[] }>(value: T, ke
   return
 }
 
-export function namedObserver(displayName: string, component: IReactComponent) {
+export function namedObserver<T extends IReactComponent>(displayName: string, component: T) {
   const observerComponent = observer(component)
   observerComponent.displayName = displayName
   return observerComponent

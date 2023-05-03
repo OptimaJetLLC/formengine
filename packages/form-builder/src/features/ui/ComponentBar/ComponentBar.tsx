@@ -1,6 +1,6 @@
 import {css} from '@emotion/css'
 import styled from '@emotion/styled'
-import {ComponentDataProvider, ComponentStore, getKey, Model, useStore} from 'fb-core'
+import {ComponentDataProvider, ComponentStore, getKey, Model} from 'fb-core'
 import {useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {ComponentMove} from '../../../utils/types'
@@ -66,7 +66,7 @@ interface AddedComponentsProps extends DraggableProps {
 }
 
 const AddedComponents = ({definitions, ...componentProps}: AddedComponentsProps) => {
-  const {props: {view}} = useStore()
+  const store = useBuilderStore()
   return (
     <ControlsGroup>
       {definitions.map(model => {
@@ -77,7 +77,7 @@ const AddedComponents = ({definitions, ...componentProps}: AddedComponentsProps)
             value={{
               key: componentStore.key,
               componentStore,
-              model: view.get(componentStore.type)
+              model: store.view.get(componentStore.type)
             }}
           >
             <AddedComponent {...componentProps}/>

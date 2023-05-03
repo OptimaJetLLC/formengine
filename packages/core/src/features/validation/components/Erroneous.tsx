@@ -1,22 +1,22 @@
 import {ReactNode, useEffect} from 'react'
 import {namedObserver} from '../../../utils'
 import {useComponentData} from '../../../utils/contexts/ComponentDataContext'
-import {useStore} from '../../../utils/contexts/StoreContext'
+import {useViewerProps} from '../../form-viewer/components/ViewerPropsContext'
 
 export interface ErroneousProps {
   children: ReactNode
 }
 
 export const Erroneous = namedObserver('Erroneous', ({children}: ErroneousProps) => {
-  const store = useStore()
   const {field} = useComponentData()
-  const Error = store.props.view.error.view
+  const props = useViewerProps()
+  const Error = props.view.error.view
 
   useEffect(() => {
     if (field) field.error = undefined
   }, [])
 
-  if (store.props.erroneous) return <>{children}</>
+  if (props.erroneous) return <>{children}</>
 
   return (
     <Error error={field?.error}>

@@ -3,13 +3,17 @@ import {ComponentStore} from '../../../stores/ComponentStore'
 import {Store} from '../../../stores/Store'
 import {calculatePropertyValue} from '../../calculation/propertyCalculator'
 import {Model} from '../../define'
+import {FormViewerProps} from '../../form-viewer'
 import {Field} from './Field'
 
 export class Form {
-  fields = new Map<string, Field>()
+  readonly #props: Readonly<FormViewerProps>
+  readonly fields = new Map<string, Field>()
   state: Record<string, any> = {}
 
-  constructor(readonly store: Store) {
+  constructor(readonly store: Store, props: Readonly<FormViewerProps>) {
+    this.#props = props
+
     makeAutoObservable(this, {
       fields: true,
       state: observable.deep
@@ -41,7 +45,7 @@ export class Form {
 
     let field = this.fields.get(componentStore.key)
     if (!field) {
-      field = new Field(this.store, componentStore.key, model, this.#updateFnValue)
+      field = new Field(this.store, this.#props, componentStore.key, model, this.#updateFnValue)
       this.fields.set(componentStore.key, field)
     }
     return field

@@ -1,7 +1,6 @@
-import {ComponentProperty, ComponentStore, screenModel, Store, treeFind, ViewMode} from 'fb-core'
+import {ComponentProperty, ComponentStore, screenModel, Store, StoreProps, treeFind, ViewMode} from 'fb-core'
 import {assign, cloneDeep} from 'lodash-es'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
-import {ComponentType} from 'react'
 import {Annotation} from '../features/annotation/types/annotations/Annotation'
 import {BuilderView} from '../features/define'
 import {BiDi} from '../features/localization/bidi'
@@ -38,11 +37,12 @@ export class BuilderStore {
   readonly view: BuilderView
   readonly formStorageEnabled: boolean
   private formStorage: FormStorage
+  readonly #props: Readonly<StoreProps>
 
   constructor(
     readonly viewer: Store,
-    private readonly componentWrapper: ComponentType<any>,
-    formStorage?: FormStorage
+    props: Readonly<StoreProps>,
+    formStorage?: FormStorage,
   ) {
     makeAutoObservable(this, {
       selected: observable.ref,
@@ -57,11 +57,12 @@ export class BuilderStore {
     })
     this.formStorageEnabled = !!formStorage
     this.formStorage = formStorage || new AlwaysRejectFormStorage()
+    this.#props = props
 
-    if (!(viewer.props.view instanceof BuilderView)) {
+    if (!(props.view instanceof BuilderView)) {
       throw new Error(`The view prop is not instance of BuilderView`)
     }
-    this.view = viewer.props.view
+    this.view = props.view
 
     onI18nInit((language: string) => {
       let foundLanguage = findLanguage(language)
@@ -74,11 +75,11 @@ export class BuilderStore {
   }
 
   get formName() {
-    return this.viewer.props.formName || '__DefaultForm__'
+    return this.#props.formName || '__DefaultForm__'
   }
 
   get tree(): ComponentNode {
-    return new ComponentNode(this.viewer, this.viewer.screen)
+    return new ComponentNode(this, this.viewer.screen)
   }
 
   get isRTL(): boolean {
@@ -99,13 +100,7 @@ export class BuilderStore {
 
   changeBuilderMode(value: BuilderMode) {
     this.builderMode = value
-    if (this.builderMode === 'builder') {
-      this.viewer.props.componentWrapper = this.componentWrapper
-      this.viewer.isBuilderMode = true
-      return
-    }
-    this.viewer.props.componentWrapper = undefined
-    this.viewer.isBuilderMode = false
+    this.viewer.isBuilderMode = this.builderMode === 'builder'
   }
 
   treeMap(store: ComponentStore, callback: (store: ComponentStore) => void) {

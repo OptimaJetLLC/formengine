@@ -2,9 +2,12 @@ import {autorun, makeAutoObservable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {Store} from '../../../stores/Store'
 import {Model} from '../../define'
+import {FormViewerProps} from '../../form-viewer'
 import {parseSchema} from './parseSchema'
 
 export class Field {
+  readonly #props: Readonly<FormViewerProps>
+
   error?: string
   touched = false
   value: unknown = undefined
@@ -12,12 +15,15 @@ export class Field {
 
   constructor(
     readonly store: Store,
+    props: Readonly<FormViewerProps>,
     readonly key: string,
     readonly model: Model,
     readonly valueCalculator: (component: ComponentStore, key: string) => [boolean, any?]
   ) {
-    if (!model.valued) throw `'model.valued' is falsy`
+    this.#props = props
+    if (!model.valued) throw new Error(`'model.valued' is falsy`)
     this.valued = model.valued
+
     makeAutoObservable(this, {
       model: false,
       valueCalculator: false
@@ -36,8 +42,7 @@ export class Field {
         this.value = value
         return
       }
-
-      this.value = this.store.props.data?.[component.key] ?? this.initialValue
+      this.value = this.#props.data?.[component.key] ?? this.initialValue
     })
   }
 

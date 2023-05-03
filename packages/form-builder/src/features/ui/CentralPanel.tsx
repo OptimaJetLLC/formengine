@@ -1,16 +1,18 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {FormViewer, namedObserver, useStore} from 'fb-core'
+import {FormViewer, namedObserver, useViewerProps} from 'fb-core'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
+import {Editable} from '../dnd'
 import {PanelContainer} from './Panel'
 
 export const CentralPanel = namedObserver('CentralPanel', () => {
-  const store = useStore()
-  const {viewMode, landscapeMode} = useBuilderStore()
+  const {viewMode, landscapeMode, builderMode} = useBuilderStore()
+  const props = useViewerProps()
+  const componentWrapper = builderMode === 'builder' ? Editable : undefined
 
   return (
     <FormContainer className={cx(viewMode, {landscapeMode})}>
-      <FormViewer {...store.props} viewMode={viewMode}/>
+      <FormViewer {...props} componentWrapper={componentWrapper} viewMode={viewMode}/>
     </FormContainer>
   )
 })

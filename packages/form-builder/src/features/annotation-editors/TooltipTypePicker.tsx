@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {useStore} from 'fb-core'
+import {useStore, useViewerProps} from 'fb-core'
 import {startCase} from 'lodash-es'
 import {InputPicker} from 'rsuite'
 import {ItemDataType} from 'rsuite/esm/@types/common'
@@ -9,7 +9,8 @@ import LabeledProperty from '../components/LabeledProperty'
 export const TooltipTypePicker = () => {
   const {value, onChange, annotation, onRemove} = useEditor()
   const store = useStore()
-  const data = store.props.view.tooltips.map(name => {
+  const props = useViewerProps()
+  const data = props.view.tooltips.map(name => {
     return {
       value: name,
       label: startCase(name)
