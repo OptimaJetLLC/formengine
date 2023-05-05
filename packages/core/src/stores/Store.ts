@@ -2,6 +2,7 @@ import {assign} from 'lodash-es'
 import {makeObservable, observable} from 'mobx'
 import {Subject} from 'rxjs'
 import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
+import {buildInternalErrorStore} from '../features/ui/internalErrorModel'
 import {screenModel} from '../features/ui/screenModel'
 import {Form} from '../features/validation'
 import {ViewMode} from '../types'
@@ -62,14 +63,25 @@ export class Store {
 
   loadForm(getForm?: (name?: string) => ComponentStore | Promise<ComponentStore>, formName?: string) {
     if (!getForm) return
-    const form = getForm(formName)
-    if (typeof (form as Promise<ComponentStore>).then === 'function') {
-      (form as Promise<ComponentStore>).then(result => {
-        this.#applyComponentStore(result)
-      })
-    } else {
+
+    try {
+      const form = getForm(formName)
+      if (typeof (form as Promise<ComponentStore>).then === 'function') {
+        (form as Promise<ComponentStore>)
+          .then(this.#applyComponentStore.bind(this))
+          .catch(this.#onLoadError.bind(this))
+        return
+      }
       this.#applyComponentStore(form as ComponentStore)
+    } catch (e) {
+      return this.#onLoadError(e)
     }
+  }
+
+  #onLoadError(e: any) {
+    console.error(e)
+    const componentStore = buildInternalErrorStore(e)
+    this.#applyComponentStore(componentStore)
   }
 
   #applyComponentStore(componentStore: ComponentStore) {

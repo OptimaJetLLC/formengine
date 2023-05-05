@@ -189,6 +189,11 @@
       "key": "RadioGroup",
       "type": "RsRadioGroup",
       "props": {}
+    },
+    {
+      "key": "none",
+      "type": "none",
+      "props": {}
     }
   ]
 }

@@ -1,5 +1,6 @@
 import {View} from 'fb-core'
 import {Annotation} from '../../annotation/types/annotations/Annotation'
+import {internalErrorMeta} from '../../components/internalErrorMeta'
 import {screenMeta} from '../../components/screenMeta'
 import {BuilderComponent} from './BuilderComponent'
 import {Meta} from './Meta'
@@ -11,7 +12,7 @@ export class BuilderView extends View {
   getMeta(type: string) {
     const result = this.#metaMap.get(type)
     if (result) return result
-    throw new Error(`The ${type} is not found!`)
+    return internalErrorMeta
   }
 
   getTooltipAnnotations(name: string): Annotation[] | undefined {
@@ -36,6 +37,7 @@ export class BuilderView extends View {
     super(builderComponents.map(({model}) => model))
     const metas = builderComponents.map(({meta}) => meta)
     this.#metaMap.set(screenMeta.type, screenMeta)
+    this.#metaMap.set(internalErrorMeta.type, internalErrorMeta)
 
     metas.forEach(meta => {
       this.#metaMap.set(meta.type, meta)

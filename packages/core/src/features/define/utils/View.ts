@@ -1,3 +1,4 @@
+import {buildInternalErrorModel, internalErrorModel} from '../../ui/internalErrorModel'
 import {screenModel} from '../../ui/screenModel'
 import {errorMessageModel} from '../../validation/components/ErrorMessage'
 import {Model} from './Model'
@@ -21,6 +22,7 @@ export class View {
 
   constructor(models: Model[] = []) {
     this.define(screenModel)
+    this.define(internalErrorModel)
     models.forEach(this.define.bind(this))
   }
 
@@ -45,7 +47,7 @@ export class View {
   get(type: string) {
     const result = this.#modelMap.get(type)
     if (result) return result
-    throw new Error(`The ${type} is not found!`)
+    return buildInternalErrorModel(`Type '${type}' is not found!`)
   }
 
   all() {
