@@ -1,4 +1,4 @@
-import {boolean, color, number, oneOf} from 'form-builder/view'
+import {boolean, color, event, number, oneOf, string} from 'form-builder/view'
 import {TypeAttributes} from 'rsuite/esm/@types/common'
 
 type Placement = TypeAttributes.Placement;
@@ -39,3 +39,11 @@ export const textStyles = {
 }
 
 export const readOnly = boolean.hinted('Read only component')
+
+export const inputProps = {
+  placeholder: string.hinted('Input placeholder'),
+  size,
+  disabled: boolean.hinted('Disabled component'),
+  readOnly,
+  onChange: event,
+}

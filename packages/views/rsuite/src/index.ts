@@ -19,6 +19,8 @@ import {rsLabel} from './components/RsLabel'
 import {rsContent, rsFooter, rsHeader, rsSidebar} from './components/RsLayout'
 import {rsMenu} from './components/RsMenu'
 import {rsMessage} from './components/RsMessage'
+import {rsNumberFormat} from './components/RsNumberFormat'
+import {rsPatternFormat} from './components/RsPatternFormat'
 import {rsProgressCircle, rsProgressLine} from './components/RsProgress'
 import {rsRadioGroup} from './components/RsRadioGroup'
 import {rsRepeater} from './components/RsRepeater'
@@ -48,6 +50,8 @@ const definitions = [
   rsGridView,
   rsImage,
   rsInput,
+  rsNumberFormat,
+  rsPatternFormat,
   rsLabel,
   rsContent,
   rsFooter,

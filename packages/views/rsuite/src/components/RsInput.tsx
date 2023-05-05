@@ -1,21 +1,20 @@
 import EyeIcon from '@rsuite/icons/legacy/Eye'
 import EyeSlashIcon from '@rsuite/icons/legacy/EyeSlash'
-import {boolean, define, event, string} from 'form-builder/view'
+import {boolean, define, string} from 'form-builder/view'
 import {useState} from 'react'
 import {Input, InputGroup, InputProps} from 'rsuite'
-import {readOnly, size} from '../commonProperties'
+import {inputProps} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
 
-export interface RsInputProps extends InputProps {
+interface RsInputProps extends InputProps {
   label: string
-  masked?: boolean
+  passwordMask?: boolean
 }
 
-// todo этот компонент должен поддерживать numeric input only (number format в старом фб)
-export const RsInput = ({style, className, label, masked, ...props}: RsInputProps) => {
+const RsInput = ({style, className, label, passwordMask, ...props}: RsInputProps) => {
   const [visible, setVisible] = useState(false)
 
-  const input = masked
+  const input = passwordMask
     ? <InputGroup inside>
       <Input type={visible ? 'text' : 'password'} {...props}/>
       <InputGroup.Button onClick={() => setVisible(!visible)}>
@@ -32,13 +31,9 @@ export const RsInput = ({style, className, label, masked, ...props}: RsInputProp
 export const rsInput = define(RsInput)
   .props({
     label: string.default('Input').hinted('Input label'),
+    ...inputProps,
     value: string.default('').valued,
-    placeholder: string.default('').hinted('Input placeholder'),
-    size,
-    disabled: boolean.hinted('Disabled component'),
-    masked: boolean.hinted('Use masked input'),
-    readOnly,
-    onChange: event,
+    passwordMask: boolean
   })
   .actions((props, def) => {
     return {

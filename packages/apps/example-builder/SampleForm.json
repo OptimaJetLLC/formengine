@@ -37,8 +37,7 @@
     {
       "key": "Image 1",
       "type": "RsImage",
-      "props": {
-      },
+      "props": {},
       "css": {
         "object": {
           "width": "100%",
@@ -117,7 +116,11 @@
         {
           "key": "name container",
           "type": "RsContainer",
-          "props": {},
+          "props": {
+            "direction": {
+              "value": "horizontal"
+            }
+          },
           "children": [
             {
               "key": "first name",
@@ -137,9 +140,56 @@
                 }
               }
             }
+          ],
+          "css": {
+            "object": {}
+          }
+        },
+        {
+          "key": "Formatted",
+          "type": "RsContainer",
+          "props": {
+            "direction": {
+              "value": "horizontal"
+            }
+          },
+          "css": {
+            "object": {}
+          },
+          "children": [
+            {
+              "key": "RsNumberFormat 1",
+              "type": "RsNumberFormat",
+              "props": {
+                "label": {
+                  "value": "Salary"
+                }
+              }
+            },
+            {
+              "key": "RsPatternFormat 1",
+              "type": "RsPatternFormat",
+              "props": {
+                "label": {
+                  "value": "Phone number"
+                },
+                "format": {
+                  "value": "+1 (###) #### ###"
+                },
+                "allowEmptyFormatting": {
+                  "value": true
+                },
+                "mask": {
+                  "value": "_"
+                }
+              }
+            }
           ]
         }
-      ]
+      ],
+      "css": {
+        "object": {}
+      }
     },
     {
       "key": "type",

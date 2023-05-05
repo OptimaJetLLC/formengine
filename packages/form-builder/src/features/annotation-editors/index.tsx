@@ -13,6 +13,7 @@ import {NumberInput} from './NumberInput'
 import {Picker} from './Picker'
 import {RadioInput} from './RadioInput'
 import {RenderWhenEditor} from './RenderWhenEditor'
+import {SetInput} from './SetInput'
 import {SizeInput} from './SizeInput'
 import {StringInput} from './StringInput'
 import {StyleEditor} from './StyleEditor'
@@ -31,6 +32,7 @@ export const EditorMap: Record<string, ComponentType> = {
   number: NumberInput,
   size: SizeInput,
   array: ArrayInput,
+  set: SetInput,
   color: ColorInput,
   event: EventEditor,
   node: ChildViewer,

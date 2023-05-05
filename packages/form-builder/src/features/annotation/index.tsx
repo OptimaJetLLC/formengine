@@ -22,6 +22,8 @@ export const size = createProperty('size').schemed(yup.object({}))
 //Array
 export const array = createProperty('array').schemed(yup.array())
 
+export const set = createProperty('set').schemed(yup.array())
+
 export const color = createProperty('color').schemed(yup.string())
 
 export const tooltipType = createAnnotation('tooltipType').schemed(yup.string())

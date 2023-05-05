@@ -25,6 +25,62 @@
     },
     "textAlign": {
       "name": "Alignment"
+    },
+    "passwordMask": {
+      "name": "Password mask",
+      "hint": "Use password mask"
+    },
+    "allowLeadingZeros": {
+      "name": "Allow leading zeros",
+      "hint": "This allows enabling or disabling leading zeros in the input field. By default, on blur of an input, leading zeros are removed"
+    },
+    "allowNegative": {
+      "name": "Allow negative",
+      "hint": "If set to false, negative numbers will not be allowed"
+    },
+    "allowedDecimalSeparators": {
+      "name": "Allowed decimal separators",
+      "hint": "Characters which when pressed result in a decimal separator. When missing, decimal separator and '.' are used"
+    },
+    "decimalScale": {
+      "name": "Decimal scale",
+      "hint": "If defined, it limits the number of digits after the decimal point"
+    },
+    "decimalSeparator": {
+      "name": "Decimal separator",
+      "hint": "Defines the decimal character"
+    },
+    "fixedDecimalScale": {
+      "name": "Fixed decimal scale",
+      "hint": "If set to true, it adds trailing 0s after decimalSeparator to match given decimalScale"
+    },
+    "prefix": {
+      "name": "Prefix",
+      "hint": "Adds the prefix character before the input value"
+    },
+    "suffix": {
+      "name": "Suffix ",
+      "hint": "Adds the suffix after the input value"
+    },
+    "thousandsGroupStyle": {
+      "name": "Thousands group style",
+      "hint": "Thousand style (thousand) : 123,456,789, indian style (lakh) : 12,34,56,789, chinese style (wan) : 1,2345,6789"
+    },
+    "allowEmptyFormatting": {
+      "name": "Allow empty formatting ",
+      "hint": "By default PatternFormat component does not apply formatting when value is empty (null, undefined or ‘’)"
+    },
+    "format": {
+      "name": "Format",
+      "hint": "Format pattern using the # (or a Pattern char) character. # is the placeholder character for numbers. Example: '### ###'"
+    },
+    "mask": {
+      "name": "Mask",
+      "hint": "Used as mask character for numeric places, until any numeric character is provided for that position"
+    },
+    "patternChar": {
+      "name": "Pattern char",
+      "hint": "This helps define the format pattern character"
     }
   },
   "leftMenu": {
@@ -90,7 +146,8 @@
       "hint": "Make this property calculable",
       "edit": "Edit calculable",
       "notCalculable": "Not calculable"
-    }
+    },
+    "setInputHint": "Press Enter for add value"
   },
   "toolbar": {
     "elements": "Elements",

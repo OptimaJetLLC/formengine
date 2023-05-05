@@ -95,8 +95,7 @@ const Container = styled.div`
   flex-direction: column;
   flex: 1;
   overflow-y: auto;
-  max-width: 256px;
-  margin-right: 10px;
+  padding-right: 5px;
   justify-content: space-between;
 
   & > * {
