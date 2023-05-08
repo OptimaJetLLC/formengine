@@ -9,11 +9,11 @@ interface RsPatternFormatProps extends PatternFormatProps {
   label: string
 }
 
-const RsPatternFormat = ({style, className, label, format, onChange, ...props}: RsPatternFormatProps) => {
+const RsPatternFormat = ({style, className, label, format, onChange, value, ...props}: RsPatternFormatProps) => {
   return <RsLabeledInput style={style} className={className}>
     <RsRtlLabel>{label}</RsRtlLabel>
     <PatternFormat customInput={WrappedInput as any} format={format ?? ''} {...props}
-                   onChange={onChangeWrapped(onChange)}/>
+                   onChange={onChangeWrapped(onChange)} value={value ?? ''}/>
   </RsLabeledInput>
 }
 

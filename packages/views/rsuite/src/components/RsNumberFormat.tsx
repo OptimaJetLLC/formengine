@@ -9,11 +9,11 @@ interface RsNumberFormatProps extends NumericFormatProps {
   label: string
 }
 
-const RsNumberFormat = ({style, className, label, onChange, ...props}: RsNumberFormatProps) => {
+const RsNumberFormat = ({style, className, label, onChange, value, ...props}: RsNumberFormatProps) => {
   return <RsLabeledInput style={style} className={className}>
     <RsRtlLabel>{label}</RsRtlLabel>
     <NumericFormat customInput={WrappedInput as any} {...props}
-                   onChange={onChangeWrapped(onChange)}/>
+                   onChange={onChangeWrapped(onChange)} value={value ?? ''}/>
   </RsLabeledInput>
 }
 

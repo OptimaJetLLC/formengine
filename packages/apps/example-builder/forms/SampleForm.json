@@ -252,12 +252,20 @@
           }
         },
         {
-          "key": "cancel",
+          "key": "reset",
           "type": "RsButton",
           "props": {
             "children": {
-              "value": "Cancel"
+              "value": "Reset"
             }
+          },
+          "events": {
+            "onClick": [
+              {
+                "name": "Reset",
+                "type": "common"
+              }
+            ]
           }
         }
       ]
