@@ -14,7 +14,7 @@ interface ActionItemProps {
 }
 
 export const ActionItem = observer(({data, eventName, index}: ActionItemProps) => {
-  const {componentStore} = useComponentData()
+  const {store} = useComponentData()
 
   return (
     <ActionDataProvider value={data}>
@@ -22,7 +22,7 @@ export const ActionItem = observer(({data, eventName, index}: ActionItemProps) =
         {data.type === 'linked' ? <ChoosenTarget/> : null}
         <ChoosenAction/>
         <ArgumentList/>
-        <RemoveButton onClick={() => removeAction(componentStore, eventName, index)}/>
+        <RemoveButton onClick={() => removeAction(store, eventName, index)}/>
       </SDiv>
     </ActionDataProvider>
   )

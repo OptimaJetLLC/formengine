@@ -21,13 +21,13 @@ interface RsTabProps {
 }
 
 const RsTab = (props: RsTabProps) => {
-  const {componentStore} = useComponentData()
+  const {store} = useComponentData()
 
   if (!props.items?.length) return null
 
   const {pane, onSelect, showNavigation, ...otherProps} = props
   const onNavSelect = (eventKey: string, event: React.SyntheticEvent) => {
-    componentStore.props.activeKey = {value: eventKey}
+    store.props.activeKey = {value: eventKey}
     onSelect?.(eventKey, event)
   }
 

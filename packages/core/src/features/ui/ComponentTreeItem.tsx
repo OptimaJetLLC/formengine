@@ -3,7 +3,6 @@ import {ComponentStore} from '../../stores/ComponentStore'
 import {namedObserver} from '../../utils'
 import {ComponentData, ComponentDataProvider} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
-import {useMemoizedLocalObserver} from '../../utils/useMemoizedLocalObserver'
 import {useEventListener} from '../event'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 import {TooltipWrapper} from '../tooltip/TooltipWrapper'
@@ -18,17 +17,7 @@ export interface ComponentTreeItemProps {
 export const ComponentTreeItem = namedObserver('ComponentTreeItem', ({componentStore, parentStore}: ComponentTreeItemProps) => {
   const store = useStore()
   const props = useViewerProps()
-  const data = useMemoizedLocalObserver<ComponentData>(() => ({
-    key: componentStore.key,
-    componentStore,
-    parentStore,
-    model: props.view.get(componentStore.type),
-    get field() {
-      return store.form.get(componentStore.key)
-    },
-  }), {
-    model: false
-  }, [componentStore, parentStore, store])
+  const data = useCachedComponentData(componentStore, parentStore)
 
   useEffect(() => {
     store.form.set(componentStore, data.model)
@@ -38,7 +27,7 @@ export const ComponentTreeItem = namedObserver('ComponentTreeItem', ({componentS
   useEventListener(data.key, 'onBlur', _ => data.field?.setTouched(), [])
 
   const Wrapper = props.componentWrapper || Fragment
-  const Tooltip = !!data.componentStore.tooltipProps ? TooltipWrapper : Fragment
+  const Tooltip = !!data.store.tooltipProps ? TooltipWrapper : Fragment
 
   return (
     <ComponentDataProvider value={data}>
@@ -52,3 +41,28 @@ export const ComponentTreeItem = namedObserver('ComponentTreeItem', ({componentS
     </ComponentDataProvider>
   )
 })
+
+function useCachedComponentData(componentStore: ComponentStore, parentStore?: ComponentStore) {
+  const store = useStore()
+  const props = useViewerProps()
+
+  //If exists return with updated parent
+  if (store.cache.has(componentStore)) {
+    const data = store.cache.get(componentStore)!
+    return Object.assign<ComponentData, Partial<ComponentData>>(data, {parent: parentStore})
+  }
+
+  store.cache.set(componentStore, {
+    get key() {
+      return this.store.key
+    },
+    store: componentStore,
+    parent: parentStore,
+    model: props.view.get(componentStore.type),
+    get field() {
+      return store.form.get(componentStore.key)
+    },
+  })
+
+  return store.cache.get(componentStore)!
+}

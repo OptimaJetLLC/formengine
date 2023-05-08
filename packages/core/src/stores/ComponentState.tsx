@@ -22,7 +22,7 @@ export class ComponentState {
 
   get get(): Record<string, any> {
     const propsWithoutChildren = Object.assign(
-      {key: this.data.componentStore.key},
+      {key: this.data.store.key},
       this.data.model.defaultProps,
       this.calculatedProps,
       this.substitutedValue,
@@ -40,7 +40,7 @@ export class ComponentState {
   }
 
   get calculatedProps() {
-    return calculateProperties(this.data.componentStore, this.store.form)
+    return calculateProperties(this.data.store, this.store.form)
   }
 
   get events() {
@@ -48,7 +48,7 @@ export class ComponentState {
   }
 
   get substitutedValue() {
-    return getSubstitutedValue(this.data.componentStore.props, this.store)
+    return getSubstitutedValue(this.data.store.props, this.store)
   }
 
   get className() {
@@ -57,7 +57,7 @@ export class ComponentState {
   }
 
   get htmlAttributes() {
-    return getHtmlAttributes(this.data.componentStore)
+    return getHtmlAttributes(this.data.store)
   }
 
   children(props: any) {

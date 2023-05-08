@@ -6,13 +6,13 @@ import {DefinedStyles} from './components/DefinedStyles'
 import {StandardStyles} from './components/StandardStyles'
 
 export const StyleEditor = () => {
-  const {componentStore} = useComponentData()
+  const {store} = useComponentData()
 
   useEffect(() => {
-    componentStore.css ??= {}
-  }, [componentStore.css])
+    store.css ??= {}
+  }, [store.css])
 
-  if (!componentStore.css) return null
+  if (!store.css) return null
 
   return (
     <Rows style={{marginLeft: 5}}>

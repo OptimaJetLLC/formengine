@@ -8,7 +8,7 @@ interface StandardStylesGroupProps {
 
 export const StandardStylesGroup = observer(({stylesDefinition}: StandardStylesGroupProps) => {
   const data = useComponentData()
-  const css = data.componentStore.css
+  const css = data.store.css
   if (!css) return null
 
   return (

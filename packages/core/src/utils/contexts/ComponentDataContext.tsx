@@ -4,9 +4,9 @@ import {ComponentStore} from '../../stores/ComponentStore'
 import {createNonNullableContext} from '../createNonNullableContext'
 
 export type ComponentData = {
-  readonly key: string,
-  readonly parentStore?: ComponentStore,
-  readonly componentStore: ComponentStore,
+  readonly key: string, //TODO Remove?
+  readonly parent?: ComponentStore,
+  readonly store: ComponentStore,
   readonly model: Model,
   readonly field?: Field,
 }

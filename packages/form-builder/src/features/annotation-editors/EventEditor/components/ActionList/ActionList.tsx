@@ -6,7 +6,7 @@ import {ActionItem} from './ActionItem'
 
 export const ActionList = observer(() => {
   const eventName = useAnnotation().annotation.key
-  const actions = useComponentData().componentStore.events?.[eventName]
+  const actions = useComponentData().store.events?.[eventName]
 
   if (!actions) return null
 

@@ -5,29 +5,29 @@ import {useAnnotation} from '../../utils/EditorContext'
 import LabeledProperty from '../components/LabeledProperty'
 
 export const RenderWhenEditor = () => {
-  const selected = useBuilderStore().getSingleSelected()
+  const selected = useBuilderStore().oneSelected
   const {annotation} = useAnnotation()
 
   if (!selected) return null
 
-  const {renderWhen} = selected.data
+  const {renderWhen} = selected
 
   const onChange = (value: string) => {
-    if (!selected.data.renderWhen) {
-      selected.data.renderWhen = {value}
+    if (!selected.renderWhen) {
+      selected.renderWhen = {value}
       return
     }
-    selected.data.renderWhen.value = value
+    selected.renderWhen.value = value
   }
 
   const getEditableProperty = () => ({
     componentKey: selected.key,
     annotation: annotation,
-    property: selected.data.renderWhen,
+    property: selected.renderWhen,
     saveProperty: (property: ComponentProperty) => {
-      const renderWhen = selected.data.renderWhen || {}
-      selected.data.renderWhen = Object.assign(renderWhen, property)
-      return selected.data.renderWhen
+      const renderWhen = selected.renderWhen || {}
+      selected.renderWhen = Object.assign(renderWhen, property)
+      return selected.renderWhen
     }
   })
 

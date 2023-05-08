@@ -4,27 +4,29 @@ import {FormViewer, useViewerProps} from 'fb-core'
 import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
 import {Button} from 'rsuite'
-import {IsTreeProvider} from '../../../../utils/IsTreeContext'
+import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {Columns, Rows} from '../../../components/Containers'
 import {DraggableTreeNode} from '../../../dnd'
 
 const Tree = observer(() => {
   const props = useViewerProps()
   const {t} = useTranslation()
+  const store = useBuilderStore()
+
+  const handleExpand = () => store.expandAll()
+  const handleCollapse = () => store.collapseAll()
 
   return <Rows style={{overflow: 'hidden', flex: 1}}>
     <STreeContainer>
-      <IsTreeProvider value={true}>
-        <FormViewer {...props} componentWrapper={DraggableTreeNode} getForm={undefined}/>
-      </IsTreeProvider>
+      <FormViewer {...props} componentWrapper={DraggableTreeNode} getForm={undefined}/>
     </STreeContainer>
 
     <Columns stretchElements>
-      <SubtleIconButton size={'sm'} appearance={'subtle'}>
+      <SubtleIconButton onClick={handleExpand} size={'sm'} appearance={'subtle'}>
         <ExpandOutline/>
         {t('tree.expand')}
       </SubtleIconButton>
-      <SubtleIconButton size={'sm'} appearance={'subtle'}>
+      <SubtleIconButton onClick={handleCollapse} size={'sm'} appearance={'subtle'}>
         <CollaspedOutline/>
         {t('tree.collapse')}
       </SubtleIconButton>

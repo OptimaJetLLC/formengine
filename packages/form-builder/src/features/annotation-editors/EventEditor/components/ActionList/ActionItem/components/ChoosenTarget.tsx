@@ -1,8 +1,7 @@
 import {ArrowDownLine} from '@rsuite/icons'
-import {useStore} from 'fb-core'
+import {ComponentData, useStore} from 'fb-core'
 import {observer} from 'mobx-react'
 import {Button, Dropdown, Popover, Whisper} from 'rsuite'
-import {ComponentNode} from '../../../../../../../utils/ComponentNode'
 import {useGroups} from '../../../../hooks/useGroups'
 import {useActionData} from '../contexts/ActionDataContext'
 
@@ -19,13 +18,13 @@ export const ChoosenTarget = observer(() => {
             <div key={group} style={{padding: '0 15px', marginTop: 5}}>
               <h6>{group + 's'}</h6>
               {
-                groups[group].map((node: ComponentNode) => (
+                groups[group].map((node: ComponentData) => (
                   <Dropdown.Item
                     key={node.key}
                     children={node.key}
                     onSelect={() => {
                       onClose()
-                      data.target = node.data.key
+                      data.target = node.store.key
                     }}
                   />
                 ))

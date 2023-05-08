@@ -5,6 +5,7 @@ import {observer} from 'mobx-react'
 import {ComponentProps, ReactNode} from 'react'
 import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
+import {isRootType} from '../../../../../utils/isRoot'
 import {useDnd} from '../hooks/useDnd'
 import {DragPreview} from './DragPreview'
 import {DropZone} from './DropZone'
@@ -15,12 +16,15 @@ interface DraggableProps extends ComponentProps<any> {
 }
 
 export const Draggable = observer(({children, viewForDragPreview, isInner, className, ...props}: DraggableProps) => {
-  const {isContainer, isRoot, key} = useComponentData().componentStore
+  const data = useComponentData()
+  const isRoot = isRootType(data.store)
+  const isContainer = Boolean(data.store.children)
   const store = useBuilderStore()
+
   const [{isActive, isDragging: isDraggingCurrent}, dnd] = useDnd()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
 
-  const hidden = isDragging && store.isNodeSelected(key)
+  const hidden = isDragging && store.selected.has(data.store)
 
   return <>
     {isDraggingCurrent && <DragPreview>{viewForDragPreview}</DragPreview>}

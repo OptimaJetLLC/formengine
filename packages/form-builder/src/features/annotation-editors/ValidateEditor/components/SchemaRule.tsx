@@ -17,8 +17,8 @@ interface SchemaRuleProps {
 }
 
 export const SchemaRule = observer(({ruleKey}: SchemaRuleProps) => {
-  const {componentStore} = useComponentData()
-  const schema = componentStore.schema
+  const {store} = useComponentData()
+  const schema = store.schema
   const meta = useMeta()
 
   const valuedAn = meta?.valuedAn

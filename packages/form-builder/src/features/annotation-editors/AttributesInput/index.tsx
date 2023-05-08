@@ -19,10 +19,10 @@ const COLUMNS = makeColumns([
 ])
 
 export default () => {
-  const {componentStore} = useComponentData()
+  const {store} = useComponentData()
   const {annotation} = useEditor()
   const getLabel = useTranslationPart('common')
-  const [value, setValue] = useState(componentStore.htmlAttributes)
+  const [value, setValue] = useState(store.htmlAttributes)
   const [changed, setChanged] = useState(false)
   const handleChange = (value: any) => {
     setValue(value)
@@ -30,7 +30,7 @@ export default () => {
   }
 
   const confirm = () => {
-    componentStore.htmlAttributes = value
+    store.htmlAttributes = value
     setChanged(false)
   }
 

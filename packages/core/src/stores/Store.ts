@@ -7,6 +7,7 @@ import {screenModel} from '../features/ui/screenModel'
 import {Form} from '../features/validation'
 import {ViewMode} from '../types'
 import {treeFind} from '../utils'
+import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {ComponentStore} from './ComponentStore'
 import {StoreProps} from './StoreProps'
 
@@ -17,6 +18,8 @@ export class Store {
   readonly form
 
   screen = new ComponentStore(screenModel.name, screenModel.type)
+  cache = new WeakMap<ComponentStore, ComponentData>()
+
   viewMode: ViewMode = 'desktop'
 
   constructor(props: Readonly<StoreProps>, public actions: ActionDefinition[] = [], public isBuilderMode: boolean = false) {
@@ -44,6 +47,17 @@ export class Store {
 
     if (!result) {
       throw Error(`Component ${key} didn't found!`)
+    }
+
+    return result
+  }
+
+  getComponentData(value: ComponentStore | string) {
+    const store = typeof value === 'string' ? this.getComponent(value) : value
+    const result = this.cache.get(store)
+
+    if (!result) {
+      throw Error(`Component data for ${store.key} didn't found!`)
     }
 
     return result

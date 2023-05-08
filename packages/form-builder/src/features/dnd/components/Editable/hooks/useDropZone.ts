@@ -15,7 +15,7 @@ export const useDropZone = (isAfter: boolean, isInner?: boolean): [DropState, Co
 
   const store = useBuilderStore()
   const target = useComponentData()
-  const {bindTo} = target.componentStore
+  const {bindTo} = target.store
   const insertPosition = isInner
     ? Inner
     : isAfter ? After : Before
@@ -30,8 +30,8 @@ export const useDropZone = (isAfter: boolean, isInner?: boolean): [DropState, Co
           break
         case ItemType.Component:
           //TODO механизм биндинга свойств
-          source.componentStore.bindTo = bindTo
-          if (store.selected.length > 1) {
+          source.store.bindTo = bindTo
+          if (store.selected.size > 1) {
             store.multipleMove(target, insertPosition)
           } else {
             store.move(source, target, insertPosition)

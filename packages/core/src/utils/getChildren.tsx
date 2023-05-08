@@ -8,7 +8,7 @@ import {groupBy} from './groupBy'
 const defaultContainerKey = 'children'
 
 export function getChildren(data: ComponentData, store: Store, componentTreeItem: ComponentType<any>, currentState: Record<string, any>) {
-  const containers = data.componentStore.children
+  const containers = data.store.children
   const ComponentTree = componentTreeItem
   const currentProps: Record<string, any> = {}
 
@@ -22,7 +22,7 @@ export function getChildren(data: ComponentData, store: Store, componentTreeItem
     const filteredChildren = children
       .filter(isBindConditionSatisfied)
       .filter(isNeedRender)
-    if (filteredChildren.length) currentProps[key] = <ComponentTree parentStore={data.componentStore} data={filteredChildren}/>
+    if (filteredChildren.length) currentProps[key] = <ComponentTree parentStore={data.store} data={filteredChildren}/>
   }
 
   return currentProps

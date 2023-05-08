@@ -4,6 +4,7 @@ import PlusIcon from '@rsuite/icons/Plus'
 import {useComponentData} from 'fb-core'
 import {ComponentProps} from 'react'
 import {IconButton} from 'rsuite'
+import {isRootType} from '../../../../../utils/isRoot'
 import {InsertPosition} from '../../../../../utils/types'
 import {useComponentsModal} from '../../../../ui/ComponentBar/ComponentsModal'
 
@@ -17,10 +18,12 @@ interface DropViewProps extends ComponentProps<any> {
 }
 
 export const DropView = (props: DropViewProps) => {
-  const {isRoot, isContainer, key} = useComponentData().componentStore
+  const {store} = useComponentData()
+  const isRoot = isRootType(store)
+  const isContainer = Boolean(store.children)
   const {bindTo, bindCondition, ...classNamesFromProps} = props
   const dropClassNames = {isContainer, isRoot, ...classNamesFromProps}
-  const label = `${props.isAfter ? 'AFTER' : 'BEFORE'} ${key}`
+  const label = `${props.isAfter ? 'AFTER' : 'BEFORE'} ${store.key}`
 
   return <Container className={cx({...dropClassNames})}>
     <LabelContainer>

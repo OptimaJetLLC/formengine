@@ -17,19 +17,19 @@ export const useActions = () => {
   useEffect(() => {
     const subscriptions: Subscription[] = []
 
-    forIn(componentData.componentStore.events, (actionDataList: ActionData[], eventName) => {
+    forIn(componentData.store.events, (actionDataList: ActionData[], eventName) => {
       actionDataList.forEach((data) => {
         const {params, func} = store.findAction(data)
         const action = params ? getActionHandler(store, func, data.args) : func
         const subscription = store.eventSubject
-          .pipe(filter(e => e.type === eventName && e.sender.key === componentData.componentStore.key))
+          .pipe(filter(e => e.type === eventName && e.sender.key === componentData.store.key))
           .subscribe(action)
         subscriptions.push(subscription)
       })
     })
 
     return () => subscriptions.forEach(s => s.unsubscribe())
-  }, [componentData.componentStore.events])
+  }, [componentData.store.events])
 
   useEffect(() => {
     store.eventSubject.next(new ActionEventArgs(DidMountEvent, componentData, store, []))

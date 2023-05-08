@@ -1,18 +1,31 @@
 import styled from '@emotion/styled'
-import {useComponentData, useComponentTree, useComputed, useStore} from 'fb-core'
-import {useEffect, useRef, useState} from 'react'
+import {Icon} from '@rsuite/icons'
+import ArrowDownLineIcon from '@rsuite/icons/ArrowDownLine'
+import ArrowRightLineIcon from '@rsuite/icons/ArrowRightLine'
+import {useComponentData, useComponentTree, useComputed} from 'fb-core'
+import {observer} from 'mobx-react'
+import {useCallback, useEffect, useRef, useState} from 'react'
+import {IconButton} from 'rsuite'
 import scrollIntoView from 'scroll-into-view-if-needed'
+import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {useSelection} from '../hooks/useSelection'
 import {Toolbar} from './Toolbar'
 
-export const TreeNode = ({className}: { className: string }) => {
+export const TreeNode = observer(({className}: { className: string }) => {
   const ComponentTree = useComponentTree()
   const data = useComponentData()
-  const store = useStore()
-  const deep = useComputed(() => findDepth(store.screen, data.componentStore.key) ?? 0)
+  const store = useBuilderStore()
+  const deep = useComputed(() => findDepth(store.viewer.screen, data.store.key) ?? 0)
   const [hovered, setHovered] = useState(false)
   const [{selected}] = useSelection()
   const ref = useRef<HTMLDivElement>(null)
+
+  const expanded = store.expanded.has(data.store)
+  const toggleExpand = useCallback(() => {
+    store.expanded.has(data.store)
+      ? store.expanded.delete(data.store)
+      : store.expanded.add(data.store)
+  }, [])
 
   useEffect(() => {
     if (selected && ref.current) {
@@ -24,14 +37,17 @@ export const TreeNode = ({className}: { className: string }) => {
     <>
       <SDiv style={{paddingLeft: 10 * deep}} className={className} ref={ref}
             onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        <IconButton size="xs" onClick={toggleExpand} appearance="subtle"
+                    icon={<Icon as={expanded ? ArrowDownLineIcon : ArrowRightLineIcon}/>}/>
         <div>{`${data.key}`}</div>
         <label>{`${data.model.name}`}</label>
-        {hovered && <Toolbar/>}
+        {hovered && <Toolbar compact/>}
       </SDiv>
-      <ComponentTree parentStore={data.componentStore} data={data.componentStore.children}/>
+      <ComponentTree parentStore={data.store} data={data.store.children}/>
     </>
   )
-}
+})
+
 const SDiv = styled.div`
   display: flex;
   flex-direction: row;

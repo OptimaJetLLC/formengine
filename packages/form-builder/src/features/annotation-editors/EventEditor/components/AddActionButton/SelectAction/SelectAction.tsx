@@ -13,14 +13,14 @@ interface SelectActionProps {
 }
 
 export const SelectAction = observer(({onClose, onOpen}: SelectActionProps) => {
-  const {componentStore} = useComponentData()
+  const {store} = useComponentData()
   const eventName = useAnnotation().annotation.key
 
   const handleSelect = useCallback((action: ActionData) => {
     onClose()
-    componentStore.events ??= {}
-    componentStore.events[eventName] ??= []
-    componentStore.events[eventName].push(action)
+    store.events ??= {}
+    store.events[eventName] ??= []
+    store.events[eventName].push(action)
   }, [])
 
   return <Dropdown.Menu>

@@ -6,7 +6,7 @@ import {Nullable} from 'vitest'
 import {useMeta} from '../../../../utils/useMeta'
 
 export const AddRuleButton = observer(() => {
-  const {componentStore} = useComponentData()
+  const {store} = useComponentData()
   const {t} = useTranslation()
   const meta = useMeta()
 
@@ -30,8 +30,8 @@ export const AddRuleButton = observer(() => {
             children={rule.name}
             eventKey={key}
             onSelect={(key) => {
-              componentStore.schema ??= {type, rules: []}
-              componentStore.schema.rules.push(key)
+              store.schema ??= {type, rules: []}
+              store.schema.rules.push(key)
             }}
           />
         ))

@@ -9,7 +9,7 @@ type ElementType<T extends any[]> = T extends (infer U)[] ? U : never;
  * @example:
  * useMultiReaction(
  *     //Get observers
- *     () => _.values(data.componentStore.events).flat().filter(value => value.type === 'linked'),
+ *     () => _.values(data.store.events).flat().filter(value => value.type === 'linked'),
  *     //Map observer to observable
  *     (observer) => store.findComponent(observer.target!),
  *     //Expression for track value such as in common reaction

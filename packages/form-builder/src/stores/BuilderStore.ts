@@ -1,4 +1,4 @@
-import {ComponentProperty, ComponentStore, screenModel, Store, StoreProps, treeFind, ViewMode} from 'fb-core'
+import {ComponentData, ComponentProperty, ComponentStore, screenModel, Store, StoreProps, ViewMode} from 'fb-core'
 import {assign, cloneDeep} from 'lodash-es'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
 import {Annotation} from '../features/annotation/types/annotations/Annotation'
@@ -7,7 +7,6 @@ import {BiDi} from '../features/localization/bidi'
 import {defaultLanguage} from '../features/localization/consts'
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../features/localization/utils'
 import {PanelPlacement} from '../features/ui/Panel'
-import {ComponentNode} from '../utils/ComponentNode'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {BuilderMode, BuilderTheme, ComponentMove, InsertPosition} from '../utils/types'
 import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
@@ -29,13 +28,14 @@ export class BuilderStore {
   landscapeMode?: boolean
   theme: BuilderTheme = getSystemTheme()
   openedPanels: PanelPlacement[] = ['left', 'right']
-  selected: ComponentNode[] = []
   language = defaultLanguage
   calculatedProperty?: EditableProperty
   lastSaveTime = new Date()
-  readonly #disposer: IReactionDisposer
   readonly view: BuilderView
   readonly formStorageEnabled: boolean
+  readonly selected = new Set<ComponentStore>()
+  readonly expanded = new Set<ComponentStore>()
+  readonly #disposer: IReactionDisposer[]
   private formStorage: FormStorage
   readonly #props: Readonly<StoreProps>
 
@@ -45,7 +45,7 @@ export class BuilderStore {
     formStorage?: FormStorage,
   ) {
     makeAutoObservable(this, {
-      selected: observable.ref,
+      selected: observable,
       language: observable.ref,
       destroy: false,
       calculatedProperty: observable.ref,
@@ -71,15 +71,17 @@ export class BuilderStore {
       }
     })
 
-    this.#disposer = reaction(() => this.language, onLanguageChange)
+    this.#disposer = [
+      reaction(() => this.language, onLanguageChange),
+    ]
+  }
+
+  get oneSelected() {
+    return this.selected.size === 1 ? Array.from(this.selected)[0] : undefined
   }
 
   get formName() {
     return this.#props.formName || '__DefaultForm__'
-  }
-
-  get tree(): ComponentNode {
-    return new ComponentNode(this, this.viewer.screen)
   }
 
   get isRTL(): boolean {
@@ -87,15 +89,15 @@ export class BuilderStore {
   }
 
   static getIndexInParent(node: ComponentMove) {
-    const {key} = node.componentStore
-    const parent = node.parentStore
+    const {key} = node.store
+    const parent = node.parent
     if (!parent) return 0
 
     return parent.children!.findIndex(item => item.key === key)
   }
 
   destroy() {
-    this.#disposer()
+    this.#disposer.forEach(dispose => dispose())
   }
 
   changeBuilderMode(value: BuilderMode) {
@@ -108,27 +110,35 @@ export class BuilderStore {
     store.children?.forEach((child: ComponentStore) => this.treeMap(child, callback))
   }
 
-  findNode = (key?: string) => treeFind(this.tree, key)
-
-  //TODO set in provider
-
   getAllNodes() {
-    const nodes: ComponentNode[] = []
-    getKey(this.tree)
-    return nodes
+    const stores: ComponentStore[] = []
+    const data: ComponentData[] = []
 
-    function getKey(node: ComponentNode) {
-      if (node.key) nodes.push(node)
+    this.treeMap(this.viewer.screen, store => stores.push(store))
+    stores.forEach(store => data.push(this.viewer.getComponentData(store)))
 
-      if (node.children) node.children.map(getKey)
-    }
+    return data
+  }
+
+  expandAll() {
+    this.treeMap(this.viewer.screen, store => this.expanded.add(store))
+  }
+
+  collapseAll() {
+    this.expanded.clear()
+  }
+
+  expand(value: ComponentStore) {
+    let parent: ComponentStore | undefined = value
+    do {
+      if (parent) this.expanded.add(parent)
+      parent = this.viewer.cache.get(parent)?.parent
+    } while (parent)
   }
 
   //TODO post processing
   parseForm(text: string) {
     this.viewer.screen = assign(new ComponentStore('', ''), JSON.parse(text))
-    // restore selection
-    if (this.selected.length) this.selectNode(this.selected[0].key)
     if (this.calculatedProperty) this.calculatedProperty = undefined
   }
 
@@ -138,20 +148,20 @@ export class BuilderStore {
   }
 
   move(source: ComponentMove, target: ComponentMove, insertPosition: InsertPosition = InsertPosition.After) {
-    if (source.componentStore.key === target.componentStore.key) return
+    if (source.store.key === target.store.key) return
 
     this.remove(source)
     const isInner = insertPosition === Inner
     const index = isInner
-      ? target.componentStore.children?.length ?? 0
+      ? target.store.children?.length ?? 0
       : getIndexToPush(target)
     push(source, target, index)
 
 
     function push(source: ComponentMove, target: ComponentMove, index: number) {
-      const purpose = isInner ? target.componentStore : target.parentStore ?? target.componentStore
+      const purpose = isInner ? target.store : target.parent ?? target.store
       purpose.children ??= []
-      purpose.children?.splice(index, 0, source.componentStore)
+      purpose.children?.splice(index, 0, source.store)
     }
 
     function getIndexToPush(target: ComponentMove) {
@@ -161,29 +171,27 @@ export class BuilderStore {
   }
 
   multipleMove(target: ComponentMove, insertPosition: InsertPosition = InsertPosition.After) {
-    this.selected.forEach(({data, parent}) => this.move(
-      {componentStore: data, parentStore: parent?.data} as ComponentMove,
-      target,
-      insertPosition
-    ))
-    this.selected = this.selected.map(({key}) => this.findNode(key)!)
+    this.selected.forEach((store) => {
+      const parent = this.viewer.getComponentData(store).parent
+      this.move({store, parent}, target, insertPosition)
+    })
   }
 
   add(source: ComponentMove, target: ComponentMove, insertPosition: InsertPosition = InsertPosition.After,
       bindTo?: string, bindCondition?: string) {
-    const clone = assign(new ComponentStore('', ''), cloneDeep(source.componentStore))
+    const clone = assign(new ComponentStore('', ''), cloneDeep(source.store))
     clone.bindTo = bindTo
     clone.bindCondition = bindCondition
     this.unifyComponentKeys(clone)
-    this.move({componentStore: clone}, target, insertPosition)
-    this.selectNode(clone.key)
+    this.move({store: clone}, target, insertPosition)
+    this.selected.clear()
+    this.selected.add(clone)
     return clone
   }
 
   remove(source: ComponentMove) {
     const index = BuilderStore.getIndexInParent(source)
-    source.parentStore?.children?.splice(index, 1)
-    this.selected = this.selected.filter(({key}) => key !== source.componentStore.key)
+    source.parent?.children?.splice(index, 1)
   }
 
   unifyComponentKeys(source: ComponentStore) {
@@ -261,26 +269,18 @@ export class BuilderStore {
     ]
   }
 
-  isNodeSelected = (nodeKey: string) => {
-    return this.selected.some(({key}) => key === nodeKey)
-  }
-
-  getSingleSelected = () => {
-    return this.selected.length === 1 ? this.selected[0] : undefined
-  }
-
-  selectNode = (nodeKey: string, multipleSelection = false) => {
-    const node = this.findNode(nodeKey)
-    if (!node) return
-
-    const isSelected = this.isNodeSelected(nodeKey)
+  selectNode = (target: ComponentStore, multipleSelection = false) => {
+    const isSelected = this.selected.has(target)
 
     if (multipleSelection) {
-      this.selected = isSelected
-        ? this.selected.filter(({key}) => key !== nodeKey)
-        : [...this.selected, node]
-    } else if (!isSelected) {
-      this.selected = [node]
+      isSelected
+        ? this.selected.delete(target)
+        : this.selected.add(target)
+    }
+
+    if (!multipleSelection && !isSelected) {
+      this.selected.clear()
+      this.selected.add(target)
     }
   }
 }

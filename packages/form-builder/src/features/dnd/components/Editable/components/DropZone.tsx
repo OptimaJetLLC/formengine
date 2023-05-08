@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import {useComponentData} from 'fb-core'
 import {observer} from 'mobx-react'
 import {ComponentProps} from 'react'
+import {isRootType} from '../../../../../utils/isRoot'
 import {useDropZone} from '../hooks/useDropZone'
 import {DropView} from './DropView'
 
@@ -16,7 +17,9 @@ interface DropZoneProps extends ComponentProps<any> {
 }
 
 const DropZone = observer(({isAfter = false, className, isInner, ...props}: DropZoneProps) => {
-  const {isRoot, isContainer} = useComponentData().componentStore
+  const {store} = useComponentData()
+  const isRoot = isRootType(store)
+  const isContainer = Boolean(store.children)
   const {bindTo, bindCondition} = props
 
   const [{isActive, isOver}, drop] = useDropZone(isAfter, isRoot || isInner)

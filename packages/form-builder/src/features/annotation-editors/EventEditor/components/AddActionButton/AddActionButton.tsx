@@ -29,9 +29,9 @@ export const AddActionButton = observer(() => {
     }
     store.screen.props.actions.value.push(value)
 
-    data.componentStore.events ??= {}
-    data.componentStore.events[eventName] ??= []
-    data.componentStore.events[eventName].push({name: value.name, type: 'custom'})
+    data.store.events ??= {}
+    data.store.events[eventName] ??= []
+    data.store.events[eventName].push({name: value.name, type: 'custom'})
     setEditorData(undefined)
   }
 

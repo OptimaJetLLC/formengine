@@ -10,7 +10,7 @@ import {useTranslationPart} from '../../../localization/hooks'
 const items: Device[] = ['any', 'desktop', 'mobile', 'tablet']
 
 const CSSBlock = observer(() => {
-  const {componentStore} = useComponentData()
+  const {store} = useComponentData()
   const {viewMode} = useBuilderStore()
   const [device, setDevice] = useState<Device>('any')
   const t = useTranslationPart('style')
@@ -20,8 +20,8 @@ const CSSBlock = observer(() => {
     setDevice(viewMode === 'desktop' ? 'any' : viewMode)
   }, [viewMode])
 
-  const styleValue = componentStore.css?.[device] ?? ''
-  const handleChange = (value: string) => componentStore.css![device] = value
+  const styleValue = store.css?.[device] ?? ''
+  const handleChange = (value: string) => store.css![device] = value
 
   return (
     <div>
@@ -31,7 +31,7 @@ const CSSBlock = observer(() => {
                  searchable={false} cleanable={false}/>
       </SHeader>
       <SCodeEditor
-        key={componentStore.key + device}
+        key={store.key + device}
         language="css"
         contextLine={'element.style {'}
         value={styleValue}

@@ -8,12 +8,11 @@ import {observer} from 'mobx-react'
 import {useCallback, useEffect, useRef} from 'react'
 import scrollIntoView from 'scroll-into-view-if-needed'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
-import {useIsTree} from '../../../../../utils/IsTreeContext'
 import {FaIcon} from '../../../../components/Icons'
 import {useSelection} from '../hooks/useSelection'
 import {AddButton} from './AddButton'
 
-export const Toolbar = observer(() => {
+export const Toolbar = observer(({compact}: { compact?: boolean }) => {
   const store = useBuilderStore()
   const data = useComponentData()
   const [{selected}] = useSelection()
@@ -21,18 +20,17 @@ export const Toolbar = observer(() => {
 
   const onClone = useCallback(() => store.clone(data), [])
   const onRemove = useCallback(() => store.remove(data), [])
-  const isTreeStruct: boolean = useIsTree()
 
   useEffect(() => {
-    if (!isTreeStruct && selected && ref.current) {
+    if (!compact && selected && ref.current) {
       scrollIntoView(ref.current, {scrollMode: 'if-needed'})
     }
-  }, [selected, isTreeStruct, ref.current])
+  }, [selected, compact, ref.current])
 
-  return <ToolbarContainer ref={ref} className={cx({isTreeStruct}, 'Toolbar')}>
-    {!isTreeStruct && <Title>
-      {data.componentStore.key}
-      <label>{` (${data.componentStore.type})`}</label>
+  return <ToolbarContainer ref={ref} className={cx({compact: compact}, 'Toolbar')}>
+    {!compact && <Title>
+      {data.store.key}
+      <label>{` (${data.store.type})`}</label>
     </Title>
     }
     <AddButton/>
@@ -46,7 +44,7 @@ const ToolbarContainer = styled.div`
   right: 5px;
   top: -13px;
 
-  &.isTreeStruct {
+  &.compact {
     top: 8px;
   }
 

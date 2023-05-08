@@ -1,4 +1,4 @@
-import {computed, makeAutoObservable, observable} from 'mobx'
+import {makeAutoObservable, observable} from 'mobx'
 import {ActionData, EventName} from '../features/event'
 import {HtmlAttribute} from '../features/html-attributes'
 import {Css} from '../features/style/types'
@@ -10,6 +10,7 @@ export interface ComponentProperty {
   fnSource?: string
 }
 
+//No functions here
 export class ComponentStore {
   key: string = ''
   type: string = ''
@@ -43,18 +44,8 @@ export class ComponentStore {
       tooltipProps: observable.deep,
       schema: observable.deep,
       props: observable.deep,
-      isRoot: computed,
-      isContainer: computed,
       children: observable,
     })
-  }
-
-  get isRoot() {
-    return this.type === 'Screen'
-  }
-
-  get isContainer() {
-    return !!this.children
   }
 }
 

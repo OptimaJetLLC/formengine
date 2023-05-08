@@ -12,12 +12,12 @@ export function useInnerDropZone() {
 
   const containers = meta?.properties.filter(isContainer)
 
-  const existBinds = useComputed(() => data.componentStore.children?.map(cs => cs.bindTo ?? 'children'))
+  const existBinds = useComputed(() => data.store.children?.map(cs => cs.bindTo ?? 'children'))
   const emptySlots = containers?.filter(an => !existBinds?.includes(an.key) || an.bindConditionBuilder)
 
   overrides.current = emptySlots?.reduce((acc, container) => {
     const bindTo = container.key === 'children' ? undefined : container.key
-    const bindCondition = container?.bindConditionBuilder?.(assign({}, data.model.defaultProps, data.componentStore.props))
+    const bindCondition = container?.bindConditionBuilder?.(assign({}, data.model.defaultProps, data.store.props))
 
     acc[container.key] = <DropZone isInner={true} bindTo={bindTo} bindCondition={bindCondition}></DropZone>
     return acc

@@ -8,7 +8,7 @@ import {ActionEventArgs} from './ActionEventArgs'
 export const computeEvents = (data: ComponentData, store: Store) => {
   const events = {} as Record<EventName, Function>
 
-  const eventNames = new Set(keysIn(data.componentStore.events))
+  const eventNames = new Set(keysIn(data.store.events))
   eventNames.add('onChange').add('onBlur')
   eventNames.delete(DidMountEvent)
   eventNames.delete(WillUnmountEvent)

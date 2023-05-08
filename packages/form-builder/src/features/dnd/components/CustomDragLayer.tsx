@@ -27,7 +27,7 @@ function getItemStyles(
 }
 
 export const CustomDragLayer = () => {
-  const isMultiSelection = useBuilderStore().selected.length > 1
+  const isMultiSelection = useBuilderStore().selected.size > 1
   const {itemType, isDragging, initialOffset, currentOffset} =
     useDragLayer((monitor) => ({
       item: monitor.getItem(),

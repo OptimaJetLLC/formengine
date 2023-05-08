@@ -50,18 +50,18 @@ const CodeButton = namedObserver('CodeButton', ({annotation, property, getEditab
 export const LabeledProperty = ({idPrefix, annotation, getEditableProperty, children, ...props}: LabeledPropertyProps) => {
   const id = useUniqueId(idPrefix || 'id-')
   const getLabel = useTranslationPart(`annotation.${annotation.key}`)
-  const {componentStore} = useComponentData()
+  const {store} = useComponentData()
 
   const defaultGetEditableProperty = () => {
     if (getEditableProperty) return getEditableProperty()
     return {
-      componentKey: componentStore.key,
+      componentKey: store.key,
       annotation: annotation,
-      property: componentStore.props[annotation.key],
+      property: store.props[annotation.key],
       saveProperty: (property: ComponentProperty) => {
-        const storedProperty = componentStore.props[annotation.key] || {value: undefined}
-        componentStore.props[annotation.key] = Object.assign(storedProperty, property)
-        return componentStore.props[annotation.key]
+        const storedProperty = store.props[annotation.key] || {value: undefined}
+        store.props[annotation.key] = Object.assign(storedProperty, property)
+        return store.props[annotation.key]
       }
     }
   }

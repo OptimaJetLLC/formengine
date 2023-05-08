@@ -6,7 +6,7 @@ import {AddRuleButton} from './components/AddRuleButton'
 import {SchemaRule} from './components/SchemaRule'
 
 export const ValidateEditor = () => {
-  const {componentStore} = useComponentData()
+  const {store} = useComponentData()
   const meta = useMeta()
   const type = meta?.valuedAn?.schema?.type as Nullable<SchemaType>
   if (!type) return null
@@ -17,14 +17,14 @@ export const ValidateEditor = () => {
       <Checkbox
         title="Use the schema for transform after input value"
         children="Auto transform"
-        checked={componentStore.schema?.autoTransform}
+        checked={store.schema?.autoTransform}
         onChange={(_, checked) => {
-          componentStore.schema ??= {type, rules: []}
-          componentStore.schema.autoTransform = checked
+          store.schema ??= {type, rules: []}
+          store.schema.autoTransform = checked
         }}
       />
       {
-        componentStore.schema?.rules.map(key => <SchemaRule key={key} ruleKey={key}/>)
+        store.schema?.rules.map(key => <SchemaRule key={key} ruleKey={key}/>)
       }
       <AddRuleButton/>
     </div>

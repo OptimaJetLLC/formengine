@@ -19,14 +19,14 @@ export type ClassName = string
 
 export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] => {
   const store = useBuilderStore()
-  const {key} = useComponentData().componentStore
+  const data = useComponentData()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
   const [hovered, setHovered] = useState(false)
-  const selected = store.isNodeSelected(key)
+  const selected = store.selected.has(data.store)
 
   const onClick = useCallback((event: MouseEvent) => {
     event.stopPropagation()
-    store.selectNode(key, event.ctrlKey || event.shiftKey)
+    store.selectNode(data.store, event.ctrlKey || event.shiftKey)
   }, [])
 
   const onMouseOver = useCallback((event: MouseEvent) => {

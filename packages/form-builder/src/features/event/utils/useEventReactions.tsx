@@ -7,7 +7,7 @@ export const useEventReactions = () => {
 
   //For target key sync with linked actions
   useMultiReaction(
-    () => values(data.componentStore.events).flat().filter(value => value.type === 'linked'),
+    () => values(data.store.events).flat().filter(value => value.type === 'linked'),
     (observer) => store.findComponent(observer.target!),
     (observable) => observable?.key,
     (observer, arg?: string, prev?: string) => observer.target = arg
@@ -15,7 +15,7 @@ export const useEventReactions = () => {
 
   //For name sync with custom actions
   useMultiReaction(
-    () => values(data.componentStore.events).flat().filter(value => value.type === 'custom'),
+    () => values(data.store.events).flat().filter(value => value.type === 'custom'),
     (observer) => (store.screen.props.actions?.value as CustomActionDefinition[])?.find(value => value.name === observer.name),
     (observable) => observable?.name,
     (observer, arg, prev?) => observer.name = arg!
@@ -25,9 +25,9 @@ export const useEventReactions = () => {
   useReaction(() => store.screen.props.actions?.value?.slice(), (arg: CustomActionDefinition[], prev: CustomActionDefinition[]) => {
     if (!prev || !arg || arg.length !== prev.length - 1) return
     const [deleted] = prev.filter(x => !arg.includes(x))
-    for (let event in data.componentStore.events) {
-      data.componentStore.events[event] =
-        data.componentStore.events[event].filter(action => action.type !== 'custom' || action.name !== deleted.name)
+    for (let event in data.store.events) {
+      data.store.events[event] =
+        data.store.events[event].filter(action => action.type !== 'custom' || action.name !== deleted.name)
     }
   })
 }

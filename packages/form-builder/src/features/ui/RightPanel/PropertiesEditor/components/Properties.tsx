@@ -2,7 +2,6 @@ import styled from '@emotion/styled'
 import {ComponentDataProvider, ComponentStore} from 'fb-core'
 import {observer} from 'mobx-react'
 import {createElement, useEffect} from 'react'
-import {Panel} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {AnnotationProvider} from '../../../../../utils/EditorContext'
 import {key, stylization} from '../../../../annotation'
@@ -18,7 +17,7 @@ interface PropertiesProps {
 
 const Properties = observer(({activeTab}: PropertiesProps) => {
   const store = useBuilderStore()
-  const selected = store.getSingleSelected()
+  const selected = store.oneSelected
   const getLabel = useTranslationPart('propertiesEditor')
 
   if (!selected) {
@@ -29,7 +28,8 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
     )
   }
 
-  const {data, model, meta, parent} = selected
+  const meta = store.view.getMeta(selected.type)
+  const data = store.viewer.getComponentData(selected)
 
   const current = meta.properties.concat(meta.modules).filter(bySection(activeTab))
   const properties = current.filter(bySubSection(undefined))
@@ -38,21 +38,21 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
   const tooltipProps = current.filter(bySubSection(SubSection.Tooltip))
 
   return (
-    <ComponentDataProvider value={{key: data.key, componentStore: data, model, parentStore: parent?.data}}>
+    <ComponentDataProvider value={data}>
       <Container>
         <PropertiesList>
           {activeTab === Section.Main && <Property annotation={key} getContext={() => ({})}/>}
-          <PropertyBlock annotations={properties} context={data.props}/>
-          <StyleBlock key={data.key} annotations={style} store={data}/>
+          <PropertyBlock annotations={properties} context={data.store.props}/>
+          <StyleBlock annotations={style} store={data.store}/>
           {activeTab === Section.Style && <Property annotation={stylization} getContext={() => ({})}/>}
         </PropertiesList>
 
         {!!tooltipProps?.length && store.viewer.tooltipType &&
-          <PropertyBlock annotations={tooltipProps} context={data.props}/>
+          <PropertyBlock annotations={tooltipProps} context={data.store.props}/>
         }
 
         {!!additionalProperties?.length &&
-          <PropertyBlock annotations={additionalProperties} context={data.props}
+          <PropertyBlock annotations={additionalProperties} context={data.store.props}
                          header={getLabel('subSection.additionalProperties')}/>
         }
       </Container>
@@ -100,31 +100,6 @@ const Container = styled.div`
 
   & > * {
     margin-bottom: 5px;
-  }
-`
-
-const SPanel = styled(Panel)`
-  overflow: initial !important;
-
-  .rs-panel-header {
-    padding-inline: 0;
-
-    .rs-icon {
-      left: 0;
-      right: inherit;
-      margin-right: 10px;
-      top: 22px;
-      transform: rotate(-90deg) !important;
-    }
-  }
-
-  & .rs-panel-title {
-    margin-left: 20px;
-    font-weight: bolder;
-  }
-
-  &.rs-panel-in .rs-panel-header > .rs-icon {
-    transform: rotate(0deg) !important;
   }
 `
 

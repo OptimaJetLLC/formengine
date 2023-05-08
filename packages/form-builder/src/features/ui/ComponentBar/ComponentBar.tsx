@@ -76,7 +76,7 @@ const AddedComponents = ({definitions, ...componentProps}: AddedComponentsProps)
             key={model.name}
             value={{
               key: componentStore.key,
-              componentStore,
+              store: componentStore,
               model: store.view.get(componentStore.type)
             }}
           >

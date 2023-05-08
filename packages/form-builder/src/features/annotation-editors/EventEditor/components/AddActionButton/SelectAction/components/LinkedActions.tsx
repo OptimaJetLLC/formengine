@@ -19,7 +19,7 @@ export const LinkedActions = ({onSelect}: { onSelect: (action: ActionData) => vo
                 <Dropdown.Menu key={node.key} title={node.key}>
                   {
                     node.model.getActions(emptyComponentStore)?.map((action) => {
-                      const actionData: ActionData = {target: node.data.key, name: action.name, type: 'linked'}
+                      const actionData: ActionData = {target: node.store.key, name: action.name, type: 'linked'}
                       return (
                         <Dropdown.Item
                           key={action.name}

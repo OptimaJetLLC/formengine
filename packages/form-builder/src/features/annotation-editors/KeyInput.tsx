@@ -1,24 +1,20 @@
 import {useComponentData} from 'fb-core'
 import {Input} from 'rsuite'
-import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
 
 const KeyInput = () => {
   const {annotation} = useEditor()
-  const {componentStore} = useComponentData()
-  const store = useBuilderStore()
+  const data = useComponentData()
 
   const handleChange = (value: string) => {
-    componentStore.key = value
-    store.selectNode(value)
+    data.store.key = value
   }
 
   return (
     <LabeledProperty annotation={annotation}>
       <Input
-        autoFocus
-        value={componentStore.key}
+        value={data.store.key}
         onChange={handleChange}
         size={'xs'}
       />

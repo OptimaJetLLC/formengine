@@ -19,7 +19,7 @@ export const useDnd = (): [DndState, RefObject<any>] => {
 
   const [dropProps, drop] = useDrop({
     accept: AcceptDrop,
-    canDrop: (item: ComponentMove, monitor) => data.componentStore.key !== item.componentStore.key,
+    canDrop: (item: ComponentMove, monitor) => data.store.key !== item.store.key,
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),

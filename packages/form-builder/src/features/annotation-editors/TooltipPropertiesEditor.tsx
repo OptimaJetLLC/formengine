@@ -10,13 +10,13 @@ import {HintedLabel} from './Hinted'
 export const TooltipPropertiesEditor = () => {
   const t = useTranslationPart('annotation.tooltipProps')
   const id = useUniqueId('tooltip-')
-  const selected = useBuilderStore().getSingleSelected()
+  const selected = useBuilderStore().oneSelected
   const store = useBuilderStore()
-  const [useTooltip, setUseTooltip] = useState(!!selected?.data.tooltipProps)
+  const [useTooltip, setUseTooltip] = useState(!!selected?.tooltipProps)
 
   useEffect(() => {
     if (!selected) return
-    selected.data.tooltipProps = useTooltip ? {...selected.data.tooltipProps} : undefined
+    selected.tooltipProps = useTooltip ? {...selected.tooltipProps} : undefined
   }, [useTooltip])
 
   const selectedTooltipType = store.viewer.tooltipType
@@ -33,8 +33,8 @@ export const TooltipPropertiesEditor = () => {
       </HintedLabel>
       <SCheckbox checked={useTooltip} onChange={(_, checked) => setUseTooltip(checked)} id={id}></SCheckbox>
     </LabeledInput>
-    {!!selected?.data.tooltipProps &&
-      <PropertyBlock annotations={tooltipAnnotations} context={selected?.data.tooltipProps}/>
+    {!!selected?.tooltipProps &&
+      <PropertyBlock annotations={tooltipAnnotations} context={selected?.tooltipProps}/>
     }
   </>
 }
