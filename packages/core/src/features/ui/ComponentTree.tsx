@@ -1,10 +1,20 @@
+import {runInAction} from 'mobx'
+import {useEffect} from 'react'
 import {ComponentTreeProps} from '../../types'
 import {namedObserver} from '../../utils'
+import {useStore} from '../../utils/contexts/StoreContext'
+import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
+import {initForm} from '../validation/utils/initForm'
 import {ComponentTreeProvider} from './ComponentTreeContext'
 import {ComponentTreeItem} from './ComponentTreeItem'
 
 export const ComponentTree = namedObserver('ComponentTree', ({parentStore, data}: ComponentTreeProps) => {
-  if (!data) return null
+  const store = useStore()
+  const props = useViewerProps()
+
+  useEffect(() => {
+    runInAction(() => initForm(data, store, props))
+  }, [])
 
   return <>
     <ComponentTreeProvider value={ComponentTree}>

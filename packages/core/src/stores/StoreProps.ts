@@ -13,5 +13,6 @@ export interface StoreProps {
   /** No use a error wrap component. */
   erroneous?: boolean
   componentWrapper?: ComponentType<any>
+  slotWrapper?: ComponentType<any>
   viewMode?: ViewMode
 }

@@ -1,29 +1,26 @@
-import {makeAutoObservable, observable} from 'mobx'
-import {ComponentStore} from '../../../stores/ComponentStore'
+import {makeAutoObservable} from 'mobx'
 import {Store} from '../../../stores/Store'
-import {calculatePropertyValue} from '../../calculation/propertyCalculator'
-import {Model} from '../../define'
-import {FormViewerProps} from '../../form-viewer'
 import {Field} from './Field'
 
 export class Form {
-  readonly #props: Readonly<FormViewerProps>
   readonly fields = new Map<string, Field>()
   state: Record<string, any> = {}
 
-  constructor(readonly store: Store, props: Readonly<FormViewerProps>) {
-    this.#props = props
-
+  constructor(readonly store: Store) {
     makeAutoObservable(this, {
       fields: true,
-      state: observable.deep
     })
   }
 
   get data() {
     const result: Record<string, unknown> = {}
     for (let [key, field] of this.fields) {
-      result[key] = field.value
+      if (field.storeDataInParentForm) {
+        const fieldValue: Record<string, any> = field.value || {}
+        Object.keys(fieldValue).forEach(i => result[i] = fieldValue[i])
+      } else {
+        result[key] = field.value
+      }
     }
     return result
   }
@@ -40,17 +37,6 @@ export class Form {
     return this.fields.get(key)
   }
 
-  set(componentStore: ComponentStore, model: Model) {
-    if (!model.valued) return
-
-    let field = this.fields.get(componentStore.key)
-    if (!field) {
-      field = new Field(this.store, this.#props, componentStore.key, model, this.#updateFnValue)
-      this.fields.set(componentStore.key, field)
-    }
-    return field
-  }
-
   validate() {
     this.fields.forEach(f => f.validate())
   }
@@ -62,21 +48,10 @@ export class Form {
   clear() {
     this.fields.forEach(f => f.clear())
   }
-
-  #updateFnValue(component: ComponentStore, key: string): [boolean, any?] {
-    const property = component.props[key]
-    if (property && property.useFn) {
-      const value = calculatePropertyValue(property, this)
-      return [true, value]
-    }
-    return [false]
-  }
-
 }
 
 export const FormDeclaration = `declare class Form {
   fields: Map<string, Field>
-  state: Record<string, any>
   readonly store: Store
 
   get data(): Record<string, unknown>
@@ -84,8 +59,6 @@ export const FormDeclaration = `declare class Form {
   get errors(): Record<string, unknown>
 
   get(key: string): Field
-
-  set(componentStore: ComponentStore, model: Model): Field
 
   validate(): void
 

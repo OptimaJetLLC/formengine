@@ -32,6 +32,14 @@
     {
       "key": "Breadcrumb 1",
       "type": "RsBreadcrumb",
+      "props": {},
+      "css": {
+        "object": {}
+      }
+    },
+    {
+      "key": "Slot 1",
+      "type": "Slot",
       "props": {}
     },
     {
@@ -65,6 +73,25 @@
             "type": "custom"
           }
         ]
+      }
+    },
+    {
+      "key": "Template:Test form 1",
+      "type": "Template:template",
+      "props": {},
+      "slotsContent": {
+        "TemplateSlot": {
+          "key": "Input in template",
+          "type": "RsInput",
+          "props": {
+            "label": {
+              "value": "Input in template"
+            },
+            "placeholder": {
+              "value": "Enter data in input"
+            }
+          }
+        }
       }
     },
     {

@@ -12,7 +12,7 @@ import {ComponentStore} from './ComponentStore'
 import {StoreProps} from './StoreProps'
 
 export class Store {
-  readonly #props: StoreProps
+  readonly #props: Readonly<StoreProps>
 
   readonly eventSubject = new Subject<ActionEventArgs>()
   readonly form
@@ -22,9 +22,10 @@ export class Store {
 
   viewMode: ViewMode = 'desktop'
 
-  constructor(props: Readonly<StoreProps>, public actions: ActionDefinition[] = [], public isBuilderMode: boolean = false) {
+  constructor(props: Readonly<StoreProps>, public actions: ActionDefinition[] = [], public isBuilderMode: boolean = false,
+              public readonly parentStore?: Store, private readonly keyInParent?: string) {
     this.#props = props
-    this.form = new Form(this, props)
+    this.form = new Form(this)
 
     makeObservable(this, {
       screen: observable,
@@ -40,6 +41,25 @@ export class Store {
     const selectedTooltipType = this.tooltipType
     if (!selectedTooltipType) return
     return this.#props.view.getTooltipComponent(selectedTooltipType)
+  }
+
+  get isTemplateStore() {
+    return !!this.parentStore
+  }
+
+  /**
+   * Returns true if the template can be displayed in builder mode (e.g. with drop zones), false otherwise.
+   */
+  get templateBuilderMode(): boolean {
+    if (!this.isTemplateStore) return this.isBuilderMode
+    // if the template is inside another template, there is no builder mode
+    return this.parentStore?.isBuilderMode || false
+  }
+
+  get slotsContent(): Record<string, ComponentStore> | undefined {
+    if (this.keyInParent && this.parentStore) {
+      return this.parentStore.findComponent(this.keyInParent)?.slotsContent
+    }
   }
 
   getComponent(key: string) {
@@ -64,7 +84,16 @@ export class Store {
   }
 
   findComponent(key: string) {
-    return treeFind(this.screen, key)
+    let result = treeFind(this.screen, key)
+    if (result) return result
+
+    const slots = this.slotsContent
+    if (!slots) return
+
+    for (const slotName in slots) {
+      result = treeFind(slots[slotName], key)
+      if (result) return result
+    }
   }
 
   findAction(actionData: ActionData) {

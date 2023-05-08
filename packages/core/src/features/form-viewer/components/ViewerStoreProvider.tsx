@@ -4,6 +4,7 @@ import {ReactNode, useContext, useEffect, useMemo} from 'react'
 import {Store} from '../../../stores/Store'
 import {StoreContext, StoreProvider} from '../../../utils/contexts/StoreContext'
 import {DefaultActions} from '../../event'
+import {getTemplateName} from '../../ui/templateModel'
 import {FormViewerProps} from '../types'
 import {ViewerPropsProvider} from './ViewerPropsContext'
 
@@ -15,6 +16,15 @@ export const ViewerStoreProvider = ({children, props}: { children: ReactNode, pr
   useEffect(() => {
     assign(observableProps, props)
   })
+
+  useEffect(() => {
+    props.view.templates().forEach(model => {
+      const templateName = getTemplateName(model.type)
+      const defaultProps = {templateName}
+      const modifiedModel = Object.assign(model, {defaultProps: defaultProps})
+      props.view.define(modifiedModel)
+    })
+  }, [])
 
   return (
     <ViewerPropsProvider value={observableProps}>

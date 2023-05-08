@@ -16,5 +16,5 @@ export interface ScreenProps {
 
 export interface ComponentTreeProps {
   parentStore?: ComponentStore
-  data?: ComponentStore[]
+  data: ComponentStore[]
 }

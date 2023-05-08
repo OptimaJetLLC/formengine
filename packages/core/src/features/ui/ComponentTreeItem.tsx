@@ -1,4 +1,4 @@
-import {Fragment, useEffect} from 'react'
+import {Fragment} from 'react'
 import {ComponentStore} from '../../stores/ComponentStore'
 import {namedObserver} from '../../utils'
 import {ComponentData, ComponentDataProvider} from '../../utils/contexts/ComponentDataContext'
@@ -18,10 +18,6 @@ export const ComponentTreeItem = namedObserver('ComponentTreeItem', ({componentS
   const store = useStore()
   const props = useViewerProps()
   const data = useCachedComponentData(componentStore, parentStore)
-
-  useEffect(() => {
-    store.form.set(componentStore, data.model)
-  }, [])
 
   useEventListener(data.key, 'onChange', e => data.field?.setValue(e.value), [])
   useEventListener(data.key, 'onBlur', _ => data.field?.setTouched(), [])

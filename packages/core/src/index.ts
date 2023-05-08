@@ -41,3 +41,5 @@ export {useViewerProps, ViewerPropsProvider} from './features/form-viewer/compon
 export type {FormViewerProps} from './features/form-viewer'
 export type {StoreProps} from './stores/StoreProps'
 export {internalErrorModel} from './features/ui/internalErrorModel'
+export {generateTemplateTypeName} from './features/ui/templateModel'
+export {slotModel} from './features/ui/slotModel'

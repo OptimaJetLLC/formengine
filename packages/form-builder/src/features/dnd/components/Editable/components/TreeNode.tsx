@@ -43,7 +43,7 @@ export const TreeNode = observer(({className}: { className: string }) => {
         <label>{`${data.model.name}`}</label>
         {hovered && <Toolbar compact/>}
       </SDiv>
-      <ComponentTree parentStore={data.store} data={data.store.children}/>
+      {data.store.children && <ComponentTree parentStore={data.store} data={data.store.children}/>}
     </>
   )
 })

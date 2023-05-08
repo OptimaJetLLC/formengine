@@ -5,20 +5,30 @@ import {assign} from 'lodash-es'
 import {observer} from 'mobx-react'
 import {antdComponents} from 'view-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from 'view-rsuite'
-import {getSampleForm, sampleComponentStore, sampleFormName} from './utils/getSampleForm'
+import {getFormFromJson} from './utils/getFormFromJson'
 import {IndexedDbFormStorage} from './utils/IndexedDbFormStorage'
 
-const data = {title: 'Hello! Hello!'}
+const data = {
+  title: 'Hello! Hello!',
+  login: '1',
+  password: 'ok',
+  'Template:Test form 1': {login: 'tortuga', password: 'man!', agreement: false},
+  'Agreement Title': 'Data in agreement template',
+  'Input in template': 'Data in template level 1',
+}
 
 const components = [...rSuiteComponents, ...antdComponents].map(definer => definer.build())
 const view = new BuilderView(components)
   .withErrorMeta(rsErrorMessage.build())
   .withTooltipMeta(rsTooltip.build())
+  .withTemplates(['template', 'agreement', 'login form'])
 
-const indexedDbExists = !!window.indexedDB
+const indexedDbExists = false//!!window.indexedDB
 const formStorage = indexedDbExists
   ? new IndexedDbFormStorage()
   : undefined
+
+const sampleFormName = 'SampleForm'
 
 async function getForm(name?: string): Promise<ComponentStore> {
   if (!formStorage) throw new Error('IndexedDB not supported')
@@ -27,16 +37,16 @@ async function getForm(name?: string): Promise<ComponentStore> {
     const componentStore = JSON.parse(form)
     return assign(new ComponentStore('', ''), componentStore)
   } catch (e) {
-    if (name === sampleFormName) {
-      formStorage.formName = name
-      return sampleComponentStore()
-    }
-    throw e
+    if (!name) throw e
+    // fallback
+    const formFromJson = getFormFromJson(name)
+    formStorage.formName = name
+    return formFromJson
   }
 }
 
 // tests don't wait for promises now
-const getFormFn = indexedDbExists ? getForm : getSampleForm
+const getFormFn = indexedDbExists ? getForm : getFormFromJson
 
 const FormBuilderApp = observer(() =>
   <FormBuilder

@@ -18,6 +18,7 @@ export class Model {
     readonly valued?: string,
     readonly defaultProps?: Readonly<Record<string, any>>,
     readonly css?: Css,
+    readonly typeName?: string
   ) {
     this.view = observer(view)
     this.view.displayName = view.displayName || view.name
@@ -29,7 +30,7 @@ export class Model {
   }
 
   get type(): string {
-    return this.view.displayName || this.view.name
+    return this.typeName || this.view.displayName || this.view.name
   }
 
   getActions(cs: ComponentStore) {

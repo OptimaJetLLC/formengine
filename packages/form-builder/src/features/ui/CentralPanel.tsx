@@ -3,16 +3,18 @@ import styled from '@emotion/styled'
 import {FormViewer, namedObserver, useViewerProps} from 'fb-core'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {Editable} from '../dnd'
+import {SlotWrapper} from '../dnd/components/SlotWrapper'
 import {PanelContainer} from './Panel'
 
 export const CentralPanel = namedObserver('CentralPanel', () => {
   const {viewMode, landscapeMode, builderMode} = useBuilderStore()
   const props = useViewerProps()
   const componentWrapper = builderMode === 'builder' ? Editable : undefined
+  const slotWrapper = builderMode === 'builder' ? SlotWrapper : undefined
 
   return (
     <FormContainer className={cx(viewMode, {landscapeMode})}>
-      <FormViewer {...props} componentWrapper={componentWrapper} viewMode={viewMode}/>
+      <FormViewer {...props} componentWrapper={componentWrapper} viewMode={viewMode} slotWrapper={slotWrapper}/>
     </FormContainer>
   )
 })

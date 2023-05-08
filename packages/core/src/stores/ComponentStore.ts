@@ -18,6 +18,7 @@ export class ComponentStore {
   css?: Css
   events?: Record<EventName, ActionData[]>
   children?: ComponentStore[]
+  slotsContent?: Record<string, ComponentStore>
 
   schema?: ValidationSchema
 

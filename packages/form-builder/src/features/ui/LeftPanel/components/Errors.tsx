@@ -30,6 +30,11 @@ const filterObj = (obj: Object) => {
   Object.entries(obj).forEach(([key, value]) => {
     const typeIs = (valueType: string) => typeof value == valueType
 
+    if (typeIs('object')) {
+      filtered[key as string] = filterObj(value)
+      return
+    }
+
     if (!(typeIs('string') || typeIs('number') || typeIs('boolean'))) {
       return
     }
