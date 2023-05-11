@@ -45,5 +45,6 @@ const Slot = () => {
   if (store.templateBuilderMode) return <SlotDropZone/>
   return <SlotContent/>
 }
+Slot.displayName = 'Slot'
 
 export const slotModel = new Model(Slot)

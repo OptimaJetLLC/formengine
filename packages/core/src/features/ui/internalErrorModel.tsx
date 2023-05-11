@@ -14,6 +14,8 @@ const SH1 = styled.h1`
 const InternalError = ({error}: InternalErrorProps) => {
   return <SH1>{error?.message ?? JSON.stringify(error)}</SH1>
 }
+InternalError.displayName = 'InternalError'
+
 export const internalErrorModel = new Model(InternalError)
 
 export function buildInternalErrorStore(error: any) {
