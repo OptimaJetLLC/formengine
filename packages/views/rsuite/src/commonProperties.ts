@@ -1,4 +1,4 @@
-import {boolean, color, event, number, oneOf, string} from 'form-builder/view'
+import {array, boolean, color, event, number, oneOf, string, toLabeledValues} from 'form-builder/view'
 import {TypeAttributes} from 'rsuite/esm/@types/common'
 
 type Placement = TypeAttributes.Placement;
@@ -39,11 +39,23 @@ export const textStyles = {
 }
 
 export const readOnly = boolean.hinted('Read only component')
-
 export const inputProps = {
   placeholder: string.hinted('Input placeholder'),
   size,
   disabled: boolean.hinted('Disabled component'),
   readOnly,
   onChange: event,
+}
+
+export const navProps = {
+  activeKey: string.hinted('Active key, corresponding to one of items value').default('Item1'),
+  appearance: oneOf('default', 'tabs', 'subtle')
+    .default('default')
+    .hinted('A navigation can have different appearances'),
+  items: array.default(toLabeledValues(['Item1', 'Item2', 'Item3'])),
+  justified: boolean.hinted('Justified navigation'),
+  onSelect: event,
+  pullRight: boolean.hinted('Appears on the right'),
+  reversed: boolean.hinted('Reverse direction of tabs/subtle'),
+  vertical: boolean.hinted('Stacked navigation')
 }

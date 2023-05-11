@@ -13,6 +13,16 @@
   },
   "children": [
     {
+      "key": "RsMenu 1",
+      "type": "RsMenu",
+      "props": {
+        "activeKey": {
+          "value": "Home"
+        }
+      },
+      "css": {}
+    },
+    {
       "key": "AntButton 1",
       "type": "AntButton",
       "props": {}
