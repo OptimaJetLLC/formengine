@@ -58,6 +58,7 @@ const ToolbarContainer = styled.div`
   width: fit-content;
   padding-inline: 5px;
   font-weight: 400;
+  font-size: 14px;
   background-color: white;
 
   .rs-theme-dark & {

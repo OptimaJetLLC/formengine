@@ -1,12 +1,33 @@
-import {define} from 'form-builder/view'
+import {boolean, define, event, node, string} from 'form-builder/view'
+import {PanelProps} from 'rsuite/esm/Panel/Panel'
+import Panel from 'rsuite/Panel'
+import {headerSize} from '../commonProperties'
+import {RsTitle} from './RsTitle'
 
-interface RsCardProps {
-
+interface RsCardProps extends PanelProps {
+  title?: string
+  headerSize: string
 }
 
-const RsCard = (props: RsCardProps) => {
-  // todo implement
-  return (<>Card</>)
+const RsCard = ({header, title, headerSize, ...props}: RsCardProps) => {
+  const panelHeader = <>
+    {!!title && <RsTitle headerSize={headerSize} content={title}/>}
+    {header}
+  </>
+  return <Panel header={panelHeader} {...props}/>
 }
 
 export const rsCard = define(RsCard)
+  .props({
+    header: node,
+    children: node,
+    title: string.default('Title'),
+    headerSize,
+    bodyFill: boolean,
+    bordered: boolean.default(true),
+    shaded: boolean.default(true),
+    defaultExpanded: boolean,
+    collapsible: boolean,
+    eventKey: string,
+    onSelect: event
+  })

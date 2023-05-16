@@ -81,6 +81,14 @@
     "patternChar": {
       "name": "Pattern char",
       "hint": "This helps define the format pattern character"
+    },
+    "bodyFill": {
+      "name": "Body fill",
+      "hint": "Content area filled with containers"
+    },
+    "eventKey": {
+      "name": "Event key",
+      "hint": "The event key corresponding to this element"
     }
   },
   "leftMenu": {
