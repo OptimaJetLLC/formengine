@@ -1,15 +1,16 @@
 {
-    "name": "view-mine",
+    "name": "@react-form-builder/components-test",
     "version": "0.0.0",
+    "private": true,
     "main": "src/index.ts",
     "type": "module",
-    "description": "OptimaJet Form Builder Components - Ant Design",
+    "description": "OptimaJet Form Builder Components - Test",
     "license": "ISC",
     "scripts": {
         "build": "vite build"
     },
     "dependencies": {
-        "form-builder": "*",
+        "@react-form-builder/builder": "^0.0.0",
         "antd": "^5.1.5"
     }
 }

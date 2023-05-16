@@ -1,4 +1,4 @@
-import {ComponentStore} from 'fb-core'
+import {ComponentStore} from '@react-form-builder/core'
 import {assign} from 'lodash-es'
 import agreement from '../../forms/agreement.json'
 import SampleForm from '../../forms/SampleForm.json'

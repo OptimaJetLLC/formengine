@@ -1,4 +1,4 @@
-import {useComponentData} from 'fb-core'
+import {useComponentData} from '@react-form-builder/core'
 import {useEffect} from 'react'
 import {Rows} from '../../components/Containers'
 import {CSSBlock} from './components/CSSBlock'

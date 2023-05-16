@@ -1,4 +1,4 @@
-import {DidMountEvent, WillUnmountEvent} from 'fb-core'
+import {DidMountEvent, WillUnmountEvent} from '@react-form-builder/core'
 import {event, htmlAttributes, renderWhen, tooltipProps, validation} from '../annotation'
 import {Annotation} from '../annotation/types/annotations/Annotation'
 

@@ -1,6 +1,6 @@
+import {InputCell} from '@react-form-builder/builder'
+import {array, define, useComponentData} from '@react-form-builder/builder/view'
 import ResponsiveNav from '@rsuite/responsive-nav'
-import {InputCell} from 'form-builder'
-import {array, define, useComponentData} from 'form-builder/view'
 import {NavProps} from 'rsuite/esm/Nav/Nav'
 import {navProps} from '../commonProperties'
 

@@ -1,4 +1,4 @@
-import {ComponentProperty} from 'fb-core'
+import {ComponentProperty} from '@react-form-builder/core'
 import {Input} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {useAnnotation} from '../../utils/EditorContext'

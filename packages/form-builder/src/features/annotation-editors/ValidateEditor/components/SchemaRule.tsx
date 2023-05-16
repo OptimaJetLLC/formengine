@@ -1,4 +1,4 @@
-import {cast, getSchemaRules, useComponentData} from 'fb-core'
+import {cast, getSchemaRules, useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {Input as RInput, InputNumber} from 'rsuite'
 import {useMeta} from '../../../../utils/useMeta'

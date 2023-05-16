@@ -1,6 +1,6 @@
 import * as faList from '@fortawesome/free-solid-svg-icons/faList'
 import * as faSitemap from '@fortawesome/free-solid-svg-icons/faSitemap'
-import {namedObserver} from 'fb-core'
+import {namedObserver} from '@react-form-builder/core'
 import {useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Nav as RNav} from 'rsuite'

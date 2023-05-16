@@ -1,4 +1,4 @@
-import {useComponentData} from 'fb-core'
+import {useComponentData} from '@react-form-builder/core'
 import {LabeledPre} from '../../../components/LabeledPre'
 
 export const DefinedStyles = () => {

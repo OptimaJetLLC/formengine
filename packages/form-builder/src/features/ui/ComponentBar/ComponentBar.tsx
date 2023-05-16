@@ -1,6 +1,6 @@
 import {css} from '@emotion/css'
 import styled from '@emotion/styled'
-import {ComponentDataProvider, ComponentStore, getKey, Model} from 'fb-core'
+import {ComponentDataProvider, ComponentStore, getKey, Model} from '@react-form-builder/core'
 import {useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {ComponentMove} from '../../../utils/types'

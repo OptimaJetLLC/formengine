@@ -1,4 +1,4 @@
-import {Parameter} from 'fb-core'
+import {Parameter} from '@react-form-builder/core'
 import {Dispatch, useRef} from 'react'
 import {Button, Modal} from 'rsuite'
 import {Rows} from '../../../../../components/Containers'

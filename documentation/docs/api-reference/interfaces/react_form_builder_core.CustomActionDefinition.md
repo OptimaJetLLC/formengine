@@ -1,11 +1,11 @@
 ---
-id: "fb_core.CustomActionDefinition"
+id: "react_form_builder_core.CustomActionDefinition"
 title: "Interface: CustomActionDefinition"
 sidebar_label: "CustomActionDefinition"
 custom_edit_url: null
 ---
 
-[fb-core](../modules/fb_core.md).CustomActionDefinition
+[@react-form-builder/core](../modules/react_form_builder_core.md).CustomActionDefinition
 
 ## Hierarchy
 
@@ -43,7 +43,7 @@ ___
 
 ### params
 
-• `Optional` **params**: [`Parameter`](../modules/fb_core.md#parameter)[]
+• `Optional` **params**: [`Parameter`](../modules/react_form_builder_core.md#parameter)[]
 
 #### Inherited from
 

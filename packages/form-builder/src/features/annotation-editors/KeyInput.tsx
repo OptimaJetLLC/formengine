@@ -1,4 +1,4 @@
-import {useComponentData} from 'fb-core'
+import {useComponentData} from '@react-form-builder/core'
 import {Input} from 'rsuite'
 import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'

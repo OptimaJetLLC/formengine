@@ -1,4 +1,4 @@
-import {Model} from 'fb-core'
+import {Model} from '@react-form-builder/core'
 import {Meta} from './Meta'
 
 export interface BuilderComponent {

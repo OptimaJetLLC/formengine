@@ -1,26 +1,27 @@
 ---
-id: "fb_core"
-title: "Module: fb-core"
-sidebar_label: "fb-core"
+id: "react_form_builder_core"
+title: "Module: @react-form-builder/core"
+sidebar_label: "@react-form-builder/core"
 sidebar_position: 0
 custom_edit_url: null
 ---
 
 ## Classes
 
-- [ActionEventArgs](../classes/fb_core.ActionEventArgs.md)
-- [ComponentStore](../classes/fb_core.ComponentStore.md)
-- [Model](../classes/fb_core.Model.md)
-- [Store](../classes/fb_core.Store.md)
-- [View](../classes/fb_core.View.md)
+- [ActionEventArgs](../classes/react_form_builder_core.ActionEventArgs.md)
+- [ComponentStore](../classes/react_form_builder_core.ComponentStore.md)
+- [Model](../classes/react_form_builder_core.Model.md)
+- [Store](../classes/react_form_builder_core.Store.md)
+- [View](../classes/react_form_builder_core.View.md)
 
 ## Interfaces
 
-- [ComponentProperty](../interfaces/fb_core.ComponentProperty.md)
-- [CustomActionDefinition](../interfaces/fb_core.CustomActionDefinition.md)
-- [ErrorMessageProps](../interfaces/fb_core.ErrorMessageProps.md)
-- [FormViewerProps](../interfaces/fb_core.FormViewerProps.md)
-- [ScreenProps](../interfaces/fb_core.ScreenProps.md)
+- [ComponentProperty](../interfaces/react_form_builder_core.ComponentProperty.md)
+- [CustomActionDefinition](../interfaces/react_form_builder_core.CustomActionDefinition.md)
+- [ErrorMessageProps](../interfaces/react_form_builder_core.ErrorMessageProps.md)
+- [FormViewerProps](../interfaces/react_form_builder_core.FormViewerProps.md)
+- [ScreenProps](../interfaces/react_form_builder_core.ScreenProps.md)
+- [StoreProps](../interfaces/react_form_builder_core.StoreProps.md)
 
 ## Type Aliases
 
@@ -44,7 +45,7 @@ ___
 
 ### ActionsInitializer
 
-Ƭ **ActionsInitializer**: (`props`: [`ComponentStore`](../classes/fb_core.ComponentStore.md)[``"props"``], `def`: `DefineActionHelper`) => `Record`<`EventName`, `ActionEventHandler` \| `ActionDefinition`\>
+Ƭ **ActionsInitializer**: (`props`: [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md)[``"props"``], `def`: `DefineActionHelper`) => `Record`<`EventName`, `ActionEventHandler` \| `ActionDefinition`\>
 
 #### Type declaration
 
@@ -54,7 +55,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `props` | [`ComponentStore`](../classes/fb_core.ComponentStore.md)[``"props"``] |
+| `props` | [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md)[``"props"``] |
 | `def` | `DefineActionHelper` |
 
 ##### Returns
@@ -85,23 +86,23 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `componentStore` | [`ComponentStore`](../classes/fb_core.ComponentStore.md) |
 | `field?` | `Field` |
 | `key` | `string` |
-| `model` | [`Model`](../classes/fb_core.Model.md) |
-| `parentStore?` | [`ComponentStore`](../classes/fb_core.ComponentStore.md) |
+| `model` | [`Model`](../classes/react_form_builder_core.Model.md) |
+| `parent?` | [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md) |
+| `store` | [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md) |
 
 ___
 
 ### Device
 
-Ƭ **Device**: ``"any"`` \| [`ViewMode`](fb_core.md#viewmode)
+Ƭ **Device**: ``"any"`` \| [`ViewMode`](react_form_builder_core.md#viewmode)
 
 ___
 
 ### Parameter
 
-Ƭ **Parameter**: [`ParameterName`](fb_core.md#parametername) \| [[`ParameterName`](fb_core.md#parametername), [`ParameterType`](fb_core.md#parametertype)]
+Ƭ **Parameter**: [`ParameterName`](react_form_builder_core.md#parametername) \| [[`ParameterName`](react_form_builder_core.md#parametername), [`ParameterType`](react_form_builder_core.md#parametertype)]
 
 ___
 
@@ -161,13 +162,7 @@ ___
 
 ### FormDeclaration
 
-• `Const` **FormDeclaration**: ``"declare class Form {\n  fields: Map<string, Field>\n  state: Record<string, any>\n  readonly store: Store\n\n  get data(): Record<string, unknown>\n\n  get errors(): Record<string, unknown>\n\n  get(key: string): Field\n\n  set(componentStore: ComponentStore, model: Model): Field\n\n  validate(): void\n\n  reset(): void\n\n  clear(): void\n}"``
-
-___
-
-### FormViewer
-
-• `Const` **FormViewer**: `IReactComponent`
+• `Const` **FormDeclaration**: ``"declare class Form {\n  fields: Map<string, Field>\n  readonly store: Store\n\n  get data(): Record<string, unknown>\n\n  get errors(): Record<string, unknown>\n\n  get(key: string): Field\n\n  validate(): void\n\n  reset(): void\n\n  clear(): void\n}"``
 
 ___
 
@@ -191,7 +186,7 @@ ___
 
 ### StoreContext
 
-• **StoreContext**: `Context`<``null`` \| [`Store`](../classes/fb_core.Store.md)\>
+• **StoreContext**: `Context`<``null`` \| [`Store`](../classes/react_form_builder_core.Store.md)\>
 
 ___
 
@@ -209,19 +204,31 @@ ___
 
 ### emptyComponentStore
 
-• `Const` **emptyComponentStore**: [`ComponentStore`](../classes/fb_core.ComponentStore.md)
+• `Const` **emptyComponentStore**: [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md)
 
 ___
 
 ### errorMessageModel
 
-• `Const` **errorMessageModel**: [`Model`](../classes/fb_core.Model.md)
+• `Const` **errorMessageModel**: [`Model`](../classes/react_form_builder_core.Model.md)
+
+___
+
+### internalErrorModel
+
+• `Const` **internalErrorModel**: [`Model`](../classes/react_form_builder_core.Model.md)
 
 ___
 
 ### screenModel
 
-• `Const` **screenModel**: [`Model`](../classes/fb_core.Model.md)
+• `Const` **screenModel**: [`Model`](../classes/react_form_builder_core.Model.md)
+
+___
+
+### slotModel
+
+• `Const` **slotModel**: [`Model`](../classes/react_form_builder_core.Model.md)
 
 ## Functions
 
@@ -235,11 +242,27 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `props` | `ProviderProps`<[`ComponentData`](fb_core.md#componentdata)\> |
+| `props` | `ProviderProps`<[`ComponentData`](react_form_builder_core.md#componentdata)\> |
 
 #### Returns
 
 ``null`` \| `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>
+
+___
+
+### FormViewer
+
+▸ **FormViewer**(`props`): `Element`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `props` | [`FormViewerProps`](../interfaces/react_form_builder_core.FormViewerProps.md) |
+
+#### Returns
+
+`Element`
 
 ___
 
@@ -271,7 +294,25 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `props` | `ProviderProps`<[`Store`](../classes/fb_core.Store.md)\> |
+| `props` | `ProviderProps`<[`Store`](../classes/react_form_builder_core.Store.md)\> |
+
+#### Returns
+
+``null`` \| `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>
+
+___
+
+### ViewerPropsProvider
+
+▸ **ViewerPropsProvider**(`props`): ``null`` \| `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>
+
+**NOTE**: Exotic components are not callable.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `props` | `ProviderProps`<`Readonly`<[`FormViewerProps`](../interfaces/react_form_builder_core.FormViewerProps.md)\>\> |
 
 #### Returns
 
@@ -298,7 +339,7 @@ ___
 
 ### compileFn
 
-▸ **compileFn**(`source`): [`CompilationResult`](fb_core.md#compilationresult)
+▸ **compileFn**(`source`): [`CompilationResult`](react_form_builder_core.md#compilationresult)
 
 #### Parameters
 
@@ -308,7 +349,7 @@ ___
 
 #### Returns
 
-[`CompilationResult`](fb_core.md#compilationresult)
+[`CompilationResult`](react_form_builder_core.md#compilationresult)
 
 ___
 
@@ -338,17 +379,33 @@ ___
 
 ### createView
 
-▸ **createView**(`...models`): [`View`](../classes/fb_core.View.md)
+▸ **createView**(`...models`): [`View`](../classes/react_form_builder_core.View.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `...models` | [`Model`](../classes/fb_core.Model.md)[] |
+| `...models` | [`Model`](../classes/react_form_builder_core.Model.md)[] |
 
 #### Returns
 
-[`View`](../classes/fb_core.View.md)
+[`View`](../classes/react_form_builder_core.View.md)
+
+___
+
+### generateTemplateTypeName
+
+▸ **generateTemplateTypeName**(`name`): `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+
+#### Returns
+
+`string`
 
 ___
 
@@ -403,34 +460,40 @@ ___
 
 ### namedObserver
 
-▸ **namedObserver**(`displayName`, `component`): `IReactComponent`
+▸ **namedObserver**<`T`\>(`displayName`, `component`): `T`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `IReactComponent` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `displayName` | `string` |
-| `component` | `IReactComponent` |
+| `component` | `T` |
 
 #### Returns
 
-`IReactComponent`
+`T`
 
 ___
 
 ### toParameterWithType
 
-▸ **toParameterWithType**(`value`): [[`ParameterName`](fb_core.md#parametername), [`ParameterType`](fb_core.md#parametertype)]
+▸ **toParameterWithType**(`value`): [[`ParameterName`](react_form_builder_core.md#parametername), [`ParameterType`](react_form_builder_core.md#parametertype)]
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `value` | [`Parameter`](fb_core.md#parameter) |
+| `value` | [`Parameter`](react_form_builder_core.md#parameter) |
 
 #### Returns
 
-[[`ParameterName`](fb_core.md#parametername), [`ParameterType`](fb_core.md#parametertype)]
+[[`ParameterName`](react_form_builder_core.md#parametername), [`ParameterType`](react_form_builder_core.md#parametertype)]
 
 ___
 
@@ -459,11 +522,11 @@ ___
 
 ### useComponentData
 
-▸ **useComponentData**(): [`ComponentData`](fb_core.md#componentdata)
+▸ **useComponentData**(): [`ComponentData`](react_form_builder_core.md#componentdata)
 
 #### Returns
 
-[`ComponentData`](fb_core.md#componentdata)
+[`ComponentData`](react_form_builder_core.md#componentdata)
 
 ___
 
@@ -569,8 +632,18 @@ ___
 
 ### useStore
 
-▸ **useStore**(): [`Store`](../classes/fb_core.Store.md)
+▸ **useStore**(): [`Store`](../classes/react_form_builder_core.Store.md)
 
 #### Returns
 
-[`Store`](../classes/fb_core.Store.md)
+[`Store`](../classes/react_form_builder_core.Store.md)
+
+___
+
+### useViewerProps
+
+▸ **useViewerProps**(): `Readonly`<[`FormViewerProps`](../interfaces/react_form_builder_core.FormViewerProps.md)\>
+
+#### Returns
+
+`Readonly`<[`FormViewerProps`](../interfaces/react_form_builder_core.FormViewerProps.md)\>

@@ -1,4 +1,4 @@
-import {useComponentData} from 'fb-core'
+import {useComponentData} from '@react-form-builder/core'
 import {useEffect} from 'react'
 import {ConnectDragSource, useDrag} from 'react-dnd'
 import {getEmptyImage} from 'react-dnd-html5-backend'

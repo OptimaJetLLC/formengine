@@ -1,4 +1,4 @@
-import {define, node} from 'form-builder/view'
+import {define, node} from '@react-form-builder/builder/view'
 import {ReactNode} from 'react'
 import {Col, Grid, Row} from 'rsuite'
 

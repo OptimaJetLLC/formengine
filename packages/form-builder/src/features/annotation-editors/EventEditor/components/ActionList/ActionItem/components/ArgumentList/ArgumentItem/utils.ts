@@ -1,4 +1,4 @@
-import {Parameter, ParameterName, ParameterType} from 'fb-core'
+import {Parameter, ParameterName, ParameterType} from '@react-form-builder/core'
 import {ComponentType} from 'react'
 import {InputBindableText} from '../../../../../../../../substitution/InputBindableText'
 import {InputBoolean} from './components/InputBoolean'

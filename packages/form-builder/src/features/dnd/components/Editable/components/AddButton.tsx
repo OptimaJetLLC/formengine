@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
+import {namedObserver, useComponentData} from '@react-form-builder/core'
 import {SortDown, SortUp} from '@rsuite/icons'
 import PlusIcon from '@rsuite/icons/Plus'
-import {namedObserver, useComponentData} from 'fb-core'
 import {useRef} from 'react'
 import {ButtonGroup, IconButton, Popover, Whisper, WhisperInstance} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'

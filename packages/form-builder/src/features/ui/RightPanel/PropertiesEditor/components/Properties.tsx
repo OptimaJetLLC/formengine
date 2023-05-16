@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {ComponentDataProvider, ComponentStore} from 'fb-core'
+import {ComponentDataProvider, ComponentStore} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {createElement, useEffect} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'

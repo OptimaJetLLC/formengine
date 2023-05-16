@@ -1,5 +1,5 @@
+import {createView, FormViewer} from '@react-form-builder/core'
 import {render} from '@testing-library/react'
-import {createView, FormViewer} from 'fb-core'
 
 describe(`Component ${FormViewer.name}`, function () {
   it('should render', function () {

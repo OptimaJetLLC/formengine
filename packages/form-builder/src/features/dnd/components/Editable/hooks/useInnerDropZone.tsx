@@ -1,4 +1,4 @@
-import {useComponentData, useComputed} from 'fb-core'
+import {useComponentData, useComputed} from '@react-form-builder/core'
 import {assign} from 'lodash-es'
 import {useRef} from 'react'
 import {useMeta} from '../../../../../utils/useMeta'

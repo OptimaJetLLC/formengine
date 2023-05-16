@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {useComponentData} from 'fb-core'
+import {useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {ReactNode} from 'react'
 import {useMeta} from '../../../utils/useMeta'

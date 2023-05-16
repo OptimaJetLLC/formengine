@@ -1,4 +1,4 @@
-import {boolean, define, event, string} from 'form-builder/view'
+import {boolean, define, event, string} from '@react-form-builder/builder/view'
 
 const MyButton = (props: JSX.IntrinsicElements['button']) => {
   return <button {...props}/>

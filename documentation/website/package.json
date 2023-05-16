@@ -1,5 +1,5 @@
 {
-  "name": "fb-docs",
+  "name": "@react-form-builder/docs",
   "version": "0.0.0",
   "private": true,
   "scripts": {

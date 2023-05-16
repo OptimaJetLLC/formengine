@@ -1,4 +1,4 @@
-import {define} from 'form-builder/view'
+import {define} from '@react-form-builder/builder/view'
 
 interface RsRepeaterProps {
 

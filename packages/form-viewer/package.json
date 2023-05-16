@@ -1,6 +1,7 @@
 {
-    "name": "form-viewer",
+    "name": "@react-form-builder/viewer",
     "version": "0.0.0",
+    "private": false,
     "main": "index.ts",
     "type": "module",
     "description": "OptimaJet Form Viewer",
@@ -10,7 +11,7 @@
         "build": "vite build"
     },
     "dependencies": {
-        "fb-core": "*"
+        "@react-form-builder/core": "^0.1.0"
     },
     "peerDependencies": {
         "react": ">=17.0.2",

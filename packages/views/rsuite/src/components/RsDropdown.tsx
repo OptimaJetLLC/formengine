@@ -1,4 +1,4 @@
-import {array, boolean, define, event, string, toLabeledValues} from 'form-builder/view'
+import {array, boolean, define, event, string, toLabeledValues} from '@react-form-builder/builder/view'
 import {Form, InputPicker} from 'rsuite'
 import {InputPickerProps} from 'rsuite/esm/InputPicker/InputPicker'
 import {placement, readOnly, size} from '../commonProperties'

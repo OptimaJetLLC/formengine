@@ -1,4 +1,4 @@
-import {ComponentData} from 'fb-core'
+import {ComponentData} from '@react-form-builder/core'
 
 export enum InsertPosition {
   Before,

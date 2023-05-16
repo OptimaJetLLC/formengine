@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {CompilationResult, compileFn, namedObserver} from 'fb-core'
+import {CompilationResult, compileFn, namedObserver} from '@react-form-builder/core'
 import {action} from 'mobx'
 import {useEffect, useState} from 'react'
 import {Button, ButtonGroup, Checkbox} from 'rsuite'

@@ -1,4 +1,4 @@
-import {ViewMode} from 'fb-core'
+import {ViewMode} from '@react-form-builder/core'
 import {autorun, IReactionDisposer} from 'mobx'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {parseJson} from '../utils/parseJson'

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {boolean, define, node, oneOf} from 'form-builder/view'
+import {boolean, define, node, oneOf} from '@react-form-builder/builder/view'
 import {Message} from 'rsuite'
 
 const SMessage = styled(Message)`

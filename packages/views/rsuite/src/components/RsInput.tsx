@@ -1,6 +1,6 @@
+import {boolean, define, string} from '@react-form-builder/builder/view'
 import EyeIcon from '@rsuite/icons/legacy/Eye'
 import EyeSlashIcon from '@rsuite/icons/legacy/EyeSlash'
-import {boolean, define, string} from 'form-builder/view'
 import {useState} from 'react'
 import {Input, InputGroup, InputProps} from 'rsuite'
 import {inputProps} from '../commonProperties'

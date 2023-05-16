@@ -1,4 +1,4 @@
-import {define, node, oneOf, someOf, string, WrapperProps} from 'form-builder/view'
+import {define, node, oneOf, someOf, string, WrapperProps} from '@react-form-builder/builder/view'
 import {Tooltip, Whisper} from 'rsuite'
 import {TypeAttributes} from 'rsuite/esm/@types/common'
 import {OverlayTriggerType} from 'rsuite/esm/Overlay/OverlayTrigger'

@@ -1,4 +1,4 @@
-import {CustomActionDefinition, useComponentData, useMultiReaction, useReaction, useStore} from 'fb-core'
+import {CustomActionDefinition, useComponentData, useMultiReaction, useReaction, useStore} from '@react-form-builder/core'
 import {values} from 'lodash-es'
 
 export const useEventReactions = () => {

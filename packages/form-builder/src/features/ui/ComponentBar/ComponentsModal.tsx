@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {ComponentData} from 'fb-core'
+import {ComponentData} from '@react-form-builder/core'
 import {isUndefined} from 'lodash-es'
 import {useState} from 'react'
 import {Modal} from 'rsuite'

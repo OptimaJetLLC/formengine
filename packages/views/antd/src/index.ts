@@ -1,4 +1,4 @@
-import {BuilderView, createView, Definer} from 'form-builder/view'
+import {BuilderView, createView, Definer} from '@react-form-builder/builder/view'
 import {antButton} from './components/AntButton'
 
 const definitions = [

@@ -1,4 +1,4 @@
-import {ActionData, createNonNullableContext} from 'fb-core'
+import {ActionData, createNonNullableContext} from '@react-form-builder/core'
 
 const [useActionData, ActionDataProvider] = createNonNullableContext<ActionData>('ActionDataContext')
 

@@ -1,5 +1,5 @@
+import {useComponentData} from '@react-form-builder/core'
 import {Check} from '@rsuite/icons'
-import {useComponentData} from 'fb-core'
 import {useState} from 'react'
 import {IconButton} from 'rsuite'
 import {useEditor} from '../../../utils/useEditor'

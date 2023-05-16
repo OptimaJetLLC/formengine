@@ -1,4 +1,4 @@
-import {namedObserver} from 'fb-core'
+import {namedObserver} from '@react-form-builder/core'
 import {useEffect, useRef, useState} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {CodeEditor} from '../components/CodeEditor'

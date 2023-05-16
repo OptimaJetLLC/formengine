@@ -1,5 +1,5 @@
-import {CheckCell, InputCell} from 'form-builder'
-import {array, define, event, number, oneOf, string} from 'form-builder/view'
+import {CheckCell, InputCell} from '@react-form-builder/builder'
+import {array, define, event, number, oneOf, string} from '@react-form-builder/builder/view'
 import {Breadcrumb, BreadcrumbProps} from 'rsuite'
 
 interface RsBreadcrumbItemProps {

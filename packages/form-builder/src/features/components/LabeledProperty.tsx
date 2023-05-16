@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode'
-import {ComponentProperty, namedObserver, useComponentData} from 'fb-core'
+import {ComponentProperty, namedObserver, useComponentData} from '@react-form-builder/core'
 import {cloneElement, ComponentProps} from 'react'
 import {IconButton} from 'rsuite'
 import useUniqueId from 'rsuite/esm/utils/useUniqueId'

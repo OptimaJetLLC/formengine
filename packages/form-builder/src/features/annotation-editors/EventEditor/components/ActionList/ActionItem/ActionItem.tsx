@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
+import {ActionData, ComponentStore, useComponentData} from '@react-form-builder/core'
 import {Close} from '@rsuite/icons'
-import {ActionData, ComponentStore, useComponentData} from 'fb-core'
 import {observer} from 'mobx-react'
 import {ArgumentList} from './components/ArgumentList'
 import {ChoosenAction} from './components/ChoosenAction'

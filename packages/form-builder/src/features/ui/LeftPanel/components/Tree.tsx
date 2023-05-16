@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
+import {FormViewer, useViewerProps} from '@react-form-builder/core'
 import {CollaspedOutline, ExpandOutline} from '@rsuite/icons'
-import {FormViewer, useViewerProps} from 'fb-core'
 import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
 import {Button} from 'rsuite'

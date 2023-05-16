@@ -1,4 +1,4 @@
-import {useComponentData} from 'fb-core'
+import {useComponentData} from '@react-form-builder/core'
 import {merge} from 'lodash/fp'
 import {RefObject, useMemo, useRef} from 'react'
 import {useDrop} from 'react-dnd'

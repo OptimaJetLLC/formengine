@@ -1,7 +1,7 @@
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode'
 import * as faLink from '@fortawesome/free-solid-svg-icons/faLink'
+import {ComponentData} from '@react-form-builder/core'
 import CloseIcon from '@rsuite/icons/Close'
-import {ComponentData} from 'fb-core'
 import {forwardRef, useState} from 'react'
 import {Nav, Popover, SelectPicker, TreePicker} from 'rsuite'
 import {useMeta} from '../../../../utils/useMeta'

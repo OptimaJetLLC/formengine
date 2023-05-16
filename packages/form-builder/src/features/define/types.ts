@@ -1,5 +1,5 @@
 import {CSSObject} from '@emotion/serialize/dist/declarations/types'
-import {ActionsInitializer} from 'fb-core'
+import {ActionsInitializer} from '@react-form-builder/core'
 import {ComponentType, ReactNode} from 'react'
 import {BaseBuilder} from '../annotation/utils/builders/BaseBuilder'
 

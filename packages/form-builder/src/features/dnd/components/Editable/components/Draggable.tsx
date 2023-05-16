@@ -1,6 +1,6 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {useComponentData} from 'fb-core'
+import {useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {ComponentProps, ReactNode} from 'react'
 import {useDragLayer} from 'react-dnd'

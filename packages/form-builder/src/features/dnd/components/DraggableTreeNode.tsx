@@ -1,4 +1,4 @@
-import {WrapperProps} from 'fb-core'
+import {WrapperProps} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {useEventReactions} from '../../event/utils/useEventReactions'
 import {Draggable} from './Editable/components/Draggable'

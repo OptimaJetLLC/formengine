@@ -1,4 +1,4 @@
-import {FormStorage} from 'form-builder'
+import {FormStorage} from '@react-form-builder/builder'
 import {autorun, IReactionDisposer, makeAutoObservable} from 'mobx'
 import {kvCreateStore, kvDel, kvGet, kvKeys, kvSet} from './KeyValueStorage'
 

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {useStore, useViewerProps} from 'fb-core'
+import {useStore, useViewerProps} from '@react-form-builder/core'
 import {startCase} from 'lodash-es'
 import {InputPicker} from 'rsuite'
 import {ItemDataType} from 'rsuite/esm/@types/common'

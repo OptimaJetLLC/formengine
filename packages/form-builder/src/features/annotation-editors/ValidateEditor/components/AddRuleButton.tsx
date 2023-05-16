@@ -1,4 +1,4 @@
-import {getSchemaRules, SchemaType, useComponentData} from 'fb-core'
+import {getSchemaRules, SchemaType, useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
 import {Button, Dropdown} from 'rsuite'

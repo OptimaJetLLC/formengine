@@ -1,11 +1,11 @@
 ---
-id: "fb_core.ActionEventArgs"
+id: "react_form_builder_core.ActionEventArgs"
 title: "Class: ActionEventArgs"
 sidebar_label: "ActionEventArgs"
 custom_edit_url: null
 ---
 
-[fb-core](../modules/fb_core.md).ActionEventArgs
+[@react-form-builder/core](../modules/react_form_builder_core.md).ActionEventArgs
 
 ## Constructors
 
@@ -18,8 +18,8 @@ custom_edit_url: null
 | Name | Type |
 | :------ | :------ |
 | `type` | `string` |
-| `sender` | [`ComponentData`](../modules/fb_core.md#componentdata) |
-| `store` | [`Store`](fb_core.Store.md) |
+| `sender` | [`ComponentData`](../modules/react_form_builder_core.md#componentdata) |
+| `store` | [`Store`](react_form_builder_core.Store.md) |
 | `args` | `any`[] |
 
 ## Properties
@@ -32,13 +32,13 @@ ___
 
 ### sender
 
-• `Readonly` **sender**: [`ComponentData`](../modules/fb_core.md#componentdata)
+• `Readonly` **sender**: [`ComponentData`](../modules/react_form_builder_core.md#componentdata)
 
 ___
 
 ### store
 
-• `Readonly` **store**: [`Store`](fb_core.Store.md)
+• `Readonly` **store**: [`Store`](react_form_builder_core.Store.md)
 
 ___
 

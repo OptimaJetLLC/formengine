@@ -1,4 +1,4 @@
-import {groupBy} from 'fb-core'
+import {groupBy} from '@react-form-builder/core'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 
 export const useGroups = () => {

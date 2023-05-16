@@ -1,4 +1,4 @@
-import {generateTemplateTypeName} from 'fb-core'
+import {generateTemplateTypeName} from '@react-form-builder/core'
 import {boolean} from '../annotation'
 import {Meta, modules, toArray} from '../define'
 

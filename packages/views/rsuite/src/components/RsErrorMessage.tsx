@@ -1,4 +1,4 @@
-import {define, ErrorMessageProps, node, string} from 'form-builder/view'
+import {define, ErrorMessageProps, node, string} from '@react-form-builder/builder/view'
 import {Form} from 'rsuite'
 
 const RsErrorMessage = ({error, children}: ErrorMessageProps) => {

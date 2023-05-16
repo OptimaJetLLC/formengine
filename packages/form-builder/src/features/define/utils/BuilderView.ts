@@ -1,4 +1,4 @@
-import {generateTemplateTypeName, slotModel, View} from 'fb-core'
+import {generateTemplateTypeName, slotModel, View} from '@react-form-builder/core'
 import {Annotation} from '../../annotation/types/annotations/Annotation'
 import {internalErrorMeta} from '../../components/internalErrorMeta'
 import {screenMeta} from '../../components/screenMeta'

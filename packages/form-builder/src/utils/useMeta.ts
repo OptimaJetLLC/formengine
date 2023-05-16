@@ -1,4 +1,4 @@
-import {useComponentData} from 'fb-core'
+import {useComponentData} from '@react-form-builder/core'
 import {useBuilderStore} from './BuilderStoreContext'
 
 export function useMeta(type?: string) {

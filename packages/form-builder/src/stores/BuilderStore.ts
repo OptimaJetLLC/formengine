@@ -1,4 +1,4 @@
-import {ComponentData, ComponentProperty, ComponentStore, screenModel, Store, StoreProps, ViewMode} from 'fb-core'
+import {ComponentData, ComponentProperty, ComponentStore, screenModel, Store, StoreProps, ViewMode} from '@react-form-builder/core'
 import {assign, cloneDeep} from 'lodash-es'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
 import {Annotation} from '../features/annotation/types/annotations/Annotation'

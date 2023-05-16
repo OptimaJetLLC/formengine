@@ -1,11 +1,11 @@
 ---
-id: "fb_core.ErrorMessageProps"
+id: "react_form_builder_core.ErrorMessageProps"
 title: "Interface: ErrorMessageProps"
 sidebar_label: "ErrorMessageProps"
 custom_edit_url: null
 ---
 
-[fb-core](../modules/fb_core.md).ErrorMessageProps
+[@react-form-builder/core](../modules/react_form_builder_core.md).ErrorMessageProps
 
 ## Properties
 

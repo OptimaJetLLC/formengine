@@ -1,4 +1,4 @@
-import {boolean, define, number, string} from 'form-builder/view'
+import {boolean, define, number, string} from '@react-form-builder/builder/view'
 import {PatternFormat} from 'react-number-format'
 import {PatternFormatProps} from 'react-number-format/types/types'
 import {inputProps} from '../commonProperties'

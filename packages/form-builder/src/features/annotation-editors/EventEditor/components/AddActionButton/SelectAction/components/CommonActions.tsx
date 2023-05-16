@@ -1,4 +1,4 @@
-import {ActionData, useStore} from 'fb-core'
+import {ActionData, useStore} from '@react-form-builder/core'
 import {Dropdown} from 'rsuite'
 
 export const CommonActions = ({onSelect}: { onSelect: (action: ActionData) => void }) => {

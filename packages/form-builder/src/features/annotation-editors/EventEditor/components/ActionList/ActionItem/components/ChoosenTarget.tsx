@@ -1,5 +1,5 @@
+import {ComponentData, useStore} from '@react-form-builder/core'
 import {ArrowDownLine} from '@rsuite/icons'
-import {ComponentData, useStore} from 'fb-core'
 import {observer} from 'mobx-react'
 import {Button, Dropdown, Popover, Whisper} from 'rsuite'
 import {useGroups} from '../../../../hooks/useGroups'

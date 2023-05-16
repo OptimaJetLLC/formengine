@@ -1,11 +1,11 @@
 ---
-id: "fb_core.ComponentProperty"
+id: "react_form_builder_core.ComponentProperty"
 title: "Interface: ComponentProperty"
 sidebar_label: "ComponentProperty"
 custom_edit_url: null
 ---
 
-[fb-core](../modules/fb_core.md).ComponentProperty
+[@react-form-builder/core](../modules/react_form_builder_core.md).ComponentProperty
 
 ## Properties
 

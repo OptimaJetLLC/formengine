@@ -1,4 +1,4 @@
-import {Parameter} from 'fb-core'
+import {Parameter} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {LabeledInput} from '../../../../../../../../components/Containers'
 import {extractArgumentData, getArgumentInputByType} from './utils'

@@ -1,6 +1,7 @@
 {
-    "name": "view-rsuite",
+    "name": "@react-form-builder/components-rsuite",
     "version": "0.0.0",
+    "private": false,
     "main": "src/index.ts",
     "type": "module",
     "description": "OptimaJet Form Builder Components - RSuite",
@@ -9,8 +10,8 @@
         "build": "vite build"
     },
     "dependencies": {
-        "@rsuite/responsive-nav": "^5.0.1",
-        "form-builder": "*"
+        "@react-form-builder/builder": "^0.0.0",
+        "@rsuite/responsive-nav": "^5.0.1"
     },
     "peerDependencies": {
         "@emotion/css": "^11.10.5",

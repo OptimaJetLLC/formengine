@@ -1,17 +1,17 @@
 ---
-id: "fb_core.Model"
+id: "react_form_builder_core.Model"
 title: "Class: Model"
 sidebar_label: "Model"
 custom_edit_url: null
 ---
 
-[fb-core](../modules/fb_core.md).Model
+[@react-form-builder/core](../modules/react_form_builder_core.md).Model
 
 ## Constructors
 
 ### constructor
 
-• **new Model**(`view`, `name?`, `actionsInitializer?`, `valued?`, `defaultProps?`, `css?`)
+• **new Model**(`view`, `name?`, `actionsInitializer?`, `valued?`, `defaultProps?`, `css?`, `typeName?`)
 
 #### Parameters
 
@@ -19,10 +19,11 @@ custom_edit_url: null
 | :------ | :------ |
 | `view` | `ComponentType`<`any`\> |
 | `name?` | `string` |
-| `actionsInitializer?` | [`ActionsInitializer`](../modules/fb_core.md#actionsinitializer) |
+| `actionsInitializer?` | [`ActionsInitializer`](../modules/react_form_builder_core.md#actionsinitializer) |
 | `valued?` | `string` |
 | `defaultProps?` | `Readonly`<`Record`<`string`, `any`\>\> |
 | `css?` | `Css` |
+| `typeName?` | `string` |
 
 ## Properties
 
@@ -34,7 +35,7 @@ ___
 
 ### actionsInitializer
 
-• `Optional` `Readonly` **actionsInitializer**: [`ActionsInitializer`](../modules/fb_core.md#actionsinitializer)
+• `Optional` `Readonly` **actionsInitializer**: [`ActionsInitializer`](../modules/react_form_builder_core.md#actionsinitializer)
 
 ___
 
@@ -47,6 +48,12 @@ ___
 ### defaultProps
 
 • `Optional` `Readonly` **defaultProps**: `Readonly`<`Record`<`string`, `any`\>\>
+
+___
+
+### typeName
+
+• `Optional` `Readonly` **typeName**: `string`
 
 ___
 
@@ -90,7 +97,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cs` | [`ComponentStore`](fb_core.ComponentStore.md) |
+| `cs` | [`ComponentStore`](react_form_builder_core.ComponentStore.md) |
 
 #### Returns
 

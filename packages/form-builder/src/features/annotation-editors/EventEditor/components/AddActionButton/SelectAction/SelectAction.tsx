@@ -1,4 +1,4 @@
-import {ActionData, CustomActionDefinition, useComponentData} from 'fb-core'
+import {ActionData, CustomActionDefinition, useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import React, {useCallback} from 'react'
 import {Dropdown} from 'rsuite'

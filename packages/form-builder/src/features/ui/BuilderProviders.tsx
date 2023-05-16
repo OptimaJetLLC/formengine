@@ -1,4 +1,4 @@
-import {DefaultActions, Store, StoreProvider, ViewerPropsProvider} from 'fb-core'
+import {DefaultActions, Store, StoreProvider, ViewerPropsProvider} from '@react-form-builder/core'
 import {assign} from 'lodash-es'
 import {useLocalObservable} from 'mobx-react'
 import {ReactNode, useEffect, useMemo} from 'react'

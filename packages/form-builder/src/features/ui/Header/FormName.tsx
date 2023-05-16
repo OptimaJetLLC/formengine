@@ -1,4 +1,4 @@
-import {namedObserver} from 'fb-core'
+import {namedObserver} from '@react-form-builder/core'
 import {useTranslation} from 'react-i18next'
 import {Tooltip, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'

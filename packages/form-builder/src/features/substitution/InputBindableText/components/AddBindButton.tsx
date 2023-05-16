@@ -1,5 +1,5 @@
+import {componentMarkup} from '@react-form-builder/core'
 import ArrowDownIcon from '@rsuite/icons/ArrowDown'
-import {componentMarkup} from 'fb-core'
 import {annotate} from 'rc-marked-input'
 import {Ref, useRef} from 'react'
 import {Button, Whisper} from 'rsuite'

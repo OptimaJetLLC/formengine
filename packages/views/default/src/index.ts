@@ -1,4 +1,4 @@
-import {BuilderView, createView} from 'form-builder/view'
+import {BuilderView, createView} from '@react-form-builder/builder/view'
 import {myButton} from './components/MyButton'
 
 const definitions = [

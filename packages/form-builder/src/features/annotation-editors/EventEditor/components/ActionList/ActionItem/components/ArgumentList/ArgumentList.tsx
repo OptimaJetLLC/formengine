@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
+import {useComputed, useStore} from '@react-form-builder/core'
 import {ArrowDownLine, ArrowUpLine} from '@rsuite/icons'
-import {useComputed, useStore} from 'fb-core'
 import {t} from 'i18next'
 import {observer} from 'mobx-react'
 import {useReducer} from 'react'

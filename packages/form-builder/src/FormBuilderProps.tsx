@@ -1,4 +1,4 @@
-import {FormViewerProps} from 'fb-core'
+import {FormViewerProps} from '@react-form-builder/core'
 import {BuilderView} from './features/define'
 import {FormStorage} from './stores/FormStorage'
 

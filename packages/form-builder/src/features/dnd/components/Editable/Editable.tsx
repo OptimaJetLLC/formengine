@@ -1,4 +1,4 @@
-import {OverridesProvider, WrapperProps} from 'fb-core'
+import {OverridesProvider, WrapperProps} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {useDragLayer} from 'react-dnd'
 import {useEventReactions} from '../../../event/utils/useEventReactions'

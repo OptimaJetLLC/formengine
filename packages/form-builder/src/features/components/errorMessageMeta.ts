@@ -1,4 +1,4 @@
-import {errorMessageModel, ErrorMessageProps} from 'fb-core'
+import {errorMessageModel, ErrorMessageProps} from '@react-form-builder/core'
 import {node, string} from '../annotation'
 import {Meta, modules, toArray} from '../define'
 

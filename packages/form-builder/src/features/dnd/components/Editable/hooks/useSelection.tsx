@@ -1,5 +1,5 @@
 import {cx} from '@emotion/css'
-import {useComponentData} from 'fb-core'
+import {useComponentData} from '@react-form-builder/core'
 import {MouseEvent, useCallback, useMemo, useState} from 'react'
 import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'

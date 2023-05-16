@@ -1,4 +1,4 @@
-import {useComponentData} from 'fb-core'
+import {useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {CompactCell, LabelCell, Row} from './List'
 

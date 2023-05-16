@@ -1,4 +1,4 @@
-import {screenModel, ScreenProps} from 'fb-core'
+import {screenModel, ScreenProps} from '@react-form-builder/core'
 import {node, tooltipType} from '../annotation'
 import {Meta, modules, toArray} from '../define'
 

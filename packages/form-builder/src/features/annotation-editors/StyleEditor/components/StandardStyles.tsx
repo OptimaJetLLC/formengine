@@ -1,4 +1,4 @@
-import {IndentStyles, OtherStyles, SizeStyles} from 'fb-core'
+import {IndentStyles, OtherStyles, SizeStyles} from '@react-form-builder/core'
 import {useTranslation} from 'react-i18next'
 import {StandardStylesGroup} from './StandardStylesGroup'
 

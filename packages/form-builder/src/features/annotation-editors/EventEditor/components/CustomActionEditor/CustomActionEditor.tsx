@@ -1,4 +1,4 @@
-import {CustomActionDefinition, Parameter, toParameterWithType} from 'fb-core'
+import {CustomActionDefinition, Parameter, toParameterWithType} from '@react-form-builder/core'
 import {useReducer, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, Col, Grid, Input, Modal} from 'rsuite'

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {Device, useComponentData} from 'fb-core'
+import {Device, useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import {SelectPicker} from 'rsuite'

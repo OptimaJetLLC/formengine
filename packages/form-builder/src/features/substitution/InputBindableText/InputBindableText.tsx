@@ -1,4 +1,4 @@
-import {componentMarkup} from 'fb-core'
+import {componentMarkup} from '@react-form-builder/core'
 import {assign} from 'lodash-es'
 import {createMarkedInput} from 'rc-marked-input'
 import {InputGroup, Tag} from 'rsuite'

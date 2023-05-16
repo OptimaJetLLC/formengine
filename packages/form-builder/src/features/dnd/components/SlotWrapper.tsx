@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {WrapperProps} from 'fb-core'
+import {WrapperProps} from '@react-form-builder/core'
 import {DropView} from './Editable/components/DropView'
 
 const SDiv = styled.div`

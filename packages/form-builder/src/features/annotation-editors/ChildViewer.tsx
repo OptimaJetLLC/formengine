@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {ComponentStore, useComponentData} from 'fb-core'
+import {ComponentStore, useComponentData} from '@react-form-builder/core'
 import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
 

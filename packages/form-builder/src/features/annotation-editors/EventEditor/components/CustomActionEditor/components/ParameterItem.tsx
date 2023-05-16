@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
+import {Parameter, toParameterWithType} from '@react-form-builder/core'
 import {ArrowDownLine, ArrowUpLine, Close} from '@rsuite/icons'
-import {Parameter, toParameterWithType} from 'fb-core'
 import React, {Dispatch, useReducer} from 'react'
 import {Animation, Input, InputPicker} from 'rsuite'
 import {toLabeledValues} from '../../../../../annotation/utils/LabeledValue'

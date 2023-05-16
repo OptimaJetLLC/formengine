@@ -1,4 +1,4 @@
-import {SchemaType, useComponentData} from 'fb-core'
+import {SchemaType, useComponentData} from '@react-form-builder/core'
 import {Checkbox} from 'rsuite'
 import {Nullable} from 'vitest'
 import {useMeta} from '../../../utils/useMeta'

@@ -1,6 +1,6 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {FormViewer, namedObserver, useViewerProps} from 'fb-core'
+import {FormViewer, namedObserver, useViewerProps} from '@react-form-builder/core'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {Editable} from '../dnd'
 import {SlotWrapper} from '../dnd/components/SlotWrapper'

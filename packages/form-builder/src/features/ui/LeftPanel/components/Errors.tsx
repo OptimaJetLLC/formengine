@@ -1,4 +1,4 @@
-import {useStore} from 'fb-core'
+import {useStore} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
 import {Rows} from '../../../components/Containers'

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {namedObserver} from 'fb-core'
+import {namedObserver} from '@react-form-builder/core'
 import {BottomPanel} from './BottomPanel'
 import {CentralPanel} from './CentralPanel'
 import {LeftPanel} from './LeftPanel'
