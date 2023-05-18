@@ -10,4 +10,5 @@ const RsRichTextEditor = (props: RsRichTextEditorProps) => {
 }
 
 export const rsRichTextEditor = define(RsRichTextEditor)
+  .type('RsRichTextEditor')
   .name('Rich text editor')

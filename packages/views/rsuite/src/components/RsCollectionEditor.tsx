@@ -10,4 +10,5 @@ const RsCollectionEditor = (props: RsCollectionEditorProps) => {
 }
 
 export const rsCollectionEditor = define(RsCollectionEditor)
+  .type('RsCollectionEditor')
   .name('Collection editor')

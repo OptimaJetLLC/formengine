@@ -1,6 +1,6 @@
 import {boolean, define, event, node, string} from '@react-form-builder/builder/view'
 import {PanelProps} from 'rsuite/esm/Panel/Panel'
-import Panel from 'rsuite/Panel'
+import Panel from 'rsuite/esm/Panel/index.js'
 import {headerSize} from '../commonProperties'
 import {RsTitle} from './RsTitle'
 
@@ -18,6 +18,7 @@ const RsCard = ({header, title, headerSize, ...props}: RsCardProps) => {
 }
 
 export const rsCard = define(RsCard)
+  .type('RsCard')
   .props({
     header: node,
     children: node,

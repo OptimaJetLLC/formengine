@@ -76,7 +76,7 @@ const definitions = [
 definitions.forEach(c => {
   const prefix = 'Rs'
   if (!c.getType().startsWith(prefix)) {
-    throw new Error(`The component type must start with '${prefix}', type: '${c.type}'`)
+    throw new Error(`The component type must start with '${prefix}', type: '${c.getType()}'`)
   }
   c.category('RSuite components')
 })

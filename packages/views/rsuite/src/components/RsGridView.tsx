@@ -10,4 +10,5 @@ const RsGridView = (props: RsGridViewProps) => {
 }
 
 export const rsGridView = define(RsGridView)
+  .type('RsGridView')
   .name('Grid view')

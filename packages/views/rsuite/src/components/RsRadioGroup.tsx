@@ -22,6 +22,7 @@ const RsRadioGroup = ({items, label, ...props}: RsRadioGroupProps) => {
 }
 
 export const rsRadioGroup = define(RsRadioGroup)
+  .type('RsRadioGroup')
   .props({
     name: string.default('RadioGroup').hinted('Radio group name'),
     appearance: oneOf('default', 'picker').labeled('Default', 'Picker').default('default'),

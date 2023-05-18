@@ -10,4 +10,5 @@ const RsGridLayout = (props: RsGridLayoutProps) => {
 }
 
 export const rsGridLayout = define(RsGridLayout)
+  .type('RsGridLayout')
   .name('Grid layout')

@@ -10,5 +10,6 @@ const RsCustomControl = (props: RsCustomControlProps) => {
 }
 
 export const rsCustomControl = define(RsCustomControl)
+  .type('RsCustomControl')
   .name('Custom control')
   .preview(<span>This is custom preview 🎉🚉🪆</span>)

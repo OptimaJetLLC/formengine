@@ -9,6 +9,7 @@ interface RsLabelProps extends TextProps {
 const RsLabel = ({text, ...props}: RsLabelProps) => <label {...props}>{text}</label>
 
 export const rsLabel = define(RsLabel)
+  .type('RsLabel')
   .props({
     text: string.default('Label'),
   })

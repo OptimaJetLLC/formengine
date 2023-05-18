@@ -26,6 +26,7 @@ const RsGrid = (props: RsGridProps) => {
 }
 
 export const rsGrid = define(RsGrid)
+  .type('RsGrid')
   .props({
     child1: node,
     child2: node,

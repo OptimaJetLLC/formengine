@@ -36,6 +36,7 @@ const RsBreadcrumb = ({items, onItemClick, ...props}: RsBreadcrumbProps) => (
 )
 
 export const rsBreadcrumb = define(RsBreadcrumb)
+  .type('RsBreadcrumb')
   .props({
     separator: string.default('/'),
     maxItems: number

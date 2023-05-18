@@ -10,4 +10,5 @@ const RsCustomBlock = (props: RsCustomBlockProps) => {
 }
 
 export const rsCustomBlock = define(RsCustomBlock)
+  .type('RsCustomBlock')
   .name('Custom block')

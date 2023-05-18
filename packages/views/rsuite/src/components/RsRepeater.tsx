@@ -10,3 +10,4 @@ const RsRepeater = (props: RsRepeaterProps) => {
 }
 
 export const rsRepeater = define(RsRepeater)
+  .type('RsRepeater')
