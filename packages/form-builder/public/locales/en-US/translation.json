@@ -209,6 +209,7 @@
   },
   "leftPanel": {
     "sectionName": {
+      "components": "Components",
       "tree": "Tree",
       "forms": "Forms"
     }

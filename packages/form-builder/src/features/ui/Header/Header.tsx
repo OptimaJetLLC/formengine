@@ -5,7 +5,6 @@ import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo'
 import {observer} from 'mobx-react'
 import {ButtonToolbar, IconButton} from 'rsuite'
 import {FaIcon} from '../../components/Icons'
-import {AddButton} from './components/AddButton'
 import {Export} from './components/Export'
 import {JsonViewButton} from './components/JsonViewButton'
 import {Menu} from './components/Menu'
@@ -20,7 +19,6 @@ const Header = observer(() => {
       <LeftPart>
         <ButtonToolbar>
           <Menu/>
-          <AddButton/>
           <IconButton onClick={_ => {
           }} disabled={true /*TODO !!store.canUndo*/}
                       icon={<FaIcon icon={faUndo as unknown as IconDefinition}/>}/>

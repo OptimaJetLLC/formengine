@@ -92,6 +92,8 @@ const componentBar = css`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  height: 100%;
+  background-color: var(--rs-btn-default-bg);
 `
 
 const ControlsGroup = styled.div`
