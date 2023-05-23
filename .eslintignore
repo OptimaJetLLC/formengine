@@ -1,0 +1,8 @@
+vite.config.ts
+**/dist
+documentation
+scripts
+packages/apps
+packages/views/antd
+packages/views/default
+sample-apps

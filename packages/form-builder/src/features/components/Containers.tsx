@@ -27,7 +27,7 @@ export const LabeledInput = styled.div`
   }
 `
 
-export const makeLabeledIconStyles = (gap: number = 10) => css`
+export const makeLabeledIconStyles = (gap = 10) => css`
   && {
     display: flex;
     align-items: center;

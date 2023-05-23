@@ -31,7 +31,7 @@ const filterObj = (obj: Object) => {
     const typeIs = (valueType: string) => typeof value == valueType
 
     if (typeIs('object')) {
-      filtered[key as string] = filterObj(value)
+      filtered[key] = filterObj(value)
       return
     }
 
@@ -39,7 +39,7 @@ const filterObj = (obj: Object) => {
       return
     }
 
-    filtered[key as string] = value
+    filtered[key] = value
   })
 
   return filtered

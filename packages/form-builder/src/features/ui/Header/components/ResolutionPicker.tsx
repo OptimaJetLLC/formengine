@@ -32,7 +32,7 @@ const renderItem = (item?: Item) => {
   if (!item) return null
 
   return <SItemContainer>
-    <FaIcon icon={item.icon as any}/>
+    <FaIcon icon={item.icon}/>
     {item.label}
   </SItemContainer>
 }

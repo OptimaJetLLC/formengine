@@ -23,7 +23,7 @@ export const ComponentTreeItem = namedObserver('ComponentTreeItem', ({componentS
   useEventListener(data.key, 'onBlur', _ => data.field?.setTouched(), [])
 
   const Wrapper = props.componentWrapper || Fragment
-  const Tooltip = !!data.store.tooltipProps ? TooltipWrapper : Fragment
+  const Tooltip = data.store.tooltipProps ? TooltipWrapper : Fragment
 
   return (
     <ComponentDataProvider value={data}>

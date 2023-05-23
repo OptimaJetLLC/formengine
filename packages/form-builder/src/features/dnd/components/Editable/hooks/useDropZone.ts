@@ -23,7 +23,7 @@ export const useDropZone = (isAfter: boolean, isInner?: boolean): [DropState, Co
   const [{isActive, isOver}, drop] = useDrop({
     accept: AcceptDrop,
     drop: (source: ComponentMove, monitor) => {
-      let type = monitor.getItemType() as ItemType
+      const type = monitor.getItemType() as ItemType
       switch (type) {
         case ItemType.AddedComponent:
           store.add(source, target, insertPosition)

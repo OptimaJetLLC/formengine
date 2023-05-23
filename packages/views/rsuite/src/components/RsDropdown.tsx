@@ -9,12 +9,12 @@ interface RsDropdownProps extends InputPickerProps {
 }
 
 const RsDropdown = ({label, ...props}: RsDropdownProps) => {
-  let {data, ...otherProps} = props
-  data = data ?? []
+  const {data, ...otherProps} = props
+  const pickerData = data ?? []
   return (
     <div>
       <Form.ControlLabel>{label}</Form.ControlLabel>
-      <InputPicker {...otherProps} data={data}/>
+      <InputPicker {...otherProps} data={pickerData}/>
     </div>
   )
 }

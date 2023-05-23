@@ -2,9 +2,9 @@ import {ComponentProperty} from '../../stores/ComponentStore'
 import {Store} from '../../stores/Store'
 
 export const getSubstitutedValue = (props: Record<string, ComponentProperty>, store: Store) => {
-  let result: Record<string, any> = {}
+  const result: Record<string, any> = {}
 
-  for (let key in props) {
+  for (const key in props) {
     const value = props[key]?.value
 
     if (props[key]?.useFn || typeof value !== 'string' || key === 'value') continue

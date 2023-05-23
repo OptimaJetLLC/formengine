@@ -1,0 +1,40 @@
+/* eslint-env node */
+module.exports = {
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+  ],
+  plugins: ['@typescript-eslint'],
+  rules: {
+    'no-implied-eval': 'off',
+    '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/ban-ts-comment': ['error', {'ts-ignore': 'allow-with-description'}],
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-implied-eval': 'off',
+    '@typescript-eslint/no-unsafe-argument': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-empty-interface': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-misused-promises': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/restrict-template-expressions': 'off',
+    '@typescript-eslint/unbound-method': 'off',
+  },
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: [
+      './packages/core/tsconfig.json',
+      './packages/form-builder/tsconfig.json',
+      './packages/form-viewer/tsconfig.json',
+      './packages/views/rsuite/tsconfig.json',
+    ],
+    tsconfigRootDir: __dirname,
+  },
+  root: true,
+};

@@ -15,7 +15,7 @@ function getItemStyles(
     }
   }
 
-  let {x, y} = currentOffset
+  const {x, y} = currentOffset
 
   const isFromAddElements = itemType === ItemType.AddedComponent
 

@@ -10,7 +10,7 @@ export function getFullLangCode(lang: Language): string {
 }
 
 let firstLang: string | undefined
-let callbacks: OnInitCallback[] = []
+const callbacks: OnInitCallback[] = []
 
 export function onI18nInit(callback: OnInitCallback) {
   if (firstLang) {
@@ -88,7 +88,7 @@ export function findLanguage(language: string): Language {
     if (langByFullCode) {
       return langByFullCode
     }
-    let languageByCode = findLanguageByCode(code)
+    const languageByCode = findLanguageByCode(code)
     if (languageByCode) {
       return languageByCode
     }

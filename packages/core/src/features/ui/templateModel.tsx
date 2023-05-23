@@ -21,9 +21,8 @@ const Template = () => {
   if (!viewerProps.getForm) return <TemplateLoadError>Please define <code>getForm</code> property!</TemplateLoadError>
   if (!(field instanceof FormField)) return null
 
-  const formField = field as FormField
-  return <StoreProvider value={formField.form.store}>
-    <FormViewer {...formField.props}/>
+  return <StoreProvider value={field.form.store}>
+    <FormViewer {...field.props}/>
   </StoreProvider>
 }
 

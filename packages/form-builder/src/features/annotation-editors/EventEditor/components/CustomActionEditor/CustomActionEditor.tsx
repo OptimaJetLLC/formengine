@@ -70,9 +70,10 @@ function Action (${params ? 'args, ' : ''}e) {`
 function paramsReducer(params: Parameter[] | undefined, action: ParamAction) {
   const {index, param, type} = action
   switch (type) {
-    case 'create':
+    case 'create': {
       const paramName = `prop${(index)}`
       return params ? [...params, paramName] : [paramName]
+    }
     case 'update':
       param && params?.splice(index, 1, param)
       return params?.concat()

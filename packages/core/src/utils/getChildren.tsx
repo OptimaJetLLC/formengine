@@ -18,7 +18,7 @@ export function getChildren(data: ComponentData, store: Store, componentTreeItem
   const isBindConditionSatisfied = (child: ComponentStore) => executeCondition(child, currentState)
   const isNeedRender = (child: ComponentStore) => store.isBuilderMode || needRender(child, store)
 
-  for (let [key, children] of Object.entries(groups)) {
+  for (const [key, children] of Object.entries(groups)) {
     const filteredChildren = children
       .filter(isBindConditionSatisfied)
       .filter(isNeedRender)

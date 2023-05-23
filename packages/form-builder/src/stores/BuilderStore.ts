@@ -65,7 +65,7 @@ export class BuilderStore {
     this.view = props.view
 
     onI18nInit((language: string) => {
-      let foundLanguage = findLanguage(language)
+      const foundLanguage = findLanguage(language)
       if (getFullLangCode(foundLanguage) !== getFullLangCode(this.language)) {
         this.language = foundLanguage
       }
@@ -199,7 +199,7 @@ export class BuilderStore {
     this.treeMap(this.viewer.screen, ({key}) => keysList.push(key))
     this.treeMap(source, item => {
       let count = 1
-      const withCount = () => item.type + ' ' + count
+      const withCount = () => `${item.type} ${count}`
       while (keysList.includes(withCount())) count++
       keysList.push(item.key = withCount())
     })

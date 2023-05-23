@@ -12,8 +12,8 @@ export interface ComponentProperty {
 
 //No functions here
 export class ComponentStore {
-  key: string = ''
-  type: string = ''
+  key = ''
+  type = ''
   props: Record<string, ComponentProperty> = {} //TODO do nullable
   css?: Css
   events?: Record<EventName, ActionData[]>

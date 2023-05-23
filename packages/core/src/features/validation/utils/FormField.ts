@@ -5,7 +5,7 @@ import {Form} from './Form'
 
 export class FormField implements Field {
   storeDataInParentForm = true
-  valued: string = ''
+  valued = ''
   touched = false
 
   constructor(readonly key: string, readonly form: Form, readonly props: FormViewerProps) {

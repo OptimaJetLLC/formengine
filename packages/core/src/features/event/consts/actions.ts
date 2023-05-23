@@ -4,7 +4,7 @@ const setValue = defineAction('Set value', (actionArgs, e) => {
   //const componentStore: ComponentStore = eventArgs[2];
   //actionArgs.target.props.value = actionArgs.param1;
   //let b = args
-  let a = actionArgs.propertyName
+  const a = actionArgs.propertyName
 }, ['propertyName', ['NumPar', 'number'], ['BoolPar', 'boolean']])
 
 const setProperty = defineAction('Set property', ({propertyKey, targetKey, value}, e) => {

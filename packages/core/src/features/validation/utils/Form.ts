@@ -14,7 +14,7 @@ export class Form {
 
   get data() {
     const result: Record<string, unknown> = {}
-    for (let [key, field] of this.fields) {
+    for (const [key, field] of this.fields) {
       if (field.storeDataInParentForm) {
         const fieldValue: Record<string, any> = field.value || {}
         Object.keys(fieldValue).forEach(i => result[i] = fieldValue[i])
@@ -26,8 +26,8 @@ export class Form {
   }
 
   get errors() {
-    let result: Record<string, unknown> = {}
-    for (let [key, field] of this.fields) {
+    const result: Record<string, unknown> = {}
+    for (const [key, field] of this.fields) {
       if (field.error) result[key] = field.error
     }
     return result

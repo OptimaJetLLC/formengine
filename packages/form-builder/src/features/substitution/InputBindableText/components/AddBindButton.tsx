@@ -19,7 +19,7 @@ export const AddBindButton = ({onAdd, name}: any) => {
 
   const handleSelect = ({componentStore, propertyName}: any) => {
     onAdd((previousValue: string) => {
-      let value = annotate(componentMarkup, componentStore.key, propertyName)
+      const value = annotate(componentMarkup, componentStore.key, propertyName)
       return previousValue + value + ' '
     })
   }

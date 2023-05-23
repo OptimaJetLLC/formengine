@@ -60,7 +60,7 @@ function parseCSSValue(cssValue?: string) {
 const isNeedValue = (unit?: string) => unit !== undefined && !SizeKeywords.includes(unit)
 
 const makeCSSValue = (value: InputValue, unit?: string) => {
-  let number = convertToNumberForNonOtherUnit(value, unit)
+  const number = convertToNumberForNonOtherUnit(value, unit)
   return `${isNeedValue(unit) ? number : ''}${unit === OtherUnit ? '' : unit}`
 }
 

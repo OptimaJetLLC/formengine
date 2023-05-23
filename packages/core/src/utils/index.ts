@@ -19,8 +19,8 @@ export function treeFind<T extends { key: string, children?: T[] }>(value: T, ke
 
   if (!value.children) return
 
-  for (let child of value.children) {
-    let childNode = treeFind(child, key)
+  for (const child of value.children) {
+    const childNode = treeFind(child, key)
     if (childNode) return childNode
   }
 

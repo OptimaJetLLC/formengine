@@ -76,8 +76,8 @@ export function findDepth<T extends { key: string, children?: T[] }>(value: T, k
   if (!value.children) return
 
   depth = depth + 1
-  for (let child of value.children) {
-    let childNode = findDepth(child, key, depth)
+  for (const child of value.children) {
+    const childNode = findDepth(child, key, depth)
     if (childNode) return childNode
   }
 

@@ -25,7 +25,7 @@ export const useEventReactions = () => {
   useReaction(() => store.screen.props.actions?.value?.slice(), (arg: CustomActionDefinition[], prev: CustomActionDefinition[]) => {
     if (!prev || !arg || arg.length !== prev.length - 1) return
     const [deleted] = prev.filter(x => !arg.includes(x))
-    for (let event in data.store.events) {
+    for (const event in data.store.events) {
       data.store.events[event] =
         data.store.events[event].filter(action => action.type !== 'custom' || action.name !== deleted.name)
     }
