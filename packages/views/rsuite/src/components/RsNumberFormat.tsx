@@ -19,6 +19,7 @@ const RsNumberFormat = ({style, className, label, onChange, value, ...props}: Rs
 
 export const rsNumberFormat = define(RsNumberFormat)
   .type('RsNumberFormat')
+  .name('Number format')
   .props({
     label: string.default('Number input'),
     value: number.valued,

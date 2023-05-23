@@ -4,6 +4,7 @@ import {readOnly, size} from '../commonProperties'
 
 export const rsButton = define(Button)
   .type('RsButton')
+  .name('Button')
   .props({
     active: boolean.hinted('A button can show it is currently the active user selection'),
     appearance: oneOf('default', 'primary', 'link', 'subtle', 'ghost')

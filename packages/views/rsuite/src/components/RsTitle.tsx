@@ -16,6 +16,7 @@ const {textAlign, color} = textStyles
 
 export const rsTitle = define(RsTitle)
   .type('RsTitle')
+  .name('Title')
   .props({
     content: string.required.default('Header'),
     headerSize

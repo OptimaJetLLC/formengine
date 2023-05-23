@@ -13,6 +13,7 @@ const RsStaticContent = (props: RsStaticContentProps) => {
 
 export const rsStaticContent = define(RsStaticContent)
   .type('RsStaticContent')
+  .name('Static content')
   .props({
     content: string.required.default('Text...'),
     allowHtml: boolean.named('Allow HTML'),

@@ -41,6 +41,7 @@ const {activeKey, ...props} = navProps
 
 export const rsMenu = define(RsMenu)
   .type('RsMenu')
+  .name('Menu')
   .props({
     activeKey: activeKey.default('Home'),
     ...props,

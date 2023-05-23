@@ -16,7 +16,7 @@ const rsCommonProgressProps = {
 }
 
 export const rsProgressCircle = define(Progress.Circle)
-  .name('ProgressCircle')
+  .name('Progress circle')
   .type('RsProgressCircle')
   .props({
     ...rsCommonProgressProps,
@@ -33,7 +33,7 @@ export const rsProgressCircle = define(Progress.Circle)
   })
 
 export const rsProgressLine = define(Progress.Line)
-  .name('ProgressLine')
+  .name('Progress line')
   .type('RsProgressLine')
   .props({
     ...rsCommonProgressProps,

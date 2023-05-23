@@ -4,6 +4,7 @@ import {readOnly} from '../commonProperties'
 
 export const rsCheckbox = define(Checkbox)
   .type('RsCheckbox')
+  .name('Checkbox')
   .props({
     children: string.named('Label').default('Checkbox'),
     checked: boolean.hinted('Specifies whether the checkbox is selected').valued.default(true),

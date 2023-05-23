@@ -18,6 +18,7 @@ const RsTextArea = ({style, className, label, ...props}: RsTextAreaProps) => (
 
 export const rsTextArea = define(RsTextArea)
   .type('RsTextArea')
+  .name('Text area')
   .props({
     label: string.default('Text area'),
     value: string.default('').valued,

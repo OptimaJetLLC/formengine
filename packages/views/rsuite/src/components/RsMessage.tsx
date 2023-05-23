@@ -10,6 +10,7 @@ const SMessage = styled(Message)`
 
 export const rsMessage = define(SMessage)
   .type('RsMessage')
+  .name('Message')
   .props({
     children: node,
     closeable: boolean,

@@ -16,6 +16,7 @@ const RsErrorMessage = ({error, children}: ErrorMessageProps) => {
 
 export const rsErrorMessage = define(RsErrorMessage)
   .type('RsErrorMessage')
+  .name('Error message')
   .props({
     error: string,
     children: node,

@@ -10,6 +10,7 @@ const RsLabel = ({text, ...props}: RsLabelProps) => <label {...props}>{text}</la
 
 export const rsLabel = define(RsLabel)
   .type('RsLabel')
+  .name('Label')
   .props({
     text: string.default('Label'),
   })

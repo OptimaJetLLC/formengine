@@ -11,3 +11,4 @@ const RsSearch = (props: RsSearchProps) => {
 
 export const rsSearch = define(RsSearch)
   .type('RsSearch')
+  .name('Search')

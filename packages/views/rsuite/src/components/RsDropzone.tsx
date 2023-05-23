@@ -11,3 +11,4 @@ const RsDropzone = (props: RsDropzoneProps) => {
 
 export const rsDropzone = define(RsDropzone)
   .type('RsDropzone')
+  .name('Dropzone')

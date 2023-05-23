@@ -11,6 +11,7 @@ const RsImage = ({alt, ...props}: RsImageProps) => <img {...props} alt={alt}/>
 
 export const rsImage = define(RsImage)
   .type('RsImage')
+  .name('Image')
   .props({
     src: string.required.default(logo).hinted('Image source'),
     alt: string.named('Description').default('Image').hinted('Image description'),

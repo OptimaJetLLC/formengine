@@ -39,6 +39,7 @@ const RsTab = ({pane, onSelect, showNavigation, items, ...props}: RsTabProps) =>
 
 export const rsTab = define(RsTab)
   .type('RsTab')
+  .name('Tab')
   .props({
     ...navProps,
     items: array.default(toLabeledValues(['Item1', 'Item2', 'Item3'])),

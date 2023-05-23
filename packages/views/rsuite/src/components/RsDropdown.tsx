@@ -21,6 +21,7 @@ const RsDropdown = ({label, ...props}: RsDropdownProps) => {
 
 export const rsDropdown = define(RsDropdown)
   .type('RsDropdown')
+  .name('Dropdown')
   .props({
     label: string.default('Select'),
     placement,

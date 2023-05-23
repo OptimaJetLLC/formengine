@@ -19,6 +19,7 @@ const RsPatternFormat = ({style, className, label, format, onChange, value, ...p
 
 export const rsPatternFormat = define(RsPatternFormat)
   .type('RsPatternFormat')
+  .name('Pattern format')
   .props({
     label: string.default('Formatted input'),
     value: number.valued,

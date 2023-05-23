@@ -18,6 +18,7 @@ RsContainer.displayName = 'Container'
 //TODO property what say it is a container and can have children. Create smth like reactnode property?
 export const rsContainer = define(RsContainer)
   .type('RsContainer')
+  .name('Container')
   .props({
     children: node.hinted('Component children'),
     direction: oneOf('vertical', 'horizontal')
