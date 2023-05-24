@@ -277,6 +277,12 @@
               }
             ]
           }
+        },
+        {
+          "key": "RsUploader 1",
+          "type": "RsUploader",
+          "props": {
+          }
         }
       ]
     },

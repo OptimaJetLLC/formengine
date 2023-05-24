@@ -32,6 +32,7 @@ import {rsTextArea} from './components/RsTextArea'
 import {rsTitle} from './components/RsTitle'
 import {rsTooltip} from './components/RsTooltip'
 import {rsTreePicker} from './components/RsTreePicker'
+import {rsUploader} from './components/RsUploader'
 
 const definitions = [
   rsBreadcrumb,
@@ -70,7 +71,8 @@ const definitions = [
   rsTextArea,
   rsTitle,
   rsTreePicker,
-  rsTooltip
+  rsTooltip,
+  rsUploader
 ]
 
 definitions.forEach(c => {

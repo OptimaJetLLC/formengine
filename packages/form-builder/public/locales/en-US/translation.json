@@ -89,6 +89,38 @@
     "eventKey": {
       "name": "Event key",
       "hint": "The event key corresponding to this element"
+    },
+    "action": {
+      "name": "Action",
+      "hint": "Uploading URL"
+    },
+    "accept": {
+      "name": "Accept",
+      "hint": "File types that can be accepted. See standard HTML attribute: accept"
+    },
+    "autoUpload": {
+      "name": "Auto upload",
+      "hint": "Automatically upload files after selecting them"
+    },
+    "disableMultipart": {
+      "name": "Disable multipart",
+      "hint": "If 'true', disable using a multipart form for file upload and instead stream the file. Some APIs (e.g. Amazon S3) may expect the file to be streamed rather than sent via a form"
+    },
+    "draggable": {
+      "name": "Draggable",
+      "hint": "Enabled drag and drop to upload"
+    },
+    "method": {
+      "name": "Method",
+      "hint": "The http method of upload request"
+    },
+    "name": {
+      "name": "Name",
+      "hint": "Upload the parameter name of the corresponding file"
+    },
+    "withCredentials": {
+      "name": "With credentials",
+      "hint": "Whether to carry cookies when uploading requests"
     }
   },
   "leftMenu": {
