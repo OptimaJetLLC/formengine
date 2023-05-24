@@ -2,7 +2,7 @@ import {buildInternalErrorModel, internalErrorModel} from '../../ui/internalErro
 import {screenModel} from '../../ui/screenModel'
 import {slotModel} from '../../ui/slotModel'
 import {createTemplateModel} from '../../ui/templateModel'
-import {errorMessageModel} from '../../validation/components/ErrorMessage'
+import {errorMessageModel} from '../../validation/components/DefaultErrorMessage'
 import {Model} from './Model'
 
 export class View {

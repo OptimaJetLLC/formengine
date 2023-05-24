@@ -33,6 +33,10 @@ export class Form {
     return result
   }
 
+  setAllErrors(message?: string) {
+    this.fields.forEach(f => f.error = message)
+  }
+
   get(key: string) {
     return this.fields.get(key)
   }
@@ -57,6 +61,8 @@ export const FormDeclaration = `declare class Form {
   get data(): Record<string, unknown>
 
   get errors(): Record<string, unknown>
+  
+  setAllErrors(message?: string)
 
   get(key: string): Field
 

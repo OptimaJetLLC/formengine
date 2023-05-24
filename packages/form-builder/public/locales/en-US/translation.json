@@ -6,6 +6,10 @@
     "cancel": "Cancel"
   },
   "annotation": {
+    "errorConfig": {
+      "header": "Error",
+      "show": "Show"
+    },
     "htmlAttributes": {
       "name": "HTML attributes",
       "hint": "HTML attributes in React (camelCase) format"

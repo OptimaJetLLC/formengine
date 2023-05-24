@@ -27,6 +27,7 @@ export const set = createProperty('set').schemed(yup.array())
 export const color = createProperty('color').schemed(yup.string())
 
 export const tooltipType = createAnnotation('tooltipType').schemed(yup.string())
+export const errorConfig = createAnnotation('errorConfig')
 
 //TODO rename to func, or action, or to stay event?
 //Use for create functions for events

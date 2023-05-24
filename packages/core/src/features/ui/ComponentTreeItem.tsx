@@ -3,7 +3,6 @@ import {ComponentStore} from '../../stores/ComponentStore'
 import {namedObserver} from '../../utils'
 import {ComponentData, ComponentDataProvider} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
-import {useEventListener} from '../event'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 import {TooltipWrapper} from '../tooltip/TooltipWrapper'
 import {Erroneous} from '../validation'
@@ -15,12 +14,8 @@ export interface ComponentTreeItemProps {
 }
 
 export const ComponentTreeItem = namedObserver('ComponentTreeItem', ({componentStore, parentStore}: ComponentTreeItemProps) => {
-  const store = useStore()
   const props = useViewerProps()
   const data = useCachedComponentData(componentStore, parentStore)
-
-  useEventListener(data.key, 'onChange', e => data.field?.setValue(e.value), [])
-  useEventListener(data.key, 'onBlur', _ => data.field?.setTouched(), [])
 
   const Wrapper = props.componentWrapper || Fragment
   const Tooltip = data.store.tooltipProps ? TooltipWrapper : Fragment

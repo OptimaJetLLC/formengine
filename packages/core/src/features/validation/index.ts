@@ -1,6 +1,5 @@
 export {Erroneous} from './components/Erroneous'
-export type {ErroneousProps} from './components/Erroneous'
 export type {Field} from './utils/Field'
 export {Form} from './utils/Form'
-export type {ErrorMessageProps} from './components/ErrorMessage'
+export type {ErrorWrapperProps} from './components/DefaultErrorMessage'
 export {FormDeclaration} from './utils/Form'

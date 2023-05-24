@@ -1,6 +1,7 @@
 import {ComponentType} from 'react'
 import {Annotation} from '../annotation/types/annotations/Annotation'
 import {Section, SubSection} from '../ui/RightPanel/PropertiesEditor/Section'
+import {ErrorConfig} from '../validation/ErrorConfig'
 import {ArrayInput} from './ArrayInput'
 import AttributesInput from './AttributesInput'
 import {BooleanInput} from './BooleanInput'
@@ -22,6 +23,7 @@ import {TooltipTypePicker} from './TooltipTypePicker'
 import {ValidateEditor} from './ValidateEditor'
 
 //TODO change string type
+//TODO return annotation map to annotation
 export const EditorMap: Record<string, ComponentType> = {
   key: KeyInput,
   htmlAttributes: AttributesInput,
@@ -43,13 +45,16 @@ export const EditorMap: Record<string, ComponentType> = {
   tooltipProps: TooltipPropertiesEditor,
   useTooltip: BooleanInput,
   renderWhen: RenderWhenEditor,
+  errorConfig: ErrorConfig
 }
 
+//TODO return section map to annotation
 const SectionMap: Record<string, Section> = {
   validation: Section.Rules,
   event: Section.Actions,
 }
 
+//TODO return sub section map to annotation
 const SubSectionMap: Record<string, SubSection> = {
   htmlAttributes: SubSection.Additional,
   tooltipProps: SubSection.Tooltip,

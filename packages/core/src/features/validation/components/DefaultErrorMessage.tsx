@@ -1,10 +1,11 @@
-import {css} from '@emotion/css'
+import {css, cx} from '@emotion/css'
 import {ReactNode} from 'react'
 import {Model} from '../../define'
 
-export interface ErrorMessageProps {
+export interface ErrorWrapperProps {
   error?: string
   children?: ReactNode
+  className?: string
 }
 
 const ErrorMessageStyle = css`
@@ -23,17 +24,15 @@ const ErrorMessageStyle = css`
   }
 `
 
-const ErrorMessage = ({children, error}: ErrorMessageProps) => {
-  const className = error ? ErrorMessageStyle : undefined
-
+const DefaultErrorMessage = ({children, error, className}: ErrorWrapperProps) => {
   return (
     <>
       {children}
-      <div className={className}>
+      <div className={cx(className, ErrorMessageStyle)}>
         {error}
       </div>
     </>
   )
 }
 
-export const errorMessageModel = new Model(ErrorMessage)
+export const errorMessageModel = new Model(DefaultErrorMessage)

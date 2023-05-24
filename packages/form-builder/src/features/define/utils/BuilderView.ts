@@ -4,6 +4,7 @@ import {internalErrorMeta} from '../../components/internalErrorMeta'
 import {screenMeta} from '../../components/screenMeta'
 import {slotMeta} from '../../components/slotMeta'
 import {createTemplateMeta} from '../../components/templateMeta'
+import {errorMessageMeta} from '../../validation/errorMessageMeta'
 import {BuilderComponent} from './BuilderComponent'
 import {Meta} from './Meta'
 
@@ -12,6 +13,7 @@ const templatesCategoryName = 'Templates'
 export class BuilderView extends View {
   #metaMap = new Map<string, Meta>()
   #tooltipsMeta = new Map<string, Meta>()
+  errorMeta = errorMessageMeta
 
   getMeta(type: string) {
     const result = this.#metaMap.get(type)
@@ -33,7 +35,7 @@ export class BuilderView extends View {
   withErrorMeta(builderComponent: BuilderComponent): this {
     const {model, meta} = builderComponent
     super.withError(model)
-    //this.#errorMeta.set(model.type, meta)
+    this.errorMeta = meta
     return this
   }
 

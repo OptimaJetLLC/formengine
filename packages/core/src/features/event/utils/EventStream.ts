@@ -20,6 +20,7 @@ export class EventStream {
     return new EventStream(newStream)
   }
 
+  //TODO rename to e
   listen(next: (value: ActionEventArgs) => void): () => void
   listen(observer: Partial<Observer<ActionEventArgs>>): () => void
   listen(observerOrNext: any): () => void {

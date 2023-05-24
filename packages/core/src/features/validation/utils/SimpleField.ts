@@ -83,6 +83,7 @@ export class SimpleField implements Field {
 
   reset() {
     this.value = this.initialValue ?? this.schema?.getDefault()
+    this.error = undefined
   }
 
   clear() {

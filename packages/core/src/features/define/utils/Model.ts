@@ -9,6 +9,7 @@ import {ActionsInitializer} from '../types'
 
 export class Model {
   readonly #name?: string
+  //TODO Rename to component? For avoid const Error = props.view.error.view
   readonly view: ComponentType<any>
 
   constructor(

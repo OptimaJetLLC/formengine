@@ -10,8 +10,9 @@ export type Device = 'any' | ViewMode
 
 export interface ScreenProps {
   actions?: CustomActionDefinition[]
-  children: ReactNode,
+  children: ReactNode
   tooltipType: string
+  errorConfig: object
 }
 
 export interface ComponentTreeProps {
