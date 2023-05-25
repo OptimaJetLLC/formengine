@@ -1,11 +1,18 @@
 /* eslint-env node */
+const projects = [
+  './packages/core/tsconfig.json',
+  './packages/form-builder/tsconfig.json',
+  './packages/form-viewer/tsconfig.json',
+  './packages/views/rsuite/tsconfig.json',
+]
+
 module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
   ],
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'import'],
   rules: {
     'no-implied-eval': 'off',
     '@typescript-eslint/ban-types': 'off',
@@ -25,15 +32,15 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/unbound-method': 'off',
+    'import/no-extraneous-dependencies': ['error', {
+      'devDependencies': false,
+      'optionalDependencies': false,
+      'bundledDependencies': false,
+    }]
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: [
-      './packages/core/tsconfig.json',
-      './packages/form-builder/tsconfig.json',
-      './packages/form-viewer/tsconfig.json',
-      './packages/views/rsuite/tsconfig.json',
-    ],
+    project: projects,
     tsconfigRootDir: __dirname,
   },
   root: true,

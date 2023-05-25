@@ -45,6 +45,8 @@
         "@vitest/ui": "^0.29.7",
         "c8": "^7.13.0",
         "eslint": "^8.41.0",
+        "eslint-import-resolver-typescript": "^3.5.5",
+        "eslint-plugin-import": "^2.27.5",
         "jsdom": "^20.0.3",
         "lerna": "^5.5.2",
         "nx": "^14.7.17",

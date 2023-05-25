@@ -1,4 +1,4 @@
-import {CSSObject} from '@emotion/serialize/dist/declarations/types'
+import type {CSSObject} from '@emotion/serialize/dist/declarations/types'
 import {ActionsInitializer} from '@react-form-builder/core'
 import {ComponentType, ReactNode} from 'react'
 import {BaseBuilder} from '../annotation/utils/builders/BaseBuilder'

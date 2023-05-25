@@ -2,8 +2,8 @@ import {getSchemaRules, SchemaType, useComponentData} from '@react-form-builder/
 import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
 import {Button, Dropdown} from 'rsuite'
-import {Nullable} from 'vitest'
 import {useMeta} from '../../../../utils/useMeta'
+import {Nullable} from './types'
 
 export const AddRuleButton = observer(() => {
   const {store} = useComponentData()

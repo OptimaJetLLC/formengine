@@ -1,9 +1,9 @@
 import {SchemaType, useComponentData} from '@react-form-builder/core'
 import {Checkbox} from 'rsuite'
-import {Nullable} from 'vitest'
 import {useMeta} from '../../../utils/useMeta'
 import {AddRuleButton} from './components/AddRuleButton'
 import {SchemaRule} from './components/SchemaRule'
+import {Nullable} from './components/types'
 
 export const ValidateEditor = () => {
   const {store} = useComponentData()
