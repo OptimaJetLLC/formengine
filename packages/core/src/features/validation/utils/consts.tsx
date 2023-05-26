@@ -1,5 +1,4 @@
-import {ArraySchema, BooleanSchema, NumberSchema, ObjectSchema, StringSchema} from 'yup'
-import DateSchema from 'yup/lib/date'
+import {ArraySchema, BooleanSchema, DateSchema, NumberSchema, ObjectSchema, StringSchema} from 'yup'
 import {exhaustiveCheck} from '../../../utils/exhaustiveCheck'
 import {ArrayRules} from '../rules/ArrayRules'
 import {BooleanRules} from '../rules/BooleanRules'

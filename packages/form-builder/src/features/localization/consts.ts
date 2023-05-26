@@ -1,5 +1,5 @@
 import createCache from '@emotion/cache'
-import {arEG, enUS, ruRU} from 'rsuite/locales'
+import {arEG, enUS, ruRU} from 'rsuite/esm/locales/index.js'
 import rtlPlugin from 'stylis-plugin-rtl'
 import {BiDi} from './bidi'
 import {Language} from './types'

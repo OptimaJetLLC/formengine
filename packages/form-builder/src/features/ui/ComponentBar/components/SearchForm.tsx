@@ -1,5 +1,5 @@
-import ClearIcon from '@rsuite/icons/Close'
-import SearchIcon from '@rsuite/icons/Search'
+import ClearIcon from '@rsuite/icons/Close.js'
+import SearchIcon from '@rsuite/icons/Search.js'
 import {CSSProperties, useCallback, useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Input, InputGroup} from 'rsuite'

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import * as faPaintBrush from '@fortawesome/free-solid-svg-icons/faPaintBrush'
-import * as faPlay from '@fortawesome/free-solid-svg-icons/faPlay'
+import * as faPaintBrush from '@fortawesome/free-solid-svg-icons/faPaintBrush.js'
+import * as faPlay from '@fortawesome/free-solid-svg-icons/faPlay.js'
 import {observer} from 'mobx-react'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {BuilderMode} from '../../../../utils/types'

@@ -40,5 +40,5 @@ export function generateTemplateTypeName(name: string) {
 
 export function getTemplateName(typeName: string) {
   if (typeName.startsWith(templateTypeNamePrefix)) return typeName.slice(templateTypeNamePrefix.length)
-  throw `Cannot determine template name from '${typeName}'`
+  throw new Error(`Cannot determine template name from '${typeName}'`)
 }

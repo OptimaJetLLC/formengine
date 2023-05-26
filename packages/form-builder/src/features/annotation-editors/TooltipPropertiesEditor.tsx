@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import useUniqueId from 'rsuite/esm/utils/useUniqueId'
+import useUniqueId from 'rsuite/esm/utils/useUniqueId.js'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {LabeledInput} from '../components/Containers'
 import {useTranslationPart} from '../localization/hooks'

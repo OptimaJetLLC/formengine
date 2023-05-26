@@ -1,7 +1,7 @@
 import {define, node, oneOf, someOf, string, WrapperProps} from '@react-form-builder/builder/view'
 import {Tooltip, Whisper} from 'rsuite'
-import {TypeAttributes} from 'rsuite/esm/@types/common'
-import {OverlayTriggerType} from 'rsuite/esm/Overlay/OverlayTrigger'
+import type {TypeAttributes} from 'rsuite/esm/@types/common'
+import type {OverlayTriggerType} from 'rsuite/esm/Overlay/OverlayTrigger'
 
 interface RsTooltipProps extends WrapperProps {
   text: string

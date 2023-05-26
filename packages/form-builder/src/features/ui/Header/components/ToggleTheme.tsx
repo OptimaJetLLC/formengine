@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import * as faMoon from '@fortawesome/free-solid-svg-icons/faMoon'
-import * as faSun from '@fortawesome/free-solid-svg-icons/faSun'
+import * as faMoon from '@fortawesome/free-solid-svg-icons/faMoon.js'
+import * as faSun from '@fortawesome/free-solid-svg-icons/faSun.js'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'

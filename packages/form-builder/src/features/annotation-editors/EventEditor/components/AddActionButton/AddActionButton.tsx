@@ -1,6 +1,6 @@
 import {css} from '@emotion/css'
 import {CustomActionDefinition, useComponentData, useStore} from '@react-form-builder/core'
-import PlusIcon from '@rsuite/icons/Plus'
+import PlusIcon from '@rsuite/icons/Plus.js'
 import {assign} from 'lodash-es'
 import {observer} from 'mobx-react'
 import {useReducer, useRef, useState} from 'react'

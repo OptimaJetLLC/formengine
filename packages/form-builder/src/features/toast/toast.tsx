@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {Message, useToaster} from 'rsuite'
-import {TypeAttributes} from 'rsuite/esm/@types/common'
-import {PlacementType} from 'rsuite/esm/toaster/ToastContainer'
+import type {TypeAttributes} from 'rsuite/esm/@types/common'
+import type {PlacementType} from 'rsuite/esm/toaster/ToastContainer'
 
 export interface ToastSettings {
   message: string

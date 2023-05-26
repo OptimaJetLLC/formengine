@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import {useStore, useViewerProps} from '@react-form-builder/core'
 import {startCase} from 'lodash-es'
 import {InputPicker} from 'rsuite'
-import {ItemDataType} from 'rsuite/esm/@types/common'
+import type {ItemDataType} from 'rsuite/esm/@types/common'
 import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
 

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {ReactNode} from 'react'
+import type {WhisperProps} from 'rsuite'
 import {Tooltip, Whisper} from 'rsuite'
-import {WhisperProps} from 'rsuite/esm/Whisper/Whisper'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {BiDi} from '../localization/bidi'
 

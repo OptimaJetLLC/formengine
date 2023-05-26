@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import * as faCode from '@fortawesome/free-solid-svg-icons/faCode'
+import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
 import {observer} from 'mobx-react'
 import {useState} from 'react'
 import {useTranslation} from 'react-i18next'

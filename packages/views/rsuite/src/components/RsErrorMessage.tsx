@@ -1,7 +1,7 @@
 import {cx} from '@emotion/css'
 import {define, ErrorWrapperProps, string} from '@react-form-builder/builder/view'
 import {Form} from 'rsuite'
-import {TypeAttributes} from 'rsuite/esm/@types/common'
+import type {TypeAttributes} from 'rsuite/esm/@types/common'
 import {placement} from '../commonProperties'
 
 interface RsErrorMessageProps extends ErrorWrapperProps {

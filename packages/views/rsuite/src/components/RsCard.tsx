@@ -1,6 +1,6 @@
 import {boolean, define, event, node, string} from '@react-form-builder/builder/view'
-import Panel from 'rsuite/esm/Panel/index.js'
-import {PanelProps} from 'rsuite/esm/Panel/Panel'
+import type {PanelProps} from 'rsuite'
+import {Panel} from 'rsuite'
 import {headerSize} from '../commonProperties'
 import {RsTitle} from './RsTitle'
 

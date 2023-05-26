@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
-import {IconProps} from '@rsuite/icons/lib/Icon'
+import {IconProps} from '@rsuite/icons/lib/Icon.js'
 import {ReactElement} from 'react'
 import {AutoComplete, Checkbox, IconButton, Input, InputPicker, Table} from 'rsuite'
-import {InnerCellProps} from 'rsuite-table/lib/Cell'
+import {InnerCellProps} from 'rsuite-table/lib/Cell.js'
 import {LabeledValue} from '../../annotation/utils/LabeledValue'
 import {compactInput} from '../styles'
 

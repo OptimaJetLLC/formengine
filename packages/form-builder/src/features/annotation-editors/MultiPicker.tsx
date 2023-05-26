@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {startCase} from 'lodash-es'
 import {TagPicker} from 'rsuite'
-import {ItemDataType} from 'rsuite/esm/@types/common'
+import type {ItemDataType} from 'rsuite/esm/@types/common'
 import {useEditor} from '../../utils/useEditor'
 import {PropertyAn} from '../annotation/types/annotations/PropertyAn'
 import LabeledProperty from '../components/LabeledProperty'

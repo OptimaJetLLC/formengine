@@ -1,7 +1,7 @@
 import {OnMount} from '@monaco-editor/react'
 // @ts-ignore it no have type declarations ☹️
 import {constrainedEditor} from 'constrained-editor-plugin'
-import {type editor} from 'monaco-editor'
+import type {editor} from 'monaco-editor'
 import {useCallback} from 'react'
 
 export function useContextLine(code: string, onChange: (value: string) => void, contextLine?: string) {

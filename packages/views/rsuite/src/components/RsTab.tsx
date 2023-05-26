@@ -1,7 +1,7 @@
 import {array, boolean, define, node, toLabeledValues, useComponentData} from '@react-form-builder/builder/view'
 import React, {ReactNode} from 'react'
+import type {NavProps} from 'rsuite'
 import {Nav} from 'rsuite'
-import {NavProps} from 'rsuite/esm/Nav/Nav'
 import {navProps} from '../commonProperties'
 
 type RsItem = {

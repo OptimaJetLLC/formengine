@@ -1,7 +1,7 @@
 import {InputCell} from '@react-form-builder/builder'
 import {array, define, useComponentData} from '@react-form-builder/builder/view'
 import ResponsiveNav from '@rsuite/responsive-nav'
-import {NavProps} from 'rsuite/esm/Nav/Nav'
+import type {NavProps} from 'rsuite'
 import {navProps} from '../commonProperties'
 
 type MenuItem = {

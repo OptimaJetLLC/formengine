@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import {Close} from '@rsuite/icons'
-import InputNumber from 'rsuite/InputNumber'
+import {InputNumber} from 'rsuite'
 import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
 

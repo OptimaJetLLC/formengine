@@ -1,4 +1,4 @@
-import ExportIcon from '@rsuite/icons/Export'
+import ExportIcon from '@rsuite/icons/Export.js'
 import {observer} from 'mobx-react'
 import {Dropdown} from 'rsuite'
 

@@ -1,6 +1,6 @@
 import {boolean, define, event, number, string} from '@react-form-builder/builder/view'
+import type {InputProps} from 'rsuite'
 import {Input} from 'rsuite'
-import {InputProps} from 'rsuite/esm/Input/Input'
 import {readOnly, size} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
 

@@ -1,5 +1,5 @@
 import {useComponentData} from '@react-form-builder/core'
-import {merge} from 'lodash/fp'
+import {merge} from 'lodash/fp.js'
 import {RefObject, useMemo, useRef} from 'react'
 import {useDrop} from 'react-dnd'
 import {ComponentMove} from '../../../../../utils/types'
