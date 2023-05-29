@@ -10,8 +10,7 @@
         "build": "vite build"
     },
     "dependencies": {
-        "@react-form-builder/builder": "^0.0.0",
-        "@rsuite/responsive-nav": "^5.0.1"
+        "@react-form-builder/builder": "^0.0.0"
     },
     "peerDependencies": {
         "@emotion/css": "^11.10.5",

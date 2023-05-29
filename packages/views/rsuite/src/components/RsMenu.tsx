@@ -1,7 +1,7 @@
 import {InputCell} from '@react-form-builder/builder'
 import {array, define, useComponentData} from '@react-form-builder/builder/view'
-import ResponsiveNav from '@rsuite/responsive-nav'
 import type {NavProps} from 'rsuite'
+import {Nav} from 'rsuite'
 import {navProps} from '../commonProperties'
 
 type MenuItem = {
@@ -23,13 +23,13 @@ const RsMenu = ({onSelect, items, ...props}: RsMenuProps) => {
     onSelect?.(eventKey, event)
   }
 
-  return <ResponsiveNav onSelect={onNavSelect} {...props}>
+  return <Nav onSelect={onNavSelect} {...props}>
     {items.map(({title, href}, index) =>
-      <ResponsiveNav.Item key={index} href={href} eventKey={title} active={title === props.activeKey}>
+      <Nav.Item key={index} href={href} eventKey={title} active={title === props.activeKey}>
         {title}
-      </ResponsiveNav.Item>)
+      </Nav.Item>)
     }
-  </ResponsiveNav>
+  </Nav>
 }
 
 const columns = [
