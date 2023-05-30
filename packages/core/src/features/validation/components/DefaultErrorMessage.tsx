@@ -28,9 +28,9 @@ const DefaultErrorMessage = ({children, error, className}: ErrorWrapperProps) =>
   return (
     <>
       {children}
-      <div className={cx(className, ErrorMessageStyle)}>
+      {error && <div className={cx(className, ErrorMessageStyle)}>
         {error}
-      </div>
+      </div>}
     </>
   )
 }

@@ -18,7 +18,7 @@ export default defineConfig(({command}) => ({
       fileName: 'index'
     },
     rollupOptions: {
-      external: Object.keys(peerDependencies),
+      external: Object.keys(peerDependencies)
     }
   },
 }))

@@ -4,8 +4,24 @@
     "private": false,
     "main": "src/index.ts",
     "type": "module",
+    "description": "Optimajet Form Builder core",
+    "keywords": [
+        "form-builder",
+        "optimajet"
+    ],
+    "author": "Optimajet",
+    "license": "Contact sales@optimajet.com",
+    "bugs": {
+        "email": "support@optimajet.com"
+    },
     "scripts": {
-        "build": "vite build"
+        "build": "vite build",
+        "clean": "rimraf dist temp",
+        "clean-typings": "rimraf dist/types dist/tsdoc-metadata.json temp",
+        "generate-typings": "tsc --build bundle.tsconfig.json",
+        "api-extractor": "api-extractor run --local --verbose",
+        "bundle": "npm-run-all -l clean build generate-typings api-extractor clean-typings create-archive",
+        "create-archive": "node ./config/pack"
     },
     "peerDependencies": {
         "@emotion/css": "^11.10.5",
@@ -13,14 +29,12 @@
         "@emotion/styled": "^11.10.5",
         "lodash-es": "^4.17.21",
         "mobx": "^6.9.0",
-        "react": ">=17.0.2",
-        "react-dom": ">=17.0.2",
-        "rxjs": "^7.8.0"
-    },
-    "dependencies": {
         "mobx-react": "^7.3.0",
         "mobx-utils": "^6.0.4",
         "rc-marked-input": "^2.5.0",
+        "react": ">=17.0.2 || ^18",
+        "react-dom": ">=17.0.2 || ^18",
+        "rxjs": "^7.8.0",
         "yup": "^0.32.11"
     },
     "devDependencies": {
@@ -37,5 +51,11 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
-    }
+    },
+    "files": [
+        "dist/index.js.map",
+        "dist/index.js",
+        "dist/index.d.ts",
+        "README.md"
+    ]
 }

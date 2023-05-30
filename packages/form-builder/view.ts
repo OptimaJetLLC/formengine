@@ -1,6 +1,7 @@
 export {createView} from '@react-form-builder/core'
 export * from './src/features/annotation'
 export * from './src/features/annotation/utils/LabeledValue'
-export {BuilderView, define, type Definer, type BuilderComponent} from './src/features/define'
+export {define, type Definer, type BuilderComponent} from './src/features/define'
+export {BuilderView} from './src/features/define/utils/BuilderView'
 export type {WrapperProps, ErrorWrapperProps} from '@react-form-builder/core'
 export {useComponentData} from '@react-form-builder/core'

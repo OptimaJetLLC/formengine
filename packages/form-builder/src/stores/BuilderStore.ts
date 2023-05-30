@@ -2,7 +2,7 @@ import {ComponentData, ComponentProperty, ComponentStore, screenModel, Store, St
 import {assign, cloneDeep} from 'lodash-es'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
 import {Annotation} from '../features/annotation/types/annotations/Annotation'
-import {BuilderView} from '../features/define'
+import {BuilderView} from '../features/define/utils/BuilderView'
 import {BiDi} from '../features/localization/bidi'
 import {defaultLanguage} from '../features/localization/consts'
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../features/localization/utils'

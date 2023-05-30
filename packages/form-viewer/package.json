@@ -8,13 +8,21 @@
     "keywords": [],
     "license": "ISC",
     "scripts": {
-        "build": "vite build"
+        "build": "vite build",
+        "clean": "rimraf dist temp",
+        "clean-typings": "rimraf dist/types dist/tsdoc-metadata.json temp",
+        "generate-typings": "tsc --build bundle.tsconfig.json",
+        "api-extractor": "api-extractor run --local --verbose",
+        "bundle": "npm-run-all -l clean build generate-typings clean-typings create-archive",
+        "create-archive": "node ./config/pack"
     },
     "dependencies": {
-        "@react-form-builder/core": "^0.1.0"
     },
     "peerDependencies": {
-        "react": ">=17.0.2",
-        "react-dom": ">=17.0.2"
-    }
+        "@react-form-builder/core": "^0.1.0"
+    },
+    "files": [
+        "dist/index.js.map",
+        "dist/index.js"
+    ]
 }
