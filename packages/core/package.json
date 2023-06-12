@@ -1,6 +1,6 @@
 {
     "name": "@react-form-builder/core",
-    "version": "0.1.0",
+    "version": "0.0.2-alpha",
     "private": false,
     "main": "src/index.ts",
     "type": "module",

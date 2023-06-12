@@ -1,12 +1,15 @@
 {
     "name": "@react-form-builder/viewer",
-    "version": "0.0.0",
+    "version": "0.0.2-alpha",
     "private": false,
     "main": "index.ts",
     "type": "module",
     "description": "OptimaJet Form Viewer",
     "keywords": [],
-    "license": "ISC",
+    "license": "Contact sales@optimajet.com",
+    "bugs": {
+        "email": "support@optimajet.com"
+    },
     "scripts": {
         "build": "vite build",
         "clean": "rimraf dist temp",
@@ -16,10 +19,8 @@
         "bundle": "npm-run-all -l clean build generate-typings clean-typings create-archive",
         "create-archive": "node ./config/pack"
     },
-    "dependencies": {
-    },
     "peerDependencies": {
-        "@react-form-builder/core": "^0.1.0"
+        "@react-form-builder/core": "^0.0.2-alpha"
     },
     "files": [
         "dist/index.js.map",

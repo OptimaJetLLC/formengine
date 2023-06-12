@@ -1,18 +1,18 @@
 {
     "name": "@react-form-builder/example-viewer",
-    "version": "0.0.0",
+    "version": "0.0.2-alpha",
     "private": true,
     "main": "src/index.ts",
     "type": "module",
     "description": "OptimaJet Form Viewer Application",
-    "license": "ISC",
+    "license": "Contact sales@optimajet.com",
+    "bugs": {
+        "email": "support@optimajet.com"
+    },
     "scripts": {
         "build": "vite build"
     },
     "dependencies": {
-        "@react-form-builder/viewer": "^0.0.0"
-    },
-    "peerDependencies": {
-
+        "@react-form-builder/viewer": "^0.0.2-alpha"
     }
 }

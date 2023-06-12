@@ -1,0 +1,2 @@
+NpmVersion=0.0.2-alpha
+NpmPublishTag=alpha
