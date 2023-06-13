@@ -269,6 +269,15 @@ export class BuilderStore {
     ]
   }
 
+  expandParents(targetKey: string, store: ComponentStore = this.viewer.screen) {
+    if (!store.children) return store.key === targetKey
+
+    if (store.children?.some(child => this.expandParents(targetKey, child))) {
+      this.expanded.add(store)
+      return true
+    }
+  }
+
   selectNode = (target: ComponentStore, multipleSelection = false) => {
     const isSelected = this.selected.has(target)
 
@@ -282,5 +291,7 @@ export class BuilderStore {
       this.selected.clear()
       this.selected.add(target)
     }
+
+    if (!isSelected) this.expandParents(target.key)
   }
 }

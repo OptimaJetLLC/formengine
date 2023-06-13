@@ -206,8 +206,8 @@
     "search": "Search..."
   },
   "tree": {
-    "expand": "Expand",
-    "collapse": "Collapse"
+    "expand": "Expand all",
+    "collapse": "Collapse all"
   },
   "style": {
     "size": "Size",

@@ -5,7 +5,6 @@ import ArrowDownLineIcon from '@rsuite/icons/ArrowDownLine.js'
 import ArrowRightLineIcon from '@rsuite/icons/ArrowRightLine.js'
 import {observer} from 'mobx-react'
 import {useCallback, useEffect, useRef, useState} from 'react'
-import {IconButton} from 'rsuite'
 import scrollIntoView from 'scroll-into-view-if-needed'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {useSelection} from '../hooks/useSelection'
@@ -13,18 +12,18 @@ import {Toolbar} from './Toolbar'
 
 export const TreeNode = observer(({className}: { className: string }) => {
   const ComponentTree = useComponentTree()
-  const data = useComponentData()
-  const store = useBuilderStore()
-  const deep = useComputed(() => findDepth(store.viewer.screen, data.store.key) ?? 0)
+  const {key, model, store} = useComponentData()
+  const {expanded: expandedNodes, viewer} = useBuilderStore()
+  const deep = useComputed(() => findDepth(viewer.screen, store.key) ?? 0)
   const [hovered, setHovered] = useState(false)
   const [{selected}] = useSelection()
   const ref = useRef<HTMLDivElement>(null)
 
-  const expanded = store.expanded.has(data.store)
+  const expanded = expandedNodes.has(store)
   const toggleExpand = useCallback(() => {
-    store.expanded.has(data.store)
-      ? store.expanded.delete(data.store)
-      : store.expanded.add(data.store)
+    expandedNodes.has(store)
+      ? expandedNodes.delete(store)
+      : expandedNodes.add(store)
   }, [])
 
   useEffect(() => {
@@ -35,28 +34,42 @@ export const TreeNode = observer(({className}: { className: string }) => {
 
   return (
     <>
-      <SDiv style={{paddingLeft: 10 * deep}} className={className} ref={ref}
-            onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-        <IconButton size="xs" onClick={toggleExpand} appearance="subtle"
-                    icon={<Icon as={expanded ? ArrowDownLineIcon : ArrowRightLineIcon}/>}/>
-        <div>{`${data.key}`}</div>
-        <label>{`${data.model.name}`}</label>
+      <SNodeItem className={className} ref={ref}
+                 onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        <SIndent deep={deep}>
+          {store.children &&
+            <Icon onClick={toggleExpand} as={expanded ? ArrowDownLineIcon : ArrowRightLineIcon} style={{cursor: 'pointer'}}/>
+          }
+        </SIndent>
+        <div>{`${key}`}</div>
+        <label>{`${model.name}`}</label>
         {hovered && <Toolbar compact/>}
-      </SDiv>
-      {data.store.children && <ComponentTree parentStore={data.store} data={data.store.children}/>}
+      </SNodeItem>
+      {expanded && store.children && <ComponentTree parentStore={store} data={store.children}/>}
     </>
   )
 })
 
-const SDiv = styled.div`
+const SIndent = styled.div<{ deep: number }>`
+  min-width: ${({deep}) => 14 * (deep + 1) + 14}px;
+  height: 24px;
   display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-inline-end: 4px;
+`
+
+const SNodeItem = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: start;
   flex-direction: row;
-  font-weight: bold;
-  padding: 8px;
+  padding-block: 8px;
+  padding-right: 8px;
 
   label {
     opacity: 0.4;
-    margin-left: 10px;
+    margin-left: 6px;
   }
 
   &.hovered {

@@ -4,9 +4,8 @@ import * as faSitemap from '@fortawesome/free-solid-svg-icons/faSitemap.js'
 import {namedObserver} from '@react-form-builder/core'
 import {useState} from 'react'
 import {useTranslation} from 'react-i18next'
-import {Nav as RNav} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
-import {NavIconItem} from '../../../components/NavIconItem'
+import {NavIconItem, SNav} from '../../../components/NavIconItem'
 import {ComponentBar} from '../../ComponentBar'
 import {FormList} from './FormList'
 import {Tree} from './Tree'
@@ -30,11 +29,11 @@ export const LeftPanelNav = namedObserver('LeftPanelNav', () => {
     : null
 
   return <>
-    <RNav appearance="subtle" activeKey={activeTab} onSelect={setActiveTab} style={{marginBottom: 10}}>
+    <SNav appearance="subtle" activeKey={activeTab} onSelect={setActiveTab}>
       {NavIconItem('tree', title('tree'), faSitemap, {color: 'var(--rs-navs-selected)'})}
       {NavIconItem('components', title('components'), faPlusCircle, {color: 'var(--rs-green-600)'})}
       {formsTab}
-    </RNav>
+    </SNav>
     {leftPanelTabs[activeTab]}
   </>
 })
