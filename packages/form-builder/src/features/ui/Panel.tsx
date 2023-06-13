@@ -4,8 +4,7 @@ import {ArrowDownLine} from '@rsuite/icons'
 import {observer} from 'mobx-react'
 import {PropsWithChildren} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
-
-export type PanelPlacement = 'left' | 'right' | 'bottom'
+import {PanelPlacement} from './PanelPlacement'
 
 interface CollapsedSizeProps {
   collapsedSize?: number
