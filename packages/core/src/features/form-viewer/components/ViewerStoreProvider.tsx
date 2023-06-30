@@ -10,8 +10,8 @@ import {ViewerPropsProvider} from './ViewerPropsContext'
 
 export const ViewerStoreProvider = ({children, props}: { children: ReactNode, props: FormViewerProps }) => {
   const observableProps = useLocalObservable(() => props)
-  let store = useContext(StoreContext)
-  store ??= useMemo(() => new Store(observableProps, DefaultActions), [])
+  const storeFromContext = useContext(StoreContext)
+  const store = useMemo(() => storeFromContext || new Store(observableProps, DefaultActions), [])
 
   useEffect(() => {
     assign(observableProps, props)
