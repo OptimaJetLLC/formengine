@@ -22,9 +22,9 @@ export const HintedLabel = ({hint, children, ...labelProps}: HintedLabelProps) =
 }
 
 export const Hinted = ({hint, children, speaker, ...props}: HintedProps) => {
+  const store = useBuilderStore()
   if (!hint) return <>{children}</>
 
-  const store = useBuilderStore()
   const placement = store.language.bidi == BiDi.RTL ? 'right' : 'left'
 
   return <Whisper speaker={<Tooltip>{hint}</Tooltip>} placement={placement} trigger={'hover'} {...props}>
