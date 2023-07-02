@@ -3,7 +3,7 @@ import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faRedo from '@fortawesome/free-solid-svg-icons/faRedo.js'
 import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo.js'
 import {observer} from 'mobx-react'
-import {ButtonToolbar, IconButton} from 'rsuite'
+import {IconButton} from 'rsuite'
 import {FaIcon} from '../../components/Icons'
 import {Export} from './components/Export'
 import {JsonViewButton} from './components/JsonViewButton'
@@ -11,13 +11,12 @@ import {Menu} from './components/Menu'
 import {ResolutionPicker} from './components/ResolutionPicker'
 import {ToggleModeButton} from './components/ToggleModeButton'
 import {ToggleTheme} from './components/ToggleTheme'
-import {FormName} from './FormName'
 
 const Header = observer(() => {
   return (
     <Container>
       <LeftPart>
-        <ButtonToolbar>
+        <div>
           <Menu/>
           <IconButton onClick={_ => {
           }} disabled={true /*TODO !!store.canUndo*/}
@@ -25,8 +24,7 @@ const Header = observer(() => {
           <IconButton onClick={_ => {
           }} disabled={true /*TODO !store.canRedo*/}
                       icon={<FaIcon icon={faRedo as unknown as IconDefinition}/>}/>
-        </ButtonToolbar>
-        <FormName/>
+        </div>
       </LeftPart>
 
       <CenterPart>
@@ -57,12 +55,12 @@ const CenterPart = styled.div`
 
 const Container = styled.div`
   display: flex;
+  padding: 10px 10px;
 
   & > * {
     flex: 1;
     display: flex;
     align-items: center;
-    padding: 10px;
     gap: 4px
   }
 `

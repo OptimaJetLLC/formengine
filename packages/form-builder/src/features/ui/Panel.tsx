@@ -50,11 +50,6 @@ export const HideButton = styled.div`
   align-items: center;
   cursor: pointer;
   border-radius: 20px;
-  background-color: #fcfcfd;
-
-  .rs-theme-dark & {
-    background-color: #414549;
-  }
 
   .icon {
     font-size: 2em;
@@ -87,7 +82,7 @@ export const HideButton = styled.div`
   }
 
   &.left {
-    inset-inline-end: -10px;
+    inset-inline-end: -15px;
 
     .icon {
       transform: rotate(90deg);
@@ -95,7 +90,7 @@ export const HideButton = styled.div`
   }
 
   &.right {
-    inset-inline-start: -10px;
+    inset-inline-start: -15px;
 
     .icon {
       transform: rotate(-90deg);
@@ -124,22 +119,14 @@ export const PanelContainer = styled.div<CollapsedSizeProps>`
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  margin-block: 5px 15px;
+  padding-inline: 5px;
   transition: width ${transition}, height ${transition};
-  border-radius: 0 10px 10px 0;
-  background-color: #ffffffa1;
-
-  .rs-theme-dark & {
-    background-color: #414549;
-  }
 
   &.right, &.left {
     width: 290px;
   }
 
   &.right {
-    border-radius: 10px 0 0 10px;
     box-shadow: none;
   }
 
@@ -151,11 +138,11 @@ export const PanelContainer = styled.div<CollapsedSizeProps>`
 
   &.collapsed {
     &.right, &.left {
-      width: ${props => props.collapsedSize ?? 10}px;
+      width: ${props => props.collapsedSize ?? 5}px;
     }
 
     &.bottom {
-      height: ${props => props.collapsedSize ?? 10}px;
+      height: ${props => props.collapsedSize ?? 5}px;
     }
   }
 `

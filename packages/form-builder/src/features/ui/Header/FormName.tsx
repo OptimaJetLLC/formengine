@@ -1,3 +1,4 @@
+import styled from '@emotion/styled'
 import {namedObserver} from '@react-form-builder/core'
 import {useTranslation} from 'react-i18next'
 import {Tooltip, Whisper} from 'rsuite'
@@ -8,6 +9,12 @@ export const FormName = namedObserver('FormName', () => {
   const {t} = useTranslation()
 
   return <Whisper speaker={<Tooltip>{t('leftMenu.currentFormName')}</Tooltip>}>
-    <span>{store.formName}</span>
+    <SSpan>{store.formName}</SSpan>
   </Whisper>
 })
+
+const SSpan = styled.span`
+  align-self: center;
+  color: var(--rs-text-secondary);
+  padding-bottom: 5px;
+`

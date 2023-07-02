@@ -14,7 +14,7 @@ export const ChoosenAction = observer(() => {
         <p>do </p>
         <div>
           <b style={{
-            color: 'blueviolet',
+            color: 'violet',
             marginLeft: 8
           }}>
             {`${data.name || 'Action'}`}

@@ -19,7 +19,7 @@ export const ToggleModeButton = observer(() => {
   const t = useTranslationPart('rightMenu.modes')
 
   return <AnimatedButton onClick={() => store.changeBuilderMode(toggleTo)}
-                         appearance={'primary'} className={store.builderMode}>
+                         appearance={'primary'} className={store.builderMode} size={'sm'}>
     <FaIcon icon={icon} color={'white'}/>
     {t(store.builderMode)}
   </AnimatedButton>

@@ -13,7 +13,7 @@ export const BottomPanel = observer(() => {
   }, [store.calculatedProperty])
   if (!store.calculatedProperty?.componentKey) return null
 
-  return <Panel placement={'bottom'} hideCollapsed={false} collapsedSize={36} style={{padding: 0}}>
+  return <Panel placement={'bottom'} hideCollapsed={false} collapsedSize={10} style={{padding: 0}}>
     <SDiv><CodeEditorPanel editableProperty={store.calculatedProperty} onClose={() => store.calculatedProperty = undefined}/></SDiv>
   </Panel>
 })

@@ -151,9 +151,6 @@
     "importFormsError": "Failed to import forms! See the logs in the browser console"
   },
   "rightMenu": {
-    "desktop": "Desktop",
-    "mobile": "Mobile",
-    "tablet": "Tablet",
     "modes": {
       "builder": "Preview",
       "viewer": "Edit"
