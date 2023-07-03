@@ -119,7 +119,7 @@ export const PanelContainer = styled.div<CollapsedSizeProps>`
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-inline: 5px;
+  padding: 5px;
   transition: width ${transition}, height ${transition};
 
   &.right, &.left {
