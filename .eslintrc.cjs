@@ -12,7 +12,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
   ],
-  plugins: ['@typescript-eslint', 'import'],
+  plugins: ['@typescript-eslint', 'import', 'unused-imports'],
   rules: {
     'no-implied-eval': 'off',
     '@typescript-eslint/ban-types': 'off',
@@ -60,6 +60,7 @@ module.exports = {
       'jsx': 'always',
       'json': 'always',
     }],
+    'unused-imports/no-unused-imports': 'error',
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
