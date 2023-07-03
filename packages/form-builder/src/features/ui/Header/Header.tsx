@@ -5,7 +5,6 @@ import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo.js'
 import {observer} from 'mobx-react'
 import {IconButton} from 'rsuite'
 import {FaIcon} from '../../components/Icons'
-import {Export} from './components/Export'
 import {JsonViewButton} from './components/JsonViewButton'
 import {Menu} from './components/Menu'
 import {ResolutionPicker} from './components/ResolutionPicker'
@@ -28,12 +27,11 @@ const Header = observer(() => {
       </LeftPart>
 
       <CenterPart>
-        <ResolutionPicker/>
         <ToggleModeButton/>
-        <Export/>
       </CenterPart>
 
       <RightPart>
+        <ResolutionPicker/>
         <JsonViewButton/>
         <ToggleTheme/>
       </RightPart>
@@ -46,6 +44,7 @@ const LeftPart = styled.div``
 const RightPart = styled.div`
   justify-content: flex-end;
   gap: 10px;
+  padding-inline-end: 10px;
 `
 
 const CenterPart = styled.div`
