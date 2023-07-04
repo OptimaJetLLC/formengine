@@ -1,4 +1,4 @@
-import {BuilderView, createView, Definer} from '@react-form-builder/builder/view'
+import {createView, Definer} from '@react-form-builder/builder/view'
 import {rsBreadcrumb} from './components/RsBreadcrumb'
 import {rsButton} from './components/RsButton'
 import {rsCard} from './components/RsCard'
@@ -90,5 +90,4 @@ export {rsErrorMessage, rsTooltip}
 const components = rSuiteComponents.map(def => def.build())
 export const models = components.map(({model}) => model)
 
-export const builderView = new BuilderView(components)
 export const view = createView(...models)
