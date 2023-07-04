@@ -1,14 +1,78 @@
+import {css, cx} from '@emotion/css'
+import {assign, keysIn} from 'lodash-es'
 import {makeAutoObservable} from 'mobx'
 import {ComponentType} from 'react'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
-import {computeEvents} from '../features/event'
-import {getHtmlAttributes} from '../features/html-attributes'
-import {computeClassName} from '../features/style'
-import {getSubstitutedValue} from '../features/substitution'
+import {ActionEventArgs, DidMountEvent, EventName, WillUnmountEvent} from '../features/event'
 import {OverrideRef} from '../features/ui/OverridesContext'
+import {ViewMode} from '../types'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {getChildren} from '../utils/getChildren'
+import {ComponentProperty, ComponentStore} from './ComponentStore'
 import {Store} from './Store'
+
+const computeClassName = (state: ComponentState, data: ComponentData, viewMode: ViewMode) => {
+  const cssObject = assign({}, data.model.css?.object, data.store.css?.object)
+
+  return cx(
+    getClassNameProp(data),
+    css(cssObject),
+    css(data.model.css?.string),
+    css(data.store.css?.string),
+    css(data.store.css?.any),
+    css(data.store.css?.[viewMode]),
+  )
+}
+
+function getClassNameProp(data: ComponentData): string {
+  const defaultProp = data.model.defaultProps?.className
+  const currentProp = data.store.props.className?.value
+  return currentProp ?? defaultProp
+}
+
+const getHtmlAttributes = (componentStore: ComponentStore) => componentStore.htmlAttributes
+  ?.reduce((result: Record<string, string>, {name, value}) => {
+    try {
+      result[name] = JSON.parse(value)
+    } catch {
+      result[name] = value
+    }
+    return result
+  }, {})
+
+const getSubstitutedValue = (props: Record<string, ComponentProperty>, store: Store) => {
+  const result: Record<string, any> = {}
+
+  for (const key in props) {
+    const value = props[key]?.value
+
+    if (props[key]?.useFn || typeof value !== 'string' || key === 'value') continue
+    //if (store.isBuilderMode) continue
+
+    result[key] = substitute(value, store.form.data)
+  }
+
+  return result
+
+  function substitute(value: string, values: any) {
+    return value.replace(/{([\w ]+)}/g, (match, replaceable) => {
+      return values[replaceable] ? values[replaceable] : match
+    })
+  }
+}
+
+const computeEvents = (data: ComponentData, store: Store) => {
+  const events = {} as Record<EventName, Function>
+
+  const eventNames = new Set(keysIn(data.store.events))
+  eventNames.add('onChange').add('onBlur')
+  eventNames.delete(DidMountEvent)
+  eventNames.delete(WillUnmountEvent)
+  eventNames.forEach((name) =>
+    events[name] = (...args: any[]) => store.eventSubject.next(new ActionEventArgs(name, data, store, args)))
+
+  return events
+}
 
 export class ComponentState {
   constructor(

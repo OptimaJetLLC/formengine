@@ -1,9 +1,16 @@
 import {upperFirst} from 'lodash-es'
+import {ComponentType} from 'react'
 import {Table} from 'rsuite'
 import {InputCell} from './CustomCells'
-import {ColumnDescription} from './types'
 
 const {Column, HeaderCell} = Table
+
+export interface ColumnDescription {
+  name: string,
+  title?: string,
+  input?: ComponentType,
+  inputProps?: any
+}
 
 export const makeColumns = (columns: ColumnDescription[]) => columns
   .map(({name, input, title, inputProps = {}}: ColumnDescription) => {

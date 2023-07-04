@@ -2,13 +2,26 @@ import styled from '@emotion/styled'
 import {useComputed, useStore} from '@react-form-builder/core'
 import {ArrowDownLine, ArrowUpLine} from '@rsuite/icons'
 import {t} from 'i18next'
+import {isEmpty} from 'lodash-es'
 import {observer} from 'mobx-react'
-import {useReducer} from 'react'
+import {useEffect, useReducer} from 'react'
 import {Animation, Button} from 'rsuite'
 import {Rows} from '../../../../../../../components/Containers'
 import {useActionData} from '../../contexts/ActionDataContext'
 import {ArgumentItem} from './ArgumentItem'
-import {useClearableArguments} from './hooks/useClearableArguments'
+
+// Delete arguments object on unmount if it is empty.
+const useClearableArguments = () => {
+  const data = useActionData()
+
+  useEffect(() => {
+    return () => {
+      if (isEmpty(data.args)) {
+        delete data.args
+      }
+    }
+  }, [])
+}
 
 export const ArgumentList = observer(() => {
   const store = useStore()
