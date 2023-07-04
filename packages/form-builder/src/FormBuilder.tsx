@@ -28,6 +28,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow-y: auto;
   background-color: #f7f7fa;
 
   .rs-theme-dark & {

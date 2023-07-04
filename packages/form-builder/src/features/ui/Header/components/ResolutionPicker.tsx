@@ -5,9 +5,10 @@ import * as faTablet from '@fortawesome/free-solid-svg-icons/faTablet.js'
 import {ViewMode} from '@react-form-builder/core'
 import {Icon} from '@rsuite/icons'
 import {observer} from 'mobx-react'
-import {ButtonGroup, IconButton} from 'rsuite'
+import {ButtonGroup, IconButton, Tooltip, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../../components/Icons'
+import {useTranslationPart} from '../../../localization/hooks'
 import {OrientationIcon} from './OrientationIcon'
 
 const resolutions: [ViewMode, any][] = [
@@ -18,6 +19,7 @@ const resolutions: [ViewMode, any][] = [
 
 export const ResolutionPicker = observer(() => {
   const store = useBuilderStore()
+  const t = useTranslationPart('rightMenu.modes')
   const {viewMode, landscapeMode} = store
   const getColor = (active?: boolean) => active ? 'var(--rs-navs-selected)' : undefined
   const toggleOrientation = () => store.landscapeMode = !landscapeMode
@@ -25,8 +27,10 @@ export const ResolutionPicker = observer(() => {
   return <SDiv>
     <ButtonGroup size={'sm'}>
       {resolutions.map(([value, icon]) => (
-        <IconButton onClick={() => store.viewMode = value}
-                    icon={<FaIcon icon={icon} color={getColor(value === viewMode)}/>}/>
+        <Whisper speaker={<Tooltip>{t(value)}</Tooltip>} placement={'bottom'}>
+          <IconButton onClick={() => store.viewMode = value}
+                      icon={<FaIcon icon={icon} color={getColor(value === viewMode)}/>}/>
+        </Whisper>
       ))}
     </ButtonGroup>
     {(viewMode === 'mobile' || viewMode === 'tablet') &&

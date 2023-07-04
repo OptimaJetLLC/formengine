@@ -63,7 +63,7 @@ const FormContainer = styled(PanelContainer)`
   }
 
   &.tablet {
-    max-width: 800px;
+    width: 800px;
     max-height: 1200px;
     align-self: center;
 
