@@ -26,8 +26,8 @@ export const ResolutionPicker = observer(() => {
 
   return <SDiv>
     <ButtonGroup size={'sm'}>
-      {resolutions.map(([value, icon]) => (
-        <Whisper speaker={<Tooltip>{t(value)}</Tooltip>} placement={'bottom'}>
+      {resolutions.map(([value, icon], index) => (
+        <Whisper key={index} speaker={<Tooltip>{t(value)}</Tooltip>} placement={'bottom'}>
           <IconButton onClick={() => store.viewMode = value}
                       icon={<FaIcon icon={icon} color={getColor(value === viewMode)}/>}/>
         </Whisper>
