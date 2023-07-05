@@ -1,10 +1,9 @@
 import styled from '@emotion/styled'
 import {IconProps} from '@rsuite/icons/lib/Icon.js'
 import {ReactElement} from 'react'
-import {AutoComplete, Checkbox, IconButton, Input, InputPicker, Table} from 'rsuite'
+import {Checkbox, IconButton, Input, InputPicker, Table} from 'rsuite'
 import {InnerCellProps} from 'rsuite-table/lib/Cell.js'
 import {LabeledValue} from '../../annotation/utils/LabeledValue'
-import {compactInput} from '../styles'
 
 const {Cell} = Table
 
@@ -41,20 +40,6 @@ export const SelectCell = ({rowData, dataKey, rowIndex, options, onChange, ...pr
     <SCell {...props}>
       <InputPicker value={rowData[dataKey] ?? ''} data={options} onChange={handleChange}
                    cleanable={false} creatable={true} block size="sm" placement={'auto'}
-      />
-    </SCell>
-  )
-}
-
-export const AutocompleteCell = ({rowData, dataKey, rowIndex, options, onChange, placeholder, ...props}: SelectCellProps) => {
-  const handleChange = (value: any) => {
-    rowData[dataKey] = value
-    onChange?.(value, dataKey, rowIndex)
-  }
-  return (
-    <SCell {...props}>
-      <AutoComplete value={rowData[dataKey] ?? ''} data={options} onChange={handleChange}
-                    size="sm" placement={'auto'} className={compactInput} placeholder={placeholder}
       />
     </SCell>
   )

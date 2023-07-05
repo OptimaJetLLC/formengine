@@ -1,11 +1,63 @@
-import {createElement, useMemo} from 'react'
+import {forIn, transform} from 'lodash-es'
+import {denote} from 'rc-marked-input'
+import {createElement, useEffect, useMemo} from 'react'
+import {filter, Subscription} from 'rxjs'
 import {ComponentState} from '../../stores/ComponentState'
-import {namedObserver} from '../../utils'
+import {Store} from '../../stores/Store'
+import {isString, namedObserver} from '../../utils'
 import {useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
-import {useActions} from '../event'
+import {ActionData, ActionEventArgs, Arguments, ArgumentValue, DidMountEvent, Func, WillUnmountEvent} from '../event'
+import {componentMarkup} from '../substitution/consts'
 import {useComponentTree} from './ComponentTreeContext'
 import {useOverrides} from './OverridesContext'
+
+function denoteBinds(value: ArgumentValue, store: Store) {
+  if (!isString(value)) return value
+
+  return denote(value, mark => {
+    const componentStore = store.getComponent(mark.value)
+    return componentStore.props[mark.label]?.value ?? ''
+  }, componentMarkup)
+}
+
+const useActions = () => {
+  const store = useStore()
+  const componentData = useComponentData()
+
+  //Init actions
+  useEffect(() => {
+    const subscriptions: Subscription[] = []
+
+    forIn(componentData.store.events, (actionDataList: ActionData[], eventName) => {
+      actionDataList.forEach((data) => {
+        const {params, func} = store.findAction(data)
+        const action = params ? getActionHandler(store, func, data.args) : func
+        const subscription = store.eventSubject
+          .pipe(filter(e => e.type === eventName && e.sender.key === componentData.store.key))
+          .subscribe(action)
+        subscriptions.push(subscription)
+      })
+    })
+
+    return () => subscriptions.forEach(s => s.unsubscribe())
+  }, [componentData.store.events])
+
+  useEffect(() => {
+    store.eventSubject.next(new ActionEventArgs(DidMountEvent, componentData, store, []))
+    return () => store.eventSubject.next(new ActionEventArgs(WillUnmountEvent, componentData, store, []))
+  }, [])
+}
+
+function getActionHandler(store: Store, func: Func, args?: Arguments) {
+  //TODO init in default value for arguments?
+  return function (e: ActionEventArgs) {
+    const actionArgs = !args ? {} :
+      transform(args, (result: Record<string, any>, value, argumentName) =>
+        result[argumentName] = denoteBinds(value, store))
+    func(actionArgs, e)
+  }
+}
 
 export const ComponentViewer = namedObserver('ComponentViewer', () => {
   const store = useStore(), data = useComponentData()

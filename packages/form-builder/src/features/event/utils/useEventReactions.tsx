@@ -1,5 +1,7 @@
-import {CustomActionDefinition, useComponentData, useMultiReaction, useReaction, useStore} from '@react-form-builder/core'
+import {CustomActionDefinition, useComponentData, useMultiReaction, useStore} from '@react-form-builder/core'
 import {values} from 'lodash-es'
+import {reaction} from 'mobx'
+import {useEffect} from 'react'
 
 export const useEventReactions = () => {
   const store = useStore()
@@ -22,12 +24,12 @@ export const useEventReactions = () => {
   )
 
   //Remove custom actions from used places if it has been deleted
-  useReaction(() => store.screen.props.actions?.value?.slice(), (arg: CustomActionDefinition[], prev: CustomActionDefinition[]) => {
+  useEffect(() => reaction(() => store.screen.props.actions?.value?.slice(), (arg: CustomActionDefinition[], prev: CustomActionDefinition[]) => {
     if (!prev || !arg || arg.length !== prev.length - 1) return
     const [deleted] = prev.filter(x => !arg.includes(x))
     for (const event in data.store.events) {
       data.store.events[event] =
         data.store.events[event].filter(action => action.type !== 'custom' || action.name !== deleted.name)
     }
-  })
+  }))
 }

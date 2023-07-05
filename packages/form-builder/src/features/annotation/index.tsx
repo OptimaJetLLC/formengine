@@ -65,8 +65,6 @@ shape({
 
 export const tooltipProps = createAnnotation('tooltipProps')
 
-export const useTooltip = boolean.setup({editor: 'useTooltip'})
-
 export const renderWhen = createAnnotation('renderWhen').schemed(yup.boolean())
 
 export * from './utils'

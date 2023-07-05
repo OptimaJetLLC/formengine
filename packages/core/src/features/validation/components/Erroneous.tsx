@@ -1,12 +1,23 @@
 import {isEmpty} from 'lodash-es'
-import {useEffect} from 'react'
+import {DependencyList, useEffect} from 'react'
+import {filter} from 'rxjs'
 import {ComponentProperty} from '../../../stores/ComponentStore'
 import {WrapperProps} from '../../../types'
 import {namedObserver} from '../../../utils'
 import {useComponentData} from '../../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../../utils/contexts/StoreContext'
-import {useEventListener} from '../../event'
+import {ActionEventHandler} from '../../event'
 import {useViewerProps} from '../../form-viewer/components/ViewerPropsContext'
+
+const useEventListener = (sender: string, type: string, listener: ActionEventHandler, deps?: DependencyList) => {
+  const {eventSubject} = useStore()
+  useEffect(() => {
+    const subscription = eventSubject
+      .pipe(filter(e => e.type === type && e.sender.key === sender))
+      .subscribe(listener)
+    return () => subscription.unsubscribe()
+  }, deps)
+}
 
 export const Erroneous = namedObserver('Erroneous', ({children}: WrapperProps) => {
   const data = useComponentData()

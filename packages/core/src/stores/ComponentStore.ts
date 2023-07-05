@@ -1,6 +1,5 @@
 import {makeAutoObservable, observable} from 'mobx'
 import {ActionData, EventName} from '../features/event'
-import {HtmlAttribute} from '../features/html-attributes'
 import {Css} from '../features/style/types'
 import {ValidationSchema} from '../features/validation/types'
 
@@ -9,6 +8,8 @@ export interface ComponentProperty {
   useFn?: boolean
   fnSource?: string
 }
+
+export type HtmlAttribute = Record<string, string>
 
 //No functions here
 export class ComponentStore {

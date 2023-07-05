@@ -1,4 +1,4 @@
-import {BuilderView, createView} from '@react-form-builder/builder/view'
+import {createView} from '@react-form-builder/builder/view'
 import {myButton} from './components/MyButton'
 
 const definitions = [
@@ -15,5 +15,4 @@ definitions.forEach(c => {
 const components = definitions.map(def => def.build())
 export const models = components.map(({model}) => model)
 
-export const builderView = new BuilderView(components)
 export const view = createView(...models)
