@@ -14,23 +14,23 @@ export const CentralPanel = namedObserver('CentralPanel', () => {
   const slotWrapper = builderMode === 'builder' ? SlotWrapper : undefined
 
   return (
-    <Container>
+    <SContainer>
       <Header/>
-      <FormContainer className={cx(viewMode, {landscapeMode})}>
+      <SFormContainer className={cx(viewMode, {landscapeMode})}>
         <FormViewer {...props} componentWrapper={componentWrapper} viewMode={viewMode} slotWrapper={slotWrapper}/>
-      </FormContainer>
-    </Container>
+      </SFormContainer>
+    </SContainer>
   )
 })
 
-const Container = styled.div`
+const SContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
   min-height: 0;
 `
 
-const FormContainer = styled(PanelContainer)`
+const SFormContainer = styled(PanelContainer)`
   flex: 1;
   z-index: 1;
   flex-direction: column;
