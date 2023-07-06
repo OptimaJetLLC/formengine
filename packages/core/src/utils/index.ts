@@ -10,19 +10,6 @@ export function isString(value: any): value is string {
   return typeof value === 'string'
 }
 
-export function treeFind<T extends { key: string, children?: T[] }>(value: T, key?: string): T | undefined {
-  if (value.key === key) return value
-
-  if (!value.children) return
-
-  for (const child of value.children) {
-    const childNode = treeFind(child, key)
-    if (childNode) return childNode
-  }
-
-  return
-}
-
 export function namedObserver<T extends IReactComponent>(displayName: string, component: T) {
   const observerComponent = observer(component)
   observerComponent.displayName = displayName

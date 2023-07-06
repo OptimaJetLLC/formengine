@@ -6,7 +6,6 @@ import {buildInternalErrorStore} from '../features/ui/internalErrorModel'
 import {screenModel} from '../features/ui/screenModel'
 import {Form} from '../features/validation'
 import {ViewMode} from '../types'
-import {treeFind} from '../utils'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {ComponentStore} from './ComponentStore'
 import {StoreProps} from './StoreProps'
@@ -130,4 +129,17 @@ export class Store {
   #applyComponentStore(componentStore: ComponentStore) {
     this.screen = assign(new ComponentStore('', ''), componentStore)
   }
+}
+
+function treeFind<T extends { key: string, children?: T[] }>(value: T, key?: string): T | undefined {
+  if (value.key === key) return value
+
+  if (!value.children) return
+
+  for (const child of value.children) {
+    const childNode = treeFind(child, key)
+    if (childNode) return childNode
+  }
+
+  return
 }

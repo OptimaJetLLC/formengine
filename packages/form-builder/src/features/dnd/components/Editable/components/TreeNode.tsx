@@ -83,7 +83,7 @@ const SNodeItem = styled.div`
   }
 `
 
-export function findDepth<T extends { key: string, children?: T[] }>(value: T, key?: string, depth = 0): number | undefined {
+function findDepth<T extends { key: string, children?: T[] }>(value: T, key?: string, depth = 0): number | undefined {
   if (value.key === key) return depth
 
   if (!value.children) return
