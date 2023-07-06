@@ -3,7 +3,7 @@ import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
 import {observer} from 'mobx-react'
 import {useState} from 'react'
 import {useTranslation} from 'react-i18next'
-import {IconButton, Modal} from 'rsuite'
+import {IconButton, Modal, Tooltip, Whisper} from 'rsuite'
 import {FaIcon} from '../../../components/Icons'
 import {JsonView} from '../../JsonView'
 
@@ -16,7 +16,9 @@ export const JsonViewButton = observer(() => {
   const handleClose = () => setOpen(false)
 
   return <>
-    <SIconButton onClick={handleOpen} icon={icon} circle/>
+    <Whisper speaker={<Tooltip>{t('editJson')}</Tooltip>} placement={'bottom'}>
+      <SIconButton onClick={handleOpen} icon={icon} circle/>
+    </Whisper>
     <Modal open={open} size={'full'} backdrop={true}>
       <Modal.Header closeButton onClose={handleClose}>
         <Modal.Title>{t('editJson')}</Modal.Title>

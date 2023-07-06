@@ -27,6 +27,7 @@ const ColoredNavItem = styled(Nav.Item)`
 
 export const SNav = styled(Nav)`
   margin-bottom: 10px;
+  display: flex;
 
   .rs-nav-item {
     border-radius: 15px;

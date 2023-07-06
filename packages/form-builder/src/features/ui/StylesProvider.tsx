@@ -8,21 +8,21 @@ const globalStyles = css`
   /* Scrollbar */
 
   ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
   }
 
   /* Handle */
 
   ::-webkit-scrollbar-thumb {
-    background: rgb(179 179 179 / 86%);
+    background: rgb(179 179 179 / 60%);
     border-radius: 4px;
   }
 
   /* Handle on hover */
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgb(133 133 133);
+    background: rgb(179 179 179);
   }
 `
 

@@ -3,9 +3,11 @@ import * as faMoon from '@fortawesome/free-solid-svg-icons/faMoon.js'
 import * as faSun from '@fortawesome/free-solid-svg-icons/faSun.js'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
+import {Tooltip, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {BuilderTheme} from '../../../../utils/types'
 import {FaIcon} from '../../../components/Icons'
+import {useTranslationPart} from '../../../localization/hooks'
 
 const icons: Record<BuilderTheme, any> = {
   dark: faMoon,
@@ -14,6 +16,7 @@ const icons: Record<BuilderTheme, any> = {
 
 export const ToggleTheme = observer(() => {
   const store = useBuilderStore()
+  const t = useTranslationPart('rightMenu')
   const {theme} = store
   const [icon, setIcon] = useState(icons[theme])
   const isDark = theme === 'dark'
@@ -30,7 +33,13 @@ export const ToggleTheme = observer(() => {
     className: store.theme
   }
 
-  return <IconButton {...iconProps}/>
+  return (
+    <Whisper speaker={<Tooltip>{t('toggleTheme')}</Tooltip>} placement={'bottom'}>
+      <div>
+        <IconButton {...iconProps}/>
+      </div>
+    </Whisper>
+  )
 })
 
 const IconButton = styled(FaIcon)`

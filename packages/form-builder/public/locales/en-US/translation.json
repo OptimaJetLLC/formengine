@@ -151,12 +151,13 @@
     "importFormsError": "Failed to import forms! See the logs in the browser console"
   },
   "rightMenu": {
-    "desktop": "Desktop",
-    "mobile": "Mobile",
-    "tablet": "Tablet",
+    "toggleTheme": "Toggle theme",
     "modes": {
       "builder": "Preview",
-      "viewer": "Edit"
+      "viewer": "Edit",
+      "desktop": "Desktop",
+      "mobile": "Mobile",
+      "tablet": "Tablet"
     }
   },
   "componentsModal": {
