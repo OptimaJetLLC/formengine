@@ -3,7 +3,6 @@ import {observer} from 'mobx-react'
 import {useDragLayer} from 'react-dnd'
 import {useEventReactions} from '../../../event/utils/useEventReactions'
 import {Draggable} from './components/Draggable'
-import {Resizers} from './components/Resizers'
 import {Toolbar} from './components/Toolbar'
 import {useInnerDropZone} from './hooks/useInnerDropZone'
 import {useSelection} from './hooks/useSelection'
@@ -17,7 +16,6 @@ export const Editable = observer(({children}: WrapperProps) => {
 
   const toolbars = selected && !isDragging && <>
     <Toolbar/>
-    <Resizers show={selected}/>
   </>
 
   return (
