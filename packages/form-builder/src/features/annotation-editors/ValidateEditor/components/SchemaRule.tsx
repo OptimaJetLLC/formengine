@@ -1,6 +1,7 @@
-import {cast, getSchemaRules, useComponentData} from '@react-form-builder/core'
+import {getSchemaRules, useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {Input as RInput, InputNumber} from 'rsuite'
+import * as Yup from 'yup'
 import {useMeta} from '../../../../utils/useMeta'
 
 const getInput = (type: string) => {
@@ -14,6 +15,15 @@ const getInput = (type: string) => {
 
 interface SchemaRuleProps {
   ruleKey: string
+}
+
+const cast = (value: any, type: string) => {
+  switch (type) {
+    case 'number':
+      return Yup.number().cast(value)
+    default:
+      return value
+  }
 }
 
 export const SchemaRule = observer(({ruleKey}: SchemaRuleProps) => {
