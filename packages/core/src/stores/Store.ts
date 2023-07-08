@@ -116,7 +116,7 @@ export class Store {
       }
       this.#applyComponentStore(form as ComponentStore)
     } catch (e) {
-      return this.#onLoadError(e)
+      this.#onLoadError(e)
     }
   }
 
