@@ -1,5 +1,16 @@
 import {StandardStyleItem} from './types'
-import {inPX, pick} from './utils'
+
+function inPX(cssName: string) {
+  return {cssName, measure: 'px'}
+}
+
+const pick = (object: any, keys: string[]) => {
+  const result: any = {}
+  keys.forEach(key => {
+    if (object[key]) result[key] = object[key]
+  })
+  return result
+}
 
 export const StandardStylesDefinitions: StandardStyleItem = {
   'width': inPX('width'),
