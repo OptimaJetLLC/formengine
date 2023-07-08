@@ -1,5 +1,6 @@
-import {ValidationSchema} from '../types'
-import {getSchemaCtor, getSchemaRules} from './consts'
+import {ArraySchema, BooleanSchema, DateSchema, NumberSchema, ObjectSchema, StringSchema} from 'yup'
+import {SchemaCtor, SchemaType, ValidationSchema} from '../types'
+import {getSchemaRules} from './consts'
 
 export function parseSchema(schema?: ValidationSchema) {
   if (!schema) return
@@ -17,4 +18,27 @@ export function parseSchema(schema?: ValidationSchema) {
   })
 
   return schemaIns
+}
+
+function exhaustiveCheck(param: never): never {
+  throw new Error(`Unprocessed value: ${param}`)
+}
+
+function getSchemaCtor(type: SchemaType): SchemaCtor {
+  switch (type) {
+    case 'string':
+      return StringSchema
+    case 'number':
+      return NumberSchema
+    case 'boolean':
+      return BooleanSchema
+    case 'date':
+      return DateSchema
+    case 'object':
+      return ObjectSchema
+    case 'array':
+      return ArraySchema
+    default:
+      exhaustiveCheck(type)
+  }
 }
