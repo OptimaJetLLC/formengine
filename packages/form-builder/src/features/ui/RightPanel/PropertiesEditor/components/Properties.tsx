@@ -5,11 +5,29 @@ import {createElement, useEffect} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {AnnotationProvider} from '../../../../../utils/EditorContext'
 import {key, stylization} from '../../../../annotation'
-import {bySection, bySubSection, EditorMap} from '../../../../annotation-editors'
+import {EditorMap} from '../../../../annotation-editors'
 import {Annotation} from '../../../../annotation/types/annotations/Annotation'
 import {CenteredLabel} from '../../../../components/Labels'
 import {useTranslationPart} from '../../../../localization/hooks'
 import {Section, SubSection} from '../Section'
+
+//TODO return section map to annotation
+const SectionMap: Record<string, Section> = {
+  validation: Section.Rules,
+  event: Section.Actions,
+}
+
+//TODO return sub section map to annotation
+const SubSectionMap: Record<string, SubSection> = {
+  htmlAttributes: SubSection.Additional,
+  tooltipProps: SubSection.Tooltip,
+  useTooltip: SubSection.Tooltip,
+  renderWhen: SubSection.Additional,
+}
+
+const bySection = (section: string) => (annotation: Annotation) => (SectionMap[annotation.editor] ?? Section.Main) === section
+
+const bySubSection = (section?: string) => (annotation: Annotation) => SubSectionMap[annotation.editor] === section
 
 interface PropertiesProps {
   activeTab: Section

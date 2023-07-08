@@ -1,6 +1,4 @@
 import {ComponentType} from 'react'
-import {Annotation} from '../annotation/types/annotations/Annotation'
-import {Section, SubSection} from '../ui/RightPanel/PropertiesEditor/Section'
 import {ErrorConfig} from '../validation/ErrorConfig'
 import {ArrayInput} from './ArrayInput'
 import AttributesInput from './AttributesInput'
@@ -47,21 +45,3 @@ export const EditorMap: Record<string, ComponentType> = {
   renderWhen: RenderWhenEditor,
   errorConfig: ErrorConfig
 }
-
-//TODO return section map to annotation
-const SectionMap: Record<string, Section> = {
-  validation: Section.Rules,
-  event: Section.Actions,
-}
-
-//TODO return sub section map to annotation
-const SubSectionMap: Record<string, SubSection> = {
-  htmlAttributes: SubSection.Additional,
-  tooltipProps: SubSection.Tooltip,
-  useTooltip: SubSection.Tooltip,
-  renderWhen: SubSection.Additional,
-}
-
-export const bySection = (section: string) => (annotation: Annotation) => (SectionMap[annotation.editor] ?? Section.Main) === section
-
-export const bySubSection = (section?: string) => (annotation: Annotation) => SubSectionMap[annotation.editor] === section
