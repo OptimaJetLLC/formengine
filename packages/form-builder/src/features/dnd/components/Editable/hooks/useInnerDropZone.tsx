@@ -1,6 +1,7 @@
-import {useComponentData, useComputed} from '@react-form-builder/core'
+import {useComponentData} from '@react-form-builder/core'
 import {assign} from 'lodash-es'
 import {useRef} from 'react'
+import {useComputed} from '../../../../../utils/useComputed'
 import {useMeta} from '../../../../../utils/useMeta'
 import {isContainer} from '../../../../annotation'
 import {DropZone} from '../components/DropZone'
