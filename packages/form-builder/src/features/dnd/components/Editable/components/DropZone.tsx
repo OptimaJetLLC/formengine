@@ -3,8 +3,12 @@ import styled from '@emotion/styled'
 import {useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {ComponentProps} from 'react'
+import {useDrop} from 'react-dnd'
+import {ConnectDropTarget} from 'react-dnd/dist/types/types'
+import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {isRootType} from '../../../../../utils/isRoot'
-import {useDropZone} from '../hooks/useDropZone'
+import {ComponentMove, InsertPosition} from '../../../../../utils/types'
+import {AcceptDrop, ItemType} from '../../../consts'
 import {DropView} from './DropView'
 
 interface DropZoneProps extends ComponentProps<any> {
@@ -34,6 +38,49 @@ const DropZone = observer(({isAfter = false, className, isInner, ...props}: Drop
     {!isRoot && !isInner && dropView}
   </>
 })
+
+interface DropState {
+  isActive: boolean,
+  isOver: boolean,
+}
+
+const useDropZone = (isAfter: boolean, isInner?: boolean): [DropState, ConnectDropTarget] => {
+  const {Before, After, Inner} = InsertPosition
+
+  const store = useBuilderStore()
+  const target = useComponentData()
+  const {bindTo} = target.store
+  const insertPosition = isInner
+    ? Inner
+    : isAfter ? After : Before
+
+  const [{isActive, isOver}, drop] = useDrop({
+    accept: AcceptDrop,
+    drop: (source: ComponentMove, monitor) => {
+      const type = monitor.getItemType() as ItemType
+      switch (type) {
+        case ItemType.AddedComponent:
+          store.add(source, target, insertPosition)
+          break
+        case ItemType.Component:
+          //TODO механизм биндинга свойств
+          source.store.bindTo = bindTo
+          if (store.selected.size > 1) {
+            store.multipleMove(target, insertPosition)
+          } else {
+            store.move(source, target, insertPosition)
+          }
+          break
+      }
+    },
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+      isActive: monitor.isOver() && monitor.canDrop(),
+    })
+  })
+
+  return [{isActive, isOver}, drop]
+}
 
 const Container = styled.div`
   position: absolute;

@@ -1,12 +1,15 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {useComponentData} from '@react-form-builder/core'
+import {merge} from 'lodash/fp.js'
 import {observer} from 'mobx-react'
-import {ComponentProps, ReactNode} from 'react'
-import {useDragLayer} from 'react-dnd'
+import {ComponentProps, ReactNode, RefObject, useMemo, useRef} from 'react'
+import {useDragLayer, useDrop} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {isRootType} from '../../../../../utils/isRoot'
-import {useDnd} from '../hooks/useDnd'
+import {ComponentMove} from '../../../../../utils/types'
+import {AcceptDrop, ItemType} from '../../../consts'
+import {useDragWithPreview} from '../hooks/useDragWithPreview'
 import {DragPreview} from './DragPreview'
 import {DropZone} from './DropZone'
 
@@ -36,6 +39,35 @@ export const Draggable = observer(({children, viewForDragPreview, isInner, class
     </Container>
   </>
 })
+
+interface DndState {
+  isDragging: boolean,
+  isActive: boolean,
+  isOver: boolean,
+  canDrop: boolean,
+}
+
+const useDnd = (): [DndState, RefObject<any>] => {
+  const dnd = useRef(null)
+  const data = useComponentData()
+
+  const [dropProps, drop] = useDrop({
+    accept: AcceptDrop,
+    canDrop: (item: ComponentMove, monitor) => data.store.key !== item.store.key,
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+      canDrop: monitor.canDrop(),
+      isActive: monitor.isOver() && monitor.canDrop(),
+    }),
+  }, [])
+
+  const [dragState, drag] = useDragWithPreview(ItemType.Component)
+  const state: DndState = useMemo(() => (merge(dropProps, dragState)), [dropProps, dragState])
+
+  drop(drag(dnd))
+
+  return [state, dnd]
+}
 
 const Container = styled.div`
   position: relative;
