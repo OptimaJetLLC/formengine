@@ -1,6 +1,4 @@
-import {css} from '@emotion/react'
 import styled from '@emotion/styled'
-import {Button} from 'rsuite'
 
 export const Rows = styled.div<{ gap?: number }>`
   display: flex;
@@ -25,20 +23,4 @@ export const LabeledInput = styled.div`
     width: 100px;
     min-width: 80px;
   }
-`
-
-export const makeLabeledIconStyles = (gap = 10) => css`
-  && {
-    display: flex;
-    align-items: center;
-    gap: ${gap}px;
-
-    .rs-icon {
-      margin-block-start: 2px;
-    }
-  }
-`
-
-export const SIconButton = styled(Button)`
-  ${makeLabeledIconStyles()}
 `

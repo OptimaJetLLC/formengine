@@ -1,10 +1,11 @@
+import {css} from '@emotion/react'
 import styled from '@emotion/styled'
 import * as faPaintBrush from '@fortawesome/free-solid-svg-icons/faPaintBrush.js'
 import * as faPlay from '@fortawesome/free-solid-svg-icons/faPlay.js'
 import {observer} from 'mobx-react'
+import {Button} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {BuilderMode} from '../../../../utils/types'
-import {SIconButton} from '../../../components/Containers'
 import {FaIcon} from '../../../components/Icons'
 import {useTranslationPart} from '../../../localization/hooks'
 
@@ -24,6 +25,22 @@ export const ToggleModeButton = observer(() => {
     {t(store.builderMode)}
   </AnimatedButton>
 })
+
+const makeLabeledIconStyles = (gap = 10) => css`
+  && {
+    display: flex;
+    align-items: center;
+    gap: ${gap}px;
+
+    .rs-icon {
+      margin-block-start: 2px;
+    }
+  }
+`
+
+const SIconButton = styled(Button)`
+  ${makeLabeledIconStyles()}
+`
 
 const AnimatedButton = styled(SIconButton)`
   min-width: 98px;
