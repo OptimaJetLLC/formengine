@@ -1,8 +1,13 @@
 import {assign, clone as lodashClone, startCase} from 'lodash-es'
 import {ReactNode} from 'react'
 import {AnnotationMap} from '../../consts'
+import {AnnotationType} from '../../types'
 import {Annotation} from '../../types/annotations/Annotation'
-import {BuilderOptions} from '../../types/BuilderOptions'
+
+class BuilderOptions {
+  type: AnnotationType = 'Module'
+  autoName = true
+}
 
 export type PreAnnotation = Partial<Omit<Annotation, 'key'>> & Pick<Annotation, 'editor'>
 export type BuilderSetup = Partial<PreAnnotation & BuilderOptions>
