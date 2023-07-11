@@ -1,12 +1,24 @@
-import {CSSObject} from '@emotion/serialize/dist/declarations/types'
+import type {CSSObject} from '@emotion/serialize/dist/declarations/types'
 import {ActionsInitializer, Model} from '@react-form-builder/core'
 import {ComponentType, ReactNode} from 'react'
 import {Annotation} from '../../annotation/types/annotations/Annotation'
 import {modules} from '../constants'
-import {Annotations, DefinerData} from '../types'
+import type {Annotations} from '../types'
 import {BuilderComponent} from './BuilderComponent'
 import {Meta} from './Meta'
 import {toArray} from './toArray'
+
+type DefinerData<T extends object> = {
+  readonly view: ComponentType<T>,
+  name?: string,
+  category?: string,
+  cssString?: string,
+  cssObject?: Annotations<CSSObject>,
+  readonly actionsInitializer?: ActionsInitializer,
+
+  properties?: Annotations<T>,
+  customPreview?: ReactNode,
+}
 
 //TODO проброс пропертей в инициализатор экшенов.
 export class Definer<T extends object> {
