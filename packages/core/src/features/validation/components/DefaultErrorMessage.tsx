@@ -2,9 +2,21 @@ import {css, cx} from '@emotion/css'
 import {ReactNode} from 'react'
 import {Model} from '../../define'
 
+/**
+ * Properties of the React component that wraps the form view component and displays validation errors.
+ */
 export interface ErrorWrapperProps {
+  /**
+   * The error text.
+   */
   error?: string
+  /**
+   * The wrapped component.
+   */
   children?: ReactNode
+  /**
+   * The CSS class name.
+   */
   className?: string
 }
 

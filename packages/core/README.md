@@ -1,3 +1,1 @@
-# Core
-
-For technical API
+# Optimajet React FormBuilder core

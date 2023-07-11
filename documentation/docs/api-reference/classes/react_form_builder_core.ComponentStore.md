@@ -7,18 +7,22 @@ custom_edit_url: null
 
 [@react-form-builder/core](../modules/react_form_builder_core.md).ComponentStore
 
+Component settings for serialization in JSON.
+
 ## Constructors
 
 ### constructor
 
 • **new ComponentStore**(`key`, `type`)
 
+Creates the component settings.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key` | `string` |
-| `type` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `key` | `string` | the React component key. |
+| `type` | `string` | the component type of the form viewer. |
 
 ## Properties
 

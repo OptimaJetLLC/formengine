@@ -24,6 +24,10 @@ const prepareData = ({data}: PropertyAn, values: string[]) => {
   return preparedData
 }
 
+/**
+ * The property editor for property of type "multiple select", displays values as select.
+ * @returns the React element.
+ */
 export const MultiPicker = () => {
   const {value, onChange, annotation, onRemove} = useEditor()
   const data = prepareData(annotation as PropertyAn, value)

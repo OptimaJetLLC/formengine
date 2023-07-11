@@ -4,6 +4,10 @@ import LabeledProperty from '../components/LabeledProperty'
 
 const DEFAULT_COLUMNS = [{name: 'value'}, {name: 'label'}]
 
+/**
+ * The property editor for the array property type.
+ * @returns the React element.
+ */
 export const ArrayInput = () => {
   const {value, onChange, annotation} = useEditor()
   const columns = makeColumns(annotation.editorProps?.columns ?? DEFAULT_COLUMNS)

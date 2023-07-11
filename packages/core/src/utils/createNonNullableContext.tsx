@@ -1,7 +1,9 @@
 import {Context, createContext, Provider, useContext} from 'react'
 
 /**
- * Return the tuple [hook, provider, and common context] for interactions with a non-nullable context
+ * Creates non-nullable React context.
+ * @param name the context name.
+ * @returns the tuple [hook, provider, and common context] for interactions with a non-nullable context.
  */
 export function createNonNullableContext<T>(name: string): [() => T, Provider<T>, Context<T | null>] {
   const context = createContext<T | null>(null)

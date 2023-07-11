@@ -4,19 +4,31 @@ import {MouseEvent, useCallback, useMemo, useState} from 'react'
 import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 
+/**
+ * Represents the selection state of the component.
+ */
 export interface SelectionState {
   hovered: boolean
   selected: boolean
 }
 
+/**
+ * Represents mouse event handlers for the selected component.
+ */
 export interface SelectionHandlers {
   onClick: (e: MouseEvent) => void
   onMouseOver: (e: MouseEvent) => void
   onMouseOut: () => void
 }
 
+/**
+ * The type for the CSS class name.
+ */
 export type ClassName = string
 
+/**
+ * @returns the array [{@link SelectionState}, {@link SelectionHandlers}, {@link ClassName}] with component selection data.
+ */
 export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] => {
   const store = useBuilderStore()
   const data = useComponentData()

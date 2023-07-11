@@ -3,6 +3,10 @@ import {ComponentStore, useComponentData} from '@react-form-builder/core'
 import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
 
+/**
+ * The property editor for the children property type.
+ * @returns the React element.
+ */
 export const ChildViewer = () => {
   const {annotation} = useEditor()
   const {store} = useComponentData()

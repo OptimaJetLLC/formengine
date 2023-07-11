@@ -3,6 +3,10 @@ import {Input} from 'rsuite'
 import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
 
+/**
+ * The property editor for the key property type.
+ * @returns the React element.
+ */
 const KeyInput = () => {
   const {annotation} = useEditor()
   const data = useComponentData()

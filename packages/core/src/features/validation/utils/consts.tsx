@@ -7,6 +7,11 @@ import {ObjectRules} from '../rules/ObjectRules'
 import {StringRules} from '../rules/StringRules'
 import {Rules} from '../types'
 
+/**
+ * Returns the validation rules for the validation scheme.
+ * @param ctr the validation scheme.
+ * @returns the validations rules.
+ */
 export const getSchemaRules = (ctr?: Function): Rules<any> | undefined => {
   switch (ctr) {
     case StringSchema:

@@ -7,6 +7,8 @@ custom_edit_url: null
 
 [@react-form-builder/core](../modules/react_form_builder_core.md).CustomActionDefinition
 
+Description of the custom action handler.
+
 ## Hierarchy
 
 - `BaseActionDefinition`

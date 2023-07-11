@@ -4,6 +4,10 @@ import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {useAnnotation} from '../../utils/EditorContext'
 import LabeledProperty from '../components/LabeledProperty'
 
+/**
+ * React form builder component to edit the 'Render when' component property.
+ * @returns the React element.
+ */
 export const RenderWhenEditor = () => {
   const selected = useBuilderStore().oneSelected
   const {annotation} = useAnnotation()

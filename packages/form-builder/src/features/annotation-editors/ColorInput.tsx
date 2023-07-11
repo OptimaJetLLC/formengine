@@ -11,6 +11,10 @@ const PLACEHOLDER_COLOR = {r: 255, g: 255, b: 255, a: 0}
 
 type RgbColor = { r: number; g: number; b: number; a: number } | undefined
 
+/**
+ * The property editor for the color property type.
+ * @returns the React element.
+ */
 export const ColorInput = () => {
   const {value, onChange, onRemove, annotation} = useEditor()
 
@@ -67,12 +71,22 @@ const SColorPicker = styled.div`
   }
 `
 
+/**
+ * Converts the value to a string containing the color in CSS format.
+ * @param value the object or string with a CSS color.
+ * @returns the string containing the color in CSS format.
+ */
 export function rgbToString(value?: RgbColor | string) {
   if (isUndefined(value) || isString(value)) return value
   const {r, g, b, a} = value
   return `rgb(${r}, ${g}, ${b}, ${a})`
 }
 
+/**
+ * Converts the string containing a rgba color value into an object.
+ * @param value the string containing a rgba color.
+ * @returns the object with properties '{r, g, b, a}'.
+ */
 export function rgbFromString(value: string) {
   const matchColors = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
   const [, r, g, b, a] = matchColors.exec(value) || []

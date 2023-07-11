@@ -8,6 +8,10 @@ import {AddedComponent} from '../../dnd'
 import {useTranslationPart} from '../../localization/hooks'
 import {SearchForm} from './components/SearchForm'
 
+// todo rename to ComponentBarProps properties?
+/**
+ * Properties of the draggable component.
+ */
 export interface DraggableProps {
   draggable?: boolean
   onAdd?: (source: ComponentMove) => void
@@ -48,6 +52,12 @@ const ControlGroups = (props: ControlGroupsProps) => {
   return <Content>{result}</Content>
 }
 
+// todo rename componentProps to props
+/**
+ * The React form builder component that displays all available components for use.
+ * @param componentProps the component properties.
+ * @returns the React element.
+ */
 export const ComponentBar = (componentProps: DraggableProps) => {
   const t = useTranslationPart('toolbar')
   const [filtered, setFiltered] = useState<string>()

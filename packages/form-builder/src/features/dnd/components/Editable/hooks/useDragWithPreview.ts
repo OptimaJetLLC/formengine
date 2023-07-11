@@ -8,6 +8,11 @@ interface DragState {
   isDragging: boolean,
 }
 
+/**
+ * Returns the array with the drag state and wrapper of the dragged preview item.
+ * @param type the type of item being dragged.
+ * @returns the array with the drag state and wrapper of the dragged preview item.
+ */
 export const useDragWithPreview = (type: ItemType): [DragState, ConnectDragSource] => {
   const item = useComponentData()
   const [state, drag, preview] = useDrag(() => ({

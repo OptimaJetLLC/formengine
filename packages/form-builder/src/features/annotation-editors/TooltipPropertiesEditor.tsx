@@ -7,6 +7,10 @@ import {PropertyBlock} from '../ui/RightPanel/PropertiesEditor/components/Proper
 import {SCheckbox} from './BooleanInput'
 import {HintedLabel} from './Hinted'
 
+/**
+ * React form builder component that displays the tooltip property editor .
+ * @returns the React element.
+ */
 export const TooltipPropertiesEditor = () => {
   const t = useTranslationPart('annotation.tooltipProps')
   const id = useUniqueId('tooltip-')

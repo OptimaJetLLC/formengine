@@ -7,11 +7,15 @@ custom_edit_url: null
 
 [@react-form-builder/builder](../modules/react_form_builder_builder.md).ColumnDescription
 
+The description of the table column.
+
 ## Properties
 
 ### input
 
 • `Optional` **input**: `ComponentType`
+
+The React component that displays the value of a column.
 
 ___
 
@@ -19,14 +23,20 @@ ___
 
 • `Optional` **inputProps**: `any`
 
+The properties of the React component that displays the value of the column.
+
 ___
 
 ### name
 
 • **name**: `string`
 
+The column name.
+
 ___
 
 ### title
 
 • `Optional` **title**: `string`
+
+The column title.

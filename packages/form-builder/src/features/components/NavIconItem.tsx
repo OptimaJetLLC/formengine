@@ -3,6 +3,14 @@ import {Nav} from 'rsuite'
 import {FaIcon} from './Icons'
 import {LabeledIcon} from './LabeledIcon'
 
+/**
+ * The React component that displays a navigation element with an icon.
+ * @param key the key of the navigation element.
+ * @param title the text of the navigation element.
+ * @param icon the icon of the navigation element.
+ * @param props the other properties of the component.
+ * @returns the React element.
+ */
 export const NavIconItem = (key: string, title?: string, icon?: any, props?: any) => {
   return <ColoredNavItem eventKey={key} color={props?.color}>
     <LabeledIcon>

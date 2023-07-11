@@ -13,6 +13,9 @@ import {useTranslationPart} from '../localization/hooks'
 import {Columns, LabeledInput} from './Containers'
 import {FaIcon} from './Icons'
 
+/**
+ * The properties of the React {@link LabeledProperty} component.
+ */
 export interface LabeledPropertyProps extends ComponentProps<any> {
   idPrefix?: string
   annotation: Annotation
@@ -47,6 +50,16 @@ const CodeButton = namedObserver('CodeButton', ({annotation, property, getEditab
   </Hinted>
 })
 
+/**
+ * The React component that displays a component property and label.
+ * @param props the React component properties.
+ * @param props.idPrefix the prefix for the id attribute in HTML.
+ * @param props.annotation the component property metadata.
+ * @param props.getEditableProperty function that returns the parameters of the component's editable property.
+ * @param props.children the React component that displays a component property.
+ * @param props.props the other properties of the component.
+ * @returns the React element.
+ */
 export const LabeledProperty = ({idPrefix, annotation, getEditableProperty, children, ...props}: LabeledPropertyProps) => {
   const id = useUniqueId(idPrefix || 'id-')
   const getLabel = useTranslationPart(`annotation.${annotation.key}`)

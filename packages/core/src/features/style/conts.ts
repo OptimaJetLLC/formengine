@@ -4,6 +4,12 @@ function inPX(cssName: string) {
   return {cssName, measure: 'px'}
 }
 
+/**
+ * Returns the object containing only the properties specified in the key array.
+ * @param object the initial object.
+ * @param keys the array of keys.
+ * @returns the object containing only the properties specified in the key array.
+ */
 const pick = (object: any, keys: string[]) => {
   const result: any = {}
   keys.forEach(key => {

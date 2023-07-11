@@ -6,6 +6,9 @@ import {CodeEditor} from '../../../../components/CodeEditor'
 import {ParameterList} from './components/ParameterList'
 import {ParamAction} from './types'
 
+/**
+ * Properties of the React component {@link CustomActionEditor}.
+ */
 interface CustomActionEditorProps {
   onCancel: () => void
   onSave: (value: CustomActionDefinition) => void
@@ -13,6 +16,15 @@ interface CustomActionEditorProps {
   onEnter: () => void
 }
 
+/**
+ * React form builder component that displays a custom action code editor.
+ * @param props the React component properties.
+ * @param props.onCancel the callback function that is called when the code editor is closed without saving data.
+ * @param props.onSave the callback function that is called when the action handler is saved.
+ * @param props.data the description of the custom action handler.
+ * @param props.onEnter the callback that is called before opening the modal window with the code editor.
+ * @returns the React element.
+ */
 export const CustomActionEditor = ({onCancel, onSave, data, onEnter}: CustomActionEditorProps) => {
   const {t} = useTranslation()
   const [name, setName] = useState(data?.name ?? '')
@@ -30,7 +42,7 @@ export const CustomActionEditor = ({onCancel, onSave, data, onEnter}: CustomActi
   }
 
   const functionHeader = `/**${getParamsType(params)}
-* @param {ActionEventArgs} e
+* @param {ActionEventArgs} e - the action arguments.
 */
 function Action (${params ? 'args, ' : ''}e) {`
 
@@ -86,5 +98,5 @@ function paramsReducer(params: Parameter[] | undefined, action: ParamAction) {
 function getParamsType(params?: Parameter[]) {
   if (!params?.length) return ''
   const names: string[] = params.map(toParameterWithType).map(([name, type]) => name + ': ' + type)
-  return `\n* @param {{${names.join(', ')}}} args`
+  return `\n* @param {{${names.join(', ')}}} args - the action parameters.`
 }

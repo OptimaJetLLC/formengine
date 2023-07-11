@@ -7,6 +7,8 @@ custom_edit_url: null
 
 [@react-form-builder/builder](../modules/react_form_builder_builder.md).FormBuilderProps
 
+Properties of the React Form builder component.
+
 ## Hierarchy
 
 - [`FormViewerProps`](react_form_builder_core.FormViewerProps.md)
@@ -19,6 +21,8 @@ custom_edit_url: null
 
 • `Optional` **actions**: `ActionDefinition`[]
 
+External actions for the form viewer.
+
 #### Inherited from
 
 [FormViewerProps](react_form_builder_core.FormViewerProps.md).[actions](react_form_builder_core.FormViewerProps.md#actions)
@@ -29,6 +33,8 @@ ___
 
 • `Optional` **componentWrapper**: `ComponentType`<`any`\>
 
+The React component that wraps every component in a form.
+
 #### Inherited from
 
 [FormViewerProps](react_form_builder_core.FormViewerProps.md).[componentWrapper](react_form_builder_core.FormViewerProps.md#componentwrapper)
@@ -38,6 +44,8 @@ ___
 ### data
 
 • `Optional` **data**: `Record`<`string`, `unknown`\>
+
+The initial data of the form.
 
 #### Inherited from
 
@@ -65,11 +73,13 @@ ___
 
 ▸ (`stream`): `void`
 
+The function for processing form events.
+
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `stream` | `EventStream` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `stream` | `EventStream` | the event stream of the form viewer. |
 
 ##### Returns
 
@@ -85,6 +95,8 @@ ___
 
 • `Optional` **formName**: `string`
 
+the form name.
+
 #### Inherited from
 
 [FormViewerProps](react_form_builder_core.FormViewerProps.md).[formName](react_form_builder_core.FormViewerProps.md#formname)
@@ -94,6 +106,8 @@ ___
 ### formStorage
 
 • `Optional` **formStorage**: [`FormStorage`](react_form_builder_builder.FormStorage.md)
+
+The external form storage.
 
 ___
 
@@ -105,15 +119,19 @@ ___
 
 ▸ (`name?`): [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md) \| `Promise`<[`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md)\>
 
+Loads the form.
+
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `name?` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name?` | `string` | the form name. |
 
 ##### Returns
 
 [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md) \| `Promise`<[`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md)\>
+
+the object or Promise with the form.
 
 #### Inherited from
 
@@ -125,6 +143,8 @@ ___
 
 • `Optional` **slotWrapper**: `ComponentType`<`any`\>
 
+The React component that wraps a template slot.
+
 #### Inherited from
 
 [FormViewerProps](react_form_builder_core.FormViewerProps.md).[slotWrapper](react_form_builder_core.FormViewerProps.md#slotwrapper)
@@ -135,6 +155,8 @@ ___
 
 • **view**: `BuilderView`
 
+All the metadata of the components of the form builder.
+
 #### Overrides
 
 [FormViewerProps](react_form_builder_core.FormViewerProps.md).[view](react_form_builder_core.FormViewerProps.md#view)
@@ -144,6 +166,8 @@ ___
 ### viewMode
 
 • `Optional` **viewMode**: [`ViewMode`](../modules/react_form_builder_core.md#viewmode)
+
+Display resolution type.
 
 #### Inherited from
 

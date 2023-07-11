@@ -11,6 +11,10 @@ export const SizeUnits = ['px', '%', 'em', 'vw', 'vh']
 export const SizeKeywords = ['max-content', 'min-content', 'fit-content', 'auto']
 const options = toLabeledValues([...SizeUnits, ...SizeKeywords, OtherUnit], false)
 
+/**
+ * The property editor for the CSS size property type.
+ * @returns the React element.
+ */
 const SizeInput = () => {
   const {value: CSSValue, onChange, annotation} = useEditor()
   const {value, unit} = parseCSSValue(CSSValue)
@@ -64,7 +68,13 @@ const makeCSSValue = (value: InputValue, unit?: string) => {
   return `${isNeedValue(unit) ? number : ''}${unit === OtherUnit ? '' : unit}`
 }
 
-/** Convert '10asd' to 10. Need on change the 'other' type to another type. */
+/**
+ * Converts the measured value to a number if the value is not measured in 'other'.
+ * @param value the measured value.
+ * @param unit the unit of measure.
+ * @returns the value converted to a number, or the original value if the unit is 'other'.
+ * @internal
+ */
 function convertToNumberForNonOtherUnit(value: InputValue, unit?: string) {
   if (unit !== OtherUnit && typeof value === 'string') {
     const match = value.match(/[+-]?\d+(\.\d+)?/)

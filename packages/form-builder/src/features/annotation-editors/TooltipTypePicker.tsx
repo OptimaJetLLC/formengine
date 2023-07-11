@@ -6,6 +6,10 @@ import type {ItemDataType} from 'rsuite/esm/@types/common'
 import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
 
+/**
+ * React form builder component that displays tooltip picker
+ * @returns the React element.
+ */
 export const TooltipTypePicker = () => {
   const {value, onChange, annotation, onRemove} = useEditor()
   const store = useStore()

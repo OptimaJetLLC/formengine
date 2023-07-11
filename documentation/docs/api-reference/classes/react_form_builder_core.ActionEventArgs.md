@@ -7,20 +7,24 @@ custom_edit_url: null
 
 [@react-form-builder/core](../modules/react_form_builder_core.md).ActionEventArgs
 
+Arguments passed to the event handler.
+
 ## Constructors
 
 ### constructor
 
 • **new ActionEventArgs**(`type`, `sender`, `store`, `args`)
 
+Creates arguments for the event handler.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `type` | `string` |
-| `sender` | [`ComponentData`](../modules/react_form_builder_core.md#componentdata) |
-| `store` | [`Store`](react_form_builder_core.Store.md) |
-| `args` | `any`[] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `type` | `string` | the event type. |
+| `sender` | [`ComponentData`](../modules/react_form_builder_core.md#componentdata) | the component that triggered the event. |
+| `store` | [`Store`](react_form_builder_core.Store.md) | the form viewer settings. |
+| `args` | `any`[] | the event arguments. |
 
 ## Properties
 
@@ -28,11 +32,15 @@ custom_edit_url: null
 
 • `Readonly` **args**: `any`[]
 
+the event arguments.
+
 ___
 
 ### sender
 
 • `Readonly` **sender**: [`ComponentData`](../modules/react_form_builder_core.md#componentdata)
+
+the component that triggered the event.
 
 ___
 
@@ -40,11 +48,15 @@ ___
 
 • `Readonly` **store**: [`Store`](react_form_builder_core.Store.md)
 
+the form viewer settings.
+
 ___
 
 ### type
 
 • `Readonly` **type**: `string`
+
+the event type.
 
 ## Accessors
 
@@ -56,6 +68,8 @@ ___
 
 ``null`` \| `SyntheticEvent`<`Element`, `Event`\>
 
+the event handled by the event handler.
+
 ___
 
 ### value
@@ -65,6 +79,8 @@ ___
 #### Returns
 
 `any`
+
+the first element of the event argument array, which is treated as a value.
 
 ## Methods
 

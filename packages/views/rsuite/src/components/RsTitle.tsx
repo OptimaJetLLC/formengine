@@ -8,6 +8,14 @@ interface RsHeaderProps extends TextProps {
   headerSize: string
 }
 
+/**
+ * React component that displays the title.
+ * @param props the React component properties.
+ * @param props.content the title text.
+ * @param props.headerSize the title size.
+ * @param props.props the other wrapped properties of the component.
+ * @returns the React element.
+ */
 export const RsTitle = ({content, headerSize, ...props}: RsHeaderProps) => {
   return createElement(headerSize, {children: content, ...props})
 }

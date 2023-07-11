@@ -2,6 +2,10 @@ import {IndentStyles, OtherStyles, SizeStyles} from '@react-form-builder/core'
 import {useTranslation} from 'react-i18next'
 import {StandardStylesGroup} from './StandardStylesGroup'
 
+/**
+ * The React form builder component that displays the CSS properties editor.
+ * @returns the React element.
+ */
 export const StandardStyles = () => {
   const {t} = useTranslation()
 

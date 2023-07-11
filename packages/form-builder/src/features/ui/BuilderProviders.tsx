@@ -17,6 +17,13 @@ interface BuilderProvidersProps {
   children: ReactNode
 }
 
+/**
+ * React component encapsulating MobX storage for the form builder.
+ * @param props the React component properties.
+ * @param props.children the children of the React component.
+ * @param props.props the properties of the form builder component.
+ * @returns the React element.
+ */
 export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {
   const observableProps = useLocalObservable(() => props)
   const store = useMemo(() => new Store(observableProps, DefaultActions), [])

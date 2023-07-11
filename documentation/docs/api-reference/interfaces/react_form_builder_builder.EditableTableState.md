@@ -7,6 +7,8 @@ custom_edit_url: null
 
 [@react-form-builder/builder](../modules/react_form_builder_builder.md).EditableTableState
 
+The state of the [EditableTable](../modules/react_form_builder_builder.md#editabletable) component.
+
 ## Properties
 
 ### autoHeight

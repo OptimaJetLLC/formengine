@@ -26,6 +26,11 @@ const Template = () => {
   </StoreProvider>
 }
 
+/**
+ * Creates the template component metadata for the form viewer.
+ * @param name the template name.
+ * @returns the template component metadata for the form viewer.
+ */
 export function createTemplateModel(name: string) {
   const typeName = generateTemplateTypeName(name)
   const defaultProps = {name, storeDataInParentForm: true}
@@ -34,10 +39,20 @@ export function createTemplateModel(name: string) {
 
 export const templateTypeNamePrefix = 'Template:'
 
+/**
+ * Generates the template type name from the specified template name.
+ * @param name the template name.
+ * @returns the template type name.
+ */
 export function generateTemplateTypeName(name: string) {
   return templateTypeNamePrefix + name
 }
 
+/**
+ * Extracts the template name from the specified component type name.
+ * @param typeName the component type name.
+ * @returns the template name.
+ */
 export function getTemplateName(typeName: string) {
   if (typeName.startsWith(templateTypeNamePrefix)) return typeName.slice(templateTypeNamePrefix.length)
   throw new Error(`Cannot determine template name from '${typeName}'`)

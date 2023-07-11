@@ -2,6 +2,9 @@ import {useState} from 'react'
 import {Button, Input, Modal} from 'rsuite'
 import {useTranslationPart} from '../localization/hooks'
 
+/**
+ * Properties of the modal dialog for data entry.
+ */
 export interface PromptProps {
   backdrop?: boolean | 'static';
   title: string
@@ -53,6 +56,11 @@ const PromptDialog = (props: PromptDialogProps) => {
   </Modal>
 }
 
+/**
+ * Returns the array containing the function to open a modal dialog for data entry and the JSX.Element of the dialog itself.
+ * @param promptDialogProps the properties of modal dialog.
+ * @returns the array containing the function to open a modal dialog for data entry and the JSX.Element of the dialog itself.
+ */
 export const usePromptDialog = (promptDialogProps: PromptProps): [() => void, JSX.Element] => {
   const [open, setOpen] = useState(false)
   const openPromptDialog = () => setOpen(true)

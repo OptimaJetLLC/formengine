@@ -1,5 +1,10 @@
 import {isUndefined} from 'lodash-es'
 
+/**
+ * Parses the JSON string into a JavaScript object.
+ * @param value the JSON string.
+ * @returns the JSON object or null if JSON parsing failed.
+ */
 export const parseJson = (value?: string) => {
   if (isUndefined(value)) return undefined
 

@@ -10,6 +10,9 @@ import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {ComponentStore} from './ComponentStore'
 import {StoreProps} from './StoreProps'
 
+/**
+ * The form viewer settings.
+ */
 export class Store {
   readonly #props: Readonly<StoreProps>
 
@@ -21,6 +24,15 @@ export class Store {
 
   viewMode: ViewMode = 'desktop'
 
+  // todo remove isBuilderMode from Store class
+  /**
+   * Creates form viewer settings.
+   * @param props the form viewer properties.
+   * @param actions the array of action definitions.
+   * @param isBuilderMode true if the form viewer is inside the form builder, false otherwise.
+   * @param parentStore the form viewer settings, used in templates.
+   * @param keyInParent the template component key.
+   */
   constructor(props: Readonly<StoreProps>, public actions: ActionDefinition[] = [], public isBuilderMode: boolean = false,
               public readonly parentStore?: Store, private readonly keyInParent?: string) {
     this.#props = props
@@ -32,22 +44,31 @@ export class Store {
     })
   }
 
+  /**
+   * @returns the type of React component used to display the tooltip.
+   */
   get tooltipType(): string | undefined {
     return this.screen.props['tooltip']?.value ?? this.#props.view.tooltips[0]
   }
 
+  /**
+   * @returns the component's metadata for displaying the tooltip.
+   */
   get tooltipComponent() {
     const selectedTooltipType = this.tooltipType
     if (!selectedTooltipType) return
     return this.#props.view.getTooltipComponent(selectedTooltipType)
   }
 
+  /**
+   * @returns true if these settings are used to display the pattern, false otherwise.
+   */
   get isTemplateStore() {
     return !!this.parentStore
   }
 
   /**
-   * Returns true if the template can be displayed in builder mode (e.g. with drop zones), false otherwise.
+   * @returns true if the template can be displayed in builder mode (e.g. with drop zones), false otherwise.
    */
   get templateBuilderMode(): boolean {
     if (!this.isTemplateStore) return this.isBuilderMode
@@ -55,12 +76,21 @@ export class Store {
     return this.parentStore?.isBuilderMode || false
   }
 
+  /**
+   * @returns the {@link Record} with template slot settings.
+   */
   get slotsContent(): Record<string, ComponentStore> | undefined {
     if (this.keyInParent && this.parentStore) {
       return this.parentStore.findComponent(this.keyInParent)?.slotsContent
     }
   }
 
+  /**
+   * Returns the component settings for the specified component key.
+   * @param key the component key.
+   * @returns the found component settings.
+   * @throws Error if the component is not found.
+   */
   getComponent(key: string) {
     const result = this.findComponent(key)
 
@@ -71,6 +101,12 @@ export class Store {
     return result
   }
 
+  /**
+   * Returns the element in the component tree of the form viewer.
+   * @param value the component settings or component key.
+   * @returns the element in the component tree of the form viewer.
+   * @throws Error, if the component is not found in the component tree.
+   */
   getComponentData(value: ComponentStore | string) {
     const store = typeof value === 'string' ? this.getComponent(value) : value
     const result = this.cache.get(store)
@@ -82,6 +118,11 @@ export class Store {
     return result
   }
 
+  /**
+   * Searches for and returns the component settings for the specified component key.
+   * @param key the component key.
+   * @returns the found component settings or undefined.
+   */
   findComponent(key: string) {
     let result = treeFind(this.screen, key)
     if (result) return result
@@ -95,14 +136,30 @@ export class Store {
     }
   }
 
+  /**
+   * Searches for an action, returns definition for the found action.
+   * @param actionData the action's data.
+   * @returns the action definition.
+   * @throws Error, if action was not found.
+   */
   findAction(actionData: ActionData) {
     return findAction(this, actionData)
   }
 
+  /**
+   * Returns the array with action definitions for the specified component.
+   * @param target the component settings.
+   * @returns the array with action definitions for the specified component.
+   */
   getLinkedActions(target?: ComponentStore) {
     if (target) return this.#props.view.get(target.type).getActions(target)
   }
 
+  /**
+   * Loads a form by form name and sets that form in the form viewer.
+   * @param getForm the function that loads the form.
+   * @param formName the form name.
+   */
   loadForm(getForm?: (name?: string) => ComponentStore | Promise<ComponentStore>, formName?: string) {
     if (!getForm) return
 
@@ -120,12 +177,20 @@ export class Store {
     }
   }
 
+  /**
+   * Changes the form to the component with an error description.
+   * @param e the error.
+   */
   #onLoadError(e: any) {
     console.error(e)
     const componentStore = buildInternalErrorStore(e)
     this.#applyComponentStore(componentStore)
   }
 
+  /**
+   * Changes the form to the specified one.
+   * @param componentStore the form component settings.
+   */
   #applyComponentStore(componentStore: ComponentStore) {
     this.screen = assign(new ComponentStore('', ''), componentStore)
   }

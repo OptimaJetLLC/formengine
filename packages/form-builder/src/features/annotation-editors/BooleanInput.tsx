@@ -3,6 +3,10 @@ import {Checkbox} from 'rsuite'
 import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
 
+/**
+ * The property editor for the boolean property type.
+ * @returns the React element.
+ */
 export const BooleanInput = () => {
   const {value, onChange, annotation} = useEditor()
   return <LabeledProperty annotation={annotation}>

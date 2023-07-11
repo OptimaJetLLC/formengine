@@ -17,6 +17,10 @@ const addCustomValue = ({data}: PropertyAn, value: string) => {
   return data
 }
 
+/**
+ * The property editor for property of type "single select", displays values as select.
+ * @returns the React element.
+ */
 export const Picker = () => {
   const {value, onChange, annotation, onRemove} = useEditor()
   const data = addCustomValue(annotation as PropertyAn, value)

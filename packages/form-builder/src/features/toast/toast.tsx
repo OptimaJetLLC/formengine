@@ -3,6 +3,9 @@ import {Message, useToaster} from 'rsuite'
 import type {TypeAttributes} from 'rsuite/esm/@types/common'
 import type {PlacementType} from 'rsuite/esm/toaster/ToastContainer'
 
+/**
+ * Toast React component settings.
+ */
 export interface ToastSettings {
   message: string
   title?: string
@@ -10,6 +13,10 @@ export interface ToastSettings {
   placement?: PlacementType
 }
 
+/**
+ * Creates the function for changing {@link ToastSettings} settings.
+ * @returns the function for setting the {@link ToastSettings} settings.
+ */
 export const useShowMessage = () => {
   const [settings, setSettings] = useState<ToastSettings>()
   const toaster = useToaster()

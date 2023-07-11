@@ -18,49 +18,41 @@ custom_edit_url: null
 
 ### ActionCell
 
-▸ **ActionCell**(`«destructured»`): `Element`
+▸ **ActionCell**(`props`): `Element`
+
+The React component that displays the table cell with the icon button.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `«destructured»` | `ActionCellProps` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `props` | `ActionCellProps` | the React component properties. |
 
 #### Returns
 
 `Element`
 
-___
-
-### AutocompleteCell
-
-▸ **AutocompleteCell**(`«destructured»`): `Element`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `«destructured»` | `SelectCellProps` |
-
-#### Returns
-
-`Element`
+the React element.
 
 ___
 
 ### CheckCell
 
-▸ **CheckCell**(`«destructured»`): `Element`
+▸ **CheckCell**(`props`): `Element`
+
+The React component that displays the table cell with the checkbox.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `«destructured»` | `InputCellProps` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `props` | `InputCellProps` | the React component properties. |
 
 #### Returns
 
 `Element`
+
+the React element.
 
 ___
 
@@ -68,15 +60,19 @@ ___
 
 ▸ **EditableTable**(`props`): `Element`
 
+The React component that displays the table with editable cells.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `props` | [`EditableTableProps`](../interfaces/react_form_builder_builder.EditableTableProps.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `props` | [`EditableTableProps`](../interfaces/react_form_builder_builder.EditableTableProps.md) | the React component properties. |
 
 #### Returns
 
 `Element`
+
+the React element.
 
 ___
 
@@ -84,47 +80,59 @@ ___
 
 ▸ **FormBuilder**(`props`): `Element`
 
+The React component that displays the form builder.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `props` | [`FormBuilderProps`](../interfaces/react_form_builder_builder.FormBuilderProps.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `props` | [`FormBuilderProps`](../interfaces/react_form_builder_builder.FormBuilderProps.md) | the React component properties. |
 
 #### Returns
 
 `Element`
+
+the React element.
 
 ___
 
 ### InputCell
 
-▸ **InputCell**(`«destructured»`): `Element`
+▸ **InputCell**(`props`): `Element`
+
+The React component that displays the table cell with the input.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `«destructured»` | `InputCellProps` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `props` | `InputCellProps` | the React component properties. |
 
 #### Returns
 
 `Element`
+
+the React element.
 
 ___
 
 ### SelectCell
 
-▸ **SelectCell**(`«destructured»`): `Element`
+▸ **SelectCell**(`props`): `Element`
+
+The React component that displays the table cell with the select input.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `«destructured»` | `SelectCellProps` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `props` | `SelectCellProps` | the React component properties. |
 
 #### Returns
 
 `Element`
+
+the React element.
 
 ___
 
@@ -132,12 +140,16 @@ ___
 
 ▸ **makeColumns**(`columns`): `Element`[]
 
+Creates table columns based on their descriptions.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `columns` | [`ColumnDescription`](../interfaces/react_form_builder_builder.ColumnDescription.md)[] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `columns` | [`ColumnDescription`](../interfaces/react_form_builder_builder.ColumnDescription.md)[] | the column descriptions. |
 
 #### Returns
 
 `Element`[]
+
+the array with React elements.

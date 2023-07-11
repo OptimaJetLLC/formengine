@@ -5,6 +5,11 @@ import {initReactI18next} from 'react-i18next'
 import {defaultLanguage, languages} from './consts'
 import {Language, OnInitCallback} from './types'
 
+/**
+ * Generates a complete language code for the specified language, e.g. en-US.
+ * @param lang the language.
+ * @returns the complete language code.
+ */
 export function getFullLangCode(lang: Language): string {
   return `${lang.code}-${lang.dialect}`
 }
@@ -12,6 +17,11 @@ export function getFullLangCode(lang: Language): string {
 let firstLang: string | undefined
 const callbacks: OnInitCallback[] = []
 
+/**
+ * Calls the callback function, for the first language initialized,
+ * for other languages - stores the callback function for later processing.
+ * @param callback the callback function.
+ */
 export function onI18nInit(callback: OnInitCallback) {
   if (firstLang) {
     callback(firstLang)
@@ -30,6 +40,11 @@ function onInit(language: string) {
   }
 }
 
+/**
+ * Initializes the i18next library.
+ * @param onInit the callback function called on success or initialization error.
+ * @returns the instance of the i18next library.
+ */
 export function initI18n(onInit: OnInitCallback) {
   i18next
     //.use(XHR)
@@ -65,6 +80,11 @@ export function initI18n(onInit: OnInitCallback) {
 
 export const i18n = initI18n(onInit)
 
+/**
+ * Sets the language for the web page.
+ * @param lang the language.
+ * @returns the {@link Promise} with the result of the language setting.
+ */
 export async function onLanguageChange(lang: Language) {
   const langCode = getFullLangCode(lang)
   document.documentElement.lang = langCode
@@ -79,6 +99,11 @@ function findLanguageByCode(code: string, dialect?: string): Language | undefine
   return languages.find(lang => lang.code === code)
 }
 
+/**
+ * Finds {@link Language} by language code.
+ * @param language the language code.
+ * @returns found {@link Language}, or the default Language if no Language exists for the language code.
+ */
 export function findLanguage(language: string): Language {
   const codes = language.split('-')
   if (codes.length > 1) {

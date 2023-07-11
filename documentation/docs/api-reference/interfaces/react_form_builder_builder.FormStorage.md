@@ -7,6 +7,8 @@ custom_edit_url: null
 
 [@react-form-builder/builder](../modules/react_form_builder_builder.md).FormStorage
 
+Interface for storing forms in an external storage.
+
 ## Properties
 
 ### getForm
@@ -17,15 +19,19 @@ custom_edit_url: null
 
 ▸ (`formName`): `Promise`<`string`\>
 
+Returns the form serialized in JSON by the form name.
+
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `formName` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `formName` | `string` | the form name. |
 
 ##### Returns
 
 `Promise`<`string`\>
+
+the Promise with the form serialized in JSON.
 
 ___
 
@@ -41,6 +47,8 @@ ___
 
 `Promise`<`string`[]\>
 
+the Promise with an array of form names.
+
 ___
 
 ### removeForm
@@ -51,15 +59,19 @@ ___
 
 ▸ (`formName`): `Promise`<`any`\>
 
+Removes the form by form name.
+
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `formName` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `formName` | `string` | the form name. |
 
 ##### Returns
 
 `Promise`<`any`\>
+
+the Promise with the result of removal.
 
 ___
 
@@ -71,13 +83,17 @@ ___
 
 ▸ (`formName`, `formValue`): `Promise`<`any`\>
 
+Saves the form serialized in JSON.
+
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `formName` | `string` |
-| `formValue` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `formName` | `string` | the form name. |
+| `formValue` | `string` | the form serialized in JSON. |
 
 ##### Returns
 
 `Promise`<`any`\>
+
+the Promise with the result of saving the form.

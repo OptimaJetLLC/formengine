@@ -7,17 +7,21 @@ custom_edit_url: null
 
 [@react-form-builder/core](../modules/react_form_builder_core.md).View
 
+Represents all the metadata of the form viewer components.
+
 ## Constructors
 
 ### constructor
 
 • **new View**(`models?`)
 
+Creates an instance of the [View](react_form_builder_core.View.md).
+
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `models` | [`Model`](react_form_builder_core.Model.md)[] | `[]` |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `models` | [`Model`](react_form_builder_core.Model.md)[] | `[]` | the components metadata. |
 
 ## Properties
 
@@ -53,6 +57,8 @@ ___
 
 [`Model`](react_form_builder_core.Model.md)
 
+the component's metadata for displaying the error on the form.
+
 ___
 
 ### tooltips
@@ -62,6 +68,8 @@ ___
 #### Returns
 
 `string`[]
+
+the array of strings with the names of the component types of the tooltip.
 
 ## Methods
 
@@ -73,17 +81,21 @@ ___
 
 [`Model`](react_form_builder_core.Model.md)[]
 
+all component metadata for the form viewer.
+
 ___
 
 ### define
 
 ▸ **define**(`model`): `void`
 
+Defines the component's metadata for the form viewer.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `model` | [`Model`](react_form_builder_core.Model.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `model` | [`Model`](react_form_builder_core.Model.md) | the component's metadata. |
 
 #### Returns
 
@@ -95,15 +107,19 @@ ___
 
 ▸ **get**(`type`): [`Model`](react_form_builder_core.Model.md)
 
+Returns the component's metadata for the form viewer for the specified type.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `type` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `type` | `string` | the component type. |
 
 #### Returns
 
 [`Model`](react_form_builder_core.Model.md)
+
+the component metadata for the form viewer for the specified type.
 
 ___
 
@@ -111,15 +127,19 @@ ___
 
 ▸ **getTooltipComponent**(`name`): `undefined` \| [`Model`](react_form_builder_core.Model.md)
 
+Returns the component's metadata for displaying the tooltip.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `name` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name` | `string` | the name of the tooltip component type. |
 
 #### Returns
 
 `undefined` \| [`Model`](react_form_builder_core.Model.md)
+
+the component's metadata for displaying the tooltip.
 
 ___
 
@@ -131,21 +151,27 @@ ___
 
 [`Model`](react_form_builder_core.Model.md)[]
 
+the templates metadata for the form viewer.
+
 ___
 
 ### withError
 
 ▸ **withError**(`model`): [`View`](react_form_builder_core.View.md)
 
+Defines the component's metadata for displaying the error on the form.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `model` | [`Model`](react_form_builder_core.Model.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `model` | [`Model`](react_form_builder_core.Model.md) | the component's metadata. |
 
 #### Returns
 
 [`View`](react_form_builder_core.View.md)
+
+the [View](react_form_builder_core.View.md) instance.
 
 ___
 
@@ -153,15 +179,19 @@ ___
 
 ▸ **withTemplates**(`templates`): [`View`](react_form_builder_core.View.md)
 
+Creates templates metadata.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `templates` | `string`[] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `templates` | `string`[] | the array of template names. |
 
 #### Returns
 
 [`View`](react_form_builder_core.View.md)
+
+the [View](react_form_builder_core.View.md) instance.
 
 ___
 
@@ -169,15 +199,19 @@ ___
 
 ▸ **withTooltip**(`model`): [`View`](react_form_builder_core.View.md)
 
+Defines the component's metadata for displaying the tooltip.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `model` | [`Model`](react_form_builder_core.Model.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `model` | [`Model`](react_form_builder_core.Model.md) | the component's metadata. |
 
 #### Returns
 
 [`View`](react_form_builder_core.View.md)
+
+the [View](react_form_builder_core.View.md) instance.
 
 ___
 
@@ -185,12 +219,16 @@ ___
 
 ▸ `Static` **create**(`...models`): [`View`](react_form_builder_core.View.md)
 
+Static wrapper for the [View](react_form_builder_core.View.md) constructor.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `...models` | [`Model`](react_form_builder_core.Model.md)[] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `...models` | [`Model`](react_form_builder_core.Model.md)[] | the components metadata. |
 
 #### Returns
 
 [`View`](react_form_builder_core.View.md)
+
+the [View](react_form_builder_core.View.md) instance.

@@ -2,6 +2,9 @@ import styled from '@emotion/styled'
 import {Radio, RadioGroup as RRadioGroup} from 'rsuite'
 import {LabeledValue} from '../annotation/utils/LabeledValue'
 
+/**
+ * The properties of the React {@link RadioButtons} component.
+ */
 export interface RadioButtonsProps {
   label?: string
   value?: string
@@ -9,6 +12,14 @@ export interface RadioButtonsProps {
   items?: LabeledValue[]
 }
 
+/**
+ * The React component that displays a group of radio buttons.
+ * @param props the React component properties.
+ * @param props.label the label for the group.
+ * @param props.items the array with radio button data.
+ * @param props.props the other properties of the component.
+ * @returns the React element.
+ */
 export const RadioButtons = ({label, items, ...props}: RadioButtonsProps) => {
   return (
     <Container>

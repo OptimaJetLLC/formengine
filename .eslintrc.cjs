@@ -11,6 +11,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:jsdoc/recommended-typescript-error'
   ],
   plugins: ['@typescript-eslint', 'import', 'unused-imports'],
   rules: {
@@ -61,6 +62,18 @@ module.exports = {
       'json': 'always',
     }],
     'unused-imports/no-unused-imports': 'error',
+    'jsdoc/require-jsdoc': ['error',
+      {
+        'publicOnly': true, 'require': {
+          'ArrowFunctionExpression': true,
+          'ClassDeclaration': true,
+          'FunctionDeclaration': true,
+          'FunctionExpression': true,
+          'MethodDefinition': true,
+        },
+        'contexts': ['TSInterfaceDeclaration', 'TSTypeAliasDeclaration'],
+      },
+    ],
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {

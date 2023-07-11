@@ -31,10 +31,17 @@ function useAutoViewMode() {
   }, [props.viewMode])
 }
 
+/**
+ * Properties of the React component {@link Viewer}.
+ */
 export interface ViewerProps {
   event?: (stream: EventStream) => void
 }
 
+/**
+ * The React component of the form viewer, which displays the form itself with its components.
+ * @returns the React element.
+ */
 export const Viewer = namedObserver('Viewer', ({event}: ViewerProps) => {
   const store = useStore()
   const props = useViewerProps()

@@ -14,6 +14,13 @@ interface CustomActionsProps {
   onSelect: (action: ActionData) => void
 }
 
+/**
+ * React form builder component that displays the list of custom actions.
+ * @param props the React component properties.
+ * @param props.onOpen the callback function called when a submenu action is selected.
+ * @param props.onSelect the callback function called when an action is selected.
+ * @returns the React element.
+ */
 export const CustomActions = observer(({onOpen, onSelect}: CustomActionsProps) => {
   const store = useStore()
   const actions = store.screen.props.actions

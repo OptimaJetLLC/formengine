@@ -2,6 +2,10 @@ import {DidMountEvent, WillUnmountEvent} from '@react-form-builder/core'
 import {event, htmlAttributes, renderWhen, tooltipProps, validation} from '../annotation'
 import {Annotation} from '../annotation/types/annotations/Annotation'
 
+// todo rename to CommonBuilderComponentProperties?
+/**
+ * Common metadata for the component for the form builder.
+ */
 export const modules: Annotation[] = [
   tooltipProps.build('tooltipProps'),
   renderWhen.build('renderWhen'),

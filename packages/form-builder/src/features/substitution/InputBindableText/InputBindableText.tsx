@@ -11,6 +11,12 @@ const MarkedInput = createMarkedInput(Tag, [{
   initMark: props => ({children: props.label})
 }])
 
+/**
+ * React component that displays an input component for editing action parameter data and a component bind button.
+ * @param props the React component properties.
+ * @param props.name the parameter name.
+ * @returns the React element.
+ */
 export const InputBindableText = ({name}: InputProps) => {
   const data = useActionData()
   const value = String(data.args?.[name] ?? '')

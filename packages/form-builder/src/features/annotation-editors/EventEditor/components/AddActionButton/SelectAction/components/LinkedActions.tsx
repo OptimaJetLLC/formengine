@@ -5,6 +5,12 @@ import React from 'react'
 import {Dropdown} from 'rsuite'
 import {useGroups} from '../../../../hooks/useGroups'
 
+/**
+ * React form builder component that displays the list of linked actions.
+ * @param props the React component properties.
+ * @param props.onSelect the callback function called when an action is selected.
+ * @returns the React element.
+ */
 export const LinkedActions = ({onSelect}: { onSelect: (action: ActionData) => void }) => {
   const groups = useGroups()
 

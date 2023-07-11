@@ -26,6 +26,10 @@ function getItemStyles(
   }
 }
 
+/**
+ * The React component that displays a drag-and-drop container layer.
+ * @returns the React element.
+ */
 export const CustomDragLayer = () => {
   const isMultiSelection = useBuilderStore().selected.size > 1
   const {itemType, isDragging, initialOffset, currentOffset} =

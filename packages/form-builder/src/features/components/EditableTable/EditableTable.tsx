@@ -10,6 +10,9 @@ const {ErrorMessage} = Form
 
 const {Column, HeaderCell} = Table
 
+/**
+ * The React component properties for the {@link EditableTable} component.
+ */
 export interface EditableTableProps extends TableProps<any, any> {
   data: RowDataType[];
   maxRows?: number
@@ -21,11 +24,19 @@ export interface EditableTableProps extends TableProps<any, any> {
   hideHeader?: boolean
 }
 
+/**
+ * The state of the {@link EditableTable} component.
+ */
 export interface EditableTableState {
   autoHeight?: boolean
   maxHeight?: number
 }
 
+/**
+ * The React component that displays the table with editable cells.
+ * @param props the React component properties.
+ * @returns the React element.
+ */
 export const EditableTable = (props: EditableTableProps) => {
   const [state, setState] = useState<EditableTableState>({})
   const [shouldScroll, setShouldScroll] = useState(false)

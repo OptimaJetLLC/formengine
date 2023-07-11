@@ -10,6 +10,14 @@ interface SearchFormProps {
   className?: string
 }
 
+/**
+ * Search input.
+ * @param props the React component properties.
+ * @param props.style the CSS style.
+ * @param props.className the CSS class name.
+ * @param props.onChange callback to process the entered data.
+ * @returns the React element.
+ */
 export const SearchForm = ({style, className, onChange}: SearchFormProps) => {
   const [value, setValue] = useState<string>('')
   const Icon = value.length ? ClearIcon : SearchIcon

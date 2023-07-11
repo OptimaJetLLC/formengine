@@ -7,6 +7,15 @@ import {LabeledValue} from '../../annotation/utils/LabeledValue'
 
 const {Cell} = Table
 
+/**
+ * The React component that displays the table cell with the input.
+ * @param props the React component properties.
+ * @param props.rowData the row data.
+ * @param props.dataKey the key name in {@link props.rowData}.
+ * @param props.rowIndex the row index.
+ * @param props.props the other properties of the component.
+ * @returns the React element.
+ */
 export const InputCell = ({rowData, dataKey, rowIndex, ...props}: InputCellProps) => {
   const onChange = (value: any) => {
     rowData[dataKey] = value
@@ -19,6 +28,16 @@ export const InputCell = ({rowData, dataKey, rowIndex, ...props}: InputCellProps
   )
 }
 
+/**
+ * The React component that displays the table cell with the checkbox.
+ * @param props the React component properties.
+ * @param props.rowData the row data.
+ * @param props.dataKey the key name in {@link props.rowData}.
+ * @param props.rowIndex the row index.
+ * @param props.onChange the onChange event of the checkbox.
+ * @param props.props the other properties of the component.
+ * @returns the React element.
+ */
 export const CheckCell = ({rowData, dataKey, rowIndex, onChange, ...props}: InputCellProps) => {
   const handleChange = (value: any, checked: boolean) => {
     rowData[dataKey] = checked
@@ -31,6 +50,17 @@ export const CheckCell = ({rowData, dataKey, rowIndex, onChange, ...props}: Inpu
   )
 }
 
+/**
+ * The React component that displays the table cell with the select input.
+ * @param props the React component properties.
+ * @param props.rowData the row data.
+ * @param props.dataKey the key name in {@link props.rowData}.
+ * @param props.rowIndex the row index.
+ * @param props.options the select options.
+ * @param props.onChange the onChange event of the checkbox.
+ * @param props.props the other properties of the component.
+ * @returns the React element.
+ */
 export const SelectCell = ({rowData, dataKey, rowIndex, options, onChange, ...props}: SelectCellProps) => {
   const handleChange = (value: any) => {
     rowData[dataKey] = value
@@ -45,6 +75,16 @@ export const SelectCell = ({rowData, dataKey, rowIndex, options, onChange, ...pr
   )
 }
 
+/**
+ * The React component that displays the table cell with the icon button.
+ * @param props the React component properties.
+ * @param props.rowData the row data.
+ * @param props.rowIndex the row index.
+ * @param props.onAction the callback function called when the button is clicked.
+ * @param props.icon the icon for the button.
+ * @param props.props the other properties of the component.
+ * @returns the React element.
+ */
 export const ActionCell = ({rowData, rowIndex, onAction, icon, ...props}: ActionCellProps) => {
   return (
     <SCell {...props}>

@@ -86,6 +86,14 @@ const StyleBlock = observer(({annotations, store}: { annotations: Annotation[], 
   return <PropertyBlock annotations={annotations} context={store.css?.object}/>
 })
 
+/**
+ * React form builder component that displays the properties of the component.
+ * @param props the React component properties.
+ * @param props.annotations the array of form builder component metadata.
+ * @param props.context the properties of the form builder component.
+ * @param props.header the property block title.
+ * @returns the React element.
+ */
 export const PropertyBlock = ({annotations, context, header}: { annotations: Annotation[], context?: object, header?: string }) => {
   if (!context) return null
 

@@ -5,6 +5,10 @@ import {CSSBlock} from './components/CSSBlock'
 import {DefinedStyles} from './components/DefinedStyles'
 import {StandardStyles} from './components/StandardStyles'
 
+/**
+ * Component style editor for the form builder.
+ * @returns the React element.
+ */
 export const StyleEditor = () => {
   const {store} = useComponentData()
 

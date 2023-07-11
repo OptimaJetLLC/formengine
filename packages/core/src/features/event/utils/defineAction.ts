@@ -2,8 +2,23 @@ import {ActionDefinition, ActionEventHandler, ParameterType} from '../types'
 import {ActionEventArgs} from './ActionEventArgs'
 
 //TODO hint field for unparameterized action
+/**
+ * Creates action function metadata.
+ * @param name the function name.
+ * @param func the action function.
+ * @returns the action function metadata.
+ */
 export function defineAction(name: string, func: ActionEventHandler): ActionDefinition
 export function defineAction<T>(name: string, func: ActionHandler<T>, params: ParametersDefinition<T>[], description?: string): ActionDefinition
+
+/**
+ * Creates action function metadata.
+ * @param name the function name.
+ * @param func the action function.
+ * @param params the description of function parameters.
+ * @param description the a human-readable description of the action function.
+ * @returns the action function metadata.
+ */
 export function defineAction<T>(
   name: string,
   func: ActionEventHandler | ActionHandler<T>,
@@ -13,12 +28,21 @@ export function defineAction<T>(
   return {name, func, params, description}
 }
 
+/**
+ * The {@link defineAction} type.
+ */
 export type DefineActionHelper = typeof defineAction
 
+/**
+ * The type to describe the action parameter.
+ */
 export type ParametersDefinition<T> = (Key<T> | TypedKey<T>)
 
 type Key<T> = (keyof T & string)
 
 type TypedKey<T> = [Key<T>, ParameterType]
 
+/**
+ * Action function type.
+ */
 export type ActionHandler<T> = (params: { [k in keyof T]: any }, e: ActionEventArgs) => void

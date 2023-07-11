@@ -3,6 +3,10 @@ import {Input} from 'rsuite'
 import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
 
+/**
+ * The property editor for the string property type.
+ * @returns the React element.
+ */
 export const StringInput = () => {
   const {value, onChange, annotation} = useEditor()
   const [rowsCount, setRowsCount] = useState(0)

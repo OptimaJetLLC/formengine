@@ -16,6 +16,8 @@ custom_edit_url: null
 
 ▸ **FormViewer**(`props`): `Element`
 
+The main React component of the form viewer.
+
 #### Parameters
 
 | Name | Type |
@@ -25,3 +27,5 @@ custom_edit_url: null
 #### Returns
 
 `Element`
+
+the React element.

@@ -2,16 +2,27 @@ import {makeAutoObservable} from 'mobx'
 import {Store} from '../../../stores/Store'
 import {Field} from './Field'
 
+// todo rename to FormData
+/**
+ * Form data.
+ */
 export class Form {
   readonly fields = new Map<string, Field>()
   state: Record<string, any> = {}
 
+  /**
+   * Creates an object with form data.
+   * @param store the form viewer settings.
+   */
   constructor(readonly store: Store) {
     makeAutoObservable(this, {
       fields: true,
     })
   }
 
+  /**
+   * @returns the {@link Record} with all the form data.
+   */
   get data() {
     const result: Record<string, unknown> = {}
     for (const [key, field] of this.fields) {
@@ -25,6 +36,9 @@ export class Form {
     return result
   }
 
+  /**
+   * @returns the {@link Record} with all validation error messages.
+   */
   get errors() {
     const result: Record<string, unknown> = {}
     for (const [key, field] of this.fields) {
@@ -33,27 +47,48 @@ export class Form {
     return result
   }
 
+  /**
+   * Sets the validation error message for all form data fields.
+   * @param message the validation error message.
+   */
   setAllErrors(message?: string) {
     this.fields.forEach(f => f.error = message)
   }
 
+  /**
+   * Returns the form data field.
+   * @param key the key of the form data field.
+   * @returns the form data field, undefined, if the form data field is not found.
+   */
   get(key: string) {
     return this.fields.get(key)
   }
 
+  /**
+   * Validates the data in the form.
+   */
   validate() {
     this.fields.forEach(f => f.validate())
   }
 
+  /**
+   * Sets the form to its default value.
+   */
   reset() {
     this.fields.forEach(f => f.reset())
   }
 
+  /**
+   * Clears the form data.
+   */
   clear() {
     this.fields.forEach(f => f.clear())
   }
 }
 
+/**
+ * Description of the form type for the code editor.
+ */
 export const FormDeclaration = `declare class Form {
   fields: Map<string, Field>
   readonly store: Store

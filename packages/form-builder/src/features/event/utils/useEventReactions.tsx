@@ -7,18 +7,18 @@ import {useComputed} from '../../../utils/useComputed'
 type ElementType<T extends any[]> = T extends (infer U)[] ? U : never;
 
 /**
- * A hook for synchronization used mobx reaction
- * @example:
+ * Hook for synchronization, uses MobX reaction.
+ * @param initObservers the function that returns observers.
+ * @param mapObservable the function that maps the observer to the observable.
+ * @param expression the expression to track the value, as in a normal reaction.
+ * @param effect the effect for the reaction.
+ * @example
  * useMultiReaction(
- *     //Get observers
- *     () => _.values(data.store.events).flat().filter(value => value.type === 'linked'),
- *     //Map observer to observable
- *     (observer) => store.findComponent(observer.target!),
- *     //Expression for track value such as in common reaction
- *     (observable) => observable?.key,
- *     //Effect for reaction
- *     (observer, arg?: string, prev?: string) => observer.target = arg
- *   )
+ *   () => _.values(data.store.events).flat().filter(value => value.type === 'linked'),
+ *   (observer) => store.findComponent(observer.target!),
+ *   (observable) => observable?.key,
+ *   (observer, arg?: string, prev?: string) => observer.target = arg
+ * )
  */
 function useMultiReaction<Observers extends Array<ElementType<Observers>>, Observable, Track>(
   initObservers: () => Observers,
@@ -44,6 +44,9 @@ function useMultiReaction<Observers extends Array<ElementType<Observers>>, Obser
 
 }
 
+/**
+ * Connects MobX reactions to component events.
+ */
 export const useEventReactions = () => {
   const store = useStore()
   const data = useComponentData()

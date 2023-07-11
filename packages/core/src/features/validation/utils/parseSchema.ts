@@ -2,6 +2,11 @@ import {ArraySchema, BooleanSchema, DateSchema, NumberSchema, ObjectSchema, Stri
 import {SchemaCtor, SchemaType, ValidationSchema} from '../types'
 import {getSchemaRules} from './consts'
 
+/**
+ * Parses the validation scheme into a yup scheme.
+ * @param schema the validation scheme
+ * @returns the yup scheme or undefined.
+ */
 export function parseSchema(schema?: ValidationSchema) {
   if (!schema) return
 

@@ -3,15 +3,25 @@ import {ActionData, EventName} from '../features/event'
 import {Css} from '../features/style/types'
 import {ValidationSchema} from '../features/validation/types'
 
+/**
+ * The value of the component property.
+ */
 export interface ComponentProperty {
   value?: any
   useFn?: boolean
   fnSource?: string
 }
 
+/**
+ * The Arbitrary HTML attributes for the component.
+ */
 export type HtmlAttribute = Record<string, string>
 
 //No functions here
+// todo rename to ComponentSettings?
+/**
+ * Component settings for serialization in JSON.
+ */
 export class ComponentStore {
   key = ''
   type = ''
@@ -37,6 +47,11 @@ export class ComponentStore {
   //TODO add on validation page
   renderWhen?: ComponentProperty
 
+  /**
+   * Creates the component settings.
+   * @param key the React component key.
+   * @param type the component type of the form viewer.
+   */
   constructor(key: string, type: string) {
     this.key = key
     this.type = type

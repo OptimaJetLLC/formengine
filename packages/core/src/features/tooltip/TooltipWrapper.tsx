@@ -6,10 +6,16 @@ import {ComponentData, useComponentData} from '../../utils/contexts/ComponentDat
 import {useStore} from '../../utils/contexts/StoreContext'
 import {getKey} from '../../utils/getKey'
 
+/**
+ * Tooltip React component wrapper properties.
+ */
 export interface TooltipWrapperProps {
   children: ReactNode
 }
 
+/**
+ * Tooltip React component wrapper.
+ */
 export const TooltipWrapper = namedObserver('TooltipWrapper', ({children}: TooltipWrapperProps) => {
   const wrappedComponentData = useComponentData()
   const wrappedComponentStore = wrappedComponentData.store

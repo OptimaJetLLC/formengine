@@ -7,6 +7,14 @@ import {groupBy} from './groupBy'
 
 const defaultContainerKey = 'children'
 
+/**
+ * Returns the {@link Record} with all child components.
+ * @param data the parent component's data necessary to display the component.
+ * @param store the form viewer settings.
+ * @param componentTreeItem the type of React component that wraps child components.
+ * @param currentState the properties of the parent component.
+ * @returns the {@link Record} with all child components.
+ */
 export function getChildren(data: ComponentData, store: Store, componentTreeItem: ComponentType<any>, currentState: Record<string, any>) {
   const containers = data.store.children
   const ComponentTree = componentTreeItem

@@ -74,16 +74,31 @@ const computeEvents = (data: ComponentData, store: Store) => {
   return events
 }
 
+/**
+ * Calculates all the properties of the form view component.
+ */
 export class ComponentState {
+
+  /**
+   * Creates an instance that calculates the properties of the form viewer component.
+   * @param data the data needed to display the component.
+   * @param store the form viewer settings.
+   * @param componentTreeItem the type of React component that wraps child components.
+   * @param overrides the reference to the Record that contains the overridden properties of the component.
+   */
   constructor(
     readonly data: ComponentData,
     readonly store: Store,
+    // todo rename to childrenWrapper?
     readonly componentTreeItem: ComponentType<any>,
     readonly overrides?: OverrideRef,
   ) {
     makeAutoObservable(this)
   }
 
+  /**
+   * @returns combined in order of priority component properties.
+   */
   get get(): Record<string, any> {
     const propsWithoutChildren = Object.assign(
       {key: this.data.store.key},
@@ -99,31 +114,54 @@ export class ComponentState {
     return Object.assign(propsWithoutChildren, this.children(propsWithoutChildren))
   }
 
+  /**
+   * @returns the component's field value data, if the component can have a field value.
+   */
   get value() {
     if (this.data.field) return {[this.data.field.valued]: this.data.field.value}
   }
 
+  /**
+   * @returns the values for all properties of the component, calculates the values of the calculated properties.
+   */
   get calculatedProps() {
     return calculateProperties(this.data.store, this.store.form)
   }
 
+  /**
+   * @returns the component event handlers that send events to the event bus..
+   */
   get events() {
     return computeEvents(this.data, this.store)
   }
 
+  /**
+   * @returns the values for properties that have parameters for substitution.
+   */
   get substitutedValue() {
     return getSubstitutedValue(this.data.store.props, this.store)
   }
 
+  /**
+   * @returns the value of the className property for the component.
+   */
   get className() {
     const className = computeClassName(this, this.data, this.store.viewMode)
     return {className}
   }
 
+  /**
+   * @returns all arbitrary HTML attributes of the component.
+   */
   get htmlAttributes() {
     return getHtmlAttributes(this.data.store)
   }
 
+  /**
+   * Calculates and returns all child components.
+   * @param props the React component properties.
+   * @returns the {@link Record} that contains the child components of a component.
+   */
   children(props: any) {
     return getChildren(this.data, this.store, this.componentTreeItem, props)
   }

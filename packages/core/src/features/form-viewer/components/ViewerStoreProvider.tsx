@@ -8,6 +8,13 @@ import {getTemplateName} from '../../ui/templateModel'
 import {FormViewerProps} from '../types'
 import {ViewerPropsProvider} from './ViewerPropsContext'
 
+/**
+ * React component encapsulating MobX storage for the form viewer.
+ * @param props the React component properties.
+ * @param props.children the children of the React component.
+ * @param props.props the properties of the form viewer component.
+ * @returns the React element.
+ */
 export const ViewerStoreProvider = ({children, props}: { children: ReactNode, props: FormViewerProps }) => {
   const observableProps = useLocalObservable(() => props)
   const storeFromContext = useContext(StoreContext)

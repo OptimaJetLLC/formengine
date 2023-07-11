@@ -21,9 +21,17 @@ type DefinerData<T extends object> = {
 }
 
 //TODO проброс пропертей в инициализатор экшенов.
+/**
+ * The builder class to define the metadata of the form builder component.
+ */
 export class Definer<T extends object> {
   data: DefinerData<T>
 
+  /**
+   * Static method to create an instance of the component's metadata builder class.
+   * @param view the React component type.
+   * @returns the instance of the {@link Definer} class.
+   */
   static define<T extends object>(view: ComponentType<T>) {
     checkExistName()
     return new Definer<T>(view)
@@ -58,10 +66,17 @@ export class Definer<T extends object> {
 
   preview = (customPreview: ReactNode) => this.#updateWith({customPreview})
 
+  /**
+   * @returns the component type name.
+   */
   getType(): string {
     return this.data.view.displayName || this.data.view.name
   }
 
+  /**
+   * Creates component metadata for the form builder and form viewer.
+   * @returns component metadata for the form builder and form viewer.
+   */
   build(): BuilderComponent {
     const propAns = toArray(this.data.properties)
     const cssAns = toArray(this.data.cssObject, {type: 'Style', calculable: false})
@@ -91,6 +106,11 @@ export class Definer<T extends object> {
     return {model, meta, category: this.data.category} as const
   }
 
+  /**
+   * Modifies the component's metadata builder with custom options.
+   * @param opts the custom options.
+   * @returns the modified instance of the builder.
+   */
   #updateWith(opts: Partial<DefinerData<T>>): Definer<T> {
     Object.assign(this.data, opts)
     return this

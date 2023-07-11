@@ -7,6 +7,8 @@ custom_edit_url: null
 
 [@react-form-builder/builder](../modules/react_form_builder_builder.md).EditableTableProps
 
+The React component properties for the [EditableTable](../modules/react_form_builder_builder.md#editabletable) component.
+
 ## Hierarchy
 
 - `TableProps`<`any`, `any`\>
@@ -85,7 +87,7 @@ ___
 
 ### aria-autocomplete
 
-• `Optional` **aria-autocomplete**: ``"none"`` \| ``"inline"`` \| ``"list"`` \| ``"both"``
+• `Optional` **aria-autocomplete**: ``"none"`` \| ``"list"`` \| ``"inline"`` \| ``"both"``
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -193,7 +195,7 @@ ___
 
 ### aria-current
 
-• `Optional` **aria-current**: `boolean` \| ``"date"`` \| ``"time"`` \| ``"step"`` \| ``"true"`` \| ``"false"`` \| ``"page"`` \| ``"location"``
+• `Optional` **aria-current**: `boolean` \| ``"date"`` \| ``"time"`` \| ``"true"`` \| ``"false"`` \| ``"step"`` \| ``"page"`` \| ``"location"``
 
 Indicates the element that represents the current item within a container or set of related elements.
 

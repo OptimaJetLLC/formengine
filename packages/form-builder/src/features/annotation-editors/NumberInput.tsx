@@ -4,6 +4,10 @@ import {InputNumber} from 'rsuite'
 import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
 
+/**
+ * The property editor for the numeric property type.
+ * @returns the React element.
+ */
 const NumberInput = () => {
   const {onChange, onRemove, value, annotation} = useEditor()
   const handleChange = (value: any) => {

@@ -9,6 +9,11 @@ import {LeftPanel} from './features/ui/LeftPanel'
 import {RightPanel} from './features/ui/RightPanel'
 import {FormBuilderProps} from './FormBuilderProps'
 
+/**
+ * The React component that displays the form builder.
+ * @param props the React component properties.
+ * @returns the React element.
+ */
 export const FormBuilder = observer((props: FormBuilderProps) => {
   return <BuilderProviders props={props}>
     <Suspense fallback={<Loader center content="loading"/>}>

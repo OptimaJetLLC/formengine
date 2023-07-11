@@ -18,6 +18,10 @@ const COLUMNS = makeColumns([
   {name: 'value'}
 ])
 
+/**
+ * The property editor for the HTML-attributes property type.
+ * @returns the React element.
+ */
 export default () => {
   const {store} = useComponentData()
   const {annotation} = useEditor()

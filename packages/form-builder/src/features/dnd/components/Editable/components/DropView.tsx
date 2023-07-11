@@ -17,6 +17,11 @@ interface DropViewProps extends ComponentProps<any> {
   bindCondition?: string
 }
 
+/**
+ * The React form builder component that displays the container into which you can drag and drop a component.
+ * @param props the React component properties.
+ * @returns the React element.
+ */
 export const DropView = (props: DropViewProps) => {
   const {store} = useComponentData()
   const isRoot = isRootType(store)

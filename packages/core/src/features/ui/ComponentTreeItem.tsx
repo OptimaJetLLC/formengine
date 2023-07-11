@@ -8,11 +8,18 @@ import {TooltipWrapper} from '../tooltip/TooltipWrapper'
 import {Erroneous} from '../validation'
 import {ComponentViewer} from './ComponentViewer'
 
+/**
+ * Properties of the React component {@link ComponentTreeItem}.
+ */
 export interface ComponentTreeItemProps {
   parentStore?: ComponentStore
   componentStore: ComponentStore
 }
 
+/**
+ * The React form viewer component that displays an item from the component tree.
+ * @returns the React element.
+ */
 export const ComponentTreeItem = namedObserver('ComponentTreeItem', ({componentStore, parentStore}: ComponentTreeItemProps) => {
   const props = useViewerProps()
   const data = useCachedComponentData(componentStore, parentStore)

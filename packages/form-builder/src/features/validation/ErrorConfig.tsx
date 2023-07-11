@@ -4,6 +4,10 @@ import {Checkbox, Input} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {PropertyBlock} from '../ui/RightPanel/PropertiesEditor/components/Properties'
 
+/**
+ * React form builder component that displays the configuration properties of the validation error display component.
+ * @returns the React element.
+ */
 export const ErrorConfig = () => {
   const {t} = useTranslation()
   const store = useBuilderStore()

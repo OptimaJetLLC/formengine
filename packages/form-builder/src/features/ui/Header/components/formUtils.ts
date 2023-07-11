@@ -4,6 +4,13 @@ import {BuilderStore} from '../../../../stores/BuilderStore'
 
 const formExtension = '.json'
 
+/**
+ * Exports all forms to a ZIP archive.
+ * @param store FormBuilder store.
+ * @param archiveName the name of the ZIP archive.
+ * @returns the {@link Promise} with the result of the forms export.
+ * @internal
+ */
 export async function exportForms(store: BuilderStore, archiveName: string) {
   const formKeys = await store.getFormKeys()
 
@@ -17,6 +24,13 @@ export async function exportForms(store: BuilderStore, archiveName: string) {
   saveAs(blob, archiveName)
 }
 
+/**
+ * Import forms from a ZIP archive.
+ * @param store FormBuilder store.
+ * @param content a ZIP archive content.
+ * @returns the {@link Promise} with the result of the forms import.
+ * @internal
+ */
 export async function importForms(store: BuilderStore, content: ArrayBuffer) {
   const jsZip = await JSZip.loadAsync(content)
   const jsZipObjects = jsZip.filter(path => path.endsWith(formExtension))

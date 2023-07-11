@@ -7,6 +7,11 @@ const SDiv = styled.div`
   margin: 10px;
 `
 
+/**
+ * React form builder component that wraps the template slot.
+ * @param props the React component properties.
+ * @returns the React element.
+ */
 export const SlotWrapper = (props: WrapperProps) => {
   if (!props.children) {
     // todo тут нужна переделка drag'n'drop

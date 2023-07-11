@@ -6,6 +6,11 @@ interface TemplateProps {
   storeDataInParentForm?: boolean
 }
 
+/**
+ * Creates the template component metadata for the form builder.
+ * @param name the template name.
+ * @returns the template component metadata for the form builder.
+ */
 export function createTemplateMeta(name: string) {
   const typeName = generateTemplateTypeName(name)
   return new Meta(typeName,

@@ -16,6 +16,14 @@ interface ParameterItemProps {
 
 const ArgumentTypes = toLabeledValues(['string', 'number', 'boolean'], false)
 
+/**
+ * The React form builder component that displays the action parameter.
+ * @param props the React component properties.
+ * @param props.value the parameter description.
+ * @param props.dispatch the dispatcher for functions that work with the action parameter.
+ * @param props.index the index of the parameter in the parameter array.
+ * @returns the React element.
+ */
 export const ParameterItem = ({value, dispatch, index}: ParameterItemProps) => {
   const [name, type] = toParameterWithType(value)
   const [show, toggleShow] = useReducer(state => !state, false)

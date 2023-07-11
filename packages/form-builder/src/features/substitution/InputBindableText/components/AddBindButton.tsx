@@ -6,6 +6,13 @@ import {Button, Whisper} from 'rsuite'
 import type {OverlayTriggerHandle, PickerHandle} from 'rsuite/Picker'
 import {BindPopover} from './BindPopover'
 
+/**
+ * The React component that displays a button to bind a component property to another component.
+ * @param props the React component properties.
+ * @param props.onAdd the callback function called when adding or updating a binding.
+ * @param props.name the component property name.
+ * @returns the React element.
+ */
 export const AddBindButton = ({onAdd, name}: any) => {
   const triggerRef = useRef<PickerHandle | null>(null)
 

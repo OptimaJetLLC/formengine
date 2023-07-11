@@ -5,9 +5,16 @@ import {parseJson} from '../utils/parseJson'
 import {BuilderTheme} from '../utils/types'
 import {BuilderStore} from './BuilderStore'
 
+/**
+ * Synchronizes and saves form builder settings to the browser's localStorage.
+ */
 export class LocalStorageSynchronizer {
   readonly #disposers: IReactionDisposer[]
 
+  /**
+   * Creates {@LocalStorageSynchronizer}.
+   * @param store the form builder settings.
+   */
   constructor(private store: BuilderStore) {
     const resolutionKey = 'resolution'
     store.viewMode = this.getItem<ViewMode>(resolutionKey, 'desktop')

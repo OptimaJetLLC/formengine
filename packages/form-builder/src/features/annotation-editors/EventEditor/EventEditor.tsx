@@ -15,6 +15,10 @@ const SH6 = styled.h6`
 `
 
 //EventEditor: one eventName - one editor - some actions
+/**
+ * The property editor for the event property type.
+ * @returns the React element.
+ */
 export const EventEditor = () => {
   const eventName = useAnnotation().annotation.key
   return (

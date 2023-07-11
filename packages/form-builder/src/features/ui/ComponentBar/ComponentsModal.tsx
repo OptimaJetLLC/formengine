@@ -8,6 +8,13 @@ import {ComponentMove, InsertPosition} from '../../../utils/types'
 import {useTranslationPart} from '../../localization/hooks'
 import {ComponentBar} from './ComponentBar'
 
+/**
+ * The modal window hook with a list of components that can be added to the form.
+ * @param target the parent component in which the new component is added.
+ * @returns the object with 'openModal' and 'ComponentsModal' properties.
+ * The 'openModal' is a function for opening a modal window.
+ * The 'ComponentsModal' is the React component you want to put in the component tree.
+ */
 export const useComponentsModal = (target: ComponentData) => {
   const store = useBuilderStore()
   const t = useTranslationPart('componentsModal')

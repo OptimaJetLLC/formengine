@@ -22,22 +22,44 @@ const calculateValue = (fnSource: string, form: Form) => {
   }
 }
 
+/**
+ * Calculates the value for the component property.
+ * @param componentProperty the component property.
+ * @param form the form data.
+ * @returns the calculated value.
+ * @internal
+ */
 export const calculatePropertyValue = (componentProperty: ComponentProperty, form: Form) => {
   return calculateValue(componentProperty.fnSource || '', form)
 }
 
+/**
+ * Calculates the value for the component property or calculates the value from the property expression.
+ * @param componentProperty the component property.
+ * @param form the form data.
+ * @returns the calculated value.
+ * @internal
+ */
 export const calculateExpressionProperty = (componentProperty: ComponentProperty, form: Form) => {
   if (componentProperty.useFn) return calculatePropertyValue(componentProperty, form)
   const fnSource = componentProperty.value || ''
   return calculateValue(`return ${fnSource}`, form)
 }
 
+/**
+ * The result of compiling the function.
+ */
 export type CompilationResult = {
   error: boolean
   fn?: Function
   exception?: Error
 }
 
+/**
+ * Compiles the function from string source code.
+ * @param source the function source code.
+ * @returns the result of the function compilation.
+ */
 export const compileFn = (source: string): CompilationResult => {
   try {
     const fn = getOrCreateFn(source)
@@ -47,6 +69,13 @@ export const compileFn = (source: string): CompilationResult => {
   }
 }
 
+/**
+ * Calculates all properties for the component.
+ * @param componentStore the component.
+ * @param form form data.
+ * @returns the {@link Record}<string, any> for all component properties.
+ * @internal
+ */
 export const calculateProperties = (componentStore: ComponentStore, form: Form) => {
   const data: Record<string, any> = {}
   Object.keys(componentStore.props).forEach(value => {

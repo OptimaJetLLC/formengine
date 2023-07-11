@@ -3,6 +3,10 @@ import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
 import {useTranslationPart} from '../localization/hooks'
 
+/**
+ * The property editor for property of type "multiple select", displays values as a tag editor.
+ * @returns the React element.
+ */
 export const SetInput = () => {
   const {value, onChange, annotation, onRemove} = useEditor()
   const t = useTranslationPart('propertiesEditor')

@@ -5,6 +5,10 @@ import {AddRuleButton} from './components/AddRuleButton'
 import {SchemaRule} from './components/SchemaRule'
 import {Nullable} from './components/types'
 
+/**
+ * The React form builder component that displays the validation settings for the component value.
+ * @returns the React element.
+ */
 export const ValidateEditor = () => {
   const {store} = useComponentData()
   const meta = useMeta()
