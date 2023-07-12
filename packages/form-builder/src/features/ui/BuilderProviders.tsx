@@ -29,7 +29,7 @@ export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {
   const store = useMemo(() => new Store(observableProps, DefaultActions), [])
 
   const buildStore = useMemo(() => {
-    const builderStore = new BuilderStore(store, observableProps, props.formStorage)
+    const builderStore = new BuilderStore(store, observableProps)
 
     builderStore.changeBuilderMode('builder')
     return builderStore

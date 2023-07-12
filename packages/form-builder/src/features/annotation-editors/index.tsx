@@ -1,4 +1,5 @@
-import {ComponentType} from 'react'
+import type {ComponentType} from 'react'
+import type {EditorType} from '../annotation/types'
 import {ErrorConfig} from '../validation/ErrorConfig'
 import {ArrayInput} from './ArrayInput'
 import AttributesInput from './AttributesInput'
@@ -20,9 +21,8 @@ import {TooltipPropertiesEditor} from './TooltipPropertiesEditor'
 import {TooltipTypePicker} from './TooltipTypePicker'
 import {ValidateEditor} from './ValidateEditor'
 
-//TODO change string type
 //TODO return annotation map to annotation
-export const EditorMap: Record<string, ComponentType> = {
+export const EditorMap: Record<EditorType, ComponentType> = {
   key: KeyInput,
   htmlAttributes: AttributesInput,
   stylization: StyleEditor,

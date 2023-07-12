@@ -103,11 +103,16 @@ export const PropertyBlock = ({annotations, context, header}: { annotations: Ann
   </>
 }
 
-const Property = ({annotation, getContext}: { annotation: Annotation, getContext: () => object }) => (
-  <AnnotationProvider value={{annotation, getContext}}>
-    {createElement(observer(EditorMap[annotation.editor]))}
-  </AnnotationProvider>
-)
+const Property = ({annotation, getContext}: { annotation: Annotation, getContext: () => object }) => {
+  // custom editors have the highest priority
+  const store = useBuilderStore()
+  const editor = store.customPropertyEditor(annotation.editor) ?? EditorMap[annotation.editor]
+  return (
+    <AnnotationProvider value={{annotation, getContext}}>
+      {createElement(observer(editor))}
+    </AnnotationProvider>
+  )
+}
 
 const PropertiesList = styled.div`
   display: flex;

@@ -1,12 +1,14 @@
-import {ComponentData, ComponentProperty, ComponentStore, screenModel, Store, StoreProps, ViewMode} from '@react-form-builder/core'
+import {ComponentData, ComponentProperty, ComponentStore, screenModel, Store, ViewMode} from '@react-form-builder/core'
 import {assign, cloneDeep} from 'lodash-es'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
+import type {EditorType} from '../features/annotation/types'
 import {Annotation} from '../features/annotation/types/annotations/Annotation'
 import {BuilderView} from '../features/define/utils/BuilderView'
 import {BiDi} from '../features/localization/bidi'
 import {defaultLanguage} from '../features/localization/consts'
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../features/localization/utils'
 import {PanelPlacement} from '../features/ui/PanelPlacement'
+import type {FormBuilderProps} from '../FormBuilderProps'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {BuilderMode, BuilderTheme, ComponentMove, InsertPosition} from '../utils/types'
 import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
@@ -43,18 +45,16 @@ export class BuilderStore {
   readonly expanded = new Set<ComponentStore>()
   readonly #disposer: IReactionDisposer[]
   private formStorage: FormStorage
-  readonly #props: Readonly<StoreProps>
+  readonly #props: Readonly<FormBuilderProps>
 
   /**
    * Creates the form builder settings.
    * @param viewer the form viewer settings.
    * @param props the form viewer properties.
-   * @param formStorage the external storage for forms.
    */
   constructor(
     readonly viewer: Store,
-    props: Readonly<StoreProps>,
-    formStorage?: FormStorage,
+    props: Readonly<FormBuilderProps>,
   ) {
     makeAutoObservable(this, {
       selected: observable,
@@ -67,13 +67,9 @@ export class BuilderStore {
       changeBuilderMode: action,
       view: false,
     })
-    this.formStorageEnabled = !!formStorage
-    this.formStorage = formStorage || new AlwaysRejectFormStorage()
+    this.formStorageEnabled = !!props.formStorage
+    this.formStorage = props.formStorage || new AlwaysRejectFormStorage()
     this.#props = props
-
-    if (!(props.view instanceof BuilderView)) {
-      throw new Error(`The view prop is not instance of BuilderView`)
-    }
     this.view = props.view
 
     onI18nInit((language: string) => {
@@ -443,5 +439,14 @@ export class BuilderStore {
     }
 
     if (!isSelected) this.expandParents(target.key)
+  }
+
+  /**
+   * Returns the custom property editor for the specified editorType.
+   * @param editorType the property editor type.
+   * @returns the custom property editor for the specified editorType.
+   */
+  customPropertyEditor(editorType: EditorType) {
+    return this.#props.externalPropertyEditors?.[editorType]
   }
 }
