@@ -13,6 +13,7 @@ export type StandardStyleItem = Record<string, { cssName: string, measure?: Meas
 export type Css = {
   object?: CSSObject
   string?: string
+  className?: string
 
   any?: string
   mobile?: string

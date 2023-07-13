@@ -12,15 +12,17 @@ import {ComponentProperty, ComponentStore} from './ComponentStore'
 import {Store} from './Store'
 
 const computeClassName = (state: ComponentState, data: ComponentData, viewMode: ViewMode) => {
-  const cssObject = assign({}, data.model.css?.object, data.store.css?.object)
+  const {model, store} = data
+  const cssObject = assign({}, model.css?.object, store.css?.object)
 
   return cx(
     getClassNameProp(data),
     css(cssObject),
-    css(data.model.css?.string),
-    css(data.store.css?.string),
-    css(data.store.css?.any),
-    css(data.store.css?.[viewMode]),
+    css(model.css?.string),
+    css(store.css?.string),
+    css(store.css?.any),
+    css(store.css?.[viewMode]),
+    store.css?.className
   )
 }
 

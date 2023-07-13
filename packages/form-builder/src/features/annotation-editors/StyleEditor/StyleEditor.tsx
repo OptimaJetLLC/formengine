@@ -1,6 +1,7 @@
 import {useComponentData} from '@react-form-builder/core'
 import {useEffect} from 'react'
 import {Rows} from '../../components/Containers'
+import {ClassName} from './components/ClassName'
 import {CSSBlock} from './components/CSSBlock'
 import {DefinedStyles} from './components/DefinedStyles'
 import {StandardStyles} from './components/StandardStyles'
@@ -22,6 +23,7 @@ export const StyleEditor = () => {
     <Rows style={{marginLeft: 5}}>
       <StandardStyles/>
       <CSSBlock/>
+      <ClassName/>
       <DefinedStyles/>
     </Rows>
   )

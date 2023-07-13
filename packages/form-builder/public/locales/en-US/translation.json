@@ -221,7 +221,8 @@
     "mobile": "Mobile",
     "tablet": "Tablet",
     "cssString": "String of CSS",
-    "cssObject": "Object of CSS"
+    "cssObject": "Object of CSS",
+    "className": "Custom class name"
   },
   "actions": {
     "arguments": "Arguments",
