@@ -9,10 +9,7 @@ export const RsLabeledInput = styled.div`
   flex-direction: column;
 
   label {
-    margin-left: 5px;
-  }
-
-  input, div {
-    margin-top: 2px;
+    margin-inline-start: 5px;
+    margin-bottom: 2px;
   }
 `

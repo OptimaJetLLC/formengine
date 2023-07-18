@@ -63,3 +63,26 @@ export const navProps = {
   reversed: boolean.hinted('Reverse direction of tabs/subtle'),
   vertical: boolean.hinted('Stacked navigation')
 }
+
+export const pickerProps = {
+  label: string,
+  defaultValue: string,
+  value: string.valued,
+  placeholder: string,
+  placement,
+  size,
+  data: array,
+  block: boolean.default(true),
+  cleanable: boolean.default(false),
+  creatable: boolean.default(false),
+  disabled: boolean,
+  readOnly,
+  groupBy: string.default(''),
+  onLoadData: event,
+  onSelect: event,
+  onClean: event,
+  onClose: event,
+  onCreate: event,
+  onChange: event,
+  onSearch: event,
+}

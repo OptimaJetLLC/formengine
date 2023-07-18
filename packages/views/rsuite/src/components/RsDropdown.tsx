@@ -1,50 +1,50 @@
-import {array, boolean, define, event, string, toLabeledValues} from '@react-form-builder/builder/view'
+import styled from '@emotion/styled'
+import {array, define, string, toLabeledValues} from '@react-form-builder/builder/view'
+import type {ReactNode} from 'react'
 import type {InputPickerProps} from 'rsuite'
-import {Form, InputPicker} from 'rsuite'
-import {placement, readOnly, size} from '../commonProperties'
+import {Form, InputPicker, Loader} from 'rsuite'
+import {pickerProps} from '../commonProperties'
+import {LoadDataHandler, useLoadData} from '../hooks'
+import {RsLabeledInput} from './components/Labeled'
 
 interface RsDropdownProps extends InputPickerProps {
-  label: string,
-  placeholder: string
+  label: string
+  onLoadData?: LoadDataHandler
 }
 
-const RsDropdown = ({label, ...props}: RsDropdownProps) => {
-  const {data, ...otherProps} = props
-  const pickerData = data ?? []
+const RsDropdown = ({data, label, onLoadData, onSearch, onOpen, ...props}: RsDropdownProps) => {
+  const {loading, ...loadProps} = useLoadData({initialData: data, onLoadData, onSearch, onOpen})
+
+  const renderMenu = (menu: ReactNode) => <>
+    {menu}
+    {loading && <SLoader/>}
+  </>
+
   return (
-    <div>
+    <RsLabeledInput>
       <Form.ControlLabel>{label}</Form.ControlLabel>
-      <InputPicker {...otherProps} data={pickerData}/>
-    </div>
+      <InputPicker {...props} {...loadProps} renderMenu={renderMenu}/>
+    </RsLabeledInput>
   )
 }
+
+const SLoader = styled(Loader)`
+  && {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    background: var(--rs-bg-overlay);
+    width: 100%;
+    padding-block: 10px
+  }
+`
 
 export const rsDropdown = define(RsDropdown)
   .type('RsDropdown')
   .name('Dropdown')
   .props({
+    ...pickerProps,
     label: string.default('Select'),
-    placement,
-    size,
-    defaultValue: string,
-    value: string.valued,
-    placeholder: string,
     data: array.default(toLabeledValues(['a', 'b', 'c']))
-      .named('Items')
-      .hinted('Dropdown items'),
-
-    block: boolean.default(true),
-    cleanable: boolean.default(false),
-    creatable: boolean.default(false),
-    disabled: boolean.hinted('Whether or not component is disabled'),
-    readOnly,
-    groupBy: string.default(''),
-
-    onSelect: event,
-    onClean: event,
-    onClose: event,
-    onCreate: event,
-    onChange: event,
-    onSearch: event,
   })
-

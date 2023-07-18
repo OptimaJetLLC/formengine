@@ -7,6 +7,10 @@
         {
           "name": "WeatherRequest",
           "body": "\ntry {\n  fetch(`https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.62&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`)\n      .then(v => v.json())\n      .then(v => {\n        e.sender.store.props.children ??= {}\n        e.sender.store.props.children.value = `Current weather is ${v.current_weather.temperature} °C`\n      })\n} catch (error) {\n  e.sender.store.props.children ??= {}\n  e.sender.store.props.children.value = `Current weather is not available`\n}\n"
+        },
+        {
+          "name": "loadData",
+          "body": "\n    const [searchValue, loadCallback, currentDataLength] = e.args\n\n    fetch ('https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.json')\n        .then (data => data.json())\n        .then (data => {\n            const preparedData = data\n                .filter(value => value.toLowerCase().includes(searchValue.toLowerCase()))\n                .slice(currentDataLength, currentDataLength + 20)\n                .map(value => ({value, label: value}))\n\n            loadCallback(preparedData)        \n        })\n"
         }
       ]
     }
@@ -46,6 +50,47 @@
       "css": {
         "object": {}
       }
+    },
+    {
+      "key": "RsContainer 1",
+      "type": "RsContainer",
+      "props": {
+        "direction": {
+          "value": "horizontal"
+        }
+      },
+      "children": [
+        {
+          "key": "RsDropdown 1",
+          "type": "RsDropdown",
+          "props": {
+            "data": {
+              "value": []
+            }
+          },
+          "events": {
+            "onLoadData": [
+              {
+                "name": "loadData",
+                "type": "custom"
+              }
+            ]
+          }
+        },
+        {
+          "key": "RsSearch 1",
+          "type": "RsSearch",
+          "props": {},
+          "events": {
+            "onLoadData": [
+              {
+                "name": "loadData",
+                "type": "custom"
+              }
+            ]
+          }
+        }
+      ]
     },
     {
       "key": "Slot 1",
@@ -229,15 +274,6 @@
       }
     },
     {
-      "key": "type",
-      "type": "RsDropdown",
-      "props": {
-        "block": {
-          "value": true
-        }
-      }
-    },
-    {
       "key": "comment",
       "type": "RsTextArea",
       "props": {}
@@ -281,8 +317,7 @@
         {
           "key": "RsUploader 1",
           "type": "RsUploader",
-          "props": {
-          }
+          "props": {}
         }
       ]
     },
