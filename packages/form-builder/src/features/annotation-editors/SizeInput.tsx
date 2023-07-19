@@ -16,12 +16,11 @@ const options = toLabeledValues([...SizeUnits, ...SizeKeywords, OtherUnit], fals
  * @returns the React element.
  */
 const SizeInput = () => {
-  const {value: CSSValue, onChange, annotation} = useEditor()
+  const {value: CSSValue, onChange, onRemove, annotation} = useEditor()
   const {value, unit} = parseCSSValue(CSSValue)
 
   const handleValueChange = (value: InputValue) => onChange(makeCSSValue(value, unit))
   const handleUnitChange = (unit: string) => onChange(makeCSSValue(value ?? 10, unit))
-  const handleClean = () => onChange(annotation.schema?.getDefault())
 
   const input = unit === OtherUnit
     ? <Input value={value} size={'xs'} onChange={handleValueChange}/>
@@ -39,7 +38,7 @@ const SizeInput = () => {
           creatable
           placement={'bottomEnd'}
           size={'xs'}
-          onClean={handleClean}
+          onClean={onRemove}
         />
       </Container>
     </LabeledProperty>
