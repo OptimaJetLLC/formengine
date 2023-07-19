@@ -18,7 +18,7 @@ export const ComponentTree = namedObserver('ComponentTree', ({parentStore, data}
 
   return <>
     <ComponentTreeProvider value={ComponentTree}>
-      {data.map(cs => <ComponentTreeItem key={cs.key} componentStore={cs} parentStore={parentStore}/>)}
+      {data.map((cs, index) => <ComponentTreeItem key={index} componentStore={cs} parentStore={parentStore}/>)}
     </ComponentTreeProvider>
   </>
 })
