@@ -22,6 +22,15 @@ export function isString(value: any): value is string {
 }
 
 /**
+ * Type predicate, asserts that the value is a {@link Promise}.
+ * @param value the value.
+ * @returns true if the value is a {@link Promise}, false otherwise.
+ */
+export function isPromise<T = any>(value: any): value is Promise<T> {
+  return typeof value === 'object' && typeof value.then === 'function'
+}
+
+/**
  * Creates the observable React component.
  * @param displayName the displayName value of the React component.
  * @param component the React component.

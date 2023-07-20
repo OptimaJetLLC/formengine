@@ -6,6 +6,7 @@ import {buildInternalErrorStore} from '../features/ui/internalErrorModel'
 import {screenModel} from '../features/ui/screenModel'
 import {Form} from '../features/validation'
 import {ViewMode} from '../types'
+import {isPromise} from '../utils'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {ComponentStore} from './ComponentStore'
 import {StoreProps} from './StoreProps'
@@ -165,13 +166,13 @@ export class Store {
 
     try {
       const form = getForm(formName)
-      if (typeof (form as Promise<ComponentStore>).then === 'function') {
-        (form as Promise<ComponentStore>)
+      if (isPromise<ComponentStore>(form)) {
+        form
           .then(this.#applyComponentStore.bind(this))
           .catch(this.#onLoadError.bind(this))
         return
       }
-      this.#applyComponentStore(form as ComponentStore)
+      this.#applyComponentStore(form)
     } catch (e) {
       this.#onLoadError(e)
     }
