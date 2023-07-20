@@ -1,6 +1,6 @@
 import {ActionData, CustomActionDefinition, useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
-import React, {useCallback} from 'react'
+import {useCallback} from 'react'
 import {Dropdown} from 'rsuite'
 import {useAnnotation} from '../../../../../../utils/EditorContext'
 import {CommonActions} from './components/CommonActions'

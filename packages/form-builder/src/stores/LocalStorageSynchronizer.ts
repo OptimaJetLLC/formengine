@@ -15,7 +15,7 @@ export class LocalStorageSynchronizer {
    * Creates {@LocalStorageSynchronizer}.
    * @param store the form builder settings.
    */
-  constructor(private store: BuilderStore) {
+  constructor(store: BuilderStore) {
     const resolutionKey = 'resolution'
     store.viewMode = this.getItem<ViewMode>(resolutionKey, 'desktop')
 

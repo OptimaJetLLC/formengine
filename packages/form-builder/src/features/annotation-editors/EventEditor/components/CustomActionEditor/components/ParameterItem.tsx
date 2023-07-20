@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {Parameter, toParameterWithType} from '@react-form-builder/core'
 import {ArrowDownLine, ArrowUpLine, Close} from '@rsuite/icons'
-import React, {Dispatch, useReducer} from 'react'
+import {Dispatch, useReducer} from 'react'
 import {Animation, Input, InputPicker} from 'rsuite'
 import {toLabeledValues} from '../../../../../annotation/utils/LabeledValue'
 import {Columns, Rows} from '../../../../../components/Containers'

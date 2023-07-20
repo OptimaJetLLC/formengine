@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import {ActionData, emptyComponentStore} from '@react-form-builder/core'
 import {entries} from 'lodash-es'
-import React from 'react'
 import {Dropdown} from 'rsuite'
 import {useGroups} from '../../../../hooks/useGroups'
 
