@@ -19,6 +19,7 @@
         "test:ui": "vitest --ui",
         "coverage": "vitest run --coverage",
         "check:circular-deps": "npx madge --extensions ts --circular .",
+        "check:unused-exports": "node ./scripts/find-unused-exports",
         "eslint": "npx eslint .",
         "eslint-fix": "npx eslint . --fix"
     },
@@ -59,6 +60,7 @@
         "nx": "^14.7.17",
         "rimraf": "^5.0.0",
         "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.23",
+        "ts-prune": "^0.10.3",
         "typescript": "^5.0.3",
         "vite": "^4.2.1",
         "vite-bundle-visualizer": "^0.6.0",
