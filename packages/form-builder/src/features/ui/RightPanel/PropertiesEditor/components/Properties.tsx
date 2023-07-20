@@ -55,11 +55,20 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
   const style = meta.css.filter(bySection(activeTab)).filter(bySubSection(undefined))
   const tooltipProps = current.filter(bySubSection(SubSection.Tooltip))
 
+  const keyContext = () => ({
+    get key() {
+      return selected.key
+    },
+    set key(value) {
+      selected.key = value
+    }
+  })
+
   return (
     <ComponentDataProvider value={data}>
       <Container>
         <PropertiesList>
-          {activeTab === Section.Main && <Property annotation={key} getContext={() => ({})}/>}
+          {activeTab === Section.Main && <Property annotation={key} getContext={keyContext}/>}
           <PropertyBlock annotations={properties} context={data.store.props}/>
           <StyleBlock annotations={style} store={data.store}/>
           {activeTab === Section.Style && <Property annotation={stylization} getContext={() => ({})}/>}

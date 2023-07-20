@@ -1,4 +1,3 @@
-import {useComponentData} from '@react-form-builder/core'
 import {Input} from 'rsuite'
 import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
@@ -8,18 +7,13 @@ import LabeledProperty from '../components/LabeledProperty'
  * @returns the React element.
  */
 const KeyInput = () => {
-  const {annotation} = useEditor()
-  const data = useComponentData()
-
-  const handleChange = (value: string) => {
-    data.store.key = value
-  }
+  const {value, onChange, annotation} = useEditor()
 
   return (
     <LabeledProperty annotation={annotation}>
       <Input
-        value={data.store.key}
-        onChange={handleChange}
+        value={value}
+        onChange={onChange}
         size={'xs'}
       />
     </LabeledProperty>
