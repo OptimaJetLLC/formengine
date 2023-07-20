@@ -40,7 +40,7 @@ export const textStyles = {
 
 export const readOnly = boolean.hinted('Read only component')
 export const inputProps = {
-  placeholder: string.hinted('Input placeholder'),
+  placeholder: string.hinted('Input placeholder').localize,
   size,
   disabled: boolean.hinted('Disabled component'),
   readOnly,

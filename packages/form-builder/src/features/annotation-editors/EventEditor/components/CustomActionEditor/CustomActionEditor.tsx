@@ -1,5 +1,5 @@
 import {CustomActionDefinition, Parameter, toParameterWithType} from '@react-form-builder/core'
-import {useReducer, useState} from 'react'
+import {useEffect, useReducer, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, Col, Grid, Input, Modal} from 'rsuite'
 import {CodeEditor} from '../../../../components/CodeEditor'
@@ -31,6 +31,12 @@ export const CustomActionEditor = ({onCancel, onSave, data, onEnter}: CustomActi
   const [body, setBody] = useState(data?.body ?? '')
   const [params, dispatchParams] = useReducer(paramsReducer, data?.params)
   const [error, setError] = useState<string>()
+  const [initialValue, setInitialValue] = useState(data?.body ?? '')
+
+  useEffect(() => {
+    const initialValue = data?.body ?? ''
+    setInitialValue(initialValue)
+  }, [data?.body])
 
   const handleSave = () => {
     try {
@@ -63,7 +69,8 @@ function Action (${params ? 'args, ' : ''}e) {`
         <Grid fluid>
           <Col md={17}>
             <Modal.Title style={{color: 'red'}}>{error}</Modal.Title>
-            <CodeEditor key={functionHeader} contextLine={functionHeader} value={body} onChange={setBody}/>
+            <CodeEditor key={functionHeader} beginContextLine={functionHeader} endContextLine="}" initialValue={initialValue}
+                        onChange={setBody} height={'80vh'}/>
           </Col>
           <Col md={6}>
             <ParameterList value={params} dispatch={dispatchParams}/>

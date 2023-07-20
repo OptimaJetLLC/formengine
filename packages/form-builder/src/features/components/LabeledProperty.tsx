@@ -1,7 +1,9 @@
 import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
-import {ComponentProperty, namedObserver, useComponentData} from '@react-form-builder/core'
+import * as faGlobe from '@fortawesome/free-solid-svg-icons/faGlobe.js'
+import * as faEdit from '@fortawesome/free-solid-svg-icons/faMarker.js'
+import {ComponentProperty, namedObserver, useComponentData, useStore} from '@react-form-builder/core'
 import {cloneElement, ComponentProps} from 'react'
 import {IconButton} from 'rsuite'
 import useUniqueId from 'rsuite/esm/utils/useUniqueId.js'
@@ -23,29 +25,48 @@ export interface LabeledPropertyProps extends ComponentProps<any> {
 }
 
 interface CodeButtonProps {
-  annotation: Annotation
-  property?: ComponentProperty
+  currentEditableProperty: EditableProperty
   getEditableProperty: () => EditableProperty
 }
 
-const CodeButton = namedObserver('CodeButton', ({annotation, property, getEditableProperty}: CodeButtonProps) => {
+const CodeButton = namedObserver('CodeButton', ({currentEditableProperty, getEditableProperty}: CodeButtonProps) => {
   const store = useBuilderStore()
+  const viewerStore = useStore()
+  const property = currentEditableProperty.property
+  const annotation = currentEditableProperty.annotation
   const hasCode = property?.fnSource
+  const hasFluentLocalization = viewerStore.localization.hasComponentProperty(currentEditableProperty.componentKey, annotation.key)
   const useFn = property?.useFn
-  const getLabel = useTranslationPart('propertiesEditor.calculable')
-  const hint = !annotation.calculable
-    ? getLabel('notCalculable')
-    : hasCode ? getLabel('edit') : getLabel('hint')
-  const color = hasCode && useFn
-    ? 'var(--rs-btn-primary-bg)'
-    : hasCode ? 'var(--rs-primary-200)' : undefined
+  const useFluentLocalization = property?.useFluentLocalization
+  const getLabel = useTranslationPart('propertiesEditor.codeButton')
+
+  const getHintTranslation = () => {
+    if (!annotation.calculable && !annotation.localizable) return 'neitherCalculableNorLocalizable'
+    if (hasCode) return 'editCalculable'
+    if (hasFluentLocalization) return 'editLocalizable'
+    if (annotation.calculable && annotation.localizable) return 'hintCalculableAndLocalizable'
+    if (annotation.calculable) return 'hintCalculable'
+    return 'hintLocalizable'
+  }
+  const hint = getLabel(getHintTranslation())
+
+  const getColor = () => {
+    if ((hasCode && useFn) || (hasFluentLocalization && useFluentLocalization)) return 'var(--rs-btn-primary-bg)'
+    if (hasCode || hasFluentLocalization) return 'var(--rs-primary-200)'
+  }
+
+  const getIcon = () => {
+    if (hasCode) return faCode as unknown as IconDefinition
+    if (hasFluentLocalization) return faGlobe as unknown as IconDefinition
+    return faEdit as unknown as IconDefinition
+  }
 
   const handleClick = () =>
     store.calculatedProperty = store.calculatedProperty?.annotation === annotation ? undefined : getEditableProperty()
 
   return <Hinted hint={hint}>
     <SIconButton onClick={handleClick} disabled={!annotation.calculable}
-                 icon={<FaIcon icon={faCode as unknown as IconDefinition} color={color}/>}
+                 icon={<FaIcon icon={getIcon()} color={getColor()}/>}
                  size={'xs'} appearance={'subtle'}/>
   </Hinted>
 })
@@ -79,11 +100,9 @@ export const LabeledProperty = ({idPrefix, annotation, getEditableProperty, chil
     }
   }
 
-  const property = defaultGetEditableProperty().property
-
   return <LabeledInput {...props}>
     <Columns gap={10}>
-      <CodeButton annotation={annotation} property={property} getEditableProperty={defaultGetEditableProperty}/>
+      <CodeButton currentEditableProperty={defaultGetEditableProperty()} getEditableProperty={defaultGetEditableProperty}/>
       <HintedLabel htmlFor={id} hint={getLabel('hint') || annotation.hint}>
         <>{getLabel('name') || annotation.name}</>
       </HintedLabel>

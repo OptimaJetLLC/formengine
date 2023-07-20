@@ -1,11 +1,21 @@
-import {ComponentData, ComponentProperty, ComponentStore, screenModel, Store, ViewMode} from '@react-form-builder/core'
+import {
+  BiDi,
+  ComponentData,
+  ComponentProperty,
+  ComponentStore,
+  defaultLanguage,
+  LocalizationStore,
+  PersistedForm,
+  screenModel,
+  Store,
+  ViewMode
+} from '@react-form-builder/core'
 import {assign, cloneDeep} from 'lodash-es'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
 import type {EditorType} from '../features/annotation/types'
 import {Annotation} from '../features/annotation/types/annotations/Annotation'
 import {BuilderView} from '../features/define/utils/BuilderView'
-import {BiDi} from '../features/localization/bidi'
-import {defaultLanguage} from '../features/localization/consts'
+import {languages} from '../features/localization/consts'
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../features/localization/utils'
 import {PanelPlacement} from '../features/ui/PanelPlacement'
 import type {FormBuilderProps} from '../FormBuilderProps'
@@ -37,6 +47,7 @@ export class BuilderStore {
   theme: BuilderTheme = getSystemTheme()
   openedPanels: PanelPlacement[] = ['left', 'right']
   language = defaultLanguage
+  localizationLanguage = defaultLanguage
   calculatedProperty?: EditableProperty
   lastSaveTime = new Date()
   readonly view: BuilderView
@@ -59,6 +70,7 @@ export class BuilderStore {
     makeAutoObservable(this, {
       selected: observable,
       language: observable.ref,
+      localizationLanguage: observable.ref,
       destroy: false,
       calculatedProperty: observable.ref,
       builderMode: true,
@@ -106,6 +118,13 @@ export class BuilderStore {
   }
 
   /**
+   * @returns true if the active language in the form builder is the default one.
+   */
+  get isDefaultLanguage() {
+    return this.localizationLanguage === defaultLanguage
+  }
+
+  /**
    * Returns the index of the component in the array of child components in the parent component.
    * @param node the component.
    * @returns the index of the component in the array of child components in the parent component.
@@ -132,6 +151,7 @@ export class BuilderStore {
   changeBuilderMode(value: BuilderMode) {
     this.builderMode = value
     this.viewer.isBuilderMode = this.builderMode === 'builder'
+    this.calculatedProperty = undefined
   }
 
   /**
@@ -189,7 +209,9 @@ export class BuilderStore {
    * @param text the form serialized in JSON.
    */
   parseForm(text: string) {
-    this.viewer.screen = assign(new ComponentStore('', ''), JSON.parse(text))
+    const deserializedForm = JSON.parse(text) as PersistedForm
+    this.viewer.screen = assign(new ComponentStore('', ''), deserializedForm.form)
+    this.viewer.localization = new LocalizationStore(deserializedForm.localization)
     if (this.calculatedProperty) this.calculatedProperty = undefined
   }
 
@@ -270,6 +292,10 @@ export class BuilderStore {
    */
   remove(source: ComponentMove) {
     const index = BuilderStore.getIndexInParent(source)
+    const removingComponent = source.parent?.children?.[index]
+    if (removingComponent) {
+      this.viewer.localization.removeLocalization(removingComponent.key)
+    }
     source.parent?.children?.splice(index, 1)
   }
 
@@ -303,7 +329,15 @@ export class BuilderStore {
    * @returns the current form serialized to JSON.
    */
   stringifyForm() {
-    return JSON.stringify(this.viewer.screen, null, 2)
+    const selectedLanguages = languages
+      .filter(l => l.fullCode === defaultLanguage.fullCode || this.viewer.localization.hasLanguage(l.fullCode))
+    const serializedObject: PersistedForm = {
+      form: this.viewer.screen,
+      localization: this.viewer.localization.value,
+      languages: selectedLanguages,
+      defaultLanguage: defaultLanguage.fullCode
+    }
+    return JSON.stringify(serializedObject, null, 2)
   }
 
   /**

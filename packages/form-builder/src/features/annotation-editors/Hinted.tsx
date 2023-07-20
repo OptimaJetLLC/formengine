@@ -1,9 +1,9 @@
 import styled from '@emotion/styled'
+import {BiDi} from '@react-form-builder/core'
 import {ReactNode} from 'react'
 import type {WhisperProps} from 'rsuite'
 import {Tooltip, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
-import {BiDi} from '../localization/bidi'
 
 /**
  * React component properties for the {@link HintedLabel} component.

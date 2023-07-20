@@ -47,12 +47,18 @@ export const calculateExpressionProperty = (componentProperty: ComponentProperty
 }
 
 /**
+ * The result of compiling of anything.
+ */
+export class BaseCompilationResult {
+  error = false
+  exceptions?: Error[]
+}
+
+/**
  * The result of compiling the function.
  */
-export type CompilationResult = {
-  error: boolean
+export class CompilationResult extends BaseCompilationResult {
   fn?: Function
-  exception?: Error
 }
 
 /**
@@ -65,7 +71,7 @@ export const compileFn = (source: string): CompilationResult => {
     const fn = getOrCreateFn(source)
     return {error: false, fn}
   } catch (e) {
-    return {error: true, exception: e as Error}
+    return {error: true, exceptions: [e as Error]}
   }
 }
 

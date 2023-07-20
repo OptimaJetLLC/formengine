@@ -10,6 +10,7 @@ export interface ComponentProperty {
   value?: any
   useFn?: boolean
   fnSource?: string
+  useFluentLocalization?: boolean
 }
 
 /**

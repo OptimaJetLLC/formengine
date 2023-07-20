@@ -7,21 +7,32 @@ import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {CodeEditor} from '../../../components/CodeEditor'
 import {useTranslationPart} from '../../../localization/hooks'
 
-const items: Device[] = ['any', 'desktop', 'mobile', 'tablet']
+const devices: Device[] = ['any', 'desktop', 'mobile', 'tablet']
 
 const CSSBlock = observer(() => {
   const {store} = useComponentData()
   const {viewMode} = useBuilderStore()
-  const [device, setDevice] = useState<Device>('any')
+  const [device, setDevice] = useState<Device>(viewMode)
   const t = useTranslationPart('style')
-  const translatedItems = items.map(value => ({value, label: t(value)}))
+  const translatedItems = devices.map(value => ({value, label: t(value)}))
 
   useEffect(() => {
-    setDevice(viewMode === 'desktop' ? 'any' : viewMode)
+    setDevice(viewMode)
   }, [viewMode])
 
-  const styleValue = store.css?.[device] ?? ''
-  const handleChange = (value: string) => store.css![device] = value
+  function getInitialCssCode() {
+    return store.css?.[device] ?? ''
+  }
+
+  const [initialValue, setInitialValue] = useState(getInitialCssCode())
+
+  useEffect(() => {
+    setInitialValue(getInitialCssCode())
+  }, [device])
+
+  const handleChange = (value: string) => {
+    store.css![device] = value
+  }
 
   return (
     <div>
@@ -33,8 +44,9 @@ const CSSBlock = observer(() => {
       <SCodeEditor
         key={store.key + device}
         language="css"
-        contextLine={'element.style {'}
-        value={styleValue}
+        beginContextLine={'element.style {'}
+        endContextLine="}"
+        initialValue={initialValue}
         onChange={handleChange}
         height={'20vh'}
         options={{

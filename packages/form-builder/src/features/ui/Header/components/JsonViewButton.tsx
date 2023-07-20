@@ -23,7 +23,7 @@ export const JsonViewButton = observer(() => {
       <Modal.Header closeButton onClose={handleClose}>
         <Modal.Title>{t('editJson')}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body style={{height: '100vh'}}>
         <JsonView/>
       </Modal.Body>
     </Modal>

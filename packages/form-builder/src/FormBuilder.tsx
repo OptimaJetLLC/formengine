@@ -8,6 +8,7 @@ import {CentralPanel} from './features/ui/CentralPanel'
 import {LeftPanel} from './features/ui/LeftPanel'
 import {RightPanel} from './features/ui/RightPanel'
 import {FormBuilderProps} from './FormBuilderProps'
+import {useBuilderStore} from './utils/BuilderStoreContext'
 
 /**
  * The React component that displays the form builder.
@@ -16,18 +17,25 @@ import {FormBuilderProps} from './FormBuilderProps'
  */
 export const FormBuilder = observer((props: FormBuilderProps) => {
   return <BuilderProviders props={props}>
-    <Suspense fallback={<Loader center content="loading"/>}>
+    <FormBuilderView/>
+  </BuilderProviders>
+})
+
+const FormBuilderView = observer(() => {
+    const builderStore = useBuilderStore()
+    const renderBottomPanel = builderStore.calculatedProperty && builderStore.builderMode === 'builder'
+    return <Suspense fallback={<Loader center content="loading"/>}>
       <Container>
         <Content>
           <LeftPanel/>
           <CentralPanel/>
           <RightPanel/>
         </Content>
-        <BottomPanel/>
+        {renderBottomPanel && <BottomPanel/>}
       </Container>
     </Suspense>
-  </BuilderProviders>
-})
+  }
+)
 
 const Container = styled.div`
   display: flex;

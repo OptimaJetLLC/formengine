@@ -27,6 +27,7 @@
         "@emotion/css": "^11.10.5",
         "@emotion/react": "^11.10.5",
         "@emotion/styled": "^11.10.5",
+        "@fluent/bundle": "^0.18.0",
         "lodash-es": "^4.17.21",
         "mobx": "^6.9.0",
         "mobx-react": "^7.3.0",

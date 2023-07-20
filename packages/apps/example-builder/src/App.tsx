@@ -2,8 +2,7 @@ import {FormBuilder} from '@react-form-builder/builder'
 import {BuilderView} from '@react-form-builder/builder/view'
 import {antdComponents} from '@react-form-builder/components-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
-import {ComponentStore} from '@react-form-builder/core'
-import {assign} from 'lodash-es'
+import {PersistedForm} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {getFormFromJson} from './utils/getFormFromJson'
 import {IndexedDbFormStorage} from './utils/IndexedDbFormStorage'
@@ -30,12 +29,11 @@ const formStorage = indexedDbExists
 
 const sampleFormName = 'SampleForm'
 
-async function getForm(name?: string): Promise<ComponentStore> {
+async function getForm(name?: string): Promise<PersistedForm> {
   if (!formStorage) throw new Error('IndexedDB not supported')
   try {
     const form = await formStorage.getForm(name || formStorage.formName)
-    const componentStore = JSON.parse(form)
-    return assign(new ComponentStore('', ''), componentStore)
+    return JSON.parse(form) as PersistedForm
   } catch (e) {
     if (!name) throw e
     // fallback

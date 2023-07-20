@@ -1,9 +1,9 @@
 import {CacheProvider} from '@emotion/react'
+import {BiDi} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {ReactNode} from 'react'
 import {CustomProvider} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
-import {BiDi} from '../bidi'
 import {cssUrls, defaultRSuiteLanguage, emotionCache, rSuiteLanguages} from '../consts'
 import {getFullLangCode} from '../utils'
 

@@ -32,9 +32,9 @@ export const rsInput = define(RsInput)
   .type('RsInput')
   .name('Input')
   .props({
-    label: string.default('Input').hinted('Input label'),
+    label: string.default('Input').hinted('Input label').localize,
     ...inputProps,
-    value: string.default('').valued,
+    value: string.default('').valued.localize,
     passwordMask: boolean
   })
   .actions((props, def) => {

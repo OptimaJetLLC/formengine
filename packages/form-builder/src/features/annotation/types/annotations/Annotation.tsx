@@ -12,6 +12,7 @@ export class Annotation {
   readonly editor!: EditorType
   readonly schema?: yup.AnySchema
   readonly hint?: ReactNode
+  readonly localizable: boolean = false
   readonly valued: boolean = false
   readonly editorProps?: any
   readonly calculable: boolean = true

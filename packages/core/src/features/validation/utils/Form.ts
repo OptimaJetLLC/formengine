@@ -1,5 +1,8 @@
+import {FluentVariable} from '@fluent/bundle/esm/bundle.js'
 import {makeAutoObservable} from 'mobx'
 import {Store} from '../../../stores/Store'
+import {getFluentCompatibleId} from '../../localization/getFluentCompatibleId'
+import {isFluentVariable} from '../../localization/isFluentVariable'
 import {Field} from './Field'
 
 // todo rename to FormData
@@ -34,6 +37,20 @@ export class Form {
       }
     }
     return result
+  }
+
+  /**
+   * @returns all the form data that is of the {@link FluentVariable} type.
+   * Additionally, the keys of the returned object are converted to the snake case.
+   */
+  get fluentData() {
+    const fluentData: Record<string, FluentVariable> = {}
+    for (const [key, value] of Object.entries(this.data)) {
+      if (isFluentVariable(value)) {
+        fluentData[getFluentCompatibleId(key)] = value
+      }
+    }
+    return fluentData
   }
 
   /**

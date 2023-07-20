@@ -3,6 +3,7 @@ import {useLocalObservable} from 'mobx-react'
 import {ReactNode, useContext, useEffect, useMemo} from 'react'
 import {Store} from '../../../stores/Store'
 import {StoreContext, StoreProvider} from '../../../utils/contexts/StoreContext'
+import {useDestroy} from '../../../utils/useDestroy'
 import {DefaultActions} from '../../event'
 import {getTemplateName} from '../../ui/templateModel'
 import {FormViewerProps} from '../types'
@@ -32,6 +33,12 @@ export const ViewerStoreProvider = ({children, props}: { children: ReactNode, pr
       props.view.define(modifiedModel)
     })
   }, [])
+
+  useDestroy(() => {
+    if (!storeFromContext) {
+      store.destroy()
+    }
+  })
 
   return (
     <ViewerPropsProvider value={observableProps}>

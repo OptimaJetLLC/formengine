@@ -1,4 +1,4 @@
-import {ComponentStore} from '@react-form-builder/core'
+import {PersistedForm} from '@react-form-builder/core'
 import {assign} from 'lodash-es'
 import agreement from '../../forms/agreement.json'
 import SampleForm from '../../forms/SampleForm.json'
@@ -11,7 +11,7 @@ const forms: Record<string, any> = {
 }
 
 //TODO can stringify and parse to form
-export function getFormFromJson(name?: string): ComponentStore {
-  if (name && forms[name]) return assign(new ComponentStore('', ''), forms[name])
+export function getFormFromJson(name?: string) {
+  if (name && forms[name]) return assign({}, forms[name]) as PersistedForm
   throw new Error(`Unable to load form '${name}'`)
 }

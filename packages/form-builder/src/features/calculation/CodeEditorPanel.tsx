@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {CompilationResult, compileFn, namedObserver} from '@react-form-builder/core'
+import {BaseCompilationResult, CompilationResult, compileFn, namedObserver} from '@react-form-builder/core'
 import {action} from 'mobx'
 import {useEffect, useState} from 'react'
 import {Button, ButtonGroup, Checkbox} from 'rsuite'
@@ -18,42 +18,66 @@ const isJsSyntaxError = (error: Error): error is JsSyntaxError => {
   return typeof e.lineNumber === 'number' && typeof e.columnNumber === 'number'
 }
 
-const ErrorMessage = ({result}: { result?: CompilationResult }) => {
+/**
+ * React component to display compilation error messages.
+ * @param props props the React component properties.
+ * @param props.result any compilation result
+ * @returns the React element.
+ */
+export const ErrorMessage = ({result}: { result?: BaseCompilationResult }) => {
   if (!result) return null
 
-  const {error, exception} = result
+  const {error, exceptions} = result
 
-  let message = 'OK'
-  if (error && exception) {
-    message = exception.message
-    if (isJsSyntaxError(exception)) {
-      // omit the first two lines of the function declaration
-      const lineNumber = exception.lineNumber >= 3 ? exception.lineNumber - 2 : exception.lineNumber
-      message = `${exception.message} (${lineNumber}:${exception.columnNumber})`
-    }
+  const messages: string[] = []
+  if (error && exceptions) {
+    exceptions.forEach(exception => {
+      let message = exception.message
+      if (isJsSyntaxError(exception)) {
+        const lineNumber = exception.lineNumber >= 3 ? exception.lineNumber - 2 : exception.lineNumber
+        message = `${message} (${lineNumber}:${exception.columnNumber})`
+      }
+      messages.push(message)
+    })
+  } else {
+    messages.push('OK')
   }
 
   const color = error ? 'red' : 'green'
 
-  return <span>Compilation result: <code style={{color: color}}>{message}</code></span>
+  return <span>Compilation result: <code style={{color: color}}>{messages.join('/n')}</code></span>
 }
 
-interface CodeEditorPanelProps {
+/**
+ * Properties of the React component {@link CodeEditorPanel}.
+ */
+export interface CodeEditorPanelProps {
   editableProperty: EditableProperty
   onClose: () => void
+  onSave: () => void
 }
 
-export const CodeEditorPanel = namedObserver('CodeEditorPanel', ({editableProperty, onClose}: CodeEditorPanelProps) => {
+export const CodeEditorPanel = namedObserver('CodeEditorPanel', ({editableProperty, onClose, onSave}: CodeEditorPanelProps) => {
   const [sourceCode, setSourceCode] = useState(editableProperty.property?.fnSource || codePlaceHolder)
   const [compilationError, setCompilationError] = useState<CompilationResult | undefined>()
   const [useFn, setUseFn] = useState(editableProperty.property?.useFn || false)
+  const [initialValue, setInitialValue] = useState('')
 
   const compileCode = () => {
     const result = compileFn(sourceCode)
     setCompilationError(result)
   }
 
-  const saveCode = () => editableProperty.saveProperty({useFn: useFn, fnSource: sourceCode})
+  const saveCode = () => {
+    editableProperty.saveProperty({useFn: useFn, fnSource: sourceCode})
+    setInitialValue(sourceCode)
+    onSave()
+  }
+
+  useEffect(() => {
+    const initialValue = editableProperty.property?.fnSource || codePlaceHolder
+    setInitialValue(initialValue)
+  }, [editableProperty])
 
   useEffect(() => {
     setSourceCode(editableProperty.property?.fnSource || codePlaceHolder)
@@ -67,7 +91,8 @@ export const CodeEditorPanel = namedObserver('CodeEditorPanel', ({editableProper
 function Calculation (form) {`
 
   return <>
-    <CodeEditor key={editableProperty.annotation.key} contextLine={functionHeader} value={sourceCode} onChange={setSourceCode}/>
+    <CodeEditor key={editableProperty.annotation.key} beginContextLine={functionHeader} endContextLine="}" initialValue={initialValue}
+                onChange={setSourceCode}/>
     <SDiv>
       <ButtonGroup>
         <Button appearance="primary" onClick={compileCode}>Compile</Button>
@@ -77,11 +102,14 @@ function Calculation (form) {`
       <Checkbox checked={useFn} onChange={(_, checked) => setUseFn(checked)}>
         Use calculated property
       </Checkbox>
+      <ErrorMessage result={compilationError}/>
     </SDiv>
-    <ErrorMessage result={compilationError}/>
   </>
 })
 
 const SDiv = styled.div`
+  display: flex;
+  gap: 10px;
   padding: 10px;
+  align-items: center;
 `

@@ -3,17 +3,17 @@ import Editor, {OnMount} from '@monaco-editor/react'
 import {constrainedEditor} from 'constrained-editor-plugin'
 import {observer} from 'mobx-react'
 import type {editor} from 'monaco-editor'
-import {useCallback} from 'react'
+import {useCallback, useEffect, useRef, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import './config'
 
 interface CodeEditorProps {
-  value: string
-  onChange: (value: string) => void,
+  initialValue: string
+  onChange: (value: string) => void
   /**
    * @default 'javascript'
    */
-  language?: 'javascript' | 'json' | 'css'
+  language?: 'javascript' | 'json' | 'css' | 'fluent'
   /**
    * Read only line for adding context to a code. Automatically adds the "}" symbol to the end.
    * Especially useful to add jsdoc for typing before.
@@ -21,7 +21,9 @@ interface CodeEditorProps {
    * '... jsdoc ...
    * function abc(name) {'
    */
-  contextLine?: string
+  beginContextLine?: string
+  endContextLine?: string
+  canEditBeginContextLine?: boolean
   height?: string | number
   width?: string | number
   className?: string
@@ -29,67 +31,104 @@ interface CodeEditorProps {
 }
 
 export const CodeEditor = observer((props: CodeEditorProps) => {
-  const {theme} = useBuilderStore()
-  const [defaultValue, handleMount] = useContextLine(props.value, props.onChange, props.contextLine)
+  const hasBeginContextLine = !!props.beginContextLine
+  const hasEndContextLine = !!props.endContextLine
+  const [initialValue, setInitialValue] = useState('')
 
-  return (
-    <Editor
-      onMount={handleMount}
-      className={props.className}
-      defaultValue={defaultValue}
-      height={props.height ?? '90vh'}
-      width={props.width}
-      language={props.language ?? 'javascript'}
-      options={props.options}
-      theme={theme === 'light' ? 'light' : 'vs-dark'}
-    />
-  )
-})
+  useEffect(() => {
+    let initialValueWithContextLines = ''
 
-function useContextLine(code: string, onChange: (value: string) => void, contextLine?: string) {
-  const value = contextLine ? [contextLine, code, '}'].join('\n') : code
-
-  const handleMount: OnMount = useCallback((editor, monaco) => {
-    if (!contextLine) {
-      editor.onDidChangeModelContent(() => onChange(editor.getValue()))
-      return
+    if (hasBeginContextLine && props.canEditBeginContextLine) {
+      initialValueWithContextLines = `${props.beginContextLine}${props.initialValue}`
+    } else if (hasBeginContextLine) {
+      initialValueWithContextLines = `${props.beginContextLine}\n${props.initialValue}`
+    } else {
+      initialValueWithContextLines = props.initialValue
     }
 
-    const model = editor.getModel() as ConstrainedModel
-    const constrainedInstance = constrainedEditor(monaco)
-    const [endContextLine, endContextColumn] = getEndPosition(contextLine)
-    const lastLine = model.getLineCount()
+    if (hasEndContextLine) {
+      initialValueWithContextLines += `\n${props.endContextLine}`
+    }
 
+    setInitialValue(initialValueWithContextLines)
+  }, [props.beginContextLine, props.endContextLine, props.initialValue])
+
+  const editorRef = useRef<editor.IStandaloneCodeEditor>()
+
+  useEffect(() => {
+    editorRef.current?.setValue(initialValue)
+  }, [initialValue])
+
+  const handleMount: OnMount = useCallback((editor, monaco) => {
+    if (!hasBeginContextLine && !hasEndContextLine) {
+      editor.onDidChangeModelContent(() => props.onChange(editor.getValue()))
+      return
+    }
+    const model = editor.getModel() as ConstrainedModel
+
+    const [beginContextLineEndLine, beginContextLineEndColumn] = getEndPosition(props.beginContextLine ?? '')
+    const [endContextLineEndLine] = getEndPosition(props.endContextLine ?? '')
+    const lastEditableLine = hasEndContextLine ? model.getLineCount() - (endContextLineEndLine - 1) : model.getLineCount()
+    const lastEditableColumn = hasEndContextLine ? 1 : model.getFullModelRange().endColumn
+
+    const constrainedInstance = constrainedEditor(monaco)
     constrainedInstance.initializeIn(editor)
     constrainedInstance.addRestrictionsTo(model, [{
       label: 'body',
       allowMultiline: true,
       //editable range: [startLine, startColumn, endLine, endColumn]
-      range: [endContextLine, endContextColumn, lastLine, 1],
+      range: [beginContextLineEndLine, beginContextLineEndColumn, lastEditableLine, lastEditableColumn],
       validate(current: string, _: any, {endLineOfRange, startLineOfRange}: Info) {
-        if (startLineOfRange) return current.startsWith('\n')
-        if (endLineOfRange) return current.endsWith('\n')
+        if (startLineOfRange) return current.startsWith('\n') || props.canEditBeginContextLine
+        if (endLineOfRange) return current.endsWith('\n') || !hasEndContextLine
         return true
       }
     }])
 
-    model.onDidChangeContentInEditableRange((value) => onChange(value.body))
-  }, [contextLine])
+    model.onDidChangeContentInEditableRange((value) => {
+      let editableCode = value.body
+      if (hasBeginContextLine && editableCode.startsWith('\n')) {
+        editableCode = editableCode.substring(1)
+      }
+      if (hasEndContextLine && editableCode.endsWith('\n')) {
+        editableCode = editableCode.substring(0, editableCode.length - 1)
+      }
+      props.onChange(editableCode)
+    })
 
-  return [value, handleMount] as const
-}
+    editorRef.current = editor
+  }, [props.beginContextLine, props.endContextLine])
 
-type Info = {
-  endLineOfRange: boolean,
-  startLineOfRange: boolean
+  const {theme} = useBuilderStore()
+
+  return (
+    <Editor
+      onMount={handleMount}
+      className={props.className}
+      defaultValue={initialValue}
+      height={props.height ?? '100%'}
+      width={props.width ?? '100%'}
+      language={props.language ?? 'javascript'}
+      options={{
+        wordWrap: 'on',
+        ...props.options
+      }}
+      theme={theme === 'light' ? 'light' : 'vs-dark'}
+    />
+  )
+})
+
+function getEndPosition(str: string) {
+  const lines = str.split('\n')
+  const lastLineLength = lines.at(-1)?.length ?? 0
+  return [lines.length, lastLineLength + 1] as const
 }
 
 type ConstrainedModel = editor.ITextModel & {
   onDidChangeContentInEditableRange: (callback: (value: Record<string, string>) => void) => void
 }
 
-function getEndPosition(str: string) {
-  const lines = str.split('\n')
-  const lastLineLength = lines.at(-1)?.length ?? 0
-  return [lines.length, lastLineLength + 1] as const
+type Info = {
+  endLineOfRange: boolean,
+  startLineOfRange: boolean
 }

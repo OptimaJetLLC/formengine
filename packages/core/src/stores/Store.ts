@@ -2,6 +2,8 @@ import {assign} from 'lodash-es'
 import {makeObservable, observable} from 'mobx'
 import {Subject} from 'rxjs'
 import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
+import {defaultLanguage} from '../features/localization/consts'
+import {Language} from '../features/localization/types'
 import {buildInternalErrorStore} from '../features/ui/internalErrorModel'
 import {screenModel} from '../features/ui/screenModel'
 import {Form} from '../features/validation'
@@ -9,6 +11,8 @@ import {ViewMode} from '../types'
 import {isPromise} from '../utils'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {ComponentStore} from './ComponentStore'
+import {LocalizationStore} from './LocalizationStore'
+import {PersistedForm} from './PersistedForm'
 import {StoreProps} from './StoreProps'
 
 /**
@@ -17,6 +21,10 @@ import {StoreProps} from './StoreProps'
 export class Store {
   readonly #props: Readonly<StoreProps>
 
+  defaultLanguage?: Language
+
+  selectedLanguage?: Language
+
   readonly eventSubject = new Subject<ActionEventArgs>()
   readonly form
 
@@ -24,6 +32,10 @@ export class Store {
   cache = new WeakMap<ComponentStore, ComponentData>()
 
   viewMode: ViewMode = 'desktop'
+
+  localization = new LocalizationStore()
+
+  languages: Language[] = []
 
   // todo remove isBuilderMode from Store class
   /**
@@ -41,8 +53,37 @@ export class Store {
 
     makeObservable(this, {
       screen: observable,
+      localization: observable,
       viewMode: true,
+      defaultLanguage: true,
+      selectedLanguage: true,
+      displayedLanguage: true
     })
+  }
+
+  /**
+   * Correctly clears allocated resources, the function must be called when destroying an instance of the class.
+   */
+  destroy() {
+    this.localization.destroy()
+  }
+
+  /**
+   * @returns the {@link Language} displayed in Form Viewer.
+   */
+  get displayedLanguage() {
+    if (this.#props.language) {
+      const propsLanguage = this.languages.find(l => l.fullCode === this.#props.language)
+      if (propsLanguage) return propsLanguage
+    }
+    return this.selectedLanguage ?? this.defaultLanguage ?? defaultLanguage
+  }
+
+  /**
+   * @returns true if the displayed language is the default language, false otherwise.
+   */
+  get isDefaultLanguage() {
+    return this.displayedLanguage === this.defaultLanguage
   }
 
   /**
@@ -161,18 +202,18 @@ export class Store {
    * @param getForm the function that loads the form.
    * @param formName the form name.
    */
-  loadForm(getForm?: (name?: string) => ComponentStore | Promise<ComponentStore>, formName?: string) {
+  loadForm(getForm?: (name?: string) => PersistedForm | Promise<PersistedForm>, formName?: string) {
     if (!getForm) return
 
     try {
       const form = getForm(formName)
-      if (isPromise<ComponentStore>(form)) {
+      if (isPromise<PersistedForm>(form)) {
         form
-          .then(this.#applyComponentStore.bind(this))
+          .then(this.#applyPersistedForm.bind(this))
           .catch(this.#onLoadError.bind(this))
         return
       }
-      this.#applyComponentStore(form)
+      this.#applyPersistedForm(form)
     } catch (e) {
       this.#onLoadError(e)
     }
@@ -185,15 +226,18 @@ export class Store {
   #onLoadError(e: any) {
     console.error(e)
     const componentStore = buildInternalErrorStore(e)
-    this.#applyComponentStore(componentStore)
+    this.#applyPersistedForm({form: componentStore, localization: {}, defaultLanguage: defaultLanguage.fullCode, languages: []})
   }
 
   /**
-   * Changes the form to the specified one.
-   * @param componentStore the form component settings.
+   * Populates the value of this store with the values of the saved form.
+   * @param persistedForm saved form value.
    */
-  #applyComponentStore(componentStore: ComponentStore) {
-    this.screen = assign(new ComponentStore('', ''), componentStore)
+  #applyPersistedForm(persistedForm: PersistedForm) {
+    this.screen = assign(new ComponentStore('', ''), persistedForm.form)
+    this.localization = new LocalizationStore(assign({}, persistedForm.localization))
+    this.languages = persistedForm.languages ? [...persistedForm.languages] : []
+    this.defaultLanguage = persistedForm.languages?.find(l => l.fullCode === persistedForm.defaultLanguage) ?? defaultLanguage
   }
 }
 

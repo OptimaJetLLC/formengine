@@ -227,10 +227,13 @@
     "subSection": {
       "additionalProperties": "Additional properties"
     },
-    "calculable": {
-      "hint": "Make this property calculable",
-      "edit": "Edit calculable",
-      "notCalculable": "Not calculable"
+    "codeButton": {
+      "hintCalculable": "Make this property calculable",
+      "hintLocalizable": "Localize this property with Fluent",
+      "hintCalculableAndLocalizable": "Make this property calculable or localize with Fluent",
+      "editCalculable": "Edit calculable",
+      "editLocalizable": "Edit Fluent localization",
+      "neitherCalculableNorLocalizable": "Neither calculable nor localizable"
     },
     "setInputHint": "Press Enter for add value"
   },
@@ -284,6 +287,16 @@
   "promptDialog": {
     "ok": "OK",
     "cancel": "Cancel"
+  },
+  "localizationEditor": {
+    "test": "Test",
+    "close": "Close",
+    "save": "Save",
+    "useFluentLocalization" : "Use Fluent localization"
+  },
+  "localization": {
+    "messageNotFound" : "Localization message not found",
+    "messageIsNull" : "Localization message is null"
   },
   "leftPanel": {
     "sectionName": {

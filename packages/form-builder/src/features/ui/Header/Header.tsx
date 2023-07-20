@@ -6,6 +6,7 @@ import {observer} from 'mobx-react'
 import {IconButton} from 'rsuite'
 import {FaIcon} from '../../components/Icons'
 import {JsonViewButton} from './components/JsonViewButton'
+import {LocalizationLanguagePicker} from './components/LocalizationLanguagePicker'
 import {Menu} from './components/Menu'
 import {ResolutionPicker} from './components/ResolutionPicker'
 import {ToggleModeButton} from './components/ToggleModeButton'
@@ -27,6 +28,7 @@ const Header = observer(() => {
       </LeftPart>
 
       <CenterPart>
+        <LocalizationLanguagePicker/>
         <ToggleModeButton/>
       </CenterPart>
 

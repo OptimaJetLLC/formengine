@@ -4,6 +4,7 @@ import {makeAutoObservable} from 'mobx'
 import {ComponentType} from 'react'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
 import {ActionEventArgs, DidMountEvent, EventName, WillUnmountEvent} from '../features/event'
+import {localizeProperties} from '../features/localization/localizer'
 import {OverrideRef} from '../features/ui/OverridesContext'
 import {ViewMode} from '../types'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
@@ -107,6 +108,7 @@ export class ComponentState {
       this.data.model.defaultProps,
       this.calculatedProps,
       this.substitutedValue,
+      this.localizedProps,
       this.className,
       this.value,
       this.events,
@@ -131,7 +133,14 @@ export class ComponentState {
   }
 
   /**
-   * @returns the component event handlers that send events to the event bus..
+   * @returns component localized properties.
+   */
+  get localizedProps() {
+    return localizeProperties(this.store, this.data.store)
+  }
+
+  /**
+   * @returns the component event handlers that send events to the event bus.
    */
   get events() {
     return computeEvents(this.data, this.store)

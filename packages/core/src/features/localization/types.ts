@@ -21,6 +21,13 @@ export class Language {
     readonly bidi: BiDi = BiDi.LTR,
   ) {
   }
+
+  /**
+   * @returns Full code of the Language i.e en-US, en-GB etc.
+   */
+  get fullCode() {
+    return `${this.code}-${this.dialect}`
+  }
 }
 
 /**

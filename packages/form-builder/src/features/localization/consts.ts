@@ -1,11 +1,7 @@
 import createCache from '@emotion/cache'
+import {BiDi, defaultLanguage, Language} from '@react-form-builder/core'
 import {arEG, enUS, ruRU} from 'rsuite/esm/locales/index.js'
 import rtlPlugin from 'stylis-plugin-rtl'
-import {BiDi} from './bidi'
-import {Language} from './types'
-
-export const defaultLanguage: Language =
-  new Language('en', 'US', 'English', 'American English')
 
 export const languages: Language[] = [
   defaultLanguage,
@@ -41,3 +37,5 @@ export const cssUrls = {
   [BiDi.LTR]: cssFiles['../../../public/css/rsuite.min.css'],
   [BiDi.RTL]: cssFiles['../../../public/css/rsuite-rtl.min.css'],
 }
+
+export const fluentLanguageId = 'fluent'

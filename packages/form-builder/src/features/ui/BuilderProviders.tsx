@@ -1,4 +1,4 @@
-import {DefaultActions, Store, StoreProvider, ViewerPropsProvider} from '@react-form-builder/core'
+import {DefaultActions, Store, StoreProvider, useDestroy, ViewerPropsProvider} from '@react-form-builder/core'
 import {assign} from 'lodash-es'
 import {useLocalObservable} from 'mobx-react'
 import {ReactNode, useEffect, useMemo} from 'react'
@@ -40,10 +40,12 @@ export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {
   })
 
   const localStorageSynchronizer = useMemo(() => new LocalStorageSynchronizer(buildStore), [])
-  useEffect(() => () => {
+
+  useDestroy(() => {
     buildStore.destroy()
+    store.destroy()
     localStorageSynchronizer.destroy()
-  }, [])
+  })
 
   return (
     <ViewerPropsProvider value={observableProps}>

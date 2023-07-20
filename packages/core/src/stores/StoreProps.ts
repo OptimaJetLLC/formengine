@@ -2,7 +2,7 @@ import {ComponentType} from 'react'
 import {View} from '../features/define'
 import {ActionDefinition} from '../features/event'
 import {ViewMode} from '../types'
-import {ComponentStore} from './ComponentStore'
+import {PersistedForm} from './PersistedForm'
 
 /**
  * The form viewer properties.
@@ -14,7 +14,7 @@ export interface StoreProps {
    * @param name the form name.
    * @returns the object or {@link Promise} with the form.
    */
-  getForm?: (name?: string) => ComponentStore | Promise<ComponentStore>
+  getForm?: (name?: string) => PersistedForm | Promise<PersistedForm>
 
   /**
    * the form name.
@@ -54,4 +54,9 @@ export interface StoreProps {
    * Display resolution type.
    */
   viewMode?: ViewMode
+
+  /**
+   * The language of form.
+   */
+  language?: string
 }

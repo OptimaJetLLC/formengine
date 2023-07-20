@@ -1,9 +1,9 @@
+import {defaultLanguage, Language, OnInitCallback} from '@react-form-builder/core'
 import i18next from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import resourcesToBackend from 'i18next-resources-to-backend'
 import {initReactI18next} from 'react-i18next'
-import {defaultLanguage, languages} from './consts'
-import {Language, OnInitCallback} from './types'
+import {languages} from './consts'
 
 /**
  * Generates a complete language code for the specified language, e.g. en-US.

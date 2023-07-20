@@ -35,6 +35,13 @@ export class BaseBuilder<T> {
   }
 
   /**
+   * @returns the component property that can be localized.
+   */
+  get localize() {
+    return this.setup({localizable: true})
+  }
+
+  /**
    * Specifies the name of the component property.
    * @param name the property name.
    * @returns the modified instance of the builder.
