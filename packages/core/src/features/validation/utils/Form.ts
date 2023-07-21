@@ -65,6 +65,13 @@ export class Form {
   }
 
   /**
+   * Releases allocated resources, must be used when destroying an object instance.
+   */
+  dispose() {
+    this.fields.forEach(f => f.dispose())
+  }
+
+  /**
    * Sets the validation error message for all form data fields.
    * @param message the validation error message.
    */
@@ -84,8 +91,8 @@ export class Form {
   /**
    * Validates the data in the form.
    */
-  validate() {
-    this.fields.forEach(f => f.validate())
+  async validate() {
+    await Promise.allSettled([...this.fields.values()].map(f => f.validate()))
   }
 
   /**

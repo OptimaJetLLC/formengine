@@ -1,1 +1,1 @@
-export {ValidateEditor} from './ValidateEditor'
+export {ComponentValidationSettingsEditor} from './ComponentValidationSettingsEditor'

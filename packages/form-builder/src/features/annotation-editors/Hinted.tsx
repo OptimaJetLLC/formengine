@@ -8,8 +8,11 @@ import {useBuilderStore} from '../../utils/BuilderStoreContext'
 /**
  * React component properties for the {@link HintedLabel} component.
  */
-export interface HintedLabelProps extends HintedProps {
+export interface HintedLabelProps {
   htmlFor?: string
+  children: ReactNode
+  hint?: ReactNode
+  className?: string
 }
 
 /**

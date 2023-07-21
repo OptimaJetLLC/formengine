@@ -1,4 +1,4 @@
-import {boolean, define, number, set, string} from '@react-form-builder/builder/view'
+import {array, boolean, define, number, string} from '@react-form-builder/builder/view'
 import {NumericFormat} from 'react-number-format'
 import {NumericFormatProps} from 'react-number-format/types/types'
 import {inputProps} from '../commonProperties'
@@ -24,7 +24,7 @@ export const rsNumberFormat = define(RsNumberFormat)
     label: string.default('Number input'),
     value: number.valued,
     ...inputProps,
-    allowedDecimalSeparators: set,
+    allowedDecimalSeparators: array.ofString,
     allowLeadingZeros: boolean,
     allowNegative: boolean.default(true),
     decimalScale: number,

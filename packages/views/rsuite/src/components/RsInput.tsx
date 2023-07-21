@@ -11,17 +11,17 @@ interface RsInputProps extends InputProps {
   passwordMask?: boolean
 }
 
-const RsInput = ({style, className, label, passwordMask, ...props}: RsInputProps) => {
+const RsInput = ({style, className, label, passwordMask, value = '', ...props}: RsInputProps) => {
   const [visible, setVisible] = useState(false)
 
   const input = passwordMask
     ? <InputGroup inside>
-      <Input type={visible ? 'text' : 'password'} {...props}/>
+      <Input type={visible ? 'text' : 'password'} value={value} {...props}/>
       <InputGroup.Button onClick={() => setVisible(!visible)}>
         {visible ? <EyeIcon/> : <EyeSlashIcon/>}
       </InputGroup.Button>
     </InputGroup>
-    : <Input {...props}/>
+    : <Input value={value} {...props}/>
 
   return <RsLabeledInput style={style} className={className}>
     <RsRtlLabel>{label}</RsRtlLabel>
@@ -34,7 +34,7 @@ export const rsInput = define(RsInput)
   .props({
     label: string.default('Input').hinted('Input label').localize,
     ...inputProps,
-    value: string.default('').valued.localize,
+    value: string.valued.localize,
     passwordMask: boolean
   })
   .actions((props, def) => {

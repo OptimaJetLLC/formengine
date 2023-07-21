@@ -79,7 +79,7 @@ export class Definer<T extends object> {
    */
   build(): BuilderComponent {
     const propAns = toArray(this.data.properties)
-    const cssAns = toArray(this.data.cssObject, {type: 'Style', calculable: false})
+    const cssAns = toArray(this.data.cssObject, {annotationType: 'Style', calculable: false})
     const valuedAn = propAns.find(an => Boolean(an.valued)) ?? propAns.find(an => an.name === 'value')
 
     const model = new Model(
@@ -121,7 +121,7 @@ export const define = Definer.define
 
 function getDefault(annotations: Annotation[]): Readonly<Record<string, any>> {
   return annotations.reduce((props, an) => {
-    props[an.key] = an.schema?.getDefault()
+    props[an.key] = an.default
     return props
   }, {} as Record<string, any>)
 }

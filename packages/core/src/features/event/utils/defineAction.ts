@@ -33,14 +33,18 @@ export function defineAction<T>(
  */
 export type DefineActionHelper = typeof defineAction
 
+// todo rename ParametersDefinition => ParameterDefinition
 /**
  * The type to describe the action parameter.
  */
-export type ParametersDefinition<T> = (Key<T> | TypedKey<T>)
+export type ParametersDefinition<T> = PropertyKey<T> | TypedKey<T>
 
-type Key<T> = (keyof T & string)
+/**
+ * Component property key type.
+ */
+export type PropertyKey<T> = keyof T & string
 
-type TypedKey<T> = [Key<T>, ParameterType]
+type TypedKey<T> = [PropertyKey<T>, ParameterType]
 
 /**
  * Action function type.

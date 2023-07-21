@@ -1,4 +1,5 @@
-import {autorun, makeAutoObservable} from 'mobx'
+import {IReactionDisposer, makeAutoObservable} from 'mobx'
+import {ComponentStore} from '../../../stores/ComponentStore'
 import {FormViewerProps} from '../../form-viewer'
 import {Field} from './Field'
 import {Form} from './Form'
@@ -22,31 +23,32 @@ export class FormField implements Field {
    * @inheritDoc
    */
   touched = false
+  readonly #disposers: IReactionDisposer[]
 
   /**
    * Creates the nested form field with form data for the component.
-   * @param key the component key.
+   * @param componentStore the component settings.
    * @param form the nested form.
    * @param props the form viewer React component properties.
    */
-  constructor(readonly key: string, readonly form: Form, readonly props: FormViewerProps) {
+  constructor(
+    readonly componentStore: ComponentStore,
+    readonly form: Form,
+    readonly props: FormViewerProps
+  ) {
     makeAutoObservable(this, {
       form: true
     })
 
-    const disposer = autorun(() => {
-      const component = this.form.store.parentStore?.findComponent(this.key)
-      if (!component) {
-        // dispose async
-        setTimeout(() => disposer(), 0)
-        return
-      }
-
-      const val = component.props['storeDataInParentForm']?.value
-      this.storeDataInParentForm = typeof val === 'undefined' ? true : val
-      const formData = this.storeDataInParentForm ? props.data : props.data?.[this.key]
-      this.setValue(formData)
-    })
+    this.#disposers = [
+      // todo fix storeDataInParentForm
+      /*autorun(() => {
+        const val = componentStore.props['storeDataInParentForm']?.value
+        this.storeDataInParentForm = typeof val === 'undefined' ? true : val
+        const formData = this.storeDataInParentForm ? props.data : props.data?.[this.componentStore.key]
+        this.setValue(formData)
+      })*/
+    ]
   }
 
   /**
@@ -54,6 +56,13 @@ export class FormField implements Field {
    */
   get value(): unknown {
     return this.form.data
+  }
+
+  /**
+   * @inheritDoc
+   */
+  dispose() {
+    this.#disposers.forEach(dispose => dispose())
   }
 
   /**
@@ -99,7 +108,7 @@ export class FormField implements Field {
   /**
    * @inheritDoc
    */
-  validate(): void {
-    this.form.validate()
+  async validate() {
+    await this.form.validate()
   }
 }

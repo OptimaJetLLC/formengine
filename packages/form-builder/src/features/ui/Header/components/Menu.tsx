@@ -101,6 +101,7 @@ export const Menu = namedObserver('Menu', () => {
       <Dropdown.Item onSelect={store.clear.bind(store)} icon={<FaIcon icon={faTrash as unknown as IconDefinition}/>}>
         {t('leftMenu.clear')}
       </Dropdown.Item>
+      <Dropdown.Item onSelect={store.validate} children={t('leftMenu.validateForm')}/>
     </Dropdown>
     {promptDialog}
   </>

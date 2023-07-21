@@ -42,7 +42,7 @@ export interface Field {
   /**
    * Validates the field value.
    */
-  validate: () => void
+  validate: () => Promise<void>
 
   /**
    * Sets the field to its default value.
@@ -53,4 +53,9 @@ export interface Field {
    * Clears the data in the field.
    */
   clear: () => void
+
+  /**
+   * Releases allocated resources, must be used when destroying an object instance.
+   */
+  dispose: () => void
 }

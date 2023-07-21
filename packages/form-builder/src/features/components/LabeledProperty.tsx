@@ -1,3 +1,4 @@
+import {css} from '@emotion/css'
 import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
@@ -14,6 +15,14 @@ import {Annotation} from '../annotation/types/annotations/Annotation'
 import {useTranslationPart} from '../localization/hooks'
 import {Columns, LabeledInput} from './Containers'
 import {FaIcon} from './Icons'
+
+const afterRedAsterisk = css`
+  &:after {
+    padding-left: 3px;
+    content: "*";
+    color: red;
+  }
+`
 
 /**
  * The properties of the React {@link LabeledProperty} component.
@@ -100,10 +109,12 @@ export const LabeledProperty = ({idPrefix, annotation, getEditableProperty, chil
     }
   }
 
+  const className = annotation.required ? afterRedAsterisk : undefined
+
   return <LabeledInput {...props}>
     <Columns gap={10}>
       <CodeButton currentEditableProperty={defaultGetEditableProperty()} getEditableProperty={defaultGetEditableProperty}/>
-      <HintedLabel htmlFor={id} hint={getLabel('hint') || annotation.hint}>
+      <HintedLabel htmlFor={id} hint={getLabel('hint') || annotation.hint} className={className}>
         <>{getLabel('name') || annotation.name}</>
       </HintedLabel>
     </Columns>

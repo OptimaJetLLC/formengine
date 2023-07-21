@@ -221,6 +221,18 @@
                   "label": {
                     "value": "Last Name"
                   }
+                },
+                "schema": {
+                  "type": "string",
+                  "validations": [
+                    {
+                      "key": "custom",
+                      "args": {
+                        "code": "return await fetch(`https://jsonplaceholder.typicode.com/users?username=${value}`).then((response) => response.json()).then((user) => user.length === 0)",
+                        "message": "That username is taken. Try another."
+                      }
+                    }
+                  ]
                 }
               }
             ],

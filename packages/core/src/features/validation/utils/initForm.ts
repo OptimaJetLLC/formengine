@@ -19,9 +19,9 @@ function updateFnValue(form: Form) {
   }
 }
 
-function createFormField(key: string, model: Model, store: Store, viewerProps: Readonly<FormViewerProps>) {
+function createFormField(cs: ComponentStore, model: Model, store: Store, viewerProps: Readonly<FormViewerProps>) {
   if (!model.type.startsWith(templateTypeNamePrefix)) {
-    return new SimpleField(store, viewerProps, key, model, updateFnValue(store.form))
+    return new SimpleField(store, viewerProps, cs, model, updateFnValue(store.form))
   }
 
   const formViewerProps = {
@@ -36,8 +36,8 @@ function createFormField(key: string, model: Model, store: Store, viewerProps: R
     viewMode: viewerProps.viewMode
   } as FormViewerProps
 
-  const childStore = new Store(formViewerProps, store.actions, false, store, key)
-  return new FormField(key, childStore.form, formViewerProps)
+  const childStore = new Store(formViewerProps, store.actions, false, store, cs.key)
+  return new FormField(cs, childStore.form, formViewerProps)
 }
 
 /**
@@ -53,7 +53,7 @@ export function initForm(componentStores: ComponentStore[], store: Store, props:
 
     let field = store.form.fields.get(componentStore.key)
     if (!field) {
-      field = createFormField(componentStore.key, model, store, props)
+      field = createFormField(componentStore, model, store, props)
       store.form.fields.set(componentStore.key, field)
     }
   })

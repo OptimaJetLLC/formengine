@@ -1,18 +1,18 @@
-import {getSchemaRules, SchemaType, useComponentData} from '@react-form-builder/core'
+import {useComponentData, ValidationRules} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
 import {Button, Dropdown} from 'rsuite'
 import {useMeta} from '../../../../utils/useMeta'
-import {Nullable} from './types'
 
 export const AddRuleButton = observer(() => {
   const {store} = useComponentData()
   const {t} = useTranslation()
   const meta = useMeta()
 
-  const rules = getSchemaRules(meta?.valuedAn?.schema?.constructor)
-  const type = meta?.valuedAn?.schema?.type as Nullable<SchemaType>
-  if (!rules || !type) return null
+  const type = meta?.valuedAn?.type
+  if (!type) return null
+
+  const rules = ValidationRules[type]
 
   return (
     <Dropdown
@@ -24,17 +24,19 @@ export const AddRuleButton = observer(() => {
       )}
     >
       {
-        Object.entries(rules).map(([key, rule]) => (
-          <Dropdown.Item
-            key={rule.name}
-            children={rule.name}
-            eventKey={key}
-            onSelect={(key) => {
-              store.schema ??= {type, rules: []}
-              store.schema.rules.push(key)
-            }}
-          />
-        ))
+        Object.entries(rules)
+          .filter(([key]) => !store.schema?.validations?.find(rule => rule.key === key))
+          .map(([key]) => (
+            <Dropdown.Item
+              key={key}
+              children={t(`validation.rule.${key}`)}
+              eventKey={key}
+              onSelect={(key) => {
+                store.schema ??= {type, validations: []}
+                store.schema.validations?.push({key})
+              }}
+            />
+          ))
       }
     </Dropdown>
   )

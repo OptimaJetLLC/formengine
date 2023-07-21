@@ -1,12 +1,11 @@
 import styled from '@emotion/styled'
 import {ComponentDataProvider, ComponentStore} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
-import {createElement, useEffect} from 'react'
+import {useEffect} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
-import {AnnotationProvider} from '../../../../../utils/EditorContext'
 import {key, stylization} from '../../../../annotation'
-import {EditorMap} from '../../../../annotation-editors'
 import {Annotation} from '../../../../annotation/types/annotations/Annotation'
+import {PropertyEditorWrapper} from '../../../../components/PropertyEditorWrapper'
 import {CenteredLabel} from '../../../../components/Labels'
 import {useTranslationPart} from '../../../../localization/hooks'
 import {Section, SubSection} from '../Section'
@@ -55,23 +54,14 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
   const style = meta.css.filter(bySection(activeTab)).filter(bySubSection(undefined))
   const tooltipProps = current.filter(bySubSection(SubSection.Tooltip))
 
-  const keyContext = () => ({
-    get key() {
-      return selected.key
-    },
-    set key(value) {
-      selected.key = value
-    }
-  })
-
   return (
     <ComponentDataProvider value={data}>
       <Container>
         <PropertiesList>
-          {activeTab === Section.Main && <Property annotation={key} getContext={keyContext}/>}
+          {activeTab === Section.Main && <PropertyEditorWrapper annotation={key} getContext={() => data.store}/>}
           <PropertyBlock annotations={properties} context={data.store.props}/>
           <StyleBlock annotations={style} store={data.store}/>
-          {activeTab === Section.Style && <Property annotation={stylization} getContext={() => ({})}/>}
+          {activeTab === Section.Style && <PropertyEditorWrapper annotation={stylization} getContext={() => ({})}/>}
         </PropertiesList>
 
         {!!tooltipProps?.length && store.viewer.tooltipType &&
@@ -108,19 +98,8 @@ export const PropertyBlock = ({annotations, context, header}: { annotations: Ann
 
   return <>
     {!!header && <h6>{header}</h6>}
-    {annotations.map(annotation => <Property key={annotation.key} annotation={annotation} getContext={() => context}/>)}
+    {annotations.map(annotation => <PropertyEditorWrapper key={annotation.key} annotation={annotation} getContext={() => context}/>)}
   </>
-}
-
-const Property = ({annotation, getContext}: { annotation: Annotation, getContext: () => object }) => {
-  // custom editors have the highest priority
-  const store = useBuilderStore()
-  const editor = store.customPropertyEditor(annotation.editor) ?? EditorMap[annotation.editor]
-  return (
-    <AnnotationProvider value={{annotation, getContext}}>
-      {createElement(observer(editor))}
-    </AnnotationProvider>
-  )
 }
 
 const PropertiesList = styled.div`

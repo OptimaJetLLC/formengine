@@ -1,13 +1,13 @@
 import {startCase} from 'lodash-es'
 import {Annotation} from '../../types/annotations/Annotation'
 import {PropertyAn} from '../../types/annotations/PropertyAn'
-import {SchemedBuilder} from './SchemedBuilder'
+import {TypedBuilder} from './TypedBuilder'
 
 /**
  * The abstract builder class to define the metadata property of the form builder component.
  * Used for properties where the property value can be selected from predefined values.
  */
-export abstract class QuantifierBuilder<T> extends SchemedBuilder<T> {
+export abstract class QuantifierBuilder<T> extends TypedBuilder<T> {
   values!: (string | number)[]
   labels?: string[]
 
@@ -15,8 +15,8 @@ export abstract class QuantifierBuilder<T> extends SchemedBuilder<T> {
    * Marks the component property as required.
    * @returns the modified instance of the builder.
    */
-  get required(): this {
-    return super.required as this
+  get required(): QuantifierBuilder<NonNullable<T>> {
+    return super.required as QuantifierBuilder<NonNullable<T>>
   }
 
   /**
@@ -51,6 +51,6 @@ export abstract class QuantifierBuilder<T> extends SchemedBuilder<T> {
    * @returns the modified instance of the builder.
    */
   default(value: T | T[]): this {
-    return this.setup({schema: this.annotation.schema?.default(value)})
+    return this.setup({default: value})
   }
 }

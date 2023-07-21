@@ -22,12 +22,13 @@ const COLUMNS = makeColumns([
  * The property editor for the HTML-attributes property type.
  * @returns the React element.
  */
-export default () => {
+export const AttributesInput = () => {
   const {store} = useComponentData()
   const {annotation} = useEditor()
   const getLabel = useTranslationPart('common')
   const [value, setValue] = useState(store.htmlAttributes)
   const [changed, setChanged] = useState(false)
+
   const handleChange = (value: any) => {
     setValue(value)
     setChanged(true)

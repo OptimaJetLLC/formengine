@@ -1,7 +1,7 @@
 import {makeAutoObservable, observable} from 'mobx'
 import {ActionData, EventName} from '../features/event'
 import {Css} from '../features/style/types'
-import {ValidationSchema} from '../features/validation/types'
+import type {BoundValueSchema} from '../features/validation'
 
 /**
  * The value of the component property.
@@ -32,7 +32,7 @@ export class ComponentStore {
   children?: ComponentStore[]
   slotsContent?: Record<string, ComponentStore>
 
-  schema?: ValidationSchema
+  schema?: BoundValueSchema
 
   htmlAttributes?: HtmlAttribute[]
   tooltipProps?: Record<string, ComponentProperty>

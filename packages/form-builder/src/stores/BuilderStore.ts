@@ -18,6 +18,7 @@ import {BuilderView} from '../features/define/utils/BuilderView'
 import {languages} from '../features/localization/consts'
 import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../features/localization/utils'
 import {PanelPlacement} from '../features/ui/PanelPlacement'
+import {annotationResolver} from '../features/validation'
 import type {FormBuilderProps} from '../FormBuilderProps'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {BuilderMode, BuilderTheme, ComponentMove, InsertPosition} from '../utils/types'
@@ -50,6 +51,7 @@ export class BuilderStore {
   localizationLanguage = defaultLanguage
   calculatedProperty?: EditableProperty
   lastSaveTime = new Date()
+  readonly errorMap = new Map<ComponentStore, Record<string, string | undefined>>
   readonly view: BuilderView
   readonly formStorageEnabled: boolean
   readonly selected = new Set<ComponentStore>()
@@ -94,6 +96,36 @@ export class BuilderStore {
     this.#disposer = [
       reaction(() => this.language, onLanguageChange),
     ]
+  }
+
+  /**
+   * Validates all properties of all components on the form.
+   */
+  validate = async () => {
+    await Promise.allSettled(this.viewer.reduceScreen((acc: Promise<string | undefined>[], current) => {
+      const meta = this.view.getMeta(current.type)
+
+      meta.properties.forEach(annotation => {
+        const validator = annotationResolver({annotation, store: this.viewer})
+        if (!this.errorMap.has(current)) {
+          this.errorMap.set(current, {})
+        }
+        const errors = this.errorMap.get(current)!
+        for (const key in current.props) {
+          acc.push(validator(current.props[key].value, this.viewer)
+            .then(error => {
+              if (!error) return errors[annotation.key] = undefined
+
+              const messages = error.map(e => e.message)
+                .filter(e => e !== 'undefined')
+                .join('; ')
+              return errors[annotation.key] = messages
+            }))
+        }
+      })
+
+      return acc
+    }, []))
   }
 
   /**
@@ -203,7 +235,6 @@ export class BuilderStore {
     } while (parent)
   }
 
-  //TODO post processing
   /**
    * Sets the form serialized in JSON as the current form.
    * @param text the form serialized in JSON.

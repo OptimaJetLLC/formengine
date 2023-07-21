@@ -1,0 +1,72 @@
+import {debounceTime, distinctUntilChanged, map, Subject, switchMap} from 'rxjs'
+import {Store} from '../../../stores/Store'
+import type {Setter} from '../../../types'
+import type {ValidationResult} from '../types/ValidationResult'
+
+/**
+ * A function that localizes validation error messages.
+ */
+export type ErrorMessageLocalizer = (value: ValidationResult[] | undefined) => string | undefined
+
+/**
+ * The function that validates a value and returns the validation result.
+ */
+export type ResolvedValidator = (value: any, store: Store) => Promise<ValidationResult[] | undefined>
+
+/**
+ * The validation function factory.
+ */
+export type SchemaResolver<T> = (value: T) => ResolvedValidator
+
+function concatErrorMessages(value: ValidationResult[] | undefined) {
+  if (!value) return undefined
+  return value?.map(result => result.message)
+    .filter(message => !!message)
+    .join('; ')
+}
+
+/**
+ * Binds all parts of the validation and performs the validation.
+ */
+export class DataValidator {
+  readonly #subject = new Subject<any>()
+  readonly #subscriptions
+  readonly #stream
+
+  private constructor(
+    store: Store,
+    validator: ResolvedValidator,
+    setter: Setter<string | undefined>,
+    errorMessageLocalizer?: ErrorMessageLocalizer
+  ) {
+    const localizer = errorMessageLocalizer ?? concatErrorMessages
+    this.#stream = this.#subject
+      .pipe(
+        debounceTime(200),
+        distinctUntilChanged(),
+        map(value => validator(value, store)),
+        switchMap(promise => promise),
+        map(localizer),
+      )
+    this.#subscriptions = [
+      this.#stream.subscribe(setter),
+    ]
+  }
+
+  static create = <T>(store: Store, resolver: SchemaResolver<T>, args: T, setter: Setter<string | undefined>) => {
+    return new DataValidator(store, resolver(args), setter)
+  }
+
+  validate = (value: any) => {
+    const promise = new Promise<string | undefined>(resolve => {
+      const subscribe = this.#stream.subscribe(next => {
+        resolve(next)
+        subscribe.unsubscribe()
+      })
+    })
+    this.#subject.next(value)
+    return promise
+  }
+
+  dispose = () => this.#subscriptions.forEach(s => s.unsubscribe())
+}

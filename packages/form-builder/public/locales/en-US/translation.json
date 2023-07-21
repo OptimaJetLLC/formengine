@@ -178,6 +178,7 @@
     "clear": "Clear",
     "save": "Save",
     "saveAs": "Save as...",
+    "validateForm": "Validate form",
     "currentFormName": "The name of the current form",
     "formSaved": "The form is saved",
     "formSaveError": "Failed to save form! See the logs in the browser console",
@@ -281,8 +282,36 @@
     "type": "Type"
   },
   "validation": {
+    "showFormErrors": "Show form errors",
+    "formErrors": "Form errors",
+    "validationRules": "Validation rules",
+    "removeRule": "Remove rule",
     "chooseValidation": "Choose your type",
-    "addRule": "Add rule"
+    "addRule": "Add rule",
+    "rule": {
+      "required": "Required",
+      "nonEmpty": "Non empty",
+      "length": "Length",
+      "min": "Min",
+      "max": "Max",
+      "regex": "Regex",
+      "email": "Email",
+      "url": "Url",
+      "uuid": "Uuid",
+      "ip": "Ip",
+      "datetime": "Datetime",
+      "includes": "Includes",
+      "startsWith": "Starts with",
+      "endsWith": "Ends with",
+      "custom": "Custom",
+      "truthy": "Truthy",
+      "falsy": "Falsy",
+      "lessThan": "Less than",
+      "moreThan": "More than",
+      "integer": "Integer",
+      "multipleOf": "Multiple of",
+      "finite": "Finite"
+    }
   },
   "promptDialog": {
     "ok": "OK",

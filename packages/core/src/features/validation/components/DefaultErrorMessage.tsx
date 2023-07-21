@@ -23,7 +23,6 @@ export interface ErrorWrapperProps {
 const ErrorMessageStyle = css`
   font-size: 12px;
   color: var(--red-600);
-  width: 400px;
   margin-top: 0.25rem;
 
   &:before {
@@ -40,9 +39,7 @@ const DefaultErrorMessage = ({children, error, className}: ErrorWrapperProps) =>
   return (
     <>
       {children}
-      {error && <div className={cx(className, ErrorMessageStyle)}>
-        {error}
-      </div>}
+      {error && <p className={cx(className, ErrorMessageStyle)} children={error}/>}
     </>
   )
 }

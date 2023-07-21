@@ -14,6 +14,7 @@ const data = {
   'Template:Test form 1': {login: 'tortuga', password: 'man!', agreement: false},
   'Agreement Title': 'Data in agreement template',
   'Input in template': 'Data in template level 1',
+  ['last name']: 'Bret',
 }
 
 const components = [...rSuiteComponents, ...antdComponents].map(definer => definer.build())

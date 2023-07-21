@@ -5,6 +5,7 @@ import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo.js'
 import {observer} from 'mobx-react'
 import {IconButton} from 'rsuite'
 import {FaIcon} from '../../components/Icons'
+import {ErrorsPanel} from './components/ErrorsPanel'
 import {JsonViewButton} from './components/JsonViewButton'
 import {LocalizationLanguagePicker} from './components/LocalizationLanguagePicker'
 import {Menu} from './components/Menu'
@@ -34,6 +35,7 @@ const Header = observer(() => {
 
       <RightPart>
         <ResolutionPicker/>
+        <ErrorsPanel/>
         <JsonViewButton/>
         <ToggleTheme/>
       </RightPart>

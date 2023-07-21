@@ -86,7 +86,7 @@ export const CodeEditorPanel = namedObserver('CodeEditorPanel', ({editableProper
 
   const functionHeader = `/**
 * @param {Form} form
-* @return {${editableProperty.annotation.schema?.type}}
+* @return {${editableProperty.annotation.type}}
 */
 function Calculation (form) {`
 

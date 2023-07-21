@@ -7,7 +7,7 @@ import {useTranslationPart} from '../localization/hooks'
  * The property editor for property of type "multiple select", displays values as a tag editor.
  * @returns the React element.
  */
-export const SetInput = () => {
+export const ArrayOfStringInput = () => {
   const {value, onChange, annotation, onRemove} = useEditor()
   const t = useTranslationPart('propertiesEditor')
 

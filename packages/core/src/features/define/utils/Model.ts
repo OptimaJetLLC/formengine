@@ -10,10 +10,10 @@ import {ActionsInitializer} from '../types'
 /**
  * Represents component metadata for the form viewer.
  */
-export class Model {
+export class Model<T = any> {
   readonly #name?: string
   //TODO Rename to component? For avoid const Error = props.view.error.view
-  readonly view: ComponentType<any>
+  readonly view: ComponentType<T>
 
   /**
    * Creates component metadata for the form viewer.
@@ -26,7 +26,7 @@ export class Model {
    * @param typeName the component type name.
    */
   constructor(
-    view: ComponentType<any>,
+    view: ComponentType<T>,
     name?: string,
     readonly actionsInitializer?: ActionsInitializer,
     readonly valued?: string,

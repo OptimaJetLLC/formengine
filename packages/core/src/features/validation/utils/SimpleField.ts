@@ -1,10 +1,16 @@
-import {autorun, makeAutoObservable} from 'mobx'
+import {autorun, makeAutoObservable, observable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {Store} from '../../../stores/Store'
 import {Model} from '../../define'
-import {FormViewerProps} from '../../form-viewer'
+import type {FormViewerProps} from '../../form-viewer'
 import {Field} from './Field'
-import {parseSchema} from './parseSchema'
+import {DataValidator} from './DataValidator'
+import {validatorsResolver} from './validatorsResolver'
+
+/**
+ * Type for the function that disposes resources.
+ */
+export type Disposer = () => void
 
 /**
  * Field with form data, contains only one value.
@@ -30,19 +36,21 @@ export class SimpleField implements Field {
    * @inheritDoc
    */
   valued: string
+  dataValidator?: DataValidator
+  readonly #disposers: Disposer[]
 
   /**
    * Creates the field with form data for the component.
    * @param store the form viewer settings.
    * @param props the form viewer React component properties.
-   * @param key the component key.
+   * @param componentStore the component settings.
    * @param model the component metadata for the form viewer.
    * @param valueCalculator the function to get a calculated value for the field.
    */
   constructor(
     readonly store: Store,
     props: Readonly<FormViewerProps>,
-    readonly key: string,
+    readonly componentStore: ComponentStore,
     readonly model: Model,
     readonly valueCalculator: (component: ComponentStore, key: string) => [boolean, any?]
   ) {
@@ -51,63 +59,57 @@ export class SimpleField implements Field {
 
     makeAutoObservable(this, {
       model: false,
-      valueCalculator: false
+      valueCalculator: false,
+      dataValidator: observable.ref
     })
 
-    const disposer = autorun(() => {
-      const component = this.store.findComponent(this.key)
-      if (!component) {
-        // dispose async
-        setTimeout(() => disposer(), 0)
-        return
-      }
-
-      const [calculated, value] = this.valueCalculator(component, this.valued)
-      if (calculated) {
-        this.value = value
-        return
-      }
-      this.value = props.data?.[component.key] ?? this.initialValue
-    })
-  }
-
-  /**
-   * @returns the validation scheme for the field data.
-   */
-  get schema() {
-    // if data contains a component that is not on the form
-    if (!this.store.findComponent(this.key)) return
-    return parseSchema(this.componentStore.schema)
+    this.#disposers = [
+      autorun(() => this.dataValidator = DataValidator.create(
+        store,
+        validatorsResolver,
+        componentStore.schema,
+        error => this.error = error)),
+      autorun(() => {
+        const [calculated, value] = this.valueCalculator(componentStore, this.valued)
+        if (calculated) {
+          this.value = value
+          return
+        }
+        this.value = props.data?.[componentStore.key] ?? this.initialValue
+      }),
+      () => this.dataValidator?.dispose()
+    ]
   }
 
   /**
    * @returns the initial value for the field.
    */
   get initialValue() {
-    return this.componentStore.props[this.valued]?.value ?? this.model.defaultProps?.[this.valued]
+    return this.componentStore.props[this.valued]?.value ?? this.defaultValue
   }
 
   /**
-   * @returns the component settings for the field.
+   * @returns the default value for the field.
    */
-  get componentStore() {
-    return this.store.getComponent(this.key)
+  get defaultValue() {
+    return this.model.defaultProps?.[this.valued]
   }
 
   /**
-   * @returns true if the field can be automatically transformed.
-   * @internal
+   * @inheritDoc
    */
-  get autoTransform() {
-    return this.componentStore.schema?.autoTransform
+  dispose() {
+    this.#disposers.forEach(dispose => dispose())
   }
 
   /**
    * @inheritDoc
    */
   setValue(value: unknown) {
-    this.value = (this.autoTransform && this.schema?.cast(value)) || value
-    this.validate()
+    //TODO Transformation
+    //this.value = (this.autoTransform && this.schema?.parse(value)) || value
+    this.value = value
+    if (this.componentStore.schema?.autoValidate !== false) this.validate()
   }
 
   /**
@@ -120,21 +122,15 @@ export class SimpleField implements Field {
   /**
    * @inheritDoc
    */
-  validate() {
-    this.schema?.validate(this.value)
-      .then(() => {
-        return this.error = undefined
-      })
-      .catch(reason => {
-        return this.error = reason.errors[0]
-      })
+  async validate() {
+    await this.dataValidator?.validate?.(this.value)
   }
 
   /**
    * @inheritDoc
    */
   reset() {
-    this.value = this.initialValue ?? this.schema?.getDefault()
+    this.value = this.initialValue ?? this.defaultValue
     this.error = undefined
   }
 
@@ -142,7 +138,7 @@ export class SimpleField implements Field {
    * @inheritDoc
    */
   clear() {
-    this.value = this.schema?.getDefault()
+    this.value = this.defaultValue
     this.touched = false
     this.error = undefined
   }

@@ -36,3 +36,8 @@ export interface ComponentTreeProps {
   parentStore?: ComponentStore
   data: ComponentStore[]
 }
+
+/**
+ * Value setting function type.
+ */
+export type Setter<T = any> = (value: T) => void

@@ -20,5 +20,5 @@ export const createAnnotation = AnnotationBuilder.create
  * @returns the instance of the builder class to define the property's metadata.
  */
 export function createProperty(editor: FirstParameter<typeof createAnnotation>) {
-  return createAnnotation(editor).setup({type: 'Property'})
+  return createAnnotation(editor).setup({annotationType: 'Property'})
 }

@@ -1,9 +1,10 @@
-import * as yup from 'yup'
-import {EditorType, Enum} from '../../types'
+import type {SchemaType, SchemaTypeMap} from '@react-form-builder/core'
+import type {EditorType, Enum} from '../../types'
+import {ArrayBuilder} from './ArrayBuilder'
 import {BaseBuilder} from './BaseBuilder'
 import {OneOfBuilder} from './OneOfBuilder'
-import {FromYup, SchemedBuilder} from './SchemedBuilder'
 import {SomeOfBuilder} from './SomeOfBuilder'
+import {TypedBuilder} from './TypedBuilder'
 
 /**
  * The builder class to define the metadata property of the form builder component.
@@ -22,12 +23,22 @@ export class AnnotationBuilder<T> extends BaseBuilder<T> {
   static create = <T>(editor: EditorType) => new this<T>(editor)
 
   /**
-   * Sets the validation scheme for the component property.
-   * @param schema the validation scheme.
+   * Sets the property as a "array" property.
    * @returns the instance of the metadata property builder.
    */
-  schemed<T extends yup.AnySchema>(schema: T) {
-    return new SchemedBuilder<FromYup<T>>().setup({...this.options, ...this.annotation, schema: schema})
+  get array() {
+    return new ArrayBuilder<T[] | undefined>()
+      .setup({...this.options, ...this.annotation, type: 'array'})
+  }
+
+  /**
+   * Sets the field type for the component property.
+   * @param type the field type.
+   * @returns the instance of the metadata property builder.
+   */
+  typed<T extends SchemaType>(type: T) {
+    return new TypedBuilder<SchemaTypeMap[T] | undefined>()
+      .setup({...this.options, ...this.annotation, type})
   }
 
   /**
@@ -36,7 +47,7 @@ export class AnnotationBuilder<T> extends BaseBuilder<T> {
    * @returns the instance of the metadata property builder.
    */
   oneOf<U extends string | number, D extends [U, ...U[]]>(...values: D) {
-    const result = new OneOfBuilder<Enum<D>>().setup({...this.options, ...this.annotation, schema: yup.mixed()})
+    const result = new OneOfBuilder<Enum<D>>().setup({...this.options, ...this.annotation, type: 'enum'})
     result.values = values
     return result
   }
@@ -47,7 +58,7 @@ export class AnnotationBuilder<T> extends BaseBuilder<T> {
    * @returns the instance of the metadata property builder.
    */
   someOf<U extends string | number, D extends [U, ...U[]]>(...values: D) {
-    const result = new SomeOfBuilder<Enum<D>>().setup({...this.options, ...this.annotation, schema: yup.mixed()})
+    const result = new SomeOfBuilder<Enum<D>>().setup({...this.options, ...this.annotation, type: 'enum'})
     result.values = values
     return result
   }

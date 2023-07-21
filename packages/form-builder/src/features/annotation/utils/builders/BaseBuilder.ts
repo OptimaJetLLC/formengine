@@ -5,7 +5,7 @@ import {AnnotationType} from '../../types'
 import {Annotation} from '../../types/annotations/Annotation'
 
 class BuilderOptions {
-  type: AnnotationType = 'Module'
+  annotationType: AnnotationType = 'Module'
   autoName = true
 }
 
@@ -75,9 +75,9 @@ export class BaseBuilder<T> {
    * @returns the modified instance of the builder.
    */
   setup(options: BuilderSetup): this {
-    const {type, autoName, ...annotation} = options
+    const {annotationType, autoName, ...annotation} = options
     const clone = this.clone()
-    clone.options.type = type ?? clone.options.type
+    clone.options.annotationType = annotationType ?? clone.options.annotationType
     clone.options.autoName = autoName ?? clone.options.autoName
     assign(clone.annotation, annotation)
     return clone
@@ -102,7 +102,7 @@ export class BaseBuilder<T> {
    */
   build(key: string): Annotation {
     const name = this.getName(key)
-    const annotation = new AnnotationMap[this.options.type](key, name)
+    const annotation = new AnnotationMap[this.options.annotationType](key, name)
     assign(annotation, this.annotation)
     return annotation
   }

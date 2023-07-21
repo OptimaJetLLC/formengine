@@ -16,6 +16,26 @@ import {PersistedForm} from './PersistedForm'
 import {StoreProps} from './StoreProps'
 
 /**
+ * Reduction function type.
+ */
+type ReduceCallback<U, T> = (accumulator: T, current: U) => T
+
+/**
+ * Type for a tree object.
+ */
+type Tree<T, U extends keyof T> = T & { [K in U]: Tree<T, K>[] | undefined }
+
+function reduceTree<U extends object, T, K extends keyof U>(tree: Tree<U, K>,
+                                                            callback: ReduceCallback<Tree<U, K>, T>,
+                                                            initialValue: T, childKey: K) {
+  let accumulator = callback(initialValue, tree)
+  tree[childKey]?.forEach((child: Tree<U, K>) => {
+    accumulator = reduceTree(child, callback, accumulator, childKey)
+  })
+  return accumulator
+}
+
+/**
  * The form viewer settings.
  */
 export class Store {
@@ -176,6 +196,16 @@ export class Store {
       result = treeFind(slots[slotName], key)
       if (result) return result
     }
+  }
+
+  /**
+   * Performs the callback function on each element of the component tree, accumulates the return values.
+   * @param callback the function that calculates the value for the accumulator.
+   * @param initialValue the initial value for the accumulator.
+   * @returns the accumulated value.
+   */
+  reduceScreen<T>(callback: (accumulator: T, current: ComponentStore) => T, initialValue: T) {
+    return reduceTree(this.screen, callback, initialValue, 'children')
   }
 
   /**
