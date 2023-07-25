@@ -63,7 +63,7 @@ const useDropZone = (isAfter: boolean, isInner?: boolean): [DropState, ConnectDr
           store.add(source, target, insertPosition)
           break
         case ItemType.Component:
-          //TODO механизм биндинга свойств
+          //TODO the mechanism of binding properties
           source.store.bindTo = bindTo
           if (store.selected.size > 1) {
             store.multipleMove(target, insertPosition)

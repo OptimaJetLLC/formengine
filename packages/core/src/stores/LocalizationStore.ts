@@ -57,7 +57,7 @@ export class LocalizationStore {
 
   /**
    * Returns all localization constants for the specified languageFullCode.
-   * @param languageFullCode еhe full code (en-US, en-GB etc.) of the language we are looking to localize.
+   * @param languageFullCode the full code (en-US, en-GB etc.) of the language we are looking to localize.
    * @returns all localization constants for the specified languageFullCode.
    */
   getLocalizationItems(languageFullCode: string) {

@@ -21,41 +21,41 @@ Creates an instance of the [View](react_form_builder_core.View.md).
 
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
-| `models` | [`Model`](react_form_builder_core.Model.md)[] | `[]` | the components metadata. |
+| `models` | [`Model`](react_form_builder_core.Model.md)<`any`\>[] | `[]` | the components metadata. |
 
 ## Properties
 
 ### #error
 
-• `Private` `Optional` **#error**: [`Model`](react_form_builder_core.Model.md)
+• `Private` `Optional` **#error**: [`Model`](react_form_builder_core.Model.md)<`any`\>
 
 ___
 
 ### #modelMap
 
-• `Private` **#modelMap**: `Map`<`string`, [`Model`](react_form_builder_core.Model.md)\>
+• `Private` **#modelMap**: `Map`<`string`, [`Model`](react_form_builder_core.Model.md)<`any`\>\>
 
 ___
 
 ### #templateMap
 
-• `Private` **#templateMap**: `Map`<`string`, [`Model`](react_form_builder_core.Model.md)\>
+• `Private` **#templateMap**: `Map`<`string`, [`Model`](react_form_builder_core.Model.md)<`any`\>\>
 
 ___
 
 ### #tooltips
 
-• `Private` **#tooltips**: `Map`<`string`, [`Model`](react_form_builder_core.Model.md)\>
+• `Private` **#tooltips**: `Map`<`string`, [`Model`](react_form_builder_core.Model.md)<`any`\>\>
 
 ## Accessors
 
 ### error
 
-• `get` **error**(): [`Model`](react_form_builder_core.Model.md)
+• `get` **error**(): [`Model`](react_form_builder_core.Model.md)<`any`\> \| [`Model`](react_form_builder_core.Model.md)<[`ErrorWrapperProps`](../interfaces/react_form_builder_core.ErrorWrapperProps.md)\>
 
 #### Returns
 
-[`Model`](react_form_builder_core.Model.md)
+[`Model`](react_form_builder_core.Model.md)<`any`\> \| [`Model`](react_form_builder_core.Model.md)<[`ErrorWrapperProps`](../interfaces/react_form_builder_core.ErrorWrapperProps.md)\>
 
 the component's metadata for displaying the error on the form.
 
@@ -75,11 +75,11 @@ the array of strings with the names of the component types of the tooltip.
 
 ### all
 
-▸ **all**(): [`Model`](react_form_builder_core.Model.md)[]
+▸ **all**(): [`Model`](react_form_builder_core.Model.md)<`any`\>[]
 
 #### Returns
 
-[`Model`](react_form_builder_core.Model.md)[]
+[`Model`](react_form_builder_core.Model.md)<`any`\>[]
 
 all component metadata for the form viewer.
 
@@ -95,7 +95,7 @@ Defines the component's metadata for the form viewer.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `model` | [`Model`](react_form_builder_core.Model.md) | the component's metadata. |
+| `model` | [`Model`](react_form_builder_core.Model.md)<`any`\> | the component's metadata. |
 
 #### Returns
 
@@ -105,7 +105,7 @@ ___
 
 ### get
 
-▸ **get**(`type`): [`Model`](react_form_builder_core.Model.md)
+▸ **get**(`type`): [`Model`](react_form_builder_core.Model.md)<`any`\> \| [`Model`](react_form_builder_core.Model.md)<`InternalErrorProps`\>
 
 Returns the component's metadata for the form viewer for the specified type.
 
@@ -117,7 +117,7 @@ Returns the component's metadata for the form viewer for the specified type.
 
 #### Returns
 
-[`Model`](react_form_builder_core.Model.md)
+[`Model`](react_form_builder_core.Model.md)<`any`\> \| [`Model`](react_form_builder_core.Model.md)<`InternalErrorProps`\>
 
 the component metadata for the form viewer for the specified type.
 
@@ -125,7 +125,7 @@ ___
 
 ### getTooltipComponent
 
-▸ **getTooltipComponent**(`name`): `undefined` \| [`Model`](react_form_builder_core.Model.md)
+▸ **getTooltipComponent**(`name`): `undefined` \| [`Model`](react_form_builder_core.Model.md)<`any`\>
 
 Returns the component's metadata for displaying the tooltip.
 
@@ -137,7 +137,7 @@ Returns the component's metadata for displaying the tooltip.
 
 #### Returns
 
-`undefined` \| [`Model`](react_form_builder_core.Model.md)
+`undefined` \| [`Model`](react_form_builder_core.Model.md)<`any`\>
 
 the component's metadata for displaying the tooltip.
 
@@ -145,11 +145,11 @@ ___
 
 ### templates
 
-▸ **templates**(): [`Model`](react_form_builder_core.Model.md)[]
+▸ **templates**(): [`Model`](react_form_builder_core.Model.md)<`any`\>[]
 
 #### Returns
 
-[`Model`](react_form_builder_core.Model.md)[]
+[`Model`](react_form_builder_core.Model.md)<`any`\>[]
 
 the templates metadata for the form viewer.
 
@@ -165,7 +165,7 @@ Defines the component's metadata for displaying the error on the form.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `model` | [`Model`](react_form_builder_core.Model.md) | the component's metadata. |
+| `model` | [`Model`](react_form_builder_core.Model.md)<`any`\> | the component's metadata. |
 
 #### Returns
 
@@ -205,7 +205,7 @@ Defines the component's metadata for displaying the tooltip.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `model` | [`Model`](react_form_builder_core.Model.md) | the component's metadata. |
+| `model` | [`Model`](react_form_builder_core.Model.md)<`any`\> | the component's metadata. |
 
 #### Returns
 
@@ -225,7 +225,7 @@ Static wrapper for the [View](react_form_builder_core.View.md) constructor.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...models` | [`Model`](react_form_builder_core.Model.md)[] | the components metadata. |
+| `...models` | [`Model`](react_form_builder_core.Model.md)<`any`\>[] | the components metadata. |
 
 #### Returns
 

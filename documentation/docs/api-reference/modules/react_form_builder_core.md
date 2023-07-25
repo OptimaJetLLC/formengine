@@ -6,10 +6,19 @@ sidebar_position: 0
 custom_edit_url: null
 ---
 
+## Enumerations
+
+- [BiDi](../enums/react_form_builder_core.BiDi.md)
+
 ## Classes
 
 - [ActionEventArgs](../classes/react_form_builder_core.ActionEventArgs.md)
+- [BaseCompilationResult](../classes/react_form_builder_core.BaseCompilationResult.md)
+- [CompilationResult](../classes/react_form_builder_core.CompilationResult.md)
 - [ComponentStore](../classes/react_form_builder_core.ComponentStore.md)
+- [DataValidator](../classes/react_form_builder_core.DataValidator.md)
+- [Language](../classes/react_form_builder_core.Language.md)
+- [LocalizationStore](../classes/react_form_builder_core.LocalizationStore.md)
 - [Model](../classes/react_form_builder_core.Model.md)
 - [Store](../classes/react_form_builder_core.Store.md)
 - [View](../classes/react_form_builder_core.View.md)
@@ -20,6 +29,7 @@ custom_edit_url: null
 - [CustomActionDefinition](../interfaces/react_form_builder_core.CustomActionDefinition.md)
 - [ErrorWrapperProps](../interfaces/react_form_builder_core.ErrorWrapperProps.md)
 - [FormViewerProps](../interfaces/react_form_builder_core.FormViewerProps.md)
+- [PersistedForm](../interfaces/react_form_builder_core.PersistedForm.md)
 - [ScreenProps](../interfaces/react_form_builder_core.ScreenProps.md)
 - [StoreProps](../interfaces/react_form_builder_core.StoreProps.md)
 
@@ -66,22 +76,6 @@ The type of function that initializes an actions on a component.
 
 ___
 
-### CompilationResult
-
-Ƭ **CompilationResult**: `Object`
-
-The result of compiling the function.
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `error` | `boolean` |
-| `exception?` | `Error` |
-| `fn?` | `Function` |
-
-___
-
 ### ComponentData
 
 Ƭ **ComponentData**: `Object`
@@ -105,6 +99,60 @@ ___
 Ƭ **Device**: ``"any"`` \| [`ViewMode`](react_form_builder_core.md#viewmode)
 
 Display resolution type of the form builder.
+
+___
+
+### Disposer
+
+Ƭ **Disposer**: () => `void`
+
+#### Type declaration
+
+▸ (): `void`
+
+Type for the function that disposes resources.
+
+##### Returns
+
+`void`
+
+___
+
+### LocalizationTestResult
+
+Ƭ **LocalizationTestResult**: `Object`
+
+Localization testing result.
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `error` | `boolean` |
+| `exceptions?` | `Error`[] |
+| `result?` | `string` |
+
+___
+
+### OnInitCallback
+
+Ƭ **OnInitCallback**: (`language`: `string`) => `void`
+
+#### Type declaration
+
+▸ (`language`): `void`
+
+The type of callback function called during language initialization.
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `language` | `string` |
+
+##### Returns
+
+`void`
 
 ___
 
@@ -132,11 +180,135 @@ Parameter type.
 
 ___
 
+### ResolvedValidator
+
+Ƭ **ResolvedValidator**: (`value`: `any`, `store`: [`Store`](../classes/react_form_builder_core.Store.md)) => `Promise`<`ValidationResult`[] \| `undefined`\>
+
+#### Type declaration
+
+▸ (`value`, `store`): `Promise`<`ValidationResult`[] \| `undefined`\>
+
+The function that validates a value and returns the validation result.
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `value` | `any` |
+| `store` | [`Store`](../classes/react_form_builder_core.Store.md) |
+
+##### Returns
+
+`Promise`<`ValidationResult`[] \| `undefined`\>
+
+___
+
+### RuleValidator
+
+Ƭ **RuleValidator**<`T`\>: (`value`: `T`, `store`: [`Store`](../classes/react_form_builder_core.Store.md)) => [`RuleValidatorResult`](react_form_builder_core.md#rulevalidatorresult) \| `Promise`<[`RuleValidatorResult`](react_form_builder_core.md#rulevalidatorresult)\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
+
+#### Type declaration
+
+▸ (`value`, `store`): [`RuleValidatorResult`](react_form_builder_core.md#rulevalidatorresult) \| `Promise`<[`RuleValidatorResult`](react_form_builder_core.md#rulevalidatorresult)\>
+
+The function that checks the value and returns the result of the rule validation, see [RuleValidatorResult](react_form_builder_core.md#rulevalidatorresult).
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `value` | `T` |
+| `store` | [`Store`](../classes/react_form_builder_core.Store.md) |
+
+##### Returns
+
+[`RuleValidatorResult`](react_form_builder_core.md#rulevalidatorresult) \| `Promise`<[`RuleValidatorResult`](react_form_builder_core.md#rulevalidatorresult)\>
+
+___
+
+### RuleValidatorResult
+
+Ƭ **RuleValidatorResult**: `string` \| `boolean`
+
+The result of validation of a single rule, true means validation was successful,
+false means validation failed, string means error message.
+
+___
+
 ### SchemaType
 
-Ƭ **SchemaType**: ``"string"`` \| ``"number"`` \| ``"boolean"`` \| ``"date"`` \| ``"object"`` \| ``"array"``
+Ƭ **SchemaType**: keyof [`SchemaTypeMap`](react_form_builder_core.md#schematypemap)
 
-The type of the validated object.
+The value type name.
+
+___
+
+### SchemaTypeMap
+
+Ƭ **SchemaTypeMap**: `Object`
+
+Describes the mapping of a value type name to a type.
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `array` | `any`[] |
+| `boolean` | `boolean` |
+| `date` | `string` |
+| `enum` | `any` |
+| `number` | `number` |
+| `object` | `object` |
+| `string` | `string` |
+
+___
+
+### Setter
+
+Ƭ **Setter**<`T`\>: (`value`: `T`) => `void`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
+
+#### Type declaration
+
+▸ (`value`): `void`
+
+Value setting function type.
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `value` | `T` |
+
+##### Returns
+
+`void`
+
+___
+
+### ValidationRuleSettings
+
+Ƭ **ValidationRuleSettings**: `Object`
+
+The validation rule settings.
+
+#### Type declaration
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `args?` | `Record`<`string`, `any`\> | Arguments of the validation rule. |
+| `key` | `string` | The unique key of the validation rule. The key is unique within the value type. |
 
 ___
 
@@ -214,6 +386,12 @@ ___
 
 ___
 
+### ValidationRules
+
+• `Const` **ValidationRules**: `Record`<[`SchemaType`](react_form_builder_core.md#schematype), `ValidationRuleSet`\>
+
+___
+
 ### WillUnmountEvent
 
 • `Const` **WillUnmountEvent**: ``"onWillUnmount"``
@@ -226,6 +404,12 @@ ___
 
 ___
 
+### defaultLanguage
+
+• `Const` **defaultLanguage**: [`Language`](../classes/react_form_builder_core.Language.md)
+
+___
+
 ### emptyComponentStore
 
 • `Const` **emptyComponentStore**: [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md)
@@ -234,13 +418,13 @@ ___
 
 ### errorMessageModel
 
-• `Const` **errorMessageModel**: [`Model`](../classes/react_form_builder_core.Model.md)
+• `Const` **errorMessageModel**: [`Model`](../classes/react_form_builder_core.Model.md)<[`ErrorWrapperProps`](../interfaces/react_form_builder_core.ErrorWrapperProps.md)\>
 
 ___
 
 ### internalErrorModel
 
-• `Const` **internalErrorModel**: [`Model`](../classes/react_form_builder_core.Model.md)
+• `Const` **internalErrorModel**: [`Model`](../classes/react_form_builder_core.Model.md)<`InternalErrorProps`\>
 
 Form viewer internal error metadata.
 
@@ -248,13 +432,13 @@ ___
 
 ### screenModel
 
-• `Const` **screenModel**: [`Model`](../classes/react_form_builder_core.Model.md)
+• `Const` **screenModel**: [`Model`](../classes/react_form_builder_core.Model.md)<[`ScreenProps`](../interfaces/react_form_builder_core.ScreenProps.md)\>
 
 ___
 
 ### slotModel
 
-• `Const` **slotModel**: [`Model`](../classes/react_form_builder_core.Model.md)
+• `Const` **slotModel**: [`Model`](../classes/react_form_builder_core.Model.md)<`any`\>
 
 ## Functions
 
@@ -352,7 +536,7 @@ ___
 
 ### compileFn
 
-▸ **compileFn**(`source`): [`CompilationResult`](react_form_builder_core.md#compilationresult)
+▸ **compileFn**(`source`): [`CompilationResult`](../classes/react_form_builder_core.CompilationResult.md)
 
 Compiles the function from string source code.
 
@@ -364,7 +548,7 @@ Compiles the function from string source code.
 
 #### Returns
 
-[`CompilationResult`](react_form_builder_core.md#compilationresult)
+[`CompilationResult`](../classes/react_form_builder_core.CompilationResult.md)
 
 the result of the function compilation.
 
@@ -406,7 +590,7 @@ Static wrapper for the [View](../classes/react_form_builder_core.View.md) constr
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...models` | [`Model`](../classes/react_form_builder_core.Model.md)[] | the components metadata. |
+| `...models` | [`Model`](../classes/react_form_builder_core.Model.md)<`any`\>[] | the components metadata. |
 
 #### Returns
 
@@ -436,6 +620,26 @@ the template type name.
 
 ___
 
+### getFluentCompatibleId
+
+▸ **getFluentCompatibleId**(`rawId`): `string`
+
+Converts the raw id to a Fluent compatible id, i.e. replaces all the spaces with underscores.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `rawId` | `string` | some raw id. |
+
+#### Returns
+
+`string`
+
+the Fluent compatible id.
+
+___
+
 ### getKey
 
 ▸ **getKey**(): `string`
@@ -447,26 +651,6 @@ Generates the random string.
 `string`
 
 the generated random string.
-
-___
-
-### getSchemaRules
-
-▸ **getSchemaRules**(`ctr?`): `undefined` \| `Rules`<`any`\>
-
-Returns the validation rules for the validation scheme.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `ctr?` | `Function` | the validation scheme. |
-
-#### Returns
-
-`undefined` \| `Rules`<`any`\>
-
-the validations rules.
 
 ___
 
@@ -497,6 +681,32 @@ the Record with grouped values.
 
 ___
 
+### isPromise
+
+▸ **isPromise**<`T`\>(`value`): value is Promise<T\>
+
+Type predicate, asserts that the value is a Promise.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `any` | the value. |
+
+#### Returns
+
+value is Promise<T\>
+
+true if the value is a Promise, false otherwise.
+
+___
+
 ### namedObserver
 
 ▸ **namedObserver**<`T`\>(`displayName`, `component`): `T`
@@ -521,6 +731,26 @@ Creates the observable React component.
 `T`
 
 the observable React component.
+
+___
+
+### testFluentLocalization
+
+▸ **testFluentLocalization**(`request`): [`LocalizationTestResult`](react_form_builder_core.md#localizationtestresult)
+
+Localization testing function.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `request` | `LocalizationTestRequest` | the localization testing request. |
+
+#### Returns
+
+[`LocalizationTestResult`](react_form_builder_core.md#localizationtestresult)
+
+the localization testing result.
 
 ___
 
@@ -561,6 +791,24 @@ ___
 #### Returns
 
 `ComponentType`<`ComponentTreeProps`\>
+
+___
+
+### useDestroy
+
+▸ **useDestroy**(`destroyFn`): `void`
+
+Executes the function when the component is destroyed.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `destroyFn` | () => `void` | the function that executes when a component is destroyed. |
+
+#### Returns
+
+`void`
 
 ___
 

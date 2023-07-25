@@ -20,7 +20,7 @@ type DefinerData<T extends object> = {
   customPreview?: ReactNode,
 }
 
-//TODO проброс пропертей в инициализатор экшенов.
+//TODO forwarding properties to the initializer of actions.
 /**
  * The builder class to define the metadata of the form builder component.
  */

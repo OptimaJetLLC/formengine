@@ -1,7 +1,7 @@
 import {ComponentStore} from '../../stores/ComponentStore'
 import {ActionDefinition, ActionEventHandler, DefineActionHelper, EventName} from '../event'
 
-//TODO типизация для пропсов
+//TODO typing for properties
 /**
  * The type of function that initializes an actions on a component.
  */

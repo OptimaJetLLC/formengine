@@ -10,20 +10,20 @@ const booleanData = [
   //{label: "Bind to prop...", value: -2}
 ]
 
-//TODO использовать для аргументов и пропертей одни компоненты.
-//Эти TODO относятся к InputNumber и к InputBindableText в substitution
+//TODO use the same components for arguments and properties.
+// These TODOs refer to inputNumber and to InputBindableText in substitution
 export const InputBoolean = observer(({name}: InputProps) => {
   const data = useActionData()
   const value = data.args?.[name] ? 1 : 0
   const handleChange = (value: string) => data.args = assign({}, data.args, {[name]: Boolean(value)})
 
   /* TODO
-  * Значение undefined для аргументов и bool в частности сейчас не реализован.
-  * Предполагается, что если значение может быть undefined, то значение
-  * cleanable будет равен true и значение можно будет стереть.
+  * The undefined value for arguments and bool in particular is not implemented right now.
+  * It is assumed that if the value can be undefined, then the value
+  * of cleanable will be true and the value can be erased.
 
   * TODO
-  * Реализация Bindings для boolean в данный момент не приоритете.
+  * The implementation of Bindings for boolean is not a priority at the moment.
   * */
 
   return (

@@ -1,6 +1,6 @@
 ---
 id: "react_form_builder_core.Model"
-title: "Class: Model"
+title: "Class: Model<T>"
 sidebar_label: "Model"
 custom_edit_url: null
 ---
@@ -9,19 +9,31 @@ custom_edit_url: null
 
 Represents component metadata for the form viewer.
 
+## Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
+
 ## Constructors
 
 ### constructor
 
-• **new Model**(`view`, `name?`, `actionsInitializer?`, `valued?`, `defaultProps?`, `css?`, `typeName?`)
+• **new Model**<`T`\>(`view`, `name?`, `actionsInitializer?`, `valued?`, `defaultProps?`, `css?`, `typeName?`)
 
 Creates component metadata for the form viewer.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `any` |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `view` | `ComponentType`<`any`\> | React component type. |
+| `view` | `ComponentType`<`T`\> | React component type. |
 | `name?` | `string` | the component name. |
 | `actionsInitializer?` | [`ActionsInitializer`](../modules/react_form_builder_core.md#actionsinitializer) | the function to initialize actions in the component. |
 | `valued?` | `string` | the name of the component property where the component value is stored |
@@ -79,7 +91,7 @@ ___
 
 ### view
 
-• `Readonly` **view**: `ComponentType`<`any`\>
+• `Readonly` **view**: `ComponentType`<`T`\>
 
 ## Accessors
 

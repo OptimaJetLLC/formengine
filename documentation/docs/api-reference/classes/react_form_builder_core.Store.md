@@ -49,6 +49,12 @@ ___
 
 ___
 
+### defaultLanguage
+
+• `Optional` **defaultLanguage**: [`Language`](react_form_builder_core.Language.md)
+
+___
+
 ### eventSubject
 
 • `Readonly` **eventSubject**: `Subject`<[`ActionEventArgs`](react_form_builder_core.ActionEventArgs.md)\>
@@ -77,6 +83,18 @@ the template component key.
 
 ___
 
+### languages
+
+• **languages**: [`Language`](react_form_builder_core.Language.md)[] = `[]`
+
+___
+
+### localization
+
+• **localization**: [`LocalizationStore`](react_form_builder_core.LocalizationStore.md)
+
+___
+
 ### parentStore
 
 • `Optional` `Readonly` **parentStore**: [`Store`](react_form_builder_core.Store.md)
@@ -91,11 +109,41 @@ ___
 
 ___
 
+### selectedLanguage
+
+• `Optional` **selectedLanguage**: [`Language`](react_form_builder_core.Language.md)
+
+___
+
 ### viewMode
 
 • **viewMode**: [`ViewMode`](../modules/react_form_builder_core.md#viewmode) = `'desktop'`
 
 ## Accessors
+
+### displayedLanguage
+
+• `get` **displayedLanguage**(): [`Language`](react_form_builder_core.Language.md)
+
+#### Returns
+
+[`Language`](react_form_builder_core.Language.md)
+
+the [Language](react_form_builder_core.Language.md) displayed in Form Viewer.
+
+___
+
+### isDefaultLanguage
+
+• `get` **isDefaultLanguage**(): `boolean`
+
+#### Returns
+
+`boolean`
+
+true if the displayed language is the default language, false otherwise.
+
+___
 
 ### isTemplateStore
 
@@ -135,11 +183,11 @@ ___
 
 ### tooltipComponent
 
-• `get` **tooltipComponent**(): `undefined` \| [`Model`](react_form_builder_core.Model.md)
+• `get` **tooltipComponent**(): `undefined` \| [`Model`](react_form_builder_core.Model.md)<`any`\>
 
 #### Returns
 
-`undefined` \| [`Model`](react_form_builder_core.Model.md)
+`undefined` \| [`Model`](react_form_builder_core.Model.md)<`any`\>
 
 the component's metadata for displaying the tooltip.
 
@@ -157,17 +205,17 @@ the type of React component used to display the tooltip.
 
 ## Methods
 
-### #applyComponentStore
+### #applyPersistedForm
 
-▸ `Private` **#applyComponentStore**(`componentStore`): `void`
+▸ `Private` **#applyPersistedForm**(`persistedForm`): `void`
 
-Changes the form to the specified one.
+Populates the value of this store with the values of the saved form.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `componentStore` | [`ComponentStore`](react_form_builder_core.ComponentStore.md) | the form component settings. |
+| `persistedForm` | [`PersistedForm`](../interfaces/react_form_builder_core.PersistedForm.md) | saved form value. |
 
 #### Returns
 
@@ -186,6 +234,18 @@ Changes the form to the component with an error description.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `e` | `any` | the error. |
+
+#### Returns
+
+`void`
+
+___
+
+### destroy
+
+▸ **destroy**(): `void`
+
+Correctly clears allocated resources, the function must be called when destroying an instance of the class.
 
 #### Returns
 
@@ -315,9 +375,36 @@ Loads a form by form name and sets that form in the form viewer.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `getForm?` | (`name?`: `string`) => [`ComponentStore`](react_form_builder_core.ComponentStore.md) \| `Promise`<[`ComponentStore`](react_form_builder_core.ComponentStore.md)\> | the function that loads the form. |
+| `getForm?` | (`name?`: `string`) => [`PersistedForm`](../interfaces/react_form_builder_core.PersistedForm.md) \| `Promise`<[`PersistedForm`](../interfaces/react_form_builder_core.PersistedForm.md)\> | the function that loads the form. |
 | `formName?` | `string` | the form name. |
 
 #### Returns
 
 `void`
+
+___
+
+### reduceScreen
+
+▸ **reduceScreen**<`T`\>(`callback`, `initialValue`): `T`
+
+Performs the callback function on each element of the component tree, accumulates the return values.
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `callback` | (`accumulator`: `T`, `current`: [`ComponentStore`](react_form_builder_core.ComponentStore.md)) => `T` | the function that calculates the value for the accumulator. |
+| `initialValue` | `T` | the initial value for the accumulator. |
+
+#### Returns
+
+`T`
+
+the accumulated value.

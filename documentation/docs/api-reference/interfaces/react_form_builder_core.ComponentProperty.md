@@ -17,6 +17,12 @@ The value of the component property.
 
 ___
 
+### useFluentLocalization
+
+• `Optional` **useFluentLocalization**: `boolean`
+
+___
+
 ### useFn
 
 • `Optional` **useFn**: `boolean`

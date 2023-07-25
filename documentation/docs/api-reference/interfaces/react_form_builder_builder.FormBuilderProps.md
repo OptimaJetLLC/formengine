@@ -91,6 +91,14 @@ The function for processing form events.
 
 ___
 
+### externalPropertyEditors
+
+• `Optional` **externalPropertyEditors**: `Record`<`string`, `ComponentType`\>
+
+Custom component property editors.
+
+___
+
 ### formName
 
 • `Optional` **formName**: `string`
@@ -113,11 +121,11 @@ ___
 
 ### getForm
 
-• `Optional` **getForm**: (`name?`: `string`) => [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md) \| `Promise`<[`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md)\>
+• `Optional` **getForm**: (`name?`: `string`) => [`PersistedForm`](react_form_builder_core.PersistedForm.md) \| `Promise`<[`PersistedForm`](react_form_builder_core.PersistedForm.md)\>
 
 #### Type declaration
 
-▸ (`name?`): [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md) \| `Promise`<[`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md)\>
+▸ (`name?`): [`PersistedForm`](react_form_builder_core.PersistedForm.md) \| `Promise`<[`PersistedForm`](react_form_builder_core.PersistedForm.md)\>
 
 Loads the form.
 
@@ -129,13 +137,25 @@ Loads the form.
 
 ##### Returns
 
-[`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md) \| `Promise`<[`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md)\>
+[`PersistedForm`](react_form_builder_core.PersistedForm.md) \| `Promise`<[`PersistedForm`](react_form_builder_core.PersistedForm.md)\>
 
 the object or Promise with the form.
 
 #### Inherited from
 
 [FormViewerProps](react_form_builder_core.FormViewerProps.md).[getForm](react_form_builder_core.FormViewerProps.md#getform)
+
+___
+
+### language
+
+• `Optional` **language**: `string`
+
+The language of form.
+
+#### Inherited from
+
+[FormViewerProps](react_form_builder_core.FormViewerProps.md).[language](react_form_builder_core.FormViewerProps.md#language)
 
 ___
 

@@ -3,7 +3,7 @@ import {AutoComplete} from 'rsuite'
 import {compactInput} from '../../../components/styles'
 
 // todo move to StandardStylesGroup.tsx
-//TODO нормальную сортировку выпадающих вариантов
+//TODO normal sorting of drop-down options
 // todo remove unused rowIndex property
 /**
  * The React component that displays an autocomplete cell.

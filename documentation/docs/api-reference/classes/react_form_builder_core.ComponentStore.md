@@ -82,7 +82,7 @@ ___
 
 ### schema
 
-• `Optional` **schema**: `ValidationSchema`
+• `Optional` **schema**: `BoundValueSchema`
 
 ___
 

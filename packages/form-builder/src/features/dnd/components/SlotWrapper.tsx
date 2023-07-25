@@ -14,7 +14,7 @@ const SDiv = styled.div`
  */
 export const SlotWrapper = (props: WrapperProps) => {
   if (!props.children) {
-    // todo тут нужна переделка drag'n'drop
+    // todo here we need a rework of drag'n'drop
     return <DropView isInner={true}/>
   }
   return <SDiv>{props.children}</SDiv>

@@ -60,7 +60,7 @@ export function initI18n(onInit: OnInitCallback) {
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        // todo отключать в продуктивной сборке
+        // todo disable in a productive build
         //debug: true,
         fallbackLng: 'en-US',
         load: 'currentOnly',

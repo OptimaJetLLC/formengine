@@ -1,7 +1,7 @@
 import {LabeledValue} from '../../utils/LabeledValue'
 import {Annotation} from './Annotation'
 
-//Примитивы и объекты, хранящиеся в пропсах
+//Primitives and objects stored in properties
 /**
  * Metadata for the component property for the form builder.
  */

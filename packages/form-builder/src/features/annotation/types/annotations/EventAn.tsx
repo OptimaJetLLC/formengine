@@ -1,6 +1,6 @@
 import {Annotation} from './Annotation'
 
-//Определение функции - экшена
+//Definition an action function
 /**
  * Metadata for the component event property for the form builder.
  */

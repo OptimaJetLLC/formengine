@@ -6,6 +6,8 @@ slug: /getting-started
 
 # Overview
 
+<span style={{color: 'red', fontSize: 'xxx-large'}}>This is a technical preview, many things can be changed!!!</span>
+
 ![Architecture Diagram](/assets/architecture/architecture.png "Architecture Diagram")
 
 FormBuilder is a JavaScript library for designing forms in the browser with Drag&Drop.

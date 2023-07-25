@@ -11,8 +11,8 @@ const TemplateLoadError = styled.span`
   color: red;
 `
 
-// todo builder mode (выделение слотов и шаблонов)
-// todo маппинг экшенов
+// todo builder mode (selecting slots and templates)
+// todo action mapping
 
 const Template = () => {
   const viewerProps = useViewerProps()
