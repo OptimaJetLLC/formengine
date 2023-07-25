@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Documentation | FormBuilder',
   tagline: 'Lightweight, React-based, Drag&Drop, Customizable, JavaScript',
-  url: 'https://formbuilder.dev',
+  url: 'https://formengine.io',
   baseUrl: '/documentation/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -17,7 +17,7 @@ const config = {
   projectName: 'formbuilder', // Usually your repo name.
 
   scripts: [
-    'https://formbuilder.dev/js/analytics.js',
+    'https://formengine.io/js/analytics.js',
   ],
 
   presets: [
@@ -48,13 +48,25 @@ const config = {
         logo: {
           alt: 'FormBuilder Logo',
           src: 'img/logo.svg',
-          href: 'https://formbuilder.dev/',
+          href: 'https://formengine.dev/',
           target: '_self',
         },
         items: [
           {
             label: 'Features',
-            to: 'https://formbuilder.dev/features/',
+            to: 'https://formengine.io/features/',
+            position: 'right',
+            target: '_self',
+          },
+          {
+            label: 'Demo',
+            to: 'https://demo.formengine.io/',
+            position: 'right',
+            target: '_self',
+          },
+          {
+            label: 'Pricing',
+            to: 'https://formengine.io/pricing/',
             position: 'right',
             target: '_self',
           },
@@ -62,18 +74,6 @@ const config = {
             label: 'Documentation',
             to: '/',
             position: 'right',
-          },
-          {
-            label: 'Downloads',
-            to: 'https://formbuilder.dev/downloads/',
-            position: 'right',
-            target: '_self',
-          },
-          {
-            label: 'Pricing',
-            to: 'https://formbuilder.dev/pricing/',
-            position: 'right',
-            target: '_self',
           },
         ],
       },
@@ -87,30 +87,6 @@ const config = {
         },
         style: 'dark',
         links: [
-          {
-            title: 'Contacts',
-            items: [
-              {
-                label: 'sales@optimajet.com',
-                to: 'mailto:sales@optimajet.com',
-              },
-            ],
-          },
-          {
-            title: 'Agreements',
-            items: [
-              {
-                label: 'License Agreement',
-                to: 'https://formbuilder.dev/agreements/eula/',
-                target: '_self',
-              },
-              {
-                label: 'Customer Support Agreement',
-                to: 'https://formbuilder.dev/agreements/csa/',
-                target: '_self',
-              },
-            ],
-          },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Optimajet Limited. All rights reserved.`,
       },
