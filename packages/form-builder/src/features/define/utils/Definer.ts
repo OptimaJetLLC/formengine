@@ -30,16 +30,15 @@ export class Definer<T extends object> {
   /**
    * Static method to create an instance of the component's metadata builder class.
    * @param view the React component type.
+   * @param displayName the display name for the anonymous component.
    * @returns the instance of the {@link Definer} class.
    */
-  static define<T extends object>(view: ComponentType<T>) {
-    checkExistName()
-    return new Definer<T>(view)
-
-    function checkExistName() {
-      const name = view.displayName || view.name
-      if (!name) throw Error('Anonymous components are not allowed!')
-    }
+  static define<T extends object>(view: ComponentType<T>, displayName?: string) {
+    const name = displayName ?? view.displayName ?? view.name
+    if (!name) throw Error('Anonymous components are not allowed!')
+    const definer = new Definer<T>(view)
+    if (displayName) definer.type(displayName)
+    return definer
   }
 
   private constructor(view: ComponentType<T>) {

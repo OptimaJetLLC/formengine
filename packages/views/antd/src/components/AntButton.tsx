@@ -1,9 +1,8 @@
 import {boolean, define, event, oneOf, string} from '@react-form-builder/builder/view'
 import {Button} from 'antd'
 
-export const antButton = define(Button)
+export const antButton = define(Button, 'AntButton')
   .name('Button')
-  .type('AntButton')
   .props({
     block: boolean.hinted('Option to fit button width to its parent width'),
     children: string.required.named('Content').hinted('Caption').default('Ant Button'),
