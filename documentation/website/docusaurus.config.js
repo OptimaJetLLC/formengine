@@ -17,7 +17,7 @@ const config = {
   projectName: 'formbuilder', // Usually your repo name.
 
   scripts: [
-    'https://formengine.io/js/analytics.js',
+    'https://formengine.io/js/analytics.js?id=GTM-PPS66XRX',
   ],
 
   presets: [
