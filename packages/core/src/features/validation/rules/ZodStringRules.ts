@@ -8,7 +8,7 @@ const scheme = z.string()
 
 export const ZodStringRules: ValidationRuleSet = {
   required: ruleBuilder()
-    .withValidatorFactory(({message}) => zodAnyToValidator(z.string({required_error: message}))),
+    .withValidatorFactory(({message}) => zodAnyToValidator(z.string({required_error: message}).nonempty(message))),
 
   nonEmpty: ruleBuilder()
     .withValidatorFactory(({message}) => zodAnyToValidator(scheme.nonempty(message))),
