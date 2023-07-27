@@ -2,6 +2,7 @@ import {assign} from 'lodash-es'
 import {makeObservable, observable} from 'mobx'
 import {Subject} from 'rxjs'
 import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
+import type {FormViewerProps} from '../features/form-viewer'
 import {defaultLanguage} from '../features/localization/consts'
 import {Language} from '../features/localization/types'
 import {buildInternalErrorStore} from '../features/ui/internalErrorModel'
@@ -13,7 +14,6 @@ import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {ComponentStore} from './ComponentStore'
 import {LocalizationStore} from './LocalizationStore'
 import {PersistedForm} from './PersistedForm'
-import {StoreProps} from './StoreProps'
 
 /**
  * Reduction function type.
@@ -39,17 +39,19 @@ function reduceTree<U extends object, T, K extends keyof U>(tree: Tree<U, K>,
  * The form viewer settings.
  */
 export class Store {
-  readonly #props: Readonly<StoreProps>
+  readonly #props: Readonly<FormViewerProps>
 
   defaultLanguage?: Language
 
   selectedLanguage?: Language
 
   readonly eventSubject = new Subject<ActionEventArgs>()
+
   readonly form
 
-  screen = new ComponentStore(screenModel.name, screenModel.type)
-  cache = new WeakMap<ComponentStore, ComponentData>()
+  #screen = new ComponentStore(screenModel.name, screenModel.type)
+
+  rootComponentData
 
   viewMode: ViewMode = 'desktop'
 
@@ -66,19 +68,27 @@ export class Store {
    * @param parentStore the form viewer settings, used in templates.
    * @param keyInParent the template component key.
    */
-  constructor(props: Readonly<StoreProps>, public actions: ActionDefinition[] = [], public isBuilderMode: boolean = false,
+  constructor(props: Readonly<FormViewerProps>, public actions: ActionDefinition[] = [], public isBuilderMode: boolean = false,
               public readonly parentStore?: Store, private readonly keyInParent?: string) {
     this.#props = props
     this.form = new Form(this)
+    this.rootComponentData = this.createComponentData(this.#screen)
 
     makeObservable(this, {
-      screen: observable,
+      rootComponentData: observable,
       localization: observable,
       viewMode: true,
       defaultLanguage: true,
       selectedLanguage: true,
       displayedLanguage: true
     })
+  }
+
+  /**
+   * Clears the form in Form Viewer.
+   */
+  clear() {
+    this.rootComponentData = this.createComponentData(this.#screen)
   }
 
   /**
@@ -141,10 +151,33 @@ export class Store {
   /**
    * @returns the {@link Record} with template slot settings.
    */
-  get slotsContent(): Record<string, ComponentStore> | undefined {
+  get slotsContent(): Record<string, ComponentData> | undefined {
     if (this.keyInParent && this.parentStore) {
-      return this.parentStore.findComponent(this.keyInParent)?.slotsContent
+      const componentData = this.parentStore.getComponentDataByKey(this.keyInParent)
+      if (!componentData || !componentData.store.slotsContent) return
+      const componentDatas: Record<string, ComponentData> = {}
+      for (const key in componentData.store.slotsContent) {
+        componentDatas[key] = this.parentStore.getComponentDataByKey(key)
+      }
+      return componentDatas
     }
+  }
+
+  // todo Must be removed.
+  /**
+   * @returns the root {@link ComponentStore}.
+   */
+  get screen(): ComponentStore {
+    return this.rootComponentData.store
+  }
+
+  /**
+   * Returns the {@link Model} for the specified component.
+   * @param componentStore the component settings.
+   * @returns the {@link Model} for the specified component.
+   */
+  getComponentModel(componentStore: ComponentStore) {
+    return this.#props.view.get(componentStore.type)
   }
 
   /**
@@ -163,20 +196,17 @@ export class Store {
     return result
   }
 
+  //TODO compatibility only refactor and remove
   /**
-   * Returns the element in the component tree of the form viewer.
-   * @param value the component settings or component key.
-   * @returns the element in the component tree of the form viewer.
-   * @throws Error, if the component is not found in the component tree.
+   * Returns the filled component data for the specified component key.
+   * @param key Component key.
+   * @returns Filled component data.
    */
-  getComponentData(value: ComponentStore | string) {
-    const store = typeof value === 'string' ? this.getComponent(value) : value
-    const result = this.cache.get(store)
-
+  getComponentDataByKey(key: string) {
+    const result = this.rootComponentData.findByKey(key)
     if (!result) {
-      throw Error(`Component data for ${store.key} didn't found!`)
+      throw Error(`Component data for ${key} didn't found!`)
     }
-
     return result
   }
 
@@ -186,15 +216,15 @@ export class Store {
    * @returns the found component settings or undefined.
    */
   findComponent(key: string) {
-    let result = treeFind(this.screen, key)
+    const result = treeFind(this.screen, key)
     if (result) return result
 
     const slots = this.slotsContent
     if (!slots) return
 
     for (const slotName in slots) {
-      result = treeFind(slots[slotName], key)
-      if (result) return result
+      const slotComponentData = treeFind(slots[slotName], key)
+      if (slotComponentData) return slotComponentData.store
     }
   }
 
@@ -250,6 +280,15 @@ export class Store {
   }
 
   /**
+   * Creates the element for the component tree.
+   * @param componentStore the component settings.
+   * @returns the element for the component tree.
+   */
+  createComponentData(componentStore: ComponentStore) {
+    return new ComponentData(this, componentStore, this.#props)
+  }
+
+  /**
    * Changes the form to the component with an error description.
    * @param e the error.
    */
@@ -264,7 +303,8 @@ export class Store {
    * @param persistedForm saved form value.
    */
   #applyPersistedForm(persistedForm: PersistedForm) {
-    this.screen = assign(new ComponentStore('', ''), persistedForm.form)
+    const componentStore = ComponentStore.createFromObject(persistedForm.form)
+    this.rootComponentData = this.createComponentData(componentStore)
     this.localization = new LocalizationStore(assign({}, persistedForm.localization))
     this.languages = persistedForm.languages ? [...persistedForm.languages] : []
     this.defaultLanguage = persistedForm.languages?.find(l => l.fullCode === persistedForm.defaultLanguage) ?? defaultLanguage

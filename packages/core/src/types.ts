@@ -1,6 +1,6 @@
 import {ReactNode} from 'react'
 import {CustomActionDefinition} from './features/event'
-import {ComponentStore} from './stores/ComponentStore'
+import {ComponentData} from './utils/contexts/ComponentDataContext'
 
 /**
  * React wrapper component properties.
@@ -33,8 +33,7 @@ export interface ScreenProps {
  * Properties of a form component tree element.
  */
 export interface ComponentTreeProps {
-  parentStore?: ComponentStore
-  data: ComponentStore[]
+  data: ComponentData[]
 }
 
 /**

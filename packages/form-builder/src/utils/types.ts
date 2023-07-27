@@ -1,5 +1,3 @@
-import {ComponentData} from '@react-form-builder/core'
-
 /**
  * The position of an inserted component relative to another component.
  */
@@ -8,11 +6,6 @@ export enum InsertPosition {
   After,
   Inner
 }
-
-/**
- * The type of drag-and-drop component in the form builder.
- */
-export type ComponentMove = Omit<ComponentData, 'model' | 'key'>
 
 /**
  * Form builder mode. Builder or viewer.

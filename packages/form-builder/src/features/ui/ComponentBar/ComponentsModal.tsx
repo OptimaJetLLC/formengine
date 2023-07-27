@@ -4,7 +4,7 @@ import {isUndefined} from 'lodash-es'
 import {useState} from 'react'
 import {Modal} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
-import {ComponentMove, InsertPosition} from '../../../utils/types'
+import {InsertPosition} from '../../../utils/types'
 import {useTranslationPart} from '../../localization/hooks'
 import {ComponentBar} from './ComponentBar'
 
@@ -23,7 +23,7 @@ export const useComponentsModal = (target: ComponentData) => {
   const [bindCondition, setBindCondition] = useState<string>()
 
   const close = () => setInsertPosition(undefined)
-  const add = (source: ComponentMove) => {
+  const add = (source: ComponentData) => {
     close()
     store.add(source, target, insertPosition, bindTo, bindCondition)
   }

@@ -6,7 +6,7 @@ import {calculateProperties} from '../features/calculation/propertyCalculator'
 import {ActionEventArgs, DidMountEvent, EventName, WillUnmountEvent} from '../features/event'
 import {localizeProperties} from '../features/localization/localizer'
 import {OverrideRef} from '../features/ui/OverridesContext'
-import {ViewMode} from '../types'
+import {ComponentTreeProps, ViewMode} from '../types'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {getChildren} from '../utils/getChildren'
 import {ComponentProperty, ComponentStore} from './ComponentStore'
@@ -93,7 +93,7 @@ export class ComponentState {
     readonly data: ComponentData,
     readonly store: Store,
     // todo rename to childrenWrapper?
-    readonly componentTreeItem: ComponentType<any>,
+    readonly componentTreeItem: ComponentType<ComponentTreeProps>,
     readonly overrides?: OverrideRef,
   ) {
     makeAutoObservable(this)

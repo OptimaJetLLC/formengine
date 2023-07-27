@@ -55,5 +55,5 @@ export const Viewer = namedObserver('Viewer', ({event}: ViewerProps) => {
 
   useEffect(() => store.loadForm(props.getForm, props.formName), [store])
 
-  return <ComponentTree data={[store.screen]}/>
+  return <ComponentTree data={[store.rootComponentData]}/>
 })

@@ -5,8 +5,8 @@ import {useEffect} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {key, stylization} from '../../../../annotation'
 import {Annotation} from '../../../../annotation/types/annotations/Annotation'
-import {PropertyEditorWrapper} from '../../../../components/PropertyEditorWrapper'
 import {CenteredLabel} from '../../../../components/Labels'
+import {PropertyEditorWrapper} from '../../../../components/PropertyEditorWrapper'
 import {useTranslationPart} from '../../../../localization/hooks'
 import {Section, SubSection} from '../Section'
 
@@ -34,10 +34,11 @@ interface PropertiesProps {
 
 const Properties = observer(({activeTab}: PropertiesProps) => {
   const store = useBuilderStore()
-  const selected = store.oneSelected
   const getLabel = useTranslationPart('propertiesEditor')
 
-  if (!selected) {
+  const data = store.oneSelectedComponentData
+
+  if (!data) {
     return (
       <Container>
         <CenteredLabel style={{height: '40%'}}>{getLabel('selectElementForEdit')}</CenteredLabel>
@@ -45,8 +46,7 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
     )
   }
 
-  const meta = store.view.getMeta(selected.type)
-  const data = store.viewer.getComponentData(selected)
+  const meta = store.view.getMeta(data.store.type)
 
   const current = meta.properties.concat(meta.modules).filter(bySection(activeTab))
   const properties = current.filter(bySubSection(undefined))

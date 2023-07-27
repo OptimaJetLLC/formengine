@@ -1,4 +1,5 @@
-import {makeAutoObservable, observable} from 'mobx'
+import {assign} from 'lodash-es'
+import {makeAutoObservable} from 'mobx'
 import {ActionData, EventName} from '../features/event'
 import {Css} from '../features/style/types'
 import type {BoundValueSchema} from '../features/validation'
@@ -57,13 +58,16 @@ export class ComponentStore {
     this.key = key
     this.type = type
 
-    makeAutoObservable(this, {
-      //events: observable.deep,
-      tooltipProps: observable.deep,
-      schema: observable.deep,
-      props: observable.deep,
-      children: observable,
-    })
+    makeAutoObservable(this)
+  }
+
+  /**
+   * Correctly creates the {@link ComponentStore} from deserialized data.
+   * @param value the deserialized data.
+   * @returns the component Store.
+   */
+  static createFromObject(value: any) {
+    return assign(new ComponentStore('', ''), value)
   }
 }
 

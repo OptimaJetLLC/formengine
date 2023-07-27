@@ -41,20 +41,13 @@ function createFormField(cs: ComponentStore, model: Model, store: Store, viewerP
 }
 
 /**
- * Creates form data for a component.
- * @param componentStores the array of component settings.
+ * Creates form data field for a component.
+ * @param componentStore the component settings.
  * @param store the form viewer settings.
  * @param props the form viewer React component properties.
+ * @returns initialized form data field.
  */
-export function initForm(componentStores: ComponentStore[], store: Store, props: Readonly<FormViewerProps>) {
-  componentStores.forEach(componentStore => {
-    const model = props.view.get(componentStore.type)
-    if (!model.valued) return
-
-    let field = store.form.fields.get(componentStore.key)
-    if (!field) {
-      field = createFormField(componentStore, model, store, props)
-      store.form.fields.set(componentStore.key, field)
-    }
-  })
+export function createField(componentStore: ComponentStore, store: Store, props: Readonly<FormViewerProps>) {
+  const model = props.view.get(componentStore.type)
+  if (model.valued) return createFormField(componentStore, model, store, props)
 }

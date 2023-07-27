@@ -13,18 +13,18 @@ import {Toolbar} from './Toolbar'
 
 export const TreeNode = observer(({className}: { className: string }) => {
   const ComponentTree = useComponentTree()
-  const {key, model, store} = useComponentData()
+  const componentData = useComponentData()
   const {expanded: expandedNodes, viewer} = useBuilderStore()
-  const deep = useComputed(() => findDepth(viewer.screen, store.key) ?? 0)
+  const deep = useComputed(() => findDepth(viewer.screen, componentData.key) ?? 0)
   const [hovered, setHovered] = useState(false)
   const [{selected}] = useSelection()
   const ref = useRef<HTMLDivElement>(null)
 
-  const expanded = expandedNodes.has(store)
+  const expanded = expandedNodes.has(componentData.store)
   const toggleExpand = useCallback(() => {
-    expandedNodes.has(store)
-      ? expandedNodes.delete(store)
-      : expandedNodes.add(store)
+    expandedNodes.has(componentData.store)
+      ? expandedNodes.delete(componentData.store)
+      : expandedNodes.add(componentData.store)
   }, [])
 
   useEffect(() => {
@@ -38,15 +38,15 @@ export const TreeNode = observer(({className}: { className: string }) => {
       <SNodeItem className={className} ref={ref}
                  onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
         <SIndent deep={deep}>
-          {store.children &&
+          {componentData.store.children &&
             <Icon onClick={toggleExpand} as={expanded ? ArrowDownLineIcon : ArrowRightLineIcon} style={{cursor: 'pointer'}}/>
           }
         </SIndent>
-        <div>{`${key}`}</div>
-        <label>{`${model.name}`}</label>
+        <div>{`${componentData.key}`}</div>
+        <label>{`${componentData.model.name}`}</label>
         {hovered && <Toolbar compact/>}
       </SNodeItem>
-      {expanded && store.children && <ComponentTree parentStore={store} data={store.children}/>}
+      {expanded && componentData.children && <ComponentTree data={componentData.children}/>}
     </>
   )
 })

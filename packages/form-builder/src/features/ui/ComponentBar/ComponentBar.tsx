@@ -1,9 +1,8 @@
 import {css} from '@emotion/css'
 import styled from '@emotion/styled'
-import {ComponentDataProvider, ComponentStore, getKey, Model} from '@react-form-builder/core'
+import {ComponentData, ComponentDataProvider, ComponentStore, getKey, Model, useStore} from '@react-form-builder/core'
 import {useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
-import {ComponentMove} from '../../../utils/types'
 import {AddedComponent} from '../../dnd'
 import {useTranslationPart} from '../../localization/hooks'
 import {SearchForm} from './components/SearchForm'
@@ -14,7 +13,7 @@ import {SearchForm} from './components/SearchForm'
  */
 export interface DraggableProps {
   draggable?: boolean
-  onAdd?: (source: ComponentMove) => void
+  onAdd?: (source: ComponentData) => void
 }
 
 interface ControlGroupsProps extends DraggableProps {
@@ -76,20 +75,14 @@ interface AddedComponentsProps extends DraggableProps {
 }
 
 const AddedComponents = ({definitions, ...componentProps}: AddedComponentsProps) => {
-  const store = useBuilderStore()
+  const viewerStore = useStore()
   return (
     <ControlsGroup>
-      {definitions.map(model => {
+      {definitions.map((model, index) => {
         const componentStore = new ComponentStore(model.type + ' ' + getKey(), model.type)
+        const componentData = viewerStore.createComponentData(componentStore)
         return (
-          <ComponentDataProvider
-            key={model.name}
-            value={{
-              key: componentStore.key,
-              store: componentStore,
-              model: store.view.get(componentStore.type)
-            }}
-          >
+          <ComponentDataProvider key={index} value={componentData}>
             <AddedComponent {...componentProps}/>
           </ComponentDataProvider>
         )

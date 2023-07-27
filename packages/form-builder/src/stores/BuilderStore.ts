@@ -6,7 +6,6 @@ import {
   defaultLanguage,
   LocalizationStore,
   PersistedForm,
-  screenModel,
   Store,
   ViewMode
 } from '@react-form-builder/core'
@@ -21,12 +20,10 @@ import {PanelPlacement} from '../features/ui/PanelPlacement'
 import {annotationResolver} from '../features/validation'
 import type {FormBuilderProps} from '../FormBuilderProps'
 import {getSystemTheme} from '../utils/getSystemTheme'
-import {BuilderMode, BuilderTheme, ComponentMove, InsertPosition} from '../utils/types'
+import {BuilderMode, BuilderTheme, InsertPosition} from '../utils/types'
 import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
 import {uploadStringFile} from './fileUpload'
 import {FormStorage} from './FormStorage'
-
-const {After, Inner} = InsertPosition
 
 /**
  * Parameters of the editable component property.
@@ -136,6 +133,14 @@ export class BuilderStore {
   }
 
   /**
+   * @returns the selected tree element if only one component is selected in the form builder, otherwise undefined.
+   */
+  get oneSelectedComponentData() {
+    const selected = this.oneSelected
+    if (selected) return this.viewer.rootComponentData.findByKey(selected.key)
+  }
+
+  /**
    * @returns the current form name.
    */
   get formName() {
@@ -154,19 +159,6 @@ export class BuilderStore {
    */
   get isDefaultLanguage() {
     return this.localizationLanguage === defaultLanguage
-  }
-
-  /**
-   * Returns the index of the component in the array of child components in the parent component.
-   * @param node the component.
-   * @returns the index of the component in the array of child components in the parent component.
-   */
-  static getIndexInParent(node: ComponentMove) {
-    const {key} = node.store
-    const parent = node.parent
-    if (!parent) return 0
-
-    return parent.children!.findIndex(item => item.key === key)
   }
 
   /**
@@ -197,19 +189,6 @@ export class BuilderStore {
   }
 
   /**
-   * @returns all elements of the form viewer component tree.
-   */
-  getAllNodes() {
-    const stores: ComponentStore[] = []
-    const data: ComponentData[] = []
-
-    this.treeMap(this.viewer.screen, store => stores.push(store))
-    stores.forEach(store => data.push(this.viewer.getComponentData(store)))
-
-    return data
-  }
-
-  /**
    * Expands all elements in the component tree.
    */
   expandAll() {
@@ -224,24 +203,13 @@ export class BuilderStore {
   }
 
   /**
-   * Expand one element in the component tree.
-   * @param value the expandable element.
-   */
-  expand(value: ComponentStore) {
-    let parent: ComponentStore | undefined = value
-    do {
-      if (parent) this.expanded.add(parent)
-      parent = this.viewer.cache.get(parent)?.parent
-    } while (parent)
-  }
-
-  /**
    * Sets the form serialized in JSON as the current form.
    * @param text the form serialized in JSON.
    */
   parseForm(text: string) {
     const deserializedForm = JSON.parse(text) as PersistedForm
-    this.viewer.screen = assign(new ComponentStore('', ''), deserializedForm.form)
+    const componentStore = ComponentStore.createFromObject(deserializedForm.form)
+    this.viewer.rootComponentData = this.viewer.createComponentData(componentStore)
     this.viewer.localization = new LocalizationStore(deserializedForm.localization)
     if (this.calculatedProperty) this.calculatedProperty = undefined
   }
@@ -251,7 +219,7 @@ export class BuilderStore {
    * Clones the component and adds the clone to the component tree.
    * @param source the cloning component.
    */
-  clone(source: ComponentMove) {
+  clone(source: ComponentData) {
     this.add(source, source)
   }
 
@@ -260,28 +228,14 @@ export class BuilderStore {
    * @param source the selected component.
    * @param target the new parent component for the selected component.
    * @param insertPosition the insertion position relative to the new parent component.
+   * @returns void
    */
-  move(source: ComponentMove, target: ComponentMove, insertPosition: InsertPosition = InsertPosition.After) {
-    if (source.store.key === target.store.key) return
-
-    this.remove(source)
-    const isInner = insertPosition === Inner
-    const index = isInner
-      ? target.store.children?.length ?? 0
-      : getIndexToPush(target)
-    push(source, target, index)
-
-
-    function push(source: ComponentMove, target: ComponentMove, index: number) {
-      const purpose = isInner ? target.store : target.parent ?? target.store
-      purpose.children ??= []
-      purpose.children?.splice(index, 0, source.store)
-    }
-
-    function getIndexToPush(target: ComponentMove) {
-      const index = BuilderStore.getIndexInParent(target)
-      return insertPosition === After ? index + 1 : index
-    }
+  move(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = InsertPosition.After): void {
+    if (source === target) return
+    if (insertPosition === InsertPosition.Inner) return source.setParent(target)
+    if (insertPosition === InsertPosition.Before) return target.insertBeforeMe(source)
+    if (insertPosition === InsertPosition.After) return target.insertAfterMe(source)
+    throw new Error(`Unknown insert position ${insertPosition}`)
   }
 
   /**
@@ -289,10 +243,11 @@ export class BuilderStore {
    * @param target the new parent component for relocatable components.
    * @param insertPosition the insertion position relative to the new parent component.
    */
-  multipleMove(target: ComponentMove, insertPosition: InsertPosition = InsertPosition.After) {
+  multipleMove(target: ComponentData, insertPosition: InsertPosition = InsertPosition.After) {
     this.selected.forEach((store) => {
-      const parent = this.viewer.getComponentData(store).parent
-      this.move({store, parent}, target, insertPosition)
+      const sourceComponentData = this.viewer.rootComponentData.findByKey(store.key)
+      if (!sourceComponentData) throw Error(`Component with key ${store.key} not found`)
+      this.move(sourceComponentData, target, insertPosition)
     })
   }
 
@@ -305,13 +260,14 @@ export class BuilderStore {
    * @param bindCondition the source code of the function that checks if the component can be added.
    * @returns the new added component.
    */
-  add(source: ComponentMove, target: ComponentMove, insertPosition: InsertPosition = InsertPosition.After,
+  add(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = InsertPosition.After,
       bindTo?: string, bindCondition?: string) {
     const clone = assign(new ComponentStore('', ''), cloneDeep(source.store))
     clone.bindTo = bindTo
     clone.bindCondition = bindCondition
     this.unifyComponentKeys(clone)
-    this.move({store: clone}, target, insertPosition)
+    const componentData = this.viewer.createComponentData(clone)
+    this.move(componentData, target, insertPosition)
     this.selected.clear()
     this.selected.add(clone)
     return clone
@@ -321,13 +277,10 @@ export class BuilderStore {
    * Removes the component from the component tree.
    * @param source the component for removal.
    */
-  remove(source: ComponentMove) {
-    const index = BuilderStore.getIndexInParent(source)
-    const removingComponent = source.parent?.children?.[index]
-    if (removingComponent) {
-      this.viewer.localization.removeLocalization(removingComponent.key)
-    }
-    source.parent?.children?.splice(index, 1)
+  remove(source: ComponentData) {
+    this.selected.clear()
+    this.viewer.localization.removeLocalization(source.key)
+    source.delete()
   }
 
   // todo rename
@@ -352,7 +305,7 @@ export class BuilderStore {
    * Clears the current form.
    */
   clear() {
-    this.viewer.screen = new ComponentStore(screenModel.name, screenModel.type)
+    this.viewer.clear()
   }
 
   /**

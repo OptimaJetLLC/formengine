@@ -1,8 +1,6 @@
 import styled from '@emotion/styled'
 import {useComponentData} from '../../utils/contexts/ComponentDataContext'
-import {StoreProvider} from '../../utils/contexts/StoreContext'
 import {Model} from '../define'
-import {FormViewer} from '../form-viewer'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 import {FormField} from '../validation/utils/FormField'
 
@@ -21,9 +19,12 @@ const Template = () => {
   if (!viewerProps.getForm) return <TemplateLoadError>Please define <code>getForm</code> property!</TemplateLoadError>
   if (!(field instanceof FormField)) return null
 
-  return <StoreProvider value={field.form.store}>
-    <FormViewer {...field.props}/>
-  </StoreProvider>
+  // todo return templates in FB-297
+  return null
+  //
+  // return <StoreProvider value={field.form.store}>
+  //   <FormViewer {...field.props}/>
+  // </StoreProvider>
 }
 
 /**

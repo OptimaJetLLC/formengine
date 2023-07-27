@@ -1,13 +1,13 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {useComponentData} from '@react-form-builder/core'
+import {ComponentData, useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {ComponentProps} from 'react'
 import {useDrop} from 'react-dnd'
 import {ConnectDropTarget} from 'react-dnd/dist/types/types'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {isRootType} from '../../../../../utils/isRoot'
-import {ComponentMove, InsertPosition} from '../../../../../utils/types'
+import {InsertPosition} from '../../../../../utils/types'
 import {AcceptDrop, ItemType} from '../../../consts'
 import {DropView} from './DropView'
 
@@ -56,7 +56,7 @@ const useDropZone = (isAfter: boolean, isInner?: boolean): [DropState, ConnectDr
 
   const [{isActive, isOver}, drop] = useDrop({
     accept: AcceptDrop,
-    drop: (source: ComponentMove, monitor) => {
+    drop: (source: ComponentData, monitor) => {
       const type = monitor.getItemType() as ItemType
       switch (type) {
         case ItemType.AddedComponent:

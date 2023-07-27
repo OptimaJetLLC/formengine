@@ -7,20 +7,22 @@ import {Field} from './Field'
 
 // todo rename to FormData
 /**
- * Form data.
+ *  The set of functions to work with form data.
  */
 export class Form {
-  readonly fields = new Map<string, Field>()
-  state: Record<string, any> = {}
-
   /**
    * Creates an object with form data.
    * @param store the form viewer settings.
    */
   constructor(readonly store: Store) {
-    makeAutoObservable(this, {
-      fields: true,
-    })
+    makeAutoObservable(this)
+  }
+
+  /**
+   * @returns the map of form data fields.
+   */
+  get fields(): Map<string, Field> {
+    return this.store.rootComponentData.allFields
   }
 
   /**
@@ -65,27 +67,11 @@ export class Form {
   }
 
   /**
-   * Releases allocated resources, must be used when destroying an object instance.
-   */
-  dispose() {
-    this.fields.forEach(f => f.dispose())
-  }
-
-  /**
    * Sets the validation error message for all form data fields.
    * @param message the validation error message.
    */
   setAllErrors(message?: string) {
     this.fields.forEach(f => f.error = message)
-  }
-
-  /**
-   * Returns the form data field.
-   * @param key the key of the form data field.
-   * @returns the form data field, undefined, if the form data field is not found.
-   */
-  get(key: string) {
-    return this.fields.get(key)
   }
 
   /**
@@ -114,7 +100,6 @@ export class Form {
  * Description of the form type for the code editor.
  */
 export const FormDeclaration = `declare class Form {
-  fields: Map<string, Field>
   readonly store: Store
 
   get data(): Record<string, unknown>
@@ -122,8 +107,6 @@ export const FormDeclaration = `declare class Form {
   get errors(): Record<string, unknown>
   
   setAllErrors(message?: string)
-
-  get(key: string): Field
 
   validate(): void
 
