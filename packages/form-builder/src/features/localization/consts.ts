@@ -5,7 +5,7 @@ import rtlPlugin from 'stylis-plugin-rtl'
 
 export const languages: Language[] = [
   defaultLanguage,
-  new Language('ru', 'RU', 'Русский', 'Russian'),
+  new Language('de', 'DE', 'Deutsch', 'German'),
   new Language('ar', 'EG', 'عرب', 'Arabic (Egypt)', BiDi.RTL),
 ]
 

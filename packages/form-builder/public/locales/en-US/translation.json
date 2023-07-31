@@ -116,7 +116,7 @@
     },
     "method": {
       "name": "Method",
-      "hint": "The http method of upload request"
+      "hint": "The HTTP method of upload request"
     },
     "name": {
       "name": "Name",
