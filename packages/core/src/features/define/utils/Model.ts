@@ -24,6 +24,7 @@ export class Model<T = any> {
    * @param defaultProps the component's default property values.
    * @param css the component's CSS values.
    * @param typeName the component type name.
+   * @param icon the component icon.
    */
   constructor(
     view: ComponentType<T>,
@@ -32,7 +33,8 @@ export class Model<T = any> {
     readonly valued?: string,
     readonly defaultProps?: Readonly<Record<string, any>>,
     readonly css?: Css,
-    readonly typeName?: string
+    readonly typeName?: string,
+    readonly icon?: ComponentType
   ) {
     this.view = observer(view)
     this.view.displayName = view.displayName || view.name

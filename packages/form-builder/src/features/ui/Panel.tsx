@@ -40,6 +40,7 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   flex: 1;
   transition: opacity 200ms ease-in-out;
+  width: 280px;
 
   &.collapsed.hideCollapsed {
     opacity: 0;

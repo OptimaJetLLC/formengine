@@ -14,6 +14,7 @@ type DefinerData<T extends object> = {
   category?: string,
   cssString?: string,
   cssObject?: Annotations<CSSObject>,
+  icon?: ComponentType,
   readonly actionsInitializer?: ActionsInitializer,
 
   properties?: Annotations<T>,
@@ -46,6 +47,8 @@ export class Definer<T extends object> {
   }
 
   name = (name: string) => this.#updateWith({name})
+
+  icon = (icon: ComponentType) => this.#updateWith({icon})
 
   category = (category: string) => this.#updateWith({category})
 
@@ -91,6 +94,8 @@ export class Definer<T extends object> {
         object: getDefault(cssAns),
         string: this.data.cssString
       },
+      this.getType(),
+      this.data.icon
     )
 
     const meta = new Meta(

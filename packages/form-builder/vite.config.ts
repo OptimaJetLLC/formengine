@@ -1,3 +1,4 @@
+import svgr from '@svgr/rollup'
 import path from 'path'
 // @ts-ignore
 import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle'
@@ -18,7 +19,10 @@ export default defineConfig(({command}) => ({
       formats: ['es'],
     },
     rollupOptions: {
-      plugins: [excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})]
+      plugins: [
+        excludeDependenciesFromBundle({dependencies: true, peerDependencies: true}),
+        svgr({icon: true})
+      ]
     }
   },
 }))

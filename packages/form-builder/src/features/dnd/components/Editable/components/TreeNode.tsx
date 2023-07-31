@@ -42,8 +42,8 @@ export const TreeNode = observer(({className}: { className: string }) => {
             <Icon onClick={toggleExpand} as={expanded ? ArrowDownLineIcon : ArrowRightLineIcon} style={{cursor: 'pointer'}}/>
           }
         </SIndent>
-        <div>{`${componentData.key}`}</div>
-        <label>{`${componentData.model.name}`}</label>
+        <div>{componentData.key}</div>
+        <label>{componentData.model.name}</label>
         {hovered && <Toolbar compact/>}
       </SNodeItem>
       {expanded && componentData.children && <ComponentTree data={componentData.children}/>}

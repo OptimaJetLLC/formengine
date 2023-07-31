@@ -28,14 +28,16 @@ const ControlGroups = (props: ControlGroupsProps) => {
     : (_: Model) => true
 
   const byCategory: Record<string, Model[]> = {}
-  store.view.builderComponents.forEach(component => {
-    if (!isMatch(component.model)) return
+  store.view.builderComponents
+    .forEach(component => {
+      if (!isMatch(component.model)) return
 
-    const category = component.category || ''
-    const components = byCategory[category] ?? []
-    components.push(component.model)
-    byCategory[category] = components
-  })
+      const category = component.category || ''
+      const components = byCategory[category] ?? []
+      components.push(component.model)
+      byCategory[category] = components
+        .sort((a, b) => a.name.localeCompare(b.name))
+    })
 
   const result = []
   let i = 0
@@ -95,16 +97,15 @@ const componentBar = css`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 100%;
+  overflow: hidden;
   background-color: var(--rs-btn-default-bg);
 `
 
 const ControlsGroup = styled.div`
   display: flex;
   flex-flow: wrap;
-  gap: 10px;
-  padding-inline-end: 5px;
-  padding-bottom: 15px;
+  gap: 4px;
+  margin-bottom: 15px;
 `
 
 const Header = styled.div`
@@ -113,6 +114,7 @@ const Header = styled.div`
   justify-content: center;
   align-items: center;
   font-weight: normal;
+  padding-inline-start: 4px;
 
   > * {
     flex: 1;
@@ -133,6 +135,6 @@ const Subheader = styled.h6`
 const Content = styled.div`
   width: 100%;
   flex: 1;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  padding-inline: 4px 2px;
+  overflow-y: auto;
 `

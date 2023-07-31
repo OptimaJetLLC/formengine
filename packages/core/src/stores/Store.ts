@@ -47,7 +47,7 @@ export class Store {
 
   readonly eventSubject = new Subject<ActionEventArgs>()
 
-  readonly form
+  readonly form: Form
 
   #screen = new ComponentStore(screenModel.name, screenModel.type)
 
