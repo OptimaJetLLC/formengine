@@ -1,5 +1,6 @@
 import {IReactionDisposer, makeAutoObservable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
+import {nameObservable} from '../../../utils/observableNaming'
 import {FormViewerProps} from '../../form-viewer'
 import {Field} from './Field'
 import {Form} from './Form'
@@ -38,7 +39,7 @@ export class FormField implements Field {
   ) {
     makeAutoObservable(this, {
       form: true
-    })
+    }, {name: nameObservable('FormField', {key: componentStore.key})})
 
     this.#disposers = [
       // todo fix storeDataInParentForm

@@ -5,6 +5,7 @@ import {
   ComponentStore,
   defaultLanguage,
   LocalizationStore,
+  nameObservable,
   PersistedForm,
   Store,
   ViewMode
@@ -67,17 +68,18 @@ export class BuilderStore {
     props: Readonly<FormBuilderProps>,
   ) {
     makeAutoObservable(this, {
-      selected: observable,
-      language: observable.ref,
-      localizationLanguage: observable.ref,
-      destroy: false,
-      calculatedProperty: observable.ref,
-      builderMode: true,
-      viewMode: true,
-      openedPanels: true,
-      changeBuilderMode: action,
-      view: false,
-    })
+        selected: observable,
+        language: observable.ref,
+        localizationLanguage: observable.ref,
+        destroy: false,
+        calculatedProperty: observable.ref,
+        builderMode: true,
+        viewMode: true,
+        openedPanels: true,
+        changeBuilderMode: action,
+        view: false,
+      }
+      , {name: nameObservable('BuilderStore')})
     this.formStorageEnabled = !!props.formStorage
     this.formStorage = props.formStorage || new AlwaysRejectFormStorage()
     this.#props = props

@@ -6,6 +6,7 @@ import {createField} from '../../features/validation/utils/initForm'
 import {ComponentStore} from '../../stores/ComponentStore'
 import {Store} from '../../stores/Store'
 import {createNonNullableContext} from '../createNonNullableContext'
+import {nameObservable} from '../observableNaming'
 
 /**
  * This tree of elements contains the data required to display the component. It is synchronized with the ComponentStore tree.
@@ -33,7 +34,7 @@ export class ComponentData {
       child.setParent(this)
     })
 
-    makeAutoObservable(this)
+    makeAutoObservable(this, undefined, {name: nameObservable('ComponentData', {key: componentStore.key})})
   }
 
   /**

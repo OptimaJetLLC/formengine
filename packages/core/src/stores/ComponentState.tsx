@@ -9,6 +9,7 @@ import {OverrideRef} from '../features/ui/OverridesContext'
 import {ComponentTreeProps, ViewMode} from '../types'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {getChildren} from '../utils/getChildren'
+import {nameObservable} from '../utils/observableNaming'
 import {ComponentProperty, ComponentStore} from './ComponentStore'
 import {Store} from './Store'
 
@@ -96,7 +97,7 @@ export class ComponentState {
     readonly componentTreeItem: ComponentType<ComponentTreeProps>,
     readonly overrides?: OverrideRef,
   ) {
-    makeAutoObservable(this)
+    makeAutoObservable(this, undefined, {name: nameObservable('ComponentState', {key: data.key})})
   }
 
   /**

@@ -1,6 +1,7 @@
 import {FluentVariable} from '@fluent/bundle/esm/bundle.js'
 import {makeAutoObservable} from 'mobx'
 import {Store} from '../../../stores/Store'
+import {nameObservable} from '../../../utils/observableNaming'
 import {getFluentCompatibleId} from '../../localization/getFluentCompatibleId'
 import {isFluentVariable} from '../../localization/isFluentVariable'
 import {Field} from './Field'
@@ -15,7 +16,7 @@ export class Form {
    * @param store the form viewer settings.
    */
   constructor(readonly store: Store) {
-    makeAutoObservable(this)
+    makeAutoObservable(this, undefined, {name: nameObservable('Form')})
   }
 
   /**

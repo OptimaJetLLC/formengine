@@ -11,6 +11,7 @@ import {Form} from '../features/validation'
 import {ViewMode} from '../types'
 import {isPromise} from '../utils'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
+import {nameObservable} from '../utils/observableNaming'
 import {ComponentStore} from './ComponentStore'
 import {LocalizationStore} from './LocalizationStore'
 import {PersistedForm} from './PersistedForm'
@@ -81,7 +82,7 @@ export class Store {
       defaultLanguage: true,
       selectedLanguage: true,
       displayedLanguage: true
-    })
+    }, {name: nameObservable(`ViewerStore`)})
   }
 
   /**

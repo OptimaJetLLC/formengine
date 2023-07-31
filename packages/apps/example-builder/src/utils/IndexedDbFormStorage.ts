@@ -1,8 +1,10 @@
 import {FormStorage} from '@react-form-builder/builder'
+import {nameAutorun, nameObservable} from '@react-form-builder/core'
 import {autorun, IReactionDisposer, makeAutoObservable} from 'mobx'
 import {kvCreateStore, kvDel, kvGet, kvKeys, kvSet} from './KeyValueStorage'
 
 const formNameKey = 'formName'
+const className = 'IndexedDbFormStorage'
 
 export class IndexedDbFormStorage implements FormStorage {
   #customStore = kvCreateStore('form-builder-store', 'form-store')
@@ -11,9 +13,12 @@ export class IndexedDbFormStorage implements FormStorage {
   formName = IndexedDbFormStorage.getItem<string>(formNameKey)
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this, undefined, {name: nameObservable(className)})
     this.#disposers = [
-      autorun(() => IndexedDbFormStorage.setItem(formNameKey, this.formName)),
+      autorun(
+        () => IndexedDbFormStorage.setItem(formNameKey, this.formName),
+        {name: nameAutorun(className, 'saveFormName)')}
+      ),
     ]
   }
 

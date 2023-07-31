@@ -3,6 +3,7 @@ import {makeAutoObservable} from 'mobx'
 import {ActionData, EventName} from '../features/event'
 import {Css} from '../features/style/types'
 import type {BoundValueSchema} from '../features/validation'
+import {nameObservable} from '../utils/observableNaming'
 
 /**
  * The value of the component property.
@@ -57,8 +58,7 @@ export class ComponentStore {
   constructor(key: string, type: string) {
     this.key = key
     this.type = type
-
-    makeAutoObservable(this)
+    makeAutoObservable(this, undefined, {name: nameObservable('ComponentStore', {key: key})})
   }
 
   /**
@@ -67,7 +67,7 @@ export class ComponentStore {
    * @returns the component Store.
    */
   static createFromObject(value: any) {
-    return assign(new ComponentStore('', ''), value)
+    return assign(new ComponentStore(value.key, value.type), value)
   }
 }
 

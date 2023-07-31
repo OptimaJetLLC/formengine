@@ -53,3 +53,4 @@ export type {
   SchemaType, SchemaTypeMap, ValidationRuleSettings, Disposer, ResolvedValidator, RuleValidator, RuleValidatorResult
 } from './features/validation'
 export {isPromise} from './utils'
+export {nameAutorun, nameObservable} from './utils/observableNaming'

@@ -1,10 +1,11 @@
 import {autorun, makeAutoObservable, observable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import {Store} from '../../../stores/Store'
+import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
 import {Model} from '../../define'
 import type {FormViewerProps} from '../../form-viewer'
-import {Field} from './Field'
 import {DataValidator} from './DataValidator'
+import {Field} from './Field'
 import {validatorsResolver} from './validatorsResolver'
 
 /**
@@ -57,26 +58,32 @@ export class SimpleField implements Field {
     if (!model.valued) throw new Error(`'model.valued' is falsy`)
     this.valued = model.valued
 
+    const className = 'SimpleField'
+
     makeAutoObservable(this, {
       model: false,
       valueCalculator: false,
       dataValidator: observable.ref
-    })
+    }, {name: nameObservable(className, {key: componentStore.key})})
 
     this.#disposers = [
-      autorun(() => this.dataValidator = DataValidator.create(
-        store,
-        validatorsResolver,
-        componentStore.schema,
-        error => this.error = error)),
-      autorun(() => {
-        const [calculated, value] = this.valueCalculator(componentStore, this.valued)
-        if (calculated) {
-          this.value = value
-          return
+      autorun(
+        () => this.dataValidator = DataValidator.create(
+          store,
+          validatorsResolver,
+          componentStore.schema,
+          error => this.error = error)
+        , {name: nameAutorun(className, 'setValidator', {key: componentStore.key})}),
+      autorun(
+        () => {
+          const [calculated, value] = this.valueCalculator(componentStore, this.valued)
+          if (calculated) {
+            this.value = value
+            return
+          }
+          this.value = props.data?.[componentStore.key] ?? this.initialValue
         }
-        this.value = props.data?.[componentStore.key] ?? this.initialValue
-      }),
+        , {name: nameAutorun(className, 'setValue', {'key': componentStore.key})}),
       () => this.dataValidator?.dispose()
     ]
   }

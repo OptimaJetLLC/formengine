@@ -1,6 +1,7 @@
 import {FluentBundle, FluentResource} from '@fluent/bundle'
 import {autorun, IReactionDisposer, makeAutoObservable} from 'mobx'
 import {getFluentCompatibleId} from '../features/localization/getFluentCompatibleId'
+import {nameAutorun, nameObservable} from '../utils/observableNaming'
 
 /**
  * The format in which localization is stored.
@@ -26,6 +27,8 @@ type LanguageFullCode = string
 type ComponentKey = string
 
 type ComponentPropertyName = string
+
+const className = 'LocalizationStore'
 
 /**
  * Observable storage of localization.
@@ -151,16 +154,18 @@ export class LocalizationStore {
    * @param value the initial localization value.
    */
   constructor(value: LocalizationValue = {}) {
-    makeAutoObservable(this)
+    makeAutoObservable(this, undefined, {name: nameObservable(className)})
 
     this.value = value
 
     this.#disposers = [
-      autorun(() => {
-        Object.keys(this.value).forEach(value => {
-          this.localizationCache.set(value, this.#compileFluentBundle(value, this))
-        })
-      })
+      autorun(
+        () => {
+          Object.keys(this.value).forEach(value => {
+            this.localizationCache.set(value, this.#compileFluentBundle(value, this))
+          })
+        }
+        , {name: nameAutorun(className, `compileFluentBundle`)}),
     ]
   }
 
