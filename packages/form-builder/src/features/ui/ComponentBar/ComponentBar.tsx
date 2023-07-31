@@ -22,6 +22,7 @@ interface ControlGroupsProps extends DraggableProps {
 
 const ControlGroups = (props: ControlGroupsProps) => {
   const store = useBuilderStore()
+  const t = useTranslationPart('componentsList.categories')
   const {filter, ...componentProps} = props
   const isMatch = filter
     ? (el: Model) => el.name.toLowerCase().includes(filter.toLowerCase())
@@ -44,7 +45,7 @@ const ControlGroups = (props: ControlGroupsProps) => {
   for (const category in byCategory) {
     result.push(
       <div key={i++}>
-        {!filter && <Subheader>{category}</Subheader>}
+        {<Subheader>{t(category) || category}</Subheader>}
         <AddedComponents definitions={byCategory[category]} {...componentProps}/>
       </div>
     )
@@ -96,7 +97,7 @@ const AddedComponents = ({definitions, ...componentProps}: AddedComponentsProps)
 const componentBar = css`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   overflow: hidden;
   background-color: var(--rs-btn-default-bg);
 `
@@ -105,7 +106,7 @@ const ControlsGroup = styled.div`
   display: flex;
   flex-flow: wrap;
   gap: 4px;
-  margin-bottom: 15px;
+  margin-top: 2px;
 `
 
 const Header = styled.div`
@@ -121,20 +122,16 @@ const Header = styled.div`
   }
 `
 
-const Subheader = styled.h6`
-  list-style: none;
-  padding-bottom: 10px;
+const Subheader = styled.label`
   padding-inline: 4px;
-  font-weight: normal;
-  cursor: pointer;
-  border: none;
-  font-size: 17px;
-  text-align: left;
+  font-size: 16px;
 `
 
 const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
-  flex: 1;
   padding-inline: 4px 2px;
   overflow-y: auto;
 `

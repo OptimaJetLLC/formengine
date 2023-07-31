@@ -204,6 +204,13 @@
   "componentsModal": {
     "clickToAdd": "Click to add control"
   },
+  "componentsList": {
+    "categories": {
+      "fields": "Fields",
+      "static": "Static",
+      "structure": "Structure"
+    }
+  },
   "componentToolbar": {
     "add": "Add new element",
     "before": "Before",

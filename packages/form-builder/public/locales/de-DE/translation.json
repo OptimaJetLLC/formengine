@@ -204,6 +204,13 @@
   "componentsModal": {
     "clickToAdd": "Klicken Sie, um Steuerelement hinzuzufügen"
   },
+  "componentsList": {
+    "categories": {
+      "fields": "Datenfelder",
+      "static": "Statisch",
+      "structure": "Struktur"
+    }
+  },
   "componentToolbar": {
     "add": "Neues Element hinzufügen",
     "before": "Vor",

@@ -34,58 +34,67 @@ import {rsTooltip} from './components/RsTooltip'
 import {rsTreePicker} from './components/RsTreePicker'
 import {rsUploader} from './components/RsUploader'
 
-const definitions = [
-  rsBreadcrumb,
-  rsButton,
-  rsCard,
-  rsCheckbox,
-  rsCollectionEditor,
-  rsContainer,
-  rsCustomBlock,
-  rsCustomControl,
-  rsDropdown,
-  rsDropzone,
-  rsErrorMessage,
-  rsGrid,
-  rsGridLayout,
-  rsGridView,
-  rsImage,
-  rsInput,
-  rsNumberFormat,
-  rsPatternFormat,
-  rsLabel,
-  rsContent,
-  rsFooter,
-  rsHeader,
-  rsSidebar,
-  rsMenu,
-  rsMessage,
-  rsProgressCircle,
-  rsProgressLine,
-  rsRadioGroup,
-  rsRepeater,
-  rsRichTextEditor,
-  rsSearch,
-  rsStaticContent,
-  rsTab,
-  rsTextArea,
-  rsTitle,
-  rsTreePicker,
-  rsTooltip,
-  rsUploader
-]
+const categories = {
+  fields: [
+    rsCheckbox,
+    rsCollectionEditor,
+    rsDropdown,
+    rsInput,
+    rsNumberFormat,
+    rsPatternFormat,
+    rsRadioGroup,
+    rsRichTextEditor,
+    rsSearch,
+    rsTextArea,
+    rsTreePicker,
+    rsUploader
+  ],
+  static: [
+    rsButton,
+    rsCustomBlock,
+    rsCustomControl,
+    rsErrorMessage,
+    rsImage,
+    rsLabel,
+    rsMenu,
+    rsMessage,
+    rsProgressCircle,
+    rsProgressLine,
+    rsStaticContent,
+    rsTitle,
+    rsTooltip,
+  ],
+  structure: [
+    rsBreadcrumb,
+    rsCard,
+    rsContainer,
+    rsDropzone,
+    rsGrid,
+    rsGridLayout,
+    rsGridView,
+    rsContent,
+    rsFooter,
+    rsHeader,
+    rsSidebar,
+    rsRepeater,
+    rsTab,
+  ]
+}
 
-definitions.forEach(c => {
-  const prefix = 'Rs'
-  if (!c.getType().startsWith(prefix)) {
-    throw new Error(`The component type must start with '${prefix}', type: '${c.getType()}'`)
-  }
-  c.category('RSuite components')
+const rSuiteComponents: Definer<any>[] = []
+
+Object.entries(categories).forEach(([category, components]) => {
+  components.forEach(c => {
+    const prefix = 'Rs'
+    if (!c.getType().startsWith(prefix)) {
+      throw new Error(`The component type must start with '${prefix}', type: '${c.getType()}'`)
+    }
+    c.category(category)
+    rSuiteComponents.push(c)
+  })
 })
 
-export const rSuiteComponents: Definer<any>[] = definitions
-
-export {rsErrorMessage, rsTooltip}
+export {rSuiteComponents, rsErrorMessage, rsTooltip}
 
 const components = rSuiteComponents.map(def => def.build())
 export const models = components.map(({model}) => model)
