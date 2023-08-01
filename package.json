@@ -21,7 +21,7 @@
         "test:related": "vitest related",
         "test:ui": "vitest --ui",
         "coverage": "vitest run --coverage",
-        "check:circular-deps": "npx madge --extensions ts --circular .",
+        "check:circular-deps": "npx madge@6.1.0 --extensions ts --circular .",
         "check:tsc": "tsc --noEmit --emitDeclarationOnly false",
         "check:unused-exports": "node ./scripts/find-unused-exports",
         "eslint": "npx eslint .",

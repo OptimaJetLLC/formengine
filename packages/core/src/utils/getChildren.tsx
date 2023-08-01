@@ -63,5 +63,5 @@ function executeCondition(child: ComponentData, parentProps: any) {
 
 function needRender(child: ComponentData, store: Store) {
   if (!child.store.renderWhen) return true
-  return calculateExpressionProperty(child.store.renderWhen, store.form) === true
+  return calculateExpressionProperty(child.store.renderWhen, store.rootComponentData) === true
 }

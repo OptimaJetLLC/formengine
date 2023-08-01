@@ -4,15 +4,14 @@ import {calculatePropertyValue} from '../../calculation/propertyCalculator'
 import {Model} from '../../define'
 import {FormViewerProps} from '../../form-viewer'
 import {getTemplateName, templateTypeNamePrefix} from '../../ui/templateModel'
-import {Form} from './Form'
 import {FormField} from './FormField'
 import {SimpleField} from './SimpleField'
 
-function updateFnValue(form: Form) {
+function updateFnValue(viewerStore: Store) {
   return function (component: ComponentStore, key: string): [boolean, any?] {
     const property = component.props[key]
     if (property && property.useFn) {
-      const value = calculatePropertyValue(property, form)
+      const value = calculatePropertyValue(property, viewerStore.rootComponentData)
       return [true, value]
     }
     return [false]
@@ -21,7 +20,7 @@ function updateFnValue(form: Form) {
 
 function createFormField(cs: ComponentStore, model: Model, store: Store, viewerProps: Readonly<FormViewerProps>) {
   if (!model.type.startsWith(templateTypeNamePrefix)) {
-    return new SimpleField(store, viewerProps, cs, model, updateFnValue(store.form))
+    return new SimpleField(store, viewerProps, cs, model, updateFnValue(store))
   }
 
   const formViewerProps = {
@@ -37,7 +36,7 @@ function createFormField(cs: ComponentStore, model: Model, store: Store, viewerP
   } as FormViewerProps
 
   const childStore = new Store(formViewerProps, store.actions, false, store, cs.key)
-  return new FormField(cs, childStore.form, formViewerProps)
+  return new FormField(cs, childStore.rootComponentData, formViewerProps)
 }
 
 /**

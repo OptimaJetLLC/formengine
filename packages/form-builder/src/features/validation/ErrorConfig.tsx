@@ -20,12 +20,12 @@ export const ErrorConfig = () => {
 
   useEffect(() => {
     if (errorVisible) {
-      store.viewer.form.setAllErrors(errorMessage)
+      store.viewer.rootComponentData.setAllErrors(errorMessage)
     } else {
-      store.viewer.form.setAllErrors()
+      store.viewer.rootComponentData.setAllErrors()
     }
 
-    return () => store.viewer.form.setAllErrors()
+    return () => store.viewer.rootComponentData.setAllErrors()
   }, [errorVisible, errorMessage])
 
   const properties = store.view.errorMeta.properties

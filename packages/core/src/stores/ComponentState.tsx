@@ -53,7 +53,7 @@ const getSubstitutedValue = (props: Record<string, ComponentProperty>, store: St
     if (props[key]?.useFn || typeof value !== 'string' || key === 'value') continue
     //if (store.isBuilderMode) continue
 
-    result[key] = substitute(value, store.form.data)
+    result[key] = substitute(value, store.rootComponentData.data)
   }
 
   return result
@@ -130,7 +130,7 @@ export class ComponentState {
    * @returns the values for all properties of the component, calculates the values of the calculated properties.
    */
   get calculatedProps() {
-    return calculateProperties(this.data.store, this.store.form)
+    return calculateProperties(this.data.store, this.store.rootComponentData)
   }
 
   /**

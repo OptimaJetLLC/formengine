@@ -85,7 +85,7 @@ export const testFluentLocalization = (request: LocalizationTestRequest): Locali
  * @returns the object containing only the localized props of the specified component.
  */
 export const localizeProperties = (viewerStore: Store, componentStore: ComponentStore) => {
-  const form = viewerStore.form
+  const rootComponentData = viewerStore.rootComponentData
   const language = viewerStore.displayedLanguage
   const fluentBundle = viewerStore.localization.getFluentBundle(language.fullCode)
 
@@ -110,7 +110,7 @@ export const localizeProperties = (viewerStore: Store, componentStore: Component
         return
       }
       try {
-        data[value] = fluentBundle.formatPattern(message.value!, form.fluentData)
+        data[value] = fluentBundle.formatPattern(message.value!, rootComponentData.fluentData)
       } catch (e) {
         console.error(e)
       }

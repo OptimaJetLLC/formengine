@@ -1,17 +1,21 @@
+import {FluentVariable} from '@fluent/bundle/esm/bundle.js'
 import {makeAutoObservable} from 'mobx'
 import {Model} from '../../features/define'
 import {FormViewerProps} from '../../features/form-viewer'
+import {getFluentCompatibleId} from '../../features/localization/getFluentCompatibleId'
+import {isFluentVariable} from '../../features/localization/isFluentVariable'
 import {Field} from '../../features/validation'
 import {createField} from '../../features/validation/utils/initForm'
 import {ComponentStore} from '../../stores/ComponentStore'
 import {Store} from '../../stores/Store'
 import {createNonNullableContext} from '../createNonNullableContext'
 import {nameObservable} from '../observableNaming'
+import type {IFormData} from '../IFormData'
 
 /**
  * This tree of elements contains the data required to display the component. It is synchronized with the ComponentStore tree.
  */
-export class ComponentData {
+export class ComponentData implements IFormData {
   readonly store: ComponentStore
   readonly model: Model
   readonly field?: Field
@@ -131,10 +135,9 @@ export class ComponentData {
   }
 
   /**
-   * @returns all the fields in the tree as a map. Starts from the root of the tree.
+   * @returns all the fields in the tree as a map. Starts from this node.
    */
-  get allFields(): Map<string, Field> {
-    if (this.parent) return this.parent.allFields
+  get fields(): Map<string, Field> {
     return this.collectAllFields(new Map<string, Field>())
   }
 
@@ -144,6 +147,75 @@ export class ComponentData {
   delete() {
     this.parent?.removeChild(this)
     this.field?.dispose()
+  }
+
+  /**
+   * @inheritDoc
+   */
+  get data() {
+    const result: Record<string, unknown> = {}
+    for (const [key, field] of this.fields) {
+      if (field.storeDataInParentForm) {
+        const fieldValue: Record<string, any> = field.value || {}
+        Object.keys(fieldValue).forEach(i => result[i] = fieldValue[i])
+      } else {
+        result[key] = field.value
+      }
+    }
+    return result
+  }
+
+  /**
+   * @returns all the form data that is of the {@link FluentVariable} type.
+   * Additionally, the keys of the returned object are converted to the snake case.
+   */
+  get fluentData() {
+    const fluentData: Record<string, FluentVariable> = {}
+    for (const [key, value] of Object.entries(this.data)) {
+      if (isFluentVariable(value)) {
+        fluentData[getFluentCompatibleId(key)] = value
+      }
+    }
+    return fluentData
+  }
+
+  /**
+   * @inheritDoc
+   */
+  get errors() {
+    const result: Record<string, unknown> = {}
+    for (const [key, field] of this.fields) {
+      if (field.error) result[key] = field.error
+    }
+    return result
+  }
+
+  /**
+   * @inheritDoc
+   */
+  setAllErrors(message?: string) {
+    this.fields.forEach(f => f.error = message)
+  }
+
+  /**
+   * Validates the data in the form.
+   */
+  async validate() {
+    await Promise.allSettled([...this.fields.values()].map(f => f.validate()))
+  }
+
+  /**
+   * @inheritDoc
+   */
+  reset() {
+    this.fields.forEach(f => f.reset())
+  }
+
+  /**
+   * @inheritDoc
+   */
+  clear() {
+    this.fields.forEach(f => f.clear())
   }
 
   private collectAllNodesAsArray(acc: ComponentData[]) {

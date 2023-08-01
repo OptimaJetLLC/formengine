@@ -1,6 +1,6 @@
 import {isUndefined} from 'lodash-es'
 import {ComponentProperty, ComponentStore} from '../../stores/ComponentStore'
-import {Form} from '../validation'
+import type {IFormData} from '../../utils/IFormData'
 
 const fnCache = new Map<string, Function>()
 
@@ -13,10 +13,10 @@ const getOrCreateFn = (source: string) => {
   return result
 }
 
-const calculateValue = (fnSource: string, form: Form) => {
+const calculateValue = (fnSource: string, formViewerData: IFormData) => {
   const fn = getOrCreateFn(fnSource)
   try {
-    return fn(form)
+    return fn(formViewerData)
   } catch (e) {
     console.warn(e)
   }
@@ -25,25 +25,25 @@ const calculateValue = (fnSource: string, form: Form) => {
 /**
  * Calculates the value for the component property.
  * @param componentProperty the component property.
- * @param form the form data.
+ * @param formViewerData the formViewerData data.
  * @returns the calculated value.
  * @internal
  */
-export const calculatePropertyValue = (componentProperty: ComponentProperty, form: Form) => {
-  return calculateValue(componentProperty.fnSource || '', form)
+export const calculatePropertyValue = (componentProperty: ComponentProperty, formViewerData: IFormData) => {
+  return calculateValue(componentProperty.fnSource || '', formViewerData)
 }
 
 /**
  * Calculates the value for the component property or calculates the value from the property expression.
  * @param componentProperty the component property.
- * @param form the form data.
+ * @param formViewerData the formViewerData data.
  * @returns the calculated value.
  * @internal
  */
-export const calculateExpressionProperty = (componentProperty: ComponentProperty, form: Form) => {
-  if (componentProperty.useFn) return calculatePropertyValue(componentProperty, form)
+export const calculateExpressionProperty = (componentProperty: ComponentProperty, formViewerData: IFormData) => {
+  if (componentProperty.useFn) return calculatePropertyValue(componentProperty, formViewerData)
   const fnSource = componentProperty.value || ''
-  return calculateValue(`return ${fnSource}`, form)
+  return calculateValue(`return ${fnSource}`, formViewerData)
 }
 
 /**
@@ -78,11 +78,11 @@ export const compileFn = (source: string): CompilationResult => {
 /**
  * Calculates all properties for the component.
  * @param componentStore the component.
- * @param form form data.
+ * @param formViewerData the formViewerData data.
  * @returns the {@link Record}<string, any> for all component properties.
  * @internal
  */
-export const calculateProperties = (componentStore: ComponentStore, form: Form) => {
+export const calculateProperties = (componentStore: ComponentStore, formViewerData: IFormData) => {
   const data: Record<string, any> = {}
   Object.keys(componentStore.props).forEach(value => {
     const componentProperty = componentStore.props[value]
@@ -90,7 +90,7 @@ export const calculateProperties = (componentStore: ComponentStore, form: Form) 
 
     if (componentProperty.useFn) {
       try {
-        data[value] = calculatePropertyValue(componentProperty, form)
+        data[value] = calculatePropertyValue(componentProperty, formViewerData)
       } catch (e) {
         console.error(e)
       }

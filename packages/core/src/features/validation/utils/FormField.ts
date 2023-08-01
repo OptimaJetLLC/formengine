@@ -1,9 +1,9 @@
 import {IReactionDisposer, makeAutoObservable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
+import {ComponentData} from '../../../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../../../utils/observableNaming'
 import {FormViewerProps} from '../../form-viewer'
 import {Field} from './Field'
-import {Form} from './Form'
 
 /**
  * The field with the form data, contains the value of the nested form.
@@ -34,7 +34,7 @@ export class FormField implements Field {
    */
   constructor(
     readonly componentStore: ComponentStore,
-    readonly form: Form,
+    readonly form: ComponentData,
     readonly props: FormViewerProps
   ) {
     makeAutoObservable(this, {

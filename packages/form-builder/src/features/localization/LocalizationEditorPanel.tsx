@@ -48,7 +48,7 @@ export const LocalizationEditorPanel = observer(({editableProperty, onClose, onS
     const localizationResult = testFluentLocalization({
       localizationStringId: localizationStringId,
       localization: value,
-      data: viewerStore.form.fluentData,
+      data: viewerStore.rootComponentData.fluentData,
       language: builderStore.localizationLanguage
     })
     setError(localizationResult)

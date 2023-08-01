@@ -7,7 +7,6 @@ import {defaultLanguage} from '../features/localization/consts'
 import {Language} from '../features/localization/types'
 import {buildInternalErrorStore} from '../features/ui/internalErrorModel'
 import {screenModel} from '../features/ui/screenModel'
-import {Form} from '../features/validation'
 import {ViewMode} from '../types'
 import {isPromise} from '../utils'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
@@ -48,11 +47,9 @@ export class Store {
 
   readonly eventSubject = new Subject<ActionEventArgs>()
 
-  readonly form: Form
-
   #screen = new ComponentStore(screenModel.name, screenModel.type)
 
-  rootComponentData
+  rootComponentData: ComponentData
 
   viewMode: ViewMode = 'desktop'
 
@@ -72,7 +69,6 @@ export class Store {
   constructor(props: Readonly<FormViewerProps>, public actions: ActionDefinition[] = [], public isBuilderMode: boolean = false,
               public readonly parentStore?: Store, private readonly keyInParent?: string) {
     this.#props = props
-    this.form = new Form(this)
     this.rootComponentData = this.createComponentData(this.#screen)
 
     makeObservable(this, {

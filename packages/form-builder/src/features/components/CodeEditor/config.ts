@@ -1,5 +1,5 @@
 import {loader} from '@monaco-editor/react'
-import {ActionEventArgsDeclaration, FormDeclaration} from '@react-form-builder/core'
+import {ActionEventArgsDeclaration, IFormDataDeclaration} from '@react-form-builder/core'
 import {fluentLanguageId} from '../../localization/consts'
 
 // todo The lines below are commented out because they do not work in the assembled npm-package
@@ -34,7 +34,7 @@ import {fluentLanguageId} from '../../localization/consts'
 
 loader.init().then(monaco => {
   monaco?.languages.typescript?.javascriptDefaults.addExtraLib(ActionEventArgsDeclaration, 'ActionEventArgs')
-  monaco?.languages.typescript?.javascriptDefaults.addExtraLib(FormDeclaration, 'Form')
+  monaco?.languages.typescript?.javascriptDefaults.addExtraLib(IFormDataDeclaration, 'Form')
   monaco?.languages.css?.cssDefaults.setOptions({lint: {emptyRules: 'ignore'}})
   //fluent syntax reference https://projectfluent.org/fluent/guide/
   //init fluent syntax highlight
