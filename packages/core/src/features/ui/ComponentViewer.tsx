@@ -21,7 +21,7 @@ function denoteBinds(value: ArgumentValue, store: Store) {
   }, componentMarkup)
 }
 
-const useActions = () => {
+const useActions = (state: ComponentState) => {
   const store = useStore()
   const componentData = useComponentData()
 
@@ -44,8 +44,8 @@ const useActions = () => {
   }, [componentData.store.events])
 
   useEffect(() => {
-    store.eventSubject.next(new ActionEventArgs(DidMountEvent, componentData, store, []))
-    return () => store.eventSubject.next(new ActionEventArgs(WillUnmountEvent, componentData, store, []))
+    store.eventSubject.next(new ActionEventArgs(DidMountEvent, componentData, store, [], state))
+    return () => store.eventSubject.next(new ActionEventArgs(WillUnmountEvent, componentData, store, [], state))
   }, [])
 }
 
@@ -65,7 +65,7 @@ export const ComponentViewer = namedObserver('ComponentViewer', () => {
   const overrides = useOverrides()
   const componentState = useMemo(() => new ComponentState(data, store, component, overrides), [data, overrides.current])
 
-  useActions()
+  useActions(componentState)
 
   return createElement(data.model.view, componentState.get)
 })

@@ -1,4 +1,5 @@
 import {SyntheticEvent} from 'react'
+import {ComponentState} from '../../../stores/ComponentState'
 import {Store} from '../../../stores/Store'
 import {ComponentData} from '../../../utils/contexts/ComponentDataContext'
 
@@ -6,6 +7,10 @@ import {ComponentData} from '../../../utils/contexts/ComponentDataContext'
  * Arguments passed to the event handler.
  */
 export class ActionEventArgs {
+  /**
+   * The component properties that were used to render the sender component.
+   */
+  renderedProps: Record<string, any>
 
   /**
    * Creates arguments for the event handler.
@@ -13,13 +18,24 @@ export class ActionEventArgs {
    * @param sender the component that triggered the event.
    * @param store the form viewer settings.
    * @param args the event arguments.
+   * @param state the {@link ComponentState} instance.
    */
   constructor(
     readonly type: string,
     readonly sender: ComponentData,
     readonly store: Store,
-    readonly args: any[]
+    readonly args: any[],
+    state: ComponentState
   ) {
+    this.renderedProps = state.get
+  }
+
+  /**
+   * Sets user-defined properties for the React component that override other properties of the component.
+   * @param props the component properties.
+   */
+  setUserDefinedProps = (props?: Record<string, any>) => {
+    this.sender.userDefinedProps = props
   }
 
   /**
@@ -58,6 +74,16 @@ declare class ActionEventArgs {
    * The component that triggered the event.
    */
   readonly sender: ComponentData
+  
+  /**
+   * The component properties that were used to render the sender component.
+   */
+  readonly renderedProps: Record<string, any>
+  
+  /**
+   * Sets current props of component.
+   */
+  readonly setUserDefinedProps: (props: Record<string, any>) => void
 
   /**
    * The form viewer settings.

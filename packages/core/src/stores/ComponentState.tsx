@@ -65,7 +65,7 @@ const getSubstitutedValue = (props: Record<string, ComponentProperty>, store: St
   }
 }
 
-const computeEvents = (data: ComponentData, store: Store) => {
+const computeEvents = (data: ComponentData, store: Store, state: ComponentState) => {
   const events = {} as Record<EventName, Function>
 
   const eventNames = new Set(keysIn(data.store.events))
@@ -73,7 +73,7 @@ const computeEvents = (data: ComponentData, store: Store) => {
   eventNames.delete(DidMountEvent)
   eventNames.delete(WillUnmountEvent)
   eventNames.forEach((name) =>
-    events[name] = (...args: any[]) => store.eventSubject.next(new ActionEventArgs(name, data, store, args)))
+    events[name] = (...args: any[]) => store.eventSubject.next(new ActionEventArgs(name, data, store, args, state)))
 
   return events
 }
@@ -114,6 +114,7 @@ export class ComponentState {
       this.value,
       this.events,
       this.htmlAttributes,
+      this.data.userDefinedProps,
       this.overrides?.current,
     )
     return Object.assign(propsWithoutChildren, this.children(propsWithoutChildren))
@@ -144,7 +145,7 @@ export class ComponentState {
    * @returns the component event handlers that send events to the event bus.
    */
   get events() {
-    return computeEvents(this.data, this.store)
+    return computeEvents(this.data, this.store, this)
   }
 
   /**

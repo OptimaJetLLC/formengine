@@ -23,6 +23,11 @@ export class ComponentData implements IFormData {
   children: ComponentData[] = []
 
   /**
+   * User defined properties of the React component.
+   */
+  userDefinedProps?: Record<string, any>
+
+  /**
    * Constructor
    * @param viewerStore The store of the form viewer.
    * @param componentStore The component settings.
