@@ -6,139 +6,51 @@
       "actions": {
         "value": [
           {
-            "name": "WeatherRequest",
-            "body": "\ntry {\n  fetch(`https://api.open-meteo.com/v1/forecast?latitude=40.750377&longitude=-73.992269&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`)\n      .then(v => v.json())\n      .then(v => {\n        e.sender.store.props.children ??= {}\n        e.sender.store.props.children.value = `Current weather is ${v.current_weather.temperature} °C`\n      })\n} catch (error) {\n  e.sender.store.props.children ??= {}\n  e.sender.store.props.children.value = `Current weather is not available`\n}\n"
-          },
-          {
             "name": "loadData",
-            "body": "\n    const [searchValue, loadCallback, currentDataLength] = e.args\n\n    fetch ('https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.json')\n        .then (data => data.json())\n        .then (data => {\n            const preparedData = data\n                .filter(value => value.toLowerCase().includes(searchValue.toLowerCase()))\n                .slice(currentDataLength, currentDataLength + 20)\n                .map(value => ({value, label: value}))\n\n            loadCallback(preparedData)        \n        })\n"
+            "body": "\n    const [searchValue, loadCallback, currentDataLength] = e.args\n\n    fetch ('https://gist.githubusercontent.com/rogargon/5534902/raw/434445021e155240ca78e378f10f70391dd594ea/countries.json')\n        .then (data => data.json())\n        .then (data => {\n            const preparedData = data\n                .filter(value => value.toLowerCase().includes(searchValue.toLowerCase()))\n                .slice(currentDataLength, currentDataLength + 20)\n                .map(value => ({value, label: value}))\n\n            loadCallback(preparedData)        \n        })\n"
           }
         ]
+      },
+      "error": {
+        "value": {}
       }
     },
     "children": [
       {
-        "key": "RsContainer 1",
-        "type": "RsContainer",
-        "props": {
-          "direction": {
-            "value": "horizontal"
-          }
-        },
-        "children": [
-          {
-            "key": "RsDropdown 1",
-            "type": "RsDropdown",
-            "props": {
-              "data": {
-                "value": []
-              }
-            },
-            "events": {
-              "onLoadData": [
-                {
-                  "name": "loadData",
-                  "type": "custom"
-                }
-              ]
-            }
-          },
-          {
-            "key": "RsSearch 1",
-            "type": "RsSearch",
-            "props": {},
-            "events": {
-              "onLoadData": [
-                {
-                  "name": "loadData",
-                  "type": "custom"
-                }
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "key": "Image 1",
-        "type": "RsImage",
-        "props": {},
-        "css": {
-          "object": {
-            "width": "100%",
-            "height": "40px"
-          }
-        },
-        "renderWhen": {
-          "value": "form.data.checkbox",
-          "useFn": false,
-          "fnSource": "// enter your code here\nreturn false"
-        }
-      },
-      {
-        "key": "RsButton 1",
-        "type": "RsButton",
-        "props": {
-          "children": {
-            "value": "Current weather is 22.2 °C"
-          }
-        },
-        "events": {
-          "onDidMount": [
-            {
-              "name": "WeatherRequest",
-              "type": "custom"
-            }
-          ]
-        }
-      },
-      {
-        "key": "checkbox",
-        "type": "RsCheckbox",
-        "props": {
-          "checked": {
-            "value": true,
-            "useFn": true,
-            "fnSource": "return new Date().getMinutes() % 2 === 0"
-          },
-          "children": {
-            "useFn": true,
-            "fnSource": "return `${form.data.title} ${form.data.checkbox} ${new Date().toISOString()}`"
-          }
-        },
-        "css": {
-          "object": {}
-        }
-      },
-      {
-        "key": "header 1",
+        "key": "Header",
         "type": "RsTitle",
         "props": {
           "content": {
-            "value": "Application Form"
+            "value": "Complex Master Form"
+          },
+          "headerSize": {
+            "value": "h4"
+          }
+        }
+      },
+      {
+        "key": "Email hint",
+        "type": "RsLabel",
+        "props": {
+          "text": {
+            "value": "Use a permanent address where you can receive mail."
+          }
+        }
+      },
+      {
+        "key": "Main container",
+        "type": "RsContainer",
+        "props": {
+          "direction": {
+            "value": "vertical"
           }
         },
         "css": {
-          "object": {
-            "textAlign": "center"
-          }
-        }
-      },
-      {
-        "key": "title",
-        "type": "RsInput",
-        "props": {
-          "label": {
-            "value": "Title"
-          }
-        }
-      },
-      {
-        "key": "input container",
-        "type": "RsContainer",
-        "props": {},
+          "desktop": "border: 1px solid lightgray;\nborder-radius: 6px;\npadding: 20px;"
+        },
         "children": [
           {
-            "key": "name container",
+            "key": "Name container",
             "type": "RsContainer",
             "props": {
               "direction": {
@@ -147,138 +59,542 @@
             },
             "children": [
               {
-                "key": "first name",
+                "key": "First name",
                 "type": "RsInput",
                 "props": {
                   "label": {
-                    "value": "First Name"
-                  }
-                }
-              },
-              {
-                "key": "last name",
-                "type": "RsInput",
-                "props": {
-                  "label": {
-                    "value": "Last Name"
+                    "value": "First name"
                   }
                 },
                 "schema": {
                   "type": "string",
                   "validations": [
                     {
-                      "key": "custom",
-                      "args": {
-                        "code": "return await fetch(`https://jsonplaceholder.typicode.com/users?username=${value}`).then((response) => response.json()).then((user) => user.length === 0)",
-                        "message": "That username is taken. Try another."
-                      }
+                      "key": "required"
+                    }
+                  ],
+                  "autoValidate": true
+                }
+              },
+              {
+                "key": "Last name",
+                "type": "RsInput",
+                "props": {
+                  "label": {
+                    "value": "Last name"
+                  }
+                },
+                "schema": {
+                  "type": "string",
+                  "validations": [
+                    {
+                      "key": "required"
                     }
                   ]
                 }
               }
-            ],
-            "css": {
-              "object": {}
+            ]
+          },
+          {
+            "key": "Email",
+            "type": "RsInput",
+            "props": {
+              "label": {
+                "value": "Email address"
+              }
+            },
+            "schema": {
+              "type": "string",
+              "validations": [
+                {
+                  "key": "email"
+                },
+                {
+                  "key": "required"
+                }
+              ]
             }
           },
           {
-            "key": "Formatted",
+            "key": "Country 1",
+            "type": "RsDropdown",
+            "props": {
+              "label": {
+                "value": "Country / Region"
+              },
+              "data": {
+                "value": []
+              },
+              "defaultValue": {
+                "value": ""
+              },
+              "value": {
+                "value": ""
+              },
+              "placeholder": {
+                "value": "United States"
+              }
+            },
+            "schema": {
+              "type": "string",
+              "validations": []
+            },
+            "events": {
+              "onLoadData": [
+                {
+                  "name": "loadData",
+                  "type": "custom"
+                }
+              ]
+            }
+          },
+          {
+            "key": "Subheader",
+            "type": "RsTitle",
+            "props": {
+              "content": {
+                "value": "Subheader inside the form"
+              },
+              "headerSize": {
+                "value": "h5"
+              }
+            }
+          },
+          {
+            "key": "Email hint 2",
+            "type": "RsLabel",
+            "props": {
+              "text": {
+                "value": "Use a permanent address where you can receive mail."
+              }
+            }
+          },
+          {
+            "key": "Street address",
+            "type": "RsInput",
+            "props": {
+              "label": {
+                "value": "Street address"
+              }
+            }
+          },
+          {
+            "key": "Adress container",
             "type": "RsContainer",
             "props": {
               "direction": {
                 "value": "horizontal"
               }
             },
-            "css": {
-              "object": {}
-            },
             "children": [
               {
-                "key": "RsNumberFormat 1",
-                "type": "RsNumberFormat",
+                "key": "City",
+                "type": "RsInput",
                 "props": {
+                  "placeholder": {
+                    "value": ""
+                  },
                   "label": {
-                    "value": "Salary"
+                    "value": "City"
                   }
                 }
               },
               {
-                "key": "RsPatternFormat 1",
-                "type": "RsPatternFormat",
+                "key": "State",
+                "type": "RsInput",
                 "props": {
+                  "placeholder": {
+                    "value": ""
+                  },
                   "label": {
-                    "value": "Phone number"
+                    "value": "State / Province"
+                  }
+                }
+              },
+              {
+                "key": "ZIP",
+                "type": "RsInput",
+                "props": {
+                  "placeholder": {
+                    "value": ""
                   },
-                  "format": {
-                    "value": "+1 (###) #### ###"
-                  },
-                  "allowEmptyFormatting": {
-                    "value": true
-                  },
-                  "mask": {
-                    "value": "_"
+                  "label": {
+                    "value": "ZIP / Postal"
                   }
                 }
               }
             ]
-          }
-        ],
-        "css": {
-          "object": {}
-        }
-      },
-      {
-        "key": "comment",
-        "type": "RsTextArea",
-        "props": {}
-      },
-      {
-        "key": "button container",
-        "type": "RsContainer",
-        "props": {},
-        "children": [
-          {
-            "key": "save",
-            "type": "RsButton",
-            "props": {
-              "children": {
-                "value": "Save",
-                "useFn": true,
-                "fnSource": "return `Save ${new Date().toISOString()}`"
-              },
-              "appearance": {
-                "value": "primary"
-              }
-            }
           },
           {
-            "key": "reset",
-            "type": "RsButton",
+            "key": "Country container",
+            "type": "RsContainer",
             "props": {
-              "children": {
-                "value": "Reset"
+              "direction": {
+                "value": "horizontal"
               }
             },
-            "events": {
-              "onClick": [
+            "children": [
+              {
+                "key": "Country 2",
+                "type": "RsDropdown",
+                "props": {
+                  "label": {
+                    "value": "Country / Region"
+                  },
+                  "data": {
+                    "value": []
+                  },
+                  "defaultValue": {
+                    "value": ""
+                  },
+                  "placeholder": {
+                    "value": "United States"
+                  }
+                },
+                "events": {
+                  "onLoadData": [
+                    {
+                      "name": "loadData",
+                      "type": "custom"
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "string",
+                  "validations": []
+                }
+              },
+              {
+                "key": "Country 3",
+                "type": "RsDropdown",
+                "props": {
+                  "label": {
+                    "value": "Country / Region"
+                  },
+                  "data": {
+                    "value": []
+                  },
+                  "defaultValue": {
+                    "value": ""
+                  },
+                  "placeholder": {
+                    "value": "United States"
+                  }
+                },
+                "events": {
+                  "onLoadData": [
+                    {
+                      "name": "loadData",
+                      "type": "custom"
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "string",
+                  "validations": []
+                }
+              },
+              {
+                "key": "Country 4",
+                "type": "RsDropdown",
+                "props": {
+                  "label": {
+                    "value": "Country / Region"
+                  },
+                  "data": {
+                    "value": []
+                  },
+                  "defaultValue": {
+                    "value": ""
+                  },
+                  "placeholder": {
+                    "value": "United States"
+                  }
+                },
+                "events": {
+                  "onLoadData": [
+                    {
+                      "name": "loadData",
+                      "type": "custom"
+                    }
+                  ]
+                },
+                "schema": {
+                  "type": "string",
+                  "validations": []
+                }
+              }
+            ]
+          },
+          {
+            "key": "Website",
+            "type": "RsInput",
+            "props": {
+              "label": {
+                "value": "Website"
+              },
+              "placeholder": {
+                "value": "www.example.com"
+              }
+            },
+            "schema": {
+              "type": "string",
+              "validations": [
                 {
-                  "name": "Reset",
-                  "type": "common"
+                  "key": "url"
                 }
               ]
             }
           },
           {
-            "key": "RsUploader 1",
+            "key": "About",
+            "type": "RsTextArea",
+            "props": {
+              "placeholder": {
+                "value": "you@example.com"
+              },
+              "label": {
+                "value": "About"
+              },
+              "rows": {
+                "value": 4
+              }
+            }
+          },
+          {
+            "key": "About hint",
+            "type": "RsLabel",
+            "props": {
+              "text": {
+                "value": "Brief description for your profile. URLs are hyperlinked. "
+              }
+            }
+          },
+          {
+            "key": "Photo label",
+            "type": "RsLabel",
+            "props": {
+              "text": {
+                "value": "Photo"
+              }
+            }
+          },
+          {
+            "key": "Photo upload",
             "type": "RsUploader",
             "props": {}
+          },
+          {
+            "key": "Notifications header",
+            "type": "RsTitle",
+            "props": {
+              "content": {
+                "value": "Notifications"
+              },
+              "headerSize": {
+                "value": "h6"
+              }
+            }
+          },
+          {
+            "key": "Notifications hint",
+            "type": "RsLabel",
+            "props": {
+              "text": {
+                "value": "Use a permanent address where you can receive mail."
+              }
+            }
+          },
+          {
+            "key": "Email header",
+            "type": "RsLabel",
+            "props": {
+              "text": {
+                "value": "By Email"
+              }
+            },
+            "css": {
+              "any": "font-weight: bold;"
+            }
+          },
+          {
+            "key": "Checkbox container 1",
+            "type": "RsContainer",
+            "props": {},
+            "css": {
+              "desktop": "gap: 0;"
+            },
+            "children": [
+              {
+                "key": "Comments checkbox",
+                "type": "RsCheckbox",
+                "props": {
+                  "children": {
+                    "value": "Comments"
+                  },
+                  "checked": {
+                    "value": false
+                  },
+                  "title": {
+                    "value": ""
+                  }
+                }
+              },
+              {
+                "key": "Comments label",
+                "type": "RsLabel",
+                "props": {
+                  "text": {
+                    "value": "Get notified when someones posts a comment on a posting."
+                  }
+                },
+                "css": {
+                  "desktop": "margin-left: 35px"
+                }
+              }
+            ]
+          },
+          {
+            "key": "Checkbox container 2",
+            "type": "RsContainer",
+            "props": {},
+            "css": {
+              "desktop": "gap: 0;"
+            },
+            "children": [
+              {
+                "key": "Candidates checkbox",
+                "type": "RsCheckbox",
+                "props": {
+                  "checked": {
+                    "value": false
+                  },
+                  "children": {
+                    "value": "Candidates"
+                  }
+                }
+              },
+              {
+                "key": "Candidates label",
+                "type": "RsLabel",
+                "props": {
+                  "text": {
+                    "value": "Get notified when a candidate applies for a job."
+                  }
+                },
+                "css": {
+                  "desktop": "margin-left: 35px"
+                }
+              }
+            ]
+          },
+          {
+            "key": "Checkbox container 3",
+            "type": "RsContainer",
+            "props": {},
+            "css": {
+              "desktop": "gap: 0;"
+            },
+            "children": [
+              {
+                "key": "Offers checkbox",
+                "type": "RsCheckbox",
+                "props": {
+                  "children": {
+                    "value": "Offers"
+                  },
+                  "checked": {
+                    "value": false
+                  }
+                }
+              },
+              {
+                "key": "Offers  label",
+                "type": "RsLabel",
+                "props": {
+                  "text": {
+                    "value": "Get notified when a candidate accepts or rejects an offer."
+                  }
+                },
+                "css": {
+                  "desktop": "margin-left: 35px"
+                }
+              }
+            ]
+          },
+          {
+            "key": "Push header",
+            "type": "RsLabel",
+            "props": {
+              "text": {
+                "value": "Push Notifications"
+              }
+            },
+            "css": {
+              "any": "font-weight: bold;"
+            }
+          },
+          {
+            "key": "Push hint",
+            "type": "RsLabel",
+            "props": {
+              "text": {
+                "value": "These are delivered via SMS to your mobile phone."
+              }
+            }
+          },
+          {
+            "key": "Push select",
+            "type": "RsRadioGroup",
+            "props": {
+              "label": {
+                "value": ""
+              },
+              "items": {
+                "value": [
+                  {
+                    "value": "Everything",
+                    "label": "Everything"
+                  },
+                  {
+                    "value": "Same as email",
+                    "label": "Same as email"
+                  },
+                  {
+                    "value": "No push notifications",
+                    "label": "No push notifications"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "key": "Save button",
+            "type": "RsButton",
+            "props": {
+              "block": {
+                "value": false
+              },
+              "appearance": {
+                "value": "primary"
+              },
+              "children": {
+                "value": "Save"
+              },
+              "size": {
+                "value": "sm"
+              }
+            },
+            "events": {
+              "onClick": [
+                {
+                  "name": "Validate",
+                  "type": "common"
+                }
+              ]
+            }
           }
         ]
-      },
-      {
-        "key": "RadioGroup",
-        "type": "RsRadioGroup",
-        "props": {}
       }
     ]
   },

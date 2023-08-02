@@ -19,7 +19,7 @@ const components = [...rSuiteComponents, ...antdComponents].map(definer => defin
 const view = new BuilderView(components)
   .withErrorMeta(rsErrorMessage.build())
   .withTooltipMeta(rsTooltip.build())
-  .withTemplates(['template', 'agreement', 'login form'])
+  // .withTemplates(['template', 'agreement', 'login form'])
 
 const sampleFormName = 'SampleForm'
 
