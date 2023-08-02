@@ -5,7 +5,7 @@ import {Store} from '../../../stores/Store'
 import {StoreContext, StoreProvider} from '../../../utils/contexts/StoreContext'
 import {useDestroy} from '../../../utils/useDestroy'
 import {DefaultActions} from '../../event'
-import {getTemplateName} from '../../ui/templateModel'
+import {getTemplateName} from '../../ui/templateUtil'
 import {FormViewerProps} from '../types'
 import {ViewerPropsProvider} from './ViewerPropsContext'
 

@@ -1,4 +1,4 @@
-import {ComponentTreeProps} from '../../types'
+import type {ComponentTreeProps} from '../../ComponentTreeProps'
 import {namedObserver} from '../../utils'
 import {ComponentTreeProvider} from './ComponentTreeContext'
 import {ComponentTreeItem} from './ComponentTreeItem'

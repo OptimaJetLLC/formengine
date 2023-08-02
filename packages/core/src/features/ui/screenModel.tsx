@@ -1,4 +1,4 @@
-import {ScreenProps} from '../../types'
+import type {ScreenProps} from '../../types'
 import {Model} from '../define'
 
 const Screen = (props: ScreenProps) => <div>{props.children}</div>

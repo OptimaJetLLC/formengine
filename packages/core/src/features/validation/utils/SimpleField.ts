@@ -1,6 +1,6 @@
 import {autorun, makeAutoObservable, observable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
-import {Store} from '../../../stores/Store'
+import type {IStore} from '../../../stores/IStore'
 import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
 import {Model} from '../../define'
 import type {FormViewerProps} from '../../form-viewer'
@@ -49,7 +49,7 @@ export class SimpleField implements Field {
    * @param valueCalculator the function to get a calculated value for the field.
    */
   constructor(
-    readonly store: Store,
+    readonly store: IStore,
     props: Readonly<FormViewerProps>,
     readonly componentStore: ComponentStore,
     readonly model: Model,

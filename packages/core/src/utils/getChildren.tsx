@@ -1,7 +1,7 @@
-import {ComponentType} from 'react'
+import type {ComponentType} from 'react'
+import type {ComponentTreeProps} from '../ComponentTreeProps'
 import {calculateExpressionProperty} from '../features/calculation/propertyCalculator'
 import {Store} from '../stores/Store'
-import {ComponentTreeProps} from '../types'
 import {ComponentData} from './contexts/ComponentDataContext'
 import {groupBy} from './groupBy'
 

@@ -1,6 +1,5 @@
 import {ReactNode} from 'react'
 import {CustomActionDefinition} from './features/event'
-import {ComponentData} from './utils/contexts/ComponentDataContext'
 
 /**
  * React wrapper component properties.
@@ -27,13 +26,6 @@ export interface ScreenProps {
   children: ReactNode
   tooltipType: string
   errorConfig: object
-}
-
-/**
- * Properties of a form component tree element.
- */
-export interface ComponentTreeProps {
-  data: ComponentData[]
 }
 
 /**

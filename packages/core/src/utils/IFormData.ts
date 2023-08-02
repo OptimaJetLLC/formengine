@@ -21,7 +21,7 @@ export interface IFormData {
   /**
    * Validates the data in the form.
    */
-  validate: () => void
+  validate: () => Promise<void>
 
   /**
    * Sets the form to its default value.
@@ -57,7 +57,7 @@ export const IFormDataDeclaration = `declare interface IFormData {
   /**
    * Validates the data in the form.
    */
-  validate(): void
+  validate(): Promise<void>
 
   /**
    * Sets the form to its default value.

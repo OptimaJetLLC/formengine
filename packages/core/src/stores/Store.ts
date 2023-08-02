@@ -1,17 +1,22 @@
 import {assign} from 'lodash-es'
 import {makeObservable, observable} from 'mobx'
 import {Subject} from 'rxjs'
+import {calculatePropertyValue} from '../features/calculation/propertyCalculator'
 import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
 import type {FormViewerProps} from '../features/form-viewer'
 import {defaultLanguage} from '../features/localization/consts'
 import {Language} from '../features/localization/types'
 import {buildInternalErrorStore} from '../features/ui/internalErrorModel'
 import {screenModel} from '../features/ui/screenModel'
+import {getTemplateName, isTemplateType} from '../features/ui/templateUtil'
+import {FormField} from '../features/validation/utils/FormField'
+import {SimpleField} from '../features/validation/utils/SimpleField'
 import {ViewMode} from '../types'
 import {isPromise} from '../utils'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
 import {ComponentStore} from './ComponentStore'
+import {IStore} from './IStore'
 import {LocalizationStore} from './LocalizationStore'
 import {PersistedForm} from './PersistedForm'
 
@@ -38,7 +43,7 @@ function reduceTree<U extends object, T, K extends keyof U>(tree: Tree<U, K>,
 /**
  * The form viewer settings.
  */
-export class Store {
+export class Store implements IStore {
   readonly #props: Readonly<FormViewerProps>
 
   defaultLanguage?: Language
@@ -226,10 +231,7 @@ export class Store {
   }
 
   /**
-   * Performs the callback function on each element of the component tree, accumulates the return values.
-   * @param callback the function that calculates the value for the accumulator.
-   * @param initialValue the initial value for the accumulator.
-   * @returns the accumulated value.
+   * @inheritDoc
    */
   reduceScreen<T>(callback: (accumulator: T, current: ComponentStore) => T, initialValue: T) {
     return reduceTree(this.screen, callback, initialValue, 'children')
@@ -281,8 +283,34 @@ export class Store {
    * @param componentStore the component settings.
    * @returns the element for the component tree.
    */
-  createComponentData(componentStore: ComponentStore) {
-    return new ComponentData(this, componentStore, this.#props)
+  createComponentData(componentStore: ComponentStore): ComponentData {
+    const model = this.getComponentModel(componentStore)
+    const field = this.createField(componentStore)
+    const factory = this.createComponentData.bind(this)
+    return new ComponentData(componentStore, model, field, factory)
+  }
+
+  private createField(componentStore: ComponentStore) {
+    const model = this.getComponentModel(componentStore)
+    if (!model.valued) return
+
+    if (!isTemplateType(model.type)) {
+      return new SimpleField(this, this.#props, componentStore, model, updateFnValue(this))
+    }
+
+    const formViewerProps = {
+      event: this.#props.event,
+      getForm: this.#props.getForm,
+      formName: getTemplateName(model.type),
+      view: this.#props.view,
+      actions: this.#props.actions,
+      data: this.#props.data,
+      erroneous: this.#props.erroneous,
+      viewMode: this.#props.viewMode,
+    } as FormViewerProps
+
+    const childStore = new Store(formViewerProps, this.actions, false, this)
+    return new FormField(componentStore, childStore, formViewerProps)
   }
 
   /**
@@ -319,4 +347,15 @@ function treeFind<T extends { key: string, children?: T[] }>(value: T, key?: str
   }
 
   return
+}
+
+function updateFnValue(viewerStore: Store) {
+  return function (component: ComponentStore, key: string): [boolean, any?] {
+    const property = component.props[key]
+    if (property && property.useFn) {
+      const value = calculatePropertyValue(property, viewerStore.rootComponentData)
+      return [true, value]
+    }
+    return [false]
+  }
 }

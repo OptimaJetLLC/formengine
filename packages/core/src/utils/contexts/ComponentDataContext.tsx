@@ -1,16 +1,13 @@
 import {FluentVariable} from '@fluent/bundle/esm/bundle.js'
 import {makeAutoObservable} from 'mobx'
 import {Model} from '../../features/define'
-import {FormViewerProps} from '../../features/form-viewer'
 import {getFluentCompatibleId} from '../../features/localization/getFluentCompatibleId'
 import {isFluentVariable} from '../../features/localization/isFluentVariable'
-import {Field} from '../../features/validation'
-import {createField} from '../../features/validation/utils/initForm'
+import type {Field} from '../../features/validation'
 import {ComponentStore} from '../../stores/ComponentStore'
-import {Store} from '../../stores/Store'
 import {createNonNullableContext} from '../createNonNullableContext'
-import {nameObservable} from '../observableNaming'
 import type {IFormData} from '../IFormData'
+import {nameObservable} from '../observableNaming'
 
 /**
  * This tree of elements contains the data required to display the component. It is synchronized with the ComponentStore tree.
@@ -29,17 +26,19 @@ export class ComponentData implements IFormData {
 
   /**
    * Constructor
-   * @param viewerStore The store of the form viewer.
-   * @param componentStore The component settings.
-   * @param formViewerProps The props of the form viewer.
+   * @param componentStore the component settings.
+   * @param model the component metadata for the form viewer.
+   * @param field the field with the form data.
+   * @param childFactory the factory function that creates {@ComponentData} instance.
    */
-  constructor(viewerStore: Store, componentStore: ComponentStore, formViewerProps: Readonly<FormViewerProps>) {
+  constructor(componentStore: ComponentStore, model: Model, field: Field | undefined,
+              childFactory: (componentStore: ComponentStore) => ComponentData) {
     this.store = componentStore
-    this.model = viewerStore.getComponentModel(componentStore)
-    this.field = createField(componentStore, viewerStore, formViewerProps)
+    this.model = model
+    this.field = field
 
     componentStore.children?.forEach(childComponentStore => {
-      const child = new ComponentData(viewerStore, childComponentStore, formViewerProps)
+      const child = childFactory(childComponentStore)
       child.setParent(this)
     })
 

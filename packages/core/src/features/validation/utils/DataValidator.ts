@@ -1,5 +1,5 @@
 import {debounceTime, distinctUntilChanged, map, Subject, switchMap} from 'rxjs'
-import {Store} from '../../../stores/Store'
+import type {IStore} from '../../../stores/IStore'
 import type {Setter} from '../../../types'
 import type {ValidationResult} from '../types/ValidationResult'
 
@@ -11,7 +11,7 @@ export type ErrorMessageLocalizer = (value: ValidationResult[] | undefined) => s
 /**
  * The function that validates a value and returns the validation result.
  */
-export type ResolvedValidator = (value: any, store: Store) => Promise<ValidationResult[] | undefined>
+export type ResolvedValidator = (value: any, store: IStore) => Promise<ValidationResult[] | undefined>
 
 /**
  * The validation function factory.
@@ -34,7 +34,7 @@ export class DataValidator {
   readonly #stream
 
   private constructor(
-    store: Store,
+    store: IStore,
     validator: ResolvedValidator,
     setter: Setter<string | undefined>,
     errorMessageLocalizer?: ErrorMessageLocalizer
@@ -53,7 +53,7 @@ export class DataValidator {
     ]
   }
 
-  static create = <T>(store: Store, resolver: SchemaResolver<T>, args: T, setter: Setter<string | undefined>) => {
+  static create = <T>(store: IStore, resolver: SchemaResolver<T>, args: T, setter: Setter<string | undefined>) => {
     return new DataValidator(store, resolver(args), setter)
   }
 
