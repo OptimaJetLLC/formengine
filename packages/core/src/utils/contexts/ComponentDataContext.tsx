@@ -222,6 +222,13 @@ export class ComponentData implements IFormData {
     this.fields.forEach(f => f.clear())
   }
 
+  /**
+   * @returns true if it has no parent {@link ComponentData}, false otherwise.
+   */
+  get isRoot() {
+    return !this.parent
+  }
+
   private collectAllNodesAsArray(acc: ComponentData[]) {
     acc.push(this)
     for (let i = 0; i < this.children.length; i++) {

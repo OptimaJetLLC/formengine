@@ -6,7 +6,6 @@ import {ComponentProps} from 'react'
 import {useDrop} from 'react-dnd'
 import {ConnectDropTarget} from 'react-dnd/dist/types/types'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
-import {isRootType} from '../../../../../utils/isRoot'
 import {InsertPosition} from '../../../../../utils/types'
 import {AcceptDrop, ItemType} from '../../../consts'
 import {DropView} from './DropView'
@@ -21,8 +20,9 @@ interface DropZoneProps extends ComponentProps<any> {
 }
 
 const DropZone = observer(({isAfter = false, className, isInner, ...props}: DropZoneProps) => {
-  const {store} = useComponentData()
-  const isRoot = isRootType(store)
+  const componentData = useComponentData()
+  const store = componentData.store
+  const isRoot = componentData.isRoot
   const isContainer = Boolean(store.children)
   const {bindTo, bindCondition} = props
 

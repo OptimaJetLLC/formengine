@@ -4,7 +4,6 @@ import {useComponentData} from '@react-form-builder/core'
 import PlusIcon from '@rsuite/icons/Plus.js'
 import {ComponentProps} from 'react'
 import {IconButton} from 'rsuite'
-import {isRootType} from '../../../../../utils/isRoot'
 import {InsertPosition} from '../../../../../utils/types'
 import {useComponentsModal} from '../../../../ui/ComponentBar/ComponentsModal'
 
@@ -23,8 +22,9 @@ interface DropViewProps extends ComponentProps<any> {
  * @returns the React element.
  */
 export const DropView = (props: DropViewProps) => {
-  const {store} = useComponentData()
-  const isRoot = isRootType(store)
+  const componentData = useComponentData()
+  const store = componentData.store
+  const isRoot = componentData.isRoot
   const isContainer = Boolean(store.children)
   const {bindTo, bindCondition, ...classNamesFromProps} = props
   const dropClassNames = {isContainer, isRoot, ...classNamesFromProps}

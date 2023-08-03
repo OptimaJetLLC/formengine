@@ -6,7 +6,6 @@ import {observer} from 'mobx-react'
 import {ComponentProps, ReactNode, RefObject, useMemo, useRef} from 'react'
 import {useDragLayer, useDrop} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
-import {isRootType} from '../../../../../utils/isRoot'
 import {AcceptDrop, ItemType} from '../../../consts'
 import {useDragWithPreview} from '../hooks/useDragWithPreview'
 import {DragPreview} from './DragPreview'
@@ -19,7 +18,7 @@ interface DraggableProps extends ComponentProps<any> {
 
 export const Draggable = observer(({children, viewForDragPreview, isInner, className, ...props}: DraggableProps) => {
   const data = useComponentData()
-  const isRoot = isRootType(data.store)
+  const isRoot = data.isRoot
   const isContainer = Boolean(data.store.children)
   const store = useBuilderStore()
 
