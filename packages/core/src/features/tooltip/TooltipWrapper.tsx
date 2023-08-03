@@ -1,8 +1,8 @@
-import {ReactNode, useMemo} from 'react'
+import {createElement, ReactNode, useMemo} from 'react'
 import {ComponentState} from '../../stores/ComponentState'
 import {ComponentStore} from '../../stores/ComponentStore'
 import {namedObserver} from '../../utils'
-import {ComponentData, useComponentData} from '../../utils/contexts/ComponentDataContext'
+import {useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {getKey} from '../../utils/getKey'
 
@@ -33,17 +33,11 @@ export const TooltipWrapper = namedObserver('TooltipWrapper', ({children}: Toolt
     tooltipComponentStore.props[k] = wrappedComponentStore.tooltipProps![k]
   })
 
-  const tooltipData = {
-    store: tooltipComponentStore,
-    model: tooltipDefinition,
-    parent: wrappedComponentData.parent,
-    field: undefined
-  } as ComponentData
+  const tooltipData = viewerStore.createComponentData(tooltipComponentStore);
+  tooltipData.parent = wrappedComponentData.parent
 
   const componentState = useMemo(() => new ComponentState(tooltipData, viewerStore, tooltipDefinition.view),
     [tooltipData, viewerStore, tooltipDefinition])
 
-  const props = componentState.get
-  const View = tooltipDefinition.view
-  return <View {...props}>{children}</View>
+  return createElement(tooltipDefinition.view, componentState.get, children)
 })
