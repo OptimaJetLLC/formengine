@@ -1,4 +1,4 @@
-import {DefaultActions, Store, StoreProvider, useDestroy, ViewerPropsProvider} from '@react-form-builder/core'
+import {ComponentTree, DefaultActions, Store, StoreProvider, useDestroy, ViewerPropsProvider} from '@react-form-builder/core'
 import {assign} from 'lodash-es'
 import {useLocalObservable} from 'mobx-react'
 import {ReactNode, useEffect, useMemo} from 'react'
@@ -26,7 +26,7 @@ interface BuilderProvidersProps {
  */
 export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {
   const observableProps = useLocalObservable(() => props)
-  const store = useMemo(() => new Store(observableProps, DefaultActions), [])
+  const store = useMemo(() => new Store(observableProps, ComponentTree, DefaultActions), [])
 
   const buildStore = useMemo(() => {
     const builderStore = new BuilderStore(store, observableProps)

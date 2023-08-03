@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {useComponentData, useComponentTree} from '@react-form-builder/core'
+import {useComponentData} from '@react-form-builder/core'
 import {Icon} from '@rsuite/icons'
 import ArrowDownLineIcon from '@rsuite/icons/ArrowDownLine.js'
 import ArrowRightLineIcon from '@rsuite/icons/ArrowRightLine.js'
@@ -12,7 +12,6 @@ import {useSelection} from '../hooks/useSelection'
 import {Toolbar} from './Toolbar'
 
 export const TreeNode = observer(({className}: { className: string }) => {
-  const ComponentTree = useComponentTree()
   const componentData = useComponentData()
   const {expanded: expandedNodes, viewer} = useBuilderStore()
   const deep = useComputed(() => findDepth(viewer.screen, componentData.key) ?? 0)
@@ -33,6 +32,7 @@ export const TreeNode = observer(({className}: { className: string }) => {
     }
   }, [selected, ref.current])
 
+  const ComponentTree = viewer.componentTreeRenderer
   return (
     <>
       <SNodeItem className={className} ref={ref}

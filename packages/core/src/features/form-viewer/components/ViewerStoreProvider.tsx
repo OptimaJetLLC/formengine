@@ -5,6 +5,7 @@ import {Store} from '../../../stores/Store'
 import {StoreContext, StoreProvider} from '../../../utils/contexts/StoreContext'
 import {useDestroy} from '../../../utils/useDestroy'
 import {DefaultActions} from '../../event'
+import {ComponentTree} from '../../ui/ComponentTree'
 import {getTemplateName} from '../../ui/templateUtil'
 import {FormViewerProps} from '../types'
 import {ViewerPropsProvider} from './ViewerPropsContext'
@@ -19,7 +20,7 @@ import {ViewerPropsProvider} from './ViewerPropsContext'
 export const ViewerStoreProvider = ({children, props}: { children: ReactNode, props: FormViewerProps }) => {
   const observableProps = useLocalObservable(() => props)
   const storeFromContext = useContext(StoreContext)
-  const store = useMemo(() => storeFromContext || new Store(observableProps, DefaultActions), [])
+  const store = useMemo(() => storeFromContext || new Store(observableProps, ComponentTree, DefaultActions), [])
 
   useEffect(() => {
     assign(observableProps, props)

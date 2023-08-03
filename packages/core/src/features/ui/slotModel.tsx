@@ -4,7 +4,6 @@ import {useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {Model} from '../define'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
-import {ComponentTree} from './ComponentTree'
 
 const SDiv = styled.div`
   background: lightblue;
@@ -17,6 +16,7 @@ const SlotContent = () => {
   const slotCs = store.slotsContent?.[key]
   if (!slotCs) return null
 
+  const ComponentTree = store.componentTreeRenderer
   return <ComponentTree data={[slotCs]}/>
 }
 

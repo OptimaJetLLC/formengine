@@ -3,7 +3,6 @@ import {ViewMode} from '../../../types'
 import {namedObserver} from '../../../utils'
 import {useStore} from '../../../utils/contexts/StoreContext'
 import {EventStream} from '../../event/utils/EventStream'
-import {ComponentTree} from '../../ui/ComponentTree'
 import {useViewerProps} from './ViewerPropsContext'
 
 const getViewMode = (): ViewMode => {
@@ -55,5 +54,6 @@ export const Viewer = namedObserver('Viewer', ({event}: ViewerProps) => {
 
   useEffect(() => store.loadForm(props.getForm, props.formName), [store])
 
+  const ComponentTree = store.componentTreeRenderer
   return <ComponentTree data={[store.rootComponentData]}/>
 })

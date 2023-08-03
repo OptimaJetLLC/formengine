@@ -1,6 +1,8 @@
 import {assign} from 'lodash-es'
 import {makeObservable, observable} from 'mobx'
+import type {ComponentType} from 'react'
 import {Subject} from 'rxjs'
+import type {ComponentTreeProps} from '../ComponentTreeProps'
 import {calculatePropertyValue} from '../features/calculation/propertyCalculator'
 import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
 import type {FormViewerProps} from '../features/form-viewer'
@@ -66,12 +68,15 @@ export class Store implements IStore {
   /**
    * Creates form viewer settings.
    * @param props the form viewer properties.
+   * @param componentTreeRenderer the React component that displays an array of {@link ComponentData}.
    * @param actions the array of action definitions.
    * @param isBuilderMode true if the form viewer is inside the form builder, false otherwise.
    * @param parentStore the form viewer settings, used in templates.
    * @param keyInParent the template component key.
    */
-  constructor(props: Readonly<FormViewerProps>, public actions: ActionDefinition[] = [], public isBuilderMode: boolean = false,
+  constructor(props: Readonly<FormViewerProps>,
+              public componentTreeRenderer: ComponentType<ComponentTreeProps>,
+              public actions: ActionDefinition[] = [], public isBuilderMode: boolean = false,
               public readonly parentStore?: Store, private readonly keyInParent?: string) {
     this.#props = props
     this.rootComponentData = this.createComponentData(this.#screen)
@@ -309,7 +314,7 @@ export class Store implements IStore {
       viewMode: this.#props.viewMode,
     } as FormViewerProps
 
-    const childStore = new Store(formViewerProps, this.actions, false, this)
+    const childStore = new Store(formViewerProps, this.componentTreeRenderer, this.actions, false, this)
     return new FormField(componentStore, childStore, formViewerProps)
   }
 
