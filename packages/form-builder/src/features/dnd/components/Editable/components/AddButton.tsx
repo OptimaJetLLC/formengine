@@ -7,16 +7,17 @@ import {ButtonGroup, IconButton, Popover, Whisper, WhisperInstance} from 'rsuite
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {InsertPosition} from '../../../../../utils/types'
 import {useTranslationPart} from '../../../../localization/hooks'
-import {useComponentsModal} from '../../../../ui/ComponentBar/ComponentsModal'
 
 export const AddButton = namedObserver('AddButton', () => {
-  const store = useBuilderStore()
-  const {openModal, ComponentsModal} = useComponentsModal(useComponentData())
+  const builderStore = useBuilderStore()
+  const target = useComponentData()
   const t = useTranslationPart('componentToolbar')
   const whisperRef = useRef<WhisperInstance>(null)
   const handleClick = (position: InsertPosition) => {
     whisperRef.current?.close()
-    openModal(position)
+    builderStore.showComponentsModal(source => {
+      builderStore.add(source, target, position)
+    })
   }
 
   const popover = <SPopover arrow={false}>
@@ -32,10 +33,9 @@ export const AddButton = namedObserver('AddButton', () => {
   </SPopover>
 
   return <>
-    <Whisper placement={store.isRTL ? 'right' : 'left'} speaker={popover} ref={whisperRef} enterable trigger="hover">
+    <Whisper placement={builderStore.isRTL ? 'right' : 'left'} speaker={popover} ref={whisperRef} enterable trigger="hover">
       <PlusIcon/>
     </Whisper>
-    <ComponentsModal/>
   </>
 })
 

@@ -4,8 +4,8 @@ import {useComponentData} from '@react-form-builder/core'
 import PlusIcon from '@rsuite/icons/Plus.js'
 import {ComponentProps} from 'react'
 import {IconButton} from 'rsuite'
+import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {InsertPosition} from '../../../../../utils/types'
-import {useComponentsModal} from '../../../../ui/ComponentBar/ComponentsModal'
 
 interface DropViewProps extends ComponentProps<any> {
   isAfter?: boolean
@@ -41,12 +41,16 @@ export const DropView = (props: DropViewProps) => {
 }
 
 const AddButton = ({bindTo, bindCondition}: { bindTo?: string, bindCondition?: string }) => {
+  const builderStore = useBuilderStore()
   const target = useComponentData()
-  const {openModal, ComponentsModal} = useComponentsModal(target)
+  const handleClick = () => {
+    builderStore.showComponentsModal(source => {
+      builderStore.add(source, target, InsertPosition.Inner, bindTo, bindCondition)
+    })
+  }
   return <>
-    <IconButton onClick={() => openModal(InsertPosition.Inner, bindTo, bindCondition)}
+    <IconButton onClick={handleClick}
                 icon={<PlusIcon/>} color="green" appearance={'primary'} circle size={'xs'}/>
-    <ComponentsModal/>
   </>
 }
 

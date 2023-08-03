@@ -1,47 +1,31 @@
 import styled from '@emotion/styled'
 import {ComponentData} from '@react-form-builder/core'
-import {isUndefined} from 'lodash-es'
-import {useState} from 'react'
+import {observer} from 'mobx-react'
 import {Modal} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
-import {InsertPosition} from '../../../utils/types'
 import {useTranslationPart} from '../../localization/hooks'
 import {ComponentBar} from './ComponentBar'
 
 /**
- * The modal window hook with a list of components that can be added to the form.
- * @param target the parent component in which the new component is added.
- * @returns the object with 'openModal' and 'ComponentsModal' properties.
- * The 'openModal' is a function for opening a modal window.
- * The 'ComponentsModal' is the React component you want to put in the component tree.
+ * The modal window with a list of components that can be added to the form.
  */
-export const useComponentsModal = (target: ComponentData) => {
-  const store = useBuilderStore()
+export const ComponentsModal = observer(() => {
+  const {componentsModalState} = useBuilderStore()
   const t = useTranslationPart('componentsModal')
-  const [insertPosition, setInsertPosition] = useState<InsertPosition | undefined>(undefined)
-  const [bindTo, setBindTo] = useState<string>()
-  const [bindCondition, setBindCondition] = useState<string>()
 
-  const close = () => setInsertPosition(undefined)
-  const add = (source: ComponentData) => {
-    close()
-    store.add(source, target, insertPosition, bindTo, bindCondition)
-  }
-  const openModal = (insertPosition: InsertPosition, bindTo?: string, bindCondition?: string) => {
-    setInsertPosition(insertPosition)
-    setBindTo(bindTo)
-    setBindCondition(bindCondition)
+  const closeModal = () => componentsModalState.opened = false
+  const onAdd = (source: ComponentData) => {
+    closeModal()
+    componentsModalState.onSelect(source)
   }
 
-  const ComponentsModal = () => <SModal open={!isUndefined(insertPosition)} onClose={close} size={'lg'}>
+  return <SModal open={componentsModalState.opened} onClose={closeModal} size={'lg'}>
     <Modal.Header><h5>{t('clickToAdd')}</h5></Modal.Header>
     <Modal.Body>
-      <ComponentBar draggable={false} onAdd={add}/>
+      <ComponentBar draggable={false} onAdd={onAdd}/>
     </Modal.Body>
   </SModal>
-
-  return {openModal, ComponentsModal}
-}
+})
 
 const SModal = styled(Modal)`
   width: 825px !important;

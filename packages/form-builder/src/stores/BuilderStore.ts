@@ -37,6 +37,19 @@ export interface EditableProperty {
 }
 
 /**
+ * The callback function called when a component is selected in a modal window.
+ */
+export type OnSelectCallback = (source: ComponentData) => void
+
+/**
+ * The state of the modal window of the component list.
+ */
+export interface ComponentsModalState {
+  opened: boolean
+  onSelect: OnSelectCallback
+}
+
+/**
  * Form builder settings.
  */
 export class BuilderStore {
@@ -49,6 +62,10 @@ export class BuilderStore {
   localizationLanguage = defaultLanguage
   calculatedProperty?: EditableProperty
   lastSaveTime = new Date()
+  readonly componentsModalState: ComponentsModalState = {
+    opened: false,
+    onSelect: () => {}
+  }
   readonly errorMap = new Map<ComponentStore, Record<string, string | undefined>>
   readonly view: BuilderView
   readonly formStorageEnabled: boolean
@@ -468,5 +485,14 @@ export class BuilderStore {
    */
   customPropertyEditor(editorType: EditorType) {
     return this.#props.externalPropertyEditors?.[editorType]
+  }
+
+  /**
+   * Displays the modal window of the components.
+   * @param onSelect the callback function called when a component is selected.
+   */
+  showComponentsModal(onSelect: OnSelectCallback) {
+    this.componentsModalState.onSelect = onSelect
+    this.componentsModalState.opened = true
   }
 }

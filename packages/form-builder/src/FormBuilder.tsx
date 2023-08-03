@@ -5,6 +5,7 @@ import {Loader} from 'rsuite'
 import {BottomPanel} from './features/ui/BottomPanel'
 import {BuilderProviders} from './features/ui/BuilderProviders'
 import {CentralPanel} from './features/ui/CentralPanel'
+import {ComponentsModal} from './features/ui/ComponentBar/ComponentsModal'
 import {LeftPanel} from './features/ui/LeftPanel'
 import {RightPanel} from './features/ui/RightPanel'
 import {FormBuilderProps} from './FormBuilderProps'
@@ -22,20 +23,21 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
 })
 
 const FormBuilderView = observer(() => {
-    const builderStore = useBuilderStore()
-    const renderBottomPanel = builderStore.calculatedProperty && builderStore.builderMode === 'builder'
-    return <Suspense fallback={<Loader center content="loading"/>}>
-      <Container>
-        <Content>
-          <LeftPanel/>
-          <CentralPanel/>
-          <RightPanel/>
-        </Content>
-        {renderBottomPanel && <BottomPanel/>}
-      </Container>
-    </Suspense>
-  }
-)
+  const builderStore = useBuilderStore()
+  const renderBottomPanel = builderStore.calculatedProperty && builderStore.builderMode === 'builder'
+
+  return <Suspense fallback={<Loader center content="loading"/>}>
+    <Container>
+      <Content>
+        <LeftPanel/>
+        <CentralPanel/>
+        <RightPanel/>
+        <ComponentsModal/>
+      </Content>
+      {renderBottomPanel && <BottomPanel/>}
+    </Container>
+  </Suspense>
+})
 
 const Container = styled.div`
   display: flex;
