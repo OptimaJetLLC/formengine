@@ -59,6 +59,7 @@ const CenterPart = styled.div`
 const Container = styled.div`
   display: flex;
   padding: 10px 10px;
+  gap: 10px;
 
   & > * {
     flex: 1;

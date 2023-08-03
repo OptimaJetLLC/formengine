@@ -25,6 +25,9 @@ export const ResolutionPicker = observer(() => {
   const toggleOrientation = () => store.landscapeMode = !landscapeMode
 
   return <SDiv>
+    {(viewMode === 'mobile' || viewMode === 'tablet') &&
+      <IconButton onClick={toggleOrientation} icon={<Icon as={OrientationIcon} color={getColor(landscapeMode)}/>} size={'sm'}/>
+    }
     <ButtonGroup size={'sm'}>
       {resolutions.map(([value, icon], index) => (
         <Whisper key={index} speaker={<Tooltip>{t(value)}</Tooltip>} placement={'bottom'}>
@@ -33,15 +36,11 @@ export const ResolutionPicker = observer(() => {
         </Whisper>
       ))}
     </ButtonGroup>
-    {(viewMode === 'mobile' || viewMode === 'tablet') &&
-      <IconButton onClick={toggleOrientation} icon={<Icon as={OrientationIcon} color={getColor(landscapeMode)}/>} size={'sm'}/>
-    }
   </SDiv>
 })
 
 const SDiv = styled.div`
   display: flex;
   align-items: center;
-  gap: 5px;
   width: max-content;
 `
