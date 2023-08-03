@@ -251,7 +251,7 @@ export class BuilderStore {
    */
   move(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = InsertPosition.After): void {
     if (source === target) return
-    if (insertPosition === InsertPosition.Inner) return source.setParent(target)
+    if (insertPosition === InsertPosition.Inner || target.isRoot) return source.setParent(target)
     if (insertPosition === InsertPosition.Before) return target.insertBeforeMe(source)
     if (insertPosition === InsertPosition.After) return target.insertAfterMe(source)
     throw new Error(`Unknown insert position ${insertPosition}`)
