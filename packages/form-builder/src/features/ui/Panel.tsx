@@ -40,7 +40,10 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   flex: 1;
   transition: opacity 200ms ease-in-out;
-  width: 280px;
+
+  .right &, .left & {
+    width: 280px;
+  }
 
   &.collapsed.hideCollapsed {
     opacity: 0;
@@ -125,10 +128,6 @@ export const PanelContainer = styled.div<CollapsedSizeProps>`
   flex-direction: column;
   padding: 5px;
   transition: width ${transition}, height ${transition};
-
-  &.right, &.left {
-    width: 290px;
-  }
 
   &.right {
     box-shadow: none;
