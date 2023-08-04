@@ -1,21 +1,23 @@
 import type {ComponentType} from 'react'
 import type {ComponentTreeProps} from '../ComponentTreeProps'
 import {calculateExpressionProperty} from '../features/calculation/propertyCalculator'
-import {Store} from '../stores/Store'
 import {ComponentData} from './contexts/ComponentDataContext'
 import {groupBy} from './groupBy'
+import type {IFormData} from './IFormData'
 
 const defaultContainerKey = 'children'
 
 /**
  * Returns the {@link Record} with all child components.
  * @param data the parent component's data necessary to display the component.
- * @param store the form viewer settings.
+ * @param isBuilderMode true if the form viewer is inside the form builder, false otherwise.
+ * @param formData the form data.
  * @param componentTreeItem the type of React component that wraps child components.
  * @param currentState the properties of the parent component.
  * @returns the {@link Record} with all child components.
  */
-export function getChildren(data: ComponentData, store: Store, componentTreeItem: ComponentType<ComponentTreeProps>,
+export function getChildren(data: ComponentData, isBuilderMode: boolean, formData: IFormData,
+                            componentTreeItem: ComponentType<ComponentTreeProps>,
                             currentState: Record<string, any>) {
   const containers = data.children
   const ComponentTree = componentTreeItem
@@ -25,7 +27,7 @@ export function getChildren(data: ComponentData, store: Store, componentTreeItem
 
   const groups = groupBy(containers, value => value.store.bindTo || defaultContainerKey)
   const isBindConditionSatisfied = (child: ComponentData) => executeCondition(child, currentState)
-  const isNeedRender = (child: ComponentData) => store.isBuilderMode || needRender(child, store)
+  const isNeedRender = (child: ComponentData) => isBuilderMode || needRender(child, formData)
 
   for (const [key, children] of Object.entries(groups)) {
     const filteredChildren = children
@@ -61,7 +63,7 @@ function executeCondition(child: ComponentData, parentProps: any) {
   }
 }
 
-function needRender(child: ComponentData, store: Store) {
+function needRender(child: ComponentData, formData: IFormData) {
   if (!child.store.renderWhen) return true
-  return calculateExpressionProperty(child.store.renderWhen, store.rootComponentData) === true
+  return calculateExpressionProperty(child.store.renderWhen, formData) === true
 }

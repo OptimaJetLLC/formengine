@@ -177,6 +177,6 @@ export class ComponentState {
    * @returns the {@link Record} that contains the child components of a component.
    */
   children(props: any) {
-    return getChildren(this.data, this.store, this.componentTreeItem, props)
+    return getChildren(this.data, this.store.isBuilderMode, this.store.rootComponentData, this.componentTreeItem, props)
   }
 }
