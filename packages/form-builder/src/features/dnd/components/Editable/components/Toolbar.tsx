@@ -5,7 +5,7 @@ import * as faClone from '@fortawesome/free-regular-svg-icons/faClone.js'
 import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt.js'
 import {useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
-import {useCallback, useEffect, useRef} from 'react'
+import {MouseEventHandler, useEffect, useRef} from 'react'
 import scrollIntoView from 'scroll-into-view-if-needed'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../../../components/Icons'
@@ -18,8 +18,14 @@ export const Toolbar = observer(({compact}: { compact?: boolean }) => {
   const [{selected}] = useSelection()
   const ref = useRef<HTMLDivElement>(null)
 
-  const onClone = useCallback(() => store.clone(data), [])
-  const onRemove = useCallback(() => store.remove(data), [])
+  const onClone: MouseEventHandler = e => {
+    e.stopPropagation()
+    store.clone(data)
+  }
+  const onRemove: MouseEventHandler = e => {
+    e.stopPropagation()
+    store.remove(data)
+  }
 
   useEffect(() => {
     if (!compact && selected && ref.current) {

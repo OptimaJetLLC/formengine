@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import {useComponentData} from '@react-form-builder/core'
 import {camelCase, replace, upperFirst} from 'lodash-es'
 import {observer} from 'mobx-react'
-import {ReactNode} from 'react'
+import {MouseEventHandler, ReactNode} from 'react'
 import {icons} from '../../../icons'
 import {DraggableProps} from '../../ui/ComponentBar'
 import {ItemType} from '../consts'
@@ -14,8 +14,12 @@ export const AddedComponent = observer(({draggable = true, onAdd}: DraggableProp
   const {name = '', icon: CustomIcon} = data.model
   const iconName = replace(upperFirst(camelCase(name)), ' ', '') as keyof typeof icons
   const Icon = CustomIcon ?? icons[iconName] ?? icons.Default
+  const onClick: MouseEventHandler = e => {
+    e.stopPropagation()
+    onAdd?.(data)
+  }
   const element = (
-    <Container onClick={() => onAdd?.(data)}>
+    <Container onClick={onClick}>
       <Icon width={18} height={18}/>
       <label>{name}</label>
     </Container>

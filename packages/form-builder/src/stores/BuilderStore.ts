@@ -287,8 +287,8 @@ export class BuilderStore {
     this.unifyComponentKeys(clone)
     const componentData = this.viewer.createComponentData(clone)
     this.move(componentData, target, insertPosition)
-    this.selected.clear()
-    this.selected.add(clone)
+    this.selectNode(clone)
+
     return clone
   }
 
