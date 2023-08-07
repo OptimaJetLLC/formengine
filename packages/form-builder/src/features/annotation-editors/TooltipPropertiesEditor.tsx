@@ -6,6 +6,7 @@ import {useTranslationPart} from '../localization/hooks'
 import {PropertyBlock} from '../ui/RightPanel/PropertiesEditor/components/Properties'
 import {SCheckbox} from './BooleanInput'
 import {HintedLabel} from './Hinted'
+import {useTooltipType} from '@react-form-builder/core'
 
 /**
  * React form builder component that displays the tooltip property editor .
@@ -23,7 +24,7 @@ export const TooltipPropertiesEditor = () => {
     selected.tooltipProps = useTooltip ? {...selected.tooltipProps} : undefined
   }, [useTooltip])
 
-  const selectedTooltipType = store.viewer.tooltipType
+  const selectedTooltipType = useTooltipType()
   if (!selectedTooltipType) return null
 
   const tooltipAnnotations = store.view.getTooltipAnnotations(selectedTooltipType)

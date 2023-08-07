@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {ComponentDataProvider, ComponentStore} from '@react-form-builder/core'
+import {ComponentDataProvider, ComponentStore, useTooltipType} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {useEffect} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
@@ -34,6 +34,7 @@ interface PropertiesProps {
 
 const Properties = observer(({activeTab}: PropertiesProps) => {
   const store = useBuilderStore()
+  const tooltipType = useTooltipType()
   const getLabel = useTranslationPart('propertiesEditor')
 
   const data = store.oneSelectedComponentData
@@ -64,7 +65,7 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
           {activeTab === Section.Style && <PropertyEditorWrapper annotation={stylization} getContext={() => ({})}/>}
         </PropertiesList>
 
-        {!!tooltipProps?.length && store.viewer.tooltipType &&
+        {!!tooltipProps?.length && tooltipType &&
           <PropertyBlock annotations={tooltipProps} context={data.store.props}/>
         }
 

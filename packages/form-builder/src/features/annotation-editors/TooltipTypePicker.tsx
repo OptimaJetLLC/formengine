@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {useStore, useViewerProps} from '@react-form-builder/core'
+import {useTooltipType, useViewerProps} from '@react-form-builder/core'
 import {startCase} from 'lodash-es'
 import {InputPicker} from 'rsuite'
 import type {ItemDataType} from 'rsuite/esm/@types/common'
@@ -12,8 +12,8 @@ import LabeledProperty from '../components/LabeledProperty'
  */
 export const TooltipTypePicker = () => {
   const {value, onChange, annotation, onRemove} = useEditor()
-  const store = useStore()
   const props = useViewerProps()
+  const tooltipType = useTooltipType()
   const data = props.view.tooltips.map(name => {
     return {
       value: name,
@@ -22,7 +22,7 @@ export const TooltipTypePicker = () => {
   })
 
   return <LabeledProperty annotation={annotation}>
-    <SInputPicker value={value ?? store.tooltipType ?? ''} data={data} onChange={onChange} onClean={onRemove}
+    <SInputPicker value={value ?? tooltipType ?? ''} data={data} onChange={onChange} onClean={onRemove}
                   block cleanable size={'xs'}/>
   </LabeledProperty>
 }

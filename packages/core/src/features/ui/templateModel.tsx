@@ -21,6 +21,9 @@ const Template = () => {
   if (!(field instanceof FormField)) return null
 
   // todo return templates in FB-297
+  // const templateViewerProps = Object.assign({}, viewerProps, {
+  //   formName: getTemplateName(model.type)
+  // })
   return null
   //
   // return <StoreProvider value={field.form.store}>

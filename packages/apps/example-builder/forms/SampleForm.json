@@ -183,6 +183,21 @@
         }
       },
       {
+        "key": "currentTime",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Current time"
+          },
+          "disabled": {
+            "value": true
+          },
+          "readOnly": {
+            "value": false
+          }
+        }
+      },
+      {
         "key": "title",
         "type": "RsInput",
         "props": {

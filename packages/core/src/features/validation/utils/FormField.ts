@@ -2,7 +2,6 @@ import {IReactionDisposer, makeAutoObservable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import type {IStore} from '../../../stores/IStore'
 import {nameObservable} from '../../../utils/observableNaming'
-import type {FormViewerProps} from '../../form-viewer'
 import type {Field} from './Field'
 
 /**
@@ -30,12 +29,10 @@ export class FormField implements Field {
    * Creates the nested form field with form data for the component.
    * @param componentStore the component settings.
    * @param viewerStore viewerStore the form viewer settings.
-   * @param props the form viewer React component properties.
    */
   constructor(
     readonly componentStore: ComponentStore,
     readonly viewerStore: IStore,
-    readonly props: FormViewerProps
   ) {
     makeAutoObservable(this, undefined,
       {name: nameObservable('FormField', {key: componentStore.key})})

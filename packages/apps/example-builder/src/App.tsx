@@ -3,7 +3,7 @@ import {BuilderView} from '@react-form-builder/builder/view'
 import {antdComponents} from '@react-form-builder/components-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {ComponentStore, Language, PersistedForm} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {useEffect, useState} from 'react'
 import {getFormFromJson} from './utils/getFormFromJson'
 import {IndexedDbFormStorage} from './utils/IndexedDbFormStorage'
 
@@ -56,12 +56,21 @@ async function getForm(name?: string): Promise<PersistedForm> {
 // tests don't wait for promises now
 const getFormFn = indexedDbExists ? getForm : getFormFromJson
 
-const FormBuilderApp = observer(() =>
-  <FormBuilder
+const FormBuilderApp = () => {
+  const [initialData, setInitialData] = useState(data)
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setInitialData(Object.assign({}, data, {currentTime: new Date().toUTCString()}))
+    }, 1000)
+    return () => clearTimeout(timeoutId)
+  }, [])
+
+  return <FormBuilder
     getForm={getFormFn}
     formName={formStorage?.formName || sampleFormName}
     view={view}
-    data={data}
+    data={initialData}
     formStorage={formStorage}
     localize={localizeFn}
     /*event={(stream) => {
@@ -102,7 +111,8 @@ const FormBuilderApp = observer(() =>
           let a = 4
         })
     }}*/
-  />)
+  />
+}
 
 const App = () => <FormBuilderApp/>
 

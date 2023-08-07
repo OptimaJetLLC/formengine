@@ -6,12 +6,21 @@ import {useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {getKey} from '../../utils/getKey'
 import {useLocalization} from '../localization/useLocalization'
+import {useTooltipType} from '../../utils/useTooltipType'
+import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 
 /**
  * Tooltip React component wrapper properties.
  */
 export interface TooltipWrapperProps {
   children: ReactNode
+}
+
+function useTooltipComponent() {
+  const formViewerProps = useViewerProps()
+  const selectedTooltipType = useTooltipType()
+  if (!selectedTooltipType) return
+  return formViewerProps.view.getTooltipComponent(selectedTooltipType)
 }
 
 /**
@@ -21,8 +30,8 @@ export const TooltipWrapper = namedObserver('TooltipWrapper', ({children}: Toolt
   const wrappedComponentData = useComponentData()
   const wrappedComponentStore = wrappedComponentData.store
   const viewerStore = useStore()
+  const tooltipDefinition = useTooltipComponent()
   const localize = useLocalization()
-  const tooltipDefinition = viewerStore.tooltipComponent
 
   if (!tooltipDefinition) {
     return <>{children}</>
@@ -35,7 +44,7 @@ export const TooltipWrapper = namedObserver('TooltipWrapper', ({children}: Toolt
     tooltipComponentStore.props[k] = wrappedComponentStore.tooltipProps![k]
   })
 
-  const tooltipData = viewerStore.createComponentData(tooltipComponentStore);
+  const tooltipData = viewerStore.createComponentData(tooltipComponentStore)
   tooltipData.parent = wrappedComponentData.parent
 
   const componentState = useMemo(

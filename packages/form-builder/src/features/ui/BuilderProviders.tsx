@@ -1,6 +1,5 @@
 import {ComponentTree, DefaultActions, Store, StoreProvider, useDestroy, ViewerPropsProvider} from '@react-form-builder/core'
-import {assign} from 'lodash-es'
-import {useLocalObservable} from 'mobx-react'
+import {observer} from 'mobx-react'
 import {ReactNode, useEffect, useMemo} from 'react'
 import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
@@ -24,20 +23,22 @@ interface BuilderProvidersProps {
  * @param props.props the properties of the form builder component.
  * @returns the React element.
  */
-export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {
-  const observableProps = useLocalObservable(() => props)
-  const store = useMemo(() => new Store(observableProps, ComponentTree, DefaultActions), [])
+export const BuilderProviders = observer(({children, props}: BuilderProvidersProps) => {
+  const store = useMemo(
+    () => new Store(props.view, props.data ?? {}, ComponentTree, DefaultActions, false),
+    [])
 
   const buildStore = useMemo(() => {
-    const builderStore = new BuilderStore(store, observableProps)
+    const builderStore = new BuilderStore(store, props)
 
     builderStore.changeBuilderMode('builder')
     return builderStore
   }, [])
 
   useEffect(() => {
-    assign(observableProps, props)
-  })
+    store.initialData = props.data ?? {}
+    store.view = props.view
+  }, [props.data, props.view])
 
   const localStorageSynchronizer = useMemo(() => new LocalStorageSynchronizer(buildStore), [])
 
@@ -48,7 +49,7 @@ export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {
   })
 
   return (
-    <ViewerPropsProvider value={observableProps}>
+    <ViewerPropsProvider value={props}>
       <BuilderStoreProvider value={buildStore}>
         <StoreProvider value={store}>
           <LocalizationProvider>
@@ -63,4 +64,4 @@ export const BuilderProviders = ({children, props}: BuilderProvidersProps) => {
       </BuilderStoreProvider>
     </ViewerPropsProvider>
   )
-}
+})

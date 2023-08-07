@@ -4,13 +4,13 @@ import type {ComponentType} from 'react'
 import {Subject} from 'rxjs'
 import type {ComponentTreeProps} from '../ComponentTreeProps'
 import {calculatePropertyValue} from '../features/calculation/propertyCalculator'
+import {View} from '../features/define'
 import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
-import type {FormViewerProps} from '../features/form-viewer'
 import {defaultLanguage} from '../features/localization/consts'
 import {Language} from '../features/localization/types'
 import {buildInternalErrorStore} from '../features/ui/internalErrorModel'
 import {screenModel} from '../features/ui/screenModel'
-import {getTemplateName, isTemplateType} from '../features/ui/templateUtil'
+import {isTemplateType} from '../features/ui/templateUtil'
 import {FormField} from '../features/validation/utils/FormField'
 import {SimpleField} from '../features/validation/utils/SimpleField'
 import {ViewMode} from '../types'
@@ -46,8 +46,6 @@ function reduceTree<U extends object, T, K extends keyof U>(tree: Tree<U, K>,
  * The form viewer settings.
  */
 export class Store implements IStore {
-  readonly #props: Readonly<FormViewerProps>
-
   defaultLanguage?: Language
 
   selectedLanguage?: Language
@@ -67,18 +65,19 @@ export class Store implements IStore {
   // todo remove isBuilderMode from Store class
   /**
    * Creates form viewer settings.
-   * @param props the form viewer properties.
+   * @param view the metadata of the form viewer components.
+   * @param initialData the initial form data.
    * @param componentTreeRenderer the React component that displays an array of {@link ComponentData}.
    * @param actions the array of action definitions.
    * @param isBuilderMode true if the form viewer is inside the form builder, false otherwise.
    * @param parentStore the form viewer settings, used in templates.
    * @param keyInParent the template component key.
    */
-  constructor(props: Readonly<FormViewerProps>,
+  constructor(public view: View,
+              public initialData: Record<string, unknown>,
               public componentTreeRenderer: ComponentType<ComponentTreeProps>,
               public actions: ActionDefinition[] = [], public isBuilderMode: boolean = false,
               public readonly parentStore?: Store, private readonly keyInParent?: string) {
-    this.#props = props
     this.rootComponentData = this.createComponentData(this.#screen)
 
     makeObservable(this, {
@@ -87,6 +86,7 @@ export class Store implements IStore {
       viewMode: true,
       defaultLanguage: true,
       selectedLanguage: true,
+      initialData: observable.ref,
     }, {name: nameObservable(`ViewerStore`)})
   }
 
@@ -102,22 +102,6 @@ export class Store implements IStore {
    */
   destroy() {
     this.localization.destroy()
-  }
-
-  /**
-   * @returns the type of React component used to display the tooltip.
-   */
-  get tooltipType(): string | undefined {
-    return this.screen.props['tooltip']?.value ?? this.#props.view.tooltips[0]
-  }
-
-  /**
-   * @returns the component's metadata for displaying the tooltip.
-   */
-  get tooltipComponent() {
-    const selectedTooltipType = this.tooltipType
-    if (!selectedTooltipType) return
-    return this.#props.view.getTooltipComponent(selectedTooltipType)
   }
 
   /**
@@ -165,7 +149,7 @@ export class Store implements IStore {
    * @returns the {@link Model} for the specified component.
    */
   getComponentModel(componentStore: ComponentStore) {
-    return this.#props.view.get(componentStore.type)
+    return this.view.get(componentStore.type)
   }
 
   /**
@@ -239,7 +223,7 @@ export class Store implements IStore {
    * @returns the array with action definitions for the specified component.
    */
   getLinkedActions(target?: ComponentStore) {
-    if (target) return this.#props.view.get(target.type).getActions(target)
+    if (target) return this.view.get(target.type).getActions(target)
   }
 
   /**
@@ -281,22 +265,12 @@ export class Store implements IStore {
     if (!model.valued) return
 
     if (!isTemplateType(model.type)) {
-      return new SimpleField(this, this.#props, componentStore, model, updateFnValue(this))
+      return new SimpleField(this, componentStore, model, updateFnValue(this))
     }
 
-    const formViewerProps = {
-      event: this.#props.event,
-      getForm: this.#props.getForm,
-      formName: getTemplateName(model.type),
-      view: this.#props.view,
-      actions: this.#props.actions,
-      data: this.#props.data,
-      erroneous: this.#props.erroneous,
-      viewMode: this.#props.viewMode,
-    } as FormViewerProps
-
-    const childStore = new Store(formViewerProps, this.componentTreeRenderer, this.actions, false, this)
-    return new FormField(componentStore, childStore, formViewerProps)
+    const initialData = this.initialData[componentStore.key] as Record<string, unknown> ?? {}
+    const childStore = new Store(this.view, initialData, this.componentTreeRenderer, this.actions, false, this)
+    return new FormField(componentStore, childStore)
   }
 
   /**

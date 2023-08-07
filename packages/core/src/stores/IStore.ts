@@ -8,6 +8,11 @@ export interface IStore {
   rootComponentData: ComponentData
 
   /**
+   * Initial data of the form.
+   */
+  initialData?: Record<string, unknown>
+
+  /**
    * Performs the callback function on each element of the component tree, accumulates the return values.
    * @param callback the function that calculates the value for the accumulator.
    * @param initialValue the initial value for the accumulator.

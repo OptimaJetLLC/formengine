@@ -1,7 +1,6 @@
-import {assign} from 'lodash-es'
-import {useLocalObservable} from 'mobx-react'
 import {ReactNode, useContext, useEffect, useMemo} from 'react'
 import {Store} from '../../../stores/Store'
+import {namedObserver} from '../../../utils'
 import {StoreContext, StoreProvider} from '../../../utils/contexts/StoreContext'
 import {useDestroy} from '../../../utils/useDestroy'
 import {DefaultActions} from '../../event'
@@ -17,14 +16,19 @@ import {ViewerPropsProvider} from './ViewerPropsContext'
  * @param props.props the properties of the form viewer component.
  * @returns the React element.
  */
-export const ViewerStoreProvider = ({children, props}: { children: ReactNode, props: FormViewerProps }) => {
-  const observableProps = useLocalObservable(() => props)
+export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', ({children, props}: {
+  children: ReactNode,
+  props: FormViewerProps
+}) => {
   const storeFromContext = useContext(StoreContext)
-  const store = useMemo(() => storeFromContext || new Store(observableProps, ComponentTree, DefaultActions), [])
+  const store = useMemo(
+    () => storeFromContext || new Store(props.view, props.data ?? {}, ComponentTree, DefaultActions, false,),
+    [])
 
   useEffect(() => {
-    assign(observableProps, props)
-  })
+    store.initialData = props.data ?? {}
+    store.view = props.view
+  }, [props.data, props.view])
 
   useEffect(() => {
     props.view.templates().forEach(model => {
@@ -42,10 +46,10 @@ export const ViewerStoreProvider = ({children, props}: { children: ReactNode, pr
   })
 
   return (
-    <ViewerPropsProvider value={observableProps}>
+    <ViewerPropsProvider value={props}>
       <StoreProvider value={store}>
         {children}
       </StoreProvider>
     </ViewerPropsProvider>
   )
-}
+})

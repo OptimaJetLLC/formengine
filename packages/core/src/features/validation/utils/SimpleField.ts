@@ -3,7 +3,6 @@ import {ComponentStore} from '../../../stores/ComponentStore'
 import type {IStore} from '../../../stores/IStore'
 import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
 import {Model} from '../../define'
-import type {FormViewerProps} from '../../form-viewer'
 import {DataValidator} from './DataValidator'
 import {Field} from './Field'
 import {validatorsResolver} from './validatorsResolver'
@@ -43,14 +42,12 @@ export class SimpleField implements Field {
   /**
    * Creates the field with form data for the component.
    * @param store the form viewer settings.
-   * @param props the form viewer React component properties.
    * @param componentStore the component settings.
    * @param model the component metadata for the form viewer.
    * @param valueCalculator the function to get a calculated value for the field.
    */
   constructor(
     readonly store: IStore,
-    props: Readonly<FormViewerProps>,
     readonly componentStore: ComponentStore,
     readonly model: Model,
     readonly valueCalculator: (component: ComponentStore, key: string) => [boolean, any?]
@@ -81,7 +78,7 @@ export class SimpleField implements Field {
             this.value = value
             return
           }
-          this.value = props.data?.[componentStore.key] ?? this.initialValue
+          this.value = store.initialData?.[componentStore.key] ?? this.initialValue
         }
         , {name: nameAutorun(className, 'setValue', {'key': componentStore.key})}),
       () => this.dataValidator?.dispose()
