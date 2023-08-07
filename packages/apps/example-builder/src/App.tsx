@@ -70,7 +70,7 @@ const FormBuilderApp = () => {
     getForm={getFormFn}
     formName={formStorage?.formName || sampleFormName}
     view={view}
-    data={initialData}
+    initialData={initialData}
     formStorage={formStorage}
     localize={localizeFn}
     /*event={(stream) => {

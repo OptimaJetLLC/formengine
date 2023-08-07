@@ -22,13 +22,13 @@ export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', ({childr
 }) => {
   const storeFromContext = useContext(StoreContext)
   const store = useMemo(
-    () => storeFromContext || new Store(props.view, props.data ?? {}, ComponentTree, DefaultActions, false,),
+    () => storeFromContext || new Store(props.view, props.initialData ?? {}, ComponentTree, DefaultActions, false),
     [])
 
   useEffect(() => {
-    store.initialData = props.data ?? {}
+    store.initialData = props.initialData ?? {}
     store.view = props.view
-  }, [props.data, props.view])
+  }, [props.initialData, props.view])
 
   useEffect(() => {
     props.view.templates().forEach(model => {

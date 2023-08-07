@@ -25,7 +25,7 @@ interface BuilderProvidersProps {
  */
 export const BuilderProviders = observer(({children, props}: BuilderProvidersProps) => {
   const store = useMemo(
-    () => new Store(props.view, props.data ?? {}, ComponentTree, DefaultActions, false),
+    () => new Store(props.view, props.initialData ?? {}, ComponentTree, DefaultActions, false),
     [])
 
   const buildStore = useMemo(() => {
@@ -36,9 +36,9 @@ export const BuilderProviders = observer(({children, props}: BuilderProvidersPro
   }, [])
 
   useEffect(() => {
-    store.initialData = props.data ?? {}
+    store.initialData = props.initialData ?? {}
     store.view = props.view
-  }, [props.data, props.view])
+  }, [props.initialData, props.view])
 
   const localStorageSynchronizer = useMemo(() => new LocalStorageSynchronizer(buildStore), [])
 

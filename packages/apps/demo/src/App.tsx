@@ -5,7 +5,7 @@ import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/c
 import {observer} from 'mobx-react'
 import {getFormFromJson} from './utils/getFormFromJson'
 
-const data = {
+const initialData = {
   title: 'Hello! Hello!',
   login: '1',
   password: 'ok',
@@ -28,7 +28,7 @@ const FormBuilderApp = observer(() =>
     getForm={getFormFromJson}
     formName={sampleFormName}
     view={view}
-    data={data}
+    initialData={initialData}
   />)
 
 const App = () => <FormBuilderApp/>

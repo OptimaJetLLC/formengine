@@ -43,7 +43,7 @@ export interface FormViewerProps {
   /**
    * The initial data of the form.
    */
-  data?: Record<string, unknown>
+  initialData?: Record<string, unknown>
 
   // todo change documentation
   /** No use a error wrap component. */
