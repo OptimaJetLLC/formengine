@@ -4,7 +4,7 @@ import type {ComponentType} from 'react'
 import {Subject} from 'rxjs'
 import type {ComponentTreeProps} from '../ComponentTreeProps'
 import {calculatePropertyValue} from '../features/calculation/propertyCalculator'
-import {View} from '../features/define'
+import {Model, View} from '../features/define'
 import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
 import {defaultLanguage} from '../features/localization/consts'
 import {Language} from '../features/localization/types'
@@ -144,15 +144,6 @@ export class Store implements IStore {
   }
 
   /**
-   * Returns the {@link Model} for the specified component.
-   * @param componentStore the component settings.
-   * @returns the {@link Model} for the specified component.
-   */
-  getComponentModel(componentStore: ComponentStore) {
-    return this.view.get(componentStore.type)
-  }
-
-  /**
    * Returns the component settings for the specified component key.
    * @param key the component key.
    * @returns the found component settings.
@@ -254,16 +245,13 @@ export class Store implements IStore {
    * @returns the element for the component tree.
    */
   createComponentData(componentStore: ComponentStore): ComponentData {
-    const model = this.getComponentModel(componentStore)
-    const field = this.createField(componentStore)
+    const model = this.view.get(componentStore.type)
+    const field = model.valued ? this.createField(componentStore, model) : undefined
     const factory = this.createComponentData.bind(this)
     return new ComponentData(componentStore, model, field, factory)
   }
 
-  private createField(componentStore: ComponentStore) {
-    const model = this.getComponentModel(componentStore)
-    if (!model.valued) return
-
+  private createField(componentStore: ComponentStore, model: Model<any>) {
     if (!isTemplateType(model.type)) {
       return new SimpleField(this, componentStore, model, updateFnValue(this))
     }
