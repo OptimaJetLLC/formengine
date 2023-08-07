@@ -1,3 +1,4 @@
+import {useCallback} from 'react'
 import {ComponentStore} from '../../stores/ComponentStore'
 import {Store} from '../../stores/Store'
 import {useStore} from '../../utils/contexts/StoreContext'
@@ -22,8 +23,8 @@ export const useLocalization = () => {
   const formViewerStore = useStore()
   const displayedLanguage = getDisplayedLanguage(formViewerProps, formViewerStore)
 
-  return (componentStore: ComponentStore) => {
+  return useCallback((componentStore: ComponentStore) => {
     if (formViewerProps.localize) return formViewerProps.localize(componentStore, displayedLanguage)
     return localizeProperties(formViewerStore, displayedLanguage, componentStore)
-  }
+  }, [formViewerProps, formViewerStore, displayedLanguage])
 }
