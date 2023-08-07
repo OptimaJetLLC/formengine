@@ -87,7 +87,6 @@ export class Store implements IStore {
       viewMode: true,
       defaultLanguage: true,
       selectedLanguage: true,
-      displayedLanguage: true
     }, {name: nameObservable(`ViewerStore`)})
   }
 
@@ -103,24 +102,6 @@ export class Store implements IStore {
    */
   destroy() {
     this.localization.destroy()
-  }
-
-  /**
-   * @returns the {@link Language} displayed in Form Viewer.
-   */
-  get displayedLanguage() {
-    if (this.#props.language) {
-      const propsLanguage = this.languages.find(l => l.fullCode === this.#props.language)
-      if (propsLanguage) return propsLanguage
-    }
-    return this.selectedLanguage ?? this.defaultLanguage ?? defaultLanguage
-  }
-
-  /**
-   * @returns true if the displayed language is the default language, false otherwise.
-   */
-  get isDefaultLanguage() {
-    return this.displayedLanguage === this.defaultLanguage
   }
 
   /**

@@ -289,7 +289,12 @@
       {
         "key": "comment",
         "type": "RsTextArea",
-        "props": {}
+        "props": {
+          "placeholder": {
+            "useFluentLocalization": true,
+            "useFn": false
+          }
+        }
       },
       {
         "key": "button container",
@@ -345,5 +350,46 @@
         "props": {}
       }
     ]
-  }
+  },
+  "localization": {
+    "en-US": {
+      "comment": {
+        "placeholder": "Enter your text here"
+      }
+    },
+    "de-DE": {
+      "comment": {
+        "placeholder": "Geben Sie hier Ihren Text ein"
+      }
+    },
+    "ar-EG": {
+      "comment": {
+        "placeholder": "أدخل النص هنا"
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    },
+    {
+      "code": "de",
+      "dialect": "DE",
+      "name": "Deutsch",
+      "description": "German",
+      "bidi": "ltr"
+    },
+    {
+      "code": "ar",
+      "dialect": "EG",
+      "name": "عرب",
+      "description": "Arabic (Egypt)",
+      "bidi": "rtl"
+    }
+  ],
+  "defaultLanguage": "en-US"
 }

@@ -81,15 +81,15 @@ export const testFluentLocalization = (request: LocalizationTestRequest): Locali
 /**
  * Localizes all props of the specified component.
  * @param viewerStore the full state of Form Viewer.
+ * @param language the displayed language.
  * @param componentStore the full state of a localizable component.
  * @returns the object containing only the localized props of the specified component.
  */
-export const localizeProperties = (viewerStore: Store, componentStore: ComponentStore) => {
+export const localizeProperties = (viewerStore: Store, language: Language, componentStore: ComponentStore) => {
   const rootComponentData = viewerStore.rootComponentData
-  const language = viewerStore.displayedLanguage
   const fluentBundle = viewerStore.localization.getFluentBundle(language.fullCode)
 
-  const needConsiderDefaultLanguage = !viewerStore.isDefaultLanguage && viewerStore.defaultLanguage
+  const needConsiderDefaultLanguage = viewerStore.defaultLanguage && viewerStore.defaultLanguage !== language
   const defaultBundle = needConsiderDefaultLanguage
     ? viewerStore.localization.getFluentBundle(viewerStore.defaultLanguage!.fullCode)
     : undefined

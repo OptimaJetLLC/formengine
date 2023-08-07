@@ -5,7 +5,6 @@ import type {ComponentType} from 'react'
 import type {ComponentTreeProps} from '../ComponentTreeProps'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
 import {ActionEventArgs, DidMountEvent, EventName, WillUnmountEvent} from '../features/event'
-import {localizeProperties} from '../features/localization/localizer'
 import {OverrideRef} from '../features/ui/OverridesContext'
 import type {ViewMode} from '../types'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
@@ -89,6 +88,7 @@ export class ComponentState {
    * @param data the data needed to display the component.
    * @param store the form viewer settings.
    * @param componentTreeItem the type of React component that wraps child components.
+   * @param localizer the function to localize the properties of a component.
    * @param overrides the reference to the Record that contains the overridden properties of the component.
    */
   constructor(
@@ -96,6 +96,7 @@ export class ComponentState {
     readonly store: Store,
     // todo rename to childrenWrapper?
     readonly componentTreeItem: ComponentType<ComponentTreeProps>,
+    readonly localizer: (componentStore: ComponentStore) => Record<string, any>,
     readonly overrides?: OverrideRef,
   ) {
     makeAutoObservable(this, undefined, {name: nameObservable('ComponentState', {key: data.key})})
@@ -139,7 +140,7 @@ export class ComponentState {
    * @returns component localized properties.
    */
   get localizedProps() {
-    return localizeProperties(this.store, this.data.store)
+    return this.localizer(this.data.store)
   }
 
   /**

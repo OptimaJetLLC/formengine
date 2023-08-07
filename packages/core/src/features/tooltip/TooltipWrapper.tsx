@@ -5,6 +5,7 @@ import {namedObserver} from '../../utils'
 import {useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {getKey} from '../../utils/getKey'
+import {useLocalization} from '../localization/useLocalization'
 
 /**
  * Tooltip React component wrapper properties.
@@ -20,6 +21,7 @@ export const TooltipWrapper = namedObserver('TooltipWrapper', ({children}: Toolt
   const wrappedComponentData = useComponentData()
   const wrappedComponentStore = wrappedComponentData.store
   const viewerStore = useStore()
+  const localize = useLocalization()
   const tooltipDefinition = viewerStore.tooltipComponent
 
   if (!tooltipDefinition) {
@@ -36,8 +38,9 @@ export const TooltipWrapper = namedObserver('TooltipWrapper', ({children}: Toolt
   const tooltipData = viewerStore.createComponentData(tooltipComponentStore);
   tooltipData.parent = wrappedComponentData.parent
 
-  const componentState = useMemo(() => new ComponentState(tooltipData, viewerStore, tooltipDefinition.view),
-    [tooltipData, viewerStore, tooltipDefinition])
+  const componentState = useMemo(
+    () => new ComponentState(tooltipData, viewerStore, tooltipDefinition.view, localize),
+    [tooltipData, viewerStore, tooltipDefinition, localize])
 
   return createElement(tooltipDefinition.view, componentState.get, children)
 })

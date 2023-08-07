@@ -2,7 +2,7 @@ import {FormBuilder} from '@react-form-builder/builder'
 import {BuilderView} from '@react-form-builder/builder/view'
 import {antdComponents} from '@react-form-builder/components-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
-import {PersistedForm} from '@react-form-builder/core'
+import {ComponentStore, Language, PersistedForm} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {getFormFromJson} from './utils/getFormFromJson'
 import {IndexedDbFormStorage} from './utils/IndexedDbFormStorage'
@@ -22,6 +22,15 @@ const view = new BuilderView(components)
   .withErrorMeta(rsErrorMessage.build())
   .withTooltipMeta(rsTooltip.build())
   .withTemplates(['template', 'agreement', 'login form'])
+
+function localizer(componentStore: ComponentStore, language: Language): Record<string, any> {
+  return componentStore.key === 'comment'
+    ? {'placeholder': `${language?.fullCode || 'default language'} ${Math.random()}`}
+    : {}
+}
+
+const useExternalLocalizer = false
+const localizeFn = useExternalLocalizer ? localizer : undefined
 
 const indexedDbExists = false//!!window.indexedDB
 const formStorage = indexedDbExists
@@ -54,6 +63,7 @@ const FormBuilderApp = observer(() =>
     view={view}
     data={data}
     formStorage={formStorage}
+    localize={localizeFn}
     /*event={(stream) => {
       stream.listen(value => {
         let a = 4

@@ -1,7 +1,9 @@
 import {ComponentType} from 'react'
 import {View} from '../features/define'
 import {ActionDefinition} from '../features/event'
+import {Language} from '../features/localization/types'
 import {ViewMode} from '../types'
+import {ComponentStore} from './ComponentStore'
 import {PersistedForm} from './PersistedForm'
 
 /**
@@ -59,4 +61,12 @@ export interface StoreProps {
    * The language of form.
    */
   language?: string
+
+  /**
+   * The function to localize the properties of a component.
+   * @param componentStore the component settings.
+   * @param language the language selected in the form viewer.
+   * @returns the {@link Record} with the localized properties of a component.
+   */
+  localize?: (componentStore: ComponentStore, language: Language) => Record<string, any>
 }
