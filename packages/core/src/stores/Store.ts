@@ -98,7 +98,7 @@ export class Store implements IStore {
   }
 
   /**
-   * Correctly clears allocated resources, the function must be called when destroying an instance of the class.
+   * @inheritDoc
    */
   destroy() {
     this.localization.destroy()

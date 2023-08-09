@@ -60,6 +60,7 @@ export class FormField implements Field {
    */
   dispose() {
     this.#disposers.forEach(dispose => dispose())
+    this.viewerStore.destroy()
   }
 
   /**
