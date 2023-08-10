@@ -3,7 +3,6 @@ import {Device, useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import {SelectPicker} from 'rsuite'
-import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {CodeEditor} from '../../../components/CodeEditor'
 import {useTranslationPart} from '../../../localization/hooks'
 
@@ -11,14 +10,9 @@ const devices: Device[] = ['any', 'desktop', 'mobile', 'tablet']
 
 const CSSBlock = observer(() => {
   const {store} = useComponentData()
-  const {viewMode} = useBuilderStore()
-  const [device, setDevice] = useState<Device>(viewMode)
+  const [device, setDevice] = useState<Device>('any')
   const t = useTranslationPart('style')
   const translatedItems = devices.map(value => ({value, label: t(value)}))
-
-  useEffect(() => {
-    setDevice(viewMode)
-  }, [viewMode])
 
   function getInitialCssCode() {
     return store.css?.[device] ?? ''
