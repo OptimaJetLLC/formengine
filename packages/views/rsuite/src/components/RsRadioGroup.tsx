@@ -30,7 +30,6 @@ export const rsRadioGroup = define(RsRadioGroup)
     label: string.default('Radio'),
     disabled: boolean.hinted('The disable of component'),
     readOnly,
-    defaultValue: string,
     inline: boolean,
     onChange: event,
     items: array.default(toLabeledValues(['a', 'b', 'c'])),

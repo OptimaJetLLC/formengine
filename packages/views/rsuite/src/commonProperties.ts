@@ -66,7 +66,6 @@ export const navProps = {
 
 export const pickerProps = {
   label: string,
-  defaultValue: string,
   value: string.valued,
   placeholder: string,
   placement,

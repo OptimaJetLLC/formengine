@@ -12,8 +12,8 @@ interface RsSearchProps extends InputPickerProps {
   onLoadData?: LoadDataHandler
 }
 
-const RsSearch = ({data, label, onLoadData, onSearch, ...props}: RsSearchProps) => {
-  const {loading, onOpen, ...loadProps} = useLoadData({initialData: data, onLoadData, onSearch})
+const RsSearch = ({data, label, onLoadData, onSearch, value, ...props}: RsSearchProps) => {
+  const {loading, onOpen, ...loadProps} = useLoadData({data, onLoadData, onSearch, value})
   const renderMenu = (menu: ReactNode) => loadProps.data?.length ? menu : null
 
   const Icon = loading ? Loader : Search

@@ -17,26 +17,35 @@ export type LoadDataHandler = (
   currentDataLength: number
 ) => {}
 
-type LoadDataProps = {
-  initialData: ItemDataType[]
+interface LoadDataProps extends Pick<InputPickerProps,
+  'data' | 'value' | 'onSearch' | 'onOpen'> {
   onLoadData?: LoadDataHandler
-  onSearch?: InputPickerProps['onSearch']
-  onOpen?: InputPickerProps['onOpen']
 }
 
 /**
  * Implements data loading and infinite loader logic for RSuite picker components.
  * @param props the React component properties.
- * @param props.initialData the initial data for the picker.
+ * @param props.data the data for the picker.
  * @param props.onLoadData the callback function called when data should be load.
  * @param props.onSearch the callback function called when a search is performed.
  * @param props.onOpen the callback function called when the list is displayed.
+ * @param props.value the current value of the component.
  * @returns the object with prepared properties for the picker.
  */
-export const useLoadData = ({initialData, onLoadData, ...props}: LoadDataProps) => {
+export const useLoadData = ({data: initialData, onLoadData, value, ...props}: LoadDataProps) => {
   const [searchValue, setSearchValue] = useState('')
   const [data, setData] = useState<ItemDataType[]>(initialData ?? [])
   const [loading, setLoading] = useState(false)
+  const hasValue = (item: ItemDataType) => item.value === value
+
+  useEffect(() => {
+    if (value && !data.some(hasValue)) {
+      setData([
+        {value, label: value},
+        ...data
+      ])
+    }
+  }, [])
 
   useEffect(() => {
     if (!searchValue) return
@@ -45,13 +54,19 @@ export const useLoadData = ({initialData, onLoadData, ...props}: LoadDataProps) 
   }, [searchValue])
 
   const loadCallback: LoadCallback = newData => {
-    setData([...data, ...newData])
+    let filteredData = data
+
+    if (value && newData.some(hasValue)) {
+      filteredData = data.filter(item => !hasValue(item))
+    }
+
+    setData([...filteredData, ...newData])
     setLoading(false)
   }
 
   const listProps: Partial<ListProps> = {
     onItemsRendered: ({visibleStopIndex}) => {
-      if (searchValue && visibleStopIndex >= data.length - 1) {
+      if (visibleStopIndex >= data.length - 1) {
         setLoading(true)
         onLoadData?.(searchValue, loadCallback, data.length)
       }
@@ -69,5 +84,5 @@ export const useLoadData = ({initialData, onLoadData, ...props}: LoadDataProps) 
     onLoadData?.('', loadCallback, 0)
   }
 
-  return {data, loading, listProps, onSearch, onOpen, virtualized: !!onLoadData}
+  return {data, value, loading, listProps, onSearch, onOpen, virtualized: !!onLoadData}
 }
