@@ -3,6 +3,8 @@ import {ComponentStore} from '../../../stores/ComponentStore'
 import type {IStore} from '../../../stores/IStore'
 import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
 import {Model} from '../../define'
+import type {SchemaType} from '../types/SchemaType'
+import {autoConvertField} from './autoConvertField'
 import {DataValidator} from './DataValidator'
 import {Field} from './Field'
 import {validatorsResolver} from './validatorsResolver'
@@ -36,6 +38,10 @@ export class SimpleField implements Field {
    * @inheritDoc
    */
   valued: string
+  /**
+   * The type of the field value.
+   */
+  valueType: SchemaType
   dataValidator?: DataValidator
   readonly #disposers: Disposer[]
 
@@ -53,7 +59,9 @@ export class SimpleField implements Field {
     readonly valueCalculator: (component: ComponentStore, key: string) => [boolean, any?]
   ) {
     if (!model.valued) throw new Error(`'model.valued' is falsy`)
+    if (!model.valueType) throw new Error(`'model.typeOfValue' is undefined`)
     this.valued = model.valued
+    this.valueType = model.valueType
 
     const className = 'SimpleField'
 
@@ -110,9 +118,7 @@ export class SimpleField implements Field {
    * @inheritDoc
    */
   setValue(value: unknown) {
-    //TODO Transformation
-    //this.value = (this.autoTransform && this.schema?.parse(value)) || value
-    this.value = value
+    this.value = autoConvertField(value, this.valueType)
     if (this.componentStore.schema?.autoValidate !== false) this.validate()
   }
 

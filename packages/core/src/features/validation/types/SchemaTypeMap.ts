@@ -8,5 +8,5 @@ export type SchemaTypeMap = {
   'object': object
   'array': any[]
   'enum': any
-  'date': string
+  'date': Date
 }

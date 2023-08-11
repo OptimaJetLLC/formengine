@@ -5,6 +5,7 @@ import {ComponentStore} from '../../../stores/ComponentStore'
 import {isFunction} from '../../../utils'
 import {ActionDefinition, ActionEventHandler, defineAction} from '../../event'
 import {Css} from '../../style/types'
+import type {SchemaType} from '../../validation'
 import {ActionsInitializer} from '../types'
 
 /**
@@ -20,7 +21,8 @@ export class Model<T = any> {
    * @param view React component type.
    * @param name the component name.
    * @param actionsInitializer the function to initialize actions in the component.
-   * @param valued the name of the component property where the component value is stored
+   * @param valued the name of the component property where the component value is stored.
+   * @param valueType the type of the component value.
    * @param defaultProps the component's default property values.
    * @param css the component's CSS values.
    * @param typeName the component type name.
@@ -31,6 +33,7 @@ export class Model<T = any> {
     name?: string,
     readonly actionsInitializer?: ActionsInitializer,
     readonly valued?: string,
+    readonly valueType?: SchemaType,
     readonly defaultProps?: Readonly<Record<string, any>>,
     readonly css?: Css,
     readonly typeName?: string,

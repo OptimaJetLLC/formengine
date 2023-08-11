@@ -89,6 +89,7 @@ export class Definer<T extends object> {
       this.data.name || this.getType(),
       this.data.actionsInitializer,
       valuedAn?.key,
+      valuedAn?.type,
       getDefault(propAns),
       {
         object: getDefault(cssAns),

@@ -45,5 +45,5 @@ export function buildInternalErrorStore(error: any) {
  */
 export function buildInternalErrorModel(error: any) {
   const defaultProps = {error: error}
-  return new Model(InternalError, undefined, undefined, undefined, defaultProps)
+  return new Model(InternalError, undefined, undefined, undefined, undefined, defaultProps)
 }

@@ -1,4 +1,4 @@
-import {boolean, define, number, string} from '@react-form-builder/builder/view'
+import {boolean, define, string} from '@react-form-builder/builder/view'
 import {PatternFormat} from 'react-number-format'
 import {PatternFormatProps} from 'react-number-format/types/types'
 import {inputProps} from '../commonProperties'
@@ -22,7 +22,7 @@ export const rsPatternFormat = define(RsPatternFormat)
   .name('Pattern format')
   .props({
     label: string.default('Formatted input'),
-    value: number.valued,
+    value: string.valued,
     ...inputProps,
     format: string,
     mask: string,
