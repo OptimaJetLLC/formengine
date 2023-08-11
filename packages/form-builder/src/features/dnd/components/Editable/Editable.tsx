@@ -1,21 +1,79 @@
-import {OverridesProvider, useComponentData, WrapperProps} from '@react-form-builder/core'
+import {
+  checkBindCondition,
+  ComponentData,
+  ComponentStore,
+  ComponentTree,
+  TemplateField,
+  groupBy,
+  slotModel,
+  useStore,
+  WrapperProps
+} from '@react-form-builder/core'
 import {assign} from 'lodash-es'
 import {observer} from 'mobx-react'
-import {useRef} from 'react'
 import {useDragLayer} from 'react-dnd'
-import {useComputed} from '../../../../utils/useComputed'
-import {useMeta} from '../../../../utils/useMeta'
-import {isContainer} from '../../../annotation'
+import {BuilderStore} from '../../../../stores/BuilderStore'
+import {isContainer, node} from '../../../annotation'
+import {toArray} from '../../../define'
 import {useEventReactions} from '../../../event/utils/useEventReactions'
 import {Draggable} from './components/Draggable'
 import {DropZone} from './components/DropZone'
 import {Toolbar} from './components/Toolbar'
 import {useSelection} from './hooks/useSelection'
 
-export const Editable = observer(({children}: WrapperProps) => {
+const childrenSlot = 'children'
+
+function getSlot(componentStore: ComponentStore) {
+  return componentStore.slot ?? childrenSlot
+}
+
+/**
+ * Returns the {@link Record} with all child components.
+ * @param builderStore the form builder settings.
+ * @param componentData the parent component's data necessary to display the component.
+ * @param componentProps the properties of the parent component.
+ * @returns the {@link Record} with all child components.
+ */
+export function getBuilderChildren(builderStore: BuilderStore, componentData: ComponentData, componentProps: Record<string, any>) {
+  const containers = componentData.children
+  const currentProps: Record<string, any> = {}
+  const meta = builderStore.view.getMeta(componentData.model.type)
+
+  const availableSlots = meta.properties.filter(isContainer)
+  const templateSlots = getTemplateSlots(componentData)
+  availableSlots.push(...templateSlots)
+
+  const closedSlots = componentData.store.children?.map(getSlot) ?? []
+  const openSlots = availableSlots.filter(an => !closedSlots.includes(an.key) || an.bindConditionBuilder)
+
+  const groups = groupBy(containers, value => getSlot(value.store))
+  const isBindConditionSatisfied = (child: ComponentData) => checkBindCondition(child, componentProps)
+
+  for (const [key, children] of Object.entries(groups)) {
+    const filteredChildren = children
+      .filter(isBindConditionSatisfied)
+    if (filteredChildren.length) currentProps[key] = <ComponentTree data={filteredChildren}/>
+  }
+
+  openSlots.forEach(container => {
+    const slot = container.key === childrenSlot ? undefined : container.key
+    const props = assign({}, componentData.model.defaultProps, componentData.store.props)
+    const bindCondition = container?.bindConditionBuilder?.(props)
+    currentProps[container.key] = <DropZone isInner={true} slot={slot} bindCondition={bindCondition}/>
+  })
+
+  return currentProps
+}
+
+export const EditableWrapper = observer(({children}: WrapperProps) => {
+  const viewerStore = useStore()
+  // no need to draw Editable component inside child FormViewer
+  return viewerStore.parentStore ? <>{children}</> : <Editable children={children}/>
+})
+
+const Editable = observer(({children}: WrapperProps) => {
   const [{selected}, selectionHandlers, selectionClassName] = useSelection()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
-  const overrides = useInnerDropZone()
 
   useEventReactions()
 
@@ -25,31 +83,21 @@ export const Editable = observer(({children}: WrapperProps) => {
 
   return (
     <Draggable {...selectionHandlers} className={selectionClassName} viewForDragPreview={children}>
-      <OverridesProvider value={overrides}>
-        {children}
-        {toolbars}
-      </OverridesProvider>
+      {children}
+      {toolbars}
     </Draggable>
   )
 })
 
-function useInnerDropZone() {
-  const meta = useMeta()
-  const data = useComponentData()
-  const overrides = useRef<Record<string, any>>()
+function getTemplateSlots(data: ComponentData) {
+  if (!(data.field instanceof TemplateField)) return []
 
-  const containers = meta?.properties.filter(isContainer)
+  const slots = data.field.viewerStore.form.componentTree
+    .store.children?.filter(cs => cs.type === slotModel.type)
 
-  const existBinds = useComputed(() => data.store.children?.map(cs => cs.bindTo ?? 'children'))
-  const emptySlots = containers?.filter(an => !existBinds?.includes(an.key) || an.bindConditionBuilder)
-
-  overrides.current = emptySlots?.reduce((acc, container) => {
-    const bindTo = container.key === 'children' ? undefined : container.key
-    const bindCondition = container?.bindConditionBuilder?.(assign({}, data.model.defaultProps, data.store.props))
-
-    acc[container.key] = <DropZone isInner={true} bindTo={bindTo} bindCondition={bindCondition}></DropZone>
+  const ans = slots?.reduce((acc: Record<string, any>, cs) => {
+    acc[cs.key] = node
     return acc
-  }, {} as Record<string, any>)
-
-  return overrides
+  }, {})
+  return toArray(ans)
 }

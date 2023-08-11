@@ -70,17 +70,18 @@
           "key": "Template:agreement 1",
           "type": "Template:agreement",
           "props": {},
-          "slotsContent": {
-            "AgreementSlot": {
+          "children": [
+            {
               "key": "Agreement Title",
               "type": "RsInput",
+              "slot": "AgreementSlot",
               "props": {
                 "label": {
                   "value": "Input in agreement template"
                 }
               }
             }
-          }
+          ]
         }
       ]
     }

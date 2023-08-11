@@ -25,7 +25,7 @@ interface BuilderProvidersProps {
  */
 export const BuilderProviders = observer(({children, props}: BuilderProvidersProps) => {
   const store = useMemo(
-    () => new Store(props.view, props.initialData ?? {}, ComponentTree, DefaultActions, false),
+    () => new Store(props.view, props.initialData ?? {}, ComponentTree, DefaultActions),
     [])
 
   const buildStore = useMemo(() => {

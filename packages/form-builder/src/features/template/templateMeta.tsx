@@ -6,6 +6,12 @@ interface TemplateProps {
   storeDataInParentForm?: boolean
 }
 
+const storeDataInParentForm = boolean
+  .default(true)
+  .calculable(false)
+  .hinted('Store data in parent form')
+  .named('Store data in parent form')
+
 /**
  * Creates the template component metadata for the form builder.
  * @param name the template name.
@@ -15,9 +21,7 @@ export function createTemplateMeta(name: string) {
   const typeName = generateTemplateTypeName(name)
   return new Meta(typeName,
     toArray<TemplateProps>({
-      storeDataInParentForm: boolean.default(true).calculable(false)
-        .hinted('Store data in parent form')
-        .named('Store data in parent form'),
+      storeDataInParentForm,
     }),
     [], modules, <>Template: {name}</>)
 }

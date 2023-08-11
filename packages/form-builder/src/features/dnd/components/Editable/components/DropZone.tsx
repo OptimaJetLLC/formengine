@@ -15,7 +15,7 @@ interface DropZoneProps extends ComponentProps<any> {
   isInner?: boolean
   className?: any
   children?: any
-  bindTo?: string
+  slot?: string
   bindCondition?: string
 }
 
@@ -24,12 +24,12 @@ const DropZone = observer(({isAfter = false, className, isInner, ...props}: Drop
   const store = componentData.store
   const isRoot = componentData.isRoot
   const isContainer = Boolean(store.children)
-  const {bindTo, bindCondition} = props
+  const {slot, bindCondition} = props
 
-  const [{isActive, isOver}, drop] = useDropZone(isAfter, isRoot || isInner)
+  const [{isActive, isOver}, drop] = useDropZone(isAfter, isRoot || isInner, slot)
   const dropClassNames = {isAfter, isActive, isContainer, isRoot, isInner}
 
-  const dropView = <DropView {...{...dropClassNames, isOver, bindTo, bindCondition}}/>
+  const dropView = <DropView {...{...dropClassNames, isOver, slot, bindCondition}}/>
 
   return <>
     <Container ref={drop} {...props} className={cx(dropClassNames, className)}>
@@ -44,12 +44,11 @@ interface DropState {
   isOver: boolean,
 }
 
-const useDropZone = (isAfter: boolean, isInner?: boolean): [DropState, ConnectDropTarget] => {
+const useDropZone = (isAfter: boolean, isInner?: boolean, slot?: string): [DropState, ConnectDropTarget] => {
   const {Before, After, Inner} = InsertPosition
 
   const store = useBuilderStore()
   const target = useComponentData()
-  const {bindTo} = target.store
   const insertPosition = isInner
     ? Inner
     : isAfter ? After : Before
@@ -60,11 +59,11 @@ const useDropZone = (isAfter: boolean, isInner?: boolean): [DropState, ConnectDr
       const type = monitor.getItemType() as ItemType
       switch (type) {
         case ItemType.AddedComponent:
-          store.add(source, target, insertPosition)
+          store.add(source, target, insertPosition, slot)
           break
         case ItemType.Component:
           //TODO the mechanism of binding properties
-          source.store.bindTo = bindTo
+          source.store.slot = slot
           if (store.selected.size > 1) {
             store.multipleMove(target, insertPosition)
           } else {

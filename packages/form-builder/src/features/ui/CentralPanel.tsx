@@ -1,23 +1,27 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {FormViewer, namedObserver, useViewerProps} from '@react-form-builder/core'
+import {ComponentData, FormViewer, namedObserver, useViewerProps} from '@react-form-builder/core'
+import {useCallback} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
-import {Editable} from '../dnd'
-import {SlotWrapper} from '../dnd/components/SlotWrapper'
+import {EditableWrapper, getBuilderChildren} from '../dnd'
 import {Header} from './Header/Header'
 import {PanelContainer} from './Panel'
 
 export const CentralPanel = namedObserver('CentralPanel', () => {
-  const {viewMode, landscapeMode, builderMode} = useBuilderStore()
+  const builderStore = useBuilderStore()
+  const {viewMode, landscapeMode, builderMode} = builderStore
   const props = useViewerProps()
-  const componentWrapper = builderMode === 'builder' ? Editable : undefined
-  const slotWrapper = builderMode === 'builder' ? SlotWrapper : undefined
+  const componentWrapper = builderMode === 'builder' ? EditableWrapper : undefined
+  const builderComputeChildren = useCallback((componentData: ComponentData, componentProps: Record<string, any>) => {
+    return getBuilderChildren(builderStore, componentData, componentProps)
+  }, [builderStore])
+  const computeChildren = builderMode === 'builder' ? builderComputeChildren : undefined
 
   return (
     <SContainer>
       <Header/>
       <SFormContainer className={cx(viewMode, {landscapeMode})}>
-        <FormViewer {...props} componentWrapper={componentWrapper} viewMode={viewMode} slotWrapper={slotWrapper}/>
+        <FormViewer {...props} componentWrapper={componentWrapper} viewMode={viewMode} computeChildren={computeChildren}/>
       </SFormContainer>
     </SContainer>
   )

@@ -1,19 +1,16 @@
 import {css, cx} from '@emotion/css'
 import {assign, keysIn} from 'lodash-es'
 import {makeAutoObservable} from 'mobx'
-import type {ComponentType} from 'react'
-import type {ComponentTreeProps} from '../ComponentTreeProps'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
 import {ActionEventArgs, DidMountEvent, EventName, WillUnmountEvent} from '../features/event'
-import {OverrideRef} from '../features/ui/OverridesContext'
 import type {ViewMode} from '../types'
+import type {ComputeChildren} from '../utils/ComputeChildren'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
-import {getChildren} from '../utils/getChildren'
 import {nameObservable} from '../utils/observableNaming'
 import {ComponentProperty, ComponentStore} from './ComponentStore'
 import {Store} from './Store'
 
-const computeClassName = (state: ComponentState, data: ComponentData, viewMode: ViewMode) => {
+const computeClassName = (data: ComponentData, viewMode: ViewMode) => {
   const {model, store} = data
   const cssObject = assign({}, model.css?.object, store.css?.object)
 
@@ -87,17 +84,14 @@ export class ComponentState {
    * Creates an instance that calculates the properties of the form viewer component.
    * @param data the data needed to display the component.
    * @param store the form viewer settings.
-   * @param componentTreeItem the type of React component that wraps child components.
    * @param localizer the function to localize the properties of a component.
-   * @param overrides the reference to the Record that contains the overridden properties of the component.
+   * @param computeChildren the function that calculates all child properties of a component.
    */
   constructor(
     readonly data: ComponentData,
     readonly store: Store,
-    // todo rename to childrenWrapper?
-    readonly componentTreeItem: ComponentType<ComponentTreeProps>,
     readonly localizer: (componentStore: ComponentStore) => Record<string, any>,
-    readonly overrides?: OverrideRef,
+    readonly computeChildren: ComputeChildren,
   ) {
     makeAutoObservable(this, undefined, {name: nameObservable('ComponentState', {key: data.key})})
   }
@@ -117,7 +111,6 @@ export class ComponentState {
       this.events,
       this.htmlAttributes,
       this.data.userDefinedProps,
-      this.overrides?.current,
     )
     return Object.assign(propsWithoutChildren, this.children(propsWithoutChildren))
   }
@@ -161,7 +154,7 @@ export class ComponentState {
    * @returns the value of the className property for the component.
    */
   get className() {
-    const className = computeClassName(this, this.data, this.store.viewMode)
+    const className = computeClassName(this.data, this.store.viewMode)
     return {className}
   }
 
@@ -178,6 +171,6 @@ export class ComponentState {
    * @returns the {@link Record} that contains the child components of a component.
    */
   children(props: any) {
-    return getChildren(this.data, this.store.isBuilderMode, this.store.form.componentTree, this.componentTreeItem, props)
+    return this.computeChildren(this.data, props)
   }
 }

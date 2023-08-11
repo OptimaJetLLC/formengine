@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {useComponentData} from '@react-form-builder/core'
+import {ComponentTree, useComponentData} from '@react-form-builder/core'
 import {Icon} from '@rsuite/icons'
 import ArrowDownLineIcon from '@rsuite/icons/ArrowDownLine.js'
 import ArrowRightLineIcon from '@rsuite/icons/ArrowRightLine.js'
@@ -32,7 +32,6 @@ export const TreeNode = observer(({className}: { className: string }) => {
     }
   }, [selected, ref.current])
 
-  const ComponentTree = viewer.componentTreeRenderer
   return (
     <>
       <SNodeItem className={className} ref={ref}

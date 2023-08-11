@@ -10,24 +10,21 @@ const defaultContainerKey = 'children'
 /**
  * Returns the {@link Record} with all child components.
  * @param data the parent component's data necessary to display the component.
- * @param isBuilderMode true if the form viewer is inside the form builder, false otherwise.
  * @param formData the form data.
  * @param componentTreeItem the type of React component that wraps child components.
- * @param currentState the properties of the parent component.
+ * @param componentProps the properties of the parent component.
  * @returns the {@link Record} with all child components.
  */
-export function getChildren(data: ComponentData, isBuilderMode: boolean, formData: IFormData,
+export function getChildren(data: ComponentData, formData: IFormData,
                             componentTreeItem: ComponentType<ComponentTreeProps>,
-                            currentState: Record<string, any>) {
+                            componentProps: Record<string, any>) {
   const containers = data.children
   const ComponentTree = componentTreeItem
   const currentProps: Record<string, any> = {}
 
-  if (!containers) return currentProps
-
-  const groups = groupBy(containers, value => value.store.bindTo || defaultContainerKey)
-  const isBindConditionSatisfied = (child: ComponentData) => executeCondition(child, currentState)
-  const isNeedRender = (child: ComponentData) => isBuilderMode || needRender(child, formData)
+  const groups = groupBy(containers, value => value.store.slot || defaultContainerKey)
+  const isBindConditionSatisfied = (child: ComponentData) => checkBindCondition(child, componentProps)
+  const isNeedRender = (child: ComponentData) => needRender(child, formData)
 
   for (const [key, children] of Object.entries(groups)) {
     const filteredChildren = children
@@ -50,7 +47,13 @@ function getOrCreateFn(source: string) {
   return result
 }
 
-function executeCondition(child: ComponentData, parentProps: any) {
+/**
+ * Performs the function of checking if the child component can be bound.
+ * @param child the child element of the component tree.
+ * @param parentProps the parent component properties.
+ * @returns true, if the child component can be bound, false otherwise.
+ */
+export function checkBindCondition(child: ComponentData, parentProps: any) {
   const fnSource = child.store.bindCondition?.trim()
   // it's OK - no condition to bind
   if (!fnSource) return true

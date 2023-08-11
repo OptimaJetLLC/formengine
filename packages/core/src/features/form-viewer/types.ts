@@ -2,6 +2,7 @@ import type {ComponentType} from 'react'
 import {ComponentStore} from '../../stores/ComponentStore'
 import type {PersistedForm} from '../../stores/PersistedForm'
 import type {ViewMode} from '../../types'
+import type {ComputeChildren} from '../../utils/ComputeChildren'
 import {View} from '../define'
 import type {ActionDefinition} from '../event'
 import {EventStream} from '../event/utils/EventStream'
@@ -55,11 +56,6 @@ export interface FormViewerProps {
   componentWrapper?: ComponentType<any>
 
   /**
-   * The React component that wraps a template slot.
-   */
-  slotWrapper?: ComponentType<any>
-
-  /**
    * Display resolution type.
    */
   viewMode?: ViewMode
@@ -76,4 +72,9 @@ export interface FormViewerProps {
    * @returns the {@link Record} with the localized properties of a component.
    */
   localize?: (componentStore: ComponentStore, language: Language) => Record<string, any>
+
+  /**
+   * Function that calculates all child properties of a component.
+   */
+  computeChildren?: ComputeChildren
 }

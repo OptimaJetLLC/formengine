@@ -12,7 +12,7 @@ interface DropViewProps extends ComponentProps<any> {
   isActive?: boolean
   isOver?: boolean
   isInner?: boolean
-  bindTo?: string
+  slot?: string
   bindCondition?: string
 }
 
@@ -26,26 +26,26 @@ export const DropView = (props: DropViewProps) => {
   const store = componentData.store
   const isRoot = componentData.isRoot
   const isContainer = Boolean(store.children)
-  const {bindTo, bindCondition, ...classNamesFromProps} = props
+  const {slot, bindCondition, ...classNamesFromProps} = props
   const dropClassNames = {isContainer, isRoot, ...classNamesFromProps}
   const label = `${props.isAfter ? 'AFTER' : 'BEFORE'} ${store.key}`
 
   return <Container className={cx({...dropClassNames})}>
     <LabelContainer>
       {isRoot || props.isInner
-        ? <AddButton bindTo={bindTo} bindCondition={bindCondition}/>
+        ? <AddButton slot={slot} bindCondition={bindCondition}/>
         : <Label className={cx(dropClassNames)}>{label}</Label>
       }
     </LabelContainer>
   </Container>
 }
 
-const AddButton = ({bindTo, bindCondition}: { bindTo?: string, bindCondition?: string }) => {
+const AddButton = ({slot, bindCondition}: { slot?: string, bindCondition?: string }) => {
   const builderStore = useBuilderStore()
   const target = useComponentData()
   const handleClick = () => {
     builderStore.showComponentsModal(source => {
-      builderStore.add(source, target, InsertPosition.Inner, bindTo, bindCondition)
+      builderStore.add(source, target, InsertPosition.Inner, slot, bindCondition)
     })
   }
   return <>

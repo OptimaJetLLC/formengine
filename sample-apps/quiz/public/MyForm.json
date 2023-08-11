@@ -87,10 +87,11 @@
       "key": "Template:Test form 1",
       "type": "Template:template",
       "props": {},
-      "slotsContent": {
-        "TemplateSlot": {
+      "children": [
+        {
           "key": "Input in template",
           "type": "RsInput",
+          "slot": "TemplateSlot",
           "props": {
             "label": {
               "value": "Input in template"
@@ -100,7 +101,7 @@
             }
           }
         }
-      }
+      ]
     },
     {
       "key": "checkbox",

@@ -11,10 +11,11 @@ const data = {
   title: 'Hello! Hello!',
   login: '1',
   password: 'ok',
-  'Template:Test form 1': {login: 'tortuga', password: 'man!', agreement: false},
+  'Template:Test form 1': {login: 'tortuga', password: 'man!', agreeCheckbox: false},
   'Agreement Title': 'Data in agreement template',
   'Input in template': 'Data in template level 1',
   ['last name']: 'Bret',
+  agreeCheckbox: true
 }
 
 const components = [...rSuiteComponents, ...antdComponents].map(definer => definer.build())

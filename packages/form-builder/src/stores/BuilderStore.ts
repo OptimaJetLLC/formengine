@@ -195,7 +195,6 @@ export class BuilderStore {
    */
   changeBuilderMode(value: BuilderMode) {
     this.builderMode = value
-    this.viewer.isBuilderMode = this.builderMode === 'builder'
     this.calculatedProperty = undefined
   }
 
@@ -280,14 +279,14 @@ export class BuilderStore {
    * @param source the component to be added to the component tree.
    * @param target the parent component for the component to be added.
    * @param insertPosition the insertion position relative to the new parent component.
-   * @param bindTo the property name of the parent component where the new component will be added.
+   * @param slot the property name of the parent component where the new component will be added.
    * @param bindCondition the source code of the function that checks if the component can be added.
    * @returns the new added component.
    */
   add(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = InsertPosition.After,
-      bindTo?: string, bindCondition?: string) {
+      slot?: string, bindCondition?: string) {
     const clone = assign(new ComponentStore('', ''), cloneDeep(source.store))
-    clone.bindTo = bindTo
+    clone.slot = slot
     clone.bindCondition = bindCondition
     this.unifyComponentKeys(clone)
     const componentData = this.viewer.createComponentData(clone)

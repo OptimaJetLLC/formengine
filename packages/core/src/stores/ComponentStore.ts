@@ -32,7 +32,6 @@ export class ComponentStore {
   css?: Css
   events?: Record<EventName, ActionData[]>
   children?: ComponentStore[]
-  slotsContent?: Record<string, ComponentStore>
 
   schema?: BoundValueSchema
 
@@ -44,8 +43,11 @@ export class ComponentStore {
     enabled: [],
   }*/
 
-  //Bind to parent property
-  bindTo?: string
+  /**
+   * The name of the occupied component property in the parent component.
+   */
+  slot?: string
+
   bindCondition?: string
   //TODO add on validation page
   renderWhen?: ComponentProperty

@@ -1,18 +1,14 @@
-import {IReactionDisposer, makeAutoObservable} from 'mobx'
+import {makeAutoObservable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import type {IStore} from '../../../stores/IStore'
 import {nameObservable} from '../../../utils/observableNaming'
 import type {Field} from './Field'
+import {isStoreDataInParentForm} from './util'
 
 /**
  * The field with the form data, contains the value of the nested form.
  */
-export class FormField implements Field {
-
-  /**
-   * @inheritDoc
-   */
-  storeDataInParentForm = true
+export class TemplateField implements Field {
 
   /**
    * @inheritDoc
@@ -23,7 +19,6 @@ export class FormField implements Field {
    * @inheritDoc
    */
   touched = false
-  readonly #disposers: IReactionDisposer[]
 
   /**
    * Creates the nested form field with form data for the component.
@@ -36,30 +31,26 @@ export class FormField implements Field {
   ) {
     makeAutoObservable(this, undefined,
       {name: nameObservable('FormField', {key: componentStore.key})})
+  }
 
-    this.#disposers = [
-      // todo fix storeDataInParentForm
-      /*autorun(() => {
-        const val = componentStore.props['storeDataInParentForm']?.value
-        this.storeDataInParentForm = typeof val === 'undefined' ? true : val
-        const formData = this.storeDataInParentForm ? props.data : props.data?.[this.componentStore.key]
-        this.setValue(formData)
-      })*/
-    ]
+  /**
+   * @inheritDoc
+   */
+  get storeDataInParentForm() {
+    return isStoreDataInParentForm(this.componentStore)
   }
 
   /**
    * @inheritDoc
    */
   get value(): unknown {
-    return this.viewerStore.form.componentTree.data
+    return this.form.data
   }
 
   /**
    * @inheritDoc
    */
   dispose() {
-    this.#disposers.forEach(dispose => dispose())
     this.viewerStore.dispose()
   }
 
@@ -67,7 +58,7 @@ export class FormField implements Field {
    * @inheritDoc
    */
   clear(): void {
-    this.viewerStore.form.componentTree.clear()
+    this.form.clear()
     this.touched = false
   }
 
@@ -75,7 +66,7 @@ export class FormField implements Field {
    * @inheritDoc
    */
   reset(): void {
-    this.viewerStore.form.componentTree.reset()
+    this.form.reset()
   }
 
   /**
@@ -90,13 +81,13 @@ export class FormField implements Field {
    */
   setValue(value: unknown): void {
     if (!value) {
-      this.viewerStore.form.componentTree.reset()
+      this.form.reset()
       return
     }
     if (!(typeof value === 'object')) throw new Error(`Expected 'object' type, got ${value}`)
 
     const data: Record<string, any> = value
-    this.viewerStore.form.componentTree.fields.forEach((field, key) => {
+    this.form.fields.forEach((field, key) => {
       const val = data[key]
       // prevent uncontrolled value
       typeof val === 'undefined' ? field.reset() : field.setValue(val)
@@ -107,6 +98,13 @@ export class FormField implements Field {
    * @inheritDoc
    */
   async validate() {
-    await this.viewerStore.form.componentTree.validate()
+    await this.form.validate()
+  }
+
+  /**
+   * @returns the form for the field.
+   */
+  get form() {
+    return this.viewerStore.form.componentTree
   }
 }

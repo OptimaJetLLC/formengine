@@ -86,7 +86,7 @@ export class SimpleField implements Field {
             this.value = value
             return
           }
-          this.value = store.initialData?.[componentStore.key] ?? this.initialValue
+          this.value = store.initialDataSlice?.[componentStore.key] ?? this.initialValue
         }
         , {name: nameAutorun(className, 'setValue', {'key': componentStore.key})}),
       () => this.dataValidator?.dispose()

@@ -11,7 +11,7 @@ export const ChildViewer = () => {
   const {annotation} = useEditor()
   const {store} = useComponentData()
   const isChild = (child: ComponentStore) =>
-    child.bindTo === annotation.key || !child.bindTo && annotation.key === 'children'
+    child.slot === annotation.key || !child.slot && annotation.key === 'children'
 
   return (
     <LabeledProperty annotation={annotation}>

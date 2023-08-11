@@ -8,9 +8,9 @@ export interface IStore {
   form: Form
 
   /**
-   * Initial data of the form.
+   * @returns the slice of the initial data in accordance with the Store hierarchy.
    */
-  initialData?: Record<string, unknown>
+  get initialDataSlice(): Record<string, unknown> | undefined
 
   /**
    * Performs the callback function on each element of the component tree, accumulates the return values.

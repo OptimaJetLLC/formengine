@@ -8,20 +8,22 @@ import {Model, View} from '../features/define'
 import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
 import {defaultLanguage as globalDefaultLanguage} from '../features/localization/consts'
 import {Language} from '../features/localization/types'
-import {buildInternalErrorStore} from '../features/ui/internalErrorModel'
+import {createTemplateModel} from '../features/template'
+import {buildInternalErrorModel, buildInternalErrorStore} from '../features/ui/internalErrorModel'
 import {screenModel} from '../features/ui/screenModel'
 import {isTemplateType} from '../features/ui/templateUtil'
-import {FormField} from '../features/validation/utils/FormField'
 import {SimpleField} from '../features/validation/utils/SimpleField'
-import {ViewMode} from '../types'
-import {isPromise} from '../utils'
+import {TemplateField} from '../features/validation/utils/TemplateField'
+import {isStoreDataInParentForm} from '../features/validation/utils/util'
+import type {ViewMode} from '../types'
+import {isPromise, isRecord} from '../utils'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
 import {ComponentStore} from './ComponentStore'
 import {Form} from './Form'
-import {IStore} from './IStore'
+import type {IStore} from './IStore'
 import {LocalizationStore} from './LocalizationStore'
-import {PersistedForm} from './PersistedForm'
+import type {PersistedForm} from './PersistedForm'
 
 /**
  * Reduction function type.
@@ -56,23 +58,26 @@ export class Store implements IStore {
 
   form: Form
 
-  // todo remove isBuilderMode from Store class
+  /**
+   * Models for templates that have not been explicitly defined.
+   */
+  #templateMap = new Map<string, Model>()
+
   /**
    * Creates form viewer settings.
    * @param view the metadata of the form viewer components.
    * @param initialData the initial form data.
    * @param componentTreeRenderer the React component that displays an array of {@link ComponentData}.
    * @param actions the array of action definitions.
-   * @param isBuilderMode true if the form viewer is inside the form builder, false otherwise.
    * @param parentStore the form viewer settings, used in templates.
-   * @param keyInParent the template component key.
+   * @param parentComponentStore the parent component settings.
    */
   constructor(public view: View,
               public initialData: Record<string, unknown>,
               public componentTreeRenderer: ComponentType<ComponentTreeProps>,
-              public actions: ActionDefinition[] = [], public isBuilderMode: boolean = false,
-              public readonly parentStore?: Store, private readonly keyInParent?: string) {
-
+              public actions: ActionDefinition[] = [],
+              public readonly parentStore?: Store,
+              public readonly parentComponentStore?: ComponentStore) {
     const componentTree = this.createComponentData(new ComponentStore(screenModel.name, screenModel.type))
     const localization = new LocalizationStore()
     this.form = new Form(componentTree, localization, [], globalDefaultLanguage)
@@ -82,7 +87,10 @@ export class Store implements IStore {
       viewMode: true,
       selectedLanguage: true,
       initialData: observable.ref,
-      clear: true
+      clear: true,
+      parentStore: observable.ref,
+      parentComponentStore: observable.ref,
+      initialDataSlice: true,
     }, {name: nameObservable(`ViewerStore`)})
   }
 
@@ -104,43 +112,23 @@ export class Store implements IStore {
     this.form.dispose()
   }
 
-  /**
-   * @returns true if these settings are used to display the pattern, false otherwise.
-   */
-  get isTemplateStore() {
-    return !!this.parentStore
-  }
-
-  /**
-   * @returns true if the template can be displayed in builder mode (e.g. with drop zones), false otherwise.
-   */
-  get templateBuilderMode(): boolean {
-    if (!this.isTemplateStore) return this.isBuilderMode
-    // if the template is inside another template, there is no builder mode
-    return this.parentStore?.isBuilderMode || false
-  }
-
-  /**
-   * @returns the {@link Record} with template slot settings.
-   */
-  get slotsContent(): Record<string, ComponentData> | undefined {
-    if (this.keyInParent && this.parentStore) {
-      const componentData = this.parentStore.getComponentDataByKey(this.keyInParent)
-      if (!componentData || !componentData.store.slotsContent) return
-      const componentDatas: Record<string, ComponentData> = {}
-      for (const key in componentData.store.slotsContent) {
-        componentDatas[key] = this.parentStore.getComponentDataByKey(key)
-      }
-      return componentDatas
-    }
-  }
-
   // todo Must be removed.
   /**
    * @returns the root {@link ComponentStore}.
    */
   get screen(): ComponentStore {
     return this.form.componentTree.store
+  }
+
+  /**
+   * @inheritDoc
+   */
+  get initialDataSlice(): Record<string, unknown> | undefined {
+    if (!this.parentStore || !this.parentComponentStore) return this.initialData
+    const dataSlice = this.parentStore.initialDataSlice
+    if (isStoreDataInParentForm(this.parentComponentStore)) return dataSlice
+    const projection = dataSlice?.[this.parentComponentStore.key]
+    return isRecord(projection) ? projection : undefined
   }
 
   /**
@@ -159,36 +147,13 @@ export class Store implements IStore {
     return result
   }
 
-  //TODO compatibility only refactor and remove
-  /**
-   * Returns the filled component data for the specified component key.
-   * @param key Component key.
-   * @returns Filled component data.
-   */
-  getComponentDataByKey(key: string) {
-    const result = this.form.componentTree.findByKey(key)
-    if (!result) {
-      throw Error(`Component data for ${key} didn't found!`)
-    }
-    return result
-  }
-
   /**
    * Searches for and returns the component settings for the specified component key.
    * @param key the component key.
    * @returns the found component settings or undefined.
    */
   findComponent(key: string) {
-    const result = treeFind(this.screen, key)
-    if (result) return result
-
-    const slots = this.slotsContent
-    if (!slots) return
-
-    for (const slotName in slots) {
-      const slotComponentData = treeFind(slots[slotName], key)
-      if (slotComponentData) return slotComponentData.store
-    }
+    return treeFind(this.screen, key)
   }
 
   /**
@@ -209,12 +174,34 @@ export class Store implements IStore {
   }
 
   /**
+   * Returns model for the specified type.
+   * @param type the component type.
+   * @returns the model for the specified type.
+   */
+  getModel(type: string) {
+    const model = this.view.find(type)
+    if (model) return model
+    if (isTemplateType(type)) {
+      const templateModel = this.#templateMap.get(type)
+      return templateModel ?? this.addTemplateModel(type)
+    }
+    return buildInternalErrorModel(`Type '${type}' is not found!`)
+  }
+
+  private addTemplateModel(type: string) {
+    // we don't change the view properties to add a template
+    const templateModel = createTemplateModel(type)
+    this.#templateMap.set(templateModel.type, templateModel)
+    return templateModel
+  }
+
+  /**
    * Returns the array with action definitions for the specified component.
    * @param target the component settings.
    * @returns the array with action definitions for the specified component.
    */
   getLinkedActions(target?: ComponentStore) {
-    if (target) return this.view.get(target.type).getActions(target)
+    if (target) return this.getModel(target.type).getActions(target)
   }
 
   /**
@@ -245,20 +232,19 @@ export class Store implements IStore {
    * @returns the element for the component tree.
    */
   createComponentData(componentStore: ComponentStore): ComponentData {
-    const model = this.view.get(componentStore.type)
+    const model = this.getModel(componentStore.type)
     const field = model.valued ? this.createField(componentStore, model) : undefined
     const factory = this.createComponentData.bind(this)
     return new ComponentData(componentStore, model, field, factory)
   }
 
-  private createField(componentStore: ComponentStore, model: Model<any>) {
+  private createField(componentStore: ComponentStore, model: Model) {
     if (!isTemplateType(model.type)) {
       return new SimpleField(this, componentStore, model, updateFnValue(this))
     }
 
-    const initialData = this.initialData[componentStore.key] as Record<string, unknown> ?? {}
-    const childStore = new Store(this.view, initialData, this.componentTreeRenderer, this.actions, false, this)
-    return new FormField(componentStore, childStore)
+    const childStore = new Store(this.view, this.initialData, this.componentTreeRenderer, this.actions, this, componentStore)
+    return new TemplateField(componentStore, childStore)
   }
 
   /**

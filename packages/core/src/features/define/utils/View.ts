@@ -1,7 +1,6 @@
-import {buildInternalErrorModel, internalErrorModel} from '../../ui/internalErrorModel'
+import {createTemplateModel, slotModel} from '../../template'
+import {internalErrorModel} from '../../ui/internalErrorModel'
 import {screenModel} from '../../ui/screenModel'
-import {slotModel} from '../../ui/slotModel'
-import {createTemplateModel} from '../../ui/templateModel'
 import {errorMessageModel} from '../../validation/components/DefaultErrorMessage'
 import {Model} from './Model'
 
@@ -105,9 +104,18 @@ export class View {
    * @returns the component metadata for the form viewer for the specified type.
    */
   get(type: string) {
-    const result = this.#modelMap.get(type)
+    const result = this.find(type)
     if (result) return result
-    return buildInternalErrorModel(`Type '${type}' is not found!`)
+    throw new Error(`Type '${type}' is not found!`)
+  }
+
+  /**
+   * Returns the component's metadata for the form viewer for the specified type.
+   * @param type the component type.
+   * @returns the component metadata for the form viewer for the specified type or undefined.
+   */
+  find(type: string) {
+    return this.#modelMap.get(type)
   }
 
   /**

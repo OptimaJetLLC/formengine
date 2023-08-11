@@ -10,7 +10,7 @@ import {useStore} from '../../utils/contexts/StoreContext'
 import {ActionData, ActionEventArgs, Arguments, ArgumentValue, DidMountEvent, Func, WillUnmountEvent} from '../event'
 import {useLocalization} from '../localization/useLocalization'
 import {componentMarkup} from '../substitution/consts'
-import {useOverrides} from './OverridesContext'
+import {useComputeChildren} from './useComputeChildren'
 
 function denoteBinds(value: ArgumentValue, store: Store) {
   if (!isString(value)) return value
@@ -61,11 +61,11 @@ function getActionHandler(store: Store, func: Func, args?: Arguments) {
 
 export const ComponentViewer = namedObserver('ComponentViewer', () => {
   const store = useStore(), data = useComponentData()
-  const overrides = useOverrides()
   const localize = useLocalization()
+  const computeChildren = useComputeChildren()
   const componentState = useMemo(
-    () => new ComponentState(data, store, store.componentTreeRenderer, localize, overrides),
-    [data, overrides.current, localize])
+    () => new ComponentState(data, store, localize, computeChildren),
+    [data, localize])
 
   useActions(componentState)
 

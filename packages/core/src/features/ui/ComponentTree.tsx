@@ -3,7 +3,7 @@ import {namedObserver} from '../../utils'
 import {ComponentTreeItem} from './ComponentTreeItem'
 
 /**
- * The React component that displays an array of {@link ComponentData}.
+ * The React component that displays an array of ComponentData.
  */
 export const ComponentTree = namedObserver('ComponentTree', ({data}: ComponentTreeProps) => {
   return <>

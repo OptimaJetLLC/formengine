@@ -5,7 +5,6 @@ import {StoreContext, StoreProvider} from '../../../utils/contexts/StoreContext'
 import {useDestroy} from '../../../utils/useDestroy'
 import {DefaultActions} from '../../event'
 import {ComponentTree} from '../../ui/ComponentTree'
-import {getTemplateName} from '../../ui/templateUtil'
 import {FormViewerProps} from '../types'
 import {ViewerPropsProvider} from './ViewerPropsContext'
 
@@ -22,22 +21,13 @@ export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', ({childr
 }) => {
   const storeFromContext = useContext(StoreContext)
   const store = useMemo(
-    () => storeFromContext || new Store(props.view, props.initialData ?? {}, ComponentTree, DefaultActions, false),
+    () => storeFromContext || new Store(props.view, props.initialData ?? {}, ComponentTree, DefaultActions),
     [])
 
   useEffect(() => {
     store.initialData = props.initialData ?? {}
     store.view = props.view
   }, [props.initialData, props.view])
-
-  useEffect(() => {
-    props.view.templates().forEach(model => {
-      const templateName = getTemplateName(model.type)
-      const defaultProps = {templateName}
-      const modifiedModel = Object.assign(model, {defaultProps: defaultProps})
-      props.view.define(modifiedModel)
-    })
-  }, [])
 
   useDestroy(() => {
     if (!storeFromContext) {
