@@ -44,7 +44,7 @@ export const BuilderProviders = observer(({children, props}: BuilderProvidersPro
 
   useDestroy(() => {
     buildStore.destroy()
-    store.destroy()
+    store.dispose()
     localStorageSynchronizer.destroy()
   })
 

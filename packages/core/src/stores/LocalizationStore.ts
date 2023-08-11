@@ -172,7 +172,7 @@ export class LocalizationStore {
   /**
    * Correctly clears allocated resources, the function must be called when destroying an instance of the class.
    */
-  destroy() {
+  dispose() {
     this.#disposers.forEach(dispose => dispose())
   }
 

@@ -1,11 +1,11 @@
-import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {ComponentStore} from './ComponentStore'
+import {Form} from './Form'
 
 /**
  * The form viewer settings interface.
  */
 export interface IStore {
-  rootComponentData: ComponentData
+  form: Form
 
   /**
    * Initial data of the form.
@@ -23,5 +23,5 @@ export interface IStore {
   /**
    * Correctly clears allocated resources, the function must be called when destroying an instance of the class.
    */
-  destroy: () => void
+  dispose: () => void
 }

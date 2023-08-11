@@ -6,7 +6,7 @@ import type {ComponentTreeProps} from '../ComponentTreeProps'
 import {calculatePropertyValue} from '../features/calculation/propertyCalculator'
 import {Model, View} from '../features/define'
 import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
-import {defaultLanguage} from '../features/localization/consts'
+import {defaultLanguage as globalDefaultLanguage} from '../features/localization/consts'
 import {Language} from '../features/localization/types'
 import {buildInternalErrorStore} from '../features/ui/internalErrorModel'
 import {screenModel} from '../features/ui/screenModel'
@@ -18,6 +18,7 @@ import {isPromise} from '../utils'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
 import {ComponentStore} from './ComponentStore'
+import {Form} from './Form'
 import {IStore} from './IStore'
 import {LocalizationStore} from './LocalizationStore'
 import {PersistedForm} from './PersistedForm'
@@ -46,21 +47,14 @@ function reduceTree<U extends object, T, K extends keyof U>(tree: Tree<U, K>,
  * The form viewer settings.
  */
 export class Store implements IStore {
-  defaultLanguage?: Language
 
   selectedLanguage?: Language
 
   readonly eventSubject = new Subject<ActionEventArgs>()
 
-  #screen = new ComponentStore(screenModel.name, screenModel.type)
-
-  rootComponentData: ComponentData
-
   viewMode: ViewMode = 'desktop'
 
-  localization = new LocalizationStore()
-
-  languages: Language[] = []
+  form: Form
 
   // todo remove isBuilderMode from Store class
   /**
@@ -78,15 +72,17 @@ export class Store implements IStore {
               public componentTreeRenderer: ComponentType<ComponentTreeProps>,
               public actions: ActionDefinition[] = [], public isBuilderMode: boolean = false,
               public readonly parentStore?: Store, private readonly keyInParent?: string) {
-    this.rootComponentData = this.createComponentData(this.#screen)
+
+    const componentTree = this.createComponentData(new ComponentStore(screenModel.name, screenModel.type))
+    const localization = new LocalizationStore()
+    this.form = new Form(componentTree, localization, [], globalDefaultLanguage)
 
     makeObservable(this, {
-      rootComponentData: observable,
-      localization: observable,
+      form: observable,
       viewMode: true,
-      defaultLanguage: true,
       selectedLanguage: true,
       initialData: observable.ref,
+      clear: true
     }, {name: nameObservable(`ViewerStore`)})
   }
 
@@ -94,14 +90,18 @@ export class Store implements IStore {
    * Clears the form in Form Viewer.
    */
   clear() {
-    this.rootComponentData = this.createComponentData(this.#screen)
+    const oldForm = this.form
+    const componentTree = this.createComponentData(new ComponentStore(screenModel.name, screenModel.type))
+    const localization = new LocalizationStore()
+    this.form = new Form(componentTree, localization, oldForm.languages, oldForm.defaultLanguage)
+    oldForm.dispose()
   }
 
   /**
    * @inheritDoc
    */
-  destroy() {
-    this.localization.destroy()
+  dispose() {
+    this.form.dispose()
   }
 
   /**
@@ -140,7 +140,7 @@ export class Store implements IStore {
    * @returns the root {@link ComponentStore}.
    */
   get screen(): ComponentStore {
-    return this.rootComponentData.store
+    return this.form.componentTree.store
   }
 
   /**
@@ -166,7 +166,7 @@ export class Store implements IStore {
    * @returns Filled component data.
    */
   getComponentDataByKey(key: string) {
-    const result = this.rootComponentData.findByKey(key)
+    const result = this.form.componentTree.findByKey(key)
     if (!result) {
       throw Error(`Component data for ${key} didn't found!`)
     }
@@ -268,7 +268,7 @@ export class Store implements IStore {
   #onLoadError(e: any) {
     console.error(e)
     const componentStore = buildInternalErrorStore(e)
-    this.#applyPersistedForm({form: componentStore, localization: {}, defaultLanguage: defaultLanguage.fullCode, languages: []})
+    this.#applyPersistedForm({form: componentStore, localization: {}, defaultLanguage: globalDefaultLanguage.fullCode, languages: []})
   }
 
   /**
@@ -276,11 +276,14 @@ export class Store implements IStore {
    * @param persistedForm saved form value.
    */
   #applyPersistedForm(persistedForm: PersistedForm) {
+    const oldForm = this.form
     const componentStore = ComponentStore.createFromObject(persistedForm.form)
-    this.rootComponentData = this.createComponentData(componentStore)
-    this.localization = new LocalizationStore(assign({}, persistedForm.localization))
-    this.languages = persistedForm.languages ? [...persistedForm.languages] : []
-    this.defaultLanguage = persistedForm.languages?.find(l => l.fullCode === persistedForm.defaultLanguage) ?? defaultLanguage
+    const componentData = this.createComponentData(componentStore)
+    const localization = new LocalizationStore(assign({}, persistedForm.localization))
+    const languages = persistedForm.languages ? [...persistedForm.languages] : []
+    const defaultLanguage = persistedForm.languages?.find(l => l.fullCode === persistedForm.defaultLanguage) ?? globalDefaultLanguage
+    this.form = new Form(componentData, localization, languages, defaultLanguage)
+    oldForm.dispose()
   }
 }
 
@@ -301,7 +304,7 @@ function updateFnValue(viewerStore: Store) {
   return function (component: ComponentStore, key: string): [boolean, any?] {
     const property = component.props[key]
     if (property && property.useFn) {
-      const value = calculatePropertyValue(property, viewerStore.rootComponentData)
+      const value = calculatePropertyValue(property, viewerStore.form.componentTree)
       return [true, value]
     }
     return [false]

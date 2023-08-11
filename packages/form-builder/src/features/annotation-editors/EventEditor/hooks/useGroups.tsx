@@ -5,7 +5,7 @@ import {groupBy, useStore} from '@react-form-builder/core'
  */
 export const useGroups = () => {
   const viewerStore = useStore()
-  const nodes = viewerStore.rootComponentData
+  const nodes = viewerStore.form.componentTree
     .allNodesAsArray
     .filter(node => Boolean(node.model?.actionsInitializer))
 

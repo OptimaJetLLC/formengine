@@ -4,6 +4,7 @@ import {
   ComponentProperty,
   ComponentStore,
   defaultLanguage,
+  Form,
   LocalizationStore,
   nameObservable,
   PersistedForm,
@@ -64,7 +65,8 @@ export class BuilderStore {
   lastSaveTime = new Date()
   readonly componentsModalState: ComponentsModalState = {
     opened: false,
-    onSelect: () => {}
+    onSelect: () => {
+    }
   }
   readonly errorMap = new Map<ComponentStore, Record<string, string | undefined>>
   readonly view: BuilderView
@@ -156,7 +158,7 @@ export class BuilderStore {
    */
   get oneSelectedComponentData() {
     const selected = this.oneSelected
-    if (selected) return this.viewer.rootComponentData.findByKey(selected.key)
+    if (selected) return this.viewer.form.componentTree.findByKey(selected.key)
   }
 
   /**
@@ -226,10 +228,13 @@ export class BuilderStore {
    * @param text the form serialized in JSON.
    */
   parseForm(text: string) {
+    const oldForm = this.viewer.form
     const deserializedForm = JSON.parse(text) as PersistedForm
     const componentStore = ComponentStore.createFromObject(deserializedForm.form)
-    this.viewer.rootComponentData = this.viewer.createComponentData(componentStore)
-    this.viewer.localization = new LocalizationStore(deserializedForm.localization)
+    const componentData = this.viewer.createComponentData(componentStore)
+    const localization = new LocalizationStore(deserializedForm.localization)
+    this.viewer.form = new Form(componentData, localization, [], defaultLanguage)
+    oldForm.dispose()
     if (this.calculatedProperty) this.calculatedProperty = undefined
   }
 
@@ -264,7 +269,7 @@ export class BuilderStore {
    */
   multipleMove(target: ComponentData, insertPosition: InsertPosition = InsertPosition.After) {
     this.selected.forEach((store) => {
-      const sourceComponentData = this.viewer.rootComponentData.findByKey(store.key)
+      const sourceComponentData = this.viewer.form.componentTree.findByKey(store.key)
       if (!sourceComponentData) throw Error(`Component with key ${store.key} not found`)
       this.move(sourceComponentData, target, insertPosition)
     })
@@ -298,7 +303,7 @@ export class BuilderStore {
    */
   remove(source: ComponentData) {
     this.selected.clear()
-    this.viewer.localization.removeLocalization(source.key)
+    this.viewer.form.localization.removeLocalization(source.key)
     source.delete()
   }
 
@@ -333,10 +338,10 @@ export class BuilderStore {
    */
   stringifyForm() {
     const selectedLanguages = languages
-      .filter(l => l.fullCode === defaultLanguage.fullCode || this.viewer.localization.hasLanguage(l.fullCode))
+      .filter(l => l.fullCode === defaultLanguage.fullCode || this.viewer.form.localization.hasLanguage(l.fullCode))
     const serializedObject: PersistedForm = {
       form: this.viewer.screen,
-      localization: this.viewer.localization.value,
+      localization: this.viewer.form.localization.value,
       languages: selectedLanguages,
       defaultLanguage: defaultLanguage.fullCode
     }

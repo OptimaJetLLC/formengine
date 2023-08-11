@@ -6,8 +6,8 @@ import {Rows} from '../../../components/Containers'
 const Errors = observer((props: any) => {
   const store = useStore()
   const {t} = useTranslation()
-  const errors = store.rootComponentData.errors
-  const data = store.rootComponentData.data
+  const errors = store.form.componentTree.errors
+  const data = store.form.componentTree.data
 
   return (<Rows {...props} gap={10}>
       <div>

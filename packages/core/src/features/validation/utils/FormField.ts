@@ -52,7 +52,7 @@ export class FormField implements Field {
    * @inheritDoc
    */
   get value(): unknown {
-    return this.viewerStore.rootComponentData.data
+    return this.viewerStore.form.componentTree.data
   }
 
   /**
@@ -60,14 +60,14 @@ export class FormField implements Field {
    */
   dispose() {
     this.#disposers.forEach(dispose => dispose())
-    this.viewerStore.destroy()
+    this.viewerStore.dispose()
   }
 
   /**
    * @inheritDoc
    */
   clear(): void {
-    this.viewerStore.rootComponentData.clear()
+    this.viewerStore.form.componentTree.clear()
     this.touched = false
   }
 
@@ -75,7 +75,7 @@ export class FormField implements Field {
    * @inheritDoc
    */
   reset(): void {
-    this.viewerStore.rootComponentData.reset()
+    this.viewerStore.form.componentTree.reset()
   }
 
   /**
@@ -90,13 +90,13 @@ export class FormField implements Field {
    */
   setValue(value: unknown): void {
     if (!value) {
-      this.viewerStore.rootComponentData.reset()
+      this.viewerStore.form.componentTree.reset()
       return
     }
     if (!(typeof value === 'object')) throw new Error(`Expected 'object' type, got ${value}`)
 
     const data: Record<string, any> = value
-    this.viewerStore.rootComponentData.fields.forEach((field, key) => {
+    this.viewerStore.form.componentTree.fields.forEach((field, key) => {
       const val = data[key]
       // prevent uncontrolled value
       typeof val === 'undefined' ? field.reset() : field.setValue(val)
@@ -107,6 +107,6 @@ export class FormField implements Field {
    * @inheritDoc
    */
   async validate() {
-    await this.viewerStore.rootComponentData.validate()
+    await this.viewerStore.form.componentTree.validate()
   }
 }

@@ -231,6 +231,19 @@ export class ComponentData implements IFormData {
   }
 
   /**
+   * Dispose method that releases resources used by the object.
+   * It disposes the field and all the children objects.
+   */
+  dispose() {
+    const allNodes = this.collectAllNodesAsArray([])
+    allNodes.forEach(componentData => {
+      componentData.field?.dispose()
+      componentData.parent = undefined
+      componentData.children = []
+    })
+  }
+
+  /**
    * @returns true if it has no parent {@link ComponentData}, false otherwise.
    */
   get isRoot() {
@@ -274,7 +287,7 @@ export class ComponentData implements IFormData {
     this.store.children ??= []
     const storeIndex = this.store.children.indexOf(oldChild.store)
     if (storeIndex > -1) {
-      this.store.children?.splice(storeIndex, 1)
+      this.store.children.splice(storeIndex, 1)
     }
   }
 }

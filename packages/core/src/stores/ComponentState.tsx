@@ -53,7 +53,7 @@ const getSubstitutedValue = (props: Record<string, ComponentProperty>, store: St
     if (props[key]?.useFn || typeof value !== 'string' || key === 'value') continue
     //if (store.isBuilderMode) continue
 
-    result[key] = substitute(value, store.rootComponentData.data)
+    result[key] = substitute(value, store.form.componentTree.data)
   }
 
   return result
@@ -133,7 +133,7 @@ export class ComponentState {
    * @returns the values for all properties of the component, calculates the values of the calculated properties.
    */
   get calculatedProps() {
-    return calculateProperties(this.data.store, this.store.rootComponentData)
+    return calculateProperties(this.data.store, this.store.form.componentTree)
   }
 
   /**
@@ -178,6 +178,6 @@ export class ComponentState {
    * @returns the {@link Record} that contains the child components of a component.
    */
   children(props: any) {
-    return getChildren(this.data, this.store.isBuilderMode, this.store.rootComponentData, this.componentTreeItem, props)
+    return getChildren(this.data, this.store.isBuilderMode, this.store.form.componentTree, this.componentTreeItem, props)
   }
 }

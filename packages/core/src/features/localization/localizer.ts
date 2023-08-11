@@ -1,7 +1,7 @@
 import {FluentBundle, FluentResource} from '@fluent/bundle'
 import {FluentVariable} from '@fluent/bundle/esm/bundle.js'
 import {ComponentStore} from '../../stores/ComponentStore'
-import {Store} from '../../stores/Store'
+import {Form} from '../../stores/Form'
 import {getFluentCompatibleId} from './getFluentCompatibleId'
 import {Language} from './types'
 
@@ -80,18 +80,18 @@ export const testFluentLocalization = (request: LocalizationTestRequest): Locali
 
 /**
  * Localizes all props of the specified component.
- * @param viewerStore the full state of Form Viewer.
+ * @param form the form.
  * @param language the displayed language.
  * @param componentStore the full state of a localizable component.
  * @returns the object containing only the localized props of the specified component.
  */
-export const localizeProperties = (viewerStore: Store, language: Language, componentStore: ComponentStore) => {
-  const rootComponentData = viewerStore.rootComponentData
-  const fluentBundle = viewerStore.localization.getFluentBundle(language.fullCode)
+export const localizeProperties = (form: Form, language: Language, componentStore: ComponentStore) => {
+  const componentTree = form.componentTree
+  const fluentBundle = form.localization.getFluentBundle(language.fullCode)
 
-  const needConsiderDefaultLanguage = viewerStore.defaultLanguage && viewerStore.defaultLanguage !== language
+  const needConsiderDefaultLanguage = form.defaultLanguage !== language
   const defaultBundle = needConsiderDefaultLanguage
-    ? viewerStore.localization.getFluentBundle(viewerStore.defaultLanguage!.fullCode)
+    ? form.localization.getFluentBundle(form.defaultLanguage.fullCode)
     : undefined
 
   const data: Record<string, any> = {}
@@ -110,7 +110,7 @@ export const localizeProperties = (viewerStore: Store, language: Language, compo
         return
       }
       try {
-        data[value] = fluentBundle.formatPattern(message.value!, rootComponentData.fluentData)
+        data[value] = fluentBundle.formatPattern(message.value!, componentTree.fluentData)
       } catch (e) {
         console.error(e)
       }

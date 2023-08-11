@@ -41,7 +41,7 @@ export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', ({childr
 
   useDestroy(() => {
     if (!storeFromContext) {
-      store.destroy()
+      store.dispose()
     }
   })
 

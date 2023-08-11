@@ -19,10 +19,10 @@ export const LocalizationEditorPanel = observer(({editableProperty, onClose, onS
   const builderStore = useBuilderStore()
 
   const getInitialValue = () => {
-    let localization = viewerStore.localization
+    let localization = viewerStore.form.localization
       .getLocalization(builderStore.localizationLanguage.fullCode, editableProperty.componentKey, editableProperty.annotation.key)
     if (!localization && !builderStore.isDefaultLanguage) {
-      localization = viewerStore.localization
+      localization = viewerStore.form.localization
         .getLocalization(defaultLanguage.fullCode, editableProperty.componentKey, editableProperty.annotation.key)
     }
     if (!localization) {
@@ -48,7 +48,7 @@ export const LocalizationEditorPanel = observer(({editableProperty, onClose, onS
     const localizationResult = testFluentLocalization({
       localizationStringId: localizationStringId,
       localization: value,
-      data: viewerStore.rootComponentData.fluentData,
+      data: viewerStore.form.componentTree.fluentData,
       language: builderStore.localizationLanguage
     })
     setError(localizationResult)
@@ -56,7 +56,7 @@ export const LocalizationEditorPanel = observer(({editableProperty, onClose, onS
 
   const saveLocalization = () => {
     editableProperty.saveProperty({useFluentLocalization: useFluentLocalization})
-    viewerStore.localization.setLocalization(builderStore.localizationLanguage.fullCode, editableProperty.componentKey, editableProperty.annotation.key, value)
+    viewerStore.form.localization.setLocalization(builderStore.localizationLanguage.fullCode, editableProperty.componentKey, editableProperty.annotation.key, value)
     setInitialValue(value)
     onSave()
   }

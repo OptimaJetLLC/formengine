@@ -7,6 +7,6 @@ import {useStore} from './contexts/StoreContext'
 export const useTooltipType = (): string | undefined => {
   const viewerStore = useStore()
   const viewerProps = useViewerProps()
-  const rootComponentStore = viewerStore.rootComponentData.store
+  const rootComponentStore = viewerStore.form.componentTree.store
   return rootComponentStore.props['tooltip']?.value ?? viewerProps.view.tooltips[0]
 }
