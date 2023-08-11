@@ -41,10 +41,10 @@ const ControlGroups = (props: ControlGroupsProps) => {
     })
 
   const result = []
-  let i = 0
+
   for (const category in byCategory) {
     result.push(
-      <div key={i++}>
+      <div key={category}>
         {<Subheader>{t(category) || category}</Subheader>}
         <AddedComponents definitions={byCategory[category]} {...componentProps}/>
       </div>
@@ -81,11 +81,11 @@ const AddedComponents = ({definitions, ...componentProps}: AddedComponentsProps)
   const viewerStore = useStore()
   return (
     <ControlsGroup>
-      {definitions.map((model, index) => {
+      {definitions.map(model => {
         const componentStore = new ComponentStore(model.type + ' ' + getKey(), model.type)
         const componentData = viewerStore.createComponentData(componentStore)
         return (
-          <ComponentDataProvider key={index} value={componentData}>
+          <ComponentDataProvider key={componentData.id} value={componentData}>
             <AddedComponent {...componentProps}/>
           </ComponentDataProvider>
         )
