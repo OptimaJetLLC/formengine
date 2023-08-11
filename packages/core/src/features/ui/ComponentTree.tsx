@@ -7,6 +7,6 @@ import {ComponentTreeItem} from './ComponentTreeItem'
  */
 export const ComponentTree = namedObserver('ComponentTree', ({data}: ComponentTreeProps) => {
   return <>
-    {data.map((cd, index) => <ComponentTreeItem key={index} componentData={cd}/>)}
+    {data.map(cd => <ComponentTreeItem key={cd.id} componentData={cd}/>)}
   </>
 })

@@ -9,10 +9,17 @@ import {createNonNullableContext} from '../createNonNullableContext'
 import type {IFormData} from '../IFormData'
 import {nameObservable} from '../observableNaming'
 
+let counter = 0
+
+function generateId(prefix: string) {
+  return `${prefix}_${++counter}`
+}
+
 /**
  * This tree of elements contains the data required to display the component. It is synchronized with the ComponentStore tree.
  */
 export class ComponentData implements IFormData {
+  readonly id: string
   readonly store: ComponentStore
   readonly model: Model
   readonly field?: Field
@@ -36,6 +43,7 @@ export class ComponentData implements IFormData {
     this.store = componentStore
     this.model = model
     this.field = field
+    this.id = generateId(this.model.type)
 
     componentStore.children?.forEach(childComponentStore => {
       const child = childFactory(childComponentStore)
