@@ -4,8 +4,6 @@ import {
   ComponentProperty,
   ComponentStore,
   defaultLanguage,
-  Form,
-  LocalizationStore,
   nameObservable,
   PersistedForm,
   Store,
@@ -227,13 +225,9 @@ export class BuilderStore {
    * @param text the form serialized in JSON.
    */
   parseForm(text: string) {
-    const oldForm = this.viewer.form
-    const deserializedForm = JSON.parse(text) as PersistedForm
-    const componentStore = ComponentStore.createFromObject(deserializedForm.form)
-    const componentData = this.viewer.createComponentData(componentStore)
-    const localization = new LocalizationStore(deserializedForm.localization)
-    this.viewer.form = new Form(componentData, localization, [], defaultLanguage)
-    oldForm.dispose()
+    const persistedForm = JSON.parse(text) as PersistedForm
+    this.viewer.applyPersistedForm(persistedForm)
+
     if (this.calculatedProperty) this.calculatedProperty = undefined
   }
 

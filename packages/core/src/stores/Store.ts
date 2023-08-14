@@ -216,11 +216,11 @@ export class Store implements IStore {
       const form = getForm(formName)
       if (isPromise<PersistedForm>(form)) {
         form
-          .then(this.#applyPersistedForm.bind(this))
+          .then(this.applyPersistedForm.bind(this))
           .catch(this.#onLoadError.bind(this))
         return
       }
-      this.#applyPersistedForm(form)
+      this.applyPersistedForm(form)
     } catch (e) {
       this.#onLoadError(e)
     }
@@ -254,20 +254,24 @@ export class Store implements IStore {
   #onLoadError(e: any) {
     console.error(e)
     const componentStore = buildInternalErrorStore(e)
-    this.#applyPersistedForm({form: componentStore, localization: {}, defaultLanguage: globalDefaultLanguage.fullCode, languages: []})
+    this.applyPersistedForm({form: componentStore, localization: {}, defaultLanguage: globalDefaultLanguage.fullCode, languages: []})
   }
 
   /**
    * Populates the value of this store with the values of the saved form.
    * @param persistedForm saved form value.
    */
-  #applyPersistedForm(persistedForm: PersistedForm) {
+  applyPersistedForm(persistedForm: PersistedForm) {
     const oldForm = this.form
+
     const componentStore = ComponentStore.createFromObject(persistedForm.form)
+
     const componentData = this.createComponentData(componentStore)
     const localization = new LocalizationStore(assign({}, persistedForm.localization))
+
     const languages = persistedForm.languages ? [...persistedForm.languages] : []
     const defaultLanguage = persistedForm.languages?.find(l => l.fullCode === persistedForm.defaultLanguage) ?? globalDefaultLanguage
+
     this.form = new Form(componentData, localization, languages, defaultLanguage)
     oldForm.dispose()
   }
