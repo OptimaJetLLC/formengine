@@ -57,6 +57,10 @@ export class DataValidator {
     return new DataValidator(store, resolver(args), setter)
   }
 
+  sendValidationEvent = (value: any) => {
+    this.#subject.next(value)
+  }
+
   validate = (value: any) => {
     const promise = new Promise<string | undefined>(resolve => {
       const subscribe = this.#stream.subscribe(next => {
@@ -64,7 +68,7 @@ export class DataValidator {
         subscribe.unsubscribe()
       })
     })
-    this.#subject.next(value)
+    this.sendValidationEvent(value)
     return promise
   }
 

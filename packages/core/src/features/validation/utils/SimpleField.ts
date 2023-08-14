@@ -119,7 +119,9 @@ export class SimpleField implements Field {
    */
   setValue(value: unknown) {
     this.value = autoConvertField(value, this.valueType)
-    if (this.componentStore.schema?.autoValidate !== false) this.validate()
+    if (this.componentStore.schema?.autoValidate !== false) {
+      this.dataValidator?.sendValidationEvent?.(this.value)
+    }
   }
 
   /**
