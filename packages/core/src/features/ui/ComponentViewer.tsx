@@ -1,16 +1,18 @@
 import {forIn, transform} from 'lodash-es'
 import {denote} from 'rc-marked-input'
-import {createElement, useEffect, useMemo} from 'react'
+import {createElement, useCallback, useEffect, useMemo} from 'react'
 import {filter, Subscription} from 'rxjs'
 import {ComponentState} from '../../stores/ComponentState'
 import {Store} from '../../stores/Store'
 import {isString, namedObserver} from '../../utils'
-import {useComponentData} from '../../utils/contexts/ComponentDataContext'
+import {ComponentData, useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
+import {getChildren} from '../../utils/getChildren'
 import {ActionData, ActionEventArgs, Arguments, ArgumentValue, DidMountEvent, Func, WillUnmountEvent} from '../event'
+import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 import {useLocalization} from '../localization/useLocalization'
 import {componentMarkup} from '../substitution/consts'
-import {useComputeChildren} from './useComputeChildren'
+import {useComponentTreeContext} from './ComponentTreeContext'
 
 function denoteBinds(value: ArgumentValue, store: Store) {
   if (!isString(value)) return value
@@ -60,11 +62,19 @@ function getActionHandler(store: Store, func: Func, args?: Arguments) {
 }
 
 export const ComponentViewer = namedObserver('ComponentViewer', () => {
-  const store = useStore(), data = useComponentData()
+  const data = useComponentData()
   const localize = useLocalization()
-  const computeChildren = useComputeChildren()
+  const formViewerProps = useViewerProps()
+  const formViewerStore = useStore()
+  const componentTree = useComponentTreeContext()
+
+  const computeChildren = useCallback((componentData: ComponentData, componentProps: Record<string, any>) => {
+    if (formViewerProps.computeChildren) return formViewerProps.computeChildren(componentData, componentProps)
+    return getChildren(componentData, formViewerStore.form.componentTree, componentTree, componentProps)
+  }, [formViewerProps.computeChildren, formViewerStore.form.componentTree, componentTree])
+
   const componentState = useMemo(
-    () => new ComponentState(data, store, localize, computeChildren),
+    () => new ComponentState(data, formViewerStore, localize, computeChildren),
     [data, localize])
 
   useActions(componentState)

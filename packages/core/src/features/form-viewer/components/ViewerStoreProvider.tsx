@@ -4,7 +4,6 @@ import {namedObserver} from '../../../utils'
 import {StoreContext, StoreProvider} from '../../../utils/contexts/StoreContext'
 import {useDestroy} from '../../../utils/useDestroy'
 import {DefaultActions} from '../../event'
-import {ComponentTree} from '../../ui/ComponentTree'
 import {FormViewerProps} from '../types'
 import {ViewerPropsProvider} from './ViewerPropsContext'
 
@@ -21,7 +20,7 @@ export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', ({childr
 }) => {
   const storeFromContext = useContext(StoreContext)
   const store = useMemo(
-    () => storeFromContext || new Store(props.view, props.initialData ?? {}, ComponentTree, DefaultActions),
+    () => storeFromContext || new Store(props.view, props.initialData ?? {}, DefaultActions),
     [])
 
   useEffect(() => {

@@ -1,8 +1,6 @@
 import {assign} from 'lodash-es'
 import {makeObservable, observable} from 'mobx'
-import type {ComponentType} from 'react'
 import {Subject} from 'rxjs'
-import type {ComponentTreeProps} from '../ComponentTreeProps'
 import {calculatePropertyValue} from '../features/calculation/propertyCalculator'
 import {Model, View} from '../features/define'
 import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
@@ -67,14 +65,12 @@ export class Store implements IStore {
    * Creates form viewer settings.
    * @param view the metadata of the form viewer components.
    * @param initialData the initial form data.
-   * @param componentTreeRenderer the React component that displays an array of {@link ComponentData}.
    * @param actions the array of action definitions.
    * @param parentStore the form viewer settings, used in templates.
    * @param parentComponentStore the parent component settings.
    */
   constructor(public view: View,
               public initialData: Record<string, unknown>,
-              public componentTreeRenderer: ComponentType<ComponentTreeProps>,
               public actions: ActionDefinition[] = [],
               public readonly parentStore?: Store,
               public readonly parentComponentStore?: ComponentStore) {
@@ -243,7 +239,7 @@ export class Store implements IStore {
       return new SimpleField(this, componentStore, model, updateFnValue(this))
     }
 
-    const childStore = new Store(this.view, this.initialData, this.componentTreeRenderer, this.actions, this, componentStore)
+    const childStore = new Store(this.view, this.initialData, this.actions, this, componentStore)
     return new TemplateField(componentStore, childStore)
   }
 

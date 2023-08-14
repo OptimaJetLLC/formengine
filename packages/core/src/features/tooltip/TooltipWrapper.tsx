@@ -5,10 +5,9 @@ import {namedObserver} from '../../utils'
 import {useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {getKey} from '../../utils/getKey'
-import {useLocalization} from '../localization/useLocalization'
 import {useTooltipType} from '../../utils/useTooltipType'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
-import {useComputeChildren} from '../ui/useComputeChildren'
+import {useLocalization} from '../localization/useLocalization'
 
 /**
  * Tooltip React component wrapper properties.
@@ -33,7 +32,6 @@ export const TooltipWrapper = namedObserver('TooltipWrapper', ({children}: Toolt
   const viewerStore = useStore()
   const tooltipDefinition = useTooltipComponent()
   const localize = useLocalization()
-  const computeChildren = useComputeChildren()
 
   if (!tooltipDefinition) {
     return <>{children}</>
@@ -50,7 +48,7 @@ export const TooltipWrapper = namedObserver('TooltipWrapper', ({children}: Toolt
   tooltipData.parent = wrappedComponentData.parent
 
   const componentState = useMemo(
-    () => new ComponentState(tooltipData, viewerStore, localize, computeChildren),
+    () => new ComponentState(tooltipData, viewerStore, localize, () => ({})),
     [tooltipData, viewerStore, tooltipDefinition, localize])
 
   return createElement(tooltipDefinition.view, componentState.get, children)
