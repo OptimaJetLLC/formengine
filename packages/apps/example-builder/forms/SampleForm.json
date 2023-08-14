@@ -310,6 +310,29 @@
         }
       },
       {
+        "key": "emailInput",
+        "type": "RsInput",
+        "props": {
+          "placeholder": {
+            "value": "Input your email here"
+          }
+        },
+        "schema": {
+          "type": "string",
+          "validations": [
+            {
+              "key": "required"
+            },
+            {
+              "key": "email"
+            }
+          ]
+        },
+        "renderWhen": {
+          "value": "false"
+        }
+      },
+      {
         "key": "button container",
         "type": "RsContainer",
         "props": {},
@@ -326,6 +349,14 @@
               "appearance": {
                 "value": "primary"
               }
+            },
+            "events": {
+              "onClick": [
+                {
+                  "name": "Validate",
+                  "type": "common"
+                }
+              ]
             }
           },
           {

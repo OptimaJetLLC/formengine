@@ -1,0 +1,14 @@
+import {calculateExpressionProperty} from '../features/calculation/propertyCalculator'
+import {ComponentStore} from '../stores/ComponentStore'
+import type {IFormData} from './IFormData'
+
+/**
+ * Returns true if the component should be rendered, false otherwise.
+ * @param componentStore the component settings.
+ * @param formData the form data.
+ * @returns true if the component should be rendered, false otherwise.
+ */
+export function needRender(componentStore: ComponentStore, formData: IFormData) {
+  if (!componentStore.renderWhen) return true
+  return calculateExpressionProperty(componentStore.renderWhen, formData) === true
+}

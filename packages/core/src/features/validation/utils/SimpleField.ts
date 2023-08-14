@@ -1,6 +1,7 @@
 import {autorun, makeAutoObservable, observable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import type {IStore} from '../../../stores/IStore'
+import {needRender} from '../../../utils/needRender'
 import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
 import {Model} from '../../define'
 import type {SchemaType} from '../types/SchemaType'
@@ -119,6 +120,10 @@ export class SimpleField implements Field {
    */
   setValue(value: unknown) {
     this.value = autoConvertField(value, this.valueType)
+    if (!this.needValidate) {
+      this.clearError()
+      return
+    }
     if (this.componentStore.schema?.autoValidate !== false) {
       this.dataValidator?.sendValidationEvent?.(this.value)
     }
@@ -135,6 +140,10 @@ export class SimpleField implements Field {
    * @inheritDoc
    */
   async validate() {
+    if (!this.needValidate) {
+      this.clearError()
+      return
+    }
     await this.dataValidator?.validate?.(this.value)
   }
 
@@ -143,7 +152,7 @@ export class SimpleField implements Field {
    */
   reset() {
     this.value = this.initialValue ?? this.defaultValue
-    this.error = undefined
+    this.clearError()
   }
 
   /**
@@ -152,6 +161,20 @@ export class SimpleField implements Field {
   clear() {
     this.value = this.defaultValue
     this.touched = false
+    this.clearError()
+  }
+
+  /**
+   * @returns true if the field should be validated, false otherwise.
+   */
+  get needValidate() {
+    return needRender(this.componentStore, this.store.form.componentTree)
+  }
+
+  /**
+   * Clears the error message for this field.
+   */
+  clearError() {
     this.error = undefined
   }
 }

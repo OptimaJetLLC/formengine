@@ -1,9 +1,9 @@
 import type {ComponentType} from 'react'
 import type {ComponentTreeProps} from '../ComponentTreeProps'
-import {calculateExpressionProperty} from '../features/calculation/propertyCalculator'
 import {ComponentData} from './contexts/ComponentDataContext'
 import {groupBy} from './groupBy'
 import type {IFormData} from './IFormData'
+import {needRender} from './needRender'
 
 const defaultContainerKey = 'children'
 
@@ -24,7 +24,7 @@ export function getChildren(data: ComponentData, formData: IFormData,
 
   const groups = groupBy(containers, value => value.store.slot || defaultContainerKey)
   const isBindConditionSatisfied = (child: ComponentData) => checkBindCondition(child, componentProps)
-  const isNeedRender = (child: ComponentData) => needRender(child, formData)
+  const isNeedRender = (child: ComponentData) => needRender(child.store, formData)
 
   for (const [key, children] of Object.entries(groups)) {
     const filteredChildren = children
@@ -64,9 +64,4 @@ export function checkBindCondition(child: ComponentData, parentProps: any) {
     console.warn(e)
     return false
   }
-}
-
-function needRender(child: ComponentData, formData: IFormData) {
-  if (!child.store.renderWhen) return true
-  return calculateExpressionProperty(child.store.renderWhen, formData) === true
 }
