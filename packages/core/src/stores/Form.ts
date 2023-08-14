@@ -4,7 +4,7 @@ import {LocalizationStore} from './LocalizationStore'
 import {Language} from '../features/localization/types'
 
 /**
- * Represents a form that is rendered in Viewer or edited in Builder
+ * Represents a form that is rendered in Viewer or edited in Builder.
  */
 export class Form {
   /**
