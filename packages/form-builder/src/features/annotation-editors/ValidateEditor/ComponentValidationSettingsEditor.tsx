@@ -1,11 +1,9 @@
-import {SchemaType, useComponentData} from '@react-form-builder/core'
+import {useComponentData} from '@react-form-builder/core'
 import {t} from 'i18next'
 import {useEffect} from 'react'
-import {useMeta} from '../../../utils/useMeta'
 import {boolean} from '../../annotation'
 import {PropertyEditorWrapper} from '../../components/PropertyEditorWrapper'
 import {AddRuleButton} from './components/AddRuleButton'
-import {Nullable} from './components/types'
 import {ValidationRuleEditor} from './components/ValidationRuleEditor'
 
 const autoValidate = boolean
@@ -19,14 +17,13 @@ const autoValidate = boolean
  * @returns the React element.
  */
 export const ComponentValidationSettingsEditor = () => {
-  const {store} = useComponentData()
-  const meta = useMeta()
-  const type = meta?.valuedAn?.type as Nullable<SchemaType>
+  const {store, model} = useComponentData()
+  const type = model.valueType
   const schema = store.schema
 
   useEffect(() => {
     if (!type) return
-    store.schema ??= {type, validations: []}
+    store.schema ??= {validations: []}
   }, [])
 
   if (!type || !schema) return null

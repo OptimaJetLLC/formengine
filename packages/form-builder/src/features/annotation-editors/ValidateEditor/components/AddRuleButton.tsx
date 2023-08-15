@@ -32,7 +32,7 @@ export const AddRuleButton = observer(() => {
               children={t(`validation.rule.${key}`)}
               eventKey={key}
               onSelect={(key) => {
-                store.schema ??= {type, validations: []}
+                store.schema ??= {validations: []}
                 store.schema.validations?.push({key})
               }}
             />

@@ -5,7 +5,6 @@ import {useComponentData, ValidationRules, ValidationRuleSettings} from '@react-
 import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
 import {IconButton, Input as RInput, InputNumber, Tooltip, Whisper} from 'rsuite'
-import {useMeta} from '../../../../utils/useMeta'
 import {FaIcon} from '../../../components/Icons'
 
 const getInput = (type: string) => {
@@ -42,12 +41,11 @@ export interface ValidationRuleEditorProps {
 }
 
 export const ValidationRuleEditor = observer(({rule, onRemove}: ValidationRuleEditorProps) => {
-  const {store} = useComponentData()
+  const {store, model} = useComponentData()
   const {t} = useTranslation()
   const schema = store.schema
-  const meta = useMeta()
 
-  const type = meta?.valuedAn?.type
+  const type = model.valueType
   if (!type || !schema) return null
 
   const ruleDefinition = ValidationRules[type][rule.key]

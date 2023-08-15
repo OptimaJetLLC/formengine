@@ -8,7 +8,7 @@ import type {SchemaType} from '../types/SchemaType'
 import {autoConvertField} from './autoConvertField'
 import {DataValidator} from './DataValidator'
 import {Field} from './Field'
-import {validatorsResolver} from './validatorsResolver'
+import {typedValidatorsResolver} from './validatorsResolver'
 
 /**
  * Type for the function that disposes resources.
@@ -76,7 +76,7 @@ export class SimpleField implements Field {
       autorun(
         () => this.dataValidator = DataValidator.create(
           store,
-          validatorsResolver,
+          typedValidatorsResolver(this.valueType),
           componentStore.schema,
           error => this.error = error)
         , {name: nameAutorun(className, 'setValidator', {key: componentStore.key})}),
