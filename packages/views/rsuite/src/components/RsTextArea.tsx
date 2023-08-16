@@ -20,9 +20,9 @@ export const rsTextArea = define(RsTextArea)
   .type('RsTextArea')
   .name('Text area')
   .props({
-    label: string.default('Text area').localize,
-    value: string.default('').valued.localize,
-    placeholder: string.localize,
+    label: string.default('Text area'),
+    value: string.default('').valued,
+    placeholder: string,
     rows: number.default(5).withEditorProps({min: 1}),
     size,
     disabled: boolean.hinted('Disabled component'),

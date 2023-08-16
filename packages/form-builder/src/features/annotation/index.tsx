@@ -16,7 +16,7 @@ export const htmlAttributes = createAnnotation('htmlAttributes')
 export const validation = createAnnotation('validation')
 
 //Primitives
-export const string = createProperty('string').typed('string')
+export const string = createProperty('string').typed('string').localize
 export const boolean = createProperty('boolean').typed('boolean')
 export const number = createProperty('number').typed('number')
 export const size = createProperty('size').typed('string')
