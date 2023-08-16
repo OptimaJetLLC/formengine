@@ -1,4 +1,4 @@
-import {debounceTime, distinctUntilChanged, map, Subject, switchMap} from 'rxjs'
+import {debounceTime, map, Subject, switchMap} from 'rxjs'
 import type {IStore} from '../../../stores/IStore'
 import type {Setter} from '../../../types'
 import type {ValidationResult} from '../types/ValidationResult'
@@ -43,7 +43,6 @@ export class DataValidator {
     this.#stream = this.#subject
       .pipe(
         debounceTime(200),
-        distinctUntilChanged(),
         map(value => validator(value, store)),
         switchMap(promise => promise),
         map(localizer),
