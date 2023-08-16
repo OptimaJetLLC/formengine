@@ -1,4 +1,4 @@
-import {CustomActionDefinition, Parameter, toParameterWithType} from '@react-form-builder/core'
+import {AsyncFunction, CustomActionDefinition, Parameter, toParameterWithType} from '@react-form-builder/core'
 import {useEffect, useReducer, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, Col, Grid, Input, Modal} from 'rsuite'
@@ -40,7 +40,7 @@ export const CustomActionEditor = ({onCancel, onSave, data, onEnter}: CustomActi
 
   const handleSave = () => {
     try {
-      new Function(body)
+      AsyncFunction(body)
       onSave({name, body, params})
     } catch (e) {
       setError((e as Error).message)
@@ -50,7 +50,7 @@ export const CustomActionEditor = ({onCancel, onSave, data, onEnter}: CustomActi
   const functionHeader = `/**${getParamsType(params)}
 * @param {ActionEventArgs} e - the action arguments.
 */
-function Action (${params ? 'args, ' : ''}e) {`
+async function Action (${params ? 'args, ' : ''}e) {`
 
   if (!data) return null
 

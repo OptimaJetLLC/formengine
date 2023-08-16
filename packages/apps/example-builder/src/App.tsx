@@ -32,6 +32,7 @@ function localizer(componentStore: ComponentStore, language: Language): Record<s
 
 const useExternalLocalizer = false
 const localizeFn = useExternalLocalizer ? localizer : undefined
+const logEvents = false
 
 const indexedDbExists = false//!!window.indexedDB
 const formStorage = indexedDbExists
@@ -69,7 +70,7 @@ const FormBuilderApp = () => {
   }, [])
 
   useEffect(() => {
-    if (ref.current) {
+    if (logEvents && ref.current) {
       console.log('Viewer', ref.current)
     }
   }, [ref.current])
@@ -82,7 +83,7 @@ const FormBuilderApp = () => {
     formStorage={formStorage}
     localize={localizeFn}
     onDataChange={({data, errors}) => {
-      console.log('onDataChange', {data, errors})
+      if (logEvents) console.log('onDataChange', {data, errors})
     }}
     viewerRef={ref}
     /*event={(stream) => {

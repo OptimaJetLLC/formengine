@@ -7,7 +7,7 @@
         "value": [
           {
             "name": "WeatherRequest",
-            "body": "try {\n  fetch(`https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.62&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`)\n      .then(v => v.json())\n      .then(v => {\n        e.setUserDefinedProps({children: `Current weather is ${v.current_weather.temperature} °C`})\n      })\n} catch (error) {\n  e.setUserDefinedProps({children: `Current weather is not available`})\n}"
+            "body": "try {\n  const request = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.62&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`)\n  const value = await request.json()    \n  e.setUserDefinedProps({children: `Current weather is ${value.current_weather.temperature} °C`})\n} catch (error) {\n  e.setUserDefinedProps({children: `Current weather is not available`})\n}"
           },
           {
             "name": "loadData",

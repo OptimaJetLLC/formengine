@@ -13,8 +13,11 @@ const setProperty = defineAction('Set property', ({propertyKey, targetKey, value
 }, ['propertyKey', 'targetKey', 'value'])
 
 const log = defineAction('Log event to console', console.log)
-const validate = defineAction('Validate', (e) => e.store.form.componentTree.validate())
-const clear = defineAction('Clear', (e) => e.store.form.componentTree.clear())
-const reset = defineAction('Reset', (e) => e.store.form.componentTree.reset())
+
+const validate = defineAction('Validate', async e => await e.store.form.componentTree.validate())
+
+const clear = defineAction('Clear', e => e.store.form.componentTree.clear())
+
+const reset = defineAction('Reset', e => e.store.form.componentTree.reset())
 
 export {setValue, setProperty, log, validate, reset, clear}

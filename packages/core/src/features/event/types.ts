@@ -70,12 +70,12 @@ export interface ActionDefinition extends BaseActionDefinition {
 }
 
 /**
- * The type of arbitrary function that returns void.
+ * The type of arbitrary function that returns void or Promise<void>.
  */
-export type Func = (...arg: any[]) => void
+export type Func = (...arg: any[]) => void | Promise<void>
 
 /**
  * Event handler function type.
  */
-export type ActionEventHandler = (e: ActionEventArgs) => void
+export type ActionEventHandler = (e: ActionEventArgs) => void | Promise<void>
 

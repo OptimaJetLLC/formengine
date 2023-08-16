@@ -1,4 +1,5 @@
 import {Store} from '../../../stores/Store'
+import {AsyncFunction} from '../../../utils/AsyncFunction'
 import {ActionData, ActionDefinition, BaseActionDefinition, CustomActionDefinition, Func} from '../types'
 
 /**
@@ -46,7 +47,7 @@ function toActionDefinition(action: ActionDefinition | CustomActionDefinition): 
   if ('func' in action) return action
 
   const paramNames = action.params ? 'args, e' : 'e'
-  const func = new Function(paramNames, action.body) as Func
+  const func = AsyncFunction(paramNames, action.body) as Func
   return {
     name: action.name,
     func,
