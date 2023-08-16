@@ -3,17 +3,36 @@ import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt.js'
 import {useComponentData, ValidationRules, ValidationRuleSettings} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
+import type {ComponentType} from 'react'
 import {useTranslation} from 'react-i18next'
-import {IconButton, Input as RInput, InputNumber, Tooltip, Whisper} from 'rsuite'
+import {Checkbox, IconButton, Input as RInput, InputNumber, Tooltip, Whisper} from 'rsuite'
 import {FaIcon} from '../../../components/Icons'
 
-const getInput = (type: string) => {
-  switch (type) {
-    case 'string':
-      return RInput
-    case 'number':
-      return InputNumber
+interface RuleParamEditorProps<T> {
+  value: T
+  onChange: (value: T) => void
+}
+
+const StringRuleParamEditor = ({value, onChange}: RuleParamEditorProps<string>) => {
+  return <RInput value={value ?? ''} onChange={onChange}/>
+}
+
+const BooleanRuleParamEditor = ({value, onChange}: RuleParamEditorProps<boolean>) => {
+  const handleChange = (_: any, checked: boolean) => {
+    onChange(checked)
   }
+  return <Checkbox checked={value ?? false} onChange={handleChange}/>
+}
+
+const getInput = (type: string): ComponentType<RuleParamEditorProps<any>> => {
+  switch (type) {
+    case 'number':
+      // the type conversion is needed here because of an error in IDEA
+      return InputNumber as ComponentType<RuleParamEditorProps<number>>
+    case 'boolean':
+      return BooleanRuleParamEditor
+  }
+  return StringRuleParamEditor
 }
 
 /**
