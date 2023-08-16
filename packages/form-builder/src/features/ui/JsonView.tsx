@@ -5,7 +5,7 @@ import {CodeEditor} from '../components/CodeEditor'
 
 export const JsonView = namedObserver('JsonView', () => {
   const builderStore = useBuilderStore()
-  const [source, setSource] = useState(builderStore.stringifyForm())
+  const [source, setSource] = useState(builderStore.formAsString)
   // we need sourceRef to track the actual value of the source
   const sourceRef = useRef(source)
   const onSetSource = (value: string) => {

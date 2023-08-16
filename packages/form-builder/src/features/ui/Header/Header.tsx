@@ -2,8 +2,9 @@ import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faRedo from '@fortawesome/free-solid-svg-icons/faRedo.js'
 import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo.js'
-import {observer} from 'mobx-react'
+import {namedObserver} from '@react-form-builder/core'
 import {IconButton} from 'rsuite'
+import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../components/Icons'
 import {ErrorsPanel} from './components/ErrorsPanel'
 import {JsonViewButton} from './components/JsonViewButton'
@@ -13,17 +14,17 @@ import {ResolutionPicker} from './components/ResolutionPicker'
 import {ToggleModeButton} from './components/ToggleModeButton'
 import {ToggleTheme} from './components/ToggleTheme'
 
-const Header = observer(() => {
+const Header = namedObserver('Header', () => {
+  const builderStore = useBuilderStore()
+  const undoer = builderStore.undoer
   return (
     <Container>
       <LeftPart>
         <div>
           <Menu/>
-          <IconButton onClick={_ => {
-          }} disabled={true /*TODO !!store.canUndo*/}
+          <IconButton onClick={() => undoer.undo()} disabled={!undoer.hasUndo}
                       icon={<FaIcon icon={faUndo as unknown as IconDefinition}/>}/>
-          <IconButton onClick={_ => {
-          }} disabled={true /*TODO !store.canRedo*/}
+          <IconButton onClick={() => undoer.redo()} disabled={!undoer.hasRedo}
                       icon={<FaIcon icon={faRedo as unknown as IconDefinition}/>}/>
         </div>
       </LeftPart>

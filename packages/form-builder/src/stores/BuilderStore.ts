@@ -11,6 +11,7 @@ import {
 } from '@react-form-builder/core'
 import {assign, cloneDeep} from 'lodash-es'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
+import {debounceTime, distinctUntilChanged, Subject} from 'rxjs'
 import type {EditorType} from '../features/annotation/types'
 import {Annotation} from '../features/annotation/types/annotations/Annotation'
 import {BuilderView} from '../features/define/utils/BuilderView'
@@ -24,6 +25,7 @@ import {BuilderMode, BuilderTheme, InsertPosition} from '../utils/types'
 import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
 import {uploadStringFile} from './fileUpload'
 import {FormStorage} from './FormStorage'
+import {trackUndo} from './undo'
 
 /**
  * Parameters of the editable component property.
@@ -46,6 +48,69 @@ export type OnSelectCallback = (source: ComponentData) => void
 export interface ComponentsModalState {
   opened: boolean
   onSelect: OnSelectCallback
+}
+
+class BuilderUndoer {
+  private serializedForm: string
+  readonly undoer
+  readonly #formChanged = new Subject<string>()
+  readonly #subscriptions
+  #disposer: IReactionDisposer
+
+  constructor(readonly builderStore: BuilderStore, maxStackSize?: number, debounceInterval = 1000) {
+    makeAutoObservable(this, undefined, {name: nameObservable('BuilderUndoer')})
+
+    const createReaction = () => {
+      return reaction(() => this.builderStore.formAsString, formString => this.#formChanged.next(formString))
+    }
+
+    this.serializedForm = this.builderStore.formAsString
+    this.#disposer = createReaction()
+
+    this.undoer = trackUndo(
+      () => this.serializedForm,
+      value => {
+        // turn off reaction
+        this.#disposer()
+        this.builderStore.parseForm(value)
+        // turn on reaction
+        this.#disposer = createReaction()
+      },
+      maxStackSize
+    )
+
+    const stream = this.#formChanged
+      .pipe(
+        debounceTime(debounceInterval),
+        distinctUntilChanged(),
+      )
+
+    this.#subscriptions = [
+      stream.subscribe(value => this.serializedForm = value),
+    ]
+  }
+
+  undo() {
+    this.undoer.undo()
+  }
+
+  redo() {
+    this.undoer.redo()
+  }
+
+  get hasUndo() {
+    return this.undoer.hasUndo
+  }
+
+  get hasRedo() {
+    return this.undoer.hasRedo
+  }
+
+  dispose() {
+    this.#disposer()
+    this.#subscriptions.forEach(s => s.unsubscribe())
+    this.undoer.dispose()
+  }
 }
 
 /**
@@ -74,6 +139,7 @@ export class BuilderStore {
   readonly #disposer: IReactionDisposer[]
   private formStorage: FormStorage
   readonly #props: Readonly<FormBuilderProps>
+  readonly undoer: BuilderUndoer
 
   /**
    * Creates the form builder settings.
@@ -108,6 +174,8 @@ export class BuilderStore {
         this.language = foundLanguage
       }
     })
+
+    this.undoer = new BuilderUndoer(this, 100)
 
     this.#disposer = [
       reaction(() => this.language, onLanguageChange),
@@ -185,6 +253,7 @@ export class BuilderStore {
    */
   destroy() {
     this.#disposer.forEach(dispose => dispose())
+    this.undoer.dispose()
   }
 
   /**
@@ -326,10 +395,9 @@ export class BuilderStore {
   }
 
   /**
-   * Serializes the current form into JSON.
    * @returns the current form serialized to JSON.
    */
-  stringifyForm() {
+  get formAsString() {
     const selectedLanguages = languages
       .filter(l => l.fullCode === defaultLanguage.fullCode || this.viewer.form.localization.hasLanguage(l.fullCode))
     const serializedObject: PersistedForm = {
@@ -345,7 +413,7 @@ export class BuilderStore {
    * Downloads the current form to a file in the browser.
    */
   download = () => {
-    const data = 'data:text/json;charset=utf-8,' + encodeURIComponent(this.stringifyForm())
+    const data = 'data:text/json;charset=utf-8,' + encodeURIComponent(this.formAsString)
 
     const link = document.createElement('a')
     link.setAttribute('href', data)
@@ -370,7 +438,7 @@ export class BuilderStore {
    * @returns the {@link Promise} with the result of saving the form.
    */
   save(formName?: string) {
-    return this.saveForm(formName || this.formName, this.stringifyForm())
+    return this.saveForm(formName || this.formName, this.formAsString)
   }
 
   /**
