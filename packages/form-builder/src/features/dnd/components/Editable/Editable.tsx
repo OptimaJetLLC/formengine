@@ -3,9 +3,10 @@ import {
   ComponentData,
   ComponentStore,
   ComponentTree,
-  TemplateField,
   groupBy,
+  namedObserver,
   slotModel,
+  TemplateField,
   useStore,
   WrapperProps
 } from '@react-form-builder/core'
@@ -65,7 +66,7 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
   return currentProps
 }
 
-export const EditableWrapper = observer(({children}: WrapperProps) => {
+export const EditableWrapper = namedObserver('EditableWrapper', ({children}: WrapperProps) => {
   const viewerStore = useStore()
   // no need to draw Editable component inside child FormViewer
   return viewerStore.parentStore ? <>{children}</> : <Editable children={children}/>

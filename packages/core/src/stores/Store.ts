@@ -4,6 +4,7 @@ import {Subject} from 'rxjs'
 import {calculatePropertyValue} from '../features/calculation/propertyCalculator'
 import {Model, View} from '../features/define'
 import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
+import {IFormViewer} from '../features/form-viewer'
 import {defaultLanguage as globalDefaultLanguage} from '../features/localization/consts'
 import {Language} from '../features/localization/types'
 import {createTemplateModel} from '../features/template'
@@ -46,7 +47,7 @@ function reduceTree<U extends object, T, K extends keyof U>(tree: Tree<U, K>,
 /**
  * The form viewer settings.
  */
-export class Store implements IStore {
+export class Store implements IStore, IFormViewer {
 
   selectedLanguage?: Language
 
@@ -88,6 +89,13 @@ export class Store implements IStore {
       parentComponentStore: observable.ref,
       initialDataSlice: true,
     }, {name: nameObservable(`ViewerStore`)})
+  }
+
+  /**
+   * @inheritDoc
+   */
+  get formData() {
+    return this.form.componentTree
   }
 
   /**

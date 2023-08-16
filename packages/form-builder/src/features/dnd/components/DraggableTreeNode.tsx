@@ -1,11 +1,10 @@
-import {WrapperProps} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {namedObserver, WrapperProps} from '@react-form-builder/core'
 import {useEventReactions} from '../../event/utils/useEventReactions'
 import {Draggable} from './Editable/components/Draggable'
 import {TreeNode} from './Editable/components/TreeNode'
 import {useSelection} from './Editable/hooks/useSelection'
 
-export const DraggableTreeNode = observer(({children}: WrapperProps) => {
+export const DraggableTreeNode = namedObserver('DraggableTreeNode', ({children}: WrapperProps) => {
   const [_, selectionHandlers, selectionClassName] = useSelection()
 
   useEventReactions()

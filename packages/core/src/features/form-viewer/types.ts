@@ -1,8 +1,10 @@
 import type {ComponentType} from 'react'
+import {ForwardedRef} from 'react'
 import {ComponentStore} from '../../stores/ComponentStore'
 import type {PersistedForm} from '../../stores/PersistedForm'
 import type {ViewMode} from '../../types'
 import type {ComputeChildren} from '../../utils/ComputeChildren'
+import {IFormData} from '../../utils/IFormData'
 import {View} from '../define'
 import type {ActionDefinition} from '../event'
 import {EventStream} from '../event/utils/EventStream'
@@ -27,7 +29,7 @@ export interface FormViewerProps {
   getForm?: (name?: string) => PersistedForm | Promise<PersistedForm>
 
   /**
-   * the form name.
+   * The form name.
    */
   formName?: string
 
@@ -77,4 +79,25 @@ export interface FormViewerProps {
    * Function that calculates all child properties of a component.
    */
   computeChildren?: ComputeChildren
+
+  /**
+   * The reference to {@link IFormViewer}.
+   */
+  viewerRef?: ForwardedRef<IFormViewer>
+
+  /**
+   * The event is called whenever a form data changes.
+   * @param data the {@link IFormData} with all the form data.
+   */
+  onDataChange?: (data: IFormData) => void
+}
+
+/**
+ * The form viewer settings interface.
+ */
+export interface IFormViewer {
+  /**
+   * @returns the {@link IFormData} with all the form data.
+   */
+  get formData(): IFormData
 }

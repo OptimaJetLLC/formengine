@@ -1,2 +1,2 @@
 export {FormViewer} from './FormViewer'
-export type {FormViewerProps} from './types'
+export type {FormViewerProps, IFormViewer} from './types'

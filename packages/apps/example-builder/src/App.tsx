@@ -2,8 +2,8 @@ import {FormBuilder} from '@react-form-builder/builder'
 import {BuilderView} from '@react-form-builder/builder/view'
 import {antdComponents} from '@react-form-builder/components-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
-import {ComponentStore, Language, PersistedForm} from '@react-form-builder/core'
-import {useEffect, useState} from 'react'
+import {ComponentStore, IFormViewer, Language, PersistedForm} from '@react-form-builder/core'
+import {useEffect, useRef, useState} from 'react'
 import {getFormFromJson} from './utils/getFormFromJson'
 import {IndexedDbFormStorage} from './utils/IndexedDbFormStorage'
 
@@ -58,6 +58,7 @@ async function getForm(name?: string): Promise<PersistedForm> {
 const getFormFn = indexedDbExists ? getForm : getFormFromJson
 
 const FormBuilderApp = () => {
+  const ref = useRef<IFormViewer>(null)
   const [initialData, setInitialData] = useState(data)
 
   useEffect(() => {
@@ -67,6 +68,12 @@ const FormBuilderApp = () => {
     return () => clearTimeout(timeoutId)
   }, [])
 
+  useEffect(() => {
+    if (ref.current) {
+      console.log('Viewer', ref.current)
+    }
+  }, [ref.current])
+
   return <FormBuilder
     getForm={getFormFn}
     formName={formStorage?.formName || sampleFormName}
@@ -74,6 +81,10 @@ const FormBuilderApp = () => {
     initialData={initialData}
     formStorage={formStorage}
     localize={localizeFn}
+    onDataChange={({data, errors}) => {
+      console.log('onDataChange', {data, errors})
+    }}
+    viewerRef={ref}
     /*event={(stream) => {
       stream.listen(value => {
         let a = 4
