@@ -23,7 +23,7 @@ interface CustomActionsProps {
  */
 export const CustomActions = observer(({onOpen, onSelect}: CustomActionsProps) => {
   const store = useStore()
-  const actions = store.screen.props.actions
+  const actions = store.form.componentTree.store.props.actions
   const t = useTranslationPart('actions')
   return (
     <>

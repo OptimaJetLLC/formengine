@@ -21,13 +21,13 @@ export const AddActionButton = observer(() => {
   const t = useTranslationPart('actions')
 
   const handleSave = (value: CustomActionDefinition) => {
-    store.screen.props.actions ??= {value: []}
-    if (store.screen.props.actions.value.includes(editorData)) {
+    store.form.componentTree.store.props.actions ??= {value: []}
+    if (store.form.componentTree.store.props.actions.value.includes(editorData)) {
       assign(editorData, value)
       setEditorData(undefined)
       return
     }
-    store.screen.props.actions.value.push(value)
+    store.form.componentTree.store.props.actions.value.push(value)
 
     data.store.events ??= {}
     data.store.events[eventName] ??= []

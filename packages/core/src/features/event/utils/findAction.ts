@@ -1,4 +1,3 @@
-import {ComponentStore} from '../../../stores/ComponentStore'
 import {Store} from '../../../stores/Store'
 import {ActionData, ActionDefinition, BaseActionDefinition, CustomActionDefinition, Func} from '../types'
 
@@ -11,8 +10,7 @@ import {ActionData, ActionDefinition, BaseActionDefinition, CustomActionDefiniti
  * @internal
  */
 export function findAction(store: Store, data: ActionData): ActionDefinition {
-  const targetComponent = data.target ? store.getComponent(data.target) : undefined
-  const actionList = getActionList(store, data.type, targetComponent)
+  const actionList = getActionList(store, data.type)
   const action = actionList?.find(a => a.name === data.name)
 
   if (!action) {
@@ -26,18 +24,15 @@ export function findAction(store: Store, data: ActionData): ActionDefinition {
  * Returns an array of {@link BaseActionDefinition} found for the specified action type and action target from the repository.
  * @param store FormViewer {@link Store}.
  * @param type action type.
- * @param target action target.
  * @returns the array of {@link BaseActionDefinition} or undefined.
  * @internal
  */
-function getActionList(store: Store, type: string, target?: ComponentStore): BaseActionDefinition[] | undefined {
+function getActionList(store: Store, type: string): BaseActionDefinition[] | undefined {
   switch (type) {
     case 'common':
       return store.actions
-    case 'linked':
-      return store.getLinkedActions(target)
     case 'custom':
-      return store.screen.props?.actions?.value as CustomActionDefinition[] | undefined
+      return store.form.componentTree.store.props?.actions?.value as CustomActionDefinition[] | undefined
   }
 }
 

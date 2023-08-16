@@ -4,7 +4,6 @@ import {Close} from '@rsuite/icons'
 import {observer} from 'mobx-react'
 import {ArgumentList} from './components/ArgumentList'
 import {ChoosenAction} from './components/ChoosenAction'
-import {ChoosenTarget} from './components/ChoosenTarget'
 import {ActionDataProvider} from './contexts/ActionDataContext'
 
 interface ActionItemProps {
@@ -19,7 +18,6 @@ export const ActionItem = observer(({data, eventName, index}: ActionItemProps) =
   return (
     <ActionDataProvider value={data}>
       <SDiv>
-        {data.type === 'linked' ? <ChoosenTarget/> : null}
         <ChoosenAction/>
         <ArgumentList/>
         <RemoveButton onClick={() => removeAction(store, eventName, index)}/>

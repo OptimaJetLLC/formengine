@@ -1,4 +1,4 @@
-import {ComponentStore} from './ComponentStore'
+import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {Form} from './Form'
 
 /**
@@ -18,7 +18,7 @@ export interface IStore {
    * @param initialValue the initial value for the accumulator.
    * @returns the accumulated value.
    */
-  reduceScreen: <T>(callback: (accumulator: T, current: ComponentStore) => T, initialValue: T) => T
+  reduceScreen: <T>(callback: (accumulator: T, current: ComponentData) => T, initialValue: T) => T
 
   /**
    * Correctly clears allocated resources, the function must be called when destroying an instance of the class.

@@ -8,8 +8,8 @@ const setValue = defineAction('Set value', (actionArgs, e) => {
 }, ['propertyName', ['NumPar', 'number'], ['BoolPar', 'boolean']])
 
 const setProperty = defineAction('Set property', ({propertyKey, targetKey, value}, e) => {
-  const component = e.store.getComponent(targetKey)
-  component.props[propertyKey] = {value: value}
+  // const component = e.store.getComponent(targetKey)
+  // component.props[propertyKey] = {value: value}
 }, ['propertyKey', 'targetKey', 'value'])
 
 const log = defineAction('Log event to console', console.log)

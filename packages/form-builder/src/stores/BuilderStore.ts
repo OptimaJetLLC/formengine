@@ -7,6 +7,7 @@ import {
   nameObservable,
   PersistedForm,
   Store,
+  treeForEach,
   ViewMode
 } from '@react-form-builder/core'
 import {assign, cloneDeep} from 'lodash-es'
@@ -131,11 +132,11 @@ export class BuilderStore {
     onSelect: () => {
     }
   }
-  readonly errorMap = new Map<ComponentStore, Record<string, string | undefined>>
+  readonly errorMap = new Map<ComponentData, Record<string, string | undefined>>
   readonly view: BuilderView
   readonly formStorageEnabled: boolean
-  readonly selected = new Set<ComponentStore>()
-  readonly expanded = new Set<ComponentStore>()
+  readonly selected = new Set<ComponentData>()
+  readonly expanded = new Set<ComponentData>()
   readonly #disposer: IReactionDisposer[]
   private formStorage: FormStorage
   readonly #props: Readonly<FormBuilderProps>
@@ -187,7 +188,7 @@ export class BuilderStore {
    */
   validate = async () => {
     await Promise.allSettled(this.viewer.reduceScreen((acc: Promise<string | undefined>[], current) => {
-      const meta = this.view.getMeta(current.type)
+      const meta = this.view.getMeta(current.store.type)
 
       meta.properties.forEach(annotation => {
         const validator = annotationResolver({annotation, store: this.viewer})
@@ -195,8 +196,8 @@ export class BuilderStore {
           this.errorMap.set(current, {})
         }
         const errors = this.errorMap.get(current)!
-        for (const key in current.props) {
-          acc.push(validator(current.props[key].value, this.viewer)
+        for (const key in current.store.props) {
+          acc.push(validator(current.store.props[key].value, this.viewer)
             .then(error => {
               if (!error) return errors[annotation.key] = undefined
 
@@ -266,20 +267,10 @@ export class BuilderStore {
   }
 
   /**
-   * Function for traversing the component tree and handling tree elements with callback.
-   * @param store the component tree.
-   * @param callback the callback to process a tree element.
-   */
-  treeMap(store: ComponentStore, callback: (store: ComponentStore) => void) {
-    callback(store)
-    store.children?.forEach((child: ComponentStore) => this.treeMap(child, callback))
-  }
-
-  /**
    * Expands all elements in the component tree.
    */
   expandAll() {
-    this.treeMap(this.viewer.screen, store => this.expanded.add(store))
+    treeForEach(this.viewer.form.componentTree, componentData => this.expanded.add(componentData))
   }
 
   /**
@@ -351,10 +342,10 @@ export class BuilderStore {
     const clone = assign(new ComponentStore('', ''), cloneDeep(source.store))
     clone.slot = slot
     clone.bindCondition = bindCondition
-    this.unifyComponentKeys(clone)
     const componentData = this.viewer.createComponentData(clone)
+    componentData.unifyKeys(this.viewer.form.componentTree)
     this.move(componentData, target, insertPosition)
-    this.selectNode(clone)
+    this.selectNode(componentData)
 
     return clone
   }
@@ -367,24 +358,6 @@ export class BuilderStore {
     this.selected.clear()
     this.viewer.form.localization.removeLocalization(source.key)
     source.delete()
-  }
-
-  // todo rename
-  // todo private modifier
-  /**
-   * Sets the component key as the component name and the sequence number of the component.
-   * @param source the component.
-   * @internal
-   */
-  unifyComponentKeys(source: ComponentStore) {
-    const keysList: string[] = []
-    this.treeMap(this.viewer.screen, ({key}) => keysList.push(key))
-    this.treeMap(source, item => {
-      let count = 1
-      const withCount = () => `${item.type} ${count}`
-      while (keysList.includes(withCount())) count++
-      keysList.push(item.key = withCount())
-    })
   }
 
   /**
@@ -401,7 +374,7 @@ export class BuilderStore {
     const selectedLanguages = languages
       .filter(l => l.fullCode === defaultLanguage.fullCode || this.viewer.form.localization.hasLanguage(l.fullCode))
     const serializedObject: PersistedForm = {
-      form: this.viewer.screen,
+      form: this.viewer.form.componentTree.store,
       localization: this.viewer.form.localization.value,
       languages: selectedLanguages,
       defaultLanguage: defaultLanguage.fullCode
@@ -507,16 +480,16 @@ export class BuilderStore {
 
   /**
    * Expands all the parents of a component in the form builder's component tree.
-   * @param targetKey the component key.
-   * @param store the initial node of the component tree.
+   * @param target the expanded component.
+   * @param componentTree the initial node of the component tree.
    * @returns true if at least one component has been marked as expanded,
    * or if the beginning of the tree matches the component's key, undefined otherwise.
    */
-  expandParents(targetKey: string, store: ComponentStore = this.viewer.screen) {
-    if (!store.children) return store.key === targetKey
+  expandParents(target: ComponentData, componentTree: ComponentData = this.viewer.form.componentTree) {
+    if (!componentTree.children) return componentTree === target
 
-    if (store.children?.some(child => this.expandParents(targetKey, child))) {
-      this.expanded.add(store)
+    if (componentTree.children.some(child => this.expandParents(target, child))) {
+      this.expanded.add(componentTree)
       return true
     }
   }
@@ -527,7 +500,7 @@ export class BuilderStore {
    * @param multipleSelection true if you need to add the component to the list of components,
    * false if you need to leave only the component you want to add in the list of selected components.
    */
-  selectNode = (target: ComponentStore, multipleSelection = false) => {
+  selectNode = (target: ComponentData, multipleSelection = false) => {
     const isSelected = this.selected.has(target)
 
     if (multipleSelection) {
@@ -541,7 +514,7 @@ export class BuilderStore {
       this.selected.add(target)
     }
 
-    if (!isSelected) this.expandParents(target.key)
+    if (!isSelected) this.expandParents(target)
   }
 
   /**

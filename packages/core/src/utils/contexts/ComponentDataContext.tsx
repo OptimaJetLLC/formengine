@@ -8,6 +8,7 @@ import {ComponentStore} from '../../stores/ComponentStore'
 import {createNonNullableContext} from '../createNonNullableContext'
 import type {IFormData} from '../IFormData'
 import {nameObservable} from '../observableNaming'
+import {treeForEach} from '../treeUtils'
 
 let counter = 0
 
@@ -136,14 +137,20 @@ export class ComponentData implements IFormData {
   }
 
   /**
-   * @returns all the nodes in the tree as an array. Starts from the root of the tree.
+   * Assigns unique keys to the items in the tree.
+   * @param root the root of the tree to unify keys. Defaults to the root of this tree.
    */
-  get allNodesAsArray(): ComponentData[] {
-    if (this.parent) {
-      return this.parent.allNodesAsArray
-    }
-
-    return this.collectAllNodesAsArray([])
+  unifyKeys(root: ComponentData) {
+    const keysList: string[] = []
+    treeForEach(root, ({key}: ComponentData) => {
+      keysList.push(key)
+    })
+    treeForEach(this as ComponentData, item => {
+      let count = 1
+      const withCount = () => `${item.store.type} ${count}`
+      while (keysList.includes(withCount())) count++
+      keysList.push(item.store.key = withCount())
+    })
   }
 
   /**

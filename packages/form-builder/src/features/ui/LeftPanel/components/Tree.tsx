@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {FormViewer, useStore, useViewerProps} from '@react-form-builder/core'
+import {FormViewer, useViewerProps} from '@react-form-builder/core'
 import {CollaspedOutline, ExpandOutline} from '@rsuite/icons'
 import {observer} from 'mobx-react'
 import {useEffect} from 'react'
@@ -13,9 +13,8 @@ const Tree = observer(() => {
   const props = useViewerProps()
   const {t} = useTranslation()
   const store = useBuilderStore()
-  const {screen} = useStore()
   useEffect(() => {
-    store.expanded.add(store.viewer.screen)
+    store.expanded.add(store.viewer.form.componentTree)
   }, [screen])
 
   const handleExpand = () => store.expandAll()

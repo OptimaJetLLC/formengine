@@ -1,4 +1,4 @@
-import {ComponentStore} from '@react-form-builder/core'
+import {ComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {useEffect} from 'react'
 import {Table} from 'rsuite'
@@ -7,7 +7,7 @@ import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {useComputed} from '../../../../utils/useComputed'
 
 type PropertyErrorColumn = {
-  componentStore: ComponentStore
+  component: ComponentData
   property: string
   message: string
 }
@@ -17,9 +17,9 @@ export const PropertyErrors = observer(({onClose}: { onClose: () => void }) => {
 
   const data = useComputed(() => {
     const data: PropertyErrorColumn[] = []
-    store.errorMap.forEach((value, componentStore) => {
+    store.errorMap.forEach((value, component) => {
       Object.entries(value).forEach(([property, message]) => {
-        if (message) data.push({componentStore, property, message})
+        if (message) data.push({component, property, message})
       })
     })
     return data
@@ -29,9 +29,9 @@ export const PropertyErrors = observer(({onClose}: { onClose: () => void }) => {
     store.validate()
   }, [])
 
-  const handleLinkClick = (componentStore: ComponentStore) => {
+  const handleLinkClick = (component: ComponentData) => {
     onClose()
-    store.selectNode(componentStore)
+    store.selectNode(component)
   }
 
   return (
@@ -40,7 +40,7 @@ export const PropertyErrors = observer(({onClose}: { onClose: () => void }) => {
         <HeaderCell>Component</HeaderCell>
         <Cell>
           {(rowData: PropertyErrorColumn) => {
-            return <a onClick={() => handleLinkClick(rowData.componentStore)}>{rowData.componentStore.key}</a>
+            return <a onClick={() => handleLinkClick(rowData.component)}>{rowData.component.key}</a>
           }}
         </Cell>
       </Column>

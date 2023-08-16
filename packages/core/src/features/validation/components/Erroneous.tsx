@@ -24,7 +24,7 @@ export const Erroneous = namedObserver('Erroneous', ({children}: WrapperProps) =
   const store = useStore()
   const props = useViewerProps()
   const Error = props.view.error.view
-  const otherProps = getProps(store.screen.props.error?.value)
+  const otherProps = getProps(store.form.componentTree.store.props.error?.value)
 
   useEffect(() => {
     if (data.field) data.field.error = undefined

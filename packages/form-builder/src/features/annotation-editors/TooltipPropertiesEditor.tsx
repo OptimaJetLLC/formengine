@@ -15,7 +15,7 @@ import {useTooltipType} from '@react-form-builder/core'
 export const TooltipPropertiesEditor = () => {
   const t = useTranslationPart('annotation.tooltipProps')
   const id = useUniqueId('tooltip-')
-  const selected = useBuilderStore().oneSelected
+  const selected = useBuilderStore().oneSelected?.store
   const store = useBuilderStore()
   const [useTooltip, setUseTooltip] = useState(!!selected?.tooltipProps)
 

@@ -28,7 +28,7 @@ export type ArgumentValue = string | number | boolean
 /**
  * Action type.
  */
-export type ActionType = 'common' | 'linked' | 'custom'
+export type ActionType = 'common' | 'custom'
 
 /**
  * It will be transformed in arguments before passing in action.
@@ -42,7 +42,6 @@ export type Arguments = Record<ParameterName, ArgumentValue>
 export type ActionData = {
   name: string
   type: ActionType
-  target?: string
   args?: Arguments
 }
 

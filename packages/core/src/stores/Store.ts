@@ -116,14 +116,6 @@ export class Store implements IStore, IFormViewer {
     this.form.dispose()
   }
 
-  // todo Must be removed.
-  /**
-   * @returns the root {@link ComponentStore}.
-   */
-  get screen(): ComponentStore {
-    return this.form.componentTree.store
-  }
-
   /**
    * @inheritDoc
    */
@@ -136,35 +128,10 @@ export class Store implements IStore, IFormViewer {
   }
 
   /**
-   * Returns the component settings for the specified component key.
-   * @param key the component key.
-   * @returns the found component settings.
-   * @throws Error if the component is not found.
-   */
-  getComponent(key: string) {
-    const result = this.findComponent(key)
-
-    if (!result) {
-      throw Error(`Component ${key} didn't found!`)
-    }
-
-    return result
-  }
-
-  /**
-   * Searches for and returns the component settings for the specified component key.
-   * @param key the component key.
-   * @returns the found component settings or undefined.
-   */
-  findComponent(key: string) {
-    return treeFind(this.screen, key)
-  }
-
-  /**
    * @inheritDoc
    */
-  reduceScreen<T>(callback: (accumulator: T, current: ComponentStore) => T, initialValue: T) {
-    return reduceTree(this.screen, callback, initialValue, 'children')
+  reduceScreen<T>(callback: (accumulator: T, current: ComponentData) => T, initialValue: T) {
+    return reduceTree(this.form.componentTree, callback, initialValue, 'children')
   }
 
   /**
@@ -197,15 +164,6 @@ export class Store implements IStore, IFormViewer {
     const templateModel = createTemplateModel(type)
     this.#templateMap.set(templateModel.type, templateModel)
     return templateModel
-  }
-
-  /**
-   * Returns the array with action definitions for the specified component.
-   * @param target the component settings.
-   * @returns the array with action definitions for the specified component.
-   */
-  getLinkedActions(target?: ComponentStore) {
-    if (target) return this.getModel(target.type).getActions(target)
   }
 
   /**
@@ -279,19 +237,6 @@ export class Store implements IStore, IFormViewer {
     this.form = new Form(componentData, localization, languages, defaultLanguage)
     oldForm.dispose()
   }
-}
-
-function treeFind<T extends { key: string, children?: T[] }>(value: T, key?: string): T | undefined {
-  if (value.key === key) return value
-
-  if (!value.children) return
-
-  for (const child of value.children) {
-    const childNode = treeFind(child, key)
-    if (childNode) return childNode
-  }
-
-  return
 }
 
 function updateFnValue(viewerStore: Store) {

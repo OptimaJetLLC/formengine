@@ -25,7 +25,7 @@ export const Draggable = observer(({children, viewForDragPreview, isInner, class
   const [{isActive, isDragging: isDraggingCurrent}, dnd] = useDnd()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
 
-  const hidden = isDragging && store.selected.has(data.store)
+  const hidden = isDragging && store.selected.has(data)
 
   return <>
     {isDraggingCurrent && <DragPreview>{viewForDragPreview}</DragPreview>}

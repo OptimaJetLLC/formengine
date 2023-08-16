@@ -14,7 +14,7 @@ type ElementType<T extends any[]> = T extends (infer U)[] ? U : never;
  * @param effect the effect for the reaction.
  * @example
  * useMultiReaction(
- *   () => _.values(data.store.events).flat().filter(value => value.type === 'linked'),
+ *   () => _.values(data.store.events).flat().filter(value => value.type === 'custom'),
  *   (observer) => store.findComponent(observer.target!),
  *   (observable) => observable?.key,
  *   (observer, arg?: string, prev?: string) => observer.target = arg
@@ -51,24 +51,16 @@ export const useEventReactions = () => {
   const store = useStore()
   const data = useComponentData()
 
-  //For target key sync with linked actions
-  useMultiReaction(
-    () => values(data.store.events).flat().filter(value => value.type === 'linked'),
-    (observer) => store.findComponent(observer.target!),
-    (observable) => observable?.key,
-    (observer, arg?: string, prev?: string) => observer.target = arg
-  )
-
   //For name sync with custom actions
   useMultiReaction(
     () => values(data.store.events).flat().filter(value => value.type === 'custom'),
-    (observer) => (store.screen.props.actions?.value as CustomActionDefinition[])?.find(value => value.name === observer.name),
+    (observer) => (store.form.componentTree.store.props.actions?.value as CustomActionDefinition[])?.find(value => value.name === observer.name),
     (observable) => observable?.name,
     (observer, arg, prev?) => observer.name = arg!
   )
 
   //Remove custom actions from used places if it has been deleted
-  useEffect(() => reaction(() => store.screen.props.actions?.value?.slice(), (arg: CustomActionDefinition[], prev: CustomActionDefinition[]) => {
+  useEffect(() => reaction(() => store.form.componentTree.store.props.actions?.value?.slice(), (arg: CustomActionDefinition[], prev: CustomActionDefinition[]) => {
     if (!prev || !arg || arg.length !== prev.length - 1) return
     const [deleted] = prev.filter(x => !arg.includes(x))
     for (const event in data.store.events) {

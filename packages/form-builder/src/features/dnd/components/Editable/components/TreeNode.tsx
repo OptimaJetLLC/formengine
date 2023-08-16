@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {ComponentTree, useComponentData} from '@react-form-builder/core'
+import {ComponentTree, findTreeElementDepth, useComponentData} from '@react-form-builder/core'
 import {Icon} from '@rsuite/icons'
 import ArrowDownLineIcon from '@rsuite/icons/ArrowDownLine.js'
 import ArrowRightLineIcon from '@rsuite/icons/ArrowRightLine.js'
@@ -14,16 +14,16 @@ import {Toolbar} from './Toolbar'
 export const TreeNode = observer(({className}: { className: string }) => {
   const componentData = useComponentData()
   const {expanded: expandedNodes, viewer} = useBuilderStore()
-  const deep = useComputed(() => findDepth(viewer.screen, componentData.key) ?? 0)
+  const depth = useComputed(() => findTreeElementDepth(viewer.form.componentTree, componentData) ?? 0)
   const [hovered, setHovered] = useState(false)
   const [{selected}] = useSelection()
   const ref = useRef<HTMLDivElement>(null)
 
-  const expanded = expandedNodes.has(componentData.store)
+  const expanded = expandedNodes.has(componentData)
   const toggleExpand = useCallback(() => {
-    expandedNodes.has(componentData.store)
-      ? expandedNodes.delete(componentData.store)
-      : expandedNodes.add(componentData.store)
+    expandedNodes.has(componentData)
+      ? expandedNodes.delete(componentData)
+      : expandedNodes.add(componentData)
   }, [])
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export const TreeNode = observer(({className}: { className: string }) => {
     <>
       <SNodeItem className={className} ref={ref}
                  onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-        <SIndent deep={deep}>
+        <SIndent depth={depth}>
           {componentData.store.children &&
             <Icon onClick={toggleExpand} as={expanded ? ArrowDownLineIcon : ArrowRightLineIcon} style={{cursor: 'pointer'}}/>
           }
@@ -50,8 +50,8 @@ export const TreeNode = observer(({className}: { className: string }) => {
   )
 })
 
-const SIndent = styled.div<{ deep: number }>`
-  min-width: ${({deep}) => 14 * (deep + 1) + 14}px;
+const SIndent = styled.div<{ depth: number }>`
+  min-width: ${({depth}) => 14 * (depth + 1) + 14}px;
   height: 24px;
   display: flex;
   align-items: center;
@@ -83,16 +83,4 @@ const SNodeItem = styled.div`
   }
 `
 
-function findDepth<T extends { key: string, children?: T[] }>(value: T, key?: string, depth = 0): number | undefined {
-  if (value.key === key) return depth
 
-  if (!value.children) return
-
-  depth = depth + 1
-  for (const child of value.children) {
-    const childNode = findDepth(child, key, depth)
-    if (childNode) return childNode
-  }
-
-  return
-}

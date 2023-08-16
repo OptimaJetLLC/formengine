@@ -1,27 +1,16 @@
 import {forIn, transform} from 'lodash-es'
-import {denote} from 'rc-marked-input'
 import {createElement, useCallback, useEffect, useMemo} from 'react'
 import {filter, Subscription} from 'rxjs'
 import {ComponentState} from '../../stores/ComponentState'
 import {Store} from '../../stores/Store'
-import {isString, namedObserver} from '../../utils'
+import {namedObserver} from '../../utils'
 import {ComponentData, useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {getChildren} from '../../utils/getChildren'
-import {ActionData, ActionEventArgs, Arguments, ArgumentValue, DidMountEvent, Func, WillUnmountEvent} from '../event'
+import {ActionData, ActionEventArgs, Arguments, DidMountEvent, Func, WillUnmountEvent} from '../event'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 import {useLocalization} from '../localization/useLocalization'
-import {componentMarkup} from '../substitution/consts'
 import {useComponentTreeContext} from './ComponentTreeContext'
-
-function denoteBinds(value: ArgumentValue, store: Store) {
-  if (!isString(value)) return value
-
-  return denote(value, mark => {
-    const componentStore = store.getComponent(mark.value)
-    return componentStore.props[mark.label]?.value ?? ''
-  }, componentMarkup)
-}
 
 const useActions = (state: ComponentState) => {
   const store = useStore()
@@ -56,7 +45,7 @@ function getActionHandler(store: Store, func: Func, args?: Arguments) {
   return function (e: ActionEventArgs) {
     const actionArgs = !args ? {} :
       transform(args, (result: Record<string, any>, value, argumentName) =>
-        result[argumentName] = denoteBinds(value, store))
+        result[argumentName] = value)
     func(actionArgs, e)
   }
 }

@@ -34,11 +34,11 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
   const data = useComponentData()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
   const [hovered, setHovered] = useState(false)
-  const selected = store.selected.has(data.store)
+  const selected = store.selected.has(data)
 
   const onClick = useCallback((event: MouseEvent) => {
     event.stopPropagation()
-    store.selectNode(data.store, event.ctrlKey || event.shiftKey)
+    store.selectNode(data, event.ctrlKey || event.shiftKey)
   }, [])
 
   const onMouseOver = useCallback((event: MouseEvent) => {

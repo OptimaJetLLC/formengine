@@ -15,7 +15,7 @@ export const ErrorConfig = () => {
   const [errorMessage, setErrorMessage] = useState('Error message example!')
 
   useEffect(() => {
-    store.viewer.screen.props.error ??= {value: {}}
+    store.viewer.form.componentTree.store.props.error ??= {value: {}}
   }, [])
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export const ErrorConfig = () => {
   }, [errorVisible, errorMessage])
 
   const properties = store.view.errorMeta.properties
-  const context = store.viewer.screen.props.error?.value
+  const context = store.viewer.form.componentTree.store.props.error?.value
 
   return (
     <div>

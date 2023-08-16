@@ -9,7 +9,7 @@ import LabeledProperty from '../components/LabeledProperty'
  * @returns the React element.
  */
 export const RenderWhenEditor = () => {
-  const selected = useBuilderStore().oneSelected
+  const selected = useBuilderStore().oneSelected?.store
   const {annotation} = useAnnotation()
 
   if (!selected) return null

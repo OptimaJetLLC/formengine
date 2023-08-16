@@ -5,7 +5,6 @@ import {Dropdown} from 'rsuite'
 import {useAnnotation} from '../../../../../../utils/EditorContext'
 import {CommonActions} from './components/CommonActions'
 import {CustomActions} from './components/CustomActions'
-import {LinkedActions} from './components/LinkedActions'
 
 interface SelectActionProps {
   onClose: () => void
@@ -25,7 +24,6 @@ export const SelectAction = observer(({onClose, onOpen}: SelectActionProps) => {
 
   return <Dropdown.Menu>
     <CommonActions onSelect={handleSelect}/>
-    <LinkedActions onSelect={handleSelect}/>
     <CustomActions onOpen={onOpen} onSelect={handleSelect}/>
   </Dropdown.Menu>
 })
