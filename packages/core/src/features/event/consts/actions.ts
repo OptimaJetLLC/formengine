@@ -1,17 +1,5 @@
 import {defineAction} from '../utils/defineAction'
 
-const setValue = defineAction('Set value', (actionArgs, e) => {
-  //const componentStore: ComponentStore = eventArgs[2];
-  //actionArgs.target.props.value = actionArgs.param1;
-  //let b = args
-  //const a = actionArgs.propertyName
-}, ['propertyName', ['NumPar', 'number'], ['BoolPar', 'boolean']])
-
-const setProperty = defineAction('Set property', ({propertyKey, targetKey, value}, e) => {
-  // const component = e.store.getComponent(targetKey)
-  // component.props[propertyKey] = {value: value}
-}, ['propertyKey', 'targetKey', 'value'])
-
 const log = defineAction('Log event to console', console.log)
 
 const validate = defineAction('Validate', async e => await e.store.form.componentTree.validate())
@@ -20,4 +8,4 @@ const clear = defineAction('Clear', e => e.store.form.componentTree.clear())
 
 const reset = defineAction('Reset', e => e.store.form.componentTree.reset())
 
-export {setValue, setProperty, log, validate, reset, clear}
+export {log, validate, reset, clear}

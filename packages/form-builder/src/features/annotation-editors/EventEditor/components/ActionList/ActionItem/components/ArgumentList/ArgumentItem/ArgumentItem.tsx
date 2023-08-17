@@ -2,9 +2,9 @@ import {Parameter, ParameterName, ParameterType} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {ComponentType} from 'react'
 import {LabeledInput} from '../../../../../../../../components/Containers'
-import {InputBindableText} from '../../../../../../../../substitution/InputBindableText'
 import {InputBoolean} from './components/InputBoolean'
 import {InputNumber} from './components/InputNumber'
+import {InputString} from './components/InputString'
 import {InputProps} from './InputProps'
 
 const extractArgumentData = (data: Parameter): [ParameterName, ParameterType] =>
@@ -13,7 +13,7 @@ const extractArgumentData = (data: Parameter): [ParameterName, ParameterType] =>
 const getArgumentInputByType = (type: ParameterType): ComponentType<InputProps> => {
   switch (type) {
     case 'string':
-      return InputBindableText
+      return InputString
     case 'number':
       return InputNumber
     case 'boolean':
