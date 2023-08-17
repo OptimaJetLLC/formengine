@@ -13,6 +13,7 @@ const Slot = () => {
     ? <SlotContent parentStore={store.parentStore}/>
     : <SlotPlaceholder/>
 }
+Slot.displayName = 'Slot'
 
 export const slotModel = new Model(Slot, 'Slot')
 

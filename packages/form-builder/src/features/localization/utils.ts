@@ -14,7 +14,7 @@ export function getFullLangCode(lang: Language): string {
   return `${lang.code}-${lang.dialect}`
 }
 
-let firstLang: string | undefined
+let firstLang: string | undefined = undefined
 const callbacks: OnInitCallback[] = []
 
 /**

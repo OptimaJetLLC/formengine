@@ -31,7 +31,7 @@ export const LocalizationProvider = observer((props: LocalizationProps) => {
 })
 
 let currentCssEl: any = null
-let currentBiDi: BiDi | undefined
+let currentBiDi: BiDi | undefined = undefined
 
 const loadCssFile = async (biDi: BiDi) => {
   if (currentBiDi === biDi) return
@@ -42,6 +42,7 @@ const loadCssFile = async (biDi: BiDi) => {
   link.href = await cssUrls[biDi]()
   document.head.appendChild(link)
   link.onload = () => {
+    currentBiDi = biDi
     if (currentCssEl) {
       currentCssEl.parentNode.removeChild(currentCssEl)
     }

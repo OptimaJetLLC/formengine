@@ -53,6 +53,8 @@ module.exports = {
     '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'error',
     'no-throw-literal': 'off',
     '@typescript-eslint/no-throw-literal': 'error',
+    "init-declarations": "off",
+    "@typescript-eslint/init-declarations": ['error', 'always'],
     'import/extensions': ['error', {
       'ts': 'never',
       'tsx': 'never',

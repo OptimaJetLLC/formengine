@@ -10,8 +10,6 @@ const loadForm = async (formName?: string) => {
   return await response.json()
 }
 
-view.withTemplates(['template', 'agreement'])
-
 function App() {
   return <>
     <h1>Form Sample</h1>

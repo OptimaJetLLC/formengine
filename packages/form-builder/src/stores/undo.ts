@@ -20,7 +20,8 @@ export function trackUndo<T>(
   // Always points to the current value
   const undoPointer = observable.box(undoStack.length - 1)
 
-  let stopTrackingChanges: () => void
+  let stopTrackingChanges: () => void = () => {
+  }
   const trackChanges = () => {
     stopTrackingChanges = reaction(readObservable, (newValue) => {
       if (isDisposed) throw new Error('Undo already disposed')
