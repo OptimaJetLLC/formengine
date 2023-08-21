@@ -38,7 +38,11 @@ async function getForm(name?: string): Promise<PersistedForm> {
   return JSON.parse(form) as PersistedForm
 }
 
-const getFormFn = indexedDbExists ? getForm : getFormFromJson
+const getFormFn = (formName?: string) => {
+  // todo temporary fix
+  const name = !formName || formName === 'undefined' ? sampleFormName : formName
+  return indexedDbExists ? getForm(name) : getFormFromJson(name)
+}
 
 const FormBuilderApp = observer(() => {
   const [indexedDbInitialized, setIndexedDbInitialized] = useState(false)

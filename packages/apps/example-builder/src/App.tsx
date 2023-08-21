@@ -77,9 +77,10 @@ const externalValidators: ExternalValidators = {
 }
 
 // tests don't wait for promises now
-const getFormFn = indexedDbExists
-  ? getForm
-  : (formName?: string) => getFormFromJson(formName ?? sampleFormName)
+const getFormFn = (formName?: string) => {
+  const name = formName ?? sampleFormName
+  return indexedDbExists ? getForm(name) : getFormFromJson(name)
+}
 
 const FormBuilderApp = () => {
   const ref = useRef<IFormViewer>(null)
