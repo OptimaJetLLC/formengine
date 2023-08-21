@@ -2,7 +2,7 @@ import {nameAutorun, ViewMode} from '@react-form-builder/core'
 import {autorun, IReactionDisposer} from 'mobx'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {parseJson} from '../utils/parseJson'
-import {BuilderTheme} from '../utils/types'
+import type {BuilderTheme} from '../utils/types'
 import {BuilderStore} from './BuilderStore'
 
 /**
@@ -13,32 +13,39 @@ export class LocalStorageSynchronizer {
 
   /**
    * Creates {@LocalStorageSynchronizer}.
-   * @param store the form builder settings.
+   * @param builderStore the form builder settings.
    */
-  constructor(store: BuilderStore) {
+  constructor(builderStore: BuilderStore) {
     const resolutionKey = 'resolution'
-    store.viewMode = this.getItem<ViewMode>(resolutionKey, 'desktop')
+    builderStore.viewMode = this.getItem<ViewMode>(resolutionKey, 'desktop')
 
     const openedPanelsKey = 'openedPanels'
-    store.openedPanels = parseJson(this.getItem<string>(openedPanelsKey)) ?? ['left', 'right']
+    builderStore.openedPanels = parseJson(this.getItem<string>(openedPanelsKey)) ?? ['left', 'right']
 
     const themeKey = 'theme'
-    store.theme = this.getItem<BuilderTheme>(themeKey, getSystemTheme())
+    builderStore.theme = this.getItem<BuilderTheme>(themeKey, getSystemTheme())
 
     const className = 'LocalStorageSynchronizer'
 
+    const formNameKey = 'formName'
+    builderStore.activeFormName = this.getItem<string>(formNameKey)
+
     this.#disposers = [
       autorun(
-        () => this.setItem(resolutionKey, store.viewMode),
+        () => this.setItem(resolutionKey, builderStore.viewMode),
         {name: nameAutorun(className, 'saveResolution')}
       ),
       autorun(
-        () => this.setItem(openedPanelsKey, JSON.stringify(store.openedPanels)),
+        () => this.setItem(openedPanelsKey, JSON.stringify(builderStore.openedPanels)),
         {name: nameAutorun(className, 'saveOpenedPanels')}
       ),
       autorun(
-        () => this.setItem(themeKey, store.theme),
+        () => this.setItem(themeKey, builderStore.theme),
         {name: nameAutorun(className, 'saveTheme')}
+      ),
+      autorun(
+        () => this.setItem(formNameKey, builderStore.activeFormName),
+        {name: nameAutorun(className, 'saveFormName')}
       ),
     ]
   }

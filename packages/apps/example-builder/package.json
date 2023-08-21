@@ -17,7 +17,7 @@
         "@react-form-builder/builder": "^0.0.2-alpha",
         "@react-form-builder/components-antd": "^0.0.2-alpha",
         "@react-form-builder/components-rsuite": "^0.0.2-alpha",
-        "idb-keyval": "^6.2.0",
+        "@react-form-builder/indexed-db-form-storage": "^0.0.2-alpha",
         "react": "^17.0.2",
         "react-dom": "^17.0.2"
     }

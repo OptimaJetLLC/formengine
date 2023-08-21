@@ -1,10 +1,10 @@
-import {FormStorage} from './FormStorage'
+import {IFormStorage} from './IFormStorage'
 
 /**
  * The external form storage that always returns an error.
  * Used if the external form storage is not connected to the form builder.
  */
-export class AlwaysRejectFormStorage implements FormStorage {
+export class AlwaysRejectFormStorage implements IFormStorage {
   #reason = 'Not implemented'
 
   /**

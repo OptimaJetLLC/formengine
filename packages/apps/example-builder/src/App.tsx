@@ -3,9 +3,9 @@ import {BuilderView} from '@react-form-builder/builder/view'
 import {antdComponents} from '@react-form-builder/components-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {ComponentStore, ExternalValidators, IFormViewer, Language, PersistedForm} from '@react-form-builder/core'
+import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useRef, useState} from 'react'
-import {getFormFromJson} from './utils/getFormFromJson'
-import {IndexedDbFormStorage} from './utils/IndexedDbFormStorage'
+import {getFormFromJson, initialForms} from './utils/getFormFromJson'
 
 const data = {
   title: 'Hello! Hello!',
@@ -34,7 +34,7 @@ const useExternalLocalizer = false
 const localizeFn = useExternalLocalizer ? localizer : undefined
 const logEvents = false
 
-const indexedDbExists = false//!!window.indexedDB
+const indexedDbExists = !!window.indexedDB
 const formStorage = indexedDbExists
   ? new IndexedDbFormStorage()
   : undefined
@@ -43,16 +43,9 @@ const sampleFormName = 'SampleForm'
 
 async function getForm(name?: string): Promise<PersistedForm> {
   if (!formStorage) throw new Error('IndexedDB not supported')
-  try {
-    const form = await formStorage.getForm(name || formStorage.formName)
-    return JSON.parse(form) as PersistedForm
-  } catch (e) {
-    if (!name) throw e
-    // fallback
-    const formFromJson = getFormFromJson(name)
-    formStorage.formName = name
-    return formFromJson
-  }
+  if (typeof name === 'undefined') throw new Error('Form name is not defined')
+  const form = await formStorage.getForm(name)
+  return JSON.parse(form) as PersistedForm
 }
 
 const externalValidators: ExternalValidators = {
@@ -84,11 +77,24 @@ const externalValidators: ExternalValidators = {
 }
 
 // tests don't wait for promises now
-const getFormFn = indexedDbExists ? getForm : getFormFromJson
+const getFormFn = indexedDbExists
+  ? getForm
+  : (formName?: string) => getFormFromJson(formName ?? sampleFormName)
 
 const FormBuilderApp = () => {
   const ref = useRef<IFormViewer>(null)
   const [initialData, setInitialData] = useState(data)
+  const [indexedDbInitialized, setIndexedDbInitialized] = useState(false)
+
+  useEffect(() => {
+    if (!formStorage) {
+      setIndexedDbInitialized(true)
+      return
+    }
+    formStorage.init(initialForms)
+      .then(() => setIndexedDbInitialized(true))
+      .catch(e => console.error(e))
+  }, [])
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -103,9 +109,11 @@ const FormBuilderApp = () => {
     }
   }, [ref.current])
 
+  if (!indexedDbInitialized) return null
+
   return <FormBuilder
     getForm={getFormFn}
-    formName={formStorage?.formName || sampleFormName}
+    formName={sampleFormName}
     view={view}
     initialData={initialData}
     formStorage={formStorage}

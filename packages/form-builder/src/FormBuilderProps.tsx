@@ -2,7 +2,7 @@ import type {FormViewerProps} from '@react-form-builder/core'
 import type {ComponentType} from 'react'
 import type {EditorType} from './features/annotation/types'
 import {BuilderView} from './features/define/utils/BuilderView'
-import type {FormStorage} from './stores/FormStorage'
+import type {IFormStorage} from './stores/IFormStorage'
 
 /**
  * Properties of the React Form builder component.
@@ -17,7 +17,7 @@ export interface FormBuilderProps extends FormViewerProps {
   /**
    * The external form storage.
    */
-  formStorage?: FormStorage
+  formStorage?: IFormStorage
 
   /**
    * Custom component property editors.

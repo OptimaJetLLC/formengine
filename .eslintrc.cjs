@@ -3,6 +3,7 @@ const projects = [
   './packages/core/tsconfig.json',
   './packages/form-builder/tsconfig.json',
   './packages/form-viewer/tsconfig.json',
+  './packages/indexed-db-form-storage/tsconfig.json',
   './packages/views/rsuite/tsconfig.json',
 ]
 

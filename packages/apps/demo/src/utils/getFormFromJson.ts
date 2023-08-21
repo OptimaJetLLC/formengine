@@ -10,6 +10,10 @@ const forms: Record<string, any> = {
   agreement
 }
 
+export const initialForms = {
+  SampleForm: JSON.stringify(SampleForm)
+}
+
 export function getFormFromJson(name?: string) {
   if (name && forms[name]) return assign({}, forms[name]) as PersistedForm
   throw new Error(`Unable to load form '${name}'`)

@@ -189,7 +189,8 @@
     "exportFormsError": "Failed to export forms! See the logs in the browser console",
     "importForms": "Import forms",
     "importFormsSuccess": "Forms imported",
-    "importFormsError": "Failed to import forms! See the logs in the browser console"
+    "importFormsError": "Failed to import forms! See the logs in the browser console",
+    "noFormsInFormStorage": "Save the form so that it appears in the list of forms."
   },
   "rightMenu": {
     "toggleTheme": "Toggle theme",

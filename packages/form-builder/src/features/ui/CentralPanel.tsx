@@ -21,7 +21,8 @@ export const CentralPanel = namedObserver('CentralPanel', () => {
     <SContainer>
       <Header/>
       <SFormContainer className={cx(viewMode, {landscapeMode})}>
-        <FormViewer {...props} componentWrapper={componentWrapper} viewMode={viewMode} computeChildren={computeChildren}/>
+        <FormViewer {...props} componentWrapper={componentWrapper} viewMode={viewMode} computeChildren={computeChildren}
+                    formName={builderStore.activeFormName}/>
       </SFormContainer>
     </SContainer>
   )

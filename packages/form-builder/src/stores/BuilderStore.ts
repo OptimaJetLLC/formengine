@@ -25,7 +25,7 @@ import {getSystemTheme} from '../utils/getSystemTheme'
 import {BuilderMode, BuilderTheme, InsertPosition} from '../utils/types'
 import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
 import {uploadStringFile} from './fileUpload'
-import {FormStorage} from './FormStorage'
+import type {IFormStorage} from './IFormStorage'
 import {trackUndo} from './undo'
 
 /**
@@ -138,9 +138,10 @@ export class BuilderStore {
   readonly selected = new Set<ComponentData>()
   readonly expanded = new Set<ComponentData>()
   readonly #disposer: IReactionDisposer[]
-  private formStorage: FormStorage
+  private formStorage: IFormStorage
   readonly #props: Readonly<FormBuilderProps>
   readonly undoer: BuilderUndoer
+  activeFormName?: string
 
   /**
    * Creates the form builder settings.
@@ -168,6 +169,7 @@ export class BuilderStore {
     this.formStorage = props.formStorage || new AlwaysRejectFormStorage()
     this.#props = props
     this.view = props.view
+    this.activeFormName = props.formName
 
     onI18nInit((language: string) => {
       const foundLanguage = findLanguage(language)
@@ -232,7 +234,7 @@ export class BuilderStore {
    * @returns the current form name.
    */
   get formName() {
-    return this.#props.formName || '__DefaultForm__'
+    return this.activeFormName || '__DefaultForm__'
   }
 
   /**
@@ -410,8 +412,11 @@ export class BuilderStore {
    * @param formName the form name.
    * @returns the {@link Promise} with the result of saving the form.
    */
-  save(formName?: string) {
-    return this.saveForm(formName || this.formName, this.formAsString)
+  async save(formName?: string) {
+    const name = formName || this.formName
+    const result = await this.saveForm(name, this.formAsString)
+    this.activeFormName = name
+    return result
   }
 
   /**
@@ -452,6 +457,7 @@ export class BuilderStore {
     this.getStoredFormJson(value)
       .then(data => {
         this.parseForm(data)
+        this.activeFormName = value
         onSuccess?.()
       })
       .catch(err => onError?.(err))

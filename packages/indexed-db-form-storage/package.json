@@ -1,0 +1,30 @@
+{
+    "name": "@react-form-builder/indexed-db-form-storage",
+    "version": "0.0.2-alpha",
+    "private": false,
+    "main": "index.ts",
+    "type": "module",
+    "description": "OptimaJet Form Builder IndexedDB form storage",
+    "keywords": [
+        "form-builder",
+        "optimajet"
+    ],
+    "author": "Optimajet",
+    "license": "Contact sales@optimajet.com",
+    "bugs": {
+        "email": "support@optimajet.com"
+    },
+    "scripts": {
+        "build": "vite build",
+        "clean": "rimraf dist temp"
+    },
+    "files": [
+        "dist/*"
+    ],
+    "dependencies": {
+        "@react-form-builder/builder": "^0.0.2-alpha",
+        "@react-form-builder/core": "^0.0.2-alpha",
+        "idb-keyval": "^6.2.1",
+        "mobx": "^6.9.0"
+    }
+}

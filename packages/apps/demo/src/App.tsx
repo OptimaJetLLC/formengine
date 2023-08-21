@@ -2,8 +2,11 @@ import {FormBuilder} from '@react-form-builder/builder'
 import {BuilderView} from '@react-form-builder/builder/view'
 import {antdComponents} from '@react-form-builder/components-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
+import type {PersistedForm} from '@react-form-builder/core'
+import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {observer} from 'mobx-react'
-import {getFormFromJson} from './utils/getFormFromJson'
+import {useEffect, useState} from 'react'
+import {getFormFromJson, initialForms} from './utils/getFormFromJson'
 
 const initialData = {
   title: 'Hello! Hello!',
@@ -19,17 +22,47 @@ const components = [...rSuiteComponents, ...antdComponents].map(definer => defin
 const view = new BuilderView(components)
   .withErrorMeta(rsErrorMessage.build())
   .withTooltipMeta(rsTooltip.build())
-  // .withTemplates(['template', 'agreement', 'login form'])
+  .withTemplates([])
 
 const sampleFormName = 'SampleForm'
 
-const FormBuilderApp = observer(() =>
-  <FormBuilder
-    getForm={getFormFromJson}
+const indexedDbExists = !!window.indexedDB
+const formStorage = indexedDbExists
+  ? new IndexedDbFormStorage()
+  : undefined
+
+async function getForm(name?: string): Promise<PersistedForm> {
+  if (!formStorage) throw new Error('IndexedDB not supported')
+  if (typeof name === 'undefined') throw new Error('Form name is not defined')
+  const form = await formStorage.getForm(name)
+  return JSON.parse(form) as PersistedForm
+}
+
+const getFormFn = indexedDbExists ? getForm : getFormFromJson
+
+const FormBuilderApp = observer(() => {
+  const [indexedDbInitialized, setIndexedDbInitialized] = useState(false)
+
+  useEffect(() => {
+    if (!formStorage) {
+      setIndexedDbInitialized(true)
+      return
+    }
+    formStorage.init(initialForms)
+      .then(() => setIndexedDbInitialized(true))
+      .catch(e => console.error(e))
+  }, [])
+
+  if (!indexedDbInitialized) return null
+
+  return <FormBuilder
+    getForm={getFormFn}
     formName={sampleFormName}
     view={view}
     initialData={initialData}
-  />)
+    formStorage={formStorage}
+  />
+})
 
 const App = () => <FormBuilderApp/>
 

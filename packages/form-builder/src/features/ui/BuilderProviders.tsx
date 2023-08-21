@@ -36,6 +36,10 @@ export const BuilderProviders = observer(({children, props}: BuilderProvidersPro
   }, [])
 
   useEffect(() => {
+    buildStore.activeFormName = props.formName
+  }, [props.formName])
+
+  useEffect(() => {
     store.initialData = props.initialData ?? {}
     store.view = props.view
     store.externalValidators = props.externalValidators
