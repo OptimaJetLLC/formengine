@@ -9,6 +9,7 @@ import {View} from '../define'
 import type {ActionDefinition} from '../event'
 import {EventStream} from '../event/utils/EventStream'
 import {Language} from '../localization/types'
+import type {ExternalValidators} from '../validation/types/ExternalValidationRules'
 
 /**
  * Form viewer React component properties.
@@ -74,6 +75,11 @@ export interface FormViewerProps {
    * @returns the {@link Record} with the localized properties of a component.
    */
   localize?: (componentStore: ComponentStore, language: Language) => Record<string, any>
+
+  /**
+   * The set of metadata of external validation rules, grouped by the type of value being validated.
+   */
+  externalValidators?: ExternalValidators
 
   /**
    * Function that calculates all child properties of a component.

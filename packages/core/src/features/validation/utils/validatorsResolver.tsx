@@ -1,42 +1,53 @@
+import {FormViewerValidationRules} from '../../../stores/FormViewerValidationRules'
 import {isPromise} from '../../../utils'
 import type {BoundValueSchema} from '../types/BoundValueSchema'
-import type {SchemaType} from '../types/SchemaType'
+import type {RuleValidator} from '../types/RuleValidator'
 import type {ValidationResult} from '../types/ValidationResult'
+import type {ValidationRuleParameter} from '../types/ValidationRuleParameter'
 import type {ValidationRuleSettings} from '../types/ValidationRuleSettings'
-import {ValidationRules} from './consts'
 import type {ResolvedValidator} from './DataValidator'
 
 /**
  * Returns the function that creates a validator for the value.
- * @param type the value type.
+ * @param validationRules the validation rules for FormViewer.
  * @returns the function that creates a validator for the value.
  */
-export function typedValidatorsResolver(type: SchemaType) {
+export function typedValidatorsResolver(validationRules: FormViewerValidationRules) {
   return function (schema?: BoundValueSchema) {
-    return validatorsResolver(type, schema)
+    return validatorsResolver(validationRules, schema)
   }
+}
+
+type ValidatorWithSettings = {
+  settings: ValidationRuleSettings,
+  validator: RuleValidator
+  params?: ValidationRuleParameter[]
 }
 
 /**
  * Creates a validator for the specified value validation rules.
- * @param type the value type.
+ * @param validationRules the validation rules for FormViewer.
  * @param schema the value validation rules.
  * @returns the validation function.
  */
-function validatorsResolver(type: SchemaType, schema?: BoundValueSchema): ResolvedValidator {
-  const validators = parse(type, schema)
+function validatorsResolver(validationRules: FormViewerValidationRules, schema?: BoundValueSchema): ResolvedValidator {
+  const validators = parse(validationRules, schema)
 
   return async (value, store) => {
     if (!validators) return
 
     const validationResults: ValidationResult[] = []
-    for (const {settings, validator,} of validators) {
-      const result = validator(value, store)
+    for (const {settings, validator, params} of validators) {
+      const args: Record<string, unknown> = {}
+      params?.filter(param => typeof param.default !== 'undefined')
+        .map(param => args[param.key] = param.default)
+      Object.assign(args, settings.args)
+      const result = validator(value, store, args)
       const ruleResult = isPromise(result) ? await result : result
       if (ruleResult !== true) {
         validationResults.push({
           settings: settings,
-          message: typeof ruleResult === 'string' ? ruleResult : undefined
+          message: typeof ruleResult === 'string' ? ruleResult : args.message as string
         })
       }
     }
@@ -44,26 +55,32 @@ function validatorsResolver(type: SchemaType, schema?: BoundValueSchema): Resolv
   }
 }
 
-function parse(type: SchemaType, schema?: BoundValueSchema) {
+const noOpValidator = () => true
+
+function parse(validationRules: FormViewerValidationRules, schema?: BoundValueSchema): ValidatorWithSettings[] | undefined {
   if (!schema || !schema.validations || !schema.validations.length) return
 
   const rules = [...schema.validations].sort(byPriority)
-  const validationRule = ValidationRules[type]
-
-  return rules.map(rule => {
-    const definition = validationRule[rule.key]
-    const args = rule.args ?? {}
-    const validator = definition.validatorFactory(args)
-    return {
-      settings: rule,
-      validator: validator
+  const toValidator = (rule: ValidationRuleSettings) => {
+    if (!rule.type) {
+      const definition = validationRules.internal[rule.key]
+      const validator = definition.validatorFactory(rule.args ?? {})
+      return {settings: rule, validator, params: definition.params}
     }
-  })
+    if (rule.type === 'external') {
+      const definition = validationRules.external?.[rule.key]
+      if (definition) return {settings: rule, validator: definition.validate, params: definition.params}
+    }
+    console.warn(`Cannot find rule, key: '${rule.key}', type: '${rule.type}'`)
+    return {settings: rule, validator: noOpValidator}
+  }
+
+  return rules.map(toValidator)
 }
 
 //The 'required' rule must be implemented first, because it is a root for next
 //The 'custom' rule (used refine under the hood) must be implemented last
-function byPriority(a: ValidationRuleSettings, b: ValidationRuleSettings) {
+function byPriority(_: ValidationRuleSettings, b: ValidationRuleSettings) {
   if (b.key === 'custom') return -1
   if (b.key === 'required') return 1
   return 0

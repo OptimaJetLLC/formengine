@@ -11,6 +11,9 @@ import {createTemplateModel} from '../features/template'
 import {buildInternalErrorModel, buildInternalErrorStore} from '../features/ui/internalErrorModel'
 import {screenModel} from '../features/ui/screenModel'
 import {isTemplateType} from '../features/ui/templateUtil'
+import type {SchemaType} from '../features/validation'
+import type {ExternalValidators} from '../features/validation/types/ExternalValidationRules'
+import {ValidationRules} from '../features/validation/utils/consts'
 import {SimpleField} from '../features/validation/utils/SimpleField'
 import {TemplateField} from '../features/validation/utils/TemplateField'
 import {isStoreDataInParentForm} from '../features/validation/utils/util'
@@ -20,6 +23,7 @@ import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
 import {ComponentStore} from './ComponentStore'
 import {Form} from './Form'
+import type {FormViewerValidationRules} from './FormViewerValidationRules'
 import type {IStore} from './IStore'
 import {LocalizationStore} from './LocalizationStore'
 import type {PersistedForm} from './PersistedForm'
@@ -67,12 +71,14 @@ export class Store implements IStore, IFormViewer {
    * @param view the metadata of the form viewer components.
    * @param initialData the initial form data.
    * @param actions the array of action definitions.
+   * @param externalValidators the set of metadata of external validation rules, grouped by the type of value being validated.
    * @param parentStore the form viewer settings, used in templates.
    * @param parentComponentStore the parent component settings.
    */
   constructor(public view: View,
               public initialData: Record<string, unknown>,
               public actions: ActionDefinition[] = [],
+              public externalValidators?: ExternalValidators,
               public readonly parentStore?: Store,
               public readonly parentComponentStore?: ComponentStore) {
     const componentTree = this.createComponentData(new ComponentStore(screenModel.name, screenModel.type))
@@ -200,12 +206,24 @@ export class Store implements IStore, IFormViewer {
     return new ComponentData(componentStore, model, field, factory)
   }
 
+  /**
+   * Returns the object with validators for the specified value type.
+   * @param type the value type.
+   * @returns the object with validators for the specified value type.
+   */
+  getValidationRules(type: SchemaType): FormViewerValidationRules {
+    return {
+      external: this.externalValidators?.[type],
+      internal: ValidationRules[type]
+    }
+  }
+
   private createField(componentStore: ComponentStore, model: Model) {
     if (!isTemplateType(model.type)) {
-      return new SimpleField(this, componentStore, model, updateFnValue(this))
+      return new SimpleField(this, componentStore, model, updateFnValue(this), this.getValidationRules.bind(this))
     }
 
-    const childStore = new Store(this.view, this.initialData, this.actions, this, componentStore)
+    const childStore = new Store(this.view, this.initialData, this.actions, this.externalValidators, this, componentStore)
     return new TemplateField(componentStore, childStore)
   }
 

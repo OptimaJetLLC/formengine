@@ -9,4 +9,6 @@ export type RuleValidatorResult = string | boolean
 /**
  * The function that checks the value and returns the result of the rule validation, see {@link RuleValidatorResult}.
  */
-export type RuleValidator<T = any> = (value: T, store: IStore) => RuleValidatorResult | Promise<RuleValidatorResult>
+export type RuleValidator<T = any> = (value: T,
+                                      store: IStore,
+                                      args?: Record<string, unknown>) => RuleValidatorResult | Promise<RuleValidatorResult>

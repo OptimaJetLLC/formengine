@@ -1,5 +1,6 @@
 import {autorun, makeAutoObservable, observable} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
+import type {FormViewerValidationRules} from '../../../stores/FormViewerValidationRules'
 import type {IStore} from '../../../stores/IStore'
 import {needRender} from '../../../utils/needRender'
 import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
@@ -52,12 +53,14 @@ export class SimpleField implements Field {
    * @param componentStore the component settings.
    * @param model the component metadata for the form viewer.
    * @param valueCalculator the function to get a calculated value for the field.
+   * @param getValidationRules the function to get validation rules for the field.
    */
   constructor(
     readonly store: IStore,
     readonly componentStore: ComponentStore,
     readonly model: Model,
-    readonly valueCalculator: (component: ComponentStore, key: string) => [boolean, any?]
+    readonly valueCalculator: (component: ComponentStore, key: string) => [boolean, any?],
+    readonly getValidationRules: (valueType: SchemaType) => FormViewerValidationRules,
   ) {
     if (!model.valued) throw new Error(`'model.valued' is falsy`)
     if (!model.valueType) throw new Error(`'model.typeOfValue' is undefined`)
@@ -76,7 +79,7 @@ export class SimpleField implements Field {
       autorun(
         () => this.dataValidator = DataValidator.create(
           store,
-          typedValidatorsResolver(this.valueType),
+          typedValidatorsResolver(this.getValidationRules(this.valueType)),
           componentStore.schema,
           error => this.error = error)
         , {name: nameAutorun(className, 'setValidator', {key: componentStore.key})}),

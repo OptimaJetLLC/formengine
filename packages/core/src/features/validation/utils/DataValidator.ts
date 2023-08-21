@@ -20,8 +20,7 @@ export type SchemaResolver<T> = (value: T) => ResolvedValidator
 
 function concatErrorMessages(value: ValidationResult[] | undefined) {
   if (!value) return undefined
-  return value?.map(result => result.message)
-    .filter(message => !!message)
+  return value?.map(result => result.message ?? `Validation failed: ${result.settings.key}`)
     .join('; ')
 }
 

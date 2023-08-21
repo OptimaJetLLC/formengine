@@ -25,7 +25,7 @@ interface BuilderProvidersProps {
  */
 export const BuilderProviders = observer(({children, props}: BuilderProvidersProps) => {
   const store = useMemo(
-    () => new Store(props.view, props.initialData ?? {}, DefaultActions),
+    () => new Store(props.view, props.initialData ?? {}, DefaultActions, props.externalValidators),
     [])
 
   const buildStore = useMemo(() => {
@@ -38,7 +38,8 @@ export const BuilderProviders = observer(({children, props}: BuilderProvidersPro
   useEffect(() => {
     store.initialData = props.initialData ?? {}
     store.view = props.view
-  }, [props.initialData, props.view])
+    store.externalValidators = props.externalValidators
+  }, [props.initialData, props.view, props.externalValidators])
 
   const localStorageSynchronizer = useMemo(() => new LocalStorageSynchronizer(buildStore), [])
 

@@ -33,8 +33,9 @@ export const ComponentValidationSettingsEditor = () => {
       <h5>{t('validation.validationRules')}</h5>
       <PropertyEditorWrapper annotation={autoValidate} getContext={() => schema}/>
       {
-        store.schema?.validations?.map((rule, index) => {
-          return <ValidationRuleEditor key={rule.key} rule={rule} onRemove={() => {
+        schema.validations?.map((rule, index) => {
+          const key = `${rule.key}-${rule.type ?? 'internal'}`
+          return <ValidationRuleEditor key={key} rule={rule} onRemove={() => {
             store.schema?.validations?.splice(index, 1)
           }}/>
         })

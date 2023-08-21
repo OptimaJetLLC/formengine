@@ -1,3 +1,5 @@
+import type {ValidatorType} from './ValidatorType'
+
 /**
  * The validation rule settings.
  */
@@ -6,7 +8,12 @@ export type ValidationRuleSettings = {
   /**
    * The unique key of the validation rule. The key is unique within the value type.
    */
-  key: string,
+  key: string
+
+  /**
+   * The type of validator.
+   */
+  type?: ValidatorType
 
   /**
    * Arguments of the validation rule.

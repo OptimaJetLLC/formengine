@@ -236,7 +236,6 @@
                   }
                 },
                 "schema": {
-                  "type": "string",
                   "validations": [
                     {
                       "key": "custom",
@@ -318,7 +317,6 @@
           }
         },
         "schema": {
-          "type": "string",
           "validations": [
             {
               "key": "required"

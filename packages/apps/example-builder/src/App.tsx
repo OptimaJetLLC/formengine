@@ -2,7 +2,7 @@ import {FormBuilder} from '@react-form-builder/builder'
 import {BuilderView} from '@react-form-builder/builder/view'
 import {antdComponents} from '@react-form-builder/components-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
-import {ComponentStore, IFormViewer, Language, PersistedForm} from '@react-form-builder/core'
+import {ComponentStore, ExternalValidators, IFormViewer, Language, PersistedForm} from '@react-form-builder/core'
 import {useEffect, useRef, useState} from 'react'
 import {getFormFromJson} from './utils/getFormFromJson'
 import {IndexedDbFormStorage} from './utils/IndexedDbFormStorage'
@@ -55,6 +55,34 @@ async function getForm(name?: string): Promise<PersistedForm> {
   }
 }
 
+const externalValidators: ExternalValidators = {
+  'string': {
+    'isHex': {
+      validate: value => /^[0-9A-F]*$/i.test(value)
+    },
+    'isHappy': {
+      params: [],
+      validate: value => value === 'Happy'
+    },
+    'equals': {
+      params: [
+        {key: 'value', type: 'string', required: false, default: 'Ring'},
+        {key: 'message', type: 'string', required: false, default: 'Value must be equals to '}
+      ],
+      validate: (value, _, args) => {
+        const errorMessage = args?.['message'] as string
+        return value !== args?.['value'] ? errorMessage ?? false : true
+      }
+    }
+  },
+  'number': {},
+  'boolean': {
+    'onlyTrue': {
+      validate: value => value === true
+    }
+  },
+}
+
 // tests don't wait for promises now
 const getFormFn = indexedDbExists ? getForm : getFormFromJson
 
@@ -86,6 +114,7 @@ const FormBuilderApp = () => {
       if (logEvents) console.log('onDataChange', {data, errors})
     }}
     viewerRef={ref}
+    externalValidators={externalValidators}
     /*event={(stream) => {
       stream.listen(value => {
         let a = 4

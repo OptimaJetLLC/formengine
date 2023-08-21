@@ -20,7 +20,7 @@ export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', ({childr
 }) => {
   const storeFromContext = useContext(StoreContext)
   const store = useMemo(
-    () => storeFromContext || new Store(props.view, props.initialData ?? {}, DefaultActions),
+    () => storeFromContext || new Store(props.view, props.initialData ?? {}, DefaultActions, props.externalValidators),
     [])
 
   useEffect(() => {
@@ -32,7 +32,8 @@ export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', ({childr
   useEffect(() => {
     store.initialData = props.initialData ?? {}
     store.view = props.view
-  }, [props.initialData, props.view])
+    store.externalValidators = props.externalValidators
+  }, [props.initialData, props.view, props.externalValidators])
 
   useDestroy(() => {
     if (!storeFromContext) {

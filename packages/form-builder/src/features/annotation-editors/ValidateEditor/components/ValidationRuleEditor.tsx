@@ -1,9 +1,10 @@
 import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt.js'
-import {useComponentData, ValidationRules, ValidationRuleSettings} from '@react-form-builder/core'
+import {SchemaType, useComponentData, useStore, ValidationRuleParameter, ValidationRuleSettings} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import type {ComponentType} from 'react'
+import {useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Checkbox, IconButton, Input as RInput, InputNumber, Tooltip, Whisper} from 'rsuite'
 import {FaIcon} from '../../../components/Icons'
@@ -59,39 +60,68 @@ export interface ValidationRuleEditorProps {
   onRemove: () => void
 }
 
+interface RuleParamsEditorProps {
+  rule: ValidationRuleSettings
+  params?: ValidationRuleParameter[]
+}
+
+const RuleParamsEditor = observer(({rule, params}: RuleParamsEditorProps) => {
+  const ruleParams = useMemo(() => {
+    const copy = [...(params ?? [])]
+    const messageParam = copy.find(value => value.key === 'message')
+    if (!messageParam) copy.push({key: 'message', type: 'string', required: false})
+    return copy
+  }, [params])
+
+  const items = ruleParams.map(param => {
+    const Input = getInput(param.type)!
+
+    return (
+      <div key={param.key}>
+        <label>{param.key}</label>
+        <Input
+          key={param.key}
+          value={rule.args?.[param.key]}
+          onChange={value => {
+            rule.args ??= {}
+            rule.args[param.key] = cast(value, param.type)
+          }}
+        />
+      </div>
+    )
+  })
+
+  return <>{items}</>
+})
+
 export const ValidationRuleEditor = observer(({rule, onRemove}: ValidationRuleEditorProps) => {
   const {store, model} = useComponentData()
   const {t} = useTranslation()
   const schema = store.schema
+  const viewerStore = useStore()
 
   const type = model.valueType
   if (!type || !schema) return null
 
-  const ruleDefinition = ValidationRules[type][rule.key]
+  const getValidationRule = (type: SchemaType, ruleKey: string) => {
+    const rulesByType = viewerStore.getValidationRules(type)
+    if (!rule.type || rule.type === 'internal') return rulesByType.internal[ruleKey]
+    if (rule.type === 'external') return rulesByType.external?.[ruleKey]
+  }
+
+  const ruleDefinition = getValidationRule(type, rule.key)
+  if (!ruleDefinition) {
+    console.warn(`Cannot find validation rule for type: '${type}' and key: '${rule.key}'`)
+    return null
+  }
 
   return (
     <div>
-      <SRuleName>{t(`validation.rule.${rule.key}`)}</SRuleName>
+      <SRuleName>{t(`validation.rule.${rule.key}`, rule.key)}</SRuleName>
       <Whisper speaker={<Tooltip>{t('validation.removeRule')}</Tooltip>} placement={'bottom'}>
         <IconButton onClick={onRemove} icon={<FaIcon icon={faTrash as unknown as IconDefinition}/>}/>
       </Whisper>
-      {ruleDefinition.params.map(param => {
-        const Input = getInput(param.type)!
-
-        return (
-          <div key={param.key}>
-            <label>{param.key}</label>
-            <Input
-              key={param.key}
-              value={rule.args?.[param.key]}
-              onChange={value => {
-                rule.args ??= {}
-                rule.args[param.key] = cast(value, param.type)
-              }}
-            />
-          </div>
-        )
-      })}
+      <RuleParamsEditor rule={rule} params={ruleDefinition.params}/>
     </div>
   )
 })
