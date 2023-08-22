@@ -1,5 +1,5 @@
 import {isUndefined} from 'lodash-es'
-import {ComponentProperty, ComponentStore} from '../../stores/ComponentStore'
+import {ComponentProperty, ComponentStore, isFunctionalProperty} from '../../stores/ComponentStore'
 import type {IFormData} from '../../utils/IFormData'
 
 const fnCache = new Map<string, Function>()
@@ -41,7 +41,7 @@ export const calculatePropertyValue = (componentProperty: ComponentProperty, for
  * @internal
  */
 export const calculateExpressionProperty = (componentProperty: ComponentProperty, formViewerData: IFormData) => {
-  if (componentProperty.useFn) return calculatePropertyValue(componentProperty, formViewerData)
+  if (isFunctionalProperty(componentProperty)) return calculatePropertyValue(componentProperty, formViewerData)
   const fnSource = componentProperty.value || ''
   return calculateValue(`return ${fnSource}`, formViewerData)
 }
@@ -88,7 +88,7 @@ export const calculateProperties = (componentStore: ComponentStore, formViewerDa
     const componentProperty = componentStore.props[value]
     if (!componentProperty) return
 
-    if (componentProperty.useFn) {
+    if (isFunctionalProperty(componentProperty)) {
       try {
         data[value] = calculatePropertyValue(componentProperty, formViewerData)
       } catch (e) {

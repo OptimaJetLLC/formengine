@@ -21,7 +21,7 @@ import type {ViewMode} from '../types'
 import {isPromise, isRecord} from '../utils'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
-import {ComponentStore} from './ComponentStore'
+import {ComponentStore, isFunctionalProperty} from './ComponentStore'
 import {Form} from './Form'
 import type {FormViewerValidationRules} from './FormViewerValidationRules'
 import type {IStore} from './IStore'
@@ -260,7 +260,7 @@ export class Store implements IStore, IFormViewer {
 function updateFnValue(viewerStore: Store) {
   return function (component: ComponentStore, key: string): [boolean, any?] {
     const property = component.props[key]
-    if (property && property.useFn) {
+    if (isFunctionalProperty(property)) {
       const value = calculatePropertyValue(property, viewerStore.form.componentTree)
       return [true, value]
     }

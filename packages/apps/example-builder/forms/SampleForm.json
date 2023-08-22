@@ -110,7 +110,6 @@
         },
         "renderWhen": {
           "value": "form.data.checkbox",
-          "useFn": false,
           "fnSource": "// enter your code here\nreturn false"
         }
       },
@@ -154,11 +153,11 @@
         "props": {
           "checked": {
             "value": true,
-            "useFn": true,
+            "computeType": "function",
             "fnSource": "return new Date().getMinutes() % 2 === 0"
           },
           "children": {
-            "useFn": true,
+            "computeType": "function",
             "fnSource": "return `${form.data.title} ${form.data.checkbox} ${new Date().toISOString()}`"
           }
         },
@@ -303,8 +302,7 @@
         "type": "RsTextArea",
         "props": {
           "placeholder": {
-            "useFluentLocalization": true,
-            "useFn": false
+            "computeType": "localization"
           }
         }
       },
@@ -341,7 +339,7 @@
             "props": {
               "children": {
                 "value": "Save",
-                "useFn": true,
+                "computeType": "function",
                 "fnSource": "return `Save ${new Date().toISOString()}`"
               },
               "appearance": {

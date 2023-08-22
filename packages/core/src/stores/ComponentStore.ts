@@ -6,13 +6,35 @@ import type {BoundValueSchema} from '../features/validation'
 import {nameObservable} from '../utils/observableNaming'
 
 /**
+ * The component property value type.
+ */
+export type ComponentPropertyComputeType = 'function' | 'localization'
+
+/**
  * The value of the component property.
  */
 export interface ComponentProperty {
   value?: any
-  useFn?: boolean
   fnSource?: string
-  useFluentLocalization?: boolean
+  computeType?: ComponentPropertyComputeType
+}
+
+/**
+ * Returns true if the property value is calculated by the function, otherwise false.
+ * @param componentProperty the component property.
+ * @returns true if the property value is calculated by the function, otherwise false.
+ */
+export function isFunctionalProperty(componentProperty?: ComponentProperty) {
+  return componentProperty?.computeType === 'function'
+}
+
+/**
+ * Returns true if the property value is localized, otherwise false.
+ * @param componentProperty the component property.
+ * @returns true if the property value is localized, otherwise false.
+ */
+export function isLocalizedProperty(componentProperty?: ComponentProperty) {
+  return componentProperty?.computeType === 'localization'
 }
 
 /**

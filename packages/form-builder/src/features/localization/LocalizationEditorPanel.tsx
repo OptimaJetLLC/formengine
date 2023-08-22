@@ -1,5 +1,12 @@
 import styled from '@emotion/styled'
-import {defaultLanguage, getFluentCompatibleId, LocalizationTestResult, testFluentLocalization, useStore} from '@react-form-builder/core'
+import {
+  defaultLanguage,
+  getFluentCompatibleId,
+  isLocalizedProperty,
+  LocalizationTestResult,
+  testFluentLocalization,
+  useStore
+} from '@react-form-builder/core'
 import {action} from 'mobx'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
@@ -10,9 +17,9 @@ import {CodeEditorPanelProps, ErrorMessage} from '../calculation/CodeEditorPanel
 import {CodeEditor} from '../components/CodeEditor'
 import {fluentLanguageId} from './consts'
 
-export const LocalizationEditorPanel = observer(({editableProperty, onClose, onSave}: CodeEditorPanelProps) => {
+export const LocalizationEditorPanel = observer(({editableProperty, onClose}: CodeEditorPanelProps) => {
   const [error, setError] = useState<LocalizationTestResult | undefined>()
-  const [useFluentLocalization, setUseFluentLocalization] = useState(editableProperty.property?.useFluentLocalization ?? false)
+  const [useFluentLocalization, setUseFluentLocalization] = useState(isLocalizedProperty(editableProperty.property))
   const {t} = useTranslation()
   const localizationStringId = getFluentCompatibleId(`${editableProperty.componentKey}_${editableProperty.annotation.key}`)
   const viewerStore = useStore()
@@ -41,7 +48,7 @@ export const LocalizationEditorPanel = observer(({editableProperty, onClose, onS
   }, [editableProperty, builderStore.localizationLanguage])
 
   useEffect(() => {
-    setUseFluentLocalization(editableProperty.property?.useFluentLocalization || false)
+    setUseFluentLocalization(isLocalizedProperty(editableProperty.property))
   }, [editableProperty])
 
   const testLocalization = () => {
@@ -55,10 +62,10 @@ export const LocalizationEditorPanel = observer(({editableProperty, onClose, onS
   }
 
   const saveLocalization = () => {
-    editableProperty.saveProperty({useFluentLocalization: useFluentLocalization})
+    const computeType = useFluentLocalization ? 'localization' : undefined
+    editableProperty.saveProperty({computeType})
     viewerStore.form.localization.setLocalization(builderStore.localizationLanguage.fullCode, editableProperty.componentKey, editableProperty.annotation.key, value)
     setInitialValue(value)
-    onSave()
   }
 
   const beginContextLine = `${localizationStringId} =`

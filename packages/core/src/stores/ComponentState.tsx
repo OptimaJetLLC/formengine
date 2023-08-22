@@ -7,7 +7,7 @@ import type {ViewMode} from '../types'
 import type {ComputeChildren} from '../utils/ComputeChildren'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
-import {ComponentProperty, ComponentStore} from './ComponentStore'
+import {ComponentProperty, ComponentStore, isFunctionalProperty} from './ComponentStore'
 import {Store} from './Store'
 
 const computeClassName = (data: ComponentData, viewMode: ViewMode) => {
@@ -47,7 +47,7 @@ const getSubstitutedValue = (props: Record<string, ComponentProperty>, store: St
   for (const key in props) {
     const value = props[key]?.value
 
-    if (props[key]?.useFn || typeof value !== 'string' || key === 'value') continue
+    if (isFunctionalProperty(props[key]) || typeof value !== 'string' || key === 'value') continue
     //if (store.isBuilderMode) continue
 
     result[key] = substitute(value, store.form.componentTree.data)

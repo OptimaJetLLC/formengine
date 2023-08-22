@@ -4,7 +4,14 @@ import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
 import * as faGlobe from '@fortawesome/free-solid-svg-icons/faGlobe.js'
 import * as faEdit from '@fortawesome/free-solid-svg-icons/faMarker.js'
-import {ComponentProperty, namedObserver, useComponentData, useStore} from '@react-form-builder/core'
+import {
+  ComponentProperty,
+  isFunctionalProperty,
+  isLocalizedProperty,
+  namedObserver,
+  useComponentData,
+  useStore
+} from '@react-form-builder/core'
 import {cloneElement, ComponentProps} from 'react'
 import {IconButton} from 'rsuite'
 import useUniqueId from 'rsuite/esm/utils/useUniqueId.js'
@@ -45,14 +52,15 @@ const CodeButton = namedObserver('CodeButton', ({currentEditableProperty, getEdi
   const annotation = currentEditableProperty.annotation
   const hasCode = property?.fnSource
   const hasFluentLocalization = viewerStore.form.localization.hasComponentProperty(currentEditableProperty.componentKey, annotation.key)
-  const useFn = property?.useFn
-  const useFluentLocalization = property?.useFluentLocalization
+  const useFn = isFunctionalProperty(property)
+  const useFluentLocalization = isLocalizedProperty(property)
+
   const getLabel = useTranslationPart('propertiesEditor.codeButton')
 
   const getHintTranslation = () => {
     if (!annotation.calculable && !annotation.localizable) return 'neitherCalculableNorLocalizable'
-    if (hasCode) return 'editCalculable'
-    if (hasFluentLocalization) return 'editLocalizable'
+    if (hasCode && useFn) return 'editCalculable'
+    if (hasFluentLocalization && useFluentLocalization) return 'editLocalizable'
     if (annotation.calculable && annotation.localizable) return 'hintCalculableAndLocalizable'
     if (annotation.calculable) return 'hintCalculable'
     return 'hintLocalizable'
@@ -65,8 +73,12 @@ const CodeButton = namedObserver('CodeButton', ({currentEditableProperty, getEdi
   }
 
   const getIcon = () => {
-    if (hasCode) return faCode as unknown as IconDefinition
-    if (hasFluentLocalization) return faGlobe as unknown as IconDefinition
+    const codeIcon = faCode as unknown as IconDefinition
+    const globeIcon = faGlobe as unknown as IconDefinition
+    if (useFn) return codeIcon
+    if (useFluentLocalization) return globeIcon
+    if (hasCode) return codeIcon
+    if (hasFluentLocalization) return globeIcon
     return faEdit as unknown as IconDefinition
   }
 

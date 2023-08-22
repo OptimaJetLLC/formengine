@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {BaseCompilationResult, CompilationResult, compileFn, namedObserver} from '@react-form-builder/core'
+import {BaseCompilationResult, CompilationResult, compileFn, isFunctionalProperty, namedObserver} from '@react-form-builder/core'
 import {action} from 'mobx'
 import {useEffect, useState} from 'react'
 import {Button, ButtonGroup, Checkbox} from 'rsuite'
@@ -54,13 +54,12 @@ export const ErrorMessage = ({result}: { result?: BaseCompilationResult }) => {
 export interface CodeEditorPanelProps {
   editableProperty: EditableProperty
   onClose: () => void
-  onSave: () => void
 }
 
-export const CodeEditorPanel = namedObserver('CodeEditorPanel', ({editableProperty, onClose, onSave}: CodeEditorPanelProps) => {
+export const CodeEditorPanel = namedObserver('CodeEditorPanel', ({editableProperty, onClose}: CodeEditorPanelProps) => {
   const [sourceCode, setSourceCode] = useState(editableProperty.property?.fnSource || codePlaceHolder)
   const [compilationError, setCompilationError] = useState<CompilationResult | undefined>()
-  const [useFn, setUseFn] = useState(editableProperty.property?.useFn || false)
+  const [useFn, setUseFn] = useState(isFunctionalProperty(editableProperty.property))
   const [initialValue, setInitialValue] = useState('')
 
   const compileCode = () => {
@@ -69,9 +68,9 @@ export const CodeEditorPanel = namedObserver('CodeEditorPanel', ({editableProper
   }
 
   const saveCode = () => {
-    editableProperty.saveProperty({useFn: useFn, fnSource: sourceCode})
+    const computeType = useFn ? 'function' : undefined
+    editableProperty.saveProperty({computeType, fnSource: sourceCode})
     setInitialValue(sourceCode)
-    onSave()
   }
 
   useEffect(() => {
@@ -81,7 +80,7 @@ export const CodeEditorPanel = namedObserver('CodeEditorPanel', ({editableProper
 
   useEffect(() => {
     setSourceCode(editableProperty.property?.fnSource || codePlaceHolder)
-    setUseFn(editableProperty.property?.useFn || false)
+    setUseFn(isFunctionalProperty(editableProperty.property))
   }, [editableProperty])
 
   const functionHeader = `/**

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import {isLocalizedProperty} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import {Nav} from 'rsuite'
@@ -9,7 +10,7 @@ import {Panel} from './Panel'
 
 export const BottomPanel = observer(() => {
   const getActive = () => {
-    return builderStore.calculatedProperty?.property?.useFluentLocalization ? 'localization' : 'code'
+    return isLocalizedProperty(builderStore.calculatedProperty?.property) ? 'localization' : 'code'
   }
   const builderStore = useBuilderStore()
   const [active, setActive] = useState(getActive())
@@ -18,13 +19,6 @@ export const BottomPanel = observer(() => {
     builderStore.setPanelVisible('bottom', true)
     setActive(getActive())
   }, [builderStore.calculatedProperty])
-  const onSave = () => {
-    if (builderStore.calculatedProperty?.property?.useFn) {
-      builderStore.calculatedProperty.saveProperty({useFluentLocalization: false})
-    } else if (builderStore.calculatedProperty?.property?.useFluentLocalization) {
-      builderStore.calculatedProperty.saveProperty({useFn: false})
-    }
-  }
 
   if (!builderStore.calculatedProperty) {
     console.error('BottomPanel. calculatedProperty is undefined')
@@ -34,9 +28,9 @@ export const BottomPanel = observer(() => {
   const calculable = builderStore.calculatedProperty.annotation.calculable
   const localizable = builderStore.calculatedProperty.annotation.localizable
   const codeEditorPanel = <CodeEditorPanel editableProperty={builderStore.calculatedProperty}
-                                           onClose={() => builderStore.calculatedProperty = undefined} onSave={onSave}/>
+                                           onClose={() => builderStore.calculatedProperty = undefined}/>
   const localizationEditorPanel = <LocalizationEditorPanel editableProperty={builderStore.calculatedProperty}
-                                                           onClose={() => builderStore.calculatedProperty = undefined} onSave={onSave}/>
+                                                           onClose={() => builderStore.calculatedProperty = undefined}/>
   if (!localizable && !calculable) {
     console.error('BottomPanel. Both localizable and calculable')
     return null
