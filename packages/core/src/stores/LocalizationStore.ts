@@ -150,6 +150,57 @@ export class LocalizationStore {
   }
 
   /**
+   * Changes the component key for all languages in the value object.
+   * @param oldComponentKey the old component key to be replaced.
+   * @param newComponentKey the new component key to replace the old component key.
+   */
+  changeComponentKey(oldComponentKey: string, newComponentKey: string) {
+    const fluentCompatibleOldComponentKey = getFluentCompatibleId(oldComponentKey)
+    const fluentCompatibleNewComponentKey = getFluentCompatibleId(newComponentKey)
+    for (const languageFullCode in this.value) {
+      const component = this.value[languageFullCode][fluentCompatibleOldComponentKey]
+      if (component) {
+        this.value[languageFullCode][fluentCompatibleNewComponentKey] = component
+        delete this.value[languageFullCode][fluentCompatibleOldComponentKey]
+      }
+    }
+  }
+
+  /**
+   * Retrieves the localization values for a given component key.
+   * @param componentKey the key of the component to retrieve localization for.
+   * @returns the object containing the localization values for the component in each supported language.
+   */
+  getLocalizationForComponent(componentKey: string) {
+    const fluentCompatibleComponentKey = getFluentCompatibleId(componentKey)
+    const localization: LocalizationValue = {}
+    for (const languageFullCode in this.value) {
+      const component = this.value[languageFullCode][fluentCompatibleComponentKey]
+      if (component) {
+        localization[languageFullCode] = {}
+        localization[languageFullCode][componentKey] = component
+      }
+    }
+    return localization
+  }
+
+  /**
+   * Inserts the localization values for a given component key. Replaces the old component key with the new component key.
+   * @param localization the localization object for insertion.
+   * @param oldComponentKey the old component key that needs to be replaced.
+   * @param newComponentKey the new component key to be added.
+   */
+  addLocalizationWithNewKey(localization: LocalizationValue, oldComponentKey: string, newComponentKey: string) {
+    const fluentCompatibleNewComponentKey = getFluentCompatibleId(newComponentKey)
+    for (const languageFullCode in localization) {
+      const component = localization[languageFullCode][oldComponentKey]
+      if (component) {
+        this.value[languageFullCode][fluentCompatibleNewComponentKey] = component
+      }
+    }
+  }
+
+  /**
    * The constructor.
    * @param value the initial localization value.
    */

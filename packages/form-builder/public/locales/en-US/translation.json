@@ -244,7 +244,8 @@
       "editLocalizable": "Edit Fluent localization",
       "neitherCalculableNorLocalizable": "Neither calculable nor localizable"
     },
-    "setInputHint": "Press Enter for add value"
+    "setInputHint": "Press Enter to add a value",
+    "applyKey": "Apply key changes"
   },
   "toolbar": {
     "elements": "Elements",

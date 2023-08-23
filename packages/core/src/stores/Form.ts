@@ -1,7 +1,7 @@
 import {makeAutoObservable} from 'mobx'
+import {Language} from '../features/localization/types'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {LocalizationStore} from './LocalizationStore'
-import {Language} from '../features/localization/types'
 
 /**
  * Represents a form that is rendered in Viewer or edited in Builder.
@@ -40,6 +40,9 @@ export class Form {
     this.languages = languages
     this.defaultLanguage = defaultLanguage
 
+    this.componentTree.events.onBeforeDelete.subscribe(this.onComponentDataBeforeDelete.bind(this))
+    this.componentTree.events.onAfterKeyChanged.subscribe(this.onComponentDataAfterKeyChanged.bind(this))
+
     makeAutoObservable(this)
   }
 
@@ -49,5 +52,13 @@ export class Form {
   dispose() {
     this.componentTree.dispose()
     this.localization.dispose()
+  }
+
+  private onComponentDataBeforeDelete(component: ComponentData) {
+    this.localization.removeLocalization(component.key)
+  }
+
+  private onComponentDataAfterKeyChanged(_: ComponentData, {oldKey, newKey}: { oldKey: string, newKey: string }) {
+    this.localization.changeComponentKey(oldKey, newKey)
   }
 }

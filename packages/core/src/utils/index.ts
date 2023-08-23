@@ -1,5 +1,5 @@
 import {observer} from 'mobx-react'
-import {IReactComponent} from 'mobx-react/dist/types/IReactComponent'
+import type {FunctionComponent} from 'react'
 import {ComponentStore} from '../stores/ComponentStore'
 
 // todo rename 'fn' parameter to 'value'
@@ -45,7 +45,7 @@ export function isRecord(value: any): value is Record<string, unknown> {
  * @param component the React component.
  * @returns the observable React component.
  */
-export function namedObserver<T extends IReactComponent>(displayName: string, component: T) {
+export function namedObserver<T extends FunctionComponent<any>>(displayName: string, component: T) {
   const observerComponent = observer(component)
   observerComponent.displayName = displayName
   return observerComponent

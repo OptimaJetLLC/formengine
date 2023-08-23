@@ -343,9 +343,20 @@ export class BuilderStore {
     const clone = assign(new ComponentStore('', ''), cloneDeep(source.store))
     clone.slot = slot
     clone.bindCondition = bindCondition
+
     const componentData = this.viewer.createComponentData(clone)
-    componentData.unifyKeys(this.viewer.form.componentTree)
+
+    const keysMap = componentData.unifyKeys(this.viewer.form.componentTree)
+
     this.move(componentData, target, insertPosition)
+
+    treeForEach(componentData, cd => {
+      const oldKey = keysMap.get(cd.key)
+      if (!oldKey) return
+      const localization = this.viewer.form.localization.getLocalizationForComponent(oldKey)
+      if (localization) this.viewer.form.localization.addLocalizationWithNewKey(localization, oldKey, cd.key)
+    })
+
     this.selectNode(componentData)
 
     return clone

@@ -1,5 +1,5 @@
 import {FluentVariable} from '@fluent/bundle/esm/bundle.js'
-import {makeAutoObservable} from 'mobx'
+import {IReactionDisposer, makeAutoObservable, reaction} from 'mobx'
 import {Model} from '../../features/define'
 import {getFluentCompatibleId} from '../../features/localization/getFluentCompatibleId'
 import {isFluentVariable} from '../../features/localization/isFluentVariable'
@@ -8,6 +8,7 @@ import {ComponentStore} from '../../stores/ComponentStore'
 import {createNonNullableContext} from '../createNonNullableContext'
 import type {IFormData} from '../IFormData'
 import {nameObservable} from '../observableNaming'
+import {SyncEvent} from '../SyncEvent'
 import {treeForEach} from '../treeUtils'
 
 let counter = 0
@@ -17,9 +18,40 @@ function generateId(prefix: string) {
 }
 
 /**
+ * Represents the event argument for the event when the component key changes.
+ */
+export class ComponentKeyChangedEventArgs {
+  /**
+   * Constructs a new instance of the ComponentKeyChangedEventArgs class.
+   * @param oldKey the old key.
+   * @param newKey the new key.
+   */
+  constructor(readonly oldKey: string, readonly newKey: string) {
+  }
+}
+
+/**
+ * Represents a class that holds events related to component data.
+ */
+export class ComponentDataEvents {
+  readonly onAfterKeyChanged: SyncEvent<ComponentData, ComponentKeyChangedEventArgs> = new SyncEvent()
+  readonly onBeforeDelete: SyncEvent<ComponentData, undefined> = new SyncEvent()
+
+  /**
+   * Unsubscribes all events.
+   */
+  dispose() {
+    this.onAfterKeyChanged.dispose()
+    this.onBeforeDelete.dispose()
+  }
+}
+
+/**
  * This tree of elements contains the data required to display the component. It is synchronized with the ComponentStore tree.
  */
 export class ComponentData implements IFormData {
+  #disposers: IReactionDisposer[]
+  #events?: ComponentDataEvents
   readonly id: string
   readonly store: ComponentStore
   readonly model: Model
@@ -52,6 +84,14 @@ export class ComponentData implements IFormData {
     })
 
     makeAutoObservable(this, undefined, {name: nameObservable('ComponentData', {key: componentStore.key})})
+
+    const createKeyChangedReaction = () => {
+      return reaction(() => this.key, (key, oldKey) => {
+        this.invokeOnAfterKeyChanged(this, new ComponentKeyChangedEventArgs(oldKey, key))
+      })
+    }
+
+    this.#disposers = [createKeyChangedReaction()]
   }
 
   /**
@@ -122,6 +162,16 @@ export class ComponentData implements IFormData {
   }
 
   /**
+   * @returns the ComponentDataEvents object.
+   */
+  get events(): ComponentDataEvents {
+    if (!this.#events) {
+      this.#events = new ComponentDataEvents()
+    }
+    return this.#events
+  }
+
+  /**
    * Find the node with the given key.
    * @param key the key to find.
    * @returns the node or undefined if not found.
@@ -139,8 +189,10 @@ export class ComponentData implements IFormData {
   /**
    * Assigns unique keys to the items in the tree.
    * @param root the root of the tree to unify keys. Defaults to the root of this tree.
+   * @returns the map of new keys to old keys.
    */
   unifyKeys(root: ComponentData) {
+    const keysMap = new Map<string, string>()
     const keysList: string[] = []
     treeForEach(root, ({key}: ComponentData) => {
       keysList.push(key)
@@ -149,8 +201,12 @@ export class ComponentData implements IFormData {
       let count = 1
       const withCount = () => `${item.store.type} ${count}`
       while (keysList.includes(withCount())) count++
-      keysList.push(item.store.key = withCount())
+      const newKey = withCount()
+      keysMap.set(newKey, item.key)
+      item.store.key = newKey
+      keysList.push(newKey)
     })
+    return keysMap
   }
 
   /**
@@ -165,7 +221,9 @@ export class ComponentData implements IFormData {
    */
   delete() {
     this.parent?.removeChild(this)
-    this.field?.dispose()
+    const allNodes = this.collectAllNodesAsArray([])
+    this.invokeOnBeforeDeleted(allNodes)
+    this.disposeNodes(allNodes)
   }
 
   /**
@@ -243,11 +301,7 @@ export class ComponentData implements IFormData {
    */
   dispose() {
     const allNodes = this.collectAllNodesAsArray([])
-    allNodes.forEach(componentData => {
-      componentData.field?.dispose()
-      componentData.parent = undefined
-      componentData.children = []
-    })
+    this.disposeNodes(allNodes)
   }
 
   /**
@@ -255,6 +309,21 @@ export class ComponentData implements IFormData {
    */
   get isRoot() {
     return !this.parent
+  }
+
+  /**
+   * Disposes the nodes by calling the disposers, disposing the field,
+   * and resetting the parent and children properties to undefined and an empty array, respectively.
+   * @param nodes the array of ComponentData objects representing the nodes to dispose.
+   */
+  private disposeNodes(nodes: ComponentData[]) {
+    nodes.forEach(componentData => {
+      componentData.#events?.dispose()
+      componentData.#disposers.forEach(disposer => disposer())
+      componentData.field?.dispose()
+      componentData.parent = undefined
+      componentData.children = []
+    })
   }
 
   private collectAllNodesAsArray(acc: ComponentData[]) {
@@ -296,6 +365,20 @@ export class ComponentData implements IFormData {
     if (storeIndex > -1) {
       this.store.children.splice(storeIndex, 1)
     }
+  }
+
+  private invokeOnAfterKeyChanged(node: ComponentData, eventArgs: ComponentKeyChangedEventArgs) {
+    if (this.#events?.onAfterKeyChanged.isSubscribed) {
+      this.#events.onAfterKeyChanged.invoke(node, eventArgs)
+    }
+    this.parent?.invokeOnAfterKeyChanged(node, eventArgs)
+  }
+
+  private invokeOnBeforeDeleted(nodes: ComponentData[]) {
+    if (this.#events?.onBeforeDelete.isSubscribed) {
+      nodes.forEach(node => this.#events?.onBeforeDelete.invoke(node, undefined))
+    }
+    this.parent?.invokeOnBeforeDeleted(nodes)
   }
 }
 
