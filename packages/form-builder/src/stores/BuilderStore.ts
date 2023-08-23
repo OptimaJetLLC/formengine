@@ -287,8 +287,7 @@ export class BuilderStore {
    * @param text the form serialized in JSON.
    */
   parseForm(text: string) {
-    const persistedForm = JSON.parse(text) as PersistedForm
-    this.viewer.applyPersistedForm(persistedForm)
+    this.viewer.applyStringForm(text)
 
     if (this.calculatedProperty) this.calculatedProperty = undefined
   }

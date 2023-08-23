@@ -1,7 +1,6 @@
 import type {ComponentType} from 'react'
 import {ForwardedRef} from 'react'
 import {ComponentStore} from '../../stores/ComponentStore'
-import type {PersistedForm} from '../../stores/PersistedForm'
 import type {ViewMode} from '../../types'
 import type {ComputeChildren} from '../../utils/ComputeChildren'
 import {IFormData} from '../../utils/IFormData'
@@ -25,9 +24,9 @@ export interface FormViewerProps {
   /**
    * Loads the form.
    * @param name the form name.
-   * @returns the object or {@link Promise} with the form.
+   * @returns the string or {@link Promise} with the form.
    */
-  getForm?: (name?: string) => PersistedForm | Promise<PersistedForm>
+  getForm?: (name?: string) => string | Promise<string>
 
   /**
    * The form name.

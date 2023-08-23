@@ -2,7 +2,7 @@ import {FormBuilder} from '@react-form-builder/builder'
 import {BuilderView} from '@react-form-builder/builder/view'
 import {antdComponents} from '@react-form-builder/components-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
-import {ComponentStore, ExternalValidators, IFormViewer, Language, PersistedForm} from '@react-form-builder/core'
+import {ComponentStore, ExternalValidators, IFormViewer, Language} from '@react-form-builder/core'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useRef, useState} from 'react'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
@@ -41,11 +41,10 @@ const formStorage = indexedDbExists
 
 const sampleFormName = 'SampleForm'
 
-async function getForm(name?: string): Promise<PersistedForm> {
+async function getForm(name?: string): Promise<string> {
   if (!formStorage) throw new Error('IndexedDB not supported')
   if (typeof name === 'undefined') throw new Error('Form name is not defined')
-  const form = await formStorage.getForm(name)
-  return JSON.parse(form) as PersistedForm
+  return await formStorage.getForm(name)
 }
 
 const externalValidators: ExternalValidators = {

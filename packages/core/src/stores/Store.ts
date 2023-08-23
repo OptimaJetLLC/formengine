@@ -177,18 +177,18 @@ export class Store implements IStore, IFormViewer {
    * @param getForm the function that loads the form.
    * @param formName the form name.
    */
-  loadForm(getForm?: (name?: string) => PersistedForm | Promise<PersistedForm>, formName?: string) {
+  loadForm(getForm?: (name?: string) => string | Promise<string>, formName?: string) {
     if (!getForm) return
 
     try {
       const form = getForm(formName)
-      if (isPromise<PersistedForm>(form)) {
+      if (isPromise<string>(form)) {
         form
-          .then(this.applyPersistedForm.bind(this))
+          .then(this.applyStringForm.bind(this))
           .catch(this.#onLoadError.bind(this))
         return
       }
-      this.applyPersistedForm(form)
+      this.applyStringForm(form)
     } catch (e) {
       this.#onLoadError(e)
     }
@@ -235,6 +235,17 @@ export class Store implements IStore, IFormViewer {
     console.error(e)
     const componentStore = buildInternalErrorStore(e)
     this.applyPersistedForm({form: componentStore, localization: {}, defaultLanguage: globalDefaultLanguage.fullCode, languages: []})
+  }
+
+  /**
+   * Populates the value of this store with the values of the saved form.
+   * @param text saved form value.
+   */
+  applyStringForm(text: string) {
+    const persistedForm = JSON.parse(text) as PersistedForm
+    // todo add custom properties in FB-497 (Add calendar component)
+    // this.fixPropsTypes(persistedForm.form)
+    this.applyPersistedForm(persistedForm)
   }
 
   /**

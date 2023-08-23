@@ -7,7 +7,8 @@ import 'rsuite/dist/rsuite.min.css'
 const loadForm = async (formName?: string) => {
   const name = formName || ''
   const response = await fetch(`http://127.0.0.1:3000/${name}.json`)
-  return await response.json()
+  const json = await response.json()
+  return JSON.stringify(json)
 }
 
 function App() {

@@ -2,7 +2,6 @@ import {FormBuilder} from '@react-form-builder/builder'
 import {BuilderView} from '@react-form-builder/builder/view'
 import {antdComponents} from '@react-form-builder/components-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
-import type {PersistedForm} from '@react-form-builder/core'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
@@ -31,11 +30,10 @@ const formStorage = indexedDbExists
   ? new IndexedDbFormStorage()
   : undefined
 
-async function getForm(name?: string): Promise<PersistedForm> {
+async function getForm(name?: string): Promise<string> {
   if (!formStorage) throw new Error('IndexedDB not supported')
   if (typeof name === 'undefined') throw new Error('Form name is not defined')
-  const form = await formStorage.getForm(name)
-  return JSON.parse(form) as PersistedForm
+  return await formStorage.getForm(name)
 }
 
 const getFormFn = (formName?: string) => {
