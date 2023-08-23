@@ -7,6 +7,7 @@ import {AttributesInput} from './AttributesInput'
 import {BooleanInput} from './BooleanInput'
 import {ChildViewer} from './ChildViewer'
 import {ColorInput} from './ColorInput'
+import {DateInput} from './DateInput'
 import {EventEditor} from './EventEditor'
 import {KeyInput} from './KeyInput'
 import {MultiPicker} from './MultiPicker'
@@ -29,6 +30,7 @@ export const EditorMap: Record<EditorType, ComponentType> = {
   string: StringInput,
   boolean: BooleanInput,
   number: NumberInput,
+  date: DateInput,
   size: SizeInput,
   array: ArrayInput,
   arrayOfString: ArrayOfStringInput,

@@ -22,6 +22,15 @@ export function isString(value: any): value is string {
 }
 
 /**
+ * Type predicate, asserts that the value is a number.
+ * @param value the value.
+ * @returns true if the value is a number, false otherwise.
+ */
+export function isNumber(value: any): value is number {
+  return typeof value === 'number'
+}
+
+/**
  * Type predicate, asserts that the value is a {@link Promise}.
  * @param value the value.
  * @returns true if the value is a {@link Promise}, false otherwise.

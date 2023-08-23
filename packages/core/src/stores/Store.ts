@@ -18,7 +18,7 @@ import {SimpleField} from '../features/validation/utils/SimpleField'
 import {TemplateField} from '../features/validation/utils/TemplateField'
 import {isStoreDataInParentForm} from '../features/validation/utils/util'
 import type {ViewMode} from '../types'
-import {isPromise, isRecord} from '../utils'
+import {isNumber, isPromise, isRecord, isString} from '../utils'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
 import {ComponentStore, isFunctionalProperty} from './ComponentStore'
@@ -27,6 +27,11 @@ import type {FormViewerValidationRules} from './FormViewerValidationRules'
 import type {IStore} from './IStore'
 import {LocalizationStore} from './LocalizationStore'
 import type {PersistedForm} from './PersistedForm'
+
+const propertiesToFix: Record<string, string[]> = {
+  'RsDatePicker': ['calendarDefaultDate', 'defaultValue', 'value'],
+  'RsCalendar': ['defaultValue', 'value'],
+}
 
 /**
  * Reduction function type.
@@ -243,9 +248,22 @@ export class Store implements IStore, IFormViewer {
    */
   applyStringForm(text: string) {
     const persistedForm = JSON.parse(text) as PersistedForm
-    // todo add custom properties in FB-497 (Add calendar component)
-    // this.fixPropsTypes(persistedForm.form)
+    this.fixPropertyTypes(persistedForm.form)
     this.applyPersistedForm(persistedForm)
+  }
+
+  private fixPropertyTypes(componentStore: ComponentStore) {
+    // workaround, we need to restore the ComponentStore along with metadata information
+    const properties = propertiesToFix[componentStore.type]
+    properties?.forEach(property => this.fixDateProperty(componentStore, property))
+    componentStore.children?.forEach(child => this.fixPropertyTypes(child))
+  }
+
+  private fixDateProperty(componentStore: ComponentStore, property: string) {
+    const value = componentStore.props[property]?.value
+    if (isString(value) || isNumber(value)) {
+      componentStore.props[property].value = new Date(value)
+    }
   }
 
   /**

@@ -31,6 +31,11 @@ const filterObj = (obj: Object) => {
   Object.entries(obj).forEach(([key, value]) => {
     const typeIs = (valueType: string) => typeof value == valueType
 
+    if (value instanceof Date) {
+      filtered[key] = value.toISOString()
+      return
+    }
+
     if (typeIs('object')) {
       filtered[key] = filterObj(value)
       return

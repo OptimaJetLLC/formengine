@@ -1,12 +1,14 @@
 import {createView, Definer} from '@react-form-builder/builder/view'
 import {rsBreadcrumb} from './components/RsBreadcrumb'
 import {rsButton} from './components/RsButton'
+import {rsCalendar} from './components/RsCalendar'
 import {rsCard} from './components/RsCard'
 import {rsCheckbox} from './components/RsCheckbox'
 import {rsCollectionEditor} from './components/RsCollectionEditor'
 import {rsContainer} from './components/RsContainer'
 import {rsCustomBlock} from './components/RsCustomBlock'
 import {rsCustomControl} from './components/RsCustomControl'
+import {rsDatePicker} from './components/RsDatePicker'
 import {rsDropdown} from './components/RsDropdown'
 import {rsDropzone} from './components/RsDropzone'
 import {rsErrorMessage} from './components/RsErrorMessage'
@@ -36,8 +38,10 @@ import {rsUploader} from './components/RsUploader'
 
 const categories = {
   fields: [
+    rsCalendar,
     rsCheckbox,
     rsCollectionEditor,
+    rsDatePicker,
     rsDropdown,
     rsInput,
     rsNumberFormat,

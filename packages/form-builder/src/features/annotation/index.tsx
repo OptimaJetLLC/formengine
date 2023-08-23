@@ -20,6 +20,7 @@ export const string = createProperty('string').typed('string').localize
 export const boolean = createProperty('boolean').typed('boolean')
 export const number = createProperty('number').typed('number')
 export const size = createProperty('size').typed('string')
+export const date = createProperty('date').typed('date')
 
 //Array
 export const array = createProperty('array').array
