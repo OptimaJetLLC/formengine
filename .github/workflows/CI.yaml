@@ -11,7 +11,7 @@ concurrency:
 jobs:
   tests:
     name: Run Tests
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
@@ -30,7 +30,7 @@ jobs:
 
   build:
     name: Build Packages
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
@@ -49,7 +49,7 @@ jobs:
 
   check-circular-deps:
     name: Check circular dependencies
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
@@ -68,7 +68,7 @@ jobs:
 
   eslint:
     name: ESLint
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
@@ -87,7 +87,7 @@ jobs:
 
   unused-exports:
     name: Check unused exports
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
@@ -106,7 +106,7 @@ jobs:
 
   type-check:
     name: Perform a type check
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
