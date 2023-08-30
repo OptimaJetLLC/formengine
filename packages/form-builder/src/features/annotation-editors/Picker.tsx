@@ -1,9 +1,9 @@
 import styled from '@emotion/styled'
 import {isUndefined} from 'lodash-es'
 import {InputPicker} from 'rsuite'
-import {useEditor} from '../../utils/useEditor'
 import {PropertyAn} from '../annotation/types/annotations/PropertyAn'
 import LabeledProperty from '../components/LabeledProperty'
+import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
 const addCustomValue = ({data}: PropertyAn, value: string) => {
   if (isUndefined(value)) {
@@ -19,14 +19,15 @@ const addCustomValue = ({data}: PropertyAn, value: string) => {
 
 /**
  * The property editor for property of type "single select", displays values as select.
+ * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const Picker = () => {
-  const {value, onChange, annotation, onRemove} = useEditor()
+export const Picker = (props: AnnotationEditorProps) => {
+  const {value, onChange, annotation, onClean} = props
   const data = addCustomValue(annotation as PropertyAn, value)
 
   return <LabeledProperty annotation={annotation}>
-    <SInputPicker value={value ?? ''} data={data} onChange={onChange} onClean={onRemove}
+    <SInputPicker value={value ?? ''} data={data} onChange={onChange} onClean={onClean}
                   block cleanable creatable size={'xs'}/>
   </LabeledProperty>
 }

@@ -1,15 +1,16 @@
 import styled from '@emotion/styled'
 import {Close} from '@rsuite/icons'
 import {InputNumber} from 'rsuite'
-import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
+import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
 /**
  * The property editor for the numeric property type.
+ * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-const NumberInput = () => {
-  const {onChange, onRemove, value, annotation} = useEditor()
+const NumberInput = (props: AnnotationEditorProps) => {
+  const {value, onChange, onClean, annotation} = props
   const handleChange = (value: any) => {
     if (typeof value === 'string') {
       onChange(Number(value))
@@ -18,7 +19,7 @@ const NumberInput = () => {
     onChange(value)
   }
   const inputNumberProps = {...annotation.editorProps, value}
-  const closeButton = <Close onClick={onRemove} style={{cursor: 'pointer'}}/>
+  const closeButton = <Close onClick={onClean} style={{cursor: 'pointer'}}/>
 
   return <LabeledProperty annotation={annotation}>
     <SNumberInput {...inputNumberProps} onChange={handleChange} size={'xs'} postfix={closeButton}/>

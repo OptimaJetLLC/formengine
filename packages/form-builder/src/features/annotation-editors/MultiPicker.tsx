@@ -2,9 +2,9 @@ import styled from '@emotion/styled'
 import {startCase} from 'lodash-es'
 import {TagPicker} from 'rsuite'
 import type {ItemDataType} from 'rsuite/esm/@types/common'
-import {useEditor} from '../../utils/useEditor'
 import {PropertyAn} from '../annotation/types/annotations/PropertyAn'
 import LabeledProperty from '../components/LabeledProperty'
+import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
 //TODO add custom items
 const prepareData = ({data}: PropertyAn, values: string[]) => {
@@ -26,14 +26,15 @@ const prepareData = ({data}: PropertyAn, values: string[]) => {
 
 /**
  * The property editor for property of type "multiple select", displays values as select.
+ * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const MultiPicker = () => {
-  const {value, onChange, annotation, onRemove} = useEditor()
+export const MultiPicker = (props: AnnotationEditorProps) => {
+  const {value, onChange, annotation, onClean} = props
   const data = prepareData(annotation as PropertyAn, value)
 
   return <LabeledProperty annotation={annotation}>
-    <STagPicker value={value ?? []} data={data} onChange={onChange} onClean={onRemove}
+    <STagPicker value={value ?? []} data={data} onChange={onChange} onClean={onClean}
                 cleanable creatable size={'xs'}/>
   </LabeledProperty>
 }

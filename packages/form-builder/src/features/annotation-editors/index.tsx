@@ -1,6 +1,7 @@
 import type {ComponentType} from 'react'
 import type {EditorType} from '../annotation/types'
 import {ErrorConfig} from '../validation/ErrorConfig'
+import type {AnnotationEditorProps} from './AnnotationEditorProps'
 import {ArrayInput} from './ArrayInput'
 import {ArrayOfStringInput} from './ArrayOfStringInput'
 import {AttributesInput} from './AttributesInput'
@@ -22,7 +23,7 @@ import {TooltipPropertiesEditor} from './TooltipPropertiesEditor'
 import {TooltipTypePicker} from './TooltipTypePicker'
 import {ComponentValidationSettingsEditor} from './ValidateEditor'
 
-export const EditorMap: Record<EditorType, ComponentType> = {
+export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>> = {
   key: KeyInput,
   htmlAttributes: AttributesInput,
   stylization: StyleEditor,

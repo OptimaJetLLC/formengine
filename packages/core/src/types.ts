@@ -4,7 +4,9 @@ import {CustomActionDefinition} from './features/event'
 /**
  * React wrapper component properties.
  */
-export type WrapperProps = { children: ReactNode }
+export interface WrapperProps {
+  children: ReactNode
+}
 
 /**
  * Display resolution type.

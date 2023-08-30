@@ -1,20 +1,20 @@
 import {css} from '@emotion/css'
-import {CustomActionDefinition, useComponentData, useStore} from '@react-form-builder/core'
+import {CustomActionDefinition, useStore} from '@react-form-builder/core'
 import PlusIcon from '@rsuite/icons/Plus.js'
 import {assign} from 'lodash-es'
 import {observer} from 'mobx-react'
 import {useReducer, useRef, useState} from 'react'
 import {IconButton} from 'rsuite'
-import {useAnnotation} from '../../../../../utils/EditorContext'
 import {Popover} from '../../../../components/Popover'
 import {useTranslationPart} from '../../../../localization/hooks'
+import type {AnnotationEditorProps} from '../../../AnnotationEditorProps'
 import {CustomActionEditor} from '../CustomActionEditor'
 import {SelectAction} from './SelectAction'
 
-export const AddActionButton = observer(() => {
+export const AddActionButton = observer((props: AnnotationEditorProps) => {
   const store = useStore()
-  const data = useComponentData()
-  const eventName = useAnnotation().annotation.key
+  const data = props.componentData
+  const eventName = props.annotation.key
   const buttonRef = useRef<HTMLElement | null>(null)
   const [actionMenuOpen, toggleActionMenu] = useReducer(state => !state, false)
   const [editorData, setEditorData] = useState<CustomActionDefinition | undefined>()
@@ -40,7 +40,7 @@ export const AddActionButton = observer(() => {
       <IconButton ref={buttonRef} children={t('addAction')} onClick={toggleActionMenu} block icon={<PlusIcon/>} appearance="default"
                   size="sm"/>
       <Popover show={actionMenuOpen} parent={buttonRef.current} placement={'left-start'} className={css`z-index: 20`}>
-        <SelectAction onClose={toggleActionMenu} onOpen={setEditorData}/>
+        <SelectAction onClose={toggleActionMenu} onOpen={setEditorData} {...props}/>
       </Popover>
 
       {editorData &&

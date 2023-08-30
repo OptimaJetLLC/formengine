@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {useAnnotation} from '../../../utils/EditorContext'
+import type {AnnotationEditorProps} from '../AnnotationEditorProps'
 import {ActionList} from './components/ActionList'
 import {AddActionButton} from './components/AddActionButton'
 
@@ -17,15 +17,16 @@ const SH6 = styled.h6`
 //EventEditor: one eventName - one editor - some actions
 /**
  * The property editor for the event property type.
+ * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const EventEditor = () => {
-  const eventName = useAnnotation().annotation.key
+export const EventEditor = (props: AnnotationEditorProps) => {
+  const eventName = props.annotation.key
   return (
     <SDiv>
       <SH6>{eventName}</SH6>
-      <ActionList/>
-      <AddActionButton/>
+      <ActionList {...props}/>
+      <AddActionButton {...props}/>
     </SDiv>
   )
 }

@@ -1,17 +1,18 @@
-import {useComponentData} from '@react-form-builder/core'
 import {useEffect} from 'react'
 import {Rows} from '../../components/Containers'
+import {AnnotationEditorProps} from '../AnnotationEditorProps'
 import {ClassName} from './components/ClassName'
 import {CSSBlock} from './components/CSSBlock'
 import {DefinedStyles} from './components/DefinedStyles'
 import {StandardStyles} from './components/StandardStyles'
+import {observer} from 'mobx-react'
 
 /**
  * Component style editor for the form builder.
  * @returns the React element.
  */
-export const StyleEditor = () => {
-  const {store} = useComponentData()
+export const StyleEditor = observer((props: AnnotationEditorProps) => {
+  const {store} = props.componentData
 
   useEffect(() => {
     store.css ??= {}
@@ -27,5 +28,5 @@ export const StyleEditor = () => {
       <DefinedStyles/>
     </Rows>
   )
-}
+})
 

@@ -1,9 +1,9 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {Input, InputNumber, InputPicker} from 'rsuite'
-import {useEditor} from '../../utils/useEditor'
 import {toLabeledValues} from '../annotation/utils/LabeledValue'
 import LabeledProperty from '../components/LabeledProperty'
+import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
 type InputValue = string | number;
 export const OtherUnit = 'other'
@@ -13,10 +13,11 @@ const options = toLabeledValues([...SizeUnits, ...SizeKeywords, OtherUnit], fals
 
 /**
  * The property editor for the CSS size property type.
+ * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-const SizeInput = () => {
-  const {value: CSSValue, onChange, onRemove, annotation} = useEditor()
+const SizeInput = (props: AnnotationEditorProps) => {
+  const {value: CSSValue, onChange, annotation, onClean} = props
   const {value, unit} = parseCSSValue(CSSValue)
 
   const handleValueChange = (value: InputValue) => onChange(makeCSSValue(value, unit))
@@ -38,7 +39,7 @@ const SizeInput = () => {
           creatable
           placement={'bottomEnd'}
           size={'xs'}
-          onClean={onRemove}
+          onClean={onClean}
         />
       </Container>
     </LabeledProperty>

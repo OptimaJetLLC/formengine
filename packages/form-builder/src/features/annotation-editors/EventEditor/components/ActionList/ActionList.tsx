@@ -1,12 +1,11 @@
-import {useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
-import {useAnnotation} from '../../../../../utils/EditorContext'
 import {Rows} from '../../../../components/Containers'
+import type {AnnotationEditorProps} from '../../../AnnotationEditorProps'
 import {ActionItem} from './ActionItem'
 
-export const ActionList = observer(() => {
-  const eventName = useAnnotation().annotation.key
-  const actions = useComponentData().store.events?.[eventName]
+export const ActionList = observer((props: AnnotationEditorProps) => {
+  const eventName = props.annotation.key
+  const actions = props.componentData.store.events?.[eventName]
 
   if (!actions) return null
 

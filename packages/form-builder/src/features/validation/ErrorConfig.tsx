@@ -1,3 +1,4 @@
+import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Checkbox, Input} from 'rsuite'
@@ -8,7 +9,7 @@ import {PropertyBlock} from '../ui/RightPanel/PropertiesEditor/components/Proper
  * React form builder component that displays the configuration properties of the validation error display component.
  * @returns the React element.
  */
-export const ErrorConfig = () => {
+export const ErrorConfig = observer(() => {
   const {t} = useTranslation()
   const store = useBuilderStore()
   const [errorVisible, setErrorVisible] = useState(false)
@@ -39,4 +40,4 @@ export const ErrorConfig = () => {
       <PropertyBlock annotations={properties} context={context}/>
     </div>
   )
-}
+})

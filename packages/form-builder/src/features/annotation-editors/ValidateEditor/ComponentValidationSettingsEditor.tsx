@@ -1,8 +1,9 @@
-import {useComponentData} from '@react-form-builder/core'
 import {t} from 'i18next'
+import {observer} from 'mobx-react'
 import {useEffect} from 'react'
 import {boolean} from '../../annotation'
 import {PropertyEditorWrapper} from '../../components/PropertyEditorWrapper'
+import {AnnotationEditorProps} from '../AnnotationEditorProps'
 import {AddRuleButton} from './components/AddRuleButton'
 import {ValidationRuleEditor} from './components/ValidationRuleEditor'
 
@@ -16,8 +17,8 @@ const autoValidate = boolean
  * The React form builder component that displays the validation settings for the component value.
  * @returns the React element.
  */
-export const ComponentValidationSettingsEditor = () => {
-  const {store, model} = useComponentData()
+export const ComponentValidationSettingsEditor = observer((props: AnnotationEditorProps) => {
+  const {store, model} = props.componentData
   const type = model.valueType
   const schema = store.schema
 
@@ -31,7 +32,7 @@ export const ComponentValidationSettingsEditor = () => {
   return (
     <div>
       <h5>{t('validation.validationRules')}</h5>
-      <PropertyEditorWrapper annotation={autoValidate} getContext={() => schema}/>
+      <PropertyEditorWrapper annotation={autoValidate} context={schema}/>
       {
         schema.validations?.map((rule, index) => {
           const key = `${rule.key}-${rule.type ?? 'internal'}`
@@ -43,4 +44,4 @@ export const ComponentValidationSettingsEditor = () => {
       <AddRuleButton/>
     </div>
   )
-}
+})

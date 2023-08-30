@@ -59,10 +59,10 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
     <ComponentDataProvider value={data}>
       <Container>
         <PropertiesList>
-          {activeTab === Section.Main && <PropertyEditorWrapper annotation={key} getContext={() => data.store}/>}
+          {activeTab === Section.Main && <PropertyEditorWrapper annotation={key} context={data.store}/>}
           <PropertyBlock annotations={properties} context={data.store.props}/>
           <StyleBlock annotations={style} store={data.store}/>
-          {activeTab === Section.Style && <PropertyEditorWrapper annotation={stylization} getContext={() => ({})}/>}
+          {activeTab === Section.Style && <PropertyEditorWrapper annotation={stylization} context={{}}/>}
         </PropertiesList>
 
         {!!tooltipProps?.length && tooltipType &&
@@ -99,7 +99,7 @@ export const PropertyBlock = ({annotations, context, header}: { annotations: Ann
 
   return <>
     {!!header && <h6>{header}</h6>}
-    {annotations.map(annotation => <PropertyEditorWrapper key={annotation.key} annotation={annotation} getContext={() => context}/>)}
+    {annotations.map(annotation => <PropertyEditorWrapper key={annotation.key} annotation={annotation} context={context}/>)}
   </>
 }
 

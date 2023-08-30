@@ -1,20 +1,20 @@
 import {ComponentProperty} from '@react-form-builder/core'
+import {observer} from 'mobx-react'
 import {Input} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
-import {useAnnotation} from '../../utils/EditorContext'
 import LabeledProperty from '../components/LabeledProperty'
+import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
 /**
  * React form builder component to edit the 'Render when' component property.
+ * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const RenderWhenEditor = () => {
+export const RenderWhenEditor = observer((props: AnnotationEditorProps) => {
+  const {annotation} = props
   const selected = useBuilderStore().oneSelected?.store
-  const {annotation} = useAnnotation()
 
   if (!selected) return null
-
-  const {renderWhen} = selected
 
   const onChange = (value: string) => {
     if (!selected.renderWhen) {
@@ -37,7 +37,7 @@ export const RenderWhenEditor = () => {
 
   return (
     <LabeledProperty annotation={annotation} getEditableProperty={getEditableProperty}>
-      <Input value={renderWhen?.value ?? ''} onChange={onChange} size={'xs'}/>
+      <Input value={selected.renderWhen?.value ?? ''} onChange={onChange} size={'xs'}/>
     </LabeledProperty>
   )
-}
+})

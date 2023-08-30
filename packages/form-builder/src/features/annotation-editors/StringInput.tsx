@@ -1,14 +1,15 @@
 import {useEffect, useRef, useState} from 'react'
 import {Input} from 'rsuite'
-import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
+import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
 /**
  * The property editor for the string property type.
+ * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const StringInput = () => {
-  const {value, onChange, annotation} = useEditor()
+export const StringInput = (props: AnnotationEditorProps) => {
+  const {value, onChange, annotation} = props
   const [rowsCount, setRowsCount] = useState(0)
   const ref = useRef<HTMLTextAreaElement>(null)
   const textBig = value?.length > 15 || rowsCount >= 2

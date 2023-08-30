@@ -4,8 +4,8 @@ import {isString, isUndefined} from 'lodash-es'
 import {Button} from 'rsuite'
 import ColorPicker from 'rsuite-color-picker'
 import 'rsuite-color-picker/lib/styles.css'
-import {useEditor} from '../../utils/useEditor'
 import LabeledProperty from '../components/LabeledProperty'
+import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
 const PLACEHOLDER_COLOR = {r: 255, g: 255, b: 255, a: 0}
 
@@ -13,15 +13,15 @@ type RgbColor = { r: number; g: number; b: number; a: number } | undefined
 
 /**
  * The property editor for the color property type.
+ * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const ColorInput = () => {
-  const {value, onChange, onRemove, annotation} = useEditor()
-
+export const ColorInput = (props: AnnotationEditorProps) => {
+  const {value, onChange, onClean, annotation} = props
   return <LabeledProperty annotation={annotation}>
     <SColorPicker>
       <ColorPicker value={rgbFromString(value) ?? PLACEHOLDER_COLOR} onChange={({rgb}) => onChange(rgbToString(rgb))}/>
-      <SButton onClick={onRemove} size={'xs'}>
+      <SButton onClick={onClean} size={'xs'}>
         <Close/>
       </SButton>
     </SColorPicker>

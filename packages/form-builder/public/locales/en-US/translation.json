@@ -245,7 +245,9 @@
       "neitherCalculableNorLocalizable": "Neither calculable nor localizable"
     },
     "setInputHint": "Press Enter to add a value",
-    "applyKey": "Apply key changes"
+    "applyKey": "Apply key changes",
+    "keyMustBeUnique": "Key must be unique",
+    "keyMustNotBeEmpty": "Key must not be empty"
   },
   "toolbar": {
     "elements": "Elements",
@@ -332,11 +334,11 @@
     "test": "Test",
     "close": "Close",
     "save": "Save",
-    "useFluentLocalization" : "Use Fluent localization"
+    "useFluentLocalization": "Use Fluent localization"
   },
   "localization": {
-    "messageNotFound" : "Localization message not found",
-    "messageIsNull" : "Localization message is null"
+    "messageNotFound": "Localization message not found",
+    "messageIsNull": "Localization message is null"
   },
   "leftPanel": {
     "sectionName": {

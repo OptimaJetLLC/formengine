@@ -1,15 +1,16 @@
 import styled from '@emotion/styled'
-import {ComponentStore, useComponentData} from '@react-form-builder/core'
-import {useEditor} from '../../utils/useEditor'
+import {ComponentStore} from '@react-form-builder/core'
 import LabeledProperty from '../components/LabeledProperty'
+import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
 /**
  * The property editor for the children property type.
+ * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const ChildViewer = () => {
-  const {annotation} = useEditor()
-  const {store} = useComponentData()
+export const ChildViewer = (props: AnnotationEditorProps) => {
+  const {annotation} = props
+  const {store} = props.componentData
   const isChild = (child: ComponentStore) =>
     child.slot === annotation.key || !child.slot && annotation.key === 'children'
 

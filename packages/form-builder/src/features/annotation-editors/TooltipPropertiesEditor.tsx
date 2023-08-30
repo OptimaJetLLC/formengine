@@ -1,3 +1,5 @@
+import {useTooltipType} from '@react-form-builder/core'
+import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import useUniqueId from 'rsuite/esm/utils/useUniqueId.js'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
@@ -6,18 +8,21 @@ import {useTranslationPart} from '../localization/hooks'
 import {PropertyBlock} from '../ui/RightPanel/PropertiesEditor/components/Properties'
 import {SCheckbox} from './BooleanInput'
 import {HintedLabel} from './Hinted'
-import {useTooltipType} from '@react-form-builder/core'
 
 /**
  * React form builder component that displays the tooltip property editor .
  * @returns the React element.
  */
-export const TooltipPropertiesEditor = () => {
+export const TooltipPropertiesEditor = observer(() => {
   const t = useTranslationPart('annotation.tooltipProps')
   const id = useUniqueId('tooltip-')
-  const selected = useBuilderStore().oneSelected?.store
   const store = useBuilderStore()
+  const selected = store.oneSelected?.store
   const [useTooltip, setUseTooltip] = useState(!!selected?.tooltipProps)
+
+  useEffect(() => {
+    setUseTooltip(!!selected?.tooltipProps)
+  }, [selected?.tooltipProps])
 
   useEffect(() => {
     if (!selected) return
@@ -38,9 +43,9 @@ export const TooltipPropertiesEditor = () => {
       </HintedLabel>
       <SCheckbox checked={useTooltip} onChange={(_, checked) => setUseTooltip(checked)} id={id}></SCheckbox>
     </LabeledInput>
-    {!!selected?.tooltipProps &&
+    {useTooltip &&
       <PropertyBlock annotations={tooltipAnnotations} context={selected?.tooltipProps}/>
     }
   </>
-}
+})
 

@@ -1,12 +1,11 @@
-import {useComponentData} from '@react-form-builder/core'
 import {Check} from '@rsuite/icons'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {IconButton} from 'rsuite'
-import {useEditor} from '../../../utils/useEditor'
 import {toLabeledValues} from '../../annotation/utils/LabeledValue'
 import {EditableTable, makeColumns, SelectCell} from '../../components/EditableTable'
 import LabeledProperty from '../../components/LabeledProperty'
 import {useTranslationPart} from '../../localization/hooks'
+import type {AnnotationEditorProps} from '../AnnotationEditorProps'
 import Attributes from './react-html-attributes.json'
 
 const COLUMNS = makeColumns([
@@ -20,14 +19,20 @@ const COLUMNS = makeColumns([
 
 /**
  * The property editor for the HTML-attributes property type.
+ * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const AttributesInput = () => {
-  const {store} = useComponentData()
-  const {annotation} = useEditor()
+export const AttributesInput = (props: AnnotationEditorProps) => {
+  const {store} = props.componentData
   const getLabel = useTranslationPart('common')
-  const [value, setValue] = useState(store.htmlAttributes)
+  const initialState = store.htmlAttributes ? [...store.htmlAttributes] : store.htmlAttributes
+  const [value, setValue] = useState(initialState)
   const [changed, setChanged] = useState(false)
+
+  useEffect(() => {
+    setValue(initialState)
+    setChanged(false)
+  }, [store.htmlAttributes])
 
   const handleChange = (value: any) => {
     setValue(value)
@@ -46,7 +51,7 @@ export const AttributesInput = () => {
   )
 
   return <>
-    <LabeledProperty annotation={annotation}>
+    <LabeledProperty annotation={props.annotation}>
       {changed && confirmButton}
     </LabeledProperty>
     <EditableTable data={value ?? []} onChange={handleChange} columns={COLUMNS}/>
