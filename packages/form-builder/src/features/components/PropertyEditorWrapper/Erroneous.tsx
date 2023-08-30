@@ -1,4 +1,4 @@
-import {DataValidator, errorMessageModel, WrapperProps} from '@react-form-builder/core'
+import {DataValidator, errorMessageModel, useDestroy, WrapperProps} from '@react-form-builder/core'
 import {useEffect, useMemo, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {useEditor} from '../../../utils/useEditor'
@@ -16,6 +16,7 @@ export const Erroneous = ({children}: WrapperProps) => {
   const {annotation, value} = useEditor()
   const store = useBuilderStore()
   const [error, setError] = useState<string>()
+  const [mounted, setMounted] = useState(true)
 
   const schema = useMemo(() => DataValidator.create(
     store.viewer,
@@ -25,10 +26,15 @@ export const Erroneous = ({children}: WrapperProps) => {
 
   useEffect(() => {
     setError(undefined)
-    schema.validate(value).then(setError)
+    schema.validate(value).then(e => {
+      if (mounted) setError(e)
+    })
   }, [value])
 
-  useEffect(() => () => schema.dispose())
+  useDestroy(() => {
+    schema.dispose()
+    setMounted(false)
+  })
 
   return (
     <ErrorMessage error={error}>
