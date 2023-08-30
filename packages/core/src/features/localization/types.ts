@@ -28,9 +28,13 @@ export class Language {
   get fullCode() {
     return `${this.code}-${this.dialect}`
   }
-}
 
-/**
- * The type of callback function called during language initialization.
- */
-export type OnInitCallback = (language: string) => void;
+  /**
+   * Clones an existing instance of the language.
+   * @param source the cloning object.
+   * @returns the object clone.
+   */
+  static clone(source: Language) {
+    return new Language(source.code, source.dialect, source.name, source.description, source.bidi)
+  }
+}

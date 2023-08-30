@@ -3,7 +3,7 @@ import {
   ComponentData,
   ComponentProperty,
   ComponentStore,
-  defaultLanguage,
+  Language,
   nameObservable,
   PersistedForm,
   Store,
@@ -16,8 +16,10 @@ import {debounceTime, distinctUntilChanged, Subject} from 'rxjs'
 import type {EditorType} from '../features/annotation/types'
 import {Annotation} from '../features/annotation/types/annotations/Annotation'
 import {BuilderView} from '../features/define/utils/BuilderView'
-import {languages} from '../features/localization/consts'
-import {findLanguage, getFullLangCode, onI18nInit, onLanguageChange} from '../features/localization/utils'
+import type {TranslationResolver} from '../features/localization/BuilderI18n'
+import {BuilderI18n} from '../features/localization/BuilderI18n'
+import type {FormBuilderI18nData} from '../features/localization/FormBuilderLanguage'
+import {builtInLanguages, findLanguage} from '../features/localization/languageUtils'
 import {PanelPlacement} from '../features/ui/PanelPlacement'
 import {annotationResolver} from '../features/validation'
 import type {FormBuilderProps} from '../FormBuilderProps'
@@ -123,8 +125,12 @@ export class BuilderStore {
   landscapeMode?: boolean
   theme: BuilderTheme = getSystemTheme()
   openedPanels: PanelPlacement[] = ['left', 'right']
-  language = defaultLanguage
-  localizationLanguage = defaultLanguage
+
+  private readonly builderI18n: BuilderI18n
+  formBuilderLanguage: Language
+  localizationLanguage: Language
+  private readonly loadedLanguages: Record<string, FormBuilderI18nData> = {}
+
   calculatedProperty?: EditableProperty
   lastSaveTime = new Date()
   readonly componentsModalState: ComponentsModalState = {
@@ -137,7 +143,6 @@ export class BuilderStore {
   readonly formStorageEnabled: boolean
   readonly selected = new Set<ComponentData>()
   readonly expanded = new Set<ComponentData>()
-  readonly #disposer: IReactionDisposer[]
   private formStorage: IFormStorage
   readonly #props: Readonly<FormBuilderProps>
   readonly undoer: BuilderUndoer
@@ -154,7 +159,7 @@ export class BuilderStore {
   ) {
     makeAutoObservable(this, {
         selected: observable,
-        language: observable.ref,
+        formBuilderLanguage: observable.ref,
         localizationLanguage: observable.ref,
         destroy: false,
         calculatedProperty: observable.ref,
@@ -170,19 +175,61 @@ export class BuilderStore {
     this.#props = props
     this.view = props.view
     this.activeFormName = props.formName
+    this.formBuilderLanguage = this.availableLanguages[0]
+    this.localizationLanguage = this.formBuilderLanguage
 
-    onI18nInit((language: string) => {
-      const foundLanguage = findLanguage(language)
-      if (getFullLangCode(foundLanguage) !== getFullLangCode(this.language)) {
-        this.language = foundLanguage
-      }
-    })
+    const translationResolver: TranslationResolver = async language => {
+      const loaded = this.loadedLanguages[language]
+      if (loaded) return loaded.data
+
+      const found = findLanguage(this.availableLanguages, language) ?? this.defaultLanguage
+      const i18nData = await this.i18n.getData(found.fullCode)
+      this.loadedLanguages[language] = i18nData
+      return i18nData.data
+    }
+    this.builderI18n = new BuilderI18n(this.defaultLanguage, translationResolver)
 
     this.undoer = new BuilderUndoer(this, 100)
+  }
 
-    this.#disposer = [
-      reaction(() => this.language, onLanguageChange),
-    ]
+  /**
+   * Changes the language in the form builder.
+   * @param language the language to be set.
+   */
+  changeLanguage(language: Language) {
+    this.builderI18n.changeWebDocumentLanguage(language)
+      .then(() => this.formBuilderLanguage = language)
+      .catch(e => console.error(e))
+  }
+
+  /**
+   * @returns the i18n data of the form builder.
+   */
+  get i18n() {
+    return this.#props.i18n && this.#props.i18n.languages.length > 0
+      ? this.#props.i18n
+      : builtInLanguages
+  }
+
+  /**
+   * @returns set of languages for translating the Form Builder interface.
+   */
+  get availableLanguages() {
+    return this.i18n.languages
+  }
+
+  /**
+   * @returns the default language.
+   */
+  get defaultLanguage() {
+    return this.availableLanguages[0]
+  }
+
+  /**
+   * @returns the current locale for the components.
+   */
+  get componentsLocale() {
+    return this.loadedLanguages[this.formBuilderLanguage.fullCode]?.componentsLocale
   }
 
   /**
@@ -241,21 +288,20 @@ export class BuilderStore {
    * @returns true if the form builder is in RTL mode, false otherwise.
    */
   get isRTL(): boolean {
-    return this.language.bidi === BiDi.RTL
+    return this.formBuilderLanguage.bidi === BiDi.RTL
   }
 
   /**
    * @returns true if the active language in the form builder is the default one.
    */
   get isDefaultLanguage() {
-    return this.localizationLanguage === defaultLanguage
+    return this.localizationLanguage === this.defaultLanguage
   }
 
   /**
    * Correctly clears allocated resources, the function must be called when destroying an instance of the class.
    */
   destroy() {
-    this.#disposer.forEach(dispose => dispose())
     this.undoer.dispose()
   }
 
@@ -383,13 +429,16 @@ export class BuilderStore {
    * @returns the current form serialized to JSON.
    */
   get formAsString() {
-    const selectedLanguages = languages
-      .filter(l => l.fullCode === defaultLanguage.fullCode || this.viewer.form.localization.hasLanguage(l.fullCode))
+    const selectedLanguages = this.availableLanguages
+      .filter(l => {
+        return l.fullCode === this.defaultLanguage.fullCode
+          || this.viewer.form.localization.hasLanguage(l.fullCode)
+      })
     const serializedObject: PersistedForm = {
       form: this.viewer.form.componentTree.store,
       localization: this.viewer.form.localization.value,
       languages: selectedLanguages,
-      defaultLanguage: defaultLanguage.fullCode
+      defaultLanguage: this.defaultLanguage.fullCode
     }
     return JSON.stringify(serializedObject, null, 2)
   }

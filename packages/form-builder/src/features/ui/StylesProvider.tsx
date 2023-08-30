@@ -1,8 +1,6 @@
 import {css, Global} from '@emotion/react'
 import {observer} from 'mobx-react'
 import {ComponentProps} from 'react'
-import {CustomProvider} from 'rsuite'
-import {useBuilderStore} from '../../utils/BuilderStoreContext'
 
 const globalStyles = css`
   /* Scrollbar */
@@ -27,11 +25,8 @@ const globalStyles = css`
 `
 
 export const StylesProvider = observer((props: ComponentProps<any>) => {
-  const store = useBuilderStore()
-  const {theme} = store
-
-  return <CustomProvider theme={theme}>
+  return <>
     {props.children}
     <Global styles={globalStyles}/>
-  </CustomProvider>
+  </>
 })

@@ -3,6 +3,7 @@ import type {ComponentType} from 'react'
 import type {AnnotationEditorProps} from './features/annotation-editors/AnnotationEditorProps'
 import type {EditorType} from './features/annotation/types'
 import {BuilderView} from './features/define/utils/BuilderView'
+import type {FormBuilderI18n} from './features/localization/FormBuilderLanguage'
 import type {IFormStorage} from './stores/IFormStorage'
 
 /**
@@ -24,4 +25,9 @@ export interface FormBuilderProps extends FormViewerProps {
    * Custom component property editors.
    */
   externalPropertyEditors?: Record<EditorType, ComponentType<AnnotationEditorProps>>
+
+  /**
+   * The i18n data of the form builder.
+   */
+  i18n?: FormBuilderI18n
 }

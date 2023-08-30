@@ -1,10 +1,11 @@
-import {FormBuilder} from '@react-form-builder/builder'
+import {FormBuilder, FormBuilderI18n} from '@react-form-builder/builder'
 import {BuilderView} from '@react-form-builder/builder/view'
 import {antdComponents} from '@react-form-builder/components-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {ComponentStore, ExternalValidators, IFormViewer, Language} from '@react-form-builder/core'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useRef, useState} from 'react'
+import {frFR, trTR} from 'rsuite/esm/locales/index.js'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
 
 const data = {
@@ -75,6 +76,27 @@ const externalValidators: ExternalValidators = {
   },
 }
 
+const enableExternalLanguages = false
+
+const builderLanguages: FormBuilderI18n = {
+  languages: [
+    new Language('fr', 'FR', 'French', 'Français'),
+    new Language('tr', 'TR', 'Turkish', 'Türkçe'),
+  ],
+  getData: async languageFullCode => {
+    if (languageFullCode === 'tr-TR') {
+      return {
+        data: {leftMenu: {menu: 'Menü'}},
+        componentsLocale: trTR
+      }
+    }
+    return {
+      data: {leftMenu: {menu: 'Menu'}},
+      componentsLocale: frFR
+    }
+  }
+}
+
 // tests don't wait for promises now
 const getFormFn = (formName?: string) => {
   const name = formName ?? sampleFormName
@@ -123,6 +145,7 @@ const FormBuilderApp = () => {
     }}
     viewerRef={ref}
     externalValidators={externalValidators}
+    i18n={enableExternalLanguages ? builderLanguages : undefined}
     /*event={(stream) => {
       stream.listen(value => {
         let a = 4

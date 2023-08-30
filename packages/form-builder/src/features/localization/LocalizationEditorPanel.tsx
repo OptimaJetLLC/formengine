@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import {
-  defaultLanguage,
   getFluentCompatibleId,
   isLocalizedProperty,
   LocalizationTestResult,
@@ -24,6 +23,7 @@ export const LocalizationEditorPanel = observer(({editableProperty, onClose}: Co
   const localizationStringId = getFluentCompatibleId(`${editableProperty.componentKey}_${editableProperty.annotation.key}`)
   const viewerStore = useStore()
   const builderStore = useBuilderStore()
+  const defaultLanguage = builderStore.defaultLanguage
 
   const getInitialValue = () => {
     let localization = viewerStore.form.localization

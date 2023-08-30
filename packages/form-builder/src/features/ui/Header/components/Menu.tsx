@@ -12,7 +12,7 @@ import {Dropdown} from 'rsuite'
 import {uploadBinaryFile} from '../../../../stores/fileUpload'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../../components/Icons'
-import {LangSwitch} from '../../../localization'
+import {MenuLanguageSwitch} from '../../../localization'
 import {useShowMessage} from '../../../toast/toast'
 import {usePromptDialog} from '../../PromptDialog'
 import {exportForms, importForms} from './formUtils'
@@ -84,7 +84,7 @@ export const Menu = namedObserver('Menu', () => {
       <Dropdown.Item onSelect={store.upload.bind(store)} icon={<FileUploadIcon/>}>
         {t('leftMenu.upload')}
       </Dropdown.Item>
-      <LangSwitch/>
+      <MenuLanguageSwitch/>
       {store.formStorageEnabled && <>
         <Dropdown.Item onSelect={onSave} icon={<FaIcon icon={faSave as unknown as IconDefinition}/>}>
           {t('leftMenu.save')}

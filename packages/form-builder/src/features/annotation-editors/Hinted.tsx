@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import {BiDi} from '@react-form-builder/core'
 import {ReactNode} from 'react'
 import type {WhisperProps} from 'rsuite'
 import {Tooltip, Whisper} from 'rsuite'
@@ -48,10 +47,10 @@ export const HintedLabel = ({hint, children, ...labelProps}: HintedLabelProps) =
  * @internal
  */
 export const Hinted = ({hint, children}: HintedProps) => {
-  const store = useBuilderStore()
+  const builderStore = useBuilderStore()
   if (!hint) return <>{children}</>
 
-  const placement = store.language.bidi == BiDi.RTL ? 'right' : 'left'
+  const placement = builderStore.isRTL ? 'right' : 'left'
 
   return <Whisper speaker={<Tooltip>{hint}</Tooltip>} placement={placement} trigger={'hover'}>
     {children}

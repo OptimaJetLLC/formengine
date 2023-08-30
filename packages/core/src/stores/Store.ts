@@ -6,7 +6,6 @@ import {Model, View} from '../features/define'
 import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
 import {IFormViewer} from '../features/form-viewer'
 import type {ComponentLocalizer} from '../features/form-viewer/ComponentLocalizer'
-import {defaultLanguage as globalDefaultLanguage} from '../features/localization/consts'
 import {localizeProperties} from '../features/localization/localizer'
 import {Language} from '../features/localization/types'
 import {createTemplateModel} from '../features/template'
@@ -55,6 +54,8 @@ function reduceTree<U extends object, T, K extends keyof U>(tree: Tree<U, K>,
   return accumulator
 }
 
+const globalDefaultLanguage = new Language('en', 'US', 'English', 'American English')
+
 /**
  * The form viewer settings.
  */
@@ -89,7 +90,7 @@ export class Store implements IStore, IFormViewer {
               public actions: ActionDefinition[] = [],
               public externalValidators?: ExternalValidators,
               public externalLocalizer?: ComponentLocalizer,
-              public propsLanguage?: string,
+              public propsLanguage?: Language,
               public readonly parentStore?: Store,
               public readonly parentComponentStore?: ComponentStore) {
     const componentTree = this.createComponentData(new ComponentStore(screenModel.name, screenModel.type))
@@ -287,8 +288,8 @@ export class Store implements IStore, IFormViewer {
     const componentData = this.createComponentData(componentStore, true)
     const localization = new LocalizationStore(assign({}, persistedForm.localization))
 
-    const languages = persistedForm.languages ? [...persistedForm.languages] : []
-    const defaultLanguage = persistedForm.languages?.find(l => l.fullCode === persistedForm.defaultLanguage) ?? globalDefaultLanguage
+    const languages = persistedForm.languages?.map(Language.clone) ?? []
+    const defaultLanguage = languages.find(l => l.fullCode === persistedForm.defaultLanguage) ?? globalDefaultLanguage
 
     this.form = new Form(componentData, localization, languages, defaultLanguage)
     // here we initialize the fields after the form is created, since the calculated field values are depends on 'this.form'
@@ -301,7 +302,7 @@ export class Store implements IStore, IFormViewer {
    */
   get displayedLanguage() {
     if (this.propsLanguage) {
-      const propsLanguage = this.form.languages.find(l => l.fullCode === this.propsLanguage)
+      const propsLanguage = this.form.languages.find(l => l === this.propsLanguage)
       if (propsLanguage) return propsLanguage
     }
     return this.selectedLanguage ?? this.form.defaultLanguage

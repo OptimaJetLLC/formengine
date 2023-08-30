@@ -8,6 +8,7 @@ import type {ActionDefinition} from '../event'
 import {EventStream} from '../event/utils/EventStream'
 import type {ExternalValidators} from '../validation/types/ExternalValidationRules'
 import type {ComponentLocalizer} from './ComponentLocalizer'
+import {Language} from '../localization/types'
 
 /**
  * Form viewer React component properties.
@@ -64,7 +65,7 @@ export interface FormViewerProps {
   /**
    * The language of form.
    */
-  language?: string
+  language?: Language
 
   /**
    * The function to localize the properties of a component.

@@ -4,26 +4,23 @@ import {observer} from 'mobx-react'
 import {ReactNode} from 'react'
 import {CustomProvider} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
-import {cssUrls, defaultRSuiteLanguage, emotionCache, rSuiteLanguages} from '../consts'
-import {getFullLangCode} from '../utils'
+import {cssUrls, emotionCache} from '../consts'
+import {defaultComponentsLocale} from '../languageUtils'
 
 interface LocalizationProps {
   children: ReactNode
 }
 
 export const LocalizationProvider = observer((props: LocalizationProps) => {
-  const store = useBuilderStore()
-  loadCssFile(store.language.bidi)
+  const builderStore = useBuilderStore()
+  loadCssFile(builderStore.formBuilderLanguage.bidi).catch(e => console.error(e))
 
-  const rSuiteLang: any = rSuiteLanguages[getFullLangCode(store.language)]
-    || rSuiteLanguages[store.language.code]
-    || defaultRSuiteLanguage
-
-  const selectedCache = store.isRTL ? emotionCache.RTL : emotionCache.LTR
+  const componentsLocale = builderStore.componentsLocale ?? defaultComponentsLocale
+  const selectedCache = builderStore.isRTL ? emotionCache.RTL : emotionCache.LTR
 
   return (
     <CacheProvider value={selectedCache}>
-      <CustomProvider rtl={store.isRTL} locale={rSuiteLang}>
+      <CustomProvider rtl={builderStore.isRTL} locale={componentsLocale} theme={builderStore.theme}>
         {props.children}
       </CustomProvider>
     </CacheProvider>

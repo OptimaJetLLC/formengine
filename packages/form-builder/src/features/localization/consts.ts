@@ -1,13 +1,6 @@
 import createCache from '@emotion/cache'
-import {BiDi, defaultLanguage, Language} from '@react-form-builder/core'
-import {arEG, enUS, ruRU} from 'rsuite/esm/locales/index.js'
+import {BiDi} from '@react-form-builder/core'
 import rtlPlugin from 'stylis-plugin-rtl'
-
-export const languages: Language[] = [
-  defaultLanguage,
-  new Language('de', 'DE', 'Deutsch', 'German'),
-  new Language('ar', 'EG', 'عرب', 'Arabic (Egypt)', BiDi.RTL),
-]
 
 export const emotionCache = {
   LTR: createCache({
@@ -18,17 +11,6 @@ export const emotionCache = {
     stylisPlugins: [rtlPlugin],
     prepend: true
   }),
-}
-
-export const defaultRSuiteLanguage = enUS
-
-export const rSuiteLanguages: { [key: string]: any } = {
-  'en-US': enUS,
-  'ru-RU': ruRU,
-  'ar-EG': arEG,
-  'en': enUS,
-  'ru': ruRU,
-  'ar': arEG
 }
 
 const cssFiles = import.meta.glob('../../../public/css/*', {as: 'url'})
