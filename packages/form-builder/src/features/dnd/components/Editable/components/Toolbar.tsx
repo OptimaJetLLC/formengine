@@ -8,7 +8,9 @@ import {observer} from 'mobx-react'
 import {MouseEventHandler, useEffect, useRef} from 'react'
 import scrollIntoView from 'scroll-into-view-if-needed'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
+import {Hinted} from '../../../../annotation-editors/Hinted'
 import {FaIcon} from '../../../../components/Icons'
+import {useTranslationPart} from '../../../../localization/hooks'
 import {useSelection} from '../hooks/useSelection'
 import {AddButton} from './AddButton'
 
@@ -17,6 +19,7 @@ export const Toolbar = observer(({compact}: { compact?: boolean }) => {
   const data = useComponentData()
   const [{selected}] = useSelection()
   const ref = useRef<HTMLDivElement>(null)
+  const t = useTranslationPart('toolbar')
 
   const onClone: MouseEventHandler = e => {
     e.stopPropagation()
@@ -40,8 +43,12 @@ export const Toolbar = observer(({compact}: { compact?: boolean }) => {
     </Title>
     }
     <AddButton/>
-    <FaIcon onClick={onClone} icon={faClone as unknown as IconDefinition}/>
-    <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition}/>
+    <Hinted hint={t('cloneComponent')}>
+      <FaIcon onClick={onClone} icon={faClone as unknown as IconDefinition}/>
+    </Hinted>
+    <Hinted hint={t('removeComponent')}>
+      <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition}/>
+    </Hinted>
   </ToolbarContainer>
 })
 

@@ -44,18 +44,16 @@ export const HintedLabel = ({hint, children, ...labelProps}: HintedLabelProps) =
  * @param props the React component properties.
  * @param props.hint the tooltip text.
  * @param props.children the wrapped children component.
- * @param props.speaker the display element (unused).
- * @param props.props the other properties of the component.
  * @returns the React element.
  * @internal
  */
-export const Hinted = ({hint, children, speaker, ...props}: HintedProps) => {
+export const Hinted = ({hint, children}: HintedProps) => {
   const store = useBuilderStore()
   if (!hint) return <>{children}</>
 
   const placement = store.language.bidi == BiDi.RTL ? 'right' : 'left'
 
-  return <Whisper speaker={<Tooltip>{hint}</Tooltip>} placement={placement} trigger={'hover'} {...props}>
+  return <Whisper speaker={<Tooltip>{hint}</Tooltip>} placement={placement} trigger={'hover'}>
     {children}
   </Whisper>
 }

@@ -250,7 +250,9 @@
   "toolbar": {
     "elements": "Elements",
     "notFound": "Not found",
-    "reset": "Reset"
+    "reset": "Reset",
+    "cloneComponent": "Clone component",
+    "removeComponent": "Remove component"
   },
   "errorsPanel": {
     "data": "Data",

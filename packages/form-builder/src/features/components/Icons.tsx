@@ -1,5 +1,6 @@
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import {Icon} from '@rsuite/icons'
+import {forwardRef, Ref} from 'react'
 
 /**
  * The React component that displays an SVG icon.
@@ -8,15 +9,16 @@ import {Icon} from '@rsuite/icons'
  * @param props.size the size of the icon.
  * @returns the React element.
  */
-const FaSvgIcon = ({faIcon, size, ...rest}: { faIcon: any, size?: number }) => {
+const FaSvgIcon = forwardRef(({faIcon, size, ...rest}: { faIcon: any, size?: number },
+                              ref: Ref<SVGSVGElement>) => {
   const {width, height, svgPathData} = extractFaIconData(faIcon)
   return (
     <svg viewBox={`0 0 ${width} ${height}`} width={`${size ?? 1}em`} height={`${size ?? 1}em`}
-         fill="currentColor" {...rest}>
+         fill="currentColor" {...rest} ref={ref}>
       <path d={svgPathData}/>
     </svg>
   )
-}
+})
 
 const extractFaIconData = (faIcon: any) => {
   if (faIcon?.icon) {
@@ -45,6 +47,6 @@ interface FaIconProps {
  * @param props.props the other properties of the component.
  * @returns the React element.
  */
-export const FaIcon = ({icon, size, ...props}: FaIconProps) => (
-  <Icon as={FaSvgIcon} {...{faIcon: icon, size, ...props}}/>
-)
+export const FaIcon = forwardRef(({icon, size, ...props}: FaIconProps, ref: Ref<SVGElement>) => (
+  <Icon as={FaSvgIcon} ref={ref} {...{faIcon: icon, size, ...props}}/>
+))
