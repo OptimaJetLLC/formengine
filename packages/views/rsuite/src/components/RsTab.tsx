@@ -1,3 +1,4 @@
+import styled from '@emotion/styled'
 import {array, boolean, define, node, toLabeledValues, useComponentData} from '@react-form-builder/builder/view'
 import React, {ReactNode} from 'react'
 import type {NavProps} from 'rsuite'
@@ -27,15 +28,21 @@ const RsTab = ({pane, onSelect, showNavigation, items, ...props}: RsTabProps) =>
   const activeKey = props.activeKey ?? items?.[0].value
 
   return <>
-    {showNavigation === true && <Nav onSelect={onNavSelect} {...props}>
+    {showNavigation === true && <SNav onSelect={onNavSelect} {...props}>
       {items.map((item, index) =>
         <Nav.Item key={index} eventKey={item.value} active={item.value === activeKey}>
           {item.label}
         </Nav.Item>)}
-    </Nav>}
+    </SNav>}
     <div>{pane}</div>
   </>
 }
+
+const SNav = styled(Nav)`
+  .builder & .rs-nav-item {
+    z-index: 7;
+  }
+`
 
 export const rsTab = define(RsTab)
   .type('RsTab')

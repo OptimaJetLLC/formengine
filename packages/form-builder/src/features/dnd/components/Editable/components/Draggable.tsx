@@ -13,10 +13,11 @@ import {DropZone} from './DropZone'
 
 interface DraggableProps extends ComponentProps<any> {
   isInner?: boolean
+  isTree?: boolean
   viewForDragPreview?: ReactNode
 }
 
-export const Draggable = observer(({children, viewForDragPreview, isInner, className, ...props}: DraggableProps) => {
+export const Draggable = observer(({children, viewForDragPreview, isInner, className, isTree, ...props}: DraggableProps) => {
   const data = useComponentData()
   const isRoot = data.isRoot
   const isContainer = Boolean(data.store.children)
@@ -31,6 +32,7 @@ export const Draggable = observer(({children, viewForDragPreview, isInner, class
     {isDraggingCurrent && <DragPreview>{viewForDragPreview}</DragPreview>}
     <Container ref={dnd} {...props}
                className={cx(className, {isActive, isContainer, isRoot, isInner, hidden})}>
+      {!isTree && <DraggableBody/>}
       {isDragging && !isRoot && !isInner && <DropZone/>}
       {children}
       {isDragging && !isRoot && <DropZone isAfter={!isInner && true} isInner={isInner}/>}
@@ -67,6 +69,13 @@ const useDnd = (): [DndState, RefObject<any>] => {
   return [state, dnd]
 }
 
+const DraggableBody = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+`
+
 const Container = styled.div`
   position: relative;
   display: flex;
@@ -75,7 +84,7 @@ const Container = styled.div`
   transition: padding-block 200ms ease-in-out;
   transition-delay: 200ms;
 
-  &.hidden {
+  &.hidden > * {
     opacity: 0.4;
   }
 

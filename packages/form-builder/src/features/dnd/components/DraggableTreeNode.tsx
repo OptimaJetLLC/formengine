@@ -10,7 +10,7 @@ export const DraggableTreeNode = namedObserver('DraggableTreeNode', ({children}:
   useEventReactions()
 
   return (
-    <Draggable {...selectionHandlers} viewForDragPreview={children}>
+    <Draggable {...selectionHandlers} viewForDragPreview={children} isTree={true}>
       <TreeNode className={selectionClassName}/>
     </Draggable>
   )
