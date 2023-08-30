@@ -54,6 +54,7 @@ export class SimpleField implements Field {
    * @param model the component metadata for the form viewer.
    * @param valueCalculator the function to get a calculated value for the field.
    * @param getValidationRules the function to get validation rules for the field.
+   * @param deferFieldCalculation if true, then the calculated field must be explicitly initialized.
    */
   constructor(
     readonly store: IStore,
@@ -61,6 +62,7 @@ export class SimpleField implements Field {
     readonly model: Model,
     readonly valueCalculator: (component: ComponentStore, key: string) => [boolean, any?],
     readonly getValidationRules: (valueType: SchemaType) => FormViewerValidationRules,
+    public deferFieldCalculation: boolean,
   ) {
     if (!model.valued) throw new Error(`'model.valued' is falsy`)
     if (!model.valueType) throw new Error(`'model.typeOfValue' is undefined`)
@@ -85,16 +87,28 @@ export class SimpleField implements Field {
         , {name: nameAutorun(className, 'setValidator', {key: componentStore.key})}),
       autorun(
         () => {
+          const simpleValue = store.initialDataSlice?.[componentStore.key] ?? this.initialValue
+          if (this.deferFieldCalculation) {
+            this.value = simpleValue
+            return
+          }
           const [calculated, value] = this.valueCalculator(componentStore, this.valued)
           if (calculated) {
             this.value = value
             return
           }
-          this.value = store.initialDataSlice?.[componentStore.key] ?? this.initialValue
+          this.value = simpleValue
         }
         , {name: nameAutorun(className, 'setValue', {'key': componentStore.key})}),
       () => this.dataValidator?.dispose()
     ]
+  }
+
+  /**
+   * @inheritDoc
+   */
+  init() {
+    this.deferFieldCalculation = false
   }
 
   /**

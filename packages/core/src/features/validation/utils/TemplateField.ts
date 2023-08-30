@@ -102,6 +102,13 @@ export class TemplateField implements Field {
   }
 
   /**
+   * @inheritDoc
+   */
+  init() {
+    this.form.fields.forEach(field => field.init())
+  }
+
+  /**
    * @returns the form for the field.
    */
   get form() {

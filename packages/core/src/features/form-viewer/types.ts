@@ -1,14 +1,13 @@
 import type {ComponentType} from 'react'
 import {ForwardedRef} from 'react'
-import {ComponentStore} from '../../stores/ComponentStore'
 import type {ViewMode} from '../../types'
 import type {ComputeChildren} from '../../utils/ComputeChildren'
 import {IFormData} from '../../utils/IFormData'
 import {View} from '../define'
 import type {ActionDefinition} from '../event'
 import {EventStream} from '../event/utils/EventStream'
-import {Language} from '../localization/types'
 import type {ExternalValidators} from '../validation/types/ExternalValidationRules'
+import type {ComponentLocalizer} from './ComponentLocalizer'
 
 /**
  * Form viewer React component properties.
@@ -69,11 +68,8 @@ export interface FormViewerProps {
 
   /**
    * The function to localize the properties of a component.
-   * @param componentStore the component settings.
-   * @param language the language selected in the form viewer.
-   * @returns the {@link Record} with the localized properties of a component.
    */
-  localize?: (componentStore: ComponentStore, language: Language) => Record<string, any>
+  localize?: ComponentLocalizer
 
   /**
    * The set of metadata of external validation rules, grouped by the type of value being validated.

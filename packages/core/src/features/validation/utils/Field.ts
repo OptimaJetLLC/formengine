@@ -58,4 +58,9 @@ export interface Field {
    * Releases allocated resources, must be used when destroying an object instance.
    */
   dispose: () => void
+
+  /**
+   * Initializes the value of the field.
+   */
+  init: () => void
 }

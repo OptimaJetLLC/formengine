@@ -47,6 +47,13 @@ export class Form {
   }
 
   /**
+   * Initializes form fields.
+   */
+  initFields() {
+    this.componentTree.fields.forEach(field => field.init())
+  }
+
+  /**
    * Disposes the form. Disposes all the components and localization.
    */
   dispose() {

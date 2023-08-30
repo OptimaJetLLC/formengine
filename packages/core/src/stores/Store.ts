@@ -5,7 +5,9 @@ import {calculatePropertyValue} from '../features/calculation/propertyCalculator
 import {Model, View} from '../features/define'
 import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
 import {IFormViewer} from '../features/form-viewer'
+import type {ComponentLocalizer} from '../features/form-viewer/ComponentLocalizer'
 import {defaultLanguage as globalDefaultLanguage} from '../features/localization/consts'
+import {localizeProperties} from '../features/localization/localizer'
 import {Language} from '../features/localization/types'
 import {createTemplateModel} from '../features/template'
 import {buildInternalErrorModel, buildInternalErrorStore} from '../features/ui/internalErrorModel'
@@ -21,7 +23,7 @@ import type {ViewMode} from '../types'
 import {isNumber, isPromise, isRecord, isString} from '../utils'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
-import {ComponentStore, isFunctionalProperty} from './ComponentStore'
+import {ComponentStore, isFunctionalProperty, isLocalizedProperty} from './ComponentStore'
 import {Form} from './Form'
 import type {FormViewerValidationRules} from './FormViewerValidationRules'
 import type {IStore} from './IStore'
@@ -77,6 +79,8 @@ export class Store implements IStore, IFormViewer {
    * @param initialData the initial form data.
    * @param actions the array of action definitions.
    * @param externalValidators the set of metadata of external validation rules, grouped by the type of value being validated.
+   * @param externalLocalizer the function to localize the properties of a component.
+   * @param propsLanguage the full language code passed in the FormViewer properties.
    * @param parentStore the form viewer settings, used in templates.
    * @param parentComponentStore the parent component settings.
    */
@@ -84,6 +88,8 @@ export class Store implements IStore, IFormViewer {
               public initialData: Record<string, unknown>,
               public actions: ActionDefinition[] = [],
               public externalValidators?: ExternalValidators,
+              public externalLocalizer?: ComponentLocalizer,
+              public propsLanguage?: string,
               public readonly parentStore?: Store,
               public readonly parentComponentStore?: ComponentStore) {
     const componentTree = this.createComponentData(new ComponentStore(screenModel.name, screenModel.type))
@@ -99,6 +105,7 @@ export class Store implements IStore, IFormViewer {
       parentStore: observable.ref,
       parentComponentStore: observable.ref,
       initialDataSlice: true,
+      externalLocalizer: observable.ref,
     }, {name: nameObservable(`ViewerStore`)})
   }
 
@@ -202,12 +209,13 @@ export class Store implements IStore, IFormViewer {
   /**
    * Creates the element for the component tree.
    * @param componentStore the component settings.
+   * @param deferFieldCalculation if true, then the calculated field must be explicitly initialized.
    * @returns the element for the component tree.
    */
-  createComponentData(componentStore: ComponentStore): ComponentData {
+  createComponentData(componentStore: ComponentStore, deferFieldCalculation = false): ComponentData {
     const model = this.getModel(componentStore.type)
-    const field = model.valued ? this.createField(componentStore, model) : undefined
-    const factory = this.createComponentData.bind(this)
+    const field = model.valued ? this.createField(componentStore, model, deferFieldCalculation) : undefined
+    const factory = (cs: ComponentStore) => this.createComponentData(cs, deferFieldCalculation)
     return new ComponentData(componentStore, model, field, factory)
   }
 
@@ -223,12 +231,13 @@ export class Store implements IStore, IFormViewer {
     }
   }
 
-  private createField(componentStore: ComponentStore, model: Model) {
+  private createField(componentStore: ComponentStore, model: Model, deferFieldCalculation: boolean) {
     if (!isTemplateType(model.type)) {
-      return new SimpleField(this, componentStore, model, updateFnValue(this), this.getValidationRules.bind(this))
+      return new SimpleField(this, componentStore, model, updateFnValue(this), this.getValidationRules.bind(this), deferFieldCalculation)
     }
 
-    const childStore = new Store(this.view, this.initialData, this.actions, this.externalValidators, this, componentStore)
+    const childStore = new Store(this.view, this.initialData, this.actions, this.externalValidators,
+      this.externalLocalizer, this.propsLanguage, this, componentStore)
     return new TemplateField(componentStore, childStore)
   }
 
@@ -275,14 +284,37 @@ export class Store implements IStore, IFormViewer {
 
     const componentStore = ComponentStore.createFromObject(persistedForm.form)
 
-    const componentData = this.createComponentData(componentStore)
+    const componentData = this.createComponentData(componentStore, true)
     const localization = new LocalizationStore(assign({}, persistedForm.localization))
 
     const languages = persistedForm.languages ? [...persistedForm.languages] : []
     const defaultLanguage = persistedForm.languages?.find(l => l.fullCode === persistedForm.defaultLanguage) ?? globalDefaultLanguage
 
     this.form = new Form(componentData, localization, languages, defaultLanguage)
+    // here we initialize the fields after the form is created, since the calculated field values are depends on 'this.form'
+    this.form.initFields()
     oldForm.dispose()
+  }
+
+  /**
+   * @returns the current display language.
+   */
+  get displayedLanguage() {
+    if (this.propsLanguage) {
+      const propsLanguage = this.form.languages.find(l => l.fullCode === this.propsLanguage)
+      if (propsLanguage) return propsLanguage
+    }
+    return this.selectedLanguage ?? this.form.defaultLanguage
+  }
+
+  /**
+   * Localizes the properties of the component.
+   * @param componentStore the component settings.
+   * @returns the Record with the localized properties.
+   */
+  localizeComponent(componentStore: ComponentStore) {
+    if (this.externalLocalizer) return this.externalLocalizer(componentStore, this.displayedLanguage)
+    return localizeProperties(this.form, this.displayedLanguage, componentStore)
   }
 }
 
@@ -291,6 +323,11 @@ function updateFnValue(viewerStore: Store) {
     const property = component.props[key]
     if (isFunctionalProperty(property)) {
       const value = calculatePropertyValue(property, viewerStore.form.componentTree)
+      return [true, value]
+    }
+    if (isLocalizedProperty(property)) {
+      const props = viewerStore.localizeComponent(component)
+      const value = props[key]
       return [true, value]
     }
     return [false]

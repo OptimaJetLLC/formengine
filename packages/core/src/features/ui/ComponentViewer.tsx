@@ -9,7 +9,6 @@ import {useStore} from '../../utils/contexts/StoreContext'
 import {getChildren} from '../../utils/getChildren'
 import {ActionData, ActionEventArgs, Arguments, DidMountEvent, Func, Parameter, WillUnmountEvent} from '../event'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
-import {useLocalization} from '../localization/useLocalization'
 import {useComponentTreeContext} from './ComponentTreeContext'
 
 const useActions = (state: ComponentState) => {
@@ -69,9 +68,9 @@ function getActionHandler(store: Store, func: Func, args?: Arguments, params?: P
 
 export const ComponentViewer = namedObserver('ComponentViewer', () => {
   const data = useComponentData()
-  const localize = useLocalization()
   const formViewerProps = useViewerProps()
   const formViewerStore = useStore()
+  const localize = formViewerStore.localizeComponent.bind(formViewerStore)
   const componentTree = useComponentTreeContext()
 
   const computeChildren = useCallback((componentData: ComponentData, componentProps: Record<string, any>) => {
@@ -81,7 +80,7 @@ export const ComponentViewer = namedObserver('ComponentViewer', () => {
 
   const componentState = useMemo(
     () => new ComponentState(data, formViewerStore, localize, computeChildren),
-    [data, localize])
+    [data])
 
   useActions(componentState)
 
