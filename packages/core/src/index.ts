@@ -47,7 +47,7 @@ export {DataValidator} from './features/validation'
 export type {
   SchemaType, SchemaTypeMap, ValidationRuleSettings, Disposer, ResolvedValidator, RuleValidator, RuleValidatorResult
 } from './features/validation'
-export {isPromise} from './utils'
+export {isPromise, isString} from './utils'
 export {nameAutorun, nameObservable} from './utils/observableNaming'
 export {ComponentTree} from './features/ui/ComponentTree'
 export {useTooltipType} from './utils/useTooltipType'

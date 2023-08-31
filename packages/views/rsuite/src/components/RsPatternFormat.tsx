@@ -1,19 +1,31 @@
 import {boolean, define, string} from '@react-form-builder/builder/view'
+import type {PatternFormatProps} from 'react-number-format'
 import {PatternFormat} from 'react-number-format'
-import {PatternFormatProps} from 'react-number-format/types/types'
+import {InputProps} from 'rsuite'
 import {inputProps} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
-import {onChangeWrapped, WrappedInput} from './components/WrappedInput'
+import {WrappedInput} from './components/WrappedInput'
 
-interface RsPatternFormatProps extends PatternFormatProps {
+interface RsPatternFormatProps extends PatternFormatProps<InputProps> {
   label: string
+  onChange: (value: any) => void
 }
 
 const RsPatternFormat = ({style, className, label, format, onChange, value, ...props}: RsPatternFormatProps) => {
+  let {mask} = props
+  if (mask) {
+    const maskAsStr = mask === 'string' ? mask : mask.toString()
+    if (maskAsStr.match(/\d/g)) {
+      console.warn(`Mask ${mask} should not contain numeric character, mask value will be ignored`)
+      mask = undefined
+    }
+  }
+
   return <RsLabeledInput style={style} className={className}>
     <RsRtlLabel>{label}</RsRtlLabel>
-    <PatternFormat customInput={WrappedInput as any} format={format ?? ''} {...props}
-                   onChange={onChangeWrapped(onChange)} value={value ?? ''}/>
+    <PatternFormat customInput={WrappedInput} format={format ?? ''} {...props} mask={mask}
+                   onValueChange={values => onChange?.(values.formattedValue)}
+                   value={value ?? ''}/>
   </RsLabeledInput>
 }
 

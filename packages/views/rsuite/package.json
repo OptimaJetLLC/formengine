@@ -23,6 +23,7 @@
         "@emotion/react": "^11.10.5",
         "@emotion/styled": "^11.10.5",
         "@react-form-builder/builder": "^0.0.2-alpha",
+        "@react-form-builder/core": "^0.0.2-alpha",
         "@rsuite/icons": "^1.0.2",
         "react": ">=17.0.2 || ^18",
         "react-number-format": "^5.1.4",
