@@ -26,7 +26,7 @@ export const PropertyErrors = observer(({onClose}: { onClose: () => void }) => {
   })
 
   useEffect(() => {
-    store.validate()
+    store.validate().catch(console.error)
   }, [])
 
   const handleLinkClick = (component: ComponentData) => {
