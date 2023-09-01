@@ -8,6 +8,10 @@
           {
             "name": "loadData",
             "body": "\n    const [searchValue, loadCallback, currentDataLength] = e.args\n\n    fetch ('https://gist.githubusercontent.com/rogargon/5534902/raw/434445021e155240ca78e378f10f70391dd594ea/countries.json')\n        .then (data => data.json())\n        .then (data => {\n            const preparedData = data\n                .filter(value => value.toLowerCase().includes(searchValue.toLowerCase()))\n                .slice(currentDataLength, currentDataLength + 20)\n                .map(value => ({value, label: value}))\n\n            loadCallback(preparedData)        \n        })\n"
+          },
+          {
+            "name": "showValidationResult",
+            "body": "    const setVisible = (key, visible) => {\n        const componentStore = e.store.form.componentTree.findByKey(key)?.store\n        if (componentStore) {\n            componentStore.renderWhen = {value: visible}\n        }\n    }\n    const hasErrors = e.store.form.componentTree.hasErrors\n    setVisible('errorMessage', hasErrors)\n    setVisible('successMessage', !hasErrors)"
           }
         ]
       },
@@ -334,7 +338,7 @@
                 "value": "Website"
               },
               "placeholder": {
-                "value": "www.example.com"
+                "value": "https://www.example.com"
               }
             },
             "schema": {
@@ -583,6 +587,10 @@
               },
               "size": {
                 "value": "sm"
+              },
+              "loading": {
+                "computeType": "function",
+                "fnSource": "    return form.isValidating"
               }
             },
             "events": {
@@ -590,8 +598,42 @@
                 {
                   "name": "Validate",
                   "type": "common"
+                },
+                {
+                  "name": "showValidationResult",
+                  "type": "custom"
                 }
               ]
+            }
+          },
+          {
+            "key": "errorMessage",
+            "type": "RsStaticContent",
+            "props": {
+              "content": {
+                "value": "Not all fields of the form are filled in correctly. Correct the values of the form fields and try again."
+              }
+            },
+            "css": {
+              "any": "color: red;"
+            },
+            "renderWhen": {
+              "value": false
+            }
+          },
+          {
+            "key": "successMessage",
+            "type": "RsStaticContent",
+            "props": {
+              "content": {
+                "value": "The form has been sent, thank you!"
+              }
+            },
+            "css": {
+              "any": "color: green;"
+            },
+            "renderWhen": {
+              "value": false
             }
           }
         ]

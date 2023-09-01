@@ -13,6 +13,11 @@ export interface IFormData {
   get errors(): Record<string, unknown>
 
   /**
+   * true if the form contains errors, otherwise false.
+   */
+  get hasErrors(): boolean
+
+  /**
    * Sets the validation error message for all form data fields.
    * @param message the validation error message.
    */
@@ -22,6 +27,11 @@ export interface IFormData {
    * Validates the data in the form.
    */
   validate: () => Promise<void>
+
+  /**
+   * If true, then validation is in progress.
+   */
+  get isValidating(): boolean
 
   /**
    * Sets the form to its default value.
@@ -49,6 +59,11 @@ export const IFormDataDeclaration = `declare interface IFormData {
   get errors(): Record<string, unknown>
 
   /**
+   * true if the form contains errors, otherwise false.
+   */
+  get hasErrors(): boolean
+
+  /**
    * Sets the validation error message for all form data fields.
    * @param message the validation error message.
    */
@@ -58,6 +73,11 @@ export const IFormDataDeclaration = `declare interface IFormData {
    * Validates the data in the form.
    */
   validate(): Promise<void>
+
+  /**
+   * If true, then validation is in progress.
+   */
+  get isValidating(): boolean
 
   /**
    * Sets the form to its default value.

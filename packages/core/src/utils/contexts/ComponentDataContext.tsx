@@ -65,6 +65,11 @@ export class ComponentData implements IFormData {
   userDefinedProps?: Record<string, any>
 
   /**
+   * If true, then validation is in progress.
+   */
+  validating = false
+
+  /**
    * Constructor
    * @param componentStore the component settings.
    * @param model the component metadata for the form viewer.
@@ -270,15 +275,34 @@ export class ComponentData implements IFormData {
   /**
    * @inheritDoc
    */
+  get hasErrors() {
+    return Object.keys(this.errors).length > 0
+  }
+
+  /**
+   * @inheritDoc
+   */
   setAllErrors(message?: string) {
     this.fields.forEach(f => f.error = message)
   }
 
   /**
-   * Validates the data in the form.
+   * @inheritDoc
    */
   async validate() {
-    await Promise.allSettled([...this.fields.values()].map(f => f.validate()))
+    this.validating = true
+    try {
+      await Promise.allSettled([...this.fields.values()].map(f => f.validate()))
+    } finally {
+      this.validating = false
+    }
+  }
+
+  /**
+   * @inheritDoc
+   */
+  get isValidating() {
+    return this.validating
   }
 
   /**
