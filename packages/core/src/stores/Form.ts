@@ -1,6 +1,8 @@
 import {makeAutoObservable} from 'mobx'
+import {BaseActionDefinition} from '../features/event'
 import {Language} from '../features/localization/types'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
+import {ComponentStore} from './ComponentStore'
 import {LocalizationStore} from './LocalizationStore'
 
 /**
@@ -61,11 +63,66 @@ export class Form {
     this.localization.dispose()
   }
 
+  /**
+   * @returns the form actions.
+   */
+  get actions(): BaseActionDefinition[] | undefined {
+    return this.componentTree.store.props.actions?.value
+  }
+
+  /**
+   * Removes the action from the form.
+   * @param action the action to remove.
+   */
+  removeAction(action: BaseActionDefinition) {
+    if (!this.actions) return
+    const index = this.actions.indexOf(action)
+    if (index >= 0) this.actions.splice(index, 1)
+    this.removeCustomActionBinding(action.name, this.componentTree.store)
+  }
+
+  private removeCustomActionBinding(actionName: string, componentStore: ComponentStore) {
+    const events = componentStore.events
+    if (events) {
+      Object.keys(events).forEach(value => {
+        const bindings = events[value]
+        if (!bindings.length) return
+        events[value] = bindings.filter(item => !(item.type === 'custom' && item.name === actionName))
+      })
+    }
+    componentStore.children?.forEach(item => this.removeCustomActionBinding(actionName, item))
+  }
+
+  /**
+   * Clones the action.
+   * @param action the action to clone.
+   */
+  cloneAction(action: BaseActionDefinition) {
+    if (!this.actions) return
+    const clone = JSON.parse(JSON.stringify(action)) as BaseActionDefinition
+    clone.name = Form.generateUniqueName(clone.name, this.actions)
+    this.actions.push(clone)
+  }
+
   private onComponentDataBeforeDelete(component: ComponentData) {
     this.localization.removeLocalization(component.key)
   }
 
   private onComponentDataAfterKeyChanged(_: ComponentData, {oldKey, newKey}: { oldKey: string, newKey: string }) {
     this.localization.changeComponentKey(oldKey, newKey)
+  }
+
+  private static generateUniqueName(prefix: string, actions: BaseActionDefinition[]) {
+    const names = new Set<string>()
+    actions.forEach(action => names.add(action.name))
+
+    let i = 1
+    while (i < 10_000) {
+      const name = `${prefix}_${i}`
+      if (!names.has(name)) return name
+      i++
+    }
+    const time = new Date().getTime()
+    return `${prefix}_${time}`
   }
 }

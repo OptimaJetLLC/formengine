@@ -348,7 +348,13 @@
     "sectionName": {
       "components": "Components",
       "tree": "Tree",
-      "forms": "Forms"
+      "forms": "Forms",
+      "actions": "Actions"
+    },
+    "actions": {
+      "edit": "Edit",
+      "clone": "Clone",
+      "remove": "Remove"
     }
   },
   "bottomPanel": {
