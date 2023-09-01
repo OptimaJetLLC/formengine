@@ -3,7 +3,10 @@
     "apply": "Apply",
     "name": "Name",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "close": "Close",
+    "remove": "Remove",
+    "reset": "Reset"
   },
   "annotation": {
     "errorConfig": {
@@ -284,6 +287,7 @@
   "actions": {
     "arguments": "Arguments",
     "custom": "Custom",
+    "common": "Common",
     "edit": "Edit",
     "duplicate": "Duplicate",
     "delete": "Delete",
@@ -346,6 +350,18 @@
       "tree": "Tree",
       "forms": "Forms"
     }
+  },
+  "bottomPanel": {
+    "use": "Use",
+    "localization": "Fluent localization",
+    "calculable": "Calculable value",
+    "editProperty": "Edit property",
+    "editCustomAction": "Edit custom action"
+  },
+  "customActionEditor": {
+    "saveAsNew": "Save as new",
+    "actionNameExists": "Action with this name already exists",
+    "nameIsRequired": "Action name is required"
   },
   "editJson": "Edit JSON"
 }

@@ -1,94 +1,121 @@
-import {AsyncFunction, CustomActionDefinition, Parameter, toParameterWithType} from '@react-form-builder/core'
-import {useEffect, useReducer, useState} from 'react'
+import styled from '@emotion/styled'
+import {ActionData, AsyncFunction, CustomActionDefinition, Parameter, Store, toParameterWithType, useStore} from '@react-form-builder/core'
+import {addAction, getActionList} from '@react-form-builder/core/src/features/event'
+import {assign} from 'lodash-es'
+import {useEffect, useReducer, useRef, useState} from 'react'
 import {useTranslation} from 'react-i18next'
-import {Button, Col, Grid, Input, Modal} from 'rsuite'
+import {Button, ButtonGroup, Form, FormInstance, Schema} from 'rsuite'
+import {EditableAction} from '../../../../../stores/BuilderStore'
+import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {CodeEditor} from '../../../../components/CodeEditor'
+import {Columns, Rows} from '../../../../components/Containers'
+import {Header} from '../../../../ui/BottomPanel/Header'
 import {ParameterList} from './components/ParameterList'
 import {ParamAction} from './types'
 
 /**
- * Properties of the React component {@link CustomActionEditor}.
- */
-interface CustomActionEditorProps {
-  onCancel: () => void
-  onSave: (value: CustomActionDefinition) => void
-  data?: CustomActionDefinition
-  onEnter: () => void
-}
-
-/**
  * React form builder component that displays a custom action code editor.
- * @param props the React component properties.
- * @param props.onCancel the callback function that is called when the code editor is closed without saving data.
- * @param props.onSave the callback function that is called when the action handler is saved.
- * @param props.data the description of the custom action handler.
- * @param props.onEnter the callback that is called before opening the modal window with the code editor.
+ * @param root0 the EditableAction data
+ * @param root0.actionData the action data
+ * @param root0.eventName the event name
  * @returns the React element.
  */
-export const CustomActionEditor = ({onCancel, onSave, data, onEnter}: CustomActionEditorProps) => {
+export const CustomActionEditor = ({actionData, eventName}: EditableAction) => {
   const {t} = useTranslation()
-  const [name, setName] = useState(data?.name ?? '')
-  const [body, setBody] = useState(data?.body ?? '')
-  const [params, dispatchParams] = useReducer(paramsReducer, data?.params)
-  const [error, setError] = useState<string>()
-  const [initialValue, setInitialValue] = useState(data?.body ?? '')
+  const store = useStore()
+  const storeProps = store.form.componentTree.store.props
+  const builderStore = useBuilderStore()
+  const action = findAction(store, actionData.name) ?? {name: '', body: ''}
+  const formRef = useRef<FormInstance>(null)
+  const [actionState , setActionState] = useActionState(action, actionData)
+  const [params, dispatchParams] = useReducer(paramsReducer, action?.params)
 
   useEffect(() => {
-    const initialValue = data?.body ?? ''
-    setInitialValue(initialValue)
-  }, [data?.body])
+    dispatchParams({type: 'reset', params: action?.params, index: 0})
+  }, [actionData])
 
-  const handleSave = () => {
+  const model = Schema.Model({
+    name: Schema.Types.StringType()
+      .isRequired(t('customActionEditor.nameIsRequired'))
+      .addRule(name => actionData.name === actionState.name || !findAction(store, name), t('customActionEditor.actionNameExists'))
+  })
+
+  const close = () => builderStore.currentEditable = undefined
+
+  const save = () => {
+    if (!formRef.current?.check()) return
     try {
-      AsyncFunction(body)
-      onSave({name, body, params})
+      AsyncFunction(actionState.body)
     } catch (e) {
-      setError((e as Error).message)
+      setActionState({errors: (e as Error).message})
+      return
     }
+
+    const value = {...actionState, params}
+    storeProps.actions ??= {value: []}
+    if (findAction(store, actionData.name || actionState.name)) {
+      assign(action, value)
+      return
+    }
+    storeProps.actions.value.push(value)
+
+    const componentStore = builderStore.oneSelected?.store
+    if (componentStore) addAction(componentStore, eventName, {name: value.name ?? '', type: 'custom'})
   }
 
-  const functionHeader = `/**${getParamsType(params)}
-* @param {ActionEventArgs} e - the action arguments.
-*/
-async function Action (${params ? 'args, ' : ''}e) {`
-
-  if (!data) return null
-
-  return (
-    <Modal open={true} onClose={onCancel} style={{width: '100%'}} onEnter={onEnter}>
-      <Modal.Header>
-        <Modal.Title>{t('codeEditor.customActionHeader')}</Modal.Title>
-      </Modal.Header>
-
-      <Modal.Body>
+  return <>
+    <Header>
+      {t('bottomPanel.editCustomAction')}
+    </Header>
+    <Container>
+      <Rows gap={10}>
+        <Form model={model} checkTrigger={'change'} formValue={actionState} onChange={setActionState} ref={formRef}>
+          <Form.Control name={'name'} style={{width: '100%'}}/>
+        </Form>
+        <EditorContainer>
+          <CodeEditor beginContextLine={makeFunctionHeader(params)} endContextLine="}"
+                      initialValue={actionState.initialBody ?? ''} onChange={body => setActionState({body})}/>
+        </EditorContainer>
         <div>
-          <Modal.Title>{t('common.name')}</Modal.Title>
-          <Input value={name} onChange={setName}/>
+          <ButtonGroup size={'sm'}>
+            <Button appearance="primary" onClick={() => save()}>{t('common.save')}</Button>
+            <Button appearance="ghost" onClick={close}>{t('common.close')}</Button>
+          </ButtonGroup>
+          {!!actionState.errors && <label style={{color: 'red', marginInline: 10}}>{actionState.errors}</label>}
         </div>
-        <br/>
-        <Grid fluid>
-          <Col md={17}>
-            <Modal.Title style={{color: 'red'}}>{error}</Modal.Title>
-            <CodeEditor key={functionHeader} beginContextLine={functionHeader} endContextLine="}" initialValue={initialValue}
-                        onChange={setBody} height={'80vh'}/>
-          </Col>
-          <Col md={6}>
-            <ParameterList value={params} dispatch={dispatchParams}/>
-          </Col>
-        </Grid>
-      </Modal.Body>
-
-      <Modal.Footer>
-        <Button children={t('common.save')} onClick={handleSave} appearance="primary"/>
-        <Button children={t('common.cancel')} onClick={onCancel} appearance="subtle"/>
-      </Modal.Footer>
-    </Modal>
-  )
+      </Rows>
+      <ParameterList value={params} dispatch={dispatchParams}/>
+    </Container>
+  </>
 }
 
+type ActionState = { name?: string, body?: string, initialBody?: string, errors?: string }
+
+function useActionState({name, body}: CustomActionDefinition, actionData: ActionData): [ActionState, any] {
+  const initialState = {name, body, initialBody: body, errors: ''}
+  const [state, setState] = useState<ActionState>(initialState)
+  useEffect(() => setState(initialState), [actionData])
+  const setActionState = (newState: ActionState) => setState((prevState) => ({...prevState, ...newState}))
+  return [state, setActionState]
+}
+
+const EditorContainer = styled.div`
+  display: flex;
+  flex: 1;
+  gap: 10px;
+`
+
+const Container = styled(Columns)`
+  gap: 20px;
+  flex: 1;
+  overflow: hidden;
+`
+
 function paramsReducer(params: Parameter[] | undefined, action: ParamAction) {
-  const {index, param, type} = action
+  const {index, param, type, params : parameters} = action
   switch (type) {
+    case 'reset':
+      return [...parameters ?? []]
     case 'create': {
       const paramName = `prop${(index)}`
       return params ? [...params, paramName] : [paramName]
@@ -102,8 +129,20 @@ function paramsReducer(params: Parameter[] | undefined, action: ParamAction) {
   }
 }
 
-function getParamsType(params?: Parameter[]) {
-  if (!params?.length) return ''
-  const names: string[] = params.map(toParameterWithType).map(([name, type]) => name + ': ' + type)
-  return `\n* @param {{${names.join(', ')}}} args - the action parameters.`
+const findAction = (store: Store, name?: string) => getActionList(store, 'custom')?.find(a => a.name === name) as CustomActionDefinition
+
+const makeFunctionHeader = (params?: Parameter[]) => {
+  let types = ''
+  if (params?.length) {
+    const names: string[] = params.map(toParameterWithType).map(([name, type]) => name + ': ' + type)
+    types = `\n* @param {{${names.join(', ')}}} args - the action parameters.`
+  }
+  else {
+    types = '\n* @param {} args - the action arguments.'
+  }
+
+  return `/**${types}
+* @param {ActionEventArgs} e - the action arguments.
+*/
+async function Action (args, e) {`
 }

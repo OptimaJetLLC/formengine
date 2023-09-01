@@ -3,12 +3,11 @@ import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faRedo from '@fortawesome/free-solid-svg-icons/faRedo.js'
 import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo.js'
 import {namedObserver} from '@react-form-builder/core'
-import {IconButton} from 'rsuite'
+import {ButtonGroup, IconButton} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../components/Icons'
 import {ErrorsPanel} from './components/ErrorsPanel'
 import {JsonViewButton} from './components/JsonViewButton'
-import {LocalizationLanguagePicker} from './components/LocalizationLanguagePicker'
 import {Menu} from './components/Menu'
 import {ResolutionPicker} from './components/ResolutionPicker'
 import {ToggleModeButton} from './components/ToggleModeButton'
@@ -20,17 +19,17 @@ const Header = namedObserver('Header', () => {
   return (
     <Container>
       <LeftPart>
-        <div>
-          <Menu/>
+        <Menu/>
+        <ButtonGroup size={'sm'}>
           <IconButton onClick={() => undoer.undo()} disabled={!undoer.hasUndo}
-                      icon={<FaIcon icon={faUndo as unknown as IconDefinition}/>}/>
+                      icon={<FaIcon icon={faUndo as unknown as IconDefinition}/>} size={'sm'}/>
           <IconButton onClick={() => undoer.redo()} disabled={!undoer.hasRedo}
-                      icon={<FaIcon icon={faRedo as unknown as IconDefinition}/>}/>
-        </div>
+                      icon={<FaIcon icon={faRedo as unknown as IconDefinition}/>} size={'sm'}/>
+
+        </ButtonGroup>
       </LeftPart>
 
       <CenterPart>
-        <LocalizationLanguagePicker/>
         <ToggleModeButton/>
       </CenterPart>
 
@@ -48,25 +47,22 @@ const LeftPart = styled.div``
 
 const RightPart = styled.div`
   justify-content: flex-end;
-  gap: 10px;
-  padding-inline-end: 10px;
 `
 
 const CenterPart = styled.div`
   justify-content: center;
-  gap: 10px;
 `
 
 const Container = styled.div`
   display: flex;
-  padding: 10px 10px;
+  padding: 10px 15px;
   gap: 10px;
 
   & > * {
     flex: 1;
     display: flex;
     align-items: center;
-    gap: 4px
+    gap: 10px
   }
 `
 

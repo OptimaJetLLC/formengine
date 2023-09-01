@@ -83,7 +83,7 @@ const CodeButton = namedObserver('CodeButton', ({currentEditableProperty, getEdi
   }
 
   const handleClick = () =>
-    store.calculatedProperty = store.calculatedProperty?.annotation === annotation ? undefined : getEditableProperty()
+    store.currentEditable = (store.currentEditable as EditableProperty)?.annotation === annotation ? undefined : getEditableProperty()
 
   return <Hinted hint={hint}>
     <SIconButton onClick={handleClick} disabled={!annotation.calculable}
@@ -109,16 +109,11 @@ export const LabeledProperty = ({idPrefix, annotation, getEditableProperty, chil
 
   const defaultGetEditableProperty = () => {
     if (getEditableProperty) return getEditableProperty()
-    return {
-      componentKey: store.key,
-      annotation: annotation,
-      property: store.props[annotation.key],
-      saveProperty: (property: ComponentProperty) => {
-        const storedProperty = store.props[annotation.key] || {value: undefined}
-        store.props[annotation.key] = Object.assign(storedProperty, property)
-        return store.props[annotation.key]
-      }
-    }
+    return new EditableProperty(store.key, annotation, (property: ComponentProperty) => {
+      const storedProperty = store.props[annotation.key] || {value: undefined}
+      store.props[annotation.key] = Object.assign(storedProperty, property)
+      return store.props[annotation.key]
+    }, store.props[annotation.key])
   }
 
   const className = annotation.required ? afterRedAsterisk : undefined

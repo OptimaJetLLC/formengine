@@ -46,6 +46,7 @@ const SFormContainer = styled(PanelContainer)`
   overflow-y: auto;
   overflow-x: hidden;
   transition: max-width .2s ease, max-height .2s ease, border-radius .2s ease;
+  border: 2px solid var(--rs-gray-500);
   border-radius: 10px;
   box-shadow: 0 5px 20px 0 rgb(0 0 0 / 15%);
 

@@ -1,7 +1,7 @@
 import {Parameter} from '@react-form-builder/core'
 import {Dispatch, useRef} from 'react'
-import {Button, Modal} from 'rsuite'
-import {Rows} from '../../../../../components/Containers'
+import {Button} from 'rsuite'
+import {Columns, Rows} from '../../../../../components/Containers'
 import {useTranslationPart} from '../../../../../localization/hooks'
 import {ParamAction} from '../types'
 import {ParameterItem} from './ParameterItem'
@@ -34,14 +34,15 @@ export const ParameterList = ({value, dispatch}: ParameterPanelProps) => {
   const handleCreateParam = () => dispatch({type: 'create', index: paramCountRef.current++})
 
   return (
-    <div>
-      <Modal.Title>{t('parameters')}</Modal.Title>
+    <Rows style={{maxWidth: 240}}>
+      <Columns style={{alignItems: 'center', justifyContent: 'space-between', height: 34}}>
+        <h6>{t('parameters')}</h6>
+        <Button onClick={handleCreateParam} appearance={'link'}><h6>{t('add')}</h6></Button>
+      </Columns>
 
-      <Rows style={{paddingBlock: 10}}>
+      <Rows style={{overflow: 'auto'}}>
         {value?.map((param, index) => <ParameterItem key={index} index={index} value={param} dispatch={dispatch}/>)}
       </Rows>
-
-      <Button block children={t('add')} onClick={handleCreateParam}/>
-    </div>
+    </Rows>
   )
 }

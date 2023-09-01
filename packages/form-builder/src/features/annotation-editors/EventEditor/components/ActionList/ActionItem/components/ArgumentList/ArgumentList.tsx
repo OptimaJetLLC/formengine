@@ -32,7 +32,7 @@ export const ArgumentList = observer(() => {
   const ExpandIcon = show ? ArrowUpLine : ArrowDownLine
   useClearableArguments()
 
-  if (!action.params) return null
+  if (!action.params || action.params.length < 1) return null
 
   return (
     <>
@@ -56,10 +56,7 @@ export const ArgumentList = observer(() => {
 })
 
 const ExpandButton = styled(Button)`
-  position: absolute !important;
   padding: 5px !important;
-  left: 0;
-  bottom: 0;
   border-radius: 0 !important;
   outline: 0 !important;
   color: var(--rs-btn-subtle-text) !important;

@@ -1,11 +1,12 @@
 import styled from '@emotion/styled'
 import {Radio, RadioGroup as RRadioGroup} from 'rsuite'
+import type {RadioGroupProps} from 'rsuite/esm/RadioGroup/RadioGroup'
 import {LabeledValue} from '../annotation/utils/LabeledValue'
 
 /**
  * The properties of the React {@link RadioButtons} component.
  */
-export interface RadioButtonsProps {
+export interface RadioButtonsProps extends RadioGroupProps {
   label?: string
   value?: string
   onChange: (value: string | number) => void
@@ -17,12 +18,13 @@ export interface RadioButtonsProps {
  * @param props the React component properties.
  * @param props.label the label for the group.
  * @param props.items the array with radio button data.
+ * @param props.style the style of the component.
  * @param props.props the other properties of the component.
  * @returns the React element.
  */
-export const RadioButtons = ({label, items, ...props}: RadioButtonsProps) => {
+export const RadioButtons = ({label, items, style, ...props}: RadioButtonsProps) => {
   return (
-    <Container>
+    <Container style={style}>
       {!!label && <label>{label}</label>}
       <RRadioGroup {...props as any} size={'xs'} inline appearance={'picker'}>
         {items?.map(({value, label}, i) => (
@@ -39,7 +41,7 @@ const Container = styled.div`
   gap: 10px;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  flex: 1;
 
   .rs-radio-group {
     width: 100%;

@@ -7,7 +7,7 @@ export type ParamAction = {
   /**
    * The type of action on the parameter.
    */
-  type: 'create' | 'update' | 'remove'
+  type: 'create' | 'update' | 'remove' | 'reset'
   /**
    * The index of the parameter in the parameter array.
    */
@@ -16,4 +16,6 @@ export type ParamAction = {
    * The parameter description.
    */
   param?: Parameter
+
+  params?: Parameter[]
 }

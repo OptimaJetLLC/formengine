@@ -1,55 +1,40 @@
-import {css} from '@emotion/css'
-import {CustomActionDefinition, useStore} from '@react-form-builder/core'
+import {ActionData} from '@react-form-builder/core'
+import {addAction} from '@react-form-builder/core/src/features/event'
 import PlusIcon from '@rsuite/icons/Plus.js'
-import {assign} from 'lodash-es'
 import {observer} from 'mobx-react'
-import {useReducer, useRef, useState} from 'react'
-import {IconButton} from 'rsuite'
-import {Popover} from '../../../../components/Popover'
+import {forwardRef, useCallback, useRef} from 'react'
+import {Dropdown, IconButton, Popover, Whisper} from 'rsuite'
+import type {OverlayTriggerHandle} from 'rsuite/Picker'
 import {useTranslationPart} from '../../../../localization/hooks'
-import type {AnnotationEditorProps} from '../../../AnnotationEditorProps'
-import {CustomActionEditor} from '../CustomActionEditor'
-import {SelectAction} from './SelectAction'
+import {AnnotationEditorProps} from '../../../AnnotationEditorProps'
+import {CommonActions} from './components/CommonActions'
+import {CustomActions} from './components/CustomActions'
+import {ActionsMenuProps} from './types'
 
 export const AddActionButton = observer((props: AnnotationEditorProps) => {
-  const store = useStore()
-  const data = props.componentData
-  const eventName = props.annotation.key
-  const buttonRef = useRef<HTMLElement | null>(null)
-  const [actionMenuOpen, toggleActionMenu] = useReducer(state => !state, false)
-  const [editorData, setEditorData] = useState<CustomActionDefinition | undefined>()
   const t = useTranslationPart('actions')
+  const {componentData, annotation} = props
+  const store = componentData.store
+  const eventName = annotation.key
+  const ref = useRef<OverlayTriggerHandle>(null)
 
-  const handleSave = (value: CustomActionDefinition) => {
-    store.form.componentTree.store.props.actions ??= {value: []}
-    if (store.form.componentTree.store.props.actions.value.includes(editorData)) {
-      assign(editorData, value)
-      setEditorData(undefined)
-      return
-    }
-    store.form.componentTree.store.props.actions.value.push(value)
+  const handleSelect = useCallback((action?: ActionData) => {
+    ref.current?.close()
+    if (!action) return
+    addAction(store, eventName, action)
+  }, [])
 
-    data.store.events ??= {}
-    data.store.events[eventName] ??= []
-    data.store.events[eventName].push({name: value.name, type: 'custom'})
-    setEditorData(undefined)
-  }
-
-  return (
-    <>
-      <IconButton ref={buttonRef} children={t('addAction')} onClick={toggleActionMenu} block icon={<PlusIcon/>} appearance="default"
-                  size="sm"/>
-      <Popover show={actionMenuOpen} parent={buttonRef.current} placement={'left-start'} className={css`z-index: 20`}>
-        <SelectAction onClose={toggleActionMenu} onOpen={setEditorData} {...props}/>
-      </Popover>
-
-      {editorData &&
-        <CustomActionEditor
-          onEnter={toggleActionMenu}
-          onCancel={() => setEditorData(undefined)}
-          data={editorData}
-          onSave={handleSave}
-        />}
-    </>
-  )
+  return <Whisper placement="leftStart" ref={ref} trigger="click"
+                  speaker={<MenuPopover onSelect={handleSelect} annotation={annotation}/>}>
+    <IconButton icon={<PlusIcon/>} size="sm">{t('addAction')}</IconButton>
+  </Whisper>
 })
+
+const MenuPopover = forwardRef(({onSelect, annotation, ...props}: ActionsMenuProps, ref: any) => (
+  <Popover ref={ref} {...props} full>
+    <Dropdown.Menu>
+      <CommonActions onSelect={onSelect} annotation={annotation}/>
+      <CustomActions onSelect={onSelect} annotation={annotation}/>
+    </Dropdown.Menu>
+  </Popover>
+))

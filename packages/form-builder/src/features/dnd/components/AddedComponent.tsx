@@ -48,7 +48,7 @@ const Container = styled.div`
   flex: 1;
   max-width: 125px;
   border-radius: 6px;
-  background-color: var(--rs-input-bg);
+  background-color: var(--rs-btn-default-bg);
   font-size: 13px;
 
   &:hover {

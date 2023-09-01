@@ -1,5 +1,7 @@
-import {ActionData, useStore} from '@react-form-builder/core'
+import {useStore} from '@react-form-builder/core'
 import {Dropdown} from 'rsuite'
+import {useTranslationPart} from '../../../../../localization/hooks'
+import {ActionsMenuProps} from '../types'
 
 /**
  * React form builder component that displays the list of common actions.
@@ -7,11 +9,11 @@ import {Dropdown} from 'rsuite'
  * @param props.onSelect the callback function called when an action is selected.
  * @returns the React element.
  */
-export const CommonActions = ({onSelect}: { onSelect: (action: ActionData) => void }) => {
+export const CommonActions = ({onSelect}: ActionsMenuProps) => {
   const store = useStore()
+  const t = useTranslationPart('actions')
   return (
-    // todo to translation
-    <Dropdown.Menu title="Common">
+    <Dropdown.Menu title={t('common')}>
       {
         store.actions.map(action =>
           <Dropdown.Item

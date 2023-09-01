@@ -99,7 +99,6 @@ const componentBar = css`
   flex-direction: column;
   gap: 8px;
   overflow: hidden;
-  background-color: var(--rs-btn-default-bg);
 `
 
 const ControlsGroup = styled.div`

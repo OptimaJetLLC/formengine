@@ -25,7 +25,8 @@ export const LocalizationLanguagePicker = observer(() => {
   })
   const value = builderStore.localizationLanguage.fullCode
 
-  return <SPicker value={value} data={data} onSelect={onLanguageSelected}/>
+  return <SPicker value={value} data={data} onSelect={onLanguageSelected} cleanable={false} placement={'auto'}
+                  searchable={false}/>
 })
 
 const SPicker = styled(SelectPicker<string>)`

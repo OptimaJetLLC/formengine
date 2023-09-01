@@ -1,6 +1,7 @@
 import {ComponentProperty} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {Input} from 'rsuite'
+import {EditableProperty} from '../../stores/BuilderStore'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
@@ -24,16 +25,16 @@ export const RenderWhenEditor = observer((props: AnnotationEditorProps) => {
     selected.renderWhen.value = value
   }
 
-  const getEditableProperty = () => ({
-    componentKey: selected.key,
-    annotation: annotation,
-    property: selected.renderWhen,
-    saveProperty: (property: ComponentProperty) => {
+  const getEditableProperty = () => new EditableProperty(
+    selected.key,
+    annotation,
+    (property: ComponentProperty) => {
       const renderWhen = selected.renderWhen || {}
       selected.renderWhen = Object.assign(renderWhen, property)
       return selected.renderWhen
-    }
-  })
+    },
+    selected.renderWhen
+  )
 
   return (
     <LabeledProperty annotation={annotation} getEditableProperty={getEditableProperty}>

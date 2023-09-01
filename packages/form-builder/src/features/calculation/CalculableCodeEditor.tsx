@@ -1,10 +1,11 @@
 import styled from '@emotion/styled'
-import {BaseCompilationResult, CompilationResult, compileFn, isFunctionalProperty, namedObserver} from '@react-form-builder/core'
+import {BaseCompilationResult, CompilationResult, compileFn, namedObserver} from '@react-form-builder/core'
 import {action} from 'mobx'
 import {useEffect, useState} from 'react'
-import {Button, ButtonGroup, Checkbox} from 'rsuite'
+import {Button, ButtonGroup} from 'rsuite'
 import {EditableProperty} from '../../stores/BuilderStore'
 import {CodeEditor} from '../components/CodeEditor'
+import {Rows} from '../components/Containers'
 
 const codePlaceHolder = '// enter your code here'
 
@@ -49,28 +50,27 @@ export const ErrorMessage = ({result}: { result?: BaseCompilationResult }) => {
 }
 
 /**
- * Properties of the React component {@link CodeEditorPanel}.
+ * Properties of the React component {@link CalculableCodeEditor}.
  */
-export interface CodeEditorPanelProps {
+export interface CalculableCodeEditorProps {
   editableProperty: EditableProperty
   onClose: () => void
 }
 
-export const CodeEditorPanel = namedObserver('CodeEditorPanel', ({editableProperty, onClose}: CodeEditorPanelProps) => {
-  const [sourceCode, setSourceCode] = useState(editableProperty.property?.fnSource || codePlaceHolder)
-  const [compilationError, setCompilationError] = useState<CompilationResult | undefined>()
-  const [useFn, setUseFn] = useState(isFunctionalProperty(editableProperty.property))
-  const [initialValue, setInitialValue] = useState('')
+export const CalculableCodeEditor = namedObserver('CalculableCodeEditor',
+  ({editableProperty, onClose}: CalculableCodeEditorProps) => {
+    const [sourceCode, setSourceCode] = useState(editableProperty.property?.fnSource || codePlaceHolder)
+    const [compilationError, setCompilationError] = useState<CompilationResult | undefined>()
+    const [initialValue, setInitialValue] = useState('')
 
-  const compileCode = () => {
-    const result = compileFn(sourceCode)
-    setCompilationError(result)
-  }
+    const compileCode = () => {
+      const result = compileFn(sourceCode)
+      setCompilationError(result)
+    }
 
-  const saveCode = () => {
-    const computeType = useFn ? 'function' : undefined
-    editableProperty.saveProperty({computeType, fnSource: sourceCode})
-    setInitialValue(sourceCode)
+    const saveCode = () => {
+      editableProperty.saveProperty({computeType: 'function', fnSource: sourceCode})
+      setInitialValue(sourceCode)
   }
 
   useEffect(() => {
@@ -80,7 +80,6 @@ export const CodeEditorPanel = namedObserver('CodeEditorPanel', ({editableProper
 
   useEffect(() => {
     setSourceCode(editableProperty.property?.fnSource || codePlaceHolder)
-    setUseFn(isFunctionalProperty(editableProperty.property))
   }, [editableProperty])
 
   const functionHeader = `/**
@@ -89,26 +88,22 @@ export const CodeEditorPanel = namedObserver('CodeEditorPanel', ({editableProper
 */
 function Calculation (form) {`
 
-  return <>
+  return <Rows gap={10}>
     <CodeEditor key={editableProperty.annotation.key} beginContextLine={functionHeader} endContextLine="}" initialValue={initialValue}
                 onChange={setSourceCode}/>
     <SDiv>
-      <ButtonGroup>
+      <ButtonGroup size={'sm'}>
         <Button appearance="primary" onClick={compileCode}>Compile</Button>
         <Button appearance="ghost" onClick={action(() => saveCode())}>Save</Button>
         <Button appearance="ghost" onClick={onClose}>Close</Button>
       </ButtonGroup>
-      <Checkbox checked={useFn} onChange={(_, checked) => setUseFn(checked)}>
-        Use calculated property
-      </Checkbox>
       <ErrorMessage result={compilationError}/>
     </SDiv>
-  </>
+  </Rows>
 })
 
 const SDiv = styled.div`
   display: flex;
   gap: 10px;
-  padding: 10px;
   align-items: center;
 `

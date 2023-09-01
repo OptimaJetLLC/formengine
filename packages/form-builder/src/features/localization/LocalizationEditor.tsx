@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import {
   getFluentCompatibleId,
-  isLocalizedProperty,
   LocalizationTestResult,
   testFluentLocalization,
   useStore
@@ -10,15 +9,15 @@ import {action} from 'mobx'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
-import {Button, ButtonGroup, Checkbox} from 'rsuite'
+import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
-import {CodeEditorPanelProps, ErrorMessage} from '../calculation/CodeEditorPanel'
+import {CalculableCodeEditorProps, ErrorMessage} from '../calculation/CalculableCodeEditor'
 import {CodeEditor} from '../components/CodeEditor'
+import {LocalizationLanguagePicker} from '../ui/Header/components/LocalizationLanguagePicker'
 import {fluentLanguageId} from './consts'
 
-export const LocalizationEditorPanel = observer(({editableProperty, onClose}: CodeEditorPanelProps) => {
+export const LocalizationEditor = observer(({editableProperty, onClose}: CalculableCodeEditorProps) => {
   const [error, setError] = useState<LocalizationTestResult | undefined>()
-  const [useFluentLocalization, setUseFluentLocalization] = useState(isLocalizedProperty(editableProperty.property))
   const {t} = useTranslation()
   const localizationStringId = getFluentCompatibleId(`${editableProperty.componentKey}_${editableProperty.annotation.key}`)
   const viewerStore = useStore()
@@ -47,10 +46,6 @@ export const LocalizationEditorPanel = observer(({editableProperty, onClose}: Co
     setValue(initialValue)
   }, [editableProperty, builderStore.localizationLanguage])
 
-  useEffect(() => {
-    setUseFluentLocalization(isLocalizedProperty(editableProperty.property))
-  }, [editableProperty])
-
   const testLocalization = () => {
     const localizationResult = testFluentLocalization({
       localizationStringId: localizationStringId,
@@ -62,8 +57,7 @@ export const LocalizationEditorPanel = observer(({editableProperty, onClose}: Co
   }
 
   const saveLocalization = () => {
-    const computeType = useFluentLocalization ? 'localization' : undefined
-    editableProperty.saveProperty({computeType})
+    editableProperty.saveProperty({computeType: 'localization'})
     viewerStore.form.localization.setLocalization(builderStore.localizationLanguage.fullCode, editableProperty.componentKey, editableProperty.annotation.key, value)
     setInitialValue(value)
   }
@@ -76,22 +70,19 @@ export const LocalizationEditorPanel = observer(({editableProperty, onClose}: Co
                 beginContextLine={beginContextLine}
                 endContextLine={endContextLine} canEditBeginContextLine={true} onChange={setValue}/>
     <SDiv>
-      <ButtonGroup>
+      <ButtonGroup size={'sm'}>
         <Button appearance="primary" onClick={testLocalization}>{t('localizationEditor.test')}</Button>
         <Button appearance="ghost" onClick={action(() => saveLocalization())}>{t('localizationEditor.save')}</Button>
         <Button appearance="ghost" onClick={onClose}>{t('localizationEditor.close')}</Button>
       </ButtonGroup>
-      <Checkbox checked={useFluentLocalization} onChange={(_, checked) => setUseFluentLocalization(checked)}>
-        {t('localizationEditor.useFluentLocalization')}
-      </Checkbox>
+      <LocalizationLanguagePicker/>
+      <ErrorMessage result={error}/>
     </SDiv>
-    <ErrorMessage result={error}/>
   </>
 })
 
 const SDiv = styled.div`
   display: flex;
   gap: 10px;
-  padding: 10px;
   align-items: center;
 `

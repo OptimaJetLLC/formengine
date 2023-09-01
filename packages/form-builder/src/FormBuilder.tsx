@@ -9,7 +9,6 @@ import {ComponentsModal} from './features/ui/ComponentBar/ComponentsModal'
 import {LeftPanel} from './features/ui/LeftPanel'
 import {RightPanel} from './features/ui/RightPanel'
 import {FormBuilderProps} from './FormBuilderProps'
-import {useBuilderStore} from './utils/BuilderStoreContext'
 
 /**
  * The React component that displays the form builder.
@@ -22,11 +21,8 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
   </BuilderProviders>
 })
 
-const FormBuilderView = observer(() => {
-  const builderStore = useBuilderStore()
-  const renderBottomPanel = builderStore.calculatedProperty && builderStore.builderMode === 'builder'
-
-  return <Suspense fallback={<Loader center content="loading"/>}>
+const FormBuilderView = observer(() => (
+  <Suspense fallback={<Loader center content="loading"/>}>
     <Container>
       <Content>
         <LeftPanel/>
@@ -34,20 +30,20 @@ const FormBuilderView = observer(() => {
         <RightPanel/>
         <ComponentsModal/>
       </Content>
-      {renderBottomPanel && <BottomPanel/>}
+      <BottomPanel/>
     </Container>
   </Suspense>
-})
+))
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
   overflow-y: auto;
-  background-color: #f7f7fa;
+  background-color: white;
 
   .rs-theme-dark & {
-    background-color: #3b3f43;
+    background-color: #303336;
   }
 `
 

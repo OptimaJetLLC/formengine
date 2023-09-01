@@ -1,3 +1,4 @@
+import {ComponentStore} from '../../../stores/ComponentStore'
 import {Store} from '../../../stores/Store'
 import {AsyncFunction} from '../../../utils/AsyncFunction'
 import {ActionData, ActionDefinition, BaseActionDefinition, CustomActionDefinition, Func} from '../types'
@@ -22,13 +23,26 @@ export function findAction(store: Store, data: ActionData): ActionDefinition {
 }
 
 /**
+ * Adds action for component.
+ * @param store the target {@link ComponentStore}.
+ * @param eventName the target event name.
+ * @param data the {@link ActionData}.
+ * @internal
+ */
+export function addAction(store: ComponentStore, eventName: string, data: ActionData) {
+  store.events ??= {}
+  store.events[eventName] ??= []
+  store.events[eventName].push(data)
+}
+
+/**
  * Returns an array of {@link BaseActionDefinition} found for the specified action type and action target from the repository.
  * @param store FormViewer {@link Store}.
  * @param type action type.
  * @returns the array of {@link BaseActionDefinition} or undefined.
  * @internal
  */
-function getActionList(store: Store, type: string): BaseActionDefinition[] | undefined {
+export function getActionList(store: Store, type: string): BaseActionDefinition[] | undefined {
   switch (type) {
     case 'common':
       return store.actions

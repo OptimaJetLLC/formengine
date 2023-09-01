@@ -1,4 +1,5 @@
 import {
+  ActionData,
   BiDi,
   ComponentData,
   ComponentProperty,
@@ -33,17 +34,40 @@ import {trackUndo} from './undo'
 /**
  * Parameters of the editable component property.
  */
-export interface EditableProperty {
-  readonly componentKey: string
-  readonly annotation: Annotation
-  readonly property?: ComponentProperty
-  readonly saveProperty: (property: ComponentProperty) => ComponentProperty
+export class EditableProperty {
+  /**
+   * Creates the editable property settings.
+   * @param componentKey the component key.
+   * @param annotation the {@link Annotation} instance.
+   * @param saveProperty the function for save property settings.
+   * @param property the {@link ComponentProperty} instance.
+   */
+  constructor(
+    readonly componentKey: string,
+    readonly annotation: Annotation,
+    readonly saveProperty: (property: ComponentProperty) => ComponentProperty,
+    readonly property?: ComponentProperty
+  ) {
+  }
 }
 
 /**
  * The callback function called when a component is selected in a modal window.
  */
 export type OnSelectCallback = (source: ComponentData) => void
+
+/**
+ * The editable action data.
+ */
+export class EditableAction {
+  /**
+   * Creates the editable action settings.
+   * @param eventName the action event name.
+   * @param actionData the {@link ActionData} with editable action data.
+   */
+  constructor(readonly eventName: string, readonly actionData: ActionData = {name: '', type: 'custom'}) {
+  }
+}
 
 /**
  * The state of the modal window of the component list.
@@ -131,7 +155,7 @@ export class BuilderStore {
   localizationLanguage: Language
   private readonly loadedLanguages: Record<string, FormBuilderI18nData> = {}
 
-  calculatedProperty?: EditableProperty
+  currentEditable?: EditableProperty | EditableAction
   lastSaveTime = new Date()
   readonly componentsModalState: ComponentsModalState = {
     opened: false,
@@ -162,7 +186,6 @@ export class BuilderStore {
         formBuilderLanguage: observable.ref,
         localizationLanguage: observable.ref,
         destroy: false,
-        calculatedProperty: observable.ref,
         builderMode: true,
         viewMode: true,
         openedPanels: true,
@@ -311,7 +334,7 @@ export class BuilderStore {
    */
   changeBuilderMode(value: BuilderMode) {
     this.builderMode = value
-    this.calculatedProperty = undefined
+    this.currentEditable = undefined
   }
 
   /**
@@ -335,7 +358,7 @@ export class BuilderStore {
   parseForm(text: string) {
     this.viewer.applyStringForm(text)
 
-    if (this.calculatedProperty) this.calculatedProperty = undefined
+    this.currentEditable = undefined
   }
 
   //TODO clone for inner components without removing
