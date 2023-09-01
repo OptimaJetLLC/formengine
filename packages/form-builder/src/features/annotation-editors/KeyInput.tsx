@@ -50,18 +50,12 @@ export const KeyInput = observer((props: AnnotationEditorProps) => {
 
   return (
     <LabeledProperty annotation={annotation}>
-      <InputGroup>
-        <Input
-          value={valueToApply}
-          onChange={inputOnChange}
-          size={'xs'}
-        />
+      <InputGroup size={'xs'}>
+        <Input value={valueToApply} onChange={inputOnChange}/>
         <Hinted hint={getLabel('applyKey')}>
-          <InputGroup.Button
-            disabled={!canApply}
-            onClick={buttonOnClick}
-            size="xs">
-            <FaIcon icon={faCheck as unknown as IconDefinition}/>
+          <InputGroup.Button disabled={!canApply} onClick={buttonOnClick}>
+            <FaIcon icon={faCheck as unknown as IconDefinition}
+                    color={canApply ? 'green' : undefined}/>
           </InputGroup.Button>
         </Hinted>
       </InputGroup>
