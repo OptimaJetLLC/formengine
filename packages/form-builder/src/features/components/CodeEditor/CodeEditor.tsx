@@ -1,4 +1,5 @@
 import Editor, {OnMount} from '@monaco-editor/react'
+import type {WrapperProps} from '@react-form-builder/core'
 // @ts-ignore it no have type declarations ☹️
 import {constrainedEditor} from 'constrained-editor-plugin'
 import {observer} from 'mobx-react'
@@ -6,6 +7,10 @@ import type {editor} from 'monaco-editor'
 import {useCallback, useEffect, useRef, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import './config'
+
+const LtrDiv = ({children}: WrapperProps) => {
+  return <div dir="ltr" style={{width: '100%', height: '100%'}}>{children}</div>
+}
 
 interface CodeEditorProps {
   initialValue: string
@@ -102,19 +107,21 @@ export const CodeEditor = observer((props: CodeEditorProps) => {
   const {theme} = useBuilderStore()
 
   return (
-    <Editor
-      onMount={handleMount}
-      className={props.className}
-      defaultValue={initialValue}
-      height={props.height ?? '100%'}
-      width={props.width ?? '100%'}
-      language={props.language ?? 'javascript'}
-      options={{
-        wordWrap: 'on',
-        ...props.options
-      }}
-      theme={theme === 'light' ? 'light' : 'vs-dark'}
-    />
+    <LtrDiv>
+      <Editor
+        onMount={handleMount}
+        className={props.className}
+        defaultValue={initialValue}
+        height={props.height ?? '100%'}
+        width={props.width ?? '100%'}
+        language={props.language ?? 'javascript'}
+        options={{
+          wordWrap: 'on',
+          ...props.options
+        }}
+        theme={theme === 'light' ? 'light' : 'vs-dark'}
+      />
+    </LtrDiv>
   )
 })
 
