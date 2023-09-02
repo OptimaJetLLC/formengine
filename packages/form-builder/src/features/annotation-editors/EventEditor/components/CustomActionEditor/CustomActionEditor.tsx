@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 import {
   ActionData,
-  addAction,
   AsyncFunction,
+  ComponentStore,
   CustomActionDefinition,
   getActionList,
   Parameter,
@@ -69,7 +69,7 @@ export const CustomActionEditor = ({actionData, eventName}: EditableAction) => {
     storeProps.actions.value.push(value)
 
     const componentStore = builderStore.oneSelected?.store
-    if (componentStore) addAction(componentStore, eventName, {name: value.name ?? '', type: 'custom'})
+    if (componentStore) ComponentStore.addEventHandler(componentStore, eventName, {name: value.name ?? '', type: 'custom'})
   }
 
   return <>

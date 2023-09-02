@@ -1,3 +1,4 @@
+import {KeySymbol} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {Rows} from '../../../../components/Containers'
 import type {AnnotationEditorProps} from '../../../AnnotationEditorProps'
@@ -12,7 +13,7 @@ export const ActionList = observer((props: AnnotationEditorProps) => {
   /*TODO Draggable List*/
   return <Rows>
     {actions.map((action, index) => (
-      <ActionItem key={action.name + `_${index}`} eventName={eventName} index={index} data={action}/>)
+      <ActionItem key={action[KeySymbol]} eventName={eventName} index={index} data={action}/>)
     )}
   </Rows>
 })

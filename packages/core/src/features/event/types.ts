@@ -1,3 +1,4 @@
+import {KeySymbol} from '../../consts'
 import {ActionEventArgs} from './utils/ActionEventArgs'
 
 /**
@@ -40,6 +41,7 @@ export type Arguments = Record<ParameterName, ArgumentValue>
  * Used for add a new action, store information about it.
  */
 export type ActionData = {
+  [KeySymbol]?: string
   name: string
   type: ActionType
   args?: Arguments
@@ -78,4 +80,3 @@ export type Func = (...arg: any[]) => void | Promise<void>
  * Event handler function type.
  */
 export type ActionEventHandler = (e: ActionEventArgs) => void | Promise<void>
-

@@ -1,9 +1,27 @@
 import {assign} from 'lodash-es'
 import {makeAutoObservable} from 'mobx'
+import {KeySymbol} from '../consts'
 import {ActionData, EventName} from '../features/event'
 import {Css} from '../features/style/types'
 import type {BoundValueSchema} from '../features/validation'
 import {nameObservable} from '../utils/observableNaming'
+
+let actionDataCounter = 0
+
+function initActionDataKey(actionData: ActionData) {
+  if (actionData[KeySymbol]) return
+  ++actionDataCounter
+  actionData[KeySymbol] = `actionData_${actionDataCounter}`
+}
+
+function initActionDataKeys(componentStore: ComponentStore) {
+  const events = componentStore.events
+  if (events) {
+    Object.values(events)
+      .forEach(data => data.forEach(initActionDataKey))
+  }
+  componentStore.children?.forEach(initActionDataKeys)
+}
 
 /**
  * The component property value type.
@@ -91,7 +109,22 @@ export class ComponentStore {
    * @returns the component Store.
    */
   static createFromObject(value: any) {
-    return assign(new ComponentStore(value.key, value.type), value)
+    const result = assign(new ComponentStore(value.key, value.type), value)
+    initActionDataKeys(result)
+    return result
+  }
+
+  /**
+   * Adds the event handler for component.
+   * @param store the target {@link ComponentStore}.
+   * @param eventName the target event name.
+   * @param data the {@link ActionData}.
+   * @internal
+   */
+  static addEventHandler(store: ComponentStore, eventName: string, data: ActionData) {
+    initActionDataKey(data)
+    store.events ??= {}
+    store.events[eventName] ??= []
+    store.events[eventName].push(data)
   }
 }
-

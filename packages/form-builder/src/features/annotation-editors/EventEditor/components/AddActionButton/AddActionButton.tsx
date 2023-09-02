@@ -1,4 +1,4 @@
-import {ActionData, addAction} from '@react-form-builder/core'
+import {ActionData, ComponentStore} from '@react-form-builder/core'
 import PlusIcon from '@rsuite/icons/Plus.js'
 import {observer} from 'mobx-react'
 import {forwardRef, useCallback, useRef} from 'react'
@@ -20,7 +20,7 @@ export const AddActionButton = observer((props: AnnotationEditorProps) => {
   const handleSelect = useCallback((action?: ActionData) => {
     ref.current?.close()
     if (!action) return
-    addAction(store, eventName, action)
+    ComponentStore.addEventHandler(store, eventName, action)
   }, [])
 
   return <Whisper placement="leftStart" ref={ref} trigger="click"
