@@ -1,5 +1,4 @@
-import {ActionData} from '@react-form-builder/core'
-import {addAction} from '@react-form-builder/core/src/features/event'
+import {ActionData, addAction} from '@react-form-builder/core'
 import PlusIcon from '@rsuite/icons/Plus.js'
 import {observer} from 'mobx-react'
 import {forwardRef, useCallback, useRef} from 'react'

@@ -62,3 +62,4 @@ export type {ValidationRuleParameter} from './features/validation/types/Validati
 export type {ValidatorType} from './features/validation/types/ValidatorType'
 export type {ExternalValidators} from './features/validation/types/ExternalValidationRules'
 export {isFunctionalProperty, isLocalizedProperty} from './stores/ComponentStore'
+export {addAction, getActionList} from './features/event'

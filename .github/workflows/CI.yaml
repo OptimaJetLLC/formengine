@@ -66,6 +66,22 @@ jobs:
       - name: Run Check
         run: npm run check:circular-deps
 
+  check-wrong-imports:
+    name: Check wrong imports
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: 'npm'
+
+      - name: Run Check
+        run: npm run check:wrong-imports
+
   eslint:
     name: ESLint
     runs-on: self-hosted

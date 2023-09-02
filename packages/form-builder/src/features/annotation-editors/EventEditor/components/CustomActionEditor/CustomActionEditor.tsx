@@ -1,6 +1,15 @@
 import styled from '@emotion/styled'
-import {ActionData, AsyncFunction, CustomActionDefinition, Parameter, Store, toParameterWithType, useStore} from '@react-form-builder/core'
-import {addAction, getActionList} from '@react-form-builder/core/src/features/event'
+import {
+  ActionData,
+  addAction,
+  AsyncFunction,
+  CustomActionDefinition,
+  getActionList,
+  Parameter,
+  Store,
+  toParameterWithType,
+  useStore
+} from '@react-form-builder/core'
 import {assign} from 'lodash-es'
 import {useEffect, useReducer, useRef, useState} from 'react'
 import {useTranslation} from 'react-i18next'
@@ -27,7 +36,7 @@ export const CustomActionEditor = ({actionData, eventName}: EditableAction) => {
   const builderStore = useBuilderStore()
   const action = findAction(store, actionData.name) ?? {name: '', body: ''}
   const formRef = useRef<FormInstance>(null)
-  const [actionState , setActionState] = useActionState(action, actionData)
+  const [actionState, setActionState] = useActionState(action, actionData)
   const [params, dispatchParams] = useReducer(paramsReducer, action?.params)
 
   useEffect(() => {
@@ -112,7 +121,7 @@ const Container = styled(Columns)`
 `
 
 function paramsReducer(params: Parameter[] | undefined, action: ParamAction) {
-  const {index, param, type, params : parameters} = action
+  const {index, param, type, params: parameters} = action
   switch (type) {
     case 'reset':
       return [...parameters ?? []]
@@ -136,8 +145,7 @@ const makeFunctionHeader = (params?: Parameter[]) => {
   if (params?.length) {
     const names: string[] = params.map(toParameterWithType).map(([name, type]) => name + ': ' + type)
     types = `\n* @param {{${names.join(', ')}}} args - the action parameters.`
-  }
-  else {
+  } else {
     types = '\n* @param {} args - the action arguments.'
   }
 

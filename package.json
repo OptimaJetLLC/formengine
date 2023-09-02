@@ -24,6 +24,7 @@
         "check:circular-deps": "npx madge@6.1.0 --extensions ts --circular .",
         "check:tsc": "tsc --noEmit --emitDeclarationOnly false",
         "check:unused-exports": "node ./scripts/find-unused-exports",
+        "check:wrong-imports": "node ./scripts/find-wrong-imports",
         "eslint": "npx eslint .",
         "eslint-fix": "npx eslint . --fix"
     },
