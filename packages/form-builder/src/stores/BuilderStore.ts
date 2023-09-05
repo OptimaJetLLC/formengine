@@ -457,7 +457,9 @@ export class BuilderStore {
         return l.fullCode === this.defaultLanguage.fullCode
           || this.viewer.form.localization.hasLanguage(l.fullCode)
       })
+    const actions = this.viewer.form.actionsList.length ? this.viewer.form.actions : undefined
     const serializedObject: PersistedForm = {
+      actions: actions,
       form: this.viewer.form.componentTree.store,
       localization: this.viewer.form.localization.value,
       languages: selectedLanguages,

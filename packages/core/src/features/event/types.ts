@@ -1,4 +1,5 @@
 import {KeySymbol} from '../../consts'
+import {AsyncFunction} from '../../utils/AsyncFunction'
 import {ActionEventArgs} from './utils/ActionEventArgs'
 
 /**
@@ -48,27 +49,72 @@ export type ActionData = {
 }
 
 /**
- * Description of the basic action handler.
+ * Represents a set of action definitions.
  */
-export interface BaseActionDefinition {
-  name: string
-  params?: Parameter[]
-  description?: string
+export type ActionValues = Record<string, ActionDefinition>
+
+/**
+ * Represents the definition of an action.
+ */
+export class ActionDefinition {
+
+  /**
+   * Creates a new instance of the ActionDefinition class.
+   * @param name the name of the Action.
+   * @param func the function of an action.
+   * @param body the source code of the Action.
+   * @param params the parameters of the Action.
+   * @param description the optional description of the Action.
+   */
+  constructor(
+    public readonly name: string,
+    public readonly func: Func,
+    public readonly body?: string,
+    public readonly params: Parameter[] = [],
+    public readonly description?: string
+  ) {
+  }
+
+  /**
+   * Creates an action from the function.
+   * @param name the name of the Action.
+   * @param func the function of an action.
+   * @param params the parameters of the Action.
+   * @param description the optional description of the Action.
+   * @returns a new instance of the ActionDefinition class.
+   */
+  static functionalAction(name: string, func: Func, params: Parameter[] = [], description?: string): ActionDefinition {
+    return new ActionDefinition(name, func, undefined, params, description)
+  }
+
+  /**
+   * Creates an action from the source code.
+   * @param name the name of the Action.
+   * @param body the source code of the Action.
+   * @param params the parameters of the Action.
+   * @param description the optional description of the Action.
+   * @returns a new instance of the ActionDefinition class.
+   */
+  static sourceAction(name: string, body: string, params: Parameter[] = [], description?: string): ActionDefinition {
+    const func = AsyncFunction(params.length ? 'args, e' : 'e', body)
+    return new ActionDefinition(name, func, body, params, description)
+  }
 }
 
 /**
- * Description of the custom action handler.
+ * Converts the input object to an ActionValues object.
+ * @param obj the input object.
+ * @returns the converted ActionValues object.
  */
-export interface CustomActionDefinition extends BaseActionDefinition {
-  body: string
-}
+export const createActionValuesFromObject = (obj: any) => {
+  const result: ActionValues = {}
+  if (!obj) return result
 
-/**
- * Action definition for runtime execution.
- * Used for link and common straight or convert custom to it.
- */
-export interface ActionDefinition extends BaseActionDefinition {
-  func: Func,
+  Object.keys(obj).forEach(key => {
+    const value = obj[key]
+    result[key] = ActionDefinition.sourceAction(value.name, value.body, value.params, value.description)
+  })
+  return result
 }
 
 /**

@@ -1,6 +1,5 @@
 import {Store} from '../../../stores/Store'
-import {AsyncFunction} from '../../../utils/AsyncFunction'
-import {ActionData, ActionDefinition, BaseActionDefinition, CustomActionDefinition, Func} from '../types'
+import {ActionData, ActionDefinition} from '../types'
 
 /**
  * Searches for an action in store, returns definition for the found action.
@@ -18,39 +17,21 @@ export function findAction(store: Store, data: ActionData): ActionDefinition {
     throw Error(`Action ${data.name} didn't found!`)
   }
 
-  return toActionDefinition(action as ActionDefinition | CustomActionDefinition)
+  return action
 }
 
 /**
- * Returns an array of {@link BaseActionDefinition} found for the specified action type and action target from the repository.
+ * Returns an array of {@link ActionDefinition} found for the specified action type and action target from the repository.
  * @param store FormViewer {@link Store}.
  * @param type action type.
- * @returns the array of {@link BaseActionDefinition} or undefined.
+ * @returns the array of {@link ActionDefinition} or undefined.
  * @internal
  */
-export function getActionList(store: Store, type: string): BaseActionDefinition[] | undefined {
+export function getActionList(store: Store, type: string): ActionDefinition[] | undefined {
   switch (type) {
     case 'common':
       return store.actions
     case 'custom':
-      return store.form.componentTree.store.props?.actions?.value as CustomActionDefinition[] | undefined
-  }
-}
-
-/**
- * Converts an instance of the BaseActionDefinition subtype into an instance of the ActionDefinition type.
- * @param action an instance of the BaseActionDefinition subtype.
- * @returns the ActionDefinition instance.
- * @internal
- */
-function toActionDefinition(action: ActionDefinition | CustomActionDefinition): ActionDefinition {
-  if ('func' in action) return action
-
-  const paramNames = action.params ? 'args, e' : 'e'
-  const func = AsyncFunction(paramNames, action.body) as Func
-  return {
-    name: action.name,
-    func,
-    params: action.params
+      return store.form.actionsList
   }
 }

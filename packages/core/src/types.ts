@@ -1,5 +1,4 @@
 import {ReactNode} from 'react'
-import {CustomActionDefinition} from './features/event'
 
 /**
  * React wrapper component properties.
@@ -24,7 +23,6 @@ export type Device = 'any' | ViewMode
  * Properties of the root component of the form.
  */
 export interface ScreenProps {
-  actions?: CustomActionDefinition[]
   children: ReactNode
   tooltipType: string
   errorConfig: object

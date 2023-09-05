@@ -1,4 +1,4 @@
-import {CustomActionDefinition, useStore} from '@react-form-builder/core'
+import {ActionDefinition, useStore} from '@react-form-builder/core'
 import {Trash} from '@rsuite/icons'
 import PlusIcon from '@rsuite/icons/Plus.js'
 import {observer} from 'mobx-react'
@@ -18,7 +18,7 @@ export const CustomActions = observer(({onSelect, annotation}: ActionsMenuProps)
   const store = useStore()
   const builderStore = useBuilderStore()
   const eventName = annotation.key
-  const actions = store.form.componentTree.store.props.actions
+  const actions = store.form.actionsList
   const t = useTranslationPart('actions')
   const addAction = () => {
     onSelect()
@@ -26,10 +26,10 @@ export const CustomActions = observer(({onSelect, annotation}: ActionsMenuProps)
   }
   const remove = (index: number, e: any) => {
     e.stopPropagation()
-    actions?.value.splice(index, 1)
+    actions?.splice(index, 1)
   }
 
-  const renderAction = ({name}: CustomActionDefinition, i: number) => (
+  const renderAction = ({name}: ActionDefinition, i: number) => (
     <Dropdown.Item key={name} onClick={() => onSelect({name, type: 'custom'})}
                    style={{position: 'relative', display: 'flex', justifyContent: 'space-between'}}>
       <span style={{whiteSpace: 'break-spaces'}}>{name}</span>
@@ -39,9 +39,9 @@ export const CustomActions = observer(({onSelect, annotation}: ActionsMenuProps)
   )
 
   return <Dropdown.Menu title={t('custom')}>
-    {actions?.value.map(renderAction)}
+    {actions?.map(renderAction)}
 
-    {!!actions?.value?.length && <Dropdown.Item disabled>
+    {!!actions?.length && <Dropdown.Item disabled>
       <Divider style={{marginTop: 0, marginBottom: 0}}/>
     </Dropdown.Item>}
 

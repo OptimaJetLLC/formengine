@@ -3,7 +3,7 @@ import {makeObservable, observable} from 'mobx'
 import {Subject} from 'rxjs'
 import {calculatePropertyValue} from '../features/calculation/propertyCalculator'
 import {Model, View} from '../features/define'
-import {ActionData, ActionDefinition, ActionEventArgs, findAction} from '../features/event'
+import {ActionData, ActionDefinition, ActionEventArgs, createActionValuesFromObject, findAction} from '../features/event'
 import {IFormViewer} from '../features/form-viewer'
 import type {ComponentLocalizer} from '../features/form-viewer/ComponentLocalizer'
 import {localizeProperties} from '../features/localization/localizer'
@@ -95,7 +95,7 @@ export class Store implements IStore, IFormViewer {
               public readonly parentComponentStore?: ComponentStore) {
     const componentTree = this.createComponentData(new ComponentStore(screenModel.name, screenModel.type))
     const localization = new LocalizationStore()
-    this.form = new Form(componentTree, localization, [], globalDefaultLanguage)
+    this.form = new Form(componentTree, localization, {}, [], globalDefaultLanguage)
 
     makeObservable(this, {
       form: observable,
@@ -124,7 +124,7 @@ export class Store implements IStore, IFormViewer {
     const oldForm = this.form
     const componentTree = this.createComponentData(new ComponentStore(screenModel.name, screenModel.type))
     const localization = new LocalizationStore()
-    this.form = new Form(componentTree, localization, oldForm.languages, oldForm.defaultLanguage)
+    this.form = new Form(componentTree, localization, {}, oldForm.languages, oldForm.defaultLanguage)
     oldForm.dispose()
   }
 
@@ -249,7 +249,12 @@ export class Store implements IStore, IFormViewer {
   #onLoadError(e: any) {
     console.error(e)
     const componentStore = buildInternalErrorStore(e)
-    this.applyPersistedForm({form: componentStore, localization: {}, defaultLanguage: globalDefaultLanguage.fullCode, languages: []})
+    this.applyPersistedForm({
+      form: componentStore,
+      localization: {},
+      defaultLanguage: globalDefaultLanguage.fullCode,
+      languages: []
+    })
   }
 
   /**
@@ -291,7 +296,9 @@ export class Store implements IStore, IFormViewer {
     const languages = persistedForm.languages?.map(Language.clone) ?? []
     const defaultLanguage = languages.find(l => l.fullCode === persistedForm.defaultLanguage) ?? globalDefaultLanguage
 
-    this.form = new Form(componentData, localization, languages, defaultLanguage)
+    const actions = createActionValuesFromObject(persistedForm.actions)
+
+    this.form = new Form(componentData, localization, actions, languages, defaultLanguage)
     // here we initialize the fields after the form is created, since the calculated field values are depends on 'this.form'
     this.form.initFields()
     oldForm.dispose()

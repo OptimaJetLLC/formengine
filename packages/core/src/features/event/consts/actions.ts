@@ -1,11 +1,11 @@
-import {defineAction} from '../utils/defineAction'
+import {ActionDefinition} from '../types'
 
-const log = defineAction('Log event to console', console.log)
+const log = ActionDefinition.functionalAction('Log event to console', console.log)
 
-const validate = defineAction('Validate', async e => await e.store.form.componentTree.validate())
+const validate = ActionDefinition.functionalAction('Validate', async e => await e.store.form.componentTree.validate())
 
-const clear = defineAction('Clear', e => e.store.form.componentTree.clear())
+const clear = ActionDefinition.functionalAction('Clear', e => e.store.form.componentTree.clear())
 
-const reset = defineAction('Reset', e => e.store.form.componentTree.reset())
+const reset = ActionDefinition.functionalAction('Reset', e => e.store.form.componentTree.reset())
 
 export {log, validate, reset, clear}

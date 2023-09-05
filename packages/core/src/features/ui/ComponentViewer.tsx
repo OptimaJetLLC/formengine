@@ -2,7 +2,6 @@ import {forIn, transform} from 'lodash-es'
 import {createElement, useCallback, useEffect, useMemo} from 'react'
 import {catchError, concatMap, filter, OperatorFunction, Subscription} from 'rxjs'
 import {ComponentState} from '../../stores/ComponentState'
-import {Store} from '../../stores/Store'
 import {isPromise, namedObserver} from '../../utils'
 import {ComponentData, useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
@@ -21,11 +20,9 @@ const useActions = (state: ComponentState) => {
 
     forIn(componentData.store.events, (actionDataList: ActionData[], eventName) => {
       const actionChain: OperatorFunction<ActionEventArgs, ActionEventArgs>[] = []
-
       actionDataList.forEach((data) => {
-        const {params, func} = store.findAction(data)
-        const action = getActionHandler(store, func, data.args, params)
-
+        const actionDefinition = store.findAction(data)
+        const action = getActionHandler(actionDefinition.func, data.args, actionDefinition.params)
         actionChain.push(concatMap(action))
       })
 
@@ -53,14 +50,13 @@ const useActions = (state: ComponentState) => {
   }, [])
 }
 
-function getActionHandler(store: Store, func: Func, args?: Arguments, params?: Parameter[]) {
+function getActionHandler(func: Func, args?: Arguments, params?: Parameter[]) {
   //TODO init in default value for arguments?
   return async (e: ActionEventArgs) => {
     const actionArgs = !args ? {} :
       transform(args, (result: Record<string, any>, value, argumentName) =>
         result[argumentName] = value)
-
-    const result = !params ? func(e) : func(actionArgs, e)
+    const result = !params?.length ? func(e) : func(actionArgs, e)
     if (isPromise(result)) await result
     return e
   }

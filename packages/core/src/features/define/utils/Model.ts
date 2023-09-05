@@ -1,9 +1,5 @@
-import {startCase, transform} from 'lodash-es'
 import {observer} from 'mobx-react'
 import {ComponentType} from 'react'
-import {ComponentStore} from '../../../stores/ComponentStore'
-import {isFunction} from '../../../utils'
-import {ActionDefinition, ActionEventHandler, defineAction} from '../../event'
 import {Css} from '../../style/types'
 import type {SchemaType} from '../../validation'
 import {ActionsInitializer} from '../types'
@@ -57,29 +53,4 @@ export class Model<T = any> {
   get type(): string {
     return this.typeName || this.view.displayName || this.view.name
   }
-
-  /**
-   * Returns actions for the component or undefined if there are no actions for the component.
-   * @param cs the component.
-   * @returns actions for the component or undefined if there are no actions for the component.
-   */
-  getActions(cs: ComponentStore) {
-    return initActions(this.actionsInitializer?.(cs.props, defineAction))
-  }
-}
-
-function initActions(actions?: Record<string, ActionEventHandler | ActionDefinition>): ActionDefinition[] | undefined {
-  if (!actions) return
-
-  return transform(actions, (result, value, key) => {
-    if (isFunction(value)) {
-      result.push({
-        name: startCase(key),
-        func: value,
-      })
-      return
-    }
-
-    result.push(value)
-  }, [] as ActionDefinition[])
 }

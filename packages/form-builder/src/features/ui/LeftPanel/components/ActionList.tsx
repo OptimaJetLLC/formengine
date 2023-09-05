@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {CustomActionDefinition, namedObserver, useStore} from '@react-form-builder/core'
+import {ActionDefinition, namedObserver, useStore} from '@react-form-builder/core'
 import CopyIcon from '@rsuite/icons/Copy.js'
 import EditIcon from '@rsuite/icons/Edit.js'
 import type {IconProps} from '@rsuite/icons/lib/Icon'
@@ -30,14 +30,12 @@ export const ActionList = namedObserver('ActionList', () => {
   const viewerStore = useStore()
   const t = useTranslationPart('leftPanel.actions')
 
-  const formProps = viewerStore.form.componentTree.store.props
-
-  const editAction = (action: CustomActionDefinition) => {
+  const editAction = (action: ActionDefinition) => {
     // todo show CustomActionEditor FB-347
     console.log('edit', action)
   }
 
-  const actions = (formProps.actions?.value ?? []) as CustomActionDefinition[]
+  const actions = viewerStore.form.actionsList
   if (actions.length <= 0) return null
 
   const items = actions.map(action => {

@@ -24,7 +24,7 @@ export type {BaseCompilationResult, CompilationResult} from './features/calculat
 export {ComponentData} from './utils/contexts/ComponentDataContext'
 export {namedObserver} from './utils'
 export {DefaultActions, ActionEventArgs} from './features/event'
-export type {ActionData, Parameter, ParameterName, ParameterType, CustomActionDefinition} from './features/event'
+export type {ActionData, Parameter, ParameterName, ParameterType} from './features/event'
 export type {WrapperProps, ViewMode, Device} from './types'
 export type {ComponentProperty, ComponentPropertyComputeType} from './stores/ComponentStore'
 export {ActionEventArgsDeclaration} from './features/event'
@@ -64,3 +64,4 @@ export type {ExternalValidators} from './features/validation/types/ExternalValid
 export {isFunctionalProperty, isLocalizedProperty} from './stores/ComponentStore'
 export {getActionList} from './features/event'
 export {KeySymbol} from './consts'
+export {ActionDefinition} from './features/event'

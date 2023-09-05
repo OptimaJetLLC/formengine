@@ -1,16 +1,15 @@
 import styled from '@emotion/styled'
 import {
   ActionData,
+  ActionDefinition,
   AsyncFunction,
   ComponentStore,
-  CustomActionDefinition,
   getActionList,
   Parameter,
   Store,
   toParameterWithType,
   useStore
 } from '@react-form-builder/core'
-import {assign} from 'lodash-es'
 import {useEffect, useReducer, useRef, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup, Form, FormInstance, Schema} from 'rsuite'
@@ -32,7 +31,6 @@ import {ParamAction} from './types'
 export const CustomActionEditor = ({actionData, eventName}: EditableAction) => {
   const {t} = useTranslation()
   const store = useStore()
-  const storeProps = store.form.componentTree.store.props
   const builderStore = useBuilderStore()
   const action = findAction(store, actionData.name) ?? {name: '', body: ''}
   const formRef = useRef<FormInstance>(null)
@@ -61,12 +59,12 @@ export const CustomActionEditor = ({actionData, eventName}: EditableAction) => {
     }
 
     const value = {...actionState, params}
-    storeProps.actions ??= {value: []}
     if (findAction(store, actionData.name || actionState.name)) {
-      assign(action, value)
+      store.form.applyAction(value)
       return
     }
-    storeProps.actions.value.push(value)
+
+    store.form.applyAction(value)
 
     const componentStore = builderStore.oneSelected?.store
     if (componentStore) ComponentStore.addEventHandler(componentStore, eventName, {name: value.name ?? '', type: 'custom'})
@@ -100,7 +98,7 @@ export const CustomActionEditor = ({actionData, eventName}: EditableAction) => {
 
 type ActionState = { name?: string, body?: string, initialBody?: string, errors?: string }
 
-function useActionState({name, body}: CustomActionDefinition, actionData: ActionData): [ActionState, any] {
+function useActionState({name, body}: ActionDefinition, actionData: ActionData): [ActionState, any] {
   const initialState = {name, body, initialBody: body, errors: ''}
   const [state, setState] = useState<ActionState>(initialState)
   useEffect(() => setState(initialState), [actionData])
@@ -138,7 +136,7 @@ function paramsReducer(params: Parameter[] | undefined, action: ParamAction) {
   }
 }
 
-const findAction = (store: Store, name?: string) => getActionList(store, 'custom')?.find(a => a.name === name) as CustomActionDefinition
+const findAction = (store: Store, name?: string) => getActionList(store, 'custom')?.find(a => a.name === name) as ActionDefinition
 
 const makeFunctionHeader = (params?: Parameter[]) => {
   let types = ''

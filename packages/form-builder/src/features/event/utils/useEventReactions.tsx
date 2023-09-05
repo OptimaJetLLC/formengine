@@ -1,4 +1,4 @@
-import {CustomActionDefinition, useComponentData, useStore} from '@react-form-builder/core'
+import {useComponentData, useStore} from '@react-form-builder/core'
 import {values} from 'lodash-es'
 import {IReactionDisposer, reaction} from 'mobx'
 import {useEffect, useMemo} from 'react'
@@ -54,18 +54,8 @@ export const useEventReactions = () => {
   //For name sync with custom actions
   useMultiReaction(
     () => values(data.store.events).flat().filter(value => value.type === 'custom'),
-    (observer) => (store.form.componentTree.store.props.actions?.value as CustomActionDefinition[])?.find(value => value.name === observer.name),
+    (observer) => store.form.actions[observer.name],
     (observable) => observable?.name,
     (observer, arg, prev?) => observer.name = arg!
   )
-
-  //Remove custom actions from used places if it has been deleted
-  useEffect(() => reaction(() => store.form.componentTree.store.props.actions?.value?.slice(), (arg: CustomActionDefinition[], prev: CustomActionDefinition[]) => {
-    if (!prev || !arg || arg.length !== prev.length - 1) return
-    const [deleted] = prev.filter(x => !arg.includes(x))
-    for (const event in data.store.events) {
-      data.store.events[event] =
-        data.store.events[event].filter(action => action.type !== 'custom' || action.name !== deleted.name)
-    }
-  }))
 }

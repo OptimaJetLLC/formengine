@@ -37,12 +37,3 @@ export const rsInput = define(RsInput)
     value: string.valued,
     passwordMask: boolean
   })
-  .actions((props, def) => {
-    return {
-      action1: def('Action2', ({name, value, isActive}, eventArgs) => {
-        console.log({name, value, isActive}, eventArgs)
-      }, ['name', 'value', 'isActive']),
-      valueLogger: def('Value console logger', e => console.log(e.value)),
-      setLabel: e => props.label.value = e.value,
-    }
-  })

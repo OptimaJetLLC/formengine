@@ -1,20 +1,18 @@
 {
+  "actions": {
+    "WeatherRequest": {
+      "name": "WeatherRequest",
+      "body": "try {\n  const request = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.62&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`)\n  const value = await request.json()    \n  e.setUserDefinedProps({children: `Current weather is ${value.current_weather.temperature} °C`})\n} catch (error) {\n  e.setUserDefinedProps({children: `Current weather is not available`})\n}"
+    },
+    "loadData": {
+      "name": "loadData",
+      "body": "\n    const [searchValue, loadCallback, currentDataLength] = e.args\n\n    fetch ('https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.json')\n        .then (data => data.json())\n        .then (data => {\n            const preparedData = data\n                .filter(value => value.toLowerCase().includes(searchValue.toLowerCase()))\n                .slice(currentDataLength, currentDataLength + 20)\n                .map(value => ({value, label: value}))\n\n            loadCallback(preparedData)        \n        })\n"
+    }
+  },
   "form": {
     "key": "screen 1",
     "type": "Screen",
     "props": {
-      "actions": {
-        "value": [
-          {
-            "name": "WeatherRequest",
-            "body": "try {\n  const request = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.62&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`)\n  const value = await request.json()    \n  e.setUserDefinedProps({children: `Current weather is ${value.current_weather.temperature} °C`})\n} catch (error) {\n  e.setUserDefinedProps({children: `Current weather is not available`})\n}"
-          },
-          {
-            "name": "loadData",
-            "body": "\n    const [searchValue, loadCallback, currentDataLength] = e.args\n\n    fetch ('https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.json')\n        .then (data => data.json())\n        .then (data => {\n            const preparedData = data\n                .filter(value => value.toLowerCase().includes(searchValue.toLowerCase()))\n                .slice(currentDataLength, currentDataLength + 20)\n                .map(value => ({value, label: value}))\n\n            loadCallback(preparedData)        \n        })\n"
-          }
-        ]
-      }
     },
     "children": [
       {

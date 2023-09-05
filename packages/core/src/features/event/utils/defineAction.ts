@@ -1,37 +1,10 @@
-import {ActionDefinition, ActionEventHandler, ParameterType} from '../types'
+import {ActionDefinition, ParameterType} from '../types'
 import {ActionEventArgs} from './ActionEventArgs'
 
-//TODO hint field for unparameterized action
 /**
- * Creates action function metadata.
- * @param name the function name.
- * @param func the action function.
- * @returns the action function metadata.
+ * The defineAction helper type.
  */
-export function defineAction(name: string, func: ActionEventHandler): ActionDefinition
-export function defineAction<T>(name: string, func: ActionHandler<T>, params: ParametersDefinition<T>[], description?: string): ActionDefinition
-
-/**
- * Creates action function metadata.
- * @param name the function name.
- * @param func the action function.
- * @param params the description of function parameters.
- * @param description the a human-readable description of the action function.
- * @returns the action function metadata.
- */
-export function defineAction<T>(
-  name: string,
-  func: ActionEventHandler | ActionHandler<T>,
-  params?: ParametersDefinition<T>[],
-  description?: string
-): ActionDefinition {
-  return {name, func, params, description}
-}
-
-/**
- * The {@link defineAction} type.
- */
-export type DefineActionHelper = typeof defineAction
+export type DefineActionHelper = <T>(name: string, func: ActionHandler<T>, params?: ParametersDefinition<T>[], description?: string) => ActionDefinition
 
 // todo rename ParametersDefinition => ParameterDefinition
 /**
