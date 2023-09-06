@@ -1,9 +1,7 @@
-import {ActionDefinition, useStore} from '@react-form-builder/core'
-import {Trash} from '@rsuite/icons'
+import {ComponentStore, useStore} from '@react-form-builder/core'
 import PlusIcon from '@rsuite/icons/Plus.js'
 import {observer} from 'mobx-react'
-import {Divider, Dropdown, IconButton} from 'rsuite'
-import {EditableAction} from '../../../../../../stores/BuilderStore'
+import {Divider, Dropdown} from 'rsuite'
 import {useBuilderStore} from '../../../../../../utils/BuilderStoreContext'
 import {useTranslationPart} from '../../../../../localization/hooks'
 import {ActionsMenuProps} from '../types'
@@ -17,31 +15,28 @@ import {ActionsMenuProps} from '../types'
 export const CustomActions = observer(({onSelect, annotation}: ActionsMenuProps) => {
   const store = useStore()
   const builderStore = useBuilderStore()
+  const selectedStore = builderStore.oneSelected?.store
   const eventName = annotation.key
-  const actions = store.form.actionsList
+  const actionNames = store.form.actionNames
   const t = useTranslationPart('actions')
   const addAction = () => {
-    onSelect()
-    builderStore.currentEditable = new EditableAction(eventName)
-  }
-  const remove = (index: number, e: any) => {
-    e.stopPropagation()
-    actions?.splice(index, 1)
+    if (!selectedStore) return
+    builderStore.addCustomAction(actionDefinition => {
+      ComponentStore.addEventHandler(selectedStore, eventName, {name: actionDefinition.name, type: 'custom'})
+    })
   }
 
-  const renderAction = ({name}: ActionDefinition, i: number) => (
+  const renderAction = (name: string) => (
     <Dropdown.Item key={name} onClick={() => onSelect({name, type: 'custom'})}
                    style={{position: 'relative', display: 'flex', justifyContent: 'space-between'}}>
       <span style={{whiteSpace: 'break-spaces'}}>{name}</span>
-      <IconButton onClick={e => remove(i, e)} icon={<Trash/>} size={'xs'}
-                  appearance={'subtle'} style={{minWidth: 24}}/>
     </Dropdown.Item>
   )
 
   return <Dropdown.Menu title={t('custom')}>
-    {actions?.map(renderAction)}
+    {actionNames?.map(renderAction)}
 
-    {!!actions?.length && <Dropdown.Item disabled>
+    {!!actionNames?.length && <Dropdown.Item disabled>
       <Divider style={{marginTop: 0, marginBottom: 0}}/>
     </Dropdown.Item>}
 

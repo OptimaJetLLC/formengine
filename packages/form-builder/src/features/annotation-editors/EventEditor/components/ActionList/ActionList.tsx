@@ -13,7 +13,7 @@ export const ActionList = observer((props: AnnotationEditorProps) => {
   /*TODO Draggable List*/
   return <Rows>
     {actions.map((action, index) => (
-      <ActionItem key={action[KeySymbol]} eventName={eventName} index={index} data={action}/>)
+      <ActionItem key={action[KeySymbol]} data={action}/>)
     )}
   </Rows>
 })

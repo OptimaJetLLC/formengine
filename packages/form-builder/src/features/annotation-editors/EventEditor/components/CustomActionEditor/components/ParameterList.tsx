@@ -1,9 +1,8 @@
-import {Parameter} from '@react-form-builder/core'
-import {Dispatch, useRef} from 'react'
+import {generateUniqueName, Parameter} from '@react-form-builder/core'
+import {useEffect, useState} from 'react'
 import {Button} from 'rsuite'
 import {Columns, Rows} from '../../../../../components/Containers'
 import {useTranslationPart} from '../../../../../localization/hooks'
-import {ParamAction} from '../types'
 import {ParameterItem} from './ParameterItem'
 
 /**
@@ -15,23 +14,60 @@ interface ParameterPanelProps {
    * The array of action parameters.
    */
   value?: Parameter[]
+
   /**
-   * Dispatcher for functions that work with action parameters.
+   * the callback function called when data should be changed.
+   * @param value the array of parameters.
    */
-  dispatch: Dispatch<ParamAction>
+  onChange: (value?: Parameter[]) => void
 }
 
 /**
  * React form builder component that displays the list of action parameters.
  * @param props the React component properties.
  * @param props.value the array of action parameters.
- * @param props.dispatch the dispatcher for functions that work with action parameters.
+ * @param props.onChange the callback function called when data should be changed.
  * @returns the React element.
  */
-export const ParameterList = ({value, dispatch}: ParameterPanelProps) => {
-  const paramCountRef = useRef(1)
+export const ParameterList = ({value, onChange}: ParameterPanelProps) => {
   const t = useTranslationPart('actions')
-  const handleCreateParam = () => dispatch({type: 'create', index: paramCountRef.current++})
+  const [params, setParams] = useState(value)
+
+  useEffect(() => {
+    setParams(value)
+  }, [value])
+
+  const changeParams = (value?: Parameter[]) => {
+    setParams(value)
+    onChange(value)
+  }
+
+  const handleCreateParam = () => {
+    const names = params?.map(value => {
+      return typeof value === 'string' ? value : value[0]
+    })
+    const existingNames = new Set(names)
+    const paramName = generateUniqueName('prop', existingNames)
+    const paramArray = params ? [...params, paramName] : [paramName]
+    changeParams(paramArray)
+  }
+
+  const handleRemoveParam = (index: number) => {
+    const paramArray = params ? [...params] : []
+    paramArray?.splice(index, 1)
+    changeParams(paramArray)
+  }
+
+  const handleChangeParam = (value: Parameter, index: number) => {
+    const paramArray = params ? [...params] : []
+    paramArray[index] = value
+    changeParams(paramArray)
+  }
+
+  const items = params?.map((param, index) => {
+    return <ParameterItem key={index} value={param} onRemove={() => handleRemoveParam(index)}
+                          onChange={value => handleChangeParam(value, index)}/>
+  })
 
   return (
     <Rows style={{maxWidth: 240}}>
@@ -41,7 +77,7 @@ export const ParameterList = ({value, dispatch}: ParameterPanelProps) => {
       </Columns>
 
       <Rows style={{overflow: 'auto'}}>
-        {value?.map((param, index) => <ParameterItem key={index} index={index} value={param} dispatch={dispatch}/>)}
+        {items}
       </Rows>
     </Rows>
   )

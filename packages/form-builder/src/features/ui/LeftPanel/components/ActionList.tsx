@@ -1,13 +1,14 @@
 import styled from '@emotion/styled'
-import {ActionDefinition, namedObserver, useStore} from '@react-form-builder/core'
+import {namedObserver, useStore} from '@react-form-builder/core'
 import CopyIcon from '@rsuite/icons/Copy.js'
 import EditIcon from '@rsuite/icons/Edit.js'
 import type {IconProps} from '@rsuite/icons/lib/Icon'
 import TrashIcon from '@rsuite/icons/Trash.js'
 import type {ReactElement} from 'react'
-import {ButtonToolbar, IconButton, List} from 'rsuite'
+import {useTranslation} from 'react-i18next'
+import {Button, ButtonToolbar, IconButton, List} from 'rsuite'
+import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {Hinted} from '../../../annotation-editors/Hinted'
-import {useTranslationPart} from '../../../localization/hooks'
 
 const SActionName = styled.span`
   margin-right: 10px;
@@ -27,27 +28,25 @@ const HintedIconButton = ({hint, ...props}: HintedIconButtonProps) => {
 }
 
 export const ActionList = namedObserver('ActionList', () => {
+  const builderStore = useBuilderStore()
   const viewerStore = useStore()
-  const t = useTranslationPart('leftPanel.actions')
+  const {t} = useTranslation()
 
-  const editAction = (action: ActionDefinition) => {
-    // todo show CustomActionEditor FB-347
-    console.log('edit', action)
-  }
-
-  const actions = viewerStore.form.actionsList
-  if (actions.length <= 0) return null
-
-  const items = actions.map(action => {
-    return <List.Item key={action.name}>
+  const items = Object.entries(viewerStore.form.actions).map(([name, action]) => {
+    return <List.Item key={name}>
       <ButtonToolbar>
-        <SActionName>{action.name}</SActionName>
-        <HintedIconButton hint={t('edit')} icon={<EditIcon/>} onClick={() => editAction(action)}/>
-        <HintedIconButton hint={t('clone')} icon={<CopyIcon/>} onClick={() => viewerStore.form.cloneAction(action)}/>
-        <HintedIconButton hint={t('remove')} icon={<TrashIcon/>} onClick={() => viewerStore.form.removeAction(action)}/>
+        <SActionName>{name}</SActionName>
+        <HintedIconButton hint={t('leftPanel.actions.edit')} icon={<EditIcon/>} onClick={() => builderStore.editCustomAction(action)}/>
+        <HintedIconButton hint={t('leftPanel.actions.clone')} icon={<CopyIcon/>} onClick={() => viewerStore.form.cloneAction(action)}/>
+        <HintedIconButton hint={t('leftPanel.actions.remove')} icon={<TrashIcon/>} onClick={() => viewerStore.form.removeAction(action)}/>
       </ButtonToolbar>
     </List.Item>
   })
 
-  return <List>{items}</List>
+  return <List>
+    <List.Item>
+      <Button block onClick={() => builderStore.addCustomAction()}>{t('actions.addCustomAction')}</Button>
+    </List.Item>
+    {items}
+  </List>
 })

@@ -65,3 +65,4 @@ export {isFunctionalProperty, isLocalizedProperty} from './stores/ComponentStore
 export {getActionList} from './features/event'
 export {KeySymbol} from './consts'
 export {ActionDefinition} from './features/event'
+export {generateUniqueName} from './utils/generateUniqueName'

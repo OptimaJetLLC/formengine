@@ -1,7 +1,8 @@
 import {makeAutoObservable} from 'mobx'
-import {ActionDefinition, ActionValues} from '../features/event'
+import {ActionData, ActionDefinition, ActionValues} from '../features/event'
 import {Language} from '../features/localization/types'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
+import {generateUniqueName} from '../utils/generateUniqueName'
 import {ComponentStore} from './ComponentStore'
 import {LocalizationStore} from './LocalizationStore'
 
@@ -61,6 +62,13 @@ export class Form {
   }
 
   /**
+   * @returns the actions names array.
+   */
+  get actionNames(): string[] {
+    return Object.keys(this.actions)
+  }
+
+  /**
    * Initializes form fields.
    */
   initFields() {
@@ -80,9 +88,61 @@ export class Form {
    * @param action the action to remove.
    */
   removeAction(action: ActionDefinition) {
-    if (!this.actions) return
     delete this.actions[action.name]
     this.removeCustomActionBinding(action.name, this.componentTree.store)
+  }
+
+  /**
+   * Changes the existing action to the new one, adds the action if the existing action is not found.
+   * @param existingAction the existing action.
+   * @param newAction the new action.
+   */
+  updateOrAddAction(existingAction: ActionDefinition, newAction: ActionDefinition) {
+    this.actions[newAction.name] = newAction
+    this.rebindActionHandlers(this.componentTree.store, existingAction.name, newAction)
+    if (existingAction.name !== newAction.name) {
+      delete this.actions[existingAction.name]
+    }
+  }
+
+  /**
+   * Clones the action.
+   * @param action the action to clone.
+   */
+  cloneAction(action: ActionDefinition) {
+    if (!this.actions) return
+    const existingNames = new Set(Object.keys(this.actions))
+    const data = JSON.parse(JSON.stringify(action))
+    data.name = generateUniqueName(`${action.name}_`, existingNames)
+    this.actions[data.name] = ActionDefinition.createFromObject(data)
+  }
+
+  private rebindActionData(actionData: ActionData, newAction: ActionDefinition) {
+    actionData.name = newAction.name
+    const args = actionData.args
+    if (!args) return
+
+    const newActionParamNames = new Set<string>()
+    newAction.params.forEach(value => {
+      typeof value === 'string' ? newActionParamNames.add(value) : newActionParamNames.add(value[0])
+    })
+    Object.keys(args).forEach(key => {
+      if (!newActionParamNames.has(key)) delete args[key]
+    })
+  }
+
+  private rebindActionHandlers(componentStore: ComponentStore, oldActionName: string, newAction: ActionDefinition) {
+    const events = componentStore.events
+    if (events) {
+      Object.keys(events).forEach(value => {
+        const bindings = events[value]
+        bindings?.filter(item => item.type === 'custom' && item.name === oldActionName)
+          .forEach(item => this.rebindActionData(item, newAction))
+      })
+    }
+    componentStore.children?.forEach(item => {
+      this.rebindActionHandlers(item, oldActionName, newAction)
+    })
   }
 
   private removeCustomActionBinding(actionName: string, componentStore: ComponentStore) {
@@ -97,42 +157,11 @@ export class Form {
     componentStore.children?.forEach(item => this.removeCustomActionBinding(actionName, item))
   }
 
-  /**
-   * Clones the action.
-   * @param action the action to clone.
-   */
-  cloneAction(action: ActionDefinition) {
-    if (!this.actions) return
-    const existingNames = new Set(Object.keys(this.actions))
-    const newName = Form.generateUniqueName(action.name, existingNames)
-    this.actions[newName] = ActionDefinition.sourceAction(newName, action.body || '', [...action.params], action.description)
-  }
-
-  /**
-   * Applies the given action to the actions object.
-   * @param action the ActionDefinition object to apply.
-   */
-  applyAction(action: any) {
-    const newAction = ActionDefinition.sourceAction(action.name, action.body, [...action.params], action.description)
-    this.actions[newAction.name] = newAction
-  }
-
   private onComponentDataBeforeDelete(component: ComponentData) {
     this.localization.removeLocalization(component.key)
   }
 
   private onComponentDataAfterKeyChanged(_: ComponentData, {oldKey, newKey}: { oldKey: string, newKey: string }) {
     this.localization.changeComponentKey(oldKey, newKey)
-  }
-
-  private static generateUniqueName(prefix: string, existingNames: Set<string>) {
-    let i = 1
-    while (i < 10_000) {
-      const name = `${prefix}_${i}`
-      if (!existingNames.has(name)) return name
-      i++
-    }
-    const time = new Date().getTime()
-    return `${prefix}_${time}`
   }
 }

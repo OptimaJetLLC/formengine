@@ -64,14 +64,12 @@ export class ActionDefinition {
    * @param func the function of an action.
    * @param body the source code of the Action.
    * @param params the parameters of the Action.
-   * @param description the optional description of the Action.
    */
   constructor(
     public readonly name: string,
     public readonly func: Func,
     public readonly body?: string,
     public readonly params: Parameter[] = [],
-    public readonly description?: string
   ) {
   }
 
@@ -80,11 +78,10 @@ export class ActionDefinition {
    * @param name the name of the Action.
    * @param func the function of an action.
    * @param params the parameters of the Action.
-   * @param description the optional description of the Action.
-   * @returns a new instance of the ActionDefinition class.
+   * @returns the new instance of the ActionDefinition class.
    */
-  static functionalAction(name: string, func: Func, params: Parameter[] = [], description?: string): ActionDefinition {
-    return new ActionDefinition(name, func, undefined, params, description)
+  static functionalAction(name: string, func: Func, params: Parameter[] = []): ActionDefinition {
+    return new ActionDefinition(name, func, undefined, params)
   }
 
   /**
@@ -92,12 +89,20 @@ export class ActionDefinition {
    * @param name the name of the Action.
    * @param body the source code of the Action.
    * @param params the parameters of the Action.
-   * @param description the optional description of the Action.
-   * @returns a new instance of the ActionDefinition class.
+   * @returns the new instance of the ActionDefinition class.
    */
-  static sourceAction(name: string, body: string, params: Parameter[] = [], description?: string): ActionDefinition {
+  static sourceAction(name: string, body: string, params: Parameter[] = []): ActionDefinition {
     const func = AsyncFunction(params.length ? 'args, e' : 'e', body)
-    return new ActionDefinition(name, func, body, params, description)
+    return new ActionDefinition(name, func, body, params)
+  }
+
+  /**
+   * Correctly creates the {@link ActionDefinition} from deserialized data.
+   * @param value the deserialized data.
+   * @returns the ActionDefinition instance.
+   */
+  static createFromObject(value: any) {
+    return ActionDefinition.sourceAction(value.name, value.body, value.params)
   }
 }
 
@@ -112,7 +117,7 @@ export const createActionValuesFromObject = (obj: any) => {
 
   Object.keys(obj).forEach(key => {
     const value = obj[key]
-    result[key] = ActionDefinition.sourceAction(value.name, value.body, value.params, value.description)
+    result[key] = ActionDefinition.createFromObject(value)
   })
   return result
 }

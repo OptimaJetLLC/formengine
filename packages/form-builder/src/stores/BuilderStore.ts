@@ -1,5 +1,5 @@
 import {
-  ActionData,
+  ActionDefinition,
   BiDi,
   ComponentData,
   ComponentProperty,
@@ -14,6 +14,7 @@ import {
 import {assign, cloneDeep} from 'lodash-es'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
 import {debounceTime, distinctUntilChanged, Subject} from 'rxjs'
+import type {CustomActionEditorData, CustomActionEditorProps} from '../features/annotation-editors/EventEditor/components/CustomActionEditor'
 import type {EditorType} from '../features/annotation/types'
 import {Annotation} from '../features/annotation/types/annotations/Annotation'
 import {BuilderView} from '../features/define/utils/BuilderView'
@@ -59,13 +60,23 @@ export type OnSelectCallback = (source: ComponentData) => void
 /**
  * The editable action data.
  */
-export class EditableAction {
+export class EditableAction implements CustomActionEditorProps {
+  customAction: CustomActionEditorData
+
   /**
    * Creates the editable action settings.
-   * @param eventName the action event name.
-   * @param actionData the {@link ActionData} with editable action data.
+   * @param actionDefinition the custom action.
+   * @param onSave the callback function called when data should be saved.
    */
-  constructor(readonly eventName: string, readonly actionData: ActionData = {name: '', type: 'custom'}) {
+  constructor(readonly actionDefinition: ActionDefinition,
+              readonly onSave: (actionDefinition: ActionDefinition) => void) {
+    const clone = JSON.parse(JSON.stringify(actionDefinition))
+    this.customAction = {
+      editorId: clone.name || new Date().getTime(),
+      name: clone.name,
+      body: clone.body ?? '',
+      params: clone.params
+    }
   }
 }
 
@@ -213,6 +224,32 @@ export class BuilderStore {
     this.builderI18n = new BuilderI18n(this.defaultLanguage, translationResolver)
 
     this.undoer = new BuilderUndoer(this, 100)
+  }
+
+  /**
+   * Opens the custom action editor to add a new custom action.
+   * @param afterAdd the callback function called after a new custom action added.
+   */
+  addCustomAction(afterAdd?: (actionDefinition: ActionDefinition) => void) {
+    const emptyActionDefinition = ActionDefinition.sourceAction('', '')
+    this.editCustomAction(emptyActionDefinition, actionDefinition => {
+      afterAdd?.(actionDefinition)
+    })
+  }
+
+  /**
+   * Opens the custom action editor.
+   * @param actionDefinition the custom action.
+   * @param afterEdit callback function called after data editing.
+   */
+  editCustomAction(actionDefinition: ActionDefinition,
+                   afterEdit?: (actionDefinition: ActionDefinition) => void) {
+    this.currentEditable = new EditableAction(actionDefinition, action => {
+      this.viewer.form.updateOrAddAction(actionDefinition, action)
+      afterEdit?.(action)
+      // recreate action editor with the new data
+      this.editCustomAction(action)
+    })
   }
 
   /**

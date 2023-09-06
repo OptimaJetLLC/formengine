@@ -1,10 +1,8 @@
 import styled from '@emotion/styled'
 import {faMarker} from '@fortawesome/free-solid-svg-icons/faMarker.js'
-import {ActionData, useComponentData} from '@react-form-builder/core'
-import {Close} from '@rsuite/icons'
+import {ActionData, useStore} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {ButtonGroup, IconButton} from 'rsuite'
-import {EditableAction} from '../../../../../../stores/BuilderStore'
 import {useBuilderStore} from '../../../../../../utils/BuilderStoreContext'
 import {Columns} from '../../../../../components/Containers'
 import {FaIcon} from '../../../../../components/Icons'
@@ -12,17 +10,21 @@ import {ArgumentList} from './components/ArgumentList'
 import {ActionDataProvider} from './contexts/ActionDataContext'
 
 interface ActionItemProps {
-  data: ActionData,
-  eventName: string
-  index: number
+  data: ActionData
 }
 
-export const ActionItem = observer(({data, eventName, index}: ActionItemProps) => {
-  const {store} = useComponentData()
+export const ActionItem = observer(({data}: ActionItemProps) => {
   const builderStore = useBuilderStore()
+  const viewerStore = useStore()
   const isCustomAction = data.type === 'custom'
-  const edit = () => builderStore.currentEditable = new EditableAction(eventName, data)
-  const remove = () => store.events![eventName]?.splice(index, 1)
+  const edit = () => {
+    const actionDefinition = viewerStore.form.actions[data.name]
+    if (!actionDefinition) {
+      console.error(`Cannot find custom action: '${data.name}'`)
+      return
+    }
+    builderStore.editCustomAction(actionDefinition)
+  }
 
   return (
     <ActionDataProvider value={data}>
@@ -33,7 +35,6 @@ export const ActionItem = observer(({data, eventName, index}: ActionItemProps) =
           </b>
           <ButtonGroup size={'xs'}>
             {isCustomAction && <IconButton onClick={edit} icon={<FaIcon icon={faMarker}/>}/>}
-            <IconButton onClick={remove} icon={<Close/>}/>
           </ButtonGroup>
         </Columns>
         <ArgumentList/>

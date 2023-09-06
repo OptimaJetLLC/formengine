@@ -1,17 +1,16 @@
 import styled from '@emotion/styled'
 import {Parameter, toParameterWithType} from '@react-form-builder/core'
 import {ArrowDownLine, ArrowUpLine, Close} from '@rsuite/icons'
-import {Dispatch, useReducer} from 'react'
+import {useState} from 'react'
 import {Animation, Input, InputPicker} from 'rsuite'
 import {toLabeledValues} from '../../../../../annotation/utils/LabeledValue'
 import {Columns, Rows} from '../../../../../components/Containers'
 import {useTranslationPart} from '../../../../../localization/hooks'
-import {ParamAction} from '../types'
 
 interface ParameterItemProps {
-  index: number
   value: Parameter
-  dispatch: Dispatch<ParamAction>
+  onRemove: () => void
+  onChange: (value: Parameter) => void
 }
 
 const ArgumentTypes = toLabeledValues(['string', 'number', 'boolean'], false)
@@ -20,40 +19,36 @@ const ArgumentTypes = toLabeledValues(['string', 'number', 'boolean'], false)
  * The React form builder component that displays the action parameter.
  * @param props the React component properties.
  * @param props.value the parameter description.
- * @param props.dispatch the dispatcher for functions that work with the action parameter.
- * @param props.index the index of the parameter in the parameter array.
+ * @param props.onRemove the callback function called when data should be removed.
+ * @param props.onChange the callback function called when data should be changed.
  * @returns the React element.
  */
-export const ParameterItem = ({value, dispatch, index}: ParameterItemProps) => {
+export const ParameterItem = ({value, onRemove, onChange}: ParameterItemProps) => {
   const [name, type] = toParameterWithType(value)
-  const [show, toggleShow] = useReducer(state => !state, false)
-  const ExpandIcon = show ? ArrowUpLine : ArrowDownLine
+  const [collapsed, setCollapsed] = useState(true)
+  const ExpandIcon = collapsed ? ArrowDownLine : ArrowUpLine
   const t = useTranslationPart('actions')
-
-  const handleChange = (value: Parameter) => dispatch({type: 'update', index, param: value})
-
-  const handleRemove = () => dispatch({type: 'remove', index})
 
   return <div>
     <Columns style={{justifyContent: 'space-between'}}>
-      <label onClick={toggleShow}><ExpandIcon/> {name} ({type})</label>
-      <RemoveButton onClick={handleRemove}/>
+      <label onClick={() => setCollapsed(!collapsed)}><ExpandIcon/> {name} ({type})</label>
+      <RemoveButton onClick={onRemove}/>
     </Columns>
 
-    <Animation.Collapse in={show}>
+    <Animation.Collapse in={!collapsed}>
       <div>
         <Rows>
           <div>
             <label>{t('name')}</label>
-            <Input value={name} onChange={name => handleChange([name, type])}/>
+            <Input value={name} onChange={name => onChange([name, type])}/>
           </div>
           <div>
             <label>{t('type')}</label>
             <InputPicker cleanable={false} data={ArgumentTypes} value={type} onChange={type => {
               if (type === 'string') {
-                handleChange(name)
+                onChange(name)
               } else {
-                handleChange([name, type])
+                onChange([name, type])
               }
             }}/>
           </div>
