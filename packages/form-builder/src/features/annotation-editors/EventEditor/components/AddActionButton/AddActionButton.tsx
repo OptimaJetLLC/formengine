@@ -21,7 +21,7 @@ export const AddActionButton = observer((props: AnnotationEditorProps) => {
     ref.current?.close()
     if (!action) return
     ComponentStore.addEventHandler(store, eventName, action)
-  }, [])
+  }, [ref, store, eventName])
 
   return <Whisper placement="leftStart" ref={ref} trigger="click"
                   speaker={<MenuPopover onSelect={handleSelect} annotation={annotation}/>}>
