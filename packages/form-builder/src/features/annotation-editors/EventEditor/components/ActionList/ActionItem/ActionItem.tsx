@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import {faMarker} from '@fortawesome/free-solid-svg-icons/faMarker.js'
 import {ActionData, useStore} from '@react-form-builder/core'
+import {Close} from '@rsuite/icons'
 import {observer} from 'mobx-react'
 import {ButtonGroup, IconButton} from 'rsuite'
 import {useBuilderStore} from '../../../../../../utils/BuilderStoreContext'
@@ -11,9 +12,10 @@ import {ActionDataProvider} from './contexts/ActionDataContext'
 
 interface ActionItemProps {
   data: ActionData
+  onRemove: () => void
 }
 
-export const ActionItem = observer(({data}: ActionItemProps) => {
+export const ActionItem = observer(({data, onRemove}: ActionItemProps) => {
   const builderStore = useBuilderStore()
   const viewerStore = useStore()
   const isCustomAction = data.type === 'custom'
@@ -35,6 +37,7 @@ export const ActionItem = observer(({data}: ActionItemProps) => {
           </b>
           <ButtonGroup size={'xs'}>
             {isCustomAction && <IconButton onClick={edit} icon={<FaIcon icon={faMarker}/>}/>}
+            <IconButton onClick={onRemove} icon={<Close/>}/>
           </ButtonGroup>
         </Columns>
         <ArgumentList/>
