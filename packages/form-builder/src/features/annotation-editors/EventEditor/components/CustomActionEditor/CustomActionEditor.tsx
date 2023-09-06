@@ -113,7 +113,7 @@ const EditorContainer = styled.div`
 const Container = styled(Columns)`
   gap: 20px;
   flex: 1;
-  overflow: hidden;
+  min-height: 0;
 `
 
 const makeFunctionHeader = (params?: Parameter[]) => {
