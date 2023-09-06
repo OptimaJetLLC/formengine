@@ -347,7 +347,7 @@
             "events": {
               "onClick": [
                 {
-                  "name": "Validate",
+                  "name": "validate",
                   "type": "common"
                 }
               ]
@@ -364,7 +364,7 @@
             "events": {
               "onClick": [
                 {
-                  "name": "Reset",
+                  "name": "reset",
                   "type": "common"
                 }
               ]

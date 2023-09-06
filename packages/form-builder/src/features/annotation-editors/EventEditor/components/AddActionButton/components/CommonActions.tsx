@@ -12,16 +12,14 @@ import {ActionsMenuProps} from '../types'
 export const CommonActions = ({onSelect}: ActionsMenuProps) => {
   const store = useStore()
   const t = useTranslationPart('actions')
+
+  const items = Object.keys(store.commonActions).map(name =>
+    <Dropdown.Item key={name} children={name} onClick={() => onSelect({name, type: 'common'})}/>
+  )
+
   return (
     <Dropdown.Menu title={t('common')}>
-      {
-        store.actions.map(action =>
-          <Dropdown.Item
-            key={action.name}
-            onClick={() => onSelect({name: action.name, type: 'common'})}
-            children={action.name}
-          />)
-      }
+      {items}
     </Dropdown.Menu>
   )
 }

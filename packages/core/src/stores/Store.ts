@@ -3,7 +3,8 @@ import {makeObservable, observable} from 'mobx'
 import {Subject} from 'rxjs'
 import {calculatePropertyValue} from '../features/calculation/propertyCalculator'
 import {Model, View} from '../features/define'
-import {ActionData, ActionDefinition, ActionEventArgs, createActionValuesFromObject, findAction} from '../features/event'
+import {ActionData, ActionDefinition, ActionEventArgs, ActionType, createActionValuesFromObject} from '../features/event'
+import {commonActions} from '../features/event/consts/actions'
 import {IFormViewer} from '../features/form-viewer'
 import type {ComponentLocalizer} from '../features/form-viewer/ComponentLocalizer'
 import {localizeProperties} from '../features/localization/localizer'
@@ -78,7 +79,6 @@ export class Store implements IStore, IFormViewer {
    * Creates form viewer settings.
    * @param view the metadata of the form viewer components.
    * @param initialData the initial form data.
-   * @param actions the array of action definitions.
    * @param externalValidators the set of metadata of external validation rules, grouped by the type of value being validated.
    * @param externalLocalizer the function to localize the properties of a component.
    * @param propsLanguage the full language code passed in the FormViewer properties.
@@ -87,7 +87,6 @@ export class Store implements IStore, IFormViewer {
    */
   constructor(public view: View,
               public initialData: Record<string, unknown>,
-              public actions: ActionDefinition[] = [],
               public externalValidators?: ExternalValidators,
               public externalLocalizer?: ComponentLocalizer,
               public propsLanguage?: Language,
@@ -108,6 +107,34 @@ export class Store implements IStore, IFormViewer {
       initialDataSlice: true,
       externalLocalizer: observable.ref,
     }, {name: nameObservable(`ViewerStore`)})
+  }
+
+  /**
+   * @returns the Record with the common actions.
+   */
+  get commonActions() {
+    return commonActions
+  }
+
+  /**
+   * Returns an action by the specified action name and action type.
+   * @param name the action name.
+   * @param type the action type.
+   * @returns the action.
+   */
+  getAction(name: string, type: ActionType) {
+    let action: ActionDefinition | undefined = undefined
+    switch (type) {
+      case 'common':
+        action = this.commonActions[name]
+        break
+      case 'custom':
+        action = this.form.actions[name]
+        break
+    }
+
+    if (!action) throw Error(`Action '${name}' with type '${type}' not found!`)
+    return action
   }
 
   /**
@@ -160,7 +187,7 @@ export class Store implements IStore, IFormViewer {
    * @throws Error, if action was not found.
    */
   findAction(actionData: ActionData) {
-    return findAction(this, actionData)
+    return this.getAction(actionData.name, actionData.type)
   }
 
   /**
@@ -237,7 +264,7 @@ export class Store implements IStore, IFormViewer {
       return new SimpleField(this, componentStore, model, updateFnValue(this), this.getValidationRules.bind(this), deferFieldCalculation)
     }
 
-    const childStore = new Store(this.view, this.initialData, this.actions, this.externalValidators,
+    const childStore = new Store(this.view, this.initialData, this.externalValidators,
       this.externalLocalizer, this.propsLanguage, this, componentStore)
     return new TemplateField(componentStore, childStore)
   }

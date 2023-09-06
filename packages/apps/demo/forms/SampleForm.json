@@ -594,7 +594,7 @@
             "events": {
               "onClick": [
                 {
-                  "name": "Validate",
+                  "name": "validate",
                   "type": "common"
                 },
                 {

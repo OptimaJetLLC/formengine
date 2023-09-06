@@ -47,7 +47,6 @@ export const Viewer = namedObserver('Viewer', ({event}: ViewerProps) => {
   const props = useViewerProps()
 
   useEffect(() => {
-    if (props.actions) store.actions.push(...props.actions)
     event?.(new EventStream(store.eventSubject))
   }, [])
 

@@ -3,7 +3,6 @@ import {Store} from '../../../stores/Store'
 import {namedObserver} from '../../../utils'
 import {StoreContext, StoreProvider} from '../../../utils/contexts/StoreContext'
 import {useDestroy} from '../../../utils/useDestroy'
-import {DefaultActions} from '../../event'
 import {FormViewerProps, IFormViewer} from '../types'
 import {ViewerPropsProvider} from './ViewerPropsContext'
 
@@ -20,7 +19,7 @@ export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', ({childr
 }) => {
   const storeFromContext = useContext(StoreContext)
   const store = useMemo(
-    () => storeFromContext || new Store(props.view, props.initialData ?? {}, DefaultActions, props.externalValidators,
+    () => storeFromContext || new Store(props.view, props.initialData ?? {}, props.externalValidators,
       props.localize, props.language),
     [])
 

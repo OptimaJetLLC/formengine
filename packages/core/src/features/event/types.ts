@@ -1,6 +1,5 @@
 import {KeySymbol} from '../../consts'
 import {AsyncFunction} from '../../utils/AsyncFunction'
-import {ActionEventArgs} from './utils/ActionEventArgs'
 
 /**
  * The type for the event name.
@@ -127,7 +126,3 @@ export const createActionValuesFromObject = (obj: any) => {
  */
 export type Func = (...arg: any[]) => void | Promise<void>
 
-/**
- * Event handler function type.
- */
-export type ActionEventHandler = (e: ActionEventArgs) => void | Promise<void>

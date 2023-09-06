@@ -1,4 +1,4 @@
-import {DefaultActions, Store, StoreProvider, useDestroy, ViewerPropsProvider} from '@react-form-builder/core'
+import {Store, StoreProvider, useDestroy, ViewerPropsProvider} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {ReactNode, useEffect, useMemo} from 'react'
 import {DndProvider} from 'react-dnd'
@@ -25,7 +25,7 @@ interface BuilderProvidersProps {
  */
 export const BuilderProviders = observer(({children, props}: BuilderProvidersProps) => {
   const store = useMemo(
-    () => new Store(props.view, props.initialData ?? {}, DefaultActions, props.externalValidators,
+    () => new Store(props.view, props.initialData ?? {}, props.externalValidators,
       props.localize, props.language),
     [])
 
