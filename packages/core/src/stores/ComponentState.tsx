@@ -140,10 +140,14 @@ export class ComponentState {
 
     const className = cx(
       props.className,
-      css(cssObjectAny),
-      css(cssObjectCurrent),
-      css(store.css?.any?.string),
-      css(store.css?.[viewMode]?.string)
+      css`
+        && {
+          ${cssObjectAny}
+          ${cssObjectCurrent}
+          ${store.css?.any?.string}
+          ${store.css?.[viewMode]?.string}
+        }
+      `
     )
     return {className}
   }
