@@ -1,6 +1,6 @@
 import {ReactNode} from 'react'
-import {isUniqueKey} from './utils/isUniqueKey'
 import {createAnnotation, createProperty} from './utils'
+import {isUniqueKey} from './utils/isUniqueKey'
 
 export const key = createAnnotation('key')
   .typed('string')
@@ -9,8 +9,6 @@ export const key = createAnnotation('key')
   .calculable(false)
   .validated(isUniqueKey, {code: 'unique_key', message: 'The key must be unique!'})
   .build('key')
-
-export const stylization = createAnnotation('stylization').build('stylization')
 
 export const htmlAttributes = createAnnotation('htmlAttributes')
 export const validation = createAnnotation('validation')
@@ -26,9 +24,25 @@ export const date = createProperty('date').typed('date')
 export const array = createProperty('array').array
 
 export const color = createProperty('color').typed('string')
-
 export const tooltipType = createAnnotation('tooltipType').typed('string')
 export const errorConfig = createAnnotation('errorConfig')
+
+//Style
+const cssSize = createAnnotation('size').setup({calculable: false})
+const cssColor = createAnnotation('color').setup({calculable: false})
+export const commonStyles = [
+  cssSize.build('width'),
+  cssSize.build('height'),
+  cssSize.build('marginTop'),
+  cssSize.build('marginRight'),
+  cssSize.build('marginBottom'),
+  cssSize.build('marginLeft'),
+  cssColor.build('color'),
+  cssColor.build('backgroundColor')
+]
+export const className = createProperty('string')
+  .calculable(true)
+  .build('className')
 
 //TODO rename to func, or action, or to stay event?
 //Use for create functions for events

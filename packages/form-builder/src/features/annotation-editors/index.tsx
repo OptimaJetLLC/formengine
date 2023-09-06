@@ -18,7 +18,6 @@ import {RadioInput} from './RadioInput'
 import {RenderWhenEditor} from './RenderWhenEditor'
 import {SizeInput} from './SizeInput'
 import {StringInput} from './StringInput'
-import {StyleEditor} from './StyleEditor'
 import {TooltipPropertiesEditor} from './TooltipPropertiesEditor'
 import {TooltipTypePicker} from './TooltipTypePicker'
 import {ComponentValidationSettingsEditor} from './ValidateEditor'
@@ -26,7 +25,6 @@ import {ComponentValidationSettingsEditor} from './ValidateEditor'
 export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>> = {
   key: KeyInput,
   htmlAttributes: AttributesInput,
-  stylization: StyleEditor,
   validation: ComponentValidationSettingsEditor,
   string: StringInput,
   boolean: BooleanInput,

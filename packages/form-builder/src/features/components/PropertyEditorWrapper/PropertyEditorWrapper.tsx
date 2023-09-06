@@ -11,27 +11,35 @@ import {Erroneous} from './Erroneous'
 interface ControlProps {
   annotation: Annotation
   context: Record<string, any>
+  initContext?: () => Record<string, any>
 }
 
-export const PropertyEditorWrapper = observer(({annotation, context}: ControlProps) => {
+export const PropertyEditorWrapper = observer(({annotation, context, initContext}: ControlProps) => {
   // custom editors have the highest priority
   const store = useBuilderStore()
   const componentData = useComponentData()
   const annotationEditor = store.customPropertyEditor(annotation.editor) ?? EditorMap[annotation.editor]
+  const [contextInitialized, setContextInitialized] = useState(false)
 
   const [error, setError] = useState<string>()
   const isProps = isProperty(annotation)
 
   const value = (isProps ? context[annotation.key]?.value : context[annotation.key]) ?? annotation.default
 
-  const onChange = useCallback((value: any) => {
+  const onChange = (value: any) => {
+    let propertyContext = context
+    if (!contextInitialized) {
+      setContextInitialized(true)
+      propertyContext = initContext?.() ?? context
+    }
+
     if (isProps) {
-      context[annotation.key] ??= {}
-      context[annotation.key].value = value
+      propertyContext[annotation.key] ??= {}
+      propertyContext[annotation.key].value = value
       return
     }
-    context[annotation.key] = value
-  }, [context, annotation])
+    propertyContext[annotation.key] = value
+  }
 
   const onClean = useCallback(() => delete context[annotation.key], [context, annotation])
   const showError = useCallback((message?: string) => setError(message), [])

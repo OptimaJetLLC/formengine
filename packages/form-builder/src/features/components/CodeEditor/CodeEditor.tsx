@@ -18,7 +18,7 @@ interface CodeEditorProps {
   /**
    * @default 'javascript'
    */
-  language?: 'javascript' | 'json' | 'css' | 'fluent'
+  language?: 'javascript' | 'json' | 'scss' | 'fluent'
   /**
    * Read only line for adding context to a code. Automatically adds the "}" symbol to the end.
    * Especially useful to add jsdoc for typing before.

@@ -48,7 +48,9 @@
           }
         },
         "css": {
-          "desktop": "border: 1px solid lightgray;\nborder-radius: 6px;\npadding: 20px;"
+          "desktop": {
+            "string": "border: 1px solid lightgray;\nborder-radius: 6px;\npadding: 20px;"
+          }
         },
         "children": [
           {
@@ -416,7 +418,9 @@
               }
             },
             "css": {
-              "any": "font-weight: bold;"
+              "any": {
+                "string": "font-weight: bold;"
+              }
             }
           },
           {
@@ -424,7 +428,9 @@
             "type": "RsContainer",
             "props": {},
             "css": {
-              "desktop": "gap: 0;"
+              "desktop": {
+                "string": "gap: 0;"
+              }
             },
             "children": [
               {
@@ -451,7 +457,9 @@
                   }
                 },
                 "css": {
-                  "desktop": "margin-left: 35px"
+                  "desktop": {
+                    "string": "margin-left: 35px"
+                  }
                 }
               }
             ]
@@ -461,7 +469,9 @@
             "type": "RsContainer",
             "props": {},
             "css": {
-              "desktop": "gap: 0;"
+              "desktop": {
+                "string": "gap: 0;"
+              }
             },
             "children": [
               {
@@ -485,7 +495,9 @@
                   }
                 },
                 "css": {
-                  "desktop": "margin-left: 35px"
+                  "desktop": {
+                    "string": "margin-left: 35px;"
+                  }
                 }
               }
             ]
@@ -495,7 +507,9 @@
             "type": "RsContainer",
             "props": {},
             "css": {
-              "desktop": "gap: 0;"
+              "desktop": {
+                "string": "gap: 0;"
+              }
             },
             "children": [
               {
@@ -519,7 +533,9 @@
                   }
                 },
                 "css": {
-                  "desktop": "margin-left: 35px"
+                  "desktop": {
+                    "string": "margin-left: 35px;"
+                  }
                 }
               }
             ]
@@ -533,7 +549,9 @@
               }
             },
             "css": {
-              "any": "font-weight: bold;"
+              "desktop": {
+                "any": "font-weight: bold;"
+              }
             }
           },
           {
@@ -613,7 +631,9 @@
               }
             },
             "css": {
-              "any": "color: red;"
+              "any": {
+                "string": "color: red;"
+              }
             },
             "renderWhen": {
               "value": false
@@ -628,7 +648,9 @@
               }
             },
             "css": {
-              "any": "color: green;"
+              "any": {
+                "string": "color: green;"
+              }
             },
             "renderWhen": {
               "value": false

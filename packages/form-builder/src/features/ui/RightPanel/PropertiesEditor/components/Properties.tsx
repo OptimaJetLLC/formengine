@@ -1,14 +1,17 @@
 import styled from '@emotion/styled'
-import {ComponentDataProvider, ComponentStore, useTooltipType} from '@react-form-builder/core'
+import {ComponentDataProvider, ComponentStore, Device, useTooltipType} from '@react-form-builder/core'
+import {unionWith} from 'lodash-es'
 import {observer} from 'mobx-react'
-import {useEffect} from 'react'
+import {useState} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
-import {key, stylization} from '../../../../annotation'
+import {className, commonStyles, key} from '../../../../annotation'
+import {CSSEditor} from '../../../../annotation-editors/CSSEditor'
 import {Annotation} from '../../../../annotation/types/annotations/Annotation'
 import {CenteredLabel} from '../../../../components/Labels'
 import {PropertyEditorWrapper} from '../../../../components/PropertyEditorWrapper'
 import {useTranslationPart} from '../../../../localization/hooks'
 import {Section, SubSection} from '../Section'
+import {DevicePicker} from './DevicePicker'
 
 //TODO return section map to annotation
 const SectionMap: Record<string, Section> = {
@@ -36,7 +39,6 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
   const store = useBuilderStore()
   const tooltipType = useTooltipType()
   const getLabel = useTranslationPart('propertiesEditor')
-
   const data = store.oneSelectedComponentData
 
   if (!data) {
@@ -52,7 +54,7 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
   const current = meta.properties.concat(meta.modules).filter(bySection(activeTab))
   const properties = current.filter(bySubSection(undefined))
   const additionalProperties = current.filter(bySubSection(SubSection.Additional))
-  const style = meta.css.filter(bySection(activeTab)).filter(bySubSection(undefined))
+  const styles = unionWith(meta.css, commonStyles, (a, b) => a.key === b.key)
   const tooltipProps = current.filter(bySubSection(SubSection.Tooltip))
 
   return (
@@ -61,8 +63,9 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
         <PropertiesList>
           {activeTab === Section.Main && <PropertyEditorWrapper annotation={key} context={data.store}/>}
           <PropertyBlock annotations={properties} context={data.store.props}/>
-          <StyleBlock annotations={style} store={data.store}/>
-          {activeTab === Section.Style && <PropertyEditorWrapper annotation={stylization} context={{}}/>}
+          {activeTab === Section.Style &&
+            <StyleBlock annotations={styles} store={data.store}/>
+          }
         </PropertiesList>
 
         {!!tooltipProps?.length && tooltipType &&
@@ -79,11 +82,20 @@ const Properties = observer(({activeTab}: PropertiesProps) => {
 })
 
 const StyleBlock = observer(({annotations, store}: { annotations: Annotation[], store: ComponentStore }) => {
-  useEffect(() => {
-    if (annotations.length) store.css ??= {object: {}}
-  }, [])
+  const [device, setDevice] = useState<Device>('any')
+  const initCssObject = () => {
+    store.css ??= {}
+    store.css[device] ??= {}
+    store.css[device]!.object ??= {}
+    return store.css[device]!.object ?? {}
+  }
 
-  return <PropertyBlock annotations={annotations} context={store.css?.object}/>
+  return <>
+    <DevicePicker value={device} onChange={setDevice}/>
+    <PropertyBlock annotations={annotations} context={store.css?.[device]?.object ?? {}} initContext={initCssObject}/>
+    <PropertyEditorWrapper annotation={className} context={store.props}/>
+    <CSSEditor device={device}/>
+  </>
 })
 
 /**
@@ -91,15 +103,22 @@ const StyleBlock = observer(({annotations, store}: { annotations: Annotation[], 
  * @param props the React component properties.
  * @param props.annotations the array of form builder component metadata.
  * @param props.context the properties of the form builder component.
+ * @param props.initContext the function initializes the context for the first change.
  * @param props.header the property block title.
  * @returns the React element.
  */
-export const PropertyBlock = ({annotations, context, header}: { annotations: Annotation[], context?: object, header?: string }) => {
+export const PropertyBlock = ({annotations, context, initContext, header}: {
+  annotations: Annotation[],
+  context?: object,
+  initContext?: () => Record<string, any>,
+  header?: string
+}) => {
   if (!context) return null
 
   return <>
     {!!header && <h6>{header}</h6>}
-    {annotations.map(annotation => <PropertyEditorWrapper key={annotation.key} annotation={annotation} context={context}/>)}
+    {annotations.map(annotation => <PropertyEditorWrapper key={annotation.key} annotation={annotation} context={context}
+                                                          initContext={initContext}/>)}
   </>
 }
 

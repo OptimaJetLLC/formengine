@@ -35,7 +35,7 @@ export const textStyles = {
     .hinted('Text alignment'),
   fontSize: number.default(14).hinted('Font size'),
   fontWeight: oneOf('lighter', 'normal', 'bold').default('normal'),
-  color: color.default('var(--rs-text-primary)'),
+  color: color,
 }
 
 export const readOnly = boolean.hinted('Read only component')

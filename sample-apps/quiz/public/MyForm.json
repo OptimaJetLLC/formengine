@@ -22,8 +22,7 @@
           "activeKey": {
             "value": "Home"
           }
-        },
-        "css": {}
+        }
       },
       {
         "key": "RsStaticContent 1",
@@ -40,10 +39,7 @@
       {
         "key": "Breadcrumb 1",
         "type": "RsBreadcrumb",
-        "props": {},
-        "css": {
-          "object": {}
-        }
+        "props": {}
       },
       {
         "key": "RsContainer 1",
@@ -83,9 +79,11 @@
         "type": "RsImage",
         "props": {},
         "css": {
-          "object": {
-            "width": "100%",
-            "height": "40px"
+          "any": {
+            "object": {
+              "width": "100%",
+              "height": "40px"
+            }
           }
         },
         "renderWhen": {
@@ -140,9 +138,6 @@
             "computeType": "function",
             "fnSource": "return `${form.data.title} ${form.data.checkbox} ${new Date().toISOString()}`"
           }
-        },
-        "css": {
-          "object": {}
         }
       },
       {
@@ -154,8 +149,10 @@
           }
         },
         "css": {
-          "object": {
-            "textAlign": "center"
+          "any": {
+            "object": {
+              "textAlign": "center"
+            }
           }
         }
       },
@@ -227,10 +224,7 @@
                   ]
                 }
               }
-            ],
-            "css": {
-              "object": {}
-            }
+            ]
           },
           {
             "key": "Formatted",
@@ -239,9 +233,6 @@
               "direction": {
                 "value": "horizontal"
               }
-            },
-            "css": {
-              "object": {}
             },
             "children": [
               {
@@ -273,10 +264,7 @@
               }
             ]
           }
-        ],
-        "css": {
-          "object": {}
-        }
+        ]
       },
       {
         "key": "comment",

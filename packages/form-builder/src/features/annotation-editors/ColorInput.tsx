@@ -21,9 +21,9 @@ export const ColorInput = (props: AnnotationEditorProps) => {
   return <LabeledProperty annotation={annotation}>
     <SColorPicker>
       <ColorPicker value={rgbFromString(value) ?? PLACEHOLDER_COLOR} onChange={({rgb}) => onChange(rgbToString(rgb))}/>
-      <SButton onClick={onClean} size={'xs'}>
+      {!!value && <SButton onClick={onClean} size={'xs'}>
         <Close/>
-      </SButton>
+      </SButton>}
     </SColorPicker>
   </LabeledProperty>
 }

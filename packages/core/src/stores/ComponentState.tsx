@@ -3,33 +3,11 @@ import {assign, keysIn} from 'lodash-es'
 import {makeAutoObservable} from 'mobx'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
 import {ActionEventArgs, DidMountEvent, EventName, WillUnmountEvent} from '../features/event'
-import type {ViewMode} from '../types'
 import type {ComputeChildren} from '../utils/ComputeChildren'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
 import {ComponentProperty, ComponentStore, isFunctionalProperty} from './ComponentStore'
 import {Store} from './Store'
-
-const computeClassName = (data: ComponentData, viewMode: ViewMode) => {
-  const {model, store} = data
-  const cssObject = assign({}, model.css?.object, store.css?.object)
-
-  return cx(
-    getClassNameProp(data),
-    css(cssObject),
-    css(model.css?.string),
-    css(store.css?.string),
-    css(store.css?.any),
-    css(store.css?.[viewMode]),
-    store.css?.className
-  )
-}
-
-function getClassNameProp(data: ComponentData): string {
-  const defaultProp = data.model.defaultProps?.className
-  const currentProp = data.store.props.className?.value
-  return currentProp ?? defaultProp
-}
 
 const getHtmlAttributes = (componentStore: ComponentStore) => componentStore.htmlAttributes
   ?.reduce((result: Record<string, string>, {name, value}) => {
@@ -106,13 +84,12 @@ export class ComponentState {
       this.calculatedProps,
       this.substitutedValue,
       this.localizedProps,
-      this.className,
       this.value,
       this.events,
       this.htmlAttributes,
       this.data.userDefinedProps,
     )
-    return Object.assign(propsWithoutChildren, this.children(propsWithoutChildren))
+    return Object.assign(propsWithoutChildren, this.className(propsWithoutChildren), this.children(propsWithoutChildren))
   }
 
   /**
@@ -151,10 +128,23 @@ export class ComponentState {
   }
 
   /**
-   * @returns the value of the className property for the component.
+   * Calculates and returns className property.
+   * @param props the React component properties.
+   * @returns the {@link Record} that contains the className property for the component.
    */
-  get className() {
-    const className = computeClassName(this.data, this.store.viewMode)
+  className(props: Record<string, any>) {
+    const {model, store} = this.data
+    const {viewMode} = this.store
+    const cssObjectAny = assign({}, model.css?.any?.object, store.css?.any?.object)
+    const cssObjectCurrent = assign({}, model.css?.[viewMode]?.object, store.css?.[viewMode]?.object)
+
+    const className = cx(
+      props.className,
+      css(cssObjectAny),
+      css(cssObjectCurrent),
+      css(store.css?.any?.string),
+      css(store.css?.[viewMode]?.string)
+    )
     return {className}
   }
 

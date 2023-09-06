@@ -271,18 +271,12 @@
     "collapse": "Collapse all"
   },
   "style": {
-    "size": "Size",
-    "indent": "Indent",
     "other": "Other",
-    "cssList": "CSS list",
-    "cssBlock": "CSS block for:",
-    "any": "Any device",
+    "forDevice": "For device:",
+    "any": "Any",
     "desktop": "Desktop",
     "mobile": "Mobile",
-    "tablet": "Tablet",
-    "cssString": "String of CSS",
-    "cssObject": "Object of CSS",
-    "className": "Custom class name"
+    "tablet": "Tablet"
   },
   "actions": {
     "arguments": "Arguments",

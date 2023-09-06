@@ -12,7 +12,7 @@ interface RsDropdownProps extends InputPickerProps {
   onLoadData?: LoadDataHandler
 }
 
-const RsDropdown = ({data, label, onLoadData, onSearch, onOpen, value, ...props}: RsDropdownProps) => {
+const RsDropdown = ({data, label, onLoadData, onSearch, onOpen, value, className, ...props}: RsDropdownProps) => {
   const {loading, ...loadProps} = useLoadData({data, onLoadData, onSearch, onOpen, value})
 
   const renderMenu = (menu: ReactNode) => <>
@@ -21,7 +21,7 @@ const RsDropdown = ({data, label, onLoadData, onSearch, onOpen, value, ...props}
   </>
 
   return (
-    <RsLabeledInput>
+    <RsLabeledInput className={className}>
       <Form.ControlLabel>{label}</Form.ControlLabel>
       <InputPicker {...props} {...loadProps} renderMenu={renderMenu}/>
     </RsLabeledInput>

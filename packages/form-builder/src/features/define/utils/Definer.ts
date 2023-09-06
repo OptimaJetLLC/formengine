@@ -12,7 +12,6 @@ type DefinerData<T extends object> = {
   readonly view: ComponentType<T>,
   name?: string,
   category?: string,
-  cssString?: string,
   cssObject?: Annotations<CSSObject>,
   icon?: ComponentType,
   readonly actionsInitializer?: ActionsInitializer,
@@ -59,10 +58,7 @@ export class Definer<T extends object> {
 
   props = (properties: Annotations<T>) => this.#updateWith({properties})
 
-  css = (css: Annotations<CSSObject> | string): Definer<T> =>
-    typeof css === 'string' ?
-      this.#updateWith({cssString: css})
-      : this.#updateWith({cssObject: css})
+  css = (css: Annotations<CSSObject>): Definer<T> => this.#updateWith({cssObject: css})
 
   actions = (fn: ActionsInitializer) => this.#updateWith({actionsInitializer: fn})
 
@@ -91,10 +87,7 @@ export class Definer<T extends object> {
       valuedAn?.key,
       valuedAn?.type,
       getDefault(propAns),
-      {
-        object: getDefault(cssAns),
-        string: this.data.cssString
-      },
+      {any: {object: getDefault(cssAns)}},
       this.getType(),
       this.data.icon
     )
