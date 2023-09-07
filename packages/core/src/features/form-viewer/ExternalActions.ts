@@ -17,7 +17,7 @@ export function externalActionsToActionsValues(externalActions?: ExternalActions
   Object.entries(externalActions).forEach(([name, value]) => {
     result[name] = value instanceof ActionDefinition
       ? value
-      : new ActionDefinition(name, value)
+      : ActionDefinition.functionalAction(value)
   })
   return result
 }

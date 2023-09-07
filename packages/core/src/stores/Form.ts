@@ -1,5 +1,5 @@
 import {makeAutoObservable} from 'mobx'
-import {ActionData, ActionDefinition, ActionValues} from '../features/event'
+import {ActionData, ActionDefinition, ActionValues, NamedActionDefinition} from '../features/event'
 import {Language} from '../features/localization/types'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {generateUniqueName} from '../utils/generateUniqueName'
@@ -55,13 +55,6 @@ export class Form {
   }
 
   /**
-   * @returns the array of action definitions.
-   */
-  get actionsList(): ActionDefinition[] {
-    return Object.values(this.actions)
-  }
-
-  /**
    * @returns the actions names array.
    */
   get actionNames(): string[] {
@@ -85,45 +78,45 @@ export class Form {
 
   /**
    * Removes the action from the form.
-   * @param action the action to remove.
+   * @param name the action name to remove.
    */
-  removeAction(action: ActionDefinition) {
-    delete this.actions[action.name]
-    this.removeCustomActionBinding(action.name, this.componentTree.store)
+  removeAction(name: string) {
+    delete this.actions[name]
+    this.removeCustomActionBinding(name, this.componentTree.store)
   }
 
   /**
    * Changes the existing action to the new one, adds the action if the existing action is not found.
-   * @param existingAction the existing action.
-   * @param newAction the new action.
+   * @param oldActionName the existing action name.
+   * @param newAction the new named action.
    */
-  updateOrAddAction(existingAction: ActionDefinition, newAction: ActionDefinition) {
-    this.actions[newAction.name] = newAction
-    this.rebindActionHandlers(this.componentTree.store, existingAction.name, newAction)
-    if (existingAction.name !== newAction.name) {
-      delete this.actions[existingAction.name]
+  updateOrAddAction(oldActionName: string, newAction: NamedActionDefinition) {
+    this.actions[newAction.name] = newAction.actionDefinition
+    this.rebindActionHandlers(this.componentTree.store, oldActionName, newAction)
+    if (oldActionName !== newAction.name) {
+      delete this.actions[oldActionName]
     }
   }
 
   /**
    * Clones the action.
-   * @param action the action to clone.
+   * @param namedAction the named action to clone.
    */
-  cloneAction(action: ActionDefinition) {
+  cloneAction(namedAction: NamedActionDefinition) {
     if (!this.actions) return
-    const existingNames = new Set(Object.keys(this.actions))
-    const data = JSON.parse(JSON.stringify(action))
-    data.name = generateUniqueName(`${action.name}_`, existingNames)
-    this.actions[data.name] = ActionDefinition.createFromObject(data)
+    const existingNames = new Set(this.actionNames)
+    const data = JSON.parse(JSON.stringify(namedAction.actionDefinition))
+    const actionName = generateUniqueName(`${namedAction.name}_`, existingNames)
+    this.actions[actionName] = ActionDefinition.createFromObject(data)
   }
 
-  private rebindActionData(actionData: ActionData, newAction: ActionDefinition) {
+  private rebindActionData(actionData: ActionData, newAction: NamedActionDefinition) {
     actionData.name = newAction.name
     const args = actionData.args
     if (!args) return
 
     const newActionParamNames = new Set<string>()
-    newAction.params.forEach(value => {
+    newAction.actionDefinition.params.forEach(value => {
       typeof value === 'string' ? newActionParamNames.add(value) : newActionParamNames.add(value[0])
     })
     Object.keys(args).forEach(key => {
@@ -131,7 +124,7 @@ export class Form {
     })
   }
 
-  private rebindActionHandlers(componentStore: ComponentStore, oldActionName: string, newAction: ActionDefinition) {
+  private rebindActionHandlers(componentStore: ComponentStore, oldActionName: string, newAction: NamedActionDefinition) {
     const events = componentStore.events
     if (events) {
       Object.keys(events).forEach(value => {

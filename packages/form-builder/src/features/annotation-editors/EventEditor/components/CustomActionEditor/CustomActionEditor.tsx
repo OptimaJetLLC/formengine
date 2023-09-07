@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {ActionDefinition, AsyncFunction, Parameter, toParameterWithType, useStore} from '@react-form-builder/core'
+import {ActionDefinition, AsyncFunction, NamedActionDefinition, Parameter, toParameterWithType, useStore} from '@react-form-builder/core'
 import {useEffect, useRef, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup, Form, FormInstance, Schema} from 'rsuite'
@@ -21,7 +21,7 @@ type FormModel = CustomActionEditorData & { errors?: string }
  */
 export interface CustomActionEditorProps {
   customAction: CustomActionEditorData
-  onSave: (customAction: ActionDefinition) => void
+  onSave: (namedAction: NamedActionDefinition) => void
 }
 
 /**
@@ -72,8 +72,9 @@ export const CustomActionEditor = ({customAction, onSave}: CustomActionEditorPro
 
     if (!formState.params?.length) delete formState.params
     const data = JSON.parse(JSON.stringify(formState))
-    const actionDefinition = ActionDefinition.sourceAction(data.name, data.body, data.params)
-    onSave?.(actionDefinition)
+    const actionDefinition = ActionDefinition.sourceAction(data.body, data.params)
+    const namedAction: NamedActionDefinition = {name: data.name, actionDefinition}
+    onSave?.(namedAction)
   }
 
   return <>

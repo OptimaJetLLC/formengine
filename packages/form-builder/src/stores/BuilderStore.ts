@@ -5,6 +5,7 @@ import {
   ComponentProperty,
   ComponentStore,
   Language,
+  NamedActionDefinition,
   nameObservable,
   PersistedForm,
   Store,
@@ -14,7 +15,10 @@ import {
 import {assign, cloneDeep} from 'lodash-es'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
 import {debounceTime, distinctUntilChanged, Subject} from 'rxjs'
-import type {CustomActionEditorData, CustomActionEditorProps} from '../features/annotation-editors/EventEditor/components/CustomActionEditor'
+import type {
+  CustomActionEditorData,
+  CustomActionEditorProps
+} from '../features/annotation-editors/EventEditor/components/CustomActionEditor'
 import type {EditorType} from '../features/annotation/types'
 import {Annotation} from '../features/annotation/types/annotations/Annotation'
 import {BuilderView} from '../features/define/utils/BuilderView'
@@ -65,15 +69,15 @@ export class EditableAction implements CustomActionEditorProps {
 
   /**
    * Creates the editable action settings.
-   * @param actionDefinition the custom action.
+   * @param namedAction the named custom action.
    * @param onSave the callback function called when data should be saved.
    */
-  constructor(readonly actionDefinition: ActionDefinition,
-              readonly onSave: (actionDefinition: ActionDefinition) => void) {
-    const clone = JSON.parse(JSON.stringify(actionDefinition))
+  constructor(readonly namedAction: NamedActionDefinition,
+              readonly onSave: (namedAction: NamedActionDefinition) => void) {
+    const clone = JSON.parse(JSON.stringify(namedAction.actionDefinition))
     this.customAction = {
-      editorId: clone.name || new Date().getTime(),
-      name: clone.name,
+      editorId: namedAction.name || new Date().getTime(),
+      name: namedAction.name,
       body: clone.body ?? '',
       params: clone.params
     }
@@ -230,22 +234,23 @@ export class BuilderStore {
    * Opens the custom action editor to add a new custom action.
    * @param afterAdd the callback function called after a new custom action added.
    */
-  addCustomAction(afterAdd?: (actionDefinition: ActionDefinition) => void) {
-    const emptyActionDefinition = ActionDefinition.sourceAction('', '')
-    this.editCustomAction(emptyActionDefinition, actionDefinition => {
-      afterAdd?.(actionDefinition)
+  addCustomAction(afterAdd?: (namedAction: NamedActionDefinition) => void) {
+    const emptyActionDefinition = ActionDefinition.sourceAction('')
+    const namedAction: NamedActionDefinition = {name: '', actionDefinition: emptyActionDefinition}
+    this.editCustomAction(namedAction, namedAction => {
+      afterAdd?.(namedAction)
     })
   }
 
   /**
    * Opens the custom action editor.
-   * @param actionDefinition the custom action.
+   * @param namedAction the named action name.
    * @param afterEdit callback function called after data editing.
    */
-  editCustomAction(actionDefinition: ActionDefinition,
-                   afterEdit?: (actionDefinition: ActionDefinition) => void) {
-    this.currentEditable = new EditableAction(actionDefinition, action => {
-      this.viewer.form.updateOrAddAction(actionDefinition, action)
+  editCustomAction(namedAction: NamedActionDefinition,
+                   afterEdit?: (namedAction: NamedActionDefinition) => void) {
+    this.currentEditable = new EditableAction(namedAction, action => {
+      this.viewer.form.updateOrAddAction(namedAction.name, action)
       afterEdit?.(action)
       // recreate action editor with the new data
       this.editCustomAction(action)
@@ -494,7 +499,7 @@ export class BuilderStore {
         return l.fullCode === this.defaultLanguage.fullCode
           || this.viewer.form.localization.hasLanguage(l.fullCode)
       })
-    const actions = this.viewer.form.actionsList.length ? this.viewer.form.actions : undefined
+    const actions = this.viewer.form.actionNames.length ? this.viewer.form.actions : undefined
     const serializedObject: PersistedForm = {
       actions: actions,
       form: this.viewer.form.componentTree.store,

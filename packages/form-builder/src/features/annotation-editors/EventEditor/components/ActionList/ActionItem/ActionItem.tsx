@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import {faMarker} from '@fortawesome/free-solid-svg-icons/faMarker.js'
-import {ActionData, useStore} from '@react-form-builder/core'
+import {ActionData, NamedActionDefinition, useStore} from '@react-form-builder/core'
 import {Close} from '@rsuite/icons'
 import {observer} from 'mobx-react'
 import {ButtonGroup, IconButton} from 'rsuite'
@@ -25,7 +25,8 @@ export const ActionItem = observer(({data, onRemove}: ActionItemProps) => {
       console.error(`Cannot find custom action: '${data.name}'`)
       return
     }
-    builderStore.editCustomAction(actionDefinition)
+    const namedAction: NamedActionDefinition = {name: data.name, actionDefinition}
+    builderStore.editCustomAction(namedAction)
   }
 
   return (

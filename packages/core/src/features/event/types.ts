@@ -53,19 +53,25 @@ export type ActionData = {
 export type ActionValues = Record<string, ActionDefinition>
 
 /**
+ * Represents a named action definition.
+ */
+export type NamedActionDefinition = {
+  name: string
+  actionDefinition: ActionDefinition
+}
+
+/**
  * Represents the definition of an action.
  */
 export class ActionDefinition {
 
   /**
    * Creates a new instance of the ActionDefinition class.
-   * @param name the name of the Action.
    * @param func the function of an action.
    * @param body the source code of the Action.
    * @param params the parameters of the Action.
    */
   constructor(
-    public readonly name: string,
     public readonly func: Func,
     public readonly body?: string,
     public readonly params: Parameter[] = [],
@@ -74,25 +80,23 @@ export class ActionDefinition {
 
   /**
    * Creates an action from the function.
-   * @param name the name of the Action.
    * @param func the function of an action.
    * @param params the parameters of the Action.
    * @returns the new instance of the ActionDefinition class.
    */
-  static functionalAction(name: string, func: Func, params: Parameter[] = []): ActionDefinition {
-    return new ActionDefinition(name, func, undefined, params)
+  static functionalAction(func: Func, params: Parameter[] = []): ActionDefinition {
+    return new ActionDefinition(func, undefined, params)
   }
 
   /**
    * Creates an action from the source code.
-   * @param name the name of the Action.
    * @param body the source code of the Action.
    * @param params the parameters of the Action.
    * @returns the new instance of the ActionDefinition class.
    */
-  static sourceAction(name: string, body: string, params: Parameter[] = []): ActionDefinition {
+  static sourceAction(body: string, params: Parameter[] = []): ActionDefinition {
     const func = AsyncFunction(params.length ? 'e, args' : 'e', body)
-    return new ActionDefinition(name, func, body, params)
+    return new ActionDefinition(func, body, params)
   }
 
   /**
@@ -101,7 +105,7 @@ export class ActionDefinition {
    * @returns the ActionDefinition instance.
    */
   static createFromObject(value: any) {
-    return ActionDefinition.sourceAction(value.name, value.body, value.params)
+    return ActionDefinition.sourceAction(value.body, value.params)
   }
 }
 
@@ -125,4 +129,3 @@ export const createActionValuesFromObject = (obj: any) => {
  * The type of arbitrary function that returns void or Promise<void>.
  */
 export type Func = (...arg: any[]) => void | Promise<void>
-

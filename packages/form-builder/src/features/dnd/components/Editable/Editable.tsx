@@ -16,7 +16,6 @@ import {useDragLayer} from 'react-dnd'
 import {BuilderStore} from '../../../../stores/BuilderStore'
 import {isContainer, node} from '../../../annotation'
 import {toArray} from '../../../define'
-import {useEventReactions} from '../../../event/utils/useEventReactions'
 import {Draggable} from './components/Draggable'
 import {DropZone} from './components/DropZone'
 import {Toolbar} from './components/Toolbar'
@@ -75,8 +74,6 @@ export const EditableWrapper = namedObserver('EditableWrapper', ({children}: Wra
 const Editable = observer(({children}: WrapperProps) => {
   const [{selected}, selectionHandlers, selectionClassName] = useSelection()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
-
-  useEventReactions()
 
   const toolbars = selected && !isDragging && <>
     <Toolbar/>

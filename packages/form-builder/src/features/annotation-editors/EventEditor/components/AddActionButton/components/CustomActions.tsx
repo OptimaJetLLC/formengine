@@ -21,8 +21,8 @@ export const CustomActions = observer(({onSelect, annotation}: ActionsMenuProps)
   const t = useTranslationPart('actions')
   const addAction = () => {
     if (!selectedStore) return
-    builderStore.addCustomAction(actionDefinition => {
-      ComponentStore.addEventHandler(selectedStore, eventName, {name: actionDefinition.name, type: 'custom'})
+    builderStore.addCustomAction(namedAction => {
+      ComponentStore.addEventHandler(selectedStore, eventName, {name: namedAction.name, type: 'custom'})
     })
   }
 

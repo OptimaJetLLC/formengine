@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {namedObserver, useStore} from '@react-form-builder/core'
+import {NamedActionDefinition, namedObserver, useStore} from '@react-form-builder/core'
 import CopyIcon from '@rsuite/icons/Copy.js'
 import EditIcon from '@rsuite/icons/Edit.js'
 import type {IconProps} from '@rsuite/icons/lib/Icon'
@@ -33,12 +33,13 @@ export const ActionList = namedObserver('ActionList', () => {
   const {t} = useTranslation()
 
   const items = Object.entries(viewerStore.form.actions).map(([name, action]) => {
+    const namedAction: NamedActionDefinition = {name, actionDefinition: action}
     return <List.Item key={name}>
       <ButtonToolbar>
         <SActionName>{name}</SActionName>
-        <HintedIconButton hint={t('leftPanel.actions.edit')} icon={<EditIcon/>} onClick={() => builderStore.editCustomAction(action)}/>
-        <HintedIconButton hint={t('leftPanel.actions.clone')} icon={<CopyIcon/>} onClick={() => viewerStore.form.cloneAction(action)}/>
-        <HintedIconButton hint={t('leftPanel.actions.remove')} icon={<TrashIcon/>} onClick={() => viewerStore.form.removeAction(action)}/>
+        <HintedIconButton hint={t('leftPanel.actions.edit')} icon={<EditIcon/>} onClick={() => builderStore.editCustomAction(namedAction)}/>
+        <HintedIconButton hint={t('leftPanel.actions.clone')} icon={<CopyIcon/>} onClick={() => viewerStore.form.cloneAction(namedAction)}/>
+        <HintedIconButton hint={t('leftPanel.actions.remove')} icon={<TrashIcon/>} onClick={() => viewerStore.form.removeAction(name)}/>
       </ButtonToolbar>
     </List.Item>
   })

@@ -1,8 +1,8 @@
 import {ActionDefinition, ActionValues} from '../types'
 
 export const commonActions: ActionValues = {
-  log: ActionDefinition.functionalAction('Log event to console', console.log),
-  validate: ActionDefinition.functionalAction('Validate', async e => await e.store.form.componentTree.validate()),
-  clear: ActionDefinition.functionalAction('Clear', e => e.store.form.componentTree.clear()),
-  reset: ActionDefinition.functionalAction('Reset', e => e.store.form.componentTree.reset())
+  log: ActionDefinition.functionalAction(console.log),
+  validate: ActionDefinition.functionalAction(async e => await e.store.form.componentTree.validate()),
+  clear: ActionDefinition.functionalAction(e => e.store.form.componentTree.clear()),
+  reset: ActionDefinition.functionalAction(e => e.store.form.componentTree.reset())
 }
