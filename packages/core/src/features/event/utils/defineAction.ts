@@ -22,4 +22,4 @@ type TypedKey<T> = [PropertyKey<T>, ParameterType]
 /**
  * Action function type.
  */
-export type ActionHandler<T> = (params: { [k in keyof T]: any }, e: ActionEventArgs) => void | Promise<void>
+export type ActionHandler<T> = (e: ActionEventArgs, params: { [k in keyof T]: any }) => void | Promise<void>

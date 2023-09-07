@@ -117,14 +117,15 @@ const Container = styled(Columns)`
 `
 
 const makeFunctionHeader = (params?: Parameter[]) => {
-  let types = '\n* @param {} args - the action arguments.'
+  let types = '@param {} args - the action arguments.'
   if (params?.length) {
     const names: string[] = params.map(toParameterWithType).map(([name, type]) => name + ': ' + type)
-    types = `\n* @param {{${names.join(', ')}}} args - the action parameters.`
+    types = `@param {{${names.join(', ')}}} args - the action parameters.`
   }
 
-  return `/**${types}
+  return `/**
 * @param {ActionEventArgs} e - the action arguments.
+* ${types}
 */
-async function Action (args, e) {`
+async function Action (e, args) {`
 }

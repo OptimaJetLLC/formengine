@@ -56,7 +56,7 @@ function getActionHandler(func: Func, args?: Arguments, params?: Parameter[]) {
     const actionArgs = !args ? {} :
       transform(args, (result: Record<string, any>, value, argumentName) =>
         result[argumentName] = value)
-    const result = !params?.length ? func(e) : func(actionArgs, e)
+    const result = !params?.length ? func(e) : func(e, actionArgs)
     if (isPromise(result)) await result
     return e
   }

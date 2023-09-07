@@ -91,7 +91,7 @@ export class ActionDefinition {
    * @returns the new instance of the ActionDefinition class.
    */
   static sourceAction(name: string, body: string, params: Parameter[] = []): ActionDefinition {
-    const func = AsyncFunction(params.length ? 'args, e' : 'e', body)
+    const func = AsyncFunction(params.length ? 'e, args' : 'e', body)
     return new ActionDefinition(name, func, body, params)
   }
 
