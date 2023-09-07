@@ -4,11 +4,11 @@ import type {ViewMode} from '../../types'
 import type {ComputeChildren} from '../../utils/ComputeChildren'
 import {IFormData} from '../../utils/IFormData'
 import {View} from '../define'
-import {ActionDefinition} from '../event'
 import {EventStream} from '../event/utils/EventStream'
+import {Language} from '../localization/types'
 import type {ExternalValidators} from '../validation/types/ExternalValidationRules'
 import type {ComponentLocalizer} from './ComponentLocalizer'
-import {Language} from '../localization/types'
+import type {ExternalActions} from './ExternalActions'
 
 /**
  * Form viewer React component properties.
@@ -41,7 +41,7 @@ export interface FormViewerProps {
   /**
    * External actions for the form viewer.
    */
-  actions?: ActionDefinition[]
+  externalActions?: ExternalActions
 
   /**
    * The initial data of the form.

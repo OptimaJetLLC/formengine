@@ -146,6 +146,9 @@ const FormBuilderApp = () => {
     viewerRef={ref}
     externalValidators={externalValidators}
     i18n={enableExternalLanguages ? builderLanguages : undefined}
+    externalActions={{
+      logEventArgs: e => console.log(e)
+    }}
     /*event={(stream) => {
       stream.listen(value => {
         let a = 4

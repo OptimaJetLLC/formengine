@@ -8,6 +8,7 @@ import {useTranslationPart} from '../../../../localization/hooks'
 import {AnnotationEditorProps} from '../../../AnnotationEditorProps'
 import {CommonActions} from './components/CommonActions'
 import {CustomActions} from './components/CustomActions'
+import {ExternalActions} from './components/ExternalActions'
 import {ActionsMenuProps} from './types'
 
 export const AddActionButton = observer((props: AnnotationEditorProps) => {
@@ -34,6 +35,7 @@ const MenuPopover = forwardRef(({onSelect, annotation, ...props}: ActionsMenuPro
     <Dropdown.Menu>
       <CommonActions onSelect={onSelect} annotation={annotation}/>
       <CustomActions onSelect={onSelect} annotation={annotation}/>
+      <ExternalActions onSelect={onSelect} annotation={annotation}/>
     </Dropdown.Menu>
   </Popover>
 ))

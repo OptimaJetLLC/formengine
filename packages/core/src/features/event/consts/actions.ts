@@ -1,6 +1,6 @@
-import {ActionDefinition} from '../types'
+import {ActionDefinition, ActionValues} from '../types'
 
-export const commonActions: Record<string, ActionDefinition> = {
+export const commonActions: ActionValues = {
   log: ActionDefinition.functionalAction('Log event to console', console.log),
   validate: ActionDefinition.functionalAction('Validate', async e => await e.store.form.componentTree.validate()),
   clear: ActionDefinition.functionalAction('Clear', e => e.store.form.componentTree.clear()),

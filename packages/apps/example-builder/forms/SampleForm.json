@@ -155,6 +155,14 @@
           "children": {
             "computeType": "function",
             "fnSource": "return `${form.data.title} ${form.data.checkbox} ${new Date().toISOString()}`"
+          },
+          "events": {
+            "onChange": [
+              {
+                "name": "logEventArgs",
+                "type": "external"
+              }
+            ]
           }
         }
       },

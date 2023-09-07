@@ -3,7 +3,7 @@ import {makeObservable, observable} from 'mobx'
 import {Subject} from 'rxjs'
 import {calculatePropertyValue} from '../features/calculation/propertyCalculator'
 import {Model, View} from '../features/define'
-import {ActionData, ActionDefinition, ActionEventArgs, ActionType, createActionValuesFromObject} from '../features/event'
+import {ActionData, ActionDefinition, ActionEventArgs, ActionType, ActionValues, createActionValuesFromObject} from '../features/event'
 import {commonActions} from '../features/event/consts/actions'
 import {IFormViewer} from '../features/form-viewer'
 import type {ComponentLocalizer} from '../features/form-viewer/ComponentLocalizer'
@@ -81,6 +81,7 @@ export class Store implements IStore, IFormViewer {
    * @param initialData the initial form data.
    * @param externalValidators the set of metadata of external validation rules, grouped by the type of value being validated.
    * @param externalLocalizer the function to localize the properties of a component.
+   * @param externalActions the set of external actions.
    * @param propsLanguage the full language code passed in the FormViewer properties.
    * @param parentStore the form viewer settings, used in templates.
    * @param parentComponentStore the parent component settings.
@@ -89,6 +90,7 @@ export class Store implements IStore, IFormViewer {
               public initialData: Record<string, unknown>,
               public externalValidators?: ExternalValidators,
               public externalLocalizer?: ComponentLocalizer,
+              public externalActions?: ActionValues,
               public propsLanguage?: Language,
               public readonly parentStore?: Store,
               public readonly parentComponentStore?: ComponentStore) {
@@ -130,6 +132,9 @@ export class Store implements IStore, IFormViewer {
         break
       case 'custom':
         action = this.form.actions[name]
+        break
+      case 'external':
+        action = this.externalActions?.[name]
         break
     }
 
@@ -265,7 +270,7 @@ export class Store implements IStore, IFormViewer {
     }
 
     const childStore = new Store(this.view, this.initialData, this.externalValidators,
-      this.externalLocalizer, this.propsLanguage, this, componentStore)
+      this.externalLocalizer, this.externalActions, this.propsLanguage, this, componentStore)
     return new TemplateField(componentStore, childStore)
   }
 

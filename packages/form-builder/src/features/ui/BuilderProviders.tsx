@@ -1,4 +1,4 @@
-import {Store, StoreProvider, useDestroy, ViewerPropsProvider} from '@react-form-builder/core'
+import {externalActionsToActionsValues, Store, StoreProvider, useDestroy, ViewerPropsProvider} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {ReactNode, useEffect, useMemo} from 'react'
 import {DndProvider} from 'react-dnd'
@@ -26,7 +26,7 @@ interface BuilderProvidersProps {
 export const BuilderProviders = observer(({children, props}: BuilderProvidersProps) => {
   const store = useMemo(
     () => new Store(props.view, props.initialData ?? {}, props.externalValidators,
-      props.localize, props.language),
+      props.localize, externalActionsToActionsValues(props.externalActions), props.language),
     [])
 
   const buildStore = useMemo(() => {
@@ -46,7 +46,8 @@ export const BuilderProviders = observer(({children, props}: BuilderProvidersPro
     store.externalValidators = props.externalValidators
     store.externalLocalizer = props.localize
     store.propsLanguage = props.language
-  }, [props.initialData, props.view, props.externalValidators, props.localize, props.language])
+    store.externalActions = externalActionsToActionsValues(props.externalActions)
+  }, [props.initialData, props.view, props.externalValidators, props.localize, props.language, props.externalActions])
 
   const localStorageSynchronizer = useMemo(() => new LocalStorageSynchronizer(buildStore), [])
 

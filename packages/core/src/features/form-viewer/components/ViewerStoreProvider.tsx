@@ -3,6 +3,7 @@ import {Store} from '../../../stores/Store'
 import {namedObserver} from '../../../utils'
 import {StoreContext, StoreProvider} from '../../../utils/contexts/StoreContext'
 import {useDestroy} from '../../../utils/useDestroy'
+import {externalActionsToActionsValues} from '../ExternalActions'
 import {FormViewerProps, IFormViewer} from '../types'
 import {ViewerPropsProvider} from './ViewerPropsContext'
 
@@ -20,7 +21,7 @@ export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', ({childr
   const storeFromContext = useContext(StoreContext)
   const store = useMemo(
     () => storeFromContext || new Store(props.view, props.initialData ?? {}, props.externalValidators,
-      props.localize, props.language),
+      props.localize, externalActionsToActionsValues(props.externalActions), props.language),
     [])
 
   useEffect(() => {
@@ -35,7 +36,8 @@ export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', ({childr
     store.externalValidators = props.externalValidators
     store.externalLocalizer = props.localize
     store.propsLanguage = props.language
-  }, [props.initialData, props.view, props.externalValidators, props.localize, props.language])
+    store.externalActions = externalActionsToActionsValues(props.externalActions)
+  }, [props.initialData, props.view, props.externalValidators, props.localize, props.language, props.externalActions])
 
   useDestroy(() => {
     if (!storeFromContext) {

@@ -29,7 +29,7 @@ export type ArgumentValue = string | number | boolean
 /**
  * Action type.
  */
-export type ActionType = 'common' | 'custom'
+export type ActionType = 'common' | 'custom' | 'external'
 
 /**
  * It will be transformed in arguments before passing in action.
