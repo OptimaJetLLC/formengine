@@ -33,6 +33,7 @@ const SContainer = styled.div`
   flex-direction: column;
   flex: 1;
   min-height: 0;
+  min-width: 0;
 `
 
 const SFormContainer = styled(PanelContainer)`
@@ -43,8 +44,7 @@ const SFormContainer = styled(PanelContainer)`
   margin-inline: 15px;
   margin-bottom: 15px;
   padding: 12px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: auto;
   transition: max-width .2s ease, max-height .2s ease, border-radius .2s ease;
   border: 2px solid var(--rs-gray-500);
   border-radius: 10px;

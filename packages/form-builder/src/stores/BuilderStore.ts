@@ -618,7 +618,7 @@ export class BuilderStore {
    * or if the beginning of the tree matches the component's key, undefined otherwise.
    */
   expandParents(target: ComponentData, componentTree: ComponentData = this.viewer.form.componentTree) {
-    if (!componentTree.children) return componentTree === target
+    if (!componentTree.children?.length) return componentTree.key === target.key
 
     if (componentTree.children.some(child => this.expandParents(target, child))) {
       this.expanded.add(componentTree)

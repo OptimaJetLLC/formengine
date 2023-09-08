@@ -35,6 +35,8 @@ const SModal = styled(Modal)`
   }
 
   .rs-modal-body {
+    margin-top: initial !important;
+    padding-top: 20px;
     padding-bottom: 0;
   }
 `

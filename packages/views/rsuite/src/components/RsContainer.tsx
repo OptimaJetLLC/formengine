@@ -31,6 +31,7 @@ export const rsContainer = define(RsContainer)
     alignItems: oneOf('start', 'center', 'baseline', 'end', 'stretch'),
     justifyContent: oneOf('flex-start', 'flex-end', 'center', 'space-between', 'space-around',
       'space-evenly', 'start', 'end', 'left', 'right'),
+    flexWrap: oneOf('wrap', 'nowrap', 'wrap-reverse'),
   })
 
 const containerStyles = css`

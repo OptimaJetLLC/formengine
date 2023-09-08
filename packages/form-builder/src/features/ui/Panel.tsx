@@ -35,7 +35,7 @@ export const Panel = observer(({children, placement = 'left', hideCollapsed = tr
 
 
 export const ContentContainer = styled.div`
-  overflow: auto;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   flex: 1;

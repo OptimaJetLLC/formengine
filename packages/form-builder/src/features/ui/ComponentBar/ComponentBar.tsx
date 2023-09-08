@@ -98,7 +98,7 @@ const componentBar = css`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  overflow: hidden;
+  min-height: 0;
 `
 
 const ControlsGroup = styled.div`

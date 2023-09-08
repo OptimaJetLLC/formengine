@@ -17,7 +17,7 @@ const PropertiesEditor = observer(() => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  min-height: 0;
   flex: 1;
 
   .placement-left .rs-popover {
