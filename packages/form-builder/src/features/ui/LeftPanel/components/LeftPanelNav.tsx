@@ -1,15 +1,15 @@
-import * as faBolt from '@fortawesome/free-solid-svg-icons/faBolt.js'
 import * as faList from '@fortawesome/free-solid-svg-icons/faList.js'
 import * as faPlusCircle from '@fortawesome/free-solid-svg-icons/faPlusCircle.js'
 import * as faSitemap from '@fortawesome/free-solid-svg-icons/faSitemap.js'
+import * as faSliders from '@fortawesome/free-solid-svg-icons/faSlidersH.js'
 import {namedObserver} from '@react-form-builder/core'
 import {useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {NavIconItem, SNav} from '../../../components/NavIconItem'
 import {ComponentBar} from '../../ComponentBar'
-import {ActionList} from './ActionList'
 import {FormList} from './FormList'
+import {FormSettings} from './FormSettings'
 import {Tree} from './Tree'
 
 type LeftPanelSection = 'tree' | 'forms' | 'components'
@@ -17,7 +17,7 @@ type LeftPanelSection = 'tree' | 'forms' | 'components'
 const leftPanelTabs = {
   'tree': <Tree/>,
   'components': <ComponentBar draggable={true}/>,
-  'actions': <ActionList/>,
+  'settings': <FormSettings/>,
   'forms': <FormList/>
 }
 
@@ -35,7 +35,7 @@ export const LeftPanelNav = namedObserver('LeftPanelNav', () => {
     <SNav appearance="subtle" activeKey={activeTab} onSelect={setActiveTab}>
       {NavIconItem('tree', title('tree'), faSitemap, {color: 'var(--rs-navs-selected)'})}
       {NavIconItem('components', title('components'), faPlusCircle, {color: 'var(--rs-green-600)'})}
-      {NavIconItem('actions', title('actions'), faBolt, {color: 'violet'})}
+      {NavIconItem('settings', title('settings'), faSliders, {color: 'violet'})}
       {formsTab}
     </SNav>
     {leftPanelTabs[activeTab]}

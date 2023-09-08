@@ -8,6 +8,8 @@ import {LocalizationValue} from './LocalizationStore'
  */
 export interface PersistedForm {
   actions?: ActionValues,
+  errorProps?: any,
+  tooltipType?: string,
   form: ComponentStore,
   localization: LocalizationValue,
   languages: Language[],

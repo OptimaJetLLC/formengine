@@ -25,7 +25,6 @@ export const array = createProperty('array').array
 
 export const color = createProperty('color').typed('string')
 export const tooltipType = createAnnotation('tooltipType').typed('string')
-export const errorConfig = createAnnotation('errorConfig')
 
 //Style
 const cssSize = createAnnotation('size').setup({calculable: false})

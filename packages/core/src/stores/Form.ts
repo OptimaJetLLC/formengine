@@ -27,6 +27,10 @@ export class Form {
 
   readonly actions: ActionValues
 
+  errorProps: any = {}
+
+  tooltipType?: string
+
   /**
    * Default localization language of the form.
    */

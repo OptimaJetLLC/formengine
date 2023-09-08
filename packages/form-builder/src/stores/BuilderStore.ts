@@ -500,8 +500,11 @@ export class BuilderStore {
           || this.viewer.form.localization.hasLanguage(l.fullCode)
       })
     const actions = this.viewer.form.actionNames.length ? this.viewer.form.actions : undefined
+    const errorProps = Object.keys(this.viewer.form.errorProps).length ? this.viewer.form.errorProps : undefined
     const serializedObject: PersistedForm = {
       actions: actions,
+      errorProps: errorProps,
+      tooltipType: this.viewer.form.tooltipType,
       form: this.viewer.form.componentTree.store,
       localization: this.viewer.form.localization.value,
       languages: selectedLanguages,

@@ -1,4 +1,3 @@
-import {useViewerProps} from '../features/form-viewer/components/ViewerPropsContext'
 import {useStore} from './contexts/StoreContext'
 
 /**
@@ -6,7 +5,5 @@ import {useStore} from './contexts/StoreContext'
  */
 export const useTooltipType = (): string | undefined => {
   const viewerStore = useStore()
-  const viewerProps = useViewerProps()
-  const rootComponentStore = viewerStore.form.componentTree.store
-  return rootComponentStore.props['tooltip']?.value ?? viewerProps.view.tooltips[0]
+  return viewerStore.form.tooltipType
 }

@@ -1,0 +1,25 @@
+import styled from '@emotion/styled'
+import {namedObserver} from '@react-form-builder/core'
+import {useTranslationPart} from '../../../localization/hooks'
+import {ActionList} from './ActionList'
+import {ErrorProps} from './ErrorProps'
+import {TooltipSettings} from './TooltipSettings'
+
+export const FormSettings = namedObserver('FormSettings', () => {
+  const t = useTranslationPart('leftPanel.formSettings')
+  return <>
+    <Header marginTop={0}>{t('actions')}</Header>
+    <ActionList/>
+    <Header>{t('error')}</Header>
+    <ErrorProps/>
+    <Header>{t('tooltip')}</Header>
+    <TooltipSettings/>
+  </>
+})
+
+const Header = styled.label<{ marginTop?: number }>`
+  padding-inline: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: ${({marginTop}) => marginTop ?? '24'}px;
+`

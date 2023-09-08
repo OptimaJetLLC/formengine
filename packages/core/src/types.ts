@@ -24,8 +24,6 @@ export type Device = 'any' | ViewMode
  */
 export interface ScreenProps {
   children: ReactNode
-  tooltipType: string
-  errorConfig: object
 }
 
 /**

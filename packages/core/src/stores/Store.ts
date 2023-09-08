@@ -331,6 +331,10 @@ export class Store implements IStore, IFormViewer {
     const actions = createActionValuesFromObject(persistedForm.actions)
 
     this.form = new Form(componentData, localization, actions, languages, defaultLanguage)
+
+    this.form.errorProps = persistedForm.errorProps ?? {}
+    this.form.tooltipType = persistedForm.tooltipType
+
     // here we initialize the fields after the form is created, since the calculated field values are depends on 'this.form'
     this.form.initFields()
     oldForm.dispose()

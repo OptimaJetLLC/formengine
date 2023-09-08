@@ -6,12 +6,21 @@ import {useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {getKey} from '../../utils/getKey'
 import {useTooltipType} from '../../utils/useTooltipType'
+import {Model} from '../define'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 
 /**
  * Tooltip React component wrapper properties.
  */
 export interface TooltipWrapperProps {
+  children: ReactNode
+}
+
+/**
+ * Tooltip React component properties.
+ */
+interface ComponentTooltipProps {
+  tooltipDefinition: Model
   children: ReactNode
 }
 
@@ -26,17 +35,18 @@ function useTooltipComponent() {
  * Tooltip React component wrapper.
  */
 export const TooltipWrapper = namedObserver('TooltipWrapper', ({children}: TooltipWrapperProps) => {
+  const tooltipDefinition = useTooltipComponent()
+  if (!tooltipDefinition) return <>{children}</>
+  return <ComponentTooltip tooltipDefinition={tooltipDefinition}>{children}</ComponentTooltip>
+})
+
+const ComponentTooltip = namedObserver('ComponentTooltip', ({tooltipDefinition, children}: ComponentTooltipProps) => {
+  const viewerStore = useStore()
   const wrappedComponentData = useComponentData()
   const wrappedComponentStore = wrappedComponentData.store
-  const viewerStore = useStore()
-  const tooltipDefinition = useTooltipComponent()
   const localize = viewerStore.localizeComponent.bind(viewerStore)
-
-  if (!tooltipDefinition) {
-    return <>{children}</>
-  }
-
   const tooltipKey = getKey()
+
   const tooltipComponentStore = new ComponentStore(tooltipKey, tooltipDefinition.type)
 
   Object.keys(wrappedComponentStore.tooltipProps ?? {}).forEach(k => {

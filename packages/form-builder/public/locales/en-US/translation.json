@@ -10,7 +10,6 @@
   },
   "annotation": {
     "errorConfig": {
-      "header": "Error",
       "show": "Show"
     },
     "htmlAttributes": {
@@ -344,12 +343,17 @@
       "components": "Components",
       "tree": "Tree",
       "forms": "Forms",
-      "actions": "Actions"
+      "settings": "Settings"
     },
     "actions": {
       "edit": "Edit",
       "clone": "Clone",
       "remove": "Remove"
+    },
+    "formSettings": {
+      "actions": "Actions",
+      "error": "Error settings",
+      "tooltip": "Tooltip"
     }
   },
   "bottomPanel": {

@@ -1,6 +1,6 @@
 import {FormBuilder, FormBuilderI18n} from '@react-form-builder/builder'
 import {BuilderView} from '@react-form-builder/builder/view'
-import {antdComponents} from '@react-form-builder/components-antd'
+import {antdComponents, antTooltip} from '@react-form-builder/components-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {ComponentStore, ExternalValidators, IFormViewer, Language} from '@react-form-builder/core'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
@@ -23,6 +23,7 @@ const components = [...rSuiteComponents, ...antdComponents].map(definer => defin
 const view = new BuilderView(components)
   .withErrorMeta(rsErrorMessage.build())
   .withTooltipMeta(rsTooltip.build())
+  .withTooltipMeta(antTooltip.build())
   .withTemplates(['template', 'agreement', 'login form'])
 
 function localizer(componentStore: ComponentStore, language: Language): Record<string, any> {
