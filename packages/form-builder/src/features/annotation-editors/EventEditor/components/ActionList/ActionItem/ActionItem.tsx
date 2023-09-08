@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import {faMarker} from '@fortawesome/free-solid-svg-icons/faMarker.js'
 import {ActionData, NamedActionDefinition, useStore} from '@react-form-builder/core'
 import {Close} from '@rsuite/icons'
@@ -31,24 +30,16 @@ export const ActionItem = observer(({data, onRemove}: ActionItemProps) => {
 
   return (
     <ActionDataProvider value={data}>
-      <SDiv>
-        <Columns style={{justifyContent: 'space-between', padding: 8}}>
-          <b style={{color: 'violet', marginLeft: 5}}>
-            {`${data.name || 'Action'}`}
-          </b>
-          <ButtonGroup size={'xs'}>
-            {isCustomAction && <IconButton onClick={edit} icon={<FaIcon icon={faMarker}/>}/>}
-            <IconButton onClick={onRemove} icon={<Close/>}/>
-          </ButtonGroup>
-        </Columns>
-        <ArgumentList/>
-      </SDiv>
+      <Columns style={{justifyContent: 'space-between', padding: 8}}>
+        <b style={{color: 'violet', marginLeft: 5}}>
+          {`${data.name || 'Action'}`}
+        </b>
+        <ButtonGroup size={'xs'}>
+          {isCustomAction && <IconButton onClick={edit} icon={<FaIcon icon={faMarker}/>}/>}
+          <IconButton onClick={onRemove} icon={<Close/>}/>
+        </ButtonGroup>
+      </Columns>
+      <ArgumentList/>
     </ActionDataProvider>
   )
 })
-const SDiv = styled.div`
-  position: relative;
-  overflow: hidden;
-  background-color: var(--rs-btn-default-bg);
-  border-radius: 10px;
-`

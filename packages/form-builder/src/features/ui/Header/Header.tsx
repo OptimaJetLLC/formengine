@@ -51,6 +51,7 @@ const RightPart = styled.div`
 
 const CenterPart = styled.div`
   justify-content: center;
+  flex: 0;
 `
 
 const Container = styled.div`
