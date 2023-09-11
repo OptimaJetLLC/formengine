@@ -62,6 +62,25 @@ export class EditableProperty {
 export type OnSelectCallback = (source: ComponentData) => void
 
 /**
+ * The editable custom validation code.
+ */
+export class CustomValidationCode {
+
+  /**
+   * Creates the editable custom validation code.
+   * @param editorKey the unique code editor key.
+   * @param code the custom validation code.
+   * @param functionSignature the function signature.
+   * @param onSave the callback function called when data should be saved.
+   */
+  constructor(readonly editorKey: string,
+              readonly code: string,
+              readonly functionSignature: string,
+              readonly onSave: (value: string) => void) {
+  }
+}
+
+/**
  * The editable action data.
  */
 export class EditableAction implements CustomActionEditorProps {
@@ -170,7 +189,7 @@ export class BuilderStore {
   localizationLanguage: Language
   private readonly loadedLanguages: Record<string, FormBuilderI18nData> = {}
 
-  currentEditable?: EditableProperty | EditableAction
+  currentEditable?: EditableProperty | EditableAction | CustomValidationCode
   lastSaveTime = new Date()
   readonly componentsModalState: ComponentsModalState = {
     opened: false,
@@ -255,6 +274,18 @@ export class BuilderStore {
       // recreate action editor with the new data
       this.editCustomAction(action)
     })
+  }
+
+  /**
+   * Opens the custom validation code editor.
+   * @param componentKey the component key.
+   * @param code the custom validation code.
+   * @param functionSignature the function signature.
+   * @param onChange the callback function called when data should be saved.
+   */
+  editCustomValidationCode(componentKey: string, code: string, functionSignature: string,
+                           onChange: (value: string) => void) {
+    this.currentEditable = new CustomValidationCode(componentKey, code, functionSignature, onChange)
   }
 
   /**

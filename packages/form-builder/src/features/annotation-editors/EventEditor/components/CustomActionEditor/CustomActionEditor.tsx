@@ -125,8 +125,8 @@ const makeFunctionHeader = (params?: Parameter[]) => {
   }
 
   return `/**
-* @param {ActionEventArgs} e - the action arguments.
-* ${types}
-*/
+ * @param {ActionEventArgs} e - the action arguments.
+ * ${types}
+ */
 async function Action (e, args) {`
 }

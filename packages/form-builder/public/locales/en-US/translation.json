@@ -221,7 +221,13 @@
     "inside": "Inside"
   },
   "codeEditor": {
-    "customActionHeader": "Custom action editor"
+    "customActionHeader": "Custom action editor",
+    "ok": "OK",
+    "compilationResult": "Compilation result:",
+    "codePlaceholder": "// enter your code here",
+    "save": "Save",
+    "compile": "Compile",
+    "close": "Close"
   },
   "propertiesEditor": {
     "selectElementForEdit": "Select element on form for edit properties",
@@ -299,6 +305,8 @@
     "removeRule": "Remove rule",
     "chooseValidation": "Choose your type",
     "addRule": "Add rule",
+    "editCode": "Edit rule code",
+    "editCustomValidationCode": "Edit custom validation code for component",
     "rule": {
       "required": "Required",
       "nonEmpty": "Non empty",

@@ -18,7 +18,8 @@ const RulesList = namedObserver('RulesList', ({type}: { type: SchemaType }) => {
   }
   const isNotApplied = (key: string, validatorType: ValidatorType) => {
     return !store.schema?.validations?.find(ruleSettings => {
-      return ruleSettings.key === key && ruleSettings.type == validatorType
+      const sameType = validatorType === 'internal' && !ruleSettings.type || ruleSettings.type === validatorType
+      return ruleSettings.key === key && sameType
     })
   }
   const toDropdownItem = (key: string, type: ValidatorType, name: string) => {
@@ -50,7 +51,7 @@ export const AddRuleButton = observer(() => {
 
   return (
     <Dropdown
-      style={{display: 'flex'}}
+      style={{display: 'flex', marginTop: 10}}
       renderToggle={(props: any, ref: any) => (
         <Button {...props} ref={ref} block>
           <h6> {t('validation.addRule')} </h6>

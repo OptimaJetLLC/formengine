@@ -1,9 +1,10 @@
 import styled from '@emotion/styled'
 import {observer} from 'mobx-react'
-import {EditableAction, EditableProperty} from '../../../stores/BuilderStore'
+import {EditableAction, CustomValidationCode, EditableProperty} from '../../../stores/BuilderStore'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {CustomActionEditor} from '../../annotation-editors/EventEditor/components/CustomActionEditor'
 import {ComputedPropertyEditor} from './ComputedPropertyEditor'
+import {CustomValidationCodeEditor} from './CustomValidationCodeEditor'
 
 export const BottomPanel = observer(() => {
   const {currentEditable} = useBuilderStore()
@@ -15,6 +16,10 @@ export const BottomPanel = observer(() => {
 
   if (currentEditable instanceof EditableProperty) {
     editor = <ComputedPropertyEditor property={currentEditable}/>
+  }
+
+  if (currentEditable instanceof CustomValidationCode) {
+    editor = <CustomValidationCodeEditor {...currentEditable}/>
   }
 
   if (!editor) return null

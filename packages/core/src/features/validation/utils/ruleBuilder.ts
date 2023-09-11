@@ -15,9 +15,11 @@ export type Pair<Key, Type extends SchemaType> = { [k in keyof Key]: SchemaTypeM
  */
 export type ValidationRuleBuilder<Params> = {
   params: ValidationRuleParameter[],
-  withParameter: <T extends SchemaType = 'string', Key = any>(key: PropertyKey<Key>, type?: T,
+  withParameter: <T extends SchemaType = 'string', Key = any>(key: PropertyKey<Key>,
+                                                              type?: T,
                                                               required?: boolean,
-                                                              defaultValue?: SchemaTypeMap[T]) => ValidationRuleBuilder<Params & Pair<Key, T>>
+                                                              defaultValue?: SchemaTypeMap[T],
+                                                              editorType?: string) => ValidationRuleBuilder<Params & Pair<Key, T>>
   withValidatorFactory: (apply: ValidatorFactory<Params>) => ValidationRule
 }
 
@@ -28,8 +30,8 @@ export function ruleBuilder() {
   const builder = {
     params: [],
     withParameter(key, type?, required = false,
-                  defaultValue?): ValidationRuleBuilder<any> {
-      this.params.push({key, type: type ?? 'string', required, default: defaultValue})
+                  defaultValue?, editorType?): ValidationRuleBuilder<any> {
+      this.params.push({key, type: type ?? 'string', required, default: defaultValue, editorType})
       return this
     },
     withValidatorFactory(validatorFactory) {

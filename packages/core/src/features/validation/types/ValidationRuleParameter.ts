@@ -8,4 +8,5 @@ export type ValidationRuleParameter = {
   type: SchemaType,
   required: boolean
   default?: unknown
+  editorType?: string
 }

@@ -1,22 +1,51 @@
 import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt.js'
-import {SchemaType, useComponentData, useStore, ValidationRuleParameter, ValidationRuleSettings} from '@react-form-builder/core'
+import {
+  namedObserver,
+  SchemaType,
+  useComponentData,
+  useStore,
+  ValidationRuleParameter,
+  ValidationRuleSettings
+} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import type {ComponentType} from 'react'
 import {useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
-import {Checkbox, IconButton, Input as RInput, InputNumber, Tooltip, Whisper} from 'rsuite'
+import {Button, Checkbox, IconButton, Input as RInput, InputNumber, Tooltip, Whisper} from 'rsuite'
+import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../../components/Icons'
 
 interface RuleParamEditorProps<T> {
   value: T
   onChange: (value: T) => void
+  ruleType: string
+  ruleKey: string
 }
 
 const StringRuleParamEditor = ({value, onChange}: RuleParamEditorProps<string>) => {
   return <RInput value={value ?? ''} onChange={onChange}/>
 }
+
+const CodeRuleParamEditor = namedObserver('CodeRuleParamEditor', (props: RuleParamEditorProps<string>) => {
+  const {t} = useTranslation()
+  const builderStore = useBuilderStore()
+  const componentData = useComponentData()
+  const componentKey = `${componentData.key}[${props.ruleKey}][${props.ruleType}]`
+  const functionSignature = `/**
+ * @param {${props.ruleType}} value the validated value.
+ * @return {boolean} the validation result.
+ */
+async (value) => {`
+
+  const handleEdit = () => builderStore.editCustomValidationCode(componentKey, props.value, functionSignature, props.onChange)
+
+  return <>
+    <RInput value={props.value ?? ''} readOnly disabled/>
+    <Button block style={{marginTop: 6}} onClick={handleEdit}>{t('validation.editCode')}</Button>
+  </>
+})
 
 const BooleanRuleParamEditor = ({value, onChange}: RuleParamEditorProps<boolean>) => {
   const handleChange = (_: any, checked: boolean) => {
@@ -25,13 +54,18 @@ const BooleanRuleParamEditor = ({value, onChange}: RuleParamEditorProps<boolean>
   return <Checkbox checked={value ?? false} onChange={handleChange}/>
 }
 
+const NumberRuleParamEditor = ({value, onChange}: RuleParamEditorProps<number>) => {
+  return <InputNumber value={value} onChange={value => onChange(toNumber(value))}/>
+}
+
 const getInput = (type: string): ComponentType<RuleParamEditorProps<any>> => {
   switch (type) {
     case 'number':
-      // the type conversion is needed here because of an error in IDEA
-      return InputNumber as ComponentType<RuleParamEditorProps<number>>
+      return NumberRuleParamEditor
     case 'boolean':
       return BooleanRuleParamEditor
+    case 'code':
+      return CodeRuleParamEditor
   }
   return StringRuleParamEditor
 }
@@ -74,7 +108,8 @@ const RuleParamsEditor = observer(({rule, params}: RuleParamsEditorProps) => {
   }, [params])
 
   const items = ruleParams.map(param => {
-    const Input = getInput(param.type)!
+    const type = param.editorType ?? param.type
+    const Input = getInput(type)
 
     return (
       <div key={param.key}>
@@ -82,6 +117,8 @@ const RuleParamsEditor = observer(({rule, params}: RuleParamsEditorProps) => {
         <Input
           key={param.key}
           value={rule.args?.[param.key]}
+          ruleType={param.type}
+          ruleKey={param.key}
           onChange={value => {
             rule.args ??= {}
             rule.args[param.key] = cast(value, param.type)

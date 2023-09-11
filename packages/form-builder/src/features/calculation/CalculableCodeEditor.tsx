@@ -83,9 +83,9 @@ export const CalculableCodeEditor = namedObserver('CalculableCodeEditor',
   }, [editableProperty])
 
   const functionHeader = `/**
-* @param {IFormData} form
-* @return {${editableProperty.annotation.type}}
-*/
+ * @param {IFormData} form
+ * @return {${editableProperty.annotation.type}}
+ */
 function Calculation (form) {`
 
   return <Rows gap={10}>

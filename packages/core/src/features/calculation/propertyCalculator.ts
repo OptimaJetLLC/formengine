@@ -49,15 +49,15 @@ export const calculateExpressionProperty = (componentProperty: ComponentProperty
 /**
  * The result of compiling of anything.
  */
-export class BaseCompilationResult {
-  error = false
+export interface BaseCompilationResult {
+  error: boolean
   exceptions?: Error[]
 }
 
 /**
  * The result of compiling the function.
  */
-export class CompilationResult extends BaseCompilationResult {
+export interface CompilationResult extends BaseCompilationResult {
   fn?: Function
 }
 
