@@ -1,17 +1,13 @@
 import styled from '@emotion/styled'
-import {
-  getFluentCompatibleId,
-  LocalizationTestResult,
-  testFluentLocalization,
-  useStore
-} from '@react-form-builder/core'
+import {getFluentCompatibleId, LocalizationTestResult, testFluentLocalization, useStore} from '@react-form-builder/core'
 import {action} from 'mobx'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
-import {CalculableCodeEditorProps, ErrorMessage} from '../calculation/CalculableCodeEditor'
+import type {CalculableCodeEditorProps} from '../calculation/CalculableCodeEditor'
+import {CodeEditorErrorMessage} from '../calculation/CodeEditorErrorMessage'
 import {CodeEditor} from '../components/CodeEditor'
 import {LocalizationLanguagePicker} from '../ui/Header/components/LocalizationLanguagePicker'
 import {fluentLanguageId} from './consts'
@@ -76,7 +72,7 @@ export const LocalizationEditor = observer(({editableProperty, onClose}: Calcula
         <Button appearance="ghost" onClick={onClose}>{t('localizationEditor.close')}</Button>
       </ButtonGroup>
       <LocalizationLanguagePicker/>
-      <ErrorMessage result={error}/>
+      <CodeEditorErrorMessage result={error}/>
     </SDiv>
   </>
 })

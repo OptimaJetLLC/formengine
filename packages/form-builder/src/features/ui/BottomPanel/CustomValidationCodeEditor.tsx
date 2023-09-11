@@ -30,7 +30,7 @@ export const CustomValidationCodeEditor = namedObserver('CustomValidationCodeEdi
                        beginContextLine={beginContextLine}
                        endContextLine={endContextLine}
                        source={props.code}
-                       onChange={props.onSave}
+                       onSave={props.onSave}
                        onClose={handleClose}
                        onCompile={handleCompile}
     />
