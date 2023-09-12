@@ -44,7 +44,7 @@ export const ParameterItem = ({value, onRemove, onChange}: ParameterItemProps) =
           </div>
           <div>
             <label>{t('type')}</label>
-            <InputPicker cleanable={false} data={ArgumentTypes} value={type} onChange={type => {
+            <InputPicker placement={'auto'} cleanable={false} data={ArgumentTypes} value={type} onChange={type => {
               if (type === 'string') {
                 onChange(name)
               } else {

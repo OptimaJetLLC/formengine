@@ -35,7 +35,7 @@ export const ArgumentList = observer(() => {
   if (!action.params || action.params.length < 1) return null
 
   return (
-    <>
+    <div onMouseDown={e => e.stopPropagation()}>
       <Animation.Collapse in={show}>
         <Rows gap={1} style={{marginBlock: 8, paddingInline: 10}}>
           {action.params.map((arg, index) =>
@@ -49,7 +49,7 @@ export const ArgumentList = observer(() => {
           <ExpandIcon style={{marginTop: -2}}/>
         </>
       </ExpandButton>
-    </>
+    </div>
   )
 })
 
