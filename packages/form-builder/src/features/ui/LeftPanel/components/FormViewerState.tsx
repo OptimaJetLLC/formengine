@@ -1,25 +1,22 @@
-import {useStore} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {namedObserver, useStore} from '@react-form-builder/core'
 import {useTranslation} from 'react-i18next'
-import {Rows} from '../../../components/Containers'
 
-const Errors = observer((props: any) => {
+export const FormViewerState = namedObserver('FormState', () => {
   const store = useStore()
   const {t} = useTranslation()
   const errors = store.form.componentTree.errors
   const data = store.form.componentTree.data
 
-  return (<Rows {...props} gap={10}>
-      <div>
-        <h6>{t('errorsPanel.data')}</h6>
-        {prettyPrint(data)}
-      </div>
-      <div>
-        <h6>{t('errorsPanel.errors')}</h6>
-        {prettyPrint(errors)}
-      </div>
-    </Rows>
-  )
+  return <>
+    <div>
+      <h6>{t('errorsPanel.data')}</h6>
+      {prettyPrint(data)}
+    </div>
+    <div>
+      <h6>{t('errorsPanel.errors')}</h6>
+      {prettyPrint(errors)}
+    </div>
+  </>
 })
 
 const prettyPrint = (obj: Object) => {
@@ -50,5 +47,3 @@ const filterObj = (obj: Object) => {
 
   return filtered
 }
-
-export {Errors}

@@ -2,13 +2,20 @@ import {observer} from 'mobx-react'
 import {ReactElement} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {BuilderMode} from '../../../utils/types'
+import {Rows} from '../../components/Containers'
 import {Panel} from '../Panel'
-import {Errors} from './components/Errors'
+import {FormViewerState} from './components/FormViewerState'
 import {LeftPanelNav} from './components/LeftPanelNav'
+
+const ViewerContent = () => (
+  <Rows style={{marginTop: 55, paddingInlineStart: 5}}>
+    <FormViewerState/>
+  </Rows>
+)
 
 const leftPanelViews: Record<BuilderMode, ReactElement> = {
   'builder': <LeftPanelNav/>,
-  'viewer': <Errors style={{margin: 20}}/>
+  'viewer': <ViewerContent/>
 }
 
 export const LeftPanel = observer(() => {

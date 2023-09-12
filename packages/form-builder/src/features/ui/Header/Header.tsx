@@ -8,6 +8,7 @@ import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../components/Icons'
 import {ErrorsPanel} from './components/ErrorsPanel'
 import {JsonViewButton} from './components/JsonViewButton'
+import {LocalizationLanguagePicker} from './components/LocalizationLanguagePicker'
 import {Menu} from './components/Menu'
 import {ResolutionPicker} from './components/ResolutionPicker'
 import {ToggleModeButton} from './components/ToggleModeButton'
@@ -35,6 +36,7 @@ const Header = namedObserver('Header', () => {
 
       <RightPart>
         <ResolutionPicker/>
+        <LocalizationLanguagePicker/>
         <ErrorsPanel/>
         <JsonViewButton/>
         <ToggleTheme/>
