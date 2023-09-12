@@ -1,7 +1,7 @@
 import {Parameter, ParameterName, ParameterType} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {ComponentType} from 'react'
-import {LabeledInput} from '../../../../../../../../components/Containers'
+import {Rows} from '../../../../../../../../components/Containers'
 import {InputBoolean} from './components/InputBoolean'
 import {InputNumber} from './components/InputNumber'
 import {InputString} from './components/InputString'
@@ -29,9 +29,9 @@ export const ArgumentItem = observer(({data}: ActionArgumentProps) => {
   const [name, type] = extractArgumentData(data)
   const ArgumentInput = getArgumentInputByType(type)
 
-  return <LabeledInput style={{display: 'flex', flexDirection: 'column', flex: 1}}>
+  return <Rows>
     <label>{name}</label>
     <ArgumentInput name={name}/>
-  </LabeledInput>
+  </Rows>
 })
 

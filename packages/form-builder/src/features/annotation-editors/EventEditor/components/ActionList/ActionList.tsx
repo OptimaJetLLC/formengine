@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import {KeySymbol} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {List} from 'rsuite'
+import {listItemStyle, listStyle} from '../../../../components/Containers'
 import type {AnnotationEditorProps} from '../../../AnnotationEditorProps'
 import {ActionItem} from './ActionItem'
 
@@ -35,26 +36,23 @@ interface MovedInfo {
 }
 
 const SList = styled(List)`
+  ${listStyle}
   && {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    gap: 5px;
     box-shadow: none;
   }
 `
 
 const SListItem = styled(List.Item)`
+  ${listItemStyle}
   && {
-    position: relative;
     overflow: hidden;
-    background-color: var(--rs-btn-default-bg);
-    border-radius: 10px;
     padding: 0;
     box-shadow: none;
+    flex-direction: column;
+    align-items: initial;
   }
 
   &.rs-list-item-helper {
-    border: 2px solid var(--rs-btn-primary-bg);
+    outline: 2px solid var(--rs-btn-primary-bg);
   }
 `

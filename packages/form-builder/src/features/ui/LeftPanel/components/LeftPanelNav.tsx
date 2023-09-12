@@ -6,6 +6,7 @@ import {namedObserver} from '@react-form-builder/core'
 import {useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
+import {Rows} from '../../../components/Containers'
 import {NavIconItem, SNav} from '../../../components/NavIconItem'
 import {ComponentBar} from '../../ComponentBar'
 import {FormList} from './FormList'
@@ -38,6 +39,8 @@ export const LeftPanelNav = namedObserver('LeftPanelNav', () => {
       {NavIconItem('settings', title('settings'), faSliders, {color: 'violet'})}
       {formsTab}
     </SNav>
-    {leftPanelTabs[activeTab]}
+    <Rows style={{minHeight: 0, overflow: 'auto'}}>
+      {leftPanelTabs[activeTab]}
+    </Rows>
   </>
 })

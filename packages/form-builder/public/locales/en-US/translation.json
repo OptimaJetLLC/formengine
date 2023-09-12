@@ -4,7 +4,9 @@
     "name": "Name",
     "save": "Save",
     "cancel": "Cancel",
+    "clone": "Clone",
     "close": "Close",
+    "edit": "Edit",
     "remove": "Remove",
     "reset": "Reset"
   },
@@ -352,11 +354,6 @@
       "tree": "Tree",
       "forms": "Forms",
       "settings": "Settings"
-    },
-    "actions": {
-      "edit": "Edit",
-      "clone": "Clone",
-      "remove": "Remove"
     },
     "formSettings": {
       "actions": "Actions",

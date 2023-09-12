@@ -1,16 +1,11 @@
-import styled from '@emotion/styled'
 import {namedObserver} from '@react-form-builder/core'
-import EditIcon from '@rsuite/icons/Edit.js'
-import TrashIcon from '@rsuite/icons/Trash.js'
 import {useEffect, useState} from 'react'
-import {ButtonToolbar, IconButton, List} from 'rsuite'
+import {ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
+import {EditButton, RemoveButton} from '../../../components/Buttons'
+import {List, ListItem} from '../../../components/Containers'
 import {useTranslationPart} from '../../../localization/hooks'
 import {useShowMessage} from '../../../toast/toast'
-
-const SFormName = styled.span`
-  margin-right: 10px;
-`
 
 export const FormList = namedObserver('FormList', () => {
   const builderStore = useBuilderStore()
@@ -31,15 +26,15 @@ export const FormList = namedObserver('FormList', () => {
   if (formList.length <= 0) return <span>{t('noFormsInFormStorage')}</span>
 
   const items = formList.map((value, index) => {
-    return <List.Item key={index}>
-      <ButtonToolbar>
-        <SFormName style={{color: value === builderStore.formName ? 'var(--rs-navs-selected)' : 'var(--rs-text-secondary)'}}>
-          {value}
-        </SFormName>
-        <IconButton icon={<EditIcon/>} onClick={() => builderStore.loadForm(value, reloadForms, onError)}/>
-        <IconButton icon={<TrashIcon/>} onClick={() => builderStore.removeForm(value, reloadForms)}/>
-      </ButtonToolbar>
-    </List.Item>
+    return <ListItem key={index}>
+      <span style={{color: value === builderStore.formName ? 'var(--rs-navs-selected)' : 'var(--rs-text-secondary)'}}>
+        {value}
+      </span>
+      <ButtonGroup>
+        <EditButton onClick={() => builderStore.loadForm(value, reloadForms, onError)}/>
+        <RemoveButton onClick={() => builderStore.removeForm(value, reloadForms)}/>
+      </ButtonGroup>
+    </ListItem>
   })
 
   return <List>{items}</List>

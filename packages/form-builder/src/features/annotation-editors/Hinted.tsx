@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
-import {ReactNode} from 'react'
+import type {IconProps} from '@rsuite/icons/lib/Icon'
+import type {ReactElement, ReactNode} from 'react'
 import type {WhisperProps} from 'rsuite'
-import {Tooltip, Whisper} from 'rsuite'
+import {IconButton, Tooltip, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 
 /**
@@ -46,15 +47,38 @@ export const HintedLabel = ({hint, children, ...labelProps}: HintedLabelProps) =
  * @returns the React element.
  * @internal
  */
-export const Hinted = ({hint, children}: HintedProps) => {
+export const Hinted = ({hint, children, ...props}: HintedProps) => {
   const builderStore = useBuilderStore()
   if (!hint) return <>{children}</>
 
-  const placement = builderStore.isRTL ? 'right' : 'left'
+  const placement = props.placement ?? (builderStore.isRTL ? 'right' : 'left')
 
   return <Whisper speaker={<Tooltip>{hint}</Tooltip>} placement={placement} trigger={'hover'}>
     {children}
   </Whisper>
+}
+
+/**
+ * React component properties for the {@link HintedIconButton} component.
+ * @internal
+ */
+export interface HintedIconButtonProps {
+  hint: string
+  onClick: () => void
+  icon: ReactElement<IconProps>
+}
+
+/**
+ * The React form builder component that displays hinted icon button.
+ * @param props the React component properties.
+ * @param props.hint the tooltip text.
+ * @returns the React element.
+ * @internal
+ */
+export const HintedIconButton = ({hint, ...props}: HintedIconButtonProps) => {
+  return <Hinted hint={hint} placement={'bottom'}>
+    <IconButton {...props} size="xs"/>
+  </Hinted>
 }
 
 const SLabel = styled.label<{ hinted?: boolean }>`

@@ -37,12 +37,10 @@ export const ArgumentList = observer(() => {
   return (
     <>
       <Animation.Collapse in={show}>
-        <div>
-          <Rows gap={1} style={{marginTop: 8, paddingInline: 10}}>
-            {action.params.map((arg, index) =>
-              <ArgumentItem key={index} data={arg}/>)}
-          </Rows>
-        </div>
+        <Rows gap={1} style={{marginBlock: 8, paddingInline: 10}}>
+          {action.params.map((arg, index) =>
+            <ArgumentItem key={index} data={arg}/>)}
+        </Rows>
       </Animation.Collapse>
 
       <ExpandButton block onClick={toggleShow}>

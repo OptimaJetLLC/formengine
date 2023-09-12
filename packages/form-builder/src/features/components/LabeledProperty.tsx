@@ -119,7 +119,7 @@ export const LabeledProperty = ({idPrefix, annotation, getEditableProperty, chil
   const className = annotation.required ? afterRedAsterisk : undefined
 
   return <LabeledInput {...props}>
-    <Columns gap={10}>
+    <Columns gap={10} style={{alignItems: 'center'}}>
       <CodeButton currentEditableProperty={defaultGetEditableProperty()} getEditableProperty={defaultGetEditableProperty}/>
       <HintedLabel htmlFor={id} hint={getLabel('hint') || annotation.hint} className={className}>
         <>{getLabel('name') || annotation.name}</>
@@ -132,7 +132,6 @@ export const LabeledProperty = ({idPrefix, annotation, getEditableProperty, chil
 const SIconButton = styled(IconButton)`
   min-width: 24px;
   margin-inline-end: -6px;
-  margin-bottom: -2px !important;
 `
 
 export default LabeledProperty
