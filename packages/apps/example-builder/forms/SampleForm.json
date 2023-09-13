@@ -379,6 +379,39 @@
         "props": {}
       },
       {
+        "key": "Tabs",
+        "type": "RsTab",
+        "props": {
+          "activeKey": {
+            "value": "Item1"
+          }
+        },
+        "children": [
+          {
+            "key": "titleInTab",
+            "type": "RsTitle",
+            "props": {
+              "content": {
+                "value": "Title in tab"
+              }
+            },
+            "slot": "pane",
+            "bindCondition": "return parentProps.activeKey === 'Item1'"
+          },
+          {
+            "key": "buttonInTab",
+            "type": "RsButton",
+            "props": {
+              "children": {
+                "value": "Next"
+              }
+            },
+            "slot": "pane",
+            "bindCondition": "return parentProps.activeKey === 'Item3'"
+          }
+        ]
+      },
+      {
         "key": "none",
         "type": "none",
         "props": {}

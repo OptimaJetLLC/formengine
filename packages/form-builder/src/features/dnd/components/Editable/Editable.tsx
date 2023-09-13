@@ -43,11 +43,13 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
   const templateSlots = getTemplateSlots(componentData)
   availableSlots.push(...templateSlots)
 
-  const closedSlots = componentData.store.children?.map(getSlot) ?? []
-  const openSlots = availableSlots.filter(an => !closedSlots.includes(an.key) || an.bindConditionBuilder)
+  const closedSlots = componentData.store
+    .children?.filter(componentStore => checkBindCondition(componentStore, componentProps))
+    .map(getSlot) ?? []
+  const openSlots = availableSlots.filter(an => !closedSlots.includes(an.key))
 
   const groups = groupBy(containers, value => getSlot(value.store))
-  const isBindConditionSatisfied = (child: ComponentData) => checkBindCondition(child, componentProps)
+  const isBindConditionSatisfied = (child: ComponentData) => checkBindCondition(child.store, componentProps)
 
   for (const [key, children] of Object.entries(groups)) {
     const filteredChildren = children

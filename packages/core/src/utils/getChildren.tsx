@@ -1,5 +1,6 @@
 import type {ComponentType} from 'react'
 import type {ComponentTreeProps} from '../ComponentTreeProps'
+import {ComponentStore} from '../stores/ComponentStore'
 import {ComponentData} from './contexts/ComponentDataContext'
 import {groupBy} from './groupBy'
 import type {IFormData} from './IFormData'
@@ -23,7 +24,7 @@ export function getChildren(data: ComponentData, formData: IFormData,
   const currentProps: Record<string, any> = {}
 
   const groups = groupBy(containers, value => value.store.slot || defaultContainerKey)
-  const isBindConditionSatisfied = (child: ComponentData) => checkBindCondition(child, componentProps)
+  const isBindConditionSatisfied = (child: ComponentData) => checkBindCondition(child.store, componentProps)
   const isNeedRender = (child: ComponentData) => needRender(child.store, formData)
 
   for (const [key, children] of Object.entries(groups)) {
@@ -49,12 +50,12 @@ function getOrCreateFn(source: string) {
 
 /**
  * Performs the function of checking if the child component can be bound.
- * @param child the child element of the component tree.
+ * @param childStore the child component settings.
  * @param parentProps the parent component properties.
  * @returns true, if the child component can be bound, false otherwise.
  */
-export function checkBindCondition(child: ComponentData, parentProps: any) {
-  const fnSource = child.store.bindCondition?.trim()
+export function checkBindCondition(childStore: ComponentStore, parentProps: any) {
+  const fnSource = childStore.bindCondition?.trim()
   // it's OK - no condition to bind
   if (!fnSource) return true
   const fn = getOrCreateFn(fnSource)
