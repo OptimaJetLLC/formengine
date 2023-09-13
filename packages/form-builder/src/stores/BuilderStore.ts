@@ -8,6 +8,7 @@ import {
   NamedActionDefinition,
   nameObservable,
   PersistedForm,
+  screenModel,
   Store,
   treeForEach,
   ViewMode
@@ -27,6 +28,7 @@ import {BuilderI18n} from '../features/localization/BuilderI18n'
 import type {FormBuilderI18nData} from '../features/localization/FormBuilderLanguage'
 import {builtInLanguages, findLanguage} from '../features/localization/languageUtils'
 import {PanelPlacement} from '../features/ui/PanelPlacement'
+import type {PromptDialogProps} from '../features/ui/PromptDialogProps'
 import {annotationResolver} from '../features/validation'
 import type {FormBuilderProps} from '../FormBuilderProps'
 import {getSystemTheme} from '../utils/getSystemTheme'
@@ -35,6 +37,10 @@ import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
 import {uploadStringFile} from './fileUpload'
 import type {IFormStorage} from './IFormStorage'
 import {trackUndo} from './undo'
+
+function toPrettyJsonString(value: any) {
+  return JSON.stringify(value, null, 2)
+}
 
 /**
  * Parameters of the editable component property.
@@ -109,6 +115,13 @@ export class EditableAction implements CustomActionEditorProps {
 export interface ComponentsModalState {
   opened: boolean
   onSelect: OnSelectCallback
+}
+
+/**
+ * The state of the modal window for entering a value.
+ */
+export interface PromptModalState extends PromptDialogProps {
+  opened: boolean
 }
 
 class BuilderUndoer {
@@ -194,6 +207,13 @@ export class BuilderStore {
   readonly componentsModalState: ComponentsModalState = {
     opened: false,
     onSelect: () => {
+    }
+  }
+  readonly promptModalState: PromptModalState = {
+    opened: false,
+    title: '',
+    value: '',
+    onOk: () => {
     }
   }
   readonly errorMap = new Map<ComponentData, Record<string, string | undefined>>
@@ -541,7 +561,7 @@ export class BuilderStore {
       languages: selectedLanguages,
       defaultLanguage: this.defaultLanguage.fullCode
     }
-    return JSON.stringify(serializedObject, null, 2)
+    return toPrettyJsonString(serializedObject)
   }
 
   /**
@@ -588,6 +608,21 @@ export class BuilderStore {
   saveForm(formName: string, formValue: string) {
     this.lastSaveTime = new Date()
     return this.formStorage.saveForm(formName, formValue)
+  }
+
+  /**
+   * Creates a new form in the form storage.
+   * @param formName the form name.
+   * @returns the Promise with the result of the form creation.
+   */
+  createForm(formName: string) {
+    const persistedForm: PersistedForm = {
+      form: new ComponentStore(screenModel.name, screenModel.type),
+      localization: {},
+      languages: [],
+      defaultLanguage: this.defaultLanguage.fullCode
+    }
+    return this.saveForm(formName, toPrettyJsonString(persistedForm))
   }
 
   /**
@@ -699,5 +734,13 @@ export class BuilderStore {
   showComponentsModal(onSelect: OnSelectCallback) {
     this.componentsModalState.onSelect = onSelect
     this.componentsModalState.opened = true
+  }
+
+  /**
+   * Displays the modal window for entering a value.
+   * @param props the modal window properties.
+   */
+  showPromptModal(props: PromptDialogProps) {
+    Object.assign(this.promptModalState, props, {opened: true})
   }
 }

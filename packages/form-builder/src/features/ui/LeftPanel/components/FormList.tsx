@@ -1,18 +1,28 @@
 import {namedObserver} from '@react-form-builder/core'
 import {useEffect, useState} from 'react'
-import {ButtonGroup} from 'rsuite'
+import {useTranslation} from 'react-i18next'
+import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {EditButton, RemoveButton} from '../../../components/Buttons'
 import {List, ListItem} from '../../../components/Containers'
-import {useTranslationPart} from '../../../localization/hooks'
 import {useShowMessage} from '../../../toast/toast'
 
 export const FormList = namedObserver('FormList', () => {
   const builderStore = useBuilderStore()
   const [formList, setFormList] = useState<string[]>([])
-  const t = useTranslationPart('leftMenu')
+  const {t} = useTranslation()
   const reloadForms = () => {
     builderStore.getFormKeys().then(setFormList)
+  }
+  const showPromptDialog = () => {
+    builderStore.showPromptModal({
+      value: '',
+      title: t('leftMenu.enterFormName'),
+      placeholder: t('leftMenu.formNamePlaceholder'),
+      onOk: value => {
+        if (value) builderStore.createForm(value).then(reloadForms)
+      }
+    })
   }
   const showMessage = useShowMessage()
   useEffect(() => {
@@ -22,8 +32,6 @@ export const FormList = namedObserver('FormList', () => {
     console.error(err)
     showMessage({type: 'error', message: err})
   }
-
-  if (formList.length <= 0) return <span>{t('noFormsInFormStorage')}</span>
 
   const items = formList.map((value, index) => {
     return <ListItem key={index}>
@@ -37,5 +45,13 @@ export const FormList = namedObserver('FormList', () => {
     </ListItem>
   })
 
-  return <List>{items}</List>
+  return <List>
+    <ListItem>
+      <Button block onClick={showPromptDialog}>{t('formsList.addNewForm')}</Button>
+    </ListItem>
+    {items.length
+      ? items
+      : <ListItem>{t('formsList.noFormsInFormStorage')}</ListItem>
+    }
+  </List>
 })

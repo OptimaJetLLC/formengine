@@ -7,6 +7,7 @@ import {BuilderProviders} from './features/ui/BuilderProviders'
 import {CentralPanel} from './features/ui/CentralPanel'
 import {ComponentsModal} from './features/ui/ComponentBar/ComponentsModal'
 import {LeftPanel} from './features/ui/LeftPanel'
+import {PromptDialog} from './features/ui/PromptDialog'
 import {RightPanel} from './features/ui/RightPanel'
 import {FormBuilderProps} from './FormBuilderProps'
 
@@ -29,6 +30,7 @@ const FormBuilderView = observer(() => (
         <CentralPanel/>
         <RightPanel/>
         <ComponentsModal/>
+        <PromptDialog/>
       </Content>
       <BottomPanel/>
     </Container>

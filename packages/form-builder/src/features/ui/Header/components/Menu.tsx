@@ -14,7 +14,6 @@ import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../../components/Icons'
 import {MenuLanguageSwitch} from '../../../localization'
 import {useShowMessage} from '../../../toast/toast'
-import {usePromptDialog} from '../../PromptDialog'
 import {exportForms, importForms} from './formUtils'
 
 const ExportFormsButton = namedObserver('ExportFormsButton', () => {
@@ -58,34 +57,38 @@ const ImportFormsButton = namedObserver('ImportFormsButton', () => {
 })
 
 export const Menu = namedObserver('Menu', () => {
-  const store = useBuilderStore()
+  const builderStore = useBuilderStore()
   const {t} = useTranslation()
   const showMessage = useShowMessage()
   const onSave = (formName?: string) => {
-    store.save(formName)
+    builderStore.save(formName)
       .then(() => showMessage({type: 'success', message: t('leftMenu.formSaved')}))
       .catch(err => {
         console.error(err)
         showMessage({type: 'error', message: t('leftMenu.formSaveError')})
       })
   }
-  const [onSaveAs, promptDialog] = usePromptDialog({
-    title: t('leftMenu.enterFormName'), placeholder: t('leftMenu.formNamePlaceholder'),
-    onOk: (value) => {
-      if (value) onSave(value)
-    }
-  })
+  const onSaveAs = () => {
+    builderStore.showPromptModal({
+      value: '',
+      title: t('leftMenu.enterFormName'),
+      placeholder: t('leftMenu.formNamePlaceholder'),
+      onOk: value => {
+        if (value) onSave(value)
+      }
+    })
+  }
 
   return <>
     <Dropdown title={t('leftMenu.menu')} size={'sm'}>
-      <Dropdown.Item onSelect={store.download.bind(store)} icon={<FileDownloadIcon/>}>
+      <Dropdown.Item onSelect={builderStore.download.bind(builderStore)} icon={<FileDownloadIcon/>}>
         {t('leftMenu.download')}
       </Dropdown.Item>
-      <Dropdown.Item onSelect={store.upload.bind(store)} icon={<FileUploadIcon/>}>
+      <Dropdown.Item onSelect={builderStore.upload.bind(builderStore)} icon={<FileUploadIcon/>}>
         {t('leftMenu.upload')}
       </Dropdown.Item>
       <MenuLanguageSwitch/>
-      {store.formStorageEnabled && <>
+      {builderStore.formStorageEnabled && <>
         <Dropdown.Item onSelect={onSave} icon={<FaIcon icon={faSave as unknown as IconDefinition}/>}>
           {t('leftMenu.save')}
         </Dropdown.Item>
@@ -98,11 +101,10 @@ export const Menu = namedObserver('Menu', () => {
       <Dropdown.Item /*onSelect={onPrint}*/ icon={<FaIcon icon={faPrint as unknown as IconDefinition}/>}>
         {t('leftMenu.print')}
       </Dropdown.Item>
-      <Dropdown.Item onSelect={store.clear.bind(store)} icon={<FaIcon icon={faTrash as unknown as IconDefinition}/>}>
+      <Dropdown.Item onSelect={builderStore.clear.bind(builderStore)} icon={<FaIcon icon={faTrash as unknown as IconDefinition}/>}>
         {t('leftMenu.clear')}
       </Dropdown.Item>
-      <Dropdown.Item onSelect={store.validate} children={t('leftMenu.validateForm')}/>
+      <Dropdown.Item onSelect={builderStore.validate} children={t('leftMenu.validateForm')}/>
     </Dropdown>
-    {promptDialog}
   </>
 })

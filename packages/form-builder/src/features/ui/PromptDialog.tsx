@@ -1,69 +1,46 @@
-import {useState} from 'react'
+import {namedObserver} from '@react-form-builder/core'
 import {Button, Input, Modal} from 'rsuite'
+import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {useTranslationPart} from '../localization/hooks'
 
 /**
- * Properties of the modal dialog for data entry.
+ * The React component that displays prompt dialog
+ * @param props the React component properties.
+ * @returns the React element.
  */
-export interface PromptProps {
-  backdrop?: boolean | 'static';
-  title: string
-  placeholder?: string
-  okText?: string
-  cancelText?: string
-  onOk: (value: string) => void
-  onCancel?: () => void
-  onClose?: () => void
-}
-
-interface PromptDialogProps extends PromptProps {
-  open: boolean
-  setOpen: (value: boolean) => void
-}
-
-const PromptDialog = (props: PromptDialogProps) => {
+export const PromptDialog = namedObserver('PromptDialog', () => {
+  const builderStore = useBuilderStore()
+  const modalState = builderStore.promptModalState
   const t = useTranslationPart('promptDialog')
-  const [value, setValue] = useState<string>('')
-  const hide = () => props.setOpen(false)
+  const hide = () => modalState.opened = false
   const handleClose = () => {
     hide()
-    props.onClose?.()
+    modalState.onClose?.()
   }
   const handleOk = () => {
     hide()
-    props.onOk(value)
+    modalState.onOk(modalState.value)
   }
   const handleCancel = () => {
     hide()
-    props.onCancel?.()
+    modalState.onCancel?.()
   }
 
-  return <Modal backdrop={props.backdrop} keyboard={true} open={props.open} onClose={handleClose}>
+  return <Modal backdrop={modalState.backdrop} keyboard={true} open={modalState.opened} onClose={handleClose}>
     <Modal.Header>
-      <Modal.Title>{props.title}</Modal.Title>
+      <Modal.Title>{modalState.title}</Modal.Title>
     </Modal.Header>
     <Modal.Body>
-      <Input style={{width: '100%'}} placeholder={props.placeholder} value={value} onChange={setValue} autoFocus={true}/>
+      <Input style={{width: '100%'}} placeholder={modalState.placeholder} autoFocus={true}
+             value={modalState.value} onChange={value => modalState.value = value}/>
     </Modal.Body>
     <Modal.Footer>
       <Button onClick={handleOk} appearance="primary" active={true}>
-        {props.okText || t('ok')}
+        {modalState.okText || t('ok')}
       </Button>
       <Button onClick={handleCancel} appearance="subtle">
-        {props.cancelText || t('cancel')}
+        {modalState.cancelText || t('cancel')}
       </Button>
     </Modal.Footer>
   </Modal>
-}
-
-/**
- * Returns the array containing the function to open a modal dialog for data entry and the JSX.Element of the dialog itself.
- * @param promptDialogProps the properties of modal dialog.
- * @returns the array containing the function to open a modal dialog for data entry and the JSX.Element of the dialog itself.
- */
-export const usePromptDialog = (promptDialogProps: PromptProps): [() => void, JSX.Element] => {
-  const [open, setOpen] = useState(false)
-  const openPromptDialog = () => setOpen(true)
-  const props = {...promptDialogProps, open, setOpen}
-  return [openPromptDialog, <>{open && <PromptDialog {...props}/>}</>]
-}
+})
