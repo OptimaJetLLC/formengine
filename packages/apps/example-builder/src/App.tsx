@@ -2,7 +2,7 @@ import {FormBuilder, FormBuilderI18n} from '@react-form-builder/builder'
 import {BuilderView} from '@react-form-builder/builder/view'
 import {antdComponents, antTooltip} from '@react-form-builder/components-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
-import {ComponentStore, ExternalValidators, IFormViewer, Language} from '@react-form-builder/core'
+import {ActionDefinition, ComponentStore, ExternalValidators, IFormViewer, Language} from '@react-form-builder/core'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useRef, useState} from 'react'
 import {frFR, trTR} from 'rsuite/esm/locales/index.js'
@@ -148,7 +148,18 @@ const FormBuilderApp = () => {
     externalValidators={externalValidators}
     i18n={enableExternalLanguages ? builderLanguages : undefined}
     externalActions={{
-      logEventArgs: e => console.log(e)
+      logEventArgs: e => console.log(e),
+      assertArgs: ActionDefinition.functionalAction((e, args) => {
+        if (!e) throw new Error(`'e' is undefined`)
+        if (!args) throw new Error(`'args' is args`)
+        if (args.p1 !== 'testValue') console.error(`args.p1 !== 'testValue'`, args.p1)
+        if (!args.p2) console.error(`args.p2 !== true`, args.p2)
+        if (args.p3 !== 6.62607015) console.error(`args.p3 !== 6.62607015`, args.p3)
+      }, {
+        p1: 'string',
+        p2: 'boolean',
+        p3: 'number'
+      })
     }}
     /*event={(stream) => {
       stream.listen(value => {

@@ -119,10 +119,7 @@ export class Form {
     const args = actionData.args
     if (!args) return
 
-    const newActionParamNames = new Set<string>()
-    newAction.actionDefinition.params.forEach(value => {
-      typeof value === 'string' ? newActionParamNames.add(value) : newActionParamNames.add(value[0])
-    })
+    const newActionParamNames = new Set<string>(Object.keys(newAction.actionDefinition.params))
     Object.keys(args).forEach(key => {
       if (!newActionParamNames.has(key)) delete args[key]
     })

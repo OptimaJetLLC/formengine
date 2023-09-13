@@ -1,4 +1,4 @@
-import {Parameter, ParameterName, ParameterType} from '@react-form-builder/core'
+import type {ParameterType} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {ComponentType} from 'react'
 import {Rows} from '../../../../../../../../components/Containers'
@@ -6,9 +6,7 @@ import {InputBoolean} from './components/InputBoolean'
 import {InputNumber} from './components/InputNumber'
 import {InputString} from './components/InputString'
 import {InputProps} from './InputProps'
-
-const extractArgumentData = (data: Parameter): [ParameterName, ParameterType] =>
-  typeof data === 'string' ? [data, 'string'] : data
+import type {Parameter} from './Parameter'
 
 const getArgumentInputByType = (type: ParameterType): ComponentType<InputProps> => {
   switch (type) {
@@ -26,7 +24,7 @@ interface ActionArgumentProps {
 }
 
 export const ArgumentItem = observer(({data}: ActionArgumentProps) => {
-  const [name, type] = extractArgumentData(data)
+  const [name, type] = data
   const ArgumentInput = getArgumentInputByType(type)
 
   return <Rows>

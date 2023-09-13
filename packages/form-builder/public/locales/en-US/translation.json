@@ -374,7 +374,10 @@
   "customActionEditor": {
     "saveAsNew": "Save as new",
     "actionNameExists": "Action with this name already exists",
-    "nameIsRequired": "Action name is required"
+    "nameIsRequired": "Action name is required",
+    "parameterNameExists": "Parameter with this name already exists",
+    "parameterNameIsRequired": "Parameter name is required",
+    "parameterNameIsNotValid": "Parameter name is not valid"
   },
   "editJson": "Edit JSON"
 }

@@ -7,6 +7,14 @@
     "loadData": {
       "name": "loadData",
       "body": "\n    const [searchValue, loadCallback, currentDataLength] = e.args\n\n    fetch ('https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.json')\n        .then (data => data.json())\n        .then (data => {\n            const preparedData = data\n                .filter(value => value.toLowerCase().includes(searchValue.toLowerCase()))\n                .slice(currentDataLength, currentDataLength + 20)\n                .map(value => ({value, label: value}))\n\n            loadCallback(preparedData)        \n        })\n"
+    },
+    "customAssertArgs": {
+      "body": "    if (!e) throw new Error(`'e' is undefined`)\n    if (!args) throw new Error(`'args' is undefined`)\n    if (args.stringParam !== 'Ayn Rand') console.error(`args.stringParam !== 'Ayn Rand'`, args.stringParam)\n    if (args.customBool !== false) console.error(`args.customBool !== false`, args.customBool)\n    if (args.myNumericProperty !== 2.7182818284) console.error(`args.myNumericProperty !== 2.7182818284`, args.myNumericProperty)",
+      "params": {
+        "stringParam": "string",
+        "customBool": "boolean",
+        "myNumericProperty": "number"
+      }
     }
   },
   "form": {
@@ -122,6 +130,24 @@
             {
               "name": "WeatherRequest",
               "type": "custom"
+            },
+            {
+              "name": "assertArgs",
+              "type": "external",
+              "args": {
+                "p1": "testValue",
+                "p2": true,
+                "p3": 6.62607015
+              }
+            },
+            {
+              "name": "customAssertArgs",
+              "type": "custom",
+              "args": {
+                "stringParam": "Ayn Rand",
+                "customBool": false,
+                "myNumericProperty": 2.7182818284
+              }
             }
           ]
         }

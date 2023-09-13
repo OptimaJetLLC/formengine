@@ -32,13 +32,13 @@ export const ArgumentList = observer(() => {
   const ExpandIcon = show ? ArrowUpLine : ArrowDownLine
   useClearableArguments()
 
-  if (!action.params || action.params.length < 1) return null
+  if (!Object.keys(action.params).length) return null
 
   return (
     <div onMouseDown={e => e.stopPropagation()}>
       <Animation.Collapse in={show}>
         <Rows gap={1} style={{marginBlock: 8, paddingInline: 10}}>
-          {action.params.map((arg, index) =>
+          {Object.entries(action.params).map((arg, index) =>
             <ArgumentItem key={index} data={arg}/>)}
         </Rows>
       </Animation.Collapse>

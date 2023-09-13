@@ -17,9 +17,9 @@ export type ParameterName = string
 export type ParameterType = 'string' | 'number' | 'boolean'
 
 /**
- * Function parameter.
+ * Represents a set of action parameters.
  */
-export type Parameter = ParameterName | [ParameterName, ParameterType]
+export type ActionParameters = Record<ParameterName, ParameterType>
 
 /**
  * The type of the argument value of the function.
@@ -74,7 +74,7 @@ export class ActionDefinition {
   constructor(
     public readonly func: Func,
     public readonly body?: string,
-    public readonly params: Parameter[] = [],
+    public readonly params: ActionParameters = {},
   ) {
   }
 
@@ -84,7 +84,7 @@ export class ActionDefinition {
    * @param params the parameters of the Action.
    * @returns the new instance of the ActionDefinition class.
    */
-  static functionalAction(func: Func, params: Parameter[] = []): ActionDefinition {
+  static functionalAction(func: Func, params: ActionParameters = {}): ActionDefinition {
     return new ActionDefinition(func, undefined, params)
   }
 
@@ -94,8 +94,8 @@ export class ActionDefinition {
    * @param params the parameters of the Action.
    * @returns the new instance of the ActionDefinition class.
    */
-  static sourceAction(body: string, params: Parameter[] = []): ActionDefinition {
-    const func = AsyncFunction(params.length ? 'e, args' : 'e', body)
+  static sourceAction(body: string, params: ActionParameters = {}): ActionDefinition {
+    const func = AsyncFunction('e, args', body)
     return new ActionDefinition(func, body, params)
   }
 

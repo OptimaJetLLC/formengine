@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {ActionDefinition, AsyncFunction, NamedActionDefinition, Parameter, toParameterWithType, useStore} from '@react-form-builder/core'
+import {ActionDefinition, ActionParameters, AsyncFunction, NamedActionDefinition, useStore} from '@react-form-builder/core'
 import {useEffect, useRef, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup, Form, FormInstance, Schema} from 'rsuite'
@@ -7,14 +7,27 @@ import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {CodeEditor} from '../../../../components/CodeEditor'
 import {Columns, Rows} from '../../../../components/Containers'
 import {Header} from '../../../../ui/BottomPanel/Header'
+import type {Parameter} from '../ActionList/ActionItem/components/ArgumentList/ArgumentItem/Parameter'
 import {ParameterList} from './components/ParameterList'
 
 /**
  * Represents data for the custom action editor.
  */
-export type CustomActionEditorData = { editorId: any, name: string, body: string, params?: Parameter[] }
+export type CustomActionEditorData = { editorId: any, name: string, body: string, params?: ActionParameters }
 
-type FormModel = CustomActionEditorData & { errors?: string }
+type FormModel = CustomActionEditorData & { errors?: string, actionParameters?: Parameter[] }
+
+const paramsToArray = (params?: ActionParameters): Parameter[] | undefined => {
+  if (!params) return
+  return Object.entries(params).map(([name, type]) => [name, type])
+}
+
+const paramsFromArray = (params?: Parameter[]): ActionParameters | undefined => {
+  if (!params) return
+  const result: ActionParameters = {}
+  params.forEach(([name, type]) => result[name] = type)
+  return result
+}
 
 /**
  * The properties of the CustomActionEditor component.
@@ -35,15 +48,16 @@ export const CustomActionEditor = ({customAction, onSave}: CustomActionEditorPro
   const {t} = useTranslation()
   const store = useStore()
   const builderStore = useBuilderStore()
+  const initialFormModel: FormModel = {...customAction, actionParameters: paramsToArray(customAction.params)}
 
-  const [formState, setFormState] = useState<FormModel>(customAction)
+  const [formState, setFormState] = useState<FormModel>(initialFormModel)
   const [initialBody, setInitialBody] = useState(customAction.body)
 
   const formRef = useRef<FormInstance>(null)
 
   useEffect(() => {
-    setFormState(customAction)
-    setInitialBody(customAction.body)
+    setFormState(initialFormModel)
+    setInitialBody(initialFormModel.body)
     formRef.current?.cleanErrors()
   }, [customAction])
 
@@ -70,10 +84,8 @@ export const CustomActionEditor = ({customAction, onSave}: CustomActionEditorPro
       return
     }
 
-    if (!formState.params?.length) delete formState.params
-    const data = JSON.parse(JSON.stringify(formState))
-    const actionDefinition = ActionDefinition.sourceAction(data.body, data.params)
-    const namedAction: NamedActionDefinition = {name: data.name, actionDefinition}
+    const actionDefinition = ActionDefinition.sourceAction(formState.body, paramsFromArray(formState.actionParameters))
+    const namedAction: NamedActionDefinition = {name: formState.name, actionDefinition}
     onSave?.(namedAction)
   }
 
@@ -88,8 +100,8 @@ export const CustomActionEditor = ({customAction, onSave}: CustomActionEditorPro
           <Form.Control name={'name'} style={{width: '100%'}}/>
         </Form>
         <EditorContainer>
-          <CodeEditor key={customAction.editorId} beginContextLine={makeFunctionHeader(formState.params)} endContextLine="}"
-                      initialValue={initialBody ?? ''}
+          <CodeEditor key={customAction.editorId} beginContextLine={makeFunctionHeader(formState.actionParameters)}
+                      endContextLine="}" initialValue={initialBody ?? ''}
                       onChange={body => updateFormState({body})}/>
         </EditorContainer>
         <div>
@@ -100,7 +112,8 @@ export const CustomActionEditor = ({customAction, onSave}: CustomActionEditorPro
           {!!formState.errors && <label style={{color: 'red', marginInline: 10}}>{formState.errors}</label>}
         </div>
       </Rows>
-      <ParameterList value={formState.params} onChange={value => updateFormState({params: value})}/>
+      <ParameterList value={formState.actionParameters}
+                     onChange={value => updateFormState({actionParameters: value})}/>
     </Container>
   </>
 }
@@ -120,7 +133,7 @@ const Container = styled(Columns)`
 const makeFunctionHeader = (params?: Parameter[]) => {
   let types = '@param {} args - the action arguments.'
   if (params?.length) {
-    const names: string[] = params.map(toParameterWithType).map(([name, type]) => name + ': ' + type)
+    const names: string[] = params.map(([name, type]) => name + ': ' + type)
     types = `@param {{${names.join(', ')}}} args - the action parameters.`
   }
 

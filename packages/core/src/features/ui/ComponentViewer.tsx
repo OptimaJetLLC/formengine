@@ -1,4 +1,4 @@
-import {forIn, transform} from 'lodash-es'
+import {forIn} from 'lodash-es'
 import {createElement, useCallback, useEffect, useMemo} from 'react'
 import {catchError, concatMap, filter, OperatorFunction, Subscription} from 'rxjs'
 import {ComponentState} from '../../stores/ComponentState'
@@ -6,7 +6,7 @@ import {isPromise, namedObserver} from '../../utils'
 import {ComponentData, useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {getChildren} from '../../utils/getChildren'
-import {ActionData, ActionEventArgs, Arguments, DidMountEvent, Func, Parameter, WillUnmountEvent} from '../event'
+import {ActionData, ActionEventArgs, Arguments, DidMountEvent, Func, WillUnmountEvent} from '../event'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 import {useComponentTreeContext} from './ComponentTreeContext'
 
@@ -22,7 +22,7 @@ const useActions = (state: ComponentState) => {
       const actionChain: OperatorFunction<ActionEventArgs, ActionEventArgs>[] = []
       actionDataList.forEach((data) => {
         const actionDefinition = store.findAction(data)
-        const action = getActionHandler(actionDefinition.func, data.args, actionDefinition.params)
+        const action = getActionHandler(actionDefinition.func, data.args)
         actionChain.push(concatMap(action))
       })
 
@@ -50,13 +50,11 @@ const useActions = (state: ComponentState) => {
   }, [])
 }
 
-function getActionHandler(func: Func, args?: Arguments, params?: Parameter[]) {
+function getActionHandler(func: Func, args?: Arguments) {
   //TODO init in default value for arguments?
   return async (e: ActionEventArgs) => {
-    const actionArgs = !args ? {} :
-      transform(args, (result: Record<string, any>, value, argumentName) =>
-        result[argumentName] = value)
-    const result = !params?.length ? func(e) : func(e, actionArgs)
+    const actionArgs = args ? {...args} : {}
+    const result = func(e, actionArgs)
     if (isPromise(result)) await result
     return e
   }

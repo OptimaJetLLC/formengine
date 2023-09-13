@@ -10,14 +10,12 @@ export type DefineActionHelper = <T>(name: string, func: ActionHandler<T>, param
 /**
  * The type to describe the action parameter.
  */
-export type ParametersDefinition<T> = PropertyKey<T> | TypedKey<T>
+export type ParametersDefinition<T> = [PropertyKey<T>, ParameterType]
 
 /**
  * Component property key type.
  */
 export type PropertyKey<T> = keyof T & string
-
-type TypedKey<T> = [PropertyKey<T>, ParameterType]
 
 /**
  * Action function type.

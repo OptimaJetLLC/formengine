@@ -1,8 +1,9 @@
-import {generateUniqueName, Parameter} from '@react-form-builder/core'
+import {generateUniqueName} from '@react-form-builder/core'
 import {useEffect, useState} from 'react'
 import {Button} from 'rsuite'
 import {Columns, Rows} from '../../../../../components/Containers'
 import {useTranslationPart} from '../../../../../localization/hooks'
+import type {Parameter} from '../../ActionList/ActionItem/components/ArgumentList/ArgumentItem/Parameter'
 import {ParameterItem} from './ParameterItem'
 
 /**
@@ -43,12 +44,11 @@ export const ParameterList = ({value, onChange}: ParameterPanelProps) => {
   }
 
   const handleCreateParam = () => {
-    const names = params?.map(value => {
-      return typeof value === 'string' ? value : value[0]
-    })
+    const names = params?.map(value => value[0]) ?? []
     const existingNames = new Set(names)
     const paramName = generateUniqueName('prop', existingNames)
-    const paramArray = params ? [...params, paramName] : [paramName]
+    const newParam: Parameter = [paramName, 'string']
+    const paramArray = params ? [...params, newParam] : [newParam]
     changeParams(paramArray)
   }
 
@@ -65,7 +65,7 @@ export const ParameterList = ({value, onChange}: ParameterPanelProps) => {
   }
 
   const items = params?.map((param, index) => {
-    return <ParameterItem key={index} value={param} onRemove={() => handleRemoveParam(index)}
+    return <ParameterItem key={index} value={param} onRemove={() => handleRemoveParam(index)} parameters={params}
                           onChange={value => handleChangeParam(value, index)}/>
   })
 
