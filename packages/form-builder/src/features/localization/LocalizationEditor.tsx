@@ -18,26 +18,12 @@ export const LocalizationEditor = observer(({editableProperty, onClose}: Calcula
   const localizationStringId = getFluentCompatibleId(`${editableProperty.componentKey}_${editableProperty.annotation.key}`)
   const viewerStore = useStore()
   const builderStore = useBuilderStore()
-  const defaultLanguage = builderStore.defaultLanguage
-
-  const getInitialValue = () => {
-    let localization = viewerStore.form.localization
-      .getLocalization(builderStore.localizationLanguage.fullCode, editableProperty.componentKey, editableProperty.annotation.key)
-    if (!localization && !builderStore.isDefaultLanguage) {
-      localization = viewerStore.form.localization
-        .getLocalization(defaultLanguage.fullCode, editableProperty.componentKey, editableProperty.annotation.key)
-    }
-    if (!localization) {
-      localization = ''
-    }
-    return localization
-  }
 
   const [value, setValue] = useState('')
   const [initialValue, setInitialValue] = useState('')
 
   useEffect(() => {
-    const initialValue = getInitialValue()
+    const initialValue = editableProperty.getComputeCode('localization')
     setInitialValue(initialValue)
     setValue(initialValue)
   }, [editableProperty, builderStore.localizationLanguage])
@@ -53,8 +39,7 @@ export const LocalizationEditor = observer(({editableProperty, onClose}: Calcula
   }
 
   const saveLocalization = () => {
-    editableProperty.saveProperty({computeType: 'localization'})
-    viewerStore.form.localization.setLocalization(builderStore.localizationLanguage.fullCode, editableProperty.componentKey, editableProperty.annotation.key, value)
+    editableProperty.setComputeCode(value, 'localization')
     setInitialValue(value)
   }
 

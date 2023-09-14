@@ -14,13 +14,21 @@ export const TooltipSettings = namedObserver('TooltipSettings', () => {
 
   const onChange = useCallback(value => builderStore.viewer.form.tooltipType = value, [builderStore])
   const onClean = useCallback(() => builderStore.viewer.form.tooltipType = undefined, [builderStore])
+  const disableCompute = useCallback(() => undefined, [])
+  const setComputeCode = useCallback(() => undefined, [])
+  const getComputeCode = useCallback(() => '', [])
+  const getComputeType = useCallback(() => undefined, [])
 
   const annotationEditorProps: AnnotationEditorProps = {
     onChange,
     value: builderStore.viewer.form.tooltipType,
     componentData: builderStore.viewer.form.componentTree,
     onClean,
-    annotation: tooltipType.calculable(false).notLocalize.build('tooltipType')
+    annotation: tooltipType.calculable(false).notLocalize.build('tooltipType'),
+    disableCompute,
+    setComputeCode,
+    getComputeCode,
+    getComputeType
   }
 
   return (

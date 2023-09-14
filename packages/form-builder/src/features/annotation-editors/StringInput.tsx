@@ -42,7 +42,7 @@ export const StringInput = (props: AnnotationEditorProps) => {
   }
 
   return (
-    <LabeledProperty annotation={annotation} style={{flexWrap: isBigText ? 'wrap' : 'initial'}}>
+    <LabeledProperty {...props} style={{flexWrap: isBigText ? 'wrap' : 'initial'}}>
       <Input name={annotation.key} value={value ?? ''} onPressEnter={onPressEnter} onChange={handleChange} size={'xs'}
              as={isBigText ? 'textarea' : undefined} rows={rowsCount} ref={ref}/>
     </LabeledProperty>

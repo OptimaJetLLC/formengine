@@ -1,10 +1,20 @@
-import {ComponentData} from '@react-form-builder/core'
+import {ComponentData, ComponentPropertyComputeType} from '@react-form-builder/core'
 import {Annotation} from '../annotation/types/annotations/Annotation'
 
 /**
- * Represents the props for any annotation editor component.
+ * Represents the props used to edit a calculable property.
  */
-export interface AnnotationEditorProps {
+export interface CalculableEditorProps {
+  disableCompute: () => void
+  setComputeCode: (value: string, type: ComponentPropertyComputeType) => void
+  getComputeCode: (type: ComponentPropertyComputeType) => string,
+  getComputeType: () => ComponentPropertyComputeType | undefined
+}
+
+/**
+ * Props for the AnnotationEditor component.
+ */
+export interface AnnotationEditorProps extends CalculableEditorProps {
   /**
    * Annotation editor value.
    */

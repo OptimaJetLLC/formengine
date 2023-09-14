@@ -1,9 +1,8 @@
-import {ComponentProperty} from '@react-form-builder/core'
+import type {ComponentPropertyComputeType} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
+import {useCallback} from 'react'
 import {Input} from 'rsuite'
-import {EditableProperty} from '../../stores/BuilderStore'
-import {useBuilderStore} from '../../utils/BuilderStoreContext'
-import LabeledProperty from '../components/LabeledProperty'
+import LabeledProperty, {LabeledPropertyProps} from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
 /**
@@ -12,33 +11,41 @@ import type {AnnotationEditorProps} from './AnnotationEditorProps'
  * @returns the React element.
  */
 export const RenderWhenEditor = observer((props: AnnotationEditorProps) => {
-  const {annotation} = props
-  const selected = useBuilderStore().oneSelected?.store
-
-  if (!selected) return null
+  const componentStore = props.componentData.store
 
   const onChange = (value: string) => {
-    if (!selected.renderWhen) {
-      selected.renderWhen = {value}
+    if (!componentStore.renderWhen) {
+      componentStore.renderWhen = {value}
       return
     }
-    selected.renderWhen.value = value
+    componentStore.renderWhen.value = value
   }
 
-  const getEditableProperty = () => new EditableProperty(
-    selected.key,
-    annotation,
-    (property: ComponentProperty) => {
-      const renderWhen = selected.renderWhen || {}
-      selected.renderWhen = Object.assign(renderWhen, property)
-      return selected.renderWhen
-    },
-    selected.renderWhen
-  )
+  const getComputeCode = useCallback(() => componentStore.renderWhen?.fnSource ?? '', [componentStore])
+  const getComputeType = useCallback(() => ('function' as ComponentPropertyComputeType), [])
+
+  const setComputeCode = useCallback((code: string) => {
+    componentStore.renderWhen ??= {}
+    componentStore.renderWhen.fnSource = code
+    componentStore.renderWhen.computeType = 'function'
+  }, [componentStore])
+
+  const disableCompute = useCallback(() => {
+    if (componentStore.renderWhen) componentStore.renderWhen.computeType = undefined
+  }, [componentStore])
+
+  const renderWhenProperties: LabeledPropertyProps = {
+    annotation: props.annotation,
+    componentData: props.componentData,
+    getComputeCode,
+    getComputeType,
+    setComputeCode,
+    disableCompute
+  }
 
   return (
-    <LabeledProperty annotation={annotation} getEditableProperty={getEditableProperty}>
-      <Input value={selected.renderWhen?.value ?? ''} onChange={onChange} size={'xs'}/>
+    <LabeledProperty {...renderWhenProperties} >
+      <Input value={componentStore.renderWhen?.value ?? ''} onChange={onChange} size={'xs'}/>
     </LabeledProperty>
   )
 })

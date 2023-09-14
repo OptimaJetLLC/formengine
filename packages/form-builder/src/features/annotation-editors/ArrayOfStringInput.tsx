@@ -9,10 +9,10 @@ import type {AnnotationEditorProps} from './AnnotationEditorProps'
  * @returns the React element.
  */
 export const ArrayOfStringInput = (props: AnnotationEditorProps) => {
-  const {value, onChange, annotation, onClean} = props
+  const {value, onChange, onClean} = props
   const t = useTranslationPart('propertiesEditor')
 
-  return <LabeledProperty annotation={annotation}>
+  return <LabeledProperty {...props}>
     <TagInput value={value ?? ''} onChange={onChange} onClean={onClean} block
               size={'xs'} style={{width: '100%'}} placeholder={t('setInputHint')}
     />

@@ -18,7 +18,9 @@ import {nameAutorun, nameObservable} from '../utils/observableNaming'
  */
 export type LocalizationValue = Record<LanguageFullCode, ComponentsLocalization>
 
-type ComponentsLocalization = Record<ComponentKey, ComponentPropsLocalization>
+type ComponentsLocalization = Record<ComponentKey, TypedLocalization>
+
+type TypedLocalization = Partial<Record<LocalizationType, ComponentPropsLocalization>>
 
 type ComponentPropsLocalization = Record<ComponentPropertyName, string>
 
@@ -29,6 +31,11 @@ type ComponentKey = string
 type ComponentPropertyName = string
 
 const className = 'LocalizationStore'
+
+/**
+ * Represents the type of localization. The localization can be for a component, tooltip or for validator.
+ */
+export type LocalizationType = 'component' | 'tooltip'
 
 /**
  * Observable storage of localization.
@@ -46,55 +53,30 @@ export class LocalizationStore {
    * @param languageFullCode the full code (en-US, en-GB etc.) of the language we are looking to localize.
    * @param componentKey the component we are looking to localize.
    * @param propertyName the property name we are looking to localize.
+   * @param type the type of localization.
    * @returns the value of localization constant.
    */
-  getLocalization(languageFullCode: string, componentKey: string, propertyName: string) {
+  getLocalization(languageFullCode: string, componentKey: string, propertyName: string, type: LocalizationType) {
     const fluentCompatibleComponentKey = getFluentCompatibleId(componentKey)
     const fluentCompatiblePropertyName = getFluentCompatibleId(propertyName)
-    const languageLocalization = this.value[languageFullCode]
-    if (!languageLocalization) return
-    const componentLocalization = languageLocalization[fluentCompatibleComponentKey]
-    if (!componentLocalization) return
-    return componentLocalization[fluentCompatiblePropertyName]
+    return this.value[languageFullCode]?.[fluentCompatibleComponentKey]?.[type]?.[fluentCompatiblePropertyName]
   }
-
-  /**
-   * Returns all localization constants for the specified languageFullCode.
-   * @param languageFullCode the full code (en-US, en-GB etc.) of the language we are looking to localize.
-   * @returns all localization constants for the specified languageFullCode.
-   */
-  getLocalizationItems(languageFullCode: string) {
-    const localizationItems: string[] = []
-    Object.keys(this.value[languageFullCode]).forEach(componentKey => {
-      const allComponentsLocalizationConstants = this.value[languageFullCode][componentKey]
-      if (!allComponentsLocalizationConstants) {
-        return
-      }
-      Object.keys(allComponentsLocalizationConstants).forEach(attributeName => {
-        const localizationValue = allComponentsLocalizationConstants[attributeName]
-        if (!localizationValue) {
-          return
-        }
-        localizationItems.push(`${componentKey}_${attributeName} = ${localizationValue}`)
-      })
-    })
-    return localizationItems
-  }
-
 
   /**
    * Sets localization for component property.
    * @param languageFullCode the full code (en-US, en-GB etc.) of the language in which localization will be set.
    * @param componentKey the component key that requires localization.
    * @param propertyName the component's property name to be localized.
+   * @param type the type of localization.
    * @param value the localization value.
    */
-  setLocalization(languageFullCode: string, componentKey: string, propertyName: string, value: string) {
+  setLocalization(languageFullCode: string, componentKey: string, propertyName: string, type: LocalizationType, value: string) {
     const fluentCompatibleComponentKey = getFluentCompatibleId(componentKey)
     const fluentCompatiblePropertyName = getFluentCompatibleId(propertyName)
     this.value[languageFullCode] ??= {}
     this.value[languageFullCode][fluentCompatibleComponentKey] ??= {}
-    this.value[languageFullCode][fluentCompatibleComponentKey][fluentCompatiblePropertyName] = value
+    this.value[languageFullCode][fluentCompatibleComponentKey][type] ??= {}
+    this.value[languageFullCode][fluentCompatibleComponentKey][type]![fluentCompatiblePropertyName] = value
   }
 
   /**
@@ -109,25 +91,6 @@ export class LocalizationStore {
         delete this.value[key]
       }
     }
-  }
-
-  /**
-   * Check whether the component has localization.
-   * @param componentKey the key of checked component.
-   * @param propertyName the component's property name to be checked.
-   * @returns true if the specified component property has a localization constant.
-   */
-  hasComponentProperty(componentKey: string, propertyName: string) {
-    const fluentCompatibleComponentKey = getFluentCompatibleId(componentKey)
-    const fluentCompatiblePropertyName = getFluentCompatibleId(propertyName)
-    for (const languageFullCode in this.value) {
-      const component = this.value[languageFullCode][fluentCompatibleComponentKey]
-      if (component && component[fluentCompatiblePropertyName]) {
-        return true
-      }
-    }
-
-    return false
   }
 
   /**
@@ -232,7 +195,7 @@ export class LocalizationStore {
       return new FluentBundle(`${languageFullCode}`)
     }
 
-    const localizationItems = localization.getLocalizationItems(languageFullCode)
+    const localizationItems = localization.#getLocalizationItems(languageFullCode)
     const bundle = new FluentBundle(`${languageFullCode}`)
 
     localizationItems.forEach(item => {
@@ -246,5 +209,22 @@ export class LocalizationStore {
     })
 
     return bundle
+  }
+
+  /**
+   * Returns all localization constants for the specified languageFullCode.
+   * @param languageFullCode the full code (en-US, en-GB etc.) of the language we are looking to localize.
+   * @returns all localization constants for the specified languageFullCode.
+   */
+  #getLocalizationItems(languageFullCode: string) {
+    const localizationItems: string[] = []
+    Object.entries(this.value[languageFullCode]).forEach(([componentKey, allComponentsLocalizationConstants]) => {
+      Object.entries(allComponentsLocalizationConstants ?? {}).forEach(([type, componentLocalizationConstants]) => {
+        Object.entries(componentLocalizationConstants ?? {}).forEach(([propertyName, localizationConstant]) => {
+          if (localizationConstant) localizationItems.push(`${componentKey}_${type}_${propertyName} = ${localizationConstant}`)
+        })
+      })
+    })
+    return localizationItems
   }
 }

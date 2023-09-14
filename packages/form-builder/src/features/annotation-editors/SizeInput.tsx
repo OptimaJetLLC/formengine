@@ -17,7 +17,7 @@ const options = toLabeledValues([...SizeUnits, ...SizeKeywords, OtherUnit], fals
  * @returns the React element.
  */
 const SizeInput = (props: AnnotationEditorProps) => {
-  const {value: CSSValue, onChange, annotation, onClean} = props
+  const {value: CSSValue, onChange, onClean} = props
   const {value, unit} = parseCSSValue(CSSValue)
 
   const handleValueChange = (value: InputValue) => onChange(makeCSSValue(value, unit))
@@ -28,7 +28,7 @@ const SizeInput = (props: AnnotationEditorProps) => {
     : <InputNumber value={value} size={'xs'} onChange={handleValueChange}/>
 
   return (
-    <LabeledProperty annotation={annotation}>
+    <LabeledProperty {...props}>
       <Container>
         {isNeedValue(unit) && input}
         <SPicker

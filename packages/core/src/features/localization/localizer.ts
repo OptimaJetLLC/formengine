@@ -2,6 +2,7 @@ import {FluentBundle, FluentResource} from '@fluent/bundle'
 import {FluentVariable} from '@fluent/bundle/esm/bundle.js'
 import {ComponentStore, isLocalizedProperty} from '../../stores/ComponentStore'
 import {Form} from '../../stores/Form'
+import type {LocalizationType} from '../../stores/LocalizationStore'
 import {getFluentCompatibleId} from './getFluentCompatibleId'
 import {Language} from './types'
 
@@ -83,9 +84,10 @@ export const testFluentLocalization = (request: LocalizationTestRequest): Locali
  * @param form the form.
  * @param language the displayed language.
  * @param componentStore the full state of a localizable component.
+ * @param type the localization type.
  * @returns the object containing only the localized props of the specified component.
  */
-export const localizeProperties = (form: Form, language: Language, componentStore: ComponentStore) => {
+export const localizeProperties = (form: Form, language: Language, componentStore: ComponentStore, type: LocalizationType = 'component') => {
   const componentTree = form.componentTree
   const fluentBundle = form.localization.getFluentBundle(language.fullCode)
 
@@ -100,7 +102,8 @@ export const localizeProperties = (form: Form, language: Language, componentStor
     const componentProperty = componentStore.props[value]
     if (!isLocalizedProperty(componentProperty)) return
 
-    const messageId = getFluentCompatibleId(`${componentStore.key}_${value}`)
+    const messageId = getFluentCompatibleId(`${componentStore.key}_${type}_${value}`)
+
     let message = fluentBundle.getMessage(messageId)
     if (!message && needConsiderDefaultLanguage && defaultBundle) {
       message = defaultBundle.getMessage(messageId)

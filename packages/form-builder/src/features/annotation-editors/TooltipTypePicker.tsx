@@ -13,7 +13,7 @@ import type {AnnotationEditorProps} from './AnnotationEditorProps'
  * @returns the React element.
  */
 export const TooltipTypePicker = observer((props: AnnotationEditorProps) => {
-  const {value, onChange, annotation, onClean} = props
+  const {value, onChange, onClean} = props
   const viewerProps = useViewerProps()
   const tooltipType = useTooltipType()
   const data = viewerProps.view.tooltips.map(name => {
@@ -23,7 +23,7 @@ export const TooltipTypePicker = observer((props: AnnotationEditorProps) => {
     } as ItemDataType
   })
 
-  return <LabeledProperty annotation={annotation}>
+  return <LabeledProperty {...props}>
     <SInputPicker value={value ?? tooltipType ?? ''} data={data} onChange={onChange} onClean={onClean}
                   block cleanable size={'xs'}/>
   </LabeledProperty>

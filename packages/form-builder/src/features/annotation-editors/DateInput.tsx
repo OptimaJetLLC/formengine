@@ -8,9 +8,9 @@ import type {AnnotationEditorProps} from './AnnotationEditorProps'
  * @returns the React element.
  */
 export const DateInput = (props: AnnotationEditorProps) => {
-  const {onChange, onClean, value, annotation} = props
+  const {onChange, onClean, value} = props
 
-  return <LabeledProperty annotation={annotation}>
+  return <LabeledProperty {...props}>
     <DatePicker editable={false} cleanable={true} placement={'auto'}
                 value={value} onChange={onChange} onClean={onClean}/>
   </LabeledProperty>

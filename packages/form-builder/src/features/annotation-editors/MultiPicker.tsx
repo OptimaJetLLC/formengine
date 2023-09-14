@@ -33,7 +33,7 @@ export const MultiPicker = (props: AnnotationEditorProps) => {
   const {value, onChange, annotation, onClean} = props
   const data = prepareData(annotation as PropertyAn, value)
 
-  return <LabeledProperty annotation={annotation}>
+  return <LabeledProperty {...props}>
     <STagPicker value={value ?? []} data={data} onChange={onChange} onClean={onClean}
                 cleanable creatable size={'xs'}/>
   </LabeledProperty>

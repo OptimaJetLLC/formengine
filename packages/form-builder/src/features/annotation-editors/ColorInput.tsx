@@ -17,8 +17,8 @@ type RgbColor = { r: number; g: number; b: number; a: number } | undefined
  * @returns the React element.
  */
 export const ColorInput = (props: AnnotationEditorProps) => {
-  const {value, onChange, onClean, annotation} = props
-  return <LabeledProperty annotation={annotation}>
+  const {value, onChange, onClean} = props
+  return <LabeledProperty {...props}>
     <SColorPicker>
       <ColorPicker value={rgbFromString(value) ?? PLACEHOLDER_COLOR} onChange={({rgb}) => onChange(rgbToString(rgb))}/>
       {!!value && <SButton onClick={onClean} size={'xs'}>

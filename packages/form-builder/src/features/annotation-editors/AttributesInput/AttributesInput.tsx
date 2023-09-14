@@ -51,7 +51,7 @@ export const AttributesInput = (props: AnnotationEditorProps) => {
   )
 
   return <>
-    <LabeledProperty annotation={props.annotation}>
+    <LabeledProperty {...props}>
       {changed && confirmButton}
     </LabeledProperty>
     <EditableTable data={value ?? []} onChange={handleChange} columns={COLUMNS}/>

@@ -11,7 +11,7 @@ import type {AnnotationEditorProps} from './AnnotationEditorProps'
 export const RadioInput = (props: AnnotationEditorProps) => {
   const {value, onChange, annotation} = props
   return (
-    <LabeledProperty annotation={annotation}>
+    <LabeledProperty {...props}>
       <RadioButtons items={(annotation as PropertyAn).data} onChange={onChange} value={value}/>
     </LabeledProperty>
   )

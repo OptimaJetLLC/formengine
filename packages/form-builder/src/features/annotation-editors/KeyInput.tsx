@@ -17,7 +17,7 @@ import {Hinted} from './Hinted'
  */
 export const KeyInput = observer((props: AnnotationEditorProps) => {
   const viewerStore = useStore()
-  const {value, onChange, annotation, showError} = props
+  const {value, onChange, showError} = props
   const [canApply, setCanApply] = useState(false)
   const [valueToApply, setValueToApply] = useState(value)
   const getLabel = useTranslationPart('propertiesEditor')
@@ -49,7 +49,7 @@ export const KeyInput = observer((props: AnnotationEditorProps) => {
   }
 
   return (
-    <LabeledProperty annotation={annotation}>
+    <LabeledProperty {...props}>
       <InputGroup size={'xs'}>
         <Input value={valueToApply} onChange={inputOnChange}/>
         <Hinted hint={getLabel('applyKey')}>

@@ -4,19 +4,13 @@ import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
 import * as faGlobe from '@fortawesome/free-solid-svg-icons/faGlobe.js'
 import * as faEdit from '@fortawesome/free-solid-svg-icons/faMarker.js'
-import {
-  ComponentProperty,
-  isFunctionalProperty,
-  isLocalizedProperty,
-  namedObserver,
-  useComponentData,
-  useStore
-} from '@react-form-builder/core'
-import {cloneElement, ComponentProps} from 'react'
+import {ComponentData, namedObserver} from '@react-form-builder/core'
+import {cloneElement} from 'react'
 import {IconButton} from 'rsuite'
 import useUniqueId from 'rsuite/esm/utils/useUniqueId.js'
 import {EditableProperty} from '../../stores/BuilderStore'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
+import {CalculableEditorProps} from '../annotation-editors/AnnotationEditorProps'
 import {Hinted, HintedLabel} from '../annotation-editors/Hinted'
 import {Annotation} from '../annotation/types/annotations/Annotation'
 import {useTranslationPart} from '../localization/hooks'
@@ -34,26 +28,29 @@ const afterRedAsterisk = css`
 /**
  * The properties of the React {@link LabeledProperty} component.
  */
-export interface LabeledPropertyProps extends ComponentProps<any> {
-  idPrefix?: string
+export interface LabeledPropertyProps extends CalculableEditorProps {
   annotation: Annotation
-  getEditableProperty?: () => EditableProperty
+  componentData: ComponentData
+  children?: any
+  style?: any
 }
 
-interface CodeButtonProps {
-  currentEditableProperty: EditableProperty
-  getEditableProperty: () => EditableProperty
+/**
+ * Represents the properties of a Code Button component.
+ */
+export interface CodeButtonProps extends CalculableEditorProps {
+  annotation: Annotation
+  componentData: ComponentData
 }
 
-const CodeButton = namedObserver('CodeButton', ({currentEditableProperty, getEditableProperty}: CodeButtonProps) => {
+const CodeButton = namedObserver('CodeButton', (props: CodeButtonProps) => {
+  const {annotation, getComputeCode, setComputeCode, disableCompute, getComputeType, componentData} = props
   const store = useBuilderStore()
-  const viewerStore = useStore()
-  const property = currentEditableProperty.property
-  const annotation = currentEditableProperty.annotation
-  const hasCode = property?.fnSource
-  const hasFluentLocalization = viewerStore.form.localization.hasComponentProperty(currentEditableProperty.componentKey, annotation.key)
-  const useFn = isFunctionalProperty(property)
-  const useFluentLocalization = isLocalizedProperty(property)
+  const hasCode = !!getComputeCode('function')
+  const hasFluentLocalization = !!getComputeCode('localization')
+  const calculableType = getComputeType()
+  const useFn = calculableType === 'function'
+  const useFluentLocalization = calculableType === 'localization'
 
   const getLabel = useTranslationPart('propertiesEditor.codeButton')
 
@@ -83,7 +80,7 @@ const CodeButton = namedObserver('CodeButton', ({currentEditableProperty, getEdi
   }
 
   const handleClick = () =>
-    store.currentEditable = (store.currentEditable as EditableProperty)?.annotation === annotation ? undefined : getEditableProperty()
+    store.currentEditable = new EditableProperty(disableCompute, setComputeCode, getComputeCode, getComputeType, annotation, componentData.key)
 
   return <Hinted hint={hint}>
     <SIconButton onClick={handleClick} disabled={!annotation.calculable}
@@ -102,25 +99,15 @@ const CodeButton = namedObserver('CodeButton', ({currentEditableProperty, getEdi
  * @param props.props the other properties of the component.
  * @returns the React element.
  */
-export const LabeledProperty = ({idPrefix, annotation, getEditableProperty, children, ...props}: LabeledPropertyProps) => {
-  const id = useUniqueId(idPrefix || 'id-')
+export const LabeledProperty = (props: LabeledPropertyProps) => {
+  const {annotation, children, style} = props
+  const id = useUniqueId('id-')
   const getLabel = useTranslationPart(`annotation.${annotation.key}`)
-  const {store} = useComponentData()
-
-  const defaultGetEditableProperty = () => {
-    if (getEditableProperty) return getEditableProperty()
-    return new EditableProperty(store.key, annotation, (property: ComponentProperty) => {
-      const storedProperty = store.props[annotation.key] || {value: undefined}
-      store.props[annotation.key] = Object.assign(storedProperty, property)
-      return store.props[annotation.key]
-    }, store.props[annotation.key])
-  }
-
   const className = annotation.required ? afterRedAsterisk : undefined
 
-  return <LabeledInput {...props}>
+  return <LabeledInput style={style}>
     <Columns gap={10} style={{alignItems: 'center'}}>
-      <CodeButton currentEditableProperty={defaultGetEditableProperty()} getEditableProperty={defaultGetEditableProperty}/>
+      <CodeButton {...props}/>
       <HintedLabel htmlFor={id} hint={getLabel('hint') || annotation.hint} className={className}>
         <>{getLabel('name') || annotation.name}</>
       </HintedLabel>

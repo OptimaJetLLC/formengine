@@ -4,7 +4,6 @@ import {ComponentStore} from '../../stores/ComponentStore'
 import {namedObserver} from '../../utils'
 import {useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
-import {getKey} from '../../utils/getKey'
 import {useTooltipType} from '../../utils/useTooltipType'
 import {Model} from '../define'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
@@ -44,8 +43,8 @@ const ComponentTooltip = namedObserver('ComponentTooltip', ({tooltipDefinition, 
   const viewerStore = useStore()
   const wrappedComponentData = useComponentData()
   const wrappedComponentStore = wrappedComponentData.store
-  const localize = viewerStore.localizeComponent.bind(viewerStore)
-  const tooltipKey = getKey()
+  const localize = viewerStore.localizeComponent.bind(viewerStore, 'tooltip')
+  const tooltipKey = wrappedComponentData.key
 
   const tooltipComponentStore = new ComponentStore(tooltipKey, tooltipDefinition.type)
 

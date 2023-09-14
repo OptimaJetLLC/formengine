@@ -18,7 +18,7 @@ const editors: Record<ComponentPropertyComputeType, any> = {
 export const ComputedPropertyEditor = namedObserver('ComputedPropertyEditor', ({property}: { property: EditableProperty }) => {
   const builderStore = useBuilderStore()
   const {t} = useTranslation()
-  const initialComputeType = property.property?.computeType
+  const initialComputeType = property.getComputeType()
   const [computeType, setComputeType] = useState<ComponentPropertyComputeType>(initialComputeType ?? 'function')
   const {calculable, localizable, name} = property.annotation
 
@@ -33,7 +33,7 @@ export const ComputedPropertyEditor = namedObserver('ComputedPropertyEditor', ({
     {label: t('bottomPanel.localization'), value: 'localization'}
   ]
 
-  const reset = () => property.saveProperty({computeType: undefined})
+  const reset = () => property.disableCompute()
 
   return <>
     <Header>

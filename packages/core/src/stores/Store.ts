@@ -27,7 +27,7 @@ import {ComponentStore, isFunctionalProperty, isLocalizedProperty} from './Compo
 import {Form} from './Form'
 import type {FormViewerValidationRules} from './FormViewerValidationRules'
 import type {IStore} from './IStore'
-import {LocalizationStore} from './LocalizationStore'
+import {LocalizationStore, LocalizationType} from './LocalizationStore'
 import type {PersistedForm} from './PersistedForm'
 
 const propertiesToFix: Record<string, string[]> = {
@@ -352,13 +352,14 @@ export class Store implements IStore, IFormViewer {
   }
 
   /**
-   * Localizes the properties of the component.
-   * @param componentStore the component settings.
+   * Localizes a component store based on the given localization type. If an external localizer is available, it will be used.
+   * @param type the type of localization.
+   * @param componentStore c the component settings.
    * @returns the Record with the localized properties.
    */
-  localizeComponent(componentStore: ComponentStore) {
+  localizeComponent(type: LocalizationType, componentStore: ComponentStore) {
     if (this.externalLocalizer) return this.externalLocalizer(componentStore, this.displayedLanguage)
-    return localizeProperties(this.form, this.displayedLanguage, componentStore)
+    return localizeProperties(this.form, this.displayedLanguage, componentStore, type)
   }
 }
 
@@ -370,7 +371,7 @@ function updateFnValue(viewerStore: Store) {
       return [true, value]
     }
     if (isLocalizedProperty(property)) {
-      const props = viewerStore.localizeComponent(component)
+      const props = viewerStore.localizeComponent('component', component)
       const value = props[key]
       return [true, value]
     }

@@ -44,7 +44,7 @@ export const TooltipPropertiesEditor = observer(() => {
       <SCheckbox checked={useTooltip} onChange={(_, checked) => setUseTooltip(checked)} id={id}></SCheckbox>
     </LabeledInput>
     {useTooltip &&
-      <PropertyBlock annotations={tooltipAnnotations} context={selected?.tooltipProps}/>
+      <PropertyBlock propertyBlockType={'tooltip'} annotations={tooltipAnnotations} context={selected?.tooltipProps}/>
     }
   </>
 })

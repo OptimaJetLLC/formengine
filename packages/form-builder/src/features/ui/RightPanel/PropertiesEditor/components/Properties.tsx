@@ -27,6 +27,11 @@ const SubSectionMap: Record<string, SubSection> = {
   renderWhen: SubSection.Additional,
 }
 
+/**
+ * Represents the type of property block.
+ */
+export type PropertyBlockType = 'component' | 'tooltip'
+
 const bySection = (section: string) => (annotation: Annotation) => (SectionMap[annotation.editor] ?? Section.Main) === section
 
 const bySubSection = (section?: string) => (annotation: Annotation) => SubSectionMap[annotation.editor] === section
@@ -99,26 +104,37 @@ const StyleBlock = observer(({annotations, store}: { annotations: Annotation[], 
 })
 
 /**
+ * Represents the properties of PropertyBlock component.
+ */
+export interface PropertyBlockProps {
+  annotations: Annotation[],
+  context?: object,
+  initContext?: () => Record<string, any>,
+  header?: string,
+  propertyBlockType?: PropertyBlockType
+}
+
+/**
  * React form builder component that displays the properties of the component.
  * @param props the React component properties.
  * @param props.annotations the array of form builder component metadata.
  * @param props.context the properties of the form builder component.
  * @param props.initContext the function initializes the context for the first change.
  * @param props.header the property block title.
+ * @param props.propertyBlockType the type of the property block.
  * @returns the React element.
  */
-export const PropertyBlock = ({annotations, context, initContext, header}: {
-  annotations: Annotation[],
-  context?: object,
-  initContext?: () => Record<string, any>,
-  header?: string
-}) => {
+export const PropertyBlock = ({annotations, context, initContext, header, propertyBlockType = 'component'}: PropertyBlockProps) => {
   if (!context) return null
 
   return <>
     {!!header && <h6>{header}</h6>}
-    {annotations.map(annotation => <PropertyEditorWrapper key={annotation.key} annotation={annotation} context={context}
-                                                          initContext={initContext}/>)}
+    {annotations.map(annotation => <PropertyEditorWrapper
+      key={annotation.key}
+      propertyBlockType={propertyBlockType}
+      annotation={annotation}
+      context={context}
+      initContext={initContext}/>)}
   </>
 }
 

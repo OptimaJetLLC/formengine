@@ -19,7 +19,7 @@ export interface CalculableCodeEditorProps {
  */
 export const CalculableCodeEditor = ({editableProperty, onClose}: CalculableCodeEditorProps) => {
   const saveCode = (sourceCode: string) => {
-    editableProperty.saveProperty({computeType: 'function', fnSource: sourceCode})
+    editableProperty.setComputeCode(sourceCode, 'function')
   }
 
   const functionHeader = `/**
@@ -31,7 +31,7 @@ function Calculation (form) {`
   return <GenericCodeEditor editorKey={editableProperty.annotation.key}
                             beginContextLine={functionHeader}
                             endContextLine="}"
-                            source={editableProperty.property?.fnSource}
+                            source={editableProperty.getComputeCode('function')}
                             onSave={saveCode}
                             onClose={onClose}
                             onCompile={compileFn}

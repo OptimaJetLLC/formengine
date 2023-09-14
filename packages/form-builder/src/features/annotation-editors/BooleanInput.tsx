@@ -9,8 +9,8 @@ import type {AnnotationEditorProps} from './AnnotationEditorProps'
  * @returns the React element.
  */
 export const BooleanInput = (props: AnnotationEditorProps) => {
-  const {value, onChange, annotation} = props
-  return <LabeledProperty annotation={annotation}>
+  const {value, onChange} = props
+  return <LabeledProperty {...props}>
     <SCheckbox checked={!!value} onChange={(value, checked) => onChange(checked)}/>
   </LabeledProperty>
 }

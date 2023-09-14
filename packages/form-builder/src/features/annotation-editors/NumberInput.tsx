@@ -21,7 +21,7 @@ const NumberInput = (props: AnnotationEditorProps) => {
   const inputNumberProps = {...annotation.editorProps, value}
   const closeButton = <Close onClick={onClean} style={{cursor: 'pointer'}}/>
 
-  return <LabeledProperty annotation={annotation}>
+  return <LabeledProperty {...props}>
     <SNumberInput {...inputNumberProps} onChange={handleChange} size={'xs'} postfix={closeButton}/>
   </LabeledProperty>
 }

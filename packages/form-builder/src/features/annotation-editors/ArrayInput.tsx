@@ -14,7 +14,7 @@ export const ArrayInput = (props: AnnotationEditorProps) => {
   const columns = makeColumns(annotation.editorProps?.columns ?? DEFAULT_COLUMNS)
 
   return <>
-    <LabeledProperty annotation={annotation}/>
+    <LabeledProperty {...props}/>
     <EditableTable data={value} onChange={onChange} columns={columns}/>
   </>
 }

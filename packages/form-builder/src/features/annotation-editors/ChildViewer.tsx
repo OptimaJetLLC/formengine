@@ -15,7 +15,7 @@ export const ChildViewer = (props: AnnotationEditorProps) => {
     child.slot === annotation.key || !child.slot && annotation.key === 'children'
 
   return (
-    <LabeledProperty annotation={annotation}>
+    <LabeledProperty {...props}>
       <Sul>
         {store.children?.filter(isChild)
           .map((item) => (<li key={item.key}>{item.key}</li>))}

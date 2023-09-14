@@ -364,17 +364,23 @@
   "localization": {
     "en-US": {
       "comment": {
-        "placeholder": "Enter your text here"
+        "component": {
+          "placeholder": "Enter your text here"
+        }
       }
     },
     "de-DE": {
       "comment": {
-        "placeholder": "Geben Sie hier Ihren Text ein"
+        "component": {
+          "placeholder": "Geben Sie hier Ihren Text ein"
+        }
       }
     },
     "ar-EG": {
       "comment": {
-        "placeholder": "أدخل النص هنا"
+        "component": {
+          "placeholder": "أدخل النص هنا"
+        }
       }
     }
   },

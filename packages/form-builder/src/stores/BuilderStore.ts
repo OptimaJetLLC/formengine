@@ -2,7 +2,7 @@ import {
   ActionDefinition,
   BiDi,
   ComponentData,
-  ComponentProperty,
+  ComponentPropertyComputeType,
   ComponentStore,
   Language,
   NamedActionDefinition,
@@ -16,6 +16,7 @@ import {
 import {assign, cloneDeep} from 'lodash-es'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
 import {debounceTime, distinctUntilChanged, Subject} from 'rxjs'
+import {CalculableEditorProps} from '../features/annotation-editors/AnnotationEditorProps'
 import type {
   CustomActionEditorData,
   CustomActionEditorProps
@@ -46,19 +47,23 @@ function toPrettyJsonString(value: any) {
 /**
  * Parameters of the editable component property.
  */
-export class EditableProperty {
+export class EditableProperty implements CalculableEditorProps {
   /**
    * Creates the editable property settings.
-   * @param componentKey the component key.
-   * @param annotation the {@link Annotation} instance.
-   * @param saveProperty the function for save property settings.
-   * @param property the {@link ComponentProperty} instance.
+   * @param disableCompute the function to set the property as not computed.
+   * @param setComputeCode the function to set the code value.
+   * @param getComputeCode the function to get the code value.
+   * @param getComputeType the function to get the computed type of the property.
+   * @param annotation the annotation object for the property.
+   * @param componentKey the key of the component that the property belongs to.
    */
   constructor(
-    readonly componentKey: string,
+    readonly disableCompute: () => void,
+    readonly setComputeCode: (value: string, type: ComponentPropertyComputeType) => void,
+    readonly getComputeCode: (type: ComponentPropertyComputeType) => string,
+    readonly getComputeType: () => ComponentPropertyComputeType | undefined,
     readonly annotation: Annotation,
-    readonly saveProperty: (property: ComponentProperty) => ComponentProperty,
-    readonly property?: ComponentProperty
+    readonly componentKey: string
   ) {
   }
 }
@@ -407,13 +412,6 @@ export class BuilderStore {
    */
   get isRTL(): boolean {
     return this.formBuilderLanguage.bidi === BiDi.RTL
-  }
-
-  /**
-   * @returns true if the active language in the form builder is the default one.
-   */
-  get isDefaultLanguage() {
-    return this.localizationLanguage === this.defaultLanguage
   }
 
   /**
