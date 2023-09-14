@@ -119,7 +119,7 @@ export const CodeEditor = observer((props: CodeEditorProps) => {
           wordWrap: 'on',
           ...props.options
         }}
-        theme={theme === 'light' ? 'light' : 'vs-dark'}
+        theme={theme === 'light' ? 'vs-extended' : 'vs-dark'}
       />
     </LtrDiv>
   )

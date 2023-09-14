@@ -98,4 +98,29 @@ loader.init().then(monaco => {
       ],
     }
   })
+  monaco.editor.defineTheme('vs-extended', vsExtendedTheme as any)
 })
+
+const vsExtendedTheme = {
+  base: 'vs',
+  inherit: true,
+  rules: [
+    {
+      token: 'string.fluent',
+      foreground: '008000'
+    },
+    {
+      token: 'variable.fluent',
+      foreground: '1d087a'
+    },
+    {
+      token: 'regexp.fluent',
+      foreground: '1d087a'
+    },
+    {
+      token: 'constant.fluent',
+      foreground: '4978ad'
+    },
+  ],
+  colors: {}
+}
