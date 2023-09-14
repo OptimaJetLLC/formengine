@@ -44,6 +44,7 @@
         "i18next-browser-languagedetector": "^6.1.2",
         "i18next-resources-to-backend": "^1.0.0",
         "jszip": "^3.10.1",
+        "re-resizable": "^6.9.11",
         "react-dnd": "^14.0.5",
         "react-dnd-html5-backend": "^14.1.0",
         "react-i18next": "^11.15.3",

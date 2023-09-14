@@ -1,13 +1,16 @@
-import styled from '@emotion/styled'
+import {css} from '@emotion/css'
 import {observer} from 'mobx-react'
-import {EditableAction, CustomValidationCode, EditableProperty} from '../../../stores/BuilderStore'
+import type {ResizableProps} from 're-resizable'
+import {Resizable} from 're-resizable'
+import {CustomValidationCode, EditableAction, EditableProperty} from '../../../stores/BuilderStore'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {CustomActionEditor} from '../../annotation-editors/EventEditor/components/CustomActionEditor'
 import {ComputedPropertyEditor} from './ComputedPropertyEditor'
 import {CustomValidationCodeEditor} from './CustomValidationCodeEditor'
 
 export const BottomPanel = observer(() => {
-  const {currentEditable} = useBuilderStore()
+  const store = useBuilderStore()
+  const {currentEditable, bottomPanelHeight} = store
 
   let editor = null
   if (currentEditable instanceof EditableAction) {
@@ -24,14 +27,21 @@ export const BottomPanel = observer(() => {
 
   if (!editor) return null
 
-  return <PanelContainer>{editor}</PanelContainer>
+  const resizableProps: ResizableProps = {
+    className: resizableStyles,
+    enable: {top: true},
+    onResizeStop: (e, direction, ref, delta) => store.bottomPanelHeight += delta.height,
+    defaultSize: {width: 'initial', height: bottomPanelHeight},
+    minHeight: 120,
+    maxHeight: '92vh'
+  }
+
+  return <Resizable {...resizableProps}>{editor}</Resizable>
 })
 
-const PanelContainer = styled.div`
-  position: relative;
+const resizableStyles = css`
   display: flex;
   flex-direction: column;
-  height: 380px;
   width: 100%;
   padding: 10px;
   gap: 10px;

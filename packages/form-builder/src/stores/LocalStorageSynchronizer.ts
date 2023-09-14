@@ -4,6 +4,7 @@ import {getSystemTheme} from '../utils/getSystemTheme'
 import {parseJson} from '../utils/parseJson'
 import type {BuilderTheme} from '../utils/types'
 import {BuilderStore} from './BuilderStore'
+import {defaultBottomPanelHeight, defaultOpenedPanels, defaultViewMode} from './constants'
 
 /**
  * Synchronizes and saves form builder settings to the browser's localStorage.
@@ -17,10 +18,13 @@ export class LocalStorageSynchronizer {
    */
   constructor(builderStore: BuilderStore) {
     const resolutionKey = 'resolution'
-    builderStore.viewMode = this.getItem<ViewMode>(resolutionKey, 'desktop')
+    builderStore.viewMode = this.getItem<ViewMode>(resolutionKey, defaultViewMode)
 
     const openedPanelsKey = 'openedPanels'
-    builderStore.openedPanels = parseJson(this.getItem<string>(openedPanelsKey)) ?? ['left', 'right']
+    builderStore.openedPanels = parseJson(this.getItem<string>(openedPanelsKey)) ?? defaultOpenedPanels
+
+    const bottomPanelHeightKey = 'bottomPanelHeight'
+    builderStore.bottomPanelHeight = parseJson(this.getItem<string>(bottomPanelHeightKey)) ?? defaultBottomPanelHeight
 
     const themeKey = 'theme'
     builderStore.theme = this.getItem<BuilderTheme>(themeKey, getSystemTheme())
@@ -38,6 +42,10 @@ export class LocalStorageSynchronizer {
       autorun(
         () => this.setItem(openedPanelsKey, JSON.stringify(builderStore.openedPanels)),
         {name: nameAutorun(className, 'saveOpenedPanels')}
+      ),
+      autorun(
+        () => this.setItem(bottomPanelHeightKey, builderStore.bottomPanelHeight),
+        {name: nameAutorun(className, 'saveBottomPanelHeight')}
       ),
       autorun(
         () => this.setItem(themeKey, builderStore.theme),

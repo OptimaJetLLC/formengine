@@ -9,7 +9,7 @@ import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import './config'
 
 const LtrDiv = ({children}: WrapperProps) => {
-  return <div dir="ltr" style={{width: '100%', height: '100%'}}>{children}</div>
+  return <div dir="ltr" style={{width: '100%', height: '100%', minHeight: 0}}>{children}</div>
 }
 
 interface CodeEditorProps {

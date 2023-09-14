@@ -55,7 +55,7 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
     setCompilationError(undefined)
   }, [props.source])
 
-  return <Rows gap={10}>
+  return <Rows gap={10} style={{minHeight: 0}}>
     <CodeEditor key={props.editorKey} beginContextLine={props.beginContextLine} endContextLine={props.endContextLine}
                 initialValue={initialValue} onChange={setSourceCode}/>
     <SDiv>

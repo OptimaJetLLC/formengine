@@ -42,7 +42,6 @@ const SFormContainer = styled(PanelContainer)`
   flex-direction: column;
   width: initial;
   margin-inline: 15px;
-  margin-bottom: 15px;
   padding: 12px;
   overflow: auto;
   transition: max-width .2s ease, max-height .2s ease, border-radius .2s ease;

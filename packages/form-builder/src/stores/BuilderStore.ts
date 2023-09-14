@@ -34,6 +34,7 @@ import type {FormBuilderProps} from '../FormBuilderProps'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {BuilderMode, BuilderTheme, InsertPosition} from '../utils/types'
 import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
+import {defaultBottomPanelHeight, defaultOpenedPanels, defaultViewMode} from './constants'
 import {uploadStringFile} from './fileUpload'
 import type {IFormStorage} from './IFormStorage'
 import {trackUndo} from './undo'
@@ -192,10 +193,11 @@ class BuilderUndoer {
  */
 export class BuilderStore {
   builderMode: BuilderMode = 'viewer'
-  viewMode: ViewMode = 'desktop'
+  viewMode: ViewMode = defaultViewMode
   landscapeMode?: boolean
   theme: BuilderTheme = getSystemTheme()
-  openedPanels: PanelPlacement[] = ['left', 'right']
+  openedPanels: PanelPlacement[] = defaultOpenedPanels
+  bottomPanelHeight = defaultBottomPanelHeight
 
   private readonly builderI18n: BuilderI18n
   formBuilderLanguage: Language

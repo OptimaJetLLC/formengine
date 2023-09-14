@@ -122,6 +122,7 @@ const EditorContainer = styled.div`
   display: flex;
   flex: 1;
   gap: 10px;
+  min-height: 0;
 `
 
 const Container = styled(Columns)`
