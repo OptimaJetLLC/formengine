@@ -1,4 +1,5 @@
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
+import {faBars} from '@fortawesome/free-solid-svg-icons'
 import * as faPrint from '@fortawesome/free-solid-svg-icons/faPrint.js'
 import * as faSave from '@fortawesome/free-solid-svg-icons/faSave.js'
 import * as faTrash from '@fortawesome/free-solid-svg-icons/faTrash.js'
@@ -7,8 +8,10 @@ import ExportIcon from '@rsuite/icons/Export.js'
 import FileDownloadIcon from '@rsuite/icons/FileDownload.js'
 import FileUploadIcon from '@rsuite/icons/FileUpload.js'
 import ImportIcon from '@rsuite/icons/Import.js'
+import {Ref} from 'react'
 import {useTranslation} from 'react-i18next'
-import {Dropdown} from 'rsuite'
+import {Dropdown, IconButton} from 'rsuite'
+import type {WithAsProps} from 'rsuite/esm/@types/common'
 import {uploadBinaryFile} from '../../../../stores/fileUpload'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../../components/Icons'
@@ -56,6 +59,9 @@ const ImportFormsButton = namedObserver('ImportFormsButton', () => {
   </Dropdown.Item>
 })
 
+const renderToggle = (props: WithAsProps, ref: Ref<any>) => <IconButton icon={<FaIcon icon={faBars}/>}  {...props} ref={ref} size={'sm'}
+                                                                        appearance={'primary'}/>
+
 export const Menu = namedObserver('Menu', () => {
   const builderStore = useBuilderStore()
   const {t} = useTranslation()
@@ -80,7 +86,7 @@ export const Menu = namedObserver('Menu', () => {
   }
 
   return <>
-    <Dropdown title={t('leftMenu.menu')} size={'sm'}>
+    <Dropdown title={t('leftMenu.menu')} size={'sm'} renderToggle={renderToggle}>
       <Dropdown.Item onSelect={builderStore.download.bind(builderStore)} icon={<FileDownloadIcon/>}>
         {t('leftMenu.download')}
       </Dropdown.Item>
