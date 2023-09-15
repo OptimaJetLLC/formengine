@@ -1,4 +1,4 @@
-import type {SchemaType, SchemaTypeMap} from '@react-form-builder/core'
+import type {SchemaType, SchemaTypeMap} from '../../../validation'
 import type {EditorType, Enum} from '../../types'
 import {ArrayBuilder} from './ArrayBuilder'
 import {BaseBuilder} from './BaseBuilder'

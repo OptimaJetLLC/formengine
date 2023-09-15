@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {array, define, string, toLabeledValues} from '@react-form-builder/builder/view'
+import {array, define, string, toLabeledValues} from '@react-form-builder/core'
 import type {ReactNode} from 'react'
 import type {InputPickerProps} from 'rsuite'
 import {Form, InputPicker, Loader} from 'rsuite'

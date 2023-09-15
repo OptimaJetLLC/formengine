@@ -1,9 +1,9 @@
 import styled from '@emotion/styled'
+import type {LabeledValue} from '@react-form-builder/core'
 import {IconProps} from '@rsuite/icons/lib/Icon.js'
 import {ReactElement} from 'react'
 import {Checkbox, IconButton, Input, InputPicker, Table} from 'rsuite'
 import {InnerCellProps} from 'rsuite-table/lib/Cell.js'
-import {LabeledValue} from '../../annotation/utils/LabeledValue'
 
 const {Cell} = Table
 

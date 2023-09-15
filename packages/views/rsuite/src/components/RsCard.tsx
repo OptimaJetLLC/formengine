@@ -1,4 +1,4 @@
-import {boolean, define, event, node, string} from '@react-form-builder/builder/view'
+import {boolean, define, event, node, string} from '@react-form-builder/core'
 import type {PanelProps} from 'rsuite'
 import {Panel} from 'rsuite'
 import {headerSize} from '../commonProperties'

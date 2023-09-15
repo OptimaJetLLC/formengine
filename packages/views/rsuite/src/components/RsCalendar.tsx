@@ -1,4 +1,4 @@
-import {boolean, date, define, event} from '@react-form-builder/builder/view'
+import {boolean, date, define, event} from '@react-form-builder/core'
 import {Calendar} from 'rsuite'
 
 export const rsCalendar = define(Calendar)

@@ -1,5 +1,5 @@
-import type {RuleValidator} from '@react-form-builder/core'
-import type {ErrorMap} from '../../../validation'
+import type {RuleValidator} from '../../../validation'
+import type {ErrorMap} from '../../../validation/ErrorMap'
 import {BaseBuilder} from './BaseBuilder'
 
 /**

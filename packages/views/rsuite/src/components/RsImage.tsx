@@ -1,4 +1,4 @@
-import {define, oneOf, size, string} from '@react-form-builder/builder/view'
+import {define, oneOf, size, string} from '@react-form-builder/core'
 import {ComponentProps} from 'react'
 import logo from '../../public/images/logo.png'
 import {backgroundColor} from '../commonProperties'

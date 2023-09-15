@@ -1,4 +1,4 @@
-import {boolean, define, event, oneOf, string} from '@react-form-builder/builder/view'
+import {boolean, define, event, oneOf, string} from '@react-form-builder/core'
 import {Button} from 'antd'
 
 export const antButton = define(Button, 'AntButton')

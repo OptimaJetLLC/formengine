@@ -1,6 +1,7 @@
-import {errorMessageModel, ErrorWrapperProps} from '@react-form-builder/core'
 import {string} from '../annotation'
-import {Meta, toArray} from '../define'
+import {toArray} from '../define'
+import {Meta} from '../define/utils/Meta'
+import {errorMessageModel, ErrorWrapperProps} from './components/DefaultErrorMessage'
 
 export const errorMessageMeta = new Meta(errorMessageModel.type,
   toArray<ErrorWrapperProps>({

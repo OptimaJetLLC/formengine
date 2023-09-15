@@ -1,5 +1,5 @@
 import {cx} from '@emotion/css'
-import {define, ErrorWrapperProps, string} from '@react-form-builder/builder/view'
+import {define, ErrorWrapperProps, string} from '@react-form-builder/core'
 import {Form} from 'rsuite'
 import type {TypeAttributes} from 'rsuite/esm/@types/common'
 import {placement} from '../commonProperties'

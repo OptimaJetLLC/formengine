@@ -1,5 +1,5 @@
 import {css, cx} from '@emotion/css'
-import {define, node, oneOf, size} from '@react-form-builder/builder/view'
+import {define, node, oneOf, size} from '@react-form-builder/core'
 import {forwardRef} from 'react'
 
 const isHorizontal = (element?: Element) => {

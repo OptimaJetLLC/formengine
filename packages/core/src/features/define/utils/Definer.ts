@@ -1,11 +1,11 @@
 import type {CSSObject} from '@emotion/serialize/dist/declarations/types'
-import {ActionsInitializer, Model} from '@react-form-builder/core'
-import {ComponentType, ReactNode} from 'react'
+import type {ComponentType, ReactNode} from 'react'
 import {Annotation} from '../../annotation/types/annotations/Annotation'
 import {modules} from '../constants'
-import type {Annotations} from '../types'
-import {BuilderComponent} from './BuilderComponent'
+import type {ActionsInitializer, Annotations} from '../types'
+import type {BuilderComponent} from './BuilderComponent'
 import {Meta} from './Meta'
+import {Model} from './Model'
 import {toArray} from './toArray'
 
 type DefinerData<T extends object> = {

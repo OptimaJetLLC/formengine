@@ -1,4 +1,4 @@
-import {array, boolean, define, number, oneOf, string} from '@react-form-builder/builder/view'
+import {array, boolean, define, number, oneOf, string} from '@react-form-builder/core'
 import {isString} from '@react-form-builder/core'
 import type {NumericFormatProps} from 'react-number-format'
 import {NumericFormat} from 'react-number-format'

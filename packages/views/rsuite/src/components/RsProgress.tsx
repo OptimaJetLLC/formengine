@@ -1,4 +1,4 @@
-import {boolean, color, define, number, oneOf, string} from '@react-form-builder/builder/view'
+import {boolean, color, define, number, oneOf, string} from '@react-form-builder/core'
 import {Progress} from 'rsuite'
 
 const rsCommonProgressProps = {

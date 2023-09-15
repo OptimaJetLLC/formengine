@@ -1,7 +1,7 @@
+import {toLabeledValues} from '@react-form-builder/core'
 import {Check} from '@rsuite/icons'
 import {useEffect, useState} from 'react'
 import {IconButton} from 'rsuite'
-import {toLabeledValues} from '../../annotation/utils/LabeledValue'
 import {EditableTable, makeColumns, SelectCell} from '../../components/EditableTable'
 import LabeledProperty from '../../components/LabeledProperty'
 import {useTranslationPart} from '../../localization/hooks'

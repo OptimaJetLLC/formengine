@@ -1,5 +1,4 @@
-import {ComponentData, ComponentPropertyComputeType} from '@react-form-builder/core'
-import {Annotation} from '../annotation/types/annotations/Annotation'
+import {Annotation, ComponentData, ComponentPropertyComputeType} from '@react-form-builder/core'
 
 /**
  * Represents the props used to edit a calculable property.

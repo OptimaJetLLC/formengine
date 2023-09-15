@@ -1,4 +1,4 @@
-import {boolean, define, event, number, string} from '@react-form-builder/builder/view'
+import {boolean, define, event, number, string} from '@react-form-builder/core'
 import type {InputProps} from 'rsuite'
 import {Input} from 'rsuite'
 import {readOnly, size} from '../commonProperties'

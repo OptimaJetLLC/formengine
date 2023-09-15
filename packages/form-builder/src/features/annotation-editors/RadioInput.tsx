@@ -1,4 +1,4 @@
-import {PropertyAn} from '../annotation/types/annotations/PropertyAn'
+import {PropertyAn} from '@react-form-builder/core'
 import LabeledProperty from '../components/LabeledProperty'
 import {RadioButtons} from '../components/RadioButtons'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'

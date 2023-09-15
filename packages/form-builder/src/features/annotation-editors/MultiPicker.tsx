@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
+import {PropertyAn} from '@react-form-builder/core'
 import {startCase} from 'lodash-es'
 import {TagPicker} from 'rsuite'
 import type {ItemDataType} from 'rsuite/esm/@types/common'
-import {PropertyAn} from '../annotation/types/annotations/PropertyAn'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 

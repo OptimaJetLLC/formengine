@@ -1,4 +1,4 @@
-import type {RuleValidator} from '@react-form-builder/core'
+import type {RuleValidator} from '../../validation'
 
 /**
  * Returns true if the component key is unique across the entire component tree.

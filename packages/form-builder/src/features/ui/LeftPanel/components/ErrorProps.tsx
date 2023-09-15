@@ -1,9 +1,8 @@
-import {ComponentDataProvider, namedObserver} from '@react-form-builder/core'
+import {Annotation, ComponentDataProvider, namedObserver} from '@react-form-builder/core'
 import {useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Checkbox, Input} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
-import {Annotation} from '../../../annotation/types/annotations/Annotation'
 import {PropertyBlock} from '../../RightPanel/PropertiesEditor/components/Properties'
 
 /**

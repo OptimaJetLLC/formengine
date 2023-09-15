@@ -1,6 +1,6 @@
-import {DidMountEvent, WillUnmountEvent} from '@react-form-builder/core'
 import {event, htmlAttributes, renderWhen, tooltipProps, validation} from '../annotation'
 import {Annotation} from '../annotation/types/annotations/Annotation'
+import {DidMountEvent, WillUnmountEvent} from '../event'
 
 // todo rename to CommonBuilderComponentProperties?
 /**

@@ -1,6 +1,8 @@
-import {generateTemplateTypeName} from '@react-form-builder/core'
 import {boolean} from '../annotation'
-import {Meta, modules, toArray} from '../define'
+import {toArray} from '../define'
+import {modules} from '../define/constants'
+import {Meta} from '../define/utils/Meta'
+import {generateTemplateTypeName} from '../ui/templateUtil'
 
 interface TemplateProps {
   storeDataInParentForm?: boolean

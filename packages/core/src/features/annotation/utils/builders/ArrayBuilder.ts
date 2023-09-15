@@ -1,4 +1,4 @@
-import type {SchemaType} from '@react-form-builder/core'
+import type {SchemaType} from '../../../validation'
 import {TypedBuilder} from './TypedBuilder'
 
 /**

@@ -1,7 +1,7 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
+import {toLabeledValues} from '@react-form-builder/core'
 import {Input, InputNumber, InputPicker} from 'rsuite'
-import {toLabeledValues} from '../annotation/utils/LabeledValue'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 

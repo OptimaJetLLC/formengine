@@ -1,5 +1,5 @@
 import {InputCell} from '@react-form-builder/builder'
-import {array, define, useComponentData} from '@react-form-builder/builder/view'
+import {array, define, useComponentData} from '@react-form-builder/core'
 import type {NavProps} from 'rsuite'
 import {Nav} from 'rsuite'
 import {navProps} from '../commonProperties'

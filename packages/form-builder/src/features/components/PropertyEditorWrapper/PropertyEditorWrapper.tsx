@@ -1,11 +1,9 @@
-import {ComponentProperty, ComponentPropertyComputeType, useComponentData} from '@react-form-builder/core'
+import {Annotation, ComponentProperty, ComponentPropertyComputeType, isProperty, useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {createElement, useCallback, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {EditorMap} from '../../annotation-editors'
 import type {AnnotationEditorProps} from '../../annotation-editors/AnnotationEditorProps'
-import {Annotation} from '../../annotation/types/annotations/Annotation'
-import {isProperty} from '../../annotation/types/annotations/PropertyAn'
 import {PropertyBlockType} from '../../ui/RightPanel/PropertiesEditor/components/Properties'
 import {Erroneous} from './Erroneous'
 

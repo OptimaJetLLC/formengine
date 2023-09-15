@@ -1,11 +1,12 @@
-import {generateTemplateTypeName, slotModel, View} from '@react-form-builder/core'
 import {Annotation} from '../../annotation/types/annotations/Annotation'
 import {internalErrorMeta} from '../../components/internalErrorMeta'
 import {screenMeta} from '../../components/screenMeta'
-import {createTemplateMeta, slotMeta} from '../../template'
+import {createTemplateMeta, slotMeta, slotModel} from '../../template'
+import {generateTemplateTypeName} from '../../ui/templateUtil'
 import {errorMessageMeta} from '../../validation/errorMessageMeta'
 import {BuilderComponent} from './BuilderComponent'
 import {Meta} from './Meta'
+import {View} from './View'
 
 // todo to translation
 const templatesCategoryName = 'Templates'

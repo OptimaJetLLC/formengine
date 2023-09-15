@@ -1,4 +1,4 @@
-import {createView, Definer} from '@react-form-builder/builder/view'
+import {createView, Definer} from '@react-form-builder/core'
 import {antButton} from './components/AntButton'
 import {antTooltip} from './components/AtnTooltip'
 

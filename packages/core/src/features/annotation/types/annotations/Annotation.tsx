@@ -1,7 +1,7 @@
-import type {RuleValidator, SchemaType} from '@react-form-builder/core'
 import type {ReactNode} from 'react'
-import {ErrorMap} from '../../../validation'
+import type {RuleValidator, SchemaType} from '../../../validation'
 import type {EditorType} from '../index'
+import type {ErrorMap} from '../../../validation/ErrorMap'
 
 // todo rename to BuilderComponentPropertyMetadata
 /**

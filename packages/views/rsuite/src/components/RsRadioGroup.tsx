@@ -1,4 +1,4 @@
-import {array, boolean, define, event, LabeledValue, oneOf, string, toLabeledValues} from '@react-form-builder/builder/view'
+import {array, boolean, define, event, LabeledValue, oneOf, string, toLabeledValues} from '@react-form-builder/core'
 import {Radio, RadioGroup, RadioGroupProps} from 'rsuite'
 import {readOnly} from '../commonProperties'
 

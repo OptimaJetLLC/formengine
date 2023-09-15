@@ -1,4 +1,4 @@
-import {define, string} from '@react-form-builder/builder/view'
+import {define, string} from '@react-form-builder/core'
 import {createElement} from 'react'
 import {backgroundColor, headerSize, textStyles} from '../commonProperties'
 import {TextProps} from '../commonTypes'

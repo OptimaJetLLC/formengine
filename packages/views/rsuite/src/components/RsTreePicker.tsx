@@ -1,4 +1,4 @@
-import {define} from '@react-form-builder/builder/view'
+import {define} from '@react-form-builder/core'
 
 interface RsTreePickerProps {
 

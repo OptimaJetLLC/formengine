@@ -1,8 +1,7 @@
-import type {FormViewerProps} from '@react-form-builder/core'
+import {BuilderView} from '@react-form-builder/core'
+import type {EditorType, FormViewerProps} from '@react-form-builder/core'
 import type {ComponentType} from 'react'
 import type {AnnotationEditorProps} from './features/annotation-editors/AnnotationEditorProps'
-import type {EditorType} from './features/annotation/types'
-import {BuilderView} from './features/define/utils/BuilderView'
 import type {FormBuilderI18n} from './features/localization/FormBuilderLanguage'
 import type {IFormStorage} from './stores/IFormStorage'
 

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
+import type {LabeledValue} from '@react-form-builder/core'
 import {Radio, RadioGroup as RRadioGroup} from 'rsuite'
 import type {RadioGroupProps} from 'rsuite/esm/RadioGroup/RadioGroup'
-import {LabeledValue} from '../annotation/utils/LabeledValue'
 
 /**
  * The properties of the React {@link RadioButtons} component.

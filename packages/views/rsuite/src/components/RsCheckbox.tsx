@@ -1,4 +1,4 @@
-import {boolean, define, event, string} from '@react-form-builder/builder/view'
+import {boolean, define, event, string} from '@react-form-builder/core'
 import {Checkbox} from 'rsuite'
 import {readOnly} from '../commonProperties'
 

@@ -1,6 +1,5 @@
-import {isPromise, ResolvedValidator, Store} from '@react-form-builder/core'
+import {Annotation, isPromise, ResolvedValidator, Store} from '@react-form-builder/core'
 import {isEmpty} from 'lodash-es'
-import {Annotation} from '../../annotation/types/annotations/Annotation'
 
 /**
  * Creates a validator for the specified metadata properties of the component.

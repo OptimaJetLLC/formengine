@@ -1,4 +1,5 @@
 import {ComponentStore} from '../../stores/ComponentStore'
+import {BaseBuilder} from '../annotation/utils/builders/BaseBuilder'
 import {ActionDefinition, ActionEventHandler, DefineActionHelper, EventName} from '../event'
 
 //TODO typing for properties
@@ -6,3 +7,11 @@ import {ActionDefinition, ActionEventHandler, DefineActionHelper, EventName} fro
  * The type of function that initializes an actions on a component.
  */
 export type ActionsInitializer = (props: ComponentStore['props'], def: DefineActionHelper) => Record<EventName, ActionEventHandler | ActionDefinition>
+
+/**
+ * The type-safe description of the component's metadata property builders.
+ */
+export type Annotations<T extends object> =
+  {
+    [key in keyof T]: BaseBuilder<T[key]> | undefined
+  }

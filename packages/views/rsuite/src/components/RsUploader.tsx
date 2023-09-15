@@ -1,5 +1,5 @@
 import {InputCell} from '@react-form-builder/builder'
-import {array, boolean, define, event, node, number, oneOf, string} from '@react-form-builder/builder/view'
+import {array, boolean, define, event, node, number, oneOf, string} from '@react-form-builder/core'
 import type {UploaderProps} from 'rsuite'
 import {Uploader} from 'rsuite'
 

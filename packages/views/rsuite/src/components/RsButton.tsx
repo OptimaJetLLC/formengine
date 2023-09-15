@@ -1,4 +1,4 @@
-import {boolean, define, event, oneOf, string} from '@react-form-builder/builder/view'
+import {boolean, define, event, oneOf, string} from '@react-form-builder/core'
 import {Button} from 'rsuite'
 import {readOnly, size} from '../commonProperties'
 

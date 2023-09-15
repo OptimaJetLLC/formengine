@@ -1,9 +1,12 @@
 import {
   ActionDefinition,
+  Annotation,
   BiDi,
+  BuilderView,
   ComponentData,
   ComponentPropertyComputeType,
   ComponentStore,
+  EditorType,
   Language,
   NamedActionDefinition,
   nameObservable,
@@ -21,9 +24,6 @@ import type {
   CustomActionEditorData,
   CustomActionEditorProps
 } from '../features/annotation-editors/EventEditor/components/CustomActionEditor'
-import type {EditorType} from '../features/annotation/types'
-import {Annotation} from '../features/annotation/types/annotations/Annotation'
-import {BuilderView} from '../features/define/utils/BuilderView'
 import type {TranslationResolver} from '../features/localization/BuilderI18n'
 import {BuilderI18n} from '../features/localization/BuilderI18n'
 import type {FormBuilderI18nData} from '../features/localization/FormBuilderLanguage'

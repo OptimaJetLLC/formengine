@@ -1,4 +1,4 @@
-import {boolean, define, string} from '@react-form-builder/builder/view'
+import {boolean, define, string} from '@react-form-builder/core'
 import EyeIcon from '@rsuite/icons/es/icons/legacy/Eye.js'
 import EyeSlashIcon from '@rsuite/icons/es/icons/legacy/EyeSlash.js'
 import {useState} from 'react'

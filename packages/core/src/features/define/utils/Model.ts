@@ -1,8 +1,8 @@
 import {observer} from 'mobx-react'
-import {ComponentType} from 'react'
+import type {ComponentType} from 'react'
 import {Css} from '../../style/types'
 import type {SchemaType} from '../../validation'
-import {ActionsInitializer} from '../types'
+import type {ActionsInitializer} from '../types'
 
 /**
  * Represents component metadata for the form viewer.

@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
+import {toLabeledValues} from '@react-form-builder/core'
 import type {ParameterName, ParameterType} from '@react-form-builder/core'
 import {ArrowDownLine, ArrowUpLine, Close} from '@rsuite/icons'
 import {useRef, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Animation, Form, FormInstance, InputPicker, Schema} from 'rsuite'
-import {toLabeledValues} from '../../../../../annotation/utils/LabeledValue'
 import {Columns, Rows} from '../../../../../components/Containers'
 import type {Parameter} from '../../ActionList/ActionItem/components/ArgumentList/ArgumentItem/Parameter'
 

@@ -1,4 +1,4 @@
-import {createView, Definer} from '@react-form-builder/builder/view'
+import {createView, Definer} from '@react-form-builder/core'
 import {rsBreadcrumb} from './components/RsBreadcrumb'
 import {rsButton} from './components/RsButton'
 import {rsCalendar} from './components/RsCalendar'

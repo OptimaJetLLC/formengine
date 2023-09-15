@@ -1,12 +1,19 @@
 import styled from '@emotion/styled'
-import {ComponentDataProvider, ComponentStore, Device, useTooltipType} from '@react-form-builder/core'
+import {
+  Annotation,
+  className,
+  commonStyles,
+  ComponentDataProvider,
+  ComponentStore,
+  Device,
+  key,
+  useTooltipType
+} from '@react-form-builder/core'
 import {unionWith} from 'lodash-es'
 import {observer} from 'mobx-react'
 import {useState} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
-import {className, commonStyles, key} from '../../../../annotation'
 import {CSSEditor} from '../../../../annotation-editors/CSSEditor'
-import {Annotation} from '../../../../annotation/types/annotations/Annotation'
 import {CenteredLabel} from '../../../../components/Labels'
 import {PropertyEditorWrapper} from '../../../../components/PropertyEditorWrapper'
 import {useTranslationPart} from '../../../../localization/hooks'

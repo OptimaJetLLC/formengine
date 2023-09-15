@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
+import {PropertyAn} from '@react-form-builder/core'
 import {isUndefined} from 'lodash-es'
 import {InputPicker} from 'rsuite'
-import {PropertyAn} from '../annotation/types/annotations/PropertyAn'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 

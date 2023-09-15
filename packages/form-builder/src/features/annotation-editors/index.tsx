@@ -1,5 +1,5 @@
+import type {EditorType} from '@react-form-builder/core'
 import type {ComponentType} from 'react'
-import type {EditorType} from '../annotation/types'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 import {ArrayInput} from './ArrayInput'
 import {ArrayOfStringInput} from './ArrayOfStringInput'

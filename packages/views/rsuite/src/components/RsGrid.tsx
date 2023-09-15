@@ -1,5 +1,5 @@
-import {define, node} from '@react-form-builder/builder/view'
-import {ReactNode} from 'react'
+import {define, node} from '@react-form-builder/core'
+import type {ReactNode} from 'react'
 import {Col, Grid, Row} from 'rsuite'
 
 interface RsGridProps {

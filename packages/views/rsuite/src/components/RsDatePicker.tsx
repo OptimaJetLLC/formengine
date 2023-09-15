@@ -1,4 +1,4 @@
-import {boolean, date, define, event, number, oneOf, string} from '@react-form-builder/builder/view'
+import {boolean, date, define, event, number, oneOf, string} from '@react-form-builder/core'
 import {DatePicker} from 'rsuite'
 import {placement, size} from '../commonProperties'
 

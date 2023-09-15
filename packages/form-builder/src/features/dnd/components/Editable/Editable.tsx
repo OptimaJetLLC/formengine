@@ -4,9 +4,12 @@ import {
   ComponentStore,
   ComponentTree,
   groupBy,
+  isContainer,
   namedObserver,
+  node,
   slotModel,
   TemplateField,
+  toArray,
   useStore,
   WrapperProps
 } from '@react-form-builder/core'
@@ -14,8 +17,6 @@ import {assign} from 'lodash-es'
 import {observer} from 'mobx-react'
 import {useDragLayer} from 'react-dnd'
 import {BuilderStore} from '../../../../stores/BuilderStore'
-import {isContainer, node} from '../../../annotation'
-import {toArray} from '../../../define'
 import {Draggable} from './components/Draggable'
 import {DropZone} from './components/DropZone'
 import {Toolbar} from './components/Toolbar'

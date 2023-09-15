@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {array, boolean, define, node, toLabeledValues, useComponentData} from '@react-form-builder/builder/view'
+import {array, boolean, define, node, toLabeledValues, useComponentData} from '@react-form-builder/core'
 import React, {ReactNode} from 'react'
 import type {NavProps} from 'rsuite'
 import {Nav} from 'rsuite'

@@ -1,4 +1,4 @@
-import {boolean, define, node, string} from '@react-form-builder/builder/view'
+import {boolean, define, node, string} from '@react-form-builder/core'
 import {Content, Footer, Header, Sidebar} from 'rsuite'
 
 export const rsHeader = define(Header)
