@@ -24,8 +24,8 @@ export const TooltipTypePicker = observer((props: AnnotationEditorProps) => {
   })
 
   return <LabeledProperty {...props}>
-    <SInputPicker value={value ?? tooltipType ?? ''} data={data} onChange={onChange} onClean={onClean}
-                  block cleanable size={'xs'}/>
+    <SInputPicker value={value ?? tooltipType ?? ''} data={data} onChange={onChange}
+                  onClean={onClean} block cleanable size={'xs'} placement={'auto'}/>
   </LabeledProperty>
 })
 

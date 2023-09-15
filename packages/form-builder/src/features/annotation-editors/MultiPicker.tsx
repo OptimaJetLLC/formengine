@@ -35,7 +35,7 @@ export const MultiPicker = (props: AnnotationEditorProps) => {
 
   return <LabeledProperty {...props}>
     <STagPicker value={value ?? []} data={data} onChange={onChange} onClean={onClean}
-                cleanable creatable size={'xs'}/>
+                cleanable creatable size={'xs'} placement={'auto'}/>
   </LabeledProperty>
 }
 

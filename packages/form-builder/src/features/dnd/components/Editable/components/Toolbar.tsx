@@ -43,10 +43,10 @@ export const Toolbar = observer(({compact}: { compact?: boolean }) => {
     </Title>
     }
     <AddButton/>
-    <Hinted hint={t('cloneComponent')}>
+    <Hinted hint={t('cloneComponent')} placement={'autoVertical'}>
       <FaIcon onClick={onClone} icon={faClone as unknown as IconDefinition}/>
     </Hinted>
-    <Hinted hint={t('removeComponent')}>
+    <Hinted hint={t('removeComponent')} placement={'autoVertical'}>
       <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition}/>
     </Hinted>
   </ToolbarContainer>

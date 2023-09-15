@@ -4,6 +4,7 @@ import {ArrowDownLine} from '@rsuite/icons'
 import {observer} from 'mobx-react'
 import {PropsWithChildren} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
+import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
 import {PanelPlacement} from './PanelPlacement'
 
 interface CollapsedSizeProps {
@@ -24,9 +25,12 @@ export const Panel = observer(({children, placement = 'left', hideCollapsed = tr
   const visible = !!store.openedPanels?.includes(placement)
   const collapsed = !visible
   const handleCollapse = () => store.setPanelVisible(placement, !visible)
+  const tooltipPlacement = placement === 'right' ? 'autoHorizontal' : 'auto'
 
   return <PanelContainer className={cx(className, placement, {collapsed})} {...props}>
-    <ContentContainer className={cx({collapsed, hideCollapsed})}>{children}</ContentContainer>
+    <TooltipPlacementProvider value={tooltipPlacement}>
+      <ContentContainer className={cx({collapsed, hideCollapsed})}>{children}</ContentContainer>
+    </TooltipPlacementProvider>
     <HideButton className={cx(placement, {collapsed})} onClick={handleCollapse}>
       <ArrowDownLine className={'icon'}/>
     </HideButton>

@@ -7,6 +7,7 @@ import {FormBuilderProps} from '../../FormBuilderProps'
 import {BuilderStore} from '../../stores/BuilderStore'
 import {LocalStorageSynchronizer} from '../../stores/LocalStorageSynchronizer'
 import {BuilderStoreProvider} from '../../utils/BuilderStoreContext'
+import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
 import {CustomDragLayer} from '../dnd/components/CustomDragLayer'
 import {LocalizationProvider} from '../localization'
 import {StylesProvider} from './StylesProvider'
@@ -63,10 +64,12 @@ export const BuilderProviders = observer(({children, props}: BuilderProvidersPro
         <StoreProvider value={store}>
           <LocalizationProvider>
             <StylesProvider>
-              <DndProvider backend={HTML5Backend}>
-                {children}
-                <CustomDragLayer/>
-              </DndProvider>
+              <TooltipPlacementProvider value={'auto'}>
+                <DndProvider backend={HTML5Backend}>
+                  {children}
+                  <CustomDragLayer/>
+                </DndProvider>
+              </TooltipPlacementProvider>
             </StylesProvider>
           </LocalizationProvider>
         </StoreProvider>

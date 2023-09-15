@@ -3,7 +3,7 @@ import type {IconProps} from '@rsuite/icons/lib/Icon'
 import type {ReactElement, ReactNode} from 'react'
 import type {WhisperProps} from 'rsuite'
 import {IconButton, Tooltip, Whisper} from 'rsuite'
-import {useBuilderStore} from '../../utils/BuilderStoreContext'
+import {useTooltipPlacement} from '../../utils/TooltipPlacementContext'
 
 /**
  * React component properties for the {@link HintedLabel} component.
@@ -48,10 +48,9 @@ export const HintedLabel = ({hint, children, ...labelProps}: HintedLabelProps) =
  * @internal
  */
 export const Hinted = ({hint, children, ...props}: HintedProps) => {
-  const builderStore = useBuilderStore()
-  if (!hint) return <>{children}</>
+  const placement = props.placement ?? useTooltipPlacement()
 
-  const placement = props.placement ?? (builderStore.isRTL ? 'right' : 'left')
+  if (!hint) return <>{children}</>
 
   return <Whisper speaker={<Tooltip>{hint}</Tooltip>} placement={placement} trigger={'hover'}>
     {children}

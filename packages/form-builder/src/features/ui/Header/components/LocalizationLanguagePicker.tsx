@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import {Language, useStore} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {SelectPicker} from 'rsuite'
-import type {ItemDataType} from 'rsuite/cjs/@types/common.js'
+import type {ItemDataType} from 'rsuite/esm/@types/common'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 
 export const LocalizationLanguagePicker = observer(() => {
