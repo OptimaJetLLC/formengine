@@ -15,8 +15,9 @@ export default defineConfig(({command}) => ({
   build: {
     sourcemap: true,
     lib: {
-      entry: [path.resolve(__dirname, './index.ts'), path.resolve(__dirname, './view.ts')],
+      entry: path.resolve(__dirname, './index.ts'),
       formats: ['es'],
+      fileName: 'index'
     },
     rollupOptions: {
       plugins: [

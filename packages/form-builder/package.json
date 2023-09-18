@@ -2,7 +2,8 @@
     "name": "@react-form-builder/builder",
     "version": "0.0.2-alpha",
     "private": false,
-    "module": "index.ts",
+    "main": "index.ts",
+    "type": "module",
     "description": "OptimaJet Form Builder",
     "keywords": [
         "form-builder",
@@ -13,17 +14,6 @@
     "bugs": {
         "email": "support@optimajet.com"
     },
-    "exports": {
-        ".": {
-            "types": "./index.ts",
-            "import": "./index.ts"
-        },
-        "./view": {
-            "types": "./view.ts",
-            "import": "./view.ts"
-        }
-    },
-    "type": "module",
     "scripts": {
         "build": "vite build",
         "clean": "rimraf dist temp",
