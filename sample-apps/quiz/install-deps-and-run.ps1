@@ -54,7 +54,6 @@ Push-Location $PSScriptRoot
 try
 {
   InstallLocalPackage $PSScriptRoot/../../packages/core
-  InstallLocalPackage $PSScriptRoot/../../packages/form-builder
   InstallLocalPackage $PSScriptRoot/../../packages/form-viewer
   InstallLocalPackage $PSScriptRoot/../../packages/views/rsuite
   npm run start

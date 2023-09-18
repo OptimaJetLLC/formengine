@@ -1,6 +1,7 @@
-import {CheckCell, InputCell} from '@react-form-builder/builder'
 import {array, define, event, number, oneOf, string} from '@react-form-builder/core'
 import {Breadcrumb, BreadcrumbProps} from 'rsuite'
+import {CheckCell} from './components/CheckCell'
+import {InputCell} from './components/InputCell'
 
 interface RsBreadcrumbItemProps {
   active?: boolean

@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react-form-builder/builder": "file:react-form-builder-builder-0.0.2-alpha.tgz",
     "@react-form-builder/components-rsuite": "file:react-form-builder-components-rsuite-0.0.2-alpha.tgz",
     "@react-form-builder/core": "file:react-form-builder-core-0.0.2-alpha.tgz",
     "@react-form-builder/viewer": "file:react-form-builder-viewer-0.0.2-alpha.tgz",
