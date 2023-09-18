@@ -13,7 +13,11 @@ const getDragPreview = () => document.getElementById('fb-drag-preview') || docum
 export const DragPreview = ({children}: ComponentProps<any>) => createPortal(<Container>{children}</Container>, getDragPreview())
 
 const Container = styled.div`
-  max-width: 200px;
+  display: flex;
+  width: 136px;
+  height: 34px;
+  align-items: center;
+  overflow: hidden;
 
   .rs-theme-dark & {
     background-color: #414549;

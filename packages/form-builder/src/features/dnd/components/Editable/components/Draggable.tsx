@@ -3,9 +3,8 @@ import styled from '@emotion/styled'
 import {ComponentData, useComponentData} from '@react-form-builder/core'
 import {merge} from 'lodash/fp.js'
 import {observer} from 'mobx-react'
-import {ComponentProps, ReactNode, RefObject, useMemo, useRef} from 'react'
+import {ComponentProps, RefObject, useMemo, useRef} from 'react'
 import {useDragLayer, useDrop} from 'react-dnd'
-import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {AcceptDrop, ItemType} from '../../../consts'
 import {useDragWithPreview} from '../hooks/useDragWithPreview'
 import {DragPreview} from './DragPreview'
@@ -14,24 +13,21 @@ import {DropZone} from './DropZone'
 interface DraggableProps extends ComponentProps<any> {
   isInner?: boolean
   isTree?: boolean
-  viewForDragPreview?: ReactNode
 }
 
-export const Draggable = observer(({children, viewForDragPreview, isInner, className, isTree, ...props}: DraggableProps) => {
+export const Draggable = observer(({children, isInner, className, isTree, ...props}: DraggableProps) => {
   const data = useComponentData()
   const isRoot = data.isRoot
   const isContainer = Boolean(data.store.children)
-  const store = useBuilderStore()
 
   const [{isActive, isDragging: isDraggingCurrent}, dnd] = useDnd()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
-
-  const hidden = isDragging && store.selected.has(data)
+  const dragPreview = <DragPreview><SLabel>{data.key}</SLabel></DragPreview>
 
   return <>
-    {isDraggingCurrent && <DragPreview>{viewForDragPreview}</DragPreview>}
+    {isDraggingCurrent && dragPreview}
     <Container ref={dnd} {...props}
-               className={cx(className, {isActive, isContainer, isRoot, isInner, hidden})}>
+               className={cx(className, {isActive, isContainer, isRoot, isInner, isDraggingCurrent})}>
       {!isTree && <DraggableBody/>}
       {isDragging && !isRoot && !isInner && <DropZone/>}
       {children}
@@ -76,6 +72,13 @@ const DraggableBody = styled.div`
   z-index: 6;
 `
 
+const SLabel = styled.label`
+  padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`
+
 const Container = styled.div`
   position: relative;
   display: flex;
@@ -84,7 +87,7 @@ const Container = styled.div`
   transition: padding-block 200ms ease-in-out;
   transition-delay: 200ms;
 
-  &.hidden > * {
+  &.isDraggingCurrent > * {
     opacity: 0.4;
   }
 

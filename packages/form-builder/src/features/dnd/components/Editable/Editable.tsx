@@ -83,7 +83,7 @@ const Editable = observer(({children}: WrapperProps) => {
   </>
 
   return (
-    <Draggable {...selectionHandlers} className={selectionClassName} viewForDragPreview={children}>
+    <Draggable {...selectionHandlers} className={selectionClassName}>
       {children}
       {toolbars}
     </Draggable>
