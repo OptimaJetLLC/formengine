@@ -1,4 +1,4 @@
-import type {IFormStorage} from '@react-form-builder/builder'
+import type {IFormStorage} from '@react-form-builder/designer'
 import {nameObservable} from '@react-form-builder/core'
 import {makeAutoObservable} from 'mobx'
 import {kvCreateStore, kvDel, kvGet, kvKeys, kvSet} from './KeyValueStorage'

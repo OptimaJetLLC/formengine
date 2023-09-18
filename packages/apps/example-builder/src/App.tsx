@@ -1,4 +1,4 @@
-import {BuilderView, FormBuilder, FormBuilderI18n} from '@react-form-builder/builder'
+import {BuilderView, FormBuilder, FormBuilderI18n} from '@react-form-builder/designer'
 import {antdComponents, antTooltip} from '@react-form-builder/components-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {ActionDefinition, ComponentStore, ExternalValidators, IFormViewer, Language} from '@react-form-builder/core'

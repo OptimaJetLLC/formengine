@@ -1,4 +1,4 @@
-import {BuilderView, FormBuilder} from '@react-form-builder/builder'
+import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {antdComponents} from '@react-form-builder/components-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
