@@ -1,8 +1,7 @@
 import {Annotation} from '../../annotation/types/annotations/Annotation'
 import {internalErrorMeta} from '../../components/internalErrorMeta'
 import {screenMeta} from '../../components/screenMeta'
-import {createTemplateMeta, slotMeta, slotModel} from '../../template'
-import {generateTemplateTypeName} from '../../ui/templateUtil'
+import {createTemplateMeta, createTemplateModel, slotMeta, slotModel} from '../../template'
 import {errorMessageMeta} from '../../validation/errorMessageMeta'
 import {BuilderComponent} from './BuilderComponent'
 import {Meta} from './Meta'
@@ -17,7 +16,9 @@ const templatesCategoryName = 'Templates'
 export class BuilderView extends View {
   #metaMap = new Map<string, Meta>()
   #tooltipsMeta = new Map<string, Meta>()
-  errorMeta = errorMessageMeta
+  #errorMeta = new Map<string, Meta>([
+    [errorMessageMeta.type, errorMessageMeta],
+  ])
 
   /**
    * Returns the component metadata for the specified component type name.
@@ -40,13 +41,36 @@ export class BuilderView extends View {
   }
 
   /**
+   * Returns the array of metadata properties of the error component.
+   * @param name the name of the error component type.
+   * @returns the array of metadata properties of the error component.
+   */
+  getErrorAnnotations(name: string): Annotation[] | undefined {
+    return this.#errorMeta.get(name)?.properties
+  }
+
+  /**
+   * @returns the array of strings with the names of the component types of the tooltip.
+   */
+  get tooltips() {
+    return Array.from(this.#tooltipsMeta.keys())
+  }
+
+  /**
+   * @returns the array of strings with the names of the component types of the error.
+   */
+  get errors() {
+    return Array.from(this.#errorMeta.keys())
+  }
+
+  /**
    * Sets the metadata of the component that displays the form's tooltips.
    * @param builderComponent the metadata of the component that displays the form's tooltips.
    * @returns the instance of the {@link BuilderView} class.
    */
   withTooltipMeta(builderComponent: BuilderComponent): this {
     const {model, meta} = builderComponent
-    super.withTooltip(model)
+    this.define(model)
     this.#tooltipsMeta.set(model.type, meta)
     return this
   }
@@ -58,8 +82,8 @@ export class BuilderView extends View {
    */
   withErrorMeta(builderComponent: BuilderComponent): this {
     const {model, meta} = builderComponent
-    super.withError(model)
-    this.errorMeta = meta
+    this.define(model)
+    this.#errorMeta.set(model.type, meta)
     return this
   }
 
@@ -69,13 +93,12 @@ export class BuilderView extends View {
    * @returns the instance of the {@link BuilderView} class.
    */
   withTemplates(templates: string[]): this {
-    super.withTemplates(templates)
     templates.forEach(name => {
+      const model = createTemplateModel(name)
+      this.define(model)
+
       const meta = createTemplateMeta(name)
       this.#metaMap.set(meta.type, meta)
-
-      const typeName = generateTemplateTypeName(name)
-      const model = this.get(typeName)
 
       this.builderComponents.push({meta, model, category: templatesCategoryName})
     })

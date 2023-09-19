@@ -1,9 +1,10 @@
 import styled from '@emotion/styled'
-import {useTooltipType, useViewerProps} from '@react-form-builder/core'
+import {useTooltipType} from '@react-form-builder/core'
 import {startCase} from 'lodash-es'
 import {observer} from 'mobx-react'
 import {InputPicker} from 'rsuite'
 import type {ItemDataType} from 'rsuite/esm/@types/common'
+import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
@@ -14,9 +15,9 @@ import type {AnnotationEditorProps} from './AnnotationEditorProps'
  */
 export const TooltipTypePicker = observer((props: AnnotationEditorProps) => {
   const {value, onChange, onClean} = props
-  const viewerProps = useViewerProps()
+  const builderStore = useBuilderStore()
   const tooltipType = useTooltipType()
-  const data = viewerProps.view.tooltips.map(name => {
+  const data = builderStore.view.tooltips.map(name => {
     return {
       value: name,
       label: startCase(name)

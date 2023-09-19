@@ -6,6 +6,7 @@ import {WrapperProps} from '../../../types'
 import {namedObserver} from '../../../utils'
 import {useComponentData} from '../../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../../utils/contexts/StoreContext'
+import {useErrorModel} from '../../../utils/useErrorModel'
 import {ActionEventHandler} from '../../event'
 import {useViewerProps} from '../../form-viewer/components/ViewerPropsContext'
 
@@ -23,12 +24,8 @@ export const Erroneous = namedObserver('Erroneous', ({children}: WrapperProps) =
   const data = useComponentData()
   const store = useStore()
   const props = useViewerProps()
-  const Error = props.view.error.view
+  const Error = useErrorModel().view
   const otherProps = getProps(store.form.errorProps)
-
-  useEffect(() => {
-    if (data.field) data.field.error = undefined
-  }, [])
 
   useEventListener(data.key, 'onChange', e => data.field?.setValue(e.value), [])
   useEventListener(data.key, 'onBlur', _ => data.field?.setTouched(), [])

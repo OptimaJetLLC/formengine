@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import {namedObserver} from '@react-form-builder/core'
 import {useTranslationPart} from '../../../localization/hooks'
 import {ActionList} from './ActionList'
-import {ErrorProps} from './ErrorProps'
+import {ErrorSettings} from './ErrorSettings'
 import {TooltipSettings} from './TooltipSettings'
 
 export const FormSettings = namedObserver('FormSettings', () => {
@@ -11,7 +11,7 @@ export const FormSettings = namedObserver('FormSettings', () => {
     <Header marginTop={0}>{t('actions')}</Header>
     <ActionList/>
     <Header>{t('error')}</Header>
-    <ErrorProps/>
+    <ErrorSettings/>
     <Header>{t('tooltip')}</Header>
     <TooltipSettings/>
   </>

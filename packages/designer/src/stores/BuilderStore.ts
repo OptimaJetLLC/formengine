@@ -556,6 +556,7 @@ export class BuilderStore {
       actions: actions,
       errorProps: errorProps,
       tooltipType: this.viewer.form.tooltipType,
+      errorType: this.viewer.form.errorType,
       form: this.viewer.form.componentTree.store,
       localization: this.viewer.form.localization.value,
       languages: selectedLanguages,

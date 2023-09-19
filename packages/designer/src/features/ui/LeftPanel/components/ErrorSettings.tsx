@@ -1,15 +1,16 @@
-import {Annotation, ComponentDataProvider, namedObserver} from '@react-form-builder/core'
+import {Annotation, ComponentDataProvider, namedObserver, useErrorModel} from '@react-form-builder/core'
 import {useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Checkbox, Input} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {PropertyBlock} from '../../RightPanel/PropertiesEditor/components/Properties'
+import {ErrorComponentPicker} from './ErrorComponentPicker'
 
 /**
  * React form builder component that displays the configuration properties of the validation error display component.
  * @returns the React element.
  */
-export const ErrorProps = namedObserver('ErrorSettings', () => {
+export const ErrorSettings = namedObserver('ErrorSettings', () => {
   const {t} = useTranslation()
   const store = useBuilderStore()
   const [errorVisible, setErrorVisible] = useState(false)
@@ -21,15 +22,18 @@ export const ErrorProps = namedObserver('ErrorSettings', () => {
     return () => store.viewer.form.componentTree.setAllErrors()
   }, [errorVisible, errorMessage])
 
-  const properties = store.view.errorMeta.properties.map(property => {
+  const errorModel = useErrorModel()
+  const errorAnnotations = store.view.getErrorAnnotations(errorModel.type)
+  const properties = errorAnnotations?.map(property => {
     return Object.assign(property, {localizable: false, calculable: false} as Annotation)
-  })
+  }) ?? []
   const context = store.viewer.form.errorProps
 
   return (
     <div>
       {t('annotation.errorConfig.show')}: <Checkbox onChange={(_, checked) => setErrorVisible(checked)} checked={errorVisible}/>
       {errorVisible && <Input style={{marginTop: 4, marginBottom: 4}} onChange={setErrorMessage} value={errorMessage}/>}
+      <ErrorComponentPicker/>
       <ComponentDataProvider value={store.viewer.form.componentTree}>
         <PropertyBlock annotations={properties} context={context}/>
       </ComponentDataProvider>

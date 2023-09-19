@@ -27,7 +27,7 @@ function useTooltipComponent() {
   const formViewerProps = useViewerProps()
   const selectedTooltipType = useTooltipType()
   if (!selectedTooltipType) return
-  return formViewerProps.view.getTooltipComponent(selectedTooltipType)
+  return formViewerProps.view.get(selectedTooltipType)
 }
 
 /**

@@ -31,6 +31,8 @@ export class Form {
 
   tooltipType?: string
 
+  errorType?: string
+
   /**
    * Default localization language of the form.
    */

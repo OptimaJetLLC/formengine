@@ -27,8 +27,8 @@ export const Picker = (props: AnnotationEditorProps) => {
   const data = addCustomValue(annotation as PropertyAn, value)
 
   return <LabeledProperty {...props}>
-    <SInputPicker value={value ?? ''} data={data} onChange={onChange} onClean={onClean}
-                  block cleanable creatable size={'xs'}/>
+    <SInputPicker value={value ?? props.annotation.default ?? ''} data={data} onChange={onChange} onClean={onClean}
+                  block cleanable creatable size={'xs'} {...props.annotation.editorProps}/>
   </LabeledProperty>
 }
 

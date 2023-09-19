@@ -334,6 +334,7 @@ export class Store implements IStore, IFormViewer {
 
     this.form.errorProps = persistedForm.errorProps ?? {}
     this.form.tooltipType = persistedForm.tooltipType
+    this.form.errorType = persistedForm.errorType
 
     // here we initialize the fields after the form is created, since the calculated field values are depends on 'this.form'
     this.form.initFields()

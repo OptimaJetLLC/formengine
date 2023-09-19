@@ -10,6 +10,7 @@ export interface PersistedForm {
   actions?: ActionValues,
   errorProps?: any,
   tooltipType?: string,
+  errorType?: string,
   form: ComponentStore,
   localization: LocalizationValue,
   languages: Language[],
