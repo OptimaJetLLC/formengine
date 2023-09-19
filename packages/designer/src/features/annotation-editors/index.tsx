@@ -5,7 +5,6 @@ import {ArrayInput} from './ArrayInput'
 import {ArrayOfStringInput} from './ArrayOfStringInput'
 import {AttributesInput} from './AttributesInput'
 import {BooleanInput} from './BooleanInput'
-import {ChildViewer} from './ChildViewer'
 import {ColorInput} from './ColorInput'
 import {DateInput} from './DateInput'
 import {EventEditor} from './EventEditor'
@@ -33,7 +32,6 @@ export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>>
   arrayOfString: ArrayOfStringInput,
   color: ColorInput,
   event: EventEditor,
-  node: ChildViewer,
   oneOf: Picker,
   someOf: MultiPicker,
   radio: RadioInput,

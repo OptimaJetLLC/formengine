@@ -25,7 +25,6 @@ export const PropertyEditorWrapper = observer(({
   const componentData = useComponentData()
   const annotationEditor = store.customPropertyEditor(annotation.editor) ?? EditorMap[annotation.editor]
   const [contextInitialized, setContextInitialized] = useState(false)
-
   const [error, setError] = useState<string>()
 
   const value = (isProperty(annotation) ? context[annotation.key]?.value : context[annotation.key]) ?? annotation.default
@@ -114,7 +113,7 @@ export const PropertyEditorWrapper = observer(({
     getComputeType
   }
 
-  return (
+  return !!annotationEditor && (
     <Erroneous {...annotationEditorProps} error={error}>
       {createElement(annotationEditor, annotationEditorProps)}
     </Erroneous>
