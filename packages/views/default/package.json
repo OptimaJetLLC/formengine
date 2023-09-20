@@ -13,6 +13,6 @@
         "build": "vite build"
     },
     "dependencies": {
-        "@react-form-builder/core": "^0.0.2-alpha"
+        "@react-form-builder/core": "*"
     }
 }
