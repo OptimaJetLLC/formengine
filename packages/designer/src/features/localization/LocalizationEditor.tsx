@@ -3,7 +3,6 @@ import {getFluentCompatibleId, LocalizationTestResult, testFluentLocalization, u
 import {action} from 'mobx'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
-import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import type {CalculableCodeEditorProps} from '../calculation/CalculableCodeEditor'
@@ -11,10 +10,11 @@ import {CodeEditorErrorMessage} from '../calculation/CodeEditorErrorMessage'
 import {CodeEditor} from '../components/CodeEditor'
 import {LocalizationLanguagePicker} from '../ui/Header/components/LocalizationLanguagePicker'
 import {fluentLanguageId} from './consts'
+import {useTranslationPart} from './hooks'
 
 export const LocalizationEditor = observer(({editableProperty, onClose}: CalculableCodeEditorProps) => {
   const [error, setError] = useState<LocalizationTestResult | undefined>()
-  const {t} = useTranslation()
+  const t = useTranslationPart('common')
   const localizationStringId = getFluentCompatibleId(`${editableProperty.componentKey}_${editableProperty.annotation.key}`)
   const viewerStore = useStore()
   const builderStore = useBuilderStore()
@@ -52,9 +52,9 @@ export const LocalizationEditor = observer(({editableProperty, onClose}: Calcula
                 endContextLine={endContextLine} canEditBeginContextLine={true} onChange={setValue}/>
     <SDiv>
       <ButtonGroup size={'sm'}>
-        <Button appearance="primary" onClick={testLocalization}>{t('localizationEditor.test')}</Button>
-        <Button appearance="ghost" onClick={action(() => saveLocalization())}>{t('localizationEditor.save')}</Button>
-        <Button appearance="ghost" onClick={onClose}>{t('localizationEditor.close')}</Button>
+        <Button appearance="primary" onClick={testLocalization}>{t('test')}</Button>
+        <Button appearance="ghost" onClick={action(() => saveLocalization())}>{t('save')}</Button>
+        <Button appearance="ghost" onClick={onClose}>{t('close')}</Button>
       </ButtonGroup>
       <LocalizationLanguagePicker/>
       <CodeEditorErrorMessage result={error}/>

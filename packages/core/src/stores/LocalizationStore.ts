@@ -94,6 +94,25 @@ export class LocalizationStore {
   }
 
   /**
+   * Removes localization for component with specified type.
+   * @param componentKey the component key that requires localization removal.
+   * @param type the localization type.
+   */
+  removeLocalizationForType(componentKey: string, type: LocalizationType) {
+    const fluentCompatibleComponentKey = getFluentCompatibleId(componentKey)
+    for (const key in this.value) {
+      if (!this.value[key][fluentCompatibleComponentKey]) continue
+      delete this.value[key][fluentCompatibleComponentKey][type]
+      if (Object.keys(this.value[key][fluentCompatibleComponentKey]).length === 0) {
+        delete this.value[key][fluentCompatibleComponentKey]
+      }
+      if (Object.keys(this.value[key]).length === 0) {
+        delete this.value[key]
+      }
+    }
+  }
+
+  /**
    * Checks that the specified language exists in the localization.
    * @param languageFullCode The full code (en-US, en-GB etc.) of the language to be checked.
    * @returns true if the specified language exists in the localization.

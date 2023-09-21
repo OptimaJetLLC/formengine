@@ -8,7 +8,7 @@
     "close": "Close",
     "edit": "Edit",
     "remove": "Remove",
-    "reset": "Reset"
+    "test": "Test"
   },
   "annotation": {
     "errorConfig": {
@@ -230,9 +230,7 @@
     "ok": "OK",
     "compilationResult": "Compilation result:",
     "codePlaceholder": "// enter your code here",
-    "save": "Save",
-    "compile": "Compile",
-    "close": "Close"
+    "compile": "Compile"
   },
   "propertiesEditor": {
     "selectElementForEdit": "Select element on form for edit properties",
@@ -341,12 +339,6 @@
     "ok": "OK",
     "cancel": "Cancel"
   },
-  "localizationEditor": {
-    "test": "Test",
-    "close": "Close",
-    "save": "Save",
-    "useFluentLocalization": "Use Fluent localization"
-  },
   "localization": {
     "messageNotFound": "Localization message not found",
     "messageIsNull": "Localization message is null"
@@ -367,12 +359,13 @@
   "bottomPanel": {
     "use": "Use",
     "localization": "Fluent localization",
-    "calculable": "Calculable value",
+    "function": "Calculable value",
+    "simpleValue": "Simple value",
+    "simpleValueHint": "Edit the property in the right panel",
     "editProperty": "Edit property",
     "editCustomAction": "Edit custom action"
   },
   "customActionEditor": {
-    "saveAsNew": "Save as new",
     "actionNameExists": "Action with this name already exists",
     "nameIsRequired": "Action name is required",
     "parameterNameExists": "Parameter with this name already exists",

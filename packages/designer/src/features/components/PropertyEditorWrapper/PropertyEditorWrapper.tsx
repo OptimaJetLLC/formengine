@@ -99,7 +99,10 @@ export const PropertyEditorWrapper = observer(({
   }, [getComputedFunction, getComputedLocalization])
 
   const disableCompute = useCallback(() => {
-    if (isValidatorPropertyBlockType(propertyBlockType)) return
+    if (isValidatorPropertyBlockType(propertyBlockType)) {
+      store.viewer.form.localization.removeLocalizationForType(componentData.key, propertyBlockType)
+      return
+    }
     const newComponentProperty: ComponentProperty = {computeType: undefined}
     context[annotation.key] = Object.assign(context[annotation.key] ?? {}, newComponentProperty)
   }, [context, annotation])

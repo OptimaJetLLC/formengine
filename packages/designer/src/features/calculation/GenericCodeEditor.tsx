@@ -2,10 +2,10 @@ import styled from '@emotion/styled'
 import type {BaseCompilationResult, CompilationResult} from '@react-form-builder/core'
 import {action} from 'mobx'
 import {useEffect, useState} from 'react'
+import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
 import {CodeEditor} from '../components/CodeEditor'
 import {Rows} from '../components/Containers'
-import {useTranslationPart} from '../localization/hooks'
 import {CodeEditorErrorMessage} from './CodeEditorErrorMessage'
 
 /**
@@ -27,8 +27,8 @@ export interface GenericCodeEditorProps {
  * @returns the React element.
  */
 export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
-  const t = useTranslationPart('codeEditor')
-  const codePlaceHolder = t('codePlaceholder')
+  const {t} = useTranslation()
+  const codePlaceHolder = t('codeEditor.codePlaceholder')
 
   const [sourceCode, setSourceCode] = useState(props.source ?? codePlaceHolder)
   const [compilationError, setCompilationError] = useState<CompilationResult | undefined>()
@@ -60,9 +60,9 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
                 initialValue={initialValue} onChange={setSourceCode}/>
     <SDiv>
       <ButtonGroup size={'sm'}>
-        <Button appearance="primary" onClick={compileCode}>{t('compile')}</Button>
-        <Button appearance="ghost" onClick={action(() => saveCode())}>{t('save')}</Button>
-        <Button appearance="ghost" onClick={() => props.onClose()}>{t('close')}</Button>
+        <Button appearance="primary" onClick={compileCode}>{t('codeEditor.compile')}</Button>
+        <Button appearance="ghost" onClick={action(() => saveCode())}>{t('common.save')}</Button>
+        <Button appearance="ghost" onClick={() => props.onClose()}>{t('common.close')}</Button>
       </ButtonGroup>
       <CodeEditorErrorMessage result={compilationError}/>
     </SDiv>
