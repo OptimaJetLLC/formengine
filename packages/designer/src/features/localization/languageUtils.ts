@@ -17,7 +17,7 @@ export const builtInLanguages: FormBuilderI18n = {
     new Language('ar', 'EG', 'عرب', 'Arabic (Egypt)', BiDi.RTL),
   ],
   getData: async languageFullCode => {
-    const data = await import(`../../../public/locales/${languageFullCode}/translation.json`)
+    const data = await import(`../../../public/locales/${languageFullCode}.json`)
     return {
       data: data,
       componentsLocale: rSuiteLocales[languageFullCode]
