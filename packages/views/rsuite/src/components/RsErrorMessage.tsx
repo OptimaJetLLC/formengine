@@ -1,4 +1,5 @@
 import {cx} from '@emotion/css'
+import styled from '@emotion/styled'
 import {define, ErrorWrapperProps, string} from '@react-form-builder/core'
 import {Form} from 'rsuite'
 import type {TypeAttributes} from 'rsuite/esm/@types/common'
@@ -11,13 +12,19 @@ interface RsErrorMessageProps extends ErrorWrapperProps {
 const RsErrorMessage = ({error, children, placement, className}: RsErrorMessageProps) => {
   const divClassName = error ? 'rs-form-control-wrapper' : undefined
 
-  return <div className={cx(className, divClassName)}>
+  return <SDiv className={cx(className, divClassName)}>
     {children}
-    <Form.ErrorMessage show={Boolean(error)} placement={placement}>
+    <Form.ErrorMessage show={Boolean(error)} placement={placement ?? 'bottomStart'}>
       {error}
     </Form.ErrorMessage>
-  </div>
+  </SDiv>
 }
+
+const SDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+`
 
 export const rsErrorMessage = define(RsErrorMessage)
   .type('RsErrorMessage')

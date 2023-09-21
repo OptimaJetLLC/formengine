@@ -1,4 +1,5 @@
 import {css, cx} from '@emotion/css'
+import styled from '@emotion/styled'
 import {ReactNode} from 'react'
 import {Model} from '../../define'
 
@@ -35,12 +36,18 @@ const ErrorMessageStyle = css`
   }
 `
 
+const SDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+`
+
 const DefaultErrorMessage = ({children, error, className}: ErrorWrapperProps) => {
   return (
-    <>
+    <SDiv>
       {children}
       {error && <p className={cx(className, ErrorMessageStyle)} children={error}/>}
-    </>
+    </SDiv>
   )
 }
 
