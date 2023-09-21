@@ -51,8 +51,9 @@ export class DataValidator {
     ]
   }
 
-  static create = <T>(store: IStore, resolver: SchemaResolver<T>, args: T, setter: Setter<string | undefined>) => {
-    return new DataValidator(store, resolver(args), setter)
+  static create = <T>(store: IStore, resolver: SchemaResolver<T>, args: T,
+                      setter: Setter<string | undefined>, localizer?: ErrorMessageLocalizer) => {
+    return new DataValidator(store, resolver(args), setter, localizer)
   }
 
   sendValidationEvent = (value: any) => {

@@ -3,6 +3,7 @@ import {FluentVariable} from '@fluent/bundle/esm/bundle.js'
 import {ComponentStore, isLocalizedProperty} from '../../stores/ComponentStore'
 import {Form} from '../../stores/Form'
 import type {LocalizationType} from '../../stores/LocalizationStore'
+import {getValidatorPropertyBlockType} from '../ui/PropertyBlockType'
 import {getFluentCompatibleId} from './getFluentCompatibleId'
 import {Language} from './types'
 
@@ -89,13 +90,7 @@ export const testFluentLocalization = (request: LocalizationTestRequest): Locali
  */
 export const localizeProperties = (form: Form, language: Language, componentStore: ComponentStore, type: LocalizationType = 'component') => {
   const componentTree = form.componentTree
-  const fluentBundle = form.localization.getFluentBundle(language.fullCode)
-
-  const needConsiderDefaultLanguage = form.defaultLanguage !== language
-  const defaultBundle = needConsiderDefaultLanguage
-    ? form.localization.getFluentBundle(form.defaultLanguage.fullCode)
-    : undefined
-
+  const {defaultBundle, fluentBundle} = getFluentBundles(form, language)
   const data: Record<string, any> = {}
 
   Object.keys(componentStore.props).forEach(value => {
@@ -103,11 +98,7 @@ export const localizeProperties = (form: Form, language: Language, componentStor
     if (!isLocalizedProperty(componentProperty)) return
 
     const messageId = getFluentCompatibleId(`${componentStore.key}_${type}_${value}`)
-
-    let message = fluentBundle.getMessage(messageId)
-    if (!message && needConsiderDefaultLanguage && defaultBundle) {
-      message = defaultBundle.getMessage(messageId)
-    }
+    const message = fluentBundle.getMessage(messageId) ?? defaultBundle?.getMessage(messageId)
     if (!message) {
       console.error(`Localization message ${messageId} not found`)
       return
@@ -120,4 +111,36 @@ export const localizeProperties = (form: Form, language: Language, componentStor
   })
 
   return data
+}
+
+/**
+ * Localizes validator error message.
+ * @param form the form.
+ * @param language the displayed language.
+ * @param componentStore the full state of a localizable component.
+ * @param ruleKey the validator rule key.
+ * @returns the object containing only the localized props of the specified component.
+ */
+export const localizeErrorMessage = (form: Form, language: Language, componentStore: ComponentStore, ruleKey: string) => {
+  const type = getValidatorPropertyBlockType(ruleKey)
+  const value = 'message'
+  const messageId = getFluentCompatibleId(`${componentStore.key}_${type}_${value}`)
+  const {defaultBundle, fluentBundle} = getFluentBundles(form, language)
+  const message = fluentBundle.getMessage(messageId) ?? defaultBundle?.getMessage(messageId)
+  if (!message) {
+    return
+  }
+  try {
+    return fluentBundle.formatPattern(message.value!, form.componentTree.fluentData)
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+const getFluentBundles = (form: Form, language: Language) => {
+  const defaultBundle = form.defaultLanguage !== language
+    ? form.localization.getFluentBundle(form.defaultLanguage.fullCode)
+    : undefined
+  const fluentBundle = form.localization.getFluentBundle(language.fullCode)
+  return {defaultBundle, fluentBundle}
 }

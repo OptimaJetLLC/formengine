@@ -18,6 +18,7 @@ import {SizeInput} from './SizeInput'
 import {StringInput} from './StringInput'
 import {TooltipPropertiesEditor} from './TooltipPropertiesEditor'
 import {ComponentValidationSettingsEditor} from './ValidateEditor'
+import {CustomValidatorEditor} from './ValidateEditor/CustomValidatorEditor'
 
 export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>> = {
   key: KeyInput,
@@ -38,4 +39,5 @@ export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>>
   tooltipProps: TooltipPropertiesEditor,
   useTooltip: BooleanInput,
   renderWhen: RenderWhenEditor,
+  customValidator: CustomValidatorEditor
 }

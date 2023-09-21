@@ -1,4 +1,6 @@
+import type {ValidationResult} from '../features/validation/types/ValidationResult'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
+import {ComponentStore} from './ComponentStore'
 import {Form} from './Form'
 
 /**
@@ -19,6 +21,8 @@ export interface IStore {
    * @returns the accumulated value.
    */
   reduceScreen: <T>(callback: (accumulator: T, current: ComponentData) => T, initialValue: T) => T
+
+  localizeErrorMessages: (componentStore: ComponentStore, validationResults?: ValidationResult[]) => string | undefined
 
   /**
    * Correctly clears allocated resources, the function must be called when destroying an instance of the class.

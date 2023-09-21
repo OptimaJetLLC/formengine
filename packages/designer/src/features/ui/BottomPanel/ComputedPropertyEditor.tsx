@@ -17,12 +17,12 @@ const editors: Record<ComponentPropertyComputeType, any> = {
 export const ComputedPropertyEditor = namedObserver('ComputedPropertyEditor', ({property}: { property: EditableProperty }) => {
   const builderStore = useBuilderStore()
   const {t} = useTranslation()
-  const initialComputeType = property.getComputeType()
-  const [computeType, setComputeType] = useState<ComponentPropertyComputeType>(initialComputeType ?? 'function')
   const {calculable, localizable, name} = property.annotation
+  const initialComputeType = property.getComputeType() ?? (property.annotation.calculable ? 'function' : 'localization')
+  const [computeType, setComputeType] = useState<ComponentPropertyComputeType>(initialComputeType)
 
   useEffect(() => {
-    setComputeType(initialComputeType ?? 'function')
+    setComputeType(initialComputeType)
   }, [initialComputeType])
 
   const Editor = editors[computeType]

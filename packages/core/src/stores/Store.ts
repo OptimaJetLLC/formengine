@@ -7,7 +7,7 @@ import {ActionData, ActionDefinition, ActionEventArgs, ActionType, ActionValues,
 import {commonActions} from '../features/event/consts/actions'
 import {IFormViewer} from '../features/form-viewer'
 import type {ComponentLocalizer} from '../features/form-viewer/ComponentLocalizer'
-import {localizeProperties} from '../features/localization/localizer'
+import {localizeErrorMessage, localizeProperties} from '../features/localization/localizer'
 import {Language} from '../features/localization/types'
 import {createTemplateModel} from '../features/template'
 import {buildInternalErrorModel, buildInternalErrorStore} from '../features/ui/internalErrorModel'
@@ -15,6 +15,7 @@ import {screenModel} from '../features/ui/screenModel'
 import {isTemplateType} from '../features/ui/templateUtil'
 import type {SchemaType} from '../features/validation'
 import type {ExternalValidators} from '../features/validation/types/ExternalValidationRules'
+import type {ValidationResult} from '../features/validation/types/ValidationResult'
 import {ValidationRules} from '../features/validation/utils/consts'
 import {SimpleField} from '../features/validation/utils/SimpleField'
 import {TemplateField} from '../features/validation/utils/TemplateField'
@@ -355,12 +356,25 @@ export class Store implements IStore, IFormViewer {
   /**
    * Localizes a component store based on the given localization type. If an external localizer is available, it will be used.
    * @param type the type of localization.
-   * @param componentStore c the component settings.
+   * @param componentStore the component settings.
    * @returns the Record with the localized properties.
    */
   localizeComponent(type: LocalizationType, componentStore: ComponentStore) {
     if (this.externalLocalizer) return this.externalLocalizer(componentStore, this.displayedLanguage)
     return localizeProperties(this.form, this.displayedLanguage, componentStore, type)
+  }
+
+  /**
+   * Localizes validator error messages.
+   * @param componentStore the component settings.
+   * @param validationResults the validation results.
+   * @returns the localized error messages joined by space, or undefined if validationResults is undefined.
+   */
+  localizeErrorMessages(componentStore: ComponentStore, validationResults?: ValidationResult[]) {
+    if (!validationResults) return
+    return validationResults.map(result => {
+      return localizeErrorMessage(this.form, this.displayedLanguage, componentStore, result.settings.key) ?? result.message
+    }).join(' ')
   }
 }
 

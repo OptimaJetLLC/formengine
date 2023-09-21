@@ -10,7 +10,9 @@ import {isEmpty} from 'lodash-es'
  */
 export const annotationResolver = ({annotation, store}: { annotation: Annotation, store: Store }): ResolvedValidator => {
   const checkRequired = (value: any) => {
-    if (annotation.required && isEmpty(value)) {
+    if (annotation.required) {
+      if (typeof value === 'number') return
+      if (!isEmpty(value)) return
       return [{
         settings: {key: 'required_property'},
         message: 'This property is required!',

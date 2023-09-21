@@ -1,10 +1,17 @@
-import {Annotation, ComponentProperty, ComponentPropertyComputeType, isProperty, useComponentData} from '@react-form-builder/core'
+import type {PropertyBlockType} from '@react-form-builder/core'
+import {
+  Annotation,
+  ComponentProperty,
+  ComponentPropertyComputeType,
+  isProperty,
+  isValidatorPropertyBlockType,
+  useComponentData
+} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {createElement, useCallback, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {EditorMap} from '../../annotation-editors'
 import type {AnnotationEditorProps} from '../../annotation-editors/AnnotationEditorProps'
-import {PropertyBlockType} from '../../ui/RightPanel/PropertiesEditor/components/Properties'
 import {Erroneous} from './Erroneous'
 
 interface PropertyEditorWrapperProps {
@@ -53,9 +60,10 @@ export const PropertyEditorWrapper = observer(({
   }, [context, annotation])
 
   const setComputedLocalization = useCallback((value: string) => {
+    store.viewer.form.localization.setLocalization(store.localizationLanguage.fullCode, componentData.key, annotation.key, propertyBlockType, value)
+    if (isValidatorPropertyBlockType(propertyBlockType)) return
     const newComponentProperty: ComponentProperty = {computeType: 'localization'}
     context[annotation.key] = Object.assign(context[annotation.key] ?? {}, newComponentProperty)
-    store.viewer.form.localization.setLocalization(store.localizationLanguage.fullCode, componentData.key, annotation.key, propertyBlockType, value)
   }, [context, annotation, store, componentData, propertyBlockType])
 
   const setComputeCode = useCallback((value: string, type: ComponentPropertyComputeType) => {
@@ -91,14 +99,16 @@ export const PropertyEditorWrapper = observer(({
   }, [getComputedFunction, getComputedLocalization])
 
   const disableCompute = useCallback(() => {
+    if (isValidatorPropertyBlockType(propertyBlockType)) return
     const newComponentProperty: ComponentProperty = {computeType: undefined}
     context[annotation.key] = Object.assign(context[annotation.key] ?? {}, newComponentProperty)
   }, [context, annotation])
 
   const getComputeType = useCallback(() => {
+    if (isValidatorPropertyBlockType(propertyBlockType) && !!getComputedLocalization()) return 'localization'
     const componentProperty = context[annotation.key]
     return componentProperty?.computeType
-  }, [context, annotation])
+  }, [context, annotation, getComputedLocalization])
 
   const annotationEditorProps: AnnotationEditorProps = {
     value,

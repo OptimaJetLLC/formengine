@@ -83,7 +83,8 @@ export class SimpleField implements Field {
           store,
           typedValidatorsResolver(this.getValidationRules(this.valueType)),
           componentStore.schema,
-          error => this.error = error)
+          error => this.error = error,
+          store.localizeErrorMessages.bind(store, componentStore))
         , {name: nameAutorun(className, 'setValidator', {key: componentStore.key})}),
       autorun(
         () => {

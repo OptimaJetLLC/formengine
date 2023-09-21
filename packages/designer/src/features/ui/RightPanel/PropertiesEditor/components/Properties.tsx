@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import type {PropertyBlockType} from '@react-form-builder/core'
 import {
   Annotation,
   className,
@@ -33,11 +34,6 @@ const SubSectionMap: Record<string, SubSection> = {
   useTooltip: SubSection.Tooltip,
   renderWhen: SubSection.Additional,
 }
-
-/**
- * Represents the type of property block.
- */
-export type PropertyBlockType = 'component' | 'tooltip'
 
 const bySection = (section: string) => (annotation: Annotation) => (SectionMap[annotation.editor] ?? Section.Main) === section
 

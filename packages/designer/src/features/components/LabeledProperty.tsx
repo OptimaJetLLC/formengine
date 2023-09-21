@@ -82,7 +82,7 @@ const CodeButton = namedObserver('CodeButton', (props: CodeButtonProps) => {
     store.currentEditable = new EditableProperty(disableCompute, setComputeCode, getComputeCode, getComputeType, annotation, componentData.key)
 
   return <Hinted hint={hint}>
-    <SIconButton onClick={handleClick} disabled={!annotation.calculable}
+    <SIconButton onClick={handleClick} disabled={!annotation.calculable && !annotation.localizable}
                  icon={<FaIcon icon={getIcon()} color={getColor()}/>}
                  size={'xs'} appearance={'subtle'}/>
   </Hinted>

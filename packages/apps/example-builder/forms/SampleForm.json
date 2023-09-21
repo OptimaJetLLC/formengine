@@ -1,12 +1,12 @@
 {
   "actions": {
     "WeatherRequest": {
-      "name": "WeatherRequest",
-      "body": "try {\n  const request = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.62&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`)\n  const value = await request.json()    \n  e.setUserDefinedProps({children: `Current weather is ${value.current_weather.temperature} °C`})\n} catch (error) {\n  e.setUserDefinedProps({children: `Current weather is not available`})\n}"
+      "body": "try {\n  const request = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.62&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`)\n  const value = await request.json()    \n  e.setUserDefinedProps({children: `Current weather is ${value.current_weather.temperature} °C`})\n} catch (error) {\n  e.setUserDefinedProps({children: `Current weather is not available`})\n}",
+      "params": {}
     },
     "loadData": {
-      "name": "loadData",
-      "body": "\n    const [searchValue, loadCallback, currentDataLength] = e.args\n\n    fetch ('https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.json')\n        .then (data => data.json())\n        .then (data => {\n            const preparedData = data\n                .filter(value => value.toLowerCase().includes(searchValue.toLowerCase()))\n                .slice(currentDataLength, currentDataLength + 20)\n                .map(value => ({value, label: value}))\n\n            loadCallback(preparedData)        \n        })\n"
+      "body": "\n    const [searchValue, loadCallback, currentDataLength] = e.args\n\n    fetch ('https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.json')\n        .then (data => data.json())\n        .then (data => {\n            const preparedData = data\n                .filter(value => value.toLowerCase().includes(searchValue.toLowerCase()))\n                .slice(currentDataLength, currentDataLength + 20)\n                .map(value => ({value, label: value}))\n\n            loadCallback(preparedData)        \n        })\n",
+      "params": {}
     },
     "customAssertArgs": {
       "body": "    if (!e) throw new Error(`'e' is undefined`)\n    if (!args) throw new Error(`'args' is undefined`)\n    if (args.stringParam !== 'Ayn Rand') console.error(`args.stringParam !== 'Ayn Rand'`, args.stringParam)\n    if (args.customBool !== false) console.error(`args.customBool !== false`, args.customBool)\n    if (args.myNumericProperty !== 2.7182818284) console.error(`args.myNumericProperty !== 2.7182818284`, args.myNumericProperty)",
@@ -21,8 +21,7 @@
   "form": {
     "key": "screen 1",
     "type": "Screen",
-    "props": {
-    },
+    "props": {},
     "children": [
       {
         "key": "RsMenu 1",
@@ -270,7 +269,7 @@
                       "key": "custom",
                       "args": {
                         "code": "return await fetch(`https://jsonplaceholder.typicode.com/users?username=${value}`).then((response) => response.json()).then((user) => user.length === 0)",
-                        "message": "That username is taken. Try another."
+                        "message": ""
                       }
                     }
                   ]
@@ -451,6 +450,11 @@
         "component": {
           "placeholder": "Enter your text here"
         }
+      },
+      "last_name": {
+        "validator-custom": {
+          "message": " That username is taken. Try another."
+        }
       }
     },
     "de-DE": {
@@ -458,12 +462,22 @@
         "component": {
           "placeholder": "Geben Sie hier Ihren Text ein"
         }
+      },
+      "last_name": {
+        "validator-custom": {
+          "message": " Dieser Benutzername ist vergeben. Versuch es mit einem anderen."
+        }
       }
     },
     "ar-EG": {
       "comment": {
         "component": {
           "placeholder": "أدخل النص هنا"
+        }
+      },
+      "last_name": {
+        "validator-custom": {
+          "message": " يتم أخذ اسم المستخدم هذا. جرب آخر."
         }
       }
     }
