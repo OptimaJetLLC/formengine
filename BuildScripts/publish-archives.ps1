@@ -22,8 +22,7 @@ $PublishTag = $VersionData['NpmPublishTag']
 
 $PackagesToPublish = (
 "react-form-builder-core",
-"react-form-builder-builder",
-"react-form-builder-viewer",
+"react-form-builder-designer",
 "react-form-builder-components-rsuite"
 )
 

@@ -1,6 +1,6 @@
 {
     "name": "@react-form-builder/example-viewer",
-    "version": "0.0.2-alpha",
+    "version": "0.0.3-alpha",
     "private": true,
     "main": "src/index.ts",
     "type": "module",

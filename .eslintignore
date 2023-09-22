@@ -1,5 +1,6 @@
 vite.config.ts
 **/dist
+BuildScripts
 documentation
 scripts
 packages/apps

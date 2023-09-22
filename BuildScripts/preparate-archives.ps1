@@ -58,8 +58,7 @@ New-Item -ItemType Directory -Force -Path $ArchivePath | Out-Null
 
 $PackagesToArchive = (
 "$( $PSScriptRoot )/../packages/core",
-"$( $PSScriptRoot )/../packages/form-builder",
-"$( $PSScriptRoot )/../packages/form-viewer",
+"$( $PSScriptRoot )/../packages/designer",
 "$( $PSScriptRoot )/../packages/views/rsuite"
 )
 

@@ -8,13 +8,12 @@ function CheckExitCode()
   }
 }
 
-$Path = "$( $PSScriptRoot )/version.txt"
-$VersionData = Get-Content $Path | Out-String | ConvertFrom-StringData
-
-Push-Location $PSScriptRoot/..
+Push-Location $PSScriptRoot/version-update
 try
 {
-  npx lerna version $VersionData['NpmVersion'] --preid $VersionData['NpmPublishTag'] --no-git-tag-version --yes
+  npm install
+  CheckExitCode
+  npm run version:update
   CheckExitCode
 }
 finally
