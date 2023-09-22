@@ -15,8 +15,7 @@ interface NavProps {
 export const NavTab = observer(({activeTab, setActiveTab}: NavProps) => {
   const {t} = useTranslation()
   const title = (key: string) => t('propertiesEditor.sectionName.' + key)
-  return <SNav activeKey={activeTab} onSelect={setActiveTab}
-               appearance="subtle" style={{justifyContent: 'center'}}>
+  return <SNav activeKey={activeTab} onSelect={setActiveTab} appearance="subtle">
     {NavIconItem(Section.Main, title(Section.Main), faCircle, {color: 'var(--rs-navs-selected)'})}
     {NavIconItem(Section.Style, title(Section.Style), faPaintBrush, {color: '#f67f1f'})}
     {NavIconItem(Section.Actions, title(Section.Actions), faBolt, {color: 'violet'})}

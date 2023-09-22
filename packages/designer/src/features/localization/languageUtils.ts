@@ -1,11 +1,15 @@
 import {BiDi, Language} from '@react-form-builder/core'
-import {arEG, deDE, enUS} from 'rsuite/esm/locales/index.js'
+import {arEG, deDE, enUS, esES, frFR, itIT, zhCN} from 'rsuite/esm/locales/index.js'
 import type {FormBuilderI18n} from './FormBuilderLanguage'
 
 const rSuiteLocales: Record<string, any> = {
   'ar-EG': arEG,
   'de-DE': deDE,
   'en-US': enUS,
+  'it-IT': itIT,
+  'fr-FR': frFR,
+  'es-ES': esES,
+  'zh-CN': zhCN
 }
 
 export const defaultComponentsLocale = enUS
@@ -15,6 +19,10 @@ export const builtInLanguages: FormBuilderI18n = {
     new Language('en', 'US', 'English', 'American English'),
     new Language('de', 'DE', 'Deutsch', 'German'),
     new Language('ar', 'EG', 'عرب', 'Arabic (Egypt)', BiDi.RTL),
+    new Language('it', 'IT', 'Italiano', 'Italian'),
+    new Language('fr', 'FR', 'Français', 'French'),
+    new Language('es', 'ES', 'Español', 'Spanish'),
+    new Language('zh', 'CN', '中文', 'Chinese')
   ],
   getData: async languageFullCode => {
     const data = await import(`../../../public/locales/${languageFullCode}.json`)
