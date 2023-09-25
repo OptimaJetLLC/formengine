@@ -5,9 +5,9 @@ import {
   ComponentPropertyComputeType,
   isProperty,
   isValidatorPropertyBlockType,
+  namedObserver,
   useComponentData
 } from '@react-form-builder/core'
-import {observer} from 'mobx-react'
 import {createElement, useCallback, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {EditorMap} from '../../annotation-editors'
@@ -21,12 +21,12 @@ interface PropertyEditorWrapperProps {
   propertyBlockType?: PropertyBlockType
 }
 
-export const PropertyEditorWrapper = observer(({
-                                                 annotation,
-                                                 context,
-                                                 initContext,
-                                                 propertyBlockType = 'component'
-                                               }: PropertyEditorWrapperProps) => {
+export const PropertyEditorWrapper = namedObserver('PropertyEditorWrapper', ({
+                                                                               annotation,
+                                                                               context,
+                                                                               initContext,
+                                                                               propertyBlockType = 'component'
+                                                                             }: PropertyEditorWrapperProps) => {
   // custom editors have the highest priority
   const store = useBuilderStore()
   const componentData = useComponentData()

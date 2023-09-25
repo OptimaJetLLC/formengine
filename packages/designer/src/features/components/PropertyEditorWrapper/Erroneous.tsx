@@ -1,5 +1,4 @@
-import {DataValidator, errorMessageModel, useDestroy, WrapperProps} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {DataValidator, errorMessageModel, namedObserver, useDestroy, WrapperProps} from '@react-form-builder/core'
 import {useEffect, useMemo, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps} from '../../annotation-editors/AnnotationEditorProps'
@@ -17,7 +16,7 @@ export interface ErroneousProps extends WrapperProps, AnnotationEditorProps {
  * @param props the React component properties.
  * @returns the React element.
  */
-export const Erroneous = observer((props: ErroneousProps) => {
+export const Erroneous = namedObserver('Erroneous', (props: ErroneousProps) => {
   const {annotation, value, children} = props
   const ErrorMessage = errorMessageModel.view
   const store = useBuilderStore()

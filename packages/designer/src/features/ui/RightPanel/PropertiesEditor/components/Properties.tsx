@@ -8,6 +8,7 @@ import {
   ComponentStore,
   Device,
   key,
+  namedObserver,
   useTooltipType
 } from '@react-form-builder/core'
 import {unionWith} from 'lodash-es'
@@ -43,7 +44,7 @@ interface PropertiesProps {
   activeTab: Section
 }
 
-const Properties = observer(({activeTab}: PropertiesProps) => {
+const Properties = namedObserver('Properties', ({activeTab}: PropertiesProps) => {
   const store = useBuilderStore()
   const tooltipType = useTooltipType()
   const getLabel = useTranslationPart('propertiesEditor')
