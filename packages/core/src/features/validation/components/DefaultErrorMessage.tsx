@@ -50,5 +50,6 @@ const DefaultErrorMessage = ({children, error, className}: ErrorWrapperProps) =>
     </SDiv>
   )
 }
+DefaultErrorMessage.displayName = 'DefaultErrorMessage'
 
 export const errorMessageModel = new Model(DefaultErrorMessage)
