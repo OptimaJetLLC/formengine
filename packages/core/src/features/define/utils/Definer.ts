@@ -8,7 +8,10 @@ import {Meta} from './Meta'
 import {Model} from './Model'
 import {toArray} from './toArray'
 
-type DefinerData<T extends object> = {
+/**
+ * Definer class data.
+ */
+export type DefinerData<T extends object> = {
   readonly view: ComponentType<T>,
   name?: string,
   category?: string,

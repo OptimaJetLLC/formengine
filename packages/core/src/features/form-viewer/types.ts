@@ -24,7 +24,7 @@ export interface FormViewerProps {
   /**
    * Loads the form.
    * @param name the form name.
-   * @returns the string or {@link Promise} with the form.
+   * @returns the string or Promise with the form.
    */
   getForm?: (name?: string) => string | Promise<string>
 

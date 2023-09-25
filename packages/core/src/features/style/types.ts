@@ -1,6 +1,9 @@
 import {CSSObject} from '@emotion/react'
 
-type DeviceStyle = {
+/**
+ * CSS styles for a device.
+ */
+export type DeviceStyle = {
   object?: CSSObject
   string?: string
 }

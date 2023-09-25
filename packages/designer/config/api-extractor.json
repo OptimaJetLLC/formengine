@@ -391,9 +391,14 @@
      */
     "extractorMessageReporting": {
       "default": {
-        "logLevel": "warning"
+        "logLevel": "error"
         // "addToApiReportFile": false
-      }
+      },
+
+      "ae-forgotten-export": {
+        "logLevel": "error",
+        "addToApiReportFile": false
+      },
 
       // "ae-extra-release-tag": {
       //   "logLevel": "warning",

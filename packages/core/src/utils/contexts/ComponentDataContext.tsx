@@ -1,4 +1,4 @@
-import {FluentVariable} from '@fluent/bundle/esm/bundle.js'
+import type {FluentVariable} from '@fluent/bundle/esm/bundle.js'
 import {IReactionDisposer, makeAutoObservable, reaction} from 'mobx'
 import {Model} from '../../features/define'
 import {getFluentCompatibleId} from '../../features/localization/getFluentCompatibleId'
@@ -74,7 +74,7 @@ export class ComponentData implements IFormData {
    * @param componentStore the component settings.
    * @param model the component metadata for the form viewer.
    * @param field the field with the form data.
-   * @param childFactory the factory function that creates {@ComponentData} instance.
+   * @param childFactory the factory function that creates {@link ComponentData} instance.
    */
   constructor(componentStore: ComponentStore, model: Model, field: Field | undefined,
               childFactory: (componentStore: ComponentStore) => ComponentData) {
@@ -248,7 +248,7 @@ export class ComponentData implements IFormData {
   }
 
   /**
-   * @returns all the form data that is of the {@link FluentVariable} type.
+   * @returns all the form data that is of the FluentVariable type.
    * Additionally, the keys of the returned object are converted to the snake case.
    */
   get fluentData() {

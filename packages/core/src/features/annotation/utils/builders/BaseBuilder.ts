@@ -4,7 +4,10 @@ import {AnnotationMap} from '../../consts'
 import {AnnotationType} from '../../types'
 import {Annotation} from '../../types/annotations/Annotation'
 
-class BuilderOptions {
+/**
+ * Options for building an annotation.
+ */
+export class BuilderOptions {
   annotationType: AnnotationType = 'Module'
   autoName = true
 }

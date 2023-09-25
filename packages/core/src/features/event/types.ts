@@ -126,6 +126,6 @@ export const createActionValuesFromObject = (obj: any) => {
 }
 
 /**
- * The type of arbitrary function that returns void or Promise<void>.
+ * The type of arbitrary function that returns void or Promise&lt;void&gt;.
  */
 export type Func = (...arg: any[]) => void | Promise<void>

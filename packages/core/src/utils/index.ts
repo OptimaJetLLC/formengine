@@ -31,9 +31,9 @@ export function isNumber(value: any): value is number {
 }
 
 /**
- * Type predicate, asserts that the value is a {@link Promise}.
+ * Type predicate, asserts that the value is a Promise.
  * @param value the value.
- * @returns true if the value is a {@link Promise}, false otherwise.
+ * @returns true if the value is a Promise, false otherwise.
  */
 export function isPromise<T = any>(value: any): value is Promise<T> {
   return typeof value === 'object' && typeof value.then === 'function'
@@ -42,7 +42,7 @@ export function isPromise<T = any>(value: any): value is Promise<T> {
 /**
  * Type predicate, asserts that the value is a {@link Record}.
  * @param value the value.
- * @returns true if the value is a {@link Record}, false otherwise.
+ * @returns true if the value is a Record, false otherwise.
  */
 export function isRecord(value: any): value is Record<string, unknown> {
   return typeof value === 'object'

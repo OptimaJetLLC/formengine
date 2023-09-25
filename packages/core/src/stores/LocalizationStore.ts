@@ -18,17 +18,35 @@ import {nameAutorun, nameObservable} from '../utils/observableNaming'
  */
 export type LocalizationValue = Record<LanguageFullCode, ComponentsLocalization>
 
-type ComponentsLocalization = Record<ComponentKey, TypedLocalization>
+/**
+ * A record containing localizations grouped by component key.
+ */
+export type ComponentsLocalization = Record<ComponentKey, TypedLocalization>
 
-type TypedLocalization = Partial<Record<LocalizationType, ComponentPropsLocalization>>
+/**
+ * A record containing localizations grouped by localization type.
+ */
+export type TypedLocalization = Partial<Record<LocalizationType, ComponentPropsLocalization>>
 
-type ComponentPropsLocalization = Record<ComponentPropertyName, string>
+/**
+ * A record containing localizations for the component properties.
+ */
+export type ComponentPropsLocalization = Record<ComponentPropertyName, string>
 
-type LanguageFullCode = string
+/**
+ * The full language code, e.g. 'en-US'.
+ */
+export type LanguageFullCode = string
 
-type ComponentKey = string
+/**
+ * The component key.
+ */
+export type ComponentKey = string
 
-type ComponentPropertyName = string
+/**
+ * The component property name.
+ */
+export type ComponentPropertyName = string
 
 const className = 'LocalizationStore'
 

@@ -41,7 +41,7 @@ export class Model<T = any> {
   }
 
   /**
-   * @returns the component name, or {@link type} if there is no component name.
+   * @returns the component name, or type if there is no component name.
    */
   get name() {
     return this.#name ?? this.type

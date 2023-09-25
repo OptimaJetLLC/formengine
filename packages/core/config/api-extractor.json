@@ -391,9 +391,24 @@
      */
     "extractorMessageReporting": {
       "default": {
-        "logLevel": "warning"
+        "logLevel": "error"
         // "addToApiReportFile": false
-      }
+      },
+
+      "ae-forgotten-export": {
+        "logLevel": "error",
+        "addToApiReportFile": false
+      },
+
+      "ae-missing-release-tag": {
+        "logLevel": "none",
+        "addToApiReportFile": false
+      },
+
+      "ae-internal-missing-underscore": {
+        "logLevel": "none",
+        "addToApiReportFile": false
+      },
 
       // "ae-extra-release-tag": {
       //   "logLevel": "warning",
@@ -414,7 +429,20 @@
       "default": {
         "logLevel": "warning"
         // "addToApiReportFile": false
-      }
+      },
+
+      "tsdoc-param-tag-missing-hyphen": {
+        "logLevel": "none",
+        "addToApiReportFile": false
+      },
+      "tsdoc-undefined-tag": {
+        "logLevel": "none",
+        "addToApiReportFile": false
+      },
+      "tsdoc-inline-tag-missing-braces": {
+        "logLevel": "none",
+        "addToApiReportFile": false
+      },
 
       // "tsdoc-link-tag-unescaped-text": {
       //   "logLevel": "warning",

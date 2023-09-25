@@ -130,7 +130,7 @@ export class ComponentState {
   /**
    * Calculates and returns className property.
    * @param props the React component properties.
-   * @returns the {@link Record} that contains the className property for the component.
+   * @returns the Record that contains the className property for the component.
    */
   className(props: Record<string, any>) {
     const {model, store} = this.data
@@ -162,7 +162,7 @@ export class ComponentState {
   /**
    * Calculates and returns all child components.
    * @param props the React component properties.
-   * @returns the {@link Record} that contains the child components of a component.
+   * @returns the Record that contains the child components of a component.
    */
   children(props: any) {
     return this.computeChildren(this.data, props)

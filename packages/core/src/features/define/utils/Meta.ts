@@ -12,7 +12,7 @@ export class Meta {
    * @param properties the component's properties metadata.
    * @param css the component's CSS metadata.
    * @param modules common metadata for the component.
-   * @param customPreview the custom {@link ReactNode} to be drawn on the toolbar.
+   * @param customPreview the custom ReactNode to be drawn on the toolbar.
    * @param valuedAn the metadata for the component value.
    */
   constructor(

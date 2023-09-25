@@ -3,12 +3,12 @@
  */
 export interface IFormData {
   /**
-   * @returns the {@link Record} with all the form data.
+   * @returns the Record with all the form data.
    */
   get data(): Record<string, unknown>
 
   /**
-   * @returns the {@link Record} with all validation error messages.
+   * @returns the Record with all validation error messages.
    */
   get errors(): Record<string, unknown>
 

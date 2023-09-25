@@ -1,6 +1,6 @@
 ---
 id: "index"
-title: "Documentation"
+title: "@react-form-builder/core"
 sidebar_label: "Readme"
 sidebar_position: 0
 custom_edit_url: null
