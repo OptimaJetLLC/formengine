@@ -6,7 +6,7 @@ import {ActionEventArgs, DidMountEvent, EventName, WillUnmountEvent} from '../fe
 import type {ComputeChildren} from '../utils/ComputeChildren'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
-import {ComponentProperty, ComponentStore, isFunctionalProperty} from './ComponentStore'
+import {ComponentStore} from './ComponentStore'
 import {Store} from './Store'
 
 const getHtmlAttributes = (componentStore: ComponentStore) => componentStore.htmlAttributes
@@ -18,27 +18,6 @@ const getHtmlAttributes = (componentStore: ComponentStore) => componentStore.htm
     }
     return result
   }, {})
-
-const getSubstitutedValue = (props: Record<string, ComponentProperty>, store: Store) => {
-  const result: Record<string, any> = {}
-
-  for (const key in props) {
-    const value = props[key]?.value
-
-    if (isFunctionalProperty(props[key]) || typeof value !== 'string' || key === 'value') continue
-    //if (store.isBuilderMode) continue
-
-    result[key] = substitute(value, store.form.componentTree.data)
-  }
-
-  return result
-
-  function substitute(value: string, values: any) {
-    return value.replace(/{([\w ]+)}/g, (match, replaceable) => {
-      return values[replaceable] ? values[replaceable] : match
-    })
-  }
-}
 
 const computeEvents = (data: ComponentData, store: Store, state: ComponentState) => {
   const events = {} as Record<EventName, Function>
@@ -82,7 +61,6 @@ export class ComponentState {
       {key: this.data.store.key},
       this.data.model.defaultProps,
       this.calculatedProps,
-      this.substitutedValue,
       this.localizedProps,
       this.value,
       this.events,
@@ -118,13 +96,6 @@ export class ComponentState {
    */
   get events() {
     return computeEvents(this.data, this.store, this)
-  }
-
-  /**
-   * @returns the values for properties that have parameters for substitution.
-   */
-  get substitutedValue() {
-    return getSubstitutedValue(this.data.store.props, this.store)
   }
 
   /**
