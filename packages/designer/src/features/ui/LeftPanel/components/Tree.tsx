@@ -32,7 +32,7 @@ const Tree = observer(() => {
       </SubtleIconButton>
     </Columns>
     <STreeContainer>
-      <FormViewer {...props} componentWrapper={DraggableTreeNode} getForm={undefined}/>
+      <FormViewer {...props} language={store.defaultLanguage} componentWrapper={DraggableTreeNode} getForm={undefined}/>
     </STreeContainer>
   </Rows>
 })

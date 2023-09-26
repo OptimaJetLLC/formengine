@@ -1,10 +1,9 @@
 import {CacheProvider} from '@emotion/react'
-import {BiDi} from '@react-form-builder/core'
+import {BiDi, emotionCache} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {ReactNode} from 'react'
 import {CustomProvider} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
-import {cssUrls, emotionCache} from '../consts'
 import {defaultComponentsLocale} from '../languageUtils'
 
 interface LocalizationProps {
@@ -29,6 +28,13 @@ export const LocalizationProvider = observer((props: LocalizationProps) => {
 
 let currentCssEl: any = null
 let currentBiDi: BiDi | undefined = undefined
+
+const cssFiles = import.meta.glob('../../../../public/css/*', {as: 'url'})
+
+const cssUrls = {
+  [BiDi.LTR]: cssFiles['../../../../public/css/rsuite.min.css'],
+  [BiDi.RTL]: cssFiles['../../../../public/css/rsuite-rtl.min.css'],
+}
 
 const loadCssFile = async (biDi: BiDi) => {
   if (currentBiDi === biDi) return

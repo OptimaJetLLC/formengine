@@ -1,7 +1,14 @@
-import {BuilderView, FormBuilder, FormBuilderI18n} from '@react-form-builder/designer'
 import {antdComponents, antTooltip} from '@react-form-builder/components-antd'
-import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
-import {ActionDefinition, ComponentStore, ExternalValidators, IFormViewer, Language} from '@react-form-builder/core'
+import {
+  ltrCssLoader,
+  rsErrorMessage,
+  RsLocalizationWrapper,
+  rsTooltip,
+  rSuiteComponents,
+  rtlCssLoader
+} from '@react-form-builder/components-rsuite'
+import {ActionDefinition, BiDi, ComponentStore, ExternalValidators, IFormViewer, Language} from '@react-form-builder/core'
+import {BuilderView, FormBuilder, FormBuilderI18n} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useRef, useState} from 'react'
 import {frFR, trTR} from 'rsuite/esm/locales/index.js'
@@ -24,6 +31,9 @@ const view = new BuilderView(components)
   .withTooltipMeta(rsTooltip.build())
   .withTooltipMeta(antTooltip.build())
   .withTemplates(['template', 'agreement', 'login form'])
+  .withViewerWrapper(RsLocalizationWrapper)
+  .withCssLoader(BiDi.LTR, ltrCssLoader)
+  .withCssLoader(BiDi.RTL, rtlCssLoader)
 
 function localizer(componentStore: ComponentStore, language: Language): Record<string, any> {
   return componentStore.key === 'comment'

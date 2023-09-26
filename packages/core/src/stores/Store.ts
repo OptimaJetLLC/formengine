@@ -345,7 +345,8 @@ export class Store implements IStore, IFormViewer {
   /**
    * @returns the current display language.
    */
-  get displayedLanguage() {
+  get displayedLanguage(): Language {
+    if (this.parentStore) return this.parentStore.displayedLanguage
     if (this.propsLanguage) {
       const propsLanguage = this.form.languages.find(l => l === this.propsLanguage)
       if (propsLanguage) return propsLanguage

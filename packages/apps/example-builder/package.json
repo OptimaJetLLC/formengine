@@ -14,10 +14,10 @@
         "show:bundle": "npx vite-bundle-visualizer"
     },
     "dependencies": {
-        "@react-form-builder/components-antd": "*",
-        "@react-form-builder/components-rsuite": "*",
-        "@react-form-builder/designer": "*",
-        "@react-form-builder/indexed-db-form-storage": "*",
+        "@react-form-builder/components-antd": "^0.0.3-alpha",
+        "@react-form-builder/components-rsuite": "^0.0.3-alpha",
+        "@react-form-builder/designer": "^0.0.3-alpha",
+        "@react-form-builder/indexed-db-form-storage": "^0.0.3-alpha",
         "react": "^17.0.2",
         "react-dom": "^17.0.2"
     }

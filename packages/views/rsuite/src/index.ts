@@ -19,6 +19,7 @@ import {rsImage} from './components/RsImage'
 import {rsInput} from './components/RsInput'
 import {rsLabel} from './components/RsLabel'
 import {rsContent, rsFooter, rsHeader, rsSidebar} from './components/RsLayout'
+import {RsLocalizationWrapper} from './components/RsLocalizationWrapper'
 import {rsMenu} from './components/RsMenu'
 import {rsMessage} from './components/RsMessage'
 import {rsNumberFormat} from './components/RsNumberFormat'
@@ -35,6 +36,7 @@ import {rsTitle} from './components/RsTitle'
 import {rsTooltip} from './components/RsTooltip'
 import {rsTreePicker} from './components/RsTreePicker'
 import {rsUploader} from './components/RsUploader'
+import {ltrCssLoader, rtlCssLoader} from './cssLoader'
 
 const categories = {
   fields: [
@@ -98,7 +100,7 @@ Object.entries(categories).forEach(([category, components]) => {
   })
 })
 
-export {rSuiteComponents, rsErrorMessage, rsTooltip}
+export {rSuiteComponents, rsErrorMessage, rsTooltip, RsLocalizationWrapper, rtlCssLoader, ltrCssLoader}
 
 const components = rSuiteComponents.map(def => def.build())
 export const models = components.map(({model}) => model)

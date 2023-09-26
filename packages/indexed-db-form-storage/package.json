@@ -22,8 +22,8 @@
         "dist/*"
     ],
     "dependencies": {
-        "@react-form-builder/core": "*",
-        "@react-form-builder/designer": "*",
+        "@react-form-builder/core": "^0.0.3-alpha",
+        "@react-form-builder/designer": "^0.0.3-alpha",
         "idb-keyval": "^6.2.1",
         "mobx": "^6.9.0"
     }
