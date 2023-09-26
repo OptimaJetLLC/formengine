@@ -11,7 +11,7 @@ import {rsCustomControl} from './components/RsCustomControl'
 import {rsDatePicker} from './components/RsDatePicker'
 import {rsDropdown} from './components/RsDropdown'
 import {rsDropzone} from './components/RsDropzone'
-import {rsErrorMessage} from './components/RsErrorMessage'
+import {rsErrorMessage, RsErrorMessageProps} from './components/RsErrorMessage'
 import {rsGrid} from './components/RsGrid'
 import {rsGridLayout} from './components/RsGridLayout'
 import {rsGridView} from './components/RsGridView'
@@ -33,7 +33,7 @@ import {rsStaticContent} from './components/RsStaticContent'
 import {rsTab} from './components/RsTab'
 import {rsTextArea} from './components/RsTextArea'
 import {rsTitle} from './components/RsTitle'
-import {rsTooltip} from './components/RsTooltip'
+import {rsTooltip, RsTooltipProps} from './components/RsTooltip'
 import {rsTreePicker} from './components/RsTreePicker'
 import {rsUploader} from './components/RsUploader'
 import {ltrCssLoader, rtlCssLoader} from './cssLoader'
@@ -101,6 +101,7 @@ Object.entries(categories).forEach(([category, components]) => {
 })
 
 export {rSuiteComponents, rsErrorMessage, rsTooltip, RsLocalizationWrapper, rtlCssLoader, ltrCssLoader}
+export type {RsErrorMessageProps, RsTooltipProps}
 
 const components = rSuiteComponents.map(def => def.build())
 export const models = components.map(({model}) => model)

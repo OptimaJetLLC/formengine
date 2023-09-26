@@ -4,6 +4,7 @@
     "private": false,
     "main": "src/index.ts",
     "type": "module",
+    "types": "./dist/index.d.ts",
     "description": "Optimajet Form Builder core",
     "keywords": [
         "form-builder",

@@ -134,7 +134,7 @@ const Container = styled(Columns)`
 const makeFunctionHeader = (params?: Parameter[]) => {
   let types = '@param {} args - the action arguments.'
   if (params?.length) {
-    const names: string[] = params.map(([name, type]) => name + ': ' + type)
+    const names: string[] = params.map(([name, type]) => `${name}: ${type}`)
     types = `@param {{${names.join(', ')}}} args - the action parameters.`
   }
 

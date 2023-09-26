@@ -4,21 +4,21 @@
 export interface IFormStorage {
 
   /**
-   * @returns the {@link Promise} with an array of form names.
+   * @returns the Promise with an array of form names.
    */
   getFormNames: () => Promise<string[]>
 
   /**
    * Removes the form by form name.
    * @param formName the form name.
-   * @returns the {@link Promise} with the result of removal.
+   * @returns the Promise with the result of removal.
    */
   removeForm: (formName: string) => Promise<any>
 
   /**
    * Returns the form serialized in JSON by the form name.
    * @param formName the form name.
-   * @returns the {@link Promise} with the form serialized in JSON.
+   * @returns the Promise with the form serialized in JSON.
    */
   getForm: (formName: string) => Promise<string>
 
@@ -26,7 +26,7 @@ export interface IFormStorage {
    * Saves the form serialized in JSON.
    * @param formName the form name.
    * @param formValue the form serialized in JSON.
-   * @returns the {@link Promise} with the result of saving the form.
+   * @returns the Promise with the result of saving the form.
    */
   saveForm: (formName: string, formValue: string) => Promise<any>
 }

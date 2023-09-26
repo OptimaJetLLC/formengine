@@ -27,7 +27,7 @@ export const KeyInput = observer((props: AnnotationEditorProps) => {
   }, [value])
 
   const validateUniqueKey = (key: string) =>
-    0 === viewerStore.reduceScreen((acc, cd) => cd.key === key ? acc + 1 : acc, 0)
+    0 === viewerStore.reduceScreen((acc: number, cd) => cd.key === key ? acc + 1 : acc, 0)
     && key.length > 0
 
   const inputOnChange = (inputValue: string) => {

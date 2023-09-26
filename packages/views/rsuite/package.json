@@ -15,7 +15,7 @@
         "clean-typings": "rimraf dist/types src/tsdoc-metadata.json temp",
         "generate-typings": "tsc --build bundle.tsconfig.json",
         "api-extractor": "api-extractor run --local --verbose",
-        "bundle": "npm-run-all -l clean build generate-typings clean-typings create-archive",
+        "bundle": "npm-run-all -l clean build generate-typings api-extractor clean-typings create-archive",
         "create-archive": "node ./config/pack"
     },
     "peerDependencies": {

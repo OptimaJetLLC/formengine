@@ -3,7 +3,10 @@ import {Tooltip, Whisper} from 'rsuite'
 import type {TypeAttributes} from 'rsuite/esm/@types/common'
 import type {OverlayTriggerType} from 'rsuite/esm/Overlay/OverlayTrigger'
 
-interface RsTooltipProps extends WrapperProps {
+/**
+ * The properties of RsTooltip component.
+ */
+export interface RsTooltipProps extends WrapperProps {
   text: string
   placement: TypeAttributes.Placement
   trigger: OverlayTriggerType

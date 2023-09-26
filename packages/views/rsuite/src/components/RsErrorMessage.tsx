@@ -5,7 +5,10 @@ import {Form} from 'rsuite'
 import type {TypeAttributes} from 'rsuite/esm/@types/common'
 import {placement} from '../commonProperties'
 
-interface RsErrorMessageProps extends ErrorWrapperProps {
+/**
+ * The properties of RsErrorMessage component.
+ */
+export interface RsErrorMessageProps extends ErrorWrapperProps {
   placement?: TypeAttributes.Placement8
 }
 

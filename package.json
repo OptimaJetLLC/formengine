@@ -22,6 +22,7 @@
         "test:ui": "vitest --ui",
         "coverage": "vitest run --coverage",
         "check:circular-deps": "npx madge@6.1.0 --extensions ts --circular .",
+        "precheck:tsc": "npm run bundle",
         "check:tsc": "tsc --noEmit --emitDeclarationOnly false",
         "check:unused-exports": "node ./scripts/find-unused-exports",
         "check:wrong-imports": "node ./scripts/find-wrong-imports",

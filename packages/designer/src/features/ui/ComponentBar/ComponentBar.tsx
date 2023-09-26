@@ -82,7 +82,7 @@ const AddedComponents = ({definitions, ...componentProps}: AddedComponentsProps)
   return (
     <ControlsGroup>
       {definitions.map(model => {
-        const componentStore = new ComponentStore(model.type + ' ' + getKey(), model.type)
+        const componentStore = new ComponentStore(`${model.type} ${getKey()}`, model.type)
         const componentData = viewerStore.createComponentData(componentStore)
         return (
           <ComponentDataProvider key={componentData.id} value={componentData}>

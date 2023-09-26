@@ -19,7 +19,7 @@ export const CSSEditor = observer(({device}: { device: Device }) => {
 
   return (
     <SCodeEditor
-      key={store.key + device}
+      key={`${store.key}${device}`}
       language="scss"
       beginContextLine={'element.style {'}
       endContextLine="}"

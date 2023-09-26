@@ -400,6 +400,11 @@
         "addToApiReportFile": false
       },
 
+      "ae-missing-release-tag": {
+        "logLevel": "none",
+        "addToApiReportFile": false
+      },
+
       // "ae-extra-release-tag": {
       //   "logLevel": "warning",
       //   "addToApiReportFile": true
@@ -419,7 +424,16 @@
       "default": {
         "logLevel": "warning"
         // "addToApiReportFile": false
-      }
+      },
+
+      "tsdoc-param-tag-missing-hyphen": {
+        "logLevel": "none",
+        "addToApiReportFile": false
+      },
+      "tsdoc-param-tag-with-invalid-name": {
+        "logLevel": "none",
+        "addToApiReportFile": false
+      },
 
       // "tsdoc-link-tag-unescaped-text": {
       //   "logLevel": "warning",

@@ -11,7 +11,7 @@ const {Cell} = Table
  * The React component that displays the table cell with the input.
  * @param props the React component properties.
  * @param props.rowData the row data.
- * @param props.dataKey the key name in {@link props.rowData}.
+ * @param props.dataKey the key name in props.rowData.
  * @param props.rowIndex the row index.
  * @param props.props the other properties of the component.
  * @returns the React element.
@@ -32,7 +32,7 @@ export const InputCell = ({rowData, dataKey, rowIndex, ...props}: InputCellProps
  * The React component that displays the table cell with the checkbox.
  * @param props the React component properties.
  * @param props.rowData the row data.
- * @param props.dataKey the key name in {@link props.rowData}.
+ * @param props.dataKey the key name in props.rowData.
  * @param props.rowIndex the row index.
  * @param props.onChange the onChange event of the checkbox.
  * @param props.props the other properties of the component.
@@ -54,7 +54,7 @@ export const CheckCell = ({rowData, dataKey, rowIndex, onChange, ...props}: Inpu
  * The React component that displays the table cell with the select input.
  * @param props the React component properties.
  * @param props.rowData the row data.
- * @param props.dataKey the key name in {@link props.rowData}.
+ * @param props.dataKey the key name in props.rowData.
  * @param props.rowIndex the row index.
  * @param props.options the select options.
  * @param props.onChange the onChange event of the checkbox.
@@ -112,16 +112,25 @@ const SCheckbox = styled(Checkbox)`
   }
 `
 
-interface InputCellProps extends InnerCellProps {
+/**
+ * The properties of InputCell component.
+ */
+export interface InputCellProps extends InnerCellProps {
   onChange?: (value?: any, dataKey?: string, rowIndex?: number) => void
   dataKey: string
 }
 
-interface SelectCellProps extends InputCellProps {
+/**
+ * The properties of SelectCell component.
+ */
+export interface SelectCellProps extends InputCellProps {
   options: LabeledValue[]
 }
 
-interface ActionCellProps extends InnerCellProps {
+/**
+ * The properties of ActionCell component.
+ */
+export interface ActionCellProps extends InnerCellProps {
   onAction: (rowIndex?: number) => void
   icon: () => ReactElement<IconProps>
 }
