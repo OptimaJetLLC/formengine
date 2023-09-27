@@ -6,15 +6,15 @@ import {InputProps} from '../InputProps'
 
 const booleanData = [
   {label: 'True', value: 1},
-  {label: 'False', value: 0},
-  //{label: "Bind to prop...", value: -2}
+  {label: 'False', value: 0}
 ]
 
 //TODO use the same components for arguments and properties.
 // These TODOs refer to inputNumber and to InputBindableText in substitution
 export const InputBoolean = observer(({name}: InputProps) => {
   const data = useActionData()
-  const value = data.args?.[name] ? 1 : 0
+  const booleanValue = data.args?.[name]
+  const value = booleanValue === undefined ? undefined : booleanValue ? 1 : 0
   const handleChange = (value: string) => data.args = assign({}, data.args, {[name]: Boolean(value)})
 
   /* TODO
