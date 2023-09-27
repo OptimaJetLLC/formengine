@@ -1,10 +1,9 @@
-import {createElement, ReactNode, useMemo} from 'react'
-import {ComponentState} from '../../stores/ComponentState'
-import {ComponentStore} from '../../stores/ComponentStore'
+import {createElement, ReactNode, useCallback} from 'react'
 import {namedObserver} from '../../utils'
 import {useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {useTooltipType} from '../../utils/useTooltipType'
+import {useWrapperState} from '../../utils/useWrapperState'
 import {Model} from '../define'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 
@@ -43,21 +42,7 @@ const ComponentTooltip = namedObserver('ComponentTooltip', ({tooltipDefinition, 
   const viewerStore = useStore()
   const wrappedComponentData = useComponentData()
   const wrappedComponentStore = wrappedComponentData.store
-  const localize = viewerStore.localizeComponent.bind(viewerStore, 'tooltip')
-  const tooltipKey = wrappedComponentData.key
-
-  const tooltipComponentStore = new ComponentStore(tooltipKey, tooltipDefinition.type)
-
-  Object.keys(wrappedComponentStore.tooltipProps ?? {}).forEach(k => {
-    tooltipComponentStore.props[k] = wrappedComponentStore.tooltipProps![k]
-  })
-
-  const tooltipData = viewerStore.createComponentData(tooltipComponentStore)
-  tooltipData.parent = wrappedComponentData.parent
-
-  const componentState = useMemo(
-    () => new ComponentState(tooltipData, viewerStore, localize, () => ({})),
-    [tooltipData, viewerStore, tooltipDefinition])
-
+  const localize = useCallback(viewerStore.localizeComponent.bind(viewerStore, 'tooltip'), [viewerStore])
+  const componentState = useWrapperState(wrappedComponentData.key, tooltipDefinition, wrappedComponentStore.tooltipProps, localize)
   return createElement(tooltipDefinition.view, componentState.get, children)
 })

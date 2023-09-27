@@ -244,10 +244,11 @@ export class Store implements IStore, IFormViewer {
    * Creates the element for the component tree.
    * @param componentStore the component settings.
    * @param deferFieldCalculation if true, then the calculated field must be explicitly initialized.
+   * @param model the component's metadata.
    * @returns the element for the component tree.
    */
-  createComponentData(componentStore: ComponentStore, deferFieldCalculation = false): ComponentData {
-    const model = this.getModel(componentStore.type)
+  createComponentData(componentStore: ComponentStore, deferFieldCalculation = false, model?: Model): ComponentData {
+    model ??= this.getModel(componentStore.type)
     const field = model.valued ? this.createField(componentStore, model, deferFieldCalculation) : undefined
     const factory = (cs: ComponentStore) => this.createComponentData(cs, deferFieldCalculation)
     return new ComponentData(componentStore, model, field, factory)

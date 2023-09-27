@@ -18,6 +18,7 @@
     }
   },
   "tooltipType": "RsTooltip",
+  "errorType": "RsErrorMessage",
   "form": {
     "key": "screen 1",
     "type": "Screen",

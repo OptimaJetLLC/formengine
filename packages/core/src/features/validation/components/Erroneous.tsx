@@ -1,12 +1,11 @@
-import {isEmpty} from 'lodash-es'
-import {DependencyList, useEffect} from 'react'
+import {createElement, DependencyList, useEffect} from 'react'
 import {filter} from 'rxjs'
-import {ComponentProperty} from '../../../stores/ComponentStore'
 import {WrapperProps} from '../../../types'
 import {namedObserver} from '../../../utils'
 import {useComponentData} from '../../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../../utils/contexts/StoreContext'
 import {useErrorModel} from '../../../utils/useErrorModel'
+import {useWrapperState} from '../../../utils/useWrapperState'
 import {ActionEventHandler} from '../../event'
 import {useViewerProps} from '../../form-viewer/components/ViewerPropsContext'
 
@@ -21,28 +20,18 @@ const useEventListener = (sender: string, type: string, listener: ActionEventHan
 }
 
 export const Erroneous = namedObserver('Erroneous', ({children}: WrapperProps) => {
-  const data = useComponentData()
-  const store = useStore()
+  const wrappedComponentData = useComponentData()
+  const viewerStore = useStore()
   const props = useViewerProps()
-  const Error = useErrorModel().view
-  const otherProps = getProps(store.form.errorProps)
+  const errorDefinition = useErrorModel()
 
-  useEventListener(data.key, 'onChange', e => data.field?.setValue(e.value), [])
-  useEventListener(data.key, 'onBlur', _ => data.field?.setTouched(), [])
+  const componentState = useWrapperState(wrappedComponentData.key, errorDefinition, viewerStore.form.errorProps)
+
+  useEventListener(wrappedComponentData.key, 'onChange', e => wrappedComponentData.field?.setValue(e.value), [])
+  useEventListener(wrappedComponentData.key, 'onBlur', _ => wrappedComponentData.field?.setTouched(), [])
 
   if (props.erroneous) return <>{children}</>
 
-  return (
-    <Error error={data.field?.error} {...otherProps}>
-      {children}
-    </Error>
-  )
+  const errorProps = {...componentState.get, error: wrappedComponentData.field?.error}
+  return createElement(errorDefinition.view, errorProps, children)
 })
-
-function getProps(object?: Record<string, ComponentProperty>) {
-  if (isEmpty(object)) return
-  return Object.entries(object).reduce((previousValue, [key, property]) => {
-    previousValue[key] = property.value
-    return previousValue
-  }, {} as Record<string, any>)
-}
