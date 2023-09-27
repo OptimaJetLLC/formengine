@@ -56,6 +56,17 @@ $ArchivePath = "$( $PSScriptRoot )/../.archives"
 RemoveIfExists $ArchivePath
 New-Item -ItemType Directory -Force -Path $ArchivePath | Out-Null
 
+Push-Location $PSScriptRoot/..
+try
+{
+  npm install
+  CheckExitCode
+}
+finally
+{
+  Pop-Location
+}
+
 $PackagesToArchive = (
 "$( $PSScriptRoot )/../packages/core",
 "$( $PSScriptRoot )/../packages/designer",
