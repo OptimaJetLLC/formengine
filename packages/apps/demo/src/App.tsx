@@ -1,6 +1,5 @@
-import {BuilderView, FormBuilder} from '@react-form-builder/designer'
-import {antdComponents} from '@react-form-builder/components-antd'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
+import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
@@ -16,7 +15,7 @@ const initialData = {
   ['last name']: 'Bret',
 }
 
-const components = [...rSuiteComponents, ...antdComponents].map(definer => definer.build())
+const components = rSuiteComponents.map(definer => definer.build())
 const view = new BuilderView(components)
   .withErrorMeta(rsErrorMessage.build())
   .withTooltipMeta(rsTooltip.build())

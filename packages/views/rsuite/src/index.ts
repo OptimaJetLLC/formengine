@@ -42,24 +42,18 @@ const categories = {
   fields: [
     rsCalendar,
     rsCheckbox,
-    rsCollectionEditor,
     rsDatePicker,
     rsDropdown,
     rsInput,
     rsNumberFormat,
     rsPatternFormat,
     rsRadioGroup,
-    rsRichTextEditor,
     rsSearch,
     rsTextArea,
-    rsTreePicker,
     rsUploader
   ],
   static: [
     rsButton,
-    rsCustomBlock,
-    rsCustomControl,
-    rsErrorMessage,
     rsImage,
     rsLabel,
     rsMenu,
@@ -74,6 +68,14 @@ const categories = {
     rsBreadcrumb,
     rsCard,
     rsContainer,
+    rsTab,
+  ],
+  notImplemented: [
+    rsCollectionEditor,
+    rsRichTextEditor,
+    rsTreePicker,
+    rsCustomBlock,
+    rsCustomControl,
     rsDropzone,
     rsGrid,
     rsGridLayout,
@@ -82,14 +84,14 @@ const categories = {
     rsFooter,
     rsHeader,
     rsSidebar,
-    rsRepeater,
-    rsTab,
+    rsRepeater
   ]
 }
 
 const rSuiteComponents: Definer<any>[] = []
+const {notImplemented, ...implemented} = categories
 
-Object.entries(categories).forEach(([category, components]) => {
+Object.entries(implemented).forEach(([category, components]) => {
   components.forEach(c => {
     const prefix = 'Rs'
     if (!c.getType().startsWith(prefix)) {
