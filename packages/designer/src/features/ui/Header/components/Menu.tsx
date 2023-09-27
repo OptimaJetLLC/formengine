@@ -1,6 +1,5 @@
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import {faBars} from '@fortawesome/free-solid-svg-icons'
-import * as faPrint from '@fortawesome/free-solid-svg-icons/faPrint.js'
 import * as faSave from '@fortawesome/free-solid-svg-icons/faSave.js'
 import * as faTrash from '@fortawesome/free-solid-svg-icons/faTrash.js'
 import {namedObserver} from '@react-form-builder/core'
@@ -104,13 +103,9 @@ export const Menu = namedObserver('Menu', () => {
         <ExportFormsButton/>
         <ImportFormsButton/>
       </>}
-      <Dropdown.Item /*onSelect={onPrint}*/ icon={<FaIcon icon={faPrint as unknown as IconDefinition}/>}>
-        {t('leftMenu.print')}
-      </Dropdown.Item>
       <Dropdown.Item onSelect={builderStore.clear.bind(builderStore)} icon={<FaIcon icon={faTrash as unknown as IconDefinition}/>}>
         {t('leftMenu.clear')}
       </Dropdown.Item>
-      <Dropdown.Item onSelect={builderStore.validate} children={t('leftMenu.validateForm')}/>
     </Dropdown>
   </>
 })

@@ -17,6 +17,7 @@ import {ToggleTheme} from './components/ToggleTheme'
 const Header = namedObserver('Header', () => {
   const builderStore = useBuilderStore()
   const undoer = builderStore.undoer
+  const showErrorsPanel = false
   return (
     <Container>
       <LeftPart>
@@ -37,7 +38,7 @@ const Header = namedObserver('Header', () => {
       <RightPart>
         <ResolutionPicker/>
         <LocalizationLanguagePicker/>
-        <ErrorsPanel/>
+        {showErrorsPanel && <ErrorsPanel/>}
         <JsonViewButton/>
         <ToggleTheme/>
       </RightPart>
