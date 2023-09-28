@@ -1,15 +1,9 @@
 import styled from '@emotion/styled'
 import {Close} from '@rsuite/icons'
-import {isString, isUndefined} from 'lodash-es'
-import {Button} from 'rsuite'
-import ColorPicker from 'rsuite-color-picker'
-import 'rsuite-color-picker/lib/styles.css'
+import {RgbaColor, RgbaColorPicker} from 'react-colorful'
+import {Input, InputGroup, Popover, Whisper} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
-
-const PLACEHOLDER_COLOR = {r: 255, g: 255, b: 255, a: 0}
-
-type RgbColor = { r: number; g: number; b: number; a: number } | undefined
 
 /**
  * The property editor for the color property type.
@@ -18,18 +12,34 @@ type RgbColor = { r: number; g: number; b: number; a: number } | undefined
  */
 export const ColorInput = (props: AnnotationEditorProps) => {
   const {value, onChange, onClean} = props
+
+  const color = rgbFromString(value ?? 'rgba(255, 255, 255, 0)')
+  const speaker = <Popover>
+    <RgbaColorPicker color={color} onChange={(rgba) => onChange(rgbToString(rgba))}/>
+  </Popover>
+
   return <LabeledProperty {...props}>
-    <SColorPicker>
-      <ColorPicker value={rgbFromString(value) ?? PLACEHOLDER_COLOR} onChange={({rgb}) => onChange(rgbToString(rgb))}/>
-      {!!value && <SButton onClick={onClean} size={'xs'}>
+    <InputGroup inside style={{width: '100%'}} size={'xs'}>
+      <Whisper placement="auto" trigger="hover" speaker={speaker} enterable>
+        <SInput color={value} readOnly/>
+      </Whisper>
+      <SButton onClick={onClean}>
         <Close/>
-      </SButton>}
-    </SColorPicker>
+      </SButton>
+    </InputGroup>
   </LabeledProperty>
 }
 
-const SButton = styled(Button)`
+const SInput = styled(Input)<{ color: string }>`
   && {
+    background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill-opacity=".05"><path d="M8 0h8v8H8zM0 8h8v8H0z"/></svg>');
+    background-color: ${({color}) => color ?? 'var(--rs-btn-default-bg)'};
+  }
+`
+
+const SButton = styled(InputGroup.Button)`
+  && {
+    background-color: var(--rs-btn-default-bg) !important;
     position: absolute;
     inset-inline-end: 0;
     border-bottom-left-radius: 0;
@@ -38,48 +48,14 @@ const SButton = styled(Button)`
   }
 `
 
-const SColorPicker = styled.div`
-  position: relative;
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  width: 100%;
-
-  .rsuite-color-picker {
-    min-height: 22px;
-    min-width: 30px;
-    flex: 1;
-    padding: 0;
-    background-clip: content-box;
-    background-position: 0 0, 10px 10px;
-    background-size: 20px 20px;
-    background-image: linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%), linear-gradient(45deg, #eee 25%, white 25%, white 75%, #eee 75%, #eee 100%);
-
-    .rsuite-color-picker-overlay {
-      left: initial;
-      right: 0;
-      z-index: 10;
-    }
-
-    .rsuite-color-picker-review {
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 100%;
-      border-radius: 6px;
-    }
-  }
-`
-
 /**
  * Converts the value to a string containing the color in CSS format.
  * @param value the object or string with a CSS color.
  * @returns the string containing the color in CSS format.
  */
-export function rgbToString(value?: RgbColor | string) {
-  if (isUndefined(value) || isString(value)) return value
+export function rgbToString(value: RgbaColor) {
   const {r, g, b, a} = value
-  return `rgb(${r}, ${g}, ${b}, ${a})`
+  return `rgba(${r}, ${g}, ${b}, ${a})`
 }
 
 /**
@@ -87,8 +63,8 @@ export function rgbToString(value?: RgbColor | string) {
  * @param value the string containing a rgba color.
  * @returns the object with properties '{r, g, b, a}'.
  */
-export function rgbFromString(value: string) {
+export function rgbFromString(value: string): RgbaColor {
   const matchColors = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
   const [, r, g, b, a] = matchColors.exec(value) || []
-  return [r, g, b].some(isUndefined) ? undefined : {r, g, b, a}
+  return {r: Number(r), g: Number(g), b: Number(b), a: Number(a)}
 }
