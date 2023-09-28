@@ -34,6 +34,16 @@ Creates metadata for form builder components.
 
 ## Properties
 
+### #cssLoaders
+
+• `Private` **#cssLoaders**: `Map`<[`BiDi`](../enums/BiDi.md), () => `Promise`<`void`\>[]\>
+
+#### Inherited from
+
+[View](View.md).[#cssLoaders](View.md##cssloaders)
+
+___
+
 ### #errorMeta
 
 • `Private` **#errorMeta**: `Map`<`string`, [`Meta`](Meta.md)\>
@@ -59,6 +69,16 @@ ___
 ### #tooltipsMeta
 
 • `Private` **#tooltipsMeta**: `Map`<`string`, [`Meta`](Meta.md)\>
+
+___
+
+### #wrappers
+
+• `Private` **#wrappers**: [`FormViewerWrapper`](../modules.md#formviewerwrapper)[]
+
+#### Inherited from
+
+[View](View.md).[#wrappers](View.md##wrappers)
 
 ___
 
@@ -92,7 +112,48 @@ ___
 
 the array of strings with the names of the component types of the tooltip.
 
+___
+
+### viewerWrappers
+
+• `get` **viewerWrappers**(): [`FormViewerWrapper`](../modules.md#formviewerwrapper)[]
+
+Retrieves the viewer wrappers array.
+
+#### Returns
+
+[`FormViewerWrapper`](../modules.md#formviewerwrapper)[]
+
+the viewer wrappers array.
+
+#### Inherited from
+
+View.viewerWrappers
+
 ## Methods
+
+### #withCssLoader
+
+▸ `Private` **#withCssLoader**(`biDi`, `loader`): `void`
+
+Sets a CSS loader for the specified BiDi direction.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `biDi` | [`BiDi`](../enums/BiDi.md) | the BiDi direction. |
+| `loader` | () => `Promise`<`void`\> | the loader function that returns a Promise. |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[View](View.md).[#withCssLoader](View.md##withcssloader)
+
+___
 
 ### all
 
@@ -180,6 +241,30 @@ the component metadata for the form viewer for the specified type.
 
 ___
 
+### getCssLoaders
+
+▸ **getCssLoaders**(`biDi`): () => `Promise`<`void`\>[]
+
+Retrieves the CSS loaders for a given BiDi.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `biDi` | [`BiDi`](../enums/BiDi.md) | the BiDi object for which to retrieve the CSS loaders. |
+
+#### Returns
+
+() => `Promise`<`void`\>[]
+
+the array containing the CSS loaders for the specified BiDi.
+
+#### Inherited from
+
+[View](View.md).[getCssLoaders](View.md#getcssloaders)
+
+___
+
 ### getErrorAnnotations
 
 ▸ **getErrorAnnotations**(`name`): `undefined` \| [`Annotation`](Annotation.md)[]
@@ -240,6 +325,31 @@ the array of metadata properties of the tooltip component.
 
 ___
 
+### withCssLoader
+
+▸ **withCssLoader**(`cssLoaderType`, `loader`): [`BuilderView`](BuilderView.md)
+
+Applies the given CSS loader to the component based on the BiDi layout.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `cssLoaderType` | [`CssLoaderType`](../modules.md#cssloadertype) | the BiDi layout type, either 'common', 'ltr', or 'rtl'. |
+| `loader` | () => `Promise`<`void`\> | the function that returns a Promise to load CSS or other required localization resources. |
+
+#### Returns
+
+[`BuilderView`](BuilderView.md)
+
+the [View](View.md) instance.
+
+#### Inherited from
+
+[View](View.md).[withCssLoader](View.md#withcssloader)
+
+___
+
 ### withErrorMeta
 
 ▸ **withErrorMeta**(`builderComponent`): [`BuilderView`](BuilderView.md)
@@ -297,6 +407,30 @@ Sets the metadata of the component that displays the form's tooltips.
 [`BuilderView`](BuilderView.md)
 
 the instance of the [BuilderView](BuilderView.md) class.
+
+___
+
+### withViewerWrapper
+
+▸ **withViewerWrapper**(`wrapper`): `this`
+
+Adds a wrapper to the list of viewers for this viewer wrapper.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `wrapper` | [`FormViewerWrapper`](../modules.md#formviewerwrapper) | the viewer wrapper to be added. The wrapper is a component that wraps the form viewer. |
+
+#### Returns
+
+`this`
+
+the [View](View.md) instance.
+
+#### Inherited from
+
+[View](View.md).[withViewerWrapper](View.md#withviewerwrapper)
 
 ___
 

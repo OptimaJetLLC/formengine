@@ -4,7 +4,15 @@ import {CSSObject} from '@emotion/react'
  * CSS styles for a device.
  */
 export type DeviceStyle = {
+
+  /**
+   * CSS styles defined in the general style settings.
+   */
   object?: CSSObject
+
+  /**
+   * CSS styles defined in the style code editor.
+   */
   string?: string
 }
 
@@ -12,8 +20,24 @@ export type DeviceStyle = {
  * The type for the CSS property of a React component.
  */
 export type Css = {
+
+  /**
+   * CSS styles for arbitrary device.
+   */
   any?: DeviceStyle
+
+  /**
+   * CSS styles for mobile devices.
+   */
   mobile?: DeviceStyle
+
+  /**
+   * CSS styles for tablet devices.
+   */
   tablet?: DeviceStyle
+
+  /**
+   * CSS styles for desktop devices.
+   */
   desktop?: DeviceStyle
 }

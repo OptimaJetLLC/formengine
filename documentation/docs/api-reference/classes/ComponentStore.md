@@ -29,11 +29,15 @@ Creates the component settings.
 
 • `Optional` **bindCondition**: `string`
 
+The condition for binding a child element to a parent element.
+
 ___
 
 ### children
 
 • `Optional` **children**: [`ComponentStore`](ComponentStore.md)[]
+
+The array of child components.
 
 ___
 
@@ -41,11 +45,15 @@ ___
 
 • `Optional` **css**: [`Css`](../modules.md#css)
 
+The component CSS styles.
+
 ___
 
 ### events
 
 • `Optional` **events**: `Record`<`string`, [`ActionData`](../modules.md#actiondata)[]\>
+
+The set of event handlers.
 
 ___
 
@@ -53,11 +61,15 @@ ___
 
 • `Optional` **htmlAttributes**: [`HtmlAttribute`](../modules.md#htmlattribute)[]
 
+The set of arbitrary HTML attributes added to the component.
+
 ___
 
 ### key
 
 • **key**: `string` = `''`
+
+The React component key.
 
 ___
 
@@ -65,17 +77,23 @@ ___
 
 • **props**: `Record`<`string`, [`ComponentProperty`](../interfaces/ComponentProperty.md)\> = `{}`
 
+The component properties.
+
 ___
 
 ### renderWhen
 
 • `Optional` **renderWhen**: [`ComponentProperty`](../interfaces/ComponentProperty.md)
 
+The expression or function to conditionally render a component.
+
 ___
 
 ### schema
 
 • `Optional` **schema**: [`BoundValueSchema`](../modules.md#boundvalueschema)
+
+The component value validation settings.
 
 ___
 
@@ -91,11 +109,15 @@ ___
 
 • `Optional` **tooltipProps**: `Record`<`string`, [`ComponentProperty`](../interfaces/ComponentProperty.md)\>
 
+The tooltip settings.
+
 ___
 
 ### type
 
 • **type**: `string` = `''`
+
+The component type of the form viewer.
 
 ## Methods
 

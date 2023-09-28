@@ -276,7 +276,7 @@ ___
 
 ### createComponentData
 
-▸ **createComponentData**(`componentStore`, `deferFieldCalculation?`): [`ComponentData`](ComponentData.md)
+▸ **createComponentData**(`componentStore`, `deferFieldCalculation?`, `model?`): [`ComponentData`](ComponentData.md)
 
 Creates the element for the component tree.
 
@@ -286,6 +286,7 @@ Creates the element for the component tree.
 | :------ | :------ | :------ | :------ |
 | `componentStore` | [`ComponentStore`](ComponentStore.md) | `undefined` | the component settings. |
 | `deferFieldCalculation` | `boolean` | `false` | if true, then the calculated field must be explicitly initialized. |
+| `model?` | [`Model`](Model.md)<`any`\> | `undefined` | the component's metadata. |
 
 #### Returns
 

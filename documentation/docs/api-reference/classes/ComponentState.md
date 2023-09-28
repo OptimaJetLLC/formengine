@@ -133,18 +133,6 @@ component localized properties.
 
 ___
 
-### substitutedValue
-
-• `get` **substitutedValue**(): `Record`<`string`, `any`\>
-
-#### Returns
-
-`Record`<`string`, `any`\>
-
-the values for properties that have parameters for substitution.
-
-___
-
 ### value
 
 • `get` **value**(): `undefined` \| {}

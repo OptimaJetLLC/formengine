@@ -58,6 +58,7 @@ custom_edit_url: null
 - [ErrorWrapperProps](interfaces/ErrorWrapperProps.md)
 - [Field](interfaces/Field.md)
 - [FormViewerProps](interfaces/FormViewerProps.md)
+- [FormViewerWrapperComponentProps](interfaces/FormViewerWrapperComponentProps.md)
 - [IFormData](interfaces/IFormData.md)
 - [IFormViewer](interfaces/IFormViewer.md)
 - [IStore](interfaces/IStore.md)
@@ -342,12 +343,20 @@ The type for the CSS property of a React component.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `any?` | [`DeviceStyle`](modules.md#devicestyle) |
-| `desktop?` | [`DeviceStyle`](modules.md#devicestyle) |
-| `mobile?` | [`DeviceStyle`](modules.md#devicestyle) |
-| `tablet?` | [`DeviceStyle`](modules.md#devicestyle) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `any?` | [`DeviceStyle`](modules.md#devicestyle) | CSS styles for arbitrary device. |
+| `desktop?` | [`DeviceStyle`](modules.md#devicestyle) | CSS styles for desktop devices. |
+| `mobile?` | [`DeviceStyle`](modules.md#devicestyle) | CSS styles for mobile devices. |
+| `tablet?` | [`DeviceStyle`](modules.md#devicestyle) | CSS styles for tablet devices. |
+
+___
+
+### CssLoaderType
+
+Ƭ **CssLoaderType**: [`BiDi`](enums/BiDi.md) \| ``"common"``
+
+Represents the type of CSS loader. Can be either BiDi or common for both BiDi.
 
 ___
 
@@ -425,10 +434,10 @@ CSS styles for a device.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `object?` | `CSSObject` |
-| `string?` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `object?` | `CSSObject` | CSS styles defined in the general style settings. |
+| `string?` | `string` | CSS styles defined in the style code editor. |
 
 ___
 
@@ -583,6 +592,14 @@ Validation rules for FormViewer.
 
 ___
 
+### FormViewerWrapper
+
+Ƭ **FormViewerWrapper**: `ComponentType`<[`FormViewerWrapperComponentProps`](interfaces/FormViewerWrapperComponentProps.md)\>
+
+Represents a form viewer Wrapper component.
+
+___
+
 ### Func
 
 Ƭ **Func**: (...`arg`: `any`[]) => `void` \| `Promise`<`void`\>
@@ -609,7 +626,7 @@ ___
 
 Ƭ **HtmlAttribute**: `Record`<`string`, `string`\>
 
-The Arbitrary HTML attributes for the component.
+The arbitrary HTML attributes for the component.
 
 ___
 
@@ -756,6 +773,14 @@ Component property key type.
 | Name |
 | :------ |
 | `T` |
+
+___
+
+### Rel
+
+Ƭ **Rel**: ``"stylesheet"`` \| `string`
+
+Represents a relationship attribute value used in HTML.
 
 ___
 
@@ -1140,6 +1165,19 @@ ___
 ### date
 
 • `Const` **date**: [`TypedBuilder`](classes/TypedBuilder.md)<`undefined` \| `Date`\>
+
+___
+
+### emotionCache
+
+• `Const` **emotionCache**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `LTR` | `EmotionCache` |
+| `RTL` | `EmotionCache` |
 
 ___
 
@@ -1847,6 +1885,28 @@ the boolean value indicating if the type is a validator property block type.
 
 ___
 
+### loadResource
+
+▸ **loadResource**(`id`, `href`, `rel`): `Promise`<`void`\>
+
+Loads a resource into the document head asynchronously.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `id` | `string` | the identifier of the resource. |
+| `href` | `string` | represents a URL to the resource. |
+| `rel` | `string` | the relationship of the resource to the document. |
+
+#### Returns
+
+`Promise`<`void`\>
+
+the promise that resolves when the resource has been loaded successfully.
+
+___
+
 ### nameAutorun
 
 ▸ **nameAutorun**(`owner`, `name`, `params?`): `string`
@@ -2057,6 +2117,24 @@ Executes a given function on each node of a tree.
 | :------ | :------ | :------ |
 | `tree` | `T` | the root node of the tree. |
 | `fn` | (`treeNode`: `T`) => `void` | the function to be executed on each node of the tree. |
+
+#### Returns
+
+`void`
+
+___
+
+### unloadResource
+
+▸ **unloadResource**(`id`): `void`
+
+Unloads a resource from the DOM based on its ID.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `id` | `string` | the ID of the resource to unload. |
 
 #### Returns
 

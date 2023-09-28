@@ -6,45 +6,187 @@ slug: /getting-started
 
 # Overview
 
-<span style={{color: 'red', fontSize: 'xxx-large'}}>This is a technical preview, many things can be changed!!!</span>
+<p>
+<span style={{color: 'red', fontSize: 'x-large'}}>This is a technical preview, some things are subject to change!</span>
+</p>
 
-![Architecture Diagram](/assets/architecture/architecture.png "Architecture Diagram")
+Form Builder consists of the following NPM packages:
 
-FormBuilder is a JavaScript library for designing forms in the browser with Drag&Drop.
+1. [@react-form-builder/core](https://www.npmjs.com/package/@react-form-builder/core).
+2. [@react-form-builder/designer](https://www.npmjs.com/package/@react-form-builder/designer).
+3. [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
 
-The library combines the best practices for building a user interface and uses several popular JavaScript libraries:
-1. React.
-2. Mobx.
-3. Formik.
-4. UI component library. RSuite by default.
+## @react-form-builder/core package
 
-## Core Concepts
+This is the main Form Builder package that contains the React methods and components for displaying the form. This package must be used at
+runtime.
 
-1. Form (TBD).
-2. Component (TBD).
-3. State (TBD).
-4. Template (TBD).
-5. Screen (TBD).
+## @react-form-builder/designer package
 
-## Features
+This is a package containing a visual form designer. This package is only needed for designing forms, it is not needed for displaying forms.
 
-1. Drag&Drop form builder.
-2. The definition of the form is just JSON.
-3. Each component property can be a simple value, object, or function.
-4. A group of components can be saved as a template and used as a separate component.
-5. You can use your own components in a declarative way from your favorite UI library.
-6. Undo/Redo functionality.
-7. Fast rendering of the form.
-8. The form can be displayed differently on a desktop, tablet or mobile phone (adaptive layout).
-9. The ability to flexibly validate form data.
+## @react-form-builder/components-rsuite package
 
-## Possible features
+This package contains components and metadata for components from the [React Suite](https://rsuitejs.com/) library. You may or may not use
+it. You can plug in your favorite component library and use that instead.
 
-1. Webhooks - integration with external APIs, like Google Maps, analytics etc.
-2. React native.
-3. Component definition in JSON.
-4. Integration with [Contentful](https://www.contentful.com/).
-5. Integration with customer security.
-6. JSON Schema validation?
-7. Export form data to Excel, Database, PDF, etc.
-8. Visualise data management like [Noodl](https://www.noodl.net/).
+## Creating a simple form
+
+Open your browser at our demo page - https://demo.formengine.io/.
+
+You will see the following screen:
+![Demo](/assets/getting-started/getting-started-01.png "Demo")
+
+The screen divided to three parts:
+1. Left side with tabs:
+   - Tree - on this tab, you can see the tree of components that make up the form.
+   - Components - on this tab you can see the list of components available for use.
+   - Settings - this tab displays the form settings.
+   - Forms - this tab displays the list of forms.
+2. Centre part of the screen:
+   - Menu button.
+   - Undo/Redo buttons.
+   - Toggle Preview/Edit button.
+   - Adaptive mode toggle buttons.
+   - Control to select the current form language.
+   - Button to show JSON of the form.
+   - Dark/light theme switch.
+3. Right side with tabs:
+   - Main - on this tab you can edit the properties of the selected component.
+   - Style - on this tab you can edit the styles of the selected component.
+   - Actions - on this tab you can edit the actions of the selected component.
+   - Rules - on this tab you can edit the rules of validation of the selected component value.
+                                                     
+Go to the **Forms** tab and click on the **Add New Form** button:
+![New form](/assets/getting-started/getting-started-02.png "New form")
+
+Enter the name of the form and click the **OK** button:
+![Getting started 03](/assets/getting-started/getting-started-03.png)
+
+The new form has been created and appears in the list of forms on the left. Click on the pencil icon to start editing the new form:
+![Getting started 04](/assets/getting-started/getting-started-04.png)
+
+You should now see an empty form:
+![Getting started 05](/assets/getting-started/getting-started-05.png)
+
+Now let's add some components to the form. Switch to the Components tab and drag and drop the "Input" and "Button" components:
+![Getting started 06](/assets/getting-started/getting-started-06.png)
+
+Now let's give the name "name" to the "Input" component. And set the button label to "Submit". 
+
+First, select the "Input" component by clicking on it on the form. In the right pane of the "Main" tab, enter "name" in the "Key" property
+and click the "&#10003;" button.
+![Getting started 07](/assets/getting-started/getting-started-07.png)
+
+Then in the "Label" property, type in the value "Name" as well.
+![Getting started 08](/assets/getting-started/getting-started-08.png)
+
+Now select the button on the form and in the "Content" property, type in the value "Submit".
+![Getting started 09](/assets/getting-started/getting-started-09.png)
+
+We have one input field and one button - let's add validation on the value for the input field, and when the button is clicked it will write
+the form data to the console.
+
+Select the input fields in the center portion of the form, and then switch to the "Rules" tab.
+
+![Getting started 10](/assets/getting-started/getting-started-10.png)
+
+Now click on the "Add rule" button and select "Required" from the drop-down list. Click the "Add rule" button again and select "Min" from
+the drop-down list. In the "Limit" field for the "Min" rule, set the value to "3".
+
+In this way we have added two value validation rules - the first rule requires the field to be populated, the second rule requires the field
+value to have a minimum of three characters.
+
+The "Auto validate" checkbox means that the field value will be automatically validated while entering the value into the field.
+
+Note that we have not filled in the "Message" fields, so we will get a built-in error message for this validator.
+
+![Getting started 11](/assets/getting-started/getting-started-11.png)
+
+Validation added. Now let's add an event handler for the button. To do this, select the button in the central part of the form and go to
+the "Actions" tab.
+
+![Getting started 12](/assets/getting-started/getting-started-12.png)
+
+Validation added. Now let's add an event handler for the button. To do this, select the button in the central part of the form and go to
+the "Actions" tab. Click on the "Add action" button after "onClick", select "Custom" => "Add custom action" in the dropdown menu.
+
+![Getting started 13](/assets/getting-started/getting-started-13.png)
+
+The action code editor appears at the bottom of the screen. Enter the action name and code as in the screenshot below, then click the "Save"
+button.
+
+![Getting started 14](/assets/getting-started/getting-started-14.png)
+
+This is our simplest action:
+
+```javascript
+/**
+ * @param {ActionEventArgs} e - the action arguments.
+ * @param {} args - the action arguments.
+ */
+async function Action(e, args) {
+  console.log(e.store.form.componentTree.data)
+}
+```
+
+- [ActionEventArgs](api-reference/classes/ActionEventArgs) `e` is a variable containing the event data.
+- [Store](api-reference/classes/Store) `store` is an object containing the current state of the form display library.
+- [Form](api-reference/classes/Form) `form` is an object containing all form components.
+- [ComponentData](api-reference/classes/ComponentData) `componentTree` is an object with a component tree. 
+- [Record<string, unknown>](api-reference/classes/ComponentData#data) `data` is the data of the form.
+
+:::warning
+
+This part of the API looks complex and will most likely be changed to simplify it.
+
+:::
+
+## Testing the created form
+
+It's time to test our form in action. To do this, click the big "Preview" button - the button change its label to "Edit" - which means that
+we are now in the form preview mode.
+
+Try entering different values in the input box and click the "Submit" button to see the value of the form in the console.
+
+![Getting started 15](/assets/getting-started/getting-started-15.png)
+
+Now we want validation to occur before the data is output to the console. Well, there is a built-in "validate" action to validate the form,
+let's use it.
+
+Go to the form edit mode by clicking "Edit" button, select the button in the center of the screen, and then go to the "Actions" tab.
+
+![Getting started 16](/assets/getting-started/getting-started-16.png)
+
+Click on the "Add action" button located after our "logValue" action, select "Common" => "validate". Then simply drag the "validate" action
+in front of the "logValue" action.
+
+![Getting started 17](/assets/getting-started/getting-started-17.png)
+
+And let's make our error message a little more sympathetic. To do this, go to the "Settings" tab on the left side of the screen and select
+"Rs Error Message" in the "Error type" field.
+
+![Getting started 18](/assets/getting-started/getting-started-18.png)
+
+And let's also select a component on this tab that will display tooltips. To do this, select the "Rs Tooltip" value in the "Tooltip type"
+field.
+
+![Getting started 19](/assets/getting-started/getting-started-19.png)
+
+Since we have selected a component that can display tooltips, we have a "Tooltip" section in the right-hand properties panel of the
+component where we can configure a tooltip for each component. Let's add a tooltip for the button.
+
+Select the button in the center pane, and in the right pane, select the "Main" section. Click the checkbox next to "Tooltip" and enter the
+tooltip text in the "Text" field, as in the screen below.
+
+![Getting started 20](/assets/getting-started/getting-started-20.png)
+
+Switch to form view and hover over the form, you should see something like the screenshot below. Note that the error message is now
+displayed differently.
+
+![Getting started 21](/assets/getting-started/getting-started-21.png)
+
+## Conclusion
+
+In this section, we created a simple form, added an onClick event handler for the form, and added validation on the input field. We also
+added a tooltip for the button and changed the format of the error message display.

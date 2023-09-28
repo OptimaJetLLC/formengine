@@ -5,3 +5,35 @@ slug: /
 ---
 
 # Form Builder
+
+Form Builder is a React library for creating web forms with a simple but powerful web interface.
+
+## Key features of Form Builder
+
+1. Web interface with drag and drop functionality.
+2. Adaptive layout.
+3. Form validation.
+4. Built-in web components based on React Suite library.
+5. Easy integration of custom components.
+6. Export form to JSON and import form from JSON.
+7. Powerful internationalization.
+8. Custom actions.
+9. Computable properties.
+10. Templates (forms within a form).
+
+## Overview
+
+The basic idea behind the Form Builder is simple - an online form is a number of components organized in a tree structure.
+
+Each component has a set of properties:
+
+1. Different CSS styles for different screen resolutions.
+2. Simple properties (`string`, `boolean`, `number`, etc.).
+3. Events (`onClick`, `onSelect`, `onClose`, etc.).
+4. Actions are simply functions that are called when some event occurs.
+5. A set of rules for validating the value of a component.
+
+Some component properties can be calculated using a JavaScript function or translated using the [Fluent](https://projectfluent.org/)
+localization system.
+
+**Form Builder allows you to declaratively describe such components and then use them to create forms in the form designer.**

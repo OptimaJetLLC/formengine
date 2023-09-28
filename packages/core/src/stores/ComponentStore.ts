@@ -56,7 +56,7 @@ export function isLocalizedProperty(componentProperty?: ComponentProperty) {
 }
 
 /**
- * The Arbitrary HTML attributes for the component.
+ * The arbitrary HTML attributes for the component.
  */
 export type HtmlAttribute = Record<string, string>
 
@@ -66,30 +66,65 @@ export type HtmlAttribute = Record<string, string>
  * Component settings for serialization in JSON.
  */
 export class ComponentStore {
+
+  /**
+   * The React component key.
+   */
   key = ''
+
+  /**
+   * The component type of the form viewer.
+   */
   type = ''
+
+  /**
+   * The component properties.
+   */
   props: Record<string, ComponentProperty> = {} //TODO do nullable
+
+  /**
+   * The component CSS styles.
+   */
   css?: Css
+
+  /**
+   * The set of event handlers.
+   */
   events?: Record<EventName, ActionData[]>
+
+  /**
+   * The array of child components.
+   */
   children?: ComponentStore[]
 
+  /**
+   * The component value validation settings.
+   */
   schema?: BoundValueSchema
 
+  /**
+   * The set of arbitrary HTML attributes added to the component.
+   */
   htmlAttributes?: HtmlAttribute[]
-  tooltipProps?: Record<string, ComponentProperty>
 
-  /*rules = {
-    visible: [],
-    enabled: [],
-  }*/
+  /**
+   * The tooltip settings.
+   */
+  tooltipProps?: Record<string, ComponentProperty>
 
   /**
    * The name of the occupied component property in the parent component.
    */
   slot?: string
 
+  /**
+   * The condition for binding a child element to a parent element.
+   */
   bindCondition?: string
-  //TODO add on validation page
+
+  /**
+   * The expression or function to conditionally render a component.
+   */
   renderWhen?: ComponentProperty
 
   /**
