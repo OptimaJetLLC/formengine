@@ -4,7 +4,7 @@ import type {WrapperProps} from '@react-form-builder/core'
 import {constrainedEditor} from 'constrained-editor-plugin'
 import {observer} from 'mobx-react'
 import type {editor} from 'monaco-editor'
-import {useCallback, useEffect, useRef, useState} from 'react'
+import {useCallback, useEffect, useMemo, useRef} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import './config'
 
@@ -38,9 +38,8 @@ interface CodeEditorProps {
 export const CodeEditor = observer((props: CodeEditorProps) => {
   const hasBeginContextLine = !!props.beginContextLine
   const hasEndContextLine = !!props.endContextLine
-  const [initialValue, setInitialValue] = useState('')
 
-  useEffect(() => {
+  const initialValue = useMemo(() => {
     let initialValueWithContextLines = ''
 
     if (hasBeginContextLine && props.canEditBeginContextLine) {
@@ -55,16 +54,19 @@ export const CodeEditor = observer((props: CodeEditorProps) => {
       initialValueWithContextLines += `\n${props.endContextLine}`
     }
 
-    setInitialValue(initialValueWithContextLines)
+    return initialValueWithContextLines
   }, [props.beginContextLine, props.endContextLine, props.initialValue])
 
   const editorRef = useRef<editor.IStandaloneCodeEditor>()
 
   useEffect(() => {
     editorRef.current?.setValue(initialValue)
-  }, [initialValue])
+  }, [initialValue, editorRef.current])
 
   const handleMount: OnMount = useCallback((editor, monaco) => {
+    editor.setValue(initialValue)
+    editorRef.current = editor
+
     if (!hasBeginContextLine && !hasEndContextLine) {
       editor.onDidChangeModelContent(() => props.onChange(editor.getValue()))
       return
@@ -100,8 +102,6 @@ export const CodeEditor = observer((props: CodeEditorProps) => {
       }
       props.onChange(editableCode)
     })
-
-    editorRef.current = editor
   }, [props.beginContextLine, props.endContextLine])
 
   const {theme} = useBuilderStore()
