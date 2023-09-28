@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import {define, string} from '@react-form-builder/core'
-import Search from '@rsuite/icons/Search.js'
+import {Search} from '@rsuite/icons'
 import type {ReactNode} from 'react'
 import {Form, InputPicker, InputPickerProps, Loader} from 'rsuite'
 import {pickerProps} from '../commonProperties'

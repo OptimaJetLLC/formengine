@@ -1,5 +1,5 @@
 import {ComponentStore, useStore} from '@react-form-builder/core'
-import PlusIcon from '@rsuite/icons/Plus.js'
+import {Plus as PlusIcon} from '@rsuite/icons'
 import {observer} from 'mobx-react'
 import {Divider, Dropdown} from 'rsuite'
 import {useBuilderStore} from '../../../../../../utils/BuilderStoreContext'

@@ -1,5 +1,5 @@
 import {ActionData, ComponentStore} from '@react-form-builder/core'
-import PlusIcon from '@rsuite/icons/Plus.js'
+import {Plus as PlusIcon} from '@rsuite/icons'
 import {observer} from 'mobx-react'
 import {forwardRef, useCallback, useRef} from 'react'
 import {Dropdown, IconButton, Popover, Whisper} from 'rsuite'
