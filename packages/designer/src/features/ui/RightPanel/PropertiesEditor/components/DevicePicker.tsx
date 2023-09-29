@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {Device} from '@react-form-builder/core'
-import {SelectPicker} from 'rsuite'
 import {useTranslationPart} from '../../../../localization/hooks'
+import {FixedSelectPicker} from '../../../FixedSelectPicker'
 
 /**
  * React component that select device for component styles editors.
@@ -19,7 +19,7 @@ export const DevicePicker = ({value, onChange}: { value: Device, onChange: (valu
     <SHeader>
       {t('forDevice')}
       <SPicker value={value} data={translatedItems} onChange={val => onChange(val as Device)} appearance={'subtle'} size={'xs'}
-               searchable={false} cleanable={false}/>
+               searchable={false} cleanable={false} width={100}/>
     </SHeader>
   )
 }
@@ -33,7 +33,7 @@ const SHeader = styled.h6`
   gap: 10px;
 `
 
-const SPicker = styled(SelectPicker)`
+const SPicker = styled(FixedSelectPicker)`
   margin-inline-end: 4px;
 
   .rs-picker-toggle-value {

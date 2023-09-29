@@ -1,9 +1,9 @@
 import styled from '@emotion/styled'
 import {Language, useStore} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
-import {SelectPicker} from 'rsuite'
 import type {ItemDataType} from 'rsuite/esm/@types/common'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
+import {FixedSelectPicker} from '../../FixedSelectPicker'
 
 export const LocalizationLanguagePicker = observer(() => {
   const builderStore = useBuilderStore()
@@ -26,10 +26,10 @@ export const LocalizationLanguagePicker = observer(() => {
   const value = builderStore.localizationLanguage.fullCode
 
   return <SPicker value={value} data={data} onSelect={onLanguageSelected} cleanable={false} placement={'auto'} size={'sm'}
-                  searchable={false}/>
+                  searchable={false} width={100}/>
 })
 
-const SPicker = styled(SelectPicker<string>)`
+const SPicker = styled(FixedSelectPicker<string>)`
   .rs-picker-toggle-value {
     color: var(--rs-btn-default-text) !important;
   }

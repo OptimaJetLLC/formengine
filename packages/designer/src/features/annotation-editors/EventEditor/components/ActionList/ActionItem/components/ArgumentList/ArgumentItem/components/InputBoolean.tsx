@@ -1,6 +1,6 @@
 import {assign} from 'lodash-es'
 import {observer} from 'mobx-react'
-import {SelectPicker} from 'rsuite'
+import {FixedSelectPicker} from '../../../../../../../../../ui/FixedSelectPicker'
 import {useActionData} from '../../../../contexts/ActionDataContext'
 import {InputProps} from '../InputProps'
 
@@ -27,12 +27,13 @@ export const InputBoolean = observer(({name}: InputProps) => {
   * */
 
   return (
-    <SelectPicker
+    <FixedSelectPicker
       data={booleanData}
       searchable={false}
       cleanable={false}
       value={value}
       onSelect={handleChange}
+      width={'100%'}
     />
   )
 })
