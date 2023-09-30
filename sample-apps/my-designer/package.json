@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@react-form-builder/components-rsuite": "file:react-form-builder-components-rsuite-0.0.5-alpha.tgz",
+    "@react-form-builder/core": "file:react-form-builder-core-0.0.5-alpha.tgz",
     "@react-form-builder/designer": "file:react-form-builder-designer-0.0.5-alpha.tgz",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

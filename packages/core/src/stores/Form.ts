@@ -79,7 +79,6 @@ export class Form {
    */
   dispose() {
     this.componentTree.dispose()
-    this.localization.dispose()
   }
 
   /**

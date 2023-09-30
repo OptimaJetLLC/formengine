@@ -1,7 +1,7 @@
 import {FluentBundle, FluentResource} from '@fluent/bundle'
-import {autorun, IReactionDisposer, makeAutoObservable} from 'mobx'
+import {makeAutoObservable} from 'mobx'
 import {getFluentCompatibleId} from '../features/localization/getFluentCompatibleId'
-import {nameAutorun, nameObservable} from '../utils/observableNaming'
+import {nameObservable} from '../utils/observableNaming'
 
 /**
  * The format in which localization is stored.
@@ -55,14 +55,51 @@ const className = 'LocalizationStore'
  */
 export type LocalizationType = 'component' | 'tooltip' | string
 
+class FluentBundleHolder {
+
+  constructor(readonly languageFullCode: LanguageFullCode,
+              readonly localizationStore: LocalizationStore) {
+    makeAutoObservable(this, undefined, {name: nameObservable('FluentBundleHolder')})
+  }
+
+  get fluentBundle() {
+    const componentsLocalization = this.localizationStore.value[this.languageFullCode]
+    const bundle = new FluentBundle(this.languageFullCode)
+    if (!componentsLocalization) {
+      return bundle
+    }
+
+    const localizationItems = this.#getLocalizationItems(componentsLocalization)
+    localizationItems.forEach(item => {
+      const errors = bundle.addResource(new FluentResource(item))
+      if (errors.length > 0) {
+        console.error(`Unable to add localization resource: ${item}`)
+        errors.forEach(console.error)
+      }
+    })
+
+    return bundle
+  }
+
+  #getLocalizationItems(componentsLocalization: ComponentsLocalization) {
+    const localizationItems: string[] = []
+    Object.entries(componentsLocalization).forEach(([componentKey, allComponentsLocalizationConstants]) => {
+      Object.entries(allComponentsLocalizationConstants ?? {}).forEach(([type, componentLocalizationConstants]) => {
+        Object.entries(componentLocalizationConstants ?? {}).forEach(([propertyName, localizationConstant]) => {
+          if (localizationConstant) localizationItems.push(`${componentKey}_${type}_${propertyName} = ${localizationConstant}`)
+        })
+      })
+    })
+    return localizationItems
+  }
+}
+
 /**
  * Observable storage of localization.
  */
 export class LocalizationStore {
 
-  #disposers: IReactionDisposer[]
-
-  localizationCache = new Map<string, FluentBundle>()
+  private localizationCache = new Map<string, FluentBundleHolder>()
 
   readonly value: LocalizationValue = {}
 
@@ -146,7 +183,9 @@ export class LocalizationStore {
    * @returns the FluentBundle for the specified language.
    */
   getFluentBundle(languageFullCode: string) {
-    return this.localizationCache.get(languageFullCode) ?? new FluentBundle(`${languageFullCode}`)
+    const holder = this.localizationCache.get(languageFullCode) ?? new FluentBundleHolder(languageFullCode, this)
+    if (!this.localizationCache.has(languageFullCode)) this.localizationCache.set(languageFullCode, holder)
+    return holder.fluentBundle
   }
 
   /**
@@ -208,60 +247,5 @@ export class LocalizationStore {
     makeAutoObservable(this, undefined, {name: nameObservable(className)})
 
     this.value = value
-
-    this.#disposers = [
-      autorun(
-        () => {
-          Object.keys(this.value).forEach(value => {
-            this.localizationCache.set(value, this.#compileFluentBundle(value, this))
-          })
-        }
-        , {name: nameAutorun(className, `compileFluentBundle`)}),
-    ]
-  }
-
-  /**
-   * Correctly clears allocated resources, the function must be called when destroying an instance of the class.
-   */
-  dispose() {
-    this.#disposers.forEach(dispose => dispose())
-  }
-
-  #compileFluentBundle = (languageFullCode: string, localization: LocalizationStore) => {
-    if (!localization.hasLanguage(languageFullCode)) {
-      return new FluentBundle(`${languageFullCode}`)
-    }
-
-    const localizationItems = localization.#getLocalizationItems(languageFullCode)
-    const bundle = new FluentBundle(`${languageFullCode}`)
-
-    localizationItems.forEach(item => {
-      const errors = bundle.addResource(new FluentResource(item))
-      if (errors.length > 0) {
-        console.error(`Unable to add localization resource: ${item}`)
-        errors.forEach(error => {
-          console.error(error)
-        })
-      }
-    })
-
-    return bundle
-  }
-
-  /**
-   * Returns all localization constants for the specified languageFullCode.
-   * @param languageFullCode the full code (en-US, en-GB etc.) of the language we are looking to localize.
-   * @returns all localization constants for the specified languageFullCode.
-   */
-  #getLocalizationItems(languageFullCode: string) {
-    const localizationItems: string[] = []
-    Object.entries(this.value[languageFullCode]).forEach(([componentKey, allComponentsLocalizationConstants]) => {
-      Object.entries(allComponentsLocalizationConstants ?? {}).forEach(([type, componentLocalizationConstants]) => {
-        Object.entries(componentLocalizationConstants ?? {}).forEach(([propertyName, localizationConstant]) => {
-          if (localizationConstant) localizationItems.push(`${componentKey}_${type}_${propertyName} = ${localizationConstant}`)
-        })
-      })
-    })
-    return localizationItems
   }
 }

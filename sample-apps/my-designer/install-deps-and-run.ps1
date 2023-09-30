@@ -51,6 +51,7 @@ function InstallLocalPackage($Path)
 Push-Location $PSScriptRoot
 try
 {
+  InstallLocalPackage $PSScriptRoot/../../packages/core
   InstallLocalPackage $PSScriptRoot/../../packages/designer
   InstallLocalPackage $PSScriptRoot/../../packages/views/rsuite
   npm run start
