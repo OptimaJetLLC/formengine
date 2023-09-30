@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import {getFluentCompatibleId, LocalizationTestResult, testFluentLocalization, useStore} from '@react-form-builder/core'
 import {action} from 'mobx'
 import {observer} from 'mobx-react'
-import {useEffect, useState} from 'react'
+import {useEffect, useMemo, useState} from 'react'
 import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import type {CalculableCodeEditorProps} from '../calculation/CalculableCodeEditor'
@@ -19,14 +19,14 @@ export const LocalizationEditor = observer(({editableProperty, onClose}: Calcula
   const viewerStore = useStore()
   const builderStore = useBuilderStore()
 
-  const [value, setValue] = useState('')
-  const [initialValue, setInitialValue] = useState('')
+  const initialValue = useMemo(() => {
+    return editableProperty.getComputeCode('localization')
+  }, [editableProperty, builderStore.localizationLanguage])
+  const [value, setValue] = useState(initialValue)
 
   useEffect(() => {
-    const initialValue = editableProperty.getComputeCode('localization')
-    setInitialValue(initialValue)
     setValue(initialValue)
-  }, [editableProperty, builderStore.localizationLanguage])
+  }, [initialValue])
 
   const testLocalization = () => {
     const localizationResult = testFluentLocalization({
@@ -38,10 +38,7 @@ export const LocalizationEditor = observer(({editableProperty, onClose}: Calcula
     setError(localizationResult)
   }
 
-  const saveLocalization = () => {
-    editableProperty.setComputeCode(value, 'localization')
-    setInitialValue(value)
-  }
+  const saveLocalization = () => editableProperty.setComputeCode(value, 'localization')
 
   const beginContextLine = `${localizationStringId} =`
   const endContextLine = ''
