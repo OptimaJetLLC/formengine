@@ -471,7 +471,7 @@ export class BuilderStore {
    * @returns void
    */
   move(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = InsertPosition.After): void {
-    if (source === target /*|| source.isRoot*/) return
+    if (source === target || source === this.viewer.form.componentTree) return
     if (insertPosition === InsertPosition.Inner || target.isRoot) return source.setParent(target)
     if (insertPosition === InsertPosition.Before) return target.insertBeforeMe(source)
     if (insertPosition === InsertPosition.After) return target.insertAfterMe(source)
