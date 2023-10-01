@@ -1,6 +1,6 @@
 {
     "name": "@react-form-builder/example-viewer",
-    "version": "0.0.5-alpha",
+    "version": "0.0.7",
     "private": true,
     "main": "src/index.ts",
     "type": "module",
@@ -13,6 +13,6 @@
         "build": "vite build"
     },
     "dependencies": {
-        "@react-form-builder/core": "^0.0.5-alpha"
+        "@react-form-builder/core": "^0.0.7"
     }
 }

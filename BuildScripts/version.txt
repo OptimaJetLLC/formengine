@@ -1,2 +1,2 @@
-NpmVersion=0.0.5-alpha
-NpmPublishTag=alpha
+NpmVersion=0.0.7
+NpmPublishTag=latest
