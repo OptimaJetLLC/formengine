@@ -25,6 +25,4 @@ export function findTreeElementDepth<T extends { children?: T[] }>(value: T, ele
     const childNode = findTreeElementDepth(child, element, depth)
     if (childNode) return childNode
   }
-
-  return
 }

@@ -84,7 +84,7 @@ export class TemplateField implements Field {
       this.form.reset()
       return
     }
-    if (!(typeof value === 'object')) throw new Error(`Expected 'object' type, got ${value}`)
+    if (typeof value !== 'object') throw new Error(`Expected 'object' type, got '${typeof value}'`)
 
     const data: Record<string, any> = value
     this.form.fields.forEach((field, key) => {

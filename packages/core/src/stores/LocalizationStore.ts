@@ -65,18 +65,17 @@ class FluentBundleHolder {
   get fluentBundle() {
     const componentsLocalization = this.localizationStore.value[this.languageFullCode]
     const bundle = new FluentBundle(this.languageFullCode)
-    if (!componentsLocalization) {
-      return bundle
-    }
 
-    const localizationItems = this.#getLocalizationItems(componentsLocalization)
-    localizationItems.forEach(item => {
-      const errors = bundle.addResource(new FluentResource(item))
-      if (errors.length > 0) {
-        console.error(`Unable to add localization resource: ${item}`)
-        errors.forEach(console.error)
-      }
-    })
+    if (componentsLocalization) {
+      const localizationItems = this.#getLocalizationItems(componentsLocalization)
+      localizationItems.forEach(item => {
+        const errors = bundle.addResource(new FluentResource(item))
+        if (errors.length > 0) {
+          console.error(`Unable to add localization resource: ${item}`)
+          errors.forEach(console.error)
+        }
+      })
+    }
 
     return bundle
   }

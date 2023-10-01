@@ -61,7 +61,7 @@ const Properties = namedObserver('Properties', ({activeTab}: PropertiesProps) =>
   const meta = store.view.getMeta(data.store.type)
 
   const current = meta.properties.concat(meta.modules).filter(bySection(activeTab))
-  const properties = current.filter(bySubSection(undefined))
+  const properties = current.filter(bySubSection())
   const additionalProperties = current.filter(bySubSection(SubSection.Additional))
   const styles = unionWith(meta.css, commonStyles, (a, b) => a.key === b.key)
   const tooltipProps = current.filter(bySubSection(SubSection.Tooltip))
