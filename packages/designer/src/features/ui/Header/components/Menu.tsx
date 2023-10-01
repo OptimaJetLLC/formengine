@@ -40,13 +40,15 @@ const ImportFormsButton = namedObserver('ImportFormsButton', () => {
   const showMessage = useShowMessage()
 
   const onImport = () => {
-    uploadBinaryFile(content => content
-      .then(data => importForms(store, data))
-      .then(() => showMessage({type: 'success', message: t('leftMenu.importFormsSuccess')}))
-      .catch(err => {
-        console.error(err)
-        showMessage({type: 'error', message: t('leftMenu.importFormsError')})
-      })
+    uploadBinaryFile(content => {
+        content
+          .then(data => importForms(store, data))
+          .then(() => showMessage({type: 'success', message: t('leftMenu.importFormsSuccess')}))
+          .catch(err => {
+            console.error(err)
+            showMessage({type: 'error', message: t('leftMenu.importFormsError')})
+          })
+      }
     )
   }
 
