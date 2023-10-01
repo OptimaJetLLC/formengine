@@ -48,7 +48,8 @@ export const HintedLabel = ({hint, children, ...labelProps}: HintedLabelProps) =
  * @internal
  */
 export const Hinted = ({hint, children, ...props}: HintedProps) => {
-  const placement = props.placement ?? useTooltipPlacement()
+  const tooltipPlacement = useTooltipPlacement()
+  const placement = props.placement ?? tooltipPlacement
 
   if (!hint) return <>{children}</>
 
