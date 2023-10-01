@@ -82,7 +82,7 @@ export const Menu = namedObserver('Menu', () => {
   }
 
   return <>
-    <Dropdown title={t('leftMenu.menu')} size={'sm'} renderToggle={renderToggle}>
+    <Dropdown title={t('leftMenu.menu')} size={'sm'} renderToggle={renderToggle} menuStyle={{width: 'fit-content'}}>
       <Dropdown.Item onSelect={builderStore.download.bind(builderStore)} icon={<FileDownloadIcon/>}>
         {t('leftMenu.download')}
       </Dropdown.Item>

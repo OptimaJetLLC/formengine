@@ -1,7 +1,9 @@
+import {faGlobe} from '@fortawesome/free-solid-svg-icons'
 import {namedObserver} from '@react-form-builder/core'
 import {useTranslation} from 'react-i18next'
 import {Dropdown} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
+import {FaIcon} from '../../components/Icons'
 
 export const MenuLanguageSwitch = namedObserver('MenuLanguageSwitch', () => {
   const {t} = useTranslation()
@@ -15,7 +17,7 @@ export const MenuLanguageSwitch = namedObserver('MenuLanguageSwitch', () => {
       </Dropdown.Item>
     })
 
-  return <Dropdown.Menu title={t('leftMenu.translation')}>
+  return <Dropdown.Menu title={t('leftMenu.translation')} icon={<FaIcon icon={faGlobe}/>}>
     {children}
   </Dropdown.Menu>
 })
