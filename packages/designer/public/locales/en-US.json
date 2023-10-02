@@ -197,7 +197,7 @@
   },
   "formsList": {
     "noFormsInFormStorage": "Save the form so that it appears in the list of forms.",
-    "addNewForm": "Add new form"
+    "addNewForm": "Add a new form"
   },
   "rightMenu": {
     "toggleTheme": "Toggle theme",
