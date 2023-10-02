@@ -107,7 +107,7 @@ export const LabeledProperty = (props: LabeledPropertyProps) => {
   return <LabeledInput style={style}>
     <Columns gap={10} style={{alignItems: 'center'}}>
       <CodeButton {...props}/>
-      <HintedLabel htmlFor={id} hint={getLabel('hint') || annotation.hint} className={className}>
+      <HintedLabel htmlFor={id} hint={annotation.hint ?? getLabel('hint')} className={className}>
         <>{getLabel('name') || annotation.name}</>
       </HintedLabel>
     </Columns>

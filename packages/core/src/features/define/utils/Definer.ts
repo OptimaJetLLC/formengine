@@ -81,7 +81,14 @@ export class Definer<T extends object> {
   build(): BuilderComponent {
     const propAns = toArray(this.data.properties)
     const cssAns = toArray(this.data.cssObject, {annotationType: 'Style', calculable: false})
-    const valuedAn = propAns.find(an => Boolean(an.valued)) ?? propAns.find(an => an.name === 'value')
+    const valuedAnnotations = propAns.filter(an => an.valued === true)
+    const firstValuedAn = valuedAnnotations[0]
+    if (valuedAnnotations.length > 1) {
+      console.warn('Several annotations with the "valued" property were found.' +
+        ' There should be only one "valued" property in the component description!' +
+        ` The annotation with the key "${valuedAnnotations[0].key}" will be used.`)
+    }
+    const valuedAn = firstValuedAn ?? propAns.find(an => an.name === 'value')
 
     const model = new Model(
       this.data.view,

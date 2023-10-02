@@ -24,7 +24,7 @@ const leftPanelTabs = {
 
 export const LeftPanelNav = namedObserver('LeftPanelNav', () => {
   const {formStorageEnabled} = useBuilderStore()
-  const [activeTab, setActiveTab] = useState<LeftPanelSection>('tree')
+  const [activeTab, setActiveTab] = useState<LeftPanelSection>('components')
   const {t} = useTranslation()
   const title = (key: string) => t('leftPanel.sectionName.' + key)
 
@@ -34,8 +34,8 @@ export const LeftPanelNav = namedObserver('LeftPanelNav', () => {
 
   return <>
     <SNav appearance="subtle" activeKey={activeTab} onSelect={setActiveTab}>
-      {NavIconItem('tree', title('tree'), faSitemap, {color: 'var(--rs-navs-selected)'})}
       {NavIconItem('components', title('components'), faPlusCircle, {color: 'var(--rs-green-600)'})}
+      {NavIconItem('tree', title('tree'), faSitemap, {color: 'var(--rs-navs-selected)'})}
       {NavIconItem('settings', title('settings'), faSliders, {color: 'violet'})}
       {formsTab}
     </SNav>

@@ -14,6 +14,7 @@ import {FaIcon} from '../../../components/Icons'
 import {MenuLanguageSwitch} from '../../../localization'
 import {useShowMessage} from '../../../toast/toast'
 import {exportForms, importForms} from './formUtils'
+import {useSaveForm} from './useSaveForm'
 
 const ExportFormsButton = namedObserver('ExportFormsButton', () => {
   const store = useBuilderStore()
@@ -63,15 +64,7 @@ const renderToggle = (props: WithAsProps, ref: Ref<any>) => <IconButton icon={<F
 export const Menu = namedObserver('Menu', () => {
   const builderStore = useBuilderStore()
   const {t} = useTranslation()
-  const showMessage = useShowMessage()
-  const onSave = (formName?: string) => {
-    builderStore.save(formName)
-      .then(() => showMessage({type: 'success', message: t('leftMenu.formSaved')}))
-      .catch(err => {
-        console.error(err)
-        showMessage({type: 'error', message: t('leftMenu.formSaveError')})
-      })
-  }
+  const onSave = useSaveForm()
   const onSaveAs = () => {
     builderStore.showPromptModal({
       value: '',

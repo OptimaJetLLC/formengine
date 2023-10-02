@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faRedo from '@fortawesome/free-solid-svg-icons/faRedo.js'
+import * as faSave from '@fortawesome/free-solid-svg-icons/faSave.js'
 import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo.js'
 import {namedObserver} from '@react-form-builder/core'
 import {ButtonGroup, IconButton} from 'rsuite'
@@ -13,9 +14,11 @@ import {Menu} from './components/Menu'
 import {ResolutionPicker} from './components/ResolutionPicker'
 import {ToggleModeButton} from './components/ToggleModeButton'
 import {ToggleTheme} from './components/ToggleTheme'
+import {useSaveForm} from './components/useSaveForm'
 
 const Header = namedObserver('Header', () => {
   const builderStore = useBuilderStore()
+  const onSave = useSaveForm()
   const undoer = builderStore.undoer
   const showErrorsPanel = false
   return (
@@ -23,6 +26,10 @@ const Header = namedObserver('Header', () => {
       <LeftPart>
         <Menu/>
         <ButtonGroup size={'sm'}>
+          {builderStore.formStorageEnabled &&
+            <IconButton onClick={() => onSave()}
+                        icon={<FaIcon icon={faSave as unknown as IconDefinition}/>} size={'sm'}/>
+          }
           <IconButton onClick={() => undoer.undo()} disabled={!undoer.hasUndo}
                       icon={<FaIcon icon={faUndo as unknown as IconDefinition}/>} size={'sm'}/>
           <IconButton onClick={() => undoer.redo()} disabled={!undoer.hasRedo}

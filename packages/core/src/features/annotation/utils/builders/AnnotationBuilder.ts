@@ -13,13 +13,18 @@ export class AnnotationBuilder<T> extends BaseBuilder<T> {
 
   /**
    * Creates a component property metadata builder.
-   * @param editor property editor type.
+   * @param editor the property editor type.
    */
   constructor(editor: EditorType) {
     super()
     this.annotation = {editor}
   }
 
+  /**
+   * Creates a component property metadata builder.
+   * @param editor the property editor type.
+   * @returns the component property metadata builder.
+   */
   static create = <T>(editor: EditorType) => new this<T>(editor)
 
   /**

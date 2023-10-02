@@ -1,7 +1,10 @@
-import {ReactNode} from 'react'
+import type {ReactNode} from 'react'
 import {createAnnotation, createProperty} from './utils'
 import {isUniqueKey} from './utils/isUniqueKey'
 
+/**
+ * The annotation for the 'key' property of the component.
+ */
 export const key = createAnnotation('key')
   .typed('string')
   .required
@@ -10,25 +13,69 @@ export const key = createAnnotation('key')
   .validated(isUniqueKey, {code: 'unique_key', message: 'The key must be unique!'})
   .build('key')
 
+/**
+ * The annotation builder for the 'key' property of a component.
+ */
 export const htmlAttributes = createAnnotation('htmlAttributes')
+
+/**
+ * The annotation builder for arbitrary HTML attributes of a component.
+ */
 export const validation = createAnnotation('validation')
 
-//Primitives
+/**
+ * The annotation builder for a component property with type 'string'.
+ */
 export const string = createProperty('string').typed('string').localize
+
+/**
+ * The annotation builder for a component property with type 'boolean'.
+ */
 export const boolean = createProperty('boolean').typed('boolean')
+
+/**
+ * The annotation builder for a component property with type 'number'.
+ */
 export const number = createProperty('number').typed('number')
+
+/**
+ * The annotation builder for a component property with type 'CSS unit' (width, height, etc.).
+ */
 export const size = createProperty('size').typed('string')
+
+/**
+ * The annotation builder for a component property with type 'Date'.
+ */
 export const date = createProperty('date').typed('date')
 
-//Array
+/**
+ * The annotation builder for a component property with type 'Array'.
+ */
 export const array = createProperty('array').array
 
+/**
+ * The annotation builder for a component property with type 'color' (e.g. rgba(71, 167, 122, 0.72)).
+ */
 export const color = createProperty('color').typed('string')
+
+/**
+ * The annotation builder for the form property describing the type of form tooltip.
+ */
 export const tooltipType = createAnnotation('tooltipType').typed('string')
 
-//Style
+/**
+ * The annotation builder for a component property containing a CSS dimension.
+ */
 const cssSize = createAnnotation('size').setup({calculable: false})
+
+/**
+ * The annotation builder for a component property containing a CSS color.
+ */
 const cssColor = createAnnotation('color').setup({calculable: false})
+
+/**
+ * The array of annotation builders for generic CSS properties of a component.
+ */
 export const commonStyles = [
   cssSize.build('width'),
   cssSize.build('height'),
@@ -39,46 +86,43 @@ export const commonStyles = [
   cssColor.build('color'),
   cssColor.build('backgroundColor')
 ]
+
+/**
+ * The annotation builder for the component property containing the CSS class name.
+ */
 export const className = createProperty('string')
   .calculable(true)
   .build('className')
 
 //TODO rename to func, or action, or to stay event?
-//Use for create functions for events
+/**
+ * The annotation builder for a component property with type 'event' (or event handler, or just a function).
+ */
 export const event = createAnnotation<Function>('event').setup({annotationType: 'Event'})
-//object
-//array
 
-//Now is container for another components. TODO? In global things is all that can be rendered: string, numbers, elements, arrays (or fragments) contain these types.
+/**
+ * The annotation builder for a component property with type 'ReactNode'.
+ */
 export const node = createAnnotation<ReactNode>('node').setup({annotationType: 'Container'})
 
-//element - react element
-//elementType - react element with type
-//instanceOf(Message) - prop is instance of class
-
-//Enum
-//Without bind this in arrow function case do bad magic
+/**
+ * The annotation builder for a component property with type 'enum', the property value can only be one of enum.
+ */
 export const oneOf = createProperty('oneOf').oneOf.bind(createProperty('oneOf'))
 
+/**
+ * The annotation builder for a component property with type 'enum', the property value can contain multiple enum values.
+ */
 export const someOf = createProperty('someOf').someOf.bind(createProperty('someOf'))
 
-//oneOfType([string, number, etc.]) - union - one of some types
-//arrayOf(string or etc.) - array with some type
-
-/*
-Object with differently structure
-shape({
-     color: string,
-     fontSize: number
-  })
-*/
-
-//TODO in future: color, date
-
-//TIP for potentially customProp or arrayProp - use yup for validate
-
+/**
+ * The annotation builder for component tooltip properties.
+ */
 export const tooltipProps = createAnnotation('tooltipProps')
 
+/**
+ * The annotation builder for the synthetic 'renderWhen' property of the component.
+ */
 export const renderWhen = createAnnotation('renderWhen').typed('boolean')
 
 export * from './utils'

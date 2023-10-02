@@ -38,6 +38,10 @@ export const Erroneous = namedObserver('Erroneous', (props: ErroneousProps) => {
   }
 
   useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
     updateErrorMessage().catch(console.error)
   }, [value, props.error])
 
