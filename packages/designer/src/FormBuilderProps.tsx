@@ -8,7 +8,7 @@ import type {IFormStorage} from './stores/IFormStorage'
 /**
  * Properties of the React Form builder component.
  */
-export interface FormBuilderProps extends FormViewerProps {
+export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
 
   /**
    * All the metadata of the components of the form builder.
