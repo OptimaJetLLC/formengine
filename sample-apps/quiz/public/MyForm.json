@@ -142,7 +142,7 @@
       },
       {
         "key": "header 1",
-        "type": "RsTitle",
+        "type": "RsHeader",
         "props": {
           "content": {
             "value": "Application Form"

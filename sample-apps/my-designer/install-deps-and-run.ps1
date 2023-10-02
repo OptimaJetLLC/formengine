@@ -48,9 +48,22 @@ function InstallLocalPackage($Path)
   }
 }
 
+function RemoveFromPackageJson($Dependency)
+{
+  $Filename = "package.json"
+  $Content = Get-Content $Filename | ConvertFrom-Json
+  $Dependencies = $Content.dependencies.PSObject.Properties
+  $Dependencies.Remove($Dependency)
+  $Content | ConvertTo-Json | Out-File $Filename
+}
+
 Push-Location $PSScriptRoot
 try
 {
+  RemoveFromPackageJson "@react-form-builder/core"
+  RemoveFromPackageJson "@react-form-builder/designer"
+  RemoveFromPackageJson "@react-form-builder/components-rsuite"
+
   InstallLocalPackage $PSScriptRoot/../../packages/core
   InstallLocalPackage $PSScriptRoot/../../packages/designer
   InstallLocalPackage $PSScriptRoot/../../packages/views/rsuite

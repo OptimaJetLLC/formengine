@@ -20,7 +20,7 @@
     "children": [
       {
         "key": "Header",
-        "type": "RsTitle",
+        "type": "RsHeader",
         "props": {
           "content": {
             "value": "Complex Master Form"
@@ -154,7 +154,7 @@
           },
           {
             "key": "Subheader",
-            "type": "RsTitle",
+            "type": "RsHeader",
             "props": {
               "content": {
                 "value": "Subheader inside the form"
@@ -390,7 +390,7 @@
           },
           {
             "key": "Notifications header",
-            "type": "RsTitle",
+            "type": "RsHeader",
             "props": {
               "content": {
                 "value": "Notifications"

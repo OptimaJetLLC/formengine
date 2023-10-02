@@ -15,10 +15,11 @@ import {rsErrorMessage, RsErrorMessageProps} from './components/RsErrorMessage'
 import {rsGrid} from './components/RsGrid'
 import {rsGridLayout} from './components/RsGridLayout'
 import {rsGridView} from './components/RsGridView'
+import {rsHeader} from './components/RsHeader'
 import {rsImage} from './components/RsImage'
 import {rsInput} from './components/RsInput'
 import {rsLabel} from './components/RsLabel'
-import {rsContent, rsFooter, rsHeader, rsSidebar} from './components/RsLayout'
+import {rsContent, rsFooter, rsHeader as rSuiteHeader, rsSidebar} from './components/RsLayout'
 import {RsLocalizationWrapper} from './components/RsLocalizationWrapper'
 import {rsMenu} from './components/RsMenu'
 import {rsMessage} from './components/RsMessage'
@@ -32,7 +33,6 @@ import {rsSearch} from './components/RsSearch'
 import {rsStaticContent} from './components/RsStaticContent'
 import {rsTab} from './components/RsTab'
 import {rsTextArea} from './components/RsTextArea'
-import {rsTitle} from './components/RsTitle'
 import {rsTooltip, RsTooltipProps} from './components/RsTooltip'
 import {rsTreePicker} from './components/RsTreePicker'
 import {rsUploader} from './components/RsUploader'
@@ -54,6 +54,7 @@ const categories = {
   ],
   static: [
     rsButton,
+    rsHeader,
     rsImage,
     rsLabel,
     rsMenu,
@@ -61,7 +62,6 @@ const categories = {
     rsProgressCircle,
     rsProgressLine,
     rsStaticContent,
-    rsTitle,
     rsTooltip,
   ],
   structure: [
@@ -82,7 +82,7 @@ const categories = {
     rsGridView,
     rsContent,
     rsFooter,
-    rsHeader,
+    rSuiteHeader,
     rsSidebar,
     rsRepeater
   ]

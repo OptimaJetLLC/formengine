@@ -2,7 +2,7 @@ import {boolean, define, event, node, string} from '@react-form-builder/core'
 import type {PanelProps} from 'rsuite'
 import {Panel} from 'rsuite'
 import {headerSize} from '../commonProperties'
-import {RsTitle} from './RsTitle'
+import {RsHeader} from './RsHeader'
 
 interface RsCardProps extends PanelProps {
   title?: string
@@ -11,7 +11,7 @@ interface RsCardProps extends PanelProps {
 
 const RsCard = ({header, title, headerSize, ...props}: RsCardProps) => {
   const panelHeader = <>
-    {!!title && <RsTitle headerSize={headerSize} content={title}/>}
+    {!!title && <RsHeader headerSize={headerSize} content={title}/>}
     {header}
   </>
   return <Panel header={panelHeader} {...props}/>
