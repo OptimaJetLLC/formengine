@@ -128,8 +128,8 @@ const config = {
       {
         entryPoints: [
           '../../packages/core',
-          '../../packages/form-builder',
-          '../../packages/form-viewer'
+          '../../packages/designer',
+          '../../packages/views/rsuite',
         ],
         entryPointStrategy: 'packages',
         tsconfig: '../../tsconfig.json',
