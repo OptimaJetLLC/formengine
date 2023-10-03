@@ -1,6 +1,5 @@
 import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader, view} from '@react-form-builder/components-rsuite'
 import {BiDi, FormViewer} from '@react-form-builder/core'
-// @ts-ignore necessary for React to work correctly
 import React from 'react'
 import 'rsuite/dist/rsuite.min.css'
 

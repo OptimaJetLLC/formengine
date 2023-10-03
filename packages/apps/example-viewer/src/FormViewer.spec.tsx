@@ -3,6 +3,6 @@ import {render} from '@testing-library/react'
 
 describe(`Component ${FormViewer.name}`, function () {
   it('should render', function () {
-    render(<FormViewer view={createView()}/>)
+    render(<FormViewer view={createView([])}/>)
   })
 })

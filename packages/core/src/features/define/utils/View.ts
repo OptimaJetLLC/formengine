@@ -37,7 +37,7 @@ export class View {
    * @param models the components metadata.
    * @returns the {@link View} instance.
    */
-  static create(...models: Model[]) {
+  static create(models: Model[]) {
     return new View(models)
   }
 

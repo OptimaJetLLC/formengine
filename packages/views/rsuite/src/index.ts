@@ -108,4 +108,4 @@ export type {RsErrorMessageProps, RsTooltipProps}
 const components = rSuiteComponents.map(def => def.build())
 export const models = components.map(({model}) => model)
 
-export const view = createView(...models)
+export const view = createView(models)
