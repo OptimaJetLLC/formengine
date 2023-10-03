@@ -16,14 +16,20 @@ Contains metadata for the form builder and metadata for the form viewer.
 
 • `Optional` `Readonly` **category**: `string`
 
+The name of the component category in the designer.
+
 ___
 
 ### meta
 
 • `Readonly` **meta**: [`Meta`](../classes/react_form_builder_core.Meta.md)
 
+The component metadata for the form builder.
+
 ___
 
 ### model
 
 • `Readonly` **model**: [`Model`](../classes/react_form_builder_core.Model.md)<`any`\>
+
+The component metadata for the form viewer.

@@ -384,7 +384,7 @@ ___
 
 ### create
 
-▸ `Static` **create**(`...models`): `View`
+▸ `Static` **create**(`models`): `View`
 
 Static wrapper for the View constructor.
 
@@ -392,7 +392,7 @@ Static wrapper for the View constructor.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...models` | `Model`<`any`\>[] | the components metadata. |
+| `models` | `Model`<`any`\>[] | the components metadata. |
 
 #### Returns
 

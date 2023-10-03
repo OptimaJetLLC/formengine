@@ -437,7 +437,7 @@ ___
 
 ### create
 
-▸ `Static` **create**(`...models`): [`View`](react_form_builder_core.View.md)
+▸ `Static` **create**(`models`): [`View`](react_form_builder_core.View.md)
 
 Static wrapper for the [View](react_form_builder_core.View.md) constructor.
 
@@ -445,7 +445,7 @@ Static wrapper for the [View](react_form_builder_core.View.md) constructor.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...models` | [`Model`](react_form_builder_core.Model.md)<`any`\>[] | the components metadata. |
+| `models` | [`Model`](react_form_builder_core.Model.md)<`any`\>[] | the components metadata. |
 
 #### Returns
 

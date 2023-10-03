@@ -1539,7 +1539,7 @@ ___
 
 ### createView
 
-▸ **createView**(`...models`): [`View`](../classes/react_form_builder_core.View.md)
+▸ **createView**(`models`): [`View`](../classes/react_form_builder_core.View.md)
 
 Static wrapper for the [View](../classes/react_form_builder_core.View.md) constructor.
 
@@ -1547,7 +1547,7 @@ Static wrapper for the [View](../classes/react_form_builder_core.View.md) constr
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...models` | [`Model`](../classes/react_form_builder_core.Model.md)<`any`\>[] | the components metadata. |
+| `models` | [`Model`](../classes/react_form_builder_core.Model.md)<`any`\>[] | the components metadata. |
 
 #### Returns
 
