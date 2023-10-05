@@ -58,7 +58,7 @@ const Properties = namedObserver('Properties', ({activeTab}: PropertiesProps) =>
     )
   }
 
-  const meta = store.view.getMeta(data.store.type)
+  const meta = store.getComponentMetadata(data.store.type)
 
   const current = meta.properties.concat(meta.modules).filter(bySection(activeTab))
   const properties = current.filter(bySubSection())

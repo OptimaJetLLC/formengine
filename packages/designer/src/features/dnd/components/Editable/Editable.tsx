@@ -38,7 +38,7 @@ function getSlot(componentStore: ComponentStore) {
 export function getBuilderChildren(builderStore: BuilderStore, componentData: ComponentData, componentProps: Record<string, any>) {
   const containers = componentData.children
   const currentProps: Record<string, any> = {}
-  const meta = builderStore.view.getMeta(componentData.model.type)
+  const meta = builderStore.getComponentMetadata(componentData.model.type)
 
   const availableSlots = meta.properties.filter(isContainer)
   const templateSlots = getTemplateSlots(componentData)

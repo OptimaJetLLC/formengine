@@ -212,7 +212,8 @@
     "categories": {
       "fields": "字段",
       "static": "静态",
-      "structure": "结构"
+      "structure": "结构",
+      "templates": "模板"
     }
   },
   "componentsModal": {

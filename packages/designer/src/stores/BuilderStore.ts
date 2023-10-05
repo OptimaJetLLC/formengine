@@ -35,9 +35,9 @@ import type {FormBuilderProps} from '../FormBuilderProps'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {BuilderMode, BuilderTheme, InsertPosition} from '../utils/types'
 import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
+import {CachedFormStorage} from './CachedFormStorage'
 import {defaultBottomPanelHeight, defaultOpenedPanels, defaultViewMode} from './constants'
 import {uploadStringFile} from './fileUpload'
-import type {IFormStorage} from './IFormStorage'
 import {trackUndo} from './undo'
 
 function toPrettyJsonString(value: any) {
@@ -228,7 +228,7 @@ export class BuilderStore {
   readonly formStorageEnabled: boolean
   readonly selected = new Set<ComponentData>()
   readonly expanded = new Set<ComponentData>()
-  private formStorage: IFormStorage
+  private readonly formStorage: CachedFormStorage
   readonly #props: Readonly<FormBuilderProps>
   readonly undoer: BuilderUndoer
   activeFormName?: string
@@ -255,7 +255,11 @@ export class BuilderStore {
       }
       , {name: nameObservable('BuilderStore')})
     this.formStorageEnabled = !!props.formStorage
-    this.formStorage = props.formStorage || new AlwaysRejectFormStorage()
+    this.formStorage = new CachedFormStorage(props.formStorage ?? new AlwaysRejectFormStorage())
+    if (this.formStorageEnabled) {
+      this.formStorage.getFormNames().catch(console.error)
+    }
+
     this.#props = props
     this.view = props.view
     this.activeFormName = props.formName
@@ -360,7 +364,7 @@ export class BuilderStore {
    */
   validate = async () => {
     await Promise.allSettled(this.viewer.reduceScreen((acc: Promise<string | undefined>[], current) => {
-      const meta = this.view.getMeta(current.store.type)
+      const meta = this.getComponentMetadata(current.store.type)
 
       meta.properties.forEach(annotation => {
         const validator = annotationResolver({annotation, store: this.viewer})
@@ -717,6 +721,38 @@ export class BuilderStore {
     }
 
     if (!isSelected) this.expandParents(target)
+  }
+
+  /**
+   * Returns the component metadata for the specified component type name.
+   * @param type the component type name.
+   * @returns the component metadata for the specified component type name.
+   */
+  getComponentMetadata(type: string) {
+    return this.view.findMeta(type)
+      ?? this.builderComponents.find(value => value.model.type === type)?.meta
+      ?? this.view.getMeta(type)
+  }
+
+  /**
+   * @returns the array of metadata of form builder components.
+   */
+  get builderComponents() {
+    const result = [...this.view.builderComponents]
+    const types = result.map(value => value.model.type)
+    const typeSet = new Set<string>(types)
+    const currentFormComponent = BuilderView.createTemplateComponent(this.formName)
+    const externalForms = this.formsMetadata
+      .filter(value => !typeSet.has(value.model.type) && currentFormComponent.model.type !== value.model.type)
+    result.push(...externalForms)
+    return result
+  }
+
+  /**
+   * @returns form metadata from an external form storage.
+   */
+  get formsMetadata() {
+    return this.formStorageEnabled ? this.formStorage.builderComponents : []
   }
 
   /**

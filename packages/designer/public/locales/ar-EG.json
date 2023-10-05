@@ -212,7 +212,8 @@
     "categories": {
       "fields": "الحقول",
       "static": "ثابت",
-      "structure": "الهيكل"
+      "structure": "الهيكل",
+      "templates": "قوالب"
     }
   },
   "componentsModal": {

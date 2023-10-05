@@ -212,7 +212,8 @@
     "categories": {
       "fields": "Datenfelder",
       "static": "Statisch",
-      "structure": "Struktur"
+      "structure": "Struktur",
+      "templates": "Vorlagen"
     }
   },
   "componentsModal": {

@@ -212,7 +212,8 @@
     "categories": {
       "fields": "Champs",
       "static": "Statique",
-      "structure": "Structure"
+      "structure": "Structure",
+      "templates": "Modèles"
     }
   },
   "componentsModal": {

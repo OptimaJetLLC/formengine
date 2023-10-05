@@ -212,7 +212,8 @@
     "categories": {
       "fields": "Campo",
       "static": "Statico",
-      "structure": "Struttura"
+      "structure": "Struttura",
+      "templates": "Modelli"
     }
   },
   "componentsModal": {

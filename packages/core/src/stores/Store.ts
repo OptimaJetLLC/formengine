@@ -12,7 +12,7 @@ import {Language} from '../features/localization/types'
 import {createTemplateModel} from '../features/template'
 import {buildInternalErrorModel, buildInternalErrorStore} from '../features/ui/internalErrorModel'
 import {screenModel} from '../features/ui/screenModel'
-import {isTemplateType} from '../features/ui/templateUtil'
+import {getTemplateName, isTemplateType} from '../features/ui/templateUtil'
 import type {SchemaType} from '../features/validation'
 import type {ExternalValidators} from '../features/validation/types/ExternalValidationRules'
 import type {ValidationResult} from '../features/validation/types/ValidationResult'
@@ -213,7 +213,8 @@ export class Store implements IStore, IFormViewer {
 
   private addTemplateModel(type: string) {
     // we don't change the view properties to add a template
-    const templateModel = createTemplateModel(type)
+    const templateName = getTemplateName(type)
+    const templateModel = createTemplateModel(templateName)
     this.#templateMap.set(templateModel.type, templateModel)
     return templateModel
   }

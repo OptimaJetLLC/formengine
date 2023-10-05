@@ -216,7 +216,8 @@
     "categories": {
       "fields": "Fields",
       "static": "Static",
-      "structure": "Structure"
+      "structure": "Structure",
+      "templates": "Templates"
     }
   },
   "componentToolbar": {

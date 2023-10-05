@@ -7,8 +7,7 @@ import {BuilderComponent} from './BuilderComponent'
 import {Meta} from './Meta'
 import {View} from './View'
 
-// todo to translation
-const templatesCategoryName = 'Templates'
+const templatesCategoryName = 'templates'
 
 /**
  * Represents all the metadata of the form builder components.
@@ -29,6 +28,15 @@ export class BuilderView extends View {
     const result = this.#metaMap.get(type)
     if (result) return result
     return internalErrorMeta
+  }
+
+  /**
+   * Returns the component metadata for the specified component type name or undefined.
+   * @param type the component type name.
+   * @returns the component metadata for the specified component type name or undefined.
+   */
+  findMeta(type: string) {
+    return this.#metaMap.get(type)
   }
 
   /**
@@ -94,15 +102,23 @@ export class BuilderView extends View {
    */
   withTemplates(templates: string[]): this {
     templates.forEach(name => {
-      const model = createTemplateModel(name)
-      this.define(model)
-
-      const meta = createTemplateMeta(name)
-      this.#metaMap.set(meta.type, meta)
-
-      this.builderComponents.push({meta, model, category: templatesCategoryName})
+      const builderComponent = BuilderView.createTemplateComponent(name)
+      this.define(builderComponent.model)
+      this.#metaMap.set(builderComponent.meta.type, builderComponent.meta)
+      this.builderComponents.push(builderComponent)
     })
     return this
+  }
+
+  /**
+   * Creates an instance of BuilderComponent for the specified template name.
+   * @param name the template name
+   * @returns the BuilderComponent instance.
+   */
+  static createTemplateComponent(name: string): BuilderComponent {
+    const model = createTemplateModel(name)
+    const meta = createTemplateMeta(name)
+    return {meta, model, category: templatesCategoryName}
   }
 
   /**

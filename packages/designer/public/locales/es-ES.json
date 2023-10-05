@@ -212,7 +212,8 @@
     "categories": {
       "fields": "Campos",
       "static": "Estática",
-      "structure": "Estructura"
+      "structure": "Estructura",
+      "templates": "Plantillas"
     }
   },
   "componentsModal": {

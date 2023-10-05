@@ -21,7 +21,7 @@ interface ControlGroupsProps extends DraggableProps {
 }
 
 const ControlGroups = (props: ControlGroupsProps) => {
-  const store = useBuilderStore()
+  const builderStore = useBuilderStore()
   const t = useTranslationPart('componentsList.categories')
   const {filter, ...componentProps} = props
   const isMatch = filter
@@ -29,7 +29,7 @@ const ControlGroups = (props: ControlGroupsProps) => {
     : (_: Model) => true
 
   const byCategory: Record<string, Model[]> = {}
-  store.view.builderComponents
+  builderStore.builderComponents
     .forEach(component => {
       if (!isMatch(component.model)) return
 

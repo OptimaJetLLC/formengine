@@ -2,7 +2,7 @@ import {namedObserver, SchemaType, useComponentData, useStore, ValidatorType} fr
 import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
 import {Button, Dropdown} from 'rsuite'
-import {useMeta} from '../../../../utils/useMeta'
+import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 
 const RulesList = namedObserver('RulesList', ({type}: { type: SchemaType }) => {
   const {store} = useComponentData()
@@ -44,7 +44,9 @@ const RulesList = namedObserver('RulesList', ({type}: { type: SchemaType }) => {
 
 export const AddRuleButton = observer(() => {
   const {t} = useTranslation()
-  const meta = useMeta()
+  const builderStore = useBuilderStore()
+  const componentData = useComponentData()
+  const meta = builderStore.getComponentMetadata(componentData.model.type)
 
   const type = meta?.valuedAn?.type
   if (!type) return null
