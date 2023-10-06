@@ -53,7 +53,7 @@ const config = {
         logo: {
           alt: 'FormBuilder Logo',
           src: 'img/logo.svg',
-          href: 'https://formengine.dev/',
+          href: 'https://formengine.io/',
           target: '_self',
         },
         items: [
