@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react-form-builder/components-rsuite": "file:react-form-builder-components-rsuite-0.0.7.tgz",
-    "@react-form-builder/core": "file:react-form-builder-core-0.0.7.tgz",
-    "@react-form-builder/designer": "file:react-form-builder-designer-0.0.7.tgz",
+    "@react-form-builder/components-rsuite": "file:react-form-builder-components-rsuite-0.0.8.tgz",
+    "@react-form-builder/core": "file:react-form-builder-core-0.0.8.tgz",
+    "@react-form-builder/designer": "file:react-form-builder-designer-0.0.8.tgz",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
