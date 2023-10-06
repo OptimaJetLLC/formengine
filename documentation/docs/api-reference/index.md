@@ -6,8 +6,4 @@ sidebar_position: 0
 custom_edit_url: null
 ---
 
-# Form Builder
-
-## Getting Started
-
-Coming soon!
+# React Form Builder

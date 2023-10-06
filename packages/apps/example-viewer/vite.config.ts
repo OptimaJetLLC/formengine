@@ -14,7 +14,7 @@ export default defineConfig(({command}) => ({
   build: {
     sourcemap: true,
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
+      entry: path.resolve(__dirname, 'src/index.tsx'),
       formats: ['es'],
       fileName: 'index'
     },
