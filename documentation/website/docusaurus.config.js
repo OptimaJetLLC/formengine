@@ -20,6 +20,11 @@ const config = {
     'https://formengine.io/js/analytics.js?id=GTM-PPS66XRX',
   ],
 
+  markdown: {
+    mermaid: true
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+
   presets: [
     [
       'classic',

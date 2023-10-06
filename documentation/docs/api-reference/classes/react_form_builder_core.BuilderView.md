@@ -218,6 +218,26 @@ the component metadata for the form viewer for the specified type or undefined.
 
 ___
 
+### findMeta
+
+▸ **findMeta**(`type`): `undefined` \| [`Meta`](react_form_builder_core.Meta.md)
+
+Returns the component metadata for the specified component type name or undefined.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `type` | `string` | the component type name. |
+
+#### Returns
+
+`undefined` \| [`Meta`](react_form_builder_core.Meta.md)
+
+the component metadata for the specified component type name or undefined.
+
+___
+
 ### get
 
 ▸ **get**(`type`): [`Model`](react_form_builder_core.Model.md)<`any`\>
@@ -456,3 +476,23 @@ the [View](react_form_builder_core.View.md) instance.
 #### Inherited from
 
 [View](react_form_builder_core.View.md).[create](react_form_builder_core.View.md#create)
+
+___
+
+### createTemplateComponent
+
+▸ `Static` **createTemplateComponent**(`name`): [`BuilderComponent`](../interfaces/react_form_builder_core.BuilderComponent.md)
+
+Creates an instance of BuilderComponent for the specified template name.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name` | `string` | the template name |
+
+#### Returns
+
+[`BuilderComponent`](../interfaces/react_form_builder_core.BuilderComponent.md)
+
+the BuilderComponent instance.

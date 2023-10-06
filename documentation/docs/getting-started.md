@@ -21,14 +21,49 @@ Form Builder consists of the following NPM packages:
 This is the main Form Builder package that contains the React methods and components for displaying the form. This package must be used at
 runtime.
 
+```mermaid
+graph TD;
+  core["@react-form-builder/core"]
+
+  core --> define["API for component metadata"]
+  core --> validation["Validation"]
+  core --> localization["Localization"]
+  core --> viewer["Form renderer (FormViewer)"]
+```
+
 ## @react-form-builder/designer package
 
 This is a package containing a visual form designer. This package is only needed for designing forms, it is not needed for displaying forms.
+
+```mermaid
+graph TD;
+  designer["@react-form-builder/designer"]
+  
+  designer --> dnd["Drag & Drop form designer"]
+  designer --> form-settings["Form settings"]
+  designer --> editors["Component editors"]
+  
+  editors --> property-editors["Property"]
+  editors --> css-editors["Style"]
+  editors --> validation-editors["Validation"]
+  editors --> action-editors["Action"]
+  
+  designer --> localization["Localization settings"]
+```
 
 ## @react-form-builder/components-rsuite package
 
 This package contains components and metadata for components from the [React Suite](https://rsuitejs.com/) library. You may or may not use
 it. You can plug in your favorite component library and use that instead.
+
+```mermaid
+graph TD;
+  components["@react-form-builder/components-rsuite"]
+
+  components --> fields["Components containing data"]
+  components --> static["Simple components"]
+  components --> structure["Structural components"]
+```
 
 ## Creating a simple form
 
@@ -38,25 +73,26 @@ You will see the following screen:
 ![Demo](/assets/getting-started/getting-started-01.png "Demo")
 
 The screen divided to three parts:
+
 1. Left side with tabs:
-   - Tree - on this tab, you can see the tree of components that make up the form.
-   - Components - on this tab you can see the list of components available for use.
-   - Settings - this tab displays the form settings.
-   - Forms - this tab displays the list of forms.
+  - Tree - on this tab, you can see the tree of components that make up the form.
+  - Components - on this tab you can see the list of components available for use.
+  - Settings - this tab displays the form settings.
+  - Forms - this tab displays the list of forms.
 2. Centre part of the screen:
-   - Menu button.
-   - Undo/Redo buttons.
-   - Toggle Preview/Edit button.
-   - Adaptive mode toggle buttons.
-   - Control to select the current form language.
-   - Button to show JSON of the form.
-   - Dark/light theme switch.
+  - Menu button.
+  - Undo/Redo buttons.
+  - Toggle Preview/Edit button.
+  - Adaptive mode toggle buttons.
+  - Control to select the current form language.
+  - Button to show JSON of the form.
+  - Dark/light theme switch.
 3. Right side with tabs:
-   - Main - on this tab you can edit the properties of the selected component.
-   - Style - on this tab you can edit the styles of the selected component.
-   - Actions - on this tab you can edit the actions of the selected component.
-   - Rules - on this tab you can edit the rules of validation of the selected component value.
-                                                     
+  - Main - on this tab you can edit the properties of the selected component.
+  - Style - on this tab you can edit the styles of the selected component.
+  - Actions - on this tab you can edit the actions of the selected component.
+  - Rules - on this tab you can edit the rules of validation of the selected component value.
+
 Go to the **Forms** tab and click on the **Add New Form** button:
 ![New form](/assets/getting-started/getting-started-02.png "New form")
 
@@ -72,7 +108,7 @@ You should now see an empty form:
 Now let's add some components to the form. Switch to the Components tab and drag and drop the "Input" and "Button" components:
 ![Getting started 06](/assets/getting-started/getting-started-06.png)
 
-Now let's give the name "name" to the "Input" component. And set the button label to "Submit". 
+Now let's give the name "name" to the "Input" component. And set the button label to "Submit".
 
 First, select the "Input" component by clicking on it on the form. In the right pane of the "Main" tab, enter "name" in the "Key" property
 and click the "&#10003;" button.
@@ -133,7 +169,7 @@ async function Action(e, args) {
 - [ActionEventArgs](api-reference/classes/ActionEventArgs) `e` is a variable containing the event data.
 - [Store](api-reference/classes/Store) `store` is an object containing the current state of the form display library.
 - [Form](api-reference/classes/Form) `form` is an object containing all form components.
-- [ComponentData](api-reference/classes/ComponentData) `componentTree` is an object with a component tree. 
+- [ComponentData](api-reference/classes/ComponentData) `componentTree` is an object with a component tree.
 - [Record<string, unknown>](api-reference/classes/ComponentData#data) `data` is the data of the form.
 
 :::warning

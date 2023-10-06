@@ -12,6 +12,7 @@ import {BuilderView, FormBuilder, FormBuilderI18n} from '@react-form-builder/des
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useRef, useState} from 'react'
 import {frFR, trTR} from 'rsuite/esm/locales/index.js'
+import {Designer} from './Designer'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
 
 const data = {
@@ -211,6 +212,8 @@ const FormBuilderApp = () => {
   />
 }
 
-const App = () => <FormBuilderApp/>
+const showDocumentationExample = false
+
+const App = () => showDocumentationExample ? <Designer/> : <FormBuilderApp/>
 
 export default App

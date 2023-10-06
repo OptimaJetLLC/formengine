@@ -189,6 +189,26 @@ View.find
 
 ___
 
+### findMeta
+
+▸ **findMeta**(`type`): `undefined` \| `Meta`
+
+Returns the component metadata for the specified component type name or undefined.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `type` | `string` | the component type name. |
+
+#### Returns
+
+`undefined` \| `Meta`
+
+the component metadata for the specified component type name or undefined.
+
+___
+
 ### get
 
 ▸ **get**(`type`): `Model`<`any`\>
@@ -403,3 +423,23 @@ the View instance.
 #### Inherited from
 
 View.create
+
+___
+
+### createTemplateComponent
+
+▸ `Static` **createTemplateComponent**(`name`): `BuilderComponent`
+
+Creates an instance of BuilderComponent for the specified template name.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name` | `string` | the template name |
+
+#### Returns
+
+`BuilderComponent`
+
+the BuilderComponent instance.
