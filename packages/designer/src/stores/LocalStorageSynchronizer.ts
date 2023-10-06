@@ -32,27 +32,28 @@ export class LocalStorageSynchronizer {
     const className = 'LocalStorageSynchronizer'
 
     const formNameKey = 'formName'
-    builderStore.activeFormName = this.getItem<string>(formNameKey)
+    const formName = this.getItem<string>(formNameKey)
+    if (formName) builderStore.activeFormName = formName
 
     this.#disposers = [
       autorun(
-        () => this.setItem(resolutionKey, builderStore.viewMode),
+        () => this.updateItem(resolutionKey, builderStore.viewMode),
         {name: nameAutorun(className, 'saveResolution')}
       ),
       autorun(
-        () => this.setItem(openedPanelsKey, JSON.stringify(builderStore.openedPanels)),
+        () => this.updateItem(openedPanelsKey, JSON.stringify(builderStore.openedPanels)),
         {name: nameAutorun(className, 'saveOpenedPanels')}
       ),
       autorun(
-        () => this.setItem(bottomPanelHeightKey, builderStore.bottomPanelHeight),
+        () => this.updateItem(bottomPanelHeightKey, builderStore.bottomPanelHeight),
         {name: nameAutorun(className, 'saveBottomPanelHeight')}
       ),
       autorun(
-        () => this.setItem(themeKey, builderStore.theme),
+        () => this.updateItem(themeKey, builderStore.theme),
         {name: nameAutorun(className, 'saveTheme')}
       ),
       autorun(
-        () => this.setItem(formNameKey, builderStore.activeFormName),
+        () => this.updateItem(formNameKey, builderStore.activeFormName),
         {name: nameAutorun(className, 'saveFormName')}
       ),
     ]
@@ -67,7 +68,11 @@ export class LocalStorageSynchronizer {
     return value as T
   }
 
-  private setItem = <T>(key: string, value: T) => {
+  private updateItem = <T>(key: string, value: T) => {
+    if (typeof value === 'undefined') {
+      localStorage.removeItem(key)
+      return
+    }
     localStorage.setItem(key, value as string)
   }
 }
