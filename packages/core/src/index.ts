@@ -130,3 +130,5 @@ export type {CssLoaderType, FormViewerWrapperComponentProps, FormViewerWrapper} 
 export {loadResource, unloadResource} from './utils/resourceLoader'
 export type {Rel} from './utils/resourceLoader'
 export type {BuilderComponent} from './features/define'
+export {SuppressResizeObserverErrors} from './features/ui/SuppressResizeObserverErrors'
+export type {SuppressResizeObserverErrorsProps} from './features/ui/SuppressResizeObserverErrors'

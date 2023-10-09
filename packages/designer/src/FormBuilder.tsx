@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import {SuppressResizeObserverErrors} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
 import {Suspense} from 'react'
 import {Loader} from 'rsuite'
@@ -23,18 +24,20 @@ export const FormBuilder = observer((props: FormBuilderProps) => {
 })
 
 const FormBuilderView = observer(() => (
-  <Suspense fallback={<Loader center content="loading"/>}>
-    <Container>
-      <Content>
-        <LeftPanel/>
-        <CentralPanel/>
-        <RightPanel/>
-        <ComponentsModal/>
-        <PromptDialog/>
-      </Content>
-      <BottomPanel/>
-    </Container>
-  </Suspense>
+  <SuppressResizeObserverErrors>
+    <Suspense fallback={<Loader center content="loading"/>}>
+      <Container>
+        <Content>
+          <LeftPanel/>
+          <CentralPanel/>
+          <RightPanel/>
+          <ComponentsModal/>
+          <PromptDialog/>
+        </Content>
+        <BottomPanel/>
+      </Container>
+    </Suspense>
+  </SuppressResizeObserverErrors>
 ))
 
 const Container = styled.div`

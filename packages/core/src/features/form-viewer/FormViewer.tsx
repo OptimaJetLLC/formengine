@@ -1,5 +1,6 @@
 import {namedObserver} from '../../utils'
 import {ViewerLocalizationProvider} from '../localization/ViewerLocalizationProvider'
+import {SuppressResizeObserverErrors} from '../ui/SuppressResizeObserverErrors'
 import {Viewer} from './components/Viewer'
 import {ViewerStoreProvider} from './components/ViewerStoreProvider'
 import './setupMobx'
@@ -11,9 +12,11 @@ import {FormViewerProps} from './types'
  * @returns the React element.
  */
 export const FormViewer = namedObserver('FormViewer', (props: FormViewerProps) =>
-  <ViewerStoreProvider props={props}>
-    <ViewerLocalizationProvider language={props.language}>
-      <Viewer event={props.event}/>
-    </ViewerLocalizationProvider>
-  </ViewerStoreProvider>
+  <SuppressResizeObserverErrors>
+    <ViewerStoreProvider props={props}>
+      <ViewerLocalizationProvider language={props.language}>
+        <Viewer event={props.event}/>
+      </ViewerLocalizationProvider>
+    </ViewerStoreProvider>
+  </SuppressResizeObserverErrors>
 )
