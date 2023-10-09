@@ -1,8 +1,9 @@
-import {DataValidator, errorMessageModel, namedObserver, useDestroy, WrapperProps} from '@react-form-builder/core'
-import {useEffect, useMemo, useState} from 'react'
+import {errorMessageModel, namedObserver, useDestroy, WrapperProps} from '@react-form-builder/core'
+import {useEffect, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps} from '../../annotation-editors/AnnotationEditorProps'
 import {annotationResolver} from '../../validation'
+import {useDataValidator} from './useDataValidator'
 
 /**
  * Represents a set of erroneous component properties.
@@ -19,15 +20,15 @@ export interface ErroneousProps extends WrapperProps, AnnotationEditorProps {
 export const Erroneous = namedObserver('Erroneous', (props: ErroneousProps) => {
   const {annotation, value, children} = props
   const ErrorMessage = errorMessageModel.view
-  const store = useBuilderStore()
+  const builderStore = useBuilderStore()
   const [error, setError] = useState<string>()
   const [mounted, setMounted] = useState(true)
 
-  const schema = useMemo(() => DataValidator.create(
-    store.viewer,
+  const schema = useDataValidator(
+    builderStore.viewer,
     annotationResolver,
-    {annotation, store: store.viewer},
-    setError), [store, annotation])
+    {annotation, store: builderStore.viewer},
+    setError)
 
   const updateErrorMessage = async () => {
     if (!mounted) return
@@ -46,7 +47,6 @@ export const Erroneous = namedObserver('Erroneous', (props: ErroneousProps) => {
   }, [value, props.error])
 
   useDestroy(() => {
-    schema.dispose()
     setMounted(false)
   })
 

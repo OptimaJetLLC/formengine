@@ -51,6 +51,15 @@ export class DataValidator {
     ]
   }
 
+  /**
+   * Creates a DataValidator instance.
+   * @param store the form viewer settings
+   * @param resolver the validation function factory.
+   * @param args the validation function factory arguments.
+   * @param setter the callback function called to set a validation error.
+   * @param localizer the function that localizes validation error messages.
+   * @returns the DataValidator instance.
+   */
   static create = <T>(store: IStore, resolver: SchemaResolver<T>, args: T,
                       setter: Setter<string | undefined>, localizer?: ErrorMessageLocalizer) => {
     return new DataValidator(store, resolver(args), setter, localizer)

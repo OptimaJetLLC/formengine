@@ -1,4 +1,4 @@
-import {autorun, makeAutoObservable, observable} from 'mobx'
+import {autorun, makeAutoObservable, observable, untracked} from 'mobx'
 import {ComponentStore} from '../../../stores/ComponentStore'
 import type {FormViewerValidationRules} from '../../../stores/FormViewerValidationRules'
 import type {IStore} from '../../../stores/IStore'
@@ -20,6 +20,8 @@ export type Disposer = () => void
  * Field with form data, contains only one value.
  */
 export class SimpleField implements Field {
+
+  #oldDataValidator?: DataValidator
 
   /**
    * @inheritDoc
@@ -79,12 +81,18 @@ export class SimpleField implements Field {
 
     this.#disposers = [
       autorun(
-        () => this.dataValidator = DataValidator.create(
-          store,
-          typedValidatorsResolver(this.getValidationRules(this.valueType)),
-          componentStore.schema,
-          error => this.error = error,
-          store.localizeErrorMessages.bind(store, componentStore))
+        () => {
+          this.dataValidator = DataValidator.create(
+            store,
+            typedValidatorsResolver(this.getValidationRules(this.valueType)),
+            componentStore.schema,
+            error => this.error = error,
+            store.localizeErrorMessages.bind(store, componentStore))
+          untracked(() => {
+            this.#oldDataValidator?.dispose()
+            this.#oldDataValidator = this.dataValidator
+          })
+        }
         , {name: nameAutorun(className, 'setValidator', {key: componentStore.key})}),
       autorun(
         () => {
