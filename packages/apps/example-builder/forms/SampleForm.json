@@ -15,6 +15,10 @@
         "customBool": "boolean",
         "myNumericProperty": "number"
       }
+    },
+    "onFirstNameChange": {
+      "body": "   e.data.comment = e.data['title'] + ' ' + e.value",
+      "params": {}
     }
   },
   "tooltipType": "RsTooltip",
@@ -254,6 +258,14 @@
                   "label": {
                     "value": "First Name"
                   }
+                },
+                "events": {
+                  "onChange": [
+                    {
+                      "name": "onFirstNameChange",
+                      "type": "custom"
+                    }
+                  ]
                 }
               },
               {

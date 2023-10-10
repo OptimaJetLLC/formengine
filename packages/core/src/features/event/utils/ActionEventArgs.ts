@@ -3,10 +3,24 @@ import {ComponentState} from '../../../stores/ComponentState'
 import {Store} from '../../../stores/Store'
 import {ComponentData} from '../../../utils/contexts/ComponentDataContext'
 
+function createComponentDataProxy(componentData: ComponentData) {
+  return new Proxy(componentData, {
+    get(target, property: string) {
+      return target.data[property]
+    },
+    set(target, property: string, value): boolean {
+      target.fields.get(property)?.setValue(value)
+      return true
+    }
+  })
+}
+
 /**
  * Arguments passed to the event handler.
  */
 export class ActionEventArgs {
+  #componentDataProxy: any
+
   /**
    * The component properties that were used to render the sender component.
    */
@@ -28,6 +42,7 @@ export class ActionEventArgs {
     state: ComponentState
   ) {
     this.renderedProps = state.get
+    this.#componentDataProxy = createComponentDataProxy(this.store.formData)
   }
 
   /**
@@ -50,6 +65,13 @@ export class ActionEventArgs {
    */
   get value() {
     return this.args.filter(v => typeof v !== 'undefined').find(this.#isNotEvent)
+  }
+
+  /**
+   * @returns the object for reading and changing form data.
+   */
+  get data(): Record<string, unknown> {
+    return this.#componentDataProxy
   }
 
   #isEvent = (value: any) => Boolean(value && value.target && value.type && value.preventDefault)
@@ -104,5 +126,10 @@ declare class ActionEventArgs {
    * @returns the first element of the event argument array, which is treated as a value.
    */
   get value(): any
+  
+  /**
+   * @returns the object for reading and changing form data.
+   */
+  get data(): Record<string, unknown>
 }
 `
