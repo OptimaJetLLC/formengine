@@ -264,7 +264,8 @@
     "formSettings": {
       "actions": "Actions",
       "error": "Paramètres d'erreur",
-      "tooltip": "Infobulle"
+      "tooltip": "Infobulle",
+      "language": "Paramètres de langue"
     },
     "sectionName": {
       "components": "Composants",

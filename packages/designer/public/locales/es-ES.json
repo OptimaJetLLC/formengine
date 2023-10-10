@@ -264,7 +264,8 @@
     "formSettings": {
       "actions": "Acciones",
       "error": "Configuración de errores",
-      "tooltip": "Información sobre Herramientas"
+      "tooltip": "Información sobre Herramientas",
+      "language": "Ajustes de idioma"
     },
     "sectionName": {
       "components": "Componentes",

@@ -264,7 +264,8 @@
     "formSettings": {
       "actions": "Aktionen",
       "error": "Fehlereinstellungen",
-      "tooltip": "QuickInfo"
+      "tooltip": "QuickInfo",
+      "language": "Spracheinstellungen"
     },
     "sectionName": {
       "components": "Hauptkomponenten",

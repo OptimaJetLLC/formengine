@@ -354,7 +354,8 @@
     "formSettings": {
       "actions": "Actions",
       "error": "Error settings",
-      "tooltip": "Tooltip"
+      "tooltip": "Tooltip",
+      "language": "Language settings"
     }
   },
   "bottomPanel": {

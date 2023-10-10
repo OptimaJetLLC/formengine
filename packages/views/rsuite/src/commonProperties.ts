@@ -3,7 +3,7 @@ import type {TypeAttributes} from 'rsuite/esm/@types/common'
 
 type Placement = TypeAttributes.Placement;
 
-export const placement = oneOf<Placement, [Placement, ...Placement[]]>(
+export const placement = oneOf<Placement>(
   'bottomStart',
   'bottomEnd',
   'topStart',

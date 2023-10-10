@@ -16,7 +16,7 @@ export const ErrorComponentPicker = namedObserver('ErrorComponentPicker', () => 
   const getComputeType = useCallback(() => undefined, [])
 
   const values = builderStore.view.errors
-  const annotation = oneOf(values[0], ...values.slice(1))
+  const annotation = oneOf(...values)
     .default(values[0])
     .calculable(false)
     .notLocalize

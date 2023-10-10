@@ -264,7 +264,8 @@
     "formSettings": {
       "actions": "行动",
       "error": "错误设置",
-      "tooltip": "工具提示"
+      "tooltip": "工具提示",
+      "language": "语言设定"
     },
     "sectionName": {
       "components": "组件",

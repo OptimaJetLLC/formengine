@@ -3,6 +3,8 @@ import {namedObserver} from '@react-form-builder/core'
 import {useTranslationPart} from '../../../localization/hooks'
 import {ActionList} from './ActionList'
 import {ErrorSettings} from './ErrorSettings'
+import {FormLanguageSettings} from './FormLanguageSettings'
+
 import {TooltipSettings} from './TooltipSettings'
 
 export const FormSettings = namedObserver('FormSettings', () => {
@@ -14,6 +16,8 @@ export const FormSettings = namedObserver('FormSettings', () => {
     <ErrorSettings/>
     <Header>{t('tooltip')}</Header>
     <TooltipSettings/>
+    <Header>{t('language')}</Header>
+    <FormLanguageSettings/>
   </>
 })
 

@@ -264,7 +264,8 @@
     "formSettings": {
       "actions": "الإجراءات",
       "error": "إعدادات الخطأ",
-      "tooltip": "تلميح الأدوات"
+      "tooltip": "تلميح الأدوات",
+      "language": "اعدادات اللغة"
     },
     "sectionName": {
       "components": "المكونات",

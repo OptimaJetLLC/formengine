@@ -1,9 +1,4 @@
 /**
- * The generic type denoting one of the values of type T.
- */
-export type Enum<T extends [any, ...any[]]> = T[number]
-
-/**
  * Type of component property description in the form builder.
  */
 export type AnnotationType = 'Property' | 'Container' | 'Event' | 'Module' | 'Style'

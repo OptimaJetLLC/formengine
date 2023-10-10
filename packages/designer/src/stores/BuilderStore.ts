@@ -549,11 +549,6 @@ export class BuilderStore {
    * @returns the current form serialized to JSON.
    */
   get formAsString() {
-    const selectedLanguages = this.availableLanguages
-      .filter(l => {
-        return l.fullCode === this.defaultLanguage.fullCode
-          || this.viewer.form.localization.hasLanguage(l.fullCode)
-      })
     const actions = this.viewer.form.actionNames.length ? this.viewer.form.actions : undefined
     const errorProps = Object.keys(this.viewer.form.errorProps).length ? this.viewer.form.errorProps : undefined
     const serializedObject: PersistedForm = {
@@ -563,10 +558,20 @@ export class BuilderStore {
       errorType: this.viewer.form.errorType,
       form: this.viewer.form.componentTree.store,
       localization: this.viewer.form.localization.value,
-      languages: selectedLanguages,
-      defaultLanguage: this.defaultLanguage.fullCode
+      languages: this.formAvailableLanguages,
+      defaultLanguage: this.viewer.form.defaultLanguage.fullCode
     }
     return toPrettyJsonString(serializedObject)
+  }
+
+  /**
+   * @returns the list of available languages for the form.
+   */
+  get formAvailableLanguages() {
+    return this.availableLanguages.filter(l => {
+      return l.fullCode === this.defaultLanguage.fullCode
+        || this.viewer.form.localization.hasLanguage(l.fullCode)
+    })
   }
 
   /**

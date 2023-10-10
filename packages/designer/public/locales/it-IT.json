@@ -264,7 +264,8 @@
     "formSettings": {
       "actions": "Azione",
       "error": "Impostazioni di errore",
-      "tooltip": "Tooltip"
+      "tooltip": "Tooltip",
+      "language": "Impostazioni della lingua"
     },
     "sectionName": {
       "components": "Componente",

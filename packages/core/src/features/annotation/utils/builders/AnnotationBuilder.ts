@@ -1,5 +1,5 @@
 import type {SchemaType, SchemaTypeMap} from '../../../validation'
-import type {EditorType, Enum} from '../../types'
+import type {EditorType} from '../../types'
 import {ArrayBuilder} from './ArrayBuilder'
 import {BaseBuilder} from './BaseBuilder'
 import {OneOfBuilder} from './OneOfBuilder'
@@ -51,8 +51,8 @@ export class AnnotationBuilder<T> extends BaseBuilder<T> {
    * @param values the possible values for the property.
    * @returns the instance of the metadata property builder.
    */
-  oneOf<U extends string | number, D extends [U, ...U[]]>(...values: D) {
-    const result = new OneOfBuilder<Enum<D>>().setup({...this.options, ...this.annotation, type: 'enum'})
+  oneOf<U extends string | number>(...values: U[]) {
+    const result = new OneOfBuilder<U>().setup({...this.options, ...this.annotation, type: 'enum'})
     result.values = values
     return result
   }
@@ -62,8 +62,8 @@ export class AnnotationBuilder<T> extends BaseBuilder<T> {
    * @param values the possible values for the property.
    * @returns the instance of the metadata property builder.
    */
-  someOf<U extends string | number, D extends [U, ...U[]]>(...values: D) {
-    const result = new SomeOfBuilder<Enum<D>>().setup({...this.options, ...this.annotation, type: 'enum'})
+  someOf<U extends string | number>(...values: U[]) {
+    const result = new SomeOfBuilder<U>().setup({...this.options, ...this.annotation, type: 'enum'})
     result.values = values
     return result
   }
