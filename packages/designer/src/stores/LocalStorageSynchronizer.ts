@@ -35,6 +35,13 @@ export class LocalStorageSynchronizer {
     const formName = this.getItem<string>(formNameKey)
     if (formName) builderStore.activeFormName = formName
 
+    const i18nextLngKey = 'i18nextLng'
+    const i18nextLng = this.getItem<string>(i18nextLngKey)
+    if (i18nextLng) {
+      const i18nextLang = builderStore.availableLanguages.find(l => l.fullCode === i18nextLng)
+      builderStore.changeLanguage(i18nextLang ?? builderStore.defaultLanguage)
+    }
+
     this.#disposers = [
       autorun(
         () => this.updateItem(resolutionKey, builderStore.viewMode),
