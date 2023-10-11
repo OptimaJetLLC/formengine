@@ -1,16 +1,12 @@
 import styled from '@emotion/styled'
 import {Device, useComponentData} from '@react-form-builder/core'
 import {observer} from 'mobx-react'
-import {useEffect, useState} from 'react'
+import {useMemo} from 'react'
 import {CodeEditor} from '../components/CodeEditor'
 
 export const CSSEditor = observer(({device}: { device: Device }) => {
   const {store} = useComponentData()
-  const value = store?.css?.[device]?.string
-  const [initialValue, setInitialValue] = useState(value ?? '')
-  useEffect(() => {
-    setInitialValue(value ?? '')
-  }, [device, store])
+  const initialValue = useMemo(() => store?.css?.[device]?.string ?? '', [store, device])
   const onChange = (value: any) => {
     store.css ??= {}
     store.css[device] ??= {}

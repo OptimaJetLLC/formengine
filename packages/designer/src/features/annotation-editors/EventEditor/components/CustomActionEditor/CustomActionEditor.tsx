@@ -1,10 +1,17 @@
 import styled from '@emotion/styled'
-import {ActionDefinition, ActionParameters, AsyncFunction, NamedActionDefinition, useStore} from '@react-form-builder/core'
-import {useEffect, useRef, useState} from 'react'
+import {
+  ActionDefinition,
+  ActionParameters,
+  AsyncFunction,
+  CompilationResult,
+  NamedActionDefinition,
+  useStore
+} from '@react-form-builder/core'
+import {useEffect, useMemo, useRef, useState} from 'react'
 import {useTranslation} from 'react-i18next'
-import {Button, ButtonGroup, Form, FormInstance, Schema} from 'rsuite'
+import {Form, FormInstance, Schema} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
-import {CodeEditor} from '../../../../components/CodeEditor'
+import {GenericCodeEditor} from '../../../../calculation/GenericCodeEditor'
 import {Columns, Rows} from '../../../../components/Containers'
 import {Header} from '../../../../ui/BottomPanel/Header'
 import type {Parameter} from '../ActionList/ActionItem/components/ArgumentList/ArgumentItem/Parameter'
@@ -15,7 +22,7 @@ import {ParameterList} from './components/ParameterList'
  */
 export type CustomActionEditorData = { editorId: any, name: string, body: string, params?: ActionParameters }
 
-type FormModel = CustomActionEditorData & { errors?: string, actionParameters?: Parameter[] }
+type FormModel = CustomActionEditorData & { actionParameters?: Parameter[] }
 
 const paramsToArray = (params?: ActionParameters): Parameter[] | undefined => {
   if (!params) return
@@ -55,6 +62,8 @@ export const CustomActionEditor = ({customAction, onSave}: CustomActionEditorPro
 
   const formRef = useRef<FormInstance>(null)
 
+  const functionHeader = useMemo(() => makeFunctionHeader(formState.actionParameters), [formState.actionParameters])
+
   useEffect(() => {
     setFormState(initialFormModel)
     setInitialBody(initialFormModel.body)
@@ -75,18 +84,20 @@ export const CustomActionEditor = ({customAction, onSave}: CustomActionEditorPro
 
   const close = () => builderStore.currentEditable = undefined
 
-  const save = () => {
+  const save = (source: string) => {
     if (!formRef.current?.check()) return
-    try {
-      AsyncFunction(formState.body)
-    } catch (e) {
-      updateFormState({errors: (e as Error).message})
-      return
-    }
-
-    const actionDefinition = ActionDefinition.sourceAction(formState.body, paramsFromArray(formState.actionParameters))
+    const actionDefinition = ActionDefinition.sourceAction(source, paramsFromArray(formState.actionParameters))
     const namedAction: NamedActionDefinition = {name: formState.name, actionDefinition}
     onSave?.(namedAction)
+  }
+
+  const compile = (source: string): CompilationResult => {
+    try {
+      const fn = AsyncFunction(source)
+      return {error: false, fn}
+    } catch (e) {
+      return {error: true, exceptions: [e as Error]}
+    }
   }
 
   return <>
@@ -99,31 +110,17 @@ export const CustomActionEditor = ({customAction, onSave}: CustomActionEditorPro
               onChange={data => updateFormState({name: data.name})}>
           <Form.Control name={'name'} style={{width: '100%'}}/>
         </Form>
-        <EditorContainer>
-          <CodeEditor key={customAction.editorId} beginContextLine={makeFunctionHeader(formState.actionParameters)}
-                      endContextLine="}" initialValue={initialBody ?? ''}
-                      onChange={body => updateFormState({body})}/>
-        </EditorContainer>
-        <div>
-          <ButtonGroup size={'sm'}>
-            <Button appearance="primary" onClick={() => save()}>{t('common.save')}</Button>
-            <Button appearance="ghost" onClick={close}>{t('common.close')}</Button>
-          </ButtonGroup>
-          {!!formState.errors && <label style={{color: 'red', marginInline: 10}}>{formState.errors}</label>}
-        </div>
+        <GenericCodeEditor beginContextLine={functionHeader}
+                           endContextLine="}" source={initialBody ?? ''}
+                           onSave={save} onClose={close}
+                           onCompile={compile}
+        />
       </Rows>
       <ParameterList value={formState.actionParameters}
                      onChange={value => updateFormState({actionParameters: value})}/>
     </Container>
   </>
 }
-
-const EditorContainer = styled.div`
-  display: flex;
-  flex: 1;
-  gap: 10px;
-  min-height: 0;
-`
 
 const Container = styled(Columns)`
   gap: 20px;

@@ -28,7 +28,7 @@ export const CalculableCodeEditor = ({editableProperty, onClose}: CalculableCode
  */
 function Calculation (form) {`
 
-  return <GenericCodeEditor editorKey={editableProperty.annotation.key}
+  return <GenericCodeEditor key={editableProperty.annotation.key}
                             beginContextLine={functionHeader}
                             endContextLine="}"
                             source={editableProperty.getComputeCode('function')}

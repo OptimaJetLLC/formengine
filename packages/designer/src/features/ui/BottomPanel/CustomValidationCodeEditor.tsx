@@ -26,7 +26,7 @@ export const CustomValidationCodeEditor = namedObserver('CustomValidationCodeEdi
 
   return <>
     <Header>{t('validation.editCustomValidationCode')} '{props.editorKey}'</Header>
-    <GenericCodeEditor editorKey={props.editorKey}
+    <GenericCodeEditor key={props.editorKey}
                        beginContextLine={beginContextLine}
                        endContextLine={endContextLine}
                        source={props.code}

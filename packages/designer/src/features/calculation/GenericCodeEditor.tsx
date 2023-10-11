@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import type {BaseCompilationResult, CompilationResult} from '@react-form-builder/core'
 import {action} from 'mobx'
-import {useEffect, useState} from 'react'
+import {useEffect, useMemo, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
 import {CodeEditor} from '../components/CodeEditor'
@@ -12,7 +12,6 @@ import {CodeEditorErrorMessage} from './CodeEditorErrorMessage'
  * Properties of the React component {@link GenericCodeEditor}.
  */
 export interface GenericCodeEditorProps {
-  editorKey: any
   beginContextLine?: string
   endContextLine?: string
   source?: string
@@ -30,9 +29,10 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
   const {t} = useTranslation()
   const codePlaceHolder = t('codeEditor.codePlaceholder')
 
-  const [sourceCode, setSourceCode] = useState(props.source ?? codePlaceHolder)
+  const propsSourceCode = useMemo(() => props.source ?? codePlaceHolder, [props.source])
+  const [sourceCode, setSourceCode] = useState(propsSourceCode)
   const [compilationError, setCompilationError] = useState<CompilationResult | undefined>()
-  const [initialValue, setInitialValue] = useState('')
+  const [initialValue, setInitialValue] = useState(propsSourceCode)
 
   const compileCode = () => {
     const result = props.onCompile(sourceCode)
@@ -49,14 +49,13 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
   }
 
   useEffect(() => {
-    const initialValue = props.source || codePlaceHolder
-    setInitialValue(initialValue)
-    setSourceCode(initialValue)
+    setInitialValue(propsSourceCode)
+    setSourceCode(propsSourceCode)
     setCompilationError(undefined)
-  }, [props.source])
+  }, [propsSourceCode])
 
   return <Rows gap={10} style={{minHeight: 0}}>
-    <CodeEditor key={props.editorKey} beginContextLine={props.beginContextLine} endContextLine={props.endContextLine}
+    <CodeEditor beginContextLine={props.beginContextLine} endContextLine={props.endContextLine}
                 initialValue={initialValue} onChange={setSourceCode}/>
     <SDiv>
       <ButtonGroup size={'sm'}>
