@@ -464,7 +464,7 @@ ___
 
 ### aria-orientation
 
-• `Optional` **aria-orientation**: ``"horizontal"`` \| ``"vertical"``
+• `Optional` **aria-orientation**: ``"vertical"`` \| ``"horizontal"``
 
 Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.
 
@@ -1022,7 +1022,7 @@ ___
 
 ### inputMode
 
-• `Optional` **inputMode**: ``"search"`` \| ``"text"`` \| ``"email"`` \| ``"tel"`` \| ``"url"`` \| ``"none"`` \| ``"numeric"`` \| ``"decimal"``
+• `Optional` **inputMode**: ``"text"`` \| ``"email"`` \| ``"search"`` \| ``"tel"`` \| ``"url"`` \| ``"none"`` \| ``"numeric"`` \| ``"decimal"``
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 

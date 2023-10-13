@@ -36,6 +36,7 @@ custom_edit_url: null
 - [Meta](../classes/react_form_builder_core.Meta.md)
 - [Model](../classes/react_form_builder_core.Model.md)
 - [ModuleAn](../classes/react_form_builder_core.ModuleAn.md)
+- [NodeAnnotationBuilder](../classes/react_form_builder_core.NodeAnnotationBuilder.md)
 - [OneOfBuilder](../classes/react_form_builder_core.OneOfBuilder.md)
 - [PropertyAn](../classes/react_form_builder_core.PropertyAn.md)
 - [QuantifierBuilder](../classes/react_form_builder_core.QuantifierBuilder.md)
@@ -65,6 +66,7 @@ custom_edit_url: null
 - [LabeledValue](../interfaces/react_form_builder_core.LabeledValue.md)
 - [PersistedForm](../interfaces/react_form_builder_core.PersistedForm.md)
 - [ScreenProps](../interfaces/react_form_builder_core.ScreenProps.md)
+- [SuppressResizeObserverErrorsProps](../interfaces/react_form_builder_core.SuppressResizeObserverErrorsProps.md)
 - [WrapperProps](../interfaces/react_form_builder_core.WrapperProps.md)
 
 ## Type Aliases
@@ -461,20 +463,6 @@ ___
 Ƭ **EditorType**: `string`
 
 A type that denotes the name of the property editor.
-
-___
-
-### Enum
-
-Ƭ **Enum**<`T`\>: `T`[`number`]
-
-The generic type denoting one of the values of type T.
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends [`any`, ...any[]] |
 
 ___
 
@@ -1085,7 +1073,7 @@ Display resolution type.
 
 ### ActionEventArgsDeclaration
 
-• `Const` **ActionEventArgsDeclaration**: ``"\n/**\n * Arguments passed to the event handler.\n */\ndeclare class ActionEventArgs {\n\n  /**\n   * The event type.\n   */\n  readonly type: string\n\n  /**\n   * The component that triggered the event.\n   */\n  readonly sender: ComponentData\n  \n  /**\n   * The component properties that were used to render the sender component.\n   */\n  readonly renderedProps: Record<string, any>\n  \n  /**\n   * Sets current props of component.\n   */\n  readonly setUserDefinedProps: (props: Record<string, any>) => void\n\n  /**\n   * The form viewer settings.\n   */\n  readonly store: Store\n\n  /**\n   * The event arguments.\n   */\n  readonly args: any[]\n\n  /**\n   * @returns the event handled by the event handler.\n   */\n  get event(): SyntheticEvent | null\n\n  /**\n   * @returns the first element of the event argument array, which is treated as a value.\n   */\n  get value(): any\n}\n"``
+• `Const` **ActionEventArgsDeclaration**: ``"\n/**\n * Arguments passed to the event handler.\n */\ndeclare class ActionEventArgs {\n\n  /**\n   * The event type.\n   */\n  readonly type: string\n\n  /**\n   * The component that triggered the event.\n   */\n  readonly sender: ComponentData\n  \n  /**\n   * The component properties that were used to render the sender component.\n   */\n  readonly renderedProps: Record<string, any>\n  \n  /**\n   * Sets current props of component.\n   */\n  readonly setUserDefinedProps: (props: Record<string, any>) => void\n\n  /**\n   * The form viewer settings.\n   */\n  readonly store: Store\n\n  /**\n   * The event arguments.\n   */\n  readonly args: any[]\n\n  /**\n   * @returns the event handled by the event handler.\n   */\n  get event(): SyntheticEvent | null\n\n  /**\n   * @returns the first element of the event argument array, which is treated as a value.\n   */\n  get value(): any\n  \n  /**\n   * @returns the object for reading and changing form data.\n   */\n  get data(): Record<string, unknown>\n}\n"``
 
 Description of the event argument type for the code editor.
 
@@ -1238,7 +1226,7 @@ ___
 
 ### node
 
-• `Const` **node**: [`AnnotationBuilder`](../classes/react_form_builder_core.AnnotationBuilder.md)<`ReactNode`\>
+• `Const` **node**: [`NodeAnnotationBuilder`](../classes/react_form_builder_core.NodeAnnotationBuilder.md)<`ReactNode`\>
 
 The annotation builder for a component property with type 'ReactNode'.
 
@@ -1386,6 +1374,26 @@ ___
 
 ___
 
+### SuppressResizeObserverErrors
+
+▸ **SuppressResizeObserverErrors**(`props`): `Element`
+
+SuppressResizeObserverErrors component is used to suppress ResizeObserver errors.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `props` | [`SuppressResizeObserverErrorsProps`](../interfaces/react_form_builder_core.SuppressResizeObserverErrorsProps.md) | the component props. |
+
+#### Returns
+
+`Element`
+
+the rendered child elements.
+
+___
+
 ### ViewerPropsProvider
 
 ▸ **ViewerPropsProvider**(`props`): ``null`` \| `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>
@@ -1404,9 +1412,9 @@ ___
 
 ___
 
-### checkBindCondition
+### checkSlotCondition
 
-▸ **checkBindCondition**(`childStore`, `parentProps`): `any`
+▸ **checkSlotCondition**(`childStore`, `parentProps`): `any`
 
 Performs the function of checking if the child component can be bound.
 
@@ -2016,7 +2024,7 @@ ___
 
 ### oneOf
 
-▸ **oneOf**<`U`, `D`\>(`...values`): [`OneOfBuilder`](../classes/react_form_builder_core.OneOfBuilder.md)<[`Enum`](react_form_builder_core.md#enum)<`D`\>\>
+▸ **oneOf**<`U`\>(`...values`): [`OneOfBuilder`](../classes/react_form_builder_core.OneOfBuilder.md)<`U`\>
 
 The annotation builder for a component property with type 'enum', the property value can only be one of enum.
 
@@ -2025,23 +2033,22 @@ The annotation builder for a component property with type 'enum', the property v
 | Name | Type |
 | :------ | :------ |
 | `U` | extends `string` \| `number` |
-| `D` | extends [`U`, ...U[]] |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `...values` | `D` |
+| `...values` | `U`[] |
 
 #### Returns
 
-[`OneOfBuilder`](../classes/react_form_builder_core.OneOfBuilder.md)<[`Enum`](react_form_builder_core.md#enum)<`D`\>\>
+[`OneOfBuilder`](../classes/react_form_builder_core.OneOfBuilder.md)<`U`\>
 
 ___
 
 ### someOf
 
-▸ **someOf**<`U`, `D`\>(`...values`): [`SomeOfBuilder`](../classes/react_form_builder_core.SomeOfBuilder.md)<[`Enum`](react_form_builder_core.md#enum)<`D`\>\>
+▸ **someOf**<`U`\>(`...values`): [`SomeOfBuilder`](../classes/react_form_builder_core.SomeOfBuilder.md)<`U`\>
 
 The annotation builder for a component property with type 'enum', the property value can contain multiple enum values.
 
@@ -2050,17 +2057,16 @@ The annotation builder for a component property with type 'enum', the property v
 | Name | Type |
 | :------ | :------ |
 | `U` | extends `string` \| `number` |
-| `D` | extends [`U`, ...U[]] |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `...values` | `D` |
+| `...values` | `U`[] |
 
 #### Returns
 
-[`SomeOfBuilder`](../classes/react_form_builder_core.SomeOfBuilder.md)<[`Enum`](react_form_builder_core.md#enum)<`D`\>\>
+[`SomeOfBuilder`](../classes/react_form_builder_core.SomeOfBuilder.md)<`U`\>
 
 ___
 

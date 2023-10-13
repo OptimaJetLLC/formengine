@@ -501,14 +501,14 @@ export class BuilderStore {
    * @param target the parent component for the component to be added.
    * @param insertPosition the insertion position relative to the new parent component.
    * @param slot the property name of the parent component where the new component will be added.
-   * @param bindCondition the source code of the function that checks if the component can be added.
+   * @param slotCondition the source code of the function that checks if the component can be bound to parent.
    * @returns the new added component.
    */
   add(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = InsertPosition.After,
-      slot?: string, bindCondition?: string) {
+      slot?: string, slotCondition?: string) {
     const clone = assign(new ComponentStore('', ''), cloneDeep(source.store))
     clone.slot = slot
-    clone.bindCondition = bindCondition
+    clone.slotCondition = slotCondition
 
     const componentData = this.viewer.createComponentData(clone)
 

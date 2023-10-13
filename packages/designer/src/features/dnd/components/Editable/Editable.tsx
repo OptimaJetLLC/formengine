@@ -1,5 +1,5 @@
 import {
-  checkBindCondition,
+  checkSlotCondition,
   ComponentData,
   ComponentStore,
   ComponentTree,
@@ -45,24 +45,24 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
   availableSlots.push(...templateSlots)
 
   const closedSlots = componentData.store
-    .children?.filter(componentStore => checkBindCondition(componentStore, componentProps))
+    .children?.filter(componentStore => checkSlotCondition(componentStore, componentProps))
     .map(getSlot) ?? []
   const openSlots = availableSlots.filter(an => !closedSlots.includes(an.key))
 
   const groups = groupBy(containers, value => getSlot(value.store))
-  const isBindConditionSatisfied = (child: ComponentData) => checkBindCondition(child.store, componentProps)
+  const isSlotConditionSatisfied = (child: ComponentData) => checkSlotCondition(child.store, componentProps)
 
   for (const [key, children] of Object.entries(groups)) {
     const filteredChildren = children
-      .filter(isBindConditionSatisfied)
+      .filter(isSlotConditionSatisfied)
     if (filteredChildren.length) currentProps[key] = <ComponentTree data={filteredChildren}/>
   }
 
   openSlots.forEach(container => {
     const slot = container.key === childrenSlot ? undefined : container.key
     const props = assign({}, componentData.model.defaultProps, componentData.store.props)
-    const bindCondition = container?.bindConditionBuilder?.(props)
-    currentProps[container.key] = <DropZone isInner={true} slot={slot} bindCondition={bindCondition}/>
+    const slotCondition = container?.slotConditionBuilder?.(props)
+    currentProps[container.key] = <DropZone isInner={true} slot={slot} slotCondition={slotCondition}/>
   })
 
   return currentProps

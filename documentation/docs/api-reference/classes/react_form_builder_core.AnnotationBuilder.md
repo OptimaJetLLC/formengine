@@ -21,6 +21,10 @@ The builder class to define the metadata property of the form builder component.
 
   ↳ **`AnnotationBuilder`**
 
+  ↳↳ [`NodeAnnotationBuilder`](react_form_builder_core.NodeAnnotationBuilder.md)
+
+  ↳↳ [`NodeAnnotationBuilder`](react_form_builder_core.NodeAnnotationBuilder.md)
+
 ## Constructors
 
 ### constructor
@@ -265,7 +269,7 @@ ___
 
 ### oneOf
 
-▸ **oneOf**<`U`, `D`\>(`...values`): [`OneOfBuilder`](react_form_builder_core.OneOfBuilder.md)<[`Enum`](../modules/react_form_builder_core.md#enum)<`D`\>\>
+▸ **oneOf**<`U`\>(`...values`): [`OneOfBuilder`](react_form_builder_core.OneOfBuilder.md)<`U`\>
 
 Sets the property as a "single select" property.
 
@@ -274,17 +278,16 @@ Sets the property as a "single select" property.
 | Name | Type |
 | :------ | :------ |
 | `U` | extends `string` \| `number` |
-| `D` | extends [`U`, ...U[]] |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...values` | `D` | the possible values for the property. |
+| `...values` | `U`[] | the possible values for the property. |
 
 #### Returns
 
-[`OneOfBuilder`](react_form_builder_core.OneOfBuilder.md)<[`Enum`](../modules/react_form_builder_core.md#enum)<`D`\>\>
+[`OneOfBuilder`](react_form_builder_core.OneOfBuilder.md)<`U`\>
 
 the instance of the metadata property builder.
 
@@ -316,7 +319,7 @@ ___
 
 ### someOf
 
-▸ **someOf**<`U`, `D`\>(`...values`): [`SomeOfBuilder`](react_form_builder_core.SomeOfBuilder.md)<[`Enum`](../modules/react_form_builder_core.md#enum)<`D`\>\>
+▸ **someOf**<`U`\>(`...values`): [`SomeOfBuilder`](react_form_builder_core.SomeOfBuilder.md)<`U`\>
 
 Sets the property as a "multiple select" property.
 
@@ -325,17 +328,16 @@ Sets the property as a "multiple select" property.
 | Name | Type |
 | :------ | :------ |
 | `U` | extends `string` \| `number` |
-| `D` | extends [`U`, ...U[]] |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...values` | `D` | the possible values for the property. |
+| `...values` | `U`[] | the possible values for the property. |
 
 #### Returns
 
-[`SomeOfBuilder`](react_form_builder_core.SomeOfBuilder.md)<[`Enum`](../modules/react_form_builder_core.md#enum)<`D`\>\>
+[`SomeOfBuilder`](react_form_builder_core.SomeOfBuilder.md)<`U`\>
 
 the instance of the metadata property builder.
 

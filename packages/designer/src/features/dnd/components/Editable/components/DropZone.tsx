@@ -16,7 +16,7 @@ interface DropZoneProps extends ComponentProps<any> {
   className?: any
   children?: any
   slot?: string
-  bindCondition?: string
+  slotCondition?: string
 }
 
 const DropZone = observer(({isAfter = false, className, isInner, ...props}: DropZoneProps) => {
@@ -24,12 +24,12 @@ const DropZone = observer(({isAfter = false, className, isInner, ...props}: Drop
   const store = componentData.store
   const isRoot = componentData.isRoot
   const isContainer = Boolean(store.children)
-  const {slot, bindCondition} = props
+  const {slot, slotCondition} = props
 
   const [{isActive, isOver}, drop] = useDropZone(isAfter, isRoot || isInner, slot)
   const dropClassNames = {isAfter, isActive, isContainer, isRoot, isInner}
 
-  const dropView = <DropView {...{...dropClassNames, isOver, slot, bindCondition}}/>
+  const dropView = <DropView {...{...dropClassNames, isOver, slot, slotCondition}}/>
 
   return <>
     <Container ref={drop} {...props} className={cx(dropClassNames, className)}>

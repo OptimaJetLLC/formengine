@@ -120,7 +120,7 @@ export class ComponentStore {
   /**
    * The condition for binding a child element to a parent element.
    */
-  bindCondition?: string
+  slotCondition?: string
 
   /**
    * The expression or function to conditionally render a component.

@@ -1,5 +1,6 @@
 import type {ReactNode} from 'react'
 import {createAnnotation, createProperty} from './utils'
+import {createNodeAnnotation} from './utils/builders/NodeAnnotationBuilder'
 import {isUniqueKey} from './utils/isUniqueKey'
 
 /**
@@ -103,7 +104,7 @@ export const event = createAnnotation<Function>('event').setup({annotationType: 
 /**
  * The annotation builder for a component property with type 'ReactNode'.
  */
-export const node = createAnnotation<ReactNode>('node').setup({annotationType: 'Container'})
+export const node = createNodeAnnotation<ReactNode>('node').setup({annotationType: 'Container'})
 
 /**
  * The annotation builder for a component property with type 'enum', the property value can only be one of enum.

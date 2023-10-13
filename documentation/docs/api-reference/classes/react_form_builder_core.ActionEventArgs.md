@@ -29,6 +29,12 @@ Creates arguments for the event handler.
 
 ## Properties
 
+### #componentDataProxy
+
+• `Private` **#componentDataProxy**: `any`
+
+___
+
 ### args
 
 • `Readonly` **args**: `any`[]
@@ -68,6 +74,18 @@ ___
 the event type.
 
 ## Accessors
+
+### data
+
+• `get` **data**(): `Record`<`string`, `unknown`\>
+
+#### Returns
+
+`Record`<`string`, `unknown`\>
+
+the object for reading and changing form data.
+
+___
 
 ### event
 

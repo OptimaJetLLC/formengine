@@ -90,6 +90,8 @@ ___
 
 ▸ `Static` **create**<`T`\>(`store`, `resolver`, `args`, `setter`, `localizer?`): [`DataValidator`](react_form_builder_core.DataValidator.md)
 
+Creates a DataValidator instance.
+
 #### Type parameters
 
 | Name |
@@ -98,14 +100,16 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `store` | [`IStore`](../interfaces/react_form_builder_core.IStore.md) |
-| `resolver` | [`SchemaResolver`](../modules/react_form_builder_core.md#schemaresolver)<`T`\> |
-| `args` | `T` |
-| `setter` | [`Setter`](../modules/react_form_builder_core.md#setter)<`undefined` \| `string`\> |
-| `localizer?` | [`ErrorMessageLocalizer`](../modules/react_form_builder_core.md#errormessagelocalizer) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `store` | [`IStore`](../interfaces/react_form_builder_core.IStore.md) | the form viewer settings |
+| `resolver` | [`SchemaResolver`](../modules/react_form_builder_core.md#schemaresolver)<`T`\> | the validation function factory. |
+| `args` | `T` | the validation function factory arguments. |
+| `setter` | [`Setter`](../modules/react_form_builder_core.md#setter)<`undefined` \| `string`\> | the callback function called to set a validation error. |
+| `localizer?` | [`ErrorMessageLocalizer`](../modules/react_form_builder_core.md#errormessagelocalizer) | the function that localizes validation error messages. |
 
 #### Returns
 
 [`DataValidator`](react_form_builder_core.DataValidator.md)
+
+the DataValidator instance.

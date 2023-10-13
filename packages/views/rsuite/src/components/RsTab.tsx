@@ -51,6 +51,7 @@ export const rsTab = define(RsTab)
     ...navProps,
     items: array.default(toLabeledValues(['Item1', 'Item2', 'Item3'])),
     showNavigation: boolean.hinted('Show or hide navigation').default(true),
-    pane: node.setup({bindConditionBuilder: props => `return parentProps.activeKey === '${props.activeKey?.value ?? props.activeKey}'`})
+    pane: node
+      .withSlotConditionBuilder(props => `return parentProps.activeKey === '${props.activeKey?.value ?? props.activeKey}'`)
       .calculable(false).hinted('A child component of the tab'),
   })

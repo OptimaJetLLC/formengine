@@ -24,12 +24,12 @@ export function getChildren(data: ComponentData, formData: IFormData,
   const currentProps: Record<string, any> = {}
 
   const groups = groupBy(containers, value => value.store.slot || defaultContainerKey)
-  const isBindConditionSatisfied = (child: ComponentData) => checkBindCondition(child.store, componentProps)
+  const isSlotConditionSatisfied = (child: ComponentData) => checkSlotCondition(child.store, componentProps)
   const isNeedRender = (child: ComponentData) => needRender(child.store, formData)
 
   for (const [key, children] of Object.entries(groups)) {
     const filteredChildren = children
-      .filter(isBindConditionSatisfied)
+      .filter(isSlotConditionSatisfied)
       .filter(isNeedRender)
     if (filteredChildren.length) currentProps[key] = <ComponentTree data={filteredChildren}/>
   }
@@ -54,8 +54,8 @@ function getOrCreateFn(source: string) {
  * @param parentProps the parent component properties.
  * @returns true, if the child component can be bound, false otherwise.
  */
-export function checkBindCondition(childStore: ComponentStore, parentProps: any) {
-  const fnSource = childStore.bindCondition?.trim()
+export function checkSlotCondition(childStore: ComponentStore, parentProps: any) {
+  const fnSource = childStore.slotCondition?.trim()
   // it's OK - no condition to bind
   if (!fnSource) return true
   const fn = getOrCreateFn(fnSource)

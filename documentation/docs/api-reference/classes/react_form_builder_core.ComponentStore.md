@@ -26,14 +26,6 @@ Creates the component settings.
 
 ## Properties
 
-### bindCondition
-
-• `Optional` **bindCondition**: `string`
-
-The condition for binding a child element to a parent element.
-
-___
-
 ### children
 
 • `Optional` **children**: [`ComponentStore`](react_form_builder_core.ComponentStore.md)[]
@@ -103,6 +95,14 @@ ___
 • `Optional` **slot**: `string`
 
 The name of the occupied component property in the parent component.
+
+___
+
+### slotCondition
+
+• `Optional` **slotCondition**: `string`
+
+The condition for binding a child element to a parent element.
 
 ___
 

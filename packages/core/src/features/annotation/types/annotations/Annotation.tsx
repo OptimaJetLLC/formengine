@@ -75,9 +75,9 @@ export class Annotation {
   readonly calculable: boolean = true
 
   /**
-   * A custom function that returns a string with a function to bind child components.
+   * A function that returns a string containing the source code of the function to bind child components.
    */
-  readonly bindConditionBuilder?: (props: any) => string
+  readonly slotConditionBuilder?: (props: any) => string
 
   /**
    * Creates metadata for a React component property.

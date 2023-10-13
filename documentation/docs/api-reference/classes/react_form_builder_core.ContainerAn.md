@@ -37,32 +37,6 @@ Creates metadata for a React component property.
 
 ## Properties
 
-### bindConditionBuilder
-
-• `Optional` `Readonly` **bindConditionBuilder**: (`props`: `any`) => `string`
-
-#### Type declaration
-
-▸ (`props`): `string`
-
-A custom function that returns a string with a function to bind child components.
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `props` | `any` |
-
-##### Returns
-
-`string`
-
-#### Inherited from
-
-[Annotation](react_form_builder_core.Annotation.md).[bindConditionBuilder](react_form_builder_core.Annotation.md#bindconditionbuilder)
-
-___
-
 ### calculable
 
 • `Readonly` **calculable**: `boolean` = `true`
@@ -180,6 +154,32 @@ True if the component property is required, false otherwise.
 #### Inherited from
 
 [Annotation](react_form_builder_core.Annotation.md).[required](react_form_builder_core.Annotation.md#required)
+
+___
+
+### slotConditionBuilder
+
+• `Optional` `Readonly` **slotConditionBuilder**: (`props`: `any`) => `string`
+
+#### Type declaration
+
+▸ (`props`): `string`
+
+A function that returns a string containing the source code of the function to bind child components.
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `props` | `any` |
+
+##### Returns
+
+`string`
+
+#### Inherited from
+
+[Annotation](react_form_builder_core.Annotation.md).[slotConditionBuilder](react_form_builder_core.Annotation.md#slotconditionbuilder)
 
 ___
 
