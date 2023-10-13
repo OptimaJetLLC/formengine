@@ -1304,7 +1304,7 @@ The annotation builder for arbitrary HTML attributes of a component.
 
 ▸ **ComponentDataProvider**(`props`): ``null`` \| `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>
 
-**NOTE**: Exotic components are not callable.
+Context provider for the useComponentData hook.
 
 #### Parameters
 
@@ -2188,6 +2188,8 @@ ___
 #### Returns
 
 [`ComponentData`](../classes/react_form_builder_core.ComponentData.md)
+
+the instance of the ComponentData of the currently rendered component.
 
 ___
 

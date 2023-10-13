@@ -16,10 +16,12 @@ interface RsMenuProps extends NavProps {
 }
 
 const RsMenu = ({onSelect, items, ...props}: RsMenuProps) => {
-  const {store} = useComponentData()
+  const componentData = useComponentData()
   if (!items?.length) return null
+
   const onNavSelect: NavProps['onSelect'] = (eventKey, event) => {
-    store.props.activeKey = {value: eventKey}
+    componentData.userDefinedProps ??= {}
+    componentData.userDefinedProps.activeKey = eventKey
     onSelect?.(eventKey, event)
   }
 

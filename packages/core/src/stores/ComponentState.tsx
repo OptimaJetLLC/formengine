@@ -57,7 +57,15 @@ export class ComponentState {
    * @returns combined in order of priority component properties.
    */
   get get(): Record<string, any> {
-    const propsWithoutChildren = Object.assign(
+    const propsWithoutChildren = this.propsWithoutChildren
+    return Object.assign(propsWithoutChildren, this.className(propsWithoutChildren), this.children(propsWithoutChildren))
+  }
+
+  /**
+   * @returns the combined properties of the components in priority order, excluding child components.
+   */
+  get propsWithoutChildren(): Record<string, any> {
+    return Object.assign(
       {key: this.data.store.key},
       this.data.model.defaultProps,
       this.calculatedProps,
@@ -67,7 +75,6 @@ export class ComponentState {
       this.htmlAttributes,
       this.data.userDefinedProps,
     )
-    return Object.assign(propsWithoutChildren, this.className(propsWithoutChildren), this.children(propsWithoutChildren))
   }
 
   /**

@@ -1,6 +1,7 @@
 import {
   checkSlotCondition,
   ComponentData,
+  ComponentState,
   ComponentStore,
   ComponentTree,
   groupBy,
@@ -13,7 +14,6 @@ import {
   useStore,
   WrapperProps
 } from '@react-form-builder/core'
-import {assign} from 'lodash-es'
 import {observer} from 'mobx-react'
 import {useDragLayer} from 'react-dnd'
 import {BuilderStore} from '../../../../stores/BuilderStore'
@@ -59,9 +59,11 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
   }
 
   openSlots.forEach(container => {
+    const viewerStore = builderStore.viewer
+    const localize = viewerStore.localizeComponent.bind(viewerStore, 'component')
+    const componentState = new ComponentState(componentData, viewerStore, localize, () => ({}))
+    const slotCondition = container?.slotConditionBuilder?.(componentState.propsWithoutChildren)
     const slot = container.key === childrenSlot ? undefined : container.key
-    const props = assign({}, componentData.model.defaultProps, componentData.store.props)
-    const slotCondition = container?.slotConditionBuilder?.(props)
     currentProps[container.key] = <DropZone isInner={true} slot={slot} slotCondition={slotCondition}/>
   })
 

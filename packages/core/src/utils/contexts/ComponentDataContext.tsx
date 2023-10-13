@@ -406,6 +406,15 @@ export class ComponentData implements IFormData {
   }
 }
 
-const [useComponentData, ComponentDataProvider] = createNonNullableContext<ComponentData>('ComponentDataContext')
+const [
+  /**
+   * @returns the instance of the ComponentData of the currently rendered component.
+   */
+  useComponentData,
+  /**
+   * Context provider for the useComponentData hook.
+   */
+  ComponentDataProvider
+] = createNonNullableContext<ComponentData>('ComponentDataContext')
 
 export {useComponentData, ComponentDataProvider}

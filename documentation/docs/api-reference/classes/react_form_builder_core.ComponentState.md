@@ -134,6 +134,18 @@ component localized properties.
 
 ___
 
+### propsWithoutChildren
+
+• `get` **propsWithoutChildren**(): `Record`<`string`, `any`\>
+
+#### Returns
+
+`Record`<`string`, `any`\>
+
+the combined properties of the components in priority order, excluding child components.
+
+___
+
 ### value
 
 • `get` **value**(): `undefined` \| {}

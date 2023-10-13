@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import {array, boolean, define, node, toLabeledValues, useComponentData} from '@react-form-builder/core'
-import React, {ReactNode} from 'react'
+import type {ReactNode, SyntheticEvent} from 'react'
 import type {NavProps} from 'rsuite'
 import {Nav} from 'rsuite'
 import {navProps} from '../commonProperties'
@@ -17,11 +17,12 @@ interface RsTabProps extends NavProps {
 }
 
 const RsTab = ({pane, onSelect, showNavigation, items, ...props}: RsTabProps) => {
-  const {store} = useComponentData()
+  const componentData = useComponentData()
   if (!items?.length) return null
 
-  const onNavSelect = (eventKey: string, event: React.SyntheticEvent) => {
-    store.props.activeKey = {value: eventKey}
+  const onNavSelect = (eventKey: string, event: SyntheticEvent) => {
+    componentData.userDefinedProps ??= {}
+    componentData.userDefinedProps.activeKey = eventKey
     onSelect?.(eventKey, event)
   }
 
