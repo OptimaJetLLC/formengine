@@ -15,6 +15,9 @@ export default defineConfig(({command}) => ({
     }),
     svgr()
   ],
+  resolve: {
+    dedupe: ['react', 'react-dom'],
+  },
   test: {
     globals: true,
     environment: 'jsdom',

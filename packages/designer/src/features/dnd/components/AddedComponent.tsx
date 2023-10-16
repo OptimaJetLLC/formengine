@@ -20,7 +20,7 @@ export const AddedComponent = observer(({draggable = true, onAdd}: DraggableProp
   }
   const element = (
     <Container onClick={onClick}>
-      <Icon width={18} height={18}/>
+      <Icon width={18} height={18} viewBox="0 0 24 24"/>
       <label>{name}</label>
     </Container>
   )
