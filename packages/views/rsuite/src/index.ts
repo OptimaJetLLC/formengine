@@ -54,6 +54,7 @@ const categories = {
   ],
   static: [
     rsButton,
+    rsErrorMessage,
     rsHeader,
     rsImage,
     rsLabel,
