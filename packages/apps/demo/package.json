@@ -1,6 +1,6 @@
 {
     "name": "@react-form-builder/demo",
-    "version": "0.0.8",
+    "version": "0.0.10",
     "private": true,
     "main": "src/index.ts",
     "type": "module",
@@ -16,10 +16,10 @@
         "show:bundle": "npx vite-bundle-visualizer"
     },
     "dependencies": {
-        "@react-form-builder/components-antd": "^0.0.8",
-        "@react-form-builder/components-rsuite": "^0.0.8",
-        "@react-form-builder/designer": "^0.0.8",
-        "@react-form-builder/indexed-db-form-storage": "^0.0.8",
+        "@react-form-builder/components-antd": "^0.0.10",
+        "@react-form-builder/components-rsuite": "^0.0.10",
+        "@react-form-builder/designer": "^0.0.10",
+        "@react-form-builder/indexed-db-form-storage": "^0.0.10",
         "react": "^17.0.2",
         "react-dom": "^17.0.2"
     },
