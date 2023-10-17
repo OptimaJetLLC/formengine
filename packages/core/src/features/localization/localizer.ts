@@ -100,7 +100,7 @@ export const localizeProperties = (form: Form, language: Language, componentStor
     const messageId = getFluentCompatibleId(`${componentStore.key}_${type}_${value}`)
     const message = fluentBundle.getMessage(messageId) ?? defaultBundle?.getMessage(messageId)
     if (!message) {
-      console.error(`Localization message ${messageId} not found`)
+      data[value] = '[NOT LOCALIZED]'
       return
     }
     try {
