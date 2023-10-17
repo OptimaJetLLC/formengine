@@ -1,5 +1,4 @@
-import {ComponentData} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {ComponentData, namedObserver} from '@react-form-builder/core'
 import {useEffect} from 'react'
 import {Table} from 'rsuite'
 import {Cell, Column, HeaderCell} from 'rsuite-table'
@@ -12,7 +11,7 @@ type PropertyErrorColumn = {
   message: string
 }
 
-export const PropertyErrors = observer(({onClose}: { onClose: () => void }) => {
+export const PropertyErrors = namedObserver('PropertyErrors', ({onClose}: { onClose: () => void }) => {
   const store = useBuilderStore()
 
   const data = useComputed(() => {

@@ -1,4 +1,4 @@
-import {observer} from 'mobx-react'
+import {namedObserver} from '@react-form-builder/core'
 import {ReactElement} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {BuilderMode} from '../../../utils/types'
@@ -18,7 +18,7 @@ const leftPanelViews: Record<BuilderMode, ReactElement> = {
   'viewer': <ViewerContent/>
 }
 
-export const LeftPanel = observer(() => {
+export const LeftPanel = namedObserver('LeftPanel', () => {
   const store = useBuilderStore()
   const view = leftPanelViews[store.builderMode]
 

@@ -1,6 +1,5 @@
 import {CacheProvider} from '@emotion/react'
-import {BiDi, emotionCache} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {BiDi, emotionCache, namedObserver} from '@react-form-builder/core'
 import {ReactNode} from 'react'
 import {CustomProvider} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
@@ -10,7 +9,7 @@ interface LocalizationProps {
   children: ReactNode
 }
 
-export const LocalizationProvider = observer((props: LocalizationProps) => {
+export const LocalizationProvider = namedObserver('LocalizationProvider', (props: LocalizationProps) => {
   const builderStore = useBuilderStore()
   loadCssFile(builderStore.formBuilderLanguage.bidi).catch(e => console.error(e))
 

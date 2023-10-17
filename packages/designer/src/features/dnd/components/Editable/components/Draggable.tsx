@@ -1,8 +1,7 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {ComponentData, useComponentData} from '@react-form-builder/core'
+import {ComponentData, namedObserver, useComponentData} from '@react-form-builder/core'
 import {merge} from 'lodash/fp.js'
-import {observer} from 'mobx-react'
 import {ComponentProps, RefObject, useMemo, useRef} from 'react'
 import {useDragLayer, useDrop} from 'react-dnd'
 import {AcceptDrop, ItemType} from '../../../consts'
@@ -15,7 +14,7 @@ interface DraggableProps extends ComponentProps<any> {
   isTree?: boolean
 }
 
-export const Draggable = observer(({children, isInner, className, isTree, ...props}: DraggableProps) => {
+export const Draggable = namedObserver('Draggable', ({children, isInner, className, isTree, ...props}: DraggableProps) => {
   const data = useComponentData()
   const isRoot = data.isRoot
   const isContainer = Boolean(data.store.children)

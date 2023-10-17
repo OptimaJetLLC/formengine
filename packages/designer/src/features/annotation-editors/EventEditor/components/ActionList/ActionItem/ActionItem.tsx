@@ -1,5 +1,4 @@
-import {ActionData, NamedActionDefinition, useStore} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {ActionData, NamedActionDefinition, namedObserver, useStore} from '@react-form-builder/core'
 import {ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../../../../../utils/BuilderStoreContext'
 import {EditButton, RemoveButton} from '../../../../../components/Buttons'
@@ -12,7 +11,7 @@ interface ActionItemProps {
   onRemove: () => void
 }
 
-export const ActionItem = observer(({data, onRemove}: ActionItemProps) => {
+export const ActionItem = namedObserver('ActionItem', ({data, onRemove}: ActionItemProps) => {
   const builderStore = useBuilderStore()
   const viewerStore = useStore()
   const isCustomAction = data.type === 'custom'

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import * as faMoon from '@fortawesome/free-solid-svg-icons/faMoon.js'
 import * as faSun from '@fortawesome/free-solid-svg-icons/faSun.js'
-import {observer} from 'mobx-react'
+import {namedObserver} from '@react-form-builder/core'
 import {useEffect, useState} from 'react'
 import {Tooltip, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
@@ -14,7 +14,7 @@ const icons: Record<BuilderTheme, any> = {
   light: faSun
 }
 
-export const ToggleTheme = observer(() => {
+export const ToggleTheme = namedObserver('ToggleTheme', () => {
   const store = useBuilderStore()
   const t = useTranslationPart('rightMenu')
   const {theme} = store

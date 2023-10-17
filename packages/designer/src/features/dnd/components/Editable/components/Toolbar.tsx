@@ -3,8 +3,7 @@ import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faClone from '@fortawesome/free-regular-svg-icons/faClone.js'
 import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt.js'
-import {useComponentData} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {namedObserver, useComponentData} from '@react-form-builder/core'
 import {MouseEventHandler, useEffect, useRef} from 'react'
 import scrollIntoView from 'scroll-into-view-if-needed'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
@@ -14,7 +13,7 @@ import {useTranslationPart} from '../../../../localization/hooks'
 import {useSelection} from '../hooks/useSelection'
 import {AddButton} from './AddButton'
 
-export const Toolbar = observer(({compact}: { compact?: boolean }) => {
+export const Toolbar = namedObserver('Toolbar', ({compact}: { compact?: boolean }) => {
   const store = useBuilderStore()
   const data = useComponentData()
   const [{selected}] = useSelection()

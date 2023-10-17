@@ -1,5 +1,4 @@
 import {namedObserver, SchemaType, useComponentData, useStore, ValidatorType} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
 import {useTranslation} from 'react-i18next'
 import {Button, Dropdown} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
@@ -42,7 +41,7 @@ const RulesList = namedObserver('RulesList', ({type}: { type: SchemaType }) => {
   return <>{items}</>
 })
 
-export const AddRuleButton = observer(() => {
+export const AddRuleButton = namedObserver('AddRuleButton', () => {
   const {t} = useTranslation()
   const builderStore = useBuilderStore()
   const componentData = useComponentData()

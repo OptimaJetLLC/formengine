@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
-import {SuppressResizeObserverErrors} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {namedObserver, SuppressResizeObserverErrors} from '@react-form-builder/core'
 import {Suspense} from 'react'
 import {Loader} from 'rsuite'
 import {BottomPanel} from './features/ui/BottomPanel'
@@ -17,13 +16,13 @@ import {FormBuilderProps} from './FormBuilderProps'
  * @param props the React component properties.
  * @returns the React element.
  */
-export const FormBuilder = observer((props: FormBuilderProps) => {
+export const FormBuilder = namedObserver('FormBuilder', (props: FormBuilderProps) => {
   return <BuilderProviders props={props}>
     <FormBuilderView/>
   </BuilderProviders>
 })
 
-const FormBuilderView = observer(() => (
+const FormBuilderView = namedObserver('FormBuilderView', () => (
   <SuppressResizeObserverErrors>
     <Suspense fallback={<Loader center content="loading"/>}>
       <Container>

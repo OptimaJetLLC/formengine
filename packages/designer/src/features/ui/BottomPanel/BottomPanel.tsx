@@ -1,5 +1,5 @@
 import {css} from '@emotion/css'
-import {observer} from 'mobx-react'
+import {namedObserver} from '@react-form-builder/core'
 import type {ResizableProps} from 're-resizable'
 import {Resizable} from 're-resizable'
 import {CustomValidationCode, EditableAction, EditableProperty} from '../../../stores/BuilderStore'
@@ -8,7 +8,7 @@ import {CustomActionEditor} from '../../annotation-editors/EventEditor/component
 import {ComputedPropertyEditor} from './ComputedPropertyEditor'
 import {CustomValidationCodeEditor} from './CustomValidationCodeEditor'
 
-export const BottomPanel = observer(() => {
+export const BottomPanel = namedObserver('BottomPanel', () => {
   const store = useBuilderStore()
   const {currentEditable, bottomPanelHeight} = store
 

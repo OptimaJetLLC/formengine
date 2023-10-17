@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import {observer} from 'mobx-react'
 import {Store} from '../../stores/Store'
+import {namedObserver} from '../../utils'
 import {ComponentDataProvider, useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {StoreProvider, useStore} from '../../utils/contexts/StoreContext'
 import {Model} from '../define'
@@ -17,7 +17,7 @@ Slot.displayName = 'Slot'
 
 export const slotModel = new Model(Slot, 'Slot')
 
-const SlotContent = observer(({parentStore}: { parentStore: Store }) => {
+const SlotContent = namedObserver('SlotContent', ({parentStore}: { parentStore: Store }) => {
   const {key} = useComponentData()
   const {viewerProps, data, templateProps} = useTemplate()
 
@@ -32,7 +32,7 @@ const SlotContent = observer(({parentStore}: { parentStore: Store }) => {
   )
 })
 
-const SlotPlaceholder = observer(() => {
+const SlotPlaceholder = namedObserver('SlotPlaceholder', () => {
   const {key} = useComponentData()
   return <SDiv>Components slot: '{key}'</SDiv>
 })

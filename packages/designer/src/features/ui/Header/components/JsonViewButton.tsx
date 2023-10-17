@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
-import {observer} from 'mobx-react'
+import {namedObserver} from '@react-form-builder/core'
 import {useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {IconButton, Modal, Tooltip, Whisper} from 'rsuite'
@@ -9,7 +9,7 @@ import {JsonView} from '../../JsonView'
 
 const icon = <FaIcon icon={faCode as any}/>
 
-export const JsonViewButton = observer(() => {
+export const JsonViewButton = namedObserver('JsonViewButton', () => {
   const {t} = useTranslation()
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)

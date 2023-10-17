@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
-import {getFluentCompatibleId, LocalizationTestResult, testFluentLocalization, useStore} from '@react-form-builder/core'
+import {getFluentCompatibleId, LocalizationTestResult, namedObserver, testFluentLocalization, useStore} from '@react-form-builder/core'
 import {action} from 'mobx'
-import {observer} from 'mobx-react'
 import {useEffect, useMemo, useState} from 'react'
 import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
@@ -12,7 +11,7 @@ import {LocalizationLanguagePicker} from '../ui/Header/components/LocalizationLa
 import {fluentLanguageId} from './consts'
 import {useTranslationPart} from './hooks'
 
-export const LocalizationEditor = observer(({editableProperty, onClose}: CalculableCodeEditorProps) => {
+export const LocalizationEditor = namedObserver('LocalizationEditor', ({editableProperty, onClose}: CalculableCodeEditorProps) => {
   const [error, setError] = useState<LocalizationTestResult | undefined>()
   const t = useTranslationPart('common')
   const localizationStringId = getFluentCompatibleId(`${editableProperty.componentKey}_${editableProperty.annotation.key}`)

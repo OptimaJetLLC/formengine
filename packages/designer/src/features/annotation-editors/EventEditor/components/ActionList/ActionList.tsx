@@ -1,12 +1,11 @@
 import styled from '@emotion/styled'
-import {KeySymbol} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {KeySymbol, namedObserver} from '@react-form-builder/core'
 import {List} from 'rsuite'
 import {listItemStyle, listStyle} from '../../../../components/Containers'
 import type {AnnotationEditorProps} from '../../../AnnotationEditorProps'
 import {ActionItem} from './ActionItem'
 
-export const ActionList = observer((props: AnnotationEditorProps) => {
+export const ActionList = namedObserver('ActionList', (props: AnnotationEditorProps) => {
   const eventName = props.annotation.key
   const actions = props.componentData.store.events?.[eventName]
 

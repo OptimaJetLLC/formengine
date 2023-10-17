@@ -1,5 +1,5 @@
 import type {ComponentPropertyComputeType} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {namedObserver} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {Input} from 'rsuite'
 import LabeledProperty, {LabeledPropertyProps} from '../components/LabeledProperty'
@@ -10,7 +10,7 @@ import type {AnnotationEditorProps} from './AnnotationEditorProps'
  * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const RenderWhenEditor = observer((props: AnnotationEditorProps) => {
+export const RenderWhenEditor = namedObserver('RenderWhenEditor', (props: AnnotationEditorProps) => {
   const componentStore = props.componentData.store
 
   const onChange = (value: string) => {

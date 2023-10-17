@@ -12,7 +12,6 @@ import {
   useTooltipType
 } from '@react-form-builder/core'
 import {unionWith} from 'lodash-es'
-import {observer} from 'mobx-react'
 import {useState} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {CSSEditor} from '../../../../annotation-editors/CSSEditor'
@@ -90,7 +89,7 @@ const Properties = namedObserver('Properties', ({activeTab}: PropertiesProps) =>
   )
 })
 
-const StyleBlock = observer(({annotations, store}: { annotations: Annotation[], store: ComponentStore }) => {
+const StyleBlock = namedObserver('StyleBlock', ({annotations, store}: { annotations: Annotation[], store: ComponentStore }) => {
   const [device, setDevice] = useState<Device>('any')
   const initCssObject = () => {
     store.css ??= {}

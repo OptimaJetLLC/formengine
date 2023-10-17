@@ -14,7 +14,6 @@ import {
   useStore,
   WrapperProps
 } from '@react-form-builder/core'
-import {observer} from 'mobx-react'
 import {useDragLayer} from 'react-dnd'
 import {BuilderStore} from '../../../../stores/BuilderStore'
 import {Draggable} from './components/Draggable'
@@ -76,7 +75,7 @@ export const EditableWrapper = namedObserver('EditableWrapper', ({children}: Wra
   return viewerStore.parentStore ? <>{children}</> : <Editable children={children}/>
 })
 
-const Editable = observer(({children}: WrapperProps) => {
+const Editable = namedObserver('Editable', ({children}: WrapperProps) => {
   const [{selected}, selectionHandlers, selectionClassName] = useSelection()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
 

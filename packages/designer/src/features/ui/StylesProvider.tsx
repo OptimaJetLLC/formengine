@@ -1,5 +1,5 @@
 import {css, Global} from '@emotion/react'
-import {observer} from 'mobx-react'
+import {namedObserver} from '@react-form-builder/core'
 import {ComponentProps} from 'react'
 
 const globalStyles = css`
@@ -24,7 +24,7 @@ const globalStyles = css`
   }
 `
 
-export const StylesProvider = observer((props: ComponentProps<any>) => {
+export const StylesProvider = namedObserver('StylesProvider', (props: ComponentProps<any>) => {
   return <>
     {props.children}
     <Global styles={globalStyles}/>

@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
-import {useComponentData} from '@react-form-builder/core'
+import {namedObserver, useComponentData} from '@react-form-builder/core'
 import {camelCase, replace, upperFirst} from 'lodash-es'
-import {observer} from 'mobx-react'
 import {MouseEventHandler, ReactNode} from 'react'
 import {icons} from '../../../icons'
 import {DraggableProps} from '../../ui/ComponentBar'
@@ -9,7 +8,7 @@ import {ItemType} from '../consts'
 import {DragPreview} from './Editable/components/DragPreview'
 import {useDragWithPreview} from './Editable/hooks/useDragWithPreview'
 
-export const AddedComponent = observer(({draggable = true, onAdd}: DraggableProps) => {
+export const AddedComponent = namedObserver('AddedComponent', ({draggable = true, onAdd}: DraggableProps) => {
   const data = useComponentData()
   const {name = '', icon: CustomIcon} = data.model
   const iconName = replace(upperFirst(camelCase(name)), ' ', '') as keyof typeof icons

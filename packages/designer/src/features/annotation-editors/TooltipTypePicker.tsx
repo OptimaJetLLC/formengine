@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
-import {useTooltipType} from '@react-form-builder/core'
+import {namedObserver, useTooltipType} from '@react-form-builder/core'
 import {startCase} from 'lodash-es'
-import {observer} from 'mobx-react'
 import {InputPicker} from 'rsuite'
 import type {ItemDataType} from 'rsuite/esm/@types/common'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
@@ -13,7 +12,7 @@ import type {AnnotationEditorProps} from './AnnotationEditorProps'
  * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const TooltipTypePicker = observer((props: AnnotationEditorProps) => {
+export const TooltipTypePicker = namedObserver('TooltipTypePicker', (props: AnnotationEditorProps) => {
   const {value, onChange, onClean} = props
   const builderStore = useBuilderStore()
   const tooltipType = useTooltipType()

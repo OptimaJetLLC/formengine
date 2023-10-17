@@ -1,11 +1,10 @@
 import styled from '@emotion/styled'
-import {Language, useStore} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {Language, namedObserver, useStore} from '@react-form-builder/core'
 import type {ItemDataType} from 'rsuite/esm/@types/common'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {FixedSelectPicker} from '../../FixedSelectPicker'
 
-export const LocalizationLanguagePicker = observer(() => {
+export const LocalizationLanguagePicker = namedObserver('LocalizationLanguagePicker', () => {
   const builderStore = useBuilderStore()
   const viewerStore = useStore()
 

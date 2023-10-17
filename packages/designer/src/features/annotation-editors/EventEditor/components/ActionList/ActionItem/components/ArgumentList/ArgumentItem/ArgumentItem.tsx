@@ -1,5 +1,5 @@
 import type {ParameterType} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {namedObserver} from '@react-form-builder/core'
 import {ComponentType} from 'react'
 import {Rows} from '../../../../../../../../components/Containers'
 import {InputBoolean} from './components/InputBoolean'
@@ -23,7 +23,7 @@ interface ActionArgumentProps {
   data: Parameter
 }
 
-export const ArgumentItem = observer(({data}: ActionArgumentProps) => {
+export const ArgumentItem = namedObserver('ArgumentItem', ({data}: ActionArgumentProps) => {
   const [name, type] = data
   const ArgumentInput = getArgumentInputByType(type)
 

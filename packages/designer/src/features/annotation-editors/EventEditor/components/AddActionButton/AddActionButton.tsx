@@ -1,6 +1,5 @@
-import {ActionData, ComponentStore} from '@react-form-builder/core'
+import {ActionData, ComponentStore, namedObserver} from '@react-form-builder/core'
 import {Plus as PlusIcon} from '@rsuite/icons'
-import {observer} from 'mobx-react'
 import {forwardRef, useCallback, useRef} from 'react'
 import {Dropdown, IconButton, Popover, Whisper} from 'rsuite'
 import type {OverlayTriggerHandle} from 'rsuite/Picker'
@@ -11,7 +10,7 @@ import {CustomActions} from './components/CustomActions'
 import {ExternalActions} from './components/ExternalActions'
 import {ActionsMenuProps} from './types'
 
-export const AddActionButton = observer((props: AnnotationEditorProps) => {
+export const AddActionButton = namedObserver('AddActionButton', (props: AnnotationEditorProps) => {
   const t = useTranslationPart('actions')
   const {componentData, annotation} = props
   const store = componentData.store

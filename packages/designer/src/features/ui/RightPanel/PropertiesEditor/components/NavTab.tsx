@@ -2,7 +2,7 @@ import * as faBolt from '@fortawesome/free-solid-svg-icons/faBolt.js'
 import * as faCircle from '@fortawesome/free-solid-svg-icons/faCircle.js'
 import * as faPaintBrush from '@fortawesome/free-solid-svg-icons/faPaintBrush.js'
 import * as faSpellCheck from '@fortawesome/free-solid-svg-icons/faSpellCheck.js'
-import {observer} from 'mobx-react'
+import {namedObserver} from '@react-form-builder/core'
 import {useTranslation} from 'react-i18next'
 import {NavIconItem, SNav} from '../../../../components/NavIconItem'
 import {Section} from '../Section'
@@ -12,7 +12,7 @@ interface NavProps {
   setActiveTab: (activeTab: Section) => void
 }
 
-export const NavTab = observer(({activeTab, setActiveTab}: NavProps) => {
+export const NavTab = namedObserver('NavTab', ({activeTab, setActiveTab}: NavProps) => {
   const {t} = useTranslation()
   const title = (key: string) => t('propertiesEditor.sectionName.' + key)
   return <SNav activeKey={activeTab} onSelect={setActiveTab} appearance="subtle">

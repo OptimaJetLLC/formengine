@@ -1,7 +1,7 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
+import {namedObserver} from '@react-form-builder/core'
 import {ArrowDownLine} from '@rsuite/icons'
-import {observer} from 'mobx-react'
 import {PropsWithChildren} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
@@ -20,7 +20,14 @@ export interface PanelProps extends PropsWithChildren<any>, CollapsedSizeProps {
   onCollapse?: Function
 }
 
-export const Panel = observer(({children, placement = 'left', hideCollapsed = true, className, onCollapse, ...props}: PanelProps) => {
+export const Panel = namedObserver('Panel', ({
+                                               children,
+                                               placement = 'left',
+                                               hideCollapsed = true,
+                                               className,
+                                               onCollapse,
+                                               ...props
+                                             }: PanelProps) => {
   const store = useBuilderStore()
   const visible = !!store.openedPanels?.includes(placement)
   const collapsed = !visible

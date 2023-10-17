@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
-import {observer} from 'mobx-react'
+import {namedObserver} from '@react-form-builder/core'
 import {useState} from 'react'
 import {NavTab} from './components/NavTab'
 import {Properties} from './components/Properties'
 import {Section} from './Section'
 
-const PropertiesEditor = observer(() => {
+const PropertiesEditor = namedObserver('PropertiesEditor', () => {
   const [activeTab, setActiveTab] = useState(Section.Main)
 
   return <Container>

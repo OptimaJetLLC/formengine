@@ -1,9 +1,8 @@
 import styled from '@emotion/styled'
-import {useStore} from '@react-form-builder/core'
+import {namedObserver, useStore} from '@react-form-builder/core'
 import {ArrowDownLine, ArrowUpLine} from '@rsuite/icons'
 import {t} from 'i18next'
 import {isEmpty} from 'lodash-es'
-import {observer} from 'mobx-react'
 import {useEffect, useReducer} from 'react'
 import {Animation, Button} from 'rsuite'
 import {useComputed} from '../../../../../../../../utils/useComputed'
@@ -24,7 +23,7 @@ const useClearableArguments = () => {
   }, [])
 }
 
-export const ArgumentList = observer(() => {
+export const ArgumentList = namedObserver('ArgumentList', () => {
   const store = useStore()
   const data = useActionData()
   const action = useComputed(() => store.findAction(data))

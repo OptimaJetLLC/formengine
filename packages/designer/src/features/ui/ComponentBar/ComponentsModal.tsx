@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
-import {ComponentData} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {ComponentData, namedObserver} from '@react-form-builder/core'
 import {Modal} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {useTranslationPart} from '../../localization/hooks'
@@ -9,7 +8,7 @@ import {ComponentBar} from './ComponentBar'
 /**
  * The modal window with a list of components that can be added to the form.
  */
-export const ComponentsModal = observer(() => {
+export const ComponentsModal = namedObserver('ComponentsModal', () => {
   const {componentsModalState} = useBuilderStore()
   const t = useTranslationPart('componentsModal')
 

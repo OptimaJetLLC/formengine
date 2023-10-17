@@ -1,5 +1,11 @@
-import {externalActionsToActionsValues, Store, StoreProvider, useDestroy, ViewerPropsProvider} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {
+  externalActionsToActionsValues,
+  namedObserver,
+  Store,
+  StoreProvider,
+  useDestroy,
+  ViewerPropsProvider
+} from '@react-form-builder/core'
 import {ReactNode, useEffect, useMemo} from 'react'
 import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
@@ -24,7 +30,7 @@ interface BuilderProvidersProps {
  * @param props.props the properties of the form builder component.
  * @returns the React element.
  */
-export const BuilderProviders = observer(({children, props}: BuilderProvidersProps) => {
+export const BuilderProviders = namedObserver('BuilderProviders', ({children, props}: BuilderProvidersProps) => {
   const store = useMemo(
     () => new Store(props.view, props.initialData ?? {}, props.externalValidators,
       props.localize, externalActionsToActionsValues(props.externalActions), props.language),

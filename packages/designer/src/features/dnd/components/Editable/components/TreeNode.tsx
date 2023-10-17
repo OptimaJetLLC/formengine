@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
-import {ComponentTree, findTreeElementDepth, useComponentData} from '@react-form-builder/core'
+import {ComponentTree, findTreeElementDepth, namedObserver, useComponentData} from '@react-form-builder/core'
 import {ArrowDownLine as ArrowDownLineIcon, ArrowRightLine as ArrowRightLineIcon, Icon} from '@rsuite/icons'
-import {observer} from 'mobx-react'
 import {useCallback, useEffect, useRef, useState} from 'react'
 import scrollIntoView from 'scroll-into-view-if-needed'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
@@ -9,7 +8,7 @@ import {useComputed} from '../../../../../utils/useComputed'
 import {useSelection} from '../hooks/useSelection'
 import {Toolbar} from './Toolbar'
 
-export const TreeNode = observer(({className}: { className: string }) => {
+export const TreeNode = namedObserver('TreeNode', ({className}: { className: string }) => {
   const componentData = useComponentData()
   const {expanded: expandedNodes, viewer} = useBuilderStore()
   const depth = useComputed(() => findTreeElementDepth(viewer.form.componentTree, componentData) ?? 0)

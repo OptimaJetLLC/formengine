@@ -1,7 +1,6 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {ComponentData, useComponentData} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {ComponentData, namedObserver, useComponentData} from '@react-form-builder/core'
 import {ComponentProps} from 'react'
 import {useDrop} from 'react-dnd'
 import {ConnectDropTarget} from 'react-dnd/dist/types/types'
@@ -19,7 +18,7 @@ interface DropZoneProps extends ComponentProps<any> {
   slotCondition?: string
 }
 
-const DropZone = observer(({isAfter = false, className, isInner, ...props}: DropZoneProps) => {
+const DropZone = namedObserver('DropZone', ({isAfter = false, className, isInner, ...props}: DropZoneProps) => {
   const componentData = useComponentData()
   const store = componentData.store
   const isRoot = componentData.isRoot

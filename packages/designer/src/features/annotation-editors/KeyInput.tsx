@@ -1,7 +1,6 @@
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faCheck from '@fortawesome/free-solid-svg-icons/faCheck.js'
-import {useStore} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {namedObserver, useStore} from '@react-form-builder/core'
 import {useEffect, useState} from 'react'
 import {Input, InputGroup} from 'rsuite'
 import {FaIcon} from '../components/Icons'
@@ -15,7 +14,7 @@ import {Hinted} from './Hinted'
  * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const KeyInput = observer((props: AnnotationEditorProps) => {
+export const KeyInput = namedObserver('KeyInput', (props: AnnotationEditorProps) => {
   const viewerStore = useStore()
   const {value, onChange, showError} = props
   const [canApply, setCanApply] = useState(false)

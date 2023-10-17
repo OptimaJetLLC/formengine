@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
-import {FormViewer, useViewerProps} from '@react-form-builder/core'
+import {FormViewer, namedObserver, useViewerProps} from '@react-form-builder/core'
 import {CollaspedOutline, ExpandOutline} from '@rsuite/icons'
-import {observer} from 'mobx-react'
 import {useEffect} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button} from 'rsuite'
@@ -9,7 +8,7 @@ import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {Columns, Rows} from '../../../components/Containers'
 import {DraggableTreeNode} from '../../../dnd'
 
-const Tree = observer(() => {
+const Tree = namedObserver('Tree', () => {
   const props = useViewerProps()
   const {t} = useTranslation()
   const store = useBuilderStore()

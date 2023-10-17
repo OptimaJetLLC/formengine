@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
+import {namedObserver} from '@react-form-builder/core'
 import {Danger} from '@rsuite/icons'
-import {observer} from 'mobx-react'
 import {useReducer} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Col, IconButton, Modal, Row, Tooltip, Whisper} from 'rsuite'
 import {PropertyErrors} from './PropertyErrors'
 
-export const ErrorsPanel = observer(() => {
+export const ErrorsPanel = namedObserver('ErrorsPanel', () => {
   const {t} = useTranslation()
   const [show, toggleShow] = useReducer(state => !state, false)
 

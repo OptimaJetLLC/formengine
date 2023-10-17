@@ -2,7 +2,7 @@ import {css} from '@emotion/react'
 import styled from '@emotion/styled'
 import * as faPaintBrush from '@fortawesome/free-solid-svg-icons/faPaintBrush.js'
 import * as faPlay from '@fortawesome/free-solid-svg-icons/faPlay.js'
-import {observer} from 'mobx-react'
+import {namedObserver} from '@react-form-builder/core'
 import {Button} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {BuilderMode} from '../../../../utils/types'
@@ -14,7 +14,7 @@ const Modes: Record<BuilderMode, { icon: any, toggleTo: BuilderMode }> = {
   builder: {icon: faPlay, toggleTo: 'viewer'}
 }
 
-export const ToggleModeButton = observer(() => {
+export const ToggleModeButton = namedObserver('ToggleModeButton', () => {
   const store = useBuilderStore()
   const {icon, toggleTo} = Modes[store.builderMode]
   const t = useTranslationPart('rightMenu.modes')

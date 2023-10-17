@@ -1,5 +1,5 @@
+import {namedObserver} from '@react-form-builder/core'
 import {assign} from 'lodash-es'
-import {observer} from 'mobx-react'
 import {FixedSelectPicker} from '../../../../../../../../../ui/FixedSelectPicker'
 import {useActionData} from '../../../../contexts/ActionDataContext'
 import {InputProps} from '../InputProps'
@@ -11,7 +11,7 @@ const booleanData = [
 
 //TODO use the same components for arguments and properties.
 // These TODOs refer to inputNumber and to InputBindableText in substitution
-export const InputBoolean = observer(({name}: InputProps) => {
+export const InputBoolean = namedObserver('InputBoolean', ({name}: InputProps) => {
   const data = useActionData()
   const booleanValue = data.args?.[name]
   const value = booleanValue === undefined ? undefined : booleanValue ? 1 : 0

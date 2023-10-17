@@ -1,5 +1,4 @@
-import {useTooltipType} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {namedObserver, useTooltipType} from '@react-form-builder/core'
 import {useEffect, useState} from 'react'
 import useUniqueId from 'rsuite/esm/utils/useUniqueId.js'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
@@ -13,7 +12,7 @@ import {HintedLabel} from './Hinted'
  * React form builder component that displays the tooltip property editor .
  * @returns the React element.
  */
-export const TooltipPropertiesEditor = observer(() => {
+export const TooltipPropertiesEditor = namedObserver('TooltipPropertiesEditor', () => {
   const t = useTranslationPart('annotation.tooltipProps')
   const id = useUniqueId('tooltip-')
   const store = useBuilderStore()

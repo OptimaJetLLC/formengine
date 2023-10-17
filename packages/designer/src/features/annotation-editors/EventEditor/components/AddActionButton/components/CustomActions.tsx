@@ -1,6 +1,5 @@
-import {ComponentStore, useStore} from '@react-form-builder/core'
+import {ComponentStore, namedObserver, useStore} from '@react-form-builder/core'
 import {Plus as PlusIcon} from '@rsuite/icons'
-import {observer} from 'mobx-react'
 import {Divider, Dropdown} from 'rsuite'
 import {useBuilderStore} from '../../../../../../utils/BuilderStoreContext'
 import {useTranslationPart} from '../../../../../localization/hooks'
@@ -12,7 +11,7 @@ import {ActionsMenuProps} from '../types'
  * @param props.onSelect the callback function called when an action is selected.
  * @returns the React element.
  */
-export const CustomActions = observer(({onSelect, annotation}: ActionsMenuProps) => {
+export const CustomActions = namedObserver('CustomActions', ({onSelect, annotation}: ActionsMenuProps) => {
   const store = useStore()
   const builderStore = useBuilderStore()
   const selectedStore = builderStore.oneSelected?.store

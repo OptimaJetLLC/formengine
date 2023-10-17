@@ -1,8 +1,14 @@
 import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt.js'
-import {getValidatorPropertyBlockType, SchemaType, useComponentData, useStore, ValidationRuleSettings} from '@react-form-builder/core'
-import {observer} from 'mobx-react'
+import {
+  getValidatorPropertyBlockType,
+  namedObserver,
+  SchemaType,
+  useComponentData,
+  useStore,
+  ValidationRuleSettings
+} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {useTranslation} from 'react-i18next'
 import {IconButton, Tooltip, Whisper} from 'rsuite'
@@ -18,7 +24,7 @@ export interface ValidationRuleEditorProps {
   onRemove: () => void
 }
 
-export const ValidationRuleEditor = observer(({rule, onRemove}: ValidationRuleEditorProps) => {
+export const ValidationRuleEditor = namedObserver('ValidationRuleEditor', ({rule, onRemove}: ValidationRuleEditorProps) => {
   const {store, model} = useComponentData()
   const {t} = useTranslation()
   const schema = store.schema
