@@ -39,7 +39,6 @@ export type {PersistedForm} from './stores/PersistedForm'
 export {testFluentLocalization} from './features/localization/localizer'
 export type {LocalizationTestResult} from './features/localization/localizer'
 export {getFluentCompatibleId} from './features/localization/getFluentCompatibleId'
-export {useDestroy} from './utils/useDestroy'
 export {DataValidator} from './features/validation'
 export type {
   SchemaType, SchemaTypeMap, ValidationRuleSettings, Disposer, ResolvedValidator, RuleValidator, RuleValidatorResult
@@ -135,3 +134,5 @@ export {SuppressResizeObserverErrors} from './features/ui/SuppressResizeObserver
 export type {SuppressResizeObserverErrorsProps} from './features/ui/SuppressResizeObserverErrors'
 export type {ExternalFormValidator, ExternalFormValidators} from './features/form-viewer/ExternalFormValidators'
 export {FormViewerPropsStore} from './stores/FormViewerPropsStore'
+export {useDisposable} from './utils/useDisposable'
+export type {IDisposable} from './utils/useDisposable'

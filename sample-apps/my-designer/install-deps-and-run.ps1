@@ -40,7 +40,7 @@ function InstallLocalPackage($Path)
     Set-Location $PSScriptRoot
     RemoveIfExists "./node_modules/.cache"
 
-    npm install $PackageArchive
+    npm install $PackageArchive --force
   }
   finally
   {

@@ -41,7 +41,7 @@ function InstallLocalPackage($Path)
     RemoveIfExists "./node_modules/.cache"
 
     npm uninstall $PackageName
-    npm install $PackageArchive
+    npm install $PackageArchive --force
     #    RemoveIfExists $PackageArchive
   }
   finally

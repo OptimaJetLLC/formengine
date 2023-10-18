@@ -66,7 +66,7 @@ export class LocalStorageSynchronizer {
     ]
   }
 
-  destroy = () => {
+  dispose = () => {
     this.#disposers.forEach(disposer => disposer())
   }
 

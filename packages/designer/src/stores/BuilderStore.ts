@@ -246,7 +246,7 @@ export class BuilderStore {
         selected: observable,
         formBuilderLanguage: observable.ref,
         localizationLanguage: observable.ref,
-        destroy: false,
+        dispose: false,
         builderMode: true,
         viewMode: true,
         openedPanels: true,
@@ -421,7 +421,7 @@ export class BuilderStore {
   /**
    * Correctly clears allocated resources, the function must be called when destroying an instance of the class.
    */
-  destroy() {
+  dispose() {
     this.undoer.dispose()
   }
 

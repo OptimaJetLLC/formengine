@@ -1,28 +1,37 @@
-import {ForwardedRef, ReactNode, useContext, useEffect, useMemo} from 'react'
+import {ForwardedRef, ReactNode, useContext, useEffect} from 'react'
 import {FormViewerPropsStore} from '../../../stores/FormViewerPropsStore'
 import {Store} from '../../../stores/Store'
 import {namedObserver} from '../../../utils'
 import {StoreContext, StoreProvider} from '../../../utils/contexts/StoreContext'
-import {useDestroy} from '../../../utils/useDestroy'
+import {useDisposable} from '../../../utils/useDisposable'
 import {FormViewerProps, IFormViewer} from '../types'
 import {ViewerPropsProvider} from './ViewerPropsContext'
 
 /**
- * React component encapsulating MobX storage for the form viewer.
- * @param props the React component properties.
- * @param props.children the children of the React component.
- * @param props.props the properties of the form viewer component.
- * @returns the React element.
+ * Properties of the React component ViewerStoreProvider.
  */
-export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', ({children, props: {viewerRef, ...props}}: {
-  children: ReactNode,
-  props: FormViewerProps
-}) => {
-  const storeFromContext = useContext(StoreContext)
-  const store = useMemo(
-    () => storeFromContext || new Store(new FormViewerPropsStore(props)),
-    [])
+export interface ViewerStoreProviderProps {
 
+  /**
+   * Children component.
+   */
+  children: ReactNode
+
+  /**
+   * Form viewer React component properties.
+   */
+  props: FormViewerProps
+}
+
+interface ExistingStoreProviderProps extends ViewerStoreProviderProps {
+  store: Store
+}
+
+const ExistingStoreProvider = namedObserver('ExistingStoreProvider', ({
+                                                                        children,
+                                                                        props: {viewerRef, ...props},
+                                                                        store
+                                                                      }: ExistingStoreProviderProps) => {
   useEffect(() => {
     props.onDataChange?.(store.formData)
   }, [store.formData.data, store.formData.errors])
@@ -33,12 +42,6 @@ export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', ({childr
     store.formViewerPropsStore.applyProps(props)
   }, [props.initialData, props.view, props.externalValidators, props.externalFormValidators, props.localize, props.language, props.externalActions])
 
-  useDestroy(() => {
-    if (!storeFromContext) {
-      store.dispose()
-    }
-  })
-
   return (
     <ViewerPropsProvider value={props}>
       <StoreProvider value={store}>
@@ -46,6 +49,28 @@ export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', ({childr
       </StoreProvider>
     </ViewerPropsProvider>
   )
+})
+
+const NewStoreProvider = namedObserver('FactoryStoreProvider', ({children, props}: ViewerStoreProviderProps) => {
+  const store = useDisposable(
+    () => new Store(new FormViewerPropsStore(props)),
+    [])
+
+  if (!store) return null
+
+  return <ExistingStoreProvider children={children} props={props} store={store}/>
+})
+
+/**
+ * React component encapsulating MobX storage for the form viewer.
+ * @param props the React component properties.
+ * @returns the React element.
+ */
+export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', (props: ViewerStoreProviderProps) => {
+  const storeFromContext = useContext(StoreContext)
+  return storeFromContext
+    ? <ExistingStoreProvider children={props.children} props={props.props} store={storeFromContext}/>
+    : <NewStoreProvider children={props.children} props={props.props}/>
 })
 
 const setViewerRef = (store: IFormViewer, viewerRef?: ForwardedRef<IFormViewer>) => {

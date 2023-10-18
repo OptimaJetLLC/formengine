@@ -1,4 +1,4 @@
-import {DataValidator, ErrorMessageLocalizer, IStore, SchemaResolver, Setter, useDestroy} from '@react-form-builder/core'
+import {DataValidator, ErrorMessageLocalizer, IStore, SchemaResolver, Setter} from '@react-form-builder/core'
 import {useEffect, useMemo, useRef} from 'react'
 
 /**
@@ -24,7 +24,9 @@ export function useDataValidator<T>(store: IStore, resolver: SchemaResolver<T>, 
     }
   }, [dataValidator, dataValidatorRef.current])
 
-  useDestroy(() => dataValidator.dispose())
+  useEffect(() => {
+    return () => dataValidator.dispose()
+  }, [])
 
   return dataValidator
 }

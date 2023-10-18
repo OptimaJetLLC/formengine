@@ -1,5 +1,5 @@
-import {FormViewerPropsStore, namedObserver, Store, StoreProvider, useDestroy, ViewerPropsProvider} from '@react-form-builder/core'
-import {ReactNode, useEffect, useMemo} from 'react'
+import {FormViewerPropsStore, namedObserver, Store, StoreProvider, useDisposable, ViewerPropsProvider} from '@react-form-builder/core'
+import {ReactNode, useEffect} from 'react'
 import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import {FormBuilderProps} from '../../FormBuilderProps'
@@ -10,6 +10,20 @@ import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
 import {CustomDragLayer} from '../dnd/components/CustomDragLayer'
 import {LocalizationProvider} from '../localization'
 import {StylesProvider} from './StylesProvider'
+
+class BuilderProviderData {
+  constructor(public readonly store: Store,
+              public readonly builderStore: BuilderStore,
+              public readonly localStorageSynchronizer: LocalStorageSynchronizer
+  ) {
+  }
+
+  dispose() {
+    this.localStorageSynchronizer.dispose()
+    this.builderStore.dispose()
+    this.store.dispose()
+  }
+}
 
 interface BuilderProvidersProps {
   props: FormBuilderProps
@@ -24,32 +38,30 @@ interface BuilderProvidersProps {
  * @returns the React element.
  */
 export const BuilderProviders = namedObserver('BuilderProviders', ({children, props}: BuilderProvidersProps) => {
-  const store = useMemo(
-    () => new Store(new FormViewerPropsStore(props)),
-    [])
+  const builderProviderData = useDisposable(() => {
+    const store = new Store(new FormViewerPropsStore(props))
 
-  const buildStore = useMemo(() => {
     const builderStore = new BuilderStore(store, props)
-
     builderStore.changeBuilderMode('builder')
-    return builderStore
+
+    const localStorageSynchronizer = new LocalStorageSynchronizer(builderStore)
+    return new BuilderProviderData(store, builderStore, localStorageSynchronizer)
   }, [])
 
+  const buildStore = builderProviderData?.builderStore
+  const store = builderProviderData?.store
+
   useEffect(() => {
+    if (!buildStore) return
     buildStore.activeFormName = props.formName
   }, [props.formName])
 
   useEffect(() => {
+    if (!store) return
     store.formViewerPropsStore.applyProps(props)
   }, [props.initialData, props.view, props.externalValidators, props.externalFormValidators, props.localize, props.language, props.externalActions])
 
-  const localStorageSynchronizer = useMemo(() => new LocalStorageSynchronizer(buildStore), [])
-
-  useDestroy(() => {
-    buildStore.destroy()
-    store.dispose()
-    localStorageSynchronizer.destroy()
-  })
+  if (!buildStore || !store) return null
 
   return (
     <ViewerPropsProvider value={props}>

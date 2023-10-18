@@ -1,4 +1,4 @@
-import {errorMessageModel, namedObserver, useDestroy, WrapperProps} from '@react-form-builder/core'
+import {errorMessageModel, namedObserver, WrapperProps} from '@react-form-builder/core'
 import {useEffect, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps} from '../../annotation-editors/AnnotationEditorProps'
@@ -40,15 +40,12 @@ export const Erroneous = namedObserver('Erroneous', (props: ErroneousProps) => {
 
   useEffect(() => {
     setMounted(true)
+    return () => setMounted(false)
   }, [])
 
   useEffect(() => {
     updateErrorMessage().catch(console.error)
   }, [value, props.error])
-
-  useDestroy(() => {
-    setMounted(false)
-  })
 
   return (
     <ErrorMessage error={error}>
