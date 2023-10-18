@@ -2,11 +2,10 @@ import {assign} from 'lodash-es'
 import {makeObservable, observable} from 'mobx'
 import {Subject} from 'rxjs'
 import {calculatePropertyValue} from '../features/calculation/propertyCalculator'
-import {Model, View} from '../features/define'
-import {ActionData, ActionDefinition, ActionEventArgs, ActionType, ActionValues, createActionValuesFromObject} from '../features/event'
+import {Model} from '../features/define'
+import {ActionData, ActionDefinition, ActionEventArgs, ActionType, createActionValuesFromObject} from '../features/event'
 import {commonActions} from '../features/event/consts/actions'
-import {IFormViewer} from '../features/form-viewer'
-import type {ComponentLocalizer} from '../features/form-viewer/ComponentLocalizer'
+import type {IFormViewer} from '../features/form-viewer'
 import {localizeErrorMessage, localizeProperties} from '../features/localization/localizer'
 import {Language} from '../features/localization/types'
 import {createTemplateModel} from '../features/template'
@@ -14,7 +13,6 @@ import {buildInternalErrorModel, buildInternalErrorStore} from '../features/ui/i
 import {screenModel} from '../features/ui/screenModel'
 import {getTemplateName, isTemplateType} from '../features/ui/templateUtil'
 import type {SchemaType} from '../features/validation'
-import type {ExternalValidators} from '../features/validation/types/ExternalValidationRules'
 import type {ValidationResult} from '../features/validation/types/ValidationResult'
 import {ValidationRules} from '../features/validation/utils/consts'
 import {SimpleField} from '../features/validation/utils/SimpleField'
@@ -26,6 +24,7 @@ import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
 import {ComponentStore, isFunctionalProperty, isLocalizedProperty} from './ComponentStore'
 import {Form} from './Form'
+import {FormViewerPropsStore} from './FormViewerPropsStore'
 import type {FormViewerValidationRules} from './FormViewerValidationRules'
 import type {IStore} from './IStore'
 import {LocalizationStore, LocalizationType} from './LocalizationStore'
@@ -78,21 +77,11 @@ export class Store implements IStore, IFormViewer {
 
   /**
    * Creates form viewer settings.
-   * @param view the metadata of the form viewer components.
-   * @param initialData the initial form data.
-   * @param externalValidators the set of metadata of external validation rules, grouped by the type of value being validated.
-   * @param externalLocalizer the function to localize the properties of a component.
-   * @param externalActions the set of external actions.
-   * @param propsLanguage the full language code passed in the FormViewer properties.
+   * @param formViewerPropsStore the form viewer store settings.
    * @param parentStore the form viewer settings, used in templates.
    * @param parentComponentStore the parent component settings.
    */
-  constructor(public view: View,
-              public initialData: Record<string, unknown>,
-              public externalValidators?: ExternalValidators,
-              public externalLocalizer?: ComponentLocalizer,
-              public externalActions?: ActionValues,
-              public propsLanguage?: Language,
+  constructor(public formViewerPropsStore: FormViewerPropsStore,
               public readonly parentStore?: Store,
               public readonly parentComponentStore?: ComponentStore) {
     const componentTree = this.createComponentData(new ComponentStore(screenModel.name, screenModel.type))
@@ -103,12 +92,10 @@ export class Store implements IStore, IFormViewer {
       form: observable,
       viewMode: true,
       selectedLanguage: true,
-      initialData: observable.ref,
       clear: true,
       parentStore: observable.ref,
       parentComponentStore: observable.ref,
-      initialDataSlice: true,
-      externalLocalizer: observable.ref,
+      initialDataSlice: true
     }, {name: nameObservable(`ViewerStore`)})
   }
 
@@ -135,7 +122,7 @@ export class Store implements IStore, IFormViewer {
         action = this.form.actions[name]
         break
       case 'external':
-        action = this.externalActions?.[name]
+        action = this.formViewerPropsStore.externalActions?.[name]
         break
     }
 
@@ -172,7 +159,7 @@ export class Store implements IStore, IFormViewer {
    * @inheritDoc
    */
   get initialDataSlice(): Record<string, unknown> | undefined {
-    if (!this.parentStore || !this.parentComponentStore) return this.initialData
+    if (!this.parentStore || !this.parentComponentStore) return this.formViewerPropsStore.initialData
     const dataSlice = this.parentStore.initialDataSlice
     if (isStoreDataInParentForm(this.parentComponentStore)) return dataSlice
     const projection = dataSlice?.[this.parentComponentStore.key]
@@ -202,7 +189,7 @@ export class Store implements IStore, IFormViewer {
    * @returns the model for the specified type.
    */
   getModel(type: string) {
-    const model = this.view.find(type)
+    const model = this.formViewerPropsStore.view.find(type)
     if (model) return model
     if (isTemplateType(type)) {
       const templateModel = this.#templateMap.get(type)
@@ -252,7 +239,7 @@ export class Store implements IStore, IFormViewer {
     model ??= this.getModel(componentStore.type)
     const field = model.valued ? this.createField(componentStore, model, deferFieldCalculation) : undefined
     const factory = (cs: ComponentStore) => this.createComponentData(cs, deferFieldCalculation)
-    return new ComponentData(componentStore, model, field, factory)
+    return new ComponentData(componentStore, model, field, factory, this.formViewerPropsStore.externalFormValidators)
   }
 
   /**
@@ -262,7 +249,7 @@ export class Store implements IStore, IFormViewer {
    */
   getValidationRules(type: SchemaType): FormViewerValidationRules {
     return {
-      external: this.externalValidators?.[type],
+      external: this.formViewerPropsStore.externalValidators?.[type],
       internal: ValidationRules[type]
     }
   }
@@ -272,8 +259,7 @@ export class Store implements IStore, IFormViewer {
       return new SimpleField(this, componentStore, model, updateFnValue(this), this.getValidationRules.bind(this), deferFieldCalculation)
     }
 
-    const childStore = new Store(this.view, this.initialData, this.externalValidators,
-      this.externalLocalizer, this.externalActions, this.propsLanguage, this, componentStore)
+    const childStore = new Store(this.formViewerPropsStore.clone(), this, componentStore)
     return new TemplateField(componentStore, childStore)
   }
 
@@ -349,8 +335,8 @@ export class Store implements IStore, IFormViewer {
    */
   get displayedLanguage(): Language {
     if (this.parentStore) return this.parentStore.displayedLanguage
-    if (this.propsLanguage) {
-      const propsLanguage = this.form.languages.find(l => l === this.propsLanguage)
+    if (this.formViewerPropsStore.propsLanguage) {
+      const propsLanguage = this.form.languages.find(l => l === this.formViewerPropsStore.propsLanguage)
       if (propsLanguage) return propsLanguage
     }
     return this.selectedLanguage ?? this.form.defaultLanguage
@@ -363,7 +349,7 @@ export class Store implements IStore, IFormViewer {
    * @returns the Record with the localized properties.
    */
   localizeComponent(type: LocalizationType, componentStore: ComponentStore) {
-    if (this.externalLocalizer) return this.externalLocalizer(componentStore, this.displayedLanguage)
+    if (this.formViewerPropsStore.externalLocalizer) return this.formViewerPropsStore.externalLocalizer(componentStore, this.displayedLanguage)
     return localizeProperties(this.form, this.displayedLanguage, componentStore, type)
   }
 

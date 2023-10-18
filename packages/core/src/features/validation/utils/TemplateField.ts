@@ -114,4 +114,24 @@ export class TemplateField implements Field {
   get form() {
     return this.viewerStore.form.componentTree
   }
+
+  /**
+   * @inheritDoc
+   */
+  get errors() {
+    return this.form.errors
+  }
+
+  /**
+   * @inheritDoc
+   */
+  setError = (error: unknown) => {
+    if (!error) return
+    if (typeof error !== 'object') throw new Error(`Expected 'object' type, got '${typeof error}'`)
+    const errorObject: Record<string, any> = error
+    this.form.fields.forEach((field, key) => {
+      if (errorObject[key]) return field.setError(errorObject[key])
+      if (field.storeDataInParentForm) return field.setError(errorObject)
+    })
+  }
 }

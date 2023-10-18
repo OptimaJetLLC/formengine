@@ -13,7 +13,7 @@ export const ExternalActions = ({onSelect}: ActionsMenuProps) => {
   const store = useStore()
   const t = useTranslationPart('actions')
 
-  const actions = store.externalActions
+  const actions = store.formViewerPropsStore.externalActions
   if (!actions) return null
 
   const items = Object.keys(actions).map(name =>

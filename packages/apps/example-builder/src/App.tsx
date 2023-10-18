@@ -7,7 +7,15 @@ import {
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
-import {ActionDefinition, BiDi, ComponentStore, ExternalValidators, IFormViewer, Language} from '@react-form-builder/core'
+import {
+  ActionDefinition,
+  BiDi,
+  ComponentStore,
+  ExternalFormValidators,
+  ExternalValidators,
+  IFormViewer,
+  Language
+} from '@react-form-builder/core'
 import {BuilderView, FormBuilder, FormBuilderI18n} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useRef, useState} from 'react'
@@ -87,6 +95,39 @@ const externalValidators: ExternalValidators = {
   },
 }
 
+const externalFormValidators: ExternalFormValidators = [
+  async (data) => {
+    const result: any = {}
+    if (data.login === 'sun') {
+      result.login = 'Login already exists - sun'
+    }
+    if (data.agreeCheckbox === false) {
+      result.agreeCheckbox = 'Agree checkbox must be checked'
+    }
+    if ((data['Template:Test form 1'] as any)?.login === 'sun') {
+      result['Template:Test form 1'] ??= {}
+      result['Template:Test form 1'].login = 'Login already exists - sun'
+    }
+    if ((data['Template:Test form 1'] as any)?.agreeCheckbox === false) {
+      result['Template:Test form 1'] ??= {}
+      result['Template:Test form 1'].agreeCheckbox = 'Agree checkbox must be checked'
+    }
+    if ((data['Template:agreement 1'] as any)?.agreeCheckbox === false) {
+      result['Template:agreement 1'] ??= {}
+      result['Template:agreement 1'].agreeCheckbox = 'Agree checkbox must be checked'
+    }
+    if (((data['Template:Test form 1'] as any)?.['Template:agreement 1'] as any)?.agreeCheckbox === false) {
+      result['Template:Test form 1'] ??= {}
+      result['Template:Test form 1']['Template:agreement 1'] ??= {}
+      result['Template:Test form 1']['Template:agreement 1'].agreeCheckbox = 'Agree checkbox must be checked'
+    }
+    if (data.comment === 'weird') {
+      result.comment = 'Comment is weird'
+    }
+    return result
+  }
+]
+
 const enableExternalLanguages = false
 
 const builderLanguages: FormBuilderI18n = {
@@ -156,6 +197,7 @@ const FormBuilderApp = () => {
     }}
     viewerRef={ref}
     externalValidators={externalValidators}
+    externalFormValidators={externalFormValidators}
     i18n={enableExternalLanguages ? builderLanguages : undefined}
     externalActions={{
       logEventArgs: e => console.log(e),

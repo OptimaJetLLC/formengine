@@ -1,9 +1,9 @@
 import {ForwardedRef, ReactNode, useContext, useEffect, useMemo} from 'react'
+import {FormViewerPropsStore} from '../../../stores/FormViewerPropsStore'
 import {Store} from '../../../stores/Store'
 import {namedObserver} from '../../../utils'
 import {StoreContext, StoreProvider} from '../../../utils/contexts/StoreContext'
 import {useDestroy} from '../../../utils/useDestroy'
-import {externalActionsToActionsValues} from '../ExternalActions'
 import {FormViewerProps, IFormViewer} from '../types'
 import {ViewerPropsProvider} from './ViewerPropsContext'
 
@@ -20,8 +20,7 @@ export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', ({childr
 }) => {
   const storeFromContext = useContext(StoreContext)
   const store = useMemo(
-    () => storeFromContext || new Store(props.view, props.initialData ?? {}, props.externalValidators,
-      props.localize, externalActionsToActionsValues(props.externalActions), props.language),
+    () => storeFromContext || new Store(new FormViewerPropsStore(props)),
     [])
 
   useEffect(() => {
@@ -31,13 +30,8 @@ export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', ({childr
   useEffect(() => setViewerRef(store, viewerRef), [store, viewerRef])
 
   useEffect(() => {
-    store.initialData = props.initialData ?? {}
-    store.view = props.view
-    store.externalValidators = props.externalValidators
-    store.externalLocalizer = props.localize
-    store.propsLanguage = props.language
-    store.externalActions = externalActionsToActionsValues(props.externalActions)
-  }, [props.initialData, props.view, props.externalValidators, props.localize, props.language, props.externalActions])
+    store.formViewerPropsStore.applyProps(props)
+  }, [props.initialData, props.view, props.externalValidators, props.externalFormValidators, props.localize, props.language, props.externalActions])
 
   useDestroy(() => {
     if (!storeFromContext) {

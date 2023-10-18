@@ -203,4 +203,14 @@ export class SimpleField implements Field {
   clearError() {
     this.error = undefined
   }
+
+  /**
+   * @inheritDoc
+   */
+  setError = (error: unknown) => {
+    if (typeof error !== 'string') {
+      throw new Error(`Expected 'string' type, got '${typeof error}'`)
+    }
+    this.error = error
+  }
 }

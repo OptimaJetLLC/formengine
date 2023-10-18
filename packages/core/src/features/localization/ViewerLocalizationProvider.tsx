@@ -17,18 +17,18 @@ export const ViewerLocalizationProvider = namedObserver('ViewerLocalizationProvi
   const language = props.language ?? viewerStore.displayedLanguage
 
   useEffect(() => {
-    const loaders = viewerStore.view.getCssLoaders(language.bidi)
+    const loaders = viewerStore.formViewerPropsStore.view.getCssLoaders(language.bidi)
     loaders.forEach(loader => {
       loader().catch(e => console.error(e))
     })
-  }, [language, viewerStore.view])
+  }, [language, viewerStore.formViewerPropsStore.view])
 
   const selectedCache = language.bidi == BiDi.RTL ? emotionCache.RTL : emotionCache.LTR
 
   return (
     <div dir={language.bidi} lang={language.fullCode}>
       <CacheProvider value={selectedCache}>
-        {nestViewerWrappers(viewerStore.view.viewerWrappers, language, props.children)}
+        {nestViewerWrappers(viewerStore.formViewerPropsStore.view.viewerWrappers, language, props.children)}
       </CacheProvider>
     </div>
   )

@@ -1,11 +1,4 @@
-import {
-  externalActionsToActionsValues,
-  namedObserver,
-  Store,
-  StoreProvider,
-  useDestroy,
-  ViewerPropsProvider
-} from '@react-form-builder/core'
+import {FormViewerPropsStore, namedObserver, Store, StoreProvider, useDestroy, ViewerPropsProvider} from '@react-form-builder/core'
 import {ReactNode, useEffect, useMemo} from 'react'
 import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
@@ -32,8 +25,7 @@ interface BuilderProvidersProps {
  */
 export const BuilderProviders = namedObserver('BuilderProviders', ({children, props}: BuilderProvidersProps) => {
   const store = useMemo(
-    () => new Store(props.view, props.initialData ?? {}, props.externalValidators,
-      props.localize, externalActionsToActionsValues(props.externalActions), props.language),
+    () => new Store(new FormViewerPropsStore(props)),
     [])
 
   const buildStore = useMemo(() => {
@@ -48,13 +40,8 @@ export const BuilderProviders = namedObserver('BuilderProviders', ({children, pr
   }, [props.formName])
 
   useEffect(() => {
-    store.initialData = props.initialData ?? {}
-    store.view = props.view
-    store.externalValidators = props.externalValidators
-    store.externalLocalizer = props.localize
-    store.propsLanguage = props.language
-    store.externalActions = externalActionsToActionsValues(props.externalActions)
-  }, [props.initialData, props.view, props.externalValidators, props.localize, props.language, props.externalActions])
+    store.formViewerPropsStore.applyProps(props)
+  }, [props.initialData, props.view, props.externalValidators, props.externalFormValidators, props.localize, props.language, props.externalActions])
 
   const localStorageSynchronizer = useMemo(() => new LocalStorageSynchronizer(buildStore), [])
 

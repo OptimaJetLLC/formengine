@@ -9,6 +9,7 @@ import {Language} from '../localization/types'
 import type {ExternalValidators} from '../validation/types/ExternalValidationRules'
 import type {ComponentLocalizer} from './ComponentLocalizer'
 import type {ExternalActions} from './ExternalActions'
+import type {ExternalFormValidators} from './ExternalFormValidators'
 
 /**
  * Form viewer React component properties.
@@ -42,6 +43,11 @@ export interface FormViewerProps {
    * External actions for the form viewer.
    */
   externalActions?: ExternalActions
+
+  /**
+   * The set of functions that validate the form data.
+   */
+  externalFormValidators?: ExternalFormValidators
 
   /**
    * The initial data of the form.

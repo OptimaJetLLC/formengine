@@ -1,6 +1,7 @@
 import type {FluentVariable} from '@fluent/bundle/esm/bundle.js'
 import {IReactionDisposer, makeAutoObservable, reaction} from 'mobx'
 import {Model} from '../../features/define'
+import type {ExternalFormValidators} from '../../features/form-viewer/ExternalFormValidators'
 import {getFluentCompatibleId} from '../../features/localization/getFluentCompatibleId'
 import {isFluentVariable} from '../../features/localization/isFluentVariable'
 import type {Field} from '../../features/validation'
@@ -52,6 +53,7 @@ export class ComponentDataEvents {
 export class ComponentData implements IFormData {
   #disposers: IReactionDisposer[]
   #events?: ComponentDataEvents
+  #externalFormValidators?: ExternalFormValidators
   readonly id: string
   readonly store: ComponentStore
   readonly model: Model
@@ -75,13 +77,15 @@ export class ComponentData implements IFormData {
    * @param model the component metadata for the form viewer.
    * @param field the field with the form data.
    * @param childFactory the factory function that creates {@link ComponentData} instance.
+   * @param externalFormValidators the external form validators.
    */
   constructor(componentStore: ComponentStore, model: Model, field: Field | undefined,
-              childFactory: (componentStore: ComponentStore) => ComponentData) {
+              childFactory: (componentStore: ComponentStore) => ComponentData, externalFormValidators?: ExternalFormValidators) {
     this.store = componentStore
     this.model = model
     this.field = field
     this.id = generateId(this.model.type)
+    this.#externalFormValidators = externalFormValidators
 
     componentStore.children?.forEach(childComponentStore => {
       const child = childFactory(childComponentStore)
@@ -268,6 +272,9 @@ export class ComponentData implements IFormData {
     const result: Record<string, unknown> = {}
     for (const [key, field] of this.fields) {
       if (field.error) result[key] = field.error
+      const errors = field.errors
+      if (errors && field.storeDataInParentForm) Object.keys(errors).forEach(i => result[i] = errors[i])
+      if (errors && !field.storeDataInParentForm && Object.keys(errors).length > 0) result[key] = errors
     }
     return result
   }
@@ -293,6 +300,25 @@ export class ComponentData implements IFormData {
     this.validating = true
     try {
       await Promise.allSettled([...this.fields.values()].map(f => f.validate()))
+      if (!this.#externalFormValidators) return
+
+      const fields = this.fields
+      const externalValidatorPromises = this.#externalFormValidators.map(v => v(this.data))
+      const results = await Promise.allSettled(externalValidatorPromises)
+
+      results.map(result => {
+        if (result.status === 'rejected') {
+          console.error(result.reason)
+          return undefined
+        }
+        return result.value
+      }).forEach(resultValue => {
+        if (!resultValue) return
+        fields.forEach((field, key) => {
+          if (resultValue[key]) return field.setError(resultValue[key])
+          if (field.storeDataInParentForm) return field.setError(resultValue)
+        })
+      })
     } finally {
       this.validating = false
     }

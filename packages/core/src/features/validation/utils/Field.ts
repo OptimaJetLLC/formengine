@@ -14,6 +14,17 @@ export interface Field {
   error?: string
 
   /**
+   * Sets the error value.
+   * @param error The error value to be set.
+   */
+  setError: (error: unknown) => void
+
+  /**
+   * Contains a field validation errors if the field provides multiple errors (i.e. field is template).
+   */
+  errors?: Record<string, unknown>
+
+  /**
    * Flag, true, if the field is marked as touched.
    */
   touched: boolean

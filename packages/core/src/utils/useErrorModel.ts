@@ -8,7 +8,7 @@ import {useStore} from './contexts/StoreContext'
 export const useErrorModel = (): Model<ErrorWrapperProps> => {
   const viewerStore = useStore()
   const model = viewerStore.form.errorType
-    ? viewerStore.view.find(viewerStore.form.errorType)
+    ? viewerStore.formViewerPropsStore.view.find(viewerStore.form.errorType)
     : errorMessageModel
   return model ?? errorMessageModel
 }
