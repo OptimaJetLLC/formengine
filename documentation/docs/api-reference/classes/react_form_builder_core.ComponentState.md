@@ -86,6 +86,24 @@ the values for all properties of the component, calculates the values of the cal
 
 ___
 
+### className
+
+• `get` **className**(): `Object`
+
+Calculates and returns className property.
+
+#### Returns
+
+`Object`
+
+the Record that contains the className property for the component.
+
+| Name | Type |
+| :------ | :------ |
+| `className` | `string` |
+
+___
+
 ### events
 
 • `get` **events**(): `Record`<`string`, `Function`\>
@@ -175,27 +193,3 @@ Calculates and returns all child components.
 `Record`<`string`, `any`\>
 
 the Record that contains the child components of a component.
-
-___
-
-### className
-
-▸ **className**(`props`): `Object`
-
-Calculates and returns className property.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `props` | `Record`<`string`, `any`\> | the React component properties. |
-
-#### Returns
-
-`Object`
-
-the Record that contains the className property for the component.
-
-| Name | Type |
-| :------ | :------ |
-| `className` | `string` |

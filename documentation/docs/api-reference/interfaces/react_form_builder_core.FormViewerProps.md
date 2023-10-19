@@ -65,6 +65,14 @@ External actions for the form viewer.
 
 ___
 
+### externalFormValidators
+
+• `Optional` **externalFormValidators**: [`ExternalFormValidators`](../modules/react_form_builder_core.md#externalformvalidators)
+
+The set of functions that validate the form data.
+
+___
+
 ### externalValidators
 
 • `Optional` **externalValidators**: `Partial`<`Record`<keyof [`SchemaTypeMap`](../modules/react_form_builder_core.md#schematypemap), [`ExternalValidationRules`](../modules/react_form_builder_core.md#externalvalidationrules)\>\>

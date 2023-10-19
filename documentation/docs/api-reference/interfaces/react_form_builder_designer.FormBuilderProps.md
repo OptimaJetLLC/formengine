@@ -91,6 +91,18 @@ Omit.externalActions
 
 ___
 
+### externalFormValidators
+
+• `Optional` **externalFormValidators**: `ExternalFormValidators`
+
+The set of functions that validate the form data.
+
+#### Inherited from
+
+Omit.externalFormValidators
+
+___
+
 ### externalPropertyEditors
 
 • `Optional` **externalPropertyEditors**: `Record`<`string`, `ComponentType`<[`AnnotationEditorProps`](react_form_builder_designer.AnnotationEditorProps.md)\>\>

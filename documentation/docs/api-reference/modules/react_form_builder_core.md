@@ -31,6 +31,7 @@ custom_edit_url: null
 - [EventAn](../classes/react_form_builder_core.EventAn.md)
 - [EventStream](../classes/react_form_builder_core.EventStream.md)
 - [Form](../classes/react_form_builder_core.Form.md)
+- [FormViewerPropsStore](../classes/react_form_builder_core.FormViewerPropsStore.md)
 - [Language](../classes/react_form_builder_core.Language.md)
 - [LocalizationStore](../classes/react_form_builder_core.LocalizationStore.md)
 - [Meta](../classes/react_form_builder_core.Meta.md)
@@ -519,6 +520,36 @@ External actions for the form viewer.
 
 ___
 
+### ExternalFormValidator
+
+Ƭ **ExternalFormValidator**: (`data`: `Record`<`string`, `unknown`\>) => `Promise`<`Record`<`string`, `string`\> \| `undefined`\>
+
+#### Type declaration
+
+▸ (`data`): `Promise`<`Record`<`string`, `string`\> \| `undefined`\>
+
+Represents a function that validate the form data.
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | `Record`<`string`, `unknown`\> |
+
+##### Returns
+
+`Promise`<`Record`<`string`, `string`\> \| `undefined`\>
+
+___
+
+### ExternalFormValidators
+
+Ƭ **ExternalFormValidators**: [`ExternalFormValidator`](react_form_builder_core.md#externalformvalidator)[]
+
+Represents an array of functions that validate the form data.
+
+___
+
 ### ExternalValidationRuleSettings
 
 Ƭ **ExternalValidationRuleSettings**: `Object`
@@ -614,6 +645,20 @@ ___
 Ƭ **HtmlAttribute**: `Record`<`string`, `string`\>
 
 The arbitrary HTML attributes for the component.
+
+___
+
+### IDisposable
+
+Ƭ **IDisposable**: `Object`
+
+Type of disposable object.
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `dispose` | () => `void` |
 
 ___
 
@@ -2193,21 +2238,30 @@ the instance of the ComponentData of the currently rendered component.
 
 ___
 
-### useDestroy
+### useDisposable
 
-▸ **useDestroy**(`destroyFn`): `void`
+▸ **useDisposable**<`T`\>(`factory`, `deps`): `T` \| `undefined`
 
-Executes the function when the component is destroyed.
+Creates a disposable object with the useMemo hook and dispose the object when the React component is unmounted.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`IDisposable`](react_form_builder_core.md#idisposable) |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `destroyFn` | () => `void` | the function that executes when a component is destroyed. |
+| `factory` | () => `T` | the factory function to create a disposable object. |
+| `deps` | `undefined` \| `DependencyList` | the dependencies for the useMemo hook. |
 
 #### Returns
 
-`void`
+`T` \| `undefined`
+
+the disposable object.
 
 ___
 

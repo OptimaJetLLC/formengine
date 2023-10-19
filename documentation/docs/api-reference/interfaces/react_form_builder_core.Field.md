@@ -56,6 +56,14 @@ Contains a field validation error if the field data is not valid.
 
 ___
 
+### errors
+
+• `Optional` **errors**: `Record`<`string`, `unknown`\>
+
+Contains a field validation errors if the field provides multiple errors (i.e. field is template).
+
+___
+
 ### init
 
 • **init**: () => `void`
@@ -81,6 +89,28 @@ ___
 ▸ (): `void`
 
 Sets the field to its default value.
+
+##### Returns
+
+`void`
+
+___
+
+### setError
+
+• **setError**: (`error`: `unknown`) => `void`
+
+#### Type declaration
+
+▸ (`error`): `void`
+
+Sets the error value.
+
+##### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `error` | `unknown` | The error value to be set. |
 
 ##### Returns
 

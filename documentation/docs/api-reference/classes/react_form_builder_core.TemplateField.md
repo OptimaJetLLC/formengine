@@ -70,6 +70,22 @@ viewerStore the form viewer settings.
 
 ## Accessors
 
+### errors
+
+• `get` **errors**(): `Record`<`string`, `unknown`\>
+
+Contains a field validation errors if the field provides multiple errors (i.e. field is template).
+
+#### Returns
+
+`Record`<`string`, `unknown`\>
+
+#### Implementation of
+
+[Field](../interfaces/react_form_builder_core.Field.md).[errors](../interfaces/react_form_builder_core.Field.md#errors)
+
+___
+
 ### form
 
 • `get` **form**(): [`ComponentData`](react_form_builder_core.ComponentData.md)
@@ -175,6 +191,28 @@ Sets the field to its default value.
 #### Implementation of
 
 Field.reset
+
+___
+
+### setError
+
+▸ **setError**(`error`): `void`
+
+Sets the error value.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `error` | `unknown` | The error value to be set. |
+
+#### Returns
+
+`void`
+
+#### Implementation of
+
+Field.setError
 
 ___
 

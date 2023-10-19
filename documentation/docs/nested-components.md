@@ -28,6 +28,10 @@ A template is simply a form within another form. The template is treated as a no
 3. Data can be transferred to the parent form as a nested object, or as a part of the parent form (regulated by the "Store data in parent
    form" flag).
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/I-zDlI96Rvo?si=cm4XNxJlWGTgyHP8" title="How to use forms templates"
+frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen=""></iframe>
+
 ## Slots
 
 Each component property defined as a `node` property is treated as a slot where child components can be added. A component can have any

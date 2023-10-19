@@ -18,7 +18,7 @@ The form viewer settings.
 
 ### constructor
 
-• **new Store**(`view`, `initialData`, `externalValidators?`, `externalLocalizer?`, `externalActions?`, `propsLanguage?`, `parentStore?`, `parentComponentStore?`)
+• **new Store**(`formViewerPropsStore`, `parentStore?`, `parentComponentStore?`)
 
 Creates form viewer settings.
 
@@ -26,12 +26,7 @@ Creates form viewer settings.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `view` | [`View`](react_form_builder_core.View.md) | the metadata of the form viewer components. |
-| `initialData` | `Record`<`string`, `unknown`\> | the initial form data. |
-| `externalValidators?` | `Partial`<`Record`<keyof [`SchemaTypeMap`](../modules/react_form_builder_core.md#schematypemap), [`ExternalValidationRules`](../modules/react_form_builder_core.md#externalvalidationrules)\>\> | the set of metadata of external validation rules, grouped by the type of value being validated. |
-| `externalLocalizer?` | [`ComponentLocalizer`](../modules/react_form_builder_core.md#componentlocalizer) | the function to localize the properties of a component. |
-| `externalActions?` | [`ActionValues`](../modules/react_form_builder_core.md#actionvalues) | the set of external actions. |
-| `propsLanguage?` | [`Language`](react_form_builder_core.Language.md) | the full language code passed in the FormViewer properties. |
+| `formViewerPropsStore` | [`FormViewerPropsStore`](react_form_builder_core.FormViewerPropsStore.md) | the form viewer store settings. |
 | `parentStore?` | [`Store`](react_form_builder_core.Store.md) | the form viewer settings, used in templates. |
 | `parentComponentStore?` | [`ComponentStore`](react_form_builder_core.ComponentStore.md) | the parent component settings. |
 
@@ -51,30 +46,6 @@ ___
 
 ___
 
-### externalActions
-
-• `Optional` **externalActions**: [`ActionValues`](../modules/react_form_builder_core.md#actionvalues)
-
-the set of external actions.
-
-___
-
-### externalLocalizer
-
-• `Optional` **externalLocalizer**: [`ComponentLocalizer`](../modules/react_form_builder_core.md#componentlocalizer)
-
-the function to localize the properties of a component.
-
-___
-
-### externalValidators
-
-• `Optional` **externalValidators**: `Partial`<`Record`<keyof [`SchemaTypeMap`](../modules/react_form_builder_core.md#schematypemap), [`ExternalValidationRules`](../modules/react_form_builder_core.md#externalvalidationrules)\>\>
-
-the set of metadata of external validation rules, grouped by the type of value being validated.
-
-___
-
 ### form
 
 • **form**: [`Form`](react_form_builder_core.Form.md)
@@ -85,11 +56,11 @@ ___
 
 ___
 
-### initialData
+### formViewerPropsStore
 
-• **initialData**: `Record`<`string`, `unknown`\>
+• **formViewerPropsStore**: [`FormViewerPropsStore`](react_form_builder_core.FormViewerPropsStore.md)
 
-the initial form data.
+the form viewer store settings.
 
 ___
 
@@ -109,25 +80,9 @@ the form viewer settings, used in templates.
 
 ___
 
-### propsLanguage
-
-• `Optional` **propsLanguage**: [`Language`](react_form_builder_core.Language.md)
-
-the full language code passed in the FormViewer properties.
-
-___
-
 ### selectedLanguage
 
 • `Optional` **selectedLanguage**: [`Language`](react_form_builder_core.Language.md)
-
-___
-
-### view
-
-• **view**: [`View`](react_form_builder_core.View.md)
-
-the metadata of the form viewer components.
 
 ___
 
