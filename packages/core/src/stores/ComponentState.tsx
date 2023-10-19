@@ -58,7 +58,7 @@ export class ComponentState {
    */
   get get(): Record<string, any> {
     const propsWithoutChildren = this.propsWithoutChildren
-    return Object.assign(propsWithoutChildren, this.className(propsWithoutChildren), this.children(propsWithoutChildren))
+    return Object.assign({}, propsWithoutChildren, this.className, this.children(propsWithoutChildren))
   }
 
   /**
@@ -107,10 +107,10 @@ export class ComponentState {
 
   /**
    * Calculates and returns className property.
-   * @param props the React component properties.
    * @returns the Record that contains the className property for the component.
    */
-  className(props: Record<string, any>) {
+  get className() {
+    const props = this.propsWithoutChildren
     const {model, store} = this.data
     const {viewMode} = this.store
     const cssObjectAny = assign({}, model.css?.any?.object, store.css?.any?.object)

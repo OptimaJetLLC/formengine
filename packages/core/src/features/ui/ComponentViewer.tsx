@@ -64,7 +64,7 @@ export const ComponentViewer = namedObserver('ComponentViewer', () => {
   const data = useComponentData()
   const formViewerProps = useViewerProps()
   const formViewerStore = useStore()
-  const localize = formViewerStore.localizeComponent.bind(formViewerStore, 'component')
+  const localize = useCallback(formViewerStore.localizeComponent.bind(formViewerStore, 'component'), [formViewerStore])
   const componentTree = useComponentTreeContext()
 
   const computeChildren = useCallback((componentData: ComponentData, componentProps: Record<string, any>) => {
@@ -74,7 +74,7 @@ export const ComponentViewer = namedObserver('ComponentViewer', () => {
 
   const componentState = useMemo(
     () => new ComponentState(data, formViewerStore, localize, computeChildren),
-    [data])
+    [data, formViewerStore, localize, computeChildren])
 
   useActions(componentState)
 

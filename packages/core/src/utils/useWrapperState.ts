@@ -18,15 +18,14 @@ export type ComponentLocalizer = (componentStore: ComponentStore) => Record<stri
  * @param localizer the function used to localize the component.
  * @returns the component state for the wrapper component
  */
-export const useWrapperState = (componentKey: string, componentModel: Model, wrapperProps: any,
-                                localizer: ComponentLocalizer = () => ({})) => {
+export const useWrapperState = (componentKey: string, componentModel: Model, wrapperProps: any, localizer: ComponentLocalizer) => {
   const viewerStore = useStore()
   return useMemo(() => getWrapperState(viewerStore, componentKey, componentModel, wrapperProps, localizer),
     [viewerStore, componentKey, componentModel, wrapperProps, localizer])
 }
 
 const getWrapperState = (viewerStore: Store, componentKey: string, componentModel: Model,
-                         wrapperProps: any, localizer: ComponentLocalizer = () => ({})) => {
+                         wrapperProps: any, localizer: ComponentLocalizer) => {
   const componentStore = new ComponentStore(componentKey, componentModel.type)
   componentStore.props = {...wrapperProps}
   const componentData = viewerStore.createComponentData(componentStore, false, componentModel)

@@ -1,11 +1,11 @@
-import {createElement, DependencyList, useEffect} from 'react'
+import {createElement, DependencyList, useCallback, useEffect} from 'react'
 import {filter} from 'rxjs'
 import {WrapperProps} from '../../../types'
 import {namedObserver} from '../../../utils'
 import {useComponentData} from '../../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../../utils/contexts/StoreContext'
 import {useErrorModel} from '../../../utils/useErrorModel'
-import {useWrapperState} from '../../../utils/useWrapperState'
+import {ComponentLocalizer, useWrapperState} from '../../../utils/useWrapperState'
 import {ActionEventHandler} from '../../event'
 import {useViewerProps} from '../../form-viewer/components/ViewerPropsContext'
 
@@ -25,7 +25,8 @@ export const Erroneous = namedObserver('Erroneous', ({children}: WrapperProps) =
   const props = useViewerProps()
   const errorDefinition = useErrorModel()
 
-  const componentState = useWrapperState(wrappedComponentData.key, errorDefinition, viewerStore.form.errorProps)
+  const localizer = useCallback<ComponentLocalizer>(() => ({}), [])
+  const componentState = useWrapperState(wrappedComponentData.key, errorDefinition, viewerStore.form.errorProps, localizer)
 
   useEventListener(wrappedComponentData.key, 'onChange', e => wrappedComponentData.field?.setValue(e.value), [])
   useEventListener(wrappedComponentData.key, 'onBlur', _ => wrappedComponentData.field?.setTouched(), [])
