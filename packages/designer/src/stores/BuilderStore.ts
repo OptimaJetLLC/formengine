@@ -458,7 +458,6 @@ export class BuilderStore {
     this.currentEditable = undefined
   }
 
-  //TODO clone for inner components without removing
   /**
    * Clones the component and adds the clone to the component tree.
    * @param source the cloning component.

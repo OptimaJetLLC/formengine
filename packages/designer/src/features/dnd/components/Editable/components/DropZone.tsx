@@ -61,7 +61,6 @@ const useDropZone = (isAfter: boolean, isInner?: boolean, slot?: string): [DropS
           store.add(source, target, insertPosition, slot)
           break
         case ItemType.Component:
-          //TODO the mechanism of binding properties
           source.store.slot = slot
           if (store.selected.size > 1) {
             store.multipleMove(target, insertPosition)

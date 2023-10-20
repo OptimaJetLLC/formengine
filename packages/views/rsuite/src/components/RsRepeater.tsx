@@ -5,7 +5,6 @@ interface RsRepeaterProps {
 }
 
 const RsRepeater = (props: RsRepeaterProps) => {
-  // todo implement
   return (<>Repeater</>)
 }
 

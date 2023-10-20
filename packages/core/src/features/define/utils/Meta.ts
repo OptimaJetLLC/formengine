@@ -1,7 +1,6 @@
 import type {ReactNode} from 'react'
 import {Annotation} from '../../annotation/types/annotations/Annotation'
 
-// todo rename to BuilderComponentMetadata
 /**
  * Component metadata for the form builder.
  */

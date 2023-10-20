@@ -7,9 +7,7 @@ interface RsGridProps {
   child2: ReactNode
 }
 
-//TODO this used for tested inner drop zones
 const RsGrid = (props: RsGridProps) => {
-  // todo implement
   return (
     <Grid>
       <Row>

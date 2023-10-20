@@ -5,7 +5,6 @@ interface RsRichTextEditorProps {
 }
 
 const RsRichTextEditor = (props: RsRichTextEditorProps) => {
-  // todo implement
   return (<>RichTextEditor</>)
 }
 

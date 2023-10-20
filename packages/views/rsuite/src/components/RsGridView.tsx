@@ -5,7 +5,6 @@ interface RsGridViewProps {
 }
 
 const RsGridView = (props: RsGridViewProps) => {
-  // todo implement
   return (<>GridView</>)
 }
 

@@ -4,13 +4,12 @@ import {ActionEventArgs} from './ActionEventArgs'
 /**
  * The defineAction helper type.
  */
-export type DefineActionHelper = <T>(name: string, func: ActionHandler<T>, params?: ParametersDefinition<T>[], description?: string) => ActionDefinition
+export type DefineActionHelper = <T>(name: string, func: ActionHandler<T>, params?: ParameterDefinition<T>[], description?: string) => ActionDefinition
 
-// todo rename ParametersDefinition => ParameterDefinition
 /**
  * The type to describe the action parameter.
  */
-export type ParametersDefinition<T> = [PropertyKey<T>, ParameterType]
+export type ParameterDefinition<T> = [PropertyKey<T>, ParameterType]
 
 /**
  * Component property key type.

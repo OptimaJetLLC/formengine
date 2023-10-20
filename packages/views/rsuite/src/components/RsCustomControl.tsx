@@ -5,7 +5,6 @@ interface RsCustomControlProps {
 }
 
 const RsCustomControl = (props: RsCustomControlProps) => {
-  // todo implement
   return (<>CustomControl</>)
 }
 

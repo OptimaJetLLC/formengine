@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
-import {Device, namedObserver, useComponentData} from '@react-form-builder/core'
+import {namedObserver, useComponentData} from '@react-form-builder/core'
 import {useMemo} from 'react'
+import {Device} from '../../utils/types'
 import {CodeEditor} from '../components/CodeEditor'
 
 export const CSSEditor = namedObserver('CSSEditor', ({device}: { device: Device }) => {

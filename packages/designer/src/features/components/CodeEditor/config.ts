@@ -2,7 +2,6 @@ import {loader} from '@monaco-editor/react'
 import {fluentLanguageId} from '../../localization/consts'
 import {monacoJavascriptDefaults} from './monacoJavascriptDefaults'
 
-// todo The lines below are commented out because they do not work in the assembled npm-package
 // import * as monaco from 'monaco-editor'
 // import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker.js?worker'
 // import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker.js?worker'

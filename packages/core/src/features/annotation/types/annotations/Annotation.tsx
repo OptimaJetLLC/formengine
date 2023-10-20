@@ -3,7 +3,6 @@ import type {RuleValidator, SchemaType} from '../../../validation'
 import type {EditorType} from '../index'
 import type {ErrorMap} from '../../../validation/ErrorMap'
 
-// todo rename to BuilderComponentPropertyMetadata
 /**
  * Basic metadata class for a React component property for the form builder.
  */

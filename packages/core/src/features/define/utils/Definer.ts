@@ -23,7 +23,6 @@ export type DefinerData<T extends object> = {
   customPreview?: ReactNode,
 }
 
-//TODO forwarding properties to the initializer of actions.
 /**
  * The builder class to define the metadata of the form builder component.
  */

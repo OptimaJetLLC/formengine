@@ -5,7 +5,6 @@ interface RsTreePickerProps {
 }
 
 const RsTreePicker = (props: RsTreePickerProps) => {
-  // todo implement
   return (<>TreePicker</>)
 }
 

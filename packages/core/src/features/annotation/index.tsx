@@ -95,7 +95,6 @@ export const className = createProperty('string')
   .calculable(true)
   .build('className')
 
-//TODO rename to func, or action, or to stay event?
 /**
  * The annotation builder for a component property with type 'event' (or event handler, or just a function).
  */

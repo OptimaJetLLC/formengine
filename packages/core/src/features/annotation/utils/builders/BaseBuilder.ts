@@ -22,7 +22,6 @@ export type PreAnnotation = Partial<Omit<Annotation, 'key'>> & Pick<Annotation, 
  */
 export type BuilderSetup = Partial<PreAnnotation & BuilderOptions>
 
-//TODO add constructor
 /**
  * The base builder class to define the metadata property of the form builder component.
  */
@@ -69,7 +68,6 @@ export class BaseBuilder<T> {
     return this.setup({hint})
   }
 
-  // todo rename all calculable to computable???
   /**
    * Marks the component property as calculable.
    * @param calculable true if the property is calculable.

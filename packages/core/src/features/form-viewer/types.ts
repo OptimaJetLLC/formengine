@@ -54,8 +54,9 @@ export interface FormViewerProps {
    */
   initialData?: Record<string, unknown>
 
-  // todo change documentation
-  /** No use a error wrap component. */
+  /**
+   * If true, the component will not be wrapped by the error display component.
+   */
   erroneous?: boolean
 
   /**

@@ -5,7 +5,6 @@ interface RsDropzoneProps {
 }
 
 const RsDropzone = (props: RsDropzoneProps) => {
-  // todo implement
   return (<>Dropzone</>)
 }
 

@@ -6,7 +6,6 @@ import {
   commonStyles,
   ComponentDataProvider,
   ComponentStore,
-  Device,
   key,
   namedObserver,
   useTooltipType
@@ -14,6 +13,7 @@ import {
 import {unionWith} from 'lodash-es'
 import {useState} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
+import {Device} from '../../../../../utils/types'
 import {CSSEditor} from '../../../../annotation-editors/CSSEditor'
 import {CenteredLabel} from '../../../../components/Labels'
 import {PropertyEditorWrapper} from '../../../../components/PropertyEditorWrapper'
@@ -21,13 +21,11 @@ import {useTranslationPart} from '../../../../localization/hooks'
 import {Section, SubSection} from '../Section'
 import {DevicePicker} from './DevicePicker'
 
-//TODO return section map to annotation
 const SectionMap: Record<string, Section> = {
   validation: Section.Rules,
   event: Section.Actions,
 }
 
-//TODO return sub section map to annotation
 const SubSectionMap: Record<string, SubSection> = {
   htmlAttributes: SubSection.Additional,
   tooltipProps: SubSection.Tooltip,

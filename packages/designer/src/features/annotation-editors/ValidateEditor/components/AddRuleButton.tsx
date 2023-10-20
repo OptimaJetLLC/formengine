@@ -29,7 +29,6 @@ const RulesList = namedObserver('RulesList', ({type}: { type: SchemaType }) => {
     .filter(([key]) => isNotApplied(key, 'internal'))
     .map(([key]) => toDropdownItem(key, 'internal', t(`validation.rule.${key}`)))
   if (validationRules.external) {
-    // todo localize external validator name
     const externalItems = Object.entries(validationRules.external)
       .filter(([key]) => isNotApplied(key, 'external'))
       .map(([key]) => toDropdownItem(key, 'external', t(`validation.rule.${key}`, key)))

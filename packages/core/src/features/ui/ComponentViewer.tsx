@@ -51,7 +51,6 @@ const useActions = (state: ComponentState) => {
 }
 
 function getActionHandler(func: Func, args?: Arguments) {
-  //TODO init in default value for arguments?
   return async (e: ActionEventArgs) => {
     const actionArgs = args ? {...args} : {}
     const result = func(e, actionArgs)

@@ -5,7 +5,6 @@ interface RsCustomBlockProps {
 }
 
 const RsCustomBlock = (props: RsCustomBlockProps) => {
-  // todo implement
   return (<>CustomBlock</>)
 }
 

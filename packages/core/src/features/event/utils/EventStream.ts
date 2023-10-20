@@ -13,7 +13,6 @@ export class EventStream {
   constructor(private readonly stream: Observable<ActionEventArgs>) {
   }
 
-  //todo remove unused
   /**
    * Returns the event stream filtered by the specified predicate function.
    * @param predicate the predicate function.
@@ -44,12 +43,10 @@ export class EventStream {
     return new EventStream(newStream)
   }
 
-  //todo remove unused
   /**
    * Adds the subscriber to the stream of observed events.
    * @param next the subscriber function.
    */
-  //TODO rename to e
   listen(next: (value: ActionEventArgs) => void): () => void
 
   /**

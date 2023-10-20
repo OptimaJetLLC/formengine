@@ -6,7 +6,6 @@ import type {ItemDataType} from 'rsuite/esm/@types/common'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
-//TODO add custom items
 const prepareData = ({data}: PropertyAn, values: string[]) => {
   const preparedData = data.map(di => {
     return {

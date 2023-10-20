@@ -15,8 +15,6 @@ const TemplateLoadError = styled.span`
   color: red;
 `
 
-// todo action mapping
-
 interface TemplateContext {
   data: ComponentData
   viewerProps: Readonly<FormViewerProps>
@@ -38,7 +36,6 @@ const Template = (templateProps: Record<string, any>) => {
 
   if (!viewerProps.getForm) return <TemplateLoadError>Please define <code>getForm</code> property!</TemplateLoadError>
   if (!(data.field instanceof TemplateField)) return null
-  // todo remove cast
   const viewerStore = data.field.viewerStore as Store
 
   return (

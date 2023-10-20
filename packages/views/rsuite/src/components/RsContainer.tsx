@@ -15,7 +15,6 @@ const RsContainer = forwardRef(({direction, className, ...props}: any, ref: any)
 
 RsContainer.displayName = 'Container'
 
-//TODO property what say it is a container and can have children. Create smth like reactnode property?
 export const rsContainer = define(RsContainer)
   .type('RsContainer')
   .name('Container')

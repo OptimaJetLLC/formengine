@@ -2,7 +2,6 @@ import {observer} from 'mobx-react'
 import type {FunctionComponent} from 'react'
 import {ComponentStore} from '../stores/ComponentStore'
 
-// todo rename 'fn' parameter to 'value'
 /**
  * Type predicate, asserts that the value is a function.
  * @param fn the value.

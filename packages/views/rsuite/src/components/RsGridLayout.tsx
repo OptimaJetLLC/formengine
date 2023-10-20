@@ -5,7 +5,6 @@ interface RsGridLayoutProps {
 }
 
 const RsGridLayout = (props: RsGridLayoutProps) => {
-  // todo implement
   return (<>GridLayout</>)
 }
 

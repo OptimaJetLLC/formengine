@@ -1,4 +1,3 @@
-// todo rename to generate random string
 /**
  * Generates the random string.
  * @returns the generated random string.

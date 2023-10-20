@@ -35,7 +35,6 @@ async function getForm(name?: string): Promise<string> {
 }
 
 const getFormFn = (formName?: string) => {
-  // todo temporary fix
   const name = !formName || formName === 'undefined' ? sampleFormName : formName
   return indexedDbExists ? getForm(name) : getFormFromJson(name)
 }

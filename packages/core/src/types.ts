@@ -1,4 +1,4 @@
-import {ReactNode} from 'react'
+import type {ReactNode} from 'react'
 
 /**
  * React wrapper component properties.
@@ -12,13 +12,6 @@ export interface WrapperProps {
  */
 export type ViewMode = 'desktop' | 'mobile' | 'tablet'
 
-// todo move to form-builder
-/**
- * Display resolution type of the form builder.
- */
-export type Device = 'any' | ViewMode
-
-// todo rename to something like FormViewerFormRootComponent?
 /**
  * Properties of the root component of the form.
  */

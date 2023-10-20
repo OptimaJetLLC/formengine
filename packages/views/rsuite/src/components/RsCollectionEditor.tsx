@@ -5,7 +5,6 @@ interface RsCollectionEditorProps {
 }
 
 const RsCollectionEditor = (props: RsCollectionEditorProps) => {
-  // todo implement
   return (<>CollectionEditor</>)
 }
 

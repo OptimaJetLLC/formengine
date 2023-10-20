@@ -2,7 +2,6 @@ import {event, htmlAttributes, renderWhen, tooltipProps, validation} from '../an
 import {Annotation} from '../annotation/types/annotations/Annotation'
 import {DidMountEvent, WillUnmountEvent} from '../event'
 
-// todo rename to CommonBuilderComponentProperties?
 /**
  * Common metadata for the component for the form builder.
  */

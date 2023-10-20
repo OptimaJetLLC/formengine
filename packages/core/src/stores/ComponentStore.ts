@@ -61,7 +61,6 @@ export function isLocalizedProperty(componentProperty?: ComponentProperty) {
 export type HtmlAttribute = Record<string, string>
 
 //No functions here
-// todo rename to ComponentSettings?
 /**
  * Component settings for serialization in JSON.
  */
@@ -80,7 +79,7 @@ export class ComponentStore {
   /**
    * The component properties.
    */
-  props: Record<string, ComponentProperty> = {} //TODO do nullable
+  props: Record<string, ComponentProperty> = {}
 
   /**
    * The component CSS styles.
