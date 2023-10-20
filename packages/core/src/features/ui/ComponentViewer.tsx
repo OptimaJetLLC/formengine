@@ -77,5 +77,5 @@ export const ComponentViewer = namedObserver('ComponentViewer', () => {
 
   useActions(componentState)
 
-  return createElement(data.model.view, componentState.get)
+  return createElement(data.model.component, componentState.get)
 })

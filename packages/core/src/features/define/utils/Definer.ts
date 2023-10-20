@@ -12,7 +12,7 @@ import {toArray} from './toArray'
  * Definer class data.
  */
 export type DefinerData<T extends object> = {
-  readonly view: ComponentType<T>,
+  readonly component: ComponentType<T>,
   name?: string,
   category?: string,
   cssObject?: Annotations<CSSObject>,
@@ -31,20 +31,20 @@ export class Definer<T extends object> {
 
   /**
    * Static method to create an instance of the component's metadata builder class.
-   * @param view the React component type.
+   * @param component the React component.
    * @param displayName the display name for the anonymous component.
    * @returns the instance of the {@link Definer} class.
    */
-  static define<T extends object>(view: ComponentType<T>, displayName?: string) {
-    const name = displayName ?? view.displayName ?? view.name
+  static define<T extends object>(component: ComponentType<T>, displayName?: string) {
+    const name = displayName ?? component.displayName ?? component.name
     if (!name) throw Error('Anonymous components are not allowed!')
-    const definer = new Definer<T>(view)
+    const definer = new Definer<T>(component)
     if (displayName) definer.type(displayName)
     return definer
   }
 
-  private constructor(view: ComponentType<T>) {
-    this.data = {view}
+  private constructor(component: ComponentType<T>) {
+    this.data = {component}
   }
 
   name = (name: string) => this.#updateWith({name})
@@ -54,7 +54,7 @@ export class Definer<T extends object> {
   category = (category: string) => this.#updateWith({category})
 
   type = (type: string) => {
-    this.data.view.displayName = type
+    this.data.component.displayName = type
     return this
   }
 
@@ -70,7 +70,7 @@ export class Definer<T extends object> {
    * @returns the component type name.
    */
   getType(): string {
-    return this.data.view.displayName || this.data.view.name
+    return this.data.component.displayName || this.data.component.name
   }
 
   /**
@@ -90,7 +90,7 @@ export class Definer<T extends object> {
     const valuedAn = firstValuedAn ?? propAns.find(an => an.name === 'value')
 
     const model = new Model(
-      this.data.view,
+      this.data.component,
       this.data.name || this.getType(),
       this.data.actionsInitializer,
       valuedAn?.key,

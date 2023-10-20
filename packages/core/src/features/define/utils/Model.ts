@@ -9,11 +9,11 @@ import type {ActionsInitializer} from '../types'
  */
 export class Model<T = any> {
   readonly #name?: string
-  readonly view: ComponentType<T>
+  readonly component: ComponentType<T>
 
   /**
    * Creates component metadata for the form viewer.
-   * @param view React component type.
+   * @param component the React component.
    * @param name the component name.
    * @param actionsInitializer the function to initialize actions in the component.
    * @param valued the name of the component property where the component value is stored.
@@ -24,7 +24,7 @@ export class Model<T = any> {
    * @param icon the component icon.
    */
   constructor(
-    view: ComponentType<T>,
+    component: ComponentType<T>,
     name?: string,
     readonly actionsInitializer?: ActionsInitializer,
     readonly valued?: string,
@@ -34,8 +34,8 @@ export class Model<T = any> {
     readonly typeName?: string,
     readonly icon?: ComponentType
   ) {
-    this.view = observer(view)
-    this.view.displayName = view.displayName || view.name
+    this.component = observer(component)
+    this.component.displayName = component.displayName || component.name
     this.#name = name
   }
 
@@ -50,6 +50,6 @@ export class Model<T = any> {
    * @returns the component type name.
    */
   get type(): string {
-    return this.typeName || this.view.displayName || this.view.name
+    return this.typeName || this.component.displayName || this.component.name
   }
 }

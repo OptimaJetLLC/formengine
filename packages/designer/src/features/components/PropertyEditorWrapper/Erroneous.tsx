@@ -19,7 +19,7 @@ export interface ErroneousProps extends WrapperProps, AnnotationEditorProps {
  */
 export const Erroneous = namedObserver('Erroneous', (props: ErroneousProps) => {
   const {annotation, value, children} = props
-  const ErrorMessage = errorMessageModel.view
+  const ErrorMessage = errorMessageModel.component
   const builderStore = useBuilderStore()
   const [error, setError] = useState<string>()
   const [mounted, setMounted] = useState(true)

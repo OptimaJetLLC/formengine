@@ -44,5 +44,5 @@ const ComponentTooltip = namedObserver('ComponentTooltip', ({tooltipDefinition, 
   const wrappedComponentStore = wrappedComponentData.store
   const localize = useCallback(viewerStore.localizeComponent.bind(viewerStore, 'tooltip'), [viewerStore])
   const componentState = useWrapperState(wrappedComponentData.key, tooltipDefinition, wrappedComponentStore.tooltipProps, localize)
-  return createElement(tooltipDefinition.view, componentState.get, children)
+  return createElement(tooltipDefinition.component, componentState.get, children)
 })

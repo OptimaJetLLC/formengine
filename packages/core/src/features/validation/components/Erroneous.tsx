@@ -34,5 +34,5 @@ export const Erroneous = namedObserver('Erroneous', ({children}: WrapperProps) =
   if (props.erroneous) return <>{children}</>
 
   const errorProps = {...componentState.get, error: wrappedComponentData.field?.error}
-  return createElement(errorDefinition.view, errorProps, children)
+  return createElement(errorDefinition.component, errorProps, children)
 })
