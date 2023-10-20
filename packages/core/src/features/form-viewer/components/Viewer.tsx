@@ -52,7 +52,7 @@ export const Viewer = namedObserver('Viewer', ({event}: ViewerProps) => {
 
   useAutoViewMode()
 
-  useEffect(() => store.loadForm(props.getForm, props.formName), [store])
+  useEffect(() => store.loadForm(props.getForm, props.formName), [store, props.getForm, props.formName])
 
   return <ComponentTree data={[store.form.componentTree]}/>
 })
