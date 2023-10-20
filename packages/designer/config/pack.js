@@ -24,6 +24,7 @@ function copyFiles() {
   fs.mkdirSync(tempDir, {recursive: true})
 
   fs.copyFileSync(path.join(sourceDir, packageJson), path.join(tempDir, packageJson))
+  fs.copyFileSync(path.join(sourceDir, 'README.md'), path.join(tempDir, 'README.md'))
   const dirName = 'dist'
   const srcDir = path.join(sourceDir, dirName)
   const destDir = path.join(tempDir, dirName)
