@@ -33,7 +33,6 @@ import {ReactComponent as Sidebar} from './Sidebar.svg'
 import {ReactComponent as StaticContent} from './StaticContent.svg'
 import {ReactComponent as Tab} from './Tab.svg'
 import {ReactComponent as TextArea} from './TextArea.svg'
-import {ReactComponent as Title} from './Title.svg'
 import {ReactComponent as Tooltip} from './Tooltip.svg'
 import {ReactComponent as TreePicker} from './TreePicker.svg'
 import {ReactComponent as Uploader} from './Uploader.svg'
@@ -74,7 +73,6 @@ export const icons = {
   StaticContent,
   Tab,
   TextArea,
-  Title,
   Tooltip,
   TreePicker,
   Uploader
