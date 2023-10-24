@@ -14,13 +14,37 @@ const {Column, HeaderCell} = Table
  * The React component properties for the {@link EditableTable} component.
  */
 export interface EditableTableProps extends TableProps<any, any> {
+  /**
+   * The table data.
+   */
   data: RowDataType[];
+  /**
+   * Maximum number of rows to be displayed.
+   */
   maxRows?: number
+  /**
+   * The callback function called when data in the table is changed.
+   */
   onChange?: FormEventHandler<HTMLElement>
+  /**
+   * The columns of the table.
+   */
   columns?: JSX.Element[]
+  /**
+   * The table label.
+   */
   label?: string
+  /**
+   * The error message.
+   */
   errorMessage?: string
+  /**
+   * Flag, if true, one new row will be automatically added when editing the last row of the table, false otherwise.
+   */
   autoAdd?: boolean
+  /**
+   * Flag, if true then the table header will be hidden, false otherwise.
+   */
   hideHeader?: boolean
 }
 
@@ -28,7 +52,13 @@ export interface EditableTableProps extends TableProps<any, any> {
  * The state of the {@link EditableTable} component.
  */
 export interface EditableTableState {
+  /**
+   * Flag, if true, the table height will be calculated automatically, false otherwise.
+   */
   autoHeight?: boolean
+  /**
+   * The maximum height of the table.
+   */
   maxHeight?: number
 }
 

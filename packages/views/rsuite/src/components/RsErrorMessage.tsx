@@ -9,6 +9,9 @@ import {placement} from '../commonProperties'
  * The properties of RsErrorMessage component.
  */
 export interface RsErrorMessageProps extends ErrorWrapperProps {
+  /**
+   * The placement of an error message.
+   */
   placement?: TypeAttributes.Placement8
 }
 

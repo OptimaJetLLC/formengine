@@ -32,8 +32,17 @@ export type ComponentPropertyComputeType = 'function' | 'localization'
  * The value of the component property.
  */
 export interface ComponentProperty {
+  /**
+   * The simple value of a component property.
+   */
   value?: any
+  /**
+   * Source code of the function for calculating the value of a component property.
+   */
   fnSource?: string
+  /**
+   * Type of the component's calculated property. If not specified - the value from value is used.
+   */
   computeType?: ComponentPropertyComputeType
 }
 

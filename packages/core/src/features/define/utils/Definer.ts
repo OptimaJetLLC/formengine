@@ -12,14 +12,37 @@ import {toArray} from './toArray'
  * Definer class data.
  */
 export type DefinerData<T extends object> = {
+  /**
+   * The React component.
+   */
   readonly component: ComponentType<T>,
+  /**
+   * The component name.
+   */
   name?: string,
+  /**
+   * The component category.
+   */
   category?: string,
+  /**
+   * The CSS metadata.
+   */
   cssObject?: Annotations<CSSObject>,
+  /**
+   * The component icon.
+   */
   icon?: ComponentType,
+  /**
+   * The function that initializes an actions on a component (for internal use only).
+   */
   readonly actionsInitializer?: ActionsInitializer,
-
+  /**
+   * The property metadata.
+   */
   properties?: Annotations<T>,
+  /**
+   * The custom component to display in the component list (unused).
+   */
   customPreview?: ReactNode,
 }
 

@@ -15,8 +15,17 @@ interface CollapsedSizeProps {
  * Properties of the form builder panel.
  */
 export interface PanelProps extends PropsWithChildren<any>, CollapsedSizeProps {
+  /**
+   * The panel placement.
+   */
   placement: PanelPlacement
+  /**
+   * Flag, if true the collapsed panel will be hidden, false otherwise.
+   */
   hideCollapsed?: boolean
+  /**
+   * Callback function called when the panel is collapsed/expanded.
+   */
   onCollapse?: Function
 }
 

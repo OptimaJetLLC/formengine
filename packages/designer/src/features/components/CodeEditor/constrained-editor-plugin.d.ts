@@ -10,16 +10,28 @@ declare module 'constrained-editor-plugin' {
   export type ConstraintRange = [startLine: number, startColumn: number, endLine: number, endColumn: number]
 
   /**
-   * Info about the edit location
+   * Info about the edit location.
    */
   export type Info = {
+    /**
+     * true if the content to be edited is on the end line of the range, false otherwise.
+     */
     endLineOfRange: boolean,
+    /**
+     * true if the content to be edited is on the start line of the range, false otherwise.
+     */
     startLineOfRange: boolean
   }
 
   /**
    * This callback can be used to validate the value entered in the editable area.
    * If returned false, then that content will not be added to the editable area.
+   * Returning undefined will not be considered as a falsy value here.
+   * Only false can prevent the content addition, all other values will be considered as truthy.
+   * @param currentValue the current value with the edited content.
+   * @param currentRange the new range with the edited content.
+   * @param info the info about the edit location.
+   * @returns false if the content is not to be added to the editable area.
    */
   export type ValidateCallback = (currentValue: string, currentRange: any, info: Info) => boolean | undefined
 
@@ -27,9 +39,22 @@ declare module 'constrained-editor-plugin' {
    * The object with settings for the editing restrictions plugin.
    */
   export type RangeRestrictionObject = {
+    /**
+     * The range of the editable area.
+     */
     range: ConstraintRange
+    /**
+     * This field is used to tell the plugin whether or not to allow the '\n' character in a newline.
+     */
     allowMultiline?: boolean
+    /**
+     * Treat this label as a unique identifier and do not declare two constraints with the same label.
+     */
     label?: string
+    /**
+     * This callback can be used to check the value entered in the editable area.
+     * If false is returned, this content will not be added to the editable area.
+     */
     validate?: ValidateCallback
   }
 
@@ -37,8 +62,17 @@ declare module 'constrained-editor-plugin' {
    * The value of the editable range.
    */
   export type EditableRangeValue = {
+    /**
+     * This field is used to tell the plugin whether or not to allow the '\n' character in a newline.
+     */
     allowMultiline: boolean
+    /**
+     * The monaco editor range of the editable area.
+     */
     range: Range
+    /**
+     * The range of the editable area.
+     */
     originalRange: ConstraintRange
   }
 
@@ -56,7 +90,13 @@ declare module 'constrained-editor-plugin' {
    * CSS classes for highlighting.
    */
   export type CssClasses = {
+    /**
+     * The CSS class to highlight a single line.
+     */
     cssClassForSingleLine: string
+    /**
+     * The CSS class to highlight multiple lines.
+     */
     cssClassForMultiLine: string
   }
 

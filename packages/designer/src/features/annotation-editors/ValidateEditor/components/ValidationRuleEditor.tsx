@@ -20,7 +20,13 @@ import {convertValidationRuleParametersToAnnotations} from '../../../validation/
  * The properties of the React {@link ValidationRuleEditor} component.
  */
 export interface ValidationRuleEditorProps {
+  /**
+   * The validation rule settings.
+   */
   rule: ValidationRuleSettings
+  /**
+   * The callback function called when a rule is removed.
+   */
   onRemove: () => void
 }
 

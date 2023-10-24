@@ -10,6 +10,9 @@ import {ComponentViewer} from './ComponentViewer'
  * Properties of the React component {@link ComponentTreeItem}.
  */
 export interface ComponentTreeItemProps {
+  /**
+   * The data required to display the component.
+   */
   componentData: ComponentData
 }
 

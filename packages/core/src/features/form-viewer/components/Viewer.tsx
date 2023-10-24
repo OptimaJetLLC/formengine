@@ -35,6 +35,10 @@ function useAutoViewMode() {
  * Properties of the React component {@link Viewer}.
  */
 export interface ViewerProps {
+  /**
+   * The function for processing form events.
+   * @param stream the event stream of the form viewer.
+   */
   event?: (stream: EventStream) => void
 }
 

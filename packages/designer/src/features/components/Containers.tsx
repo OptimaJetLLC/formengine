@@ -3,6 +3,12 @@ import styled from '@emotion/styled'
 
 const DEFAULT_GAP = 5
 
+/**
+ * The React component that displays a set of rows.
+ * @param props the React component properties.
+ * @param props.gap the gap between rows.
+ * @returns the React element.
+ */
 export const Rows = styled.div<{ gap?: number }>`
   display: flex;
   flex: 1;
@@ -10,7 +16,16 @@ export const Rows = styled.div<{ gap?: number }>`
   gap: ${({gap}) => gap ?? DEFAULT_GAP}px;
 `
 
-export const Columns = styled.div<{ gap?: number, stretchElements?: boolean }>`
+export const Columns = styled.div<{
+  /**
+   * The gap between columns.
+   */
+  gap?: number
+  /**
+   * Flag, if true the columns will be stretched in width, false otherwise.
+   */
+  stretchElements?: boolean
+}>`
   display: flex;
   gap: ${({gap}) => gap ?? DEFAULT_GAP}px;
   ${({stretchElements}) => stretchElements && '& > * { flex: 1; }'};
@@ -65,6 +80,12 @@ export const ListItem = styled.div`
   ${listItemStyle}
 `
 
+/**
+ * The React component that displays a list.
+ * @param props the React component properties.
+ * @param props.clickable flag, if true then the list is clickable, false otherwise.
+ * @returns the React element.
+ */
 export const List = styled.div<{ clickable?: boolean }>`
   ${listStyle}
   ${({clickable = false}) => clickable && clickableStyle}

@@ -14,7 +14,9 @@ const useEventListener = (sender: string, type: string, listener: ActionEventHan
   useEffect(() => {
     const subscription = eventSubject
       .pipe(filter(e => e.type === type && e.sender.key === sender))
-      .subscribe(listener)
+      .subscribe(e => {
+        listener(e)
+      })
     return () => subscription.unsubscribe()
   }, deps)
 }

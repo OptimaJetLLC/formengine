@@ -7,6 +7,9 @@ import {screenModel} from './screenModel'
  * React component properties that display an internal form view error.
  */
 export interface InternalErrorProps {
+  /**
+   * The internal error.
+   */
   error: any
 }
 

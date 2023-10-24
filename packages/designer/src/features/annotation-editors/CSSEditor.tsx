@@ -4,7 +4,17 @@ import {useMemo} from 'react'
 import {Device} from '../../utils/types'
 import {CodeEditor} from '../components/CodeEditor'
 
-export const CSSEditor = namedObserver('CSSEditor', ({device}: { device: Device }) => {
+/**
+ * CSSEditor React component properties.
+ */
+export interface CSSEditorProps {
+  /**
+   * Display resolution type.
+   */
+  device: Device
+}
+
+export const CSSEditor = namedObserver('CSSEditor', ({device}: CSSEditorProps) => {
   const {store} = useComponentData()
   const initialValue = useMemo(() => store?.css?.[device]?.string ?? '', [store, device])
   const onChange = (value: any) => {

@@ -7,9 +7,21 @@ import type {PlacementType} from 'rsuite/esm/toaster/ToastContainer'
  * Toast React component settings.
  */
 export interface ToastSettings {
+  /**
+   * The message.
+   */
   message: string
+  /**
+   * The title.
+   */
   title?: string
+  /**
+   * The type of message.
+   */
   type?: TypeAttributes.Status
+  /**
+   * The placement.
+   */
   placement?: PlacementType
 }
 

@@ -50,7 +50,13 @@ export const calculateExpressionProperty = (componentProperty: ComponentProperty
  * The result of compiling of anything.
  */
 export interface BaseCompilationResult {
+  /**
+   * Flag if true - compilation failed, false otherwise.
+   */
   error: boolean
+  /**
+   * The array of compilation errors.
+   */
   exceptions?: Error[]
 }
 
@@ -58,6 +64,9 @@ export interface BaseCompilationResult {
  * The result of compiling the function.
  */
 export interface CompilationResult extends BaseCompilationResult {
+  /**
+   * The compiled function.
+   */
   fn?: Function
 }
 

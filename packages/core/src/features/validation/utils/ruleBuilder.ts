@@ -14,12 +14,21 @@ export type Pair<Key, Type extends SchemaType> = { [k in keyof Key]: SchemaTypeM
  * The type-safe rule builder.
  */
 export type ValidationRuleBuilder<Params> = {
+  /**
+   * The validation rule parameters.
+   */
   params: ValidationRuleParameter[],
+  /**
+   * Adds a parameter to the validation rule.
+   */
   withParameter: <T extends SchemaType = 'string', Key = any>(key: PropertyKey<Key>,
                                                               type?: T,
                                                               required?: boolean,
                                                               defaultValue?: SchemaTypeMap[T],
                                                               editorType?: string) => ValidationRuleBuilder<Params & Pair<Key, T>>
+  /**
+   * Sets the validation rule factory.
+   */
   withValidatorFactory: (apply: ValidatorFactory<Params>) => ValidationRule
 }
 

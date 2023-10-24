@@ -6,6 +6,9 @@ import {SelectPicker} from 'rsuite'
  * @template T - the type of the item.
  */
 export interface FixedSelectPickerProps<T> extends SelectPickerProps<T> {
+  /**
+   * The picker width.
+   */
   width: any
 }
 

@@ -7,6 +7,9 @@ import {Form} from './Form'
  * The form viewer settings interface.
  */
 export interface IStore {
+  /**
+   * The displayed form.
+   */
   form: Form
 
   /**
@@ -22,6 +25,11 @@ export interface IStore {
    */
   reduceScreen: <T>(callback: (accumulator: T, current: ComponentData) => T, initialValue: T) => T
 
+  /**
+   * The function to localize the validation error message.
+   * @param componentStore the component settings.
+   * @param validationResults the results of the validation.
+   */
   localizeErrorMessages: (componentStore: ComponentStore, validationResults?: ValidationResult[]) => string | undefined
 
   /**

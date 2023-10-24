@@ -6,7 +6,13 @@ import {GenericCodeEditor} from './GenericCodeEditor'
  * Properties of the React component {@link CalculableCodeEditor}.
  */
 export interface CalculableCodeEditorProps {
+  /**
+   * The editable property.
+   */
   editableProperty: EditableProperty
+  /**
+   * The callback function called when the editor is closed.
+   */
   onClose: () => void
 }
 

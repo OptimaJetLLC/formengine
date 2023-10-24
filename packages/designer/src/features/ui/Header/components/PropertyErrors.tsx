@@ -11,7 +11,17 @@ type PropertyErrorColumn = {
   message: string
 }
 
-export const PropertyErrors = namedObserver('PropertyErrors', ({onClose}: { onClose: () => void }) => {
+/**
+ * PropertyErrors React component properties.
+ */
+export interface PropertyErrorsProps {
+  /**
+   * The callback function called when an error window is closed.
+   */
+  onClose: () => void
+}
+
+export const PropertyErrors = namedObserver('PropertyErrors', ({onClose}: PropertyErrorsProps) => {
   const store = useBuilderStore()
 
   const data = useComputed(() => {

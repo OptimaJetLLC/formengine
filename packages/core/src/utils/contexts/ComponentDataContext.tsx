@@ -72,7 +72,7 @@ export class ComponentData implements IFormData {
   validating = false
 
   /**
-   * Constructor
+   * Constructor.
    * @param componentStore the component settings.
    * @param model the component metadata for the form viewer.
    * @param field the field with the form data.

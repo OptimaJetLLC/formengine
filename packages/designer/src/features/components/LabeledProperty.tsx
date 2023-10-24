@@ -28,9 +28,21 @@ const afterRedAsterisk = css`
  * The properties of the React {@link LabeledProperty} component.
  */
 export interface LabeledPropertyProps extends CalculableEditorProps {
+  /**
+   * The metadata for a React component property.
+   */
   annotation: Annotation
+  /**
+   * The data required to display the component.
+   */
   componentData: ComponentData
+  /**
+   * The child elements of the labeled property.
+   */
   children?: any
+  /**
+   * The label style.
+   */
   style?: any
 }
 
@@ -38,7 +50,13 @@ export interface LabeledPropertyProps extends CalculableEditorProps {
  * Represents the properties of a Code Button component.
  */
 export interface CodeButtonProps extends CalculableEditorProps {
+  /**
+   * The metadata for a React component property.
+   */
   annotation: Annotation
+  /**
+   * The data required to display the component.
+   */
   componentData: ComponentData
 }
 

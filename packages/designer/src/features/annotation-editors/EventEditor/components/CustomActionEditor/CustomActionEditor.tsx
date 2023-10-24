@@ -20,7 +20,20 @@ import {ParameterList} from './components/ParameterList'
 /**
  * Represents data for the custom action editor.
  */
-export type CustomActionEditorData = { editorId: any, name: string, body: string, params?: ActionParameters }
+export type CustomActionEditorData = {
+  /**
+   * The action name.
+   */
+  name: string
+  /**
+   * The action source code.
+   */
+  body: string
+  /**
+   * The set of action parameters.
+   */
+  params?: ActionParameters
+}
 
 type FormModel = CustomActionEditorData & { actionParameters?: Parameter[] }
 
@@ -40,7 +53,14 @@ const paramsFromArray = (params?: Parameter[]): ActionParameters | undefined => 
  * The properties of the CustomActionEditor component.
  */
 export interface CustomActionEditorProps {
+  /**
+   * The data for the custom action editor.
+   */
   customAction: CustomActionEditorData
+  /**
+   * The callback function called when a custom action is saved.
+   * @param namedAction the named action definition.
+   */
   onSave: (namedAction: NamedActionDefinition) => void
 }
 

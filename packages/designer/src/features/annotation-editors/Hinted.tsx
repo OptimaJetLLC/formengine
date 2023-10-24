@@ -9,9 +9,21 @@ import {useTooltipPlacement} from '../../utils/TooltipPlacementContext'
  * React component properties for the {@link HintedLabel} component.
  */
 export interface HintedLabelProps {
+  /**
+   * The value of the HTML "for" attribute.
+   */
   htmlFor?: string
+  /**
+   * The React child node.
+   */
   children: ReactNode
+  /**
+   * The tooltip value.
+   */
   hint?: ReactNode
+  /**
+   * The name of the CSS class of the tooltip.
+   */
   className?: string
 }
 
@@ -19,7 +31,13 @@ export interface HintedLabelProps {
  * React component properties for the {@link Hinted} component.
  */
 export interface HintedProps extends Omit<WhisperProps, 'speaker'> {
+  /**
+   * The tooltip value.
+   */
   hint?: ReactNode
+  /**
+   * The tooltip React node.
+   */
   speaker?: ReactNode
 }
 
@@ -63,8 +81,17 @@ export const Hinted = ({hint, children, ...props}: HintedProps) => {
  * @internal
  */
 export interface HintedIconButtonProps {
+  /**
+   * The tooltip text.
+   */
   hint: string
+  /**
+   * The onClick event handler of the button.
+   */
   onClick: () => void
+  /**
+   * The button icon.
+   */
   icon: ReactElement<IconProps>
 }
 

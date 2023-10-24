@@ -4,6 +4,9 @@ import {DependencyList, useEffect, useState} from 'react'
  * Type of disposable object.
  */
 export type IDisposable = {
+  /**
+   * Performs the tasks necessary to release resources correctly.
+   */
   dispose: () => void
 }
 

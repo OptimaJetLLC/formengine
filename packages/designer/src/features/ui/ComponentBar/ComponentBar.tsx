@@ -11,7 +11,14 @@ import {SearchForm} from './components/SearchForm'
  * Properties of the draggable component.
  */
 export interface DraggableProps {
+  /**
+   * The flag of dragging the component, if true - the component is dragged, false - otherwise.
+   */
   draggable?: boolean
+  /**
+   * The callback function called when a component needs to be added to a target component.
+   * @param source the component to be added.
+   */
   onAdd?: (source: ComponentData) => void
 }
 

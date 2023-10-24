@@ -7,9 +7,22 @@ import type {RadioGroupProps} from 'rsuite/esm/RadioGroup/RadioGroup'
  * The properties of the React {@link RadioButtons} component.
  */
 export interface RadioButtonsProps extends RadioGroupProps {
+  /**
+   * The radio group label.
+   */
   label?: string
+  /**
+   * The radio group value.
+   */
   value?: string
+  /**
+   * The callback function called when a value in a radio group changes.
+   * @param value the value.
+   */
   onChange: (value: string | number) => void
+  /**
+   * The array of possible values.
+   */
   items?: LabeledValue[]
 }
 

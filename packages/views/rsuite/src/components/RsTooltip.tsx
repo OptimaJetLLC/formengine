@@ -7,8 +7,17 @@ import type {OverlayTriggerType} from 'rsuite/esm/Overlay/OverlayTrigger'
  * The properties of RsTooltip component.
  */
 export interface RsTooltipProps extends WrapperProps {
+  /**
+   * The tooltip text.
+   */
   text: string
+  /**
+   * The placement of a tooltip.
+   */
   placement: TypeAttributes.Placement
+  /**
+   * The tooltip trigger.
+   */
   trigger: OverlayTriggerType
 }
 

@@ -4,9 +4,25 @@ import {Annotation, ComponentData, ComponentPropertyComputeType} from '@react-fo
  * Represents the props used to edit a calculable property.
  */
 export interface CalculableEditorProps {
+  /**
+   * Disables the ability to make the property computable.
+   */
   disableCompute: () => void
+  /**
+   * Sets the computed property code.
+   * @param value the code of computed property.
+   * @param type the component property value type.
+   */
   setComputeCode: (value: string, type: ComponentPropertyComputeType) => void
+  /**
+   * Returns the code of the computed property.
+   * @param type the component property value type.
+   * @returns the code of the computed property.
+   */
   getComputeCode: (type: ComponentPropertyComputeType) => string,
+  /**
+   * Returns the type of calculation for the property.
+   */
   getComputeType: () => ComponentPropertyComputeType | undefined
 }
 

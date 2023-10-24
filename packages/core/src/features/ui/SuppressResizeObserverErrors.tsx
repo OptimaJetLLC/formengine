@@ -5,6 +5,9 @@ import {useEffect, useRef} from 'react'
  * Represents the props for the SuppressResizeObserverErrors component.
  */
 export interface SuppressResizeObserverErrorsProps {
+  /**
+   * The React child node.
+   */
   children: ReactNode
 }
 

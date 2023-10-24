@@ -107,7 +107,6 @@ export class EditableAction implements CustomActionEditorProps {
               readonly onSave: (namedAction: NamedActionDefinition) => void) {
     const clone = JSON.parse(JSON.stringify(namedAction.actionDefinition))
     this.customAction = {
-      editorId: namedAction.name || new Date().getTime(),
       name: namedAction.name,
       body: clone.body ?? '',
       params: clone.params
@@ -119,7 +118,13 @@ export class EditableAction implements CustomActionEditorProps {
  * The state of the modal window of the component list.
  */
 export interface ComponentsModalState {
+  /**
+   * The flag of modal window visibility, if true - the window is shown, if false - the window is hidden.
+   */
   opened: boolean
+  /**
+   * The callback function called when a component is selected in a modal window.
+   */
   onSelect: OnSelectCallback
 }
 
@@ -127,6 +132,9 @@ export interface ComponentsModalState {
  * The state of the modal window for entering a value.
  */
 export interface PromptModalState extends PromptDialogProps {
+  /**
+   * The flag of modal window visibility, if true - the window is shown, if false - the window is hidden.
+   */
   opened: boolean
 }
 

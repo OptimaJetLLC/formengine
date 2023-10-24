@@ -12,11 +12,32 @@ import {CodeEditorErrorMessage} from './CodeEditorErrorMessage'
  * Properties of the React component {@link GenericCodeEditor}.
  */
 export interface GenericCodeEditorProps {
+  /**
+   * Context line before the source code.
+   */
   beginContextLine?: string
+  /**
+   * Context line after the source code.
+   */
   endContextLine?: string
+  /**
+   * The source code.
+   */
   source?: string
+  /**
+   * The callback function called when the source code is saved.
+   * @param the source code.
+   */
   onSave: (value: string) => void
+  /**
+   * The callback function called when the editor is closed.
+   */
   onClose: () => void
+  /**
+   * The callback function called at compile time.
+   * @param value the source code.
+   * @returns the compilation result.
+   */
   onCompile: (value: string) => BaseCompilationResult
 }
 

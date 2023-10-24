@@ -13,7 +13,17 @@ import {useTranslationPart} from '../../../../localization/hooks'
 import {useSelection} from '../hooks/useSelection'
 import {AddButton} from './AddButton'
 
-export const Toolbar = namedObserver('Toolbar', ({compact}: { compact?: boolean }) => {
+/**
+ * Toolbar React component properties.
+ */
+export interface ToolbarProps {
+  /**
+   * Flag if true - the toolbar is displayed in compact mode, false otherwise.
+   */
+  compact?: boolean
+}
+
+export const Toolbar = namedObserver('Toolbar', ({compact}: ToolbarProps) => {
   const store = useBuilderStore()
   const data = useComponentData()
   const [{selected}] = useSelection()

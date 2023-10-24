@@ -41,9 +41,21 @@ export type Arguments = Record<ParameterName, ArgumentValue>
  * Used for add a new action, store information about it.
  */
 export type ActionData = {
+  /**
+   * The unique action key.
+   */
   [KeySymbol]?: string
+  /**
+   * The action name.
+   */
   name: string
+  /**
+   * The action type.
+   */
   type: ActionType
+  /**
+   * The action arguments.
+   */
   args?: Arguments
 }
 
@@ -56,7 +68,13 @@ export type ActionValues = Record<string, ActionDefinition>
  * Represents a named action definition.
  */
 export type NamedActionDefinition = {
+  /**
+   * The name of action definition.
+   */
   name: string
+  /**
+   * The definition of an action.
+   */
   actionDefinition: ActionDefinition
 }
 

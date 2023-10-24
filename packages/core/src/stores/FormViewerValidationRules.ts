@@ -5,6 +5,12 @@ import type {ValidationRuleSet} from '../features/validation/types/ValidationRul
  * Validation rules for FormViewer.
  */
 export type FormViewerValidationRules = {
+  /**
+   * The set of external validators.
+   */
   external?: ExternalValidationRules
+  /**
+   * The set of internal validators.
+   */
   internal: ValidationRuleSet
 }

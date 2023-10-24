@@ -5,15 +5,35 @@ import {editor} from 'monaco-editor'
  * The properties of the UnconstrainedCodeEditor React component.
  */
 export interface UnconstrainedCodeEditorProps {
+  /**
+   * The initial source code.
+   */
   initialValue: string
+  /**
+   * The callback function that is called when the source code is changed.
+   * @param value the source code.
+   */
   onChange: (value: string) => void
   /**
+   * The code editor language.
    * @default 'javascript'
    */
   language?: 'javascript' | 'json' | 'scss' | 'fluent'
+  /**
+   * The code editor height.
+   */
   height?: string | number
+  /**
+   * The code editor width.
+   */
   width?: string | number
+  /**
+   * The code editor CSS class name.
+   */
   className?: string
+  /**
+   * The options for creating a monaco editor.
+   */
   options?: editor.IStandaloneEditorConstructionOptions
   /**
    * The theme for the monaco.
@@ -26,14 +46,20 @@ export interface UnconstrainedCodeEditorProps {
  */
 export interface ConstrainedProps {
   /**
-   * Read only line for adding context to a code. Automatically adds the "}" symbol to the end.
+   * Context line before the source code. Automatically adds the "}" symbol to the end.
    * Especially useful to add jsdoc for typing before.
    * @example
    * '... jsdoc ...
    * function abc(name) {'
    */
   beginContextLine?: string
+  /**
+   * Context line after the source code.
+   */
   endContextLine?: string
+  /**
+   * Flag, if true then the context string before the source code is editable, false otherwise.
+   */
   canEditBeginContextLine?: boolean
 }
 

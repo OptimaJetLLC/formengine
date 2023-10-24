@@ -11,8 +11,17 @@ import {Language} from './types'
  * Localization testing result.
  */
 export type LocalizationTestResult = {
+  /**
+   * Flag if true - localization test failed, false otherwise.
+   */
   error: boolean
+  /**
+   * The localization result.
+   */
   result?: string
+  /**
+   * The array of localization errors.
+   */
   exceptions?: Error[]
 }
 
@@ -20,9 +29,21 @@ export type LocalizationTestResult = {
  * Localization testing request.
  */
 export type LocalizationTestRequest = {
+  /**
+   * Localization value to be tested.
+   */
   localization: string,
+  /**
+   * The identifier of the localization string.
+   */
   localizationStringId: string,
+  /**
+   * The localization Language.
+   */
   language: Language,
+  /**
+   * The test form data.
+   */
   data: Record<string, FluentVariable>
 }
 

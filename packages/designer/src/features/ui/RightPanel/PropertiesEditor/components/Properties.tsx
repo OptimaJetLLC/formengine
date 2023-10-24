@@ -108,10 +108,25 @@ const StyleBlock = namedObserver('StyleBlock', ({annotations, store}: { annotati
  * Represents the properties of PropertyBlock component.
  */
 export interface PropertyBlockProps {
+  /**
+   * The array of metadata properties of a React component.
+   */
   annotations: Annotation[],
+  /**
+   * The context containing the property data.
+   */
   context?: object,
+  /**
+   * The function for creating an editing context, used if no context is specified.
+   */
   initContext?: () => Record<string, any>,
+  /**
+   * The title of the component's property block.
+   */
   header?: string,
+  /**
+   * The property block type.
+   */
   propertyBlockType?: PropertyBlockType
 }
 

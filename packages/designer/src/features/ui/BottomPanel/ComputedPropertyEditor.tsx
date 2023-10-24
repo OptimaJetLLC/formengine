@@ -17,7 +17,17 @@ const editors: Record<ComputeType, any> = {
   simpleValue: SimpleValueEditor
 }
 
-export const ComputedPropertyEditor = namedObserver('ComputedPropertyEditor', ({property}: { property: EditableProperty }) => {
+/**
+ * ComputedPropertyEditor React component properties.
+ */
+export interface ComputedPropertyEditorProps {
+  /**
+   * The editable computable property.
+   */
+  property: EditableProperty
+}
+
+export const ComputedPropertyEditor = namedObserver('ComputedPropertyEditor', ({property}: ComputedPropertyEditorProps) => {
   const builderStore = useBuilderStore()
   const {t} = useTranslation()
   const initialComputeType = property.getComputeType() ?? 'simpleValue'

@@ -9,6 +9,9 @@ import {useDataValidator} from './useDataValidator'
  * Represents a set of erroneous component properties.
  */
 export interface ErroneousProps extends WrapperProps, AnnotationEditorProps {
+  /**
+   * The error message.
+   */
   error?: string
 }
 

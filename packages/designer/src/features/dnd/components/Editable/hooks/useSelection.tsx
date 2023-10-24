@@ -8,7 +8,13 @@ import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
  * Represents the selection state of the component.
  */
 export interface SelectionState {
+  /**
+   * Flag, if true then the component is hovered, false otherwise.
+   */
   hovered: boolean
+  /**
+   * Flag, if true then the component is selected, false otherwise.
+   */
   selected: boolean
 }
 
@@ -16,8 +22,19 @@ export interface SelectionState {
  * Represents mouse event handlers for the selected component.
  */
 export interface SelectionHandlers {
+  /**
+   * The callback function called when a component is clicked.
+   * @param e the original mouse event.
+   */
   onClick: (e: MouseEvent) => void
+  /**
+   * The callback function called when the mouse hits the component area.
+   * @param e the original mouse event.
+   */
   onMouseOver: (e: MouseEvent) => void
+  /**
+   * The callback function called when the mouse exits the component area.
+   */
   onMouseOut: () => void
 }
 

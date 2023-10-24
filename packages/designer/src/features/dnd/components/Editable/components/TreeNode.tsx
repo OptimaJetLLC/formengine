@@ -8,7 +8,17 @@ import {useComputed} from '../../../../../utils/useComputed'
 import {useSelection} from '../hooks/useSelection'
 import {Toolbar} from './Toolbar'
 
-export const TreeNode = namedObserver('TreeNode', ({className}: { className: string }) => {
+/**
+ * TreeNode React component properties.
+ */
+export interface TreeNodeProps {
+  /**
+   * The CSS class name.
+   */
+  className: string
+}
+
+export const TreeNode = namedObserver('TreeNode', ({className}: TreeNodeProps) => {
   const componentData = useComponentData()
   const {expanded: expandedNodes, viewer} = useBuilderStore()
   const depth = useComputed(() => findTreeElementDepth(viewer.form.componentTree, componentData) ?? 0)
