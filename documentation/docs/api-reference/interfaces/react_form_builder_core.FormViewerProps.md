@@ -31,7 +31,7 @@ ___
 
 • `Optional` **erroneous**: `boolean`
 
-No use a error wrap component.
+If true, the component will not be wrapped by the error display component.
 
 ___
 

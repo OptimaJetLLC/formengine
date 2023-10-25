@@ -19,7 +19,7 @@ The builder class to define the metadata of the form builder component.
 
 ### constructor
 
-• `Private` **new Definer**<`T`\>(`view`)
+• `Private` **new Definer**<`T`\>(`component`)
 
 #### Type parameters
 
@@ -31,7 +31,7 @@ The builder class to define the metadata of the form builder component.
 
 | Name | Type |
 | :------ | :------ |
-| `view` | `ComponentType`<`T`\> |
+| `component` | `ComponentType`<`T`\> |
 
 ## Properties
 
@@ -217,7 +217,7 @@ ___
 
 ### define
 
-▸ `Static` **define**<`T`\>(`view`, `displayName?`): [`Definer`](react_form_builder_core.Definer.md)<`T`\>
+▸ `Static` **define**<`T`\>(`component`, `displayName?`): [`Definer`](react_form_builder_core.Definer.md)<`T`\>
 
 Static method to create an instance of the component's metadata builder class.
 
@@ -231,7 +231,7 @@ Static method to create an instance of the component's metadata builder class.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `view` | `ComponentType`<`T`\> | the React component type. |
+| `component` | `ComponentType`<`T`\> | the React component. |
 | `displayName?` | `string` | the display name for the anonymous component. |
 
 #### Returns

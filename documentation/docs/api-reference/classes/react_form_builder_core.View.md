@@ -17,6 +17,8 @@ Represents all the metadata of the form viewer components.
 
   ↳ [`BuilderView`](react_form_builder_core.BuilderView.md)
 
+  ↳ [`BuilderView`](react_form_builder_designer.BuilderView.md)
+
 ## Constructors
 
 ### constructor

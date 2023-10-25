@@ -14,3 +14,5 @@ Represents the props for the SuppressResizeObserverErrors component.
 ### children
 
 • **children**: `ReactNode`
+
+The React child node.

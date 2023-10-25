@@ -27,6 +27,8 @@ Represents the props used to edit a calculable property.
 
 ▸ (): `void`
 
+Disables the ability to make the property computable.
+
 ##### Returns
 
 `void`
@@ -35,52 +37,60 @@ ___
 
 ### getComputeCode
 
-• **getComputeCode**: (`type`: `ComponentPropertyComputeType`) => `string`
+• **getComputeCode**: (`type`: [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype)) => `string`
 
 #### Type declaration
 
 ▸ (`type`): `string`
 
+Returns the code of the computed property.
+
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `type` | `ComponentPropertyComputeType` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `type` | [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype) | the component property value type. |
 
 ##### Returns
 
 `string`
 
+the code of the computed property.
+
 ___
 
 ### getComputeType
 
-• **getComputeType**: () => `undefined` \| `ComponentPropertyComputeType`
+• **getComputeType**: () => `undefined` \| [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype)
 
 #### Type declaration
 
-▸ (): `undefined` \| `ComponentPropertyComputeType`
+▸ (): `undefined` \| [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype)
+
+Returns the type of calculation for the property.
 
 ##### Returns
 
-`undefined` \| `ComponentPropertyComputeType`
+`undefined` \| [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype)
 
 ___
 
 ### setComputeCode
 
-• **setComputeCode**: (`value`: `string`, `type`: `ComponentPropertyComputeType`) => `void`
+• **setComputeCode**: (`value`: `string`, `type`: [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype)) => `void`
 
 #### Type declaration
 
 ▸ (`value`, `type`): `void`
 
+Sets the computed property code.
+
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `string` |
-| `type` | `ComponentPropertyComputeType` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `string` | the code of computed property. |
+| `type` | [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype) | the component property value type. |
 
 ##### Returns
 

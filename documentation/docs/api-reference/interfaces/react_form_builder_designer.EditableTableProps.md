@@ -87,7 +87,7 @@ ___
 
 ### aria-autocomplete
 
-• `Optional` **aria-autocomplete**: ``"list"`` \| ``"none"`` \| ``"inline"`` \| ``"both"``
+• `Optional` **aria-autocomplete**: ``"none"`` \| ``"list"`` \| ``"inline"`` \| ``"both"``
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -195,7 +195,7 @@ ___
 
 ### aria-current
 
-• `Optional` **aria-current**: `boolean` \| ``"time"`` \| ``"date"`` \| ``"true"`` \| ``"false"`` \| ``"step"`` \| ``"page"`` \| ``"location"``
+• `Optional` **aria-current**: `boolean` \| ``"date"`` \| ``"time"`` \| ``"true"`` \| ``"false"`` \| ``"step"`` \| ``"page"`` \| ``"location"``
 
 Indicates the element that represents the current item within a container or set of related elements.
 
@@ -330,7 +330,7 @@ ___
 
 ### aria-haspopup
 
-• `Optional` **aria-haspopup**: `boolean` \| ``"dialog"`` \| ``"menu"`` \| ``"grid"`` \| ``"listbox"`` \| ``"tree"`` \| ``"true"`` \| ``"false"``
+• `Optional` **aria-haspopup**: `boolean` \| ``"dialog"`` \| ``"menu"`` \| ``"grid"`` \| ``"true"`` \| ``"listbox"`` \| ``"tree"`` \| ``"false"``
 
 Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 
@@ -758,6 +758,8 @@ ___
 
 • `Optional` **autoAdd**: `boolean`
 
+Flag, if true, one new row will be automatically added when editing the last row of the table, false otherwise.
+
 ___
 
 ### autoCapitalize
@@ -917,6 +919,8 @@ ___
 
 • `Optional` **columns**: `Element`[]
 
+The columns of the table.
+
 ___
 
 ### contentEditable
@@ -958,6 +962,8 @@ ___
 ### data
 
 • **data**: `RowDataType`<`never`\>[]
+
+The table data.
 
 #### Overrides
 
@@ -1067,6 +1073,8 @@ ___
 
 • `Optional` **errorMessage**: `string`
 
+The error message.
+
 ___
 
 ### expandedRowKeys
@@ -1132,6 +1140,8 @@ ___
 
 • `Optional` **hideHeader**: `boolean`
 
+Flag, if true then the table header will be hidden, false otherwise.
+
 ___
 
 ### hover
@@ -1168,7 +1178,7 @@ ___
 
 ### inputMode
 
-• `Optional` **inputMode**: ``"text"`` \| ``"email"`` \| ``"search"`` \| ``"tel"`` \| ``"url"`` \| ``"none"`` \| ``"numeric"`` \| ``"decimal"``
+• `Optional` **inputMode**: ``"text"`` \| ``"none"`` \| ``"search"`` \| ``"email"`` \| ``"url"`` \| ``"tel"`` \| ``"numeric"`` \| ``"decimal"``
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 
@@ -1264,6 +1274,8 @@ ___
 
 • `Optional` **label**: `string`
 
+The table label.
+
 ___
 
 ### lang
@@ -1315,6 +1327,8 @@ ___
 ### maxRows
 
 • `Optional` **maxRows**: `number`
+
+Maximum number of rows to be displayed.
 
 ___
 
@@ -1523,6 +1537,8 @@ ___
 ### onChange
 
 • `Optional` **onChange**: `FormEventHandler`<`HTMLElement`\>
+
+The callback function called when data in the table is changed.
 
 #### Overrides
 

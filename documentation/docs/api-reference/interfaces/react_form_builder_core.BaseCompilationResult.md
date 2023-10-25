@@ -9,22 +9,18 @@ custom_edit_url: null
 
 The result of compiling of anything.
 
-## Hierarchy
-
-- **`BaseCompilationResult`**
-
-  ↳ [`CompilationResult`](react_form_builder_core.CompilationResult.md)
-
-  ↳ [`CompilationResult`](react_form_builder_core.CompilationResult.md)
-
 ## Properties
 
 ### error
 
 • **error**: `boolean`
 
+Flag if true - compilation failed, false otherwise.
+
 ___
 
 ### exceptions
 
 • `Optional` **exceptions**: `Error`[]
+
+The array of compilation errors.

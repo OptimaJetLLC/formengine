@@ -15,31 +15,31 @@ custom_edit_url: null
 
 ### models
 
-• `Const` **models**: `Model`<`any`\>[]
+• `Const` **models**: [`Model`](../classes/react_form_builder_core.Model.md)<`any`\>[]
 
 ___
 
 ### rSuiteComponents
 
-• `Const` **rSuiteComponents**: `Definer`<`any`\>[] = `[]`
+• `Const` **rSuiteComponents**: [`Definer`](../classes/react_form_builder_core.Definer.md)<`any`\>[] = `[]`
 
 ___
 
 ### rsErrorMessage
 
-• `Const` **rsErrorMessage**: `Definer`<[`RsErrorMessageProps`](../interfaces/react_form_builder_components_rsuite.RsErrorMessageProps.md)\>
+• `Const` **rsErrorMessage**: [`Definer`](../classes/react_form_builder_core.Definer.md)<[`RsErrorMessageProps`](../interfaces/react_form_builder_components_rsuite.RsErrorMessageProps.md)\>
 
 ___
 
 ### rsTooltip
 
-• `Const` **rsTooltip**: `Definer`<[`RsTooltipProps`](../interfaces/react_form_builder_components_rsuite.RsTooltipProps.md)\>
+• `Const` **rsTooltip**: [`Definer`](../classes/react_form_builder_core.Definer.md)<[`RsTooltipProps`](../interfaces/react_form_builder_components_rsuite.RsTooltipProps.md)\>
 
 ___
 
 ### view
 
-• `Const` **view**: `View`
+• `Const` **view**: [`View`](../classes/react_form_builder_core.View.md)
 
 ## Functions
 
@@ -53,7 +53,7 @@ Wrapper component for RSuite components localization.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `props` | `FormViewerWrapperComponentProps` | the component props. |
+| `props` | [`FormViewerWrapperComponentProps`](../interfaces/react_form_builder_core.FormViewerWrapperComponentProps.md) | the component props. |
 
 #### Returns
 

@@ -20,6 +20,7 @@ custom_edit_url: null
 - [BaseBuilder](../classes/react_form_builder_core.BaseBuilder.md)
 - [BuilderOptions](../classes/react_form_builder_core.BuilderOptions.md)
 - [BuilderView](../classes/react_form_builder_core.BuilderView.md)
+- [CalculableTestResult](../classes/react_form_builder_core.CalculableTestResult.md)
 - [ComponentData](../classes/react_form_builder_core.ComponentData.md)
 - [ComponentDataEvents](../classes/react_form_builder_core.ComponentDataEvents.md)
 - [ComponentKeyChangedEventArgs](../classes/react_form_builder_core.ComponentKeyChangedEventArgs.md)
@@ -53,7 +54,6 @@ custom_edit_url: null
 
 - [BaseCompilationResult](../interfaces/react_form_builder_core.BaseCompilationResult.md)
 - [BuilderComponent](../interfaces/react_form_builder_core.BuilderComponent.md)
-- [CompilationResult](../interfaces/react_form_builder_core.CompilationResult.md)
 - [ComponentProperty](../interfaces/react_form_builder_core.ComponentProperty.md)
 - [ComponentTreeProps](../interfaces/react_form_builder_core.ComponentTreeProps.md)
 - [ErrorWrapperProps](../interfaces/react_form_builder_core.ErrorWrapperProps.md)
@@ -81,12 +81,12 @@ Used for add a new action, store information about it.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `[KeySymbol]?` | `string` |
-| `args?` | [`Arguments`](react_form_builder_core.md#arguments) |
-| `name` | `string` |
-| `type` | [`ActionType`](react_form_builder_core.md#actiontype) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `[KeySymbol]?` | `string` | The unique action key. |
+| `args?` | [`Arguments`](react_form_builder_core.md#arguments) | The action arguments. |
+| `name` | `string` | The action name. |
+| `type` | [`ActionType`](react_form_builder_core.md#actiontype) | The action type. |
 
 ___
 
@@ -234,10 +234,10 @@ Value validation rules.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `autoValidate?` | `boolean` |
-| `validations?` | [`ValidationRuleSettings`](react_form_builder_core.md#validationrulesettings)[] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `autoValidate?` | `boolean` | Flag, if true then automatic validation of the value works, false otherwise. |
+| `validations?` | [`ValidationRuleSettings`](react_form_builder_core.md#validationrulesettings)[] | The array of validation rule settings. |
 
 ___
 
@@ -364,7 +364,7 @@ ___
 
 ### DefineActionHelper
 
-Ƭ **DefineActionHelper**: <T\>(`name`: `string`, `func`: [`ActionHandler`](react_form_builder_core.md#actionhandler)<`T`\>, `params?`: [`ParametersDefinition`](react_form_builder_core.md#parametersdefinition)<`T`\>[], `description?`: `string`) => [`ActionDefinition`](../classes/react_form_builder_core.ActionDefinition.md)
+Ƭ **DefineActionHelper**: <T\>(`name`: `string`, `func`: [`ActionHandler`](react_form_builder_core.md#actionhandler)<`T`\>, `params?`: [`ParameterDefinition`](react_form_builder_core.md#parameterdefinition)<`T`\>[], `description?`: `string`) => [`ActionDefinition`](../classes/react_form_builder_core.ActionDefinition.md)
 
 #### Type declaration
 
@@ -384,7 +384,7 @@ The defineAction helper type.
 | :------ | :------ |
 | `name` | `string` |
 | `func` | [`ActionHandler`](react_form_builder_core.md#actionhandler)<`T`\> |
-| `params?` | [`ParametersDefinition`](react_form_builder_core.md#parametersdefinition)<`T`\>[] |
+| `params?` | [`ParameterDefinition`](react_form_builder_core.md#parameterdefinition)<`T`\>[] |
 | `description?` | `string` |
 
 ##### Returns
@@ -407,24 +407,16 @@ Definer class data.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `actionsInitializer?` | [`ActionsInitializer`](react_form_builder_core.md#actionsinitializer) |
-| `category?` | `string` |
-| `cssObject?` | [`Annotations`](react_form_builder_core.md#annotations)<`CSSObject`\> |
-| `customPreview?` | `ReactNode` |
-| `icon?` | `ComponentType` |
-| `name?` | `string` |
-| `properties?` | [`Annotations`](react_form_builder_core.md#annotations)<`T`\> |
-| `view` | `ComponentType`<`T`\> |
-
-___
-
-### Device
-
-Ƭ **Device**: ``"any"`` \| [`ViewMode`](react_form_builder_core.md#viewmode)
-
-Display resolution type of the form builder.
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `actionsInitializer?` | [`ActionsInitializer`](react_form_builder_core.md#actionsinitializer) | The function that initializes an actions on a component (for internal use only). |
+| `category?` | `string` | The component category. |
+| `component` | `ComponentType`<`T`\> | The React component. |
+| `cssObject?` | [`Annotations`](react_form_builder_core.md#annotations)<`CSSObject`\> | The CSS metadata. |
+| `customPreview?` | `ReactNode` | The custom component to display in the component list (unused). |
+| `icon?` | `ComponentType` | The component icon. |
+| `name?` | `string` | The component name. |
+| `properties?` | [`Annotations`](react_form_builder_core.md#annotations)<`T`\> | The property metadata. |
 
 ___
 
@@ -475,10 +467,10 @@ The result of validating a component property in the form builder.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `code?` | `string` |
-| `message?` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `code?` | `string` | The validation code. |
+| `message?` | `string` | The validation message. |
 
 ___
 
@@ -603,10 +595,10 @@ Validation rules for FormViewer.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `external?` | [`ExternalValidationRules`](react_form_builder_core.md#externalvalidationrules) |
-| `internal` | [`ValidationRuleSet`](react_form_builder_core.md#validationruleset) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `external?` | [`ExternalValidationRules`](react_form_builder_core.md#externalvalidationrules) | The set of external validators. |
+| `internal` | [`ValidationRuleSet`](react_form_builder_core.md#validationruleset) | The set of internal validators. |
 
 ___
 
@@ -678,28 +670,12 @@ Localization testing request.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `data` | `Record`<`string`, `FluentVariable`\> |
-| `language` | [`Language`](../classes/react_form_builder_core.Language.md) |
-| `localization` | `string` |
-| `localizationStringId` | `string` |
-
-___
-
-### LocalizationTestResult
-
-Ƭ **LocalizationTestResult**: `Object`
-
-Localization testing result.
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `error` | `boolean` |
-| `exceptions?` | `Error`[] |
-| `result?` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `data` | `Record`<`string`, `FluentVariable`\> | The test form data. |
+| `language` | [`Language`](../classes/react_form_builder_core.Language.md) | The localization Language. |
+| `localization` | `string` | Localization value to be tested. |
+| `localizationStringId` | `string` | The identifier of the localization string. |
 
 ___
 
@@ -741,10 +717,24 @@ Represents a named action definition.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `actionDefinition` | [`ActionDefinition`](../classes/react_form_builder_core.ActionDefinition.md) |
-| `name` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `actionDefinition` | [`ActionDefinition`](../classes/react_form_builder_core.ActionDefinition.md) | The definition of an action. |
+| `name` | `string` | The name of action definition. |
+
+___
+
+### ParameterDefinition
+
+Ƭ **ParameterDefinition**<`T`\>: [[`PropertyKey`](react_form_builder_core.md#propertykey)<`T`\>, [`ParameterType`](react_form_builder_core.md#parametertype)]
+
+The type to describe the action parameter.
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
 
 ___
 
@@ -761,20 +751,6 @@ ___
 Ƭ **ParameterType**: ``"string"`` \| ``"number"`` \| ``"boolean"``
 
 Parameter type.
-
-___
-
-### ParametersDefinition
-
-Ƭ **ParametersDefinition**<`T`\>: [[`PropertyKey`](react_form_builder_core.md#propertykey)<`T`\>, [`ParameterType`](react_form_builder_core.md#parametertype)]
-
-The type to describe the action parameter.
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
 
 ___
 
@@ -922,15 +898,15 @@ Describes the mapping of a value type name to a type.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `array` | `any`[] |
-| `boolean` | `boolean` |
-| `date` | `Date` |
-| `enum` | `any` |
-| `number` | `number` |
-| `object` | `object` |
-| `string` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `array` | `any`[] | The array. |
+| `boolean` | `boolean` | The boolean. |
+| `date` | `Date` | The date. |
+| `enum` | `any` | The enumeration. |
+| `number` | `number` | The number. |
+| `object` | `object` | The object. |
+| `string` | `string` | The string. |
 
 ___
 
@@ -1038,13 +1014,13 @@ Describes the settings of the validation rule parameter.
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `default?` | `unknown` |
-| `editorType?` | `string` |
-| `key` | `string` |
-| `required` | `boolean` |
-| `type` | [`SchemaType`](react_form_builder_core.md#schematype) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `default?` | `unknown` | The default value. |
+| `editorType?` | `string` | The editor type of the setting value. |
+| `key` | `string` | The unique setting key of the parameter. |
+| `required` | `boolean` | Flag whether the setting value must be filled in. |
+| `type` | [`SchemaType`](react_form_builder_core.md#schematype) | The type of value. |
 
 ___
 
@@ -1457,6 +1433,27 @@ ___
 
 ___
 
+### calculatePropertyValue
+
+▸ **calculatePropertyValue**(`componentProperty`, `formViewerData`): [`CalculableTestResult`](../classes/react_form_builder_core.CalculableTestResult.md)
+
+Calculates the value for the component property.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `componentProperty` | [`ComponentProperty`](../interfaces/react_form_builder_core.ComponentProperty.md) | the component property. |
+| `formViewerData` | [`IFormData`](../interfaces/react_form_builder_core.IFormData.md) | the formViewerData data. |
+
+#### Returns
+
+[`CalculableTestResult`](../classes/react_form_builder_core.CalculableTestResult.md)
+
+the calculated value.
+
+___
+
 ### checkSlotCondition
 
 ▸ **checkSlotCondition**(`childStore`, `parentProps`): `any`
@@ -1475,26 +1472,6 @@ Performs the function of checking if the child component can be bound.
 `any`
 
 true, if the child component can be bound, false otherwise.
-
-___
-
-### compileFn
-
-▸ **compileFn**(`source`): [`CompilationResult`](../interfaces/react_form_builder_core.CompilationResult.md)
-
-Compiles the function from string source code.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | `string` | the function source code. |
-
-#### Returns
-
-[`CompilationResult`](../interfaces/react_form_builder_core.CompilationResult.md)
-
-the result of the function compilation.
 
 ___
 
@@ -1612,7 +1589,7 @@ ___
 
 ### define
 
-▸ **define**<`T`\>(`view`, `displayName?`): [`Definer`](../classes/react_form_builder_core.Definer.md)<`T`\>
+▸ **define**<`T`\>(`component`, `displayName?`): [`Definer`](../classes/react_form_builder_core.Definer.md)<`T`\>
 
 Static method to create an instance of the component's metadata builder class.
 
@@ -1626,7 +1603,7 @@ Static method to create an instance of the component's metadata builder class.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `view` | `ComponentType`<`T`\> | the React component type. |
+| `component` | `ComponentType`<`T`\> | the React component. |
 | `displayName?` | `string` | the display name for the anonymous component. |
 
 #### Returns
@@ -1746,6 +1723,27 @@ the Fluent compatible id.
 
 ___
 
+### getFluentData
+
+▸ **getFluentData**(`data`): `Record`<`string`, `FluentVariable`\>
+
+Converts the form data to a Fluent compatible.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `data` | `Record`<`string`, `unknown`\> | the form data. |
+
+#### Returns
+
+`Record`<`string`, `FluentVariable`\>
+
+all the form data that is of the FluentVariable type.
+Additionally, the keys of the returned object are converted to the snake case.
+
+___
+
 ### getKey
 
 ▸ **getKey**(): `string`
@@ -1804,6 +1802,26 @@ Groups the array of values by function predicate.
 `Record`<`string`, `T`[]\>
 
 the Record with grouped values.
+
+___
+
+### initFormFields
+
+▸ **initFormFields**(`form`): `Record`<`string`, `unknown`\>
+
+Replaces empty form fields with an empty string.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `form` | [`ComponentData`](../classes/react_form_builder_core.ComponentData.md) | the form. |
+
+#### Returns
+
+`Record`<`string`, `unknown`\>
+
+all form data where empty fields are filled with empty strings.
 
 ___
 
@@ -2117,7 +2135,7 @@ ___
 
 ### testFluentLocalization
 
-▸ **testFluentLocalization**(`request`): [`LocalizationTestResult`](react_form_builder_core.md#localizationtestresult)
+▸ **testFluentLocalization**(`request`): [`CalculableTestResult`](../classes/react_form_builder_core.CalculableTestResult.md)
 
 Localization testing function.
 
@@ -2129,7 +2147,7 @@ Localization testing function.
 
 #### Returns
 
-[`LocalizationTestResult`](react_form_builder_core.md#localizationtestresult)
+[`CalculableTestResult`](../classes/react_form_builder_core.CalculableTestResult.md)
 
 the localization testing result.
 

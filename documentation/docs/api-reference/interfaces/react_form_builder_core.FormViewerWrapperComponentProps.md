@@ -15,8 +15,12 @@ Represents the props for the WrapperComponent. WrapperComponent is a component t
 
 • **children**: `ReactNode`
 
+The React child node.
+
 ___
 
 ### language
 
 • **language**: [`Language`](../classes/react_form_builder_core.Language.md)
+
+The FormViewer language.

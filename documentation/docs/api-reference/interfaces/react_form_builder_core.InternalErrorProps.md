@@ -14,3 +14,5 @@ React component properties that display an internal form view error.
 ### error
 
 • **error**: `any`
+
+The internal error.

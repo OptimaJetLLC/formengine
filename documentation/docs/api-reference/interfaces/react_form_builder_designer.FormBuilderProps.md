@@ -11,7 +11,7 @@ Properties of the React Form builder component.
 
 ## Hierarchy
 
-- `Omit`<`FormViewerProps`, ``"view"``\>
+- `Omit`<[`FormViewerProps`](react_form_builder_core.FormViewerProps.md), ``"view"``\>
 
   ↳ **`FormBuilderProps`**
 
@@ -31,7 +31,7 @@ ___
 
 ### computeChildren
 
-• `Optional` **computeChildren**: `ComputeChildren`
+• `Optional` **computeChildren**: [`ComputeChildren`](../modules/react_form_builder_core.md#computechildren)
 
 Function that calculates all child properties of a component.
 
@@ -45,7 +45,7 @@ ___
 
 • `Optional` **erroneous**: `boolean`
 
-No use a error wrap component.
+If true, the component will not be wrapped by the error display component.
 
 #### Inherited from
 
@@ -55,7 +55,7 @@ ___
 
 ### event
 
-• `Optional` **event**: (`stream`: `EventStream`) => `void`
+• `Optional` **event**: (`stream`: [`EventStream`](../classes/react_form_builder_core.EventStream.md)) => `void`
 
 #### Type declaration
 
@@ -67,7 +67,7 @@ The function for processing form events.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `stream` | `EventStream` | the event stream of the form viewer. |
+| `stream` | [`EventStream`](../classes/react_form_builder_core.EventStream.md) | the event stream of the form viewer. |
 
 ##### Returns
 
@@ -81,7 +81,7 @@ ___
 
 ### externalActions
 
-• `Optional` **externalActions**: `ExternalActions`
+• `Optional` **externalActions**: [`ExternalActions`](../modules/react_form_builder_core.md#externalactions)
 
 External actions for the form viewer.
 
@@ -93,7 +93,7 @@ ___
 
 ### externalFormValidators
 
-• `Optional` **externalFormValidators**: `ExternalFormValidators`
+• `Optional` **externalFormValidators**: [`ExternalFormValidators`](../modules/react_form_builder_core.md#externalformvalidators)
 
 The set of functions that validate the form data.
 
@@ -113,7 +113,7 @@ ___
 
 ### externalValidators
 
-• `Optional` **externalValidators**: `Partial`<`Record`<keyof `SchemaTypeMap`, `ExternalValidationRules`\>\>
+• `Optional` **externalValidators**: `Partial`<`Record`<keyof [`SchemaTypeMap`](../modules/react_form_builder_core.md#schematypemap), [`ExternalValidationRules`](../modules/react_form_builder_core.md#externalvalidationrules)\>\>
 
 The set of metadata of external validation rules, grouped by the type of value being validated.
 
@@ -193,7 +193,7 @@ ___
 
 ### language
 
-• `Optional` **language**: `Language`
+• `Optional` **language**: [`Language`](../classes/react_form_builder_core.Language.md)
 
 The language of form.
 
@@ -205,7 +205,7 @@ ___
 
 ### localize
 
-• `Optional` **localize**: `ComponentLocalizer`
+• `Optional` **localize**: [`ComponentLocalizer`](../modules/react_form_builder_core.md#componentlocalizer)
 
 The function to localize the properties of a component.
 
@@ -217,7 +217,7 @@ ___
 
 ### onDataChange
 
-• `Optional` **onDataChange**: (`data`: `IFormData`) => `void`
+• `Optional` **onDataChange**: (`data`: [`IFormData`](react_form_builder_core.IFormData.md)) => `void`
 
 #### Type declaration
 
@@ -229,7 +229,7 @@ The event is called whenever a form data changes.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `data` | `IFormData` | the IFormData with all the form data. |
+| `data` | [`IFormData`](react_form_builder_core.IFormData.md) | the IFormData with all the form data. |
 
 ##### Returns
 
@@ -251,7 +251,7 @@ ___
 
 ### viewMode
 
-• `Optional` **viewMode**: `ViewMode`
+• `Optional` **viewMode**: [`ViewMode`](../modules/react_form_builder_core.md#viewmode)
 
 Display resolution type.
 
@@ -263,9 +263,9 @@ ___
 
 ### viewerRef
 
-• `Optional` **viewerRef**: `ForwardedRef`<`IFormViewer`\>
+• `Optional` **viewerRef**: `ForwardedRef`<[`IFormViewer`](react_form_builder_core.IFormViewer.md)\>
 
-The reference to IFormViewer.
+The reference to [IFormViewer](react_form_builder_core.IFormViewer.md).
 
 #### Inherited from
 

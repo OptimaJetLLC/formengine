@@ -50,6 +50,8 @@ ___
 
 • **form**: [`Form`](react_form_builder_core.Form.md)
 
+The displayed form.
+
 #### Implementation of
 
 [IStore](../interfaces/react_form_builder_core.IStore.md).[form](../interfaces/react_form_builder_core.IStore.md#form)

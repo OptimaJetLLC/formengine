@@ -162,21 +162,33 @@ This is our simplest action:
  * @param {} args - the action arguments.
  */
 async function Action(e, args) {
-  console.log(e.store.form.componentTree.data)
+  console.log('Name', e.data.name)
 }
 ```
 
-- [ActionEventArgs](api-reference/classes/ActionEventArgs) `e` is a variable containing the event data.
-- [Store](api-reference/classes/Store) `store` is an object containing the current state of the form display library.
-- [Form](api-reference/classes/Form) `form` is an object containing all form components.
-- [ComponentData](api-reference/classes/ComponentData) `componentTree` is an object with a component tree.
-- [Record<string, unknown>](api-reference/classes/ComponentData#data) `data` is the data of the form.
+- [ActionEventArgs](/api-reference/classes/react_form_builder_core.ActionEventArgs) `e` is a variable containing the event data.
+- [Record<string, unknown>](/api-reference/classes/react_form_builder_core.ActionEventArgs#data) `e.data` is the data of the form.
 
-:::warning
+:::info
 
-This part of the API looks complex and will most likely be changed to simplify it.
+Using the `e.data` object, you can read and write form data, as in this example. We have a form input component with the `name` key. We can
+use the following code to read the value: `e.data.name`. To write the value, we can use the following code: `e.data.name = 'Some value'`.
 
 :::
+
+Change the action code to the following to see how you can change the data in the form using the action:
+
+```javascript
+/**
+ * @param {ActionEventArgs} e - the action arguments.
+ * @param {} args - the action arguments.
+ */
+async function Action(e, args) {
+  console.log('Name', e.data.name)
+  // highlight-next-line
+  e.data.name = `Marta ${new Date().getTime()}`
+}
+```
 
 ## Testing the created form
 

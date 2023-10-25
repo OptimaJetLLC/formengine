@@ -14,3 +14,5 @@ Properties of a form component tree element.
 ### data
 
 • **data**: [`ComponentData`](../classes/react_form_builder_core.ComponentData.md)[]
+
+An array of child elements of the tree.

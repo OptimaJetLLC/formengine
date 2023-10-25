@@ -14,3 +14,5 @@ Properties of the root component of the form.
 ### children
 
 • **children**: `ReactNode`
+
+The React child node.

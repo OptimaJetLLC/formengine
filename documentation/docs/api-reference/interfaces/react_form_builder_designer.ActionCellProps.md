@@ -39,7 +39,7 @@ ___
 
 ### align
 
-• `Optional` **align**: ``"left"`` \| ``"center"`` \| ``"right"``
+• `Optional` **align**: ``"left"`` \| ``"right"`` \| ``"center"``
 
 #### Inherited from
 
@@ -73,7 +73,7 @@ ___
 
 ### aria-autocomplete
 
-• `Optional` **aria-autocomplete**: ``"list"`` \| ``"none"`` \| ``"inline"`` \| ``"both"``
+• `Optional` **aria-autocomplete**: ``"none"`` \| ``"list"`` \| ``"inline"`` \| ``"both"``
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -181,7 +181,7 @@ ___
 
 ### aria-current
 
-• `Optional` **aria-current**: `boolean` \| ``"time"`` \| ``"date"`` \| ``"true"`` \| ``"false"`` \| ``"step"`` \| ``"page"`` \| ``"location"``
+• `Optional` **aria-current**: `boolean` \| ``"date"`` \| ``"time"`` \| ``"true"`` \| ``"false"`` \| ``"step"`` \| ``"page"`` \| ``"location"``
 
 Indicates the element that represents the current item within a container or set of related elements.
 
@@ -316,7 +316,7 @@ ___
 
 ### aria-haspopup
 
-• `Optional` **aria-haspopup**: `boolean` \| ``"dialog"`` \| ``"menu"`` \| ``"grid"`` \| ``"listbox"`` \| ``"tree"`` \| ``"true"`` \| ``"false"``
+• `Optional` **aria-haspopup**: `boolean` \| ``"dialog"`` \| ``"menu"`` \| ``"grid"`` \| ``"true"`` \| ``"listbox"`` \| ``"tree"`` \| ``"false"``
 
 Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 
@@ -1010,6 +1010,8 @@ ___
 
 ▸ (): `ReactElement`<`IconProps`, `string` \| `JSXElementConstructor`<`any`\>\>
 
+The cell icon.
+
 ##### Returns
 
 `ReactElement`<`IconProps`, `string` \| `JSXElementConstructor`<`any`\>\>
@@ -1038,7 +1040,7 @@ ___
 
 ### inputMode
 
-• `Optional` **inputMode**: ``"text"`` \| ``"email"`` \| ``"search"`` \| ``"tel"`` \| ``"url"`` \| ``"none"`` \| ``"numeric"`` \| ``"decimal"``
+• `Optional` **inputMode**: ``"text"`` \| ``"none"`` \| ``"search"`` \| ``"email"`` \| ``"url"`` \| ``"tel"`` \| ``"numeric"`` \| ``"decimal"``
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 
@@ -1196,11 +1198,13 @@ ___
 
 ▸ (`rowIndex?`): `void`
 
+The callback function called when the cell is clicked.
+
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `rowIndex?` | `number` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `rowIndex?` | `number` | the row index. |
 
 ##### Returns
 
@@ -3125,7 +3129,7 @@ ___
 
 ### verticalAlign
 
-• `Optional` **verticalAlign**: ``"middle"`` \| ``"top"`` \| ``"bottom"``
+• `Optional` **verticalAlign**: ``"bottom"`` \| ``"top"`` \| ``"middle"``
 
 #### Inherited from
 

@@ -11,7 +11,7 @@ Represents all the metadata of the form builder components.
 
 ## Hierarchy
 
-- `View`
+- [`View`](react_form_builder_core.View.md)
 
   ↳ **`BuilderView`**
 
@@ -27,61 +27,67 @@ Creates metadata for form builder components.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `builderComponents` | `BuilderComponent`[] | the array of metadata of form builder components. |
+| `builderComponents` | [`BuilderComponent`](../interfaces/react_form_builder_core.BuilderComponent.md)[] | the array of metadata of form builder components. |
 
 #### Overrides
 
-View.constructor
+[View](react_form_builder_core.View.md).[constructor](react_form_builder_core.View.md#constructor)
 
 ## Properties
 
-### #private
+### #cssLoaders
 
-• `Private` **#private**: `any`
-
-___
-
-### #private
-
-• `Private` **#private**: `any`
+• `Private` **#cssLoaders**: `Map`<[`BiDi`](../enums/react_form_builder_core.BiDi.md), () => `Promise`<`void`\>[]\>
 
 #### Inherited from
 
-View.#private
+[View](react_form_builder_core.View.md).[#cssLoaders](react_form_builder_core.View.md##cssloaders)
+
+___
+
+### #errorMeta
+
+• `Private` **#errorMeta**: `Map`<`string`, [`Meta`](react_form_builder_core.Meta.md)\>
+
+___
+
+### #metaMap
+
+• `Private` **#metaMap**: `Map`<`string`, [`Meta`](react_form_builder_core.Meta.md)\>
+
+___
+
+### #modelMap
+
+• `Private` **#modelMap**: `Map`<`string`, [`Model`](react_form_builder_core.Model.md)<`any`\>\>
+
+#### Inherited from
+
+[View](react_form_builder_core.View.md).[#modelMap](react_form_builder_core.View.md##modelmap)
+
+___
+
+### #tooltipsMeta
+
+• `Private` **#tooltipsMeta**: `Map`<`string`, [`Meta`](react_form_builder_core.Meta.md)\>
+
+___
+
+### #wrappers
+
+• `Private` **#wrappers**: [`FormViewerWrapper`](../modules/react_form_builder_core.md#formviewerwrapper)[]
+
+#### Inherited from
+
+[View](react_form_builder_core.View.md).[#wrappers](react_form_builder_core.View.md##wrappers)
 
 ___
 
 ### builderComponents
 
-• **builderComponents**: `BuilderComponent`[]
+• **builderComponents**: [`BuilderComponent`](../interfaces/react_form_builder_core.BuilderComponent.md)[]
 
-___
-
-### withViewerWrapper
-
-• **withViewerWrapper**: (`wrapper`: `FormViewerWrapper`) => [`BuilderView`](react_form_builder_designer.BuilderView.md)
-
-#### Type declaration
-
-▸ (`wrapper`): [`BuilderView`](react_form_builder_designer.BuilderView.md)
-
-Adds a wrapper to the list of viewers for this viewer wrapper.
-
-##### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `wrapper` | `FormViewerWrapper` | the viewer wrapper to be added. The wrapper is a component that wraps the form viewer. |
-
-##### Returns
-
-[`BuilderView`](react_form_builder_designer.BuilderView.md)
-
-the View instance.
-
-#### Inherited from
-
-View.withViewerWrapper
+the array of metadata of form builder components.
 
 ## Accessors
 
@@ -111,13 +117,13 @@ ___
 
 ### viewerWrappers
 
-• `get` **viewerWrappers**(): `FormViewerWrapper`[]
+• `get` **viewerWrappers**(): [`FormViewerWrapper`](../modules/react_form_builder_core.md#formviewerwrapper)[]
 
 Retrieves the viewer wrappers array.
 
 #### Returns
 
-`FormViewerWrapper`[]
+[`FormViewerWrapper`](../modules/react_form_builder_core.md#formviewerwrapper)[]
 
 the viewer wrappers array.
 
@@ -127,19 +133,42 @@ View.viewerWrappers
 
 ## Methods
 
-### all
+### #withCssLoader
 
-▸ **all**(): `Model`<`any`\>[]
+▸ `Private` **#withCssLoader**(`biDi`, `loader`): `void`
+
+Sets a CSS loader for the specified BiDi direction.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `biDi` | [`BiDi`](../enums/react_form_builder_core.BiDi.md) | the BiDi direction. |
+| `loader` | () => `Promise`<`void`\> | the loader function that returns a Promise. |
 
 #### Returns
 
-`Model`<`any`\>[]
+`void`
+
+#### Inherited from
+
+[View](react_form_builder_core.View.md).[#withCssLoader](react_form_builder_core.View.md##withcssloader)
+
+___
+
+### all
+
+▸ **all**(): [`Model`](react_form_builder_core.Model.md)<`any`\>[]
+
+#### Returns
+
+[`Model`](react_form_builder_core.Model.md)<`any`\>[]
 
 all component metadata for the form viewer.
 
 #### Inherited from
 
-View.all
+[View](react_form_builder_core.View.md).[all](react_form_builder_core.View.md#all)
 
 ___
 
@@ -153,7 +182,7 @@ Defines the component's metadata for the form viewer.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `model` | `Model`<`any`\> | the component's metadata. |
+| `model` | [`Model`](react_form_builder_core.Model.md)<`any`\> | the component's metadata. |
 
 #### Returns
 
@@ -161,13 +190,13 @@ Defines the component's metadata for the form viewer.
 
 #### Inherited from
 
-View.define
+[View](react_form_builder_core.View.md).[define](react_form_builder_core.View.md#define)
 
 ___
 
 ### find
 
-▸ **find**(`type`): `undefined` \| `Model`<`any`\>
+▸ **find**(`type`): `undefined` \| [`Model`](react_form_builder_core.Model.md)<`any`\>
 
 Returns the component's metadata for the form viewer for the specified type.
 
@@ -179,19 +208,19 @@ Returns the component's metadata for the form viewer for the specified type.
 
 #### Returns
 
-`undefined` \| `Model`<`any`\>
+`undefined` \| [`Model`](react_form_builder_core.Model.md)<`any`\>
 
 the component metadata for the form viewer for the specified type or undefined.
 
 #### Inherited from
 
-View.find
+[View](react_form_builder_core.View.md).[find](react_form_builder_core.View.md#find)
 
 ___
 
 ### findMeta
 
-▸ **findMeta**(`type`): `undefined` \| `Meta`
+▸ **findMeta**(`type`): `undefined` \| [`Meta`](react_form_builder_core.Meta.md)
 
 Returns the component metadata for the specified component type name or undefined.
 
@@ -203,7 +232,7 @@ Returns the component metadata for the specified component type name or undefine
 
 #### Returns
 
-`undefined` \| `Meta`
+`undefined` \| [`Meta`](react_form_builder_core.Meta.md)
 
 the component metadata for the specified component type name or undefined.
 
@@ -211,7 +240,7 @@ ___
 
 ### get
 
-▸ **get**(`type`): `Model`<`any`\>
+▸ **get**(`type`): [`Model`](react_form_builder_core.Model.md)<`any`\>
 
 Returns the component's metadata for the form viewer for the specified type.
 
@@ -223,13 +252,13 @@ Returns the component's metadata for the form viewer for the specified type.
 
 #### Returns
 
-`Model`<`any`\>
+[`Model`](react_form_builder_core.Model.md)<`any`\>
 
 the component metadata for the form viewer for the specified type.
 
 #### Inherited from
 
-View.get
+[View](react_form_builder_core.View.md).[get](react_form_builder_core.View.md#get)
 
 ___
 
@@ -243,7 +272,7 @@ Retrieves the CSS loaders for a given BiDi.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `biDi` | `BiDi` | the BiDi object for which to retrieve the CSS loaders. |
+| `biDi` | [`BiDi`](../enums/react_form_builder_core.BiDi.md) | the BiDi object for which to retrieve the CSS loaders. |
 
 #### Returns
 
@@ -253,13 +282,13 @@ the array containing the CSS loaders for the specified BiDi.
 
 #### Inherited from
 
-View.getCssLoaders
+[View](react_form_builder_core.View.md).[getCssLoaders](react_form_builder_core.View.md#getcssloaders)
 
 ___
 
 ### getErrorAnnotations
 
-▸ **getErrorAnnotations**(`name`): `undefined` \| `Annotation`[]
+▸ **getErrorAnnotations**(`name`): `undefined` \| [`Annotation`](react_form_builder_core.Annotation.md)[]
 
 Returns the array of metadata properties of the error component.
 
@@ -271,7 +300,7 @@ Returns the array of metadata properties of the error component.
 
 #### Returns
 
-`undefined` \| `Annotation`[]
+`undefined` \| [`Annotation`](react_form_builder_core.Annotation.md)[]
 
 the array of metadata properties of the error component.
 
@@ -279,7 +308,7 @@ ___
 
 ### getMeta
 
-▸ **getMeta**(`type`): `Meta`
+▸ **getMeta**(`type`): [`Meta`](react_form_builder_core.Meta.md)
 
 Returns the component metadata for the specified component type name.
 
@@ -291,7 +320,7 @@ Returns the component metadata for the specified component type name.
 
 #### Returns
 
-`Meta`
+[`Meta`](react_form_builder_core.Meta.md)
 
 the component metadata for the specified component type name.
 
@@ -299,7 +328,7 @@ ___
 
 ### getTooltipAnnotations
 
-▸ **getTooltipAnnotations**(`name`): `undefined` \| `Annotation`[]
+▸ **getTooltipAnnotations**(`name`): `undefined` \| [`Annotation`](react_form_builder_core.Annotation.md)[]
 
 Returns the array of metadata properties of the tooltip component.
 
@@ -311,7 +340,7 @@ Returns the array of metadata properties of the tooltip component.
 
 #### Returns
 
-`undefined` \| `Annotation`[]
+`undefined` \| [`Annotation`](react_form_builder_core.Annotation.md)[]
 
 the array of metadata properties of the tooltip component.
 
@@ -327,7 +356,7 @@ Applies the given CSS loader to the component based on the BiDi layout.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `cssLoaderType` | `CssLoaderType` | the BiDi layout type, either 'common', 'ltr', or 'rtl'. |
+| `cssLoaderType` | [`CssLoaderType`](../modules/react_form_builder_core.md#cssloadertype) | the BiDi layout type, either 'common', 'ltr', or 'rtl'. |
 | `loader` | () => `Promise`<`void`\> | the function that returns a Promise to load CSS or other required localization resources. |
 
 #### Returns
@@ -338,7 +367,7 @@ the View instance.
 
 #### Inherited from
 
-View.withCssLoader
+[View](react_form_builder_core.View.md).[withCssLoader](react_form_builder_core.View.md#withcssloader)
 
 ___
 
@@ -352,7 +381,7 @@ Sets the metadata of the component that displays form's errors.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `builderComponent` | `BuilderComponent` | the metadata of the component that displays the form's errors. |
+| `builderComponent` | [`BuilderComponent`](../interfaces/react_form_builder_core.BuilderComponent.md) | the metadata of the component that displays the form's errors. |
 
 #### Returns
 
@@ -392,7 +421,7 @@ Sets the metadata of the component that displays the form's tooltips.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `builderComponent` | `BuilderComponent` | the metadata of the component that displays the form's tooltips. |
+| `builderComponent` | [`BuilderComponent`](../interfaces/react_form_builder_core.BuilderComponent.md) | the metadata of the component that displays the form's tooltips. |
 
 #### Returns
 
@@ -402,33 +431,57 @@ the instance of the [BuilderView](react_form_builder_designer.BuilderView.md) cl
 
 ___
 
-### create
+### withViewerWrapper
 
-▸ `Static` **create**(`models`): `View`
+▸ **withViewerWrapper**(`wrapper`): `this`
 
-Static wrapper for the View constructor.
+Adds a wrapper to the list of viewers for this viewer wrapper.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `models` | `Model`<`any`\>[] | the components metadata. |
+| `wrapper` | [`FormViewerWrapper`](../modules/react_form_builder_core.md#formviewerwrapper) | the viewer wrapper to be added. The wrapper is a component that wraps the form viewer. |
 
 #### Returns
 
-`View`
+`this`
 
 the View instance.
 
 #### Inherited from
 
-View.create
+[View](react_form_builder_core.View.md).[withViewerWrapper](react_form_builder_core.View.md#withviewerwrapper)
+
+___
+
+### create
+
+▸ `Static` **create**(`models`): [`View`](react_form_builder_core.View.md)
+
+Static wrapper for the [View](react_form_builder_core.View.md) constructor.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `models` | [`Model`](react_form_builder_core.Model.md)<`any`\>[] | the components metadata. |
+
+#### Returns
+
+[`View`](react_form_builder_core.View.md)
+
+the View instance.
+
+#### Inherited from
+
+[View](react_form_builder_core.View.md).[create](react_form_builder_core.View.md#create)
 
 ___
 
 ### createTemplateComponent
 
-▸ `Static` **createTemplateComponent**(`name`): `BuilderComponent`
+▸ `Static` **createTemplateComponent**(`name`): [`BuilderComponent`](../interfaces/react_form_builder_core.BuilderComponent.md)
 
 Creates an instance of BuilderComponent for the specified template name.
 
@@ -440,6 +493,6 @@ Creates an instance of BuilderComponent for the specified template name.
 
 #### Returns
 
-`BuilderComponent`
+[`BuilderComponent`](../interfaces/react_form_builder_core.BuilderComponent.md)
 
 the BuilderComponent instance.

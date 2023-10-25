@@ -11,7 +11,7 @@ The properties of RsTooltip component.
 
 ## Hierarchy
 
-- `WrapperProps`
+- [`WrapperProps`](react_form_builder_core.WrapperProps.md)
 
   ↳ **`RsTooltipProps`**
 
@@ -21,9 +21,11 @@ The properties of RsTooltip component.
 
 • **children**: `ReactNode`
 
+The React child node.
+
 #### Inherited from
 
-WrapperProps.children
+[WrapperProps](react_form_builder_core.WrapperProps.md).[children](react_form_builder_core.WrapperProps.md#children)
 
 ___
 
@@ -31,14 +33,20 @@ ___
 
 • **placement**: `Placement`
 
+The placement of a tooltip.
+
 ___
 
 ### text
 
 • **text**: `string`
 
+The tooltip text.
+
 ___
 
 ### trigger
 
 • **trigger**: `OverlayTriggerType`
+
+The tooltip trigger.

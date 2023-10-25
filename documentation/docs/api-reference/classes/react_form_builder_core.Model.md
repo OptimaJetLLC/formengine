@@ -19,7 +19,7 @@ Represents component metadata for the form viewer.
 
 ### constructor
 
-• **new Model**<`T`\>(`view`, `name?`, `actionsInitializer?`, `valued?`, `valueType?`, `defaultProps?`, `css?`, `typeName?`, `icon?`)
+• **new Model**<`T`\>(`component`, `name?`, `actionsInitializer?`, `valued?`, `valueType?`, `defaultProps?`, `css?`, `typeName?`, `icon?`)
 
 Creates component metadata for the form viewer.
 
@@ -33,7 +33,7 @@ Creates component metadata for the form viewer.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `view` | `ComponentType`<`T`\> | React component type. |
+| `component` | `ComponentType`<`T`\> | the React component. |
 | `name?` | `string` | the component name. |
 | `actionsInitializer?` | [`ActionsInitializer`](../modules/react_form_builder_core.md#actionsinitializer) | the function to initialize actions in the component. |
 | `valued?` | `string` | the name of the component property where the component value is stored. |
@@ -56,6 +56,12 @@ ___
 • `Optional` `Readonly` **actionsInitializer**: [`ActionsInitializer`](../modules/react_form_builder_core.md#actionsinitializer)
 
 the function to initialize actions in the component.
+
+___
+
+### component
+
+• `Readonly` **component**: `ComponentType`<`T`\>
 
 ___
 
@@ -104,12 +110,6 @@ ___
 • `Optional` `Readonly` **valued**: `string`
 
 the name of the component property where the component value is stored.
-
-___
-
-### view
-
-• `Readonly` **view**: `ComponentType`<`T`\>
 
 ## Accessors
 

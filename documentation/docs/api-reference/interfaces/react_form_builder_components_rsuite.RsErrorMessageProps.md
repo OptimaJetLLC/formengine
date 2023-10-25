@@ -11,7 +11,7 @@ The properties of RsErrorMessage component.
 
 ## Hierarchy
 
-- `ErrorWrapperProps`
+- [`ErrorWrapperProps`](react_form_builder_core.ErrorWrapperProps.md)
 
   ↳ **`RsErrorMessageProps`**
 
@@ -25,7 +25,7 @@ The wrapped component.
 
 #### Inherited from
 
-ErrorWrapperProps.children
+[ErrorWrapperProps](react_form_builder_core.ErrorWrapperProps.md).[children](react_form_builder_core.ErrorWrapperProps.md#children)
 
 ___
 
@@ -37,7 +37,7 @@ The CSS class name.
 
 #### Inherited from
 
-ErrorWrapperProps.className
+[ErrorWrapperProps](react_form_builder_core.ErrorWrapperProps.md).[className](react_form_builder_core.ErrorWrapperProps.md#classname)
 
 ___
 
@@ -49,10 +49,12 @@ The error text.
 
 #### Inherited from
 
-ErrorWrapperProps.error
+[ErrorWrapperProps](react_form_builder_core.ErrorWrapperProps.md).[error](react_form_builder_core.ErrorWrapperProps.md#error)
 
 ___
 
 ### placement
 
 • `Optional` **placement**: `Placement8`
+
+The placement of an error message.

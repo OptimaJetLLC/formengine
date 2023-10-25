@@ -19,7 +19,7 @@ This tree of elements contains the data required to display the component. It is
 
 • **new ComponentData**(`componentStore`, `model`, `field`, `childFactory`, `externalFormValidators?`)
 
-Constructor
+Constructor.
 
 #### Parameters
 

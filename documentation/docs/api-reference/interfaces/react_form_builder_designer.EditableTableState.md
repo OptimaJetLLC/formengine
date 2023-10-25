@@ -15,8 +15,12 @@ The state of the [EditableTable](../modules/react_form_builder_designer.md#edita
 
 • `Optional` **autoHeight**: `boolean`
 
+Flag, if true, the table height will be calculated automatically, false otherwise.
+
 ___
 
 ### maxHeight
 
 • `Optional` **maxHeight**: `number`
+
+The maximum height of the table.

@@ -9,6 +9,12 @@ custom_edit_url: null
 
 Properties of the React component that wraps the form view component and displays validation errors.
 
+## Hierarchy
+
+- **`ErrorWrapperProps`**
+
+  ↳ [`RsErrorMessageProps`](react_form_builder_components_rsuite.RsErrorMessageProps.md)
+
 ## Properties
 
 ### children

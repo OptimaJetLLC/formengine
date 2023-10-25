@@ -36,7 +36,7 @@ The i18n data of the form builder.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `getData` | (`languageFullCode`: `string`) => `Promise`<[`FormBuilderI18nData`](react_form_builder_designer.md#formbuilderi18ndata)\> | The callback function called when loading data for i18n. Accepts the full code (en-US, en-GB, etc.) of a language. |
-| `languages` | `Language`[] | The languages. |
+| `languages` | [`Language`](../classes/react_form_builder_core.Language.md)[] | The languages. |
 
 ___
 

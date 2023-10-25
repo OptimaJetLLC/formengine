@@ -9,8 +9,16 @@ custom_edit_url: null
 
 React wrapper component properties.
 
+## Hierarchy
+
+- **`WrapperProps`**
+
+  ↳ [`RsTooltipProps`](react_form_builder_components_rsuite.RsTooltipProps.md)
+
 ## Properties
 
 ### children
 
 • **children**: `ReactNode`
+
+The React child node.

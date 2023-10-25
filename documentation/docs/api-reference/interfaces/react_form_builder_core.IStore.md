@@ -36,6 +36,8 @@ ___
 
 • **form**: [`Form`](../classes/react_form_builder_core.Form.md)
 
+The displayed form.
+
 ___
 
 ### localizeErrorMessages
@@ -46,12 +48,14 @@ ___
 
 ▸ (`componentStore`, `validationResults?`): `undefined` \| `string`
 
+The function to localize the validation error message.
+
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `componentStore` | [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md) |
-| `validationResults?` | [`ValidationResult`](../modules/react_form_builder_core.md#validationresult)[] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `componentStore` | [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md) | the component settings. |
+| `validationResults?` | [`ValidationResult`](../modules/react_form_builder_core.md#validationresult)[] | the results of the validation. |
 
 ##### Returns
 
