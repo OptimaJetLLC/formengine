@@ -283,9 +283,13 @@ export class Store implements IStore, IFormViewer {
    * @param text saved form value.
    */
   applyStringForm(text: string) {
-    const persistedForm = JSON.parse(text) as PersistedForm
-    this.fixPropertyTypes(persistedForm.form)
-    this.applyPersistedForm(persistedForm)
+    try {
+      const persistedForm = JSON.parse(text) as PersistedForm
+      this.fixPropertyTypes(persistedForm.form)
+      this.applyPersistedForm(persistedForm)
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   private fixPropertyTypes(componentStore: ComponentStore) {
