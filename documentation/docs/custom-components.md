@@ -239,6 +239,7 @@ with a custom component:
 
 ```json
 {
+  "version": "1",
   "form": {
     "key": "Screen",
     "type": "Screen",
@@ -296,6 +297,7 @@ const view = createView([matButton.build().model])
 
 // highlight-start
 const form = {
+  'version': '1',
   'form': {
     'key': 'Screen',
     'type': 'Screen',

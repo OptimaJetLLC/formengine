@@ -11,6 +11,7 @@ import {
   NamedActionDefinition,
   nameObservable,
   PersistedForm,
+  PersistedFormVersion,
   screenModel,
   Store,
   treeForEach,
@@ -561,6 +562,7 @@ export class BuilderStore {
     const actions = this.viewer.form.actionNames.length ? this.viewer.form.actions : undefined
     const errorProps = Object.keys(this.viewer.form.errorProps).length ? this.viewer.form.errorProps : undefined
     const serializedObject: PersistedForm = {
+      version: PersistedFormVersion.version1,
       actions: actions,
       errorProps: errorProps,
       tooltipType: this.viewer.form.tooltipType,

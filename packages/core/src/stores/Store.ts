@@ -29,6 +29,7 @@ import type {FormViewerValidationRules} from './FormViewerValidationRules'
 import type {IStore} from './IStore'
 import {LocalizationStore, LocalizationType} from './LocalizationStore'
 import type {PersistedForm} from './PersistedForm'
+import {PersistedFormVersion} from './PersistedForm'
 
 const propertiesToFix: Record<string, string[]> = {
   'RsDatePicker': ['calendarDefaultDate', 'defaultValue', 'value'],
@@ -312,6 +313,12 @@ export class Store implements IStore, IFormViewer {
    */
   applyPersistedForm(persistedForm: PersistedForm) {
     const oldForm = this.form
+
+    const version = persistedForm.version
+    if (typeof version !== 'undefined' && version !== PersistedFormVersion.version1) {
+      console.warn(`An unsupported version of form '${version}' has been detected. An attempt will be made to upload` +
+        ` the form as version '${PersistedFormVersion.version1}'.`)
+    }
 
     const componentStore = ComponentStore.createFromObject(persistedForm.form)
 

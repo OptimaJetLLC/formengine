@@ -42,6 +42,7 @@ Let's take a look at what a JSON form is, below is an example:
 
 ```json
 {
+  "version": "1",
   "actions": {
     "logValue": {
       "body": "  console.log('Name', e.data.name)",
@@ -127,6 +128,18 @@ Let's take a look at what a JSON form is, below is an example:
 
 The form is represented by the [PersistedForm](/api-reference/interfaces/react_form_builder_core.PersistedForm) type. Let's take a closer
 look at the parts of this JSON.
+
+### Version
+
+This is the version of the form saved in JSON format. The list of possible versions is listed
+in [PersistedFormVersion](/api-reference/enums/react_form_builder_core.PersistedFormVersion).
+
+```json
+{
+  "version": "1",
+  ...
+}
+```
 
 ### Actions
 

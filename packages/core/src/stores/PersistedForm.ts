@@ -4,9 +4,21 @@ import {ComponentStore} from './ComponentStore'
 import {LocalizationValue} from './LocalizationStore'
 
 /**
+ * The version of the saved form.
+ */
+export enum PersistedFormVersion {
+  version1 = '1'
+}
+
+/**
  * The format for saving a form designed in Form Builder.
  */
 export interface PersistedForm {
+
+  /**
+   * The version of the saved form.
+   */
+  version?: PersistedFormVersion
 
   /**
    * Represents a set of action definitions.

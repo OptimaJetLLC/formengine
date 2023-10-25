@@ -134,6 +134,7 @@ second tab add TextArea, on the third tab add Image, and look at the resulting J
 
 ```json {16-17,23-24,30-31} title='Form.json' showLineNumbers
 {
+  "version": "1",
   "form": {
     "key": "Screen",
     "type": "Screen",

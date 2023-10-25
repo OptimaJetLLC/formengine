@@ -105,6 +105,7 @@ the "Edit JSON" window.
 
 ```json
 {
+  "version": "1",
   "form": {
     "key": "Screen",
     "type": "Screen",

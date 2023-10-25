@@ -125,6 +125,7 @@ const externalValidators: ExternalValidators = {
 // Example form, in JSON format
 const emptyForm = `
 {
+  "version": "1",
   "tooltipType": "RsTooltip",
   "errorType": "RsErrorMessage",
   "form": {

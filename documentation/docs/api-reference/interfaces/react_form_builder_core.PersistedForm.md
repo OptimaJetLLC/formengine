@@ -72,3 +72,11 @@ ___
 • `Optional` **tooltipType**: `string`
 
 Name of the type of component that displays the tooltip.
+
+___
+
+### version
+
+• `Optional` **version**: [`version1`](../enums/react_form_builder_core.PersistedFormVersion.md#version1)
+
+The version of the saved form.

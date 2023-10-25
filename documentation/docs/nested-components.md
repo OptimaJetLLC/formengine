@@ -66,6 +66,7 @@ is the default slot name.
 
 ```json {11,16} title='Example of a form'
 {
+  "version": "1",
   "form": {
     "key": "Screen",
     "type": "Screen",

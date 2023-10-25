@@ -9,6 +9,7 @@ custom_edit_url: null
 ## Enumerations
 
 - [BiDi](../enums/react_form_builder_core.BiDi.md)
+- [PersistedFormVersion](../enums/react_form_builder_core.PersistedFormVersion.md)
 
 ## Classes
 
