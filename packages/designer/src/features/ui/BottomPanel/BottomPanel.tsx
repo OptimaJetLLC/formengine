@@ -32,7 +32,7 @@ export const BottomPanel = namedObserver('BottomPanel', () => {
     enable: {top: true},
     onResizeStop: (e, direction, ref, delta) => store.bottomPanelHeight += delta.height,
     defaultSize: {width: 'initial', height: bottomPanelHeight},
-    minHeight: 120,
+    minHeight: 250,
     maxHeight: '92vh'
   }
 
@@ -43,6 +43,7 @@ const resizableStyles = css`
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-width: 980px;
   padding: 10px;
   gap: 10px;
   box-shadow: 0 -5px 20px 0 rgb(0 0 0 / 15%);

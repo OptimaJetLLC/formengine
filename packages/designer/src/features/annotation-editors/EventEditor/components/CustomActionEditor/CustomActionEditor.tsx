@@ -3,7 +3,7 @@ import {
   ActionDefinition,
   ActionParameters,
   AsyncFunction,
-  CompilationResult,
+  CalculableTestResult,
   NamedActionDefinition,
   useStore
 } from '@react-form-builder/core'
@@ -111,13 +111,9 @@ export const CustomActionEditor = ({customAction, onSave}: CustomActionEditorPro
     onSave?.(namedAction)
   }
 
-  const compile = (source: string): CompilationResult => {
-    try {
-      const fn = AsyncFunction(source)
-      return {error: false, fn}
-    } catch (e) {
-      return {error: true, exceptions: [e as Error]}
-    }
+  const compile = (source: string): CalculableTestResult => {
+    AsyncFunction(source)
+    return CalculableTestResult.success(t('testingEditor.compilationOk'))
   }
 
   return <>
@@ -133,7 +129,7 @@ export const CustomActionEditor = ({customAction, onSave}: CustomActionEditorPro
         <GenericCodeEditor beginContextLine={functionHeader}
                            endContextLine="}" source={initialBody ?? ''}
                            onSave={save} onClose={close}
-                           onCompile={compile}
+                           onCompile={compile} compact
         />
       </Rows>
       <ParameterList value={formState.actionParameters}

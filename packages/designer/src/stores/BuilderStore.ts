@@ -211,6 +211,8 @@ export class BuilderStore {
   theme: BuilderTheme = getSystemTheme()
   openedPanels: PanelPlacement[] = defaultOpenedPanels
   bottomPanelHeight = defaultBottomPanelHeight
+  testingData?: string
+  testingAutorun = true
 
   private readonly builderI18n: BuilderI18n
   formBuilderLanguage: Language
@@ -259,7 +261,7 @@ export class BuilderStore {
         viewMode: true,
         openedPanels: true,
         changeBuilderMode: action,
-        view: false,
+        view: false
       }
       , {name: nameObservable('BuilderStore')})
     this.formStorageEnabled = !!props.formStorage

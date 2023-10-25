@@ -1,5 +1,6 @@
 import {isUndefined} from 'lodash-es'
 import {ComponentProperty, ComponentStore, isFunctionalProperty} from '../../stores/ComponentStore'
+import {CalculableTestResult} from '../../utils/CalculableTestResult'
 import type {IFormData} from '../../utils/IFormData'
 
 const fnCache = new Map<string, Function>()
@@ -14,11 +15,13 @@ const getOrCreateFn = (source: string) => {
 }
 
 const calculateValue = (fnSource: string, formViewerData: IFormData) => {
-  const fn = getOrCreateFn(fnSource)
   try {
-    return fn(formViewerData)
+    const fn = getOrCreateFn(fnSource)
+    const result = fn(formViewerData)
+    return CalculableTestResult.success(result)
   } catch (e) {
     console.warn(e)
+    return CalculableTestResult.error([e as Error])
   }
 }
 
@@ -41,9 +44,9 @@ export const calculatePropertyValue = (componentProperty: ComponentProperty, for
  * @internal
  */
 export const calculateExpressionProperty = (componentProperty: ComponentProperty, formViewerData: IFormData) => {
-  if (isFunctionalProperty(componentProperty)) return calculatePropertyValue(componentProperty, formViewerData)
+  if (isFunctionalProperty(componentProperty)) return calculatePropertyValue(componentProperty, formViewerData).result
   const fnSource = componentProperty.value || ''
-  return calculateValue(`return ${fnSource}`, formViewerData)
+  return calculateValue(`return ${fnSource}`, formViewerData).result
 }
 
 /**
@@ -61,30 +64,6 @@ export interface BaseCompilationResult {
 }
 
 /**
- * The result of compiling the function.
- */
-export interface CompilationResult extends BaseCompilationResult {
-  /**
-   * The compiled function.
-   */
-  fn?: Function
-}
-
-/**
- * Compiles the function from string source code.
- * @param source the function source code.
- * @returns the result of the function compilation.
- */
-export const compileFn = (source: string): CompilationResult => {
-  try {
-    const fn = getOrCreateFn(source)
-    return {error: false, fn}
-  } catch (e) {
-    return {error: true, exceptions: [e as Error]}
-  }
-}
-
-/**
  * Calculates all properties for the component.
  * @param componentStore the component.
  * @param formViewerData the formViewerData data.
@@ -99,7 +78,7 @@ export const calculateProperties = (componentStore: ComponentStore, formViewerDa
 
     if (isFunctionalProperty(componentProperty)) {
       try {
-        data[value] = calculatePropertyValue(componentProperty, formViewerData)
+        data[value] = calculatePropertyValue(componentProperty, formViewerData).result
       } catch (e) {
         console.error(e)
       }

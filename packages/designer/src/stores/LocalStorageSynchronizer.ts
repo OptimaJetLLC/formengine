@@ -29,6 +29,9 @@ export class LocalStorageSynchronizer {
     const themeKey = 'theme'
     builderStore.theme = this.getItem<BuilderTheme>(themeKey, getSystemTheme())
 
+    const testingAutorunKey = 'testingAutorun'
+    builderStore.testingAutorun = this.getItem<string>(testingAutorunKey) === 'true'
+
     const className = 'LocalStorageSynchronizer'
 
     const formNameKey = 'formName'
@@ -58,6 +61,10 @@ export class LocalStorageSynchronizer {
       autorun(
         () => this.updateItem(themeKey, builderStore.theme),
         {name: nameAutorun(className, 'saveTheme')}
+      ),
+      autorun(
+        () => this.updateItem(testingAutorunKey, builderStore.testingAutorun),
+        {name: nameAutorun(className, 'saveTestingAutorunSetting')}
       ),
       autorun(
         () => this.updateItem(formNameKey, builderStore.activeFormName),

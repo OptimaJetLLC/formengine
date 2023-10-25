@@ -1,9 +1,7 @@
-import type {FluentVariable} from '@fluent/bundle/esm/bundle.js'
 import {IReactionDisposer, makeAutoObservable, reaction} from 'mobx'
 import {Model} from '../../features/define'
 import type {ExternalFormValidators} from '../../features/form-viewer/ExternalFormValidators'
-import {getFluentCompatibleId} from '../../features/localization/getFluentCompatibleId'
-import {isFluentVariable} from '../../features/localization/isFluentVariable'
+import {getFluentData} from '../../features/localization/getFluentData'
 import type {Field} from '../../features/validation'
 import {ComponentStore} from '../../stores/ComponentStore'
 import {createNonNullableContext} from '../createNonNullableContext'
@@ -256,13 +254,8 @@ export class ComponentData implements IFormData {
    * Additionally, the keys of the returned object are converted to the snake case.
    */
   get fluentData() {
-    const fluentData: Record<string, FluentVariable> = {}
-    for (const [key, value] of Object.entries(this.data)) {
-      if (isFluentVariable(value)) {
-        fluentData[getFluentCompatibleId(key)] = value
-      }
-    }
-    return fluentData
+    const initializedData = initFormFields(this)
+    return getFluentData(initializedData)
   }
 
   /**
@@ -430,6 +423,19 @@ export class ComponentData implements IFormData {
     }
     this.parent?.invokeOnBeforeDeleted(nodes)
   }
+}
+
+/**
+ * Replaces empty form fields with an empty string.
+ * @param form the form.
+ * @returns all form data where empty fields are filled with empty strings.
+ */
+export const initFormFields = (form: ComponentData) => {
+  const result: Record<string, unknown> = {}
+  form.fields.forEach((field, key) => {
+    result[key] = form.data[key] ?? ''
+  })
+  return result
 }
 
 const [

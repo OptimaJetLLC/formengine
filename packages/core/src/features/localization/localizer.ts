@@ -3,27 +3,10 @@ import {FluentVariable} from '@fluent/bundle/esm/bundle.js'
 import {ComponentStore, isLocalizedProperty} from '../../stores/ComponentStore'
 import {Form} from '../../stores/Form'
 import type {LocalizationType} from '../../stores/LocalizationStore'
+import {CalculableTestResult} from '../../utils/CalculableTestResult'
 import {getValidatorPropertyBlockType} from '../ui/PropertyBlockType'
 import {getFluentCompatibleId} from './getFluentCompatibleId'
 import {Language} from './types'
-
-/**
- * Localization testing result.
- */
-export type LocalizationTestResult = {
-  /**
-   * Flag if true - localization test failed, false otherwise.
-   */
-  error: boolean
-  /**
-   * The localization result.
-   */
-  result?: string
-  /**
-   * The array of localization errors.
-   */
-  exceptions?: Error[]
-}
 
 /**
  * Localization testing request.
@@ -52,32 +35,23 @@ export type LocalizationTestRequest = {
  * @param request the localization testing request.
  * @returns the localization testing result.
  */
-export const testFluentLocalization = (request: LocalizationTestRequest): LocalizationTestResult => {
+export const testFluentLocalization = (request: LocalizationTestRequest): CalculableTestResult => {
   const localizationSting = `${request.localizationStringId} = ${request.localization}`
   const resource = new FluentResource(localizationSting)
   const bundle = new FluentBundle(`${request.language.fullCode}`)
   const errors = bundle.addResource(resource)
   if (errors.length > 0) {
-    return {
-      error: true,
-      exceptions: [...errors]
-    }
+    return CalculableTestResult.error([...errors])
   }
 
   const message = bundle.getMessage(request.localizationStringId)
 
-  if (message === undefined) {
-    return {
-      error: true,
-      exceptions: [{message: 'Localization message not found', name: 'MessageNotFound'}]
-    }
+  if (typeof message === 'undefined') {
+    return CalculableTestResult.error([{message: 'Localization message not found', name: 'MessageNotFound'}])
   }
 
   if (message.value === null) {
-    return {
-      error: true,
-      exceptions: [{message: 'Localization message is null', name: 'MessageIsNull'}]
-    }
+    return CalculableTestResult.error([{message: 'Localization message is null', name: 'MessageIsNull'}])
   }
 
   let result = ''
@@ -86,19 +60,13 @@ export const testFluentLocalization = (request: LocalizationTestRequest): Locali
     result = bundle.formatPattern(message.value, request.data)
   } catch (e) {
     if (e instanceof Error) {
-      return {
-        error: true,
-        exceptions: [e]
-      }
+      return CalculableTestResult.error([e])
     }
 
     throw e
   }
 
-  return {
-    error: false,
-    result: result
-  }
+  return CalculableTestResult.success(result)
 }
 
 /**

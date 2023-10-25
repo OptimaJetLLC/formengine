@@ -1,6 +1,6 @@
-import {compileFn} from '@react-form-builder/core'
+import {calculatePropertyValue} from '@react-form-builder/core'
 import {EditableProperty} from '../../stores/BuilderStore'
-import {GenericCodeEditor} from './GenericCodeEditor'
+import {GenericCodeEditor, GenericCodeEditorProps} from './GenericCodeEditor'
 
 /**
  * Properties of the React component {@link CalculableCodeEditor}.
@@ -34,12 +34,16 @@ export const CalculableCodeEditor = ({editableProperty, onClose}: CalculableCode
  */
 function Calculation (form) {`
 
+  const onCompile: GenericCodeEditorProps['onCompile'] = (sourceCode, formData) => {
+    return calculatePropertyValue({fnSource: sourceCode}, formData)
+  }
+
   return <GenericCodeEditor key={editableProperty.annotation.key}
                             beginContextLine={functionHeader}
                             endContextLine="}"
                             source={editableProperty.getComputeCode('function')}
                             onSave={saveCode}
                             onClose={onClose}
-                            onCompile={compileFn}
+                            onCompile={onCompile}
   />
 }

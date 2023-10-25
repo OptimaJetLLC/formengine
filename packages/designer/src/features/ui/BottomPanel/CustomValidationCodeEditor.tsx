@@ -1,4 +1,5 @@
-import {AsyncFunction, BaseCompilationResult, namedObserver} from '@react-form-builder/core'
+import {AsyncFunction, CalculableTestResult, namedObserver} from '@react-form-builder/core'
+import {useCallback} from 'react'
 import {useTranslation} from 'react-i18next'
 import {CustomValidationCode} from '../../../stores/BuilderStore'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
@@ -12,17 +13,16 @@ export const CustomValidationCodeEditor = namedObserver('CustomValidationCodeEdi
   const beginContextLine = props.functionSignature
   const endContextLine = '}'
 
-  const handleClose = () => builderStore.currentEditable = undefined
-
-  const handleCompile = (value: string): BaseCompilationResult => {
+  const handleClose = useCallback(() => builderStore.currentEditable = undefined, [builderStore.currentEditable])
+  const handleCompile = useCallback((value: string) => {
     const source = `${beginContextLine}\n${value}\n${endContextLine}`
     try {
       AsyncFunction(source)
+      return CalculableTestResult.success(t('testingEditor.compilationOk'))
     } catch (e) {
-      return {error: true, exceptions: [e as Error]}
+      return CalculableTestResult.error([e as Error])
     }
-    return {error: false}
-  }
+  }, [beginContextLine])
 
   return <>
     <Header>{t('validation.editCustomValidationCode')} '{props.editorKey}'</Header>
@@ -33,6 +33,7 @@ export const CustomValidationCodeEditor = namedObserver('CustomValidationCodeEdi
                        onSave={props.onSave}
                        onClose={handleClose}
                        onCompile={handleCompile}
+                       compact
     />
   </>
 })

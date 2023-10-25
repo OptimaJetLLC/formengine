@@ -121,5 +121,7 @@ const vsExtendedTheme = {
       foreground: '4978ad'
     },
   ],
-  colors: {}
+  colors: {
+    "editor.background": '#f7f7fa'
+  }
 }

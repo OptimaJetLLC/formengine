@@ -375,8 +375,8 @@ function updateFnValue(viewerStore: Store) {
   return function (component: ComponentStore, key: string): [boolean, any?] {
     const property = component.props[key]
     if (isFunctionalProperty(property)) {
-      const value = calculatePropertyValue(property, viewerStore.form.componentTree)
-      return [true, value]
+      const {result} = calculatePropertyValue(property, viewerStore.form.componentTree)
+      return [true, result]
     }
     if (isLocalizedProperty(property)) {
       const props = viewerStore.localizeComponent('component', component)

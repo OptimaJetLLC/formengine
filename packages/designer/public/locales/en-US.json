@@ -374,5 +374,12 @@
     "parameterNameIsRequired": "Parameter name is required",
     "parameterNameIsNotValid": "Parameter name is not valid"
   },
+  "testingEditor": {
+    "run": "Run",
+    "autorun": "Autorun",
+    "testFormData": "Test form data",
+    "hasNotReturnedValue": "Has not returned value",
+    "compilationOk": "Compilation result: OK"
+  },
   "editJson": "Edit JSON"
 }

@@ -1,5 +1,6 @@
 import {namedObserver, useStore} from '@react-form-builder/core'
 import {useTranslation} from 'react-i18next'
+import {prepareForJson} from '../../../../utils/parseJson'
 
 export const FormViewerState = namedObserver('FormState', () => {
   const store = useStore()
@@ -20,30 +21,5 @@ export const FormViewerState = namedObserver('FormState', () => {
 })
 
 const prettyPrint = (obj: Object) => {
-  return <pre style={{whiteSpace: 'pre-wrap', marginTop: 5}}>{JSON.stringify(filterObj(obj), null, 2)}</pre>
-}
-
-const filterObj = (obj: Object) => {
-  const filtered: any = {}
-  Object.entries(obj).forEach(([key, value]) => {
-    const typeIs = (valueType: string) => typeof value == valueType
-
-    if (value instanceof Date) {
-      filtered[key] = value.toISOString()
-      return
-    }
-
-    if (typeIs('object')) {
-      filtered[key] = filterObj(value)
-      return
-    }
-
-    if (!(typeIs('string') || typeIs('number') || typeIs('boolean'))) {
-      return
-    }
-
-    filtered[key] = value
-  })
-
-  return filtered
+  return <pre style={{whiteSpace: 'pre-wrap', marginTop: 5}}>{JSON.stringify(prepareForJson(obj), null, 2)}</pre>
 }

@@ -38,7 +38,7 @@ export const ComputedPropertyEditor = namedObserver('ComputedPropertyEditor', ({
   const handleClose = useCallback(() => builderStore.currentEditable = undefined, [builderStore.currentEditable])
 
 
-  useEffect(() => setComputeType(initialComputeType), [initialComputeType])
+  useEffect(() => setComputeType(initialComputeType), [property])
 
   return <>
     <Header>
