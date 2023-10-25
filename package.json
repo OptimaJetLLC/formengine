@@ -22,7 +22,6 @@
         "test:ui": "vitest --ui",
         "coverage": "vitest run --coverage",
         "check:circular-deps": "npx madge@6.1.0 --extensions ts --circular .",
-        "precheck:tsc": "npm run bundle",
         "check:tsc": "tsc --noEmit --emitDeclarationOnly false",
         "check:unused-exports": "node ./scripts/find-unused-exports",
         "check:wrong-imports": "node ./scripts/find-wrong-imports",
@@ -37,7 +36,6 @@
     ],
     "devDependencies": {
         "@faker-js/faker": "^7.5.0",
-        "@microsoft/api-extractor": "^7.34.9",
         "@svgr/rollup": "^8.0.1",
         "@swc/plugin-emotion": "^2.5.57",
         "@testing-library/jest-dom": "^5.16.5",
@@ -67,6 +65,7 @@
         "typescript": "^5.0.3",
         "vite": "^4.2.1",
         "vite-bundle-visualizer": "^0.6.0",
+        "vite-plugin-dts": "^3.6.1",
         "vite-plugin-svgr": "^3.2.0",
         "vitest": "^0.29.7",
         "vitest-fail-on-console": "^0.3.1"

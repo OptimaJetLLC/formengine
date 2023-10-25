@@ -4,7 +4,6 @@
     "private": false,
     "main": "src/index.ts",
     "type": "module",
-    "types": "./dist/index.d.ts",
     "description": "Optimajet Form Builder core",
     "keywords": [
         "form-builder",
@@ -18,10 +17,7 @@
     "scripts": {
         "build": "vite build",
         "clean": "rimraf dist temp",
-        "clean-typings": "rimraf dist/types dist/tsdoc-metadata.json temp",
-        "generate-typings": "tsc --build bundle.tsconfig.json",
-        "api-extractor": "api-extractor run --local --verbose",
-        "bundle": "npm-run-all -l clean build generate-typings api-extractor clean-typings create-archive",
+        "bundle": "npm-run-all -l clean build create-archive",
         "create-archive": "node ./config/pack"
     },
     "peerDependencies": {

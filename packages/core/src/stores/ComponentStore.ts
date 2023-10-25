@@ -162,7 +162,6 @@ export class ComponentStore {
    * @param store the target {@link ComponentStore}.
    * @param eventName the target event name.
    * @param data the {@link ActionData}.
-   * @internal
    */
   static addEventHandler(store: ComponentStore, eventName: string, data: ActionData) {
     initActionDataKey(data)

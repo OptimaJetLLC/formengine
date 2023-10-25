@@ -3,6 +3,7 @@ import path from 'path'
 import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle'
 import {fileURLToPath} from 'url'
 import {defineConfig} from 'vite'
+import dts from 'vite-plugin-dts'
 
 import base from '../../../vite.config'
 
@@ -11,6 +12,9 @@ const __dirname = path.dirname(__filename)
 
 export default defineConfig(({command}) => ({
   ...base,
+  plugins: [
+    dts({rollupTypes: true, tsconfigPath: './bundle.tsconfig.json'})
+  ],
   build: {
     sourcemap: true,
     lib: {
