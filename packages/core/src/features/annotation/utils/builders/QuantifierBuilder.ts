@@ -1,6 +1,6 @@
 import {startCase} from 'lodash-es'
 import {Annotation} from '../../types/annotations/Annotation'
-import {PropertyAn} from '../../types/annotations/PropertyAn'
+import {PropertyAnnotation} from '../../types/annotations/PropertyAnnotation'
 import {TypedBuilder} from './TypedBuilder'
 
 /**
@@ -43,7 +43,7 @@ export abstract class QuantifierBuilder<T> extends TypedBuilder<T> {
    * @returns the instance of the component property metadata for the form builder.
    */
   build(key: string): Annotation {
-    const result = super.build(key) as PropertyAn
+    const result = super.build(key) as PropertyAnnotation
     result.data = this.values.map((value, index) => {
       const label = this.labels?.[index] ?? startCase(value.toString())
       return {label, value}

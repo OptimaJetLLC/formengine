@@ -1,25 +1,26 @@
 ---
-id: "react_form_builder_core.PropertyAn"
-title: "Class: PropertyAn"
-sidebar_label: "PropertyAn"
+id: "react_form_builder_core.ContainerAnnotation"
+title: "Class: ContainerAnnotation"
+sidebar_label: "ContainerAnnotation"
 custom_edit_url: null
 ---
 
-[@react-form-builder/core](../modules/react_form_builder_core.md).PropertyAn
+[@react-form-builder/core](../modules/react_form_builder_core.md).ContainerAnnotation
 
-Metadata for the component property for the form builder.
+Metadata for the component container property for the form builder.
+The Container property of a component can contain other React components.
 
 ## Hierarchy
 
 - [`Annotation`](react_form_builder_core.Annotation.md)
 
-  ↳ **`PropertyAn`**
+  ↳ **`ContainerAnnotation`**
 
 ## Constructors
 
 ### constructor
 
-• **new PropertyAn**(`key`, `name`)
+• **new ContainerAnnotation**(`key`, `name`)
 
 Creates metadata for a React component property.
 
@@ -45,14 +46,6 @@ True if the property value can be a calculated property, false otherwise.
 #### Inherited from
 
 [Annotation](react_form_builder_core.Annotation.md).[calculable](react_form_builder_core.Annotation.md#calculable)
-
-___
-
-### data
-
-• **data**: [`LabeledValue`](../interfaces/react_form_builder_core.LabeledValue.md)[]
-
-Possible values for the property.
 
 ___
 

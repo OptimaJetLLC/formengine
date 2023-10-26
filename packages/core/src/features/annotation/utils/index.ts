@@ -1,15 +1,15 @@
 import {FirstParameter} from '../types'
 import {Annotation} from '../types/annotations/Annotation'
-import {ContainerAn} from '../types/annotations/ContainerAn'
+import {ContainerAnnotation} from '../types/annotations/ContainerAnnotation'
 import {AnnotationBuilder} from './builders/AnnotationBuilder'
 
 /**
- * Type predicate, asserts that the value is an instance of ContainerAn. **Internal use only.**
+ * Type predicate, asserts that the value is an instance of ContainerAnnotation. **Internal use only.**
  * @param value the value.
- * @returns true if the value is an instance of ContainerAn, false otherwise.
+ * @returns true if the value is an instance of ContainerAnnotation, false otherwise.
  */
-export const isContainer = (value: Annotation): value is ContainerAn => {
-  return value instanceof ContainerAn
+export const isContainer = (value: Annotation): value is ContainerAnnotation => {
+  return value instanceof ContainerAnnotation
 }
 
 export const createAnnotation = AnnotationBuilder.create

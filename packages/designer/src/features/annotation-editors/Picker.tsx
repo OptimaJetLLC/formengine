@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
-import {PropertyAn} from '@react-form-builder/core'
+import {PropertyAnnotation} from '@react-form-builder/core'
 import {isUndefined} from 'lodash-es'
 import {InputPicker} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
-const addCustomValue = ({data}: PropertyAn, value: string) => {
+const addCustomValue = ({data}: PropertyAnnotation, value: string) => {
   if (isUndefined(value)) {
     return data
   }
@@ -24,7 +24,7 @@ const addCustomValue = ({data}: PropertyAn, value: string) => {
  */
 export const Picker = (props: AnnotationEditorProps) => {
   const {value, onChange, annotation, onClean} = props
-  const data = addCustomValue(annotation as PropertyAn, value)
+  const data = addCustomValue(annotation as PropertyAnnotation, value)
 
   return <LabeledProperty {...props}>
     <SInputPicker value={value ?? props.annotation.default ?? ''} data={data} onChange={onChange} onClean={onClean}

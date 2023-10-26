@@ -1,26 +1,25 @@
 ---
-id: "react_form_builder_core.ContainerAn"
-title: "Class: ContainerAn"
-sidebar_label: "ContainerAn"
+id: "react_form_builder_core.EventAnnotation"
+title: "Class: EventAnnotation"
+sidebar_label: "EventAnnotation"
 custom_edit_url: null
 ---
 
-[@react-form-builder/core](../modules/react_form_builder_core.md).ContainerAn
+[@react-form-builder/core](../modules/react_form_builder_core.md).EventAnnotation
 
-Metadata for the component container property for the form builder.
-The Container property of a component can contain other React components.
+Metadata for the component event property for the form builder.
 
 ## Hierarchy
 
 - [`Annotation`](react_form_builder_core.Annotation.md)
 
-  ↳ **`ContainerAn`**
+  ↳ **`EventAnnotation`**
 
 ## Constructors
 
 ### constructor
 
-• **new ContainerAn**(`key`, `name`)
+• **new EventAnnotation**(`key`, `name`)
 
 Creates metadata for a React component property.
 

@@ -27,10 +27,10 @@ custom_edit_url: null
 - [ComponentKeyChangedEventArgs](../classes/react_form_builder_core.ComponentKeyChangedEventArgs.md)
 - [ComponentState](../classes/react_form_builder_core.ComponentState.md)
 - [ComponentStore](../classes/react_form_builder_core.ComponentStore.md)
-- [ContainerAn](../classes/react_form_builder_core.ContainerAn.md)
+- [ContainerAnnotation](../classes/react_form_builder_core.ContainerAnnotation.md)
 - [DataValidator](../classes/react_form_builder_core.DataValidator.md)
 - [Definer](../classes/react_form_builder_core.Definer.md)
-- [EventAn](../classes/react_form_builder_core.EventAn.md)
+- [EventAnnotation](../classes/react_form_builder_core.EventAnnotation.md)
 - [EventStream](../classes/react_form_builder_core.EventStream.md)
 - [Form](../classes/react_form_builder_core.Form.md)
 - [FormViewerPropsStore](../classes/react_form_builder_core.FormViewerPropsStore.md)
@@ -38,14 +38,14 @@ custom_edit_url: null
 - [LocalizationStore](../classes/react_form_builder_core.LocalizationStore.md)
 - [Meta](../classes/react_form_builder_core.Meta.md)
 - [Model](../classes/react_form_builder_core.Model.md)
-- [ModuleAn](../classes/react_form_builder_core.ModuleAn.md)
+- [ModuleAnnotation](../classes/react_form_builder_core.ModuleAnnotation.md)
 - [NodeAnnotationBuilder](../classes/react_form_builder_core.NodeAnnotationBuilder.md)
 - [OneOfBuilder](../classes/react_form_builder_core.OneOfBuilder.md)
-- [PropertyAn](../classes/react_form_builder_core.PropertyAn.md)
+- [PropertyAnnotation](../classes/react_form_builder_core.PropertyAnnotation.md)
 - [QuantifierBuilder](../classes/react_form_builder_core.QuantifierBuilder.md)
 - [SomeOfBuilder](../classes/react_form_builder_core.SomeOfBuilder.md)
 - [Store](../classes/react_form_builder_core.Store.md)
-- [StyleAn](../classes/react_form_builder_core.StyleAn.md)
+- [StyleAnnotation](../classes/react_form_builder_core.StyleAnnotation.md)
 - [SyncEvent](../classes/react_form_builder_core.SyncEvent.md)
 - [TemplateField](../classes/react_form_builder_core.TemplateField.md)
 - [TypedBuilder](../classes/react_form_builder_core.TypedBuilder.md)
@@ -1862,9 +1862,9 @@ ___
 
 ### isContainer
 
-▸ **isContainer**(`value`): value is ContainerAn
+▸ **isContainer**(`value`): value is ContainerAnnotation
 
-Type predicate, asserts that the value is an instance of ContainerAn. **Internal use only.**
+Type predicate, asserts that the value is an instance of ContainerAnnotation. **Internal use only.**
 
 #### Parameters
 
@@ -1874,9 +1874,9 @@ Type predicate, asserts that the value is an instance of ContainerAn. **Internal
 
 #### Returns
 
-value is ContainerAn
+value is ContainerAnnotation
 
-true if the value is an instance of ContainerAn, false otherwise.
+true if the value is an instance of ContainerAnnotation, false otherwise.
 
 ___
 
@@ -1948,9 +1948,9 @@ ___
 
 ### isProperty
 
-▸ **isProperty**(`value`): value is PropertyAn
+▸ **isProperty**(`value`): value is PropertyAnnotation
 
-Type predicate, asserts that the value is an instance of PropertyAn. **Internal use only.**
+Type predicate, asserts that the value is an instance of PropertyAnnotation. **Internal use only.**
 
 #### Parameters
 
@@ -1960,9 +1960,9 @@ Type predicate, asserts that the value is an instance of PropertyAn. **Internal 
 
 #### Returns
 
-value is PropertyAn
+value is PropertyAnnotation
 
-true if the value is an instance of PropertyAn, false otherwise.
+true if the value is an instance of PropertyAnnotation, false otherwise.
 
 ___
 

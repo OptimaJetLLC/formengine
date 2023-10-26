@@ -1,4 +1,4 @@
-import {PropertyAn} from '@react-form-builder/core'
+import {PropertyAnnotation} from '@react-form-builder/core'
 import LabeledProperty from '../components/LabeledProperty'
 import {RadioButtons} from '../components/RadioButtons'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
@@ -12,7 +12,7 @@ export const RadioInput = (props: AnnotationEditorProps) => {
   const {value, onChange, annotation} = props
   return (
     <LabeledProperty {...props}>
-      <RadioButtons items={(annotation as PropertyAn).data} onChange={onChange} value={value}/>
+      <RadioButtons items={(annotation as PropertyAnnotation).data} onChange={onChange} value={value}/>
     </LabeledProperty>
   )
 }

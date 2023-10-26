@@ -1,11 +1,11 @@
 ---
-id: "react_form_builder_core.StyleAn"
-title: "Class: StyleAn"
-sidebar_label: "StyleAn"
+id: "react_form_builder_core.StyleAnnotation"
+title: "Class: StyleAnnotation"
+sidebar_label: "StyleAnnotation"
 custom_edit_url: null
 ---
 
-[@react-form-builder/core](../modules/react_form_builder_core.md).StyleAn
+[@react-form-builder/core](../modules/react_form_builder_core.md).StyleAnnotation
 
 Metadata for the component style property for the form builder.
 
@@ -13,13 +13,13 @@ Metadata for the component style property for the form builder.
 
 - [`Annotation`](react_form_builder_core.Annotation.md)
 
-  ↳ **`StyleAn`**
+  ↳ **`StyleAnnotation`**
 
 ## Constructors
 
 ### constructor
 
-• **new StyleAn**(`key`, `name`)
+• **new StyleAnnotation**(`key`, `name`)
 
 Creates metadata for a React component property.
 

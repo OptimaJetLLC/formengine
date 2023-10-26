@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
-import {PropertyAn} from '@react-form-builder/core'
+import {PropertyAnnotation} from '@react-form-builder/core'
 import {startCase} from 'lodash-es'
 import {TagPicker} from 'rsuite'
 import type {ItemDataType} from 'rsuite/esm/@types/common'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
-const prepareData = ({data}: PropertyAn, values: string[]) => {
+const prepareData = ({data}: PropertyAnnotation, values: string[]) => {
   const preparedData = data.map(di => {
     return {
       value: di.value,
@@ -30,7 +30,7 @@ const prepareData = ({data}: PropertyAn, values: string[]) => {
  */
 export const MultiPicker = (props: AnnotationEditorProps) => {
   const {value, onChange, annotation, onClean} = props
-  const data = prepareData(annotation as PropertyAn, value)
+  const data = prepareData(annotation as PropertyAnnotation, value)
 
   return <LabeledProperty {...props}>
     <STagPicker value={value ?? []} data={data} onChange={onChange} onClean={onClean}

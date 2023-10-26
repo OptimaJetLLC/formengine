@@ -13,25 +13,25 @@ Basic metadata class for a React component property for the form builder.
 
 - **`Annotation`**
 
-  ↳ [`ContainerAn`](react_form_builder_core.ContainerAn.md)
+  ↳ [`ContainerAnnotation`](react_form_builder_core.ContainerAnnotation.md)
 
-  ↳ [`EventAn`](react_form_builder_core.EventAn.md)
+  ↳ [`EventAnnotation`](react_form_builder_core.EventAnnotation.md)
 
-  ↳ [`ModuleAn`](react_form_builder_core.ModuleAn.md)
+  ↳ [`ModuleAnnotation`](react_form_builder_core.ModuleAnnotation.md)
 
-  ↳ [`StyleAn`](react_form_builder_core.StyleAn.md)
+  ↳ [`StyleAnnotation`](react_form_builder_core.StyleAnnotation.md)
 
-  ↳ [`PropertyAn`](react_form_builder_core.PropertyAn.md)
+  ↳ [`PropertyAnnotation`](react_form_builder_core.PropertyAnnotation.md)
 
-  ↳ [`ContainerAn`](react_form_builder_core.ContainerAn.md)
+  ↳ [`ContainerAnnotation`](react_form_builder_core.ContainerAnnotation.md)
 
-  ↳ [`EventAn`](react_form_builder_core.EventAn.md)
+  ↳ [`EventAnnotation`](react_form_builder_core.EventAnnotation.md)
 
-  ↳ [`ModuleAn`](react_form_builder_core.ModuleAn.md)
+  ↳ [`ModuleAnnotation`](react_form_builder_core.ModuleAnnotation.md)
 
-  ↳ [`PropertyAn`](react_form_builder_core.PropertyAn.md)
+  ↳ [`PropertyAnnotation`](react_form_builder_core.PropertyAnnotation.md)
 
-  ↳ [`StyleAn`](react_form_builder_core.StyleAn.md)
+  ↳ [`StyleAnnotation`](react_form_builder_core.StyleAnnotation.md)
 
 ## Constructors
 

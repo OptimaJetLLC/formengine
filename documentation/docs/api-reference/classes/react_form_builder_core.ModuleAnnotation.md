@@ -1,25 +1,26 @@
 ---
-id: "react_form_builder_core.EventAn"
-title: "Class: EventAn"
-sidebar_label: "EventAn"
+id: "react_form_builder_core.ModuleAnnotation"
+title: "Class: ModuleAnnotation"
+sidebar_label: "ModuleAnnotation"
 custom_edit_url: null
 ---
 
-[@react-form-builder/core](../modules/react_form_builder_core.md).EventAn
+[@react-form-builder/core](../modules/react_form_builder_core.md).ModuleAnnotation
 
-Metadata for the component event property for the form builder.
+Metadata for a component property that is not a property of the component itself,
+but is supplied by the form builder.
 
 ## Hierarchy
 
 - [`Annotation`](react_form_builder_core.Annotation.md)
 
-  ↳ **`EventAn`**
+  ↳ **`ModuleAnnotation`**
 
 ## Constructors
 
 ### constructor
 
-• **new EventAn**(`key`, `name`)
+• **new ModuleAnnotation**(`key`, `name`)
 
 Creates metadata for a React component property.
 
