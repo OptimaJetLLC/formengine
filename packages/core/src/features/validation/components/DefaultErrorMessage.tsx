@@ -52,4 +52,7 @@ const DefaultErrorMessage = ({children, error, className}: ErrorWrapperProps) =>
 }
 DefaultErrorMessage.displayName = 'DefaultErrorMessage'
 
+/**
+ * The component metadata for error message. **Internal use only.**
+ */
 export const errorMessageModel = new Model(DefaultErrorMessage)

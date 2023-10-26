@@ -1,5 +1,5 @@
 /**
- * Executes a given function on each node of a tree.
+ * Executes a given function on each node of a tree. **Internal use only.**
  * @param tree the root node of the tree.
  * @param fn the function to be executed on each node of the tree.
  */
@@ -9,7 +9,7 @@ export function treeForEach<T extends { children?: T[] }>(tree: T, fn: (treeNode
 }
 
 /**
- * Finds the depth of a given element in a tree.
+ * Finds the depth of a given element in a tree. **Internal use only.**
  * @param value the root of the tree.
  * @param element the element to find the depth of.
  * @param depth the current depth of the tree (optional, default is 0).

@@ -168,9 +168,9 @@ A function that returns a string containing the source code of the function to b
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `props` | `any` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `props` | `any` | the properties of the component, which are available only inside Form Builder Designer. |
 
 ##### Returns
 

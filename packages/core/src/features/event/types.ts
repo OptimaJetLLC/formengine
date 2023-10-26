@@ -128,7 +128,7 @@ export class ActionDefinition {
 }
 
 /**
- * Converts the input object to an ActionValues object.
+ * Converts the input object to an ActionValues object. **Internal use only.**
  * @param obj the input object.
  * @returns the converted ActionValues object.
  */

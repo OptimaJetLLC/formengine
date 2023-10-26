@@ -4,7 +4,7 @@ import {Model} from '../define'
 import {screenModel} from './screenModel'
 
 /**
- * React component properties that display an internal form view error.
+ * React component properties that display an internal form view error. **Internal use only.**
  */
 export interface InternalErrorProps {
   /**
@@ -23,7 +23,7 @@ const InternalError = ({error}: InternalErrorProps) => {
 InternalError.displayName = 'InternalError'
 
 /**
- * Form viewer internal error metadata.
+ * Form viewer internal error metadata. **Internal use only.**
  * @internal
  */
 export const internalErrorModel = new Model(InternalError)

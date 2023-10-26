@@ -11,9 +11,9 @@ Represents component metadata for the form viewer.
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `any` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | `any` | the type of React component properties. |
 
 ## Constructors
 
@@ -25,9 +25,9 @@ Creates component metadata for the form viewer.
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `any` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | `any` | the type of React component properties. |
 
 #### Parameters
 
@@ -45,12 +45,6 @@ Creates component metadata for the form viewer.
 
 ## Properties
 
-### #name
-
-• `Private` `Optional` `Readonly` **#name**: `string`
-
-___
-
 ### actionsInitializer
 
 • `Optional` `Readonly` **actionsInitializer**: [`ActionsInitializer`](../modules/react_form_builder_core.md#actionsinitializer)
@@ -62,6 +56,8 @@ ___
 ### component
 
 • `Readonly` **component**: `ComponentType`<`T`\>
+
+The React component.
 
 ___
 

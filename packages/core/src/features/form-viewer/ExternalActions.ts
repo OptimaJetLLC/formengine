@@ -6,7 +6,7 @@ import {ActionDefinition, ActionEventHandler, ActionValues} from '../event'
 export type ExternalActions = Record<string, ActionDefinition | ActionEventHandler>
 
 /**
- * Converts external actions to the set of action definitions.
+ * Converts external actions to the set of action definitions. **Internal use only.**
  * @param externalActions the external actions.
  * @returns the set of action definitions or undefined.
  */

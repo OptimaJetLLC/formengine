@@ -13,7 +13,7 @@ export interface IStore {
   form: Form
 
   /**
-   * @returns the slice of the initial data in accordance with the Store hierarchy.
+   * @returns the slice of the initial data in accordance with the Store hierarchy. **Internal use only.**
    */
   get initialDataSlice(): Record<string, unknown> | undefined
 
@@ -21,6 +21,7 @@ export interface IStore {
    * Performs the callback function on each element of the component tree, accumulates the return values.
    * @param callback the function that calculates the value for the accumulator.
    * @param initialValue the initial value for the accumulator.
+   * @template T the return value type.
    * @returns the accumulated value.
    */
   reduceScreen: <T>(callback: (accumulator: T, current: ComponentData) => T, initialValue: T) => T
@@ -29,6 +30,7 @@ export interface IStore {
    * The function to localize the validation error message.
    * @param componentStore the component settings.
    * @param validationResults the results of the validation.
+   * @returns the result of localization or undefined.
    */
   localizeErrorMessages: (componentStore: ComponentStore, validationResults?: ValidationResult[]) => string | undefined
 

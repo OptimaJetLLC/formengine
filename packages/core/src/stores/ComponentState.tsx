@@ -41,7 +41,7 @@ export class ComponentState {
    * Creates an instance that calculates the properties of the form viewer component.
    * @param data the data needed to display the component.
    * @param store the form viewer settings.
-   * @param localizer the function to localize the properties of a component.
+   * @param localizer the function to localize the properties of a component, returns a Record with localized properties.
    * @param computeChildren the function that calculates all child properties of a component.
    */
   constructor(

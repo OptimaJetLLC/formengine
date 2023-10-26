@@ -7,7 +7,7 @@ custom_edit_url: null
 
 [@react-form-builder/core](../modules/react_form_builder_core.md).SuppressResizeObserverErrorsProps
 
-Represents the props for the SuppressResizeObserverErrors component.
+Represents the props for the SuppressResizeObserverErrors component. **Internal use only.**
 
 ## Properties
 

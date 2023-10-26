@@ -1,7 +1,7 @@
 import {Context, createContext, Provider, useContext} from 'react'
 
 /**
- * Creates non-nullable React context.
+ * Creates non-nullable React context. **Internal use only.**
  * @param name the context name.
  * @returns the tuple [hook, provider, and common context] for interactions with a non-nullable context.
  */

@@ -7,7 +7,7 @@ custom_edit_url: null
 
 [@react-form-builder/core](../modules/react_form_builder_core.md).SyncEvent
 
-Represents a synchronous event that can be subscribed to and invoked.
+Represents a synchronous event that can be subscribed to and invoked. **Internal use only.**
 
 ## Type parameters
 
@@ -28,12 +28,6 @@ Represents a synchronous event that can be subscribed to and invoked.
 | :------ |
 | `TSender` |
 | `TEventArgs` |
-
-## Properties
-
-### handlers
-
-• `Private` **handlers**: [`SyncEventHandler`](../modules/react_form_builder_core.md#synceventhandler)<`TSender`, `TEventArgs`\>[] = `[]`
 
 ## Accessors
 

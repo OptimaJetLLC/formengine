@@ -1,7 +1,7 @@
 import type {RuleValidator} from '../../validation'
 
 /**
- * Returns true if the component key is unique across the entire component tree.
+ * Returns true if the component key is unique across the entire component tree. **Internal use only.**
  * @param value the component key.
  * @param store the form viewer settings.
  * @returns true if the component key is unique across the entire component tree.

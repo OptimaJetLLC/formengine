@@ -3,5 +3,7 @@
   "entryPoints": [
     "./index.ts"
   ],
-  "disableSources": true
+  "disableSources": true,
+  "excludePrivate": true,
+  "excludeProtected": false
 }

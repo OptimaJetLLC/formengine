@@ -17,11 +17,15 @@ custom_edit_url: null
 
 • `Const` **models**: [`Model`](../classes/react_form_builder_core.Model.md)<`any`\>[]
 
+An array of rSuite component metadata for use in FormViewer.
+
 ___
 
 ### rSuiteComponents
 
 • `Const` **rSuiteComponents**: [`Definer`](../classes/react_form_builder_core.Definer.md)<`any`\>[] = `[]`
+
+An array of rSuite component metadata factories.
 
 ___
 
@@ -29,17 +33,23 @@ ___
 
 • `Const` **rsErrorMessage**: [`Definer`](../classes/react_form_builder_core.Definer.md)<[`RsErrorMessageProps`](../interfaces/react_form_builder_components_rsuite.RsErrorMessageProps.md)\>
 
+Metadata builder for rSuite-based error display component.
+
 ___
 
 ### rsTooltip
 
 • `Const` **rsTooltip**: [`Definer`](../classes/react_form_builder_core.Definer.md)<[`RsTooltipProps`](../interfaces/react_form_builder_components_rsuite.RsTooltipProps.md)\>
 
+Metadata builder for rSuite-based tooltip display component.
+
 ___
 
 ### view
 
 • `Const` **view**: [`View`](../classes/react_form_builder_core.View.md)
+
+An assembled set of rSuite components, ready to be passed as a property to the FormViewer.
 
 ## Functions
 

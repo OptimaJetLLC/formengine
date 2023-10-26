@@ -7,7 +7,7 @@ custom_edit_url: null
 
 [@react-form-builder/core](../modules/react_form_builder_core.md).ScreenProps
 
-Properties of the root component of the form.
+Properties of the root component of the form. **Internal use only.**
 
 ## Properties
 

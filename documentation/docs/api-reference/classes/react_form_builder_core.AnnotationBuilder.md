@@ -11,9 +11,9 @@ The builder class to define the metadata property of the form builder component.
 
 ## Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Description |
+| :------ | :------ |
+| `T` | the property type. |
 
 ## Hierarchy
 
@@ -35,9 +35,9 @@ Creates a component property metadata builder.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Description |
+| :------ | :------ |
+| `T` | the property type. |
 
 #### Parameters
 
@@ -55,6 +55,8 @@ Creates a component property metadata builder.
 
 • **annotation**: [`PreAnnotation`](../modules/react_form_builder_core.md#preannotation)
 
+Partial metadata for a component property.
+
 #### Inherited from
 
 [BaseBuilder](react_form_builder_core.BaseBuilder.md).[annotation](react_form_builder_core.BaseBuilder.md#annotation)
@@ -64,6 +66,8 @@ ___
 ### options
 
 • **options**: [`BuilderOptions`](react_form_builder_core.BuilderOptions.md)
+
+Options for building an annotation.
 
 #### Inherited from
 
@@ -203,15 +207,19 @@ ___
 
 ▸ `Protected` **getName**(`key`): `string`
 
+Returns the annotation name.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `key` | `string` | the property name |
 
 #### Returns
 
 `string`
+
+the annotation name.
 
 #### Inherited from
 
@@ -401,9 +409,9 @@ Creates a component property metadata builder.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Description |
+| :------ | :------ |
+| `T` | the property type. |
 
 #### Parameters
 

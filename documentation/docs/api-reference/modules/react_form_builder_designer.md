@@ -59,7 +59,7 @@ Data required to translate the form builder interface.
 
 ▸ **ActionCell**(`props`): `Element`
 
-The React component that displays the table cell with the icon button.
+The React component that displays the table cell with the icon button. **Internal use only.**
 
 #### Parameters
 
@@ -79,7 +79,7 @@ ___
 
 ▸ **CheckCell**(`props`): `Element`
 
-The React component that displays the table cell with the checkbox.
+The React component that displays the table cell with the checkbox. **Internal use only.**
 
 #### Parameters
 
@@ -99,7 +99,7 @@ ___
 
 ▸ **EditableTable**(`props`): `Element`
 
-The React component that displays the table with editable cells.
+The React component that displays the table with editable cells. **Internal use only.**
 
 #### Parameters
 
@@ -139,7 +139,7 @@ ___
 
 ▸ **InputCell**(`props`): `Element`
 
-The React component that displays the table cell with the input.
+The React component that displays the table cell with the input. **Internal use only.**
 
 #### Parameters
 
@@ -159,7 +159,7 @@ ___
 
 ▸ **SelectCell**(`props`): `Element`
 
-The React component that displays the table cell with the select input.
+The React component that displays the table cell with the select input. **Internal use only.**
 
 #### Parameters
 
@@ -179,7 +179,7 @@ ___
 
 ▸ **makeColumns**(`columns`): `Element`[]
 
-Creates table columns based on their descriptions.
+Creates table columns based on their descriptions. **Internal use only.**
 
 #### Parameters
 

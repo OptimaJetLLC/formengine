@@ -33,11 +33,17 @@ export class ComponentKeyChangedEventArgs {
  * Represents a class that holds events related to component data.
  */
 export class ComponentDataEvents {
+  /**
+   * An event that occurs after a component key change.
+   */
   readonly onAfterKeyChanged: SyncEvent<ComponentData, ComponentKeyChangedEventArgs> = new SyncEvent()
+  /**
+   * An event that occurs before a component is removed from the component tree.
+   */
   readonly onBeforeDelete: SyncEvent<ComponentData, undefined> = new SyncEvent()
 
   /**
-   * Unsubscribes all events.
+   * Unsubscribe from all events.
    */
   dispose() {
     this.onAfterKeyChanged.dispose()
@@ -52,11 +58,29 @@ export class ComponentData implements IFormData {
   #disposers: IReactionDisposer[]
   #events?: ComponentDataEvents
   #externalFormValidators?: ExternalFormValidators
+  /**
+   * The unique identifier.
+   */
   readonly id: string
+  /**
+   * The component settings.
+   */
   readonly store: ComponentStore
+  /**
+   * The component metadata.
+   */
   readonly model: Model
+  /**
+   * The field with the form data.
+   */
   readonly field?: Field
+  /**
+   * The parent node in the component data tree.
+   */
   parent?: ComponentData
+  /**
+   * The child nodes in the component data tree.
+   */
   children: ComponentData[] = []
 
   /**
@@ -426,7 +450,7 @@ export class ComponentData implements IFormData {
 }
 
 /**
- * Replaces empty form fields with an empty string.
+ * Replaces empty form fields with an empty string. **Internal use only.**
  * @param form the form.
  * @returns all form data where empty fields are filled with empty strings.
  */
@@ -444,7 +468,7 @@ const [
    */
   useComponentData,
   /**
-   * Context provider for the useComponentData hook.
+   * Context provider for the useComponentData hook. **Internal use only.**
    */
   ComponentDataProvider
 ] = createNonNullableContext<ComponentData>('ComponentDataContext')

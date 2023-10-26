@@ -35,54 +35,6 @@ Creates metadata for form builder components.
 
 ## Properties
 
-### #cssLoaders
-
-• `Private` **#cssLoaders**: `Map`<[`BiDi`](../enums/react_form_builder_core.BiDi.md), () => `Promise`<`void`\>[]\>
-
-#### Inherited from
-
-[View](react_form_builder_core.View.md).[#cssLoaders](react_form_builder_core.View.md##cssloaders)
-
-___
-
-### #errorMeta
-
-• `Private` **#errorMeta**: `Map`<`string`, [`Meta`](react_form_builder_core.Meta.md)\>
-
-___
-
-### #metaMap
-
-• `Private` **#metaMap**: `Map`<`string`, [`Meta`](react_form_builder_core.Meta.md)\>
-
-___
-
-### #modelMap
-
-• `Private` **#modelMap**: `Map`<`string`, [`Model`](react_form_builder_core.Model.md)<`any`\>\>
-
-#### Inherited from
-
-[View](react_form_builder_core.View.md).[#modelMap](react_form_builder_core.View.md##modelmap)
-
-___
-
-### #tooltipsMeta
-
-• `Private` **#tooltipsMeta**: `Map`<`string`, [`Meta`](react_form_builder_core.Meta.md)\>
-
-___
-
-### #wrappers
-
-• `Private` **#wrappers**: [`FormViewerWrapper`](../modules/react_form_builder_core.md#formviewerwrapper)[]
-
-#### Inherited from
-
-[View](react_form_builder_core.View.md).[#wrappers](react_form_builder_core.View.md##wrappers)
-
-___
-
 ### builderComponents
 
 • **builderComponents**: [`BuilderComponent`](../interfaces/react_form_builder_core.BuilderComponent.md)[]
@@ -132,29 +84,6 @@ the viewer wrappers array.
 View.viewerWrappers
 
 ## Methods
-
-### #withCssLoader
-
-▸ `Private` **#withCssLoader**(`biDi`, `loader`): `void`
-
-Sets a CSS loader for the specified BiDi direction.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `biDi` | [`BiDi`](../enums/react_form_builder_core.BiDi.md) | the BiDi direction. |
-| `loader` | () => `Promise`<`void`\> | the loader function that returns a Promise. |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-[View](react_form_builder_core.View.md).[#withCssLoader](react_form_builder_core.View.md##withcssloader)
-
-___
 
 ### all
 

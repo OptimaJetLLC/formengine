@@ -16,7 +16,7 @@ export interface WrapperProps {
 export type ViewMode = 'desktop' | 'mobile' | 'tablet'
 
 /**
- * Properties of the root component of the form.
+ * Properties of the root component of the form. **Internal use only.**
  */
 export interface ScreenProps {
   /**
@@ -27,5 +27,7 @@ export interface ScreenProps {
 
 /**
  * Value setting function type.
+ * @param value the value.
+ * @template T the value type.
  */
 export type Setter<T = any> = (value: T) => void

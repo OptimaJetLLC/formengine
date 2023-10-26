@@ -4,7 +4,7 @@
 export type Rel = 'stylesheet' | string
 
 /**
- * Loads a resource into the document head asynchronously.
+ * Loads a resource into the document head asynchronously. **Internal use only.**
  * @param id the identifier of the resource.
  * @param href represents a URL to the resource.
  * @param rel the relationship of the resource to the document.
@@ -28,7 +28,7 @@ export const loadResource = (id: string, href: string, rel: Rel) => {
 }
 
 /**
- * Unloads a resource from the DOM based on its ID.
+ * Unloads a resource from the DOM based on its ID. **Internal use only.**
  * @param id the ID of the resource to unload.
  */
 export const unloadResource = (id: string) => {

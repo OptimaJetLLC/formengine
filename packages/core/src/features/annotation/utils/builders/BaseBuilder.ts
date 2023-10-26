@@ -8,7 +8,13 @@ import {Annotation} from '../../types/annotations/Annotation'
  * Options for building an annotation.
  */
 export class BuilderOptions {
+  /**
+   * Type of component property description in the form builder.
+   */
   annotationType: AnnotationType = 'Module'
+  /**
+   * Flag if true, the property name will be automatically converted in the designer from a camel case string to a human-readable string.
+   */
   autoName = true
 }
 
@@ -24,9 +30,16 @@ export type BuilderSetup = Partial<PreAnnotation & BuilderOptions>
 
 /**
  * The base builder class to define the metadata property of the form builder component.
+ * @template T the property type.
  */
 export class BaseBuilder<T> {
+  /**
+   * Partial metadata for a component property.
+   */
   annotation!: PreAnnotation
+  /**
+   * Options for building an annotation.
+   */
   options = new BuilderOptions()
 
   /**
@@ -126,6 +139,11 @@ export class BaseBuilder<T> {
     return clone
   }
 
+  /**
+   * Returns the annotation name.
+   * @param key the property name
+   * @returns the annotation name.
+   */
   protected getName(key: string) {
     return this.annotation.name ?? (this.options.autoName ? startCase(key) : key)
   }

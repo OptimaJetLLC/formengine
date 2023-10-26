@@ -33,6 +33,8 @@ Creates a new instance of Form.
 
 • `Readonly` **actions**: [`ActionValues`](../modules/react_form_builder_core.md#actionvalues)
 
+The set of action definitions.
+
 ___
 
 ### componentTree
@@ -55,11 +57,15 @@ ___
 
 • **errorProps**: `any` = `{}`
 
+Properties of the component displaying the error.
+
 ___
 
 ### errorType
 
 • `Optional` **errorType**: `string`
+
+The type name of the component displaying the error.
 
 ___
 
@@ -82,6 +88,8 @@ ___
 ### tooltipType
 
 • `Optional` **tooltipType**: `string`
+
+The type name of the component displaying the tooltip.
 
 ## Accessors
 
@@ -139,76 +147,6 @@ Initializes form fields.
 
 ___
 
-### onComponentDataAfterKeyChanged
-
-▸ `Private` **onComponentDataAfterKeyChanged**(`_`, `«destructured»`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `_` | [`ComponentData`](react_form_builder_core.ComponentData.md) |
-| `«destructured»` | `Object` |
-| › `newKey` | `string` |
-| › `oldKey` | `string` |
-
-#### Returns
-
-`void`
-
-___
-
-### onComponentDataBeforeDelete
-
-▸ `Private` **onComponentDataBeforeDelete**(`component`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `component` | [`ComponentData`](react_form_builder_core.ComponentData.md) |
-
-#### Returns
-
-`void`
-
-___
-
-### rebindActionData
-
-▸ `Private` **rebindActionData**(`actionData`, `newAction`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `actionData` | [`ActionData`](../modules/react_form_builder_core.md#actiondata) |
-| `newAction` | [`NamedActionDefinition`](../modules/react_form_builder_core.md#namedactiondefinition) |
-
-#### Returns
-
-`void`
-
-___
-
-### rebindActionHandlers
-
-▸ `Private` **rebindActionHandlers**(`componentStore`, `oldActionName`, `newAction`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `componentStore` | [`ComponentStore`](react_form_builder_core.ComponentStore.md) |
-| `oldActionName` | `string` |
-| `newAction` | [`NamedActionDefinition`](../modules/react_form_builder_core.md#namedactiondefinition) |
-
-#### Returns
-
-`void`
-
-___
-
 ### removeAction
 
 ▸ **removeAction**(`name`): `void`
@@ -220,23 +158,6 @@ Removes the action from the form.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `name` | `string` | the action name to remove. |
-
-#### Returns
-
-`void`
-
-___
-
-### removeCustomActionBinding
-
-▸ `Private` **removeCustomActionBinding**(`actionName`, `componentStore`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `actionName` | `string` |
-| `componentStore` | [`ComponentStore`](react_form_builder_core.ComponentStore.md) |
 
 #### Returns
 

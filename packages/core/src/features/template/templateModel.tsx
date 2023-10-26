@@ -21,7 +21,15 @@ interface TemplateContext {
   templateProps: Record<string, any>
 }
 
-export const [useTemplate, TemplateProvider] = createNonNullableContext<TemplateContext>('TemplateContext')
+export const [
+  /**
+   * **Internal use only.**
+   */
+  useTemplate,
+  /**
+   * **Internal use only.**
+   */
+  TemplateProvider] = createNonNullableContext<TemplateContext>('TemplateContext')
 
 const Template = (templateProps: Record<string, any>) => {
   const viewerProps = useViewerProps()

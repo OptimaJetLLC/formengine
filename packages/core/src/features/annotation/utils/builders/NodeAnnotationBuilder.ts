@@ -3,12 +3,14 @@ import {AnnotationBuilder} from './AnnotationBuilder'
 
 /**
  * The builder class to define the node metadata property.
+ * @template T the property type.
  */
 export class NodeAnnotationBuilder<T> extends AnnotationBuilder<T> {
 
   /**
    * Creates a component property metadata builder.
    * @param editor the property editor type.
+   * @template T the property type.
    */
   constructor(editor: EditorType) {
     super(editor)
@@ -27,6 +29,7 @@ export class NodeAnnotationBuilder<T> extends AnnotationBuilder<T> {
 /**
  * Creates a component property metadata builder.
  * @param editor the property editor type.
+ * @template T the property type.
  * @returns the NodeAnnotationBuilder instance.
  */
 export function createNodeAnnotation<T>(editor: EditorType) {

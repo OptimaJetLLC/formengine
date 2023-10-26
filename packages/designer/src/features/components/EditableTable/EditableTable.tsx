@@ -63,7 +63,7 @@ export interface EditableTableState {
 }
 
 /**
- * The React component that displays the table with editable cells.
+ * The React component that displays the table with editable cells. **Internal use only.**
  * @param props the React component properties.
  * @returns the React element.
  */

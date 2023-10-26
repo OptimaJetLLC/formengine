@@ -31,7 +31,7 @@ export type LocalizationTestRequest = {
 }
 
 /**
- * Localization testing function.
+ * Localization testing function. **Internal use only.**
  * @param request the localization testing request.
  * @returns the localization testing result.
  */

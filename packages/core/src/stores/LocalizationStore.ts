@@ -94,12 +94,15 @@ class FluentBundleHolder {
 }
 
 /**
- * Observable storage of localization.
+ * Observable storage of localization. **Internal use only.**
  */
 export class LocalizationStore {
 
   private localizationCache = new Map<string, FluentBundleHolder>()
 
+  /**
+   * The localization data.
+   */
   readonly value: LocalizationValue = {}
 
   /**

@@ -7,7 +7,7 @@ custom_edit_url: null
 
 [@react-form-builder/core](../modules/react_form_builder_core.md).LocalizationStore
 
-Observable storage of localization.
+Observable storage of localization. **Internal use only.**
 
 ## Constructors
 
@@ -25,15 +25,11 @@ The constructor.
 
 ## Properties
 
-### localizationCache
-
-• `Private` **localizationCache**: `Map`<`string`, `FluentBundleHolder`\>
-
-___
-
 ### value
 
 • `Readonly` **value**: [`LocalizationValue`](../modules/react_form_builder_core.md#localizationvalue) = `{}`
+
+The localization data.
 
 ## Methods
 

@@ -6,9 +6,13 @@ import type {ActionsInitializer} from '../types'
 
 /**
  * Represents component metadata for the form viewer.
+ * @template T the type of React component properties.
  */
 export class Model<T = any> {
   readonly #name?: string
+  /**
+   * The React component.
+   */
   readonly component: ComponentType<T>
 
   /**
@@ -22,6 +26,7 @@ export class Model<T = any> {
    * @param css the component's CSS values.
    * @param typeName the component type name.
    * @param icon the component icon.
+   * @template T the type of React component properties.
    */
   constructor(
     component: ComponentType<T>,

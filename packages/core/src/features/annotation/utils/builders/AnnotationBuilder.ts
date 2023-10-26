@@ -8,12 +8,14 @@ import {TypedBuilder} from './TypedBuilder'
 
 /**
  * The builder class to define the metadata property of the form builder component.
+ * @template T the property type.
  */
 export class AnnotationBuilder<T> extends BaseBuilder<T> {
 
   /**
    * Creates a component property metadata builder.
    * @param editor the property editor type.
+   * @template T the property type.
    */
   constructor(editor: EditorType) {
     super()
@@ -23,6 +25,7 @@ export class AnnotationBuilder<T> extends BaseBuilder<T> {
   /**
    * Creates a component property metadata builder.
    * @param editor the property editor type.
+   * @template T the property type.
    * @returns the component property metadata builder.
    */
   static create = <T>(editor: EditorType) => new this<T>(editor)

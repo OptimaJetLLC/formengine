@@ -10,6 +10,7 @@ import {toArray} from './toArray'
 
 /**
  * Definer class data.
+ * @template T React component property type.
  */
 export type DefinerData<T extends object> = {
   /**
@@ -48,8 +49,13 @@ export type DefinerData<T extends object> = {
 
 /**
  * The builder class to define the metadata of the form builder component.
+ * @template T React component property type.
  */
 export class Definer<T extends object> {
+  /**
+   * Definer class data.
+   * @template T React component property type.
+   */
   data: DefinerData<T>
 
   /**
@@ -70,23 +76,63 @@ export class Definer<T extends object> {
     this.data = {component}
   }
 
+  /**
+   * Sets the name of the component.
+   * @param name the component name.
+   * @returns the modified Definer class instance.
+   */
   name = (name: string) => this.#updateWith({name})
 
+  /**
+   * Sets the icon of the component.
+   * @param icon the component icon.
+   * @returns the modified Definer class instance.
+   */
   icon = (icon: ComponentType) => this.#updateWith({icon})
 
+  /**
+   * Sets the category of the component.
+   * @param category the component category.
+   * @returns the modified Definer class instance.
+   */
   category = (category: string) => this.#updateWith({category})
 
+  /**
+   * Sets the type of the component.
+   * @param type the component type.
+   * @returns the modified Definer class instance.
+   */
   type = (type: string) => {
     this.data.component.displayName = type
     return this
   }
 
+  /**
+   * Sets the metadata of the component's properties.
+   * @param properties the metadata of the component's properties.
+   * @returns the modified Definer class instance.
+   */
   props = (properties: Annotations<T>) => this.#updateWith({properties})
 
+  /**
+   * Sets the component CSS metadata.
+   * @param css the component CSS metadata.
+   * @returns the modified Definer class instance.
+   */
   css = (css: Annotations<CSSObject>): Definer<T> => this.#updateWith({cssObject: css})
 
+  /**
+   * Adds the metadata of the component's actions. **Internal use only.**
+   * @param fn the function that initializes an actions on a component.
+   * @returns the modified Definer class instance.
+   */
   actions = (fn: ActionsInitializer) => this.#updateWith({actionsInitializer: fn})
 
+  /**
+   * Adds the custom component to be displayed in the component list. **Internal use only.**
+   * @param customPreview the custom component.
+   * @returns the modified Definer class instance.
+   */
   preview = (customPreview: ReactNode) => this.#updateWith({customPreview})
 
   /**

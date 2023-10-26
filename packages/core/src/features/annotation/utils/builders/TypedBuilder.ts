@@ -5,6 +5,7 @@ import {BaseBuilder} from './BaseBuilder'
 /**
  * The builder class to define the metadata property of the form builder component.
  * Used for properties where the property value can be validated.
+ * @template T the property type.
  */
 export class TypedBuilder<T> extends BaseBuilder<T> {
 
@@ -24,12 +25,6 @@ export class TypedBuilder<T> extends BaseBuilder<T> {
   default(value: T): this {
     return this.setup({default: value})
   }
-
-  /**
-   * Modifies the component property metadata builder with custom options.
-   * @param options the custom options.
-   * @returns the modified instance of the builder.
-   */
 
   /**
    * Modifies the component property metadata builder with validation properties.

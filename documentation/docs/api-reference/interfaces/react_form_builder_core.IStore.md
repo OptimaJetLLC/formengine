@@ -61,6 +61,8 @@ The function to localize the validation error message.
 
 `undefined` \| `string`
 
+the result of localization or undefined.
+
 ___
 
 ### reduceScreen
@@ -75,9 +77,9 @@ Performs the callback function on each element of the component tree, accumulate
 
 ##### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Description |
+| :------ | :------ |
+| `T` | the return value type. |
 
 ##### Parameters
 
@@ -102,4 +104,4 @@ the accumulated value.
 
 `undefined` \| `Record`<`string`, `unknown`\>
 
-the slice of the initial data in accordance with the Store hierarchy.
+the slice of the initial data in accordance with the Store hierarchy. **Internal use only.**

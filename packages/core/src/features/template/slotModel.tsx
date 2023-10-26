@@ -15,6 +15,9 @@ const Slot = () => {
 }
 Slot.displayName = 'Slot'
 
+/**
+ * Form viewer slot metadata. **Internal use only.**
+ */
 export const slotModel = new Model(Slot, 'Slot')
 
 const SlotContent = namedObserver('SlotContent', ({parentStore}: { parentStore: Store }) => {

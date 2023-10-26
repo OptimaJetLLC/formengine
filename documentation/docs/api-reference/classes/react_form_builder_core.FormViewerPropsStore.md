@@ -7,7 +7,7 @@ custom_edit_url: null
 
 [@react-form-builder/core](../modules/react_form_builder_core.md).FormViewerPropsStore
 
-Represents the props passed to the FormViewer Store.
+Represents the props passed to the FormViewer Store. **Internal use only.**
 
 ## Constructors
 

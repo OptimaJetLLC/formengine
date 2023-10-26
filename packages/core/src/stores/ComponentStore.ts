@@ -47,7 +47,7 @@ export interface ComponentProperty {
 }
 
 /**
- * Returns true if the property value is calculated by the function, otherwise false.
+ * Returns true if the property value is calculated by the function, otherwise false. **Internal use only.**
  * @param componentProperty the component property.
  * @returns true if the property value is calculated by the function, otherwise false.
  */
@@ -56,7 +56,7 @@ export function isFunctionalProperty(componentProperty?: ComponentProperty) {
 }
 
 /**
- * Returns true if the property value is localized, otherwise false.
+ * Returns true if the property value is localized, otherwise false. **Internal use only.**
  * @param componentProperty the component property.
  * @returns true if the property value is localized, otherwise false.
  */

@@ -32,6 +32,9 @@ const SDiv = styled.div`
   width: 100%;
 `
 
+/**
+ * Metadata builder for rSuite-based error display component.
+ */
 export const rsErrorMessage = define(RsErrorMessage)
   .type('RsErrorMessage')
   .name('Error message')

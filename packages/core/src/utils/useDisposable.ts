@@ -11,7 +11,7 @@ export type IDisposable = {
 }
 
 /**
- * Creates a disposable object with the useMemo hook and dispose the object when the React component is unmounted.
+ * Creates a disposable object with the useMemo hook and dispose the object when the React component is unmounted. **Internal use only.**
  * @param factory the factory function to create a disposable object.
  * @param deps the dependencies for the useMemo hook.
  * @returns the disposable object.

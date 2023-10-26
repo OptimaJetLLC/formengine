@@ -23,7 +23,7 @@ Creates an instance that calculates the properties of the form viewer component.
 | :------ | :------ | :------ |
 | `data` | [`ComponentData`](react_form_builder_core.ComponentData.md) | the data needed to display the component. |
 | `store` | [`Store`](react_form_builder_core.Store.md) | the form viewer settings. |
-| `localizer` | (`componentStore`: [`ComponentStore`](react_form_builder_core.ComponentStore.md)) => `Record`<`string`, `any`\> | the function to localize the properties of a component. |
+| `localizer` | (`componentStore`: [`ComponentStore`](react_form_builder_core.ComponentStore.md)) => `Record`<`string`, `any`\> | the function to localize the properties of a component, returns a Record with localized properties. |
 | `computeChildren` | [`ComputeChildren`](../modules/react_form_builder_core.md#computechildren) | the function that calculates all child properties of a component. |
 
 ## Properties
@@ -52,7 +52,7 @@ ___
 
 ▸ (`componentStore`): `Record`<`string`, `any`\>
 
-the function to localize the properties of a component.
+the function to localize the properties of a component, returns a Record with localized properties.
 
 ##### Parameters
 

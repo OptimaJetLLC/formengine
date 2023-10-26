@@ -6,9 +6,16 @@ import {TypedBuilder} from './TypedBuilder'
 /**
  * The abstract builder class to define the metadata property of the form builder component.
  * Used for properties where the property value can be selected from predefined values.
+ * @template T the property type.
  */
 export abstract class QuantifierBuilder<T> extends TypedBuilder<T> {
+  /**
+   * Possible values for the property.
+   */
   values!: (string | number)[]
+  /**
+   * Labels for the possible values of the property.
+   */
   labels?: string[]
 
   /**

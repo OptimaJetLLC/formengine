@@ -9,44 +9,13 @@ custom_edit_url: null
 
 Binds all parts of the validation and performs the validation.
 
-## Constructors
-
-### constructor
-
-• `Private` **new DataValidator**(`store`, `validator`, `setter`, `errorMessageLocalizer?`)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `store` | [`IStore`](../interfaces/react_form_builder_core.IStore.md) |
-| `validator` | [`ResolvedValidator`](../modules/react_form_builder_core.md#resolvedvalidator) |
-| `setter` | [`Setter`](../modules/react_form_builder_core.md#setter)<`undefined` \| `string`\> |
-| `errorMessageLocalizer?` | [`ErrorMessageLocalizer`](../modules/react_form_builder_core.md#errormessagelocalizer) |
-
-## Properties
-
-### #stream
-
-• `Private` `Readonly` **#stream**: `Observable`<`undefined` \| `string`\>
-
-___
-
-### #subject
-
-• `Private` `Readonly` **#subject**: `Subject`<`any`\>
-
-___
-
-### #subscriptions
-
-• `Private` `Readonly` **#subscriptions**: `Subscription`[]
-
 ## Methods
 
 ### dispose
 
 ▸ **dispose**(): `void`
+
+Releases allocated resources, must be used when destroying an object instance.
 
 #### Returns
 
@@ -58,11 +27,13 @@ ___
 
 ▸ **sendValidationEvent**(`value`): `void`
 
+Generates an event to perform validation.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `any` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `any` | the validated value. |
 
 #### Returns
 
@@ -74,15 +45,19 @@ ___
 
 ▸ **validate**(`value`): `Promise`<`undefined` \| `string`\>
 
+Performs a validation of the value.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `any` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `any` | the validated value. |
 
 #### Returns
 
 `Promise`<`undefined` \| `string`\>
+
+the Promise with the result of the validation.
 
 ___
 
@@ -94,9 +69,9 @@ Creates a DataValidator instance.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Description |
+| :------ | :------ |
+| `T` | the validation function factory arguments. |
 
 #### Parameters
 

@@ -1,5 +1,7 @@
 /**
  * Represents a function that validate the form data.
+ * @param data the form data.
+ * @returns the Record with form field errors.
  */
 export type ExternalFormValidator = (data: Record<string, unknown>) => Promise<Record<string, string> | undefined>
 

@@ -49,7 +49,7 @@ function getOrCreateFn(source: string) {
 }
 
 /**
- * Performs the function of checking if the child component can be bound.
+ * Performs the function of checking if the child component can be bound. **Internal use only.**
  * @param childStore the child component settings.
  * @param parentProps the parent component properties.
  * @returns true, if the child component can be bound, false otherwise.

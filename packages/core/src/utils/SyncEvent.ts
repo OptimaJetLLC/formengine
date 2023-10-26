@@ -6,7 +6,7 @@
 export type SyncEventHandler<TSender, TEventArgs> = (source: TSender, eventArgs: TEventArgs) => void
 
 /**
- * Represents a synchronous event that can be subscribed to and invoked.
+ * Represents a synchronous event that can be subscribed to and invoked. **Internal use only.**
  * @template TSender the type of the object that raises the event.
  * @template TEventArgs the type of the event arguments.
  */

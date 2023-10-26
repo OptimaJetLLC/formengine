@@ -10,7 +10,7 @@ import type {ExternalValidators} from '../features/validation/types/ExternalVali
 import {nameObservable} from '../utils/observableNaming'
 
 /**
- * Represents the props passed to the FormViewer Store.
+ * Represents the props passed to the FormViewer Store. **Internal use only.**
  */
 export class FormViewerPropsStore {
   /**

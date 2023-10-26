@@ -89,6 +89,9 @@ const categories = {
   ]
 }
 
+/**
+ * An array of rSuite component metadata factories.
+ */
 const rSuiteComponents: Definer<any>[] = []
 const {notImplemented, ...implemented} = categories
 
@@ -107,6 +110,13 @@ export {rSuiteComponents, rsErrorMessage, rsTooltip, RsLocalizationWrapper, rtlC
 export type {RsErrorMessageProps, RsTooltipProps}
 
 const components = rSuiteComponents.map(def => def.build())
+
+/**
+ * An array of rSuite component metadata for use in FormViewer.
+ */
 export const models = components.map(({model}) => model)
 
+/**
+ * An assembled set of rSuite components, ready to be passed as a property to the FormViewer.
+ */
 export const view = createView(models)

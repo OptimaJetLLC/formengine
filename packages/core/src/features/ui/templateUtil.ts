@@ -1,7 +1,7 @@
 const templateTypeNamePrefix = 'Template:'
 
 /**
- * Generates the template type name from the specified template name.
+ * Generates the template type name from the specified template name. **Internal use only.**
  * @param name the template name.
  * @returns the template type name.
  */

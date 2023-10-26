@@ -17,7 +17,7 @@ import {typedValidatorsResolver} from './validatorsResolver'
 export type Disposer = () => void
 
 /**
- * Field with form data, contains only one value.
+ * Field with form data, contains only one value. **Internal use only.**
  */
 export class SimpleField implements Field {
 

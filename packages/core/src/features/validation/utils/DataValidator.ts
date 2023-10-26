@@ -5,16 +5,24 @@ import type {ValidationResult} from '../types/ValidationResult'
 
 /**
  * A function that localizes validation error messages.
+ * @param value the results of the validation.
+ * @returns the localization result or undefined.
  */
 export type ErrorMessageLocalizer = (value: ValidationResult[] | undefined) => string | undefined
 
 /**
  * The function that validates a value and returns the validation result.
+ * @param value the validated value.
+ * @param store the form viewer settings.
+ * @returns the Promise with the results of the validation.
  */
 export type ResolvedValidator = (value: any, store: IStore) => Promise<ValidationResult[] | undefined>
 
 /**
  * The validation function factory.
+ * @param value the validated value.
+ * @template T the validation function factory arguments.
+ * @returns the function that validates a value.
  */
 export type SchemaResolver<T> = (value: T) => ResolvedValidator
 
@@ -58,6 +66,7 @@ export class DataValidator {
    * @param args the validation function factory arguments.
    * @param setter the callback function called to set a validation error.
    * @param localizer the function that localizes validation error messages.
+   * @template T the validation function factory arguments.
    * @returns the DataValidator instance.
    */
   static create = <T>(store: IStore, resolver: SchemaResolver<T>, args: T,
@@ -65,10 +74,19 @@ export class DataValidator {
     return new DataValidator(store, resolver(args), setter, localizer)
   }
 
+  /**
+   * Generates an event to perform validation.
+   * @param value the validated value.
+   */
   sendValidationEvent = (value: any) => {
     this.#subject.next(value)
   }
 
+  /**
+   * Performs a validation of the value.
+   * @param value the validated value.
+   * @returns the Promise with the result of the validation.
+   */
   validate = (value: any) => {
     const promise = new Promise<string | undefined>(resolve => {
       const subscribe = this.#stream.subscribe(next => {
@@ -80,5 +98,10 @@ export class DataValidator {
     return promise
   }
 
-  dispose = () => this.#subscriptions.forEach(s => s.unsubscribe())
+  /**
+   * Releases allocated resources, must be used when destroying an object instance.
+   */
+  dispose = () => {
+    this.#subscriptions.forEach(s => s.unsubscribe())
+  }
 }

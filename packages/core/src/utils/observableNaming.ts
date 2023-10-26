@@ -1,5 +1,5 @@
 /**
- * Computes the autorun name based on the owner, name, and parameters.
+ * Computes the autorun name based on the owner, name, and parameters. **Internal use only.**
  * @param owner the owner of the autorun.
  * @param name the name of the autorun.
  * @param params the parameters for specific autorun.
@@ -10,7 +10,7 @@ export function nameAutorun(owner: string, name: string, params: Record<string, 
 }
 
 /**
- * Computes the observable name based on the owner, name, and parameters.
+ * Computes the observable name based on the owner, name, and parameters. **Internal use only.**
  * @param owner the owner of the observable.
  * @param params the parameters for specific observable.
  * @returns the computed observable name.

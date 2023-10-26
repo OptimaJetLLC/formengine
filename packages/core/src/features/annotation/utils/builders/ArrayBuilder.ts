@@ -4,6 +4,7 @@ import {TypedBuilder} from './TypedBuilder'
 /**
  * The builder class to define the metadata property of the form builder component.
  * Used for properties where the property value is an array.
+ * @template T the property type.
  */
 export class ArrayBuilder<T> extends TypedBuilder<T> {
   subType?: SchemaType

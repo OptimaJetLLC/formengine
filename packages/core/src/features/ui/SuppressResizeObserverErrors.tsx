@@ -2,7 +2,7 @@ import type {ReactNode} from 'react'
 import {useEffect, useRef} from 'react'
 
 /**
- * Represents the props for the SuppressResizeObserverErrors component.
+ * Represents the props for the SuppressResizeObserverErrors component. **Internal use only.**
  */
 export interface SuppressResizeObserverErrorsProps {
   /**
@@ -12,7 +12,7 @@ export interface SuppressResizeObserverErrorsProps {
 }
 
 /**
- * SuppressResizeObserverErrors component is used to suppress ResizeObserver errors.
+ * SuppressResizeObserverErrors component is used to suppress ResizeObserver errors. **Internal use only.**
  * @param props the component props.
  * @param props.children the child elements to render.
  * @returns the rendered child elements.

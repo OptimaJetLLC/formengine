@@ -29,6 +29,9 @@ const RsTooltip = ({text, placement, trigger, children}: RsTooltipProps) => {
   </Whisper>
 }
 
+/**
+ * Metadata builder for rSuite-based tooltip display component.
+ */
 export const rsTooltip = define(RsTooltip)
   .type('RsTooltip')
   .name('Tooltip')

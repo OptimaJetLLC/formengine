@@ -6,7 +6,7 @@ import type {Field} from './Field'
 import {isStoreDataInParentForm} from './util'
 
 /**
- * The field with the form data, contains the value of the nested form.
+ * The field with the form data, contains the value of the nested form. **Internal use only.**
  */
 export class TemplateField implements Field {
 

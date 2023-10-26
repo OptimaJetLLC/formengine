@@ -1,5 +1,5 @@
 /**
- * Generates the random string.
+ * Generates the random string. **Internal use only.**
  * @returns the generated random string.
  */
 export const getKey = () => {

@@ -7,7 +7,7 @@ custom_edit_url: null
 
 [@react-form-builder/core](../modules/react_form_builder_core.md).TemplateField
 
-The field with the form data, contains the value of the nested form.
+The field with the form data, contains the value of the nested form. **Internal use only.**
 
 ## Implements
 

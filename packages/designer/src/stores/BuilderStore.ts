@@ -195,6 +195,9 @@ class BuilderUndoer {
     return this.undoer.hasRedo
   }
 
+  /**
+   * Releases allocated resources, must be used when destroying an object instance.
+   */
   dispose() {
     this.#disposer()
     this.#subscriptions.forEach(s => s.unsubscribe())

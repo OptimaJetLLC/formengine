@@ -2,4 +2,12 @@ import {createNonNullableContext} from '../../../utils/createNonNullableContext'
 
 import {FormViewerProps} from '../types'
 
-export const [useViewerProps, ViewerPropsProvider] = createNonNullableContext<Readonly<FormViewerProps>>('FormViewerPropsContext')
+export const [
+  /**
+   * **Internal use only.**
+   */
+  useViewerProps,
+  /**
+   * **Internal use only.**
+   */
+  ViewerPropsProvider] = createNonNullableContext<Readonly<FormViewerProps>>('FormViewerPropsContext')

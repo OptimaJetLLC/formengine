@@ -3,7 +3,7 @@ import type {FunctionComponent} from 'react'
 import {ComponentStore} from '../stores/ComponentStore'
 
 /**
- * Type predicate, asserts that the value is a function.
+ * Type predicate, asserts that the value is a function. **Internal use only.**
  * @param fn the value.
  * @returns true if the value is a function, false otherwise.
  */
@@ -12,7 +12,7 @@ export function isFunction(fn: any): fn is Function {
 }
 
 /**
- * Type predicate, asserts that the value is a string.
+ * Type predicate, asserts that the value is a string. **Internal use only.**
  * @param value the value.
  * @returns true if the value is a string, false otherwise.
  */
@@ -21,7 +21,7 @@ export function isString(value: any): value is string {
 }
 
 /**
- * Type predicate, asserts that the value is a number.
+ * Type predicate, asserts that the value is a number. **Internal use only.**
  * @param value the value.
  * @returns true if the value is a number, false otherwise.
  */
@@ -30,7 +30,7 @@ export function isNumber(value: any): value is number {
 }
 
 /**
- * Type predicate, asserts that the value is a Promise.
+ * Type predicate, asserts that the value is a Promise. **Internal use only.**
  * @param value the value.
  * @returns true if the value is a Promise, false otherwise.
  */
@@ -39,7 +39,7 @@ export function isPromise<T = any>(value: any): value is Promise<T> {
 }
 
 /**
- * Type predicate, asserts that the value is a {@link Record}.
+ * Type predicate, asserts that the value is a {@link Record}. **Internal use only.**
  * @param value the value.
  * @returns true if the value is a Record, false otherwise.
  */
@@ -48,7 +48,7 @@ export function isRecord(value: any): value is Record<string, unknown> {
 }
 
 /**
- * Creates the observable React component.
+ * Creates the observable React component. **Internal use only.**
  * @param displayName the displayName value of the React component.
  * @param component the React component.
  * @returns the observable React component.
@@ -59,4 +59,7 @@ export function namedObserver<T extends FunctionComponent<any>>(displayName: str
   return observerComponent
 }
 
+/**
+ * The empty component settings object. **Internal use only.**
+ */
 export const emptyComponentStore = new ComponentStore('', '')

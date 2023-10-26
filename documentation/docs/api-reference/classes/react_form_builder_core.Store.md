@@ -7,7 +7,7 @@ custom_edit_url: null
 
 [@react-form-builder/core](../modules/react_form_builder_core.md).Store
 
-The form viewer settings.
+The form viewer settings. **Internal use only.**
 
 ## Implements
 
@@ -32,17 +32,11 @@ Creates form viewer settings.
 
 ## Properties
 
-### #templateMap
-
-• `Private` **#templateMap**: `Map`<`string`, [`Model`](react_form_builder_core.Model.md)<`any`\>\>
-
-Models for templates that have not been explicitly defined.
-
-___
-
 ### eventSubject
 
 • `Readonly` **eventSubject**: `Subject`<[`ActionEventArgs`](react_form_builder_core.ActionEventArgs.md)\>
+
+The Subject for submitting form events.
 
 ___
 
@@ -50,7 +44,7 @@ ___
 
 • **form**: [`Form`](react_form_builder_core.Form.md)
 
-The displayed form.
+The form.
 
 #### Implementation of
 
@@ -86,11 +80,15 @@ ___
 
 • `Optional` **selectedLanguage**: [`Language`](react_form_builder_core.Language.md)
 
+The currently selected language.
+
 ___
 
 ### viewMode
 
 • **viewMode**: [`ViewMode`](../modules/react_form_builder_core.md#viewmode) = `'desktop'`
+
+Current display resolution type.
 
 ## Accessors
 
@@ -142,47 +140,13 @@ ___
 
 `undefined` \| `Record`<`string`, `unknown`\>
 
-the slice of the initial data in accordance with the Store hierarchy.
+the slice of the initial data in accordance with the Store hierarchy. **Internal use only.**
 
 #### Implementation of
 
 IStore.initialDataSlice
 
 ## Methods
-
-### #onLoadError
-
-▸ `Private` **#onLoadError**(`e`): `void`
-
-Changes the form to the component with an error description.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `e` | `any` | the error. |
-
-#### Returns
-
-`void`
-
-___
-
-### addTemplateModel
-
-▸ `Private` **addTemplateModel**(`type`): [`Model`](react_form_builder_core.Model.md)<`Record`<`string`, `any`\>\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `type` | `string` |
-
-#### Returns
-
-[`Model`](react_form_builder_core.Model.md)<`Record`<`string`, `any`\>\>
-
-___
 
 ### applyPersistedForm
 
@@ -254,24 +218,6 @@ the element for the component tree.
 
 ___
 
-### createField
-
-▸ `Private` **createField**(`componentStore`, `model`, `deferFieldCalculation`): [`TemplateField`](react_form_builder_core.TemplateField.md) \| `SimpleField`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `componentStore` | [`ComponentStore`](react_form_builder_core.ComponentStore.md) |
-| `model` | [`Model`](react_form_builder_core.Model.md)<`any`\> |
-| `deferFieldCalculation` | `boolean` |
-
-#### Returns
-
-[`TemplateField`](react_form_builder_core.TemplateField.md) \| `SimpleField`
-
-___
-
 ### dispose
 
 ▸ **dispose**(): `void`
@@ -309,39 +255,6 @@ Error, if action was not found.
 [`ActionDefinition`](react_form_builder_core.ActionDefinition.md)
 
 the action definition.
-
-___
-
-### fixDateProperty
-
-▸ `Private` **fixDateProperty**(`componentStore`, `property`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `componentStore` | [`ComponentStore`](react_form_builder_core.ComponentStore.md) |
-| `property` | `string` |
-
-#### Returns
-
-`void`
-
-___
-
-### fixPropertyTypes
-
-▸ `Private` **fixPropertyTypes**(`componentStore`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `componentStore` | [`ComponentStore`](react_form_builder_core.ComponentStore.md) |
-
-#### Returns
-
-`void`
 
 ___
 
@@ -479,9 +392,9 @@ Performs the callback function on each element of the component tree, accumulate
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Description |
+| :------ | :------ |
+| `T` | the return value type. |
 
 #### Parameters
 

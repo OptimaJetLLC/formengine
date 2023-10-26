@@ -7,7 +7,7 @@ custom_edit_url: null
 
 [@react-form-builder/core](../modules/react_form_builder_core.md).BaseCompilationResult
 
-The result of compiling of anything.
+The result of compiling of anything. **Internal use only.**
 
 ## Properties
 

@@ -3,6 +3,7 @@ import {QuantifierBuilder} from './QuantifierBuilder'
 /**
  * The builder class to define the metadata property of the form builder component.
  * Used for properties where the property value can be a set of predefined values.
+ * @template T the property type.
  */
 export class SomeOfBuilder<T> extends QuantifierBuilder<T> {
 

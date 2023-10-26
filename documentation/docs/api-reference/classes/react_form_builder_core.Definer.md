@@ -11,27 +11,9 @@ The builder class to define the metadata of the form builder component.
 
 ## Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-
-## Constructors
-
-### constructor
-
-• `Private` **new Definer**<`T`\>(`component`)
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `component` | `ComponentType`<`T`\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | extends `object` | React component property type. |
 
 ## Properties
 
@@ -39,41 +21,31 @@ The builder class to define the metadata of the form builder component.
 
 • **data**: [`DefinerData`](../modules/react_form_builder_core.md#definerdata)<`T`\>
 
+Definer class data.
+
+**`Template`**
+
+React component property type.
+
 ## Methods
-
-### #updateWith
-
-▸ `Private` **#updateWith**(`opts`): [`Definer`](react_form_builder_core.Definer.md)<`T`\>
-
-Modifies the component's metadata builder with custom options.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `opts` | `Partial`<[`DefinerData`](../modules/react_form_builder_core.md#definerdata)<`T`\>\> | the custom options. |
-
-#### Returns
-
-[`Definer`](react_form_builder_core.Definer.md)<`T`\>
-
-the modified instance of the builder.
-
-___
 
 ### actions
 
 ▸ **actions**(`fn`): [`Definer`](react_form_builder_core.Definer.md)<`T`\>
 
+Adds the metadata of the component's actions. **Internal use only.**
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `fn` | [`ActionsInitializer`](../modules/react_form_builder_core.md#actionsinitializer) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `fn` | [`ActionsInitializer`](../modules/react_form_builder_core.md#actionsinitializer) | the function that initializes an actions on a component. |
 
 #### Returns
 
 [`Definer`](react_form_builder_core.Definer.md)<`T`\>
+
+the modified Definer class instance.
 
 ___
 
@@ -95,15 +67,19 @@ ___
 
 ▸ **category**(`category`): [`Definer`](react_form_builder_core.Definer.md)<`T`\>
 
+Sets the category of the component.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `category` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `category` | `string` | the component category. |
 
 #### Returns
 
 [`Definer`](react_form_builder_core.Definer.md)<`T`\>
+
+the modified Definer class instance.
 
 ___
 
@@ -111,15 +87,19 @@ ___
 
 ▸ **css**(`css`): [`Definer`](react_form_builder_core.Definer.md)<`T`\>
 
+Sets the component CSS metadata.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `css` | [`Annotations`](../modules/react_form_builder_core.md#annotations)<`CSSObject`\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `css` | [`Annotations`](../modules/react_form_builder_core.md#annotations)<`CSSObject`\> | the component CSS metadata. |
 
 #### Returns
 
 [`Definer`](react_form_builder_core.Definer.md)<`T`\>
+
+the modified Definer class instance.
 
 ___
 
@@ -139,15 +119,19 @@ ___
 
 ▸ **icon**(`icon`): [`Definer`](react_form_builder_core.Definer.md)<`T`\>
 
+Sets the icon of the component.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `icon` | `ComponentType` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `icon` | `ComponentType` | the component icon. |
 
 #### Returns
 
 [`Definer`](react_form_builder_core.Definer.md)<`T`\>
+
+the modified Definer class instance.
 
 ___
 
@@ -155,15 +139,19 @@ ___
 
 ▸ **name**(`name`): [`Definer`](react_form_builder_core.Definer.md)<`T`\>
 
+Sets the name of the component.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `name` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name` | `string` | the component name. |
 
 #### Returns
 
 [`Definer`](react_form_builder_core.Definer.md)<`T`\>
+
+the modified Definer class instance.
 
 ___
 
@@ -171,15 +159,19 @@ ___
 
 ▸ **preview**(`customPreview`): [`Definer`](react_form_builder_core.Definer.md)<`T`\>
 
+Adds the custom component to be displayed in the component list. **Internal use only.**
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `customPreview` | `ReactNode` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `customPreview` | `ReactNode` | the custom component. |
 
 #### Returns
 
 [`Definer`](react_form_builder_core.Definer.md)<`T`\>
+
+the modified Definer class instance.
 
 ___
 
@@ -187,15 +179,19 @@ ___
 
 ▸ **props**(`properties`): [`Definer`](react_form_builder_core.Definer.md)<`T`\>
 
+Sets the metadata of the component's properties.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `properties` | [`Annotations`](../modules/react_form_builder_core.md#annotations)<`T`\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `properties` | [`Annotations`](../modules/react_form_builder_core.md#annotations)<`T`\> | the metadata of the component's properties. |
 
 #### Returns
 
 [`Definer`](react_form_builder_core.Definer.md)<`T`\>
+
+the modified Definer class instance.
 
 ___
 
@@ -203,15 +199,19 @@ ___
 
 ▸ **type**(`type`): `this`
 
+Sets the type of the component.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `type` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `type` | `string` | the component type. |
 
 #### Returns
 
 `this`
+
+the modified Definer class instance.
 
 ___
 

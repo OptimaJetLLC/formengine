@@ -25,12 +25,24 @@ export class Form {
    */
   readonly languages: Language[] = []
 
+  /**
+   * The set of action definitions.
+   */
   readonly actions: ActionValues
 
+  /**
+   * Properties of the component displaying the error.
+   */
   errorProps: any = {}
 
+  /**
+   * The type name of the component displaying the tooltip.
+   */
   tooltipType?: string
 
+  /**
+   * The type name of the component displaying the error.
+   */
   errorType?: string
 
   /**

@@ -8,6 +8,10 @@ export type RuleValidatorResult = string | boolean
 
 /**
  * The function that checks the value and returns the result of the rule validation, see {@link RuleValidatorResult}.
+ * @param value the value.
+ * @param store the form viewer settings
+ * @param args the rule arguments.
+ * @template T the value type.
  */
 export type RuleValidator<T = any> = (value: T,
                                       store: IStore,

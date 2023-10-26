@@ -21,11 +21,15 @@ Represents a class that holds events related to component data.
 
 • `Readonly` **onAfterKeyChanged**: [`SyncEvent`](react_form_builder_core.SyncEvent.md)<[`ComponentData`](react_form_builder_core.ComponentData.md), [`ComponentKeyChangedEventArgs`](react_form_builder_core.ComponentKeyChangedEventArgs.md)\>
 
+An event that occurs after a component key change.
+
 ___
 
 ### onBeforeDelete
 
 • `Readonly` **onBeforeDelete**: [`SyncEvent`](react_form_builder_core.SyncEvent.md)<[`ComponentData`](react_form_builder_core.ComponentData.md), `undefined`\>
+
+An event that occurs before a component is removed from the component tree.
 
 ## Methods
 
@@ -33,7 +37,7 @@ ___
 
 ▸ **dispose**(): `void`
 
-Unsubscribes all events.
+Unsubscribe from all events.
 
 #### Returns
 

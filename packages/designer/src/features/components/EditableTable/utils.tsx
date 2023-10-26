@@ -32,7 +32,7 @@ export interface ColumnDescription {
 }
 
 /**
- * Creates table columns based on their descriptions.
+ * Creates table columns based on their descriptions. **Internal use only.**
  * @param columns the column descriptions.
  * @returns the array with React elements.
  */

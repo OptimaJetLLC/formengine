@@ -4,7 +4,7 @@ import {ComponentTreeContextProvider} from './ComponentTreeContext'
 import {ComponentTreeItem} from './ComponentTreeItem'
 
 /**
- * The React component that displays an array of ComponentData.
+ * The React component that displays an array of ComponentData. **Internal use only.**
  */
 export const ComponentTree = namedObserver('ComponentTree', ({data}: ComponentTreeProps) => {
   return <ComponentTreeContextProvider value={ComponentTree}>

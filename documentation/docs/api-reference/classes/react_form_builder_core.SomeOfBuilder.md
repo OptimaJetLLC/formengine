@@ -12,9 +12,9 @@ Used for properties where the property value can be a set of predefined values.
 
 ## Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Description |
+| :------ | :------ |
+| `T` | the property type. |
 
 ## Hierarchy
 
@@ -44,6 +44,8 @@ Used for properties where the property value can be a set of predefined values.
 
 • **annotation**: [`PreAnnotation`](../modules/react_form_builder_core.md#preannotation)
 
+Partial metadata for a component property.
+
 #### Inherited from
 
 [QuantifierBuilder](react_form_builder_core.QuantifierBuilder.md).[annotation](react_form_builder_core.QuantifierBuilder.md#annotation)
@@ -53,6 +55,8 @@ ___
 ### labels
 
 • `Optional` **labels**: `string`[]
+
+Labels for the possible values of the property.
 
 #### Inherited from
 
@@ -64,6 +68,8 @@ ___
 
 • **options**: [`BuilderOptions`](react_form_builder_core.BuilderOptions.md)
 
+Options for building an annotation.
+
 #### Inherited from
 
 [QuantifierBuilder](react_form_builder_core.QuantifierBuilder.md).[options](react_form_builder_core.QuantifierBuilder.md#options)
@@ -73,6 +79,8 @@ ___
 ### values
 
 • **values**: (`string` \| `number`)[]
+
+Possible values for the property.
 
 #### Inherited from
 
@@ -240,15 +248,19 @@ ___
 
 ▸ `Protected` **getName**(`key`): `string`
 
+Returns the annotation name.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `key` | `string` | the property name |
 
 #### Returns
 
 `string`
+
+the annotation name.
 
 #### Inherited from
 

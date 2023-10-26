@@ -12,9 +12,9 @@ Used for properties where the property value can be selected from predefined val
 
 ## Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Description |
+| :------ | :------ |
+| `T` | the property type. |
 
 ## Hierarchy
 
@@ -52,6 +52,8 @@ Used for properties where the property value can be selected from predefined val
 
 • **annotation**: [`PreAnnotation`](../modules/react_form_builder_core.md#preannotation)
 
+Partial metadata for a component property.
+
 #### Inherited from
 
 [TypedBuilder](react_form_builder_core.TypedBuilder.md).[annotation](react_form_builder_core.TypedBuilder.md#annotation)
@@ -62,11 +64,15 @@ ___
 
 • `Optional` **labels**: `string`[]
 
+Labels for the possible values of the property.
+
 ___
 
 ### options
 
 • **options**: [`BuilderOptions`](react_form_builder_core.BuilderOptions.md)
+
+Options for building an annotation.
 
 #### Inherited from
 
@@ -77,6 +83,8 @@ ___
 ### values
 
 • **values**: (`string` \| `number`)[]
+
+Possible values for the property.
 
 ## Accessors
 
@@ -240,15 +248,19 @@ ___
 
 ▸ `Protected` **getName**(`key`): `string`
 
+Returns the annotation name.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `key` | `string` | the property name |
 
 #### Returns
 
 `string`
+
+the annotation name.
 
 #### Inherited from
 

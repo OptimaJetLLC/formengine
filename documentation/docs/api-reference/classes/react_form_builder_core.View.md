@@ -33,24 +33,6 @@ Creates an instance of the [View](react_form_builder_core.View.md).
 | :------ | :------ | :------ | :------ |
 | `models` | [`Model`](react_form_builder_core.Model.md)<`any`\>[] | `[]` | the components metadata. |
 
-## Properties
-
-### #cssLoaders
-
-• `Private` **#cssLoaders**: `Map`<[`BiDi`](../enums/react_form_builder_core.BiDi.md), () => `Promise`<`void`\>[]\>
-
-___
-
-### #modelMap
-
-• `Private` **#modelMap**: `Map`<`string`, [`Model`](react_form_builder_core.Model.md)<`any`\>\>
-
-___
-
-### #wrappers
-
-• `Private` **#wrappers**: [`FormViewerWrapper`](../modules/react_form_builder_core.md#formviewerwrapper)[]
-
 ## Accessors
 
 ### viewerWrappers
@@ -66,25 +48,6 @@ Retrieves the viewer wrappers array.
 the viewer wrappers array.
 
 ## Methods
-
-### #withCssLoader
-
-▸ `Private` **#withCssLoader**(`biDi`, `loader`): `void`
-
-Sets a CSS loader for the specified BiDi direction.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `biDi` | [`BiDi`](../enums/react_form_builder_core.BiDi.md) | the BiDi direction. |
-| `loader` | () => `Promise`<`void`\> | the loader function that returns a Promise. |
-
-#### Returns
-
-`void`
-
-___
 
 ### all
 

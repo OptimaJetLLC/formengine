@@ -26,7 +26,7 @@ const calculateValue = (fnSource: string, formViewerData: IFormData) => {
 }
 
 /**
- * Calculates the value for the component property.
+ * Calculates the value for the component property. **Internal use only.**
  * @param componentProperty the component property.
  * @param formViewerData the formViewerData data.
  * @returns the calculated value.
@@ -50,7 +50,7 @@ export const calculateExpressionProperty = (componentProperty: ComponentProperty
 }
 
 /**
- * The result of compiling of anything.
+ * The result of compiling of anything. **Internal use only.**
  */
 export interface BaseCompilationResult {
   /**

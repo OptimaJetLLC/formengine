@@ -29,12 +29,6 @@ Creates arguments for the event handler.
 
 ## Properties
 
-### #componentDataProxy
-
-• `Private` **#componentDataProxy**: `any`
-
-___
-
 ### args
 
 • `Readonly` **args**: `any`[]
@@ -110,38 +104,6 @@ ___
 the first element of the event argument array, which is treated as a value.
 
 ## Methods
-
-### #isEvent
-
-▸ `Private` **#isEvent**(`value`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `value` | `any` |
-
-#### Returns
-
-`boolean`
-
-___
-
-### #isNotEvent
-
-▸ `Private` **#isNotEvent**(`value`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `value` | `any` |
-
-#### Returns
-
-`boolean`
-
-___
 
 ### setUserDefinedProps
 

@@ -8,7 +8,7 @@ import {InnerCellProps} from 'rsuite-table/lib/Cell.js'
 const {Cell} = Table
 
 /**
- * The React component that displays the table cell with the input.
+ * The React component that displays the table cell with the input. **Internal use only.**
  * @param props the React component properties.
  * @param props.rowData the row data.
  * @param props.dataKey the key name in props.rowData.
@@ -29,7 +29,7 @@ export const InputCell = ({rowData, dataKey, rowIndex, ...props}: InputCellProps
 }
 
 /**
- * The React component that displays the table cell with the checkbox.
+ * The React component that displays the table cell with the checkbox. **Internal use only.**
  * @param props the React component properties.
  * @param props.rowData the row data.
  * @param props.dataKey the key name in props.rowData.
@@ -51,7 +51,7 @@ export const CheckCell = ({rowData, dataKey, rowIndex, onChange, ...props}: Inpu
 }
 
 /**
- * The React component that displays the table cell with the select input.
+ * The React component that displays the table cell with the select input. **Internal use only.**
  * @param props the React component properties.
  * @param props.rowData the row data.
  * @param props.dataKey the key name in props.rowData.
@@ -76,7 +76,7 @@ export const SelectCell = ({rowData, dataKey, rowIndex, options, onChange, ...pr
 }
 
 /**
- * The React component that displays the table cell with the icon button.
+ * The React component that displays the table cell with the icon button. **Internal use only.**
  * @param props the React component properties.
  * @param props.rowData the row data.
  * @param props.rowIndex the row index.

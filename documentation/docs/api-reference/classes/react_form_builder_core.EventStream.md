@@ -23,14 +23,6 @@ Creates the event stream of the form viewer.
 | :------ | :------ | :------ |
 | `stream` | `Observable`<[`ActionEventArgs`](react_form_builder_core.ActionEventArgs.md)\> | the set of observable events. |
 
-## Properties
-
-### stream
-
-• `Private` `Readonly` **stream**: `Observable`<[`ActionEventArgs`](react_form_builder_core.ActionEventArgs.md)\>
-
-the set of observable events.
-
 ## Methods
 
 ### filter

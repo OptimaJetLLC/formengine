@@ -73,6 +73,9 @@ export class LocalStorageSynchronizer {
     ]
   }
 
+  /**
+   * Releases allocated resources, must be used when destroying an object instance.
+   */
   dispose = () => {
     this.#disposers.forEach(disposer => disposer())
   }

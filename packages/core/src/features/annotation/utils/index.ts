@@ -4,7 +4,7 @@ import {ContainerAn} from '../types/annotations/ContainerAn'
 import {AnnotationBuilder} from './builders/AnnotationBuilder'
 
 /**
- * Type predicate, asserts that the value is an instance of ContainerAn.
+ * Type predicate, asserts that the value is an instance of ContainerAn. **Internal use only.**
  * @param value the value.
  * @returns true if the value is an instance of ContainerAn, false otherwise.
  */

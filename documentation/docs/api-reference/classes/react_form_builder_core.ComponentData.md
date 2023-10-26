@@ -33,27 +33,11 @@ Constructor.
 
 ## Properties
 
-### #disposers
-
-• `Private` **#disposers**: `IReactionDisposer`[]
-
-___
-
-### #events
-
-• `Private` `Optional` **#events**: [`ComponentDataEvents`](react_form_builder_core.ComponentDataEvents.md)
-
-___
-
-### #externalFormValidators
-
-• `Private` `Optional` **#externalFormValidators**: [`ExternalFormValidators`](../modules/react_form_builder_core.md#externalformvalidators)
-
-___
-
 ### children
 
 • **children**: [`ComponentData`](react_form_builder_core.ComponentData.md)[] = `[]`
+
+The child nodes in the component data tree.
 
 ___
 
@@ -61,11 +45,15 @@ ___
 
 • `Optional` `Readonly` **field**: [`Field`](../interfaces/react_form_builder_core.Field.md)
 
+The field with the form data.
+
 ___
 
 ### id
 
 • `Readonly` **id**: `string`
+
+The unique identifier.
 
 ___
 
@@ -73,17 +61,23 @@ ___
 
 • `Readonly` **model**: [`Model`](react_form_builder_core.Model.md)<`any`\>
 
+The component metadata.
+
 ___
 
 ### parent
 
 • `Optional` **parent**: [`ComponentData`](react_form_builder_core.ComponentData.md)
 
+The parent node in the component data tree.
+
 ___
 
 ### store
 
 • `Readonly` **store**: [`ComponentStore`](react_form_builder_core.ComponentStore.md)
+
+The component settings.
 
 ___
 
@@ -228,22 +222,6 @@ the key of this node (same as the key of the ComponentStore).
 
 ## Methods
 
-### addChild
-
-▸ `Private` **addChild**(`newChild`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `newChild` | [`ComponentData`](react_form_builder_core.ComponentData.md) |
-
-#### Returns
-
-`void`
-
-___
-
 ### clear
 
 ▸ **clear**(): `void`
@@ -257,38 +235,6 @@ Clears the form data.
 #### Implementation of
 
 IFormData.clear
-
-___
-
-### collectAllFields
-
-▸ `Private` **collectAllFields**(`acc`): `Map`<`string`, [`Field`](../interfaces/react_form_builder_core.Field.md)\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `acc` | `Map`<`string`, [`Field`](../interfaces/react_form_builder_core.Field.md)\> |
-
-#### Returns
-
-`Map`<`string`, [`Field`](../interfaces/react_form_builder_core.Field.md)\>
-
-___
-
-### collectAllNodesAsArray
-
-▸ `Private` **collectAllNodesAsArray**(`acc`): [`ComponentData`](react_form_builder_core.ComponentData.md)[]
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `acc` | [`ComponentData`](react_form_builder_core.ComponentData.md)[] |
-
-#### Returns
-
-[`ComponentData`](react_form_builder_core.ComponentData.md)[]
 
 ___
 
@@ -310,25 +256,6 @@ ___
 
 Dispose method that releases resources used by the object.
 It disposes the field and all the children objects.
-
-#### Returns
-
-`void`
-
-___
-
-### disposeNodes
-
-▸ `Private` **disposeNodes**(`nodes`): `void`
-
-Disposes the nodes by calling the disposers, disposing the field,
-and resetting the parent and children properties to undefined and an empty array, respectively.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `nodes` | [`ComponentData`](react_form_builder_core.ComponentData.md)[] | the array of ComponentData objects representing the nodes to dispose. |
 
 #### Returns
 
@@ -385,55 +312,6 @@ Inserts the given node before this node.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `inserted` | [`ComponentData`](react_form_builder_core.ComponentData.md) | the node to insert. |
-
-#### Returns
-
-`void`
-
-___
-
-### invokeOnAfterKeyChanged
-
-▸ `Private` **invokeOnAfterKeyChanged**(`node`, `eventArgs`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `node` | [`ComponentData`](react_form_builder_core.ComponentData.md) |
-| `eventArgs` | [`ComponentKeyChangedEventArgs`](react_form_builder_core.ComponentKeyChangedEventArgs.md) |
-
-#### Returns
-
-`void`
-
-___
-
-### invokeOnBeforeDeleted
-
-▸ `Private` **invokeOnBeforeDeleted**(`nodes`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `nodes` | [`ComponentData`](react_form_builder_core.ComponentData.md)[] |
-
-#### Returns
-
-`void`
-
-___
-
-### removeChild
-
-▸ `Private` **removeChild**(`oldChild`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `oldChild` | [`ComponentData`](react_form_builder_core.ComponentData.md) |
 
 #### Returns
 

@@ -1,7 +1,7 @@
 import type {ReactNode} from 'react'
 import type {RuleValidator, SchemaType} from '../../../validation'
-import type {EditorType} from '../index'
 import type {ErrorMap} from '../../../validation/ErrorMap'
+import type {EditorType} from '../index'
 
 /**
  * Basic metadata class for a React component property for the form builder.
@@ -75,6 +75,7 @@ export class Annotation {
 
   /**
    * A function that returns a string containing the source code of the function to bind child components.
+   * @param props the properties of the component, which are available only inside Form Builder Designer.
    */
   readonly slotConditionBuilder?: (props: any) => string
 

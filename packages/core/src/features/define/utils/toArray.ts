@@ -5,7 +5,7 @@ import {BuilderSetup} from '../../annotation/utils/builders/BaseBuilder'
 import {Annotations} from '../types'
 
 /**
- * Converts the object containing component property metadata into an array.
+ * Converts the object containing component property metadata into an array. **Internal use only.**
  * @param annotations the object containing component property metadata.
  * @param setup the custom options for the component's property metadata builder.
  * @returns the metadata array of the component properties.

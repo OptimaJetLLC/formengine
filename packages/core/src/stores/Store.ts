@@ -59,16 +59,28 @@ function reduceTree<U extends object, T, K extends keyof U>(tree: Tree<U, K>,
 const globalDefaultLanguage = new Language('en', 'US', 'English', 'American English')
 
 /**
- * The form viewer settings.
+ * The form viewer settings. **Internal use only.**
  */
 export class Store implements IStore, IFormViewer {
 
+  /**
+   * The currently selected language.
+   */
   selectedLanguage?: Language
 
+  /**
+   * The Subject for submitting form events.
+   */
   readonly eventSubject = new Subject<ActionEventArgs>()
 
+  /**
+   * Current display resolution type.
+   */
   viewMode: ViewMode = 'desktop'
 
+  /**
+   * The form.
+   */
   form: Form
 
   /**

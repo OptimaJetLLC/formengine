@@ -103,9 +103,9 @@ Event handler function type.
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `e` | [`ActionEventArgs`](../classes/react_form_builder_core.ActionEventArgs.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `e` | [`ActionEventArgs`](../classes/react_form_builder_core.ActionEventArgs.md) | the action arguments. |
 
 ##### Returns
 
@@ -119,9 +119,9 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Description |
+| :------ | :------ |
+| `T` | the type of action parameters. |
 
 #### Type declaration
 
@@ -131,10 +131,10 @@ Action function type.
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `e` | [`ActionEventArgs`](../classes/react_form_builder_core.ActionEventArgs.md) |
-| `params` | { [k in keyof T]: any } |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `e` | [`ActionEventArgs`](../classes/react_form_builder_core.ActionEventArgs.md) | the action arguments. |
+| `params` | { [k in keyof T]: any } | the action parameters. |
 
 ##### Returns
 
@@ -174,18 +174,20 @@ ___
 
 ▸ (`props`, `def`): `Record`<[`EventName`](react_form_builder_core.md#eventname), [`ActionEventHandler`](react_form_builder_core.md#actioneventhandler) \| [`ActionDefinition`](../classes/react_form_builder_core.ActionDefinition.md)\>
 
-The type of function that initializes an actions on a component.
+The type of function that initializes an actions on a component. **Internal use only.**
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `props` | [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md)[``"props"``] |
-| `def` | [`DefineActionHelper`](react_form_builder_core.md#defineactionhelper) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `props` | [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md)[``"props"``] | the component's property settings. |
+| `def` | [`DefineActionHelper`](react_form_builder_core.md#defineactionhelper) | the helper to create an action event handler. |
 
 ##### Returns
 
 `Record`<[`EventName`](react_form_builder_core.md#eventname), [`ActionEventHandler`](react_form_builder_core.md#actioneventhandler) \| [`ActionDefinition`](../classes/react_form_builder_core.ActionDefinition.md)\>
+
+the Record with action event handlers.
 
 ___
 
@@ -205,9 +207,9 @@ The type-safe description of the component's metadata property builders.
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | extends `object` | the component property name type. |
 
 ___
 
@@ -323,18 +325,20 @@ ___
 
 ▸ (`componentData`, `componentProps`): `Record`<`string`, `any`\>
 
-Function that calculates all child properties of a component.
+Function that calculates all child properties of a component. **Internal use only.**
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `componentData` | [`ComponentData`](../classes/react_form_builder_core.ComponentData.md) |
-| `componentProps` | `Record`<`string`, `any`\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `componentData` | [`ComponentData`](../classes/react_form_builder_core.ComponentData.md) | the data required to display a component. |
+| `componentProps` | `Record`<`string`, `any`\> | the calculated properties of the component. |
 
 ##### Returns
 
 `Record`<`string`, `any`\>
+
+the Record with calculated child properties.
 
 ___
 
@@ -371,26 +375,28 @@ ___
 
 ▸ <`T`\>(`name`, `func`, `params?`, `description?`): [`ActionDefinition`](../classes/react_form_builder_core.ActionDefinition.md)
 
-The defineAction helper type.
+The defineAction helper type. **Internal use only.**
 
 ##### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Description |
+| :------ | :------ |
+| `T` | the type of action parameter. |
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `name` | `string` |
-| `func` | [`ActionHandler`](react_form_builder_core.md#actionhandler)<`T`\> |
-| `params?` | [`ParameterDefinition`](react_form_builder_core.md#parameterdefinition)<`T`\>[] |
-| `description?` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name` | `string` | the action name. |
+| `func` | [`ActionHandler`](react_form_builder_core.md#actionhandler)<`T`\> | the action handler. |
+| `params?` | [`ParameterDefinition`](react_form_builder_core.md#parameterdefinition)<`T`\>[] | the definition of action parameters. |
+| `description?` | `string` | the action description. |
 
 ##### Returns
 
 [`ActionDefinition`](../classes/react_form_builder_core.ActionDefinition.md)
+
+the definition of an action.
 
 ___
 
@@ -402,9 +408,9 @@ Definer class data.
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `object` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | extends `object` | React component property type. |
 
 #### Type declaration
 
@@ -487,13 +493,15 @@ A function that localizes validation error messages.
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | [`ValidationResult`](react_form_builder_core.md#validationresult)[] \| `undefined` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | [`ValidationResult`](react_form_builder_core.md#validationresult)[] \| `undefined` | the results of the validation. |
 
 ##### Returns
 
 `string` \| `undefined`
+
+the localization result or undefined.
 
 ___
 
@@ -525,13 +533,15 @@ Represents a function that validate the form data.
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `data` | `Record`<`string`, `unknown`\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `data` | `Record`<`string`, `unknown`\> | the form data. |
 
 ##### Returns
 
 `Promise`<`Record`<`string`, `string`\> \| `undefined`\>
+
+the Record with form field errors.
 
 ___
 
@@ -578,7 +588,7 @@ ___
 
 Ƭ **FirstParameter**<`T`\>: `Parameters`<`T`\>[``0``]
 
-The generic type that returns the first parameter of the generic type T.
+The generic type that returns the first parameter of the generic type T. **Internal use only.**
 
 #### Type parameters
 
@@ -733,9 +743,9 @@ The type to describe the action parameter.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Description |
+| :------ | :------ |
+| `T` | the type of action parameter. |
 
 ___
 
@@ -779,9 +789,9 @@ Component property key type.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Description |
+| :------ | :------ |
+| `T` | the type of action parameter |
 
 ___
 
@@ -805,14 +815,16 @@ The function that validates a value and returns the validation result.
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `any` |
-| `store` | [`IStore`](../interfaces/react_form_builder_core.IStore.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `any` | the validated value. |
+| `store` | [`IStore`](../interfaces/react_form_builder_core.IStore.md) | the form viewer settings. |
 
 ##### Returns
 
 `Promise`<[`ValidationResult`](react_form_builder_core.md#validationresult)[] \| `undefined`\>
+
+the Promise with the results of the validation.
 
 ___
 
@@ -822,9 +834,9 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `any` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | `any` | the value type. |
 
 #### Type declaration
 
@@ -834,11 +846,11 @@ The function that checks the value and returns the result of the rule validation
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `T` |
-| `store` | [`IStore`](../interfaces/react_form_builder_core.IStore.md) |
-| `args?` | `Record`<`string`, `unknown`\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `T` | the value. |
+| `store` | [`IStore`](../interfaces/react_form_builder_core.IStore.md) | the form viewer settings |
+| `args?` | `Record`<`string`, `unknown`\> | the rule arguments. |
 
 ##### Returns
 
@@ -861,9 +873,9 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Description |
+| :------ | :------ |
+| `T` | the validation function factory arguments. |
 
 #### Type declaration
 
@@ -873,13 +885,15 @@ The validation function factory.
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `T` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `T` | the validated value. |
 
 ##### Returns
 
 [`ResolvedValidator`](react_form_builder_core.md#resolvedvalidator)
+
+the function that validates a value.
 
 ___
 
@@ -917,9 +931,9 @@ ___
 
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `any` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | `any` | the value type. |
 
 #### Type declaration
 
@@ -929,9 +943,9 @@ Value setting function type.
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `T` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `T` | the value. |
 
 ##### Returns
 
@@ -1055,9 +1069,9 @@ ___
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `Params` |
+| Name | Description |
+| :------ | :------ |
+| `Params` | the factory arguments type. |
 
 #### Type declaration
 
@@ -1067,13 +1081,15 @@ The validation function factory.
 
 ##### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `args` | `Params` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `args` | `Params` | the factory arguments. |
 
 ##### Returns
 
 [`RuleValidator`](react_form_builder_core.md#rulevalidator)
+
+the function that checks the value and returns the result of the rule validation
 
 ___
 
@@ -1105,11 +1121,15 @@ ___
 
 • `Const` **AsyncFunction**: `Function`
 
+Asynchronous function constructor.
+
 ___
 
 ### DidMountEvent
 
 • `Const` **DidMountEvent**: ``"onDidMount"``
+
+The DidMountEvent event name.
 
 ___
 
@@ -1133,11 +1153,15 @@ ___
 
 • **StoreContext**: `Context`<``null`` \| [`Store`](../classes/react_form_builder_core.Store.md)\>
 
+**Internal use only.**
+
 ___
 
 ### WillUnmountEvent
 
 • `Const` **WillUnmountEvent**: ``"onWillUnmount"``
+
+The WillUnmountEvent event name.
 
 ___
 
@@ -1193,6 +1217,8 @@ ___
 
 • `Const` **emotionCache**: `Object`
 
+The CSS style cache. **Internal use only.**
+
 #### Type declaration
 
 | Name | Type |
@@ -1206,11 +1232,15 @@ ___
 
 • `Const` **emptyComponentStore**: [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md)
 
+The empty component settings object. **Internal use only.**
+
 ___
 
 ### errorMessageModel
 
 • `Const` **errorMessageModel**: [`Model`](../classes/react_form_builder_core.Model.md)<[`ErrorWrapperProps`](../interfaces/react_form_builder_core.ErrorWrapperProps.md)\>
+
+The component metadata for error message. **Internal use only.**
 
 ___
 
@@ -1234,7 +1264,7 @@ ___
 
 • `Const` **internalErrorModel**: [`Model`](../classes/react_form_builder_core.Model.md)<[`InternalErrorProps`](../interfaces/react_form_builder_core.InternalErrorProps.md)\>
 
-Form viewer internal error metadata.
+Form viewer internal error metadata. **Internal use only.**
 
 ___
 
@@ -1274,6 +1304,8 @@ ___
 
 • `Const` **screenModel**: [`Model`](../classes/react_form_builder_core.Model.md)<[`ScreenProps`](../interfaces/react_form_builder_core.ScreenProps.md)\>
 
+Form viewer screen metadata. **Internal use only.**
+
 ___
 
 ### size
@@ -1287,6 +1319,8 @@ ___
 ### slotModel
 
 • `Const` **slotModel**: [`Model`](../classes/react_form_builder_core.Model.md)<`any`\>
+
+Form viewer slot metadata. **Internal use only.**
 
 ___
 
@@ -1326,7 +1360,7 @@ The annotation builder for arbitrary HTML attributes of a component.
 
 ▸ **ComponentDataProvider**(`props`): ``null`` \| `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>
 
-Context provider for the useComponentData hook.
+Context provider for the useComponentData hook. **Internal use only.**
 
 #### Parameters
 
@@ -1344,7 +1378,7 @@ ___
 
 ▸ **ComponentTree**(`«destructured»`): `Element`
 
-The React component that displays an array of ComponentData.
+The React component that displays an array of ComponentData. **Internal use only.**
 
 #### Parameters
 
@@ -1382,7 +1416,7 @@ ___
 
 ▸ **StoreProvider**(`props`): ``null`` \| `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>
 
-**NOTE**: Exotic components are not callable.
+**Internal use only.**
 
 #### Parameters
 
@@ -1400,7 +1434,7 @@ ___
 
 ▸ **SuppressResizeObserverErrors**(`props`): `Element`
 
-SuppressResizeObserverErrors component is used to suppress ResizeObserver errors.
+SuppressResizeObserverErrors component is used to suppress ResizeObserver errors. **Internal use only.**
 
 #### Parameters
 
@@ -1420,7 +1454,7 @@ ___
 
 ▸ **ViewerPropsProvider**(`props`): ``null`` \| `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>
 
-**NOTE**: Exotic components are not callable.
+**Internal use only.**
 
 #### Parameters
 
@@ -1438,7 +1472,7 @@ ___
 
 ▸ **calculatePropertyValue**(`componentProperty`, `formViewerData`): [`CalculableTestResult`](../classes/react_form_builder_core.CalculableTestResult.md)
 
-Calculates the value for the component property.
+Calculates the value for the component property. **Internal use only.**
 
 #### Parameters
 
@@ -1459,7 +1493,7 @@ ___
 
 ▸ **checkSlotCondition**(`childStore`, `parentProps`): `any`
 
-Performs the function of checking if the child component can be bound.
+Performs the function of checking if the child component can be bound. **Internal use only.**
 
 #### Parameters
 
@@ -1480,7 +1514,7 @@ ___
 
 ▸ **createActionValuesFromObject**(`obj`): [`ActionValues`](react_form_builder_core.md#actionvalues)
 
-Converts the input object to an ActionValues object.
+Converts the input object to an ActionValues object. **Internal use only.**
 
 #### Parameters
 
@@ -1504,9 +1538,9 @@ Creates a component property metadata builder.
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Description |
+| :------ | :------ |
+| `T` | the property type. |
 
 #### Parameters
 
@@ -1526,7 +1560,7 @@ ___
 
 ▸ **createNonNullableContext**<`T`\>(`name`): [() => `T`, `Provider`<`T`\>, `Context`<`T` \| ``null``\>]
 
-Creates non-nullable React context.
+Creates non-nullable React context. **Internal use only.**
 
 #### Type parameters
 
@@ -1619,7 +1653,7 @@ ___
 
 ▸ **externalActionsToActionsValues**(`externalActions?`): [`ActionValues`](react_form_builder_core.md#actionvalues) \| `undefined`
 
-Converts external actions to the set of action definitions.
+Converts external actions to the set of action definitions. **Internal use only.**
 
 #### Parameters
 
@@ -1639,7 +1673,7 @@ ___
 
 ▸ **findTreeElementDepth**<`T`\>(`value`, `element?`, `depth?`): `number` \| `undefined`
 
-Finds the depth of a given element in a tree.
+Finds the depth of a given element in a tree. **Internal use only.**
 
 #### Type parameters
 
@@ -1667,7 +1701,7 @@ ___
 
 ▸ **generateTemplateTypeName**(`name`): `string`
 
-Generates the template type name from the specified template name.
+Generates the template type name from the specified template name. **Internal use only.**
 
 #### Parameters
 
@@ -1687,7 +1721,7 @@ ___
 
 ▸ **generateUniqueName**(`prefix`, `existingNames`): `string`
 
-Generates a unique name with the specified prefix.
+Generates a unique name with the specified prefix. **Internal use only.**
 
 #### Parameters
 
@@ -1708,7 +1742,7 @@ ___
 
 ▸ **getFluentCompatibleId**(`rawId`): `string`
 
-Converts the raw id to a Fluent compatible id, i.e. replaces all the spaces with underscores.
+Converts the raw id to a Fluent compatible id, i.e. replaces all the spaces with underscores. **Internal use only.**
 
 #### Parameters
 
@@ -1728,7 +1762,7 @@ ___
 
 ▸ **getFluentData**(`data`): `Record`<`string`, `FluentVariable`\>
 
-Converts the form data to a Fluent compatible.
+Converts the form data to a Fluent compatible. **Internal use only.**
 
 #### Parameters
 
@@ -1749,7 +1783,7 @@ ___
 
 ▸ **getKey**(): `string`
 
-Generates the random string.
+Generates the random string. **Internal use only.**
 
 #### Returns
 
@@ -1763,7 +1797,7 @@ ___
 
 ▸ **getValidatorPropertyBlockType**(`ruleKey`): `string`
 
-Retrieves the property block type for a given rule key.
+Retrieves the property block type for a given rule key. **Internal use only.**
 
 #### Parameters
 
@@ -1783,7 +1817,7 @@ ___
 
 ▸ **groupBy**<`T`\>(`array`, `predicate`): `Record`<`string`, `T`[]\>
 
-Groups the array of values by function predicate.
+Groups the array of values by function predicate. **Internal use only.**
 
 #### Type parameters
 
@@ -1810,7 +1844,7 @@ ___
 
 ▸ **initFormFields**(`form`): `Record`<`string`, `unknown`\>
 
-Replaces empty form fields with an empty string.
+Replaces empty form fields with an empty string. **Internal use only.**
 
 #### Parameters
 
@@ -1830,7 +1864,7 @@ ___
 
 ▸ **isContainer**(`value`): value is ContainerAn
 
-Type predicate, asserts that the value is an instance of ContainerAn.
+Type predicate, asserts that the value is an instance of ContainerAn. **Internal use only.**
 
 #### Parameters
 
@@ -1850,7 +1884,7 @@ ___
 
 ▸ **isFunctionalProperty**(`componentProperty?`): `boolean`
 
-Returns true if the property value is calculated by the function, otherwise false.
+Returns true if the property value is calculated by the function, otherwise false. **Internal use only.**
 
 #### Parameters
 
@@ -1870,7 +1904,7 @@ ___
 
 ▸ **isLocalizedProperty**(`componentProperty?`): `boolean`
 
-Returns true if the property value is localized, otherwise false.
+Returns true if the property value is localized, otherwise false. **Internal use only.**
 
 #### Parameters
 
@@ -1890,7 +1924,7 @@ ___
 
 ▸ **isPromise**<`T`\>(`value`): value is Promise<T\>
 
-Type predicate, asserts that the value is a Promise.
+Type predicate, asserts that the value is a Promise. **Internal use only.**
 
 #### Type parameters
 
@@ -1916,7 +1950,7 @@ ___
 
 ▸ **isProperty**(`value`): value is PropertyAn
 
-Type predicate, asserts that the value is an instance of PropertyAn.
+Type predicate, asserts that the value is an instance of PropertyAn. **Internal use only.**
 
 #### Parameters
 
@@ -1936,7 +1970,7 @@ ___
 
 ▸ **isString**(`value`): value is string
 
-Type predicate, asserts that the value is a string.
+Type predicate, asserts that the value is a string. **Internal use only.**
 
 #### Parameters
 
@@ -1956,7 +1990,7 @@ ___
 
 ▸ **isUniqueKey**(`value`, `store`, `args?`): [`RuleValidatorResult`](react_form_builder_core.md#rulevalidatorresult) \| `Promise`<[`RuleValidatorResult`](react_form_builder_core.md#rulevalidatorresult)\>
 
-Returns true if the component key is unique across the entire component tree.
+Returns true if the component key is unique across the entire component tree. **Internal use only.**
 
 #### Parameters
 
@@ -1978,7 +2012,7 @@ ___
 
 ▸ **isValidatorPropertyBlockType**(`type`): `boolean`
 
-Determines if the given type is a validator property block type.
+Determines if the given type is a validator property block type. **Internal use only.**
 
 #### Parameters
 
@@ -1998,7 +2032,7 @@ ___
 
 ▸ **loadResource**(`id`, `href`, `rel`): `Promise`<`void`\>
 
-Loads a resource into the document head asynchronously.
+Loads a resource into the document head asynchronously. **Internal use only.**
 
 #### Parameters
 
@@ -2020,7 +2054,7 @@ ___
 
 ▸ **nameAutorun**(`owner`, `name`, `params?`): `string`
 
-Computes the autorun name based on the owner, name, and parameters.
+Computes the autorun name based on the owner, name, and parameters. **Internal use only.**
 
 #### Parameters
 
@@ -2042,7 +2076,7 @@ ___
 
 ▸ **nameObservable**(`owner`, `params?`): `string`
 
-Computes the observable name based on the owner, name, and parameters.
+Computes the observable name based on the owner, name, and parameters. **Internal use only.**
 
 #### Parameters
 
@@ -2063,7 +2097,7 @@ ___
 
 ▸ **namedObserver**<`T`\>(`displayName`, `component`): `T`
 
-Creates the observable React component.
+Creates the observable React component. **Internal use only.**
 
 #### Type parameters
 
@@ -2138,7 +2172,7 @@ ___
 
 ▸ **testFluentLocalization**(`request`): [`CalculableTestResult`](../classes/react_form_builder_core.CalculableTestResult.md)
 
-Localization testing function.
+Localization testing function. **Internal use only.**
 
 #### Parameters
 
@@ -2158,7 +2192,7 @@ ___
 
 ▸ **toArray**<`T`\>(`annotations?`, `setup?`): [`Annotation`](../classes/react_form_builder_core.Annotation.md)[]
 
-Converts the object containing component property metadata into an array.
+Converts the object containing component property metadata into an array. **Internal use only.**
 
 #### Type parameters
 
@@ -2206,7 +2240,7 @@ ___
 
 ▸ **treeForEach**<`T`\>(`tree`, `fn`): `void`
 
-Executes a given function on each node of a tree.
+Executes a given function on each node of a tree. **Internal use only.**
 
 #### Type parameters
 
@@ -2231,7 +2265,7 @@ ___
 
 ▸ **unloadResource**(`id`): `void`
 
-Unloads a resource from the DOM based on its ID.
+Unloads a resource from the DOM based on its ID. **Internal use only.**
 
 #### Parameters
 
@@ -2261,7 +2295,7 @@ ___
 
 ▸ **useDisposable**<`T`\>(`factory`, `deps`): `T` \| `undefined`
 
-Creates a disposable object with the useMemo hook and dispose the object when the React component is unmounted.
+Creates a disposable object with the useMemo hook and dispose the object when the React component is unmounted. **Internal use only.**
 
 #### Type parameters
 
@@ -2300,6 +2334,8 @@ ___
 
 ▸ **useStore**(): [`Store`](../classes/react_form_builder_core.Store.md)
 
+**Internal use only.**
+
 #### Returns
 
 [`Store`](../classes/react_form_builder_core.Store.md)
@@ -2314,13 +2350,15 @@ ___
 
 `undefined` \| `string`
 
-the type of React component used to display the tooltip.
+the type of React component used to display the tooltip. **Internal use only.**
 
 ___
 
 ### useViewerProps
 
 ▸ **useViewerProps**(): `Readonly`<[`FormViewerProps`](../interfaces/react_form_builder_core.FormViewerProps.md)\>
+
+**Internal use only.**
 
 #### Returns
 
