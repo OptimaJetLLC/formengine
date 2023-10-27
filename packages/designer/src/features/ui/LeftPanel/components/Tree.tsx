@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {FormViewer, namedObserver, useViewerProps} from '@react-form-builder/core'
+import {ComponentTree, namedObserver, ViewerPropsProvider} from '@react-form-builder/core'
 import {CollaspedOutline, ExpandOutline} from '@rsuite/icons'
 import {useEffect} from 'react'
 import {useTranslation} from 'react-i18next'
@@ -9,15 +9,15 @@ import {Columns, Rows} from '../../../components/Containers'
 import {DraggableTreeNode} from '../../../dnd'
 
 const Tree = namedObserver('Tree', () => {
-  const props = useViewerProps()
   const {t} = useTranslation()
-  const store = useBuilderStore()
+  const builderStore = useBuilderStore()
+  const {componentTree} = builderStore.viewer.form
   useEffect(() => {
-    store.expanded.add(store.viewer.form.componentTree)
-  }, [screen])
+    builderStore.expanded.add(componentTree)
+  }, [builderStore, componentTree])
 
-  const handleExpand = () => store.expandAll()
-  const handleCollapse = () => store.collapseAll()
+  const handleExpand = () => builderStore.expandAll()
+  const handleCollapse = () => builderStore.collapseAll()
 
   return <Rows gap={0} style={{overflow: 'hidden', flex: 1}}>
     <Columns>
@@ -31,7 +31,9 @@ const Tree = namedObserver('Tree', () => {
       </SubtleIconButton>
     </Columns>
     <STreeContainer>
-      <FormViewer {...props} language={store.defaultLanguage} componentWrapper={DraggableTreeNode} getForm={undefined}/>
+      <ViewerPropsProvider value={{componentWrapper: DraggableTreeNode, view: builderStore.view}}>
+        <ComponentTree data={[componentTree]}/>
+      </ViewerPropsProvider>
     </STreeContainer>
   </Rows>
 })
