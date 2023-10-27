@@ -4,16 +4,16 @@ import {useTranslationPart} from '../../../../../localization/hooks'
 import type {ActionsMenuProps} from '../types'
 
 /**
- * React form builder component that displays the list of external actions.
+ * React form builder component that displays the list of custom actions.
  * @param props the React component properties.
  * @param props.onSelect the callback function called when an action is selected.
  * @returns the React element.
  */
-export const ExternalActions = ({onSelect}: ActionsMenuProps) => {
+export const CustomActionList = ({onSelect}: ActionsMenuProps) => {
   const store = useStore()
   const t = useTranslationPart('actions')
 
-  const actions = store.formViewerPropsStore.externalActions
+  const actions = store.formViewerPropsStore.actions
   if (!actions) return null
 
   const items = Object.keys(actions).map(name =>

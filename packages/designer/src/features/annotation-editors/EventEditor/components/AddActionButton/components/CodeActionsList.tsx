@@ -6,12 +6,12 @@ import {useTranslationPart} from '../../../../../localization/hooks'
 import {ActionsMenuProps} from '../types'
 
 /**
- * React form builder component that displays the list of custom actions.
+ * React form builder component that displays the list of code actions.
  * @param props the React component properties.
  * @param props.onSelect the callback function called when an action is selected.
  * @returns the React element.
  */
-export const CustomActions = namedObserver('CustomActions', ({onSelect, annotation}: ActionsMenuProps) => {
+export const CodeActionsList = namedObserver('CodeActionsList', ({onSelect, annotation}: ActionsMenuProps) => {
   const store = useStore()
   const builderStore = useBuilderStore()
   const selectedStore = builderStore.oneSelected?.store

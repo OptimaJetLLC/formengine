@@ -6,10 +6,10 @@ import {IFormData} from '../../utils/IFormData'
 import {View} from '../define'
 import {EventStream} from '../event/utils/EventStream'
 import {Language} from '../localization/types'
-import type {ExternalValidators} from '../validation/types/ExternalValidationRules'
+import type {Validators} from '../validation/types/CustomValidationRules'
 import type {ComponentLocalizer} from './ComponentLocalizer'
-import type {ExternalActions} from './ExternalActions'
-import type {ExternalFormValidators} from './ExternalFormValidators'
+import type {CustomActions} from './CustomActions'
+import type {FormValidators} from './FormValidators'
 
 /**
  * Form viewer React component properties.
@@ -17,7 +17,7 @@ import type {ExternalFormValidators} from './ExternalFormValidators'
 export interface FormViewerProps {
 
   /**
-   * The function for processing form events.
+   * The function for processing form events. **Internal use only.**
    * @param stream the event stream of the form viewer.
    */
   event?: (stream: EventStream) => void
@@ -40,14 +40,14 @@ export interface FormViewerProps {
   view: View
 
   /**
-   * External actions for the form viewer.
+   * Custom actions for the form viewer.
    */
-  externalActions?: ExternalActions
+  actions?: CustomActions
 
   /**
    * The set of functions that validate the form data.
    */
-  externalFormValidators?: ExternalFormValidators
+  formValidators?: FormValidators
 
   /**
    * The initial data of the form.
@@ -56,11 +56,12 @@ export interface FormViewerProps {
 
   /**
    * If true, the component will not be wrapped by the error display component.
+   * **Attention! Don't use it! Unstable API.**
    */
   erroneous?: boolean
 
   /**
-   * The React component that wraps every component in a form.
+   * The React component that wraps every component in a form. **Internal use only.**
    */
   componentWrapper?: ComponentType<any>
 
@@ -80,12 +81,12 @@ export interface FormViewerProps {
   localize?: ComponentLocalizer
 
   /**
-   * The set of metadata of external validation rules, grouped by the type of value being validated.
+   * The set of metadata of validation rules, grouped by the type of value being validated.
    */
-  externalValidators?: ExternalValidators
+  validators?: Validators
 
   /**
-   * Function that calculates all child properties of a component.
+   * Function that calculates all child properties of a component. **Internal use only.**
    */
   computeChildren?: ComputeChildren
 
@@ -98,7 +99,7 @@ export interface FormViewerProps {
    * The event is called whenever a form data changes.
    * @param data the {@link IFormData} with all the form data.
    */
-  onDataChange?: (data: IFormData) => void
+  onFormDataChange?: (data: IFormData) => void
 }
 
 /**

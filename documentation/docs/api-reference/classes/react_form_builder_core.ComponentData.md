@@ -17,7 +17,7 @@ This tree of elements contains the data required to display the component. It is
 
 ### constructor
 
-• **new ComponentData**(`componentStore`, `model`, `field`, `childFactory`, `externalFormValidators?`)
+• **new ComponentData**(`componentStore`, `model`, `field`, `childFactory`, `formValidators?`)
 
 Constructor.
 
@@ -29,7 +29,7 @@ Constructor.
 | `model` | [`Model`](react_form_builder_core.Model.md)<`any`\> | the component metadata for the form viewer. |
 | `field` | `undefined` \| [`Field`](../interfaces/react_form_builder_core.Field.md) | the field with the form data. |
 | `childFactory` | (`componentStore`: [`ComponentStore`](react_form_builder_core.ComponentStore.md)) => [`ComponentData`](react_form_builder_core.ComponentData.md) | the factory function that creates [ComponentData](react_form_builder_core.ComponentData.md) instance. |
-| `externalFormValidators?` | [`ExternalFormValidators`](../modules/react_form_builder_core.md#externalformvalidators) | the external form validators. |
+| `formValidators?` | [`FormValidators`](../modules/react_form_builder_core.md#formvalidators) | the array of functions that validate the form data. |
 
 ## Properties
 

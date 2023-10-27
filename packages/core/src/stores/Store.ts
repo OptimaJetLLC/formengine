@@ -14,7 +14,7 @@ import {screenModel} from '../features/ui/screenModel'
 import {getTemplateName, isTemplateType} from '../features/ui/templateUtil'
 import type {SchemaType} from '../features/validation'
 import type {ValidationResult} from '../features/validation/types/ValidationResult'
-import {ValidationRules} from '../features/validation/utils/consts'
+import {ZodValidationRules} from '../features/validation/utils/consts'
 import {SimpleField} from '../features/validation/utils/SimpleField'
 import {TemplateField} from '../features/validation/utils/TemplateField'
 import {isStoreDataInParentForm} from '../features/validation/utils/util'
@@ -135,7 +135,7 @@ export class Store implements IStore, IFormViewer {
         action = this.form.actions[name]
         break
       case 'external':
-        action = this.formViewerPropsStore.externalActions?.[name]
+        action = this.formViewerPropsStore.actions?.[name]
         break
     }
 
@@ -252,7 +252,7 @@ export class Store implements IStore, IFormViewer {
     model ??= this.getModel(componentStore.type)
     const field = model.valued ? this.createField(componentStore, model, deferFieldCalculation) : undefined
     const factory = (cs: ComponentStore) => this.createComponentData(cs, deferFieldCalculation)
-    return new ComponentData(componentStore, model, field, factory, this.formViewerPropsStore.externalFormValidators)
+    return new ComponentData(componentStore, model, field, factory, this.formViewerPropsStore.formValidators)
   }
 
   /**
@@ -262,8 +262,8 @@ export class Store implements IStore, IFormViewer {
    */
   getValidationRules(type: SchemaType): FormViewerValidationRules {
     return {
-      external: this.formViewerPropsStore.externalValidators?.[type],
-      internal: ValidationRules[type]
+      external: this.formViewerPropsStore.validators?.[type],
+      internal: ZodValidationRules[type]
     }
   }
 
@@ -366,13 +366,13 @@ export class Store implements IStore, IFormViewer {
   }
 
   /**
-   * Localizes a component store based on the given localization type. If an external localizer is available, it will be used.
+   * Localizes a component store based on the given localization type. If a custom localizer is available, it will be used.
    * @param type the type of localization.
    * @param componentStore the component settings.
    * @returns the Record with the localized properties.
    */
   localizeComponent(type: LocalizationType, componentStore: ComponentStore) {
-    if (this.formViewerPropsStore.externalLocalizer) return this.formViewerPropsStore.externalLocalizer(componentStore, this.displayedLanguage)
+    if (this.formViewerPropsStore.localizer) return this.formViewerPropsStore.localizer(componentStore, this.displayedLanguage)
     return localizeProperties(this.form, this.displayedLanguage, componentStore, type)
   }
 

@@ -6,7 +6,7 @@ import {
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
-import {ActionDefinition, BiDi, ComponentLocalizer, ExternalValidators, IFormViewer} from '@react-form-builder/core'
+import {ActionDefinition, BiDi, ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
 import {BuilderView, FormBuilder, IFormStorage} from '@react-form-builder/designer'
 import {useCallback, useEffect, useRef} from 'react'
 
@@ -25,11 +25,11 @@ const builderView = new BuilderView(componentsMetadata)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
 
-// This is where you can define the external storage for the designer
+// This is where you can define the custom storage for the designer
 const formStorage: IFormStorage | undefined = undefined
 
-// You can define external validators for form fields
-const externalValidators: ExternalValidators = {
+// You can define custom validators for form fields
+const customValidators: Validators = {
   'string': {
     'isHex': {
       validate: value => /^[0-9A-F]*$/i.test(value)
@@ -179,7 +179,7 @@ export const Designer = () => {
     }
   }, [ref.current])
 
-  // external function for localizing component properties
+  // custom function for localizing component properties
   const localizeFn = useCallback<ComponentLocalizer>((componentStore, language) => {
     // localizes only the component whose key has the value "password"
     return componentStore.key === 'submit' && language.code === 'en'
@@ -195,12 +195,12 @@ export const Designer = () => {
       initialData={({})}
       formStorage={formStorage}
       localize={localizeFn}
-      onDataChange={({data, errors}) => {
-        console.log('onDataChange', {data, errors})
+      onFormDataChange={({data, errors}) => {
+        console.log('onFormDataChange', {data, errors})
       }}
       viewerRef={ref}
-      externalValidators={externalValidators}
-      externalActions={{
+      validators={customValidators}
+      actions={{
         logEventArgs: e => console.log(e),
         assertArgs: ActionDefinition.functionalAction((e, args) => {
           console.log(e, args)

@@ -1,4 +1,4 @@
-import {AsyncFunction, CalculableTestResult, namedObserver} from '@react-form-builder/core'
+import {AsyncFunction, CalculableResult, namedObserver} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {useTranslation} from 'react-i18next'
 import {CustomValidationCode} from '../../../stores/BuilderStore'
@@ -18,9 +18,9 @@ export const CustomValidationCodeEditor = namedObserver('CustomValidationCodeEdi
     const source = `${beginContextLine}\n${value}\n${endContextLine}`
     try {
       AsyncFunction(source)
-      return CalculableTestResult.success(t('testingEditor.compilationOk'))
+      return CalculableResult.success(t('testingEditor.compilationOk'))
     } catch (e) {
-      return CalculableTestResult.error([e as Error])
+      return CalculableResult.error([e as Error])
     }
   }, [beginContextLine])
 

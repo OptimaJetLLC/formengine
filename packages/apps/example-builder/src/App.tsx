@@ -7,15 +7,7 @@ import {
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
-import {
-  ActionDefinition,
-  BiDi,
-  ComponentStore,
-  ExternalFormValidators,
-  ExternalValidators,
-  IFormViewer,
-  Language
-} from '@react-form-builder/core'
+import {ActionDefinition, BiDi, ComponentStore, FormValidators, IFormViewer, Language, Validators} from '@react-form-builder/core'
 import {BuilderView, FormBuilder, FormBuilderI18n} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useRef, useState} from 'react'
@@ -50,8 +42,8 @@ function localizer(componentStore: ComponentStore, language: Language): Record<s
     : {}
 }
 
-const useExternalLocalizer = false
-const localizeFn = useExternalLocalizer ? localizer : undefined
+const useCustomLocalizer = false
+const localizeFn = useCustomLocalizer ? localizer : undefined
 const logEvents = false
 
 const indexedDbExists = !!window.indexedDB
@@ -67,7 +59,7 @@ async function getForm(name?: string): Promise<string> {
   return await formStorage.getForm(name)
 }
 
-const externalValidators: ExternalValidators = {
+const customValidators: Validators = {
   'string': {
     'isHex': {
       validate: value => /^[0-9A-F]*$/i.test(value)
@@ -95,7 +87,7 @@ const externalValidators: ExternalValidators = {
   },
 }
 
-const externalFormValidators: ExternalFormValidators = [
+const formValidators: FormValidators = [
   async (data) => {
     const result: any = {}
     if (data.login === 'sun') {
@@ -128,7 +120,7 @@ const externalFormValidators: ExternalFormValidators = [
   }
 ]
 
-const enableExternalLanguages = false
+const enableCustomLanguages = false
 
 const builderLanguages: FormBuilderI18n = {
   languages: [
@@ -192,14 +184,14 @@ const FormBuilderApp = () => {
     initialData={initialData}
     formStorage={formStorage}
     localize={localizeFn}
-    onDataChange={({data, errors}) => {
-      if (logEvents) console.log('onDataChange', {data, errors})
+    onFormDataChange={({data, errors}) => {
+      if (logEvents) console.log('onFormDataChange', {data, errors})
     }}
     viewerRef={ref}
-    externalValidators={externalValidators}
-    externalFormValidators={externalFormValidators}
-    i18n={enableExternalLanguages ? builderLanguages : undefined}
-    externalActions={{
+    validators={customValidators}
+    formValidators={formValidators}
+    i18n={enableCustomLanguages ? builderLanguages : undefined}
+    actions={{
       logEventArgs: e => console.log(e),
       assertArgs: ActionDefinition.functionalAction((e, args) => {
         if (!e) throw new Error(`'e' is undefined`)

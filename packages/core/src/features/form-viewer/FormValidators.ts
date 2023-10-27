@@ -3,9 +3,9 @@
  * @param data the form data.
  * @returns the Record with form field errors.
  */
-export type ExternalFormValidator = (data: Record<string, unknown>) => Promise<Record<string, string> | undefined>
+export type FormValidator = (data: Record<string, unknown>) => Promise<Record<string, string> | undefined>
 
 /**
  * Represents an array of functions that validate the form data.
  */
-export type ExternalFormValidators = ExternalFormValidator[]
+export type FormValidators = FormValidator[]

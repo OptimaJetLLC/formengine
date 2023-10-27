@@ -59,7 +59,7 @@ export const BuilderProviders = namedObserver('BuilderProviders', ({children, pr
   useEffect(() => {
     if (!store) return
     store.formViewerPropsStore.applyProps(props)
-  }, [props.initialData, props.view, props.externalValidators, props.externalFormValidators, props.localize, props.language, props.externalActions])
+  }, [props.initialData, props.view, props.validators, props.formValidators, props.localize, props.language, props.actions])
 
   if (!buildStore || !store) return null
 

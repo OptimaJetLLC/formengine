@@ -25,35 +25,19 @@ Constructs a new FormViewerPropsStore from the given FormViewerProps.
 
 ## Properties
 
-### externalActions
+### actions
 
-• `Optional` **externalActions**: [`ActionValues`](../modules/react_form_builder_core.md#actionvalues)
+• `Optional` **actions**: [`ActionValues`](../modules/react_form_builder_core.md#actionvalues)
 
-The set of external actions
+Custom actions for the form viewer.
 
 ___
 
-### externalFormValidators
+### formValidators
 
-• `Optional` **externalFormValidators**: [`ExternalFormValidators`](../modules/react_form_builder_core.md#externalformvalidators)
+• `Optional` **formValidators**: [`FormValidators`](../modules/react_form_builder_core.md#formvalidators)
 
 The set of functions that validate the form data.
-
-___
-
-### externalLocalizer
-
-• `Optional` **externalLocalizer**: [`ComponentLocalizer`](../modules/react_form_builder_core.md#componentlocalizer)
-
-The function to localize the properties of a component
-
-___
-
-### externalValidators
-
-• `Optional` **externalValidators**: `Partial`<`Record`<keyof [`SchemaTypeMap`](../modules/react_form_builder_core.md#schematypemap), [`ExternalValidationRules`](../modules/react_form_builder_core.md#externalvalidationrules)\>\>
-
-The set of metadata of external validation rules, grouped by the type of value being validated.
 
 ___
 
@@ -65,11 +49,27 @@ The initial form data.
 
 ___
 
+### localizer
+
+• `Optional` **localizer**: [`ComponentLocalizer`](../modules/react_form_builder_core.md#componentlocalizer)
+
+The function to localize the properties of a component.
+
+___
+
 ### propsLanguage
 
 • `Optional` **propsLanguage**: [`Language`](react_form_builder_core.Language.md)
 
 The full language code passed in the FormViewer properties.
+
+___
+
+### validators
+
+• `Optional` **validators**: `Partial`<`Record`<keyof [`SchemaTypeMap`](../modules/react_form_builder_core.md#schematypemap), [`CustomValidationRules`](../modules/react_form_builder_core.md#customvalidationrules)\>\>
+
+The set of metadata of validation rules, grouped by the type of value being validated.
 
 ___
 

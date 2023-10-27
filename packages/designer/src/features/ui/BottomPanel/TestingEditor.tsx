@@ -2,7 +2,7 @@ import {css} from '@emotion/react'
 import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faPlay from '@fortawesome/free-solid-svg-icons/faPlay.js'
-import {CalculableTestResult, ComponentData, IFormData, initFormFields, namedObserver, useStore} from '@react-form-builder/core'
+import {CalculableResult, ComponentData, IFormData, initFormFields, namedObserver, useStore} from '@react-form-builder/core'
 import {isUndefined} from 'lodash-es'
 import {editor} from 'monaco-editor'
 import {forwardRef, RefObject, useCallback, useEffect, useMemo, useState} from 'react'
@@ -33,11 +33,11 @@ const editorOptions: editor.IStandaloneEditorConstructionOptions = {
 export type TestingEditorRef = {
   /**
    * The testing function.
-   * @returns the {@link CalculableTestResult}.
+   * @returns the {@link CalculableResult}.
    */
-  test?: () => CalculableTestResult
+  test?: () => CalculableResult
 }
-type TestingFunction = (data: IFormData) => CalculableTestResult
+type TestingFunction = (data: IFormData) => CalculableResult
 type TestingEditorProps = { testingFunction: TestingFunction }
 type TestRunnerProps = { data?: string, testingFunction: TestingFunction, compact?: boolean }
 
@@ -65,7 +65,7 @@ export const TestingEditor = namedObserver('TestingEditor', forwardRef(({testing
 export const TestRunner = namedObserver('TestRunner', forwardRef(({data, testingFunction, compact}: TestRunnerProps, ref) => {
   const t = useTranslationPart('testingEditor')
   const builderStore = useBuilderStore()
-  const [result, setResult] = useState<CalculableTestResult>()
+  const [result, setResult] = useState<CalculableResult>()
   const test = useCallback(() => {
     const calculated = calculate(data ?? '{}', testingFunction)
     setResult(calculated)
@@ -139,7 +139,7 @@ const SMessage = styled(Message)<{ type: TypeAttributes.Status }>`
   border: 2px solid ${({type}) => messageColor[type]};
 `
 
-const TestingResult = ({result, onClose, compact}: { result: CalculableTestResult, onClose: () => void, compact?: boolean }) => {
+const TestingResult = ({result, onClose, compact}: { result: CalculableResult, onClose: () => void, compact?: boolean }) => {
   const MessageComponent = compact ? SCompactMessage : SMessage
   const formattedContent = (
     <div style={{maxHeight: 80, overflow: 'auto', wordBreak: 'break-word'}}>
@@ -155,7 +155,7 @@ const TestingResult = ({result, onClose, compact}: { result: CalculableTestResul
   )
 }
 
-const ResultMessage = ({result}: { result: CalculableTestResult }) => {
+const ResultMessage = ({result}: { result: CalculableResult }) => {
   const t = useTranslationPart('testingEditor')
   return <div>
     {!isUndefined(result.result)
@@ -170,7 +170,7 @@ function calculate(data: string, testingFunction: TestingFunction) {
     const {data: parsedData, errors} = JSON.parse(data)
     return testingFunction(new TestFormData(parsedData, errors))
   } catch (e: any) {
-    return CalculableTestResult.error([e])
+    return CalculableResult.error([e])
   }
 }
 
@@ -183,7 +183,7 @@ const stringify = (data: any) => {
   return JSON.stringify(prepareForJson(data), null, 2)
 }
 
-const getType = (result: CalculableTestResult): TypeAttributes.Status => {
+const getType = (result: CalculableResult): TypeAttributes.Status => {
   return !isUndefined(result.result)
     ? 'success'
     : (result?.error || result?.exceptions)

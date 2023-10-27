@@ -33,14 +33,14 @@ const ExistingStoreProvider = namedObserver('ExistingStoreProvider', ({
                                                                         store
                                                                       }: ExistingStoreProviderProps) => {
   useEffect(() => {
-    props.onDataChange?.(store.formData)
+    props.onFormDataChange?.(store.formData)
   }, [store.formData.data, store.formData.errors])
 
   useEffect(() => setViewerRef(store, viewerRef), [store, viewerRef])
 
   useEffect(() => {
     store.formViewerPropsStore.applyProps(props)
-  }, [props.initialData, props.view, props.externalValidators, props.externalFormValidators, props.localize, props.language, props.externalActions])
+  }, [props.initialData, props.view, props.validators, props.formValidators, props.localize, props.language, props.actions])
 
   return (
     <ViewerPropsProvider value={props}>

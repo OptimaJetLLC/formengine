@@ -1,4 +1,4 @@
-import type {ExternalValidationRules} from '../features/validation/types/ExternalValidationRules'
+import type {CustomValidationRules} from '../features/validation/types/CustomValidationRules'
 import type {ValidationRuleSet} from '../features/validation/types/ValidationRuleSet'
 
 /**
@@ -6,9 +6,9 @@ import type {ValidationRuleSet} from '../features/validation/types/ValidationRul
  */
 export type FormViewerValidationRules = {
   /**
-   * The set of external validators.
+   * The set of custom validators.
    */
-  external?: ExternalValidationRules
+  external?: CustomValidationRules
   /**
    * The set of internal validators.
    */

@@ -7,7 +7,7 @@ import {ZodStringRules} from '../rules/ZodStringRules'
 import type {SchemaType} from '../types/SchemaType'
 import type {ValidationRuleSet} from '../types/ValidationRuleSet'
 
-export const ValidationRules: Record<SchemaType, ValidationRuleSet> = {
+export const ZodValidationRules: Record<SchemaType, ValidationRuleSet> = {
   'string': ZodStringRules,
   'number': ZodNumberRules,
   'boolean': ZodBooleanRules,

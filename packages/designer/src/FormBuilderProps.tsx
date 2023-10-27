@@ -1,5 +1,5 @@
-import {BuilderView} from '@react-form-builder/core'
 import type {EditorType, FormViewerProps} from '@react-form-builder/core'
+import {BuilderView} from '@react-form-builder/core'
 import type {ComponentType} from 'react'
 import type {AnnotationEditorProps} from './features/annotation-editors/AnnotationEditorProps'
 import type {FormBuilderI18n} from './features/localization/FormBuilderLanguage'
@@ -21,9 +21,9 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
   formStorage?: IFormStorage
 
   /**
-   * Custom component property editors.
+   * Custom component property editors. **Attention! Unstable API.**
    */
-  externalPropertyEditors?: Record<EditorType, ComponentType<AnnotationEditorProps>>
+  propertyEditors?: Record<EditorType, ComponentType<AnnotationEditorProps>>
 
   /**
    * The i18n data of the form builder.

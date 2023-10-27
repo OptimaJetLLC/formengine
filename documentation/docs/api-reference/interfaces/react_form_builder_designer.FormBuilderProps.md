@@ -17,11 +17,23 @@ Properties of the React Form builder component.
 
 ## Properties
 
+### actions
+
+• `Optional` **actions**: [`CustomActions`](../modules/react_form_builder_core.md#customactions)
+
+Custom actions for the form viewer.
+
+#### Inherited from
+
+Omit.actions
+
+___
+
 ### componentWrapper
 
 • `Optional` **componentWrapper**: `ComponentType`<`any`\>
 
-The React component that wraps every component in a form.
+The React component that wraps every component in a form. **Internal use only.**
 
 #### Inherited from
 
@@ -33,7 +45,7 @@ ___
 
 • `Optional` **computeChildren**: [`ComputeChildren`](../modules/react_form_builder_core.md#computechildren)
 
-Function that calculates all child properties of a component.
+Function that calculates all child properties of a component. **Internal use only.**
 
 #### Inherited from
 
@@ -46,6 +58,7 @@ ___
 • `Optional` **erroneous**: `boolean`
 
 If true, the component will not be wrapped by the error display component.
+**Attention! Don't use it! Unstable API.**
 
 #### Inherited from
 
@@ -61,7 +74,7 @@ ___
 
 ▸ (`stream`): `void`
 
-The function for processing form events.
+The function for processing form events. **Internal use only.**
 
 ##### Parameters
 
@@ -76,50 +89,6 @@ The function for processing form events.
 #### Inherited from
 
 Omit.event
-
-___
-
-### externalActions
-
-• `Optional` **externalActions**: [`ExternalActions`](../modules/react_form_builder_core.md#externalactions)
-
-External actions for the form viewer.
-
-#### Inherited from
-
-Omit.externalActions
-
-___
-
-### externalFormValidators
-
-• `Optional` **externalFormValidators**: [`ExternalFormValidators`](../modules/react_form_builder_core.md#externalformvalidators)
-
-The set of functions that validate the form data.
-
-#### Inherited from
-
-Omit.externalFormValidators
-
-___
-
-### externalPropertyEditors
-
-• `Optional` **externalPropertyEditors**: `Record`<`string`, `ComponentType`<[`AnnotationEditorProps`](react_form_builder_designer.AnnotationEditorProps.md)\>\>
-
-Custom component property editors.
-
-___
-
-### externalValidators
-
-• `Optional` **externalValidators**: `Partial`<`Record`<keyof [`SchemaTypeMap`](../modules/react_form_builder_core.md#schematypemap), [`ExternalValidationRules`](../modules/react_form_builder_core.md#externalvalidationrules)\>\>
-
-The set of metadata of external validation rules, grouped by the type of value being validated.
-
-#### Inherited from
-
-Omit.externalValidators
 
 ___
 
@@ -140,6 +109,18 @@ ___
 • `Optional` **formStorage**: [`IFormStorage`](react_form_builder_designer.IFormStorage.md)
 
 The external form storage.
+
+___
+
+### formValidators
+
+• `Optional` **formValidators**: [`FormValidators`](../modules/react_form_builder_core.md#formvalidators)
+
+The set of functions that validate the form data.
+
+#### Inherited from
+
+Omit.formValidators
 
 ___
 
@@ -215,9 +196,9 @@ Omit.localize
 
 ___
 
-### onDataChange
+### onFormDataChange
 
-• `Optional` **onDataChange**: (`data`: [`IFormData`](react_form_builder_core.IFormData.md)) => `void`
+• `Optional` **onFormDataChange**: (`data`: [`IFormData`](react_form_builder_core.IFormData.md)) => `void`
 
 #### Type declaration
 
@@ -237,7 +218,27 @@ The event is called whenever a form data changes.
 
 #### Inherited from
 
-Omit.onDataChange
+Omit.onFormDataChange
+
+___
+
+### propertyEditors
+
+• `Optional` **propertyEditors**: `Record`<`string`, `ComponentType`<[`AnnotationEditorProps`](react_form_builder_designer.AnnotationEditorProps.md)\>\>
+
+Custom component property editors. **Attention! Unstable API.**
+
+___
+
+### validators
+
+• `Optional` **validators**: `Partial`<`Record`<keyof [`SchemaTypeMap`](../modules/react_form_builder_core.md#schematypemap), [`CustomValidationRules`](../modules/react_form_builder_core.md#customvalidationrules)\>\>
+
+The set of metadata of validation rules, grouped by the type of value being validated.
+
+#### Inherited from
+
+Omit.validators
 
 ___
 

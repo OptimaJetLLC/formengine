@@ -9,7 +9,7 @@ import {ActionsMenuProps} from '../types'
  * @param props.onSelect the callback function called when an action is selected.
  * @returns the React element.
  */
-export const CommonActions = ({onSelect}: ActionsMenuProps) => {
+export const CommonActionsList = ({onSelect}: ActionsMenuProps) => {
   const store = useStore()
   const t = useTranslationPart('actions')
 

@@ -3,7 +3,7 @@ import {
   ActionDefinition,
   ActionParameters,
   AsyncFunction,
-  CalculableTestResult,
+  CalculableResult,
   NamedActionDefinition,
   useStore
 } from '@react-form-builder/core'
@@ -111,9 +111,9 @@ export const CustomActionEditor = ({customAction, onSave}: CustomActionEditorPro
     onSave?.(namedAction)
   }
 
-  const compile = (source: string): CalculableTestResult => {
+  const compile = (source: string): CalculableResult => {
     AsyncFunction(source)
-    return CalculableTestResult.success(t('testingEditor.compilationOk'))
+    return CalculableResult.success(t('testingEditor.compilationOk'))
   }
 
   return <>

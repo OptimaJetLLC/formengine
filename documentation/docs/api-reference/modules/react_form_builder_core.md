@@ -21,7 +21,7 @@ custom_edit_url: null
 - [BaseBuilder](../classes/react_form_builder_core.BaseBuilder.md)
 - [BuilderOptions](../classes/react_form_builder_core.BuilderOptions.md)
 - [BuilderView](../classes/react_form_builder_core.BuilderView.md)
-- [CalculableTestResult](../classes/react_form_builder_core.CalculableTestResult.md)
+- [CalculableResult](../classes/react_form_builder_core.CalculableResult.md)
 - [ComponentData](../classes/react_form_builder_core.ComponentData.md)
 - [ComponentDataEvents](../classes/react_form_builder_core.ComponentDataEvents.md)
 - [ComponentKeyChangedEventArgs](../classes/react_form_builder_core.ComponentKeyChangedEventArgs.md)
@@ -367,6 +367,37 @@ Represents the type of CSS loader. Can be either BiDi or common for both BiDi.
 
 ___
 
+### CustomActions
+
+Ƭ **CustomActions**: `Record`<`string`, [`ActionDefinition`](../classes/react_form_builder_core.ActionDefinition.md) \| [`ActionEventHandler`](react_form_builder_core.md#actioneventhandler)\>
+
+Custom actions for the form viewer.
+
+___
+
+### CustomValidationRuleSettings
+
+Ƭ **CustomValidationRuleSettings**: `Object`
+
+Custom validation rule settings.
+
+#### Type declaration
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params?` | [`ValidationRuleParameter`](react_form_builder_core.md#validationruleparameter)[] | Metadata of validation rule parameters. |
+| `validate` | [`RuleValidator`](react_form_builder_core.md#rulevalidator) | The function that validates the value. |
+
+___
+
+### CustomValidationRules
+
+Ƭ **CustomValidationRules**: `Record`<`string`, [`CustomValidationRuleSettings`](react_form_builder_core.md#customvalidationrulesettings)\>
+
+A set of metadata of custom validation rules, grouped by rule name.
+
+___
+
 ### DefineActionHelper
 
 Ƭ **DefineActionHelper**: <T\>(`name`: `string`, `func`: [`ActionHandler`](react_form_builder_core.md#actionhandler)<`T`\>, `params?`: [`ParameterDefinition`](react_form_builder_core.md#parameterdefinition)<`T`\>[], `description?`: `string`) => [`ActionDefinition`](../classes/react_form_builder_core.ActionDefinition.md)
@@ -513,17 +544,23 @@ The type for the event name.
 
 ___
 
-### ExternalActions
+### FirstParameter
 
-Ƭ **ExternalActions**: `Record`<`string`, [`ActionDefinition`](../classes/react_form_builder_core.ActionDefinition.md) \| [`ActionEventHandler`](react_form_builder_core.md#actioneventhandler)\>
+Ƭ **FirstParameter**<`T`\>: `Parameters`<`T`\>[``0``]
 
-External actions for the form viewer.
+The generic type that returns the first parameter of the generic type T. **Internal use only.**
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends (...`args`: `any`) => `any` |
 
 ___
 
-### ExternalFormValidator
+### FormValidator
 
-Ƭ **ExternalFormValidator**: (`data`: `Record`<`string`, `unknown`\>) => `Promise`<`Record`<`string`, `string`\> \| `undefined`\>
+Ƭ **FormValidator**: (`data`: `Record`<`string`, `unknown`\>) => `Promise`<`Record`<`string`, `string`\> \| `undefined`\>
 
 #### Type declaration
 
@@ -545,56 +582,11 @@ the Record with form field errors.
 
 ___
 
-### ExternalFormValidators
+### FormValidators
 
-Ƭ **ExternalFormValidators**: [`ExternalFormValidator`](react_form_builder_core.md#externalformvalidator)[]
+Ƭ **FormValidators**: [`FormValidator`](react_form_builder_core.md#formvalidator)[]
 
 Represents an array of functions that validate the form data.
-
-___
-
-### ExternalValidationRuleSettings
-
-Ƭ **ExternalValidationRuleSettings**: `Object`
-
-External validation rule settings.
-
-#### Type declaration
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `params?` | [`ValidationRuleParameter`](react_form_builder_core.md#validationruleparameter)[] | Metadata of validation rule parameters. |
-| `validate` | [`RuleValidator`](react_form_builder_core.md#rulevalidator) | The function that validates the value. |
-
-___
-
-### ExternalValidationRules
-
-Ƭ **ExternalValidationRules**: `Record`<`string`, [`ExternalValidationRuleSettings`](react_form_builder_core.md#externalvalidationrulesettings)\>
-
-A set of metadata of external validation rules, grouped by rule name.
-
-___
-
-### ExternalValidators
-
-Ƭ **ExternalValidators**: `Partial`<`Record`<[`SchemaType`](react_form_builder_core.md#schematype), [`ExternalValidationRules`](react_form_builder_core.md#externalvalidationrules)\>\>
-
-The set of metadata of external validation rules, grouped by the type of value being validated.
-
-___
-
-### FirstParameter
-
-Ƭ **FirstParameter**<`T`\>: `Parameters`<`T`\>[``0``]
-
-The generic type that returns the first parameter of the generic type T. **Internal use only.**
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends (...`args`: `any`) => `any` |
 
 ___
 
@@ -608,7 +600,7 @@ Validation rules for FormViewer.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `external?` | [`ExternalValidationRules`](react_form_builder_core.md#externalvalidationrules) | The set of external validators. |
+| `external?` | [`CustomValidationRules`](react_form_builder_core.md#customvalidationrules) | The set of custom validators. |
 | `internal` | [`ValidationRuleSet`](react_form_builder_core.md#validationruleset) | The set of internal validators. |
 
 ___
@@ -1101,6 +1093,14 @@ The type of validator.
 
 ___
 
+### Validators
+
+Ƭ **Validators**: `Partial`<`Record`<[`SchemaType`](react_form_builder_core.md#schematype), [`CustomValidationRules`](react_form_builder_core.md#customvalidationrules)\>\>
+
+The set of metadata of custom validation rules, grouped by the type of value being validated.
+
+___
+
 ### ViewMode
 
 Ƭ **ViewMode**: ``"desktop"`` \| ``"mobile"`` \| ``"tablet"``
@@ -1470,7 +1470,7 @@ ___
 
 ### calculatePropertyValue
 
-▸ **calculatePropertyValue**(`componentProperty`, `formViewerData`): [`CalculableTestResult`](../classes/react_form_builder_core.CalculableTestResult.md)
+▸ **calculatePropertyValue**(`componentProperty`, `formViewerData`): [`CalculableResult`](../classes/react_form_builder_core.CalculableResult.md)
 
 Calculates the value for the component property. **Internal use only.**
 
@@ -1483,7 +1483,7 @@ Calculates the value for the component property. **Internal use only.**
 
 #### Returns
 
-[`CalculableTestResult`](../classes/react_form_builder_core.CalculableTestResult.md)
+[`CalculableResult`](../classes/react_form_builder_core.CalculableResult.md)
 
 the calculated value.
 
@@ -1646,26 +1646,6 @@ Static method to create an instance of the component's metadata builder class.
 [`Definer`](../classes/react_form_builder_core.Definer.md)<`T`\>
 
 the instance of the [Definer](../classes/react_form_builder_core.Definer.md) class.
-
-___
-
-### externalActionsToActionsValues
-
-▸ **externalActionsToActionsValues**(`externalActions?`): [`ActionValues`](react_form_builder_core.md#actionvalues) \| `undefined`
-
-Converts external actions to the set of action definitions. **Internal use only.**
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `externalActions?` | [`ExternalActions`](react_form_builder_core.md#externalactions) | the external actions. |
-
-#### Returns
-
-[`ActionValues`](react_form_builder_core.md#actionvalues) \| `undefined`
-
-the set of action definitions or undefined.
 
 ___
 
@@ -2170,7 +2150,7 @@ ___
 
 ### testFluentLocalization
 
-▸ **testFluentLocalization**(`request`): [`CalculableTestResult`](../classes/react_form_builder_core.CalculableTestResult.md)
+▸ **testFluentLocalization**(`request`): [`CalculableResult`](../classes/react_form_builder_core.CalculableResult.md)
 
 Localization testing function. **Internal use only.**
 
@@ -2182,7 +2162,7 @@ Localization testing function. **Internal use only.**
 
 #### Returns
 
-[`CalculableTestResult`](../classes/react_form_builder_core.CalculableTestResult.md)
+[`CalculableResult`](../classes/react_form_builder_core.CalculableResult.md)
 
 the localization testing result.
 

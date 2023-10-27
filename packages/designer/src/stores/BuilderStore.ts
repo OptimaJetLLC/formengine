@@ -780,7 +780,7 @@ export class BuilderStore {
    * @returns the custom property editor for the specified editorType.
    */
   customPropertyEditor(editorType: EditorType) {
-    return this.#props.externalPropertyEditors?.[editorType]
+    return this.#props.propertyEditors?.[editorType]
   }
 
   /**

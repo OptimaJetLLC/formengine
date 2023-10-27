@@ -1,6 +1,6 @@
 import {IReactionDisposer, makeAutoObservable, reaction} from 'mobx'
 import {Model} from '../../features/define'
-import type {ExternalFormValidators} from '../../features/form-viewer/ExternalFormValidators'
+import type {FormValidators} from '../../features/form-viewer/FormValidators'
 import {getFluentData} from '../../features/localization/getFluentData'
 import type {Field} from '../../features/validation'
 import {ComponentStore} from '../../stores/ComponentStore'
@@ -57,7 +57,7 @@ export class ComponentDataEvents {
 export class ComponentData implements IFormData {
   #disposers: IReactionDisposer[]
   #events?: ComponentDataEvents
-  #externalFormValidators?: ExternalFormValidators
+  #formValidators?: FormValidators
   /**
    * The unique identifier.
    */
@@ -99,15 +99,15 @@ export class ComponentData implements IFormData {
    * @param model the component metadata for the form viewer.
    * @param field the field with the form data.
    * @param childFactory the factory function that creates {@link ComponentData} instance.
-   * @param externalFormValidators the external form validators.
+   * @param formValidators the array of functions that validate the form data.
    */
   constructor(componentStore: ComponentStore, model: Model, field: Field | undefined,
-              childFactory: (componentStore: ComponentStore) => ComponentData, externalFormValidators?: ExternalFormValidators) {
+              childFactory: (componentStore: ComponentStore) => ComponentData, formValidators?: FormValidators) {
     this.store = componentStore
     this.model = model
     this.field = field
     this.id = generateId(this.model.type)
-    this.#externalFormValidators = externalFormValidators
+    this.#formValidators = formValidators
 
     componentStore.children?.forEach(childComponentStore => {
       const child = childFactory(childComponentStore)
@@ -317,11 +317,11 @@ export class ComponentData implements IFormData {
     this.validating = true
     try {
       await Promise.allSettled([...this.fields.values()].map(f => f.validate()))
-      if (!this.#externalFormValidators) return
+      if (!this.#formValidators) return
 
       const fields = this.fields
-      const externalValidatorPromises = this.#externalFormValidators.map(v => v(this.data))
-      const results = await Promise.allSettled(externalValidatorPromises)
+      const customValidatorPromises = this.#formValidators.map(v => v(this.data))
+      const results = await Promise.allSettled(customValidatorPromises)
 
       results.map(result => {
         if (result.status === 'rejected') {

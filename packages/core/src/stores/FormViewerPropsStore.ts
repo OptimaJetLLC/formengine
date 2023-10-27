@@ -3,10 +3,10 @@ import {View} from '../features/define'
 import type {ActionValues} from '../features/event'
 import type {FormViewerProps} from '../features/form-viewer'
 import type {ComponentLocalizer} from '../features/form-viewer/ComponentLocalizer'
-import {externalActionsToActionsValues} from '../features/form-viewer/ExternalActions'
-import type {ExternalFormValidators} from '../features/form-viewer/ExternalFormValidators'
+import {customActionsToActionsValues} from '../features/form-viewer/CustomActions'
+import type {FormValidators} from '../features/form-viewer/FormValidators'
 import {Language} from '../features/localization/types'
-import type {ExternalValidators} from '../features/validation/types/ExternalValidationRules'
+import type {Validators} from '../features/validation/types/CustomValidationRules'
 import {nameObservable} from '../utils/observableNaming'
 
 /**
@@ -22,21 +22,21 @@ export class FormViewerPropsStore {
    */
   initialData: Record<string, unknown> = {}
   /**
-   * The set of metadata of external validation rules, grouped by the type of value being validated.
+   * The set of metadata of validation rules, grouped by the type of value being validated.
    */
-  externalValidators?: ExternalValidators
+  validators?: Validators
   /**
    * The set of functions that validate the form data.
    */
-  externalFormValidators?: ExternalFormValidators
+  formValidators?: FormValidators
   /**
-   * The function to localize the properties of a component
+   * The function to localize the properties of a component.
    */
-  externalLocalizer?: ComponentLocalizer
+  localizer?: ComponentLocalizer
   /**
-   * The set of external actions
+   * Custom actions for the form viewer.
    */
-  externalActions?: ActionValues
+  actions?: ActionValues
   /**
    * The full language code passed in the FormViewer properties.
    */
@@ -55,10 +55,10 @@ export class FormViewerPropsStore {
     makeObservable(this, {
       view: observable.ref,
       initialData: observable.ref,
-      externalValidators: observable.ref,
-      externalFormValidators: observable.ref,
-      externalLocalizer: observable.ref,
-      externalActions: observable.ref,
+      validators: observable.ref,
+      formValidators: observable.ref,
+      localizer: observable.ref,
+      actions: observable.ref,
       propsLanguage: observable.ref
     }, {name: nameObservable(`FormViewerPropsStore`)})
   }
@@ -70,10 +70,10 @@ export class FormViewerPropsStore {
   applyProps(formViewerProps: FormViewerProps) {
     this.view = formViewerProps.view
     this.initialData = formViewerProps.initialData ?? {}
-    this.externalValidators = formViewerProps.externalValidators
-    this.externalFormValidators = formViewerProps.externalFormValidators
-    this.externalLocalizer = formViewerProps.localize
-    this.externalActions = externalActionsToActionsValues(formViewerProps.externalActions)
+    this.validators = formViewerProps.validators
+    this.formValidators = formViewerProps.formValidators
+    this.localizer = formViewerProps.localize
+    this.actions = customActionsToActionsValues(formViewerProps.actions)
     this.propsLanguage = formViewerProps.language
   }
 
@@ -85,10 +85,10 @@ export class FormViewerPropsStore {
     const clone = new FormViewerPropsStore()
     clone.view = this.view
     clone.initialData = this.initialData
-    clone.externalValidators = this.externalValidators
-    clone.externalFormValidators = this.externalFormValidators
-    clone.externalLocalizer = this.externalLocalizer
-    clone.externalActions = this.externalActions
+    clone.validators = this.validators
+    clone.formValidators = this.formValidators
+    clone.localizer = this.localizer
+    clone.actions = this.actions
     clone.propsLanguage = this.propsLanguage
     return clone
   }

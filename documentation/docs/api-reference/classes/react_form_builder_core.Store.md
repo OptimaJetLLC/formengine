@@ -342,7 +342,7 @@ ___
 
 ▸ **localizeComponent**(`type`, `componentStore`): `Record`<`string`, `any`\>
 
-Localizes a component store based on the given localization type. If an external localizer is available, it will be used.
+Localizes a component store based on the given localization type. If a custom localizer is available, it will be used.
 
 #### Parameters
 

@@ -5,9 +5,9 @@ import {Dropdown, IconButton, Popover, Whisper} from 'rsuite'
 import type {OverlayTriggerHandle} from 'rsuite/Picker'
 import {useTranslationPart} from '../../../../localization/hooks'
 import {AnnotationEditorProps} from '../../../AnnotationEditorProps'
-import {CommonActions} from './components/CommonActions'
-import {CustomActions} from './components/CustomActions'
-import {ExternalActions} from './components/ExternalActions'
+import {CodeActionsList} from './components/CodeActionsList'
+import {CommonActionsList} from './components/CommonActionsList'
+import {CustomActionList} from './components/CustomActionList'
 import {ActionsMenuProps} from './types'
 
 export const AddActionButton = namedObserver('AddActionButton', (props: AnnotationEditorProps) => {
@@ -32,9 +32,9 @@ export const AddActionButton = namedObserver('AddActionButton', (props: Annotati
 const MenuPopover = forwardRef(({onSelect, annotation, ...props}: ActionsMenuProps, ref: any) => (
   <Popover ref={ref} {...props} full>
     <Dropdown.Menu>
-      <CommonActions onSelect={onSelect} annotation={annotation}/>
-      <CustomActions onSelect={onSelect} annotation={annotation}/>
-      <ExternalActions onSelect={onSelect} annotation={annotation}/>
+      <CommonActionsList onSelect={onSelect} annotation={annotation}/>
+      <CodeActionsList onSelect={onSelect} annotation={annotation}/>
+      <CustomActionList onSelect={onSelect} annotation={annotation}/>
     </Dropdown.Menu>
   </Popover>
 ))

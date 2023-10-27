@@ -1,6 +1,6 @@
 import {isUndefined} from 'lodash-es'
 import {ComponentProperty, ComponentStore, isFunctionalProperty} from '../../stores/ComponentStore'
-import {CalculableTestResult} from '../../utils/CalculableTestResult'
+import {CalculableResult} from '../../utils/CalculableResult'
 import type {IFormData} from '../../utils/IFormData'
 
 const fnCache = new Map<string, Function>()
@@ -18,10 +18,10 @@ const calculateValue = (fnSource: string, formViewerData: IFormData) => {
   try {
     const fn = getOrCreateFn(fnSource)
     const result = fn(formViewerData)
-    return CalculableTestResult.success(result)
+    return CalculableResult.success(result)
   } catch (e) {
     console.warn(e)
-    return CalculableTestResult.error([e as Error])
+    return CalculableResult.error([e as Error])
   }
 }
 

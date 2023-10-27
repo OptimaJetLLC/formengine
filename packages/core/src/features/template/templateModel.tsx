@@ -35,11 +35,12 @@ const Template = (templateProps: Record<string, any>) => {
   const viewerProps = useViewerProps()
   const data = useComponentData()
   const templateViewerProps = useMemo(() => {
-    return Object.assign({}, viewerProps, {
+    const overrideProps: Partial<FormViewerProps> = {
       formName: getTemplateName(data.store.type),
       computeChildren: undefined,
-      externalFormValidators: undefined
-    })
+      formValidators: undefined,
+    }
+    return Object.assign({}, viewerProps, overrideProps)
   }, [viewerProps])
 
   if (!viewerProps.getForm) return <TemplateLoadError>Please define <code>getForm</code> property!</TemplateLoadError>

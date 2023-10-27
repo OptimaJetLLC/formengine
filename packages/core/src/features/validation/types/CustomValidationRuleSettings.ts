@@ -2,9 +2,9 @@ import type {RuleValidator} from './RuleValidator'
 import type {ValidationRuleParameter} from './ValidationRuleParameter'
 
 /**
- * External validation rule settings.
+ * Custom validation rule settings.
  */
-export type ExternalValidationRuleSettings = {
+export type CustomValidationRuleSettings = {
 
   /**
    * Metadata of validation rule parameters.

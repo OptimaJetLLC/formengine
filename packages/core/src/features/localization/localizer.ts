@@ -3,7 +3,7 @@ import {FluentVariable} from '@fluent/bundle/esm/bundle.js'
 import {ComponentStore, isLocalizedProperty} from '../../stores/ComponentStore'
 import {Form} from '../../stores/Form'
 import type {LocalizationType} from '../../stores/LocalizationStore'
-import {CalculableTestResult} from '../../utils/CalculableTestResult'
+import {CalculableResult} from '../../utils/CalculableResult'
 import {getValidatorPropertyBlockType} from '../ui/PropertyBlockType'
 import {getFluentCompatibleId} from './getFluentCompatibleId'
 import {Language} from './types'
@@ -35,23 +35,23 @@ export type LocalizationTestRequest = {
  * @param request the localization testing request.
  * @returns the localization testing result.
  */
-export const testFluentLocalization = (request: LocalizationTestRequest): CalculableTestResult => {
+export const testFluentLocalization = (request: LocalizationTestRequest): CalculableResult => {
   const localizationSting = `${request.localizationStringId} = ${request.localization}`
   const resource = new FluentResource(localizationSting)
   const bundle = new FluentBundle(`${request.language.fullCode}`)
   const errors = bundle.addResource(resource)
   if (errors.length > 0) {
-    return CalculableTestResult.error([...errors])
+    return CalculableResult.error([...errors])
   }
 
   const message = bundle.getMessage(request.localizationStringId)
 
   if (typeof message === 'undefined') {
-    return CalculableTestResult.error([{message: 'Localization message not found', name: 'MessageNotFound'}])
+    return CalculableResult.error([{message: 'Localization message not found', name: 'MessageNotFound'}])
   }
 
   if (message.value === null) {
-    return CalculableTestResult.error([{message: 'Localization message is null', name: 'MessageIsNull'}])
+    return CalculableResult.error([{message: 'Localization message is null', name: 'MessageIsNull'}])
   }
 
   let result = ''
@@ -60,13 +60,13 @@ export const testFluentLocalization = (request: LocalizationTestRequest): Calcul
     result = bundle.formatPattern(message.value, request.data)
   } catch (e) {
     if (e instanceof Error) {
-      return CalculableTestResult.error([e])
+      return CalculableResult.error([e])
     }
 
     throw e
   }
 
-  return CalculableTestResult.success(result)
+  return CalculableResult.success(result)
 }
 
 /**
