@@ -149,6 +149,10 @@ export const PanelContainer = styled.div<CollapsedSizeProps>`
   padding: 5px;
   transition: width ${transition}, height ${transition};
 
+  &.right, &.left {
+    max-height: 1200px;
+  }
+
   &.right {
     box-shadow: none;
   }
