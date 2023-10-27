@@ -95,7 +95,9 @@ const customValidators: Validators = {
       ],
       validate: (value, _, args) => {
         const errorMessage = args?.['message'] as string
-        return value !== args?.['value'] ? errorMessage ?? false : true
+        const checkedValue = args?.['value'] as string
+        const errorResult = errorMessage ? errorMessage + checkedValue : false
+        return value !== args?.['value'] ? errorResult : true
       }
     }
   },

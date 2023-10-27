@@ -15,6 +15,7 @@ import {getTemplateName, isTemplateType} from '../features/ui/templateUtil'
 import type {SchemaType} from '../features/validation'
 import type {ValidationResult} from '../features/validation/types/ValidationResult'
 import {ZodValidationRules} from '../features/validation/utils/consts'
+import {getDefaultErrorMessage} from '../features/validation/utils/DataValidator'
 import {SimpleField} from '../features/validation/utils/SimpleField'
 import {TemplateField} from '../features/validation/utils/TemplateField'
 import {isStoreDataInParentForm} from '../features/validation/utils/util'
@@ -385,7 +386,8 @@ export class Store implements IStore, IFormViewer {
   localizeErrorMessages(componentStore: ComponentStore, validationResults?: ValidationResult[]) {
     if (!validationResults) return
     return validationResults.map(result => {
-      return localizeErrorMessage(this.form, this.displayedLanguage, componentStore, result.settings.key) ?? result.message
+      const errorMessage = localizeErrorMessage(this.form, this.displayedLanguage, componentStore, result.settings.key)
+      return errorMessage ?? getDefaultErrorMessage(result)
     }).join(' ')
   }
 }

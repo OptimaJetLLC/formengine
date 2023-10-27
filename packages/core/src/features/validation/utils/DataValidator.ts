@@ -26,10 +26,18 @@ export type ResolvedValidator = (value: any, store: IStore) => Promise<Validatio
  */
 export type SchemaResolver<T> = (value: T) => ResolvedValidator
 
+/**
+ * Returns the default error message for the validation result.
+ * @param result the validation result.
+ * @returns the default error message for the validation result.
+ */
+export function getDefaultErrorMessage(result: ValidationResult) {
+  return result.message ?? `Validation failed: ${result.settings.key}`
+}
+
 function concatErrorMessages(value: ValidationResult[] | undefined) {
   if (!value) return undefined
-  return value?.map(result => result.message ?? `Validation failed: ${result.settings.key}`)
-    .join('; ')
+  return value?.map(getDefaultErrorMessage).join(' ')
 }
 
 /**
