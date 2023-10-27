@@ -1,6 +1,7 @@
 import {namedObserver, SchemaType, useComponentData, useStore, ValidatorType} from '@react-form-builder/core'
 import {useTranslation} from 'react-i18next'
 import {Button, Dropdown} from 'rsuite'
+import type {DropdownProps} from 'rsuite/esm/Dropdown/Dropdown'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 
 const RulesList = namedObserver('RulesList', ({type}: { type: SchemaType }) => {
@@ -49,15 +50,14 @@ export const AddRuleButton = namedObserver('AddRuleButton', () => {
   const type = meta?.valuedAn?.type
   if (!type) return null
 
+  const renderToggle: DropdownProps['renderToggle'] = (props, ref) => (
+    <Button {...props} ref={ref} block>
+      {t('validation.addRule')}
+    </Button>
+  )
+
   return (
-    <Dropdown
-      style={{display: 'flex', marginTop: 10}}
-      renderToggle={(props: any, ref: any) => (
-        <Button {...props} ref={ref} block>
-          <h6> {t('validation.addRule')} </h6>
-        </Button>
-      )}
-    >
+    <Dropdown renderToggle={renderToggle}>
       <RulesList type={type}/>
     </Dropdown>
   )

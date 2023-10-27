@@ -29,6 +29,7 @@ const ErrorMessageStyle = css`
   &:before {
     content: "❌ ";
     font-size: 10px;
+    padding: 6px;    
   }
 
   @media (prefers-color-scheme: dark) {

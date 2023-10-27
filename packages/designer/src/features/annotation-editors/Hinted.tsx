@@ -3,6 +3,7 @@ import type {IconProps} from '@rsuite/icons/lib/Icon'
 import type {ReactElement, ReactNode} from 'react'
 import type {WhisperProps} from 'rsuite'
 import {IconButton, Tooltip, Whisper} from 'rsuite'
+import type {TypeAttributes} from 'rsuite/esm/@types/common'
 import {useTooltipPlacement} from '../../utils/TooltipPlacementContext'
 
 /**
@@ -93,17 +94,22 @@ export interface HintedIconButtonProps {
    * The button icon.
    */
   icon: ReactElement<IconProps>
+  /**
+   * The tooltip placement.
+   */
+  hintPlacement: TypeAttributes.Placement
 }
 
 /**
  * The React form builder component that displays hinted icon button.
  * @param props the React component properties.
  * @param props.hint the tooltip text.
+ * @param props.hintPlacement the tooltip placement.
  * @returns the React element.
  * @internal
  */
-export const HintedIconButton = ({hint, ...props}: HintedIconButtonProps) => {
-  return <Hinted hint={hint} placement={'bottom'}>
+export const HintedIconButton = ({hint, hintPlacement, ...props}: HintedIconButtonProps) => {
+  return <Hinted hint={hint} placement={hintPlacement ?? 'bottom'}>
     <IconButton {...props} size="xs"/>
   </Hinted>
 }

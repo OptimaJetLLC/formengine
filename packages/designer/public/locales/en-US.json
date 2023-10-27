@@ -169,6 +169,10 @@
     "groupBy": {
       "name": "Group by",
       "hint": "Set grouping criteria 'key' in 'data'"
+    },
+    "code": {
+      "name": "Code",
+      "hint": "Edit code"
     }
   },
   "leftMenu": {
@@ -305,11 +309,8 @@
   "validation": {
     "showFormErrors": "Show form errors",
     "formErrors": "Form errors",
-    "validationRules": "Validation rules",
-    "removeRule": "Remove rule",
     "chooseValidation": "Choose your type",
-    "addRule": "Add rule",
-    "editCode": "Edit rule code",
+    "addRule": "Add a validation rule",
     "editCustomValidationCode": "Edit custom validation code for component",
     "rule": {
       "required": "Required",

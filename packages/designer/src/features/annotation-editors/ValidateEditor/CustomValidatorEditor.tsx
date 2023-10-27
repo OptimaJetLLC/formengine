@@ -1,23 +1,24 @@
 import {namedObserver} from '@react-form-builder/core'
-import {useTranslation} from 'react-i18next'
-import {Button, Input} from 'rsuite'
+import {Input} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
+import LabeledProperty from '../../components/LabeledProperty'
 import type {AnnotationEditorProps} from '../AnnotationEditorProps'
 
 export const CustomValidatorEditor = namedObserver('CustomValidatorEditor', (props: AnnotationEditorProps) => {
-  const {t} = useTranslation()
+  const {annotation, componentData, value, onChange} = props
   const builderStore = useBuilderStore()
-  const componentKey = `${props.componentData.key}[${props.annotation.key}][${props.annotation.type}]`
-  const functionSignature = `/**
- * @param {${props.annotation.type}} value the validated value.
+  const componentKey = `${componentData.key}[${annotation.key}][${annotation.type}]`
+  const handleEdit = () => builderStore.editCustomValidationCode(componentKey, value, getFunctionSignature(annotation.type), onChange)
+
+  return (
+    <LabeledProperty {...props}>
+      <Input name={annotation.key} value={value ?? ''} onClick={handleEdit} size={'xs'}/>
+    </LabeledProperty>
+  )
+})
+
+const getFunctionSignature = (type?: string) => `/**
+ * @param {${type}} value the validated value.
  * @return {boolean} the validation result.
  */
 async (value) => {`
-
-  const handleEdit = () => builderStore.editCustomValidationCode(componentKey, props.value, functionSignature, props.onChange)
-
-  return <>
-    <Input value={props.value ?? ''} readOnly disabled/>
-    <Button block style={{marginTop: 6}} onClick={handleEdit}>{t('validation.editCode')}</Button>
-  </>
-})

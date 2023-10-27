@@ -25,10 +25,15 @@ export const Columns = styled.div<{
    * Flag, if true the columns will be stretched in width, false otherwise.
    */
   stretchElements?: boolean
+  /**
+   * Flag, if true the columns justify space between, false otherwise.
+   */
+  spaceBetween?: boolean
 }>`
   display: flex;
   gap: ${({gap}) => gap ?? DEFAULT_GAP}px;
   ${({stretchElements}) => stretchElements && '& > * { flex: 1; }'};
+  ${({spaceBetween}) => spaceBetween && 'justify-content: space-between'};
 `
 
 export const LabeledInput = styled.div`

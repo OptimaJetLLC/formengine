@@ -1,5 +1,6 @@
-import {boolean, namedObserver} from '@react-form-builder/core'
-import {t} from 'i18next'
+import styled from '@emotion/styled'
+import {boolean, namedObserver, ValidationRuleSettings} from '@react-form-builder/core'
+import {List, ListItem, Rows} from '../../components/Containers'
 import {PropertyEditorWrapper} from '../../components/PropertyEditorWrapper'
 import {AnnotationEditorProps} from '../AnnotationEditorProps'
 import {AddRuleButton} from './components/AddRuleButton'
@@ -23,18 +24,28 @@ export const ComponentValidationSettingsEditor = namedObserver('ComponentValidat
   if (!type) return null
 
   return (
-    <div>
-      <h5>{t('validation.validationRules')}</h5>
-      <PropertyEditorWrapper annotation={autoValidate} context={schema}/>
-      {
-        schema.validations?.map((rule, index) => {
-          const key = `${rule.key}-${rule.type ?? 'internal'}`
-          return <ValidationRuleEditor key={key} rule={rule} onRemove={() => {
-            schema?.validations?.splice(index, 1)
-          }}/>
-        })
-      }
+    <Rows>
+      <SWrapper>
+        <PropertyEditorWrapper annotation={autoValidate} context={schema}/>
+      </SWrapper>
       <AddRuleButton/>
-    </div>
+      <List>{renderRules(schema.validations)}</List>
+    </Rows>
   )
 })
+
+const renderRules = (validations?: ValidationRuleSettings[]) => (
+  validations?.map((rule, index) => {
+    const key = `${rule.key}-${rule.type ?? 'internal'}`
+    const handleRemove = () => validations?.splice(index, 1)
+    return <ListItem key={key}>
+      <ValidationRuleEditor rule={rule} onRemove={handleRemove}/>
+    </ListItem>
+  })
+)
+
+const SWrapper = styled.div`
+  label {
+    min-width: max-content;
+  }
+`

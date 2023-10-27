@@ -1,6 +1,4 @@
 import styled from '@emotion/styled'
-import {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt.js'
 import {
   getValidatorPropertyBlockType,
   namedObserver,
@@ -11,8 +9,8 @@ import {
 } from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {useTranslation} from 'react-i18next'
-import {IconButton, Tooltip, Whisper} from 'rsuite'
-import {FaIcon} from '../../../components/Icons'
+import {RemoveButton} from '../../../components/Buttons'
+import {Columns, Rows} from '../../../components/Containers'
 import {PropertyBlock} from '../../../ui/RightPanel/PropertiesEditor/components/Properties'
 import {convertValidationRuleParametersToAnnotations} from '../../../validation/utils/parameterConverter'
 
@@ -59,18 +57,17 @@ export const ValidationRuleEditor = namedObserver('ValidationRuleEditor', ({rule
   const annotations = convertValidationRuleParametersToAnnotations(ruleDefinition.params ?? [])
 
   return (
-    <div>
-      <SRuleName>{t(`validation.rule.${rule.key}`, rule.key)}</SRuleName>
-      <Whisper speaker={<Tooltip>{t('validation.removeRule')}</Tooltip>} placement={'bottom'}>
-        <IconButton onClick={onRemove} icon={<FaIcon icon={faTrash as unknown as IconDefinition}/>}/>
-      </Whisper>
+    <Rows>
+      <Columns spaceBetween>
+        <SRuleName>{t(`validation.rule.${rule.key}`, rule.key)}</SRuleName>
+        <RemoveButton onClick={onRemove} hintPlacement={'autoHorizontal'}/>
+      </Columns>
       <PropertyBlock annotations={annotations} propertyBlockType={getValidatorPropertyBlockType(rule.key)} context={rule.args ?? {}}
                      initContext={initValidatorArgs}/>
-    </div>
+    </Rows>
   )
 })
 
 const SRuleName = styled.span`
   font-size: medium;
-  font-weight: bold;
 `
