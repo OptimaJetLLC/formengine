@@ -1,5 +1,6 @@
 import {namedObserver} from '@react-form-builder/core'
-import {Input} from 'rsuite'
+import {useTranslation} from 'react-i18next'
+import {Button} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import LabeledProperty from '../../components/LabeledProperty'
 import type {AnnotationEditorProps} from '../AnnotationEditorProps'
@@ -9,10 +10,14 @@ export const CustomValidatorEditor = namedObserver('CustomValidatorEditor', (pro
   const builderStore = useBuilderStore()
   const componentKey = `${componentData.key}[${annotation.key}][${annotation.type}]`
   const handleEdit = () => builderStore.editCustomValidationCode(componentKey, value, getFunctionSignature(annotation.type), onChange)
+  const {t} = useTranslation()
+  const label = t(`annotation.${annotation.key}.hint`)
 
   return (
     <LabeledProperty {...props}>
-      <Input name={annotation.key} value={value ?? ''} onClick={handleEdit} size={'xs'}/>
+      <Button name={annotation.key} onClick={handleEdit} size={'xs'} appearance={'ghost'} block style={{borderStyle: 'dashed'}}>
+        {label}
+      </Button>
     </LabeledProperty>
   )
 })
