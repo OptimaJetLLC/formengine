@@ -135,7 +135,7 @@ export class Store implements IStore, IFormViewer {
       case 'code':
         action = this.form.actions[name]
         break
-      case 'external':
+      case 'custom':
         action = this.formViewerPropsStore.actions?.[name]
         break
     }

@@ -193,7 +193,7 @@ const emptyForm = `
             },
             {
               "name": "logEventArgs",
-              "type": "external"
+              "type": "custom"
             }
           ]
         }

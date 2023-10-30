@@ -138,7 +138,7 @@
             },
             {
               "name": "assertArgs",
-              "type": "external",
+              "type": "custom",
               "args": {
                 "p1": "testValue",
                 "p2": true,
@@ -191,7 +191,7 @@
             "onChange": [
               {
                 "name": "logEventArgs",
-                "type": "external"
+                "type": "custom"
               }
             ]
           }

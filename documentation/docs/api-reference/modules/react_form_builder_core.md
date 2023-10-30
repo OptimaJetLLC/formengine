@@ -152,7 +152,7 @@ ___
 
 ### ActionType
 
-Ƭ **ActionType**: ``"common"`` \| ``"code"`` \| ``"external"``
+Ƭ **ActionType**: ``"common"`` \| ``"code"`` \| ``"custom"``
 
 Action type.
 

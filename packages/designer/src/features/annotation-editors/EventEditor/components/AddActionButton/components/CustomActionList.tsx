@@ -17,11 +17,11 @@ export const CustomActionList = ({onSelect}: ActionsMenuProps) => {
   if (!actions) return null
 
   const items = Object.keys(actions).map(name =>
-    <Dropdown.Item key={name} children={name} onClick={() => onSelect({name, type: 'external'})}/>
+    <Dropdown.Item key={name} children={name} onClick={() => onSelect({name, type: 'custom'})}/>
   )
 
   return (
-    <Dropdown.Menu title={t('external')}>
+    <Dropdown.Menu title={t('custom')}>
       {items}
     </Dropdown.Menu>
   )
