@@ -1,6 +1,11 @@
-import {loadResource} from '@react-form-builder/core'
+import {BiDi, loadResource, unloadResource} from '@react-form-builder/core'
 
 const cssFiles = import.meta.glob('../public/css/*', {as: 'url'})
+
+const resourceIds: Record<BiDi, string> = {
+  [BiDi.LTR]: 'rsuite-ltr-css',
+  [BiDi.RTL]: 'rsuite-rtl-css'
+}
 
 /**
  * Loads the Left-To-Right (LTR) CSS for the "rsuite" library.
@@ -8,7 +13,8 @@ const cssFiles = import.meta.glob('../public/css/*', {as: 'url'})
  */
 export const ltrCssLoader = async () => {
   const href = await cssFiles['../public/css/rsuite.min.css']()
-  await loadResource('rsuite-ltr-css', href, 'stylesheet')
+  await loadResource(resourceIds[BiDi.LTR], href, 'stylesheet')
+  unloadResource(resourceIds[BiDi.RTL])
 }
 
 /**
@@ -17,5 +23,6 @@ export const ltrCssLoader = async () => {
  */
 export const rtlCssLoader = async () => {
   const href = await cssFiles['../public/css/rsuite-rtl.min.css']()
-  await loadResource('rsuite-rtl-css', href, 'stylesheet')
+  await loadResource(resourceIds[BiDi.RTL], href, 'stylesheet')
+  unloadResource(resourceIds[BiDi.LTR])
 }

@@ -1,6 +1,6 @@
 import {CacheProvider} from '@emotion/react'
-import {BiDi, emotionCache, namedObserver} from '@react-form-builder/core'
-import {ReactNode} from 'react'
+import {BiDi, emotionCache, loadResource, namedObserver, unloadResource} from '@react-form-builder/core'
+import {ReactNode, useEffect} from 'react'
 import {CustomProvider} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {defaultComponentsLocale} from '../languageUtils'
@@ -11,7 +11,10 @@ interface LocalizationProps {
 
 export const LocalizationProvider = namedObserver('LocalizationProvider', (props: LocalizationProps) => {
   const builderStore = useBuilderStore()
-  loadCssFile(builderStore.formBuilderLanguage.bidi).catch(e => console.error(e))
+  const {bidi} = builderStore.formBuilderLanguage
+  useEffect(() => {
+    loadCssFile(bidi).catch(console.error)
+  }, [bidi])
 
   const componentsLocale = builderStore.componentsLocale ?? defaultComponentsLocale
   const selectedCache = builderStore.isRTL ? emotionCache.RTL : emotionCache.LTR
@@ -25,9 +28,6 @@ export const LocalizationProvider = namedObserver('LocalizationProvider', (props
   )
 })
 
-let currentCssEl: any = null
-let currentBiDi: BiDi | undefined = undefined
-
 const cssFiles = import.meta.glob('../../../../public/css/*', {as: 'url'})
 
 const cssUrls = {
@@ -36,18 +36,8 @@ const cssUrls = {
 }
 
 const loadCssFile = async (biDi: BiDi) => {
-  if (currentBiDi === biDi) return
-
-  const link = document.createElement('link')
-  link.id = `rsuite-${biDi}`
-  link.rel = 'stylesheet'
-  link.href = await cssUrls[biDi]()
-  document.head.appendChild(link)
-  link.onload = () => {
-    currentBiDi = biDi
-    if (currentCssEl) {
-      currentCssEl.parentNode.removeChild(currentCssEl)
-    }
-    currentCssEl = link
-  }
+  const href = await cssUrls[biDi]()
+  await loadResource(`rsuite-${biDi}-css`, href, 'stylesheet')
+  const previousBidi = biDi === BiDi.LTR ? BiDi.RTL : BiDi.LTR
+  unloadResource(`rsuite-${previousBidi}-css`)
 }
