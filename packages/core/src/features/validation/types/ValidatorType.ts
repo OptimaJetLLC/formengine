@@ -1,4 +1,4 @@
 /**
  * The type of validator.
  */
-export type ValidatorType = 'internal' | 'external'
+export type ValidatorType = 'internal' | 'custom'

@@ -59,7 +59,7 @@ export const ZodStringRules: ValidationRuleSet = {
     .withParameter('value', 'string', true)
     .withValidatorFactory(({message, value}) => zodAnyToValidator(scheme.endsWith(value, message))),
 
-  custom: ruleBuilder()
+  code: ruleBuilder()
     .withParameter('code', 'string', true, undefined, 'code')
     .withValidatorFactory(({code, message}) => {
       const checker = AsyncFunction('value', code) as (value: string) => Promise<boolean>

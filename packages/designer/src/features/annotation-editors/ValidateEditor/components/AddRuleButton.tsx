@@ -29,10 +29,10 @@ const RulesList = namedObserver('RulesList', ({type}: { type: SchemaType }) => {
   const items = Object.entries(validationRules.internal)
     .filter(([key]) => isNotApplied(key, 'internal'))
     .map(([key]) => toDropdownItem(key, 'internal', t(`validation.rule.${key}`)))
-  if (validationRules.external) {
-    const customItems = Object.entries(validationRules.external)
-      .filter(([key]) => isNotApplied(key, 'external'))
-      .map(([key]) => toDropdownItem(key, 'external', t(`validation.rule.${key}`, key)))
+  if (validationRules.custom) {
+    const customItems = Object.entries(validationRules.custom)
+      .filter(([key]) => isNotApplied(key, 'custom'))
+      .map(([key]) => toDropdownItem(key, 'custom', t(`validation.rule.${key}`, key)))
     if (customItems.length) {
       items.push(<Dropdown.Separator key={'separator'}/>)
       items.push(...customItems)

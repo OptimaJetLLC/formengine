@@ -327,6 +327,7 @@
       "includes": "Includes",
       "startsWith": "Starts with",
       "endsWith": "Ends with",
+      "code": "Code",
       "custom": "Custom",
       "truthy": "Truthy",
       "falsy": "Falsy",

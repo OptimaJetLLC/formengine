@@ -263,7 +263,7 @@ export class Store implements IStore, IFormViewer {
    */
   getValidationRules(type: SchemaType): FormViewerValidationRules {
     return {
-      external: this.formViewerPropsStore.validators?.[type],
+      custom: this.formViewerPropsStore.validators?.[type],
       internal: ZodValidationRules[type]
     }
   }

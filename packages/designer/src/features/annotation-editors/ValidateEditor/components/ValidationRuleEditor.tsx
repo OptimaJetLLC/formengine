@@ -40,7 +40,7 @@ export const ValidationRuleEditor = namedObserver('ValidationRuleEditor', ({rule
   const getValidationRule = (type: SchemaType, ruleKey: string) => {
     const rulesByType = viewerStore.getValidationRules(type)
     if (!rule.type || rule.type === 'internal') return rulesByType.internal[ruleKey]
-    if (rule.type === 'external') return rulesByType.external?.[ruleKey]
+    if (rule.type === 'custom') return rulesByType.custom?.[ruleKey]
   }
 
   const ruleDefinition = getValidationRule(type, rule.key)

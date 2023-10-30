@@ -356,6 +356,7 @@
     "formErrors": "表单错误",
     "removeRule": "删除规则",
     "rule": {
+      "code": "代码",
       "custom": "海关规定",
       "datetime": "日期时间",
       "email": "电邮",

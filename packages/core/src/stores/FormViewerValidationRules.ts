@@ -8,7 +8,7 @@ export type FormViewerValidationRules = {
   /**
    * The set of custom validators.
    */
-  external?: CustomValidationRules
+  custom?: CustomValidationRules
   /**
    * The set of internal validators.
    */

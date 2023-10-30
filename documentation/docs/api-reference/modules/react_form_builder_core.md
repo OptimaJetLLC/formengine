@@ -600,7 +600,7 @@ Validation rules for FormViewer.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `external?` | [`CustomValidationRules`](react_form_builder_core.md#customvalidationrules) | The set of custom validators. |
+| `custom?` | [`CustomValidationRules`](react_form_builder_core.md#customvalidationrules) | The set of custom validators. |
 | `internal` | [`ValidationRuleSet`](react_form_builder_core.md#validationruleset) | The set of internal validators. |
 
 ___
@@ -1087,7 +1087,7 @@ ___
 
 ### ValidatorType
 
-Ƭ **ValidatorType**: ``"internal"`` \| ``"external"``
+Ƭ **ValidatorType**: ``"internal"`` \| ``"custom"``
 
 The type of validator.
 

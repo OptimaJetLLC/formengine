@@ -356,6 +356,7 @@
     "formErrors": "Errori di modulo",
     "removeRule": "Rimuovi regola",
     "rule": {
+      "code": "Codice",
       "custom": "Personalizzato",
       "datetime": "Data e ora",
       "email": "Email",

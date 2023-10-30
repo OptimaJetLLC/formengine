@@ -356,6 +356,7 @@
     "formErrors": "Errores de formulario",
     "removeRule": "Eliminar regla",
     "rule": {
+      "code": "Código",
       "custom": "Personalizado",
       "datetime": "Fecha y Hora",
       "email": "Correo Electrónico",

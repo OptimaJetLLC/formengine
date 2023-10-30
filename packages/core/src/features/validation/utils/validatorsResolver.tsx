@@ -67,8 +67,8 @@ function parse(validationRules: FormViewerValidationRules, schema?: BoundValueSc
       const validator = definition.validatorFactory(rule.args ?? {})
       return {settings: rule, validator, params: definition.params}
     }
-    if (rule.type === 'external') {
-      const definition = validationRules.external?.[rule.key]
+    if (rule.type === 'custom') {
+      const definition = validationRules.custom?.[rule.key]
       if (definition) return {settings: rule, validator: definition.validate, params: definition.params}
     }
     console.warn(`Cannot find rule, key: '${rule.key}', type: '${rule.type}'`)
@@ -79,9 +79,9 @@ function parse(validationRules: FormViewerValidationRules, schema?: BoundValueSc
 }
 
 //The 'required' rule must be implemented first, because it is a root for next
-//The 'custom' rule (used refine under the hood) must be implemented last
+//The 'code' rule (used refine under the hood) must be implemented last
 function byPriority(_: ValidationRuleSettings, b: ValidationRuleSettings) {
-  if (b.key === 'custom') return -1
+  if (b.key === 'code') return -1
   if (b.key === 'required') return 1
   return 0
 }
