@@ -21,25 +21,25 @@ export const CodeActionsList = namedObserver('CodeActionsList', ({onSelect, anno
   const addAction = () => {
     onSelect()
     if (!selectedStore) return
-    builderStore.addCustomAction(namedAction => {
-      ComponentStore.addEventHandler(selectedStore, eventName, {name: namedAction.name, type: 'custom'})
+    builderStore.addCodeAction(namedAction => {
+      ComponentStore.addEventHandler(selectedStore, eventName, {name: namedAction.name, type: 'code'})
     })
   }
 
   const renderAction = (name: string) => (
-    <Dropdown.Item key={name} onClick={() => onSelect({name, type: 'custom'})}
+    <Dropdown.Item key={name} onClick={() => onSelect({name, type: 'code'})}
                    style={{position: 'relative', display: 'flex', justifyContent: 'space-between'}}>
       <span style={{whiteSpace: 'break-spaces'}}>{name}</span>
     </Dropdown.Item>
   )
 
-  return <Dropdown.Menu title={t('custom')}>
+  return <Dropdown.Menu title={t('code')}>
     {actionNames?.map(renderAction)}
 
     {!!actionNames?.length && <Dropdown.Item disabled>
       <Divider style={{marginTop: 0, marginBottom: 0}}/>
     </Dropdown.Item>}
 
-    <Dropdown.Item children={t('addCustomAction')} icon={<PlusIcon/>} onClick={addAction}/>
+    <Dropdown.Item children={t('addCodeAction')} icon={<PlusIcon/>} onClick={addAction}/>
   </Dropdown.Menu>
 })

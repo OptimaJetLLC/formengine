@@ -94,7 +94,7 @@ Let's take a look at what a JSON form is, below is an example:
             },
             {
               "name": "logValue",
-              "type": "custom"
+              "type": "code"
             }
           ]
         },
@@ -224,7 +224,7 @@ component tree.
             },
             {
               "name": "logValue",
-              "type": "custom"
+              "type": "code"
             }
           ]
         },

@@ -132,7 +132,7 @@ export class Store implements IStore, IFormViewer {
       case 'common':
         action = this.commonActions[name]
         break
-      case 'custom':
+      case 'code':
         action = this.form.actions[name]
         break
       case 'external':

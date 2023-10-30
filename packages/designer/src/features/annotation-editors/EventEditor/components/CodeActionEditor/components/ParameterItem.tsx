@@ -57,9 +57,9 @@ export const ParameterItem = ({value, onRemove, onChange, parameters}: Parameter
 
   const model = Schema.Model({
     name: Schema.Types.StringType()
-      .isRequired(t('customActionEditor.parameterNameIsRequired'))
-      .addRule(isValid, t('customActionEditor.parameterNameExists'))
-      .addRule(isValidParamName, t('customActionEditor.parameterNameIsNotValid'))
+      .isRequired(t('codeActionEditor.parameterNameIsRequired'))
+      .addRule(isValid, t('codeActionEditor.parameterNameExists'))
+      .addRule(isValidParamName, t('codeActionEditor.parameterNameIsNotValid'))
   })
 
   return <div>

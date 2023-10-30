@@ -15,7 +15,7 @@ export const ActionList = namedObserver('ActionList', () => {
     return <ListItem key={name}>
       <span>{name}</span>
       <ButtonGroup>
-        <EditButton onClick={() => builderStore.editCustomAction(namedAction)}/>
+        <EditButton onClick={() => builderStore.editCodeAction(namedAction)}/>
         <CloneButton onClick={() => viewerStore.form.cloneAction(namedAction)}/>
         <RemoveButton onClick={() => viewerStore.form.removeAction(name)}/>
       </ButtonGroup>
@@ -23,7 +23,7 @@ export const ActionList = namedObserver('ActionList', () => {
   })
 
   return <Rows>
-    <Button block onClick={() => builderStore.addCustomAction()}>{t('actions.addCustomAction')}</Button>
+    <Button block onClick={() => builderStore.addCodeAction()}>{t('actions.addCodeAction')}</Button>
     <List>
       {items}
     </List>

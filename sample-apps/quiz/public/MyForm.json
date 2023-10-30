@@ -62,7 +62,7 @@
               "onLoadData": [
                 {
                   "name": "loadData",
-                  "type": "custom"
+                  "type": "code"
                 }
               ]
             }
@@ -103,7 +103,7 @@
           "onDidMount": [
             {
               "name": "WeatherRequest",
-              "type": "custom"
+              "type": "code"
             }
           ]
         }

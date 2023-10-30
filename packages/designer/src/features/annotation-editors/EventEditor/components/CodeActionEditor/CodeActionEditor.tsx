@@ -18,9 +18,9 @@ import type {Parameter} from '../ActionList/ActionItem/components/ArgumentList/A
 import {ParameterList} from './components/ParameterList'
 
 /**
- * Represents data for the custom action editor.
+ * Represents data for the code action editor.
  */
-export type CustomActionEditorData = {
+export type CodeActionEditorData = {
   /**
    * The action name.
    */
@@ -35,7 +35,7 @@ export type CustomActionEditorData = {
   params?: ActionParameters
 }
 
-type FormModel = CustomActionEditorData & { actionParameters?: Parameter[] }
+type FormModel = CodeActionEditorData & { actionParameters?: Parameter[] }
 
 const paramsToArray = (params?: ActionParameters): Parameter[] | undefined => {
   if (!params) return
@@ -50,13 +50,13 @@ const paramsFromArray = (params?: Parameter[]): ActionParameters | undefined => 
 }
 
 /**
- * The properties of the CustomActionEditor component.
+ * The properties of the CodeActionEditor component.
  */
-export interface CustomActionEditorProps {
+export interface CodeActionEditorProps {
   /**
    * The data for the custom action editor.
    */
-  customAction: CustomActionEditorData
+  codeAction: CodeActionEditorData
   /**
    * The callback function called when a custom action is saved.
    * @param namedAction the named action definition.
@@ -67,18 +67,18 @@ export interface CustomActionEditorProps {
 /**
  * React form builder component that displays a custom action code editor.
  * @param props the EditableAction data
- * @param props.customAction the custom action.
+ * @param props.codeAction the code action.
  * @param props.onSave the callback function called when data should be saved.
  * @returns the React element.
  */
-export const CustomActionEditor = ({customAction, onSave}: CustomActionEditorProps) => {
+export const CodeActionEditor = ({codeAction, onSave}: CodeActionEditorProps) => {
   const {t} = useTranslation()
   const store = useStore()
   const builderStore = useBuilderStore()
-  const initialFormModel: FormModel = {...customAction, actionParameters: paramsToArray(customAction.params)}
+  const initialFormModel: FormModel = {...codeAction, actionParameters: paramsToArray(codeAction.params)}
 
   const [formState, setFormState] = useState<FormModel>(initialFormModel)
-  const [initialBody, setInitialBody] = useState(customAction.body)
+  const [initialBody, setInitialBody] = useState(codeAction.body)
 
   const formRef = useRef<FormInstance>(null)
 
@@ -88,14 +88,14 @@ export const CustomActionEditor = ({customAction, onSave}: CustomActionEditorPro
     setFormState(initialFormModel)
     setInitialBody(initialFormModel.body)
     formRef.current?.cleanErrors()
-  }, [customAction])
+  }, [codeAction])
 
   const model = Schema.Model({
     name: Schema.Types.StringType()
-      .isRequired(t('customActionEditor.nameIsRequired'))
+      .isRequired(t('codeActionEditor.nameIsRequired'))
       .addRule(name => {
-        return customAction.name === formState.name || !store.form.actions[name]
-      }, t('customActionEditor.actionNameExists'))
+        return codeAction.name === formState.name || !store.form.actions[name]
+      }, t('codeActionEditor.actionNameExists'))
   })
 
   const updateFormState = (delta: Partial<FormModel>) => {
@@ -118,7 +118,7 @@ export const CustomActionEditor = ({customAction, onSave}: CustomActionEditorPro
 
   return <>
     <Header>
-      {t('bottomPanel.editCustomAction')}
+      {t('bottomPanel.editCodeAction')}
     </Header>
     <Container>
       <Rows gap={10}>

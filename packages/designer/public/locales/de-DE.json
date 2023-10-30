@@ -2,8 +2,9 @@
   "actions": {
     "add": "Hinzufügen",
     "addAction": "Aktion hinzufügen",
-    "addCustomAction": "Benutzerdefinierte Aktion hinzufügen",
+    "addCodeAction": "Fügen Sie eine Codeaktion hinzu",
     "arguments": "Argument",
+    "code": "Code",
     "common": "Gemeinsam",
     "custom": "Benutzerdefinierte",
     "delete": "Löschen",
@@ -177,7 +178,7 @@
   },
   "bottomPanel": {
     "calculable": "Kalkulierbarer Wert",
-    "editCustomAction": "Benutzerdefinierte Aktion bearbeiten",
+    "editCodeAction": "Codeaktion bearbeiten",
     "editProperty": "Eigenschaft bearbeiten",
     "localization": "Fließende Lokalisierung",
     "use": "Verwenden"
@@ -187,7 +188,7 @@
     "codePlaceholder": "// geben Sie hier Ihren Code ein",
     "compilationResult": "Kompilierungsergebnis:",
     "compile": "Kompilieren",
-    "customActionHeader": "Editor für benutzerdefinierte Aktionen",
+    "codeActionHeader": "Code-Aktionseditor",
     "ok": "Okay",
     "save": "Speichern"
   },
@@ -219,7 +220,7 @@
   "componentsModal": {
     "clickToAdd": "Klicken Sie, um Steuerelement hinzuzufügen"
   },
-  "customActionEditor": {
+  "codeActionEditor": {
     "actionNameExists": "Aktion mit diesem Namen ist bereits vorhanden",
     "nameIsRequired": "Aktionsname ist erforderlich",
     "parameterNameExists": "Parameter mit diesem Namen existiert bereits",

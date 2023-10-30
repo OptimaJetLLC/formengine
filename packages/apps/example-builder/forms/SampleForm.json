@@ -80,7 +80,7 @@
               "onLoadData": [
                 {
                   "name": "loadData",
-                  "type": "custom"
+                  "type": "code"
                 }
               ]
             }
@@ -93,7 +93,7 @@
               "onLoadData": [
                 {
                   "name": "loadData",
-                  "type": "custom"
+                  "type": "code"
                 }
               ]
             }
@@ -134,7 +134,7 @@
           "onDidMount": [
             {
               "name": "WeatherRequest",
-              "type": "custom"
+              "type": "code"
             },
             {
               "name": "assertArgs",
@@ -147,7 +147,7 @@
             },
             {
               "name": "customAssertArgs",
-              "type": "custom",
+              "type": "code",
               "args": {
                 "stringParam": "Ayn Rand",
                 "customBool": false,
@@ -263,7 +263,7 @@
                   "onChange": [
                     {
                       "name": "onFirstNameChange",
-                      "type": "custom"
+                      "type": "code"
                     }
                   ]
                 }

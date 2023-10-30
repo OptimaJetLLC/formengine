@@ -2,8 +2,9 @@
   "actions": {
     "add": "添加",
     "addAction": "添加操作",
-    "addCustomAction": "添加自定义操作",
+    "addCodeAction": "添加代码操作",
     "arguments": "争论",
+    "code": "代码",
     "common": "普通",
     "custom": "海关规定",
     "delete": "删除",
@@ -177,7 +178,7 @@
   },
   "bottomPanel": {
     "calculable": "可计算价值",
-    "editCustomAction": "编辑自定义操作",
+    "editCodeAction": "编辑代码操作",
     "editProperty": "编辑属性",
     "localization": "流利的本地化",
     "use": "使用方法"
@@ -187,7 +188,7 @@
     "codePlaceholder": "//在这里输入你的代码",
     "compilationResult": "编译结果:",
     "compile": "编译",
-    "customActionHeader": "自定义操作编辑器",
+    "codeActionHeader": "代码动作编辑器",
     "ok": "好的",
     "save": "储蓄"
   },
@@ -219,7 +220,7 @@
   "componentsModal": {
     "clickToAdd": "点击添加控件"
   },
-  "customActionEditor": {
+  "codeActionEditor": {
     "actionNameExists": "具有此名称的操作已存在",
     "nameIsRequired": "需要操作名称",
     "parameterNameExists": "具有此名称的参数已存在",

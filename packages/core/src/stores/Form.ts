@@ -99,7 +99,7 @@ export class Form {
    */
   removeAction(name: string) {
     delete this.actions[name]
-    this.removeCustomActionBinding(name, this.componentTree.store)
+    this.removeCodeActionBinding(name, this.componentTree.store)
   }
 
   /**
@@ -143,7 +143,7 @@ export class Form {
     if (events) {
       Object.keys(events).forEach(value => {
         const bindings = events[value]
-        bindings?.filter(item => item.type === 'custom' && item.name === oldActionName)
+        bindings?.filter(item => item.type === 'code' && item.name === oldActionName)
           .forEach(item => this.rebindActionData(item, newAction))
       })
     }
@@ -152,16 +152,16 @@ export class Form {
     })
   }
 
-  private removeCustomActionBinding(actionName: string, componentStore: ComponentStore) {
+  private removeCodeActionBinding(actionName: string, componentStore: ComponentStore) {
     const events = componentStore.events
     if (events) {
       Object.keys(events).forEach(value => {
         const bindings = events[value]
         if (!bindings.length) return
-        events[value] = bindings.filter(item => !(item.type === 'custom' && item.name === actionName))
+        events[value] = bindings.filter(item => !(item.type === 'code' && item.name === actionName))
       })
     }
-    componentStore.children?.forEach(item => this.removeCustomActionBinding(actionName, item))
+    componentStore.children?.forEach(item => this.removeCodeActionBinding(actionName, item))
   }
 
   private onComponentDataBeforeDelete(component: ComponentData) {

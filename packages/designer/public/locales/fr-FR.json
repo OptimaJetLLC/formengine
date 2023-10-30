@@ -2,8 +2,9 @@
   "actions": {
     "add": "Ajouter",
     "addAction": "Ajouter une action",
-    "addCustomAction": "Ajouter une action personnalisée",
+    "addCodeAction": "Ajouter une action de code",
     "arguments": "Arguments",
+    "code": "Code",
     "common": "Commun",
     "custom": "Personnalisé",
     "delete": "Supprimer",
@@ -177,7 +178,7 @@
   },
   "bottomPanel": {
     "calculable": "Valeur calculable",
-    "editCustomAction": "Modifier une action personnalisée",
+    "editCodeAction": "Action de modification du code",
     "editProperty": "Modifier la propriété",
     "localization": "Localisation fluide",
     "use": "Utilisation"
@@ -187,7 +188,7 @@
     "codePlaceholder": "// entrez votre code ici",
     "compilationResult": "Résultat de la compilation:",
     "compile": "Compiler",
-    "customActionHeader": "Éditeur d'action personnalisé",
+    "codeActionHeader": "Éditeur d'actions de code",
     "ok": "D'ACCORD",
     "save": "Sauvegarder"
   },
@@ -219,7 +220,7 @@
   "componentsModal": {
     "clickToAdd": "Cliquez pour ajouter un contrôle"
   },
-  "customActionEditor": {
+  "codeActionEditor": {
     "actionNameExists": "L'action avec ce nom existe déjà",
     "nameIsRequired": "Le nom de l'action est requis",
     "parameterNameExists": "Le paramètre avec ce nom existe déjà",

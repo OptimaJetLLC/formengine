@@ -2,8 +2,9 @@
   "actions": {
     "add": "إضافة",
     "addAction": "إضافة إجراء",
-    "addCustomAction": "إضافة إجراء مخصص",
+    "addCodeAction": "أضف إجراء التعليمات البرمجية",
     "arguments": "الحجج",
+    "code": "شفرة",
     "common": "مشترك",
     "custom": "مخصص",
     "delete": "يحذف",
@@ -177,7 +178,7 @@
   },
   "bottomPanel": {
     "calculable": "قيمة قابلة للحساب",
-    "editCustomAction": "تحرير الإجراء المخصص",
+    "editCodeAction": "تحرير إجراء التعليمات البرمجية",
     "editProperty": "تحرير الممتلكات",
     "localization": "التعريب بطلاقة",
     "use": "استخدام"
@@ -187,7 +188,7 @@
     "codePlaceholder": "// أدخل الرمز الخاص بك هنا",
     "compilationResult": "نتيجة التجميع:",
     "compile": "ترجمة",
-    "customActionHeader": "محرر الإجراءات المخصصة",
+    "codeActionHeader": "محرر إجراءات التعليمات البرمجية",
     "ok": "حسنا",
     "save": "حفظ"
   },
@@ -219,7 +220,7 @@
   "componentsModal": {
     "clickToAdd": "انقر لإضافة عنصر تحكم"
   },
-  "customActionEditor": {
+  "codeActionEditor": {
     "actionNameExists": "العمل مع هذا الاسم موجود بالفعل",
     "nameIsRequired": "اسم الإجراء مطلوب",
     "parameterNameExists": "المعلمة مع هذا الاسم موجود بالفعل",

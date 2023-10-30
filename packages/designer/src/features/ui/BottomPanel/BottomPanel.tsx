@@ -4,7 +4,7 @@ import type {ResizableProps} from 're-resizable'
 import {Resizable} from 're-resizable'
 import {CustomValidationCode, EditableAction, EditableProperty} from '../../../stores/BuilderStore'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
-import {CustomActionEditor} from '../../annotation-editors/EventEditor/components/CustomActionEditor'
+import {CodeActionEditor} from '../../annotation-editors/EventEditor/components/CodeActionEditor/CodeActionEditor'
 import {ComputedPropertyEditor} from './ComputedPropertyEditor'
 import {CustomValidationCodeEditor} from './CustomValidationCodeEditor'
 
@@ -14,7 +14,7 @@ export const BottomPanel = namedObserver('BottomPanel', () => {
 
   let editor = null
   if (currentEditable instanceof EditableAction) {
-    editor = <CustomActionEditor {...currentEditable}/>
+    editor = <CodeActionEditor {...currentEditable}/>
   }
 
   if (currentEditable instanceof EditableProperty) {

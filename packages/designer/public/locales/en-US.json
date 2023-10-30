@@ -231,7 +231,7 @@
     "inside": "Inside"
   },
   "codeEditor": {
-    "customActionHeader": "Custom action editor",
+    "codeActionHeader": "Code action editor",
     "ok": "OK",
     "compilationResult": "Compilation result:",
     "codePlaceholder": "// enter your code here",
@@ -293,13 +293,14 @@
   },
   "actions": {
     "arguments": "Arguments",
+    "code": "Code",
     "custom": "Custom",
     "common": "Common",
     "external": "External",
     "edit": "Edit",
     "duplicate": "Duplicate",
     "delete": "Delete",
-    "addCustomAction": "Add a custom action",
+    "addCodeAction": "Add a code action",
     "addAction": "Add an action",
     "parameters": "Parameters",
     "add": "Add",
@@ -366,9 +367,9 @@
     "simpleValue": "Simple value",
     "simpleValueHint": "Edit the property in the right panel",
     "editProperty": "Edit property",
-    "editCustomAction": "Edit custom action"
+    "editCodeAction": "Edit code action"
   },
-  "customActionEditor": {
+  "codeActionEditor": {
     "actionNameExists": "Action with this name already exists",
     "nameIsRequired": "Action name is required",
     "parameterNameExists": "Parameter with this name already exists",

@@ -14,7 +14,7 @@ interface ActionItemProps {
 export const ActionItem = namedObserver('ActionItem', ({data, onRemove}: ActionItemProps) => {
   const builderStore = useBuilderStore()
   const viewerStore = useStore()
-  const isCustomAction = data.type === 'custom'
+  const isCodeAction = data.type === 'code'
   const edit = () => {
     const actionDefinition = viewerStore.form.actions[data.name]
     if (!actionDefinition) {
@@ -22,7 +22,7 @@ export const ActionItem = namedObserver('ActionItem', ({data, onRemove}: ActionI
       return
     }
     const namedAction: NamedActionDefinition = {name: data.name, actionDefinition}
-    builderStore.editCustomAction(namedAction)
+    builderStore.editCodeAction(namedAction)
   }
 
   return (
@@ -32,7 +32,7 @@ export const ActionItem = namedObserver('ActionItem', ({data, onRemove}: ActionI
           {`${data.name || 'Action'}`}
         </b>
         <ButtonGroup size={'xs'}>
-          {isCustomAction && <EditButton onClick={edit}/>}
+          {isCodeAction && <EditButton onClick={edit}/>}
           <RemoveButton onClick={onRemove}/>
         </ButtonGroup>
       </Columns>
