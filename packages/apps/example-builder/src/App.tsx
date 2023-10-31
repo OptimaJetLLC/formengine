@@ -48,7 +48,7 @@ const logEvents = false
 
 const indexedDbExists = !!window.indexedDB
 const formStorage = indexedDbExists
-  ? new IndexedDbFormStorage()
+  ? new IndexedDbFormStorage('form-builder-store', 'form-store')
   : undefined
 
 const sampleFormName = 'SampleForm'

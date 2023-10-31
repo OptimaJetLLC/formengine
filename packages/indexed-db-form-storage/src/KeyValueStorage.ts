@@ -1,4 +1,4 @@
-import {createStore, del, get, keys, set, UseStore} from 'idb-keyval'
+import {clear, createStore, del, get, keys, set, UseStore} from 'idb-keyval'
 
 const indexedDbExists = !!window.indexedDB
 
@@ -55,4 +55,14 @@ export const kvKeys = <KeyType extends IDBValidKey>(customStore?: UseStore): Pro
 export const kvSet = (key: IDBValidKey, value: any, customStore?: UseStore): Promise<void> => {
   if (!indexedDbExists) return Promise.reject()
   return set(key, value, customStore)
+}
+
+/**
+ * Clears all values in the store.
+ * @param customStore the store.
+ * @returns the Promise, which can be rejected if operations failed to complete.
+ */
+export const kvClear = (customStore?: UseStore): Promise<void> => {
+  if (!indexedDbExists) return Promise.reject()
+  return clear(customStore)
 }

@@ -1,7 +1,8 @@
-import type {IFormStorage} from '@react-form-builder/designer'
 import {nameObservable} from '@react-form-builder/core'
+import type {IFormStorage} from '@react-form-builder/designer'
+import type {UseStore} from 'idb-keyval'
 import {makeAutoObservable} from 'mobx'
-import {kvCreateStore, kvDel, kvGet, kvKeys, kvSet} from './KeyValueStorage'
+import {kvClear, kvCreateStore, kvDel, kvGet, kvKeys, kvSet} from './KeyValueStorage'
 
 const className = 'IndexedDbFormStorage'
 
@@ -9,12 +10,15 @@ const className = 'IndexedDbFormStorage'
  * Stores forms in IndexedDB.
  */
 export class IndexedDbFormStorage implements IFormStorage {
-  #customStore = kvCreateStore('form-builder-store', 'form-store')
+  #customStore: UseStore
 
   /**
    * Constructor.
+   * @param dbName the database name.
+   * @param storeName the store name.
    */
-  constructor() {
+  constructor(dbName: string, storeName: string) {
+    this.#customStore = kvCreateStore(dbName, storeName)
     makeAutoObservable(this, undefined, {name: nameObservable(className)})
   }
 
@@ -58,6 +62,14 @@ export class IndexedDbFormStorage implements IFormStorage {
    * @inheritDoc
    */
   async saveForm(formName: string, formValue: string): Promise<any> {
-    await kvSet(formName, formValue, this.#customStore)
+    return await kvSet(formName, formValue, this.#customStore)
+  }
+
+  /**
+   * Clears all values in the storage.
+   * @returns the Promise with the result of the work.
+   */
+  async clear() {
+    return await kvClear(this.#customStore)
   }
 }

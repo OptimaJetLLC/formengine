@@ -3,6 +3,7 @@ import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
+import config from './utils/config.json'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
 
 const initialData = {
@@ -25,7 +26,7 @@ const sampleFormName = 'SampleForm'
 
 const indexedDbExists = !!window.indexedDB
 const formStorage = indexedDbExists
-  ? new IndexedDbFormStorage()
+  ? new IndexedDbFormStorage('demo-db', 'demo-store')
   : undefined
 
 async function getForm(name?: string): Promise<string> {
@@ -39,6 +40,24 @@ const getFormFn = (formName?: string) => {
   return indexedDbExists ? getForm(name) : getFormFromJson(name)
 }
 
+const initDatabase = async (dbFormStorage: IndexedDbFormStorage) => {
+  let cleanDatabase = true
+  const accessDateKey = 'accessDate'
+
+  try {
+    const accessDate = localStorage.getItem(accessDateKey)
+    if (accessDate && config.releaseDate === Number(accessDate)) cleanDatabase = false
+  } catch (e) {
+    console.error(e)
+  }
+
+  if (cleanDatabase) {
+    await dbFormStorage.clear()
+    localStorage.setItem(accessDateKey, `${config.releaseDate}`)
+  }
+  return await dbFormStorage.init(initialForms)
+}
+
 const FormBuilderApp = observer(() => {
   const [indexedDbInitialized, setIndexedDbInitialized] = useState(false)
 
@@ -47,7 +66,7 @@ const FormBuilderApp = observer(() => {
       setIndexedDbInitialized(true)
       return
     }
-    formStorage.init(initialForms)
+    initDatabase(formStorage)
       .then(() => setIndexedDbInitialized(true))
       .catch(e => console.error(e))
   }, [])
