@@ -10,6 +10,12 @@ The form designer in Form Builder is represented by the React
 component [FormBuilder](/api-reference/modules/react_form_builder_designer#formbuilder). The `FormBuilder` component is located in the
 package [@react-form-builder/designer](https://www.npmjs.com/package/@react-form-builder/designer).
 
+To install the package in your application, use the command:
+
+```bash
+npm install @react-form-builder/designer
+```
+
 Below is sample code for embedding the `FormBuilder` component into your application:
 
 ```tsx title='App.tsx'
@@ -32,7 +38,15 @@ which is a description of the component [metadata](/api-reference/classes/react_
 
 You can use the pre-built components found in
 the [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite) package to start a form
-designer with a populated set of components:
+designer with a populated set of components.
+
+Run the following command to install the package:
+
+```bash
+npm install @react-form-builder/components-rsuite
+```
+
+Then copy and paste the code below:
 
 ```tsx title='App.tsx'
 import React from 'react'
@@ -61,6 +75,14 @@ This is the minimal React component code with which you can add a form designer 
 Don't let the large code example scare you. This example is large because everything is placed in one file for clarity.
 
 :::
+
+To add dependencies for the example below, install the packages using the following command:
+
+```bash
+npm install @react-form-builder/core @react-form-builder/components-rsuite @react-form-builder/designer
+```
+
+You can simply copy and paste the below code into your project and use the `Designer` component in your application:
 
 ```tsx title='Designer.tsx'
 import {

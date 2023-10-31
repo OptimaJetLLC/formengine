@@ -10,6 +10,12 @@ The [FormViewer](/api-reference/modules/react_form_builder_core#formviewer) comp
 Builder. The [FormBuilder](/api-reference/modules/react_form_builder_designer#formbuilder) uses the `FormViewer` component to display
 the form in the center panel.
 
+To install the package in your application, use the command:
+
+```bash
+npm install @react-form-builder/core
+```
+
 The `FormViewer` component receives as input the properties described in the
 type [FormViewerProps](/api-reference/interfaces/react_form_builder_core.FormViewerProps).
 
@@ -56,9 +62,17 @@ Don't let the large code example scare you. This example is large because everyt
 
 :::
 
+To add dependencies for the example below, install the packages using the following command:
+
+```bash
+npm install @react-form-builder/core @react-form-builder/components-rsuite
+```
+
 The code below passes almost the same properties as the example from the [designer article](/designer#formbuilder-code-example). The
 difference is that you can pass additional properties to the properties of the `FormBuilder` component that are needed only in the form
 design mode.
+
+You can simply copy and paste the below code into your project and use the `Viewer` component in your application:
 
 ```tsx title='Viewer.tsx'
 import {ltrCssLoader, RsLocalizationWrapper, rSuiteComponents, rtlCssLoader} from '@react-form-builder/components-rsuite'

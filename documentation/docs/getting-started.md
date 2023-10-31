@@ -65,6 +65,15 @@ graph TD;
   components --> structure["Structural components"]
 ```
 
+## Example
+
+Clone our [GitHub](https://github.com/optimajet/formengine) repository with the example and follow the instructions to run it. The example
+on GitHub combines all three libraries:
+
+1. [@react-form-builder/core](https://www.npmjs.com/package/@react-form-builder/core).
+2. [@react-form-builder/designer](https://www.npmjs.com/package/@react-form-builder/designer).
+3. [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
 ## Creating a simple form
 
 Open your browser at our demo page - https://demo.formengine.io/.

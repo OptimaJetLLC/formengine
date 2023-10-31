@@ -92,6 +92,25 @@ const config = {
         },
         style: 'dark',
         links: [
+          {
+            title: 'Contacts',
+            items: [
+              {
+                label: 'sales@optimajet.com',
+                to: 'mailto:sales@optimajet.com',
+              },
+            ],
+          },
+          {
+            title: 'More',
+            items: [
+              {
+                label: 'GitHub',
+                to: 'https://github.com/optimajet/formengine',
+                target: '_blank',
+              },
+            ],
+          },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Optimajet Limited. All rights reserved.`,
       },
