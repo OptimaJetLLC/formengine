@@ -32,6 +32,7 @@ export const FormLanguageSettings = namedObserver('FormLanguageSettings', () => 
   const setComputeCode = useCallback(() => undefined, [])
   const getComputeCode = useCallback(() => '', [])
   const getComputeType = useCallback(() => undefined, [])
+  const hasComputeCode = useCallback(() => false, [])
 
   const annotationEditorProps: AnnotationEditorProps = {
     onChange,
@@ -43,6 +44,7 @@ export const FormLanguageSettings = namedObserver('FormLanguageSettings', () => 
     setComputeCode,
     getComputeCode,
     getComputeType,
+    hasComputeCode,
   }
 
   return (

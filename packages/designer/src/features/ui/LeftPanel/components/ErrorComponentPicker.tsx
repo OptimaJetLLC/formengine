@@ -14,6 +14,7 @@ export const ErrorComponentPicker = namedObserver('ErrorComponentPicker', () => 
   const setComputeCode = useCallback(() => undefined, [])
   const getComputeCode = useCallback(() => '', [])
   const getComputeType = useCallback(() => undefined, [])
+  const hasComputeCode = useCallback(() => false, [])
 
   const values = builderStore.view.errors
   const annotation = oneOf(...values)
@@ -34,7 +35,8 @@ export const ErrorComponentPicker = namedObserver('ErrorComponentPicker', () => 
     disableCompute,
     setComputeCode,
     getComputeCode,
-    getComputeType
+    getComputeType,
+    hasComputeCode,
   }
 
   return <Picker {...props}/>

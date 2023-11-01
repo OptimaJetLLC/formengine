@@ -179,6 +179,21 @@ export class LocalizationStore {
   }
 
   /**
+   * Checks that the specified property has localization.
+   * @param componentKey the component we are looking to localize.
+   * @param propertyName the component's property name to be localized.
+   * @param type the type of localization.
+   * @returns true if the specified property has localization in at least one language.
+   */
+  hasLocalization(componentKey: string, propertyName: string, type: LocalizationType) {
+    const key = getFluentCompatibleId(componentKey)
+    const property = getFluentCompatibleId(propertyName)
+    return Object.values(this.value).some(localization => {
+      return localization?.[key]?.[type]?.[property]
+    })
+  }
+
+  /**
    * If the FluentBundle for the specified language is found, this function returns it.
    * Otherwise, an empty FluentBundle is returned.
    * @param languageFullCode the full code (en-US, en-GB etc.) of the language to get fluent bundle.

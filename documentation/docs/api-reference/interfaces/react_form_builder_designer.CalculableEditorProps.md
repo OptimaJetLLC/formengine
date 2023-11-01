@@ -37,19 +37,26 @@ ___
 
 ### getComputeCode
 
-• **getComputeCode**: (`type`: [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype)) => `string`
+• **getComputeCode**: <T\>(`type`: `T`, `params?`: `ComputeTypeParams`<`T`\>) => `string`
 
 #### Type declaration
 
-▸ (`type`): `string`
+▸ <`T`\>(`type`, `params?`): `string`
 
 Returns the code of the computed property.
+
+##### Type parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | extends [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype) | the component property value type. |
 
 ##### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `type` | [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype) | the component property value type. |
+| `type` | `T` | the component property value type. |
+| `params?` | `ComputeTypeParams`<`T`\> | the parameters of the compute code. |
 
 ##### Returns
 
@@ -75,22 +82,53 @@ Returns the type of calculation for the property.
 
 ___
 
-### setComputeCode
+### hasComputeCode
 
-• **setComputeCode**: (`value`: `string`, `type`: [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype)) => `void`
+• **hasComputeCode**: (`type`: [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype)) => `boolean`
 
 #### Type declaration
 
-▸ (`value`, `type`): `void`
+▸ (`type`): `boolean`
+
+Returns true if the property has a compute code for the specified type, false otherwise.
+
+##### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `type` | [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype) | the compute type. |
+
+##### Returns
+
+`boolean`
+
+true if the property has a compute code for the specified type, false otherwise.
+
+___
+
+### setComputeCode
+
+• **setComputeCode**: <T\>(`value`: `string`, `type`: `T`, `params?`: `ComputeTypeParams`<`T`\>) => `void`
+
+#### Type declaration
+
+▸ <`T`\>(`value`, `type`, `params?`): `void`
 
 Sets the computed property code.
+
+##### Type parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | extends [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype) | the component property value type. |
 
 ##### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `value` | `string` | the code of computed property. |
-| `type` | [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype) | the component property value type. |
+| `type` | `T` | the component property value type. |
+| `params?` | `ComputeTypeParams`<`T`\> | the parameters of the compute code. |
 
 ##### Returns
 

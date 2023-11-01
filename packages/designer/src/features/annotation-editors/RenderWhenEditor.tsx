@@ -1,9 +1,8 @@
-import type {ComponentPropertyComputeType} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {Input} from 'rsuite'
 import LabeledProperty, {LabeledPropertyProps} from '../components/LabeledProperty'
-import type {AnnotationEditorProps} from './AnnotationEditorProps'
+import type {AnnotationEditorProps, CalculableEditorProps} from './AnnotationEditorProps'
 
 /**
  * React form builder component to edit the 'Render when' component property.
@@ -22,7 +21,11 @@ export const RenderWhenEditor = namedObserver('RenderWhenEditor', (props: Annota
   }
 
   const getComputeCode = useCallback(() => componentStore.renderWhen?.fnSource ?? '', [componentStore])
-  const getComputeType = useCallback(() => ('function' as ComponentPropertyComputeType), [])
+  const getComputeType = useCallback(() => componentStore.renderWhen?.computeType, [componentStore])
+  const hasComputeCode = useCallback<CalculableEditorProps['hasComputeCode']>(type => {
+    if (type === 'function') return !!getComputeCode()
+    return false
+  }, [getComputeCode])
 
   const setComputeCode = useCallback((code: string) => {
     componentStore.renderWhen ??= {}
@@ -40,7 +43,8 @@ export const RenderWhenEditor = namedObserver('RenderWhenEditor', (props: Annota
     getComputeCode,
     getComputeType,
     setComputeCode,
-    disableCompute
+    disableCompute,
+    hasComputeCode,
   }
 
   return (

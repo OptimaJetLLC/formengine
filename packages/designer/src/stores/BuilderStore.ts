@@ -4,7 +4,6 @@ import {
   BiDi,
   BuilderView,
   ComponentData,
-  ComponentPropertyComputeType,
   ComponentStore,
   EditorType,
   Language,
@@ -20,7 +19,7 @@ import {
 import {assign, cloneDeep} from 'lodash-es'
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
 import {debounceTime, distinctUntilChanged, Subject} from 'rxjs'
-import {CalculableEditorProps} from '../features/annotation-editors/AnnotationEditorProps'
+import type {CalculableEditorProps} from '../features/annotation-editors/AnnotationEditorProps'
 import type {CodeActionEditorData, CodeActionEditorProps} from '../features/annotation-editors/EventEditor/components/CodeActionEditor'
 import type {TranslationResolver} from '../features/localization/BuilderI18n'
 import {BuilderI18n} from '../features/localization/BuilderI18n'
@@ -52,14 +51,16 @@ export class EditableProperty implements CalculableEditorProps {
    * @param setComputeCode the function to set the code value.
    * @param getComputeCode the function to get the code value.
    * @param getComputeType the function to get the computed type of the property.
+   * @param hasComputeCode the function for checking the existence of the computed code.
    * @param annotation the annotation object for the property.
    * @param componentKey the key of the component that the property belongs to.
    */
   constructor(
-    readonly disableCompute: () => void,
-    readonly setComputeCode: (value: string, type: ComponentPropertyComputeType) => void,
-    readonly getComputeCode: (type: ComponentPropertyComputeType) => string,
-    readonly getComputeType: () => ComponentPropertyComputeType | undefined,
+    readonly disableCompute: CalculableEditorProps['disableCompute'],
+    readonly setComputeCode: CalculableEditorProps['setComputeCode'],
+    readonly getComputeCode: CalculableEditorProps['getComputeCode'],
+    readonly getComputeType: CalculableEditorProps['getComputeType'],
+    readonly hasComputeCode: CalculableEditorProps['hasComputeCode'],
     readonly annotation: Annotation,
     readonly componentKey: string
   ) {

@@ -2,7 +2,6 @@ import type {PropertyBlockType} from '@react-form-builder/core'
 import {
   Annotation,
   ComponentProperty,
-  ComponentPropertyComputeType,
   isProperty,
   isValidatorPropertyBlockType,
   namedObserver,
@@ -11,7 +10,7 @@ import {
 import {createElement, useCallback, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {EditorMap} from '../../annotation-editors'
-import type {AnnotationEditorProps} from '../../annotation-editors/AnnotationEditorProps'
+import type {AnnotationEditorProps, CalculableEditorProps} from '../../annotation-editors/AnnotationEditorProps'
 import {Erroneous} from './Erroneous'
 
 interface PropertyEditorWrapperProps {
@@ -59,19 +58,20 @@ export const PropertyEditorWrapper = namedObserver('PropertyEditorWrapper', ({
     context[annotation.key] = Object.assign(context[annotation.key] ?? {}, newComponentProperty)
   }, [context, annotation])
 
-  const setComputedLocalization = useCallback((value: string) => {
-    store.viewer.form.localization.setLocalization(store.localizationLanguage.fullCode, componentData.key, annotation.key, propertyBlockType, value)
+  const setComputedLocalization = useCallback((value: string, langCode?: string) => {
+    if (!langCode) return
+    store.viewer.form.localization.setLocalization(langCode, componentData.key, annotation.key, propertyBlockType, value)
     if (isValidatorPropertyBlockType(propertyBlockType)) return
     const newComponentProperty: ComponentProperty = {computeType: 'localization'}
     context[annotation.key] = Object.assign(context[annotation.key] ?? {}, newComponentProperty)
   }, [context, annotation, store, componentData, propertyBlockType])
 
-  const setComputeCode = useCallback((value: string, type: ComponentPropertyComputeType) => {
+  const setComputeCode = useCallback<CalculableEditorProps['setComputeCode']>((value, type, params) => {
     switch (type) {
       case 'function':
         return setComputedFunction(value)
       case 'localization':
-        return setComputedLocalization(value)
+        return setComputedLocalization(value, params?.langCode)
     }
   }, [setComputedFunction, setComputedLocalization])
 
@@ -79,22 +79,18 @@ export const PropertyEditorWrapper = namedObserver('PropertyEditorWrapper', ({
     return context[annotation.key]?.fnSource
   }, [context, annotation])
 
-  const getComputedLocalization = useCallback(() => {
-    let localization = store.viewer.form.localization
-      .getLocalization(store.localizationLanguage.fullCode, componentData.key, annotation.key, propertyBlockType)
-    if (!localization) {
-      localization = store.viewer.form.localization
-        .getLocalization(store.defaultLanguage.fullCode, componentData.key, annotation.key, propertyBlockType)
-    }
+  const getComputedLocalization = useCallback((langCode: string) => {
+    const localization = store.viewer.form.localization
+      .getLocalization(langCode, componentData.key, annotation.key, propertyBlockType)
     return localization ?? ''
   }, [store, componentData, annotation, propertyBlockType])
 
-  const getComputeCode = useCallback((type: ComponentPropertyComputeType) => {
+  const getComputeCode = useCallback<CalculableEditorProps['getComputeCode']>((type, params) => {
     switch (type) {
       case 'function':
         return getComputedFunction()
       case 'localization':
-        return getComputedLocalization()
+        return params?.langCode ? getComputedLocalization(params?.langCode) : ''
     }
   }, [getComputedFunction, getComputedLocalization])
 
@@ -107,11 +103,21 @@ export const PropertyEditorWrapper = namedObserver('PropertyEditorWrapper', ({
     context[annotation.key] = Object.assign(context[annotation.key] ?? {}, newComponentProperty)
   }, [context, annotation])
 
+  const hasLocalization = useCallback(() => {
+    return store.viewer.form.localization
+      .hasLocalization(componentData.key, annotation.key, propertyBlockType)
+  }, [store, componentData, annotation, propertyBlockType])
+
   const getComputeType = useCallback(() => {
-    if (isValidatorPropertyBlockType(propertyBlockType) && !!getComputedLocalization()) return 'localization'
+    if (isValidatorPropertyBlockType(propertyBlockType) && hasLocalization()) return 'localization'
     const componentProperty = context[annotation.key]
     return componentProperty?.computeType
   }, [context, annotation, getComputedLocalization])
+
+  const hasComputeCode = useCallback<CalculableEditorProps['hasComputeCode']>(type => {
+    if (type === 'function') return !!getComputeCode('function')
+    return hasLocalization()
+  }, [getComputeCode, hasLocalization])
 
   const annotationEditorProps: AnnotationEditorProps = {
     value,
@@ -123,7 +129,8 @@ export const PropertyEditorWrapper = namedObserver('PropertyEditorWrapper', ({
     setComputeCode,
     getComputeCode,
     disableCompute,
-    getComputeType
+    getComputeType,
+    hasComputeCode,
   }
 
   return !!annotationEditor && (

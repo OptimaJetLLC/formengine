@@ -17,6 +17,7 @@ export const TooltipSettings = namedObserver('TooltipSettings', () => {
   const setComputeCode = useCallback(() => undefined, [])
   const getComputeCode = useCallback(() => '', [])
   const getComputeType = useCallback(() => undefined, [])
+  const hasComputeCode = useCallback(() => false, [])
 
   const annotationEditorProps: AnnotationEditorProps = {
     onChange,
@@ -27,7 +28,8 @@ export const TooltipSettings = namedObserver('TooltipSettings', () => {
     disableCompute,
     setComputeCode,
     getComputeCode,
-    getComputeType
+    getComputeType,
+    hasComputeCode,
   }
 
   return (

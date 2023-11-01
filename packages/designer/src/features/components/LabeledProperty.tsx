@@ -61,10 +61,10 @@ export interface CodeButtonProps extends CalculableEditorProps {
 }
 
 const CodeButton = namedObserver('CodeButton', (props: CodeButtonProps) => {
-  const {annotation, getComputeCode, setComputeCode, disableCompute, getComputeType, componentData} = props
+  const {annotation, getComputeCode, setComputeCode, disableCompute, getComputeType, hasComputeCode, componentData} = props
   const store = useBuilderStore()
-  const hasCode = !!getComputeCode('function')
-  const hasFluentLocalization = !!getComputeCode('localization')
+  const hasCode = hasComputeCode('function')
+  const hasFluentLocalization = hasComputeCode('localization')
   const calculableType = getComputeType()
   const useFn = calculableType === 'function'
   const useFluentLocalization = calculableType === 'localization'
@@ -96,8 +96,10 @@ const CodeButton = namedObserver('CodeButton', (props: CodeButtonProps) => {
     return faEdit as unknown as IconDefinition
   }
 
-  const handleClick = () =>
-    store.currentEditable = new EditableProperty(disableCompute, setComputeCode, getComputeCode, getComputeType, annotation, componentData.key)
+  const handleClick = () => {
+    return store.currentEditable = new EditableProperty(disableCompute, setComputeCode,
+      getComputeCode, getComputeType, hasComputeCode, annotation, componentData.key)
+  }
 
   return <Hinted hint={hint}>
     <SIconButton onClick={handleClick} disabled={!annotation.calculable && !annotation.localizable}

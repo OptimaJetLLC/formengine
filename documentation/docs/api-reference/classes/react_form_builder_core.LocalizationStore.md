@@ -156,6 +156,28 @@ true if the specified language exists in the localization.
 
 ___
 
+### hasLocalization
+
+▸ **hasLocalization**(`componentKey`, `propertyName`, `type`): `boolean`
+
+Checks that the specified property has localization.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `componentKey` | `string` | the component we are looking to localize. |
+| `propertyName` | `string` | the component's property name to be localized. |
+| `type` | `string` | the type of localization. |
+
+#### Returns
+
+`boolean`
+
+true if the specified property has localization in at least one language.
+
+___
+
 ### removeLocalization
 
 ▸ **removeLocalization**(`componentKey`): `void`

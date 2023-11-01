@@ -55,19 +55,26 @@ ___
 
 ### getComputeCode
 
-• **getComputeCode**: (`type`: [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype)) => `string`
+• **getComputeCode**: <T\>(`type`: `T`, `params?`: `ComputeTypeParams`<`T`\>) => `string`
 
 #### Type declaration
 
-▸ (`type`): `string`
+▸ <`T`\>(`type`, `params?`): `string`
 
 Returns the code of the computed property.
+
+##### Type parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | extends [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype) | the component property value type. |
 
 ##### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `type` | [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype) | the component property value type. |
+| `type` | `T` | the component property value type. |
+| `params?` | `ComputeTypeParams`<`T`\> | the parameters of the compute code. |
 
 ##### Returns
 
@@ -98,6 +105,34 @@ Returns the type of calculation for the property.
 #### Inherited from
 
 [CalculableEditorProps](react_form_builder_designer.CalculableEditorProps.md).[getComputeType](react_form_builder_designer.CalculableEditorProps.md#getcomputetype)
+
+___
+
+### hasComputeCode
+
+• **hasComputeCode**: (`type`: [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype)) => `boolean`
+
+#### Type declaration
+
+▸ (`type`): `boolean`
+
+Returns true if the property has a compute code for the specified type, false otherwise.
+
+##### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `type` | [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype) | the compute type. |
+
+##### Returns
+
+`boolean`
+
+true if the property has a compute code for the specified type, false otherwise.
+
+#### Inherited from
+
+[CalculableEditorProps](react_form_builder_designer.CalculableEditorProps.md).[hasComputeCode](react_form_builder_designer.CalculableEditorProps.md#hascomputecode)
 
 ___
 
@@ -141,20 +176,27 @@ ___
 
 ### setComputeCode
 
-• **setComputeCode**: (`value`: `string`, `type`: [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype)) => `void`
+• **setComputeCode**: <T\>(`value`: `string`, `type`: `T`, `params?`: `ComputeTypeParams`<`T`\>) => `void`
 
 #### Type declaration
 
-▸ (`value`, `type`): `void`
+▸ <`T`\>(`value`, `type`, `params?`): `void`
 
 Sets the computed property code.
+
+##### Type parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `T` | extends [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype) | the component property value type. |
 
 ##### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `value` | `string` | the code of computed property. |
-| `type` | [`ComponentPropertyComputeType`](../modules/react_form_builder_core.md#componentpropertycomputetype) | the component property value type. |
+| `type` | `T` | the component property value type. |
+| `params?` | `ComputeTypeParams`<`T`\> | the parameters of the compute code. |
 
 ##### Returns
 
