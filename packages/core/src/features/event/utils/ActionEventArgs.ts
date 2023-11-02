@@ -6,6 +6,7 @@ import {ComponentData} from '../../../utils/contexts/ComponentDataContext'
 function createComponentDataProxy(componentData: ComponentData) {
   return new Proxy(componentData, {
     get(target, property: string) {
+      if (property === 'toJSON') return () => target.data
       return target.data[property]
     },
     set(target, property: string, value): boolean {
