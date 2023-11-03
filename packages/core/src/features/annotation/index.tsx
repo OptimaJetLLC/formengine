@@ -78,7 +78,7 @@ const cssColor = createAnnotation('color').setup({calculable: false})
  * The array of annotation builders for generic CSS properties of a component.
  */
 export const commonStyles = [
-  cssSize.build('width'),
+  cssSize.setup({default: '100%'}).build('width'),
   cssSize.build('height'),
   cssSize.build('marginTop'),
   cssSize.build('marginRight'),

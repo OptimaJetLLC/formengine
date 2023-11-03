@@ -8,6 +8,10 @@ export interface WrapperProps {
    * The React child node.
    */
   children: ReactNode
+  /**
+   * The CSS class name.
+   */
+  className?: string
 }
 
 /**

@@ -1,5 +1,6 @@
 import type {ReactNode} from 'react'
 import {Annotation} from '../../annotation/types/annotations/Annotation'
+import type {ComponentKind} from '../types'
 
 /**
  * Component metadata for the form builder.
@@ -13,6 +14,7 @@ export class Meta {
    * @param modules common metadata for the component.
    * @param customPreview the custom ReactNode to be drawn on the toolbar.
    * @param valuedAn the metadata for the component value.
+   * @param kind the component kind.
    */
   constructor(
     readonly type: string,
@@ -21,6 +23,7 @@ export class Meta {
     readonly modules: Annotation[],
     readonly customPreview?: ReactNode,
     readonly valuedAn?: Annotation,
+    readonly kind: ComponentKind = 'component',
   ) {
   }
 }

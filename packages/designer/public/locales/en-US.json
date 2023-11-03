@@ -173,6 +173,10 @@
     "code": {
       "name": "Code",
       "hint": "Edit code"
+    },
+    "flexDirection": {
+      "name": "Direction",
+      "hint": "Flex direction of container children"
     }
   },
   "leftMenu": {

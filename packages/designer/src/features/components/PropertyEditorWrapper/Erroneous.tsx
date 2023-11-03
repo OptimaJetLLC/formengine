@@ -1,4 +1,5 @@
-import {errorMessageModel, namedObserver, WrapperProps} from '@react-form-builder/core'
+import styled from '@emotion/styled'
+import {ErrorWrapperProps, namedObserver, WrapperProps} from '@react-form-builder/core'
 import {useEffect, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps} from '../../annotation-editors/AnnotationEditorProps'
@@ -22,7 +23,6 @@ export interface ErroneousProps extends WrapperProps, AnnotationEditorProps {
  */
 export const Erroneous = namedObserver('Erroneous', (props: ErroneousProps) => {
   const {annotation, value, children} = props
-  const ErrorMessage = errorMessageModel.component
   const builderStore = useBuilderStore()
   const [error, setError] = useState<string>()
   const [mounted, setMounted] = useState(true)
@@ -51,8 +51,37 @@ export const Erroneous = namedObserver('Erroneous', (props: ErroneousProps) => {
   }, [value, props.error])
 
   return (
-    <ErrorMessage error={error}>
+    <PropertyErrorMessage error={error}>
       {children}
-    </ErrorMessage>
+    </PropertyErrorMessage>
   )
 })
+
+const SDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
+
+const ErrorMessage = styled.p`
+  font-size: 12px;
+  color: var(--red-600);
+  margin-top: 0.25rem;
+
+  &:before {
+    content: "❌ ";
+    font-size: 10px;
+    padding: 6px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--red-300);
+  }
+`
+
+const PropertyErrorMessage = ({children, error}: ErrorWrapperProps) => (
+  <SDiv>
+    {children}
+    {error && <ErrorMessage children={error}/>}
+  </SDiv>
+)

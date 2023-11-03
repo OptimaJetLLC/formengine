@@ -18,3 +18,8 @@ export type Annotations<T extends object> =
   {
     [key in keyof T]: BaseBuilder<T[key]> | undefined
   }
+
+/**
+ * The component kind type.
+ */
+export type ComponentKind = 'container' | 'component'

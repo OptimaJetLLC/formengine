@@ -8,4 +8,4 @@ import {screenModel} from '../ui/screenModel'
 export const screenMeta = new Meta(screenModel.type,
   toArray<ScreenProps>({
     children: node
-  }), [], modules)
+  }), [], modules, undefined, undefined, 'container')

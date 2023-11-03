@@ -1,5 +1,6 @@
+import styled from '@emotion/styled'
 import {forIn} from 'lodash-es'
-import {createElement, useCallback, useEffect, useMemo} from 'react'
+import {Fragment, useCallback, useEffect, useMemo} from 'react'
 import {catchError, concatMap, filter, OperatorFunction, Subscription} from 'rxjs'
 import {ComponentState} from '../../stores/ComponentState'
 import {isPromise, namedObserver} from '../../utils'
@@ -8,6 +9,8 @@ import {useStore} from '../../utils/contexts/StoreContext'
 import {getChildren} from '../../utils/getChildren'
 import {ActionData, ActionEventArgs, Arguments, DidMountEvent, Func, WillUnmountEvent} from '../event'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
+import {TooltipWrapper} from '../tooltip/TooltipWrapper'
+import {Erroneous} from '../validation'
 import {useComponentTreeContext} from './ComponentTreeContext'
 
 const useActions = (state: ComponentState) => {
@@ -77,5 +80,24 @@ export const ComponentViewer = namedObserver('ComponentViewer', () => {
 
   useActions(componentState)
 
-  return createElement(data.model.component, componentState.get)
+  const {className, ...otherProps} = componentState.get
+  const {kind, component: Component} = data.model
+
+  const Wrapper = formViewerProps.componentWrapper ?? Div
+  const Tooltip = data.store.tooltipProps ? TooltipWrapper : Fragment
+  const ContainerComponent = formViewerProps.componentWrapper ?? Component
+
+  return kind === 'container'
+    ? <ContainerComponent className={className} {...otherProps}/>
+    : <Wrapper className={className}>
+      <Tooltip>
+        <Erroneous>
+          <Component {...otherProps}/>
+        </Erroneous>
+      </Tooltip>
+    </Wrapper>
 })
+
+const Div = styled.div`
+  display: flex;
+`

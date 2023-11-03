@@ -44,9 +44,12 @@
       {
         "key": "RsContainer 1",
         "type": "RsContainer",
-        "props": {
-          "direction": {
-            "value": "horizontal"
+        "props": {},
+        "css": {
+          "any": {
+            "object": {
+              "flexDirection": "row"
+            }
           }
         },
         "children": [
@@ -187,10 +190,12 @@
         "children": [
           {
             "key": "name container",
-            "type": "RsContainer",
-            "props": {
-              "direction": {
-                "value": "horizontal"
+            "props": {},
+            "css": {
+              "any": {
+                "object": {
+                  "flexDirection": "row"
+                }
               }
             },
             "children": [
@@ -229,9 +234,12 @@
           {
             "key": "Formatted",
             "type": "RsContainer",
-            "props": {
-              "direction": {
-                "value": "horizontal"
+            "props": {},
+            "css": {
+              "any": {
+                "object": {
+                  "flexDirection": "row"
+                }
               }
             },
             "children": [

@@ -25,7 +25,7 @@ const RsTooltip = ({text, placement, trigger, children}: RsTooltipProps) => {
   if (!children) return null
 
   return <Whisper placement={placement} trigger={trigger} speaker={<Tooltip>{text}</Tooltip>}>
-    <div>{children}</div>
+    <div style={{width: '100%', height: '100%'}}>{children}</div>
   </Whisper>
 }
 

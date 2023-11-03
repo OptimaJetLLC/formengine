@@ -1,49 +1,23 @@
-import {css, cx} from '@emotion/css'
+import styled from '@emotion/styled'
 import {define, node, oneOf, size} from '@react-form-builder/core'
-import {forwardRef} from 'react'
 
-const isHorizontal = (element?: Element) => {
-  if (!element) return false
-  const style = getComputedStyle(element)
-  return style.display === 'flex' && style.flexDirection === 'row'
-}
-
-const RsContainer = forwardRef(({direction, className, ...props}: any, ref: any) => {
-  const horizontal = direction === 'horizontal' || isHorizontal(ref?.current)
-  return <div {...props} ref={ref} className={cx(className, {horizontal}, containerStyles)}/>
-})
-
-RsContainer.displayName = 'Container'
+const RsContainer = styled.div`
+  display: flex;
+`
 
 export const rsContainer = define(RsContainer)
   .type('RsContainer')
   .name('Container')
+  .kind('container')
   .props({
-    children: node.hinted('Component children'),
-    direction: oneOf('vertical', 'horizontal')
-      .default('vertical')
-      .radio()
-      .hinted('Component direction')
+    children: node.hinted('Component children')
   })
   .css({
+    flexDirection: oneOf('column', 'row', 'column-reverse', 'row-reverse')
+      .default('column'),
     gap: size.default('10px'),
     alignItems: oneOf('start', 'center', 'baseline', 'end', 'stretch'),
     justifyContent: oneOf('flex-start', 'flex-end', 'center', 'space-between', 'space-around',
       'space-evenly', 'start', 'end', 'left', 'right'),
     flexWrap: oneOf('wrap', 'nowrap', 'wrap-reverse'),
   })
-
-const containerStyles = css`
-  display: flex;
-  flex-direction: column;
-
-  &.horizontal {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-
-    & > * {
-      flex: 1;
-    }
-  }
-`

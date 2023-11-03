@@ -1,13 +1,20 @@
-import {define, oneOf, size, string} from '@react-form-builder/core'
-import {ComponentProps} from 'react'
+import styled from '@emotion/styled'
+import {define, oneOf, string} from '@react-form-builder/core'
+import type {ComponentProps} from 'react'
 import logo from '../../public/images/logo.png'
-import {backgroundColor} from '../commonProperties'
 import {AreaProps} from '../commonTypes'
 
 interface RsImageProps extends ComponentProps<'img'>, AreaProps {
 }
 
-const RsImage = ({alt, ...props}: RsImageProps) => <img {...props} alt={alt}/>
+const SImage = styled.img`
+  object-position: left;
+  object-fit: scale-down;
+  width: 100%;
+  height: 100%;
+`
+
+const RsImage = ({alt, ...props}: RsImageProps) => <SImage {...props} alt={alt}/>
 
 export const rsImage = define(RsImage)
   .type('RsImage')
@@ -18,9 +25,6 @@ export const rsImage = define(RsImage)
   })
   .css({
     objectPosition: oneOf('top', 'bottom', 'left', 'right', 'center').default('left'),
-    objectFit: oneOf('contain', 'cover', 'fill', 'none', 'scale-down').default('scale-down'),
-    background: backgroundColor,
-    height: size.hinted('Image height'),
-    width: size.default('30%').hinted('Image width'),
+    objectFit: oneOf('contain', 'cover', 'fill', 'none', 'scale-down').default('scale-down')
   })
   .preview(<img src={logo} width="200px" height="auto" alt="Image"/>)

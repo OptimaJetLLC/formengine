@@ -7,4 +7,6 @@ Screen.displayName = 'Screen'
 /**
  * Form viewer screen metadata. **Internal use only.**
  */
-export const screenModel = new Model(Screen)
+export const screenModel = new Model(Screen, undefined, undefined,
+  undefined, undefined, undefined, undefined, undefined, undefined,
+  'container')

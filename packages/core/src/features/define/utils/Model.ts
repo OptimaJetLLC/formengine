@@ -2,7 +2,7 @@ import {observer} from 'mobx-react'
 import type {ComponentType} from 'react'
 import {Css} from '../../style/types'
 import type {SchemaType} from '../../validation'
-import type {ActionsInitializer} from '../types'
+import type {ActionsInitializer, ComponentKind} from '../types'
 
 /**
  * Represents component metadata for the form viewer.
@@ -26,6 +26,7 @@ export class Model<T = any> {
    * @param css the component's CSS values.
    * @param typeName the component type name.
    * @param icon the component icon.
+   * @param kind the component kind.
    * @template T the type of React component properties.
    */
   constructor(
@@ -37,7 +38,8 @@ export class Model<T = any> {
     readonly defaultProps?: Readonly<Record<string, any>>,
     readonly css?: Css,
     readonly typeName?: string,
-    readonly icon?: ComponentType
+    readonly icon?: ComponentType,
+    readonly kind: ComponentKind = 'component'
   ) {
     this.component = observer(component)
     this.component.displayName = component.displayName || component.name

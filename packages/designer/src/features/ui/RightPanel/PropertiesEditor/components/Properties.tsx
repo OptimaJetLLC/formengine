@@ -1,16 +1,6 @@
 import styled from '@emotion/styled'
 import type {PropertyBlockType} from '@react-form-builder/core'
-import {
-  Annotation,
-  className,
-  commonStyles,
-  ComponentDataProvider,
-  ComponentStore,
-  key,
-  namedObserver,
-  useTooltipType
-} from '@react-form-builder/core'
-import {unionWith} from 'lodash-es'
+import {Annotation, className, ComponentDataProvider, ComponentStore, key, namedObserver, useTooltipType} from '@react-form-builder/core'
 import {useState} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {Device} from '../../../../../utils/types'
@@ -60,8 +50,8 @@ const Properties = namedObserver('Properties', ({activeTab}: PropertiesProps) =>
   const current = meta.properties.concat(meta.modules).filter(bySection(activeTab))
   const properties = current.filter(bySubSection())
   const additionalProperties = current.filter(bySubSection(SubSection.Additional))
-  const styles = unionWith(meta.css, commonStyles, (a, b) => a.key === b.key)
   const tooltipProps = current.filter(bySubSection(SubSection.Tooltip))
+  const showTooltipProps = meta.kind === 'component' && !!tooltipProps?.length && !!tooltipType
 
   return (
     <ComponentDataProvider value={data}>
@@ -70,11 +60,11 @@ const Properties = namedObserver('Properties', ({activeTab}: PropertiesProps) =>
           {activeTab === Section.Main && <PropertyEditorWrapper annotation={key} context={data.store}/>}
           <PropertyBlock annotations={properties} context={data.store.props}/>
           {activeTab === Section.Style &&
-            <StyleBlock annotations={styles} store={data.store}/>
+            <StyleBlock annotations={meta.css} store={data.store}/>
           }
         </PropertiesList>
 
-        {!!tooltipProps?.length && tooltipType &&
+        {showTooltipProps &&
           <PropertyBlock annotations={tooltipProps} context={data.store.props}/>
         }
 

@@ -1,8 +1,9 @@
 import type {CSSObject} from '@emotion/serialize/dist/declarations/types'
 import type {ComponentType, ReactNode} from 'react'
+import {commonStyles} from '../../annotation'
 import {Annotation} from '../../annotation/types/annotations/Annotation'
 import {modules} from '../constants'
-import type {ActionsInitializer, Annotations} from '../types'
+import type {ActionsInitializer, Annotations, ComponentKind} from '../types'
 import type {BuilderComponent} from './BuilderComponent'
 import {Meta} from './Meta'
 import {Model} from './Model'
@@ -21,6 +22,10 @@ export type DefinerData<T extends object> = {
    * The component name.
    */
   name?: string,
+  /**
+   * The component kind.
+   */
+  kind?: ComponentKind,
   /**
    * The component category.
    */
@@ -82,6 +87,13 @@ export class Definer<T extends object> {
    * @returns the modified Definer class instance.
    */
   name = (name: string) => this.#updateWith({name})
+
+  /**
+   * Sets the kind of the component.
+   * @param kind the component kind.
+   * @returns the modified Definer class instance.
+   */
+  kind = (kind: ComponentKind) => this.#updateWith({kind})
 
   /**
    * Sets the icon of the component.
@@ -148,7 +160,10 @@ export class Definer<T extends object> {
    */
   build(): BuilderComponent {
     const propAns = toArray(this.data.properties)
-    const cssAns = toArray(this.data.cssObject, {annotationType: 'Style', calculable: false})
+    const cssAns = [
+      ...toArray(this.data.cssObject, {annotationType: 'Style', calculable: false}),
+      ...commonStyles
+    ]
     const valuedAnnotations = propAns.filter(an => an.valued === true)
     const firstValuedAn = valuedAnnotations[0]
     if (valuedAnnotations.length > 1) {
@@ -167,7 +182,8 @@ export class Definer<T extends object> {
       getDefault(propAns),
       {any: {object: getDefault(cssAns)}},
       this.getType(),
-      this.data.icon
+      this.data.icon,
+      this.data.kind
     )
 
     const meta = new Meta(
@@ -177,6 +193,7 @@ export class Definer<T extends object> {
       modules,
       this.data.customPreview,
       valuedAn,
+      this.data.kind
     )
 
     return {model, meta, category: this.data.category} as const

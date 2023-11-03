@@ -1,6 +1,6 @@
 import {css, cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {ReactNode} from 'react'
+import type {ReactNode} from 'react'
 import {Model} from '../../define'
 
 /**
@@ -29,7 +29,7 @@ const ErrorMessageStyle = css`
   &:before {
     content: "❌ ";
     font-size: 10px;
-    padding: 6px;    
+    padding: 6px;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -41,6 +41,7 @@ const SDiv = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
 `
 
 const DefaultErrorMessage = ({children, error, className}: ErrorWrapperProps) => {

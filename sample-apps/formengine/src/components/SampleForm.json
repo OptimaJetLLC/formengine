@@ -44,11 +44,6 @@
       {
         "key": "Main container",
         "type": "RsContainer",
-        "props": {
-          "direction": {
-            "value": "vertical"
-          }
-        },
         "css": {
           "desktop": {
             "string": "border: 1px solid lightgray;\nborder-radius: 6px;\npadding: 20px;"
@@ -58,9 +53,12 @@
           {
             "key": "Name container",
             "type": "RsContainer",
-            "props": {
-              "direction": {
-                "value": "horizontal"
+            "props": {},
+            "css": {
+              "any": {
+                "object": {
+                  "flexDirection": "row"
+                }
               }
             },
             "children": [
@@ -192,9 +190,12 @@
           {
             "key": "Adress container",
             "type": "RsContainer",
-            "props": {
-              "direction": {
-                "value": "horizontal"
+            "props": {},
+            "css": {
+              "any": {
+                "object": {
+                  "flexDirection": "row"
+                }
               }
             },
             "children": [
@@ -239,9 +240,12 @@
           {
             "key": "Country container",
             "type": "RsContainer",
-            "props": {
-              "direction": {
-                "value": "horizontal"
+            "props": {},
+            "css": {
+              "any": {
+                "object": {
+                  "flexDirection": "row"
+                }
               }
             },
             "children": [

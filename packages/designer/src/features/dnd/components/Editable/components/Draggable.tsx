@@ -4,6 +4,7 @@ import {ComponentData, namedObserver, useComponentData} from '@react-form-builde
 import {merge} from 'lodash/fp.js'
 import {ComponentProps, RefObject, useMemo, useRef} from 'react'
 import {useDragLayer, useDrop} from 'react-dnd'
+import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {AcceptDrop, ItemType} from '../../../consts'
 import {useDragWithPreview} from '../hooks/useDragWithPreview'
 import {DragPreview} from './DragPreview'
@@ -14,19 +15,26 @@ interface DraggableProps extends ComponentProps<any> {
   isTree?: boolean
 }
 
-export const Draggable = namedObserver('Draggable', ({children, isInner, className, isTree, ...props}: DraggableProps) => {
-  const data = useComponentData()
-  const isRoot = data.isRoot
-  const isContainer = Boolean(data.store.children)
+const useDirection = () => {
+  const {viewMode} = useBuilderStore()
+  const {css} = useComponentData().store
+  const direction = css?.[viewMode]?.object?.flexDirection ?? css?.any?.object?.flexDirection ?? ''
+  return ['row', 'row-reverse', 'initial'].includes(direction as string)
+}
 
+export const Draggable = namedObserver('Draggable', ({children, isInner, className, isTree, ...props}: DraggableProps) => {
+  const {key, isRoot, model} = useComponentData()
+  const isContainer = model.kind === 'container'
+  const direction = useDirection()
+  const horizontal = !isTree && direction
   const [{isActive, isDragging: isDraggingCurrent}, dnd] = useDnd()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
-  const dragPreview = <DragPreview><SLabel>{data.key}</SLabel></DragPreview>
+  const dragPreview = <DragPreview><SLabel>{key}</SLabel></DragPreview>
 
   return <>
     {isDraggingCurrent && dragPreview}
     <Container ref={dnd} {...props}
-               className={cx(className, {isActive, isContainer, isRoot, isInner, isDraggingCurrent})}>
+               className={cx(className, {isActive, isContainer, isRoot, isInner, isDraggingCurrent, horizontal})}>
       {!isTree && <DraggableBody/>}
       {isDragging && !isRoot && !isInner && <DropZone/>}
       {children}
@@ -48,7 +56,7 @@ const useDnd = (): [DndState, RefObject<any>] => {
 
   const [dropProps, drop] = useDrop({
     accept: AcceptDrop,
-    canDrop: (item: ComponentData, monitor) => data.store.key !== item.store.key,
+    canDrop: (item: ComponentData) => data.store.key !== item.store.key,
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
@@ -81,7 +89,6 @@ const SLabel = styled.label`
 const Container = styled.div`
   position: relative;
   display: flex;
-  flex: 1;
   flex-direction: column;
   transition: padding-block 200ms ease-in-out;
   transition-delay: 200ms;
@@ -117,6 +124,5 @@ const Container = styled.div`
 
   .horizontal > & {
     flex-direction: row;
-    flex: 1;
   }
 `

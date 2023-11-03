@@ -1,3 +1,4 @@
+import {cx} from '@emotion/css'
 import {
   checkSlotCondition,
   ComponentData,
@@ -69,13 +70,13 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
   return currentProps
 }
 
-export const EditableWrapper = namedObserver('EditableWrapper', ({children}: WrapperProps) => {
+export const EditableWrapper = namedObserver('EditableWrapper', ({children, ...props}: WrapperProps) => {
   const viewerStore = useStore()
   // no need to draw Editable component inside child FormViewer
-  return viewerStore.parentStore ? <>{children}</> : <Editable children={children}/>
+  return viewerStore.parentStore ? <>{children}</> : <Editable children={children} {...props}/>
 })
 
-const Editable = namedObserver('Editable', ({children}: WrapperProps) => {
+const Editable = namedObserver('Editable', ({children, className}: WrapperProps) => {
   const [{selected}, selectionHandlers, selectionClassName] = useSelection()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
 
@@ -84,7 +85,7 @@ const Editable = namedObserver('Editable', ({children}: WrapperProps) => {
   </>
 
   return (
-    <Draggable {...selectionHandlers} className={selectionClassName}>
+    <Draggable {...selectionHandlers} className={cx(selectionClassName, className)}>
       {children}
       {toolbars}
     </Draggable>
