@@ -61,6 +61,10 @@ const Container = styled.div`
     justify-content: space-evenly;
   }
 
+  .rs-radio-group-picker .rs-radio-inline {
+    padding: 0;
+  }
+
   .rs-radio-checker {
     min-height: 27px;
     max-height: 27px;
