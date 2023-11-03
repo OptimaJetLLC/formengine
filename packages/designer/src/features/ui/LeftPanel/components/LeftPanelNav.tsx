@@ -39,7 +39,7 @@ export const LeftPanelNav = namedObserver('LeftPanelNav', () => {
       {NavIconItem('settings', title('settings'), faSliders, {color: 'violet'})}
       {formsTab}
     </SNav>
-    <Rows style={{minHeight: 0, overflow: 'auto'}}>
+    <Rows style={{minHeight: 0, overflow: 'auto', padding: 4}}>
       {leftPanelTabs[activeTab]}
     </Rows>
   </>
