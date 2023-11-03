@@ -3,15 +3,6 @@ import type {FunctionComponent} from 'react'
 import {ComponentStore} from '../stores/ComponentStore'
 
 /**
- * Type predicate, asserts that the value is a function. **Internal use only.**
- * @param fn the value.
- * @returns true if the value is a function, false otherwise.
- */
-export function isFunction(fn: any): fn is Function {
-  return typeof fn === 'function'
-}
-
-/**
  * Type predicate, asserts that the value is a string. **Internal use only.**
  * @param value the value.
  * @returns true if the value is a string, false otherwise.
