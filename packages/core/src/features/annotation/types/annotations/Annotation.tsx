@@ -1,7 +1,7 @@
 import type {ReactNode} from 'react'
 import type {RuleValidator, SchemaType} from '../../../validation'
 import type {ErrorMap} from '../../../validation/ErrorMap'
-import type {EditorType} from '../index'
+import type {EditorType} from './EditorType'
 
 /**
  * Basic metadata class for a React component property for the form builder.

@@ -1,4 +1,4 @@
-import type {EditorType} from '../../types'
+import type {EditorType} from '../../types/annotations/EditorType'
 import {AnnotationBuilder} from './AnnotationBuilder'
 
 /**
