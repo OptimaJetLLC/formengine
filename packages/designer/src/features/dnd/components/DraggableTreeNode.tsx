@@ -6,7 +6,7 @@ import {useSelection} from './Editable/hooks/useSelection'
 export const DraggableTreeNode = namedObserver('DraggableTreeNode', () => {
   const [_, selectionHandlers, selectionClassName] = useSelection()
   return (
-    <Draggable {...selectionHandlers} isTree={true}>
+    <Draggable {...selectionHandlers} isTree={true} style={{width: '100%'}}>
       <TreeNode className={selectionClassName}/>
     </Draggable>
   )
