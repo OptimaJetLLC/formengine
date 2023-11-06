@@ -1,19 +1,32 @@
 {
   "actions": {
     "WeatherRequest": {
-      "name": "WeatherRequest",
-      "body": "try {\n  const request = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.62&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`)\n  const value = await request.json()    \n  e.setUserDefinedProps({children: `Current weather is ${value.current_weather.temperature} °C`})\n} catch (error) {\n  e.setUserDefinedProps({children: `Current weather is not available`})\n}"
+      "body": "try {\n  const request = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.62&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`)\n  const value = await request.json()    \n  e.setUserDefinedProps({children: `Current weather is ${value.current_weather.temperature} °C`})\n} catch (error) {\n  e.setUserDefinedProps({children: `Current weather is not available`})\n}",
+      "params": {}
     },
     "loadData": {
-      "name": "loadData",
-      "body": "\n    const [searchValue, loadCallback, currentDataLength] = e.args\n\n    fetch ('https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.json')\n        .then (data => data.json())\n        .then (data => {\n            const preparedData = data\n                .filter(value => value.toLowerCase().includes(searchValue.toLowerCase()))\n                .slice(currentDataLength, currentDataLength + 20)\n                .map(value => ({value, label: value}))\n\n            loadCallback(preparedData)        \n        })\n"
+      "body": "\n    const [searchValue, loadCallback, currentDataLength] = e.args\n\n    fetch ('https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.json')\n        .then (data => data.json())\n        .then (data => {\n            const preparedData = data\n                .filter(value => value.toLowerCase().includes(searchValue.toLowerCase()))\n                .slice(currentDataLength, currentDataLength + 20)\n                .map(value => ({value, label: value}))\n\n            loadCallback(preparedData)        \n        })\n",
+      "params": {}
+    },
+    "customAssertArgs": {
+      "body": "    if (!e) throw new Error(`'e' is undefined`)\n    if (!args) throw new Error(`'args' is undefined`)\n    if (args.stringParam !== 'Ayn Rand') console.error(`args.stringParam !== 'Ayn Rand'`, args.stringParam)\n    if (args.customBool !== false) console.error(`args.customBool !== false`, args.customBool)\n    if (args.myNumericProperty !== 2.7182818284) console.error(`args.myNumericProperty !== 2.7182818284`, args.myNumericProperty)",
+      "params": {
+        "stringParam": "string",
+        "customBool": "boolean",
+        "myNumericProperty": "number"
+      }
+    },
+    "onFirstNameChange": {
+      "body": "   e.data.comment = e.data['title'] + ' ' + e.value",
+      "params": {}
     }
   },
+  "tooltipType": "RsTooltip",
+  "errorType": "RsErrorMessage",
   "form": {
     "key": "screen 1",
     "type": "Screen",
-    "props": {
-    },
+    "props": {},
     "children": [
       {
         "key": "RsMenu 1",
@@ -69,6 +82,19 @@
                 }
               ]
             }
+          },
+          {
+            "key": "RsSearch 1",
+            "type": "RsSearch",
+            "props": {},
+            "events": {
+              "onLoadData": [
+                {
+                  "name": "loadData",
+                  "type": "code"
+                }
+              ]
+            }
           }
         ]
       },
@@ -107,6 +133,15 @@
             {
               "name": "WeatherRequest",
               "type": "code"
+            },
+            {
+              "name": "customAssertArgs",
+              "type": "code",
+              "args": {
+                "stringParam": "Ayn Rand",
+                "customBool": false,
+                "myNumericProperty": 2.7182818284
+              }
             }
           ]
         }
@@ -140,6 +175,14 @@
           "children": {
             "computeType": "function",
             "fnSource": "return `${form.data.title} ${form.data.checkbox} ${new Date().toISOString()}`"
+          },
+          "events": {
+            "onChange": [
+              {
+                "name": "logEventArgs",
+                "type": "custom"
+              }
+            ]
           }
         }
       },
@@ -190,6 +233,7 @@
         "children": [
           {
             "key": "name container",
+            "type": "RsContainer",
             "props": {},
             "css": {
               "any": {
@@ -206,6 +250,14 @@
                   "label": {
                     "value": "First Name"
                   }
+                },
+                "events": {
+                  "onChange": [
+                    {
+                      "name": "onFirstNameChange",
+                      "type": "code"
+                    }
+                  ]
                 }
               },
               {
@@ -217,13 +269,12 @@
                   }
                 },
                 "schema": {
-                  "type": "string",
                   "validations": [
                     {
                       "key": "code",
                       "args": {
                         "code": "return await fetch(`https://jsonplaceholder.typicode.com/users?username=${value}`).then((response) => response.json()).then((user) => user.length === 0)",
-                        "message": "That username is taken. Try another."
+                        "message": ""
                       }
                     }
                   ]
@@ -292,7 +343,6 @@
           }
         },
         "schema": {
-          "type": "string",
           "validations": [
             {
               "key": "required"
@@ -363,6 +413,39 @@
         "props": {}
       },
       {
+        "key": "Tabs",
+        "type": "RsTab",
+        "props": {
+          "activeKey": {
+            "value": "Item1"
+          }
+        },
+        "children": [
+          {
+            "key": "titleInTab",
+            "type": "RsHeader",
+            "props": {
+              "content": {
+                "value": "Title in tab"
+              }
+            },
+            "slot": "pane",
+            "bindCondition": "return parentProps.activeKey === 'Item1'"
+          },
+          {
+            "key": "buttonInTab",
+            "type": "RsButton",
+            "props": {
+              "children": {
+                "value": "Next"
+              }
+            },
+            "slot": "pane",
+            "bindCondition": "return parentProps.activeKey === 'Item3'"
+          }
+        ]
+      },
+      {
         "key": "none",
         "type": "none",
         "props": {}
@@ -375,6 +458,11 @@
         "component": {
           "placeholder": "Enter your text here"
         }
+      },
+      "last_name": {
+        "validator-code": {
+          "message": " That username is taken. Try another."
+        }
       }
     },
     "de-DE": {
@@ -382,12 +470,22 @@
         "component": {
           "placeholder": "Geben Sie hier Ihren Text ein"
         }
+      },
+      "last_name": {
+        "validator-code": {
+          "message": " Dieser Benutzername ist vergeben. Versuch es mit einem anderen."
+        }
       }
     },
     "ar-EG": {
       "comment": {
         "component": {
           "placeholder": "أدخل النص هنا"
+        }
+      },
+      "last_name": {
+        "validator-code": {
+          "message": " يتم أخذ اسم المستخدم هذا. جرب آخر."
         }
       }
     }

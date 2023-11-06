@@ -3,7 +3,7 @@ import type {LabeledValue} from '@react-form-builder/core'
 import type {IconProps} from '@rsuite/icons/lib/Icon.js'
 import {ReactElement} from 'react'
 import {Checkbox, IconButton, Input, InputPicker, Table} from 'rsuite'
-import {InnerCellProps} from 'rsuite-table/lib/Cell.js'
+import type {InnerCellProps} from 'rsuite-table/lib/Cell.js'
 
 const {Cell} = Table
 

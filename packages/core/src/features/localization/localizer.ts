@@ -1,5 +1,5 @@
 import {FluentBundle, FluentResource} from '@fluent/bundle'
-import {FluentVariable} from '@fluent/bundle/esm/bundle.js'
+import type {FluentVariable} from '@fluent/bundle/esm/bundle'
 import {ComponentStore, isLocalizedProperty} from '../../stores/ComponentStore'
 import {Form} from '../../stores/Form'
 import type {LocalizationType} from '../../stores/LocalizationStore'

@@ -1,4 +1,4 @@
-import {SyntheticEvent} from 'react'
+import type {SyntheticEvent} from 'react'
 import {ComponentState} from '../../../stores/ComponentState'
 import {Store} from '../../../stores/Store'
 import {ComponentData} from '../../../utils/contexts/ComponentDataContext'

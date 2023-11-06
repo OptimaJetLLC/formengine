@@ -1,5 +1,4 @@
-import type {ComponentType} from 'react'
-import {ForwardedRef} from 'react'
+import type {ComponentType, ForwardedRef} from 'react'
 import type {ViewMode} from '../../types'
 import type {ComputeChildren} from '../../utils/ComputeChildren'
 import {IFormData} from '../../utils/IFormData'

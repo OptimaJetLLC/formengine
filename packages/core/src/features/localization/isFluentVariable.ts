@@ -1,4 +1,4 @@
-import {FluentVariable} from '@fluent/bundle/esm/bundle.js'
+import type {FluentVariable} from '@fluent/bundle/esm/bundle'
 import {FluentType} from '@fluent/bundle/esm/types.js'
 
 /**
