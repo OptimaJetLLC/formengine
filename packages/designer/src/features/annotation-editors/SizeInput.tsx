@@ -21,7 +21,7 @@ const SizeInput = (props: AnnotationEditorProps) => {
   const {value, unit} = parseCSSValue(CSSValue)
 
   const handleValueChange = (value: InputValue) => onChange(makeCSSValue(value, unit))
-  const handleUnitChange = (unit: string) => onChange(makeCSSValue(value ?? 10, unit))
+  const handleUnitChange = (unit: string) => unit && onChange(makeCSSValue(value ?? 10, unit))
 
   const input = unit === OtherUnit
     ? <Input value={value} size={'xs'} onChange={handleValueChange}/>
@@ -95,7 +95,7 @@ const SPicker = styled(InputPicker)`
 
   &.withValue {
     width: min-content;
-    min-width: 70px;
+    min-width: 78px;
   }
 `
 
