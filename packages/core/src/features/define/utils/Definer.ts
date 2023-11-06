@@ -1,13 +1,14 @@
 import type {CSSObject} from '@emotion/serialize/dist/declarations/types'
 import type {ComponentType, ReactNode} from 'react'
-import {commonStyles} from '../../annotation'
-import {Annotation} from '../../annotation/types/annotations/Annotation'
+import {commonStyles, getDefault, getDefaultCss} from '../../annotation'
+import {toArray} from '../../annotation/toArray'
+import {toStyleProperties} from '../../annotation/toStyleProperties'
+import type {Annotations} from '../../annotation/utils/builders/Annotations'
 import {modules} from '../constants'
-import type {ActionsInitializer, Annotations, ComponentKind} from '../types'
+import type {ActionsInitializer, ComponentKind} from '../types'
 import type {BuilderComponent} from './BuilderComponent'
 import {Meta} from './Meta'
 import {Model} from './Model'
-import {toArray} from './toArray'
 
 /**
  * Definer class data.
@@ -160,10 +161,7 @@ export class Definer<T extends object> {
    */
   build(): BuilderComponent {
     const propAns = toArray(this.data.properties)
-    const cssAns = [
-      ...toArray(this.data.cssObject, {annotationType: 'Style', calculable: false}),
-      ...commonStyles
-    ]
+    const cssAns = toStyleProperties({...this.data.cssObject, ...commonStyles})
     const valuedAnnotations = propAns.filter(an => an.valued === true)
     const firstValuedAn = valuedAnnotations[0]
     if (valuedAnnotations.length > 1) {
@@ -180,7 +178,7 @@ export class Definer<T extends object> {
       valuedAn?.key,
       valuedAn?.type,
       getDefault(propAns),
-      {any: {object: getDefault(cssAns)}},
+      getDefaultCss(cssAns),
       this.getType(),
       this.data.icon,
       this.data.kind
@@ -211,10 +209,3 @@ export class Definer<T extends object> {
 }
 
 export const define = Definer.define
-
-function getDefault(annotations: Annotation[]): Readonly<Record<string, any>> {
-  return annotations.reduce((props, an) => {
-    props[an.key] = an.default
-    return props
-  }, {} as Record<string, any>)
-}

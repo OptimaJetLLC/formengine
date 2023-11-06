@@ -1,5 +1,5 @@
 import {boolean} from '../annotation'
-import {toArray} from '../define'
+import {toArray} from '../annotation/toArray'
 import {modules} from '../define/constants'
 import {Meta} from '../define/utils/Meta'
 import {generateTemplateTypeName} from '../ui/templateUtil'

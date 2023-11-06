@@ -1,9 +1,10 @@
 import styled from '@emotion/styled'
-import {define, node, oneOf, size} from '@react-form-builder/core'
+import {containerStyles, define, node} from '@react-form-builder/core'
 
 const RsContainer = styled.div`
   display: flex;
 `
+const {flexDirection, gap} = containerStyles
 
 export const rsContainer = define(RsContainer)
   .type('RsContainer')
@@ -13,11 +14,7 @@ export const rsContainer = define(RsContainer)
     children: node.hinted('Component children')
   })
   .css({
-    flexDirection: oneOf('column', 'row', 'column-reverse', 'row-reverse')
-      .default('column'),
-    gap: size.default('10px'),
-    alignItems: oneOf('start', 'center', 'baseline', 'end', 'stretch'),
-    justifyContent: oneOf('flex-start', 'flex-end', 'center', 'space-between', 'space-around',
-      'space-evenly', 'start', 'end', 'left', 'right'),
-    flexWrap: oneOf('wrap', 'nowrap', 'wrap-reverse'),
+    ...containerStyles,
+    flexDirection: flexDirection.default('column'),
+    gap: gap.default('10px')
   })

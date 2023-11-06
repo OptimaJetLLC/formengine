@@ -1,5 +1,5 @@
 import {string} from '../annotation'
-import {toArray} from '../define'
+import {toArray} from '../annotation/toArray'
 import {Meta} from '../define/utils/Meta'
 import {errorMessageModel, ErrorWrapperProps} from './components/DefaultErrorMessage'
 

@@ -1,8 +1,8 @@
 import {reduce} from 'lodash-es'
-import {string} from '../../annotation'
-import {Annotation} from '../../annotation/types/annotations/Annotation'
-import {BuilderSetup} from '../../annotation/utils/builders/BaseBuilder'
-import {Annotations} from '../types'
+import {string} from './index'
+import {Annotation} from './types/annotations/Annotation'
+import type {Annotations} from './utils/builders/Annotations'
+import type {BuilderSetup} from './utils/builders/BaseBuilder'
 
 /**
  * Converts the object containing component property metadata into an array. **Internal use only.**

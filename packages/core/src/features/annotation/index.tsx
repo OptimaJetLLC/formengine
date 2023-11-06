@@ -75,20 +75,6 @@ const cssSize = createAnnotation('size').setup({calculable: false})
 const cssColor = createAnnotation('color').setup({calculable: false})
 
 /**
- * The array of annotation builders for generic CSS properties of a component.
- */
-export const commonStyles = [
-  cssSize.setup({default: '100%'}).build('width'),
-  cssSize.build('height'),
-  cssSize.build('marginTop'),
-  cssSize.build('marginRight'),
-  cssSize.build('marginBottom'),
-  cssSize.build('marginLeft'),
-  cssColor.build('color'),
-  cssColor.build('backgroundColor')
-]
-
-/**
  * The annotation builder for the component property containing the CSS class name.
  */
 export const className = createProperty('string')
@@ -124,5 +110,31 @@ export const tooltipProps = createAnnotation('tooltipProps')
  * The annotation builder for the synthetic 'renderWhen' property of the component.
  */
 export const renderWhen = createAnnotation('renderWhen').typed('boolean')
+
+/**
+ * The annotations for generic CSS properties of a component.
+ */
+export const commonStyles = {
+  width: cssSize.setup({default: '100%'}),
+  height: cssSize,
+  marginTop: cssSize,
+  marginRight: cssSize,
+  marginBottom: cssSize,
+  marginLeft: cssSize,
+  color: cssColor,
+  backgroundColor: cssColor,
+}
+
+/**
+ * The annotations for generic CSS properties of a container component.
+ */
+export const containerStyles = {
+  flexDirection: oneOf('column', 'row', 'column-reverse', 'row-reverse'),
+  gap: size,
+  alignItems: oneOf('start', 'center', 'baseline', 'end', 'stretch'),
+  justifyContent: oneOf('flex-start', 'flex-end', 'center', 'space-between', 'space-around',
+    'space-evenly', 'start', 'end', 'left', 'right'),
+  flexWrap: oneOf('wrap', 'nowrap', 'wrap-reverse')
+}
 
 export * from './utils'
