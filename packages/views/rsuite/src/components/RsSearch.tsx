@@ -31,6 +31,7 @@ const RsSearch = ({data, label, onLoadData, onSearch, value, className, ...props
 
 const Container = styled.div`
   display: flex;
+  flex: 1;
 
   .search-icon {
     margin-left: -28px;
@@ -45,6 +46,8 @@ const Container = styled.div`
 `
 
 const SInputPicker = styled(InputPicker)`
+  flex: 1;
+
   .rs-picker-toggle-caret.rs-icon {
     display: none;
   }
