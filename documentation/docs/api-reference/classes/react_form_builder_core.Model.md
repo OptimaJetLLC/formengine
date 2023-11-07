@@ -19,7 +19,7 @@ Represents component metadata for the form viewer.
 
 ### constructor
 
-• **new Model**<`T`\>(`component`, `name?`, `actionsInitializer?`, `valued?`, `valueType?`, `defaultProps?`, `css?`, `typeName?`, `icon?`)
+• **new Model**<`T`\>(`component`, `name?`, `actionsInitializer?`, `valued?`, `valueType?`, `defaultProps?`, `css?`, `typeName?`, `icon?`, `kind?`)
 
 Creates component metadata for the form viewer.
 
@@ -31,17 +31,18 @@ Creates component metadata for the form viewer.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `component` | `ComponentType`<`T`\> | the React component. |
-| `name?` | `string` | the component name. |
-| `actionsInitializer?` | [`ActionsInitializer`](../modules/react_form_builder_core.md#actionsinitializer) | the function to initialize actions in the component. |
-| `valued?` | `string` | the name of the component property where the component value is stored. |
-| `valueType?` | keyof [`SchemaTypeMap`](../modules/react_form_builder_core.md#schematypemap) | the type of the component value. |
-| `defaultProps?` | `Readonly`<`Record`<`string`, `any`\>\> | the component's default property values. |
-| `css?` | [`Css`](../modules/react_form_builder_core.md#css) | the component's CSS values. |
-| `typeName?` | `string` | the component type name. |
-| `icon?` | `ComponentType` | the component icon. |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `component` | `ComponentType`<`T`\> | `undefined` | the React component. |
+| `name?` | `string` | `undefined` | the component name. |
+| `actionsInitializer?` | [`ActionsInitializer`](../modules/react_form_builder_core.md#actionsinitializer) | `undefined` | the function to initialize actions in the component. |
+| `valued?` | `string` | `undefined` | the name of the component property where the component value is stored. |
+| `valueType?` | keyof [`SchemaTypeMap`](../modules/react_form_builder_core.md#schematypemap) | `undefined` | the type of the component value. |
+| `defaultProps?` | `Readonly`<`Record`<`string`, `any`\>\> | `undefined` | the component's default property values. |
+| `css?` | [`Css`](../modules/react_form_builder_core.md#css) | `undefined` | the component's CSS values. |
+| `typeName?` | `string` | `undefined` | the component type name. |
+| `icon?` | `ComponentType` | `undefined` | the component icon. |
+| `kind` | [`ComponentKind`](../modules/react_form_builder_core.md#componentkind) | `'component'` | the component kind. |
 
 ## Properties
 
@@ -82,6 +83,14 @@ ___
 • `Optional` `Readonly` **icon**: `ComponentType`
 
 the component icon.
+
+___
+
+### kind
+
+• `Readonly` **kind**: [`ComponentKind`](../modules/react_form_builder_core.md#componentkind) = `'component'`
+
+the component kind.
 
 ___
 

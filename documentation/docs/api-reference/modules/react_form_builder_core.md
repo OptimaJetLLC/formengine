@@ -260,6 +260,14 @@ The component key.
 
 ___
 
+### ComponentKind
+
+Ƭ **ComponentKind**: ``"container"`` \| ``"component"``
+
+The component kind type.
+
+___
+
 ### ComponentLocalizer
 
 Ƭ **ComponentLocalizer**: (`componentStore`: [`ComponentStore`](../classes/react_form_builder_core.ComponentStore.md), `language`: [`Language`](../classes/react_form_builder_core.Language.md)) => `Record`<`string`, `any`\>
@@ -453,6 +461,7 @@ Definer class data.
 | `cssObject?` | [`Annotations`](react_form_builder_core.md#annotations)<`CSSObject`\> | The CSS metadata. |
 | `customPreview?` | `ReactNode` | The custom component to display in the component list (unused). |
 | `icon?` | `ComponentType` | The component icon. |
+| `kind?` | [`ComponentKind`](react_form_builder_core.md#componentkind) | The component kind. |
 | `name?` | `string` | The component name. |
 | `properties?` | [`Annotations`](react_form_builder_core.md#annotations)<`T`\> | The property metadata. |
 
@@ -1199,9 +1208,40 @@ ___
 
 ### commonStyles
 
-• `Const` **commonStyles**: [`Annotation`](../classes/react_form_builder_core.Annotation.md)[]
+• `Const` **commonStyles**: `Object`
 
-The array of annotation builders for generic CSS properties of a component.
+The annotations for generic CSS properties of a component.
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `backgroundColor` | [`AnnotationBuilder`](../classes/react_form_builder_core.AnnotationBuilder.md)<`unknown`\> |
+| `color` | [`AnnotationBuilder`](../classes/react_form_builder_core.AnnotationBuilder.md)<`unknown`\> |
+| `height` | [`AnnotationBuilder`](../classes/react_form_builder_core.AnnotationBuilder.md)<`unknown`\> |
+| `marginBottom` | [`AnnotationBuilder`](../classes/react_form_builder_core.AnnotationBuilder.md)<`unknown`\> |
+| `marginLeft` | [`AnnotationBuilder`](../classes/react_form_builder_core.AnnotationBuilder.md)<`unknown`\> |
+| `marginRight` | [`AnnotationBuilder`](../classes/react_form_builder_core.AnnotationBuilder.md)<`unknown`\> |
+| `marginTop` | [`AnnotationBuilder`](../classes/react_form_builder_core.AnnotationBuilder.md)<`unknown`\> |
+| `width` | [`AnnotationBuilder`](../classes/react_form_builder_core.AnnotationBuilder.md)<`unknown`\> |
+
+___
+
+### containerStyles
+
+• `Const` **containerStyles**: `Object`
+
+The annotations for generic CSS properties of a container component.
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `alignItems` | [`OneOfBuilder`](../classes/react_form_builder_core.OneOfBuilder.md)<``"start"`` \| ``"center"`` \| ``"baseline"`` \| ``"end"`` \| ``"stretch"``\> |
+| `flexDirection` | [`OneOfBuilder`](../classes/react_form_builder_core.OneOfBuilder.md)<``"column"`` \| ``"row"`` \| ``"column-reverse"`` \| ``"row-reverse"``\> |
+| `flexWrap` | [`OneOfBuilder`](../classes/react_form_builder_core.OneOfBuilder.md)<``"wrap"`` \| ``"nowrap"`` \| ``"wrap-reverse"``\> |
+| `gap` | [`TypedBuilder`](../classes/react_form_builder_core.TypedBuilder.md)<`undefined` \| `string`\> |
+| `justifyContent` | [`OneOfBuilder`](../classes/react_form_builder_core.OneOfBuilder.md)<``"start"`` \| ``"center"`` \| ``"end"`` \| ``"flex-start"`` \| ``"flex-end"`` \| ``"space-between"`` \| ``"space-around"`` \| ``"space-evenly"`` \| ``"left"`` \| ``"right"``\> |
 
 ___
 
@@ -1302,7 +1342,7 @@ ___
 
 ### screenModel
 
-• `Const` **screenModel**: [`Model`](../classes/react_form_builder_core.Model.md)<[`ScreenProps`](../interfaces/react_form_builder_core.ScreenProps.md)\>
+• `Const` **screenModel**: [`Model`](../classes/react_form_builder_core.Model.md)<{ `as?`: `ElementType`<`any`\> ; `theme?`: `Theme`  } & `ClassAttributes`<`HTMLDivElement`\> & `HTMLAttributes`<`HTMLDivElement`\>\>
 
 Form viewer screen metadata. **Internal use only.**
 
@@ -1715,6 +1755,46 @@ Generates a unique name with the specified prefix. **Internal use only.**
 `string`
 
 the generated name.
+
+___
+
+### getDefault
+
+▸ **getDefault**(`annotations`): `Readonly`<`Record`<`string`, `any`\>\>
+
+Extracts component properties default values from annotations . **Internal use only.**
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `annotations` | [`Annotation`](../classes/react_form_builder_core.Annotation.md)[] | the array of component annotations. |
+
+#### Returns
+
+`Readonly`<`Record`<`string`, `any`\>\>
+
+the object containing component properties default values.
+
+___
+
+### getDefaultCss
+
+▸ **getDefaultCss**(`annotations`): `Readonly`<`Record`<`string`, `any`\>\>
+
+Extracts CSS properties default values from annotations . **Internal use only.**
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `annotations` | [`Annotation`](../classes/react_form_builder_core.Annotation.md)[] | the array of component annotations. |
+
+#### Returns
+
+`Readonly`<`Record`<`string`, `any`\>\>
+
+the object with CSS properties default values.
 
 ___
 

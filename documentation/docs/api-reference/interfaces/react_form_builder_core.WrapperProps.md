@@ -22,3 +22,11 @@ React wrapper component properties.
 • **children**: `ReactNode`
 
 The React child node.
+
+___
+
+### className
+
+• `Optional` **className**: `string`
+
+The CSS class name.

@@ -161,7 +161,7 @@ const config = {
         sidebar: {
           categoryLabel: 'API Reference',
           collapsed: false,
-          position: 10,
+          position: 100,
           fullNames: false,
         },
       },

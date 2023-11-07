@@ -135,6 +135,26 @@ the modified Definer class instance.
 
 ___
 
+### kind
+
+▸ **kind**(`kind`): [`Definer`](react_form_builder_core.Definer.md)<`T`\>
+
+Sets the kind of the component.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `kind` | [`ComponentKind`](../modules/react_form_builder_core.md#componentkind) | the component kind. |
+
+#### Returns
+
+[`Definer`](react_form_builder_core.Definer.md)<`T`\>
+
+the modified Definer class instance.
+
+___
+
 ### name
 
 ▸ **name**(`name`): [`Definer`](react_form_builder_core.Definer.md)<`T`\>

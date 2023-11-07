@@ -29,6 +29,18 @@ The React child node.
 
 ___
 
+### className
+
+• `Optional` **className**: `string`
+
+The CSS class name.
+
+#### Inherited from
+
+[WrapperProps](react_form_builder_core.WrapperProps.md).[className](react_form_builder_core.WrapperProps.md#classname)
+
+___
+
 ### placement
 
 • **placement**: `Placement`

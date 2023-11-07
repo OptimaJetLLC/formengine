@@ -13,20 +13,21 @@ Component metadata for the form builder.
 
 ### constructor
 
-• **new Meta**(`type`, `properties`, `css`, `modules`, `customPreview?`, `valuedAn?`)
+• **new Meta**(`type`, `properties`, `css`, `modules`, `customPreview?`, `valuedAn?`, `kind?`)
 
 Creates the component metadata for the form builder.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `type` | `string` | the component type name. |
-| `properties` | [`Annotation`](react_form_builder_core.Annotation.md)[] | the component's properties metadata. |
-| `css` | [`Annotation`](react_form_builder_core.Annotation.md)[] | the component's CSS metadata. |
-| `modules` | [`Annotation`](react_form_builder_core.Annotation.md)[] | common metadata for the component. |
-| `customPreview?` | `ReactNode` | the custom ReactNode to be drawn on the toolbar. |
-| `valuedAn?` | [`Annotation`](react_form_builder_core.Annotation.md) | the metadata for the component value. |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `type` | `string` | `undefined` | the component type name. |
+| `properties` | [`Annotation`](react_form_builder_core.Annotation.md)[] | `undefined` | the component's properties metadata. |
+| `css` | [`Annotation`](react_form_builder_core.Annotation.md)[] | `undefined` | the component's CSS metadata. |
+| `modules` | [`Annotation`](react_form_builder_core.Annotation.md)[] | `undefined` | common metadata for the component. |
+| `customPreview?` | `ReactNode` | `undefined` | the custom ReactNode to be drawn on the toolbar. |
+| `valuedAn?` | [`Annotation`](react_form_builder_core.Annotation.md) | `undefined` | the metadata for the component value. |
+| `kind` | [`ComponentKind`](../modules/react_form_builder_core.md#componentkind) | `'component'` | the component kind. |
 
 ## Properties
 
@@ -43,6 +44,14 @@ ___
 • `Optional` `Readonly` **customPreview**: `ReactNode`
 
 the custom ReactNode to be drawn on the toolbar.
+
+___
+
+### kind
+
+• `Readonly` **kind**: [`ComponentKind`](../modules/react_form_builder_core.md#componentkind) = `'component'`
+
+the component kind.
 
 ___
 
