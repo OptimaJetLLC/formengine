@@ -16,6 +16,12 @@ Form Builder consists of the following NPM packages:
 2. [@react-form-builder/designer](https://www.npmjs.com/package/@react-form-builder/designer).
 3. [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
 
+:::tip
+
+Form Builder packages rely on peer dependencies, make sure your package manager automatically installs peer dependencies.
+
+:::
+
 ## @react-form-builder/core package
 
 This is the main Form Builder package that contains the React methods and components for displaying the form. This package must be used at
