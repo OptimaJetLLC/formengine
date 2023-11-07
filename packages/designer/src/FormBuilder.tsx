@@ -57,7 +57,6 @@ const Content = styled.div`
   justify-content: space-between;
   min-height: 0;
   padding-bottom: 15px;
-  overflow: hidden;
 `
 
 

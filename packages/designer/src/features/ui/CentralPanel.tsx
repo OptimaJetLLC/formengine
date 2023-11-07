@@ -33,7 +33,7 @@ const SContainer = styled.div`
   flex-direction: column;
   flex: 1;
   min-height: 0;
-  min-width: 0;
+  min-width: 550px;
 `
 
 const SFormContainer = styled(PanelContainer)`

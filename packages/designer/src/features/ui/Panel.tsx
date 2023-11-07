@@ -53,20 +53,26 @@ export const Panel = namedObserver('Panel', ({
   </PanelContainer>
 })
 
+const transition = '200ms ease-in-out'
 
 export const ContentContainer = styled.div`
   min-height: 0;
   display: flex;
   flex-direction: column;
   flex: 1;
-  transition: opacity 200ms ease-in-out;
+  transition: opacity ${transition}, width 0ms 200ms;
 
   .right &, .left & {
     width: 280px;
+    overflow: hidden;
   }
 
   &.collapsed.hideCollapsed {
     opacity: 0;
+
+    .right &, .left & {
+      width: 0;
+    }
   }
 `
 
@@ -140,8 +146,6 @@ export const HideButton = styled.div`
   }
 `
 
-const transition = '200ms ease-in-out'
-
 export const PanelContainer = styled.div<CollapsedSizeProps>`
   position: relative;
   display: flex;
@@ -151,6 +155,7 @@ export const PanelContainer = styled.div<CollapsedSizeProps>`
 
   &.right, &.left {
     max-height: 1200px;
+    width: 290px;
   }
 
   &.right {
