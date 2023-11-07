@@ -10,7 +10,6 @@ export const rsButton = define(Button)
     appearance: oneOf('default', 'primary', 'link', 'subtle', 'ghost')
       .default('default')
       .hinted('A button can have different appearances'),
-    block: boolean.default(true).hinted('Spans the full width of the Button parent'),
     children: string.required.named('Content').default('Button'),
     color: oneOf('red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'violet')
       .hinted('A button can have different colors'),

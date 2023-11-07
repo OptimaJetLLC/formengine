@@ -7,7 +7,6 @@ export const rsDatePicker = define(DatePicker)
   .name('DatePicker')
   .props({
     appearance: oneOf('default', 'subtle').hinted('Set picker appearance'),
-    block: boolean.hinted('Blocking an entire row'),
     calendarDefaultDate: date.hinted('Calendar panel default presentation date and time'),
     cleanable: boolean.hinted('Whether the selected value can be cleared'),
     defaultOpen: boolean.hinted('Default value of open property'),
