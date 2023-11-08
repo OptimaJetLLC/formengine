@@ -1,5 +1,4 @@
 import {cx} from '@emotion/css'
-import styled from '@emotion/styled'
 import {forIn} from 'lodash-es'
 import {Fragment, useCallback, useEffect, useMemo} from 'react'
 import {catchError, concatMap, filter, OperatorFunction, Subscription} from 'rxjs'
@@ -13,6 +12,7 @@ import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 import {TooltipWrapper} from '../tooltip/TooltipWrapper'
 import {Erroneous} from '../validation'
 import {useComponentTreeContext} from './ComponentTreeContext'
+import {DefaultWrapper} from './DefaultWrapper'
 
 const useActions = (state: ComponentState) => {
   const store = useStore()
@@ -85,21 +85,19 @@ export const ComponentViewer = namedObserver('ComponentViewer', () => {
   const {kind, component: Component} = data.model
   const containerClassName = cx(props.className, componentState.wrapperClassName)
 
-  const Wrapper = formViewerProps.componentWrapper ?? Div
+  const Wrapper = formViewerProps.componentWrapper ?? DefaultWrapper
   const Tooltip = data.store.tooltipProps ? TooltipWrapper : Fragment
   const ContainerComponent = formViewerProps.componentWrapper ?? Component
+  const component = <Component {...props}/>
 
-  return kind === 'container'
-    ? <ContainerComponent {...props} className={containerClassName}/>
-    : <Wrapper className={componentState.wrapperClassName}>
-      <Tooltip>
-        <Erroneous>
-          <Component {...props}/>
-        </Erroneous>
-      </Tooltip>
-    </Wrapper>
+  if (kind === 'container') {
+    return <ContainerComponent {...props} className={containerClassName}/>
+  }
+
+  return <Wrapper className={kind === 'template' ? containerClassName : componentState.wrapperClassName}>
+    {kind === 'template'
+      ? component
+      : <Tooltip><Erroneous>{component}</Erroneous></Tooltip>
+    }
+  </Wrapper>
 })
-
-const Div = styled.div`
-  display: flex;
-`

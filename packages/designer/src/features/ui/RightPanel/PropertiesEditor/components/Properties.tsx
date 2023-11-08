@@ -71,7 +71,7 @@ const Properties = namedObserver('Properties', ({activeTab}: PropertiesProps) =>
           {activeTab === Section.Main && <PropertyEditorWrapper annotation={key} context={data.store}/>}
           {notSlot && <PropertyBlock annotations={properties} context={data.store.props}/>}
           {activeTab === Section.Style && notSlot &&
-            <StyleBlock meta={meta} store={data.store}/>
+            <Styles meta={meta} store={data.store}/>
           }
         </PropertiesList>
 
@@ -88,27 +88,44 @@ const Properties = namedObserver('Properties', ({activeTab}: PropertiesProps) =>
   )
 })
 
-const StyleBlock = namedObserver('StyleBlock', ({meta, store}: { meta: Meta, store: ComponentStore }) => {
+const Styles = namedObserver('Styles', ({meta, store}: { meta: Meta, store: ComponentStore }) => {
   const t = useTranslationPart('style')
   const [device, setDevice] = useState<Device>('any')
-  const initCssContext = useCallback(getCssContextInitializer('css', store, device), [store, device])
-  const isContainer = meta.kind === 'container'
-  const initWrapperCssContext = useCallback(getCssContextInitializer('wrapperCss', store, device), [store, device])
+  const isComponent = meta.kind === 'component'
+  const isTemplate = meta.kind === 'template'
   const classNameEditor = <PropertyEditorWrapper annotation={className} context={store.props}/>
 
   return <>
     <DevicePicker value={device} onChange={setDevice}/>
-    <PropertyBlock header={isContainer ? undefined : t('component')} headerHint={isContainer ? undefined : t('componentHint')}
-                   annotations={meta.css}
-                   context={store.css?.[device]?.object ?? {}} initContext={initCssContext}/>
-    {!isContainer && classNameEditor}
-    <PropertyBlock header={isContainer ? undefined : t('wrapper')} headerHint={isContainer ? undefined : t('wrapperHint')}
-                   annotations={meta.wrapperCss}
-                   context={store.wrapperCss?.[device]?.object ?? {}}
-                   initContext={initWrapperCssContext}/>
-    {isContainer && classNameEditor}
-    <CSSEditor device={device} useWrapperStyles={!isContainer}/>
+    {!isTemplate &&
+      <StyleBlock meta={meta} store={store} device={device} cssPart={'css'} header={t('component')} headerHint={t('componentHint')}/>
+    }
+    {isComponent && classNameEditor}
+    <StyleBlock meta={meta} store={store} device={device} cssPart={'wrapperCss'} header={t('wrapper')} headerHint={t('wrapperHint')}/>
+    {!isComponent && classNameEditor}
+    <CSSEditor device={device} useWrapperStyles={isComponent} defaultActiveTab={isTemplate ? 'wrapperCss' : 'css'}/>
   </>
+})
+
+interface StyleBlockProps {
+  meta: Meta
+  store: ComponentStore
+  device: Device
+  cssPart: CssPart
+  header: string
+  headerHint: string
+}
+
+const StyleBlock = namedObserver('StyleBlock', ({meta, store, device, cssPart, header, headerHint}: StyleBlockProps) => {
+  const initContext = useCallback(getCssContextInitializer(cssPart, store, device), [cssPart, store, device])
+  const context = store[cssPart]?.[device]?.object ?? {}
+  const isComponent = meta.kind === 'component'
+
+  return (
+    <PropertyBlock header={isComponent ? header : undefined}
+                   headerHint={isComponent ? headerHint : undefined}
+                   annotations={meta[cssPart]} context={context} initContext={initContext}/>
+  )
 })
 
 const getCssContextInitializer = (fieldKey: CssPart, store: ComponentStore, device: Device) => {

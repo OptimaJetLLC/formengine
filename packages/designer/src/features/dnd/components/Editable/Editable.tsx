@@ -5,6 +5,7 @@ import {
   ComponentState,
   ComponentStore,
   ComponentTree,
+  DefaultWrapper,
   groupBy,
   isContainer,
   namedObserver,
@@ -72,8 +73,8 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
 
 export const EditableWrapper = namedObserver('EditableWrapper', ({children, ...props}: WrapperProps) => {
   const viewerStore = useStore()
-  // no need to draw Editable component inside child FormViewer
-  return viewerStore.parentStore ? <>{children}</> : <Editable children={children} {...props}/>
+  const Wrapper = viewerStore.parentStore ? DefaultWrapper : Editable
+  return <Wrapper children={children} {...props}/>
 })
 
 const Editable = namedObserver('Editable', ({children, className}: WrapperProps) => {

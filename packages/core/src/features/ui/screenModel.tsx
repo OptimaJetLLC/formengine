@@ -1,17 +1,17 @@
-import styled from '@emotion/styled'
 import {commonStyles, containerStyles, getDefaultCss} from '../annotation'
 import {toStyleProperties} from '../annotation/toStyleProperties'
 import {Model} from '../define'
+import {DefaultWrapper} from './DefaultWrapper'
 
-
-const Screen = styled.div`
-  display: flex;
-`
+const Screen = DefaultWrapper
 Screen.displayName = 'Screen'
+
+const {height} = commonStyles
 const {flexDirection, gap} = containerStyles
 export const screenStyleProperties = toStyleProperties({
   ...containerStyles,
   ...commonStyles,
+  height: height.setup({default: '100%'}),
   flexDirection: flexDirection.default('column'),
   gap: gap.default('10px')
 })

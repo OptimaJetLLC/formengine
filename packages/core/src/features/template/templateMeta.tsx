@@ -3,6 +3,7 @@ import {toArray} from '../annotation/toArray'
 import {modules} from '../define/constants'
 import {Meta} from '../define/utils/Meta'
 import {generateTemplateTypeName} from '../ui/templateUtil'
+import {templateStyleProperties} from './templateModel'
 
 interface TemplateProps {
   storeDataInParentForm?: boolean
@@ -25,5 +26,5 @@ export function createTemplateMeta(name: string) {
     toArray<TemplateProps>({
       storeDataInParentForm,
     }),
-    [], [], modules, <>Template: {name}</>)
+    [], templateStyleProperties, modules, <>Template: {name}</>, undefined, 'template')
 }

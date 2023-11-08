@@ -130,6 +130,7 @@ export type {CssLoaderType, FormViewerWrapperComponentProps, FormViewerWrapper} 
 export {loadResource, unloadResource} from './utils/resourceLoader'
 export type {Rel} from './utils/resourceLoader'
 export type {BuilderComponent} from './features/define'
+export {DefaultWrapper} from './features/ui/DefaultWrapper'
 export {SuppressResizeObserverErrors} from './features/ui/SuppressResizeObserverErrors'
 export type {SuppressResizeObserverErrorsProps} from './features/ui/SuppressResizeObserverErrors'
 export type {FormValidator, FormValidators} from './features/form-viewer/FormValidators'

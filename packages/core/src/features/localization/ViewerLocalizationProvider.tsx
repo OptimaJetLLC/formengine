@@ -1,4 +1,5 @@
 import {CacheProvider} from '@emotion/react'
+import styled from '@emotion/styled'
 import {ComponentType, ReactNode, useEffect} from 'react'
 import {namedObserver} from '../../utils'
 import {useStore} from '../../utils/contexts/StoreContext'
@@ -26,13 +27,19 @@ export const ViewerLocalizationProvider = namedObserver('ViewerLocalizationProvi
   const selectedCache = language.bidi == BiDi.RTL ? emotionCache.RTL : emotionCache.LTR
 
   return (
-    <div dir={language.bidi} lang={language.fullCode}>
+    <SDiv dir={language.bidi} lang={language.fullCode}>
       <CacheProvider value={selectedCache}>
         {nestViewerWrappers(viewerStore.formViewerPropsStore.view.viewerWrappers, language, props.children)}
       </CacheProvider>
-    </div>
+    </SDiv>
   )
 })
+
+const SDiv = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+`
 
 const nestViewerWrappers = ([Wrapper, ...more]: ComponentType<FormViewerWrapperComponentProps>[],
                             language: Language, children: ReactNode) => {

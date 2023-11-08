@@ -4,6 +4,8 @@ import {Store} from '../../stores/Store'
 import {ComponentData, useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {StoreProvider} from '../../utils/contexts/StoreContext'
 import {createNonNullableContext} from '../../utils/createNonNullableContext'
+import {commonStyles, getDefaultCss} from '../annotation'
+import {toStyleProperties} from '../annotation/toStyleProperties'
 import {Model} from '../define'
 import {FormViewer, FormViewerProps} from '../form-viewer'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
@@ -56,6 +58,9 @@ const Template = (templateProps: Record<string, any>) => {
   )
 }
 
+export const templateStyleProperties = toStyleProperties(commonStyles)
+const defaultCss = getDefaultCss(templateStyleProperties)
+
 /**
  * Creates the template component metadata for the form viewer.
  * @param name the template name.
@@ -64,5 +69,6 @@ const Template = (templateProps: Record<string, any>) => {
 export function createTemplateModel(name: string) {
   const typeName = generateTemplateTypeName(name)
   const defaultProps = {name, storeDataInParentForm: true}
-  return new Model(Template, name, undefined, typeName, 'object', defaultProps, undefined, undefined, typeName)
+  return new Model(Template, name, undefined, typeName, 'object', defaultProps, defaultCss,
+    undefined, typeName, undefined, 'template')
 }

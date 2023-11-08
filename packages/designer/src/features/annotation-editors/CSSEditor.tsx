@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import {CssPart, namedObserver, useComponentData} from '@react-form-builder/core'
-import {useMemo, useState} from 'react'
+import {useEffect, useMemo, useState} from 'react'
 import {Device} from '../../utils/types'
 import {CodeEditor} from '../components/CodeEditor'
 import {Rows} from '../components/Containers'
@@ -18,15 +18,22 @@ export interface CSSEditorProps {
   /**
    * Flag, true if you need use wrapper styles tab, false otherwise.
    */
-  useWrapperStyles: boolean
+  useWrapperStyles?: boolean
+  /**
+   * The tab which is selected by default.
+   */
+  defaultActiveTab?: CssPart
 }
 
 type Item = { value: CssPart, label: string }
 
-export const CSSEditor = namedObserver('CSSEditor', ({device, useWrapperStyles}: CSSEditorProps) => {
+export const CSSEditor = namedObserver('CSSEditor', ({device, useWrapperStyles, defaultActiveTab}: CSSEditorProps) => {
   const {store} = useComponentData()
   const t = useTranslationPart('style')
-  const [activeTab, setActiveTab] = useState<CssPart>('css')
+  const [activeTab, setActiveTab] = useState<CssPart>(defaultActiveTab ?? 'css')
+  useEffect(() => {
+    setActiveTab(defaultActiveTab ?? 'css')
+  }, [defaultActiveTab])
   const initialValue = useMemo(() => {
     return store[activeTab]?.[device]?.string ?? ''
   }, [store, device, activeTab])
