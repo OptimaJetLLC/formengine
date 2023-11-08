@@ -24,7 +24,7 @@ export default defineConfig(({command}) => ({
       fileName: 'index'
     },
     rollupOptions: {
-      plugins: [excludeDependenciesFromBundle()],
+      plugins: [excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})],
     }
   },
 }))

@@ -16,6 +16,17 @@ To install the package in your application, use the command:
 npm install @react-form-builder/core
 ```
 
+:::tip
+
+If your package manager does not support automatic installation of peer dependencies, for example you use the `--legacy-peer-deps` flag in
+npm, then you need to install peer dependencies manually.
+
+```bash
+npm install @emotion/cache@11.10.5 @emotion/css@11.10.5 @emotion/react@11.10.5 @emotion/styled@11.10.5 mobx@6.9.0 mobx-react@7.6.0 rxjs@7.8.0 stylis-plugin-rtl@2.1.1 --save-exact
+```
+
+:::
+
 The `FormViewer` component receives as input the properties described in the
 type [FormViewerProps](/api-reference/interfaces/react_form_builder_core.FormViewerProps).
 
@@ -67,6 +78,17 @@ To add dependencies for the example below, install the packages using the follow
 ```bash
 npm install @react-form-builder/core @react-form-builder/components-rsuite
 ```
+
+:::tip
+
+If your package manager does not support automatic installation of peer dependencies, for example you use the `--legacy-peer-deps` flag in
+npm, then you need to install peer dependencies manually.
+
+```bash
+npm install @emotion/cache@11.10.5 @emotion/css@11.10.5 @emotion/react@11.10.5 @emotion/styled@11.10.5 mobx@6.9.0 mobx-react@7.6.0 rxjs@7.8.0 stylis-plugin-rtl@2.1.1 @rsuite/icons@1.0.2 react-number-format@5.1.4 rsuite@5.38.0 --save-exact
+```
+
+:::
 
 The code below passes almost the same properties as the example from the [designer article](/designer#formbuilder-code-example). The
 difference is that you can pass additional properties to the properties of the `FormBuilder` component that are needed only in the form

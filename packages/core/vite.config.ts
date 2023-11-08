@@ -23,7 +23,7 @@ export default defineConfig(({command}) => ({
       fileName: 'index'
     },
     rollupOptions: {
-      plugins: [excludeDependenciesFromBundle({dependencies: false})]
+      plugins: [excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})]
     }
   },
 }))

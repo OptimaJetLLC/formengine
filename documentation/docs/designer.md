@@ -16,6 +16,17 @@ To install the package in your application, use the command:
 npm install @react-form-builder/designer
 ```
 
+:::tip
+
+If your package manager does not support automatic installation of peer dependencies, for example you use the `--legacy-peer-deps` flag in
+npm, then you need to install peer dependencies manually.
+
+```bash
+npm install @emotion/css@11.10.5 @emotion/react@11.10.5 @emotion/styled@11.10.5 mobx@6.9.0 rsuite@5.38.0 rsuite-table@5.10.3 --save-exact
+```
+
+:::
+
 Below is sample code for embedding the `FormBuilder` component into your application:
 
 ```tsx title='App.tsx'
@@ -45,6 +56,17 @@ Run the following command to install the package:
 ```bash
 npm install @react-form-builder/components-rsuite
 ```
+
+:::tip
+
+If your package manager does not support automatic installation of peer dependencies, for example you use the `--legacy-peer-deps` flag in
+npm, then you need to install peer dependencies manually.
+
+```bash
+npm install @emotion/css@11.10.5 @emotion/react@11.10.5 @emotion/styled@11.10.5 @rsuite/icons@1.0.2 react-number-format@5.1.4 rsuite@5.38.0 --save-exact
+```
+
+:::
 
 Then copy and paste the code below:
 

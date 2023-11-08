@@ -15,6 +15,17 @@ To install the components, run the following command:
 npm install @react-form-builder/components-rsuite
 ```
 
+:::tip
+
+If your package manager does not support automatic installation of peer dependencies, for example you use the `--legacy-peer-deps` flag in
+npm, then you need to install peer dependencies manually.
+
+```bash
+npm install @emotion/css@11.10.5 @emotion/react@11.10.5 @emotion/styled@11.10.5 @rsuite/icons@1.0.2 react-number-format@5.1.4 rsuite@5.38.0 --save-exact
+```
+
+:::
+
 You can see an example of connecting components to [FormBuilder](/designer#formbuilder-code-example) in this section of the
 documentation. An example of connecting components to [FormViewer](/viewer#formviewer-code-example) in this section of the documentation.
 
