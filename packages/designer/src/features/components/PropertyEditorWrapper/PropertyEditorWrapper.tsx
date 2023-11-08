@@ -51,7 +51,7 @@ export const PropertyEditorWrapper = namedObserver('PropertyEditorWrapper', ({
 
   useEffect(() => {
     setContextInitialized(false)
-  }, [componentData])
+  }, [componentData, initContext])
 
   const onClean = useCallback(() => delete context[annotation.key], [context, annotation])
 
