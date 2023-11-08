@@ -38,10 +38,10 @@ const SlotContent = namedObserver('SlotContent', ({parentStore}: { parentStore: 
 
 const SlotPlaceholder = namedObserver('SlotPlaceholder', () => {
   const {key} = useComponentData()
-  return <SDiv>Components slot: '{key}'</SDiv>
+  return <SDiv>Slot: '{key}'</SDiv>
 })
 
 const SDiv = styled.div`
-  background: lightblue;
+  background-color: rgb(150, 150, 150, 25%);
   padding: 5px;
 `
