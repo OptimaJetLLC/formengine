@@ -375,6 +375,14 @@ Represents the type of CSS loader. Can be either BiDi or common for both BiDi.
 
 ___
 
+### CssPart
+
+Ƭ **CssPart**: ``"css"`` \| ``"wrapperCss"``
+
+The part of the CSS properties of a component.
+
+___
+
 ### CustomActions
 
 Ƭ **CustomActions**: `Record`<`string`, [`ActionDefinition`](../classes/react_form_builder_core.ActionDefinition.md) \| [`ActionEventHandler`](react_form_builder_core.md#actioneventhandler)\>

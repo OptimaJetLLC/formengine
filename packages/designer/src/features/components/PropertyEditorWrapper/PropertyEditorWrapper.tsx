@@ -7,7 +7,7 @@ import {
   namedObserver,
   useComponentData
 } from '@react-form-builder/core'
-import {createElement, useCallback, useState} from 'react'
+import {createElement, useCallback, useEffect, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {EditorMap} from '../../annotation-editors'
 import type {AnnotationEditorProps, CalculableEditorProps} from '../../annotation-editors/AnnotationEditorProps'
@@ -47,7 +47,11 @@ export const PropertyEditorWrapper = namedObserver('PropertyEditorWrapper', ({
       return
     }
     propertyContext[annotation.key] = value
-  }, [context, initContext, annotation])
+  }, [context, initContext, annotation, contextInitialized])
+
+  useEffect(() => {
+    setContextInitialized(false)
+  }, [componentData])
 
   const onClean = useCallback(() => delete context[annotation.key], [context, annotation])
 

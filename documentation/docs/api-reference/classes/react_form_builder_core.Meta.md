@@ -13,7 +13,7 @@ Component metadata for the form builder.
 
 ### constructor
 
-• **new Meta**(`type`, `properties`, `css`, `modules`, `customPreview?`, `valuedAn?`, `kind?`)
+• **new Meta**(`type`, `properties`, `css`, `wrapperCss`, `modules`, `customPreview?`, `valuedAn?`, `kind?`)
 
 Creates the component metadata for the form builder.
 
@@ -24,6 +24,7 @@ Creates the component metadata for the form builder.
 | `type` | `string` | `undefined` | the component type name. |
 | `properties` | [`Annotation`](react_form_builder_core.Annotation.md)[] | `undefined` | the component's properties metadata. |
 | `css` | [`Annotation`](react_form_builder_core.Annotation.md)[] | `undefined` | the component's CSS metadata. |
+| `wrapperCss` | [`Annotation`](react_form_builder_core.Annotation.md)[] | `undefined` | the component's wrapper CSS metadata. |
 | `modules` | [`Annotation`](react_form_builder_core.Annotation.md)[] | `undefined` | common metadata for the component. |
 | `customPreview?` | `ReactNode` | `undefined` | the custom ReactNode to be drawn on the toolbar. |
 | `valuedAn?` | [`Annotation`](react_form_builder_core.Annotation.md) | `undefined` | the metadata for the component value. |
@@ -84,3 +85,11 @@ ___
 • `Optional` `Readonly` **valuedAn**: [`Annotation`](react_form_builder_core.Annotation.md)
 
 the metadata for the component value.
+
+___
+
+### wrapperCss
+
+• `Readonly` **wrapperCss**: [`Annotation`](react_form_builder_core.Annotation.md)[]
+
+the component's wrapper CSS metadata.

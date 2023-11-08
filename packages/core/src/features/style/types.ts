@@ -41,3 +41,8 @@ export type Css = {
    */
   desktop?: DeviceStyle
 }
+
+/**
+ * The part of the CSS properties of a component.
+ */
+export type CssPart = 'css' | 'wrapperCss'

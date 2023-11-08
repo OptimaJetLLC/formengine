@@ -107,7 +107,7 @@
         "key": "Image 1",
         "type": "RsImage",
         "props": {},
-        "css": {
+        "wrapperCss": {
           "any": {
             "object": {
               "width": "100%",

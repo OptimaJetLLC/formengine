@@ -1,3 +1,4 @@
+import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {forIn} from 'lodash-es'
 import {Fragment, useCallback, useEffect, useMemo} from 'react'
@@ -80,19 +81,20 @@ export const ComponentViewer = namedObserver('ComponentViewer', () => {
 
   useActions(componentState)
 
-  const {className, ...otherProps} = componentState.get
+  const props = componentState.get
   const {kind, component: Component} = data.model
+  const containerClassName = cx(props.className, componentState.wrapperClassName)
 
   const Wrapper = formViewerProps.componentWrapper ?? Div
   const Tooltip = data.store.tooltipProps ? TooltipWrapper : Fragment
   const ContainerComponent = formViewerProps.componentWrapper ?? Component
 
   return kind === 'container'
-    ? <ContainerComponent className={className} {...otherProps}/>
-    : <Wrapper className={className}>
+    ? <ContainerComponent {...props} className={containerClassName}/>
+    : <Wrapper className={componentState.wrapperClassName}>
       <Tooltip>
         <Erroneous>
-          <Component {...otherProps}/>
+          <Component {...props}/>
         </Erroneous>
       </Tooltip>
     </Wrapper>

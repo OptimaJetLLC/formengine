@@ -1,10 +1,20 @@
 import styled from '@emotion/styled'
-import type {PropertyBlockType} from '@react-form-builder/core'
-import {Annotation, className, ComponentDataProvider, ComponentStore, key, namedObserver, useTooltipType} from '@react-form-builder/core'
-import {useState} from 'react'
+import type {CssPart, PropertyBlockType} from '@react-form-builder/core'
+import {
+  Annotation,
+  className,
+  ComponentDataProvider,
+  ComponentStore,
+  key,
+  Meta,
+  namedObserver,
+  useTooltipType
+} from '@react-form-builder/core'
+import {useCallback, useState} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {Device} from '../../../../../utils/types'
 import {CSSEditor} from '../../../../annotation-editors/CSSEditor'
+import {Hinted} from '../../../../annotation-editors/Hinted'
 import {CenteredLabel} from '../../../../components/Labels'
 import {PropertyEditorWrapper} from '../../../../components/PropertyEditorWrapper'
 import {useTranslationPart} from '../../../../localization/hooks'
@@ -60,7 +70,7 @@ const Properties = namedObserver('Properties', ({activeTab}: PropertiesProps) =>
           {activeTab === Section.Main && <PropertyEditorWrapper annotation={key} context={data.store}/>}
           <PropertyBlock annotations={properties} context={data.store.props}/>
           {activeTab === Section.Style &&
-            <StyleBlock annotations={meta.css} store={data.store}/>
+            <StyleBlock meta={meta} store={data.store}/>
           }
         </PropertiesList>
 
@@ -77,22 +87,37 @@ const Properties = namedObserver('Properties', ({activeTab}: PropertiesProps) =>
   )
 })
 
-const StyleBlock = namedObserver('StyleBlock', ({annotations, store}: { annotations: Annotation[], store: ComponentStore }) => {
+const StyleBlock = namedObserver('StyleBlock', ({meta, store}: { meta: Meta, store: ComponentStore }) => {
+  const t = useTranslationPart('style')
   const [device, setDevice] = useState<Device>('any')
-  const initCssObject = () => {
-    store.css ??= {}
-    store.css[device] ??= {}
-    store.css[device]!.object ??= {}
-    return store.css[device]!.object ?? {}
-  }
+  const initCssContext = useCallback(getCssContextInitializer('css', store, device), [store, device])
+  const isContainer = meta.kind === 'container'
+  const initWrapperCssContext = useCallback(getCssContextInitializer('wrapperCss', store, device), [store, device])
+  const classNameEditor = <PropertyEditorWrapper annotation={className} context={store.props}/>
 
   return <>
     <DevicePicker value={device} onChange={setDevice}/>
-    <PropertyBlock annotations={annotations} context={store.css?.[device]?.object ?? {}} initContext={initCssObject}/>
-    <PropertyEditorWrapper annotation={className} context={store.props}/>
-    <CSSEditor device={device}/>
+    <PropertyBlock header={isContainer ? undefined : t('component')} headerHint={isContainer ? undefined : t('componentHint')}
+                   annotations={meta.css}
+                   context={store.css?.[device]?.object ?? {}} initContext={initCssContext}/>
+    {!isContainer && classNameEditor}
+    <PropertyBlock header={isContainer ? undefined : t('wrapper')} headerHint={isContainer ? undefined : t('wrapperHint')}
+                   annotations={meta.wrapperCss}
+                   context={store.wrapperCss?.[device]?.object ?? {}}
+                   initContext={initWrapperCssContext}/>
+    {isContainer && classNameEditor}
+    <CSSEditor device={device} useWrapperStyles={!isContainer}/>
   </>
 })
+
+const getCssContextInitializer = (fieldKey: CssPart, store: ComponentStore, device: Device) => {
+  return () => {
+    store[fieldKey] ??= {}
+    store[fieldKey]![device] ??= {}
+    store[fieldKey]![device]!.object ??= {}
+    return store[fieldKey]![device]!.object ?? {}
+  }
+}
 
 /**
  * Represents the properties of PropertyBlock component.
@@ -115,6 +140,10 @@ export interface PropertyBlockProps {
    */
   header?: string,
   /**
+   * The hint for header.
+   */
+  headerHint?: string,
+  /**
    * The property block type.
    */
   propertyBlockType?: PropertyBlockType
@@ -127,14 +156,22 @@ export interface PropertyBlockProps {
  * @param props.context the properties of the form builder component.
  * @param props.initContext the function initializes the context for the first change.
  * @param props.header the property block title.
+ * @param props.headerHint the hint for the property block title.
  * @param props.propertyBlockType the type of the property block.
  * @returns the React element.
  */
-export const PropertyBlock = ({annotations, context, initContext, header, propertyBlockType = 'component'}: PropertyBlockProps) => {
+export const PropertyBlock = ({
+                                annotations,
+                                context,
+                                initContext,
+                                header,
+                                headerHint,
+                                propertyBlockType = 'component'
+                              }: PropertyBlockProps) => {
   if (!context) return null
 
   return <>
-    {!!header && <h6>{header}</h6>}
+    {!!header && <Hinted hint={headerHint}><h6>{header}</h6></Hinted>}
     {annotations.map(annotation => <PropertyEditorWrapper
       key={annotation.key}
       propertyBlockType={propertyBlockType}

@@ -24,6 +24,7 @@ export class Model<T = any> {
    * @param valueType the type of the component value.
    * @param defaultProps the component's default property values.
    * @param css the component's CSS values.
+   * @param wrapperCss the component's wrapper CSS values.
    * @param typeName the component type name.
    * @param icon the component icon.
    * @param kind the component kind.
@@ -37,6 +38,7 @@ export class Model<T = any> {
     readonly valueType?: SchemaType,
     readonly defaultProps?: Readonly<Record<string, any>>,
     readonly css?: Css,
+    readonly wrapperCss?: Css,
     readonly typeName?: string,
     readonly icon?: ComponentType,
     readonly kind: ComponentKind = 'component'

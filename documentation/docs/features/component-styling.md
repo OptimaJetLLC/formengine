@@ -115,7 +115,7 @@ the "Edit JSON" window.
         "key": "StyledDiv 1",
         "type": "StyledDiv",
         "props": {},
-        "css": {
+        "wrapperCss": {
           "any": {
             "object": {
               "height": "200px"

@@ -6,6 +6,6 @@ import type {Annotations} from './utils/builders/Annotations'
  * @param annotations the object containing component property metadata.
  * @returns the object containing component properties default values.
  */
-export function toStyleProperties(annotations: Annotations<any>) {
+export function toStyleProperties(annotations?: Annotations<any>) {
   return toArray(annotations, {annotationType: 'Style', calculable: false})
 }

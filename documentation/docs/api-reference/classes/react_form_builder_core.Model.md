@@ -19,7 +19,7 @@ Represents component metadata for the form viewer.
 
 ### constructor
 
-• **new Model**<`T`\>(`component`, `name?`, `actionsInitializer?`, `valued?`, `valueType?`, `defaultProps?`, `css?`, `typeName?`, `icon?`, `kind?`)
+• **new Model**<`T`\>(`component`, `name?`, `actionsInitializer?`, `valued?`, `valueType?`, `defaultProps?`, `css?`, `wrapperCss?`, `typeName?`, `icon?`, `kind?`)
 
 Creates component metadata for the form viewer.
 
@@ -40,6 +40,7 @@ Creates component metadata for the form viewer.
 | `valueType?` | keyof [`SchemaTypeMap`](../modules/react_form_builder_core.md#schematypemap) | `undefined` | the type of the component value. |
 | `defaultProps?` | `Readonly`<`Record`<`string`, `any`\>\> | `undefined` | the component's default property values. |
 | `css?` | [`Css`](../modules/react_form_builder_core.md#css) | `undefined` | the component's CSS values. |
+| `wrapperCss?` | [`Css`](../modules/react_form_builder_core.md#css) | `undefined` | the component's wrapper CSS values. |
 | `typeName?` | `string` | `undefined` | the component type name. |
 | `icon?` | `ComponentType` | `undefined` | the component icon. |
 | `kind` | [`ComponentKind`](../modules/react_form_builder_core.md#componentkind) | `'component'` | the component kind. |
@@ -115,6 +116,14 @@ ___
 • `Optional` `Readonly` **valued**: `string`
 
 the name of the component property where the component value is stored.
+
+___
+
+### wrapperCss
+
+• `Optional` `Readonly` **wrapperCss**: [`Css`](../modules/react_form_builder_core.md#css)
+
+the component's wrapper CSS values.
 
 ## Accessors
 

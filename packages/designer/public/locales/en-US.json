@@ -289,7 +289,11 @@
   },
   "style": {
     "other": "Other",
-    "forDevice": "For device:",
+    "forDevice": "For device",
+    "component": "Component",
+    "componentHint": "Styles that apply to the component",
+    "wrapper": "Wrapper",
+    "wrapperHint": "Styles that apply to the component wrapper",
     "any": "Any",
     "desktop": "Desktop",
     "mobile": "Mobile",

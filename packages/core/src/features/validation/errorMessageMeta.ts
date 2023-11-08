@@ -6,4 +6,4 @@ import {errorMessageModel, ErrorWrapperProps} from './components/DefaultErrorMes
 export const errorMessageMeta = new Meta(errorMessageModel.type,
   toArray<ErrorWrapperProps>({
     className: string,
-  }), [], [])
+  }), [], [], [])

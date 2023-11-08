@@ -9,6 +9,7 @@ export const screenMeta = new Meta(
   screenModel.type,
   toArray<ScreenProps>({children: node}),
   screenStyleProperties,
+  [],
   modules,
   undefined,
   undefined,

@@ -8,8 +8,6 @@ interface RsImageProps extends ComponentProps<'img'>, AreaProps {
 }
 
 const SImage = styled.img`
-  object-position: left;
-  object-fit: scale-down;
   width: 100%;
   height: 100%;
 `

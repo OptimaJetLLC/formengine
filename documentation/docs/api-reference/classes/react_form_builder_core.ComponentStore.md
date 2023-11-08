@@ -120,6 +120,14 @@ ___
 
 The component type of the form viewer.
 
+___
+
+### wrapperCss
+
+• `Optional` **wrapperCss**: [`Css`](../modules/react_form_builder_core.md#css)
+
+The component wrapper CSS styles.
+
 ## Methods
 
 ### addEventHandler

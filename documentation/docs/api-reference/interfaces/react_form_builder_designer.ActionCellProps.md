@@ -73,7 +73,7 @@ ___
 
 ### aria-autocomplete
 
-• `Optional` **aria-autocomplete**: ``"none"`` \| ``"both"`` \| ``"inline"`` \| ``"list"``
+• `Optional` **aria-autocomplete**: ``"none"`` \| ``"list"`` \| ``"inline"`` \| ``"both"``
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -98,7 +98,7 @@ ___
 
 ### aria-checked
 
-• `Optional` **aria-checked**: `boolean` \| ``"true"`` \| ``"mixed"`` \| ``"false"``
+• `Optional` **aria-checked**: `boolean` \| ``"true"`` \| ``"false"`` \| ``"mixed"``
 
 Indicates the current "checked" state of checkboxes, radio buttons, and other widgets.
 
@@ -181,7 +181,7 @@ ___
 
 ### aria-current
 
-• `Optional` **aria-current**: `boolean` \| ``"date"`` \| ``"time"`` \| ``"true"`` \| ``"page"`` \| ``"false"`` \| ``"step"`` \| ``"location"``
+• `Optional` **aria-current**: `boolean` \| ``"date"`` \| ``"time"`` \| ``"true"`` \| ``"false"`` \| ``"step"`` \| ``"page"`` \| ``"location"``
 
 Indicates the element that represents the current item within a container or set of related elements.
 
@@ -242,7 +242,7 @@ ___
 
 ### aria-dropeffect
 
-• `Optional` **aria-dropeffect**: ``"link"`` \| ``"none"`` \| ``"copy"`` \| ``"move"`` \| ``"execute"`` \| ``"popup"``
+• `Optional` **aria-dropeffect**: ``"link"`` \| ``"none"`` \| ``"copy"`` \| ``"execute"`` \| ``"move"`` \| ``"popup"``
 
 Indicates what functions can be performed when a dragged object is released on the drop target.
 
@@ -316,7 +316,7 @@ ___
 
 ### aria-haspopup
 
-• `Optional` **aria-haspopup**: `boolean` \| ``"dialog"`` \| ``"menu"`` \| ``"grid"`` \| ``"true"`` \| ``"listbox"`` \| ``"false"`` \| ``"tree"``
+• `Optional` **aria-haspopup**: `boolean` \| ``"dialog"`` \| ``"menu"`` \| ``"grid"`` \| ``"true"`` \| ``"listbox"`` \| ``"tree"`` \| ``"false"``
 
 Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 
@@ -464,7 +464,7 @@ ___
 
 ### aria-orientation
 
-• `Optional` **aria-orientation**: ``"horizontal"`` \| ``"vertical"``
+• `Optional` **aria-orientation**: ``"vertical"`` \| ``"horizontal"``
 
 Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.
 
@@ -522,7 +522,7 @@ ___
 
 ### aria-pressed
 
-• `Optional` **aria-pressed**: `boolean` \| ``"true"`` \| ``"mixed"`` \| ``"false"``
+• `Optional` **aria-pressed**: `boolean` \| ``"true"`` \| ``"false"`` \| ``"mixed"``
 
 Indicates the current "pressed" state of toggle buttons.
 
@@ -3159,7 +3159,7 @@ ___
 
 ### wordWrap
 
-• `Optional` **wordWrap**: `boolean` \| ``"break-word"`` \| ``"break-all"`` \| ``"keep-all"``
+• `Optional` **wordWrap**: `boolean` \| ``"break-all"`` \| ``"break-word"`` \| ``"keep-all"``
 
 #### Inherited from
 

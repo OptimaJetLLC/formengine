@@ -64,5 +64,5 @@ const Template = (templateProps: Record<string, any>) => {
 export function createTemplateModel(name: string) {
   const typeName = generateTemplateTypeName(name)
   const defaultProps = {name, storeDataInParentForm: true}
-  return new Model(Template, name, undefined, typeName, 'object', defaultProps, undefined, typeName)
+  return new Model(Template, name, undefined, typeName, 'object', defaultProps, undefined, undefined, typeName)
 }

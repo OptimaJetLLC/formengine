@@ -11,6 +11,7 @@ export class Meta {
    * @param type the component type name.
    * @param properties the component's properties metadata.
    * @param css the component's CSS metadata.
+   * @param wrapperCss the component's wrapper CSS metadata.
    * @param modules common metadata for the component.
    * @param customPreview the custom ReactNode to be drawn on the toolbar.
    * @param valuedAn the metadata for the component value.
@@ -20,6 +21,7 @@ export class Meta {
     readonly type: string,
     readonly properties: Annotation[],
     readonly css: Annotation[],
+    readonly wrapperCss: Annotation[],
     readonly modules: Annotation[],
     readonly customPreview?: ReactNode,
     readonly valuedAn?: Annotation,

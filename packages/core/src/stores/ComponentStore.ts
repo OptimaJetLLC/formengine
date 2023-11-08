@@ -96,6 +96,11 @@ export class ComponentStore {
   css?: Css
 
   /**
+   * The component wrapper CSS styles.
+   */
+  wrapperCss?: Css
+
+  /**
    * The set of event handlers.
    */
   events?: Record<EventName, ActionData[]>

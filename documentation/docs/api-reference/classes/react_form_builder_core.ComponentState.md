@@ -174,6 +174,20 @@ ___
 
 the component's field value data, if the component can have a field value.
 
+___
+
+### wrapperClassName
+
+• `get` **wrapperClassName**(): `string`
+
+Calculates and returns wrapper className property.
+
+#### Returns
+
+`string`
+
+the Record that contains the className property for the wrapper of component.
+
 ## Methods
 
 ### children

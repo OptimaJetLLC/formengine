@@ -161,7 +161,8 @@ export class Definer<T extends object> {
    */
   build(): BuilderComponent {
     const propAns = toArray(this.data.properties)
-    const cssAns = toStyleProperties({...this.data.cssObject, ...commonStyles})
+    const cssAns = toStyleProperties(this.data.cssObject)
+    const cssWrapperAns = toStyleProperties(commonStyles)
     const valuedAnnotations = propAns.filter(an => an.valued === true)
     const firstValuedAn = valuedAnnotations[0]
     if (valuedAnnotations.length > 1) {
@@ -179,6 +180,7 @@ export class Definer<T extends object> {
       valuedAn?.type,
       getDefault(propAns),
       getDefaultCss(cssAns),
+      getDefaultCss(cssWrapperAns),
       this.getType(),
       this.data.icon,
       this.data.kind
@@ -188,6 +190,7 @@ export class Definer<T extends object> {
       this.getType(),
       propAns,
       cssAns,
+      cssWrapperAns,
       modules,
       this.data.customPreview,
       valuedAn,

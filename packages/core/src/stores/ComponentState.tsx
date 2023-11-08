@@ -3,6 +3,7 @@ import {assign, keysIn} from 'lodash-es'
 import {makeAutoObservable} from 'mobx'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
 import {ActionEventArgs, DidMountEvent, EventName, WillUnmountEvent} from '../features/event'
+import type {CssPart} from '../features/style/types'
 import type {ComputeChildren} from '../utils/ComputeChildren'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
@@ -110,24 +111,19 @@ export class ComponentState {
    * @returns the Record that contains the className property for the component.
    */
   get className() {
-    const props = this.propsWithoutChildren
-    const {model, store} = this.data
-    const {viewMode} = this.store
-    const cssObjectAny = assign({}, model.css?.any?.object, store.css?.any?.object)
-    const cssObjectCurrent = assign({}, model.css?.[viewMode]?.object, store.css?.[viewMode]?.object)
-
     const className = cx(
-      props.className,
-      css`
-        && {
-          ${cssObjectAny}
-          ${cssObjectCurrent}
-          ${store.css?.any?.string}
-          ${store.css?.[viewMode]?.string}
-        }
-      `
+      this.propsWithoutChildren.className,
+      this.getClassNameFromCssPart('css')
     )
     return {className}
+  }
+
+  /**
+   * Calculates and returns wrapper className property.
+   * @returns the Record that contains the className property for the wrapper of component.
+   */
+  get wrapperClassName() {
+    return this.getClassNameFromCssPart('wrapperCss')
   }
 
   /**
@@ -144,5 +140,28 @@ export class ComponentState {
    */
   children(props: any) {
     return this.computeChildren(this.data, props)
+  }
+
+  private getClassNameFromCssPart(cssPart: CssPart) {
+    const {model, store} = this.data
+    const {viewMode} = this.store
+
+    const cssObjectAny = assign({},
+      model[cssPart]?.any?.object,
+      store[cssPart]?.any?.object
+    )
+    const cssObjectCurrent = assign({},
+      model[cssPart]?.[viewMode]?.object,
+      store[cssPart]?.[viewMode]?.object
+    )
+
+    return css`
+      && {
+        ${cssObjectAny}
+        ${cssObjectCurrent}
+        ${store[cssPart]?.any?.string}
+        ${store[cssPart]?.[viewMode]?.string}
+      }
+    `
   }
 }
