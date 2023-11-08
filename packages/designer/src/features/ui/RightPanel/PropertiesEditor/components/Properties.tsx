@@ -62,23 +62,24 @@ const Properties = namedObserver('Properties', ({activeTab}: PropertiesProps) =>
   const additionalProperties = current.filter(bySubSection(SubSection.Additional))
   const tooltipProps = current.filter(bySubSection(SubSection.Tooltip))
   const showTooltipProps = meta.kind === 'component' && !!tooltipProps?.length && !!tooltipType
+  const notSlot = meta.kind !== 'slot'
 
   return (
     <ComponentDataProvider value={data}>
       <Container>
         <PropertiesList>
           {activeTab === Section.Main && <PropertyEditorWrapper annotation={key} context={data.store}/>}
-          <PropertyBlock annotations={properties} context={data.store.props}/>
-          {activeTab === Section.Style &&
+          {notSlot && <PropertyBlock annotations={properties} context={data.store.props}/>}
+          {activeTab === Section.Style && notSlot &&
             <StyleBlock meta={meta} store={data.store}/>
           }
         </PropertiesList>
 
-        {showTooltipProps &&
+        {showTooltipProps && notSlot &&
           <PropertyBlock annotations={tooltipProps} context={data.store.props}/>
         }
 
-        {!!additionalProperties?.length &&
+        {!!additionalProperties?.length && notSlot &&
           <PropertyBlock annotations={additionalProperties} context={data.store.props}
                          header={getLabel('subSection.additionalProperties')}/>
         }

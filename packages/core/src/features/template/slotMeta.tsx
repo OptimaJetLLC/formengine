@@ -3,4 +3,4 @@ import {Meta} from '../define/utils/Meta'
 import {slotModel} from './slotModel'
 
 export const slotMeta = new Meta(slotModel.type, [], [], [], modules,
-  <>Template slot outlet</>)
+  <>Template slot outlet</>, undefined, slotModel.kind)
