@@ -4,6 +4,14 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 0.0.14
+
+_November_ 9, 2023
+
+- Styling of components has changed. We will write more about it in the documentation.
+- Some bugs have been fixed.
+- Small improvements to the user interface have been made.
+
 ## 0.0.13
 
 _October_ 31, 2023
