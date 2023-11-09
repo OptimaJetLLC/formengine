@@ -262,7 +262,7 @@ ___
 
 ### ComponentKind
 
-Ƭ **ComponentKind**: ``"container"`` \| ``"component"``
+Ƭ **ComponentKind**: ``"container"`` \| ``"component"`` \| ``"slot"`` \| ``"template"``
 
 The component kind type.
 
@@ -1437,6 +1437,25 @@ The React component that displays an array of ComponentData. **Internal use only
 #### Returns
 
 `Element`
+
+___
+
+### DefaultWrapper
+
+▸ **DefaultWrapper**(`props`, `context?`): ``null`` \| `ReactElement`<`any`, `any`\>
+
+The React component that wraps every component in a form.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `props` | `PropsWithChildren`<{ `as?`: `ElementType`<`any`\> ; `theme?`: `Theme`  } & `ClassAttributes`<`HTMLDivElement`\> & `HTMLAttributes`<`HTMLDivElement`\>\> |
+| `context?` | `any` |
+
+#### Returns
+
+``null`` \| `ReactElement`<`any`, `any`\>
 
 ___
 

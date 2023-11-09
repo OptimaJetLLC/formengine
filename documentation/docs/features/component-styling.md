@@ -6,6 +6,12 @@ slug: /component-styling
 
 # Component styling
 
+:::info
+
+Documentation in the process of writing.
+
+:::
+
 Styling of components in Form Builder is quite simple - you can customize styles for a component on the "Style" tab. The styles will be
 compiled into a CSS class. The name of this CSS class will be passed to the component's rendering function as the `className` property.
 
