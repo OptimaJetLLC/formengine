@@ -6,14 +6,49 @@ slug: /component-styling
 
 # Component styling
 
-:::info
-
-Documentation in the process of writing.
-
-:::
+## Overview
 
 Styling of components in Form Builder is quite simple - you can customize styles for a component on the "Style" tab. The styles will be
 compiled into a CSS class. The name of this CSS class will be passed to the component's rendering function as the `className` property.
+
+![Component styling 10](/assets/component-styling/component-styling-10.png)
+
+### Structure
+
+Each component (except Containers) in the form is placed in an outer wrapper, a tooltip and a wrapper for displaying errors during
+rendering. This is what the nesting structure of a regular component looks like:
+
+```tsx
+<Wrapper className="wrapperCss">
+  <Tooltip>
+    <ErrorWrapper>
+      <Component className="componentCss"/>
+    </ErrorWrapper>
+  </Tooltip>
+</Wrapper>
+```
+
+Styles specific to different HTML elements (for
+example `font-size` for the `Label` component or `fit` for the `Image` component) are applied directly to it. These properties can be edited
+on the `Style` tab, under the `Component` heading.
+
+The sizing, padding, positioning and other
+styles inherent in all components are applied to the outer wrapper of the component. They are located under the `Wrapper` heading.
+
+You can also enter the CSS code for the component or wrapper into the editor at the bottom. There you can use all CSS properties such
+selectors, pseudo-classes, etc.
+
+![Component styling 09](/assets/component-styling/component-styling-09.png)
+
+![Component styling 11](/assets/component-styling/component-styling-11.png)
+
+The `Container` components has no outer wrappers, and all styles are attached to it:
+
+```tsx
+<Container className="css">
+  {children}
+</Container>
+```
 
 ## Styling a header component
 
@@ -22,15 +57,15 @@ the `Subheader` component and click on the "Style" tab as in the screenshot belo
 
 ![Component styling 06](/assets/component-styling/component-styling-06.png)
 
-Now select the "Center" value in the "Alignment" property. In the style code editor, copy the value of the **selected** lines:
+Now select the "Center" value in the "Alignment" property. In the Component style code editor, copy the value of the **selected** lines:
 
 ```scss
 element.style {
   // highlight-start
-  font-size: 64px;
+  font-size: 48px;
   padding: 20px;
   color: rgba(0, 3, 4, 0.596);
-  background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c)
+  background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
   // highlight-end
 }
 ```
@@ -59,6 +94,8 @@ export const StyledDiv = (props: StyledDivProps) => {
   return <div
     // highlight-next-line  
     className={props.className}
+    // highlight-next-line
+    style={{flex: 1}}
   >{props.children}</div>
 }
 
@@ -102,9 +139,9 @@ editor, where you can enter arbitrary CSS properties.
 
 Let's take a look at how this works. To demonstrate, we'll set the following style parameters:
 
-1. For **Any** devices, let's set the height to 200 pixels and "background-color" to "aqua".
-2. For **Mobile** type devices, we'll set the "background-color" to "bisque".
-3. For **Tabled** devices, set "background-color" to "chartreuse".
+1. For **Any** devices, let's set the height to 200 pixels and "background-color" of Wrapper to "aqua".
+2. For **Mobile** type devices, we'll set the "background-color" of Wrapper to "bisque".
+3. For **Tabled** devices, set "background-color" of Wrapper to "chartreuse".
 
 You can simply copy and paste the form JSON into the JSON form editor. Click the **&lt;/&gt;** button, then paste the code below and close
 the "Edit JSON" window.
@@ -125,8 +162,12 @@ the "Edit JSON" window.
           "any": {
             "object": {
               "height": "200px"
-            },
-            "string": "  background-color: aqua;"
+            }
+          }
+        },
+        "css": {
+          "any": {
+            "string": "    background-color: aqua;"
           },
           "mobile": {
             "string": "  background-color: bisque;"
@@ -182,11 +223,11 @@ export const styledDiv = define(StyledDiv, 'StyledDiv')
   .name('StyledDiv')
   // highlight-start
   .css({
-    gap: size.default('10px'),
-    alignItems: oneOf('start', 'center', 'baseline', 'end', 'stretch'),
-    justifyContent: oneOf('flex-start', 'flex-end', 'center', 'space-between', 'space-around',
-      'space-evenly', 'start', 'end', 'left', 'right'),
-    flexWrap: oneOf('wrap', 'nowrap', 'wrap-reverse'),
+    borderStyle: oneOf('solid', 'dashed', 'dotted', 'double', 'center', 'groove').default('solid'),
+    borderWidth: size.default('1px'),
+    borderRadius: number.default(0),
+    borderColor: color.default('black'),
+    textAlign: oneOf('start', 'end', 'left', 'right', 'center', 'justify')
   })
 // highlight-end
 ```

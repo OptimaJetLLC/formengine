@@ -449,6 +449,27 @@ changes:
 
 ![Custom components 06](/assets/custom-components/custom-components-06.png)
 
+### Kind of a component
+
+Also, in some cases, you may need to set the [`kind`](/api-reference/classes/react_form_builder_core.Definer#kind) of the component. This is
+a property that shows [how to render](/component-styling###structure) the component. For regular components, it is set to `'component'` by
+default. You can the `kind` value to `'container'` in case you need the component to be only a container, for its children, without having
+its own
+wrappers.
+
+```typescript
+const myContainer = define(MyContainer)
+  .type('MyContainer')
+  .name('Container')
+  // highlight-next-line
+  .kind('container')
+  .props({children: node})
+  .css({
+    flexDirection: flexDirection.default('column'),
+    gap: gap.default('10px')
+  })
+```
+
 ## Conclusion
 
 This article showed how to easily connect a custom component to use it in the designer. And also how a custom component is connected and
