@@ -4,6 +4,12 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.0.0
+
+_November_ 10, 2023
+
+- Fixed `z-index` for the component search field in the designer.
+
 ## 0.0.14
 
 _November_ 9, 2023
