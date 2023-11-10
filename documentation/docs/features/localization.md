@@ -233,6 +233,30 @@ text will change to the one we just wrote.
 
 ![Localization 09](/assets/localization/localization-09.png)
 
+## Custom localization
+
+If you want to use your localization system, you can plug it in. To do this, you need to pass the localization function through
+the [localize](/api-reference/interfaces/react_form_builder_core.FormViewerProps#localize) property.
+The [parameters](/api-reference/modules/react_form_builder_core#componentlocalizer) are passed to the function input:
+
+- localization language.
+- component settings.
+
+Your function should return a `Record` with the localized values of the component's properties. If the function does not localize the
+component properties, it should return an empty object. A simple example of a localization function:
+
+```typescript
+function localizer(componentStore: ComponentStore, language: Language): Record<string, any> {
+  return componentStore.key === 'comment'
+    ? {'placeholder': `${language?.fullCode || 'default language'}`}
+    : {}
+}
+```
+
+This function localizes only the `placeholder` property and only on a component with the `comment` key. The `placeholder` property is set to
+the full code of the selected language. You can pass the current language through
+the [language](/api-reference/interfaces/react_form_builder_core.FormViewerProps#language) property.
+
 ## Conclusion
 
 We have shown how localization of component properties works in Form Builder. Localization works the same way
