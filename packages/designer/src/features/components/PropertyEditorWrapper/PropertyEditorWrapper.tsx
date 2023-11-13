@@ -86,7 +86,9 @@ export const PropertyEditorWrapper = namedObserver('PropertyEditorWrapper', ({
   const getComputedLocalization = useCallback((langCode: string) => {
     const localization = store.viewer.form.localization
       .getLocalization(langCode, componentData.key, annotation.key, propertyBlockType)
-    return localization ?? ''
+    const defaultLocalization = store.viewer.form.localization
+      .getLocalization(store.defaultLanguage.fullCode, componentData.key, annotation.key, propertyBlockType)
+    return localization ?? defaultLocalization ?? ''
   }, [store, componentData, annotation, propertyBlockType])
 
   const getComputeCode = useCallback<CalculableEditorProps['getComputeCode']>((type, params) => {
