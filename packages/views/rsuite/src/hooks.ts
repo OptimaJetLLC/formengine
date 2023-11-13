@@ -39,13 +39,12 @@ export const useLoadData = ({data: initialData, onLoadData, value, ...props}: Lo
   const hasValue = (item: ItemDataType) => item.value === value
 
   useEffect(() => {
-    if (value && !data.some(hasValue)) {
-      setData([
-        {value, label: value},
-        ...data
-      ])
-    }
-  }, [])
+    const valueItem = value && !initialData?.some(hasValue) ? [{value, label: value}] : []
+    setData([
+      ...valueItem,
+      ...(initialData ?? [])
+    ])
+  }, [initialData])
 
   useEffect(() => {
     if (!searchValue) return
