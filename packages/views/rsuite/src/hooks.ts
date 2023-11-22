@@ -65,9 +65,9 @@ export const useLoadData = ({data: initialData, onLoadData, value, ...props}: Lo
 
   const listProps: Partial<ListProps> = {
     onItemsRendered: ({visibleStopIndex}) => {
-      if (visibleStopIndex >= data.length - 1) {
+      if (onLoadData && (visibleStopIndex >= data.length - 1)) {
         setLoading(true)
-        onLoadData?.(searchValue, loadCallback, data.length)
+        onLoadData(searchValue, loadCallback, data.length)
       }
     }
   }

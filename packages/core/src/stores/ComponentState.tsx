@@ -22,8 +22,8 @@ const getHtmlAttributes = (componentStore: ComponentStore) => componentStore.htm
 
 const computeEvents = (data: ComponentData, store: Store, state: ComponentState) => {
   const events = {} as Record<EventName, Function>
-
-  const eventNames = new Set(keysIn(data.store.events))
+  const hasActions = (eventName: string) => data.store.events?.[eventName]?.length
+  const eventNames = new Set<string>(keysIn(data.store.events).filter(hasActions))
   eventNames.add('onChange').add('onBlur')
   eventNames.delete(DidMountEvent)
   eventNames.delete(WillUnmountEvent)
