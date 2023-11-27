@@ -470,6 +470,38 @@ const myContainer = define(MyContainer)
   })
 ```
 
+### Component icon
+
+If you want to change the component icon that is displayed next to the component name, it is quite easy to do so. Just call
+the [icon](/api-reference/classes/react_form_builder_core.Definer#icon) method when selecting a component and pass React `ComponentType` to
+it, which will draw the icon.
+
+Illustrating example:
+
+```typescript jsx {1-5,14} title='Component icon example' showLineNumbers 
+const MyIcon = () => {
+  return <span style={
+    {width: 16, height: 16, backgroundColor: 'rgba(150,130,20,0.5)', borderRadius: 8}
+  }/>
+}
+
+const MyButton = (props: ComponentProps<any>) => {
+  return <button>{props.children}</button>
+}
+
+const myButton = define(MyButton, 'MyButton')
+  .name('My Button')
+  .category('Custom')
+  .icon(MyIcon)
+```
+
+This simple example shows how to connect an icon to a component. On lines 1-5, the React component `MyIcon` that displays the icon is
+defined - in our case, it's just a circle. On line 14, the `MyIcon` component is connected as an icon for the `MyButton` component.
+
+Once the component is connected to the designer, the component icon will be displayed next to the text:
+
+![Custom components 07](/assets/custom-components/custom-components-07.png)
+
 ## Conclusion
 
 This article showed how to easily connect a custom component to use it in the designer. And also how a custom component is connected and
