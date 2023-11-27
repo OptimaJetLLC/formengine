@@ -13,6 +13,8 @@ interface ViewerLocalizationProviderProps {
   language?: Language
 }
 
+const viewerClassName = 'optimajet-formviewer'
+
 export const ViewerLocalizationProvider = namedObserver('ViewerLocalizationProvider', (props: ViewerLocalizationProviderProps) => {
   const viewerStore = useStore()
   const language = props.language ?? viewerStore.displayedLanguage
@@ -27,7 +29,7 @@ export const ViewerLocalizationProvider = namedObserver('ViewerLocalizationProvi
   const selectedCache = language.bidi == BiDi.RTL ? emotionCache.RTL : emotionCache.LTR
 
   return (
-    <SDiv dir={language.bidi} lang={language.fullCode}>
+    <SDiv dir={language.bidi} lang={language.fullCode} className={viewerClassName}>
       <CacheProvider value={selectedCache}>
         {nestViewerWrappers(viewerStore.formViewerPropsStore.view.viewerWrappers, language, props.children)}
       </CacheProvider>
