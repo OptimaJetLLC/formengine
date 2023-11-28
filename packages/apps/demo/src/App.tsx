@@ -43,6 +43,7 @@ const getFormFn = (formName?: string) => {
 const initDatabase = async (dbFormStorage: IndexedDbFormStorage) => {
   let cleanDatabase = true
   const accessDateKey = 'accessDate'
+  const formNameKey = 'formName'
 
   try {
     const accessDate = localStorage.getItem(accessDateKey)
@@ -52,7 +53,7 @@ const initDatabase = async (dbFormStorage: IndexedDbFormStorage) => {
   }
 
   if (cleanDatabase) {
-    await dbFormStorage.clear()
+    localStorage.removeItem(formNameKey)
     localStorage.setItem(accessDateKey, `${config.releaseDate}`)
   }
   return await dbFormStorage.init(initialForms)

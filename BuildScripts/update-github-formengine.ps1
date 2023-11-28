@@ -1,3 +1,13 @@
+$ErrorActionPreference = "Stop"
+
+function CheckExitCode()
+{
+  if (!$?)
+  {
+    throw "Build failed. " + $error[0]
+  }
+}
+
 function RemoveIfExists($Path)
 {
   if (Test-Path $Path)
@@ -42,6 +52,16 @@ Push-Location $LocalRepository
 try
 {
   $Version = GetVersion
+
+  # Update version
+  npm install
+  CheckExitCode
+  $Cmd = "npm install @react-form-builder/core@$( $Version ) @react-form-builder/designer@$( $Version ) @react-form-builder/components-rsuite@$( $Version )"
+  Invoke-Expression $Cmd
+  CheckExitCode
+
+  RemoveIfExists node_modules
+
   git add --all
   git config --global user.email "support@optimajet.com"
   git config --global user.name "optimajet"

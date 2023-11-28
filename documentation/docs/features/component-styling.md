@@ -10,6 +10,7 @@ slug: /component-styling
 
 Styling of components in Form Builder is quite simple - you can customize styles for a component on the "Style" tab. The styles will be
 compiled into a CSS class. The name of this CSS class will be passed to the component's rendering function as the `className` property.
+Also, you can to set different styles for [different layouts](/adaptive-layout).
 
 ![Component styling 10](/assets/component-styling/component-styling-10.png)
 
@@ -125,88 +126,6 @@ Open your application and add the `StyledDiv` component to the form. Then switch
 something like this:
 
 ![Component styling 01](/assets/component-styling/component-styling-01.png)
-
-Form Builder provides a style editing interface on the "Style" tab. In the "For device" drop-down menu, you can select the device for which
-the styles will be applied. The device is determined by the width of the window:
-
-1. **Any** - these styles are applied to all devices, regardless of window width.
-2. **Desktop** - for desktop devices with a window width greater than 900 pixels.
-3. **Mobile** - for mobile devices where the window width is less than or equal to 600 pixels.
-4. **Tablet** - for tablet devices where the window width is less than or equal to 900 pixels.
-
-Below the "For device" drop-down menu, there are elements for setting a number of typical CSS properties. Below that is the CSS code
-editor, where you can enter arbitrary CSS properties.
-
-Let's take a look at how this works. To demonstrate, we'll set the following style parameters:
-
-1. For **Any** devices, let's set the height to 200 pixels and "background-color" of Wrapper to "aqua".
-2. For **Mobile** type devices, we'll set the "background-color" of Wrapper to "bisque".
-3. For **Tabled** devices, set "background-color" of Wrapper to "chartreuse".
-
-You can simply copy and paste the form JSON into the JSON form editor. Click the **&lt;/&gt;** button, then paste the code below and close
-the "Edit JSON" window.
-
-```json
-{
-  "version": "1",
-  "form": {
-    "key": "Screen",
-    "type": "Screen",
-    "props": {},
-    "children": [
-      {
-        "key": "StyledDiv 1",
-        "type": "StyledDiv",
-        "props": {},
-        "wrapperCss": {
-          "any": {
-            "object": {
-              "height": "200px"
-            }
-          }
-        },
-        "css": {
-          "any": {
-            "string": "    background-color: aqua;"
-          },
-          "mobile": {
-            "string": "  background-color: bisque;"
-          },
-          "tablet": {
-            "string": "  background-color: chartreuse;"
-          }
-        }
-      }
-    ]
-  },
-  "localization": {},
-  "languages": [
-    {
-      "code": "en",
-      "dialect": "US",
-      "name": "English",
-      "description": "American English",
-      "bidi": "ltr"
-    }
-  ],
-  "defaultLanguage": "en-US"
-}
-```
-
-![Component styling 02](/assets/component-styling/component-styling-02.png)
-
-You can now use the device change buttons to view the form in different for different devices. This is how the form will look on the Desktop
-device:
-
-![Component styling 03](/assets/component-styling/component-styling-03.png)
-
-Mobile device:
-
-![Component styling 04](/assets/component-styling/component-styling-04.png)
-
-Tablet device:
-
-![Component styling 05](/assets/component-styling/component-styling-05.png)
 
 ### Custom style properties
 

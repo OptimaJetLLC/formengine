@@ -6,10 +6,6 @@ slug: /getting-started
 
 # Overview
 
-<p>
-<span style={{color: 'red', fontSize: 'x-large'}}>This is a technical preview, some things are subject to change!</span>
-</p>
-
 Form Builder consists of the following NPM packages:
 
 1. [@react-form-builder/core](https://www.npmjs.com/package/@react-form-builder/core).
