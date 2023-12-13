@@ -45,8 +45,7 @@ const SNav = styled(Nav)`
   }
 `
 
-export const rsTab = define(RsTab)
-  .type('RsTab')
+export const rsTab = define(RsTab, 'RsTab')
   .name('Tab')
   .props({
     ...navProps,

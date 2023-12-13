@@ -8,6 +8,5 @@ const RsRichTextEditor = (props: RsRichTextEditorProps) => {
   return (<>RichTextEditor</>)
 }
 
-export const rsRichTextEditor = define(RsRichTextEditor)
-  .type('RsRichTextEditor')
+export const rsRichTextEditor = define(RsRichTextEditor, 'RsRichTextEditor')
   .name('Rich text editor')

@@ -17,8 +17,7 @@ const RsCard = ({header, title, headerSize, ...props}: RsCardProps) => {
   return <Panel header={panelHeader} {...props}/>
 }
 
-export const rsCard = define(RsCard)
-  .type('RsCard')
+export const rsCard = define(RsCard, 'RsCard')
   .name('Card')
   .props({
     header: node,

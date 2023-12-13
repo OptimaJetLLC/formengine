@@ -56,8 +56,7 @@ const RsNumberFormat = ({style, className, label, onChange, value, ...props}: Rs
   </RsLabeledInput>
 }
 
-export const rsNumberFormat = define(RsNumberFormat)
-  .type('RsNumberFormat')
+export const rsNumberFormat = define(RsNumberFormat, 'RsNumberFormat')
   .name('Number format')
   .props({
     label: string.default('Number input'),

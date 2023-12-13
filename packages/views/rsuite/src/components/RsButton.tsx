@@ -2,8 +2,7 @@ import {boolean, define, event, oneOf, string} from '@react-form-builder/core'
 import {Button} from 'rsuite'
 import {readOnly, size} from '../commonProperties'
 
-export const rsButton = define(Button)
-  .type('RsButton')
+export const rsButton = define(Button, 'RsButton')
   .name('Button')
   .props({
     active: boolean.hinted('A button can show it is currently the active user selection'),

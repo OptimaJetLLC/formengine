@@ -15,9 +15,8 @@ const rsCommonProgressProps = {
   strokeWidth: number.hinted('Line width'),
 }
 
-export const rsProgressCircle = define(Progress.Circle)
+export const rsProgressCircle = define(Progress.Circle, 'RsProgressCircle')
   .name('Progress circle')
-  .type('RsProgressCircle')
   .props({
     ...rsCommonProgressProps,
     gapDegree: number.withEditorProps({min: 0, max: 360}).hinted('The gap degree of half circle, 0 ~ 360'),
@@ -32,9 +31,8 @@ export const rsProgressCircle = define(Progress.Circle)
     trailWidth: number.default(6).hinted('Trail width')
   })
 
-export const rsProgressLine = define(Progress.Line)
+export const rsProgressLine = define(Progress.Line, 'RsProgressLine')
   .name('Progress line')
-  .type('RsProgressLine')
   .props({
     ...rsCommonProgressProps,
     vertical: boolean.default(false).hinted('The progress bar is displayed vertically')

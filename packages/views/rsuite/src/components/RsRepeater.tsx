@@ -8,6 +8,5 @@ const RsRepeater = (props: RsRepeaterProps) => {
   return (<>Repeater</>)
 }
 
-export const rsRepeater = define(RsRepeater)
-  .type('RsRepeater')
+export const rsRepeater = define(RsRepeater, 'RsRepeater')
   .name('Repeater')

@@ -40,8 +40,7 @@ const SLoader = styled(Loader)`
   }
 `
 
-export const rsDropdown = define(RsDropdown)
-  .type('RsDropdown')
+export const rsDropdown = define(RsDropdown, 'RsDropdown')
   .name('Dropdown')
   .props({
     ...pickerProps,

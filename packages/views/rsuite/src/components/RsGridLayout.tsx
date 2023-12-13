@@ -8,6 +8,5 @@ const RsGridLayout = (props: RsGridLayoutProps) => {
   return (<>GridLayout</>)
 }
 
-export const rsGridLayout = define(RsGridLayout)
-  .type('RsGridLayout')
+export const rsGridLayout = define(RsGridLayout, 'RsGridLayout')
   .name('Grid layout')

@@ -1,8 +1,7 @@
 import {boolean, date, define, event} from '@react-form-builder/core'
 import {Calendar} from 'rsuite'
 
-export const rsCalendar = define(Calendar)
-  .type('RsCalendar')
+export const rsCalendar = define(Calendar, 'RsCalendar')
   .name('Calendar')
   .props({
     bordered: boolean.hinted('Show border'),

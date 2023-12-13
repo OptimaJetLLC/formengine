@@ -8,6 +8,5 @@ const RsGridView = (props: RsGridViewProps) => {
   return (<>GridView</>)
 }
 
-export const rsGridView = define(RsGridView)
-  .type('RsGridView')
+export const rsGridView = define(RsGridView, 'RsGridView')
   .name('Grid view')

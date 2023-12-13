@@ -27,8 +27,7 @@ const RsInput = ({style, className, label, passwordMask, value = '', ...props}: 
     {input}
   </RsLabeledInput>
 }
-export const rsInput = define(RsInput)
-  .type('RsInput')
+export const rsInput = define(RsInput, 'RsInput')
   .name('Input')
   .props({
     label: string.default('Input').hinted('Input label'),

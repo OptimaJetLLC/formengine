@@ -22,8 +22,7 @@ export const RsHeader = ({content, headerSize, ...props}: RsHeaderProps) => {
 
 const {textAlign, color} = textStyles
 
-export const rsHeader = define(RsHeader)
-  .type('RsHeader')
+export const rsHeader = define(RsHeader, 'RsHeader')
   .name('Header')
   .props({
     content: string.required.default('Header'),

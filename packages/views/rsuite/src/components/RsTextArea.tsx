@@ -16,8 +16,7 @@ const RsTextArea = ({style, className, label, ...props}: RsTextAreaProps) => (
   </RsLabeledInput>
 )
 
-export const rsTextArea = define(RsTextArea)
-  .type('RsTextArea')
+export const rsTextArea = define(RsTextArea, 'RsTextArea')
   .name('Text area')
   .props({
     label: string.default('Text area'),

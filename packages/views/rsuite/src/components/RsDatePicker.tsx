@@ -2,8 +2,7 @@ import {boolean, date, define, event, number, oneOf, string} from '@react-form-b
 import {DatePicker} from 'rsuite'
 import {placement, size} from '../commonProperties'
 
-export const rsDatePicker = define(DatePicker)
-  .type('RsDatePicker')
+export const rsDatePicker = define(DatePicker, 'RsDatePicker')
   .name('DatePicker')
   .props({
     appearance: oneOf('default', 'subtle').hinted('Set picker appearance'),

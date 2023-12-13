@@ -11,8 +11,7 @@ const RsStaticContent = (props: RsStaticContentProps) => {
   return <span {...otherProps}>{content}</span>
 }
 
-export const rsStaticContent = define(RsStaticContent)
-  .type('RsStaticContent')
+export const rsStaticContent = define(RsStaticContent, 'RsStaticContent')
   .name('Static content')
   .props({
     content: string.required.default('Text...'),

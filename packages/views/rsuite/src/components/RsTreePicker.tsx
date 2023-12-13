@@ -8,6 +8,5 @@ const RsTreePicker = (props: RsTreePickerProps) => {
   return (<>TreePicker</>)
 }
 
-export const rsTreePicker = define(RsTreePicker)
-  .type('RsTreePicker')
+export const rsTreePicker = define(RsTreePicker, 'RsTreePicker')
   .name('Tree picker')

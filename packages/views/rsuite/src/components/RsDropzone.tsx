@@ -8,6 +8,5 @@ const RsDropzone = (props: RsDropzoneProps) => {
   return (<>Dropzone</>)
 }
 
-export const rsDropzone = define(RsDropzone)
-  .type('RsDropzone')
+export const rsDropzone = define(RsDropzone, 'RsDropzone')
   .name('Dropzone')

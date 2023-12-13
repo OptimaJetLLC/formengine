@@ -19,8 +19,7 @@ const columns = [
   {name: 'url', input: InputCell}
 ]
 
-export const rsUploader = define(RsUploader)
-  .type('RsUploader')
+export const rsUploader = define(RsUploader, 'RsUploader')
   .name('Uploader')
   .props({
     action: string.required.default('/'),
