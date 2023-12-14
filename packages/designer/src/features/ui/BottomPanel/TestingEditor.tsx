@@ -2,7 +2,14 @@ import {css} from '@emotion/react'
 import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faPlay from '@fortawesome/free-solid-svg-icons/faPlay.js'
-import {CalculableResult, ComponentData, IFormData, initFormFields, namedObserver, useStore} from '@react-form-builder/core'
+import {
+  CalculableResult,
+  ComponentData,
+  IFormData,
+  initFormFields,
+  namedObserver,
+  useStore
+} from '@react-form-builder/core'
 import {isUndefined} from 'lodash-es'
 import {editor} from 'monaco-editor'
 import {forwardRef, RefObject, useCallback, useEffect, useMemo, useState} from 'react'
@@ -222,5 +229,10 @@ export class TestFormData implements IFormData {
 
   /** @inheritDoc */
   setAllErrors() {
+  }
+
+  /** @inheritDoc */
+  getValidationResult() {
+    return Promise.resolve(undefined)
   }
 }

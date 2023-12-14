@@ -1,6 +1,6 @@
 import {IReactionDisposer, makeAutoObservable, reaction} from 'mobx'
 import {Model} from '../../features/define'
-import type {FormValidators} from '../../features/form-viewer/FormValidators'
+import type {FormValidator, FormValidators} from '../../features/form-viewer/FormValidators'
 import {getFluentData} from '../../features/localization/getFluentData'
 import type {Field} from '../../features/validation'
 import {ComponentStore} from '../../stores/ComponentStore'
@@ -9,6 +9,7 @@ import type {IFormData} from '../IFormData'
 import {nameObservable} from '../observableNaming'
 import {SyncEvent} from '../SyncEvent'
 import {treeForEach} from '../treeUtils'
+import {isArray, isEmpty, merge} from "lodash-es";
 
 let counter = 0
 
@@ -339,6 +340,43 @@ export class ComponentData implements IFormData {
     } finally {
       this.validating = false
     }
+  }
+
+  /**
+   * @inheritDoc
+   */
+  async getValidationResult() {
+    let messages = undefined
+
+    const getFieldMessages = async ([key, field]: [key: string, field: Field]) => {
+      const result = await field.getValidationResult()
+      if (isEmpty(result)) return
+
+      messages ??= {}
+      let source = messages
+      if (!field.storeDataInParentForm) {
+        const initialValue = isArray(result) ? [] : {}
+        messages[key] ??= initialValue
+        source = messages[key]
+      }
+      merge(source, result)
+    }
+
+    const entries = [...this.fields.entries()]
+    await Promise.allSettled(entries.map(getFieldMessages))
+
+    if (!this.#formValidators) return messages
+
+    const getFormMessages = async (validator: FormValidator) => {
+      const result = await validator(this.data)
+      if (isEmpty(result)) return
+      messages ??= {}
+      merge(messages, result)
+    }
+
+    await Promise.allSettled(this.#formValidators.map(getFormMessages))
+
+    return messages
   }
 
   /**

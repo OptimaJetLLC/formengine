@@ -1,3 +1,5 @@
+import {ValidationMessages} from "../features/validation/types/ValidationResult";
+
 /**
  * The interface for accessing the form data.
  */
@@ -27,6 +29,12 @@ export interface IFormData {
    * Validates the data in the form.
    */
   validate: () => Promise<void>
+
+  /**
+   * Returns the validation results without triggering an events and changing the state of the form.
+   * @returns the {@link ValidationMessages} validation results.
+   */
+  getValidationResult: () => Promise<ValidationMessages>
 
   /**
    * If true, then validation is in progress.
@@ -73,6 +81,12 @@ export const IFormDataDeclaration = `declare interface IFormData {
    * Validates the data in the form.
    */
   validate(): Promise<void>
+    
+  /**
+   * Returns the validation results without triggering an events and changing the state of the form.
+   * @returns the validation results.
+   */
+  getValidationResult: () => Promise<ValidationMessages>
 
   /**
    * If true, then validation is in progress.

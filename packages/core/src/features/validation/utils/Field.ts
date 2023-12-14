@@ -1,3 +1,5 @@
+import {ValidationMessages} from "../types/ValidationResult";
+
 /**
  * Field with the form data.
  */
@@ -54,6 +56,12 @@ export interface Field {
    * Validates the field value.
    */
   validate: () => Promise<void>
+
+  /**
+   * Returns the validation results without triggering an events and changing the state of the form.
+   * @returns the {@link ValidationMessages} validation results.
+   */
+  getValidationResult: () => Promise<ValidationMessages>
 
   /**
    * Sets the field to its default value.
