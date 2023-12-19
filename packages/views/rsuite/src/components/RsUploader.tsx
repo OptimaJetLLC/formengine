@@ -47,6 +47,7 @@ export const rsUploader = define(RsUploader, 'RsUploader')
     removable: boolean,
     timeout: number,
     withCredentials: boolean,
-    defaultFileList: array
-      .withEditorProps({columns})
+    fileList: array
+          .withEditorProps({columns})
+          .valued
   })
