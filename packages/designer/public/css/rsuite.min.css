@@ -68,9 +68,6 @@
   & pre {
     overflow: auto;
   }
-  & button {
-    overflow: visible;
-  }
   & button,
   & select {
     text-transform: none;

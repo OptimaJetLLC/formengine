@@ -94,9 +94,6 @@ or [components-rsuite](https://www.npmjs.com/package/@react-form-builder/compone
      & pre {
        overflow: auto;
      }
-     & button {
-       overflow: visible;
-     }
      & button,
      & select {
        text-transform: none;
