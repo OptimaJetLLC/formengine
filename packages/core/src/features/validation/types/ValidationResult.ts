@@ -15,3 +15,13 @@ export type ValidationResult = {
    */
   message?: string
 }
+
+/**
+ * The validation result messages map.
+ */
+export type MessagesMap = Record<string, string[] | Record<string, string[] | any>>
+
+/**
+ * The validation result messages.
+ */
+export type ValidationMessages = string[] | MessagesMap | undefined

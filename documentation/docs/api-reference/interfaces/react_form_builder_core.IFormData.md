@@ -32,6 +32,24 @@ Clears the form data.
 
 ___
 
+### getValidationResult
+
+• **getValidationResult**: () => `Promise`<`ValidationMessages`\>
+
+#### Type declaration
+
+▸ (): `Promise`<`ValidationMessages`\>
+
+Returns the validation results without triggering an events and changing the state of the form.
+
+##### Returns
+
+`Promise`<`ValidationMessages`\>
+
+the ValidationMessages validation results.
+
+___
+
 ### reset
 
 • **reset**: () => `void`
@@ -131,3 +149,15 @@ If true, then validation is in progress.
 #### Returns
 
 `boolean`
+
+___
+
+### state
+
+• `get` **state**(): `Record`<`string`, `unknown`\>
+
+#### Returns
+
+`Record`<`string`, `unknown`\>
+
+the user defined observable state.

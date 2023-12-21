@@ -36,8 +36,7 @@ const SDiv = styled.div`
 /**
  * Metadata builder for rSuite-based error display component.
  */
-export const rsErrorMessage = define(RsErrorMessage)
-  .type('RsErrorMessage')
+export const rsErrorMessage = define(RsErrorMessage, 'RsErrorMessage')
   .name('Error message')
   .props({
     placement: placement.default('bottomStart'),

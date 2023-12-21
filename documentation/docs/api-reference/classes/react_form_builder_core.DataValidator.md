@@ -23,6 +23,26 @@ Releases allocated resources, must be used when destroying an object instance.
 
 ___
 
+### getValidationResult
+
+▸ **getValidationResult**(`value`): `Promise`<`undefined` \| [`ValidationResult`](../modules/react_form_builder_core.md#validationresult)[]\>
+
+Returns the validation results without triggering an events and changing the state of the form.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `any` | the validated value. |
+
+#### Returns
+
+`Promise`<`undefined` \| [`ValidationResult`](../modules/react_form_builder_core.md#validationresult)[]\>
+
+the validation results.
+
+___
+
 ### sendValidationEvent
 
 ▸ **sendValidationEvent**(`value`): `void`

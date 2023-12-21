@@ -1,6 +1,6 @@
 import {IReactionDisposer, makeAutoObservable, reaction} from 'mobx'
 import {Model} from '../../features/define'
-import type {FormValidators} from '../../features/form-viewer/FormValidators'
+import type {FormValidator, FormValidators} from '../../features/form-viewer/FormValidators'
 import {getFluentData} from '../../features/localization/getFluentData'
 import type {Field} from '../../features/validation'
 import {ComponentStore} from '../../stores/ComponentStore'
@@ -9,6 +9,7 @@ import type {IFormData} from '../IFormData'
 import {nameObservable} from '../observableNaming'
 import {SyncEvent} from '../SyncEvent'
 import {treeForEach} from '../treeUtils'
+import {isArray, isEmpty, merge} from "lodash-es";
 
 let counter = 0
 
@@ -58,6 +59,7 @@ export class ComponentData implements IFormData {
   #disposers: IReactionDisposer[]
   #events?: ComponentDataEvents
   #formValidators?: FormValidators
+  private _state: Record<string, unknown> = {}
   /**
    * The unique identifier.
    */
@@ -140,24 +142,7 @@ export class ComponentData implements IFormData {
    * @param inserted the node to insert.
    */
   insertAfterMe(inserted: ComponentData) {
-    if (!this.parent) {
-      throw new Error(`Cannot insert without parent. Key = ${this.key}`)
-    }
-    inserted.parent?.removeChild(inserted)
-    inserted.parent = this.parent
-    const children = this.parent.children
-    const index = children.indexOf(this)
-    if (index < 0) {
-      throw new Error(`Cannot insert after not existing element into ComponentData. Key = ${this.key}`)
-    }
-    children.splice(index + 1, 0, inserted)
-    this.parent.store.children ??= []
-    const storeChildren = this.parent.store.children
-    const storeIndex = children.indexOf(this)
-    if (storeIndex < 0) {
-      throw new Error(`Cannot insert after not existing element into ComponentStore. Key = ${this.key}`)
-    }
-    storeChildren.splice(storeIndex + 1, 0, inserted.store)
+    this.insert(inserted, 'after')
   }
 
   /**
@@ -165,24 +150,14 @@ export class ComponentData implements IFormData {
    * @param inserted the node to insert.
    */
   insertBeforeMe(inserted: ComponentData) {
-    if (!this.parent) {
-      throw new Error(`Cannot insert without parent. Key = ${this.key}`)
-    }
-    inserted.parent?.removeChild(inserted)
-    inserted.parent = this.parent
-    const children = this.parent.children
-    const index = children.indexOf(this)
-    if (index < 0) {
-      throw new Error(`Cannot insert before not existing element into ComponentData. Key = ${this.key}`)
-    }
-    children.splice(index, 0, inserted)
-    this.parent.store.children ??= []
-    const storeChildren = this.parent.store.children
-    const storeIndex = children.indexOf(this)
-    if (storeIndex < 0) {
-      throw new Error(`Cannot insert before not existing element into ComponentStore. Key = ${this.key}`)
-    }
-    storeChildren.splice(storeIndex, 0, inserted.store)
+    this.insert(inserted, 'before')
+  }
+
+  /**
+   * @inheritDoc
+   */
+  get state() {
+    return this._state
   }
 
   /**
@@ -344,6 +319,43 @@ export class ComponentData implements IFormData {
   /**
    * @inheritDoc
    */
+  async getValidationResult() {
+    let messages = undefined
+
+    const getFieldMessages = async ([key, field]: [key: string, field: Field]) => {
+      const result = await field.getValidationResult()
+      if (isEmpty(result)) return
+
+      messages ??= {}
+      let source = messages
+      if (!field.storeDataInParentForm) {
+        const initialValue = isArray(result) ? [] : {}
+        messages[key] ??= initialValue
+        source = messages[key]
+      }
+      merge(source, result)
+    }
+
+    const entries = [...this.fields.entries()]
+    await Promise.allSettled(entries.map(getFieldMessages))
+
+    if (!this.#formValidators) return messages
+
+    const getFormMessages = async (validator: FormValidator) => {
+      const result = await validator(this.data)
+      if (isEmpty(result)) return
+      messages ??= {}
+      merge(messages, result)
+    }
+
+    await Promise.allSettled(this.#formValidators.map(getFormMessages))
+
+    return messages
+  }
+
+  /**
+   * @inheritDoc
+   */
   get isValidating() {
     return this.validating
   }
@@ -376,6 +388,28 @@ export class ComponentData implements IFormData {
    */
   get isRoot() {
     return !this.parent
+  }
+
+  private insert(inserted: ComponentData, position: 'before' | 'after') {
+    const indexAddition = position === 'before' ? 0 : 1
+    if (!this.parent) {
+      throw new Error(`Cannot insert without parent. Key = ${this.key}`)
+    }
+    inserted.parent?.removeChild(inserted)
+    inserted.parent = this.parent
+    const children = this.parent.children
+    const index = children.indexOf(this)
+    if (index < 0) {
+      throw new Error(`Cannot insert not existing element into ComponentData. Key = ${this.key}`)
+    }
+    children.splice(index + indexAddition, 0, inserted)
+    this.parent.store.children ??= []
+    const storeChildren = this.parent.store.children
+    const storeIndex = storeChildren.indexOf(this.store)
+    if (storeIndex < 0) {
+      throw new Error(`Cannot insert not existing element into ComponentStore. Key = ${this.key}`)
+    }
+    storeChildren.splice(storeIndex + indexAddition, 0, inserted.store)
   }
 
   /**

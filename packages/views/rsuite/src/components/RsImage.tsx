@@ -14,8 +14,7 @@ const SImage = styled.img`
 
 const RsImage = ({alt, ...props}: RsImageProps) => <SImage {...props} alt={alt}/>
 
-export const rsImage = define(RsImage)
-  .type('RsImage')
+export const rsImage = define(RsImage, 'RsImage')
   .name('Image')
   .props({
     src: string.required.default(logo).hinted('Image source'),

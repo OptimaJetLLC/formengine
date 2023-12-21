@@ -1,5 +1,5 @@
 import {calculateExpressionProperty} from '../features/calculation/propertyCalculator'
-import {ComponentStore} from '../stores/ComponentStore'
+import {ComponentStore, isFunctionalProperty} from '../stores/ComponentStore'
 import type {IFormData} from './IFormData'
 
 /**
@@ -10,5 +10,9 @@ import type {IFormData} from './IFormData'
  */
 export function needRender(componentStore: ComponentStore, formData: IFormData) {
   if (!componentStore.renderWhen) return true
+  if (!isFunctionalProperty(componentStore.renderWhen)) {
+    const value = (componentStore.renderWhen.value ?? '').trim()
+    if (value === '') return true
+  }
   return calculateExpressionProperty(componentStore.renderWhen, formData) === true
 }

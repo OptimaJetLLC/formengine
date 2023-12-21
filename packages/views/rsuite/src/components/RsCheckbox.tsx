@@ -2,8 +2,7 @@ import {boolean, define, event, string} from '@react-form-builder/core'
 import {Checkbox} from 'rsuite'
 import {readOnly} from '../commonProperties'
 
-export const rsCheckbox = define(Checkbox)
-  .type('RsCheckbox')
+export const rsCheckbox = define(Checkbox, 'RsCheckbox')
   .name('Checkbox')
   .props({
     children: string.named('Label').default('Checkbox'),

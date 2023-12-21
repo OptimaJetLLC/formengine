@@ -6,8 +6,7 @@ const RsContainer = styled.div`
 `
 const {flexDirection, gap} = containerStyles
 
-export const rsContainer = define(RsContainer)
-  .type('RsContainer')
+export const rsContainer = define(RsContainer, 'RsContainer')
   .name('Container')
   .kind('container')
   .props({

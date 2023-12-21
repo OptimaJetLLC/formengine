@@ -23,8 +23,7 @@ const RsGrid = (props: RsGridProps) => {
   )
 }
 
-export const rsGrid = define(RsGrid)
-  .type('RsGrid')
+export const rsGrid = define(RsGrid, 'RsGrid')
   .name('Grid')
   .props({
     child1: node,

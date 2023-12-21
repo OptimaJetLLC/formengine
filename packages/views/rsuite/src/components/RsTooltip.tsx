@@ -32,8 +32,7 @@ const RsTooltip = ({text, placement, trigger, children}: RsTooltipProps) => {
 /**
  * Metadata builder for rSuite-based tooltip display component.
  */
-export const rsTooltip = define(RsTooltip)
-  .type('RsTooltip')
+export const rsTooltip = define(RsTooltip, 'RsTooltip')
   .name('Tooltip')
   .props({
     text: string.required.default('Tooltip message...').hinted('Tooltip text'),

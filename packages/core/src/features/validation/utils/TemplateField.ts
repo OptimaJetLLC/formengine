@@ -104,6 +104,13 @@ export class TemplateField implements Field {
   /**
    * @inheritDoc
    */
+  async getValidationResult() {
+    return await this.form.getValidationResult()
+  }
+
+  /**
+   * @inheritDoc
+   */
   init() {
     this.form.fields.forEach(field => field.init())
   }

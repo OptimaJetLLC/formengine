@@ -186,8 +186,11 @@ const FormBuilderApp = () => {
     initialData={initialData}
     formStorage={formStorage}
     localize={localizeFn}
-    onFormDataChange={({data, errors}) => {
+    onFormDataChange={async (formData) => {
+      let {data, errors} = formData
       if (logEvents) console.log('onFormDataChange', {data, errors})
+      const silentValidationResult = await formData.getValidationResult()
+      formData.state.isValid = !silentValidationResult
     }}
     viewerRef={ref}
     validators={customValidators}

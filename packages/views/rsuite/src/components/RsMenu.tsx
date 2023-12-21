@@ -41,8 +41,7 @@ const columns = [
 
 const {activeKey, ...props} = navProps
 
-export const rsMenu = define(RsMenu)
-  .type('RsMenu')
+export const rsMenu = define(RsMenu, 'RsMenu')
   .name('Menu')
   .props({
     activeKey: activeKey.default('Home'),

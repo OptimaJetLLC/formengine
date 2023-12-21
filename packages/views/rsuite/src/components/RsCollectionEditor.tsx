@@ -8,6 +8,5 @@ const RsCollectionEditor = (props: RsCollectionEditorProps) => {
   return (<>CollectionEditor</>)
 }
 
-export const rsCollectionEditor = define(RsCollectionEditor)
-  .type('RsCollectionEditor')
+export const rsCollectionEditor = define(RsCollectionEditor, 'RsCollectionEditor')
   .name('Collection editor')

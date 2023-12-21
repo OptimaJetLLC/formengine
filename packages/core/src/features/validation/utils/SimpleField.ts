@@ -10,6 +10,7 @@ import {autoConvertField} from './autoConvertField'
 import {DataValidator} from './DataValidator'
 import {Field} from './Field'
 import {typedValidatorsResolver} from './validatorsResolver'
+import {ValidationMessages} from "../types/ValidationResult";
 
 /**
  * Type for the function that disposes resources.
@@ -171,6 +172,15 @@ export class SimpleField implements Field {
       return
     }
     await this.dataValidator?.validate?.(this.value)
+  }
+
+  /**
+   * @inheritDoc
+   */
+  async getValidationResult() {
+    if (!this.needValidate) return
+    const result = await this.dataValidator?.getValidationResult?.(this.value)
+    return result?.map(({message}) => message) as ValidationMessages
   }
 
   /**

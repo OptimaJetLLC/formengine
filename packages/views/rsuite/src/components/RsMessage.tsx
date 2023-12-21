@@ -8,8 +8,7 @@ const SMessage = styled(Message)`
   }
 `
 
-export const rsMessage = define(SMessage)
-  .type('RsMessage')
+export const rsMessage = define(SMessage, 'RsMessage')
   .name('Message')
   .props({
     children: node,

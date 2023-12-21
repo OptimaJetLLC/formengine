@@ -47,6 +47,7 @@ export class DataValidator {
   readonly #subject = new Subject<any>()
   readonly #subscriptions
   readonly #stream
+  readonly #validator
 
   private constructor(
     store: IStore,
@@ -55,10 +56,11 @@ export class DataValidator {
     errorMessageLocalizer?: ErrorMessageLocalizer
   ) {
     const localizer = errorMessageLocalizer ?? concatErrorMessages
+    this.#validator = (value: any) => validator(value, store)
     this.#stream = this.#subject
       .pipe(
         debounceTime(200),
-        map(value => validator(value, store)),
+        map(this.#validator),
         switchMap(promise => promise),
         map(localizer),
       )
@@ -104,6 +106,15 @@ export class DataValidator {
     })
     this.sendValidationEvent(value)
     return promise
+  }
+
+  /**
+   * Returns the validation results without triggering an events and changing the state of the form.
+   * @param value the validated value.
+   * @returns the validation results.
+   */
+  getValidationResult = (value: any) => {
+    return this.#validator(value)
   }
 
   /**

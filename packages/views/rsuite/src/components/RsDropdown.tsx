@@ -12,7 +12,7 @@ interface RsDropdownProps extends InputPickerProps {
   onLoadData?: LoadDataHandler
 }
 
-const RsDropdown = ({data, label, onLoadData, onSearch, onOpen, value, className, ...props}: RsDropdownProps) => {
+const RsDropdown = ({data, label, onLoadData, onSearch, onOpen, value = '', className, ...props}: RsDropdownProps) => {
   const {loading, ...loadProps} = useLoadData({data, onLoadData, onSearch, onOpen, value})
 
   const renderMenu = (menu: ReactNode) => <>
@@ -40,8 +40,7 @@ const SLoader = styled(Loader)`
   }
 `
 
-export const rsDropdown = define(RsDropdown)
-  .type('RsDropdown')
+export const rsDropdown = define(RsDropdown, 'RsDropdown')
   .name('Dropdown')
   .props({
     ...pickerProps,

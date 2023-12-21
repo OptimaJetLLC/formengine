@@ -53,8 +53,7 @@ const SInputPicker = styled(InputPicker)`
   }
 `
 
-export const rsSearch = define(RsSearch)
-  .type('RsSearch')
+export const rsSearch = define(RsSearch, 'RsSearch')
   .name('Search')
   .props({
     ...pickerProps,

@@ -8,7 +8,6 @@ const RsCustomControl = (props: RsCustomControlProps) => {
   return (<>CustomControl</>)
 }
 
-export const rsCustomControl = define(RsCustomControl)
-  .type('RsCustomControl')
+export const rsCustomControl = define(RsCustomControl, 'RsCustomControl')
   .name('Custom control')
   .preview(<span>This is custom preview 🎉🚉🪆</span>)

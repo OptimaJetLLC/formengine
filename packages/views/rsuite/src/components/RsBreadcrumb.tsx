@@ -36,8 +36,7 @@ const RsBreadcrumb = ({items, onItemClick, ...props}: RsBreadcrumbProps) => (
   </Breadcrumb>
 )
 
-export const rsBreadcrumb = define(RsBreadcrumb)
-  .type('RsBreadcrumb')
+export const rsBreadcrumb = define(RsBreadcrumb, 'RsBreadcrumb')
   .name('Breadcrumb')
   .props({
     separator: string.default('/'),

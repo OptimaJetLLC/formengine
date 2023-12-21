@@ -21,8 +21,7 @@ const RsRadioGroup = ({items, label, value, className, ...props}: RsRadioGroupPr
   )
 }
 
-export const rsRadioGroup = define(RsRadioGroup)
-  .type('RsRadioGroup')
+export const rsRadioGroup = define(RsRadioGroup, 'RsRadioGroup')
   .name('Radio group')
   .props({
     name: string.default('RadioGroup').hinted('Radio group name'),
