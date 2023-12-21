@@ -59,6 +59,7 @@ export class ComponentData implements IFormData {
   #disposers: IReactionDisposer[]
   #events?: ComponentDataEvents
   #formValidators?: FormValidators
+  private _state: Record<string, unknown> = {}
   /**
    * The unique identifier.
    */
@@ -150,6 +151,13 @@ export class ComponentData implements IFormData {
    */
   insertBeforeMe(inserted: ComponentData) {
     this.insert(inserted, 'before')
+  }
+
+  /**
+   * @inheritDoc
+   */
+  get state() {
+    return this._state
   }
 
   /**

@@ -202,6 +202,7 @@ const getType = (result: CalculableResult): TypeAttributes.Status => {
  * The class for accessing the test form data.
  */
 export class TestFormData implements IFormData {
+  state = {}
   hasErrors = false
   isValidating = false
 

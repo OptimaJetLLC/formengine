@@ -20,6 +20,11 @@ export interface IFormData {
   get hasErrors(): boolean
 
   /**
+   * @returns the user defined observable state.
+   */
+  get state(): Record<string, unknown>
+
+  /**
    * Sets the validation error message for all form data fields.
    * @param message the validation error message.
    */
@@ -70,6 +75,11 @@ export const IFormDataDeclaration = `declare interface IFormData {
    * true if the form contains errors, otherwise false.
    */
   get hasErrors(): boolean
+
+  /**
+   * @returns the user defined observable state.
+   */
+  get state(): Record<string, unknown>
 
   /**
    * Sets the validation error message for all form data fields.
