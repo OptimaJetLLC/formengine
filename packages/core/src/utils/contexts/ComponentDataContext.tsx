@@ -141,24 +141,7 @@ export class ComponentData implements IFormData {
    * @param inserted the node to insert.
    */
   insertAfterMe(inserted: ComponentData) {
-    if (!this.parent) {
-      throw new Error(`Cannot insert without parent. Key = ${this.key}`)
-    }
-    inserted.parent?.removeChild(inserted)
-    inserted.parent = this.parent
-    const children = this.parent.children
-    const index = children.indexOf(this)
-    if (index < 0) {
-      throw new Error(`Cannot insert after not existing element into ComponentData. Key = ${this.key}`)
-    }
-    children.splice(index + 1, 0, inserted)
-    this.parent.store.children ??= []
-    const storeChildren = this.parent.store.children
-    const storeIndex = children.indexOf(this)
-    if (storeIndex < 0) {
-      throw new Error(`Cannot insert after not existing element into ComponentStore. Key = ${this.key}`)
-    }
-    storeChildren.splice(storeIndex + 1, 0, inserted.store)
+    this.insert(inserted, 'after')
   }
 
   /**
@@ -166,24 +149,7 @@ export class ComponentData implements IFormData {
    * @param inserted the node to insert.
    */
   insertBeforeMe(inserted: ComponentData) {
-    if (!this.parent) {
-      throw new Error(`Cannot insert without parent. Key = ${this.key}`)
-    }
-    inserted.parent?.removeChild(inserted)
-    inserted.parent = this.parent
-    const children = this.parent.children
-    const index = children.indexOf(this)
-    if (index < 0) {
-      throw new Error(`Cannot insert before not existing element into ComponentData. Key = ${this.key}`)
-    }
-    children.splice(index, 0, inserted)
-    this.parent.store.children ??= []
-    const storeChildren = this.parent.store.children
-    const storeIndex = children.indexOf(this)
-    if (storeIndex < 0) {
-      throw new Error(`Cannot insert before not existing element into ComponentStore. Key = ${this.key}`)
-    }
-    storeChildren.splice(storeIndex, 0, inserted.store)
+    this.insert(inserted, 'before')
   }
 
   /**
@@ -414,6 +380,28 @@ export class ComponentData implements IFormData {
    */
   get isRoot() {
     return !this.parent
+  }
+
+  private insert(inserted: ComponentData, position: 'before' | 'after') {
+    const indexAddition = position === 'before' ? 0 : 1
+    if (!this.parent) {
+      throw new Error(`Cannot insert without parent. Key = ${this.key}`)
+    }
+    inserted.parent?.removeChild(inserted)
+    inserted.parent = this.parent
+    const children = this.parent.children
+    const index = children.indexOf(this)
+    if (index < 0) {
+      throw new Error(`Cannot insert not existing element into ComponentData. Key = ${this.key}`)
+    }
+    children.splice(index + indexAddition, 0, inserted)
+    this.parent.store.children ??= []
+    const storeChildren = this.parent.store.children
+    const storeIndex = storeChildren.indexOf(this.store)
+    if (storeIndex < 0) {
+      throw new Error(`Cannot insert not existing element into ComponentStore. Key = ${this.key}`)
+    }
+    storeChildren.splice(storeIndex + indexAddition, 0, inserted.store)
   }
 
   /**
