@@ -220,6 +220,22 @@ ___
 
 the key of this node (same as the key of the ComponentStore).
 
+___
+
+### state
+
+• `get` **state**(): `Record`<`string`, `unknown`\>
+
+#### Returns
+
+`Record`<`string`, `unknown`\>
+
+the user defined observable state.
+
+#### Implementation of
+
+IFormData.state
+
 ## Methods
 
 ### clear
@@ -280,6 +296,24 @@ Find the node with the given key.
 `undefined` \| [`ComponentData`](react_form_builder_core.ComponentData.md)
 
 the node or undefined if not found.
+
+___
+
+### getValidationResult
+
+▸ **getValidationResult**(): `Promise`<`undefined`\>
+
+Returns the validation results without triggering an events and changing the state of the form.
+
+#### Returns
+
+`Promise`<`undefined`\>
+
+the ValidationMessages validation results.
+
+#### Implementation of
+
+IFormData.getValidationResult
 
 ___
 

@@ -55,6 +55,10 @@
       "hint": "选项是否可以清空",
       "name": "可清洁"
     },
+    "code": {
+      "hint": "编辑代码",
+      "name": "密码"
+    },
     "creatable": {
       "hint": "设置可以创建新选项",
       "name": "可创造的"
@@ -93,6 +97,10 @@
     "fixedDecimalScale": {
       "hint": "如果设置为true，它会在decimalSeparator之后添加尾随0以匹配给定的decimalScale",
       "name": "固定小数位数"
+    },
+    "flexDirection": {
+      "hint": "容器子项的弯曲方向",
+      "name": "方向感"
     },
     "format": {
       "hint": "使用#（或模式char）字符格式化模式。 #是数字的占位符字符。 例如：'######'",
@@ -179,15 +187,26 @@
     "calculable": "可计算价值",
     "editCodeAction": "编辑代码操作",
     "editProperty": "编辑属性",
+    "function": "可计算价值",
     "localization": "流利的本地化",
+    "simpleValue": "简单值",
+    "simpleValueHint": "在右侧面板中编辑属性",
     "use": "使用方法"
+  },
+  "codeActionEditor": {
+    "actionNameExists": "具有此名称的操作已存在",
+    "nameIsRequired": "需要操作名称",
+    "parameterNameExists": "具有此名称的参数已存在",
+    "parameterNameIsNotValid": "参数名称无效",
+    "parameterNameIsRequired": "参数名称为必填项",
+    "saveAsNew": "另存为新"
   },
   "codeEditor": {
     "close": "接近/接近",
+    "codeActionHeader": "代码动作编辑器",
     "codePlaceholder": "//在这里输入你的代码",
     "compilationResult": "编译结果:",
     "compile": "编译",
-    "codeActionHeader": "代码动作编辑器",
     "ok": "好的",
     "save": "储蓄"
   },
@@ -200,7 +219,8 @@
     "name": "姓名",
     "remove": "移走",
     "reset": "重置",
-    "save": "储蓄"
+    "save": "储蓄",
+    "test": "测试"
   },
   "componentToolbar": {
     "add": "添加新元素",
@@ -218,14 +238,6 @@
   },
   "componentsModal": {
     "clickToAdd": "点击添加控件"
-  },
-  "codeActionEditor": {
-    "actionNameExists": "具有此名称的操作已存在",
-    "nameIsRequired": "需要操作名称",
-    "parameterNameExists": "具有此名称的参数已存在",
-    "parameterNameIsNotValid": "参数名称无效",
-    "parameterNameIsRequired": "参数名称为必填项",
-    "saveAsNew": "另存为新"
   },
   "editJson": "编辑JSON",
   "errorsPanel": {
@@ -264,8 +276,8 @@
     "formSettings": {
       "actions": "行动",
       "error": "错误设置",
-      "tooltip": "工具提示",
-      "language": "语言设定"
+      "language": "语言设定",
+      "tooltip": "工具提示"
     },
     "sectionName": {
       "components": "组件",
@@ -331,11 +343,22 @@
   },
   "style": {
     "any": "任何",
+    "component": "组件",
+    "componentHint": "适用于组件的样式",
     "desktop": "桌面版",
     "forDevice": "用于设备:",
     "mobile": "流动电话",
     "other": "其他",
-    "tablet": "平板电脑"
+    "tablet": "平板电脑",
+    "wrapper": "包装器,包装器",
+    "wrapperHint": "适用于组件包装器的样式"
+  },
+  "testingEditor": {
+    "autorun": "自动运行",
+    "compilationOk": "编译结果：OK",
+    "hasNotReturnedValue": "没有返回值",
+    "run": "跑",
+    "testFormData": "测试表格数据"
   },
   "toolbar": {
     "cloneComponent": "克隆组件",

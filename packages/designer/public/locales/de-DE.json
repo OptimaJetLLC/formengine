@@ -55,6 +55,10 @@
       "hint": "Ob die Option geleert werden kann",
       "name": "Reinigbar"
     },
+    "code": {
+      "hint": "Code bearbeiten",
+      "name": "Codes"
+    },
     "creatable": {
       "hint": "Einstellungen können neue Optionen erstellen",
       "name": "Gestaltbar"
@@ -93,6 +97,10 @@
     "fixedDecimalScale": {
       "hint": "Wenn auf true gesetzt, werden nachgestellte 0 nach dem Dezimaltrennzeichen hinzugefügt, um der angegebenen Dezimalskala zu entsprechen",
       "name": "Feste Dezimalskala"
+    },
+    "flexDirection": {
+      "hint": "Flexrichtung von Containerkindern",
+      "name": "Richtung"
     },
     "format": {
       "hint": "Formatieren Sie das Muster mit dem Zeichen # (oder einem Musterzeichen). # ist das Platzhalterzeichen für Zahlen. Beispiel: '### ###'",
@@ -179,15 +187,26 @@
     "calculable": "Kalkulierbarer Wert",
     "editCodeAction": "Codeaktion bearbeiten",
     "editProperty": "Eigenschaft bearbeiten",
+    "function": "Kalkulierbarer Wert",
     "localization": "Fließende Lokalisierung",
+    "simpleValue": "Einfacher Wert",
+    "simpleValueHint": "Bearbeiten Sie die Eigenschaft im rechten Bereich",
     "use": "Verwenden"
+  },
+  "codeActionEditor": {
+    "actionNameExists": "Aktion mit diesem Namen ist bereits vorhanden",
+    "nameIsRequired": "Aktionsname ist erforderlich",
+    "parameterNameExists": "Parameter mit diesem Namen existiert bereits",
+    "parameterNameIsNotValid": "Parametername ist ungültig",
+    "parameterNameIsRequired": "Parametername ist erforderlich",
+    "saveAsNew": "Als neu speichern"
   },
   "codeEditor": {
     "close": "Schließen",
+    "codeActionHeader": "Code-Aktionseditor",
     "codePlaceholder": "// geben Sie hier Ihren Code ein",
     "compilationResult": "Kompilierungsergebnis:",
     "compile": "Kompilieren",
-    "codeActionHeader": "Code-Aktionseditor",
     "ok": "Okay",
     "save": "Speichern"
   },
@@ -200,7 +219,8 @@
     "name": "Geltener",
     "remove": "Entfernen",
     "reset": "Zurücksetzen",
-    "save": "Speichern"
+    "save": "Speichern",
+    "test": "Test"
   },
   "componentToolbar": {
     "add": "Neues Element hinzufügen",
@@ -218,14 +238,6 @@
   },
   "componentsModal": {
     "clickToAdd": "Klicken Sie, um Steuerelement hinzuzufügen"
-  },
-  "codeActionEditor": {
-    "actionNameExists": "Aktion mit diesem Namen ist bereits vorhanden",
-    "nameIsRequired": "Aktionsname ist erforderlich",
-    "parameterNameExists": "Parameter mit diesem Namen existiert bereits",
-    "parameterNameIsNotValid": "Parametername ist ungültig",
-    "parameterNameIsRequired": "Parametername ist erforderlich",
-    "saveAsNew": "Als neu speichern"
   },
   "editJson": "JSON bearbeiten",
   "errorsPanel": {
@@ -264,8 +276,8 @@
     "formSettings": {
       "actions": "Aktionen",
       "error": "Fehlereinstellungen",
-      "tooltip": "QuickInfo",
-      "language": "Spracheinstellungen"
+      "language": "Spracheinstellungen",
+      "tooltip": "QuickInfo"
     },
     "sectionName": {
       "components": "Hauptkomponenten",
@@ -331,11 +343,22 @@
   },
   "style": {
     "any": "Jedes Gerät",
+    "component": "Komponente",
+    "componentHint": "Stile, die für die Komponente gelten",
     "desktop": "Desktop",
     "forDevice": "Für Gerät:",
     "mobile": "Mobile",
     "other": "Andere",
-    "tablet": "Tablet"
+    "tablet": "Tablet",
+    "wrapper": "Wickler",
+    "wrapperHint": "Stile, die für den Komponenten-Wrapper gelten"
+  },
+  "testingEditor": {
+    "autorun": "Autostart",
+    "compilationOk": "Kompilierungsergebnis: OK",
+    "hasNotReturnedValue": "Hat keinen Wert zurückgegeben",
+    "run": "Laufen",
+    "testFormData": "Testformulardaten"
   },
   "toolbar": {
     "cloneComponent": "Komponente klonen",

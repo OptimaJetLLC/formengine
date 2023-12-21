@@ -162,6 +162,24 @@ Field.dispose
 
 ___
 
+### getValidationResult
+
+▸ **getValidationResult**(): `Promise`<`undefined`\>
+
+Returns the validation results without triggering an events and changing the state of the form.
+
+#### Returns
+
+`Promise`<`undefined`\>
+
+the ValidationMessages validation results.
+
+#### Implementation of
+
+Field.getValidationResult
+
+___
+
 ### init
 
 ▸ **init**(): `void`

@@ -64,6 +64,24 @@ Contains a field validation errors if the field provides multiple errors (i.e. f
 
 ___
 
+### getValidationResult
+
+• **getValidationResult**: () => `Promise`<`ValidationMessages`\>
+
+#### Type declaration
+
+▸ (): `Promise`<`ValidationMessages`\>
+
+Returns the validation results without triggering an events and changing the state of the form.
+
+##### Returns
+
+`Promise`<`ValidationMessages`\>
+
+the ValidationMessages validation results.
+
+___
+
 ### init
 
 • **init**: () => `void`

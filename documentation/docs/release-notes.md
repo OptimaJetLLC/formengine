@@ -4,6 +4,20 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.0.2
+
+_December_ 21, 2023
+
+- Added `IFormData.getValidationResult()` method that returns validation results without changing the form state.
+- Added the user defined observable state - `IFormData.state`.
+- Added the `initialValue` to `RsUploader` component.
+- Fixed bugs:
+  - `RsDropdown` component is not reset.
+  - Elements flipping positions after saving.
+  - Lost styles in `FormViewer`.
+  - An empty string in the `renderWhen` property works as `false`.
+  - Anonymous component error in bundle.
+
 ## 1.0.1
 
 _November_ 28, 2023
