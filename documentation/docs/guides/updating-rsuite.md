@@ -265,7 +265,6 @@ or [components-rsuite](https://www.npmjs.com/package/@react-form-builder/compone
    }
    
    .optimajet-formbuilder,
-   .optimajet-formviewer,
    .rs-toast-provider,
    .rs-modal,
    .rs-picker-menu {
