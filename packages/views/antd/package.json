@@ -1,6 +1,6 @@
 {
     "name": "@react-form-builder/components-antd",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "private": true,
     "main": "src/index.ts",
     "type": "module",
@@ -13,7 +13,7 @@
         "build": "vite build"
     },
     "dependencies": {
-        "@react-form-builder/core": "^1.0.2",
+        "@react-form-builder/core": "^1.0.3",
         "antd": "^5.9.1"
     }
 }
