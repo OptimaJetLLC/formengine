@@ -4,6 +4,13 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.0.3
+
+_December_ 22, 2023
+
+- Fixed dark theme styles.
+- Fixed incorrect behavior of `renderWhen` property.
+
 ## 1.0.2
 
 _December_ 21, 2023
