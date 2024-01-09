@@ -1,0 +1,49 @@
+{
+    "name": "@react-form-builder/viewer-bundle",
+    "version": "1.0.3",
+    "private": false,
+    "main": "src/index.ts",
+    "type": "module",
+    "description": "Optimajet Form Builder Viewer bundle",
+    "keywords": [
+        "form-builder",
+        "optimajet"
+    ],
+    "author": "Optimajet",
+    "license": "Contact sales@optimajet.com",
+    "bugs": {
+        "email": "support@optimajet.com"
+    },
+    "scripts": {
+        "build": "vite build",
+        "clean": "rimraf dist temp",
+        "bundle": "npm-run-all -l clean build create-archive",
+        "create-archive": "node ./config/pack"
+    },
+    "dependencies": {
+        "@react-form-builder/components-rsuite": "^1.0.3",
+        "@react-form-builder/core": "^1.0.3",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-is": "^18.2.0"
+    },
+    "devDependencies": {
+        "@types/react-dom": "^18.2.17"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "files": [
+        "dist/index.umd.js",
+        "README.md"
+    ]
+}

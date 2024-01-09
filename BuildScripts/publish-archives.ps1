@@ -23,7 +23,9 @@ $PublishTag = $VersionData['NpmPublishTag']
 $PackagesToPublish = (
 "react-form-builder-core",
 "react-form-builder-designer",
-"react-form-builder-components-rsuite"
+"react-form-builder-components-rsuite",
+"react-form-builder-designer-bundle",
+"react-form-builder-viewer-bundle"
 )
 
 Push-Location $ArchivePath

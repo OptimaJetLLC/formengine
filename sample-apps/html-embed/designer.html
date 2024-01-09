@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FormEngine Designer bundle embedding example</title>
+</head>
+<body style="margin: 0">
+<div id="root"></div>
+
+<script src="../../packages/designer-bundle/dist/index.umd.js"></script>
+
+<script type="text/javascript">
+  const form = `
+{
+  "version": "1",
+  "tooltipType": "RsTooltip",
+  "errorType": "RsErrorMessage",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "name",
+        "type": "RsInput",
+        "props": {
+          "placeholder": {
+            "value": "Enter you name"
+          },
+          "label": {
+            "value": "Name"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required"
+            }
+          ]
+        },
+        "tooltipProps": {
+          "text": {
+            "value": "Name"
+          }
+        }
+      },
+      {
+        "key": "password",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Password"
+          },
+          "passwordMask": {
+            "value": true
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required"
+            }
+          ]
+        },
+        "tooltipProps": {
+          "text": {
+            "value": "Password"
+          },
+          "placement": {
+            "value": "left"
+          }
+        }
+      },
+      {
+        "key": "submit",
+        "type": "RsButton",
+        "props": {
+          "children": {
+            "value": "Login"
+          },
+          "color": {
+            "value": "blue"
+          },
+          "appearance": {
+            "value": "primary"
+          }
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
+`
+  const props = {
+    getForm: () => form,
+  }
+
+  const bundle = window.FormEngineDesignerBundle;
+  bundle.renderFormBuilder('root', props)
+</script>
+
+</body>
+</html>

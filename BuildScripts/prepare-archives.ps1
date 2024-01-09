@@ -70,6 +70,8 @@ finally
 $PackagesToArchive = (
 "$( $PSScriptRoot )/../packages/core",
 "$( $PSScriptRoot )/../packages/designer",
+"$( $PSScriptRoot )/../packages/designer-bundle",
+"$( $PSScriptRoot )/../packages/viewer-bundle",
 "$( $PSScriptRoot )/../packages/views/rsuite"
 )
 
