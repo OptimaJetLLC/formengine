@@ -24,7 +24,7 @@ export const parseJson = (value?: string) => {
  * @returns the object prepared for JSON.stringify.
  */
 export const prepareForJson = (data: any) => {
-  if (typeof data !== 'object') return data
+  if (typeof data !== 'object' || data === null) return data
 
   const filtered: any = {}
   Object.entries(data).forEach(([key, value]) => {

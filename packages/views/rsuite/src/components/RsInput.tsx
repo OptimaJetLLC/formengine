@@ -10,17 +10,17 @@ interface RsInputProps extends InputProps {
   passwordMask?: boolean
 }
 
-const RsInput = ({style, className, label, passwordMask, value = '', ...props}: RsInputProps) => {
+const RsInput = ({style, className, label, passwordMask, value, ...props}: RsInputProps) => {
   const [visible, setVisible] = useState(false)
 
   const input = passwordMask
     ? <InputGroup inside>
-      <Input type={visible ? 'text' : 'password'} value={value} {...props}/>
+      <Input type={visible ? 'text' : 'password'} value={value ?? ''} {...props}/>
       <InputGroup.Button onClick={() => setVisible(!visible)}>
         {visible ? <EyeIcon/> : <EyeSlashIcon/>}
       </InputGroup.Button>
     </InputGroup>
-    : <Input value={value} {...props}/>
+    : <Input value={value ?? ''} {...props}/>
 
   return <RsLabeledInput style={style} className={className}>
     <RsRtlLabel>{label}</RsRtlLabel>
