@@ -109,13 +109,9 @@ or [components-rsuite](https://www.npmjs.com/package/@react-form-builder/compone
      & html input[disabled] {
        cursor: not-allowed;
      }
-     & button::-moz-focus-inner,
-     & input::-moz-focus-inner {
-       border: 0;
-       padding: 0;
-     }
      & input {
        line-height: normal;
+       color: var(--rs-text-primary);
      }
      & input[type='checkbox'],
      & input[type='radio'] {
@@ -261,6 +257,11 @@ or [components-rsuite](https://www.npmjs.com/package/@react-form-builder/compone
      @font-face {
        font-family: Apple-System;
        src: local(-apple-system), local(BlinkMacSystemFont), local(system-ui);
+     }
+     & button::-moz-focus-inner,
+     & input::-moz-focus-inner {
+       border: 0;
+       padding: 0;
      }
    }
    
