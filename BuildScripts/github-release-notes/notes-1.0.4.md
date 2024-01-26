@@ -1,0 +1,7 @@
+- Added FormEngine embedding library to [unpkg.com](unpkg.com) CDN.
+- The label property has been added to the `RsDatePicker` component.
+- Fixed bugs:
+  - The form handles null values incorrectly.
+  - Some children disappear in slot dropzone.
+  - The input text in `RsDropdown` component is not visible.
+  - Dropdowns marked as required do not show invalid state after clear.

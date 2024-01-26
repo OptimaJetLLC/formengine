@@ -4,6 +4,18 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.0.4
+
+_January_ 26, 2024
+
+- Added FormEngine embedding library to [unpkg.com](unpkg.com) CDN.
+- The label property has been added to the `RsDatePicker` component.
+- Fixed bugs:
+  - The form handles null values incorrectly.
+  - Some children disappear in slot dropzone.
+  - The input text in `RsDropdown` component is not visible.
+  - Dropdowns marked as required do not show invalid state after clear.
+
 ## 1.0.3
 
 _December_ 22, 2023
