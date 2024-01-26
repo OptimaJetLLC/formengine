@@ -5,7 +5,6 @@ import {Plus as PlusIcon} from '@rsuite/icons'
 import {ComponentProps} from 'react'
 import {IconButton} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
-import {InsertPosition} from '../../../../../utils/types'
 
 interface DropViewProps extends ComponentProps<any> {
   isAfter?: boolean
@@ -45,7 +44,7 @@ const AddButton = ({slot, slotCondition}: { slot?: string, slotCondition?: strin
   const target = useComponentData()
   const handleClick = () => {
     builderStore.showComponentsModal(source => {
-      builderStore.add(source, target, InsertPosition.Inner, slot, slotCondition)
+      builderStore.add(source, target, 'inner', slot, slotCondition)
     })
   }
   return <>

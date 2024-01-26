@@ -5,7 +5,6 @@ import {ComponentProps} from 'react'
 import {useDrop} from 'react-dnd'
 import {ConnectDropTarget} from 'react-dnd/dist/types/types'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
-import {InsertPosition} from '../../../../../utils/types'
 import {AcceptDrop, ItemType} from '../../../consts'
 import {DropView} from './DropView'
 
@@ -44,13 +43,12 @@ interface DropState {
 }
 
 const useDropZone = (isAfter: boolean, isInner?: boolean, slot?: string): [DropState, ConnectDropTarget] => {
-  const {Before, After, Inner} = InsertPosition
 
   const store = useBuilderStore()
   const target = useComponentData()
   const insertPosition = isInner
-    ? Inner
-    : isAfter ? After : Before
+    ? 'inner'
+    : isAfter ? 'after' : 'before'
 
   const [{isActive, isOver}, drop] = useDrop({
     accept: AcceptDrop,

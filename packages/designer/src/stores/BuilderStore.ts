@@ -485,11 +485,11 @@ export class BuilderStore {
    * @param insertPosition the insertion position relative to the new parent component.
    * @returns void
    */
-  move(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = InsertPosition.After): void {
+  move(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = 'after'): void {
     if (source === target || source === this.viewer.form.componentTree) return
-    if (insertPosition === InsertPosition.Inner || target.isRoot) return source.setParent(target)
-    if (insertPosition === InsertPosition.Before) return target.insertBeforeMe(source)
-    if (insertPosition === InsertPosition.After) return target.insertAfterMe(source)
+    if (insertPosition === 'inner' || target.isRoot) return source.setParent(target)
+    if (insertPosition === 'before') return target.insertBeforeMe(source)
+    if (insertPosition === 'after') return target.insertAfterMe(source)
     throw new Error(`Unknown insert position ${insertPosition}`)
   }
 
@@ -498,7 +498,7 @@ export class BuilderStore {
    * @param target the new parent component for relocatable components.
    * @param insertPosition the insertion position relative to the new parent component.
    */
-  multipleMove(target: ComponentData, insertPosition: InsertPosition = InsertPosition.After) {
+  multipleMove(target: ComponentData, insertPosition: InsertPosition = 'after') {
     this.selected.forEach((store) => {
       const sourceComponentData = this.viewer.form.componentTree.findByKey(store.key)
       if (!sourceComponentData) throw Error(`Component with key ${store.key} not found`)
@@ -515,7 +515,7 @@ export class BuilderStore {
    * @param slotCondition the source code of the function that checks if the component can be bound to parent.
    * @returns the new added component.
    */
-  add(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = InsertPosition.After,
+  add(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = 'after',
       slot?: string, slotCondition?: string) {
     const clone = assign(new ComponentStore('', ''), cloneDeep(source.store))
     clone.slot = slot

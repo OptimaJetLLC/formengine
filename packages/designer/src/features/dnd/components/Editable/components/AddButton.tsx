@@ -23,9 +23,9 @@ export const AddButton = namedObserver('AddButton', () => {
     <Container>
       <Label>{t('add')}</Label>
       <ButtonGroup vertical>
-        <IconButton onClick={() => handleClick(InsertPosition.Before)} icon={<SortUp/>} size={'xs'}
+        <IconButton onClick={() => handleClick('before')} icon={<SortUp/>} size={'xs'}
                     appearance={'primary'}>{t('before')}</IconButton>
-        <IconButton onClick={() => handleClick(InsertPosition.After)} icon={<SortDown/>} size={'xs'}
+        <IconButton onClick={() => handleClick('after')} icon={<SortDown/>} size={'xs'}
                     appearance={'primary'}>{t('after')}</IconButton>
       </ButtonGroup>
     </Container>

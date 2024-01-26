@@ -3,12 +3,7 @@ import type {ViewMode} from '@react-form-builder/core'
 /**
  * The position of an inserted component relative to another component.
  */
-export enum InsertPosition {
-  Before,
-  After,
-  Inner
-}
-
+export type InsertPosition = 'before' | 'after' | 'inner'
 /**
  * Form builder mode. Builder or viewer.
  */
