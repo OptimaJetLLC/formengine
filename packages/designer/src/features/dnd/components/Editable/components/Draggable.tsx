@@ -108,15 +108,13 @@ const Container = styled.div`
   }
 
   &:not(.isRoot) {
-    &.isActive.isContainer,
-    .isContainer .isActive &.isContainer {
+    &.isActive.isContainer {
       padding-block: 40px;
       padding-inline: 5px;
       outline: 1px dashed rgba(0, 116, 255, 0.25);
     }
 
-    .horizontal > &.isActive.isContainer,
-    .isContainer .isActive > .horizontal &.isContainer {
+    .horizontal > &.isActive.isContainer {
       padding-block: 5px !important;
       padding-inline: 40px !important;
     }
