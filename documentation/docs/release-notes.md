@@ -8,7 +8,7 @@ slug: /release-notes
 
 _January_ 26, 2024
 
-- Added FormEngine embedding library to [unpkg.com](unpkg.com) CDN.
+- Added FormEngine embedding library to [unpkg.com](https://www.unpkg.com/) CDN.
 - The label property has been added to the `RsDatePicker` component.
 - Fixed bugs:
   - The form handles null values incorrectly.
