@@ -1,10 +1,23 @@
 import {boolean, date, define, event, number, oneOf, string} from '@react-form-builder/core'
-import {DatePicker} from 'rsuite'
+import {DatePicker, DatePickerProps, Form} from 'rsuite'
 import {placement, size} from '../commonProperties'
+import {RsLabeledInput} from './components/Labeled'
 
-export const rsDatePicker = define(DatePicker, 'RsDatePicker')
+interface RsRsDatePickerProps extends DatePickerProps {
+  label: string
+}
+
+const RsDatePicker = ({label, value, className, ...props}: RsRsDatePickerProps) => (
+  <RsLabeledInput className={className}>
+    <Form.ControlLabel>{label}</Form.ControlLabel>
+    <DatePicker value={value ?? null} {...props}/>
+  </RsLabeledInput>
+)
+
+export const rsDatePicker = define(RsDatePicker, 'RsDatePicker')
   .name('DatePicker')
   .props({
+    label: string.default('Date'),
     appearance: oneOf('default', 'subtle').hinted('Set picker appearance'),
     calendarDefaultDate: date.hinted('Calendar panel default presentation date and time'),
     cleanable: boolean.hinted('Whether the selected value can be cleared'),

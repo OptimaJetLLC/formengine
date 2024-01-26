@@ -71,7 +71,7 @@ export const pickerProps = {
   placement,
   size,
   data: array,
-  cleanable: boolean.default(false),
+  cleanable: boolean.default(true),
   creatable: boolean.default(false),
   disabled: boolean,
   readOnly,

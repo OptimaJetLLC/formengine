@@ -106,6 +106,8 @@ const getValueType = (value: unknown): SchemaType => {
  * @returns the converted value.
  */
 export const autoConvertField = (from: any, toType: SchemaType): unknown => {
+  if (from === null || typeof from === 'undefined') return undefined
+
   const fromType = getValueType(from)
   const converter = converters[fromType]?.[toType]
   if (!converter) throw new Error(`Cannot convert ${from} from '${fromType}' to '${toType}'`)

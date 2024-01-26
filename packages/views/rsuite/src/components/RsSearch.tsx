@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {define, string} from '@react-form-builder/core'
 import {Search} from '@rsuite/icons'
-import type {ReactNode} from 'react'
+import type {KeyboardEvent, ReactNode, SyntheticEvent} from 'react'
 import {Form, InputPicker, InputPickerProps, Loader} from 'rsuite'
 import {pickerProps} from '../commonProperties'
 import {LoadDataHandler, useLoadData} from '../hooks'
@@ -12,18 +12,24 @@ interface RsSearchProps extends InputPickerProps {
   onLoadData?: LoadDataHandler
 }
 
-const RsSearch = ({data, label, onLoadData, onSearch, value, className, ...props}: RsSearchProps) => {
+const RsSearch = ({data, label, onLoadData, onSearch, onChange, value = '', className, ...props}: RsSearchProps) => {
   const {loading, onOpen, ...loadProps} = useLoadData({data, onLoadData, onSearch, value})
   const renderMenu = (menu: ReactNode) => loadProps.data?.length ? menu : null
 
   const Icon = loading ? Loader : Search
 
+  const handleChange = (value: any, e: SyntheticEvent) => {
+    const pressedEnter = (e as KeyboardEvent).code === 'Enter'
+    if (!props.creatable && pressedEnter) return
+    onChange?.(value, e)
+  }
+
   return (
     <RsLabeledInput className={className}>
       <Form.ControlLabel>{label}</Form.ControlLabel>
       <Container>
-        <SInputPicker {...props} {...loadProps} renderMenu={renderMenu}/>
-        <Icon className={'search-icon'}/>
+        <SInputPicker {...props} {...loadProps} onChange={handleChange} renderMenu={renderMenu}/>
+        {!(props.cleanable && value) && <Icon className={'search-icon'}/>}
       </Container>
     </RsLabeledInput>
   )
