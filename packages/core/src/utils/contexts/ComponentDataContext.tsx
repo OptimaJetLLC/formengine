@@ -1,3 +1,4 @@
+import {isArray, isEmpty, merge} from 'lodash-es'
 import {IReactionDisposer, makeAutoObservable, reaction} from 'mobx'
 import {Model} from '../../features/define'
 import type {FormValidator, FormValidators} from '../../features/form-viewer/FormValidators'
@@ -9,7 +10,6 @@ import type {IFormData} from '../IFormData'
 import {nameObservable} from '../observableNaming'
 import {SyncEvent} from '../SyncEvent'
 import {treeForEach} from '../treeUtils'
-import {isArray, isEmpty, merge} from "lodash-es";
 
 let counter = 0
 
@@ -410,6 +410,8 @@ export class ComponentData implements IFormData {
       throw new Error(`Cannot insert not existing element into ComponentStore. Key = ${this.key}`)
     }
     storeChildren.splice(storeIndex + indexAddition, 0, inserted.store)
+    inserted.store.slot = this.store.slot
+    inserted.store.slotCondition = this.store.slotCondition
   }
 
   /**
