@@ -122,6 +122,14 @@ The language of form.
 
 ___
 
+### licenseKey
+
+• `Optional` **licenseKey**: `string`
+
+The FormEngine license key.
+
+___
+
 ### localize
 
 • `Optional` **localize**: [`ComponentLocalizer`](../modules/react_form_builder_core.md#componentlocalizer)

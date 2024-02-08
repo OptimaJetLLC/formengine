@@ -17,6 +17,7 @@
     "scripts": {
         "build": "vite build",
         "clean": "rimraf dist temp",
+        "prebundle": "node ./scripts/update-assembly-date",
         "bundle": "npm-run-all -l clean build create-archive",
         "create-archive": "node ./config/pack"
     },

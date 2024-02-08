@@ -9,6 +9,7 @@ import {
 import {ActionDefinition, BiDi, ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
 import {BuilderView, FormBuilder, IFormStorage} from '@react-form-builder/designer'
 import {useCallback, useEffect, useRef} from 'react'
+import {generatedLicenseKey} from './utils/license'
 
 // Here you can pass the metadata of your components
 const componentsMetadata = rSuiteComponents.map(definer => definer.build())
@@ -191,6 +192,7 @@ export const Designer = () => {
 
   return (
     <FormBuilder
+      licenseKey={generatedLicenseKey}
       view={builderView}
       getForm={getFormFn}
       formName={formName}

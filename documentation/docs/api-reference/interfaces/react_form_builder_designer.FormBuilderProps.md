@@ -184,6 +184,18 @@ Omit.language
 
 ___
 
+### licenseKey
+
+• `Optional` **licenseKey**: `string`
+
+The FormEngine license key.
+
+#### Inherited from
+
+Omit.licenseKey
+
+___
+
 ### localize
 
 • `Optional` **localize**: [`ComponentLocalizer`](../modules/react_form_builder_core.md#componentlocalizer)

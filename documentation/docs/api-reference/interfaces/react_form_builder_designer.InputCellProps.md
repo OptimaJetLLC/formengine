@@ -43,7 +43,7 @@ ___
 
 ### align
 
-• `Optional` **align**: ``"center"`` \| ``"left"`` \| ``"right"``
+• `Optional` **align**: ``"left"`` \| ``"right"`` \| ``"center"``
 
 #### Inherited from
 
@@ -1028,7 +1028,7 @@ ___
 
 ### inputMode
 
-• `Optional` **inputMode**: ``"text"`` \| ``"none"`` \| ``"search"`` \| ``"email"`` \| ``"url"`` \| ``"tel"`` \| ``"numeric"`` \| ``"decimal"``
+• `Optional` **inputMode**: ``"search"`` \| ``"text"`` \| ``"none"`` \| ``"email"`` \| ``"url"`` \| ``"tel"`` \| ``"numeric"`` \| ``"decimal"``
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 

@@ -14,6 +14,7 @@ import {useEffect, useRef, useState} from 'react'
 import {frFR, trTR} from 'rsuite/esm/locales/index.js'
 import {Designer} from './Designer'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
+import {generatedLicenseKey} from './utils/license'
 
 const data = {
   title: 'Hello! Hello!',
@@ -180,6 +181,7 @@ const FormBuilderApp = () => {
   if (!indexedDbInitialized) return null
 
   return <FormBuilder
+    licenseKey={generatedLicenseKey}
     getForm={getFormFn}
     formName={sampleFormName}
     view={view}

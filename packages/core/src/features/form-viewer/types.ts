@@ -99,6 +99,11 @@ export interface FormViewerProps {
    * @param data the {@link IFormData} with all the form data.
    */
   onFormDataChange?: (data: IFormData) => void
+
+  /**
+   * The FormEngine license key.
+   */
+  licenseKey?: string
 }
 
 /**
