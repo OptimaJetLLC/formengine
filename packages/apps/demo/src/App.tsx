@@ -5,6 +5,7 @@ import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import config from './utils/config.json'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
+import {generatedLicenseKey} from './utils/license'
 
 const initialData = {
   title: 'Hello! Hello!',
@@ -75,6 +76,7 @@ const FormBuilderApp = observer(() => {
   if (!indexedDbInitialized) return null
 
   return <FormBuilder
+    licenseKey={generatedLicenseKey}
     getForm={getFormFn}
     formName={sampleFormName}
     view={view}
