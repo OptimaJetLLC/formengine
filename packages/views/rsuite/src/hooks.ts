@@ -18,7 +18,7 @@ export type LoadDataHandler = (
 ) => {}
 
 interface LoadDataProps extends Pick<InputPickerProps,
-  'data' | 'value' | 'onSearch' | 'onOpen'> {
+  'data' | 'value' | 'onSearch' | 'onOpen' | 'onCreate'> {
   onLoadData?: LoadDataHandler
 }
 
@@ -73,15 +73,20 @@ export const useLoadData = ({data: initialData, onLoadData, value, ...props}: Lo
   }
 
   const onSearch = (value: string) => {
-    setData([])
+    if (onLoadData) setData([])
     setSearchValue(value)
     props.onSearch?.(value)
   }
 
   const onOpen = () => {
     props.onOpen?.()
-    onLoadData?.('', loadCallback, 0)
+    if (!value) onLoadData?.('', loadCallback, 0)
   }
 
-  return {data, value, loading, listProps, onSearch, onOpen, virtualized: !!onLoadData}
+  const onCreate: InputPickerProps['onCreate'] = (_, item) => {
+    setData([item, ...data])
+    setSearchValue('')
+  }
+
+  return {data, value, loading, listProps, onSearch, onOpen, onCreate, virtualized: !!onLoadData}
 }
