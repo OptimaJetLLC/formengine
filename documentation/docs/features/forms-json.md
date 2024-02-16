@@ -18,6 +18,29 @@ To export a JSON form, go to the designer interface and click the blue menu butt
 
 The form will be saved to a file with the extension `.json`.
 
+## Get the form's JSON in React component
+
+If you need get the form's JSON inside the React component body, you can use
+the [IFormBuilder](/api-reference/interfaces/react_form_builder_designer.IFormBuilder) ref:
+
+```tsx
+const FormBuilderApp = () => {
+  const builderRef = useRef<IFormBuilder>()
+
+  useEffect(() => {
+    if (builderRef.current) {
+      const formJSON = builderRef.current.formAsString
+      console.log(formJSON)
+    }
+  }, [builderRef.current])
+
+  return <FormBuilder
+    builderRef={builderRef}
+    {...otherProps}
+  />
+}
+```
+
 ## Import form from JSON
 
 To import a form in JSON format, select the blue menu button in the designer, and then select "Upload".

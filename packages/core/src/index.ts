@@ -136,6 +136,7 @@ export type {SuppressResizeObserverErrorsProps} from './features/ui/SuppressResi
 export type {FormValidator, FormValidators} from './features/form-viewer/FormValidators'
 export {FormViewerPropsStore} from './stores/FormViewerPropsStore'
 export {useDisposable} from './utils/useDisposable'
+export {useForwardRef} from './utils/useForwardRef'
 export type {IDisposable} from './utils/useDisposable'
 export {CalculableResult} from './utils/CalculableResult'
 export {toArray} from './features/annotation/toArray'

@@ -19,6 +19,7 @@ custom_edit_url: null
 - [EditableTableProps](../interfaces/react_form_builder_designer.EditableTableProps.md)
 - [EditableTableState](../interfaces/react_form_builder_designer.EditableTableState.md)
 - [FormBuilderProps](../interfaces/react_form_builder_designer.FormBuilderProps.md)
+- [IFormBuilder](../interfaces/react_form_builder_designer.IFormBuilder.md)
 - [IFormStorage](../interfaces/react_form_builder_designer.IFormStorage.md)
 - [InputCellProps](../interfaces/react_form_builder_designer.InputCellProps.md)
 - [SelectCellProps](../interfaces/react_form_builder_designer.SelectCellProps.md)

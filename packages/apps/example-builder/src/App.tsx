@@ -8,6 +8,7 @@ import {
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
 import {ActionDefinition, BiDi, ComponentStore, FormValidators, IFormViewer, Language, Validators} from '@react-form-builder/core'
+import type {IFormBuilder} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder, FormBuilderI18n} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useRef, useState} from 'react'
@@ -151,7 +152,9 @@ const getFormFn = (formName?: string) => {
 }
 
 const FormBuilderApp = () => {
-  const ref = useRef<IFormViewer>(null)
+  const ref = useRefWithLog<IFormViewer>('ViewerRef', logEvents)
+  const builderRef = useRefWithLog<IFormBuilder>('BuilderRef', logEvents)
+
   const [initialData, setInitialData] = useState(data)
   const [indexedDbInitialized, setIndexedDbInitialized] = useState(false)
 
@@ -172,12 +175,6 @@ const FormBuilderApp = () => {
     return () => clearTimeout(timeoutId)
   }, [])
 
-  useEffect(() => {
-    if (logEvents && ref.current) {
-      console.log('Viewer', ref.current)
-    }
-  }, [ref.current])
-
   if (!indexedDbInitialized) return null
 
   return <FormBuilder
@@ -195,6 +192,7 @@ const FormBuilderApp = () => {
       formData.state.isValid = !silentValidationResult
     }}
     viewerRef={ref}
+    builderRef={builderRef}
     validators={customValidators}
     formValidators={formValidators}
     i18n={enableCustomLanguages ? builderLanguages : undefined}
@@ -251,6 +249,16 @@ const FormBuilderApp = () => {
         })
     }}*/
   />
+}
+
+function useRefWithLog<T>(name: string, log: boolean) {
+  const ref = useRef<T>(null)
+  useEffect(() => {
+    if (log && ref?.current) {
+      console.log(name, ref.current)
+    }
+  }, [ref?.current])
+  return ref
 }
 
 const showDocumentationExample = false

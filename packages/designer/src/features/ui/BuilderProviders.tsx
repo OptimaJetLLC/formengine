@@ -1,4 +1,12 @@
-import {FormViewerPropsStore, namedObserver, Store, StoreProvider, useDisposable, ViewerPropsProvider} from '@react-form-builder/core'
+import {
+  FormViewerPropsStore,
+  namedObserver,
+  Store,
+  StoreProvider,
+  useDisposable,
+  useForwardRef,
+  ViewerPropsProvider
+} from '@react-form-builder/core'
 import {ReactNode, useEffect} from 'react'
 import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
@@ -38,8 +46,9 @@ interface BuilderProvidersProps {
  * @returns the React element.
  */
 export const BuilderProviders = namedObserver('BuilderProviders', ({children, props}: BuilderProvidersProps) => {
+  const {builderRef, ...viewerProps} = props
   const builderProviderData = useDisposable(() => {
-    const store = new Store(new FormViewerPropsStore(props))
+    const store = new Store(new FormViewerPropsStore(viewerProps))
 
     const builderStore = new BuilderStore(store, props)
     builderStore.changeBuilderMode('builder')
@@ -48,24 +57,26 @@ export const BuilderProviders = namedObserver('BuilderProviders', ({children, pr
     return new BuilderProviderData(store, builderStore, localStorageSynchronizer)
   }, [])
 
-  const buildStore = builderProviderData?.builderStore
+  const builderStore = builderProviderData?.builderStore
   const store = builderProviderData?.store
 
+  useForwardRef(builderStore, builderRef)
+
   useEffect(() => {
-    if (!buildStore) return
-    buildStore.activeFormName = props.formName
+    if (!builderStore) return
+    builderStore.activeFormName = props.formName
   }, [props.formName])
 
   useEffect(() => {
     if (!store) return
-    store.formViewerPropsStore.applyProps(props)
+    store.formViewerPropsStore.applyProps(viewerProps)
   }, [props.initialData, props.view, props.validators, props.formValidators, props.localize, props.language, props.actions])
 
-  if (!buildStore || !store) return null
+  if (!builderStore || !store) return null
 
   return (
-    <ViewerPropsProvider value={props}>
-      <BuilderStoreProvider value={buildStore}>
+    <ViewerPropsProvider value={viewerProps}>
+      <BuilderStoreProvider value={builderStore}>
         <StoreProvider value={store}>
           <LocalizationProvider>
             <StylesProvider>

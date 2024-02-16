@@ -1,10 +1,11 @@
-import {ForwardedRef, ReactNode, useContext, useEffect} from 'react'
+import {ReactNode, useContext, useEffect} from 'react'
 import {FormViewerPropsStore} from '../../../stores/FormViewerPropsStore'
 import {Store} from '../../../stores/Store'
 import {namedObserver} from '../../../utils'
 import {StoreContext, StoreProvider} from '../../../utils/contexts/StoreContext'
 import {useDisposable} from '../../../utils/useDisposable'
-import {FormViewerProps, IFormViewer} from '../types'
+import {useForwardRef} from '../../../utils/useForwardRef'
+import type {FormViewerProps} from '../types'
 import {ViewerPropsProvider} from './ViewerPropsContext'
 
 /**
@@ -32,11 +33,11 @@ const ExistingStoreProvider = namedObserver('ExistingStoreProvider', ({
                                                                         props: {viewerRef, ...props},
                                                                         store
                                                                       }: ExistingStoreProviderProps) => {
+  useForwardRef(store, viewerRef)
+
   useEffect(() => {
     props.onFormDataChange?.(store.formData)
   }, [store.formData.data, store.formData.errors])
-
-  useEffect(() => setViewerRef(store, viewerRef), [store, viewerRef])
 
   useEffect(() => {
     store.formViewerPropsStore.applyProps(props)
@@ -72,14 +73,3 @@ export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', (props: 
     ? <ExistingStoreProvider children={props.children} props={props.props} store={storeFromContext}/>
     : <NewStoreProvider children={props.children} props={props.props}/>
 })
-
-const setViewerRef = (store: IFormViewer, viewerRef?: ForwardedRef<IFormViewer>) => {
-  if (!viewerRef) return
-
-  if (typeof viewerRef === 'function') {
-    viewerRef(store)
-    return
-  }
-
-  if (!viewerRef.current) viewerRef.current = store
-}

@@ -1,9 +1,9 @@
-import type {EditorType, FormViewerProps} from '@react-form-builder/core'
-import {BuilderView} from '@react-form-builder/core'
-import type {ComponentType} from 'react'
+import {BuilderView, EditorType, FormViewerProps} from '@react-form-builder/core'
+import type {ComponentType, ForwardedRef} from 'react'
 import type {AnnotationEditorProps} from './features/annotation-editors/AnnotationEditorProps'
 import type {FormBuilderI18n} from './features/localization/FormBuilderLanguage'
 import type {IFormStorage} from './stores/IFormStorage'
+import type {IFormBuilder} from './utils/types'
 
 /**
  * Properties of the React Form builder component.
@@ -29,4 +29,9 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
    * The i18n data of the form builder.
    */
   i18n?: FormBuilderI18n
+
+  /**
+   * The reference to {@link IFormBuilder}.
+   */
+  builderRef?: ForwardedRef<IFormBuilder>
 }

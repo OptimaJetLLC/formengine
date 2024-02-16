@@ -18,3 +18,14 @@ export type BuilderTheme = 'dark' | 'light'
  * Display resolution type of the form builder.
  */
 export type Device = 'any' | ViewMode
+
+/**
+ * The form builder settings interface.
+ */
+export interface IFormBuilder {
+  /**
+   * @returns the current form serialized to JSON.
+   */
+  get formAsString(): string
+}
+

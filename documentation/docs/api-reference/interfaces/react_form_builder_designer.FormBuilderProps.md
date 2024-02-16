@@ -29,6 +29,14 @@ Omit.actions
 
 ___
 
+### builderRef
+
+• `Optional` **builderRef**: `ForwardedRef`<[`IFormBuilder`](react_form_builder_designer.IFormBuilder.md)\>
+
+The reference to [IFormBuilder](react_form_builder_designer.IFormBuilder.md).
+
+___
+
 ### componentWrapper
 
 • `Optional` **componentWrapper**: `ComponentType`<`any`\>
