@@ -27,7 +27,7 @@ export class LocalStorageSynchronizer {
     builderStore.bottomPanelHeight = parseJson(this.getItem<string>(bottomPanelHeightKey)) ?? defaultBottomPanelHeight
 
     const themeKey = 'theme'
-    builderStore.theme = this.getItem<BuilderTheme>(themeKey, getSystemTheme())
+    builderStore.theme = this.getItem<BuilderTheme>(themeKey, getSystemTheme()) === 'dark' ? 'dark' : 'light'
 
     const testingAutorunKey = 'testingAutorun'
     builderStore.testingAutorun = this.getItem<string>(testingAutorunKey) === 'true'
