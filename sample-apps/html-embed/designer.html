@@ -5,12 +5,57 @@
   <title>FormEngine Designer bundle embedding example</title>
 </head>
 <body style="margin: 0">
-<div id="root"></div>
-
-<script src="../../packages/designer-bundle/dist/index.umd.js"></script>
 
 <script type="text/javascript">
-  const form = `
+  function elementOnLoad(htmlElement, callback) {
+    function onLoad() {
+      htmlElement.removeEventListener('load', onLoad);
+      callback?.();
+    }
+
+    htmlElement.addEventListener('load', onLoad);
+  }
+
+  function whenScriptLoaded(scriptId, scriptUrl, callback) {
+    if (!window._dynamicScripts) window._dynamicScripts = {};
+
+    if (window._dynamicScripts[scriptId] === true) {
+      callback?.();
+      return;
+    }
+
+    const htmlElement = document.getElementById(scriptId);
+    if (htmlElement) {
+      elementOnLoad(htmlElement, () => callback?.());
+      return;
+    }
+
+    const scriptTag = document.createElement('script');
+    scriptTag.id = scriptId;
+    scriptTag.src = scriptUrl;
+    scriptTag.async = true;
+    scriptTag.defer = true;
+
+    elementOnLoad(scriptTag, () => {
+      window._dynamicScripts[scriptId] = true;
+      callback?.();
+    });
+
+    const head = document.head || document.getElementsByTagName('head')[0];
+    head.insertBefore(scriptTag, head.firstChild);
+  }
+
+  function doRemove() {
+    if (window.reactRoot) {
+      window.reactRoot.unmount()
+      delete window.reactRoot
+    }
+  }
+
+  function doRender() {
+    doRemove()
+
+    const form = `
 {
   "version": "1",
   "tooltipType": "RsTooltip",
@@ -101,13 +146,21 @@
   "defaultLanguage": "en-US"
 }
 `
-  const props = {
-    getForm: () => form,
-  }
 
-  const bundle = window.FormEngineDesignerBundle;
-  bundle.renderFormBuilder('root', props)
+    whenScriptLoaded('designer-script', '../../packages/designer-bundle/dist/index.umd.js', () => {
+      const props = {
+        getForm: () => form,
+      }
+
+      const bundle = window.FormEngineDesignerBundle;
+      window.reactRoot = bundle.renderFormBuilder('root', props)
+    })
+  }
 </script>
+<button onclick="doRender()">Start</button>
+<button onclick="doRemove()">Remove</button>
+
+<div id="root"></div>
 
 </body>
 </html>

@@ -12,10 +12,21 @@ export {formEngineCore, formEngineRSuiteComponents}
  * Displays the FormViewer component on the specified HTML element.
  * @param elementId the HTML element identifier.
  * @param props the component properties.
+ * @returns React Root.
  */
 export function renderFormViewer(elementId: string, props: Partial<FormViewerProps>) {
   const container = document.getElementById(elementId)
   if (!container) throw new Error(`Cannot find element with id '${elementId}'`)
+  return renderFormViewerTo(container, props)
+}
+
+/**
+ * Displays the FormViewer component on the specified HTML element.
+ * @param container the HTML element.
+ * @param props the component properties.
+ * @returns React Root.
+ */
+export function renderFormViewerTo(container: HTMLElement, props: Partial<FormViewerProps>) {
   const root = createRoot(container)
 
   const formViewerProps: FormViewerProps = {
@@ -27,4 +38,5 @@ export function renderFormViewer(elementId: string, props: Partial<FormViewerPro
   }
 
   root.render(createElement(FormViewer, formViewerProps, null))
+  return root
 }
