@@ -16,7 +16,7 @@ export default defineConfig(({command}) => {
     build: {
       lib: {
         entry: path.resolve(__dirname, 'src/index.ts'),
-        formats: ['umd'],
+        formats: ['umd', 'iife'],
         fileName: format => `index.${format}.js`,
         name: 'FormEngineViewerBundle',
       },
