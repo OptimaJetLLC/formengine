@@ -461,8 +461,7 @@ export class BuilderStore implements IFormBuilder {
   }
 
   /**
-   * Sets the form serialized in JSON as the current form.
-   * @param text the form serialized in JSON.
+   * @inheritDoc
    */
   parseForm(text: string) {
     this.viewer.applyStringForm(text)
@@ -557,7 +556,7 @@ export class BuilderStore implements IFormBuilder {
   }
 
   /**
-   * @returns the current form serialized to JSON.
+   * @inheritDoc
    */
   get formAsString() {
     const actions = this.viewer.form.actionNames.length ? this.viewer.form.actions : undefined

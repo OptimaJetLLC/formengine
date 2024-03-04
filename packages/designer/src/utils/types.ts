@@ -27,5 +27,11 @@ export interface IFormBuilder {
    * @returns the current form serialized to JSON.
    */
   get formAsString(): string
+
+  /**
+   * Sets the form serialized in JSON as the current form.
+   * @param text the form serialized in JSON.
+   */
+  parseForm: (text: string) => void
 }
 
