@@ -4,6 +4,14 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.0.6
+
+_March_ 8, 2024
+
+- Added the FormBuilder UI [customization](/api-reference/interfaces/react_form_builder_designer.FormBuilderProps#customization) feature.
+- Add `IFormBuilder.parseForm(formString)` method that sets the form serialized in JSON as the current form.
+- Fixed the bug when FormBuilder UI breaks with `create-react-app`.
+
 ## 1.0.5
 
 _February_ 16, 2024

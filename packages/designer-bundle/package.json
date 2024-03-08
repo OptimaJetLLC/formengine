@@ -1,6 +1,6 @@
 {
     "name": "@react-form-builder/designer-bundle",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "private": false,
     "main": "src/index.ts",
     "type": "module",
@@ -21,9 +21,9 @@
         "create-archive": "node ./config/pack"
     },
     "dependencies": {
-        "@react-form-builder/components-rsuite": "^1.0.5",
-        "@react-form-builder/core": "^1.0.5",
-        "@react-form-builder/designer": "^1.0.5",
+        "@react-form-builder/components-rsuite": "^1.0.6",
+        "@react-form-builder/core": "^1.0.6",
+        "@react-form-builder/designer": "^1.0.6",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-is": "^18.2.0"
