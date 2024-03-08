@@ -3,10 +3,10 @@ import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faRedo from '@fortawesome/free-solid-svg-icons/faRedo.js'
 import * as faSave from '@fortawesome/free-solid-svg-icons/faSave.js'
 import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo.js'
-import {namedObserver} from '@react-form-builder/core'
 import {ButtonGroup, IconButton} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../components/Icons'
+import {customizableObserver} from '../../customization'
 import {DesignerLocalizationPicker} from './components/DesignerLocalizationPicker'
 import {ErrorsPanel} from './components/ErrorsPanel'
 import {JsonViewButton} from './components/JsonViewButton'
@@ -16,16 +16,18 @@ import {ToggleModeButton} from './components/ToggleModeButton'
 import {ToggleTheme} from './components/ToggleTheme'
 import {useSaveForm} from './components/useSaveForm'
 
-const Header = namedObserver('Header', () => {
+const Toolbar = customizableObserver('Header_Toolbar', ButtonGroup)
+
+const Header = customizableObserver('Header', props => {
   const builderStore = useBuilderStore()
   const onSave = useSaveForm()
   const undoer = builderStore.undoer
   const showErrorsPanel = false
   return (
-    <Container>
+    <Container {...props}>
       <LeftPart>
         <Menu/>
-        <ButtonGroup size={'sm'}>
+        <Toolbar size={'sm'}>
           {builderStore.formStorageEnabled &&
             <IconButton onClick={() => onSave()}
                         icon={<FaIcon icon={faSave as unknown as IconDefinition}/>} size={'sm'}/>
@@ -35,7 +37,7 @@ const Header = namedObserver('Header', () => {
           <IconButton onClick={() => undoer.redo()} disabled={!undoer.hasRedo}
                       icon={<FaIcon icon={faRedo as unknown as IconDefinition}/>} size={'sm'}/>
 
-        </ButtonGroup>
+        </Toolbar>
       </LeftPart>
 
       <CenterPart>

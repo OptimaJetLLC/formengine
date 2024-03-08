@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import {namedObserver, SuppressResizeObserverErrors} from '@react-form-builder/core'
 import {Suspense} from 'react'
 import {Loader} from 'rsuite'
+import {customizableObserver} from './features/customization'
 import {BottomPanel} from './features/ui/BottomPanel'
 import {BuilderProviders} from './features/ui/BuilderProviders'
 import {CentralPanel} from './features/ui/CentralPanel'
@@ -22,11 +23,11 @@ export const FormBuilder = namedObserver('FormBuilder', (props: FormBuilderProps
   </BuilderProviders>
 })
 
-const FormBuilderView = namedObserver('FormBuilderView', () => (
+const FormBuilderView = customizableObserver('MainContainer', props => (
   <SuppressResizeObserverErrors>
     <Suspense fallback={<Loader center content="loading"/>}>
       <Container>
-        <Content>
+        <Content {...props}>
           <LeftPanel/>
           <CentralPanel/>
           <RightPanel/>

@@ -4,14 +4,15 @@ import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
 import * as faGlobe from '@fortawesome/free-solid-svg-icons/faGlobe.js'
 import * as faEdit from '@fortawesome/free-solid-svg-icons/faMarker.js'
-import {Annotation, ComponentData, namedObserver} from '@react-form-builder/core'
-import {cloneElement} from 'react'
+import {Annotation, ComponentData} from '@react-form-builder/core'
+import {cloneElement, HTMLAttributes} from 'react'
 import {IconButton} from 'rsuite'
 import useUniqueId from 'rsuite/esm/utils/useUniqueId.js'
 import {EditableProperty} from '../../stores/BuilderStore'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {CalculableEditorProps} from '../annotation-editors/AnnotationEditorProps'
 import {Hinted, HintedLabel} from '../annotation-editors/Hinted'
+import {customizable, customizableObserver} from '../customization'
 import {useTranslationPart} from '../localization/hooks'
 import {Columns, LabeledInput} from './Containers'
 import {FaIcon} from './Icons'
@@ -27,7 +28,7 @@ const afterRedAsterisk = css`
 /**
  * The properties of the React {@link LabeledProperty} component.
  */
-export interface LabeledPropertyProps extends CalculableEditorProps {
+export interface LabeledPropertyProps extends CalculableEditorProps, HTMLAttributes<any> {
   /**
    * The metadata for a React component property.
    */
@@ -60,7 +61,7 @@ export interface CodeButtonProps extends CalculableEditorProps {
   componentData: ComponentData
 }
 
-const CodeButton = namedObserver('CodeButton', (props: CodeButtonProps) => {
+const CodeButton = customizableObserver('PropertyCodeButton', (props: CodeButtonProps) => {
   const {annotation, getComputeCode, setComputeCode, disableCompute, getComputeType, hasComputeCode, componentData} = props
   const store = useBuilderStore()
   const hasCode = hasComputeCode('function')
@@ -108,6 +109,8 @@ const CodeButton = namedObserver('CodeButton', (props: CodeButtonProps) => {
   </Hinted>
 })
 
+const CustomizedLabel = customizable('PropertyLabel', HintedLabel)
+
 /**
  * The React component that displays a component property and label.
  * @param props the React component properties.
@@ -120,18 +123,21 @@ const CodeButton = namedObserver('CodeButton', (props: CodeButtonProps) => {
  */
 export const LabeledProperty = (props: LabeledPropertyProps) => {
   const {annotation, children, style} = props
+  const {className, ...codeButtonProps} = props
   const id = useUniqueId('id-')
   const getLabel = useTranslationPart(`annotation.${annotation.key}`)
-  const className = annotation.required ? afterRedAsterisk : undefined
+  const labelClassName = annotation.required ? afterRedAsterisk : undefined
 
-  return <LabeledInput style={style}>
+  const CustomizedChildren = customizable('PropertyInput', props => cloneElement(children, {...props, id}))
+
+  return <LabeledInput style={style} className={className}>
     <Columns gap={10} style={{alignItems: 'center'}}>
-      <CodeButton {...props}/>
-      <HintedLabel htmlFor={id} hint={annotation.hint ?? getLabel('hint')} className={className}>
+      <CodeButton {...codeButtonProps}/>
+      <CustomizedLabel htmlFor={id} hint={annotation.hint ?? getLabel('hint')} className={labelClassName}>
         <>{getLabel('name') || annotation.name}</>
-      </HintedLabel>
+      </CustomizedLabel>
     </Columns>
-    {children ? cloneElement(children, {id}) : undefined}
+    {!!children && <CustomizedChildren/>}
   </LabeledInput>
 }
 

@@ -9,6 +9,28 @@ custom_edit_url: null
 
 The form builder settings interface.
 
+## Properties
+
+### parseForm
+
+• **parseForm**: (`text`: `string`) => `void`
+
+#### Type declaration
+
+▸ (`text`): `void`
+
+Sets the form serialized in JSON as the current form.
+
+##### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `text` | `string` | the form serialized in JSON. |
+
+##### Returns
+
+`void`
+
 ## Accessors
 
 ### formAsString

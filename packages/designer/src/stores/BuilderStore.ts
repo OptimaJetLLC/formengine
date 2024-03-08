@@ -252,7 +252,7 @@ export class BuilderStore implements IFormBuilder {
    */
   constructor(
     readonly viewer: Store,
-    props: Readonly<FormBuilderProps>,
+    readonly props: Readonly<FormBuilderProps>,
   ) {
     makeAutoObservable(this, {
         selected: observable,

@@ -17,6 +17,7 @@ import {CSSEditor} from '../../../../annotation-editors/CSSEditor'
 import {Hinted} from '../../../../annotation-editors/Hinted'
 import {CenteredLabel} from '../../../../components/Labels'
 import {PropertyEditorWrapper} from '../../../../components/PropertyEditorWrapper'
+import {customizableObserver} from '../../../../customization'
 import {useTranslationPart} from '../../../../localization/hooks'
 import {Section, SubSection} from '../Section'
 import {DevicePicker} from './DevicePicker'
@@ -41,7 +42,7 @@ interface PropertiesProps {
   activeTab: Section
 }
 
-const Properties = namedObserver('Properties', ({activeTab}: PropertiesProps) => {
+const Properties = customizableObserver('RightPanel_Content', ({activeTab, ...props}: PropertiesProps) => {
   const store = useBuilderStore()
   const tooltipType = useTooltipType()
   const getLabel = useTranslationPart('propertiesEditor')
@@ -66,7 +67,7 @@ const Properties = namedObserver('Properties', ({activeTab}: PropertiesProps) =>
 
   return (
     <ComponentDataProvider value={data}>
-      <Container>
+      <Container  {...props}>
         <PropertiesList>
           {activeTab === Section.Main && <PropertyEditorWrapper annotation={key} context={data.store}/>}
           {notSlot && <PropertyBlock annotations={properties} context={data.store.props}/>}

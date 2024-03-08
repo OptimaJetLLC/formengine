@@ -11,6 +11,7 @@ import {createElement, useCallback, useEffect, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {EditorMap} from '../../annotation-editors'
 import type {AnnotationEditorProps, CalculableEditorProps} from '../../annotation-editors/AnnotationEditorProps'
+import {customizable} from '../../customization'
 import {Erroneous} from './Erroneous'
 
 interface PropertyEditorWrapperProps {
@@ -141,7 +142,7 @@ export const PropertyEditorWrapper = namedObserver('PropertyEditorWrapper', ({
 
   return !!annotationEditor && (
     <Erroneous {...annotationEditorProps} error={error}>
-      {createElement(annotationEditor, annotationEditorProps)}
+      {createElement(customizable('LabeledProperty', annotationEditor), annotationEditorProps)}
     </Erroneous>
   )
 })

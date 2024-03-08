@@ -1,13 +1,13 @@
-import {namedObserver} from '@react-form-builder/core'
 import {useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {EditButton, RemoveButton} from '../../../components/Buttons'
 import {List, ListItem} from '../../../components/Containers'
+import {customizableObserver} from '../../../customization'
 import {useShowMessage} from '../../../toast/toast'
 
-export const FormList = namedObserver('FormList', () => {
+export const FormList = customizableObserver('Forms_Tab_Content', props => {
   const builderStore = useBuilderStore()
   const [formList, setFormList] = useState<string[]>([])
   const {t} = useTranslation()
@@ -45,7 +45,7 @@ export const FormList = namedObserver('FormList', () => {
     </ListItem>
   })
 
-  return <List>
+  return <List {...props}>
     <ListItem>
       <Button block onClick={showPromptDialog}>{t('formsList.addNewForm')}</Button>
     </ListItem>

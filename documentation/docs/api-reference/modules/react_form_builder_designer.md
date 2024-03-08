@@ -26,6 +26,22 @@ custom_edit_url: null
 
 ## Type Aliases
 
+### CustomizableKey
+
+Ƭ **CustomizableKey**: ``"MainContainer"`` \| ``"Header"`` \| ``"MainMenu_Button"`` \| ``"MainMenu_Dropdown"`` \| ``"Header_Toolbar"`` \| ``"ToggleModeButton"`` \| ``"ResolutionSelect"`` \| ``"LocalizationSelect"`` \| ``"JsonViewButton"`` \| ``"ToggleThemeButton"`` \| ``"LeftPanel"`` \| ``"LeftPanel_Nav"`` \| ``"LeftPanel_Content"`` \| ``"Tree_Tab"`` \| ``"Tree_Tab_Content"`` \| ``"Components_Tab"`` \| ``"Components_Tab_Content"`` \| ``"Settings_Tab"`` \| ``"Settings_Tab_Content"`` \| ``"Forms_Tab"`` \| ``"Forms_Tab_Content"`` \| ``"CentralPanel"`` \| ``"FormContainer"`` \| ``"RightPanel"`` \| ``"RightPanel_Nav"`` \| ``"RightPanel_Content"`` \| ``"Main_Tab"`` \| ``"Main_Tab_Content"`` \| ``"Style_Tab"`` \| ``"Style_Tab_Content"`` \| ``"Actions_Tab"`` \| ``"Actions_Tab_Content"`` \| ``"Rules_Tab"`` \| ``"Rules_Tab_Content"`` \| ``"LabeledProperty"`` \| ``"PropertyCodeButton"`` \| ``"PropertyLabel"`` \| ``"PropertyInput"``
+
+The available keys of the customizable components
+
+___
+
+### CustomizationMap
+
+Ƭ **CustomizationMap**: `Partial`<`Record`<[`CustomizableKey`](react_form_builder_designer.md#customizablekey), [`Options`](react_form_builder_designer.md#options)\>\>
+
+The map of customizations for the FormBuilder components.
+
+___
+
 ### FormBuilderI18n
 
 Ƭ **FormBuilderI18n**: `Object`
@@ -53,6 +69,23 @@ Data required to translate the form builder interface.
 | :------ | :------ | :------ |
 | `componentsLocale?` | `any` | The locale for translating rSuite components https://rsuitejs.com/guide/i18n/#supported-locales. |
 | `data` | `any` | The JSON with translation. |
+
+___
+
+### Options
+
+Ƭ **Options**: `Object`
+
+Customization options for the FormBuilder component.
+
+#### Type declaration
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `className?` | `string` | The component className. |
+| `customRenderer?` | (`defaultElement`: `ReactElement`, `component`: `ComponentType`<`any`\>, `props`: `any`) => `ReactElement` | The component custom renderer. |
+| `hidden?` | `boolean` | True if you want to hide the component. |
+| `style?` | `CSSProperties` \| `String` | The component style. Supported formats - CSSProperties object, standard CSS as string, nested selectors. |
 
 ## Functions
 

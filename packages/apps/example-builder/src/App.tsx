@@ -13,6 +13,7 @@ import {BuilderView, FormBuilder, FormBuilderI18n} from '@react-form-builder/des
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useRef, useState} from 'react'
 import {frFR, trTR} from 'rsuite/esm/locales/index.js'
+import {simpleCustomization} from './customization'
 import {Designer} from './Designer'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
 import {generatedLicenseKey} from './utils/license'
@@ -177,7 +178,10 @@ const FormBuilderApp = () => {
 
   if (!indexedDbInitialized) return null
 
+  const useCustomization = false
+
   return <FormBuilder
+    customization={useCustomization ? simpleCustomization : undefined}
     licenseKey={generatedLicenseKey}
     getForm={getFormFn}
     formName={sampleFormName}

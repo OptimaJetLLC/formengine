@@ -1,22 +1,22 @@
 import styled from '@emotion/styled'
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
-import {namedObserver} from '@react-form-builder/core'
 import {useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {IconButton, Modal, Tooltip, Whisper} from 'rsuite'
 import {FaIcon} from '../../../components/Icons'
+import {customizableObserver} from '../../../customization'
 import {JsonView} from '../../JsonView'
 
 const icon = <FaIcon icon={faCode as any}/>
 
-export const JsonViewButton = namedObserver('JsonViewButton', () => {
+export const JsonViewButton = customizableObserver('JsonViewButton', props => {
   const {t} = useTranslation()
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
   return <>
-    <Whisper speaker={<Tooltip>{t('editJson')}</Tooltip>} placement={'bottom'}>
+    <Whisper speaker={<Tooltip>{t('editJson')}</Tooltip>} placement={'bottom'} {...props}>
       <SIconButton onClick={handleOpen} icon={icon} circle/>
     </Whisper>
     <Modal open={open} size={'full'} backdrop={true}>

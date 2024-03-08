@@ -9,10 +9,7 @@ const __dirname = path.dirname(__filename)
 
 export default defineConfig(({command}) => ({
   plugins: [
-    react({
-      jsxImportSource: '@emotion/react',
-      plugins: [['@swc/plugin-emotion', {labelFormat: '[filename]_[local]'}]]
-    }),
+    react({jsxImportSource: '@emotion/react'}),
     svgr()
   ],
   resolve: {

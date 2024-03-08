@@ -2,11 +2,12 @@ import styled from '@emotion/styled'
 import * as faDesktop from '@fortawesome/free-solid-svg-icons/faDesktop.js'
 import * as faMobile from '@fortawesome/free-solid-svg-icons/faMobile.js'
 import * as faTablet from '@fortawesome/free-solid-svg-icons/faTablet.js'
-import {namedObserver, ViewMode} from '@react-form-builder/core'
+import type {ViewMode} from '@react-form-builder/core'
 import {Icon} from '@rsuite/icons'
 import {ButtonGroup, IconButton, Tooltip, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../../components/Icons'
+import {customizableObserver} from '../../../customization'
 import {useTranslationPart} from '../../../localization/hooks'
 import {OrientationIcon} from './OrientationIcon'
 
@@ -16,14 +17,14 @@ const resolutions: [ViewMode, any][] = [
   ['tablet', faTablet]
 ]
 
-export const ResolutionPicker = namedObserver('ResolutionPicker', () => {
+export const ResolutionPicker = customizableObserver('ResolutionSelect', props => {
   const store = useBuilderStore()
   const t = useTranslationPart('rightMenu.modes')
   const {viewMode, landscapeMode} = store
   const getColor = (active?: boolean) => active ? 'var(--rs-navs-selected)' : undefined
   const toggleOrientation = () => store.landscapeMode = !landscapeMode
 
-  return <SDiv>
+  return <SDiv {...props}>
     {(viewMode === 'mobile' || viewMode === 'tablet') &&
       <IconButton onClick={toggleOrientation} icon={<Icon as={OrientationIcon} color={getColor(landscapeMode)}/>} size={'sm'}/>
     }

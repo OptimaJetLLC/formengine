@@ -7,10 +7,7 @@ import base from '../../../vite.config'
 export default defineConfig(({command}) => ({
   ...base,
   plugins: [
-    react({
-      jsxImportSource: '@emotion/react',
-      plugins: [['@swc/plugin-emotion', {labelFormat: '[filename]_[local]'}]]
-    }),
+    react({jsxImportSource: '@emotion/react'}),
     svgr()
   ],
   resolve: {

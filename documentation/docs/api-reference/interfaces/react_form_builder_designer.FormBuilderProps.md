@@ -61,6 +61,14 @@ Omit.computeChildren
 
 ___
 
+### customization
+
+• `Optional` **customization**: `Partial`<`Record`<[`CustomizableKey`](../modules/react_form_builder_designer.md#customizablekey), [`Options`](../modules/react_form_builder_designer.md#options)\>\>
+
+The map of customizations for the FormBuilder components.
+
+___
+
 ### erroneous
 
 • `Optional` **erroneous**: `boolean`

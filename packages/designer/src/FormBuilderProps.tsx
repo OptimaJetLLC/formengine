@@ -1,6 +1,7 @@
 import {BuilderView, EditorType, FormViewerProps} from '@react-form-builder/core'
 import type {ComponentType, ForwardedRef} from 'react'
 import type {AnnotationEditorProps} from './features/annotation-editors/AnnotationEditorProps'
+import type {CustomizationMap} from './features/customization'
 import type {FormBuilderI18n} from './features/localization/FormBuilderLanguage'
 import type {IFormStorage} from './stores/IFormStorage'
 import type {IFormBuilder} from './utils/types'
@@ -34,4 +35,9 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
    * The reference to {@link IFormBuilder}.
    */
   builderRef?: ForwardedRef<IFormBuilder>
+
+  /**
+   * The map of customizations for the FormBuilder components.
+   */
+  customization?: CustomizationMap
 }

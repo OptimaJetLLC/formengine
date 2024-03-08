@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {namedObserver} from '@react-form-builder/core'
+import {customizableObserver} from '../../../customization'
 import {useTranslationPart} from '../../../localization/hooks'
 import {ActionList} from './ActionList'
 import {ErrorSettings} from './ErrorSettings'
@@ -7,9 +7,9 @@ import {FormLanguageSettings} from './FormLanguageSettings'
 
 import {TooltipSettings} from './TooltipSettings'
 
-export const FormSettings = namedObserver('FormSettings', () => {
+export const FormSettings = customizableObserver('Settings_Tab_Content', props => {
   const t = useTranslationPart('leftPanel.formSettings')
-  return <>
+  return <div {...props}>
     <Header marginTop={0}>{t('actions')}</Header>
     <ActionList/>
     <Header>{t('error')}</Header>
@@ -18,7 +18,7 @@ export const FormSettings = namedObserver('FormSettings', () => {
     <TooltipSettings/>
     <Header>{t('language')}</Header>
     <FormLanguageSettings/>
-  </>
+  </div>
 })
 
 const Header = styled.label<{ marginTop?: number }>`

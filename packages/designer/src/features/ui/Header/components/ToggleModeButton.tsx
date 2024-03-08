@@ -1,12 +1,13 @@
+import {cx} from '@emotion/css'
 import {css} from '@emotion/react'
 import styled from '@emotion/styled'
 import * as faPaintBrush from '@fortawesome/free-solid-svg-icons/faPaintBrush.js'
 import * as faPlay from '@fortawesome/free-solid-svg-icons/faPlay.js'
-import {namedObserver} from '@react-form-builder/core'
 import {Button} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {BuilderMode} from '../../../../utils/types'
 import {FaIcon} from '../../../components/Icons'
+import {customizableObserver} from '../../../customization'
 import {useTranslationPart} from '../../../localization/hooks'
 
 const Modes: Record<BuilderMode, { icon: any, toggleTo: BuilderMode }> = {
@@ -14,13 +15,13 @@ const Modes: Record<BuilderMode, { icon: any, toggleTo: BuilderMode }> = {
   builder: {icon: faPlay, toggleTo: 'viewer'}
 }
 
-export const ToggleModeButton = namedObserver('ToggleModeButton', () => {
+export const ToggleModeButton = customizableObserver('ToggleModeButton', props => {
   const store = useBuilderStore()
   const {icon, toggleTo} = Modes[store.builderMode]
   const t = useTranslationPart('rightMenu.modes')
 
   return <AnimatedButton onClick={() => store.changeBuilderMode(toggleTo)}
-                         appearance={'primary'} className={store.builderMode} size={'sm'}>
+                         appearance={'primary'} className={cx(store.builderMode, props.className)} size={'sm'}>
     <FaIcon icon={icon} color={'white'}/>
     {t(store.builderMode)}
   </AnimatedButton>

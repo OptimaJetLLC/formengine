@@ -3,11 +3,13 @@ import * as faPlusCircle from '@fortawesome/free-solid-svg-icons/faPlusCircle.js
 import * as faSitemap from '@fortawesome/free-solid-svg-icons/faSitemap.js'
 import * as faSliders from '@fortawesome/free-solid-svg-icons/faSlidersH.js'
 import {namedObserver} from '@react-form-builder/core'
-import {useState} from 'react'
+import {ReactNode, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {Rows} from '../../../components/Containers'
-import {NavIconItem, SNav} from '../../../components/NavIconItem'
+import {customizableTab, SNav} from '../../../components/NavIconItem'
+import {customizable} from '../../../customization'
+import type {CustomizableKey} from '../../../customization/types'
 import {ComponentBar} from '../../ComponentBar'
 import {FormList} from './FormList'
 import {FormSettings} from './FormSettings'
@@ -15,32 +17,37 @@ import {Tree} from './Tree'
 
 type LeftPanelSection = 'tree' | 'forms' | 'components'
 
-const leftPanelTabs = {
-  'tree': <Tree/>,
-  'components': <ComponentBar draggable={true}/>,
-  'settings': <FormSettings/>,
-  'forms': <FormList/>
+const Nav = customizable('LeftPanel_Nav', SNav)
+const NavContent = customizable('LeftPanel_Content', Rows)
+const Components = customizable('Components_Tab_Content', ComponentBar)
+
+const tabsProps: Record<string, [content: ReactNode, key: CustomizableKey, icon: any, color: string]> = {
+  components: [<Components draggable={true}/>, 'Components_Tab', faPlusCircle, 'var(--rs-green-600)'],
+  tree: [<Tree/>, 'Tree_Tab', faSitemap, 'var(--rs-navs-selected)'],
+  settings: [<FormSettings/>, 'Settings_Tab', faSliders, 'violet'],
+  forms: [<FormList/>, 'Forms_Tab', faList, '#f67f1f']
+}
+
+const renderTab = (section: keyof typeof tabsProps) => {
+  const {t} = useTranslation()
+  const title = t('leftPanel.sectionName.' + section)
+  const [_, key, icon, color] = tabsProps[section]
+  return customizableTab(section, key, title, icon, {color})
 }
 
 export const LeftPanelNav = namedObserver('LeftPanelNav', () => {
   const {formStorageEnabled} = useBuilderStore()
   const [activeTab, setActiveTab] = useState<LeftPanelSection>('components')
-  const {t} = useTranslation()
-  const title = (key: string) => t('leftPanel.sectionName.' + key)
-
-  const formsTab = formStorageEnabled ?
-    NavIconItem('forms', title('forms'), faList, {color: '#f67f1f'})
-    : null
 
   return <>
-    <SNav appearance="subtle" activeKey={activeTab} onSelect={setActiveTab}>
-      {NavIconItem('components', title('components'), faPlusCircle, {color: 'var(--rs-green-600)'})}
-      {NavIconItem('tree', title('tree'), faSitemap, {color: 'var(--rs-navs-selected)'})}
-      {NavIconItem('settings', title('settings'), faSliders, {color: 'violet'})}
-      {formsTab}
-    </SNav>
-    <Rows style={{minHeight: 0, overflow: 'auto', padding: 4}}>
-      {leftPanelTabs[activeTab]}
-    </Rows>
+    <Nav appearance="subtle" activeKey={activeTab} onSelect={setActiveTab}>
+      {renderTab('components')}
+      {renderTab('tree')}
+      {renderTab('settings')}
+      {formStorageEnabled && renderTab('forms')}
+    </Nav>
+    <NavContent style={{minHeight: 0, overflow: 'auto', padding: 4}}>
+      {tabsProps[activeTab][0]}
+    </NavContent>
   </>
 })

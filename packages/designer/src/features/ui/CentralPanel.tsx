@@ -1,16 +1,17 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {ComponentData, FormViewer, namedObserver, useViewerProps} from '@react-form-builder/core'
+import {ComponentData, FormViewer, useViewerProps} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
+import {customizable, customizableObserver} from '../customization'
 import {EditableWrapper, getBuilderChildren} from '../dnd'
 import {Header} from './Header/Header'
 import {PanelContainer} from './Panel'
 
-export const CentralPanel = namedObserver('CentralPanel', () => {
+export const CentralPanel = customizableObserver('CentralPanel', props => {
   const builderStore = useBuilderStore()
   const {viewMode, landscapeMode, builderMode} = builderStore
-  const props = useViewerProps()
+  const viewerProps = useViewerProps()
   const componentWrapper = builderMode === 'builder' ? EditableWrapper : undefined
   const builderComputeChildren = useCallback((componentData: ComponentData, componentProps: Record<string, any>) => {
     return getBuilderChildren(builderStore, componentData, componentProps)
@@ -18,10 +19,10 @@ export const CentralPanel = namedObserver('CentralPanel', () => {
   const computeChildren = builderMode === 'builder' ? builderComputeChildren : undefined
 
   return (
-    <SContainer>
+    <SContainer {...props}>
       <Header/>
       <SFormContainer className={cx(viewMode, builderMode, {landscapeMode})}>
-        <FormViewer {...props} componentWrapper={componentWrapper} viewMode={viewMode} computeChildren={computeChildren}
+        <FormViewer {...viewerProps} componentWrapper={componentWrapper} viewMode={viewMode} computeChildren={computeChildren}
                     formName={builderStore.activeFormName}/>
       </SFormContainer>
     </SContainer>
@@ -36,7 +37,7 @@ const SContainer = styled.div`
   min-width: 550px;
 `
 
-const SFormContainer = styled(PanelContainer)`
+const SFormContainer = customizable('FormContainer', styled(PanelContainer)`
   flex: 1;
   z-index: 4;
   flex-direction: column;
@@ -77,4 +78,4 @@ const SFormContainer = styled(PanelContainer)`
       max-height: 800px;
     }
   }
-`
+`)

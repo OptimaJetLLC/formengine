@@ -6,3 +6,5 @@ export type {FormBuilderI18n, FormBuilderI18nData} from './src/features/localiza
 export {BuilderView} from '@react-form-builder/core'
 export type {AnnotationEditorProps, CalculableEditorProps} from './src/features/annotation-editors/AnnotationEditorProps'
 export type {IFormBuilder} from './src/utils/types'
+export type {CustomizationMap, Options} from './src/features/customization'
+export type {CustomizableKey} from './src/features/customization/types'

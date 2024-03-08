@@ -11,6 +11,7 @@ import type {WithAsProps} from 'rsuite/esm/@types/common'
 import {uploadBinaryFile} from '../../../../stores/fileUpload'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../../components/Icons'
+import {customizable} from '../../../customization'
 import {MenuLanguageSwitch} from '../../../localization'
 import {useShowMessage} from '../../../toast/toast'
 import {exportForms, importForms} from './formUtils'
@@ -58,8 +59,16 @@ const ImportFormsButton = namedObserver('ImportFormsButton', () => {
   </Dropdown.Item>
 })
 
-const renderToggle = (props: WithAsProps, ref: Ref<any>) => <IconButton icon={<FaIcon icon={faBars}/>}  {...props} ref={ref} size={'sm'}
-                                                                        appearance={'primary'}/>
+const Wrapper = customizable('MainMenu_Button', props => <div {...props}/>)
+
+const renderToggle = (props: WithAsProps, ref: Ref<any>) => (
+  <Wrapper>
+    <IconButton icon={<FaIcon icon={faBars}/>} {...props} ref={ref} size={'sm'}
+                appearance={'primary'}/>
+  </Wrapper>
+)
+
+const MenuDropdown = customizable('MainMenu_Dropdown', Dropdown)
 
 export const Menu = namedObserver('Menu', () => {
   const builderStore = useBuilderStore()
@@ -77,7 +86,7 @@ export const Menu = namedObserver('Menu', () => {
   }
 
   return <>
-    <Dropdown title={t('leftMenu.menu')} size={'sm'} renderToggle={renderToggle} menuStyle={{width: 'fit-content'}}>
+    <MenuDropdown title={t('leftMenu.menu')} size={'sm'} renderToggle={renderToggle} menuStyle={{width: 'fit-content'}}>
       <Dropdown.Item onSelect={builderStore.download.bind(builderStore)} icon={<FileDownloadIcon/>}>
         {t('leftMenu.download')}
       </Dropdown.Item>
@@ -98,6 +107,6 @@ export const Menu = namedObserver('Menu', () => {
       <Dropdown.Item onSelect={builderStore.clear.bind(builderStore)} icon={<FaIcon icon={faTrash as unknown as IconDefinition}/>}>
         {t('leftMenu.clear')}
       </Dropdown.Item>
-    </Dropdown>
+    </MenuDropdown>
   </>
 })

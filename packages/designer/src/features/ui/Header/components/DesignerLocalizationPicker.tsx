@@ -1,8 +1,9 @@
-import {Language, namedObserver, useStore} from '@react-form-builder/core'
+import {Language, useStore} from '@react-form-builder/core'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
+import {customizableObserver} from '../../../customization'
 import {LocalizationPicker} from '../../../localization/components/LocalizationPicker'
 
-export const DesignerLocalizationPicker = namedObserver('DesignerLocalizationPicker', () => {
+export const DesignerLocalizationPicker = customizableObserver('LocalizationSelect', props => {
   const builderStore = useBuilderStore()
   const viewerStore = useStore()
   const handleSelect = (language: Language) => {
@@ -10,5 +11,5 @@ export const DesignerLocalizationPicker = namedObserver('DesignerLocalizationPic
     builderStore.localizationLanguage = language
   }
 
-  return <LocalizationPicker value={builderStore.localizationLanguage.fullCode} onSelect={handleSelect}/>
+  return <LocalizationPicker value={builderStore.localizationLanguage.fullCode} onSelect={handleSelect} {...props}/>
 })
