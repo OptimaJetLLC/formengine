@@ -110,6 +110,7 @@ const CodeButton = customizableObserver('PropertyCodeButton', (props: CodeButton
 })
 
 const CustomizedLabel = customizable('PropertyLabel', HintedLabel)
+const CustomizedInput = customizable('PropertyInput', props => <div style={{width: '100%'}} {...props}/>)
 
 /**
  * The React component that displays a component property and label.
@@ -121,14 +122,12 @@ const CustomizedLabel = customizable('PropertyLabel', HintedLabel)
  * @param props.props the other properties of the component.
  * @returns the React element.
  */
-export const LabeledProperty = (props: LabeledPropertyProps) => {
+export const LabeledProperty = customizable('LabeledProperty', (props: LabeledPropertyProps) => {
   const {annotation, children, style} = props
   const {className, ...codeButtonProps} = props
   const id = useUniqueId('id-')
   const getLabel = useTranslationPart(`annotation.${annotation.key}`)
   const labelClassName = annotation.required ? afterRedAsterisk : undefined
-
-  const CustomizedChildren = customizable('PropertyInput', props => cloneElement(children, {...props, id}))
 
   return <LabeledInput style={style} className={className}>
     <Columns gap={10} style={{alignItems: 'center'}}>
@@ -137,9 +136,9 @@ export const LabeledProperty = (props: LabeledPropertyProps) => {
         <>{getLabel('name') || annotation.name}</>
       </CustomizedLabel>
     </Columns>
-    {!!children && <CustomizedChildren/>}
+    {!!children && <CustomizedInput>{cloneElement(children, {id})}</CustomizedInput>}
   </LabeledInput>
-}
+})
 
 const SIconButton = styled(IconButton)`
   min-width: 24px;
