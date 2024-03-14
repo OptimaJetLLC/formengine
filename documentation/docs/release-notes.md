@@ -4,6 +4,12 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.0.7
+
+_March_ 14, 2024
+
+- Fixed the bug when the focus in the property editor was reset when entering each character.
+
 ## 1.0.6
 
 _March_ 8, 2024

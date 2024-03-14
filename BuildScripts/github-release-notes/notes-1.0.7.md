@@ -1,0 +1,1 @@
+- Fixed a bug where the focus in the property editor was reset when entering each character.
