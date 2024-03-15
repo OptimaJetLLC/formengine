@@ -70,6 +70,28 @@ export const matButton = define(Button, 'MatButton')
   })
 ```
 
+## Define a custom component from own component library
+
+The definition from your own component is completely similar to the example. You can use any React component.
+
+```tsx
+import {define, event, string} from '@react-form-builder/core'
+
+const MyButton = ({children, disabled, ...props}: ComponentProps<any>) => {
+  return <button {...props} disabled={disabled}>{children}</button>
+}
+
+export const myButton = define(MyButton, 'MyButton')
+  .name('My Button')
+  .category('Custom')
+  .props({
+      // button text
+      children: string.named('Caption').default('Button'),
+      // сallback fired when the button is clicked.
+      onClick: event,
+    })
+```
+
 ## Example of an application with a custom component
 
 Let's create a React application from scratch and connect this button to the application.

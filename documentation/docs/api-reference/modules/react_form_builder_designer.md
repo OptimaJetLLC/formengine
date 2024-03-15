@@ -85,7 +85,7 @@ Customization options for the FormBuilder component.
 | `className?` | `string` | The component className. |
 | `customRenderer?` | (`defaultElement`: `ReactElement`, `component`: `ComponentType`<`any`\>, `props`: `any`) => `ReactElement` | The component custom renderer. |
 | `hidden?` | `boolean` | True if you want to hide the component. |
-| `style?` | `CSSProperties` \| `String` | The component style. Supported formats - CSSProperties object, standard CSS as string, nested selectors. |
+| `style?` | `CSSProperties` \| `string` | The component style. Supported formats - CSSProperties object, standard CSS as string, nested selectors. |
 
 ## Functions
 
