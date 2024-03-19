@@ -1,5 +1,5 @@
 /**
- * The available keys of the customizable components
+ * The available keys of the customizable components.
  */
 export type CustomizableKey =
   'MainContainer' |
