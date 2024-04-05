@@ -19,7 +19,7 @@ function mkDirIfNotExists(dir) {
 
 function rmIfExists(path) {
   if (existsSync(path)) {
-    rmSync(path, {recursive: true})
+    rmSync(path, {recursive: true, force: true})
   }
 }
 
@@ -106,6 +106,11 @@ function testSources(zipPath, output) {
   testCommand('npm run build', output)
   testCommand('npm run bundle', output)
   console.log('The sources have been successfully tested.')
+  try {
+    rmIfExists(output)
+  } catch (e) {
+    console.info(`There was an error deleting the folder '${output}', try deleting the folder again.`)
+  }
   rmIfExists(output)
 }
 

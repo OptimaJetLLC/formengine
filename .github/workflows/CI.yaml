@@ -11,149 +11,80 @@ concurrency:
 jobs:
   tests:
     name: Run Tests
-    runs-on: self-hosted
+    runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
       - name: Run Tests
-        run: npm test
+        run: earthly --ci +npm-test
 
   build:
     name: Build Packages
-    runs-on: self-hosted
+    runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
       - name: Run Build
-        run: npm run build
+        run: earthly --ci +npm-build
 
   check-circular-deps:
     name: Check circular dependencies
-    runs-on: self-hosted
+    runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
       - name: Run Check
-        run: npm run check:circular-deps
+        run: earthly --ci +npm-check-circular-deps
 
   check-wrong-imports:
     name: Check wrong imports
-    runs-on: self-hosted
+    runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
-          cache: 'npm'
-
       - name: Run Check
-        run: npm run check:wrong-imports
+        run: earthly --ci +npm-check-wrong-imports
 
   eslint:
     name: ESLint
-    runs-on: self-hosted
+    runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
       - name: Run ESLint
-        run: npm run eslint
+        run: earthly --ci +npm-eslint
 
   unused-exports:
     name: Check unused exports
-    runs-on: self-hosted
+    runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
       - name: Run check unused exports
-        run: npm run check:unused-exports
+        run: earthly --ci +npm-check-unused-exports
 
   type-check:
     name: Perform a type check
-    runs-on: self-hosted
+    runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
       - name: Perform a type check
-        run: npm run check:tsc
+        run: earthly --ci +npm-check-tsc
 
   bundle:
     name: Bundle packages
-    runs-on: self-hosted
+    runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
       - name: Bundle
-        run: npm run bundle
+        run: earthly --ci +npm-bundle
