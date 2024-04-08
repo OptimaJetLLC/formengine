@@ -320,11 +320,24 @@ publish-archive-release-to-npm:
   ARG disableDryRun=false
   DO +PUBLISH_RELEASE_TO_NPM --disableDryRun=$disableDryRun
 
+run-sonar-analysis:
+  FROM sonarsource/sonar-scanner-cli
+  LET SONAR_HOST_URL=https://sonar.optimajet.com
+  LET SONAR_SCANNER_OPTS=-Dsonar.projectKey=FB -Dsonar.scm.provider=git -Dsonar.sourceEncoding=UTF-8 -Dsonar.projectBaseDir=./
+  WORKDIR /usr/src
+  COPY +sources/form-engine ./
+  COPY .git ./
+  # Delete directories from the current working directory:
+  RUN find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
+  RUN --push --secret SONAR_FB_TOKEN echo "sonar.token=$SONAR_FB_TOKEN" > sonar-project.properties
+  RUN --push sonar-scanner
+
 # sources copies the source code
 sources:
   FROM +dependencies
   COPY .eslintignore .eslintrc.cjs lerna.json LICENSE.md nx.json README.md tsconfig.json vite.config.ts ./
   COPY --dir documentation packages scripts ./
+  SAVE ARTIFACT /form-engine
 
 # dependencies installs node_modules dependencies
 dependencies:
