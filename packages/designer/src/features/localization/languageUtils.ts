@@ -1,5 +1,5 @@
 import {BiDi, Language} from '@react-form-builder/core'
-import {arEG, deDE, enUS, esES, frFR, itIT, zhCN} from 'rsuite/esm/locales/index.js'
+import {arEG, deDE, enUS, esES, faIR, frFR, itIT, zhCN} from 'rsuite/esm/locales/index.js'
 import type {FormBuilderI18n} from './FormBuilderLanguage'
 
 const rSuiteLocales: Record<string, any> = {
@@ -7,6 +7,7 @@ const rSuiteLocales: Record<string, any> = {
   'de-DE': deDE,
   'en-US': enUS,
   'it-IT': itIT,
+  'fa-IR': faIR,
   'fr-FR': frFR,
   'es-ES': esES,
   'zh-CN': zhCN
@@ -20,6 +21,7 @@ export const builtInLanguages: FormBuilderI18n = {
     new Language('de', 'DE', 'Deutsch', 'German'),
     new Language('ar', 'EG', 'عرب', 'Arabic (Egypt)', BiDi.RTL),
     new Language('it', 'IT', 'Italiano', 'Italian'),
+    new Language('fa', 'IR', 'فارسی', 'Persian', BiDi.RTL),
     new Language('fr', 'FR', 'Français', 'French'),
     new Language('es', 'ES', 'Español', 'Spanish'),
     new Language('zh', 'CN', '中文', 'Chinese')
