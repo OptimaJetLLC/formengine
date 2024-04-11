@@ -153,6 +153,8 @@ const config = {
         entryPoints: [
           '../../packages/core',
           '../../packages/designer',
+          '../../packages/designer-bundle',
+          '../../packages/viewer-bundle',
           '../../packages/views/rsuite',
         ],
         entryPointStrategy: 'packages',

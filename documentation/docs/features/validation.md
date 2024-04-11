@@ -87,7 +87,7 @@ triggered - the minimum field length validator and the validator defined by the 
 ### User-defined validators
 
 This kind of validators is passed through the [validators](/api-reference/interfaces/react_form_builder_core.FormViewerProps#validators)
-property and works the same way as the built-in validators. You can see an example in [this](/viewer#formviewer-code-example) section of the
+property and works the same way as the built-in validators. You can see an example in [this](/usage#viewer) section of the
 documentation.
 
 Once validators are connected via a property, they will be available for selection in the designer and can be handled in the same way as

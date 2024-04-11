@@ -1,12 +1,8 @@
-import * as formEngineRSuiteComponents from '@react-form-builder/components-rsuite'
 import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader, view} from '@react-form-builder/components-rsuite'
-import * as formEngineCore from '@react-form-builder/core'
 import {BiDi, FormViewer, FormViewerProps} from '@react-form-builder/core'
 import {createElement} from 'react'
 // eslint-disable-next-line import/extensions
 import {createRoot} from 'react-dom/client'
-
-export {formEngineCore, formEngineRSuiteComponents}
 
 /**
  * Displays the FormViewer component on the specified HTML element.

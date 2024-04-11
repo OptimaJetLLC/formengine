@@ -1,4 +1,3 @@
-import * as formEngineRSuiteComponents from '@react-form-builder/components-rsuite'
 import {
   ltrCssLoader,
   rsErrorMessage,
@@ -12,8 +11,6 @@ import {FormBuilder, FormBuilderProps} from '@react-form-builder/designer'
 import {createElement} from 'react'
 // eslint-disable-next-line import/extensions
 import {createRoot} from 'react-dom/client'
-
-export {formEngineRSuiteComponents}
 
 /**
  * Displays the FormBuilder component on the specified HTML element.

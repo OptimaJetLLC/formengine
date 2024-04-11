@@ -8,7 +8,7 @@ slug: /forms-json
 
 Each form created in the form designer is JSON. With the designer, you can export a form to JSON, and you can import a form from JSON.
 
-Let's take for example the form from the article [Getting started](/getting-started).
+Let's take for example the form from [this section](/overview#creating-a-simple-form) of the documentation.
 
 ## Export form to JSON
 

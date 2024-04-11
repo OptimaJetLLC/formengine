@@ -91,7 +91,7 @@ error or the component displaying the success of validation of the whole form.
 
 Custom actions can be passed through the [actions](/api-reference/interfaces/react_form_builder_core.FormViewerProps#actions) parameter.
 The passed custom actions will be available in the selection in the form designer. You can find an
-example [this](/designer#formbuilder-code-example) page.
+example [this](/usage#designer) page.
 
 ```jsx
 <FormBuilder

@@ -1,7 +1,8 @@
 ---
-sidebar_position: 2
-title: Getting Started
-slug: /getting-started
+sidebar_position: 1
+title: Overview
+description: Overview of FormEngine's NPM packages.
+slug: /overview
 ---
 
 # Overview

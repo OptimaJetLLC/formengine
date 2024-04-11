@@ -26,11 +26,11 @@ npm install @emotion/css@11.10.5 @emotion/react@11.10.5 @emotion/styled@11.10.5 
 
 :::
 
-You can see an example of connecting components to [FormBuilder](/designer#formbuilder-code-example) in this section of the
-documentation. An example of connecting components to [FormViewer](/viewer#formviewer-code-example) in this section of the documentation.
+You can see an example of connecting components to [FormBuilder](/usage#designer) in this section of the
+documentation. An example of connecting components to [FormViewer](/usage#viewer) in this section of the documentation.
 
-An example of connecting components to `FormBuilder` can be seen in [this section](/designer#formbuilder-code-example) of the documentation.
-An example of connecting components to `FormViewer` can be found in [this section](/viewer#formviewer-code-example) of the documentation.
+An example of connecting components to `FormBuilder` can be seen in [this section](/usage#designer) of the documentation.
+An example of connecting components to `FormViewer` can be found in [this section](/usage#viewer) of the documentation.
 
 The components are divided into the following categories:
 
