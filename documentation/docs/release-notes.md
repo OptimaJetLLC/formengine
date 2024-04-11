@@ -4,6 +4,13 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.0.8
+
+_April_ 11, 2024
+
+- Added localization for Farsi language in Designer.
+- Added documentation on how to use FormEngine via [CDN](/installation#cdn).
+
 ## 1.0.7
 
 _March_ 14, 2024

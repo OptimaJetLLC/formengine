@@ -1,0 +1,2 @@
+- Added localization for Farsi language in Designer.
+- Added documentation on how to use FormEngine via [CDN](https://formengine.io/documentation/installation#cdn).
