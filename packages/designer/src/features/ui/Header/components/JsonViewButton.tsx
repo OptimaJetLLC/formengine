@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
 import {useState} from 'react'
 import {useTranslation} from 'react-i18next'
@@ -17,7 +16,7 @@ export const JsonViewButton = customizableObserver('JsonViewButton', props => {
 
   return <>
     <Whisper speaker={<Tooltip>{t('editJson')}</Tooltip>} placement={'bottom'} {...props}>
-      <SIconButton onClick={handleOpen} icon={icon} circle/>
+      <IconButton onClick={handleOpen} icon={icon} size={'sm'}/>
     </Whisper>
     <Modal open={open} size={'full'} backdrop={true}>
       <Modal.Header closeButton onClose={handleClose}>
@@ -29,7 +28,3 @@ export const JsonViewButton = customizableObserver('JsonViewButton', props => {
     </Modal>
   </>
 })
-
-const SIconButton = styled(IconButton)`
-  padding: 5px !important;
-`

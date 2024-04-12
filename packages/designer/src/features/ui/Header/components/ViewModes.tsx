@@ -9,6 +9,7 @@ import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../../components/Icons'
 import {customizableObserver} from '../../../customization'
 import {useTranslationPart} from '../../../localization/hooks'
+import {JsonViewButton} from './JsonViewButton'
 import {OrientationIcon} from './OrientationIcon'
 
 const resolutions: [ViewMode, any][] = [
@@ -17,7 +18,7 @@ const resolutions: [ViewMode, any][] = [
   ['tablet', faTablet]
 ]
 
-export const ResolutionPicker = customizableObserver('ResolutionSelect', props => {
+export const ViewModes = customizableObserver('ResolutionSelect', props => {
   const store = useBuilderStore()
   const t = useTranslationPart('rightMenu.modes')
   const {viewMode, landscapeMode} = store
@@ -35,6 +36,7 @@ export const ResolutionPicker = customizableObserver('ResolutionSelect', props =
                       icon={<FaIcon icon={icon} color={getColor(value === viewMode)}/>}/>
         </Whisper>
       ))}
+      <JsonViewButton/>
     </ButtonGroup>
   </SDiv>
 })

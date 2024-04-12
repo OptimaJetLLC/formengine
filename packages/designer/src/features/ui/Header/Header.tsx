@@ -9,12 +9,11 @@ import {FaIcon} from '../../components/Icons'
 import {customizableObserver} from '../../customization'
 import {DesignerLocalizationPicker} from './components/DesignerLocalizationPicker'
 import {ErrorsPanel} from './components/ErrorsPanel'
-import {JsonViewButton} from './components/JsonViewButton'
 import {Menu} from './components/Menu'
-import {ResolutionPicker} from './components/ResolutionPicker'
 import {ToggleModeButton} from './components/ToggleModeButton'
 import {ToggleTheme} from './components/ToggleTheme'
 import {useSaveForm} from './components/useSaveForm'
+import {ViewModes} from './components/ViewModes'
 
 const Toolbar = customizableObserver('Header_Toolbar', ButtonGroup)
 
@@ -45,10 +44,9 @@ const Header = customizableObserver('Header', props => {
       </CenterPart>
 
       <RightPart>
-        <ResolutionPicker/>
+        <ViewModes/>
         <DesignerLocalizationPicker/>
         {showErrorsPanel && <ErrorsPanel/>}
-        <JsonViewButton/>
         <ToggleTheme/>
       </RightPart>
     </Container>
