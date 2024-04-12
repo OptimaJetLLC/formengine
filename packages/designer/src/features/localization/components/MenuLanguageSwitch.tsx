@@ -4,6 +4,7 @@ import {useTranslation} from 'react-i18next'
 import {Dropdown} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../components/Icons'
+import {renderLanguageItem} from './LocalizationPicker'
 
 export const MenuLanguageSwitch = namedObserver('MenuLanguageSwitch', () => {
   const {t} = useTranslation()
@@ -13,7 +14,7 @@ export const MenuLanguageSwitch = namedObserver('MenuLanguageSwitch', () => {
     .map(language => {
       return <Dropdown.Item key={language.fullCode} eventKey={language.fullCode}
                             onSelect={() => builderStore.changeLanguage(language)}>
-        {language.name}
+        {renderLanguageItem(language)}
       </Dropdown.Item>
     })
 
