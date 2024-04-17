@@ -4,7 +4,7 @@
     "private": false,
     "main": "src/index.ts",
     "type": "module",
-    "description": "Optimajet Form Builder Designer bundle",
+    "description": "Optimajet Formengine. Develop front-end drag and drop forms with ease. User-friendly interface reduce the learning curve for your team.",
     "keywords": [
         "form-builder",
         "optimajet"

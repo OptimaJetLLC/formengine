@@ -4,7 +4,7 @@
     "private": false,
     "main": "src/index.ts",
     "type": "module",
-    "description": "Optimajet Form Builder core",
+    "description": "Optimajet Drag & Drop Form Builder Library for React. Simple way to implement drag and drop form functionality in your React applications.",
     "keywords": [
         "react",
         "form",
