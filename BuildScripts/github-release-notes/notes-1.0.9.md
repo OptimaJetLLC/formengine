@@ -1,0 +1,4 @@
+- The "Edit JSON" button in the designer has been moved to the layout switches.
+- Changed appearance of the language switch - the language code is shown instead of the language name.
+- Updated documentation on computed properties.
+- Fixed a typo in the custom component documentation.
