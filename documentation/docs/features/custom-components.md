@@ -85,11 +85,11 @@ export const myButton = define(MyButton, 'MyButton')
   .name('My Button')
   .category('Custom')
   .props({
-      // button text
-      children: string.named('Caption').default('Button'),
-      // сallback fired when the button is clicked.
-      onClick: event,
-    })
+    // button text
+    children: string.named('Caption').default('Button'),
+    // сallback fired when the button is clicked.
+    onClick: event,
+  })
 ```
 
 ## Example of an application with a custom component
@@ -186,7 +186,7 @@ Create a file `src/MatButton.tsx` with the following contents (similar to the on
 
 ```tsx title='src/MatButton.tsx'
 import {Button} from '@mui/material'
-import {boolean, define, oneOf, string} from '@react-form-builder/core'
+import {boolean, define, oneOf, string, event} from '@react-form-builder/core'
 
 // Let's call our component matButton, using the prefix 'mat' to make it easy to understand
 // from the name that the component belongs to the MUI library.
