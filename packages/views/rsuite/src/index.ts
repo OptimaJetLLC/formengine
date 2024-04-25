@@ -36,7 +36,7 @@ import {rsTextArea} from './components/RsTextArea'
 import {rsTooltip, RsTooltipProps} from './components/RsTooltip'
 import {rsTreePicker} from './components/RsTreePicker'
 import {rsUploader} from './components/RsUploader'
-import {ltrCssLoader, rtlCssLoader} from './cssLoader'
+import {formEngineRsuiteCssLoader, ltrCssLoader, rtlCssLoader} from './cssLoader'
 
 const categories = {
   fields: [
@@ -106,7 +106,7 @@ Object.entries(implemented).forEach(([category, components]) => {
   })
 })
 
-export {rSuiteComponents, rsErrorMessage, rsTooltip, RsLocalizationWrapper, rtlCssLoader, ltrCssLoader}
+export {rSuiteComponents, rsErrorMessage, rsTooltip, RsLocalizationWrapper, rtlCssLoader, ltrCssLoader, formEngineRsuiteCssLoader}
 export type {RsErrorMessageProps, RsTooltipProps}
 
 const components = rSuiteComponents.map(def => def.build())

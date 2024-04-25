@@ -5,7 +5,7 @@ import {Input, InputNumber, InputPicker} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
-type InputValue = string | number;
+type InputValue = string | number | null;
 export const OtherUnit = 'other'
 export const SizeUnits = ['px', '%', 'em', 'vw', 'vh']
 export const SizeKeywords = ['max-content', 'min-content', 'fit-content', 'auto']

@@ -1,4 +1,10 @@
-import {ltrCssLoader, RsLocalizationWrapper, rSuiteComponents, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {
+  formEngineRsuiteCssLoader,
+  ltrCssLoader,
+  RsLocalizationWrapper,
+  rSuiteComponents,
+  rtlCssLoader
+} from '@react-form-builder/components-rsuite'
 import {ActionDefinition, BiDi, ComponentLocalizer, createView, FormViewer, IFormViewer, Validators} from '@react-form-builder/core'
 import {useCallback, useEffect, useRef} from 'react'
 
@@ -13,6 +19,7 @@ const view = createView(componentsMetadata)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
+  .withCssLoader('common', formEngineRsuiteCssLoader)
 // highlight-end
 
 // You can define custom validators for form fields

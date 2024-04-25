@@ -39,7 +39,7 @@ ___
 
 ### align
 
-• `Optional` **align**: ``"left"`` \| ``"right"`` \| ``"center"``
+• `Optional` **align**: `JustifyContent`
 
 #### Inherited from
 
@@ -181,7 +181,7 @@ ___
 
 ### aria-current
 
-• `Optional` **aria-current**: `boolean` \| ``"date"`` \| ``"time"`` \| ``"true"`` \| ``"false"`` \| ``"step"`` \| ``"page"`` \| ``"location"``
+• `Optional` **aria-current**: `boolean` \| ``"date"`` \| ``"time"`` \| ``"page"`` \| ``"true"`` \| ``"false"`` \| ``"step"`` \| ``"location"``
 
 Indicates the element that represents the current item within a container or set of related elements.
 
@@ -782,7 +782,7 @@ ___
 
 ### children
 
-• `Optional` **children**: `ReactNode` \| (`rowData`: `RowDataType`<`never`\>, `rowIndex?`: `number`) => `ReactNode`
+• `Optional` **children**: `ReactNode` \| (`rowData`: `RowDataType`<`any`\>, `rowIndex?`: `number`) => `ReactNode`
 
 #### Inherited from
 
@@ -984,7 +984,7 @@ ___
 
 ### height
 
-• `Optional` **height**: `number` \| (`rowData`: `RowDataType`<`never`\>) => `number`
+• `Optional` **height**: `number` \| (`rowData`: `RowDataType`<`any`\>) => `number`
 
 #### Inherited from
 
@@ -2718,7 +2718,7 @@ ___
 
 ### onTreeToggle
 
-• `Optional` **onTreeToggle**: (`rowKey?`: `string` \| `number`, `rowIndex?`: `number`, `rowData?`: `RowDataType`<`never`\>, `event?`: `MouseEvent`<`Element`, `MouseEvent`\>) => `void`
+• `Optional` **onTreeToggle**: (`rowKey?`: `string` \| `number`, `rowIndex?`: `number`, `rowData?`: `RowDataType`<`any`\>, `event?`: `MouseEvent`<`Element`, `MouseEvent`\>) => `void`
 
 #### Type declaration
 
@@ -2730,7 +2730,7 @@ ___
 | :------ | :------ |
 | `rowKey?` | `string` \| `number` |
 | `rowIndex?` | `number` |
-| `rowData?` | `RowDataType`<`never`\> |
+| `rowData?` | `RowDataType`<`any`\> |
 | `event?` | `MouseEvent`<`Element`, `MouseEvent`\> |
 
 ##### Returns
@@ -2897,7 +2897,7 @@ ___
 
 ### renderTreeToggle
 
-• `Optional` **renderTreeToggle**: (`expandButton`: `ReactNode`, `rowData?`: `RowDataType`<`never`\>, `expanded?`: `boolean`) => `ReactNode`
+• `Optional` **renderTreeToggle**: (`expandButton`: `ReactNode`, `rowData?`: `RowDataType`<`any`\>, `expanded?`: `boolean`) => `ReactNode`
 
 #### Type declaration
 
@@ -2908,7 +2908,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `expandButton` | `ReactNode` |
-| `rowData?` | `RowDataType`<`never`\> |
+| `rowData?` | `RowDataType`<`any`\> |
 | `expanded?` | `boolean` |
 
 ##### Returns
@@ -2953,9 +2953,9 @@ ___
 
 ### rowData
 
-• `Optional` **rowData**: `any`
+• **rowData**: `RowDataType`<`any`\>
 
-Row Data
+Rows data.
 
 #### Inherited from
 
@@ -3117,7 +3117,7 @@ ___
 
 ### verticalAlign
 
-• `Optional` **verticalAlign**: ``"bottom"`` \| ``"top"`` \| ``"middle"``
+• `Optional` **verticalAlign**: ``"bottom"`` \| ``"top"`` \| ``"middle"`` \| `AlignItems`
 
 #### Inherited from
 

@@ -1,5 +1,6 @@
 import {antdComponents, antTooltip} from '@react-form-builder/components-antd'
 import {
+  formEngineRsuiteCssLoader,
   ltrCssLoader,
   rsErrorMessage,
   RsLocalizationWrapper,
@@ -38,6 +39,7 @@ const view = new BuilderView(components)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
+  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 function localizer(componentStore: ComponentStore, language: Language): Record<string, any> {
   return componentStore.key === 'comment'

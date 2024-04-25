@@ -195,7 +195,7 @@ ___
 
 ### aria-current
 
-• `Optional` **aria-current**: `boolean` \| ``"date"`` \| ``"time"`` \| ``"true"`` \| ``"false"`` \| ``"step"`` \| ``"page"`` \| ``"location"``
+• `Optional` **aria-current**: `boolean` \| ``"date"`` \| ``"time"`` \| ``"page"`` \| ``"true"`` \| ``"false"`` \| ``"step"`` \| ``"location"``
 
 Indicates the element that represents the current item within a container or set of related elements.
 
@@ -871,9 +871,7 @@ ___
 
 ### children
 
-• `Optional` **children**: `ReactNode`
-
-Primary content
+• `Optional` **children**: `ReactNode` \| `ReactNode`[] \| (`props`: { `Cell`: (`props`: `InnerCellProps`<`any`, `any`\> & `RefAttributes`<`HTMLDivElement`\>) => `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\> ; `Column`: (`props`: `ColumnProps`<`any`\>) => `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\> ; `ColumnGroup`: `ForwardRefExoticComponent`<`ColumnGroupProps` & `RefAttributes`<`HTMLDivElement`\>\> ; `HeaderCell`: (`props`: `HeaderCellProps`<`any`, `any`\> & `RefAttributes`<`HTMLDivElement`\>) => `ReactElement`<`any`, `string` \| `JSXElementConstructor`<`any`\>\>  }) => `ReactNode` \| `ReactNode`[]
 
 #### Inherited from
 
@@ -961,7 +959,7 @@ ___
 
 ### data
 
-• **data**: `RowDataType`<`never`\>[]
+• **data**: `RowDataType`<`any`\>[]
 
 The table data.
 
@@ -3381,7 +3379,7 @@ ___
 
 ### rowExpandedHeight
 
-• `Optional` **rowExpandedHeight**: `number`
+• `Optional` **rowExpandedHeight**: `number` \| (`rowData?`: `any`) => `number`
 
 Set the height of an expandable area
 

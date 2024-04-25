@@ -3,6 +3,7 @@ import type {LabeledValue} from '@react-form-builder/core'
 import type {IconProps} from '@rsuite/icons/lib/Icon.js'
 import {ReactElement} from 'react'
 import {Checkbox, IconButton, Input, InputPicker, Table} from 'rsuite'
+import type {RowDataType} from 'rsuite-table/lib'
 import type {InnerCellProps} from 'rsuite-table/lib/Cell.js'
 
 const {Cell} = Table
@@ -85,8 +86,8 @@ export const SelectCell = ({rowData, dataKey, rowIndex, options, onChange, ...pr
  * @param props.props the other properties of the component.
  * @returns the React element.
  */
-export const ActionCell = ({rowData, rowIndex, onAction, icon, ...props}: ActionCellProps) => {
-  return (
+export const ActionCell = ({rowData, rowIndex, onAction, icon, ...props}: ActionCellProps) =>
+  (
     <SCell {...props}>
       <IconButton
         appearance="subtle" size="sm"
@@ -95,9 +96,8 @@ export const ActionCell = ({rowData, rowIndex, onAction, icon, ...props}: Action
       />
     </SCell>
   )
-}
 
-const SCell = styled(Cell)`
+const SCell = styled(Cell<RowDataType, string | number>)`
   padding: 0;
 
   & .rs-table-cell-content {
@@ -115,7 +115,7 @@ const SCheckbox = styled(Checkbox)`
 /**
  * The properties of InputCell component.
  */
-export interface InputCellProps extends InnerCellProps {
+export interface InputCellProps extends InnerCellProps<RowDataType, string | number> {
   /**
    * The callback function called when the data in a cell is changed.
    * @param value the value.
@@ -127,6 +127,10 @@ export interface InputCellProps extends InnerCellProps {
    * The cell data key.
    */
   dataKey: string
+  /**
+   * Rows data.
+   */
+  rowData: RowDataType
 }
 
 /**
@@ -142,7 +146,7 @@ export interface SelectCellProps extends InputCellProps {
 /**
  * The properties of ActionCell component.
  */
-export interface ActionCellProps extends InnerCellProps {
+export interface ActionCellProps extends InnerCellProps<RowDataType, string | number> {
   /**
    * The callback function called when the cell is clicked.
    * @param rowIndex the row index.

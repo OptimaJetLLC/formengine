@@ -1,4 +1,5 @@
 import {
+  formEngineRsuiteCssLoader,
   ltrCssLoader,
   rsErrorMessage,
   RsLocalizationWrapper,
@@ -40,6 +41,7 @@ export function renderFormBuilderTo(container: HTMLElement, props: Partial<FormB
     .withViewerWrapper(RsLocalizationWrapper)
     .withCssLoader(BiDi.LTR, ltrCssLoader)
     .withCssLoader(BiDi.RTL, rtlCssLoader)
+    .withCssLoader('common', formEngineRsuiteCssLoader)
 
   const formBuilderProps: FormBuilderProps = {
     view: view,

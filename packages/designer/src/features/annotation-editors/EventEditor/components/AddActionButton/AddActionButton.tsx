@@ -2,7 +2,7 @@ import {ActionData, ComponentStore, namedObserver} from '@react-form-builder/cor
 import {Plus as PlusIcon} from '@rsuite/icons'
 import {forwardRef, useCallback, useRef} from 'react'
 import {Dropdown, IconButton, Popover, Whisper} from 'rsuite'
-import type {OverlayTriggerHandle} from 'rsuite/Picker'
+import type {OverlayTriggerHandle} from 'rsuite/esm/internals/Picker'
 import {useTranslationPart} from '../../../../localization/hooks'
 import {AnnotationEditorProps} from '../../../AnnotationEditorProps'
 import {CodeActionsList} from './components/CodeActionsList'

@@ -21,7 +21,7 @@ If your package manager does not support automatic installation of peer dependen
 npm, then you need to install peer dependencies manually.
 
 ```bash
-npm install @emotion/css@11.10.5 @emotion/react@11.10.5 @emotion/styled@11.10.5 @rsuite/icons@1.0.2 react-number-format@5.1.4 rsuite@5.38.0 --save-exact
+npm install @emotion/css@11.10.5 @emotion/react@11.10.5 @emotion/styled@11.10.5 @rsuite/icons@1.0.2 react-number-format@5.1.4 rsuite@5.59.1 --save-exact
 ```
 
 :::

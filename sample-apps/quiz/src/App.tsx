@@ -1,4 +1,4 @@
-import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader, view} from '@react-form-builder/components-rsuite'
+import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader, view} from '@react-form-builder/components-rsuite'
 import {BiDi, FormViewer} from '@react-form-builder/core'
 import React from 'react'
 import 'rsuite/dist/rsuite.min.css'
@@ -14,11 +14,12 @@ const rSuiteView = view
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
+  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 function App() {
   return <>
     <h1>Form Sample</h1>
-    <FormViewer view={rSuiteView} getForm={loadForm} formName='MyForm'/>
+    <FormViewer view={rSuiteView} getForm={loadForm} formName="MyForm"/>
   </>
 }
 

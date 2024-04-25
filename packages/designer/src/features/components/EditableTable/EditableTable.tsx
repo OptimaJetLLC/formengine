@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import {Close, Plus} from '@rsuite/icons'
 import {cloneElement, FormEventHandler, useEffect, useState} from 'react'
 import {Button, Form, Table, TableProps} from 'rsuite'
-import type {RowDataType} from 'rsuite-table/lib/@types/common'
+import type {RowDataType} from 'rsuite-table/lib'
 import {ActionCell} from './CustomCells'
 
 const {ErrorMessage} = Form

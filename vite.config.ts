@@ -26,6 +26,5 @@ export default defineConfig(({command}) => ({
           __dirname + '/node_modules/monaco-editor/esm/vs/editor/editor.api',
       },
     ],
-
-  },
+  }
 }))

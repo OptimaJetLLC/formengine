@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import type {InputPickerProps} from 'rsuite'
 import type {ItemDataType} from 'rsuite/esm/@types/common'
-import type {ListProps} from 'rsuite/Windowing'
+import type {ListProps} from 'rsuite/esm/internals/Windowing'
 
 type LoadCallback = (newData: ItemDataType[]) => void
 

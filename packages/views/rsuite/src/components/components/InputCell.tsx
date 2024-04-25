@@ -6,7 +6,7 @@ import {SCell} from './SCell'
  * The React component that displays the table cell with the input.
  * @param props the React component properties.
  * @param props.rowData the row data.
- * @param props.dataKey the key name in {@link props.rowData}.
+ * @param props.dataKey the key name in {@link rowData}.
  * @param props.rowIndex the row index.
  * @param props.props the other properties of the component.
  * @returns the React element.
