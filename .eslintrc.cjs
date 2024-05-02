@@ -11,13 +11,25 @@ const projects = [
 module.exports = {
   extends: [
     'eslint:recommended',
+    'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:jsdoc/recommended-typescript-error'
   ],
-  plugins: ['@typescript-eslint', 'import', 'unused-imports'],
+  plugins: ['@typescript-eslint', 'import', 'unused-imports', 'react-hooks'],
   rules: {
+    'no-console': ['warn', {allow: ['warn', 'error']}],
+    'no-debugger': 'error',
     'no-implied-eval': 'off',
+    'no-warning-comments': ['warn', {
+      'terms': ['todo', 'fixme', 'wtf'],
+      'location': 'anywhere'
+    }],
+    'one-var': ['error', 'never'],
+    'react-hooks/rules-of-hooks': 'warn',
+    'react-hooks/exhaustive-deps': ['warn', {
+      'additionalHooks': ''
+    }],
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/ban-ts-comment': ['error', {'ts-ignore': 'allow-with-description'}],
     '@typescript-eslint/no-explicit-any': 'off',
@@ -54,8 +66,8 @@ module.exports = {
     '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'error',
     'no-throw-literal': 'off',
     '@typescript-eslint/no-throw-literal': 'error',
-    "init-declarations": "off",
-    "@typescript-eslint/init-declarations": ['error', 'always'],
+    'init-declarations': 'off',
+    '@typescript-eslint/init-declarations': ['error', 'always'],
     'import/extensions': ['error', {
       'ts': 'never',
       'tsx': 'never',
