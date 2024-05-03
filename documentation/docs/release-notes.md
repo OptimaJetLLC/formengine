@@ -4,6 +4,12 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.1.0
+
+_May_ 3, 2024
+
+- React Suite updated to version 5.59.1.
+
 ## 1.0.9
 
 _April_ 17, 2024

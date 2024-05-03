@@ -1,6 +1,6 @@
 {
     "name": "@react-form-builder/demo",
-    "version": "1.0.9",
+    "version": "1.1.0",
     "private": true,
     "main": "src/index.ts",
     "type": "module",
@@ -17,10 +17,10 @@
         "update-release-date": "node ./scripts/update-release-date"
     },
     "dependencies": {
-        "@react-form-builder/components-antd": "^1.0.9",
-        "@react-form-builder/components-rsuite": "^1.0.9",
-        "@react-form-builder/designer": "^1.0.9",
-        "@react-form-builder/indexed-db-form-storage": "^1.0.9",
+        "@react-form-builder/components-antd": "^1.1.0",
+        "@react-form-builder/components-rsuite": "^1.1.0",
+        "@react-form-builder/designer": "^1.1.0",
+        "@react-form-builder/indexed-db-form-storage": "^1.1.0",
         "react": "^17.0.2",
         "react-dom": "^17.0.2"
     },

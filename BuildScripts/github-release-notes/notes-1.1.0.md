@@ -1,0 +1,1 @@
+- React Suite updated to version 5.59.1.
