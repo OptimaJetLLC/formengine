@@ -245,28 +245,28 @@ PUBLISH_GITHUB_RELEASE_NOTES:
 publish-artifact-github-optimajet-formenginesupport-release-notes:
   COPY +prepare-github-release-notes-archive/gh-release-notes.tgz ./
   COPY +prepare-version-archive/version.txt version.txt
-  DO +PUBLISH_GITHUB_RELEASE_NOTES --repository=formenginesupport --product="Form Builder"
+  DO +PUBLISH_GITHUB_RELEASE_NOTES --repository=formenginesupport --product="Form Engine"
 
 # publish-archive-github-optimajet-formenginesupport-release-notes creates release on the GitHub repository optimajet/formenginesupport
 # from local archives
 publish-archive-github-optimajet-formenginesupport-release-notes:
   COPY .archives/gh-release-notes.tgz ./
   COPY .archives/version.txt ./
-  DO +PUBLISH_GITHUB_RELEASE_NOTES --repository=formenginesupport --product="Form Builder"
+  DO +PUBLISH_GITHUB_RELEASE_NOTES --repository=formenginesupport --product="Form Engine"
 
 # publish-artifact-github-optimajet-formengine-release-notes creates release on the GitHub repository optimajet/formengine
 # from local artifacts
 publish-artifact-github-optimajet-formengine-release-notes:
   COPY +prepare-github-release-notes-archive/gh-release-notes.tgz ./
   COPY +prepare-version-archive/version.txt version.txt
-  DO +PUBLISH_GITHUB_RELEASE_NOTES --repository=formengine --product="Form Builder"
+  DO +PUBLISH_GITHUB_RELEASE_NOTES --repository=formengine --product="Form Engine"
 
 # publish-archive-github-optimajet-formengine-release-notes creates release on the GitHub repository optimajet/formengine
 # from local archives
 publish-archive-github-optimajet-formengine-release-notes:
   COPY .archives/gh-release-notes.tgz ./
   COPY .archives/version.txt ./
-  DO +PUBLISH_GITHUB_RELEASE_NOTES --repository=formengine --product="Form Builder"
+  DO +PUBLISH_GITHUB_RELEASE_NOTES --repository=formengine --product="Form Engine"
 
 PUBLISH_NPM_PACKAGE:
   FUNCTION
