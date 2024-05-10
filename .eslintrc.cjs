@@ -18,7 +18,7 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint', 'import', 'unused-imports', 'react-hooks'],
   rules: {
-    'no-console': ['warn', {allow: ['warn', 'error']}],
+    'no-console': ['error', {allow: ['warn', 'error']}],
     'no-debugger': 'error',
     'no-implied-eval': 'off',
     'no-warning-comments': ['warn', {

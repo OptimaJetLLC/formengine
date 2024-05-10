@@ -52,6 +52,7 @@ export class BuilderI18n {
   }
 
   private onLoadError(error: any) {
+    // eslint-disable-next-line no-console
     if (error) console.log('An error occurred while initializing the language', error)
   }
 }
