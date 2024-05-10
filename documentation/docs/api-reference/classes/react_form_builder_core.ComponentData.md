@@ -230,7 +230,7 @@ ___
 
 `Record`<`string`, `unknown`\>
 
-the user defined observable state.
+A user-defined key-value observable storage. Utilize it to store and share any custom data.
 
 #### Implementation of
 

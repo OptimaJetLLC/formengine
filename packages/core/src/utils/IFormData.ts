@@ -1,4 +1,4 @@
-import {ValidationMessages} from "../features/validation/types/ValidationResult";
+import {ValidationMessages} from '../features/validation/types/ValidationResult'
 
 /**
  * The interface for accessing the form data.
@@ -20,7 +20,7 @@ export interface IFormData {
   get hasErrors(): boolean
 
   /**
-   * @returns the user defined observable state.
+   * @returns A user-defined key-value observable storage. Utilize it to store and share any custom data.
    */
   get state(): Record<string, unknown>
 
@@ -77,7 +77,7 @@ export const IFormDataDeclaration = `declare interface IFormData {
   get hasErrors(): boolean
 
   /**
-   * @returns the user defined observable state.
+   * @returns A user-defined key-value observable storage. Utilize it to store and share any custom data.
    */
   get state(): Record<string, unknown>
 
