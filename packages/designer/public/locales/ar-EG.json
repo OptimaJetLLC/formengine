@@ -184,7 +184,6 @@
     }
   },
   "bottomPanel": {
-    "calculable": "قيمة قابلة للحساب",
     "editCodeAction": "تحرير إجراء التعليمات البرمجية",
     "editProperty": "تحرير الممتلكات",
     "function": "قيمة قابلة للحساب",
@@ -198,17 +197,14 @@
     "nameIsRequired": "اسم الإجراء مطلوب",
     "parameterNameExists": "المعلمة مع هذا الاسم موجود بالفعل",
     "parameterNameIsNotValid": "اسم المعلمة غير صالح",
-    "parameterNameIsRequired": "مطلوب اسم المعلمة",
-    "saveAsNew": "حفظ باسم جديد"
+    "parameterNameIsRequired": "مطلوب اسم المعلمة"
   },
   "codeEditor": {
-    "close": "إغلاق",
     "codeActionHeader": "محرر إجراءات التعليمات البرمجية",
     "codePlaceholder": "// أدخل الرمز الخاص بك هنا",
     "compilationResult": "نتيجة التجميع:",
     "compile": "ترجمة",
-    "ok": "حسنا",
-    "save": "حفظ"
+    "ok": "حسنا"
   },
   "common": {
     "apply": "تطبيق",
@@ -218,7 +214,6 @@
     "edit": "تحرير",
     "name": "الاسم",
     "remove": "إزالة",
-    "reset": "إعادة تعيين",
     "save": "حفظ",
     "test": "اختبار"
   },
@@ -289,12 +284,6 @@
   "localization": {
     "messageIsNull": "رسالة التعريب فارغة",
     "messageNotFound": "لم يتم العثور على رسالة التعريب"
-  },
-  "localizationEditor": {
-    "close": "إغلاق",
-    "save": "حفظ",
-    "test": "اختبار",
-    "useFluentLocalization": "استخدام التعريب بطلاقة"
   },
   "promptDialog": {
     "cancel": "إلغاء",
@@ -374,10 +363,8 @@
   "validation": {
     "addRule": "إضافة قاعدة",
     "chooseValidation": "اختر النوع الخاص بك",
-    "editCode": "تحرير رمز القاعدة",
     "editCustomValidationCode": "تحرير رمز التحقق المخصص للمكون",
     "formErrors": "أخطاء النموذج",
-    "removeRule": "إزالة القاعدة",
     "rule": {
       "code": "شفرة",
       "custom": "مخصص",
@@ -403,7 +390,6 @@
       "url": "رابط",
       "uuid": "الجامعة"
     },
-    "showFormErrors": "إظهار أخطاء النموذج",
-    "validationRules": "قواعد التحقق من الصحة"
+    "showFormErrors": "إظهار أخطاء النموذج"
   }
 }

@@ -184,7 +184,6 @@
     }
   },
   "bottomPanel": {
-    "calculable": "Kalkulierbarer Wert",
     "editCodeAction": "Codeaktion bearbeiten",
     "editProperty": "Eigenschaft bearbeiten",
     "function": "Kalkulierbarer Wert",
@@ -198,17 +197,14 @@
     "nameIsRequired": "Aktionsname ist erforderlich",
     "parameterNameExists": "Parameter mit diesem Namen existiert bereits",
     "parameterNameIsNotValid": "Parametername ist ungültig",
-    "parameterNameIsRequired": "Parametername ist erforderlich",
-    "saveAsNew": "Als neu speichern"
+    "parameterNameIsRequired": "Parametername ist erforderlich"
   },
   "codeEditor": {
-    "close": "Schließen",
     "codeActionHeader": "Code-Aktionseditor",
     "codePlaceholder": "// geben Sie hier Ihren Code ein",
     "compilationResult": "Kompilierungsergebnis:",
     "compile": "Kompilieren",
-    "ok": "Okay",
-    "save": "Speichern"
+    "ok": "Okay"
   },
   "common": {
     "apply": "Gelten",
@@ -218,7 +214,6 @@
     "edit": "Bearbeiten",
     "name": "Geltener",
     "remove": "Entfernen",
-    "reset": "Zurücksetzen",
     "save": "Speichern",
     "test": "Test"
   },
@@ -289,12 +284,6 @@
   "localization": {
     "messageIsNull": "Lokalisierungsnachricht ist null",
     "messageNotFound": "Lokalisierungsnachricht nicht gefunden"
-  },
-  "localizationEditor": {
-    "close": "Schließen",
-    "save": "Speichern",
-    "test": "Test",
-    "useFluentLocalization": "Verwenden Sie eine Fluent Lokalisierung"
   },
   "promptDialog": {
     "cancel": "Stornieren",
@@ -374,10 +363,8 @@
   "validation": {
     "addRule": "Regel hinzufügen",
     "chooseValidation": "Wählen Sie Ihren Typ",
-    "editCode": "Regelcode bearbeiten",
     "editCustomValidationCode": "Benutzerdefinierten Validierungscode für Komponente bearbeiten",
     "formErrors": "Formularfehler",
-    "removeRule": "Regel entfernen",
     "rule": {
       "code": "Code",
       "custom": "Benutzerdefinierte",
@@ -403,7 +390,6 @@
       "url": "URL",
       "uuid": "Uuid"
     },
-    "showFormErrors": "Formularfehler anzeigen",
-    "validationRules": "Prüfregeln"
+    "showFormErrors": "Formularfehler anzeigen"
   }
 }

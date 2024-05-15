@@ -184,7 +184,6 @@
     }
   },
   "bottomPanel": {
-    "calculable": "Valor calculable",
     "editCodeAction": "Editar acción de código",
     "editProperty": "Editar propiedad",
     "function": "Valor calculable",
@@ -198,17 +197,14 @@
     "nameIsRequired": "El nombre de la acción es obligatorio",
     "parameterNameExists": "El parámetro con este nombre ya existe",
     "parameterNameIsNotValid": "El nombre del parámetro no es válido",
-    "parameterNameIsRequired": "El nombre del parámetro es obligatorio",
-    "saveAsNew": "Guardar como nuevo"
+    "parameterNameIsRequired": "El nombre del parámetro es obligatorio"
   },
   "codeEditor": {
-    "close": "Cerrar",
     "codeActionHeader": "Editor de acciones de código",
     "codePlaceholder": "// ingrese su código aquí",
     "compilationResult": "Resultado de la compilación:",
     "compile": "Compilar",
-    "ok": "OK",
-    "save": "Guardar"
+    "ok": "OK"
   },
   "common": {
     "apply": "Aplicar",
@@ -218,7 +214,6 @@
     "edit": "Editar",
     "name": "Nombre",
     "remove": "Eliminar",
-    "reset": "Restablecer",
     "save": "Guardar",
     "test": "Prueba"
   },
@@ -289,12 +284,6 @@
   "localization": {
     "messageIsNull": "El mensaje de localización es nulo",
     "messageNotFound": "Mensaje de localización no encontrado"
-  },
-  "localizationEditor": {
-    "close": "Cerrar",
-    "save": "Guardar",
-    "test": "Ensayo",
-    "useFluentLocalization": "Utilice la localización fluida"
   },
   "promptDialog": {
     "cancel": "Cancelar",
@@ -374,10 +363,8 @@
   "validation": {
     "addRule": "Añadir regla",
     "chooseValidation": "Elige tu tipo",
-    "editCode": "Editar código de regla",
     "editCustomValidationCode": "Editar código de validación personalizado para el componente",
     "formErrors": "Errores de formulario",
-    "removeRule": "Eliminar regla",
     "rule": {
       "code": "Código",
       "custom": "Personalizado",
@@ -403,7 +390,6 @@
       "url": "Url",
       "uuid": "Uuid"
     },
-    "showFormErrors": "Mostrar errores de formulario",
-    "validationRules": "Reglas de validación"
+    "showFormErrors": "Mostrar errores de formulario"
   }
 }

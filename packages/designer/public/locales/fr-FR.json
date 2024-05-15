@@ -184,7 +184,6 @@
     }
   },
   "bottomPanel": {
-    "calculable": "Valeur calculable",
     "editCodeAction": "Action de modification du code",
     "editProperty": "Modifier la propriété",
     "function": "Valeur calculable",
@@ -198,17 +197,14 @@
     "nameIsRequired": "Le nom de l'action est requis",
     "parameterNameExists": "Le paramètre avec ce nom existe déjà",
     "parameterNameIsNotValid": "Le nom du paramètre n'est pas valide",
-    "parameterNameIsRequired": "Le nom du paramètre est requis",
-    "saveAsNew": "Enregistrer comme nouveau"
+    "parameterNameIsRequired": "Le nom du paramètre est requis"
   },
   "codeEditor": {
-    "close": "Fermer",
     "codeActionHeader": "Éditeur d'actions de code",
     "codePlaceholder": "// entrez votre code ici",
     "compilationResult": "Résultat de la compilation:",
     "compile": "Compiler",
-    "ok": "D'ACCORD",
-    "save": "Sauvegarder"
+    "ok": "D'ACCORD"
   },
   "common": {
     "apply": "Appliquer",
@@ -218,7 +214,6 @@
     "edit": "Modifier",
     "name": "Nom",
     "remove": "Supprimer",
-    "reset": "Réinitialiser",
     "save": "Sauvegarder",
     "test": "Essai"
   },
@@ -289,12 +284,6 @@
   "localization": {
     "messageIsNull": "Le message de localisation est nul",
     "messageNotFound": "Message de localisation non trouvé"
-  },
-  "localizationEditor": {
-    "close": "Fermer",
-    "save": "Sauvegarder",
-    "test": "Essai",
-    "useFluentLocalization": "Utilisez une localisation fluide"
   },
   "promptDialog": {
     "cancel": "Annuler",
@@ -374,10 +363,8 @@
   "validation": {
     "addRule": "Ajouter une règle",
     "chooseValidation": "Choisissez votre type",
-    "editCode": "Modifier le code de la règle",
     "editCustomValidationCode": "Modifier le code de validation personnalisé pour le composant",
     "formErrors": "Erreurs de formulaire",
-    "removeRule": "Supprimer la règle",
     "rule": {
       "code": "Code",
       "custom": "Personnalisé",
@@ -403,7 +390,6 @@
       "url": "Adresse URL",
       "uuid": "UID"
     },
-    "showFormErrors": "Afficher les erreurs de formulaire",
-    "validationRules": "Règles de validation"
+    "showFormErrors": "Afficher les erreurs de formulaire"
   }
 }

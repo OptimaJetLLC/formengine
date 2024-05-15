@@ -2,7 +2,9 @@ vite.config.ts
 **/dist
 BuildScripts
 documentation
-scripts
+scripts/*.js
+scripts/test/**/*
+packages/core/scripts
 packages/apps
 packages/views/antd
 packages/views/default

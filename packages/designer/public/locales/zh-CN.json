@@ -184,7 +184,6 @@
     }
   },
   "bottomPanel": {
-    "calculable": "可计算价值",
     "editCodeAction": "编辑代码操作",
     "editProperty": "编辑属性",
     "function": "可计算价值",
@@ -198,17 +197,14 @@
     "nameIsRequired": "需要操作名称",
     "parameterNameExists": "具有此名称的参数已存在",
     "parameterNameIsNotValid": "参数名称无效",
-    "parameterNameIsRequired": "参数名称为必填项",
-    "saveAsNew": "另存为新"
+    "parameterNameIsRequired": "参数名称为必填项"
   },
   "codeEditor": {
-    "close": "接近/接近",
     "codeActionHeader": "代码动作编辑器",
     "codePlaceholder": "//在这里输入你的代码",
     "compilationResult": "编译结果:",
     "compile": "编译",
-    "ok": "好的",
-    "save": "储蓄"
+    "ok": "好的"
   },
   "common": {
     "apply": "申请",
@@ -218,7 +214,6 @@
     "edit": "编辑",
     "name": "姓名",
     "remove": "移走",
-    "reset": "重置",
     "save": "储蓄",
     "test": "测试"
   },
@@ -289,12 +284,6 @@
   "localization": {
     "messageIsNull": "本地化消息为null",
     "messageNotFound": "找不到本地化消息"
-  },
-  "localizationEditor": {
-    "close": "接近/接近",
-    "save": "储蓄",
-    "test": "测试",
-    "useFluentLocalization": "使用流利的本地化"
   },
   "promptDialog": {
     "cancel": "取消",
@@ -374,10 +363,8 @@
   "validation": {
     "addRule": "添加规则",
     "chooseValidation": "选择你的类型",
-    "editCode": "编辑规则代码",
     "editCustomValidationCode": "编辑组件的自定义验证代码",
     "formErrors": "表单错误",
-    "removeRule": "删除规则",
     "rule": {
       "code": "代码",
       "custom": "海关规定",
@@ -403,7 +390,6 @@
       "url": "网址",
       "uuid": "Uuid"
     },
-    "showFormErrors": "显示表单错误",
-    "validationRules": "验证规则"
+    "showFormErrors": "显示表单错误"
   }
 }

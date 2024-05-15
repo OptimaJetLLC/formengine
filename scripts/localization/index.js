@@ -1,9 +1,11 @@
+require('dotenv').config();
+
 //https://cloud.yandex.ru/docs/translate/quickstart
 
 const axios = require('axios');
 const deepMerge = require('deepmerge');
 const path = require('path');
-const {entries} = require('lodash/object');
+const {entries} = require('lodash-es/object.js');
 const {
   saveToFile,
   flattenArrayToObject,
@@ -13,12 +15,13 @@ const {
   objectKeys,
   removeObsolete,
   hasObsolete
-} = require('./utils');
+} = require('./utils.js');
 
-const {apiURL, Authorization, folderId} = require('./translation-api-credentials');
+const {YA_API_URL, YA_FOLDER_ID, YA_IAM_TOKEN} = process.env;
 
 const LOCALIZATION_FOLDER = '../../packages/designer/public/locales';
-const {en, ...localizations} = require('./localizations');
+const {en, ...localizations} = require('./localizations.json');
+
 const defaultLanguage = sortObject(getLocalization(en));
 
 entries(localizations).forEach(([key, fullCode]) => updateLocalization(getLocalization(fullCode), key));
@@ -38,7 +41,7 @@ function updateLocalization(localization, targetLang) {
   }
 
   if (!texts.length) {
-    console.log(targetLang.toUpperCase() + ' - localization is up to date');
+    console.log(String(targetLang).toUpperCase() + ' - localization is up to date');
     return;
   }
 
@@ -55,8 +58,15 @@ function updateLocalization(localization, targetLang) {
 
 //texts should be an array like ["first word", "second", ...]
 function requestTranslate(targetLanguageCode, texts, successCallback) {
-  const data = {targetLanguageCode, texts, folderId};
-  axios.post(apiURL, data, {headers: {Authorization}})
+  axios.post(YA_API_URL, {
+    targetLanguageCode,
+    texts,
+    folderId: YA_FOLDER_ID
+  }, {
+    headers: {
+      Authorization: `Bearer ${YA_IAM_TOKEN}`
+    }
+  })
     .then(successCallback)
     .catch(err => console.error(err));
 }
@@ -66,5 +76,5 @@ function getLocalization(languageCode) {
 }
 
 function save(targetLang, localization) {
-  saveToFile(path.join(LOCALIZATION_FOLDER, localizations[targetLang] + '.json'), localization);
+  saveToFile(path.join(LOCALIZATION_FOLDER, String(localizations[targetLang]) + '.json'), localization);
 }

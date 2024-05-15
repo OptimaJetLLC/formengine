@@ -184,7 +184,6 @@
     }
   },
   "bottomPanel": {
-    "calculable": "Valore calcolabile",
     "editCodeAction": "Modifica l'azione del codice",
     "editProperty": "Modifica proprietà",
     "function": "Valore calcolabile",
@@ -198,17 +197,14 @@
     "nameIsRequired": "Il nome dell'azione è richiesto",
     "parameterNameExists": "Il parametro con questo nome esiste già",
     "parameterNameIsNotValid": "Il nome del parametro non è valido",
-    "parameterNameIsRequired": "Il nome del parametro è richiesto",
-    "saveAsNew": "Salva come nuovo"
+    "parameterNameIsRequired": "Il nome del parametro è richiesto"
   },
   "codeEditor": {
-    "close": "Vicino",
     "codeActionHeader": "Editor di azioni codice",
     "codePlaceholder": "// inserisci il tuo codice qui",
     "compilationResult": "Risultato compilazione:",
     "compile": "Compilare",
-    "ok": "OK",
-    "save": "Salvare"
+    "ok": "OK"
   },
   "common": {
     "apply": "Applicare",
@@ -218,7 +214,6 @@
     "edit": "Modificare",
     "name": "Nome",
     "remove": "Rimuovere",
-    "reset": "Reset",
     "save": "Salvare",
     "test": "Test"
   },
@@ -289,12 +284,6 @@
   "localization": {
     "messageIsNull": "Il messaggio di localizzazione è nullo",
     "messageNotFound": "Localizzazione messaggio non trovato"
-  },
-  "localizationEditor": {
-    "close": "Vicino",
-    "save": "Salvare",
-    "test": "Test",
-    "useFluentLocalization": "Usa localizzazione fluente"
   },
   "promptDialog": {
     "cancel": "Annullare",
@@ -374,10 +363,8 @@
   "validation": {
     "addRule": "Aggiungi regola",
     "chooseValidation": "Scegli il tuo tipo",
-    "editCode": "Modifica codice regola",
     "editCustomValidationCode": "Modifica del codice di convalida personalizzato per il componente",
     "formErrors": "Errori di modulo",
-    "removeRule": "Rimuovi regola",
     "rule": {
       "code": "Codice",
       "custom": "Personalizzato",
@@ -403,7 +390,6 @@
       "url": "URL",
       "uuid": "Uuid"
     },
-    "showFormErrors": "Mostra errori di modulo",
-    "validationRules": "Regole di convalida"
+    "showFormErrors": "Mostra errori di modulo"
   }
 }

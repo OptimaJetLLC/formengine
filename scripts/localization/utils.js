@@ -1,9 +1,10 @@
 const fs = require('fs');
-const _ = require('lodash');
+const _ = require('lodash-es');
+const stringify = require('json-stable-stringify');
 
 function saveToFile(path, obj) {
-  const windowsContent = JSON.stringify(obj, null, '\t').replaceAll('\n', '\r\n');
-  const buffer = Buffer.from(windowsContent + '\n', 'utf8');
+  const windowsContent = stringify(obj, {space: '  '}).replaceAll('\n', '\r\n');
+  const buffer = Buffer.from(String(windowsContent) + '\n', 'utf8');
   fs.writeFileSync(path, buffer);
 }
 
