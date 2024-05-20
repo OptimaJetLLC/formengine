@@ -13,7 +13,7 @@ export const CustomValidationCodeEditor = namedObserver('CustomValidationCodeEdi
   const beginContextLine = props.functionSignature
   const endContextLine = '}'
 
-  const handleClose = useCallback(() => builderStore.currentEditable = undefined, [builderStore.currentEditable])
+  const handleClose = useCallback(() => builderStore.currentEditable = undefined, [builderStore])
   const handleCompile = useCallback((value: string) => {
     const source = `${beginContextLine}\n${value}\n${endContextLine}`
     try {
@@ -22,7 +22,7 @@ export const CustomValidationCodeEditor = namedObserver('CustomValidationCodeEdi
     } catch (e) {
       return CalculableResult.error([e as Error])
     }
-  }, [beginContextLine])
+  }, [beginContextLine, endContextLine, t])
 
   return <>
     <Header>{t('validation.editCustomValidationCode')} '{props.editorKey}'</Header>

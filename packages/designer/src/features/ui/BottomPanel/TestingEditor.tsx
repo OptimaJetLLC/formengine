@@ -2,17 +2,10 @@ import {css} from '@emotion/react'
 import styled from '@emotion/styled'
 import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faPlay from '@fortawesome/free-solid-svg-icons/faPlay.js'
-import {
-  CalculableResult,
-  ComponentData,
-  IFormData,
-  initFormFields,
-  namedObserver,
-  useStore
-} from '@react-form-builder/core'
+import {CalculableResult, ComponentData, IFormData, initFormFields, namedObserver, useStore} from '@react-form-builder/core'
 import {isUndefined} from 'lodash-es'
 import {editor} from 'monaco-editor'
-import {forwardRef, RefObject, useCallback, useEffect, useMemo, useState} from 'react'
+import {forwardRef, RefObject, useCallback, useEffect, useState} from 'react'
 import {Button, Checkbox, Message} from 'rsuite'
 import type {TypeAttributes} from 'rsuite/esm/@types/common'
 import type {CheckboxProps} from 'rsuite/esm/Checkbox/Checkbox'
@@ -53,10 +46,11 @@ export const TestingEditor = namedObserver('TestingEditor', forwardRef(({testing
   const builderStore = useBuilderStore()
   const {formData} = useStore()
   const [data, setData] = useState(builderStore.testingData ?? init(formData))
-  const initialData = useMemo(() => data, [])
+  const [initialData] = useState(data)
+
   useEffect(() => () => {
     builderStore.testingData = data
-  }, [data])
+  }, [builderStore, data])
 
   return (
     <Rows style={{flex: 1, minHeight: 100, minWidth: 0, alignItems: 'start', position: 'relative'}}>
@@ -73,6 +67,7 @@ export const TestRunner = namedObserver('TestRunner', forwardRef(({data, testing
   const t = useTranslationPart('testingEditor')
   const builderStore = useBuilderStore()
   const [result, setResult] = useState<CalculableResult>()
+
   const test = useCallback(() => {
     const calculated = calculate(data ?? '{}', testingFunction)
     setResult(calculated)
@@ -89,7 +84,7 @@ export const TestRunner = namedObserver('TestRunner', forwardRef(({data, testing
       return
     }
     setResult(undefined)
-  }, [test, builderStore.testingAutorun])
+  }, [test, builderStore.testingAutorun, ref])
 
   const handleAutorunChecked: CheckboxProps['onChange'] = (_, val) => builderStore.testingAutorun = val
 

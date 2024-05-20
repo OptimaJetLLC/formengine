@@ -35,10 +35,9 @@ export const ComputedPropertyEditor = namedObserver('ComputedPropertyEditor', ({
   const {annotation, componentKey} = property
   const Editor = editors[computeType]
   const toggleItems = getToggleItems(annotation, t)
-  const handleClose = useCallback(() => builderStore.currentEditable = undefined, [builderStore.currentEditable])
+  const handleClose = useCallback(() => builderStore.currentEditable = undefined, [builderStore])
 
-
-  useEffect(() => setComputeType(initialComputeType), [property])
+  useEffect(() => setComputeType(initialComputeType), [initialComputeType])
 
   return <>
     <Header>
