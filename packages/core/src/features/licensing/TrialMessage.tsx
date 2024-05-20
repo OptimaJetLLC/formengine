@@ -16,7 +16,7 @@ export const TrialMessage = () => {
     verifyLicenseKey(licenseKey).then(value => {
       setVerified(!!value)
     })
-  }, [licenseKey])
+  }, [licenseKey, setVerified])
 
   return <div>
     {!verified && <SDiv>

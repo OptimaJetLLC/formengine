@@ -43,7 +43,7 @@ const Template = (templateProps: Record<string, any>) => {
       formValidators: undefined,
     }
     return Object.assign({}, viewerProps, overrideProps)
-  }, [viewerProps])
+  }, [data.store.type, viewerProps])
 
   if (!viewerProps.getForm) return <TemplateLoadError>Please define <code>getForm</code> property!</TemplateLoadError>
   if (!(data.field instanceof TemplateField)) return null
