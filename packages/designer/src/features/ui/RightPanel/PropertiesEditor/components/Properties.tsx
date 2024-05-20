@@ -118,7 +118,7 @@ interface StyleBlockProps {
 }
 
 const StyleBlock = namedObserver('StyleBlock', ({meta, store, device, cssPart, header, headerHint}: StyleBlockProps) => {
-  const initContext = useCallback(getCssContextInitializer(cssPart, store, device), [cssPart, store, device])
+  const initContext = useCssContextInitializer(cssPart, store, device)
   const context = store[cssPart]?.[device]?.object ?? {}
   const isComponent = meta.kind === 'component'
 
@@ -129,14 +129,13 @@ const StyleBlock = namedObserver('StyleBlock', ({meta, store, device, cssPart, h
   )
 })
 
-const getCssContextInitializer = (fieldKey: CssPart, store: ComponentStore, device: Device) => {
-  return () => {
+const useCssContextInitializer = (fieldKey: CssPart, store: ComponentStore, device: Device) =>
+  useCallback(() => {
     store[fieldKey] ??= {}
     store[fieldKey]![device] ??= {}
     store[fieldKey]![device]!.object ??= {}
     return store[fieldKey]![device]!.object ?? {}
-  }
-}
+  }, [fieldKey, store, device])
 
 /**
  * Represents the properties of PropertyBlock component.

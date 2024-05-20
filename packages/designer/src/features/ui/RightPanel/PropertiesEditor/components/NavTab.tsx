@@ -2,6 +2,7 @@ import * as faBolt from '@fortawesome/free-solid-svg-icons/faBolt.js'
 import * as faCircle from '@fortawesome/free-solid-svg-icons/faCircle.js'
 import * as faPaintBrush from '@fortawesome/free-solid-svg-icons/faPaintBrush.js'
 import * as faSpellCheck from '@fortawesome/free-solid-svg-icons/faSpellCheck.js'
+import {useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
 import {customizableTab, SNav} from '../../../../components/NavIconItem'
 import {customizableObserver} from '../../../../customization'
@@ -20,18 +21,20 @@ const tabsProps: Record<Section, [key: CustomizableKey, icon: any, color: string
   [Section.Rules]: ['Rules_Tab', faSpellCheck, 'var(--rs-green-600)']
 }
 
-const renderTab = (section: Section) => {
+const useRenderTab = (section: Section) => {
   const {t} = useTranslation()
-  const title = t('propertiesEditor.sectionName.' + section)
-  const [key, icon, color] = tabsProps[section]
-  return customizableTab(section, key, title, icon, {color})
+  return useMemo(() => {
+    const title = t('propertiesEditor.sectionName.' + section)
+    const [key, icon, color] = tabsProps[section]
+    return customizableTab(section, key, title, icon, {color})
+  }, [t, section])
 }
 
 export const NavTab = customizableObserver('RightPanel_Nav', ({activeTab, setActiveTab, ...props}: NavProps) => {
   return <SNav activeKey={activeTab} onSelect={setActiveTab} appearance="subtle"  {...props}>
-    {renderTab(Section.Main)}
-    {renderTab(Section.Style)}
-    {renderTab(Section.Actions)}
-    {renderTab(Section.Rules)}
+    {useRenderTab(Section.Main)}
+    {useRenderTab(Section.Style)}
+    {useRenderTab(Section.Actions)}
+    {useRenderTab(Section.Rules)}
   </SNav>
 })
