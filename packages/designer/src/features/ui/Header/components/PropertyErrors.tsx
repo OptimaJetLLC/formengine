@@ -1,5 +1,5 @@
 import {ComponentData, namedObserver} from '@react-form-builder/core'
-import {useEffect} from 'react'
+import {useCallback, useEffect} from 'react'
 import {Table} from 'rsuite'
 import {Cell, Column, HeaderCell} from 'rsuite-table'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
@@ -24,7 +24,7 @@ export interface PropertyErrorsProps {
 export const PropertyErrors = namedObserver('PropertyErrors', ({onClose}: PropertyErrorsProps) => {
   const store = useBuilderStore()
 
-  const data = useComputed(() => {
+  const getData = useCallback(() => {
     const data: PropertyErrorColumn[] = []
     store.errorMap.forEach((value, component) => {
       Object.entries(value).forEach(([property, message]) => {
@@ -32,11 +32,13 @@ export const PropertyErrors = namedObserver('PropertyErrors', ({onClose}: Proper
       })
     })
     return data
-  })
+  }, [store.errorMap])
+
+  const data = useComputed(getData)
 
   useEffect(() => {
     store.validate().catch(console.error)
-  }, [])
+  }, [store])
 
   const handleLinkClick = (component: ComponentData) => {
     onClose()

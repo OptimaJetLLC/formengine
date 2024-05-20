@@ -11,7 +11,7 @@ export const JsonView = namedObserver('JsonView', () => {
 
   useEffect(() => {
     return () => builderStore.parseForm(sourceRef.current)
-  }, [])
+  }, [builderStore])
 
   return <CodeEditor language="json" initialValue={initialValue} onChange={onSetSource}/>
 })

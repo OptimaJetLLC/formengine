@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import * as faMoon from '@fortawesome/free-solid-svg-icons/faMoon.js'
 import * as faSun from '@fortawesome/free-solid-svg-icons/faSun.js'
-import {useEffect, useState} from 'react'
+import {useEffect, useMemo, useState} from 'react'
 import {Tooltip, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {BuilderTheme} from '../../../../utils/types'
@@ -23,15 +23,15 @@ export const ToggleTheme = customizableObserver('ToggleThemeButton', props => {
 
   useEffect(() => {
     setTimeout(() => setIcon(isDark ? faMoon : faSun), 200)
-  }, [store.theme])
+  }, [isDark])
 
-  const iconProps: any = {
+  const iconProps: any = useMemo(() => ({
     icon,
     color: isDark ? 'var(--rs-yellow-300)' : 'white',
     size: 1.4,
     onClick: () => store.theme = isDark ? 'light' : 'dark',
     className: store.theme
-  }
+  }), [icon, isDark, store])
 
   return (
     <Whisper speaker={<Tooltip>{t('toggleTheme')}</Tooltip>} placement={'bottom'} {...props}>
