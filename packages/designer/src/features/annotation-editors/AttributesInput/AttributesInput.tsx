@@ -1,6 +1,6 @@
 import {toLabeledValues} from '@react-form-builder/core'
 import {Check} from '@rsuite/icons'
-import {useEffect, useState} from 'react'
+import {useEffect, useMemo, useState} from 'react'
 import {IconButton} from 'rsuite'
 import {EditableTable, makeColumns, SelectCell} from '../../components/EditableTable'
 import LabeledProperty from '../../components/LabeledProperty'
@@ -25,14 +25,15 @@ const COLUMNS = makeColumns([
 export const AttributesInput = (props: AnnotationEditorProps) => {
   const {store} = props.componentData
   const getLabel = useTranslationPart('common')
-  const initialState = store.htmlAttributes ? [...store.htmlAttributes] : store.htmlAttributes
+  const initialState = useMemo(() => store.htmlAttributes ? [...store.htmlAttributes] : store.htmlAttributes,
+    [store])
   const [value, setValue] = useState(initialState)
   const [changed, setChanged] = useState(false)
 
   useEffect(() => {
     setValue(initialState)
     setChanged(false)
-  }, [store.htmlAttributes])
+  }, [initialState, store])
 
   const handleChange = (value: any) => {
     setValue(value)

@@ -24,7 +24,7 @@ export const SearchForm = ({style, className, onChange}: SearchFormProps) => {
 
   const clear = useCallback(() => setValue(''), [])
 
-  useEffect(() => onChange(value), [value])
+  useEffect(() => onChange(value), [onChange, value])
 
   return (
     <InputGroup className={className} inside size="sm" style={style}>
