@@ -56,7 +56,7 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
   const onClick = useCallback((event: MouseEvent) => {
     event.stopPropagation()
     store.selectNode(data, event.ctrlKey || event.shiftKey)
-  }, [])
+  }, [data, store])
 
   const onMouseOver = useCallback((event: MouseEvent) => {
     event.preventDefault()

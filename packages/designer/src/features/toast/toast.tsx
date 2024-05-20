@@ -41,6 +41,6 @@ export const useShowMessage = () => {
       placement: placement
     })
     setSettings(undefined)
-  }, [settings])
+  }, [settings, toaster])
   return setSettings
 }

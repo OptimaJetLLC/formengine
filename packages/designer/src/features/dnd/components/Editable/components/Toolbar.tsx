@@ -4,7 +4,7 @@ import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faClone from '@fortawesome/free-regular-svg-icons/faClone.js'
 import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt.js'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
-import {MouseEventHandler, useEffect, useRef} from 'react'
+import {MouseEventHandler, useCallback, useEffect, useRef} from 'react'
 import scrollIntoView from 'scroll-into-view-if-needed'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {Hinted} from '../../../../annotation-editors/Hinted'
@@ -30,20 +30,21 @@ export const Toolbar = namedObserver('Toolbar', ({compact}: ToolbarProps) => {
   const ref = useRef<HTMLDivElement>(null)
   const t = useTranslationPart('toolbar')
 
-  const onClone: MouseEventHandler = e => {
+  const onClone: MouseEventHandler = useCallback(e => {
     e.stopPropagation()
     store.clone(data)
-  }
-  const onRemove: MouseEventHandler = e => {
+  }, [data, store])
+
+  const onRemove: MouseEventHandler = useCallback(e => {
     e.stopPropagation()
     store.remove(data)
-  }
+  }, [data, store])
 
   useEffect(() => {
     if (!compact && selected && ref.current) {
       scrollIntoView(ref.current, {scrollMode: 'if-needed'})
     }
-  }, [selected, compact, ref.current])
+  }, [selected, compact])
 
   return <ToolbarContainer ref={ref} className={cx({compact: compact}, 'Toolbar')}>
     {!compact && <Title>

@@ -21,28 +21,34 @@ export interface TreeNodeProps {
 export const TreeNode = namedObserver('TreeNode', ({className}: TreeNodeProps) => {
   const componentData = useComponentData()
   const {expanded: expandedNodes, viewer} = useBuilderStore()
-  const depth = useComputed(() => findTreeElementDepth(viewer.form.componentTree, componentData) ?? 0)
   const [hovered, setHovered] = useState(false)
   const [{selected}] = useSelection()
   const ref = useRef<HTMLDivElement>(null)
+
+  const findDepth = useCallback(() => findTreeElementDepth(viewer.form.componentTree, componentData) || 0,
+    [componentData, viewer.form.componentTree])
+  const depth = useComputed(findDepth)
 
   const expanded = expandedNodes.has(componentData)
   const toggleExpand = useCallback(() => {
     expandedNodes.has(componentData)
       ? expandedNodes.delete(componentData)
       : expandedNodes.add(componentData)
-  }, [])
+  }, [componentData, expandedNodes])
+
+  const onMouseEnter = useCallback(() => setHovered(true), [])
+  const onMouseLeave = useCallback(() => setHovered(false), [])
 
   useEffect(() => {
     if (selected && ref.current) {
       scrollIntoView(ref.current, {scrollMode: 'if-needed'})
     }
-  }, [selected, ref.current])
+  }, [selected])
 
   return (
     <>
       <SNodeItem className={className} ref={ref}
-                 onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+                 onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         <SIndent depth={depth}>
           {componentData.store.children &&
             <Icon onClick={toggleExpand} as={expanded ? ArrowDownLineIcon : ArrowRightLineIcon} style={{cursor: 'pointer'}}/>
@@ -89,5 +95,3 @@ const SNodeItem = styled.div`
     color: var(--rs-listbox-option-selected-text);
   }
 `
-
-
