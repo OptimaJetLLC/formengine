@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {ComponentTree, ViewerPropsProvider} from '@react-form-builder/core'
 import {CollaspedOutline, ExpandOutline} from '@rsuite/icons'
-import {useEffect} from 'react'
+import {useCallback, useEffect, useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
@@ -9,18 +9,24 @@ import {Columns, Rows} from '../../../components/Containers'
 import {customizableObserver} from '../../../customization'
 import {DraggableTreeNode} from '../../../dnd'
 
+const treeStyle = {overflow: 'hidden', flex: 1}
+
 const Tree = customizableObserver('Tree_Tab_Content', props => {
   const {t} = useTranslation()
   const builderStore = useBuilderStore()
   const {componentTree} = builderStore.viewer.form
+  const data = useMemo(() => [componentTree], [componentTree])
+  const value = useMemo(() => ({componentWrapper: DraggableTreeNode, view: builderStore.view}),
+    [builderStore.view])
+
   useEffect(() => {
     builderStore.expanded.add(componentTree)
   }, [builderStore, componentTree])
 
-  const handleExpand = () => builderStore.expandAll()
-  const handleCollapse = () => builderStore.collapseAll()
+  const handleExpand = useCallback(() => builderStore.expandAll(), [builderStore])
+  const handleCollapse = useCallback(() => builderStore.collapseAll(), [builderStore])
 
-  return <Rows gap={0} style={{overflow: 'hidden', flex: 1}} {...props}>
+  return <Rows gap={0} style={treeStyle} {...props}>
     <Columns>
       <SubtleIconButton onClick={handleExpand} size={'sm'} appearance={'subtle'}>
         <ExpandOutline/>
@@ -32,8 +38,8 @@ const Tree = customizableObserver('Tree_Tab_Content', props => {
       </SubtleIconButton>
     </Columns>
     <STreeContainer>
-      <ViewerPropsProvider value={{componentWrapper: DraggableTreeNode, view: builderStore.view}}>
-        <ComponentTree data={[componentTree]}/>
+      <ViewerPropsProvider value={value}>
+        <ComponentTree data={data}/>
       </ViewerPropsProvider>
     </STreeContainer>
   </Rows>

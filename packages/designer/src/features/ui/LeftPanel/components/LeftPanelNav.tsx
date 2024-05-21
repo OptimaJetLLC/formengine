@@ -3,7 +3,7 @@ import * as faPlusCircle from '@fortawesome/free-solid-svg-icons/faPlusCircle.js
 import * as faSitemap from '@fortawesome/free-solid-svg-icons/faSitemap.js'
 import * as faSliders from '@fortawesome/free-solid-svg-icons/faSlidersH.js'
 import {namedObserver} from '@react-form-builder/core'
-import {ReactNode, useState} from 'react'
+import {ReactNode, useMemo, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {Rows} from '../../../components/Containers'
@@ -28,11 +28,13 @@ const tabsProps: Record<string, [content: ReactNode, key: CustomizableKey, icon:
   forms: [<FormList/>, 'Forms_Tab', faList, '#f67f1f']
 }
 
-const renderTab = (section: keyof typeof tabsProps) => {
+const useRenderTab = (section: keyof typeof tabsProps) => {
   const {t} = useTranslation()
-  const title = t('leftPanel.sectionName.' + section)
-  const [_, key, icon, color] = tabsProps[section]
-  return customizableTab(section, key, title, icon, {color})
+  return useMemo(() => {
+    const title = t('leftPanel.sectionName.' + section)
+    const [_, key, icon, color] = tabsProps[section]
+    return customizableTab(section, key, title, icon, {color})
+  }, [t, section])
 }
 
 export const LeftPanelNav = namedObserver('LeftPanelNav', () => {
@@ -41,10 +43,10 @@ export const LeftPanelNav = namedObserver('LeftPanelNav', () => {
 
   return <>
     <Nav appearance="subtle" activeKey={activeTab} onSelect={setActiveTab}>
-      {renderTab('components')}
-      {renderTab('tree')}
-      {renderTab('settings')}
-      {formStorageEnabled && renderTab('forms')}
+      {useRenderTab('components')}
+      {useRenderTab('tree')}
+      {useRenderTab('settings')}
+      {formStorageEnabled && useRenderTab('forms')}
     </Nav>
     <NavContent style={{minHeight: 0, overflow: 'auto', padding: 4}}>
       {tabsProps[activeTab][0]}
