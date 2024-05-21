@@ -54,24 +54,25 @@ export interface GenericCodeEditorProps {
 export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
   const {t} = useTranslation()
   const codePlaceHolder = t('codeEditor.codePlaceholder')
-  const propsSourceCode = useMemo(() => props.source ?? codePlaceHolder, [props.source])
+  const {onCompile, onSave} = props
+  const propsSourceCode = useMemo(() => props.source ?? codePlaceHolder, [props.source, codePlaceHolder])
   const [sourceCode, setSourceCode] = useState(propsSourceCode)
   const [initialValue, setInitialValue] = useState(propsSourceCode)
   const testingEditor = useRef<TestingEditorRef>({})
 
-  const handleSave = () => {
+  const handleSave = useCallback(() => {
     const result = testingEditor.current.test?.()
     if (result?.error) return
-    action(() => props.onSave(sourceCode))()
+    action(() => onSave(sourceCode))()
     setInitialValue(sourceCode)
-  }
+  }, [onSave, sourceCode])
 
   useEffect(() => {
     setInitialValue(propsSourceCode)
     setSourceCode(propsSourceCode)
   }, [propsSourceCode])
 
-  const testingFunction = useCallback(formData => props.onCompile(sourceCode, formData), [sourceCode, props.onCompile])
+  const testingFunction = useCallback(formData => onCompile(sourceCode, formData), [sourceCode, onCompile])
 
   return <Columns style={{minHeight: 0, flex: 1}}>
     <Rows gap={10} style={{minHeight: 0, flex: 1.5}}>
