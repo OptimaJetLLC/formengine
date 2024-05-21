@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import {ErrorWrapperProps, namedObserver, WrapperProps} from '@react-form-builder/core'
-import {useEffect, useState} from 'react'
+import {useCallback, useEffect, useMemo, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps} from '../../annotation-editors/AnnotationEditorProps'
 import {annotationResolver} from '../../validation'
@@ -26,20 +26,22 @@ export const Erroneous = namedObserver('Erroneous', (props: ErroneousProps) => {
   const builderStore = useBuilderStore()
   const [error, setError] = useState<string>()
   const [mounted, setMounted] = useState(true)
+  const dataValidatorArgs = useMemo(() => ({annotation, store: builderStore.viewer}),
+    [annotation, builderStore.viewer])
 
   const schema = useDataValidator(
     builderStore.viewer,
     annotationResolver,
-    {annotation, store: builderStore.viewer},
+    dataValidatorArgs,
     setError)
 
-  const updateErrorMessage = async () => {
+  const updateErrorMessage = useCallback(async (value, propsError) => {
     if (!mounted) return
-    if (props.error) return setError(props.error)
+    if (propsError) return setError(propsError)
     setError(undefined)
     const validationResult = await schema.validate(value)
-    if (validationResult) setError(validationResult)
-  }
+    if (validationResult && mounted) setError(validationResult)
+  }, [mounted, schema])
 
   useEffect(() => {
     setMounted(true)
@@ -47,8 +49,8 @@ export const Erroneous = namedObserver('Erroneous', (props: ErroneousProps) => {
   }, [])
 
   useEffect(() => {
-    updateErrorMessage().catch(console.error)
-  }, [value, props.error])
+    updateErrorMessage(value, props.error).catch(console.error)
+  }, [value, props.error, updateErrorMessage])
 
   return (
     <PropertyErrorMessage error={error}>
