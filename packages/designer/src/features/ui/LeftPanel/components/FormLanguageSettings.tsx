@@ -25,9 +25,11 @@ export const FormLanguageSettings = namedObserver('FormLanguageSettings', () => 
   const onChange = useCallback(value => {
     const found = languages.find(l => l.fullCode === value)
     if (found) viewerStore.form.defaultLanguage = found
-  }, [viewerStore])
+  }, [languages, viewerStore.form])
+
   const onClean = useCallback(() => viewerStore.form.defaultLanguage = builderStore.defaultLanguage,
     [viewerStore, builderStore])
+
   const disableCompute = useCallback(() => undefined, [])
   const setComputeCode = useCallback(() => undefined, [])
   const getComputeCode = useCallback(() => '', [])

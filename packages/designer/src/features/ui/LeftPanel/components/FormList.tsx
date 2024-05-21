@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useCallback, useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
@@ -11,10 +11,13 @@ export const FormList = customizableObserver('Forms_Tab_Content', props => {
   const builderStore = useBuilderStore()
   const [formList, setFormList] = useState<string[]>([])
   const {t} = useTranslation()
-  const reloadForms = () => {
+  const showMessage = useShowMessage()
+
+  const reloadForms = useCallback(() => {
     builderStore.getFormKeys().then(setFormList)
-  }
-  const showPromptDialog = () => {
+  }, [builderStore])
+
+  const showPromptDialog = useCallback(() => {
     builderStore.showPromptModal({
       value: '',
       title: t('leftMenu.enterFormName'),
@@ -23,15 +26,16 @@ export const FormList = customizableObserver('Forms_Tab_Content', props => {
         if (value) builderStore.createForm(value).then(reloadForms)
       }
     })
-  }
-  const showMessage = useShowMessage()
+  }, [builderStore, reloadForms, t])
+
   useEffect(() => {
     reloadForms()
-  }, [builderStore.lastSaveTime])
-  const onError = (err: any) => {
+  }, [builderStore.lastSaveTime, reloadForms])
+
+  const onError = useCallback((err: any) => {
     console.error(err)
     showMessage({type: 'error', message: err})
-  }
+  }, [showMessage])
 
   const items = formList.map((value, index) => {
     return <ListItem key={index}>

@@ -15,12 +15,12 @@ export const ErrorSettings = namedObserver('ErrorSettings', () => {
   const store = useBuilderStore()
   const [errorVisible, setErrorVisible] = useState(false)
   const [errorMessage, setErrorMessage] = useState('Error message example!')
+  const message = errorVisible ? errorMessage : undefined
 
   useEffect(() => {
-    const message = errorVisible ? errorMessage : undefined
     store.viewer.form.componentTree.setAllErrors(message)
     return () => store.viewer.form.componentTree.setAllErrors()
-  }, [errorVisible, errorMessage])
+  }, [message, store.viewer.form.componentTree])
 
   const errorModel = useErrorModel()
   const errorAnnotations = store.view.getErrorAnnotations(errorModel.type)
