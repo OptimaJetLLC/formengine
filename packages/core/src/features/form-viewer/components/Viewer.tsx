@@ -28,7 +28,7 @@ function useAutoViewMode() {
     const onResize = () => store.viewMode = getViewMode()
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
-  }, [props.viewMode])
+  }, [props.viewMode, store])
 }
 
 /**
@@ -52,7 +52,7 @@ export const Viewer = namedObserver('Viewer', ({event}: ViewerProps) => {
 
   useEffect(() => {
     event?.(new EventStream(store.eventSubject))
-  }, [])
+  }, [event, store.eventSubject])
 
   useAutoViewMode()
 

@@ -75,7 +75,8 @@ export const CodeActionEditor = ({codeAction, onSave}: CodeActionEditorProps) =>
   const {t} = useTranslation()
   const store = useStore()
   const builderStore = useBuilderStore()
-  const initialFormModel: FormModel = {...codeAction, actionParameters: paramsToArray(codeAction.params)}
+  const initialFormModel: FormModel = useMemo(() => ({...codeAction, actionParameters: paramsToArray(codeAction.params)}),
+    [codeAction])
 
   const [formState, setFormState] = useState<FormModel>(initialFormModel)
   const [initialBody, setInitialBody] = useState(codeAction.body)
@@ -88,7 +89,7 @@ export const CodeActionEditor = ({codeAction, onSave}: CodeActionEditorProps) =>
     setFormState(initialFormModel)
     setInitialBody(initialFormModel.body)
     formRef.current?.cleanErrors()
-  }, [codeAction])
+  }, [codeAction, initialFormModel])
 
   const model = Schema.Model({
     name: Schema.Types.StringType()
