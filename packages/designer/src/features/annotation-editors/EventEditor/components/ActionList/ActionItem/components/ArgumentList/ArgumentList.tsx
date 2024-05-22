@@ -3,7 +3,7 @@ import {namedObserver, useStore} from '@react-form-builder/core'
 import {ArrowDownLine, ArrowUpLine} from '@rsuite/icons'
 import {t} from 'i18next'
 import {isEmpty} from 'lodash-es'
-import {useEffect, useReducer} from 'react'
+import {useCallback, useEffect, useReducer} from 'react'
 import {Animation, Button} from 'rsuite'
 import {useComputed} from '../../../../../../../../utils/useComputed'
 import {Rows} from '../../../../../../../components/Containers'
@@ -20,15 +20,17 @@ const useClearableArguments = () => {
         delete data.args
       }
     }
-  }, [])
+  }, [data.args])
 }
 
 export const ArgumentList = namedObserver('ArgumentList', () => {
   const store = useStore()
   const data = useActionData()
-  const action = useComputed(() => store.findAction(data))
+  const getAction = useCallback(() => store.findAction(data), [data, store])
+  const action = useComputed(getAction)
   const [show, toggleShow] = useReducer(state => !state, false)
   const ExpandIcon = show ? ArrowUpLine : ArrowDownLine
+
   useClearableArguments()
 
   if (!Object.keys(action.params).length) return null
