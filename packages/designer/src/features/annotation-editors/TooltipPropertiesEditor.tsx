@@ -1,5 +1,5 @@
 import {namedObserver, useTooltipType} from '@react-form-builder/core'
-import {useEffect, useState} from 'react'
+import {useCallback} from 'react'
 import useUniqueId from 'rsuite/esm/utils/useUniqueId.js'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {LabeledInput} from '../components/Containers'
@@ -16,35 +16,29 @@ export const TooltipPropertiesEditor = namedObserver('TooltipPropertiesEditor', 
   const t = useTranslationPart('annotation.tooltipProps')
   const id = useUniqueId('tooltip-')
   const store = useBuilderStore()
-  const selected = store.oneSelected?.store
-  const [useTooltip, setUseTooltip] = useState(!!selected?.tooltipProps)
-
-  useEffect(() => {
-    setUseTooltip(!!selected?.tooltipProps)
-  }, [selected?.tooltipProps])
-
-  useEffect(() => {
-    if (!selected) return
-    selected.tooltipProps = useTooltip ? {...selected.tooltipProps} : undefined
-  }, [useTooltip])
-
+  const selectedComponentStore = store.oneSelected?.store
+  const tooltipProps = selectedComponentStore?.tooltipProps
+  const hasTooltipProps = !!tooltipProps
   const selectedTooltipType = useTooltipType()
-  if (!selectedTooltipType) return null
+  const tooltipAnnotations = selectedTooltipType ? store.view.getTooltipAnnotations(selectedTooltipType) : null
 
-  const tooltipAnnotations = store.view.getTooltipAnnotations(selectedTooltipType)
+  const handleToggle = useCallback((_, checked) => {
+    if (selectedComponentStore) {
+      selectedComponentStore.tooltipProps = checked ? {} : undefined
+    }
+  }, [selectedComponentStore])
 
-  if (!tooltipAnnotations) return null
+  if (!selectedTooltipType || !tooltipAnnotations) return null
 
   return <>
     <LabeledInput>
       <HintedLabel hint={<>{t('hint')}</>} htmlFor={id}>
         <h6>{t('tooltip')}</h6>
       </HintedLabel>
-      <SCheckbox checked={useTooltip} onChange={(_, checked) => setUseTooltip(checked)} id={id}></SCheckbox>
+      <SCheckbox checked={hasTooltipProps} onChange={handleToggle} id={id}></SCheckbox>
     </LabeledInput>
-    {useTooltip &&
-      <PropertyBlock propertyBlockType={'tooltip'} annotations={tooltipAnnotations} context={selected?.tooltipProps}/>
+    {hasTooltipProps &&
+      <PropertyBlock propertyBlockType={'tooltip'} annotations={tooltipAnnotations} context={tooltipProps}/>
     }
   </>
 })
-
