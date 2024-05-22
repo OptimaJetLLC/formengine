@@ -38,7 +38,7 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
         return true
       }
     }]
-  }, [props.beginContextLine, props.endContextLine])
+  }, [props.beginContextLine, props.canEditBeginContextLine, props.endContextLine])
 
   useEffect(() => {
     editorRef.current?.setValue(initialValue)
@@ -46,8 +46,9 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
 
     const restrictions = getRestrictions(constrainedMonacoEditorModelRef.current)
     constrainedMonacoEditorModelRef.current.updateRestrictions(restrictions)
-  }, [initialValue])
+  }, [getRestrictions, initialValue])
 
+  const {onChange} = props
   const handleMount: OnMount = useCallback((editor, monaco) => {
     editorRef.current = editor
 
@@ -69,10 +70,10 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
       if (!!props.endContextLine && editableCode.endsWith('\n')) {
         editableCode = editableCode.substring(0, editableCode.length - 1)
       }
-      props.onChange(editableCode)
+      onChange(editableCode)
     })
     constrainedMonacoEditorModelRef.current = constrainedModel
-  }, [props.beginContextLine, props.endContextLine, getRestrictions])
+  }, [props.beginContextLine, props.endContextLine, getRestrictions, onChange])
 
   return <Editor
     onMount={handleMount}
