@@ -37,10 +37,12 @@ const ExistingStoreProvider = namedObserver('ExistingStoreProvider', ({
 
   useEffect(() => {
     props.onFormDataChange?.(store.formData)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [store.formData.data, store.formData.errors])
 
   useEffect(() => {
     store.formViewerPropsStore.applyProps(props)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.initialData, props.view, props.validators, props.formValidators, props.localize, props.language, props.actions])
 
   return (
