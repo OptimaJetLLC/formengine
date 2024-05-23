@@ -70,11 +70,12 @@ export const BuilderProviders = namedObserver('BuilderProviders', ({children, pr
   useEffect(() => {
     if (!builderStore) return
     builderStore.activeFormName = props.formName
-  }, [props.formName])
+  }, [builderStore, props.formName])
 
   useEffect(() => {
     if (!store) return
     store.formViewerPropsStore.applyProps(viewerProps)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.initialData, props.view, props.validators, props.formValidators, props.localize, props.language, props.actions])
 
   if (!builderStore || !store) return null
