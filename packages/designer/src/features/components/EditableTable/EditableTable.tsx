@@ -1,7 +1,7 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {Close, Plus} from '@rsuite/icons'
-import {cloneElement, FormEventHandler, useEffect, useState} from 'react'
+import {cloneElement, FormEventHandler, useCallback, useEffect, useState} from 'react'
 import {Button, Form, Table, TableProps} from 'rsuite'
 import type {RowDataType} from 'rsuite-table/lib'
 import {ActionCell} from './CustomCells'
@@ -86,36 +86,37 @@ export const EditableTable = (props: EditableTableProps) => {
   const headerHeight = hideHeader ? 0 : props.headerHeight ?? 40
   const rowHeight = (props.rowHeight as number) ?? 46
   const maxRows = props.maxRows ?? 5
+  const shorterMax = data.length <= maxRows
+  const emptyHeight = props.renderEmpty ? headerHeight + rowHeight : 0
+  const totalMaxHeight = headerHeight + rowHeight * maxRows
+  const adjustedHeight = data.length > maxRows ? totalMaxHeight : emptyHeight
 
-  const handleChange = (data: any) => {
+  const handleChange = useCallback((data: any) => {
     if (autoAdd) {
       const lastItem = data[data.length - 1]
       if (!lastItem || Object.values(lastItem).some(val => val)) data.push({})
     }
     onChange?.(data)
-  }
+  }, [autoAdd, onChange])
 
-  const onAddColumn = () => {
+  const updateHeight = useCallback(() => {
+    setState({
+      autoHeight: shorterMax,
+      maxHeight: adjustedHeight
+    })
+  }, [adjustedHeight, shorterMax])
+
+  const onAddColumn = useCallback(() => {
     handleChange?.([...data, {}])
     setShouldScroll(true)
     updateHeight()
-  }
+  }, [data, handleChange, updateHeight])
 
-  const onRemoveColumn = (index: any) => {
+  const onRemoveColumn = useCallback((index: any) => {
     data.splice(index, 1)
     handleChange?.(data)
     updateHeight()
-  }
-
-  const updateHeight = () => {
-    const emptyHeight = props.renderEmpty ? headerHeight + rowHeight : 0
-    const maxHeight = headerHeight + rowHeight * maxRows
-
-    setState({
-      autoHeight: data.length <= maxRows,
-      maxHeight: data.length > maxRows ? maxHeight : emptyHeight
-    })
-  }
+  }, [data, handleChange, updateHeight])
 
   const prepareColumns = () => columns?.map(col => cloneElement(col, {
     onChange: () => handleChange?.([...data] as any)
@@ -130,6 +131,7 @@ export const EditableTable = (props: EditableTableProps) => {
     return scrollPos
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(updateHeight, [])
 
   return (<div>

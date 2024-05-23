@@ -30,7 +30,7 @@ export const StringInput = (props: AnnotationEditorProps) => {
     ref.current?.focus()
     // For set caret on last symbol
     ref.current?.setSelectionRange(value?.length, value?.length)
-  }, [textSizeChanged])
+  }, [textSizeChanged, value?.length])
 
   useEffect(() => {
     const linesCount = (value?.match(/\n/g) || []).length as number + 1

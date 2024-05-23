@@ -107,7 +107,7 @@ export const PropertyEditorWrapper = namedObserver('PropertyEditorWrapper', ({
     }
     const newComponentProperty: ComponentProperty = {computeType: undefined}
     context[annotation.key] = Object.assign(context[annotation.key] ?? {}, newComponentProperty)
-  }, [context, annotation])
+  }, [propertyBlockType, context, annotation.key, store.viewer.form.localization, componentData.key])
 
   const hasLocalization = useCallback(() => {
     return store.viewer.form.localization
@@ -118,7 +118,7 @@ export const PropertyEditorWrapper = namedObserver('PropertyEditorWrapper', ({
     if (isValidatorPropertyBlockType(propertyBlockType) && hasLocalization()) return 'localization'
     const componentProperty = context[annotation.key]
     return componentProperty?.computeType
-  }, [context, annotation, getComputedLocalization])
+  }, [propertyBlockType, hasLocalization, context, annotation.key])
 
   const hasComputeCode = useCallback<CalculableEditorProps['hasComputeCode']>(type => {
     if (type === 'function') return !!getComputeCode('function')
