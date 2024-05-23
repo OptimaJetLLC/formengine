@@ -46,12 +46,12 @@ const useActions = (state: ComponentState) => {
     })
 
     return () => subscriptions.forEach(s => s.unsubscribe())
-  }, [componentData.store.events])
+  }, [componentData.store.events, componentData.store.key, store])
 
   useEffect(() => {
     store.eventSubject.next(new ActionEventArgs(DidMountEvent, componentData, store, [], state))
     return () => store.eventSubject.next(new ActionEventArgs(WillUnmountEvent, componentData, store, [], state))
-  }, [])
+  }, [componentData, state, store])
 }
 
 function getActionHandler(func: Func, args?: Arguments) {
@@ -65,7 +65,7 @@ function getActionHandler(func: Func, args?: Arguments) {
 
 export const ComponentViewer = namedObserver('ComponentViewer', () => {
   const data = useComponentData()
-  const formViewerProps = useViewerProps()
+  const {componentWrapper, computeChildren: viewerComputeChildren} = useViewerProps()
   const formViewerStore = useStore()
   const localize = useCallback(componentStore => {
     return formViewerStore.localizeComponent('component', componentStore)
@@ -73,9 +73,9 @@ export const ComponentViewer = namedObserver('ComponentViewer', () => {
   const componentTree = useComponentTreeContext()
 
   const computeChildren = useCallback((componentData: ComponentData, componentProps: Record<string, any>) => {
-    if (formViewerProps.computeChildren) return formViewerProps.computeChildren(componentData, componentProps)
+    if (viewerComputeChildren) return viewerComputeChildren(componentData, componentProps)
     return getChildren(componentData, formViewerStore.form.componentTree, componentTree, componentProps)
-  }, [formViewerProps.computeChildren, formViewerStore.form.componentTree, componentTree])
+  }, [viewerComputeChildren, formViewerStore.form.componentTree, componentTree])
 
   const componentState = useMemo(
     () => new ComponentState(data, formViewerStore, localize, computeChildren),
@@ -87,9 +87,9 @@ export const ComponentViewer = namedObserver('ComponentViewer', () => {
   const {kind, component: Component} = data.model
   const containerClassName = cx(props.className, componentState.wrapperClassName)
 
-  const Wrapper = formViewerProps.componentWrapper ?? DefaultWrapper
+  const Wrapper = componentWrapper ?? DefaultWrapper
   const Tooltip = data.store.tooltipProps ? TooltipWrapper : Fragment
-  const ContainerComponent = formViewerProps.componentWrapper ?? Component
+  const ContainerComponent = componentWrapper ?? Component
   const component = <Component {...props}/>
 
   if (kind === 'container') {
