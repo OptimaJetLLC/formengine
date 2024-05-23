@@ -444,7 +444,7 @@
               }
             },
             "slot": "pane",
-            "bindCondition": "return parentProps.activeKey === 'Item1'"
+            "slotCondition": "return parentProps.activeKey === 'Item1'"
           },
           {
             "key": "buttonInTab",
@@ -455,7 +455,7 @@
               }
             },
             "slot": "pane",
-            "bindCondition": "return parentProps.activeKey === 'Item3'"
+            "slotCondition": "return parentProps.activeKey === 'Item3'"
           }
         ]
       },
