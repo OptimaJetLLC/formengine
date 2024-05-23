@@ -1,30 +1,44 @@
 import styled from '@emotion/styled'
-import {KeySymbol, namedObserver} from '@react-form-builder/core'
+import {ActionData, KeySymbol, namedObserver} from '@react-form-builder/core'
+import {useCallback} from 'react'
 import {List} from 'rsuite'
 import {listItemStyle, listStyle} from '../../../../components/Containers'
 import type {AnnotationEditorProps} from '../../../AnnotationEditorProps'
 import {ActionItem} from './ActionItem'
 
+interface ActionListItemProps {
+  index: number,
+  data: ActionData,
+  onRemove: (index: number) => ActionData[] | undefined
+}
+
+function ActionListItem({data, index, onRemove}: ActionListItemProps) {
+  const handleRemove = useCallback(() => onRemove(index), [index, onRemove])
+
+  return <SListItem index={index}>
+    <ActionItem data={data} onRemove={handleRemove}/>
+  </SListItem>
+}
+
 export const ActionList = namedObserver('ActionList', (props: AnnotationEditorProps) => {
   const eventName = props.annotation.key
   const actions = props.componentData.store.events?.[eventName]
 
-  if (!actions) return null
+  const onRemove = useCallback((index: number) => actions?.splice(index, 1), [actions])
 
-  const onRemove = (index: number) => actions?.splice(index, 1)
-  const handleSortEnd = (info?: MovedInfo) => {
-    if (!(info?.oldIndex || info?.newIndex)) return
+  const handleSortEnd = useCallback((info?: MovedInfo) => {
+    if (!actions || !(info?.oldIndex || info?.newIndex)) return
 
     const movingElement = actions[info.oldIndex]
     actions.splice(info.oldIndex, 1)
     actions.splice(info.newIndex, 0, movingElement)
-  }
+  }, [actions])
+
+  if (!actions) return null
 
   return <SList sortable onSort={handleSortEnd}>
     {actions.map((action, index) => (
-      <SListItem key={action[KeySymbol]} index={index}>
-        <ActionItem data={action} onRemove={() => onRemove(index)}/>
-      </SListItem>
+      <ActionListItem key={action[KeySymbol]} index={index} data={action} onRemove={onRemove}/>
     ))}
   </SList>
 })

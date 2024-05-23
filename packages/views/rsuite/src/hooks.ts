@@ -33,6 +33,8 @@ interface LoadDataProps extends Pick<InputPickerProps,
  * @returns the object with prepared properties for the picker.
  */
 export const useLoadData = ({data: initialData, onLoadData, value, ...props}: LoadDataProps) => {
+  // TODO lint ignored, will be fixed after merger with #FE-619
+
   const [searchValue, setSearchValue] = useState('')
   const [data, setData] = useState<ItemDataType[]>(initialData ?? [])
   const [loading, setLoading] = useState(false)
@@ -44,12 +46,14 @@ export const useLoadData = ({data: initialData, onLoadData, value, ...props}: Lo
       ...valueItem,
       ...(initialData ?? [])
     ])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialData])
 
   useEffect(() => {
     if (!searchValue) return
     if (onLoadData) setLoading(true)
     onLoadData?.(searchValue, loadCallback, 0)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue])
 
   const loadCallback: LoadCallback = newData => {
