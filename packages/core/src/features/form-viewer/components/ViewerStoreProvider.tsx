@@ -1,4 +1,4 @@
-import {ReactNode, useContext, useEffect} from 'react'
+import {ReactNode, useCallback, useContext, useEffect} from 'react'
 import {FormViewerPropsStore} from '../../../stores/FormViewerPropsStore'
 import {Store} from '../../../stores/Store'
 import {namedObserver} from '../../../utils'
@@ -53,9 +53,8 @@ const ExistingStoreProvider = namedObserver('ExistingStoreProvider', ({
 })
 
 const NewStoreProvider = namedObserver('FactoryStoreProvider', ({children, props}: ViewerStoreProviderProps) => {
-  const store = useDisposable(
-    () => new Store(new FormViewerPropsStore(props)),
-    [])
+  const storeFactory = useCallback(() => new Store(new FormViewerPropsStore(props)), [props])
+  const store = useDisposable(storeFactory)
 
   if (!store) return null
 

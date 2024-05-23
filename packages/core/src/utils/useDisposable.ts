@@ -1,4 +1,4 @@
-import {DependencyList, useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 
 /**
  * Type of disposable object.
@@ -11,19 +11,20 @@ export type IDisposable = {
 }
 
 /**
- * Creates a disposable object with the useMemo hook and dispose the object when the React component is unmounted. **Internal use only.**
+ * Creates a disposable object and dispose the object when the React component is unmounted. **Internal use only.**
  * @param factory the factory function to create a disposable object.
- * @param deps the dependencies for the useMemo hook.
  * @returns the disposable object.
  */
-export function useDisposable<T extends IDisposable>(factory: () => T, deps: DependencyList | undefined): T | undefined {
+export function useDisposable<T extends IDisposable>(factory: () => T): T | undefined {
   const [state, setState] = useState<T>()
 
   useEffect(() => {
     const disposable = factory()
     setState(disposable)
     return () => disposable.dispose()
-  }, deps)
+    // the dispose function should only be called when a component is unmounted
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return state
 }

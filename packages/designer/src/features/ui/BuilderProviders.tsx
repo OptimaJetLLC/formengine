@@ -7,7 +7,7 @@ import {
   useForwardRef,
   ViewerPropsProvider
 } from '@react-form-builder/core'
-import {ReactNode, useEffect} from 'react'
+import {ReactNode, useCallback, useEffect} from 'react'
 import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import {FormBuilderProps} from '../../FormBuilderProps'
@@ -38,6 +38,18 @@ interface BuilderProvidersProps {
   children: ReactNode
 }
 
+const useBuilderProviderData = (props: FormBuilderProps) => useCallback(() => {
+  const {builderRef, ...viewerProps} = props
+
+  const store = new Store(new FormViewerPropsStore(viewerProps))
+
+  const builderStore = new BuilderStore(store, props)
+  builderStore.changeBuilderMode('builder')
+
+  const localStorageSynchronizer = new LocalStorageSynchronizer(builderStore)
+  return new BuilderProviderData(store, builderStore, localStorageSynchronizer)
+}, [props])
+
 /**
  * React component encapsulating MobX storage for the form builder.
  * @param props the React component properties.
@@ -47,15 +59,8 @@ interface BuilderProvidersProps {
  */
 export const BuilderProviders = namedObserver('BuilderProviders', ({children, props}: BuilderProvidersProps) => {
   const {builderRef, ...viewerProps} = props
-  const builderProviderData = useDisposable(() => {
-    const store = new Store(new FormViewerPropsStore(viewerProps))
-
-    const builderStore = new BuilderStore(store, props)
-    builderStore.changeBuilderMode('builder')
-
-    const localStorageSynchronizer = new LocalStorageSynchronizer(builderStore)
-    return new BuilderProviderData(store, builderStore, localStorageSynchronizer)
-  }, [])
+  const builderProviderDataFactory = useBuilderProviderData(props)
+  const builderProviderData = useDisposable(builderProviderDataFactory)
 
   const builderStore = builderProviderData?.builderStore
   const store = builderProviderData?.store
