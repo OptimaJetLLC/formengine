@@ -1,4 +1,4 @@
-import {Dispatch, SetStateAction, useEffect, useRef, useState} from 'react'
+import {Dispatch, SetStateAction, useCallback, useEffect, useMemo, useRef, useState} from 'react'
 
 /**
  * Sets a state only if its parent component is still mounted.
@@ -16,9 +16,9 @@ export default function useSafeState<S = undefined>(initialState?: S): [S | unde
     }
   }, [])
 
-  const safeSetState: Dispatch<SetStateAction<S | undefined>> = value => {
+  const safeSetState: Dispatch<SetStateAction<S | undefined>> = useCallback(value => {
     mountedRef.current && setState(value)
-  }
+  }, [])
 
-  return [state, safeSetState]
+  return useMemo(() => [state, safeSetState], [state, safeSetState])
 }
