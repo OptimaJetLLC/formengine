@@ -1,5 +1,5 @@
 import type {ReactNode} from 'react'
-import {useEffect, useRef} from 'react'
+import {useEffect, useState} from 'react'
 
 /**
  * Represents the props for the SuppressResizeObserverErrors component. **Internal use only.**
@@ -18,7 +18,8 @@ export interface SuppressResizeObserverErrorsProps {
  * @returns the rendered child elements.
  */
 export const SuppressResizeObserverErrors = ({children}: SuppressResizeObserverErrorsProps) => {
-  const defaultOnErrorFn = useRef(window.onerror)
+  const [defaultOnErrorFn] = useState(window.onerror)
+
   useEffect(() => {
     window.onerror = (event) => {
       if (event?.toString().search('ResizeObserver') !== -1) {
@@ -39,8 +40,9 @@ export const SuppressResizeObserverErrors = ({children}: SuppressResizeObserverE
       return false
     }
     return () => {
-      window.onerror = defaultOnErrorFn.current
+      window.onerror = defaultOnErrorFn
     }
-  }, [])
+  }, [defaultOnErrorFn])
+
   return <>{children}</>
 }
