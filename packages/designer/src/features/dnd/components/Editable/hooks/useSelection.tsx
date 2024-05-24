@@ -3,6 +3,7 @@ import {useComponentData} from '@react-form-builder/core'
 import {MouseEvent, useCallback, useMemo, useState} from 'react'
 import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
+import {stopEvent} from '../../../../../utils/stopEvent'
 
 /**
  * Represents the selection state of the component.
@@ -54,13 +55,12 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
   const selected = store.selected.has(data)
 
   const onClick = useCallback((event: MouseEvent) => {
-    event.stopPropagation()
+    stopEvent(event)
     store.selectNode(data, event.ctrlKey || event.shiftKey)
   }, [data, store])
 
   const onMouseOver = useCallback((event: MouseEvent) => {
-    event.preventDefault()
-    event.stopPropagation()
+    stopEvent(event)
     setHovered(true)
   }, [])
 

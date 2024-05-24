@@ -19,6 +19,7 @@ import {ReactComponent as Header} from './Header.svg'
 import {ReactComponent as Image} from './Image.svg'
 import {ReactComponent as Input} from './Input.svg'
 import {ReactComponent as Label} from './Label.svg'
+import {ReactComponent as Link} from './Link.svg'
 import {ReactComponent as Menu} from './Menu.svg'
 import {ReactComponent as Message} from './Message.svg'
 import {ReactComponent as NumberFormat} from './NumberFormat.svg'
@@ -57,6 +58,7 @@ export const icons = {
   Image,
   Input,
   Label,
+  Link,
   Footer,
   Header,
   Sidebar,

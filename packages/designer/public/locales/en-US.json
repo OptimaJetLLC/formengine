@@ -177,6 +177,22 @@
     "flexDirection": {
       "name": "Direction",
       "hint": "Flex direction of container children"
+    },
+    "href": {
+      "name": "Href",
+      "hint": "The URL that the hyperlink points to"
+    },
+    "download": {
+      "name": "Download",
+      "hint": "Causes the browser to treat the linked URL as a download"
+    },
+    "target": {
+      "name": "Target",
+      "hint": "Where to display the linked URL, as the name for a browsing context (a tab, window, or <iframe>)"
+    },
+    "downloadFilename": {
+      "name": "Download filename",
+      "hint": "Defining a value suggests it as the filename. / and \\ characters are converted to underscores (_)"
     }
   },
   "leftMenu": {

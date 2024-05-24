@@ -20,6 +20,7 @@ import {rsImage} from './components/RsImage'
 import {rsInput} from './components/RsInput'
 import {rsLabel} from './components/RsLabel'
 import {rsContent, rsFooter, rsHeader as rSuiteHeader, rsSidebar} from './components/RsLayout'
+import {rsLink} from './components/RsLink'
 import {RsLocalizationWrapper} from './components/RsLocalizationWrapper'
 import {rsMenu} from './components/RsMenu'
 import {rsMessage} from './components/RsMessage'
@@ -64,6 +65,7 @@ const categories = {
     rsProgressLine,
     rsStaticContent,
     rsTooltip,
+    rsLink,
   ],
   structure: [
     rsBreadcrumb,

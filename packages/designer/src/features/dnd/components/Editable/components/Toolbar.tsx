@@ -7,6 +7,7 @@ import {namedObserver, useComponentData} from '@react-form-builder/core'
 import {MouseEventHandler, useCallback, useEffect, useRef} from 'react'
 import scrollIntoView from 'scroll-into-view-if-needed'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
+import {stopEvent} from '../../../../../utils/stopEvent'
 import {Hinted} from '../../../../annotation-editors/Hinted'
 import {FaIcon} from '../../../../components/Icons'
 import {useTranslationPart} from '../../../../localization/hooks'
@@ -31,12 +32,12 @@ export const Toolbar = namedObserver('Toolbar', ({compact}: ToolbarProps) => {
   const t = useTranslationPart('toolbar')
 
   const onClone: MouseEventHandler = useCallback(e => {
-    e.stopPropagation()
+    stopEvent(e)
     store.clone(data)
   }, [data, store])
 
   const onRemove: MouseEventHandler = useCallback(e => {
-    e.stopPropagation()
+    stopEvent(e)
     store.remove(data)
   }, [data, store])
 
