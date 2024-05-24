@@ -28,8 +28,8 @@ module.exports = {
       'location': 'anywhere'
     }],
     'one-var': ['error', 'never'],
-    'react-hooks/rules-of-hooks': 'warn',
-    'react-hooks/exhaustive-deps': ['warn', {
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': ['error', {
       'additionalHooks': ''
     }],
     '@typescript-eslint/ban-types': 'off',
