@@ -7,7 +7,7 @@ import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {InsertPosition} from '../../../../../utils/types'
 import {useTranslationPart} from '../../../../localization/hooks'
 
-export const AddButton = namedObserver('AddButton', () => {
+const _AddButton = () => {
   const builderStore = useBuilderStore()
   const target = useComponentData()
   const t = useTranslationPart('componentToolbar')
@@ -36,7 +36,9 @@ export const AddButton = namedObserver('AddButton', () => {
       <PlusIcon/>
     </Whisper>
   </>
-})
+}
+
+export const AddButton = namedObserver('AddButton', _AddButton)
 
 const SPopover = styled(Popover)`
   transform: translateX(24px) !important;

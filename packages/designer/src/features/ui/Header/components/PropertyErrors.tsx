@@ -21,7 +21,7 @@ export interface PropertyErrorsProps {
   onClose: () => void
 }
 
-export const PropertyErrors = namedObserver('PropertyErrors', ({onClose}: PropertyErrorsProps) => {
+const _PropertyErrors = ({onClose}: PropertyErrorsProps) => {
   const store = useBuilderStore()
 
   const getData = useCallback(() => {
@@ -67,4 +67,6 @@ export const PropertyErrors = namedObserver('PropertyErrors', ({onClose}: Proper
       </Column>
     </Table>
   )
-})
+}
+
+export const PropertyErrors = namedObserver('PropertyErrors', _PropertyErrors)

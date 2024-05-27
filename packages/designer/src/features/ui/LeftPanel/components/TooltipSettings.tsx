@@ -8,7 +8,7 @@ import {TooltipTypePicker} from '../../../annotation-editors/TooltipTypePicker'
  * React form builder component that displays the configuration properties of the validation error display component.
  * @returns the React element.
  */
-export const TooltipSettings = namedObserver('TooltipSettings', () => {
+const _TooltipSettings = () => {
   const builderStore = useBuilderStore()
 
   const onChange = useCallback(value => builderStore.viewer.form.tooltipType = value, [builderStore])
@@ -39,4 +39,6 @@ export const TooltipSettings = namedObserver('TooltipSettings', () => {
       </ComponentDataProvider>
     </div>
   )
-})
+}
+
+export const TooltipSettings = namedObserver('TooltipSettings', _TooltipSettings)

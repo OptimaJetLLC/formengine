@@ -63,7 +63,7 @@ function getActionHandler(func: Func, args?: Arguments) {
   }
 }
 
-export const ComponentViewer = namedObserver('ComponentViewer', () => {
+const _ComponentViewer = () => {
   const data = useComponentData()
   const {componentWrapper, computeChildren: viewerComputeChildren} = useViewerProps()
   const formViewerStore = useStore()
@@ -102,4 +102,6 @@ export const ComponentViewer = namedObserver('ComponentViewer', () => {
       : <Tooltip><Erroneous>{component}</Erroneous></Tooltip>
     }
   </Wrapper>
-})
+}
+
+export const ComponentViewer = namedObserver('ComponentViewer', _ComponentViewer)

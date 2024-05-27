@@ -17,7 +17,7 @@ import {useShowMessage} from '../../../toast/toast'
 import {exportForms, importForms} from './formUtils'
 import {useSaveForm} from './useSaveForm'
 
-const ExportFormsButton = namedObserver('ExportFormsButton', () => {
+const _ExportFormsButton = () => {
   const store = useBuilderStore()
   const {t} = useTranslation()
   const showMessage = useShowMessage()
@@ -34,9 +34,11 @@ const ExportFormsButton = namedObserver('ExportFormsButton', () => {
   return <Dropdown.Item onSelect={onExport} icon={<ExportIcon/>}>
     {t('leftMenu.exportForms')}
   </Dropdown.Item>
-})
+}
 
-const ImportFormsButton = namedObserver('ImportFormsButton', () => {
+const ExportFormsButton = namedObserver('ExportFormsButton', _ExportFormsButton)
+
+const _ImportFormsButton = () => {
   const store = useBuilderStore()
   const {t} = useTranslation()
   const showMessage = useShowMessage()
@@ -57,7 +59,9 @@ const ImportFormsButton = namedObserver('ImportFormsButton', () => {
   return <Dropdown.Item onSelect={onImport} icon={<ImportIcon/>}>
     {t('leftMenu.importForms')}
   </Dropdown.Item>
-})
+}
+
+const ImportFormsButton = namedObserver('ImportFormsButton', _ImportFormsButton)
 
 const Wrapper = customizable('MainMenu_Button', props => <div {...props}/>)
 
@@ -70,7 +74,7 @@ const renderToggle = (props: WithAsProps, ref: Ref<any>) => (
 
 const MenuDropdown = customizable('MainMenu_Dropdown', Dropdown)
 
-export const Menu = namedObserver('Menu', () => {
+const _Menu = () => {
   const builderStore = useBuilderStore()
   const {t} = useTranslation()
   const onSave = useSaveForm()
@@ -109,4 +113,6 @@ export const Menu = namedObserver('Menu', () => {
       </Dropdown.Item>
     </MenuDropdown>
   </>
-})
+}
+
+export const Menu = namedObserver('Menu', _Menu)

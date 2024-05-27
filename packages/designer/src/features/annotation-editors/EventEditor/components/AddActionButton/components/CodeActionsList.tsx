@@ -9,9 +9,10 @@ import {ActionsMenuProps} from '../types'
  * React form builder component that displays the list of code actions.
  * @param props the React component properties.
  * @param props.onSelect the callback function called when an action is selected.
+ * @param props.annotation the metadata for a React component property.
  * @returns the React element.
  */
-export const CodeActionsList = namedObserver('CodeActionsList', ({onSelect, annotation}: ActionsMenuProps) => {
+const _CodeActionsList = ({onSelect, annotation}: ActionsMenuProps) => {
   const store = useStore()
   const builderStore = useBuilderStore()
   const selectedStore = builderStore.oneSelected?.store
@@ -42,4 +43,6 @@ export const CodeActionsList = namedObserver('CodeActionsList', ({onSelect, anno
 
     <Dropdown.Item children={t('addCodeAction')} icon={<PlusIcon/>} onClick={addAction}/>
   </Dropdown.Menu>
-})
+}
+
+export const CodeActionsList = namedObserver('CodeActionsList', _CodeActionsList)

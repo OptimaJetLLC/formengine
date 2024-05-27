@@ -28,11 +28,11 @@ interface ExistingStoreProviderProps extends ViewerStoreProviderProps {
   store: Store
 }
 
-const ExistingStoreProvider = namedObserver('ExistingStoreProvider', ({
-                                                                        children,
-                                                                        props: {viewerRef, ...props},
-                                                                        store
-                                                                      }: ExistingStoreProviderProps) => {
+const _ExistingStoreProvider = ({
+                                  children,
+                                  props: {viewerRef, ...props},
+                                  store
+                                }: ExistingStoreProviderProps) => {
   useForwardRef(store, viewerRef)
 
   useEffect(() => {
@@ -52,25 +52,31 @@ const ExistingStoreProvider = namedObserver('ExistingStoreProvider', ({
       </StoreProvider>
     </ViewerPropsProvider>
   )
-})
+}
 
-const NewStoreProvider = namedObserver('FactoryStoreProvider', ({children, props}: ViewerStoreProviderProps) => {
+const ExistingStoreProvider = namedObserver('ExistingStoreProvider', _ExistingStoreProvider)
+
+const _NewStoreProvider = ({children, props}: ViewerStoreProviderProps) => {
   const storeFactory = useCallback(() => new Store(new FormViewerPropsStore(props)), [props])
   const store = useDisposable(storeFactory)
 
   if (!store) return null
 
   return <ExistingStoreProvider children={children} props={props} store={store}/>
-})
+}
+
+const NewStoreProvider = namedObserver('FactoryStoreProvider', _NewStoreProvider)
 
 /**
  * React component encapsulating MobX storage for the form viewer.
  * @param props the React component properties.
  * @returns the React element.
  */
-export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', (props: ViewerStoreProviderProps) => {
+const _ViewerStoreProvider = (props: ViewerStoreProviderProps) => {
   const storeFromContext = useContext(StoreContext)
   return storeFromContext
     ? <ExistingStoreProvider children={props.children} props={props.props} store={storeFromContext}/>
     : <NewStoreProvider children={props.children} props={props.props}/>
-})
+}
+
+export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', _ViewerStoreProvider)

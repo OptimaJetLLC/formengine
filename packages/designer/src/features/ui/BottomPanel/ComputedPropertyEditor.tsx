@@ -27,7 +27,7 @@ export interface ComputedPropertyEditorProps {
   property: EditableProperty
 }
 
-export const ComputedPropertyEditor = namedObserver('ComputedPropertyEditor', ({property}: ComputedPropertyEditorProps) => {
+const _ComputedPropertyEditor = ({property}: ComputedPropertyEditorProps) => {
   const builderStore = useBuilderStore()
   const {t} = useTranslation()
   const initialComputeType = property.getComputeType() ?? 'simpleValue'
@@ -49,7 +49,9 @@ export const ComputedPropertyEditor = namedObserver('ComputedPropertyEditor', ({
     </Header>
     <Editor editableProperty={property} onClose={handleClose}/>
   </>
-})
+}
+
+export const ComputedPropertyEditor = namedObserver('ComputedPropertyEditor', _ComputedPropertyEditor)
 
 const getToggleItems = ({calculable, localizable}: Annotation, translate: (key: string) => string) => [
   ...calculable ? ['function'] : [],
