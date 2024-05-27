@@ -27,7 +27,7 @@ export interface CSSEditorProps {
 
 type Item = { value: CssPart, label: string }
 
-const _CSSEditor = ({device, useWrapperStyles, defaultActiveTab}: CSSEditorProps) => {
+export const CSSEditor = namedObserver('CSSEditor', ({device, useWrapperStyles, defaultActiveTab}: CSSEditorProps) => {
   const {store} = useComponentData()
   const t = useTranslationPart('style')
   const [activeTab, setActiveTab] = useState<CssPart>(defaultActiveTab ?? 'css')
@@ -73,9 +73,7 @@ const _CSSEditor = ({device, useWrapperStyles, defaultActiveTab}: CSSEditorProps
       />
     </Rows>
   )
-}
-
-export const CSSEditor = namedObserver('CSSEditor', _CSSEditor)
+})
 
 const SCodeEditor = styled(CodeEditor)`
   .suggest-widget {

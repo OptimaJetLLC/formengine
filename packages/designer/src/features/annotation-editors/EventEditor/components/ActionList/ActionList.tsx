@@ -20,7 +20,7 @@ function ActionListItem({data, index, onRemove}: ActionListItemProps) {
   </SListItem>
 }
 
-const _ActionList = (props: AnnotationEditorProps) => {
+export const ActionList = namedObserver('ActionList', (props: AnnotationEditorProps) => {
   const eventName = props.annotation.key
   const actions = props.componentData.store.events?.[eventName]
 
@@ -41,9 +41,7 @@ const _ActionList = (props: AnnotationEditorProps) => {
       <ActionListItem key={action[KeySymbol]} index={index} data={action} onRemove={onRemove}/>
     ))}
   </SList>
-}
-
-export const ActionList = namedObserver('ActionList', _ActionList)
+})
 
 interface MovedInfo {
   newIndex: number

@@ -29,14 +29,14 @@ export interface PanelProps extends PropsWithChildren<any>, CollapsedSizeProps {
   onCollapse?: Function
 }
 
-const _Panel = ({
-                  children,
-                  placement = 'left',
-                  hideCollapsed = true,
-                  className,
-                  onCollapse,
-                  ...props
-                }: PanelProps) => {
+export const Panel = namedObserver('Panel', ({
+                                               children,
+                                               placement = 'left',
+                                               hideCollapsed = true,
+                                               className,
+                                               onCollapse,
+                                               ...props
+                                             }: PanelProps) => {
   const store = useBuilderStore()
   const visible = !!store.openedPanels?.includes(placement)
   const collapsed = !visible
@@ -51,9 +51,7 @@ const _Panel = ({
       <ArrowDownLine className={'icon'}/>
     </HideButton>
   </PanelContainer>
-}
-
-export const Panel = namedObserver('Panel', _Panel)
+})
 
 const transition = '200ms ease-in-out'
 

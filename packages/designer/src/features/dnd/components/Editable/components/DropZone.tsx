@@ -17,7 +17,7 @@ interface DropZoneProps extends ComponentProps<any> {
   slotCondition?: string
 }
 
-const _DropZone = ({isAfter = false, className, isInner, ...props}: DropZoneProps) => {
+const DropZone = namedObserver('DropZone', ({isAfter = false, className, isInner, ...props}: DropZoneProps) => {
   const componentData = useComponentData()
   const store = componentData.store
   const isRoot = componentData.isRoot
@@ -35,9 +35,7 @@ const _DropZone = ({isAfter = false, className, isInner, ...props}: DropZoneProp
     </Container>
     {!isRoot && !isInner && dropView}
   </>
-}
-
-const DropZone = namedObserver('DropZone', _DropZone)
+})
 
 interface DropState {
   isActive: boolean,

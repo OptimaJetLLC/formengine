@@ -9,7 +9,7 @@ const booleanData = [
   {label: 'False', value: 0}
 ]
 
-const _InputBoolean = ({name}: InputProps) => {
+export const InputBoolean = namedObserver('InputBoolean', ({name}: InputProps) => {
   const data = useActionData()
   const booleanValue = data.args?.[name]
   const value = booleanValue === undefined ? undefined : booleanValue ? 1 : 0
@@ -25,6 +25,4 @@ const _InputBoolean = ({name}: InputProps) => {
       width={'100%'}
     />
   )
-}
-
-export const InputBoolean = namedObserver('InputBoolean', _InputBoolean)
+})

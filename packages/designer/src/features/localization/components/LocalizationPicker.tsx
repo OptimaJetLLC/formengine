@@ -21,7 +21,7 @@ export interface LocalizationPickerProps {
   onSelect: (language: Language) => void
 }
 
-const _LocalizationPicker = ({value, onSelect}: LocalizationPickerProps) => {
+export const LocalizationPicker = namedObserver('LocalizationPicker', ({value, onSelect}: LocalizationPickerProps) => {
   const {availableLanguages} = useBuilderStore()
   const langData = useMemo(() => {
     return availableLanguages.reduce((result, language) => {
@@ -38,9 +38,7 @@ const _LocalizationPicker = ({value, onSelect}: LocalizationPickerProps) => {
 
   return <SPicker value={value} data={data} onSelect={handleSelect} cleanable={false} placement={'autoVerticalEnd'} size={'sm'}
                   searchable={false} width={62} renderMenuItem={(_, {value}) => !!value && renderLanguageItem(langData[value])}/>
-}
-
-export const LocalizationPicker = namedObserver('LocalizationPicker', _LocalizationPicker)
+})
 
 /**
  * The function that renders the languages list item.

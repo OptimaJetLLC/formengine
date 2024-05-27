@@ -23,7 +23,7 @@ interface ActionArgumentProps {
   data: Parameter
 }
 
-const _ArgumentItem = ({data}: ActionArgumentProps) => {
+export const ArgumentItem = namedObserver('ArgumentItem', ({data}: ActionArgumentProps) => {
   const [name, type] = data
   const ArgumentInput = getArgumentInputByType(type)
 
@@ -31,6 +31,5 @@ const _ArgumentItem = ({data}: ActionArgumentProps) => {
     <label>{name}</label>
     <ArgumentInput name={name}/>
   </Rows>
-}
+})
 
-export const ArgumentItem = namedObserver('ArgumentItem', _ArgumentItem)

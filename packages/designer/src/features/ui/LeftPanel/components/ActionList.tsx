@@ -5,7 +5,7 @@ import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {CloneButton, EditButton, RemoveButton} from '../../../components/Buttons'
 import {List, ListItem, Rows} from '../../../components/Containers'
 
-const _ActionList = () => {
+export const ActionList = namedObserver('ActionList', () => {
   const builderStore = useBuilderStore()
   const viewerStore = useStore()
   const {t} = useTranslation()
@@ -28,6 +28,4 @@ const _ActionList = () => {
       {items}
     </List>
   </Rows>
-}
-
-export const ActionList = namedObserver('ActionList', _ActionList)
+})

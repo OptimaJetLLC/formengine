@@ -6,7 +6,7 @@ import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../components/Icons'
 import {renderLanguageItem} from './LocalizationPicker'
 
-const _MenuLanguageSwitch = () => {
+export const MenuLanguageSwitch = namedObserver('MenuLanguageSwitch', () => {
   const {t} = useTranslation()
   const builderStore = useBuilderStore()
 
@@ -21,6 +21,4 @@ const _MenuLanguageSwitch = () => {
   return <Dropdown.Menu title={t('leftMenu.translation')} icon={<FaIcon icon={faGlobe}/>}>
     {children}
   </Dropdown.Menu>
-}
-
-export const MenuLanguageSwitch = namedObserver('MenuLanguageSwitch', _MenuLanguageSwitch)
+})

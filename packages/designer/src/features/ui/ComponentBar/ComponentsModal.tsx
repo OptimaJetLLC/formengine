@@ -8,7 +8,7 @@ import {ComponentBar} from './ComponentBar'
 /**
  * The modal window with a list of components that can be added to the form.
  */
-const _ComponentsModal = () => {
+export const ComponentsModal = namedObserver('ComponentsModal', () => {
   const {componentsModalState} = useBuilderStore()
   const t = useTranslationPart('componentsModal')
 
@@ -24,9 +24,7 @@ const _ComponentsModal = () => {
       <ComponentBar draggable={false} onAdd={onAdd}/>
     </Modal.Body>
   </SModal>
-}
-
-export const ComponentsModal = namedObserver('ComponentsModal', _ComponentsModal)
+})
 
 const SModal = styled(Modal)`
   width: 825px !important;

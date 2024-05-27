@@ -14,14 +14,10 @@ export interface ComponentTreeItemProps {
 
 /**
  * The React form viewer component that displays an item from the component tree.
- * @param props the React component properties.
- * @param props.componentData the data required to display the component.
  * @returns the React element.
  */
-const _ComponentTreeItem = ({componentData}: ComponentTreeItemProps) => (
+export const ComponentTreeItem = namedObserver('ComponentTreeItem', ({componentData}: ComponentTreeItemProps) => (
   <ComponentDataProvider value={componentData}>
     <ComponentViewer/>
   </ComponentDataProvider>
-)
-
-export const ComponentTreeItem = namedObserver('ComponentTreeItem', _ComponentTreeItem)
+))

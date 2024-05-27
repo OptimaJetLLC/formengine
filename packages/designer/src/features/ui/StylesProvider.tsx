@@ -3,10 +3,8 @@ import {ComponentProps} from 'react'
 
 const builderClassName = 'optimajet-formbuilder'
 
-const _StylesProvider = (props: ComponentProps<any>) => {
+export const StylesProvider = namedObserver('StylesProvider', (props: ComponentProps<any>) => {
   return <div className={builderClassName}>
     {props.children}
   </div>
-}
-
-export const StylesProvider = namedObserver('StylesProvider', _StylesProvider)
+})

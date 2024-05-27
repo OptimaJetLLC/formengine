@@ -9,7 +9,7 @@ import type {AnnotationEditorProps, CalculableEditorProps} from './AnnotationEdi
  * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-const _RenderWhenEditor = (props: AnnotationEditorProps) => {
+export const RenderWhenEditor = namedObserver('RenderWhenEditor', (props: AnnotationEditorProps) => {
   const componentStore = props.componentData.store
 
   const onChange = (value: string) => {
@@ -52,6 +52,4 @@ const _RenderWhenEditor = (props: AnnotationEditorProps) => {
       <Input value={componentStore.renderWhen?.value ?? ''} onChange={onChange} size={'xs'}/>
     </LabeledProperty>
   )
-}
-
-export const RenderWhenEditor = namedObserver('RenderWhenEditor', _RenderWhenEditor)
+})

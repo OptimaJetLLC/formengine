@@ -15,7 +15,7 @@ interface ViewerLocalizationProviderProps {
 
 const viewerClassName = 'optimajet-formviewer'
 
-const _ViewerLocalizationProvider = (props: ViewerLocalizationProviderProps) => {
+export const ViewerLocalizationProvider = namedObserver('ViewerLocalizationProvider', (props: ViewerLocalizationProviderProps) => {
   const viewerStore = useStore()
   const language = props.language ?? viewerStore.displayedLanguage
 
@@ -35,9 +35,7 @@ const _ViewerLocalizationProvider = (props: ViewerLocalizationProviderProps) => 
       </CacheProvider>
     </SDiv>
   )
-}
-
-export const ViewerLocalizationProvider = namedObserver('ViewerLocalizationProvider', _ViewerLocalizationProvider)
+})
 
 const SDiv = styled.div`
   display: flex;

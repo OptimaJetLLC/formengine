@@ -10,7 +10,7 @@ import {ErrorComponentPicker} from './ErrorComponentPicker'
  * React form builder component that displays the configuration properties of the validation error display component.
  * @returns the React element.
  */
-const _ErrorSettings = () => {
+export const ErrorSettings = namedObserver('ErrorSettings', () => {
   const {t} = useTranslation()
   const store = useBuilderStore()
   const [errorVisible, setErrorVisible] = useState(false)
@@ -39,6 +39,4 @@ const _ErrorSettings = () => {
       </ComponentDataProvider>
     </div>
   )
-}
-
-export const ErrorSettings = namedObserver('ErrorSettings', _ErrorSettings)
+})

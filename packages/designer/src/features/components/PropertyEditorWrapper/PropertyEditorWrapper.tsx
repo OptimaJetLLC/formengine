@@ -20,12 +20,12 @@ interface PropertyEditorWrapperProps {
   propertyBlockType?: PropertyBlockType
 }
 
-const _PropertyEditorWrapper = ({
-                                  annotation,
-                                  context,
-                                  initContext,
-                                  propertyBlockType = 'component'
-                                }: PropertyEditorWrapperProps) => {
+export const PropertyEditorWrapper = namedObserver('PropertyEditorWrapper', ({
+                                                                               annotation,
+                                                                               context,
+                                                                               initContext,
+                                                                               propertyBlockType = 'component'
+                                                                             }: PropertyEditorWrapperProps) => {
   // custom editors have the highest priority
   const store = useBuilderStore()
   const componentData = useComponentData()
@@ -144,6 +144,4 @@ const _PropertyEditorWrapper = ({
       {createElement(annotationEditor, annotationEditorProps)}
     </Erroneous>
   )
-}
-
-export const PropertyEditorWrapper = namedObserver('PropertyEditorWrapper', _PropertyEditorWrapper)
+})

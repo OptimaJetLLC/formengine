@@ -1424,21 +1424,19 @@ ___
 
 ### ComponentTree
 
-▸ **ComponentTree**(`props`): `Element`
+▸ **ComponentTree**(`«destructured»`): `Element`
 
 The React component that displays an array of ComponentData. **Internal use only.**
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `props` | [`ComponentTreeProps`](../interfaces/react_form_builder_core.ComponentTreeProps.md) | the React component properties. |
+| Name | Type |
+| :------ | :------ |
+| `«destructured»` | [`ComponentTreeProps`](../interfaces/react_form_builder_core.ComponentTreeProps.md) |
 
 #### Returns
 
 `Element`
-
-the React element.
 
 ___
 
@@ -1469,9 +1467,9 @@ The main React component of the form viewer.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `props` | [`FormViewerProps`](../interfaces/react_form_builder_core.FormViewerProps.md) | the React component properties. |
+| Name | Type |
+| :------ | :------ |
+| `props` | [`FormViewerProps`](../interfaces/react_form_builder_core.FormViewerProps.md) |
 
 #### Returns
 
@@ -2399,9 +2397,9 @@ ___
 
 ### useDisposable
 
-▸ **useDisposable**<`T`\>(`factory`): `T` \| `undefined`
+▸ **useDisposable**<`T`\>(`factory`, `deps`): `T` \| `undefined`
 
-Creates a disposable object and dispose the object when the React component is unmounted. **Internal use only.**
+Creates a disposable object with the useMemo hook and dispose the object when the React component is unmounted. **Internal use only.**
 
 #### Type parameters
 
@@ -2414,6 +2412,7 @@ Creates a disposable object and dispose the object when the React component is u
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `factory` | () => `T` | the factory function to create a disposable object. |
+| `deps` | `undefined` \| `DependencyList` | the dependencies for the useMemo hook. |
 
 #### Returns
 

@@ -4,7 +4,7 @@ import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps} from '../../../annotation-editors/AnnotationEditorProps'
 import {Picker} from '../../../annotation-editors/Picker'
 
-const _FormLanguageSettings = () => {
+export const FormLanguageSettings = namedObserver('FormLanguageSettings', () => {
   const builderStore = useBuilderStore()
   const viewerStore = useStore()
 
@@ -54,6 +54,4 @@ const _FormLanguageSettings = () => {
       <Picker {...annotationEditorProps}/>
     </ComponentDataProvider>
   )
-}
-
-export const FormLanguageSettings = namedObserver('FormLanguageSettings', _FormLanguageSettings)
+})

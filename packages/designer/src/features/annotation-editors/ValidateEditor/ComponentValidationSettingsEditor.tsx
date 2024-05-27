@@ -16,7 +16,7 @@ const autoValidate = boolean
  * The React form builder component that displays the validation settings for the component value.
  * @returns the React element.
  */
-const _ComponentValidationSettingsEditor = (props: AnnotationEditorProps) => {
+export const ComponentValidationSettingsEditor = namedObserver('ComponentValidationSettingsEditor', (props: AnnotationEditorProps) => {
   const {store, model} = props.componentData
   const type = model.valueType
   const schema = store.schema ?? {validations: []}
@@ -32,9 +32,7 @@ const _ComponentValidationSettingsEditor = (props: AnnotationEditorProps) => {
       <List>{renderRules(schema.validations)}</List>
     </Rows>
   )
-}
-
-export const ComponentValidationSettingsEditor = namedObserver('ComponentValidationSettingsEditor', _ComponentValidationSettingsEditor)
+})
 
 const renderRules = (validations?: ValidationRuleSettings[]) => (
   validations?.map((rule, index) => {

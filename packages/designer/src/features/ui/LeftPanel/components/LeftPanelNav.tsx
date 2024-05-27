@@ -37,7 +37,7 @@ const useRenderTab = (section: keyof typeof tabsProps) => {
   }, [t, section])
 }
 
-const _LeftPanelNav = () => {
+export const LeftPanelNav = namedObserver('LeftPanelNav', () => {
   const {formStorageEnabled} = useBuilderStore()
   const [activeTab, setActiveTab] = useState<LeftPanelSection>('components')
 
@@ -52,6 +52,4 @@ const _LeftPanelNav = () => {
       {tabsProps[activeTab][0]}
     </NavContent>
   </>
-}
-
-export const LeftPanelNav = namedObserver('LeftPanelNav', _LeftPanelNav)
+})

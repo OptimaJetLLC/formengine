@@ -6,7 +6,7 @@ import {useTranslation} from 'react-i18next'
 import {Col, IconButton, Modal, Row, Tooltip, Whisper} from 'rsuite'
 import {PropertyErrors} from './PropertyErrors'
 
-const _ErrorsPanel = () => {
+export const ErrorsPanel = namedObserver('ErrorsPanel', () => {
   const {t} = useTranslation()
   const [show, toggleShow] = useReducer(state => !state, false)
 
@@ -27,9 +27,7 @@ const _ErrorsPanel = () => {
       </Modal.Body>
     </Modal>
   </>
-}
-
-export const ErrorsPanel = namedObserver('ErrorsPanel', _ErrorsPanel)
+})
 
 const SIconButton = styled(IconButton)`
   padding: 5px !important;

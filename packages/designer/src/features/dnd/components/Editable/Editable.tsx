@@ -71,15 +71,13 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
   return currentProps
 }
 
-const _EditableWrapper = ({children, ...props}: WrapperProps) => {
+export const EditableWrapper = namedObserver('EditableWrapper', ({children, ...props}: WrapperProps) => {
   const viewerStore = useStore()
   const Wrapper = viewerStore.parentStore ? DefaultWrapper : Editable
   return <Wrapper children={children} {...props}/>
-}
+})
 
-export const EditableWrapper = namedObserver('EditableWrapper', _EditableWrapper)
-
-const _Editable = ({children, className}: WrapperProps) => {
+const Editable = namedObserver('Editable', ({children, className}: WrapperProps) => {
   const [{selected}, selectionHandlers, selectionClassName] = useSelection()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
 
@@ -93,9 +91,7 @@ const _Editable = ({children, className}: WrapperProps) => {
       {toolbars}
     </Draggable>
   )
-}
-
-const Editable = namedObserver('Editable', _Editable)
+})
 
 function getTemplateSlots(data: ComponentData) {
   if (!(data.field instanceof TemplateField)) return []

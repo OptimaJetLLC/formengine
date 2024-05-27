@@ -57,7 +57,7 @@ const useBuilderProviderData = (props: FormBuilderProps) => useCallback(() => {
  * @param props.props the properties of the form builder component.
  * @returns the React element.
  */
-const _BuilderProviders = ({children, props}: BuilderProvidersProps) => {
+export const BuilderProviders = namedObserver('BuilderProviders', ({children, props}: BuilderProvidersProps) => {
   const {builderRef, ...viewerProps} = props
   const builderProviderDataFactory = useBuilderProviderData(props)
   const builderProviderData = useDisposable(builderProviderDataFactory)
@@ -98,6 +98,4 @@ const _BuilderProviders = ({children, props}: BuilderProvidersProps) => {
       </BuilderStoreProvider>
     </ViewerPropsProvider>
   )
-}
-
-export const BuilderProviders = namedObserver('BuilderProviders', _BuilderProviders)
+})
