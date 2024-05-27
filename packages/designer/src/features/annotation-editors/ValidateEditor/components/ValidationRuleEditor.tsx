@@ -34,6 +34,11 @@ export const ValidationRuleEditor = namedObserver('ValidationRuleEditor', ({rule
   const schema = store.schema
   const viewerStore = useStore()
 
+  const initValidatorArgs = useCallback(() => {
+    rule.args ??= {}
+    return rule.args
+  }, [rule])
+
   const type = model.valueType
   if (!type || !schema) return null
 
@@ -48,11 +53,6 @@ export const ValidationRuleEditor = namedObserver('ValidationRuleEditor', ({rule
     console.warn(`Cannot find validation rule for type: '${type}' and key: '${rule.key}'`)
     return null
   }
-
-  const initValidatorArgs = useCallback(() => {
-    rule.args ??= {}
-    return rule.args
-  }, [rule])
 
   const annotations = convertValidationRuleParametersToAnnotations(ruleDefinition.params ?? [])
 

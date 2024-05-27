@@ -41,12 +41,17 @@ export const LeftPanelNav = namedObserver('LeftPanelNav', () => {
   const {formStorageEnabled} = useBuilderStore()
   const [activeTab, setActiveTab] = useState<LeftPanelSection>('components')
 
+  const components = useRenderTab('components')
+  const tree = useRenderTab('tree')
+  const settings = useRenderTab('settings')
+  const forms = useRenderTab('forms')
+
   return <>
     <Nav appearance="subtle" activeKey={activeTab} onSelect={setActiveTab}>
-      {useRenderTab('components')}
-      {useRenderTab('tree')}
-      {useRenderTab('settings')}
-      {formStorageEnabled && useRenderTab('forms')}
+      {components}
+      {tree}
+      {settings}
+      {formStorageEnabled && forms}
     </Nav>
     <NavContent style={{minHeight: 0, overflow: 'auto', padding: 4}}>
       {tabsProps[activeTab][0]}
