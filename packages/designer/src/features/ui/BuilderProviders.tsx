@@ -69,7 +69,8 @@ const _BuilderProviders = ({children, props}: BuilderProvidersProps) => {
 
   useEffect(() => {
     if (!builderStore) return
-    builderStore.activeFormName = props.formName
+    // If activeFormName is already set from LocalStorageSynchronizer, do not change it
+    if (!builderStore.activeFormName) builderStore.activeFormName = props.formName
   }, [builderStore, props.formName])
 
   useEffect(() => {
