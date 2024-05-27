@@ -12,7 +12,7 @@ import type {AnnotationEditorProps} from './AnnotationEditorProps'
  * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const TooltipTypePicker = namedObserver('TooltipTypePicker', (props: AnnotationEditorProps) => {
+const _TooltipTypePicker = (props: AnnotationEditorProps) => {
   const {value, onChange, onClean} = props
   const builderStore = useBuilderStore()
   const tooltipType = useTooltipType()
@@ -27,7 +27,9 @@ export const TooltipTypePicker = namedObserver('TooltipTypePicker', (props: Anno
     <SInputPicker value={value ?? tooltipType ?? ''} data={data} onChange={onChange}
                   onClean={onClean} block cleanable size={'xs'} placement={'auto'}/>
   </LabeledProperty>
-})
+}
+
+export const TooltipTypePicker = namedObserver('TooltipTypePicker', _TooltipTypePicker)
 
 const SInputPicker = styled(InputPicker)`
   width: 100%;

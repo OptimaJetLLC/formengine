@@ -24,7 +24,7 @@ export interface ToolbarProps {
   compact?: boolean
 }
 
-export const Toolbar = namedObserver('Toolbar', ({compact}: ToolbarProps) => {
+const _Toolbar = ({compact}: ToolbarProps) => {
   const store = useBuilderStore()
   const data = useComponentData()
   const [{selected}] = useSelection()
@@ -63,7 +63,9 @@ export const Toolbar = namedObserver('Toolbar', ({compact}: ToolbarProps) => {
       </Hinted>
     </>}
   </ToolbarContainer>
-})
+}
+
+export const Toolbar = namedObserver('Toolbar', _Toolbar)
 
 const ToolbarContainer = styled.div`
   inset: initial;

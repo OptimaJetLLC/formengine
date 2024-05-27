@@ -23,7 +23,7 @@ const useClearableArguments = () => {
   }, [data.args])
 }
 
-export const ArgumentList = namedObserver('ArgumentList', () => {
+const _ArgumentList = () => {
   const store = useStore()
   const data = useActionData()
   const getAction = useCallback(() => store.findAction(data), [data, store])
@@ -52,7 +52,9 @@ export const ArgumentList = namedObserver('ArgumentList', () => {
       </ExpandButton>
     </div>
   )
-})
+}
+
+export const ArgumentList = namedObserver('ArgumentList', _ArgumentList)
 
 const ExpandButton = styled(Button)`
   padding: 5px !important;

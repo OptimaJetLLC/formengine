@@ -28,7 +28,7 @@ export interface ValidationRuleEditorProps {
   onRemove: () => void
 }
 
-export const ValidationRuleEditor = namedObserver('ValidationRuleEditor', ({rule, onRemove}: ValidationRuleEditorProps) => {
+const _ValidationRuleEditor = ({rule, onRemove}: ValidationRuleEditorProps) => {
   const {store, model} = useComponentData()
   const {t} = useTranslation()
   const schema = store.schema
@@ -66,7 +66,9 @@ export const ValidationRuleEditor = namedObserver('ValidationRuleEditor', ({rule
                      initContext={initValidatorArgs}/>
     </Rows>
   )
-})
+}
+
+export const ValidationRuleEditor = namedObserver('ValidationRuleEditor', _ValidationRuleEditor)
 
 const SRuleName = styled.span`
   font-size: medium;

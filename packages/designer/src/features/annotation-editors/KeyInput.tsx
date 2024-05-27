@@ -14,7 +14,7 @@ import {Hinted} from './Hinted'
  * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const KeyInput = namedObserver('KeyInput', (props: AnnotationEditorProps) => {
+const _KeyInput = (props: AnnotationEditorProps) => {
   const viewerStore = useStore()
   const {value, onChange, showError} = props
   const [canApply, setCanApply] = useState(false)
@@ -60,4 +60,6 @@ export const KeyInput = namedObserver('KeyInput', (props: AnnotationEditorProps)
       </InputGroup>
     </LabeledProperty>
   )
-})
+}
+
+export const KeyInput = namedObserver('KeyInput', _KeyInput)

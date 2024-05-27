@@ -5,7 +5,7 @@ import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import LabeledProperty from '../../components/LabeledProperty'
 import type {AnnotationEditorProps} from '../AnnotationEditorProps'
 
-export const CustomValidatorEditor = namedObserver('CustomValidatorEditor', (props: AnnotationEditorProps) => {
+const _CustomValidatorEditor = (props: AnnotationEditorProps) => {
   const {annotation, componentData, value, onChange} = props
   const builderStore = useBuilderStore()
   const componentKey = `${componentData.key}[${annotation.key}][${annotation.type}]`
@@ -20,7 +20,9 @@ export const CustomValidatorEditor = namedObserver('CustomValidatorEditor', (pro
       </Button>
     </LabeledProperty>
   )
-})
+}
+
+export const CustomValidatorEditor = namedObserver('CustomValidatorEditor', _CustomValidatorEditor)
 
 const getFunctionSignature = (type?: string) => `/**
  * @param {${type}} value the validated value.

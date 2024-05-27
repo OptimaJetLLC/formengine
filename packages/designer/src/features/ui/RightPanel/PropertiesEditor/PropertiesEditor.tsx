@@ -5,14 +5,16 @@ import {NavTab} from './components/NavTab'
 import {Properties} from './components/Properties'
 import {Section} from './Section'
 
-const PropertiesEditor = namedObserver('PropertiesEditor', () => {
+const _PropertiesEditor = () => {
   const [activeTab, setActiveTab] = useState(Section.Main)
 
   return <Container>
     <NavTab activeTab={activeTab} setActiveTab={setActiveTab}/>
     <Properties activeTab={activeTab}/>
   </Container>
-})
+}
+
+const PropertiesEditor = namedObserver('PropertiesEditor', _PropertiesEditor)
 
 const Container = styled.div`
   display: flex;

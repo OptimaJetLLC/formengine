@@ -41,7 +41,7 @@ type TestingFunction = (data: IFormData) => CalculableResult
 type TestingEditorProps = { testingFunction: TestingFunction }
 type TestRunnerProps = { data?: string, testingFunction: TestingFunction, compact?: boolean }
 
-export const TestingEditor = namedObserver('TestingEditor', forwardRef(({testingFunction}: TestingEditorProps, ref) => {
+const _TestingEditor = forwardRef(({testingFunction}: TestingEditorProps, ref) => {
   const t = useTranslationPart('testingEditor')
   const builderStore = useBuilderStore()
   const {formData} = useStore()
@@ -61,9 +61,11 @@ export const TestingEditor = namedObserver('TestingEditor', forwardRef(({testing
       <TestRunner data={data} testingFunction={testingFunction} ref={ref}/>
     </Rows>
   )
-}))
+})
 
-export const TestRunner = namedObserver('TestRunner', forwardRef(({data, testingFunction, compact}: TestRunnerProps, ref) => {
+export const TestingEditor = namedObserver('TestingEditor', _TestingEditor)
+
+const _TestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerProps, ref) => {
   const t = useTranslationPart('testingEditor')
   const builderStore = useBuilderStore()
   const [result, setResult] = useState<CalculableResult>()
@@ -103,7 +105,9 @@ export const TestRunner = namedObserver('TestRunner', forwardRef(({data, testing
       {result && <TestingResult result={result} onClose={() => setResult(undefined)}/>}
       {buttons}
     </Rows>
-}))
+})
+
+export const TestRunner = namedObserver('TestRunner', _TestRunner)
 
 const messageColor: Partial<Record<TypeAttributes.Status, string>> = {
   error: 'var(--rs-red-500)',

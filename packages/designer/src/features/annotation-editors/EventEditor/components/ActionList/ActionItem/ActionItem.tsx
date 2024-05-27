@@ -11,7 +11,7 @@ interface ActionItemProps {
   onRemove: () => void
 }
 
-export const ActionItem = namedObserver('ActionItem', ({data, onRemove}: ActionItemProps) => {
+const _ActionItem = ({data, onRemove}: ActionItemProps) => {
   const builderStore = useBuilderStore()
   const viewerStore = useStore()
   const isCodeAction = data.type === 'code'
@@ -39,4 +39,6 @@ export const ActionItem = namedObserver('ActionItem', ({data, onRemove}: ActionI
       <ArgumentList/>
     </ActionDataProvider>
   )
-})
+}
+
+export const ActionItem = namedObserver('ActionItem', _ActionItem)

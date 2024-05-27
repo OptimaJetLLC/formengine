@@ -5,10 +5,9 @@ import {useTranslationPart} from '../localization/hooks'
 
 /**
  * The React component that displays prompt dialog
- * @param props the React component properties.
  * @returns the React element.
  */
-export const PromptDialog = namedObserver('PromptDialog', () => {
+const _PromptDialog = () => {
   const builderStore = useBuilderStore()
   const modalState = builderStore.promptModalState
   const t = useTranslationPart('promptDialog')
@@ -43,4 +42,6 @@ export const PromptDialog = namedObserver('PromptDialog', () => {
       </Button>
     </Modal.Footer>
   </Modal>
-})
+}
+
+export const PromptDialog = namedObserver('PromptDialog', _PromptDialog)

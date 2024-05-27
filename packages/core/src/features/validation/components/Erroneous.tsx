@@ -25,7 +25,7 @@ const useEventListener = (sender: string, type: string, listener: ActionEventHan
   }, [eventSubject, sender, type])
 }
 
-export const Erroneous = namedObserver('Erroneous', ({children}: WrapperProps) => {
+const _Erroneous = ({children}: WrapperProps) => {
   const wrappedComponentData = useComponentData()
   const viewerStore = useStore()
   const props = useViewerProps()
@@ -41,4 +41,6 @@ export const Erroneous = namedObserver('Erroneous', ({children}: WrapperProps) =
 
   const errorProps = {...componentState.get, error: wrappedComponentData.field?.error}
   return createElement(errorDefinition.component, errorProps, children)
-})
+}
+
+export const Erroneous = namedObserver('Erroneous', _Erroneous)
