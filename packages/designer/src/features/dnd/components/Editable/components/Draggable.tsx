@@ -1,7 +1,6 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {ComponentData, namedObserver, useComponentData} from '@react-form-builder/core'
-import {merge} from 'lodash/fp.js'
 import {ComponentProps, RefObject, useMemo, useRef} from 'react'
 import {useDragLayer, useDrop} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
@@ -67,7 +66,7 @@ const useDnd = (): [DndState, RefObject<any>] => {
   }, [])
 
   const [dragState, drag] = useDragWithPreview(ItemType.Component)
-  const state: DndState = useMemo(() => (merge(dropProps, dragState)), [dropProps, dragState])
+  const state: DndState = useMemo(() => ({...dropProps, ...dragState}), [dropProps, dragState])
 
   drop(drag(dnd))
 
