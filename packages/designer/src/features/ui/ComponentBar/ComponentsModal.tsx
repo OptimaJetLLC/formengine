@@ -9,7 +9,7 @@ import {ComponentBar} from './ComponentBar'
  * The modal window with a list of components that can be added to the form.
  * @returns the React element.
  */
-const _ComponentsModal = () => {
+const RawComponentsModal = () => {
   const {componentsModalState} = useBuilderStore()
   const t = useTranslationPart('componentsModal')
 
@@ -27,7 +27,7 @@ const _ComponentsModal = () => {
   </SModal>
 }
 
-export const ComponentsModal = namedObserver('ComponentsModal', _ComponentsModal)
+export const ComponentsModal = namedObserver('ComponentsModal', RawComponentsModal)
 
 const SModal = styled(Modal)`
   width: 825px !important;

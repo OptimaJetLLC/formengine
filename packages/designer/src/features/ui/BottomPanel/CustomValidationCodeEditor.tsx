@@ -6,7 +6,7 @@ import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {GenericCodeEditor} from '../../calculation/GenericCodeEditor'
 import {Header} from './Header'
 
-const _CustomValidationCodeEditor = (props: CustomValidationCode) => {
+const RawCustomValidationCodeEditor = (props: CustomValidationCode) => {
   const {t} = useTranslation()
   const builderStore = useBuilderStore()
 
@@ -38,4 +38,4 @@ const _CustomValidationCodeEditor = (props: CustomValidationCode) => {
   </>
 }
 
-export const CustomValidationCodeEditor = namedObserver('CustomValidationCodeEditor', _CustomValidationCodeEditor)
+export const CustomValidationCodeEditor = namedObserver('CustomValidationCodeEditor', RawCustomValidationCodeEditor)

@@ -17,13 +17,13 @@ import {FormBuilderProps} from './FormBuilderProps'
  * @param props the React component properties.
  * @returns the React element.
  */
-const _FormBuilder = (props: FormBuilderProps) => {
+const RawFormBuilder = (props: FormBuilderProps) => {
   return <BuilderProviders props={props}>
     <FormBuilderView/>
   </BuilderProviders>
 }
 
-export const FormBuilder = namedObserver('FormBuilder', _FormBuilder)
+export const FormBuilder = namedObserver('FormBuilder', RawFormBuilder)
 
 const FormBuilderView = customizableObserver('MainContainer', props => (
   <SuppressResizeObserverErrors>

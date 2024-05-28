@@ -4,7 +4,7 @@ import {InputGroup, InputNumber as RInputNumber} from 'rsuite'
 import {useActionData} from '../../../../contexts/ActionDataContext'
 import {InputProps} from '../InputProps'
 
-const _InputNumber = ({name}: InputProps) => {
+const RawInputNumber = ({name}: InputProps) => {
   const data = useActionData()
   const value = Number(data.args?.[name] ?? 0)
   const handleChange = (value: string | number | null) => data.args = assign({}, data.args, {[name]: Number(value)})
@@ -16,4 +16,4 @@ const _InputNumber = ({name}: InputProps) => {
   )
 }
 
-export const InputNumber = namedObserver('InputNumber', _InputNumber)
+export const InputNumber = namedObserver('InputNumber', RawInputNumber)

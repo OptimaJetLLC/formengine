@@ -22,7 +22,7 @@ const useDirection = () => {
   return ['row', 'row-reverse', 'initial'].includes(direction as string)
 }
 
-const _Draggable = ({children, isInner, className, isTree, ...props}: DraggableProps) => {
+const RawDraggable = ({children, isInner, className, isTree, ...props}: DraggableProps) => {
   const {key, isRoot, model} = useComponentData()
   const isContainer = model.kind === 'container'
   const direction = useDirection()
@@ -43,7 +43,7 @@ const _Draggable = ({children, isInner, className, isTree, ...props}: DraggableP
   </>
 }
 
-export const Draggable = namedObserver('Draggable', _Draggable)
+export const Draggable = namedObserver('Draggable', RawDraggable)
 
 interface DndState {
   isDragging: boolean,

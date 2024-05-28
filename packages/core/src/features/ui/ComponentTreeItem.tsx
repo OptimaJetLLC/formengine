@@ -18,10 +18,10 @@ export interface ComponentTreeItemProps {
  * @param props.componentData the data required to display the component.
  * @returns the React element.
  */
-const _ComponentTreeItem = ({componentData}: ComponentTreeItemProps) => (
+const RawComponentTreeItem = ({componentData}: ComponentTreeItemProps) => (
   <ComponentDataProvider value={componentData}>
     <ComponentViewer/>
   </ComponentDataProvider>
 )
 
-export const ComponentTreeItem = namedObserver('ComponentTreeItem', _ComponentTreeItem)
+export const ComponentTreeItem = namedObserver('ComponentTreeItem', RawComponentTreeItem)

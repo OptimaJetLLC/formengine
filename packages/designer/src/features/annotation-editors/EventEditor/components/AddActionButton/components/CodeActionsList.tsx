@@ -12,7 +12,7 @@ import {ActionsMenuProps} from '../types'
  * @param props.annotation the metadata for a React component property.
  * @returns the React element.
  */
-const _CodeActionsList = ({onSelect, annotation}: ActionsMenuProps) => {
+const RawCodeActionsList = ({onSelect, annotation}: ActionsMenuProps) => {
   const store = useStore()
   const builderStore = useBuilderStore()
   const selectedStore = builderStore.oneSelected?.store
@@ -45,4 +45,4 @@ const _CodeActionsList = ({onSelect, annotation}: ActionsMenuProps) => {
   </Dropdown.Menu>
 }
 
-export const CodeActionsList = namedObserver('CodeActionsList', _CodeActionsList)
+export const CodeActionsList = namedObserver('CodeActionsList', RawCodeActionsList)

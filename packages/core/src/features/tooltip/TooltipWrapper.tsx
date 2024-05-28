@@ -38,15 +38,15 @@ function useTooltipComponent() {
  * @param props.children the React child node.
  * @returns the React element.
  */
-const _TooltipWrapper = ({children}: TooltipWrapperProps) => {
+const RawTooltipWrapper = ({children}: TooltipWrapperProps) => {
   const tooltipDefinition = useTooltipComponent()
   if (!tooltipDefinition) return <>{children}</>
   return <ComponentTooltip tooltipDefinition={tooltipDefinition}>{children}</ComponentTooltip>
 }
 
-export const TooltipWrapper = namedObserver('TooltipWrapper', _TooltipWrapper)
+export const TooltipWrapper = namedObserver('TooltipWrapper', RawTooltipWrapper)
 
-const _ComponentTooltip = ({tooltipDefinition, children}: ComponentTooltipProps) => {
+const RawComponentTooltip = ({tooltipDefinition, children}: ComponentTooltipProps) => {
   const viewerStore = useStore()
   const wrappedComponentData = useComponentData()
   const wrappedComponentStore = wrappedComponentData.store
@@ -57,4 +57,4 @@ const _ComponentTooltip = ({tooltipDefinition, children}: ComponentTooltipProps)
   return createElement(tooltipDefinition.component, componentState.get, children)
 }
 
-const ComponentTooltip = namedObserver('ComponentTooltip', _ComponentTooltip)
+const ComponentTooltip = namedObserver('ComponentTooltip', RawComponentTooltip)

@@ -17,7 +17,7 @@ const autoValidate = boolean
  * @param props the React component properties.
  * @returns the React element.
  */
-const _ComponentValidationSettingsEditor = (props: AnnotationEditorProps) => {
+const RawComponentValidationSettingsEditor = (props: AnnotationEditorProps) => {
   const {store, model} = props.componentData
   const type = model.valueType
   const schema = store.schema ?? {validations: []}
@@ -35,7 +35,7 @@ const _ComponentValidationSettingsEditor = (props: AnnotationEditorProps) => {
   )
 }
 
-export const ComponentValidationSettingsEditor = namedObserver('ComponentValidationSettingsEditor', _ComponentValidationSettingsEditor)
+export const ComponentValidationSettingsEditor = namedObserver('ComponentValidationSettingsEditor', RawComponentValidationSettingsEditor)
 
 const renderRules = (validations?: ValidationRuleSettings[]) => (
   validations?.map((rule, index) => {

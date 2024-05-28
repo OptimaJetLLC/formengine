@@ -10,7 +10,7 @@ import {CommonActionsList} from './components/CommonActionsList'
 import {CustomActionList} from './components/CustomActionList'
 import {ActionsMenuProps} from './types'
 
-const _AddActionButton = (props: AnnotationEditorProps) => {
+const RawAddActionButton = (props: AnnotationEditorProps) => {
   const t = useTranslationPart('actions')
   const {componentData, annotation} = props
   const store = componentData.store
@@ -29,7 +29,7 @@ const _AddActionButton = (props: AnnotationEditorProps) => {
   </Whisper>
 }
 
-export const AddActionButton = namedObserver('AddActionButton', _AddActionButton)
+export const AddActionButton = namedObserver('AddActionButton', RawAddActionButton)
 
 const MenuPopover = forwardRef(({onSelect, annotation, ...props}: ActionsMenuProps, ref: any) => (
   <Popover ref={ref} {...props} full>

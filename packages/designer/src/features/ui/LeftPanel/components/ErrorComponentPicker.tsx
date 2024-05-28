@@ -4,7 +4,7 @@ import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {AnnotationEditorProps} from '../../../annotation-editors/AnnotationEditorProps'
 import {Picker} from '../../../annotation-editors/Picker'
 
-const _ErrorComponentPicker = () => {
+const RawErrorComponentPicker = () => {
   const viewerStore = useStore()
   const builderStore = useBuilderStore()
 
@@ -42,4 +42,4 @@ const _ErrorComponentPicker = () => {
   return <Picker {...props}/>
 }
 
-export const ErrorComponentPicker = namedObserver('ErrorComponentPicker', _ErrorComponentPicker)
+export const ErrorComponentPicker = namedObserver('ErrorComponentPicker', RawErrorComponentPicker)

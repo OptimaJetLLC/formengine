@@ -12,7 +12,7 @@ import {LocalizationPicker} from './components/LocalizationPicker'
 import {fluentLanguageId} from './consts'
 import {useTranslationPart} from './hooks'
 
-const _LocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditorProps) => {
+const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditorProps) => {
   const t = useTranslationPart('common')
   const localizationStringId = getFluentCompatibleId(`${editableProperty.componentKey}_${editableProperty.annotation.key}`)
   const builderStore = useBuilderStore()
@@ -64,7 +64,7 @@ const _LocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditorPr
   </Columns>
 }
 
-export const LocalizationEditor = namedObserver('LocalizationEditor', _LocalizationEditor)
+export const LocalizationEditor = namedObserver('LocalizationEditor', RawLocalizationEditor)
 
 const SDiv = styled.div`
   display: flex;

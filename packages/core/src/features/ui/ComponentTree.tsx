@@ -9,10 +9,10 @@ import {ComponentTreeItem} from './ComponentTreeItem'
  * @param props.data the array of child elements of the tree.
  * @returns the React element.
  */
-const _ComponentTree = ({data}: ComponentTreeProps) => {
+const RawComponentTree = ({data}: ComponentTreeProps) => {
   return <ComponentTreeContextProvider value={ComponentTree}>
     {data.map(cd => <ComponentTreeItem key={cd.id} componentData={cd}/>)}
   </ComponentTreeContextProvider>
 }
 
-export const ComponentTree = namedObserver('ComponentTree', _ComponentTree)
+export const ComponentTree = namedObserver('ComponentTree', RawComponentTree)

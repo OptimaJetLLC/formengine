@@ -28,7 +28,7 @@ interface ExistingStoreProviderProps extends ViewerStoreProviderProps {
   store: Store
 }
 
-const _ExistingStoreProvider = ({
+const RawExistingStoreProvider = ({
                                   children,
                                   props: {viewerRef, ...props},
                                   store
@@ -54,9 +54,9 @@ const _ExistingStoreProvider = ({
   )
 }
 
-const ExistingStoreProvider = namedObserver('ExistingStoreProvider', _ExistingStoreProvider)
+const ExistingStoreProvider = namedObserver('ExistingStoreProvider', RawExistingStoreProvider)
 
-const _NewStoreProvider = ({children, props}: ViewerStoreProviderProps) => {
+const RawNewStoreProvider = ({children, props}: ViewerStoreProviderProps) => {
   const storeFactory = useCallback(() => new Store(new FormViewerPropsStore(props)), [props])
   const store = useDisposable(storeFactory)
 
@@ -65,18 +65,18 @@ const _NewStoreProvider = ({children, props}: ViewerStoreProviderProps) => {
   return <ExistingStoreProvider children={children} props={props} store={store}/>
 }
 
-const NewStoreProvider = namedObserver('FactoryStoreProvider', _NewStoreProvider)
+const NewStoreProvider = namedObserver('FactoryStoreProvider', RawNewStoreProvider)
 
 /**
  * React component encapsulating MobX storage for the form viewer.
  * @param props the React component properties.
  * @returns the React element.
  */
-const _ViewerStoreProvider = (props: ViewerStoreProviderProps) => {
+const RawViewerStoreProvider = (props: ViewerStoreProviderProps) => {
   const storeFromContext = useContext(StoreContext)
   return storeFromContext
     ? <ExistingStoreProvider children={props.children} props={props.props} store={storeFromContext}/>
     : <NewStoreProvider children={props.children} props={props.props}/>
 }
 
-export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', _ViewerStoreProvider)
+export const ViewerStoreProvider = namedObserver('ViewerStoreProvider', RawViewerStoreProvider)

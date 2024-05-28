@@ -25,7 +25,7 @@ const useEventListener = (sender: string, type: string, listener: ActionEventHan
   }, [eventSubject, sender, type])
 }
 
-const _Erroneous = ({children}: WrapperProps) => {
+const RawErroneous = ({children}: WrapperProps) => {
   const wrappedComponentData = useComponentData()
   const viewerStore = useStore()
   const props = useViewerProps()
@@ -43,4 +43,4 @@ const _Erroneous = ({children}: WrapperProps) => {
   return createElement(errorDefinition.component, errorProps, children)
 }
 
-export const Erroneous = namedObserver('Erroneous', _Erroneous)
+export const Erroneous = namedObserver('Erroneous', RawErroneous)

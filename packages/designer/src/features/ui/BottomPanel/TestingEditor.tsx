@@ -41,7 +41,7 @@ type TestingFunction = (data: IFormData) => CalculableResult
 type TestingEditorProps = { testingFunction: TestingFunction }
 type TestRunnerProps = { data?: string, testingFunction: TestingFunction, compact?: boolean }
 
-const _TestingEditor = forwardRef(({testingFunction}: TestingEditorProps, ref) => {
+const RawTestingEditor = forwardRef(({testingFunction}: TestingEditorProps, ref) => {
   const t = useTranslationPart('testingEditor')
   const builderStore = useBuilderStore()
   const {formData} = useStore()
@@ -63,9 +63,9 @@ const _TestingEditor = forwardRef(({testingFunction}: TestingEditorProps, ref) =
   )
 })
 
-export const TestingEditor = namedObserver('TestingEditor', _TestingEditor)
+export const TestingEditor = namedObserver('TestingEditor', RawTestingEditor)
 
-const _TestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerProps, ref) => {
+const RawTestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerProps, ref) => {
   const t = useTranslationPart('testingEditor')
   const builderStore = useBuilderStore()
   const [result, setResult] = useState<CalculableResult>()
@@ -107,7 +107,7 @@ const _TestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerProp
     </Rows>
 })
 
-export const TestRunner = namedObserver('TestRunner', _TestRunner)
+export const TestRunner = namedObserver('TestRunner', RawTestRunner)
 
 const messageColor: Partial<Record<TypeAttributes.Status, string>> = {
   error: 'var(--rs-red-500)',

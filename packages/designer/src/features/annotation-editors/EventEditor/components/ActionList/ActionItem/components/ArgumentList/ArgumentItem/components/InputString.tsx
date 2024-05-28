@@ -4,7 +4,7 @@ import {Input as RInput, InputGroup} from 'rsuite'
 import {useActionData} from '../../../../contexts/ActionDataContext'
 import type {InputProps} from '../InputProps'
 
-const _InputString = ({name}: InputProps) => {
+const RawInputString = ({name}: InputProps) => {
   const data = useActionData()
   const value = data.args?.[name]?.toString() ?? ''
   const handleChange = (value: string) => data.args = assign({}, data.args, {[name]: value})
@@ -16,4 +16,4 @@ const _InputString = ({name}: InputProps) => {
   )
 }
 
-export const InputString = namedObserver('InputString', _InputString)
+export const InputString = namedObserver('InputString', RawInputString)

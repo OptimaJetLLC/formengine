@@ -14,7 +14,7 @@ import {FormViewerProps} from './types'
  * @param props the React component properties.
  * @returns the React element.
  */
-const _FormViewer = (props: FormViewerProps) =>
+const RawFormViewer = (props: FormViewerProps) =>
   <SuppressResizeObserverErrors>
     <ViewerStoreProvider props={props}>
       <ViewerLocalizationProvider language={props.language}>
@@ -26,7 +26,7 @@ const _FormViewer = (props: FormViewerProps) =>
     </ViewerStoreProvider>
   </SuppressResizeObserverErrors>
 
-export const FormViewer = namedObserver('FormViewer', _FormViewer)
+export const FormViewer = namedObserver('FormViewer', RawFormViewer)
 
 export const SDiv = styled.div`
   display: flex;

@@ -20,7 +20,7 @@ interface PropertyEditorWrapperProps {
   propertyBlockType?: PropertyBlockType
 }
 
-const _PropertyEditorWrapper = ({
+const RawPropertyEditorWrapper = ({
                                   annotation,
                                   context,
                                   initContext,
@@ -146,4 +146,4 @@ const _PropertyEditorWrapper = ({
   )
 }
 
-export const PropertyEditorWrapper = namedObserver('PropertyEditorWrapper', _PropertyEditorWrapper)
+export const PropertyEditorWrapper = namedObserver('PropertyEditorWrapper', RawPropertyEditorWrapper)

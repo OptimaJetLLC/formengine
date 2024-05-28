@@ -27,7 +27,7 @@ interface LocalizationProps {
   children: ReactNode
 }
 
-const _LocalizationProvider = (props: LocalizationProps) => {
+const RawLocalizationProvider = (props: LocalizationProps) => {
   const builderStore = useBuilderStore()
   const {bidi} = builderStore.formBuilderLanguage
   const componentsLocale = builderStore.componentsLocale ?? defaultComponentsLocale
@@ -50,4 +50,4 @@ const _LocalizationProvider = (props: LocalizationProps) => {
   )
 }
 
-export const LocalizationProvider = namedObserver('LocalizationProvider', _LocalizationProvider)
+export const LocalizationProvider = namedObserver('LocalizationProvider', RawLocalizationProvider)

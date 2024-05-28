@@ -12,7 +12,7 @@ import {HintedLabel} from './Hinted'
  * React form builder component that displays the tooltip property editor .
  * @returns the React element.
  */
-const _TooltipPropertiesEditor = () => {
+const RawTooltipPropertiesEditor = () => {
   const t = useTranslationPart('annotation.tooltipProps')
   const id = useUniqueId('tooltip-')
   const store = useBuilderStore()
@@ -43,4 +43,4 @@ const _TooltipPropertiesEditor = () => {
   </>
 }
 
-export const TooltipPropertiesEditor = namedObserver('TooltipPropertiesEditor', _TooltipPropertiesEditor)
+export const TooltipPropertiesEditor = namedObserver('TooltipPropertiesEditor', RawTooltipPropertiesEditor)

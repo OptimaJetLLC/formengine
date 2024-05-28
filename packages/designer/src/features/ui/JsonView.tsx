@@ -3,7 +3,7 @@ import {useEffect, useRef, useState} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {CodeEditor} from '../components/CodeEditor'
 
-const _JsonView = () => {
+const RawJsonView = () => {
   const builderStore = useBuilderStore()
   const [initialValue] = useState(builderStore.formAsString)
   const sourceRef = useRef(initialValue)
@@ -16,4 +16,4 @@ const _JsonView = () => {
   return <CodeEditor language="json" initialValue={initialValue} onChange={onSetSource}/>
 }
 
-export const JsonView = namedObserver('JsonView', _JsonView)
+export const JsonView = namedObserver('JsonView', RawJsonView)

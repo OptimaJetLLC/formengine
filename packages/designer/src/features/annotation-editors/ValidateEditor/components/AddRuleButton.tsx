@@ -4,7 +4,7 @@ import {Button, Dropdown} from 'rsuite'
 import type {DropdownProps} from 'rsuite/esm/Dropdown/Dropdown'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 
-const _RulesList = ({type}: { type: SchemaType }) => {
+const RawRulesList = ({type}: { type: SchemaType }) => {
   const {store} = useComponentData()
   const {t} = useTranslation()
   const viewerStore = useStore()
@@ -41,9 +41,9 @@ const _RulesList = ({type}: { type: SchemaType }) => {
   return <>{items}</>
 }
 
-const RulesList = namedObserver('RulesList', _RulesList)
+const RulesList = namedObserver('RulesList', RawRulesList)
 
-const _AddRuleButton = () => {
+const RawAddRuleButton = () => {
   const {t} = useTranslation()
   const builderStore = useBuilderStore()
   const componentData = useComponentData()
@@ -65,4 +65,4 @@ const _AddRuleButton = () => {
   )
 }
 
-export const AddRuleButton = namedObserver('AddRuleButton', _AddRuleButton)
+export const AddRuleButton = namedObserver('AddRuleButton', RawAddRuleButton)

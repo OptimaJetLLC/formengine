@@ -63,7 +63,7 @@ function getActionHandler(func: Func, args?: Arguments) {
   }
 }
 
-const _ComponentViewer = () => {
+const RawComponentViewer = () => {
   const data = useComponentData()
   const {componentWrapper, computeChildren: viewerComputeChildren} = useViewerProps()
   const formViewerStore = useStore()
@@ -104,4 +104,4 @@ const _ComponentViewer = () => {
   </Wrapper>
 }
 
-export const ComponentViewer = namedObserver('ComponentViewer', _ComponentViewer)
+export const ComponentViewer = namedObserver('ComponentViewer', RawComponentViewer)

@@ -8,7 +8,7 @@ import {ItemType} from '../consts'
 import {DragPreview} from './Editable/components/DragPreview'
 import {useDragWithPreview} from './Editable/hooks/useDragWithPreview'
 
-const _AddedComponent = ({draggable = true, onAdd}: DraggableProps) => {
+const RawAddedComponent = ({draggable = true, onAdd}: DraggableProps) => {
   const data = useComponentData()
   const {name = '', icon: CustomIcon} = data.model
   const iconName = replace(upperFirst(camelCase(name)), ' ', '') as keyof typeof icons
@@ -29,7 +29,7 @@ const _AddedComponent = ({draggable = true, onAdd}: DraggableProps) => {
     : element
 }
 
-export const AddedComponent = namedObserver('AddedComponent', _AddedComponent)
+export const AddedComponent = namedObserver('AddedComponent', RawAddedComponent)
 
 const Draggable = ({children}: { children: ReactNode }) => {
   const [{isDragging}, drag] = useDragWithPreview(ItemType.AddedComponent)

@@ -21,7 +21,7 @@ export interface ErroneousProps extends WrapperProps, AnnotationEditorProps {
  * @param props the React component properties.
  * @returns the React element.
  */
-const _Erroneous = (props: ErroneousProps) => {
+const RawErroneous = (props: ErroneousProps) => {
   const {annotation, value, children} = props
   const builderStore = useBuilderStore()
   const [error, setError] = useState<string>()
@@ -59,7 +59,7 @@ const _Erroneous = (props: ErroneousProps) => {
   )
 }
 
-export const Erroneous = namedObserver('Erroneous', _Erroneous)
+export const Erroneous = namedObserver('Erroneous', RawErroneous)
 
 const SDiv = styled.div`
   display: flex;

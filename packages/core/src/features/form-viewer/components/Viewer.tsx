@@ -48,7 +48,7 @@ export interface ViewerProps {
  * @param props.event the function for processing form events.
  * @returns the React element.
  */
-const _Viewer = ({event}: ViewerProps) => {
+const RawViewer = ({event}: ViewerProps) => {
   const store = useStore()
   const props = useViewerProps()
 
@@ -63,4 +63,4 @@ const _Viewer = ({event}: ViewerProps) => {
   return <ComponentTree data={[store.form.componentTree]}/>
 }
 
-export const Viewer = namedObserver('Viewer', _Viewer)
+export const Viewer = namedObserver('Viewer', RawViewer)

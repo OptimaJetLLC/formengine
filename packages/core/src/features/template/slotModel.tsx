@@ -21,7 +21,7 @@ Slot.displayName = 'Slot'
 export const slotModel = new Model(Slot, 'Slot', undefined, undefined, undefined,
   undefined, undefined, undefined, undefined, undefined, 'slot')
 
-const _SlotContent = ({parentStore}: { parentStore: Store }) => {
+const RawSlotContent = ({parentStore}: { parentStore: Store }) => {
   const {key} = useComponentData()
   const {viewerProps, data, templateProps} = useTemplate()
 
@@ -36,14 +36,14 @@ const _SlotContent = ({parentStore}: { parentStore: Store }) => {
   )
 }
 
-const SlotContent = namedObserver('SlotContent', _SlotContent)
+const SlotContent = namedObserver('SlotContent', RawSlotContent)
 
-const _SlotPlaceholder = () => {
+const RawSlotPlaceholder = () => {
   const {key} = useComponentData()
   return <SDiv>Slot: '{key}'</SDiv>
 }
 
-const SlotPlaceholder = namedObserver('SlotPlaceholder', _SlotPlaceholder)
+const SlotPlaceholder = namedObserver('SlotPlaceholder', RawSlotPlaceholder)
 
 const SDiv = styled.div`
   background-color: rgb(150, 150, 150, 25%);

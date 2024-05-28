@@ -8,7 +8,7 @@ import {CodeActionEditor} from '../../annotation-editors/EventEditor/components/
 import {ComputedPropertyEditor} from './ComputedPropertyEditor'
 import {CustomValidationCodeEditor} from './CustomValidationCodeEditor'
 
-const _BottomPanel = () => {
+const RawBottomPanel = () => {
   const store = useBuilderStore()
   const {currentEditable, bottomPanelHeight} = store
 
@@ -39,7 +39,7 @@ const _BottomPanel = () => {
   return <Resizable {...resizableProps}>{editor}</Resizable>
 }
 
-export const BottomPanel = namedObserver('BottomPanel', _BottomPanel)
+export const BottomPanel = namedObserver('BottomPanel', RawBottomPanel)
 
 const resizableStyles = css`
   display: flex;

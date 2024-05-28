@@ -89,7 +89,7 @@ const Properties = customizableObserver('RightPanel_Content', ({activeTab, ...pr
   )
 })
 
-const _Styles = ({meta, store}: { meta: Meta, store: ComponentStore }) => {
+const RawStyles = ({meta, store}: { meta: Meta, store: ComponentStore }) => {
   const t = useTranslationPart('style')
   const [device, setDevice] = useState<Device>('any')
   const isComponent = meta.kind === 'component'
@@ -108,7 +108,7 @@ const _Styles = ({meta, store}: { meta: Meta, store: ComponentStore }) => {
   </>
 }
 
-const Styles = namedObserver('Styles', _Styles)
+const Styles = namedObserver('Styles', RawStyles)
 
 interface StyleBlockProps {
   meta: Meta
@@ -119,7 +119,7 @@ interface StyleBlockProps {
   headerHint: string
 }
 
-const _StyleBlock = ({meta, store, device, cssPart, header, headerHint}: StyleBlockProps) => {
+const RawStyleBlock = ({meta, store, device, cssPart, header, headerHint}: StyleBlockProps) => {
   const initContext = useCssContextInitializer(cssPart, store, device)
   const context = store[cssPart]?.[device]?.object ?? {}
   const isComponent = meta.kind === 'component'
@@ -131,7 +131,7 @@ const _StyleBlock = ({meta, store, device, cssPart, header, headerHint}: StyleBl
   )
 }
 
-const StyleBlock = namedObserver('StyleBlock', _StyleBlock)
+const StyleBlock = namedObserver('StyleBlock', RawStyleBlock)
 
 const useCssContextInitializer = (fieldKey: CssPart, store: ComponentStore, device: Device) =>
   useCallback(() => {

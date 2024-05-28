@@ -10,7 +10,7 @@ const LtrDiv = ({children}: WrapperProps) => {
   return <div dir="ltr" style={{width: '100%', height: '100%', minHeight: 0}}>{children}</div>
 }
 
-const _CodeEditor = (props: CodeEditorProps) => {
+const RawCodeEditor = (props: CodeEditorProps) => {
   const builderStore = useBuilderStore()
   const themeFromBuilder = builderStore.theme === 'light' ? 'vs-extended' : 'vs-dark'
   const theme = props.theme ?? themeFromBuilder
@@ -30,4 +30,4 @@ const _CodeEditor = (props: CodeEditorProps) => {
   return <LtrDiv>{editor}</LtrDiv>
 }
 
-export const CodeEditor = namedObserver('CodeEditor', _CodeEditor)
+export const CodeEditor = namedObserver('CodeEditor', RawCodeEditor)

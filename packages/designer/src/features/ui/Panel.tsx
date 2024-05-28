@@ -29,7 +29,7 @@ export interface PanelProps extends PropsWithChildren<any>, CollapsedSizeProps {
   onCollapse?: Function
 }
 
-const _Panel = ({
+const RawPanel = ({
                   children,
                   placement = 'left',
                   hideCollapsed = true,
@@ -53,7 +53,7 @@ const _Panel = ({
   </PanelContainer>
 }
 
-export const Panel = namedObserver('Panel', _Panel)
+export const Panel = namedObserver('Panel', RawPanel)
 
 const transition = '200ms ease-in-out'
 

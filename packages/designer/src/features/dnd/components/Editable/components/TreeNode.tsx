@@ -18,7 +18,7 @@ export interface TreeNodeProps {
   className: string
 }
 
-const _TreeNode = ({className}: TreeNodeProps) => {
+const RawTreeNode = ({className}: TreeNodeProps) => {
   const componentData = useComponentData()
   const {expanded: expandedNodes, viewer} = useBuilderStore()
   const [hovered, setHovered] = useState(false)
@@ -63,7 +63,7 @@ const _TreeNode = ({className}: TreeNodeProps) => {
   )
 }
 
-export const TreeNode = namedObserver('TreeNode', _TreeNode)
+export const TreeNode = namedObserver('TreeNode', RawTreeNode)
 
 const SIndent = styled.div<{ depth: number }>`
   min-width: ${({depth}) => 14 * (depth + 1) + 14}px;
