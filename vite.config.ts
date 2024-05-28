@@ -12,6 +12,9 @@ export default defineConfig(({command}) => ({
     react({jsxImportSource: '@emotion/react'}),
     svgr()
   ],
+  define: {
+    'process.env.WDYR': `"${process.env.WDYR ? '1' : ''}"`
+  },
   resolve: {
     dedupe: ['react', 'react-dom'],
   },

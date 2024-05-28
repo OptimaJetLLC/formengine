@@ -1,16 +1,11 @@
-import svgr from '@svgr/rollup'
-import react from '@vitejs/plugin-react-swc'
-import {defineConfig} from 'vite'
+import {defineConfig, mergeConfig} from 'vite'
 
 import base from '../../../vite.config'
 
-export default defineConfig(({command}) => ({
-  ...base,
-  plugins: [
-    react({jsxImportSource: '@emotion/react'}),
-    svgr()
-  ],
+export default defineConfig((env) => mergeConfig(base(env), {
   resolve: {
-    dedupe: ['react', 'react-dom'],
+    alias: {
+      lodash: 'lodash-es'
+    }
   },
 }))

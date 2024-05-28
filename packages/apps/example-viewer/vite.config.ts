@@ -1,16 +1,21 @@
 import path from 'path'
 import {fileURLToPath} from 'url'
-import {defineConfig} from 'vite'
+import {defineConfig, mergeConfig} from 'vite'
 
 import base from '../../../vite.config'
 import packageJson from './package.json'
+
 const peerDependencies = (packageJson as any)['peerDependencies'] || {}
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-export default defineConfig(({command}) => ({
-  ...base,
+export default defineConfig((env) => mergeConfig(base(env), {
+  resolve: {
+    alias: {
+      lodash: 'lodash-es'
+    }
+  },
   build: {
     sourcemap: true,
     lib: {
