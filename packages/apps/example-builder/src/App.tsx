@@ -203,7 +203,9 @@ const FormBuilderApp = () => {
     formValidators={formValidators}
     i18n={enableCustomLanguages ? builderLanguages : undefined}
     actions={{
-      logEventArgs: e => console.log(e),
+      logEventArgs: e => {
+        console.info(e.type, e.sender.key, e.sender.id, (+new Date() + '').substr(-4))
+      },
       assertArgs: ActionDefinition.functionalAction((e, args) => {
         if (!e) throw new Error(`'e' is undefined`)
         if (!args) throw new Error(`'args' is args`)

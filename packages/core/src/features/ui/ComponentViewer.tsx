@@ -1,6 +1,6 @@
 import {cx} from '@emotion/css'
 import {forIn} from 'lodash-es'
-import {Fragment, useCallback, useEffect, useMemo} from 'react'
+import {Fragment, useCallback, useEffect, useMemo, useRef} from 'react'
 import {catchError, concatMap, filter, OperatorFunction, Subscription} from 'rxjs'
 import {ComponentState} from '../../stores/ComponentState'
 import {isPromise, namedObserver} from '../../utils'
@@ -14,16 +14,41 @@ import {Erroneous} from '../validation'
 import {useComponentTreeContext} from './ComponentTreeContext'
 import {DefaultWrapper} from './DefaultWrapper'
 
+type Fn = () => void
+
+function useComponentMountUnmount(init: Fn, clear: Fn) {
+  const clearRef = useRef(clear)
+  const initRef = useRef(init)
+
+  clearRef.current = clear
+  initRef.current = init
+
+  useEffect(() => {
+    initRef.current()
+
+    return () => {
+      clearRef.current()
+    }
+  }, [])
+}
+
 const useActions = (state: ComponentState) => {
   const store = useStore()
   const componentData = useComponentData()
+  const subsRef = useRef<Subscription[]>([])
 
-  //Init actions
-  useEffect(() => {
-    const subscriptions: Subscription[] = []
+  const unsubscribe = useCallback(() => {
+    subsRef.current.forEach((s) => s.unsubscribe())
+  }, [])
+
+  const createSubscriptions = useCallback(() => {
+    const result: Subscription[] = []
+
+    unsubscribe()
 
     forIn(componentData.store.events, (actionDataList: ActionData[], eventName) => {
       const actionChain: OperatorFunction<ActionEventArgs, ActionEventArgs>[] = []
+
       actionDataList.forEach((data) => {
         const actionDefinition = store.findAction(data)
         const action = getActionHandler(actionDefinition.func, data.args)
@@ -42,16 +67,29 @@ const useActions = (state: ComponentState) => {
         )
         .subscribe()
 
-      subscriptions.push(subscription)
+      result.push(subscription)
     })
 
-    return () => subscriptions.forEach(s => s.unsubscribe())
-  }, [componentData.store.events, componentData.store.key, store])
+    subsRef.current = result
+  }, [componentData.store.events, componentData.store.key, store, unsubscribe])
 
   useEffect(() => {
-    store.eventSubject.next(new ActionEventArgs(DidMountEvent, componentData, store, [], state))
-    return () => store.eventSubject.next(new ActionEventArgs(WillUnmountEvent, componentData, store, [], state))
-  }, [componentData, state, store])
+    createSubscriptions()
+  }, [createSubscriptions, unsubscribe])
+
+  useComponentMountUnmount(() => {
+    createSubscriptions()
+
+    const mountEvent = new ActionEventArgs(DidMountEvent, componentData, store, [], state)
+
+    store.eventSubject.next(mountEvent)
+  }, () => {
+    const unmountEvent = new ActionEventArgs(WillUnmountEvent, componentData, store, [], state)
+
+    store.eventSubject.next(unmountEvent)
+
+    unsubscribe()
+  })
 }
 
 function getActionHandler(func: Func, args?: Arguments) {

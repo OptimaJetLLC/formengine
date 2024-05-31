@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import {useEffect, useMemo} from 'react'
 import {ViewMode} from '../../../types'
 import {namedObserver} from '../../../utils'
 import {useStore} from '../../../utils/contexts/StoreContext'
@@ -51,6 +51,7 @@ export interface ViewerProps {
 const RawViewer = ({event}: ViewerProps) => {
   const store = useStore()
   const props = useViewerProps()
+  const data = useMemo(() => [store.form.componentTree], [store.form.componentTree])
 
   useEffect(() => {
     event?.(new EventStream(store.eventSubject))
@@ -60,7 +61,7 @@ const RawViewer = ({event}: ViewerProps) => {
 
   useEffect(() => store.loadForm(props.getForm, props.formName), [store, props.getForm, props.formName])
 
-  return <ComponentTree data={[store.form.componentTree]}/>
+  return <ComponentTree data={data}/>
 }
 
 export const Viewer = namedObserver('Viewer', RawViewer)
