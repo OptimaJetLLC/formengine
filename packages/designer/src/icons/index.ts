@@ -31,6 +31,7 @@ import {ReactComponent as Repeater} from './Repeater.svg'
 import {ReactComponent as RichTextEditor} from './RichTextEditor.svg'
 import {ReactComponent as Search} from './Search.svg'
 import {ReactComponent as Sidebar} from './Sidebar.svg'
+import {ReactComponent as Signature} from './Signature.svg'
 import {ReactComponent as StaticContent} from './StaticContent.svg'
 import {ReactComponent as Tab} from './Tab.svg'
 import {ReactComponent as TextArea} from './TextArea.svg'
@@ -72,6 +73,7 @@ export const icons = {
   Repeater,
   RichTextEditor,
   Search,
+  Signature,
   StaticContent,
   Tab,
   TextArea,
