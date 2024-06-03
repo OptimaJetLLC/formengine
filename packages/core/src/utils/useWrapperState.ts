@@ -27,7 +27,7 @@ export const useWrapperState = (componentKey: string, componentModel: Model, wra
 const getWrapperState = (viewerStore: Store, componentKey: string, componentModel: Model,
                          wrapperProps: any, localizer: ComponentLocalizer) => {
   const componentStore = new ComponentStore(componentKey, componentModel.type)
-  componentStore.props = {...wrapperProps}
+  componentStore.props = wrapperProps
   const componentData = viewerStore.createComponentData(componentStore, false, componentModel)
   return new ComponentState(componentData, viewerStore, localizer, () => ({}))
 }
