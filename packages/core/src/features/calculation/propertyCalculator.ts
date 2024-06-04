@@ -20,8 +20,13 @@ const calculateValue = (fnSource: string, formViewerData: IFormData) => {
     const result = fn(formViewerData)
     return CalculableResult.success(result)
   } catch (e) {
-    console.warn(e)
-    return CalculableResult.error([e as Error])
+    return CalculableResult.error([
+      e as Error,
+      {
+        name: 'Function source',
+        message: fnSource
+      }
+    ])
   }
 }
 
@@ -77,12 +82,13 @@ export const calculateProperties = (componentStore: ComponentStore, formViewerDa
     if (!componentProperty) return
 
     if (isFunctionalProperty(componentProperty)) {
-      try {
-        data[value] = calculatePropertyValue(componentProperty, formViewerData).result
-      } catch (e) {
-        console.error(e)
+      const {result, error, exceptions} = calculatePropertyValue(componentProperty, formViewerData)
+      if (error) {
+        const message = `Error in the calculable field '${value}' of the '${componentStore.key}' component `
+        console.warn(message, exceptions)
+        return
       }
-      return
+      data[value] = result
     }
 
     // we do not want to set an undefined value, instead the default component property will be used
