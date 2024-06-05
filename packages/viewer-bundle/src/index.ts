@@ -1,3 +1,4 @@
+import * as rSuiteComponents from '@react-form-builder/components-rsuite'
 import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader, view} from '@react-form-builder/components-rsuite'
 import {BiDi, FormViewer, FormViewerProps} from '@react-form-builder/core'
 import {createElement} from 'react'
@@ -25,15 +26,19 @@ export function renderFormViewer(elementId: string, props: Partial<FormViewerPro
 export function renderFormViewerTo(container: HTMLElement, props: Partial<FormViewerProps>) {
   const root = createRoot(container)
 
+  const componentsView = props.view ?? view
+    .withViewerWrapper(RsLocalizationWrapper)
+    .withCssLoader(BiDi.LTR, ltrCssLoader)
+    .withCssLoader(BiDi.RTL, rtlCssLoader)
+    .withCssLoader('common', formEngineRsuiteCssLoader)
+
   const formViewerProps: FormViewerProps = {
-    view: view
-      .withViewerWrapper(RsLocalizationWrapper)
-      .withCssLoader(BiDi.LTR, ltrCssLoader)
-      .withCssLoader(BiDi.RTL, rtlCssLoader)
-      .withCssLoader('common', formEngineRsuiteCssLoader),
-    ...props
+    ...props,
+    view: componentsView,
   }
 
   root.render(createElement(FormViewer, formViewerProps, null))
   return root
 }
+
+export {rSuiteComponents}

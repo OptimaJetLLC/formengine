@@ -13,6 +13,8 @@ React wrapper component properties.
 
 - **`WrapperProps`**
 
+  ↳ [`RsTooltipProps`](react_form_builder_viewer_bundle.rSuiteComponents.RsTooltipProps.md)
+
   ↳ [`RsTooltipProps`](react_form_builder_components_rsuite.RsTooltipProps.md)
 
 ## Properties

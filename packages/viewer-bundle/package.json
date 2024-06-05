@@ -45,6 +45,9 @@
     "files": [
         "dist/index.iife.js",
         "dist/index.umd.js",
+        "dist/formengine-rsuite.css",
+        "dist/rsuite-no-reset.min.css",
+        "dist/rsuite-no-reset-rtl.min.css",
         "README.md"
     ]
 }

@@ -2,6 +2,7 @@ import path from 'path'
 // @ts-ignore
 import {fileURLToPath} from 'url'
 import {defineConfig} from 'vite'
+import cp from 'vite-plugin-cp'
 
 import base from '../../vite.config'
 
@@ -19,6 +20,16 @@ export default defineConfig(({command}) => {
         formats: ['umd', 'iife'],
         fileName: format => `index.${format}.js`,
         name: 'FormEngineViewerBundle',
+      },
+      rollupOptions: {
+        plugins: [
+          cp({
+            targets: [{
+              src: '../views/rsuite/public/css/*.*',
+              dest: 'dist'
+            }]
+          }),
+        ]
       },
     },
     resolve: {

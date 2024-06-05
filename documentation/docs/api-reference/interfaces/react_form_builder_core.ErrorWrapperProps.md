@@ -13,6 +13,8 @@ Properties of the React component that wraps the form view component and display
 
 - **`ErrorWrapperProps`**
 
+  ↳ [`RsErrorMessageProps`](react_form_builder_viewer_bundle.rSuiteComponents.RsErrorMessageProps.md)
+
   ↳ [`RsErrorMessageProps`](react_form_builder_components_rsuite.RsErrorMessageProps.md)
 
 ## Properties
