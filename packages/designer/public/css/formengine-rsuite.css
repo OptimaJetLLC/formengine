@@ -22,6 +22,12 @@
     background: rgb(179 179 179);
   }
 
+  @-moz-document url-prefix() {
+    & * {
+      scrollbar-width: thin;
+    }
+  }
+
   & * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
