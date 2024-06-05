@@ -4,6 +4,24 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.2.0
+
+_June_ 5, 2024
+
+- Added the `RsLink` component to be used as a hyperlink.
+- Improved error logging when launching custom functions:
+  - The error text now includes the source code of the function.
+  - Removed unnecessary logging to the console during testing in the editor.
+- Added documentation for [storing user-defined data](/storing-user-defined-data).
+- Styles have been added to the [bundle](/installation#cdn) for the viewer.
+
+### Fixed bugs
+
+- Fixed minor style breakdowns in the Mozilla Firefox browser.
+- The last selected form is not loaded when the designer is opened.
+- The `onWillUnmount` event does not work.
+- Changes to the `Placement` property in `Error settings` are not applied to the form in real time.
+
 ## 1.1.0
 
 _May_ 3, 2024
