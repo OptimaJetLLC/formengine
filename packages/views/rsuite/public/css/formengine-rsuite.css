@@ -145,15 +145,6 @@
     color: currentColor;
   }
 
-  & input,
-  & button,
-  & select,
-  & textarea {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-  }
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: Apple-System, Arial, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, STXihei, sans-serif;
