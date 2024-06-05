@@ -37,7 +37,7 @@ const RawArgumentList = () => {
 
   return (
     <div onMouseDown={e => e.stopPropagation()}>
-      <Animation.Collapse in={show}>
+      <Animation.Collapse in={show} unmountOnExit>
         <Rows gap={1} style={{marginBlock: 8, paddingInline: 10}}>
           {Object.entries(action.params).map((arg, index) =>
             <ArgumentItem key={index} data={arg}/>)}

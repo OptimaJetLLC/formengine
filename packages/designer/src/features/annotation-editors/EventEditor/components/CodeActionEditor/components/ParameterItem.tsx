@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import {toLabeledValues} from '@react-form-builder/core'
 import type {ParameterName, ParameterType} from '@react-form-builder/core'
+import {toLabeledValues} from '@react-form-builder/core'
 import {ArrowDownLine, ArrowUpLine, Close} from '@rsuite/icons'
 import {useRef, useState} from 'react'
 import {useTranslation} from 'react-i18next'
@@ -68,7 +68,7 @@ export const ParameterItem = ({value, onRemove, onChange, parameters}: Parameter
       <RemoveButton onClick={onRemove}/>
     </Columns>
 
-    <Animation.Collapse in={!collapsed}>
+    <Animation.Collapse in={!collapsed} unmountOnExit>
       <Rows gap={10}>
         <Form model={model} checkTrigger={'change'} formValue={formState} ref={formRef}
               onChange={data => updateFormState({name: data.name, type: data.type})}>
