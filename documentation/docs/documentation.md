@@ -12,7 +12,7 @@ Form Builder is a React library for creating web forms with a simple but powerfu
 
 1. Web interface with drag and drop functionality.
 2. [Adaptive layout](/adaptive-layout).
-3. [Form validation](/validation).
+3. [Built-in form validation or optional external validation](/validation).
 4. Built-in web components based on React Suite library.
 5. [Easy integration of custom components](/custom-components).
 6. [Export form to JSON and import form from JSON](/forms-json).
