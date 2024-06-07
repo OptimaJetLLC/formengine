@@ -1,0 +1,11 @@
+{
+  "label": "FAQ",
+  "position": 31,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Guides",
+    "description": "Drag'n'Drop Form builder frequently asked questions."
+  }
+}
