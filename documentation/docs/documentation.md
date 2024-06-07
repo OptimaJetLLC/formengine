@@ -11,15 +11,17 @@ Form Builder is a React library for creating web forms with a simple but powerfu
 ## Key features of Form Builder
 
 1. Web interface with drag and drop functionality.
-2. Adaptive layout.
-3. Form validation.
+2. [Adaptive layout](/adaptive-layout).
+3. [Form validation](/validation).
 4. Built-in web components based on React Suite library.
-5. Easy integration of custom components.
-6. Export form to JSON and import form from JSON.
-7. Powerful internationalization.
-8. Custom actions.
-9. Computable properties.
-10. Templates (forms within a form).
+5. [Easy integration of custom components](/custom-components).
+6. [Export form to JSON and import form from JSON](/forms-json).
+7. [Powerful internationalization](/localization).
+8. [Custom actions](/actions).
+9. [Computable properties](/computed-properties).
+10. [Templates](/nested-components#templates) (forms within a form).
+11. [Camunda FormBuilder](/camunda-integration).
+12. [Designer customization](/designer-customization).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bixsIOB-8S8?si=3upJ5irMpKhG5Wu2" title="YouTube video player" 
 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
