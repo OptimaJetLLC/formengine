@@ -26,5 +26,5 @@ export function createTemplateMeta(name: string) {
     toArray<TemplateProps>({
       storeDataInParentForm,
     }),
-    [], templateStyleProperties, modules, <>Template: {name}</>, undefined, 'template')
+    [], templateStyleProperties, modules, undefined, undefined, 'template')
 }
