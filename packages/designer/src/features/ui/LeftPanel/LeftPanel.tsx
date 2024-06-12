@@ -8,7 +8,7 @@ import {FormViewerState} from './components/FormViewerState'
 import {LeftPanelNav} from './components/LeftPanelNav'
 
 const ViewerContent = () => (
-  <Rows style={{marginTop: 55, paddingInlineStart: 5}}>
+  <Rows style={{marginTop: 55, paddingInlineStart: 5, minHeight: 80}}>
     <FormViewerState/>
   </Rows>
 )
