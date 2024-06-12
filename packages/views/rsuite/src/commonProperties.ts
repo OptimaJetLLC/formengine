@@ -84,3 +84,7 @@ export const pickerProps = {
   onChange: event,
   onSearch: event,
 }
+
+export const alignItems = oneOf('start', 'center', 'end')
+  .default('start')
+  .radio()

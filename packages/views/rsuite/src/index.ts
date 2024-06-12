@@ -31,6 +31,7 @@ import {rsRadioGroup} from './components/RsRadioGroup'
 import {rsRepeater} from './components/RsRepeater'
 import {rsRichTextEditor} from './components/RsRichTextEditor'
 import {rsSearch} from './components/RsSearch'
+import {rsSignature} from './components/RsSignature'
 import {rsStaticContent} from './components/RsStaticContent'
 import {rsTab} from './components/RsTab'
 import {rsTextArea} from './components/RsTextArea'
@@ -50,6 +51,7 @@ const categories = {
     rsPatternFormat,
     rsRadioGroup,
     rsSearch,
+    rsSignature,
     rsTextArea,
     rsUploader
   ],
