@@ -20,11 +20,11 @@ our [GitHub repository](https://github.com/optimajet/formengine/issues).
 
 | Task                                                                | Status      |
 |---------------------------------------------------------------------|-------------|
+| Integration with Camunda                                            | Done        |
+| Hand-drawn signature component                                      | Done        |
 | Support for properties of type "object"                             | In progress |
 | Component working with data arrays (repeater)                       | In progress |
-| Integration with Camunda                                            | In progress |
 | Table component                                                     | Planned     |
-| Hand-drawn signature component                                      | Planned     |
 | Integrations with other popular component libraries (MUI, Tailwind) | Planned     |
 | Wizard component                                                    | Planned     |
 | QR-code component                                                   | Planned     |
