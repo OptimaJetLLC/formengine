@@ -45,7 +45,7 @@ const FormBuilderView = customizableObserver('MainContainer', props => (
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   overflow-y: auto;
   background-color: white;
 
