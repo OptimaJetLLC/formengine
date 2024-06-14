@@ -4,6 +4,12 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.3.1
+
+_June_ 14, 2024
+
+- Fixed a bug that caused calculated properties to not work.
+
 ## 1.3.0
 
 _June_ 13, 2024

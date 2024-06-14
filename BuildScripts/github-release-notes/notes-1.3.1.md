@@ -1,0 +1,1 @@
+- Fixed a bug that caused calculated properties to not work.
