@@ -89,6 +89,7 @@ export const calculateProperties = (componentStore: ComponentStore, formViewerDa
         return
       }
       data[value] = result
+      return
     }
 
     // we do not want to set an undefined value, instead the default component property will be used
