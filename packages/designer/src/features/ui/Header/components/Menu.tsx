@@ -4,7 +4,7 @@ import * as faSave from '@fortawesome/free-solid-svg-icons/faSave.js'
 import * as faTrash from '@fortawesome/free-solid-svg-icons/faTrash.js'
 import {namedObserver} from '@react-form-builder/core'
 import {Export as ExportIcon, FileDownload as FileDownloadIcon, FileUpload as FileUploadIcon, Import as ImportIcon} from '@rsuite/icons'
-import {Ref} from 'react'
+import type {HTMLAttributes, Ref} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Dropdown, IconButton} from 'rsuite'
 import type {WithAsProps} from 'rsuite/esm/@types/common'
@@ -63,7 +63,8 @@ const RawImportFormsButton = () => {
 
 const ImportFormsButton = namedObserver('ImportFormsButton', RawImportFormsButton)
 
-const Wrapper = customizable('MainMenu_Button', props => <div {...props}/>)
+const RawWrapper = (props: HTMLAttributes<HTMLDivElement>) => <div {...props}/>
+const Wrapper = customizable('MainMenu_Button', RawWrapper)
 
 const renderToggle = (props: WithAsProps, ref: Ref<any>) => (
   <Wrapper>

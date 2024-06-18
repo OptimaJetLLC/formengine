@@ -1,5 +1,5 @@
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
-import {useState} from 'react'
+import {ComponentProps, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {IconButton, Modal, Tooltip, Whisper} from 'rsuite'
 import {FaIcon} from '../../../components/Icons'
@@ -8,14 +8,17 @@ import {JsonView} from '../../JsonView'
 
 const icon = <FaIcon icon={faCode as any}/>
 
-export const JsonViewButton = customizableObserver('JsonViewButton', props => {
+type JsonViewButtonProps = Omit<ComponentProps<typeof Whisper>, 'placement' | 'speaker' | 'children'>
+
+const RawJsonViewButton = (props: JsonViewButtonProps) => {
   const {t} = useTranslation()
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+  const speaker = <Tooltip>{t('editJson')}</Tooltip>
 
   return <>
-    <Whisper speaker={<Tooltip>{t('editJson')}</Tooltip>} placement={'bottom'} {...props}>
+    <Whisper {...props} speaker={speaker} placement="bottom">
       <IconButton onClick={handleOpen} icon={icon} size={'sm'}/>
     </Whisper>
     <Modal open={open} size={'full'} backdrop={true}>
@@ -27,4 +30,6 @@ export const JsonViewButton = customizableObserver('JsonViewButton', props => {
       </Modal.Body>
     </Modal>
   </>
-})
+}
+
+export const JsonViewButton = customizableObserver('JsonViewButton', RawJsonViewButton)

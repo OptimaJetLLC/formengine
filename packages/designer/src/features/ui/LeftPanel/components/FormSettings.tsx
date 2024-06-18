@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import type {HTMLAttributes} from 'react'
 import {customizableObserver} from '../../../customization'
 import {useTranslationPart} from '../../../localization/hooks'
 import {ActionList} from './ActionList'
@@ -7,7 +8,7 @@ import {FormLanguageSettings} from './FormLanguageSettings'
 
 import {TooltipSettings} from './TooltipSettings'
 
-export const FormSettings = customizableObserver('Settings_Tab_Content', props => {
+const RawFormSettings = (props: HTMLAttributes<HTMLDivElement>) => {
   const t = useTranslationPart('leftPanel.formSettings')
   return <div {...props}>
     <Header marginTop={0}>{t('actions')}</Header>
@@ -19,7 +20,9 @@ export const FormSettings = customizableObserver('Settings_Tab_Content', props =
     <Header>{t('language')}</Header>
     <FormLanguageSettings/>
   </div>
-})
+}
+
+export const FormSettings = customizableObserver('Settings_Tab_Content', RawFormSettings)
 
 const Header = styled.label<{ marginTop?: number }>`
   padding-inline: 4px;

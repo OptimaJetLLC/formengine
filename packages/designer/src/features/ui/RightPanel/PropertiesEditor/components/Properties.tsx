@@ -42,7 +42,7 @@ interface PropertiesProps {
   activeTab: Section
 }
 
-const Properties = customizableObserver('RightPanel_Content', ({activeTab, ...props}: PropertiesProps) => {
+const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
   const store = useBuilderStore()
   const tooltipType = useTooltipType()
   const getLabel = useTranslationPart('propertiesEditor')
@@ -87,7 +87,9 @@ const Properties = customizableObserver('RightPanel_Content', ({activeTab, ...pr
       </Container>
     </ComponentDataProvider>
   )
-})
+}
+
+const Properties = customizableObserver('RightPanel_Content', RawProperties)
 
 const RawStyles = ({meta, store}: { meta: Meta, store: ComponentStore }) => {
   const t = useTranslationPart('style')

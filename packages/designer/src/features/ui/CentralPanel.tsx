@@ -1,14 +1,14 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {ComponentData, FormViewer, useViewerProps} from '@react-form-builder/core'
-import {useCallback} from 'react'
+import {ComponentProps, useCallback} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {customizable, customizableObserver} from '../customization'
 import {EditableWrapper, getBuilderChildren} from '../dnd'
 import {Header} from './Header/Header'
 import {PanelContainer} from './Panel'
 
-export const CentralPanel = customizableObserver('CentralPanel', props => {
+const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
   const builderStore = useBuilderStore()
   const {viewMode, landscapeMode, builderMode} = builderStore
   const viewerProps = useViewerProps()
@@ -27,7 +27,9 @@ export const CentralPanel = customizableObserver('CentralPanel', props => {
       </SFormContainer>
     </SContainer>
   )
-})
+}
+
+export const CentralPanel = customizableObserver('CentralPanel', RawCentralPanel)
 
 const SContainer = styled.div`
   display: flex;
@@ -55,7 +57,6 @@ const SFormContainer = customizable('FormContainer', styled(PanelContainer)`
   .rs-theme-dark & {
     background-color: #414549;
   }
-
 
   &.mobile {
     width: 400px;

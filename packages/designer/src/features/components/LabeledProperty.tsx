@@ -61,7 +61,7 @@ export interface CodeButtonProps extends CalculableEditorProps {
   componentData: ComponentData
 }
 
-const CodeButton = customizableObserver('PropertyCodeButton', (props: CodeButtonProps) => {
+const RawCodeButton = (props: CodeButtonProps) => {
   const {annotation, getComputeCode, setComputeCode, disableCompute, getComputeType, hasComputeCode, componentData} = props
   const store = useBuilderStore()
   const hasCode = hasComputeCode('function')
@@ -107,22 +107,17 @@ const CodeButton = customizableObserver('PropertyCodeButton', (props: CodeButton
                  icon={<FaIcon icon={getIcon()} color={getColor()}/>}
                  size={'xs'} appearance={'subtle'}/>
   </Hinted>
-})
+}
+
+const CodeButton = customizableObserver('PropertyCodeButton', RawCodeButton)
 
 const CustomizedLabel = customizable('PropertyLabel', HintedLabel)
-const CustomizedInput = customizable('PropertyInput', props => <div style={{width: '100%'}} {...props}/>)
 
-/**
- * The React component that displays a component property and label.
- * @param props the React component properties.
- * @param props.idPrefix the prefix for the id attribute in HTML.
- * @param props.annotation the component property metadata.
- * @param props.getEditableProperty function that returns the parameters of the component's editable property.
- * @param props.children the React component that displays a component property.
- * @param props.props the other properties of the component.
- * @returns the React element.
- */
-export const LabeledProperty = customizable('LabeledProperty', (props: LabeledPropertyProps) => {
+const RawCustomizedInput = (props: HTMLAttributes<HTMLDivElement>) => <div style={{width: '100%'}} {...props}/>
+
+const CustomizedInput = customizable('PropertyInput', RawCustomizedInput)
+
+const RawLabeledProperty = (props: LabeledPropertyProps) => {
   const {annotation, children, style} = props
   const {className, ...codeButtonProps} = props
   const id = useUniqueId('id-')
@@ -138,7 +133,19 @@ export const LabeledProperty = customizable('LabeledProperty', (props: LabeledPr
     </Columns>
     {!!children && <CustomizedInput>{cloneElement(children, {id})}</CustomizedInput>}
   </LabeledInput>
-})
+}
+
+/**
+ * The React component that displays a component property and label.
+ * @param props the React component properties.
+ * @param props.idPrefix the prefix for the id attribute in HTML.
+ * @param props.annotation the component property metadata.
+ * @param props.getEditableProperty function that returns the parameters of the component's editable property.
+ * @param props.children the React component that displays a component property.
+ * @param props.props the other properties of the component.
+ * @returns the React element.
+ */
+export const LabeledProperty = customizable('LabeledProperty', RawLabeledProperty)
 
 const SIconButton = styled(IconButton)`
   min-width: 24px;

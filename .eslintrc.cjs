@@ -19,6 +19,16 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint', 'import', 'unused-imports', 'react-hooks', 'no-secrets'],
   rules: {
+    'no-restricted-syntax': ['error', {
+      "selector": "CallExpression[callee.name='customizableObserver'] > ArrowFunctionExpression.arguments",
+      "message": "never pass anonymous react components"
+    }, {
+      "selector": "CallExpression[callee.name='customizable'] > ArrowFunctionExpression.arguments",
+      "message": "never pass anonymous react components"
+    }, {
+      "selector": "CallExpression[callee.name='namedObserver'] > ArrowFunctionExpression.arguments",
+      "message": "never pass anonymous react components"
+    }],
     'no-secrets/no-secrets': 'error',
     'no-console': ['error', {allow: ['warn', 'error']}],
     'no-debugger': 'error',

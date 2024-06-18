@@ -1,4 +1,4 @@
-import {ReactElement} from 'react'
+import type {ComponentProps, ReactElement} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {BuilderMode} from '../../../utils/types'
 import {Rows} from '../../components/Containers'
@@ -18,13 +18,17 @@ const leftPanelViews: Record<BuilderMode, ReactElement> = {
   'viewer': <ViewerContent/>
 }
 
-export const LeftPanel = customizableObserver('LeftPanel', props => {
+type LeftPanelProps = Omit<ComponentProps<typeof Panel>, 'placement'>
+
+const RawLeftPanel = (props: LeftPanelProps) => {
   const store = useBuilderStore()
   const view = leftPanelViews[store.builderMode]
 
   return (
-    <Panel placement={'left'} {...props}>
+    <Panel {...props} placement="left">
       {view}
     </Panel>
   )
-})
+}
+
+export const LeftPanel = customizableObserver('LeftPanel', RawLeftPanel)

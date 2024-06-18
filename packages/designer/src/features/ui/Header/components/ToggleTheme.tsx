@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import * as faMoon from '@fortawesome/free-solid-svg-icons/faMoon.js'
 import * as faSun from '@fortawesome/free-solid-svg-icons/faSun.js'
-import {useEffect, useMemo, useState} from 'react'
+import {ComponentProps, useEffect, useMemo, useState} from 'react'
 import {Tooltip, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {BuilderTheme} from '../../../../utils/types'
@@ -14,7 +14,9 @@ const icons: Record<BuilderTheme, any> = {
   light: faSun
 }
 
-export const ToggleTheme = customizableObserver('ToggleThemeButton', props => {
+type ToggleThemeProps = Omit<ComponentProps<typeof Whisper>, 'placement' | 'speaker' | 'children'>
+
+const RawToggleTheme = (props: ToggleThemeProps) => {
   const store = useBuilderStore()
   const t = useTranslationPart('rightMenu')
   const {theme} = store
@@ -32,15 +34,18 @@ export const ToggleTheme = customizableObserver('ToggleThemeButton', props => {
     onClick: () => store.theme = isDark ? 'light' : 'dark',
     className: store.theme
   }), [icon, isDark, store])
+  const speaker = <Tooltip>{t('toggleTheme')}</Tooltip>
 
   return (
-    <Whisper speaker={<Tooltip>{t('toggleTheme')}</Tooltip>} placement={'bottom'} {...props}>
+    <Whisper {...props} speaker={speaker} placement="bottom">
       <div>
         <IconButton {...iconProps}/>
       </div>
     </Whisper>
   )
-})
+}
+
+export const ToggleTheme = customizableObserver('ToggleThemeButton', RawToggleTheme)
 
 const IconButton = styled(FaIcon)`
   cursor: pointer;

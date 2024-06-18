@@ -1,6 +1,6 @@
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {customizableObserver} from '../../customization'
-import {Panel} from '../Panel'
+import {Panel, PanelProps} from '../Panel'
 import {PropertiesEditor} from './PropertiesEditor'
 
 const rightPanelViews = {
@@ -8,13 +8,17 @@ const rightPanelViews = {
   'viewer': null
 }
 
-export const RightPanel = customizableObserver('RightPanel', props => {
+type RightPanelProps = Omit<PanelProps, 'placement'>
+
+const RawRightPanel = (props: RightPanelProps) => {
   const store = useBuilderStore()
   const view = rightPanelViews[store.builderMode]
 
   return (
-    <Panel placement={'right'} {...props}>
+    <Panel {...props} placement="right">
       {view}
     </Panel>
   )
-})
+}
+
+export const RightPanel = customizableObserver('RightPanel', RawRightPanel)

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {ComponentTree, ViewerPropsProvider} from '@react-form-builder/core'
 import {CollaspedOutline, ExpandOutline} from '@rsuite/icons'
-import {useCallback, useEffect, useMemo} from 'react'
+import {ComponentProps, useCallback, useEffect, useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
@@ -11,7 +11,7 @@ import {DraggableTreeNode} from '../../../dnd'
 
 const treeStyle = {overflow: 'hidden', flex: 1}
 
-const Tree = customizableObserver('Tree_Tab_Content', props => {
+const RawTree = (props: ComponentProps<typeof Rows>) => {
   const {t} = useTranslation()
   const builderStore = useBuilderStore()
   const {componentTree} = builderStore.viewer.form
@@ -43,7 +43,9 @@ const Tree = customizableObserver('Tree_Tab_Content', props => {
       </ViewerPropsProvider>
     </STreeContainer>
   </Rows>
-})
+}
+
+const Tree = customizableObserver('Tree_Tab_Content', RawTree)
 
 const STreeContainer = styled.div`
   display: flex;

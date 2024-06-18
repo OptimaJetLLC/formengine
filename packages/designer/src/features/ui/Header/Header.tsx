@@ -3,6 +3,7 @@ import {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faRedo from '@fortawesome/free-solid-svg-icons/faRedo.js'
 import * as faSave from '@fortawesome/free-solid-svg-icons/faSave.js'
 import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo.js'
+import type {ComponentProps} from 'react'
 import {ButtonGroup, IconButton} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../components/Icons'
@@ -17,11 +18,12 @@ import {ViewModes} from './components/ViewModes'
 
 const Toolbar = customizableObserver('Header_Toolbar', ButtonGroup)
 
-const Header = customizableObserver('Header', props => {
+const RawHeader = (props: ComponentProps<typeof Container>) => {
   const builderStore = useBuilderStore()
   const onSave = useSaveForm()
   const undoer = builderStore.undoer
   const showErrorsPanel = false
+
   return (
     <Container {...props}>
       <LeftPart>
@@ -51,7 +53,9 @@ const Header = customizableObserver('Header', props => {
       </RightPart>
     </Container>
   )
-})
+}
+
+const Header = customizableObserver('Header', RawHeader)
 
 const LeftPart = styled.div``
 

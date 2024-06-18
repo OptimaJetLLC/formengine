@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from 'react'
+import {ComponentProps, useCallback, useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
@@ -7,7 +7,7 @@ import {List, ListItem} from '../../../components/Containers'
 import {customizableObserver} from '../../../customization'
 import {useShowMessage} from '../../../toast/toast'
 
-export const FormList = customizableObserver('Forms_Tab_Content', props => {
+const RawFormList = (props: ComponentProps<typeof List>) => {
   const builderStore = useBuilderStore()
   const [formList, setFormList] = useState<string[]>([])
   const {t} = useTranslation()
@@ -58,4 +58,6 @@ export const FormList = customizableObserver('Forms_Tab_Content', props => {
       : <ListItem>{t('formsList.noFormsInFormStorage')}</ListItem>
     }
   </List>
-})
+}
+
+export const FormList = customizableObserver('Forms_Tab_Content', RawFormList)

@@ -4,6 +4,7 @@ import * as faMobile from '@fortawesome/free-solid-svg-icons/faMobile.js'
 import * as faTablet from '@fortawesome/free-solid-svg-icons/faTablet.js'
 import type {ViewMode} from '@react-form-builder/core'
 import {Icon} from '@rsuite/icons'
+import type {ComponentProps} from 'react'
 import {ButtonGroup, IconButton, Tooltip, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../../components/Icons'
@@ -18,7 +19,7 @@ const resolutions: [ViewMode, any][] = [
   ['tablet', faTablet]
 ]
 
-export const ViewModes = customizableObserver('ResolutionSelect', props => {
+const RawViewModes = (props: ComponentProps<typeof SDiv>) => {
   const store = useBuilderStore()
   const t = useTranslationPart('rightMenu.modes')
   const {viewMode, landscapeMode} = store
@@ -39,7 +40,9 @@ export const ViewModes = customizableObserver('ResolutionSelect', props => {
       <JsonViewButton/>
     </ButtonGroup>
   </SDiv>
-})
+}
+
+export const ViewModes = customizableObserver('ResolutionSelect', RawViewModes)
 
 const SDiv = styled.div`
   display: flex;

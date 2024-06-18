@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import {namedObserver, SuppressResizeObserverErrors} from '@react-form-builder/core'
-import {Suspense} from 'react'
+import {ComponentProps, Suspense} from 'react'
 import {Loader} from 'rsuite'
 import {customizableObserver} from './features/customization'
 import {BottomPanel} from './features/ui/BottomPanel'
@@ -17,15 +17,14 @@ import {FormBuilderProps} from './FormBuilderProps'
  * @param props the React component properties.
  * @returns the React element.
  */
-const RawFormBuilder = (props: FormBuilderProps) => {
-  return <BuilderProviders props={props}>
+const RawFormBuilder = (props: FormBuilderProps) =>
+  <BuilderProviders props={props}>
     <FormBuilderView/>
   </BuilderProviders>
-}
 
 export const FormBuilder = namedObserver('FormBuilder', RawFormBuilder)
 
-const FormBuilderView = customizableObserver('MainContainer', props => (
+const RawFormBuilderView = (props: ComponentProps<typeof Container>) => (
   <SuppressResizeObserverErrors>
     <Suspense fallback={<Loader center content="loading"/>}>
       <Container>
@@ -40,7 +39,9 @@ const FormBuilderView = customizableObserver('MainContainer', props => (
       </Container>
     </Suspense>
   </SuppressResizeObserverErrors>
-))
+)
+
+const FormBuilderView = customizableObserver('MainContainer', RawFormBuilderView)
 
 const Container = styled.div`
   display: flex;

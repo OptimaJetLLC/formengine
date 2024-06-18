@@ -30,11 +30,12 @@ const useRenderTab = (section: Section) => {
   }, [t, section])
 }
 
-export const NavTab = customizableObserver('RightPanel_Nav', ({activeTab, setActiveTab, ...props}: NavProps) => {
-  return <SNav activeKey={activeTab} onSelect={setActiveTab} appearance="subtle"  {...props}>
+const RawNavTab = ({activeTab, setActiveTab, ...props}: NavProps) =>
+  <SNav activeKey={activeTab} onSelect={setActiveTab} appearance="subtle" {...props}>
     {useRenderTab(Section.Main)}
     {useRenderTab(Section.Style)}
     {useRenderTab(Section.Actions)}
     {useRenderTab(Section.Rules)}
   </SNav>
-})
+
+export const NavTab = customizableObserver('RightPanel_Nav', RawNavTab)
