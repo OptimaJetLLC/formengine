@@ -121,17 +121,17 @@ const RawComponentViewer = () => {
 
   useActions(componentState)
 
-  const props = componentState.get
+  const {key, ...otherProps} = componentState.get
   const {kind, component: Component} = data.model
-  const containerClassName = cx(props.className, componentState.wrapperClassName)
+  const containerClassName = cx(otherProps.className, componentState.wrapperClassName)
 
   const Wrapper = componentWrapper ?? DefaultWrapper
   const Tooltip = data.store.tooltipProps ? TooltipWrapper : Fragment
   const ContainerComponent = componentWrapper ?? Component
-  const component = <Component {...props}/>
+  const component = <Component key={key} {...otherProps}/>
 
   if (kind === 'container') {
-    return <ContainerComponent {...props} className={containerClassName}/>
+    return <ContainerComponent key={key} {...otherProps} className={containerClassName}/>
   }
 
   return <Wrapper className={kind === 'template' ? containerClassName : componentState.wrapperClassName}>
