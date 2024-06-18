@@ -5,6 +5,7 @@ import {IFormData} from '../../utils/IFormData'
 import {View} from '../define'
 import {EventStream} from '../event/utils/EventStream'
 import {Language} from '../localization/types'
+import type {ErrorWrapperProps} from '../validation'
 import type {Validators} from '../validation/types/CustomValidationRules'
 import type {ComponentLocalizer} from './ComponentLocalizer'
 import type {CustomActions} from './CustomActions'
@@ -63,6 +64,11 @@ export interface FormViewerProps {
    * The React component that wraps every component in a form. **Internal use only.**
    */
   componentWrapper?: ComponentType<any>
+
+  /**
+   * The default error wrapper used when errorType is not specified in the form.
+   */
+  errorWrapper?: ComponentType<ErrorWrapperProps>
 
   /**
    * Display resolution type.

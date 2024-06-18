@@ -43,7 +43,8 @@ const RawExistingStoreProvider = ({
   useEffect(() => {
     store.formViewerPropsStore.applyProps(props)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.initialData, props.view, props.validators, props.formValidators, props.localize, props.language, props.actions])
+  }, [props.initialData, props.view, props.validators, props.formValidators, props.localize, props.language, props.actions,
+    props.errorWrapper])
 
   return (
     <ViewerPropsProvider value={props}>

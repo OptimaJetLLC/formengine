@@ -1,4 +1,5 @@
 import {makeObservable, observable} from 'mobx'
+import type {ComponentType} from 'react'
 import {View} from '../features/define'
 import type {ActionValues} from '../features/event'
 import type {FormViewerProps} from '../features/form-viewer'
@@ -6,6 +7,7 @@ import type {ComponentLocalizer} from '../features/form-viewer/ComponentLocalize
 import {customActionsToActionsValues} from '../features/form-viewer/CustomActions'
 import type {FormValidators} from '../features/form-viewer/FormValidators'
 import {Language} from '../features/localization/types'
+import type {ErrorWrapperProps} from '../features/validation'
 import type {Validators} from '../features/validation/types/CustomValidationRules'
 import {nameObservable} from '../utils/observableNaming'
 
@@ -41,6 +43,10 @@ export class FormViewerPropsStore {
    * The full language code passed in the FormViewer properties.
    */
   propsLanguage?: Language
+  /**
+   * The default error wrapper used when errorType is not specified in the form.
+   */
+  errorWrapper?: ComponentType<ErrorWrapperProps>
 
   /**
    * Constructs a new FormViewerPropsStore from the given FormViewerProps.
@@ -59,7 +65,8 @@ export class FormViewerPropsStore {
       formValidators: observable.ref,
       localizer: observable.ref,
       actions: observable.ref,
-      propsLanguage: observable.ref
+      propsLanguage: observable.ref,
+      errorWrapper: observable.ref,
     }, {name: nameObservable(`FormViewerPropsStore`)})
   }
 
@@ -75,6 +82,7 @@ export class FormViewerPropsStore {
     this.localizer = formViewerProps.localize
     this.actions = customActionsToActionsValues(formViewerProps.actions)
     this.propsLanguage = formViewerProps.language
+    this.errorWrapper = formViewerProps.errorWrapper
   }
 
   /**
@@ -90,6 +98,7 @@ export class FormViewerPropsStore {
     clone.localizer = this.localizer
     clone.actions = this.actions
     clone.propsLanguage = this.propsLanguage
+    clone.errorWrapper = this.errorWrapper
     return clone
   }
 }
