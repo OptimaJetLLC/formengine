@@ -14,7 +14,7 @@ jobs:
     runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run Tests
         run: earthly --ci +npm-test
@@ -24,7 +24,7 @@ jobs:
     runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run Build
         run: earthly --ci +npm-build
@@ -34,7 +34,7 @@ jobs:
     runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run Check
         run: earthly --ci +npm-check-circular-deps
@@ -44,7 +44,7 @@ jobs:
     runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run Check
         run: earthly --ci +npm-check-wrong-imports
@@ -54,7 +54,7 @@ jobs:
     runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run ESLint
         run: earthly --ci +npm-eslint
@@ -64,7 +64,7 @@ jobs:
     runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run check unused exports
         run: earthly --ci +npm-check-unused-exports
@@ -74,7 +74,7 @@ jobs:
     runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Perform a type check
         run: earthly --ci +npm-check-tsc
@@ -84,7 +84,7 @@ jobs:
     runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Bundle
         run: earthly --ci +npm-bundle
@@ -94,7 +94,7 @@ jobs:
     runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Bundle
         run: earthly --ci +npm-documentation-build
