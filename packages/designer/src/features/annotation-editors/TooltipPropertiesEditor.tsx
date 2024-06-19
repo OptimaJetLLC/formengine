@@ -1,6 +1,6 @@
 import {namedObserver, useTooltipType} from '@react-form-builder/core'
 import {useCallback} from 'react'
-import useUniqueId from 'rsuite/esm/utils/useUniqueId.js'
+import {useUniqueId} from 'rsuite/esm/internals/hooks/useUniqueId.js'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {LabeledInput} from '../components/Containers'
 import {useTranslationPart} from '../localization/hooks'

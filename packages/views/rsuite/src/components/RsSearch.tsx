@@ -12,6 +12,8 @@ interface RsSearchProps extends InputPickerProps {
   onLoadData?: LoadDataHandler
 }
 
+const CustomCaret = () => null
+
 const RsSearch = ({data, label, onLoadData, onSearch, onChange, value = '', className, ...props}: RsSearchProps) => {
   const {loading, onOpen, ...loadProps} = useLoadData({data, onLoadData, onSearch, value})
   const renderMenu = (menu: ReactNode) => loadProps.data?.length ? menu : null
@@ -28,7 +30,7 @@ const RsSearch = ({data, label, onLoadData, onSearch, onChange, value = '', clas
     <RsLabeledInput className={className}>
       <Form.ControlLabel>{label}</Form.ControlLabel>
       <Container>
-        <SInputPicker {...props} {...loadProps} onChange={handleChange} renderMenu={renderMenu}/>
+        <SInputPicker {...props} {...loadProps} onChange={handleChange} renderMenu={renderMenu} caretAs={CustomCaret}/>
         {!(props.cleanable && value) && <Icon className={'search-icon'}/>}
       </Container>
     </RsLabeledInput>
@@ -53,10 +55,6 @@ const Container = styled.div`
 
 const SInputPicker = styled(InputPicker)`
   flex: 1;
-
-  .rs-picker-toggle-caret.rs-icon {
-    display: none;
-  }
 `
 
 export const rsSearch = define(RsSearch, 'RsSearch')

@@ -2,7 +2,7 @@ import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {define, ErrorWrapperProps, string} from '@react-form-builder/core'
 import {Form} from 'rsuite'
-import type {TypeAttributes} from 'rsuite/esm/@types/common'
+import type {TypeAttributes} from 'rsuite/esm/internals/types'
 import {placement} from '../commonProperties'
 
 /**

@@ -1,5 +1,5 @@
 import {array, boolean, color, event, number, oneOf, string, toLabeledValues} from '@react-form-builder/core'
-import type {TypeAttributes} from 'rsuite/esm/@types/common'
+import type {TypeAttributes} from 'rsuite/esm/internals/types'
 
 type Placement = TypeAttributes.Placement;
 

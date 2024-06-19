@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import {Language, namedObserver} from '@react-form-builder/core'
 import {toUpper} from 'lodash-es'
 import {useMemo} from 'react'
-import type {ItemDataType} from 'rsuite/esm/@types/common'
+import type {ItemDataType} from 'rsuite/esm/internals/types'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {FixedSelectPicker} from '../../ui/FixedSelectPicker'
 

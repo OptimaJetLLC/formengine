@@ -7,7 +7,7 @@ import {Export as ExportIcon, FileDownload as FileDownloadIcon, FileUpload as Fi
 import type {HTMLAttributes, Ref} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Dropdown, IconButton} from 'rsuite'
-import type {WithAsProps} from 'rsuite/esm/@types/common'
+import type {WithAsProps} from 'rsuite/esm/internals/types'
 import {uploadBinaryFile} from '../../../../stores/fileUpload'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../../components/Icons'
