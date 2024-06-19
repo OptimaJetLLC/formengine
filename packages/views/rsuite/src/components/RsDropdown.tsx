@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import {array, define, string, toLabeledValues} from '@react-form-builder/core'
-import type {KeyboardEvent, ReactNode, SyntheticEvent} from 'react'
+import type {ReactNode} from 'react'
 import type {InputPickerProps} from 'rsuite'
 import {Form, InputPicker, Loader} from 'rsuite'
 import {pickerProps} from '../commonProperties'
@@ -12,7 +12,7 @@ interface RsDropdownProps extends InputPickerProps {
   onLoadData?: LoadDataHandler
 }
 
-const RsDropdown = ({data, label, onLoadData, onSearch, onOpen, value = '', className, onChange, ...props}: RsDropdownProps) => {
+const RsDropdown = ({data, label, onLoadData, onSearch, onOpen, value = '', className, ...props}: RsDropdownProps) => {
   const {loading, ...loadProps} = useLoadData({data, onLoadData, onSearch, onOpen, value})
 
   const renderMenu = (menu: ReactNode) => <>
@@ -20,16 +20,10 @@ const RsDropdown = ({data, label, onLoadData, onSearch, onOpen, value = '', clas
     {loading && <SLoader/>}
   </>
 
-  const handleChange = (value: any, e: SyntheticEvent) => {
-    const pressedEnter = (e as KeyboardEvent).code === 'Enter'
-    if (!props.creatable && pressedEnter) return
-    onChange?.(value, e)
-  }
-
   return (
     <RsLabeledInput className={className}>
       <Form.ControlLabel>{label}</Form.ControlLabel>
-      <InputPicker {...props} {...loadProps} onChange={handleChange} renderMenu={renderMenu}/>
+      <InputPicker {...props} {...loadProps} renderMenu={renderMenu}/>
     </RsLabeledInput>
   )
 }
