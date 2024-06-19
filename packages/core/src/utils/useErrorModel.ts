@@ -1,5 +1,6 @@
 import {useMemo} from 'react'
 import {Model} from '../features/define'
+import {useViewerProps} from '../features/form-viewer/components/ViewerPropsContext'
 import {errorMessageModel, ErrorWrapperProps} from '../features/validation/components/DefaultErrorMessage'
 import {useStore} from './contexts/StoreContext'
 
@@ -10,9 +11,11 @@ export const useErrorModel = (): Model<ErrorWrapperProps> => {
   const viewerStore = useStore()
   const errorType = viewerStore.form.errorType
   const view = viewerStore.formViewerPropsStore.view
+  const viewerProps = useViewerProps()
 
   return useMemo(() => {
-    const model = errorType ? view.find(errorType) : errorMessageModel
+    const defaultModel = viewerProps.errorWrapper ? new Model(viewerProps.errorWrapper) : errorMessageModel
+    const model = errorType ? view.find(errorType) : defaultModel
     return model ?? errorMessageModel
-  }, [errorType, view])
+  }, [errorType, view, viewerProps.errorWrapper])
 }

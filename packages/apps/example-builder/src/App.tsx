@@ -14,6 +14,7 @@ import {BuilderView, FormBuilder, FormBuilderI18n} from '@react-form-builder/des
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useRef, useState} from 'react'
 import {frFR, trTR} from 'rsuite/esm/locales/index.js'
+import {CustomErrorWrapper} from './components/CustomErrorWrapper'
 import {simpleCustomization} from './customization'
 import {Designer} from './Designer'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
@@ -154,6 +155,8 @@ const getFormFn = (formName?: string) => {
   return indexedDbExists ? getForm(name) : getFormFromJson(name)
 }
 
+const useCustomErrorWrapper = false
+
 const FormBuilderApp = () => {
   const ref = useRefWithLog<IFormViewer>('ViewerRef', logEvents)
   const builderRef = useRefWithLog<IFormBuilder>('BuilderRef', logEvents)
@@ -202,6 +205,7 @@ const FormBuilderApp = () => {
     validators={customValidators}
     formValidators={formValidators}
     i18n={enableCustomLanguages ? builderLanguages : undefined}
+    errorWrapper={useCustomErrorWrapper ? CustomErrorWrapper : undefined}
     actions={{
       logEventArgs: e => {
         console.info(e.type, e.sender.key, e.sender.id, (+new Date() + '').substr(-4))

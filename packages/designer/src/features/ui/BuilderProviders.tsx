@@ -77,7 +77,8 @@ const RawBuilderProviders = ({children, props}: BuilderProvidersProps) => {
     if (!store) return
     store.formViewerPropsStore.applyProps(viewerProps)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.initialData, props.view, props.validators, props.formValidators, props.localize, props.language, props.actions])
+  }, [props.initialData, props.view, props.validators, props.formValidators, props.localize, props.language, props.actions,
+    props.errorWrapper])
 
   if (!builderStore || !store) return null
 
