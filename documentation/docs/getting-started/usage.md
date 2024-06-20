@@ -25,6 +25,7 @@ You can simply copy and paste the below code into your project and use the `Desi
 
 ```tsx title='Designer.tsx'
 import {
+  formEngineRsuiteCssLoader,
   ltrCssLoader,
   rsErrorMessage,
   RsLocalizationWrapper,
@@ -34,7 +35,7 @@ import {
 } from '@react-form-builder/components-rsuite'
 import {ActionDefinition, BiDi, ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
 import {BuilderView, FormBuilder, IFormStorage} from '@react-form-builder/designer'
-import {useCallback, useEffect, useRef} from 'react'
+import {useCallback, useRef} from 'react'
 
 // Here you can pass the metadata of your components
 const componentsMetadata = rSuiteComponents.map(definer => definer.build())
@@ -50,6 +51,7 @@ const builderView = new BuilderView(componentsMetadata)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
+  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 // This is where you can define the custom storage for the designer
 const formStorage: IFormStorage | undefined = undefined
@@ -198,14 +200,15 @@ async function getFormFn(name?: string) {
 }
 
 export const Designer = () => {
-  const ref = useRef<IFormViewer>(null)
+  const ref = useRef<IFormViewer>()
 
-  useEffect(() => {
-    if (ref.current) {
+  const setRef = useCallback((viewer: IFormViewer | null) => {
+    if (viewer) {
       // if you want to work with the internal FormViewer component in an imperative style
-      console.log('Viewer', ref.current)
+      ref.current = viewer
+      console.log(ref.current)
     }
-  }, [ref.current])
+  }, [])
 
   // custom function for localizing component properties
   const localizeFn = useCallback<ComponentLocalizer>((componentStore, language) => {
@@ -226,7 +229,7 @@ export const Designer = () => {
       onFormDataChange={({data, errors}) => {
         console.log('onFormDataChange', {data, errors})
       }}
-      viewerRef={ref}
+      viewerRef={setRef}
       validators={customValidators}
       actions={{
         logEventArgs: e => console.log(e),
@@ -274,9 +277,15 @@ additional properties to the properties of the `FormBuilder` component that are 
 You can simply copy and paste the below code into your project and use the `Viewer` component in your application:
 
 ```tsx title='Viewer.tsx'
-import {ltrCssLoader, RsLocalizationWrapper, rSuiteComponents, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {
+  formEngineRsuiteCssLoader,
+  ltrCssLoader,
+  RsLocalizationWrapper,
+  rSuiteComponents,
+  rtlCssLoader
+} from '@react-form-builder/components-rsuite'
 import {ActionDefinition, BiDi, ComponentLocalizer, createView, FormViewer, IFormViewer, Validators} from '@react-form-builder/core'
-import {useCallback, useEffect, useRef} from 'react'
+import {useCallback, useRef} from 'react'
 
 // highlight-start
 // Here you can pass the metadata of your components
@@ -289,6 +298,7 @@ const view = createView(componentsMetadata)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
+  .withCssLoader('common', formEngineRsuiteCssLoader)
 // highlight-end
 
 // You can define custom validators for form fields
@@ -435,14 +445,15 @@ async function getFormFn(name?: string) {
 }
 
 export const Viewer = () => {
-  const ref = useRef<IFormViewer>(null)
+  const ref = useRef<IFormViewer>()
 
-  useEffect(() => {
-    if (ref.current) {
+  const setRef = useCallback((viewer: IFormViewer | null) => {
+    if (viewer) {
       // if you want to work with the internal FormViewer component in an imperative style
-      console.log('Viewer', ref.current)
+      ref.current = viewer
+      console.log(ref.current)
     }
-  }, [ref.current])
+  }, [])
 
   // custom function for localizing component properties
   const localizeFn = useCallback<ComponentLocalizer>((componentStore, language) => {
@@ -463,7 +474,7 @@ export const Viewer = () => {
       onFormDataChange={({data, errors}) => {
         console.log('onFormDataChange', {data, errors})
       }}
-      viewerRef={ref}
+      viewerRef={setRef}
       validators={customValidators}
       actions={{
         logEventArgs: e => console.log(e),

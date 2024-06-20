@@ -6,7 +6,7 @@ import {
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
 import {ActionDefinition, BiDi, ComponentLocalizer, createView, FormViewer, IFormViewer, Validators} from '@react-form-builder/core'
-import {useCallback, useEffect, useRef} from 'react'
+import {useCallback, useRef} from 'react'
 
 // highlight-start
 // Here you can pass the metadata of your components
@@ -166,14 +166,15 @@ async function getFormFn(name?: string) {
 }
 
 export const Viewer = () => {
-  const ref = useRef<IFormViewer>(null)
+  const ref = useRef<IFormViewer>()
 
-  useEffect(() => {
-    if (ref.current) {
+  const setRef = useCallback((viewer: IFormViewer | null) => {
+    if (viewer) {
       // if you want to work with the internal FormViewer component in an imperative style
-      console.log('Viewer', ref.current)
+      ref.current = viewer
+      console.log(ref.current)
     }
-  }, [ref.current])
+  }, [])
 
   // custom function for localizing component properties
   const localizeFn = useCallback<ComponentLocalizer>((componentStore, language) => {
@@ -194,7 +195,7 @@ export const Viewer = () => {
       onFormDataChange={({data, errors}) => {
         console.log('onFormDataChange', {data, errors})
       }}
-      viewerRef={ref}
+      viewerRef={setRef}
       validators={customValidators}
       actions={{
         logEventArgs: e => console.log(e),

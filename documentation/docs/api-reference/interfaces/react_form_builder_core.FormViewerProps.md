@@ -44,6 +44,14 @@ If true, the component will not be wrapped by the error display component.
 
 ___
 
+### errorWrapper
+
+• `Optional` **errorWrapper**: `ComponentType`<[`ErrorWrapperProps`](react_form_builder_core.ErrorWrapperProps.md)\>
+
+The default error wrapper used when errorType is not specified in the form.
+
+___
+
 ### event
 
 • `Optional` **event**: (`stream`: [`EventStream`](../classes/react_form_builder_core.EventStream.md)) => `void`

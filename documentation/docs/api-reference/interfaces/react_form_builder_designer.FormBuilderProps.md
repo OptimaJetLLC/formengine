@@ -82,6 +82,18 @@ Omit.erroneous
 
 ___
 
+### errorWrapper
+
+• `Optional` **errorWrapper**: `ComponentType`<[`ErrorWrapperProps`](react_form_builder_core.ErrorWrapperProps.md)\>
+
+The default error wrapper used when errorType is not specified in the form.
+
+#### Inherited from
+
+Omit.errorWrapper
+
+___
+
 ### event
 
 • `Optional` **event**: (`stream`: [`EventStream`](../classes/react_form_builder_core.EventStream.md)) => `void`

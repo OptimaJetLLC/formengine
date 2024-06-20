@@ -12,14 +12,15 @@ use [onFormDataChange](/api-reference/interfaces/react_form_builder_core.FormVie
 
 ```tsx
 export const Viewer = () => {
-  const ref = useRef<IFormViewer>(null)
+  const ref = useRef<IFormViewer>()
 
-  useEffect(() => {
-    if (ref.current) {
+  const setRef = (viewer: IFormViewer | null) => {
+    if (viewer) {
+      ref.current = viewer
       const formJSON = JSON.stringify(ref.current.formData)
       console.log('formJSON ', ref.current)
     }
-  }, [ref.current])
+  }
 
   return (
     <FormViewer
@@ -27,7 +28,7 @@ export const Viewer = () => {
         const formJSON = JSON.stringify(data)
         console.log('onFormDataChange', formJSON)
       }}
-      viewerRef={ref}
+      viewerRef={setRef}
       {...otherProps}
     />
   )

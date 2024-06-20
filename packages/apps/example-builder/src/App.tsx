@@ -12,13 +12,14 @@ import {ActionDefinition, BiDi, ComponentStore, FormValidators, IFormViewer, Lan
 import type {IFormBuilder} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder, FormBuilderI18n} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
-import {useEffect, useRef, useState} from 'react'
+import {useEffect, useState} from 'react'
 import {frFR, trTR} from 'rsuite/esm/locales/index.js'
 import {CustomErrorWrapper} from './components/CustomErrorWrapper'
 import {simpleCustomization} from './customization'
 import {Designer} from './Designer'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
 import {generatedLicenseKey} from './utils/license'
+import {useRefWithLog} from './utils/useRefWithLog'
 
 const data = {
   title: 'Hello! Hello!',
@@ -158,7 +159,7 @@ const getFormFn = (formName?: string) => {
 const useCustomErrorWrapper = false
 
 const FormBuilderApp = () => {
-  const ref = useRefWithLog<IFormViewer>('ViewerRef', logEvents)
+  const viewerRef = useRefWithLog<IFormViewer>('ViewerRef', logEvents)
   const builderRef = useRefWithLog<IFormBuilder>('BuilderRef', logEvents)
 
   const [initialData, setInitialData] = useState(data)
@@ -200,7 +201,7 @@ const FormBuilderApp = () => {
       const silentValidationResult = await formData.getValidationResult()
       formData.state.isValid = !silentValidationResult
     }}
-    viewerRef={ref}
+    viewerRef={viewerRef}
     builderRef={builderRef}
     validators={customValidators}
     formValidators={formValidators}
@@ -261,16 +262,6 @@ const FormBuilderApp = () => {
         })
     }}*/
   />
-}
-
-function useRefWithLog<T>(name: string, log: boolean) {
-  const ref = useRef<T>(null)
-  useEffect(() => {
-    if (log && ref?.current) {
-      console.log(name, ref.current)
-    }
-  }, [ref?.current])
-  return ref
 }
 
 const showDocumentationExample = false

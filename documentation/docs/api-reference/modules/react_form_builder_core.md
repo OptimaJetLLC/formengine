@@ -2435,31 +2435,6 @@ the model of React component used to display the error.
 
 ___
 
-### useForwardRef
-
-▸ **useForwardRef**<`T`\>(`value?`, `ref?`): `void`
-
-Sets the forwarded ref value.
-
-#### Type parameters
-
-| Name | Description |
-| :------ | :------ |
-| `T` | the type of value. |
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value?` | `T` | the value of ref. |
-| `ref?` | `ForwardedRef`<`T`\> | the forwarded ref. |
-
-#### Returns
-
-`void`
-
-___
-
 ### useStore
 
 ▸ **useStore**(): [`Store`](../classes/react_form_builder_core.Store.md)

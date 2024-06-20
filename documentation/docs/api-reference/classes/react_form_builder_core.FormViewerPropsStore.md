@@ -33,6 +33,14 @@ Custom actions for the form viewer.
 
 ___
 
+### errorWrapper
+
+• `Optional` **errorWrapper**: `ComponentType`<[`ErrorWrapperProps`](../interfaces/react_form_builder_core.ErrorWrapperProps.md)\>
+
+The default error wrapper used when errorType is not specified in the form.
+
+___
+
 ### formValidators
 
 • `Optional` **formValidators**: [`FormValidators`](../modules/react_form_builder_core.md#formvalidators)

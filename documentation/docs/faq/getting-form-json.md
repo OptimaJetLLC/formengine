@@ -16,15 +16,16 @@ use [formAsString](/api-reference/interfaces/react_form_builder_designer.IFormBu
 const FormBuilderApp = () => {
   const builderRef = useRef<IFormBuilder>()
 
-  useEffect(() => {
-    if (builderRef.current) {
-      const formJSON = builderRef.current.formAsString
+  const setRef = (builder: IFormBuilder | null) => {
+    if (builder) {
+      builderRef.current = builder
+      const formJSON = builder.formAsString
       console.log(formJSON)
     }
-  }, [builderRef.current])
+  }
 
   return <FormBuilder
-    builderRef={builderRef}
+    builderRef={setRef}
     {...otherProps}
   />
 }

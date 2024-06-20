@@ -9,8 +9,7 @@ import {
 } from '@react-form-builder/components-rsuite'
 import {ActionDefinition, BiDi, ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
 import {BuilderView, FormBuilder, IFormStorage} from '@react-form-builder/designer'
-import {useCallback, useEffect, useRef} from 'react'
-import {generatedLicenseKey} from './utils/license'
+import {useCallback, useRef} from 'react'
 
 // Here you can pass the metadata of your components
 const componentsMetadata = rSuiteComponents.map(definer => definer.build())
@@ -175,14 +174,15 @@ async function getFormFn(name?: string) {
 }
 
 export const Designer = () => {
-  const ref = useRef<IFormViewer>(null)
+  const ref = useRef<IFormViewer>()
 
-  useEffect(() => {
-    if (ref.current) {
+  const setRef = useCallback((viewer: IFormViewer | null) => {
+    if (viewer) {
       // if you want to work with the internal FormViewer component in an imperative style
-      console.log('Viewer', ref.current)
+      ref.current = viewer
+      console.log(ref.current)
     }
-  }, [ref.current])
+  }, [])
 
   // custom function for localizing component properties
   const localizeFn = useCallback<ComponentLocalizer>((componentStore, language) => {
@@ -194,7 +194,6 @@ export const Designer = () => {
 
   return (
     <FormBuilder
-      licenseKey={generatedLicenseKey}
       view={builderView}
       getForm={getFormFn}
       formName={formName}
@@ -204,7 +203,7 @@ export const Designer = () => {
       onFormDataChange={({data, errors}) => {
         console.log('onFormDataChange', {data, errors})
       }}
-      viewerRef={ref}
+      viewerRef={setRef}
       validators={customValidators}
       actions={{
         logEventArgs: e => console.log(e),

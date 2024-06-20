@@ -1,10 +1,9 @@
-import {ReactNode, useCallback, useContext, useEffect} from 'react'
+import {ReactNode, useCallback, useContext, useEffect, useImperativeHandle} from 'react'
 import {FormViewerPropsStore} from '../../../stores/FormViewerPropsStore'
 import {Store} from '../../../stores/Store'
 import {namedObserver} from '../../../utils'
 import {StoreContext, StoreProvider} from '../../../utils/contexts/StoreContext'
 import {useDisposable} from '../../../utils/useDisposable'
-import {useForwardRef} from '../../../utils/useForwardRef'
 import type {FormViewerProps} from '../types'
 import {ViewerPropsProvider} from './ViewerPropsContext'
 
@@ -33,7 +32,7 @@ const RawExistingStoreProvider = ({
                                   props: {viewerRef, ...props},
                                   store
                                 }: ExistingStoreProviderProps) => {
-  useForwardRef(store, viewerRef)
+  useImperativeHandle(viewerRef, () => store, [store])
 
   useEffect(() => {
     props.onFormDataChange?.(store.formData)

@@ -1,13 +1,5 @@
-import {
-  FormViewerPropsStore,
-  namedObserver,
-  Store,
-  StoreProvider,
-  useDisposable,
-  useForwardRef,
-  ViewerPropsProvider
-} from '@react-form-builder/core'
-import {ReactNode, useCallback, useEffect} from 'react'
+import {FormViewerPropsStore, namedObserver, Store, StoreProvider, useDisposable, ViewerPropsProvider} from '@react-form-builder/core'
+import {ReactNode, useCallback, useEffect, useImperativeHandle} from 'react'
 import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import {FormBuilderProps} from '../../FormBuilderProps'
@@ -15,9 +7,20 @@ import {BuilderStore} from '../../stores/BuilderStore'
 import {LocalStorageSynchronizer} from '../../stores/LocalStorageSynchronizer'
 import {BuilderStoreProvider} from '../../utils/BuilderStoreContext'
 import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
+import {IFormBuilder} from '../../utils/types'
 import {CustomDragLayer} from '../dnd/components/CustomDragLayer'
 import {LocalizationProvider} from '../localization'
 import {StylesProvider} from './StylesProvider'
+
+const fallbackFormBuilder: IFormBuilder = {
+  get formAsString(): string {
+    throw new Error('FormBuilder object is already destroyed')
+  },
+
+  parseForm(_: string): void {
+    // do nothing
+  },
+}
 
 class BuilderProviderData {
   constructor(public readonly store: Store,
@@ -65,7 +68,7 @@ const RawBuilderProviders = ({children, props}: BuilderProvidersProps) => {
   const builderStore = builderProviderData?.builderStore
   const store = builderProviderData?.store
 
-  useForwardRef(builderStore, builderRef)
+  useImperativeHandle(builderRef, () => builderStore ?? fallbackFormBuilder, [builderStore])
 
   useEffect(() => {
     if (!builderStore) return
