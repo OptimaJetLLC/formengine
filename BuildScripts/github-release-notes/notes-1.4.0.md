@@ -1,5 +1,5 @@
 - Updated documentation on using `ref` with `FormBuilder` and `FormViewer` components.
-- Added ability to pass custom component [errorWrapper](/api-reference/interfaces/react_form_builder_core.FormViewerProps#errorwrapper).
+- Added ability to pass custom component [errorWrapper](https://formengine.io/documentation/api-reference/interfaces/react_form_builder_core.FormViewerProps#errorwrapper).
 - The React Suite library has been updated to version 5.64.2.
 - Fixed bug where only the first action handler was executed on the `onWillUnmount` event.
 - Fixed keyboard navigation in Dropdown component.
