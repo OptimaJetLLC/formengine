@@ -1,13 +1,14 @@
 import {cx} from '@emotion/css'
 import {forIn} from 'lodash-es'
 import {Fragment, useCallback, useEffect, useMemo, useRef} from 'react'
-import {catchError, concatMap, filter, OperatorFunction, Subscription} from 'rxjs'
+import {catchError, filter, map, Subscription} from 'rxjs'
 import {ComponentState} from '../../stores/ComponentState'
+import {Store} from '../../stores/Store'
 import {isPromise, namedObserver} from '../../utils'
 import {ComponentData, useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {getChildren} from '../../utils/getChildren'
-import {ActionData, ActionEventArgs, Arguments, DidMountEvent, Func, WillUnmountEvent} from '../event'
+import {ActionData, ActionEventArgs, DidMountEvent, WillUnmountEvent} from '../event'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 import {TooltipWrapper} from '../tooltip/TooltipWrapper'
 import {Erroneous} from '../validation'
@@ -44,22 +45,13 @@ const useActions = (state: ComponentState) => {
   const createSubscriptions = useCallback(() => {
     const result: Subscription[] = []
 
-    unsubscribe()
-
     forIn(componentData.store.events, (actionDataList: ActionData[], eventName) => {
-      const actionChain: OperatorFunction<ActionEventArgs, ActionEventArgs>[] = []
-
-      actionDataList.forEach((data) => {
-        const actionDefinition = store.findAction(data)
-        const action = getActionHandler(actionDefinition.func, data.args)
-        actionChain.push(concatMap(action))
-      })
+      const chain = getActionHandlersChain(store, actionDataList)
 
       const subscription = store.eventSubject
         .pipe(
           filter(e => e.type === eventName && e.sender.key === componentData.store.key),
-          // @ts-ignore this method don't like spread
-          ...actionChain,
+          map(chain),
           catchError((err, caught) => {
             console.error(err)
             return caught
@@ -71,11 +63,7 @@ const useActions = (state: ComponentState) => {
     })
 
     subsRef.current = result
-  }, [componentData.store.events, componentData.store.key, store, unsubscribe])
-
-  useEffect(() => {
-    createSubscriptions()
-  }, [createSubscriptions, unsubscribe])
+  }, [componentData.store.events, componentData.store.key, store])
 
   useComponentMountUnmount(() => {
     createSubscriptions()
@@ -92,12 +80,17 @@ const useActions = (state: ComponentState) => {
   })
 }
 
-function getActionHandler(func: Func, args?: Arguments) {
+function getActionHandlersChain(store: Store, actionDataList: ActionData[]) {
+  const actions = actionDataList.map(data => ({
+    func: store.findAction(data).func,
+    args: data.args ? {...data.args} : {}
+  }))
+
   return async (e: ActionEventArgs) => {
-    const actionArgs = args ? {...args} : {}
-    const result = func(e, actionArgs)
-    if (isPromise(result)) await result
-    return e
+    for (const {func, args} of actions) {
+      const result = func(e, args)
+      if (isPromise(result)) await result
+    }
   }
 }
 
