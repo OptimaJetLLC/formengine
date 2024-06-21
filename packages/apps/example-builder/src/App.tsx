@@ -15,6 +15,7 @@ import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useState} from 'react'
 import {frFR, trTR} from 'rsuite/esm/locales/index.js'
 import {CustomErrorWrapper} from './components/CustomErrorWrapper'
+import {throwErrorComponent} from './components/ThrowErrorComponent'
 import {simpleCustomization} from './customization'
 import {Designer} from './Designer'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
@@ -32,7 +33,8 @@ const data = {
   agreeCheckbox: true
 }
 
-const components = [...rSuiteComponents, ...antdComponents].map(definer => definer.build())
+const components = [...rSuiteComponents, ...antdComponents, throwErrorComponent]
+  .map(definer => definer.build())
 const view = new BuilderView(components)
   .withErrorMeta(rsErrorMessage.build())
   .withTooltipMeta(rsTooltip.build())

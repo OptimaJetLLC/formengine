@@ -21,6 +21,7 @@ import {BuilderStore} from '../../../../stores/BuilderStore'
 import {Draggable} from './components/Draggable'
 import {DropZone} from './components/DropZone'
 import {Toolbar} from './components/Toolbar'
+import {ErrorBoundary} from './ErrorBoundary'
 import {useSelection} from './hooks/useSelection'
 
 const childrenSlot = 'children'
@@ -88,10 +89,12 @@ const RawEditable = ({children, className}: WrapperProps) => {
   </>
 
   return (
-    <Draggable {...selectionHandlers} className={cx(selectionClassName, className)}>
-      {children}
-      {toolbars}
-    </Draggable>
+    <ErrorBoundary>
+      <Draggable {...selectionHandlers} className={cx(selectionClassName, className)}>
+        {children}
+        {toolbars}
+      </Draggable>
+    </ErrorBoundary>
   )
 }
 
