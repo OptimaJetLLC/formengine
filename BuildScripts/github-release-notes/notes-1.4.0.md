@@ -1,0 +1,10 @@
+- Updated documentation on using `ref` with `FormBuilder` and `FormViewer` components.
+- Added ability to pass custom component [errorWrapper](/api-reference/interfaces/react_form_builder_core.FormViewerProps#errorwrapper).
+- The React Suite library has been updated to version 5.64.2.
+- Fixed bug where only the first action handler was executed on the `onWillUnmount` event.
+- Fixed keyboard navigation in Dropdown component.
+- The `key` property is now passed separately from other component properties, previous behavior caused a warning in React 18.3.1.
+- Added ability to define validators using code for all value types.
+- Updated internal dependencies:
+  - braces from 3.0.2 to 3.0.3.
+  - ws from 7.5.9 to 7.5.10.
