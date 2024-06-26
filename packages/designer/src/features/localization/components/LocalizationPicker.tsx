@@ -1,8 +1,9 @@
 import styled from '@emotion/styled'
 import {Language, namedObserver} from '@react-form-builder/core'
 import {toUpper} from 'lodash-es'
-import {useMemo} from 'react'
+import {useCallback, useMemo} from 'react'
 import type {ItemDataType} from 'rsuite/esm/internals/types'
+import type {SelectProps} from 'rsuite/esm/SelectPicker'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {FixedSelectPicker} from '../../ui/FixedSelectPicker'
 
@@ -23,6 +24,7 @@ export interface LocalizationPickerProps {
 
 const RawLocalizationPicker = ({value, onSelect}: LocalizationPickerProps) => {
   const {availableLanguages} = useBuilderStore()
+
   const langData = useMemo(() => {
     return availableLanguages.reduce((result, language) => {
       result[language.fullCode] = language
@@ -30,14 +32,25 @@ const RawLocalizationPicker = ({value, onSelect}: LocalizationPickerProps) => {
     }, {} as Record<string, Language>)
   }, [availableLanguages])
 
-  const data = Object.entries(langData).map(([key, {code}]) => {
+  const data = useMemo(() => Object.entries(langData).map(([key, {code}]) => {
     return ({value: key, label: toUpper(code)} as ItemDataType<string>)
-  })
+  }), [langData])
 
-  const handleSelect = (code: string) => onSelect(langData[code])
+  const handleSelect = useCallback((code: string) => onSelect(langData[code]), [langData, onSelect])
 
-  return <SPicker value={value} data={data} onSelect={handleSelect} cleanable={false} placement={'autoVerticalEnd'} size={'sm'}
-                  searchable={false} width={62} renderMenuItem={(_, {value}) => !!value && renderLanguageItem(langData[value])}/>
+  const renderMenuItem: SelectProps<string>['renderMenuItem'] = useCallback((_, {value}) => {
+    return !!value && renderLanguageItem(langData[value])
+  }, [langData])
+
+  return <SPicker value={value}
+                  data={data}
+                  onSelect={handleSelect}
+                  cleanable={false}
+                  placement={'autoVerticalEnd'}
+                  size={'sm'}
+                  searchable={false}
+                  width={62}
+                  renderMenuItem={renderMenuItem}/>
 }
 
 export const LocalizationPicker = namedObserver('LocalizationPicker', RawLocalizationPicker)
