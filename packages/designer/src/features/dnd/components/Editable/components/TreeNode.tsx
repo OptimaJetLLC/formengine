@@ -45,12 +45,14 @@ const RawTreeNode = ({className}: TreeNodeProps) => {
     }
   }, [selected])
 
+  const withChildren = (componentData.store.children?.length ?? 0) > 0
+
   return (
     <>
       <SNodeItem className={className} ref={ref}
                  onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         <SIndent depth={depth}>
-          {componentData.store.children &&
+          {withChildren &&
             <Icon onClick={toggleExpand} as={expanded ? ArrowDownLineIcon : ArrowRightLineIcon} style={{cursor: 'pointer'}}/>
           }
         </SIndent>
