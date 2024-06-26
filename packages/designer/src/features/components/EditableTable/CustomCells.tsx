@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import type {LabeledValue} from '@react-form-builder/core'
 import type {IconProps} from '@rsuite/icons/lib/Icon.js'
-import {ReactElement, useCallback} from 'react'
+import {ReactElement} from 'react'
 import {Checkbox, IconButton, Input, InputPicker, Table} from 'rsuite'
 import type {RowDataType} from 'rsuite-table/lib'
 import type {InnerCellProps} from 'rsuite-table/lib/Cell.js'
@@ -15,20 +15,16 @@ const {Cell} = Table
  * @param props.dataKey the key name in props.rowData.
  * @param props.rowIndex the row index.
  * @param props.props the other properties of the component.
- * @param props.onChange the onChange callback.
  * @returns the React element.
  */
-export const InputCell = ({rowData, dataKey, rowIndex, onChange, ...props}: InputCellProps) => {
-  const value = rowData[dataKey] ?? ''
-
-  const handleChange = useCallback((newValue: any) => {
-    rowData[dataKey] = newValue
-    onChange?.(newValue, dataKey, rowIndex)
-  }, [dataKey, onChange, rowData, rowIndex])
-
+export const InputCell = ({rowData, dataKey, rowIndex, ...props}: InputCellProps) => {
+  const onChange = (value: any) => {
+    rowData[dataKey] = value
+    props.onChange?.(value, dataKey, rowIndex)
+  }
   return (
     <SCell {...props}>
-      <Input value={value} onChange={handleChange} size="sm"/>
+      <Input value={rowData[dataKey] ?? ''} onChange={onChange} size="sm"/>
     </SCell>
   )
 }
@@ -44,16 +40,13 @@ export const InputCell = ({rowData, dataKey, rowIndex, onChange, ...props}: Inpu
  * @returns the React element.
  */
 export const CheckCell = ({rowData, dataKey, rowIndex, onChange, ...props}: InputCellProps) => {
-  const checked = rowData[dataKey] ?? false
-
-  const handleChange = useCallback((_: any, checked: boolean) => {
+  const handleChange = (value: any, checked: boolean) => {
     rowData[dataKey] = checked
     onChange?.(checked, dataKey, rowIndex)
-  }, [dataKey, onChange, rowData, rowIndex])
-
+  }
   return (
     <SCell {...props}>
-      <SCheckbox inline checked={checked} onChange={handleChange}/>
+      <SCheckbox inline checked={rowData[dataKey] ?? false} onChange={handleChange}/>
     </SCell>
   )
 }
@@ -70,22 +63,14 @@ export const CheckCell = ({rowData, dataKey, rowIndex, onChange, ...props}: Inpu
  * @returns the React element.
  */
 export const SelectCell = ({rowData, dataKey, rowIndex, options, onChange, ...props}: SelectCellProps) => {
-  const value = rowData[dataKey] ?? ''
-
-  const handleChange = useCallback((value: any) => {
+  const handleChange = (value: any) => {
     rowData[dataKey] = value
     onChange?.(value, dataKey, rowIndex)
-  }, [dataKey, onChange, rowData, rowIndex])
-
+  }
   return (
     <SCell {...props}>
-      <InputPicker value={value}
-                   data={options}
-                   onChange={handleChange}
-                   cleanable={false}
-                   creatable={true}
-                   block size="sm"
-                   placement="auto"
+      <InputPicker value={rowData[dataKey] ?? ''} data={options} onChange={handleChange}
+                   cleanable={false} creatable={true} block size="sm" placement={'auto'}
       />
     </SCell>
   )
