@@ -2,7 +2,7 @@
 declare module 'constrained-editor-plugin' {
 
   // eslint-disable-next-line import/no-extraneous-dependencies
-  import {Monaco} from '@monaco-editor/react'
+  import type {Monaco} from '@monaco-editor/react'
   // eslint-disable-next-line import/no-extraneous-dependencies
   import {editor, Range} from 'monaco-editor'
 

@@ -1,35 +1,39 @@
-import {loader} from '@monaco-editor/react'
+import Editor, {loader} from '@monaco-editor/react'
+import * as monaco from 'monaco-editor'
 import {fluentLanguageId} from '../../localization/consts'
 import {monacoJavascriptDefaults} from './monacoJavascriptDefaults'
 
-// import * as monaco from 'monaco-editor'
-// import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker.js?worker'
-// import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker.js?worker'
-// import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker.js?worker'
-// import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker.js?worker'
-//
-// const isDev = process.env.NODE_ENV === 'development'
-// const isFirefox = navigator.userAgent.indexOf('Firefox') != -1
-//
-// if (!isDev || !isFirefox) {
-//   self.MonacoEnvironment = {
-//     getWorker(_, label) {
-//       switch (label) {
-//         case 'json':
-//           return new jsonWorker()
-//         case 'css':
-//           return new cssWorker()
-//         case 'typescript':
-//         case 'javascript':
-//           return new tsWorker()
-//         default:
-//           return new editorWorker()
-//       }
-//     },
-//   }
-//
-//   loader.config({monaco})
-// }
+if (!import.meta.env.PROD) {
+  const toWorkerUrl = (label: string) => {
+    switch (label) {
+      case 'json':
+        return new URL('monaco-editor/esm/vs/language/json/json.worker.js', import.meta.url)
+      case 'css':
+      case 'scss':
+      case 'less':
+        return new URL('monaco-editor/esm/vs/language/css/css.worker.js', import.meta.url)
+      case 'html':
+      case 'handlebars':
+      case 'razor':
+        return new URL('monaco-editor/esm/vs/language/html/html.worker.js', import.meta.url)
+      case 'typescript':
+      case 'javascript':
+        return new URL('monaco-editor/esm/vs/language/typescript/ts.worker.js', import.meta.url)
+      default:
+        return new URL('monaco-editor/esm/vs/editor/editor.worker.js', import.meta.url)
+    }
+  }
+
+  self.MonacoEnvironment = {
+    getWorker: (_, label) => {
+      const workerUrl = toWorkerUrl(label)
+      return new Worker(workerUrl, {name: label, type: 'module'})
+    }
+  }
+
+  loader.config({monaco})
+  monaco.languages.typescript?.typescriptDefaults.setEagerModelSync(true)
+}
 
 loader.init().then(monaco => {
   monacoJavascriptDefaults.forEach(({content, filePath}) => {
@@ -122,6 +126,8 @@ const vsExtendedTheme = {
     },
   ],
   colors: {
-    "editor.background": '#f7f7fa'
+    'editor.background': '#f7f7fa'
   }
 }
+
+export const MonacoCodeEditor = Editor

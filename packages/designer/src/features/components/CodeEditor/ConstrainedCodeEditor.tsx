@@ -1,8 +1,9 @@
-import Editor, {OnMount} from '@monaco-editor/react'
+import type {OnMount} from '@monaco-editor/react'
 import {constrainedEditor, ConstrainedMonacoEditorModel, RangeRestrictionObject} from 'constrained-editor-plugin'
-import {editor} from 'monaco-editor'
+import type {editor} from 'monaco-editor'
 import {useCallback, useEffect, useMemo, useRef} from 'react'
 import type {CodeEditorProps} from './CodeEditorProps'
+import {MonacoCodeEditor} from './MonacoCodeEditor'
 
 /**
  * The React component that displays constrained code editor.
@@ -75,7 +76,7 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
     constrainedMonacoEditorModelRef.current = constrainedModel
   }, [props.beginContextLine, props.endContextLine, getRestrictions, onChange])
 
-  return <Editor
+  return <MonacoCodeEditor
     onMount={handleMount}
     className={props.className}
     defaultValue={initialValue}

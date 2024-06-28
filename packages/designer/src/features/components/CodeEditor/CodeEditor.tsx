@@ -2,7 +2,6 @@ import type {WrapperProps} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import type {CodeEditorProps} from './CodeEditorProps'
-import './config'
 import {ConstrainedCodeEditor} from './ConstrainedCodeEditor'
 import {UnconstrainedCodeEditor} from './UnconstrainedCodeEditor'
 

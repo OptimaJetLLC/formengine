@@ -1,7 +1,9 @@
 // https://constrained-editor-plugin.vercel.app/docs/TypeDefinitions/available-type-definitions
 declare module 'constrained-editor-plugin' {
 
-  import {Monaco} from '@monaco-editor/react'
+  // eslint-disable-next-line import/no-extraneous-dependencies
+  import type {Monaco} from '@monaco-editor/react'
+  // eslint-disable-next-line import/no-extraneous-dependencies
   import {editor, Range} from 'monaco-editor'
 
   /**

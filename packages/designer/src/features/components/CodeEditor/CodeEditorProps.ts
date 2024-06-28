@@ -1,5 +1,5 @@
 import type {Theme} from '@monaco-editor/react'
-import {editor} from 'monaco-editor'
+import type {editor} from 'monaco-editor'
 
 /**
  * The properties of the UnconstrainedCodeEditor React component.

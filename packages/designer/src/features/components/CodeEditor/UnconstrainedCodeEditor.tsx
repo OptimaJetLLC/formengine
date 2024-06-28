@@ -1,7 +1,8 @@
-import Editor, {OnMount} from '@monaco-editor/react'
-import {editor} from 'monaco-editor'
+import type {OnMount} from '@monaco-editor/react'
+import type {editor} from 'monaco-editor'
 import {useEffect, useRef} from 'react'
 import type {UnconstrainedCodeEditorProps} from './CodeEditorProps'
+import {MonacoCodeEditor} from './MonacoCodeEditor'
 
 /**
  * The React component that displays monaco code editor.
@@ -20,7 +21,7 @@ export const UnconstrainedCodeEditor = (props: UnconstrainedCodeEditorProps) => 
     editorRef.current = editor
   }
 
-  return <Editor
+  return <MonacoCodeEditor
     onMount={handleMount}
     className={props.className}
     defaultValue={props.initialValue}

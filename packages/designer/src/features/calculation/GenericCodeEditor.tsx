@@ -4,7 +4,7 @@ import {action} from 'mobx'
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
-import {CodeEditor} from '../components/CodeEditor'
+import {CodeEditor} from '../components/CodeEditor/CodeEditor'
 import {Columns, Rows} from '../components/Containers'
 import {TestingEditor, TestingEditorRef, TestRunner} from '../ui/BottomPanel/TestingEditor'
 
