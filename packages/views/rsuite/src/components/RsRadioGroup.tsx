@@ -27,9 +27,9 @@ export const rsRadioGroup = define(RsRadioGroup, 'RsRadioGroup')
     name: string.default('RadioGroup').hinted('Radio group name'),
     appearance: oneOf('default', 'picker').labeled('Default', 'Picker').default('default'),
     label: string.default('Radio'),
-    disabled: boolean.hinted('The disable of component'),
+    disabled: boolean.hinted('The disable of component').default(false),
     readOnly,
-    inline: boolean,
+    inline: boolean.default(false),
     onChange: event,
     items: array.default(toLabeledValues(['a', 'b', 'c'])),
     value: string.valued.hinted('Radio group value')

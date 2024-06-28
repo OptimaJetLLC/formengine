@@ -4,11 +4,11 @@ import {Button} from 'antd'
 export const antButton = define(Button, 'AntButton')
   .name('Button')
   .props({
-    block: boolean.hinted('Option to fit button width to its parent width'),
+    block: boolean.hinted('Option to fit button width to its parent width').default(false),
     children: string.required.named('Content').hinted('Caption').default('Ant Button'),
-    danger: boolean.hinted('Set the danger status of button'),
-    disabled: boolean.hinted('Disabled state of button'),
-    ghost: boolean.hinted('Make background transparent and invert text and border colors'),
+    danger: boolean.hinted('Set the danger status of button').default(false),
+    disabled: boolean.hinted('Disabled state of button').default(false),
+    ghost: boolean.hinted('Make background transparent and invert text and border colors').default(false),
     href: string.hinted('Redirect url of link button'),
     htmlType: string.hinted(<>Set the original html type of button,
       see: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type" target="_blank">MDN</a></>)

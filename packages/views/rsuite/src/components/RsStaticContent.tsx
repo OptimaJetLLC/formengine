@@ -15,5 +15,5 @@ export const rsStaticContent = define(RsStaticContent, 'RsStaticContent')
   .name('Static content')
   .props({
     content: string.required.default('Text...'),
-    allowHtml: boolean.named('Allow HTML'),
+    allowHtml: boolean.named('Allow HTML').default(false),
   })

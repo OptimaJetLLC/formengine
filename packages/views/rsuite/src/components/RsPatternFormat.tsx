@@ -38,5 +38,5 @@ export const rsPatternFormat = define(RsPatternFormat, 'RsPatternFormat')
     format: string,
     mask: string,
     patternChar: string,
-    allowEmptyFormatting: boolean
+    allowEmptyFormatting: boolean.default(false)
   })

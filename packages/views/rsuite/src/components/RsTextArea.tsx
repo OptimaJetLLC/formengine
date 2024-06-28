@@ -24,7 +24,7 @@ export const rsTextArea = define(RsTextArea, 'RsTextArea')
     placeholder: string,
     rows: number.default(5).withEditorProps({min: 1}),
     size,
-    disabled: boolean.hinted('Disabled component'),
+    disabled: boolean.hinted('Disabled component').default(false),
     readOnly,
     onChange: event,
     onPressEnter: event

@@ -23,6 +23,6 @@ export const rsSidebar = define(Sidebar, 'RsSidebar')
   .name('Sidebar')
   .props({
     children: node,
-    collapsible: boolean.hinted('Sidebar can be collapsed'),
+    collapsible: boolean.hinted('Sidebar can be collapsed').default(false),
     width: string.hinted('Width')
   })

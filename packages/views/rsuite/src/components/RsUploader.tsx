@@ -25,16 +25,16 @@ export const rsUploader = define(RsUploader, 'RsUploader')
     action: string.required.default('/'),
     accept: string,
     autoUpload: boolean.default(true),
-    customElement: boolean,
+    customElement: boolean.default(false),
     children: node,
-    disableMultipart: boolean,
-    disabled: boolean,
-    disabledFileItem: boolean,
-    draggable: boolean,
-    fileListVisible: boolean,
+    disableMultipart: boolean.default(false),
+    disabled: boolean.default(false),
+    disabledFileItem: boolean.default(false),
+    draggable: boolean.default(false),
+    fileListVisible: boolean.default(false),
     listType: oneOf('text', 'picture-text', 'picture'),
     method: string,
-    multiple: boolean,
+    multiple: boolean.default(false),
     name: string,
     onChange: event,
     onError: event,
@@ -44,10 +44,10 @@ export const rsUploader = define(RsUploader, 'RsUploader')
     onReupload: event,
     onSuccess: event,
     onUpload: event,
-    removable: boolean,
+    removable: boolean.default(false),
     timeout: number,
-    withCredentials: boolean,
+    withCredentials: boolean.default(false),
     fileList: array
-          .withEditorProps({columns})
-          .valued
+      .withEditorProps({columns})
+      .valued
   })

@@ -24,11 +24,11 @@ export const rsCard = define(RsCard, 'RsCard')
     children: node,
     title: string.default('Title'),
     headerSize,
-    bodyFill: boolean,
+    bodyFill: boolean.default(false),
     bordered: boolean.default(true),
     shaded: boolean.default(true),
-    defaultExpanded: boolean,
-    collapsible: boolean,
+    defaultExpanded: boolean.default(false),
+    collapsible: boolean.default(false),
     eventKey: string,
     onSelect: event
   })

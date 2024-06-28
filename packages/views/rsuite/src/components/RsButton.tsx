@@ -5,17 +5,17 @@ import {readOnly, size} from '../commonProperties'
 export const rsButton = define(Button, 'RsButton')
   .name('Button')
   .props({
-    active: boolean.hinted('A button can show it is currently the active user selection'),
+    active: boolean.hinted('A button can show it is currently the active user selection').default(false),
     appearance: oneOf('default', 'primary', 'link', 'subtle', 'ghost')
       .default('default')
       .hinted('A button can have different appearances'),
     children: string.required.named('Content').default('Button'),
     color: oneOf('red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'violet')
       .hinted('A button can have different colors'),
-    disabled: boolean.hinted('A button can show it is currently unable to be interacted with'),
+    disabled: boolean.hinted('A button can show it is currently unable to be interacted with').default(false),
     readOnly,
     href: string.hinted('Providing a href will render an <a> element'),
-    loading: boolean.hinted('A button can show a loading indicator'),
+    loading: boolean.hinted('A button can show a loading indicator').default(false),
     size,
     onClick: event,
     //onMouseOver: event,

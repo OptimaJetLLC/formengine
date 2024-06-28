@@ -23,7 +23,7 @@ export const rsLink = define(RsLink, 'RsLink')
     href: string,
     children: node.hinted('Component children'),
     target: oneOf('_self', '_blank', '_parent', '_top', '_unfencedTop').default('_blank'),
-    download: boolean,
+    download: boolean.default(false),
     downloadFilename: string,
     onClick: event,
   })

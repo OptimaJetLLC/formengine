@@ -7,6 +7,6 @@ export const myButton = define(MyButton, 'MyButton')
   .name('MyButton')
   .props({
     children: string.required.named('Content').hinted('Caption').default('Ant Button'),
-    disabled: boolean.hinted('Disabled state of button'),
+    disabled: boolean.hinted('Disabled state of button').default(false),
     onClick: event
   })

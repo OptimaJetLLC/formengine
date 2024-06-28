@@ -38,11 +38,11 @@ export const textStyles = {
   color: color,
 }
 
-export const readOnly = boolean.hinted('Read only component')
+export const readOnly = boolean.hinted('Read only component').default(false)
 export const inputProps = {
   placeholder: string.hinted('Input placeholder'),
   size,
-  disabled: boolean.hinted('Disabled component'),
+  disabled: boolean.hinted('Disabled component').default(false),
   readOnly,
   onChange: event,
 }
@@ -57,11 +57,11 @@ export const navProps = {
     .default('default')
     .hinted('A navigation can have different appearances'),
   items: array.default(toLabeledValues(['Item1', 'Item2', 'Item3'])),
-  justified: boolean.hinted('Justified navigation'),
+  justified: boolean.hinted('Justified navigation').default(false),
   onSelect: event,
-  pullRight: boolean.hinted('Appears on the right'),
-  reversed: boolean.hinted('Reverse direction of tabs/subtle'),
-  vertical: boolean.hinted('Stacked navigation')
+  pullRight: boolean.hinted('Appears on the right').default(false),
+  reversed: boolean.hinted('Reverse direction of tabs/subtle').default(false),
+  vertical: boolean.hinted('Stacked navigation').default(false)
 }
 
 export const pickerProps = {
@@ -73,7 +73,7 @@ export const pickerProps = {
   data: array,
   cleanable: boolean.default(true),
   creatable: boolean.default(false),
-  disabled: boolean,
+  disabled: boolean.default(false),
   readOnly,
   groupBy: string.default(''),
   onLoadData: event,

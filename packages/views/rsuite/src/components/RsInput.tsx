@@ -33,5 +33,5 @@ export const rsInput = define(RsInput, 'RsInput')
     label: string.default('Input').hinted('Input label'),
     ...inputProps,
     value: string.valued,
-    passwordMask: boolean
+    passwordMask: boolean.default(false)
   })
