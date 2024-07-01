@@ -48,7 +48,7 @@
         "props": {},
         "css": {
           "desktop": {
-            "string": "border: 1px solid lightgray;\nborder-radius: 6px;\npadding: 20px;"
+            "string": "border: 1px solid lightgray;\nborder-radius: 6px;\npadding: 10px;"
           }
         },
         "children": [
@@ -466,7 +466,10 @@
                 },
                 "wrapperCss": {
                   "desktop": {
-                    "string": "margin-left: 35px"
+                    "string": "margin-left: 35px",
+                    "object": {
+                      "width": "auto"
+                    }
                   }
                 }
               }
@@ -504,7 +507,10 @@
                 },
                 "wrapperCss": {
                   "desktop": {
-                    "string": "margin-left: 35px;"
+                    "string": "margin-left: 35px;",
+                    "object": {
+                      "width": "auto"
+                    }
                   }
                 }
               }
@@ -542,7 +548,10 @@
                 },
                 "wrapperCss": {
                   "desktop": {
-                    "string": "margin-left: 35px;"
+                    "string": "margin-left: 35px;",
+                    "object": {
+                      "width": "auto"
+                    }
                   }
                 }
               }
