@@ -193,6 +193,26 @@
     "downloadFilename": {
       "name": "Download filename",
       "hint": "Defining a value suggests it as the filename. / and \\ characters are converted to underscores (_)"
+    },
+    "checked": {
+      "name": "Checked",
+      "hint": "Whether the value is checked"
+    },
+    "checkedChildren": {
+      "name": "Checked text",
+      "hint": "The text that is displayed in the checked state"
+    },
+    "unCheckedChildren": {
+      "name": "Unchecked text",
+      "hint": "The text that is displayed in the unchecked state"
+    },
+    "loading": {
+      "name": "Loading",
+      "hint": "Whether the component is in loading state"
+    },
+    "color": {
+      "name": "Color",
+      "hint": "The main color of the component"
     }
   },
   "leftMenu": {

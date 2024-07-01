@@ -35,6 +35,7 @@ import {rsSignature} from './components/RsSignature'
 import {rsStaticContent} from './components/RsStaticContent'
 import {rsTab} from './components/RsTab'
 import {rsTextArea} from './components/RsTextArea'
+import {rsToggle} from './components/RsToggle'
 import {rsTooltip, RsTooltipProps} from './components/RsTooltip'
 import {rsTreePicker} from './components/RsTreePicker'
 import {rsUploader} from './components/RsUploader'
@@ -53,6 +54,7 @@ const categories = {
     rsSearch,
     rsSignature,
     rsTextArea,
+    rsToggle,
     rsUploader
   ],
   static: [
