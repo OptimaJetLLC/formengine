@@ -34,7 +34,7 @@ const RawActionList = (props: AnnotationEditorProps) => {
     actions.splice(info.newIndex, 0, movingElement)
   }, [actions])
 
-  if (!actions) return null
+  if (!actions?.length) return null
 
   return <SList sortable onSort={handleSortEnd}>
     {actions.map((action, index) => (
