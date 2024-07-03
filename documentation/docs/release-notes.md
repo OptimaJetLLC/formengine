@@ -4,6 +4,13 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.5.1
+
+_July_ 3, 2024
+
+- Fixed incorrectly set default values for DatePicker and Uploader components (the bug was introduced in the 1.5.0 release).
+- Fixed `closable` property for Message component.
+
 ## 1.5.0
 
 _July_ 2, 2024
