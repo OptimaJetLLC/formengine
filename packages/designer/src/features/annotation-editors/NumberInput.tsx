@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import {Close} from '@rsuite/icons'
+import {useCallback} from 'react'
 import {InputNumber} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
@@ -11,13 +12,13 @@ import type {AnnotationEditorProps} from './AnnotationEditorProps'
  */
 const NumberInput = (props: AnnotationEditorProps) => {
   const {value, onChange, onClean, annotation} = props
-  const handleChange = (value: any) => {
+  const handleChange = useCallback((value: any) => {
     if (typeof value === 'string') {
-      onChange(Number(value))
-      return
+      value = Number(value)
+      value = isNaN(value) ? 0 : value
     }
     onChange(value)
-  }
+  }, [onChange])
   const inputNumberProps = {...annotation.editorProps, value}
   const closeButton = <Close onClick={onClean} style={{cursor: 'pointer'}}/>
 
