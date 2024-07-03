@@ -12,7 +12,7 @@ export const rsMessage = define(SMessage, 'RsMessage')
   .name('Message')
   .props({
     children: node,
-    closeable: boolean.default(false),
+    closable: boolean.default(false),
     header: node,
     type: oneOf('info', 'success', 'warning', 'error').default('info')
   })
