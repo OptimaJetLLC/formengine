@@ -11,8 +11,8 @@
     },
     "scripts": {
         "start": "vite --open",
-        "start-ssl": "vite --open --host --config vite.ssl.config.ts",
-        "show:bundle": "npx vite-bundle-visualizer"
+        "dev": "vite",
+        "start-ssl": "vite --open --host --config vite.ssl.config.ts"
     },
     "dependencies": {
         "@react-form-builder/components-antd": "^1.5.0",

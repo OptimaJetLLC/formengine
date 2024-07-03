@@ -11,9 +11,9 @@
     },
     "scripts": {
         "start": "vite -c ../../../vite.config.ts --open",
+        "dev": "vite -c ../../../vite.config.ts",
         "build": "vite -c ../../../vite.config.ts build",
         "serve": "serve dist",
-        "show:bundle": "npx vite-bundle-visualizer",
         "update-release-date": "node ./scripts/update-release-date"
     },
     "dependencies": {

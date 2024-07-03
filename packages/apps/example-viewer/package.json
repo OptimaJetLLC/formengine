@@ -11,7 +11,8 @@
     },
     "scripts": {
         "build": "vite build",
-        "start": "vite -c ../../../vite.config.ts --open"
+        "start": "vite -c ../../../vite.config.ts --open",
+        "dev": "vite -c ../../../vite.config.ts"
     },
     "dependencies": {
         "@react-form-builder/components-rsuite": "^1.5.0",

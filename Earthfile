@@ -5,7 +5,7 @@ WORKDIR /form-engine
 # npm-build builds all npm packages
 npm-build:
   FROM +sources
-  RUN npm run build
+  RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build
 
 # npm-bundle builds all npm bundles
 npm-bundle:

@@ -3,12 +3,17 @@ import path from 'path'
 import {fileURLToPath} from 'url'
 import {defineConfig} from 'vite'
 import svgr from 'vite-plugin-svgr'
+import {analyzer} from 'vite-bundle-analyzer'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 export default defineConfig(({command}) => ({
   plugins: [
+    analyzer({
+      analyzerMode: 'static',
+      summary: true
+    }),
     react({jsxImportSource: '@emotion/react'}),
     svgr()
   ],
