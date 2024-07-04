@@ -3,6 +3,10 @@ import type {TypeAttributes} from 'rsuite/esm/internals/types'
 
 type Placement = TypeAttributes.Placement;
 
+export const nonNegNumber = number.withEditorProps({min: 0})
+
+export const positiveNumber = number.withEditorProps({min: 1})
+
 export const placement = oneOf<Placement>(
   'bottomStart',
   'bottomEnd',
@@ -33,7 +37,7 @@ export const textStyles = {
     .default('start')
     .radio()
     .hinted('Text alignment'),
-  fontSize: number.default(14).hinted('Font size'),
+  fontSize: nonNegNumber.default(14).hinted('Font size'),
   fontWeight: oneOf('lighter', 'normal', 'bold').default('normal'),
   color: color,
 }

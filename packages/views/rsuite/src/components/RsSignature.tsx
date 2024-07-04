@@ -1,7 +1,7 @@
 import {color, define, event, number, string} from '@react-form-builder/core'
 import {useCallback, useMemo, useRef} from 'react'
 import {Button} from 'rsuite'
-import {alignItems} from '../commonProperties'
+import {alignItems, nonNegNumber} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
 import {Rows} from './components/Layout'
 import {SignaturePad, SignaturePadHandle, SignaturePadProps} from './components/SignaturePad'
@@ -41,9 +41,9 @@ export const rsSignature = define(RsSignature, 'RsSignature')
     value: string.valued,
     label: string.default('Signature'),
     clearButtonText: string.default('Clear'),
-    width: number.default(370),
-    height: number.default(200),
-    lineWidth: number.default(1.5),
+    width: nonNegNumber.default(370),
+    height: nonNegNumber.default(200),
+    lineWidth: number.default(1.5).withEditorProps({min: 0, step: 0.1}),
     penColor: color.default('rgba(0, 0, 0, 1)'),
     backgroundColor: color.default('rgba(167, 167, 167, 0.1)'),
     onChange: event

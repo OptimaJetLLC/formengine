@@ -1,5 +1,6 @@
-import {array, define, event, number, oneOf, string} from '@react-form-builder/core'
+import {array, define, event, oneOf, string} from '@react-form-builder/core'
 import {Breadcrumb, BreadcrumbProps} from 'rsuite'
+import {nonNegNumber} from '../commonProperties'
 import {CheckCell} from './components/CheckCell'
 import {InputCell} from './components/InputCell'
 
@@ -40,9 +41,7 @@ export const rsBreadcrumb = define(RsBreadcrumb, 'RsBreadcrumb')
   .name('Breadcrumb')
   .props({
     separator: string.default('/'),
-    maxItems: number
-      .withEditorProps({min: 0})
-      .hinted('Set the maximum number of breadcrumbs to display'),
+    maxItems: nonNegNumber.hinted('Set the maximum number of breadcrumbs to display'),
     items: array
       .default(makeItems(['one', 'two', 'three']))
       .withEditorProps({columns}),

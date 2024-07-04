@@ -1,7 +1,7 @@
-import {boolean, define, event, number, string} from '@react-form-builder/core'
+import {boolean, define, event, string} from '@react-form-builder/core'
 import type {InputProps} from 'rsuite'
 import {Input} from 'rsuite'
-import {readOnly, size} from '../commonProperties'
+import {positiveNumber, readOnly, size} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
 
 interface RsTextAreaProps extends InputProps {
@@ -22,7 +22,7 @@ export const rsTextArea = define(RsTextArea, 'RsTextArea')
     label: string.default('Text area'),
     value: string.default('').valued,
     placeholder: string,
-    rows: number.default(5).withEditorProps({min: 1}),
+    rows: positiveNumber.default(5),
     size,
     disabled: boolean.hinted('Disabled component').default(false),
     readOnly,

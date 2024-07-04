@@ -1,6 +1,7 @@
-import {array, boolean, define, event, node, number, oneOf, string} from '@react-form-builder/core'
+import {array, boolean, define, event, node, oneOf, string} from '@react-form-builder/core'
 import type {UploaderProps} from 'rsuite'
 import {Uploader} from 'rsuite'
+import {nonNegNumber} from '../commonProperties'
 import {InputCell} from './components/InputCell'
 
 interface RsUploaderProps extends UploaderProps {
@@ -45,7 +46,7 @@ export const rsUploader = define(RsUploader, 'RsUploader')
     onSuccess: event,
     onUpload: event,
     removable: boolean.default(false),
-    timeout: number,
+    timeout: nonNegNumber.default(0),
     withCredentials: boolean.default(false),
     fileList: array
       .withEditorProps({columns})

@@ -2,7 +2,7 @@ import {array, boolean, define, isString, number, oneOf, string} from '@react-fo
 import type {NumericFormatProps} from 'react-number-format'
 import {NumericFormat} from 'react-number-format'
 import {InputProps} from 'rsuite'
-import {inputProps} from '../commonProperties'
+import {inputProps, nonNegNumber} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
 import {WrappedInput} from './components/WrappedInput'
 
@@ -65,7 +65,7 @@ export const rsNumberFormat = define(RsNumberFormat, 'RsNumberFormat')
     allowedDecimalSeparators: array.ofString,
     allowLeadingZeros: boolean.default(false),
     allowNegative: boolean.default(true),
-    decimalScale: number,
+    decimalScale: nonNegNumber,
     decimalSeparator: string,
     fixedDecimalScale: boolean.default(false),
     prefix: string,
