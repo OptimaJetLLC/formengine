@@ -6,6 +6,7 @@ import {Form, InputPicker, InputPickerProps, Loader} from 'rsuite'
 import {pickerProps} from '../commonProperties'
 import {LoadDataHandler, useLoadData} from '../hooks'
 import {RsLabeledInput} from './components/Labeled'
+import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
 interface RsSearchProps extends InputPickerProps {
   label: string
@@ -17,6 +18,7 @@ const CustomCaret = () => null
 const RsSearch = ({data, label, onLoadData, onSearch, value = '', className, ...props}: RsSearchProps) => {
   const {loading, onOpen, ...loadProps} = useLoadData({data, onLoadData, onSearch, value})
   const renderMenu = (menu: ReactNode) => loadProps.data?.length ? menu : null
+  const onClean = useTouchOnEvent(props, 'onClean')
 
   const Icon = loading ? Loader : Search
 
@@ -24,7 +26,7 @@ const RsSearch = ({data, label, onLoadData, onSearch, value = '', className, ...
     <RsLabeledInput className={className}>
       <Form.ControlLabel>{label}</Form.ControlLabel>
       <Container>
-        <SInputPicker {...props} {...loadProps} renderMenu={renderMenu} caretAs={CustomCaret}/>
+        <SInputPicker {...props} {...loadProps} onClean={onClean} renderMenu={renderMenu} caretAs={CustomCaret}/>
         {!(props.cleanable && value) && <Icon className={'search-icon'}/>}
       </Container>
     </RsLabeledInput>

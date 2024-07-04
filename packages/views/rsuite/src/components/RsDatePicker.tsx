@@ -4,6 +4,7 @@ import {useMemo} from 'react'
 import {DatePicker, DatePickerProps, Form} from 'rsuite'
 import {placement, size} from '../commonProperties'
 import {RsLabeledInput} from './components/Labeled'
+import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
 interface RsRsDatePickerProps extends DatePickerProps {
   label: string
@@ -25,11 +26,12 @@ const toSafeFormat = (format?: string) => {
 
 const RsDatePicker = ({label, value, className, format, ...props}: RsRsDatePickerProps) => {
   const safeFormat = useMemo(() => toSafeFormat(format), [format])
+  const onClean = useTouchOnEvent(props, 'onClean')
 
   return (
     <RsLabeledInput className={className}>
       <Form.ControlLabel>{label}</Form.ControlLabel>
-      <DatePicker {...props} value={value} format={safeFormat}/>
+      <DatePicker {...props} value={value} format={safeFormat} onClean={onClean}/>
     </RsLabeledInput>
   )
 }

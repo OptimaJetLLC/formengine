@@ -3,13 +3,16 @@ import type {UploaderProps} from 'rsuite'
 import {Uploader} from 'rsuite'
 import {nonNegNumber} from '../commonProperties'
 import {InputCell} from './components/InputCell'
+import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
 interface RsUploaderProps extends UploaderProps {
   customElement: boolean
 }
 
 const RsUploader = ({customElement, children, ...props}: RsUploaderProps) => {
-  return <Uploader {...props}>
+  const onRemove = useTouchOnEvent(props, 'onRemove')
+
+  return <Uploader {...props} onRemove={onRemove}>
     {customElement && <div>{children}</div>}
   </Uploader>
 }

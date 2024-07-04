@@ -5,6 +5,7 @@ import {alignItems, nonNegNumber} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
 import {Rows} from './components/Layout'
 import {SignaturePad, SignaturePadHandle, SignaturePadProps} from './components/SignaturePad'
+import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
 interface RsSignatureProps extends SignaturePadProps {
   value?: string
@@ -12,24 +13,21 @@ interface RsSignatureProps extends SignaturePadProps {
   clearButtonText?: string
 }
 
-const RsSignature = ({value, onChange, style, className, label, clearButtonText, ...props}: RsSignatureProps) => {
+const RsSignature = ({value, style, className, label, clearButtonText, ...props}: RsSignatureProps) => {
   const padRef = useRef<SignaturePadHandle>(null)
   const buttonStyle = useMemo(() => ({width: props.width, marginTop: 6}),
     [props.width])
+  const onChange = useTouchOnEvent(props, 'onChange')
 
   const clear = useCallback(() => {
     padRef.current?.clear()
-    onChange?.(undefined)
-  }, [onChange])
-
-  const handleChange = useCallback((value?: string) => {
-    onChange?.(value)
+    onChange(undefined)
   }, [onChange])
 
   return <RsLabeledInput style={style} className={className}>
     <Rows>
       {label && <RsRtlLabel>{label}</RsRtlLabel>}
-      <SignaturePad value={value} onChange={handleChange} ref={padRef} {...props}/>
+      <SignaturePad {...props} value={value} ref={padRef} onChange={onChange}/>
     </Rows>
     <Button onClick={clear} disabled={!value} appearance={'primary'} style={buttonStyle}>{clearButtonText}</Button>
   </RsLabeledInput>
