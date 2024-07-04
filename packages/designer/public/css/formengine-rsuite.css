@@ -283,3 +283,17 @@
   background-color: var(--rs-body) !important;
   color: var(--rs-text-primary) !important;
 }
+
+
+.rs-picker {
+  .rs-picker-clean.rs-btn-close {
+    /* inline clean button */
+    color: var(--rs-text-secondary);
+    height: 20px;
+    font-size: 12px;
+
+    svg {
+      height: 1em;
+    }
+  }
+}
