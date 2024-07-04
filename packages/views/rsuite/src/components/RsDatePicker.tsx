@@ -1,4 +1,6 @@
 import {boolean, date, define, event, number, oneOf, string} from '@react-form-builder/core'
+import {format as formatDate} from 'date-fns'
+import {useMemo} from 'react'
 import {DatePicker, DatePickerProps, Form} from 'rsuite'
 import {placement, size} from '../commonProperties'
 import {RsLabeledInput} from './components/Labeled'
@@ -7,12 +9,30 @@ interface RsRsDatePickerProps extends DatePickerProps {
   label: string
 }
 
-const RsDatePicker = ({label, value, className, ...props}: RsRsDatePickerProps) => (
-  <RsLabeledInput className={className}>
-    <Form.ControlLabel>{label}</Form.ControlLabel>
-    <DatePicker value={value} {...props}/>
-  </RsLabeledInput>
-)
+const toSafeFormat = (format?: string) => {
+  const trimmed = format?.trim()
+  if (!trimmed) return undefined
+
+  try {
+    // fixes RSuite issue v5.64.2, check on never version
+    formatDate(new Date(), trimmed)
+  } catch (e) {
+    return undefined
+  }
+
+  return trimmed
+}
+
+const RsDatePicker = ({label, value, className, format, ...props}: RsRsDatePickerProps) => {
+  const safeFormat = useMemo(() => toSafeFormat(format), [format])
+
+  return (
+    <RsLabeledInput className={className}>
+      <Form.ControlLabel>{label}</Form.ControlLabel>
+      <DatePicker {...props} value={value} format={safeFormat}/>
+    </RsLabeledInput>
+  )
+}
 
 export const rsDatePicker = define(RsDatePicker, 'RsDatePicker')
   .name('DatePicker')
