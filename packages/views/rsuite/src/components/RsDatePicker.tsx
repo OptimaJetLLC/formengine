@@ -10,7 +10,7 @@ interface RsRsDatePickerProps extends DatePickerProps {
 const RsDatePicker = ({label, value, className, ...props}: RsRsDatePickerProps) => (
   <RsLabeledInput className={className}>
     <Form.ControlLabel>{label}</Form.ControlLabel>
-    <DatePicker value={value ?? null} {...props}/>
+    <DatePicker value={value} {...props}/>
   </RsLabeledInput>
 )
 
