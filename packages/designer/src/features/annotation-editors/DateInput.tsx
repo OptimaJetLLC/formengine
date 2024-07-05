@@ -12,6 +12,6 @@ export const DateInput = (props: AnnotationEditorProps) => {
 
   return <LabeledProperty {...props}>
     <DatePicker editable={false} cleanable={true} placement={'auto'}
-                value={value} onChange={onChange} onClean={onClean}/>
+                value={value ?? null} onChange={onChange} onClean={onClean}/>
   </LabeledProperty>
 }

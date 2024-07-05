@@ -24,14 +24,14 @@ const toSafeFormat = (format?: string) => {
   return trimmed
 }
 
-const RsDatePicker = ({label, value, className, format, ...props}: RsRsDatePickerProps) => {
+const RsDatePicker = ({label, value, className, format, defaultValue, ...props}: RsRsDatePickerProps) => {
   const safeFormat = useMemo(() => toSafeFormat(format), [format])
   const onClean = useTouchOnEvent(props, 'onClean')
 
   return (
     <RsLabeledInput className={className}>
       <Form.ControlLabel>{label}</Form.ControlLabel>
-      <DatePicker {...props} value={value} format={safeFormat} onClean={onClean}/>
+      <DatePicker {...props} value={value ?? defaultValue ?? null} format={safeFormat} onClean={onClean}/>
     </RsLabeledInput>
   )
 }
