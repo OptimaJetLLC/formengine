@@ -21,7 +21,7 @@ The form will be saved to a file with the extension `.json`.
 ## Get the form's JSON in React component
 
 If you need get the form's JSON inside the React component body, you can use
-the [IFormBuilder](/api-reference/interfaces/react_form_builder_designer.IFormBuilder) ref:
+the [IFormBuilder](/api-reference/@react-form-builder/designer/interfaces/IFormBuilder) ref:
 
 ```tsx
 const FormBuilderApp = () => {
@@ -150,13 +150,13 @@ Let's take a look at what a JSON form is, below is an example:
 }
 ```
 
-The form is represented by the [PersistedForm](/api-reference/interfaces/react_form_builder_core.PersistedForm) type. Let's take a closer
+The form is represented by the [PersistedForm](/api-reference/@react-form-builder/core/interfaces/PersistedForm) type. Let's take a closer
 look at the parts of this JSON.
 
 ### Version
 
 This is the version of the form saved in JSON format. The list of possible versions is listed
-in [PersistedFormVersion](/api-reference/enums/react_form_builder_core.PersistedFormVersion).
+in [PersistedFormVersion](/api-reference/@react-form-builder/core/enumerations/PersistedFormVersion).
 
 ```json
 {
@@ -199,7 +199,7 @@ parameters.
 ### Form
 
 This describes the form itself, which is represented by a component tree, see
-the [ComponentStore](/api-reference/classes/react_form_builder_core.ComponentStore) type for more details. form is the root element of the
+the [ComponentStore](/api-reference/@react-form-builder/core/classes/ComponentStore) type for more details. form is the root element of the
 component tree.
 
 ```json
@@ -274,10 +274,11 @@ component tree.
 
 The next set of data relates to localization.
 
-- `localization` - a form localization data (see [LocalizationValue](/api-reference/modules/react_form_builder_core#localizationvalue)).
+- `localization` - a form localization data (
+  see [LocalizationValue](/api-reference/@react-form-builder/core/type-aliases/LocalizationValue)).
   The [Fluent](https://projectfluent.org/) language is used for localization.
 - `languages` - an array of languages that the form supports. The language is described by
-  the [Language](/api-reference/classes/react_form_builder_core.Language) type.
+  the [Language](/api-reference/@react-form-builder/core/classes/Language) type.
 - `defaultLanguage` - the default form language, e.g. 'en-US'.
 
 ```json

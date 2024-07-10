@@ -6,7 +6,7 @@ slug: /storing-user-defined-data
 
 # Storing user-defined data
 
-Each component that implements [IFormData](/api-reference/interfaces/react_form_builder_core.IFormData) can maintain a user-defined data
+Each component that implements [IFormData](/api-reference/@react-form-builder/core/interfaces/IFormData) can maintain a user-defined data
 object of any shape. This functionality is not confined to forms; it can be applied to any component. When you exceed the capabilities of
 the FormEngine's core features, you can extend the behavior with this custom storage.
 

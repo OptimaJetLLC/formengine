@@ -9,9 +9,9 @@ slug: /form-storage
 By default, the designer does not use external form stores. In this mode you can create forms, export and import forms to JSON files.
 If this is not enough for you and you would like to save forms in the form store, you can do it by connecting an external form store.
 
-The first thing you need to do is to implement the [IFormStorage](/api-reference/interfaces/react_form_builder_designer.IFormStorage)
+The first thing you need to do is to implement the [IFormStorage](/api-reference/@react-form-builder/designer/interfaces/IFormStorage)
 interface. Then you need to pass the `IFormStorage` implementation to
-the [formStorage](/api-reference/interfaces/react_form_builder_designer.FormBuilderProps#formstorage) property of the `FormBuilder`
+the [formStorage](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#formstorage) property of the `FormBuilder`
 component.
 
 ```jsx title='Sample code'

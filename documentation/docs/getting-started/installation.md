@@ -10,7 +10,7 @@ slug: /installation
 ## Designer
 
 The form designer in Form Builder is represented by the React
-component [FormBuilder](/api-reference/modules/react_form_builder_designer#formbuilder). The `FormBuilder` component is located in the
+component [FormBuilder](/api-reference/@react-form-builder/designer/functions/FormBuilder). The `FormBuilder` component is located in the
 package [@react-form-builder/designer](https://www.npmjs.com/package/@react-form-builder/designer).
 
 To install the package in your application, use the command:
@@ -46,9 +46,9 @@ export default App
 ```
 
 You can find a description of the component properties in
-the [FormBuilderProps](/api-reference/interfaces/react_form_builder_designer.FormBuilderProps) API. The only mandatory property
-is [view](/api-reference/interfaces/react_form_builder_designer.FormBuilderProps#view),
-which is a description of the component [metadata](/api-reference/classes/react_form_builder_core.BuilderView) used to design the form.
+the [FormBuilderProps](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps) API. The only mandatory property
+is [view](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#view),
+which is a description of the component [metadata](/api-reference/@react-form-builder/core/classes/BuilderView) used to design the form.
 
 You can use the pre-built components found in
 the [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite) package to start a form
@@ -95,8 +95,8 @@ This is the minimal React component code with which you can add a form designer 
 
 ## Viewer
 
-The [FormViewer](/api-reference/modules/react_form_builder_core#formviewer) component is responsible for displaying the form in Form
-Builder. The [FormBuilder](/api-reference/modules/react_form_builder_designer#formbuilder) uses the `FormViewer` component to display
+The [FormViewer](/api-reference/@react-form-builder/core/functions/FormViewer) component is responsible for displaying the form in Form
+Builder. The [FormBuilder](/api-reference/@react-form-builder/designer/functions/FormBuilder) uses the `FormViewer` component to display
 the form in the center panel.
 
 To install the package in your application, use the command:
@@ -117,7 +117,7 @@ npm install @emotion/cache@11.10.5 @emotion/css@11.10.5 @emotion/react@11.10.5 @
 :::
 
 The `FormViewer` component receives as input the properties described in the
-type [FormViewerProps](/api-reference/interfaces/react_form_builder_core.FormViewerProps).
+type [FormViewerProps](/api-reference/@react-form-builder/core/interfaces/FormViewerProps).
 
 Let's look at an example of a simple application using a `FormViewer` component with a set of components from the React Suite library:
 
@@ -149,9 +149,9 @@ export default App
 ```
 
 This code sample creates a `form` variable that contains a JSON form string, there is one input field on the form. In the component
-`FormViewer` is passed the mandatory [view](/api-reference/interfaces/react_form_builder_core.FormViewerProps#view) property, which is a set
+`FormViewer` is passed the mandatory [view](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#view) property, which is a set
 of component metadata for the React Suite library. As well as
-the [getForm](/api-reference/interfaces/react_form_builder_core.FormViewerProps#getform) property, which accepts a function that returns the
+the [getForm](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#getform) property, which accepts a function that returns the
 value of the `form` variable.
 
 ## CDN

@@ -140,7 +140,8 @@ First, we need two forms to replace the React forms from the Camunda example. We
 straightforward to accomplish. For instance, you can use our [demo](https://demo.formengine.io/). Simply drag and drop the necessary
 components onto the form and configure their properties as required. Below are the JSON files containing the forms themselves.
 
-<details><summary>Click to view start-form.</summary>
+<details>
+<summary>Click to view start-form.</summary>
 
 ```json title="start-form.json"
 {
@@ -282,7 +283,8 @@ You can see the "start-form" in the screenshot below:
 
 The second form is similar to the first.
 
-<details><summary>Click to view task-form.</summary>
+<details>
+<summary>Click to view task-form.</summary>
 
 ```json title="task-form"
 {
@@ -491,8 +493,8 @@ The function accepts the following parameters:
 
 1. `form` is the JSON of the form.
 2. `container` is the HTML element where the form will be rendered.
-3. `additionalProps` are the additional [properties](/api-reference/interfaces/react_form_builder_core.FormViewerProps) of
-   the [FormViewer](/api-reference/modules/react_form_builder_core#formviewer) component.
+3. `additionalProps` are the additional [properties](/api-reference/@react-form-builder/core/interfaces/FormViewerProps) of
+   the [FormViewer](/api-reference/@react-form-builder/core/functions/FormViewer) component.
 
 ```javascript
 function renderFormEngineForm(form, container, additionalProps) {
@@ -514,7 +516,8 @@ function renderFormEngineForm(form, container, additionalProps) {
 Each form's code will have its own `renderCamundaForm` function that will link the FormEngine form and the Camunda form, which is stored in
 the `camForm` object. In general, the form code is similar to the forms from the React example. See the form code below for reference.
 
-<details><summary>Click to view start-form.</summary>
+<details>
+<summary>Click to view start-form.</summary>
 
 ```html title="start-form.html" {2,18,56,189-194,199,202}
 
@@ -731,7 +734,8 @@ the `camForm` object. In general, the form code is similar to the forms from the
 
 </details>
 
-<details><summary>Click to view task-form.</summary>
+<details>
+<summary>Click to view task-form.</summary>
 
 ```html title="task-form.html" {2,18,20,51,150-168,173,194}
 

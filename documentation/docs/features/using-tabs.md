@@ -84,10 +84,10 @@ Let's take an in-depth look at how this component works.
 - Lines 13-17 define the type of properties of the `RsTabProps` component. Line 16 shows that the `pane` property is of type `ReactNode`.
 - In lines 19-40, the React component `RsTab` is defined. It is a functional React component that receives properties of type `RsTabProps`.
 - In line 20, the `RsTab` component uses the Form
-  Builder [useComponentData](/api-reference/modules/react_form_builder_core#usecomponentdata) hook. This hook returns an instance of
-  class [ComponentData](/api-reference/classes/react_form_builder_core.ComponentData). The `ComponentData` class is responsible for storing
+  Builder [useComponentData](/api-reference/@react-form-builder/core/functions/useComponentData) hook. This hook returns an instance of
+  class [ComponentData](/api-reference/@react-form-builder/core/classes/ComponentData). The `ComponentData` class is responsible for storing
   all the data needed to render the component.
-- The `ComponentData` contains the [userDefinedProps](/api-reference/classes/react_form_builder_core.ComponentData#userdefinedprops)
+- The `ComponentData` contains the [userDefinedProps](/api-reference/@react-form-builder/core/classes/ComponentData#userdefinedprops)
   property. You can set component properties in `userDefinedProps` to override component properties that have been computed by the Form
   Builder.
 - Lines 23-27 define the `onNavSelect` handler, which changes the `activeKey` property, the name of the active tab, when the tab is clicked.
@@ -95,7 +95,7 @@ Let's take an in-depth look at how this component works.
 - Lines 48-60 define the metadata of the `RsTab` component for the Form Builder.
 - The `pane` property is defined on lines 55-59.
 - On lines 56-58,
-  the [withSlotConditionBuilder](/api-reference/classes/react_form_builder_core.NodeAnnotationBuilder#withslotconditionbuilder) function is
+  the [withSlotConditionBuilder](/api-reference/@react-form-builder/core/classes/NodeAnnotationBuilder#withslotconditionbuilder) function is
   called. This is where the most entertaining part starts. The `withSlotConditionBuilder` function takes as input a function that should
   return a text with the source code of another function.
 

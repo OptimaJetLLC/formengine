@@ -9,11 +9,11 @@ slug: /conditional-rendering
 ## Overview
 
 FormBuilder out of the box supports conditional rendering for components. For this purpose, a special component
-property [renderWhen](/api-reference/classes/react_form_builder_core.ComponentStore#renderwhen) is used.
+property [renderWhen](/api-reference/@react-form-builder/core/classes/ComponentStore#renderwhen) is used.
 
 The value of the property is treated as an expression that should return `true` when the component needs to be rendered. The expression in
 this case is the function text, without the `return` keyword. A `form` variable of
-type [IFormData](/api-reference/interfaces/react_form_builder_core.IFormData) is available in the body of the expression, just as it is
+type [IFormData](/api-reference/@react-form-builder/core/interfaces/IFormData) is available in the body of the expression, just as it is
 in [computed properties](/computed-properties).
 
 You can also make the property computed if you want to write a full function that calculates whether the component should be displayed.

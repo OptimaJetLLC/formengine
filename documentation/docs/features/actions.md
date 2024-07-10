@@ -23,7 +23,7 @@ Actions are simply JavaScript functions that are used to handle events. Actions 
 
 Two events are described for each component connected to Form Builder: `onDidMount`, `onWillUnmount`. These events are triggered when a
 component is mounted and unmounted, as for a typical React component. If you want to use other component events, you must
-use [event](/api-reference/classes/react_form_builder_core.ActionEventArgs#event) to define the component property you need. Example:
+use [event](/api-reference/@react-form-builder/core/classes/ActionEventArgs#event) to define the component property you need. Example:
 
 ```typescript {7}
 export const myButton = define(MyButton, 'MyButton')
@@ -79,7 +79,7 @@ async function Action (e, args) {
 ```
 
 There are two parameters in this function:
-1. e is an object of type [ActionEventArgs](/api-reference/classes/react_form_builder_core.ActionEventArgs).
+1. e is an object of type [ActionEventArgs](/api-reference/@react-form-builder/core/classes/ActionEventArgs).
 2. args - this object will store values of arguments of action parameters.
 
 Line 6 contains the `setVisible` function, which is responsible for hiding or displaying the component on the form using the `renderWhen`
@@ -89,7 +89,7 @@ error or the component displaying the success of validation of the whole form.
 
 ## Custom actions
 
-Custom actions can be passed through the [actions](/api-reference/interfaces/react_form_builder_core.FormViewerProps#actions) parameter.
+Custom actions can be passed through the [actions](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#actions) parameter.
 The passed custom actions will be available in the selection in the form designer. You can find an
 example [this](/usage#designer) page.
 
@@ -109,5 +109,5 @@ example [this](/usage#designer) page.
 ```
 
 In the simplest case, a custom function is just an arrow function like `logEventArgs` from the example above. If you need a function with
-parameters, use the [ActionDefinition.functionalAction](/api-reference/classes/react_form_builder_core.ActionDefinition#functionalaction)
+parameters, use the [ActionDefinition.functionalAction](/api-reference/@react-form-builder/core/classes/ActionDefinition#functionalaction)
 function to define the action, as in the case of `assertArgs`.

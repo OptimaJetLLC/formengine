@@ -10,7 +10,7 @@ slug: /getting-form-json
 ## Using FormBuilder ref
 
 If you need JSON that contains the form model in `FormBuilder`, you can
-use [formAsString](/api-reference/interfaces/react_form_builder_designer.IFormBuilder#formasstring) method from the `FormBuilder` ref:
+use [formAsString](/api-reference/@react-form-builder/designer/interfaces/IFormBuilder#formasstring) method from the `FormBuilder` ref:
 
 ```tsx
 const FormBuilderApp = () => {

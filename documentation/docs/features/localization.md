@@ -9,8 +9,8 @@ slug: /localization
 ## Overview
 
 Some component properties can be localized. In order for a component property to be localizable, the following conditions must be met - the
-property must be of type [string](/api-reference/modules/react_form_builder_core#string) and
-the [notLocalize](/api-reference/classes/react_form_builder_core.BaseBuilder#notlocalize) method has not been called for this property.
+property must be of type [string](/api-reference/@react-form-builder/core/variables/string) and
+the [notLocalize](/api-reference/@react-form-builder/core/classes/BaseBuilder#notlocalize) method has not been called for this property.
 
 Here is an example of a component where the `name` property is localized, but the `value` property is not:
 
@@ -236,8 +236,8 @@ text will change to the one we just wrote.
 ## Custom localization
 
 If you want to use your localization system, you can plug it in. To do this, you need to pass the localization function through
-the [localize](/api-reference/interfaces/react_form_builder_core.FormViewerProps#localize) property.
-The [parameters](/api-reference/modules/react_form_builder_core#componentlocalizer) are passed to the function input:
+the [localize](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#localize) property.
+The [parameters](/api-reference/@react-form-builder/core/type-aliases/ComponentLocalizer) are passed to the function input:
 
 - localization language.
 - component settings.
@@ -255,7 +255,7 @@ function localizer(componentStore: ComponentStore, language: Language): Record<s
 
 This function localizes only the `placeholder` property and only on a component with the `comment` key. The `placeholder` property is set to
 the full code of the selected language. You can pass the current language through
-the [language](/api-reference/interfaces/react_form_builder_core.FormViewerProps#language) property.
+the [language](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#language) property.
 
 ## Conclusion
 

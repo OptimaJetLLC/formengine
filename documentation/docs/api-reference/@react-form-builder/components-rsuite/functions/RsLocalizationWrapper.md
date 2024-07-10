@@ -1,0 +1,15 @@
+# Function: RsLocalizationWrapper()
+
+> **RsLocalizationWrapper**(`props`): `Element`
+
+## Parameters
+
+• **props**: [`FormViewerWrapperComponentProps`](../../core/interfaces/FormViewerWrapperComponentProps.md)
+
+the component props.
+
+## Returns
+
+`Element`
+
+the wrapped components with localization settings applied.

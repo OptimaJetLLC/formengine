@@ -178,8 +178,8 @@ async function Action(e, args) {
 }
 ```
 
-- [ActionEventArgs](/api-reference/classes/react_form_builder_core.ActionEventArgs) `e` is a variable containing the event data.
-- [Record<string, unknown>](/api-reference/classes/react_form_builder_core.ActionEventArgs#data) `e.data` is the data of the form.
+- [ActionEventArgs](/api-reference/@react-form-builder/core/classes/ActionEventArgs) `e` is a variable containing the event data.
+- [Record&lt;string, unknown>](/api-reference/@react-form-builder/core/classes/ActionEventArgs#data) `e.data` is the data of the form.
 
 :::info
 

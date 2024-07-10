@@ -129,7 +129,7 @@ something like this:
 
 ### Custom style properties
 
-You can also bind CSS properties using the [css](/api-reference/classes/react_form_builder_core.Definer#css) annotation. Take a look at the
+You can also bind CSS properties using the [css](/api-reference/@react-form-builder/core/classes/Definer#css) annotation. Take a look at the
 code below:
 
 ```tsx title='StyledDiv.tsx'
@@ -151,7 +151,7 @@ export const styledDiv = define(StyledDiv, 'StyledDiv')
 // highlight-end
 ```
 
-Use the [css](/api-reference/classes/react_form_builder_core.Definer#css) annotation to describe the CSS styles of the component for the
+Use the [css](/api-reference/@react-form-builder/core/classes/Definer#css) annotation to describe the CSS styles of the component for the
 designer. After description is added - the style editors will appear on the "Style" tab:
 
 ![Component styling 08](/assets/component-styling/component-styling-08.png)

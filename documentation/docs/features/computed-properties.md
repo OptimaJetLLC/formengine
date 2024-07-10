@@ -119,9 +119,9 @@ function Calculation(form) {
 ![Computed properties 04](/assets/computed-properties/computed-properties-04.png)
 
 Let's break down our function. The function receives the `form` parameter
-of [IFormData](/api-reference/interfaces/react_form_builder_core.IFormData) type and should return a `number`. Inside the
+of [IFormData](/api-reference/@react-form-builder/core/interfaces/IFormData) type and should return a `number`. Inside the
 function we get the data entered in the input field through the `form.data.name` construct.
-[form.data](/api-reference/interfaces/react_form_builder_core.IFormData#data) is an object through which we can get and set the form
+[form.data](/api-reference/@react-form-builder/core/interfaces/IFormData#data) is an object through which we can get and set the form
 data, `name` is the value of the `key` field of our input field.
 
 And then everything is simple, if there is data in the input fields and the data is not zero, the result of the function will be their
@@ -146,7 +146,7 @@ Here we have made the simplest computable property.
 ## How it's stored in JSON
 
 When editing a form, the values of component properties are set, which are then stored in JSON format. A component property in JSON format
-is described by the type [ComponentProperty](/api-reference/interfaces/react_form_builder_core.ComponentProperty).
+is described by the type [ComponentProperty](/api-reference/@react-form-builder/core/interfaces/ComponentProperty).
 
 Below is an example of the created form:
 

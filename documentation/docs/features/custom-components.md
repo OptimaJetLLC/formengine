@@ -22,20 +22,20 @@ Meta-information on component properties in Form Builder is called an annotation
 
 Form Builder has the following APIs for describing a component:
 
-1. [define](/api-reference/modules/react_form_builder_core#define) - is the primary method for defining a component.
-2. [string](/api-reference/modules/react_form_builder_core#string) - annotation builder for properties of type `string`.
-3. [boolean](/api-reference/modules/react_form_builder_core#boolean) - annotation builder for properties of type `boolean`.
-4. [number](/api-reference/modules/react_form_builder_core#number) - annotation builder for properties of type `number`.
-5. [size](/api-reference/modules/react_form_builder_core#size) - annotation builder for properties of type 'CSS unit'.
-6. [date](/api-reference/modules/react_form_builder_core#date) - annotation builder for properties of type `Date`.
-7. [array](/api-reference/modules/react_form_builder_core#array) - annotation builder for properties of type `array`.
-8. [color](/api-reference/modules/react_form_builder_core#color) - annotation builder for properties of type `color`.
-9. [className](/api-reference/modules/react_form_builder_core#classname) - annotation builder for properties containing the CSS class name.
-10. [event](/api-reference/modules/react_form_builder_core#event) - annotation builder for properties of type `event`.
-11. [node](/api-reference/modules/react_form_builder_core#node) - annotation builder for properties of type `ReactNode`.
-12. [oneOf](/api-reference/modules/react_form_builder_core#oneof) - annotation builder for properties of type `enum`, the property value can
+1. [define](/api-reference/@react-form-builder/core/functions/define) - is the primary method for defining a component.
+2. [string](/api-reference/@react-form-builder/core/variables/string) - annotation builder for properties of type `string`.
+3. [boolean](/api-reference/@react-form-builder/core/variables/boolean) - annotation builder for properties of type `boolean`.
+4. [number](/api-reference/@react-form-builder/core/variables/number) - annotation builder for properties of type `number`.
+5. [size](/api-reference/@react-form-builder/core/variables/size) - annotation builder for properties of type 'CSS unit'.
+6. [date](/api-reference/@react-form-builder/core/variables/date) - annotation builder for properties of type `Date`.
+7. [array](/api-reference/@react-form-builder/core/variables/array) - annotation builder for properties of type `array`.
+8. [color](/api-reference/@react-form-builder/core/variables/color) - annotation builder for properties of type `color`.
+9. [className](/api-reference/@react-form-builder/core/variables/className) - annotation builder for properties containing the CSS class name.
+10. [event](/api-reference/@react-form-builder/core/variables/event) - annotation builder for properties of type `event`.
+11. [node](/api-reference/@react-form-builder/core/variables/node) - annotation builder for properties of type `ReactNode`.
+12. [oneOf](/api-reference/@react-form-builder/core/functions/oneOf) - annotation builder for properties of type `enum`, the property value can
     only be one of enum.
-13. [someOf](/api-reference/modules/react_form_builder_core#someof) - annotation builder for properties of type `enum`, the property value
+13. [someOf](/api-reference/@react-form-builder/core/functions/someOf) - annotation builder for properties of type `enum`, the property value
     can contain multiple enum values.
 14. There are other APIs for describing component properties, you can find them in the documentation, these APIs deal with describing
     synthetic properties of a component (e.g. a set of arbitrary HTML attributes).
@@ -168,8 +168,8 @@ Once the application is compiled, the Form Builder should appear on the web page
 
 Now let's break down what we did.
 
-1. Imported [BuilderView](/api-reference/classes/react_form_builder_core.BuilderView),
-   [FormBuilder](/api-reference/modules/react_form_builder_designer#formbuilder) from `@react-form-builder/designer` package.
+1. Imported [BuilderView](/api-reference/@react-form-builder/core/classes/BuilderView),
+   [FormBuilder](/api-reference/@react-form-builder/designer/functions/FormBuilder) from `@react-form-builder/designer` package.
 2. Created a `builderView` variable of type `BuilderView`. We passed an empty array as a parameter to the `BuilderView` constructor - this
    is an empty array with the component's metadata.
 3. In the React component `App`, we rendered the `FormBuilder` component with the component metadata from the `builderView` variable.
@@ -229,8 +229,8 @@ export default App
 ```
 
 We use the `matButton.build()` method because the `matButton` variable is the component's metadata builder. After calling
-the [build](/api-reference/classes/react_form_builder_core.Definer#build) method, we will
-get an instance of [BuilderComponent](/api-reference/interfaces/react_form_builder_core.BuilderComponent), which contains the metadata
+the [build](/api-reference/@react-form-builder/core/classes/Definer#build) method, we will
+get an instance of [BuilderComponent](/api-reference/@react-form-builder/core/interfaces/BuilderComponent), which contains the metadata
 needed at design time and at runtime.
 
 Now it's time to check how our component looks in the designer. Launch the application using the command:
@@ -256,7 +256,7 @@ component we can see how the component changes on the form:
 ### Form with custom component
 
 After creating a form in the designer, you can copy (or download) the form code and pass the form code to
-the [FormViewer](/api-reference/modules/react_form_builder_core#formviewer), a component for displaying forms. Here is an example of a form
+the [FormViewer](/api-reference/@react-form-builder/core/functions/FormViewer), a component for displaying forms. Here is an example of a form
 with a custom component:
 
 ```json
@@ -374,10 +374,10 @@ export default App
 
 Let's take a look at what has changed in the application:
 
-1. Imported createView, [FormViewer](/api-reference/modules/react_form_builder_core#formviewer) from @react-form-builder/core package.
+1. Imported createView, [FormViewer](/api-reference/@react-form-builder/core/functions/FormViewer) from @react-form-builder/core package.
 2. Created a set of metadata for `FormViewer` and saved it to a view variable. The `FormViewer` component does not need all the metadata of
-   the component, what is in the `model` field is enough. The [createView](/api-reference/modules/react_form_builder_core#createview)
-   function creates a [View](/api-reference/classes/react_form_builder_core.View) object that contains information about the components
+   the component, what is in the `model` field is enough. The [createView](/api-reference/@react-form-builder/core/functions/createView)
+   function creates a [View](/api-reference/@react-form-builder/core/classes/View) object that contains information about the components
    required to display the form.
 3. Added a form and saved it to the `form` variable.
 4. Finally, instead of the FormBuilder component, we rendered the FormViewer component, passing `view` and the `getForm` function to it.
@@ -391,13 +391,13 @@ to the console.
 ### Custom component containing data
 
 Okay, but what if we need a component that contains data? For that, we must also define a component, but we must also apply
-the [valued](/api-reference/classes/react_form_builder_core.Annotation#valued) method to one of the component's properties. Once we do this,
-Form Builder will realise that this property of the component contains its value. The component must also have an `onChange` property, which
-must take the value of the component as a parameter.
+the [valued](/api-reference/@react-form-builder/core/classes/Annotation#valued) method to one of the component's properties. Once we do
+this, Form Builder will realise that this property of the component contains its value. The component must also have an `onChange` property,
+which must take the value of the component as a parameter.
 
 To summarise, you need to:
 
-1. Define one of the component properties as [valued](/api-reference/classes/react_form_builder_core.Annotation#valued).
+1. Define one of the component properties as [valued](/api-reference/@react-form-builder/core/classes/Annotation#valued).
 2. Define a `onChange` functional property in the component, such as this:
    ```typescript
    onChange?: (value: any) => void
@@ -473,8 +473,8 @@ changes:
 
 ### Kind of a component
 
-Also, in some cases, you may need to set the [`kind`](/api-reference/classes/react_form_builder_core.Definer#kind) of the component. This is
-a property that shows [how to render](/component-styling###structure) the component. For regular components, it is set to `'component'` by
+Also, in some cases, you may need to set the [`kind`](/api-reference/@react-form-builder/core/classes/Definer#kind) of the component. This is
+a property that shows [how to render](/component-styling#structure) the component. For regular components, it is set to `'component'` by
 default. You can the `kind` value to `'container'` in case you need the component to be only a container, for its children, without having
 its own
 wrappers.
@@ -495,7 +495,7 @@ const myContainer = define(MyContainer)
 ### Component icon
 
 If you want to change the component icon that is displayed next to the component name, it is quite easy to do so. Just call
-the [icon](/api-reference/classes/react_form_builder_core.Definer#icon) method when selecting a component and pass React `ComponentType` to
+the [icon](/api-reference/@react-form-builder/core/classes/Definer#icon) method when selecting a component and pass React `ComponentType` to
 it, which will draw the icon.
 
 Illustrating example:

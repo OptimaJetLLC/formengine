@@ -8,11 +8,11 @@ slug: /designer-customization
 
 ## Customizing the FormBuilder interface
 
-Using the [customization](/api-reference/interfaces/react_form_builder_designer.FormBuilderProps#customization) `FormBuilder` prop, you can
+Using the [customization](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#customization) `FormBuilder` prop, you can
 hide, style, or replace any parts of the FormBuilder interface.
-A [customization map](/api-reference/modules/react_form_builder_designer#customizationmap) object is passed to this property, in which the
-[options](/api-reference/modules/react_form_builder_designer#options) of the desired component are set using
-its [customizable key](/api-reference/modules/react_form_builder_designer#customizablekey).
+A [customization map](/api-reference/@react-form-builder/designer/type-aliases/CustomizationMap) object is passed to this property, in which
+the [options](/api-reference/@react-form-builder/designer/type-aliases/Options) of the desired component are set using
+its [customizable key](/api-reference/@react-form-builder/designer/type-aliases/CustomizableKey).
 
 ### Example
 
@@ -135,9 +135,9 @@ const FormBuilderApp = () => {
 
 ## Custom property editors
 
-Using the [propertyEditors](/api-reference/interfaces/react_form_builder_designer.FormBuilderProps#propertyeditors) FormBuilder prop, you
+Using the [propertyEditors](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#propertyeditors) FormBuilder prop, you
 can override existing component property editors or set editor for
-your [custom property](/api-reference/modules/react_form_builder_core#createproperty).
+your [custom property](/api-reference/@react-form-builder/core/functions/createProperty).
 
 ### Example
 

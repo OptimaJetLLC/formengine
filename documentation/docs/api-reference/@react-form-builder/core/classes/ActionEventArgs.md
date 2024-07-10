@@ -1,0 +1,131 @@
+# Class: ActionEventArgs
+
+Arguments passed to the event handler.
+
+## Constructors
+
+### new ActionEventArgs()
+
+> **new ActionEventArgs**(`type`, `sender`, `store`, `args`, `state`): [`ActionEventArgs`](ActionEventArgs.md)
+
+Creates arguments for the event handler.
+
+#### Parameters
+
+• **type**: `string`
+
+the event type.
+
+• **sender**: [`ComponentData`](ComponentData.md)
+
+the component that triggered the event.
+
+• **store**: [`Store`](Store.md)
+
+the form viewer settings.
+
+• **args**: `any`[]
+
+the event arguments.
+
+• **state**: [`ComponentState`](ComponentState.md)
+
+the [ComponentState](ComponentState.md) instance.
+
+#### Returns
+
+[`ActionEventArgs`](ActionEventArgs.md)
+
+## Properties
+
+### args
+
+> `readonly` **args**: `any`[]
+
+the event arguments.
+
+***
+
+### renderedProps
+
+> **renderedProps**: `Record`\<`string`, `any`\>
+
+The component properties that were used to render the sender component.
+
+***
+
+### sender
+
+> `readonly` **sender**: [`ComponentData`](ComponentData.md)
+
+the component that triggered the event.
+
+***
+
+### store
+
+> `readonly` **store**: [`Store`](Store.md)
+
+the form viewer settings.
+
+***
+
+### type
+
+> `readonly` **type**: `string`
+
+the event type.
+
+## Accessors
+
+### data
+
+> `get` **data**(): `Record`\<`string`, `unknown`\>
+
+#### Returns
+
+`Record`\<`string`, `unknown`\>
+
+the object for reading and changing form data.
+
+***
+
+### event
+
+> `get` **event**(): `null` \| `SyntheticEvent`\<`Element`, `Event`\>
+
+#### Returns
+
+`null` \| `SyntheticEvent`\<`Element`, `Event`\>
+
+the event handled by the event handler.
+
+***
+
+### value
+
+> `get` **value**(): `any`
+
+#### Returns
+
+`any`
+
+the first element of the event argument array, which is treated as a value.
+
+## Methods
+
+### setUserDefinedProps()
+
+> **setUserDefinedProps**(`props`?): `void`
+
+Sets user-defined properties for the React component that override other properties of the component.
+
+#### Parameters
+
+• **props?**: `Record`\<`string`, `any`\>
+
+the component properties.
+
+#### Returns
+
+`void`

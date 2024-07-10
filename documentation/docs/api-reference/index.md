@@ -1,9 +1,9 @@
----
-id: "index"
-title: "Documentation"
-sidebar_label: "Readme"
-sidebar_position: 0
-custom_edit_url: null
----
+# API reference
 
-# React Form Builder
+## Packages
+
+- [@react-form-builder/core](@react-form-builder/core/index.md)
+- [@react-form-builder/designer](@react-form-builder/designer/index.md)
+- [@react-form-builder/designer-bundle](@react-form-builder/designer-bundle/index.md)
+- [@react-form-builder/viewer-bundle](@react-form-builder/viewer-bundle/index.md)
+- [@react-form-builder/components-rsuite](@react-form-builder/components-rsuite/index.md)

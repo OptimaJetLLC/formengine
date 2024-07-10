@@ -1,0 +1,67 @@
+# Type Alias: DefinerData\<T\>
+
+> **DefinerData**\<`T`\>: `object`
+
+Definer class data.
+
+## Type Parameters
+
+• **T** *extends* `object`
+
+React component property type.
+
+## Type declaration
+
+### actionsInitializer?
+
+> `readonly` `optional` **actionsInitializer**: [`ActionsInitializer`](ActionsInitializer.md)
+
+The function that initializes an actions on a component (for internal use only).
+
+### category?
+
+> `optional` **category**: `string`
+
+The component category.
+
+### component
+
+> `readonly` **component**: `ComponentType`\<`T`\>
+
+The React component.
+
+### cssObject?
+
+> `optional` **cssObject**: [`Annotations`](Annotations.md)\<`CSSObject`\>
+
+The CSS metadata.
+
+### customPreview?
+
+> `optional` **customPreview**: `ReactNode`
+
+The custom component to display in the component list (unused).
+
+### icon?
+
+> `optional` **icon**: `ComponentType`
+
+The component icon.
+
+### kind?
+
+> `optional` **kind**: [`ComponentKind`](ComponentKind.md)
+
+The component kind.
+
+### name?
+
+> `optional` **name**: `string`
+
+The component name.
+
+### properties?
+
+> `optional` **properties**: [`Annotations`](Annotations.md)\<`T`\>
+
+The property metadata.

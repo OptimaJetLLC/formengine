@@ -28,6 +28,11 @@
   },
   "exclude": [
     "node_modules",
-    "sample-apps"
+    "sample-apps",
+    "documentation",
+    "packages/core/dist",
+    "packages/designer/dist",
+    "packages/views/fast-qr/dist",
+    "packages/views/rsuite/dist"
   ]
 }

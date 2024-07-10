@@ -23,7 +23,7 @@ Field validators come in different types:
 1. Built-in FormBuilder. There are a number of predefined validators for different data types (string, number, etc.).
 2. Defined by code inside the FormBuilder.
 3. Passed externally to the FormBuilder/FormViewer component via
-   the [validators](/api-reference/interfaces/react_form_builder_core.FormViewerProps#validators) parameter.
+   the [validators](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#validators) parameter.
 
 In the simplest case, a validator is a function that returns `true` or `false` or an error text. Field validators are grouped by the type of
 value being validated (string, number, etc.), i.e. a validator for the string type will not be available in the designer interface for a
@@ -86,7 +86,7 @@ triggered - the minimum field length validator and the validator defined by the 
 
 ### User-defined validators
 
-This kind of validators is passed through the [validators](/api-reference/interfaces/react_form_builder_core.FormViewerProps#validators)
+This kind of validators is passed through the [validators](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#validators)
 property and works the same way as the built-in validators. You can see an example in [this](/usage#viewer) section of the
 documentation.
 
@@ -129,10 +129,10 @@ const customValidators: Validators = {
 ## Form validation
 
 Whole form validation can be implemented if validators have been passed to the FormBuilder/FormViewer properties in
-the [formValidators](/api-reference/interfaces/react_form_builder_core.FormViewerProps#formvalidators) property.
+the [formValidators](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#formvalidators) property.
 
-[FormValidators](/api-reference/modules/react_form_builder_core#formvalidators) is an array of
-the [validation function](/api-reference/modules/react_form_builder_core#formvalidator). Each form validation
+[FormValidators](/api-reference/@react-form-builder/core/type-aliases/FormValidators) is an array of
+the [validation function](/api-reference/@react-form-builder/core/type-aliases/FormValidator). Each form validation
 function is an asynchronous function that takes form data as input and returns an object with form field validation errors, or an empty
 object if the form validation is successful.
 

@@ -40,7 +40,7 @@ _July_ 2, 2024
 _June_ 21, 2024
 
 - Updated documentation on using `ref` with `FormBuilder` and `FormViewer` components.
-- Added ability to pass custom component [errorWrapper](/api-reference/interfaces/react_form_builder_core.FormViewerProps#errorwrapper).
+- Added ability to pass custom component [errorWrapper](/api-reference/@react-form-builder/core/classes/FormViewerPropsStore#errorwrapper).
 - The React Suite library has been updated to version 5.64.2.
 - Fixed bug where only the first action handler was executed on the `onWillUnmount` event.
 - Fixed keyboard navigation in Dropdown component.
@@ -114,7 +114,7 @@ _March_ 14, 2024
 
 _March_ 8, 2024
 
-- Added the FormBuilder UI [customization](/api-reference/interfaces/react_form_builder_designer.FormBuilderProps#customization) feature.
+- Added the FormBuilder UI [customization](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#customization) feature.
 - Add `IFormBuilder.parseForm(formString)` method that sets the form serialized in JSON as the current form.
 - Fixed the bug when FormBuilder UI breaks with `create-react-app`.
 
