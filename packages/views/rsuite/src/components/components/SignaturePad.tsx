@@ -1,5 +1,5 @@
 import type {ComponentPropsWithoutRef, CSSProperties} from 'react'
-import {forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef} from 'react'
+import {forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState} from 'react'
 import VanillaSignaturePad from 'signature_pad'
 
 /**
@@ -51,6 +51,11 @@ export interface SignaturePadProps
    * The background color.
    */
   backgroundColor?: CSSProperties['fill']
+
+  /**
+   * Flag, if true - the component is running in read-only mode.
+   */
+  readOnly?: boolean
 }
 
 const withDefaultProps = ({lineWidth = 1.5, ...props}: SignaturePadProps) => {
@@ -75,6 +80,7 @@ export const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>((p
     className,
     onChange,
     backgroundColor,
+    readOnly,
     ...padProps
   } = props
 
@@ -83,6 +89,7 @@ export const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>((p
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const signPadRef = useRef<VanillaSignaturePad>()
   const clear = useCallback(() => signPadRef.current?.clear(), [])
+  const [vanillaSignaturePad, setVanillaSignaturePad] = useState<VanillaSignaturePad>()
 
   useImperativeHandle(ref, () => ({clear}), [clear])
 
@@ -98,10 +105,22 @@ export const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>((p
     pad.addEventListener('endStroke', () => onChange?.(pad.toDataURL()))
     pad.on()
 
+    setVanillaSignaturePad(pad)
+
     signPadRef.current = pad
 
     return () => pad.off()
   }, [onChange, width, height])
+
+  useEffect(() => {
+    if (readOnly) {
+      vanillaSignaturePad?.off()
+      return
+    }
+    vanillaSignaturePad?.on()
+
+    return () => vanillaSignaturePad?.off()
+  }, [readOnly, vanillaSignaturePad])
 
   const canvasStyle = useMemo(() => ({borderRadius: 6, backgroundColor}),
     [backgroundColor])

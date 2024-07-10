@@ -1,7 +1,7 @@
 import {color, define, event, number, string} from '@react-form-builder/core'
 import {useCallback, useMemo, useRef} from 'react'
 import {Button} from 'rsuite'
-import {alignItems, nonNegNumber} from '../commonProperties'
+import {alignItems, nonNegNumber, readOnly} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
 import {Rows} from './components/Layout'
 import {SignaturePad, SignaturePadHandle, SignaturePadProps} from './components/SignaturePad'
@@ -13,7 +13,7 @@ interface RsSignatureProps extends SignaturePadProps {
   clearButtonText?: string
 }
 
-const RsSignature = ({value, style, className, label, clearButtonText, ...props}: RsSignatureProps) => {
+const RsSignature = ({value, style, className, label, clearButtonText, readOnly, ...props}: RsSignatureProps) => {
   const padRef = useRef<SignaturePadHandle>(null)
   const buttonStyle = useMemo(() => ({width: props.width, marginTop: 6}),
     [props.width])
@@ -27,9 +27,11 @@ const RsSignature = ({value, style, className, label, clearButtonText, ...props}
   return <RsLabeledInput style={style} className={className}>
     <Rows>
       {label && <RsRtlLabel>{label}</RsRtlLabel>}
-      <SignaturePad {...props} value={value} ref={padRef} onChange={onChange}/>
+      <SignaturePad {...props} readOnly={readOnly} value={value} ref={padRef} onChange={onChange}/>
     </Rows>
-    <Button onClick={clear} disabled={!value} appearance={'primary'} style={buttonStyle}>{clearButtonText}</Button>
+    {!readOnly &&
+      <Button onClick={clear} disabled={!value} appearance={'primary'} style={buttonStyle}>{clearButtonText}</Button>
+    }
   </RsLabeledInput>
 }
 
@@ -44,6 +46,7 @@ export const rsSignature = define(RsSignature, 'RsSignature')
     lineWidth: number.default(1.5).withEditorProps({min: 0, step: 0.1}),
     penColor: color.default('rgba(0, 0, 0, 1)'),
     backgroundColor: color.default('rgba(167, 167, 167, 0.1)'),
+    readOnly,
     onChange: event
   })
   .css({alignItems})
