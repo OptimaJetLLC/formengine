@@ -46,13 +46,13 @@ Contains a field validation errors if the field provides multiple errors (i.e. f
 
 ### getValidationResult()
 
-> **getValidationResult**: () => `Promise`\<`ValidationMessages`\>
+> **getValidationResult**: () => `Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md)\>
 
 #### Returns
 
-`Promise`\<`ValidationMessages`\>
+`Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md)\>
 
-the ValidationMessages validation results.
+the [ValidationMessages](../type-aliases/ValidationMessages.md) validation results.
 
 ***
 

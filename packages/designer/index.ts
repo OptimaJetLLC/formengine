@@ -4,7 +4,9 @@ export type {IFormStorage} from './src/stores/IFormStorage'
 export type {FormBuilderProps} from './src/FormBuilderProps'
 export type {FormBuilderI18n, FormBuilderI18nData} from './src/features/localization/FormBuilderLanguage'
 export {BuilderView} from '@react-form-builder/core'
-export type {AnnotationEditorProps, CalculableEditorProps} from './src/features/annotation-editors/AnnotationEditorProps'
+export type {
+  AnnotationEditorProps, CalculableEditorProps, ComputePropertiesParameters, ComputeTypeParams, LocalizationComputeCodeParams
+} from './src/features/annotation-editors/AnnotationEditorProps'
 export type {IFormBuilder} from './src/utils/types'
 export type {CustomizationMap, Options} from './src/features/customization'
 export type {CustomizableKey} from './src/features/customization/types'

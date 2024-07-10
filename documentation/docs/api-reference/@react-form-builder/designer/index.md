@@ -20,10 +20,13 @@
 
 ## Type Aliases
 
+- [ComputePropertiesParameters](type-aliases/ComputePropertiesParameters.md)
+- [ComputeTypeParams](type-aliases/ComputeTypeParams.md)
 - [CustomizableKey](type-aliases/CustomizableKey.md)
 - [CustomizationMap](type-aliases/CustomizationMap.md)
 - [FormBuilderI18n](type-aliases/FormBuilderI18n.md)
 - [FormBuilderI18nData](type-aliases/FormBuilderI18nData.md)
+- [LocalizationComputeCodeParams](type-aliases/LocalizationComputeCodeParams.md)
 - [Options](type-aliases/Options.md)
 
 ## Functions

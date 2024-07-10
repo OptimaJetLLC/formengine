@@ -36,7 +36,7 @@ the component property value type.
 
 the component property value type.
 
-• **params?**: `ComputeTypeParams`\<`T`\>
+• **params?**: [`ComputeTypeParams`](../type-aliases/ComputeTypeParams.md)\<`T`\>
 
 the parameters of the compute code.
 
@@ -100,7 +100,7 @@ the code of computed property.
 
 the component property value type.
 
-• **params?**: `ComputeTypeParams`\<`T`\>
+• **params?**: [`ComputeTypeParams`](../type-aliases/ComputeTypeParams.md)\<`T`\>
 
 the parameters of the compute code.
 

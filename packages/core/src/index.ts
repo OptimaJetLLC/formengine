@@ -106,7 +106,7 @@ export type {HtmlAttribute} from './stores/ComponentStore'
 export type {Css, CssPart} from './features/style/types'
 export type {BoundValueSchema} from './features/validation'
 export type {DeviceStyle} from './features/style/types'
-export type {ValidationResult} from './features/validation/types/ValidationResult'
+export type {MessagesMap, ValidationMessages, ValidationResult} from './features/validation/types/ValidationResult'
 export type {
   ComponentKey,
   ComponentPropertyName,

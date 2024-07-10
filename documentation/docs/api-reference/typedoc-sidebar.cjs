@@ -544,6 +544,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/MessagesMap",
+            "label": "MessagesMap"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/NamedActionDefinition",
             "label": "NamedActionDefinition"
           },
@@ -626,6 +631,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/TypedLocalization",
             "label": "TypedLocalization"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/ValidationMessages",
+            "label": "ValidationMessages"
           },
           {
             "type": "doc",
@@ -1189,6 +1199,16 @@ const typedocSidebar = { items: [
         "items": [
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/designer/type-aliases/ComputePropertiesParameters",
+            "label": "ComputePropertiesParameters"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/designer/type-aliases/ComputeTypeParams",
+            "label": "ComputeTypeParams"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/designer/type-aliases/CustomizableKey",
             "label": "CustomizableKey"
           },
@@ -1206,6 +1226,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/designer/type-aliases/FormBuilderI18nData",
             "label": "FormBuilderI18nData"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/designer/type-aliases/LocalizationComputeCodeParams",
+            "label": "LocalizationComputeCodeParams"
           },
           {
             "type": "doc",

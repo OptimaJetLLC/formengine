@@ -316,7 +316,7 @@ the node or undefined if not found.
 
 `Promise`\<`undefined`\>
 
-the ValidationMessages validation results.
+the [ValidationMessages](../type-aliases/ValidationMessages.md) validation results.
 
 #### Implementation of
 
