@@ -1429,6 +1429,43 @@ const typedocSidebar = { items: [
   },
   {
     "type": "category",
+    "label": "@react-form-builder/components-fast-qr",
+    "items": [
+      {
+        "type": "category",
+        "label": "Interfaces",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-fast-qr/interfaces/FastQrProps",
+            "label": "FastQrProps"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Variables",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-fast-qr/variables/fastQrComponent",
+            "label": "fastQrComponent"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-fast-qr/variables/fastQrModel",
+            "label": "fastQrModel"
+          }
+        ]
+      }
+    ],
+    "link": {
+      "type": "doc",
+      "id": "api-reference/@react-form-builder/components-fast-qr/index"
+    }
+  },
+  {
+    "type": "category",
     "label": "@react-form-builder/components-rsuite",
     "items": [
       {

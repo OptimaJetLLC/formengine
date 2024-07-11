@@ -164,6 +164,7 @@ const config: Config = {
               '../../packages/designer',
               '../../packages/designer-bundle',
               '../../packages/viewer-bundle',
+              '../../packages/views/fast-qr',
               '../../packages/views/rsuite',
             ],
             entryPointStrategy: 'packages',

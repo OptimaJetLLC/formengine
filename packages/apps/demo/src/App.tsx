@@ -1,3 +1,4 @@
+import {fastQrComponent} from '@react-form-builder/components-fast-qr'
 import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
@@ -18,7 +19,7 @@ const initialData = {
 }
 
 const components = rSuiteComponents.map(definer => definer.build())
-const view = new BuilderView(components)
+const view = new BuilderView([...components, fastQrComponent.build()])
   .withErrorMeta(rsErrorMessage.build())
   .withTooltipMeta(rsTooltip.build())
   .withTemplates([])

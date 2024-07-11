@@ -16,6 +16,7 @@
     },
     "dependencies": {
         "@react-form-builder/components-antd": "^1.5.2",
+        "@react-form-builder/components-fast-qr": "^1.5.2",
         "@react-form-builder/components-rsuite": "^1.5.2",
         "@react-form-builder/designer": "^1.5.2",
         "@react-form-builder/indexed-db-form-storage": "^1.5.2",
