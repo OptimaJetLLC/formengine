@@ -37,5 +37,5 @@ const SDiv = styled.div`
 export const FormViewerState = namedObserver('FormState', RawFormViewerState)
 
 const prettyPrint = (obj: Object) => {
-  return <pre>{JSON.stringify(prepareForJson(obj), null, 2)}</pre>
+  return <pre>{JSON.stringify(prepareForJson(obj, {previewNativeObjects: true}), null, 2)}</pre>
 }

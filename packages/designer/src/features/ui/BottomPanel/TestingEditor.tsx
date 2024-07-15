@@ -186,7 +186,7 @@ const init = (data: ComponentData) => {
 
 const stringify = (data: any) => {
   if (typeof data === 'string') return data
-  return JSON.stringify(prepareForJson(data), null, 2)
+  return JSON.stringify(prepareForJson(data, {previewNativeObjects: true}), null, 2)
 }
 
 const getType = (result: CalculableResult): TypeAttributes.Status => {

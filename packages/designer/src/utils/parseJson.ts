@@ -1,4 +1,5 @@
 import {isUndefined} from 'lodash-es'
+import {humanizeFileSize} from './formatters'
 
 /**
  * Parses the JSON string into a JavaScript object.
@@ -18,17 +19,37 @@ export const parseJson = (value?: string) => {
   }
 }
 
+const createFilePreview = ({lastModified, name, type, webkitRelativePath, size}: File): object => ({
+  lastModified: new Date(lastModified).toISOString(),
+  name,
+  type,
+  webkitRelativePath,
+  size: humanizeFileSize(size)
+})
+
+
 /**
  * Prepares data for JSON.stringify.
  * @param data the data for preparing.
+ * @param options serialize options
+ * @param options.previewNativeObjects create human-readable value for non-serializable objects
  * @returns the object prepared for JSON.stringify.
  */
-export const prepareForJson = (data: any) => {
+export const prepareForJson = (data: any, options?: {
+  previewNativeObjects: boolean
+}) => {
   if (typeof data !== 'object' || data === null) return data
+
+  const {previewNativeObjects} = options || {}
 
   const filtered: any = {}
   Object.entries(data).forEach(([key, value]) => {
     const typeIs = (valueType: string) => typeof value == valueType
+
+    if (previewNativeObjects && (value instanceof File)) {
+      filtered[key] = createFilePreview(value)
+      return
+    }
 
     if (value instanceof Date) {
       filtered[key] = value.toISOString()
@@ -36,7 +57,7 @@ export const prepareForJson = (data: any) => {
     }
 
     if (typeIs('object')) {
-      filtered[key] = prepareForJson(value)
+      filtered[key] = prepareForJson(value, options)
       return
     }
 
