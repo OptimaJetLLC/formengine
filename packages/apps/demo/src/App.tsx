@@ -1,5 +1,14 @@
 import {fastQrComponent} from '@react-form-builder/components-fast-qr'
-import {rsErrorMessage, rsTooltip, rSuiteComponents} from '@react-form-builder/components-rsuite'
+import {
+  formEngineRsuiteCssLoader,
+  ltrCssLoader,
+  rsErrorMessage,
+  RsLocalizationWrapper,
+  rsTooltip,
+  rSuiteComponents,
+  rtlCssLoader
+} from '@react-form-builder/components-rsuite'
+import {BiDi} from '@react-form-builder/core'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {observer} from 'mobx-react'
@@ -23,6 +32,10 @@ const view = new BuilderView([...components, fastQrComponent.build()])
   .withErrorMeta(rsErrorMessage.build())
   .withTooltipMeta(rsTooltip.build())
   .withTemplates([])
+  .withViewerWrapper(RsLocalizationWrapper)
+  .withCssLoader(BiDi.LTR, ltrCssLoader)
+  .withCssLoader(BiDi.RTL, rtlCssLoader)
+  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 const sampleFormName = 'SampleForm'
 
