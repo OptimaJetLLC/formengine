@@ -4,6 +4,17 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.6.0
+
+_July_ 16, 2024
+
+- Added the `QR Code` component for generating and displaying QR codes.
+- Added a [guide](/adding-wasm-component) to connecting the WASM component.
+- Now information about files is displayed, instead of an empty object in the Data view (located to the left of the form preview).
+- Added the `Read-only` option to the `Signature` component.
+- Fixed a bug where localization was not applied in the `Calendar` component.
+- Removed the default value `0` for the `timeout` property of the `Uploader` component (the `0` value, like `undefined`, is no timeout).
+
 ## 1.5.2
 
 _July_ 5, 2024
