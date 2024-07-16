@@ -7,6 +7,14 @@ slug: /adding-wasm-component
 
 # Adding WASM component
 
+:::info
+
+You can find the ready-to-connect component in
+the [@react-form-builder/components-fast-qr](https://www.npmjs.com/package/@react-form-builder/components-fast-qr) NPM package.
+You can find information on connecting the component in [this section](/components-library/qr-code).
+
+:::
+
 ## Overview
 
 [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly) is a popular technology that is becoming more and more popular on the

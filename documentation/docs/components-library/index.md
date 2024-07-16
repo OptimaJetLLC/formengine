@@ -67,6 +67,8 @@ The components are divided into the following categories:
 - Static content - displays the text in the HTML `span` tag.
 - Tooltip - displays a tooltip using [Whisper](https://rsuitejs.com/components/whisper/)
   and [Tooltip](https://rsuitejs.com/components/tooltip/).
+- [QR code](/components-library/qr-code). This component is in a
+  separate [package](https://www.npmjs.com/package/@react-form-builder/components-fast-qr).
 
 ## Structure components
 
