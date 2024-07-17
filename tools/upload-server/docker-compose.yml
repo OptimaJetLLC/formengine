@@ -1,0 +1,14 @@
+services:
+  upload:
+    image: fe/upload-server
+    hostname: upload-server
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./uploads:/app/uploads
+    entrypoint: [ ]
+    command: [ "node", "index.js" ]
