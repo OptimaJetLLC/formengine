@@ -1,7 +1,7 @@
 ---
 title: QR code
 sidebar_label: QR code
-sidebar_position: 10
+sidebar_position: 20
 slug: /components-library/qr-code
 ---
 
