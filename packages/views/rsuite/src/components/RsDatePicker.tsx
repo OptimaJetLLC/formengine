@@ -24,6 +24,18 @@ const toSafeFormat = (format?: string) => {
   return trimmed
 }
 
+const formatValidator = (format?: string) => {
+  const trimmed = format?.trim()
+  if (!trimmed) return true
+
+  try {
+    formatDate(new Date(), trimmed)
+    return true
+  } catch (e) {
+    return false
+  }
+}
+
 const RsDatePicker = ({label, value, className, format, defaultValue, ...props}: RsRsDatePickerProps) => {
   const safeFormat = useMemo(() => toSafeFormat(format), [format])
   const onClean = useTouchOnEvent(props, 'onClean')
@@ -47,7 +59,11 @@ export const rsDatePicker = define(RsDatePicker, 'RsDatePicker')
     defaultValue: date.hinted('Default value'),
     disabled: boolean.hinted('Whether disabled the component').default(false),
     editable: boolean.hinted('Rendered as an input, the date can be entered via the keyboard').default(true),
-    format: string.hinted('Format date'),
+    format: string.validated(formatValidator, {
+      code: 'INVALID_DATE_FORMAT',
+      message: 'The provided date format is invalid'
+    }).hinted('Format of the date when rendered in the input')
+      .withEditorProps({placeholder: 'yyyy-MM-dd'}),
     isoWeek: boolean.hinted('ISO 8601 standard, each calendar week begins on Monday and Sunday on the seventh day').default(false),
     limitEndYear: number.hinted('Set the upper limit of the available year relative to the current selection date'),
     limitStartYear: number.hinted('Set the lower limit of the available year relative to the current selection date'),

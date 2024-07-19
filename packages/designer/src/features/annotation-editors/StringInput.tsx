@@ -44,7 +44,7 @@ export const StringInput = (props: AnnotationEditorProps) => {
   return (
     <LabeledProperty {...props} style={{flexWrap: isBigText ? 'wrap' : 'initial'}}>
       <Input name={annotation.key} value={value ?? ''} onPressEnter={onPressEnter} onChange={handleChange} size={'xs'}
-             as={isBigText ? 'textarea' : undefined} rows={rowsCount} ref={ref}/>
+             as={isBigText ? 'textarea' : undefined} rows={rowsCount} ref={ref} {...props.annotation.editorProps}/>
     </LabeledProperty>
   )
 }
