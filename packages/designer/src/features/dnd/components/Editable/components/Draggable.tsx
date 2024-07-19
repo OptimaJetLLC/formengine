@@ -77,7 +77,7 @@ const DraggableBody = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 6;
+  z-index: 7;
 `
 
 const SLabel = styled.label`

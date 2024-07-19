@@ -34,6 +34,7 @@ import {rsSearch} from './components/RsSearch'
 import {rsSignature} from './components/RsSignature'
 import {rsStaticContent} from './components/RsStaticContent'
 import {rsTab} from './components/RsTab'
+import {rsTagPicker} from './components/RsTagPicker'
 import {rsTextArea} from './components/RsTextArea'
 import {rsToggle} from './components/RsToggle'
 import {rsTooltip, RsTooltipProps} from './components/RsTooltip'
@@ -53,6 +54,7 @@ const categories = {
     rsRadioGroup,
     rsSearch,
     rsSignature,
+    rsTagPicker,
     rsTextArea,
     rsToggle,
     rsUploader

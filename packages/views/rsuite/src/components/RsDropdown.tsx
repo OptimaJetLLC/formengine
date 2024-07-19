@@ -1,12 +1,12 @@
-import styled from '@emotion/styled'
 import {array, define, string, toLabeledValues} from '@react-form-builder/core'
 import {ReactNode, useCallback} from 'react'
 import type {InputPickerProps} from 'rsuite'
-import {Form, InputPicker, Loader} from 'rsuite'
+import {Form, InputPicker} from 'rsuite'
 import {pickerProps} from '../commonProperties'
 import {LoadDataHandler, useLoadData} from '../hooks'
 import {RsLabeledInput} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
+import {SLoader} from './SLoader'
 
 interface RsDropdownProps extends InputPickerProps {
   label: string
@@ -34,18 +34,6 @@ const RsDropdown = ({data, label, onLoadData, onSearch, onOpen, value = '', clas
     </RsLabeledInput>
   )
 }
-
-const SLoader = styled(Loader)`
-  && {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    bottom: 0;
-    background: var(--rs-bg-overlay);
-    width: 100%;
-    padding-block: 10px
-  }
-`
 
 export const rsDropdown = define(RsDropdown, 'RsDropdown')
   .name('Dropdown')

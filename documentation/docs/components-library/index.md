@@ -44,6 +44,7 @@ The components are divided into the following categories:
 - [Calendar](https://rsuitejs.com/components/calendar/).
 - [Checkbox](https://rsuitejs.com/components/checkbox/).
 - [DatePicker](https://rsuitejs.com/components/date-picker/).
+- [TagPicker](https://rsuitejs.com/components/tag-picker/).
 - Dropdown is a component based on [InputPicker](https://rsuitejs.com/components/input-picker/).
 - Input is a component based on [Input and InputGroup](https://rsuitejs.com/components/input/).
 - Number format is a component based on [NumericFormat](https://www.npmjs.com/package/react-number-format).

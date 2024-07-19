@@ -46,6 +46,11 @@ export const prepareForJson = (data: any, options?: {
   Object.entries(data).forEach(([key, value]) => {
     const typeIs = (valueType: string) => typeof value == valueType
 
+    if (Array.isArray(value)) {
+      filtered[key] = value.map(item => prepareForJson(item, options))
+      return
+    }
+
     if (previewNativeObjects && (value instanceof File)) {
       filtered[key] = createFilePreview(value)
       return
