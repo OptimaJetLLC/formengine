@@ -40,4 +40,6 @@ format configuration:
 
 <AdditionalOptions/>
 
+## Style properties
+
 <StyleBlock/>
