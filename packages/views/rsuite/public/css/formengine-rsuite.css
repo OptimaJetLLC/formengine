@@ -105,7 +105,9 @@
     cursor: not-allowed;
   }
 
-  & input {
+  & input,
+  & textarea.rs-input {
+    font-family: inherit;
     line-height: normal;
     color: var(--rs-text-primary);
   }
@@ -285,5 +287,5 @@
 }
 
 .rs-picker .rs-picker-clean.rs-btn-close {
-    color: var(--rs-text-secondary);
+  color: var(--rs-text-secondary);
 }

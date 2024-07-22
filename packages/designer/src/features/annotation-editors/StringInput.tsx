@@ -1,7 +1,39 @@
-import {useEffect, useRef, useState} from 'react'
+import styled from '@emotion/styled'
+import {useEffect, useRef} from 'react'
 import {Input} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
+
+// The idea here is to have an offscreen element with exactly the same styles
+// which can autoresize natively and stretch target the element via aligning
+// inside the parent container.
+// Sync styles via DOM api can cause lags with a lot of elements on the page.
+const STextareaSizer = styled.div`
+  display: inline-grid;
+  vertical-align: top;
+  align-items: center;
+  position: relative;
+  width: 100%;
+
+  &::after,
+  & > textarea {
+    min-width: 1em !important;
+    width: auto !important;
+    height: 100% !important;
+    grid-area: 2 / 1;
+    resize: none !important;
+    max-height: 6em !important;
+  }
+
+  &::after {
+    content: attr(data-contents) ' ';
+    visibility: hidden;
+    // text behaviour must match with textarea
+    font-size: inherit !important;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+  }
+`
 
 /**
  * The property editor for the string property type.
@@ -9,42 +41,33 @@ import type {AnnotationEditorProps} from './AnnotationEditorProps'
  * @returns the React element.
  */
 export const StringInput = (props: AnnotationEditorProps) => {
-  const {value, onChange, annotation} = props
-  const [rowsCount, setRowsCount] = useState(0)
-  const ref = useRef<HTMLTextAreaElement>(null)
-  const textBig = value?.length > 15 || rowsCount >= 2
-  const [isBigText, setIsBigText] = useState(textBig)
-  const [textSizeChanged, setTextSizeChanged] = useState(false)
+  const {value = '', annotation, onChange} = props
+  const inputRef = useRef<HTMLTextAreaElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
 
-  const handleChange = (value: string) => {
-    if (textBig !== isBigText) {
-      setTextSizeChanged(true)
-      setIsBigText(textBig)
+  useEffect(() => {
+    const container = containerRef.current
+    if (container) {
+      container.dataset.contents = value
     }
-    onChange(value)
-  }
-
-  useEffect(() => {
-    if (!textSizeChanged) return
-    setTextSizeChanged(false)
-    ref.current?.focus()
-    // For set caret on last symbol
-    ref.current?.setSelectionRange(value?.length, value?.length)
-  }, [textSizeChanged, value?.length])
-
-  useEffect(() => {
-    const linesCount = (value?.match(/\n/g) || []).length as number + 1
-    setRowsCount(linesCount > 5 ? 5 : linesCount)
   }, [value])
 
-  const onPressEnter = () => {
-    if (rowsCount < 2) setRowsCount(2)
-  }
+  useEffect(() => {
+    const input = inputRef.current
+    const container = containerRef.current
+    if (input && container) {
+      const style = window.getComputedStyle(input)
+      container.style.lineHeight = style.lineHeight
+      container.style.fontSize = style.fontSize
+    }
+  }, [])
 
   return (
-    <LabeledProperty {...props} style={{flexWrap: isBigText ? 'wrap' : 'initial'}}>
-      <Input name={annotation.key} value={value ?? ''} onPressEnter={onPressEnter} onChange={handleChange} size={'xs'}
-             as={isBigText ? 'textarea' : undefined} rows={rowsCount} ref={ref} {...props.annotation.editorProps}/>
+    <LabeledProperty {...props} >
+      <STextareaSizer ref={containerRef}>
+        <Input ref={inputRef} rows={1} name={annotation.key} value={value} onChange={onChange} size="xs" as="textarea"
+               {...props.annotation.editorProps}/>
+      </STextareaSizer>
     </LabeledProperty>
   )
 }
