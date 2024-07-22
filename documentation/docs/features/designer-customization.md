@@ -148,15 +148,37 @@ import {RgbaColorPicker} from 'react-colorful'
 
 const MyKeyInput = (props: AnnotationEditorProps) => {
   const {value, onChange} = props
-  return <input value={value} onChange={onChange}/>
+  return <input value={value} onChange={(event) => onChange(event.target.value)}/>
+}
+
+/**
+ * Converts the string containing a rgba color value into an object.
+ * @param value the string containing a rgba color.
+ * @returns the object with properties '{r, g, b, a}'.
+ */
+export function rgbFromString(value: string): RgbaColor {
+  const matchColors = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
+  const [, r, g, b, a] = matchColors.exec(value) || []
+  return {r: Number(r), g: Number(g), b: Number(b), a: Number(a)}
 }
 
 const MyColorInput = (props: AnnotationEditorProps) => {
   const {value, onChange, onClean, showError, annotation} = props
 
+  const onColorChange = useCallback((newColor?: RgbaColor) => {
+    if (newColor) {
+      const {r, g, b, a} = newColor
+      onChange(`rgba(${r}, ${g}, ${b}, ${a})`)
+      return
+    }
+    onChange(newColor)
+  }, [onChange])
+
+  const color = rgbFromString(value ?? 'rgba(255, 255, 255, 0)')
+
   return <div>
     <label>{annotation.name}</label>
-    <RgbaColorPicker color={value} onChange={onChange}/>
+    <RgbaColorPicker color={color} onChange={onColorChange}/>
     <label>{showError?.()}</label>
     <button onClick={onClean}>Clean</button>
   </div>
