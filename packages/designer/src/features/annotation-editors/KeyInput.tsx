@@ -23,6 +23,7 @@ const RawKeyInput = (props: AnnotationEditorProps) => {
 
   useEffect(() => {
     setValueToApply(value)
+    setCanApply(false)
   }, [value])
 
   const validateUniqueKey = (key: string) =>
@@ -31,11 +32,14 @@ const RawKeyInput = (props: AnnotationEditorProps) => {
 
   const inputOnChange = (inputValue: string) => {
     const isValid = validateUniqueKey(inputValue)
-    if (!isValid) {
+    let error = undefined
+
+    if (!isValid && inputValue !== value) {
       const label = inputValue.length > 0 ? 'keyMustBeUnique' : 'keyMustNotBeEmpty'
-      showError?.(getLabel(label))
+      error = getLabel(label)
     }
-    if (isValid || inputValue === value) showError?.(undefined)
+
+    showError?.(error)
     setCanApply(isValid)
     setValueToApply(inputValue)
   }

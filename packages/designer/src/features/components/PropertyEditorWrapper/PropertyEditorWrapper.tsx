@@ -21,11 +21,11 @@ interface PropertyEditorWrapperProps {
 }
 
 const RawPropertyEditorWrapper = ({
-                                  annotation,
-                                  context,
-                                  initContext,
-                                  propertyBlockType = 'component'
-                                }: PropertyEditorWrapperProps) => {
+                                    annotation,
+                                    context,
+                                    initContext,
+                                    propertyBlockType = 'component'
+                                  }: PropertyEditorWrapperProps) => {
   // custom editors have the highest priority
   const store = useBuilderStore()
   const componentData = useComponentData()
@@ -49,13 +49,7 @@ const RawPropertyEditorWrapper = ({
     propertyContext[annotation.key] = value
   }, [context, initContext, annotation, contextInitialized])
 
-  useEffect(() => {
-    setContextInitialized(false)
-  }, [componentData, initContext])
-
   const onClean = useCallback(() => delete context[annotation.key], [context, annotation])
-
-  const showError = useCallback((message?: string) => setError(message), [])
 
   const setComputedFunction = useCallback((value: string) => {
     const newComponentProperty: ComponentProperty = {computeType: 'function', fnSource: value}
@@ -130,7 +124,7 @@ const RawPropertyEditorWrapper = ({
     onChange,
     onClean,
     annotation,
-    showError,
+    showError: setError,
     componentData,
     setComputeCode,
     getComputeCode,
@@ -138,6 +132,14 @@ const RawPropertyEditorWrapper = ({
     getComputeType,
     hasComputeCode,
   }
+
+  useEffect(() => {
+    setContextInitialized(false)
+  }, [componentData, initContext])
+
+  useEffect(() => {
+    setError(undefined)
+  }, [context])
 
   return !!annotationEditor && (
     <Erroneous {...annotationEditorProps} error={error}>
