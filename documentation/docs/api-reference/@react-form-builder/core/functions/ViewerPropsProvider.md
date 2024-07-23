@@ -2,7 +2,7 @@
 
 > **ViewerPropsProvider**(`props`): `null` \| `ReactElement`\<`any`, `string` \| `JSXElementConstructor`\<`any`\>\>
 
-**NOTE**: Exotic components are not callable.
+**Internal use only.**
 
 ## Parameters
 

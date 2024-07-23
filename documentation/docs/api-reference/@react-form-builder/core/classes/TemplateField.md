@@ -134,11 +134,11 @@ Value of the field.
 
 > **clear**(): `void`
 
+Clears the data in the field.
+
 #### Returns
 
 `void`
-
-#### Inherit Doc
 
 #### Implementation of
 
@@ -150,11 +150,11 @@ Value of the field.
 
 > **dispose**(): `void`
 
+Releases allocated resources, must be used when destroying an object instance.
+
 #### Returns
 
 `void`
-
-#### Inherit Doc
 
 #### Implementation of
 
@@ -166,11 +166,11 @@ Value of the field.
 
 > **getValidationResult**(): `Promise`\<`undefined`\>
 
+Returns the validation results without triggering an events and changing the state of the form.
+
 #### Returns
 
 `Promise`\<`undefined`\>
-
-the [ValidationMessages](../type-aliases/ValidationMessages.md) validation results.
 
 #### Implementation of
 
@@ -182,11 +182,11 @@ the [ValidationMessages](../type-aliases/ValidationMessages.md) validation resul
 
 > **init**(): `void`
 
+Initializes the value of the field.
+
 #### Returns
 
 `void`
-
-#### Inherit Doc
 
 #### Implementation of
 
@@ -198,11 +198,11 @@ the [ValidationMessages](../type-aliases/ValidationMessages.md) validation resul
 
 > **reset**(): `void`
 
+Sets the field to its default value.
+
 #### Returns
 
 `void`
-
-#### Inherit Doc
 
 #### Implementation of
 
@@ -214,6 +214,8 @@ the [ValidationMessages](../type-aliases/ValidationMessages.md) validation resul
 
 > **setError**(`error`): `void`
 
+Sets the error value.
+
 #### Parameters
 
 • **error**: `unknown`
@@ -221,8 +223,6 @@ the [ValidationMessages](../type-aliases/ValidationMessages.md) validation resul
 #### Returns
 
 `void`
-
-#### Inherit Doc
 
 #### Implementation of
 
@@ -234,11 +234,11 @@ the [ValidationMessages](../type-aliases/ValidationMessages.md) validation resul
 
 > **setTouched**(): `void`
 
+Marks the field as touched.
+
 #### Returns
 
 `void`
-
-#### Inherit Doc
 
 #### Implementation of
 
@@ -250,6 +250,8 @@ the [ValidationMessages](../type-aliases/ValidationMessages.md) validation resul
 
 > **setValue**(`value`): `void`
 
+Sets the value of the field.
+
 #### Parameters
 
 • **value**: `unknown`
@@ -257,8 +259,6 @@ the [ValidationMessages](../type-aliases/ValidationMessages.md) validation resul
 #### Returns
 
 `void`
-
-#### Inherit Doc
 
 #### Implementation of
 
@@ -270,11 +270,11 @@ the [ValidationMessages](../type-aliases/ValidationMessages.md) validation resul
 
 > **validate**(): `Promise`\<`void`\>
 
+Validates the field value.
+
 #### Returns
 
 `Promise`\<`void`\>
-
-#### Inherit Doc
 
 #### Implementation of
 

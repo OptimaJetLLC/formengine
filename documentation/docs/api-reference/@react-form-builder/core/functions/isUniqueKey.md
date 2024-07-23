@@ -2,6 +2,8 @@
 
 > **isUniqueKey**(`value`, `store`, `args`?): [`RuleValidatorResult`](../type-aliases/RuleValidatorResult.md) \| `Promise`\<[`RuleValidatorResult`](../type-aliases/RuleValidatorResult.md)\>
 
+Returns true if the component key is unique across the entire component tree. **Internal use only.**
+
 ## Parameters
 
 • **value**: `string`
@@ -17,5 +19,3 @@ the form viewer settings.
 ## Returns
 
 [`RuleValidatorResult`](../type-aliases/RuleValidatorResult.md) \| `Promise`\<[`RuleValidatorResult`](../type-aliases/RuleValidatorResult.md)\>
-
-true if the component key is unique across the entire component tree.

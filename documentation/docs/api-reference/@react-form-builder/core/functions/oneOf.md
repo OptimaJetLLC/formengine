@@ -2,7 +2,7 @@
 
 > **oneOf**\<`U`\>(...`values`): [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`U`\>
 
-Sets the property as a "single select" property.
+The annotation builder for a component property with type 'enum', the property value can only be one of enum.
 
 ## Type Parameters
 
@@ -17,5 +17,3 @@ the possible values for the property.
 ## Returns
 
 [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`U`\>
-
-the instance of the metadata property builder.

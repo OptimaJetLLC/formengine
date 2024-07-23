@@ -231,11 +231,11 @@ the element for the component tree.
 
 > **dispose**(): `void`
 
+Correctly clears allocated resources, the function must be called when destroying an instance of the class.
+
 #### Returns
 
 `void`
-
-#### Inherit Doc
 
 #### Implementation of
 
@@ -381,7 +381,7 @@ the Record with the localized properties.
 
 > **localizeErrorMessages**(`componentStore`, `validationResults`?): `undefined` \| `string`
 
-Localizes validator error messages.
+The function to localize the validation error message.
 
 #### Parameters
 
@@ -397,8 +397,6 @@ the validation results.
 
 `undefined` \| `string`
 
-the localized error messages joined by space, or undefined if validationResults is undefined.
-
 #### Implementation of
 
 [`IStore`](../interfaces/IStore.md).[`localizeErrorMessages`](../interfaces/IStore.md#localizeerrormessages)
@@ -408,6 +406,8 @@ the localized error messages joined by space, or undefined if validationResults 
 ### reduceScreen()
 
 > **reduceScreen**\<`T`\>(`callback`, `initialValue`): `T`
+
+Performs the callback function on each element of the component tree, accumulates the return values.
 
 #### Type Parameters
 
@@ -428,8 +428,6 @@ the initial value for the accumulator.
 #### Returns
 
 `T`
-
-the accumulated value.
 
 #### Implementation of
 

@@ -2,7 +2,7 @@
 
 > **ComponentDataProvider**(`props`): `null` \| `ReactElement`\<`any`, `string` \| `JSXElementConstructor`\<`any`\>\>
 
-**NOTE**: Exotic components are not callable.
+Context provider for the useComponentData hook. **Internal use only.**
 
 ## Parameters
 

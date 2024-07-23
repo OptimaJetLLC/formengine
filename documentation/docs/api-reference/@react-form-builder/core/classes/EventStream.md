@@ -86,9 +86,15 @@ the subscriber function.
 
 `Function`
 
+the unsubscribe function.
+
 ###### Returns
 
 `void`
+
+##### Param
+
+the observer.
 
 #### listen(observer)
 
@@ -106,9 +112,15 @@ the observer.
 
 `Function`
 
+the unsubscribe function.
+
 ###### Returns
 
 `void`
+
+##### Param
+
+the observer.
 
 ***
 

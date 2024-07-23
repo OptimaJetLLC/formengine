@@ -2,6 +2,8 @@
 
 > **loadResource**(`id`, `href`, `rel`): `Promise`\<`void`\>
 
+Loads a resource into the document head asynchronously. **Internal use only.**
+
 ## Parameters
 
 • **id**: `string`
@@ -19,5 +21,3 @@ the relationship of the resource to the document.
 ## Returns
 
 `Promise`\<`void`\>
-
-the promise that resolves when the resource has been loaded successfully.

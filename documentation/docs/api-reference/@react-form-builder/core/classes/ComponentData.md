@@ -251,11 +251,11 @@ A user-defined key-value observable storage. Utilize it to store and share any c
 
 > **clear**(): `void`
 
+Clears the form data.
+
 #### Returns
 
 `void`
-
-#### Inherit Doc
 
 #### Implementation of
 
@@ -312,11 +312,11 @@ the node or undefined if not found.
 
 > **getValidationResult**(): `Promise`\<`undefined`\>
 
+Returns the validation results without triggering an events and changing the state of the form.
+
 #### Returns
 
 `Promise`\<`undefined`\>
-
-the [ValidationMessages](../type-aliases/ValidationMessages.md) validation results.
 
 #### Implementation of
 
@@ -364,11 +364,11 @@ the node to insert.
 
 > **reset**(): `void`
 
+Sets the form to its default value.
+
 #### Returns
 
 `void`
-
-#### Inherit Doc
 
 #### Implementation of
 
@@ -380,6 +380,8 @@ the node to insert.
 
 > **setAllErrors**(`message`?): `void`
 
+Sets the validation error message for all form data fields.
+
 #### Parameters
 
 • **message?**: `string`
@@ -387,8 +389,6 @@ the node to insert.
 #### Returns
 
 `void`
-
-#### Inherit Doc
 
 #### Implementation of
 
@@ -438,11 +438,11 @@ the map of new keys to old keys.
 
 > **validate**(): `Promise`\<`void`\>
 
+Validates the data in the form.
+
 #### Returns
 
 `Promise`\<`void`\>
-
-#### Inherit Doc
 
 #### Implementation of
 

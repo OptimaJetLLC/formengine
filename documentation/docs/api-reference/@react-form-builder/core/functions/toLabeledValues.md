@@ -2,6 +2,8 @@
 
 > **toLabeledValues**(`items`, `upper`): `object`[]
 
+Converts the array of elements into the array of [LabeledValue](../interfaces/LabeledValue.md) elements.
+
 ## Parameters
 
 • **items**: `string`[] \| [`LabeledValue`](../interfaces/LabeledValue.md)[]
@@ -15,5 +17,3 @@ if true, the first character in [LabeledValue.label](../interfaces/LabeledValue.
 ## Returns
 
 `object`[]
-
-the array of [LabeledValue](../interfaces/LabeledValue.md) elements.
