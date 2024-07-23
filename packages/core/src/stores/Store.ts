@@ -307,6 +307,10 @@ export class Store implements IStore, IFormViewer {
   }
 
   private fixPropertyTypes(componentStore: ComponentStore) {
+    if (!componentStore.props) {
+      componentStore.props = {}
+    }
+
     // workaround, we need to restore the ComponentStore along with metadata information
     const properties = propertiesToFix[componentStore.type]
     properties?.forEach(property => this.fixDateProperty(componentStore, property))

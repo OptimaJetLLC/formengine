@@ -26,7 +26,6 @@
   "form": {
     "key": "screen 1",
     "type": "Screen",
-    "props": {},
     "children": [
       {
         "key": "RsMenu 1",
@@ -39,8 +38,7 @@
       },
       {
         "key": "AntButton 1",
-        "type": "AntButton",
-        "props": {}
+        "type": "AntButton"
       },
       {
         "key": "RsStaticContent 1",
@@ -56,13 +54,11 @@
       },
       {
         "key": "Breadcrumb 1",
-        "type": "RsBreadcrumb",
-        "props": {}
+        "type": "RsBreadcrumb"
       },
       {
         "key": "RsContainer 1",
         "type": "RsContainer",
-        "props": {},
         "css": {
           "any": {
             "object": {
@@ -91,7 +87,6 @@
           {
             "key": "RsSearch 1",
             "type": "RsSearch",
-            "props": {},
             "events": {
               "onLoadData": [
                 {
@@ -105,13 +100,11 @@
       },
       {
         "key": "Slot 1",
-        "type": "Slot",
-        "props": {}
+        "type": "Slot"
       },
       {
         "key": "Image 1",
         "type": "RsImage",
-        "props": {},
         "wrapperCss": {
           "any": {
             "object": {
@@ -163,7 +156,6 @@
       {
         "key": "Template:Test form 1",
         "type": "Template:template",
-        "props": {},
         "children": [
           {
             "key": "Input in template",
@@ -243,12 +235,10 @@
       {
         "key": "input container",
         "type": "RsContainer",
-        "props": {},
         "children": [
           {
             "key": "name container",
             "type": "RsContainer",
-            "props": {},
             "css": {
               "any": {
                 "object": {
@@ -299,7 +289,6 @@
           {
             "key": "Formatted",
             "type": "RsContainer",
-            "props": {},
             "css": {
               "any": {
                 "object": {
@@ -373,7 +362,6 @@
       {
         "key": "button container",
         "type": "RsContainer",
-        "props": {},
         "children": [
           {
             "key": "save",
@@ -416,15 +404,13 @@
           },
           {
             "key": "RsUploader 1",
-            "type": "RsUploader",
-            "props": {}
+            "type": "RsUploader"
           }
         ]
       },
       {
         "key": "RadioGroup",
-        "type": "RsRadioGroup",
-        "props": {}
+        "type": "RsRadioGroup"
       },
       {
         "key": "Tabs",
@@ -461,8 +447,7 @@
       },
       {
         "key": "none",
-        "type": "none",
-        "props": {}
+        "type": "none"
       }
     ]
   },

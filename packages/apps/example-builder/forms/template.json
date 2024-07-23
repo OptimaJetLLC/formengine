@@ -2,22 +2,18 @@
   "form": {
     "key": "Screen",
     "type": "Screen",
-    "props": {},
     "children": [
       {
         "key": "TemplateSlot",
-        "type": "Slot",
-        "props": {}
+        "type": "Slot"
       },
       {
         "key": "EmptyTemplateSlot",
-        "type": "Slot",
-        "props": {}
+        "type": "Slot"
       },
       {
         "key": "RsContainer 1",
         "type": "RsContainer",
-        "props": {},
         "children": [
           {
             "key": "login",
@@ -70,7 +66,6 @@
           {
             "key": "Template:agreement 1",
             "type": "Template:agreement",
-            "props": {},
             "children": [
               {
                 "key": "Agreement Title",

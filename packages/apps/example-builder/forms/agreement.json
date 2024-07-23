@@ -2,17 +2,14 @@
   "form": {
     "key": "Screen",
     "type": "Screen",
-    "props": {},
     "children": [
       {
         "key": "AgreementSlot",
-        "type": "Slot",
-        "props": {}
+        "type": "Slot"
       },
       {
         "key": "EmptyAgreementSlot",
-        "type": "Slot",
-        "props": {}
+        "type": "Slot"
       },
       {
         "key": "agreeCheckbox",
