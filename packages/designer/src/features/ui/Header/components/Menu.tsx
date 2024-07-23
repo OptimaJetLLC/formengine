@@ -1,10 +1,11 @@
-import {IconDefinition} from '@fortawesome/fontawesome-common-types'
+import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 import * as faSave from '@fortawesome/free-solid-svg-icons/faSave.js'
 import * as faTrash from '@fortawesome/free-solid-svg-icons/faTrash.js'
 import {namedObserver} from '@react-form-builder/core'
 import {Export as ExportIcon, FileDownload as FileDownloadIcon, FileUpload as FileUploadIcon, Import as ImportIcon} from '@rsuite/icons'
 import type {HTMLAttributes, Ref} from 'react'
+import {useCallback} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Dropdown, IconButton} from 'rsuite'
 import type {WithAsProps} from 'rsuite/esm/internals/types'
@@ -14,6 +15,7 @@ import {FaIcon} from '../../../components/Icons'
 import {customizable} from '../../../customization'
 import {MenuLanguageSwitch} from '../../../localization'
 import {useShowMessage} from '../../../toast/toast'
+import {useSaveFormDialog} from '../../dialogs/useSaveFormDialog'
 import {exportForms, importForms} from './formUtils'
 import {useSaveForm} from './useSaveForm'
 
@@ -79,16 +81,12 @@ const RawMenu = () => {
   const builderStore = useBuilderStore()
   const {t} = useTranslation()
   const onSave = useSaveForm()
-  const onSaveAs = () => {
-    builderStore.showPromptModal({
-      value: '',
-      title: t('leftMenu.enterFormName'),
-      placeholder: t('leftMenu.formNamePlaceholder'),
-      onOk: value => {
-        if (value) onSave(value)
-      }
-    })
-  }
+
+  const handleSaveAs = useCallback((value: string) => {
+    if (value) onSave(value)
+  }, [onSave])
+
+  const onSaveAs = useSaveFormDialog('', handleSaveAs)
 
   return <>
     <MenuDropdown title={t('leftMenu.menu')} size={'sm'} renderToggle={renderToggle} menuStyle={{width: 'fit-content'}}>

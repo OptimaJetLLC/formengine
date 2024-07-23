@@ -1,4 +1,4 @@
-import {ComponentProps, useCallback, useEffect, useState} from 'react'
+import {ComponentProps, useCallback, useEffect, useMemo, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
@@ -6,6 +6,34 @@ import {EditButton, RemoveButton} from '../../../components/Buttons'
 import {List, ListItem} from '../../../components/Containers'
 import {customizableObserver} from '../../../customization'
 import {useShowMessage} from '../../../toast/toast'
+import {useSaveFormDialog} from '../../dialogs/useSaveFormDialog'
+
+function FormListItem({active, onLoadForm, onRemoveForm, name}: {
+  active: boolean,
+  name: string,
+  onLoadForm: (name: string) => void,
+  onRemoveForm: (name: string) => void
+}) {
+  const labelStyle = useMemo(() => ({color: active ? 'var(--rs-navs-selected)' : 'var(--rs-text-secondary)'}), [active])
+
+  const handleLoad = useCallback(() => {
+    onLoadForm(name)
+  }, [name, onLoadForm])
+
+  const handleRemove = useCallback(() => {
+    onRemoveForm(name)
+  }, [name, onRemoveForm])
+
+  return <ListItem>
+    <span style={labelStyle}>
+      {name}
+    </span>
+    <ButtonGroup>
+      <EditButton onClick={handleLoad}/>
+      <RemoveButton onClick={handleRemove}/>
+    </ButtonGroup>
+  </ListItem>
+}
 
 const RawFormList = (props: ComponentProps<typeof List>) => {
   const builderStore = useBuilderStore()
@@ -13,48 +41,45 @@ const RawFormList = (props: ComponentProps<typeof List>) => {
   const {t} = useTranslation()
   const showMessage = useShowMessage()
 
-  const reloadForms = useCallback(() => {
-    builderStore.getFormKeys().then(setFormList)
-  }, [builderStore])
-
-  const showPromptDialog = useCallback(() => {
-    builderStore.showPromptModal({
-      value: '',
-      title: t('leftMenu.enterFormName'),
-      placeholder: t('leftMenu.formNamePlaceholder'),
-      onOk: value => {
-        if (value) builderStore.createForm(value).then(reloadForms)
-      }
-    })
-  }, [builderStore, reloadForms, t])
-
-  useEffect(() => {
-    reloadForms()
-  }, [builderStore.lastSaveTime, reloadForms])
-
   const onError = useCallback((err: any) => {
     console.error(err)
     showMessage({type: 'error', message: err})
   }, [showMessage])
 
-  const items = formList.map((value, index) => {
-    return <ListItem key={index}>
-      <span style={{color: value === builderStore.formName ? 'var(--rs-navs-selected)' : 'var(--rs-text-secondary)'}}>
-        {value}
-      </span>
-      <ButtonGroup>
-        <EditButton onClick={() => builderStore.loadForm(value, reloadForms, onError)}/>
-        <RemoveButton onClick={() => builderStore.removeForm(value, reloadForms)}/>
-      </ButtonGroup>
-    </ListItem>
-  })
+  const reloadForms = useCallback(() => {
+    builderStore.getFormKeys().then(setFormList)
+  }, [builderStore])
+
+  const loadForm = useCallback((name: string) => {
+    builderStore.loadForm(name, reloadForms, onError)
+  }, [builderStore, onError, reloadForms])
+
+  const removeForm = useCallback((name: string) => {
+    builderStore.removeForm(name, reloadForms)
+  }, [builderStore, reloadForms])
+
+  const handleAddForm = useCallback((name: string) => {
+    if (name) {
+      builderStore.createForm(name)
+        .then(reloadForms)
+        .then(() => builderStore.save())
+        .then(() => loadForm(name))
+    }
+  }, [builderStore, loadForm, reloadForms])
+
+  const showPromptDialog = useSaveFormDialog('', handleAddForm)
+
+  useEffect(() => {
+    reloadForms()
+  }, [builderStore.lastSaveTime, reloadForms])
 
   return <List {...props}>
     <ListItem>
       <Button block onClick={showPromptDialog}>{t('formsList.addNewForm')}</Button>
     </ListItem>
-    {items.length
-      ? items
+    {formList.length
+      ? formList.map((name, index) =>
+        <FormListItem key={index} active={name === builderStore.formName} name={name} onLoadForm={loadForm} onRemoveForm={removeForm}/>)
       : <ListItem>{t('formsList.noFormsInFormStorage')}</ListItem>
     }
   </List>
