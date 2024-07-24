@@ -1,0 +1,8 @@
+- Added validation for the format property in the `DatePicker` component.
+- Fixed a bug that prevented the string property editor from turning into a text area when inserting large text.
+- Fixed a bug in the "Key" property editor, due to which the key verification message was not updated when duplicating a component with the same key value.
+- Added support for <kbd>Esc</kbd> and <kbd>Enter</kbd> hotkeys in the prompt dialog.
+- After creating a new form, the old one is automatically saved and the designer switches to the new form.
+- Made the `props` attribute optional when parsing JSON for components.
+- The API reference documentation has been updated.
+- Added a new component `TagPicker`.
