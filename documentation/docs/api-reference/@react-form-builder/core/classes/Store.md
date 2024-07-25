@@ -237,6 +237,8 @@ Correctly clears allocated resources, the function must be called when destroyin
 
 `void`
 
+#### Inherit Doc
+
 #### Implementation of
 
 [`IStore`](../interfaces/IStore.md).[`dispose`](../interfaces/IStore.md#dispose)
@@ -397,6 +399,8 @@ the validation results.
 
 `undefined` \| `string`
 
+the localized error messages joined by space, or undefined if validationResults is undefined.
+
 #### Implementation of
 
 [`IStore`](../interfaces/IStore.md).[`localizeErrorMessages`](../interfaces/IStore.md#localizeerrormessages)
@@ -428,6 +432,8 @@ the initial value for the accumulator.
 #### Returns
 
 `T`
+
+the accumulated value.
 
 #### Implementation of
 

@@ -13,3 +13,5 @@ the localization testing request.
 ## Returns
 
 [`CalculableResult`](../classes/CalculableResult.md)
+
+the localization testing result.

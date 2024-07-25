@@ -13,3 +13,5 @@ the column descriptions.
 ## Returns
 
 `Element`[]
+
+the array with React elements.

@@ -257,6 +257,8 @@ Clears the form data.
 
 `void`
 
+#### Inherit Doc
+
 #### Implementation of
 
 [`IFormData`](../interfaces/IFormData.md).[`clear`](../interfaces/IFormData.md#clear)
@@ -318,6 +320,8 @@ Returns the validation results without triggering an events and changing the sta
 
 `Promise`\<`undefined`\>
 
+the [ValidationMessages](../type-aliases/ValidationMessages.md) validation results.
+
 #### Implementation of
 
 [`IFormData`](../interfaces/IFormData.md).[`getValidationResult`](../interfaces/IFormData.md#getvalidationresult)
@@ -370,6 +374,8 @@ Sets the form to its default value.
 
 `void`
 
+#### Inherit Doc
+
 #### Implementation of
 
 [`IFormData`](../interfaces/IFormData.md).[`reset`](../interfaces/IFormData.md#reset)
@@ -389,6 +395,8 @@ Sets the validation error message for all form data fields.
 #### Returns
 
 `void`
+
+#### Inherit Doc
 
 #### Implementation of
 
@@ -443,6 +451,8 @@ Validates the data in the form.
 #### Returns
 
 `Promise`\<`void`\>
+
+#### Inherit Doc
 
 #### Implementation of
 

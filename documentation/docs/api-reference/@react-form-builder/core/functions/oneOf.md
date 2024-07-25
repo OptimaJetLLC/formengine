@@ -17,3 +17,5 @@ the possible values for the property.
 ## Returns
 
 [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`U`\>
+
+the instance of the metadata property builder.

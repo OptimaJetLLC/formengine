@@ -140,6 +140,8 @@ Clears the data in the field.
 
 `void`
 
+#### Inherit Doc
+
 #### Implementation of
 
 [`Field`](../interfaces/Field.md).[`clear`](../interfaces/Field.md#clear)
@@ -155,6 +157,8 @@ Releases allocated resources, must be used when destroying an object instance.
 #### Returns
 
 `void`
+
+#### Inherit Doc
 
 #### Implementation of
 
@@ -172,6 +176,8 @@ Returns the validation results without triggering an events and changing the sta
 
 `Promise`\<`undefined`\>
 
+the [ValidationMessages](../type-aliases/ValidationMessages.md) validation results.
+
 #### Implementation of
 
 [`Field`](../interfaces/Field.md).[`getValidationResult`](../interfaces/Field.md#getvalidationresult)
@@ -188,6 +194,8 @@ Initializes the value of the field.
 
 `void`
 
+#### Inherit Doc
+
 #### Implementation of
 
 [`Field`](../interfaces/Field.md).[`init`](../interfaces/Field.md#init)
@@ -203,6 +211,8 @@ Sets the field to its default value.
 #### Returns
 
 `void`
+
+#### Inherit Doc
 
 #### Implementation of
 
@@ -224,6 +234,8 @@ Sets the error value.
 
 `void`
 
+#### Inherit Doc
+
 #### Implementation of
 
 [`Field`](../interfaces/Field.md).[`setError`](../interfaces/Field.md#seterror)
@@ -239,6 +251,8 @@ Marks the field as touched.
 #### Returns
 
 `void`
+
+#### Inherit Doc
 
 #### Implementation of
 
@@ -260,6 +274,8 @@ Sets the value of the field.
 
 `void`
 
+#### Inherit Doc
+
 #### Implementation of
 
 [`Field`](../interfaces/Field.md).[`setValue`](../interfaces/Field.md#setvalue)
@@ -275,6 +291,8 @@ Validates the field value.
 #### Returns
 
 `Promise`\<`void`\>
+
+#### Inherit Doc
 
 #### Implementation of
 

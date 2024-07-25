@@ -13,3 +13,5 @@ the type to be checked.
 ## Returns
 
 `boolean`
+
+the boolean value indicating if the type is a validator property block type.

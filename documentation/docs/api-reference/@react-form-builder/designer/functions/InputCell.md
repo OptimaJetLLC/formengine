@@ -13,3 +13,5 @@ the React component properties.
 ## Returns
 
 `Element`
+
+the React element.

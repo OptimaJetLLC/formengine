@@ -19,3 +19,5 @@ the form viewer settings.
 ## Returns
 
 [`RuleValidatorResult`](../type-aliases/RuleValidatorResult.md) \| `Promise`\<[`RuleValidatorResult`](../type-aliases/RuleValidatorResult.md)\>
+
+true if the component key is unique across the entire component tree.

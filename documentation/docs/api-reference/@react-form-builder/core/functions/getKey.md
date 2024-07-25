@@ -7,3 +7,5 @@ Generates the random string. **Internal use only.**
 ## Returns
 
 `string`
+
+the generated random string.

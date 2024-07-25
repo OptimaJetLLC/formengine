@@ -13,3 +13,5 @@ the input object.
 ## Returns
 
 [`ActionValues`](../type-aliases/ActionValues.md)
+
+the converted ActionValues object.

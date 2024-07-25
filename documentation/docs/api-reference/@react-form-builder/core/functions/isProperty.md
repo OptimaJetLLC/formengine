@@ -13,3 +13,5 @@ the value.
 ## Returns
 
 `value is PropertyAnnotation`
+
+true if the value is an instance of PropertyAnnotation, false otherwise.

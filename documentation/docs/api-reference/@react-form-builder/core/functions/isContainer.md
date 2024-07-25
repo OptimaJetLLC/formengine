@@ -13,3 +13,5 @@ the value.
 ## Returns
 
 `value is ContainerAnnotation`
+
+true if the value is an instance of ContainerAnnotation, false otherwise.

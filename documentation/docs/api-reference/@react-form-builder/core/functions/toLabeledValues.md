@@ -17,3 +17,5 @@ if true, the first character in [LabeledValue.label](../interfaces/LabeledValue.
 ## Returns
 
 `object`[]
+
+the array of [LabeledValue](../interfaces/LabeledValue.md) elements.

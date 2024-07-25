@@ -13,3 +13,5 @@ some raw id.
 ## Returns
 
 `string`
+
+the Fluent compatible id.

@@ -21,3 +21,5 @@ the relationship of the resource to the document.
 ## Returns
 
 `Promise`\<`void`\>
+
+the promise that resolves when the resource has been loaded successfully.

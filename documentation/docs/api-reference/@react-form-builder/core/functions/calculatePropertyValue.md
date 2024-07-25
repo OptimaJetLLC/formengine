@@ -17,3 +17,5 @@ the formViewerData data.
 ## Returns
 
 [`CalculableResult`](../classes/CalculableResult.md)
+
+the calculated value.

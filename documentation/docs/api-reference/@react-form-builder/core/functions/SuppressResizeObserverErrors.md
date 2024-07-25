@@ -13,3 +13,5 @@ the component props.
 ## Returns
 
 `Element`
+
+the rendered child elements.
