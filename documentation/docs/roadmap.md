@@ -33,4 +33,4 @@ our [GitHub repository](https://github.com/optimajet/formengine/issues).
 | Support Server-Side Rendering                                       | Analysis    |
 | Export form to PDF                                                  | Analysis    |
 | Support React Native                                                | Analysis    |
-
+| Role-based access                                                   | Analysis    |
