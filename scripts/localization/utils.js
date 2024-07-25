@@ -1,6 +1,6 @@
-const fs = require('fs');
-const _ = require('lodash-es');
-const stringify = require('json-stable-stringify');
+import fs from 'fs';
+import {each, forIn, isArray, isEmpty, isPlainObject, isUndefined, keys, sortBy} from 'lodash-es';
+import stringify from 'json-stable-stringify';
 
 function saveToFile(path, obj) {
   const windowsContent = stringify(obj, {space: '  '}).replaceAll('\n', '\r\n');
@@ -8,7 +8,7 @@ function saveToFile(path, obj) {
   fs.writeFileSync(path, buffer);
 }
 
-const isObject = val => _.isArray(val) || _.isPlainObject(val)
+const isObject = val => isArray(val) || isPlainObject(val)
 
 function objectKeys(object, result = []) {
   for (let key in object) {
@@ -21,7 +21,7 @@ function objectKeys(object, result = []) {
 
 function objectValues(object, result = []) {
   if (isObject(object))
-    _.forIn(object, val => objectValues(val, result))
+    forIn(object, val => objectValues(val, result))
   else result.push(object);
   return result;
 }
@@ -38,11 +38,11 @@ function flattenArrayToObject(array, object, key = null, iterator = {i: 0}) {
 }
 
 function diffByKeys(referenceObject, targetObject) {
-  return _.reduce(referenceObject, (result, value, key) => {
-    if (_.isPlainObject(value)) {
+  return Object.entries(referenceObject).reduce((result, [key, value]) => {
+    if (isPlainObject(value)) {
       const diffResult = diffByKeys(value, targetObject[key] || {})
-      if (!_.isEmpty(diffResult)) result[key] = diffResult;
-    } else if (_.isUndefined(targetObject[key])) {
+      if (!isEmpty(diffResult)) result[key] = diffResult;
+    } else if (isUndefined(targetObject[key])) {
       result[key] = value;
     }
     return result;
@@ -55,11 +55,11 @@ function hasObsolete(referenceObject, targetObject) {
 }
 
 function removeObsolete(referenceObject, targetObject) {
-  return _.reduce(referenceObject, (result, value, key) => {
-    if (_.isPlainObject(value)) {
+  return Object.entries(referenceObject).reduce((result, [key, value]) => {
+    if (isPlainObject(value)) {
       const filtered = removeObsolete(value, targetObject[key] || {})
-      if (!_.isEmpty(filtered)) result[key] = filtered;
-    } else if (!_.isUndefined(referenceObject[key])) {
+      if (!isEmpty(filtered)) result[key] = filtered;
+    } else if (!isUndefined(referenceObject[key])) {
       result[key] = targetObject[key];
     }
     return result;
@@ -68,13 +68,13 @@ function removeObsolete(referenceObject, targetObject) {
 
 function sortObject(object) {
   const sortedObj = {};
-  const objectKeys = _.sortBy(_.keys(object), key => key);
+  const objectKeys = sortBy(keys(object), key => key);
 
-  _.each(objectKeys, key => sortedObj[key] =
+  each(objectKeys, key => sortedObj[key] =
     isObject(object[key]) ? sortObject(object[key]) : object[key]
   );
 
   return sortedObj;
 }
 
-module.exports = {saveToFile, objectValues, objectKeys, flattenArrayToObject, diffByKeys, sortObject, hasObsolete, removeObsolete};
+export {saveToFile, objectValues, objectKeys, flattenArrayToObject, diffByKeys, sortObject, hasObsolete, removeObsolete}

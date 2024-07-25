@@ -1,30 +1,30 @@
-require('dotenv').config();
+import 'dotenv/config.js'
+
+import path from 'path';
+import fs from 'fs';
+
+import axios from 'axios';
+import deepMerge from 'deepmerge';
+
+import {diffByKeys, flattenArrayToObject, hasObsolete, objectKeys, objectValues, removeObsolete, saveToFile, sortObject} from './utils.js';
+
+import locales from './localizations.js'
 
 //https://cloud.yandex.ru/docs/translate/quickstart
-
-const axios = require('axios');
-const deepMerge = require('deepmerge');
-const path = require('path');
-const {entries} = require('lodash-es/object.js');
-const {
-  saveToFile,
-  flattenArrayToObject,
-  objectValues,
-  diffByKeys,
-  sortObject,
-  objectKeys,
-  removeObsolete,
-  hasObsolete
-} = require('./utils.js');
-
 const {YA_API_URL, YA_FOLDER_ID, YA_IAM_TOKEN} = process.env;
 
 const LOCALIZATION_FOLDER = '../../packages/designer/public/locales';
-const {en, ...localizations} = require('./localizations.json');
 
-const defaultLanguage = sortObject(getLocalization(en));
+const {en, ...localizations} = locales;
 
-entries(localizations).forEach(([key, fullCode]) => updateLocalization(getLocalization(fullCode), key));
+const localesData = Object.entries(locales).map(([lang, locale]) => [locale, getLocalization(locale)]).reduce((acc, curr) => {
+  acc[curr[0]] = curr[1]
+  return acc
+}, {})
+
+const defaultLanguage = sortObject(localesData[en]);
+
+Object.entries(localizations).forEach(([key, fullCode]) => updateLocalization(localesData[fullCode], key));
 
 function updateLocalization(localization, targetLang) {
   const missedItems = diffByKeys(defaultLanguage, localization);
@@ -72,7 +72,8 @@ function requestTranslate(targetLanguageCode, texts, successCallback) {
 }
 
 function getLocalization(languageCode) {
-  return require(`${LOCALIZATION_FOLDER}/${languageCode}.json`)
+  const contents = fs.readFileSync(`${LOCALIZATION_FOLDER}/${languageCode}.json`, {encoding: 'utf8'})
+  return JSON.parse(contents)
 }
 
 function save(targetLang, localization) {
