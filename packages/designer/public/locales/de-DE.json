@@ -51,6 +51,14 @@
       "hint": "Inhaltsbereich mit Containern gefüllt",
       "name": "Körperfüllung"
     },
+    "checked": {
+      "hint": "Ob der Wert überprüft wird",
+      "name": "Ft"
+    },
+    "checkedChildren": {
+      "hint": "Der Text, der im aktivierten Zustand angezeigt wird",
+      "name": "Geprüfter Text"
+    },
     "cleanable": {
       "hint": "Ob die Option geleert werden kann",
       "name": "Reinigbar"
@@ -58,6 +66,10 @@
     "code": {
       "hint": "Code bearbeiten",
       "name": "Codes"
+    },
+    "color": {
+      "hint": "Die Hauptfarbe der Komponente",
+      "name": "Farbig"
     },
     "creatable": {
       "hint": "Einstellungen können neue Optionen erstellen",
@@ -82,6 +94,14 @@
     "disabled": {
       "hint": "Ob die Komponente deaktiviert ist oder nicht",
       "name": "Behinderte"
+    },
+    "download": {
+      "hint": "Veranlasst den Browser, die verknüpfte URL als Download zu behandeln",
+      "name": "Herunterladen"
+    },
+    "downloadFilename": {
+      "hint": "Wenn Sie einen Wert definieren, wird dieser als Dateiname vorgeschlagen. / und \\ Zeichen werden in Unterstriche (_) umgewandelt",
+      "name": "Dateiname herunterladen"
     },
     "draggable": {
       "hint": "Drag & Drop zum Hochladen aktiviert",
@@ -110,6 +130,10 @@
       "hint": "Gruppierungskriterien 'Schlüssel' in 'Daten' setzen",
       "name": "Gruppieren nach"
     },
+    "href": {
+      "hint": "Die URL, auf die der Hyperlink verweist",
+      "name": "Href"
+    },
     "htmlAttributes": {
       "hint": "HTML-Attribute im React (camelCase) -Format",
       "name": "HTML-Attribute"
@@ -120,6 +144,10 @@
     "label": {
       "hint": "Beschriftung einstellen",
       "name": "Etikett"
+    },
+    "loading": {
+      "hint": "Ob sich die Komponente im Ladezustand befindet",
+      "name": "Laden"
     },
     "mask": {
       "hint": "Wird als Maskenzeichen für numerische Stellen verwendet, bis ein beliebiges numerisches Zeichen für diese Position bereitgestellt wird",
@@ -167,6 +195,10 @@
       "hint": "Fügt das Suffix nach dem Eingabewert hinzu",
       "name": "Nachsilbe "
     },
+    "target": {
+      "hint": "Wo die verknüpfte URL als Name für einen Browserkontext angezeigt werden soll (eine Registerkarte, ein Fenster oder <iframe>)",
+      "name": "Ziel"
+    },
     "textAlign": {
       "name": "Ausrichtung"
     },
@@ -177,6 +209,10 @@
     "tooltipProps": {
       "hint": "Tooltip für dieses Element verwenden",
       "tooltip": "QuickInfo"
+    },
+    "unCheckedChildren": {
+      "hint": "Der Text, der im ungeprüften Zustand angezeigt wird",
+      "name": "Ungeprüfter Text"
     },
     "withCredentials": {
       "hint": "Ob beim Hochladen von Anfragen Cookies mitgeführt werden sollen",
@@ -241,6 +277,7 @@
   },
   "formsList": {
     "addNewForm": "Neues Formular hinzufügen",
+    "formWithNameExists": "Formular mit diesem Namen existiert bereits.",
     "noFormsInFormStorage": "Speichern Sie das Formular so, dass es in der Liste der Formulare angezeigt wird."
   },
   "leftMenu": {

@@ -135,6 +135,11 @@ export interface PromptModalState extends PromptDialogProps {
    * The flag of modal window visibility, if true - the window is shown, if false - the window is hidden.
    */
   opened: boolean
+
+  /**
+   * The error message.
+   */
+  errorMessage?: string
 }
 
 class BuilderUndoer {
@@ -794,6 +799,6 @@ export class BuilderStore implements IFormBuilder {
    * @param props the modal window properties.
    */
   showPromptModal(props: PromptDialogProps) {
-    Object.assign(this.promptModalState, props, {opened: true})
+    Object.assign(this.promptModalState, props, {opened: true, errorMessage: undefined})
   }
 }

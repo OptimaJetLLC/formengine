@@ -51,6 +51,14 @@
       "hint": "Área de contenido llena de contenedores",
       "name": "Relleno corporal"
     },
+    "checked": {
+      "hint": "Si el valor está marcado",
+      "name": "Comprobado"
+    },
+    "checkedChildren": {
+      "hint": "El texto que se muestra en el estado marcado",
+      "name": "Texto marcado"
+    },
     "cleanable": {
       "hint": "Si la opción se puede vaciar",
       "name": "Lavable"
@@ -58,6 +66,10 @@
     "code": {
       "hint": "Editar código",
       "name": "Código"
+    },
+    "color": {
+      "hint": "El color principal del componente.",
+      "name": "Color"
     },
     "creatable": {
       "hint": "La configuración puede crear nuevas opciones",
@@ -82,6 +94,14 @@
     "disabled": {
       "hint": "Si el componente está deshabilitado o no",
       "name": "Discapacitados"
+    },
+    "download": {
+      "hint": "Hace que el navegador trate la URL vinculada como una descarga",
+      "name": "Descargar"
+    },
+    "downloadFilename": {
+      "hint": "Definir un valor lo sugiere como el nombre del archivo.  los caracteres / y \\ se convierten en guiones bajos (_)",
+      "name": "Descargar nombre de archivo"
     },
     "draggable": {
       "hint": "Habilitado arrastrar y soltar para cargar",
@@ -110,6 +130,10 @@
       "hint": "Establecer criterios de agrupación 'clave' en 'datos'",
       "name": "Grupo por"
     },
+    "href": {
+      "hint": "La URL a la que apunta el hipervínculo",
+      "name": "Href"
+    },
     "htmlAttributes": {
       "hint": "Atributos HTML en formato React (camelCase) ",
       "name": "Atributos HTML"
@@ -120,6 +144,10 @@
     "label": {
       "hint": "Configuración de la etiqueta",
       "name": "Etiqueta"
+    },
+    "loading": {
+      "hint": "Si el componente está en estado de carga",
+      "name": "Cargando"
     },
     "mask": {
       "hint": "Se utiliza como carácter de máscara para lugares numéricos, hasta que se proporcione cualquier carácter numérico para esa posición",
@@ -167,6 +195,10 @@
       "hint": "Agrega el sufijo después del valor de entrada",
       "name": "Sufijo "
     },
+    "target": {
+      "hint": "Dónde mostrar la URL vinculada, como nombre de un contexto de navegación (una pestaña, ventana o <iframe>)",
+      "name": "Objetivo"
+    },
     "textAlign": {
       "name": "Alineación"
     },
@@ -177,6 +209,10 @@
     "tooltipProps": {
       "hint": "Utilice información sobre herramientas para este elemento",
       "tooltip": "Información sobre Herramientas"
+    },
+    "unCheckedChildren": {
+      "hint": "El texto que se muestra en el estado desmarcado",
+      "name": "Texto sin marcar"
     },
     "withCredentials": {
       "hint": "Si llevar cookies al cargar solicitudes",
@@ -241,6 +277,7 @@
   },
   "formsList": {
     "addNewForm": "Añadir nuevo formulario",
+    "formWithNameExists": "El formulario con este nombre ya existe.",
     "noFormsInFormStorage": "Guarde el formulario para que aparezca en la lista de formularios."
   },
   "leftMenu": {

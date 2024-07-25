@@ -51,6 +51,14 @@
       "hint": "Area del contenuto piena di contenitori",
       "name": "Riempimento del corpo"
     },
+    "checked": {
+      "hint": "Indica se il valore è controllato",
+      "name": "Verificare"
+    },
+    "checkedChildren": {
+      "hint": "Il testo visualizzato nello stato controllato",
+      "name": "Testo controllato"
+    },
     "cleanable": {
       "hint": "Indica se l'opzione può essere svuotata",
       "name": "Pulibile"
@@ -58,6 +66,10 @@
     "code": {
       "hint": "Modifica codice",
       "name": "Codice"
+    },
+    "color": {
+      "hint": "Il colore principale del componente",
+      "name": "Colore"
     },
     "creatable": {
       "hint": "Le impostazioni possono creare nuove opzioni",
@@ -82,6 +94,14 @@
     "disabled": {
       "hint": "Indica se il componente è disabilitato o meno",
       "name": "Disabilita"
+    },
+    "download": {
+      "hint": "Fa sì che il browser tratti l'URL collegato come un download",
+      "name": "Scaricare"
+    },
+    "downloadFilename": {
+      "hint": "La definizione di un valore lo suggerisce come nome del file. / e \\ i caratteri vengono convertiti in caratteri di sottolineatura (_)",
+      "name": "Scarica nome file"
     },
     "draggable": {
       "hint": "Abilitato drag and drop per caricare",
@@ -110,6 +130,10 @@
       "hint": "Imposta criteri di raggruppamento 'chiave ' in'dati'",
       "name": "Gruppo per"
     },
+    "href": {
+      "hint": "L'URL a cui punta il collegamento ipertestuale",
+      "name": "Href"
+    },
     "htmlAttributes": {
       "hint": "Attributi HTML nel formato React (camelCase) ",
       "name": "Attributi HTML"
@@ -120,6 +144,10 @@
     "label": {
       "hint": "Impostazione etichetta",
       "name": "Etichetta"
+    },
+    "loading": {
+      "hint": "Se il componente è in stato di caricamento",
+      "name": "Caricamento"
     },
     "mask": {
       "hint": "Utilizzato come carattere maschera per le posizioni numeriche, fino a quando non viene fornito alcun carattere numerico per quella posizione",
@@ -167,6 +195,10 @@
       "hint": "Aggiunge il suffisso dopo il valore di input",
       "name": "Suffisso "
     },
+    "target": {
+      "hint": "Dove visualizzare l'URL collegato, come nome per un contesto di navigazione (una scheda, una finestra o <iframe>)",
+      "name": "Obiettivo"
+    },
     "textAlign": {
       "name": "Allineamento"
     },
@@ -177,6 +209,10 @@
     "tooltipProps": {
       "hint": "Usa tooltip per questo elemento",
       "tooltip": "Tooltip"
+    },
+    "unCheckedChildren": {
+      "hint": "Il testo che viene visualizzato nello stato deselezionato",
+      "name": "Testo non controllato"
     },
     "withCredentials": {
       "hint": "Indica se trasportare i cookie durante il caricamento delle richieste",
@@ -241,6 +277,7 @@
   },
   "formsList": {
     "addNewForm": "Aggiungi nuovo modulo",
+    "formWithNameExists": "La forma con questo nome esiste già.",
     "noFormsInFormStorage": "Salvare il modulo in modo che venga visualizzato nell'elenco dei moduli."
   },
   "leftMenu": {

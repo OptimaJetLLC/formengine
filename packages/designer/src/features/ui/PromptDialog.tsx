@@ -1,10 +1,10 @@
 import {namedObserver} from '@react-form-builder/core'
 import {useCallback} from 'react'
-import {Button, Input, Modal} from 'rsuite'
+import {Button, Form, Input, Modal} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {useTranslationPart} from '../localization/hooks'
 
-const inputStyle = {width: '100%'}
+const formStyle = {height: 60}
 
 /**
  * The React component that displays prompt dialog
@@ -16,6 +16,7 @@ const RawPromptDialog = () => {
   const t = useTranslationPart('promptDialog')
   const okLabel = modalState.okText || t('ok')
   const cancelLabel = modalState.cancelText || t('cancel')
+  const inputValid = !!modalState.value?.trim() && !modalState.errorMessage
 
   const hide = useCallback(() => modalState.opened = false, [modalState])
 
@@ -36,6 +37,7 @@ const RawPromptDialog = () => {
 
   const handleChange = useCallback(value => {
     modalState.value = value
+    modalState.errorMessage = modalState.validate?.(value)
   }, [modalState])
 
   const handleKeys = useCallback(({key}) => {
@@ -44,23 +46,26 @@ const RawPromptDialog = () => {
         handleCancel()
         break
       case 'Enter':
-        handleOk()
+        if (inputValid) handleOk()
         break
       default:
         break
     }
-  }, [handleCancel, handleOk])
+  }, [handleCancel, handleOk, inputValid])
 
   return <Modal backdrop={modalState.backdrop} keyboard={true} open={modalState.opened} onClose={handleClose}>
     <Modal.Header>
       <Modal.Title>{modalState.title}</Modal.Title>
     </Modal.Header>
     <Modal.Body>
-      <Input style={inputStyle} placeholder={modalState.placeholder} autoFocus={true} onKeyDown={handleKeys}
-             value={modalState.value} onChange={handleChange}/>
+      <Form style={formStyle} fluid>
+        <Input placeholder={modalState.placeholder} autoFocus={true} onKeyDown={handleKeys}
+               value={modalState.value} onChange={handleChange}/>
+        <Form.ErrorMessage show={!!modalState.errorMessage}>{modalState.errorMessage}</Form.ErrorMessage>
+      </Form>
     </Modal.Body>
     <Modal.Footer>
-      <Button onClick={handleOk} appearance="primary" active={true}>
+      <Button onClick={handleOk} appearance="primary" active={true} disabled={!inputValid}>
         {okLabel}
       </Button>
       <Button onClick={handleCancel} appearance="subtle">

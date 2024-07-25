@@ -51,6 +51,14 @@
       "hint": "Zone de contenu remplie de conteneurs",
       "name": "Remplissage du corps"
     },
+    "checked": {
+      "hint": "Indique si la valeur est vérifiée",
+      "name": "Vérifié"
+    },
+    "checkedChildren": {
+      "hint": "Le texte affiché à l'état coché",
+      "name": "Texte vérifié"
+    },
     "cleanable": {
       "hint": "Indique si l'option peut être vidée",
       "name": "Nettoyable"
@@ -58,6 +66,10 @@
     "code": {
       "hint": "Modifier le code",
       "name": "Code"
+    },
+    "color": {
+      "hint": "La couleur principale du composant",
+      "name": "Couleur"
     },
     "creatable": {
       "hint": "Les paramètres peuvent créer de nouvelles options",
@@ -82,6 +94,14 @@
     "disabled": {
       "hint": "Indique si le composant est désactivé ou non",
       "name": "Désactivé"
+    },
+    "download": {
+      "hint": "Fait que le navigateur traite l'URL liée comme un téléchargement",
+      "name": "Télécharger"
+    },
+    "downloadFilename": {
+      "hint": "Définir une valeur la suggère comme nom de fichier. / et \\ les caractères sont convertis en traits de soulignement (_)",
+      "name": "Télécharger le nom de fichier"
     },
     "draggable": {
       "hint": "Activé glisser-déposer pour télécharger",
@@ -110,6 +130,10 @@
       "hint": "Définir les critères de regroupement \" clé \"dans \" données\"",
       "name": "Groupe par"
     },
+    "href": {
+      "hint": "L'URL vers laquelle pointe le lien hypertexte",
+      "name": "FRH"
+    },
     "htmlAttributes": {
       "hint": "Attributs HTML au format React (CamelCase) ",
       "name": "Attributs HTML"
@@ -120,6 +144,10 @@
     "label": {
       "hint": "Étiquette de réglage",
       "name": "Étiquette"
+    },
+    "loading": {
+      "hint": "Indique si le composant est en état de chargement",
+      "name": "Chargement"
     },
     "mask": {
       "hint": "Utilisé comme caractère de masque pour les emplacements numériques, jusqu'à ce qu'un caractère numérique soit fourni pour cette position",
@@ -167,6 +195,10 @@
       "hint": "Ajoute le suffixe après la valeur d'entrée",
       "name": "Suffixe "
     },
+    "target": {
+      "hint": "Où afficher l'URL liée, en tant que nom d'un contexte de navigation (un onglet, une fenêtre ou <iframe>)",
+      "name": "Cible"
+    },
     "textAlign": {
       "name": "Alignement"
     },
@@ -177,6 +209,10 @@
     "tooltipProps": {
       "hint": "Utilisez l'info-bulle pour cet élément",
       "tooltip": "Infobulle"
+    },
+    "unCheckedChildren": {
+      "hint": "Le texte affiché à l'état non coché",
+      "name": "Texte décoché"
     },
     "withCredentials": {
       "hint": "Indique s'il faut transporter des cookies lors du téléchargement des demandes",
@@ -241,6 +277,7 @@
   },
   "formsList": {
     "addNewForm": "Ajouter un nouveau formulaire",
+    "formWithNameExists": "Le formulaire avec ce nom existe déjà.",
     "noFormsInFormStorage": "Enregistrez le formulaire pour qu'il apparaisse dans la liste des formulaires."
   },
   "leftMenu": {

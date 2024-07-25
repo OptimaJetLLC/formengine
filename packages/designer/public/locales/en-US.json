@@ -241,7 +241,8 @@
   },
   "formsList": {
     "noFormsInFormStorage": "Save the form so that it appears in the list of forms.",
-    "addNewForm": "Add a new form"
+    "addNewForm": "Add a new form",
+    "formWithNameExists": "Form with this name already exists."
   },
   "rightMenu": {
     "toggleTheme": "Toggle theme",

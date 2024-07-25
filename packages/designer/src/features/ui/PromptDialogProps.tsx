@@ -41,4 +41,11 @@ export interface PromptDialogProps {
    * The callback function called when a modal dialog is closed.
    */
   onClose?: () => void
+
+  /**
+   * The function for validating the entered value.
+   * @param value the value for validation.
+   * @returns the string with an error or undefined if validation was successful.
+   */
+  validate?: (value: string) => string | undefined
 }

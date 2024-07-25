@@ -51,6 +51,14 @@
       "hint": "填充容器的内容区域",
       "name": "身体填充"
     },
+    "checked": {
+      "hint": "是否检查值",
+      "name": "检查过"
+    },
+    "checkedChildren": {
+      "hint": "在选中状态下显示的文本",
+      "name": "检查文本"
+    },
     "cleanable": {
       "hint": "选项是否可以清空",
       "name": "可清洁"
@@ -58,6 +66,10 @@
     "code": {
       "hint": "编辑代码",
       "name": "密码"
+    },
+    "color": {
+      "hint": "组件的主色",
+      "name": "颜色"
     },
     "creatable": {
       "hint": "设置可以创建新选项",
@@ -82,6 +94,14 @@
     "disabled": {
       "hint": "组件是否被禁用",
       "name": "残疾人士"
+    },
+    "download": {
+      "hint": "导致浏览器将链接的URL视为下载",
+      "name": "下载"
+    },
+    "downloadFilename": {
+      "hint": "定义一个值建议它作为文件名。 /和\\字符转换为下划线(_)",
+      "name": "下载文件名"
     },
     "draggable": {
       "hint": "启用拖放以上载",
@@ -110,6 +130,10 @@
       "hint": "在\"数据\"中设置分组条件\"键\"",
       "name": "组别"
     },
+    "href": {
+      "hint": "超链接指向的URL",
+      "name": "Href"
+    },
     "htmlAttributes": {
       "hint": "React(camelCase)格式的HTML属性",
       "name": "HTML属性"
@@ -120,6 +144,10 @@
     "label": {
       "hint": "设置标签",
       "name": "标签"
+    },
+    "loading": {
+      "hint": "组件是否处于加载状态",
+      "name": "装载量"
     },
     "mask": {
       "hint": "用作数字位置的掩码字符，直到为该位置提供任何数字字符为止",
@@ -167,6 +195,10 @@
       "hint": "在输入值后添加后缀",
       "name": "后缀 "
     },
+    "target": {
+      "hint": "在哪里显示链接的URL，作为浏览上下文（选项卡、窗口或<iframe>）的名称",
+      "name": "目标"
+    },
     "textAlign": {
       "name": "对齐方式"
     },
@@ -177,6 +209,10 @@
     "tooltipProps": {
       "hint": "为此元素使用工具提示",
       "tooltip": "工具提示"
+    },
+    "unCheckedChildren": {
+      "hint": "在未选中状态下显示的文本",
+      "name": "未选中的文本"
     },
     "withCredentials": {
       "hint": "上传请求时是否携带cookie",
@@ -241,6 +277,7 @@
   },
   "formsList": {
     "addNewForm": "添加新表单",
+    "formWithNameExists": "具有此名称的表单已经存在。",
     "noFormsInFormStorage": "保存表单，使其显示在表单列表中。"
   },
   "leftMenu": {
