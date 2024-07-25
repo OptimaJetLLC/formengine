@@ -10,6 +10,18 @@ interface RsRsDatePickerProps extends DatePickerProps {
   label: string
 }
 
+const parseDateValue = (value:any) => {
+  if (typeof value === 'string') {
+    const parsedDate = new Date(value);
+    if (!isNaN(parsedDate.getTime())) {
+      return parsedDate
+    }
+    console.error('Invalid date string:', value)
+    return null
+  }
+  return value
+}
+
 const toSafeFormat = (format?: string) => {
   const trimmed = format?.trim()
   if (!trimmed) return undefined
@@ -39,11 +51,12 @@ const formatValidator = (format?: string) => {
 const RsDatePicker = ({label, value, className, format, defaultValue, ...props}: RsRsDatePickerProps) => {
   const safeFormat = useMemo(() => toSafeFormat(format), [format])
   const onClean = useTouchOnEvent(props, 'onClean')
+  const parsedValue = useMemo(() => parseDateValue(value), [value])
 
   return (
     <RsLabeledInput className={className}>
       <Form.ControlLabel>{label}</Form.ControlLabel>
-      <DatePicker {...props} value={value ?? defaultValue ?? null} format={safeFormat} onClean={onClean}/>
+      <DatePicker {...props} value={parsedValue ?? defaultValue ?? null} format={safeFormat} onClean={onClean}/>
     </RsLabeledInput>
   )
 }
