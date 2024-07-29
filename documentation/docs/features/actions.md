@@ -63,7 +63,7 @@ Let's take a closer look at the action code.
 ```javascript title='showValidationResult' {6,12-14} showLineNumbers
 /**
  * @param {ActionEventArgs} e - the action arguments.
- * @param {} args - the action arguments.
+ * @param {} args - the action parameters arguments.
  */
 async function Action (e, args) {
     const setVisible = (key, visible) => {

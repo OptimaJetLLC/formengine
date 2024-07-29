@@ -176,7 +176,7 @@ This is our simplest action:
 ```javascript
 /**
  * @param {ActionEventArgs} e - the action arguments.
- * @param {} args - the action arguments.
+ * @param {} args - the action parameters arguments.
  */
 async function Action(e, args) {
   console.log('Name', e.data.name)
@@ -198,7 +198,7 @@ Change the action code to the following to see how you can change the data in th
 ```javascript
 /**
  * @param {ActionEventArgs} e - the action arguments.
- * @param {} args - the action arguments.
+ * @param {} args - the action parameters arguments.
  */
 async function Action(e, args) {
   console.log('Name', e.data.name)

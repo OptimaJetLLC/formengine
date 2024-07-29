@@ -18,7 +18,7 @@ the action arguments.
 
 • **params**: `{ [k in keyof T]: any }`
 
-the action parameters.
+the action parameters arguments.
 
 ## Returns
 

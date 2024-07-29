@@ -27,7 +27,7 @@ export type PropertyKey<T> = keyof T & string
 /**
  * Action function type.
  * @param e the action arguments.
- * @param params the action parameters.
+ * @param params the action parameters arguments.
  * @template T the type of action parameters.
  */
 export type ActionHandler<T> = (e: ActionEventArgs, params: { [k in keyof T]: any }) => void | Promise<void>

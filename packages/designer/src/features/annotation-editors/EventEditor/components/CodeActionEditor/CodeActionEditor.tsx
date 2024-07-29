@@ -146,10 +146,10 @@ const Container = styled(Columns)`
 `
 
 const makeFunctionHeader = (params?: Parameter[]) => {
-  let types = '@param {} args - the action arguments.'
+  let types = '@param {} args - the action parameters arguments.'
   if (params?.length) {
     const names: string[] = params.map(([name, type]) => `${name}: ${type}`)
-    types = `@param {{${names.join(', ')}}} args - the action parameters.`
+    types = `@param {{${names.join(', ')}}} args - the action parameters arguments.`
   }
 
   return `/**
