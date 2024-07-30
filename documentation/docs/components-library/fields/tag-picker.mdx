@@ -1,0 +1,45 @@
+---
+sidebar_position: 120
+title: Tag picker
+description: Allows users to select one or multiple tags from a predefined list.
+slug: /components-library/fields-components/tag-picker
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+
+## Introduction
+
+[Tag picker](https://rsuitejs.com/components/tag-picker/) represents a dropdown list that allows users to select one or multiple tags from a
+predefined list. This component is specifically useful for forms where users need to categorize or label items with tags.
+
+The tag picker component consist of an input field that provides users with your defined tags. Users can select tags from the suggestions or
+enter their own custom tags in case the corresponding option is enabled. This component is included within the following NPM
+package: [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+This component provides a wide range of options and properties that change the behavior and the appearance of the tag picker. These
+properties are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name        | Type      | Description                                                                                                    |
+|:------------|:----------|:---------------------------------------------------------------------------------------------------------------|
+| Label       | `string`  | Text that is displayed for your component                                                                      |
+| Value       | `string`  | Sets default value for the component                                                                           |
+| Placeholder | `string`  | Placeholder for the search field                                                                               |
+| Placement   | `choice`  | Select the placement of component (e.g., _bottom end_, _top start_, etc.)                                      |
+| Size        | `choice`  | Select the size of the input field (e.g., _large_, _small_, etc. )                                             |
+| Data        | `string`  | Used to define _values_ and _labels_ for available tags. Add options by using the corresponding (**+**) button |
+| Cleanable   | `boolean` | If set to _true_, allows users to clear their selection                                                        |
+| Creatable   | `boolean` | If set to _true_, allows users to create and select their own data                                             |
+| Disabled    | `boolean` | Disables the component                                                                                         |
+| Read Only   | `boolean` | If set to _true_, makes your component unavailable for users to interact with                                  |
+| Group by    | `string`  | Used to specify the key; i.e., criteria for grouping data                                                      |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
