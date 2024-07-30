@@ -2,13 +2,14 @@ import {css, cx} from '@emotion/css'
 import {assign, keysIn} from 'lodash-es'
 import {makeAutoObservable} from 'mobx'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
-import {ActionEventArgs, DidMountEvent, EventName, WillUnmountEvent} from '../features/event'
+import type {EventName} from '../features/event'
+import {ActionEventArgs, DidMountEvent, WillUnmountEvent} from '../features/event'
 import type {CssPart} from '../features/style/types'
 import type {ComputeChildren} from '../utils/ComputeChildren'
-import {ComponentData} from '../utils/contexts/ComponentDataContext'
+import type {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
-import {ComponentStore} from './ComponentStore'
-import {Store} from './Store'
+import type {ComponentStore} from './ComponentStore'
+import type {Store} from './Store'
 
 const getHtmlAttributes = (componentStore: ComponentStore) => componentStore.htmlAttributes
   ?.reduce((result: Record<string, string>, {name, value}) => {

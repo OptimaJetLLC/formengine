@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import {Close} from '@rsuite/icons'
-import {RgbaColor, RgbaColorPicker} from 'react-colorful'
+import type {RgbaColor} from 'react-colorful'
+import {RgbaColorPicker} from 'react-colorful'
 import {Input, InputGroup, Popover, Whisper} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'

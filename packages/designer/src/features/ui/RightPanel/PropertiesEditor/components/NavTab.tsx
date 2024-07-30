@@ -6,7 +6,7 @@ import {useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
 import {customizableTab, SNav} from '../../../../components/NavIconItem'
 import {customizableObserver} from '../../../../customization'
-import {CustomizableKey} from '../../../../customization/types'
+import type {CustomizableKey} from '../../../../customization/types'
 import {Section} from '../Section'
 
 interface NavProps {

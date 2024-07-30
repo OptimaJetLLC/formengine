@@ -1,10 +1,10 @@
 import type {ComponentType, ReactNode} from 'react'
 import {BiDi} from '../../localization/bidi'
-import {Language} from '../../localization/types'
+import type {Language} from '../../localization/types'
 import {slotModel} from '../../template'
 import {internalErrorModel} from '../../ui/internalErrorModel'
 import {screenModel} from '../../ui/screenModel'
-import {Model} from './Model'
+import type {Model} from './Model'
 
 /**
  * Represents the type of CSS loader. Can be either BiDi or common for both BiDi.

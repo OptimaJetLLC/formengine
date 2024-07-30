@@ -1,6 +1,7 @@
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {customizableObserver} from '../../customization'
-import {Panel, PanelProps} from '../Panel'
+import type {PanelProps} from '../Panel'
+import {Panel} from '../Panel'
 import {PropertiesEditor} from './PropertiesEditor'
 
 const rightPanelViews = {

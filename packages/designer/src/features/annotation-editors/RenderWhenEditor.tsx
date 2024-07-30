@@ -1,7 +1,8 @@
 import {namedObserver} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {Input} from 'rsuite'
-import LabeledProperty, {LabeledPropertyProps} from '../components/LabeledProperty'
+import type {LabeledPropertyProps} from '../components/LabeledProperty'
+import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps, CalculableEditorProps} from './AnnotationEditorProps'
 
 /**

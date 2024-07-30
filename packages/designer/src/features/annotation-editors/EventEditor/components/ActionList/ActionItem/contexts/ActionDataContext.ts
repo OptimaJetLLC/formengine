@@ -1,4 +1,5 @@
-import {ActionData, createNonNullableContext} from '@react-form-builder/core'
+import type {ActionData} from '@react-form-builder/core'
+import {createNonNullableContext} from '@react-form-builder/core'
 
 const [
   /**

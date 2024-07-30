@@ -1,8 +1,8 @@
 import {useMemo} from 'react'
-import {Model} from '../features/define'
+import type {Model} from '../features/define'
 import {ComponentState} from '../stores/ComponentState'
 import {ComponentStore} from '../stores/ComponentStore'
-import {Store} from '../stores/Store'
+import type {Store} from '../stores/Store'
 import {useStore} from './contexts/StoreContext'
 
 /**

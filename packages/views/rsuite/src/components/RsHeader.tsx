@@ -1,7 +1,7 @@
 import {define, string} from '@react-form-builder/core'
 import {createElement} from 'react'
 import {backgroundColor, headerSize, textStyles} from '../commonProperties'
-import {TextProps} from '../commonTypes'
+import type {TextProps} from '../commonTypes'
 
 interface RsHeaderProps extends TextProps {
   content?: string

@@ -1,6 +1,7 @@
 import {calculatePropertyValue} from '@react-form-builder/core'
-import {EditableProperty} from '../../stores/BuilderStore'
-import {GenericCodeEditor, GenericCodeEditorProps} from './GenericCodeEditor'
+import type {EditableProperty} from '../../stores/BuilderStore'
+import type {GenericCodeEditorProps} from './GenericCodeEditor'
+import {GenericCodeEditor} from './GenericCodeEditor'
 
 /**
  * Properties of the React component {@link CalculableCodeEditor}.

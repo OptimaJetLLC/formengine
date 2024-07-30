@@ -1,4 +1,5 @@
-import {ComponentData, namedObserver} from '@react-form-builder/core'
+import type {ComponentData} from '@react-form-builder/core'
+import {namedObserver} from '@react-form-builder/core'
 import {useCallback, useEffect} from 'react'
 import {Table} from 'rsuite'
 import {Cell, Column, HeaderCell} from 'rsuite-table'

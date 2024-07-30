@@ -1,5 +1,6 @@
 import {namedObserver, useComponentData} from '@react-form-builder/core'
-import {Component, ErrorInfo, ReactNode} from 'react'
+import type {ErrorInfo, ReactNode} from 'react'
+import {Component} from 'react'
 
 interface ComponentRenderErrorProps {
   error?: Error

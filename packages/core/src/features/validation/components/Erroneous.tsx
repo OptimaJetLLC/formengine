@@ -1,12 +1,13 @@
 import {createElement, useCallback, useEffect, useRef} from 'react'
 import {filter} from 'rxjs'
-import {WrapperProps} from '../../../types'
+import type {WrapperProps} from '../../../types'
 import {namedObserver} from '../../../utils'
 import {useComponentData} from '../../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../../utils/contexts/StoreContext'
 import {useErrorModel} from '../../../utils/useErrorModel'
-import {ComponentLocalizer, useWrapperState} from '../../../utils/useWrapperState'
-import {ActionEventHandler} from '../../event'
+import type {ComponentLocalizer} from '../../../utils/useWrapperState'
+import {useWrapperState} from '../../../utils/useWrapperState'
+import type {ActionEventHandler} from '../../event'
 import {useViewerProps} from '../../form-viewer/components/ViewerPropsContext'
 
 const useEventListener = (sender: string, type: string, listener: ActionEventHandler) => {

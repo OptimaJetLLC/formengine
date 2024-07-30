@@ -1,5 +1,5 @@
-import {ComponentStore} from '../../stores/ComponentStore'
-import {ActionDefinition, ActionEventHandler, DefineActionHelper, EventName} from '../event'
+import type {ComponentStore} from '../../stores/ComponentStore'
+import type {ActionDefinition, ActionEventHandler, DefineActionHelper, EventName} from '../event'
 
 /**
  * The type of function that initializes an actions on a component. **Internal use only.**

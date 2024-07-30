@@ -1,5 +1,5 @@
 import {useEffect, useMemo} from 'react'
-import {ViewMode} from '../../../types'
+import type {ViewMode} from '../../../types'
 import {namedObserver} from '../../../utils'
 import {useStore} from '../../../utils/contexts/StoreContext'
 import {EventStream} from '../../event/utils/EventStream'

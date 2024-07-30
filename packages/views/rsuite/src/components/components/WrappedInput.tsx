@@ -1,4 +1,5 @@
-import {Input, InputProps} from 'rsuite'
+import type {InputProps} from 'rsuite'
+import {Input} from 'rsuite'
 
 /**
  * The React component that wraps the Input component.

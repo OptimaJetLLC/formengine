@@ -1,23 +1,26 @@
-import {
-  ActionDefinition,
+import type {
   Annotation,
-  BiDi,
-  BuilderView,
   ComponentData,
-  ComponentStore,
   EditorType,
   Language,
   NamedActionDefinition,
-  nameObservable,
   PersistedForm,
-  PersistedFormVersion,
-  screenModel,
   Store,
-  treeForEach,
   ViewMode
 } from '@react-form-builder/core'
+import {
+  ActionDefinition,
+  BiDi,
+  BuilderView,
+  ComponentStore,
+  nameObservable,
+  PersistedFormVersion,
+  screenModel,
+  treeForEach
+} from '@react-form-builder/core'
 import {assign, cloneDeep} from 'lodash-es'
-import {action, IReactionDisposer, makeAutoObservable, observable, reaction} from 'mobx'
+import type {IReactionDisposer} from 'mobx'
+import {action, makeAutoObservable, observable, reaction} from 'mobx'
 import {debounceTime, distinctUntilChanged, Subject} from 'rxjs'
 import type {CalculableEditorProps} from '../features/annotation-editors/AnnotationEditorProps'
 import type {CodeActionEditorData, CodeActionEditorProps} from '../features/annotation-editors/EventEditor/components/CodeActionEditor'
@@ -25,7 +28,7 @@ import type {TranslationResolver} from '../features/localization/BuilderI18n'
 import {BuilderI18n} from '../features/localization/BuilderI18n'
 import type {FormBuilderI18nData} from '../features/localization/FormBuilderLanguage'
 import {builtInLanguages, findLanguage} from '../features/localization/languageUtils'
-import {PanelPlacement} from '../features/ui/PanelPlacement'
+import type {PanelPlacement} from '../features/ui/PanelPlacement'
 import type {PromptDialogProps} from '../features/ui/PromptDialogProps'
 import {annotationResolver} from '../features/validation'
 import type {FormBuilderProps} from '../FormBuilderProps'

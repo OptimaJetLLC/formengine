@@ -1,4 +1,4 @@
-import {FormViewerValidationRules} from '../../../stores/FormViewerValidationRules'
+import type {FormViewerValidationRules} from '../../../stores/FormViewerValidationRules'
 import {isPromise} from '../../../utils'
 import type {BoundValueSchema} from '../types/BoundValueSchema'
 import type {RuleValidator} from '../types/RuleValidator'

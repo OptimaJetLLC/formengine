@@ -1,4 +1,5 @@
-import {Annotation, isPromise, ResolvedValidator, Store} from '@react-form-builder/core'
+import type {Annotation, ResolvedValidator, Store} from '@react-form-builder/core'
+import {isPromise} from '@react-form-builder/core'
 import {isEmpty} from 'lodash-es'
 
 /**

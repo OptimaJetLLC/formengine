@@ -1,7 +1,7 @@
 import type {SyntheticEvent} from 'react'
-import {ComponentState} from '../../../stores/ComponentState'
-import {Store} from '../../../stores/Store'
-import {ComponentData} from '../../../utils/contexts/ComponentDataContext'
+import type {ComponentState} from '../../../stores/ComponentState'
+import type {Store} from '../../../stores/Store'
+import type {ComponentData} from '../../../utils/contexts/ComponentDataContext'
 
 function createComponentDataProxy(componentData: ComponentData) {
   return new Proxy(componentData, {

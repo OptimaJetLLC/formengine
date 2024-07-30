@@ -1,4 +1,5 @@
-import {Dispatch, SetStateAction, useCallback, useEffect, useMemo, useRef, useState} from 'react'
+import type {Dispatch, SetStateAction} from 'react'
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 
 /**
  * Sets a state only if its parent component is still mounted.

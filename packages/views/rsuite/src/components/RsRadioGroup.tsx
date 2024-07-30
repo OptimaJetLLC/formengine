@@ -1,5 +1,7 @@
-import {array, boolean, define, event, LabeledValue, oneOf, string, toLabeledValues} from '@react-form-builder/core'
-import {Radio, RadioGroup, RadioGroupProps} from 'rsuite'
+import type {LabeledValue} from '@react-form-builder/core'
+import {array, boolean, define, event, oneOf, string, toLabeledValues} from '@react-form-builder/core'
+import type {RadioGroupProps} from 'rsuite'
+import {Radio, RadioGroup} from 'rsuite'
 import {readOnly} from '../commonProperties'
 
 interface RsRadioGroupProps extends RadioGroupProps<string> {

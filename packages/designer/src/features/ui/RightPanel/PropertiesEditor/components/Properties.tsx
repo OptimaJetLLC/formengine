@@ -1,18 +1,9 @@
 import styled from '@emotion/styled'
-import type {CssPart, PropertyBlockType} from '@react-form-builder/core'
-import {
-  Annotation,
-  className,
-  ComponentDataProvider,
-  ComponentStore,
-  key,
-  Meta,
-  namedObserver,
-  useTooltipType
-} from '@react-form-builder/core'
+import type {Annotation, ComponentStore, CssPart, Meta, PropertyBlockType} from '@react-form-builder/core'
+import {className, ComponentDataProvider, key, namedObserver, useTooltipType} from '@react-form-builder/core'
 import {useCallback, useState} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
-import {Device} from '../../../../../utils/types'
+import type {Device} from '../../../../../utils/types'
 import {CSSEditor} from '../../../../annotation-editors/CSSEditor'
 import {Hinted} from '../../../../annotation-editors/Hinted'
 import {CenteredLabel} from '../../../../components/Labels'

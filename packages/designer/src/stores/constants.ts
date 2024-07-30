@@ -1,4 +1,4 @@
-import {PanelPlacement} from '../features/ui/PanelPlacement'
+import type {PanelPlacement} from '../features/ui/PanelPlacement'
 
 export const defaultViewMode = 'desktop'
 export const defaultOpenedPanels: PanelPlacement[] = ['left', 'right']

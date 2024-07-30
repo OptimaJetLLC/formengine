@@ -1,5 +1,5 @@
-import {Meta} from './Meta'
-import {Model} from './Model'
+import type {Meta} from './Meta'
+import type {Model} from './Model'
 
 /**
  * Description of the React component that connects to the form builder.

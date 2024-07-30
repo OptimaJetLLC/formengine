@@ -2,7 +2,7 @@ import {namedObserver} from '@react-form-builder/core'
 import {assign} from 'lodash-es'
 import {FixedSelectPicker} from '../../../../../../../../../ui/FixedSelectPicker'
 import {useActionData} from '../../../../contexts/ActionDataContext'
-import {InputProps} from '../InputProps'
+import type {InputProps} from '../InputProps'
 
 const booleanData = [
   {label: 'True', value: 1},

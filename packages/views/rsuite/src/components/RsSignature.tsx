@@ -4,7 +4,8 @@ import {Button} from 'rsuite'
 import {alignItems, nonNegNumber, readOnly} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
 import {Rows} from './components/Layout'
-import {SignaturePad, SignaturePadHandle, SignaturePadProps} from './components/SignaturePad'
+import type {SignaturePadHandle, SignaturePadProps} from './components/SignaturePad'
+import {SignaturePad} from './components/SignaturePad'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
 interface RsSignatureProps extends SignaturePadProps {

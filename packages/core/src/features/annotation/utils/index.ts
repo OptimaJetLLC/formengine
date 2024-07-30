@@ -1,5 +1,5 @@
 import type {FirstParameter} from '../types'
-import {Annotation} from '../types/annotations/Annotation'
+import type {Annotation} from '../types/annotations/Annotation'
 import {ContainerAnnotation} from '../types/annotations/ContainerAnnotation'
 import {AnnotationBuilder} from './builders/AnnotationBuilder'
 

@@ -1,6 +1,6 @@
 import {saveAs} from 'file-saver'
 import JSZip from 'jszip'
-import {BuilderStore} from '../../../../stores/BuilderStore'
+import type {BuilderStore} from '../../../../stores/BuilderStore'
 
 const formExtension = '.json'
 

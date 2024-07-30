@@ -1,4 +1,5 @@
-import {clear, createStore, del, get, keys, set, UseStore} from 'idb-keyval'
+import type {UseStore} from 'idb-keyval'
+import {clear, createStore, del, get, keys, set} from 'idb-keyval'
 
 const indexedDbExists = !!window.indexedDB
 

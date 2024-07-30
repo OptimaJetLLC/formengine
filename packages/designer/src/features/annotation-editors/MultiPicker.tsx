@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {PropertyAnnotation} from '@react-form-builder/core'
+import type {PropertyAnnotation} from '@react-form-builder/core'
 import {startCase} from 'lodash-es'
 import {TagPicker} from 'rsuite'
 import type {ItemDataType} from 'rsuite/esm/internals/types'

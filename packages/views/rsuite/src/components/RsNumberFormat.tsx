@@ -1,7 +1,7 @@
 import {array, boolean, define, isString, number, oneOf, string} from '@react-form-builder/core'
 import type {NumericFormatProps} from 'react-number-format'
 import {NumericFormat} from 'react-number-format'
-import {InputProps} from 'rsuite'
+import type {InputProps} from 'rsuite'
 import {inputProps, nonNegNumber} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
 import {WrappedInput} from './components/WrappedInput'

@@ -59,6 +59,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/unbound-method': 'off',
+    '@typescript-eslint/consistent-type-imports': 'error',
     'import/no-extraneous-dependencies': ['error', {
       'devDependencies': false,
       'optionalDependencies': false,

@@ -1,4 +1,5 @@
-import {Annotation, ComponentDataProvider, namedObserver, useErrorModel} from '@react-form-builder/core'
+import type {Annotation} from '@react-form-builder/core'
+import {ComponentDataProvider, namedObserver, useErrorModel} from '@react-form-builder/core'
 import {useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Checkbox, Input} from 'rsuite'

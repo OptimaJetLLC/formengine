@@ -1,4 +1,4 @@
-import {ValidationMessages} from "../types/ValidationResult";
+import type {ValidationMessages} from "../types/ValidationResult";
 
 /**
  * Field with the form data.

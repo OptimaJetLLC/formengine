@@ -1,6 +1,5 @@
 import {createNonNullableContext} from '../../../utils/createNonNullableContext'
-
-import {FormViewerProps} from '../types'
+import type {FormViewerProps} from '../types'
 
 export const [
   /**

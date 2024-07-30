@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import {ErrorWrapperProps, namedObserver, WrapperProps} from '@react-form-builder/core'
+import type {ErrorWrapperProps, WrapperProps} from '@react-form-builder/core'
+import {namedObserver} from '@react-form-builder/core'
 import {useCallback, useEffect, useMemo, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps} from '../../annotation-editors/AnnotationEditorProps'

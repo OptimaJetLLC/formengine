@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import {define, oneOf, string} from '@react-form-builder/core'
 import type {ComponentProps} from 'react'
 import logo from '../../public/images/logo.png'
-import {AreaProps} from '../commonTypes'
+import type {AreaProps} from '../commonTypes'
 
 interface RsImageProps extends ComponentProps<'img'>, AreaProps {
 }

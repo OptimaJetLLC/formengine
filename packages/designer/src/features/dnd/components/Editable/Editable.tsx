@@ -1,9 +1,8 @@
 import {cx} from '@emotion/css'
+import type {ComponentData, ComponentStore, WrapperProps} from '@react-form-builder/core'
 import {
   checkSlotCondition,
-  ComponentData,
   ComponentState,
-  ComponentStore,
   ComponentTree,
   DefaultWrapper,
   groupBy,
@@ -13,11 +12,10 @@ import {
   slotModel,
   TemplateField,
   toArray,
-  useStore,
-  WrapperProps
+  useStore
 } from '@react-form-builder/core'
 import {useDragLayer} from 'react-dnd'
-import {BuilderStore} from '../../../../stores/BuilderStore'
+import type {BuilderStore} from '../../../../stores/BuilderStore'
 import {Draggable} from './components/Draggable'
 import {DropZone} from './components/DropZone'
 import {Toolbar} from './components/Toolbar'

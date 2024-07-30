@@ -2,7 +2,7 @@ import {namedObserver} from '@react-form-builder/core'
 import {assign} from 'lodash-es'
 import {InputGroup, InputNumber as RInputNumber} from 'rsuite'
 import {useActionData} from '../../../../contexts/ActionDataContext'
-import {InputProps} from '../InputProps'
+import type {InputProps} from '../InputProps'
 
 const RawInputNumber = ({name}: InputProps) => {
   const data = useActionData()

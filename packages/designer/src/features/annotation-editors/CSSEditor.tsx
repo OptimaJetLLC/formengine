@@ -1,10 +1,12 @@
 import styled from '@emotion/styled'
-import {CssPart, namedObserver, useComponentData} from '@react-form-builder/core'
+import type {CssPart} from '@react-form-builder/core'
+import {namedObserver, useComponentData} from '@react-form-builder/core'
 import {useEffect, useMemo, useState} from 'react'
-import {Device} from '../../utils/types'
+import type {Device} from '../../utils/types'
 import {CodeEditor} from '../components/CodeEditor/CodeEditor'
 import {Rows} from '../components/Containers'
-import {RadioButtons, RadioButtonsProps} from '../components/RadioButtons'
+import type {RadioButtonsProps} from '../components/RadioButtons'
+import {RadioButtons} from '../components/RadioButtons'
 import {useTranslationPart} from '../localization/hooks'
 
 /**

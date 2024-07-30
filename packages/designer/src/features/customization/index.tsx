@@ -1,4 +1,5 @@
-import {css, CSSInterpolation, cx} from '@emotion/css'
+import type {CSSInterpolation} from '@emotion/css'
+import {css, cx} from '@emotion/css'
 import {observer} from 'mobx-react'
 import type {ComponentType, CSSProperties, ReactElement} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'

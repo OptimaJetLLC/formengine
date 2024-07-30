@@ -8,7 +8,8 @@ import {
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
 import {BiDi, BuilderView} from '@react-form-builder/core'
-import {FormBuilder, FormBuilderProps} from '@react-form-builder/designer'
+import type {FormBuilderProps} from '@react-form-builder/designer'
+import {FormBuilder} from '@react-form-builder/designer'
 import {createElement} from 'react'
 // eslint-disable-next-line import/extensions
 import {createRoot} from 'react-dom/client'

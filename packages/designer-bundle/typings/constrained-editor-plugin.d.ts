@@ -4,7 +4,7 @@ declare module 'constrained-editor-plugin' {
   // eslint-disable-next-line import/no-extraneous-dependencies
   import type {Monaco} from '@monaco-editor/react'
   // eslint-disable-next-line import/no-extraneous-dependencies
-  import {editor, Range} from 'monaco-editor'
+  import type {editor, Range} from 'monaco-editor'
 
   /**
    * The range of the editable area, all numbers must be positive integers.

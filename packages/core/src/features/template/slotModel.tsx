@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {Store} from '../../stores/Store'
+import type {Store} from '../../stores/Store'
 import {namedObserver} from '../../utils'
 import {ComponentDataProvider, useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {StoreProvider, useStore} from '../../utils/contexts/StoreContext'

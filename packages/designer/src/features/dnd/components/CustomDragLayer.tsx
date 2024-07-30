@@ -1,6 +1,7 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {useDragLayer, XYCoord} from 'react-dnd'
+import type {XYCoord} from 'react-dnd'
+import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 
 function getItemStyles(

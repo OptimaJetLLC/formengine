@@ -1,5 +1,6 @@
-import {filter, Observable, Observer} from 'rxjs'
-import {ActionEventArgs} from './ActionEventArgs'
+import type {Observable, Observer} from 'rxjs'
+import {filter} from 'rxjs'
+import type {ActionEventArgs} from './ActionEventArgs'
 
 /**
  * The event stream of the form viewer.

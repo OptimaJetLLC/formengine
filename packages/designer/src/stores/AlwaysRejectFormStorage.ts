@@ -1,4 +1,4 @@
-import {IFormStorage} from './IFormStorage'
+import type {IFormStorage} from './IFormStorage'
 
 /**
  * The external form storage that always returns an error.

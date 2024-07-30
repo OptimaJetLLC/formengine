@@ -1,4 +1,4 @@
-import {IconDefinition} from '@fortawesome/fontawesome-common-types'
+import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faCheck from '@fortawesome/free-solid-svg-icons/faCheck.js'
 import {namedObserver, useStore} from '@react-form-builder/core'
 import type {KeyboardEvent} from 'react'

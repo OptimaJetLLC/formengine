@@ -1,4 +1,5 @@
-import {createAnnotation, ValidationRuleParameter} from '@react-form-builder/core'
+import type {ValidationRuleParameter} from '@react-form-builder/core'
+import {createAnnotation} from '@react-form-builder/core'
 
 /**
  * Converts a ValidationRuleParameter to an annotation.

@@ -1,7 +1,7 @@
 import {AsyncFunction, CalculableResult, namedObserver} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {useTranslation} from 'react-i18next'
-import {CustomValidationCode} from '../../../stores/BuilderStore'
+import type {CustomValidationCode} from '../../../stores/BuilderStore'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {GenericCodeEditor} from '../../calculation/GenericCodeEditor'
 import {Header} from './Header'

@@ -1,4 +1,4 @@
-import {ActionData, Annotation} from '@react-form-builder/core'
+import type {ActionData, Annotation} from '@react-form-builder/core'
 import type {ComponentProps} from 'react'
 
 /**

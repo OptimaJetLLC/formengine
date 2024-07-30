@@ -1,7 +1,7 @@
 import {namedObserver, oneOf, useStore} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
-import {AnnotationEditorProps} from '../../../annotation-editors/AnnotationEditorProps'
+import type {AnnotationEditorProps} from '../../../annotation-editors/AnnotationEditorProps'
 import {Picker} from '../../../annotation-editors/Picker'
 
 const RawErrorComponentPicker = () => {

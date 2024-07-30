@@ -1,5 +1,5 @@
 import type {ReactNode} from 'react'
-import {Annotation} from '../../annotation/types/annotations/Annotation'
+import type {Annotation} from '../../annotation/types/annotations/Annotation'
 import type {ComponentKind} from '../types'
 
 /**

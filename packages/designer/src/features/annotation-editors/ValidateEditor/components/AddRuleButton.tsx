@@ -1,4 +1,5 @@
-import {namedObserver, SchemaType, useComponentData, useStore, ValidatorType} from '@react-form-builder/core'
+import type {SchemaType, ValidatorType} from '@react-form-builder/core'
+import {namedObserver, useComponentData, useStore} from '@react-form-builder/core'
 import {useTranslation} from 'react-i18next'
 import {Button, Dropdown} from 'rsuite'
 import type {DropdownProps} from 'rsuite/esm/Dropdown/Dropdown'

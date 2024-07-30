@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import {ComponentData, namedObserver} from '@react-form-builder/core'
+import type {ComponentData} from '@react-form-builder/core'
+import {namedObserver} from '@react-form-builder/core'
 import {Modal} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {useTranslationPart} from '../../localization/hooks'

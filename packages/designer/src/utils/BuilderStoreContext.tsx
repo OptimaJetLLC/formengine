@@ -1,5 +1,5 @@
 import {createNonNullableContext} from '@react-form-builder/core'
-import {BuilderStore} from '../stores/BuilderStore'
+import type {BuilderStore} from '../stores/BuilderStore'
 
 const [
   /**

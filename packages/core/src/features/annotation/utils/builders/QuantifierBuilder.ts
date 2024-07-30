@@ -1,6 +1,6 @@
 import {startCase} from 'lodash-es'
-import {Annotation} from '../../types/annotations/Annotation'
-import {PropertyAnnotation} from '../../types/annotations/PropertyAnnotation'
+import type {Annotation} from '../../types/annotations/Annotation'
+import type {PropertyAnnotation} from '../../types/annotations/PropertyAnnotation'
 import {TypedBuilder} from './TypedBuilder'
 
 /**

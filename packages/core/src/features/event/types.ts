@@ -1,4 +1,4 @@
-import {KeySymbol} from '../../consts'
+import type {KeySymbol} from '../../consts'
 import {AsyncFunction} from '../../utils/AsyncFunction'
 
 /**

@@ -1,7 +1,7 @@
 import {boolean, define, string} from '@react-form-builder/core'
 import type {PatternFormatProps} from 'react-number-format'
 import {PatternFormat} from 'react-number-format'
-import {InputProps} from 'rsuite'
+import type {InputProps} from 'rsuite'
 import {inputProps} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
 import {WrappedInput} from './components/WrappedInput'

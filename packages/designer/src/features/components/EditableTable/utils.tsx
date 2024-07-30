@@ -1,5 +1,5 @@
 import {upperFirst} from 'lodash-es'
-import {ComponentType} from 'react'
+import type {ComponentType} from 'react'
 import {Table} from 'rsuite'
 import {InputCell} from './CustomCells'
 

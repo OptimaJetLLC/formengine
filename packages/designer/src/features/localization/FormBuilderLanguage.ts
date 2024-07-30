@@ -1,4 +1,4 @@
-import {Language} from '@react-form-builder/core'
+import type {Language} from '@react-form-builder/core'
 
 /**
  * Data required to translate the form builder interface.

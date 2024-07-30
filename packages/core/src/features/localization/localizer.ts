@@ -1,12 +1,13 @@
 import {FluentBundle, FluentResource} from '@fluent/bundle'
 import type {FluentVariable} from '@fluent/bundle/esm/bundle'
-import {ComponentStore, isLocalizedProperty} from '../../stores/ComponentStore'
-import {Form} from '../../stores/Form'
+import type {ComponentStore} from '../../stores/ComponentStore'
+import {isLocalizedProperty} from '../../stores/ComponentStore'
+import type {Form} from '../../stores/Form'
 import type {LocalizationType} from '../../stores/LocalizationStore'
 import {CalculableResult} from '../../utils/CalculableResult'
 import {getValidatorPropertyBlockType} from '../ui/PropertyBlockType'
 import {getFluentCompatibleId} from './getFluentCompatibleId'
-import {Language} from './types'
+import type {Language} from './types'
 
 /**
  * Localization testing request.

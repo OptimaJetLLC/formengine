@@ -1,6 +1,7 @@
 import * as rSuiteComponents from '@react-form-builder/components-rsuite'
 import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader, view} from '@react-form-builder/components-rsuite'
-import {BiDi, FormViewer, FormViewerProps} from '@react-form-builder/core'
+import type {FormViewerProps} from '@react-form-builder/core'
+import {BiDi, FormViewer} from '@react-form-builder/core'
 import {createElement} from 'react'
 // eslint-disable-next-line import/extensions
 import {createRoot} from 'react-dom/client'

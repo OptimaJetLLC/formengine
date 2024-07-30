@@ -1,4 +1,5 @@
-import {ActionData, NamedActionDefinition, namedObserver, useStore} from '@react-form-builder/core'
+import type {ActionData, NamedActionDefinition} from '@react-form-builder/core'
+import {namedObserver, useStore} from '@react-form-builder/core'
 import {ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../../../../../utils/BuilderStoreContext'
 import {EditButton, RemoveButton} from '../../../../../components/Buttons'

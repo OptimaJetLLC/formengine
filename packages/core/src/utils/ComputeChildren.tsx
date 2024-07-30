@@ -1,4 +1,4 @@
-import {ComponentData} from './contexts/ComponentDataContext'
+import type {ComponentData} from './contexts/ComponentDataContext'
 
 /**
  * Function that calculates all child properties of a component. **Internal use only.**

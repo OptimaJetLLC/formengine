@@ -1,4 +1,4 @@
-import {EventHandler} from 'react'
+import type {EventHandler} from 'react'
 
 /**
  * Cancels the event if it is cancelable. **Internal use only.**

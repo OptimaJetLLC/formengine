@@ -2,7 +2,7 @@ import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {useComponentData} from '@react-form-builder/core'
 import {Plus as PlusIcon} from '@rsuite/icons'
-import {ComponentProps} from 'react'
+import type {ComponentProps} from 'react'
 import {IconButton} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 

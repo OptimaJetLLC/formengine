@@ -1,4 +1,4 @@
-import {Annotation, ComponentData, ComponentPropertyComputeType} from '@react-form-builder/core'
+import type {Annotation, ComponentData, ComponentPropertyComputeType} from '@react-form-builder/core'
 
 /**
  * Localization compute parameters.

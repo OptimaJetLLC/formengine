@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {Device} from '../../../../../utils/types'
+import type {Device} from '../../../../../utils/types'
 import {useTranslationPart} from '../../../../localization/hooks'
 import {FixedSelectPicker} from '../../../FixedSelectPicker'
 

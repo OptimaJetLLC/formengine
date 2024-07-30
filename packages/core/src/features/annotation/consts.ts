@@ -1,5 +1,5 @@
-import {AnnotationType} from './types'
-import {Annotation} from './types/annotations/Annotation'
+import type {AnnotationType} from './types'
+import type {Annotation} from './types/annotations/Annotation'
 import {ContainerAnnotation} from './types/annotations/ContainerAnnotation'
 import {EventAnnotation} from './types/annotations/EventAnnotation'
 import {ModuleAnnotation} from './types/annotations/ModuleAnnotation'

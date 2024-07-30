@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
-import {CalculableCodeEditorProps} from '../../calculation/CalculableCodeEditor'
+import type {CalculableCodeEditorProps} from '../../calculation/CalculableCodeEditor'
 import {Rows} from '../../components/Containers'
 
 /**

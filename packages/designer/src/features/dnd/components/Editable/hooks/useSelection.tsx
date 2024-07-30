@@ -1,6 +1,7 @@
 import {cx} from '@emotion/css'
 import {useComponentData} from '@react-form-builder/core'
-import {MouseEvent, useCallback, useMemo, useState} from 'react'
+import type {MouseEvent} from 'react'
+import {useCallback, useMemo, useState} from 'react'
 import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {stopEvent} from '../../../../../utils/stopEvent'

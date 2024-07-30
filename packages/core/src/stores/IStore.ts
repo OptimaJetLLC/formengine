@@ -1,7 +1,7 @@
 import type {ValidationResult} from '../features/validation/types/ValidationResult'
-import {ComponentData} from '../utils/contexts/ComponentDataContext'
-import {ComponentStore} from './ComponentStore'
-import {Form} from './Form'
+import type {ComponentData} from '../utils/contexts/ComponentDataContext'
+import type {ComponentStore} from './ComponentStore'
+import type {Form} from './Form'
 
 /**
  * The form viewer settings interface.

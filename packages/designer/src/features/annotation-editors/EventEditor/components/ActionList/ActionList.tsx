@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import {ActionData, KeySymbol, namedObserver} from '@react-form-builder/core'
+import type {ActionData} from '@react-form-builder/core'
+import {KeySymbol, namedObserver} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {List} from 'rsuite'
 import {listItemStyle, listStyle} from '../../../../components/Containers'

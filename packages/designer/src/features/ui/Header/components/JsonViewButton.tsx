@@ -1,5 +1,6 @@
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
-import {ComponentProps, useState} from 'react'
+import type {ComponentProps} from 'react'
+import {useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {IconButton, Modal, Tooltip, Whisper} from 'rsuite'
 import {FaIcon} from '../../../components/Icons'

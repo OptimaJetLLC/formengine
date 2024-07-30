@@ -6,7 +6,7 @@ import {SuppressResizeObserverErrors} from '../ui/SuppressResizeObserverErrors'
 import {Viewer} from './components/Viewer'
 import {ViewerStoreProvider} from './components/ViewerStoreProvider'
 import './setupMobx'
-import {FormViewerProps} from './types'
+import type {FormViewerProps} from './types'
 
 //No other code here
 /**

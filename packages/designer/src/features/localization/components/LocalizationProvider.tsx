@@ -1,6 +1,7 @@
 import {CacheProvider} from '@emotion/react'
 import {BiDi, emotionCache, loadResource, namedObserver, unloadResource} from '@react-form-builder/core'
-import {ReactNode, useEffect} from 'react'
+import type {ReactNode} from 'react'
+import {useEffect} from 'react'
 import {CustomProvider} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {defaultComponentsLocale} from '../languageUtils'

@@ -1,4 +1,5 @@
-import {NamedActionDefinition, namedObserver, useStore} from '@react-form-builder/core'
+import type {NamedActionDefinition} from '@react-form-builder/core'
+import {namedObserver, useStore} from '@react-form-builder/core'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'

@@ -1,12 +1,13 @@
 import {CacheProvider} from '@emotion/react'
 import styled from '@emotion/styled'
-import {ComponentType, ReactNode, useEffect} from 'react'
+import type {ComponentType, ReactNode} from 'react'
+import {useEffect} from 'react'
 import {namedObserver} from '../../utils'
 import {useStore} from '../../utils/contexts/StoreContext'
 import type {FormViewerWrapperComponentProps} from '../define/utils/View'
 import {BiDi} from './bidi'
 import {emotionCache} from './emotionCache'
-import {Language} from './types'
+import type {Language} from './types'
 
 interface ViewerLocalizationProviderProps {
   children: ReactNode,

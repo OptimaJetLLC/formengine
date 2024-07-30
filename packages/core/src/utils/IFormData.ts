@@ -1,4 +1,4 @@
-import {ValidationMessages} from '../features/validation/types/ValidationResult'
+import type {ValidationMessages} from '../features/validation/types/ValidationResult'
 
 /**
  * The interface for accessing the form data.

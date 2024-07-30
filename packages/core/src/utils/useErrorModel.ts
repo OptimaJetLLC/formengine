@@ -1,7 +1,8 @@
 import {useMemo} from 'react'
 import {Model} from '../features/define'
 import {useViewerProps} from '../features/form-viewer/components/ViewerPropsContext'
-import {errorMessageModel, ErrorWrapperProps} from '../features/validation/components/DefaultErrorMessage'
+import type {ErrorWrapperProps} from '../features/validation/components/DefaultErrorMessage'
+import {errorMessageModel} from '../features/validation/components/DefaultErrorMessage'
 import {useStore} from './contexts/StoreContext'
 
 /**

@@ -1,5 +1,6 @@
 import {array, define, event, oneOf, string} from '@react-form-builder/core'
-import {Breadcrumb, BreadcrumbProps} from 'rsuite'
+import type {BreadcrumbProps} from 'rsuite'
+import {Breadcrumb} from 'rsuite'
 import {nonNegNumber} from '../commonProperties'
 import {CheckCell} from './components/CheckCell'
 import {InputCell} from './components/InputCell'

@@ -2,9 +2,10 @@ import styled from '@emotion/styled'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
 import {Plus as PlusIcon, SortDown, SortUp} from '@rsuite/icons'
 import {useRef} from 'react'
-import {ButtonGroup, IconButton, Popover, Whisper, WhisperInstance} from 'rsuite'
+import type {WhisperInstance} from 'rsuite'
+import {ButtonGroup, IconButton, Popover, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
-import {InsertPosition} from '../../../../../utils/types'
+import type {InsertPosition} from '../../../../../utils/types'
 import {useTranslationPart} from '../../../../localization/hooks'
 
 const RawAddButton = () => {

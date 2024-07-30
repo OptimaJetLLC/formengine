@@ -1,4 +1,4 @@
-import {BaseBuilder} from './BaseBuilder'
+import type {BaseBuilder} from './BaseBuilder'
 
 /**
  * The type-safe description of the component's metadata property builders.

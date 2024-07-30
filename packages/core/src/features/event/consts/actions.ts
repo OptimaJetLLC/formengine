@@ -1,4 +1,5 @@
-import {ActionDefinition, ActionValues} from '../types'
+import type {ActionValues} from '../types'
+import {ActionDefinition} from '../types'
 
 export const commonActions: ActionValues = {
   // eslint-disable-next-line no-console

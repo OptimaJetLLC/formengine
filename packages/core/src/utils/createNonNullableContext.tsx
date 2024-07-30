@@ -1,4 +1,5 @@
-import {Context, createContext, Provider, useContext} from 'react'
+import type {Context, Provider} from 'react'
+import {createContext, useContext} from 'react'
 
 /**
  * Creates non-nullable React context. **Internal use only.**

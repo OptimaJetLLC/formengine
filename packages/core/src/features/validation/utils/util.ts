@@ -1,4 +1,4 @@
-import {ComponentStore} from '../../../stores/ComponentStore'
+import type {ComponentStore} from '../../../stores/ComponentStore'
 
 /**
  * Returns true if the component's data should be stored in the parent form's data, otherwise, false.

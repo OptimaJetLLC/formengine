@@ -1,10 +1,10 @@
-import {Annotation} from '../../annotation/types/annotations/Annotation'
+import type {Annotation} from '../../annotation/types/annotations/Annotation'
 import {internalErrorMeta} from '../../components/internalErrorMeta'
 import {screenMeta} from '../../components/screenMeta'
 import {createTemplateMeta, createTemplateModel, slotMeta, slotModel} from '../../template'
 import {errorMessageMeta} from '../../validation/errorMessageMeta'
-import {BuilderComponent} from './BuilderComponent'
-import {Meta} from './Meta'
+import type {BuilderComponent} from './BuilderComponent'
+import type {Meta} from './Meta'
 import {View} from './View'
 
 const templatesCategoryName = 'templates'

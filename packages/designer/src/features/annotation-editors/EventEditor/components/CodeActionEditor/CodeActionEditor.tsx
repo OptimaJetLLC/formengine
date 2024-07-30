@@ -1,15 +1,10 @@
 import styled from '@emotion/styled'
-import {
-  ActionDefinition,
-  ActionParameters,
-  AsyncFunction,
-  CalculableResult,
-  NamedActionDefinition,
-  useStore
-} from '@react-form-builder/core'
+import type {ActionParameters, NamedActionDefinition} from '@react-form-builder/core'
+import {ActionDefinition, AsyncFunction, CalculableResult, useStore} from '@react-form-builder/core'
 import {useEffect, useMemo, useRef, useState} from 'react'
 import {useTranslation} from 'react-i18next'
-import {Form, FormInstance, Schema} from 'rsuite'
+import type {FormInstance} from 'rsuite'
+import {Form, Schema} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {GenericCodeEditor} from '../../../../calculation/GenericCodeEditor'
 import {Columns, Rows} from '../../../../components/Containers'

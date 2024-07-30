@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {IconDefinition} from '@fortawesome/fontawesome-common-types'
+import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faRedo from '@fortawesome/free-solid-svg-icons/faRedo.js'
 import * as faSave from '@fortawesome/free-solid-svg-icons/faSave.js'
 import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo.js'

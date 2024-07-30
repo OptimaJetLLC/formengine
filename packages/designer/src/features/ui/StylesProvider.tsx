@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import {namedObserver} from '@react-form-builder/core'
-import {ComponentProps} from 'react'
+import type {ComponentProps} from 'react'
 
 const builderClassName = 'optimajet-formbuilder'
 

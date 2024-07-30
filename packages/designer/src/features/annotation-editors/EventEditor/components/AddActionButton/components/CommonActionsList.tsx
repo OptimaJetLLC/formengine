@@ -1,7 +1,7 @@
 import {useStore} from '@react-form-builder/core'
 import {Dropdown} from 'rsuite'
 import {useTranslationPart} from '../../../../../localization/hooks'
-import {ActionsMenuProps} from '../types'
+import type {ActionsMenuProps} from '../types'
 
 /**
  * React form builder component that displays the list of common actions.

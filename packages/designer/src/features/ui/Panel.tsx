@@ -2,10 +2,10 @@ import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {namedObserver} from '@react-form-builder/core'
 import {ArrowDownLine} from '@rsuite/icons'
-import {PropsWithChildren} from 'react'
+import type {PropsWithChildren} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
-import {PanelPlacement} from './PanelPlacement'
+import type {PanelPlacement} from './PanelPlacement'
 
 interface CollapsedSizeProps {
   collapsedSize?: number

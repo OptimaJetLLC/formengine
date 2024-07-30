@@ -1,6 +1,6 @@
 import {faMarker} from '@fortawesome/free-solid-svg-icons'
 import {Close, Copy} from '@rsuite/icons'
-import {ComponentProps} from 'react'
+import type {ComponentProps} from 'react'
 import {HintedIconButton} from '../annotation-editors/Hinted'
 import {useTranslationPart} from '../localization/hooks'
 import {FaIcon} from './Icons'

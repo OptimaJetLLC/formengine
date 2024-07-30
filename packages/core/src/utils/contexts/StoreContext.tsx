@@ -1,4 +1,4 @@
-import {Store} from '../../stores/Store'
+import type {Store} from '../../stores/Store'
 import {createNonNullableContext} from '../createNonNullableContext'
 
 export const [

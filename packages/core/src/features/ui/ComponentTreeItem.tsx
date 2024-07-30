@@ -1,5 +1,6 @@
 import {namedObserver} from '../../utils'
-import {ComponentData, ComponentDataProvider} from '../../utils/contexts/ComponentDataContext'
+import type {ComponentData} from '../../utils/contexts/ComponentDataContext'
+import {ComponentDataProvider} from '../../utils/contexts/ComponentDataContext'
 import {ComponentViewer} from './ComponentViewer'
 
 /**

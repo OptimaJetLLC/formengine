@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import {namedObserver, SuppressResizeObserverErrors} from '@react-form-builder/core'
-import {ComponentProps, Suspense} from 'react'
+import type {ComponentProps} from 'react'
+import {Suspense} from 'react'
 import {Loader} from 'rsuite'
 import {customizableObserver} from './features/customization'
 import {BottomPanel} from './features/ui/BottomPanel'
@@ -10,7 +11,7 @@ import {ComponentsModal} from './features/ui/ComponentBar/ComponentsModal'
 import {LeftPanel} from './features/ui/LeftPanel'
 import {PromptDialog} from './features/ui/PromptDialog'
 import {RightPanel} from './features/ui/RightPanel'
-import {FormBuilderProps} from './FormBuilderProps'
+import type {FormBuilderProps} from './FormBuilderProps'
 
 /**
  * The React component that displays the form builder.

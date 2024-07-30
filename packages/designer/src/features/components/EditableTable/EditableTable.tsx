@@ -1,8 +1,10 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {Close, Plus} from '@rsuite/icons'
-import {cloneElement, FormEventHandler, useCallback, useEffect, useState} from 'react'
-import {Button, Form, Table, TableProps} from 'rsuite'
+import type {FormEventHandler} from 'react'
+import {cloneElement, useCallback, useEffect, useState} from 'react'
+import type {TableProps} from 'rsuite'
+import {Button, Form, Table} from 'rsuite'
 import type {RowDataType} from 'rsuite-table/lib'
 import {ActionCell} from './CustomCells'
 

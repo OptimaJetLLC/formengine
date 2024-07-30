@@ -1,4 +1,5 @@
-import {DataValidator, ErrorMessageLocalizer, IStore, SchemaResolver, Setter} from '@react-form-builder/core'
+import type {ErrorMessageLocalizer, IStore, SchemaResolver, Setter} from '@react-form-builder/core'
+import {DataValidator} from '@react-form-builder/core'
 import {useEffect, useMemo} from 'react'
 
 /**

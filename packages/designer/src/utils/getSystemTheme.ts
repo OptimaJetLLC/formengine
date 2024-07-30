@@ -1,4 +1,4 @@
-import {BuilderTheme} from './types'
+import type {BuilderTheme} from './types'
 
 /**
  * @returns the {@link BuilderTheme} from the current browser settings.

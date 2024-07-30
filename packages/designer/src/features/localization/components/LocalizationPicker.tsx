@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import {Language, namedObserver} from '@react-form-builder/core'
+import type {Language} from '@react-form-builder/core'
+import {namedObserver} from '@react-form-builder/core'
 import {toUpper} from 'lodash-es'
 import {useCallback, useMemo} from 'react'
 import type {ItemDataType} from 'rsuite/esm/internals/types'

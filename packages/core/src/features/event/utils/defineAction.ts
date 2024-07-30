@@ -1,5 +1,5 @@
-import {ActionDefinition, ParameterType} from '../types'
-import {ActionEventArgs} from './ActionEventArgs'
+import type {ActionDefinition, ParameterType} from '../types'
+import type {ActionEventArgs} from './ActionEventArgs'
 
 /**
  * The defineAction helper type. **Internal use only.**

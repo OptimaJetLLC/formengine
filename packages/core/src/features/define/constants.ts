@@ -1,5 +1,5 @@
 import {event, htmlAttributes, renderWhen, tooltipProps, validation} from '../annotation'
-import {Annotation} from '../annotation/types/annotations/Annotation'
+import type {Annotation} from '../annotation/types/annotations/Annotation'
 import {DidMountEvent, WillUnmountEvent} from '../event'
 
 /**

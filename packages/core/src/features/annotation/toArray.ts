@@ -1,6 +1,6 @@
 import {reduce} from 'lodash-es'
 import {string} from './index'
-import {Annotation} from './types/annotations/Annotation'
+import type {Annotation} from './types/annotations/Annotation'
 import type {Annotations} from './utils/builders/Annotations'
 import type {BuilderSetup} from './utils/builders/BaseBuilder'
 

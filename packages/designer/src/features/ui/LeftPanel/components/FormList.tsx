@@ -1,4 +1,5 @@
-import {ComponentProps, useCallback, useEffect, useMemo, useState} from 'react'
+import type {ComponentProps} from 'react'
+import {useCallback, useEffect, useMemo, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'

@@ -1,8 +1,9 @@
 import styled from '@emotion/styled'
-import {boolean, namedObserver, ValidationRuleSettings} from '@react-form-builder/core'
+import type {ValidationRuleSettings} from '@react-form-builder/core'
+import {boolean, namedObserver} from '@react-form-builder/core'
 import {List, ListItem, Rows} from '../../components/Containers'
 import {PropertyEditorWrapper} from '../../components/PropertyEditorWrapper'
-import {AnnotationEditorProps} from '../AnnotationEditorProps'
+import type {AnnotationEditorProps} from '../AnnotationEditorProps'
 import {AddRuleButton} from './components/AddRuleButton'
 import {ValidationRuleEditor} from './components/ValidationRuleEditor'
 

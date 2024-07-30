@@ -1,6 +1,7 @@
 import {css} from '@emotion/css'
 import styled from '@emotion/styled'
-import {ComponentData, ComponentDataProvider, ComponentStore, getKey, Model, useStore} from '@react-form-builder/core'
+import type {ComponentData, Model} from '@react-form-builder/core'
+import {ComponentDataProvider, ComponentStore, getKey, useStore} from '@react-form-builder/core'
 import {useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {AddedComponent} from '../../dnd'

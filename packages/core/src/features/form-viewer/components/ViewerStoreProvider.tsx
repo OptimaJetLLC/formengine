@@ -1,4 +1,5 @@
-import {ReactNode, useCallback, useContext, useEffect, useImperativeHandle} from 'react'
+import type {ReactNode} from 'react'
+import {useCallback, useContext, useEffect, useImperativeHandle} from 'react'
 import {FormViewerPropsStore} from '../../../stores/FormViewerPropsStore'
 import {Store} from '../../../stores/Store'
 import {namedObserver} from '../../../utils'

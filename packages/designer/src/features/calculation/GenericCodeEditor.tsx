@@ -6,7 +6,8 @@ import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
 import {CodeEditor} from '../components/CodeEditor/CodeEditor'
 import {Columns, Rows} from '../components/Containers'
-import {TestingEditor, TestingEditorRef, TestRunner} from '../ui/BottomPanel/TestingEditor'
+import type {TestingEditorRef} from '../ui/BottomPanel/TestingEditor'
+import {TestingEditor, TestRunner} from '../ui/BottomPanel/TestingEditor'
 
 /**
  * Properties of the React component {@link GenericCodeEditor}.

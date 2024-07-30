@@ -1,10 +1,11 @@
 import {makeAutoObservable} from 'mobx'
-import {ActionData, ActionDefinition, ActionValues, NamedActionDefinition} from '../features/event'
-import {Language} from '../features/localization/types'
-import {ComponentData} from '../utils/contexts/ComponentDataContext'
+import type {ActionData, ActionValues, NamedActionDefinition} from '../features/event'
+import {ActionDefinition} from '../features/event'
+import type {Language} from '../features/localization/types'
+import type {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {generateUniqueName} from '../utils/generateUniqueName'
-import {ComponentStore} from './ComponentStore'
-import {LocalizationStore} from './LocalizationStore'
+import type {ComponentStore} from './ComponentStore'
+import type {LocalizationStore} from './LocalizationStore'
 
 /**
  * Represents a form that is rendered in Viewer or edited in Builder.

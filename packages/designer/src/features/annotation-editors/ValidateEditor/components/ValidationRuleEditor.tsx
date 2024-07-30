@@ -1,12 +1,6 @@
 import styled from '@emotion/styled'
-import {
-  getValidatorPropertyBlockType,
-  namedObserver,
-  SchemaType,
-  useComponentData,
-  useStore,
-  ValidationRuleSettings
-} from '@react-form-builder/core'
+import type {SchemaType, ValidationRuleSettings} from '@react-form-builder/core'
+import {getValidatorPropertyBlockType, namedObserver, useComponentData, useStore} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {useTranslation} from 'react-i18next'
 import {RemoveButton} from '../../../components/Buttons'

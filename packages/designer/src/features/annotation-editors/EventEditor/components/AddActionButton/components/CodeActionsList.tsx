@@ -3,7 +3,7 @@ import {Plus as PlusIcon} from '@rsuite/icons'
 import {Divider, Dropdown} from 'rsuite'
 import {useBuilderStore} from '../../../../../../utils/BuilderStoreContext'
 import {useTranslationPart} from '../../../../../localization/hooks'
-import {ActionsMenuProps} from '../types'
+import type {ActionsMenuProps} from '../types'
 
 /**
  * React form builder component that displays the list of code actions.

@@ -1,11 +1,11 @@
 import type {ParameterType} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
-import {ComponentType} from 'react'
+import type {ComponentType} from 'react'
 import {Rows} from '../../../../../../../../components/Containers'
 import {InputBoolean} from './components/InputBoolean'
 import {InputNumber} from './components/InputNumber'
 import {InputString} from './components/InputString'
-import {InputProps} from './InputProps'
+import type {InputProps} from './InputProps'
 import type {Parameter} from './Parameter'
 
 const getArgumentInputByType = (type: ParameterType): ComponentType<InputProps> => {

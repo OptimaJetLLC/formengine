@@ -1,4 +1,5 @@
-import {BuilderComponent, BuilderView, nameObservable} from '@react-form-builder/core'
+import type {BuilderComponent} from '@react-form-builder/core'
+import {BuilderView, nameObservable} from '@react-form-builder/core'
 import {makeAutoObservable} from 'mobx'
 import type {IFormStorage} from './IFormStorage'
 

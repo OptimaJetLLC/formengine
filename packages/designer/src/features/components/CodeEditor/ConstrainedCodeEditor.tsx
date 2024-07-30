@@ -1,5 +1,6 @@
 import type {OnMount} from '@monaco-editor/react'
-import {constrainedEditor, ConstrainedMonacoEditorModel, RangeRestrictionObject} from 'constrained-editor-plugin'
+import type {ConstrainedMonacoEditorModel, RangeRestrictionObject} from 'constrained-editor-plugin'
+import {constrainedEditor} from 'constrained-editor-plugin'
 import type {editor} from 'monaco-editor'
 import {useCallback, useEffect, useMemo, useRef} from 'react'
 import type {CodeEditorProps} from './CodeEditorProps'

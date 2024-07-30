@@ -1,4 +1,4 @@
-import {LabeledValue} from '../../utils/LabeledValue'
+import type {LabeledValue} from '../../utils/LabeledValue'
 import {Annotation} from './Annotation'
 
 /**

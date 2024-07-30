@@ -1,8 +1,8 @@
 import {assign} from 'lodash-es'
 import {makeAutoObservable} from 'mobx'
 import {KeySymbol} from '../consts'
-import {ActionData, EventName} from '../features/event'
-import {Css} from '../features/style/types'
+import type {ActionData, EventName} from '../features/event'
+import type {Css} from '../features/style/types'
 import type {BoundValueSchema} from '../features/validation'
 import {nameObservable} from '../utils/observableNaming'
 

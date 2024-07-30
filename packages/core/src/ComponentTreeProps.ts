@@ -1,4 +1,4 @@
-import {ComponentData} from './utils/contexts/ComponentDataContext'
+import type {ComponentData} from './utils/contexts/ComponentDataContext'
 
 /**
  * Properties of a form component tree element.

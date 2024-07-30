@@ -1,4 +1,4 @@
-import {ActionEventArgs} from './utils/ActionEventArgs'
+import type {ActionEventArgs} from './utils/ActionEventArgs'
 
 /**
  * Event handler function type.

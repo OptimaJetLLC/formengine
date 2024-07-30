@@ -1,10 +1,11 @@
-import {createElement, ReactNode, useCallback} from 'react'
+import type {ReactNode} from 'react'
+import {createElement, useCallback} from 'react'
 import {namedObserver} from '../../utils'
 import {useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {useTooltipType} from '../../utils/useTooltipType'
 import {useWrapperState} from '../../utils/useWrapperState'
-import {Model} from '../define'
+import type {Model} from '../define'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 
 /**

@@ -1,7 +1,7 @@
 import {boolean, define, event, node, oneOf, string} from '@react-form-builder/core'
 import type {ComponentProps} from 'react'
 import {textStyles} from '../commonProperties'
-import {TextProps} from '../commonTypes'
+import type {TextProps} from '../commonTypes'
 
 interface RsLinkProps extends ComponentProps<'a'>, TextProps {
   text: string

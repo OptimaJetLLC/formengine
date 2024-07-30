@@ -1,16 +1,16 @@
 import {autorun, makeAutoObservable, observable, untracked} from 'mobx'
-import {ComponentStore} from '../../../stores/ComponentStore'
+import type {ComponentStore} from '../../../stores/ComponentStore'
 import type {FormViewerValidationRules} from '../../../stores/FormViewerValidationRules'
 import type {IStore} from '../../../stores/IStore'
 import {needRender} from '../../../utils/needRender'
 import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
-import {Model} from '../../define'
+import type {Model} from '../../define'
 import type {SchemaType} from '../types/SchemaType'
+import type {ValidationMessages} from '../types/ValidationResult'
 import {autoConvertField} from './autoConvertField'
 import {DataValidator} from './DataValidator'
-import {Field} from './Field'
+import type {Field} from './Field'
 import {typedValidatorsResolver} from './validatorsResolver'
-import {ValidationMessages} from "../types/ValidationResult";
 
 /**
  * Type for the function that disposes resources.

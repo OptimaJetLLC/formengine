@@ -1,4 +1,4 @@
-import {Language} from '@react-form-builder/core'
+import type {Language} from '@react-form-builder/core'
 import i18next from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import resourcesToBackend from 'i18next-resources-to-backend'

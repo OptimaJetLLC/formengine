@@ -1,8 +1,8 @@
 import {assign, clone as lodashClone, startCase} from 'lodash-es'
 import type {ReactNode} from 'react'
 import {AnnotationMap} from '../../consts'
-import {AnnotationType} from '../../types'
-import {Annotation} from '../../types/annotations/Annotation'
+import type {AnnotationType} from '../../types'
+import type {Annotation} from '../../types/annotations/Annotation'
 
 /**
  * Options for building an annotation.

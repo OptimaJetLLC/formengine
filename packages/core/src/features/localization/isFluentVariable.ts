@@ -1,5 +1,5 @@
 import type {FluentVariable} from '@fluent/bundle/esm/bundle'
-import {FluentType} from '@fluent/bundle/esm/types.js'
+import type {FluentType} from '@fluent/bundle/esm/types.js'
 
 /**
  * The type checker for the {@link FluentVariable} type.

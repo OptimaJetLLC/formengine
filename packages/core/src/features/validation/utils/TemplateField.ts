@@ -1,5 +1,5 @@
 import {makeAutoObservable} from 'mobx'
-import {ComponentStore} from '../../../stores/ComponentStore'
+import type {ComponentStore} from '../../../stores/ComponentStore'
 import type {IStore} from '../../../stores/IStore'
 import {nameObservable} from '../../../utils/observableNaming'
 import type {Field} from './Field'

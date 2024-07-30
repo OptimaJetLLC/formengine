@@ -1,5 +1,6 @@
 import {isUndefined} from 'lodash-es'
-import {ComponentProperty, ComponentStore, isFunctionalProperty} from '../../stores/ComponentStore'
+import type {ComponentProperty, ComponentStore} from '../../stores/ComponentStore'
+import {isFunctionalProperty} from '../../stores/ComponentStore'
 import {CalculableResult} from '../../utils/CalculableResult'
 import type {IFormData} from '../../utils/IFormData'
 

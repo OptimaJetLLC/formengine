@@ -1,12 +1,5 @@
-import type {PropertyBlockType} from '@react-form-builder/core'
-import {
-  Annotation,
-  ComponentProperty,
-  isProperty,
-  isValidatorPropertyBlockType,
-  namedObserver,
-  useComponentData
-} from '@react-form-builder/core'
+import type {Annotation, ComponentProperty, PropertyBlockType} from '@react-form-builder/core'
+import {isProperty, isValidatorPropertyBlockType, namedObserver, useComponentData} from '@react-form-builder/core'
 import {createElement, useCallback, useEffect, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {EditorMap} from '../../annotation-editors'

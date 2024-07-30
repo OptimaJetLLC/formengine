@@ -1,7 +1,7 @@
 import {ComponentDataProvider, namedObserver, tooltipType} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
-import {AnnotationEditorProps} from '../../../annotation-editors/AnnotationEditorProps'
+import type {AnnotationEditorProps} from '../../../annotation-editors/AnnotationEditorProps'
 import {TooltipTypePicker} from '../../../annotation-editors/TooltipTypePicker'
 
 /**

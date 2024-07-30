@@ -1,4 +1,4 @@
-import {BuilderView, EditorType, FormViewerProps} from '@react-form-builder/core'
+import type {BuilderView, EditorType, FormViewerProps} from '@react-form-builder/core'
 import type {ComponentType, ForwardedRef} from 'react'
 import type {AnnotationEditorProps} from './features/annotation-editors/AnnotationEditorProps'
 import type {CustomizationMap} from './features/customization'
