@@ -1,0 +1,41 @@
+---
+sidebar_position: 110
+title: Signature
+description: A field that allows users to create and capture their handwritten signatures digitally.
+slug: /components-library/fields-components/signature
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+
+## Introduction
+
+[Signature](https://www.npmjs.com/package/signature_pad) represents a digital signature field that allows users to create and capture their
+handwritten signatures digitally. This component provides a drawing area where users can sign their name using a mouse, touchpad, etc. It
+is especially useful for signing documents, forms, contracts, and so on. This component is included within the following NPM package:
+[@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+The signature component offers various customization properties such as options to adjust the thickness or color of the signature, select
+canvas color, and more. The following introduces and describes available properties and options of this component.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name              | Type      | Description                                                 |
+|:------------------|:----------|:------------------------------------------------------------|
+| Value             | `string`  | Enter value for the component                               |
+| Label             | `string`  | Text that is displayed for the component                    |
+| Clear Button Text | `string`  | Customize the text for clear button if necessary            |
+| Width             | `number`  | The width of the signature component in pixels              |
+| Height            | `number`  | The height of the signature component in pixels             |
+| Line Width        | `number`  | The thickness of the pen stroke when drawing the signature  |
+| Pen color         | `color`   | The color of the pen stroke when drawing the signature      |
+| Background color  | `color`   | The canvas (drawing area) color of the signature component  |
+| Read Only         | `boolean` | If set to _true_, makes the component unavailable for users |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
