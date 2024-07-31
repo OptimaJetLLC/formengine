@@ -8,20 +8,9 @@ import {BuilderStore} from '../../stores/BuilderStore'
 import {LocalStorageSynchronizer} from '../../stores/LocalStorageSynchronizer'
 import {BuilderStoreProvider} from '../../utils/BuilderStoreContext'
 import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
-import type {IFormBuilder} from '../../utils/types'
 import {CustomDragLayer} from '../dnd/components/CustomDragLayer'
 import {LocalizationProvider} from '../localization'
 import {StylesProvider} from './StylesProvider'
-
-const fallbackFormBuilder: IFormBuilder = {
-  get formAsString(): string {
-    throw new Error('FormBuilder object is already destroyed')
-  },
-
-  parseForm(_: string): void {
-    // do nothing
-  },
-}
 
 class BuilderProviderData {
   constructor(public readonly store: Store,
@@ -37,9 +26,14 @@ class BuilderProviderData {
   }
 }
 
-interface BuilderProvidersProps {
+interface RawBuilderProvidersProps {
   props: FormBuilderProps
   children: ReactNode
+}
+
+interface BuilderProvidersProps extends RawBuilderProvidersProps {
+  builderStore: BuilderStore
+  store: Store
 }
 
 const useBuilderProviderData = (props: FormBuilderProps) => useCallback(() => {
@@ -59,32 +53,25 @@ const useBuilderProviderData = (props: FormBuilderProps) => useCallback(() => {
  * @param props the React component properties.
  * @param props.children the children of the React component.
  * @param props.props the properties of the form builder component.
+ * @param props.builderStore the form builder settings.
+ * @param props.store the form viewer settings.
  * @returns the React element.
  */
-const RawBuilderProviders = ({children, props}: BuilderProvidersProps) => {
+const RawProviders = ({children, props, builderStore, store}: BuilderProvidersProps) => {
   const {builderRef, ...viewerProps} = props
-  const builderProviderDataFactory = useBuilderProviderData(props)
-  const builderProviderData = useDisposable(builderProviderDataFactory)
 
-  const builderStore = builderProviderData?.builderStore
-  const store = builderProviderData?.store
-
-  useImperativeHandle(builderRef, () => builderStore ?? fallbackFormBuilder, [builderStore])
+  useImperativeHandle(builderRef, () => builderStore, [builderStore])
 
   useEffect(() => {
-    if (!builderStore) return
     // If activeFormName is already set from LocalStorageSynchronizer, do not change it
     if (!builderStore.activeFormName) builderStore.activeFormName = props.formName
   }, [builderStore, props.formName])
 
   useEffect(() => {
-    if (!store) return
     store.formViewerPropsStore.applyProps(viewerProps)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.initialData, props.view, props.validators, props.formValidators, props.localize, props.language, props.actions,
     props.errorWrapper])
-
-  if (!builderStore || !store) return null
 
   return (
     <ViewerPropsProvider value={viewerProps}>
@@ -104,6 +91,25 @@ const RawBuilderProviders = ({children, props}: BuilderProvidersProps) => {
       </BuilderStoreProvider>
     </ViewerPropsProvider>
   )
+}
+
+const Providers = namedObserver('Providers', RawProviders)
+
+/**
+ * React component encapsulating MobX storage for the form builder.
+ * @param props the React component properties.
+ * @returns the React element.
+ */
+const RawBuilderProviders = (props: RawBuilderProvidersProps) => {
+  const builderProviderDataFactory = useBuilderProviderData(props.props)
+  const builderProviderData = useDisposable(builderProviderDataFactory)
+
+  const builderStore = builderProviderData?.builderStore
+  const store = builderProviderData?.store
+
+  if (!builderStore || !store) return null
+
+  return <Providers {...props} builderStore={builderStore} store={store}/>
 }
 
 export const BuilderProviders = namedObserver('BuilderProviders', RawBuilderProviders)

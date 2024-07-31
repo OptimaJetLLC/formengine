@@ -163,7 +163,9 @@ const useCustomErrorWrapper = false
 
 const FormBuilderApp = () => {
   const viewerRef = useRefWithLog<IFormViewer>('ViewerRef', logEvents)
-  const builderRef = useRefWithLog<IFormBuilder>('BuilderRef', logEvents)
+  const builderRef = useRefWithLog<IFormBuilder>('BuilderRef', logEvents, builder => {
+    if (builder) console.log(builder.formAsString)
+  })
 
   const [initialData, setInitialData] = useState(data)
   const [indexedDbInitialized, setIndexedDbInitialized] = useState(false)
