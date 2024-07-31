@@ -1,6 +1,6 @@
 {
     "name": "@react-form-builder/components-test",
-    "version": "1.7.0",
+    "version": "1.8.0",
     "private": true,
     "main": "src/index.ts",
     "type": "module",
@@ -13,6 +13,6 @@
         "build": "vite build"
     },
     "dependencies": {
-        "@react-form-builder/core": "^1.7.0"
+        "@react-form-builder/core": "^1.8.0"
     }
 }

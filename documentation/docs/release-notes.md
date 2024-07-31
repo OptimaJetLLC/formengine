@@ -4,6 +4,18 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.8.0
+
+_July_ 31, 2024
+
+- Now the entered value in the component key editor is also applied by pressing Enter.
+
+### Fixed bugs
+
+- The `IFormBuilder` ref does not work.
+- A string date value passed via `initialData` to the `DatePicker` component causes an error.
+- If the name of an existing form is used to create a new form, the existing form will be overwritten.
+
 ## 1.7.0
 
 _July_ 24, 2024
