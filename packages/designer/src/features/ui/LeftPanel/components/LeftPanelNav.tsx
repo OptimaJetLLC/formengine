@@ -4,7 +4,7 @@ import * as faSitemap from '@fortawesome/free-solid-svg-icons/faSitemap.js'
 import * as faSliders from '@fortawesome/free-solid-svg-icons/faSlidersH.js'
 import {namedObserver} from '@react-form-builder/core'
 import type {ReactNode} from 'react'
-import {useMemo, useState} from 'react'
+import {useCallback, useMemo, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {Rows} from '../../../components/Containers'
@@ -16,13 +16,13 @@ import {FormList} from './FormList'
 import {FormSettings} from './FormSettings'
 import {Tree} from './Tree'
 
-type LeftPanelSection = 'tree' | 'forms' | 'components'
+type LeftPanelSection = 'tree' | 'forms' | 'components' | 'settings'
 
 const Nav = customizable('LeftPanel_Nav', SNav)
 const NavContent = customizable('LeftPanel_Content', Rows)
 const Components = customizable('Components_Tab_Content', ComponentBar)
 
-const tabsProps: Record<string, [content: ReactNode, key: CustomizableKey, icon: any, color: string]> = {
+const tabsProps: Record<LeftPanelSection, [content: ReactNode, key: CustomizableKey, icon: any, color: string]> = {
   components: [<Components draggable={true}/>, 'Components_Tab', faPlusCircle, 'var(--rs-green-600)'],
   tree: [<Tree/>, 'Tree_Tab', faSitemap, 'var(--rs-navs-selected)'],
   settings: [<FormSettings/>, 'Settings_Tab', faSliders, 'violet'],
@@ -38,17 +38,34 @@ const useRenderTab = (section: keyof typeof tabsProps) => {
   }, [t, section])
 }
 
+const localStorageLeftPanelActiveTabKey = 'leftPanelActiveTab'
+
+const saveActiveTab = (tabName: LeftPanelSection) => {
+  localStorage.setItem(localStorageLeftPanelActiveTabKey, tabName)
+}
+
+const getActiveTab = () => {
+  const defaultTab = 'components'
+  const value = localStorage.getItem(localStorageLeftPanelActiveTabKey) as LeftPanelSection ?? defaultTab
+  return tabsProps[value] ? value : defaultTab
+}
+
 const RawLeftPanelNav = () => {
   const {formStorageEnabled} = useBuilderStore()
-  const [activeTab, setActiveTab] = useState<LeftPanelSection>('components')
+  const [activeTab, setActiveTab] = useState<LeftPanelSection>(getActiveTab())
 
   const components = useRenderTab('components')
   const tree = useRenderTab('tree')
   const settings = useRenderTab('settings')
   const forms = useRenderTab('forms')
 
+  const handleTabChange = useCallback((tab: LeftPanelSection) => {
+    setActiveTab(tab)
+    saveActiveTab(tab)
+  }, [])
+
   return <>
-    <Nav appearance="subtle" activeKey={activeTab} onSelect={setActiveTab}>
+    <Nav appearance="subtle" activeKey={activeTab} onSelect={handleTabChange}>
       {components}
       {tree}
       {settings}
