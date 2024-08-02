@@ -11,6 +11,7 @@ import type {IFormData} from '../IFormData'
 import {nameObservable} from '../observableNaming'
 import {SyncEvent} from '../SyncEvent'
 import {treeForEach} from '../treeUtils'
+import {camelCase} from 'lodash-es'
 
 let counter = 0
 
@@ -206,9 +207,10 @@ export class ComponentData implements IFormData {
     })
     treeForEach(this as ComponentData, item => {
       let count = 1
-      const withCount = () => `${item.store.type} ${count}`
-      while (keysList.includes(withCount())) count++
-      const newKey = withCount()
+      const baseKey = camelCase(item.store.type)
+      const generateKey = () => `${baseKey}${count}`
+      while (keysList.includes(generateKey())) count++
+      const newKey = generateKey()
       keysMap.set(newKey, item.key)
       item.store.key = newKey
       keysList.push(newKey)
