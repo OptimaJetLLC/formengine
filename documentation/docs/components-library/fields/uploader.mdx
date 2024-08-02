@@ -1,0 +1,49 @@
+---
+sidebar_position: 150
+title: Uploader
+description: Used to upload data or attach files to the form
+slug: /components-library/fields-components/uploader
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+
+## Introduction
+
+The Uploader component is a practical element that enables users to upload files from their device to the form by clicking the corresponding
+button or via drag-and-drop. It is particularly useful for attaching documents, images, videos, audios, and other files to the form
+submission. This component is based on [Uploader](https://rsuitejs.com/components/uploader/). It is included within the following NPM
+package: [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+This component can be configured to accept specific file types, configure methods, enable or disable drag-and-drop functionality, and so on.
+These properties along with the style options are listed and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name               | Type                                                                          | Description                                                                                                                                                                                                                          |
+|:-------------------|:------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Action             | `string`                                                                      | Required field that sets your uploading URL                                                                                                                                                                                          |
+| Accept             | `string`                                                                      | Comma-separated list of one or more file types (e.g., _.pdf_, _audio_, etc.). Refer to [HTML attribute accept](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept#unique_file_type_specifiers) for more information |
+| Auto upload        | `boolean`                                                                     | If set to _true_, automatically uploads files after selecting them                                                                                                                                                                   |
+| Custom Element     | `boolean`                                                                     | If set to _true_, turns the upload button into a custom element                                                                                                                                                                      |
+| Disable multipart  | `boolean`                                                                     | If set to _true_, disables the use of a multipart form for file upload and streams the file instead. This is useful for APIs that expect file uploads to be streamed, such as Amazon S3                                              |
+| Disabled           | `boolean`                                                                     | If set to _true_, disables the component                                                                                                                                                                                             |
+| Disabled File Item | `boolean`                                                                     | If set to _true_, disables the the file list                                                                                                                                                                                         |
+| Draggable          | `boolean`                                                                     | If set to _true_, enables drag-and-drop to upload                                                                                                                                                                                    |
+| File List Visible  | `boolean`                                                                     | If set to _false_, makes the file list invisible                                                                                                                                                                                     |
+| List Type          | `choice`                                                                      | Sets the list style (i.e., _text_, _picture-text_, or _picture_)                                                                                                                                                                     |
+| Method             | `string`                                                                      | The HTTP (_POST_) method of upload request                                                                                                                                                                                           |
+| Multiple           | `boolean`                                                                     | If set to _true_, allows multiple file uploads to be selected at a time                                                                                                                                                              |
+| Name               | `string`                                                                      | Specifies the parameter name for the uploaded file                                                                                                                                                                                   |
+| Removable          | `boolean`                                                                     | Is set to _true_, makes file list removable                                                                                                                                                                                          |
+| Timeout            | `number`                                                                      | Specifies the time limit in milliseconds for the file upload to complete                                                                                                                                                             |
+| With credentials   | `boolean`                                                                     | If set to _true_, carries cookies when uploading, allowing the server to authenticate upload requests                                                                                                                                |
+| File List          | [file type](https://rsuitejs.com/components/uploader/#code-ts-file-type-code) | Sets the list of uploaded files. Includes _Name_ (file name string), _FileKey_ (unique file ID), and _URL_ (preview link)                                                                                                            |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
