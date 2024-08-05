@@ -206,6 +206,9 @@ const FormBuilderApp = () => {
       const silentValidationResult = await formData.getValidationResult()
       formData.state.isValid = !silentValidationResult
     }}
+    onFormSchemaChange={(formSchema) => {
+      if (logEvents) console.log('onFormSchemaChange', formSchema)
+    }}
     viewerRef={viewerRef}
     builderRef={builderRef}
     validators={customValidators}

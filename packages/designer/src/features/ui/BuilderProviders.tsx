@@ -73,6 +73,10 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
   }, [props.initialData, props.view, props.validators, props.formValidators, props.localize, props.language, props.actions,
     props.errorWrapper])
 
+  useEffect(() => {
+    props.onFormSchemaChange?.(builderStore.formAsString)
+  }, [builderStore.formAsString, props])
+
   return (
     <ViewerPropsProvider value={viewerProps}>
       <BuilderStoreProvider value={builderStore}>

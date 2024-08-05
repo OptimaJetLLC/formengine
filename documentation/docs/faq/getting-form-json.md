@@ -31,6 +31,21 @@ const FormBuilderApp = () => {
 }
 ```
 
+## Using onFormSchemaChange callback
+
+You can also use [onFormSchemaChange](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#onformschemachange) callback in `FormBuilder` props.
+
+```tsx
+const FormBuilderApp = () => (
+  <FormBuilder
+    onFormSchemaChange={(formSchema) => {
+      console.log('onFormSchemaChange', formSchema)
+    }}
+    {...otherProps}
+  />
+)
+```
+
 ## Using FormStorage
 
 You can also use [formStorage](/form-storage#example-of-iformstorage-working-with-indexeddb).

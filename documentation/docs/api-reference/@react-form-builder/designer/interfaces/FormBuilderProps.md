@@ -239,6 +239,24 @@ the [IFormData](../../core/interfaces/IFormData.md) with all the form data.
 
 ***
 
+### onFormSchemaChange()?
+
+> `optional` **onFormSchemaChange**: (`formSchema`) => `void`
+
+The event is called whenever a form schema changes.
+
+#### Parameters
+
+• **formSchema**: `string`
+
+the current form schema serialized to JSON.
+
+#### Returns
+
+`void`
+
+***
+
 ### propertyEditors?
 
 > `optional` **propertyEditors**: `Record`\<`string`, `ComponentType`\<[`AnnotationEditorProps`](AnnotationEditorProps.md)\>\>

@@ -40,4 +40,10 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
    * The map of customizations for the FormBuilder components.
    */
   customization?: CustomizationMap
+
+  /**
+   * The event is called whenever a form schema changes.
+   * @param formSchema the current form schema serialized to JSON.
+   */
+  onFormSchemaChange?: (formSchema: string) => void
 }
