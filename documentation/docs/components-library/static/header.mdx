@@ -1,0 +1,52 @@
+---
+sidebar_position: 40
+title: Header
+description: Text element that displays a title or heading
+slug: /components-library/static-components/header
+---
+
+
+import AdditionalOptions from '../\_additional-options.mdx';
+
+## Introduction
+
+The Header component is a text element that displays a title or heading on the form. It can be used to provide context, highlight important
+information, or organize the form into sections. The Header component can be customized with different sizes, colors, and styles to match
+your design and requirements.
+
+The following introduces and describes properties and options presented for the header component customization.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name        | Type     | Description                                         |
+|:------------|:---------|:----------------------------------------------------|
+| Content     | `string` | Text for your header component                      |
+| Header Size | `choice` | Size of your header (e.g., _H 1_, _H 2_, and so on) |
+
+<AdditionalOptions/>
+
+## Style properties
+
+These are properties that allow to customize the size, color and other style properties of your component:
+
+- **For Device**: You can provide component's style customization for all devices or specific devices by using this dropdown list. Refer
+to [Adaptive Layout](/adaptive-layout) for more details.
+
+- **Component**:
+  - _Background_: Sets the background color for the component. Corresponds to the similar property within the Wrapper options.
+  - _Alignment_: Sets the alignment for the header (i.e., _Start_, _Center_, or _End_)
+  - _Color_: Sets the text color for the header. Corresponds to the similar property within the Wrapper options.
+  - _Class Name_: Add a class name for your component for the subsequent styling if necessary.
+
+- **Wrapper**: The options below enable you to tailor the appearance of your component and customize it for a specific device type, as
+selected in the _For Device_ property:
+
+  | Name                         | Type     | Description                              |
+  |:-----------------------------|:---------|:-----------------------------------------|
+  | Width                        | `number` | Specifies the width for your component   |
+  | Height                       | `number` | Specifies the height for your component  |
+  | Margin top/right/bottom/left | `number` | Margin values for you component          |
+  | Color                        | `string` | Allows customizing the text color        |
+  | Background color             | `string` | Enables customizing the background color |
