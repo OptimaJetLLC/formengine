@@ -31,15 +31,17 @@ const RawDraggable = ({children, isInner, className, isTree, ...props}: Draggabl
   const [{isActive, isDragging: isDraggingCurrent}, dnd] = useDnd()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
   const dragPreview = <DragPreview><SLabel>{key}</SLabel></DragPreview>
+  const afterChildren = isDragging && !isRoot
+  const beforeChildren = isDragging && !isRoot && !isInner
 
   return <>
     {isDraggingCurrent && dragPreview}
     <Container ref={dnd} {...props}
                className={cx(className, {isActive, isContainer, isRoot, isInner, isDraggingCurrent, horizontal})}>
       {!isTree && <DraggableBody/>}
-      {isDragging && !isRoot && !isInner && <DropZone/>}
+      {beforeChildren && <DropZone/>}
       {children}
-      {isDragging && !isRoot && <DropZone isAfter={!isInner && true} isInner={isInner}/>}
+      {afterChildren && <DropZone isAfter={!isInner && true} isInner={isInner}/>}
     </Container>
   </>
 }

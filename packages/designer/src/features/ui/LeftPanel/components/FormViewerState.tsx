@@ -25,6 +25,7 @@ const SDiv = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 200px;
+
   pre {
     white-space: pre-wrap;
     margin-top: 5px;

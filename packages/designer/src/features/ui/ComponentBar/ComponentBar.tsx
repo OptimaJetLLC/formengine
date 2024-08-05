@@ -52,7 +52,7 @@ const ControlGroups = (props: ControlGroupsProps) => {
   for (const category in byCategory) {
     result.push(
       <div key={category}>
-        {<Subheader>{t(category) || category}</Subheader>}
+        <Subheader>{t(category) || category}</Subheader>
         <AddedComponents definitions={byCategory[category]} {...componentProps}/>
       </div>
     )

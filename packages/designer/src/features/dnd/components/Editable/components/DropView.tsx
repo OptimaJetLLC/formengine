@@ -22,8 +22,7 @@ interface DropViewProps extends ComponentProps<any> {
  */
 export const DropView = (props: DropViewProps) => {
   const componentData = useComponentData()
-  const store = componentData.store
-  const isRoot = componentData.isRoot
+  const {store, isRoot} = componentData
   const isContainer = Boolean(store.children)
   const {slot, slotCondition, ...classNamesFromProps} = props
   const dropClassNames = {isContainer, isRoot, ...classNamesFromProps}

@@ -81,10 +81,7 @@ export const EditableWrapper = namedObserver('EditableWrapper', RawEditableWrapp
 const RawEditable = ({children, className}: WrapperProps) => {
   const [{selected}, selectionHandlers, selectionClassName] = useSelection()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
-
-  const toolbars = selected && !isDragging && <>
-    <Toolbar/>
-  </>
+  const toolbars = selected && !isDragging && <Toolbar/>
 
   return (
     <ErrorBoundary>
@@ -108,5 +105,6 @@ function getTemplateSlots(data: ComponentData) {
     acc[cs.key] = node
     return acc
   }, {})
+
   return toArray(ans)
 }

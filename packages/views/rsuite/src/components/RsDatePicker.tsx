@@ -11,9 +11,9 @@ interface RsRsDatePickerProps extends DatePickerProps {
   label: string
 }
 
-const parseDateValue = (value:any) => {
+const parseDateValue = (value: any) => {
   if (typeof value === 'string') {
-    const parsedDate = new Date(value);
+    const parsedDate = new Date(value)
     if (!isNaN(parsedDate.getTime())) {
       return parsedDate
     }

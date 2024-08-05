@@ -20,20 +20,20 @@ const RawTree = (props: ComponentProps<typeof Rows>) => {
   const value = useMemo(() => ({componentWrapper: DraggableTreeNode, view: builderStore.view}),
     [builderStore.view])
 
+  const expandAll = useCallback(() => builderStore.expandAll(), [builderStore])
+  const collapseAll = useCallback(() => builderStore.collapseAll(), [builderStore])
+
   useEffect(() => {
     builderStore.expanded.add(componentTree)
-  }, [builderStore, componentTree])
-
-  const handleExpand = useCallback(() => builderStore.expandAll(), [builderStore])
-  const handleCollapse = useCallback(() => builderStore.collapseAll(), [builderStore])
+  }, [builderStore.expanded, componentTree])
 
   return <Rows gap={0} style={treeStyle} {...props}>
     <Columns>
-      <SubtleIconButton onClick={handleExpand} size={'sm'} appearance={'subtle'}>
+      <SubtleIconButton onClick={expandAll} size={'sm'} appearance={'subtle'}>
         <ExpandOutline/>
         {t('tree.expand')}
       </SubtleIconButton>
-      <SubtleIconButton onClick={handleCollapse} size={'sm'} appearance={'subtle'}>
+      <SubtleIconButton onClick={collapseAll} size={'sm'} appearance={'subtle'}>
         <CollaspedOutline/>
         {t('tree.collapse')}
       </SubtleIconButton>

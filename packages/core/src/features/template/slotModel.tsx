@@ -8,9 +8,9 @@ import {ViewerPropsProvider} from '../form-viewer/components/ViewerPropsContext'
 import {useTemplate} from './templateModel'
 
 const Slot = () => {
-  const store = useStore()
-  return store.parentStore
-    ? <SlotContent parentStore={store.parentStore}/>
+  const {parentStore} = useStore()
+  return parentStore
+    ? <SlotContent parentStore={parentStore}/>
     : <SlotPlaceholder/>
 }
 Slot.displayName = 'Slot'

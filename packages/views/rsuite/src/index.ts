@@ -106,9 +106,9 @@ const categories = {
 const rSuiteComponents: Definer<any>[] = []
 const {notImplemented, ...implemented} = categories
 
+const prefix = 'Rs'
 Object.entries(implemented).forEach(([category, components]) => {
   components.forEach(c => {
-    const prefix = 'Rs'
     if (!c.getType().startsWith(prefix)) {
       throw new Error(`The component type must start with '${prefix}', type: '${c.getType()}'`)
     }

@@ -7,8 +7,8 @@ const definitions = [
   antTooltip
 ]
 
+const prefix = 'Ant'
 definitions.forEach(c => {
-  const prefix = 'Ant'
   if (!c.getType().startsWith(prefix)) {
     throw new Error(`The component type must start with '${prefix}', type: '${c.getType()}'`)
   }

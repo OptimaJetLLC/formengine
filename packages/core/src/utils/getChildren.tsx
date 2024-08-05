@@ -16,9 +16,12 @@ const defaultContainerKey = 'children'
  * @param componentProps the properties of the parent component.
  * @returns the {@link Record} with all child components.
  */
-export function getChildren(data: ComponentData, formData: IFormData,
-                            componentTreeItem: ComponentType<ComponentTreeProps>,
-                            componentProps: Record<string, any>) {
+export function getChildren(
+  data: ComponentData,
+  formData: IFormData,
+  componentTreeItem: ComponentType<ComponentTreeProps>,
+  componentProps: Record<string, any>
+) {
   const containers = data.children
   const ComponentTree = componentTreeItem
   const currentProps: Record<string, any> = {}
