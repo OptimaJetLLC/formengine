@@ -1,0 +1,4 @@
+- Added the `preload` property to the `Dropdown` and `Search` components. It enables preloading data before opening the drop-down list (on component mount).
+- The [onFormSchemaChange](https://formengine.io/documentation/getting-form-json#using-onformschemachange-callback) callback has been added to the `FormBuilder` props. It is called whenever a form schema changes.
+- Now the component keys are generated as valid `JavaScript` identifiers - in camelCase and without spaces.
+- Now the active tabs in the left and right panels of the `Designer` are saved after the page is reloaded, as well as when switching between components.
