@@ -13,10 +13,11 @@ import {SLoader} from './SLoader'
 interface RsDropdownProps extends InputPickerProps {
   label: string
   onLoadData?: LoadDataHandler
+  preload?: boolean
 }
 
-const RsDropdown = ({data, label, onLoadData, onSearch, onOpen, value = '', className, ...props}: RsDropdownProps) => {
-  const {loading, ...loadProps} = useLoadData({data, onLoadData, onSearch, onOpen, value})
+const RsDropdown = ({data, label, onLoadData, onSearch, onOpen, value = '', className, preload, ...props}: RsDropdownProps) => {
+  const {loading, ...loadProps} = useLoadData({data, onLoadData, onSearch, onOpen, value, preload})
   const onClean = useTouchOnEvent(props, 'onClean')
 
   const renderMenu = useCallback((menu: ReactNode) => <>

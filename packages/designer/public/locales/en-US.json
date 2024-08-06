@@ -178,6 +178,10 @@
       "name": "Direction",
       "hint": "Flex direction of container children"
     },
+    "preload": {
+      "name": "Preload",
+      "hint": "Upload data in advance, before opening the dropdown"
+    },
     "href": {
       "name": "Href",
       "hint": "The URL that the hyperlink points to"

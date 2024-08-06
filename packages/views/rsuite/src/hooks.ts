@@ -20,6 +20,7 @@ export type LoadDataHandler = (
 interface LoadDataProps extends Pick<InputPickerProps,
   'data' | 'value' | 'onSearch' | 'onOpen' | 'onCreate'> {
   onLoadData?: LoadDataHandler
+  preload?: boolean
 }
 
 /**
@@ -30,15 +31,20 @@ interface LoadDataProps extends Pick<InputPickerProps,
  * @param props.onSearch the callback function called when a search is performed.
  * @param props.onOpen the callback function called when the list is displayed.
  * @param props.value the current value of the component.
+ * @param props.preload flag, if true, the data will be loaded in advance, before opening the dropdown, false otherwise.
  * @returns the object with prepared properties for the picker.
  */
-export const useLoadData = ({data: initialData, onLoadData, value, ...props}: LoadDataProps) => {
+export const useLoadData = ({data: initialData, onLoadData, value, preload, ...props}: LoadDataProps) => {
   // TODO lint ignored, will be fixed after merger with #FE-619
-
   const [searchValue, setSearchValue] = useState('')
   const [data, setData] = useState<ItemDataType[]>(initialData ?? [])
   const [loading, setLoading] = useState(false)
   const hasValue = (item: ItemDataType) => item.value === value
+
+  useEffect(() => {
+    if (preload) onLoadData?.('', loadCallback, 0)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [preload, onLoadData])
 
   useEffect(() => {
     const valueItem = value && !initialData?.some(hasValue) ? [{value, label: value}] : []
@@ -84,7 +90,7 @@ export const useLoadData = ({data: initialData, onLoadData, value, ...props}: Lo
 
   const onOpen = () => {
     props.onOpen?.()
-    if (!value) onLoadData?.('', loadCallback, 0)
+    if (!value && !preload) onLoadData?.('', loadCallback, 0)
   }
 
   const onCreate: InputPickerProps['onCreate'] = (_, item) => {

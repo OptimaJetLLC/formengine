@@ -13,12 +13,13 @@ import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 interface RsSearchProps extends InputPickerProps {
   label: string
   onLoadData?: LoadDataHandler
+  preload?: boolean
 }
 
 const CustomCaret = () => null
 
-const RsSearch = ({data, label, onLoadData, onSearch, value = '', className, ...props}: RsSearchProps) => {
-  const {loading, onOpen, ...loadProps} = useLoadData({data, onLoadData, onSearch, value})
+const RsSearch = ({data, label, onLoadData, onSearch, value = '', className, preload, ...props}: RsSearchProps) => {
+  const {loading, onOpen, ...loadProps} = useLoadData({data, onLoadData, onSearch, value, preload})
   const renderMenu = (menu: ReactNode) => loadProps.data?.length ? menu : null
   const onClean = useTouchOnEvent(props, 'onClean')
 
