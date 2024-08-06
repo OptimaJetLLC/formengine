@@ -1,4 +1,4 @@
-import {array, define, string, toLabeledValues} from '@react-form-builder/core'
+import {array, boolean, define, string, toLabeledValues} from '@react-form-builder/core'
 import type {ReactNode} from 'react'
 import {useCallback} from 'react'
 import type {InputPickerProps} from 'rsuite'
@@ -42,6 +42,7 @@ export const rsDropdown = define(RsDropdown, 'RsDropdown')
   .name('Dropdown')
   .props({
     ...pickerProps,
+    preload: boolean.default(false),
     label: string.default('Select'),
     data: array.default(toLabeledValues(['a', 'b', 'c']))
   })

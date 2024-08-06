@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {define, string} from '@react-form-builder/core'
+import {boolean, define, string} from '@react-form-builder/core'
 import {Search} from '@rsuite/icons'
 import type {ReactNode} from 'react'
 import type {InputPickerProps} from 'rsuite'
@@ -60,6 +60,7 @@ export const rsSearch = define(RsSearch, 'RsSearch')
   .name('Search')
   .props({
     ...pickerProps,
+    preload: boolean.default(false),
     label: string.default('Search'),
     placeholder: string.default('Search')
   })
