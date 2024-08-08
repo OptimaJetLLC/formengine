@@ -1,0 +1,50 @@
+---
+sidebar_position: 60
+title: Link
+description: Creates a hyperlink to another webpage, email address, or file
+slug: /components-library/static-components/link
+---
+
+import AdditionalOptions from '../\_additional-options.mdx';
+import StyleWrapper from '../\_style-wrapper.mdx';
+
+## Introduction
+
+The Link component, as the name suggests, creates a hyperlink to another webpage, email address, or file. It allows users to navigate to a
+different location by interacting with the link. The Link component can be customized to represent a text element or a custom component on
+the form, enabling you to create interactive elements that trigger specific actions or behaviors.
+
+By customizing the Link component, you can also improve the accessibility and usability of your form, making it easier for your users to
+navigate and interact with. The following introduces and describes properties and options presented for the link component customization.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name              | Type      | Description                                                                                                 |
+|:------------------|:----------|:------------------------------------------------------------------------------------------------------------|
+| Content           | `choice`  | Specifies whether the link content is a _Text_ element or _Custom_ component                                |
+| Text              | `string`  | The text content of the link                                                                                |
+| Href              | `string`  | The URL or address that the link points to                                                                  |
+| Target            | `string`  | Specifies where the linked URL should be opened (e.g., _blank_, _self_, _parent_, _top_, or _unfenced top_) |
+| Download          | `boolean` | If set to _true_, the linked URL will be downloaded instead of opened in a browser                          |
+| Download filename | `string`  | The filename that will be used when downloading the linked URL                                              |
+
+<AdditionalOptions/>
+
+## Style properties
+
+These are properties that allow to customize the size, color and other style properties of your component:
+
+- **For Device**: You can provide component's style customization for all devices or specific devices by using this dropdown list. Refer
+to [Adaptive Layout](/adaptive-layout) for more details.
+
+- **Component**:
+
+  - _Alignment_: Sets the alignment of your component (i.e., _Start_, _Center_, or _End_).
+  - _Font Size_: Specifies the font size of the component.
+  - _Font Weight_: Sets the font weight (i.e., _Normal_, _Lighter_, or _Bold_).
+  - _Color_: Sets the text color for the link text. Corresponds to the similar property within the Wrapper options.
+  - _Class Name_: Add a class name for your component for the subsequent styling if necessary.
+
+<StyleWrapper/>
