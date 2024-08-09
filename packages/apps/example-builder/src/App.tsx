@@ -10,7 +10,7 @@ import {
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
 import {ActionDefinition, BiDi, ComponentStore, FormValidators, IFormViewer, Language, Validators} from '@react-form-builder/core'
-import type {IFormBuilder} from '@react-form-builder/designer'
+import type {FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder, FormBuilderI18n} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useState} from 'react'
@@ -55,6 +55,7 @@ function localizer(componentStore: ComponentStore, language: Language): Record<s
 const useCustomLocalizer = false
 const localizeFn = useCustomLocalizer ? localizer : undefined
 const logEvents = false
+const cycleThroughThemes = false
 
 const indexedDbExists = !!window.indexedDB
 const formStorage = indexedDbExists
@@ -169,6 +170,7 @@ const FormBuilderApp = () => {
 
   const [initialData, setInitialData] = useState(data)
   const [indexedDbInitialized, setIndexedDbInitialized] = useState(false)
+  const [theme, setTheme] = useState<FormBuilderTheme>('light')
 
   useEffect(() => {
     if (!formStorage) {
@@ -187,6 +189,17 @@ const FormBuilderApp = () => {
     return () => clearTimeout(timeoutId)
   }, [])
 
+  useEffect(() => {
+    if (!cycleThroughThemes) return
+    const themes: FormBuilderTheme[] = ['light', 'dark', 'system']
+    let index = 0
+    const intervalId = setInterval(() => {
+      setTheme(themes[index])
+      index = (index + 1) % themes.length
+    }, 1000)
+    return () => clearInterval(intervalId)
+  }, [])
+
   if (!indexedDbInitialized) return null
 
   const useCustomization = false
@@ -196,6 +209,7 @@ const FormBuilderApp = () => {
     licenseKey={generatedLicenseKey}
     getForm={getFormFn}
     formName={sampleFormName}
+    theme={cycleThroughThemes ? theme : undefined}
     view={view}
     initialData={initialData}
     formStorage={formStorage}

@@ -1229,6 +1229,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/designer/type-aliases/FormBuilderTheme",
+            "label": "FormBuilderTheme"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/designer/type-aliases/LocalizationComputeCodeParams",
             "label": "LocalizationComputeCodeParams"
           },

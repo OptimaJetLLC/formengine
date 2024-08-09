@@ -7,6 +7,7 @@ import type {FormBuilderProps} from '../../FormBuilderProps'
 import {BuilderStore} from '../../stores/BuilderStore'
 import {LocalStorageSynchronizer} from '../../stores/LocalStorageSynchronizer'
 import {BuilderStoreProvider} from '../../utils/BuilderStoreContext'
+import {determineTheme} from '../../utils/determineTheme'
 import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
 import {CustomDragLayer} from '../dnd/components/CustomDragLayer'
 import {LocalizationProvider} from '../localization'
@@ -76,6 +77,11 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
   useEffect(() => {
     props.onFormSchemaChange?.(builderStore.formAsString)
   }, [builderStore.formAsString, props])
+
+  useEffect(() => {
+    if (!props.theme) return
+    builderStore.theme = determineTheme(props.theme)
+  }, [builderStore, props.theme])
 
   return (
     <ViewerPropsProvider value={viewerProps}>

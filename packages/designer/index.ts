@@ -10,3 +10,4 @@ export type {
 export type {IFormBuilder} from './src/utils/types'
 export type {CustomizationMap, Options} from './src/features/customization'
 export type {CustomizableKey} from './src/features/customization/types'
+export type {FormBuilderTheme} from './src/FormBuilderTheme'

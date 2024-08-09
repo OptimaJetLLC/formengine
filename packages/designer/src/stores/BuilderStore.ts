@@ -32,6 +32,7 @@ import type {PanelPlacement} from '../features/ui/PanelPlacement'
 import type {PromptDialogProps} from '../features/ui/PromptDialogProps'
 import {annotationResolver} from '../features/validation'
 import type {FormBuilderProps} from '../FormBuilderProps'
+import {determineTheme} from '../utils/determineTheme'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import type {BuilderMode, BuilderTheme, IFormBuilder, InsertPosition} from '../utils/types'
 import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
@@ -281,6 +282,8 @@ export class BuilderStore implements IFormBuilder {
     }
 
     this.#props = props
+    this.theme = determineTheme(props.theme)
+
     this.view = props.view
     this.activeFormName = props.formName
     this.formBuilderLanguage = this.availableLanguages[0]

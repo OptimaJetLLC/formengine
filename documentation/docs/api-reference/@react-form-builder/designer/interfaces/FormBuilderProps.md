@@ -265,6 +265,14 @@ Custom component property editors. **Attention! Unstable API.**
 
 ***
 
+### theme?
+
+> `optional` **theme**: [`FormBuilderTheme`](../type-aliases/FormBuilderTheme.md)
+
+Indicates the theme preference.
+
+***
+
 ### validators?
 
 > `optional` **validators**: `Partial`\<`Record`\<keyof [`SchemaTypeMap`](../../core/type-aliases/SchemaTypeMap.md), [`CustomValidationRules`](../../core/type-aliases/CustomValidationRules.md)\>\>

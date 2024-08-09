@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import * as faMoon from '@fortawesome/free-solid-svg-icons/faMoon.js'
 import * as faSun from '@fortawesome/free-solid-svg-icons/faSun.js'
 import type {ComponentProps} from 'react'
-import {useEffect, useMemo, useState} from 'react'
+import {useMemo} from 'react'
 import {Tooltip, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import type {BuilderTheme} from '../../../../utils/types'
@@ -21,12 +21,8 @@ const RawToggleTheme = (props: ToggleThemeProps) => {
   const store = useBuilderStore()
   const t = useTranslationPart('rightMenu')
   const {theme} = store
-  const [icon, setIcon] = useState(icons[theme])
+  const icon = useMemo(() => icons[theme], [theme])
   const isDark = theme === 'dark'
-
-  useEffect(() => {
-    setTimeout(() => setIcon(isDark ? faMoon : faSun), 200)
-  }, [isDark])
 
   const iconProps: any = useMemo(() => ({
     icon,
