@@ -1,0 +1,41 @@
+---
+sidebar_position: 30
+title: Tab
+description: Allows users to switch between different views or panels
+slug: /components-library/structure-components/tab
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+
+## Introduction
+
+The Tab component represents a navigation element that allows users to switch between different views or panels. It is used to organize
+content, reduce clutter, and improve user experience. This component is based on [Nav](https://rsuitejs.com/components/nav/). This component
+is included within the following NPM
+package: [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+The tab component typically consists of a set of tabs, each representing a different section or page. Users can click on a tab to access its
+associated content. Each tab allows adding a component by using the add button on the interface. You can also customize the
+behavior and appearance of this component by using various properties and options that are described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name            | Type      | Description                                                                                                         |
+|:----------------|:----------|:--------------------------------------------------------------------------------------------------------------------|
+| Active Key      | `string`  | The key of the currently selected menu element, corresponding to one of values specified in Items                   |
+| Appearance      | `choice`  | The visual style of the component (i.e., _default_, _tabs_, or _subtle_)                                            |
+| Items           | `array`   | The list of component items, including their _Values_ and _Labels_. Use the add (**+**) button to append a new item |
+| Justified       | `boolean` | If set to _true_, the items will be justified to take up the full width of the menu                                 |
+| Pull Right      | `boolean` | If set to _true_, the component will be aligned to the right side                                                   |
+| Reversed        | `boolean` | If set to _true_, reverses the direction of tabs                                                                    |
+| Vertical        | `boolean` | If set to _true_, the items will be displayed vertically instead of horizontally                                    |
+| Show Navigation | `boolean` | Makes the navigation visible and invisible                                                                          |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
