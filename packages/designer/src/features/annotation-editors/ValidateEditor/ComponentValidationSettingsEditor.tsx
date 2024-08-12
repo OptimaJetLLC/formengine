@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import type {ValidationRuleSettings} from '@react-form-builder/core'
 import {boolean, namedObserver} from '@react-form-builder/core'
+import {useCallback} from 'react'
 import {List, ListItem, Rows} from '../../components/Containers'
 import {PropertyEditorWrapper} from '../../components/PropertyEditorWrapper'
 import type {AnnotationEditorProps} from '../AnnotationEditorProps'
@@ -21,17 +22,23 @@ const autoValidate = boolean
 const RawComponentValidationSettingsEditor = (props: AnnotationEditorProps) => {
   const {store, model} = props.componentData
   const type = model.valueType
-  const schema = store.schema ?? {validations: []}
+  const schema = store.schema ?? {}
+
+  const initValidationContext = useCallback(() => {
+    store.schema = {validations: []}
+    return store.schema
+  }, [store])
 
   if (!type) return null
 
   return (
     <Rows>
       <SWrapper>
-        <PropertyEditorWrapper annotation={autoValidate} context={schema}/>
+        <PropertyEditorWrapper annotation={autoValidate} context={schema}
+                               initContext={initValidationContext}/>
       </SWrapper>
       <AddRuleButton/>
-      <List>{renderRules(schema.validations)}</List>
+      <List>{renderRules(store.schema?.validations)}</List>
     </Rows>
   )
 }
