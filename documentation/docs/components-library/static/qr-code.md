@@ -1,7 +1,7 @@
 ---
 title: QR code
 sidebar_label: QR code
-sidebar_position: 120
+sidebar_position: 300
 description: Displays QR-code with or without a picture inside it
 slug: /components-library/static-components/qr-code
 ---
