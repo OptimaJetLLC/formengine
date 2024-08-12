@@ -1,0 +1,45 @@
+---
+sidebar_position: 10
+title: Breadcrumb
+description: Displays a hierarchical trail of links
+slug: /components-library/structure-components/breadcrumb
+---
+
+import AdditionalOptions from '../\_additional-options.mdx';
+import StyleWrapper from '../\_style-wrapper.mdx'
+import StyleForDevice from '../\_style-for-device.mdx'
+
+## Introduction
+
+The [Breadcrumb](https://rsuitejs.com/components/breadcrumb/) component is a navigational element that is typically used as a hierarchical
+trail of links, representing the current page's location within your form. It provides users with a visual representation of their
+navigation path, allowing them to easily understand their current position and navigate back to previous pages or sections. This component
+is a part of [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+This component typically consists of multiple clickable links, separated by a forward slash or any other delimiter of your choice. You can
+also set the number of items within the breadcrumb component and customize other properties that are described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name      | Type     | Description                                                                                                                                                                                            |
+|:----------|:---------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Separator | `string` | Character used to separate the breadcrumb items                                                                                                                                                        |
+| Max Items | `number` | The maximum number of breadcrumb items to display. If there are more items than this limit, the excess items will be truncated or hidden                                                               |
+| Items     | `string` | Used to define _values_ and _labels_ for your items. If the active checkbox set to _true_, makes your item focused and removes the underline. Add more items by using the corresponding (**+**) button |
+
+<AdditionalOptions/>
+
+## Style properties
+
+These are properties that allow to customize the size, color and other style properties of your component:
+
+<StyleForDevice/>
+
+- **Component**:
+
+  - _Justify_: Sets the alignment of your component's items (i.e., _Left_, _Center_, or _Right_).
+  - _Class Name_: Add a class name for your component for the subsequent styling if necessary.
+
+<StyleWrapper/>
