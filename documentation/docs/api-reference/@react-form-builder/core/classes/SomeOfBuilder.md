@@ -257,6 +257,24 @@ the annotation name.
 
 ***
 
+### hideEditor()
+
+> **hideEditor**(): `this`
+
+Hides the component property editor.
+
+#### Returns
+
+`this`
+
+the modified instance of the builder.
+
+#### Inherited from
+
+[`QuantifierBuilder`](QuantifierBuilder.md).[`hideEditor`](QuantifierBuilder.md#hideeditor)
+
+***
+
 ### hinted()
 
 > **hinted**(`hint`): [`SomeOfBuilder`](SomeOfBuilder.md)\<`T`\>

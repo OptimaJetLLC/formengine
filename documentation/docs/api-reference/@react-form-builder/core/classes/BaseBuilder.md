@@ -151,6 +151,20 @@ the annotation name.
 
 ***
 
+### hideEditor()
+
+> **hideEditor**(): `this`
+
+Hides the component property editor.
+
+#### Returns
+
+`this`
+
+the modified instance of the builder.
+
+***
+
 ### hinted()
 
 > **hinted**(`hint`): [`BaseBuilder`](BaseBuilder.md)\<`T`\>

@@ -140,6 +140,16 @@ export class BaseBuilder<T> {
   }
 
   /**
+   * Hides the component property editor.
+   * @returns the modified instance of the builder.
+   */
+  hideEditor(): this {
+    const clone = this.clone()
+    assign(clone.annotation, {editor: undefined})
+    return clone
+  }
+
+  /**
    * Returns the annotation name.
    * @param key the property name
    * @returns the annotation name.
