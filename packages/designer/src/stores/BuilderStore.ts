@@ -554,7 +554,7 @@ export class BuilderStore implements IFormBuilder {
    * @param source the component for removal.
    */
   remove(source: ComponentData) {
-    this.selected.clear()
+    this.selected.delete(source)
     this.viewer.form.localization.removeLocalization(source.key)
     source.delete()
   }
