@@ -25,7 +25,8 @@ const RawComponentValidationSettingsEditor = (props: AnnotationEditorProps) => {
   const schema = store.schema ?? {}
 
   const initValidationContext = useCallback(() => {
-    store.schema = {validations: []}
+    store.schema ??= {}
+    store.schema.validations ??= []
     return store.schema
   }, [store])
 
