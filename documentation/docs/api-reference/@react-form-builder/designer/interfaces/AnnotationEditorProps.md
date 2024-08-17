@@ -44,6 +44,8 @@ Disables the ability to make the property computable.
 
 > **getComputeCode**: \<`T`\>(`type`, `params`?) => `string`
 
+Returns the code of the computed property.
+
 #### Type Parameters
 
 • **T** *extends* [`ComponentPropertyComputeType`](../../core/type-aliases/ComponentPropertyComputeType.md)
@@ -91,6 +93,8 @@ Returns the type of calculation for the property.
 ### hasComputeCode()
 
 > **hasComputeCode**: (`type`) => `boolean`
+
+Returns true if the property has a compute code for the specified type, false otherwise.
 
 #### Parameters
 

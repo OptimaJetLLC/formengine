@@ -80,6 +80,8 @@ Contains a field validation errors if the field provides multiple errors (i.e. f
 
 `Record`\<`string`, `unknown`\>
 
+Contains a field validation errors if the field provides multiple errors (i.e. field is template).
+
 #### Implementation of
 
 [`Field`](../interfaces/Field.md).[`errors`](../interfaces/Field.md#errors)
@@ -108,6 +110,8 @@ Flag, false if nested form data show as nested object, true otherwise.
 
 `any`
 
+Flag, false if nested form data show as nested object, true otherwise.
+
 #### Implementation of
 
 [`Field`](../interfaces/Field.md).[`storeDataInParentForm`](../interfaces/Field.md#storedatainparentform)
@@ -123,6 +127,8 @@ Value of the field.
 #### Returns
 
 `unknown`
+
+Value of the field.
 
 #### Implementation of
 

@@ -2,6 +2,8 @@
 
 > **SchemaResolver**\<`T`\>: (`value`) => [`ResolvedValidator`](ResolvedValidator.md)
 
+The validation function factory.
+
 ## Type Parameters
 
 • **T**

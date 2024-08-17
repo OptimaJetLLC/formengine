@@ -28,6 +28,8 @@ The displayed form.
 
 > **localizeErrorMessages**: (`componentStore`, `validationResults`?) => `undefined` \| `string`
 
+The function to localize the validation error message.
+
 #### Parameters
 
 • **componentStore**: [`ComponentStore`](../classes/ComponentStore.md)
@@ -49,6 +51,8 @@ the result of localization or undefined.
 ### reduceScreen()
 
 > **reduceScreen**: \<`T`\>(`callback`, `initialValue`) => `T`
+
+Performs the callback function on each element of the component tree, accumulates the return values.
 
 #### Type Parameters
 

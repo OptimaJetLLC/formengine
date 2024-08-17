@@ -2,6 +2,8 @@
 
 > **DefineActionHelper**: \<`T`\>(`name`, `func`, `params`?, `description`?) => [`ActionDefinition`](../classes/ActionDefinition.md)
 
+The defineAction helper type. **Internal use only.**
+
 ## Type Parameters
 
 • **T**

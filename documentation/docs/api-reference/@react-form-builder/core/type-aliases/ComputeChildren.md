@@ -2,6 +2,8 @@
 
 > **ComputeChildren**: (`componentData`, `componentProps`) => `Record`\<`string`, `any`\>
 
+Function that calculates all child properties of a component. **Internal use only.**
+
 ## Parameters
 
 • **componentData**: [`ComponentData`](../classes/ComponentData.md)

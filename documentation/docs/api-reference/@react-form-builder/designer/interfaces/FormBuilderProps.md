@@ -143,6 +143,8 @@ The set of functions that validate the form data.
 
 > `optional` **getForm**: (`name`?) => `string` \| `Promise`\<`string`\>
 
+Loads the form.
+
 #### Parameters
 
 • **name?**: `string`

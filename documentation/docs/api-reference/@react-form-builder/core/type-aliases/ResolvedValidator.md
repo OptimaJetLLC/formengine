@@ -2,6 +2,8 @@
 
 > **ResolvedValidator**: (`value`, `store`) => `Promise`\<[`ValidationResult`](ValidationResult.md)[] \| `undefined`\>
 
+The function that validates a value and returns the validation result.
+
 ## Parameters
 
 • **value**: `any`

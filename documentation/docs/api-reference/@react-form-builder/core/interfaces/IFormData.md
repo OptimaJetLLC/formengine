@@ -20,6 +20,8 @@ Clears the form data.
 
 > **getValidationResult**: () => `Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md)\>
 
+Returns the validation results without triggering an events and changing the state of the form.
+
 #### Returns
 
 `Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md)\>

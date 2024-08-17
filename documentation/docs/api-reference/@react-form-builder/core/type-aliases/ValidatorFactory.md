@@ -2,6 +2,8 @@
 
 > **ValidatorFactory**\<`Params`\>: (`args`) => [`RuleValidator`](RuleValidator.md)
 
+The validation function factory.
+
 ## Type Parameters
 
 • **Params**

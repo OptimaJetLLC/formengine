@@ -2,6 +2,8 @@
 
 > **ActionsInitializer**: (`props`, `def`) => `Record`\<[`EventName`](EventName.md), [`ActionEventHandler`](ActionEventHandler.md) \| [`ActionDefinition`](../classes/ActionDefinition.md)\>
 
+The type of function that initializes an actions on a component. **Internal use only.**
+
 ## Parameters
 
 • **props**: [`ComponentStore`](../classes/ComponentStore.md)\[`"props"`\]

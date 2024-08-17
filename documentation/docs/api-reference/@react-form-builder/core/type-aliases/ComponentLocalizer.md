@@ -2,6 +2,8 @@
 
 > **ComponentLocalizer**: (`componentStore`, `language`) => `Record`\<`string`, `any`\>
 
+The function to localize the properties of a component.
+
 ## Parameters
 
 • **componentStore**: [`ComponentStore`](../classes/ComponentStore.md)

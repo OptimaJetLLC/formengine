@@ -16,6 +16,8 @@ The component className.
 
 > `optional` **customRenderer**: (`defaultElement`, `component`, `props`) => `ReactElement`
 
+The component custom renderer.
+
 #### Parameters
 
 • **defaultElement**: `ReactElement`

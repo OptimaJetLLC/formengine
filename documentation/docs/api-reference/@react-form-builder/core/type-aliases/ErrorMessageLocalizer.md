@@ -2,6 +2,8 @@
 
 > **ErrorMessageLocalizer**: (`value`) => `string` \| `undefined`
 
+A function that localizes validation error messages.
+
 ## Parameters
 
 • **value**: [`ValidationResult`](ValidationResult.md)[] \| `undefined`
