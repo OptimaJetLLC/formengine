@@ -20,7 +20,7 @@ npm-update-release-date:
 # npm-demo-build builds demo
 npm-demo-build:
   FROM +npm-update-release-date
-  RUN npm run demo:build
+  RUN NODE_OPTIONS="--max-old-space-size=4096" npm run demo:build
 
 # npm-documentation-build builds documentation
 npm-documentation-build:
