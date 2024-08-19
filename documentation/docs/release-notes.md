@@ -4,6 +4,19 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.10.0
+
+_August_ 19, 2024
+
+- Added a FormBuilder prop to [control the designer's theme](/theme-manipulation).
+- Added an [hideEditor()](/api-reference/@react-form-builder/core/classes/AnnotationBuilder#hideeditor)
+  option that allows hide the component property editor when creating annotations (defining component properties).
+
+### Fixed bugs
+
+- After unchecking the `Auto validate` checkbox, the checkbox stops working and the list of previously created validators is deleted.
+- When clicking on the `Delete` button without selecting a component, the currently selected component will lose its selection
+
 ## 1.9.0
 
 _August_ 6, 2024
