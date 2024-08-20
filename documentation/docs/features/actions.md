@@ -8,16 +8,17 @@ slug: /actions
 
 ## Overview
 
-Actions are simply JavaScript functions that are used to handle events. Actions are of the following types:
+Actions are reusable, asynchronous JavaScript functions that enable you to handle events and interact with your form in a flexible and
+efficient way. There are three types of actions:
 
-1. Common - these are useful predefined actions that are useful when working with a form:
+- __Common__: These are pre-defined actions that provide a convenient way to perform common tasks with a form, such as:
 
-   1. _validate_ - validates the form.
-   2. _clear_ - clears the form fields.
-   3. _reset_ - sets the value of form fields to their default value.
+  - _validate_: Validates the form.
+  - _clear_: Clears the form fields.
+  - _reset_: Sets the value of form fields to their default value.
 
-2. Code - the code of such actions is written directly in the designer, in the code editor.
-3. Custom - these are actions passed to the properties of the FormBuilder/FormViewer component.
+- __Code__: These actions allow you to write custom JavaScript code directly in the designer's code editor.
+- __Custom__: These are custom actions that can be passed as properties to the FormBuilder or FormViewer component.
 
 ## Events
 
@@ -41,8 +42,32 @@ event in the list of available component events and will be able to bind an acti
 
 ## Working with actions
 
-Let's open our [demo](https://demo.formengine.io/). And select the Save button in the designer, as in the screenshot below. In the right
-panel, select the "Actions" tab.
+### Description
+
+Actions work [asynchronously](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing), which means that they are
+executed in a sequential, step-by-step manner. This approach allows for efficient processing of multiple actions, ensuring that your form
+remains responsive and interactive. Here's how actions work:
+
+1. When an event is triggered, the assigned actions are executed one by one, in the order they were defined.
+2. Each action is executed independently, allowing the next action to start only when the previous one has completed.
+3. If an action encounters an error and returns a failure, the entire sequence of actions will be terminated, and no further actions will be
+   executed.
+
+The asynchronous approach ensures improved performance, flexibility to define complex workflows, and simplified error handling. To
+illustrate this concept, let's consider an example:
+
+Suppose you have a form that inquires users to enter their data and click _Save_. The Save button incorporates two onClick actions:
+
+- First for validating the results
+- Second for showing the validation results
+
+Therefore, in case the first validation action fails due to invalid data, the entire sequence will be terminated, and the following action
+will not be executed. For more details, follow the example below that illustrates how to define this sequence and such actions.
+
+### Example
+
+Let's open our [demo](https://demo.formengine.io/) and select the _Save_ button in the designer, as shown in the screenshot below. In the
+right panel, select the "Actions" tab.
 
 ![Actions 01](/assets/actions/actions-01.png)
 
@@ -79,6 +104,7 @@ async function Action (e, args) {
 ```
 
 There are two parameters in this function:
+
 1. e is an object of type [ActionEventArgs](/api-reference/@react-form-builder/core/classes/ActionEventArgs).
 2. args - this object will store values of arguments of action parameters.
 
