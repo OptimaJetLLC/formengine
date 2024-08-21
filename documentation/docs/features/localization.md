@@ -257,6 +257,145 @@ This function localizes only the `placeholder` property and only on a component 
 the full code of the selected language. You can pass the current language through
 the [language](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#language) property.
 
+## Additional localization functions
+
+In addition to localization properties and functions mentioned above, there are several functions that allow you to customize specific
+aspects of localization. For example, such functions can determine the direction of text, which is crucial for certain languages.
+
+### withViewerWrapper
+
+The [withViewerWrapper](/api-reference/@react-form-builder/core/classes/View#withviewerwrapper) allows you to add a
+wrapper to the form viewer. This wrapper can be utilized to modify various localization properties and provide a customized experience
+for different languages or locales. The wrapper component accepts properties of
+type [FormViewerWrapperComponentProps](/api-reference/@react-form-builder/core/interfaces/FormViewerWrapperComponentProps). You can define
+your own wrapper for your component library and pass it to the `withViewerWrapper` function.
+
+One practical example of using the `withViewerWrapper` function is by implementing
+the [RsLocalizationWrapper](/api-reference/@react-form-builder/components-rsuite/functions/RsLocalizationWrapper) for React Suite
+components, i.e.:
+
+```typescript
+view.withViewerWrapper(RsLocalizationWrapper)
+```
+
+This wrapper allows you to configure localization settings for components. For example, this is how the `RsLocalizationWrapper` component
+implementation looks like:
+
+```tsx
+export const RsLocalizationWrapper = ({language, children}: FormViewerWrapperComponentProps) => {
+  return <CustomProvider rtl={language.bidi === 'rtl'}
+                         locale={rSuiteLocales[language.fullCode] ?? defaultComponentsLocale}>
+    {children}
+  </CustomProvider>
+}
+```
+
+Let's take a closer look at what this code does. The `RsLocalizationWrapper` function returns
+the [CustomProvider](https://rsuitejs.com/components/custom-provider/#custom-provider) component, setting the `rtl` property to `true` if
+the language has the [bidi](/api-reference/@react-form-builder/core/classes/Language#bidi) property set to `rtl`, and also sets the locale
+for the components. The `children` are the child components to be wrapped.
+
+You can write a similar wrapper if you use [MUI components](https://mui.com/material-ui/customization/right-to-left/), for example.
+
+### withCssLoader
+
+The [withCssLoader](/api-reference/@react-form-builder/core/classes/View#withcssloader) allows you to apply a CSS loader to the
+component based on the BiDi (Bidirectional) layout. This enables you to load specific CSS styles based on the text direction and provides
+flexibility in customizing the component's appearance.
+
+Here are examples of how the withCssLoader function can be implemented:
+
+```typescript
+view
+  .withCssLoader(BiDi.LTR, ltrCssLoader)
+  .withCssLoader(BiDi.RTL, rtlCssLoader)
+  .withCssLoader('common', formEngineRsuiteCssLoader)
+```
+
+The first loader, [ltrCssLoader](/api-reference/@react-form-builder/components-rsuite/functions/ltrCssLoader), provides a CSS loader for
+left-to-right (LTR) text direction. This loader will be applied to the component when the text direction is LTR. Similarly, on the next line
+is a CSS loader for right-to-left (RTL) text
+direction, [rtlCssLoader](/api-reference/@react-form-builder/components-rsuite/functions/rtlCssLoader). This loader will be applied when the
+text direction is RTL. Finally, the last line specifies a CSS loader named
+[formEngineRsuiteCssLoader](/api-reference/@react-form-builder/components-rsuite/functions/formEngineRsuiteCssLoader), which is loaded
+regardless of the text direction.
+
+The following snippet showcases how the loaders can be implemented:
+
+```typescript
+/**
+ * Represents a relationship attribute value used in HTML.
+ */
+export type Rel = 'stylesheet' | string
+
+/**
+ * Loads a resource into the document head asynchronously.
+ * @param id the identifier of the resource.
+ * @param href represents a URL to the resource.
+ * @param rel the relationship of the resource to the document.
+ * @returns the promise that resolves when the resource has been loaded successfully.
+ */
+export const loadResource = (id: string, href: string, rel: Rel) => {
+  return new Promise<void>((resolve, reject) => {
+    if (document.getElementById(id)) return resolve()
+
+    const link = document.createElement('link')
+    link.id = id
+    link.rel = rel
+    link.href = href
+    link.onload = () => {
+      resolve()
+    }
+    link.onerror = reject
+
+    document.head.appendChild(link)
+  })
+}
+
+/**
+ * Unloads a resource from the DOM based on its ID.
+ * @param id the ID of the resource to unload.
+ */
+export const unloadResource = (id: string) => {
+  const link = document.getElementById(id)
+  link?.parentNode?.removeChild(link)
+}
+
+export const ltrCssLoader = async () => {
+  const href = (await import('../public/css/rsuite-no-reset.min.css?url')).default
+  await loadResource(resourceIds[BiDi.LTR], href, 'stylesheet')
+  unloadResource(resourceIds[BiDi.RTL])
+}
+
+export const rtlCssLoader = async () => {
+  const href = (await import('../public/css/rsuite-no-reset-rtl.min.css?url')).default
+  await loadResource(resourceIds[BiDi.RTL], href, 'stylesheet')
+  unloadResource(resourceIds[BiDi.LTR])
+}
+
+export const formEngineRsuiteCssLoader = async () => {
+  const href = (await import('../public/css/formengine-rsuite.css?url')).default
+  await loadResource('form-engine-css', href, 'stylesheet')
+}
+```
+
+In the example above, the `ltrCssLoader` function loads the Left-To-Right (LTR) CSS for the React Suite library. It imports the CSS file and
+uses the `loadResource` function to load the CSS dynamically. Similarly, the `rtlCssLoader` function loads the Right-to-Left (RTL) CSS for
+the React Suite library. It imports the RTL CSS file and uses the `loadResource` function to load it. The `formEngineRsuiteCssLoader`
+function loads custom styles for the FormEngine over the React Suite library.
+
+## Setting the form language
+
+To set the language of the form, you can pass the current language through
+the [language](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#language) property:
+
+```tsx
+<FormViewer
+  language={language}
+  {...otherProps}
+/>
+```
+
 ## Conclusion
 
 We have shown how localization of component properties works in Form Builder. Localization works the same way
