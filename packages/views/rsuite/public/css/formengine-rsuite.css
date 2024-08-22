@@ -108,7 +108,6 @@
   & input,
   & textarea.rs-input {
     font-family: inherit;
-    line-height: normal;
     color: var(--rs-text-primary);
   }
 

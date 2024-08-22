@@ -28,7 +28,7 @@ export const Picker = (props: AnnotationEditorProps) => {
 
   return <LabeledProperty {...props}>
     <SInputPicker value={value ?? props.annotation.default ?? ''} data={data} onChange={onChange} onClean={onClean}
-                  block cleanable creatable size={'xs'} {...props.annotation.editorProps}/>
+                  block cleanable creatable size={'xs'} {...props.annotation.editorProps} placement={'autoVerticalEnd'}/>
   </LabeledProperty>
 }
 
