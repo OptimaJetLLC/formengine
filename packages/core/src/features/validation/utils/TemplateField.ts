@@ -30,7 +30,7 @@ export class TemplateField implements Field {
     readonly viewerStore: IStore,
   ) {
     makeAutoObservable(this, undefined,
-      {name: nameObservable('FormField', {key: componentStore.key})})
+      {name: nameObservable('FormField', {key: componentStore.key}), autoBind: true})
   }
 
   /**

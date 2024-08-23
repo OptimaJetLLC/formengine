@@ -78,7 +78,7 @@ export class SimpleField implements Field {
       model: false,
       valueCalculator: false,
       dataValidator: observable.ref
-    }, {name: nameObservable(className, {key: componentStore.key})})
+    }, {name: nameObservable(className, {key: componentStore.key}), autoBind: true})
 
     this.#disposers = [
       autorun(
