@@ -137,3 +137,164 @@ example [this](/usage#designer) page.
 In the simplest case, a custom function is just an arrow function like `logEventArgs` from the example above. If you need a function with
 parameters, use the [ActionDefinition.functionalAction](/api-reference/@react-form-builder/core/classes/ActionDefinition#functionalaction)
 function to define the action, as in the case of `assertArgs`.
+
+## Common actions
+
+Common actions, also known as _common functions_, are reusable functions that can be used across multiple forms to perform specific tasks.
+These functions enable the reuse of various events on form inputs, making it easier to manage and maintain complex form logic.
+These common functions can be used via both _FormBuilder_ and _FormViewer_.
+
+Common functions are defined via
+the [actions](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#actions) parameter. The
+following provides an example that showcases how to define a new common function for __FormBuilder__ via this property:
+
+```tsx {13-27}
+<FormBuilder
+  view={builderView}
+  getForm={getFormFn}
+  formName={formName}
+  initialData={({})}
+  formStorage={formStorage}
+  localize={localizeFn}
+  onFormDataChange={({data, errors}) => {
+    console.log('onFormDataChange', {data, errors})
+  }}
+  viewerRef={setRef}
+  validators={customValidators}
+  actions={{
+    weatherRequest: ActionDefinition.functionalAction(async (e, args) => {
+      let latitude = Number(e.data.latitude)
+      if (Number.isNaN(latitude)) latitude = 40.416763
+      let longitude = Number(e.data.longitude)
+      if (Number.isNaN(longitude)) longitude = -3.703999
+      try {
+        const request = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&ourly=temperature_2m,elativehumidity_2m,windspeed_10m`, {signal: AbortSignal.timeout(10000)})
+        const value = await request.json()
+        e.setUserDefinedProps({children: `Current weather is ${value.current_weather.temperature} °C`})
+      } catch (error) {
+        e.setUserDefinedProps({children: `Current weather is not available`})
+      }
+    })
+  }}
+/>
+```
+
+This example function is called `weatherRequest` and it is implemented via the Open Meteo API. As the name implies, this function is used to
+check the weather and display the results within forms. This function requires to specify coordinates. In case the weather data is available
+for specified coordinates the function returns the temperature in Celsius.
+
+The code snippet below showcases how to define a form that works with this function:
+
+```JSON
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsContainer1",
+        "type": "RsContainer",
+        "props": {},
+        "css": {
+          "any": {
+            "object": {
+              "flexDirection": "row"
+            }
+          }
+        },
+        "children": [
+          {
+            "key": "latitude",
+            "type": "RsInput",
+            "props": {
+              "label": {
+                "value": "Latitude"
+              },
+              "placeholder": {
+                "value": "Enter latitude, for example 40.416763"
+              }
+            }
+          },
+          {
+            "key": "longitude",
+            "type": "RsInput",
+            "props": {
+              "placeholder": {
+                "value": "Enter longitude, for example -3.703999"
+              },
+              "label": {
+                "value": "Longitude"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "rsButton1",
+        "type": "RsButton",
+        "props": {
+          "active": {
+            "value": false
+          },
+          "appearance": {
+            "value": "primary"
+          },
+          "color": {
+            "value": "blue"
+          },
+          "children": {
+            "value": "Check weather"
+          }
+        },
+        "events": {
+          "onClick": [
+            {
+              "name": "weatherRequest",
+              "type": "custom"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
+```
+
+The following snippet showcases how to implement the `weatherRequest` function for __FormViewer__:
+
+```tsx
+<FormViewer
+  actions={{
+    weatherRequest: ActionDefinition.functionalAction(async (e, args) => {
+      let latitude = Number(e.data.latitude)
+      if (Number.isNaN(latitude)) latitude = 40.416763
+      let longitude = Number(e.data.longitude)
+      if (Number.isNaN(longitude)) longitude = -3.703999
+      try {
+        const request = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&ourly=temperature_2m,elativehumidity_2m,windspeed_10m`, {signal: AbortSignal.timeout(10000)})
+        const value = await request.json()
+        e.setUserDefinedProps({children: `Current weather is ${value.current_weather.temperature} °C`})
+      } catch (error) {
+        e.setUserDefinedProps({children: `Current weather is not available`})
+      }
+    })
+  }}
+  {...otherProps}
+/>
+```
+
+Therefore, by adding the `weatherRequest` function to FormViewer or FormBuilder and using the provided example form, you can enter the
+coordinates and display the temperature data. You will also be able to use this function as a common action within your other defined forms.
