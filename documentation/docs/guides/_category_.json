@@ -1,0 +1,10 @@
+{
+  "label": "Guides",
+  "position": 35,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Guides",
+    "description": "Drag'n'Drop Form builder guides."
+  }
+}
