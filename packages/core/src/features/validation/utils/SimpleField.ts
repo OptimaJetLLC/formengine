@@ -215,12 +215,17 @@ export class SimpleField implements Field {
   }
 
   /**
-   * @inheritDoc
+   * Sets the error value.
+   * @param error the error value to be set. If the error is `undefined` or `null`, the error value will be reset to `undefined`.
+   * @throws {Error} throws an error if the provided value is not a string, undefined, or null.
    */
   setError = (error: unknown) => {
-    if (typeof error !== 'string') {
-      throw new Error(`Expected 'string' type, got '${typeof error}'`)
+    if (typeof error === 'string') {
+      this.error = error
+    } else if (typeof error === 'undefined' || error === null) {
+      this.error = undefined
+    } else {
+      throw new Error(`Expected 'string | undefined | null' type, got '${typeof error}'`)
     }
-    this.error = error
   }
 }
