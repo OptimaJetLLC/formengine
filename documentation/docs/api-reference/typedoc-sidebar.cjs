@@ -369,6 +369,16 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/BuilderContextType",
+            "label": "BuilderContextType"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/BuilderMode",
+            "label": "BuilderMode"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/BuilderSetup",
             "label": "BuilderSetup"
           },
@@ -700,6 +710,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/variables/BuilderContext",
+            "label": "BuilderContext"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/variables/DidMountEvent",
             "label": "DidMountEvent"
           },
@@ -849,6 +864,11 @@ const typedocSidebar = { items: [
         "type": "category",
         "label": "Functions",
         "items": [
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/BuilderContextProvider",
+            "label": "BuilderContextProvider"
+          },
           {
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/functions/ComponentDataProvider",
@@ -1078,6 +1098,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/functions/unloadResource",
             "label": "unloadResource"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/useBuilderContext",
+            "label": "useBuilderContext"
           },
           {
             "type": "doc",

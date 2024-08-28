@@ -79,6 +79,8 @@
 - [ArgumentValue](type-aliases/ArgumentValue.md)
 - [Arguments](type-aliases/Arguments.md)
 - [BoundValueSchema](type-aliases/BoundValueSchema.md)
+- [BuilderContextType](type-aliases/BuilderContextType.md)
+- [BuilderMode](type-aliases/BuilderMode.md)
 - [BuilderSetup](type-aliases/BuilderSetup.md)
 - [ComponentKey](type-aliases/ComponentKey.md)
 - [ComponentKind](type-aliases/ComponentKind.md)
@@ -147,6 +149,7 @@
 
 - [ActionEventArgsDeclaration](variables/ActionEventArgsDeclaration.md)
 - [AsyncFunction](variables/AsyncFunction.md)
+- [BuilderContext](variables/BuilderContext.md)
 - [DidMountEvent](variables/DidMountEvent.md)
 - [IFormDataDeclaration](variables/IFormDataDeclaration.md)
 - [KeySymbol](variables/KeySymbol.md)
@@ -179,6 +182,7 @@
 
 ## Functions
 
+- [BuilderContextProvider](functions/BuilderContextProvider.md)
 - [ComponentDataProvider](functions/ComponentDataProvider.md)
 - [ComponentTree](functions/ComponentTree.md)
 - [DefaultWrapper](functions/DefaultWrapper.md)
@@ -225,6 +229,7 @@
 - [toLabeledValues](functions/toLabeledValues.md)
 - [treeForEach](functions/treeForEach.md)
 - [unloadResource](functions/unloadResource.md)
+- [useBuilderContext](functions/useBuilderContext.md)
 - [useComponentData](functions/useComponentData.md)
 - [useDisposable](functions/useDisposable.md)
 - [useErrorModel](functions/useErrorModel.md)

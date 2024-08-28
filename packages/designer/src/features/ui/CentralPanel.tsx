@@ -1,9 +1,9 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import type {ComponentData} from '@react-form-builder/core'
-import {FormViewer, useViewerProps} from '@react-form-builder/core'
+import {BuilderContextProvider, FormViewer, useViewerProps} from '@react-form-builder/core'
 import type {ComponentProps} from 'react'
-import {useCallback} from 'react'
+import {useCallback, useMemo} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {customizable, customizableObserver} from '../customization'
 import {EditableWrapper, getBuilderChildren} from '../dnd'
@@ -19,13 +19,16 @@ const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
     return getBuilderChildren(builderStore, componentData, componentProps)
   }, [builderStore])
   const computeChildren = builderMode === 'builder' ? builderComputeChildren : undefined
+  const builderContext = useMemo(() => ({builderMode}), [builderMode])
 
   return (
     <SContainer {...props}>
       <Header/>
       <SFormContainer className={cx(viewMode, builderMode, {landscapeMode})}>
-        <FormViewer {...viewerProps} componentWrapper={componentWrapper} viewMode={viewMode} computeChildren={computeChildren}
-                    formName={builderStore.activeFormName}/>
+        <BuilderContextProvider value={builderContext}>
+          <FormViewer {...viewerProps} componentWrapper={componentWrapper} viewMode={viewMode} computeChildren={computeChildren}
+                      formName={builderStore.activeFormName}/>
+        </BuilderContextProvider>
       </SFormContainer>
     </SContainer>
   )

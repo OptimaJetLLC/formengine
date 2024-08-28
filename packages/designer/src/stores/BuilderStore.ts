@@ -1,5 +1,6 @@
 import type {
   Annotation,
+  BuilderMode,
   ComponentData,
   EditorType,
   Language,
@@ -34,7 +35,7 @@ import {annotationResolver} from '../features/validation'
 import type {FormBuilderProps} from '../FormBuilderProps'
 import {determineTheme} from '../utils/determineTheme'
 import {getSystemTheme} from '../utils/getSystemTheme'
-import type {BuilderMode, BuilderTheme, IFormBuilder, InsertPosition} from '../utils/types'
+import type {BuilderTheme, IFormBuilder, InsertPosition} from '../utils/types'
 import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
 import {CachedFormStorage} from './CachedFormStorage'
 import {defaultBottomPanelHeight, defaultOpenedPanels, defaultViewMode} from './constants'

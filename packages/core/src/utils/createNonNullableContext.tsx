@@ -4,10 +4,11 @@ import {createContext, useContext} from 'react'
 /**
  * Creates non-nullable React context. **Internal use only.**
  * @param name the context name.
+ * @param defaultValue the optional default value.
  * @returns the tuple [hook, provider, and common context] for interactions with a non-nullable context.
  */
-export function createNonNullableContext<T>(name: string): [() => T, Provider<T>, Context<T | null>] {
-  const context = createContext<T | null>(null)
+export function createNonNullableContext<T>(name: string, defaultValue: T | null = null): [() => T, Provider<T>, Context<T | null>] {
+  const context = createContext<T | null>(defaultValue)
   context.displayName = name
 
   const hook = createContextHook(context)

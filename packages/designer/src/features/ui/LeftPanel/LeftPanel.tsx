@@ -1,6 +1,6 @@
+import type {BuilderMode} from '@react-form-builder/core'
 import type {ComponentProps, ReactElement} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
-import type {BuilderMode} from '../../../utils/types'
 import {Rows} from '../../components/Containers'
 import {customizableObserver} from '../../customization'
 import {Panel} from '../Panel'
