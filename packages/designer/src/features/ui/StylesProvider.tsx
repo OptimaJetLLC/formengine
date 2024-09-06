@@ -1,6 +1,8 @@
+import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {namedObserver} from '@react-form-builder/core'
 import type {ComponentProps} from 'react'
+import {useBuilderStore} from '../../utils/BuilderStoreContext'
 
 const builderClassName = 'optimajet-formbuilder'
 
@@ -9,7 +11,8 @@ const SDiv = styled.div`
 `
 
 const RawStylesProvider = (props: ComponentProps<any>) => {
-  return <SDiv className={builderClassName}>
+  const {theme} = useBuilderStore()
+  return <SDiv className={cx(builderClassName, theme)}>
     {props.children}
   </SDiv>
 }

@@ -1496,6 +1496,43 @@ const typedocSidebar = { items: [
   },
   {
     "type": "category",
+    "label": "@react-form-builder/components-rich-text",
+    "items": [
+      {
+        "type": "category",
+        "label": "Interfaces",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-rich-text/interfaces/RichTextEditorProps",
+            "label": "RichTextEditorProps"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Variables",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-rich-text/variables/richTextComponent",
+            "label": "richTextComponent"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-rich-text/variables/richTextModel",
+            "label": "richTextModel"
+          }
+        ]
+      }
+    ],
+    "link": {
+      "type": "doc",
+      "id": "api-reference/@react-form-builder/components-rich-text/index"
+    }
+  },
+  {
+    "type": "category",
     "label": "@react-form-builder/components-rsuite",
     "items": [
       {

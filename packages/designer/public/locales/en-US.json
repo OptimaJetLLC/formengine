@@ -217,6 +217,16 @@
     "color": {
       "name": "Color",
       "hint": "The main color of the component"
+    },
+    "readOnly": {
+      "name": "Read only",
+      "hint": "If true, the component will be read-only"
+    }
+  },
+  "RichTextEditor": {
+    "toolbarOptions": {
+      "name": "Toolbar options",
+      "hint": "Groups of buttons to be displayed on the toolbar"
     }
   },
   "leftMenu": {

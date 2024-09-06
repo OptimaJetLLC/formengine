@@ -1,5 +1,6 @@
 import {antdComponents, antTooltip} from '@react-form-builder/components-antd'
 import {fastQrComponent} from '@react-form-builder/components-fast-qr'
+import {richTextComponent} from '@react-form-builder/components-rich-text'
 import {
   formEngineRsuiteCssLoader,
   ltrCssLoader,
@@ -34,7 +35,7 @@ const data = {
   agreeCheckbox: true
 }
 
-const components = [...rSuiteComponents, ...antdComponents, throwErrorComponent, fastQrComponent]
+const components = [...rSuiteComponents, ...antdComponents, throwErrorComponent, fastQrComponent, richTextComponent]
   .map(definer => definer.build())
 const view = new BuilderView(components)
   .withErrorMeta(rsErrorMessage.build())

@@ -61,7 +61,7 @@ npm-check-tsc:
 prepare-npm-archives:
   FROM +sources
   RUN apt-get update && apt-get -y install jq
-  LET packagesToArchive = 'packages/core packages/designer packages/designer-bundle packages/viewer-bundle packages/views/rsuite packages/views/fast-qr'
+  LET packagesToArchive = 'packages/core packages/designer packages/designer-bundle packages/viewer-bundle packages/views/rsuite packages/views/fast-qr packages/views/rich-text'
   LET archiveName = ''
   FOR package IN $packagesToArchive
     RUN cd $package && npm run bundle
@@ -304,6 +304,7 @@ PUBLISH_RELEASE_TO_NPM:
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-designer"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rsuite"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-fast-qr"
+  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rich-text"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-designer-bundle"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-viewer-bundle"
 
@@ -349,7 +350,8 @@ dependencies:
    packages/apps/demo packages/apps/example-builder packages/apps/example-viewer \
    packages/core packages/designer packages/designer-bundle packages/indexed-db-form-storage \
    packages/viewer-bundle packages/views/antd packages/views/default packages/views/rsuite \
-   packages/views/fast-qr
+   packages/views/fast-qr \
+   packages/views/rich-text
 
   COPY documentation/website/package.json documentation/website
 
@@ -368,6 +370,7 @@ dependencies:
   COPY packages/views/default/package.json packages/views/default
   COPY packages/views/rsuite/package.json packages/views/rsuite
   COPY packages/views/fast-qr/package.json packages/views/fast-qr
+  COPY packages/views/rich-text/package.json packages/views/rich-text
 
   RUN npm install
   SAVE ARTIFACT package.json AS LOCAL package.json

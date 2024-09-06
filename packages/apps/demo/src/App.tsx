@@ -1,4 +1,5 @@
 import {fastQrComponent} from '@react-form-builder/components-fast-qr'
+import {richTextComponent} from '@react-form-builder/components-rich-text'
 import {
   formEngineRsuiteCssLoader,
   ltrCssLoader,
@@ -27,8 +28,9 @@ const initialData = {
   ['last name']: 'Bret',
 }
 
-const components = rSuiteComponents.map(definer => definer.build())
-const view = new BuilderView([...components, fastQrComponent.build()])
+const components = [...rSuiteComponents, fastQrComponent, richTextComponent]
+  .map(definer => definer.build())
+const view = new BuilderView(components)
   .withErrorMeta(rsErrorMessage.build())
   .withTooltipMeta(rsTooltip.build())
   .withTemplates([])

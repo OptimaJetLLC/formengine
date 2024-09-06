@@ -1,0 +1,29 @@
+{
+    "name": "@react-form-builder/components-rich-text",
+    "version": "1.10.0",
+    "private": false,
+    "main": "src/index.ts",
+    "type": "module",
+    "description": "OptimaJet Form Builder Components - Rich text editor",
+    "license": "Contact sales@optimajet.com",
+    "bugs": {
+        "email": "support@optimajet.com"
+    },
+    "scripts": {
+        "build": "vite build",
+        "clean": "rimraf dist temp",
+        "bundle": "npm-run-all -l clean build create-archive",
+        "create-archive": "node ./config/pack"
+    },
+    "dependencies": {
+        "@emotion/styled": "^11.10.5",
+        "@react-form-builder/core": "^1.10.0",
+        "lodash-es": "^4.17.21",
+        "react": ">=17.0.2 || ^18",
+        "react-quill-new": "^3.3.0"
+    },
+    "files": [
+        "dist/*",
+        "README.md"
+    ]
+}
