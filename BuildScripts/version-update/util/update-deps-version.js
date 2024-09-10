@@ -20,6 +20,7 @@ const packageList = [
   'packages/views/antd',
   'packages/views/default',
   'packages/views/rsuite',
+  'examples/with-formik'
 ]
 
 const depsSections = [

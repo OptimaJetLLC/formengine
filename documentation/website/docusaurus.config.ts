@@ -124,7 +124,34 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ['bash', 'json', 'scss']
+      additionalLanguages: ['bash', 'json', 'scss'],
+      magicComments: [
+        {
+          className: 'theme-code-block-highlighted-line',
+          line: 'highlight-next-line',
+          block: {start: 'highlight-start', end: 'highlight-end'},
+        },
+        {
+          className: 'code-block custom-code-highlight',
+          line: '&att',
+          block: {start: '&att>', end: '<&att'},
+        },
+        {
+          className: 'code-block-new custom-code-highlight',
+          line: '&new',
+          block: {start: '&new>', end: '<&new'},
+        },
+        {
+          className: 'code-block-changed custom-code-highlight',
+          line: '&chg',
+          block: {start: '&chg>', end: '<&chg'},
+        },
+        {
+          className: 'code-block-deleted custom-code-highlight',
+          line: '&del',
+          block: {start: '&del>', end: '<&del'},
+        },
+      ],
     },
     zoom: {
       selector: '.markdown :not(em) > img',

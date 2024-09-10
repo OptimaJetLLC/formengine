@@ -80,4 +80,10 @@ packages/views/fast-qr/node_modules
 
 sample-apps/formengine/.idea
 sample-apps/formengine/.DS_Store
+sample-apps/formengine/build
 sample-apps/formengine/node_modules
+
+examples/**/.idea
+examples/**/.DS_Store
+examples/**/build
+examples/**/node_modules

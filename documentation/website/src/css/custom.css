@@ -66,3 +66,31 @@ div.markdown img {
     display: none;
   }
 }
+
+.custom-code-highlight {
+  --code-border-width: 5px;
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 calc(var(--ifm-pre-padding) - var(--code-border-width));
+  border-left: var(--code-border-width) solid;
+}
+
+.code-block {
+  background-color: #47ccff2e;
+  border-color: #669999;
+}
+
+.code-block-new {
+  background-color: #00ff4c24;
+  border-color: #669966;
+}
+
+.code-block-changed {
+  background-color: #ffe4003d;
+  border-color: #CC9900;
+}
+
+.code-block-deleted {
+  background-color: #f8514926;
+  border-color: #CC3366;
+}
