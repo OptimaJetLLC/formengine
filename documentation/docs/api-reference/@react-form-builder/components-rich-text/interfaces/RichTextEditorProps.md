@@ -74,7 +74,7 @@ The CSS class name.
 
 > `optional` **initialValue**: `string`
 
-The initial value for editor.
+The initial value for the editor.
 
 ***
 
@@ -82,7 +82,7 @@ The initial value for editor.
 
 > `optional` **label**: `string`
 
-The label for component.
+The label for the component.
 
 ***
 
@@ -90,7 +90,9 @@ The label for component.
 
 > `optional` **modules**: `Record`\<`string`, `unknown`\>
 
-#### Inherited from
+Allows to customize the behavior and functionality of the editor.
+
+#### Overrides
 
 `ReactQuill.ReactQuillProps.modules`
 
@@ -100,7 +102,7 @@ The label for component.
 
 > **onChange**: (`value`?) => `void`
 
-Triggered after content changed.
+Triggered after the content changed.
 
 #### Parameters
 

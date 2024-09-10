@@ -8,6 +8,7 @@
 .optimajet-formbuilder, .optimajet-formviewer {
   .ql-tooltip.ql-editing {
     left: auto !important;
+    z-index: 10;
   }
 
   &.dark {

@@ -820,6 +820,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/variables/object",
+            "label": "object"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/variables/renderWhen",
             "label": "renderWhen"
           },

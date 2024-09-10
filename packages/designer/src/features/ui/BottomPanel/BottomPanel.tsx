@@ -2,11 +2,12 @@ import {css} from '@emotion/css'
 import {namedObserver} from '@react-form-builder/core'
 import type {ResizableProps} from 're-resizable'
 import {Resizable} from 're-resizable'
-import {CustomValidationCode, EditableAction, EditableProperty} from '../../../stores/BuilderStore'
+import {CustomValidationCode, EditableAction, EditableProperty, JsonCode} from '../../../stores/BuilderStore'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {CodeActionEditor} from '../../annotation-editors/EventEditor/components/CodeActionEditor/CodeActionEditor'
 import {ComputedPropertyEditor} from './ComputedPropertyEditor'
 import {CustomValidationCodeEditor} from './CustomValidationCodeEditor'
+import {JsonCodeEditor} from './JsonCodeEditor'
 
 const RawBottomPanel = () => {
   const store = useBuilderStore()
@@ -23,6 +24,10 @@ const RawBottomPanel = () => {
 
   if (currentEditable instanceof CustomValidationCode) {
     editor = <CustomValidationCodeEditor {...currentEditable}/>
+  }
+
+  if (currentEditable instanceof JsonCode) {
+    editor = <JsonCodeEditor {...currentEditable}/>
   }
 
   if (!editor) return null

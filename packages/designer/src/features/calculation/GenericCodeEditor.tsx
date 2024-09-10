@@ -5,6 +5,7 @@ import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
 import {CodeEditor} from '../components/CodeEditor/CodeEditor'
+import type {CodeEditorLanguage} from '../components/CodeEditor/CodeEditorProps'
 import {Columns, Rows} from '../components/Containers'
 import type {TestingEditorRef} from '../ui/BottomPanel/TestingEditor'
 import {TestingEditor, TestRunner} from '../ui/BottomPanel/TestingEditor'
@@ -21,6 +22,10 @@ export interface GenericCodeEditorProps {
    * Context line after the source code.
    */
   endContextLine?: string
+  /**
+   * Language mode.
+   */
+  language?: CodeEditorLanguage;
   /**
    * The source code.
    */
@@ -78,7 +83,7 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
   return <Columns style={{minHeight: 0, flex: 1}}>
     <Rows gap={10} style={{minHeight: 0, flex: 1.5}}>
       <CodeEditor beginContextLine={props.beginContextLine} endContextLine={props.endContextLine}
-                  initialValue={initialValue} onChange={setSourceCode}/>
+                  initialValue={initialValue} language={props.language} onChange={setSourceCode}/>
       <SDiv>
         <ButtonGroup size={'sm'}>
           <Button appearance="primary" onClick={handleSave}>{t('common.save')}</Button>

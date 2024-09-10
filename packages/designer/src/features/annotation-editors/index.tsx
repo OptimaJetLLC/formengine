@@ -11,6 +11,7 @@ import {EventEditor} from './EventEditor'
 import {KeyInput} from './KeyInput'
 import {MultiPicker} from './MultiPicker'
 import {NumberInput} from './NumberInput'
+import {ObjectInput} from './ObjectInput'
 import {Picker} from './Picker'
 import {RadioInput} from './RadioInput'
 import {RenderWhenEditor} from './RenderWhenEditor'
@@ -30,6 +31,7 @@ export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>>
   date: DateInput,
   size: SizeInput,
   array: ArrayInput,
+  object: ObjectInput,
   arrayOfString: ArrayOfStringInput,
   color: ColorInput,
   event: EventEditor,

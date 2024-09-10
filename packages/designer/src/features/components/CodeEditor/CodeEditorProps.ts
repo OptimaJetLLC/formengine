@@ -2,6 +2,11 @@ import type {Theme} from '@monaco-editor/react'
 import type {editor} from 'monaco-editor'
 
 /**
+ * Supported languages formatting.
+ */
+export type CodeEditorLanguage = 'javascript' | 'json' | 'scss' | 'fluent'
+
+/**
  * The properties of the UnconstrainedCodeEditor React component.
  */
 export interface UnconstrainedCodeEditorProps {
@@ -18,7 +23,7 @@ export interface UnconstrainedCodeEditorProps {
    * The code editor language.
    * @default 'javascript'
    */
-  language?: 'javascript' | 'json' | 'scss' | 'fluent'
+  language?: CodeEditorLanguage
   /**
    * The code editor height.
    */

@@ -1,4 +1,4 @@
-import {boolean, define, event, someOf, string} from '@react-form-builder/core'
+import {boolean, define, event, object, someOf, string} from '@react-form-builder/core'
 import {uniqueId} from 'lodash-es'
 import type {CSSProperties} from 'react'
 import {useCallback, useEffect, useMemo, useState} from 'react'
@@ -37,7 +37,7 @@ const defaultOptions: ToolbarOption[] = [
  */
 export interface RichTextEditorProps extends ReactQuill.ReactQuillProps {
   /**
-   * The initial value for editor.
+   * The initial value for the editor.
    */
   initialValue?: string
   /**
@@ -45,7 +45,7 @@ export interface RichTextEditorProps extends ReactQuill.ReactQuillProps {
    */
   className?: string
   /**
-   * Triggered after content changed.
+   * Triggered after the content changed.
    */
   onChange: (value?: string) => void
   /**
@@ -53,7 +53,11 @@ export interface RichTextEditorProps extends ReactQuill.ReactQuillProps {
    */
   toolbarOptions?: ToolbarOption[]
   /**
-   * The label for component.
+   * Allows to customize the behavior and functionality of the editor.
+   */
+  modules?: Record<string, unknown>
+  /**
+   * The label for the component.
    */
   label?: string
 }
@@ -64,28 +68,43 @@ const editorStyle: CSSProperties = {
   flex: 1
 }
 
-const RichTextEditor = ({initialValue, onChange, label, style, toolbarOptions, placeholder, ...props}: RichTextEditorProps) => {
-  const [value, setValue] = useState()
+const RichTextEditor = ({
+// The value is extracted and not used so that the editor is uncontrolled.
+                          value,
+                          initialValue,
+                          onChange,
+                          label,
+                          style,
+                          toolbarOptions,
+                          placeholder,
+                          modules: customModules,
+                          ...props
+                        }: RichTextEditorProps) => {
   const [key, setKey] = useState(uniqueId())
+
+  const plainInitialValue = useMemo(() => {
+    if (!initialValue) return initialValue
+    return JSON.parse(JSON.stringify(initialValue))
+  }, [initialValue])
+
   const handleChange: ReactQuill.ReactQuillProps['onChange'] = useCallback((value, delta, source, editor) => {
-    setValue(value)
     const content = editor.getContents()
     onChange(content)
   }, [onChange])
 
   useEffect(() => {
     setKey(uniqueId())
-  }, [placeholder, toolbarOptions])
+  }, [placeholder, toolbarOptions, customModules, plainInitialValue])
 
   const modules = useMemo(() => ({
-    toolbar: toolbarOptions?.map(option => options[option])
-  }), [toolbarOptions])
+    toolbar: toolbarOptions?.map(option => options[option]),
+    ...(customModules ?? {})
+  }), [customModules, toolbarOptions])
 
   return <RsLabeledInput style={style}>
     <RsRtlLabel>{label}</RsRtlLabel>
     <ReactQuill key={key}
-                defaultValue={initialValue}
-                value={value}
+                defaultValue={plainInitialValue}
                 onChange={handleChange}
                 modules={modules}
                 placeholder={placeholder}
@@ -102,12 +121,14 @@ export const richTextEditor = define(RichTextEditor, 'RichTextEditor')
   .name('Rich text editor')
   .category('fields')
   .props({
-    initialValue: string.valued,
+    value: object.valued.hideEditor(),
+    initialValue: object,
     label: string.default('Rich text editor'),
     placeholder: string,
     readOnly: boolean.default(false),
     toolbarOptions: someOf(...Object.keys(options)).withEditorProps({
       creatable: false
     }).default(defaultOptions),
+    modules: object,
     onChange: event
   })

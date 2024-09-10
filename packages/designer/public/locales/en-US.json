@@ -227,6 +227,10 @@
     "toolbarOptions": {
       "name": "Toolbar options",
       "hint": "Groups of buttons to be displayed on the toolbar"
+    },
+    "modules": {
+      "name": "Modules",
+      "hint": "Allows to customize the behavior and functionality of the editor. Read docs for more info."
     }
   },
   "leftMenu": {
@@ -290,7 +294,12 @@
     "ok": "OK",
     "compilationResult": "Compilation result:",
     "codePlaceholder": "// enter your code here",
-    "compile": "Compile"
+    "compile": "Compile",
+    "generic": {
+      "json": {
+        "title": "Edit JSON data for"
+      }
+    }
   },
   "propertiesEditor": {
     "selectElementForEdit": "Select element on form for edit properties",

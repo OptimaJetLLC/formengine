@@ -97,6 +97,25 @@ export class CustomValidationCode {
 }
 
 /**
+ * The editable json value.
+ */
+export class JsonCode {
+
+  /**
+   * Creates an editor for JSON.
+   * @param editorKey the unique code editor key.
+   * @param editorTitle the editor's title.
+   * @param json the editable JSON.
+   * @param onSave the callback function called when data should be saved.
+   */
+  constructor(readonly editorKey: string,
+              readonly editorTitle: string,
+              readonly json: string,
+              readonly onSave: (value: string) => void) {
+  }
+}
+
+/**
  * The editable action data.
  */
 export class EditableAction implements CodeActionEditorProps {
@@ -231,7 +250,7 @@ export class BuilderStore implements IFormBuilder {
   localizationLanguage: Language
   private readonly loadedLanguages: Record<string, FormBuilderI18nData> = {}
 
-  currentEditable?: EditableProperty | EditableAction | CustomValidationCode
+  currentEditable?: EditableProperty | EditableAction | CustomValidationCode | JsonCode
   lastSaveTime = new Date()
   readonly componentsModalState: ComponentsModalState = {
     opened: false,
@@ -341,6 +360,17 @@ export class BuilderStore implements IFormBuilder {
   editCustomValidationCode(componentKey: string, code: string, functionSignature: string,
                            onChange: (value: string) => void) {
     this.currentEditable = new CustomValidationCode(componentKey, code, functionSignature, onChange)
+  }
+
+  /**
+   * Opens the editor for JSON.
+   * @param componentKey the component key.
+   * @param editorTitle the editor's title.
+   * @param json the editable JSON.
+   * @param onChange the callback function called when data should be saved.
+   */
+  editJsonCode(componentKey: string, editorTitle: string, json: string, onChange: (value: string) => void) {
+    this.currentEditable = new JsonCode(componentKey, editorTitle, json, onChange)
   }
 
   /**

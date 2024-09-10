@@ -1,3 +1,4 @@
+import {isObject} from 'lodash-es'
 import type {SchemaType} from '../types/SchemaType'
 
 const same = (from: any) => from
@@ -7,6 +8,16 @@ const error = (from: any) => {
 }
 
 const parse = (from: any) => JSON.parse(from)
+
+const parseOrSource = (from: any) => {
+  try {
+    const parsed = JSON.parse(from)
+    return isObject(parsed) ? parsed : from
+  } catch (e) {
+    console.warn(e)
+    return from
+  }
+}
 
 const stringify = (from: any) => JSON.stringify(from)
 
@@ -28,7 +39,7 @@ const converters: Record<SchemaType, Record<SchemaType, (from: any) => any>> = {
     'string': same,
     'number': toNumber,
     'boolean': (from: string) => from === 'true',
-    'object': parse,
+    'object': parseOrSource,
     'array': parse,
     'enum': same,
     'date': toDate
@@ -37,7 +48,7 @@ const converters: Record<SchemaType, Record<SchemaType, (from: any) => any>> = {
     'string': toString,
     'number': same,
     'boolean': (from: number) => from === 1,
-    'object': error,
+    'object': parseOrSource,
     'array': error,
     'enum': same,
     'date': toDate
