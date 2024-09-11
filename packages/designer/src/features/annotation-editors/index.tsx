@@ -17,6 +17,7 @@ import {RadioInput} from './RadioInput'
 import {RenderWhenEditor} from './RenderWhenEditor'
 import {SizeInput} from './SizeInput'
 import {StringInput} from './StringInput'
+import {TimeInput} from './TimeInput'
 import {TooltipPropertiesEditor} from './TooltipPropertiesEditor'
 import {ComponentValidationSettingsEditor} from './ValidateEditor'
 import {CustomValidatorEditor} from './ValidateEditor/CustomValidatorEditor'
@@ -29,6 +30,7 @@ export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>>
   boolean: BooleanInput,
   number: NumberInput,
   date: DateInput,
+  time: TimeInput,
   size: SizeInput,
   array: ArrayInput,
   object: ObjectInput,

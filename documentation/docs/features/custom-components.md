@@ -28,16 +28,19 @@ Form Builder has the following APIs for describing a component:
 4. [number](/api-reference/@react-form-builder/core/variables/number) - annotation builder for properties of type `number`.
 5. [size](/api-reference/@react-form-builder/core/variables/size) - annotation builder for properties of type 'CSS unit'.
 6. [date](/api-reference/@react-form-builder/core/variables/date) - annotation builder for properties of type `Date`.
-7. [array](/api-reference/@react-form-builder/core/variables/array) - annotation builder for properties of type `array`.
-8. [color](/api-reference/@react-form-builder/core/variables/color) - annotation builder for properties of type `color`.
-9. [className](/api-reference/@react-form-builder/core/variables/className) - annotation builder for properties containing the CSS class name.
-10. [event](/api-reference/@react-form-builder/core/variables/event) - annotation builder for properties of type `event`.
-11. [node](/api-reference/@react-form-builder/core/variables/node) - annotation builder for properties of type `ReactNode`.
-12. [oneOf](/api-reference/@react-form-builder/core/functions/oneOf) - annotation builder for properties of type `enum`, the property value can
-    only be one of enum.
-13. [someOf](/api-reference/@react-form-builder/core/functions/someOf) - annotation builder for properties of type `enum`, the property value
+7. [time](/api-reference/@react-form-builder/core/variables/time) - annotation builder for properties of type `Time`.
+8. [array](/api-reference/@react-form-builder/core/variables/array) - annotation builder for properties of type `array`.
+9. [color](/api-reference/@react-form-builder/core/variables/color) - annotation builder for properties of type `color`.
+10. [className](/api-reference/@react-form-builder/core/variables/className) - annotation builder for properties containing the CSS class
+    name.
+11. [event](/api-reference/@react-form-builder/core/variables/event) - annotation builder for properties of type `event`.
+12. [node](/api-reference/@react-form-builder/core/variables/node) - annotation builder for properties of type `ReactNode`.
+13. [oneOf](/api-reference/@react-form-builder/core/functions/oneOf) - annotation builder for properties of type `enum`, the property value
+    can only be one of enum.
+14. [someOf](/api-reference/@react-form-builder/core/functions/someOf) - annotation builder for properties of type `enum`, the property
+    value
     can contain multiple enum values.
-14. There are other APIs for describing component properties, you can find them in the documentation, these APIs deal with describing
+15. There are other APIs for describing component properties, you can find them in the documentation, these APIs deal with describing
     synthetic properties of a component (e.g. a set of arbitrary HTML attributes).
 
 ## Example of a custom component definition

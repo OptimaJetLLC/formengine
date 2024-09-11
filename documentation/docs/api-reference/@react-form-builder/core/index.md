@@ -177,6 +177,8 @@
 - [size](variables/size.md)
 - [slotModel](variables/slotModel.md)
 - [string](variables/string.md)
+- [time](variables/time.md)
+- [timeFormat](variables/timeFormat.md)
 - [tooltipProps](variables/tooltipProps.md)
 - [tooltipType](variables/tooltipType.md)
 - [validation](variables/validation.md)

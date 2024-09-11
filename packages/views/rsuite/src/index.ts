@@ -38,6 +38,7 @@ import {rsStaticContent} from './components/RsStaticContent'
 import {rsTab} from './components/RsTab'
 import {rsTagPicker} from './components/RsTagPicker'
 import {rsTextArea} from './components/RsTextArea'
+import {rsTimePicker} from './components/RsTimePicker'
 import {rsToggle} from './components/RsToggle'
 import type {RsTooltipProps} from './components/RsTooltip'
 import {rsTooltip} from './components/RsTooltip'
@@ -50,6 +51,7 @@ const categories = {
     rsCalendar,
     rsCheckbox,
     rsDatePicker,
+    rsTimePicker,
     rsDropdown,
     rsInput,
     rsNumberFormat,

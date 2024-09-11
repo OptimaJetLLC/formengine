@@ -850,6 +850,16 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/variables/time",
+            "label": "time"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/variables/timeFormat",
+            "label": "timeFormat"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/variables/tooltipProps",
             "label": "tooltipProps"
           },

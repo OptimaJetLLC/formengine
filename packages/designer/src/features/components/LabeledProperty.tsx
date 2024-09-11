@@ -122,7 +122,10 @@ const RawLabeledProperty = (props: LabeledPropertyProps) => {
   const {annotation, children, style} = props
   const {className, ...codeButtonProps} = props
   const id = useUniqueId('id-')
-  const getLabel = useTranslationPart(`annotation.${annotation.key}`)
+  const componentType = props.componentData.model.type
+  const commonLabels = useTranslationPart(`annotation.${annotation.key}`)
+  const componentLabels = useTranslationPart(`${componentType}.${annotation.key}`)
+  const getLabel = (key: string) => componentLabels(key) || commonLabels(key)
   const labelClassName = annotation.required ? afterRedAsterisk : undefined
 
   return <LabeledInput style={style} className={className}>

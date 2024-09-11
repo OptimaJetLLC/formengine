@@ -34,6 +34,15 @@ const toNumber = (from: any) => {
 
 const toDate = (from: any) => new Date(from)
 
+const formatTimePart = (part: number) => part > 9 ? `${part}` : `0${part}`
+
+const toTime = (from: Date) => {
+  const hours = formatTimePart(from.getHours())
+  const minutes = formatTimePart(from.getMinutes())
+  const seconds = formatTimePart(from.getSeconds())
+  return `${hours}:${minutes}:${seconds}`
+}
+
 const converters: Record<SchemaType, Record<SchemaType, (from: any) => any>> = {
   'string': {
     'string': same,
@@ -42,7 +51,8 @@ const converters: Record<SchemaType, Record<SchemaType, (from: any) => any>> = {
     'object': parseOrSource,
     'array': parse,
     'enum': same,
-    'date': toDate
+    'date': toDate,
+    'time': same
   },
   'number': {
     'string': toString,
@@ -51,7 +61,8 @@ const converters: Record<SchemaType, Record<SchemaType, (from: any) => any>> = {
     'object': parseOrSource,
     'array': error,
     'enum': same,
-    'date': toDate
+    'date': toDate,
+    'time': toString
   },
   'boolean': {
     'string': toString,
@@ -60,7 +71,8 @@ const converters: Record<SchemaType, Record<SchemaType, (from: any) => any>> = {
     'object': error,
     'array': error,
     'enum': same,
-    'date': error
+    'date': error,
+    'time': error
   },
   'object': {
     'string': stringify,
@@ -69,7 +81,8 @@ const converters: Record<SchemaType, Record<SchemaType, (from: any) => any>> = {
     'object': same,
     'array': error,
     'enum': same,
-    'date': error
+    'date': error,
+    'time': error
   },
   'array': {
     'string': stringify,
@@ -78,7 +91,8 @@ const converters: Record<SchemaType, Record<SchemaType, (from: any) => any>> = {
     'object': error,
     'array': same,
     'enum': same,
-    'date': error
+    'date': error,
+    'time': error
   },
   'enum': {
     'string': stringify,
@@ -87,7 +101,8 @@ const converters: Record<SchemaType, Record<SchemaType, (from: any) => any>> = {
     'object': ifInstanceThenSame(Object),
     'array': ifInstanceThenSame(Array),
     'enum': same,
-    'date': ifInstanceThenSame(Date)
+    'date': ifInstanceThenSame(Date),
+    'time': stringify,
   },
   'date': {
     'string': toString,
@@ -96,8 +111,19 @@ const converters: Record<SchemaType, Record<SchemaType, (from: any) => any>> = {
     'object': error,
     'array': error,
     'enum': same,
-    'date': same
-  }
+    'date': same,
+    'time': toTime
+  },
+  'time': {
+    'string': same,
+    'number': error,
+    'boolean': error,
+    'object': error,
+    'array': error,
+    'enum': same,
+    'date': error,
+    'time': same
+  },
 }
 
 const getValueType = (value: unknown): SchemaType => {

@@ -1,16 +1,21 @@
 import {boolean, date, define, event, number, oneOf, string} from '@react-form-builder/core'
-import {format as formatDate} from 'date-fns'
 import {useMemo} from 'react'
 import type {DatePickerProps} from 'rsuite'
 import {DatePicker, Form} from 'rsuite'
 import {placement, size} from '../commonProperties'
+import {formatValidator, toSafeFormat} from '../dateTimeUtils'
 import {RsLabeledInput} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
-interface RsRsDatePickerProps extends DatePickerProps {
+interface RsDatePickerProps extends DatePickerProps {
   label: string
 }
 
+/**
+ * Returns the date converted to Date format.
+ * @param value the date value in string or Date format.
+ * @returns the date converted to Date format.
+ */
 const parseDateValue = (value: any) => {
   if (typeof value === 'string') {
     const parsedDate = new Date(value)
@@ -23,33 +28,7 @@ const parseDateValue = (value: any) => {
   return value
 }
 
-const toSafeFormat = (format?: string) => {
-  const trimmed = format?.trim()
-  if (!trimmed) return undefined
-
-  try {
-    // fixes RSuite issue v5.64.2, check on never version
-    formatDate(new Date(), trimmed)
-  } catch (e) {
-    return undefined
-  }
-
-  return trimmed
-}
-
-const formatValidator = (format?: string) => {
-  const trimmed = format?.trim()
-  if (!trimmed) return true
-
-  try {
-    formatDate(new Date(), trimmed)
-    return true
-  } catch (e) {
-    return false
-  }
-}
-
-const RsDatePicker = ({label, value, className, format, defaultValue, ...props}: RsRsDatePickerProps) => {
+const RsDatePicker = ({label, value, className, format, defaultValue, ...props}: RsDatePickerProps) => {
   const safeFormat = useMemo(() => toSafeFormat(format), [format])
   const onClean = useTouchOnEvent(props, 'onClean')
   const parsedValue = useMemo(() => parseDateValue(value), [value])

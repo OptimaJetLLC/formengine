@@ -1,0 +1,96 @@
+import {boolean, define, event, string, time, timeFormat} from '@react-form-builder/core'
+import {format as formatDate, parse} from 'date-fns'
+import React, {useCallback, useMemo} from 'react'
+import type {DatePickerProps} from 'rsuite'
+import {DatePicker, Form} from 'rsuite'
+import {placement, size} from '../commonProperties'
+import {formatValidator, toSafeFormat} from '../dateTimeUtils'
+import {RsLabeledInput} from './components/Labeled'
+import {useTouchOnEvent} from './hooks/useTouchOnEvent'
+
+const isValidDate = (value: any) => value instanceof Date && !Number.isNaN(value.getTime())
+
+/**
+ * Returns the time converted to Date format.
+ * @param value the date value in string or Date format.
+ * @param format the time format.
+ * @returns the time converted to Date format.
+ */
+const parseTimeValue = (value: any, format: string) => {
+  if (typeof value === 'string') {
+    const parsedDate = parse(value, format, new Date())
+    if (!isNaN(parsedDate.getTime())) {
+      return parsedDate
+    }
+    console.error('Invalid time string:', value)
+    return null
+  }
+  return value
+}
+
+interface RsTimePickerProps extends Omit<DatePickerProps, 'value' | 'onChange'> {
+  value?: string
+  onChange?: (value: string | null, event: React.SyntheticEvent) => void
+  label: string
+}
+
+const RsTimePicker = ({open, label, value, className, format, defaultValue, onChange, ...props}: RsTimePickerProps) => {
+  const safeFormat = useMemo(() => toSafeFormat(format), [format])
+  const onClean = useTouchOnEvent(props, 'onClean')
+  const parsedValue = useMemo(() => parseTimeValue(value, timeFormat), [value])
+  const parsedDefaultValue = useMemo(() => parseTimeValue(defaultValue, timeFormat), [defaultValue])
+  const pickerOpen = useMemo(() => open === true ? true : undefined, [open])
+
+  const handleChange = useCallback((value, e) => {
+    if (value === null) {
+      onChange?.(null, e)
+      return
+    }
+    if (isValidDate(value)) {
+      const formatted = formatDate(value, timeFormat)
+      onChange?.(formatted, e)
+    }
+  }, [onChange])
+
+  return (
+    <RsLabeledInput className={className}>
+      <Form.ControlLabel>{label}</Form.ControlLabel>
+      <DatePicker {...props} onChange={handleChange} value={parsedValue ?? parsedDefaultValue ?? null}
+                  open={pickerOpen} format={safeFormat ?? timeFormat} onClean={onClean} preventOverflow/>
+    </RsLabeledInput>
+  )
+}
+
+export const rsTimePicker = define(RsTimePicker, 'RsTimePicker')
+  .name('TimePicker')
+  .props({
+    label: string.default('Time'),
+    placeholder: string,
+    value: time.valued,
+    defaultValue: time,
+    format: string
+      .validated(formatValidator, {
+        code: 'INVALID_TIME_FORMAT',
+        message: 'The provided time format is invalid'
+      })
+      .withEditorProps({placeholder: 'HH:mm'})
+      .default('HH:mm'),
+    editable: boolean.default(true),
+    cleanable: boolean.default(false),
+    disabled: boolean.default(false),
+    open: boolean,
+    placement: placement,
+    size: size,
+    onChange: event,
+    onClean: event,
+    onClose: event,
+    onEnter: event,
+    onEntered: event,
+    onEntering: event,
+    onExit: event,
+    onExited: event,
+    onExiting: event,
+    onOk: event,
+    onOpen: event,
+    onSelect: event
+  })

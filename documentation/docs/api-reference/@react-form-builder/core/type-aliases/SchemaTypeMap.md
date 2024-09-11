@@ -47,3 +47,9 @@ The object.
 > **string**: `string`
 
 The string.
+
+### time
+
+> **time**: `string`
+
+The time.

@@ -221,6 +221,74 @@
     "readOnly": {
       "name": "Read only",
       "hint": "If true, the component will be read-only"
+    },
+    "editable": {
+      "name": "Editable",
+      "hint": "Rendered as an input, the value can be entered via the keyboard"
+    },
+    "open": {
+      "name": "Open",
+      "hint": "Whether open the component"
+    },
+    "oneTap": {
+      "name": "One tap",
+      "hint": "One click to complete the selection value"
+    },
+    "value": {
+      "name": "Value",
+      "hint": "Value (Controlled)"
+    },
+    "appearance": {
+      "name": "Appearance",
+      "hint": "Set picker appearance"
+    },
+    "calendarDefaultDate": {
+      "name": "Calendar default date",
+      "hint": "Calendar panel default presentation date and time"
+    },
+    "defaultOpen": {
+      "name": "Default open",
+      "hint": "Default value of open property"
+    },
+    "preventOverflow": {
+      "name": "Prevent overflow",
+      "hint": "Prevent floating element overflow"
+    },
+    "defaultValue": {
+      "name": "Default value",
+      "hint": "Default value"
+    },
+    "isoWeek": {
+      "name": "Iso week",
+      "hint": "ISO 8601 standard, each calendar week begins on Monday and Sunday on the seventh day"
+    },
+    "limitEndYear": {
+      "name": "Limit end year",
+      "hint": "Set the upper limit of the available year relative to the current selection date"
+    },
+    "limitStartYear": {
+      "name": "Limit start year",
+      "hint": "Set the lower limit of the available year relative to the current selection date"
+    },
+    "showMeridian": {
+      "name": "Show meridian",
+      "hint": "Display hours in 12 format"
+    },
+    "showWeekNumbers": {
+      "name": "Show week numbers",
+      "hint": "Whether to show week numbers"
+    }
+  },
+  "RsDatePicker": {
+    "format": {
+      "name": "Format",
+      "hint": "Format of the date when rendered in the input"
+    }
+  },
+  "RsTimePicker": {
+    "format": {
+      "name": "Format",
+      "hint": "Format of the time when rendered in the input"
     }
   },
   "RichTextEditor": {

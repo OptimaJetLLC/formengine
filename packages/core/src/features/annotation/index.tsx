@@ -55,6 +55,11 @@ export const size = createProperty('size').typed('string')
 export const date = createProperty('date').typed('date')
 
 /**
+ * The annotation builder for a component property with type 'Time'.
+ */
+export const time = createProperty('time').typed('time')
+
+/**
  * The annotation builder for a component property with type 'Array'.
  */
 export const array = createProperty('array').array
@@ -143,3 +148,4 @@ export const containerStyles = {
 }
 
 export * from './utils'
+export {timeFormat} from './consts'

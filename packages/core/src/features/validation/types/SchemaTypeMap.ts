@@ -30,4 +30,8 @@ export type SchemaTypeMap = {
    * The date.
    */
   'date': Date
+  /**
+   * The time.
+   */
+  'time': string
 }

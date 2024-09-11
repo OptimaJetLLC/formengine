@@ -7,6 +7,7 @@ import {ReactComponent as Container} from './Container.svg'
 import {ReactComponent as Content} from './Content.svg'
 import {ReactComponent as CustomBlock} from './CustomBlock.svg'
 import {ReactComponent as CustomControl} from './CustomControl.svg'
+import {ReactComponent as DatePicker} from './DatePicker.svg'
 import {ReactComponent as Default} from './Default.svg'
 import {ReactComponent as Dropdown} from './Dropdown.svg'
 import {ReactComponent as Dropzone} from './Dropzone.svg'
@@ -35,6 +36,7 @@ import {ReactComponent as Signature} from './Signature.svg'
 import {ReactComponent as StaticContent} from './StaticContent.svg'
 import {ReactComponent as Tab} from './Tab.svg'
 import {ReactComponent as TextArea} from './TextArea.svg'
+import {ReactComponent as TimePicker} from './TimePicker.svg'
 import {ReactComponent as Toggle} from './Toggle.svg'
 import {ReactComponent as Tooltip} from './Tooltip.svg'
 import {ReactComponent as TreePicker} from './TreePicker.svg'
@@ -50,6 +52,7 @@ export const icons = {
   Content,
   CustomBlock,
   CustomControl,
+  DatePicker,
   Default,
   Dropdown,
   Dropzone,
@@ -78,6 +81,7 @@ export const icons = {
   StaticContent,
   Tab,
   TextArea,
+  TimePicker,
   Toggle,
   Tooltip,
   TreePicker,
