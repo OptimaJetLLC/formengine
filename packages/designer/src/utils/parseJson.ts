@@ -1,6 +1,8 @@
 import {isUndefined} from 'lodash-es'
 import {humanizeFileSize} from './formatters'
 
+const isValidDate = (value: any) => value instanceof Date && !Number.isNaN(value.getTime())
+
 /**
  * Parses the JSON string into a JavaScript object.
  * @param value the JSON string.
@@ -57,7 +59,8 @@ export const prepareForJson = (data: any, options?: {
     }
 
     if (value instanceof Date) {
-      filtered[key] = value.toISOString()
+      const data = isValidDate(value) ? value.toISOString() : 'Invalid date'
+      filtered[key] = data
       return
     }
 
