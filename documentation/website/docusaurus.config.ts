@@ -1,6 +1,6 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
+import type * as Preset from '@docusaurus/preset-classic'
+import type {Config} from '@docusaurus/types'
+import {themes as prismThemes} from 'prism-react-renderer'
 
 const config: Config = {
   title: 'Documentation | FormBuilder',
@@ -60,6 +60,7 @@ const config: Config = {
       logo: {
         alt: 'FormBuilder Logo',
         src: 'img/logo.svg',
+        srcDark: 'img/logo_dark.svg',
         href: 'https://formengine.io/',
         target: '_self',
       },
