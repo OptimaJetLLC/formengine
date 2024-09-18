@@ -41,18 +41,21 @@ const Template = (templateProps: Record<string, any>) => {
   const templateViewerProps = useMemo(() => {
     const overrideProps: Partial<FormViewerProps> = {
       formName: getTemplateName(data.store.type),
+      onFormDataChange: undefined,
       computeChildren: undefined,
       formValidators: undefined,
     }
     return Object.assign({}, viewerProps, overrideProps)
   }, [data.store.type, viewerProps])
 
+  const templateProviderValue = useMemo(() => ({templateProps, viewerProps, data}), [templateProps, viewerProps, data])
+
   if (!viewerProps.getForm) return <TemplateLoadError>Please define <code>getForm</code> property!</TemplateLoadError>
   if (!(data.field instanceof TemplateField)) return null
   const viewerStore = data.field.viewerStore as Store
 
   return (
-    <TemplateProvider value={{templateProps, viewerProps, data}}>
+    <TemplateProvider value={templateProviderValue}>
       <StoreProvider value={viewerStore}>
         <FormViewer {...templateViewerProps}/>
       </StoreProvider>
