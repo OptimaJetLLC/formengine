@@ -18,7 +18,7 @@ const useEventListener = (sender: string, type: string, listener: ActionEventHan
 
   useEffect(() => {
     const subscription = eventSubject
-      .pipe(filter(e => e.type === type && e.sender.key === sender))
+      .pipe(filter(e => e.type === type && e.sender.id === sender))
       .subscribe(e => {
         listenerRef.current(e)
       })
@@ -35,8 +35,8 @@ const RawErroneous = ({children}: WrapperProps) => {
   const localizer = useCallback<ComponentLocalizer>(() => ({}), [])
   const componentState = useWrapperState(wrappedComponentData.key, errorDefinition, viewerStore.form.errorProps, localizer)
 
-  useEventListener(wrappedComponentData.key, 'onChange', e => wrappedComponentData.field?.setValue(e.value))
-  useEventListener(wrappedComponentData.key, 'onBlur', _ => wrappedComponentData.field?.setTouched())
+  useEventListener(wrappedComponentData.id, 'onChange', e => wrappedComponentData.field?.setValue(e.value))
+  useEventListener(wrappedComponentData.id, 'onBlur', _ => wrappedComponentData.field?.setTouched())
 
   if (props.erroneous) return <>{children}</>
 

@@ -53,7 +53,7 @@ const useActions = (state: ComponentState) => {
 
       const subscription = store.eventSubject
         .pipe(
-          filter(e => e.type === eventName && e.sender.key === componentData.store.key),
+          filter(e => e.type === eventName && e.sender.id === componentData.id),
           map(chain),
           catchError((err, caught) => {
             console.error(err)
@@ -66,7 +66,7 @@ const useActions = (state: ComponentState) => {
     })
 
     subsRef.current = result
-  }, [componentData.store.events, componentData.store.key, store])
+  }, [componentData.store.events, componentData.id, store])
 
   useComponentMountUnmount(() => {
     createSubscriptions()
