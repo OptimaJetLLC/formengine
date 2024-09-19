@@ -28,26 +28,36 @@ interface ExistingStoreProviderProps extends ViewerStoreProviderProps {
   store: Store
 }
 
-const RawExistingStoreProvider = ({
-                                  children,
-                                  props: {viewerRef, ...props},
-                                  store
-                                }: ExistingStoreProviderProps) => {
-  useImperativeHandle(viewerRef, () => store, [store])
+const RawNotifier = (props: Omit<ExistingStoreProviderProps, 'children'>) => {
+  const {store} = props
+  const viewerProps = props.props
 
   useEffect(() => {
-    props.onFormDataChange?.(store.formData)
+    viewerProps.onFormDataChange?.(store.formData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [store.formData.data, store.formData.errors])
 
   useEffect(() => {
-    store.formViewerPropsStore.applyProps(props)
+    store.formViewerPropsStore.applyProps(viewerProps)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.initialData, props.view, props.validators, props.formValidators, props.localize, props.language, props.actions,
-    props.errorWrapper])
+  }, [viewerProps.initialData, viewerProps.view, viewerProps.validators, viewerProps.formValidators,
+    viewerProps.localize, viewerProps.language, viewerProps.actions, viewerProps.errorWrapper])
+
+  return null
+}
+
+const Notifier = namedObserver('Notifier', RawNotifier)
+
+const RawExistingStoreProvider = ({
+                                    children,
+                                    props: {viewerRef, ...props},
+                                    store
+                                  }: ExistingStoreProviderProps) => {
+  useImperativeHandle(viewerRef, () => store, [store])
 
   return (
     <ViewerPropsProvider value={props}>
+      <Notifier store={store} props={props}/>
       <StoreProvider value={store}>
         {children}
       </StoreProvider>
