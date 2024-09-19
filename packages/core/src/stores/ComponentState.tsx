@@ -83,6 +83,7 @@ export class ComponentState {
    * @returns the component's field value data, if the component can have a field value.
    */
   get value() {
+    if (this.data.model.kind === 'template') return
     if (this.data.field) return {[this.data.field.valued]: this.data.field.value}
   }
 
