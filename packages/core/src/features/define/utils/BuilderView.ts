@@ -129,7 +129,6 @@ export class BuilderView extends View {
     super(builderComponents.map(({model}) => model))
     this.#metaMap.set(screenMeta.type, screenMeta)
     this.#metaMap.set(internalErrorMeta.type, internalErrorMeta)
-    this.#metaMap.set(slotMeta.type, slotMeta)
     this.builderComponents.push({meta: slotMeta, model: slotModel, category: templatesCategoryName})
 
     const metas = builderComponents.map(({meta}) => meta)
