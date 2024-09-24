@@ -1,0 +1,3 @@
+- Now the [component id](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/ComponentData#id) is used instead of the [component key](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/ComponentStore#key) when processing and filtering events.
+- Now the function [onFormDataChange](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/FormViewerProps#onformdatachange) will not be called inside the templates. This call should only be made by the parent form.
+- Several minor bugs affecting performance have also been fixed.

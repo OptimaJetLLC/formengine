@@ -4,9 +4,20 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.12.0
+
+_September_ 24, 2024
+
+- Now the [component id](/api-reference/@react-form-builder/core/classes/ComponentData#id) is used instead of
+  the [component key](/api-reference/@react-form-builder/core/classes/ComponentStore#key) when processing and filtering events.
+- Now the
+  function [onFormDataChange](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#onformdatachange)
+  will not be called inside the templates. This call should only be made by the parent form.
+- Several minor bugs affecting performance have also been fixed.
+
 ## 1.11.0
 
-_September_ 11, 2024
+_September_ 13, 2024
 
 - Added the `Time picker` component.
 - Added the [time](/api-reference/@react-form-builder/core/variables/time) annotation builder and property editor for editing properties
