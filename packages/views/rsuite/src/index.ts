@@ -31,7 +31,6 @@ import {rsPatternFormat} from './components/RsPatternFormat'
 import {rsProgressCircle, rsProgressLine} from './components/RsProgress'
 import {rsRadioGroup} from './components/RsRadioGroup'
 import {rsRepeater} from './components/RsRepeater'
-import {rsRichTextEditor} from './components/RsRichTextEditor'
 import {rsSearch} from './components/RsSearch'
 import {rsSignature} from './components/RsSignature'
 import {rsStaticContent} from './components/RsStaticContent'
@@ -86,7 +85,6 @@ const categories = {
   ],
   notImplemented: [
     rsCollectionEditor,
-    rsRichTextEditor,
     rsTreePicker,
     rsCustomBlock,
     rsCustomControl,
