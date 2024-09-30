@@ -30,6 +30,7 @@
     "node_modules",
     "sample-apps",
     "documentation",
+    "examples",
     "packages/core/dist",
     "packages/designer/dist",
     "packages/views/fast-qr/dist",

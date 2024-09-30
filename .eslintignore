@@ -3,6 +3,7 @@ vite.config.ts
 **/dist
 BuildScripts
 documentation
+examples
 scripts/*.js
 scripts/test/**/*
 packages/core/scripts
