@@ -68,7 +68,7 @@ export const matButton = define(Button, 'MatButton')
     color: oneOf('inherit', 'primary', 'secondary', 'success', 'error', 'info', 'warning'),
     // button disable flag
     disabled: boolean,
-    // сallback fired when the button is clicked.
+    // callback fired when the button is clicked.
     onClick: event,
   })
 ```
@@ -90,7 +90,7 @@ export const myButton = define(MyButton, 'MyButton')
   .props({
     // button text
     children: string.named('Caption').default('Button'),
-    // сallback fired when the button is clicked.
+    // callback fired when the button is clicked.
     onClick: event,
   })
 ```
@@ -207,7 +207,7 @@ export const matButton = define(Button, 'MatButton')
     color: oneOf('inherit', 'primary', 'secondary', 'success', 'error', 'info', 'warning'),
     // button disable flag
     disabled: boolean,
-    // сallback fired when the button is clicked.
+    // callback fired when the button is clicked.
     onClick: event,
   })
 ```
