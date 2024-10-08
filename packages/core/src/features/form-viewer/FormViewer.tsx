@@ -1,4 +1,6 @@
-import styled from '@emotion/styled'
+import {css, cx} from '@emotion/css'
+import type {DetailedHTMLProps, HTMLAttributes} from 'react'
+import {useMemo} from 'react'
 import {namedObserver} from '../../utils'
 import {TrialMessage} from '../licensing/TrialMessage'
 import {ViewerLocalizationProvider} from '../localization/ViewerLocalizationProvider'
@@ -7,6 +9,24 @@ import {Viewer} from './components/Viewer'
 import {ViewerStoreProvider} from './components/ViewerStoreProvider'
 import './setupMobx'
 import type {FormViewerProps} from './types'
+
+const divClass = css`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 5px;
+`
+
+/**
+ * The React component that wraps every component in a form.
+ * @param props the React component properties.
+ * @returns the React element.
+ */
+export const SDiv = (props: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => {
+  const {className, children, ...otherProps} = props
+  const cls = useMemo(() => cx(divClass, className), [className])
+  return <div className={cls} {...otherProps}>{children}</div>
+}
 
 //No other code here
 /**
@@ -27,10 +47,3 @@ const RawFormViewer = (props: FormViewerProps) =>
   </SuppressResizeObserverErrors>
 
 export const FormViewer = namedObserver('FormViewer', RawFormViewer)
-
-export const SDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 5px;
-`

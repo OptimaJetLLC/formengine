@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import type {CSSProperties, ReactNode} from 'react'
 import {useMemo} from 'react'
 import type {Store} from '../../stores/Store'
 import type {ComponentData} from '../../utils/contexts/ComponentDataContext'
@@ -14,10 +14,14 @@ import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 import {generateTemplateTypeName, getTemplateName} from '../ui/templateUtil'
 import {TemplateField} from '../validation/utils/TemplateField'
 
-const TemplateLoadError = styled.span`
-  font-size: xx-large;
-  color: red;
-`
+const templateLoadErrorStyle: CSSProperties = {
+  fontSize: 'xx-large',
+  color: 'red'
+}
+
+const TemplateLoadError = ({children}: { children: ReactNode }) => {
+  return <span style={templateLoadErrorStyle}>{children}</span>
+}
 
 interface TemplateContext {
   data: ComponentData
@@ -50,7 +54,7 @@ const Template = (templateProps: Record<string, any>) => {
 
   const templateProviderValue = useMemo(() => ({templateProps, viewerProps, data}), [templateProps, viewerProps, data])
 
-  if (!viewerProps.getForm) return <TemplateLoadError>Please define <code>getForm</code> property!</TemplateLoadError>
+  if (!templateViewerProps.getForm) return <TemplateLoadError>Please define the <code>getForm</code> property!</TemplateLoadError>
   if (!(data.field instanceof TemplateField)) return null
   const viewerStore = data.field.viewerStore as Store
 

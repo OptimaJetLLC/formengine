@@ -64,7 +64,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"none"` \| `"list"` \| `"inline"` \| `"both"`
+> `optional` **aria-autocomplete**: `"inline"` \| `"none"` \| `"list"` \| `"both"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -172,7 +172,7 @@ aria-owns.
 
 ### aria-current?
 
-> `optional` **aria-current**: `boolean` \| `"date"` \| `"time"` \| `"page"` \| `"true"` \| `"false"` \| `"step"` \| `"location"`
+> `optional` **aria-current**: `boolean` \| `"date"` \| `"time"` \| `"true"` \| `"false"` \| `"page"` \| `"step"` \| `"location"`
 
 Indicates the element that represents the current item within a container or set of related elements.
 
@@ -307,7 +307,7 @@ in ARIA 1.1
 
 ### aria-haspopup?
 
-> `optional` **aria-haspopup**: `boolean` \| `"dialog"` \| `"menu"` \| `"grid"` \| `"true"` \| `"listbox"` \| `"tree"` \| `"false"`
+> `optional` **aria-haspopup**: `boolean` \| `"grid"` \| `"dialog"` \| `"menu"` \| `"true"` \| `"false"` \| `"listbox"` \| `"tree"`
 
 Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 
@@ -1025,7 +1025,7 @@ The cell icon.
 
 ### inputMode?
 
-> `optional` **inputMode**: `"search"` \| `"text"` \| `"none"` \| `"email"` \| `"url"` \| `"tel"` \| `"numeric"` \| `"decimal"`
+> `optional` **inputMode**: `"search"` \| `"none"` \| `"text"` \| `"tel"` \| `"url"` \| `"email"` \| `"numeric"` \| `"decimal"`
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 
@@ -3059,7 +3059,7 @@ Additional style
 
 ### translate?
 
-> `optional` **translate**: `"no"` \| `"yes"`
+> `optional` **translate**: `"yes"` \| `"no"`
 
 #### Inherited from
 

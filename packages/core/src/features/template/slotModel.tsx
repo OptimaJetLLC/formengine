@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import type {CSSProperties} from 'react'
 import type {Store} from '../../stores/Store'
 import {namedObserver} from '../../utils'
 import {ComponentDataProvider, useComponentData} from '../../utils/contexts/ComponentDataContext'
@@ -38,14 +38,14 @@ const RawSlotContent = ({parentStore}: { parentStore: Store }) => {
 
 const SlotContent = namedObserver('SlotContent', RawSlotContent)
 
+const slotPlaceholder: CSSProperties = {
+  backgroundColor: 'rgb(150, 150, 150, 25%)',
+  padding: 5
+}
+
 const RawSlotPlaceholder = () => {
   const {key} = useComponentData()
-  return <SDiv>Slot: '{key}'</SDiv>
+  return <div style={slotPlaceholder}>Slot: '{key}'</div>
 }
 
 const SlotPlaceholder = namedObserver('SlotPlaceholder', RawSlotPlaceholder)
-
-const SDiv = styled.div`
-  background-color: rgb(150, 150, 150, 25%);
-  padding: 5px;
-`

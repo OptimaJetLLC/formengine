@@ -1,8 +1,21 @@
-import styled from '@emotion/styled'
+import type {CSSProperties} from 'react'
 import {useEffect} from 'react'
 import useSafeState from '../../utils/useSafeState'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 import {verifyLicenseKey} from './verifySign'
+
+const trialDivStyle: CSSProperties = {
+  display: 'flex',
+  position: 'relative',
+  backgroundColor: '#72c7ff30',
+  borderRadius: 6,
+  padding: 10,
+  gap: 10
+}
+
+const labelStyle: CSSProperties = {
+  flex: 1
+}
 
 /**
  * TrialMessage React component.
@@ -19,23 +32,10 @@ export const TrialMessage = () => {
   }, [licenseKey, setVerified])
 
   return <div>
-    {!verified && <SDiv>
-      <SLabel>This is a trial version of the product. To purchase a license, go to <a
+    {!verified && <div style={trialDivStyle}>
+      <label style={labelStyle}>This is a trial version of the product. To purchase a license, go to <a
         href={'https://formengine.io/pricing'}>https://formengine.io/pricing</a>
-      </SLabel>
-    </SDiv>}
+      </label>
+    </div>}
   </div>
 }
-
-const SDiv = styled.div`
-  display: flex;
-  position: relative;
-  background-color: #72c7ff30;
-  border-radius: 6px;
-  padding: 10px;
-  gap: 10px;
-`
-
-const SLabel = styled.label`
-  flex: 1;
-`

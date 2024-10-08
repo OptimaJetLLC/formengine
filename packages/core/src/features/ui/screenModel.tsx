@@ -3,9 +3,6 @@ import {toStyleProperties} from '../annotation/toStyleProperties'
 import {Model} from '../define'
 import {DefaultWrapper} from './DefaultWrapper'
 
-const Screen = DefaultWrapper
-Screen.displayName = 'Screen'
-
 const {height} = commonStyles
 const {flexDirection, gap} = containerStyles
 export const screenStyleProperties = toStyleProperties({
@@ -21,6 +18,6 @@ const defaultCss = getDefaultCss(screenStyleProperties)
 /**
  * Form viewer screen metadata. **Internal use only.**
  */
-export const screenModel = new Model(Screen, undefined, undefined,
+export const screenModel = new Model(DefaultWrapper, undefined, undefined,
   undefined, undefined, undefined, defaultCss, undefined, undefined, undefined,
   'container')

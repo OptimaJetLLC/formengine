@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import type {CSSProperties} from 'react'
 import {ComponentStore} from '../../stores/ComponentStore'
 import {Model} from '../define'
 import {screenModel} from './screenModel'
@@ -13,12 +13,12 @@ export interface InternalErrorProps {
   error: any
 }
 
-const SH1 = styled.h1`
-  color: red;
-`
+const internalErrorStyle: CSSProperties = {
+  color: 'red'
+}
 
 const InternalError = ({error}: InternalErrorProps) => {
-  return <SH1>{error?.message ?? JSON.stringify(error)}</SH1>
+  return <h1 style={internalErrorStyle}>{error?.message ?? JSON.stringify(error)}</h1>
 }
 InternalError.displayName = 'InternalError'
 

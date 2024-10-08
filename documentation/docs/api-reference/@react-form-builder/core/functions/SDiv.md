@@ -1,13 +1,17 @@
 # Function: SDiv()
 
-> **SDiv**(`props`, `context`?): `null` \| `ReactElement`\<`any`, `any`\>
+> **SDiv**(`props`): `Element`
+
+The React component that wraps every component in a form.
 
 ## Parameters
 
-• **props**: `PropsWithChildren`\<`object` & `ClassAttributes`\<`HTMLDivElement`\> & `HTMLAttributes`\<`HTMLDivElement`\>\>
+• **props**: `DetailedHTMLProps`\<`HTMLAttributes`\<`HTMLDivElement`\>, `HTMLDivElement`\>
 
-• **context?**: `any`
+the React component properties.
 
 ## Returns
 
-`null` \| `ReactElement`\<`any`, `any`\>
+`Element`
+
+the React element.
