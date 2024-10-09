@@ -7,6 +7,19 @@
 <body style="margin: 0">
 
 <script type="text/javascript">
+  function createActionDefinition(bundle) {
+    const {ActionDefinition} = bundle
+    if (!ActionDefinition) throw new Error('No action definition found in the bundle');
+
+    return ActionDefinition.functionalAction((e, args) => {
+      console.log(e, args)
+    }, {
+      p1: 'string',
+      p2: 'boolean',
+      p3: 'number'
+    })
+  }
+
   function elementOnLoad(htmlElement, callback) {
     function onLoad() {
       htmlElement.removeEventListener('load', onLoad);
@@ -48,7 +61,7 @@
   function doRemove() {
     window.viewerRoot?.unmount()
     delete window.reactRoot
-    
+
     window.designerRoot?.unmount()
     delete window.designerRoot
   }
@@ -151,19 +164,25 @@
     const moduleName = useUmdModule === true ? 'index.umd.js' : 'index.iife.js'
 
     whenScriptLoaded('designer-script', `../../packages/designer-bundle/dist/${moduleName}`, () => {
+      const bundle = window.FormEngineDesignerBundle;
       const props = {
         getForm: () => form,
+        actions: {
+          assertArgs: createActionDefinition(bundle)
+        }
       }
 
-      const bundle = window.FormEngineDesignerBundle;
       window.designerRoot = bundle.renderFormBuilder('root', props)
 
       whenScriptLoaded('viewer-script', `../../packages/viewer-bundle/dist/${moduleName}`, () => {
+        const bundle = window.FormEngineViewerBundle;
         const props = {
           getForm: () => form,
+          actions: {
+            assertArgs: createActionDefinition(bundle)
+          }
         }
 
-        const bundle = window.FormEngineViewerBundle;
         window.viewerRoot = bundle.renderFormViewer('root2', props)
       })
 

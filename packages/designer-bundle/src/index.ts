@@ -52,3 +52,5 @@ export function renderFormBuilderTo(container: HTMLElement, props: Partial<FormB
   root.render(createElement(FormBuilder, formBuilderProps, null))
   return root
 }
+
+export {ActionDefinition} from '@react-form-builder/core'

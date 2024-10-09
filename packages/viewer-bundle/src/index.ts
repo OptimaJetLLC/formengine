@@ -43,3 +43,4 @@ export function renderFormViewerTo(container: HTMLElement, props: Partial<FormVi
 }
 
 export {rSuiteComponents}
+export {ActionDefinition} from '@react-form-builder/core'
