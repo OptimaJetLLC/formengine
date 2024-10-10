@@ -148,11 +148,37 @@
 `
 
     whenScriptLoaded('designer-script', '../../packages/designer-bundle/dist/index.iife.js', () => {
+      const bundle = window.FormEngineDesignerBundle;
+
+      const {Language} = bundle;
+      const builderLanguages = {
+        languages: [
+          new Language('fr', 'FR', 'French', 'Français'),
+          new Language('tr', 'TR', 'Turkish', 'Türkçe'),
+          new Language('sr', 'Sr', 'Serbian', 'Српски'),
+        ],
+        getData: async languageFullCode => {
+          if (languageFullCode === 'tr-TR') {
+            return {
+              data: {leftMenu: {menu: 'Menü'}},
+            }
+          }
+          if (languageFullCode === 'sr-Sr') {
+            return {
+              data: {leftMenu: {menu: 'Мени'}, validation: {addRule: 'Додај правило'}},
+            }
+          }
+          return {
+            data: {leftMenu: {menu: 'Menu'}},
+          }
+        }
+      }
+
       const props = {
+        i18n: builderLanguages,
         getForm: () => form,
       }
 
-      const bundle = window.FormEngineDesignerBundle;
       window.reactRoot = bundle.renderFormBuilder('root', props)
     })
   }
