@@ -1337,6 +1337,22 @@ const typedocSidebar = { items: [
     "items": [
       {
         "type": "category",
+        "label": "Classes",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/designer-bundle/classes/ActionDefinition",
+            "label": "ActionDefinition"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/designer-bundle/classes/Language",
+            "label": "Language"
+          }
+        ]
+      },
+      {
+        "type": "category",
         "label": "Functions",
         "items": [
           {
@@ -1447,6 +1463,22 @@ const typedocSidebar = { items: [
               "type": "doc",
               "id": "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/index"
             }
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Classes",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/viewer-bundle/classes/ActionDefinition",
+            "label": "ActionDefinition"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/viewer-bundle/classes/Language",
+            "label": "Language"
           }
         ]
       },
