@@ -44,6 +44,7 @@ The components are divided into the following categories:
 - [Calendar](https://rsuitejs.com/components/calendar/).
 - [Checkbox](https://rsuitejs.com/components/checkbox/).
 - [DatePicker](https://rsuitejs.com/components/date-picker/).
+- [TimePicker](https://rsuitejs.com/components/date-picker/).
 - [TagPicker](https://rsuitejs.com/components/tag-picker/).
 - Dropdown is a component based on [InputPicker](https://rsuitejs.com/components/input-picker/).
 - Input is a component based on [Input and InputGroup](https://rsuitejs.com/components/input/).
@@ -53,6 +54,8 @@ The components are divided into the following categories:
 - Search is a component based on [InputPicker](https://rsuitejs.com/components/input-picker/).
 - Text area is a component based on [Input](https://rsuitejs.com/components/input/).
 - Uploader is a component based on [Uploader](https://rsuitejs.com/components/uploader/).
+- [Rich text editor](/components-library/fields-components/rich-text-editor). This component is in a
+  separate [package](https://www.npmjs.com/package/@react-form-builder/components-rich-text).
 
 ## Static components
 

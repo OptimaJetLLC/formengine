@@ -12,7 +12,8 @@ Form Builder consists of the following NPM packages:
 1. [@react-form-builder/core](https://www.npmjs.com/package/@react-form-builder/core).
 2. [@react-form-builder/designer](https://www.npmjs.com/package/@react-form-builder/designer).
 3. [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
-3. [@react-form-builder/components-fast-qr](https://www.npmjs.com/package/@react-form-builder/components-fast-qr).
+4. [@react-form-builder/components-fast-qr](https://www.npmjs.com/package/@react-form-builder/components-fast-qr).
+5. [@react-form-builder/components-rich-text](https://www.npmjs.com/package/@react-form-builder/components-rich-text).
 
 :::tip
 
@@ -72,6 +73,10 @@ graph TD;
 ## @react-form-builder/components-fast-qr
 
 This package contains QR code component, based on [Fast QR](https://www.npmjs.com/package/fast_qr) library.
+
+## @react-form-builder/components-rich-text
+
+This package contains Rich text editor component, based on [Quill](https://quilljs.com/) library.
 
 ## Example
 
