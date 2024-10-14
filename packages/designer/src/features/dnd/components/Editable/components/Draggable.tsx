@@ -28,7 +28,7 @@ const RawDraggable = ({children, isInner, className, isTree, ...props}: Draggabl
   const isContainer = model.kind === 'container'
   const direction = useDirection()
   const horizontal = !isTree && direction
-  const [{isActive, isDragging: isDraggingCurrent}, dnd] = useDnd()
+  const [{isActive, isDragging: isDraggingCurrent}, dnd] = useDnd(isRoot)
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
   const dragPreview = <DragPreview><SLabel>{key}</SLabel></DragPreview>
   const afterChildren = isDragging && !isRoot
@@ -37,7 +37,7 @@ const RawDraggable = ({children, isInner, className, isTree, ...props}: Draggabl
   return <>
     {isDraggingCurrent && dragPreview}
     <Container ref={dnd} {...props}
-               className={cx(className, {isActive, isContainer, isRoot, isInner, isDraggingCurrent, horizontal})}>
+               className={cx(className, {isActive, isContainer, isRoot, isInner, isDragging, isDraggingCurrent, horizontal, isTree})}>
       {!isTree && <DraggableBody/>}
       {beforeChildren && <DropZone/>}
       {children}
@@ -55,7 +55,7 @@ interface DndState {
   canDrop: boolean,
 }
 
-const useDnd = (): [DndState, RefObject<any>] => {
+const useDnd = (isRoot?: boolean): [DndState, RefObject<any>] => {
   const dnd = useRef(null)
   const data = useComponentData()
 
@@ -72,7 +72,8 @@ const useDnd = (): [DndState, RefObject<any>] => {
   const [dragState, drag] = useDragWithPreview(ItemType.Component)
   const state: DndState = useMemo(() => ({...dropProps, ...dragState}), [dropProps, dragState])
 
-  drop(drag(dnd))
+  if (!isRoot) drag(dnd)
+  drop(dnd)
 
   return [state, dnd]
 }
@@ -95,10 +96,9 @@ const Container = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  transition: padding-block 200ms ease-in-out;
-  transition-delay: 200ms;
+  transition: padding 200ms ease-in-out;
 
-  &.isDraggingCurrent > * {
+  &.isDraggingCurrent {
     opacity: 0.4;
   }
 
@@ -112,16 +112,24 @@ const Container = styled.div`
     cursor: move !important;
   }
 
-  &:not(.isRoot) {
+  &:not(.isRoot):not(.isTree) {
     &.isActive.isContainer {
-      padding-block: 40px;
-      padding-inline: 5px;
       outline: 1px dashed rgba(0, 116, 255, 0.25);
     }
 
-    .horizontal > &.isActive.isContainer {
-      padding-block: 5px !important;
-      padding-inline: 40px !important;
+    &.isDragging.isContainer {
+      padding: 20px 10px;
+      background-color: rgb(from var(--rs-primary-200) r g b/20%);
+
+      .rs-theme-dark & {
+        background-color: rgb(from var(--rs-primary-600) r g b/10%);
+      }
+
+      outline: 1px dashed rgba(0, 116, 255, 0.25);
+    }
+
+    .horizontal > &.isDragging.isContainer {
+      padding: 10px 20px;
     }
   }
 

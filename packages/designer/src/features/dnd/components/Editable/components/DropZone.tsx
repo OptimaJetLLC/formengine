@@ -7,46 +7,39 @@ import {useDrop} from 'react-dnd'
 import type {ConnectDropTarget} from 'react-dnd/dist/types/types'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {AcceptDrop, ItemType} from '../../../consts'
-import {DropView} from './DropView'
+import {DropView, InnerDropView} from './DropView'
 
 interface DropZoneProps extends ComponentProps<any> {
   isAfter?: boolean
   isInner?: boolean
-  className?: any
-  children?: any
   slot?: string
   slotCondition?: string
 }
 
-const RawDropZone = ({isAfter = false, className, isInner, ...props}: DropZoneProps) => {
+const RawDropZone = ({isAfter, isInner, ...props}: DropZoneProps) => {
   const componentData = useComponentData()
   const {store, isRoot} = componentData
   const isContainer = Boolean(store.children)
-  const {slot, slotCondition} = props
 
-  const dropInside = isRoot || isInner
-  const [{isActive, isOver}, drop] = useDropZone(isAfter, dropInside, slot)
-  const dropClassNames = {isAfter, isActive, isContainer, isRoot, isInner}
-
-  const dropView = <DropView {...{...dropClassNames, isOver, slot, slotCondition}}/>
+  const inner = isRoot || isInner
+  const [{isActive, isOver}, drop] = useDropZone(isAfter, inner, props.slot)
+  const className = cx({isAfter, isActive, isContainer, isRoot, isInner, isOver})
 
   return <>
-    <Container ref={drop} {...props} className={cx(dropClassNames, className)}>
-      {dropInside && dropView}
-    </Container>
-    {!dropInside && dropView}
+    {inner
+      ? <InnerDropView ref={drop} className={className} {...props}/>
+      : <SContainer ref={drop} className={className}/>
+    }
+    {!inner && <DropView className={className}/>}
   </>
 }
-
-const DropZone = namedObserver('DropZone', RawDropZone)
 
 interface DropState {
   isActive: boolean,
   isOver: boolean,
 }
 
-const useDropZone = (isAfter: boolean, isInner?: boolean, slot?: string): [DropState, ConnectDropTarget] => {
-
+const useDropZone = (isAfter?: boolean, isInner?: boolean, slot?: string): [DropState, ConnectDropTarget] => {
   const store = useBuilderStore()
   const target = useComponentData()
   const insertPosition = isInner
@@ -80,26 +73,23 @@ const useDropZone = (isAfter: boolean, isInner?: boolean, slot?: string): [DropS
   return [{isActive, isOver}, drop]
 }
 
-const Container = styled.div`
+const SContainer = styled.div`
   position: absolute;
-  top: 0;
-  height: 50%;
+  top: -5px;
+  inset-inline-start: 0;
+  height: calc(50% + 5px);
   width: 100%;
   z-index: 10;
   display: flex;
 
   &.isContainer {
-    height: 40px;
+    height: 36px;
     z-index: 9;
   }
 
   &.isAfter {
-    top: 50%;
-
-    &.isContainer {
-      top: initial;
-      bottom: 0;
-    }
+    top: initial;
+    bottom: -5px;
 
     &.isRoot {
       position: relative;
@@ -108,33 +98,16 @@ const Container = styled.div`
   }
 
   .horizontal > * > & {
-    height: 100%;
-    width: 50%;
     top: 0;
-    inset-inline-start: 0;
-  }
-
-  .horizontal > * > & {
-    &.isContainer {
-      width: 40px;
-    }
+    inset-inline-start: -5px;
+    height: 100%;
+    width: calc(50% + 5px);
 
     &.isAfter {
-      inset-inline-start: 50%;
-
-      &.isContainer {
-        inset-inline-start: initial;
-        inset-inline-end: 0;
-      }
+      inset-inline-start: initial;
+      inset-inline-end: -5px;
     }
-  }
-
-  &.isInner {
-    position: relative;
-    top: 0;
-    padding: 10px;
-    min-height: 40px;
   }
 `
 
-export {DropZone}
+export const DropZone = namedObserver('DropZone', RawDropZone)
