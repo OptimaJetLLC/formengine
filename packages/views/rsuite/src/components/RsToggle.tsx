@@ -1,6 +1,6 @@
 import {boolean, define, event, oneOf, string} from '@react-form-builder/core'
 import {Toggle} from 'rsuite'
-import {controlColor} from '../commonProperties'
+import {controlColor, readOnly} from '../commonProperties'
 
 export const rsToggle = define(Toggle, 'RsToggle')
   .name('Toggle')
@@ -10,6 +10,7 @@ export const rsToggle = define(Toggle, 'RsToggle')
     checkedChildren: string.named('Checked text'),
     unCheckedChildren: string.named('Unchecked text'),
     disabled: boolean.hinted('Whether disabled').default(false),
+    readOnly,
     size: oneOf('sm', 'md', 'lg')
       .labeled('Small', 'Medium', 'Large')
       .default('md'),

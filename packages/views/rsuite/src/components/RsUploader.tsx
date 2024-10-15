@@ -1,7 +1,7 @@
 import {array, boolean, define, event, node, oneOf, string} from '@react-form-builder/core'
 import type {UploaderProps} from 'rsuite'
 import {Uploader} from 'rsuite'
-import {nonNegNumber} from '../commonProperties'
+import {nonNegNumber, readOnly} from '../commonProperties'
 import {InputCell} from './components/InputCell'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
@@ -33,6 +33,7 @@ export const rsUploader = define(RsUploader, 'RsUploader')
     children: node,
     disableMultipart: boolean.default(false),
     disabled: boolean.default(false),
+    readOnly,
     disabledFileItem: boolean.default(false),
     draggable: boolean.default(false),
     fileListVisible: boolean.default(true),

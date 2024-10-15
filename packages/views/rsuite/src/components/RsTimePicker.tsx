@@ -3,7 +3,7 @@ import {format as formatDate, parse} from 'date-fns'
 import React, {useCallback, useMemo} from 'react'
 import type {DatePickerProps} from 'rsuite'
 import {DatePicker, Form} from 'rsuite'
-import {placement, size} from '../commonProperties'
+import {placement, readOnly, size} from '../commonProperties'
 import {formatValidator, toSafeFormat} from '../dateTimeUtils'
 import {RsLabeledInput} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
@@ -78,6 +78,7 @@ export const rsTimePicker = define(RsTimePicker, 'RsTimePicker')
     editable: boolean.default(true),
     cleanable: boolean.default(false),
     disabled: boolean.default(false),
+    readOnly,
     open: boolean,
     placement: placement,
     size: size,

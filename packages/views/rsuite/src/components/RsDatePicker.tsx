@@ -2,7 +2,7 @@ import {boolean, date, define, event, number, oneOf, string} from '@react-form-b
 import {useMemo} from 'react'
 import type {DatePickerProps} from 'rsuite'
 import {DatePicker, Form} from 'rsuite'
-import {placement, size} from '../commonProperties'
+import {placement, readOnly, size} from '../commonProperties'
 import {formatValidator, toSafeFormat} from '../dateTimeUtils'
 import {RsLabeledInput} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
@@ -51,6 +51,7 @@ export const rsDatePicker = define(RsDatePicker, 'RsDatePicker')
     defaultOpen: boolean.hinted('Default value of open property').default(false),
     defaultValue: date.hinted('Default value'),
     disabled: boolean.hinted('Whether disabled the component').default(false),
+    readOnly,
     editable: boolean.hinted('Rendered as an input, the date can be entered via the keyboard').default(true),
     format: string.validated(formatValidator, {
       code: 'INVALID_DATE_FORMAT',
