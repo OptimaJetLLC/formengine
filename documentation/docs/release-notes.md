@@ -4,6 +4,22 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.13.0
+
+_October_ 15, 2024
+
+- The `readOnly` property that allows the user to view the form in read only mode has been added to
+  the [FormViewerProps](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#readOnly)
+  and to the [FormBuilderProps](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#readOnly).
+- For all valued components, a `readOnly` property has been added.
+- Fixed and improved Drag and drop behavior for components.
+- The [ActionDefinition](/api-reference/@react-form-builder/core/classes/ActionDefinition)
+  and [Language](/api-reference/@react-form-builder/core/classes/Language) classes were exported
+  from [designer-bundle and viewer-bundle](/installation#cdn).
+- The dependency on the `@emotion/styled` package has been removed from the core package.
+- Added documentation for the [Rich text editor](/components-library/fields-components/rich-text-editor)
+  and [TimePicker](/components-library/fields-components/time-picker) components.
+
 ## 1.12.0
 
 _September_ 24, 2024
