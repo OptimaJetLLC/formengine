@@ -38,9 +38,10 @@ Form Builder has the following APIs for describing a component:
 13. [oneOf](/api-reference/@react-form-builder/core/functions/oneOf) - annotation builder for properties of type `enum`, the property value
     can only be one of enum.
 14. [someOf](/api-reference/@react-form-builder/core/functions/someOf) - annotation builder for properties of type `enum`, the property
-    value
-    can contain multiple enum values.
-15. There are other APIs for describing component properties, you can find them in the documentation, these APIs deal with describing
+    value can contain multiple enum values.
+15. [readOnly](/api-reference/@react-form-builder/core/variables/readOnly) - annotation builder for `boolean` properties that make a
+    component read-only.
+16. There are other APIs for describing component properties, you can find them in the documentation, these APIs deal with describing
     synthetic properties of a component (e.g. a set of arbitrary HTML attributes).
 
 ## Example of a custom component definition
@@ -259,8 +260,8 @@ component we can see how the component changes on the form:
 ### Form with custom component
 
 After creating a form in the designer, you can copy (or download) the form code and pass the form code to
-the [FormViewer](/api-reference/@react-form-builder/core/functions/FormViewer), a component for displaying forms. Here is an example of a form
-with a custom component:
+the [FormViewer](/api-reference/@react-form-builder/core/functions/FormViewer), a component for displaying forms. Here is an example of a
+form with a custom component:
 
 ```json
 {
@@ -476,11 +477,10 @@ changes:
 
 ### Kind of a component
 
-Also, in some cases, you may need to set the [`kind`](/api-reference/@react-form-builder/core/classes/Definer#kind) of the component. This is
-a property that shows [how to render](/component-styling#structure) the component. For regular components, it is set to `'component'` by
+Also, in some cases, you may need to set the [`kind`](/api-reference/@react-form-builder/core/classes/Definer#kind) of the component. This
+is a property that shows [how to render](/component-styling#structure) the component. For regular components, it is set to `'component'` by
 default. You can the `kind` value to `'container'` in case you need the component to be only a container, for its children, without having
-its own
-wrappers.
+its own wrappers.
 
 ```typescript
 const myContainer = define(MyContainer)

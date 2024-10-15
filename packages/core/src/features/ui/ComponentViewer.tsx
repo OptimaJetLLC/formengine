@@ -105,6 +105,7 @@ const RawComponentViewer = () => {
     return formViewerStore.localizeComponent('component', componentStore)
   }, [formViewerStore])
   const componentTree = useComponentTreeContext()
+  const viewerProps = useViewerProps()
 
   const computeChildren = useCallback((componentData: ComponentData, componentProps: Record<string, any>) => {
     if (viewerComputeChildren) return viewerComputeChildren(componentData, componentProps)
@@ -112,8 +113,8 @@ const RawComponentViewer = () => {
   }, [viewerComputeChildren, formViewerStore.form.componentTree, componentTree])
 
   const componentState = useMemo(
-    () => new ComponentState(data, formViewerStore, localize, computeChildren),
-    [data, formViewerStore, localize, computeChildren])
+    () => new ComponentState(data, formViewerStore, localize, computeChildren, viewerProps),
+    [data, formViewerStore, localize, computeChildren, viewerProps])
 
   useActions(componentState)
 

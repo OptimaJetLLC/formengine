@@ -28,6 +28,7 @@ export class Model<T = any> {
    * @param typeName the component type name.
    * @param icon the component icon.
    * @param kind the component kind.
+   * @param readOnly the name of the component property that stores the read-only flag.
    * @template T the type of React component properties.
    */
   constructor(
@@ -41,7 +42,8 @@ export class Model<T = any> {
     readonly wrapperCss?: Css,
     readonly typeName?: string,
     readonly icon?: ComponentType,
-    readonly kind: ComponentKind = 'component'
+    readonly kind: ComponentKind = 'component',
+    readonly readOnly?: string
   ) {
     this.component = observer(component)
     this.component.displayName = component.displayName || component.name

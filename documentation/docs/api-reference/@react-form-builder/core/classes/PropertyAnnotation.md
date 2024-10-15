@@ -150,6 +150,18 @@ The component property name.
 
 ***
 
+### readOnly
+
+> `readonly` **readOnly**: `boolean` = `false`
+
+True if the property value controls a read-only flag, false otherwise.
+
+#### Inherited from
+
+[`Annotation`](Annotation.md).[`readOnly`](Annotation.md#readonly)
+
+***
+
 ### required
 
 > `readonly` **required**: `boolean` = `false`

@@ -267,6 +267,18 @@ Custom component property editors. **Attention! Unstable API.**
 
 ***
 
+### readOnly?
+
+> `optional` **readOnly**: `boolean`
+
+If true, the form is read-only.
+
+#### Inherited from
+
+`Omit.readOnly`
+
+***
+
 ### theme?
 
 > `optional` **theme**: [`FormBuilderTheme`](../type-aliases/FormBuilderTheme.md)

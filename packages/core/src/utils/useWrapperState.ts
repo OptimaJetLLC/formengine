@@ -1,5 +1,7 @@
 import {useMemo} from 'react'
 import type {Model} from '../features/define'
+import type {FormViewerProps} from '../features/form-viewer'
+import {useViewerProps} from '../features/form-viewer/components/ViewerPropsContext'
 import {ComponentState} from '../stores/ComponentState'
 import {ComponentStore} from '../stores/ComponentStore'
 import type {Store} from '../stores/Store'
@@ -20,14 +22,15 @@ export type ComponentLocalizer = (componentStore: ComponentStore) => Record<stri
  */
 export const useWrapperState = (componentKey: string, componentModel: Model, wrapperProps: any, localizer: ComponentLocalizer) => {
   const viewerStore = useStore()
-  return useMemo(() => getWrapperState(viewerStore, componentKey, componentModel, wrapperProps, localizer),
-    [viewerStore, componentKey, componentModel, wrapperProps, localizer])
+  const viewerProps = useViewerProps()
+  return useMemo(() => getWrapperState(viewerStore, componentKey, componentModel, wrapperProps, localizer, viewerProps),
+    [viewerStore, componentKey, componentModel, wrapperProps, localizer, viewerProps])
 }
 
 const getWrapperState = (viewerStore: Store, componentKey: string, componentModel: Model,
-                         wrapperProps: any, localizer: ComponentLocalizer) => {
+                         wrapperProps: any, localizer: ComponentLocalizer, viewerProps: FormViewerProps) => {
   const componentStore = new ComponentStore(componentKey, componentModel.type)
   componentStore.props = wrapperProps
   const componentData = viewerStore.createComponentData(componentStore, false, componentModel)
-  return new ComponentState(componentData, viewerStore, localizer, () => ({}))
+  return new ComponentState(componentData, viewerStore, localizer, () => ({}), viewerProps)
 }

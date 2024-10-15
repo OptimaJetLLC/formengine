@@ -172,6 +172,7 @@
 - [node](variables/node.md)
 - [number](variables/number.md)
 - [object](variables/object.md)
+- [readOnly](variables/readOnly.md)
 - [renderWhen](variables/renderWhen.md)
 - [screenModel](variables/screenModel.md)
 - [size](variables/size.md)

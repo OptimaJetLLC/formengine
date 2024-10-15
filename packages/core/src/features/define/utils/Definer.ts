@@ -171,6 +171,7 @@ export class Definer<T extends object> {
         ` The annotation with the key "${valuedAnnotations[0].key}" will be used.`)
     }
     const valuedAn = firstValuedAn ?? propAns.find(an => an.name === 'value')
+    const readOnlyAn = propAns.find(an => an.readOnly)
 
     const model = new Model(
       this.data.component,
@@ -183,7 +184,8 @@ export class Definer<T extends object> {
       getDefaultCss(cssWrapperAns),
       this.getType(),
       this.data.icon,
-      this.data.kind
+      this.data.kind,
+      readOnlyAn?.key
     )
 
     const meta = new Meta(

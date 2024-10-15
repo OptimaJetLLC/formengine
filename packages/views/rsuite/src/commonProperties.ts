@@ -1,4 +1,4 @@
-import {array, boolean, color, event, number, oneOf, string, toLabeledValues} from '@react-form-builder/core'
+import {array, boolean, color, event, number, oneOf, readOnly as readOnlyProp, string, toLabeledValues} from '@react-form-builder/core'
 import type {TypeAttributes} from 'rsuite/esm/internals/types'
 
 type Placement = TypeAttributes.Placement;
@@ -42,7 +42,7 @@ export const textStyles = {
   color: color,
 }
 
-export const readOnly = boolean.hinted('Read only component').default(false)
+export const readOnly = readOnlyProp.hinted('Read only component').default(false)
 export const inputProps = {
   placeholder: string.hinted('Input placeholder'),
   size,

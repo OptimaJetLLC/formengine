@@ -40,6 +40,11 @@ export const object = createProperty('object').typed('object')
 export const boolean = createProperty('boolean').typed('boolean')
 
 /**
+ * Annotation builder for a read-only property of a component with type 'boolean'.
+ */
+export const readOnly = boolean.setup({readOnly: true})
+
+/**
  * The annotation builder for a component property with type 'number'.
  */
 export const number = createProperty('number').typed('number')

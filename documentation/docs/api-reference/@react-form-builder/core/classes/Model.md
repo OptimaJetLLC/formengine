@@ -12,7 +12,7 @@ the type of React component properties.
 
 ### new Model()
 
-> **new Model**\<`T`\>(`component`, `name`?, `actionsInitializer`?, `valued`?, `valueType`?, `defaultProps`?, `css`?, `wrapperCss`?, `typeName`?, `icon`?, `kind`?): [`Model`](Model.md)\<`T`\>
+> **new Model**\<`T`\>(`component`, `name`?, `actionsInitializer`?, `valued`?, `valueType`?, `defaultProps`?, `css`?, `wrapperCss`?, `typeName`?, `icon`?, `kind`?, `readOnly`?): [`Model`](Model.md)\<`T`\>
 
 Creates component metadata for the form viewer.
 
@@ -61,6 +61,10 @@ the component icon.
 • **kind?**: [`ComponentKind`](../type-aliases/ComponentKind.md) = `'component'`
 
 the component kind.
+
+• **readOnly?**: `string`
+
+the name of the component property that stores the read-only flag.
 
 #### Returns
 
@@ -113,6 +117,14 @@ the component icon.
 > `readonly` **kind**: [`ComponentKind`](../type-aliases/ComponentKind.md) = `'component'`
 
 the component kind.
+
+***
+
+### readOnly?
+
+> `readonly` `optional` **readOnly**: `string`
+
+the name of the component property that stores the read-only flag.
 
 ***
 

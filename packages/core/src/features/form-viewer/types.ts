@@ -110,6 +110,11 @@ export interface FormViewerProps {
    * The FormEngine license key.
    */
   licenseKey?: string
+
+  /**
+   * If true, the form is read-only.
+   */
+  readOnly?: boolean
 }
 
 /**

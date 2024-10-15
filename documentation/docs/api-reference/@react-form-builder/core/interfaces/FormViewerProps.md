@@ -149,6 +149,14 @@ the [IFormData](IFormData.md) with all the form data.
 
 ***
 
+### readOnly?
+
+> `optional` **readOnly**: `boolean`
+
+If true, the form is read-only.
+
+***
+
 ### validators?
 
 > `optional` **validators**: `Partial`\<`Record`\<keyof [`SchemaTypeMap`](../type-aliases/SchemaTypeMap.md), [`CustomValidationRules`](../type-aliases/CustomValidationRules.md)\>\>

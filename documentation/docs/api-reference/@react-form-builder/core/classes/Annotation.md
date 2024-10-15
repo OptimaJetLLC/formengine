@@ -106,6 +106,14 @@ The component property name.
 
 ***
 
+### readOnly
+
+> `readonly` **readOnly**: `boolean` = `false`
+
+True if the property value controls a read-only flag, false otherwise.
+
+***
+
 ### required
 
 > `readonly` **required**: `boolean` = `false`

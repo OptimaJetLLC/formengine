@@ -825,6 +825,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/variables/readOnly",
+            "label": "readOnly"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/variables/renderWhen",
             "label": "renderWhen"
           },
