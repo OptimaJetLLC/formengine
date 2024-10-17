@@ -38,6 +38,7 @@ const RawDraggable = ({children, isInner, className, isTree, ...props}: Draggabl
     {isDraggingCurrent && dragPreview}
     <Container ref={dnd} {...props}
                className={cx(className, {isActive, isContainer, isRoot, isInner, isDragging, isDraggingCurrent, horizontal, isTree})}>
+      <label className={'containerLabel'}>{key}</label>
       {!isTree && <DraggableBody/>}
       {beforeChildren && <DropZone/>}
       {children}
@@ -98,6 +99,20 @@ const Container = styled.div`
   flex-direction: column;
   transition: padding 200ms ease-in-out;
 
+  .containerLabel {
+    display: none;
+    position: absolute;
+    justify-self: center;
+    color: var(--rs-primary-300);
+    inset: 2px;
+    line-height: 13px;
+
+    .rs-theme-dark & {
+      color: var(--rs-primary-400);
+      opacity: 0.4;
+    }
+  }
+
   &.isDraggingCurrent {
     opacity: 0.4;
   }
@@ -120,12 +135,15 @@ const Container = styled.div`
     &.isDragging.isContainer {
       padding: 20px 10px;
       background-color: rgb(from var(--rs-primary-200) r g b/20%);
+      outline: 1px dashed rgba(0, 116, 255, 0.25);
 
       .rs-theme-dark & {
         background-color: rgb(from var(--rs-primary-600) r g b/10%);
       }
 
-      outline: 1px dashed rgba(0, 116, 255, 0.25);
+      & > .containerLabel {
+        display: initial;
+      }
     }
 
     .horizontal > &.isDragging.isContainer {
