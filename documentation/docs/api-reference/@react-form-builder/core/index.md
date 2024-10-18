@@ -49,6 +49,7 @@
 
 - [BaseCompilationResult](interfaces/BaseCompilationResult.md)
 - [BuilderComponent](interfaces/BuilderComponent.md)
+- [ComponentMetadataEventListeners](interfaces/ComponentMetadataEventListeners.md)
 - [ComponentProperty](interfaces/ComponentProperty.md)
 - [ComponentTreeProps](interfaces/ComponentTreeProps.md)
 - [ErrorWrapperProps](interfaces/ErrorWrapperProps.md)
@@ -85,6 +86,7 @@
 - [ComponentKey](type-aliases/ComponentKey.md)
 - [ComponentKind](type-aliases/ComponentKind.md)
 - [ComponentLocalizer](type-aliases/ComponentLocalizer.md)
+- [ComponentPropertyBindType](type-aliases/ComponentPropertyBindType.md)
 - [ComponentPropertyComputeType](type-aliases/ComponentPropertyComputeType.md)
 - [ComponentPropertyName](type-aliases/ComponentPropertyName.md)
 - [ComponentPropsLocalization](type-aliases/ComponentPropsLocalization.md)
@@ -170,6 +172,7 @@
 - [internalErrorModel](variables/internalErrorModel.md)
 - [key](variables/key.md)
 - [node](variables/node.md)
+- [nodeArray](variables/nodeArray.md)
 - [number](variables/number.md)
 - [object](variables/object.md)
 - [readOnly](variables/readOnly.md)

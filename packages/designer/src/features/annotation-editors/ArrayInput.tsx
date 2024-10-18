@@ -1,3 +1,5 @@
+import {namedObserver, useStore} from '@react-form-builder/core'
+import {useCallback, useMemo} from 'react'
 import {EditableTable, makeColumns} from '../components/EditableTable'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
@@ -9,12 +11,28 @@ const DEFAULT_COLUMNS = [{name: 'value'}, {name: 'label'}]
  * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const ArrayInput = (props: AnnotationEditorProps) => {
-  const {value, onChange, annotation} = props
-  const columns = makeColumns(annotation.editorProps?.columns ?? DEFAULT_COLUMNS)
+const RawArrayInput = (props: AnnotationEditorProps) => {
+  const {value, onChange, annotation, componentData} = props
+  const {onAdd, onRemove, columns, calculateEditorProps} = annotation.editorProps ?? {}
+  const viewerStore = useStore()
+  const preparedColumns = useMemo(() => makeColumns(columns ?? DEFAULT_COLUMNS), [columns])
+
+  const handleAdd = useCallback((index: number) => {
+    onAdd?.(index, componentData, viewerStore)
+  }, [viewerStore, componentData, onAdd])
+
+  const handleRemove = useCallback((index: number) => {
+    onRemove?.(index, componentData, viewerStore)
+  }, [viewerStore, componentData, onRemove])
+
+  const calculatedProps = calculateEditorProps?.(componentData, onChange) ?? {}
 
   return <>
     <LabeledProperty {...props}/>
-    <EditableTable data={value} onChange={onChange} columns={columns}/>
+    <EditableTable data={value} onChange={onChange} columns={preparedColumns}
+                   onRemove={handleRemove} onAdd={handleAdd} {...calculatedProps}
+    />
   </>
 }
+
+export const ArrayInput = namedObserver('ArrayInput', RawArrayInput)

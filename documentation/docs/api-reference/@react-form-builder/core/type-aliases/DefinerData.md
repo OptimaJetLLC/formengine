@@ -42,11 +42,23 @@ The CSS metadata.
 
 The custom component to display in the component list (unused).
 
+### eventListeners?
+
+> `optional` **eventListeners**: [`ComponentMetadataEventListeners`](../interfaces/ComponentMetadataEventListeners.md)
+
+The component metadata event listeners.
+
 ### icon?
 
 > `optional` **icon**: `ComponentType`
 
 The component icon.
+
+### initialJson?
+
+> `optional` **initialJson**: `string`
+
+The JSON source for the component (instance of [ComponentStore](../classes/ComponentStore.md) class serialised to JSON).
 
 ### kind?
 

@@ -34,7 +34,12 @@ export function getChildren(
     const filteredChildren = children
       .filter(isSlotConditionSatisfied)
       .filter(isNeedRender)
-    if (filteredChildren.length) currentProps[key] = <ComponentTree data={filteredChildren}/>
+
+    if (filteredChildren.length) {
+      currentProps[key] = data.model.propsBindingTypes[key] === 'array'
+        ? filteredChildren.map((item, index) => <ComponentTree key={index} data={[item]}/>)
+        : <ComponentTree data={filteredChildren}/>
+    }
   }
 
   return currentProps

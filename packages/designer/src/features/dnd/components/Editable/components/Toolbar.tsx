@@ -5,7 +5,7 @@ import * as faClone from '@fortawesome/free-regular-svg-icons/faClone.js'
 import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt.js'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
 import type {MouseEventHandler} from 'react'
-import {useCallback, useEffect, useRef} from 'react'
+import {useCallback, useEffect, useMemo, useRef} from 'react'
 import scrollIntoView from 'scroll-into-view-if-needed'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {stopEvent} from '../../../../../utils/stopEvent'
@@ -48,7 +48,13 @@ const RawToolbar = ({compact}: ToolbarProps) => {
     }
   }, [selected, compact])
 
-  return <ToolbarContainer ref={ref} className={cx({compact: compact}, 'Toolbar')}>
+  const clsName = useMemo(() => {
+    const parentType = data.parent ? `parent-type-${data.parent?.model.type}` : ''
+    const type = `type-${data.model.type}`
+    return cx({compact: compact}, 'Toolbar', parentType, type)
+  }, [compact, data.model.type, data.parent])
+
+  return <ToolbarContainer ref={ref} className={clsName}>
     {!compact && <Title>
       {data.store.key}
       <label>{` (${data.store.type})`}</label>
@@ -57,10 +63,10 @@ const RawToolbar = ({compact}: ToolbarProps) => {
     <AddButton/>
     {!data.isRoot && <>
       <Hinted hint={t('cloneComponent')} placement={'autoVertical'}>
-        <FaIcon onClick={onClone} icon={faClone as unknown as IconDefinition}/>
+        <FaIcon onClick={onClone} icon={faClone as unknown as IconDefinition} className={'clone-button'}/>
       </Hinted>
       <Hinted hint={t('removeComponent')} placement={'autoVertical'}>
-        <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition}/>
+        <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition} className={'remove-button'}/>
       </Hinted>
     </>}
   </ToolbarContainer>

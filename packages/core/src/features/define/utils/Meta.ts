@@ -1,6 +1,7 @@
 import type {ReactNode} from 'react'
 import type {Annotation} from '../../annotation/types/annotations/Annotation'
 import type {ComponentKind} from '../types'
+import type {ComponentMetadataEventListeners} from './ComponentMetadataEventListeners'
 
 /**
  * Component metadata for the form builder.
@@ -16,6 +17,8 @@ export class Meta {
    * @param customPreview the custom ReactNode to be drawn on the toolbar.
    * @param valuedAn the metadata for the component value.
    * @param kind the component kind.
+   * @param initialJson the JSON source for the component (instance of {@link ComponentStore} class serialised to JSON).
+   * @param eventListeners the component metadata event listeners.
    */
   constructor(
     readonly type: string,
@@ -26,6 +29,8 @@ export class Meta {
     readonly customPreview?: ReactNode,
     readonly valuedAn?: Annotation,
     readonly kind: ComponentKind = 'component',
+    readonly initialJson?: string,
+    readonly eventListeners?: ComponentMetadataEventListeners,
   ) {
   }
 }

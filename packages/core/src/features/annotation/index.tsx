@@ -107,6 +107,12 @@ export const event = createAnnotation<Function>('event').setup({annotationType: 
 export const node = createNodeAnnotation<ReactNode>('node').setup({annotationType: 'Container'})
 
 /**
+ * The annotation builder for a component property with type 'ReactNode[]'.
+ */
+export const nodeArray = createNodeAnnotation<ReactNode[]>('nodeArray')
+  .setup({annotationType: 'Container', bindingType: 'array'})
+
+/**
  * The annotation builder for a component property with type 'enum', the property value can only be one of enum.
  */
 export const oneOf = createProperty('oneOf').oneOf.bind(createProperty('oneOf'))

@@ -228,6 +228,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/interfaces/ComponentMetadataEventListeners",
+            "label": "ComponentMetadataEventListeners"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/interfaces/ComponentProperty",
             "label": "ComponentProperty"
           },
@@ -396,6 +401,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/ComponentLocalizer",
             "label": "ComponentLocalizer"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/ComponentPropertyBindType",
+            "label": "ComponentPropertyBindType"
           },
           {
             "type": "doc",
@@ -812,6 +822,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/variables/node",
             "label": "node"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/variables/nodeArray",
+            "label": "nodeArray"
           },
           {
             "type": "doc",

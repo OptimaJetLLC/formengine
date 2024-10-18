@@ -9,8 +9,8 @@ slug: /release-notes
 _October_ 15, 2024
 
 - The `readOnly` property that allows the user to view the form in read only mode has been added to
-  the [FormViewerProps](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#readOnly)
-  and to the [FormBuilderProps](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#readOnly).
+  the [FormViewerProps](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#readonly)
+  and to the [FormBuilderProps](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#readonly).
 - For all valued components, a `readOnly` property has been added.
 - Fixed and improved Drag and drop behavior for components.
 - The [ActionDefinition](/api-reference/@react-form-builder/core/classes/ActionDefinition)

@@ -34,7 +34,7 @@ const RawAddButton = () => {
 
   return <>
     <Whisper placement={builderStore.isRTL ? 'right' : 'left'} speaker={popover} ref={whisperRef} enterable trigger="hover">
-      <PlusIcon/>
+      <PlusIcon className={'add-button'}/>
     </Whisper>
   </>
 }

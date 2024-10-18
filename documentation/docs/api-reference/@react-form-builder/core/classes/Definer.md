@@ -96,6 +96,26 @@ the modified Definer class instance.
 
 ***
 
+### eventListeners()
+
+> **eventListeners**(`eventListeners`?): [`Definer`](Definer.md)\<`T`\>
+
+Sets the component metadata event listeners.
+
+#### Parameters
+
+• **eventListeners?**: [`ComponentMetadataEventListeners`](../interfaces/ComponentMetadataEventListeners.md)
+
+the component metadata event listeners.
+
+#### Returns
+
+[`Definer`](Definer.md)\<`T`\>
+
+the modified Definer class instance.
+
+***
+
 ### getType()
 
 > **getType**(): `string`
@@ -119,6 +139,26 @@ Sets the icon of the component.
 • **icon**: `ComponentType`
 
 the component icon.
+
+#### Returns
+
+[`Definer`](Definer.md)\<`T`\>
+
+the modified Definer class instance.
+
+***
+
+### initialJson()
+
+> **initialJson**(`initialJson`?): [`Definer`](Definer.md)\<`T`\>
+
+Sets initial component JSON.
+
+#### Parameters
+
+• **initialJson?**: `string`
+
+the JSON source for the component (instance of [ComponentStore](ComponentStore.md) class serialised to JSON).
 
 #### Returns
 

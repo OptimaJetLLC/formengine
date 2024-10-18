@@ -1355,6 +1355,22 @@ The minimum height of the table. The height is maintained even when the content 
 
 ***
 
+### onAdd()?
+
+> `optional` **onAdd**: (`index`) => `void`
+
+The callback function called when data in the table is added.
+
+#### Parameters
+
+• **index**: `number`
+
+#### Returns
+
+`void`
+
+***
+
 ### onAnimationEnd?
 
 > `optional` **onAnimationEnd**: `AnimationEventHandler`\<`HTMLElement`\>
@@ -2646,6 +2662,22 @@ Tree table, the callback function in the expanded node
 #### Inherited from
 
 `TableProps.onRateChangeCapture`
+
+***
+
+### onRemove()?
+
+> `optional` **onRemove**: (`index`) => `void`
+
+The callback function called when data in the table is removed.
+
+#### Parameters
+
+• **index**: `number`
+
+#### Returns
+
+`void`
 
 ***
 

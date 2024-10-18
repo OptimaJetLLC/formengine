@@ -9,6 +9,12 @@ export type BuilderContextType = {
    * Form builder mode. Builder or viewer.
    */
   builderMode: BuilderMode
+  /**
+   * The function for translate builder labels.
+   * @param key the translation key.
+   * @returns the translated label.
+   */
+  translate?: (key: string) => string
 }
 
 export const [

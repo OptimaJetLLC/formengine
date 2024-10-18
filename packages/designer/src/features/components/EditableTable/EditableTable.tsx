@@ -48,6 +48,14 @@ export interface EditableTableProps extends TableProps<any, any> {
    * Flag, if true then the table header will be hidden, false otherwise.
    */
   hideHeader?: boolean
+  /**
+   * The callback function called when data in the table is removed.
+   */
+  onRemove?: (index: number) => void
+  /**
+   * The callback function called when data in the table is added.
+   */
+  onAdd?: (index: number) => void
 }
 
 /**
@@ -81,6 +89,8 @@ export const EditableTable = (props: EditableTableProps) => {
     errorMessage,
     autoAdd,
     hideHeader,
+    onAdd,
+    onRemove,
     ...tableProps
   } = props
   const {autoHeight, maxHeight} = state
@@ -112,13 +122,15 @@ export const EditableTable = (props: EditableTableProps) => {
     handleChange?.([...data, {}])
     setShouldScroll(true)
     updateHeight()
-  }, [data, handleChange, updateHeight])
+    onAdd?.(data.length)
+  }, [data, handleChange, updateHeight, onAdd])
 
   const onRemoveColumn = useCallback((index: any) => {
     data.splice(index, 1)
     handleChange?.(data)
     updateHeight()
-  }, [data, handleChange, updateHeight])
+    onRemove?.(index)
+  }, [data, handleChange, updateHeight, onRemove])
 
   const prepareColumns = () => columns?.map(col => cloneElement(col, {
     onChange: () => handleChange?.([...data] as any)

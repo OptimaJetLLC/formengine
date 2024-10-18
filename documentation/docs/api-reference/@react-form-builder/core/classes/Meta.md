@@ -6,7 +6,7 @@ Component metadata for the form builder.
 
 ### new Meta()
 
-> **new Meta**(`type`, `properties`, `css`, `wrapperCss`, `modules`, `customPreview`?, `valuedAn`?, `kind`?): [`Meta`](Meta.md)
+> **new Meta**(`type`, `properties`, `css`, `wrapperCss`, `modules`, `customPreview`?, `valuedAn`?, `kind`?, `initialJson`?, `eventListeners`?): [`Meta`](Meta.md)
 
 Creates the component metadata for the form builder.
 
@@ -44,6 +44,14 @@ the metadata for the component value.
 
 the component kind.
 
+• **initialJson?**: `string`
+
+the JSON source for the component (instance of [ComponentStore](ComponentStore.md) class serialised to JSON).
+
+• **eventListeners?**: [`ComponentMetadataEventListeners`](../interfaces/ComponentMetadataEventListeners.md)
+
+the component metadata event listeners.
+
 #### Returns
 
 [`Meta`](Meta.md)
@@ -63,6 +71,22 @@ the component's CSS metadata.
 > `readonly` `optional` **customPreview**: `ReactNode`
 
 the custom ReactNode to be drawn on the toolbar.
+
+***
+
+### eventListeners?
+
+> `readonly` `optional` **eventListeners**: [`ComponentMetadataEventListeners`](../interfaces/ComponentMetadataEventListeners.md)
+
+the component metadata event listeners.
+
+***
+
+### initialJson?
+
+> `readonly` `optional` **initialJson**: `string`
+
+the JSON source for the component (instance of [ComponentStore](ComponentStore.md) class serialised to JSON).
 
 ***
 

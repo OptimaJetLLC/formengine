@@ -24,7 +24,7 @@ const useDirection = () => {
 }
 
 const RawDraggable = ({children, isInner, className, isTree, ...props}: DraggableProps) => {
-  const {key, isRoot, model} = useComponentData()
+  const {key, isRoot, model, parent} = useComponentData()
   const isContainer = model.kind === 'container'
   const direction = useDirection()
   const horizontal = !isTree && direction
@@ -34,10 +34,15 @@ const RawDraggable = ({children, isInner, className, isTree, ...props}: Draggabl
   const afterChildren = isDragging && !isRoot
   const beforeChildren = isDragging && !isRoot && !isInner
 
+  const clsName = useMemo(() => {
+    const parentType = parent ? `parent-type-${parent?.model.type}` : ''
+    const type = `type-${model.type}`
+    return cx(className, {isActive, isContainer, isRoot, isInner, isDragging, isDraggingCurrent, horizontal, isTree}, parentType, type)
+  }, [className, horizontal, isActive, isContainer, isDragging, isDraggingCurrent, isInner, isRoot, isTree, model.type, parent])
+
   return <>
     {isDraggingCurrent && dragPreview}
-    <Container ref={dnd} {...props}
-               className={cx(className, {isActive, isContainer, isRoot, isInner, isDragging, isDraggingCurrent, horizontal, isTree})}>
+    <Container ref={dnd} {...props} className={clsName}>
       <label className={'containerLabel'}>{key}</label>
       {!isTree && <DraggableBody/>}
       {beforeChildren && <DropZone/>}

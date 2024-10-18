@@ -55,7 +55,12 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
   for (const [key, children] of Object.entries(groups)) {
     const filteredChildren = children
       .filter(isSlotConditionSatisfied)
-    if (filteredChildren.length) currentProps[key] = <ComponentTree data={filteredChildren}/>
+
+    if (filteredChildren.length) {
+      currentProps[key] = componentData.model.propsBindingTypes[key] === 'array'
+        ? filteredChildren.map((item, index) => <ComponentTree key={index} data={[item]}/>)
+        : <ComponentTree data={filteredChildren}/>
+    }
   }
 
   openSlots.forEach(container => {

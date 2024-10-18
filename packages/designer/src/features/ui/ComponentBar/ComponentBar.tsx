@@ -1,8 +1,8 @@
 import {css} from '@emotion/css'
 import styled from '@emotion/styled'
 import type {ComponentData, Model} from '@react-form-builder/core'
-import {ComponentDataProvider, ComponentStore, getKey, useStore} from '@react-form-builder/core'
-import {useState} from 'react'
+import {ComponentDataProvider, ComponentStore, getKey} from '@react-form-builder/core'
+import {useCallback, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {AddedComponent} from '../../dnd'
 import {useTranslationPart} from '../../localization/hooks'
@@ -84,12 +84,28 @@ interface AddedComponentsProps extends DraggableProps {
 }
 
 const AddedComponents = ({definitions, ...componentProps}: AddedComponentsProps) => {
-  const viewerStore = useStore()
+  const builderStore = useBuilderStore()
+
+  const createComponentData = useCallback((model: Model) => {
+    const componentStore = new ComponentStore(`${model.type} ${getKey()}`, model.type)
+
+    const componentMetadata = builderStore.getComponentMetadata(model.type)
+    if (componentMetadata.initialJson) {
+      try {
+        const parsed = JSON.parse(componentMetadata.initialJson)
+        Object.assign(componentStore, parsed)
+      } catch (e) {
+        console.warn(`Failed to parse initialJson '${componentMetadata.initialJson}'`, e)
+      }
+    }
+
+    return builderStore.viewer.createComponentData(componentStore)
+  }, [builderStore])
+
   return (
     <ControlsGroup>
       {definitions.map(model => {
-        const componentStore = new ComponentStore(`${model.type} ${getKey()}`, model.type)
-        const componentData = viewerStore.createComponentData(componentStore)
+        const componentData = createComponentData(model)
         return (
           <ComponentDataProvider key={componentData.id} value={componentData}>
             <AddedComponent {...componentProps}/>

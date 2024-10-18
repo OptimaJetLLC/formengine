@@ -3,6 +3,7 @@ import type {ComponentType} from 'react'
 import type {Css} from '../../style/types'
 import type {SchemaType} from '../../validation'
 import type {ActionsInitializer, ComponentKind} from '../types'
+import type {ComponentPropertyBindType} from './ComponentPropertyBindType'
 
 /**
  * Represents component metadata for the form viewer.
@@ -29,6 +30,7 @@ export class Model<T = any> {
    * @param icon the component icon.
    * @param kind the component kind.
    * @param readOnly the name of the component property that stores the read-only flag.
+   * @param propsBindingTypes the component property binding types.
    * @template T the type of React component properties.
    */
   constructor(
@@ -43,7 +45,8 @@ export class Model<T = any> {
     readonly typeName?: string,
     readonly icon?: ComponentType,
     readonly kind: ComponentKind = 'component',
-    readonly readOnly?: string
+    readonly readOnly?: string,
+    readonly propsBindingTypes: Readonly<Record<string, ComponentPropertyBindType>> = {},
   ) {
     this.component = observer(component)
     this.component.displayName = component.displayName || component.name

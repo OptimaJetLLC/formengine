@@ -34,6 +34,14 @@ the human-readable property name.
 
 ## Properties
 
+### bindingType?
+
+> `readonly` `optional` **bindingType**: [`ComponentPropertyBindType`](../type-aliases/ComponentPropertyBindType.md)
+
+The component property binding type.
+
+***
+
 ### calculable
 
 > `readonly` **calculable**: `boolean` = `true`

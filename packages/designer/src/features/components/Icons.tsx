@@ -38,6 +38,7 @@ interface FaIconProps {
   width?: string,
   height?: string,
   onClick?: any,
+  className?: string,
 }
 
 /**

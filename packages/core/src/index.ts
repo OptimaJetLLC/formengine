@@ -143,3 +143,5 @@ export type {EditorType} from './features/annotation/types/annotations/EditorTyp
 export {useBuilderContext, BuilderContextProvider, BuilderContext} from './utils/contexts/BuilderContext'
 export type {BuilderContextType} from './utils/contexts/BuilderContext'
 export type {BuilderMode} from './utils/contexts/BuilderMode'
+export type {ComponentMetadataEventListeners} from './features/define/utils/ComponentMetadataEventListeners'
+export type {ComponentPropertyBindType} from './features/define/utils/ComponentPropertyBindType'

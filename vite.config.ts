@@ -2,8 +2,9 @@ import react from '@vitejs/plugin-react-swc'
 import path from 'path'
 import {fileURLToPath} from 'url'
 import {defineConfig} from 'vite'
-import svgr from 'vite-plugin-svgr'
 import {analyzer} from 'vite-bundle-analyzer'
+import svgr from 'vite-plugin-svgr'
+import {configDefaults} from 'vitest/config'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -33,6 +34,10 @@ export default defineConfig(({command}) => ({
         replacement:
           __dirname + '/node_modules/monaco-editor/esm/vs/editor/editor.api',
       },
+    ],
+    exclude: [
+      ...configDefaults.exclude,
+      'examples/**',
     ],
   }
 }))

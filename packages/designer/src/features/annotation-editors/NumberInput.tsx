@@ -11,7 +11,7 @@ import type {AnnotationEditorProps} from './AnnotationEditorProps'
  * @returns the React element.
  */
 const NumberInput = (props: AnnotationEditorProps) => {
-  const {value, onChange, onClean, annotation} = props
+  const {value, onChange, onClean, annotation, componentData} = props
   const handleChange = useCallback((value: any) => {
     if (typeof value === 'string') {
       value = Number(value)
@@ -19,7 +19,12 @@ const NumberInput = (props: AnnotationEditorProps) => {
     }
     onChange(value)
   }, [onChange])
-  const inputNumberProps = {...annotation.editorProps, value}
+  const {calculateEditorProps, ...editorProps} = annotation.editorProps ?? {}
+  const inputNumberProps = {
+    ...(editorProps ?? {}),
+    ...(calculateEditorProps?.(componentData) ?? {}),
+    value
+  }
   const closeButton = <Close onClick={onClean} style={{cursor: 'pointer'}}/>
 
   return <LabeledProperty {...props}>

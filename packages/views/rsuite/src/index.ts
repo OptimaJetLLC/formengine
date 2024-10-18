@@ -43,6 +43,8 @@ import type {RsTooltipProps} from './components/RsTooltip'
 import {rsTooltip} from './components/RsTooltip'
 import {rsTreePicker} from './components/RsTreePicker'
 import {rsUploader} from './components/RsUploader'
+import {rsWizard} from './components/RsWizard/RsWizard'
+import {rsWizardStep} from './components/RsWizard/RsWizardStep'
 import {formEngineRsuiteCssLoader, ltrCssLoader, rtlCssLoader} from './cssLoader'
 
 const categories = {
@@ -82,6 +84,8 @@ const categories = {
     rsCard,
     rsContainer,
     rsTab,
+    rsWizard,
+    rsWizardStep
   ],
   notImplemented: [
     rsCollectionEditor,

@@ -7,6 +7,8 @@ import type {Annotations} from '../../annotation/utils/builders/Annotations'
 import {modules} from '../constants'
 import type {ActionsInitializer, ComponentKind} from '../types'
 import type {BuilderComponent} from './BuilderComponent'
+import type {ComponentMetadataEventListeners} from './ComponentMetadataEventListeners'
+import type {ComponentPropertyBindType} from './ComponentPropertyBindType'
 import {Meta} from './Meta'
 import {Model} from './Model'
 
@@ -51,6 +53,14 @@ export type DefinerData<T extends object> = {
    * The custom component to display in the component list (unused).
    */
   customPreview?: ReactNode,
+  /**
+   * The JSON source for the component (instance of {@link ComponentStore} class serialised to JSON).
+   */
+  initialJson?: string
+  /**
+   * The component metadata event listeners.
+   */
+  eventListeners?: ComponentMetadataEventListeners
 }
 
 /**
@@ -156,6 +166,20 @@ export class Definer<T extends object> {
   }
 
   /**
+   * Sets initial component JSON.
+   * @param initialJson the JSON source for the component (instance of {@link ComponentStore} class serialised to JSON).
+   * @returns the modified Definer class instance.
+   */
+  initialJson = (initialJson?: string) => this.#updateWith({initialJson})
+
+  /**
+   * Sets the component metadata event listeners.
+   * @param eventListeners the component metadata event listeners.
+   * @returns the modified Definer class instance.
+   */
+  eventListeners = (eventListeners?: ComponentMetadataEventListeners) => this.#updateWith({eventListeners})
+
+  /**
    * Creates component metadata for the form builder and form viewer.
    * @returns component metadata for the form builder and form viewer.
    */
@@ -172,6 +196,10 @@ export class Definer<T extends object> {
     }
     const valuedAn = firstValuedAn ?? propAns.find(an => an.name === 'value')
     const readOnlyAn = propAns.find(an => an.readOnly)
+    const propsBindingTypes = propAns.reduce((props, an) => {
+      if (an.bindingType) props[an.key] = an.bindingType
+      return props
+    }, {} as Record<string, ComponentPropertyBindType>)
 
     const model = new Model(
       this.data.component,
@@ -185,7 +213,8 @@ export class Definer<T extends object> {
       this.getType(),
       this.data.icon,
       this.data.kind,
-      readOnlyAn?.key
+      readOnlyAn?.key,
+      propsBindingTypes
     )
 
     const meta = new Meta(
@@ -196,7 +225,9 @@ export class Definer<T extends object> {
       modules,
       this.data.customPreview,
       valuedAn,
-      this.data.kind
+      this.data.kind,
+      this.data.initialJson,
+      this.data.eventListeners,
     )
 
     return {model, meta, category: this.data.category} as const

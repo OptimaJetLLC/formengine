@@ -4,6 +4,7 @@ import type {ComponentData} from '@react-form-builder/core'
 import {BuilderContextProvider, FormViewer, useViewerProps} from '@react-form-builder/core'
 import type {ComponentProps} from 'react'
 import {useCallback, useMemo} from 'react'
+import {useTranslation} from 'react-i18next'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {customizable, customizableObserver} from '../customization'
 import {EditableWrapper, getBuilderChildren} from '../dnd'
@@ -14,12 +15,13 @@ const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
   const builderStore = useBuilderStore()
   const {viewMode, landscapeMode, builderMode} = builderStore
   const viewerProps = useViewerProps()
+  const {t} = useTranslation()
   const componentWrapper = builderMode === 'builder' ? EditableWrapper : undefined
   const builderComputeChildren = useCallback((componentData: ComponentData, componentProps: Record<string, any>) => {
     return getBuilderChildren(builderStore, componentData, componentProps)
   }, [builderStore])
   const computeChildren = builderMode === 'builder' ? builderComputeChildren : undefined
-  const builderContext = useMemo(() => ({builderMode}), [builderMode])
+  const builderContext = useMemo(() => ({builderMode, translate: t}), [builderMode, t])
 
   return (
     <SContainer {...props}>

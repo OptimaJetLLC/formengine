@@ -233,6 +233,40 @@ class BuilderUndoer {
 }
 
 /**
+ * Insert component options.
+ */
+export type InsertComponentOptions = {
+  /**
+   * The component to be added to the component tree.
+   */
+  source: ComponentData
+  /**
+   * The parent component for the component to be added.
+   */
+  target: ComponentData
+  /**
+   * The insertion position relative to the new parent component.
+   */
+  insertPosition?: InsertPosition
+  /**
+   * The property name of the parent component where the new component will be added.
+   */
+  slot?: string
+  /**
+   * The source code of the function that checks if the component can be bound to parent.
+   */
+  slotCondition?: string
+  /**
+   * The index in the array, if the parent property is an array property.
+   */
+  slotIndex?: number
+  /**
+   * If true, the component will be selected after adding.
+   */
+  selectAfterInsert?: boolean
+}
+
+/**
  * Form builder settings.
  */
 export class BuilderStore implements IFormBuilder {
@@ -548,7 +582,7 @@ export class BuilderStore implements IFormBuilder {
   }
 
   /**
-   * Adds the new component to the component tree.
+   * Adds the new component to the component tree (it's better to use {@link insert} function).
    * @param source the component to be added to the component tree.
    * @param target the parent component for the component to be added.
    * @param insertPosition the insertion position relative to the new parent component.
@@ -558,6 +592,24 @@ export class BuilderStore implements IFormBuilder {
    */
   add(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = 'after',
       slot?: string, slotCondition?: string) {
+    return this.insert({
+      source,
+      target,
+      insertPosition,
+      slot,
+      slotCondition,
+      selectAfterInsert: true
+    })
+  }
+
+  /**
+   * Inserts the new component to the component tree.
+   * @param options the insert options.
+   * @returns the new inserted component.
+   */
+  insert(options: InsertComponentOptions) {
+    const {source, target, insertPosition, slot, slotCondition, selectAfterInsert} = options
+
     const clone = assign(new ComponentStore('', ''), cloneDeep(source.store))
     clone.slot = slot
     clone.slotCondition = slotCondition
@@ -566,7 +618,7 @@ export class BuilderStore implements IFormBuilder {
 
     const keysMap = componentData.unifyKeys(this.viewer.form.componentTree)
 
-    this.move(componentData, target, insertPosition)
+    this.move(componentData, target, insertPosition ?? 'after')
 
     treeForEach(componentData, cd => {
       const oldKey = keysMap.get(cd.key)
@@ -575,7 +627,7 @@ export class BuilderStore implements IFormBuilder {
       if (localization) this.viewer.form.localization.addLocalizationWithNewKey(localization, oldKey, cd.key)
     })
 
-    this.selectNode(componentData)
+    if (selectAfterInsert) this.selectNode(componentData)
 
     return clone
   }
@@ -770,12 +822,12 @@ export class BuilderStore implements IFormBuilder {
     if (multipleSelection) {
       isSelected
         ? this.selected.delete(target)
-        : this.selected.add(target)
+        : this.addNodeToSelection(target)
     }
 
     if (!multipleSelection && !isSelected) {
       this.selected.clear()
-      this.selected.add(target)
+      this.addNodeToSelection(target)
     }
 
     if (!isSelected) this.expandParents(target)
@@ -837,5 +889,13 @@ export class BuilderStore implements IFormBuilder {
    */
   showPromptModal(props: PromptDialogProps) {
     Object.assign(this.promptModalState, props, {opened: true, errorMessage: undefined})
+  }
+
+  private addNodeToSelection = (target: ComponentData) => {
+    this.selected.add(target)
+    treeForEach(this.viewer.form.componentTree, componentData => {
+      const meta = this.view.findMeta(componentData.model.type)
+      meta?.eventListeners?.onSelectNode?.(target, componentData)
+    })
   }
 }

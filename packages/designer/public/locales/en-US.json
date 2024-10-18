@@ -301,6 +301,53 @@
       "hint": "Allows to customize the behavior and functionality of the editor. Read docs for more info."
     }
   },
+  "RsWizard": {
+    "activeIndex": {
+      "name": "Active index",
+      "hint": "The active step index"
+    },
+    "prevButtonLabel": {
+      "name": "Previous button label",
+      "hint": "The previous button label"
+    },
+    "nextButtonLabel": {
+      "name": "Next button label",
+      "hint": "The next button label"
+    },
+    "finishButtonLabel": {
+      "name": "Finish button label",
+      "hint": "The finish button label"
+    },
+    "steps": {
+      "name": "Steps",
+      "hint": "The wizard steps"
+    },
+    "showSteps": {
+      "name": "Show steps",
+      "hint": "If true, the steps will be shown"
+    },
+    "showStepsLabels": {
+      "name": "Show steps labels",
+      "hint": "If true, the steps labels will be shown"
+    },
+    "verticalSteps": {
+      "name": "Vertical steps",
+      "hint": "If true, the steps will be displayed vertically"
+    },
+    "stepsNavigation": {
+      "name": "Steps navigation",
+      "hint": "Determines which steps are available for navigation by clicking"
+    },
+    "validateOnNext": {
+      "name": "Validate on next",
+      "hint": "If true, the step will be validated before moving to the next step"
+    },
+    "validateOnFinish": {
+      "name": "Validate on finish",
+      "hint": "If true, the wizard will be validated before finishing the wizard"
+    },
+    "wizardHasNoSteps": "To add the wizard steps, select the component and add the steps in the properties panel."
+  },
   "leftMenu": {
     "translation": "Translation",
     "undo": "Undo",

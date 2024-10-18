@@ -12,7 +12,7 @@ the type of React component properties.
 
 ### new Model()
 
-> **new Model**\<`T`\>(`component`, `name`?, `actionsInitializer`?, `valued`?, `valueType`?, `defaultProps`?, `css`?, `wrapperCss`?, `typeName`?, `icon`?, `kind`?, `readOnly`?): [`Model`](Model.md)\<`T`\>
+> **new Model**\<`T`\>(`component`, `name`?, `actionsInitializer`?, `valued`?, `valueType`?, `defaultProps`?, `css`?, `wrapperCss`?, `typeName`?, `icon`?, `kind`?, `readOnly`?, `propsBindingTypes`?): [`Model`](Model.md)\<`T`\>
 
 Creates component metadata for the form viewer.
 
@@ -66,6 +66,10 @@ the component kind.
 
 the name of the component property that stores the read-only flag.
 
+• **propsBindingTypes?**: `Readonly`\<`Record`\<`string`, [`ComponentPropertyBindType`](../type-aliases/ComponentPropertyBindType.md)\>\> = `{}`
+
+the component property binding types.
+
 #### Returns
 
 [`Model`](Model.md)\<`T`\>
@@ -117,6 +121,14 @@ the component icon.
 > `readonly` **kind**: [`ComponentKind`](../type-aliases/ComponentKind.md) = `'component'`
 
 the component kind.
+
+***
+
+### propsBindingTypes
+
+> `readonly` **propsBindingTypes**: `Readonly`\<`Record`\<`string`, [`ComponentPropertyBindType`](../type-aliases/ComponentPropertyBindType.md)\>\> = `{}`
+
+the component property binding types.
 
 ***
 

@@ -1,4 +1,5 @@
 import type {ReactNode} from 'react'
+import type {ComponentPropertyBindType} from '../../../define/utils/ComponentPropertyBindType'
 import type {RuleValidator, SchemaType} from '../../../validation'
 import type {ErrorMap} from '../../../validation/ErrorMap'
 import type {EditorType} from './EditorType'
@@ -83,6 +84,11 @@ export class Annotation {
    * @param props the properties of the component, which are available only inside Form Builder Designer.
    */
   readonly slotConditionBuilder?: (props: any) => string
+
+  /**
+   *  The component property binding type.
+   */
+  readonly bindingType?: ComponentPropertyBindType
 
   /**
    * Creates metadata for a React component property.

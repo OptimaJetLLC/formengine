@@ -1,0 +1,43 @@
+---
+sidebar_position: 40
+title: Wizard
+description: Allows users to create multistep forms or wizards.
+slug: /components-library/structure-components/wizard
+---
+
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+
+## Introduction
+
+The Wizard component is a component for creating step-by-step forms with the ability to transition between steps. The component allows you
+to validate nested components in each [step](/components-library/structure-components/wizard-step). It is also possible to validate all
+steps when the Wizard is completed.
+
+This component is based on [Steps](https://rsuitejs.com/components/steps/). This component is included within the following NPM
+package: [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name                  | Type      | Description                                                                                                                                                                     |
+|:----------------------|:----------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Active index          | `number`  | Active step index starting from `0`                                                                                                                                             |
+| Steps navigation      | `choice`  | The type of navigation by steps (i.e., _disable_, _only visited_, or _any_)                                                                                                     |
+| Steps                 | `array`   | Allows you to edit step labels, essentially editing the labels of nested [Wizard steps](/components-library/structure-components/wizard-step)                                   |
+| Previous button label | `string`  | Label for the step back button                                                                                                                                                  |
+| Next button label     | `string`  | Label for the step forward button                                                                                                                                               |
+| Finish button label   | `string`  | Label for the finish button                                                                                                                                                     |
+| Show steps            | `boolean` | If set to _true_, step navigation will be displayed                                                                                                                             |
+| Show steps labels     | `boolean` | If set to _true_, the step label will be displayed next to the step number                                                                                                      |
+| Vertical steps        | `boolean` | If set to _true_, the step navigation will be vertical instead of horizontal                                                                                                    |
+| Validate on next      | `boolean` | If set to _true_, the components of the current step will be validated before moving to the next step. It is possible to move to the next step only after successful validation |
+| Validate on finish    | `boolean` | If set to _true_, all steps will be validated before the Wizard is finished                                                                                                     |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
