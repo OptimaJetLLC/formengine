@@ -558,13 +558,20 @@ export class BuilderStore implements IFormBuilder {
    * @param source the selected component.
    * @param target the new parent component for the selected component.
    * @param insertPosition the insertion position relative to the new parent component.
+   * @param slot the property name of the parent component where the new component will be added.
+   * @param slotCondition the source code of the function that checks if the component can be bound to parent.
    * @returns void
    */
-  move(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = 'after'): void {
+  move(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = 'after', slot?: string, slotCondition?: string): void {
     if (source === target || source === this.viewer.form.componentTree) return
+
+    source.store.slot = slot
+    source.store.slotCondition = slotCondition
+
     if (insertPosition === 'inner' || target.isRoot) return source.setParent(target)
     if (insertPosition === 'before') return target.insertBeforeMe(source)
     if (insertPosition === 'after') return target.insertAfterMe(source)
+
     throw new Error(`Unknown insert position ${insertPosition}`)
   }
 
@@ -572,12 +579,14 @@ export class BuilderStore implements IFormBuilder {
    * Moves several selected components in the component tree.
    * @param target the new parent component for relocatable components.
    * @param insertPosition the insertion position relative to the new parent component.
+   * @param slot the property name of the parent component where the new component will be added.
+   * @param slotCondition the source code of the function that checks if the component can be bound to parent.
    */
-  multipleMove(target: ComponentData, insertPosition: InsertPosition = 'after') {
+  multipleMove(target: ComponentData, insertPosition: InsertPosition = 'after', slot?: string, slotCondition?: string) {
     this.selected.forEach((store) => {
       const sourceComponentData = this.viewer.form.componentTree.findByKey(store.key)
       if (!sourceComponentData) throw Error(`Component with key ${store.key} not found`)
-      this.move(sourceComponentData, target, insertPosition)
+      this.move(sourceComponentData, target, insertPosition, slot, slotCondition)
     })
   }
 
@@ -611,14 +620,12 @@ export class BuilderStore implements IFormBuilder {
     const {source, target, insertPosition, slot, slotCondition, selectAfterInsert} = options
 
     const clone = assign(new ComponentStore('', ''), cloneDeep(source.store))
-    clone.slot = slot
-    clone.slotCondition = slotCondition
 
     const componentData = this.viewer.createComponentData(clone)
 
     const keysMap = componentData.unifyKeys(this.viewer.form.componentTree)
 
-    this.move(componentData, target, insertPosition ?? 'after')
+    this.move(componentData, target, insertPosition ?? 'after', slot, slotCondition)
 
     treeForEach(componentData, cd => {
       const oldKey = keysMap.get(cd.key)

@@ -22,7 +22,7 @@ const RawDropZone = ({isAfter, isInner, ...props}: DropZoneProps) => {
   const isContainer = Boolean(store.children)
 
   const inner = isRoot || isInner
-  const [{isActive, isOver}, drop] = useDropZone(isAfter, inner, props.slot)
+  const [{isActive, isOver}, drop] = useDropZone(isAfter, inner, props.slot, props.slotCondition)
   const className = cx({isAfter, isActive, isContainer, isRoot, isInner, isOver})
 
   return <>
@@ -39,7 +39,7 @@ interface DropState {
   isOver: boolean,
 }
 
-const useDropZone = (isAfter?: boolean, isInner?: boolean, slot?: string): [DropState, ConnectDropTarget] => {
+const useDropZone = (isAfter?: boolean, isInner?: boolean, slot?: string, slotCondition?: string): [DropState, ConnectDropTarget] => {
   const store = useBuilderStore()
   const target = useComponentData()
   const insertPosition = isInner
@@ -52,14 +52,13 @@ const useDropZone = (isAfter?: boolean, isInner?: boolean, slot?: string): [Drop
       const type = monitor.getItemType() as ItemType
       switch (type) {
         case ItemType.AddedComponent:
-          store.add(source, target, insertPosition, slot)
+          store.add(source, target, insertPosition, slot, slotCondition)
           break
         case ItemType.Component:
-          source.store.slot = slot
           if (store.selected.size > 1) {
-            store.multipleMove(target, insertPosition)
+            store.multipleMove(target, insertPosition, slot, slotCondition)
           } else {
-            store.move(source, target, insertPosition)
+            store.move(source, target, insertPosition, slot, slotCondition)
           }
           break
       }

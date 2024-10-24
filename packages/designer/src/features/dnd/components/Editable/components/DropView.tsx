@@ -7,6 +7,7 @@ import {IconButton} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 
 const InnerContainer = styled.div`
+  position: relative;
   display: flex;
   flex: 1;
   width: 100%;
