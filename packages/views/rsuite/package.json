@@ -1,6 +1,6 @@
 {
     "name": "@react-form-builder/components-rsuite",
-    "version": "1.13.0",
+    "version": "1.14.0",
     "private": false,
     "main": "src/index.ts",
     "type": "module",
@@ -16,7 +16,7 @@
         "create-archive": "node ./config/pack"
     },
     "dependencies": {
-        "@react-form-builder/core": "^1.13.0",
+        "@react-form-builder/core": "^1.14.0",
         "signature_pad": "^5.0.1"
     },
     "peerDependencies": {
