@@ -23,17 +23,13 @@ type Fn = () => void
 function useComponentMountUnmount(init: Fn, clear: Fn) {
   const clearRef = useRef(clear)
   const initRef = useRef(init)
-  const mounted = useRef(false)
 
   clearRef.current = clear
   initRef.current = init
 
-  if (!mounted.current) {
-    initRef.current()
-    mounted.current = true;
-  }
-
   useEffect(() => {
+    initRef.current()
+
     return () => {
       clearRef.current()
     }
