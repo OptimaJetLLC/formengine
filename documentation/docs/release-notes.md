@@ -4,6 +4,14 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 1.14.1
+
+_October_ 28, 2024
+
+- The changes `Fixed a bug that prevented events set in the useEffect of user components from being triggered` from the previous release
+  were canceled because it broke other functionality. A non-breaking fix will be released soon. For now, we recommend using React 18 to
+  avoid encountering this bug.
+
 ## 1.14.0
 
 _October_ 25, 2024
