@@ -2,6 +2,7 @@ import type {EditorType} from '@react-form-builder/core'
 import type {ComponentType} from 'react'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 import {ArrayInput} from './ArrayInput'
+import {ArrayOfObjectInput} from './ArrayOfObjectInput'
 import {ArrayOfStringInput} from './ArrayOfStringInput'
 import {AttributesInput} from './AttributesInput'
 import {BooleanInput} from './BooleanInput'
@@ -35,6 +36,7 @@ export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>>
   array: ArrayInput,
   object: ObjectInput,
   arrayOfString: ArrayOfStringInput,
+  arrayOfObject: ArrayOfObjectInput,
   color: ColorInput,
   event: EventEditor,
   oneOf: Picker,

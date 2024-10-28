@@ -21,11 +21,18 @@ function createComponentDataProxy(componentData: ComponentData) {
  */
 export class ActionEventArgs {
   #componentDataProxy: any
+  #parentComponentDataProxy: any
+  #rootComponentDataProxy: any
 
   /**
    * The component properties that were used to render the sender component.
    */
   renderedProps: Record<string, any>
+
+  /**
+   * The index of the component in the array, if the component is in the array.
+   */
+  readonly index?: number
 
   /**
    * Creates arguments for the event handler.
@@ -43,7 +50,17 @@ export class ActionEventArgs {
     state: ComponentState
   ) {
     this.renderedProps = state.get
-    this.#componentDataProxy = createComponentDataProxy(this.store.formData)
+    this.index = sender.nearestIndex
+    const indexExists = typeof this.index !== undefined
+    const componentData = indexExists
+      ? sender.dataRootProvider?.dataRoot ?? this.store.formData
+      : this.store.formData
+    this.#componentDataProxy = createComponentDataProxy(componentData)
+    if (indexExists) {
+      const parentComponentData = componentData.parent ?? this.store.formData
+      this.#parentComponentDataProxy = createComponentDataProxy(parentComponentData)
+    }
+    this.#rootComponentDataProxy = createComponentDataProxy(this.store.formData)
   }
 
   /**
@@ -75,6 +92,20 @@ export class ActionEventArgs {
     return this.#componentDataProxy
   }
 
+  /**
+   * @returns the object to read and modify parent data (available for array elements).
+   */
+  get parentData(): Record<string, unknown> | undefined {
+    return this.#parentComponentDataProxy
+  }
+
+  /**
+   * @returns the object to read and modify root form data.
+   */
+  get rootData(): Record<string, unknown> {
+    return this.#rootComponentDataProxy
+  }
+
   #isEvent = (value: any) => Boolean(value && value.target && value.type && value.preventDefault)
   #isNotEvent = (value: any) => !this.#isEvent(value)
 }
@@ -102,7 +133,12 @@ declare class ActionEventArgs {
    * The component properties that were used to render the sender component.
    */
   readonly renderedProps: Record<string, any>
-  
+
+  /**
+   * The index of the component in the array, if the component is in the array.
+   */
+  readonly index?: number
+
   /**
    * Sets current props of component.
    */
@@ -132,5 +168,15 @@ declare class ActionEventArgs {
    * @returns the object for reading and changing form data.
    */
   get data(): Record<string, unknown>
+  
+  /**
+   * @returns the object to read and modify parent data (available for array elements).
+   */
+  get parentData(): Record<string, unknown> | undefined
+
+  /**
+   * @returns the object to read and modify root form data.
+   */
+  get rootData(): Record<string, unknown>
 }
 `

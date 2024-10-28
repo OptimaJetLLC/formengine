@@ -102,8 +102,9 @@ const RawComponentViewer = () => {
   const {componentWrapper, computeChildren: viewerComputeChildren} = useViewerProps()
   const formViewerStore = useStore()
   const localize = useCallback(componentStore => {
-    return formViewerStore.localizeComponent('component', componentStore)
-  }, [formViewerStore])
+    const dataContext = data.dataRootProvider ?? formViewerStore.dataContext
+    return formViewerStore.localizeComponent('component', dataContext.dataRoot, componentStore)
+  }, [formViewerStore, data])
   const componentTree = useComponentTreeContext()
   const viewerProps = useViewerProps()
 
@@ -129,6 +130,12 @@ const RawComponentViewer = () => {
 
   if (kind === 'container') {
     return <ContainerComponent key={key} {...otherProps} className={containerClassName}/>
+  }
+
+  if (kind === 'repeater') {
+    return <Wrapper><Tooltip><Erroneous>
+      <Component key={key} {...otherProps} wrapperClassName={containerClassName}/>
+    </Erroneous></Tooltip></Wrapper>
   }
 
   return <Wrapper className={kind === 'template' ? containerClassName : componentState.wrapperClassName}>

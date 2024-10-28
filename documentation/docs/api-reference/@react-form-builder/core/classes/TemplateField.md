@@ -75,16 +75,36 @@ viewerStore the form viewer settings.
 > `get` **errors**(): `Record`\<`string`, `unknown`\>
 
 Contains a field validation errors if the field provides multiple errors (i.e. field is template).
+Contains an array of field validation errors if the field contains an array of components.
 
 #### Returns
 
 `Record`\<`string`, `unknown`\>
 
 Contains a field validation errors if the field provides multiple errors (i.e. field is template).
+Contains an array of field validation errors if the field contains an array of components.
 
 #### Implementation of
 
 [`Field`](../interfaces/Field.md).[`errors`](../interfaces/Field.md#errors)
+
+***
+
+### fieldType
+
+> `get` **fieldType**(): [`FieldType`](../type-aliases/FieldType.md)
+
+The field type.
+
+#### Returns
+
+[`FieldType`](../type-aliases/FieldType.md)
+
+The field type.
+
+#### Implementation of
+
+[`Field`](../interfaces/Field.md).[`fieldType`](../interfaces/Field.md#fieldtype)
 
 ***
 

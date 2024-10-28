@@ -1,9 +1,15 @@
 import type {ValidationMessages} from "../types/ValidationResult";
+import type {FieldType} from './FieldType'
 
 /**
  * Field with the form data.
  */
 export interface Field {
+
+  /**
+   * The field type.
+   */
+  fieldType: FieldType
 
   /**
    * Flag, false if nested form data show as nested object, true otherwise.
@@ -23,8 +29,9 @@ export interface Field {
 
   /**
    * Contains a field validation errors if the field provides multiple errors (i.e. field is template).
+   * Contains an array of field validation errors if the field contains an array of components.
    */
-  errors?: Record<string, unknown>
+  errors?: Record<string, unknown> | Array<Record<string, unknown>>
 
   /**
    * Flag, true, if the field is marked as touched.
@@ -61,7 +68,7 @@ export interface Field {
    * Returns the validation results without triggering an events and changing the state of the form.
    * @returns the {@link ValidationMessages} validation results.
    */
-  getValidationResult: () => Promise<ValidationMessages>
+  getValidationResult: () => Promise<ValidationMessages | ValidationMessages[]>
 
   /**
    * Sets the field to its default value.

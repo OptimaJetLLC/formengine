@@ -5,6 +5,7 @@ import {isLocalizedProperty} from '../../stores/ComponentStore'
 import type {Form} from '../../stores/Form'
 import type {LocalizationType} from '../../stores/LocalizationStore'
 import {CalculableResult} from '../../utils/CalculableResult'
+import type {IFormData} from '../../utils/IFormData'
 import {getValidatorPropertyBlockType} from '../ui/PropertyBlockType'
 import {getFluentCompatibleId} from './getFluentCompatibleId'
 import type {Language} from './types'
@@ -73,13 +74,14 @@ export const testFluentLocalization = (request: LocalizationTestRequest): Calcul
 /**
  * Localizes all props of the specified component.
  * @param form the form.
+ * @param formData the form data.
  * @param language the displayed language.
  * @param componentStore the full state of a localizable component.
  * @param type the localization type.
  * @returns the object containing only the localized props of the specified component.
  */
-export const localizeProperties = (form: Form, language: Language, componentStore: ComponentStore, type: LocalizationType = 'component') => {
-  const componentTree = form.componentTree
+export const localizeProperties = (form: Form, formData: IFormData, language: Language,
+                                   componentStore: ComponentStore, type: LocalizationType = 'component') => {
   const {defaultBundle, fluentBundle} = getFluentBundles(form, language)
   const data: Record<string, any> = {}
 
@@ -94,7 +96,7 @@ export const localizeProperties = (form: Form, language: Language, componentStor
       return
     }
     try {
-      data[value] = fluentBundle.formatPattern(message.value!, componentTree.fluentData)
+      data[value] = fluentBundle.formatPattern(message.value!, formData.fluentData)
     } catch (e) {
       console.error(e)
     }
@@ -104,14 +106,16 @@ export const localizeProperties = (form: Form, language: Language, componentStor
 }
 
 /**
- * Localizes validator error message.
+ * Localizes a validator error message.
  * @param form the form.
+ * @param formData the form data.
  * @param language the displayed language.
  * @param componentStore the full state of a localizable component.
  * @param ruleKey the validator rule key.
  * @returns the object containing only the localized props of the specified component.
  */
-export const localizeErrorMessage = (form: Form, language: Language, componentStore: ComponentStore, ruleKey: string) => {
+export const localizeErrorMessage = (form: Form, formData: IFormData, language: Language,
+                                     componentStore: ComponentStore, ruleKey: string) => {
   const type = getValidatorPropertyBlockType(ruleKey)
   const value = 'message'
   const messageId = getFluentCompatibleId(`${componentStore.key}_${type}_${value}`)
@@ -121,7 +125,7 @@ export const localizeErrorMessage = (form: Form, language: Language, componentSt
     return
   }
   try {
-    return fluentBundle.formatPattern(message.value!, form.componentTree.fluentData)
+    return fluentBundle.formatPattern(message.value!, formData.fluentData)
   } catch (e) {
     console.error(e)
   }

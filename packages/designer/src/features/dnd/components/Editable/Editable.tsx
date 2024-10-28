@@ -65,7 +65,8 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
 
   openSlots.forEach(container => {
     const viewerStore = builderStore.viewer
-    const localize = viewerStore.localizeComponent.bind(viewerStore, 'component')
+    const dataContext = componentData.dataRootProvider ?? viewerStore.dataContext
+    const localize = viewerStore.localizeComponent.bind(viewerStore, 'component', dataContext.dataRoot)
     const componentState = new ComponentState(componentData, viewerStore, localize, () => ({}), {})
     const slotCondition = container?.slotConditionBuilder?.(componentState.propsWithoutChildren)
     const slot = container.key === childrenSlot ? undefined : container.key

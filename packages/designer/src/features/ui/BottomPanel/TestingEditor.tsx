@@ -203,9 +203,12 @@ const getType = (result: CalculableResult): TypeAttributes.Status => {
  * The class for accessing the test form data.
  */
 export class TestFormData implements IFormData {
+  index = undefined
   state = {}
   hasErrors = false
   isValidating = false
+  parentData: Record<string, unknown> = {}
+  rootData: Record<string, unknown> = {}
 
   /**
    * Constructor
@@ -236,5 +239,10 @@ export class TestFormData implements IFormData {
   /** @inheritDoc */
   getValidationResult() {
     return Promise.resolve(undefined)
+  }
+
+  /** @inheritDoc */
+  get fluentData() {
+    return this.data
   }
 }

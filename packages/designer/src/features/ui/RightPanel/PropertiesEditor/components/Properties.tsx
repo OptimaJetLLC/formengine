@@ -115,7 +115,7 @@ interface StyleBlockProps {
 const RawStyleBlock = ({meta, store, device, cssPart, header, headerHint}: StyleBlockProps) => {
   const initContext = useCssContextInitializer(cssPart, store, device)
   const context = store[cssPart]?.[device]?.object ?? {}
-  const isComponent = meta.kind === 'component'
+  const isComponent = meta.kind === 'component' || meta.kind === 'repeater'
 
   return (
     <PropertyBlock header={isComponent ? header : undefined}

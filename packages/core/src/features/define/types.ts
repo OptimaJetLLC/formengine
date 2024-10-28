@@ -12,4 +12,4 @@ export type ActionsInitializer = (props: ComponentStore['props'], def: DefineAct
 /**
  * The component kind type.
  */
-export type ComponentKind = 'container' | 'component' | 'slot' | 'template'
+export type ComponentKind = 'container' | 'component' | 'slot' | 'template' | 'repeater'

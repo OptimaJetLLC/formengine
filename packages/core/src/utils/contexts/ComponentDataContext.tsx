@@ -1,4 +1,4 @@
-import {isArray, isEmpty, merge} from 'lodash-es'
+import {camelCase, isArray, isEmpty, merge} from 'lodash-es'
 import type {IReactionDisposer} from 'mobx'
 import {makeAutoObservable, reaction} from 'mobx'
 import type {Model} from '../../features/define'
@@ -11,7 +11,6 @@ import type {IFormData} from '../IFormData'
 import {nameObservable} from '../observableNaming'
 import {SyncEvent} from '../SyncEvent'
 import {treeForEach} from '../treeUtils'
-import {camelCase} from 'lodash-es'
 
 let counter = 0
 
@@ -52,6 +51,26 @@ export class ComponentDataEvents {
     this.onAfterKeyChanged.dispose()
     this.onBeforeDelete.dispose()
   }
+}
+
+/**
+ * A provider for a set of components.
+ */
+export interface IComponentDataProvider {
+  /**
+   * @returns the component set.
+   */
+  get componentData(): ComponentData[]
+}
+
+/**
+ * Provides the root component for the data in the component tree.
+ */
+export interface IDataRootProvider {
+  /**
+   * @returns the root component for the data in the component tree.
+   */
+  get dataRoot(): ComponentData
 }
 
 /**
@@ -96,6 +115,17 @@ export class ComponentData implements IFormData {
    * If true, then validation is in progress.
    */
   validating = false
+
+  /**
+   * Specifies the root component for the data in the component tree. **Internal use only.**
+   */
+  dataRootProvider?: IDataRootProvider
+
+  /**
+   * Specifies the index in the array if the component is in the component array.
+   * This is not an index in a parent-child structure.
+   */
+  index?: number
 
   /**
    * Constructor.
@@ -252,6 +282,22 @@ export class ComponentData implements IFormData {
   }
 
   /**
+   * @returns the object to read and modify parent data (available for array elements).
+   */
+  get parentData() {
+    const indexExists = typeof this.nearestIndex !== undefined
+    if (!indexExists) return undefined
+    return this.parent?.data ?? this.rootData
+  }
+
+  /**
+   * @returns the object to read and modify root form data.
+   */
+  get rootData() {
+    return this.root.data
+  }
+
+  /**
    * @returns all the form data that is of the FluentVariable type.
    * Additionally, the keys of the returned object are converted to the snake case.
    */
@@ -268,8 +314,14 @@ export class ComponentData implements IFormData {
     for (const [key, field] of this.fields) {
       if (field.error) result[key] = field.error
       const errors = field.errors
-      if (errors && field.storeDataInParentForm) Object.keys(errors).forEach(i => result[i] = errors[i])
-      if (errors && !field.storeDataInParentForm && Object.keys(errors).length > 0) result[key] = errors
+      if (errors) {
+        if (!Array.isArray(errors)) {
+          if (field.storeDataInParentForm) Object.keys(errors).forEach(i => result[i] = errors[i])
+          if (!field.storeDataInParentForm && Object.keys(errors).length > 0) result[key] = errors
+        } else {
+          result[key] = errors
+        }
+      }
     }
     return result
   }
@@ -393,6 +445,22 @@ export class ComponentData implements IFormData {
     return !this.parent
   }
 
+  /**
+   * @returns the root of the component tree.
+   */
+  get root(): ComponentData {
+    return !this.parent ? this : this.parent.root
+  }
+
+  /**
+   * @returns the index in the array if the component is in the component array
+   * (looks for the nearest index in the component hierarchy).
+   */
+  get nearestIndex(): number | undefined {
+    if (typeof this.index !== 'undefined') return this.index
+    return this.parent?.nearestIndex
+  }
+
   private insert(inserted: ComponentData, position: 'before' | 'after') {
     const indexAddition = position === 'before' ? 0 : 1
     if (!this.parent) {
@@ -443,6 +511,8 @@ export class ComponentData implements IFormData {
 
   private collectAllFields(acc: Map<string, Field>) {
     if (this.field) acc.set(this.key, this.field)
+    // we must skip all children in the repeater field
+    if (this.field?.fieldType === 'repeater') return acc
     for (let i = 0; i < this.children.length; i++) {
       const child = this.children[i]
       child.collectAllFields(acc)

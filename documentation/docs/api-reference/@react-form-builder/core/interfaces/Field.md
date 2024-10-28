@@ -38,21 +38,30 @@ Contains a field validation error if the field data is not valid.
 
 ### errors?
 
-> `optional` **errors**: `Record`\<`string`, `unknown`\>
+> `optional` **errors**: `Record`\<`string`, `unknown`\> \| `Record`\<`string`, `unknown`\>[]
 
 Contains a field validation errors if the field provides multiple errors (i.e. field is template).
+Contains an array of field validation errors if the field contains an array of components.
+
+***
+
+### fieldType
+
+> **fieldType**: [`FieldType`](../type-aliases/FieldType.md)
+
+The field type.
 
 ***
 
 ### getValidationResult()
 
-> **getValidationResult**: () => `Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md)\>
+> **getValidationResult**: () => `Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md) \| [`ValidationMessages`](../type-aliases/ValidationMessages.md)[]\>
 
 Returns the validation results without triggering an events and changing the state of the form.
 
 #### Returns
 
-`Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md)\>
+`Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md) \| [`ValidationMessages`](../type-aliases/ValidationMessages.md)[]\>
 
 the [ValidationMessages](../type-aliases/ValidationMessages.md) validation results.
 

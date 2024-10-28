@@ -1,3 +1,4 @@
+import type {FluentVariable} from '@fluent/bundle/esm/bundle'
 import type {ValidationMessages} from '../features/validation/types/ValidationResult'
 
 /**
@@ -8,6 +9,16 @@ export interface IFormData {
    * @returns the Record with all the form data.
    */
   get data(): Record<string, unknown>
+
+  /**
+   * @returns the object to read and modify parent data (available for array elements).
+   */
+  get parentData(): Record<string, unknown> | undefined
+
+  /**
+   * @returns the object to read and modify root form data.
+   */
+  get rootData(): Record<string, unknown>
 
   /**
    * @returns the Record with all validation error messages.
@@ -23,6 +34,12 @@ export interface IFormData {
    * @returns A user-defined key-value observable storage. Utilize it to store and share any custom data.
    */
   get state(): Record<string, unknown>
+
+  /**
+   * @returns all the form data that is of the FluentVariable type.
+   * Additionally, the keys of the returned object are converted to the snake case.
+   */
+  get fluentData(): Record<string, FluentVariable>
 
   /**
    * Sets the validation error message for all form data fields.
@@ -55,6 +72,11 @@ export interface IFormData {
    * Clears the form data.
    */
   clear: () => void
+
+  /**
+   * @returns the index in the array if the component is in the component array.
+   */
+  index?: number
 }
 
 /**
@@ -65,6 +87,16 @@ export const IFormDataDeclaration = `declare interface IFormData {
    * @returns the {@link Record} with all the form data.
    */
   get data(): Record<string, unknown>
+
+  /**
+   * @returns the object to read and modify parent data (available for array elements).
+   */
+  get parentData(): Record<string, unknown> | undefined
+
+  /**
+   * @returns the object to read and modify root form data.
+   */
+  get rootData(): Record<string, unknown>
 
   /**
    * @returns the {@link Record} with all validation error messages.
@@ -112,4 +144,9 @@ export const IFormDataDeclaration = `declare interface IFormData {
    * Clears the form data.
    */
   clear(): void
+
+  /**
+   * @returns the index in the array if the component is in the component array.
+   */
+  index?: number
 }`

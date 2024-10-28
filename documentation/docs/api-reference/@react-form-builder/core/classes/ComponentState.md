@@ -20,7 +20,7 @@ the data needed to display the component.
 
 the form viewer settings.
 
-• **localizer**
+• **localizer**: [`ComponentStoreLocalizer`](../type-aliases/ComponentStoreLocalizer.md)
 
 the function to localize the properties of a component, returns a Record with localized properties.
 
@@ -54,19 +54,11 @@ the data needed to display the component.
 
 ***
 
-### localizer()
+### localizer
 
-> `readonly` **localizer**: (`componentStore`) => `Record`\<`string`, `any`\>
+> `readonly` **localizer**: [`ComponentStoreLocalizer`](../type-aliases/ComponentStoreLocalizer.md)
 
 the function to localize the properties of a component, returns a Record with localized properties.
-
-#### Parameters
-
-• **componentStore**: [`ComponentStore`](ComponentStore.md)
-
-#### Returns
-
-`Record`\<`string`, `any`\>
 
 ***
 

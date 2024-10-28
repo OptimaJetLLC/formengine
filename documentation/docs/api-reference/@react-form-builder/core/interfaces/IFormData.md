@@ -30,6 +30,16 @@ the [ValidationMessages](../type-aliases/ValidationMessages.md) validation resul
 
 ***
 
+### index?
+
+> `optional` **index**: `number`
+
+#### Returns
+
+the index in the array if the component is in the component array.
+
+***
+
 ### reset()
 
 > **reset**: () => `void`
@@ -96,6 +106,19 @@ the Record with all validation error messages.
 
 ***
 
+### fluentData
+
+> `get` **fluentData**(): `Record`\<`string`, `FluentVariable`\>
+
+#### Returns
+
+`Record`\<`string`, `FluentVariable`\>
+
+all the form data that is of the FluentVariable type.
+Additionally, the keys of the returned object are converted to the snake case.
+
+***
+
 ### hasErrors
 
 > `get` **hasErrors**(): `boolean`
@@ -117,6 +140,30 @@ If true, then validation is in progress.
 #### Returns
 
 `boolean`
+
+***
+
+### parentData
+
+> `get` **parentData**(): `undefined` \| `Record`\<`string`, `unknown`\>
+
+#### Returns
+
+`undefined` \| `Record`\<`string`, `unknown`\>
+
+the object to read and modify parent data (available for array elements).
+
+***
+
+### rootData
+
+> `get` **rootData**(): `Record`\<`string`, `unknown`\>
+
+#### Returns
+
+`Record`\<`string`, `unknown`\>
+
+the object to read and modify root form data.
 
 ***
 

@@ -3,6 +3,7 @@ import type {ComponentStore} from '../../../stores/ComponentStore'
 import type {IStore} from '../../../stores/IStore'
 import {nameObservable} from '../../../utils/observableNaming'
 import type {Field} from './Field'
+import type {FieldType} from './FieldType'
 import {isStoreDataInParentForm} from './util'
 
 /**
@@ -31,6 +32,13 @@ export class TemplateField implements Field {
   ) {
     makeAutoObservable(this, undefined,
       {name: nameObservable('FormField', {key: componentStore.key}), autoBind: true})
+  }
+
+  /**
+   * @inheritDoc
+   */
+  get fieldType(): FieldType {
+    return 'simple'
   }
 
   /**

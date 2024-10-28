@@ -7,7 +7,7 @@ import {GenericCodeEditor} from '../../calculation/GenericCodeEditor'
 import {Header} from './Header'
 
 const RawJsonCodeEditor = (props: JsonCode) => {
-  const {editorTitle, json, editorKey, onSave} = props
+  const {editorTitle, json, editorKey, onSave, onValidate} = props
   const {t} = useTranslation()
   const builderStore = useBuilderStore()
 
@@ -15,12 +15,12 @@ const RawJsonCodeEditor = (props: JsonCode) => {
 
   const handleCompile = useCallback((value: string) => {
     try {
-      JSON.parse(value)
+      onValidate ? onValidate(value) : JSON.parse(value)
       return CalculableResult.success(t('testingEditor.compilationOk'))
     } catch (e) {
       return CalculableResult.error([e as Error])
     }
-  }, [t])
+  }, [t, onValidate])
 
   const handleSave = useCallback(code => {
     try {

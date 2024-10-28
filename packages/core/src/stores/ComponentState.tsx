@@ -10,6 +10,7 @@ import type {ComputeChildren} from '../utils/ComputeChildren'
 import type {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
 import type {ComponentStore} from './ComponentStore'
+import type {ComponentStoreLocalizer} from './ComponentStoreLocalizer'
 import type {Store} from './Store'
 
 const getHtmlAttributes = (componentStore: ComponentStore) => componentStore.htmlAttributes
@@ -51,7 +52,7 @@ export class ComponentState {
   constructor(
     readonly data: ComponentData,
     readonly store: Store,
-    readonly localizer: (componentStore: ComponentStore) => Record<string, any>,
+    readonly localizer: ComponentStoreLocalizer,
     readonly computeChildren: ComputeChildren,
     readonly viewerProps: Pick<FormViewerProps, 'readOnly'>,
   ) {
@@ -104,7 +105,8 @@ export class ComponentState {
    * @returns the values for all properties of the component, calculates the values of the calculated properties.
    */
   get calculatedProps() {
-    return calculateProperties(this.data.store, this.store.form.componentTree)
+    const dataRootProvider = this.data.dataRootProvider ?? this.store.dataContext
+    return calculateProperties(this.data.store, dataRootProvider.dataRoot)
   }
 
   /**

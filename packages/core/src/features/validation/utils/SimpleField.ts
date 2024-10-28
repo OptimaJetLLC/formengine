@@ -1,21 +1,17 @@
 import {autorun, makeAutoObservable, observable, untracked} from 'mobx'
 import type {ComponentStore} from '../../../stores/ComponentStore'
-import type {FormViewerValidationRules} from '../../../stores/FormViewerValidationRules'
-import type {IStore} from '../../../stores/IStore'
 import {needRender} from '../../../utils/needRender'
 import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
 import type {Model} from '../../define'
 import type {SchemaType} from '../types/SchemaType'
 import type {ValidationMessages} from '../types/ValidationResult'
 import {autoConvertField} from './autoConvertField'
-import {DataValidator} from './DataValidator'
+import {dataPart} from './dataPart'
+import type {DataValidator} from './DataValidator'
+import type {Disposer} from './Disposer'
 import type {Field} from './Field'
-import {typedValidatorsResolver} from './validatorsResolver'
-
-/**
- * Type for the function that disposes resources.
- */
-export type Disposer = () => void
+import type {FieldType} from './FieldType'
+import type {IDataContext} from './IDataContext'
 
 /**
  * Field with form data, contains only one value. **Internal use only.**
@@ -52,19 +48,15 @@ export class SimpleField implements Field {
 
   /**
    * Creates the field with form data for the component.
-   * @param store the form viewer settings.
+   * @param dataContext the data context for this field.
    * @param componentStore the component settings.
    * @param model the component metadata for the form viewer.
-   * @param valueCalculator the function to get a calculated value for the field.
-   * @param getValidationRules the function to get validation rules for the field.
    * @param deferFieldCalculation if true, then the calculated field must be explicitly initialized.
    */
   constructor(
-    readonly store: IStore,
+    readonly dataContext: IDataContext,
     readonly componentStore: ComponentStore,
     readonly model: Model,
-    readonly valueCalculator: (component: ComponentStore, key: string) => [boolean, any?],
-    readonly getValidationRules: (valueType: SchemaType) => FormViewerValidationRules,
     public deferFieldCalculation: boolean,
   ) {
     if (!model.valued) throw new Error(`'model.valued' is falsy`)
@@ -76,19 +68,18 @@ export class SimpleField implements Field {
 
     makeAutoObservable(this, {
       model: false,
-      valueCalculator: false,
-      dataValidator: observable.ref
+      dataValidator: observable.ref,
+      dataContext: observable.ref
     }, {name: nameObservable(className, {key: componentStore.key}), autoBind: true})
 
     this.#disposers = [
       autorun(
         () => {
-          this.dataValidator = DataValidator.create(
-            store,
-            typedValidatorsResolver(this.getValidationRules(this.valueType)),
-            componentStore.schema,
-            error => this.error = error,
-            store.localizeErrorMessages.bind(store, componentStore))
+          this.dataValidator = this.dataContext.createDataValidator(
+            componentStore,
+            this.valueType,
+            error => this.error = error
+          )
           untracked(() => {
             this.#oldDataValidator?.dispose()
             this.#oldDataValidator = this.dataValidator
@@ -97,12 +88,13 @@ export class SimpleField implements Field {
         , {name: nameAutorun(className, 'setValidator', {key: componentStore.key})}),
       autorun(
         () => {
-          const simpleValue = store.initialDataSlice?.[componentStore.key] ?? this.initialValue
+          const initialData = dataPart(this.dataContext.initialData, componentStore.key)
+          const simpleValue = initialData ?? this.initialValue
           if (this.deferFieldCalculation) {
             this.value = simpleValue
             return
           }
-          const [calculated, value] = this.valueCalculator(componentStore, this.valued)
+          const [calculated, value] = this.dataContext.calculateValue(componentStore, this.valued)
           if (calculated) {
             this.value = value
             return
@@ -112,6 +104,13 @@ export class SimpleField implements Field {
         , {name: nameAutorun(className, 'setValue', {'key': componentStore.key})}),
       () => this.dataValidator?.dispose()
     ]
+  }
+
+  /**
+   * @inheritDoc
+   */
+  get fieldType(): FieldType {
+    return 'simple'
   }
 
   /**
@@ -204,7 +203,7 @@ export class SimpleField implements Field {
    * @returns true if the field should be validated, false otherwise.
    */
   get needValidate() {
-    return needRender(this.componentStore, this.store.form.componentTree)
+    return needRender(this.componentStore, this.dataContext.dataRoot)
   }
 
   /**

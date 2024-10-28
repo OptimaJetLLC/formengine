@@ -50,6 +50,14 @@ The child nodes in the component data tree.
 
 ***
 
+### dataRootProvider?
+
+> `optional` **dataRootProvider**: [`IDataRootProvider`](../interfaces/IDataRootProvider.md)
+
+Specifies the root component for the data in the component tree. **Internal use only.**
+
+***
+
 ### field?
 
 > `readonly` `optional` **field**: [`Field`](../interfaces/Field.md)
@@ -63,6 +71,19 @@ The field with the form data.
 > `readonly` **id**: `string`
 
 The unique identifier.
+
+***
+
+### index?
+
+> `optional` **index**: `number`
+
+Specifies the index in the array if the component is in the component array.
+This is not an index in a parent-child structure.
+
+#### Implementation of
+
+[`IFormData`](../interfaces/IFormData.md).[`index`](../interfaces/IFormData.md#index)
 
 ***
 
@@ -173,6 +194,10 @@ all the fields in the tree as a map. Starts from this node.
 all the form data that is of the FluentVariable type.
 Additionally, the keys of the returned object are converted to the snake case.
 
+#### Implementation of
+
+[`IFormData`](../interfaces/IFormData.md).[`fluentData`](../interfaces/IFormData.md#fluentdata)
+
 ***
 
 ### hasErrors
@@ -228,6 +253,63 @@ If true, then validation is in progress.
 `string`
 
 the key of this node (same as the key of the ComponentStore).
+
+***
+
+### nearestIndex
+
+> `get` **nearestIndex**(): `undefined` \| `number`
+
+#### Returns
+
+`undefined` \| `number`
+
+the index in the array if the component is in the component array
+(looks for the nearest index in the component hierarchy).
+
+***
+
+### parentData
+
+> `get` **parentData**(): `undefined` \| `Record`\<`string`, `unknown`\>
+
+#### Returns
+
+`undefined` \| `Record`\<`string`, `unknown`\>
+
+the object to read and modify parent data (available for array elements).
+
+#### Implementation of
+
+[`IFormData`](../interfaces/IFormData.md).[`parentData`](../interfaces/IFormData.md#parentdata)
+
+***
+
+### root
+
+> `get` **root**(): [`ComponentData`](ComponentData.md)
+
+#### Returns
+
+[`ComponentData`](ComponentData.md)
+
+the root of the component tree.
+
+***
+
+### rootData
+
+> `get` **rootData**(): `Record`\<`string`, `unknown`\>
+
+#### Returns
+
+`Record`\<`string`, `unknown`\>
+
+the object to read and modify root form data.
+
+#### Implementation of
+
+[`IFormData`](../interfaces/IFormData.md).[`rootData`](../interfaces/IFormData.md#rootdata)
 
 ***
 

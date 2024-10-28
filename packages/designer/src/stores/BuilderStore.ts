@@ -107,11 +107,13 @@ export class JsonCode {
    * @param editorTitle the editor's title.
    * @param json the editable JSON.
    * @param onSave the callback function called when data should be saved.
+   * @param onValidate the optional callback function called when data should be validated.
    */
   constructor(readonly editorKey: string,
               readonly editorTitle: string,
               readonly json: string,
-              readonly onSave: (value: string) => void) {
+              readonly onSave: (value: string) => void,
+              readonly onValidate?: (value: string) => void) {
   }
 }
 
@@ -402,9 +404,11 @@ export class BuilderStore implements IFormBuilder {
    * @param editorTitle the editor's title.
    * @param json the editable JSON.
    * @param onChange the callback function called when data should be saved.
+   * @param onValidate the optional callback function called when data should be validated.
    */
-  editJsonCode(componentKey: string, editorTitle: string, json: string, onChange: (value: string) => void) {
-    this.currentEditable = new JsonCode(componentKey, editorTitle, json, onChange)
+  editJsonCode(componentKey: string, editorTitle: string, json: string, onChange: (value: string) => void,
+               onValidate?: (value: string) => void) {
+    this.currentEditable = new JsonCode(componentKey, editorTitle, json, onChange, onValidate)
   }
 
   /**

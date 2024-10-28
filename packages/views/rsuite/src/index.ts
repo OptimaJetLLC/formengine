@@ -30,7 +30,6 @@ import {rsNumberFormat} from './components/RsNumberFormat'
 import {rsPatternFormat} from './components/RsPatternFormat'
 import {rsProgressCircle, rsProgressLine} from './components/RsProgress'
 import {rsRadioGroup} from './components/RsRadioGroup'
-import {rsRepeater} from './components/RsRepeater'
 import {rsSearch} from './components/RsSearch'
 import {rsSignature} from './components/RsSignature'
 import {rsStaticContent} from './components/RsStaticContent'
@@ -100,7 +99,6 @@ const categories = {
     rsFooter,
     rSuiteHeader,
     rsSidebar,
-    rsRepeater
   ]
 }
 

@@ -42,7 +42,7 @@ export {getFluentData} from './features/localization/getFluentData'
 export {getFluentCompatibleId} from './features/localization/getFluentCompatibleId'
 export {DataValidator} from './features/validation'
 export type {
-  SchemaType, SchemaTypeMap, ValidationRuleSettings, Disposer, ResolvedValidator, RuleValidator, RuleValidatorResult
+  SchemaType, SchemaTypeMap, ValidationRuleSettings, ResolvedValidator, RuleValidator, RuleValidatorResult
 } from './features/validation'
 export {isPromise, isString} from './utils'
 export {nameAutorun, nameObservable} from './utils/observableNaming'
@@ -145,3 +145,8 @@ export type {BuilderContextType} from './utils/contexts/BuilderContext'
 export type {BuilderMode} from './utils/contexts/BuilderMode'
 export type {ComponentMetadataEventListeners} from './features/define/utils/ComponentMetadataEventListeners'
 export type {ComponentPropertyBindType} from './features/define/utils/ComponentPropertyBindType'
+export type {IDataRootProvider} from './utils/contexts/ComponentDataContext'
+export type {IDataContext} from './features/validation/utils/IDataContext'
+export type {FieldType} from './features/validation/utils/FieldType'
+export type {IComponentDataFactory} from './features/validation/utils/IComponentDataFactory'
+export type {ComponentStoreLocalizer} from './stores/ComponentStoreLocalizer'

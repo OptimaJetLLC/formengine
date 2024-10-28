@@ -6,12 +6,13 @@ The form viewer settings. **Internal use only.**
 
 - [`IStore`](../interfaces/IStore.md)
 - [`IFormViewer`](../interfaces/IFormViewer.md)
+- [`IComponentDataFactory`](../interfaces/IComponentDataFactory.md)
 
 ## Constructors
 
 ### new Store()
 
-> **new Store**(`formViewerPropsStore`, `parentStore`?, `parentComponentStore`?): [`Store`](Store.md)
+> **new Store**(`formViewerPropsStore`, `parentStore`?, `parentComponentStore`?, `parentStoreContext`?): [`Store`](Store.md)
 
 Creates form viewer settings.
 
@@ -29,11 +30,23 @@ the form viewer settings, used in templates.
 
 the parent component settings.
 
+• **parentStoreContext?**: [`IDataContext`](../interfaces/IDataContext.md)
+
+the parent store data context.
+
 #### Returns
 
 [`Store`](Store.md)
 
 ## Properties
+
+### dataContext
+
+> **dataContext**: [`IDataContext`](../interfaces/IDataContext.md)
+
+The context for working with data. **Internal use only**.
+
+***
 
 ### eventSubject
 
@@ -76,6 +89,14 @@ the parent component settings.
 > `readonly` `optional` **parentStore**: [`Store`](Store.md)
 
 the form viewer settings, used in templates.
+
+***
+
+### parentStoreContext?
+
+> `readonly` `optional` **parentStoreContext**: [`IDataContext`](../interfaces/IDataContext.md)
+
+the parent store data context.
 
 ***
 
@@ -137,11 +158,11 @@ the [IFormData](../interfaces/IFormData.md) with all the form data.
 
 ### initialDataSlice
 
-> `get` **initialDataSlice**(): `undefined` \| `Record`\<`string`, `unknown`\>
+> `get` **initialDataSlice**(): `unknown`
 
 #### Returns
 
-`undefined` \| `Record`\<`string`, `unknown`\>
+`unknown`
 
 the slice of the initial data in accordance with the Store hierarchy. **Internal use only.**
 
@@ -201,9 +222,9 @@ Clears the form in Form Viewer.
 
 ### createComponentData()
 
-> **createComponentData**(`componentStore`, `deferFieldCalculation`, `model`?): [`ComponentData`](ComponentData.md)
+> **createComponentData**(`componentStore`, `deferFieldCalculation`, `model`?, `dataContext`?): [`ComponentData`](ComponentData.md)
 
-Creates the element for the component tree.
+Creates the element for the component tree. **Internal use only.**
 
 #### Parameters
 
@@ -219,11 +240,19 @@ if true, then the calculated field must be explicitly initialized.
 
 the component's metadata.
 
+• **dataContext?**: [`IDataContext`](../interfaces/IDataContext.md)
+
+the context for working with data.
+
 #### Returns
 
 [`ComponentData`](ComponentData.md)
 
 the element for the component tree.
+
+#### Implementation of
+
+[`IComponentDataFactory`](../interfaces/IComponentDataFactory.md).[`createComponentData`](../interfaces/IComponentDataFactory.md#createcomponentdata)
 
 ***
 
@@ -357,7 +386,7 @@ the form name.
 
 ### localizeComponent()
 
-> **localizeComponent**(`type`, `componentStore`): `Record`\<`string`, `any`\>
+> **localizeComponent**(`type`, `formData`, `componentStore`): `Record`\<`string`, `any`\>
 
 Localizes a component store based on the given localization type. If a custom localizer is available, it will be used.
 
@@ -366,6 +395,10 @@ Localizes a component store based on the given localization type. If a custom lo
 • **type**: `string`
 
 the type of localization.
+
+• **formData**: [`IFormData`](../interfaces/IFormData.md)
+
+the form data.
 
 • **componentStore**: [`ComponentStore`](ComponentStore.md)
 
@@ -377,15 +410,23 @@ the component settings.
 
 the Record with the localized properties.
 
+#### Implementation of
+
+[`IStore`](../interfaces/IStore.md).[`localizeComponent`](../interfaces/IStore.md#localizecomponent)
+
 ***
 
 ### localizeErrorMessages()
 
-> **localizeErrorMessages**(`componentStore`, `validationResults`?): `undefined` \| `string`
+> **localizeErrorMessages**(`formData`, `componentStore`, `validationResults`?): `undefined` \| `string`
 
 The function to localize the validation error message.
 
 #### Parameters
+
+• **formData**: [`IFormData`](../interfaces/IFormData.md)
+
+the form data.
 
 • **componentStore**: [`ComponentStore`](ComponentStore.md)
 
@@ -393,13 +434,13 @@ the component settings.
 
 • **validationResults?**: [`ValidationResult`](../type-aliases/ValidationResult.md)[]
 
-the validation results.
+the results of the validation.
 
 #### Returns
 
 `undefined` \| `string`
 
-the localized error messages joined by space, or undefined if validationResults is undefined.
+the result of localization or undefined.
 
 #### Implementation of
 

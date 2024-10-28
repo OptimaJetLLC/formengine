@@ -113,7 +113,7 @@ export const ActionCell = ({rowData, rowIndex, onAction, icon, ...props}: Action
     </SCell>
   )
 
-const SCell = styled(Cell<RowDataType, string | number>)`
+export const SCell = styled(Cell<RowDataType, string | number>)`
   padding: 0;
 
   & .rs-table-cell-content {

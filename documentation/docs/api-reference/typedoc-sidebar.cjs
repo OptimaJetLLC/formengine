@@ -263,6 +263,21 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/interfaces/IComponentDataFactory",
+            "label": "IComponentDataFactory"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/interfaces/IDataContext",
+            "label": "IDataContext"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/interfaces/IDataRootProvider",
+            "label": "IDataRootProvider"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/interfaces/IFormData",
             "label": "IFormData"
           },
@@ -424,6 +439,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/ComponentStoreLocalizer",
+            "label": "ComponentStoreLocalizer"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/ComponentsLocalization",
             "label": "ComponentsLocalization"
           },
@@ -479,11 +499,6 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
-            "id": "api-reference/@react-form-builder/core/type-aliases/Disposer",
-            "label": "Disposer"
-          },
-          {
-            "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/EditorType",
             "label": "EditorType"
           },
@@ -501,6 +516,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/EventName",
             "label": "EventName"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/FieldType",
+            "label": "FieldType"
           },
           {
             "type": "doc",
@@ -1332,6 +1352,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/designer/functions/InputCell",
             "label": "InputCell"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/designer/functions/SCell",
+            "label": "SCell"
           },
           {
             "type": "doc",

@@ -1,7 +1,7 @@
 import type {ComponentType} from 'react'
 import type {ComponentTreeProps} from '../ComponentTreeProps'
 import type {ComponentStore} from '../stores/ComponentStore'
-import type {ComponentData} from './contexts/ComponentDataContext'
+import type {ComponentData, IComponentDataProvider} from './contexts/ComponentDataContext'
 import {groupBy} from './groupBy'
 import type {IFormData} from './IFormData'
 import {needRender} from './needRender'
@@ -22,13 +22,15 @@ export function getChildren(
   componentTreeItem: ComponentType<ComponentTreeProps>,
   componentProps: Record<string, any>
 ) {
-  const containers = data.children
+  const containers = data.field?.fieldType === 'repeater'
+    ? (data.field as unknown as IComponentDataProvider).componentData
+    : data.children
   const ComponentTree = componentTreeItem
   const currentProps: Record<string, any> = {}
 
   const groups = groupBy(containers, value => value.store.slot || defaultContainerKey)
   const isSlotConditionSatisfied = (child: ComponentData) => checkSlotCondition(child.store, componentProps)
-  const isNeedRender = (child: ComponentData) => needRender(child.store, formData)
+  const isNeedRender = (child: ComponentData) => needRender(child.store, data.dataRootProvider?.dataRoot ?? formData)
 
   for (const [key, children] of Object.entries(groups)) {
     const filteredChildren = children

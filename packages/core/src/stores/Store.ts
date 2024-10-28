@@ -1,7 +1,6 @@
 import {assign} from 'lodash-es'
 import {makeObservable, observable} from 'mobx'
 import {Subject} from 'rxjs'
-import {calculatePropertyValue} from '../features/calculation/propertyCalculator'
 import type {Model} from '../features/define'
 import type {ActionData, ActionDefinition, ActionEventArgs, ActionType} from '../features/event'
 import {createActionValuesFromObject} from '../features/event'
@@ -14,17 +13,25 @@ import {buildInternalErrorModel, buildInternalErrorStore} from '../features/ui/i
 import {screenModel} from '../features/ui/screenModel'
 import {getTemplateName, isTemplateType} from '../features/ui/templateUtil'
 import type {SchemaType} from '../features/validation'
+import {DataValidator} from '../features/validation'
 import type {ValidationResult} from '../features/validation/types/ValidationResult'
+import {calculateProperty} from '../features/validation/utils/calculateProperty'
 import {ZodValidationRules} from '../features/validation/utils/consts'
+import {dataPart} from '../features/validation/utils/dataPart'
 import {getDefaultErrorMessage} from '../features/validation/utils/DataValidator'
+import type {IComponentDataFactory} from '../features/validation/utils/IComponentDataFactory'
+import type {IDataContext} from '../features/validation/utils/IDataContext'
+import {RepeaterField} from '../features/validation/utils/RepeaterField'
 import {SimpleField} from '../features/validation/utils/SimpleField'
 import {TemplateField} from '../features/validation/utils/TemplateField'
 import {isStoreDataInParentForm} from '../features/validation/utils/util'
-import type {ViewMode} from '../types'
+import {typedValidatorsResolver} from '../features/validation/utils/validatorsResolver'
+import type {Setter, ViewMode} from '../types'
 import {isNumber, isPromise, isRecord, isString} from '../utils'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
+import type {IFormData} from '../utils/IFormData'
 import {nameObservable} from '../utils/observableNaming'
-import {ComponentStore, isFunctionalProperty, isLocalizedProperty} from './ComponentStore'
+import {ComponentStore} from './ComponentStore'
 import {Form} from './Form'
 import type {FormViewerPropsStore} from './FormViewerPropsStore'
 import type {FormViewerValidationRules} from './FormViewerValidationRules'
@@ -62,9 +69,63 @@ function reduceTree<U extends object, T, K extends keyof U>(tree: Tree<U, K>,
 const globalDefaultLanguage = new Language('en', 'US', 'English', 'American English')
 
 /**
+ * The root data context for the form viewer.
+ */
+class StoreFormContext implements IDataContext {
+
+  /**
+   * Create the data context for the store.
+   * @param store the store.
+   */
+  constructor(readonly store: Store) {
+  }
+
+  /**
+   * @inheritDoc
+   */
+  get dataRoot() {
+    return this.store.form.componentTree
+  }
+
+  /**
+   * @inheritDoc
+   */
+  get initialData() {
+    return this.store.initialDataSlice
+  }
+
+  /**
+   * @inheritDoc
+   */
+  createDataValidator(componentStore: ComponentStore, valueType: SchemaType,
+                      onError: Setter<string | undefined>) {
+    const validationRules = this.store.getValidationRules(valueType)
+    return DataValidator.create(
+      this.store,
+      typedValidatorsResolver(validationRules),
+      componentStore.schema,
+      onError,
+      this.store.localizeErrorMessages.bind(this.store, this.dataRoot, componentStore)
+    )
+  }
+
+  /**
+   * @inheritDoc
+   */
+  calculateValue(component: ComponentStore, key: string) {
+    return calculateProperty(
+      component,
+      key,
+      this.dataRoot,
+      (type, componentStore) => this.store.localizeComponent(type, this.dataRoot, componentStore)
+    )
+  }
+}
+
+/**
  * The form viewer settings. **Internal use only.**
  */
-export class Store implements IStore, IFormViewer {
+export class Store implements IStore, IFormViewer, IComponentDataFactory {
 
   /**
    * The currently selected language.
@@ -92,17 +153,25 @@ export class Store implements IStore, IFormViewer {
   #templateMap = new Map<string, Model>()
 
   /**
+   * The context for working with data. **Internal use only**.
+   */
+  dataContext: IDataContext
+
+  /**
    * Creates form viewer settings.
    * @param formViewerPropsStore the form viewer store settings.
    * @param parentStore the form viewer settings, used in templates.
    * @param parentComponentStore the parent component settings.
+   * @param parentStoreContext the parent store data context.
    */
   constructor(public formViewerPropsStore: FormViewerPropsStore,
               public readonly parentStore?: Store,
-              public readonly parentComponentStore?: ComponentStore) {
+              public readonly parentComponentStore?: ComponentStore,
+              public readonly parentStoreContext?: IDataContext) {
     const componentTree = this.createComponentData(new ComponentStore(screenModel.name, screenModel.type))
     const localization = new LocalizationStore()
     this.form = new Form(componentTree, localization, {}, [], globalDefaultLanguage)
+    this.dataContext = new StoreFormContext(this)
 
     makeObservable(this, {
       form: observable,
@@ -111,7 +180,8 @@ export class Store implements IStore, IFormViewer {
       clear: true,
       parentStore: observable.ref,
       parentComponentStore: observable.ref,
-      initialDataSlice: true
+      parentStoreContext: observable.ref,
+      initialDataSlice: true,
     }, {name: nameObservable(`ViewerStore`)})
   }
 
@@ -174,12 +244,12 @@ export class Store implements IStore, IFormViewer {
   /**
    * @inheritDoc
    */
-  get initialDataSlice(): Record<string, unknown> | undefined {
-    if (!this.parentStore || !this.parentComponentStore) return this.formViewerPropsStore.initialData
-    const dataSlice = this.parentStore.initialDataSlice
+  get initialDataSlice(): unknown {
+    if (!this.parentStoreContext || !this.parentComponentStore) return this.formViewerPropsStore.initialData
+    const dataSlice = this.parentStoreContext.initialData
     if (isStoreDataInParentForm(this.parentComponentStore)) return dataSlice
-    const projection = dataSlice?.[this.parentComponentStore.key]
-    return isRecord(projection) ? projection : undefined
+    const projection = dataPart(dataSlice, this.parentComponentStore.key)
+    return (Array.isArray(projection) || isRecord(projection)) ? projection : undefined
   }
 
   /**
@@ -245,17 +315,17 @@ export class Store implements IStore, IFormViewer {
   }
 
   /**
-   * Creates the element for the component tree.
-   * @param componentStore the component settings.
-   * @param deferFieldCalculation if true, then the calculated field must be explicitly initialized.
-   * @param model the component's metadata.
-   * @returns the element for the component tree.
+   * @inheritDoc
    */
-  createComponentData(componentStore: ComponentStore, deferFieldCalculation = false, model?: Model): ComponentData {
+  createComponentData(componentStore: ComponentStore, deferFieldCalculation = false, model?: Model,
+                      dataContext?: IDataContext): ComponentData {
+    dataContext ??= this.dataContext
     model ??= this.getModel(componentStore.type)
-    const field = model.valued ? this.createField(componentStore, model, deferFieldCalculation) : undefined
-    const factory = (cs: ComponentStore) => this.createComponentData(cs, deferFieldCalculation)
-    return new ComponentData(componentStore, model, field, factory, this.formViewerPropsStore.formValidators)
+    const field = this.createField(componentStore, model, dataContext, deferFieldCalculation)
+    const factory = (cs: ComponentStore) => this.createComponentData(cs, deferFieldCalculation, undefined, dataContext)
+    const componentData = new ComponentData(componentStore, model, field, factory, this.formViewerPropsStore.formValidators)
+    componentData.dataRootProvider = dataContext
+    return componentData
   }
 
   /**
@@ -270,12 +340,20 @@ export class Store implements IStore, IFormViewer {
     }
   }
 
-  private createField(componentStore: ComponentStore, model: Model, deferFieldCalculation: boolean) {
-    if (!isTemplateType(model.type)) {
-      return new SimpleField(this, componentStore, model, updateFnValue(this), this.getValidationRules.bind(this), deferFieldCalculation)
+  private createField(componentStore: ComponentStore, model: Model, dataContext: IDataContext,
+                      deferFieldCalculation: boolean) {
+    if (model.kind === 'repeater') {
+      return new RepeaterField(dataContext, this, this, this.getValidationRules.bind(this),
+        componentStore, model, deferFieldCalculation)
     }
 
-    const childStore = new Store(this.formViewerPropsStore.clone(), this, componentStore)
+    if (!model.valued) return
+
+    if (!isTemplateType(model.type)) {
+      return new SimpleField(dataContext, componentStore, model, deferFieldCalculation)
+    }
+
+    const childStore = new Store(this.formViewerPropsStore.clone(), this, componentStore, dataContext)
     return new TemplateField(componentStore, childStore)
   }
 
@@ -373,43 +451,21 @@ export class Store implements IStore, IFormViewer {
   }
 
   /**
-   * Localizes a component store based on the given localization type. If a custom localizer is available, it will be used.
-   * @param type the type of localization.
-   * @param componentStore the component settings.
-   * @returns the Record with the localized properties.
+   * @inheritDoc
    */
-  localizeComponent(type: LocalizationType, componentStore: ComponentStore) {
+  localizeComponent(type: LocalizationType, formData: IFormData, componentStore: ComponentStore) {
     if (this.formViewerPropsStore.localizer) return this.formViewerPropsStore.localizer(componentStore, this.displayedLanguage)
-    return localizeProperties(this.form, this.displayedLanguage, componentStore, type)
+    return localizeProperties(this.form, formData, this.displayedLanguage, componentStore, type)
   }
 
   /**
-   * Localizes validator error messages.
-   * @param componentStore the component settings.
-   * @param validationResults the validation results.
-   * @returns the localized error messages joined by space, or undefined if validationResults is undefined.
+   * @inheritDoc
    */
-  localizeErrorMessages(componentStore: ComponentStore, validationResults?: ValidationResult[]) {
+  localizeErrorMessages(formData: IFormData, componentStore: ComponentStore, validationResults?: ValidationResult[]) {
     if (!validationResults) return
     return validationResults.map(result => {
-      const errorMessage = localizeErrorMessage(this.form, this.displayedLanguage, componentStore, result.settings.key)
+      const errorMessage = localizeErrorMessage(this.form, formData, this.displayedLanguage, componentStore, result.settings.key)
       return errorMessage ?? getDefaultErrorMessage(result)
     }).join(' ')
-  }
-}
-
-function updateFnValue(viewerStore: Store) {
-  return function (component: ComponentStore, key: string): [boolean, any?] {
-    const property = component.props[key]
-    if (isFunctionalProperty(property)) {
-      const {result} = calculatePropertyValue(property, viewerStore.form.componentTree)
-      return [true, result]
-    }
-    if (isLocalizedProperty(property)) {
-      const props = viewerStore.localizeComponent('component', component)
-      const value = props[key]
-      return [true, value]
-    }
-    return [false]
   }
 }

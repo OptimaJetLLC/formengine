@@ -37,5 +37,6 @@
 - [EditableTable](functions/EditableTable.md)
 - [FormBuilder](functions/FormBuilder.md)
 - [InputCell](functions/InputCell.md)
+- [SCell](functions/SCell.md)
 - [SelectCell](functions/SelectCell.md)
 - [makeColumns](functions/makeColumns.md)
