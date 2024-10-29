@@ -25,9 +25,6 @@ function useComponentMountUnmountOnce(componentId: string, init: Fn, clear: Fn) 
   const componentIdRef = useRef(componentId)
   const mounted = useRef(false)
 
-  // We always change the reference to parameters, these parameters don't change,
-  // and this code allows us to prove to React that we don't need dependencies in the useEffect hook
-  // and avoids unnecessary re-renders
   clearRef.current = clear
   componentIdRef.current = componentId
 
