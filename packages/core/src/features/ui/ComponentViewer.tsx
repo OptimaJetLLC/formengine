@@ -20,18 +20,8 @@ import {DefaultWrapper} from './DefaultWrapper'
 
 type Fn = () => void
 
-/**
- * This Map is used to track the number of mounted/unmounted components.
- * The key is componentId and the value is the number of mounts of the component.
- */
-const mountedMap = new Map<string, number>()
-
-// This hook is used to execute the init function when the component is mounted for the first time,
-// and the clear function when the component is unmounted.
-// This will cover React Strict Mode and other cases where the component is mounted/unmounted multiple times.
 function useComponentMountUnmountOnce(componentId: string, init: Fn, clear: Fn) {
   const clearRef = useRef(clear)
-  const initRef = useRef(init)
   const componentIdRef = useRef(componentId)
   const mounted = useRef(false)
 
@@ -39,30 +29,16 @@ function useComponentMountUnmountOnce(componentId: string, init: Fn, clear: Fn) 
   // and this code allows us to prove to React that we don't need dependencies in the useEffect hook
   // and avoids unnecessary re-renders
   clearRef.current = clear
-  initRef.current = init
   componentIdRef.current = componentId
 
   if (!mounted.current) {
-    const count = mountedMap.get(componentIdRef.current) ?? 0
-    // This code is executed only once when the component is mounted for the first time.
-    // If React mounts the component again (for example, in React Strict Mode), this code will not be executed.
-    if (count === 0) initRef.current()
     mounted.current = true
-    mountedMap.set(componentIdRef.current, count + 1)
+    init()
   }
 
   useEffect(() => {
     return () => {
-      const count = mountedMap.get(componentIdRef.current) ?? 0
-      if (count > 1) {
-        mountedMap.set(componentIdRef.current, count - 1)
-        return
-      }
-      if (count === 1) {
-        // The code to unmount the component is also executed once when the mount counter is 1.
-        clearRef.current()
-        mountedMap.delete(componentIdRef.current)
-      }
+      clearRef.current()
     }
   }, [])
 }
