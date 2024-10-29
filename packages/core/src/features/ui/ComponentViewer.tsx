@@ -20,13 +20,11 @@ import {DefaultWrapper} from './DefaultWrapper'
 
 type Fn = () => void
 
-function useComponentMountUnmountOnce(componentId: string, init: Fn, clear: Fn) {
+function useComponentMountUnmount(init: Fn, clear: Fn) {
   const clearRef = useRef(clear)
-  const componentIdRef = useRef(componentId)
   const mounted = useRef(false)
 
   clearRef.current = clear
-  componentIdRef.current = componentId
 
   if (!mounted.current) {
     mounted.current = true
@@ -72,7 +70,7 @@ const useActions = (state: ComponentState) => {
     subsRef.current = result
   }, [componentData.store.events, componentData.id, store])
 
-  useComponentMountUnmountOnce(componentData.id, () => {
+  useComponentMountUnmount(() => {
     createSubscriptions()
 
     const mountEvent = new ActionEventArgs(DidMountEvent, componentData, store, [], state)
