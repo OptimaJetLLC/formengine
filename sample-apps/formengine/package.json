@@ -1,6 +1,6 @@
 {
   "name": "formengine",
-  "version": "1.14.1",
+  "version": "2.0.0",
   "description": "Example application",
   "private": true,
   "dependencies": {

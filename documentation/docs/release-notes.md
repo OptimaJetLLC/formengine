@@ -4,6 +4,16 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 2.0.0
+
+_October_ 29, 2024
+
+**This release changes parts of the public and internal API.**
+
+- Added the [Repeater](/components-library/structure-components/repeater) component that is responsible for displaying an array of repeating
+  components.
+- Added the [Using Repeater](/using-repeater) guide.
+
 ## 1.14.1
 
 _October_ 28, 2024
