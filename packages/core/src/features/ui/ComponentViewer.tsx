@@ -22,16 +22,13 @@ type Fn = () => void
 
 function useComponentMountUnmount(init: Fn, clear: Fn) {
   const clearRef = useRef(clear)
-  const mounted = useRef(false)
+  const initRef = useRef(init)
 
   clearRef.current = clear
-
-  if (!mounted.current) {
-    mounted.current = true
-    init()
-  }
+  initRef.current = init
 
   useEffect(() => {
+    initRef.current()
     return () => {
       clearRef.current()
     }
@@ -71,17 +68,15 @@ const useActions = (state: ComponentState) => {
   }, [componentData.store.events, componentData.id, store])
 
   useComponentMountUnmount(() => {
-    createSubscriptions()
-
+    console.info('mounting', componentData.id)
     const mountEvent = new ActionEventArgs(DidMountEvent, componentData, store, [], state)
 
     store.eventSubject.next(mountEvent)
   }, () => {
+    console.info('unmounting', componentData.id)
     const unmountEvent = new ActionEventArgs(WillUnmountEvent, componentData, store, [], state)
 
     store.eventSubject.next(unmountEvent)
-
-    unsubscribe()
   })
 }
 
@@ -97,6 +92,53 @@ function getActionHandlersChain(store: Store, actionDataList: ActionData[]) {
       if (isPromise(result)) await result
     }
   }
+}
+
+const EffectComponent = () => {
+  const componentData = useComponentData()
+  const ref = useRef(componentData.id)
+  ref.current = componentData.id
+
+  const store = useStore()
+  // const componentData = useComponentData()
+  const subsRef = useRef<Subscription[]>([])
+
+  const unsubscribe = useCallback(() => {
+    subsRef.current.forEach((s) => s.unsubscribe())
+  }, [])
+
+  const createSubscriptions = useCallback(() => {
+    const result: Subscription[] = []
+
+    forIn(componentData.store.events, (actionDataList: ActionData[], eventName) => {
+      const chain = getActionHandlersChain(store, actionDataList)
+
+      const subscription = store.eventSubject
+        .pipe(
+          filter(e => e.type === eventName && e.sender.id === componentData.id),
+          map(chain),
+          catchError((err, caught) => {
+            console.error(err)
+            return caught
+          }),
+        )
+        .subscribe()
+
+      result.push(subscription)
+    })
+
+    subsRef.current = result
+  }, [componentData.store.events, componentData.id, store])
+
+  useComponentMountUnmount(() => {
+    console.log('mount effect', ref.current)
+    createSubscriptions()
+  }, () => {
+    console.log('unmount effect', ref.current)
+    unsubscribe()
+  })
+
+  return null
 }
 
 const RawComponentViewer = () => {
@@ -131,21 +173,30 @@ const RawComponentViewer = () => {
   const component = <Component key={key} {...otherProps}/>
 
   if (kind === 'container') {
-    return <ContainerComponent key={key} {...otherProps} className={containerClassName}/>
+    return <>
+      <EffectComponent/>
+      <ContainerComponent key={key} {...otherProps} className={containerClassName}/>
+    </>
   }
 
   if (kind === 'repeater') {
-    return <Wrapper><Tooltip><Erroneous>
-      <Component key={key} {...otherProps} wrapperClassName={containerClassName}/>
-    </Erroneous></Tooltip></Wrapper>
+    return <>
+      <EffectComponent/>
+      <Wrapper><Tooltip><Erroneous>
+        <Component key={key} {...otherProps} wrapperClassName={containerClassName}/>
+      </Erroneous></Tooltip></Wrapper>
+    </>
   }
 
-  return <Wrapper className={kind === 'template' ? containerClassName : componentState.wrapperClassName}>
-    {kind === 'template'
-      ? component
-      : <Tooltip><Erroneous>{component}</Erroneous></Tooltip>
-    }
-  </Wrapper>
+  return <>
+    <EffectComponent/>
+    <Wrapper className={kind === 'template' ? containerClassName : componentState.wrapperClassName}>
+      {kind === 'template'
+        ? component
+        : <Tooltip><Erroneous>{component}</Erroneous></Tooltip>
+      }
+    </Wrapper>
+  </>
 }
 
 export const ComponentViewer = namedObserver('ComponentViewer', RawComponentViewer)
