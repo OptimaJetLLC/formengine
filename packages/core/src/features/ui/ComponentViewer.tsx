@@ -62,30 +62,28 @@ const RawComponentViewer = () => {
   const component = <Component key={key} {...otherProps}/>
 
   if (kind === 'container') {
-    return <>
-      <SubscriptionsComponent/>
-      <ContainerComponent key={key} {...otherProps} className={containerClassName}/>
-    </>
+    return <ContainerComponent key={key} {...otherProps} className={containerClassName}/>
   }
 
   if (kind === 'repeater') {
-    return <>
-      <SubscriptionsComponent/>
-      <Wrapper><Tooltip><Erroneous>
-        <Component key={key} {...otherProps} wrapperClassName={containerClassName}/>
-      </Erroneous></Tooltip></Wrapper>
-    </>
+    return <Wrapper><Tooltip><Erroneous>
+      <Component key={key} {...otherProps} wrapperClassName={containerClassName}/>
+    </Erroneous></Tooltip></Wrapper>
   }
 
+  return <Wrapper className={kind === 'template' ? containerClassName : componentState.wrapperClassName}>
+    {kind === 'template'
+      ? component
+      : <Tooltip><Erroneous>{component}</Erroneous></Tooltip>
+    }
+  </Wrapper>
+}
+
+const SubscriptionsComponentViewer = () => {
   return <>
     <SubscriptionsComponent/>
-    <Wrapper className={kind === 'template' ? containerClassName : componentState.wrapperClassName}>
-      {kind === 'template'
-        ? component
-        : <Tooltip><Erroneous>{component}</Erroneous></Tooltip>
-      }
-    </Wrapper>
+    <RawComponentViewer/>
   </>
 }
 
-export const ComponentViewer = namedObserver('ComponentViewer', RawComponentViewer)
+export const ComponentViewer = namedObserver('ComponentViewer', SubscriptionsComponentViewer)
