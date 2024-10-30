@@ -1,144 +1,33 @@
 import {cx} from '@emotion/css'
-import {forIn} from 'lodash-es'
-import {Fragment, useCallback, useEffect, useMemo, useRef} from 'react'
-import type {Subscription} from 'rxjs'
-import {catchError, filter, map} from 'rxjs'
+import {Fragment, useCallback, useMemo} from 'react'
 import {ComponentState} from '../../stores/ComponentState'
-import type {Store} from '../../stores/Store'
-import {isPromise, namedObserver} from '../../utils'
+import {namedObserver} from '../../utils'
 import type {ComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {getChildren} from '../../utils/getChildren'
-import type {ActionData} from '../event'
 import {ActionEventArgs, DidMountEvent, WillUnmountEvent} from '../event'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 import {TooltipWrapper} from '../tooltip/TooltipWrapper'
 import {Erroneous} from '../validation'
 import {useComponentTreeContext} from './ComponentTreeContext'
 import {DefaultWrapper} from './DefaultWrapper'
+import {SubscriptionsComponent} from './SubscriptionsComponent'
+import {useMountUnmount} from './useMountUnmount'
 
-type Fn = () => void
-
-function useComponentMountUnmount(init: Fn, clear: Fn) {
-  const clearRef = useRef(clear)
-  const initRef = useRef(init)
-
-  clearRef.current = clear
-  initRef.current = init
-
-  useEffect(() => {
-    initRef.current()
-    return () => {
-      clearRef.current()
-    }
-  }, [])
-}
-
-const useActions = (state: ComponentState) => {
+const useLifecycleEvents = (state: ComponentState) => {
   const store = useStore()
   const componentData = useComponentData()
-  const subsRef = useRef<Subscription[]>([])
 
-  const unsubscribe = useCallback(() => {
-    subsRef.current.forEach((s) => s.unsubscribe())
-  }, [])
-
-  const createSubscriptions = useCallback(() => {
-    const result: Subscription[] = []
-
-    forIn(componentData.store.events, (actionDataList: ActionData[], eventName) => {
-      const chain = getActionHandlersChain(store, actionDataList)
-
-      const subscription = store.eventSubject
-        .pipe(
-          filter(e => e.type === eventName && e.sender.id === componentData.id),
-          map(chain),
-          catchError((err, caught) => {
-            console.error(err)
-            return caught
-          }),
-        )
-        .subscribe()
-
-      result.push(subscription)
-    })
-
-    subsRef.current = result
-  }, [componentData.store.events, componentData.id, store])
-
-  useComponentMountUnmount(() => {
-    console.info('mounting', componentData.id)
+  useMountUnmount(() => {
     const mountEvent = new ActionEventArgs(DidMountEvent, componentData, store, [], state)
 
     store.eventSubject.next(mountEvent)
   }, () => {
-    console.info('unmounting', componentData.id)
     const unmountEvent = new ActionEventArgs(WillUnmountEvent, componentData, store, [], state)
 
     store.eventSubject.next(unmountEvent)
   })
-}
-
-function getActionHandlersChain(store: Store, actionDataList: ActionData[]) {
-  const actions = actionDataList.map(data => ({
-    func: store.findAction(data).func,
-    args: data.args ? {...data.args} : {}
-  }))
-
-  return async (e: ActionEventArgs) => {
-    for (const {func, args} of actions) {
-      const result = func(e, args)
-      if (isPromise(result)) await result
-    }
-  }
-}
-
-const EffectComponent = () => {
-  const componentData = useComponentData()
-  const ref = useRef(componentData.id)
-  ref.current = componentData.id
-
-  const store = useStore()
-  // const componentData = useComponentData()
-  const subsRef = useRef<Subscription[]>([])
-
-  const unsubscribe = useCallback(() => {
-    subsRef.current.forEach((s) => s.unsubscribe())
-  }, [])
-
-  const createSubscriptions = useCallback(() => {
-    const result: Subscription[] = []
-
-    forIn(componentData.store.events, (actionDataList: ActionData[], eventName) => {
-      const chain = getActionHandlersChain(store, actionDataList)
-
-      const subscription = store.eventSubject
-        .pipe(
-          filter(e => e.type === eventName && e.sender.id === componentData.id),
-          map(chain),
-          catchError((err, caught) => {
-            console.error(err)
-            return caught
-          }),
-        )
-        .subscribe()
-
-      result.push(subscription)
-    })
-
-    subsRef.current = result
-  }, [componentData.store.events, componentData.id, store])
-
-  useComponentMountUnmount(() => {
-    console.log('mount effect', ref.current)
-    createSubscriptions()
-  }, () => {
-    console.log('unmount effect', ref.current)
-    unsubscribe()
-  })
-
-  return null
 }
 
 const RawComponentViewer = () => {
@@ -161,7 +50,7 @@ const RawComponentViewer = () => {
     () => new ComponentState(data, formViewerStore, localize, computeChildren, viewerProps),
     [data, formViewerStore, localize, computeChildren, viewerProps])
 
-  useActions(componentState)
+  useLifecycleEvents(componentState)
 
   const {key, ...otherProps} = componentState.get
   const {kind, component: Component} = data.model
@@ -174,14 +63,14 @@ const RawComponentViewer = () => {
 
   if (kind === 'container') {
     return <>
-      <EffectComponent/>
+      <SubscriptionsComponent/>
       <ContainerComponent key={key} {...otherProps} className={containerClassName}/>
     </>
   }
 
   if (kind === 'repeater') {
     return <>
-      <EffectComponent/>
+      <SubscriptionsComponent/>
       <Wrapper><Tooltip><Erroneous>
         <Component key={key} {...otherProps} wrapperClassName={containerClassName}/>
       </Erroneous></Tooltip></Wrapper>
@@ -189,7 +78,7 @@ const RawComponentViewer = () => {
   }
 
   return <>
-    <EffectComponent/>
+    <SubscriptionsComponent/>
     <Wrapper className={kind === 'template' ? containerClassName : componentState.wrapperClassName}>
       {kind === 'template'
         ? component
