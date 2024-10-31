@@ -96,26 +96,13 @@ export const localizeProperties = (form: Form, formData: IFormData, language: La
       return
     }
     try {
-      const proxyFormData = createLocalizationDataProxy(formData.fluentData)
-      data[value] = fluentBundle.formatPattern(message.value!, proxyFormData)
+      data[value] = fluentBundle.formatPattern(message.value!, formData.fluentData)
     } catch (e) {
-      if (e instanceof ReferenceError) {
-        data[value] = ''
-      } else {
-        console.error(e)
-      }
+      console.error(e)
     }
   })
 
   return data
-}
-
-function createLocalizationDataProxy(localizationData: Record<string, any>) {
-  return new Proxy(localizationData, {
-    get(target, property: string) {
-      return property in target ? target[property] : ''
-    }
-  })
 }
 
 /**
@@ -135,10 +122,13 @@ export const localizeErrorMessage = (form: Form, formData: IFormData, language: 
   const {defaultBundle, fluentBundle} = getFluentBundles(form, language)
   const message = fluentBundle.getMessage(messageId) ?? defaultBundle?.getMessage(messageId)
   if (!message) {
-    return ''
+    return
   }
-    const proxyFormData = createLocalizationDataProxy(formData.fluentData)
-    return fluentBundle.formatPattern(message.value!, proxyFormData)
+  try {
+    return fluentBundle.formatPattern(message.value!, formData.fluentData)
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 const getFluentBundles = (form: Form, language: Language) => {
