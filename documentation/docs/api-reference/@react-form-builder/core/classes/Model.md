@@ -174,9 +174,11 @@ the component's wrapper CSS values.
 
 ### name
 
-> `get` **name**(): `string`
+#### Get Signature
 
-#### Returns
+> **get** **name**(): `string`
+
+##### Returns
 
 `string`
 
@@ -186,9 +188,11 @@ the component name, or type if there is no component name.
 
 ### type
 
-> `get` **type**(): `string`
+#### Get Signature
 
-#### Returns
+> **get** **type**(): `string`
+
+##### Returns
 
 `string`
 

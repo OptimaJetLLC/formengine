@@ -28,11 +28,13 @@ the components metadata.
 
 ### viewerWrappers
 
-> `get` **viewerWrappers**(): [`FormViewerWrapper`](../type-aliases/FormViewerWrapper.md)[]
+#### Get Signature
+
+> **get** **viewerWrappers**(): [`FormViewerWrapper`](../type-aliases/FormViewerWrapper.md)[]
 
 Retrieves the viewer wrappers array.
 
-#### Returns
+##### Returns
 
 [`FormViewerWrapper`](../type-aliases/FormViewerWrapper.md)[]
 

@@ -80,9 +80,11 @@ the form viewer properties.
 
 ### calculatedProps
 
-> `get` **calculatedProps**(): `Record`\<`string`, `any`\>
+#### Get Signature
 
-#### Returns
+> **get** **calculatedProps**(): `Record`\<`string`, `any`\>
+
+##### Returns
 
 `Record`\<`string`, `any`\>
 
@@ -92,17 +94,19 @@ the values for all properties of the component, calculates the values of the cal
 
 ### className
 
-> `get` **className**(): `object`
+#### Get Signature
+
+> **get** **className**(): `object`
 
 Calculates and returns className property.
 
-#### Returns
+##### Returns
 
 `object`
 
 the Record that contains the className property for the component.
 
-##### className
+###### className
 
 > **className**: `string`
 
@@ -110,9 +114,11 @@ the Record that contains the className property for the component.
 
 ### events
 
-> `get` **events**(): `Record`\<`string`, `Function`\>
+#### Get Signature
 
-#### Returns
+> **get** **events**(): `Record`\<`string`, `Function`\>
+
+##### Returns
 
 `Record`\<`string`, `Function`\>
 
@@ -122,9 +128,11 @@ the component event handlers that send events to the event bus.
 
 ### get
 
-> `get` **get**(): `Record`\<`string`, `any`\>
+#### Get Signature
 
-#### Returns
+> **get** **get**(): `Record`\<`string`, `any`\>
+
+##### Returns
 
 `Record`\<`string`, `any`\>
 
@@ -134,9 +142,11 @@ combined in order of priority component properties.
 
 ### htmlAttributes
 
-> `get` **htmlAttributes**(): `undefined` \| [`HtmlAttribute`](../type-aliases/HtmlAttribute.md)
+#### Get Signature
 
-#### Returns
+> **get** **htmlAttributes**(): `undefined` \| [`HtmlAttribute`](../type-aliases/HtmlAttribute.md)
+
+##### Returns
 
 `undefined` \| [`HtmlAttribute`](../type-aliases/HtmlAttribute.md)
 
@@ -146,9 +156,11 @@ all arbitrary HTML attributes of the component.
 
 ### localizedProps
 
-> `get` **localizedProps**(): `Record`\<`string`, `any`\>
+#### Get Signature
 
-#### Returns
+> **get** **localizedProps**(): `Record`\<`string`, `any`\>
+
+##### Returns
 
 `Record`\<`string`, `any`\>
 
@@ -158,9 +170,11 @@ component localized properties.
 
 ### propsWithoutChildren
 
-> `get` **propsWithoutChildren**(): `Record`\<`string`, `any`\>
+#### Get Signature
 
-#### Returns
+> **get** **propsWithoutChildren**(): `Record`\<`string`, `any`\>
+
+##### Returns
 
 `Record`\<`string`, `any`\>
 
@@ -170,9 +184,11 @@ the combined properties of the components in priority order, excluding child com
 
 ### readOnly
 
-> `get` **readOnly**(): `undefined` \| `object`
+#### Get Signature
 
-#### Returns
+> **get** **readOnly**(): `undefined` \| `object`
+
+##### Returns
 
 `undefined` \| `object`
 
@@ -182,9 +198,11 @@ the component's read-only flag, if the component can have a read-only flag.
 
 ### value
 
-> `get` **value**(): `undefined` \| `object`
+#### Get Signature
 
-#### Returns
+> **get** **value**(): `undefined` \| `object`
+
+##### Returns
 
 `undefined` \| `object`
 
@@ -194,11 +212,13 @@ the component's field value data, if the component can have a field value.
 
 ### wrapperClassName
 
-> `get` **wrapperClassName**(): `string`
+#### Get Signature
+
+> **get** **wrapperClassName**(): `string`
 
 Calculates and returns wrapper className property.
 
-#### Returns
+##### Returns
 
 `string`
 

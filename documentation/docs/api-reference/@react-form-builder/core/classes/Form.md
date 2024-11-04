@@ -104,9 +104,11 @@ The type name of the component displaying the tooltip.
 
 ### actionNames
 
-> `get` **actionNames**(): `string`[]
+#### Get Signature
 
-#### Returns
+> **get** **actionNames**(): `string`[]
+
+##### Returns
 
 `string`[]
 

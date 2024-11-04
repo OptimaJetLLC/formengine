@@ -56,9 +56,11 @@ the accumulated value.
 
 ### initialDataSlice
 
-> `get` **initialDataSlice**(): `unknown`
+#### Get Signature
 
-#### Returns
+> **get** **initialDataSlice**(): `unknown`
+
+##### Returns
 
 `unknown`
 

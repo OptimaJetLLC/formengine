@@ -88,9 +88,11 @@ the event type.
 
 ### data
 
-> `get` **data**(): `Record`\<`string`, `unknown`\>
+#### Get Signature
 
-#### Returns
+> **get** **data**(): `Record`\<`string`, `unknown`\>
+
+##### Returns
 
 `Record`\<`string`, `unknown`\>
 
@@ -100,9 +102,11 @@ the object for reading and changing form data.
 
 ### event
 
-> `get` **event**(): `null` \| `SyntheticEvent`\<`Element`, `Event`\>
+#### Get Signature
 
-#### Returns
+> **get** **event**(): `null` \| `SyntheticEvent`\<`Element`, `Event`\>
+
+##### Returns
 
 `null` \| `SyntheticEvent`\<`Element`, `Event`\>
 
@@ -112,9 +116,11 @@ the event handled by the event handler.
 
 ### parentData
 
-> `get` **parentData**(): `undefined` \| `Record`\<`string`, `unknown`\>
+#### Get Signature
 
-#### Returns
+> **get** **parentData**(): `undefined` \| `Record`\<`string`, `unknown`\>
+
+##### Returns
 
 `undefined` \| `Record`\<`string`, `unknown`\>
 
@@ -124,9 +130,11 @@ the object to read and modify parent data (available for array elements).
 
 ### rootData
 
-> `get` **rootData**(): `Record`\<`string`, `unknown`\>
+#### Get Signature
 
-#### Returns
+> **get** **rootData**(): `Record`\<`string`, `unknown`\>
+
+##### Returns
 
 `Record`\<`string`, `unknown`\>
 
@@ -136,9 +144,11 @@ the object to read and modify root form data.
 
 ### value
 
-> `get` **value**(): `any`
+#### Get Signature
 
-#### Returns
+> **get** **value**(): `any`
+
+##### Returns
 
 `any`
 

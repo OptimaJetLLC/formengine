@@ -6,9 +6,11 @@ The form viewer settings interface.
 
 ### formData
 
-> `get` **formData**(): [`IFormData`](IFormData.md)
+#### Get Signature
 
-#### Returns
+> **get** **formData**(): [`IFormData`](IFormData.md)
+
+##### Returns
 
 [`IFormData`](IFormData.md)
 

@@ -129,9 +129,11 @@ If true, then validation is in progress.
 
 ### data
 
-> `get` **data**(): `Record`\<`string`, `unknown`\>
+#### Get Signature
 
-#### Returns
+> **get** **data**(): `Record`\<`string`, `unknown`\>
+
+##### Returns
 
 `Record`\<`string`, `unknown`\>
 
@@ -145,9 +147,11 @@ the Record with all the form data.
 
 ### errors
 
-> `get` **errors**(): `Record`\<`string`, `unknown`\>
+#### Get Signature
 
-#### Returns
+> **get** **errors**(): `Record`\<`string`, `unknown`\>
+
+##### Returns
 
 `Record`\<`string`, `unknown`\>
 
@@ -161,9 +165,11 @@ the Record with all validation error messages.
 
 ### events
 
-> `get` **events**(): [`ComponentDataEvents`](ComponentDataEvents.md)
+#### Get Signature
 
-#### Returns
+> **get** **events**(): [`ComponentDataEvents`](ComponentDataEvents.md)
+
+##### Returns
 
 [`ComponentDataEvents`](ComponentDataEvents.md)
 
@@ -173,9 +179,11 @@ the ComponentDataEvents object.
 
 ### fields
 
-> `get` **fields**(): `Map`\<`string`, [`Field`](../interfaces/Field.md)\>
+#### Get Signature
 
-#### Returns
+> **get** **fields**(): `Map`\<`string`, [`Field`](../interfaces/Field.md)\>
+
+##### Returns
 
 `Map`\<`string`, [`Field`](../interfaces/Field.md)\>
 
@@ -185,9 +193,11 @@ all the fields in the tree as a map. Starts from this node.
 
 ### fluentData
 
-> `get` **fluentData**(): `Record`\<`string`, `FluentVariable`\>
+#### Get Signature
 
-#### Returns
+> **get** **fluentData**(): `Record`\<`string`, `FluentVariable`\>
+
+##### Returns
 
 `Record`\<`string`, `FluentVariable`\>
 
@@ -202,11 +212,13 @@ Additionally, the keys of the returned object are converted to the snake case.
 
 ### hasErrors
 
-> `get` **hasErrors**(): `boolean`
+#### Get Signature
+
+> **get** **hasErrors**(): `boolean`
 
 true if the form contains errors, otherwise false.
 
-#### Returns
+##### Returns
 
 `boolean`
 
@@ -218,9 +230,11 @@ true if the form contains errors, otherwise false.
 
 ### isRoot
 
-> `get` **isRoot**(): `boolean`
+#### Get Signature
 
-#### Returns
+> **get** **isRoot**(): `boolean`
+
+##### Returns
 
 `boolean`
 
@@ -230,11 +244,13 @@ true if it has no parent [ComponentData](ComponentData.md), false otherwise.
 
 ### isValidating
 
-> `get` **isValidating**(): `boolean`
+#### Get Signature
+
+> **get** **isValidating**(): `boolean`
 
 If true, then validation is in progress.
 
-#### Returns
+##### Returns
 
 `boolean`
 
@@ -246,9 +262,11 @@ If true, then validation is in progress.
 
 ### key
 
-> `get` **key**(): `string`
+#### Get Signature
 
-#### Returns
+> **get** **key**(): `string`
+
+##### Returns
 
 `string`
 
@@ -258,9 +276,11 @@ the key of this node (same as the key of the ComponentStore).
 
 ### nearestIndex
 
-> `get` **nearestIndex**(): `undefined` \| `number`
+#### Get Signature
 
-#### Returns
+> **get** **nearestIndex**(): `undefined` \| `number`
+
+##### Returns
 
 `undefined` \| `number`
 
@@ -271,9 +291,11 @@ the index in the array if the component is in the component array
 
 ### parentData
 
-> `get` **parentData**(): `undefined` \| `Record`\<`string`, `unknown`\>
+#### Get Signature
 
-#### Returns
+> **get** **parentData**(): `undefined` \| `Record`\<`string`, `unknown`\>
+
+##### Returns
 
 `undefined` \| `Record`\<`string`, `unknown`\>
 
@@ -287,9 +309,11 @@ the object to read and modify parent data (available for array elements).
 
 ### root
 
-> `get` **root**(): [`ComponentData`](ComponentData.md)
+#### Get Signature
 
-#### Returns
+> **get** **root**(): [`ComponentData`](ComponentData.md)
+
+##### Returns
 
 [`ComponentData`](ComponentData.md)
 
@@ -299,9 +323,11 @@ the root of the component tree.
 
 ### rootData
 
-> `get` **rootData**(): `Record`\<`string`, `unknown`\>
+#### Get Signature
 
-#### Returns
+> **get** **rootData**(): `Record`\<`string`, `unknown`\>
+
+##### Returns
 
 `Record`\<`string`, `unknown`\>
 
@@ -315,9 +341,11 @@ the object to read and modify root form data.
 
 ### state
 
-> `get` **state**(): `Record`\<`string`, `unknown`\>
+#### Get Signature
 
-#### Returns
+> **get** **state**(): `Record`\<`string`, `unknown`\>
+
+##### Returns
 
 `Record`\<`string`, `unknown`\>
 

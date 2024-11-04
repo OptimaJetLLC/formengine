@@ -10,9 +10,11 @@ The context for working with data.
 
 ### dataRoot
 
-> `get` **dataRoot**(): [`ComponentData`](../classes/ComponentData.md)
+#### Get Signature
 
-#### Returns
+> **get** **dataRoot**(): [`ComponentData`](../classes/ComponentData.md)
+
+##### Returns
 
 [`ComponentData`](../classes/ComponentData.md)
 
@@ -26,9 +28,11 @@ the root component for the data in the component tree.
 
 ### initialData
 
-> `get` **initialData**(): `unknown`
+#### Get Signature
 
-#### Returns
+> **get** **initialData**(): `unknown`
+
+##### Returns
 
 `unknown`
 

@@ -79,9 +79,11 @@ Possible values for the property.
 
 ### localize
 
-> `get` **localize**(): `this`
+#### Get Signature
 
-#### Returns
+> **get** **localize**(): `this`
+
+##### Returns
 
 `this`
 
@@ -95,9 +97,11 @@ the component property that can be localized.
 
 ### notLocalize
 
-> `get` **notLocalize**(): `this`
+#### Get Signature
 
-#### Returns
+> **get** **notLocalize**(): `this`
+
+##### Returns
 
 `this`
 
@@ -111,11 +115,13 @@ the non-localizable component property.
 
 ### required
 
-> `get` **required**(): [`QuantifierBuilder`](QuantifierBuilder.md)\<`NonNullable`\<`T`\>\>
+#### Get Signature
+
+> **get** **required**(): [`QuantifierBuilder`](QuantifierBuilder.md)\<`NonNullable`\<`T`\>\>
 
 Marks the component property as required.
 
-#### Returns
+##### Returns
 
 [`QuantifierBuilder`](QuantifierBuilder.md)\<`NonNullable`\<`T`\>\>
 
@@ -129,9 +135,11 @@ the modified instance of the builder.
 
 ### valued
 
-> `get` **valued**(): `this`
+#### Get Signature
 
-#### Returns
+> **get** **valued**(): `this`
+
+##### Returns
 
 `this`
 

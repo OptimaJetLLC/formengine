@@ -26,11 +26,13 @@ the type of the event arguments.
 
 ### isSubscribed
 
-> `get` **isSubscribed**(): `boolean`
+#### Get Signature
+
+> **get** **isSubscribed**(): `boolean`
 
 Returns true if the object has subscribers, false otherwise.
 
-#### Returns
+##### Returns
 
 `boolean`
 
