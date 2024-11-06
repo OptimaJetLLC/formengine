@@ -800,6 +800,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/variables/cssSize",
+            "label": "cssSize"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/variables/date",
             "label": "date"
           },
@@ -1621,6 +1626,70 @@ const typedocSidebar = { items: [
     "link": {
       "type": "doc",
       "id": "api-reference/@react-form-builder/components-rich-text/index"
+    }
+  },
+  {
+    "type": "category",
+    "label": "@react-form-builder/components-google-map",
+    "items": [
+      {
+        "type": "category",
+        "label": "Interfaces",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-google-map/interfaces/GoogleMapProps",
+            "label": "GoogleMapProps"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Type Aliases",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-google-map/type-aliases/Address",
+            "label": "Address"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-google-map/type-aliases/MapMarker",
+            "label": "MapMarker"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Variables",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-google-map/variables/googleMapComponent",
+            "label": "googleMapComponent"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-google-map/variables/googleMapModel",
+            "label": "googleMapModel"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Functions",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-google-map/functions/toAddress",
+            "label": "toAddress"
+          }
+        ]
+      }
+    ],
+    "link": {
+      "type": "doc",
+      "id": "api-reference/@react-form-builder/components-google-map/index"
     }
   },
   {

@@ -82,7 +82,7 @@ export const tooltipType = createAnnotation('tooltipType').typed('string')
 /**
  * The annotation builder for a component property containing a CSS dimension.
  */
-const cssSize = createAnnotation('size').setup({calculable: false})
+export const cssSize = createAnnotation('size').setup({calculable: false})
 
 /**
  * The annotation builder for a component property containing a CSS color.

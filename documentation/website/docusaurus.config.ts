@@ -194,6 +194,7 @@ const config: Config = {
               '../../packages/viewer-bundle',
               '../../packages/views/fast-qr',
               '../../packages/views/rich-text',
+              '../../packages/views/google-map',
               '../../packages/views/rsuite',
             ],
             entryPointStrategy: 'packages',

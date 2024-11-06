@@ -1,4 +1,5 @@
 import {fastQrComponent} from '@react-form-builder/components-fast-qr'
+import {googleMapComponent} from '@react-form-builder/components-google-map'
 import {richTextComponent} from '@react-form-builder/components-rich-text'
 import {
   formEngineRsuiteCssLoader,
@@ -28,7 +29,7 @@ const initialData = {
   ['last name']: 'Bret',
 }
 
-const components = [...rSuiteComponents, fastQrComponent, richTextComponent]
+const components = [...rSuiteComponents, fastQrComponent, richTextComponent, googleMapComponent]
   .map(definer => definer.build())
 const view = new BuilderView(components)
   .withErrorMeta(rsErrorMessage.build())

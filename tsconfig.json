@@ -27,6 +27,7 @@
     "noUnusedLocals": true
   },
   "exclude": [
+    "examples",
     "node_modules",
     "sample-apps",
     "documentation",

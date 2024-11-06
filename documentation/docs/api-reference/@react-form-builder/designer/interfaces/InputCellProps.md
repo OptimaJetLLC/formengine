@@ -3071,6 +3071,14 @@ Additional style
 
 ***
 
+### type
+
+> **type**: `string`
+
+The input type.
+
+***
+
 ### typeof?
 
 > `optional` **typeof**: `string`

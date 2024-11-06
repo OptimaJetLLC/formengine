@@ -6,7 +6,7 @@ Calculable result.
 
 ### new CalculableResult()
 
-> **new CalculableResult**(`error`, `result`?, `exceptions`?): [`CalculableResult`](CalculableResult.md)
+> **new CalculableResult**(`error`, `result`?, `exceptions`?, `warning`?): [`CalculableResult`](CalculableResult.md)
 
 Constructor.
 
@@ -23,6 +23,10 @@ the result.
 • **exceptions?**: `Error`[]
 
 the exceptions.
+
+• **warning?**: `boolean`
+
+the warning.
 
 #### Returns
 
@@ -52,6 +56,14 @@ the exceptions.
 
 the result.
 
+***
+
+### warning?
+
+> `readonly` `optional` **warning**: `boolean`
+
+the warning.
+
 ## Methods
 
 ### error()
@@ -79,6 +91,26 @@ the new instance of CalculableResult class.
 > `static` **success**(`result`): [`CalculableResult`](CalculableResult.md)
 
 Creates a new instance of the CalculableResult class with a successful result.
+
+#### Parameters
+
+• **result**: `any`
+
+the calculable result.
+
+#### Returns
+
+[`CalculableResult`](CalculableResult.md)
+
+the new instance of CalculableResult class.
+
+***
+
+### warning()
+
+> `static` **warning**(`result`): [`CalculableResult`](CalculableResult.md)
+
+Creates a new instance of the CalculableResult class with a warning result.
 
 #### Parameters
 
