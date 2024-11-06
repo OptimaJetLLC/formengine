@@ -28,6 +28,8 @@ export interface ComputedPropertyEditorProps {
   property: EditableProperty
 }
 
+const buttonsStyle = {flex: 0}
+
 const RawComputedPropertyEditor = ({property}: ComputedPropertyEditorProps) => {
   const builderStore = useBuilderStore()
   const {t} = useTranslation()
@@ -37,6 +39,7 @@ const RawComputedPropertyEditor = ({property}: ComputedPropertyEditorProps) => {
   const Editor = editors[computeType]
   const toggleItems = getToggleItems(annotation, t)
   const handleClose = useCallback(() => builderStore.currentEditable = undefined, [builderStore])
+  const handleComputeTypeChange = useCallback((value) => setComputeType(value as ComponentPropertyComputeType), [])
 
   useEffect(() => setComputeType(initialComputeType), [initialComputeType])
 
@@ -44,8 +47,7 @@ const RawComputedPropertyEditor = ({property}: ComputedPropertyEditorProps) => {
     <Header>
       {`${t('bottomPanel.editProperty')}: ${componentKey}.${annotation.name}`}
       {toggleItems.length &&
-        <RadioButtons value={computeType} label={'Use'} items={toggleItems} style={{flex: 0}}
-                      onChange={value => setComputeType(value as ComponentPropertyComputeType)}/>
+        <RadioButtons value={computeType} label={'Use'} items={toggleItems} style={buttonsStyle} onChange={handleComputeTypeChange}/>
       }
     </Header>
     <Editor editableProperty={property} onClose={handleClose}/>
