@@ -1,6 +1,6 @@
-import {toLabeledValues} from '@react-form-builder/core'
+import {namedObserver, toLabeledValues} from '@react-form-builder/core'
 import {Check} from '@rsuite/icons'
-import {useEffect, useMemo, useState} from 'react'
+import {useCallback, useEffect, useMemo, useState} from 'react'
 import {IconButton} from 'rsuite'
 import {EditableTable, makeColumns, SelectCell} from '../../components/EditableTable'
 import LabeledProperty from '../../components/LabeledProperty'
@@ -17,44 +17,48 @@ const COLUMNS = makeColumns([
   {name: 'value'}
 ])
 
+const ConfirmButton = ({confirm}: { confirm: () => void }) => {
+  const getLabel = useTranslationPart('common')
+
+  return <IconButton icon={<Check/>} onClick={confirm} color="green" appearance={'primary'} size={'xs'}>
+    {getLabel('apply')}
+  </IconButton>
+}
+
 /**
  * The property editor for the HTML-attributes property type.
  * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const AttributesInput = (props: AnnotationEditorProps) => {
+const RawAttributesInput = (props: AnnotationEditorProps) => {
   const {store} = props.componentData
-  const getLabel = useTranslationPart('common')
+  const calculated = !!props.getComputeType()
   const initialState = useMemo(() => store.htmlAttributes ? [...store.htmlAttributes] : store.htmlAttributes,
     [store])
   const [value, setValue] = useState(initialState)
   const [changed, setChanged] = useState(false)
+
+  const handleChange = useCallback((value: any) => {
+    setValue(value)
+    setChanged(true)
+  }, [])
+
+  const confirm = useCallback(() => {
+    store.htmlAttributes = value
+    setChanged(false)
+  }, [store, value])
 
   useEffect(() => {
     setValue(initialState)
     setChanged(false)
   }, [initialState, store])
 
-  const handleChange = (value: any) => {
-    setValue(value)
-    setChanged(true)
-  }
-
-  const confirm = () => {
-    store.htmlAttributes = value
-    setChanged(false)
-  }
-
-  const confirmButton = (
-    <IconButton icon={<Check/>} onClick={confirm} color="green" appearance={'primary'} size={'xs'}>
-      {getLabel('apply')}
-    </IconButton>
-  )
-
   return <>
     <LabeledProperty {...props}>
-      {changed && confirmButton}
+      {changed && <ConfirmButton confirm={confirm}/>}
     </LabeledProperty>
-    <EditableTable data={value ?? []} onChange={handleChange} columns={COLUMNS}/>
+    {!calculated && <EditableTable data={value ?? []} onChange={handleChange} columns={COLUMNS}/>}
   </>
 }
+
+export const AttributesInput = namedObserver('RawAttributesInput', RawAttributesInput)
