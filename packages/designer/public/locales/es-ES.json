@@ -1,4 +1,141 @@
 {
+  "GoogleMap": {
+    "addMarkerOnSearch": {
+      "hint": "Si agregar un marcador en la búsqueda."
+    },
+    "allowChangingMarkers": {
+      "hint": "Si está marcada, el usuario puede cambiar los marcadores."
+    },
+    "allowMultipleMarkers": {
+      "hint": "Marcadores múltiples"
+    },
+    "apiKey": {
+      "hint": "Clave API de Google Maps. Guarde el formulario y actualice la página para aplicar los cambios.",
+      "name": "Clave API"
+    },
+    "collisionBehavior": {
+      "hint": "El comportamiento de colisión de los marcadores."
+    },
+    "colorScheme": {
+      "hint": "El esquema de color a utilizar."
+    },
+    "gestureHandling": {
+      "hint": "El manejo de gestos a utilizar."
+    },
+    "language": {
+      "hint": "El idioma a utilizar."
+    },
+    "latitude": {
+      "hint": "Latitud del punto central"
+    },
+    "longitude": {
+      "hint": "Longitud del punto central"
+    },
+    "mapControlPosition": {
+      "hint": "La posición del control del mapa."
+    },
+    "mapId": {
+      "hint": "El ID de mapa es un identificador asociado a un estilo o entidad de mapa específico.",
+      "name": "ID del MAPA"
+    },
+    "mapTypeId": {
+      "hint": "El tipo de mapa predeterminado a utilizar.",
+      "name": "Tipo de mapa"
+    },
+    "markerWindowTitle": {
+      "hint": "El título de la ventana del marcador.",
+      "name": "Título de la ventana del marcador"
+    },
+    "markers": {
+      "hint": "Coordenadas de los marcadores"
+    },
+    "region": {
+      "hint": "El código de región a utilizar."
+    },
+    "removeMarkerCaption": {
+      "hint": "El título en el botón de eliminación del marcador.",
+      "name": "Eliminar leyenda de marcador"
+    },
+    "searchPlaceholder": {
+      "hint": "Texto de marcador de posición para la entrada de búsqueda en el mapa.",
+      "name": "Marcador de posición de búsqueda"
+    },
+    "showMapControl": {
+      "hint": "Si mostrar el control de mapa."
+    },
+    "zoom": {
+      "hint": "Nivel de zoom"
+    }
+  },
+  "RichTextEditor": {
+    "modules": {
+      "hint": "Permite personalizar el comportamiento y funcionalidad del editor. Lea los documentos para obtener más información.",
+      "name": "Módulos"
+    },
+    "toolbarOptions": {
+      "hint": "Grupos de botones que se mostrarán en la barra de herramientas",
+      "name": "Opciones de la barra de herramientas"
+    }
+  },
+  "RsDatePicker": {
+    "format": {
+      "hint": "Formato de la fecha cuando se representa en la entrada",
+      "name": "Formato"
+    }
+  },
+  "RsTimePicker": {
+    "format": {
+      "hint": "Formato de la hora cuando se procesa en la entrada",
+      "name": "Formato"
+    }
+  },
+  "RsWizard": {
+    "activeIndex": {
+      "hint": "El índice de pasos activos",
+      "name": "Índice activo"
+    },
+    "finishButtonLabel": {
+      "hint": "La etiqueta del botón finalizar",
+      "name": "Etiqueta del botón de acabado"
+    },
+    "nextButtonLabel": {
+      "hint": "La etiqueta del botón siguiente",
+      "name": "Etiqueta del botón Siguiente"
+    },
+    "prevButtonLabel": {
+      "hint": "La etiqueta del botón anterior",
+      "name": "Etiqueta del botón anterior"
+    },
+    "showSteps": {
+      "hint": "Si es verdadero, se mostrarán los pasos",
+      "name": "Mostrar pasos"
+    },
+    "showStepsLabels": {
+      "hint": "Si es verdadero, se mostrarán las etiquetas de los pasos",
+      "name": "Mostrar etiquetas de pasos"
+    },
+    "steps": {
+      "hint": "Los pasos del asistente",
+      "name": "Pasos"
+    },
+    "stepsNavigation": {
+      "hint": "Determina qué pasos están disponibles para la navegación haciendo clic en",
+      "name": "Navegación de pasos"
+    },
+    "validateOnFinish": {
+      "hint": "Si es true, el asistente se validará antes de finalizar el asistente",
+      "name": "Validar al finalizar"
+    },
+    "validateOnNext": {
+      "hint": "Si es verdadero, el paso se validará antes de pasar al siguiente paso",
+      "name": "Validar en siguiente"
+    },
+    "verticalSteps": {
+      "hint": "Si es verdadero, los pasos se mostrarán verticalmente",
+      "name": "Escalones verticales"
+    },
+    "wizardHasNoSteps": "Para agregar los pasos del asistente, seleccione el componente y agregue los pasos en el panel propiedades."
+  },
   "actions": {
     "add": "Añadir",
     "addAction": "Añadir acción",
@@ -39,6 +176,10 @@
       "hint": "Caracteres que cuando se presionan dan como resultado un separador decimal. Cuando falte, separador decimal y '.\"se utilizan",
       "name": "Separadores decimales permitidos"
     },
+    "appearance": {
+      "hint": "Apariencia del selector de conjuntos",
+      "name": "Apariencia"
+    },
     "autoUpload": {
       "hint": "Carga automática de archivos después de seleccionarlos",
       "name": "Carga automática"
@@ -50,6 +191,10 @@
     "bodyFill": {
       "hint": "Área de contenido llena de contenedores",
       "name": "Relleno corporal"
+    },
+    "calendarDefaultDate": {
+      "hint": "Fecha y hora de presentación predeterminadas del panel de calendario",
+      "name": "Fecha predeterminada del calendario"
     },
     "checked": {
       "hint": "Si el valor está marcado",
@@ -87,6 +232,14 @@
       "hint": "Define el carácter decimal",
       "name": "Separador decimal"
     },
+    "defaultOpen": {
+      "hint": "Valor predeterminado de la propiedad open",
+      "name": "Abierto por defecto"
+    },
+    "defaultValue": {
+      "hint": "Valor predeterminado",
+      "name": "Valor predeterminado"
+    },
     "disableMultipart": {
       "hint": "Si es 'verdadero', deshabilite el uso de un formulario de varias partes para cargar archivos y, en su lugar, transmita el archivo. Algunas API (por ejemplo, Amazon S3) pueden esperar que el archivo se transmita en lugar de enviarse a través de un formulario",
       "name": "Deshabilitar multiparte"
@@ -106,6 +259,10 @@
     "draggable": {
       "hint": "Habilitado arrastrar y soltar para cargar",
       "name": "Arrastrable"
+    },
+    "editable": {
+      "hint": "Representado como entrada, el valor se puede ingresar a través del teclado",
+      "name": "Editable"
     },
     "errorConfig": {
       "show": "Espectáculo"
@@ -138,12 +295,24 @@
       "hint": "Atributos HTML en formato React (camelCase) ",
       "name": "Atributos HTML"
     },
+    "isoWeek": {
+      "hint": "Norma ISO 8601, cada semana calendario comienza el lunes y el domingo del séptimo día",
+      "name": "Semana Iso"
+    },
     "justifyContent": {
       "name": "Alineación"
     },
     "label": {
       "hint": "Configuración de la etiqueta",
       "name": "Etiqueta"
+    },
+    "limitEndYear": {
+      "hint": "Establezca el límite superior del año disponible en relación con la fecha de selección actual",
+      "name": "Año límite de finalización"
+    },
+    "limitStartYear": {
+      "hint": "Establezca el límite inferior del año disponible en relación con la fecha de selección actual",
+      "name": "Año límite de inicio"
     },
     "loading": {
       "hint": "Si el componente está en estado de carga",
@@ -167,6 +336,14 @@
     "objectPosition": {
       "name": "Posición"
     },
+    "oneTap": {
+      "hint": "Un clic para completar el valor de selección",
+      "name": "Un toque"
+    },
+    "open": {
+      "hint": "Si abre el componente",
+      "name": "Abierto"
+    },
     "passwordMask": {
       "hint": "Usar máscara de contraseña",
       "name": "Máscara de contraseña"
@@ -186,6 +363,26 @@
     "prefix": {
       "hint": "Agrega el carácter de prefijo antes del valor de entrada",
       "name": "Prefijo"
+    },
+    "preload": {
+      "hint": "Cargue los datos por adelantado, antes de abrir el menú desplegable",
+      "name": "Precarga"
+    },
+    "preventOverflow": {
+      "hint": "Evite el desbordamiento de elementos flotantes",
+      "name": "Evite el desbordamiento"
+    },
+    "readOnly": {
+      "hint": "Si es true, el componente será de solo lectura",
+      "name": "Solo lectura"
+    },
+    "showMeridian": {
+      "hint": "Mostrar horas en formato 12",
+      "name": "Mostrar meridiano"
+    },
+    "showWeekNumbers": {
+      "hint": "Si mostrar los números de la semana",
+      "name": "Mostrar números de la semana"
     },
     "size": {
       "hint": "El componente puede tener diferentes tamaños",
@@ -214,6 +411,10 @@
       "hint": "El texto que se muestra en el estado desmarcado",
       "name": "Texto sin marcar"
     },
+    "value": {
+      "hint": "Valor (controlado)",
+      "name": "Valor"
+    },
     "withCredentials": {
       "hint": "Si llevar cookies al cargar solicitudes",
       "name": "Con credenciales"
@@ -240,6 +441,11 @@
     "codePlaceholder": "// ingrese su código aquí",
     "compilationResult": "Resultado de la compilación:",
     "compile": "Compilar",
+    "generic": {
+      "json": {
+        "title": "Editar datos JSON para"
+      }
+    },
     "ok": "OK"
   },
   "common": {

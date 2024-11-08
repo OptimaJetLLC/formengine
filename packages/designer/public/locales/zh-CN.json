@@ -1,4 +1,141 @@
 {
+  "GoogleMap": {
+    "addMarkerOnSearch": {
+      "hint": "是否在搜索时添加标记。"
+    },
+    "allowChangingMarkers": {
+      "hint": "如果选中，用户可以更改标记。"
+    },
+    "allowMultipleMarkers": {
+      "hint": "多个标记"
+    },
+    "apiKey": {
+      "hint": "谷歌地图API密钥。 保存表单并刷新页面以应用更改。",
+      "name": "API密钥"
+    },
+    "collisionBehavior": {
+      "hint": "的标记碰撞行为。"
+    },
+    "colorScheme": {
+      "hint": "要使用的配色方案。"
+    },
+    "gestureHandling": {
+      "hint": "要使用的手势处理。"
+    },
+    "language": {
+      "hint": "要使用的语言。"
+    },
+    "latitude": {
+      "hint": "中心点的纬度"
+    },
+    "longitude": {
+      "hint": "中心点的经度"
+    },
+    "mapControlPosition": {
+      "hint": "地图控件的位置。"
+    },
+    "mapId": {
+      "hint": "地图ID是与特定地图样式或要素关联的标识符。",
+      "name": "地图ID"
+    },
+    "mapTypeId": {
+      "hint": "要使用的默认映射类型。",
+      "name": "地图类型"
+    },
+    "markerWindowTitle": {
+      "hint": "标记窗口的标题。",
+      "name": "标记窗口标题"
+    },
+    "markers": {
+      "hint": "标记的坐标"
+    },
+    "region": {
+      "hint": "要使用的区域代码。"
+    },
+    "removeMarkerCaption": {
+      "hint": "标记移除按钮上的标题。",
+      "name": "删除标记标题"
+    },
+    "searchPlaceholder": {
+      "hint": "地图搜索输入的占位符文本。",
+      "name": "搜索占位符"
+    },
+    "showMapControl": {
+      "hint": "是否显示地图控件。"
+    },
+    "zoom": {
+      "hint": "缩放级别"
+    }
+  },
+  "RichTextEditor": {
+    "modules": {
+      "hint": "允许自定义编辑器的行为和功能。 阅读文档以获取更多信息。",
+      "name": "模块"
+    },
+    "toolbarOptions": {
+      "hint": "要显示在工具栏上的按钮组",
+      "name": "工具栏选项"
+    }
+  },
+  "RsDatePicker": {
+    "format": {
+      "hint": "在输入中呈现日期的格式",
+      "name": "格式"
+    }
+  },
+  "RsTimePicker": {
+    "format": {
+      "hint": "在输入中呈现的时间格式",
+      "name": "格式"
+    }
+  },
+  "RsWizard": {
+    "activeIndex": {
+      "hint": "活动步骤索引",
+      "name": "活动索引"
+    },
+    "finishButtonLabel": {
+      "hint": "完成按钮标签",
+      "name": "完成按钮标签"
+    },
+    "nextButtonLabel": {
+      "hint": "下一个按钮标签",
+      "name": "下一个按钮标签"
+    },
+    "prevButtonLabel": {
+      "hint": "上一个按钮标签",
+      "name": "上一个按钮标签"
+    },
+    "showSteps": {
+      "hint": "如果为true，将显示步骤",
+      "name": "显示步骤"
+    },
+    "showStepsLabels": {
+      "hint": "如果为true，将显示步骤标签",
+      "name": "显示步骤标签"
+    },
+    "steps": {
+      "hint": "向导步骤",
+      "name": "步骤"
+    },
+    "stepsNavigation": {
+      "hint": "通过单击确定可用于导航的步骤",
+      "name": "步骤导航"
+    },
+    "validateOnFinish": {
+      "hint": "如果为true，则在完成向导之前将验证向导",
+      "name": "完成后验证"
+    },
+    "validateOnNext": {
+      "hint": "如果为true，则在转到下一步之前将验证该步骤",
+      "name": "下次验证"
+    },
+    "verticalSteps": {
+      "hint": "如果为true，步骤将垂直显示",
+      "name": "垂直台阶"
+    },
+    "wizardHasNoSteps": "要添加向导步骤，请选择组件并在\"属性\"面板中添加步骤。"
+  },
   "actions": {
     "add": "添加",
     "addAction": "添加操作",
@@ -39,6 +176,10 @@
       "hint": "按下时产生小数点分隔符的字符。 缺失时，小数点分隔符和'。'被使用",
       "name": "允许的小数分隔符"
     },
+    "appearance": {
+      "hint": "设置选择器外观",
+      "name": "外观"
+    },
     "autoUpload": {
       "hint": "选择文件后自动上传",
       "name": "自动上传"
@@ -50,6 +191,10 @@
     "bodyFill": {
       "hint": "填充容器的内容区域",
       "name": "身体填充"
+    },
+    "calendarDefaultDate": {
+      "hint": "日历面板默认演示日期和时间",
+      "name": "日历默认日期"
     },
     "checked": {
       "hint": "是否检查值",
@@ -87,6 +232,14 @@
       "hint": "定义十进制字符",
       "name": "小数分隔符"
     },
+    "defaultOpen": {
+      "hint": "Open属性的默认值",
+      "name": "默认打开"
+    },
+    "defaultValue": {
+      "hint": "默认值",
+      "name": "默认值"
+    },
     "disableMultipart": {
       "hint": "如果'true'，则禁用使用多部分表单进行文件上传，而是流式传输文件。 某些Api（例如Amazon S3）可能期望将文件流式传输，而不是通过表单发送",
       "name": "禁用多部分"
@@ -106,6 +259,10 @@
     "draggable": {
       "hint": "启用拖放以上载",
       "name": "可拖动"
+    },
+    "editable": {
+      "hint": "呈现为输入，该值可以通过键盘输入",
+      "name": "可编辑"
     },
     "errorConfig": {
       "show": "展览"
@@ -138,12 +295,24 @@
       "hint": "React(camelCase)格式的HTML属性",
       "name": "HTML属性"
     },
+    "isoWeek": {
+      "hint": "ISO8601标准，每个日历周从第七天的周一和周日开始",
+      "name": "Iso周"
+    },
     "justifyContent": {
       "name": "对齐方式"
     },
     "label": {
       "hint": "设置标签",
       "name": "标签"
+    },
+    "limitEndYear": {
+      "hint": "设置可用年份相对于当前选择日期的上限",
+      "name": "年底限额"
+    },
+    "limitStartYear": {
+      "hint": "设置可用年份相对于当前选择日期的下限",
+      "name": "限制开始年份"
     },
     "loading": {
       "hint": "组件是否处于加载状态",
@@ -167,6 +336,14 @@
     "objectPosition": {
       "name": "职位"
     },
+    "oneTap": {
+      "hint": "一键完成选择值",
+      "name": "一个水龙头"
+    },
+    "open": {
+      "hint": "是否打开组件",
+      "name": "打开"
+    },
     "passwordMask": {
       "hint": "使用密码掩码",
       "name": "密码掩码"
@@ -186,6 +363,26 @@
     "prefix": {
       "hint": "在输入值之前添加前缀字符",
       "name": "前缀"
+    },
+    "preload": {
+      "hint": "在打开下拉列表之前，提前上传数据",
+      "name": "预紧力"
+    },
+    "preventOverflow": {
+      "hint": "防止浮动元素溢出",
+      "name": "防止溢出"
+    },
+    "readOnly": {
+      "hint": "如果为true，则该组件将为只读",
+      "name": "只读"
+    },
+    "showMeridian": {
+      "hint": "以12格式显示小时数",
+      "name": "显示子午线"
+    },
+    "showWeekNumbers": {
+      "hint": "是否显示周数",
+      "name": "显示周数"
     },
     "size": {
       "hint": "组件可以有不同的尺寸",
@@ -214,6 +411,10 @@
       "hint": "在未选中状态下显示的文本",
       "name": "未选中的文本"
     },
+    "value": {
+      "hint": "值（受控）",
+      "name": "价值"
+    },
     "withCredentials": {
       "hint": "上传请求时是否携带cookie",
       "name": "有证件"
@@ -240,6 +441,11 @@
     "codePlaceholder": "//在这里输入你的代码",
     "compilationResult": "编译结果:",
     "compile": "编译",
+    "generic": {
+      "json": {
+        "title": "编辑JSON数据"
+      }
+    },
     "ok": "好的"
   },
   "common": {
