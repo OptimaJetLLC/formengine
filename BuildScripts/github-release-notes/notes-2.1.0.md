@@ -1,5 +1,5 @@
-- Added the Map component and its [usage guide](/enabling-google-maps-autocomplete).
-- Added a [sample application](/usage-with-nextjs) for Next.js.
+- Added the Map component and its [usage guide](https://formengine.io/documentation/enabling-google-maps-autocomplete).
+- Added a [sample application](https://formengine.io/documentation/usage-with-nextjs) for Next.js.
 - Added the option to select type attribute for RsInput component.
 
 ### Fixed bugs
