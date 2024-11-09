@@ -13,6 +13,8 @@ export const getFluentData = (data: Record<string, unknown>) => {
   for (const [key, value] of Object.entries(data)) {
     if (isFluentVariable(value)) {
       fluentData[getFluentCompatibleId(key)] = value
+    } else if (typeof value === 'boolean') {
+      fluentData[getFluentCompatibleId(key)] = value ? 'true' : 'false'
     }
   }
   return fluentData
