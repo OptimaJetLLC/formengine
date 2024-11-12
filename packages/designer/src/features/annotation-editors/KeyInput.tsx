@@ -2,7 +2,7 @@ import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faCheck from '@fortawesome/free-solid-svg-icons/faCheck.js'
 import {namedObserver, useStore} from '@react-form-builder/core'
 import type {KeyboardEvent} from 'react'
-import {useEffect, useState} from 'react'
+import {useCallback, useEffect, useMemo, useState} from 'react'
 import {Input, InputGroup} from 'rsuite'
 import {FaIcon} from '../components/Icons'
 import LabeledProperty from '../components/LabeledProperty'
@@ -10,14 +10,24 @@ import {useTranslationPart} from '../localization/hooks'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 import {Hinted} from './Hinted'
 
+interface KeyInputProps extends AnnotationEditorProps {
+  id?: string
+}
+
 /**
  * The property editor for the key property type.
  * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-const RawKeyInput = (props: AnnotationEditorProps) => {
+const RawKeyInput = (props: AnnotationEditorProps) => (
+  <LabeledProperty {...props}>
+    <KeyInputGroup {...props}/>
+  </LabeledProperty>
+)
+
+const KeyInputGroup = (props: KeyInputProps) => {
   const viewerStore = useStore()
-  const {value, onChange, showError} = props
+  const {id, value, onChange, showError} = props
   const [canApply, setCanApply] = useState(false)
   const [valueToApply, setValueToApply] = useState(value)
   const getLabel = useTranslationPart('propertiesEditor')
@@ -27,11 +37,11 @@ const RawKeyInput = (props: AnnotationEditorProps) => {
     setCanApply(false)
   }, [value])
 
-  const validateUniqueKey = (key: string) =>
+  const validateUniqueKey = useCallback((key: string) =>
     0 === viewerStore.reduceScreen((acc: number, cd) => cd.key === key ? acc + 1 : acc, 0)
-    && key.length > 0
+    && key.length > 0, [viewerStore])
 
-  const inputOnChange = (inputValue: string) => {
+  const inputOnChange = useCallback((inputValue: string) => {
     const isValid = validateUniqueKey(inputValue)
     let error = undefined
 
@@ -43,33 +53,33 @@ const RawKeyInput = (props: AnnotationEditorProps) => {
     showError?.(error)
     setCanApply(isValid)
     setValueToApply(inputValue)
-  }
+  }, [value, getLabel, showError, validateUniqueKey])
 
-  const buttonOnClick = () => {
+  const buttonOnClick = useCallback(() => {
     if (canApply) {
       onChange(valueToApply)
       setCanApply(false)
     }
-  }
+  }, [canApply, onChange, valueToApply])
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = useCallback((event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && canApply) {
       buttonOnClick()
     }
-  }
+  }, [canApply, buttonOnClick])
+
+  const applyKeyLabel = useMemo(() => getLabel('applyKey'), [getLabel])
 
   return (
-    <LabeledProperty {...props}>
-      <InputGroup size={'xs'}>
-        <Input value={valueToApply} onChange={inputOnChange} onKeyDown={handleKeyDown}/>
-        <Hinted hint={getLabel('applyKey')}>
-          <InputGroup.Button disabled={!canApply} onClick={buttonOnClick}>
-            <FaIcon icon={faCheck as unknown as IconDefinition}
-                    color={canApply ? 'green' : undefined}/>
-          </InputGroup.Button>
-        </Hinted>
-      </InputGroup>
-    </LabeledProperty>
+    <InputGroup size={'xs'}>
+      <Input id={id} value={valueToApply} onChange={inputOnChange} onKeyDown={handleKeyDown}/>
+      <Hinted hint={applyKeyLabel}>
+        <InputGroup.Button disabled={!canApply} onClick={buttonOnClick}>
+          <FaIcon icon={faCheck as unknown as IconDefinition}
+                  color={canApply ? 'green' : undefined}/>
+        </InputGroup.Button>
+      </Hinted>
+    </InputGroup>
   )
 }
 
