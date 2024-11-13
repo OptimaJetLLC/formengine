@@ -18,6 +18,33 @@ components. The data in the `Value` property is an array of objects. Each object
 Let's move on to a Repeater use case where we show how data is handled inside Repeater and how actions, validation, localization and
 calculated fields are handled.
 
+## Repeater actions
+
+You can use built-in actions to manage rows in Repeater. The following actions are available:
+
+- `addRow`: adds a new row to Repeater.
+- `removeRow`: removes the last row from Repeater.
+
+This guide does not use these actions to give you an understanding of how to manipulate data in Repeater.
+
+### addRow action
+
+Use this action to add a new row to Repeater. The action has the following optional parameters:
+
+- `dataKey`: Repeater's data key in the form data. If the parameter is not specified, the action will try to find a Repeater that is
+  parent to this component.
+- `rowData`: data string (JSON) for the new row. If the parameter is not specified, an empty object will be used as data for the new row.
+- `index`: index of the new row. If the parameter is not specified, the new row will be added to the end of Repeater.
+- `max`: maximum number of rows in Repeater. If the parameter is not specified, the maximum number of rows is not limited.
+
+### removeRow action
+
+- `dataKey`: Repeater's data key in the form data. If the parameter is not specified, the action will try to find a Repeater that is
+  parent to this component.
+- `index`: index of the row to be deleted. If no parameter is specified, the action will use the index from the parameters,
+  see [e.index](/api-reference/@react-form-builder/core/classes/ActionEventArgs#index) or `-1` (last row).
+- `min`: minimum number of rows in Repeater. If the parameter is not specified, the minimum number of rows is not limited.
+
 ## Repeater example
 
 Take a look at the form below, JSON below (you can upload this form to our [demo](https://demo.formengine.io/) to see how it works):

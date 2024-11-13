@@ -358,8 +358,20 @@ export class RepeaterField implements Field, IComponentDataProvider {
   }
 }
 
-class RepeaterFormContext implements IDataContext {
+/**
+ * The context for the RepeaterField. **Internal use only.**
+ */
+export class RepeaterFormContext implements IDataContext {
 
+  /**
+   * Creates the context for the RepeaterField.
+   * @param repeaterField the RepeaterField instance.
+   * @param store the form viewer settings.
+   * @param getValidationRules the function to get the validation rules.
+   * @param parentContext the parent data context.
+   * @param root the root component data.
+   * @param index the index of the current item in the repeater.
+   */
   constructor(readonly repeaterField: RepeaterField,
               readonly store: IStore,
               readonly getValidationRules: (type: SchemaType) => FormViewerValidationRules,
@@ -368,12 +380,18 @@ class RepeaterFormContext implements IDataContext {
               readonly index: number) {
   }
 
+  /**
+   * @inheritDoc
+   */
   get initialData() {
     const initialData = this.repeaterField.initialData
     if (Array.isArray(initialData)) return initialData[this.index]
     return undefined
   }
 
+  /**
+   * @inheritDoc
+   */
   calculateValue(component: ComponentStore, key: string) {
     return calculateProperty(
       component,
@@ -383,10 +401,16 @@ class RepeaterFormContext implements IDataContext {
     )
   }
 
+  /**
+   * @inheritDoc
+   */
   get dataRoot(): ComponentData {
     return this.root
   }
 
+  /**
+   * @inheritDoc
+   */
   createDataValidator(componentStore: ComponentStore, valueType: keyof SchemaTypeMap, onError: Setter<string | undefined>) {
     const validationRules = this.getValidationRules(valueType)
     return DataValidator.create(
