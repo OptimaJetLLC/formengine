@@ -1,4 +1,4 @@
-import {boolean, define, string} from '@react-form-builder/core'
+import {boolean, define, oneOf, string} from '@react-form-builder/core'
 import {EyeClose as EyeSlashIcon, Visible as EyeIcon} from '@rsuite/icons'
 import {useState} from 'react'
 import type {InputProps} from 'rsuite'
@@ -9,9 +9,10 @@ import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
 interface RsInputProps extends InputProps {
   label: string
   passwordMask?: boolean
+  type?: 'text' | 'password' | 'email' | 'number' | 'search' | 'tel' | 'url' | 'time'
 }
 
-const RsInput = ({style, className, label, passwordMask, value, ...props}: RsInputProps) => {
+const RsInput = ({style, className, label, passwordMask, type, value, ...props}: RsInputProps) => {
   const [visible, setVisible] = useState(false)
 
   const input = passwordMask
@@ -21,7 +22,7 @@ const RsInput = ({style, className, label, passwordMask, value, ...props}: RsInp
         {visible ? <EyeIcon/> : <EyeSlashIcon/>}
       </InputGroup.Button>
     </InputGroup>
-    : <Input value={value ?? ''} {...props}/>
+    : <Input type={type} value={value ?? ''} {...props}/>
 
   return <RsLabeledInput style={style} className={className}>
     <RsRtlLabel>{label}</RsRtlLabel>
@@ -33,6 +34,7 @@ export const rsInput = define(RsInput, 'RsInput')
   .props({
     label: string.default('Input').hinted('Input label'),
     ...inputProps,
+    type: oneOf('text', 'password', 'email', 'number', 'search', 'tel', 'url', 'time').default('text'),
     value: string.valued,
     passwordMask: boolean.default(false)
   })

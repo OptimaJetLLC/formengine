@@ -72,12 +72,14 @@ viewerStore the form viewer settings.
 
 ### errors
 
-> `get` **errors**(): `Record`\<`string`, `unknown`\>
+#### Get Signature
+
+> **get** **errors**(): `Record`\<`string`, `unknown`\>
 
 Contains a field validation errors if the field provides multiple errors (i.e. field is template).
 Contains an array of field validation errors if the field contains an array of components.
 
-#### Returns
+##### Returns
 
 `Record`\<`string`, `unknown`\>
 
@@ -92,11 +94,13 @@ Contains an array of field validation errors if the field contains an array of c
 
 ### fieldType
 
-> `get` **fieldType**(): [`FieldType`](../type-aliases/FieldType.md)
+#### Get Signature
+
+> **get** **fieldType**(): [`FieldType`](../type-aliases/FieldType.md)
 
 The field type.
 
-#### Returns
+##### Returns
 
 [`FieldType`](../type-aliases/FieldType.md)
 
@@ -110,9 +114,11 @@ The field type.
 
 ### form
 
-> `get` **form**(): [`ComponentData`](ComponentData.md)
+#### Get Signature
 
-#### Returns
+> **get** **form**(): [`ComponentData`](ComponentData.md)
+
+##### Returns
 
 [`ComponentData`](ComponentData.md)
 
@@ -122,11 +128,13 @@ the form for the field.
 
 ### storeDataInParentForm
 
-> `get` **storeDataInParentForm**(): `any`
+#### Get Signature
+
+> **get** **storeDataInParentForm**(): `any`
 
 Flag, false if nested form data show as nested object, true otherwise.
 
-#### Returns
+##### Returns
 
 `any`
 
@@ -140,11 +148,13 @@ Flag, false if nested form data show as nested object, true otherwise.
 
 ### value
 
-> `get` **value**(): `unknown`
+#### Get Signature
+
+> **get** **value**(): `unknown`
 
 Value of the field.
 
-#### Returns
+##### Returns
 
 `unknown`
 

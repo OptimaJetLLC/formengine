@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/docs",
-  "version": "1.14.1",
+  "version": "2.1.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -33,7 +33,7 @@
     "@docusaurus/types": "^3.5.2",
     "docusaurus-plugin-typedoc": "^1.0.5",
     "typedoc": "^0.26.3",
-    "typedoc-plugin-markdown": "^4.2.9",
+    "typedoc-plugin-markdown": "^4.2.10",
     "typescript": "~5.2.2"
   },
   "browserslist": {

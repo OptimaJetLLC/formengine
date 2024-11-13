@@ -1,4 +1,141 @@
 {
+  "GoogleMap": {
+    "addMarkerOnSearch": {
+      "hint": "Gibt an, ob bei der Suche eine Markierung hinzugefügt werden soll."
+    },
+    "allowChangingMarkers": {
+      "hint": "Wenn diese Option aktiviert ist, kann der Benutzer die Markierungen ändern."
+    },
+    "allowMultipleMarkers": {
+      "hint": "Mehrere Marker"
+    },
+    "apiKey": {
+      "hint": "Google Maps-API-Schlüssel. Speichern Sie das Formular und aktualisieren Sie die Seite, um die Änderungen zu übernehmen.",
+      "name": "API-Schlüssel"
+    },
+    "collisionBehavior": {
+      "hint": "Das Kollisionsverhalten der Marker."
+    },
+    "colorScheme": {
+      "hint": "Das zu verwendende Farbschema."
+    },
+    "gestureHandling": {
+      "hint": "Die zu verwendende Gestenbehandlung."
+    },
+    "language": {
+      "hint": "Die zu verwendende Sprache."
+    },
+    "latitude": {
+      "hint": "Breitengrad des Mittelpunkts"
+    },
+    "longitude": {
+      "hint": "Längengrad des Mittelpunkts"
+    },
+    "mapControlPosition": {
+      "hint": "Die Position des Kartensteuerelements."
+    },
+    "mapId": {
+      "hint": "Die Karten-ID ist eine Kennung, die einem bestimmten Kartenstil oder Feature zugeordnet ist.",
+      "name": "Karten-ID"
+    },
+    "mapTypeId": {
+      "hint": "Der zu verwendende Standardkartentyp.",
+      "name": "Kartentyp"
+    },
+    "markerWindowTitle": {
+      "hint": "Der Titel des Markierungsfensters.",
+      "name": "Titel des Markierungsfensters"
+    },
+    "markers": {
+      "hint": "Koordinaten der Marker"
+    },
+    "region": {
+      "hint": "Der zu verwendende Regionalcode."
+    },
+    "removeMarkerCaption": {
+      "hint": "Die Beschriftung auf der Schaltfläche zum Entfernen von Markern.",
+      "name": "Markierungsbeschriftung entfernen"
+    },
+    "searchPlaceholder": {
+      "hint": "Platzhaltertext für die Kartensucheingabe.",
+      "name": "Platzhalter suchen"
+    },
+    "showMapControl": {
+      "hint": "Gibt an, ob das Kartensteuerelement angezeigt werden soll."
+    },
+    "zoom": {
+      "hint": "Zoomstufe"
+    }
+  },
+  "RichTextEditor": {
+    "modules": {
+      "hint": "Ermöglicht die Anpassung des Verhaltens und der Funktionalität des Editors. Lesen Sie die Dokumente für weitere Informationen.",
+      "name": "Funktionsbausteine"
+    },
+    "toolbarOptions": {
+      "hint": "Gruppen von Schaltflächen, die in der Symbolleiste angezeigt werden sollen",
+      "name": "Symbolleistenoptionen"
+    }
+  },
+  "RsDatePicker": {
+    "format": {
+      "hint": "Format des Datums beim Rendern in der Eingabe",
+      "name": "Formatierung"
+    }
+  },
+  "RsTimePicker": {
+    "format": {
+      "hint": "Format der Uhrzeit beim Rendern in der Eingabe",
+      "name": "Formatierung"
+    }
+  },
+  "RsWizard": {
+    "activeIndex": {
+      "hint": "Der Active Step Index",
+      "name": "Aktiver Index"
+    },
+    "finishButtonLabel": {
+      "hint": "Die Beschriftung der Schaltfläche Fertig stellen",
+      "name": "Beschriftung der Schaltfläche Fertig stellen"
+    },
+    "nextButtonLabel": {
+      "hint": "Die Beschriftung der nächsten Schaltfläche",
+      "name": "Beschriftung der nächsten Schaltfläche"
+    },
+    "prevButtonLabel": {
+      "hint": "Die vorherige Tastenbeschriftung",
+      "name": "Vorherige Tastenbeschriftung"
+    },
+    "showSteps": {
+      "hint": "Wenn wahr, werden die Schritte angezeigt",
+      "name": "Schritte anzeigen"
+    },
+    "showStepsLabels": {
+      "hint": "Wenn true, werden die Beschriftungen der Schritte angezeigt",
+      "name": "Beschriftungen für Schritte anzeigen"
+    },
+    "steps": {
+      "hint": "Die Schritte des Assistenten",
+      "name": "Folgendermaßen"
+    },
+    "stepsNavigation": {
+      "hint": "Bestimmt, welche Schritte für die Navigation verfügbar sind, indem Sie auf klicken",
+      "name": "Schritte navigation"
+    },
+    "validateOnFinish": {
+      "hint": "Wenn true, wird der Assistent vor Abschluss des Assistenten überprüft",
+      "name": "Bei Abschluss validieren"
+    },
+    "validateOnNext": {
+      "hint": "Wenn true, wird der Schritt validiert, bevor mit dem nächsten Schritt fortgefahren wird",
+      "name": "Beim nächsten validieren"
+    },
+    "verticalSteps": {
+      "hint": "Wenn true, werden die Schritte vertikal angezeigt",
+      "name": "Vertikale Stufen"
+    },
+    "wizardHasNoSteps": "Um die Assistentenschritte hinzuzufügen, wählen Sie die Komponente aus und fügen Sie die Schritte im Eigenschaftenfenster hinzu."
+  },
   "actions": {
     "add": "Hinzufügen",
     "addAction": "Aktion hinzufügen",
@@ -39,6 +176,10 @@
       "hint": "Zeichen, die beim Drücken zu einem Dezimaltrennzeichen führen. Wenn fehlt, Dezimaltrennzeichen und '.' werden verwendet",
       "name": "Zulässige Dezimaltrennzeichen"
     },
+    "appearance": {
+      "hint": "Aussehen der Auswahl festlegen",
+      "name": "Aussehen"
+    },
     "autoUpload": {
       "hint": "Dateien nach Auswahl automatisch hochladen",
       "name": "Automatischer Upload"
@@ -50,6 +191,10 @@
     "bodyFill": {
       "hint": "Inhaltsbereich mit Containern gefüllt",
       "name": "Körperfüllung"
+    },
+    "calendarDefaultDate": {
+      "hint": "Datum und Uhrzeit der Standardpräsentation im Kalenderfenster",
+      "name": "Kalender-Standarddatum"
     },
     "checked": {
       "hint": "Ob der Wert überprüft wird",
@@ -87,6 +232,14 @@
       "hint": "Definiert das Dezimalzeichen",
       "name": "Dezimaltrennzeichen"
     },
+    "defaultOpen": {
+      "hint": "Standardwert der Eigenschaft öffnen",
+      "name": "Standardmäßig geöffnet"
+    },
+    "defaultValue": {
+      "hint": "Standardwert",
+      "name": "Standardwert"
+    },
     "disableMultipart": {
       "hint": "Wenn 'true', deaktivieren Sie die Verwendung eines mehrteiligen Formulars zum Hochladen von Dateien und streamen Sie stattdessen die Datei. Einige APIs (z. B. Amazon S3) erwarten möglicherweise, dass die Datei gestreamt und nicht über ein Formular gesendet wird",
       "name": "Multipart deaktivieren"
@@ -106,6 +259,10 @@
     "draggable": {
       "hint": "Drag & Drop zum Hochladen aktiviert",
       "name": "Ziehbar"
+    },
+    "editable": {
+      "hint": "Als Eingabe gerendert, kann der Wert über die Tastatur eingegeben werden",
+      "name": "Bearbeitbaren"
     },
     "errorConfig": {
       "show": "Karte"
@@ -138,12 +295,24 @@
       "hint": "HTML-Attribute im React (camelCase) -Format",
       "name": "HTML-Attribute"
     },
+    "isoWeek": {
+      "hint": "ISO 8601 Standard, jede Kalenderwoche beginnt am Montag und Sonntag am siebten Tag",
+      "name": "Iso-Woche"
+    },
     "justifyContent": {
       "name": "Ausrichtung"
     },
     "label": {
       "hint": "Beschriftung einstellen",
       "name": "Etikett"
+    },
+    "limitEndYear": {
+      "hint": "Legen Sie die Obergrenze des verfügbaren Jahres relativ zum aktuellen Auswahldatum fest",
+      "name": "Limit Ende Jahr"
+    },
+    "limitStartYear": {
+      "hint": "Legen Sie die Untergrenze des verfügbaren Jahres relativ zum aktuellen Auswahldatum fest",
+      "name": "Anfangsjahr begrenzen"
     },
     "loading": {
       "hint": "Ob sich die Komponente im Ladezustand befindet",
@@ -167,6 +336,14 @@
     "objectPosition": {
       "name": "Position"
     },
+    "oneTap": {
+      "hint": "Ein Klick, um den Auswahlwert zu vervollständigen",
+      "name": "Ein Fingertipp"
+    },
+    "open": {
+      "hint": "Ob die Komponente geöffnet wird",
+      "name": "Öffnen"
+    },
     "passwordMask": {
       "hint": "Passwortmaske verwenden",
       "name": "Passwortmaske"
@@ -186,6 +363,26 @@
     "prefix": {
       "hint": "Fügt das Präfixzeichen vor dem Eingabewert hinzu",
       "name": "Präfix"
+    },
+    "preload": {
+      "hint": "Laden Sie Daten im Voraus hoch, bevor Sie das Dropdown-Menü öffnen",
+      "name": "Vorspannung"
+    },
+    "preventOverflow": {
+      "hint": "Überlauf von schwimmenden Elementen verhindern",
+      "name": "Überlauf verhindern"
+    },
+    "readOnly": {
+      "hint": "Wenn true, ist die Komponente schreibgeschützt",
+      "name": "Schreibgesch"
+    },
+    "showMeridian": {
+      "hint": "Stunden im 12-Format anzeigen",
+      "name": "Meridian anzeigen"
+    },
+    "showWeekNumbers": {
+      "hint": "Gibt an, ob Wochennummern angezeigt werden sollen",
+      "name": "Wochennummern anzeigen"
     },
     "size": {
       "hint": "Komponente kann verschiedene Größen haben",
@@ -214,6 +411,10 @@
       "hint": "Der Text, der im ungeprüften Zustand angezeigt wird",
       "name": "Ungeprüfter Text"
     },
+    "value": {
+      "hint": "Wert (kontrolliert)",
+      "name": "Wert"
+    },
     "withCredentials": {
       "hint": "Ob beim Hochladen von Anfragen Cookies mitgeführt werden sollen",
       "name": "Mit Anmeldeinformationen"
@@ -240,6 +441,11 @@
     "codePlaceholder": "// geben Sie hier Ihren Code ein",
     "compilationResult": "Kompilierungsergebnis:",
     "compile": "Kompilieren",
+    "generic": {
+      "json": {
+        "title": "Bearbeiten Sie JSON-Daten für"
+      }
+    },
     "ok": "Okay"
   },
   "common": {

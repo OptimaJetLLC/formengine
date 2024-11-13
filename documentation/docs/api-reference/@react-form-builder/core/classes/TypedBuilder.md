@@ -60,9 +60,11 @@ Options for building an annotation.
 
 ### localize
 
-> `get` **localize**(): `this`
+#### Get Signature
 
-#### Returns
+> **get** **localize**(): `this`
+
+##### Returns
 
 `this`
 
@@ -76,9 +78,11 @@ the component property that can be localized.
 
 ### notLocalize
 
-> `get` **notLocalize**(): `this`
+#### Get Signature
 
-#### Returns
+> **get** **notLocalize**(): `this`
+
+##### Returns
 
 `this`
 
@@ -92,11 +96,13 @@ the non-localizable component property.
 
 ### required
 
-> `get` **required**(): [`TypedBuilder`](TypedBuilder.md)\<`NonNullable`\<`T`\>\>
+#### Get Signature
+
+> **get** **required**(): [`TypedBuilder`](TypedBuilder.md)\<`NonNullable`\<`T`\>\>
 
 Marks the component property as required.
 
-#### Returns
+##### Returns
 
 [`TypedBuilder`](TypedBuilder.md)\<`NonNullable`\<`T`\>\>
 
@@ -106,9 +112,11 @@ the modified instance of the builder.
 
 ### valued
 
-> `get` **valued**(): `this`
+#### Get Signature
 
-#### Returns
+> **get** **valued**(): `this`
+
+##### Returns
 
 `this`
 

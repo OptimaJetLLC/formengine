@@ -80,9 +80,11 @@ the name of the language, for example 'English'.
 
 ### fullCode
 
-> `get` **fullCode**(): `string`
+#### Get Signature
 
-#### Returns
+> **get** **fullCode**(): `string`
+
+##### Returns
 
 `string`
 

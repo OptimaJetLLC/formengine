@@ -84,9 +84,11 @@ Validates the data in the form.
 
 ### data
 
-> `get` **data**(): `Record`\<`string`, `unknown`\>
+#### Get Signature
 
-#### Returns
+> **get** **data**(): `Record`\<`string`, `unknown`\>
+
+##### Returns
 
 `Record`\<`string`, `unknown`\>
 
@@ -96,9 +98,11 @@ the Record with all the form data.
 
 ### errors
 
-> `get` **errors**(): `Record`\<`string`, `unknown`\>
+#### Get Signature
 
-#### Returns
+> **get** **errors**(): `Record`\<`string`, `unknown`\>
+
+##### Returns
 
 `Record`\<`string`, `unknown`\>
 
@@ -108,9 +112,11 @@ the Record with all validation error messages.
 
 ### fluentData
 
-> `get` **fluentData**(): `Record`\<`string`, `FluentVariable`\>
+#### Get Signature
 
-#### Returns
+> **get** **fluentData**(): `Record`\<`string`, `FluentVariable`\>
+
+##### Returns
 
 `Record`\<`string`, `FluentVariable`\>
 
@@ -121,11 +127,13 @@ Additionally, the keys of the returned object are converted to the snake case.
 
 ### hasErrors
 
-> `get` **hasErrors**(): `boolean`
+#### Get Signature
+
+> **get** **hasErrors**(): `boolean`
 
 true if the form contains errors, otherwise false.
 
-#### Returns
+##### Returns
 
 `boolean`
 
@@ -133,11 +141,13 @@ true if the form contains errors, otherwise false.
 
 ### isValidating
 
-> `get` **isValidating**(): `boolean`
+#### Get Signature
+
+> **get** **isValidating**(): `boolean`
 
 If true, then validation is in progress.
 
-#### Returns
+##### Returns
 
 `boolean`
 
@@ -145,9 +155,11 @@ If true, then validation is in progress.
 
 ### parentData
 
-> `get` **parentData**(): `undefined` \| `Record`\<`string`, `unknown`\>
+#### Get Signature
 
-#### Returns
+> **get** **parentData**(): `undefined` \| `Record`\<`string`, `unknown`\>
+
+##### Returns
 
 `undefined` \| `Record`\<`string`, `unknown`\>
 
@@ -157,9 +169,11 @@ the object to read and modify parent data (available for array elements).
 
 ### rootData
 
-> `get` **rootData**(): `Record`\<`string`, `unknown`\>
+#### Get Signature
 
-#### Returns
+> **get** **rootData**(): `Record`\<`string`, `unknown`\>
+
+##### Returns
 
 `Record`\<`string`, `unknown`\>
 
@@ -169,9 +183,11 @@ the object to read and modify root form data.
 
 ### state
 
-> `get` **state**(): `Record`\<`string`, `unknown`\>
+#### Get Signature
 
-#### Returns
+> **get** **state**(): `Record`\<`string`, `unknown`\>
+
+##### Returns
 
 `Record`\<`string`, `unknown`\>
 

@@ -24,9 +24,11 @@ the form serialized in JSON.
 
 ### formAsString
 
-> `get` **formAsString**(): `string`
+#### Get Signature
 
-#### Returns
+> **get** **formAsString**(): `string`
+
+##### Returns
 
 `string`
 

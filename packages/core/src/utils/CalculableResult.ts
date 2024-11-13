@@ -8,8 +8,9 @@ export class CalculableResult {
    * @param error the error.
    * @param result the result.
    * @param exceptions the exceptions.
+   * @param warning the warning.
    */
-  constructor(readonly error = false, readonly result?: any, readonly exceptions?: Error[]) {
+  constructor(readonly error = false, readonly result?: any, readonly exceptions?: Error[], readonly warning?: boolean) {
   }
 
   /**
@@ -28,5 +29,14 @@ export class CalculableResult {
    */
   static error(exceptions: Error[]) {
     return new CalculableResult(true, undefined, exceptions)
+  }
+
+  /**
+   * Creates a new instance of the CalculableResult class with a warning result.
+   * @param result the calculable result.
+   * @returns the new instance of CalculableResult class.
+   */
+  static warning(result: any) {
+    return new CalculableResult(false, result, undefined, true)
   }
 }

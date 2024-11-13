@@ -192,11 +192,19 @@ const stringify = (data: any) => {
 }
 
 const getType = (result: CalculableResult): TypeAttributes.Status => {
-  return !isUndefined(result.result)
-    ? 'success'
-    : (result?.error || result?.exceptions)
-      ? 'error'
-      : 'warning'
+  if (!isUndefined(result.result) && !result.warning) {
+    return 'success'
+  }
+
+  if (result.warning) {
+    return 'warning'
+  }
+
+  if (result.error || result.exceptions) {
+    return 'error'
+  }
+
+  return 'warning'
 }
 
 /**

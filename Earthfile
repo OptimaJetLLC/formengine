@@ -30,7 +30,7 @@ npm-documentation-build:
 # npm-test performs tests
 npm-test:
   FROM +sources
-  RUN npm run test
+  RUN NODE_OPTIONS="--max-old-space-size=4096" npm run test
 
 # npm-check-circular-deps checks for cyclic dependencies
 npm-check-circular-deps:
@@ -45,7 +45,7 @@ npm-check-wrong-imports:
 # npm-eslint performs eslint
 npm-eslint:
   FROM +sources
-  RUN npm run eslint
+  RUN NODE_OPTIONS="--max-old-space-size=4096" npm run eslint
 
 # npm-check-unused-exports checks for unused import statements
 npm-check-unused-exports:
@@ -61,7 +61,7 @@ npm-check-tsc:
 prepare-npm-archives:
   FROM +sources
   RUN apt-get update && apt-get -y install jq
-  LET packagesToArchive = 'packages/core packages/designer packages/designer-bundle packages/viewer-bundle packages/views/rsuite packages/views/fast-qr packages/views/rich-text'
+  LET packagesToArchive = 'packages/core packages/designer packages/designer-bundle packages/viewer-bundle packages/views/rsuite packages/views/fast-qr packages/views/rich-text packages/views/google-map'
   LET archiveName = ''
   FOR package IN $packagesToArchive
     RUN cd $package && npm run bundle
@@ -306,6 +306,7 @@ PUBLISH_RELEASE_TO_NPM:
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rsuite"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-fast-qr"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rich-text"
+  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-google-map"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-designer-bundle"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-viewer-bundle"
 
@@ -352,7 +353,8 @@ dependencies:
    packages/core packages/designer packages/designer-bundle packages/indexed-db-form-storage \
    packages/viewer-bundle packages/views/antd packages/views/default packages/views/rsuite \
    packages/views/fast-qr \
-   packages/views/rich-text
+   packages/views/rich-text \
+   packages/views/google-map
 
   COPY documentation/website/package.json documentation/website
 
@@ -372,6 +374,7 @@ dependencies:
   COPY packages/views/rsuite/package.json packages/views/rsuite
   COPY packages/views/fast-qr/package.json packages/views/fast-qr
   COPY packages/views/rich-text/package.json packages/views/rich-text
+  COPY packages/views/google-map/package.json packages/views/google-map
 
   RUN npm install
   SAVE ARTIFACT package.json AS LOCAL package.json

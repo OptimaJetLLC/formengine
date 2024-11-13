@@ -40,9 +40,11 @@ the array of metadata of form builder components.
 
 ### errors
 
-> `get` **errors**(): `string`[]
+#### Get Signature
 
-#### Returns
+> **get** **errors**(): `string`[]
+
+##### Returns
 
 `string`[]
 
@@ -52,9 +54,11 @@ the array of strings with the names of the component types of the error.
 
 ### tooltips
 
-> `get` **tooltips**(): `string`[]
+#### Get Signature
 
-#### Returns
+> **get** **tooltips**(): `string`[]
+
+##### Returns
 
 `string`[]
 
@@ -64,11 +68,13 @@ the array of strings with the names of the component types of the tooltip.
 
 ### viewerWrappers
 
-> `get` **viewerWrappers**(): [`FormViewerWrapper`](../../core/type-aliases/FormViewerWrapper.md)[]
+#### Get Signature
+
+> **get** **viewerWrappers**(): [`FormViewerWrapper`](../../core/type-aliases/FormViewerWrapper.md)[]
 
 Retrieves the viewer wrappers array.
 
-#### Returns
+##### Returns
 
 [`FormViewerWrapper`](../../core/type-aliases/FormViewerWrapper.md)[]
 

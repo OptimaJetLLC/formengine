@@ -285,6 +285,74 @@
       "hint": "Format of the date when rendered in the input"
     }
   },
+  "GoogleMap": {
+    "latitude": {
+      "hint": "Latitude of the center point"
+    },
+    "longitude": {
+      "hint": "Longitude of the center point"
+    },
+    "zoom": {
+      "hint": "Zoom level"
+    },
+    "apiKey": {
+      "name": "API key",
+      "hint": "Google Maps API key. Save the form and refresh the page to apply the changes."
+    },
+    "markers": {
+      "hint": "Coordinates of the markers"
+    },
+    "collisionBehavior": {
+      "hint": "The markers collision behavior."
+    },
+    "allowMultipleMarkers": {
+      "hint": "Multiple markers"
+    },
+    "allowChangingMarkers": {
+      "hint": "If checked, the user can change the markers."
+    },
+    "mapId": {
+      "name": "Map ID",
+      "hint": "The map ID is an identifier that's associated with a specific map style or feature."
+    },
+    "region": {
+      "hint": "The region code to use."
+    },
+    "language": {
+      "hint": "The language to use."
+    },
+    "colorScheme": {
+      "hint": "The color scheme to use."
+    },
+    "gestureHandling": {
+      "hint": "The gesture handling to use."
+    },
+    "mapTypeId": {
+      "name": "Map type",
+      "hint": "The default map type to use."
+    },
+    "showMapControl": {
+      "hint": "Whether to show the map control."
+    },
+    "mapControlPosition": {
+      "hint": "The position of the map control."
+    },
+    "addMarkerOnSearch": {
+      "hint": "Whether to add a marker on search."
+    },
+    "markerWindowTitle": {
+      "name": "Marker window title",
+      "hint": "The title of the marker window."
+    },
+    "removeMarkerCaption": {
+      "name": "Remove marker caption",
+      "hint": "The caption on the marker removal button."
+    },
+    "searchPlaceholder": {
+      "name": "Search placeholder",
+      "hint": "Placeholder text for the map search input."
+    }
+  },
   "RsTimePicker": {
     "format": {
       "name": "Format",

@@ -66,11 +66,13 @@ Options for building an annotation.
 
 ### array
 
-> `get` **array**(): [`ArrayBuilder`](ArrayBuilder.md)\<`undefined` \| `T`[]\>
+#### Get Signature
+
+> **get** **array**(): [`ArrayBuilder`](ArrayBuilder.md)\<`undefined` \| `T`[]\>
 
 Sets the property as a "array" property.
 
-#### Returns
+##### Returns
 
 [`ArrayBuilder`](ArrayBuilder.md)\<`undefined` \| `T`[]\>
 
@@ -80,9 +82,11 @@ the instance of the metadata property builder.
 
 ### localize
 
-> `get` **localize**(): `this`
+#### Get Signature
 
-#### Returns
+> **get** **localize**(): `this`
+
+##### Returns
 
 `this`
 
@@ -96,9 +100,11 @@ the component property that can be localized.
 
 ### notLocalize
 
-> `get` **notLocalize**(): `this`
+#### Get Signature
 
-#### Returns
+> **get** **notLocalize**(): `this`
+
+##### Returns
 
 `this`
 
@@ -112,9 +118,11 @@ the non-localizable component property.
 
 ### valued
 
-> `get` **valued**(): `this`
+#### Get Signature
 
-#### Returns
+> **get** **valued**(): `this`
+
+##### Returns
 
 `this`
 

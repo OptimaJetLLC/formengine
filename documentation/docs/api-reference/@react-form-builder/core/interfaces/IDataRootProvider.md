@@ -10,9 +10,11 @@ Provides the root component for the data in the component tree.
 
 ### dataRoot
 
-> `get` **dataRoot**(): [`ComponentData`](../classes/ComponentData.md)
+#### Get Signature
 
-#### Returns
+> **get** **dataRoot**(): [`ComponentData`](../classes/ComponentData.md)
+
+##### Returns
 
 [`ComponentData`](../classes/ComponentData.md)
 

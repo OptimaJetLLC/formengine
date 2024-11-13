@@ -61,9 +61,11 @@ Options for building an annotation.
 
 ### localize
 
-> `get` **localize**(): `this`
+#### Get Signature
 
-#### Returns
+> **get** **localize**(): `this`
+
+##### Returns
 
 `this`
 
@@ -77,9 +79,11 @@ the component property that can be localized.
 
 ### notLocalize
 
-> `get` **notLocalize**(): `this`
+#### Get Signature
 
-#### Returns
+> **get** **notLocalize**(): `this`
+
+##### Returns
 
 `this`
 
@@ -93,11 +97,13 @@ the non-localizable component property.
 
 ### ofObject
 
-> `get` **ofObject**(): [`ArrayBuilder`](ArrayBuilder.md)\<`undefined` \| `object`[]\>
+#### Get Signature
+
+> **get** **ofObject**(): [`ArrayBuilder`](ArrayBuilder.md)\<`undefined` \| `object`[]\>
 
 Sets the component's value type to an array of objects.
 
-#### Returns
+##### Returns
 
 [`ArrayBuilder`](ArrayBuilder.md)\<`undefined` \| `object`[]\>
 
@@ -107,11 +113,13 @@ the modified instance of the builder.
 
 ### ofString
 
-> `get` **ofString**(): [`ArrayBuilder`](ArrayBuilder.md)\<`undefined` \| `string`[]\>
+#### Get Signature
+
+> **get** **ofString**(): [`ArrayBuilder`](ArrayBuilder.md)\<`undefined` \| `string`[]\>
 
 Sets the component's value type to an array of strings.
 
-#### Returns
+##### Returns
 
 [`ArrayBuilder`](ArrayBuilder.md)\<`undefined` \| `string`[]\>
 
@@ -121,11 +129,13 @@ the modified instance of the builder.
 
 ### required
 
-> `get` **required**(): [`TypedBuilder`](TypedBuilder.md)\<`NonNullable`\<`T`\>\>
+#### Get Signature
+
+> **get** **required**(): [`TypedBuilder`](TypedBuilder.md)\<`NonNullable`\<`T`\>\>
 
 Marks the component property as required.
 
-#### Returns
+##### Returns
 
 [`TypedBuilder`](TypedBuilder.md)\<`NonNullable`\<`T`\>\>
 
@@ -139,9 +149,11 @@ the modified instance of the builder.
 
 ### valued
 
-> `get` **valued**(): `this`
+#### Get Signature
 
-#### Returns
+> **get** **valued**(): `this`
+
+##### Returns
 
 `this`
 

@@ -23,11 +23,11 @@ our [GitHub repository](https://github.com/optimajet/formengine/issues).
 | Integration with Camunda                                            | Done        |
 | Hand-drawn signature component                                      | Done        |
 | QR-code component                                                   | Done        |
+| Wizard component                                                    | Done        |
+| Component working with data arrays (repeater)                       | Done        |
 | Support for properties of type "object"                             | In progress |
-| Component working with data arrays (repeater)                       | In progress |
 | Table component                                                     | Planned     |
 | Integrations with other popular component libraries (MUI, Tailwind) | Planned     |
-| Wizard component                                                    | Planned     |
 | React 19 support                                                    | Planned     |
 | Camera component                                                    | Analysis    |
 | Support Server-Side Rendering                                       | Analysis    |

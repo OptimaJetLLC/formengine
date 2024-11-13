@@ -4,6 +4,30 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 2.1.0
+
+_November_ 8, 2024
+
+- Added the Map component and its [usage guide](/enabling-google-maps-autocomplete).
+- Added a [sample application](/usage-with-nextjs) for Next.js.
+- Added the option to select type attribute for RsInput component.
+
+### Fixed bugs
+
+- Fixed console errors that occur when a variable inside localization is not defined.
+- Fixed the calculated value for HTML attributes.
+- Fixed the display of simple values as calculated after rolling back from a calculated state.
+
+## 2.0.0
+
+_October_ 29, 2024
+
+**This release changes parts of the public and internal API.**
+
+- Added the [Repeater](/components-library/structure-components/repeater) component that is responsible for displaying an array of repeating
+  components.
+- Added the [Using Repeater](/using-repeater) guide.
+
 ## 1.14.1
 
 _October_ 28, 2024

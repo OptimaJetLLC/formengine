@@ -1,4 +1,5 @@
 import {FluentBundle, FluentResource} from '@fluent/bundle'
+import type {Pattern} from '@fluent/bundle/esm/ast'
 import type {FluentVariable} from '@fluent/bundle/esm/bundle'
 import type {ComponentStore} from '../../stores/ComponentStore'
 import {isLocalizedProperty} from '../../stores/ComponentStore'
@@ -56,16 +57,14 @@ export const testFluentLocalization = (request: LocalizationTestRequest): Calcul
     return CalculableResult.error([{message: 'Localization message is null', name: 'MessageIsNull'}])
   }
 
-  let result = ''
+  const {result, missingProperties, fluentErrors} = localizeData(bundle, request.data, message.value)
 
-  try {
-    result = bundle.formatPattern(message.value, request.data)
-  } catch (e) {
-    if (e instanceof Error) {
-      return CalculableResult.error([e])
-    }
+  if (fluentErrors.length > 0) {
+    return CalculableResult.error(fluentErrors)
+  }
 
-    throw e
+  if (missingProperties.length > 0) {
+    return CalculableResult.warning(`The following variable(s) are not defined: ${missingProperties.join(', ')}`)
   }
 
   return CalculableResult.success(result)
@@ -95,11 +94,9 @@ export const localizeProperties = (form: Form, formData: IFormData, language: La
       data[value] = '[NOT LOCALIZED]'
       return
     }
-    try {
-      data[value] = fluentBundle.formatPattern(message.value!, formData.fluentData)
-    } catch (e) {
-      console.error(e)
-    }
+    const {result, fluentErrors} = localizeData(fluentBundle, formData.fluentData, message.value!)
+    data[value] = result
+    logFluentErrors(fluentErrors)
   })
 
   return data
@@ -124,10 +121,48 @@ export const localizeErrorMessage = (form: Form, formData: IFormData, language: 
   if (!message) {
     return
   }
-  try {
-    return fluentBundle.formatPattern(message.value!, formData.fluentData)
-  } catch (e) {
-    console.error(e)
+  const {result, fluentErrors} = localizeData(fluentBundle, formData.fluentData, message.value!)
+  logFluentErrors(fluentErrors)
+  return result
+}
+
+function createLocalizationDataProxy(localizationData: Record<string, any>, missingProperties: string[]) {
+  return new Proxy(localizationData, {
+    get(target, property: string) {
+      if (property in target) {
+        return target[property]
+      }
+      missingProperties.push(property)
+      return ''
+    },
+    getOwnPropertyDescriptor(target, property) {
+      if (property in target) {
+        return Reflect.getOwnPropertyDescriptor(target, property)
+      }
+      return {
+        value: '',
+        writable: true,
+        configurable: true,
+      }
+    },
+  })
+}
+
+function localizeData(fluentBundle: FluentBundle, localizationData: Record<string, any>, pattern: Pattern) {
+  const missingProperties: string[] = []
+  const proxyFormData = createLocalizationDataProxy(localizationData, missingProperties)
+  const fluentErrors: Error[] = []
+  const result = fluentBundle.formatPattern(pattern, proxyFormData, fluentErrors)
+  return {
+    result,
+    missingProperties,
+    fluentErrors
+  }
+}
+
+function logFluentErrors(fluentErrors: Error[]) {
+  if (fluentErrors.length > 0) {
+    console.warn('Localization errors:', fluentErrors)
   }
 }
 

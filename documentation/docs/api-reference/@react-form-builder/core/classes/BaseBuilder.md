@@ -43,9 +43,11 @@ Options for building an annotation.
 
 ### localize
 
-> `get` **localize**(): `this`
+#### Get Signature
 
-#### Returns
+> **get** **localize**(): `this`
+
+##### Returns
 
 `this`
 
@@ -55,9 +57,11 @@ the component property that can be localized.
 
 ### notLocalize
 
-> `get` **notLocalize**(): `this`
+#### Get Signature
 
-#### Returns
+> **get** **notLocalize**(): `this`
+
+##### Returns
 
 `this`
 
@@ -67,9 +71,11 @@ the non-localizable component property.
 
 ### valued
 
-> `get` **valued**(): `this`
+#### Get Signature
 
-#### Returns
+> **get** **valued**(): `this`
+
+##### Returns
 
 `this`
 

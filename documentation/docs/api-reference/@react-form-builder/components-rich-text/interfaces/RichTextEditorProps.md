@@ -234,7 +234,7 @@ Triggered after the content changed.
 
 ### toolbarOptions?
 
-> `optional` **toolbarOptions**: (`"header"` \| `"script"` \| `"color"` \| `"direction"` \| `"font"` \| `"block"` \| `"size"` \| `"list"` \| `"clean"` \| `"align"` \| `"decoration"` \| `"indent"` \| `"insert"`)[]
+> `optional` **toolbarOptions**: (`"block"` \| `"header"` \| `"script"` \| `"color"` \| `"size"` \| `"list"` \| `"direction"` \| `"font"` \| `"clean"` \| `"align"` \| `"decoration"` \| `"indent"` \| `"insert"`)[]
 
 Groups of buttons to be displayed on the toolbar.
 

@@ -118,9 +118,11 @@ Current display resolution type.
 
 ### commonActions
 
-> `get` **commonActions**(): [`ActionValues`](../type-aliases/ActionValues.md)
+#### Get Signature
 
-#### Returns
+> **get** **commonActions**(): [`ActionValues`](../type-aliases/ActionValues.md)
+
+##### Returns
 
 [`ActionValues`](../type-aliases/ActionValues.md)
 
@@ -130,9 +132,11 @@ the Record with the common actions.
 
 ### displayedLanguage
 
-> `get` **displayedLanguage**(): [`Language`](Language.md)
+#### Get Signature
 
-#### Returns
+> **get** **displayedLanguage**(): [`Language`](Language.md)
+
+##### Returns
 
 [`Language`](Language.md)
 
@@ -142,9 +146,11 @@ the current display language.
 
 ### formData
 
-> `get` **formData**(): [`ComponentData`](ComponentData.md)
+#### Get Signature
 
-#### Returns
+> **get** **formData**(): [`ComponentData`](ComponentData.md)
+
+##### Returns
 
 [`ComponentData`](ComponentData.md)
 
@@ -158,9 +164,11 @@ the [IFormData](../interfaces/IFormData.md) with all the form data.
 
 ### initialDataSlice
 
-> `get` **initialDataSlice**(): `unknown`
+#### Get Signature
 
-#### Returns
+> **get** **initialDataSlice**(): `unknown`
+
+##### Returns
 
 `unknown`
 

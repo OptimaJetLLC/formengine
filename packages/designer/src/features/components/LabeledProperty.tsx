@@ -6,7 +6,7 @@ import * as faGlobe from '@fortawesome/free-solid-svg-icons/faGlobe.js'
 import * as faEdit from '@fortawesome/free-solid-svg-icons/faMarker.js'
 import type {Annotation, ComponentData} from '@react-form-builder/core'
 import type {HTMLAttributes} from 'react'
-import {cloneElement} from 'react'
+import {cloneElement, useCallback, useMemo} from 'react'
 import {IconButton} from 'rsuite'
 import {EditableProperty} from '../../stores/BuilderStore'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
@@ -62,50 +62,78 @@ export interface CodeButtonProps extends CalculableEditorProps {
   componentData: ComponentData
 }
 
+type ButtonType = 'disabled' | 'calculation' | 'localization' | 'localizable' | 'calculable' | 'calculableAndLocalizable'
+
+type ButtonAppearance = {
+  hint: string,
+  color?: string,
+  icon: IconDefinition,
+}
+
+const ButtonAppearance: Record<ButtonType, ButtonAppearance> = {
+  'disabled': {
+    hint: 'neitherCalculableNorLocalizable',
+    icon: faEdit as unknown as IconDefinition,
+    color: 'var(--rs-btn-default-disabled-bg)'
+  },
+  'calculation': {
+    hint: 'editCalculable',
+    color: 'var(--rs-btn-primary-bg)',
+    icon: faCode as unknown as IconDefinition,
+  },
+  'localization': {
+    hint: 'editLocalizable',
+    color: 'var(--rs-btn-primary-bg)',
+    icon: faGlobe as unknown as IconDefinition,
+  },
+  'calculable': {
+    hint: 'hintCalculable',
+    icon: faEdit as unknown as IconDefinition,
+  },
+  'localizable': {
+    hint: 'hintLocalizable',
+    icon: faEdit as unknown as IconDefinition,
+  },
+  'calculableAndLocalizable': {
+    hint: 'hintCalculableAndLocalizable',
+    icon: faEdit as unknown as IconDefinition,
+  }
+}
+
 const RawCodeButton = (props: CodeButtonProps) => {
   const {annotation, getComputeCode, setComputeCode, disableCompute, getComputeType, hasComputeCode, componentData} = props
   const store = useBuilderStore()
-  const hasCode = hasComputeCode('function')
-  const hasFluentLocalization = hasComputeCode('localization')
-  const calculableType = getComputeType()
-  const useFn = calculableType === 'function'
-  const useFluentLocalization = calculableType === 'localization'
-
+  const disabled = !annotation.calculable && !annotation.localizable
   const getLabel = useTranslationPart('propertiesEditor.codeButton')
+  const calculableType = getComputeType()
 
-  const getHintTranslation = () => {
-    if (!annotation.calculable && !annotation.localizable) return 'neitherCalculableNorLocalizable'
-    if (hasCode && useFn) return 'editCalculable'
-    if (hasFluentLocalization && useFluentLocalization) return 'editLocalizable'
-    if (annotation.calculable && annotation.localizable) return 'hintCalculableAndLocalizable'
-    if (annotation.calculable) return 'hintCalculable'
-    return 'hintLocalizable'
-  }
-  const hint = getLabel(getHintTranslation())
+  const buttonType = useMemo<ButtonType>(() => {
+    const calculation = calculableType === 'function' && hasComputeCode('function')
+    const localization = calculableType === 'localization' && hasComputeCode('localization')
 
-  const getColor = () => {
-    if ((hasCode && useFn) || (hasFluentLocalization && useFluentLocalization)) return 'var(--rs-btn-primary-bg)'
-    if (hasCode || hasFluentLocalization) return 'var(--rs-primary-200)'
-  }
+    if (disabled) return 'disabled'
+    if (calculation) return 'calculation'
+    if (localization) return 'localization'
+    if (annotation.calculable && annotation.localizable) return 'calculableAndLocalizable'
+    if (annotation.calculable) return 'calculable'
+    if (annotation.localizable) return 'localizable'
 
-  const getIcon = () => {
-    const codeIcon = faCode as unknown as IconDefinition
-    const globeIcon = faGlobe as unknown as IconDefinition
-    if (useFn) return codeIcon
-    if (useFluentLocalization) return globeIcon
-    if (hasCode) return codeIcon
-    if (hasFluentLocalization) return globeIcon
-    return faEdit as unknown as IconDefinition
-  }
+    return 'disabled'
+  }, [annotation.calculable, annotation.localizable, disabled, hasComputeCode, calculableType])
 
-  const handleClick = () => {
+  const buttonStyle = useMemo(() => {
+    const {hint, icon, color} = ButtonAppearance[buttonType]
+    return {icon, color, hint: getLabel(hint)}
+  }, [buttonType, getLabel])
+
+  const handleClick = useCallback(() => {
     return store.currentEditable = new EditableProperty(disableCompute, setComputeCode,
       getComputeCode, getComputeType, hasComputeCode, annotation, componentData.key)
-  }
+  }, [annotation, componentData.key, disableCompute, getComputeCode, getComputeType, hasComputeCode, setComputeCode, store])
 
-  return <Hinted hint={hint}>
-    <SIconButton onClick={handleClick} disabled={!annotation.calculable && !annotation.localizable}
-                 icon={<FaIcon icon={getIcon()} color={getColor()}/>}
+  return <Hinted hint={buttonStyle.hint}>
+    <SIconButton onClick={handleClick} disabled={disabled}
+                 icon={<FaIcon icon={buttonStyle.icon} color={buttonStyle.color}/>}
                  size={'xs'} appearance={'subtle'}/>
   </Hinted>
 }

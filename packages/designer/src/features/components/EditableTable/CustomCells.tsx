@@ -3,7 +3,7 @@ import type {LabeledValue} from '@react-form-builder/core'
 import type {IconProps} from '@rsuite/icons/lib/Icon.js'
 import type {ReactElement} from 'react'
 import {useCallback} from 'react'
-import {Checkbox, IconButton, Input, InputPicker, Table} from 'rsuite'
+import {Checkbox, IconButton, Input as RsInput, InputNumber, InputPicker, Table} from 'rsuite'
 import type {RowDataType} from 'rsuite-table/lib'
 import type {InnerCellProps} from 'rsuite-table/lib/Cell.js'
 
@@ -17,15 +17,18 @@ const {Cell} = Table
  * @param props.rowIndex the row index.
  * @param props.props the other properties of the component.
  * @param props.onChange the onChange callback.
+ * @param props.type the input type.
  * @returns the React element.
  */
-export const InputCell = ({rowData, dataKey, rowIndex, onChange, ...props}: InputCellProps) => {
+export const InputCell = ({rowData, dataKey, rowIndex, onChange, type, ...props}: InputCellProps) => {
   const value = rowData[dataKey] ?? ''
 
   const handleChange = useCallback((newValue: any) => {
     rowData[dataKey] = newValue
     onChange?.(newValue, dataKey, rowIndex)
   }, [dataKey, onChange, rowData, rowIndex])
+
+  const Input = type === 'number' ? InputNumber : RsInput
 
   return (
     <SCell {...props}>
@@ -147,6 +150,11 @@ export interface InputCellProps extends InnerCellProps<RowDataType, string | num
    * Rows data.
    */
   rowData: RowDataType
+
+  /**
+   * The input type.
+   */
+  type: string
 }
 
 /**

@@ -3075,6 +3075,18 @@ Additional style
 
 ***
 
+### type
+
+> **type**: `string`
+
+The input type.
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`type`](InputCellProps.md#type)
+
+***
+
 ### typeof?
 
 > `optional` **typeof**: `string`
