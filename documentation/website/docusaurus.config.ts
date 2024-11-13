@@ -119,6 +119,21 @@ const config: Config = {
             },
           ],
         },
+        {
+          title: 'Products',
+          items: [
+            {
+              label: 'Workflow Engine',
+              to: 'https://workflowengine.io',
+              target: '_blank',
+            },
+            {
+              label: 'Workflow Server',
+              to: 'https://workflowserver.io',
+              target: '_blank',
+            },
+          ],
+        },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Optimajet Limited. All rights reserved.`,
     },
