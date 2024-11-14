@@ -46,11 +46,8 @@ import {rsWizard} from './components/RsWizard/RsWizard'
 import {rsWizardStep} from './components/RsWizard/RsWizardStep'
 import {formEngineRsuiteCssLoader, ltrCssLoader, rtlCssLoader} from './cssLoader'
 
-import {RsCustomComponentDefinition} from './components/custom'
-
 const categories = {
   fields: [
-    RsCustomComponentDefinition,
     rsCalendar,
     rsCheckbox,
     rsDatePicker,
