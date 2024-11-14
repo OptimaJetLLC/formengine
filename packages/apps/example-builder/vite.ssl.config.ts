@@ -1,4 +1,4 @@
-import svgr from '@svgr/rollup'
+import svgr from 'vite-plugin-svgr'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import react from '@vitejs/plugin-react-swc'
 import {defineConfig} from 'vite'
@@ -9,7 +9,9 @@ export default defineConfig(({command}) => ({
   ...base,
   plugins: [
     react({jsxImportSource: '@emotion/react'}),
-    svgr(),
+    svgr({
+      include: '**/*.svg?react',
+    }),
     basicSsl({
       /** name of certification */
       name: 'test',
