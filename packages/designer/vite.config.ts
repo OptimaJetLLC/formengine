@@ -1,4 +1,4 @@
-import svgr from 'vite-plugin-svgr'
+import svgr from '@svgr/rollup'
 import path from 'path'
 // @ts-ignore
 import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle'
@@ -26,10 +26,7 @@ export default defineConfig(({command}) => ({
     rollupOptions: {
       plugins: [
         excludeDependenciesFromBundle({dependencies: true, peerDependencies: true}),
-        svgr({
-          include: '**/*.svg?react',
-          svgrOptions: {icon: true}
-        })
+        svgr({icon: true})
       ]
     }
   },
