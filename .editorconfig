@@ -12,6 +12,14 @@ tab_width = 2
 [package.json]
 indent_size = 4
 
+[package-lock.json]
+end_of_line = unset
+indent_size = unset
+indent_style = unset
+insert_final_newline = unset
+max_line_length = unset
+tab_width = unset
+
 [*.{ts,tsx}]
 ij_typescript_force_quote_style = true
 ij_typescript_use_double_quotes = false
