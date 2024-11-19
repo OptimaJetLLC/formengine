@@ -17,8 +17,8 @@ export default defineConfig(({command}) => ({
     }),
     react({jsxImportSource: '@emotion/react'}),
     svgr({
-      include: '**/*.svg?react',
-    }),
+      include: '**/*.svg',
+    })
   ],
   define: {
     'process.env.WDYR': `"${process.env.WDYR ? '1' : ''}"`

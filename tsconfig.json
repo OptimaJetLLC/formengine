@@ -21,7 +21,7 @@
       "vite/client",
       "vitest/globals",
       "@testing-library/jest-dom",
-      "vite-plugin-svgr/client"
+      "./svg.d.ts"
     ],
     "jsxImportSource": "@emotion/react",
     "noUnusedLocals": true

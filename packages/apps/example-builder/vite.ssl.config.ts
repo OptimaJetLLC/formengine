@@ -10,7 +10,7 @@ export default defineConfig(({command}) => ({
   plugins: [
     react({jsxImportSource: '@emotion/react'}),
     svgr({
-      include: '**/*.svg?react',
+      include: '**/*.svg',
     }),
     basicSsl({
       /** name of certification */

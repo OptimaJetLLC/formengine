@@ -14,7 +14,10 @@ const __dirname = path.dirname(__filename)
 export default defineConfig(({command}) => ({
   ...base,
   plugins: [
-    dts({rollupTypes: true, tsconfigPath: './bundle.tsconfig.json'})
+    dts({rollupTypes: true, tsconfigPath: './bundle.tsconfig.json'}),
+    svgr({
+      include: '**/*.svg',
+    })
   ],
   build: {
     sourcemap: true,
@@ -25,11 +28,8 @@ export default defineConfig(({command}) => ({
     },
     rollupOptions: {
       plugins: [
-        excludeDependenciesFromBundle({dependencies: true, peerDependencies: true}),
-        svgr({
-          include: '**/*.svg?react',
-          svgrOptions: {icon: true}
-        })]
+        excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})
+      ]
     }
   },
 }))
