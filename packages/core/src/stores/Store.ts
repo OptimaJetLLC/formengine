@@ -255,6 +255,13 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
   /**
    * @inheritDoc
    */
+  get showAllValidationErrors(): boolean | undefined {
+    return this.formViewerPropsStore?.showAllValidationErrors
+  }
+
+  /**
+   * @inheritDoc
+   */
   reduceScreen<T>(callback: (accumulator: T, current: ComponentData) => T, initialValue: T) {
     return reduceTree(this.form.componentTree, callback, initialValue, 'children')
   }

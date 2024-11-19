@@ -115,6 +115,11 @@ export interface FormViewerProps {
    * If true, the form is read-only.
    */
   readOnly?: boolean
+
+  /**
+   * If true, all validation errors will be displayed.
+   */
+  showAllValidationErrors?: boolean
 }
 
 /**

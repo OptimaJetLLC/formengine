@@ -49,6 +49,11 @@ export class FormViewerPropsStore {
   errorWrapper?: ComponentType<ErrorWrapperProps>
 
   /**
+   * If true, all validation errors will be displayed.
+   */
+  showAllValidationErrors?: boolean
+
+  /**
    * Constructs a new FormViewerPropsStore from the given FormViewerProps.
    * @param formViewerProps the FormViewer props.
    * @returns the FormViewerPropsStore.
@@ -67,6 +72,7 @@ export class FormViewerPropsStore {
       actions: observable.ref,
       propsLanguage: observable.ref,
       errorWrapper: observable.ref,
+      showAllValidationErrors: observable.ref,
     }, {name: nameObservable(`FormViewerPropsStore`)})
   }
 
@@ -83,6 +89,7 @@ export class FormViewerPropsStore {
     this.actions = customActionsToActionsValues(formViewerProps.actions)
     this.propsLanguage = formViewerProps.language
     this.errorWrapper = formViewerProps.errorWrapper
+    this.showAllValidationErrors = formViewerProps.showAllValidationErrors
   }
 
   /**
@@ -99,6 +106,7 @@ export class FormViewerPropsStore {
     clone.actions = this.actions
     clone.propsLanguage = this.propsLanguage
     clone.errorWrapper = this.errorWrapper
+    clone.showAllValidationErrors = this.showAllValidationErrors
     return clone
   }
 }

@@ -20,6 +20,11 @@ export interface IStore {
   get initialDataSlice(): unknown
 
   /**
+   * @returns true if all validation errors are to be displayed, false otherwise.
+   */
+  get showAllValidationErrors(): boolean | undefined
+
+  /**
    * Performs the callback function on each element of the component tree, accumulates the return values.
    * @param callback the function that calculates the value for the accumulator.
    * @param initialValue the initial value for the accumulator.

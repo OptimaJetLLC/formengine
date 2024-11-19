@@ -55,7 +55,14 @@ export class DataValidator {
     setter: Setter<string | undefined>,
     errorMessageLocalizer?: ErrorMessageLocalizer
   ) {
-    const localizer = errorMessageLocalizer ?? concatErrorMessages
+    const localizer = (messages?: ValidationResult[]) => {
+      if (!messages || messages.length === 0) return undefined
+      if (store.showAllValidationErrors) {
+        return (errorMessageLocalizer ?? concatErrorMessages)(messages)
+      }
+      return errorMessageLocalizer?.([messages[0]]) ?? getDefaultErrorMessage(messages[0])
+    }
+
     this.#validator = (value: any) => validator(value, store)
     this.#stream = this.#subject
       .pipe(

@@ -178,6 +178,24 @@ the slice of the initial data in accordance with the Store hierarchy. **Internal
 
 [`IStore`](../interfaces/IStore.md).[`initialDataSlice`](../interfaces/IStore.md#initialdataslice)
 
+***
+
+### showAllValidationErrors
+
+#### Get Signature
+
+> **get** **showAllValidationErrors**(): `undefined` \| `boolean`
+
+##### Returns
+
+`undefined` \| `boolean`
+
+true if all validation errors are to be displayed, false otherwise.
+
+#### Implementation of
+
+[`IStore`](../interfaces/IStore.md).[`showAllValidationErrors`](../interfaces/IStore.md#showallvalidationerrors)
+
 ## Methods
 
 ### applyPersistedForm()

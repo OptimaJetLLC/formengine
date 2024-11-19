@@ -279,6 +279,18 @@ If true, the form is read-only.
 
 ***
 
+### showAllValidationErrors?
+
+> `optional` **showAllValidationErrors**: `boolean`
+
+If true, all validation errors will be displayed.
+
+#### Inherited from
+
+`Omit.showAllValidationErrors`
+
+***
+
 ### theme?
 
 > `optional` **theme**: [`FormBuilderTheme`](../type-aliases/FormBuilderTheme.md)
