@@ -1,10 +1,10 @@
-import svgr from 'vite-plugin-svgr'
 import path from 'path'
 // @ts-ignore
 import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle'
 import {fileURLToPath} from 'url'
 import {defineConfig} from 'vite'
 import dts from 'vite-plugin-dts'
+import svgr from 'vite-plugin-svgr'
 
 import base from '../../vite.config'
 
