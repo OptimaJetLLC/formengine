@@ -1,4 +1,4 @@
-import svgr from '@svgr/rollup'
+import svgr from 'vite-plugin-svgr'
 import react from '@vitejs/plugin-react-swc'
 import path from 'path'
 // @ts-ignore
@@ -24,7 +24,10 @@ export default defineConfig(({command}) => ({
   },
   plugins: [
     react({jsxImportSource: '@emotion/react'}),
-    svgr()
+    svgr({
+      include: '**/*.svg?react',
+      svgrOptions: {icon: true}
+    })
   ],
   resolve: {
     dedupe: ['react', 'react-dom', 'react-is'],

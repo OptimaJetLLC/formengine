@@ -38,7 +38,6 @@
     ],
     "devDependencies": {
         "@faker-js/faker": "^7.5.0",
-        "@svgr/rollup": "^8.0.1",
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^12.1.5",
         "@testing-library/user-event": "^14.4.3",
@@ -71,7 +70,7 @@
         "vite-bundle-analyzer": "^0.10.3",
         "vite-plugin-cp": "^4.0.8",
         "vite-plugin-dts": "^3.6.1",
-        "vite-plugin-svgr": "^3.2.0",
+        "vite-plugin-svgr": "^4.3.0",
         "vitest": "^0.29.7",
         "vitest-fail-on-console": "^0.3.1"
     }
