@@ -8,6 +8,7 @@ import type {LocalizationType} from '../../stores/LocalizationStore'
 import {CalculableResult} from '../../utils/CalculableResult'
 import type {IFormData} from '../../utils/IFormData'
 import {getValidatorPropertyBlockType} from '../ui/PropertyBlockType'
+import {replaceDots, restoreDots} from './dots'
 import {getFluentCompatibleId} from './getFluentCompatibleId'
 import type {Language} from './types'
 
@@ -39,6 +40,7 @@ export type LocalizationTestRequest = {
  * @returns the localization testing result.
  */
 export const testFluentLocalization = (request: LocalizationTestRequest): CalculableResult => {
+  request.localization = replaceDots(request.localization)
   const localizationSting = `${request.localizationStringId} = ${request.localization}`
   const resource = new FluentResource(localizationSting)
   const bundle = new FluentBundle(`${request.language.fullCode}`)
@@ -132,7 +134,7 @@ function createLocalizationDataProxy(localizationData: Record<string, any>, miss
       if (property in target) {
         return target[property]
       }
-      missingProperties.push(property)
+      missingProperties.push(restoreDots(property))
       return ''
     },
     getOwnPropertyDescriptor(target, property) {

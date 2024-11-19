@@ -1,5 +1,6 @@
 import {FluentBundle, FluentResource} from '@fluent/bundle'
 import {makeAutoObservable} from 'mobx'
+import {replaceDots} from '../features/localization/dots'
 import {getFluentCompatibleId} from '../features/localization/getFluentCompatibleId'
 import {nameObservable} from '../utils/observableNaming'
 
@@ -85,7 +86,9 @@ class FluentBundleHolder {
     Object.entries(componentsLocalization).forEach(([componentKey, allComponentsLocalizationConstants]) => {
       Object.entries(allComponentsLocalizationConstants ?? {}).forEach(([type, componentLocalizationConstants]) => {
         Object.entries(componentLocalizationConstants ?? {}).forEach(([propertyName, localizationConstant]) => {
-          if (localizationConstant) localizationItems.push(`${componentKey}_${type}_${propertyName} = ${localizationConstant}`)
+          if (localizationConstant) {
+            localizationItems.push(`${componentKey}_${type}_${propertyName} = ${replaceDots(localizationConstant)}`)
+          }
         })
       })
     })

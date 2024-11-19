@@ -1,6 +1,6 @@
 # Function: getFluentData()
 
-> **getFluentData**(`data`): `Record`\<`string`, `FluentVariable`\>
+> **getFluentData**(`data`, `parentKey`): `Record`\<`string`, `FluentVariable`\>
 
 Converts the form data to a Fluent compatible. **Internal use only.**
 
@@ -9,6 +9,10 @@ Converts the form data to a Fluent compatible. **Internal use only.**
 • **data**: `Record`\<`string`, `unknown`\>
 
 the form data.
+
+• **parentKey**: `string` = `''`
+
+the parent property key.
 
 ## Returns
 

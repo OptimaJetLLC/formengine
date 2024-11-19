@@ -228,10 +228,15 @@ automatically when the data changes. To save the data - click the "Save" button.
 
 ![Localization 08](/assets/localization/localization-08.png)
 
+Also if you need to access data within nested objects, you can do so using dot notation. This method allows you to retrieve values at deeper
+levels by specifying the full path.
+
+![Localization 09](/assets/localization/localization-09.png)
+
 Click the "Close" button to close the localization editor. Change the language of the form in the switch above, as on the screenshot - the
 text will change to the one we just wrote.
 
-![Localization 09](/assets/localization/localization-09.png)
+![Localization 09](/assets/localization/localization-10.png)
 
 ## Custom localization
 
