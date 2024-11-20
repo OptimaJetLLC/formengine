@@ -339,7 +339,7 @@ run-sonar-analysis:
 # sources copies the source code
 sources:
   FROM +dependencies
-  COPY .eslintignore .eslintrc.cjs lerna.json LICENSE.md nx.json README.md tsconfig.json svg.d.ts vite.config.ts ./
+  COPY .eslintignore .eslintrc.cjs lerna.json LICENSE.md nx.json README.md tsconfig.json vite-env.d.ts vite.config.ts ./
   COPY --dir documentation packages scripts ./
   SAVE ARTIFACT /form-engine
 
