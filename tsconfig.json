@@ -20,12 +20,12 @@
     "types": [
       "vite/client",
       "vitest/globals",
-      "@testing-library/jest-dom",
-      "./svg.d.ts"
+      "@testing-library/jest-dom"
     ],
     "jsxImportSource": "@emotion/react",
     "noUnusedLocals": true
   },
+  "include": ["types", "packages/**/*.ts", "packages/**/*.tsx"],
   "exclude": [
     "examples",
     "node_modules",

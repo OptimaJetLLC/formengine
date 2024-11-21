@@ -1,6 +1,6 @@
 wdyr.ts
 vite.config.ts
-*.d.ts
+types
 **/dist
 BuildScripts
 documentation
