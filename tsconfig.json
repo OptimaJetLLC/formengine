@@ -25,7 +25,12 @@
     "jsxImportSource": "@emotion/react",
     "noUnusedLocals": true
   },
-  "include": ["types", "packages/**/*.ts", "packages/**/*.tsx"],
+  "include": [
+    "types",
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "scripts/**/*.js"
+  ],
   "exclude": [
     "examples",
     "node_modules",
