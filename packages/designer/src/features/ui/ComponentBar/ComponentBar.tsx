@@ -1,7 +1,7 @@
 import {css} from '@emotion/css'
 import styled from '@emotion/styled'
 import type {ComponentData, Model} from '@react-form-builder/core'
-import {ComponentDataProvider, ComponentStore, getKey} from '@react-form-builder/core'
+import {ComponentDataProvider, ComponentStore, getKey, namedObserver} from '@react-form-builder/core'
 import {useCallback, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {AddedComponent} from '../../dnd'
@@ -27,7 +27,7 @@ interface ControlGroupsProps extends DraggableProps {
   filter?: string
 }
 
-const ControlGroups = (props: ControlGroupsProps) => {
+const RawControlGroups = (props: ControlGroupsProps) => {
   const builderStore = useBuilderStore()
   const t = useTranslationPart('componentsList.categories')
   const {filter, ...componentProps} = props
@@ -57,9 +57,13 @@ const ControlGroups = (props: ControlGroupsProps) => {
       </div>
     )
   }
-  if (!result) return null
+
+  if (result.length === 0) return null
+
   return <Content>{result}</Content>
 }
+
+const ControlGroups = namedObserver('ControlGroups', RawControlGroups)
 
 /**
  * The React form builder component that displays all available components for use.
@@ -83,7 +87,7 @@ interface AddedComponentsProps extends DraggableProps {
   definitions: Model[]
 }
 
-const AddedComponents = ({definitions, ...componentProps}: AddedComponentsProps) => {
+const RawAddedComponents = ({definitions, ...componentProps}: AddedComponentsProps) => {
   const builderStore = useBuilderStore()
 
   const createComponentData = useCallback((model: Model) => {
@@ -115,6 +119,8 @@ const AddedComponents = ({definitions, ...componentProps}: AddedComponentsProps)
     </ControlsGroup>
   )
 }
+
+const AddedComponents = namedObserver('AddedComponents', RawAddedComponents)
 
 const componentBar = css`
   display: flex;
