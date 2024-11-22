@@ -4,6 +4,22 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 2.2.0
+
+_November_ 22, 2024
+
+- Added [actions](/using-repeater#repeater-actions) for managing rows in the Repeater component.
+- Added the ability to [work with objects](/localization#localization-editing) in localization.
+- Added guide for [usage with Remix](/usage-with-remix).
+- Now, if there are several validation errors in one field, then by default, only the first one is displayed for better readability.
+- The [showAllValidationErrors](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#showallvalidationerrors) option has been
+  added to `FormViewerProps` to display all validation errors on the field, not just the first one.
+
+### Fixed bugs
+
+- The list of templates did not load completely when the page was first opened.
+- A non-empty value is set by default for numeric and boolean action arguments.
+
 ## 2.1.0
 
 _November_ 8, 2024
