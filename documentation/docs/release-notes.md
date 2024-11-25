@@ -6,7 +6,7 @@ slug: /release-notes
 
 ## 2.2.0
 
-_November_ 22, 2024
+_November_ 25, 2024
 
 - Added [actions](/using-repeater#repeater-actions) for managing rows in the Repeater component.
 - Added the ability to [work with objects](/localization#localization-editing) in localization.
