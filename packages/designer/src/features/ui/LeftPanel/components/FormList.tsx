@@ -7,6 +7,7 @@ import {EditButton, RemoveButton} from '../../../components/Buttons'
 import {List, ListItem} from '../../../components/Containers'
 import {customizableObserver} from '../../../customization'
 import {useShowMessage} from '../../../toast/toast'
+import {SearchForm} from '../../ComponentBar/components/SearchForm'
 
 function FormListItem({active, onLoadForm, onRemoveForm, name}: {
   active: boolean,
@@ -38,6 +39,7 @@ function FormListItem({active, onLoadForm, onRemoveForm, name}: {
 const RawFormList = (props: ComponentProps<typeof List>) => {
   const builderStore = useBuilderStore()
   const [formList, setFormList] = useState<string[]>([])
+  const [searchValue, setSearchValue] = useState<string>('')
   const {t} = useTranslation()
   const showMessage = useShowMessage()
 
@@ -85,12 +87,18 @@ const RawFormList = (props: ComponentProps<typeof List>) => {
     reloadForms()
   }, [builderStore.lastSaveTime, reloadForms])
 
+  const filteredFormList = useMemo(
+    () => formList.filter(name => name.toLowerCase().includes(searchValue.toLowerCase())),
+    [formList, searchValue]
+  )
+
   return <List {...props}>
+    <SearchForm style={{maxWidth: 300}} onChange={setSearchValue}/>
     <ListItem>
       <Button block onClick={showPromptDialog}>{t('formsList.addNewForm')}</Button>
     </ListItem>
-    {formList.length
-      ? formList.map((name, index) =>
+    {filteredFormList.length
+      ? filteredFormList.map((name, index) =>
         <FormListItem key={index} active={name === builderStore.formName} name={name} onLoadForm={loadForm} onRemoveForm={removeForm}/>)
       : <ListItem>{t('formsList.noFormsInFormStorage')}</ListItem>
     }
