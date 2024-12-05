@@ -20,7 +20,7 @@ import {DefaultWrapper} from './DefaultWrapper'
 
 type Fn = () => void
 
-function useComponentMountUnmount(init: Fn, clear: Fn) {
+function useComponentMountUnmount(init: Fn, clear: Fn, deps: Array<any>) {
   const clearRef = useRef(clear)
   const initRef = useRef(init)
 
@@ -33,10 +33,11 @@ function useComponentMountUnmount(init: Fn, clear: Fn) {
     return () => {
       clearRef.current()
     }
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps)
 }
 
-const useActions = (state: ComponentState) => {
+const useActions = (state: ComponentState, deps: Array<any>) => {
   const store = useStore()
   const componentData = useComponentData()
   const subsRef = useRef<Subscription[]>([])
@@ -80,7 +81,7 @@ const useActions = (state: ComponentState) => {
     store.eventSubject.next(unmountEvent)
 
     unsubscribe()
-  })
+  }, deps)
 }
 
 function getActionHandlersChain(store: Store, actionDataList: ActionData[]) {
@@ -117,7 +118,7 @@ const RawComponentViewer = () => {
     () => new ComponentState(data, formViewerStore, localize, computeChildren, viewerProps),
     [data, formViewerStore, localize, computeChildren, viewerProps])
 
-  useActions(componentState)
+  useActions(componentState, [viewerProps])
 
   const {key, ...otherProps} = componentState.get
   const {kind, component: Component} = data.model
