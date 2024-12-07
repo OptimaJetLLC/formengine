@@ -1,8 +1,7 @@
 import type {Annotation, ComponentProperty, PropertyBlockType} from '@react-form-builder/core'
 import {isProperty, isValidatorPropertyBlockType, namedObserver, useComponentData} from '@react-form-builder/core'
-import {createElement, useCallback, useEffect, useState} from 'react'
+import {createElement, useCallback, useEffect, useMemo, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
-import {EditorMap} from '../../annotation-editors'
 import type {AnnotationEditorProps, CalculableEditorProps} from '../../annotation-editors/AnnotationEditorProps'
 import {Erroneous} from './Erroneous'
 
@@ -19,10 +18,10 @@ const RawPropertyEditorWrapper = ({
                                     initContext,
                                     propertyBlockType = 'component'
                                   }: PropertyEditorWrapperProps) => {
-  // custom editors have the highest priority
   const store = useBuilderStore()
   const componentData = useComponentData()
-  const annotationEditor = store.customPropertyEditor(annotation.editor) ?? EditorMap[annotation.editor]
+  const annotationEditor = useMemo(() => store.getPropertyEditor(annotation.editor), [annotation, store])
+
   const [contextInitialized, setContextInitialized] = useState(false)
   const [error, setError] = useState<string>()
 

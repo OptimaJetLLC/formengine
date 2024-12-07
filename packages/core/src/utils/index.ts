@@ -1,5 +1,5 @@
 import {observer} from 'mobx-react'
-import type {FunctionComponent} from 'react'
+import type {ComponentType} from 'react'
 import {ComponentStore} from '../stores/ComponentStore'
 
 /**
@@ -44,7 +44,7 @@ export function isRecord(value: any): value is Record<string, unknown> {
  * @param component the React component.
  * @returns the observable React component.
  */
-export function namedObserver<T extends FunctionComponent<any>>(displayName: string, component: T) {
+export function namedObserver<T extends ComponentType<any>>(displayName: string, component: T) {
   const observerComponent = observer(component)
   observerComponent.displayName = displayName
   return observerComponent

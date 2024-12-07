@@ -14,6 +14,7 @@ import {
   BiDi,
   BuilderView,
   ComponentStore,
+  namedObserver,
   nameObservable,
   PersistedFormVersion,
   screenModel,
@@ -23,6 +24,7 @@ import {assign, cloneDeep} from 'lodash-es'
 import type {IReactionDisposer} from 'mobx'
 import {action, makeAutoObservable, observable, reaction} from 'mobx'
 import {debounceTime, distinctUntilChanged, Subject} from 'rxjs'
+import {EditorMap} from '../features/annotation-editors'
 import type {CalculableEditorProps} from '../features/annotation-editors/AnnotationEditorProps'
 import type {CodeActionEditorData, CodeActionEditorProps} from '../features/annotation-editors/EventEditor/components/CodeActionEditor'
 import type {TranslationResolver} from '../features/localization/BuilderI18n'
@@ -877,12 +879,16 @@ export class BuilderStore implements IFormBuilder {
   }
 
   /**
-   * Returns the custom property editor for the specified editorType.
+   * Returns the property editor for the specified editorType.
    * @param editorType the property editor type.
-   * @returns the custom property editor for the specified editorType.
+   * @returns the property editor for the specified editorType.
    */
-  customPropertyEditor(editorType: EditorType) {
-    return this.#props.propertyEditors?.[editorType]
+  getPropertyEditor(editorType: EditorType) {
+    const CustomEditor = this.#props.propertyEditors?.[editorType]
+    if (CustomEditor) {
+      return namedObserver(CustomEditor.displayName ?? editorType, CustomEditor)
+    }
+    return EditorMap[editorType]
   }
 
   /**
