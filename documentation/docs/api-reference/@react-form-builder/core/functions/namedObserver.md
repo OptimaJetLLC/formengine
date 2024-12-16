@@ -6,7 +6,7 @@ Creates the observable React component. **Internal use only.**
 
 ## Type Parameters
 
-• **T** *extends* `FunctionComponent`\<`any`, `T`\>
+• **T** *extends* `ComponentType`\<`any`\>
 
 ## Parameters
 

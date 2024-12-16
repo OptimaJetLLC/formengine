@@ -186,7 +186,7 @@ aria-owns.
 
 ### aria-current?
 
-> `optional` **aria-current**: `boolean` \| `"date"` \| `"time"` \| `"true"` \| `"false"` \| `"page"` \| `"step"` \| `"location"`
+> `optional` **aria-current**: `boolean` \| `"true"` \| `"false"` \| `"date"` \| `"time"` \| `"page"` \| `"step"` \| `"location"`
 
 Indicates the element that represents the current item within a container or set of related elements.
 
@@ -321,7 +321,7 @@ in ARIA 1.1
 
 ### aria-haspopup?
 
-> `optional` **aria-haspopup**: `boolean` \| `"grid"` \| `"dialog"` \| `"menu"` \| `"true"` \| `"false"` \| `"listbox"` \| `"tree"`
+> `optional` **aria-haspopup**: `boolean` \| `"true"` \| `"false"` \| `"grid"` \| `"dialog"` \| `"menu"` \| `"listbox"` \| `"tree"`
 
 Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 
@@ -469,7 +469,7 @@ Indicates that the user may select more than one item from the current selectabl
 
 ### aria-orientation?
 
-> `optional` **aria-orientation**: `"vertical"` \| `"horizontal"`
+> `optional` **aria-orientation**: `"horizontal"` \| `"vertical"`
 
 Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.
 
@@ -683,7 +683,7 @@ aria-posinset.
 
 ### aria-sort?
 
-> `optional` **aria-sort**: `"none"` \| `"other"` \| `"ascending"` \| `"descending"`
+> `optional` **aria-sort**: `"none"` \| `"ascending"` \| `"descending"` \| `"other"`
 
 Indicates if items in a table or grid are sorted in ascending or descending order.
 
