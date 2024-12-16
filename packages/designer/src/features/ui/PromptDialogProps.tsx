@@ -47,5 +47,5 @@ export interface PromptDialogProps {
    * @param value the value for validation.
    * @returns the string with an error or undefined if validation was successful.
    */
-  validate?: (value: string) => string | undefined
+  validate?: (value: string) => Promise<string | undefined>
 }

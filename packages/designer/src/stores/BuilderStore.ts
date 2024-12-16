@@ -721,10 +721,10 @@ export class BuilderStore implements IFormBuilder {
    * @returns the {@link Promise} with the result of saving the form.
    */
   async save(formName?: string) {
-    const name = formName || this.formName
-    const result = await this.saveForm(name, this.formAsString)
-    this.activeFormName = name
-    return result
+    const name = formName || this.activeFormName
+    if (!name) return
+
+    return await this.saveForm(name, this.formAsString)
   }
 
   /**
@@ -735,6 +735,7 @@ export class BuilderStore implements IFormBuilder {
    */
   saveForm(formName: string, formValue: string) {
     this.lastSaveTime = new Date()
+    this.activeFormName = formName
     return this.formStorage.saveForm(formName, formValue)
   }
 
@@ -743,7 +744,7 @@ export class BuilderStore implements IFormBuilder {
    * @param formName the form name.
    * @returns the Promise with the result of the form creation.
    */
-  createForm(formName: string) {
+  async createForm(formName: string) {
     const persistedForm: PersistedForm = {
       form: new ComponentStore(screenModel.name, screenModel.type),
       localization: {},
@@ -767,6 +768,7 @@ export class BuilderStore implements IFormBuilder {
    * @param onSuccess the callback function that is called when a form is successfully removed.
    */
   removeForm(value: string, onSuccess: () => void) {
+    this.activeFormName = undefined
     this.formStorage.removeForm(value).then(onSuccess)
   }
 

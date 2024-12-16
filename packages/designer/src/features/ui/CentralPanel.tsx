@@ -1,18 +1,20 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import type {ComponentData} from '@react-form-builder/core'
-import {BuilderContextProvider, FormViewer, useViewerProps} from '@react-form-builder/core'
+import {BuilderContextProvider, FormViewer, useStore, useViewerProps} from '@react-form-builder/core'
 import type {ComponentProps} from 'react'
 import {useCallback, useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {customizable, customizableObserver} from '../customization'
 import {EditableWrapper, getBuilderChildren} from '../dnd'
+import {ErrorFormWrapper} from './ErrorFormWrapper'
 import {Header} from './Header/Header'
 import {PanelContainer} from './Panel'
 
 const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
   const builderStore = useBuilderStore()
+  const {formLoadError} = useStore()
   const {viewMode, landscapeMode, builderMode} = builderStore
   const viewerProps = useViewerProps()
   const {t} = useTranslation()
@@ -26,15 +28,18 @@ const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
   return (
     <SContainer {...props}>
       <Header/>
-      <SFormContainer className={cx(viewMode, builderMode, {landscapeMode})}>
+      <SFormContainer className={cx(viewMode, builderMode, {landscapeMode, withForm: !formLoadError})}>
         <BuilderContextProvider value={builderContext}>
-          <FormViewer {...viewerProps} componentWrapper={componentWrapper} viewMode={viewMode} computeChildren={computeChildren}
-                      formName={builderStore.activeFormName}/>
+          <ErrorFormWrapper>
+            <FormViewer {...viewerProps} componentWrapper={componentWrapper} viewMode={viewMode}
+                        computeChildren={computeChildren} formName={builderStore.activeFormName}/>
+          </ErrorFormWrapper>
         </BuilderContextProvider>
       </SFormContainer>
     </SContainer>
   )
 }
+
 
 export const CentralPanel = customizableObserver('CentralPanel', RawCentralPanel)
 
@@ -52,17 +57,19 @@ const SFormContainer = customizable('FormContainer', styled(PanelContainer)`
   flex-direction: column;
   width: initial;
   margin-inline: 15px;
-  padding: 12px;
   overflow: auto;
   transition: max-width .2s ease, max-height .2s ease, border-radius .2s ease;
-  border: 2px solid var(--rs-gray-500);
-  border-radius: 10px;
-  box-shadow: 0 5px 20px 0 rgb(0 0 0 / 15%);
+  
+  &.withForm {
+    padding: 12px;
+    border: 2px solid var(--rs-gray-500);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px 0 rgb(0 0 0 / 15%);
+    background-color: #ffffffa1;
 
-  background-color: #ffffffa1;
-
-  .rs-theme-dark & {
-    background-color: #414549;
+    .rs-theme-dark & {
+      background-color: #414549;
+    }
   }
 
   &.mobile {

@@ -3,6 +3,7 @@ import {useCallback, useEffect, useMemo, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
+import {useCreateForm} from '../../../../utils/useCreateForm'
 import {EditButton, RemoveButton} from '../../../components/Buttons'
 import {List, ListItem} from '../../../components/Containers'
 import {customizableObserver} from '../../../customization'
@@ -60,28 +61,7 @@ const RawFormList = (props: ComponentProps<typeof List>) => {
     builderStore.removeForm(name, reloadForms)
   }, [builderStore, reloadForms])
 
-  const handleAddForm = useCallback((name: string) => {
-    if (name) {
-      builderStore.createForm(name)
-        .then(reloadForms)
-        .then(() => builderStore.save())
-        .then(() => loadForm(name))
-    }
-  }, [builderStore, loadForm, reloadForms])
-
-  const validate = useCallback((value: string) => {
-    if (formList.includes(value)) return t('formsList.formWithNameExists')
-  }, [formList, t])
-
-  const showPromptDialog = useCallback(() => {
-    builderStore.showPromptModal({
-      value: '',
-      onOk: handleAddForm,
-      title: t('leftMenu.enterFormName'),
-      placeholder: t('leftMenu.formNamePlaceholder'),
-      validate
-    })
-  }, [builderStore, handleAddForm, t, validate])
+  const showPromptDialog = useCreateForm(reloadForms)
 
   useEffect(() => {
     reloadForms()

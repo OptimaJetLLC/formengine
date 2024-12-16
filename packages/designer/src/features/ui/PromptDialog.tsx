@@ -37,7 +37,9 @@ const RawPromptDialog = () => {
 
   const handleChange = useCallback(value => {
     modalState.value = value
-    modalState.errorMessage = modalState.validate?.(value)
+    modalState.validate?.(value)?.then(result => {
+      modalState.errorMessage = result
+    })
   }, [modalState])
 
   const handleKeys = useCallback(({key}) => {

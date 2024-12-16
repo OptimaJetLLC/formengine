@@ -158,6 +158,11 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
   dataContext: IDataContext
 
   /**
+   * The loading form error.
+   */
+  formLoadError?: string
+
+  /**
    * Creates form viewer settings.
    * @param formViewerPropsStore the form viewer store settings.
    * @param parentStore the form viewer settings, used in templates.
@@ -182,6 +187,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
       parentComponentStore: observable.ref,
       parentStoreContext: observable.ref,
       initialDataSlice: true,
+      formLoadError: true
     }, {name: nameObservable(`ViewerStore`)})
   }
 
@@ -370,6 +376,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
    */
   #onLoadError(e: any) {
     console.error(e)
+    this.formLoadError = e?.message ?? e
     const componentStore = buildInternalErrorStore(e)
     this.applyPersistedForm({
       form: componentStore,
@@ -388,7 +395,9 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
       const persistedForm = JSON.parse(text) as PersistedForm
       this.fixPropertyTypes(persistedForm.form)
       this.applyPersistedForm(persistedForm)
+      this.formLoadError = undefined
     } catch (e) {
+      this.formLoadError = (e as Error)?.message ?? e
       console.error(e)
     }
   }

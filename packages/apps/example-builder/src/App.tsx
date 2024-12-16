@@ -12,7 +12,7 @@ import {
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
 import {ActionDefinition, BiDi, ComponentStore, FormValidators, IFormViewer, Language, Validators} from '@react-form-builder/core'
-import type {AnnotationEditorProps, FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
+import type {FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder, FormBuilderI18n} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useState} from 'react'
@@ -198,13 +198,6 @@ const builderLanguages: FormBuilderI18n = {
   }
 }
 
-const StringEditor = ({value, onChange, componentData, annotation}: AnnotationEditorProps) => {
-  const label = componentData.store.props.label?.value ?? componentData.model.defaultProps?.label ?? 'Default placeholder'
-  const placeholder = annotation.key === 'placeholder' ? label : undefined
-
-  return <input value={value} placeholder={placeholder} onChange={(e) => onChange(e.target.value)}/>
-}
-
 // tests don't wait for promises now
 const getFormFn = (formName?: string) => {
   const name = formName ?? sampleFormName
@@ -256,9 +249,6 @@ const FormBuilderApp = () => {
   const useCustomization = false
 
   return <FormBuilder
-    propertyEditors={{
-      string: StringEditor
-    }}
     customization={useCustomization ? simpleCustomization : undefined}
     licenseKey={generatedLicenseKey}
     getForm={getFormFn}

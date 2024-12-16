@@ -50,6 +50,7 @@ export interface ViewerProps {
  */
 const RawViewer = ({event}: ViewerProps) => {
   const store = useStore()
+  const {formLoadError} = store
   const props = useViewerProps()
   const data = useMemo(() => [store.form.componentTree], [store.form.componentTree])
 
@@ -61,7 +62,9 @@ const RawViewer = ({event}: ViewerProps) => {
 
   useEffect(() => store.loadForm(props.getForm, props.formName), [store, props.getForm, props.formName])
 
-  return <ComponentTree data={data}/>
+  return formLoadError
+    ? <div className={'form-error'}>{formLoadError}</div>
+    : <ComponentTree data={data}/>
 }
 
 export const Viewer = namedObserver('Viewer', RawViewer)
