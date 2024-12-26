@@ -558,6 +558,7 @@
     "type": "Type"
   },
   "validation": {
+    "ruleNotFound": "Rule not found or not connected",
     "showFormErrors": "Show form errors",
     "formErrors": "Form errors",
     "chooseValidation": "Choose your type",

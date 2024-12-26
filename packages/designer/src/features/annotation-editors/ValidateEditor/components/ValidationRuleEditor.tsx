@@ -1,12 +1,21 @@
 import styled from '@emotion/styled'
-import type {SchemaType, ValidationRuleSettings} from '@react-form-builder/core'
+import type {Annotation, SchemaType, ValidationRuleSettings} from '@react-form-builder/core'
 import {getValidatorPropertyBlockType, namedObserver, useComponentData, useStore} from '@react-form-builder/core'
+import RemindFillIcon from '@rsuite/icons/RemindFill.js'
+import type {ComponentProps} from 'react'
 import {useCallback} from 'react'
 import {useTranslation} from 'react-i18next'
 import {RemoveButton} from '../../../components/Buttons'
 import {Columns, Rows} from '../../../components/Containers'
+import {useTranslationPart} from '../../../localization/hooks'
 import {PropertyBlock} from '../../../ui/RightPanel/PropertiesEditor/components/Properties'
 import {convertValidationRuleParametersToAnnotations} from '../../../validation/utils/parameterConverter'
+import {HintedIconButton} from '../../Hinted'
+
+const WarningButton = (props: ComponentProps<any>) => {
+  const t = useTranslationPart('validation')
+  return <HintedIconButton hint={t('ruleNotFound')} icon={<RemindFillIcon color="#f5a623"/>} {...props}/>
+}
 
 /**
  * The properties of the React {@link ValidationRuleEditor} component.
@@ -42,22 +51,28 @@ const RawValidationRuleEditor = ({rule, onRemove}: ValidationRuleEditorProps) =>
     if (rule.type === 'custom') return rulesByType.custom?.[ruleKey]
   }
 
-  const ruleDefinition = getValidationRule(type, rule.key)
-  if (!ruleDefinition) {
-    console.warn(`Cannot find validation rule for type: '${type}' and key: '${rule.key}'`)
-    return null
-  }
+  let annotations: Annotation[] | null = null
 
-  const annotations = convertValidationRuleParametersToAnnotations(ruleDefinition.params ?? [])
+  const ruleDefinition = getValidationRule(type, rule.key)
+  if (ruleDefinition) {
+    annotations = convertValidationRuleParametersToAnnotations(ruleDefinition.params ?? [])
+  }
 
   return (
     <Rows>
       <Columns spaceBetween>
-        <SRuleName>{t(`validation.rule.${rule.key}`, rule.key)}</SRuleName>
+        <div>
+          {!annotations &&
+            <WarningButton hintPlacement={'autoHorizontal'} disabled={true}/>
+          }
+          <SRuleName>{t(`validation.rule.${rule.key}`, rule.key)}</SRuleName>
+        </div>
         <RemoveButton onClick={onRemove} hintPlacement={'autoHorizontal'}/>
       </Columns>
-      <PropertyBlock annotations={annotations} propertyBlockType={getValidatorPropertyBlockType(rule.key)} context={rule.args ?? {}}
-                     initContext={initValidatorArgs}/>
+      {annotations &&
+        <PropertyBlock annotations={annotations} propertyBlockType={getValidatorPropertyBlockType(rule.key)} context={rule.args ?? {}}
+                       initContext={initValidatorArgs}/>
+      }
     </Rows>
   )
 }
