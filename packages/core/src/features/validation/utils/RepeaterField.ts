@@ -264,7 +264,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
       result.push(cd.errors)
       hasErrors = hasErrors || cd.hasErrors
     })
-    if (!hasErrors && this.error) return
+    if (!hasErrors) return
     return result
   }
 
