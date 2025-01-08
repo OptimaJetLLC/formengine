@@ -76,6 +76,7 @@ const config: Config = {
           to: 'https://demo.formengine.io/',
           position: 'right',
           target: '_self',
+          className: 'demo-link'
         },
         {
           label: 'Pricing',
@@ -115,6 +116,11 @@ const config: Config = {
             {
               label: 'GitHub',
               to: 'https://github.com/optimajet/formengine',
+              target: '_blank',
+            },
+            {
+              label: 'Form Builder Demo',
+              to: 'https://demo.formengine.io/',
               target: '_blank',
             },
           ],
