@@ -1,0 +1,23 @@
+{
+    "name": "@react-form-builder/tests-e2e",
+    "version": "2.3.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "record": "npx playwright codegen http://localhost:15173",
+        "ui": "npx playwright test --ui",
+        "test": "node ./runner.js",
+        "merge": "TEST_MERGE=1 npx playwright merge-reports -c playwright.config.ts --reporter html ./reports/blob/",
+        "clean": "rimraf reports"
+    },
+    "devDependencies": {
+        "@nx/devkit": "^20.3.1",
+        "@playwright/test": "^1.49.1",
+        "cross-spawn": "^7.0.6",
+        "ctrf": "^0.0.10",
+        "github-actions-ctrf": "^0.0.54",
+        "monocart-reporter": "^2.9.13",
+        "playwright": "^1.49.1",
+        "playwright-ctrf-json-reporter": "^0.0.18"
+    }
+}

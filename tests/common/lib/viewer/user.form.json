@@ -1,0 +1,101 @@
+{
+  "version": "1",
+  "tooltipType": "RsTooltip",
+  "errorType": "RsErrorMessage",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "name",
+        "type": "RsInput",
+        "props": {
+          "placeholder": {
+            "value": "Enter you name"
+          },
+          "label": {
+            "value": "Name"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required"
+            }
+          ]
+        },
+        "tooltipProps": {
+          "text": {
+            "value": "Name"
+          }
+        }
+      },
+      {
+        "key": "password",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Password"
+          },
+          "passwordMask": {
+            "value": true
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required"
+            }
+          ]
+        },
+        "tooltipProps": {
+          "text": {
+            "value": "Password"
+          },
+          "placement": {
+            "value": "left"
+          }
+        }
+      },
+      {
+        "key": "submit",
+        "type": "RsButton",
+        "props": {
+          "children": {
+            "value": "Login"
+          },
+          "color": {
+            "value": "blue"
+          },
+          "appearance": {
+            "value": "primary"
+          }
+        },
+        "events": {
+          "onClick": [
+            {
+              "name": "validate",
+              "type": "common"
+            },
+            {
+              "name": "logEventArgs",
+              "type": "custom"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

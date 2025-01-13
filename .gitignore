@@ -176,3 +176,7 @@ android/build
 ios/Pods
 
 *.gradle
+
+# Test reports
+tests/e2e/playwright-report
+tests/e2e/reports

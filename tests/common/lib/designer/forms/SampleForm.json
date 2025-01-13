@@ -1,0 +1,522 @@
+{
+  "actions": {
+    "WeatherRequest": {
+      "body": "try {\n  const request = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.62&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`, {signal: AbortSignal.timeout(10000)})\n  const value = await request.json()    \n  e.setUserDefinedProps({children: `Current weather is ${value.current_weather.temperature} °C`})\n} catch (error) {\n  e.setUserDefinedProps({children: `Current weather is not available`})\n}",
+      "params": {}
+    },
+    "loadData": {
+      "body": "\n    const [searchValue, loadCallback, currentDataLength] = e.args\n\n    fetch ('https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.json')\n        .then (data => data.json())\n        .then (data => {\n            const preparedData = data\n                .filter(value => value.toLowerCase().includes(searchValue.toLowerCase()))\n                .slice(currentDataLength, currentDataLength + 20)\n                .map(value => ({value, label: value}))\n\n            loadCallback(preparedData)        \n        })\n",
+      "params": {}
+    },
+    "customAssertArgs": {
+      "body": "    if (!e) throw new Error(`'e' is undefined`)\n    if (!args) throw new Error(`'args' is undefined`)\n    if (args.stringParam !== 'Ayn Rand') console.error(`args.stringParam !== 'Ayn Rand'`, args.stringParam)\n    if (args.customBool !== false) console.error(`args.customBool !== false`, args.customBool)\n    if (args.myNumericProperty !== 2.7182818284) console.error(`args.myNumericProperty !== 2.7182818284`, args.myNumericProperty)",
+      "params": {
+        "stringParam": "string",
+        "customBool": "boolean",
+        "myNumericProperty": "number"
+      }
+    },
+    "onFirstNameChange": {
+      "body": "   e.data.comment = e.data['title'] + ' ' + e.value",
+      "params": {}
+    }
+  },
+  "tooltipType": "RsTooltip",
+  "errorType": "RsErrorMessage",
+  "form": {
+    "key": "screen 1",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "RsMenu 1",
+        "type": "RsMenu",
+        "props": {
+          "activeKey": {
+            "value": "Home"
+          }
+        }
+      },
+      {
+        "key": "AntButton 1",
+        "type": "AntButton"
+      },
+      {
+        "key": "RsStaticContent 1",
+        "type": "RsStaticContent",
+        "props": {
+          "content": {
+            "value": "Text... <a href=\"https://duckduckgo.com/\">DuckDuckGo</a>"
+          },
+          "allowHtml": {
+            "value": true
+          }
+        }
+      },
+      {
+        "key": "Breadcrumb 1",
+        "type": "RsBreadcrumb"
+      },
+      {
+        "key": "RsContainer 1",
+        "type": "RsContainer",
+        "css": {
+          "any": {
+            "object": {
+              "flexDirection": "row"
+            }
+          }
+        },
+        "children": [
+          {
+            "key": "RsDropdown 1",
+            "type": "RsDropdown",
+            "props": {
+              "data": {
+                "value": []
+              }
+            },
+            "events": {
+              "onLoadData": [
+                {
+                  "name": "loadData",
+                  "type": "code"
+                }
+              ]
+            }
+          },
+          {
+            "key": "RsSearch 1",
+            "type": "RsSearch",
+            "events": {
+              "onLoadData": [
+                {
+                  "name": "loadData",
+                  "type": "code"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "key": "Slot 1",
+        "type": "Slot"
+      },
+      {
+        "key": "Image 1",
+        "type": "RsImage",
+        "wrapperCss": {
+          "any": {
+            "object": {
+              "width": "100%",
+              "height": "40px"
+            }
+          }
+        },
+        "renderWhen": {
+          "value": "form.data.checkbox",
+          "fnSource": "// enter your code here\nreturn false"
+        }
+      },
+      {
+        "key": "RsButton 1",
+        "type": "RsButton",
+        "props": {
+          "children": {
+            "value": "Fetch weather"
+          }
+        },
+        "events": {
+          "onDidMount": [
+            {
+              "name": "WeatherRequest",
+              "type": "code"
+            },
+            {
+              "name": "assertArgs",
+              "type": "custom",
+              "args": {
+                "p1": "testValue",
+                "p2": true,
+                "p3": 6.62607015
+              }
+            },
+            {
+              "name": "customAssertArgs",
+              "type": "code",
+              "args": {
+                "stringParam": "Ayn Rand",
+                "customBool": false,
+                "myNumericProperty": 2.7182818284
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "Template:Test form 1",
+        "type": "Template:template",
+        "children": [
+          {
+            "key": "Input in template",
+            "type": "RsInput",
+            "slot": "TemplateSlot",
+            "props": {
+              "label": {
+                "value": "Input in template form"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "checkbox",
+        "type": "RsCheckbox",
+        "props": {
+          "checked": {
+            "value": true,
+            "computeType": "function",
+            "fnSource": "return new Date().getMinutes() % 2 === 0"
+          },
+          "children": {
+            "computeType": "function",
+            "fnSource": "return `${form.data.title} ${form.data.checkbox} ${new Date().toISOString()}`"
+          },
+          "events": {
+            "onChange": [
+              {
+                "name": "logEventArgs",
+                "type": "custom"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "key": "header 1",
+        "type": "RsHeader",
+        "props": {
+          "content": {
+            "value": "Application Form"
+          }
+        },
+        "css": {
+          "any": {
+            "object": {
+              "textAlign": "center"
+            }
+          }
+        }
+      },
+      {
+        "key": "currentTime",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Current time"
+          },
+          "disabled": {
+            "value": true
+          },
+          "readOnly": {
+            "value": false
+          }
+        }
+      },
+      {
+        "key": "title",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Title"
+          }
+        }
+      },
+      {
+        "key": "input container",
+        "type": "RsContainer",
+        "children": [
+          {
+            "key": "name container",
+            "type": "RsContainer",
+            "css": {
+              "any": {
+                "object": {
+                  "flexDirection": "row"
+                }
+              }
+            },
+            "children": [
+              {
+                "key": "first name",
+                "type": "RsInput",
+                "props": {
+                  "label": {
+                    "value": "First Name"
+                  }
+                },
+                "events": {
+                  "onChange": [
+                    {
+                      "name": "onFirstNameChange",
+                      "type": "code"
+                    }
+                  ]
+                }
+              },
+              {
+                "key": "last name",
+                "type": "RsInput",
+                "props": {
+                  "label": {
+                    "value": "Last Name"
+                  }
+                },
+                "schema": {
+                  "validations": [
+                    {
+                      "key": "code",
+                      "args": {
+                        "code": "return await fetch(`https://jsonplaceholder.typicode.com/users?username=${value}`).then((response) => response.json()).then((user) => user.length === 0)",
+                        "message": ""
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "key": "Formatted",
+            "type": "RsContainer",
+            "css": {
+              "any": {
+                "object": {
+                  "flexDirection": "row"
+                }
+              }
+            },
+            "children": [
+              {
+                "key": "RsNumberFormat 1",
+                "type": "RsNumberFormat",
+                "props": {
+                  "label": {
+                    "value": "Salary"
+                  }
+                }
+              },
+              {
+                "key": "RsPatternFormat 1",
+                "type": "RsPatternFormat",
+                "props": {
+                  "label": {
+                    "value": "Phone number"
+                  },
+                  "format": {
+                    "value": "+1 (###) #### ###"
+                  },
+                  "allowEmptyFormatting": {
+                    "value": true
+                  },
+                  "mask": {
+                    "value": "_"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "comment",
+        "type": "RsTextArea",
+        "props": {
+          "placeholder": {
+            "computeType": "localization"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "reactVersion"
+          }
+        ]
+      },
+      {
+        "key": "emailInput",
+        "type": "RsInput",
+        "props": {
+          "placeholder": {
+            "value": "Input your email here"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required"
+            },
+            {
+              "key": "email"
+            }
+          ]
+        },
+        "renderWhen": {
+          "value": "false"
+        }
+      },
+      {
+        "key": "button container",
+        "type": "RsContainer",
+        "children": [
+          {
+            "key": "save",
+            "type": "RsButton",
+            "props": {
+              "children": {
+                "value": "Save",
+                "computeType": "function",
+                "fnSource": "return `Save ${new Date().toISOString()}`"
+              },
+              "appearance": {
+                "value": "primary"
+              }
+            },
+            "events": {
+              "onClick": [
+                {
+                  "name": "validate",
+                  "type": "common"
+                }
+              ]
+            }
+          },
+          {
+            "key": "reset",
+            "type": "RsButton",
+            "props": {
+              "children": {
+                "value": "Reset"
+              }
+            },
+            "events": {
+              "onClick": [
+                {
+                  "name": "reset",
+                  "type": "common"
+                }
+              ]
+            }
+          },
+          {
+            "key": "RsUploader 1",
+            "type": "RsUploader"
+          }
+        ]
+      },
+      {
+        "key": "RadioGroup",
+        "type": "RsRadioGroup"
+      },
+      {
+        "key": "Tabs",
+        "type": "RsTab",
+        "props": {
+          "activeKey": {
+            "value": "Item1"
+          }
+        },
+        "children": [
+          {
+            "key": "titleInTab",
+            "type": "RsHeader",
+            "props": {
+              "content": {
+                "value": "Title in tab"
+              }
+            },
+            "slot": "pane",
+            "slotCondition": "return parentProps.activeKey === 'Item1'"
+          },
+          {
+            "key": "buttonInTab",
+            "type": "RsButton",
+            "props": {
+              "children": {
+                "value": "Next"
+              }
+            },
+            "slot": "pane",
+            "slotCondition": "return parentProps.activeKey === 'Item3'"
+          }
+        ]
+      },
+      {
+        "key": "none",
+        "type": "none"
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "comment": {
+        "component": {
+          "placeholder": "Enter your text here"
+        }
+      },
+      "last_name": {
+        "validator-code": {
+          "message": " That username is taken. Try another."
+        }
+      }
+    },
+    "de-DE": {
+      "comment": {
+        "component": {
+          "placeholder": "Geben Sie hier Ihren Text ein"
+        }
+      },
+      "last_name": {
+        "validator-code": {
+          "message": " Dieser Benutzername ist vergeben. Versuch es mit einem anderen."
+        }
+      }
+    },
+    "ar-EG": {
+      "comment": {
+        "component": {
+          "placeholder": "أدخل النص هنا"
+        }
+      },
+      "last_name": {
+        "validator-code": {
+          "message": " يتم أخذ اسم المستخدم هذا. جرب آخر."
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    },
+    {
+      "code": "de",
+      "dialect": "DE",
+      "name": "Deutsch",
+      "description": "German",
+      "bidi": "ltr"
+    },
+    {
+      "code": "ar",
+      "dialect": "EG",
+      "name": "عرب",
+      "description": "Arabic (Egypt)",
+      "bidi": "rtl"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

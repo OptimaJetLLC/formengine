@@ -40,6 +40,7 @@ export default defineConfig(({command}) => ({
     exclude: [
       ...configDefaults.exclude,
       'examples/**',
+      'tests/**',
     ],
   }
 }))
