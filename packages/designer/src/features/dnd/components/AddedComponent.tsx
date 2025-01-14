@@ -2,13 +2,14 @@ import styled from '@emotion/styled'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
 import {camelCase, replace, upperFirst} from 'lodash-es'
 import type {MouseEventHandler, ReactNode} from 'react'
+import {useCallback} from 'react'
 import {icons} from '../../../icons'
 import type {DraggableProps} from '../../ui/ComponentBar'
 import {ItemType} from '../consts'
 import {DragPreview} from './Editable/components/DragPreview'
 import {useDragWithPreview} from './Editable/hooks/useDragWithPreview'
 
-const RawAddedComponent = ({draggable = true, onAdd}: DraggableProps) => {
+const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggableProps) => {
   const data = useComponentData()
   const {name = '', icon: CustomIcon} = data.model
   const iconName = replace(upperFirst(camelCase(name)), ' ', '') as keyof typeof icons
@@ -17,8 +18,14 @@ const RawAddedComponent = ({draggable = true, onAdd}: DraggableProps) => {
     e.stopPropagation()
     onAdd?.(data)
   }
+
+  const handleDoubleClick: MouseEventHandler = useCallback(e => {
+    e.stopPropagation()
+    onDoubleClick?.(data)
+  }, [onDoubleClick, data])
+
   const element = (
-    <Container onClick={onClick}>
+    <Container onClick={onClick} onDoubleClick={handleDoubleClick}>
       <Icon width={18} height={18} viewBox="0 0 24 24"/>
       <label>{name}</label>
     </Container>
