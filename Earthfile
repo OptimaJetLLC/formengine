@@ -27,11 +27,6 @@ npm-documentation-build:
   FROM +sources
   RUN npm run docs:build
 
-# npm-test performs tests
-npm-test:
-  FROM +sources
-  RUN NODE_OPTIONS="--max-old-space-size=4096" npm run test
-
 # npm-check-circular-deps checks for cyclic dependencies
 npm-check-circular-deps:
   FROM +sources

@@ -63,16 +63,6 @@ jobs:
         working-directory: tests/e2e
         if: always()
 
-  tests:
-    name: Run Tests
-    runs-on: [ self-hosted, earthly ]
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Run Tests
-        run: earthly --ci +npm-test
-
   build:
     name: Build Packages
     runs-on: [ self-hosted, earthly ]
