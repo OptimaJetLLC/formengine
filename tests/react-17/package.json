@@ -1,6 +1,6 @@
 {
     "name": "@react-form-builder/test-react-17",
-    "version": "2.3.0",
+    "version": "2.4.0",
     "private": true,
     "type": "module",
     "scripts": {
@@ -9,15 +9,15 @@
         "clean": "rimraf dist"
     },
     "dependencies": {
-        "@react-form-builder/components-antd": "^2.3.0",
-        "@react-form-builder/components-fast-qr": "^2.3.0",
-        "@react-form-builder/components-google-map": "^2.3.0",
-        "@react-form-builder/components-rich-text": "^2.3.0",
-        "@react-form-builder/components-rsuite": "^2.3.0",
-        "@react-form-builder/core": "^2.3.0",
-        "@react-form-builder/designer": "^2.3.0",
-        "@react-form-builder/indexed-db-form-storage": "^2.3.0",
-        "@react-form-builder/tests-common": "^2.3.0",
+        "@react-form-builder/components-antd": "^2.4.0",
+        "@react-form-builder/components-fast-qr": "^2.4.0",
+        "@react-form-builder/components-google-map": "^2.4.0",
+        "@react-form-builder/components-rich-text": "^2.4.0",
+        "@react-form-builder/components-rsuite": "^2.4.0",
+        "@react-form-builder/core": "^2.4.0",
+        "@react-form-builder/designer": "^2.4.0",
+        "@react-form-builder/indexed-db-form-storage": "^2.4.0",
+        "@react-form-builder/tests-common": "^2.4.0",
         "react": "17.0.2",
         "react-dom": "17.0.2"
     },
