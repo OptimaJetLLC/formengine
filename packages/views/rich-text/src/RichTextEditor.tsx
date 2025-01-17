@@ -1,7 +1,7 @@
 import {boolean, define, event, object, someOf, string} from '@react-form-builder/core'
 import {uniqueId} from 'lodash-es'
 import type {CSSProperties} from 'react'
-import {useCallback, useEffect, useMemo, useState} from 'react'
+import {useEffect, useMemo, useRef, useState} from 'react'
 import ReactQuill from 'react-quill-new'
 import 'react-quill-new/dist/quill.snow.css'
 import './styles.css'
@@ -69,10 +69,8 @@ const editorStyle: CSSProperties = {
 }
 
 const RichTextEditor = ({
-// The value is extracted and not used so that the editor is uncontrolled.
                           value,
                           initialValue,
-                          onChange,
                           label,
                           style,
                           toolbarOptions,
@@ -81,20 +79,17 @@ const RichTextEditor = ({
                           ...props
                         }: RichTextEditorProps) => {
   const [key, setKey] = useState(uniqueId())
+  const valueRef = useRef(value)
+  valueRef.current = value
 
   const plainInitialValue = useMemo(() => {
-    if (!initialValue) return initialValue
-    return JSON.parse(JSON.stringify(initialValue))
+    // we want to trigger the useEffect only when the initialValue changes
+    return valueRef.current ?? initialValue
   }, [initialValue])
-
-  const handleChange: ReactQuill.ReactQuillProps['onChange'] = useCallback((value, delta, source, editor) => {
-    const content = editor.getContents()
-    onChange(content)
-  }, [onChange])
 
   useEffect(() => {
     setKey(uniqueId())
-  }, [placeholder, toolbarOptions, customModules, plainInitialValue])
+  }, [placeholder, toolbarOptions, customModules, initialValue])
 
   const modules = useMemo(() => ({
     toolbar: toolbarOptions?.map(option => options[option]),
@@ -105,7 +100,6 @@ const RichTextEditor = ({
     <RsRtlLabel>{label}</RsRtlLabel>
     <ReactQuill key={key}
                 defaultValue={plainInitialValue}
-                onChange={handleChange}
                 modules={modules}
                 placeholder={placeholder}
                 style={{
@@ -121,8 +115,8 @@ export const richTextEditor = define(RichTextEditor, 'RichTextEditor')
   .name('Rich text editor')
   .category('fields')
   .props({
-    value: object.valued.hideEditor(),
-    initialValue: object,
+    value: string.valued.hideEditor(),
+    initialValue: string,
     label: string.default('Rich text editor'),
     placeholder: string,
     readOnly: boolean.default(false),
