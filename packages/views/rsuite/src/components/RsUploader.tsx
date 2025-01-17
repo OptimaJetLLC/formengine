@@ -1,4 +1,5 @@
 import {array, boolean, define, event, node, oneOf, string} from '@react-form-builder/core'
+import {useMemo} from 'react'
 import type {UploaderProps} from 'rsuite'
 import {Uploader} from 'rsuite'
 import {nonNegNumber, readOnly} from '../commonProperties'
@@ -9,10 +10,18 @@ interface RsUploaderProps extends UploaderProps {
   customElement: boolean
 }
 
-const RsUploader = ({customElement, children, ...props}: RsUploaderProps) => {
+const RsUploader = ({customElement, children, disabled, multiple, fileList, ...props}: RsUploaderProps) => {
   const onRemove = useTouchOnEvent(props, 'onRemove')
 
-  return <Uploader {...props} onRemove={onRemove}>
+  const canUpload = useMemo(() => {
+    if (multiple) return true
+    return !(fileList && fileList.length > 0)
+  }, [fileList, multiple])
+
+  const disabledButton = useMemo(() => disabled || !canUpload, [disabled, canUpload])
+
+  return <Uploader {...props} disabled={disabledButton} multiple={multiple}
+                   fileList={fileList} onRemove={onRemove}>
     {customElement && <div>{children}</div>}
   </Uploader>
 }
