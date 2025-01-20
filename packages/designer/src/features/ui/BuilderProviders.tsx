@@ -10,6 +10,7 @@ import {BuilderStoreProvider} from '../../utils/BuilderStoreContext'
 import {determineTheme} from '../../utils/determineTheme'
 import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
 import {CustomDragLayer} from '../dnd/components/CustomDragLayer'
+import {useHotkeys} from '../hotkeys/useHotKeys'
 import {LocalizationProvider} from '../localization'
 import {StylesProvider} from './StylesProvider'
 
@@ -60,6 +61,8 @@ const useBuilderProviderData = (props: FormBuilderProps) => useCallback(() => {
  */
 const RawProviders = ({children, props, builderStore, store}: BuilderProvidersProps) => {
   const {builderRef, ...viewerProps} = props
+
+  useHotkeys(builderStore)
 
   useImperativeHandle(builderRef, () => builderStore, [builderStore])
 

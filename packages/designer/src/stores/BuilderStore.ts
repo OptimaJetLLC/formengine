@@ -917,4 +917,42 @@ export class BuilderStore implements IFormBuilder {
       meta?.eventListeners?.onSelectNode?.(target, componentData)
     })
   }
+
+  /**
+   * Deletes the selected components from the component tree.
+   */
+  deleteSelectedComponents() {
+    const selectedComponents = Array.from(this.selected)
+
+    if (selectedComponents.length <= 0) return
+
+    const root = this.viewer.form.componentTree
+    const resultArray: ComponentData[] = []
+    const firstSelectedComponent = selectedComponents[0]
+
+    const firstSelectedParent = firstSelectedComponent.parent
+    if (firstSelectedParent) {
+      const index = firstSelectedParent.children.indexOf(firstSelectedComponent)
+      // Add components before the first selected component in reverse order
+      resultArray.push(...firstSelectedParent.children.slice(0, index).reverse())
+      resultArray.push(...firstSelectedParent.children.slice(index + 1))
+    }
+
+    let current = firstSelectedParent
+    while (current) {
+      resultArray.push(current)
+      current = current.parent
+    }
+
+    selectedComponents.forEach((component) => {
+      if (component !== root) {
+        this.remove(component)
+      }
+    })
+
+    const nextComponent = resultArray.find((component) => !!root.findByKey(component.key))
+    if (nextComponent) {
+      this.selectNode(nextComponent)
+    }
+  }
 }
