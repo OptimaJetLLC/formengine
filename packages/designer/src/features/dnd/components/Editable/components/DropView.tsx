@@ -22,6 +22,10 @@ const InnerContainer = styled.div`
     background-color: rgba(0, 116, 255, 0.15);
     outline: 1px solid blue;
   }
+
+  .selected & {
+    outline: none !important;
+  }
 `
 
 interface DropViewProps extends PropsWithoutRef<any> {
