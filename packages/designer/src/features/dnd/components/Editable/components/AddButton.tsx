@@ -59,4 +59,5 @@ const Label = styled.p`
   line-height: 1.9;
   text-align: center;
   margin-inline-start: 8px;
+  color: var(--rs-text-primary);
 `
