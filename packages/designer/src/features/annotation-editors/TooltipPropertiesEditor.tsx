@@ -22,7 +22,7 @@ const RawTooltipPropertiesEditor = () => {
   const selectedTooltipType = useTooltipType()
   const tooltipAnnotations = selectedTooltipType ? store.view.getTooltipAnnotations(selectedTooltipType) : null
 
-  const handleToggle = useCallback((_, checked) => {
+  const handleToggle = useCallback((_: unknown, checked: boolean) => {
     if (selectedComponentStore) {
       selectedComponentStore.tooltipProps = checked ? {} : undefined
     }

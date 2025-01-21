@@ -11,7 +11,7 @@ import {TooltipTypePicker} from '../../../annotation-editors/TooltipTypePicker'
 const RawTooltipSettings = () => {
   const builderStore = useBuilderStore()
 
-  const onChange = useCallback(value => builderStore.viewer.form.tooltipType = value, [builderStore])
+  const onChange = useCallback((value: string) => builderStore.viewer.form.tooltipType = value, [builderStore])
   const onClean = useCallback(() => builderStore.viewer.form.tooltipType = undefined, [builderStore])
   const disableCompute = useCallback(() => undefined, [])
   const setComputeCode = useCallback(() => undefined, [])

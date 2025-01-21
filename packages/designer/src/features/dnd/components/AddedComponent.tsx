@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
 import {camelCase, replace, upperFirst} from 'lodash-es'
-import type {MouseEventHandler, ReactNode} from 'react'
+import type {MouseEventHandler, ReactNode, RefCallback} from 'react'
 import {useCallback} from 'react'
 import {icons} from '../../../icons'
 import type {DraggableProps} from '../../ui/ComponentBar'
@@ -42,7 +42,8 @@ const Draggable = ({children}: { children: ReactNode }) => {
   const [{isDragging}, drag] = useDragWithPreview(ItemType.AddedComponent)
 
   return <>
-    <DraggableContainer ref={drag}>{children}</DraggableContainer>
+    {/* TODO FE-1065 */}
+    <DraggableContainer ref={drag as unknown as RefCallback<HTMLDivElement>}>{children}</DraggableContainer>
     {isDragging && <DragPreview>{children}</DragPreview>}
   </>
 }

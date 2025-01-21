@@ -1,5 +1,6 @@
+import {forwardRef} from '@react-form-builder/core'
 import type {ComponentPropsWithoutRef, CSSProperties} from 'react'
-import {forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState} from 'react'
+import {useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState} from 'react'
 import VanillaSignaturePad from 'signature_pad'
 
 /**
@@ -87,7 +88,7 @@ export const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>((p
   const initialValue = useRef(value)
   const initialPadProps = useRef(padProps)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const signPadRef = useRef<VanillaSignaturePad>()
+  const signPadRef = useRef<VanillaSignaturePad>(null)
   const clear = useCallback(() => signPadRef.current?.clear(), [])
   const [vanillaSignaturePad, setVanillaSignaturePad] = useState<VanillaSignaturePad>()
 

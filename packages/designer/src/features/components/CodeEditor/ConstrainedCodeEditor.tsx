@@ -19,8 +19,8 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
     return prefix + contentDelimiter + props.initialValue + postfix
   }, [props.beginContextLine, props.endContextLine, props.initialValue, props.canEditBeginContextLine])
 
-  const editorRef = useRef<editor.IStandaloneCodeEditor>()
-  const constrainedMonacoEditorModelRef = useRef<ConstrainedMonacoEditorModel>()
+  const editorRef = useRef<editor.IStandaloneCodeEditor>(null)
+  const constrainedMonacoEditorModelRef = useRef<ConstrainedMonacoEditorModel>(null)
 
   const getRestrictions = useCallback((model: editor.ITextModel): RangeRestrictionObject[] => {
     const hasEndContextLine = !!props.endContextLine

@@ -13,7 +13,7 @@ function uniqueId(prefix?: string) {
  * @returns the unique ID.
  */
 export function useUniqueId(prefix?: string) {
-  const idRef = useRef<string>()
+  const idRef = useRef<string>(null)
   if (!idRef.current) idRef.current = uniqueId(prefix)
   return idRef.current
 }

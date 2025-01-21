@@ -1,4 +1,4 @@
-import type {CSSObject} from '@emotion/serialize/dist/declarations/types'
+import type {CSSObject} from '@emotion/serialize'
 import type {ComponentType, ReactNode} from 'react'
 import {commonStyles, getDefault, getDefaultCss} from '../../annotation'
 import {toArray} from '../../annotation/toArray'

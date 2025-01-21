@@ -1,5 +1,6 @@
 import type {ReactNode} from 'react'
 import {createElement, useCallback} from 'react'
+import type {ComponentStore} from '../../stores/ComponentStore'
 import {namedObserver} from '../../utils'
 import {useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
@@ -51,7 +52,7 @@ const RawComponentTooltip = ({tooltipDefinition, children}: ComponentTooltipProp
   const viewerStore = useStore()
   const wrappedComponentData = useComponentData()
   const wrappedComponentStore = wrappedComponentData.store
-  const localize = useCallback(componentStore => {
+  const localize = useCallback((componentStore: ComponentStore) => {
     const dataContext = wrappedComponentData.dataRootProvider ?? viewerStore.dataContext
     return viewerStore.localizeComponent('tooltip', dataContext.dataRoot, componentStore)
   }, [viewerStore, wrappedComponentData])

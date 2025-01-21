@@ -78,7 +78,7 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
     setSourceCode(propsSourceCode)
   }, [propsSourceCode])
 
-  const testingFunction = useCallback(formData => onCompile(sourceCode, formData), [sourceCode, onCompile])
+  const testingFunction = useCallback((formData: IFormData) => onCompile(sourceCode, formData), [sourceCode, onCompile])
 
   return <Columns style={{minHeight: 0, flex: 1}}>
     <Rows gap={10} style={{minHeight: 0, flex: 1.5}}>

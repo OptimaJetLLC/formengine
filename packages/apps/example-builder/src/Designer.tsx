@@ -174,7 +174,7 @@ async function getFormFn(name?: string) {
 }
 
 export const Designer = () => {
-  const ref = useRef<IFormViewer>()
+  const ref = useRef<IFormViewer>(null)
 
   const setRef = useCallback((viewer: IFormViewer | null) => {
     if (viewer) {

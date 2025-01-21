@@ -110,7 +110,7 @@ const rgbaColorToHex = (color?: string) => {
   }
 }
 
-const renderQr = async (props: FastQrProps, ref: RefObject<HTMLDivElement>) => {
+const renderQr = async (props: FastQrProps, ref: RefObject<HTMLDivElement | null>) => {
   await init(module)
 
   if (!ref.current) return

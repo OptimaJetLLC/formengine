@@ -1,4 +1,4 @@
-import {forwardRef} from 'react'
+import {forwardRef} from '@react-form-builder/core'
 
 export const OrientationIcon = forwardRef((props, ref) => (
   <svg height="24px" width="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props} ref={ref as any}>

@@ -39,7 +39,7 @@ const RawComputedPropertyEditor = ({property}: ComputedPropertyEditorProps) => {
   const Editor = editors[computeType]
   const toggleItems = getToggleItems(annotation, t)
   const handleClose = useCallback(() => builderStore.currentEditable = undefined, [builderStore])
-  const handleComputeTypeChange = useCallback((value) => setComputeType(value as ComponentPropertyComputeType), [])
+  const handleComputeTypeChange = useCallback((value: string | number) => setComputeType(value as ComponentPropertyComputeType), [])
 
   useEffect(() => setComputeType(initialComputeType), [initialComputeType])
 

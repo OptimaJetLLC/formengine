@@ -2,7 +2,7 @@ import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import type {ComponentData} from '@react-form-builder/core'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
-import type {ComponentProps} from 'react'
+import type {ComponentProps, RefCallback} from 'react'
 import {useDrop} from 'react-dnd'
 import type {ConnectDropTarget} from 'react-dnd/dist/types/types'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
@@ -24,11 +24,13 @@ const RawDropZone = ({isAfter, isInner, ...props}: DropZoneProps) => {
   const inner = isRoot || isInner
   const [{isActive, isOver}, drop] = useDropZone(isAfter, inner, props.slot, props.slotCondition)
   const className = cx({isAfter, isActive, isContainer, isRoot, isInner, isOver})
+  // TODO FE-1065
+  const ref = drop as unknown as RefCallback<HTMLDivElement>
 
   return <>
     {inner
-      ? <InnerDropView ref={drop} className={className} {...props}/>
-      : <SContainer ref={drop} className={className}/>
+      ? <InnerDropView ref={ref} className={className} {...props}/>
+      : <SContainer ref={ref} className={className}/>
     }
     {!inner && <DropView className={className}/>}
   </>

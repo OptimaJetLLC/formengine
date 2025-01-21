@@ -1,8 +1,13 @@
 import {boolean, date, define, event} from '@react-form-builder/core'
 import {Calendar} from 'rsuite'
+import type {CalendarProps} from 'rsuite/esm/Calendar/Calendar'
 import {readOnly} from '../commonProperties'
 
-const RsCalendar: typeof Calendar = (props) => {
+interface RsCalendarProps extends CalendarProps {
+  readOnly: boolean
+}
+
+const RsCalendar = (props: RsCalendarProps) => {
   return props.readOnly
     ? <Calendar {...props} onChange={undefined}/>
     : <Calendar {...props}/>

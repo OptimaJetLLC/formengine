@@ -1,8 +1,7 @@
 import styled from '@emotion/styled'
-import {useComponentData} from '@react-form-builder/core'
+import {forwardRef, useComponentData} from '@react-form-builder/core'
 import {Plus as PlusIcon} from '@rsuite/icons'
-import type {PropsWithoutRef} from 'react'
-import {forwardRef} from 'react'
+import type {PropsWithoutRef, RefCallback} from 'react'
 import {IconButton} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 
@@ -54,7 +53,8 @@ const AddButton = ({slot, slotCondition}: { slot?: string, slotCondition?: strin
  * @returns the React element.
  */
 export const InnerDropView = forwardRef<any, DropViewProps>(({slot, slotCondition, className}, ref) => {
-  return <InnerContainer className={className} ref={ref}>
+  // TODO FE-1065
+  return <InnerContainer className={className} ref={ref as unknown as RefCallback<HTMLDivElement>}>
     <AddButton slot={slot} slotCondition={slotCondition}/>
   </InnerContainer>
 })

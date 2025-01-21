@@ -1,6 +1,7 @@
 import {array, boolean, define, isString, number, oneOf, string} from '@react-form-builder/core'
 import type {NumericFormatProps} from 'react-number-format'
 import {NumericFormat} from 'react-number-format'
+import type {NumberFormatValues} from 'react-number-format/types/types'
 import type {InputProps} from 'rsuite'
 import {inputProps, nonNegNumber} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
@@ -49,9 +50,11 @@ const RsNumberFormat = ({style, className, label, onChange, value, ...props}: Rs
 
   return <RsLabeledInput style={style} className={className}>
     <RsRtlLabel>{label}</RsRtlLabel>
+    {/* TODO FE-1066 */}
+    {/* @ts-ignore FE-1066 */}
     <NumericFormat customInput={WrappedInput} {...props}
                    decimalSeparator={decimalSeparator} thousandSeparator={thousandSeparator}
-                   onValueChange={values => onChange?.(values.value)}
+                   onValueChange={(values: NumberFormatValues) => onChange?.(values.value)}
                    value={value ?? ''}/>
   </RsLabeledInput>
 }

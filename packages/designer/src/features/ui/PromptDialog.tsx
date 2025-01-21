@@ -1,4 +1,5 @@
 import {namedObserver} from '@react-form-builder/core'
+import type {KeyboardEvent} from 'react'
 import {useCallback} from 'react'
 import {Button, Form, Input, Modal} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
@@ -35,14 +36,14 @@ const RawPromptDialog = () => {
     modalState.onCancel?.()
   }, [hide, modalState])
 
-  const handleChange = useCallback(value => {
+  const handleChange = useCallback((value: string) => {
     modalState.value = value
     modalState.validate?.(value)?.then(result => {
       modalState.errorMessage = result
     })
   }, [modalState])
 
-  const handleKeys = useCallback(({key}) => {
+  const handleKeys = useCallback(({key}: KeyboardEvent<HTMLInputElement>) => {
     switch (key) {
       case 'Escape':
         handleCancel()

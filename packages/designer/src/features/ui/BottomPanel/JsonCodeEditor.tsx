@@ -22,7 +22,7 @@ const RawJsonCodeEditor = (props: JsonCode) => {
     }
   }, [t, onValidate])
 
-  const handleSave = useCallback(code => {
+  const handleSave = useCallback((code: string) => {
     try {
       const object = JSON.parse(code)
       onSave(object)

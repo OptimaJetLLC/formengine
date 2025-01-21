@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import type {IFormData} from '@react-form-builder/core'
 import {getFluentCompatibleId, getFluentData, namedObserver, testFluentLocalization} from '@react-form-builder/core'
 import {action} from 'mobx'
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
@@ -38,7 +39,7 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
   const endContextLine = ''
 
   const testingFunction = useCallback(
-    formData => testFluentLocalization({
+    (formData: IFormData) => testFluentLocalization({
       localizationStringId: localizationStringId,
       localization: value,
       data: getFluentData(formData.data),

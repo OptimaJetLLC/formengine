@@ -36,7 +36,7 @@ const RawErroneous = (props: ErroneousProps) => {
     dataValidatorArgs,
     setError)
 
-  const updateErrorMessage = useCallback(async (value, propsError) => {
+  const updateErrorMessage = useCallback(async (value: any, propsError: string | undefined) => {
     if (!mounted) return
     if (propsError) return setError(propsError)
     setError(undefined)

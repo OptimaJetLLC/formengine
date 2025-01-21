@@ -25,6 +25,6 @@
         "@react-form-builder/core": "^2.4.0",
         "@react-form-builder/designer": "^2.4.0",
         "idb-keyval": "^6.2.1",
-        "mobx": "^6.9.0"
+        "mobx": "^6.13.5"
     }
 }

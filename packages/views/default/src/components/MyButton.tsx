@@ -1,4 +1,5 @@
 import {boolean, define, event, string} from '@react-form-builder/core'
+import {JSX} from 'react'
 
 const MyButton = (props: JSX.IntrinsicElements['button']) => {
   return <button {...props}/>

@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import type {Language} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
 import {toUpper} from 'lodash-es'
+import type {ReactNode} from 'react'
 import {useCallback, useMemo} from 'react'
 import type {ItemDataType} from 'rsuite/esm/internals/types'
 import type {SelectProps} from 'rsuite/esm/SelectPicker'
@@ -39,7 +40,7 @@ const RawLocalizationPicker = ({value, onSelect}: LocalizationPickerProps) => {
 
   const handleSelect = useCallback((code: string) => onSelect(langData[code]), [langData, onSelect])
 
-  const renderMenuItem: SelectProps<string>['renderMenuItem'] = useCallback((_, {value}) => {
+  const renderMenuItem: SelectProps<string>['renderMenuItem'] = useCallback((_: ReactNode, {value}: ItemDataType) => {
     return !!value && renderLanguageItem(langData[value])
   }, [langData])
 

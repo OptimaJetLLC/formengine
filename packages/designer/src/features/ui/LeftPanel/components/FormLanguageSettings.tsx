@@ -22,7 +22,7 @@ const RawFormLanguageSettings = () => {
       .build('defaultLanguage')
   }, [languages, builderStore.defaultLanguage])
 
-  const onChange = useCallback(value => {
+  const onChange = useCallback((value: string) => {
     const found = languages.find(l => l.fullCode === value)
     if (found) viewerStore.form.defaultLanguage = found
   }, [languages, viewerStore.form])

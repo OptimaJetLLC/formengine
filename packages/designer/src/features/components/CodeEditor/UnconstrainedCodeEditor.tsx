@@ -10,7 +10,7 @@ import {MonacoCodeEditor} from './MonacoCodeEditor'
  * @returns the React element.
  */
 export const UnconstrainedCodeEditor = (props: UnconstrainedCodeEditorProps) => {
-  const editorRef = useRef<editor.IStandaloneCodeEditor>()
+  const editorRef = useRef<editor.IStandaloneCodeEditor>(null)
 
   useEffect(() => {
     editorRef.current?.setValue(props.initialValue)

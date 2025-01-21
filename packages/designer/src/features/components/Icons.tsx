@@ -1,7 +1,7 @@
 import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
+import {forwardRef} from '@react-form-builder/core'
 import {Icon} from '@rsuite/icons'
 import type {Ref} from 'react'
-import {forwardRef} from 'react'
 
 /**
  * The React component that displays an SVG icon.

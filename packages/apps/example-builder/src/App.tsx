@@ -41,7 +41,7 @@ const data = {
         {rsDatePicker1: new Date()},
       ]
     },
-    {rsInput1: "initial data in repeater"},
+    {rsInput1: 'initial data in repeater'},
   ],
   repeater1: [
     {

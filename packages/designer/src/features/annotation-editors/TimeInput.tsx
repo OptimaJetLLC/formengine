@@ -27,7 +27,7 @@ export const TimeInput = (props: AnnotationEditorProps) => {
   const editorProps = useMemo(() => annotation.editorProps ?? {}, [annotation])
   const parsedValue = useMemo(() => parseTimeValue(value, timeFormat), [value])
 
-  const handleChange = useCallback(value => {
+  const handleChange = useCallback((value: Date) => {
     const formatted = value ? formatDate(value, timeFormat) : value
     onChange?.(formatted)
   }, [onChange])

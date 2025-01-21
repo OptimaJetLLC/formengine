@@ -1,6 +1,7 @@
 import {boolean, define, event, string, time, timeFormat} from '@react-form-builder/core'
 import {format as formatDate, parse} from 'date-fns'
-import React, {useCallback, useMemo} from 'react'
+import type {SyntheticEvent} from 'react'
+import {useCallback, useMemo} from 'react'
 import type {DatePickerProps} from 'rsuite'
 import {DatePicker, Form} from 'rsuite'
 import {placement, readOnly, size} from '../commonProperties'
@@ -30,7 +31,7 @@ const parseTimeValue = (value: any, format: string) => {
 
 interface RsTimePickerProps extends Omit<DatePickerProps, 'value' | 'onChange'> {
   value?: string
-  onChange?: (value: string | null, event: React.SyntheticEvent) => void
+  onChange?: (value: string | null, event: SyntheticEvent) => void
   label: string
 }
 
@@ -41,7 +42,7 @@ const RsTimePicker = ({open, label, value, className, format, defaultValue, onCh
   const parsedDefaultValue = useMemo(() => parseTimeValue(defaultValue, timeFormat), [defaultValue])
   const pickerOpen = useMemo(() => open === true ? true : undefined, [open])
 
-  const handleChange = useCallback((value, e) => {
+  const handleChange = useCallback((value: Date | null, e: SyntheticEvent) => {
     if (value === null) {
       onChange?.(null, e)
       return

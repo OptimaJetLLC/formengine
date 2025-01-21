@@ -72,7 +72,7 @@ export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region
   const {field} = useComponentData()
 
   const markers = useMemo(() => toMarkers(initialMarkers), [initialMarkers])
-  const setMarkers = useCallback(value => {
+  const setMarkers = useCallback((value: Array<object>) => {
     field?.setValue?.(value)
   }, [field])
 

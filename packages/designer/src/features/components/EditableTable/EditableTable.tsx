@@ -1,7 +1,7 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {Close, Plus} from '@rsuite/icons'
-import type {FormEventHandler} from 'react'
+import type {FormEventHandler, JSX} from 'react'
 import {cloneElement, useCallback, useEffect, useState} from 'react'
 import type {TableProps} from 'rsuite'
 import {Button, Form, Table} from 'rsuite'

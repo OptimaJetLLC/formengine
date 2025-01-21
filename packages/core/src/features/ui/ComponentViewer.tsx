@@ -4,6 +4,7 @@ import {Fragment, useCallback, useEffect, useMemo, useRef} from 'react'
 import type {Subscription} from 'rxjs'
 import {catchError, filter, map} from 'rxjs'
 import {ComponentState} from '../../stores/ComponentState'
+import type {ComponentStore} from '../../stores/ComponentStore'
 import type {Store} from '../../stores/Store'
 import {isPromise, namedObserver} from '../../utils'
 import type {ComponentData} from '../../utils/contexts/ComponentDataContext'
@@ -102,7 +103,7 @@ const RawComponentViewer = () => {
   const data = useComponentData()
   const {componentWrapper, computeChildren: viewerComputeChildren} = useViewerProps()
   const formViewerStore = useStore()
-  const localize = useCallback(componentStore => {
+  const localize = useCallback((componentStore: ComponentStore) => {
     const dataContext = data.dataRootProvider ?? formViewerStore.dataContext
     return formViewerStore.localizeComponent('component', dataContext.dataRoot, componentStore)
   }, [formViewerStore, data])
