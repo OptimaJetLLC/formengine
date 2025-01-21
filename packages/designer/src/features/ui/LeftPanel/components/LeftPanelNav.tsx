@@ -2,6 +2,7 @@ import * as faList from '@fortawesome/free-solid-svg-icons/faList.js'
 import * as faPlusCircle from '@fortawesome/free-solid-svg-icons/faPlusCircle.js'
 import * as faSitemap from '@fortawesome/free-solid-svg-icons/faSitemap.js'
 import * as faSliders from '@fortawesome/free-solid-svg-icons/faSlidersH.js'
+import type {ComponentData} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
 import type {ReactNode} from 'react'
 import {useCallback, useMemo, useState} from 'react'
@@ -11,6 +12,7 @@ import {Rows} from '../../../components/Containers'
 import {customizableTab, SNav} from '../../../components/NavIconItem'
 import {customizable} from '../../../customization'
 import type {CustomizableKey} from '../../../customization/types'
+import type {DraggableProps} from '../../ComponentBar'
 import {ComponentBar} from '../../ComponentBar'
 import {FormList} from './FormList'
 import {FormSettings} from './FormSettings'
@@ -22,8 +24,21 @@ const Nav = customizable('LeftPanel_Nav', SNav)
 const NavContent = customizable('LeftPanel_Content', Rows)
 const Components = customizable('Components_Tab_Content', ComponentBar)
 
+const ComponentsTab = (props: DraggableProps) => {
+  const builderStore = useBuilderStore()
+
+  const handleDoubleClick = useCallback((source: ComponentData) => {
+    const root = builderStore.viewer.form.componentTree
+    const target = builderStore.selected.values().next().value ?? root
+    const insertPosition = root === target ? 'inner' : 'after'
+    builderStore.add(source, target, insertPosition)
+  }, [builderStore])
+
+  return <Components {...props} draggable={true} onDoubleClick={handleDoubleClick}/>
+}
+
 const tabsProps: Record<LeftPanelSection, [content: ReactNode, key: CustomizableKey, icon: any, color: string]> = {
-  components: [<Components draggable={true}/>, 'Components_Tab', faPlusCircle, 'var(--rs-green-600)'],
+  components: [<ComponentsTab/>, 'Components_Tab', faPlusCircle, 'var(--rs-green-600)'],
   tree: [<Tree/>, 'Tree_Tab', faSitemap, 'var(--rs-navs-selected)'],
   settings: [<FormSettings/>, 'Settings_Tab', faSliders, 'violet'],
   forms: [<FormList/>, 'Forms_Tab', faList, '#f67f1f']

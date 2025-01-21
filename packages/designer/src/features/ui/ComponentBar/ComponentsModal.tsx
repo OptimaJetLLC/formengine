@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import type {ComponentData} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
+import {useCallback} from 'react'
 import {Modal} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {useTranslationPart} from '../../localization/hooks'
@@ -14,11 +15,16 @@ const RawComponentsModal = () => {
   const {componentsModalState} = useBuilderStore()
   const t = useTranslationPart('componentsModal')
 
-  const closeModal = () => componentsModalState.opened = false
-  const onAdd = (source: ComponentData) => {
-    closeModal()
-    componentsModalState.onSelect(source)
-  }
+  const closeModal = useCallback(() => {
+    return componentsModalState.opened = false
+  }, [componentsModalState])
+
+  const onAdd = useCallback((source: ComponentData) => {
+    if (componentsModalState.opened) {
+      closeModal()
+      componentsModalState.onSelect(source)
+    }
+  }, [closeModal, componentsModalState])
 
   return <SModal open={componentsModalState.opened} onClose={closeModal} size={'lg'}>
     <Modal.Header><h5>{t('clickToAdd')}</h5></Modal.Header>

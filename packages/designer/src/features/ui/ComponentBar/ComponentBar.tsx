@@ -111,18 +111,13 @@ const RawAddedComponents = ({definitions, ...componentProps}: AddedComponentsPro
     return builderStore.viewer.createComponentData(componentStore)
   }, [builderStore])
 
-  const handleDoubleClick = useCallback((source: ComponentData) => {
-    const target = builderStore.selected.values().next().value ?? builderStore.viewer.form.componentTree.root
-    builderStore.add(source, target, 'after')
-  }, [builderStore])
-
   return (
     <ControlsGroup>
       {definitions.map(model => {
         const componentData = createComponentData(model)
         return (
           <ComponentDataProvider key={componentData.id} value={componentData}>
-            <AddedComponent {...componentProps} onDoubleClick={handleDoubleClick}/>
+            <AddedComponent {...componentProps}/>
           </ComponentDataProvider>
         )
       })}
