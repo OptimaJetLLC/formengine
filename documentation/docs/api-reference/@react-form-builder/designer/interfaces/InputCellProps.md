@@ -79,11 +79,41 @@ presented if they are made.
 
 ***
 
+### aria-braillelabel?
+
+> `optional` **aria-braillelabel**: `string`
+
+Defines a string value that labels the current element, which is intended to be converted into Braille.
+
+#### See
+
+aria-label.
+
+#### Inherited from
+
+`InnerCellProps.aria-braillelabel`
+
+***
+
+### aria-brailleroledescription?
+
+> `optional` **aria-brailleroledescription**: `string`
+
+Defines a human-readable, author-localized abbreviated description for the role of an element, which is intended to be converted into Braille.
+
+#### See
+
+aria-roledescription.
+
+#### Inherited from
+
+`InnerCellProps.aria-brailleroledescription`
+
+***
+
 ### aria-busy?
 
 > `optional` **aria-busy**: `Booleanish`
-
-Indicates an element is being modified and that assistive technologies MAY want to wait until the modifications are complete before exposing them to the user.
 
 #### Inherited from
 
@@ -138,6 +168,22 @@ Defines an element's column index or position with respect to the total number o
 #### Inherited from
 
 `InnerCellProps.aria-colindex`
+
+***
+
+### aria-colindextext?
+
+> `optional` **aria-colindextext**: `string`
+
+Defines a human readable text alternative of aria-colindex.
+
+#### See
+
+aria-rowindextext.
+
+#### Inherited from
+
+`InnerCellProps.aria-colindextext`
 
 ***
 
@@ -199,6 +245,22 @@ aria-labelledby
 #### Inherited from
 
 `InnerCellProps.aria-describedby`
+
+***
+
+### aria-description?
+
+> `optional` **aria-description**: `string`
+
+Defines a string value that describes or annotates the current element.
+
+#### See
+
+related aria-describedby.
+
+#### Inherited from
+
+`InnerCellProps.aria-description`
 
 ***
 
@@ -621,6 +683,22 @@ Defines an element's row index or position with respect to the total number of r
 
 ***
 
+### aria-rowindextext?
+
+> `optional` **aria-rowindextext**: `string`
+
+Defines a human readable text alternative of aria-rowindex.
+
+#### See
+
+aria-colindextext.
+
+#### Inherited from
+
+`InnerCellProps.aria-rowindextext`
+
+***
+
 ### aria-rowspan?
 
 > `optional` **aria-rowspan**: `number`
@@ -737,7 +815,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### autoCapitalize?
 
-> `optional` **autoCapitalize**: `string`
+> `optional` **autoCapitalize**: `string` & `object` \| `"none"` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"` \| `"characters"`
 
 #### Inherited from
 
@@ -819,9 +897,19 @@ The prefix of the component CSS class
 
 ***
 
+### content?
+
+> `optional` **content**: `string`
+
+#### Inherited from
+
+`InnerCellProps.content`
+
+***
+
 ### contentEditable?
 
-> `optional` **contentEditable**: `"inherit"` \| `Booleanish`
+> `optional` **contentEditable**: `"inherit"` \| `Booleanish` \| `"plaintext-only"`
 
 #### Inherited from
 
@@ -845,7 +933,7 @@ The prefix of the component CSS class
 
 #### \_\_html
 
-> **\_\_html**: `string`
+> **\_\_html**: `string` \| `TrustedHTML`
 
 #### Inherited from
 
@@ -922,6 +1010,16 @@ The cell data key.
 #### Inherited from
 
 `InnerCellProps.draggable`
+
+***
+
+### enterKeyHint?
+
+> `optional` **enterKeyHint**: `"next"` \| `"search"` \| `"enter"` \| `"done"` \| `"go"` \| `"previous"` \| `"send"`
+
+#### Inherited from
+
+`InnerCellProps.enterKeyHint`
 
 ***
 
@@ -1005,6 +1103,20 @@ The cell data key.
 
 ***
 
+### inert?
+
+> `optional` **inert**: `boolean`
+
+#### See
+
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+
+#### Inherited from
+
+`InnerCellProps.inert`
+
+***
+
 ### inlist?
 
 > `optional` **inlist**: `any`
@@ -1023,7 +1135,7 @@ Hints at the type of data that might be entered by the user while editing the el
 
 #### See
 
-https://html.spec.whatwg.org/multipage/interaction.html#input-modalities:-the-inputmode-attribute
+[https://html.spec.whatwg.org/multipage/interaction.html#input-modalities:-the-inputmode-attribute](https://html.spec.whatwg.org/multipage/interaction.html#input-modalities:-the-inputmode-attribute)
 
 #### Inherited from
 
@@ -1039,7 +1151,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 #### See
 
-https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is
+[https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is](https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is)
 
 #### Inherited from
 
@@ -1264,6 +1376,16 @@ https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is
 #### Inherited from
 
 `InnerCellProps.onBeforeInputCapture`
+
+***
+
+### onBeforeToggle?
+
+> `optional` **onBeforeToggle**: `ToggleEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`InnerCellProps.onBeforeToggle`
 
 ***
 
@@ -1893,6 +2015,8 @@ the cell row index.
 
 #### Deprecated
 
+Use `onKeyUp` or `onKeyDown` instead
+
 #### Inherited from
 
 `InnerCellProps.onKeyPress`
@@ -1904,6 +2028,8 @@ the cell row index.
 > `optional` **onKeyPressCapture**: `KeyboardEventHandler`\<`HTMLElement`\>
 
 #### Deprecated
+
+Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 #### Inherited from
 
@@ -2281,16 +2407,6 @@ the cell row index.
 
 ***
 
-### onPointerEnterCapture?
-
-> `optional` **onPointerEnterCapture**: `PointerEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-`InnerCellProps.onPointerEnterCapture`
-
-***
-
 ### onPointerLeave?
 
 > `optional` **onPointerLeave**: `PointerEventHandler`\<`HTMLElement`\>
@@ -2298,16 +2414,6 @@ the cell row index.
 #### Inherited from
 
 `InnerCellProps.onPointerLeave`
-
-***
-
-### onPointerLeaveCapture?
-
-> `optional` **onPointerLeaveCapture**: `PointerEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-`InnerCellProps.onPointerLeaveCapture`
 
 ***
 
@@ -2448,6 +2554,26 @@ the cell row index.
 #### Inherited from
 
 `InnerCellProps.onResetCapture`
+
+***
+
+### onResize?
+
+> `optional` **onResize**: `ReactEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`InnerCellProps.onResize`
+
+***
+
+### onResizeCapture?
+
+> `optional` **onResizeCapture**: `ReactEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`InnerCellProps.onResizeCapture`
 
 ***
 
@@ -2611,6 +2737,16 @@ the cell row index.
 
 ***
 
+### onToggle?
+
+> `optional` **onToggle**: `ToggleEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`InnerCellProps.onToggle`
+
+***
+
 ### onTouchCancel?
 
 > `optional` **onTouchCancel**: `TouchEventHandler`\<`HTMLElement`\>
@@ -2691,6 +2827,26 @@ the cell row index.
 
 ***
 
+### onTransitionCancel?
+
+> `optional` **onTransitionCancel**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`InnerCellProps.onTransitionCancel`
+
+***
+
+### onTransitionCancelCapture?
+
+> `optional` **onTransitionCancelCapture**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`InnerCellProps.onTransitionCancelCapture`
+
+***
+
 ### onTransitionEnd?
 
 > `optional` **onTransitionEnd**: `TransitionEventHandler`\<`HTMLElement`\>
@@ -2708,6 +2864,46 @@ the cell row index.
 #### Inherited from
 
 `InnerCellProps.onTransitionEndCapture`
+
+***
+
+### onTransitionRun?
+
+> `optional` **onTransitionRun**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`InnerCellProps.onTransitionRun`
+
+***
+
+### onTransitionRunCapture?
+
+> `optional` **onTransitionRunCapture**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`InnerCellProps.onTransitionRunCapture`
+
+***
+
+### onTransitionStart?
+
+> `optional` **onTransitionStart**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`InnerCellProps.onTransitionStart`
+
+***
+
+### onTransitionStartCapture?
+
+> `optional` **onTransitionStartCapture**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`InnerCellProps.onTransitionStartCapture`
 
 ***
 
@@ -2795,13 +2991,33 @@ the cell row index.
 
 ***
 
-### placeholder?
+### popover?
 
-> `optional` **placeholder**: `string`
+> `optional` **popover**: `""` \| `"auto"` \| `"manual"`
 
 #### Inherited from
 
-`InnerCellProps.placeholder`
+`InnerCellProps.popover`
+
+***
+
+### popoverTarget?
+
+> `optional` **popoverTarget**: `string`
+
+#### Inherited from
+
+`InnerCellProps.popoverTarget`
+
+***
+
+### popoverTargetAction?
+
+> `optional` **popoverTargetAction**: `"toggle"` \| `"show"` \| `"hide"`
+
+#### Inherited from
+
+`InnerCellProps.popoverTargetAction`
 
 ***
 
@@ -2842,6 +3058,16 @@ the cell row index.
 #### Inherited from
 
 `InnerCellProps.radioGroup`
+
+***
+
+### rel?
+
+> `optional` **rel**: `string`
+
+#### Inherited from
+
+`InnerCellProps.rel`
 
 ***
 
@@ -2912,6 +3138,16 @@ the cell row index.
 #### Inherited from
 
 `InnerCellProps.results`
+
+***
+
+### rev?
+
+> `optional` **rev**: `string`
+
+#### Inherited from
+
+`InnerCellProps.rev`
 
 ***
 
@@ -3091,7 +3327,7 @@ The input type.
 
 ### unselectable?
 
-> `optional` **unselectable**: `"on"` \| `"off"`
+> `optional` **unselectable**: `"off"` \| `"on"`
 
 #### Inherited from
 

@@ -6,4 +6,4 @@
 
 [`BuilderContextType`](../type-aliases/BuilderContextType.md)
 
-the [BuilderContext](../variables/BuilderContext.md) value.
+the [BuilderContext](BuilderContext.md) value.

@@ -740,11 +740,6 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
-            "id": "api-reference/@react-form-builder/core/variables/BuilderContext",
-            "label": "BuilderContext"
-          },
-          {
-            "type": "doc",
             "id": "api-reference/@react-form-builder/core/variables/DidMountEvent",
             "label": "DidMountEvent"
           },
@@ -757,11 +752,6 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/variables/KeySymbol",
             "label": "KeySymbol"
-          },
-          {
-            "type": "doc",
-            "id": "api-reference/@react-form-builder/core/variables/StoreContext",
-            "label": "StoreContext"
           },
           {
             "type": "doc",
@@ -926,6 +916,11 @@ const typedocSidebar = { items: [
         "items": [
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/BuilderContext",
+            "label": "BuilderContext"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/functions/BuilderContextProvider",
             "label": "BuilderContextProvider"
           },
@@ -953,6 +948,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/functions/SDiv",
             "label": "SDiv"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/StoreContext",
+            "label": "StoreContext"
           },
           {
             "type": "doc",
@@ -1013,6 +1013,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/functions/findTreeElementDepth",
             "label": "findTreeElementDepth"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/forwardRef",
+            "label": "forwardRef"
           },
           {
             "type": "doc",

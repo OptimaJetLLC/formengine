@@ -1,6 +1,6 @@
 # Function: BuilderContextProvider()
 
-> **BuilderContextProvider**(`props`): `null` \| `ReactElement`\<`any`, `string` \| `JSXElementConstructor`\<`any`\>\>
+> **BuilderContextProvider**(`props`): `null` \| `ReactElement`\<`unknown`, `string` \| `JSXElementConstructor`\<`any`\>\>
 
 The FormBuilder context provider.
 
@@ -10,4 +10,4 @@ The FormBuilder context provider.
 
 ## Returns
 
-`null` \| `ReactElement`\<`any`, `string` \| `JSXElementConstructor`\<`any`\>\>
+`null` \| `ReactElement`\<`unknown`, `string` \| `JSXElementConstructor`\<`any`\>\>

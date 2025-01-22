@@ -8,7 +8,7 @@ The annotations for generic CSS properties of a container component.
 
 ### alignItems
 
-> **alignItems**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"start"` \| `"center"` \| `"baseline"` \| `"end"` \| `"stretch"`\>
+> **alignItems**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"center"` \| `"start"` \| `"baseline"` \| `"end"` \| `"stretch"`\>
 
 ### flexDirection
 
@@ -24,4 +24,4 @@ The annotations for generic CSS properties of a container component.
 
 ### justifyContent
 
-> **justifyContent**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"start"` \| `"center"` \| `"end"` \| `"flex-start"` \| `"flex-end"` \| `"space-between"` \| `"space-around"` \| `"space-evenly"` \| `"left"` \| `"right"`\>
+> **justifyContent**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"center"` \| `"start"` \| `"end"` \| `"flex-start"` \| `"flex-end"` \| `"space-between"` \| `"space-around"` \| `"space-evenly"` \| `"left"` \| `"right"`\>

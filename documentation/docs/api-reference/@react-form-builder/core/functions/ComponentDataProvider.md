@@ -1,6 +1,6 @@
 # Function: ComponentDataProvider()
 
-> **ComponentDataProvider**(`props`): `null` \| `ReactElement`\<`any`, `string` \| `JSXElementConstructor`\<`any`\>\>
+> **ComponentDataProvider**(`props`): `null` \| `ReactElement`\<`unknown`, `string` \| `JSXElementConstructor`\<`any`\>\>
 
 Context provider for the useComponentData hook. **Internal use only.**
 
@@ -10,4 +10,4 @@ Context provider for the useComponentData hook. **Internal use only.**
 
 ## Returns
 
-`null` \| `ReactElement`\<`any`, `string` \| `JSXElementConstructor`\<`any`\>\>
+`null` \| `ReactElement`\<`unknown`, `string` \| `JSXElementConstructor`\<`any`\>\>

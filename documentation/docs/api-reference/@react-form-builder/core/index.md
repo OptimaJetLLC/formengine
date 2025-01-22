@@ -155,11 +155,9 @@
 
 - [ActionEventArgsDeclaration](variables/ActionEventArgsDeclaration.md)
 - [AsyncFunction](variables/AsyncFunction.md)
-- [BuilderContext](variables/BuilderContext.md)
 - [DidMountEvent](variables/DidMountEvent.md)
 - [IFormDataDeclaration](variables/IFormDataDeclaration.md)
 - [KeySymbol](variables/KeySymbol.md)
-- [StoreContext](variables/StoreContext.md)
 - [WillUnmountEvent](variables/WillUnmountEvent.md)
 - [array](variables/array.md)
 - [boolean](variables/boolean.md)
@@ -194,12 +192,14 @@
 
 ## Functions
 
+- [BuilderContext](functions/BuilderContext.md)
 - [BuilderContextProvider](functions/BuilderContextProvider.md)
 - [ComponentDataProvider](functions/ComponentDataProvider.md)
 - [ComponentTree](functions/ComponentTree.md)
 - [DefaultWrapper](functions/DefaultWrapper.md)
 - [FormViewer](functions/FormViewer.md)
 - [SDiv](functions/SDiv.md)
+- [StoreContext](functions/StoreContext.md)
 - [StoreProvider](functions/StoreProvider.md)
 - [SuppressResizeObserverErrors](functions/SuppressResizeObserverErrors.md)
 - [ViewerPropsProvider](functions/ViewerPropsProvider.md)
@@ -212,6 +212,7 @@
 - [createView](functions/createView.md)
 - [define](functions/define.md)
 - [findTreeElementDepth](functions/findTreeElementDepth.md)
+- [forwardRef](functions/forwardRef.md)
 - [generateTemplateTypeName](functions/generateTemplateTypeName.md)
 - [generateUniqueName](functions/generateUniqueName.md)
 - [getDefault](functions/getDefault.md)

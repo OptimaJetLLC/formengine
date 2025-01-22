@@ -75,11 +75,41 @@ presented if they are made.
 
 ***
 
+### aria-braillelabel?
+
+> `optional` **aria-braillelabel**: `string`
+
+Defines a string value that labels the current element, which is intended to be converted into Braille.
+
+#### See
+
+aria-label.
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`aria-braillelabel`](InputCellProps.md#aria-braillelabel)
+
+***
+
+### aria-brailleroledescription?
+
+> `optional` **aria-brailleroledescription**: `string`
+
+Defines a human-readable, author-localized abbreviated description for the role of an element, which is intended to be converted into Braille.
+
+#### See
+
+aria-roledescription.
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`aria-brailleroledescription`](InputCellProps.md#aria-brailleroledescription)
+
+***
+
 ### aria-busy?
 
 > `optional` **aria-busy**: `Booleanish`
-
-Indicates an element is being modified and that assistive technologies MAY want to wait until the modifications are complete before exposing them to the user.
 
 #### Inherited from
 
@@ -134,6 +164,22 @@ Defines an element's column index or position with respect to the total number o
 #### Inherited from
 
 [`InputCellProps`](InputCellProps.md).[`aria-colindex`](InputCellProps.md#aria-colindex)
+
+***
+
+### aria-colindextext?
+
+> `optional` **aria-colindextext**: `string`
+
+Defines a human readable text alternative of aria-colindex.
+
+#### See
+
+aria-rowindextext.
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`aria-colindextext`](InputCellProps.md#aria-colindextext)
 
 ***
 
@@ -195,6 +241,22 @@ aria-labelledby
 #### Inherited from
 
 [`InputCellProps`](InputCellProps.md).[`aria-describedby`](InputCellProps.md#aria-describedby)
+
+***
+
+### aria-description?
+
+> `optional` **aria-description**: `string`
+
+Defines a string value that describes or annotates the current element.
+
+#### See
+
+related aria-describedby.
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`aria-description`](InputCellProps.md#aria-description)
 
 ***
 
@@ -617,6 +679,22 @@ Defines an element's row index or position with respect to the total number of r
 
 ***
 
+### aria-rowindextext?
+
+> `optional` **aria-rowindextext**: `string`
+
+Defines a human readable text alternative of aria-rowindex.
+
+#### See
+
+aria-colindextext.
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`aria-rowindextext`](InputCellProps.md#aria-rowindextext)
+
+***
+
 ### aria-rowspan?
 
 > `optional` **aria-rowspan**: `number`
@@ -733,7 +811,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### autoCapitalize?
 
-> `optional` **autoCapitalize**: `string`
+> `optional` **autoCapitalize**: `string` & `object` \| `"none"` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"` \| `"characters"`
 
 #### Inherited from
 
@@ -815,9 +893,19 @@ The prefix of the component CSS class
 
 ***
 
+### content?
+
+> `optional` **content**: `string`
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`content`](InputCellProps.md#content)
+
+***
+
 ### contentEditable?
 
-> `optional` **contentEditable**: `"inherit"` \| `Booleanish`
+> `optional` **contentEditable**: `"inherit"` \| `Booleanish` \| `"plaintext-only"`
 
 #### Inherited from
 
@@ -841,7 +929,7 @@ The prefix of the component CSS class
 
 #### \_\_html
 
-> **\_\_html**: `string`
+> **\_\_html**: `string` \| `TrustedHTML`
 
 #### Inherited from
 
@@ -918,6 +1006,16 @@ The cell data key.
 #### Inherited from
 
 [`InputCellProps`](InputCellProps.md).[`draggable`](InputCellProps.md#draggable)
+
+***
+
+### enterKeyHint?
+
+> `optional` **enterKeyHint**: `"next"` \| `"search"` \| `"enter"` \| `"done"` \| `"go"` \| `"previous"` \| `"send"`
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`enterKeyHint`](InputCellProps.md#enterkeyhint)
 
 ***
 
@@ -1001,6 +1099,20 @@ The cell data key.
 
 ***
 
+### inert?
+
+> `optional` **inert**: `boolean`
+
+#### See
+
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`inert`](InputCellProps.md#inert)
+
+***
+
 ### inlist?
 
 > `optional` **inlist**: `any`
@@ -1019,7 +1131,7 @@ Hints at the type of data that might be entered by the user while editing the el
 
 #### See
 
-https://html.spec.whatwg.org/multipage/interaction.html#input-modalities:-the-inputmode-attribute
+[https://html.spec.whatwg.org/multipage/interaction.html#input-modalities:-the-inputmode-attribute](https://html.spec.whatwg.org/multipage/interaction.html#input-modalities:-the-inputmode-attribute)
 
 #### Inherited from
 
@@ -1035,7 +1147,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 #### See
 
-https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is
+[https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is](https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is)
 
 #### Inherited from
 
@@ -1260,6 +1372,16 @@ https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is
 #### Inherited from
 
 [`InputCellProps`](InputCellProps.md).[`onBeforeInputCapture`](InputCellProps.md#onbeforeinputcapture)
+
+***
+
+### onBeforeToggle?
+
+> `optional` **onBeforeToggle**: `ToggleEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`onBeforeToggle`](InputCellProps.md#onbeforetoggle)
 
 ***
 
@@ -1889,6 +2011,8 @@ the cell row index.
 
 #### Deprecated
 
+Use `onKeyUp` or `onKeyDown` instead
+
 #### Inherited from
 
 [`InputCellProps`](InputCellProps.md).[`onKeyPress`](InputCellProps.md#onkeypress)
@@ -1900,6 +2024,8 @@ the cell row index.
 > `optional` **onKeyPressCapture**: `KeyboardEventHandler`\<`HTMLElement`\>
 
 #### Deprecated
+
+Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 #### Inherited from
 
@@ -2277,16 +2403,6 @@ the cell row index.
 
 ***
 
-### onPointerEnterCapture?
-
-> `optional` **onPointerEnterCapture**: `PointerEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-[`InputCellProps`](InputCellProps.md).[`onPointerEnterCapture`](InputCellProps.md#onpointerentercapture)
-
-***
-
 ### onPointerLeave?
 
 > `optional` **onPointerLeave**: `PointerEventHandler`\<`HTMLElement`\>
@@ -2294,16 +2410,6 @@ the cell row index.
 #### Inherited from
 
 [`InputCellProps`](InputCellProps.md).[`onPointerLeave`](InputCellProps.md#onpointerleave)
-
-***
-
-### onPointerLeaveCapture?
-
-> `optional` **onPointerLeaveCapture**: `PointerEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-[`InputCellProps`](InputCellProps.md).[`onPointerLeaveCapture`](InputCellProps.md#onpointerleavecapture)
 
 ***
 
@@ -2444,6 +2550,26 @@ the cell row index.
 #### Inherited from
 
 [`InputCellProps`](InputCellProps.md).[`onResetCapture`](InputCellProps.md#onresetcapture)
+
+***
+
+### onResize?
+
+> `optional` **onResize**: `ReactEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`onResize`](InputCellProps.md#onresize)
+
+***
+
+### onResizeCapture?
+
+> `optional` **onResizeCapture**: `ReactEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`onResizeCapture`](InputCellProps.md#onresizecapture)
 
 ***
 
@@ -2607,6 +2733,16 @@ the cell row index.
 
 ***
 
+### onToggle?
+
+> `optional` **onToggle**: `ToggleEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`onToggle`](InputCellProps.md#ontoggle)
+
+***
+
 ### onTouchCancel?
 
 > `optional` **onTouchCancel**: `TouchEventHandler`\<`HTMLElement`\>
@@ -2687,6 +2823,26 @@ the cell row index.
 
 ***
 
+### onTransitionCancel?
+
+> `optional` **onTransitionCancel**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`onTransitionCancel`](InputCellProps.md#ontransitioncancel)
+
+***
+
+### onTransitionCancelCapture?
+
+> `optional` **onTransitionCancelCapture**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`onTransitionCancelCapture`](InputCellProps.md#ontransitioncancelcapture)
+
+***
+
 ### onTransitionEnd?
 
 > `optional` **onTransitionEnd**: `TransitionEventHandler`\<`HTMLElement`\>
@@ -2704,6 +2860,46 @@ the cell row index.
 #### Inherited from
 
 [`InputCellProps`](InputCellProps.md).[`onTransitionEndCapture`](InputCellProps.md#ontransitionendcapture)
+
+***
+
+### onTransitionRun?
+
+> `optional` **onTransitionRun**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`onTransitionRun`](InputCellProps.md#ontransitionrun)
+
+***
+
+### onTransitionRunCapture?
+
+> `optional` **onTransitionRunCapture**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`onTransitionRunCapture`](InputCellProps.md#ontransitionruncapture)
+
+***
+
+### onTransitionStart?
+
+> `optional` **onTransitionStart**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`onTransitionStart`](InputCellProps.md#ontransitionstart)
+
+***
+
+### onTransitionStartCapture?
+
+> `optional` **onTransitionStartCapture**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`onTransitionStartCapture`](InputCellProps.md#ontransitionstartcapture)
 
 ***
 
@@ -2799,13 +2995,33 @@ The select options.
 
 ***
 
-### placeholder?
+### popover?
 
-> `optional` **placeholder**: `string`
+> `optional` **popover**: `""` \| `"auto"` \| `"manual"`
 
 #### Inherited from
 
-[`InputCellProps`](InputCellProps.md).[`placeholder`](InputCellProps.md#placeholder)
+[`InputCellProps`](InputCellProps.md).[`popover`](InputCellProps.md#popover)
+
+***
+
+### popoverTarget?
+
+> `optional` **popoverTarget**: `string`
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`popoverTarget`](InputCellProps.md#popovertarget)
+
+***
+
+### popoverTargetAction?
+
+> `optional` **popoverTargetAction**: `"toggle"` \| `"show"` \| `"hide"`
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`popoverTargetAction`](InputCellProps.md#popovertargetaction)
 
 ***
 
@@ -2846,6 +3062,16 @@ The select options.
 #### Inherited from
 
 [`InputCellProps`](InputCellProps.md).[`radioGroup`](InputCellProps.md#radiogroup)
+
+***
+
+### rel?
+
+> `optional` **rel**: `string`
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`rel`](InputCellProps.md#rel)
 
 ***
 
@@ -2916,6 +3142,16 @@ The select options.
 #### Inherited from
 
 [`InputCellProps`](InputCellProps.md).[`results`](InputCellProps.md#results)
+
+***
+
+### rev?
+
+> `optional` **rev**: `string`
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`rev`](InputCellProps.md#rev)
 
 ***
 
@@ -3099,7 +3335,7 @@ The input type.
 
 ### unselectable?
 
-> `optional` **unselectable**: `"on"` \| `"off"`
+> `optional` **unselectable**: `"off"` \| `"on"`
 
 #### Inherited from
 

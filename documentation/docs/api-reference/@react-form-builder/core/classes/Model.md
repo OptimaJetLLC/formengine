@@ -12,7 +12,7 @@ the type of React component properties.
 
 ### new Model()
 
-> **new Model**\<`T`\>(`component`, `name`?, `actionsInitializer`?, `valued`?, `valueType`?, `defaultProps`?, `css`?, `wrapperCss`?, `typeName`?, `icon`?, `kind`?, `readOnly`?, `propsBindingTypes`?): [`Model`](Model.md)\<`T`\>
+> **new Model**\<`T`\>(`component`, `name`?, `actionsInitializer`?, `valued`?, `valueType`?, `defaultProps`?, `css`?, `wrapperCss`?, `typeName`?, `kind`?, `readOnly`?, `propsBindingTypes`?): [`Model`](Model.md)\<`T`\>
 
 Creates component metadata for the form viewer.
 
@@ -53,10 +53,6 @@ the component's wrapper CSS values.
 • **typeName?**: `string`
 
 the component type name.
-
-• **icon?**: `ComponentType`
-
-the component icon.
 
 • **kind?**: [`ComponentKind`](../type-aliases/ComponentKind.md) = `'component'`
 
@@ -105,14 +101,6 @@ the component's CSS values.
 > `readonly` `optional` **defaultProps**: `Readonly`\<`Record`\<`string`, `any`\>\>
 
 the component's default property values.
-
-***
-
-### icon?
-
-> `readonly` `optional` **icon**: `ComponentType`
-
-the component icon.
 
 ***
 

@@ -89,11 +89,41 @@ presented if they are made.
 
 ***
 
+### aria-braillelabel?
+
+> `optional` **aria-braillelabel**: `string`
+
+Defines a string value that labels the current element, which is intended to be converted into Braille.
+
+#### See
+
+aria-label.
+
+#### Inherited from
+
+`TableProps.aria-braillelabel`
+
+***
+
+### aria-brailleroledescription?
+
+> `optional` **aria-brailleroledescription**: `string`
+
+Defines a human-readable, author-localized abbreviated description for the role of an element, which is intended to be converted into Braille.
+
+#### See
+
+aria-roledescription.
+
+#### Inherited from
+
+`TableProps.aria-brailleroledescription`
+
+***
+
 ### aria-busy?
 
 > `optional` **aria-busy**: `Booleanish`
-
-Indicates an element is being modified and that assistive technologies MAY want to wait until the modifications are complete before exposing them to the user.
 
 #### Inherited from
 
@@ -148,6 +178,22 @@ Defines an element's column index or position with respect to the total number o
 #### Inherited from
 
 `TableProps.aria-colindex`
+
+***
+
+### aria-colindextext?
+
+> `optional` **aria-colindextext**: `string`
+
+Defines a human readable text alternative of aria-colindex.
+
+#### See
+
+aria-rowindextext.
+
+#### Inherited from
+
+`TableProps.aria-colindextext`
 
 ***
 
@@ -209,6 +255,22 @@ aria-labelledby
 #### Inherited from
 
 `TableProps.aria-describedby`
+
+***
+
+### aria-description?
+
+> `optional` **aria-description**: `string`
+
+Defines a string value that describes or annotates the current element.
+
+#### See
+
+related aria-describedby.
+
+#### Inherited from
+
+`TableProps.aria-description`
 
 ***
 
@@ -631,6 +693,22 @@ Defines an element's row index or position with respect to the total number of r
 
 ***
 
+### aria-rowindextext?
+
+> `optional` **aria-rowindextext**: `string`
+
+Defines a human readable text alternative of aria-rowindex.
+
+#### See
+
+aria-colindextext.
+
+#### Inherited from
+
+`TableProps.aria-rowindextext`
+
+***
+
 ### aria-rowspan?
 
 > `optional` **aria-rowspan**: `number`
@@ -755,7 +833,7 @@ Flag, if true, one new row will be automatically added when editing the last row
 
 ### autoCapitalize?
 
-> `optional` **autoCapitalize**: `string`
+> `optional` **autoCapitalize**: `string` & `object` \| `"none"` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"` \| `"characters"`
 
 #### Inherited from
 
@@ -906,9 +984,19 @@ The columns of the table.
 
 ***
 
+### content?
+
+> `optional` **content**: `string`
+
+#### Inherited from
+
+`TableProps.content`
+
+***
+
 ### contentEditable?
 
-> `optional` **contentEditable**: `"inherit"` \| `Booleanish`
+> `optional` **contentEditable**: `"inherit"` \| `Booleanish` \| `"plaintext-only"`
 
 #### Inherited from
 
@@ -932,7 +1020,7 @@ The columns of the table.
 
 #### \_\_html
 
-> **\_\_html**: `string`
+> **\_\_html**: `string` \| `TrustedHTML`
 
 #### Inherited from
 
@@ -1050,6 +1138,16 @@ Disable scroll bar
 
 ***
 
+### enterKeyHint?
+
+> `optional` **enterKeyHint**: `"next"` \| `"search"` \| `"enter"` \| `"done"` \| `"go"` \| `"previous"` \| `"send"`
+
+#### Inherited from
+
+`TableProps.enterKeyHint`
+
+***
+
 ### errorMessage?
 
 > `optional` **errorMessage**: `string`
@@ -1147,6 +1245,20 @@ The row of the table has a mouseover effect
 
 ***
 
+### inert?
+
+> `optional` **inert**: `boolean`
+
+#### See
+
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+
+#### Inherited from
+
+`TableProps.inert`
+
+***
+
 ### inlist?
 
 > `optional` **inlist**: `any`
@@ -1165,7 +1277,7 @@ Hints at the type of data that might be entered by the user while editing the el
 
 #### See
 
-https://html.spec.whatwg.org/multipage/interaction.html#input-modalities:-the-inputmode-attribute
+[https://html.spec.whatwg.org/multipage/interaction.html#input-modalities:-the-inputmode-attribute](https://html.spec.whatwg.org/multipage/interaction.html#input-modalities:-the-inputmode-attribute)
 
 #### Inherited from
 
@@ -1181,7 +1293,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 #### See
 
-https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is
+[https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is](https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is)
 
 #### Inherited from
 
@@ -1468,6 +1580,16 @@ The callback function called when data in the table is added.
 #### Inherited from
 
 `TableProps.onBeforeInputCapture`
+
+***
+
+### onBeforeToggle?
+
+> `optional` **onBeforeToggle**: `ToggleEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`TableProps.onBeforeToggle`
 
 ***
 
@@ -2127,6 +2249,8 @@ Tree table, the callback function in the expanded node
 
 #### Deprecated
 
+Use `onKeyUp` or `onKeyDown` instead
+
 #### Inherited from
 
 `TableProps.onKeyPress`
@@ -2138,6 +2262,8 @@ Tree table, the callback function in the expanded node
 > `optional` **onKeyPressCapture**: `KeyboardEventHandler`\<`HTMLElement`\>
 
 #### Deprecated
+
+Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 #### Inherited from
 
@@ -2515,16 +2641,6 @@ Tree table, the callback function in the expanded node
 
 ***
 
-### onPointerEnterCapture?
-
-> `optional` **onPointerEnterCapture**: `PointerEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-`TableProps.onPointerEnterCapture`
-
-***
-
 ### onPointerLeave?
 
 > `optional` **onPointerLeave**: `PointerEventHandler`\<`HTMLElement`\>
@@ -2532,16 +2648,6 @@ Tree table, the callback function in the expanded node
 #### Inherited from
 
 `TableProps.onPointerLeave`
-
-***
-
-### onPointerLeaveCapture?
-
-> `optional` **onPointerLeaveCapture**: `PointerEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-`TableProps.onPointerLeaveCapture`
 
 ***
 
@@ -2698,6 +2804,26 @@ The callback function called when data in the table is removed.
 #### Inherited from
 
 `TableProps.onResetCapture`
+
+***
+
+### onResize?
+
+> `optional` **onResize**: `ReactEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`TableProps.onResize`
+
+***
+
+### onResizeCapture?
+
+> `optional` **onResizeCapture**: `ReactEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`TableProps.onResizeCapture`
 
 ***
 
@@ -2939,6 +3065,16 @@ Click the callback function of the sort sequence to return the value sortColumn,
 
 ***
 
+### onToggle?
+
+> `optional` **onToggle**: `ToggleEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`TableProps.onToggle`
+
+***
+
 ### onTouchCancel?
 
 > `optional` **onTouchCancel**: `TouchEventHandler`\<`HTMLElement`\>
@@ -3049,6 +3185,26 @@ Callback for the `touchstart` event.
 
 ***
 
+### onTransitionCancel?
+
+> `optional` **onTransitionCancel**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`TableProps.onTransitionCancel`
+
+***
+
+### onTransitionCancelCapture?
+
+> `optional` **onTransitionCancelCapture**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`TableProps.onTransitionCancelCapture`
+
+***
+
 ### onTransitionEnd?
 
 > `optional` **onTransitionEnd**: `TransitionEventHandler`\<`HTMLElement`\>
@@ -3066,6 +3222,46 @@ Callback for the `touchstart` event.
 #### Inherited from
 
 `TableProps.onTransitionEndCapture`
+
+***
+
+### onTransitionRun?
+
+> `optional` **onTransitionRun**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`TableProps.onTransitionRun`
+
+***
+
+### onTransitionRunCapture?
+
+> `optional` **onTransitionRunCapture**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`TableProps.onTransitionRunCapture`
+
+***
+
+### onTransitionStart?
+
+> `optional` **onTransitionStart**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`TableProps.onTransitionStart`
+
+***
+
+### onTransitionStartCapture?
+
+> `optional` **onTransitionStartCapture**: `TransitionEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`TableProps.onTransitionStartCapture`
 
 ***
 
@@ -3129,13 +3325,33 @@ Callback for the `touchstart` event.
 
 ***
 
-### placeholder?
+### popover?
 
-> `optional` **placeholder**: `string`
+> `optional` **popover**: `""` \| `"auto"` \| `"manual"`
 
 #### Inherited from
 
-`TableProps.placeholder`
+`TableProps.popover`
+
+***
+
+### popoverTarget?
+
+> `optional` **popoverTarget**: `string`
+
+#### Inherited from
+
+`TableProps.popoverTarget`
+
+***
+
+### popoverTargetAction?
+
+> `optional` **popoverTargetAction**: `"toggle"` \| `"show"` \| `"hide"`
+
+#### Inherited from
+
+`TableProps.popoverTargetAction`
 
 ***
 
@@ -3166,6 +3382,16 @@ Callback for the `touchstart` event.
 #### Inherited from
 
 `TableProps.radioGroup`
+
+***
+
+### rel?
+
+> `optional` **rel**: `string`
+
+#### Inherited from
+
+`TableProps.rel`
 
 ***
 
@@ -3292,6 +3518,16 @@ Tree table, the callback function in the expanded node
 #### Inherited from
 
 `TableProps.results`
+
+***
+
+### rev?
+
+> `optional` **rev**: `string`
+
+#### Inherited from
+
+`TableProps.rev`
 
 ***
 
@@ -3530,7 +3766,7 @@ Enable 3D transition rendering to improve performance when scrolling.
 
 ### unselectable?
 
-> `optional` **unselectable**: `"on"` \| `"off"`
+> `optional` **unselectable**: `"off"` \| `"on"`
 
 #### Inherited from
 

@@ -1,6 +1,6 @@
 # Function: StoreProvider()
 
-> **StoreProvider**(`props`): `null` \| `ReactElement`\<`any`, `string` \| `JSXElementConstructor`\<`any`\>\>
+> **StoreProvider**(`props`): `null` \| `ReactElement`\<`unknown`, `string` \| `JSXElementConstructor`\<`any`\>\>
 
 **Internal use only.**
 
@@ -10,4 +10,4 @@
 
 ## Returns
 
-`null` \| `ReactElement`\<`any`, `string` \| `JSXElementConstructor`\<`any`\>\>
+`null` \| `ReactElement`\<`unknown`, `string` \| `JSXElementConstructor`\<`any`\>\>
