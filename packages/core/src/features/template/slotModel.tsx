@@ -19,7 +19,7 @@ Slot.displayName = 'Slot'
  * Form viewer slot metadata. **Internal use only.**
  */
 export const slotModel = new Model(Slot, 'Slot', undefined, undefined, undefined,
-  undefined, undefined, undefined, undefined, undefined, 'slot')
+  undefined, undefined, undefined, undefined, 'slot')
 
 const RawSlotContent = ({parentStore}: { parentStore: Store }) => {
   const {key} = useComponentData()

@@ -70,4 +70,4 @@ const repeaterDefaultProps = repeaterProps
   }, {})
 
 export const repeaterModel = new Model(Repeater, 'Repeater', undefined, 'value', 'array',
-  repeaterDefaultProps, repeaterItemCss, repeaterWrapperCss, 'Repeater', undefined, 'repeater')
+  repeaterDefaultProps, repeaterItemCss, repeaterWrapperCss, 'Repeater', 'repeater')

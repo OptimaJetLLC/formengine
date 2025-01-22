@@ -12,4 +12,4 @@ Fragment.displayName = 'Fragment'
  * Form viewer fragment metadata. **Internal use only.**
  */
 export const fragmentModel = new Model(Fragment, 'Fragment', undefined, undefined, undefined,
-  undefined, undefined, undefined, undefined, undefined, 'container')
+  undefined, undefined, undefined, undefined, 'container')

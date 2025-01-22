@@ -27,7 +27,6 @@ export class Model<T = any> {
    * @param css the component's CSS values.
    * @param wrapperCss the component's wrapper CSS values.
    * @param typeName the component type name.
-   * @param icon the component icon.
    * @param kind the component kind.
    * @param readOnly the name of the component property that stores the read-only flag.
    * @param propsBindingTypes the component property binding types.
@@ -43,7 +42,6 @@ export class Model<T = any> {
     readonly css?: Css,
     readonly wrapperCss?: Css,
     readonly typeName?: string,
-    readonly icon?: ComponentType,
     readonly kind: ComponentKind = 'component',
     readonly readOnly?: string,
     readonly propsBindingTypes: Readonly<Record<string, ComponentPropertyBindType>> = {},

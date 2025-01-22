@@ -4,6 +4,7 @@ import {camelCase, replace, upperFirst} from 'lodash-es'
 import type {MouseEventHandler, ReactNode, RefCallback} from 'react'
 import {useCallback} from 'react'
 import {icons} from '../../../icons'
+import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import type {DraggableProps} from '../../ui/ComponentBar'
 import {ItemType} from '../consts'
 import {DragPreview} from './Editable/components/DragPreview'
@@ -11,7 +12,9 @@ import {useDragWithPreview} from './Editable/hooks/useDragWithPreview'
 
 const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggableProps) => {
   const data = useComponentData()
-  const {name = '', icon: CustomIcon} = data.model
+  const {name = ''} = data.model
+  const builderStore = useBuilderStore()
+  const {icon: CustomIcon} = builderStore.getComponentMetadata(data.model.type)
   const iconName = replace(upperFirst(camelCase(name)), ' ', '') as keyof typeof icons
   const Icon = CustomIcon ?? icons[iconName] ?? icons.Default
   const onClick: MouseEventHandler = e => {

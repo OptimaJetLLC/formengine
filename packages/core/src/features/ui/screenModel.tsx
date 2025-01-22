@@ -19,5 +19,4 @@ const defaultCss = getDefaultCss(screenStyleProperties)
  * Form viewer screen metadata. **Internal use only.**
  */
 export const screenModel = new Model(DefaultWrapper, undefined, undefined,
-  undefined, undefined, undefined, defaultCss, undefined, undefined, undefined,
-  'container')
+  undefined, undefined, undefined, defaultCss, undefined, undefined, 'container')

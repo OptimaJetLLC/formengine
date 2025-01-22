@@ -211,7 +211,6 @@ export class Definer<T extends object> {
       getDefaultCss(cssAns),
       getDefaultCss(cssWrapperAns),
       this.getType(),
-      this.data.icon,
       this.data.kind,
       readOnlyAn?.key,
       propsBindingTypes
@@ -228,6 +227,7 @@ export class Definer<T extends object> {
       this.data.kind,
       this.data.initialJson,
       this.data.eventListeners,
+      this.data.icon
     )
 
     return {model, meta, category: this.data.category} as const
