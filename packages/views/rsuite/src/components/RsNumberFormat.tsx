@@ -1,4 +1,5 @@
 import {array, boolean, define, isString, number, oneOf, string} from '@react-form-builder/core'
+import {useCallback} from 'react'
 import type {NumericFormatProps} from 'react-number-format'
 import {NumericFormat} from 'react-number-format'
 import type {NumberFormatValues} from 'react-number-format/types/types'
@@ -48,14 +49,20 @@ function getSeparators(props: { thousandSeparator?: boolean | string, decimalSep
 const RsNumberFormat = ({style, className, label, onChange, value, ...props}: RsNumberFormatProps) => {
   const {decimalSeparator, thousandSeparator} = getSeparators(props)
 
+  value = value ?? ''
+
+  const onValueChange = useCallback((values: NumberFormatValues) => onChange?.(values.value), [onChange])
+
   return <RsLabeledInput style={style} className={className}>
     <RsRtlLabel>{label}</RsRtlLabel>
     {/* TODO FE-1066 */}
     {/* @ts-ignore FE-1066 */}
-    <NumericFormat customInput={WrappedInput} {...props}
-                   decimalSeparator={decimalSeparator} thousandSeparator={thousandSeparator}
-                   onValueChange={(values: NumberFormatValues) => onChange?.(values.value)}
-                   value={value ?? ''}/>
+    <NumericFormat customInput={WrappedInput}
+                   {...props}
+                   decimalSeparator={decimalSeparator}
+                   thousandSeparator={thousandSeparator}
+                   onValueChange={onValueChange}
+                   value={value}/>
   </RsLabeledInput>
 }
 
