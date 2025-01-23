@@ -129,3 +129,7 @@ div.markdown img {
     transition: all 0.3s ease;
   }
 }
+
+img.medium-zoom-image--opened {
+  z-index: 200;
+}

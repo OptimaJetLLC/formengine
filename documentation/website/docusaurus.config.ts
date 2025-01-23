@@ -3,6 +3,9 @@ import type {Config} from '@docusaurus/types'
 import {themes as prismThemes} from 'prism-react-renderer'
 
 const config: Config = {
+  future: {
+    experimental_faster: true,
+  },
   title: 'Documentation | FormBuilder',
   tagline: 'Lightweight, React-based, Drag&Drop, Customizable, JavaScript',
   favicon: 'img/favicon.ico',
