@@ -212,10 +212,12 @@ class BuilderUndoer {
 
   undo() {
     this.undoer.undo()
+    this.builderStore.selected.clear()
   }
 
   redo() {
     this.undoer.redo()
+    this.builderStore.selected.clear()
   }
 
   get hasUndo() {
@@ -660,6 +662,7 @@ export class BuilderStore implements IFormBuilder {
    */
   clear() {
     this.viewer.clear()
+    this.selected.clear()
   }
 
   /**
