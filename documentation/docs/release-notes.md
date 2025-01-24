@@ -4,6 +4,34 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 3.0.0
+
+### Breaking
+
+- Added React 19 support.
+- Model.icon property moved to [Meta](/api-reference/@react-form-builder/core/classes/Meta).
+- The initial value and value properties of the [Rich text editor](/components-library/fields-components/rich-text-editor) are now of type
+  string.
+
+### New
+
+- Components can be deleted by pressing <kbd>Delete</kbd> button.
+- Added [upload server](https://github.com/optimajet/formengine/tree/master/examples/file-upload-server/README.md) example.
+
+### Fixed bugs
+
+- A phantom selection remains after a drag and drop operation.
+- Some minor bugs related to adding components by double-clicking.
+- Fixed the bug of being able to select multiple files without setting the Multiple option in
+  the [Uploader](/components-library/fields-components/uploader) component.
+- A component cannot be added after undo by double-clicking it.
+- The text of the ‘Add New Item’ button was not visible in dark mode.
+- Broken form label markup when the form is empty.
+
+### Updated internal dependencies
+
+- vite from 4.2.1 to 6.0.7.
+
 ## 2.4.0
 
 _January_ 16, 2025
@@ -23,15 +51,21 @@ _January_ 16, 2025
 _December_ 16, 2024
 
 - Added a search field on the Forms tab.
-- Added the ability to use hooks and functions inside [custom property editors](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#propertyeditors) to access component and engine data. These are, for example [useComponentData](/api-reference/@react-form-builder/core/functions/useComponentData), [useStore](/api-reference/@react-form-builder/core/functions/useStore), and [others](/api-reference/@react-form-builder/core/#functions).
-- The [formLoadError](/api-reference/@react-form-builder/core/classes/Store#formloaderror) field has been added to the FormViewer API that signals the failure of loading the form, and also contains the error text.
-- Now, if the form is loaded unsuccessfully, a message about this is displayed in the form designer, as well as a suggestion to create a new form.
+- Added the ability to use hooks and functions
+  inside [custom property editors](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#propertyeditors) to access
+  component and engine data. These are, for example, [useComponentData](/api-reference/@react-form-builder/core/functions/useComponentData),
+  [useStore](/api-reference/@react-form-builder/core/functions/useStore),
+  and [others](/api-reference/@react-form-builder/core/#functions).
+- The [formLoadError](/api-reference/@react-form-builder/core/classes/Store#formloaderror) field has been added to the FormViewer API that
+  signals the failure of loading the form, and also contains the error text.
+- Now, if the form is loaded unsuccessfully, a message about this is displayed in the form designer, as well as a suggestion to create a new
+  form.
 
 ### Fixed bugs
 
-- When changing the value of [actions](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#actions) in FormViewer props after initialization, their value inside the engine did not change.
+- When changing the value of [actions](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#actions) in FormViewer props after
+  initialization, their value inside the engine did not change.
 - Saving the form is called twice when creating a new form, as well as in some other cases.
-
 
 ## 2.2.0
 

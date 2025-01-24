@@ -28,7 +28,7 @@ our [GitHub repository](https://github.com/optimajet/formengine/issues).
 | Support for properties of type "object"                             | In progress |
 | Table component                                                     | Planned     |
 | Integrations with other popular component libraries (MUI, Tailwind) | Planned     |
-| React 19 support                                                    | Planned     |
+| React 19 support                                                    | Done        |
 | Camera component                                                    | Analysis    |
 | Support Server-Side Rendering                                       | Analysis    |
 | Export form to PDF                                                  | Analysis    |
