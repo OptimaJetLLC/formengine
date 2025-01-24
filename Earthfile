@@ -27,6 +27,11 @@ npm-documentation-build:
   FROM +sources
   RUN npm run docs:build
 
+# npm-test performs tests
+npm-test:
+  FROM +sources
+  RUN NODE_OPTIONS="--max-old-space-size=4096" npm run test:component
+
 # npm-check-circular-deps checks for cyclic dependencies
 npm-check-circular-deps:
   FROM +sources
@@ -336,6 +341,7 @@ sources:
   FROM +dependencies
   COPY .eslintignore .eslintrc.cjs lerna.json LICENSE.md nx.json README.md tsconfig.json vite.config.ts ./
   COPY --dir types documentation packages scripts ./
+  COPY --dir tests/react-17 tests/react-18 tests/react-19 tests/common tests/component ./tests
   SAVE ARTIFACT /form-engine
 
 # dependencies installs node_modules dependencies
@@ -349,7 +355,8 @@ dependencies:
    packages/viewer-bundle packages/views/antd packages/views/default packages/views/rsuite \
    packages/views/fast-qr \
    packages/views/rich-text \
-   packages/views/google-map
+   packages/views/google-map \
+   tests tests/common tests/component tests/react-17 tests/react-18 tests/react-19
 
   COPY documentation/website/package.json documentation/website
 
@@ -371,7 +378,14 @@ dependencies:
   COPY packages/views/rich-text/package.json packages/views/rich-text
   COPY packages/views/google-map/package.json packages/views/google-map
 
-  RUN npm install
+  COPY tests/component/package.json tests/component
+  COPY tests/common/package.json tests/common
+  COPY tests/react-17/package.json tests/react-17
+  COPY tests/react-18/package.json tests/react-18
+  COPY tests/react-19/package.json tests/react-19
+
+  RUN npm ci
+
   SAVE ARTIFACT package.json AS LOCAL package.json
   SAVE ARTIFACT package-lock.json AS LOCAL package-lock.json
 

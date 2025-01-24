@@ -25,8 +25,8 @@
         "@react-form-builder/indexed-db-form-storage": "^2.4.0"
     },
     "devDependencies": {
-        "serve": "^14.2.0",
         "@types/react": "^17.0.83",
-        "@types/react-dom": "^17.0.26"
+        "@types/react-dom": "^17.0.26",
+        "serve": "^14.2.0"
     }
 }

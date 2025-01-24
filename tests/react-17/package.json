@@ -6,7 +6,10 @@
     "scripts": {
         "start:viewer": "vite --port=15001 -c viewer.vite.config.ts",
         "start:designer": "vite --port=15002 -c designer.vite.config.ts",
-        "clean": "rimraf dist"
+        "clean": "rimraf dist",
+        "test": "NODE_OPTIONS=\"--loader ./import.js -r ./require.cjs\" vitest run",
+        "test:component": "npm run test",
+        "test:dbg": "NODE_OPTIONS=\"--loader ./import.js -r ./require.cjs\" vitest run --ui --open --inspectBrk --no-file-parallelism"
     },
     "dependencies": {
         "@react-form-builder/components-antd": "^2.4.0",
@@ -17,31 +20,16 @@
         "@react-form-builder/core": "^2.4.0",
         "@react-form-builder/designer": "^2.4.0",
         "@react-form-builder/indexed-db-form-storage": "^2.4.0",
-        "@react-form-builder/tests-common": "^2.4.0",
+        "@react-form-builder/tests-common": "file:./../common",
+        "@react-form-builder/tests-component": "file:./../component",
         "react": "17.0.2",
         "react-dom": "17.0.2"
     },
     "devDependencies": {
+        "@testing-library/dom": "^8.20.1",
+        "@testing-library/jest-dom": "^5.11.10",
+        "@testing-library/react": "^12.1.5",
         "@types/react": "17.0.83",
         "@types/react-dom": "17.0.26"
-    },
-    "resolutions": {
-        "react": "17.0.2",
-        "react-dom": "17.0.2"
-    },
-    "overrides": {
-        "react": "17.0.2",
-        "react-dom": "17.0.2",
-        "@types/react-dom": "17.0.26",
-        "@react-form-builder/core": {
-            "react": "17.0.2",
-            "react-dom": "17.0.2",
-            "@types/react-dom": "17.0.26"
-        },
-        "@react-form-builder/designer": {
-            "react": "17.0.2",
-            "react-dom": "17.0.2",
-            "@types/react-dom": "17.0.26"
-        }
     }
 }

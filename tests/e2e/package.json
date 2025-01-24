@@ -7,6 +7,8 @@
         "record": "npx playwright codegen http://localhost:15173",
         "ui": "npx playwright test --ui",
         "test": "node ./runner.js",
+        "test:e2e": "npm run test",
+        "test:dbg": "DEBUG_TPL=react-19 node ./runner.js",
         "merge": "TEST_MERGE=1 npx playwright merge-reports -c playwright.config.ts --reporter html ./reports/blob/",
         "clean": "rimraf reports"
     },

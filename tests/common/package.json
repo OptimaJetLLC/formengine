@@ -2,7 +2,8 @@
     "name": "@react-form-builder/tests-common",
     "version": "2.4.0",
     "private": true,
-    "main": "index.ts",
+    "main": "lib/loader/util.cjs",
+    "module": "index.ts",
     "type": "module",
     "dependencies": {
         "@playwright/test": "^1.49.1",

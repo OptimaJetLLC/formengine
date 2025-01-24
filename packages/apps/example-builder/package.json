@@ -24,6 +24,6 @@
         "@react-form-builder/indexed-db-form-storage": "^2.4.0"
     },
     "devDependencies": {
-        "@vitejs/plugin-basic-ssl": "^1.1.0"
+        "@vitejs/plugin-basic-ssl": "^1.2.0"
     }
 }

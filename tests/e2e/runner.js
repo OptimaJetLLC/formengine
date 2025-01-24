@@ -40,17 +40,26 @@ const ENV = JSON.parse(JSON.stringify(process.env))
 
 let withError = false
 
+const debug = ENV['DEBUG_TPL']
+
 for (const tpl of config.templates) {
+  if (debug && tpl !== debug) continue
+
   console.log(tpl)
 
   console.info(`Starting with project: ${tpl}`)
 
   for (const {name, port, command} of config.projects) {
     const path = resolve(join(__dirname, '..', tpl))
+    const args = ['--verbose', 'playwright', 'test'];
+
+    if (debug) {
+      args.push('--ui')
+    }
 
     console.info({path, name, command})
 
-    const result = spawn.sync('npx', ['--verbose', 'playwright', 'test'], {
+    const result = spawn.sync('npx', args, {
       cwd: __dirname,
       env: {
         ...ENV,

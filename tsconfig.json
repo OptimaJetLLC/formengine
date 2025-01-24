@@ -18,7 +18,8 @@
     "declarationMap": true,
     "outDir": "dist",
     "types": [
-      "vite/client"
+      "vite/client",
+      "vitest/globals"
     ],
     "jsxImportSource": "@emotion/react",
     "noUnusedLocals": true
@@ -27,6 +28,8 @@
     "types",
     "packages/**/*.ts",
     "packages/**/*.tsx",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
     "scripts/**/*.js"
   ],
   "exclude": [

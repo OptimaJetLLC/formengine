@@ -5,10 +5,10 @@ import {
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
-import type { ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core';
+import type {ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
 import {ActionDefinition, BiDi, createView, FormViewer} from '@react-form-builder/core'
 import {useCallback, useRef} from 'react'
-import formObj from '@react-form-builder/tests-common/lib/viewer/user.form.json'
+import formObj from './user.form.json'
 
 const form = JSON.stringify(formObj)
 
@@ -64,7 +64,7 @@ function getFormFn(name?: string) {
  * @returns Rect Component
  */
 export const Viewer = () => {
-  const ref = useRef<IFormViewer>()
+  const ref = useRef<IFormViewer>(null)
 
   const setRef = useCallback((viewer: IFormViewer | null) => {
     if (viewer) {

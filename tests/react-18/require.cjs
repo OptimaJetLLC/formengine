@@ -1,0 +1,64 @@
+const Module = require('module');
+const fs = require('fs');
+const {join, resolve} = require('path');
+const {createLogger} = require("@react-form-builder/tests-common/lib/loader/util.cjs");
+
+const log = createLogger('@@@@@@@@@@@')
+
+const nodeModulesReact = 'node_modules/react/';
+const nodeModulesReactDom = 'node_modules/react-dom/';
+const localReact = resolve(join(__dirname, `./${nodeModulesReact}`));
+const localReactDom = resolve(join(__dirname, `./${nodeModulesReactDom}`));
+
+
+let replaceReact = function (module, filename) {
+  const react = filename.indexOf(nodeModulesReact) !== -1;
+  const reactDom = filename.indexOf(nodeModulesReactDom) !== -1;
+  let target = filename
+
+  if (react) {
+    const part = filename.split(nodeModulesReact);
+    const fn = join(localReact, part[1])
+    target = fn
+    if (target !== filename) log(`${filename} => ${fn}`);
+  } else if (reactDom) {
+    const part = filename.split(nodeModulesReactDom);
+    const fn = join(localReactDom, part[1])
+    target = fn
+    if (target !== filename) log(`${filename} => ${fn}`);
+  }
+
+  const content = fs.readFileSync(target, 'utf8');
+
+  module._compile(content, filename);
+};
+
+Module._extensions['.js'] = replaceReact
+Module._extensions['.cjs'] = replaceReact
+Module._extensions['.mjs'] = replaceReact
+
+const oldResolve = Module._resolveFilename;
+
+Module._resolveFilename = (path, context) => {
+  if (path === 'react') {
+    return localReact + '/index.js'
+  }
+
+  if (path === 'react-dom') {
+    return localReactDom + '/index.js'
+  }
+
+  if (path === 'react-dom/test-utils') {
+    return localReactDom + '/test-utils.js'
+  }
+
+  if (path === 'react-dom/client') {
+    return localReactDom + '/client.js'
+  }
+
+  // if (path.indexOf('react') !== -1) {
+  // log(path)
+  // }
+
+  return oldResolve(path, context)
+}

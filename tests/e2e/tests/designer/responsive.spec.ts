@@ -1,5 +1,5 @@
 import {test} from '@playwright/test'
-import {testResponsive} from '@react-form-builder/tests-common'
+import {testResponsive} from '@react-form-builder/tests-common/lib/screenshot.ts'
 import {dirname, resolve} from 'path'
 import {fileURLToPath} from 'url'
 

@@ -7,8 +7,10 @@ import {
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
-import {ActionDefinition, BiDi, ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
-import {BuilderView, FormBuilder, IFormStorage} from '@react-form-builder/designer'
+import type {ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
+import {ActionDefinition, BiDi} from '@react-form-builder/core'
+import type {IFormStorage} from '@react-form-builder/designer'
+import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {useCallback, useRef} from 'react'
 
 // Here you can pass the metadata of your components
@@ -174,7 +176,7 @@ async function getFormFn(name?: string) {
 }
 
 export const Designer = () => {
-  const ref = useRef<IFormViewer>()
+  const ref = useRef<IFormViewer>(null)
 
   const setRef = useCallback((viewer: IFormViewer | null) => {
     if (viewer) {

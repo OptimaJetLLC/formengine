@@ -1,6 +1,6 @@
-import {Viewer} from '@react-form-builder/tests-common/lib/viewer/Viewer'
 import React from 'react'
 import {createRoot} from 'react-dom/client'
+import {Viewer} from '../../common/lib/viewer/Viewer'
 
 const element = document.getElementById('root')
 

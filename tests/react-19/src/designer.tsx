@@ -1,6 +1,6 @@
-import App from '@react-form-builder/tests-common/lib/designer/App'
 import React from 'react'
 import {createRoot} from 'react-dom/client'
+import App from '../../common/lib/designer/App'
 
 const element = document.getElementById('root')
 

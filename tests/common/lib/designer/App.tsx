@@ -11,11 +11,12 @@ import {
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
-import {ActionDefinition, BiDi, ComponentStore, FormValidators, IFormViewer, Language, Validators} from '@react-form-builder/core'
-import type {AnnotationEditorProps, FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
-import {BuilderView, FormBuilder, FormBuilderI18n} from '@react-form-builder/designer'
+import type {ComponentStore, FormValidators, IFormViewer, Validators} from '@react-form-builder/core'
+import {ActionDefinition, BiDi, Language} from '@react-form-builder/core'
+import type {AnnotationEditorProps, FormBuilderI18n, FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
+import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
-import {useEffect, useState} from 'react'
+import {useEffect, useState, version} from 'react'
 import {frFR, trTR} from 'rsuite/esm/locales/index.js'
 import {CustomErrorWrapper} from './components/CustomErrorWrapper'
 import {throwErrorComponent} from './components/ThrowErrorComponent'
@@ -24,7 +25,6 @@ import {Designer} from './Designer'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
 import {generatedLicenseKey} from './utils/license'
 import {useRefWithLog} from './utils/useRefWithLog'
-import {version} from 'react'
 
 const data = {
   comment: `React version: ${version}`,
@@ -43,7 +43,7 @@ const data = {
         {rsDatePicker1: new Date()},
       ]
     },
-    {rsInput1: "initial data in repeater"},
+    {rsInput1: 'initial data in repeater'},
   ],
   repeater1: [
     {
@@ -167,7 +167,7 @@ const formValidators: FormValidators = [
       result['Template:agreement 1'] ??= {}
       result['Template:agreement 1'].agreeCheckbox = 'Agree checkbox must be checked'
     }
-    if (((data['Template:Test form 1'] as any)?.['Template:agreement 1'] as any)?.agreeCheckbox === false) {
+    if (((data['Template:Test form 1'] as any)?.['Template:agreement 1'])?.agreeCheckbox === false) {
       result['Template:Test form 1'] ??= {}
       result['Template:Test form 1']['Template:agreement 1'] ??= {}
       result['Template:Test form 1']['Template:agreement 1'].agreeCheckbox = 'Agree checkbox must be checked'
@@ -271,7 +271,7 @@ const FormBuilderApp = () => {
     formStorage={formStorage}
     localize={localizeFn}
     onFormDataChange={async (formData) => {
-      let {data, errors} = formData
+      const {data, errors} = formData
       if (logEvents) console.log('onFormDataChange', {data, errors})
       const silentValidationResult = await formData.getValidationResult()
       formData.state.isValid = !silentValidationResult

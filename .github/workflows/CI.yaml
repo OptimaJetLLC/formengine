@@ -48,7 +48,7 @@ jobs:
         if: env.PLAYWRIGHT_CHROME_INSTALLED!='true'
 
       - name: Run e2e tests
-        run: npm run e2e
+        run: npm run test:e2e
 
       - name: Upload Playwright Report
         uses: actions/upload-artifact@v4
@@ -62,6 +62,16 @@ jobs:
         run: npx github-actions-ctrf reports/ctrf/ctrf-report.json
         working-directory: tests/e2e
         if: always()
+
+  tests:
+    name: Run Tests
+    runs-on: [ self-hosted, earthly ]
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Run Tests
+        run: earthly --ci +npm-test
 
   build:
     name: Build Packages
