@@ -1,6 +1,6 @@
 {
     "name": "@react-form-builder/demo",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "private": true,
     "main": "src/index.ts",
     "type": "module",
@@ -17,12 +17,12 @@
         "update-release-date": "node ./scripts/update-release-date"
     },
     "dependencies": {
-        "@react-form-builder/components-fast-qr": "^3.0.1",
-        "@react-form-builder/components-google-map": "^3.0.1",
-        "@react-form-builder/components-rich-text": "^3.0.1",
-        "@react-form-builder/components-rsuite": "^3.0.1",
-        "@react-form-builder/designer": "^3.0.1",
-        "@react-form-builder/indexed-db-form-storage": "^3.0.1"
+        "@react-form-builder/components-fast-qr": "^3.0.2",
+        "@react-form-builder/components-google-map": "^3.0.2",
+        "@react-form-builder/components-rich-text": "^3.0.2",
+        "@react-form-builder/components-rsuite": "^3.0.2",
+        "@react-form-builder/designer": "^3.0.2",
+        "@react-form-builder/indexed-db-form-storage": "^3.0.2"
     },
     "devDependencies": {
         "@types/react": "^17.0.83",

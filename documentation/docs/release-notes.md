@@ -4,6 +4,14 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 3.0.2
+
+_January_ 26, 2025
+
+### Fixed bugs
+
+- The @rsuite/icons package is set to version 1.0.3.
+
 ## 3.0.1
 
 _January_ 26, 2025

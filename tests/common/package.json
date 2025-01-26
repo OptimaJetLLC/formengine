@@ -1,19 +1,19 @@
 {
     "name": "@react-form-builder/tests-common",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "private": true,
     "main": "lib/loader/util.cjs",
     "module": "index.ts",
     "type": "module",
     "dependencies": {
         "@playwright/test": "^1.49.1",
-        "@react-form-builder/components-antd": "^3.0.1",
-        "@react-form-builder/components-fast-qr": "^3.0.1",
-        "@react-form-builder/components-google-map": "^3.0.1",
-        "@react-form-builder/components-rich-text": "^3.0.1",
-        "@react-form-builder/core": "^3.0.1",
-        "@react-form-builder/designer": "^3.0.1",
-        "@react-form-builder/indexed-db-form-storage": "^3.0.1",
+        "@react-form-builder/components-antd": "^3.0.2",
+        "@react-form-builder/components-fast-qr": "^3.0.2",
+        "@react-form-builder/components-google-map": "^3.0.2",
+        "@react-form-builder/components-rich-text": "^3.0.2",
+        "@react-form-builder/core": "^3.0.2",
+        "@react-form-builder/designer": "^3.0.2",
+        "@react-form-builder/indexed-db-form-storage": "^3.0.2",
         "rsuite": "5.64.2"
     }
 }
