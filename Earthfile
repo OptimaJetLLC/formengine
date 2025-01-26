@@ -169,7 +169,7 @@ PUBLISH_GITHUB_OPTIMAJET_FORMENGINE:
 
   WORKDIR $tempGitDir
   RUN npm install
-  RUN npm install @react-form-builder/core@$libVersion @react-form-builder/designer@$libVersion @react-form-builder/components-rsuite@$libVersion
+  RUN npm install --force @react-form-builder/core@$libVersion @react-form-builder/designer@$libVersion @react-form-builder/components-rsuite@$libVersion
   RUN rm -rf node_modules
   DO +GITHUB_COMMIT_AND_PUSH --gitRepository=$gitUrl --gitBranch=master --commitMessage="Version $libVersion (autocommit)" --disableDryRun=$disableDryRun
 

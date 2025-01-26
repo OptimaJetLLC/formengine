@@ -65,7 +65,7 @@
         "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.23",
         "ts-prune": "^0.10.3",
         "typescript": "^5.0.3",
-        "vite": "^6.0.7",
+        "vite": "^4.5.9",
         "vite-bundle-analyzer": "^0.10.3",
         "vite-plugin-cp": "^4.0.8",
         "vite-plugin-dts": "^3.6.1",
