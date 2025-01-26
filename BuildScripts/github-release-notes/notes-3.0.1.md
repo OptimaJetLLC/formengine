@@ -1,0 +1,5 @@
+### Fixed bugs
+
+- Fixed incorrect import of `@rsuite/icons/esm/icons/status/RemindFill.js`.
+- vite rolled back to version 4.5.9.
+- undici update from 6.21.0 to 6.21.1 in '/examples/with-remix/with-remix-v2'.

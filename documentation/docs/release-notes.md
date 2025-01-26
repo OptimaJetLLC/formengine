@@ -4,14 +4,31 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 3.0.1
+
+_January_ 26, 2025
+
+### Fixed bugs
+
+- Fixed incorrect import of `@rsuite/icons/esm/icons/status/RemindFill.js`.
+- vite rolled back to version 4.5.9.
+- undici update from 6.21.0 to 6.21.1 in '/examples/with-remix/with-remix-v2'.
+
 ## 3.0.0
 
-### Breaking
+_January_ 24, 2025
+
+### Breaking changes
 
 - Added React 19 support.
 - Model.icon property moved to [Meta](/api-reference/@react-form-builder/core/classes/Meta).
 - The initial value and value properties of the [Rich text editor](/components-library/fields-components/rich-text-editor) are now of type
   string.
+- @emotion/cache updated to 11.14.0.
+- @emotion/css updated to 11.13.5.
+- @emotion/react updated to 11.14.0.
+- mobx updated updated to 6.13.5.
+- mobx-react updated to 9.2.0.
 
 ### New
 

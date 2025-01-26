@@ -1,8 +1,13 @@
-### Breaking
+### Breaking changes
 
 - Added React 19 support.
 - Model.icon property moved to [Meta](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/Meta).
 - The initial value and value properties of the [Rich text editor](https://formengine.io/documentation/components-library/fields-components/rich-text-editor) are now of type string.
+- @emotion/cache updated to 11.14.0.
+- @emotion/css updated to 11.13.5.
+- @emotion/react updated to 11.14.0.
+- mobx updated updated to 6.13.5.
+- mobx-react updated to 9.2.0.
 
 ### New
 
