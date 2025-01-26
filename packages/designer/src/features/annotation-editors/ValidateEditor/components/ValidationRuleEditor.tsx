@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import type {Annotation, SchemaType, ValidationRuleSettings} from '@react-form-builder/core'
 import {getValidatorPropertyBlockType, namedObserver, useComponentData, useStore} from '@react-form-builder/core'
-import RemindFillIcon from '@rsuite/icons/esm/react/RemindFill.js'
+import {RemindFill} from '@rsuite/icons'
 import type {ComponentProps} from 'react'
 import {useCallback} from 'react'
 import {useTranslation} from 'react-i18next'
@@ -14,7 +14,7 @@ import {HintedIconButton} from '../../Hinted'
 
 const WarningButton = (props: ComponentProps<any>) => {
   const t = useTranslationPart('validation')
-  const icon = <RemindFillIcon color="#f5a623"/>
+  const icon = <RemindFill color="#f5a623"/>
 
   return <HintedIconButton hint={t('ruleNotFound')} icon={icon}{...props}/>
 }

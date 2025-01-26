@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import type {IconProps} from '@rsuite/icons/Icon'
+import type {IconProps} from '@rsuite/icons/lib/Icon'
 import type {ReactElement, ReactNode} from 'react'
 import type {WhisperProps} from 'rsuite'
 import {IconButton, Tooltip, Whisper} from 'rsuite'
