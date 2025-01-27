@@ -2,7 +2,6 @@ import type {ComponentData} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
 import {useCallback, useEffect} from 'react'
 import {Table} from 'rsuite'
-import {Cell, Column, HeaderCell} from 'rsuite-table'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {useComputed} from '../../../../utils/useComputed'
 
@@ -21,6 +20,8 @@ export interface PropertyErrorsProps {
    */
   onClose: () => void
 }
+
+const {Cell, Column, HeaderCell} = Table
 
 const RawPropertyErrors = ({onClose}: PropertyErrorsProps) => {
   const store = useBuilderStore()
