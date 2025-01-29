@@ -10,5 +10,9 @@ export const [
   /**
    * **Internal use only.**
    */
-  ComponentTreeContextProvider] =
+  ComponentTreeContextProvider,
+  /**
+   * **Internal use only.**
+   */
+  ComponentTreeContext] =
   createNonNullableContext<ComponentType<ComponentTreeProps>>('ComponentTreeContext')
