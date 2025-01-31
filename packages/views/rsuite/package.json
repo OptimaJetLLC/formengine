@@ -1,36 +1,36 @@
 {
-    "name": "@react-form-builder/components-rsuite",
-    "version": "3.0.2",
-    "private": false,
-    "main": "src/index.ts",
-    "type": "module",
-    "description": "OptimaJet Form Builder Components - RSuite",
-    "license": "Contact sales@optimajet.com",
-    "bugs": {
-        "email": "support@optimajet.com"
-    },
-    "scripts": {
-        "build": "vite build",
-        "clean": "rimraf dist temp",
-        "bundle": "npm-run-all -l clean build create-archive",
-        "create-archive": "node ./config/pack"
-    },
-    "dependencies": {
-        "@react-form-builder/core": "^3.0.2",
-        "signature_pad": "^5.0.1"
-    },
-    "peerDependencies": {
-        "@emotion/css": "^11.13.5",
-        "@emotion/react": "^11.14.0",
-        "@emotion/styled": "^11.14.0",
-        "@rsuite/icons": "^1.0.3",
-        "date-fns": "^2.30.0",
-        "react": ">=17.0.2 || ^18 || ^19",
-        "react-number-format": "^5.1.4",
-        "rsuite": "5.64.2"
-    },
-    "files": [
-        "dist/*",
-        "README.md"
-    ]
+  "name": "@react-form-builder/components-rsuite",
+  "version": "3.0.2",
+  "private": false,
+  "main": "src/index.ts",
+  "type": "module",
+  "description": "OptimaJet Form Builder Components - RSuite",
+  "license": "Contact sales@optimajet.com",
+  "bugs": {
+    "email": "support@optimajet.com"
+  },
+  "scripts": {
+    "build": "vite build",
+    "clean": "rimraf dist temp",
+    "bundle": "npm-run-all -l clean build create-archive",
+    "create-archive": "node ./config/pack"
+  },
+  "dependencies": {
+    "@react-form-builder/core": "^3.0.2",
+    "signature_pad": "^5.0.1"
+  },
+  "peerDependencies": {
+    "@emotion/css": "^11.13.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@rsuite/icons": "1.0.3",
+    "date-fns": "^2.30.0",
+    "react": ">=17.0.2 || ^18 || ^19",
+    "react-number-format": "^5.1.4",
+    "rsuite": "5.64.2"
+  },
+  "files": [
+    "dist/*",
+    "README.md"
+  ]
 }
