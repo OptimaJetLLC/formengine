@@ -22,7 +22,7 @@ const InnerContainer = styled.div`
     outline: 1px solid blue;
   }
 
-  .selected & {
+  .selected > & {
     outline: none !important;
   }
 `

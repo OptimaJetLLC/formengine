@@ -84,7 +84,7 @@ const ToolbarContainer = styled.div`
   }
 
   position: absolute;
-  z-index: 11;
+  z-index: 12;
   color: var(--rs-btn-ghost-text);
   cursor: pointer !important;
   white-space: nowrap;
