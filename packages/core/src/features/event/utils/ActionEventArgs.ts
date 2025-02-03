@@ -1,5 +1,4 @@
 import type {SyntheticEvent} from 'react'
-import type {ComponentState} from '../../../stores/ComponentState'
 import type {Store} from '../../../stores/Store'
 import type {ComponentData} from '../../../utils/contexts/ComponentDataContext'
 
@@ -25,11 +24,6 @@ export class ActionEventArgs {
   #rootComponentDataProxy: any
 
   /**
-   * The component properties that were used to render the sender component.
-   */
-  renderedProps: Record<string, any>
-
-  /**
    * The index of the component in the array, if the component is in the array.
    */
   readonly index?: number
@@ -40,16 +34,15 @@ export class ActionEventArgs {
    * @param sender the component that triggered the event.
    * @param store the form viewer settings.
    * @param args the event arguments.
-   * @param state the {@link ComponentState} instance.
+   * @param renderedProps the component properties that were used to render the sender component.
    */
   constructor(
     readonly type: string,
     readonly sender: ComponentData,
     readonly store: Store,
     readonly args: any[],
-    state: ComponentState
+    readonly renderedProps: Record<string, any>,
   ) {
-    this.renderedProps = state.get
     this.index = sender.nearestIndex
     const indexExists = typeof this.index !== undefined
     const componentData = indexExists

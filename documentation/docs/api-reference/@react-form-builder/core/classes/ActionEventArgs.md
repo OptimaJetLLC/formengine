@@ -6,7 +6,7 @@ Arguments passed to the event handler.
 
 ### new ActionEventArgs()
 
-> **new ActionEventArgs**(`type`, `sender`, `store`, `args`, `state`): [`ActionEventArgs`](ActionEventArgs.md)
+> **new ActionEventArgs**(`type`, `sender`, `store`, `args`, `renderedProps`): [`ActionEventArgs`](ActionEventArgs.md)
 
 Creates arguments for the event handler.
 
@@ -28,9 +28,9 @@ the form viewer settings.
 
 the event arguments.
 
-• **state**: [`ComponentState`](ComponentState.md)
+• **renderedProps**: `Record`\<`string`, `any`\>
 
-the [ComponentState](ComponentState.md) instance.
+the component properties that were used to render the sender component.
 
 #### Returns
 
@@ -56,9 +56,9 @@ The index of the component in the array, if the component is in the array.
 
 ### renderedProps
 
-> **renderedProps**: `Record`\<`string`, `any`\>
+> `readonly` **renderedProps**: `Record`\<`string`, `any`\>
 
-The component properties that were used to render the sender component.
+the component properties that were used to render the sender component.
 
 ***
 

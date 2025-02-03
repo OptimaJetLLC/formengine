@@ -73,11 +73,11 @@ const useActions = (state: ComponentState, deps: Array<any>) => {
   useComponentMountUnmount(() => {
     createSubscriptions()
 
-    const mountEvent = new ActionEventArgs(DidMountEvent, componentData, store, [], state)
+    const mountEvent = new ActionEventArgs(DidMountEvent, componentData, store, [], state.get)
 
     store.eventSubject.next(mountEvent)
   }, () => {
-    const unmountEvent = new ActionEventArgs(WillUnmountEvent, componentData, store, [], state)
+    const unmountEvent = new ActionEventArgs(WillUnmountEvent, componentData, store, [], state.get)
 
     store.eventSubject.next(unmountEvent)
 

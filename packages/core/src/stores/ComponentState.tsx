@@ -30,7 +30,7 @@ const computeEvents = (data: ComponentData, store: Store, state: ComponentState)
   eventNames.delete(DidMountEvent)
   eventNames.delete(WillUnmountEvent)
   eventNames.forEach((name) =>
-    events[name] = (...args: any[]) => store.eventSubject.next(new ActionEventArgs(name, data, store, args, state)))
+    events[name] = (...args: any[]) => store.eventSubject.next(new ActionEventArgs(name, data, store, args, state.get)))
 
   return events
 }
