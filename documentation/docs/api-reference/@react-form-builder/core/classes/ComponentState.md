@@ -6,7 +6,7 @@ Calculates all the properties of the form view component.
 
 ### new ComponentState()
 
-> **new ComponentState**(`data`, `store`, `localizer`, `computeChildren`, `viewerProps`): [`ComponentState`](ComponentState.md)
+> **new ComponentState**(`data`, `store`, `localizer`, `computeChildren`): [`ComponentState`](ComponentState.md)
 
 Creates an instance that calculates the properties of the form viewer component.
 
@@ -27,10 +27,6 @@ the function to localize the properties of a component, returns a Record with lo
 • **computeChildren**: [`ComputeChildren`](../type-aliases/ComputeChildren.md)
 
 the function that calculates all child properties of a component.
-
-• **viewerProps**: `Pick`\<[`FormViewerProps`](../interfaces/FormViewerProps.md), `"readOnly"`\>
-
-the form viewer properties.
 
 #### Returns
 
@@ -67,14 +63,6 @@ the function to localize the properties of a component, returns a Record with lo
 > `readonly` **store**: [`Store`](Store.md)
 
 the form viewer settings.
-
-***
-
-### viewerProps
-
-> `readonly` **viewerProps**: `Pick`\<[`FormViewerProps`](../interfaces/FormViewerProps.md), `"readOnly"`\>
-
-the form viewer properties.
 
 ## Accessors
 

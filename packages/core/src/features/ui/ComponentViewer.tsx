@@ -116,8 +116,8 @@ const RawComponentViewer = () => {
   }, [viewerComputeChildren, formViewerStore.form.componentTree, componentTree])
 
   const componentState = useMemo(
-    () => new ComponentState(data, formViewerStore, localize, computeChildren, viewerProps),
-    [data, formViewerStore, localize, computeChildren, viewerProps])
+    () => new ComponentState(data, formViewerStore, localize, computeChildren),
+    [data, formViewerStore, localize, computeChildren])
 
   useActions(componentState, [viewerProps])
 

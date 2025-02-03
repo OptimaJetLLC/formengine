@@ -47,7 +47,10 @@ export class FormViewerPropsStore {
    * The default error wrapper used when errorType is not specified in the form.
    */
   errorWrapper?: ComponentType<ErrorWrapperProps>
-
+  /**
+   * If true, the form is read-only.
+   */
+  readOnly?: boolean
   /**
    * If true, all validation errors will be displayed.
    */
@@ -72,6 +75,7 @@ export class FormViewerPropsStore {
       actions: observable.ref,
       propsLanguage: observable.ref,
       errorWrapper: observable.ref,
+      readOnly: observable.ref,
       showAllValidationErrors: observable.ref,
     }, {name: nameObservable(`FormViewerPropsStore`)})
   }
@@ -89,6 +93,7 @@ export class FormViewerPropsStore {
     this.actions = customActionsToActionsValues(formViewerProps.actions)
     this.propsLanguage = formViewerProps.language
     this.errorWrapper = formViewerProps.errorWrapper
+    this.readOnly = formViewerProps.readOnly
     this.showAllValidationErrors = formViewerProps.showAllValidationErrors
   }
 
@@ -106,6 +111,7 @@ export class FormViewerPropsStore {
     clone.actions = this.actions
     clone.propsLanguage = this.propsLanguage
     clone.errorWrapper = this.errorWrapper
+    clone.readOnly = this.readOnly
     clone.showAllValidationErrors = this.showAllValidationErrors
     return clone
   }

@@ -4,7 +4,6 @@ import {makeAutoObservable} from 'mobx'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
 import type {EventName} from '../features/event'
 import {ActionEventArgs, DidMountEvent, WillUnmountEvent} from '../features/event'
-import type {FormViewerProps} from '../features/form-viewer'
 import type {CssPart} from '../features/style/types'
 import type {ComputeChildren} from '../utils/ComputeChildren'
 import type {ComponentData} from '../utils/contexts/ComponentDataContext'
@@ -47,14 +46,12 @@ export class ComponentState {
    * @param store the form viewer settings.
    * @param localizer the function to localize the properties of a component, returns a Record with localized properties.
    * @param computeChildren the function that calculates all child properties of a component.
-   * @param viewerProps the form viewer properties.
    */
   constructor(
     readonly data: ComponentData,
     readonly store: Store,
     readonly localizer: ComponentStoreLocalizer,
     readonly computeChildren: ComputeChildren,
-    readonly viewerProps: Pick<FormViewerProps, 'readOnly'>,
   ) {
     makeAutoObservable(this, undefined, {name: nameObservable('ComponentState', {key: data.key})})
   }
@@ -98,7 +95,7 @@ export class ComponentState {
    * @returns the component's read-only flag, if the component can have a read-only flag.
    */
   get readOnly() {
-    if (this.viewerProps.readOnly && this.data.model.readOnly) {
+    if (this.store.formViewerPropsStore.readOnly && this.data.model.readOnly) {
       return {[this.data.model.readOnly]: true}
     }
   }

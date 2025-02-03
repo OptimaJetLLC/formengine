@@ -1,10 +1,8 @@
 import {useMemo} from 'react'
 import type {Model} from '../features/define'
-import type {FormViewerProps} from '../features/form-viewer'
-import {useViewerProps} from '../features/form-viewer/components/ViewerPropsContext'
 import {ComponentState} from '../stores/ComponentState'
-import type {ComponentStoreLocalizer} from '../stores/ComponentStoreLocalizer'
 import {ComponentStore} from '../stores/ComponentStore'
+import type {ComponentStoreLocalizer} from '../stores/ComponentStoreLocalizer'
 import type {Store} from '../stores/Store'
 import type {ComponentData} from './contexts/ComponentDataContext'
 import {useStore} from './contexts/StoreContext'
@@ -20,16 +18,15 @@ import {useStore} from './contexts/StoreContext'
 export const useWrapperState = (wrappedComponentData: ComponentData, componentModel: Model,
                                 wrapperProps: any, localizer: ComponentStoreLocalizer) => {
   const viewerStore = useStore()
-  const viewerProps = useViewerProps()
-  return useMemo(() => getWrapperState(viewerStore, wrappedComponentData, componentModel, wrapperProps, localizer, viewerProps),
-    [viewerStore, wrappedComponentData, componentModel, wrapperProps, localizer, viewerProps])
+  return useMemo(() => getWrapperState(viewerStore, wrappedComponentData, componentModel, wrapperProps, localizer),
+    [viewerStore, wrappedComponentData, componentModel, wrapperProps, localizer])
 }
 
 const getWrapperState = (viewerStore: Store, wrappedComponentData: ComponentData, componentModel: Model,
-                         wrapperProps: any, localizer: ComponentStoreLocalizer, viewerProps: FormViewerProps) => {
+                         wrapperProps: any, localizer: ComponentStoreLocalizer) => {
   const componentStore = new ComponentStore(wrappedComponentData.key, componentModel.type)
   componentStore.props = wrapperProps
   const componentData = viewerStore.createComponentData(componentStore, false, componentModel)
   componentData.dataRootProvider = wrappedComponentData.dataRootProvider
-  return new ComponentState(componentData, viewerStore, localizer, () => ({}), viewerProps)
+  return new ComponentState(componentData, viewerStore, localizer, () => ({}))
 }

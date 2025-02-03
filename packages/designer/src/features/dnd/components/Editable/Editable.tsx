@@ -67,7 +67,7 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
     const viewerStore = builderStore.viewer
     const dataContext = componentData.dataRootProvider ?? viewerStore.dataContext
     const localize = viewerStore.localizeComponent.bind(viewerStore, 'component', dataContext.dataRoot)
-    const componentState = new ComponentState(componentData, viewerStore, localize, () => ({}), {})
+    const componentState = new ComponentState(componentData, viewerStore, localize, () => ({}))
     const slotCondition = container?.slotConditionBuilder?.(componentState.propsWithoutChildren)
     const slot = container.key === childrenSlot ? undefined : container.key
     currentProps[container.key] = <DropZone isInner={true} slot={slot} slotCondition={slotCondition}/>

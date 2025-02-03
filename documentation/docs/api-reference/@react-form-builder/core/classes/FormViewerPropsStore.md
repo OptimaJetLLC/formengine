@@ -72,6 +72,14 @@ The full language code passed in the FormViewer properties.
 
 ***
 
+### readOnly?
+
+> `optional` **readOnly**: `boolean`
+
+If true, the form is read-only.
+
+***
+
 ### showAllValidationErrors?
 
 > `optional` **showAllValidationErrors**: `boolean`
