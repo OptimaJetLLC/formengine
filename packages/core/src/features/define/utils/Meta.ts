@@ -2,6 +2,7 @@ import type {ComponentType, ReactNode} from 'react'
 import type {Annotation} from '../../annotation/types/annotations/Annotation'
 import type {ComponentKind} from '../types'
 import type {ComponentMetadataEventListeners} from './ComponentMetadataEventListeners'
+import type {InsertRestrictionFn} from './InsertRestrictionFn'
 
 /**
  * Component metadata for the form builder.
@@ -20,6 +21,7 @@ export class Meta {
    * @param initialJson the JSON source for the component (instance of {@link ComponentStore} class serialised to JSON).
    * @param eventListeners the component metadata event listeners.
    * @param icon the component icon.
+   * @param insertRestriction the function that restricts the insertion of a component into another component.
    */
   constructor(
     readonly type: string,
@@ -32,7 +34,8 @@ export class Meta {
     readonly kind: ComponentKind = 'component',
     readonly initialJson?: string,
     readonly eventListeners?: ComponentMetadataEventListeners,
-    readonly icon?: ComponentType
+    readonly icon?: ComponentType,
+    readonly insertRestriction?: InsertRestrictionFn,
   ) {
   }
 }

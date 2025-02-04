@@ -2,8 +2,9 @@ import styled from '@emotion/styled'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
 import {camelCase, replace, upperFirst} from 'lodash-es'
 import type {MouseEventHandler, ReactNode, RefCallback} from 'react'
-import {useCallback} from 'react'
+import {useCallback, useMemo} from 'react'
 import {icons} from '../../../icons'
+import {useCanAddComponent} from '../../../utils/AddComponentContext'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import type {DraggableProps} from '../../ui/ComponentBar'
 import {ItemType} from '../consts'
@@ -17,18 +18,25 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
   const {icon: CustomIcon} = builderStore.getComponentMetadata(data.model.type)
   const iconName = replace(upperFirst(camelCase(name)), ' ', '') as keyof typeof icons
   const Icon = CustomIcon ?? icons[iconName] ?? icons.Default
-  const onClick: MouseEventHandler = e => {
+
+  const canAddComponent = useCanAddComponent()
+  const disabled = useMemo(() => !canAddComponent(data), [canAddComponent, data])
+  const cls = useMemo(() => disabled ? 'disabled' : '', [disabled])
+
+  const onClick: MouseEventHandler = useCallback(e => {
+    if (disabled) return
     e.stopPropagation()
     onAdd?.(data)
-  }
+  }, [data, disabled, onAdd])
 
   const handleDoubleClick: MouseEventHandler = useCallback(e => {
+    if (disabled) return
     e.stopPropagation()
     onDoubleClick?.(data)
-  }, [onDoubleClick, data])
+  }, [disabled, onDoubleClick, data])
 
   const element = (
-    <Container onClick={onClick} onDoubleClick={handleDoubleClick}>
+    <Container onClick={onClick} onDoubleClick={handleDoubleClick} className={cls}>
       <Icon width={18} height={18} viewBox="0 0 24 24"/>
       <label>{name}</label>
     </Container>
@@ -62,12 +70,16 @@ const Container = styled.div`
   background-color: var(--rs-btn-default-bg);
   font-size: 13px;
 
-  &:hover {
+  &:hover:not(.disabled) {
     box-shadow: var(--rs-state-focus-shadow);
   }
 
-  &:active, &:focus {
+  &:active:not(.disabled), &:focus:not(.disabled) {
     outline: 2px solid var(--rs-btn-primary-bg);
+  }
+
+  &.disabled {
+    color: var(--rs-btn-default-disabled-text);
   }
 
   .rs-theme-dark & label {

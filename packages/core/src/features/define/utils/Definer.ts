@@ -9,6 +9,7 @@ import type {ActionsInitializer, ComponentKind} from '../types'
 import type {BuilderComponent} from './BuilderComponent'
 import type {ComponentMetadataEventListeners} from './ComponentMetadataEventListeners'
 import type {ComponentPropertyBindType} from './ComponentPropertyBindType'
+import type {InsertRestrictionFn} from './InsertRestrictionFn'
 import {Meta} from './Meta'
 import {Model} from './Model'
 
@@ -61,6 +62,10 @@ export type DefinerData<T extends object> = {
    * The component metadata event listeners.
    */
   eventListeners?: ComponentMetadataEventListeners
+  /**
+   * The function that restricts the insertion of a component into another component.
+   */
+  insertRestriction?: InsertRestrictionFn
 }
 
 /**
@@ -180,6 +185,15 @@ export class Definer<T extends object> {
   eventListeners = (eventListeners?: ComponentMetadataEventListeners) => this.#updateWith({eventListeners})
 
   /**
+   * Sets the function that restricts the insertion of a component into another component.
+   * @param insertRestriction the function that restricts the insertion of a component into another component.
+   * @returns the modified Definer class instance.
+   */
+  insertRestriction = (insertRestriction?: InsertRestrictionFn) => {
+    return this.#updateWith({insertRestriction})
+  }
+
+  /**
    * Creates component metadata for the form builder and form viewer.
    * @returns component metadata for the form builder and form viewer.
    */
@@ -227,7 +241,8 @@ export class Definer<T extends object> {
       this.data.kind,
       this.data.initialJson,
       this.data.eventListeners,
-      this.data.icon
+      this.data.icon,
+      this.data.insertRestriction
     )
 
     return {model, meta, category: this.data.category} as const

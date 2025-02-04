@@ -22,8 +22,8 @@ const RawDropZone = ({isAfter, isInner, ...props}: DropZoneProps) => {
   const isContainer = Boolean(store.children)
 
   const inner = isRoot || isInner
-  const [{isActive, isOver}, drop] = useDropZone(isAfter, inner, props.slot, props.slotCondition)
-  const className = cx({isAfter, isActive, isContainer, isRoot, isInner, isOver})
+  const [{isActive, isOver, isDragging, canDrop}, drop] = useDropZone(isAfter, inner, props.slot, props.slotCondition)
+  const className = cx({isAfter, isActive, isContainer, isRoot, isInner, isOver, isDragging, canDrop})
   // TODO FE-1065
   const ref = drop as unknown as RefCallback<HTMLDivElement>
 
@@ -39,6 +39,8 @@ const RawDropZone = ({isAfter, isInner, ...props}: DropZoneProps) => {
 interface DropState {
   isActive: boolean,
   isOver: boolean,
+  isDragging: boolean,
+  canDrop: boolean,
 }
 
 const useDropZone = (isAfter?: boolean, isInner?: boolean, slot?: string, slotCondition?: string): [DropState, ConnectDropTarget] => {
@@ -48,7 +50,7 @@ const useDropZone = (isAfter?: boolean, isInner?: boolean, slot?: string, slotCo
     ? 'inner'
     : isAfter ? 'after' : 'before'
 
-  const [{isActive, isOver}, drop] = useDrop({
+  const [{isActive, isOver, isDragging, canDrop}, drop] = useDrop({
     accept: AcceptDrop,
     drop: (source: ComponentData, monitor) => {
       const type = monitor.getItemType() as ItemType
@@ -65,13 +67,28 @@ const useDropZone = (isAfter?: boolean, isInner?: boolean, slot?: string, slotCo
           break
       }
     },
+    canDrop: (item, monitor) => {
+      const type = monitor.getItemType() as ItemType
+      switch (type) {
+        case ItemType.AddedComponent:
+          return store.canAddComponent(item, target, insertPosition, slot)
+        case ItemType.Component:
+          if (store.selected.size > 1) {
+            return store.canMoveComponents(store.selected, target, insertPosition, slot)
+          }
+          return store.canMoveComponents(new Set([item]), target, insertPosition, slot)
+      }
+      return false
+    },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       isActive: monitor.isOver() && monitor.canDrop(),
+      isDragging: monitor.getItemType() !== null,
+      canDrop: monitor.canDrop(),
     })
-  })
+  }, [store, target, insertPosition, slot, slotCondition])
 
-  return [{isActive, isOver}, drop]
+  return [{isActive, isOver, isDragging, canDrop}, drop]
 }
 
 const SContainer = styled.div`

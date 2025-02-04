@@ -6,7 +6,7 @@ Component metadata for the form builder.
 
 ### new Meta()
 
-> **new Meta**(`type`, `properties`, `css`, `wrapperCss`, `modules`, `customPreview`?, `valuedAn`?, `kind`?, `initialJson`?, `eventListeners`?, `icon`?): [`Meta`](Meta.md)
+> **new Meta**(`type`, `properties`, `css`, `wrapperCss`, `modules`, `customPreview`?, `valuedAn`?, `kind`?, `initialJson`?, `eventListeners`?, `icon`?, `insertRestriction`?): [`Meta`](Meta.md)
 
 Creates the component metadata for the form builder.
 
@@ -56,6 +56,10 @@ the component metadata event listeners.
 
 the component icon.
 
+• **insertRestriction?**: [`InsertRestrictionFn`](../type-aliases/InsertRestrictionFn.md)
+
+the function that restricts the insertion of a component into another component.
+
 #### Returns
 
 [`Meta`](Meta.md)
@@ -99,6 +103,14 @@ the component icon.
 > `readonly` `optional` **initialJson**: `string`
 
 the JSON source for the component (instance of [ComponentStore](ComponentStore.md) class serialised to JSON).
+
+***
+
+### insertRestriction?
+
+> `readonly` `optional` **insertRestriction**: [`InsertRestrictionFn`](../type-aliases/InsertRestrictionFn.md)
+
+the function that restricts the insertion of a component into another component.
 
 ***
 

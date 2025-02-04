@@ -17,6 +17,8 @@ const RawAddButton = () => {
     whisperRef.current?.close()
     builderStore.showComponentsModal(source => {
       builderStore.add(source, target, position)
+    }, componentData => {
+      return builderStore.canAddComponent(componentData, target, position)
     })
   }
 

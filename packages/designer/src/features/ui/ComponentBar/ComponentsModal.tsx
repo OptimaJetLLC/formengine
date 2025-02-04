@@ -3,6 +3,7 @@ import type {ComponentData} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {Modal} from 'rsuite'
+import {CanAddComponentProvider} from '../../../utils/AddComponentContext'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {useTranslationPart} from '../../localization/hooks'
 import {ComponentBar} from './ComponentBar'
@@ -29,7 +30,9 @@ const RawComponentsModal = () => {
   return <SModal open={componentsModalState.opened} onClose={closeModal} size={'lg'}>
     <Modal.Header><h5>{t('clickToAdd')}</h5></Modal.Header>
     <Modal.Body>
-      <ComponentBar draggable={false} onAdd={onAdd}/>
+      <CanAddComponentProvider value={componentsModalState.canAdd}>
+        <ComponentBar draggable={false} onAdd={onAdd}/>
+      </CanAddComponentProvider>
     </Modal.Body>
   </SModal>
 }

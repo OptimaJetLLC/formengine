@@ -22,6 +22,7 @@ import {Rows} from '../components/Layout'
 import {createStep, editorProps} from './editorProps'
 import {eventListeners} from './eventListeners'
 import {SItem} from './Item'
+import {RsWizardStepComponentType} from './RsWizardStep'
 import {WizardIcon} from './WizardIcon'
 import './toolbar.css'
 
@@ -222,7 +223,10 @@ export const rsWizard = define(RsWizard, RsWizardComponentType)
     steps: array
       .default([])
       .withEditorProps(editorProps),
-    children: nodeArray,
+    children: nodeArray
+      .withInsertRestriction((_, child) => {
+        return child.model.type === RsWizardStepComponentType
+      }),
     prevButtonLabel: string.default('Previous'),
     nextButtonLabel: string.default('Next'),
     finishButtonLabel: string.default('Finish'),

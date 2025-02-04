@@ -27,3 +27,4 @@ export const rsWizardStep = define(RsWizardStep, RsWizardStepComponentType)
     flexDirection: flexDirection.default('column'),
     gap: gap.default('10px')
   })
+  .insertRestriction((_, parent) => parent.model.type === 'RsWizard')

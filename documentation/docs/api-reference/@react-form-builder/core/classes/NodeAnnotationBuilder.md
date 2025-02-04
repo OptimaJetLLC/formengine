@@ -48,6 +48,24 @@ Partial metadata for a component property.
 
 ***
 
+### insertPredicate()?
+
+> `optional` **insertPredicate**: (`self`, `child`) => `boolean`
+
+The function that checks whether a child component can be inserted into a parent component.
+
+#### Parameters
+
+• **self**: [`ComponentData`](ComponentData.md)
+
+• **child**: [`ComponentData`](ComponentData.md)
+
+#### Returns
+
+`boolean`
+
+***
+
 ### options
 
 > **options**: [`BuilderOptions`](BuilderOptions.md)
@@ -152,7 +170,7 @@ the unique key of the component property.
 
 the instance of the component property metadata for the form builder.
 
-#### Inherited from
+#### Overrides
 
 [`AnnotationBuilder`](AnnotationBuilder.md).[`build`](AnnotationBuilder.md#build)
 
@@ -419,6 +437,26 @@ the modified instance of the builder.
 #### Inherited from
 
 [`AnnotationBuilder`](AnnotationBuilder.md).[`withEditorProps`](AnnotationBuilder.md#witheditorprops)
+
+***
+
+### withInsertRestriction()
+
+> **withInsertRestriction**(`predicate`?): [`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+
+Specifies a function that checks whether a child component can be inserted into a parent component.
+
+#### Parameters
+
+• **predicate?**
+
+the function that returns a boolean value.
+
+#### Returns
+
+[`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+
+the modified instance of the builder.
 
 ***
 

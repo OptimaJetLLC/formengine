@@ -25,6 +25,10 @@ const InnerContainer = styled.div`
   .selected > & {
     outline: none !important;
   }
+
+  &.isDragging:not(.canDrop) {
+    background-color: rgba(155, 0, 0, 0.15);
+  }
 `
 
 interface DropViewProps extends PropsWithoutRef<any> {
@@ -39,6 +43,8 @@ const AddButton = ({slot, slotCondition}: { slot?: string, slotCondition?: strin
   const handleClick = () => {
     builderStore.showComponentsModal(source => {
       builderStore.add(source, target, 'inner', slot, slotCondition)
+    }, componentData => {
+      return builderStore.canAddComponent(componentData, target, 'inner', slot)
     })
   }
   return <>

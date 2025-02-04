@@ -14,6 +14,7 @@ import {
   BiDi,
   BuilderView,
   ComponentStore,
+  isContainer,
   namedObserver,
   nameObservable,
   PersistedFormVersion,
@@ -78,6 +79,11 @@ export class EditableProperty implements CalculableEditorProps {
  * The callback function called when a component is selected in a modal window.
  */
 export type OnSelectCallback = (source: ComponentData) => void
+
+/**
+ * The function that checks if the component can be added.
+ */
+export type CanAddComponentFunction = (componentData: ComponentData) => boolean
 
 /**
  * The editable custom validation code.
@@ -153,6 +159,12 @@ export interface ComponentsModalState {
    * The callback function called when a component is selected in a modal window.
    */
   onSelect: OnSelectCallback
+  /**
+   * The function that checks if the component can be added.
+   * @param componentData the component data.
+   * @returns true, if the component can be added, false otherwise.
+   */
+  canAdd: CanAddComponentFunction
 }
 
 /**
@@ -295,7 +307,8 @@ export class BuilderStore implements IFormBuilder {
   readonly componentsModalState: ComponentsModalState = {
     opened: false,
     onSelect: () => {
-    }
+    },
+    canAdd: () => true,
   }
   readonly promptModalState: PromptModalState = {
     opened: false,
@@ -576,6 +589,10 @@ export class BuilderStore implements IFormBuilder {
     source.store.slot = slot
     source.store.slotCondition = slotCondition
 
+    if (!this.canAddComponent(source, target, insertPosition, slot)) {
+      throw new Error('Can\'t add component')
+    }
+
     if (insertPosition === 'inner' || target.isRoot) return source.setParent(target)
     if (insertPosition === 'before') return target.insertBeforeMe(source)
     if (insertPosition === 'after') return target.insertAfterMe(source)
@@ -591,9 +608,20 @@ export class BuilderStore implements IFormBuilder {
    * @param slotCondition the source code of the function that checks if the component can be bound to parent.
    */
   multipleMove(target: ComponentData, insertPosition: InsertPosition = 'after', slot?: string, slotCondition?: string) {
+    const stores: ComponentData[] = []
+
     this.selected.forEach((store) => {
       const sourceComponentData = this.viewer.form.componentTree.findByKey(store.key)
       if (!sourceComponentData) throw Error(`Component with key ${store.key} not found`)
+      if (this.canAddComponent(sourceComponentData, target, insertPosition, slot)) {
+        stores.push(sourceComponentData)
+      }
+    })
+
+    // if not all components can be added, then return
+    if (this.selected.size !== stores.length) return
+
+    stores.forEach((sourceComponentData) => {
       this.move(sourceComponentData, target, insertPosition, slot, slotCondition)
     })
   }
@@ -627,6 +655,10 @@ export class BuilderStore implements IFormBuilder {
   insert(options: InsertComponentOptions) {
     const {source, target, insertPosition, slot, slotCondition, selectAfterInsert} = options
 
+    if (!this.canAddComponent(source, target, insertPosition, slot)) {
+      throw new Error('Can\'t add component')
+    }
+
     const clone = assign(new ComponentStore('', ''), cloneDeep(source.store))
 
     const componentData = this.viewer.createComponentData(clone)
@@ -645,6 +677,71 @@ export class BuilderStore implements IFormBuilder {
     if (selectAfterInsert) this.selectNode(componentData)
 
     return clone
+  }
+
+  /**
+   * Checks if a component can be added to the target component.
+   * @param source the component to be added to the component tree.
+   * @param target the parent component for the component to be added.
+   * @param insertPosition the insertion position relative to the new parent component.
+   * @param slot the property name of the parent component where the new component will be added.
+   * @returns true, if component can be added, false otherwise.
+   */
+  canAddComponent(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = 'after', slot?: string) {
+    const parentComponent = insertPosition === 'inner' ? target : (target.parent ?? target.root)
+    return this.canContainComponent(parentComponent, source, slot)
+  }
+
+  /**
+   * Checks if a component can be moved to the target component.
+   * @param source the components to be added to the component tree.
+   * @param target the parent component for the component to be added.
+   * @param insertPosition the insertion position relative to the new parent component.
+   * @param slot the property name of the parent component where the new component will be added.
+   * @returns true, if component can be added, false otherwise.
+   */
+  canMoveComponents(source: Set<ComponentData>, target: ComponentData, insertPosition: InsertPosition = 'after', slot?: string) {
+    const parentComponent = insertPosition === 'inner' ? target : (target.parent ?? target.root)
+
+    const selectedComponents = Array.from(source)
+      .filter(component => component !== this.viewer.form.componentTree)
+
+    if (selectedComponents.indexOf(parentComponent) >= 0) return false
+
+    const parentRoots = [parentComponent.parent]
+    while (typeof parentRoots[parentRoots.length - 1] !== 'undefined') {
+      parentRoots.push(parentRoots[parentRoots.length - 1]?.parent)
+    }
+
+    for (const component of parentRoots) {
+      if (component && selectedComponents.indexOf(component) >= 0) return false
+    }
+
+    for (const component of selectedComponents) {
+      if (!this.canContainComponent(parentComponent, component, slot)) return false
+    }
+    return true
+  }
+
+  /**
+   * Checks if a parent component can contain a child component.
+   * @param parent the parent component.
+   * @param child the child component.
+   * @param slot the name of the parent component property where the child component will be added.
+   * @returns true, if the parent component can contain the child component, false otherwise.
+   */
+  canContainComponent(parent: ComponentData, child: ComponentData, slot?: string) {
+    const parentMeta = this.getComponentMetadata(parent.model.type)
+    const childMeta = this.getComponentMetadata(child.model.type)
+    const slotName = slot ?? 'children'
+
+    if (childMeta.insertRestriction?.(child, parent, slotName) === false) return false
+
+    const annotation = parentMeta.properties.find(p => p.key === slotName)
+    if (annotation && isContainer(annotation) && annotation.insertPredicate) {
+      return annotation.insertPredicate(parent, child)
+    }
+    return true
   }
 
   /**
@@ -899,9 +996,11 @@ export class BuilderStore implements IFormBuilder {
   /**
    * Displays the modal window of the components.
    * @param onSelect the callback function called when a component is selected.
+   * @param canAdd the function that checks if the component can be added.
    */
-  showComponentsModal(onSelect: OnSelectCallback) {
+  showComponentsModal(onSelect: OnSelectCallback, canAdd: CanAddComponentFunction) {
     this.componentsModalState.onSelect = onSelect
+    this.componentsModalState.canAdd = canAdd
     this.componentsModalState.opened = true
   }
 

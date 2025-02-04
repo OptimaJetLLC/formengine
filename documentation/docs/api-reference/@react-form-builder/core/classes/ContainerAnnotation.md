@@ -119,6 +119,24 @@ The hint for the component property.
 
 ***
 
+### insertPredicate()?
+
+> `optional` **insertPredicate**: (`self`, `child`) => `boolean`
+
+The function that checks whether a child component can be inserted into a parent component.
+
+#### Parameters
+
+• **self**: [`ComponentData`](ComponentData.md)
+
+• **child**: [`ComponentData`](ComponentData.md)
+
+#### Returns
+
+`boolean`
+
+***
+
 ### key
 
 > `readonly` **key**: `string`

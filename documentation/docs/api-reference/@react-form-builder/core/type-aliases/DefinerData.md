@@ -60,6 +60,12 @@ The component icon.
 
 The JSON source for the component (instance of [ComponentStore](../classes/ComponentStore.md) class serialised to JSON).
 
+### insertRestriction?
+
+> `optional` **insertRestriction**: [`InsertRestrictionFn`](InsertRestrictionFn.md)
+
+The function that restricts the insertion of a component into another component.
+
 ### kind?
 
 > `optional` **kind**: [`ComponentKind`](ComponentKind.md)

@@ -564,6 +564,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/InsertRestrictionFn",
+            "label": "InsertRestrictionFn"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/LanguageFullCode",
             "label": "LanguageFullCode"
           },

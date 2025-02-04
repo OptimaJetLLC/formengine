@@ -168,6 +168,26 @@ the modified Definer class instance.
 
 ***
 
+### insertRestriction()
+
+> **insertRestriction**(`insertRestriction`?): [`Definer`](Definer.md)\<`T`\>
+
+Sets the function that restricts the insertion of a component into another component.
+
+#### Parameters
+
+• **insertRestriction?**: [`InsertRestrictionFn`](../type-aliases/InsertRestrictionFn.md)
+
+the function that restricts the insertion of a component into another component.
+
+#### Returns
+
+[`Definer`](Definer.md)\<`T`\>
+
+the modified Definer class instance.
+
+***
+
 ### kind()
 
 > **kind**(`kind`): [`Definer`](Definer.md)\<`T`\>

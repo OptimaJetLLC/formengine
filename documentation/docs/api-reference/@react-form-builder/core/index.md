@@ -118,6 +118,7 @@
 - [Func](type-aliases/Func.md)
 - [HtmlAttribute](type-aliases/HtmlAttribute.md)
 - [IDisposable](type-aliases/IDisposable.md)
+- [InsertRestrictionFn](type-aliases/InsertRestrictionFn.md)
 - [LanguageFullCode](type-aliases/LanguageFullCode.md)
 - [LocalizationTestRequest](type-aliases/LocalizationTestRequest.md)
 - [LocalizationType](type-aliases/LocalizationType.md)
