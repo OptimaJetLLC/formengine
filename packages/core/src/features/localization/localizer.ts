@@ -154,7 +154,8 @@ function localizeData(fluentBundle: FluentBundle, localizationData: Record<strin
   const missingProperties: string[] = []
   const proxyFormData = createLocalizationDataProxy(localizationData, missingProperties)
   const fluentErrors: Error[] = []
-  const result = fluentBundle.formatPattern(pattern, proxyFormData, fluentErrors)
+  let result = fluentBundle.formatPattern(pattern, proxyFormData, fluentErrors)
+  result = restoreDots(result)
   return {
     result,
     missingProperties,
