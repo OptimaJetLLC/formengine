@@ -152,3 +152,6 @@ export type {IComponentDataFactory} from './features/validation/utils/IComponent
 export type {ComponentStoreLocalizer} from './stores/ComponentStoreLocalizer'
 export {forwardRef} from './utils/forwardRefShim'
 export type {InsertRestrictionFn} from './features/define/utils/InsertRestrictionFn'
+export type {IComponentState} from './stores/IComponentState'
+export type {ComponentStateFactory} from './stores/Store'
+export {defaultComponentStateFactory} from './features/form-viewer/components/ViewerStoreProvider'

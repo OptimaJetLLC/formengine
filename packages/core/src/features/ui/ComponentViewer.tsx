@@ -1,22 +1,18 @@
 import {cx} from '@emotion/css'
 import {forIn} from 'lodash-es'
-import {Fragment, useCallback, useEffect, useMemo, useRef} from 'react'
+import {Fragment, useCallback, useEffect, useRef} from 'react'
 import type {Subscription} from 'rxjs'
 import {catchError, filter, map} from 'rxjs'
-import {ComponentState} from '../../stores/ComponentState'
-import type {ComponentStore} from '../../stores/ComponentStore'
+import type {IComponentState} from '../../stores/IComponentState'
 import type {Store} from '../../stores/Store'
 import {isPromise, namedObserver} from '../../utils'
-import type {ComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useStore} from '../../utils/contexts/StoreContext'
-import {getChildren} from '../../utils/getChildren'
 import type {ActionData} from '../event'
 import {ActionEventArgs, DidMountEvent, WillUnmountEvent} from '../event'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 import {TooltipWrapper} from '../tooltip/TooltipWrapper'
 import {Erroneous} from '../validation'
-import {useComponentTreeContext} from './ComponentTreeContext'
 import {DefaultWrapper} from './DefaultWrapper'
 
 type Fn = () => void
@@ -38,7 +34,7 @@ function useComponentMountUnmount(init: Fn, clear: Fn, deps: Array<any>) {
   }, deps)
 }
 
-const useActions = (state: ComponentState, deps: Array<any>) => {
+const useActions = (state: IComponentState, deps: Array<any>) => {
   const store = useStore()
   const componentData = useComponentData()
   const subsRef = useRef<Subscription[]>([])
@@ -101,23 +97,10 @@ function getActionHandlersChain(store: Store, actionDataList: ActionData[]) {
 
 const RawComponentViewer = () => {
   const data = useComponentData()
-  const {componentWrapper, computeChildren: viewerComputeChildren} = useViewerProps()
-  const formViewerStore = useStore()
-  const localize = useCallback((componentStore: ComponentStore) => {
-    const dataContext = data.dataRootProvider ?? formViewerStore.dataContext
-    return formViewerStore.localizeComponent('component', dataContext.dataRoot, componentStore)
-  }, [formViewerStore, data])
-  const componentTree = useComponentTreeContext()
+  const {componentWrapper} = useViewerProps()
   const viewerProps = useViewerProps()
 
-  const computeChildren = useCallback((componentData: ComponentData, componentProps: Record<string, any>) => {
-    if (viewerComputeChildren) return viewerComputeChildren(componentData, componentProps)
-    return getChildren(componentData, formViewerStore.form.componentTree, componentTree, componentProps)
-  }, [viewerComputeChildren, formViewerStore.form.componentTree, componentTree])
-
-  const componentState = useMemo(
-    () => new ComponentState(data, formViewerStore, localize, computeChildren),
-    [data, formViewerStore, localize, computeChildren])
+  const componentState = data.componentState
 
   useActions(componentState, [viewerProps])
 

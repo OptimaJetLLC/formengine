@@ -40,7 +40,7 @@ const RawErroneous = ({children}: WrapperProps) => {
 
   if (props.erroneous) return <>{children}</>
 
-  const errorProps = {...componentState.get, error: wrappedComponentData.field?.error}
+  const errorProps = {...componentState.ownProps, error: wrappedComponentData.field?.error}
   return createElement(errorDefinition.component, errorProps, children)
 }
 

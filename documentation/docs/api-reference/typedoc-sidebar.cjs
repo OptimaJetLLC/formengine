@@ -268,6 +268,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/interfaces/IComponentState",
+            "label": "IComponentState"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/interfaces/IDataContext",
             "label": "IDataContext"
           },
@@ -436,6 +441,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/ComponentPropsLocalization",
             "label": "ComponentPropsLocalization"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/ComponentStateFactory",
+            "label": "ComponentStateFactory"
           },
           {
             "type": "doc",
@@ -1008,6 +1018,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/functions/createView",
             "label": "createView"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/defaultComponentStateFactory",
+            "label": "defaultComponentStateFactory"
           },
           {
             "type": "doc",

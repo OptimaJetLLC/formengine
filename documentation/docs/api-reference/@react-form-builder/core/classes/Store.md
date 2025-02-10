@@ -12,7 +12,7 @@ The form viewer settings. **Internal use only.**
 
 ### new Store()
 
-> **new Store**(`formViewerPropsStore`, `parentStore`?, `parentComponentStore`?, `parentStoreContext`?): [`Store`](Store.md)
+> **new Store**(`formViewerPropsStore`, `componentStateFactory`, `parentStore`?, `parentComponentStore`?, `parentStoreContext`?): [`Store`](Store.md)
 
 Creates form viewer settings.
 
@@ -21,6 +21,10 @@ Creates form viewer settings.
 • **formViewerPropsStore**: [`FormViewerPropsStore`](FormViewerPropsStore.md)
 
 the form viewer store settings.
+
+• **componentStateFactory**: [`ComponentStateFactory`](../type-aliases/ComponentStateFactory.md)
+
+the factory for creating component states.
 
 • **parentStore?**: [`Store`](Store.md)
 
@@ -39,6 +43,14 @@ the parent store data context.
 [`Store`](Store.md)
 
 ## Properties
+
+### componentStateFactory
+
+> `readonly` **componentStateFactory**: [`ComponentStateFactory`](../type-aliases/ComponentStateFactory.md)
+
+the factory for creating component states.
+
+***
 
 ### dataContext
 

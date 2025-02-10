@@ -1,6 +1,15 @@
-import {FormViewerPropsStore, namedObserver, Store, StoreProvider, useDisposable, ViewerPropsProvider} from '@react-form-builder/core'
+import type {ComponentData} from '@react-form-builder/core'
+import {
+  defaultComponentStateFactory,
+  FormViewerPropsStore,
+  namedObserver,
+  Store,
+  StoreProvider,
+  useDisposable,
+  ViewerPropsProvider
+} from '@react-form-builder/core'
 import type {ReactNode} from 'react'
-import {useCallback, useEffect, useImperativeHandle} from 'react'
+import {useCallback, useEffect, useImperativeHandle, useRef} from 'react'
 import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import type {FormBuilderProps} from '../../FormBuilderProps'
@@ -9,6 +18,7 @@ import {LocalStorageSynchronizer} from '../../stores/LocalStorageSynchronizer'
 import {BuilderStoreProvider} from '../../utils/BuilderStoreContext'
 import {determineTheme} from '../../utils/determineTheme'
 import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
+import {getBuilderChildren} from '../dnd'
 import {CustomDragLayer} from '../dnd/components/CustomDragLayer'
 import {useHotkeys} from '../hotkeys/useHotKeys'
 import {LocalizationProvider} from '../localization'
@@ -41,7 +51,7 @@ interface BuilderProvidersProps extends RawBuilderProvidersProps {
 const useBuilderProviderData = (props: FormBuilderProps) => useCallback(() => {
   const {builderRef, ...viewerProps} = props
 
-  const store = new Store(new FormViewerPropsStore(viewerProps))
+  const store = new Store(new FormViewerPropsStore(viewerProps), defaultComponentStateFactory)
 
   const builderStore = new BuilderStore(store, props)
   builderStore.changeBuilderMode('builder')
@@ -75,7 +85,7 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
     store.formViewerPropsStore.applyProps(viewerProps)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.initialData, props.view, props.validators, props.formValidators, props.localize, props.language, props.actions,
-    props.errorWrapper])
+    props.errorWrapper, props.readOnly, props.componentWrapper])
 
   useEffect(() => {
     props.onFormSchemaChange?.(builderStore.formAsString)
@@ -114,15 +124,26 @@ const Providers = namedObserver('Providers', RawProviders)
  * @returns the React element.
  */
 const RawBuilderProviders = (props: RawBuilderProvidersProps) => {
-  const builderProviderDataFactory = useBuilderProviderData(props.props)
+  const builderProps = {...props.props}
+
+  const builderRef = useRef<BuilderStore | undefined>(undefined)
+
+  // For Designer, we replace compute children with props. This is because these props are used
+  // by ComponentState to compute all the properties of the component
+  builderProps.computeChildren = useCallback((componentData: ComponentData, componentProps: Record<string, any>) => {
+    if (!builderRef.current) return {}
+    return getBuilderChildren(builderRef.current, componentData, componentProps)
+  }, [])
+
+  const builderProviderDataFactory = useBuilderProviderData(builderProps)
   const builderProviderData = useDisposable(builderProviderDataFactory)
 
   const builderStore = builderProviderData?.builderStore
+  builderRef.current = builderStore
   const store = builderProviderData?.store
 
   if (!builderStore || !store) return null
 
-  return <Providers {...props} builderStore={builderStore} store={store}/>
+  return <Providers {...props} props={builderProps} builderStore={builderStore} store={store}/>
 }
-
 export const BuilderProviders = namedObserver('BuilderProviders', RawBuilderProviders)

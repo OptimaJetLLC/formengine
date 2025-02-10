@@ -1,8 +1,6 @@
-import {useContext} from 'react'
 import type {ComponentTreeProps} from '../../ComponentTreeProps'
 import {namedObserver} from '../../utils'
 import {ComponentDataProvider} from '../../utils/contexts/ComponentDataContext'
-import {ComponentTreeContext, ComponentTreeContextProvider} from './ComponentTreeContext'
 import {ComponentViewer} from './ComponentViewer'
 
 /**
@@ -12,15 +10,11 @@ import {ComponentViewer} from './ComponentViewer'
  * @returns the React element.
  */
 const RawComponentTree = ({data}: ComponentTreeProps) => {
-  const context = useContext(ComponentTreeContext)
-
   const children = data.map(cd => <ComponentDataProvider key={cd.id} value={cd}>
     <ComponentViewer/>
   </ComponentDataProvider>)
 
-  return context
-    ? <>{children}</>
-    : <ComponentTreeContextProvider value={ComponentTree}>{children}</ComponentTreeContextProvider>
+  return <>{children}</>
 }
 
 export const ComponentTree = namedObserver('ComponentTree', RawComponentTree)

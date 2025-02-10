@@ -50,6 +50,14 @@ The child nodes in the component data tree.
 
 ***
 
+### componentState
+
+> **componentState**: [`IComponentState`](../interfaces/IComponentState.md) = `defaultComponentState`
+
+The state of the component. **Internal use only.
+
+***
+
 ### dataRootProvider?
 
 > `optional` **dataRootProvider**: [`IDataRootProvider`](../interfaces/IDataRootProvider.md)

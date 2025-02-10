@@ -10,6 +10,7 @@ import type {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
 import type {ComponentStore} from './ComponentStore'
 import type {ComponentStoreLocalizer} from './ComponentStoreLocalizer'
+import type {IComponentState} from './IComponentState'
 import type {Store} from './Store'
 
 const getHtmlAttributes = (componentStore: ComponentStore) => componentStore.htmlAttributes
@@ -38,7 +39,7 @@ const computeEvents = (data: ComponentData, store: Store, state: ComponentState)
 /**
  * Calculates all the properties of the form view component.
  */
-export class ComponentState {
+export class ComponentState implements IComponentState {
 
   /**
    * Creates an instance that calculates the properties of the form viewer component.
@@ -57,7 +58,7 @@ export class ComponentState {
   }
 
   /**
-   * @returns combined in order of priority component properties.
+   * @inheritDoc
    */
   get get(): Record<string, any> {
     const propsWithoutChildren = this.propsWithoutChildren
@@ -65,7 +66,14 @@ export class ComponentState {
   }
 
   /**
-   * @returns the combined properties of the components in priority order, excluding child components.
+   * @inheritDoc
+   */
+  get ownProps() {
+    return {...this.propsWithoutChildren, ...this.className}
+  }
+
+  /**
+   * @inheritDoc
    */
   get propsWithoutChildren(): Record<string, any> {
     const {htmlAttributes, ...calculated} = this.calculatedProps
@@ -135,8 +143,7 @@ export class ComponentState {
   }
 
   /**
-   * Calculates and returns wrapper className property.
-   * @returns the Record that contains the className property for the wrapper of component.
+   * @inheritDoc
    */
   get wrapperClassName() {
     return this.getClassNameFromCssPart('wrapperCss')

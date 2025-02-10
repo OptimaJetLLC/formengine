@@ -1,13 +1,12 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import type {ComponentData} from '@react-form-builder/core'
 import {BuilderContextProvider, FormViewer, useStore, useViewerProps} from '@react-form-builder/core'
 import type {ComponentProps} from 'react'
-import {useCallback, useMemo} from 'react'
+import {useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {customizable, customizableObserver} from '../customization'
-import {EditableWrapper, getBuilderChildren} from '../dnd'
+import {EditableWrapper} from '../dnd'
 import {ErrorFormWrapper} from './ErrorFormWrapper'
 import {Header} from './Header/Header'
 import {PanelContainer} from './Panel'
@@ -19,10 +18,7 @@ const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
   const viewerProps = useViewerProps()
   const {t} = useTranslation()
   const componentWrapper = builderMode === 'builder' ? EditableWrapper : undefined
-  const builderComputeChildren = useCallback((componentData: ComponentData, componentProps: Record<string, any>) => {
-    return getBuilderChildren(builderStore, componentData, componentProps)
-  }, [builderStore])
-  const computeChildren = builderMode === 'builder' ? builderComputeChildren : undefined
+  const computeChildren = builderMode === 'builder' ? builderStore.props.computeChildren : undefined
   const builderContext = useMemo(() => ({builderMode, translate: t}), [builderMode, t])
 
   return (

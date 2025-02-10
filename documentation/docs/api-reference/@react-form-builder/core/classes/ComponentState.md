@@ -2,6 +2,10 @@
 
 Calculates all the properties of the form view component.
 
+## Implements
+
+- [`IComponentState`](../interfaces/IComponentState.md)
+
 ## Constructors
 
 ### new ComponentState()
@@ -126,6 +130,10 @@ the component event handlers that send events to the event bus.
 
 combined in order of priority component properties.
 
+#### Implementation of
+
+[`IComponentState`](../interfaces/IComponentState.md).[`get`](../interfaces/IComponentState.md#get)
+
 ***
 
 ### htmlAttributes
@@ -156,6 +164,28 @@ component localized properties.
 
 ***
 
+### ownProps
+
+#### Get Signature
+
+> **get** **ownProps**(): `object`
+
+##### Returns
+
+`object`
+
+combined in order of priority component properties without children props.
+
+###### className
+
+> **className**: `string`
+
+#### Implementation of
+
+[`IComponentState`](../interfaces/IComponentState.md).[`ownProps`](../interfaces/IComponentState.md#ownprops)
+
+***
+
 ### propsWithoutChildren
 
 #### Get Signature
@@ -166,7 +196,12 @@ component localized properties.
 
 `Record`\<`string`, `any`\>
 
-the combined properties of the components in priority order, excluding child components.
+combined component properties in order of priority, excluding child components, the className property
+does not contain styles additionally defined for the component.
+
+#### Implementation of
+
+[`IComponentState`](../interfaces/IComponentState.md).[`propsWithoutChildren`](../interfaces/IComponentState.md#propswithoutchildren)
 
 ***
 
@@ -211,6 +246,10 @@ Calculates and returns wrapper className property.
 `string`
 
 the Record that contains the className property for the wrapper of component.
+
+#### Implementation of
+
+[`IComponentState`](../interfaces/IComponentState.md).[`wrapperClassName`](../interfaces/IComponentState.md#wrapperclassname)
 
 ## Methods
 

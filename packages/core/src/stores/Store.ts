@@ -35,6 +35,7 @@ import {ComponentStore} from './ComponentStore'
 import {Form} from './Form'
 import type {FormViewerPropsStore} from './FormViewerPropsStore'
 import type {FormViewerValidationRules} from './FormViewerValidationRules'
+import type {IComponentState} from './IComponentState'
 import type {IStore} from './IStore'
 import type {LocalizationType} from './LocalizationStore'
 import {LocalizationStore} from './LocalizationStore'
@@ -123,6 +124,14 @@ class StoreFormContext implements IDataContext {
 }
 
 /**
+ * The component state factory that calculates the properties of the form viewer component.
+ * @param data the data needed to display the component.
+ * @param store the form viewer settings.
+ * @returns the component property calculator.
+ */
+export type ComponentStateFactory = (data: ComponentData, store: Store) => IComponentState
+
+/**
  * The form viewer settings. **Internal use only.**
  */
 export class Store implements IStore, IFormViewer, IComponentDataFactory {
@@ -165,11 +174,13 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
   /**
    * Creates form viewer settings.
    * @param formViewerPropsStore the form viewer store settings.
+   * @param componentStateFactory the factory for creating component states.
    * @param parentStore the form viewer settings, used in templates.
    * @param parentComponentStore the parent component settings.
    * @param parentStoreContext the parent store data context.
    */
   constructor(public formViewerPropsStore: FormViewerPropsStore,
+              public readonly componentStateFactory: ComponentStateFactory,
               public readonly parentStore?: Store,
               public readonly parentComponentStore?: ComponentStore,
               public readonly parentStoreContext?: IDataContext) {
@@ -338,6 +349,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
     const factory = (cs: ComponentStore) => this.createComponentData(cs, deferFieldCalculation, undefined, dataContext)
     const componentData = new ComponentData(componentStore, model, field, factory, this.formViewerPropsStore.formValidators)
     componentData.dataRootProvider = dataContext
+    componentData.componentState = this.componentStateFactory(componentData, this)
     return componentData
   }
 
@@ -366,7 +378,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
       return new SimpleField(dataContext, componentStore, model, deferFieldCalculation)
     }
 
-    const childStore = new Store(this.formViewerPropsStore.clone(), this, componentStore, dataContext)
+    const childStore = new Store(this.formViewerPropsStore.clone(), this.componentStateFactory, this, componentStore, dataContext)
     return new TemplateField(componentStore, childStore)
   }
 

@@ -57,7 +57,7 @@ const RawComponentTooltip = ({tooltipDefinition, children}: ComponentTooltipProp
     return viewerStore.localizeComponent('tooltip', dataContext.dataRoot, componentStore)
   }, [viewerStore, wrappedComponentData])
   const componentState = useWrapperState(wrappedComponentData, tooltipDefinition, wrappedComponentStore.tooltipProps, localize)
-  return createElement(tooltipDefinition.component, componentState.get, children)
+  return createElement(tooltipDefinition.component, componentState.ownProps, children)
 }
 
 const ComponentTooltip = namedObserver('ComponentTooltip', RawComponentTooltip)

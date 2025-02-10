@@ -32,6 +32,14 @@ Custom actions for the form viewer.
 
 ***
 
+### computeChildren?
+
+> `optional` **computeChildren**: [`ComputeChildren`](../type-aliases/ComputeChildren.md)
+
+Function that calculates all child properties of a component. **Internal use only.**
+
+***
+
 ### errorWrapper?
 
 > `optional` **errorWrapper**: `ComponentType`\<[`ErrorWrapperProps`](../interfaces/ErrorWrapperProps.md)\>

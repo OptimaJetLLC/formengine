@@ -2,7 +2,6 @@ import {cx} from '@emotion/css'
 import type {ComponentData, ComponentStore, WrapperProps} from '@react-form-builder/core'
 import {
   checkSlotCondition,
-  ComponentState,
   ComponentTree,
   DefaultWrapper,
   groupBy,
@@ -64,10 +63,7 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
   }
 
   openSlots.forEach(container => {
-    const viewerStore = builderStore.viewer
-    const dataContext = componentData.dataRootProvider ?? viewerStore.dataContext
-    const localize = viewerStore.localizeComponent.bind(viewerStore, 'component', dataContext.dataRoot)
-    const componentState = new ComponentState(componentData, viewerStore, localize, () => ({}))
+    const componentState = componentData.componentState
     const slotCondition = container?.slotConditionBuilder?.(componentState.propsWithoutChildren)
     const slot = container.key === childrenSlot ? undefined : container.key
     currentProps[container.key] = <DropZone isInner={true} slot={slot} slotCondition={slotCondition}/>

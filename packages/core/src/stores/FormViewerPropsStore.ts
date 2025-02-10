@@ -9,6 +9,7 @@ import type {FormValidators} from '../features/form-viewer/FormValidators'
 import type {Language} from '../features/localization/types'
 import type {ErrorWrapperProps} from '../features/validation'
 import type {Validators} from '../features/validation/types/CustomValidationRules'
+import type {ComputeChildren} from '../utils/ComputeChildren'
 import {nameObservable} from '../utils/observableNaming'
 
 /**
@@ -55,6 +56,10 @@ export class FormViewerPropsStore {
    * If true, all validation errors will be displayed.
    */
   showAllValidationErrors?: boolean
+  /**
+   * Function that calculates all child properties of a component. **Internal use only.**
+   */
+  computeChildren?: ComputeChildren
 
   /**
    * Constructs a new FormViewerPropsStore from the given FormViewerProps.
@@ -77,6 +82,7 @@ export class FormViewerPropsStore {
       errorWrapper: observable.ref,
       readOnly: observable.ref,
       showAllValidationErrors: observable.ref,
+      computeChildren: observable.ref,
     }, {name: nameObservable(`FormViewerPropsStore`)})
   }
 
@@ -95,6 +101,7 @@ export class FormViewerPropsStore {
     this.errorWrapper = formViewerProps.errorWrapper
     this.readOnly = formViewerProps.readOnly
     this.showAllValidationErrors = formViewerProps.showAllValidationErrors
+    this.computeChildren = formViewerProps.computeChildren
   }
 
   /**
@@ -113,6 +120,7 @@ export class FormViewerPropsStore {
     clone.errorWrapper = this.errorWrapper
     clone.readOnly = this.readOnly
     clone.showAllValidationErrors = this.showAllValidationErrors
+    clone.computeChildren = this.computeChildren
     return clone
   }
 }

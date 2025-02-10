@@ -1,10 +1,16 @@
 import type {ReactNode} from 'react'
 import {useCallback, useContext, useEffect, useImperativeHandle} from 'react'
+import {ComponentState} from '../../../stores/ComponentState'
+import type {ComponentStore} from '../../../stores/ComponentStore'
 import {FormViewerPropsStore} from '../../../stores/FormViewerPropsStore'
+import type {ComponentStateFactory} from '../../../stores/Store'
 import {Store} from '../../../stores/Store'
 import {namedObserver} from '../../../utils'
+import type {ComponentData} from '../../../utils/contexts/ComponentDataContext'
 import {StoreContext, StoreProvider} from '../../../utils/contexts/StoreContext'
+import {getChildren} from '../../../utils/getChildren'
 import {useDisposable} from '../../../utils/useDisposable'
+import {ComponentTree} from '../../ui/ComponentTree'
 import type {FormViewerProps} from '../types'
 import {ViewerPropsProvider} from './ViewerPropsContext'
 
@@ -41,7 +47,8 @@ const RawNotifier = (props: Omit<ExistingStoreProviderProps, 'children'>) => {
     store.formViewerPropsStore.applyProps(viewerProps)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewerProps.initialData, viewerProps.view, viewerProps.validators, viewerProps.formValidators,
-    viewerProps.localize, viewerProps.language, viewerProps.actions, viewerProps.errorWrapper])
+    viewerProps.localize, viewerProps.language, viewerProps.actions, viewerProps.errorWrapper,
+    viewerProps.readOnly, viewerProps.componentWrapper])
 
   return null
 }
@@ -67,8 +74,29 @@ const RawExistingStoreProvider = ({
 
 const ExistingStoreProvider = namedObserver('ExistingStoreProvider', RawExistingStoreProvider)
 
+/**
+ * The default component state factory.
+ * @param data the data needed to display the component.
+ * @param store the form viewer settings.
+ * @returns the component property calculator.
+ */
+export const defaultComponentStateFactory: ComponentStateFactory = (data: ComponentData, store: Store) => {
+  return new ComponentState(data, store, defaultComponentLocalizer, defaultComputeChildren)
+
+  function defaultComponentLocalizer(componentStore: ComponentStore) {
+    const dataContext = data.dataRootProvider ?? store.dataContext
+    return store.localizeComponent('component', dataContext.dataRoot, componentStore)
+  }
+
+  function defaultComputeChildren(componentData: ComponentData, componentProps: Record<string, any>) {
+    const viewerProps = store.formViewerPropsStore
+    if (viewerProps.computeChildren) return viewerProps.computeChildren(componentData, componentProps)
+    return getChildren(componentData, store.form.componentTree, ComponentTree, componentProps)
+  }
+}
+
 const RawNewStoreProvider = ({children, props}: ViewerStoreProviderProps) => {
-  const storeFactory = useCallback(() => new Store(new FormViewerPropsStore(props)), [props])
+  const storeFactory = useCallback(() => new Store(new FormViewerPropsStore(props), defaultComponentStateFactory), [props])
   const store = useDisposable(storeFactory)
 
   if (!store) return null

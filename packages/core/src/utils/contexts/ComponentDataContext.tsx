@@ -6,6 +6,7 @@ import type {FormValidator, FormValidators} from '../../features/form-viewer/For
 import {getFluentData} from '../../features/localization/getFluentData'
 import type {Field} from '../../features/validation'
 import type {ComponentStore} from '../../stores/ComponentStore'
+import {defaultComponentState} from '../../stores/IComponentState'
 import {createNonNullableContext} from '../createNonNullableContext'
 import type {IFormData} from '../IFormData'
 import {nameObservable} from '../observableNaming'
@@ -126,6 +127,11 @@ export class ComponentData implements IFormData {
    * This is not an index in a parent-child structure.
    */
   index?: number
+
+  /**
+   * The state of the component. **Internal use only.
+   */
+  componentState = defaultComponentState
 
   /**
    * Constructor.
