@@ -133,3 +133,8 @@ div.markdown img {
 img.medium-zoom-image--opened {
   z-index: 200;
 }
+
+.rsuite-component-cell {
+  font-style: italic;
+  font-size: large;
+}

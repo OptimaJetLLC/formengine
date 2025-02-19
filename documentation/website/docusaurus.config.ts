@@ -22,6 +22,7 @@ const config: Config = {
   projectName: 'formbuilder', // Usually your repo name.
 
   onBrokenLinks: 'throw',
+  onBrokenAnchors: 'throw',
   onBrokenMarkdownLinks: 'throw',
 
   scripts: [

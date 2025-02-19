@@ -1,0 +1,1252 @@
+---
+title: React Suite components
+description: The list of React Suite components used in the FormEngine library.
+sidebar_label: React Suite components
+sidebar_position: 50
+---
+
+import CustomComponents from './_custom-components.mdx'
+
+export const RSuiteComponentsDocItem = ({link, caption}) => {
+  return !link ? caption : <a target="_blank" href={`https://rsuitejs.com/components${link}`}>{caption}</a>
+}
+
+export const ComponentLink = ({tag, link}) => {
+  const caption = `<${tag}>`
+  return !link ? caption : <RSuiteComponentsDocItem link={link} caption={caption}/>
+}
+
+# React Suite components
+
+[React Suite](https://rsuitejs.com/) is a great UI component library with an extensive
+[set of components](https://rsuitejs.com/components/overview/) for just about everything. The FormEngine
+[component library](/components-library) is based on React Suite components.
+
+Here is a list of the components used, as well as components that you can connect yourself.
+
+## Layout
+
+<table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Remark</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/container/" caption="Container"/>. Container is a layout component that can be used to wrap other
+      components.
+    </td>
+  </tr>
+  <tr>
+    <td>&lt;Container&gt;</td>
+    <td rowSpan={5}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td>&lt;Header&gt;</td>
+  </tr>
+  <tr>
+    <td>&lt;Footer&gt;</td>
+  </tr>
+  <tr>
+    <td>&lt;Content&gt;</td>
+  </tr>
+  <tr>
+    <td>&lt;Sidebar&gt;</td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/divider/" caption="Divider"/>. Divider are used to group content horizontally or vertically.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Divider" link="/divider/#code-lt-divider-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/flexbox-grid/" caption="FlexboxGrid"/>. FlexboxGrid is a layout component that can be used to create a
+      grid layout.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="FlexboxGrid" link="/flexbox-grid/#code-lt-flexbox-grid-gt-code"/></td>
+    <td rowSpan={2}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="FlexboxGrid.Item" link="/flexbox-grid/#code-lt-flexbox-grid-item-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/grid/" caption="Grid"/>. A Grid layout component that provides 24 grids, referring to the responsive
+      design of Bootstrap.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Grid" link="/grid/#code-lt-grid-gt-code"/></td>
+    <td rowSpan={3}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Row" link="/grid/#code-lt-row-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Col" link="/grid/#code-lt-col-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/stack/" caption="Stack"/>. Quickly layout components through Flexbox, support vertical and horizontal
+      stacking, support custom spacing and wrap.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Stack" link="/stack/#code-lt-stack-gt-code"/></td>
+    <td rowSpan={4}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Stack.Item" link="/stack/#code-lt-stack-item-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="HStack" link="/stack/#code-lt-h-stack-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="VStack" link="/stack/#code-lt-v-stack-gt-code"/></td>
+  </tr>
+  </tbody>
+</table>
+
+## Buttons
+
+<table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Remark</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/button/" caption="Button"/>. Commonly used operating buttons.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Button" link="/button/#code-lt-button-gt-code"/></td>
+    <td>Use the [Button](/components-library/static-components/button) component.</td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/icon-button/" caption="IconButton"/>. Icon button renders an icon within in a button.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="IconButton" link="/icon-button/#code-lt-icon-button-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/button-group/" caption="Button Group"/>. A button group gives users access to frequently performed,
+      related actions.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="ButtonGroup" link="/button-group/#code-lt-button-group-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  </tbody>
+</table>
+
+## Status
+
+<table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Remark</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/badge/" caption="Badge"/>. Used for buttons, numbers or status markers next to icons.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Badge" link="/badge/#code-lt-badge-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/loader/" caption="Loader"/>. A component that provides state during data loading.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Loader" link="/loader/#code-lt-loader-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/message/" caption="Message"/>. Used to show important tips on a page.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Message" link="/message/#code-lt-message-gt-code"/></td>
+    <td>Use the [Message](/components-library/static-components/message) component.</td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/notification/" caption="Notification"/>. Used for system notifications. Generally used to push
+      messages.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Notification" link="/notification/#code-lt-notification-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/progress/" caption="Progress"/>. Display the current progress of an operation flow.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Progress.Line" link="/progress/#code-lt-progress-line-gt-code"/></td>
+    <td>Use the [Progress Line](/components-library/static-components/progress-line) component.</td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Progress.Circle" link="/progress/#code-lt-progress-circle-gt-code"/></td>
+    <td>Use the [Progress Circle](/components-library/static-components/progress-circle) component.</td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/placeholder/" caption="Placeholder"/>. Placeholder before component loaded.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Placeholder.Paragraph" link="/placeholder/#code-lt-placeholder-paragraph-gt-code"/></td>
+    <td rowSpan={3}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Placeholder.Graph" link="/placeholder/#code-lt-placeholder-graph-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Placeholder.Grid" link="/placeholder/#code-lt-placeholder-grid-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/toaster/" caption="Toaster"/>. Toaster display brief, temporary notifications of actions, errors, or
+      other events in an application. It is often used with the Message and Notification components.
+    </td>
+  </tr>
+  <tr>
+    <td><RSuiteComponentsDocItem link="/toaster/#use-toaster" caption="useToaster"/></td>
+    <td>
+      Embedding hooks as components is not supported. Create a discussion on
+      [GitHub](https://github.com/optimajet/formengine/discussions/new/choose) if you need it.
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+## Typography
+
+<table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Remark</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/heading/" caption="Heading"/>. A heading is a title or subtitle at the beginning of a page, section,
+      or subsection.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Heading" link="/heading/#code-lt-heading-gt-code"/></td>
+    <td>
+      Use the [Header](/components-library/static-components/header) component.
+      <CustomComponents/>
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="HeadingGroup" link="/heading/#code-lt-heading-group-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/highlight/" caption="Highlight"/>. Used to mark or highlight matched text content. For example, used
+      to highlight search results.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Highlight" link="/highlight/#code-lt-highlight-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/text/" caption="Text"/>. Text is a basic component that allows you to display text content on the
+      page.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Text" link="/text/#code-lt-text-gt-code"/></td>
+    <td>
+      Use the [Static Content](/components-library/static-components/static-content) component.
+      <CustomComponents/>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+## Overlays
+
+<table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Remark</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/drawer/" caption="Drawer"/>. A panel that slides out from the edge of the page can replace Modal to
+      present more content.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Drawer" link="/drawer/#code-lt-drawer-gt-code"/></td>
+    <td rowSpan={6}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Drawer.Body"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Drawer.Actions"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Drawer.Header"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Drawer.Title"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Drawer.Footer"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/dropdown/" caption="Dropdown"/>. A drop-down menu is a navigation that uses selectpicker if you want
+      to select a value.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Dropdown" link="/dropdown/#code-lt-dropdown-gt-code"/></td>
+    <td rowSpan={4}>
+      Use the [Dropdown](/components-library/fields-components/dropdown) component.
+      <CustomComponents/>
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Dropdown.Item" link="/dropdown/#code-lt-dropdown-item-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Dropdown.Menu" link="/dropdown/#code-lt-dropdown-menu-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Dropdown.Separator" link="/dropdown/#code-lt-dropdown-separator-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/modal/" caption="Modal"/>. A modal dialog box component for message prompts, acknowledgement
+      messages, and submissions. You can use Drawer if you need to place more content.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Modal" link="/modal/#code-lt-modal-gt-code"/></td>
+    <td rowSpan={5}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Modal.Header" link="/modal/#code-lt-modal-header-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Modal.Title" link="/modal/#code-lt-modal-title-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Modal.Body" link="/modal/#code-lt-modal-body-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Modal.Footer" link="/modal/#code-lt-modal-footer-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/popover/" caption="Popover"/>. When the mouse clicks/moves in, the pop-up pop-up box is used to
+      display more content.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Popover" link="/popover/#code-lt-popover-gt-code"/></td>
+    <td rowSpan={2}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Whisper" link="/popover/#code-lt-whisper-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/tooltip/" caption="Tooltip"/>. A text tip for secondary, which replaces the default title property of
+      an HTML element.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Tooltip" link="/tooltip/#code-lt-tooltip-gt-code"/></td>
+    <td rowSpan={2}>
+      Use the [Tooltip](/components-library/static-components/tooltip) component.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Whisper" link="/tooltip/#code-lt-whisper-gt-code"/></td>
+  </tr>
+  </tbody>
+</table>
+
+## Navigation
+
+<table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Remark</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/affix/" caption="Affix"/>. Components such as navigation, buttons, etc. can be fixed in the visible
+      range. Commonly used for pages with long content, fixed the specified elements in the visible range of the page to assist in quick
+      operation.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Affix" link="/affix/#code-lt-affix-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/breadcrumb/" caption="Breadcrumb"/>. Used to display the current page path and quickly return to the
+      history page.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Breadcrumb" link="/breadcrumb/#code-lt-breadcrumb-gt-code"/></td>
+    <td rowSpan={2}>
+      Use the [Breadcrumb](/components-library/structure-components/breadcrumb) component.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Breadcrumb.Item" link="/breadcrumb/#code-lt-breadcrumb-item-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/nav/" caption="Nav"/>. Provides a list of various forms of navigation menus, which can be landscape
+      and portrait layout.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Nav" link="/nav/#code-lt-nav-gt-code"/></td>
+    <td rowSpan={3}>
+      Use the [Menu](/components-library/static-components/menu) component.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Nav.Item" link="/nav/#code-lt-nav-item-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Nav.Menu" link="/nav/#code-lt-nav-menu-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/navbar/" caption="Navbar"/>. For navigation at the top of the page.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Navbar" link="/navbar/#code-lt-navbar-gt-code"/></td>
+    <td rowSpan={2}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Navbar.Brand"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/navbar/" caption="Sidenav"/>. An encapsulation of the Nav for the sidebar of the page.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Sidenav" link="/sidenav/#code-lt-sidenav-gt-code"/></td>
+    <td rowSpan={3}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Sidenav.Header"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Sidenav.Body"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/steps/" caption="Steps"/>. Steps is a navigation bar that guides users through the steps of a task.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Steps" link="/steps/#code-lt-steps-gt-code"/></td>
+    <td>
+      Use the [Wizard](/components-library/structure-components/wizard) component.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Steps.Item" link="/steps/#code-lt-steps-item-gt-code"/></td>
+    <td>
+      Use the [Wizard step](/components-library/structure-components/wizard-step) component.
+    </td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/pagination/" caption="Pagination"/>. Paging navigation, used to assist long lists to load only part of
+      the data, you can quickly switch to the specified data page.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Pagination" link="/pagination/#code-lt-pagination-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  </tbody>
+</table>
+
+## Media and icons
+
+<table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Remark</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/avatar/" caption="Avatar"/>. Used to display an avatar or brand.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Avatar" link="/avatar/#code-lt-avatar-gt-code"/></td>
+    <td rowSpan={2}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="AvatarGroup" link="/avatar/#code-lt-avatar-group-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/icon/" caption="Icon"/>. React Suite provides some guidance and suggestions for using icons in React
+      Suite applications.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Icon" link="/icon/#code-lt-icon-gt-code"/></td>
+    <td rowSpan={2}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="IconFont" link="/icon/#code-lt-icon-font-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/image/" caption="Image"/>. Use the image component to display images.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Image" link="/image/#code-lt-image-gt-code"/></td>
+    <td>
+      Use the [Image](/components-library/static-components/image) component.
+      <CustomComponents/>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+## Form
+
+<table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Remark</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/form/" caption="Form"/>. A set of components and models that process form data.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Form" link="/form/#code-lt-form-gt-code"/></td>
+    <td rowSpan={6}>
+      Use the [fields](/components-library/fields-components) components.
+      <CustomComponents/>
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Form.Group" link="/form/#code-lt-form-group-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Form.Control" link="/form/#code-lt-form-control-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Form.ControlLabel" link="/form/#code-lt-form-control-label-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Form.HelpText" link="/form/#code-lt-form-help-text-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Form.ErrorMessage" link="/form/#code-lt-form-error-message-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/form-validation/" caption="Form validation"/>.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Form"/></td>
+    <td rowSpan={2}>
+      Use the [built-in validation](/validation#built-in-validators) that builds on top of the [Zod](https://zod.dev/) library.
+      Use [code validation](/validation#code-validator) and [full form validation](/validation#form-validation).
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Form.Control"/></td>
+  </tr>
+  </tbody>
+</table>
+
+## Data Entry
+
+<table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Remark</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/auto-complete/" caption="AutoComplete"/>. Provide auto-complete functionality for input box.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="AutoComplete" link="/auto-complete/#code-lt-auto-complete-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/cascader/" caption="Cascader"/>. The Cascader component displays a hierarchical list of options.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Cascader" link="/cascader/#code-lt-cascader-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/cascade-tree/" caption="CascadeTree"/>. CascadeTree is a component that displays tree-structured data
+      in columns.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="CascadeTree" link="/cascade-tree/#code-lt-cascade-tree-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/check-picker/" caption="CheckPicker"/>. Used for multiple data selection, support grouping.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="CheckPicker" link="/check-picker/#code-lt-check-picker-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/check-tree-picker/" caption="CheckTreePicker"/>. CheckTreePicker are supported in multiple selectors
+      for multiple selection of complex data structures.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="CheckTreePicker" link="/check-tree-picker/#code-lt-check-tree-picker-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/check-tree/" caption="CheckTree"/>. CheckTree is used to display a tree structure data and supports
+      Checkbox selection.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="CheckTree" link="/check-tree/#code-lt-check-tree-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/checkbox/" caption="Checkbox"/>. Check boxes are usually used in groups. Allow users to select one or
+      more values from a set.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Checkbox" link="/checkbox/#code-lt-checkbox-gt-code"/></td>
+    <td>Use the [Checkbox](/components-library/fields-components/checkbox) component.</td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="CheckboxGroup" link="/checkbox/#code-lt-checkbox-group-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/input/" caption="Input"/>. Instead of HTML native controls, input, textarea.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Input" link="/input/#code-lt-input-gt-code"/></td>
+    <td>Use the [Input](/components-library/fields-components/input) component.</td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="InputGroup" link="/input/#code-lt-input-group-gt-code"/></td>
+    <td rowSpan={3}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="InputGroup.Button"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="InputGroup.Addon"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="MaskedInput" link="/input/#code-lt-masked-input-gt-code"/></td>
+    <td>Use the [Input](/components-library/fields-components/input) component.</td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/input-number/" caption="InputNumber"/>. An input component that can only enter numbers.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="InputNumber" link="/input-number/#code-lt-input-number-gt-code"/></td>
+    <td>
+      Use the [Number format](/components-library/fields-components/number-format) component.
+      <CustomComponents/>
+    </td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/input-picker/" caption="InputPicker"/>. Single item selector with text box input.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="InputPicker" link="/input-picker/#code-lt-input-picker-gt-code"/></td>
+    <td>
+      Use the [Dropdown](/components-library/fields-components/dropdown) component.
+    </td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/inline-edit/" caption="InlineEdit"/>. An inline edit displays a custom input component that switches
+      between reading and editing on the same page.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="InlineEdit" link="/inline-edit/#code-lt-inline-edit-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/multi-cascader/" caption="MultiCascader"/>. The MultiCascader component is used to select multiple
+      values from cascading options.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="MultiCascader" link="/multi-cascader/#code-lt-multi-cascader-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/radio/" caption="Radio"/>. Radios are used when only one choice may be selected in a series of
+      options.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Radio" link="/radio/#code-lt-radio-gt-code"/></td>
+    <td rowSpan={2}>Use the [Radio group](/components-library/fields-components/radio-group) component.</td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="RadioGroup" link="/radio/#code-lt-radio-group-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/radio-tile/" caption="RadioTile"/>. A series of selectable tile components that behave like Radio.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="RadioTile" link="/radio-tile/#code-lt-radio-tile-gt-code"/></td>
+    <td rowSpan={2}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="RadioTileGroup" link="/radio-tile/#code-lt-radio-tile-group-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/rate/" caption="Rate"/>. A rating indicates user interest in content.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Rate" link="/rate/#props"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/select-picker/" caption="SelectPicker"/>. For a single data selection, support grouping.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="SelectPicker" link="/select-picker/#code-lt-select-picker-gt-code"/></td>
+    <td>
+      Use the [Dropdown](/components-library/fields-components/dropdown) component.
+    </td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/slider/" caption="Slider"/>. A Slider component for displaying current value.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Slider" link="/slider/#code-lt-slider-gt-code"/></td>
+    <td rowSpan={2}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="RangeSlider" link="/slider/#code-lt-range-slider-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/tag-picker/" caption="TagPicker"/>. Multi-select by tag and support new options.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="TagPicker" link="/tag-picker/#code-lt-tag-picker-gt-code"/></td>
+    <td>
+      Use the [TagPicker](/components-library/fields-components/tag-picker) component.
+    </td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/tag-input/" caption="TagInput"/>. The enhancement of Input supports input tags and management tags.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="TagInput" link="/tag-input/#code-lt-tag-input-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/toggle/" caption="Toggle"/>. Toggle switch, used for selection between two values.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Toggle" link="/toggle/#code-lt-toggle-gt-code"/></td>
+    <td>
+      Use the [Toggle](/components-library/fields-components/toggle) component.
+    </td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/tree-picker/" caption="TreePicker"/>. Selector component, tree single selector.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="TreePicker" link="/tree-picker/#code-lt-tree-picker-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/tree/" caption="Tree"/>. Used to show a tree-structured data.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Tree" link="/tree/#code-lt-tree-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/uploader/" caption="Uploader"/>. Upload files by clicking or drag-and-drop, it supports previewing the
+      uploaded image.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Uploader" link="/uploader/#code-lt-uploader-gt-code"/></td>
+    <td>
+      Use the [Uploader](/components-library/fields-components/uploader) component.
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+## Date and Time
+
+<table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Remark</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/calendar/" caption="Calendar"/>. A component that displays data by calendar.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Calendar" link="/calendar/#code-lt-calendar-gt-code"/></td>
+    <td>
+      Use the [Calendar](/components-library/fields-components/calendar) component.
+    </td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/date-input/" caption="DateInput"/>. The DateInput component lets users select a date with the
+      keyboard.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="DateInput" link="/date-input/#code-lt-date-input-gt-code"/></td>
+    <td>
+      Use the [DatePicker](/components-library/fields-components/date-picker) component.
+      <CustomComponents/>
+    </td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/date-picker/" caption="DatePicker"/>. DatePicker is a highly customizable component that allows users
+      to enter and pick dates and times in different formats.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="DatePicker" link="/date-picker/#code-lt-date-picker-gt-code"/></td>
+    <td>
+      Use the [DatePicker](/components-library/fields-components/date-picker) component.
+    </td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/date-range-input/" caption="DateRangeInput"/>. The DateRangeInput components let the user select a
+      date range with the keyboard.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="DateRangeInput" link="/date-range-input/#code-lt-date-range-input-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/date-range-picker/" caption="DateRangePicker"/>. DateRangePicker is used to quickly enter or pick a
+      date and time range.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="DateRangePicker" link="/date-range-picker/#code-lt-date-range-picker-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/time-picker/" caption="TimePicker"/>. TimePicker is a component that allows users to select a time
+      value.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="TimePicker" link="/time-picker/#code-lt-time-picker-gt-code"/></td>
+    <td>
+      Use the [TimePicker](/components-library/fields-components/time-picker) component.
+      <CustomComponents/>
+    </td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/time-range-picker/" caption="TimeRangePicker"/>. The TimeRangePicker component is used to select a
+      time range.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="TimeRangePicker" link="/time-range-picker/#code-lt-time-range-picker-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  </tbody>
+</table>
+
+## Data Grid
+
+<table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Remark</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/table/" caption="Table"/>. A table displays rows of data.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Table" link="/table/#code-lt-table-gt-code"/></td>
+    <td rowSpan={5}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Table.Column" link="/table/#code-lt-table-column-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Table.ColumnGroup" link="/table/#code-lt-table-column-group-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Table.HeaderCell" link="/table/#code-lt-table-header-cell-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Table.Cell" link="/table/#code-lt-table-cell-gt-code"/></td>
+  </tr>
+  </tbody>
+</table>
+
+## Data Display
+
+<table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Remark</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/card/" caption="Card"/>. Card is a container component for displaying data, which can contain multiple
+      child components such as images, buttons, and text. It is used to display information in a structured way.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Card" link="/card/#code-lt-card-gt-code"/></td>
+    <td rowSpan={5}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Card.Header" link="/card/#code-lt-card-header-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Card.Body" link="/card/#code-lt-card-body-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Card.Footer" link="/card/#code-lt-card-footer-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="CardGroup" link="/card/#code-lt-card-group-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/carousel/" caption="Carousel"/>. Display a set of elements in a carousel.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Carousel" link="/carousel/#code-lt-carousel-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/list/" caption="List"/>. The List component is used to display a group of data, suitable for
+      presenting list-like content, and supports drag-and-drop sorting.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="List" link="/list/#code-lt-list-gt-code"/></td>
+    <td rowSpan={2}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="List.Item" link="/list/#code-lt-list-item-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/stat/" caption="Stat"/>. Used to display statistical data with a title and its corresponding value,
+      emphasizing the current value of a particular attribute.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Stat" link="/stat/#code-lt-stat-gt-code"/></td>
+    <td rowSpan={6}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Stat.Label" link="/stat/#code-lt-stat-label-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Stat.Value" link="/stat/#code-lt-stat-value-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Stat.Trend" link="/stat/#code-lt-stat-trend-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Stat.HelpText" link="/stat/#code-lt-stat-help-text-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="StatGroup" link="/stat/#code-lt-stat-group-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/tag/" caption="Tag"/>. Tag for categorizing or markup.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Tag" link="/tag/#code-lt-tag-gt-code"/></td>
+    <td rowSpan={2}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="TagGroup" link="/tag/#code-lt-tag-group-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/timeline/" caption="Timeline"/>. Vertical display timeline.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Timeline" link="/timeline/#code-lt-timeline-gt-code"/></td>
+    <td rowSpan={2}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Timeline.Item" link="/timeline/#code-lt-timeline-item-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/panel/" caption="Panel"/>. A content panel that supports collapsible, shadow, and border containers.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Panel" link="/panel/#code-lt-panel-gt-code"/></td>
+    <td rowSpan={2}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="PanelGroup" link="/panel/#code-lt-panel-group-gt-code"/></td>
+  </tr>
+  </tbody>
+</table>
+
+## Disclosure
+
+<table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Remark</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/accordion/" caption="Accordion"/>. The Accordion component is used to expand and collapse the content
+      area by clicking the title. It is often used to display a large amount of content in a limited space.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Accordion" link="/accordion/#code-lt-accordion-gt-code"/></td>
+    <td rowSpan={2}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Accordion.Panel" link="/accordion/#code-lt-accordion-panel-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/tabs/" caption="Tabs"/>. Tabs are a set of layered sections of content, known as tab panels, that
+      display one panel of content at a time.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Tabs" link="/tabs/#code-lt-tabs-gt-code"/></td>
+    <td rowSpan={2}>
+      Use the [Tab](/components-library/structure-components/tab) component.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Tabs.Tab" link="/tabs/#code-lt-tabs-tab-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/visually-hidden/" caption="VisuallyHidden"/>. VisuallyHidden is a component that visually hides its
+      children while keeping them accessible to screen readers.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="VisuallyHidden" link="/visually-hidden/#code-lt-visually-hidden-gt-code"/></td>
+    <td><CustomComponents/></td>
+  </tr>
+  </tbody>
+</table>
+
+## Utilities
+
+<table>
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Remark</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/animation/" caption="Animation"/>. Animation component is a set of animation components. You can
+      achieve animation effects by configuring related properties.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Animation.Fade" link="/animation/#code-lt-animation-fade-gt-code"/></td>
+    <td rowSpan={5}><CustomComponents/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Animation.Collapse" link="/animation/#code-lt-animation-collapse-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Animation.Bounce" link="/animation/#code-lt-animation-bounce-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Animation.Slide" link="/animation/#code-lt-animation-slide-gt-code"/></td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Animation.Transition" link="/animation/#code-lt-animation-transition-gt-code"/></td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/custom-provider/" caption="CustomProvider"/>. Support personalized configurations such as
+      localization, Right to Left, and themes.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="CustomProvider" link="/custom-provider/#code-lt-custom-provider-gt-code"/></td>
+    <td>
+      See also the [localization](/localization) documentation.
+      <CustomComponents/>
+    </td>
+  </tr>
+  <tr>
+    <td colSpan={2} className="rsuite-component-cell">
+      <RSuiteComponentsDocItem link="/whisper/" caption="Whisper"/>. The Whisper component is used to display a floating element. It is
+      usually used with the Tooltip and Popover components.
+    </td>
+  </tr>
+  <tr>
+    <td><ComponentLink tag="Whisper" link="/whisper/#code-lt-whisper-gt-code"/></td>
+    <td>
+      See also the [Tooltip](/components-library/static-components/tooltip) comopnent.
+      <CustomComponents/>
+    </td>
+  </tr>
+  </tbody>
+</table>
