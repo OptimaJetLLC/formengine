@@ -63,7 +63,6 @@ export const navProps = {
   items: array.default(toLabeledValues(['Item1', 'Item2', 'Item3'])),
   justified: boolean.hinted('Justified navigation').default(false),
   onSelect: event,
-  pullRight: boolean.hinted('Appears on the right').default(false),
   reversed: boolean.hinted('Reverse direction of tabs/subtle').default(false),
   vertical: boolean.hinted('Stacked navigation').default(false)
 }
