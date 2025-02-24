@@ -29,6 +29,7 @@ export default defineConfig(({command}) => ({
   test: {
     globals: true,
     environment: 'jsdom',
+    setupFiles: __dirname + '/tests/component/setup.ts',
     alias: [
       {
         find: /^monaco-editor$/,

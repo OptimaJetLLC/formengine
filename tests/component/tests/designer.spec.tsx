@@ -30,6 +30,6 @@ describe(`Component: ${App.name}`, function () {
   it('should support custom actions execution on did mount', async () => {
     const {findByRole} = render(<App/>)
 
-    expect(await findByRole('button', {name: /Current weather/}, {timeout: 15000})).toBeInTheDocument()
+    expect(await findByRole('button', {name: /Current weather/})).toBeInTheDocument()
   })
 })
