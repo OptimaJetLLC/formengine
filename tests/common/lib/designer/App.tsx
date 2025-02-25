@@ -13,15 +13,13 @@ import {
 } from '@react-form-builder/components-rsuite'
 import type {ComponentStore, FormValidators, IFormViewer, Validators} from '@react-form-builder/core'
 import {ActionDefinition, BiDi, Language} from '@react-form-builder/core'
-import type {AnnotationEditorProps, FormBuilderI18n, FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
+import type {AnnotationEditorProps, CustomizationMap, FormBuilderI18n, FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useState, version} from 'react'
 import {frFR, trTR} from 'rsuite/esm/locales/index.js'
 import {CustomErrorWrapper} from './components/CustomErrorWrapper'
 import {throwErrorComponent} from './components/ThrowErrorComponent'
-import {simpleCustomization} from './customization'
-import {Designer} from './Designer'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
 import {generatedLicenseKey} from './utils/license'
 import {useRefWithLog} from './utils/useRefWithLog'
@@ -215,7 +213,11 @@ const getFormFn = (formName?: string) => {
 
 const useCustomErrorWrapper = false
 
-const FormBuilderApp = () => {
+type FormBuilderAppProps = {
+  customization?: CustomizationMap
+}
+
+const FormBuilderApp = ({customization}: FormBuilderAppProps) => {
   const viewerRef = useRefWithLog<IFormViewer>('ViewerRef', logEvents)
   const builderRef = useRefWithLog<IFormBuilder>('BuilderRef', logEvents, builder => {
     if (builder) console.log(builder.formAsString)
@@ -255,13 +257,11 @@ const FormBuilderApp = () => {
 
   if (!indexedDbInitialized) return null
 
-  const useCustomization = false
-
   return <FormBuilder
     propertyEditors={{
       string: StringEditor
     }}
-    customization={useCustomization ? simpleCustomization : undefined}
+    customization={customization}
     licenseKey={generatedLicenseKey}
     getForm={getFormFn}
     formName={sampleFormName}
@@ -342,8 +342,4 @@ const FormBuilderApp = () => {
   />
 }
 
-const showDocumentationExample = false
-
-const App = () => showDocumentationExample ? <Designer/> : <FormBuilderApp/>
-
-export default App
+export default FormBuilderApp

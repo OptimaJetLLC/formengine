@@ -1356,6 +1356,17 @@ const typedocSidebar = { items: [
       },
       {
         "type": "category",
+        "label": "Variables",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/designer/variables/CustomizableZone",
+            "label": "CustomizableZone"
+          }
+        ]
+      },
+      {
+        "type": "category",
         "label": "Functions",
         "items": [
           {

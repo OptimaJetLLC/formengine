@@ -10,12 +10,6 @@ i18n.use(initReactI18next).init({resources: {}})
 console.log('REACT VERSION IN TEST:', React.version)
 
 describe(`Component: ${App.name}`, function () {
-  beforeAll(() => {
-    vi.spyOn(console, 'error').mockImplementation((msg, b, c) => {
-      console.log('ERROR:', msg)
-      // debugger
-    })
-  })
 
   it('should render', () => {
     render(<App/>)

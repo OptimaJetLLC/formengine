@@ -54,7 +54,7 @@ Function that calculates all child properties of a component. **Internal use onl
 
 ### customization?
 
-> `optional` **customization**: `Partial`\<`Record`\<[`CustomizableKey`](../type-aliases/CustomizableKey.md), [`Options`](../type-aliases/Options.md)\>\>
+> `optional` **customization**: `Partial`\<`Record`\<`string`, [`Options`](../type-aliases/Options.md)\>\>
 
 The map of customizations for the FormBuilder components.
 

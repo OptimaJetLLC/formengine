@@ -14,6 +14,12 @@ A [customization map](/api-reference/@react-form-builder/designer/type-aliases/C
 the [options](/api-reference/@react-form-builder/designer/type-aliases/Options) of the desired component are set using
 its [customizable key](/api-reference/@react-form-builder/designer/type-aliases/CustomizableKey).
 
+Another option for customizing the component is to use pure CSS. Each component has a static CSS class named with the component's name
+prefixed by `FE_`. This class is applied to the same element as the style or className attributes, utilizing
+the [customization map](/api-reference/@react-form-builder/designer/type-aliases/CustomizationMap).
+
+A list of customizable components is also available as a [Set](/api-reference/@react-form-builder/designer/variables/CustomizableZone).
+
 ### Example
 
 ```tsx
@@ -90,48 +96,48 @@ const FormBuilderApp = () => {
 
 ![Customization 01](/assets/customization/customization-01.png)
 
-|  #   | Name                |
-|:----:|:--------------------|
-|  1   | MainContainer       | 
-|  2   | LeftPanel           | 
-|  3   | CentralPanel        | 
-|  4   | RightPanel          | 
-|  5   | LeftPanel_Nav       | 
-|  6   | LeftPanel_Content   | 
-|  7   | Header              |
-|  8   | CentralPanel        |
-|  9   | RightPanel_Nav      |
-|  10  | RightPanel_Content  |
-|  11  | MainMenu_Dropdown   |
-|  12  | MainMenu_Button     |
-|  13  | Header_Toolbar      |
-|  14  | ToggleModeButton    |
-|  15  | ResolutionSelect    |
-|  16  | LocalizationSelect  |
-|  17  | JsonViewButton      |
-|  18  | ToggleThemeButton   |
+| #  | Name               | className             |
+|:--:|:-------------------|-----------------------|
+| 1  | MainContainer      | FE_MainContainer      | 
+| 2  | LeftPanel          | FE_LeftPanel          | 
+| 3  | CentralPanel       | FE_CentralPanel       |
+| 4  | RightPanel         | FE_RightPanel         |
+| 5  | LeftPanel_Nav      | FE_LeftPanel_Nav      |
+| 6  | LeftPanel_Content  | FE_LeftPanel_Content  |
+| 7  | Header             | FE_Header             |
+| 8  | CentralPanel       | FE_CentralPanel       |
+| 9  | RightPanel_Nav     | FE_RightPanel_Nav     |
+| 10 | RightPanel_Content | FE_RightPanel_Content |
+| 11 | MainMenu_Dropdown  | FE_MainMenu_Dropdown  |
+| 12 | MainMenu_Button    | FE_MainMenu_Button    |
+| 13 | Header_Toolbar     | FE_Header_Toolbar     |
+| 14 | ToggleModeButton   | FE_ToggleModeButton   |
+| 15 | ResolutionSelect   | FE_ResolutionSelect   |
+| 16 | LocalizationSelect | FE_LocalizationSelect |
+| 17 | JsonViewButton     | FE_JsonViewButton     |
+| 18 | ToggleThemeButton  | FE_ToggleThemeButton  |
 
 ![Customization 02](/assets/customization/customization-02.png)
 
-| #  | Name                                                                        |
-|:--:|:----------------------------------------------------------------------------|
-| 1  | Components_Tab                                                              |
-| 2  | Components_Tab_Content                                                      |
-| 3  | Tree_Tab                                                                    |
-| 4  | Tree_Tab_Content                                                            |
-| 5  | Settings_Tab                                                                |
-| 6  | Settings_Tab_Content                                                        |
-| 7  | Forms_Tab                                                                   |
-| 8  | Forms_Tab_Content                                                           |
-| 9  | Main_Tab                                                                    |
-| 10 | Style_Tab                                                                   |
-| 11 | Actions_Tab                                                                 |
-| 12 | Rules_Tab                                                                   |
-| 13 | Main_Tab_Content, Style_Tab_Content, Actions_Tab_Content, Rules_Tab_Content |
-| 14 | LabeledProperty                                                             |
-| 15 | PropertyCodeButton                                                          |
-| 16 | PropertyLabel                                                               |
-| 17 | PropertyInput                                                               |
+| #  | Name                                                                                       | className                                                                                              |
+|:--:|:-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| 1  | Components_Tab                                                                             | FE_Components_Tab                                                                                      |
+| 2  | Components_Tab_Content                                                                     | FE_Components_Tab_Content                                                                              |
+| 3  | Tree_Tab                                                                                   | FE_Tree_Tab                                                                                            |
+| 4  | Tree_Tab_Content                                                                           | FE_Tree_Tab_Content                                                                                    |
+| 5  | Settings_Tab                                                                               | FE_Settings_Tab                                                                                        |
+| 6  | Settings_Tab_Content                                                                       | FE_Settings_Tab_Content                                                                                |
+| 7  | Forms_Tab                                                                                  | FE_Forms_Tab                                                                                           |
+| 8  | Forms_Tab_Content                                                                          | FE_Forms_Tab_Content                                                                                   |
+| 9  | Main_Tab                                                                                   | FE_Main_Tab                                                                                            |
+| 10 | Style_Tab                                                                                  | FE_Style_Tab                                                                                           |
+| 11 | Actions_Tab                                                                                | FE_Actions_Tab                                                                                         |
+| 12 | Rules_Tab                                                                                  | FE_Rules_Tab                                                                                           |
+| 13 | Main_Tab_Content,<br/> Style_Tab_Content,<br/> Actions_Tab_Content,<br/> Rules_Tab_Content | FE_Main_Tab_Content,<br/> FE_Style_Tab_Content,<br/> FE_Actions_Tab_Content,<br/> FE_Rules_Tab_Content |
+| 14 | LabeledProperty                                                                            | FE_LabeledProperty                                                                                     |
+| 15 | PropertyCodeButton                                                                         | FE_PropertyCodeButton                                                                                  |
+| 16 | PropertyLabel                                                                              | FE_PropertyLabel                                                                                       |
+| 17 | PropertyInput                                                                              | FE_PropertyInput                                                                                       |
 
 ## Custom property editors
 

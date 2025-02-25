@@ -46,15 +46,17 @@ export type CustomizationMap = Partial<Record<CustomizableKey, Options>>
 export const customizable = <T = any>(key: CustomizableKey, component: ComponentType<T>) => {
   component.displayName = key
   const CustomizableComponent = component
+  const customizationStaticClassName = `FE_${key}`
+
   return (props: any) => {
     const builderStore = useBuilderStore()
     const settings = builderStore.props.customization?.[key]
 
-    if (!settings) return <CustomizableComponent {...props}/>
+    if (!settings) return <CustomizableComponent {...props} className={cx(customizationStaticClassName, props.className)}/>
     if (settings.hidden) return null
 
     const {style, customRenderer} = settings
-    const className = cx(props?.className, settings.className, css`${style as CSSInterpolation}`, key)
+    const className = cx(customizationStaticClassName, props?.className, settings.className, css`${style as CSSInterpolation}`, key)
     const result = <CustomizableComponent {...props} className={className}/>
 
     return customRenderer ? customRenderer(result, component, props) : result

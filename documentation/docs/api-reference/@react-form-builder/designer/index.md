@@ -30,6 +30,10 @@
 - [LocalizationComputeCodeParams](type-aliases/LocalizationComputeCodeParams.md)
 - [Options](type-aliases/Options.md)
 
+## Variables
+
+- [CustomizableZone](variables/CustomizableZone.md)
+
 ## Functions
 
 - [ActionCell](functions/ActionCell.md)
