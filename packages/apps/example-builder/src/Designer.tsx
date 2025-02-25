@@ -7,8 +7,10 @@ import {
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
-import {ActionDefinition, BiDi, ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
-import {BuilderView, FormBuilder, IFormStorage} from '@react-form-builder/designer'
+import type {ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
+import {ActionDefinition, BiDi} from '@react-form-builder/core'
+import type {IFormStorage} from '@react-form-builder/designer'
+import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {useCallback, useRef} from 'react'
 
 // Here you can pass the metadata of your components
@@ -168,11 +170,15 @@ const emptyForm = `
 
 const formName = 'Example'
 
+// eslint-disable-next-line @typescript-eslint/require-await
 async function getFormFn(name?: string) {
   if (name === formName) return emptyForm
   throw new Error(`Form '${name}' is not found.`)
 }
 
+/**
+ * @returns the Designer element.
+ */
 export const Designer = () => {
   const ref = useRef<IFormViewer>(null)
 
@@ -180,6 +186,7 @@ export const Designer = () => {
     if (viewer) {
       // if you want to work with the internal FormViewer component in an imperative style
       ref.current = viewer
+      // eslint-disable-next-line no-console
       console.log(ref.current)
     }
   }, [])
@@ -201,13 +208,16 @@ export const Designer = () => {
       formStorage={formStorage}
       localize={localizeFn}
       onFormDataChange={({data, errors}) => {
+        // eslint-disable-next-line no-console
         console.log('onFormDataChange', {data, errors})
       }}
       viewerRef={setRef}
       validators={customValidators}
       actions={{
+        // eslint-disable-next-line no-console
         logEventArgs: e => console.log(e),
         assertArgs: ActionDefinition.functionalAction((e, args) => {
+          // eslint-disable-next-line no-console
           console.log(e, args)
         }, {
           p1: 'string',

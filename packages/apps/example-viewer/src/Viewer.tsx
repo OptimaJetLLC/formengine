@@ -5,7 +5,8 @@ import {
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
-import {ActionDefinition, BiDi, ComponentLocalizer, createView, FormViewer, IFormViewer, Validators} from '@react-form-builder/core'
+import type {ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
+import {ActionDefinition, BiDi, createView, FormViewer} from '@react-form-builder/core'
 import {useCallback, useRef} from 'react'
 
 // highlight-start
@@ -160,11 +161,15 @@ const emptyForm = `
 
 const formName = 'Example'
 
+// eslint-disable-next-line @typescript-eslint/require-await
 async function getFormFn(name?: string) {
   if (name === formName) return emptyForm
   throw new Error(`Form '${name}' is not found.`)
 }
 
+/**
+ * @returns the Viewer element.
+ */
 export const Viewer = () => {
   const ref = useRef<IFormViewer | null>(null)
 
@@ -172,6 +177,7 @@ export const Viewer = () => {
     if (viewer) {
       // if you want to work with the internal FormViewer component in an imperative style
       ref.current = viewer
+      // eslint-disable-next-line no-console
       console.log(ref.current)
     }
   }, [])
@@ -193,13 +199,16 @@ export const Viewer = () => {
       initialData={({})}
       localize={localizeFn}
       onFormDataChange={({data, errors}) => {
+        // eslint-disable-next-line no-console
         console.log('onFormDataChange', {data, errors})
       }}
       viewerRef={setRef}
       validators={customValidators}
       actions={{
+        // eslint-disable-next-line no-console
         logEventArgs: e => console.log(e),
         assertArgs: ActionDefinition.functionalAction((e, args) => {
+          // eslint-disable-next-line no-console
           console.log(e, args)
         }, {
           p1: 'string',

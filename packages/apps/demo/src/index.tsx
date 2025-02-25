@@ -1,5 +1,6 @@
-import './utils/monaco.settings'
+import './utils/monaco-settings'
 import React from 'react'
+// eslint-disable-next-line import/extensions
 import {createRoot} from 'react-dom/client'
 import App from './App'
 

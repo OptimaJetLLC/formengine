@@ -14,6 +14,11 @@ const spanStyle: CSSProperties = {
   color: '#c1730d',
 }
 
+/**
+ * The custom error wrapper.
+ * @param props the React component properties.
+ * @returns the React element.
+ */
 export const CustomErrorWrapper = (props: ErrorWrapperProps) => {
   return <div className={props.className} style={divStyle}>
     {props.children}

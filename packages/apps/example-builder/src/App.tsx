@@ -11,11 +11,12 @@ import {
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
-import {ActionDefinition, BiDi, ComponentStore, FormValidators, IFormViewer, Language, Validators} from '@react-form-builder/core'
-import type {FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
-import {BuilderView, FormBuilder, FormBuilderI18n} from '@react-form-builder/designer'
+import type {ComponentStore, FormValidators, FormViewerProps, IFormData, IFormViewer, Validators} from '@react-form-builder/core'
+import {ActionDefinition, BiDi, Language} from '@react-form-builder/core'
+import type {FormBuilderI18n, FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
+import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
-import {useEffect, useState} from 'react'
+import {useCallback, useEffect, useState} from 'react'
 import {frFR, trTR} from 'rsuite/esm/locales/index.js'
 import {CustomErrorWrapper} from './components/CustomErrorWrapper'
 import {throwErrorComponent} from './components/ThrowErrorComponent'
@@ -145,6 +146,7 @@ const customValidators: Validators = {
 }
 
 const formValidators: FormValidators = [
+  // eslint-disable-next-line @typescript-eslint/require-await
   async (data) => {
     const result: any = {}
     if (data.login === 'sun') {
@@ -165,7 +167,7 @@ const formValidators: FormValidators = [
       result['Template:agreement 1'] ??= {}
       result['Template:agreement 1'].agreeCheckbox = 'Agree checkbox must be checked'
     }
-    if (((data['Template:Test form 1'] as any)?.['Template:agreement 1'] as any)?.agreeCheckbox === false) {
+    if (((data['Template:Test form 1'] as any)?.['Template:agreement 1'])?.agreeCheckbox === false) {
       result['Template:Test form 1'] ??= {}
       result['Template:Test form 1']['Template:agreement 1'] ??= {}
       result['Template:Test form 1']['Template:agreement 1'].agreeCheckbox = 'Agree checkbox must be checked'
@@ -184,6 +186,7 @@ const builderLanguages: FormBuilderI18n = {
     new Language('fr', 'FR', 'French', 'Français'),
     new Language('tr', 'TR', 'Turkish', 'Türkçe'),
   ],
+  // eslint-disable-next-line @typescript-eslint/require-await
   getData: async languageFullCode => {
     if (languageFullCode === 'tr-TR') {
       return {
@@ -209,6 +212,7 @@ const useCustomErrorWrapper = false
 const FormBuilderApp = () => {
   const viewerRef = useRefWithLog<IFormViewer>('ViewerRef', logEvents)
   const builderRef = useRefWithLog<IFormBuilder>('BuilderRef', logEvents, builder => {
+    // eslint-disable-next-line no-console
     if (builder) console.log(builder.formAsString)
   })
 
@@ -244,6 +248,15 @@ const FormBuilderApp = () => {
     return () => clearInterval(intervalId)
   }, [])
 
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
+  const customOnFormDataChange: FormViewerProps['onFormDataChange'] = useCallback(async (formData: IFormData) => {
+    const {data, errors} = formData
+    // eslint-disable-next-line no-console
+    if (logEvents) console.log('onFormDataChange', {data, errors})
+    const silentValidationResult = await formData.getValidationResult()
+    formData.state.isValid = !silentValidationResult
+  }, [])
+
   if (!indexedDbInitialized) return null
 
   const useCustomization = false
@@ -258,13 +271,9 @@ const FormBuilderApp = () => {
     initialData={initialData}
     formStorage={formStorage}
     localize={localizeFn}
-    onFormDataChange={async (formData) => {
-      let {data, errors} = formData
-      if (logEvents) console.log('onFormDataChange', {data, errors})
-      const silentValidationResult = await formData.getValidationResult()
-      formData.state.isValid = !silentValidationResult
-    }}
+    onFormDataChange={customOnFormDataChange}
     onFormSchemaChange={(formSchema) => {
+      // eslint-disable-next-line no-console
       if (logEvents) console.log('onFormSchemaChange', formSchema)
     }}
     viewerRef={viewerRef}
@@ -275,7 +284,8 @@ const FormBuilderApp = () => {
     errorWrapper={useCustomErrorWrapper ? CustomErrorWrapper : undefined}
     actions={{
       logEventArgs: e => {
-        console.info(e.type, e.sender.key, e.sender.id, (+new Date() + '').substr(-4))
+        // eslint-disable-next-line no-console
+        console.info(e.type, e.sender.key, e.sender.id, `${new Date().getTime()}`.substr(-4))
       },
       assertArgs: ActionDefinition.functionalAction((e, args) => {
         if (!e) throw new Error(`'e' is undefined`)
@@ -332,6 +342,9 @@ const FormBuilderApp = () => {
 
 const showDocumentationExample = false
 
+/**
+ * @returns the main application component.
+ */
 const App = () => showDocumentationExample ? <Designer/> : <FormBuilderApp/>
 
 export default App

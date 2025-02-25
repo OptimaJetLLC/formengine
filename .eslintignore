@@ -1,4 +1,5 @@
 vite.config.ts
+vite.ssl.config.ts
 types
 **/dist
 BuildScripts
@@ -6,8 +7,8 @@ documentation
 examples
 scripts/*.js
 scripts/test/**/*
+packages/apps/demo/scripts
 packages/core/scripts
-packages/apps
 packages/views/antd
 packages/views/default
 sample-apps

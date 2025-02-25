@@ -20,10 +20,16 @@
         "@react-form-builder/components-google-map": "^3.0.2",
         "@react-form-builder/components-rich-text": "^3.0.2",
         "@react-form-builder/components-rsuite": "^3.0.2",
+        "@react-form-builder/core": "^3.0.2",
         "@react-form-builder/designer": "^3.0.2",
-        "@react-form-builder/indexed-db-form-storage": "^3.0.2"
+        "@react-form-builder/indexed-db-form-storage": "^3.0.2",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "rsuite": "5.64.2"
     },
     "devDependencies": {
+        "@types/react": "^19.0.10",
+        "@types/react-dom": "^19.0.4",
         "@vitejs/plugin-basic-ssl": "^1.2.0"
     }
 }
