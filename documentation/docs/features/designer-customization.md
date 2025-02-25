@@ -105,7 +105,7 @@ const FormBuilderApp = () => {
 | 5  | LeftPanel_Nav      | FE_LeftPanel_Nav      |
 | 6  | LeftPanel_Content  | FE_LeftPanel_Content  |
 | 7  | Header             | FE_Header             |
-| 8  | CentralPanel       | FE_CentralPanel       |
+| 8  | FormContainer      | FE_FormContainer      |
 | 9  | RightPanel_Nav     | FE_RightPanel_Nav     |
 | 10 | RightPanel_Content | FE_RightPanel_Content |
 | 11 | MainMenu_Dropdown  | FE_MainMenu_Dropdown  |
