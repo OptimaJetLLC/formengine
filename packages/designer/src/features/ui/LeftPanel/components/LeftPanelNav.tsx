@@ -9,7 +9,7 @@ import {useCallback, useMemo, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {Rows} from '../../../components/Containers'
-import {customizableTab, SNav} from '../../../components/NavIconItem'
+import {CustomizableTab, SNav} from '../../../components/NavIconItem'
 import {customizable} from '../../../customization'
 import type {CustomizableKey} from '../../../customization/types'
 import type {DraggableProps} from '../../ComponentBar'
@@ -44,13 +44,13 @@ const tabsProps: Record<LeftPanelSection, [content: ReactNode, key: Customizable
   forms: [<FormList/>, 'Forms_Tab', faList, '#f67f1f']
 }
 
-const useRenderTab = (section: keyof typeof tabsProps) => {
+const Tab = ({section, ...rest}: Record<string, unknown> & { section: keyof typeof tabsProps }) => {
   const {t} = useTranslation()
-  return useMemo(() => {
-    const title = t('leftPanel.sectionName.' + section)
-    const [_, key, icon, color] = tabsProps[section]
-    return customizableTab(section, key, title, icon, {color})
-  }, [t, section])
+  const title = t('leftPanel.sectionName.' + section)
+  const [_, key, icon, color] = tabsProps[section]
+  const props = useMemo(() => ({color, ...rest}), [color, rest])
+
+  return <CustomizableTab eventKey={section} customizableKey={key} title={title} icon={icon} props={props}/>
 }
 
 const localStorageLeftPanelActiveTabKey = 'leftPanelActiveTab'
@@ -69,11 +69,6 @@ const RawLeftPanelNav = () => {
   const {formStorageEnabled} = useBuilderStore()
   const [activeTab, setActiveTab] = useState<LeftPanelSection>(getActiveTab())
 
-  const components = useRenderTab('components')
-  const tree = useRenderTab('tree')
-  const settings = useRenderTab('settings')
-  const forms = useRenderTab('forms')
-
   const handleTabChange = useCallback((tab: LeftPanelSection) => {
     setActiveTab(tab)
     saveActiveTab(tab)
@@ -81,10 +76,10 @@ const RawLeftPanelNav = () => {
 
   return <>
     <Nav appearance="subtle" activeKey={activeTab} onSelect={handleTabChange}>
-      {components}
-      {tree}
-      {settings}
-      {formStorageEnabled && forms}
+      <Tab section="components"/>
+      <Tab section="tree"/>
+      <Tab section="settings"/>
+      {formStorageEnabled && <Tab section="forms"/>}
     </Nav>
     <NavContent style={{minHeight: 0, overflow: 'auto', padding: 4}}>
       {tabsProps[activeTab][0]}

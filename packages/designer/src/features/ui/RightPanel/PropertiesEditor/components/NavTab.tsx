@@ -4,7 +4,7 @@ import * as faPaintBrush from '@fortawesome/free-solid-svg-icons/faPaintBrush.js
 import * as faSpellCheck from '@fortawesome/free-solid-svg-icons/faSpellCheck.js'
 import {useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
-import {customizableTab, SNav} from '../../../../components/NavIconItem'
+import {CustomizableTab, SNav} from '../../../../components/NavIconItem'
 import {customizableObserver} from '../../../../customization'
 import type {CustomizableKey} from '../../../../customization/types'
 import {Section} from '../Section'
@@ -21,21 +21,21 @@ const tabsProps: Record<Section, [key: CustomizableKey, icon: any, color: string
   [Section.Rules]: ['Rules_Tab', faSpellCheck, 'var(--rs-green-600)']
 }
 
-const useRenderTab = (section: Section) => {
+const Tab = ({section, ...rest}: Record<string, unknown> & { section: Section }) => {
   const {t} = useTranslation()
-  return useMemo(() => {
-    const title = t('propertiesEditor.sectionName.' + section)
-    const [key, icon, color] = tabsProps[section]
-    return customizableTab(section, key, title, icon, {color})
-  }, [t, section])
+  const title = t('propertiesEditor.sectionName.' + section)
+  const [key, icon, color] = tabsProps[section]
+  const props = useMemo(() => ({color, ...rest}), [color, rest])
+
+  return <CustomizableTab eventKey={section} customizableKey={key} title={title} icon={icon} props={props}/>
 }
 
 const RawNavTab = ({activeTab, setActiveTab, ...props}: NavProps) =>
   <SNav activeKey={activeTab} onSelect={setActiveTab} appearance="subtle" {...props}>
-    {useRenderTab(Section.Main)}
-    {useRenderTab(Section.Style)}
-    {useRenderTab(Section.Actions)}
-    {useRenderTab(Section.Rules)}
+    <Tab section={Section.Main}/>
+    <Tab section={Section.Style}/>
+    <Tab section={Section.Actions}/>
+    <Tab section={Section.Rules}/>
   </SNav>
 
 export const NavTab = customizableObserver('RightPanel_Nav', RawNavTab)

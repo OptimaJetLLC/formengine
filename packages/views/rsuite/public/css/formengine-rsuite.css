@@ -275,6 +275,12 @@
   }
 }
 
+.optimajet-formbuilder, .optimajet-formviewer {
+  .rs-nav button {
+    font-size: 14px;
+  }
+}
+
 .optimajet-formbuilder,
 .rs-toast-provider,
 .rs-modal,
