@@ -1,12 +1,8 @@
-import {render} from '@testing-library/react'
-import i18n from 'i18next'
-import {initReactI18next} from 'react-i18next'
-import {expect, describe} from 'vitest'
-import App from '../../common/lib/designer/App'
-import {klona} from 'klona/full'
 import {type CustomizableKey, CustomizableZone, CustomizationMap, Options} from '@react-form-builder/designer'
-
-i18n.use(initReactI18next).init({resources: {}})
+import {render} from '@testing-library/react'
+import {klona} from 'klona/full'
+import {describe, expect} from 'vitest'
+import App from '../../common/lib/designer/App'
 
 // TODO FE-1134
 const disabledZones = new Set([
@@ -61,7 +57,7 @@ function createZoneStaticCustomization(): Array<[CustomizableKey, CustomizationM
 }
 
 describe.each(createZoneStaticCustomization())(`should apply all possible customization settings for every zone`, function (zone, customization) {
-  const zoneClassName = `.FE_${zone}`
+  const zoneClassName = `.FE_${zone}:not(.FE_Palette_Component):not(.FE_Palette_ComponentGroup)`
 
   it(`should have target zone ${zone} in the document`, async () => {
     const {container} = render(<App customization={customization}/>)

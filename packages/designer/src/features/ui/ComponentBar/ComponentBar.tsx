@@ -1,12 +1,15 @@
-import {css} from '@emotion/css'
+import {css, cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import type {ComponentData, Model} from '@react-form-builder/core'
 import {ComponentDataProvider, ComponentStore, getKey, namedObserver} from '@react-form-builder/core'
 import {useCallback, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
+import {transformComponentNameToCssClass} from '../../../utils/transformComponentNameToCssClass'
 import {AddedComponent} from '../../dnd'
 import {useTranslationPart} from '../../localization/hooks'
 import {SearchForm} from './components/SearchForm'
+
+const componentGroupStaticClassname = 'FE_Palette_ComponentGroup'
 
 /**
  * Properties of the draggable component.
@@ -56,7 +59,7 @@ const RawControlGroups = (props: ControlGroupsProps) => {
 
   for (const category in byCategory) {
     result.push(
-      <div key={category}>
+      <div key={category} className={cx([componentGroupStaticClassname, transformComponentNameToCssClass(category)])}>
         <Subheader>{t(category) || category}</Subheader>
         <AddedComponents definitions={byCategory[category]} {...componentProps}/>
       </div>

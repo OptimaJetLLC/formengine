@@ -18,6 +18,8 @@ Another option for customizing the component is to use pure CSS. Each component 
 prefixed by `FE_`. This class is applied to the same element as the style or className attributes, utilizing
 the [customization map](/api-reference/@react-form-builder/designer/type-aliases/CustomizationMap).
 
+The components palette in the left panel also has some [additional rules](#components-palette) for CSS customization.
+
 A list of customizable components is also available as a [Set](/api-reference/@react-form-builder/designer/variables/CustomizableZone).
 
 ### Example
@@ -138,6 +140,41 @@ const FormBuilderApp = () => {
 | 15 | PropertyCodeButton                                                                         | FE_PropertyCodeButton                                                                                  |
 | 16 | PropertyLabel                                                                              | FE_PropertyLabel                                                                                       |
 | 17 | PropertyInput                                                                              | FE_PropertyInput                                                                                       |
+
+### Components palette
+
+Each group and component receives a set of classes composed of its name and type.
+
+When defining a component, you can specify its category. Components with the same category are merged into component groups on the palette.
+
+```typescript {3}
+export const richTextEditor = define(RichTextEditor, 'RichTextEditor')
+  .name('Rich text editor')
+  .category('fields')
+  .props({
+    //...
+  })
+```
+
+#### Components group
+
+A component group receives the static class `FE_Palette_ComponentGroup` plus a category name prefixed with FE_.
+
+![Groups classes](/assets/customization/customization-groups-classes.png)
+
+#### Single component
+
+A component receives the static class `FE_Palette_Component` composed with its title and name, both prefixed with FE_.
+
+```typescript {2}
+export const rsCalendar = define(RsCalendar, 'RsCalendar')
+  .name('Calendar')
+  .props({
+    // ...
+  })
+```
+
+![Component classes](/assets/customization/customization-component-classes.png)
 
 ## Custom property editors
 

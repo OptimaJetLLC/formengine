@@ -1,3 +1,4 @@
+import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
 import {camelCase, replace, upperFirst} from 'lodash-es'
@@ -6,10 +7,13 @@ import {useCallback, useMemo} from 'react'
 import {icons} from '../../../icons'
 import {useCanAddComponent} from '../../../utils/AddComponentContext'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
+import {transformComponentNameToCssClass} from '../../../utils/transformComponentNameToCssClass'
 import type {DraggableProps} from '../../ui/ComponentBar'
 import {ItemType} from '../consts'
 import {DragPreview} from './Editable/components/DragPreview'
 import {useDragWithPreview} from './Editable/hooks/useDragWithPreview'
+
+const componentStaticClassname = 'FE_Palette_Component'
 
 const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggableProps) => {
   const data = useComponentData()
@@ -21,7 +25,12 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
 
   const canAddComponent = useCanAddComponent()
   const disabled = useMemo(() => !canAddComponent(data), [canAddComponent, data])
-  const cls = useMemo(() => disabled ? 'disabled' : '', [disabled])
+  const cls = useMemo(() => cx([
+    disabled ? 'disabled' : '',
+    componentStaticClassname,
+    transformComponentNameToCssClass(data.model.typeName),
+    transformComponentNameToCssClass(data.model.name),
+  ]), [data.model.name, data.model.typeName, disabled])
 
   const onClick: MouseEventHandler = useCallback(e => {
     if (disabled) return
