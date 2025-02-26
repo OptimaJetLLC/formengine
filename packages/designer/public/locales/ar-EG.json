@@ -534,6 +534,7 @@
   },
   "propertiesEditor": {
     "applyKey": "تطبيق التغييرات الرئيسية",
+    "clean": "نظيفة",
     "codeButton": {
       "editCalculable": "تحرير حساب",
       "editLocalizable": "تحرير الترجمة بطلاقة",
@@ -633,6 +634,7 @@
       "url": "رابط",
       "uuid": "الجامعة"
     },
+    "ruleNotFound": "القاعدة غير موجودة أو غير متصلة",
     "showFormErrors": "إظهار أخطاء النموذج"
   }
 }

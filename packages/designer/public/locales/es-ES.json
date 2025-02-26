@@ -534,6 +534,7 @@
   },
   "propertiesEditor": {
     "applyKey": "Aplicar cambios de clave",
+    "clean": "Limpiar",
     "codeButton": {
       "editCalculable": "Editar calculable",
       "editLocalizable": "Editar localización fluida",
@@ -633,6 +634,7 @@
       "url": "Url",
       "uuid": "Uuid"
     },
+    "ruleNotFound": "Regla no encontrada o no conectada",
     "showFormErrors": "Mostrar errores de formulario"
   }
 }

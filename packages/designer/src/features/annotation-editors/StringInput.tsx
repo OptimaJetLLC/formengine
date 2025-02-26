@@ -1,8 +1,12 @@
+import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {useEffect, useRef} from 'react'
+import {Close} from '@rsuite/icons'
+import {useEffect, useMemo, useRef} from 'react'
 import {Input} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
+import {useTranslationPart} from '../localization/hooks'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
+import {Hinted} from './Hinted'
 
 // The idea here is to have an offscreen element with exactly the same styles
 // which can autoresize natively and stretch target the element via aligning
@@ -33,7 +37,31 @@ const STextareaSizer = styled.div`
     white-space: pre-wrap;
     overflow-wrap: break-word;
   }
+
+  button {
+    position: absolute;
+    top: 4px;
+    right: 14px;
+    color: var(--rs-text-secondary);
+    width: 12px;
+    height: 12px;
+  }
 `
+
+interface CleanButtonProps {
+  onClick: () => void
+}
+
+const CleanButton = ({onClick}: CleanButtonProps) => {
+  const getLabel = useTranslationPart('propertiesEditor')
+  const cleanLabel = useMemo(() => getLabel('clean'), [getLabel])
+
+  return <Hinted hint={cleanLabel}>
+    <button className={cx(['rs-picker-clean', 'rs-btn-close'])} onClick={onClick}>
+      <Close/>
+    </button>
+  </Hinted>
+}
 
 /**
  * The property editor for the string property type.
@@ -41,7 +69,7 @@ const STextareaSizer = styled.div`
  * @returns the React element.
  */
 export const StringInput = (props: AnnotationEditorProps) => {
-  const {value = '', annotation, onChange} = props
+  const {value = '', annotation, onChange, onClean} = props
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -67,6 +95,7 @@ export const StringInput = (props: AnnotationEditorProps) => {
       <STextareaSizer ref={containerRef}>
         <Input ref={inputRef} rows={1} name={annotation.key} value={value} onChange={onChange} size="xs" as="textarea"
                {...props.annotation.editorProps}/>
+        <CleanButton onClick={onClean}/>
       </STextareaSizer>
     </LabeledProperty>
   )

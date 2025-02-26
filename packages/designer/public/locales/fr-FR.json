@@ -534,6 +534,7 @@
   },
   "propertiesEditor": {
     "applyKey": "Appliquer les modifications clés",
+    "clean": "Propre",
     "codeButton": {
       "editCalculable": "Modifier calculable",
       "editLocalizable": "Modifier la localisation fluide",
@@ -633,6 +634,7 @@
       "url": "Adresse URL",
       "uuid": "UID"
     },
+    "ruleNotFound": "Règle introuvable ou non connectée",
     "showFormErrors": "Afficher les erreurs de formulaire"
   }
 }

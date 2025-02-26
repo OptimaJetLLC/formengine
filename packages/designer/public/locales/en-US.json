@@ -510,7 +510,8 @@
     "setInputHint": "Press Enter to add a value",
     "applyKey": "Apply key changes",
     "keyMustBeUnique": "Key must be unique",
-    "keyMustNotBeEmpty": "Key must not be empty"
+    "keyMustNotBeEmpty": "Key must not be empty",
+    "clean": "Clean"
   },
   "toolbar": {
     "elements": "Elements",

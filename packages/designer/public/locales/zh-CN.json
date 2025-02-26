@@ -534,6 +534,7 @@
   },
   "propertiesEditor": {
     "applyKey": "应用关键更改",
+    "clean": "清洁",
     "codeButton": {
       "editCalculable": "编辑可计算",
       "editLocalizable": "编辑流利的本地化",
@@ -633,6 +634,7 @@
       "url": "网址",
       "uuid": "Uuid"
     },
+    "ruleNotFound": "未找到或未连接规则",
     "showFormErrors": "显示表单错误"
   }
 }
