@@ -16,8 +16,27 @@ interface RsTabProps extends NavProps {
   pane: ReactNode
 }
 
-const RsTab = ({pane, onSelect, showNavigation, items, ...props}: RsTabProps) => {
+const STabs = styled(Nav)({
+  '.builder & .rs-nav-item': {
+    zIndex: 7,
+  },
+  '.rs-nav-item': {
+    border: 'none',
+    outline: 'none',
+    appearance: 'none',
+    backgroundColor: 'transparent'
+  }
+})
+
+const RsTab = ({
+                 pane,
+                 onSelect,
+                 showNavigation,
+                 items,
+                 ...props
+               }: RsTabProps) => {
   const componentData = useComponentData()
+
   if (!items?.length) return null
 
   const onNavSelect = (eventKey: string, event: SyntheticEvent) => {
@@ -29,21 +48,21 @@ const RsTab = ({pane, onSelect, showNavigation, items, ...props}: RsTabProps) =>
   const activeKey = props.activeKey ?? items?.[0].value
 
   return <>
-    {showNavigation === true && <SNav onSelect={onNavSelect} {...props}>
-      {items.map((item, index) =>
-        <Nav.Item key={index} eventKey={item.value} active={item.value === activeKey}>
-          {item.label}
-        </Nav.Item>)}
-    </SNav>}
+    {showNavigation === true &&
+      <STabs onSelect={onNavSelect} activeKey={activeKey} {...props}>
+        {items.map((item, index) => <Nav.Item key={index}
+                                              eventKey={item.value}
+                                              role="tab"
+                                              as="button"
+                                              type="button">
+            {item.label}
+          </Nav.Item>
+        )}
+      </STabs>
+    }
     <div>{pane}</div>
   </>
 }
-
-const SNav = styled(Nav)`
-  .builder & .rs-nav-item {
-    z-index: 7;
-  }
-`
 
 export const rsTab = define(RsTab, 'RsTab')
   .name('Tab')
