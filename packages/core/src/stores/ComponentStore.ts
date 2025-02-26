@@ -65,6 +65,15 @@ export function isLocalizedProperty(componentProperty?: ComponentProperty) {
 }
 
 /**
+ * Returns true if the property value is calculated, otherwise false. **Internal use only.**
+ * @param componentProperty the component property.
+ * @returns true if the property value is calculated, otherwise false.
+ */
+export function isComputedProperty(componentProperty?: ComponentProperty) {
+  return isFunctionalProperty(componentProperty) || isLocalizedProperty(componentProperty)
+}
+
+/**
  * The arbitrary HTML attributes for the component.
  */
 export type HtmlAttribute = Record<string, string>

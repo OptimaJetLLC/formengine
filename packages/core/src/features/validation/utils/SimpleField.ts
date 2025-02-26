@@ -1,5 +1,6 @@
-import {autorun, makeAutoObservable, observable, untracked} from 'mobx'
+import {autorun, makeAutoObservable, observable, reaction, untracked} from 'mobx'
 import type {ComponentStore} from '../../../stores/ComponentStore'
+import {isComputedProperty} from '../../../stores/ComponentStore'
 import {needRender} from '../../../utils/needRender'
 import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
 import type {Model} from '../../define'
@@ -72,6 +73,9 @@ export class SimpleField implements Field {
       dataContext: observable.ref
     }, {name: nameObservable(className, {key: componentStore.key}), autoBind: true})
 
+    // first, we initialize the value
+    this.value = this.isComputed ? this.computedValue : this.initialDataValue
+
     this.#disposers = [
       autorun(
         () => {
@@ -86,24 +90,22 @@ export class SimpleField implements Field {
           })
         }
         , {name: nameAutorun(className, 'setValidator', {key: componentStore.key})}),
-      autorun(
-        () => {
-          const initialData = dataPart(this.dataContext.initialData, componentStore.key)
-          const simpleValue = initialData ?? this.initialValue
-          if (this.deferFieldCalculation) {
-            this.value = simpleValue
-            return
-          }
-          const [calculated, value] = this.dataContext.calculateValue(componentStore, this.valued)
-          if (calculated) {
-            this.value = value
-            return
-          }
-          this.value = simpleValue
-        }
-        , {name: nameAutorun(className, 'setValue', {'key': componentStore.key})}),
       () => this.dataValidator?.dispose()
     ]
+
+    // then, sign up for data changes, this could be:
+    // 1. changing the form data.
+    // 2. automatic recalculation of the value if the property is computable.
+    // 3. if the data change has occurred, we save the value in the field.
+    this.#disposers.push(
+      reaction(() => ({
+        isComputed: this.isComputed,
+        computedValue: this.computedValue,
+        initialDataValue: this.initialDataValue
+      }), (data) => {
+        this.value = data.isComputed ? data.computedValue : data.initialDataValue
+      }, {name: nameObservable(className, {key: this.componentStore.key})})
+    )
   }
 
   /**
@@ -145,7 +147,7 @@ export class SimpleField implements Field {
    * @inheritDoc
    */
   setValue(value: unknown) {
-    this.value = autoConvertField(value, this.valueType)
+    this.innerSetValue(autoConvertField(value, this.valueType))
     if (!this.needValidate) {
       this.clearError()
       return
@@ -186,7 +188,7 @@ export class SimpleField implements Field {
    * @inheritDoc
    */
   reset() {
-    this.value = this.initialValue ?? this.defaultValue
+    this.innerSetValue(this.initialValue ?? this.defaultValue)
     this.clearError()
   }
 
@@ -194,7 +196,7 @@ export class SimpleField implements Field {
    * @inheritDoc
    */
   clear() {
-    this.value = this.defaultValue
+    this.innerSetValue(this.defaultValue)
     this.touched = false
     this.clearError()
   }
@@ -225,6 +227,42 @@ export class SimpleField implements Field {
       this.error = undefined
     } else {
       throw new Error(`Expected 'string | undefined | null' type, got '${typeof error}'`)
+    }
+  }
+
+  /**
+   * @returns the initial data value for the field.
+   */
+  get initialDataValue() {
+    const initialData = dataPart(this.dataContext.initialData, this.componentStore.key)
+    return initialData ?? this.initialValue
+  }
+
+  /**
+   * @returns the computed value for the field.
+   */
+  get computedValue() {
+    // to calculate the value of a calculated field,
+    // we need the form data, i.e., in particular the value from this SimpleField (value).
+    if (this.deferFieldCalculation) return this.initialDataValue
+    const [, value] = this.dataContext.calculateValue(this.componentStore, this.valued)
+    return value
+  }
+
+  /**
+   * @returns true if the field value is calculated, otherwise false.
+   */
+  get isComputed() {
+    return isComputedProperty(this.componentStore.props[this.valued])
+  }
+
+  /**
+   * Sets the value of the field without converting it.
+   * @param value the value to be set.
+   */
+  innerSetValue(value: unknown) {
+    if (!this.isComputed) {
+      this.value = value
     }
   }
 }

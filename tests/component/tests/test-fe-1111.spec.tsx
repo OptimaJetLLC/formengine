@@ -740,7 +740,7 @@ const testForm = {
 const TestApp = () => <FormViewer view={view} getForm={() => JSON.stringify(testForm)}/>
 
 describe('FE-1111: Cannot update a component (`RawFormViewerState`) while rendering a different component', function () {
-  it.skip('It should not write warning to console', async () => {
+  it('It should not write warning to console', async () => {
     const {findByText, findByTestId} = render(<TestApp/>)
 
     const bookButton = await findByText('Book a room')
