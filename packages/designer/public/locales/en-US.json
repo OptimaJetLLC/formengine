@@ -369,6 +369,12 @@
       "hint": "Allows to customize the behavior and functionality of the editor. Read docs for more info."
     }
   },
+  "RsMenu": {
+    "itemsAs": {
+      "name": "Items As",
+      "hint": "HTML element to render menu item"
+    }
+  },
   "RsWizard": {
     "activeIndex": {
       "name": "Active index",

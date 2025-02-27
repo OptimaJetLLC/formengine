@@ -83,6 +83,12 @@
       "name": "Format"
     }
   },
+  "RsMenu": {
+    "itemsAs": {
+      "hint": "Élément HTML à afficher élément de menu",
+      "name": "Articles Comme 1"
+    }
+  },
   "RsTimePicker": {
     "format": {
       "hint": "Format de l'heure lors du rendu dans l'entrée",

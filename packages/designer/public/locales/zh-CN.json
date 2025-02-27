@@ -83,6 +83,12 @@
       "name": "格式"
     }
   },
+  "RsMenu": {
+    "itemsAs": {
+      "hint": "Html元素呈现菜单项",
+      "name": "项目为1"
+    }
+  },
   "RsTimePicker": {
     "format": {
       "hint": "在输入中呈现的时间格式",
