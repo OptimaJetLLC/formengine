@@ -1,2 +1,2 @@
-NpmVersion=3.0.2
+NpmVersion=3.1.0
 NpmPublishTag=latest
