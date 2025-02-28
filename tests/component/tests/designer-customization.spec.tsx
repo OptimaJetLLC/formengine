@@ -1,6 +1,8 @@
 import {type CustomizableKey, CustomizableZone, CustomizationMap, Options} from '@react-form-builder/designer'
 import {render} from '@testing-library/react'
+import i18n from 'i18next'
 import {klona} from 'klona/full'
+import {initReactI18next} from 'react-i18next'
 import {describe, expect} from 'vitest'
 import App from '../../common/lib/designer/App'
 
@@ -58,6 +60,10 @@ function createZoneStaticCustomization(): Array<[CustomizableKey, CustomizationM
 
 describe.each(createZoneStaticCustomization())(`should apply all possible customization settings for every zone`, function (zone, customization) {
   const zoneClassName = `.FE_${zone}:not(.FE_Palette_Component):not(.FE_Palette_ComponentGroup)`
+
+  beforeAll(() => {
+    i18n.use(initReactI18next).init({resources: {}}).catch(console.error)
+  })
 
   it(`should have target zone ${zone} in the document`, async () => {
     const {container} = render(<App customization={customization}/>)

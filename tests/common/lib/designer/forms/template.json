@@ -25,7 +25,13 @@
               "placeholder": {
                 "value": "Enter login here"
               }
-            }
+            },
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "template-login"
+              }
+            ]
           },
           {
             "key": "password",
@@ -40,7 +46,13 @@
               "passwordMask": {
                 "value": true
               }
-            }
+            },
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "template-password"
+              }
+            ]
           },
           {
             "key": "submitButton",
