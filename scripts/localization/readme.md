@@ -1,3 +1,5 @@
+## HOWTO
+
 Generate translation via Yandex Cloud API.
 Seed locale file located in packages/designer/public/locales/en-US.json
 If key is missing there it will be deleted from other locales.
@@ -9,3 +11,10 @@ Only new keys will be added or updated.
 - request token ```npm run token```
   - in .env replace ```<IAM-TOKEN>``` with contents of ```.token``` file
 - to update translation run ```npm run update```
+
+## Update key
+
+- remove key
+- regenerate
+- place a new value
+- regenerate

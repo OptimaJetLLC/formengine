@@ -5,5 +5,6 @@ export default {
   "it": "it-IT",
   "fr": "fr-FR",
   "es": "es-ES",
-  "zh": "zh-CN"
+  "zh": "zh-CN",
+  "fa": "fa-IR"
 }

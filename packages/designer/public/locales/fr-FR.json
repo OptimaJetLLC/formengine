@@ -86,7 +86,7 @@
   "RsMenu": {
     "itemsAs": {
       "hint": "Élément HTML à afficher élément de menu",
-      "name": "Articles Comme 1"
+      "name": "Articles Comme"
     }
   },
   "RsTimePicker": {
