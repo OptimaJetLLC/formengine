@@ -21,9 +21,9 @@ const NumberInput = (props: AnnotationEditorProps) => {
   }, [onChange])
   const {calculateEditorProps, ...editorProps} = annotation.editorProps ?? {}
   const inputNumberProps = {
-    ...(editorProps ?? {}),
+    ...editorProps,
     ...(calculateEditorProps?.(componentData) ?? {}),
-    value
+    value: typeof value === 'number' ? value : null,
   }
   const closeButton = <Close onClick={onClean} style={{cursor: 'pointer'}}/>
 
