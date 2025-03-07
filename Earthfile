@@ -1,4 +1,4 @@
-VERSION 0.8
+VERSION --try 0.8
 FROM node:20.17.0
 WORKDIR /form-engine
 
@@ -30,7 +30,13 @@ npm-documentation-build:
 # npm-test performs tests
 npm-test:
   FROM +sources
-  RUN NODE_OPTIONS="--max-old-space-size=4096" npm run test:component
+  TRY
+    RUN NODE_OPTIONS="--max-old-space-size=4096" npm run test:component
+  FINALLY
+    SAVE ARTIFACT tests/react-17/reports/junit-report.xml AS LOCAL test-results/react-17-report.xml
+    SAVE ARTIFACT tests/react-18/reports/junit-report.xml AS LOCAL test-results/react-18-report.xml
+    SAVE ARTIFACT tests/react-19/reports/junit-report.xml AS LOCAL test-results/react-19-report.xml
+  END
 
 # npm-check-circular-deps checks for cyclic dependencies
 npm-check-circular-deps:

@@ -1,5 +1,5 @@
-import {autorun, makeAutoObservable, observable, runInAction, untracked} from 'mobx'
-import {ComponentStore} from '../../../stores/ComponentStore'
+import {autorun, makeAutoObservable, observable, reaction, runInAction, untracked} from 'mobx'
+import {ComponentStore, isComputedProperty} from '../../../stores/ComponentStore'
 import type {FormViewerValidationRules} from '../../../stores/FormViewerValidationRules'
 import type {IStore} from '../../../stores/IStore'
 import type {Setter} from '../../../types'
@@ -82,6 +82,9 @@ export class RepeaterField implements Field, IComponentDataProvider {
       dataValidator: observable.ref
     }, {name: nameObservable(className, {key: componentStore.key}), autoBind: true})
 
+    // first, we initialize the value
+    this.initialData = this.isComputed ? this.computedValue : this.initialDataValue
+
     this.#disposers = [
       autorun(
         () => {
@@ -96,24 +99,22 @@ export class RepeaterField implements Field, IComponentDataProvider {
           })
         }
         , {name: nameAutorun(className, 'setValidator', {key: componentStore.key})}),
-      autorun(
-        () => {
-          const initialData = dataPart(this.dataContext.initialData, componentStore.key)
-          const simpleValue = initialData ?? this.initialValue
-          if (this.deferFieldCalculation) {
-            this.initialData = simpleValue
-            return
-          }
-          const [calculated, value] = this.dataContext.calculateValue(componentStore, this.valued)
-          if (calculated) {
-            this.initialData = value
-            return
-          }
-          this.initialData = simpleValue
-        }
-        , {name: nameAutorun(className, 'setValue', {'key': componentStore.key})}),
       () => this.dataValidator?.dispose()
     ]
+
+    // then, sign up for data changes, this could be:
+    // 1. changing the form data.
+    // 2. automatic recalculation of the value if the property is computable.
+    // 3. if the data change has occurred, we save the value in the field.
+    this.#disposers.push(
+      reaction(() => ({
+        isComputed: this.isComputed,
+        computedValue: this.computedValue,
+        initialDataValue: this.initialDataValue
+      }), (data) => {
+        this.initialData = data.isComputed ? data.computedValue : data.initialDataValue
+      }, {name: nameObservable(className, {key: this.componentStore.key})})
+    )
   }
 
   /**
@@ -345,6 +346,32 @@ export class RepeaterField implements Field, IComponentDataProvider {
       if (!this.deferFieldCalculation) this.initFields(result)
       return result
     })
+  }
+
+  /**
+   * @returns the initial data value for the field.
+   */
+  get initialDataValue() {
+    const initialData = dataPart(this.dataContext.initialData, this.componentStore.key)
+    return initialData ?? this.initialValue
+  }
+
+  /**
+   * @returns the computed value for the field.
+   */
+  get computedValue() {
+    // to calculate the value of a calculated field,
+    // we need the form data, i.e., in particular the value from this SimpleField (value).
+    if (this.deferFieldCalculation) return this.initialDataValue
+    const [, value] = this.dataContext.calculateValue(this.componentStore, this.valued)
+    return value
+  }
+
+  /**
+   * @returns true if the field value is calculated, otherwise false.
+   */
+  get isComputed() {
+    return isComputedProperty(this.componentStore.props[this.valued])
   }
 
   private initFields(components: ComponentData[]) {

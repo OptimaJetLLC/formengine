@@ -180,3 +180,6 @@ ios/Pods
 # Test reports
 tests/e2e/playwright-report
 tests/e2e/reports
+tests/react-17/reports
+tests/react-18/reports
+tests/react-19/reports

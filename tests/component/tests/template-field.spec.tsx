@@ -3,6 +3,7 @@ import {BiDi, ComponentStore, createView, FormViewer, Language, PersistedForm, V
 import {fireEvent, render} from '@testing-library/react'
 import {useCallback} from 'react'
 import {expect} from 'vitest'
+import {eachComponentStore} from './eachComponentStore'
 import {testLicense} from './testLicense'
 
 function randomString(prefix?: string) {
@@ -177,22 +178,6 @@ function getForm(name?: string) {
   }
 
   return form
-}
-
-function eachComponentStore(componentStore: ComponentStore, key: string,
-                            callback: (componentStore: ComponentStore) => void) {
-  if (componentStore.key === key) {
-    callback(componentStore)
-    return
-  }
-
-  componentStore.children?.forEach((child) => {
-    if (child.key === key) {
-      callback(child)
-      return
-    }
-    eachComponentStore(child, key, callback)
-  })
 }
 
 describe(`TemplateField test`, function () {

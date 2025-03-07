@@ -17,6 +17,10 @@ export default defineConfig((env) => mergeConfig(base(env), {
     coverage: {
       reporter: ['text', 'html'], // Report coverage in both text and HTML
       // Use coverageConfig: { ... } to customize coverage options
-    }
+    },
+    reporters: ['default', 'junit'],
+    outputFile: {
+      junit: './reports/junit-report.xml',
+    },
   }
 }))
