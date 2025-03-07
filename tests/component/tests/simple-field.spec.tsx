@@ -1,6 +1,7 @@
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {BiDi, ComponentStore, createView, FormViewer, Language, PersistedForm, View} from '@react-form-builder/core'
 import {fireEvent, render} from '@testing-library/react'
+import {useEffect, useState} from 'react'
 import {expect} from 'vitest'
 import {testLicense} from './testLicense'
 
@@ -76,7 +77,7 @@ describe(`SimpleField test`, function () {
     expect(await findByTestId(dataTestId)).toHaveValue('')
   })
 
-  it('Input should have an default value', async () => {
+  it('Input should have a default value', async () => {
     const defaultValue = randomString('defaultValue')
     const form = createTestForm((input) => {
       input.props.value = {value: defaultValue}
@@ -232,7 +233,7 @@ describe(`SimpleField test`, function () {
     expect(await findByTestId(dataTestId)).toHaveValue(localeValue)
   })
 
-  it('Input must have a function value from initialData', async () => {
+  it('Input should have a function value from initialData', async () => {
     const form = createTestForm((input) => {
       input.props.value = {value: 'defaultValue', computeType: 'function', fnSource: 'return `last name: ${form.data.surname}`'}
     }, ({form}) => {
@@ -244,7 +245,7 @@ describe(`SimpleField test`, function () {
     expect(await findByTestId(dataTestId)).toHaveValue(`last name: ${initialData.surname}`)
   })
 
-  it('Input must have a function value from an updated initialData', async () => {
+  it('Input should have a function value from an updated initialData', async () => {
     const form = createTestForm((input) => {
       input.props.value = {value: 'defaultValue', computeType: 'function', fnSource: 'return `last name: ${form.data.surname}`'}
     }, ({form}) => {
@@ -260,7 +261,7 @@ describe(`SimpleField test`, function () {
     expect(await findByDisplayValue(newData.surname)).toHaveValue(newData.surname)
   })
 
-  it('Input must have a updated initialData', async () => {
+  it('Input should have an updated initialData', async () => {
     const form = createTestForm()
 
     const initialData = {name: randomString('first render')}
@@ -272,7 +273,31 @@ describe(`SimpleField test`, function () {
     expect(await findByDisplayValue(newData.name)).toHaveValue(newData.name)
   })
 
-  it('Input must have a default value after reset', async () => {
+  it('Input should have an updated initialData (async)', async () => {
+    const form = createTestForm()
+    const secondRenderValue = randomString('second render')
+
+    const TestComponent = () => {
+      const [initialData, setInitialData] = useState({})
+
+      useEffect(() => {
+        const timeoutId = setTimeout(() => {
+          setInitialData(Object.assign({}, initialData, {name: secondRenderValue}))
+        }, 0)
+        return () => clearTimeout(timeoutId)
+      }, [initialData])
+
+      return <SimpleFieldApp formJson={form} initialData={initialData}/>
+    }
+
+    const {findByTestId, findByDisplayValue} = render(<TestComponent/>)
+    expect(await findByTestId(dataTestId)).toHaveValue('')
+
+    expect(await findByDisplayValue(secondRenderValue)).toHaveValue(secondRenderValue)
+    expect(await findByTestId(dataTestId)).toHaveValue(secondRenderValue)
+  })
+
+  it('Input should have a default value after reset', async () => {
     const defaultValue = randomString('default-')
     const form = createTestForm((input) => {
       input.props.value = {value: defaultValue}
@@ -293,7 +318,7 @@ describe(`SimpleField test`, function () {
     expect(await findByTestId(dataTestId)).toHaveValue(defaultValue)
   })
 
-  it('Input must have a default value after clear', async () => {
+  it('Input should have a default value after clear', async () => {
     const defaultValue = randomString('default-')
     const form = createTestForm((input) => {
       input.props.value = {value: defaultValue}
