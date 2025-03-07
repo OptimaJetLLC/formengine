@@ -328,6 +328,30 @@ the modified instance of the builder.
 
 ***
 
+### uncontrolledValue()
+
+> **uncontrolledValue**(`uncontrolledValue`): [`TypedBuilder`](TypedBuilder.md)\<`T`\>
+
+Sets the value for the property that prevents uncontrolled state.
+
+#### Parameters
+
+• **uncontrolledValue**: `unknown`
+
+the value for the uncontrolled state.
+
+#### Returns
+
+[`TypedBuilder`](TypedBuilder.md)\<`T`\>
+
+the modified instance of the builder.
+
+#### Inherited from
+
+[`BaseBuilder`](BaseBuilder.md).[`uncontrolledValue`](BaseBuilder.md#uncontrolledvalue)
+
+***
+
 ### validated()
 
 > **validated**(`validator`, `errorMap`): `this`

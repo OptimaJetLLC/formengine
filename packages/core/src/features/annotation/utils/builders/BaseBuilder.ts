@@ -50,6 +50,15 @@ export class BaseBuilder<T> {
   }
 
   /**
+   * Sets the value for the property that prevents uncontrolled state.
+   * @param uncontrolledValue the value for the uncontrolled state.
+   * @returns the modified instance of the builder.
+   */
+  uncontrolledValue(uncontrolledValue: unknown) {
+    return this.setup({uncontrolledValue})
+  }
+
+  /**
    * @returns the component property that can be localized.
    */
   get localize() {
@@ -158,4 +167,3 @@ export class BaseBuilder<T> {
     return this.annotation.name ?? (this.options.autoName ? startCase(key) : key)
   }
 }
-

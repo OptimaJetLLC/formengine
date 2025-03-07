@@ -416,6 +416,30 @@ the instance of the metadata property builder.
 
 ***
 
+### uncontrolledValue()
+
+> **uncontrolledValue**(`uncontrolledValue`): [`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+
+Sets the value for the property that prevents uncontrolled state.
+
+#### Parameters
+
+• **uncontrolledValue**: `unknown`
+
+the value for the uncontrolled state.
+
+#### Returns
+
+[`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+
+the modified instance of the builder.
+
+#### Inherited from
+
+[`AnnotationBuilder`](AnnotationBuilder.md).[`uncontrolledValue`](AnnotationBuilder.md#uncontrolledvalue)
+
+***
+
 ### withEditorProps()
 
 > **withEditorProps**(`props`): `this`

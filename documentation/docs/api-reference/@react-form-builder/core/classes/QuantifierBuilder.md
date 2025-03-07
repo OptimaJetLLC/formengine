@@ -372,6 +372,30 @@ the modified instance of the builder.
 
 ***
 
+### uncontrolledValue()
+
+> **uncontrolledValue**(`uncontrolledValue`): [`QuantifierBuilder`](QuantifierBuilder.md)\<`T`\>
+
+Sets the value for the property that prevents uncontrolled state.
+
+#### Parameters
+
+• **uncontrolledValue**: `unknown`
+
+the value for the uncontrolled state.
+
+#### Returns
+
+[`QuantifierBuilder`](QuantifierBuilder.md)\<`T`\>
+
+the modified instance of the builder.
+
+#### Inherited from
+
+[`TypedBuilder`](TypedBuilder.md).[`uncontrolledValue`](TypedBuilder.md#uncontrolledvalue)
+
+***
+
 ### validated()
 
 > **validated**(`validator`, `errorMap`): `this`

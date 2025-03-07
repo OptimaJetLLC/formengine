@@ -6,7 +6,7 @@ export const rsToggle = define(Toggle, 'RsToggle')
   .name('Toggle')
   .props({
     children: string.named('Label'),
-    checked: boolean.valued.default(true),
+    checked: boolean.valued.default(true).uncontrolledValue(false),
     checkedChildren: string.named('Checked text'),
     unCheckedChildren: string.named('Unchecked text'),
     disabled: boolean.hinted('Whether disabled').default(false),

@@ -156,6 +156,14 @@ The data type for the value of the property.
 
 ***
 
+### uncontrolledValue?
+
+> `readonly` `optional` **uncontrolledValue**: `unknown`
+
+The property value for the uncontrolled state.
+
+***
+
 ### validator?
 
 > `readonly` `optional` **validator**: [`RuleValidator`](../type-aliases/RuleValidator.md)

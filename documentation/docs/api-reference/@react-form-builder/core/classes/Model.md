@@ -12,7 +12,7 @@ the type of React component properties.
 
 ### new Model()
 
-> **new Model**\<`T`\>(`component`, `name`?, `actionsInitializer`?, `valued`?, `valueType`?, `defaultProps`?, `css`?, `wrapperCss`?, `typeName`?, `kind`?, `readOnly`?, `propsBindingTypes`?): [`Model`](Model.md)\<`T`\>
+> **new Model**\<`T`\>(`component`, `name`?, `actionsInitializer`?, `valued`?, `valueType`?, `defaultProps`?, `css`?, `wrapperCss`?, `typeName`?, `kind`?, `readOnly`?, `propsBindingTypes`?, `uncontrolledValue`?): [`Model`](Model.md)\<`T`\>
 
 Creates component metadata for the form viewer.
 
@@ -65,6 +65,10 @@ the name of the component property that stores the read-only flag.
 • **propsBindingTypes?**: `Readonly`\<`Record`\<`string`, [`ComponentPropertyBindType`](../type-aliases/ComponentPropertyBindType.md)\>\> = `{}`
 
 the component property binding types.
+
+• **uncontrolledValue?**: `unknown`
+
+the value for the uncontrolled (undefined) state.
 
 #### Returns
 
@@ -133,6 +137,14 @@ the name of the component property that stores the read-only flag.
 > `readonly` `optional` **typeName**: `string`
 
 the component type name.
+
+***
+
+### uncontrolledValue?
+
+> `readonly` `optional` **uncontrolledValue**: `unknown`
+
+the value for the uncontrolled (undefined) state.
 
 ***
 

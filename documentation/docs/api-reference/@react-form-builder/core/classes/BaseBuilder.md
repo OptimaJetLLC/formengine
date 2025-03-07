@@ -231,6 +231,26 @@ the modified instance of the builder.
 
 ***
 
+### uncontrolledValue()
+
+> **uncontrolledValue**(`uncontrolledValue`): [`BaseBuilder`](BaseBuilder.md)\<`T`\>
+
+Sets the value for the property that prevents uncontrolled state.
+
+#### Parameters
+
+• **uncontrolledValue**: `unknown`
+
+the value for the uncontrolled state.
+
+#### Returns
+
+[`BaseBuilder`](BaseBuilder.md)\<`T`\>
+
+the modified instance of the builder.
+
+***
+
 ### withEditorProps()
 
 > **withEditorProps**(`props`): `this`

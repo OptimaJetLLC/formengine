@@ -30,6 +30,7 @@ export class Model<T = any> {
    * @param kind the component kind.
    * @param readOnly the name of the component property that stores the read-only flag.
    * @param propsBindingTypes the component property binding types.
+   * @param uncontrolledValue the value for the uncontrolled (undefined) state.
    * @template T the type of React component properties.
    */
   constructor(
@@ -45,6 +46,7 @@ export class Model<T = any> {
     readonly kind: ComponentKind = 'component',
     readonly readOnly?: string,
     readonly propsBindingTypes: Readonly<Record<string, ComponentPropertyBindType>> = {},
+    readonly uncontrolledValue?: unknown,
   ) {
     this.component = observer(component)
     this.component.displayName = component.displayName || component.name

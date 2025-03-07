@@ -35,6 +35,6 @@ export const rsInput = define(RsInput, 'RsInput')
     label: string.default('Input').hinted('Input label'),
     ...inputProps,
     type: oneOf('text', 'password', 'email', 'number', 'search', 'tel', 'url', 'time').default('text'),
-    value: string.valued,
+    value: string.valued.uncontrolledValue(''),
     passwordMask: boolean.default(false)
   })

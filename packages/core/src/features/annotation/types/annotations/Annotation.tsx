@@ -55,6 +55,11 @@ export class Annotation {
   readonly default?: any
 
   /**
+   * The property value for the uncontrolled state.
+   */
+  readonly uncontrolledValue?: unknown
+
+  /**
    * The data type for the value of the property.
    */
   readonly type?: SchemaType

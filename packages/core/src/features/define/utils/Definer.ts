@@ -227,7 +227,8 @@ export class Definer<T extends object> {
       this.getType(),
       this.data.kind,
       readOnlyAn?.key,
-      propsBindingTypes
+      propsBindingTypes,
+      valuedAn?.uncontrolledValue,
     )
 
     const meta = new Meta(

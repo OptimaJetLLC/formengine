@@ -96,7 +96,10 @@ export class ComponentState implements IComponentState {
    */
   get value() {
     if (this.data.model.kind === 'template') return
-    if (this.data.field) return {[this.data.field.valued]: this.data.field.value}
+    if (this.data.field) {
+      const value = this.data.field.value ?? this.data.model.uncontrolledValue
+      return {[this.data.field.valued]: value}
+    }
   }
 
   /**

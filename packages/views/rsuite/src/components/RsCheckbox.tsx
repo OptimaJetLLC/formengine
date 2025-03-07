@@ -6,7 +6,8 @@ export const rsCheckbox = define(Checkbox, 'RsCheckbox')
   .name('Checkbox')
   .props({
     children: string.named('Label').default('Checkbox'),
-    checked: boolean.hinted('Specifies whether the checkbox is selected').valued.default(true),
+    checked: boolean.hinted('Specifies whether the checkbox is selected')
+      .valued.default(true).uncontrolledValue(false),
     disabled: boolean.hinted('Whether disabled').default(false),
     readOnly,
     indeterminate: boolean.hinted('When being a checkbox, setting styles after the child part is selected').default(false),
