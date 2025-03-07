@@ -5,7 +5,7 @@ WORKDIR /form-engine
 # npm-build builds all npm packages
 npm-build:
   FROM +sources
-  RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build
+  RUN npm run build
 
 # npm-bundle builds all npm bundles
 npm-bundle:
@@ -20,7 +20,7 @@ npm-update-release-date:
 # npm-demo-build builds demo
 npm-demo-build:
   FROM +npm-update-release-date
-  RUN NODE_OPTIONS="--max-old-space-size=4096" npm run demo:build
+  RUN npm run demo:build
 
 # npm-documentation-build builds documentation
 npm-documentation-build:
@@ -31,7 +31,7 @@ npm-documentation-build:
 npm-test:
   FROM +sources
   TRY
-    RUN NODE_OPTIONS="--max-old-space-size=4096" npm run test:component
+    RUN npm run test:component
   FINALLY
     SAVE ARTIFACT tests/react-17/reports/junit-report.xml AS LOCAL test-results/react-17-report.xml
     SAVE ARTIFACT tests/react-18/reports/junit-report.xml AS LOCAL test-results/react-18-report.xml
@@ -51,7 +51,7 @@ npm-check-wrong-imports:
 # npm-eslint performs eslint
 npm-eslint:
   FROM +sources
-  RUN NODE_OPTIONS="--max-old-space-size=4096" npm run eslint
+  RUN npm run eslint
 
 # npm-check-unused-exports checks for unused import statements
 npm-check-unused-exports:
@@ -345,7 +345,7 @@ run-sonar-analysis:
 # sources copies the source code
 sources:
   FROM +dependencies
-  COPY .eslintignore .eslintrc.cjs lerna.json LICENSE.md nx.json README.md tsconfig.json vite.config.ts ./
+  COPY .eslintignore .eslintrc.cjs lerna.json LICENSE.md nx.json README.md tsconfig.json vite.config.ts .npmrc ./
   COPY --dir types documentation packages scripts ./
   COPY --dir tests/react-17 tests/react-18 tests/react-19 tests/common tests/component ./tests
   SAVE ARTIFACT /form-engine
