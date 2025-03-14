@@ -261,8 +261,6 @@ export class SimpleField implements Field {
    * @param value the value to be set.
    */
   innerSetValue(value: unknown) {
-    if (!this.isComputed) {
-      this.value = value
-    }
+    this.value = value
   }
 }

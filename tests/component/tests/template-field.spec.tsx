@@ -764,7 +764,7 @@ describe(`TemplateField test`, function () {
     }
   })
 
-  it('The value entered should not override the computed value', async () => {
+  it('The value entered should override the computed value', async () => {
     const modifyForm = ({form}: PersistedForm) => {
       for (const inputKey of allInputKeys) {
         eachComponentStore(form, inputKey, (componentStore) => {
@@ -806,13 +806,14 @@ describe(`TemplateField test`, function () {
 
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
-      const expectedValue = 'ginger-' + defaultValues[`${key}MiddleName`]
+      const computedValue = 'ginger-' + defaultValues[`${key}MiddleName`]
       const input = await findByTestId(inputTestId)
-      expect(await findByTestId(inputTestId)).toHaveValue(expectedValue)
+      expect(await findByTestId(inputTestId)).toHaveValue(computedValue)
 
-      fireEvent.change(input, {target: {value: randomString('new value')}})
-      expect(await findByDisplayValue(expectedValue)).toBeInTheDocument()
-      expect(await findByTestId(inputTestId)).toHaveValue(expectedValue)
+      const enteredValue = randomString(`entered-${key}`)
+      fireEvent.change(input, {target: {value: enteredValue}})
+      expect(await findByDisplayValue(enteredValue)).toBeInTheDocument()
+      expect(await findByTestId(inputTestId)).toHaveValue(enteredValue)
     }
   })
 })

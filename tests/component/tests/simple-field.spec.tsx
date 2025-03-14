@@ -355,7 +355,7 @@ describe(`SimpleField test`, function () {
     expect(await findByDisplayValue(newValue)).toBeInTheDocument()
   })
 
-  it('The value entered should not override the computed value', async () => {
+  it('The value entered should override the computed value', async () => {
     const form = createTestForm((input) => {
       input.props.value = {value: 'defaultValue', computeType: 'function', fnSource: 'return `ginger-${form.data.middleName}`'}
     }, ({form}) => {
@@ -367,7 +367,9 @@ describe(`SimpleField test`, function () {
     const nameInput = await findByTestId(dataTestId)
     expect(nameInput).toHaveValue(`ginger-${initialData.middleName}`)
 
-    fireEvent.change(nameInput, {target: {value: randomString('new value')}})
-    expect(await findByDisplayValue(`ginger-${initialData.middleName}`)).toBeInTheDocument()
+    const enteredValue = randomString('entered-value')
+    fireEvent.change(nameInput, {target: {value: enteredValue}})
+    expect(await findByDisplayValue(enteredValue)).toBeInTheDocument()
+    expect(nameInput).toHaveValue(enteredValue)
   })
 })
