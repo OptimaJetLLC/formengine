@@ -27,6 +27,7 @@ import {typedValidatorsResolver} from './validatorsResolver'
 export class RepeaterField implements Field, IComponentDataProvider {
 
   #oldDataValidator?: DataValidator
+  #oldComponentDatas: ComponentData[] = []
 
   /**
    * @inheritDoc
@@ -151,6 +152,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
    */
   dispose() {
     this.#disposers.forEach(dispose => dispose())
+    this.disposeOldComponentDatas()
   }
 
   /**
@@ -343,6 +345,8 @@ export class RepeaterField implements Field, IComponentDataProvider {
 
         result.push(contextData)
       }
+      this.disposeOldComponentDatas()
+      this.#oldComponentDatas = result
       if (!this.deferFieldCalculation) this.initFields(result)
       return result
     })
@@ -382,6 +386,12 @@ export class RepeaterField implements Field, IComponentDataProvider {
 
   private get errorFieldName() {
     return `${this.componentStore.key}Error`
+  }
+
+  private disposeOldComponentDatas() {
+    this.#oldComponentDatas.forEach(componentData => {
+      componentData.dispose()
+    })
   }
 }
 

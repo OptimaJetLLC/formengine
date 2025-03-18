@@ -1,5 +1,19 @@
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
-import {BiDi, ComponentStore, createView, FormViewer, Language, PersistedForm, View} from '@react-form-builder/core'
+import {
+  BiDi,
+  ComponentData,
+  ComponentStore,
+  createView,
+  define,
+  FormViewer,
+  FormViewerProps,
+  Language,
+  PersistedForm,
+  PersistedFormVersion,
+  string,
+  useComponentData,
+  View
+} from '@react-form-builder/core'
 import {fireEvent, render} from '@testing-library/react'
 import {useCallback} from 'react'
 import {expect} from 'vitest'
@@ -297,6 +311,105 @@ describe(`RepeaterField test`, function () {
     fireEvent.click(bookButton)
     // // the computed value for the repeater works as initial data, so we can add a new room
     expect(queryByTestId('adults')).toBeInTheDocument()
+  })
+
+  it('Old ComponentData in the RepeaterField must be disposed', async () => {
+    const componentDataSet = new Set<ComponentData>()
+
+    const SimpleComponent = (props: any) => {
+      const {value, ...otherProps} = props
+      const componentData = useComponentData()
+      componentDataSet.add(componentData)
+      return <span {...otherProps}>${componentData.id} {value ?? ''}</span>
+    }
+
+    const simpleComponent = define(SimpleComponent, 'SimpleComponent')
+      .props({
+        value: string.valued
+      })
+
+    const form: PersistedForm = {
+      version: PersistedFormVersion.version1,
+      actions: {},
+      form: {
+        key: 'Screen',
+        type: 'Screen',
+        props: {},
+        children: [
+          {
+            key: 'testRepeater',
+            type: 'Repeater',
+            props: {},
+            children: [
+              {
+                key: 'name',
+                type: 'SimpleComponent',
+                props: {},
+                htmlAttributes: [{name: 'data-testid', value: 'test-component'}]
+              }
+            ]
+          }
+        ]
+      },
+      localization: {},
+      languages: [],
+      defaultLanguage: ''
+    }
+
+    const appView = createView([simpleComponent.build().model])
+    const getForm = () => JSON.stringify(form)
+
+    const App = ({initialData}: Partial<FormViewerProps>) => {
+      return <FormViewer view={appView} initialData={initialData} getForm={getForm}/>
+    }
+
+    const initialData = {testRepeater: [{name: 'test-1'}, {name: 'test-2'}]}
+    const {rerender, findAllByTestId} = render(<App initialData={initialData}/>)
+
+    // here we check that the current ComponentData fields contain data from initialData
+    const componentDataArray = Array.from(componentDataSet)
+    const fieldValues = componentDataArray.map(data => data.field?.value)
+    expect(componentDataArray.length).toBe(2)
+    expect(fieldValues).contains('test-1')
+    expect(fieldValues).contains('test-2')
+
+    // check rendered components
+    const firstRenderComponents = await findAllByTestId('test-component')
+    expect(firstRenderComponents.length).equals(2)
+    expect(firstRenderComponents[0].innerHTML).contains('test-1')
+    expect(firstRenderComponents[1].innerHTML).contains('test-2')
+
+    const newData = {testRepeater: [{name: 'test-3'}, {name: 'test-4'}, {name: 'test-5'}]}
+    rerender(<App initialData={newData}/>)
+
+    // now we check that the current ComponentData fields contain the updated data from initialData,
+    // including the new element
+    expect(componentDataSet.size).toBe(5)
+    const newComponentDataArray = Array.from(componentDataSet)
+      .filter(cd => componentDataArray.indexOf(cd) === -1)
+    const newFieldValues = newComponentDataArray.map(data => data.field?.value)
+    expect(newComponentDataArray.length).toBe(3)
+    expect(newFieldValues).contains('test-3')
+    expect(newFieldValues).contains('test-4')
+    expect(newFieldValues).contains('test-5')
+    expect(newFieldValues).not.contains('test-1')
+    expect(newFieldValues).not.contains('test-2')
+
+    // check rendered components
+    const secondRenderComponents = await findAllByTestId('test-component')
+    expect(secondRenderComponents.length).equals(3)
+    expect(secondRenderComponents[0].innerHTML).contains('test-3')
+    expect(secondRenderComponents[1].innerHTML).contains('test-4')
+    expect(secondRenderComponents[2].innerHTML).contains('test-5')
+
+    // and now we check that the values of the old fields have not changed,
+    // so we can be sure that the old ComponentData has been disposed of
+    const oldFieldValues = componentDataArray.map(data => data.field?.value)
+    expect(oldFieldValues).contains('test-1')
+    expect(oldFieldValues).contains('test-2')
+    expect(oldFieldValues).not.contains('test-3')
+    expect(oldFieldValues).not.contains('test-4')
+    expect(oldFieldValues).not.contains('test-5')
   })
 })
 
