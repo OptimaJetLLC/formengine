@@ -1,15 +1,19 @@
-import type {ComponentData} from '@react-form-builder/core'
+import type {ComponentData, ComponentStore} from '@react-form-builder/core'
 import {
-  defaultComponentStateFactory,
+  ComponentState,
+  ComponentTree,
   FormViewerPropsStore,
+  getChildren,
   namedObserver,
+  nameObservable,
   Store,
   StoreProvider,
   useDisposable,
   ViewerPropsProvider
 } from '@react-form-builder/core'
+import {makeObservable, observable} from 'mobx'
 import type {ReactNode} from 'react'
-import {useCallback, useEffect, useImperativeHandle, useRef} from 'react'
+import {useCallback, useEffect, useImperativeHandle} from 'react'
 import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import type {FormBuilderProps} from '../../FormBuilderProps'
@@ -48,13 +52,44 @@ interface BuilderProvidersProps extends RawBuilderProvidersProps {
   store: Store
 }
 
+class BuilderComponentStateFactory {
+  builderStore?: BuilderStore
+
+  constructor() {
+    makeObservable(this, {
+      builderStore: observable.ref,
+    }, {name: nameObservable(`BuilderComponentStateFactory`)})
+  }
+
+  createComponentState(data: ComponentData, store: Store) {
+    const localizer = (componentStore: ComponentStore) => {
+      const dataContext = data.dataRootProvider ?? store.dataContext
+      return store.localizeComponent('component', dataContext.dataRoot, componentStore)
+    }
+
+    const computeChildren = (componentData: ComponentData, componentProps: Record<string, any>) => {
+      if (this.builderStore?.builderMode === 'builder' && !store.parentStore) {
+        return getBuilderChildren(this.builderStore, componentData, componentProps)
+      }
+      return getChildren(componentData, store.form.componentTree, ComponentTree, componentProps)
+    }
+
+    return new ComponentState(data, store, localizer, computeChildren)
+  }
+}
+
 const useBuilderProviderData = (props: FormBuilderProps) => useCallback(() => {
   const {builderRef, ...viewerProps} = props
 
-  const store = new Store(new FormViewerPropsStore(viewerProps), defaultComponentStateFactory)
+  const stateFactory = new BuilderComponentStateFactory()
+  const componentStateFactory = (data: ComponentData, store: Store) => {
+    return stateFactory.createComponentState(data, store)
+  }
+  const store = new Store(new FormViewerPropsStore(viewerProps), componentStateFactory)
 
   const builderStore = new BuilderStore(store, props)
   builderStore.changeBuilderMode('builder')
+  stateFactory.builderStore = builderStore
 
   const localStorageSynchronizer = new LocalStorageSynchronizer(builderStore)
   return new BuilderProviderData(store, builderStore, localStorageSynchronizer)
@@ -124,26 +159,14 @@ const Providers = namedObserver('Providers', RawProviders)
  * @returns the React element.
  */
 const RawBuilderProviders = (props: RawBuilderProvidersProps) => {
-  const builderProps = {...props.props}
-
-  const builderRef = useRef<BuilderStore | undefined>(undefined)
-
-  // For Designer, we replace compute children with props. This is because these props are used
-  // by ComponentState to compute all the properties of the component
-  builderProps.computeChildren = useCallback((componentData: ComponentData, componentProps: Record<string, any>) => {
-    if (!builderRef.current) return {}
-    return getBuilderChildren(builderRef.current, componentData, componentProps)
-  }, [])
-
-  const builderProviderDataFactory = useBuilderProviderData(builderProps)
+  const builderProviderDataFactory = useBuilderProviderData(props.props)
   const builderProviderData = useDisposable(builderProviderDataFactory)
 
   const builderStore = builderProviderData?.builderStore
-  builderRef.current = builderStore
   const store = builderProviderData?.store
 
   if (!builderStore || !store) return null
 
-  return <Providers {...props} props={builderProps} builderStore={builderStore} store={store}/>
+  return <Providers {...props} builderStore={builderStore} store={store}/>
 }
 export const BuilderProviders = namedObserver('BuilderProviders', RawBuilderProviders)

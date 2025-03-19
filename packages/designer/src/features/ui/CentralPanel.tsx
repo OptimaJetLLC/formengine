@@ -18,7 +18,6 @@ const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
   const viewerProps = useViewerProps()
   const {t} = useTranslation()
   const componentWrapper = builderMode === 'builder' ? EditableWrapper : undefined
-  const computeChildren = builderMode === 'builder' ? builderStore.props.computeChildren : undefined
   const builderContext = useMemo(() => ({builderMode, translate: t}), [builderMode, t])
 
   return (
@@ -28,7 +27,7 @@ const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
         <BuilderContextProvider value={builderContext}>
           <ErrorFormWrapper>
             <FormViewer {...viewerProps} componentWrapper={componentWrapper} viewMode={viewMode}
-                        computeChildren={computeChildren} formName={builderStore.activeFormName}/>
+                        formName={builderStore.activeFormName}/>
           </ErrorFormWrapper>
         </BuilderContextProvider>
       </SFormContainer>

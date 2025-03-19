@@ -20,7 +20,7 @@ import {expect} from 'vitest'
 import {eachComponentStore} from './eachComponentStore'
 import {testLicense} from './testLicense'
 import '../config/toAllHaveLocaleTextContent'
-import '../config/toAllHaveValues'
+import '../config/toHaveExactValues'
 import '../config/toAllSelectsHaveValues'
 
 const componentsMetadata = rSuiteComponents.map(definer => definer.build().model)
@@ -95,10 +95,10 @@ describe(`RepeaterField test`, function () {
     const {findAllByTestId} = render(<RepeaterFieldApp initialData={initialData}/>)
 
     await expect(await findAllByTestId('roomType')).toAllSelectsHaveValues(['standard', 'luxe'])
-    expect(await findAllByTestId('firstName')).toAllHaveValues(['James', 'Monica', 'Mark'])
-    expect(await findAllByTestId('lastName')).toAllHaveValues(['Stark', 'Cassel', 'Ronson'])
-    expect(await findAllByTestId('adults')).toAllHaveValues(['2', '1'])
-    expect(await findAllByTestId('children')).toAllHaveValues(['1', '2'])
+    expect(await findAllByTestId('firstName')).toHaveExactValues(['James', 'Monica', 'Mark'])
+    expect(await findAllByTestId('lastName')).toHaveExactValues(['Stark', 'Cassel', 'Ronson'])
+    expect(await findAllByTestId('adults')).toHaveExactValues(['2', '1'])
+    expect(await findAllByTestId('children')).toHaveExactValues(['1', '2'])
     await expect(await findAllByTestId('childAge')).toAllSelectsHaveValues(['3', '11', '1'])
   })
 
@@ -123,10 +123,10 @@ describe(`RepeaterField test`, function () {
     const {findAllByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm}/>)
 
     await expect(await findAllByTestId('roomType')).toAllSelectsHaveValues(['luxe'])
-    expect(await findAllByTestId('firstName')).toAllHaveValues(['Mark'])
-    expect(await findAllByTestId('lastName')).toAllHaveValues(['Ronson'])
-    expect(await findAllByTestId('adults')).toAllHaveValues(['1'])
-    expect(await findAllByTestId('children')).toAllHaveValues(['2'])
+    expect(await findAllByTestId('firstName')).toHaveExactValues(['Mark'])
+    expect(await findAllByTestId('lastName')).toHaveExactValues(['Ronson'])
+    expect(await findAllByTestId('adults')).toHaveExactValues(['1'])
+    expect(await findAllByTestId('children')).toHaveExactValues(['2'])
     await expect(await findAllByTestId('childAge')).toAllSelectsHaveValues(['11', '1'])
   })
 

@@ -89,8 +89,6 @@ export const defaultComponentStateFactory: ComponentStateFactory = (data: Compon
   }
 
   function defaultComputeChildren(componentData: ComponentData, componentProps: Record<string, any>) {
-    const viewerProps = store.formViewerPropsStore
-    if (viewerProps.computeChildren) return viewerProps.computeChildren(componentData, componentProps)
     return getChildren(componentData, store.form.componentTree, ComponentTree, componentProps)
   }
 }

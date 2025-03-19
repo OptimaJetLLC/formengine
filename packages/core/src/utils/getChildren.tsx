@@ -9,7 +9,7 @@ import {needRender} from './needRender'
 const defaultContainerKey = 'children'
 
 /**
- * Returns the {@link Record} with all child components.
+ * Returns the {@link Record} with all child components. **Internal use only.**
  * @param data the parent component's data necessary to display the component.
  * @param formData the form data.
  * @param componentTreeItem the type of React component that wraps child components.

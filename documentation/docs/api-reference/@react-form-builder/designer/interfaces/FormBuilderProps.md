@@ -44,7 +44,7 @@ The React component that wraps every component in a form. **Internal use only.**
 
 > `optional` **computeChildren**: [`ComputeChildren`](../../core/type-aliases/ComputeChildren.md)
 
-Function that calculates all child properties of a component. **Internal use only.**
+**Deprecated, unused.** Function that calculates all child properties of a component. **Internal use only.**
 
 #### Inherited from
 

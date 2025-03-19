@@ -1021,11 +1021,6 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
-            "id": "api-reference/@react-form-builder/core/functions/defaultComponentStateFactory",
-            "label": "defaultComponentStateFactory"
-          },
-          {
-            "type": "doc",
             "id": "api-reference/@react-form-builder/core/functions/define",
             "label": "define"
           },
@@ -1048,6 +1043,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/functions/generateUniqueName",
             "label": "generateUniqueName"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/getChildren",
+            "label": "getChildren"
           },
           {
             "type": "doc",

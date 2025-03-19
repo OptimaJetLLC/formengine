@@ -91,7 +91,7 @@ export interface FormViewerProps {
   validators?: Validators
 
   /**
-   * Function that calculates all child properties of a component. **Internal use only.**
+   * **Deprecated, unused.** Function that calculates all child properties of a component. **Internal use only.**
    */
   computeChildren?: ComputeChildren
 

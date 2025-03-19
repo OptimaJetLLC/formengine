@@ -46,7 +46,6 @@ const Template = (templateProps: Record<string, any>) => {
     const overrideProps: Partial<FormViewerProps> = {
       formName: getTemplateName(data.store.type),
       onFormDataChange: undefined,
-      computeChildren: undefined,
       formValidators: undefined,
     }
     return Object.assign({}, viewerProps, overrideProps)

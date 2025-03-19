@@ -1,7 +1,7 @@
 import {expect} from 'vitest'
 
 expect.extend({
-  toAllHaveValues(received: HTMLElement[], expected: any[]) {
+  toHaveExactValues(received: HTMLElement[], expected: any[]) {
     const actualValues = received.map(el => el.getAttribute('value'))
     const pass = this.equals(actualValues, expected)
 
@@ -23,6 +23,6 @@ expect.extend({
 
 declare module 'vitest' {
   interface Assertion<T = any> {
-    toAllHaveValues(expected: any[]): void;
+    toHaveExactValues(expected: any[]): void;
   }
 }
