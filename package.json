@@ -19,6 +19,7 @@
     "docs:start": "npx lerna run start --scope=@react-form-builder/docs",
     "docs:build": "npx lerna run build --scope=@react-form-builder/docs",
     "test": "npx lerna run test",
+    "test:module": "npx lerna run test:module",
     "test:component": "npx lerna run test:component",
     "test:e2e": "npx lerna run test:e2e --scope=@react-form-builder/tests-e2e",
     "clean": "lerna exec -- npx rimraf node_modules dist build && rimraf node_modules",

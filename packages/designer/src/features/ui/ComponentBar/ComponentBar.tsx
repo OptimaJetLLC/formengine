@@ -1,12 +1,13 @@
 import {css, cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import type {ComponentData, Model} from '@react-form-builder/core'
-import {ComponentDataProvider, ComponentStore, getKey, namedObserver} from '@react-form-builder/core'
-import {useCallback, useState} from 'react'
+import type {Model, ComponentData} from '@react-form-builder/core'
+import {ComponentDataProvider, namedObserver} from '@react-form-builder/core'
+import {useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {transformComponentNameToCssClass} from '../../../utils/transformComponentNameToCssClass'
 import {AddedComponent} from '../../dnd'
 import {useTranslationPart} from '../../localization/hooks'
+import {createAddedComponentData} from './addedComponentData'
 import {SearchForm} from './components/SearchForm'
 
 const componentGroupStaticClassname = 'FE_Palette_ComponentGroup'
@@ -98,26 +99,10 @@ interface AddedComponentsProps extends DraggableProps {
 const RawAddedComponents = ({definitions, ...componentProps}: AddedComponentsProps) => {
   const builderStore = useBuilderStore()
 
-  const createComponentData = useCallback((model: Model) => {
-    const componentStore = new ComponentStore(`${model.type} ${getKey()}`, model.type)
-
-    const componentMetadata = builderStore.getComponentMetadata(model.type)
-    if (componentMetadata.initialJson) {
-      try {
-        const parsed = JSON.parse(componentMetadata.initialJson)
-        Object.assign(componentStore, parsed)
-      } catch (e) {
-        console.warn(`Failed to parse initialJson '${componentMetadata.initialJson}'`, e)
-      }
-    }
-
-    return builderStore.viewer.createComponentData(componentStore)
-  }, [builderStore])
-
   return (
     <ControlsGroup>
       {definitions.map(model => {
-        const componentData = createComponentData(model)
+        const componentData = createAddedComponentData(model, builderStore)
         return (
           <ComponentDataProvider key={componentData.id} value={componentData}>
             <AddedComponent {...componentProps}/>

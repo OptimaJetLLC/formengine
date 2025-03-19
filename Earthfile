@@ -31,6 +31,11 @@ npm-documentation-build:
 npm-test:
   FROM +sources
   TRY
+    RUN npm run test:module
+  FINALLY
+    SAVE ARTIFACT tests/module/reports/junit-report.xml AS LOCAL test-results/module.xml
+  END
+  TRY
     RUN npm run test:component
   FINALLY
     SAVE ARTIFACT tests/react-17/reports/junit-report.xml AS LOCAL test-results/react-17-report.xml
@@ -347,7 +352,7 @@ sources:
   FROM +dependencies
   COPY .eslintignore .eslintrc.cjs lerna.json LICENSE.md nx.json README.md tsconfig.json vite.config.ts .npmrc ./
   COPY --dir types documentation packages scripts ./
-  COPY --dir tests/react-17 tests/react-18 tests/react-19 tests/common tests/component ./tests
+  COPY --dir tests/module tests/react-17 tests/react-18 tests/react-19 tests/common tests/component ./tests
   SAVE ARTIFACT /form-engine
 
 # dependencies installs node_modules dependencies
@@ -362,7 +367,7 @@ dependencies:
    packages/views/fast-qr \
    packages/views/rich-text \
    packages/views/google-map \
-   tests tests/common tests/component tests/react-17 tests/react-18 tests/react-19
+   tests tests/common tests/module tests/component tests/react-17 tests/react-18 tests/react-19
 
   COPY documentation/website/package.json documentation/website
 
@@ -386,6 +391,7 @@ dependencies:
 
   COPY tests/component/package.json tests/component
   COPY tests/common/package.json tests/common
+  COPY tests/module/package.json tests/react-17
   COPY tests/react-17/package.json tests/react-17
   COPY tests/react-18/package.json tests/react-18
   COPY tests/react-19/package.json tests/react-19
