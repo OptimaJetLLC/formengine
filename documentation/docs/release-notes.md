@@ -4,6 +4,19 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 3.2.0
+
+_March_ 19, 2025
+
+- The ability to enter values for calculated fields has been returned.
+- For properties that are declared as valued, you can now set
+  an [uncontrolled value](/api-reference/@react-form-builder/core/classes/Annotation#uncontrolledvalue) that will replace undefined. This is
+  necessary to avoid the React error "A component is changing a controlled input to be uncontrolled".
+- Fixed a bug that caused the reset button in the numeric property editor to not work.
+- Fixed a potential memory leak in the Repeater component.
+- Fixed a bug where components were sometimes not displayed in view mode.
+- Fixed a typo in localization.
+
 ## 3.1.0
 
 _February_ 27, 2025
