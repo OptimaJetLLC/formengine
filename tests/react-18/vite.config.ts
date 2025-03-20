@@ -6,12 +6,15 @@ import base from '../../vite.config'
 const testDir = resolve(__dirname, '../component/tests')
 const configDir = resolve(__dirname, '../component/config')
 
+// Normalize path for working in Windows (replace backslashes with slashes)
+const normalizePath = (value: string) => value.replace(/\\/g, '/')
+
 // TODO move common to base config
 // TODO https://github.com/facebook/react/issues/13991
 export default defineConfig((env) => mergeConfig(base(env), {
   test: {
     environment: 'jsdom', // Use jsdom for testing in the browser
-    include: [join(testDir, '/**/*.{test,spec}.?(c|m)[jt]s?(x)')],
+    include: [normalizePath(join(testDir, '/**/*.{test,spec}.?(c|m)[jt]s?(x)'))], // Include test files
     setupFiles: [join(configDir, '/setup.ts')], // Optional: Set up file for tests
     globals: true, // Use global variables for testing
     coverage: {

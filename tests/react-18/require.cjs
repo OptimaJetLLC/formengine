@@ -1,14 +1,15 @@
 const Module = require('module');
-const fs = require('fs');
+const {readFileSync} = require('fs');
+const {sep} = require('path');
 const {join, resolve} = require('path');
 const {createLogger} = require("@react-form-builder/tests-common/lib/loader/util.cjs");
 
 const log = createLogger('@@@@@@@@@@@')
 
-const nodeModulesReact = 'node_modules/react/';
-const nodeModulesReactDom = 'node_modules/react-dom/';
-const localReact = resolve(join(__dirname, `./${nodeModulesReact}`));
-const localReactDom = resolve(join(__dirname, `./${nodeModulesReactDom}`));
+const nodeModulesReact = `node_modules${sep}react${sep}`;
+const nodeModulesReactDom = `node_modules${sep}react-dom${sep}`;
+const localReact = resolve(join(__dirname, `.${sep}${nodeModulesReact}`));
+const localReactDom = resolve(join(__dirname, `.${sep}${nodeModulesReactDom}`));
 
 
 let replaceReact = function (module, filename) {
@@ -28,7 +29,7 @@ let replaceReact = function (module, filename) {
     if (target !== filename) log(`${filename} => ${fn}`);
   }
 
-  const content = fs.readFileSync(target, 'utf8');
+  const content = readFileSync(target, 'utf8');
 
   module._compile(content, filename);
 };

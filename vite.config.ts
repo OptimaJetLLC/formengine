@@ -40,6 +40,6 @@ export default defineConfig(({command}) => ({
       ...configDefaults.exclude,
       'examples/**',
     ],
-    reporters: ['verbose']
+    // reporters: ['verbose']
   }
 }))

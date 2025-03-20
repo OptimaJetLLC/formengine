@@ -1,48 +1,48 @@
 {
-    "name": "my-designer",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "@react-form-builder/components-fast-qr": "file:react-form-builder-components-fast-qr-1.12.0.tgz",
-        "@react-form-builder/components-rsuite": "file:react-form-builder-components-rsuite-1.12.0.tgz",
-        "@react-form-builder/core": "file:react-form-builder-core-1.12.0.tgz",
-        "@react-form-builder/designer": "file:react-form-builder-designer-1.12.0.tgz",
-        "@testing-library/jest-dom": "^5.17.0",
-        "@testing-library/react": "^13.4.0",
-        "@testing-library/user-event": "^13.5.0",
-        "@types/jest": "^27.5.2",
-        "@types/node": "^16.18.54",
-        "@types/react": "^18.2.23",
-        "@types/react-dom": "^18.2.8",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-scripts": "5.0.1",
-        "typescript": "^4.9.5",
-        "web-vitals": "^2.1.4"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "dev": "cross-env BROWSER=none react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    }
+  "name": "my-designer",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@react-form-builder/components-fast-qr": "file:react-form-builder-components-fast-qr-1.12.0.tgz",
+    "@react-form-builder/components-rsuite": "file:react-form-builder-components-rsuite-1.12.0.tgz",
+    "@react-form-builder/core": "file:react-form-builder-core-1.12.0.tgz",
+    "@react-form-builder/designer": "file:react-form-builder-designer-1.12.0.tgz",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.54",
+    "@types/react": "^18.2.23",
+    "@types/react-dom": "^18.2.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "dev": "dotenv -v BROWSER=none react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
