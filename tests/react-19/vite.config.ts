@@ -2,12 +2,10 @@ import {join, resolve} from 'path'
 import {defineConfig, mergeConfig} from 'vite'
 
 import base from '../../vite.config'
+import {normalizePath} from '../common/lib/vite-common'
 
 const testDir = resolve(__dirname, '../component/tests')
 const configDir = resolve(__dirname, '../component/config')
-
-// Normalize path for working in Windows (replace backslashes with slashes)
-const normalizePath = (value: string) => value.replace(/\\/g, '/')
 
 // TODO move common to base config
 // TODO https://github.com/facebook/react/issues/13991
