@@ -20,6 +20,3 @@ export const indexPlugin = (replacement: string): Plugin => ({
     )
   }
 })
-
-// Normalize path for working in Windows (replace backslashes with slashes)
-export const normalizePath = (value: string) => value.replace(/\\/g, '/')

@@ -57,9 +57,5 @@ Module._resolveFilename = (path, context) => {
     return localReactDom + '/client.js'
   }
 
-  // if (path.indexOf('react') !== -1) {
-  // log(path)
-  // }
-
   return oldResolve(path, context)
 }
