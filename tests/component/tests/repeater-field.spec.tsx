@@ -14,9 +14,11 @@ import {
   useComponentData,
   View
 } from '@react-form-builder/core'
+import {wait} from '@react-form-builder/tests-common/lib/utils'
 import {fireEvent, render} from '@testing-library/react'
 import {useCallback} from 'react'
 import {expect} from 'vitest'
+import {selectDropDownOption} from '../util/controls'
 import {eachComponentStore} from './eachComponentStore'
 import {testLicense} from './testLicense'
 import '../config/toAllHaveLocaleTextContent'
@@ -30,9 +32,10 @@ interface RepeaterFieldAppProps {
   view?: View
   initialData?: Record<string, unknown>
   modifyForm?: (form: PersistedForm) => void
+  viewerRef?: FormViewerProps['viewerRef']
 }
 
-const RepeaterFieldApp = ({view, initialData, modifyForm}: RepeaterFieldAppProps) => {
+const RepeaterFieldApp = ({view, initialData, modifyForm, viewerRef}: RepeaterFieldAppProps) => {
   const wrappedGetForm = useCallback(() => {
     const form = getForm()
     modifyForm?.(form)
@@ -44,6 +47,7 @@ const RepeaterFieldApp = ({view, initialData, modifyForm}: RepeaterFieldAppProps
     licenseKey={testLicense}
     view={view ?? componentsView}
     getForm={wrappedGetForm}
+    viewerRef={viewerRef}
   />
 }
 
@@ -411,6 +415,133 @@ describe(`RepeaterField test`, function () {
     expect(oldFieldValues).not.contains('test-4')
     expect(oldFieldValues).not.contains('test-5')
   })
+
+  it('The test form for Repeater should work correctly', async () => {
+    const viewerRef: FormViewerProps['viewerRef'] = {current: null}
+    const rendered = render(<RepeaterFieldApp viewerRef={viewerRef}/>)
+    const {findByTestId, findAllByTestId, findByRole} = rendered
+    const targetChildAge = ['12', '14', '15']
+
+    const bookButton = await findByTestId('bookButton')
+    fireEvent.click(bookButton)
+
+    // check that the form in the initial state
+    expect(await findByTestId('firstName')).toHaveValue('')
+    expect(await findByTestId('lastName')).toHaveValue('')
+    expect(await findByTestId('adults')).toHaveValue('1')
+    expect(await findByTestId('children')).toHaveValue('0')
+
+    // clicking the button shouldn't change anything.
+    fireEvent.click(await findByTestId('minusAdultButton'))
+    expect(await findByTestId('adults')).toHaveValue('1')
+
+    // clicking the button shouldn't change anything.
+    fireEvent.click(await findByTestId('minusChildrenButton'))
+    expect(await findByTestId('children')).toHaveValue('0')
+
+    fireEvent.change(await findByTestId('firstName'), {target: {value: 'Isra'}})
+    fireEvent.change(await findByTestId('lastName'), {target: {value: 'Black'}})
+
+    fireEvent.click(await findByTestId('plusAdultButton'))
+    expect(await findByTestId('adults')).toHaveValue('2')
+
+    // check that the data in the form is displayed correctly
+    expect(await findAllByTestId('firstName')).toHaveLength(2)
+    expect(await findAllByTestId('firstName')).toHaveExactValues(['Isra', ''])
+    expect(await findAllByTestId('lastName')).toHaveExactValues(['Black', ''])
+
+    const plusChildButton = await findByTestId('plusChildButton')
+    fireEvent.click(plusChildButton)
+    fireEvent.click(plusChildButton)
+    fireEvent.click(plusChildButton)
+
+    expect(await findByTestId('children')).toHaveValue('3')
+    expect(await findAllByTestId('childAge')).toHaveExactValues([null, null, null])
+
+
+    const childAge = await findAllByTestId('childAge')
+    for (const idx in childAge) {
+      await selectDropDownOption(rendered, childAge[idx], `${targetChildAge[idx]} years old`)
+    }
+
+    expect(viewerRef.current).not.toBeNull()
+    const actualFormData = JSON.stringify(viewerRef.current?.formData.data)
+    const expectedData = {
+      rooms: [{
+        adults: 2,
+        children: 3,
+        childrenAges: [{childAge: targetChildAge[0]}, {childAge: targetChildAge[1]}, {childAge: targetChildAge[2]}],
+        names: [{firstName: 'Isra', lastName: 'Black'}, {}]
+      }]
+    }
+    expect(actualFormData).toBe(JSON.stringify(expectedData))
+
+    fireEvent.click(bookButton)
+
+    expect(await findByRole('button', {name: 'Remove room #2'})).toBeInTheDocument()
+    expect(await findAllByTestId('firstName')).toHaveExactValues(['Isra', '', ''])
+    expect(await findAllByTestId('lastName')).toHaveExactValues(['Black', '', ''])
+
+    // let's add some data
+    fireEvent.change((await findAllByTestId('firstName'))[1], {target: {value: 'Vidomina'}})
+    fireEvent.change((await findAllByTestId('lastName'))[1], {target: {value: 'White'}})
+    fireEvent.change((await findAllByTestId('firstName'))[2], {target: {value: 'Dessa'}})
+    fireEvent.change((await findAllByTestId('lastName'))[2], {target: {value: 'Green'}})
+
+    // then remove one child in the first room
+    fireEvent.click((await findAllByTestId('minusChildrenButton'))[0])
+    // // add one child in the second room
+    fireEvent.click((await findAllByTestId('plusChildButton'))[1])
+    // and add another room
+    fireEvent.click(await findByTestId('bookButton'))
+
+    const actualFormData2 = JSON.stringify(viewerRef.current?.formData.data)
+    const expectedData2 = {
+      rooms: [{
+        adults: 2,
+        children: 2,
+        childrenAges: [{childAge: targetChildAge[0]}, {childAge: targetChildAge[1]}],
+        names: [{firstName: 'Isra', lastName: 'Black'}, {firstName: 'Vidomina', lastName: 'White'}]
+      }, {
+        adults: 1,
+        children: 1,
+        childrenAges: [{childAge: 'none'}],
+        names: [{firstName: 'Dessa', lastName: 'Green'}]
+      }, {
+        adults: 1,
+        children: 0,
+        childrenAges: [],
+        names: [{}],
+      }]
+    }
+    expect(actualFormData2).toBe(JSON.stringify(expectedData2))
+
+    // and now we remove the second room
+    fireEvent.click(await findByRole('button', {name: 'Remove room #2'}))
+
+    const actualFormData3 = JSON.stringify(viewerRef.current?.formData.data)
+    const expectedData3 = {
+      rooms: [{
+        adults: 2,
+        children: 2,
+        childrenAges: [{childAge: targetChildAge[0]}, {childAge: targetChildAge[1]}],
+        names: [{firstName: 'Isra', lastName: 'Black'}, {firstName: 'Vidomina', lastName: 'White'}]
+      }, {
+        adults: 1,
+        children: 0,
+        childrenAges: [],
+        names: [{}],
+      }]
+    }
+    expect(actualFormData3).toBe(JSON.stringify(expectedData3))
+
+    // and remove one adult in the first room
+    expect(await findAllByTestId('firstName')).toHaveExactValues(['Isra', 'Vidomina', ''])
+    fireEvent.click((await findAllByTestId('minusAdultButton'))[0])
+    await wait(100)
+    expect(await findAllByTestId('firstName')).toHaveExactValues(['Isra', ''])
+    expect(await findAllByTestId('adults')).toHaveExactValues(['1', '1'])
+  })
 })
 
 function getForm() {
@@ -683,7 +814,11 @@ function getForm() {
                                 }
                               }
                             ]
-                          }
+                          },
+                          'htmlAttributes': [{
+                            'name': 'data-testid',
+                            'value': 'minusAdultButton'
+                          }]
                         },
                         {
                           'key': 'adults',
@@ -808,7 +943,11 @@ function getForm() {
                                 'type': 'code'
                               }
                             ]
-                          }
+                          },
+                          'htmlAttributes': [{
+                            'name': 'data-testid',
+                            'value': 'minusChildrenButton'
+                          }]
                         },
                         {
                           'key': 'children',
@@ -869,7 +1008,11 @@ function getForm() {
                                 }
                               }
                             ]
-                          }
+                          },
+                          'htmlAttributes': [{
+                            'name': 'data-testid',
+                            'value': 'plusChildButton'
+                          }]
                         }
                       ]
                     },
