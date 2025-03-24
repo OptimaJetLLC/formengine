@@ -3,12 +3,18 @@ import {configure} from '@testing-library/react'
 import '@testing-library/jest-dom'
 import {beforeAll} from 'vitest'
 import failOnConsole from 'vitest-fail-on-console'
+// @ts-ignore
+import {Crypto} from 'webcrypto-liner'
 
 import {addMatchMediaFunctionToWindow} from './matchMedia'
 
+Object.defineProperty(window, 'crypto', {
+  value: new Crypto(),
+})
+
 addMatchMediaFunctionToWindow()
 failOnConsole({
-  shouldFailOnWarn: false,
+  shouldFailOnWarn: true,
   silenceMessage: (errorMessage) => {
     return /act\(/.test(errorMessage)
   },
