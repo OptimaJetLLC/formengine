@@ -1,0 +1,40 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "1",
+        "type": "RsInput"
+      },
+      {
+        "key": "2",
+        "type": "RsInput"
+      },
+      {
+        "key": "3",
+        "type": "RsInput"
+      },
+      {
+        "key": "4",
+        "type": "RsInput"
+      },
+      {
+        "key": "drop",
+        "type": "RsContainer"
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

@@ -38,6 +38,7 @@ import {annotationResolver} from '../features/validation'
 import type {FormBuilderProps} from '../FormBuilderProps'
 import {determineTheme} from '../utils/determineTheme'
 import {getSystemTheme} from '../utils/getSystemTheme'
+import {sortByPositionInTree} from '../utils/sortByPositionInTree'
 import type {BuilderTheme, IFormBuilder, InsertPosition} from '../utils/types'
 import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
 import {CachedFormStorage} from './CachedFormStorage'
@@ -610,7 +611,7 @@ export class BuilderStore implements IFormBuilder {
   multipleMove(target: ComponentData, insertPosition: InsertPosition = 'after', slot?: string, slotCondition?: string) {
     const stores: ComponentData[] = []
 
-    this.selected.forEach((store) => {
+    this.orderedSelected.forEach((store) => {
       const sourceComponentData = this.viewer.form.componentTree.findByKey(store.key)
       if (!sourceComponentData) throw Error(`Component with key ${store.key} not found`)
       if (this.canAddComponent(sourceComponentData, target, insertPosition, slot)) {
@@ -620,6 +621,8 @@ export class BuilderStore implements IFormBuilder {
 
     // if not all components can be added, then return
     if (this.selected.size !== stores.length) return
+
+    if (insertPosition === 'after') stores.reverse()
 
     stores.forEach((sourceComponentData) => {
       this.move(sourceComponentData, target, insertPosition, slot, slotCondition)
@@ -978,6 +981,16 @@ export class BuilderStore implements IFormBuilder {
    */
   get formsMetadata() {
     return this.formStorageEnabled ? this.formStorage.builderComponents : []
+  }
+
+  /**
+   * @returns the selected components sorted by position in the component tree.
+   */
+  get orderedSelected() {
+    return sortByPositionInTree(
+      this.viewer.form.componentTree,
+      Array.from(this.selected.values())
+    )
   }
 
   /**
