@@ -14,6 +14,11 @@ A [customization map](/api-reference/@react-form-builder/designer/type-aliases/C
 the [options](/api-reference/@react-form-builder/designer/type-aliases/Options) of the desired component are set using
 its [customizable key](/api-reference/@react-form-builder/designer/type-aliases/CustomizableKey).
 
+You can manage the FormBuilder and get its state in custom components
+using [useFormBuilder](/api-reference/@react-form-builder/designer/functions/useFormBuilder). It provides access
+to [IFormBuilder](/api-reference/@react-form-builder/designer/interfaces/IFormBuilder). The management options are limited at the moment,
+but they will be expanded in the future.
+
 Another option for customizing the component is to use pure CSS. Each component has a static CSS class named with the component's name
 prefixed by `FE_`. This class is applied to the same element as the style or className attributes, utilizing
 the [customization map](/api-reference/@react-form-builder/designer/type-aliases/CustomizationMap).
@@ -25,7 +30,19 @@ A list of customizable components is also available as a [Set](/api-reference/@r
 ### Example
 
 ```tsx
-import {type CustomizationMap, FormBuilder} from '@react-form-builder/designer'
+import {type CustomizationMap, FormBuilder, useFormBuilder} from '@react-form-builder/designer'
+import {useCallback} from 'react'
+
+const CustomToggleModeButton = () => {
+  const builder = useFormBuilder()
+  const label = builder.builderMode === 'builder' ? 'PreviewMode' : 'EditMode'
+
+  const toggleMode = useCallback(() => {
+    builder.builderMode = builder.builderMode === 'builder' ? 'viewer' : 'builder'
+  }, [builder])
+
+  return <button onClick={toggleMode}>{label}</button>
+}
 
 const simpleCustomization: CustomizationMap = {
   // Hiding the "Download" item in the main menu by using nested CSS selectors.
@@ -57,15 +74,9 @@ const simpleCustomization: CustomizationMap = {
     </div>
   },
 
-  // Hiding the icon on the "Toggle mode" button.
+  // Changing the "Toggle mode" button to a custom component.
   ToggleModeButton: {
-    style: `
-      background: black !important;
-
-      svg {
-        display: none;
-      }
-    `
+    customRenderer: () => <CustomToggleModeButton/>
   },
 
   // Hiding the localization dropdown.

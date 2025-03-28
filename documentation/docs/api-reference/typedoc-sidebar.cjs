@@ -1408,6 +1408,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/designer/functions/makeColumns",
             "label": "makeColumns"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/designer/functions/useFormBuilder",
+            "label": "useFormBuilder"
           }
         ]
       }

@@ -1,8 +1,10 @@
-import {type CustomizableKey, CustomizableZone, CustomizationMap, Options} from '@react-form-builder/designer'
-import {render} from '@testing-library/react'
+import {type CustomizableKey, CustomizableZone, CustomizationMap, Options, useFormBuilder} from '@react-form-builder/designer'
+import {fireEvent, render} from '@testing-library/react'
 import i18n from 'i18next'
 import {klona} from 'klona/full'
+import {useCallback} from 'react'
 import {initReactI18next} from 'react-i18next'
+import {Button} from 'rsuite'
 import {describe, expect} from 'vitest'
 import App from '../../common/lib/designer/App'
 
@@ -106,5 +108,40 @@ describe.each(createZoneStaticCustomization())(`should apply all possible custom
     const {container} = render(<App customization={customization}/>)
 
     expect(container.querySelector(zoneClassName)).toHaveStyle(targetStyle)
+  })
+})
+
+const toggleTestId = 'test-toggle-button'
+const toggleLabels = {
+  builder: 'EditMode',
+  viewer: 'PreviewMode'
+}
+
+const CustomToggleModeButton = () => {
+  const builder = useFormBuilder()
+  const label = toggleLabels[builder.builderMode]
+  const toggleMode = useCallback(() => (
+    builder.builderMode = builder.builderMode === 'builder'
+      ? 'viewer'
+      : 'builder'
+  ), [builder])
+
+  return <Button onClick={toggleMode} data-testid={toggleTestId}>{label}</Button>
+}
+
+export const customization: CustomizationMap = {
+  ToggleModeButton: {
+    customRenderer: () => <CustomToggleModeButton/>
+  }
+}
+
+describe(`Custom renderer`, function () {
+  it('should observe the FormBuilder changes', async () => {
+    const {findByTestId} = render(<App customization={customization}/>)
+    const toggleButton = await findByTestId(toggleTestId)
+    expect(toggleButton).toHaveTextContent(toggleLabels['builder'])
+
+    fireEvent.click(toggleButton)
+    expect(toggleButton).toHaveTextContent(toggleLabels['viewer'])
   })
 })

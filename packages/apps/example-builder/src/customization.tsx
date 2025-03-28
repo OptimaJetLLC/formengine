@@ -1,4 +1,22 @@
 import type {CustomizationMap} from '@react-form-builder/designer'
+import {useFormBuilder} from '@react-form-builder/designer'
+import {useCallback} from 'react'
+import {Button} from 'rsuite'
+
+const toggleLabels = {
+  builder: 'EditMode',
+  viewer: 'PreviewMode'
+}
+
+const CustomToggleModeButton = () => {
+  const builder = useFormBuilder()
+  const label = toggleLabels[builder.builderMode]
+  const toggleMode = useCallback(() => {
+    builder.builderMode = builder.builderMode === 'builder' ? 'viewer' : 'builder'
+  }, [builder])
+
+  return <Button onClick={toggleMode}>{label}</Button>
+}
 
 export const simpleCustomization: CustomizationMap = {
   MainMenu_Dropdown: {
@@ -26,13 +44,7 @@ export const simpleCustomization: CustomizationMap = {
     </div>
   },
   ToggleModeButton: {
-    style: `
-      background: black !important;
-
-      svg {
-        display: none;
-      }
-    `
+    customRenderer: () => <CustomToggleModeButton/>
   },
   LocalizationSelect: {
     hidden: true

@@ -13,7 +13,7 @@ import {
 } from '@react-form-builder/core'
 import {makeObservable, observable} from 'mobx'
 import type {ReactNode} from 'react'
-import {useCallback, useEffect, useImperativeHandle} from 'react'
+import {useCallback, useEffect} from 'react'
 import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import type {FormBuilderProps} from '../../FormBuilderProps'
@@ -26,6 +26,7 @@ import {getBuilderChildren} from '../dnd'
 import {CustomDragLayer} from '../dnd/components/CustomDragLayer'
 import {useHotkeys} from '../hotkeys/useHotKeys'
 import {LocalizationProvider} from '../localization'
+import {FormBuilderContextProvider} from './FormBuilderContextProvider'
 import {StylesProvider} from './StylesProvider'
 
 class BuilderProviderData {
@@ -109,8 +110,6 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
 
   useHotkeys(builderStore)
 
-  useImperativeHandle(builderRef, () => builderStore, [builderStore])
-
   useEffect(() => {
     // If activeFormName is already set from LocalStorageSynchronizer, do not change it
     if (!builderStore.activeFormName) builderStore.activeFormName = props.formName
@@ -134,18 +133,20 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
   return (
     <ViewerPropsProvider value={viewerProps}>
       <BuilderStoreProvider value={builderStore}>
-        <StoreProvider value={store}>
-          <LocalizationProvider>
-            <StylesProvider>
-              <TooltipPlacementProvider value={'auto'}>
-                <DndProvider backend={HTML5Backend}>
-                  {children}
-                  <CustomDragLayer/>
-                </DndProvider>
-              </TooltipPlacementProvider>
-            </StylesProvider>
-          </LocalizationProvider>
-        </StoreProvider>
+        <FormBuilderContextProvider builderRef={builderRef}>
+          <StoreProvider value={store}>
+            <LocalizationProvider>
+              <StylesProvider>
+                <TooltipPlacementProvider value={'auto'}>
+                  <DndProvider backend={HTML5Backend}>
+                    {children}
+                    <CustomDragLayer/>
+                  </DndProvider>
+                </TooltipPlacementProvider>
+              </StylesProvider>
+            </LocalizationProvider>
+          </StoreProvider>
+        </FormBuilderContextProvider>
       </BuilderStoreProvider>
     </ViewerPropsProvider>
   )

@@ -22,6 +22,34 @@ the form serialized in JSON.
 
 ## Accessors
 
+### builderMode
+
+#### Get Signature
+
+> **get** **builderMode**(): [`BuilderMode`](../../core/type-aliases/BuilderMode.md)
+
+##### Returns
+
+[`BuilderMode`](../../core/type-aliases/BuilderMode.md)
+
+the current form builder mode. Builder or viewer.
+
+#### Set Signature
+
+> **set** **builderMode**(`mode`): `void`
+
+Sets the form builder mode. Builder or viewer.
+
+##### Parameters
+
+• **mode**: [`BuilderMode`](../../core/type-aliases/BuilderMode.md)
+
+##### Returns
+
+`void`
+
+***
+
 ### formAsString
 
 #### Get Signature
