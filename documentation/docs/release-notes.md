@@ -4,6 +4,15 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 3.3.0
+
+_March_ 31, 2025
+
+- Added the [useFormBuilder](/api-reference/@react-form-builder/designer/functions/useFormBuilder) hook to get and manage the Form Builder
+  from [customization](/designer-customization).
+- Now the insertion order when moving several elements corresponds to their position on the form. Previously, they were inserted in the
+  order in which the user selected them.
+
 ## 3.2.0
 
 _March_ 19, 2025
