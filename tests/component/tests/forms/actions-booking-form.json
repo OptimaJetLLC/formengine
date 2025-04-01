@@ -1,0 +1,779 @@
+{
+  "version": "1",
+  "actions": {
+    "increment": {
+      "body": "    let value = e.data[args.item] + 1\n    value = value > args.max ? args.max : value\n    e.data[args.item] = value",
+      "params": {
+        "item": "string",
+        "max": "number"
+      }
+    },
+    "decrement": {
+      "body": "    let value = e.data[args.item] - 1\n    value = value < args.min ? args.min : value\n    e.data[args.item] = value",
+      "params": {
+        "item": "string",
+        "min": "number"
+      }
+    }
+  },
+  "tooltipType": "RsTooltip",
+  "errorType": "RsErrorMessage",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "header",
+        "type": "RsHeader",
+        "props": {
+          "content": {
+            "value": "Hotel booking"
+          }
+        }
+      },
+      {
+        "key": "date",
+        "type": "RsDatePicker",
+        "props": {
+          "editable": {
+            "value": false
+          },
+          "oneTap": {
+            "value": true
+          },
+          "label": {
+            "value": "Date"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "bookingDate"
+          }
+        ]
+      },
+      {
+        "key": "rsContainer1",
+        "type": "RsContainer",
+        "props": {},
+        "children": [
+          {
+            "key": "bookButton",
+            "type": "RsButton",
+            "props": {
+              "children": {
+                "value": "Button",
+                "computeType": "localization"
+              },
+              "appearance": {
+                "value": "primary"
+              },
+              "color": {
+                "value": "green"
+              }
+            },
+            "events": {
+              "onClick": [
+                {
+                  "name": "addRow",
+                  "type": "common",
+                  "args": {
+                    "dataKey": "rooms"
+                  }
+                }
+              ]
+            },
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "bookButton"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "rooms",
+        "type": "Repeater",
+        "props": {},
+        "children": [
+          {
+            "key": "rsContainer7",
+            "type": "RsContainer",
+            "props": {},
+            "css": {
+              "any": {
+                "object": {
+                  "flexDirection": "row"
+                }
+              }
+            },
+            "children": [
+              {
+                "key": "rsContainer6",
+                "type": "RsContainer",
+                "props": {},
+                "children": [
+                  {
+                    "key": "roomType",
+                    "type": "RsDropdown",
+                    "props": {
+                      "cleanable": {
+                        "value": false
+                      },
+                      "data": {
+                        "value": [
+                          {
+                            "value": "standard",
+                            "label": "Standard"
+                          },
+                          {
+                            "value": "luxe",
+                            "label": "Luxe"
+                          }
+                        ]
+                      },
+                      "label": {
+                        "value": "Room"
+                      }
+                    },
+                    "schema": {
+                      "validations": [
+                        {
+                          "key": "required"
+                        }
+                      ]
+                    },
+                    "wrapperCss": {
+                      "any": {
+                        "object": {}
+                      }
+                    },
+                    "htmlAttributes": [
+                      {
+                        "name": "data-testid",
+                        "value": "roomType"
+                      }
+                    ]
+                  },
+                  {
+                    "key": "removeRoomButton",
+                    "type": "RsButton",
+                    "props": {
+                      "children": {
+                        "value": "Remove room",
+                        "computeType": "function",
+                        "fnSource": "    const index = (form.index ?? 0) + 1\n    return `Remove room #${index}`"
+                      }
+                    },
+                    "events": {
+                      "onClick": [
+                        {
+                          "name": "removeRow",
+                          "type": "common"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "key": "rsStaticContent1",
+                    "type": "RsStaticContent",
+                    "props": {
+                      "content": {
+                        "computeType": "localization"
+                      }
+                    },
+                    "htmlAttributes": [
+                      {
+                        "name": "data-testid",
+                        "value": "roomLabel"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "key": "rsContainer5",
+                "type": "RsContainer",
+                "props": {},
+                "children": [
+                  {
+                    "key": "rsContainer2",
+                    "type": "RsContainer",
+                    "props": {},
+                    "css": {
+                      "any": {
+                        "object": {
+                          "flexDirection": "row"
+                        }
+                      }
+                    },
+                    "children": [
+                      {
+                        "key": "minusAdultButton",
+                        "type": "RsButton",
+                        "props": {
+                          "children": {
+                            "value": "-"
+                          }
+                        },
+                        "wrapperCss": {
+                          "any": {
+                            "object": {
+                              "marginTop": "auto"
+                            }
+                          }
+                        },
+                        "events": {
+                          "onClick": [
+                            {
+                              "name": "decrement",
+                              "type": "code",
+                              "args": {
+                                "item": "adults",
+                                "min": 1
+                              }
+                            },
+                            {
+                              "name": "removeRow",
+                              "type": "common",
+                              "args": {
+                                "dataKey": "names",
+                                "min": 1,
+                                "index": -1
+                              }
+                            }
+                          ]
+                        },
+                        "htmlAttributes": [
+                          {
+                            "name": "data-testid",
+                            "value": "minusAdultButton"
+                          }
+                        ]
+                      },
+                      {
+                        "key": "adults",
+                        "type": "RsNumberFormat",
+                        "props": {
+                          "allowNegative": {
+                            "value": false
+                          },
+                          "label": {
+                            "value": "Adults"
+                          },
+                          "value": {
+                            "value": 1
+                          },
+                          "disabled": {
+                            "value": true
+                          }
+                        },
+                        "schema": {
+                          "validations": []
+                        },
+                        "wrapperCss": {
+                          "any": {
+                            "object": {
+                              "marginTop": "auto"
+                            }
+                          }
+                        },
+                        "tooltipProps": {
+                          "text": {
+                            "computeType": "function",
+                            "fnSource": "    const index = form.index ?? 0\n    return `Adults in room #${index + 1}`"
+                          }
+                        },
+                        "htmlAttributes": [
+                          {
+                            "name": "data-testid",
+                            "value": "adults"
+                          }
+                        ]
+                      },
+                      {
+                        "key": "plusAdultButton",
+                        "type": "RsButton",
+                        "props": {
+                          "children": {
+                            "value": "+"
+                          }
+                        },
+                        "wrapperCss": {
+                          "any": {
+                            "object": {
+                              "marginTop": "auto"
+                            }
+                          }
+                        },
+                        "events": {
+                          "onClick": [
+                            {
+                              "name": "increment",
+                              "type": "code",
+                              "args": {
+                                "item": "adults",
+                                "max": 5
+                              }
+                            },
+                            {
+                              "name": "addRow",
+                              "type": "common",
+                              "args": {
+                                "dataKey": "names"
+                              }
+                            }
+                          ]
+                        },
+                        "htmlAttributes": [
+                          {
+                            "name": "data-testid",
+                            "value": "plusAdultButton"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "key": "rsContainer4",
+                    "type": "RsContainer",
+                    "props": {},
+                    "css": {
+                      "any": {
+                        "object": {
+                          "flexDirection": "row"
+                        }
+                      }
+                    },
+                    "children": [
+                      {
+                        "key": "minusChildButton",
+                        "type": "RsButton",
+                        "props": {
+                          "children": {
+                            "value": "-"
+                          }
+                        },
+                        "wrapperCss": {
+                          "any": {
+                            "object": {
+                              "marginTop": "auto"
+                            }
+                          }
+                        },
+                        "events": {
+                          "onClick": [
+                            {
+                              "name": "decrement",
+                              "type": "code",
+                              "args": {
+                                "item": "children",
+                                "min": 0
+                              }
+                            },
+                            {
+                              "name": "removeRow",
+                              "type": "common",
+                              "args": {
+                                "dataKey": "childrenAges",
+                                "index": -1
+                              }
+                            }
+                          ]
+                        },
+                        "htmlAttributes": [
+                          {
+                            "name": "data-testid",
+                            "value": "minusChildrenButton"
+                          }
+                        ]
+                      },
+                      {
+                        "key": "children",
+                        "type": "RsNumberFormat",
+                        "props": {
+                          "allowNegative": {
+                            "value": false
+                          },
+                          "label": {
+                            "value": "Children"
+                          },
+                          "value": {
+                            "value": 0
+                          },
+                          "disabled": {
+                            "value": true
+                          }
+                        },
+                        "schema": {
+                          "validations": []
+                        },
+                        "htmlAttributes": [
+                          {
+                            "name": "data-testid",
+                            "value": "children"
+                          }
+                        ]
+                      },
+                      {
+                        "key": "plusChildButton",
+                        "type": "RsButton",
+                        "props": {
+                          "children": {
+                            "value": "+"
+                          }
+                        },
+                        "wrapperCss": {
+                          "any": {
+                            "object": {
+                              "marginTop": "auto"
+                            }
+                          }
+                        },
+                        "events": {
+                          "onClick": [
+                            {
+                              "name": "increment",
+                              "type": "code",
+                              "args": {
+                                "item": "children",
+                                "max": 7
+                              }
+                            },
+                            {
+                              "name": "addRow",
+                              "type": "common",
+                              "args": {
+                                "dataKey": "childrenAges",
+                                "max": 7
+                              }
+                            }
+                          ]
+                        },
+                        "htmlAttributes": [
+                          {
+                            "name": "data-testid",
+                            "value": "plusChildButton"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "key": "rsContainer3",
+                    "type": "RsContainer",
+                    "props": {},
+                    "css": {
+                      "any": {
+                        "object": {
+                          "flexDirection": "column"
+                        }
+                      }
+                    },
+                    "children": [
+                      {
+                        "key": "childrenAges",
+                        "type": "Repeater",
+                        "props": {},
+                        "children": [
+                          {
+                            "key": "childAge",
+                            "type": "RsDropdown",
+                            "props": {
+                              "data": {
+                                "value": [
+                                  {
+                                    "value": "none",
+                                    "label": "Age needed"
+                                  },
+                                  {
+                                    "value": "0",
+                                    "label": "0 years old"
+                                  },
+                                  {
+                                    "value": "1",
+                                    "label": "1 year old"
+                                  },
+                                  {
+                                    "value": "2",
+                                    "label": "2 years old"
+                                  },
+                                  {
+                                    "value": "3",
+                                    "label": "3 years old"
+                                  },
+                                  {
+                                    "value": "4",
+                                    "label": "4 years old"
+                                  },
+                                  {
+                                    "value": "5",
+                                    "label": "5 years old"
+                                  },
+                                  {
+                                    "value": "6",
+                                    "label": "6 years old"
+                                  },
+                                  {
+                                    "value": "7",
+                                    "label": "7 years old"
+                                  },
+                                  {
+                                    "value": "8",
+                                    "label": "8 years old"
+                                  },
+                                  {
+                                    "value": "9",
+                                    "label": "9 years old"
+                                  },
+                                  {
+                                    "value": "10",
+                                    "label": "10 years old"
+                                  },
+                                  {
+                                    "value": "11",
+                                    "label": "11 years old"
+                                  },
+                                  {
+                                    "value": "12",
+                                    "label": "12 years old"
+                                  },
+                                  {
+                                    "value": "13",
+                                    "label": "13 years old"
+                                  },
+                                  {
+                                    "value": "14",
+                                    "label": "14 years old"
+                                  },
+                                  {
+                                    "value": "15",
+                                    "label": "15 years old"
+                                  },
+                                  {
+                                    "value": "16",
+                                    "label": "16 years old"
+                                  },
+                                  {
+                                    "value": "17",
+                                    "label": "17 years old"
+                                  }
+                                ]
+                              },
+                              "cleanable": {
+                                "value": false
+                              },
+                              "value": {
+                                "value": "none"
+                              },
+                              "label": {
+                                "value": ""
+                              }
+                            },
+                            "schema": {
+                              "validations": [
+                                {
+                                  "key": "code",
+                                  "args": {
+                                    "code": "  return value !== 'none'"
+                                  }
+                                }
+                              ]
+                            },
+                            "css": {
+                              "any": {
+                                "string": ""
+                              }
+                            },
+                            "tooltipProps": {
+                              "text": {
+                                "computeType": "function",
+                                "fnSource": "    const index = form.index ?? 0\n    const date = form.rootData.date?.toISOString() ?? 'unknown'\n    const room = form.parentData?.roomType ?? 'unknown'\n    return `Child #${index + 1} in room ${room}, date: ${date}`"
+                              }
+                            },
+                            "htmlAttributes": [
+                              {
+                                "name": "data-testid",
+                                "value": "childAge"
+                              }
+                            ]
+                          }
+                        ],
+                        "css": {
+                          "any": {
+                            "object": {},
+                            "string": "  flex-wrap: wrap;\n  border: 1px silver dashed;"
+                          }
+                        },
+                        "wrapperCss": {
+                          "any": {
+                            "object": {
+                              "flexDirection": "row"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "wrapperCss": {
+                      "any": {
+                        "object": {
+                          "marginTop": "auto"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "key": "names",
+            "type": "Repeater",
+            "props": {
+              "value": {
+                "value": [
+                  {}
+                ]
+              }
+            },
+            "children": [
+              {
+                "key": "rsContainer9",
+                "type": "RsContainer",
+                "props": {},
+                "css": {
+                  "any": {
+                    "object": {
+                      "flexDirection": "row"
+                    },
+                    "string": "  border: 1px orchid dashed;"
+                  }
+                },
+                "children": [
+                  {
+                    "key": "firstName",
+                    "type": "RsInput",
+                    "props": {
+                      "label": {
+                        "value": "First name"
+                      }
+                    },
+                    "schema": {
+                      "validations": [
+                        {
+                          "key": "required"
+                        }
+                      ],
+                      "autoValidate": false
+                    },
+                    "htmlAttributes": [
+                      {
+                        "name": "data-testid",
+                        "value": "firstName"
+                      }
+                    ]
+                  },
+                  {
+                    "key": "lastName",
+                    "type": "RsInput",
+                    "props": {
+                      "label": {
+                        "value": "Last name"
+                      }
+                    },
+                    "schema": {
+                      "validations": [
+                        {
+                          "key": "required"
+                        }
+                      ]
+                    },
+                    "htmlAttributes": [
+                      {
+                        "name": "data-testid",
+                        "value": "lastName"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "css": {
+          "any": {
+            "object": {
+              "flexDirection": "column"
+            },
+            "string": "  border: 1px darkorange dashed;"
+          }
+        }
+      },
+      {
+        "key": "validateButton",
+        "type": "RsButton",
+        "props": {
+          "appearance": {
+            "value": "primary"
+          },
+          "children": {
+            "value": "Validate"
+          }
+        },
+        "events": {
+          "onClick": [
+            {
+              "name": "validate",
+              "type": "common"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "bookButton": {
+        "component": {
+          "children": " Book a room"
+        }
+      },
+      "rsStaticContent1": {
+        "component": {
+          "content": "Room {$roomType}"
+        }
+      }
+    },
+    "de-DE": {
+      "bookButton": {
+        "component": {
+          "children": " Zimmer buchen"
+        }
+      },
+      "rsStaticContent1": {
+        "component": {
+          "content": "Zimmer {$roomType}"
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    },
+    {
+      "code": "de",
+      "dialect": "DE",
+      "name": "Deutsch",
+      "description": "German",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
