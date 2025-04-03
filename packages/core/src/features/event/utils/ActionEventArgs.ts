@@ -44,7 +44,7 @@ export class ActionEventArgs {
     readonly renderedProps: Record<string, any>,
   ) {
     this.index = sender.nearestIndex
-    const indexExists = typeof this.index !== undefined
+    const indexExists = typeof this.index === 'number'
     const componentData = indexExists
       ? sender.dataRootProvider?.dataRoot ?? this.store.formData
       : this.store.formData

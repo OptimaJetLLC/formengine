@@ -291,7 +291,7 @@ export class ComponentData implements IFormData {
    * @returns the object to read and modify parent data (available for array elements).
    */
   get parentData() {
-    const indexExists = typeof this.nearestIndex !== undefined
+    const indexExists = typeof this.nearestIndex === 'number'
     if (!indexExists) return undefined
     return this.parent?.data ?? this.rootData
   }

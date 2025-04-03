@@ -69,7 +69,7 @@ const createActionArgsData = () => {
     valueBeforeChange: 'root form input data',
     value: 'Mark',
     data: rootFormExpected,
-    parentData: rootFormExpected,
+    parentData: undefined,
     rootData: rootFormExpected,
   }])
 
@@ -79,7 +79,7 @@ const createActionArgsData = () => {
     valueBeforeChange: 'template input',
     value: 'Charlie',
     data: rootTemplateData,
-    parentData: rootTemplateData,
+    parentData: undefined,
     rootData: rootTemplateData,
   }])
 
@@ -89,7 +89,7 @@ const createActionArgsData = () => {
     valueBeforeChange: 'parent template value',
     value: 'Columbus',
     data: rootParentTemplateData,
-    parentData: rootParentTemplateData,
+    parentData: undefined,
     rootData: rootParentTemplateData,
   }])
 
@@ -101,7 +101,7 @@ const createActionArgsData = () => {
     valueBeforeChange: 'input in root slot 1',
     value: 'Castillo',
     data: inputInRootSlot1Data,
-    parentData: inputInRootSlot1Data,
+    parentData: undefined,
     rootData: inputInRootSlot1Data,
   }])
 
@@ -137,7 +137,7 @@ const createActionArgsData = () => {
     valueBeforeChange: 'template input',
     value: 'George',
     data: repeaterTemplateData,
-    parentData: repeaterTemplateData,
+    parentData: undefined,
     rootData: repeaterTemplateData,
   }])
 
@@ -147,7 +147,7 @@ const createActionArgsData = () => {
     valueBeforeChange: 'parent template value',
     value: 'Olivia',
     data: repeaterParentTemplateData,
-    parentData: repeaterParentTemplateData,
+    parentData: undefined,
     rootData: repeaterParentTemplateData,
   }])
 
@@ -248,7 +248,7 @@ const createActionArgsData = () => {
     valueBeforeChange: 'template input',
     value: 'Tammy',
     data: childRepeaterTemplateData,
-    parentData: childRepeaterTemplateData,
+    parentData: undefined,
     rootData: childRepeaterTemplateData,
   }])
 
@@ -258,7 +258,7 @@ const createActionArgsData = () => {
     valueBeforeChange: 'parent template value',
     value: 'Elena',
     data: childRepeaterParentTemplateData,
-    parentData: childRepeaterParentTemplateData,
+    parentData: undefined,
     rootData: childRepeaterParentTemplateData,
   }])
 
@@ -325,5 +325,14 @@ describe('ActionEventArgs data tests', function () {
       }
 
       expect(JSON.stringify(actualActionEventArgs.rootData)).toEqual(JSON.stringify(expected.rootData))
+
+      const {sender} = actualActionEventArgs
+      // check that the sender index is the same as the expected index
+      expect(sender.nearestIndex).toBe(actualActionEventArgs.index)
+      // if the parentData is not defined, check that the sender parentData is undefined
+      if (typeof expected.parentData === 'undefined') {
+        expect(sender.parentData).toBeUndefined()
+      }
+      expect(JSON.stringify(sender.rootData)).toBe(JSON.stringify(actualActionEventArgs.rootData))
     })
 })
