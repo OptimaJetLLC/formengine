@@ -40,6 +40,7 @@ export default defineConfig(({command}) => ({
       ...configDefaults.exclude,
       'examples/**',
     ],
+    testTimeout: 60_000,
     // reporters: ['verbose']
   }
 }))

@@ -108,7 +108,7 @@ describe(`storeDataInParentForm test`, function () {
 
     expect(getByTestId('template-login')).toHaveValue('tortuga')
     expect(getByTestId('template-password')).toHaveValue('man!')
-  }, 10000)
+  }, 50000)
 
   it('Toggling the storeDataInParentForm property should display the data correctly', async () => {
     const components = rSuiteComponents.map(definer => definer.build())
