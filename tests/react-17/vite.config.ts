@@ -2,7 +2,7 @@ import {defineConfig, mergeConfig} from 'vite'
 
 import base from '../../vite.config'
 
-const testDir = '../component/tests/**/repeater*.{test,spec}.?(c|m)[jt]s?(x)'
+const testDir = '../component/tests/**/*.{test,spec}.?(c|m)[jt]s?(x)'
 const configDir = '../component/config/setup.ts'
 
 // TODO move common to base config
