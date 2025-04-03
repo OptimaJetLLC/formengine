@@ -1,0 +1,57 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "innerTemplate",
+        "type": "Template:action-event-args-template",
+        "props": {},
+        "children": [
+          {
+            "key": "parentTemplateInput",
+            "type": "RsInput",
+            "props": {
+              "value": {
+                "value": "parent template value"
+              }
+            },
+            "slot": "templateSlot",
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "parentTemplateInput"
+              }
+            ],
+            "events": {
+              "onChange": [
+                {
+                  "name": "checkDataProps",
+                  "type": "custom"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "key": "parentTemplateSlot",
+        "type": "Slot",
+        "props": {}
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

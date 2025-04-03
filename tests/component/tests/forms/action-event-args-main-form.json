@@ -1,0 +1,221 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rootFormInput",
+        "type": "RsInput",
+        "props": {
+          "value": {
+            "value": "root form input data"
+          },
+          "label": {
+            "value": "Root input"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "rootFormInput"
+          }
+        ],
+        "events": {
+          "onChange": [
+            {
+              "name": "checkDataProps",
+              "type": "custom"
+            }
+          ]
+        }
+      },
+      {
+        "key": "templateInRoot",
+        "type": "Template:action-event-args-parent-template",
+        "props": {},
+        "children": [
+          {
+            "key": "inputInRootSlot1",
+            "type": "RsInput",
+            "props": {
+              "value": {
+                "value": "input in root slot 1"
+              }
+            },
+            "slot": "parentTemplateSlot",
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "inputInRootSlot1"
+              }
+            ],
+            "events": {
+              "onChange": [
+                {
+                  "name": "checkDataProps",
+                  "type": "custom"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "key": "rootRepeater",
+        "type": "Repeater",
+        "props": {
+          "value": {
+            "value": [
+              {},
+              {}
+            ]
+          }
+        },
+        "children": [
+          {
+            "key": "repeaterInput",
+            "type": "RsInput",
+            "props": {
+              "value": {
+                "value": "repeater input data"
+              },
+              "label": {
+                "value": "Repeater Input"
+              }
+            },
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "repeaterInput"
+              }
+            ],
+            "events": {
+              "onChange": [
+                {
+                  "name": "checkDataProps",
+                  "type": "custom"
+                }
+              ]
+            }
+          },
+          {
+            "key": "templateInRepeater",
+            "type": "Template:action-event-args-parent-template",
+            "props": {},
+            "children": [
+              {
+                "key": "inputInRootSlot2",
+                "type": "RsInput",
+                "props": {
+                  "value": {
+                    "value": "input in root slot 2"
+                  }
+                },
+                "slot": "parentTemplateSlot",
+                "htmlAttributes": [
+                  {
+                    "name": "data-testid",
+                    "value": "inputInRootSlot2"
+                  }
+                ],
+                "events": {
+                  "onChange": [
+                    {
+                      "name": "checkDataProps",
+                      "type": "custom"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "key": "childRepeater",
+            "type": "Repeater",
+            "props": {
+              "value": {
+                "value": [
+                  {},
+                  {},
+                  {}
+                ]
+              }
+            },
+            "children": [
+              {
+                "key": "childRepeaterInput",
+                "type": "RsInput",
+                "props": {
+                  "value": {
+                    "value": "child data"
+                  },
+                  "label": {
+                    "value": "Child repeater Input"
+                  }
+                },
+                "htmlAttributes": [
+                  {
+                    "name": "data-testid",
+                    "value": "childRepeaterInput"
+                  }
+                ],
+                "events": {
+                  "onChange": [
+                    {
+                      "name": "checkDataProps",
+                      "type": "custom"
+                    }
+                  ]
+                }
+              },
+              {
+                "key": "templateInChildRepeater",
+                "type": "Template:action-event-args-parent-template",
+                "props": {},
+                "children": [
+                  {
+                    "key": "inputInRootSlot3",
+                    "type": "RsInput",
+                    "props": {
+                      "value": {
+                        "value": "input in root slot 3"
+                      }
+                    },
+                    "slot": "parentTemplateSlot",
+                    "htmlAttributes": [
+                      {
+                        "name": "data-testid",
+                        "value": "inputInRootSlot3"
+                      }
+                    ],
+                    "events": {
+                      "onChange": [
+                        {
+                          "name": "checkDataProps",
+                          "type": "custom"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

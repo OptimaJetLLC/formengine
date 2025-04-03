@@ -1,0 +1,52 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "templateInput",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Template input"
+          },
+          "value": {
+            "value": "template input"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "templateInput"
+          }
+        ],
+        "events": {
+          "onChange": [
+            {
+              "name": "checkDataProps",
+              "type": "custom"
+            }
+          ]
+        }
+      },
+      {
+        "key": "templateSlot",
+        "type": "Slot",
+        "props": {}
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
