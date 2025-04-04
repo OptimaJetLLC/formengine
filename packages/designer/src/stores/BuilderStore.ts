@@ -301,7 +301,7 @@ export class BuilderStore implements IFormBuilder {
   private readonly builderI18n: BuilderI18n
   formBuilderLanguage: Language
   localizationLanguage: Language
-  private readonly loadedLanguages: Record<string, FormBuilderI18nData> = {}
+  readonly #loadedLanguages: Record<string, FormBuilderI18nData> = {}
 
   currentEditable?: EditableProperty | EditableAction | CustomValidationCode | JsonCode
   lastSaveTime = new Date()
@@ -364,12 +364,12 @@ export class BuilderStore implements IFormBuilder {
     this.localizationLanguage = this.formBuilderLanguage
 
     const translationResolver: TranslationResolver = async language => {
-      const loaded = this.loadedLanguages[language]
+      const loaded = this.#loadedLanguages[language]
       if (loaded) return loaded.data
 
       const found = findLanguage(this.availableLanguages, language) ?? this.defaultLanguage
       const i18nData = await this.i18n.getData(found.fullCode)
-      this.loadedLanguages[language] = i18nData
+      this.#loadedLanguages[language] = i18nData
       return i18nData.data
     }
     this.builderI18n = new BuilderI18n(this.defaultLanguage, translationResolver)
@@ -466,7 +466,7 @@ export class BuilderStore implements IFormBuilder {
    * @returns the current locale for the components.
    */
   get componentsLocale() {
-    return this.loadedLanguages[this.formBuilderLanguage.fullCode]?.componentsLocale
+    return this.#loadedLanguages[this.formBuilderLanguage.fullCode]?.componentsLocale
   }
 
   /**
