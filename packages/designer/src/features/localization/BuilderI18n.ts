@@ -1,13 +1,15 @@
 import type {Language} from '@react-form-builder/core'
+import {globalDefaultLanguage} from '@react-form-builder/core'
 import i18next from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import resourcesToBackend from 'i18next-resources-to-backend'
 import {initReactI18next} from 'react-i18next'
+import type {LanguageFullCode} from './languageUtils'
 
 /**
  * A callback function that returns JSON with a translation by the specified language.
  */
-export type TranslationResolver = (language: string) => Promise<any>
+export type TranslationResolver = (language: LanguageFullCode) => Promise<any>
 
 /**
  * I18n for the Form Builder.
@@ -21,19 +23,30 @@ export class BuilderI18n {
    */
   constructor(defaultLanguage: Language, translationResolver: TranslationResolver) {
     i18next
-      .use(resourcesToBackend((language, _, callback) => {
-        translationResolver(language)
+      .use(resourcesToBackend((language, _ns, callback) => {
+        translationResolver(<LanguageFullCode>language)
           .then(resources => callback(null, resources))
-          .catch(error => callback(error, null))
+          .catch(error => {
+            console.error(error)
+            callback(error, null)
+          })
       }) as any)
       .use(LanguageDetector)
       .use(initReactI18next)
       .init({
-          fallbackLng: defaultLanguage.fullCode,
+          lng: defaultLanguage.fullCode,
+          fallbackLng: [globalDefaultLanguage.fullCode],
           load: 'currentOnly',
           interpolation: {
             escapeValue: false,
           },
+          missingKeyNoValueFallbackToKey: false,
+          saveMissing: process.env.NODE_ENV !== 'production',
+          missingKeyHandler: (lng, ns, key, _fallbackValue) => {
+            if (process.env.FORM_BUILDER_I18N_DISABLE_LOGGING !== 'true') {
+              console.warn(`Missing translation: ${key}`, lng, ns)
+            }
+          }
         },
         this.onLoadError.bind(this)
       )

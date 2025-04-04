@@ -835,6 +835,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/variables/globalDefaultLanguage",
+            "label": "globalDefaultLanguage"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/variables/htmlAttributes",
             "label": "htmlAttributes"
           },

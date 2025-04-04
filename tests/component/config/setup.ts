@@ -32,6 +32,8 @@ beforeAll(() => {
     return canvas.getContext('2d')
   })
 
+  // disable i18n logging
+  process.env.FORM_BUILDER_I18N_DISABLE_LOGGING = 'true'
 })
 
 configure({asyncUtilTimeout: 5000}) // 5 seconds

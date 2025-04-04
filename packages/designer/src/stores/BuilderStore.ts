@@ -31,7 +31,7 @@ import type {CodeActionEditorData, CodeActionEditorProps} from '../features/anno
 import type {TranslationResolver} from '../features/localization/BuilderI18n'
 import {BuilderI18n} from '../features/localization/BuilderI18n'
 import type {FormBuilderI18nData} from '../features/localization/FormBuilderLanguage'
-import {builtInLanguages, findLanguage} from '../features/localization/languageUtils'
+import {builtInLanguages, loadTranslation} from '../features/localization/languageUtils'
 import type {PanelPlacement} from '../features/ui/PanelPlacement'
 import type {PromptDialogProps} from '../features/ui/PromptDialogProps'
 import {annotationResolver} from '../features/validation'
@@ -367,10 +367,13 @@ export class BuilderStore implements IFormBuilder {
       const loaded = this.#loadedLanguages[language]
       if (loaded) return loaded.data
 
-      const found = findLanguage(this.availableLanguages, language) ?? this.defaultLanguage
-      const i18nData = await this.i18n.getData(found.fullCode)
-      this.#loadedLanguages[language] = i18nData
-      return i18nData.data
+      const i18nData = await loadTranslation(this.i18n, language)
+
+      if (i18nData) {
+        this.#loadedLanguages[language] = i18nData
+      }
+
+      return this.#loadedLanguages[language].data
     }
     this.builderI18n = new BuilderI18n(this.defaultLanguage, translationResolver)
 
@@ -443,8 +446,10 @@ export class BuilderStore implements IFormBuilder {
    * @returns the i18n data of the form builder.
    */
   get i18n() {
-    return this.#props.i18n && this.#props.i18n.languages.length > 0
-      ? this.#props.i18n
+    const propsI18N = this.#props.i18n
+
+    return propsI18N && propsI18N.languages.length > 0
+      ? propsI18N
       : builtInLanguages
   }
 

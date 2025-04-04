@@ -1,6 +1,8 @@
-import {BiDi, Language} from '@react-form-builder/core'
+import {BiDi, globalDefaultLanguage, Language} from '@react-form-builder/core'
+import {merge} from 'lodash-es'
 import {arEG, deDE, enUS, esES, faIR, frFR, itIT, zhCN} from 'rsuite/esm/locales/index.js'
-import type {FormBuilderI18n} from './FormBuilderLanguage'
+import enUsTranslation from '../../../public/locales/en-US.json'
+import type {FormBuilderI18n, FormBuilderI18nData} from './FormBuilderLanguage'
 
 const rSuiteLocales: Record<string, any> = {
   'ar-EG': arEG,
@@ -15,9 +17,14 @@ const rSuiteLocales: Record<string, any> = {
 
 export const defaultComponentsLocale = enUS
 
+const defaultData: FormBuilderI18nData = {
+  data: enUsTranslation,
+  componentsLocale: defaultComponentsLocale
+}
+
 export const builtInLanguages: FormBuilderI18n = {
   languages: [
-    new Language('en', 'US', 'English', 'American English'),
+    globalDefaultLanguage,
     new Language('de', 'DE', 'Deutsch', 'German'),
     new Language('ar', 'EG', 'عرب', 'Arabic (Egypt)', BiDi.RTL),
     new Language('it', 'IT', 'Italiano', 'Italian'),
@@ -26,6 +33,7 @@ export const builtInLanguages: FormBuilderI18n = {
     new Language('es', 'ES', 'Español', 'Spanish'),
     new Language('zh', 'CN', '中文', 'Chinese')
   ],
+
   getData: async languageFullCode => {
     const data = await import(`../../../public/locales/${languageFullCode}.json`)
     return {
@@ -40,23 +48,60 @@ function findLanguageByCode(availableLanguages: Language[], code: string) {
 }
 
 /**
+ * Full language code.
+ */
+export type LanguageFullCode = `${string}-${string}`
+
+/**
  * Finds {@link Language} by language code.
- * @param availableLanguages the available languages.
+ * @param i18n FormBuilderI18n.
  * @param language the language code.
  * @returns found {@link Language}, or the default Language if no Language exists for the language code.
  */
-export function findLanguage(availableLanguages: Language[], language: string): Language | undefined {
-  const codes = language.split('-')
+function findLanguage(i18n: FormBuilderI18n, language: LanguageFullCode): Language | undefined {
+  const [code, dialect] = language.split('-')
+  const {languages} = i18n
 
-  if (codes.length > 1) {
-    const code = codes[0]
-    const dialect = codes[1]
-    const langByFullCode = availableLanguages
+  if (dialect) {
+    const langByFullCode = languages
       .find(language => language.code === code && language.dialect === dialect)
     if (langByFullCode) return langByFullCode
-    const languageByCode = findLanguageByCode(availableLanguages, code)
+    const languageByCode = findLanguageByCode(languages, code)
     if (languageByCode) return languageByCode
   }
 
-  return findLanguageByCode(availableLanguages, language)
+  return findLanguageByCode(languages, language)
+}
+
+const loadLanguage = async (i18n: FormBuilderI18n, language: LanguageFullCode) => {
+  try {
+    return await i18n.getData(language)
+  } catch (error) {
+    if (process.env.FORM_BUILDER_I18N_DISABLE_LOGGING !== 'true') {
+      console.warn(`Error loading language ${language}:`, error)
+    }
+  }
+}
+
+/**
+ * Loads the translation for the specified language.
+ * @param i18n the i18n object.
+ * @param language the language code.
+ * @returns the translation data.
+ */
+export const loadTranslation = async (i18n: FormBuilderI18n,
+                                      language: LanguageFullCode): Promise<FormBuilderI18nData> => {
+  const found = [defaultData]
+
+  if (i18n !== builtInLanguages && findLanguage(builtInLanguages, language)) {
+    const builtin = await loadLanguage(builtInLanguages, language)
+    if (builtin) found.push(builtin)
+  }
+
+  const user = await loadLanguage(i18n, language)
+  if (user) found.push(user)
+
+  // we need to create a copy of the objects to prevent them from being modified
+  const items = found.map(item => JSON.parse(JSON.stringify(item)))
+  return merge({}, ...items)
 }

@@ -6,6 +6,7 @@ import type {ActionData, ActionDefinition, ActionEventArgs, ActionType} from '..
 import {createActionValuesFromObject} from '../features/event'
 import {commonActions} from '../features/event/consts/actions'
 import type {IFormViewer} from '../features/form-viewer'
+import {globalDefaultLanguage} from '../features/localization/default'
 import {localizeErrorMessage, localizeProperties} from '../features/localization/localizer'
 import {Language} from '../features/localization/types'
 import {createTemplateModel} from '../features/template'
@@ -66,8 +67,6 @@ function reduceTree<U extends object, T, K extends keyof U>(tree: Tree<U, K>,
   })
   return accumulator
 }
-
-const globalDefaultLanguage = new Language('en', 'US', 'English', 'American English')
 
 /**
  * The root data context for the form viewer.

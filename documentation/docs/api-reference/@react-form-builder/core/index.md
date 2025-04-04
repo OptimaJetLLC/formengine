@@ -174,6 +174,7 @@
 - [emptyComponentStore](variables/emptyComponentStore.md)
 - [errorMessageModel](variables/errorMessageModel.md)
 - [event](variables/event.md)
+- [globalDefaultLanguage](variables/globalDefaultLanguage.md)
 - [htmlAttributes](variables/htmlAttributes.md)
 - [internalErrorModel](variables/internalErrorModel.md)
 - [key](variables/key.md)

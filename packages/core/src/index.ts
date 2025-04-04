@@ -155,3 +155,4 @@ export type {InsertRestrictionFn} from './features/define/utils/InsertRestrictio
 export type {IComponentState} from './stores/IComponentState'
 export type {ComponentStateFactory} from './stores/Store'
 export {getChildren} from './utils/getChildren'
+export {globalDefaultLanguage} from './features/localization/default'
