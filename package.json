@@ -20,7 +20,7 @@
     "docs:build": "npx lerna run build --scope=@react-form-builder/docs",
     "test": "npx lerna run test",
     "test:module": "npx lerna run test:module",
-    "test:component": "npx lerna run test:component",
+    "test:component": "npx lerna run test:component --concurrency=1",
     "test:e2e": "npx lerna run test:e2e --scope=@react-form-builder/tests-e2e",
     "clean": "lerna exec -- npx rimraf node_modules dist build && rimraf node_modules",
     "check:circular-deps": "npx madge@6.1.0 --extensions ts --circular .",
