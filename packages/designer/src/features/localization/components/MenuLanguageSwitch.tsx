@@ -9,10 +9,12 @@ import {renderLanguageItem} from './LocalizationPicker'
 const RawMenuLanguageSwitch = () => {
   const {t} = useTranslation()
   const builderStore = useBuilderStore()
+  const currentLanguageCode = builderStore.formBuilderLanguage.fullCode
 
   const children = builderStore.availableLanguages
     .map(language => {
       return <Dropdown.Item key={language.fullCode} eventKey={language.fullCode}
+                            active={currentLanguageCode === language.fullCode}
                             onSelect={() => builderStore.changeLanguage(language)}>
         {renderLanguageItem(language)}
       </Dropdown.Item>

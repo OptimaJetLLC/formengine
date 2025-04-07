@@ -78,4 +78,31 @@ describe(`Changing the designer's language`, function () {
     const selector = foundItem.id
     await waitFor(() => expect(container.querySelector(`#${selector}`)).toHaveTextContent('Auswählen'))
   })
+
+  it('Current language is set as active', async () => {
+    const {findByTestId, container} = render(<FormBuilder view={view} getForm={getForm}/>)
+
+    const htmlElement = container.parentElement?.parentElement
+    const currentLang = htmlElement?.getAttribute('lang') ?? 'en-US'
+
+    // ok, the form is rendered
+    expect(await findByTestId('test-button')).toBeInTheDocument()
+
+    const enItem = container.querySelector('li[data-event-key="en-US"]')
+    if (!enItem) throw new Error('Language "en-US" not found')
+
+    const deItem = container.querySelector('li[data-event-key="de-DE"]')
+    if (!deItem) throw new Error('Language "de-DE" not found')
+
+    const currentLangItem = currentLang === 'en-US' ? enItem : deItem
+    const nextLangItem = currentLang === 'en-US' ? deItem : enItem
+    await waitFor(() => expect(currentLangItem).toHaveAttribute('aria-checked', 'true'))
+
+    // let's change the language
+    fireEvent.click(nextLangItem)
+
+    // and make sure the current language is changed
+    await waitFor(() => expect(currentLangItem).not.toHaveAttribute('aria-checked', 'true'))
+    await waitFor(() => expect(nextLangItem).toHaveAttribute('aria-checked', 'true'))
+  })
 })
