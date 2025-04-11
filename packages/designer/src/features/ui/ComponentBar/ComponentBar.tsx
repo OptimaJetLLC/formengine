@@ -1,8 +1,9 @@
 import {css, cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import type {Model, ComponentData} from '@react-form-builder/core'
-import {ComponentDataProvider, namedObserver} from '@react-form-builder/core'
-import {useState} from 'react'
+import type {ComponentData, IDisposable, Model} from '@react-form-builder/core'
+import {ComponentDataProvider, namedObserver, useMultipleDisposable} from '@react-form-builder/core'
+import {useCallback, useState} from 'react'
+import type {BuilderStore} from '../../../stores/BuilderStore'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {transformComponentNameToCssClass} from '../../../utils/transformComponentNameToCssClass'
 import {AddedComponent} from '../../dnd'
@@ -96,13 +97,33 @@ interface AddedComponentsProps extends DraggableProps {
   definitions: Model[]
 }
 
+class DisposableComponents implements IDisposable {
+
+  readonly data: ComponentData[]
+
+  constructor(builderStore: BuilderStore, models: Model[]) {
+    this.data = models.map(model => createAddedComponentData(model, builderStore))
+  }
+
+  dispose() {
+    this.data.forEach(componentData => {
+      componentData.dispose()
+    })
+  }
+}
+
 const RawAddedComponents = ({definitions, ...componentProps}: AddedComponentsProps) => {
   const builderStore = useBuilderStore()
 
+  const factory = useCallback(() => {
+    return new DisposableComponents(builderStore, definitions)
+  }, [builderStore, definitions])
+
+  const disposableComponents = useMultipleDisposable(factory)
+
   return (
     <ControlsGroup>
-      {definitions.map(model => {
-        const componentData = createAddedComponentData(model, builderStore)
+      {disposableComponents.data.map(componentData => {
         return (
           <ComponentDataProvider key={componentData.id} value={componentData}>
             <AddedComponent {...componentProps}/>

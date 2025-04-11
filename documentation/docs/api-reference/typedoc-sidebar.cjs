@@ -1211,6 +1211,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/useMultipleDisposable",
+            "label": "useMultipleDisposable"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/functions/useStore",
             "label": "useStore"
           },

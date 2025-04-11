@@ -251,6 +251,7 @@
 - [useComponentData](functions/useComponentData.md)
 - [useDisposable](functions/useDisposable.md)
 - [useErrorModel](functions/useErrorModel.md)
+- [useMultipleDisposable](functions/useMultipleDisposable.md)
 - [useStore](functions/useStore.md)
 - [useTooltipType](functions/useTooltipType.md)
 - [useViewerProps](functions/useViewerProps.md)
