@@ -7,7 +7,7 @@ const RawDraggableTreeNode = () => {
   const [_, selectionHandlers, selectionClassName] = useSelection()
   return (
     <Draggable {...selectionHandlers} isTree={true} style={{width: '100%'}}>
-      <TreeNode className={selectionClassName}/>
+      <TreeNode className={selectionClassName} componentDataViewer={DraggableTreeNode}/>
     </Draggable>
   )
 }

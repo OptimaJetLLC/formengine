@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import {ComponentTree, findTreeElementDepth, namedObserver, useComponentData} from '@react-form-builder/core'
 import {ArrowDownLine as ArrowDownLineIcon, ArrowRightLine as ArrowRightLineIcon, Icon} from '@rsuite/icons'
+import type {ComponentType} from 'react'
 import {useCallback, useEffect, useRef, useState} from 'react'
 import scrollIntoView from 'scroll-into-view-if-needed'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
@@ -16,9 +17,14 @@ export interface TreeNodeProps {
    * The CSS class name.
    */
   className: string
+
+  /**
+   * The component displaying an item.
+   */
+  componentDataViewer?: ComponentType
 }
 
-const RawTreeNode = ({className}: TreeNodeProps) => {
+const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
   const componentData = useComponentData()
   const {expanded: expandedNodes, viewer} = useBuilderStore()
   const [hovered, setHovered] = useState(false)
@@ -60,7 +66,7 @@ const RawTreeNode = ({className}: TreeNodeProps) => {
         <label>{componentData.model.name}</label>
         {hovered && <Toolbar compact/>}
       </SNodeItem>
-      {expanded && componentData.children && <ComponentTree data={componentData.children}/>}
+      {expanded && componentData.children && <ComponentTree data={componentData.children} componentDataViewer={componentDataViewer}/>}
     </>
   )
 }
