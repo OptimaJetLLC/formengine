@@ -1,0 +1,55 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "testInput",
+        "type": "RsInput",
+        "props": {
+          "value": {
+            "value": "ok"
+          }
+        }
+      },
+      {
+        "key": "repeater1",
+        "type": "Repeater",
+        "props": {
+          "value": {
+            "value": [
+              {},
+              {},
+              {}
+            ]
+          }
+        },
+        "children": [
+          {
+            "key": "staticContent",
+            "type": "StoreStaticContext",
+            "props": {
+              "content": {
+                "computeType": "function",
+                "fnSource": "  return `Element #${(form.index ?? 0) + 1}`"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
