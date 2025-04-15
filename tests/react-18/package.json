@@ -1,6 +1,6 @@
 {
     "name": "@react-form-builder/test-react-18",
-    "version": "3.4.0",
+    "version": "3.4.1",
     "private": true,
     "type": "module",
     "scripts": {
@@ -12,14 +12,14 @@
         "test:dbg": "dotenv -v NODE_OPTIONS=\"-r ./require.cjs\" vitest run --ui --open --inspectBrk --no-file-parallelism"
     },
     "dependencies": {
-        "@react-form-builder/components-antd": "^3.4.0",
-        "@react-form-builder/components-fast-qr": "^3.4.0",
-        "@react-form-builder/components-google-map": "^3.4.0",
-        "@react-form-builder/components-rich-text": "^3.4.0",
-        "@react-form-builder/components-rsuite": "^3.4.0",
-        "@react-form-builder/core": "^3.4.0",
-        "@react-form-builder/designer": "^3.4.0",
-        "@react-form-builder/indexed-db-form-storage": "^3.4.0",
+        "@react-form-builder/components-antd": "^3.4.1",
+        "@react-form-builder/components-fast-qr": "^3.4.1",
+        "@react-form-builder/components-google-map": "^3.4.1",
+        "@react-form-builder/components-rich-text": "^3.4.1",
+        "@react-form-builder/components-rsuite": "^3.4.1",
+        "@react-form-builder/core": "^3.4.1",
+        "@react-form-builder/designer": "^3.4.1",
+        "@react-form-builder/indexed-db-form-storage": "^3.4.1",
         "@react-form-builder/tests-common": "file:./../common",
         "@react-form-builder/tests-component": "file:./../component",
         "react": "18.3.1",

@@ -4,6 +4,12 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 3.4.1
+
+_April_ 15, 2025
+
+- Rolled back the changes that caused `initialJson` to work incorrectly in the added components.
+
 ## 3.4.0
 
 _April_ 14, 2025

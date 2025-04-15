@@ -1,35 +1,35 @@
 {
-  "name": "@react-form-builder/example-builder",
-  "version": "3.4.0",
-  "private": true,
-  "main": "src/index.ts",
-  "type": "module",
-  "description": "OptimaJet Form Builder Application",
-  "license": "Contact sales@optimajet.com",
-  "bugs": {
-    "email": "support@optimajet.com"
-  },
-  "scripts": {
-    "start": "vite --open",
-    "dev": "vite",
-    "start-ssl": "vite --open --host --config vite.ssl.config.ts"
-  },
-  "dependencies": {
-    "@react-form-builder/components-antd": "^3.4.0",
-    "@react-form-builder/components-fast-qr": "^3.4.0",
-    "@react-form-builder/components-google-map": "^3.4.0",
-    "@react-form-builder/components-rich-text": "^3.4.0",
-    "@react-form-builder/components-rsuite": "^3.4.0",
-    "@react-form-builder/core": "^3.4.0",
-    "@react-form-builder/designer": "^3.4.0",
-    "@react-form-builder/indexed-db-form-storage": "^3.4.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "rsuite": "5.64.2"
-  },
-  "devDependencies": {
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "@vitejs/plugin-basic-ssl": "^1.2.0"
-  }
+    "name": "@react-form-builder/example-builder",
+    "version": "3.4.1",
+    "private": true,
+    "main": "src/index.ts",
+    "type": "module",
+    "description": "OptimaJet Form Builder Application",
+    "license": "Contact sales@optimajet.com",
+    "bugs": {
+        "email": "support@optimajet.com"
+    },
+    "scripts": {
+        "start": "vite --open",
+        "dev": "vite",
+        "start-ssl": "vite --open --host --config vite.ssl.config.ts"
+    },
+    "dependencies": {
+        "@react-form-builder/components-antd": "^3.4.1",
+        "@react-form-builder/components-fast-qr": "^3.4.1",
+        "@react-form-builder/components-google-map": "^3.4.1",
+        "@react-form-builder/components-rich-text": "^3.4.1",
+        "@react-form-builder/components-rsuite": "^3.4.1",
+        "@react-form-builder/core": "^3.4.1",
+        "@react-form-builder/designer": "^3.4.1",
+        "@react-form-builder/indexed-db-form-storage": "^3.4.1",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "rsuite": "5.64.2"
+    },
+    "devDependencies": {
+        "@types/react": "^19.0.10",
+        "@types/react-dom": "^19.0.4",
+        "@vitejs/plugin-basic-ssl": "^1.2.0"
+    }
 }
