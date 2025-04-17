@@ -1,0 +1,133 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "mainInput",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Main input"
+          },
+          "value": {
+            "value": "all"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "mainInput"
+          }
+        ]
+      },
+      {
+        "key": "visibleWhenAll",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Visible when all"
+          },
+          "value": {
+            "value": "Simple render when"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "visibleWhenAll"
+          }
+        ],
+        "renderWhen": {
+          "value": "form.data.mainInput === 'all'"
+        }
+      },
+      {
+        "key": "repeater",
+        "type": "Repeater",
+        "props": {
+          "value": {
+            "value": [
+              {
+                "item": {
+                  "repeaterInput": "1"
+                }
+              },
+              {
+                "item": {
+                  "repeaterInput": "2"
+                }
+              },
+              {
+                "item": {
+                  "repeaterInput": "3"
+                }
+              }
+            ]
+          },
+          "itemRenderWhen": {
+            "value": "form.index === 2"
+          }
+        },
+        "css": {
+          "any": {
+            "object": {
+              "flexDirection": "row"
+            }
+          }
+        },
+        "children": [
+          {
+            "key": "visible",
+            "type": "RsCheckbox",
+            "props": {
+              "children": {
+                "value": "Visible"
+              }
+            },
+            "renderWhen": {
+              "value": ""
+            },
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "visible"
+              }
+            ]
+          },
+          {
+            "key": "repeaterInput",
+            "type": "RsInput",
+            "props": {
+              "label": {
+                "value": "Repeater input"
+              }
+            },
+            "renderWhen": {
+              "value": "form.data.visible"
+            },
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "repeaterInput"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
