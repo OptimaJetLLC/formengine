@@ -1,0 +1,245 @@
+{
+  "version": "1",
+  "tooltipType": "RsTooltip",
+  "errorType": "RsErrorMessage",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "validateButton",
+        "type": "RsButton",
+        "props": {
+          "children": {
+            "value": "Validate"
+          },
+          "appearance": {
+            "value": "primary"
+          }
+        },
+        "events": {
+          "onClick": [
+            {
+              "name": "validate",
+              "type": "common"
+            }
+          ]
+        }
+      },
+      {
+        "key": "rootSource",
+        "type": "RsNumberFormat",
+        "props": {
+          "value": {
+            "computeType": "function",
+            "fnSource": "  return 19"
+          },
+          "label": {
+            "value": "Root source (=19)"
+          }
+        }
+      },
+      {
+        "key": "rootDestination",
+        "type": "RsNumberFormat",
+        "props": {
+          "value": {
+            "computeType": "function",
+            "fnSource": "  return form.data.rootSource + 23"
+          },
+          "label": {
+            "value": "Root destination (19+23=42)"
+          }
+        }
+      },
+      {
+        "key": "templateInRoot",
+        "type": "Template:computed-value-parent-template",
+        "props": {},
+        "children": [
+          {
+            "key": "rootSlotDestination",
+            "type": "RsNumberFormat",
+            "props": {
+              "label": {
+                "value": "Root slot destination = (42+56+29=127)"
+              },
+              "value": {
+                "computeType": "function",
+                "fnSource": "  return form.data.rootDestination + form.data.parentSlotDestination + 29"
+              }
+            },
+            "slot": "parentTemplateSlot"
+          }
+        ]
+      },
+      {
+        "key": "rootRepeater",
+        "type": "Repeater",
+        "props": {
+          "value": {
+            "value": [
+              {},
+              {}
+            ]
+          }
+        },
+        "children": [
+          {
+            "key": "rootRepeaterInput",
+            "type": "RsNumberFormat",
+            "props": {
+              "label": {
+                "value": "Repeater input (=31+index)"
+              },
+              "value": {
+                "computeType": "function",
+                "fnSource": "  return 31 + (form.index ?? 0)"
+              }
+            }
+          },
+          {
+            "key": "computedRepeaterInput",
+            "type": "RsNumberFormat",
+            "props": {
+              "label": {
+                "value": "Computed repeater input (=31+index+127+37=195+index)"
+              },
+              "value": {
+                "computeType": "function",
+                "fnSource": "  return form.data.rootRepeaterInput + form.rootData.rootSlotDestination + 37"
+              }
+            },
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "computedRepeaterInput"
+              }
+            ]
+          },
+          {
+            "key": "templateInRepeater",
+            "type": "Template:computed-value-parent-template",
+            "props": {},
+            "children": [
+              {
+                "key": "rootComputedSlot",
+                "type": "RsNumberFormat",
+                "props": {
+                  "label": {
+                    "value": "Root computed slot (=195+index+41=236+index)"
+                  },
+                  "value": {
+                    "computeType": "function",
+                    "fnSource": "  return (form.index ?? 0) + form.rootData.rootSource + 47"
+                  }
+                },
+                "wrapperCss": {
+                  "any": {
+                    "object": {
+                      "backgroundColor": "rgba(71, 31, 204, 0.72)"
+                    }
+                  }
+                },
+                "slot": "parentTemplateSlot"
+              }
+            ]
+          },
+          {
+            "key": "childRepeater",
+            "type": "Repeater",
+            "props": {
+              "value": {
+                "value": [
+                  {},
+                  {},
+                  {}
+                ]
+              }
+            },
+            "children": [
+              {
+                "key": "childRepeaterInput",
+                "type": "RsNumberFormat",
+                "props": {
+                  "label": {
+                    "value": "Child repeater input (=index+19 + 47)"
+                  },
+                  "value": {
+                    "computeType": "function",
+                    "fnSource": "  return (form.index ?? 0) + (form.parentData?.rootComputedSlot ?? 0) + form.rootData.rootDestination + 17"
+                  }
+                },
+                "htmlAttributes": [
+                  {
+                    "name": "data-testid",
+                    "value": "childRepeaterInput"
+                  }
+                ]
+              },
+              {
+                "key": "templateInChildRepeater",
+                "type": "Template:computed-value-parent-template",
+                "props": {},
+                "children": [
+                  {
+                    "key": "childRepeaterInputs",
+                    "type": "RsNumberFormat",
+                    "props": {
+                      "value": {
+                        "computeType": "function",
+                        "fnSource": "  return (form.index ?? 0) + form.parentData?.parentSlotDestination + form.rootData.rootDestination"
+                      },
+                      "label": {
+                        "value": "Child repeater slot (=index+56+42)"
+                      }
+                    },
+                    "wrapperCss": {
+                      "any": {
+                        "object": {
+                          "backgroundColor": "rgba(26, 198, 79, 0.83)"
+                        }
+                      }
+                    },
+                    "slot": "parentTemplateSlot",
+                    "htmlAttributes": [
+                      {
+                        "name": "data-testid",
+                        "value": "childRepeaterInputs"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "css": {
+              "any": {
+                "object": {
+                  "flexDirection": "row"
+                },
+                "string": "  border: 1px red dashed;"
+              }
+            }
+          }
+        ],
+        "css": {
+          "any": {
+            "string": "  border: 1px green dashed;"
+          }
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

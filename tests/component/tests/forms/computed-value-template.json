@@ -1,0 +1,112 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsContainer1",
+        "type": "RsContainer",
+        "props": {},
+        "css": {
+          "any": {
+            "object": {
+              "flexDirection": "row"
+            },
+            "string": "  background-color: bisque;"
+          }
+        },
+        "children": [
+          {
+            "key": "templateSource",
+            "type": "RsNumberFormat",
+            "props": {
+              "label": {
+                "value": "templateSource (=3)\n"
+              },
+              "value": {
+                "computeType": "function",
+                "fnSource": "  return 3"
+              }
+            },
+            "schema": {
+              "validations": [
+                {
+                  "key": "max",
+                  "args": {
+                    "limit": 1
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "key": "templateDestination",
+            "type": "RsNumberFormat",
+            "props": {
+              "label": {
+                "value": "Template destination (3+5=8)"
+              },
+              "value": {
+                "computeType": "function",
+                "fnSource": "  return form.data.templateSource + 5"
+              }
+            },
+            "schema": {
+              "validations": [
+                {
+                  "key": "max",
+                  "args": {
+                    "limit": 2
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "key": "rsContainer2",
+            "type": "RsContainer",
+            "props": {},
+            "children": [
+              {
+                "key": "templateSlot",
+                "type": "Slot",
+                "props": {}
+              }
+            ]
+          }
+        ],
+        "wrapperCss": {
+          "any": {
+            "object": {}
+          }
+        }
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "templateSource": {
+        "validator-max": {
+          "message": " max 1, real: {$templateSource}"
+        }
+      },
+      "templateDestination": {
+        "validator-max": {
+          "message": " max 2, real: {$templateDestination}"
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

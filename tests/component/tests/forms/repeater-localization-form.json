@@ -1,0 +1,189 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "repeater1",
+        "type": "Repeater",
+        "props": {
+          "value": {
+            "value": [
+              {},
+              {}
+            ]
+          }
+        },
+        "children": [
+          {
+            "key": "rsContainer2",
+            "type": "RsContainer",
+            "props": {},
+            "css": {
+              "any": {
+                "object": {
+                  "flexDirection": "row"
+                }
+              }
+            },
+            "children": [
+              {
+                "key": "c0",
+                "type": "RsInput",
+                "props": {
+                  "label": {
+                    "value": "c0"
+                  },
+                  "value": {
+                    "value": "c0"
+                  }
+                }
+              },
+              {
+                "key": "c1",
+                "type": "RsInput",
+                "props": {
+                  "label": {
+                    "value": "c1"
+                  },
+                  "value": {
+                    "computeType": "localization"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "key": "repeater2",
+            "type": "Repeater",
+            "props": {
+              "value": {
+                "value": [
+                  {},
+                  {}
+                ]
+              }
+            },
+            "children": [
+              {
+                "key": "rsContainer1",
+                "type": "RsContainer",
+                "props": {},
+                "css": {
+                  "any": {
+                    "object": {
+                      "flexDirection": "row"
+                    }
+                  }
+                },
+                "children": [
+                  {
+                    "key": "b0",
+                    "type": "RsInput",
+                    "props": {
+                      "label": {
+                        "value": "b0"
+                      },
+                      "value": {
+                        "value": "b0"
+                      }
+                    }
+                  },
+                  {
+                    "key": "b1",
+                    "type": "RsInput",
+                    "props": {
+                      "label": {
+                        "value": "b1"
+                      },
+                      "value": {
+                        "computeType": "localization"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "key": "repeater3",
+                "type": "Repeater",
+                "props": {
+                  "value": {
+                    "value": [
+                      {},
+                      {}
+                    ]
+                  }
+                },
+                "children": [
+                  {
+                    "key": "a0",
+                    "type": "RsInput",
+                    "props": {
+                      "value": {
+                        "value": "a0"
+                      },
+                      "label": {
+                        "value": "a0"
+                      }
+                    }
+                  },
+                  {
+                    "key": "a1",
+                    "type": "RsInput",
+                    "props": {
+                      "value": {
+                        "value": "a",
+                        "computeType": "localization"
+                      },
+                      "label": {
+                        "value": "a1"
+                      }
+                    }
+                  }
+                ],
+                "css": {
+                  "any": {
+                    "object": {
+                      "flexDirection": "row"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "a1": {
+        "component": {
+          "value": " level 3 ({$a0})"
+        }
+      },
+      "b1": {
+        "component": {
+          "value": " level 2 ({$b0})"
+        }
+      },
+      "c1": {
+        "component": {
+          "value": " level 1 ({$c0})"
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

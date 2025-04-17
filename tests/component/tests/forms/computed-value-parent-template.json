@@ -1,0 +1,188 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "css": {
+      "any": {
+        "string": ""
+      }
+    },
+    "children": [
+      {
+        "key": "rsContainer2",
+        "type": "RsContainer",
+        "props": {},
+        "css": {
+          "any": {
+            "string": " background-color: azure;"
+          }
+        },
+        "children": [
+          {
+            "key": "parentSource",
+            "type": "RsNumberFormat",
+            "props": {
+              "label": {
+                "value": "Parent source (=7)"
+              },
+              "value": {
+                "computeType": "function",
+                "fnSource": "  return 7"
+              }
+            },
+            "schema": {
+              "validations": [
+                {
+                  "key": "min",
+                  "args": {
+                    "limit": 100
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "key": "parentDestination",
+            "type": "RsNumberFormat",
+            "props": {
+              "label": {
+                "value": "Parent destination (7+11=18)"
+              },
+              "value": {
+                "computeType": "function",
+                "fnSource": "  return form.data.parentSource + 11"
+              }
+            },
+            "schema": {
+              "validations": [
+                {
+                  "key": "min",
+                  "args": {
+                    "message": "100",
+                    "limit": 100
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "key": "innerTemplate",
+        "type": "Template:computed-value-template",
+        "props": {},
+        "children": [
+          {
+            "key": "rsContainer1",
+            "type": "RsContainer",
+            "props": {},
+            "children": [
+              {
+                "key": "parentSlot",
+                "type": "RsHeader",
+                "props": {
+                  "content": {
+                    "value": "Parent slot"
+                  }
+                }
+              },
+              {
+                "key": "parentSlotSource",
+                "type": "RsNumberFormat",
+                "props": {
+                  "label": {
+                    "value": "Parent source (=13)"
+                  },
+                  "value": {
+                    "computeType": "function",
+                    "fnSource": "  return 13"
+                  }
+                },
+                "schema": {
+                  "validations": [
+                    {
+                      "key": "min",
+                      "args": {
+                        "limit": 100
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "key": "parentSlotDestination",
+                "type": "RsNumberFormat",
+                "props": {
+                  "label": {
+                    "value": "Parent destination (18+13+8+17=56)"
+                  },
+                  "value": {
+                    "computeType": "function",
+                    "fnSource": "  return form.data.parentDestination + form.data.parentSlotSource + form.data.templateDestination + 17"
+                  }
+                },
+                "schema": {
+                  "validations": [
+                    {
+                      "key": "min",
+                      "args": {
+                        "limit": 100
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "slot": "templateSlot",
+            "css": {
+              "any": {
+                "string": "  background-color: azure;"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "parentTemplateSlot",
+        "type": "Slot",
+        "props": {}
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "parentSource": {
+        "validator-min": {
+          "message": " min 100, real: {$parentSource}"
+        }
+      },
+      "parentDestination": {
+        "validator-min": {
+          "message": " min 100, real: {$parentDestination}"
+        }
+      },
+      "parentSlotSource": {
+        "validator-min": {
+          "message": " min 100, real: {$parentSlotSource}"
+        }
+      },
+      "parentSlotDestination": {
+        "validator-min": {
+          "message": " min 100, real: {$parentSlotDestination}"
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
