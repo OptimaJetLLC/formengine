@@ -12,6 +12,7 @@ interface RsSignatureProps extends SignaturePadProps {
   value?: string
   label?: string
   clearButtonText?: string
+  'data-testid'?: string
 }
 
 const RsSignature = ({value, style, className, label, clearButtonText, readOnly, ...props}: RsSignatureProps) => {
@@ -25,7 +26,7 @@ const RsSignature = ({value, style, className, label, clearButtonText, readOnly,
     onChange(undefined)
   }, [onChange])
 
-  return <RsLabeledInput style={style} className={className}>
+  return <RsLabeledInput style={style} className={className} data-testid={props['data-testid']}>
     <Rows>
       {label && <RsRtlLabel>{label}</RsRtlLabel>}
       <SignaturePad {...props} readOnly={readOnly} value={value} ref={padRef} onChange={onChange}/>
