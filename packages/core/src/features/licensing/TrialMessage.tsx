@@ -28,6 +28,9 @@ export const TrialMessage = () => {
   useEffect(() => {
     verifyLicenseKey(licenseKey).then(value => {
       setVerified(!!value)
+    }).catch(error => {
+      console.warn('License verification error:', error)
+      setVerified(false)
     })
   }, [licenseKey, setVerified])
 
