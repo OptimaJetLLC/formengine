@@ -2,6 +2,8 @@ import type {Annotation, ResolvedValidator, Store} from '@react-form-builder/cor
 import {isPromise} from '@react-form-builder/core'
 import {isEmpty} from 'lodash-es'
 
+const isDate = (value: any) => value instanceof Date
+
 /**
  * Creates a validator for the specified metadata properties of the component.
  * @param data the function parameters.
@@ -13,7 +15,7 @@ export const annotationResolver = ({annotation, store}: { annotation: Annotation
   const checkRequired = (value: any) => {
     if (annotation.required) {
       if (typeof value === 'number') return
-      if (!isEmpty(value)) return
+      if (isDate(value) || !isEmpty(value)) return
       return [{
         settings: {key: 'required_property'},
         message: 'This property is required!',
