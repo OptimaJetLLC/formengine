@@ -40,6 +40,13 @@ export default defineConfig(({command}) => ({
       ...configDefaults.exclude,
       'examples/**',
     ],
+    onConsoleLog(log: string, type: 'stdout' | 'stderr'): boolean | void {
+      if (type === 'stderr') {
+        // additionally, write to console.error to make the tests crash
+        console.error(log)
+      }
+      return true
+    },
     testTimeout: 60_000,
     // reporters: ['verbose']
   }
