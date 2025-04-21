@@ -41,9 +41,11 @@ import {getSystemTheme} from '../utils/getSystemTheme'
 import {sortByPositionInTree} from '../utils/sortByPositionInTree'
 import type {BuilderTheme, IFormBuilder, InsertPosition} from '../utils/types'
 import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
+import {AvailableComponents} from './AvailableComponents'
 import {CachedFormStorage} from './CachedFormStorage'
 import {defaultBottomPanelHeight, defaultOpenedPanels, defaultViewMode} from './constants'
 import {uploadStringFile} from './fileUpload'
+import type {IComponentMetadataProvider} from './IComponentMetadataProvider'
 import {trackUndo} from './undo'
 
 function toPrettyJsonString(value: any) {
@@ -288,7 +290,7 @@ export type InsertComponentOptions = {
 /**
  * Form builder settings.
  */
-export class BuilderStore implements IFormBuilder {
+export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   builderMode: BuilderMode = 'viewer'
   viewMode: ViewMode = defaultViewMode
   landscapeMode?: boolean
@@ -327,6 +329,7 @@ export class BuilderStore implements IFormBuilder {
   readonly #props: Readonly<FormBuilderProps>
   readonly undoer: BuilderUndoer
   activeFormName?: string
+  #availableComponents?: AvailableComponents
 
   /**
    * Creates the form builder settings.
@@ -538,6 +541,7 @@ export class BuilderStore implements IFormBuilder {
    */
   dispose() {
     this.undoer.dispose()
+    this.#availableComponents?.dispose()
   }
 
   /**
@@ -965,6 +969,22 @@ export class BuilderStore implements IFormBuilder {
     return this.view.findMeta(type)
       ?? this.builderComponents.find(value => value.model.type === type)?.meta
       ?? this.view.getMeta(type)
+  }
+
+  /**
+   * @returns the list of available components grouped by categories.
+   */
+  get availableComponents() {
+    const currentValue = this.#availableComponents
+    const timeoutId = setTimeout(() => {
+      // we need to dispose the previous value asynchronously so we don't have to change React state during rendering
+      currentValue?.dispose()
+      clearTimeout(timeoutId)
+    }, 0)
+
+    const newValue = new AvailableComponents(this.viewer, this, this.builderComponents)
+    this.#availableComponents = newValue
+    return newValue.byCategory
   }
 
   /**

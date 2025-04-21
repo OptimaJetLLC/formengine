@@ -7,8 +7,11 @@ export const mockComponent = define(() => <div></div>, 'MockComponent')
   .category('fields')
   .build()
 
-export const createMockBuilderStore = () => {
-  const store = new Store(new FormViewerPropsStore(), defaultComponentStateFactory)
+export const createMockStore = () => {
+  return new Store(new FormViewerPropsStore(), defaultComponentStateFactory)
+}
+
+export const createMockBuilderStore = (store: Store) => {
   const component = define(() => <div></div>, 'MockComponent')
     .name('Component mock')
     .category('fields')

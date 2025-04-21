@@ -1,6 +1,6 @@
 import {BuilderStore} from '@react-form-builder/designer/src/stores/BuilderStore'
 import {beforeAll} from 'vitest'
-import {createMockBuilderStore} from '../common/createMockBuilderStore'
+import {createMockBuilderStore, createMockStore} from '../common/createMockBuilderStore'
 import orderedFields from '../data/ordered-fields.json'
 
 const initialOrder = ['1', '2', '3', '4', 'drop']
@@ -25,7 +25,8 @@ should match their previous position in the form, not the order of selection`, f
   }
 
   beforeAll(() => {
-    builderStore = createMockBuilderStore()
+    const store = createMockStore()
+    builderStore = createMockBuilderStore(store)
     builderStore.parseForm(JSON.stringify(orderedFields))
     expect(childrenOrder()).toEqual(initialOrder)
   })

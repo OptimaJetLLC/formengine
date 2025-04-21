@@ -1,13 +1,12 @@
 import {css, cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import type {Model, ComponentData} from '@react-form-builder/core'
+import type {ComponentData, Model} from '@react-form-builder/core'
 import {ComponentDataProvider, namedObserver} from '@react-form-builder/core'
-import {useState} from 'react'
+import {useCallback, useMemo, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {transformComponentNameToCssClass} from '../../../utils/transformComponentNameToCssClass'
 import {AddedComponent} from '../../dnd'
 import {useTranslationPart} from '../../localization/hooks'
-import {createAddedComponentData} from './addedComponentData'
 import {SearchForm} from './components/SearchForm'
 
 const componentGroupStaticClassname = 'FE_Palette_ComponentGroup'
@@ -37,32 +36,33 @@ interface ControlGroupsProps extends DraggableProps {
 }
 
 const RawControlGroups = (props: ControlGroupsProps) => {
-  const builderStore = useBuilderStore()
+  const {availableComponents} = useBuilderStore()
   const t = useTranslationPart('componentsList.categories')
   const {filter, ...componentProps} = props
-  const isMatch = filter
-    ? (el: Model) => el.name.toLowerCase().includes(filter.toLowerCase())
-    : (_: Model) => true
 
-  const byCategory: Record<string, Model[]> = {}
-  builderStore.builderComponents
-    .forEach(component => {
-      if (!isMatch(component.model)) return
+  const isMatch = useCallback((el: Model) => {
+    return filter ? el.name.toLowerCase().includes(filter.toLowerCase()) : true
+  }, [filter])
 
-      const category = component.category || ''
-      const components = byCategory[category] ?? []
-      components.push(component.model)
-      byCategory[category] = components
-        .sort((a, b) => a.name.localeCompare(b.name))
-    })
+  const filteredComponents = useMemo(() => {
+    const result: Record<string, ComponentData[]> = {}
+    for (const category in availableComponents) {
+      const components = availableComponents[category]
+      const filtered = components.filter(component => isMatch(component.model))
+      if (filtered.length > 0) {
+        result[category] = filtered
+      }
+    }
+    return result
+  }, [availableComponents, isMatch])
 
   const result = []
 
-  for (const category in byCategory) {
+  for (const category in filteredComponents) {
     result.push(
       <div key={category} className={cx([componentGroupStaticClassname, transformComponentNameToCssClass(category)])}>
         <Subheader>{t(category) || category}</Subheader>
-        <AddedComponents definitions={byCategory[category]} {...componentProps}/>
+        <AddedComponents availableComponents={filteredComponents[category]} {...componentProps}/>
       </div>
     )
   }
@@ -93,16 +93,13 @@ export const ComponentBar = (componentProps: DraggableProps) => {
 }
 
 interface AddedComponentsProps extends DraggableProps {
-  definitions: Model[]
+  availableComponents: ComponentData[]
 }
 
-const RawAddedComponents = ({definitions, ...componentProps}: AddedComponentsProps) => {
-  const builderStore = useBuilderStore()
-
+const RawAddedComponents = ({availableComponents, ...componentProps}: AddedComponentsProps) => {
   return (
     <ControlsGroup>
-      {definitions.map(model => {
-        const componentData = createAddedComponentData(model, builderStore)
+      {availableComponents.map(componentData => {
         return (
           <ComponentDataProvider key={componentData.id} value={componentData}>
             <AddedComponent {...componentProps}/>
