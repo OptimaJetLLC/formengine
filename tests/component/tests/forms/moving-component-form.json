@@ -12,7 +12,13 @@
           "value": {
             "value": "ok"
           }
-        }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+              "value": "testInput"
+          }
+        ]
       },
       {
         "key": "repeater1",

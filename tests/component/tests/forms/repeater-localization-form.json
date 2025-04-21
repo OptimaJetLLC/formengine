@@ -140,7 +140,13 @@
                       "label": {
                         "value": "a1"
                       }
-                    }
+                    },
+                    "htmlAttributes": [
+                      {
+                        "name": "data-testid",
+                        "value": "a1"
+                      }
+                    ]
                   }
                 ],
                 "css": {

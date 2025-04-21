@@ -56,7 +56,13 @@
           "placement": {
             "value": "left"
           }
-        }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "password"
+          }
+        ]
       },
       {
         "key": "submit",

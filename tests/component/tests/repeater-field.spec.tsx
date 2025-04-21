@@ -14,8 +14,7 @@ import {
   useComponentData,
   View
 } from '@react-form-builder/core'
-import {wait} from '@react-form-builder/tests-common/lib/utils'
-import {fireEvent, render} from '@testing-library/react'
+import {fireEvent, render, waitFor} from '@testing-library/react'
 import {useCallback} from 'react'
 import {expect} from 'vitest'
 import {selectDropDownOption} from '../util/controls'
@@ -308,7 +307,7 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
 
     const addButton = await findByTestId('plusAdultButton')
     fireEvent.click(addButton)
-    expect(adults).toHaveValue('2')
+    await waitFor(() => expect(adults).toHaveValue('2'))
   })
 
   it('The value entered should override the computed value', async () => {
@@ -462,16 +461,18 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
 
     const plusChildButton = await findByTestId('plusChildButton')
     fireEvent.click(plusChildButton)
-    fireEvent.click(plusChildButton)
-    fireEvent.click(plusChildButton)
+    expect(await findByTestId('children')).toHaveValue('1')
 
+    fireEvent.click(plusChildButton)
+    expect(await findByTestId('children')).toHaveValue('2')
+
+    fireEvent.click(plusChildButton)
     expect(await findByTestId('children')).toHaveValue('3')
     expect(await findAllByTestId('childAge')).toHaveExactValues([null, null, null])
 
-
     const childAge = await findAllByTestId('childAge')
-    for (const idx in childAge) {
-      await selectDropDownOption(rendered, childAge[idx], `${targetChildAge[idx]} years old`)
+    for (let i = 0; i < childAge.length; i++) {
+      await selectDropDownOption(rendered, childAge[i], `${targetChildAge[i]} years old`)
     }
 
     expect(viewerRef.current).not.toBeNull()
@@ -548,7 +549,7 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     // and remove one adult in the first room
     expect(await findAllByTestId('firstName')).toHaveExactValues(['Isra', 'Vidomina', ''])
     fireEvent.click((await findAllByTestId('minusAdultButton'))[0])
-    await wait(100)
+    await waitFor(async () => expect(await findAllByTestId('adults')).toHaveLength(2))
     expect(await findAllByTestId('firstName')).toHaveExactValues(['Isra', ''])
     expect(await findAllByTestId('adults')).toHaveExactValues(['1', '1'])
   })

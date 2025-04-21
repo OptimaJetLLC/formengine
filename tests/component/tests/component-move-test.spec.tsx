@@ -1,6 +1,6 @@
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {createView, define, FormViewer, FormViewerProps, Store, useStore} from '@react-form-builder/core'
-import {render} from '@testing-library/react'
+import {act, render} from '@testing-library/react'
 import {type ForwardedRef, useEffect} from 'react'
 import form from './forms/moving-component-form.json'
 
@@ -27,7 +27,10 @@ describe('Component move test', () => {
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
     const getForm = () => JSON.stringify(form)
 
-    render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+
+    // ensure that the form is rendered
+    expect(await findByTestId('testInput')).toBeInTheDocument()
 
     const formViewer = viewerRef.current
     if (!formViewer) {
@@ -54,14 +57,14 @@ describe('Component move test', () => {
     }
 
     // ok, move the component inside the repeater
-    staticContentComponent.insertAfterMe(inputComponent)
+    act(() => staticContentComponent.insertAfterMe(inputComponent))
 
     // let's check that the form data is correct
     const expectedDataAfterMove = '{"repeater1":[{"testInput":"ok"},{"testInput":"ok"},{"testInput":"ok"}]}'
     expect(JSON.stringify(formViewer.formData.data)).toEqual(expectedDataAfterMove)
 
     // and now move the component back
-    inputComponent.setParent(store.formData)
+    act(() => inputComponent.setParent(store.formData))
 
     // let's check that the form data is correct
     const expectedDataAfterMoveBack = '{"repeater1":[{},{},{}],"testInput":"ok"}'

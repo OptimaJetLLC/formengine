@@ -226,7 +226,9 @@ describe.each(componentsMetadata)(`Uncontrolled state test`, function (model) {
     persistedForm.form.children?.push(component)
 
     const viewerRef: ForwardedRef<IFormViewer> = {current: null}
-    const {rerender} = render(<TestApplication form={persistedForm} viewerRef={viewerRef}/>)
+    const {rerender, findByTestId} = render(<TestApplication form={persistedForm} viewerRef={viewerRef}/>)
+
+    expect(await findByTestId(testId)).toBeInTheDocument()
 
     const data = viewerRef.current?.formData.data
     expect(data).toBeDefined()

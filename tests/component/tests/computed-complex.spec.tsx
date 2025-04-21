@@ -1,6 +1,6 @@
 import {view} from '@react-form-builder/components-rsuite'
 import {FormViewer, FormViewerProps} from '@react-form-builder/core'
-import {render} from '@testing-library/react'
+import {act, render} from '@testing-library/react'
 import computedValueMain from './forms/computed-value-main-form.json'
 import computedValueParentTemplate from './forms/computed-value-parent-template.json'
 import computedValueTemplate from './forms/computed-value-template.json'
@@ -249,7 +249,7 @@ describe('Complex computed properties test', () => {
     const expectedData = JSON.stringify(fixData(expectedFormData))
     expect(actualData).toEqual(expectedData)
 
-    await formData.validate()
+    await act(async () => await formData.validate())
     const actualErrors = JSON.stringify(formData.errors)
     const expectedErrors = JSON.stringify(expectedFormErrors)
     expect(actualErrors).toEqual(expectedErrors)
@@ -260,7 +260,10 @@ describe('Complex computed properties test', () => {
       return JSON.stringify(repeaterLocalizationForm)
     }
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
-    render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+    const {findAllByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+
+    // ensure that the form is rendered
+    expect(await findAllByTestId('a1')).toHaveLength(8)
 
     if (!viewerRef.current) {
       throw new Error('viewerRef is null')

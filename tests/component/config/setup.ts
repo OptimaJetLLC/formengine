@@ -10,9 +10,6 @@ import {addMatchMediaFunctionToWindow} from './matchMedia'
 addMatchMediaFunctionToWindow()
 failOnConsole({
   shouldFailOnWarn: true,
-  silenceMessage: (errorMessage) => {
-    return /act\(/.test(errorMessage)
-  },
 })
 
 beforeAll(() => {

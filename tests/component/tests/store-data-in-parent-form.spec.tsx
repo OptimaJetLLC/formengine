@@ -3,6 +3,7 @@ import {BuilderView, FormBuilder, FormBuilderProps} from '@react-form-builder/de
 import {fireEvent, render} from '@testing-library/react'
 import {expect} from 'vitest'
 import App from '../../common/lib/designer/App'
+import {switchToDesignerMode, switchToViewerMode} from './designerUtils'
 
 const childForm = {
   'version': '1',
@@ -126,7 +127,7 @@ describe(`storeDataInParentForm test`, function () {
     const viewerRef: FormBuilderProps['viewerRef'] = {current: null}
     const {findByText, findByDisplayValue} = render(<BuilderApp viewerRef={viewerRef}/>)
 
-    fireEvent.click(await findByText('Preview'))
+    await switchToViewerMode(findByText)
     expect(viewerRef.current).not.toBeNull()
 
     expect(await findByDisplayValue('Dyson')).toBeInTheDocument()
@@ -135,7 +136,7 @@ describe(`storeDataInParentForm test`, function () {
     const expectedFirstData = '{"firstName":"Paul","lastName":"Dyson"}'
     expect(firstData).toEqual(expectedFirstData)
 
-    fireEvent.click(await findByText('Edit'))
+    await switchToDesignerMode(findByText)
 
     // select the component in the component tree
     fireEvent.click(await findByText('Tree'))
@@ -144,15 +145,15 @@ describe(`storeDataInParentForm test`, function () {
     // change the component property
     fireEvent.click(await findByText('Main'))
     fireEvent.click(await findByText('Store data in parent form'))
-    fireEvent.click(await findByText('Preview'))
+    await switchToViewerMode(findByText)
 
     const secondData = JSON.stringify(viewerRef.current?.formData.data)
     const expectedSecondData = '{"templateChild1":{"firstName":"Paul"},"lastName":"Dyson"}'
     expect(secondData).toEqual(expectedSecondData)
 
-    fireEvent.click(await findByText('Edit'))
+    await switchToDesignerMode(findByText)
     fireEvent.click(await findByText('Store data in parent form'))
-    fireEvent.click(await findByText('Preview'))
+    await switchToViewerMode(findByText)
 
     const thirdData = JSON.stringify(viewerRef.current?.formData.data)
     expect(thirdData).toEqual(expectedFirstData)
