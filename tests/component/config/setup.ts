@@ -4,14 +4,8 @@ import '@testing-library/jest-dom'
 import {Canvas} from 'skia-canvas'
 import {beforeAll} from 'vitest'
 import failOnConsole from 'vitest-fail-on-console'
-// @ts-ignore
-import {Crypto} from 'webcrypto-liner'
 
 import {addMatchMediaFunctionToWindow} from './matchMedia'
-
-Object.defineProperty(window, 'crypto', {
-  value: new Crypto(),
-})
 
 addMatchMediaFunctionToWindow()
 failOnConsole({

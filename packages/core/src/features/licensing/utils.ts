@@ -9,7 +9,7 @@ export function decodeB64(data: string) {
   for (let i = 0; i < byteStr.length; i++) {
     bytes[i] = byteStr.charCodeAt(i)
   }
-  return bytes.buffer
+  return bytes
 }
 
 /**
