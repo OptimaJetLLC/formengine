@@ -562,15 +562,15 @@ the map of new keys to old keys.
 
 ### validate()
 
-> **validate**(): `Promise`\<`void`\>
+> **validate**(): `Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md)\>
 
 Validates the data in the form.
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md)\>
 
-#### Inherit Doc
+the [ValidationMessages](../type-aliases/ValidationMessages.md) validation results.
 
 #### Implementation of
 

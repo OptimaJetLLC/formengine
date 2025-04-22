@@ -5,6 +5,7 @@ import type {Model} from '../../features/define'
 import type {FormValidator, FormValidators} from '../../features/form-viewer/FormValidators'
 import {getFluentData} from '../../features/localization/getFluentData'
 import type {Field} from '../../features/validation'
+import type {ValidationMessages} from '../../features/validation/types/ValidationResult'
 import type {ComponentStore} from '../../stores/ComponentStore'
 import {defaultComponentState} from '../../stores/IComponentState'
 import {createNonNullableContext} from '../createNonNullableContext'
@@ -350,31 +351,8 @@ export class ComponentData implements IFormData {
    * @inheritDoc
    */
   async validate() {
-    this.validating = true
-    try {
-      await Promise.allSettled([...this.fields.values()].map(f => f.validate()))
-      if (!this.#formValidators) return
-
-      const fields = this.fields
-      const customValidatorPromises = this.#formValidators.map(v => v(this.data))
-      const results = await Promise.allSettled(customValidatorPromises)
-
-      results.map(result => {
-        if (result.status === 'rejected') {
-          console.error(result.reason)
-          return undefined
-        }
-        return result.value
-      }).forEach(resultValue => {
-        if (!resultValue) return
-        fields.forEach((field, key) => {
-          if (resultValue[key]) return field.setError(resultValue[key])
-          if (field.storeDataInParentForm) return field.setError(resultValue)
-        })
-      })
-    } finally {
-      this.validating = false
-    }
+    await this.validateForm()
+    return this.errors as ValidationMessages
   }
 
   /**
@@ -465,6 +443,34 @@ export class ComponentData implements IFormData {
   get nearestIndex(): number | undefined {
     if (typeof this.index !== 'undefined') return this.index
     return this.parent?.nearestIndex
+  }
+
+  private async validateForm() {
+    this.validating = true
+    try {
+      await Promise.allSettled([...this.fields.values()].map(f => f.validate()))
+      if (!this.#formValidators) return
+
+      const fields = this.fields
+      const customValidatorPromises = this.#formValidators.map(v => v(this.data))
+      const results = await Promise.allSettled(customValidatorPromises)
+
+      results.map(result => {
+        if (result.status === 'rejected') {
+          console.error(result.reason)
+          return undefined
+        }
+        return result.value
+      }).forEach(resultValue => {
+        if (!resultValue) return
+        fields.forEach((field, key) => {
+          if (resultValue[key]) return field.setError(resultValue[key])
+          if (field.storeDataInParentForm) return field.setError(resultValue)
+        })
+      })
+    } finally {
+      this.validating = false
+    }
   }
 
   private insert(inserted: ComponentData, position: 'before' | 'after') {

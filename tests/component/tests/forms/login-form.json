@@ -1,0 +1,74 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "login",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Login"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "min",
+              "args": {
+                "limit": 3
+              }
+            }
+          ]
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "login"
+          }
+        ]
+      },
+      {
+        "key": "password",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Password"
+          },
+          "type": {
+            "value": "password"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "max",
+              "args": {
+                "limit": 12
+              }
+            }
+          ]
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "password"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

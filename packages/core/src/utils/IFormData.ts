@@ -49,8 +49,9 @@ export interface IFormData {
 
   /**
    * Validates the data in the form.
+   * @returns the {@link ValidationMessages} validation results.
    */
-  validate: () => Promise<void>
+  validate: () => Promise<ValidationMessages>
 
   /**
    * Returns the validation results without triggering an events and changing the state of the form.

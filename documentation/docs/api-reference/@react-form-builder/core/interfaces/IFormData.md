@@ -72,13 +72,15 @@ the validation error message.
 
 ### validate()
 
-> **validate**: () => `Promise`\<`void`\>
+> **validate**: () => `Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md)\>
 
 Validates the data in the form.
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md)\>
+
+the [ValidationMessages](../type-aliases/ValidationMessages.md) validation results.
 
 ## Accessors
 

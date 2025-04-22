@@ -233,7 +233,7 @@ export class TestFormData implements IFormData {
 
   /** @inheritDoc */
   validate() {
-    return Promise.resolve()
+    return Promise.resolve({})
   }
 
   /** @inheritDoc */
