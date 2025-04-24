@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from 'node:fs'
 
 const wrongImportRegex = /import.*from\s*['|"]@.*\/src\/.*['|"]/g
 
@@ -16,7 +16,7 @@ function readFiles(dir) {
       readFiles(name);
     } else {
       const content = fs.readFileSync(name, 'utf-8');
-      if (content.match(wrongImportRegex) && needAnalyzeFile(name)) {
+      if (needAnalyzeFile(name) && content.match(wrongImportRegex)) {
         errors.push(name)
       }
     }
@@ -33,5 +33,3 @@ console.error('Wrong imports found:')
 errors.forEach(error => console.error(error))
 
 process.exit(1)
-
-
