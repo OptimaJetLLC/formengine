@@ -97,8 +97,11 @@ const Container = styled.div`
 `
 
 const DraggableContainer = styled.div`
-  cursor: grab;
   flex: 1;
+  
+  * {
+    cursor: grab;    
+  }
 
   & > div {
     height: 100%;
