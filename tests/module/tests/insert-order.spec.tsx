@@ -5,7 +5,7 @@ import orderedFields from '../data/ordered-fields.json'
 
 const initialOrder = ['1', '2', '3', '4', 'drop']
 
-describe(`The order of the multiple inserted components,
+describe(`The order of the multiple moved components,
 should match their previous position in the form, not the order of selection`, function () {
   let builderStore: BuilderStore
   const componentTree = () => builderStore.viewer.form.componentTree

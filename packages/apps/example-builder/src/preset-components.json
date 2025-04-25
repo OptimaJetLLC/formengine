@@ -1,0 +1,81 @@
+[
+  {
+    "name": "Full name and email",
+    "components": [
+      {
+        "key": "rsContainer1",
+        "type": "RsContainer",
+        "props": {},
+        "css": {
+          "any": {
+            "object": {
+              "flexDirection": "row"
+            }
+          }
+        },
+        "children": [
+          {
+            "key": "rsInput1",
+            "type": "RsInput",
+            "props": {
+              "label": {
+                "value": "First name"
+              }
+            }
+          },
+          {
+            "key": "rsInput2",
+            "type": "RsInput",
+            "props": {
+              "label": {
+                "value": "Last Name"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "rsInput3",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Email"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "email"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Login and password",
+    "components": [
+      {
+        "key": "rsInput1",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Login"
+          }
+        }
+      },
+      {
+        "key": "rsInput2",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Password"
+          },
+          "passwordMask": {
+            "value": true
+          }
+        }
+      }
+    ]
+  }
+]

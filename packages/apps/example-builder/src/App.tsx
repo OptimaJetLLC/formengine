@@ -12,7 +12,7 @@ import {
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
 import type {ComponentStore, FormValidators, FormViewerProps, IFormData, IFormViewer, Validators} from '@react-form-builder/core'
-import {ActionDefinition, BiDi, Language} from '@react-form-builder/core'
+import {ActionDefinition, BiDi, definePreset, Language} from '@react-form-builder/core'
 import type {FormBuilderI18n, FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
@@ -22,6 +22,7 @@ import {CustomErrorWrapper} from './components/CustomErrorWrapper'
 import {throwErrorComponent} from './components/ThrowErrorComponent'
 import {simpleCustomization} from './customization'
 import {Designer} from './Designer'
+import initialPresets from './preset-components.json'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
 import {generatedLicenseKey} from './utils/license'
 import {useRefWithLog} from './utils/useRefWithLog'
@@ -79,8 +80,15 @@ const data = {
   ]
 }
 
-const components = [...rSuiteComponents, ...antdComponents, throwErrorComponent, fastQrComponent, richTextComponent, googleMapComponent]
+const presets = initialPresets.map(preset => {
+  return definePreset(preset.name, preset.components as ComponentStore[])
+    .category('Presets')
+})
+
+const components = [...rSuiteComponents, ...antdComponents, ...presets,
+  throwErrorComponent, fastQrComponent, richTextComponent, googleMapComponent]
   .map(definer => definer.build())
+
 const view = new BuilderView(components)
   .withErrorMeta(rsErrorMessage.build())
   .withTooltipMeta(rsTooltip.build())

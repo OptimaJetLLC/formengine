@@ -86,7 +86,7 @@ const RawMenu = () => {
     if (value) onSave(value)
   }, [onSave])
 
-  const onSaveAs = useSaveFormDialog('', handleSaveAs)
+  const onSaveAs = useSaveFormDialog(handleSaveAs)
 
   return <>
     <MenuDropdown title={t('leftMenu.menu')} size={'sm'} renderToggle={renderToggle} menuStyle={{width: 'fit-content'}}>

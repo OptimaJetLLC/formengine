@@ -11,8 +11,9 @@ import {
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
 import {BiDi} from '@react-form-builder/core'
+import type {IPresetComponentOptions, PresetComponent} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
-import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
+import {IndexedDbFormStorage, IndexedDbPresetStorage} from '@react-form-builder/indexed-db-form-storage'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import config from './utils/config.json'
@@ -77,17 +78,44 @@ const initDatabase = async (dbFormStorage: IndexedDbFormStorage) => {
   return await dbFormStorage.init(initialForms)
 }
 
+const presetStorage = indexedDbExists
+  ? new IndexedDbPresetStorage('demo-presets-db', 'presets')
+  : undefined
+
+const getPresetOptions = (): IPresetComponentOptions | undefined => {
+  if (!indexedDbExists) return undefined
+
+  return {
+    onCreate: (preset: PresetComponent) => {
+      presetStorage?.savePreset(preset).catch(console.error)
+    },
+    onRemove: (name: string) => {
+      presetStorage?.removePreset(name).catch(console.error)
+    },
+  }
+}
+
 const FormBuilderApp = observer(() => {
   const [indexedDbInitialized, setIndexedDbInitialized] = useState(false)
+  const [presetOptions, setPresetOptions] = useState(getPresetOptions)
 
   useEffect(() => {
-    if (!formStorage) {
-      setIndexedDbInitialized(true)
-      return
+    async function initDb() {
+      const presetComponents = await presetStorage?.loadPresets()
+      if (typeof presetComponents !== 'undefined') {
+        setPresetOptions({
+          ...getPresetOptions(),
+          components: presetComponents,
+        })
+      }
+
+      if (!formStorage) return
+      await initDatabase(formStorage)
     }
-    initDatabase(formStorage)
-      .then(() => setIndexedDbInitialized(true))
+
+    initDb()
       .catch(e => console.error(e))
+      .finally(() => setIndexedDbInitialized(true))
   }, [])
 
   if (!indexedDbInitialized) return null
@@ -99,6 +127,7 @@ const FormBuilderApp = observer(() => {
     view={view}
     initialData={initialData}
     formStorage={formStorage}
+    presetComponentOptions={presetOptions}
   />
 })
 

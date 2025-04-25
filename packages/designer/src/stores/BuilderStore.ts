@@ -32,6 +32,8 @@ import type {TranslationResolver} from '../features/localization/BuilderI18n'
 import {BuilderI18n} from '../features/localization/BuilderI18n'
 import type {FormBuilderI18nData} from '../features/localization/FormBuilderLanguage'
 import {builtInLanguages, loadTranslation} from '../features/localization/languageUtils'
+import {BuilderPresetComponentOptions} from '../features/preset-component/BuilderPresetComponentOptions'
+import {removePresetLocalization} from '../features/preset-component/removePresetLocalization'
 import type {PanelPlacement} from '../features/ui/PanelPlacement'
 import type {PromptDialogProps} from '../features/ui/PromptDialogProps'
 import {annotationResolver} from '../features/validation'
@@ -180,9 +182,9 @@ export interface PromptModalState extends PromptDialogProps {
   opened: boolean
 
   /**
-   * The error message.
+   * The error messages.
    */
-  errorMessage?: string
+  errors?: Record<string, string | undefined>
 }
 
 class BuilderUndoer {
@@ -253,6 +255,14 @@ class BuilderUndoer {
   }
 }
 
+const initialModalState = {
+  opened: false,
+  title: '',
+  value: {},
+  onOk: () => {
+  }
+} satisfies PromptModalState
+
 /**
  * Insert component options.
  */
@@ -313,13 +323,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     },
     canAdd: () => true,
   }
-  readonly promptModalState: PromptModalState = {
-    opened: false,
-    title: '',
-    value: '',
-    onOk: () => {
-    }
-  }
+  readonly promptModalState: PromptModalState = initialModalState
   readonly errorMap = new Map<ComponentData, Record<string, string | undefined>>
   readonly view: BuilderView
   readonly formStorageEnabled: boolean
@@ -328,6 +332,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   private readonly formStorage: CachedFormStorage
   readonly #props: Readonly<FormBuilderProps>
   readonly undoer: BuilderUndoer
+  readonly presetComponentOptions: BuilderPresetComponentOptions
   activeFormName?: string
   #availableComponents?: AvailableComponents
 
@@ -365,6 +370,12 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     this.activeFormName = props.formName
     this.formBuilderLanguage = this.availableLanguages[0]
     this.localizationLanguage = this.formBuilderLanguage
+
+    this.presetComponentOptions = new BuilderPresetComponentOptions(
+      name => this.view.removeComponent(name),
+      builderComponent => this.view.addComponent(builderComponent),
+      props.presetComponentOptions
+    )
 
     const translationResolver: TranslationResolver = async language => {
       const loaded = this.#loadedLanguages[language]
@@ -639,16 +650,53 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   }
 
   /**
+   * Creates the new preset component from the selected components.
+   * @param name the name of the preset component.
+   * @param category the category of the preset component.
+   */
+  createPresetComponentFromSelected(name: string, category: string) {
+    if (this.presetComponentOptions.disableCreation) return
+
+    const components = this.orderedSelected.map(({store}) => store)
+    const preset = {
+      name,
+      category,
+      components: removePresetLocalization(components)
+    }
+    this.presetComponentOptions.addPresetComponent(preset)
+    this.presetComponentOptions.onCreate?.(preset)
+  }
+
+  /**
    * Adds the new component to the component tree (it's better to use {@link insert} function).
    * @param source the component to be added to the component tree.
    * @param target the parent component for the component to be added.
    * @param insertPosition the insertion position relative to the new parent component.
    * @param slot the property name of the parent component where the new component will be added.
    * @param slotCondition the source code of the function that checks if the component can be bound to parent.
-   * @returns the new added component.
+   * @returns the new added component or array of components.
    */
   add(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = 'after',
       slot?: string, slotCondition?: string) {
+    if (source.model.kind === 'preset') {
+      const result: ComponentStore[] = []
+      const orderedChildren = insertPosition === 'after'
+        ? [...source.children].reverse()
+        : source.children
+
+      orderedChildren.forEach((componentData, i) => {
+        result.push(this.insert({
+          source: componentData,
+          target,
+          insertPosition,
+          slot,
+          slotCondition,
+          selectAfterInsert: i === 0
+        }))
+      })
+      return result
+    }
+
     return this.insert({
       source,
       target,
@@ -991,7 +1039,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @returns the array of metadata of form builder components.
    */
   get builderComponents() {
-    const result = [...this.view.builderComponents]
+    const result = [...this.view.builderComponents, ...this.presetComponentOptions.presets]
     const types = result.map(value => value.model.type)
     const typeSet = new Set<string>(types)
     const currentFormComponent = BuilderView.createTemplateComponent(this.formName)
@@ -1047,7 +1095,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @param props the modal window properties.
    */
   showPromptModal(props: PromptDialogProps) {
-    Object.assign(this.promptModalState, props, {opened: true, errorMessage: undefined})
+    Object.assign(this.promptModalState, initialModalState, props, {opened: true, errorMessage: undefined})
   }
 
   private addNodeToSelection = (target: ComponentData) => {

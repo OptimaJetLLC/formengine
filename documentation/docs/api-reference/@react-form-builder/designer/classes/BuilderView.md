@@ -86,6 +86,24 @@ the viewer wrappers array.
 
 ## Methods
 
+### addComponent()
+
+> **addComponent**(`component`): `void`
+
+Adds the component metadata to the form builder.
+
+#### Parameters
+
+• **component**: [`BuilderComponent`](../../core/interfaces/BuilderComponent.md)
+
+the component metadata.
+
+#### Returns
+
+`void`
+
+***
+
 ### all()
 
 > **all**(): [`Model`](../../core/classes/Model.md)\<`any`\>[]
@@ -273,6 +291,24 @@ the name of the tooltip component type.
 `undefined` \| [`Annotation`](../../core/classes/Annotation.md)[]
 
 the array of metadata properties of the tooltip component.
+
+***
+
+### removeComponent()
+
+> **removeComponent**(`name`): `void`
+
+Removes the component metadata from the form builder.
+
+#### Parameters
+
+• **name**: `string`
+
+the component type name.
+
+#### Returns
+
+`void`
 
 ***
 

@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Login and password",
+    "components": [
+      {
+        "key": "rsInput1",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "My login"
+          }
+        }
+      },
+      {
+        "key": "rsInput2",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Password"
+          },
+          "passwordMask": {
+            "value": true
+          }
+        }
+      }
+    ]
+  }
+]

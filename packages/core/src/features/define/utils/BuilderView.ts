@@ -34,6 +34,23 @@ export class BuilderView extends View {
   }
 
   /**
+   * Adds the component metadata to the form builder.
+   * @param component the component metadata.
+   */
+  addComponent(component: BuilderComponent) {
+    this.define(component.model)
+    this.#metaMap.set(component.meta.type, component.meta)
+  }
+
+  /**
+   * Removes the component metadata from the form builder.
+   * @param name the component type name.
+   */
+  removeComponent(name: string) {
+    this.#metaMap.delete(name)
+  }
+
+  /**
    * Returns the component metadata for the specified component type name or undefined.
    * @param type the component type name.
    * @returns the component metadata for the specified component type name or undefined.

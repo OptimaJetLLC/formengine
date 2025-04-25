@@ -313,3 +313,27 @@ the display name for the anonymous component.
 [`Definer`](Definer.md)\<`T`\>
 
 the instance of the [Definer](Definer.md) class.
+
+***
+
+### definePreset()
+
+> `static` **definePreset**(`name`, `components`): [`Definer`](Definer.md)\<`object`\>
+
+Static method to create an instance of the preset component's metadata builder class.
+
+#### Parameters
+
+• **name**: `string`
+
+the preset name.
+
+• **components**: [`ComponentStore`](ComponentStore.md)[]
+
+the components of the preset.
+
+#### Returns
+
+[`Definer`](Definer.md)\<`object`\>
+
+the instance of the [Definer](Definer.md) class.

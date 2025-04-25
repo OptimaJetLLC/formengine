@@ -259,6 +259,14 @@ the current form schema serialized to JSON.
 
 ***
 
+### presetComponentOptions?
+
+> `optional` **presetComponentOptions**: [`IPresetComponentOptions`](IPresetComponentOptions.md)
+
+The preset component options.
+
+***
+
 ### propertyEditors?
 
 > `optional` **propertyEditors**: `Record`\<`string`, `ComponentType`\<[`AnnotationEditorProps`](AnnotationEditorProps.md)\>\>

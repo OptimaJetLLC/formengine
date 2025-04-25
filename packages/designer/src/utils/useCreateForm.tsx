@@ -30,15 +30,19 @@ export function useCreateForm(onSuccess?: () => void) {
     }
   }, [builderStore, loadForm, onSuccess])
 
-  const validate = useCallback(async (value: string) => {
+  const validate = useCallback(async ({name}: Record<string, any>) => {
     const formKeys = await builderStore.getFormKeys()
-    if (formKeys.includes(value)) return t('formsList.formWithNameExists')
+    if (formKeys.includes(name)) {
+      return {
+        name: t('formsList.formWithNameExists')
+      }
+    }
   }, [builderStore, t])
 
   return useCallback(() => {
     builderStore.showPromptModal({
-      value: '',
-      onOk: handleAddForm,
+      fields: [{name: 'name'}],
+      onOk: (({name}) => handleAddForm(name)),
       title: t('leftMenu.enterFormName'),
       placeholder: t('leftMenu.formNamePlaceholder'),
       validate

@@ -8,20 +8,29 @@ import {icons} from '../../../icons'
 import {useCanAddComponent} from '../../../utils/AddComponentContext'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {transformComponentNameToCssClass} from '../../../utils/transformComponentNameToCssClass'
+import {PresetIcon} from '../../preset-component/PresetIcon'
 import type {DraggableProps} from '../../ui/ComponentBar'
 import {ItemType} from '../consts'
 import {DragPreview} from './Editable/components/DragPreview'
 import {useDragWithPreview} from './Editable/hooks/useDragWithPreview'
+import {PresetToolbar} from './PresetToolbar'
+import {useHovered} from './useHovered'
 
 const componentStaticClassname = 'FE_Palette_Component'
 
 const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggableProps) => {
   const data = useComponentData()
-  const {name = ''} = data.model
+  const {name = '', kind, type} = data.model
   const builderStore = useBuilderStore()
-  const {icon: CustomIcon} = builderStore.getComponentMetadata(data.model.type)
-  const iconName = replace(upperFirst(camelCase(name)), ' ', '') as keyof typeof icons
-  const Icon = CustomIcon ?? icons[iconName] ?? icons.Default
+
+  const Icon = useMemo(() => {
+    const {icon: CustomIcon} = builderStore.getComponentMetadata(type)
+    const iconName = replace(upperFirst(camelCase(name)), ' ', '') as keyof typeof icons
+    const defaultIcon = kind === 'preset' ? PresetIcon : icons.Default
+    return CustomIcon ?? icons[iconName] ?? defaultIcon
+  }, [builderStore, kind, name, type])
+
+  const {hovered, ...hoveredProps} = useHovered()
 
   const canAddComponent = useCanAddComponent()
   const disabled = useMemo(() => !canAddComponent(data), [canAddComponent, data])
@@ -44,10 +53,17 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
     onDoubleClick?.(data)
   }, [disabled, onDoubleClick, data])
 
+  const elementToolbar = useMemo(() => {
+    if (!hovered || data.model.kind !== 'preset') return null
+    return <PresetToolbar/>
+  }, [data.model.kind, hovered])
+
   const element = (
-    <Container onClick={onClick} onDoubleClick={handleDoubleClick} className={cls}>
+    <Container onClick={onClick} onDoubleClick={handleDoubleClick} className={cls}
+               {...hoveredProps}>
       <Icon width={18} height={18} viewBox="0 0 24 24"/>
       <label>{name}</label>
+      {elementToolbar}
     </Container>
   )
 
@@ -80,7 +96,7 @@ const Container = styled.div`
   font-size: 13px;
 
   &:hover:not(.disabled) {
-    box-shadow: var(--rs-state-focus-shadow);
+    background-color: var(--rs-btn-default-hover-bg);
   }
 
   &:active:not(.disabled), &:focus:not(.disabled) {
@@ -97,6 +113,7 @@ const Container = styled.div`
 `
 
 const DraggableContainer = styled.div`
+  position: relative;
   flex: 1;
   
   * {

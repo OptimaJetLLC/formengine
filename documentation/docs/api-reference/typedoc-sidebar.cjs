@@ -1031,6 +1031,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/definePreset",
+            "label": "definePreset"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/functions/findTreeElementDepth",
             "label": "findTreeElementDepth"
           },
@@ -1244,6 +1249,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/designer/classes/BuilderView",
             "label": "BuilderView"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/designer/classes/PresetComponentLocalStorage",
+            "label": "PresetComponentLocalStorage"
           }
         ]
       },
@@ -1298,8 +1308,18 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/designer/interfaces/IPresetComponentOptions",
+            "label": "IPresetComponentOptions"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/designer/interfaces/InputCellProps",
             "label": "InputCellProps"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/designer/interfaces/PresetComponent",
+            "label": "PresetComponent"
           },
           {
             "type": "doc",

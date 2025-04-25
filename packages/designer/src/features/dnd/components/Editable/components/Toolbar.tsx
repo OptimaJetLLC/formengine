@@ -14,6 +14,7 @@ import {FaIcon} from '../../../../components/Icons'
 import {useTranslationPart} from '../../../../localization/hooks'
 import {useSelection} from '../hooks/useSelection'
 import {AddButton} from './AddButton'
+import {PresetComponentButton} from './PresetComponentButton'
 
 /**
  * Toolbar React component properties.
@@ -65,6 +66,7 @@ const RawToolbar = ({compact}: ToolbarProps) => {
       <Hinted hint={t('cloneComponent')} placement={'autoVertical'}>
         <FaIcon onClick={onClone} icon={faClone as unknown as IconDefinition} className={'clone-button'}/>
       </Hinted>
+      {!store.presetComponentOptions.disableCreation && <PresetComponentButton/>}
       <Hinted hint={t('removeComponent')} placement={'autoVertical'}>
         <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition} className={'remove-button'}/>
       </Hinted>

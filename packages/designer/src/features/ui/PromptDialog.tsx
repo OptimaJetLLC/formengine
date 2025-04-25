@@ -1,11 +1,9 @@
 import {namedObserver} from '@react-form-builder/core'
 import type {KeyboardEvent} from 'react'
 import {useCallback} from 'react'
-import {Button, Form, Input, Modal} from 'rsuite'
+import {Button, Form, Modal} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {useTranslationPart} from '../localization/hooks'
-
-const formStyle = {height: 60}
 
 /**
  * The React component that displays prompt dialog
@@ -17,7 +15,7 @@ const RawPromptDialog = () => {
   const t = useTranslationPart('promptDialog')
   const okLabel = modalState.okText || t('ok')
   const cancelLabel = modalState.cancelText || t('cancel')
-  const inputValid = !!modalState.value?.trim() && !modalState.errorMessage
+  const inputValid = !!Object.values(modalState.value ?? {})[0]?.trim() && !modalState.errors
 
   const hide = useCallback(() => modalState.opened = false, [modalState])
 
@@ -28,7 +26,7 @@ const RawPromptDialog = () => {
 
   const handleOk = useCallback(() => {
     hide()
-    modalState.onOk(modalState.value)
+    modalState.onOk(modalState.value ?? {})
   }, [hide, modalState])
 
   const handleCancel = useCallback(() => {
@@ -36,10 +34,10 @@ const RawPromptDialog = () => {
     modalState.onCancel?.()
   }, [hide, modalState])
 
-  const handleChange = useCallback((value: string) => {
+  const handleChange = useCallback((value: Record<string, any>) => {
     modalState.value = value
     modalState.validate?.(value)?.then(result => {
-      modalState.errorMessage = result
+      modalState.errors = result
     })
   }, [modalState])
 
@@ -61,10 +59,18 @@ const RawPromptDialog = () => {
       <Modal.Title>{modalState.title}</Modal.Title>
     </Modal.Header>
     <Modal.Body>
-      <Form style={formStyle} fluid>
-        <Input placeholder={modalState.placeholder} autoFocus={true} onKeyDown={handleKeys}
-               value={modalState.value} onChange={handleChange}/>
-        <Form.ErrorMessage show={!!modalState.errorMessage}>{modalState.errorMessage}</Form.ErrorMessage>
+      <Form fluid onChange={handleChange}>
+        {modalState.fields?.map(({name, component, label, value, placeholder, props}) => {
+            const error = modalState.errors?.[name]
+            const fieldValue = modalState.value?.[name] ?? value
+            return <Form.Group key={name}>
+              <Form.ControlLabel>{label}</Form.ControlLabel>
+              <Form.Control key={name} name={name} value={fieldValue ?? ''} accepter={component}
+                            placeholder={placeholder} autoFocus={true} onKeyDown={handleKeys} {...props}/>
+              <Form.ErrorMessage show={!!error}>{error}</Form.ErrorMessage>
+            </Form.Group>
+          }
+        )}
       </Form>
     </Modal.Body>
     <Modal.Footer>

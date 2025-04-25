@@ -3,6 +3,7 @@
 ## Classes
 
 - [BuilderView](classes/BuilderView.md)
+- [PresetComponentLocalStorage](classes/PresetComponentLocalStorage.md)
 
 ## Interfaces
 
@@ -15,7 +16,9 @@
 - [FormBuilderProps](interfaces/FormBuilderProps.md)
 - [IFormBuilder](interfaces/IFormBuilder.md)
 - [IFormStorage](interfaces/IFormStorage.md)
+- [IPresetComponentOptions](interfaces/IPresetComponentOptions.md)
 - [InputCellProps](interfaces/InputCellProps.md)
+- [PresetComponent](interfaces/PresetComponent.md)
 - [SelectCellProps](interfaces/SelectCellProps.md)
 
 ## Type Aliases

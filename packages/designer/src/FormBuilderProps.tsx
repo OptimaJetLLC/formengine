@@ -3,6 +3,7 @@ import type {ComponentType, ForwardedRef} from 'react'
 import type {AnnotationEditorProps} from './features/annotation-editors/AnnotationEditorProps'
 import type {CustomizationMap} from './features/customization'
 import type {FormBuilderI18n} from './features/localization/FormBuilderLanguage'
+import type {IPresetComponentOptions} from './features/preset-component/IPresetComponentOptions'
 import type {FormBuilderTheme} from './FormBuilderTheme'
 import type {IFormStorage} from './stores/IFormStorage'
 import type {IFormBuilder} from './utils/types'
@@ -21,6 +22,11 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
    * The external form storage.
    */
   formStorage?: IFormStorage
+
+  /**
+   * The preset component options.
+   */
+  presetComponentOptions?: IPresetComponentOptions
 
   /**
    * Custom component property editors. **Attention! Unstable API.**

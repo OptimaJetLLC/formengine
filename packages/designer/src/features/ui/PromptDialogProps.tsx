@@ -1,3 +1,40 @@
+import type {Component, ForwardedRef} from 'react'
+
+/**
+ * The type of the input field.
+ */
+export interface PromptField {
+  /**
+   * The name of the field.
+   */
+  name: string
+  /**
+   * The component of the field.
+   */
+  component?: ForwardedRef<any> | Component
+  /**
+   * The label of the field.
+   */
+  label?: string
+  /**
+   * The value of the field.
+   */
+  value?: unknown
+  /**
+   * The placeholder for the field.
+   */
+  placeholder?: string
+  /**
+   * The props for the field component.
+   */
+  props?: Record<string, any>
+}
+
+/**
+ * The result of the validation of the prompt dialog fields.
+ */
+export type PromptValidationResult = Record<string, string | undefined> | undefined
+
 /**
  * Properties of the modal dialog for data entry.
  */
@@ -27,12 +64,16 @@ export interface PromptDialogProps {
   /**
    * The value for the input field.
    */
-  value: string
+  value?: Record<string, any>
   /**
    * The callback function called when the confirmation button is pressed.
    * @param value the value of the input field.
    */
-  onOk: (value: string) => void
+  onOk: (value: Record<string, any>) => void
+  /**
+   * The fields for the input.
+   */
+  fields?: PromptField[]
   /**
    * The callback function called when the cancel button is pressed.
    */
@@ -47,5 +88,5 @@ export interface PromptDialogProps {
    * @param value the value for validation.
    * @returns the string with an error or undefined if validation was successful.
    */
-  validate?: (value: string) => Promise<string | undefined>
+  validate?: (value: Record<string, any>) => Promise<PromptValidationResult>
 }

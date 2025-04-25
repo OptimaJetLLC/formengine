@@ -1,5 +1,6 @@
 import type {CSSObject} from '@emotion/serialize'
 import type {ComponentType, ReactNode} from 'react'
+import {ComponentStore} from '../../../stores/ComponentStore'
 import {commonStyles, getDefault, getDefaultCss} from '../../annotation'
 import {toArray} from '../../annotation/toArray'
 import {toStyleProperties} from '../../annotation/toStyleProperties'
@@ -91,6 +92,25 @@ export class Definer<T extends object> {
     const definer = new Definer<T>(component)
     if (displayName) definer.type(displayName)
     return definer
+  }
+
+  /**
+   * Static method to create an instance of the preset component's metadata builder class.
+   * @param name the preset name.
+   * @param components the components of the preset.
+   * @returns the instance of the {@link Definer} class.
+   */
+  static definePreset(name: string, components: ComponentStore[]) {
+    if (!name) throw Error('Anonymous components are not allowed!')
+    const PresetComponent = () => null
+    const definer = new Definer(PresetComponent)
+      .kind('preset')
+      .type(name)
+      .name(name)
+
+    const source = new ComponentStore('', name)
+    source.children = components
+    return definer.initialJson(JSON.stringify(source))
   }
 
   private constructor(component: ComponentType<T>) {
@@ -261,3 +281,4 @@ export class Definer<T extends object> {
 }
 
 export const define = Definer.define
+export const definePreset = Definer.definePreset

@@ -526,6 +526,14 @@
     "cloneComponent": "Clone component",
     "removeComponent": "Remove component"
   },
+  "presetComponent": {
+    "name": "Name",
+    "category": "Category",
+    "createPreset": "Create a preset component",
+    "namePlaceholder": "Enter a preset name",
+    "enterPresetName": "Please enter a preset name",
+    "nameExists": "A preset or component with this name already exists."
+  },
   "errorsPanel": {
     "data": "Data",
     "errors": "Errors"

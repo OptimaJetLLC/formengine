@@ -38,7 +38,13 @@
       },
       {
         "key": "AntButton 1",
-        "type": "AntButton"
+        "type": "AntButton",
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "ant-button"
+          }
+        ]
       },
       {
         "key": "RsStaticContent 1",
@@ -230,7 +236,13 @@
           "label": {
             "value": "Title"
           }
-        }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "title-input"
+          }
+        ]
       },
       {
         "key": "input container",
