@@ -88,9 +88,14 @@ function getActionHandlersChain(store: Store, actionDataList: ActionData[]) {
   }))
 
   return async (e: ActionEventArgs) => {
-    for (const {func, args} of actions) {
-      const result = func(e, args)
-      if (isPromise(result)) await result
+    try {
+      for (const {func, args} of actions) {
+        const result = func(e, args)
+        if (isPromise(result)) await result
+      }
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.info('Action handler throws an error', e)
     }
   }
 }
