@@ -21,7 +21,7 @@ function createContextHook<T, >(context: Context<T>) {
   return () => {
     const value = useContext(context)
 
-    if (!value) throw new Error(`The context ${context.displayName} didn't found!`)
+    if (!value) throw new Error(`The context ${context.displayName} was not found!`)
 
     return value
   }
