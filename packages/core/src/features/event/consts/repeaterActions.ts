@@ -1,5 +1,4 @@
 import type {ComponentData} from '../../../utils/contexts/ComponentDataContext'
-import {RepeaterFormContext} from '../../validation/utils/RepeaterField'
 import {ActionDefinition} from '../types'
 
 const parseRowData = (data?: string) => {
@@ -36,9 +35,9 @@ const removeRow = (data: Record<string, any>, repeaterKey: string, index: number
 }
 
 const getParentRepeaterKey = (componentData: ComponentData) => {
-  const dataRootProvider = componentData.dataRootProvider
-  if (dataRootProvider instanceof RepeaterFormContext) {
-    return dataRootProvider.repeaterField.componentStore.key
+  const dataRoot = componentData.dataRoot
+  if (typeof dataRoot.index === 'number') {
+    return dataRoot.store.props?.repeaterKey?.value
   }
 }
 

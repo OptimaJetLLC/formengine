@@ -79,10 +79,7 @@ class StoreFormContext implements IDataContext {
   constructor(readonly store: Store) {
   }
 
-  /**
-   * @inheritDoc
-   */
-  get dataRoot() {
+  private get dataRoot() {
     return this.store.form.componentTree
   }
 
@@ -338,10 +335,9 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
                       dataContext?: IDataContext): ComponentData {
     dataContext ??= this.dataContext
     model ??= this.getModel(componentStore.type)
-    const field = this.createField(componentStore, model, dataContext, deferFieldCalculation)
     const factory = (cs: ComponentStore) => this.createComponentData(cs, deferFieldCalculation, undefined, dataContext)
-    const componentData = new ComponentData(componentStore, model, field, factory, this.formViewerPropsStore.formValidators)
-    componentData.dataRootProvider = dataContext
+    const componentData = new ComponentData(componentStore, model, factory, this.formViewerPropsStore.formValidators)
+    componentData.field = this.createField(componentData, dataContext, deferFieldCalculation)
     componentData.componentState = this.componentStateFactory(componentData, this)
     return componentData
   }
@@ -358,17 +354,18 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
     }
   }
 
-  private createField(componentStore: ComponentStore, model: Model, dataContext: IDataContext,
+  private createField(componentData: ComponentData, dataContext: IDataContext,
                       deferFieldCalculation: boolean) {
+    const {model, store: componentStore} = componentData
     if (model.kind === 'repeater') {
-      return new RepeaterField(dataContext, this, this, this.getValidationRules.bind(this),
-        componentStore, model, deferFieldCalculation)
+      return new RepeaterField(componentData, dataContext, this, this, this.getValidationRules.bind(this),
+        deferFieldCalculation)
     }
 
     if (!model.valued) return
 
     if (!isTemplateType(model.type)) {
-      return new SimpleField(dataContext, componentStore, model, deferFieldCalculation)
+      return new SimpleField(componentData, dataContext, deferFieldCalculation)
     }
 
     const childStore = new Store(this.formViewerPropsStore.clone(), this.componentStateFactory, this, componentStore, dataContext)

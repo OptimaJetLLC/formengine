@@ -178,8 +178,7 @@ export class ComponentState implements IComponentState {
    * @returns the values for all properties of the component, calculates the values of the calculated properties.
    */
   get calculatedProps() {
-    const dataRootProvider = this.data.dataRootProvider ?? this.store.dataContext
-    return calculateProperties(this.data.store, dataRootProvider.dataRoot)
+    return calculateProperties(this.data.store, this.data.dataRoot)
   }
 
   /**

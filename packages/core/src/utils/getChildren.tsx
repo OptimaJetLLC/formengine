@@ -3,7 +3,6 @@ import type {ComponentTreeProps} from '../ComponentTreeProps'
 import type {ComponentStore} from '../stores/ComponentStore'
 import type {ComponentData, IComponentDataProvider} from './contexts/ComponentDataContext'
 import {groupBy} from './groupBy'
-import type {IFormData} from './IFormData'
 import {needRender} from './needRender'
 
 const defaultContainerKey = 'children'
@@ -11,14 +10,12 @@ const defaultContainerKey = 'children'
 /**
  * Returns the {@link Record} with all child components. **Internal use only.**
  * @param data the parent component's data necessary to display the component.
- * @param formData the form data.
  * @param componentTreeItem the type of React component that wraps child components.
  * @param componentProps the properties of the parent component.
  * @returns the {@link Record} with all child components.
  */
 export function getChildren(
   data: ComponentData,
-  formData: IFormData,
   componentTreeItem: ComponentType<ComponentTreeProps>,
   componentProps: Record<string, any>
 ) {
@@ -30,7 +27,7 @@ export function getChildren(
 
   const groups = groupBy(containers, value => value.store.slot || defaultContainerKey)
   const isSlotConditionSatisfied = (child: ComponentData) => checkSlotCondition(child.store, componentProps)
-  const isNeedRender = (child: ComponentData) => needRender(child.store, data.dataRootProvider?.dataRoot ?? formData)
+  const isNeedRender = (child: ComponentData) => needRender(child.store, data.dataRoot)
 
   for (const [key, children] of Object.entries(groups)) {
     const filteredChildren = children

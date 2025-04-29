@@ -45,12 +45,10 @@ export class ActionEventArgs {
   ) {
     this.index = sender.nearestIndex
     const indexExists = typeof this.index === 'number'
-    const componentData = indexExists
-      ? sender.dataRootProvider?.dataRoot ?? this.store.formData
-      : this.store.formData
+    const componentData = sender.dataRoot
     this.#componentDataProxy = createComponentDataProxy(componentData)
     if (indexExists) {
-      const parentComponentData = componentData.parent ?? this.store.formData
+      const parentComponentData = componentData.parent?.dataRoot ?? this.store.formData
       this.#parentComponentDataProxy = createComponentDataProxy(parentComponentData)
     }
     this.#rootComponentDataProxy = createComponentDataProxy(this.store.formData)

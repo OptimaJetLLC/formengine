@@ -1,13 +1,12 @@
 import type {ComponentStore} from '../../../stores/ComponentStore'
 import type {Setter} from '../../../types'
-import type {IDataRootProvider} from '../../../utils/contexts/ComponentDataContext'
 import type {SchemaType} from '../types/SchemaType'
 import type {DataValidator} from './DataValidator'
 
 /**
  * The context for working with data.
  */
-export interface IDataContext extends IDataRootProvider {
+export interface IDataContext {
 
   /**
    * @returns the initial data.

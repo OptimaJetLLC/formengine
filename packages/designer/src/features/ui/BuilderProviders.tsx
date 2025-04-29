@@ -64,15 +64,14 @@ class BuilderComponentStateFactory {
 
   createComponentState(data: ComponentData, store: Store) {
     const localizer = (componentStore: ComponentStore) => {
-      const dataContext = data.dataRootProvider ?? store.dataContext
-      return store.localizeComponent('component', dataContext.dataRoot, componentStore)
+      return store.localizeComponent('component', data.dataRoot, componentStore)
     }
 
     const computeChildren = (componentData: ComponentData, componentProps: Record<string, any>) => {
       if (this.builderStore?.builderMode === 'builder' && !store.parentStore) {
         return getBuilderChildren(this.builderStore, componentData, componentProps)
       }
-      return getChildren(componentData, store.form.componentTree, ComponentTree, componentProps)
+      return getChildren(componentData, ComponentTree, componentProps)
     }
 
     return new ComponentState(data, store, localizer, computeChildren)

@@ -1,6 +1,7 @@
 import {autorun, makeAutoObservable, observable, reaction, untracked} from 'mobx'
 import type {ComponentStore} from '../../../stores/ComponentStore'
 import {isComputedProperty} from '../../../stores/ComponentStore'
+import type {ComponentData} from '../../../utils/contexts/ComponentDataContext'
 import {needRender} from '../../../utils/needRender'
 import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
 import type {Model} from '../../define'
@@ -46,20 +47,24 @@ export class SimpleField implements Field {
   valueType: SchemaType
   dataValidator?: DataValidator
   readonly #disposers: Disposer[]
+  readonly componentStore: ComponentStore
+  readonly model: Model
 
   /**
    * Creates the field with form data for the component.
+   * @param componentData the component data.
    * @param dataContext the data context for this field.
-   * @param componentStore the component settings.
-   * @param model the component metadata for the form viewer.
    * @param deferFieldCalculation if true, then the calculated field must be explicitly initialized.
    */
   constructor(
+    readonly componentData: ComponentData,
     readonly dataContext: IDataContext,
-    readonly componentStore: ComponentStore,
-    readonly model: Model,
     public deferFieldCalculation: boolean,
   ) {
+    const {model, store: componentStore} = componentData
+    this.componentStore = componentStore
+    this.model = model
+
     if (!model.valued) throw new Error(`'model.valued' is falsy`)
     if (!model.valueType) throw new Error(`'model.typeOfValue' is undefined`)
     this.valued = model.valued
@@ -205,7 +210,7 @@ export class SimpleField implements Field {
    * @returns true if the field should be validated, false otherwise.
    */
   get needValidate() {
-    return needRender(this.componentStore, this.dataContext.dataRoot)
+    return needRender(this.componentStore, this.componentData.dataRoot)
   }
 
   /**

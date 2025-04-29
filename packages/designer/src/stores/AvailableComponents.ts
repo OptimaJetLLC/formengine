@@ -12,7 +12,7 @@ import type {IComponentMetadataProvider} from './IComponentMetadataProvider'
 const createComponentData = (store: Store, componentStore: ComponentStore): ComponentData => {
   const model = store.getModel(componentStore.type)
   const factory = (cs: ComponentStore) => createComponentData(store, cs)
-  return new ComponentData(componentStore, model, undefined, factory)
+  return new ComponentData(componentStore, model, factory)
 }
 
 /**

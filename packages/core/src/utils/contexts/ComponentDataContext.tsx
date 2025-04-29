@@ -98,7 +98,7 @@ export class ComponentData implements IFormData {
   /**
    * The field with the form data.
    */
-  readonly field?: Field
+  field?: Field
   /**
    * The parent node in the component data tree.
    */
@@ -138,15 +138,13 @@ export class ComponentData implements IFormData {
    * Constructor.
    * @param componentStore the component settings.
    * @param model the component metadata for the form viewer.
-   * @param field the field with the form data.
    * @param childFactory the factory function that creates {@link ComponentData} instance.
    * @param formValidators the array of functions that validate the form data.
    */
-  constructor(componentStore: ComponentStore, model: Model, field: Field | undefined,
+  constructor(componentStore: ComponentStore, model: Model,
               childFactory: (componentStore: ComponentStore) => ComponentData, formValidators?: FormValidators) {
     this.store = componentStore
     this.model = model
-    this.field = field
     this.id = generateId(this.model.type)
     this.#formValidators = formValidators
 
@@ -197,6 +195,13 @@ export class ComponentData implements IFormData {
    */
   get state() {
     return this._state
+  }
+
+  /**
+   * @returns the root component for the data in the component tree.
+   */
+  get dataRoot(): ComponentData {
+    return this.dataRootProvider?.dataRoot ?? this.parent?.dataRoot ?? this
   }
 
   /**

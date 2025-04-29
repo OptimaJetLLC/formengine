@@ -27,7 +27,11 @@ const getWrapperState = (viewerStore: Store, wrappedComponentData: ComponentData
   const componentStore = new ComponentStore(wrappedComponentData.key, componentModel.type)
   componentStore.props = wrapperProps
   const componentData = viewerStore.createComponentData(componentStore, false, componentModel)
-  componentData.dataRootProvider = wrappedComponentData.dataRootProvider
+  componentData.dataRootProvider = {
+    get dataRoot() {
+      return wrappedComponentData.dataRoot
+    }
+  }
   componentData.componentState = new ComponentState(componentData, viewerStore, localizer, () => ({}))
   return componentData.componentState
 }

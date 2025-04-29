@@ -84,12 +84,11 @@ export const defaultComponentStateFactory: ComponentStateFactory = (data: Compon
   return new ComponentState(data, store, defaultComponentLocalizer, defaultComputeChildren)
 
   function defaultComponentLocalizer(componentStore: ComponentStore) {
-    const dataContext = data.dataRootProvider ?? store.dataContext
-    return store.localizeComponent('component', dataContext.dataRoot, componentStore)
+    return store.localizeComponent('component', data.dataRoot, componentStore)
   }
 
   function defaultComputeChildren(componentData: ComponentData, componentProps: Record<string, any>) {
-    return getChildren(componentData, store.form.componentTree, ComponentTree, componentProps)
+    return getChildren(componentData, ComponentTree, componentProps)
   }
 }
 

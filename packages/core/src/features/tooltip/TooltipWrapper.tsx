@@ -53,8 +53,7 @@ const RawComponentTooltip = ({tooltipDefinition, children}: ComponentTooltipProp
   const wrappedComponentData = useComponentData()
   const wrappedComponentStore = wrappedComponentData.store
   const localize = useCallback((componentStore: ComponentStore) => {
-    const dataContext = wrappedComponentData.dataRootProvider ?? viewerStore.dataContext
-    return viewerStore.localizeComponent('tooltip', dataContext.dataRoot, componentStore)
+    return viewerStore.localizeComponent('tooltip', wrappedComponentData.dataRoot, componentStore)
   }, [viewerStore, wrappedComponentData])
   const componentState = useWrapperState(wrappedComponentData, tooltipDefinition, wrappedComponentStore.tooltipProps, localize)
   return createElement(tooltipDefinition.component, componentState.ownProps, children)
