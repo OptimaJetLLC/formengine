@@ -1,0 +1,72 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "checkbox",
+        "type": "RsCheckbox",
+        "props": {
+        },
+        "events": {
+          "onDidMount": [
+            {
+              "name": "logEvent",
+              "type": "custom"
+            }
+          ],
+          "onWillUnmount": [
+            {
+              "name": "logEvent",
+              "type": "custom"
+            }
+          ]
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "checkbox"
+          }
+        ]
+      },
+      {
+        "key": "rsButton1",
+        "type": "RsButton",
+        "props": {},
+        "events": {
+          "onDidMount": [
+            {
+              "name": "logEvent",
+              "type": "custom"
+            }
+          ],
+          "onWillUnmount": [
+            {
+              "name": "logEvent",
+              "type": "custom"
+            }
+          ]
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "rsButton1"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
