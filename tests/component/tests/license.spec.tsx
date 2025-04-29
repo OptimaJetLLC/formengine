@@ -2,8 +2,6 @@
 import {createView, FormViewer} from '@react-form-builder/core'
 import {wait} from '@react-form-builder/tests-common/lib/utils'
 import {render} from '@testing-library/react'
-import i18n from 'i18next'
-import {initReactI18next} from 'react-i18next'
 import {expect} from 'vitest'
 
 const formJson = JSON.stringify({
@@ -22,10 +20,6 @@ const App = ({license}: { license: string }) => {
 const licenseMessage = /This is a trial version of the product. To purchase a license, go to/
 
 describe.only(`License test`, function () {
-  beforeAll(() => {
-    i18n.use(initReactI18next).init({resources: {}}).catch(console.error)
-  })
-
   it('invalid license should produce license message', async () => {
     const invalidLicenseKey = 'TRIAL-boo-blah-blah'
     const {findByText} = render(<App license={invalidLicenseKey}/>)

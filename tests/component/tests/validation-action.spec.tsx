@@ -71,7 +71,7 @@ function createForm(failOnError: boolean): PersistedForm {
   return persistedForm
 }
 
-describe('123 Validation action', () => {
+describe('Validation action', () => {
   it('The classic validation action should not result in an error', async () => {
     const form = createForm(false)
     const getForm = () => JSON.stringify(form)

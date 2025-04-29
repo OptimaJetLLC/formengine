@@ -1,9 +1,7 @@
 import {type CustomizableKey, CustomizableZone, CustomizationMap, Options, useFormBuilder} from '@react-form-builder/designer'
 import {fireEvent, render} from '@testing-library/react'
-import i18n from 'i18next'
 import {klona} from 'klona/full'
 import {useCallback} from 'react'
-import {initReactI18next} from 'react-i18next'
 import {Button} from 'rsuite'
 import {describe, expect} from 'vitest'
 import App from '../../common/lib/designer/App'
@@ -39,9 +37,11 @@ const targetStyle = {
 const zoneCustomClass = 'TEST_CUSTOM_CLASS'
 const zoneRenderedClass = 'TEST_RENDER_CUSTOM_CLASS'
 const zoneRenderContent = 'TEST_CUSTOM_CONTENT'
-const customRenderer = (defaultElement: any, component: any, props: any) => (<div className={zoneRenderedClass}>
-  {zoneRenderContent}
-</div>)
+const customRenderer = () => {
+  return (<div className={zoneRenderedClass} data-testid="custom-renderer">
+    {zoneRenderContent}
+  </div>)
+}
 
 const isolate = false
 const only = isolate ? new Set(['Tree_Tab']) : undefined
@@ -63,12 +63,11 @@ function createZoneStaticCustomization(): Array<[CustomizableKey, CustomizationM
 describe.each(createZoneStaticCustomization())(`should apply all possible customization settings for every zone`, function (zone, customization) {
   const zoneClassName = `.FE_${zone}:not(.FE_Palette_Component):not(.FE_Palette_ComponentGroup)`
 
-  beforeAll(() => {
-    i18n.use(initReactI18next).init({resources: {}}).catch(console.error)
-  })
-
   it(`should have target zone ${zone} in the document`, async () => {
-    const {container} = render(<App customization={customization}/>)
+    const {container, findByTestId} = render(<App customization={customization}/>)
+
+    // ensure that the component is rendered
+    expect(await findByTestId('reactVersion')).toBeInTheDocument()
 
     expect(container.querySelector(zoneClassName)).toBeInTheDocument()
   })
@@ -77,13 +76,19 @@ describe.each(createZoneStaticCustomization())(`should apply all possible custom
     const config = klona(customization)
     config[zone]!.hidden = true
 
-    const {container} = render(<App customization={config}/>)
+    const {container, findByTestId} = render(<div data-testid="test-app"><App customization={config}/></div>)
+
+    // ensure that the component is rendered
+    expect(await findByTestId('test-app')).toBeInTheDocument()
 
     expect(container.querySelector(zoneClassName)).not.toBeInTheDocument()
   })
 
   it(`should apply class customization for ${zone}`, async () => {
-    const {container} = render(<App customization={customization}/>)
+    const {container, findByTestId} = render(<App customization={customization}/>)
+
+    // ensure that the component is rendered
+    expect(await findByTestId('reactVersion')).toBeInTheDocument()
 
     expect(container.querySelector(zoneClassName)).toHaveClass(zoneCustomClass)
   })
@@ -91,7 +96,10 @@ describe.each(createZoneStaticCustomization())(`should apply all possible custom
   it(`should apply custom renderer customization for ${zone} with className`, async () => {
     const config = klona(customization)
     config[zone]!.customRenderer = customRenderer
-    const {container} = render(<App customization={config}/>)
+    const {container, findByTestId} = render(<App customization={config}/>)
+
+    // ensure that the component is rendered
+    expect(await findByTestId('custom-renderer')).toBeInTheDocument()
 
     expect(container.querySelector(`div.${zoneRenderedClass}`)).toBeInTheDocument()
   })
@@ -99,13 +107,19 @@ describe.each(createZoneStaticCustomization())(`should apply all possible custom
   it(`should apply custom renderer customization for ${zone} with replaced content`, async () => {
     const config = klona(customization)
     config[zone]!.customRenderer = customRenderer
-    const {container} = render(<App customization={config}/>)
+    const {container, findByTestId} = render(<App customization={config}/>)
+
+    // ensure that the component is rendered
+    expect(await findByTestId('custom-renderer')).toBeInTheDocument()
 
     expect(container.querySelector(`div.${zoneRenderedClass}`)).toHaveTextContent(zoneRenderContent)
   })
 
   it(`should apply style customization for ${zone}`, async () => {
-    const {container} = render(<App customization={customization}/>)
+    const {container, findByTestId} = render(<App customization={customization}/>)
+
+    // ensure that the component is rendered
+    expect(await findByTestId('reactVersion')).toBeInTheDocument()
 
     expect(container.querySelector(zoneClassName)).toHaveStyle(targetStyle)
   })
