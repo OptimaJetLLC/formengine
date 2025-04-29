@@ -2,7 +2,6 @@ import {useEffect, useMemo} from 'react'
 import type {ViewMode} from '../../../types'
 import {namedObserver} from '../../../utils'
 import {useStore} from '../../../utils/contexts/StoreContext'
-import {EventStream} from '../../event/utils/EventStream'
 import {ComponentTree} from '../../ui/ComponentTree'
 import {useViewerProps} from './ViewerPropsContext'
 
@@ -32,31 +31,14 @@ function useAutoViewMode() {
 }
 
 /**
- * Properties of the React component {@link Viewer}.
- */
-export interface ViewerProps {
-  /**
-   * The function for processing form events.
-   * @param stream the event stream of the form viewer.
-   */
-  event?: (stream: EventStream) => void
-}
-
-/**
  * The React component of the form viewer, which displays the form itself with its components.
- * @param props the React component properties.
- * @param props.event the function for processing form events.
  * @returns the React element.
  */
-const RawViewer = ({event}: ViewerProps) => {
+const RawViewer = () => {
   const store = useStore()
   const {formLoadError} = store
   const props = useViewerProps()
   const data = useMemo(() => [store.form.componentTree], [store.form.componentTree])
-
-  useEffect(() => {
-    event?.(new EventStream(store.eventSubject))
-  }, [event, store.eventSubject])
 
   useAutoViewMode()
 

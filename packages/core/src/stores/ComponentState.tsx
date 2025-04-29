@@ -1,10 +1,11 @@
 import {css, cx} from '@emotion/css'
-import {assign, keysIn} from 'lodash-es'
+import {assign} from 'lodash-es'
 import {makeAutoObservable} from 'mobx'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
-import type {EventName} from '../features/event'
+import type {ActionData, EventName} from '../features/event'
 import {ActionEventArgs, DidMountEvent, WillUnmountEvent} from '../features/event'
 import type {CssPart} from '../features/style/types'
+import {isPromise} from '../utils'
 import type {ComputeChildren} from '../utils/ComputeChildren'
 import type {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
@@ -12,6 +13,24 @@ import type {ComponentStore} from './ComponentStore'
 import type {ComponentStoreLocalizer} from './ComponentStoreLocalizer'
 import type {IComponentState} from './IComponentState'
 import type {Store} from './Store'
+
+/**
+ * The generic asynchronous function type.
+ */
+type GenericVoidFunction = (...args: any[]) => void
+
+const createEventHandlers = (data: ComponentData): Record<EventName, GenericVoidFunction> => {
+  if (!data.field) return {}
+
+  return {
+    onChange: (value: unknown) => {
+      data.field?.setValue(value)
+    },
+    onBlur: () => {
+      data.field?.setTouched()
+    }
+  }
+}
 
 const getHtmlAttributes = (componentStore: ComponentStore) => componentStore.htmlAttributes
   ?.reduce((result: Record<string, string>, {name, value}) => {
@@ -23,15 +42,59 @@ const getHtmlAttributes = (componentStore: ComponentStore) => componentStore.htm
     return result
   }, {})
 
-const computeEvents = (data: ComponentData, store: Store, state: ComponentState) => {
+function createActionHandlersChain(store: Store, actionDataList: ActionData[]) {
+  const actions = actionDataList.map(data => ({
+    func: store.findAction(data).func,
+    args: data.args ? {...data.args} : {}
+  }))
+
+  return async (e: ActionEventArgs) => {
+    try {
+      for (const {func, args} of actions) {
+        const result = func(e, args)
+        if (isPromise(result)) await result
+      }
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.info('Action handler throws an error', e)
+    }
+  }
+}
+
+const createDefaultActionHandler = (componentState: ComponentState, eventName: EventName) => {
+  return async (...args: any[]) => {
+    const {data, store} = componentState
+    const actionDataList = data.store.events?.[eventName] ?? []
+    const handlersChain = createActionHandlersChain(store, actionDataList)
+    const renderedProps = componentState.get
+    const actionEventArgs = new ActionEventArgs(eventName, data, store, args, renderedProps)
+    await handlersChain(actionEventArgs)
+  }
+}
+
+const computeEvents = (componentState: ComponentState) => {
   const events = {} as Record<EventName, Function>
-  const hasActions = (eventName: string) => data.store.events?.[eventName]?.length
-  const eventNames = new Set<string>(keysIn(data.store.events).filter(hasActions))
-  eventNames.add('onChange').add('onBlur')
-  eventNames.delete(DidMountEvent)
-  eventNames.delete(WillUnmountEvent)
-  eventNames.forEach((name) =>
-    events[name] = (...args: any[]) => store.eventSubject.next(new ActionEventArgs(name, data, store, args, state.get)))
+  const {data} = componentState
+
+  const eventHandlers = createEventHandlers(data)
+
+  const eventKeyArray = [
+    ...Object.keys(data.store.events ?? {}),
+    ...Object.keys(eventHandlers)
+  ]
+
+  const set = new Set(eventKeyArray)
+  set.delete(DidMountEvent)
+  set.delete(WillUnmountEvent)
+
+  set.forEach((name) => {
+    events[name] = async (...args: any[]) => {
+      const handler = eventHandlers[name]
+      handler?.(...args)
+      const defaultHandler = createDefaultActionHandler(componentState, name)
+      await defaultHandler(...args)
+    }
+  })
 
   return events
 }
@@ -130,7 +193,7 @@ export class ComponentState implements IComponentState {
    * @returns the component event handlers that send events to the event bus.
    */
   get events() {
-    return computeEvents(this.data, this.store, this)
+    return computeEvents(this)
   }
 
   /**
@@ -166,6 +229,26 @@ export class ComponentState implements IComponentState {
    */
   children(props: any) {
     return this.computeChildren(this.data, props)
+  }
+
+  /**
+   * @inheritDoc
+   */
+  onDidMount() {
+    this.executeLifecycleEvent(DidMountEvent)
+  }
+
+  /**
+   * @inheritDoc
+   */
+  onWillUnmount() {
+    this.executeLifecycleEvent(WillUnmountEvent)
+  }
+
+  private executeLifecycleEvent(eventName: EventName) {
+    const handler = createDefaultActionHandler(this, eventName)
+    const mountEvent = new ActionEventArgs(eventName, this.data, this.store, [], this.get)
+    handler(mountEvent).catch(console.error)
   }
 
   private getClassNameFromCssPart(cssPart: CssPart) {

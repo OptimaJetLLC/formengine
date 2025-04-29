@@ -60,3 +60,27 @@ Calculates and returns wrapper className property.
 `string`
 
 the Record that contains the className property for the wrapper of component.
+
+## Methods
+
+### onDidMount()
+
+> **onDidMount**(): `void`
+
+The method that is called when the component is mounted.
+
+#### Returns
+
+`void`
+
+***
+
+### onWillUnmount()
+
+> **onWillUnmount**(): `void`
+
+The method that is called when the component is unmounted.
+
+#### Returns
+
+`void`

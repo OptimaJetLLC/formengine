@@ -85,28 +85,6 @@ The default error wrapper used when errorType is not specified in the form.
 
 ***
 
-### event()?
-
-> `optional` **event**: (`stream`) => `void`
-
-The function for processing form events. **Internal use only.**
-
-#### Parameters
-
-• **stream**: [`EventStream`](../../core/classes/EventStream.md)
-
-the event stream of the form viewer.
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-`Omit.event`
-
-***
-
 ### formName?
 
 > `optional` **formName**: `string`

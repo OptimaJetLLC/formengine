@@ -270,3 +270,35 @@ the React component properties.
 `Record`\<`string`, `any`\>
 
 the Record that contains the child components of a component.
+
+***
+
+### onDidMount()
+
+> **onDidMount**(): `void`
+
+The method that is called when the component is mounted.
+
+#### Returns
+
+`void`
+
+#### Implementation of
+
+[`IComponentState`](../interfaces/IComponentState.md).[`onDidMount`](../interfaces/IComponentState.md#ondidmount)
+
+***
+
+### onWillUnmount()
+
+> **onWillUnmount**(): `void`
+
+The method that is called when the component is unmounted.
+
+#### Returns
+
+`void`
+
+#### Implementation of
+
+[`IComponentState`](../interfaces/IComponentState.md).[`onWillUnmount`](../interfaces/IComponentState.md#onwillunmount)

@@ -25,7 +25,6 @@
 - [DataValidator](classes/DataValidator.md)
 - [Definer](classes/Definer.md)
 - [EventAnnotation](classes/EventAnnotation.md)
-- [EventStream](classes/EventStream.md)
 - [Form](classes/Form.md)
 - [FormViewerPropsStore](classes/FormViewerPropsStore.md)
 - [Language](classes/Language.md)

@@ -117,11 +117,6 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
-            "id": "api-reference/@react-form-builder/core/classes/EventStream",
-            "label": "EventStream"
-          },
-          {
-            "type": "doc",
             "id": "api-reference/@react-form-builder/core/classes/Form",
             "label": "Form"
           },

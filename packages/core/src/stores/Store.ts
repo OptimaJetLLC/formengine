@@ -1,8 +1,7 @@
 import {assign} from 'lodash-es'
 import {makeObservable, observable} from 'mobx'
-import {Subject} from 'rxjs'
 import type {Model} from '../features/define'
-import type {ActionData, ActionDefinition, ActionEventArgs, ActionType} from '../features/event'
+import type {ActionData, ActionDefinition, ActionType} from '../features/event'
 import {createActionValuesFromObject} from '../features/event'
 import {commonActions} from '../features/event/consts/actions'
 import type {IFormViewer} from '../features/form-viewer'
@@ -139,11 +138,6 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
    * The currently selected language.
    */
   selectedLanguage?: Language
-
-  /**
-   * The Subject for submitting form events.
-   */
-  readonly eventSubject = new Subject<ActionEventArgs>()
 
   /**
    * Current display resolution type.

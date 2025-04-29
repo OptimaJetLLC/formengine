@@ -3,7 +3,6 @@ import type {ViewMode} from '../../types'
 import type {ComputeChildren} from '../../utils/ComputeChildren'
 import type {IFormData} from '../../utils/IFormData'
 import type {View} from '../define'
-import type {EventStream} from '../event/utils/EventStream'
 import type {Language} from '../localization/types'
 import type {ErrorWrapperProps} from '../validation'
 import type {Validators} from '../validation/types/CustomValidationRules'
@@ -15,12 +14,6 @@ import type {FormValidators} from './FormValidators'
  * Form viewer React component properties.
  */
 export interface FormViewerProps {
-
-  /**
-   * The function for processing form events. **Internal use only.**
-   * @param stream the event stream of the form viewer.
-   */
-  event?: (stream: EventStream) => void
 
   /**
    * Loads the form.

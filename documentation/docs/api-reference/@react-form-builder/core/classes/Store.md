@@ -60,14 +60,6 @@ The context for working with data. **Internal use only**.
 
 ***
 
-### eventSubject
-
-> `readonly` **eventSubject**: `Subject`\<[`ActionEventArgs`](ActionEventArgs.md)\>
-
-The Subject for submitting form events.
-
-***
-
 ### form
 
 > **form**: [`Form`](Form.md)

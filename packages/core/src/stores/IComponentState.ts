@@ -23,6 +23,16 @@ export interface IComponentState {
    * @returns combined in order of priority component properties without children props.
    */
   get ownProps(): Record<string, any>
+
+  /**
+   * The method that is called when the component is mounted.
+   */
+  onDidMount(): void
+
+  /**
+   * The method that is called when the component is unmounted.
+   */
+  onWillUnmount(): void
 }
 
 /**
@@ -52,5 +62,15 @@ export const defaultComponentState: IComponentState = {
    */
   get ownProps() {
     return {}
-  }
+  },
+  /**
+   * @inheritDoc
+   */
+  onDidMount(): void {
+  },
+  /**
+   * @inheritDoc
+   */
+  onWillUnmount(): void {
+  },
 }

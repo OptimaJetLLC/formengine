@@ -1,6 +1,6 @@
 import {view} from '@react-form-builder/components-rsuite'
 import {ActionEventArgs, FormViewer, FormViewerProps} from '@react-form-builder/core'
-import {fireEvent, render} from '@testing-library/react'
+import {fireEvent, render, waitFor} from '@testing-library/react'
 import form from './forms/action-event-args-main-form.json'
 import parentTemplate from './forms/action-event-args-parent-template.json'
 import template from './forms/action-event-args-template.json'
@@ -306,6 +306,7 @@ describe('ActionEventArgs data tests', function () {
 
       fireEvent.change(formInput, {target: {value: expected.value}})
 
+      await waitFor(() => expect(actualActionEventArgs).not.toBeUndefined())
       if (!actualActionEventArgs) {
         throw new Error('actualActionEventArgs is undefined')
       }

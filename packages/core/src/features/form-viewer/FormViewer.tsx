@@ -40,7 +40,7 @@ const RawFormViewer = (props: FormViewerProps) =>
       <ViewerLocalizationProvider language={props.language}>
         <SDiv>
           <TrialMessage/>
-          <Viewer event={props.event}/>
+          <Viewer/>
         </SDiv>
       </ViewerLocalizationProvider>
     </ViewerStoreProvider>
