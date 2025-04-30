@@ -50,13 +50,13 @@ jobs:
       - name: Run e2e tests
         run: npm run test:e2e
 
-      - name: Upload Playwright Report
-        uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
-        with:
-          name: playwright-report
-          path: tests/e2e/playwright-report/
-          retention-days: 10
+      #      - name: Upload Playwright Report
+      #        uses: actions/upload-artifact@v4
+      #        if: ${{ !cancelled() }}
+      #        with:
+      #          name: playwright-report
+      #          path: tests/e2e/playwright-report/
+      #          retention-days: 10
 
       - name: Generate Report
         run: npx github-actions-ctrf reports/ctrf/ctrf-report.json
@@ -73,12 +73,12 @@ jobs:
       - name: Run Tests
         run: earthly +npm-test
 
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: test-results
-          path: test-results
+  #      - name: Upload test results
+  #        uses: actions/upload-artifact@v4
+  #        if: always()
+  #        with:
+  #          name: test-results
+  #          path: test-results
 
   build:
     name: Build Packages

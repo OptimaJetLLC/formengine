@@ -48,6 +48,23 @@ export default defineConfig(({command}) => ({
       return true
     },
     testTimeout: 60_000,
+    browser: {
+      provider: 'playwright',
+      enabled: false,
+      name: 'chromium',
+      instances: [{browser: 'chromium'}],
+      screenshotFailures: true,
+      screenshotDirectory: 'reports/screenshots',
+      viewport: {
+        width: 1440,
+        height: 900,
+      },
+      providerOptions: {
+        launch: {
+          devtools: !!process.env.BROWSER_DEVTOOL
+        }
+      }
+    },
     // reporters: ['verbose']
   }
 }))

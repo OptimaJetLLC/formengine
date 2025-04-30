@@ -13,10 +13,10 @@ describe(`Component: ${App.name}`, function () {
   })
 
   it('should support pass data', async () => {
-    const {getByDisplayValue, findByText} = render(<App/>)
+    const {getByDisplayValue, findByTestId} = render(<App/>)
 
     // check that the component is rendered
-    expect(await findByText('Preview')).toBeInTheDocument()
+    expect(await findByTestId('title-input')).toBeInTheDocument()
     expect(getByDisplayValue(/Hello! Hello!/)).toBeInTheDocument()
   })
 

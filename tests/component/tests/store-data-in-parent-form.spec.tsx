@@ -88,12 +88,12 @@ const parentForm = {
 
 describe(`storeDataInParentForm test`, function () {
   it('Data should be updated when `storeDataInParentForm` setting is changed', async () => {
-    const {findByText, getByTestId} = render(<App/>)
+    const {findByText, findByTestId} = render(<App/>)
 
     fireEvent.click(await findByText('Preview'))
 
-    expect(getByTestId('template-login')).toHaveValue('1')
-    expect(getByTestId('template-password')).toHaveValue('ok')
+    expect(await findByTestId('template-login')).toHaveValue('1')
+    expect(await findByTestId('template-password')).toHaveValue('ok')
 
     fireEvent.click(await findByText('Edit'))
 
@@ -107,9 +107,9 @@ describe(`storeDataInParentForm test`, function () {
 
     fireEvent.click(await findByText('Preview'))
 
-    expect(getByTestId('template-login')).toHaveValue('tortuga')
-    expect(getByTestId('template-password')).toHaveValue('man!')
-  }, 50000)
+    expect(await findByTestId('template-login')).toHaveValue('tortuga')
+    expect(await findByTestId('template-password')).toHaveValue('man!')
+  })
 
   it('Toggling the storeDataInParentForm property should display the data correctly', async () => {
     const components = rSuiteComponents.map(definer => definer.build())

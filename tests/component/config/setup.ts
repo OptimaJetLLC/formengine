@@ -7,7 +7,14 @@ import failOnConsole from 'vitest-fail-on-console'
 
 import {addMatchMediaFunctionToWindow} from './matchMedia'
 
-addMatchMediaFunctionToWindow()
+const isBrowserMode = () => {
+  return typeof process.env.VITEST_BROWSER_DEBUG !== 'undefined'
+}
+
+if (!isBrowserMode()) {
+  addMatchMediaFunctionToWindow()
+}
+
 failOnConsole({
   shouldFailOnWarn: true,
 })
@@ -17,11 +24,13 @@ beforeAll(() => {
     console.log('ERROR:', msg)
   })
 
-  // @ts-ignore use skia-canvas as a mock for canvas
-  vi.spyOn(global.HTMLCanvasElement.prototype, 'getContext').mockImplementation(() => {
-    const canvas = new Canvas()
-    return canvas.getContext('2d')
-  })
+  if (!isBrowserMode()) {
+    // @ts-ignore use skia-canvas as a mock for canvas
+    vi.spyOn(global.HTMLCanvasElement.prototype, 'getContext').mockImplementation(() => {
+      const canvas = new Canvas()
+      return canvas.getContext('2d')
+    })
+  }
 
   // disable i18n logging
   process.env.FORM_BUILDER_I18N_DISABLE_LOGGING = 'true'
