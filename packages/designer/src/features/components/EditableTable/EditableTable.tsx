@@ -12,6 +12,24 @@ const {ErrorMessage} = Form
 
 const {Column, HeaderCell} = Table
 
+const STable = styled(Table)`
+  .rs-table-cell, .rs-table-row {
+    background-color: transparent !important;
+  }
+
+  &.hideHeader {
+    margin-bottom: -40px;
+
+    .rs-table-header-row-wrapper {
+      display: none !important;
+    }
+
+    .rs-table-body-row-wrapper {
+      top: 0 !important;
+    }
+  }
+`
+
 /**
  * The React component properties for the {@link EditableTable} component.
  */
@@ -176,21 +194,3 @@ export const EditableTable = (props: EditableTableProps) => {
     }
   </div>)
 }
-
-const STable = styled(Table)`
-  .rs-table-cell, .rs-table-row {
-    background-color: transparent !important;
-  }
-
-  &.hideHeader {
-    margin-bottom: -40px;
-
-    .rs-table-header-row-wrapper {
-      display: none !important;
-    }
-
-    .rs-table-body-row-wrapper {
-      top: 0 !important;
-    }
-  }
-`

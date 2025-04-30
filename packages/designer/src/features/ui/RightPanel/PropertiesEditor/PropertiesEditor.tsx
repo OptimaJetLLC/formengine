@@ -5,6 +5,17 @@ import {NavTab} from './components/NavTab'
 import {Properties} from './components/Properties'
 import {Section} from './Section'
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+
+  .placement-left .rs-popover {
+    margin-left: -14px;
+  }
+`
+
 const tabs: Record<Section, boolean> = {
   [Section.Main]: true,
   [Section.Style]: true,
@@ -39,16 +50,5 @@ const RawPropertiesEditor = () => {
 }
 
 const PropertiesEditor = namedObserver('PropertiesEditor', RawPropertiesEditor)
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  flex: 1;
-
-  .placement-left .rs-popover {
-    margin-left: -14px;
-  }
-`
 
 export {PropertiesEditor}

@@ -7,20 +7,6 @@ import {Model} from '../define'
 import {ViewerPropsProvider} from '../form-viewer/components/ViewerPropsContext'
 import {useTemplate} from './templateModel'
 
-const Slot = () => {
-  const {parentStore} = useStore()
-  return parentStore
-    ? <SlotContent parentStore={parentStore}/>
-    : <SlotPlaceholder/>
-}
-Slot.displayName = 'Slot'
-
-/**
- * Form viewer slot metadata. **Internal use only.**
- */
-export const slotModel = new Model(Slot, 'Slot', undefined, undefined, undefined,
-  undefined, undefined, undefined, undefined, 'slot')
-
 const RawSlotContent = ({parentStore}: { parentStore: Store }) => {
   const {key} = useComponentData()
   const {viewerProps, data, templateProps} = useTemplate()
@@ -49,3 +35,17 @@ const RawSlotPlaceholder = () => {
 }
 
 const SlotPlaceholder = namedObserver('SlotPlaceholder', RawSlotPlaceholder)
+
+const Slot = () => {
+  const {parentStore} = useStore()
+  return parentStore
+    ? <SlotContent parentStore={parentStore}/>
+    : <SlotPlaceholder/>
+}
+Slot.displayName = 'Slot'
+
+/**
+ * Form viewer slot metadata. **Internal use only.**
+ */
+export const slotModel = new Model(Slot, 'Slot', undefined, undefined, undefined,
+  undefined, undefined, undefined, undefined, 'slot')

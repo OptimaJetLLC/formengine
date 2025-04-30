@@ -17,6 +17,103 @@ import {CodeEditor} from '../../components/CodeEditor/CodeEditor'
 import {Columns, Rows} from '../../components/Containers'
 import {FaIcon} from '../../components/Icons'
 import {useTranslationPart} from '../../localization/hooks'
+import {TestFormData} from './TestFormData'
+
+const messageColor: Partial<Record<TypeAttributes.Status, string>> = {
+  error: 'var(--rs-red-500)',
+  warning: 'var(--rs-orange-400)',
+  success: 'var(--rs-green-500)'
+}
+
+const messageColors = (type: TypeAttributes.Status) => css`
+  .rs-theme-dark && {
+    background-color: initial !important;
+
+    .rs-message-body, .rs-btn-close {
+      color: white;
+    }
+
+    .rs-message-icon-wrapper .rs-icon {
+      color: ${messageColor[type]} !important;
+    }
+  }
+`
+
+const SCompactMessage = styled(Message)<{ type: TypeAttributes.Status }>`
+  ${({type}) => messageColors(type)};
+  background-color: initial !important;
+  flex: 1;
+
+  .rs-message-container {
+    padding: 5px;
+  }
+`
+
+const SMessage = styled(Message)<{ type: TypeAttributes.Status }>`
+  ${({type}) => messageColors(type)};
+  border-radius: 6px;
+  border: 2px solid ${({type}) => messageColor[type]};
+`
+
+const getType = (result: CalculableResult): TypeAttributes.Status => {
+  if (!isUndefined(result.result) && !result.warning) {
+    return 'success'
+  }
+
+  if (result.warning) {
+    return 'warning'
+  }
+
+  if (result.error || result.exceptions) {
+    return 'error'
+  }
+
+  return 'warning'
+}
+
+const stringify = (data: any) => {
+  if (typeof data === 'string') return data
+  return JSON.stringify(prepareForJson(data, {previewNativeObjects: true}), null, 2)
+}
+
+const init = (data: ComponentData) => {
+  return stringify({data: initFormFields(data), errors: {}})
+}
+
+const ResultMessage = ({result}: { result: CalculableResult }) => {
+  const t = useTranslationPart('testingEditor')
+  return <div>
+    {!isUndefined(result.result)
+      ? stringify(result?.result)
+      : result.exceptions?.map(e => e.message) ?? t('hasNotReturnedValue')
+    }
+  </div>
+}
+
+const TestingResult = ({result, onClose, compact}: { result: CalculableResult, onClose: () => void, compact?: boolean }) => {
+  const MessageComponent = compact ? SCompactMessage : SMessage
+  const formattedContent = (
+    <div style={{maxHeight: 80, overflow: 'auto', wordBreak: 'break-word'}}>
+        <pre style={{whiteSpace: 'pre-wrap', margin: 0}}>
+          <ResultMessage result={result}/>
+        </pre>
+    </div>
+  )
+  return (
+    <MessageComponent type={getType(result)} closable={!compact} onClose={onClose} showIcon>
+      {compact ? <ResultMessage result={result}/> : formattedContent}
+    </MessageComponent>
+  )
+}
+
+function calculate(data: string, testingFunction: TestingFunction) {
+  try {
+    const {data: parsedData, errors} = JSON.parse(data)
+    return testingFunction(new TestFormData(parsedData, errors))
+  } catch (e: any) {
+    return CalculableResult.error([e])
+  }
+}
 
 const editorOptions: editor.IStandaloneEditorConstructionOptions = {
   contextmenu: false,
@@ -42,30 +139,6 @@ export type TestingEditorRef = {
 type TestingFunction = (data: IFormData) => CalculableResult
 type TestingEditorProps = { testingFunction: TestingFunction }
 type TestRunnerProps = { data?: string, testingFunction: TestingFunction, compact?: boolean }
-
-const RawTestingEditor = forwardRef(({testingFunction}: TestingEditorProps, ref) => {
-  const t = useTranslationPart('testingEditor')
-  const builderStore = useBuilderStore()
-  const {formData} = useStore()
-  const [data, setData] = useState(builderStore.testingData ?? init(formData))
-  const [initialData] = useState(data)
-
-  useEffect(() => () => {
-    builderStore.testingData = data
-  }, [builderStore, data])
-
-  return (
-    <Rows style={{flex: 1, minHeight: 100, minWidth: 0, alignItems: 'start', position: 'relative'}}>
-      <span style={{marginTop: -40, paddingBlock: 7, opacity: 0.6}}>{t('testFormData')}</span>
-      <div style={{flex: 1, minHeight: 20, width: '100%'}}>
-        <CodeEditor language="json" initialValue={initialData} onChange={setData} options={editorOptions}/>
-      </div>
-      <TestRunner data={data} testingFunction={testingFunction} ref={ref}/>
-    </Rows>
-  )
-})
-
-export const TestingEditor = namedObserver('TestingEditor', RawTestingEditor)
 
 const RawTestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerProps, ref) => {
   const t = useTranslationPart('testingEditor')
@@ -111,146 +184,26 @@ const RawTestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerPr
 
 export const TestRunner = namedObserver('TestRunner', RawTestRunner)
 
-const messageColor: Partial<Record<TypeAttributes.Status, string>> = {
-  error: 'var(--rs-red-500)',
-  warning: 'var(--rs-orange-400)',
-  success: 'var(--rs-green-500)'
-}
-
-const messageColors = (type: TypeAttributes.Status) => css`
-  .rs-theme-dark && {
-    background-color: initial !important;
-
-    .rs-message-body, .rs-btn-close {
-      color: white;
-    }
-
-    .rs-message-icon-wrapper .rs-icon {
-      color: ${messageColor[type]} !important;
-    }
-  }
-`
-
-const SCompactMessage = styled(Message)<{ type: TypeAttributes.Status }>`
-  ${({type}) => messageColors(type)};
-  background-color: initial !important;
-  flex: 1;
-
-  .rs-message-container {
-    padding: 5px;
-  }
-`
-
-const SMessage = styled(Message)<{ type: TypeAttributes.Status }>`
-  ${({type}) => messageColors(type)};
-  border-radius: 6px;
-  border: 2px solid ${({type}) => messageColor[type]};
-`
-
-const TestingResult = ({result, onClose, compact}: { result: CalculableResult, onClose: () => void, compact?: boolean }) => {
-  const MessageComponent = compact ? SCompactMessage : SMessage
-  const formattedContent = (
-    <div style={{maxHeight: 80, overflow: 'auto', wordBreak: 'break-word'}}>
-        <pre style={{whiteSpace: 'pre-wrap', margin: 0}}>
-          <ResultMessage result={result}/>
-        </pre>
-    </div>
-  )
-  return (
-    <MessageComponent type={getType(result)} closable={!compact} onClose={onClose} showIcon>
-      {compact ? <ResultMessage result={result}/> : formattedContent}
-    </MessageComponent>
-  )
-}
-
-const ResultMessage = ({result}: { result: CalculableResult }) => {
+const RawTestingEditor = forwardRef(({testingFunction}: TestingEditorProps, ref) => {
   const t = useTranslationPart('testingEditor')
-  return <div>
-    {!isUndefined(result.result)
-      ? stringify(result?.result)
-      : result.exceptions?.map(e => e.message) ?? t('hasNotReturnedValue')
-    }
-  </div>
-}
+  const builderStore = useBuilderStore()
+  const {formData} = useStore()
+  const [data, setData] = useState(builderStore.testingData ?? init(formData))
+  const [initialData] = useState(data)
 
-function calculate(data: string, testingFunction: TestingFunction) {
-  try {
-    const {data: parsedData, errors} = JSON.parse(data)
-    return testingFunction(new TestFormData(parsedData, errors))
-  } catch (e: any) {
-    return CalculableResult.error([e])
-  }
-}
+  useEffect(() => () => {
+    builderStore.testingData = data
+  }, [builderStore, data])
 
-const init = (data: ComponentData) => {
-  return stringify({data: initFormFields(data), errors: {}})
-}
+  return (
+    <Rows style={{flex: 1, minHeight: 100, minWidth: 0, alignItems: 'start', position: 'relative'}}>
+      <span style={{marginTop: -40, paddingBlock: 7, opacity: 0.6}}>{t('testFormData')}</span>
+      <div style={{flex: 1, minHeight: 20, width: '100%'}}>
+        <CodeEditor language="json" initialValue={initialData} onChange={setData} options={editorOptions}/>
+      </div>
+      <TestRunner data={data} testingFunction={testingFunction} ref={ref}/>
+    </Rows>
+  )
+})
 
-const stringify = (data: any) => {
-  if (typeof data === 'string') return data
-  return JSON.stringify(prepareForJson(data, {previewNativeObjects: true}), null, 2)
-}
-
-const getType = (result: CalculableResult): TypeAttributes.Status => {
-  if (!isUndefined(result.result) && !result.warning) {
-    return 'success'
-  }
-
-  if (result.warning) {
-    return 'warning'
-  }
-
-  if (result.error || result.exceptions) {
-    return 'error'
-  }
-
-  return 'warning'
-}
-
-/**
- * The class for accessing the test form data.
- */
-export class TestFormData implements IFormData {
-  index = undefined
-  state = {}
-  hasErrors = false
-  isValidating = false
-  parentData: Record<string, unknown> = {}
-  rootData: Record<string, unknown> = {}
-
-  /**
-   * Constructor
-   * @param data the test form data.
-   * @param errors the test form errors.
-   */
-  constructor(public data = {}, public errors = {}) {
-  }
-
-  /** @inheritDoc */
-  clear() {
-    this.data = {}
-  }
-
-  /** @inheritDoc */
-  validate() {
-    return Promise.resolve({})
-  }
-
-  /** @inheritDoc */
-  reset() {
-  }
-
-  /** @inheritDoc */
-  setAllErrors() {
-  }
-
-  /** @inheritDoc */
-  getValidationResult() {
-    return Promise.resolve(undefined)
-  }
-
-  /** @inheritDoc */
-  get fluentData() {
-    return this.data
-  }
-}
+export const TestingEditor = namedObserver('TestingEditor', RawTestingEditor)

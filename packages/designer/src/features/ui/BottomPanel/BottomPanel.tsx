@@ -9,6 +9,16 @@ import {ComputedPropertyEditor} from './ComputedPropertyEditor'
 import {CustomValidationCodeEditor} from './CustomValidationCodeEditor'
 import {JsonCodeEditor} from './JsonCodeEditor'
 
+const resizableStyles = css`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 980px;
+  padding: 10px;
+  gap: 10px;
+  box-shadow: 0 -5px 20px 0 rgb(0 0 0 / 15%);
+`
+
 const RawBottomPanel = () => {
   const store = useBuilderStore()
   const {currentEditable, bottomPanelHeight} = store
@@ -45,13 +55,3 @@ const RawBottomPanel = () => {
 }
 
 export const BottomPanel = namedObserver('BottomPanel', RawBottomPanel)
-
-const resizableStyles = css`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-width: 980px;
-  padding: 10px;
-  gap: 10px;
-  box-shadow: 0 -5px 20px 0 rgb(0 0 0 / 15%);
-`

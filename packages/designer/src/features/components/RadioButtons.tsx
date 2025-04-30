@@ -3,6 +3,34 @@ import type {LabeledValue} from '@react-form-builder/core'
 import {Radio, RadioGroup as RRadioGroup} from 'rsuite'
 import type {RadioGroupProps} from 'rsuite/esm/RadioGroup/RadioGroup'
 
+const Container = styled.div`
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+
+  .rs-radio-group {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .rs-radio-group-picker .rs-radio-inline {
+    padding: 0;
+  }
+
+  .rs-radio-checker {
+    min-height: 27px;
+    max-height: 27px;
+    margin: 0 7px !important;
+
+    label {
+      line-height: 14px !important;
+      padding: 4px 0 !important;
+    }
+  }
+`
+
 /**
  * The properties of the React {@link RadioButtons} component.
  */
@@ -48,31 +76,3 @@ export const RadioButtons = ({label, items, style, ...props}: RadioButtonsProps)
     </Container>
   )
 }
-
-const Container = styled.div`
-  display: flex;
-  gap: 10px;
-  justify-content: space-between;
-  align-items: center;
-  flex: 1;
-
-  .rs-radio-group {
-    width: 100%;
-    justify-content: space-evenly;
-  }
-
-  .rs-radio-group-picker .rs-radio-inline {
-    padding: 0;
-  }
-
-  .rs-radio-checker {
-    min-height: 27px;
-    max-height: 27px;
-    margin: 0 7px !important;
-
-    label {
-      line-height: 14px !important;
-      padding: 4px 0 !important;
-    }
-  }
-`

@@ -6,6 +6,12 @@ import {useCallback, useEffect, useMemo, useRef} from 'react'
 import type {CodeEditorProps} from './CodeEditorProps'
 import {MonacoCodeEditor} from './MonacoCodeEditor'
 
+function getEndPosition(str: string) {
+  const lines = str.split('\n')
+  const lastLineLength = lines.at(-1)?.length ?? 0
+  return [lines.length, lastLineLength + 1] as const
+}
+
 /**
  * The React component that displays constrained code editor.
  * @param props the React component properties.
@@ -90,10 +96,4 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
     }}
     theme={props.theme}
   />
-}
-
-function getEndPosition(str: string) {
-  const lines = str.split('\n')
-  const lastLineLength = lines.at(-1)?.length ?? 0
-  return [lines.length, lastLineLength + 1] as const
 }

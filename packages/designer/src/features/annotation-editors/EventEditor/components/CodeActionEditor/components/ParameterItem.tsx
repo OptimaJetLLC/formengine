@@ -9,6 +9,15 @@ import {Animation, Form, InputPicker, Schema} from 'rsuite'
 import {Columns, Rows} from '../../../../../components/Containers'
 import type {Parameter} from '../../ActionList/ActionItem/components/ArgumentList/ArgumentItem/Parameter'
 
+const RemoveButton = styled(Close)`
+  margin-top: 5px;
+  cursor: pointer;
+`
+
+const SParamName = styled.span`
+  cursor: pointer;
+`
+
 interface ParameterItemProps {
   value: Parameter
   onRemove: () => void
@@ -87,12 +96,3 @@ export const ParameterItem = ({value, onRemove, onChange, parameters}: Parameter
     </Animation.Collapse>
   </div>
 }
-
-const RemoveButton = styled(Close)`
-  margin-top: 5px;
-  cursor: pointer;
-`
-
-const SParamName = styled.span`
-  cursor: pointer;
-`

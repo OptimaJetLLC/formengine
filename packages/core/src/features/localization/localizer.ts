@@ -12,6 +12,55 @@ import {replaceDots, restoreDots} from './dots'
 import {getFluentCompatibleId} from './getFluentCompatibleId'
 import type {Language} from './types'
 
+function createLocalizationDataProxy(localizationData: Record<string, any>, missingProperties: string[]) {
+  return new Proxy(localizationData, {
+    get(target, property: string) {
+      if (property in target) {
+        return target[property]
+      }
+      missingProperties.push(restoreDots(property))
+      return ''
+    },
+    getOwnPropertyDescriptor(target, property) {
+      if (property in target) {
+        return Reflect.getOwnPropertyDescriptor(target, property)
+      }
+      return {
+        value: '',
+        writable: true,
+        configurable: true,
+      }
+    },
+  })
+}
+
+function localizeData(fluentBundle: FluentBundle, localizationData: Record<string, any>, pattern: Pattern) {
+  const missingProperties: string[] = []
+  const proxyFormData = createLocalizationDataProxy(localizationData, missingProperties)
+  const fluentErrors: Error[] = []
+  let result = fluentBundle.formatPattern(pattern, proxyFormData, fluentErrors)
+  result = restoreDots(result)
+  return {
+    result,
+    missingProperties,
+    fluentErrors
+  }
+}
+
+function logFluentErrors(fluentErrors: Error[]) {
+  if (fluentErrors.length > 0) {
+    console.warn('Localization errors:', fluentErrors)
+  }
+}
+
+const getFluentBundles = (form: Form, language: Language) => {
+  const defaultBundle = form.defaultLanguage !== language
+    ? form.localization.getFluentBundle(form.defaultLanguage.fullCode)
+    : undefined
+  const fluentBundle = form.localization.getFluentBundle(language.fullCode)
+  return {defaultBundle, fluentBundle}
+}
+
 /**
  * Localization testing request.
  */
@@ -126,53 +175,4 @@ export const localizeErrorMessage = (form: Form, formData: IFormData, language: 
   const {result, fluentErrors} = localizeData(fluentBundle, formData.fluentData, message.value!)
   logFluentErrors(fluentErrors)
   return result
-}
-
-function createLocalizationDataProxy(localizationData: Record<string, any>, missingProperties: string[]) {
-  return new Proxy(localizationData, {
-    get(target, property: string) {
-      if (property in target) {
-        return target[property]
-      }
-      missingProperties.push(restoreDots(property))
-      return ''
-    },
-    getOwnPropertyDescriptor(target, property) {
-      if (property in target) {
-        return Reflect.getOwnPropertyDescriptor(target, property)
-      }
-      return {
-        value: '',
-        writable: true,
-        configurable: true,
-      }
-    },
-  })
-}
-
-function localizeData(fluentBundle: FluentBundle, localizationData: Record<string, any>, pattern: Pattern) {
-  const missingProperties: string[] = []
-  const proxyFormData = createLocalizationDataProxy(localizationData, missingProperties)
-  const fluentErrors: Error[] = []
-  let result = fluentBundle.formatPattern(pattern, proxyFormData, fluentErrors)
-  result = restoreDots(result)
-  return {
-    result,
-    missingProperties,
-    fluentErrors
-  }
-}
-
-function logFluentErrors(fluentErrors: Error[]) {
-  if (fluentErrors.length > 0) {
-    console.warn('Localization errors:', fluentErrors)
-  }
-}
-
-const getFluentBundles = (form: Form, language: Language) => {
-  const defaultBundle = form.defaultLanguage !== language
-    ? form.localization.getFluentBundle(form.defaultLanguage.fullCode)
-    : undefined
-  const fluentBundle = form.localization.getFluentBundle(language.fullCode)
-  return {defaultBundle, fluentBundle}
 }

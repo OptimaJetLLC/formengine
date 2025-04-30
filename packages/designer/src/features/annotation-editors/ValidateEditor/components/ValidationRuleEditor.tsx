@@ -12,6 +12,10 @@ import {PropertyBlock} from '../../../ui/RightPanel/PropertiesEditor/components/
 import {convertValidationRuleParametersToAnnotations} from '../../../validation/utils/parameterConverter'
 import {HintedIconButton} from '../../Hinted'
 
+const SRuleName = styled.span`
+  font-size: medium;
+`
+
 const WarningButton = (props: ComponentProps<any>) => {
   const t = useTranslationPart('validation')
   const icon = <RemindFill color="#f5a623"/>
@@ -80,7 +84,3 @@ const RawValidationRuleEditor = ({rule, onRemove}: ValidationRuleEditorProps) =>
 }
 
 export const ValidationRuleEditor = namedObserver('ValidationRuleEditor', RawValidationRuleEditor)
-
-const SRuleName = styled.span`
-  font-size: medium;
-`

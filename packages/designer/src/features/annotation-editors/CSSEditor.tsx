@@ -9,6 +9,14 @@ import type {RadioButtonsProps} from '../components/RadioButtons'
 import {RadioButtons} from '../components/RadioButtons'
 import {useTranslationPart} from '../localization/hooks'
 
+const SCodeEditor = styled(CodeEditor)`
+  .suggest-widget {
+    width: 100% !important;
+    left: 0 !important;
+    overflow: hidden;
+  }
+`
+
 /**
  * CSSEditor React component properties.
  */
@@ -78,11 +86,3 @@ const RawCSSEditor = ({device, useWrapperStyles, defaultActiveTab}: CSSEditorPro
 }
 
 export const CSSEditor = namedObserver('CSSEditor', RawCSSEditor)
-
-const SCodeEditor = styled(CodeEditor)`
-  .suggest-widget {
-    width: 100% !important;
-    left: 0 !important;
-    overflow: hidden;
-  }
-`

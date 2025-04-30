@@ -16,6 +16,46 @@ import {useSelection} from '../hooks/useSelection'
 import {AddButton} from './AddButton'
 import {PresetComponentButton} from './PresetComponentButton'
 
+const ToolbarContainer = styled.div`
+  inset: initial;
+  right: 5px;
+  top: -13px;
+
+  &.compact {
+    top: 8px;
+  }
+
+  position: absolute;
+  z-index: 12;
+  color: var(--rs-btn-ghost-text);
+  cursor: pointer !important;
+  white-space: nowrap;
+  border-radius: 5px;
+  height: 20px;
+  width: fit-content;
+  padding-inline: 5px;
+  font-weight: 400;
+  font-size: 14px;
+  background-color: white;
+
+  .rs-theme-dark & {
+    background-color: #3b3f43;
+  }
+
+  display: flex;
+  gap: 5px;
+  align-items: center;
+
+  & > .rs-icon {
+    cursor: pointer;
+  }
+`
+
+const Title = styled.label`
+  display: inline;
+  cursor: move;
+`
+
 /**
  * Toolbar React component properties.
  */
@@ -75,43 +115,3 @@ const RawToolbar = ({compact}: ToolbarProps) => {
 }
 
 export const Toolbar = namedObserver('Toolbar', RawToolbar)
-
-const ToolbarContainer = styled.div`
-  inset: initial;
-  right: 5px;
-  top: -13px;
-
-  &.compact {
-    top: 8px;
-  }
-
-  position: absolute;
-  z-index: 12;
-  color: var(--rs-btn-ghost-text);
-  cursor: pointer !important;
-  white-space: nowrap;
-  border-radius: 5px;
-  height: 20px;
-  width: fit-content;
-  padding-inline: 5px;
-  font-weight: 400;
-  font-size: 14px;
-  background-color: white;
-
-  .rs-theme-dark & {
-    background-color: #3b3f43;
-  }
-
-  display: flex;
-  gap: 5px;
-  align-items: center;
-
-  & > .rs-icon {
-    cursor: pointer;
-  }
-`
-
-const Title = styled.label`
-  display: inline;
-  cursor: move;
-`

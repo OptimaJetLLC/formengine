@@ -1,6 +1,21 @@
 import type {Context, Provider} from 'react'
 import {createContext, useContext} from 'react'
 
+function createContextHook<T, >(context: Context<T>) {
+  return () => {
+    const value = useContext(context)
+
+    if (!value) throw new Error(`The context ${context.displayName} was not found!`)
+
+    return value
+  }
+}
+
+function createProvider<T, >(context: Context<T | null>) {
+  const value = context as Context<T>
+  return value.Provider
+}
+
 /**
  * Creates non-nullable React context. **Internal use only.**
  * @param name the context name.
@@ -15,19 +30,4 @@ export function createNonNullableContext<T>(name: string, defaultValue: T | null
   const provider = createProvider(context)
 
   return [hook, provider, context]
-}
-
-function createContextHook<T, >(context: Context<T>) {
-  return () => {
-    const value = useContext(context)
-
-    if (!value) throw new Error(`The context ${context.displayName} was not found!`)
-
-    return value
-  }
-}
-
-function createProvider<T, >(context: Context<T | null>) {
-  const value = context as Context<T>
-  return value.Provider
 }

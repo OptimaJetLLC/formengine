@@ -9,6 +9,39 @@ import {useComputed} from '../../../../../utils/useComputed'
 import {useSelection} from '../hooks/useSelection'
 import {Toolbar} from './Toolbar'
 
+const SIndent = styled.div<{ depth: number }>`
+  min-width: ${({depth}) => 14 * (depth + 1) + 14}px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-inline-end: 4px;
+`
+
+const SNodeItem = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: start;
+  flex-direction: row;
+  padding-block: 8px;
+  padding-right: 8px;
+
+  label {
+    opacity: 0.4;
+    margin-left: 6px;
+  }
+
+  &.hovered {
+    background-color: var(--rs-listbox-option-selected-bg);
+    cursor: pointer !important;
+  }
+
+  &.selected {
+    background-color: var(--rs-listbox-option-selected-bg);
+    color: var(--rs-listbox-option-selected-text);
+  }
+`
+
 /**
  * TreeNode React component properties.
  */
@@ -72,36 +105,3 @@ const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
 }
 
 export const TreeNode = namedObserver('TreeNode', RawTreeNode)
-
-const SIndent = styled.div<{ depth: number }>`
-  min-width: ${({depth}) => 14 * (depth + 1) + 14}px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  padding-inline-end: 4px;
-`
-
-const SNodeItem = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: start;
-  flex-direction: row;
-  padding-block: 8px;
-  padding-right: 8px;
-
-  label {
-    opacity: 0.4;
-    margin-left: 6px;
-  }
-
-  &.hovered {
-    background-color: var(--rs-listbox-option-selected-bg);
-    cursor: pointer !important;
-  }
-
-  &.selected {
-    background-color: var(--rs-listbox-option-selected-bg);
-    color: var(--rs-listbox-option-selected-text);
-  }
-`

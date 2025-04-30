@@ -21,6 +21,20 @@ import {Toolbar} from './components/Toolbar'
 import {ErrorBoundary} from './ErrorBoundary'
 import {useSelection} from './hooks/useSelection'
 
+function getTemplateSlots(data: ComponentData) {
+  if (!(data.field instanceof TemplateField)) return []
+
+  const slots = data.field.viewerStore.form.componentTree
+    .store.children?.filter(cs => cs.type === slotModel.type)
+
+  const ans = slots?.reduce((acc: Record<string, any>, cs) => {
+    acc[cs.key] = node
+    return acc
+  }, {})
+
+  return toArray(ans)
+}
+
 const childrenSlot = 'children'
 
 function getSlot(componentStore: ComponentStore) {
@@ -72,14 +86,6 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
   return currentProps
 }
 
-const RawEditableWrapper = ({children, ...props}: WrapperProps) => {
-  const viewerStore = useStore()
-  const Wrapper = viewerStore.parentStore ? DefaultWrapper : Editable
-  return <Wrapper children={children} {...props}/>
-}
-
-export const EditableWrapper = namedObserver('EditableWrapper', RawEditableWrapper)
-
 const RawEditable = ({children, className}: WrapperProps) => {
   const [{selected}, selectionHandlers, selectionClassName] = useSelection()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
@@ -97,16 +103,10 @@ const RawEditable = ({children, className}: WrapperProps) => {
 
 const Editable = namedObserver('Editable', RawEditable)
 
-function getTemplateSlots(data: ComponentData) {
-  if (!(data.field instanceof TemplateField)) return []
-
-  const slots = data.field.viewerStore.form.componentTree
-    .store.children?.filter(cs => cs.type === slotModel.type)
-
-  const ans = slots?.reduce((acc: Record<string, any>, cs) => {
-    acc[cs.key] = node
-    return acc
-  }, {})
-
-  return toArray(ans)
+const RawEditableWrapper = ({children, ...props}: WrapperProps) => {
+  const viewerStore = useStore()
+  const Wrapper = viewerStore.parentStore ? DefaultWrapper : Editable
+  return <Wrapper children={children} {...props}/>
 }
+
+export const EditableWrapper = namedObserver('EditableWrapper', RawEditableWrapper)

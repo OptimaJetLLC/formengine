@@ -76,6 +76,19 @@ export interface IDataRootProvider {
 }
 
 /**
+ * Replaces empty form fields with an empty string. **Internal use only.**
+ * @param form the form.
+ * @returns all form data where empty fields are filled with empty strings.
+ */
+export const initFormFields = (form: ComponentData) => {
+  const result: Record<string, unknown> = {}
+  form.fields.forEach((field, key) => {
+    result[key] = form.data[key] ?? ''
+  })
+  return result
+}
+
+/**
  * This tree of elements contains the data required to display the component. It is synchronized with the ComponentStore tree.
  */
 export class ComponentData implements IFormData {
@@ -573,19 +586,6 @@ export class ComponentData implements IFormData {
     }
     this.parent?.invokeOnBeforeDeleted(nodes)
   }
-}
-
-/**
- * Replaces empty form fields with an empty string. **Internal use only.**
- * @param form the form.
- * @returns all form data where empty fields are filled with empty strings.
- */
-export const initFormFields = (form: ComponentData) => {
-  const result: Record<string, unknown> = {}
-  form.fields.forEach((field, key) => {
-    result[key] = form.data[key] ?? ''
-  })
-  return result
 }
 
 const [

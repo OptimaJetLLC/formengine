@@ -11,33 +11,6 @@ import {ErrorFormWrapper} from './ErrorFormWrapper'
 import {Header} from './Header/Header'
 import {PanelContainer} from './Panel'
 
-const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
-  const builderStore = useBuilderStore()
-  const {formLoadError} = useStore()
-  const {viewMode, landscapeMode, builderMode} = builderStore
-  const viewerProps = useViewerProps()
-  const {t} = useTranslation()
-  const componentWrapper = builderMode === 'builder' ? EditableWrapper : undefined
-  const builderContext = useMemo(() => ({builderMode, translate: t}), [builderMode, t])
-
-  return (
-    <SContainer {...props}>
-      <Header/>
-      <SFormContainer className={cx(viewMode, builderMode, {landscapeMode, withForm: !formLoadError})}>
-        <BuilderContextProvider value={builderContext}>
-          <ErrorFormWrapper>
-            <FormViewer {...viewerProps} componentWrapper={componentWrapper} viewMode={viewMode}
-                        formName={builderStore.activeFormName}/>
-          </ErrorFormWrapper>
-        </BuilderContextProvider>
-      </SFormContainer>
-    </SContainer>
-  )
-}
-
-
-export const CentralPanel = customizableObserver('CentralPanel', RawCentralPanel)
-
 const SContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -89,3 +62,30 @@ const SFormContainer = customizable('FormContainer', styled(PanelContainer)`
     }
   }
 `)
+
+const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
+  const builderStore = useBuilderStore()
+  const {formLoadError} = useStore()
+  const {viewMode, landscapeMode, builderMode} = builderStore
+  const viewerProps = useViewerProps()
+  const {t} = useTranslation()
+  const componentWrapper = builderMode === 'builder' ? EditableWrapper : undefined
+  const builderContext = useMemo(() => ({builderMode, translate: t}), [builderMode, t])
+
+  return (
+    <SContainer {...props}>
+      <Header/>
+      <SFormContainer className={cx(viewMode, builderMode, {landscapeMode, withForm: !formLoadError})}>
+        <BuilderContextProvider value={builderContext}>
+          <ErrorFormWrapper>
+            <FormViewer {...viewerProps} componentWrapper={componentWrapper} viewMode={viewMode}
+                        formName={builderStore.activeFormName}/>
+          </ErrorFormWrapper>
+        </BuilderContextProvider>
+      </SFormContainer>
+    </SContainer>
+  )
+}
+
+
+export const CentralPanel = customizableObserver('CentralPanel', RawCentralPanel)

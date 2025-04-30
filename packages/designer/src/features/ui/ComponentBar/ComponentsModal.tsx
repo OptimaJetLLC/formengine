@@ -8,6 +8,20 @@ import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {useTranslationPart} from '../../localization/hooks'
 import {ComponentBar} from './ComponentBar'
 
+const SModal = styled(Modal)`
+  width: 825px !important;
+
+  .rs-modal-content {
+    background-color: var(--rs-btn-default-bg);
+  }
+
+  .rs-modal-body {
+    margin-top: initial !important;
+    padding-top: 20px;
+    padding-bottom: 0;
+  }
+`
+
 /**
  * The modal window with a list of components that can be added to the form.
  * @returns the React element.
@@ -38,17 +52,3 @@ const RawComponentsModal = () => {
 }
 
 export const ComponentsModal = namedObserver('ComponentsModal', RawComponentsModal)
-
-const SModal = styled(Modal)`
-  width: 825px !important;
-
-  .rs-modal-content {
-    background-color: var(--rs-btn-default-bg);
-  }
-
-  .rs-modal-body {
-    margin-top: initial !important;
-    padding-top: 20px;
-    padding-bottom: 0;
-  }
-`

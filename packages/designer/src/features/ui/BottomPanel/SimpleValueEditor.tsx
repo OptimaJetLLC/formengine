@@ -4,6 +4,13 @@ import {Button, ButtonGroup} from 'rsuite'
 import type {CalculableCodeEditorProps} from '../../calculation/CalculableCodeEditor'
 import {Rows} from '../../components/Containers'
 
+const SDiv = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 /**
  * The React form builder component that displays a simple value editor for a property.
  * @param props the React component properties.
@@ -21,10 +28,3 @@ export const SimpleValueEditor = ({editableProperty, onClose}: CalculableCodeEdi
     </ButtonGroup>
   </Rows>
 }
-
-const SDiv = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`

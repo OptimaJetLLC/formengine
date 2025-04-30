@@ -10,6 +10,26 @@ import {useLoadData} from '../hooks'
 import {RsLabeledInput} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
+const Container = styled.div`
+  display: flex;
+  flex: 1;
+
+  .search-icon {
+    margin-left: -28px;
+    margin-top: 10px;
+    z-index: 10;
+  }
+
+  .rs-loader .rs-loader-spin, .rs-loader .rs-loader-spin:after, .rs-loader .rs-loader-spin:before {
+    height: 16px !important;
+    width: 16px !important;
+  }
+`
+
+const SInputPicker = styled(InputPicker)`
+  flex: 1;
+`
+
 interface RsSearchProps extends InputPickerProps {
   label: string
   onLoadData?: LoadDataHandler
@@ -35,26 +55,6 @@ const RsSearch = ({data, label, onLoadData, onSearch, value = '', className, pre
     </RsLabeledInput>
   )
 }
-
-const Container = styled.div`
-  display: flex;
-  flex: 1;
-
-  .search-icon {
-    margin-left: -28px;
-    margin-top: 10px;
-    z-index: 10;
-  }
-
-  .rs-loader .rs-loader-spin, .rs-loader .rs-loader-spin:after, .rs-loader .rs-loader-spin:before {
-    height: 16px !important;
-    width: 16px !important;
-  }
-`
-
-const SInputPicker = styled(InputPicker)`
-  flex: 1;
-`
 
 export const rsSearch = define(RsSearch, 'RsSearch')
   .name('Search')

@@ -342,6 +342,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
         }
 
         // then we create a data context
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
         const repeaterFormContext = new RepeaterFormContext(this, this.store, this.getValidationRules, contextData, i)
 
         // now create the root element of the inner form, it is necessary for correct work of itemRenderWhen property

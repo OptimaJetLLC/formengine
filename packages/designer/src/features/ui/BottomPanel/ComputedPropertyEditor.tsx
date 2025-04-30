@@ -10,6 +10,12 @@ import {LocalizationEditor} from '../../localization/LocalizationEditor'
 import {Header} from './Header'
 import {SimpleValueEditor} from './SimpleValueEditor'
 
+const getToggleItems = ({calculable, localizable}: Annotation, translate: (key: string) => string) => [
+  ...calculable ? ['function'] : [],
+  ...localizable ? ['localization'] : [],
+  ...calculable || localizable ? ['simpleValue'] : []
+].map(value => ({label: translate(`bottomPanel.${value}`), value}))
+
 type ComputeType = ComponentPropertyComputeType | 'simpleValue'
 
 const editors: Record<ComputeType, any> = {
@@ -55,9 +61,3 @@ const RawComputedPropertyEditor = ({property}: ComputedPropertyEditorProps) => {
 }
 
 export const ComputedPropertyEditor = namedObserver('ComputedPropertyEditor', RawComputedPropertyEditor)
-
-const getToggleItems = ({calculable, localizable}: Annotation, translate: (key: string) => string) => [
-  ...calculable ? ['function'] : [],
-  ...localizable ? ['localization'] : [],
-  ...calculable || localizable ? ['simpleValue'] : []
-].map(value => ({label: translate(`bottomPanel.${value}`), value}))

@@ -3,6 +3,32 @@ import * as monaco from 'monaco-editor'
 import {fluentLanguageId} from '../../localization/consts'
 import {monacoJavascriptDefaults} from './monacoJavascriptDefaults'
 
+const vsExtendedTheme = {
+  base: 'vs',
+  inherit: true,
+  rules: [
+    {
+      token: 'string.fluent',
+      foreground: '008000'
+    },
+    {
+      token: 'variable.fluent',
+      foreground: '1d087a'
+    },
+    {
+      token: 'regexp.fluent',
+      foreground: '1d087a'
+    },
+    {
+      token: 'constant.fluent',
+      foreground: '4978ad'
+    },
+  ],
+  colors: {
+    'editor.background': '#f7f7fa'
+  }
+}
+
 if (!import.meta.env.PROD) {
   const toWorkerUrl = (label: string) => {
     switch (label) {
@@ -103,31 +129,5 @@ loader.init().then(monaco => {
   })
   monaco.editor.defineTheme('vs-extended', vsExtendedTheme as any)
 })
-
-const vsExtendedTheme = {
-  base: 'vs',
-  inherit: true,
-  rules: [
-    {
-      token: 'string.fluent',
-      foreground: '008000'
-    },
-    {
-      token: 'variable.fluent',
-      foreground: '1d087a'
-    },
-    {
-      token: 'regexp.fluent',
-      foreground: '1d087a'
-    },
-    {
-      token: 'constant.fluent',
-      foreground: '4978ad'
-    },
-  ],
-  colors: {
-    'editor.background': '#f7f7fa'
-  }
-}
 
 export const MonacoCodeEditor = Editor

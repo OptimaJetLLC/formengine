@@ -10,6 +10,13 @@ import {Columns, Rows} from '../components/Containers'
 import type {TestingEditorRef} from '../ui/BottomPanel/TestingEditor'
 import {TestingEditor, TestRunner} from '../ui/BottomPanel/TestingEditor'
 
+const SDiv = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: end;
+  justify-content: space-between;
+`
+
 /**
  * Properties of the React component {@link GenericCodeEditor}.
  */
@@ -95,10 +102,3 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
     {!props.compact && <TestingEditor testingFunction={testingFunction} ref={testingEditor}/>}
   </Columns>
 }
-
-const SDiv = styled.div`
-  display: flex;
-  gap: 10px;
-  align-items: end;
-  justify-content: space-between;
-`

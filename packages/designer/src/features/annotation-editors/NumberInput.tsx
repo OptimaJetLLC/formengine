@@ -5,6 +5,12 @@ import {InputNumber} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
+const SNumberInput = styled(InputNumber)`
+  .rs-input-group-addon {
+    padding: 1px 8px !important;
+  }
+`
+
 /**
  * The property editor for the numeric property type.
  * @param props the Annotation editor component properties.
@@ -31,11 +37,5 @@ const NumberInput = (props: AnnotationEditorProps) => {
     <SNumberInput {...inputNumberProps} onChange={handleChange} size={'xs'} postfix={closeButton}/>
   </LabeledProperty>
 }
-
-const SNumberInput = styled(InputNumber)`
-  .rs-input-group-addon {
-    padding: 1px 8px !important;
-  }
-`
 
 export {NumberInput}

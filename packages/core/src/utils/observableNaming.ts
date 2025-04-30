@@ -1,3 +1,10 @@
+function nameObservableEntity(observableName: string, owner: string, name?: string, params: Record<string, any> = {}) {
+  const paramsString = Object.keys(params)
+    .map(key => `${key}=${params[key]}`)
+    .join('_')
+  return `${observableName}_${owner}_${name ? `${name}_` : ''}${paramsString}`
+}
+
 /**
  * Computes the autorun name based on the owner, name, and parameters. **Internal use only.**
  * @param owner the owner of the autorun.
@@ -17,11 +24,4 @@ export function nameAutorun(owner: string, name: string, params: Record<string, 
  */
 export function nameObservable(owner: string, params: Record<string, any> = {}) {
   return nameObservableEntity('observable', owner, undefined, params)
-}
-
-function nameObservableEntity(observableName: string, owner: string, name?: string, params: Record<string, any> = {}) {
-  const paramsString = Object.keys(params)
-    .map(key => `${key}=${params[key]}`)
-    .join('_')
-  return `${observableName}_${owner}_${name ? `${name}_` : ''}${paramsString}`
 }

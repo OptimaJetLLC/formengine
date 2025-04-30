@@ -14,17 +14,6 @@ interface KeyInputProps extends AnnotationEditorProps {
   id?: string
 }
 
-/**
- * The property editor for the key property type.
- * @param props the Annotation editor component properties.
- * @returns the React element.
- */
-const RawKeyInput = (props: AnnotationEditorProps) => (
-  <LabeledProperty {...props}>
-    <KeyInputGroup {...props}/>
-  </LabeledProperty>
-)
-
 const KeyInputGroup = (props: KeyInputProps) => {
   const viewerStore = useStore()
   const {id, value, onChange, showError} = props
@@ -82,5 +71,16 @@ const KeyInputGroup = (props: KeyInputProps) => {
     </InputGroup>
   )
 }
+
+/**
+ * The property editor for the key property type.
+ * @param props the Annotation editor component properties.
+ * @returns the React element.
+ */
+const RawKeyInput = (props: AnnotationEditorProps) => (
+  <LabeledProperty {...props}>
+    <KeyInputGroup {...props}/>
+  </LabeledProperty>
+)
 
 export const KeyInput = namedObserver('KeyInput', RawKeyInput)

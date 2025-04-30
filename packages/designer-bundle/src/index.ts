@@ -16,18 +16,6 @@ import {createRoot} from 'react-dom/client'
 
 /**
  * Displays the FormBuilder component on the specified HTML element.
- * @param elementId the HTML element identifier.
- * @param props the component properties.
- * @returns React Root.
- */
-export function renderFormBuilder(elementId: string, props: Partial<FormBuilderProps>) {
-  const container = document.getElementById(elementId)
-  if (!container) throw new Error(`Cannot find element with id '${elementId}'`)
-  return renderFormBuilderTo(container, props)
-}
-
-/**
- * Displays the FormBuilder component on the specified HTML element.
  * @param container the HTML element.
  * @param props the component properties.
  * @returns React Root.
@@ -51,6 +39,18 @@ export function renderFormBuilderTo(container: HTMLElement, props: Partial<FormB
 
   root.render(createElement(FormBuilder, formBuilderProps, null))
   return root
+}
+
+/**
+ * Displays the FormBuilder component on the specified HTML element.
+ * @param elementId the HTML element identifier.
+ * @param props the component properties.
+ * @returns React Root.
+ */
+export function renderFormBuilder(elementId: string, props: Partial<FormBuilderProps>) {
+  const container = document.getElementById(elementId)
+  if (!container) throw new Error(`Cannot find element with id '${elementId}'`)
+  return renderFormBuilderTo(container, props)
 }
 
 export {ActionDefinition, Language} from '@react-form-builder/core'

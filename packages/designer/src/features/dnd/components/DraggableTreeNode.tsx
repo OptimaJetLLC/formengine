@@ -7,6 +7,7 @@ const RawDraggableTreeNode = () => {
   const [_, selectionHandlers, selectionClassName] = useSelection()
   return (
     <Draggable {...selectionHandlers} isTree={true} style={{width: '100%'}}>
+      {/* eslint-disable-next-line @typescript-eslint/no-use-before-define */}
       <TreeNode className={selectionClassName} componentDataViewer={DraggableTreeNode}/>
     </Draggable>
   )

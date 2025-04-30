@@ -41,6 +41,17 @@ export const useLoadData = ({data: initialData, onLoadData, value, preload, ...p
   const [loading, setLoading] = useState(false)
   const hasValue = (item: ItemDataType) => item.value === value
 
+  const loadCallback: LoadCallback = newData => {
+    let filteredData = data
+
+    if (value && newData.some(hasValue)) {
+      filteredData = data.filter(item => !hasValue(item))
+    }
+
+    setData([...filteredData, ...newData])
+    setLoading(false)
+  }
+
   useEffect(() => {
     if (preload) onLoadData?.('', loadCallback, 0)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -61,17 +72,6 @@ export const useLoadData = ({data: initialData, onLoadData, value, preload, ...p
     onLoadData?.(searchValue, loadCallback, 0)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue])
-
-  const loadCallback: LoadCallback = newData => {
-    let filteredData = data
-
-    if (value && newData.some(hasValue)) {
-      filteredData = data.filter(item => !hasValue(item))
-    }
-
-    setData([...filteredData, ...newData])
-    setLoading(false)
-  }
 
   const listProps: Partial<ListProps> = {
     onItemsRendered: ({visibleStopIndex}) => {

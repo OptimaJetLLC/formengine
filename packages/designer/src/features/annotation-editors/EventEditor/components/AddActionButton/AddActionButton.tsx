@@ -11,6 +11,16 @@ import {CommonActionsList} from './components/CommonActionsList'
 import {CustomActionList} from './components/CustomActionList'
 import type {ActionsMenuProps} from './types'
 
+const MenuPopover = forwardRef(({onSelect, annotation, ...props}: ActionsMenuProps, ref: any) => (
+  <Popover ref={ref} {...props} full>
+    <Dropdown.Menu>
+      <CommonActionsList onSelect={onSelect} annotation={annotation}/>
+      <CodeActionsList onSelect={onSelect} annotation={annotation}/>
+      <CustomActionList onSelect={onSelect} annotation={annotation}/>
+    </Dropdown.Menu>
+  </Popover>
+))
+
 const RawAddActionButton = (props: AnnotationEditorProps) => {
   const t = useTranslationPart('actions')
   const {componentData, annotation} = props
@@ -31,13 +41,3 @@ const RawAddActionButton = (props: AnnotationEditorProps) => {
 }
 
 export const AddActionButton = namedObserver('AddActionButton', RawAddActionButton)
-
-const MenuPopover = forwardRef(({onSelect, annotation, ...props}: ActionsMenuProps, ref: any) => (
-  <Popover ref={ref} {...props} full>
-    <Dropdown.Menu>
-      <CommonActionsList onSelect={onSelect} annotation={annotation}/>
-      <CodeActionsList onSelect={onSelect} annotation={annotation}/>
-      <CustomActionList onSelect={onSelect} annotation={annotation}/>
-    </Dropdown.Menu>
-  </Popover>
-))

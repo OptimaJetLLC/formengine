@@ -81,8 +81,6 @@ const ExistingStoreProvider = namedObserver('ExistingStoreProvider', RawExisting
  * @returns the component property calculator.
  */
 export const defaultComponentStateFactory: ComponentStateFactory = (data: ComponentData, store: Store) => {
-  return new ComponentState(data, store, defaultComponentLocalizer, defaultComputeChildren)
-
   function defaultComponentLocalizer(componentStore: ComponentStore) {
     return store.localizeComponent('component', data.dataRoot, componentStore)
   }
@@ -90,6 +88,8 @@ export const defaultComponentStateFactory: ComponentStateFactory = (data: Compon
   function defaultComputeChildren(componentData: ComponentData, componentProps: Record<string, any>) {
     return getChildren(componentData, ComponentTree, componentProps)
   }
+
+  return new ComponentState(data, store, defaultComponentLocalizer, defaultComputeChildren)
 }
 
 const RawNewStoreProvider = ({children, props}: ViewerStoreProviderProps) => {

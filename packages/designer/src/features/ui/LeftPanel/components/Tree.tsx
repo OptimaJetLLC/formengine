@@ -10,6 +10,17 @@ import {Columns, Rows} from '../../../components/Containers'
 import {customizableObserver} from '../../../customization'
 import {DraggableTreeNode} from '../../../dnd'
 
+const STreeContainer = styled.div`
+  display: flex;
+  overflow: auto;
+`
+
+const SubtleIconButton = styled(Button)`
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+`
+
 const treeStyle = {overflow: 'hidden', flex: 1}
 
 const RawTree = (props: ComponentProps<typeof Rows>) => {
@@ -43,14 +54,3 @@ const RawTree = (props: ComponentProps<typeof Rows>) => {
 }
 
 export const Tree = customizableObserver('Tree_Tab_Content', RawTree)
-
-const STreeContainer = styled.div`
-  display: flex;
-  overflow: auto;
-`
-
-const SubtleIconButton = styled(Button)`
-  display: flex !important;
-  align-items: center;
-  gap: 10px;
-`

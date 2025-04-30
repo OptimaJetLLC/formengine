@@ -7,6 +7,10 @@ import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
+const SInputPicker = styled(InputPicker)`
+  width: 100%;
+`
+
 /**
  * React form builder component that displays tooltip picker
  * @param props the Annotation editor component properties.
@@ -30,7 +34,3 @@ const RawTooltipTypePicker = (props: AnnotationEditorProps) => {
 }
 
 export const TooltipTypePicker = namedObserver('TooltipTypePicker', RawTooltipTypePicker)
-
-const SInputPicker = styled(InputPicker)`
-  width: 100%;
-`

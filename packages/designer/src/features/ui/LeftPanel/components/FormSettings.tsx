@@ -8,6 +8,13 @@ import {FormLanguageSettings} from './FormLanguageSettings'
 
 import {TooltipSettings} from './TooltipSettings'
 
+const Header = styled.label<{ marginTop?: number }>`
+  padding-inline: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: ${({marginTop}) => marginTop ?? '24'}px;
+`
+
 const RawFormSettings = (props: HTMLAttributes<HTMLDivElement>) => {
   const t = useTranslationPart('leftPanel.formSettings')
   return <div {...props}>
@@ -23,10 +30,3 @@ const RawFormSettings = (props: HTMLAttributes<HTMLDivElement>) => {
 }
 
 export const FormSettings = customizableObserver('Settings_Tab_Content', RawFormSettings)
-
-const Header = styled.label<{ marginTop?: number }>`
-  padding-inline: 4px;
-  font-size: 16px;
-  font-weight: bold;
-  margin-top: ${({marginTop}) => marginTop ?? '24'}px;
-`

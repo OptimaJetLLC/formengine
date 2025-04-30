@@ -7,6 +7,35 @@ import type {AnnotationEditorProps} from '../../annotation-editors/AnnotationEdi
 import {annotationResolver} from '../../validation'
 import {useDataValidator} from './useDataValidator'
 
+const SDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
+
+const ErrorMessage = styled.p`
+  font-size: 12px;
+  color: var(--red-600);
+  margin-top: 0.25rem;
+
+  &:before {
+    content: "❌ ";
+    font-size: 10px;
+    padding: 6px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--red-300);
+  }
+`
+
+const PropertyErrorMessage = ({children, error}: ErrorWrapperProps) => (
+  <SDiv>
+    {children}
+    {error && <ErrorMessage children={error}/>}
+  </SDiv>
+)
+
 /**
  * Represents a set of erroneous component properties.
  */
@@ -61,32 +90,3 @@ const RawErroneous = (props: ErroneousProps) => {
 }
 
 export const Erroneous = namedObserver('Erroneous', RawErroneous)
-
-const SDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`
-
-const ErrorMessage = styled.p`
-  font-size: 12px;
-  color: var(--red-600);
-  margin-top: 0.25rem;
-
-  &:before {
-    content: "❌ ";
-    font-size: 10px;
-    padding: 6px;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    color: var(--red-300);
-  }
-`
-
-const PropertyErrorMessage = ({children, error}: ErrorWrapperProps) => (
-  <SDiv>
-    {children}
-    {error && <ErrorMessage children={error}/>}
-  </SDiv>
-)

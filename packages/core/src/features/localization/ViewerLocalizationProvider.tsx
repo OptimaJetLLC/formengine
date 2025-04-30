@@ -24,6 +24,13 @@ const viewerClassName = 'optimajet-formviewer'
 
 const viewerClass = cx(viewerClassName, localizationProviderClass)
 
+const nestViewerWrappers = ([Wrapper, ...more]: ComponentType<FormViewerWrapperComponentProps>[],
+                            language: Language, children: ReactNode) => {
+  return Wrapper
+    ? <Wrapper language={language}>{nestViewerWrappers(more, language, children)}</Wrapper>
+    : children
+}
+
 const RawViewerLocalizationProvider = (props: ViewerLocalizationProviderProps) => {
   const viewerStore = useStore()
   const language = props.language ?? viewerStore.displayedLanguage
@@ -47,10 +54,3 @@ const RawViewerLocalizationProvider = (props: ViewerLocalizationProviderProps) =
 }
 
 export const ViewerLocalizationProvider = namedObserver('ViewerLocalizationProvider', RawViewerLocalizationProvider)
-
-const nestViewerWrappers = ([Wrapper, ...more]: ComponentType<FormViewerWrapperComponentProps>[],
-                            language: Language, children: ReactNode) => {
-  return Wrapper
-    ? <Wrapper language={language}>{nestViewerWrappers(more, language, children)}</Wrapper>
-    : children
-}

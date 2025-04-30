@@ -9,6 +9,40 @@ import type {SelectProps} from 'rsuite/esm/SelectPicker'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {FixedSelectPicker} from '../../ui/FixedSelectPicker'
 
+const LanguageItem = styled.div`
+  display: flex;
+  gap: 10px;
+
+  label {
+    min-width: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+`
+
+const SPicker = styled(FixedSelectPicker)`
+  .rs-picker-toggle-value {
+    color: var(--rs-btn-default-text) !important;
+    line-height: 22px;
+  }
+
+  .rs-picker-toggle {
+    background-color: var(--rs-btn-default-bg) !important;
+    border: none;
+    min-width: 30px;
+  }
+`
+
+/**
+ * The function that renders the languages list item.
+ * @param language the language.
+ * @returns the React element.
+ */
+export const renderLanguageItem = (language: Language) => {
+  const {name, code} = language
+  return <LanguageItem><label>{toUpper(code)}</label>{name}</LanguageItem>
+}
+
 /**
  * LocalizationPicker React component properties.
  */
@@ -56,37 +90,3 @@ const RawLocalizationPicker = ({value, onSelect}: LocalizationPickerProps) => {
 }
 
 export const LocalizationPicker = namedObserver('LocalizationPicker', RawLocalizationPicker)
-
-/**
- * The function that renders the languages list item.
- * @param language the language.
- * @returns the React element.
- */
-export const renderLanguageItem = (language: Language) => {
-  const {name, code} = language
-  return <LanguageItem><label>{toUpper(code)}</label>{name}</LanguageItem>
-}
-
-const LanguageItem = styled.div`
-  display: flex;
-  gap: 10px;
-
-  label {
-    min-width: 20px;
-    text-align: center;
-    font-weight: bold;
-  }
-`
-
-const SPicker = styled(FixedSelectPicker)`
-  .rs-picker-toggle-value {
-    color: var(--rs-btn-default-text) !important;
-    line-height: 22px;
-  }
-
-  .rs-picker-toggle {
-    background-color: var(--rs-btn-default-bg) !important;
-    border: none;
-    min-width: 30px;
-  }
-`

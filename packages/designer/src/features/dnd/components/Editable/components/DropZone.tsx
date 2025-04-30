@@ -9,40 +9,6 @@ import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {AcceptDrop, ItemType} from '../../../consts'
 import {DropView, InnerDropView} from './DropView'
 
-interface DropZoneProps extends ComponentProps<any> {
-  isAfter?: boolean
-  isInner?: boolean
-  slot?: string
-  slotCondition?: string
-}
-
-const RawDropZone = ({isAfter, isInner, ...props}: DropZoneProps) => {
-  const componentData = useComponentData()
-  const {store, isRoot} = componentData
-  const isContainer = Boolean(store.children)
-
-  const inner = isRoot || isInner
-  const [{isActive, isOver, isDragging, canDrop}, drop] = useDropZone(isAfter, inner, props.slot, props.slotCondition)
-  const className = cx({isAfter, isActive, isContainer, isRoot, isInner, isOver, isDragging, canDrop})
-  // TODO FE-1065
-  const ref = drop as unknown as RefCallback<HTMLDivElement>
-
-  return <>
-    {inner
-      ? <InnerDropView ref={ref} className={className} {...props}/>
-      : <SContainer ref={ref} className={className}/>
-    }
-    {!inner && <DropView className={className}/>}
-  </>
-}
-
-interface DropState {
-  isActive: boolean,
-  isOver: boolean,
-  isDragging: boolean,
-  canDrop: boolean,
-}
-
 const useDropZone = (isAfter?: boolean, isInner?: boolean, slot?: string, slotCondition?: string): [DropState, ConnectDropTarget] => {
   const store = useBuilderStore()
   const target = useComponentData()
@@ -127,5 +93,39 @@ const SContainer = styled.div`
     }
   }
 `
+
+interface DropZoneProps extends ComponentProps<any> {
+  isAfter?: boolean
+  isInner?: boolean
+  slot?: string
+  slotCondition?: string
+}
+
+const RawDropZone = ({isAfter, isInner, ...props}: DropZoneProps) => {
+  const componentData = useComponentData()
+  const {store, isRoot} = componentData
+  const isContainer = Boolean(store.children)
+
+  const inner = isRoot || isInner
+  const [{isActive, isOver, isDragging, canDrop}, drop] = useDropZone(isAfter, inner, props.slot, props.slotCondition)
+  const className = cx({isAfter, isActive, isContainer, isRoot, isInner, isOver, isDragging, canDrop})
+  // TODO FE-1065
+  const ref = drop as unknown as RefCallback<HTMLDivElement>
+
+  return <>
+    {inner
+      ? <InnerDropView ref={ref} className={className} {...props}/>
+      : <SContainer ref={ref} className={className}/>
+    }
+    {!inner && <DropView className={className}/>}
+  </>
+}
+
+interface DropState {
+  isActive: boolean,
+  isOver: boolean,
+  isDragging: boolean,
+  canDrop: boolean,
+}
 
 export const DropZone = namedObserver('DropZone', RawDropZone)

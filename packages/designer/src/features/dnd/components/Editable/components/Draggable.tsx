@@ -11,79 +11,6 @@ import {useDragWithPreview} from '../hooks/useDragWithPreview'
 import {DragPreview} from './DragPreview'
 import {DropZone} from './DropZone'
 
-interface DraggableProps extends ComponentProps<any> {
-  isInner?: boolean
-  isTree?: boolean
-}
-
-const useDirection = () => {
-  const {viewMode} = useBuilderStore()
-  const {css} = useComponentData().store
-  const direction = css?.[viewMode]?.object?.flexDirection ?? css?.any?.object?.flexDirection ?? ''
-  return ['row', 'row-reverse', 'initial'].includes(direction as string)
-}
-
-const RawDraggable = ({children, isInner, className, isTree, ...props}: DraggableProps) => {
-  const {key, isRoot, model, parent} = useComponentData()
-  const isContainer = model.kind === 'container'
-  const direction = useDirection()
-  const horizontal = !isTree && direction
-  const [{isActive, isDragging: isDraggingCurrent}, dnd] = useDnd(isRoot)
-  const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
-  const dragPreview = <DragPreview><SLabel>{key}</SLabel></DragPreview>
-  const afterChildren = isDragging && !isRoot
-  const beforeChildren = isDragging && !isRoot && !isInner
-
-  const clsName = useMemo(() => {
-    const parentType = parent ? `parent-type-${parent?.model.type}` : ''
-    const type = `type-${model.type}`
-    return cx(className, {isActive, isContainer, isRoot, isInner, isDragging, isDraggingCurrent, horizontal, isTree}, parentType, type)
-  }, [className, horizontal, isActive, isContainer, isDragging, isDraggingCurrent, isInner, isRoot, isTree, model.type, parent])
-
-  return <>
-    {isDraggingCurrent && dragPreview}
-    <Container ref={dnd} {...props} className={clsName}>
-      <label className={'containerLabel'}>{key}</label>
-      {!isTree && <DraggableBody/>}
-      {beforeChildren && <DropZone/>}
-      {children}
-      {afterChildren && <DropZone isAfter={!isInner && true} isInner={isInner}/>}
-    </Container>
-  </>
-}
-
-export const Draggable = namedObserver('Draggable', RawDraggable)
-
-interface DndState {
-  isDragging: boolean,
-  isActive: boolean,
-  isOver: boolean,
-  canDrop: boolean,
-}
-
-const useDnd = (isRoot?: boolean): [DndState, RefObject<any>] => {
-  const dnd = useRef(null)
-  const data = useComponentData()
-
-  const [dropProps, drop] = useDrop({
-    accept: AcceptDrop,
-    canDrop: (item: ComponentData) => data.store.key !== item.store.key,
-    collect: (monitor) => ({
-      isOver: monitor.isOver(),
-      canDrop: monitor.canDrop(),
-      isActive: monitor.isOver() && monitor.canDrop(),
-    }),
-  }, [])
-
-  const [dragState, drag] = useDragWithPreview(ItemType.Component)
-  const state: DndState = useMemo(() => ({...dropProps, ...dragState}), [dropProps, dragState])
-
-  if (!isRoot) drag(dnd)
-  drop(dnd)
-
-  return [state, dnd]
-}
-
 const DraggableBody = styled.div`
   position: absolute;
   width: 100%;
@@ -160,3 +87,76 @@ const Container = styled.div`
     flex-direction: row;
   }
 `
+
+interface DndState {
+  isDragging: boolean,
+  isActive: boolean,
+  isOver: boolean,
+  canDrop: boolean,
+}
+
+const useDnd = (isRoot?: boolean): [DndState, RefObject<any>] => {
+  const dnd = useRef(null)
+  const data = useComponentData()
+
+  const [dropProps, drop] = useDrop({
+    accept: AcceptDrop,
+    canDrop: (item: ComponentData) => data.store.key !== item.store.key,
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+      canDrop: monitor.canDrop(),
+      isActive: monitor.isOver() && monitor.canDrop(),
+    }),
+  }, [])
+
+  const [dragState, drag] = useDragWithPreview(ItemType.Component)
+  const state: DndState = useMemo(() => ({...dropProps, ...dragState}), [dropProps, dragState])
+
+  if (!isRoot) drag(dnd)
+  drop(dnd)
+
+  return [state, dnd]
+}
+
+interface DraggableProps extends ComponentProps<any> {
+  isInner?: boolean
+  isTree?: boolean
+}
+
+const useDirection = () => {
+  const {viewMode} = useBuilderStore()
+  const {css} = useComponentData().store
+  const direction = css?.[viewMode]?.object?.flexDirection ?? css?.any?.object?.flexDirection ?? ''
+  return ['row', 'row-reverse', 'initial'].includes(direction as string)
+}
+
+const RawDraggable = ({children, isInner, className, isTree, ...props}: DraggableProps) => {
+  const {key, isRoot, model, parent} = useComponentData()
+  const isContainer = model.kind === 'container'
+  const direction = useDirection()
+  const horizontal = !isTree && direction
+  const [{isActive, isDragging: isDraggingCurrent}, dnd] = useDnd(isRoot)
+  const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
+  const dragPreview = <DragPreview><SLabel>{key}</SLabel></DragPreview>
+  const afterChildren = isDragging && !isRoot
+  const beforeChildren = isDragging && !isRoot && !isInner
+
+  const clsName = useMemo(() => {
+    const parentType = parent ? `parent-type-${parent?.model.type}` : ''
+    const type = `type-${model.type}`
+    return cx(className, {isActive, isContainer, isRoot, isInner, isDragging, isDraggingCurrent, horizontal, isTree}, parentType, type)
+  }, [className, horizontal, isActive, isContainer, isDragging, isDraggingCurrent, isInner, isRoot, isTree, model.type, parent])
+
+  return <>
+    {isDraggingCurrent && dragPreview}
+    <Container ref={dnd} {...props} className={clsName}>
+      <label className={'containerLabel'}>{key}</label>
+      {!isTree && <DraggableBody/>}
+      {beforeChildren && <DropZone/>}
+      {children}
+      {afterChildren && <DropZone isAfter={!isInner && true} isInner={isInner}/>}
+    </Container>
+  </>
+}
+
+export const Draggable = namedObserver('Draggable', RawDraggable)

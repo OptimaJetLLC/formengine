@@ -5,6 +5,36 @@ import type {ComponentData, IComponentDataProvider} from './contexts/ComponentDa
 import {groupBy} from './groupBy'
 import {needRender} from './needRender'
 
+const fnCache = new Map<string, Function>()
+
+function getOrCreateFn(source: string) {
+  const fn = fnCache.get(source)
+  if (fn) return fn
+
+  const result = new Function('parentProps', source)
+  fnCache.set(source, result)
+  return result
+}
+
+/**
+ * Performs the function of checking if the child component can be bound. **Internal use only.**
+ * @param childStore the child component settings.
+ * @param parentProps the parent component properties.
+ * @returns true, if the child component can be bound, false otherwise.
+ */
+export function checkSlotCondition(childStore: ComponentStore, parentProps: any) {
+  const fnSource = childStore.slotCondition?.trim()
+  // it's OK - no condition to bind
+  if (!fnSource) return true
+  const fn = getOrCreateFn(fnSource)
+  try {
+    return fn(parentProps)
+  } catch (e) {
+    console.warn(e)
+    return false
+  }
+}
+
 const defaultContainerKey = 'children'
 
 /**
@@ -42,34 +72,4 @@ export function getChildren(
   }
 
   return currentProps
-}
-
-const fnCache = new Map<string, Function>()
-
-function getOrCreateFn(source: string) {
-  const fn = fnCache.get(source)
-  if (fn) return fn
-
-  const result = new Function('parentProps', source)
-  fnCache.set(source, result)
-  return result
-}
-
-/**
- * Performs the function of checking if the child component can be bound. **Internal use only.**
- * @param childStore the child component settings.
- * @param parentProps the parent component properties.
- * @returns true, if the child component can be bound, false otherwise.
- */
-export function checkSlotCondition(childStore: ComponentStore, parentProps: any) {
-  const fnSource = childStore.slotCondition?.trim()
-  // it's OK - no condition to bind
-  if (!fnSource) return true
-  const fn = getOrCreateFn(fnSource)
-  try {
-    return fn(parentProps)
-  } catch (e) {
-    console.warn(e)
-    return false
-  }
 }

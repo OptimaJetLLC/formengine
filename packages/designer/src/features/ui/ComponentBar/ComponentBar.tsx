@@ -9,6 +9,47 @@ import {AddedComponent} from '../../dnd'
 import {useTranslationPart} from '../../localization/hooks'
 import {SearchForm} from './components/SearchForm'
 
+const componentBar = css`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+`
+
+const ControlsGroup = styled.div`
+  display: flex;
+  flex-flow: wrap;
+  gap: 4px;
+  margin-top: 2px;
+`
+
+const Header = styled.div`
+  display: flex;
+  flex: 0;
+  justify-content: center;
+  align-items: center;
+  font-weight: normal;
+  padding-inline-start: 4px;
+
+  > * {
+    flex: 1;
+  }
+`
+
+const Subheader = styled.label`
+  padding-inline: 4px;
+  font-size: 16px;
+`
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding-inline: 4px 2px;
+  overflow-y: auto;
+`
+
 const componentGroupStaticClassname = 'FE_Palette_ComponentGroup'
 
 /**
@@ -30,6 +71,26 @@ export interface DraggableProps {
    */
   onDoubleClick?: (source: ComponentData) => void
 }
+
+interface AddedComponentsProps extends DraggableProps {
+  availableComponents: ComponentData[]
+}
+
+const RawAddedComponents = ({availableComponents, ...componentProps}: AddedComponentsProps) => {
+  return (
+    <ControlsGroup>
+      {availableComponents.map(componentData => {
+        return (
+          <ComponentDataProvider key={componentData.id} value={componentData}>
+            <AddedComponent {...componentProps}/>
+          </ComponentDataProvider>
+        )
+      })}
+    </ControlsGroup>
+  )
+}
+
+const AddedComponents = namedObserver('AddedComponents', RawAddedComponents)
 
 interface ControlGroupsProps extends DraggableProps {
   filter?: string
@@ -91,64 +152,3 @@ export const ComponentBar = (componentProps: DraggableProps) => {
     {controls || <Subheader>{t('notFound')}</Subheader>}
   </div>
 }
-
-interface AddedComponentsProps extends DraggableProps {
-  availableComponents: ComponentData[]
-}
-
-const RawAddedComponents = ({availableComponents, ...componentProps}: AddedComponentsProps) => {
-  return (
-    <ControlsGroup>
-      {availableComponents.map(componentData => {
-        return (
-          <ComponentDataProvider key={componentData.id} value={componentData}>
-            <AddedComponent {...componentProps}/>
-          </ComponentDataProvider>
-        )
-      })}
-    </ControlsGroup>
-  )
-}
-
-const AddedComponents = namedObserver('AddedComponents', RawAddedComponents)
-
-const componentBar = css`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-height: 0;
-`
-
-const ControlsGroup = styled.div`
-  display: flex;
-  flex-flow: wrap;
-  gap: 4px;
-  margin-top: 2px;
-`
-
-const Header = styled.div`
-  display: flex;
-  flex: 0;
-  justify-content: center;
-  align-items: center;
-  font-weight: normal;
-  padding-inline-start: 4px;
-
-  > * {
-    flex: 1;
-  }
-`
-
-const Subheader = styled.label`
-  padding-inline: 4px;
-  font-size: 16px;
-`
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  padding-inline: 4px 2px;
-  overflow-y: auto;
-`

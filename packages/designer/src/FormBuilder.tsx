@@ -13,37 +13,6 @@ import {PromptDialog} from './features/ui/PromptDialog'
 import {RightPanel} from './features/ui/RightPanel'
 import type {FormBuilderProps} from './FormBuilderProps'
 
-/**
- * The React component that displays the form builder.
- * @param props the React component properties.
- * @returns the React element.
- */
-const RawFormBuilder = (props: FormBuilderProps) =>
-  <BuilderProviders props={props}>
-    <FormBuilderView/>
-  </BuilderProviders>
-
-export const FormBuilder = namedObserver('FormBuilder', RawFormBuilder)
-
-const RawFormBuilderView = (props: ComponentProps<typeof Container>) => (
-  <SuppressResizeObserverErrors>
-    <Suspense fallback={<Loader center content="loading"/>}>
-      <Container>
-        <Content {...props}>
-          <LeftPanel/>
-          <CentralPanel/>
-          <RightPanel/>
-          <ComponentsModal/>
-          <PromptDialog/>
-        </Content>
-        <BottomPanel/>
-      </Container>
-    </Suspense>
-  </SuppressResizeObserverErrors>
-)
-
-const FormBuilderView = customizableObserver('MainContainer', RawFormBuilderView)
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -64,4 +33,33 @@ const Content = styled.div`
   padding-bottom: 15px;
 `
 
+const RawFormBuilderView = (props: ComponentProps<typeof Container>) => (
+  <SuppressResizeObserverErrors>
+    <Suspense fallback={<Loader center content="loading"/>}>
+      <Container>
+        <Content {...props}>
+          <LeftPanel/>
+          <CentralPanel/>
+          <RightPanel/>
+          <ComponentsModal/>
+          <PromptDialog/>
+        </Content>
+        <BottomPanel/>
+      </Container>
+    </Suspense>
+  </SuppressResizeObserverErrors>
+)
 
+const FormBuilderView = customizableObserver('MainContainer', RawFormBuilderView)
+
+/**
+ * The React component that displays the form builder.
+ * @param props the React component properties.
+ * @returns the React element.
+ */
+const RawFormBuilder = (props: FormBuilderProps) =>
+  <BuilderProviders props={props}>
+    <FormBuilderView/>
+  </BuilderProviders>
+
+export const FormBuilder = namedObserver('FormBuilder', RawFormBuilder)

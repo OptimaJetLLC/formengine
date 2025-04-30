@@ -8,6 +8,27 @@ import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import type {InsertPosition} from '../../../../../utils/types'
 import {useTranslationPart} from '../../../../localization/hooks'
 
+const SPopover = styled(Popover)`
+  transform: translateX(24px) !important;
+  padding: 8px !important;
+  border-radius: 14px !important;
+`
+
+const Container = styled.div`
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+`
+
+const Label = styled.p`
+  width: 48px;
+  font-weight: bolder;
+  line-height: 1.9;
+  text-align: center;
+  margin-inline-start: 8px;
+  color: var(--rs-text-primary);
+`
+
 const RawAddButton = () => {
   const builderStore = useBuilderStore()
   const target = useComponentData()
@@ -42,24 +63,3 @@ const RawAddButton = () => {
 }
 
 export const AddButton = namedObserver('AddButton', RawAddButton)
-
-const SPopover = styled(Popover)`
-  transform: translateX(24px) !important;
-  padding: 8px !important;
-  border-radius: 14px !important;
-`
-
-const Container = styled.div`
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-`
-
-const Label = styled.p`
-  width: 48px;
-  font-weight: bolder;
-  line-height: 1.9;
-  text-align: center;
-  margin-inline-start: 8px;
-  color: var(--rs-text-primary);
-`

@@ -11,30 +11,6 @@ import {FaIcon} from '../../../components/Icons'
 import {customizableObserver} from '../../../customization'
 import {useTranslationPart} from '../../../localization/hooks'
 
-const Modes: Record<BuilderMode, { icon: any, toggleTo: BuilderMode }> = {
-  viewer: {icon: faPaintBrush, toggleTo: 'builder'},
-  builder: {icon: faPlay, toggleTo: 'viewer'}
-}
-
-const RawToggleModeButton = ({className}: { className?: string }) => {
-  const store = useBuilderStore()
-  const {icon, toggleTo} = Modes[store.builderMode]
-  const t = useTranslationPart('rightMenu.modes')
-  const onClick = useCallback(() => store.changeBuilderMode(toggleTo), [store, toggleTo])
-
-  return <AnimatedButton
-    onClick={onClick}
-    appearance={'primary'}
-    className={cx(store.builderMode, className)}
-    size={'sm'}
-  >
-    <FaIcon icon={icon} color={'white'}/>
-    {t(store.builderMode)}
-  </AnimatedButton>
-}
-
-export const ToggleModeButton = customizableObserver('ToggleModeButton', RawToggleModeButton)
-
 const makeLabeledIconStyles = (gap = 10) => css`
   && {
     display: flex;
@@ -65,3 +41,27 @@ const AnimatedButton = styled(SIconButton)`
     box-shadow: 2px 5px 20px -5px var(--rs-green-700);
   }
 `
+
+const Modes: Record<BuilderMode, { icon: any, toggleTo: BuilderMode }> = {
+  viewer: {icon: faPaintBrush, toggleTo: 'builder'},
+  builder: {icon: faPlay, toggleTo: 'viewer'}
+}
+
+const RawToggleModeButton = ({className}: { className?: string }) => {
+  const store = useBuilderStore()
+  const {icon, toggleTo} = Modes[store.builderMode]
+  const t = useTranslationPart('rightMenu.modes')
+  const onClick = useCallback(() => store.changeBuilderMode(toggleTo), [store, toggleTo])
+
+  return <AnimatedButton
+    onClick={onClick}
+    appearance={'primary'}
+    className={cx(store.builderMode, className)}
+    size={'sm'}
+  >
+    <FaIcon icon={icon} color={'white'}/>
+    {t(store.builderMode)}
+  </AnimatedButton>
+}
+
+export const ToggleModeButton = customizableObserver('ToggleModeButton', RawToggleModeButton)

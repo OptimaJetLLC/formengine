@@ -7,6 +7,28 @@ import {listItemStyle, listStyle} from '../../../../components/Containers'
 import type {AnnotationEditorProps} from '../../../AnnotationEditorProps'
 import {ActionItem} from './ActionItem'
 
+const SList = styled(List)`
+  ${listStyle}
+  && {
+    box-shadow: none;
+  }
+`
+
+const SListItem = styled(List.Item)`
+  ${listItemStyle}
+  && {
+    overflow: hidden;
+    padding: 0;
+    box-shadow: none;
+    flex-direction: column;
+    align-items: initial;
+  }
+
+  &.rs-list-item-helper {
+    outline: 2px solid var(--rs-btn-primary-bg);
+  }
+`
+
 interface ActionListItemProps {
   index: number,
   data: ActionData,
@@ -50,25 +72,3 @@ interface MovedInfo {
   newIndex: number
   oldIndex: number
 }
-
-const SList = styled(List)`
-  ${listStyle}
-  && {
-    box-shadow: none;
-  }
-`
-
-const SListItem = styled(List.Item)`
-  ${listItemStyle}
-  && {
-    overflow: hidden;
-    padding: 0;
-    box-shadow: none;
-    flex-direction: column;
-    align-items: initial;
-  }
-
-  &.rs-list-item-helper {
-    outline: 2px solid var(--rs-btn-primary-bg);
-  }
-`

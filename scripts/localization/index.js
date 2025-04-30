@@ -17,6 +17,15 @@ const LOCALIZATION_FOLDER = '../../packages/designer/public/locales';
 
 const {en, ...localizations} = locales;
 
+function getLocalization(languageCode) {
+  const contents = fs.readFileSync(`${LOCALIZATION_FOLDER}/${languageCode}.json`, {encoding: 'utf8'})
+  return JSON.parse(contents)
+}
+
+function save(targetLang, localization) {
+  saveToFile(path.join(LOCALIZATION_FOLDER, String(localizations[targetLang]) + '.json'), localization);
+}
+
 const localesData = Object.entries(locales).map(([lang, locale]) => [locale, getLocalization(locale)]).reduce((acc, curr) => {
   acc[curr[0]] = curr[1]
   return acc
@@ -24,7 +33,20 @@ const localesData = Object.entries(locales).map(([lang, locale]) => [locale, get
 
 const defaultLanguage = sortObject(localesData[en]);
 
-Object.entries(localizations).forEach(([key, fullCode]) => updateLocalization(localesData[fullCode], key));
+//texts should be an array like ["first word", "second", ...]
+function requestTranslate(targetLanguageCode, texts, successCallback) {
+  axios.post(YA_API_URL, {
+    targetLanguageCode,
+    texts,
+    folderId: YA_FOLDER_ID
+  }, {
+    headers: {
+      Authorization: `Bearer ${YA_IAM_TOKEN}`
+    }
+  })
+    .then(successCallback)
+    .catch(err => console.error(err));
+}
 
 function updateLocalization(localization, targetLang) {
   const missedItems = diffByKeys(defaultLanguage, localization);
@@ -56,26 +78,4 @@ function updateLocalization(localization, targetLang) {
   });
 }
 
-//texts should be an array like ["first word", "second", ...]
-function requestTranslate(targetLanguageCode, texts, successCallback) {
-  axios.post(YA_API_URL, {
-    targetLanguageCode,
-    texts,
-    folderId: YA_FOLDER_ID
-  }, {
-    headers: {
-      Authorization: `Bearer ${YA_IAM_TOKEN}`
-    }
-  })
-    .then(successCallback)
-    .catch(err => console.error(err));
-}
-
-function getLocalization(languageCode) {
-  const contents = fs.readFileSync(`${LOCALIZATION_FOLDER}/${languageCode}.json`, {encoding: 'utf8'})
-  return JSON.parse(contents)
-}
-
-function save(targetLang, localization) {
-  saveToFile(path.join(LOCALIZATION_FOLDER, String(localizations[targetLang]) + '.json'), localization);
-}
+Object.entries(localizations).forEach(([key, fullCode]) => updateLocalization(localesData[fullCode], key));

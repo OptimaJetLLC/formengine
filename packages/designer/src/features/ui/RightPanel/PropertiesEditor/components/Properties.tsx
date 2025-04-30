@@ -13,6 +13,34 @@ import {useTranslationPart} from '../../../../localization/hooks'
 import {Section, SubSection} from '../Section'
 import {DevicePicker} from './DevicePicker'
 
+const PropertiesList = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+`
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+  justify-content: space-between;
+
+  & > * {
+    margin-bottom: 5px;
+  }
+`
+
+const useCssContextInitializer = (fieldKey: CssPart, store: ComponentStore, device: Device) =>
+  useCallback(() => {
+    store[fieldKey] ??= {}
+    store[fieldKey]![device] ??= {}
+    store[fieldKey]![device]!.object ??= {}
+    return store[fieldKey]![device]!.object ?? {}
+  }, [fieldKey, store, device])
+
 const SectionMap: Record<string, Section> = {
   validation: Section.Rules,
   event: Section.Actions,
@@ -28,111 +56,6 @@ const SubSectionMap: Record<string, SubSection> = {
 const bySection = (section: string) => (annotation: Annotation) => (SectionMap[annotation.editor] ?? Section.Main) === section
 
 const bySubSection = (section?: string) => (annotation: Annotation) => SubSectionMap[annotation.editor] === section
-
-interface PropertiesProps {
-  activeTab: Section
-}
-
-const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
-  const store = useBuilderStore()
-  const tooltipType = useTooltipType()
-  const getLabel = useTranslationPart('propertiesEditor')
-  const data = store.oneSelectedComponentData
-
-  if (!data) {
-    return (
-      <Container>
-        <CenteredLabel style={{height: '40%'}}>{getLabel('selectElementForEdit')}</CenteredLabel>
-      </Container>
-    )
-  }
-
-  const meta = store.getComponentMetadata(data.store.type)
-
-  const current = meta.properties.concat(meta.modules).filter(bySection(activeTab))
-  const properties = current.filter(bySubSection())
-  const additionalProperties = current.filter(bySubSection(SubSection.Additional))
-  const tooltipProps = current.filter(bySubSection(SubSection.Tooltip))
-  const showTooltipProps = meta.kind === 'component' && !!tooltipProps?.length && !!tooltipType
-  const notSlot = meta.kind !== 'slot'
-
-  return (
-    <ComponentDataProvider value={data}>
-      <Container  {...props}>
-        <PropertiesList>
-          {activeTab === Section.Main && <PropertyEditorWrapper annotation={key} context={data.store}/>}
-          {notSlot && <PropertyBlock annotations={properties} context={data.store.props}/>}
-          {activeTab === Section.Style && notSlot &&
-            <Styles meta={meta} store={data.store}/>
-          }
-        </PropertiesList>
-
-        {showTooltipProps && notSlot &&
-          <PropertyBlock annotations={tooltipProps} context={data.store.props}/>
-        }
-
-        {!!additionalProperties?.length && notSlot &&
-          <PropertyBlock annotations={additionalProperties} context={data.store.props}
-                         header={getLabel('subSection.additionalProperties')}/>
-        }
-      </Container>
-    </ComponentDataProvider>
-  )
-}
-
-const Properties = customizableObserver('RightPanel_Content', RawProperties)
-
-const RawStyles = ({meta, store}: { meta: Meta, store: ComponentStore }) => {
-  const t = useTranslationPart('style')
-  const [device, setDevice] = useState<Device>('any')
-  const isComponent = meta.kind === 'component'
-  const isTemplate = meta.kind === 'template'
-  const classNameEditor = <PropertyEditorWrapper annotation={className} context={store.props}/>
-
-  return <>
-    <DevicePicker value={device} onChange={setDevice}/>
-    {!isTemplate &&
-      <StyleBlock meta={meta} store={store} device={device} cssPart={'css'} header={t('component')} headerHint={t('componentHint')}/>
-    }
-    {isComponent && classNameEditor}
-    <StyleBlock meta={meta} store={store} device={device} cssPart={'wrapperCss'} header={t('wrapper')} headerHint={t('wrapperHint')}/>
-    {!isComponent && classNameEditor}
-    <CSSEditor device={device} useWrapperStyles={isComponent} defaultActiveTab={isTemplate ? 'wrapperCss' : 'css'}/>
-  </>
-}
-
-const Styles = namedObserver('Styles', RawStyles)
-
-interface StyleBlockProps {
-  meta: Meta
-  store: ComponentStore
-  device: Device
-  cssPart: CssPart
-  header: string
-  headerHint: string
-}
-
-const RawStyleBlock = ({meta, store, device, cssPart, header, headerHint}: StyleBlockProps) => {
-  const initContext = useCssContextInitializer(cssPart, store, device)
-  const context = store[cssPart]?.[device]?.object ?? {}
-  const isComponent = meta.kind === 'component' || meta.kind === 'repeater'
-
-  return (
-    <PropertyBlock header={isComponent ? header : undefined}
-                   headerHint={isComponent ? headerHint : undefined}
-                   annotations={meta[cssPart]} context={context} initContext={initContext}/>
-  )
-}
-
-const StyleBlock = namedObserver('StyleBlock', RawStyleBlock)
-
-const useCssContextInitializer = (fieldKey: CssPart, store: ComponentStore, device: Device) =>
-  useCallback(() => {
-    store[fieldKey] ??= {}
-    store[fieldKey]![device] ??= {}
-    store[fieldKey]![device]!.object ??= {}
-    return store[fieldKey]![device]!.object ?? {}
-  }, [fieldKey, store, device])
 
 /**
  * Represents the properties of PropertyBlock component.
@@ -196,24 +119,103 @@ export const PropertyBlock = ({
   </>
 }
 
-const PropertiesList = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 10px;
-`
+interface StyleBlockProps {
+  meta: Meta
+  store: ComponentStore
+  device: Device
+  cssPart: CssPart
+  header: string
+  headerHint: string
+}
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  overflow-y: auto;
-  padding-right: 5px;
-  justify-content: space-between;
+const RawStyleBlock = ({meta, store, device, cssPart, header, headerHint}: StyleBlockProps) => {
+  const initContext = useCssContextInitializer(cssPart, store, device)
+  const context = store[cssPart]?.[device]?.object ?? {}
+  const isComponent = meta.kind === 'component' || meta.kind === 'repeater'
 
-  & > * {
-    margin-bottom: 5px;
+  return (
+    <PropertyBlock header={isComponent ? header : undefined}
+                   headerHint={isComponent ? headerHint : undefined}
+                   annotations={meta[cssPart]} context={context} initContext={initContext}/>
+  )
+}
+
+
+interface PropertiesProps {
+  activeTab: Section
+}
+
+const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
+  const store = useBuilderStore()
+  const tooltipType = useTooltipType()
+  const getLabel = useTranslationPart('propertiesEditor')
+  const data = store.oneSelectedComponentData
+
+  if (!data) {
+    return (
+      <Container>
+        <CenteredLabel style={{height: '40%'}}>{getLabel('selectElementForEdit')}</CenteredLabel>
+      </Container>
+    )
   }
-`
+
+  const meta = store.getComponentMetadata(data.store.type)
+
+  const current = meta.properties.concat(meta.modules).filter(bySection(activeTab))
+  const properties = current.filter(bySubSection())
+  const additionalProperties = current.filter(bySubSection(SubSection.Additional))
+  const tooltipProps = current.filter(bySubSection(SubSection.Tooltip))
+  const showTooltipProps = meta.kind === 'component' && !!tooltipProps?.length && !!tooltipType
+  const notSlot = meta.kind !== 'slot'
+
+  return (
+    <ComponentDataProvider value={data}>
+      <Container  {...props}>
+        <PropertiesList>
+          {activeTab === Section.Main && <PropertyEditorWrapper annotation={key} context={data.store}/>}
+          {notSlot && <PropertyBlock annotations={properties} context={data.store.props}/>}
+          {activeTab === Section.Style && notSlot &&
+            // eslint-disable-next-line @typescript-eslint/no-use-before-define
+            <Styles meta={meta} store={data.store}/>
+          }
+        </PropertiesList>
+
+        {showTooltipProps && notSlot &&
+          <PropertyBlock annotations={tooltipProps} context={data.store.props}/>
+        }
+
+        {!!additionalProperties?.length && notSlot &&
+          <PropertyBlock annotations={additionalProperties} context={data.store.props}
+                         header={getLabel('subSection.additionalProperties')}/>
+        }
+      </Container>
+    </ComponentDataProvider>
+  )
+}
+
+const Properties = customizableObserver('RightPanel_Content', RawProperties)
+
+const StyleBlock = namedObserver('StyleBlock', RawStyleBlock)
+
+const RawStyles = ({meta, store}: { meta: Meta, store: ComponentStore }) => {
+  const t = useTranslationPart('style')
+  const [device, setDevice] = useState<Device>('any')
+  const isComponent = meta.kind === 'component'
+  const isTemplate = meta.kind === 'template'
+  const classNameEditor = <PropertyEditorWrapper annotation={className} context={store.props}/>
+
+  return <>
+    <DevicePicker value={device} onChange={setDevice}/>
+    {!isTemplate &&
+      <StyleBlock meta={meta} store={store} device={device} cssPart={'css'} header={t('component')} headerHint={t('componentHint')}/>
+    }
+    {isComponent && classNameEditor}
+    <StyleBlock meta={meta} store={store} device={device} cssPart={'wrapperCss'} header={t('wrapper')} headerHint={t('wrapperHint')}/>
+    {!isComponent && classNameEditor}
+    <CSSEditor device={device} useWrapperStyles={isComponent} defaultActiveTab={isTemplate ? 'wrapperCss' : 'css'}/>
+  </>
+}
+
+const Styles = namedObserver('Styles', RawStyles)
 
 export {Properties}

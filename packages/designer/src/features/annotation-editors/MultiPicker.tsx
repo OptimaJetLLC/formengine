@@ -6,6 +6,10 @@ import type {ItemDataType} from 'rsuite/esm/internals/types'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
+const STagPicker = styled(TagPicker)`
+  width: 100%;
+`
+
 const prepareData = ({data}: PropertyAnnotation, values: string[]) => {
   const preparedData = data.map(di => {
     return {
@@ -37,7 +41,3 @@ export const MultiPicker = (props: AnnotationEditorProps) => {
                 cleanable creatable size={'xs'} placement={'auto'}/>
   </LabeledProperty>
 }
-
-const STagPicker = styled(TagPicker)`
-  width: 100%;
-`

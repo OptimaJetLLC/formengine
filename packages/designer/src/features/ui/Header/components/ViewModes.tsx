@@ -13,6 +13,12 @@ import {useTranslationPart} from '../../../localization/hooks'
 import {JsonViewButton} from './JsonViewButton'
 import {OrientationIcon} from './OrientationIcon'
 
+const SDiv = styled.div`
+  display: flex;
+  align-items: center;
+  width: max-content;
+`
+
 const resolutions: [ViewMode, any][] = [
   ['desktop', faDesktop],
   ['mobile', faMobile],
@@ -43,9 +49,3 @@ const RawViewModes = (props: ComponentProps<typeof SDiv>) => {
 }
 
 export const ViewModes = customizableObserver('ResolutionSelect', RawViewModes)
-
-const SDiv = styled.div`
-  display: flex;
-  align-items: center;
-  width: max-content;
-`

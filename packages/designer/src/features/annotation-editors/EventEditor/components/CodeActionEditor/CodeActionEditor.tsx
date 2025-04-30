@@ -12,6 +12,26 @@ import {Header} from '../../../../ui/BottomPanel/Header'
 import type {Parameter} from '../ActionList/ActionItem/components/ArgumentList/ArgumentItem/Parameter'
 import {ParameterList} from './components/ParameterList'
 
+const Container = styled(Columns)`
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
+`
+
+const makeFunctionHeader = (params?: Parameter[]) => {
+  let types = '@param {} args - the action parameters arguments.'
+  if (params?.length) {
+    const names: string[] = params.map(([name, type]) => `${name}: ${type}`)
+    types = `@param {{${names.join(', ')}}} args - the action parameters arguments.`
+  }
+
+  return `/**
+ * @param {ActionEventArgs} e - the action arguments.
+ * ${types}
+ */
+async function Action (e, args) {`
+}
+
 /**
  * Represents data for the code action editor.
  */
@@ -132,24 +152,4 @@ export const CodeActionEditor = ({codeAction, onSave}: CodeActionEditorProps) =>
                      onChange={value => updateFormState({actionParameters: value})}/>
     </Container>
   </>
-}
-
-const Container = styled(Columns)`
-  gap: 20px;
-  flex: 1;
-  min-height: 0;
-`
-
-const makeFunctionHeader = (params?: Parameter[]) => {
-  let types = '@param {} args - the action parameters arguments.'
-  if (params?.length) {
-    const names: string[] = params.map(([name, type]) => `${name}: ${type}`)
-    types = `@param {{${names.join(', ')}}} args - the action parameters arguments.`
-  }
-
-  return `/**
- * @param {ActionEventArgs} e - the action arguments.
- * ${types}
- */
-async function Action (e, args) {`
 }

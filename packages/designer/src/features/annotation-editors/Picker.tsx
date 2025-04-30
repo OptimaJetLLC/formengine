@@ -5,6 +5,10 @@ import {InputPicker} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
+const SInputPicker = styled(InputPicker)`
+  width: 100%;
+`
+
 const addCustomValue = ({data}: PropertyAnnotation, value: string) => {
   if (isUndefined(value)) {
     return data
@@ -31,7 +35,3 @@ export const Picker = (props: AnnotationEditorProps) => {
                   block cleanable creatable size={'xs'} {...props.annotation.editorProps} placement={'autoVerticalEnd'}/>
   </LabeledProperty>
 }
-
-const SInputPicker = styled(InputPicker)`
-  width: 100%;
-`

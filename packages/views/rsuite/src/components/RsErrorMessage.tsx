@@ -6,6 +6,13 @@ import {Form} from 'rsuite'
 import type {TypeAttributes} from 'rsuite/esm/internals/types'
 import {placement} from '../commonProperties'
 
+const SDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+`
+
 /**
  * The properties of RsErrorMessage component.
  */
@@ -26,13 +33,6 @@ const RsErrorMessage = ({error, children, placement, className}: RsErrorMessageP
     </Form.ErrorMessage>
   </SDiv>
 }
-
-const SDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-`
 
 /**
  * Metadata builder for rSuite-based error display component.

@@ -9,6 +9,21 @@ import type {InnerCellProps} from 'rsuite-table/lib/Cell.js'
 
 const {Cell} = Table
 
+export const SCell = styled(Cell<RowDataType, string | number>)`
+  padding: 0;
+
+  & .rs-table-cell-content {
+    padding: 9px 3px;
+  }
+`
+
+const SCheckbox = styled(Checkbox)`
+  & .rs-checkbox-wrapper {
+    left: 4px;
+    top: 6px;
+  }
+`
+
 /**
  * The React component that displays the table cell with the input. **Internal use only.**
  * @param props the React component properties.
@@ -115,21 +130,6 @@ export const ActionCell = ({rowData, rowIndex, onAction, icon, ...props}: Action
       />
     </SCell>
   )
-
-export const SCell = styled(Cell<RowDataType, string | number>)`
-  padding: 0;
-
-  & .rs-table-cell-content {
-    padding: 9px 3px;
-  }
-`
-
-const SCheckbox = styled(Checkbox)`
-  & .rs-checkbox-wrapper {
-    left: 4px;
-    top: 6px;
-  }
-`
 
 /**
  * The properties of InputCell component.

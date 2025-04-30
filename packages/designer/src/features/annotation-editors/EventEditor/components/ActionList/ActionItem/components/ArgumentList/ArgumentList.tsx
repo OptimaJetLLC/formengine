@@ -10,6 +10,18 @@ import {Rows} from '../../../../../../../components/Containers'
 import {useActionData} from '../../contexts/ActionDataContext'
 import {ArgumentItem} from './ArgumentItem'
 
+const ExpandButton = styled(Button)`
+  padding: 5px !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  color: var(--rs-btn-subtle-text) !important;
+
+  &:focus {
+    box-shadow: none;
+    background-color: initial;
+  }
+`
+
 // Delete arguments object on unmount if it is empty.
 const useClearableArguments = () => {
   const data = useActionData()
@@ -55,15 +67,3 @@ const RawArgumentList = () => {
 }
 
 export const ArgumentList = namedObserver('ArgumentList', RawArgumentList)
-
-const ExpandButton = styled(Button)`
-  padding: 5px !important;
-  border-radius: 0 !important;
-  outline: 0 !important;
-  color: var(--rs-btn-subtle-text) !important;
-
-  &:focus {
-    box-shadow: none;
-    background-color: initial;
-  }
-`

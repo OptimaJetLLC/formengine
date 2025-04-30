@@ -8,6 +8,22 @@ import type {AnnotationEditorProps} from '../AnnotationEditorProps'
 import {AddRuleButton} from './components/AddRuleButton'
 import {ValidationRuleEditor} from './components/ValidationRuleEditor'
 
+const renderRules = (validations?: ValidationRuleSettings[]) => (
+  validations?.map((rule, index) => {
+    const key = `${rule.key}-${rule.type ?? 'internal'}`
+    const handleRemove = () => validations?.splice(index, 1)
+    return <ListItem key={key}>
+      <ValidationRuleEditor rule={rule} onRemove={handleRemove}/>
+    </ListItem>
+  })
+)
+
+const SWrapper = styled.div`
+  label {
+    min-width: max-content;
+  }
+`
+
 const autoValidate = boolean
   .setup({annotationType: 'Module', calculable: false})
   .hinted('Validate automatically by input change')
@@ -45,19 +61,3 @@ const RawComponentValidationSettingsEditor = (props: AnnotationEditorProps) => {
 }
 
 export const ComponentValidationSettingsEditor = namedObserver('ComponentValidationSettingsEditor', RawComponentValidationSettingsEditor)
-
-const renderRules = (validations?: ValidationRuleSettings[]) => (
-  validations?.map((rule, index) => {
-    const key = `${rule.key}-${rule.type ?? 'internal'}`
-    const handleRemove = () => validations?.splice(index, 1)
-    return <ListItem key={key}>
-      <ValidationRuleEditor rule={rule} onRemove={handleRemove}/>
-    </ListItem>
-  })
-)
-
-const SWrapper = styled.div`
-  label {
-    min-width: max-content;
-  }
-`

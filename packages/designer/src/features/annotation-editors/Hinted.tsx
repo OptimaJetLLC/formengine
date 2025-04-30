@@ -6,6 +6,17 @@ import {IconButton, Tooltip, Whisper} from 'rsuite'
 import type {TypeAttributes} from 'rsuite/esm/internals/types'
 import {useTooltipPlacement} from '../../utils/TooltipPlacementContext'
 
+const SLabel = styled.label<{ hinted?: boolean }>`
+  min-width: 80px;
+
+  ${({hinted}) => hinted && `
+    :hover {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+  `};
+`
+
 /**
  * React component properties for the {@link HintedLabel} component.
  */
@@ -43,22 +54,6 @@ export interface HintedProps extends Omit<WhisperProps, 'speaker'> {
 }
 
 /**
- * The React form builder component that wraps the children component and displays the label with the tooltip.
- * @param props the React component properties.
- * @param props.hint the tooltip text.
- * @param props.children the wrapped children component.
- * @param props.labelProps the label component properties.
- * @returns the React element.
- * @internal
- */
-export const HintedLabel = ({hint, children, ...labelProps}: HintedLabelProps) => {
-  if (!hint) return <SLabel {...labelProps}>{children}</SLabel>
-  return <Hinted hint={hint}>
-    <SLabel {...labelProps} hinted>{children}</SLabel>
-  </Hinted>
-}
-
-/**
  * The React form builder component that wraps the children component and displays a tooltip.
  * @param props the React component properties.
  * @param props.hint the tooltip text.
@@ -75,6 +70,22 @@ export const Hinted = ({hint, children, ...props}: HintedProps) => {
   return <Whisper speaker={<Tooltip>{hint}</Tooltip>} placement={placement} trigger={'hover'}>
     {children}
   </Whisper>
+}
+
+/**
+ * The React form builder component that wraps the children component and displays the label with the tooltip.
+ * @param props the React component properties.
+ * @param props.hint the tooltip text.
+ * @param props.children the wrapped children component.
+ * @param props.labelProps the label component properties.
+ * @returns the React element.
+ * @internal
+ */
+export const HintedLabel = ({hint, children, ...labelProps}: HintedLabelProps) => {
+  if (!hint) return <SLabel {...labelProps}>{children}</SLabel>
+  return <Hinted hint={hint}>
+    <SLabel {...labelProps} hinted>{children}</SLabel>
+  </Hinted>
 }
 
 /**
@@ -113,14 +124,3 @@ export const HintedIconButton = ({hint, hintPlacement, ...props}: HintedIconButt
     <IconButton {...props} size="xs"/>
   </Hinted>
 }
-
-const SLabel = styled.label<{ hinted?: boolean }>`
-  min-width: 80px;
-
-  ${({hinted}) => hinted && `
-    :hover {
-      text-decoration: underline;
-      text-decoration-style: dotted;
-    }
-  `};
-`

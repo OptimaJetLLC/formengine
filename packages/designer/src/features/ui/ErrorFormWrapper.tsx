@@ -5,6 +5,18 @@ import {Button, Message} from 'rsuite'
 import {useCreateForm} from '../../utils/useCreateForm'
 import {useTranslationPart} from '../localization/hooks'
 
+const SMessage = styled(Message)`
+  font-size: 16px;
+  font-weight: bolder;
+`
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+`
+
 export const ErrorFormWrapper = namedObserver('ErrorFormPlaceholder', function ({children}: PropsWithChildren<any>) {
   const {formLoadError} = useStore()
   const t = useTranslationPart('formsList')
@@ -19,15 +31,3 @@ export const ErrorFormWrapper = namedObserver('ErrorFormPlaceholder', function (
 
   return formLoadError ? withWrapper : children
 })
-
-const SMessage = styled(Message)`
-  font-size: 16px;
-  font-weight: bolder;
-`
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 15px;
-`

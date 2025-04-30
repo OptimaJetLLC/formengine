@@ -10,6 +10,32 @@ import {FaIcon} from '../../../components/Icons'
 import {customizableObserver} from '../../../customization'
 import {useTranslationPart} from '../../../localization/hooks'
 
+const IconButton = styled(FaIcon)`
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
+  border-radius: 20px;
+  overflow: hidden;
+
+  & path {
+    transform: rotate(360deg);
+    transform-origin: 50% 200%;
+    transition: all 400ms cubic-bezier(1, 0, 0, 1);
+  }
+
+  transition: background-color 400ms linear;
+  background-color: var(--rs-primary-500);
+
+  &.dark {
+    path {
+      transform: rotate(0deg);
+    }
+
+    background-color: var(--rs-toggle-bg);
+  }
+`
+
 const icons: Record<BuilderTheme, any> = {
   dark: faMoon,
   light: faSun
@@ -43,29 +69,3 @@ const RawToggleTheme = (props: ToggleThemeProps) => {
 }
 
 export const ToggleTheme = customizableObserver('ToggleThemeButton', RawToggleTheme)
-
-const IconButton = styled(FaIcon)`
-  cursor: pointer;
-  width: 24px;
-  height: 24px;
-  padding: 3px;
-  border-radius: 20px;
-  overflow: hidden;
-
-  & path {
-    transform: rotate(360deg);
-    transform-origin: 50% 200%;
-    transition: all 400ms cubic-bezier(1, 0, 0, 1);
-  }
-
-  transition: background-color 400ms linear;
-  background-color: var(--rs-primary-500);
-
-  &.dark {
-    path {
-      transform: rotate(0deg);
-    }
-
-    background-color: var(--rs-toggle-bg);
-  }
-`

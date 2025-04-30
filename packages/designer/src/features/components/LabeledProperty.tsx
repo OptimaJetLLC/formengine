@@ -18,6 +18,11 @@ import {useTranslationPart} from '../localization/hooks'
 import {Columns, LabeledInput} from './Containers'
 import {FaIcon} from './Icons'
 
+const SIconButton = styled(IconButton)`
+  min-width: 24px;
+  margin-inline-end: -6px;
+`
+
 const afterRedAsterisk = css`
   &:after {
     padding-left: 3px;
@@ -178,10 +183,5 @@ const RawLabeledProperty = (props: LabeledPropertyProps) => {
  * @returns the React element.
  */
 export const LabeledProperty = customizable('LabeledProperty', RawLabeledProperty)
-
-const SIconButton = styled(IconButton)`
-  min-width: 24px;
-  margin-inline-end: -6px;
-`
 
 export default LabeledProperty

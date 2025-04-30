@@ -3,6 +3,23 @@ import type {Device} from '../../../../../utils/types'
 import {useTranslationPart} from '../../../../localization/hooks'
 import {FixedSelectPicker} from '../../../FixedSelectPicker'
 
+const SHeader = styled.h6`
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 28px;
+  gap: 10px;
+`
+
+const SPicker = styled(FixedSelectPicker)`
+  margin-inline-end: 4px;
+
+  .rs-picker-toggle-value {
+    font-size: 15px;
+  }
+`
+
 /**
  * React component that select device for component styles editors.
  * @param props the React component properties.
@@ -23,20 +40,3 @@ export const DevicePicker = ({value, onChange}: { value: Device, onChange: (valu
     </SHeader>
   )
 }
-
-const SHeader = styled.h6`
-  margin-bottom: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 28px;
-  gap: 10px;
-`
-
-const SPicker = styled(FixedSelectPicker)`
-  margin-inline-end: 4px;
-
-  .rs-picker-toggle-value {
-    font-size: 15px;
-  }
-`

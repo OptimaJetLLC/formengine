@@ -3,6 +3,14 @@ import {forwardRef} from '@react-form-builder/core'
 import {Icon} from '@rsuite/icons'
 import type {Ref} from 'react'
 
+const extractFaIconData = (faIcon: any) => {
+  if (faIcon?.icon) {
+    const [width, height, , , svgPathData] = faIcon.icon
+    return {width, height, svgPathData}
+  }
+  return faIcon
+}
+
 /**
  * The React component that displays an SVG icon.
  * @param props the React component properties.
@@ -20,14 +28,6 @@ const FaSvgIcon = forwardRef(({faIcon, size, ...rest}: { faIcon: any, size?: num
     </svg>
   )
 })
-
-const extractFaIconData = (faIcon: any) => {
-  if (faIcon?.icon) {
-    const [width, height, , , svgPathData] = faIcon.icon
-    return {width, height, svgPathData}
-  }
-  return faIcon
-}
 
 interface FaIconProps {
   icon: IconDefinition,

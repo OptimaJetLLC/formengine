@@ -16,6 +16,30 @@ import {ToggleTheme} from './components/ToggleTheme'
 import {useSaveForm} from './components/useSaveForm'
 import {ViewModes} from './components/ViewModes'
 
+const LeftPart = styled.div``
+
+const RightPart = styled.div`
+  justify-content: flex-end;
+`
+
+const CenterPart = styled.div`
+  justify-content: center;
+  flex: 0;
+`
+
+const Container = styled.div`
+  display: flex;
+  padding: 10px 15px;
+  gap: 10px;
+
+  & > * {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px
+  }
+`
+
 const Toolbar = customizableObserver('Header_Toolbar', ButtonGroup)
 
 const RawHeader = (props: ComponentProps<typeof Container>) => {
@@ -56,29 +80,5 @@ const RawHeader = (props: ComponentProps<typeof Container>) => {
 }
 
 const Header = customizableObserver('Header', RawHeader)
-
-const LeftPart = styled.div``
-
-const RightPart = styled.div`
-  justify-content: flex-end;
-`
-
-const CenterPart = styled.div`
-  justify-content: center;
-  flex: 0;
-`
-
-const Container = styled.div`
-  display: flex;
-  padding: 10px 15px;
-  gap: 10px;
-
-  & > * {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 10px
-  }
-`
 
 export {Header}

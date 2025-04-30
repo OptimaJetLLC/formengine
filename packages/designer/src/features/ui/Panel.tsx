@@ -7,54 +7,6 @@ import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
 import type {PanelPlacement} from './PanelPlacement'
 
-interface CollapsedSizeProps {
-  collapsedSize?: number
-}
-
-/**
- * Properties of the form builder panel.
- */
-export interface PanelProps extends PropsWithChildren<any>, CollapsedSizeProps {
-  /**
-   * The panel placement.
-   */
-  placement: PanelPlacement
-  /**
-   * Flag, if true the collapsed panel will be hidden, false otherwise.
-   */
-  hideCollapsed?: boolean
-  /**
-   * Callback function called when the panel is collapsed/expanded.
-   */
-  onCollapse?: Function
-}
-
-const RawPanel = ({
-                  children,
-                  placement = 'left',
-                  hideCollapsed = true,
-                  className,
-                  onCollapse,
-                  ...props
-                }: PanelProps) => {
-  const store = useBuilderStore()
-  const visible = !!store.openedPanels?.includes(placement)
-  const collapsed = !visible
-  const handleCollapse = () => store.setPanelVisible(placement, !visible)
-  const tooltipPlacement = placement === 'right' ? 'autoHorizontal' : 'auto'
-
-  return <PanelContainer className={cx(className, placement, {collapsed})} {...props}>
-    <TooltipPlacementProvider value={tooltipPlacement}>
-      <ContentContainer className={cx({collapsed, hideCollapsed})}>{children}</ContentContainer>
-    </TooltipPlacementProvider>
-    <HideButton className={cx(placement, {collapsed})} onClick={handleCollapse}>
-      <ArrowDownLine className={'icon'}/>
-    </HideButton>
-  </PanelContainer>
-}
-
-export const Panel = namedObserver('Panel', RawPanel)
-
 const transition = '200ms ease-in-out'
 
 export const ContentContainer = styled.div`
@@ -180,3 +132,51 @@ export const PanelContainer = styled.div<CollapsedSizeProps>`
     }
   }
 `
+
+interface CollapsedSizeProps {
+  collapsedSize?: number
+}
+
+/**
+ * Properties of the form builder panel.
+ */
+export interface PanelProps extends PropsWithChildren<any>, CollapsedSizeProps {
+  /**
+   * The panel placement.
+   */
+  placement: PanelPlacement
+  /**
+   * Flag, if true the collapsed panel will be hidden, false otherwise.
+   */
+  hideCollapsed?: boolean
+  /**
+   * Callback function called when the panel is collapsed/expanded.
+   */
+  onCollapse?: Function
+}
+
+const RawPanel = ({
+                  children,
+                  placement = 'left',
+                  hideCollapsed = true,
+                  className,
+                  onCollapse,
+                  ...props
+                }: PanelProps) => {
+  const store = useBuilderStore()
+  const visible = !!store.openedPanels?.includes(placement)
+  const collapsed = !visible
+  const handleCollapse = () => store.setPanelVisible(placement, !visible)
+  const tooltipPlacement = placement === 'right' ? 'autoHorizontal' : 'auto'
+
+  return <PanelContainer className={cx(className, placement, {collapsed})} {...props}>
+    <TooltipPlacementProvider value={tooltipPlacement}>
+      <ContentContainer className={cx({collapsed, hideCollapsed})}>{children}</ContentContainer>
+    </TooltipPlacementProvider>
+    <HideButton className={cx(placement, {collapsed})} onClick={handleCollapse}>
+      <ArrowDownLine className={'icon'}/>
+    </HideButton>
+  </PanelContainer>
+}
+
+export const Panel = namedObserver('Panel', RawPanel)

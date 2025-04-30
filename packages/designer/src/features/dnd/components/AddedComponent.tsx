@@ -16,6 +16,59 @@ import {useDragWithPreview} from './Editable/hooks/useDragWithPreview'
 import {PresetToolbar} from './PresetToolbar'
 import {useHovered} from './useHovered'
 
+const Container = styled.div`
+  display: flex;
+  padding: 7px;
+  gap: 6px;
+  min-width: 150px;
+  flex: 1;
+  max-width: 125px;
+  border-radius: 6px;
+  background-color: var(--rs-btn-default-bg);
+  font-size: 13px;
+
+  &:hover:not(.disabled) {
+    background-color: var(--rs-btn-default-hover-bg);
+  }
+
+  &:active:not(.disabled), &:focus:not(.disabled) {
+    outline: 2px solid var(--rs-btn-primary-bg);
+  }
+
+  &.disabled {
+    color: var(--rs-btn-default-disabled-text);
+  }
+
+  .rs-theme-dark & label {
+    opacity: 0.6;
+  }
+`
+
+const DraggableContainer = styled.div`
+  position: relative;
+  flex: 1;
+  
+  * {
+    cursor: grab;    
+  }
+
+  & > div {
+    height: 100%;
+    min-width: 123px;
+    max-width: initial;
+  }
+`
+
+const Draggable = ({children}: { children: ReactNode }) => {
+  const [{isDragging}, drag] = useDragWithPreview(ItemType.AddedComponent)
+
+  return <>
+    {/* TODO FE-1065 */}
+    <DraggableContainer ref={drag as unknown as RefCallback<HTMLDivElement>}>{children}</DraggableContainer>
+    {isDragging && <DragPreview>{children}</DragPreview>}
+  </>
+}
+
 const componentStaticClassname = 'FE_Palette_Component'
 
 const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggableProps) => {
@@ -73,56 +126,3 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
 }
 
 export const AddedComponent = namedObserver('AddedComponent', RawAddedComponent)
-
-const Draggable = ({children}: { children: ReactNode }) => {
-  const [{isDragging}, drag] = useDragWithPreview(ItemType.AddedComponent)
-
-  return <>
-    {/* TODO FE-1065 */}
-    <DraggableContainer ref={drag as unknown as RefCallback<HTMLDivElement>}>{children}</DraggableContainer>
-    {isDragging && <DragPreview>{children}</DragPreview>}
-  </>
-}
-
-const Container = styled.div`
-  display: flex;
-  padding: 7px;
-  gap: 6px;
-  min-width: 150px;
-  flex: 1;
-  max-width: 125px;
-  border-radius: 6px;
-  background-color: var(--rs-btn-default-bg);
-  font-size: 13px;
-
-  &:hover:not(.disabled) {
-    background-color: var(--rs-btn-default-hover-bg);
-  }
-
-  &:active:not(.disabled), &:focus:not(.disabled) {
-    outline: 2px solid var(--rs-btn-primary-bg);
-  }
-
-  &.disabled {
-    color: var(--rs-btn-default-disabled-text);
-  }
-
-  .rs-theme-dark & label {
-    opacity: 0.6;
-  }
-`
-
-const DraggableContainer = styled.div`
-  position: relative;
-  flex: 1;
-  
-  * {
-    cursor: grab;    
-  }
-
-  & > div {
-    height: 100%;
-    min-width: 123px;
-    max-width: initial;
-  }
-`
