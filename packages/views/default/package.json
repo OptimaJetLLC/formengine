@@ -1,18 +1,18 @@
 {
-    "name": "@react-form-builder/components-test",
-    "version": "3.5.0",
-    "private": true,
-    "main": "src/index.ts",
-    "type": "module",
-    "description": "OptimaJet Form Builder Components - Test",
-    "license": "Contact sales@optimajet.com",
-    "bugs": {
-        "email": "support@optimajet.com"
-    },
-    "scripts": {
-        "build": "vite build"
-    },
-    "dependencies": {
-        "@react-form-builder/core": "^3.5.0"
-    }
+  "name": "@react-form-builder/components-test",
+  "version": "3.5.0",
+  "private": true,
+  "main": "src/index.ts",
+  "type": "module",
+  "description": "OptimaJet Form Builder Components - Test",
+  "license": "Contact sales@optimajet.com",
+  "bugs": {
+    "email": "support@optimajet.com"
+  },
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@react-form-builder/core": "^3.5.0"
+  }
 }

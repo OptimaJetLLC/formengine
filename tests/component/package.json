@@ -1,23 +1,23 @@
 {
-    "name": "@react-form-builder/tests-component",
-    "version": "3.5.0",
-    "private": true,
-    "main": "index.ts",
-    "type": "module",
-    "dependencies": {
-        "@testing-library/dom": "*",
-        "@testing-library/jest-dom": "*",
-        "@testing-library/react": "*"
+  "name": "@react-form-builder/tests-component",
+  "version": "3.5.0",
+  "private": true,
+  "main": "index.ts",
+  "type": "module",
+  "dependencies": {
+    "@testing-library/dom": "*",
+    "@testing-library/jest-dom": "*",
+    "@testing-library/react": "*"
+  },
+  "peerDependenciesMeta": {
+    "@testing-library/jest-dom": {
+      "optional": true
     },
-    "peerDependenciesMeta": {
-        "@testing-library/jest-dom": {
-            "optional": true
-        },
-        "@testing-library/react": {
-            "optional": true
-        },
-        "@testing-library/dom": {
-            "optional": true
-        }
+    "@testing-library/react": {
+      "optional": true
+    },
+    "@testing-library/dom": {
+      "optional": true
     }
+  }
 }

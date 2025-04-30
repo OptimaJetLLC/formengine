@@ -1,5 +1,5 @@
 {
-    "name": "custom-webpack-plugin",
-    "version": "0.0.0",
-    "private": true
+  "name": "custom-webpack-plugin",
+  "version": "0.0.0",
+  "private": true
 }

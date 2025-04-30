@@ -1,30 +1,30 @@
 {
-    "name": "@react-form-builder/indexed-db-form-storage",
-    "version": "3.5.0",
-    "private": false,
-    "main": "index.ts",
-    "type": "module",
-    "description": "OptimaJet Form Builder IndexedDB form storage",
-    "keywords": [
-        "form-builder",
-        "optimajet"
-    ],
-    "author": "Optimajet",
-    "license": "Contact sales@optimajet.com",
-    "bugs": {
-        "email": "support@optimajet.com"
-    },
-    "scripts": {
-        "build": "vite build",
-        "clean": "rimraf dist temp"
-    },
-    "files": [
-        "dist/*"
-    ],
-    "dependencies": {
-        "@react-form-builder/core": "^3.5.0",
-        "@react-form-builder/designer": "^3.5.0",
-        "idb-keyval": "^6.2.1",
-        "mobx": "^6.13.5"
-    }
+  "name": "@react-form-builder/indexed-db-form-storage",
+  "version": "3.5.0",
+  "private": false,
+  "main": "index.ts",
+  "type": "module",
+  "description": "OptimaJet Form Builder IndexedDB form storage",
+  "keywords": [
+    "form-builder",
+    "optimajet"
+  ],
+  "author": "Optimajet",
+  "license": "Contact sales@optimajet.com",
+  "bugs": {
+    "email": "support@optimajet.com"
+  },
+  "scripts": {
+    "build": "vite build",
+    "clean": "rimraf dist temp"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "dependencies": {
+    "@react-form-builder/core": "^3.5.0",
+    "@react-form-builder/designer": "^3.5.0",
+    "idb-keyval": "^6.2.1",
+    "mobx": "^6.13.5"
+  }
 }

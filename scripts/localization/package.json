@@ -1,21 +1,21 @@
 {
-    "name": "localization",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "type": "module",
-    "scripts": {
-        "update": "node index.js",
-        "auth": "yc init",
-        "token": "yc iam create-token > .token"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "axios": "^1.2.1",
-        "deepmerge": "^4.2.2",
-        "dotenv": "^16.4.5",
-        "json-stable-stringify": "^1.1.1",
-        "lodash-es": "^4.17.21"
-    }
+  "name": "localization",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "update": "node index.js",
+    "auth": "yc init",
+    "token": "yc iam create-token > .token"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.2.1",
+    "deepmerge": "^4.2.2",
+    "dotenv": "^16.4.5",
+    "json-stable-stringify": "^1.1.1",
+    "lodash-es": "^4.17.21"
+  }
 }
