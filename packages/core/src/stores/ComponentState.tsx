@@ -23,8 +23,8 @@ const createEventHandlers = (data: ComponentData): Record<EventName, GenericVoid
   if (!data.field) return {}
 
   return {
-    onChange: (value: unknown) => {
-      data.field?.setValue(value)
+    onChange: (e: ActionEventArgs) => {
+      data.field?.setValue(e.value)
     },
     onBlur: () => {
       data.field?.setTouched()
@@ -90,7 +90,11 @@ const computeEvents = (componentState: ComponentState) => {
   set.forEach((name) => {
     events[name] = async (...args: any[]) => {
       const handler = eventHandlers[name]
-      handler?.(...args)
+      if (handler) {
+        const actionEventArgs = new ActionEventArgs(name, data, componentState.store, args, componentState.get)
+        handler(actionEventArgs)
+      }
+
       const defaultHandler = createDefaultActionHandler(componentState, name)
       await defaultHandler(...args)
     }
