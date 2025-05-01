@@ -70,7 +70,7 @@ const emptyForm = `
         "type": "RsInput",
         "props": {
           "placeholder": {
-            "value": "Enter you name"
+            "value": "Enter your name"
           },
           "label": {
             "value": "Name"

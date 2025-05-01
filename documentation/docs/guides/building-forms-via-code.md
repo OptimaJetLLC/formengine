@@ -30,7 +30,7 @@ import {ComponentStore, PersistedForm} from '@react-form-builder/core'
 const createSimpleForm = (): ComponentStore => {
   const nameInput = new ComponentStore('name', 'RsInput')
   // value - simple value of the prop, the prop value can also be a localized value or a calculated value
-  nameInput.props.placeholder = {value: 'Enter you name'}
+  nameInput.props.placeholder = {value: 'Enter your name'}
   nameInput.props.label = {value: 'Name'}
   // make this field required
   nameInput.schema = {
