@@ -1,6 +1,6 @@
 # Function: getChildren()
 
-> **getChildren**(`data`, `formData`, `componentTreeItem`, `componentProps`): `Record`\<`string`, `any`\>
+> **getChildren**(`data`, `componentTreeItem`, `componentProps`): `Record`\<`string`, `any`\>
 
 Returns the Record with all child components. **Internal use only.**
 
@@ -9,10 +9,6 @@ Returns the Record with all child components. **Internal use only.**
 • **data**: [`ComponentData`](../classes/ComponentData.md)
 
 the parent component's data necessary to display the component.
-
-• **formData**: [`IFormData`](../interfaces/IFormData.md)
-
-the form data.
 
 • **componentTreeItem**: `ComponentType`\<[`ComponentTreeProps`](../interfaces/ComponentTreeProps.md)\>
 

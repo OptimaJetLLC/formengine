@@ -2,29 +2,7 @@
 
 The context for working with data.
 
-## Extends
-
-- [`IDataRootProvider`](IDataRootProvider.md)
-
 ## Accessors
-
-### dataRoot
-
-#### Get Signature
-
-> **get** **dataRoot**(): [`ComponentData`](../classes/ComponentData.md)
-
-##### Returns
-
-[`ComponentData`](../classes/ComponentData.md)
-
-the root component for the data in the component tree.
-
-#### Inherited from
-
-[`IDataRootProvider`](IDataRootProvider.md).[`dataRoot`](IDataRootProvider.md#dataroot)
-
-***
 
 ### initialData
 

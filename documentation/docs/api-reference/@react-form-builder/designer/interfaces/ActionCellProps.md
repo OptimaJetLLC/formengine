@@ -1011,7 +1011,7 @@ Data binding key, but also a sort of key
 
 ### enterKeyHint?
 
-> `optional` **enterKeyHint**: `"next"` \| `"search"` \| `"enter"` \| `"done"` \| `"go"` \| `"previous"` \| `"send"`
+> `optional` **enterKeyHint**: `"search"` \| `"enter"` \| `"done"` \| `"go"` \| `"next"` \| `"previous"` \| `"send"`
 
 #### Inherited from
 

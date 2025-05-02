@@ -10,7 +10,7 @@ This tree of elements contains the data required to display the component. It is
 
 ### new ComponentData()
 
-> **new ComponentData**(`componentStore`, `model`, `field`, `childFactory`, `formValidators`?): [`ComponentData`](ComponentData.md)
+> **new ComponentData**(`componentStore`, `model`, `childFactory`, `formValidators`?): [`ComponentData`](ComponentData.md)
 
 Constructor.
 
@@ -23,10 +23,6 @@ the component settings.
 • **model**: [`Model`](Model.md)\<`any`\>
 
 the component metadata for the form viewer.
-
-• **field**: `undefined` \| [`Field`](../interfaces/Field.md)
-
-the field with the form data.
 
 • **childFactory**
 
@@ -68,7 +64,7 @@ Specifies the root component for the data in the component tree. **Internal use 
 
 ### field?
 
-> `readonly` `optional` **field**: [`Field`](../interfaces/Field.md)
+> `optional` **field**: [`Field`](../interfaces/Field.md)
 
 The field with the form data.
 
@@ -150,6 +146,20 @@ the Record with all the form data.
 #### Implementation of
 
 [`IFormData`](../interfaces/IFormData.md).[`data`](../interfaces/IFormData.md#data)
+
+***
+
+### dataRoot
+
+#### Get Signature
+
+> **get** **dataRoot**(): [`ComponentData`](ComponentData.md)
+
+##### Returns
+
+[`ComponentData`](ComponentData.md)
+
+the root component for the data in the component tree.
 
 ***
 

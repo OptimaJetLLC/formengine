@@ -2,10 +2,6 @@
 
 Provides the root component for the data in the component tree.
 
-## Extended by
-
-- [`IDataContext`](IDataContext.md)
-
 ## Accessors
 
 ### dataRoot
