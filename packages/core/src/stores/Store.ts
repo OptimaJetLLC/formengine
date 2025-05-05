@@ -16,6 +16,7 @@ import type {SchemaType} from '../features/validation'
 import {DataValidator} from '../features/validation'
 import type {ValidationResult} from '../features/validation/types/ValidationResult'
 import {calculateProperty} from '../features/validation/utils/calculateProperty'
+import type {CalculatePropertyFn} from '../features/validation/utils/CalculatePropertyFn'
 import {ZodValidationRules} from '../features/validation/utils/consts'
 import {dataPart} from '../features/validation/utils/dataPart'
 import {getDefaultErrorMessage} from '../features/validation/utils/DataValidator'
@@ -102,18 +103,6 @@ class StoreFormContext implements IDataContext {
       componentStore.schema,
       onError,
       this.store.localizeErrorMessages.bind(this.store, this.dataRoot, componentStore)
-    )
-  }
-
-  /**
-   * @inheritDoc
-   */
-  calculateValue(component: ComponentStore, key: string) {
-    return calculateProperty(
-      component,
-      key,
-      this.dataRoot,
-      (type, componentStore) => this.store.localizeComponent(type, this.dataRoot, componentStore)
     )
   }
 }
@@ -356,16 +345,20 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
 
   private createField(componentData: ComponentData, dataContext: IDataContext,
                       deferFieldCalculation: boolean) {
+    const calculateValue: CalculatePropertyFn = (component: ComponentStore, key: string) => {
+      return this.calculateProperty(componentData, component, key)
+    }
+
     const {model, store: componentStore} = componentData
     if (model.kind === 'repeater') {
-      return new RepeaterField(componentData, dataContext, this, this, this.getValidationRules.bind(this),
+      return new RepeaterField(componentData, calculateValue, dataContext, this, this, this.getValidationRules.bind(this),
         deferFieldCalculation)
     }
 
     if (!model.valued) return
 
     if (!isTemplateType(model.type)) {
-      return new SimpleField(componentData, dataContext, deferFieldCalculation)
+      return new SimpleField(componentData, calculateValue, dataContext, deferFieldCalculation)
     }
 
     const childStore = new Store(this.formViewerPropsStore.clone(), this.componentStateFactory, this, componentStore, dataContext)
@@ -485,5 +478,15 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
       const errorMessage = localizeErrorMessage(this.form, formData, this.displayedLanguage, componentStore, result.settings.key)
       return errorMessage ?? getDefaultErrorMessage(result)
     }).join(' ')
+  }
+
+  private calculateProperty(componentData: ComponentData, component: ComponentStore, key: string) {
+    const dataRoot = componentData.dataRoot
+    return calculateProperty(
+      component,
+      key,
+      dataRoot,
+      (type, componentStore) => this.localizeComponent(type, dataRoot, componentStore)
+    )
   }
 }

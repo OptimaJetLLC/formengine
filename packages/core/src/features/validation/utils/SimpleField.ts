@@ -8,6 +8,7 @@ import type {Model} from '../../define'
 import type {SchemaType} from '../types/SchemaType'
 import type {ValidationMessages} from '../types/ValidationResult'
 import {autoConvertField} from './autoConvertField'
+import type {CalculatePropertyFn} from './CalculatePropertyFn'
 import {dataPart} from './dataPart'
 import type {DataValidator} from './DataValidator'
 import type {Disposer} from './Disposer'
@@ -53,11 +54,13 @@ export class SimpleField implements Field {
   /**
    * Creates the field with form data for the component.
    * @param componentData the component data.
+   * @param calculateValue the function for calculating the value of the field.
    * @param dataContext the data context for this field.
    * @param deferFieldCalculation if true, then the calculated field must be explicitly initialized.
    */
   constructor(
     readonly componentData: ComponentData,
+    readonly calculateValue: CalculatePropertyFn,
     readonly dataContext: IDataContext,
     public deferFieldCalculation: boolean,
   ) {
@@ -250,7 +253,7 @@ export class SimpleField implements Field {
     // to calculate the value of a calculated field,
     // we need the form data, i.e., in particular the value from this SimpleField (value).
     if (this.deferFieldCalculation) return this.initialDataValue
-    const [, value] = this.dataContext.calculateValue(this.componentStore, this.valued)
+    const [, value] = this.calculateValue(this.componentStore, this.valued)
     return value
   }
 

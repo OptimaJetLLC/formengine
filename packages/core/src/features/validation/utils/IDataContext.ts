@@ -14,13 +14,6 @@ export interface IDataContext {
   get initialData(): unknown
 
   /**
-   * Calculates the value for the field.
-   * @param component the component settings.
-   * @param key the field's key.
-   */
-  calculateValue(component: ComponentStore, key: string): [boolean, any?]
-
-  /**
    * Creates a data validator for the field.
    * @param componentStore the component settings.
    * @param valueType the field's data type.

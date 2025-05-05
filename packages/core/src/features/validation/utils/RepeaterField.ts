@@ -11,7 +11,7 @@ import type {Model} from '../../define'
 import type {SchemaType} from '../types/SchemaType'
 import type {SchemaTypeMap} from '../types/SchemaTypeMap'
 import type {ValidationMessages} from '../types/ValidationResult'
-import {calculateProperty} from './calculateProperty'
+import type {CalculatePropertyFn} from './CalculatePropertyFn'
 import {dataPart} from './dataPart'
 import {DataValidator} from './DataValidator'
 import type {Disposer} from './Disposer'
@@ -57,6 +57,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
   /**
    * Creates the field with repeater data for the component.
    * @param repeaterComponentData the component data.
+   * @param calculateValue the function for calculating the value of the field.
    * @param dataContext the context for working with data.
    * @param componentDataFactory the factory for creating ComponentData instances.
    * @param store the form viewer settings.
@@ -65,6 +66,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
    */
   constructor(
     readonly repeaterComponentData: ComponentData,
+    readonly calculateValue: CalculatePropertyFn,
     readonly dataContext: IDataContext,
     readonly componentDataFactory: IComponentDataFactory,
     readonly store: IStore,
@@ -380,7 +382,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
     // to calculate the value of a calculated field,
     // we need the form data, i.e., in particular the value from this SimpleField (value).
     if (this.deferFieldCalculation) return this.initialDataValue
-    const [, value] = this.dataContext.calculateValue(this.componentStore, this.valued)
+    const [, value] = this.calculateValue(this.componentStore, this.valued)
     return value
   }
 
@@ -435,18 +437,6 @@ class RepeaterFormContext implements IDataContext {
     const initialData = this.repeaterField.initialData
     if (Array.isArray(initialData)) return initialData[this.index]
     return undefined
-  }
-
-  /**
-   * @inheritDoc
-   */
-  calculateValue(component: ComponentStore, key: string) {
-    return calculateProperty(
-      component,
-      key,
-      this.dataRoot,
-      (type, componentStore) => this.store.localizeComponent(type, this.dataRoot, componentStore)
-    )
   }
 
   /**
