@@ -5,6 +5,7 @@ import {useEffect} from 'react'
 import {namedObserver} from '../../utils'
 import {useStore} from '../../utils/contexts/StoreContext'
 import type {FormViewerWrapperComponentProps} from '../define/utils/View'
+import {useLicense} from '../license/LicenseManager'
 import {BiDi} from './bidi'
 import {emotionCache} from './emotionCache'
 import type {Language} from './types'
@@ -33,6 +34,8 @@ const nestViewerWrappers = ([Wrapper, ...more]: ComponentType<FormViewerWrapperC
 const RawViewerLocalizationProvider = (props: ViewerLocalizationProviderProps) => {
   const viewerStore = useStore()
   const language = viewerStore.displayedLanguage
+  const {checkLicense, isNested} = useLicense()
+  const selectedCache = language.bidi == BiDi.RTL ? emotionCache.RTL : emotionCache.LTR
 
   useEffect(() => {
     const loaders = viewerStore.formViewerPropsStore.view.getCssLoaders(language.bidi)
@@ -41,7 +44,19 @@ const RawViewerLocalizationProvider = (props: ViewerLocalizationProviderProps) =
     })
   }, [language, viewerStore.formViewerPropsStore.view])
 
-  const selectedCache = language.bidi == BiDi.RTL ? emotionCache.RTL : emotionCache.LTR
+  useEffect(() => {
+    if (isNested) return
+
+    checkLicense([{
+      name: 'ftLocaleCount',
+      check: ({actualCount}, restrictionCount) => {
+        if (restrictionCount === -1) return true
+
+        return restrictionCount >= actualCount
+      },
+      actualCount: viewerStore.form.languages.length
+    }],)
+  }, [checkLicense, isNested, viewerStore.form.languages, viewerStore.form.languages.length])
 
   return (
     <div dir={language.bidi} lang={language.fullCode} className={viewerClass}>

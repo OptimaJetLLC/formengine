@@ -4,6 +4,7 @@ import {
   ComponentTree,
   FormViewerPropsStore,
   getChildren,
+  LicenseManager,
   namedObserver,
   nameObservable,
   Store,
@@ -134,16 +135,18 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
       <BuilderStoreProvider value={builderStore}>
         <FormBuilderContextProvider builderRef={builderRef}>
           <StoreProvider value={store}>
-            <LocalizationProvider>
-              <StylesProvider>
-                <TooltipPlacementProvider value={'auto'}>
-                  <DndProvider backend={HTML5Backend}>
-                    {children}
-                    <CustomDragLayer/>
-                  </DndProvider>
-                </TooltipPlacementProvider>
-              </StylesProvider>
-            </LocalizationProvider>
+            <LicenseManager>
+              <LocalizationProvider>
+                <StylesProvider>
+                  <TooltipPlacementProvider value={'auto'}>
+                    <DndProvider backend={HTML5Backend}>
+                      {children}
+                      <CustomDragLayer/>
+                    </DndProvider>
+                  </TooltipPlacementProvider>
+                </StylesProvider>
+              </LocalizationProvider>
+            </LicenseManager>
           </StoreProvider>
         </FormBuilderContextProvider>
       </BuilderStoreProvider>

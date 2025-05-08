@@ -1,0 +1,114 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "htmlAttributes": [
+      {
+        "name": "data-testid",
+        "value": "mainScreen"
+      }
+    ],
+    "children": [
+      {
+        "key": "repeater1",
+        "type": "Repeater",
+        "props": {}
+      },
+      {
+        "key": "templateAgreement1",
+        "type": "Template:agreement",
+        "props": {}
+      },
+      {
+        "key": "rsInput1",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Login"
+          }
+        }
+      },
+      {
+        "key": "rsInput2",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Password"
+          },
+          "passwordMask": {
+            "value": true
+          }
+        }
+      },
+      {
+        "key": "rsSignature1",
+        "type": "RsSignature",
+        "props": {}
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "comment": {
+        "component": {
+          "placeholder": "Enter your text here"
+        }
+      },
+      "last_name": {
+        "validator-code": {
+          "message": "That username is taken. Try another."
+        }
+      }
+    },
+    "de-DE": {
+      "comment": {
+        "component": {
+          "placeholder": "Geben Sie hier Ihren Text ein"
+        }
+      },
+      "last_name": {
+        "validator-code": {
+          "message": "Dieser Benutzername ist vergeben. Versuch es mit einem anderen."
+        }
+      }
+    },
+    "ar-EG": {
+      "comment": {
+        "component": {
+          "placeholder": "أدخل النص هنا"
+        }
+      },
+      "last_name": {
+        "validator-code": {
+          "message": " يتم أخذ اسم المستخدم هذا. جرب آخر."
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    },
+    {
+      "code": "de",
+      "dialect": "DE",
+      "name": "Deutsch",
+      "description": "German",
+      "bidi": "ltr"
+    },
+    {
+      "code": "ar",
+      "dialect": "EG",
+      "name": "عرب",
+      "description": "Arabic (Egypt)",
+      "bidi": "rtl"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

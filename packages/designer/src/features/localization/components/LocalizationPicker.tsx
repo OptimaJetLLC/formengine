@@ -58,7 +58,7 @@ export interface LocalizationPickerProps {
   onSelect: (language: Language) => void
 }
 
-const RawLocalizationPicker = ({value, onSelect}: LocalizationPickerProps) => {
+const RawLocalizationPicker = ({value, onSelect, ...props}: LocalizationPickerProps) => {
   const {availableLanguages} = useBuilderStore()
 
   const langData = useMemo(() => {
@@ -78,7 +78,8 @@ const RawLocalizationPicker = ({value, onSelect}: LocalizationPickerProps) => {
     return !!value && renderLanguageItem(langData[value])
   }, [langData])
 
-  return <SPicker value={value}
+  return <SPicker {...props}
+                  value={value}
                   data={data}
                   onSelect={handleSelect}
                   cleanable={false}

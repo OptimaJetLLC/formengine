@@ -14,6 +14,7 @@ import {
   useComponentData,
   View
 } from '@react-form-builder/core'
+import {testLicense} from '@react-form-builder/tests-common/license/vaild'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {useCallback} from 'react'
 import {expect} from 'vitest'
@@ -21,7 +22,6 @@ import {selectDropDownOption} from '../util/controls'
 import {eachComponentStore} from './eachComponentStore'
 import actionsBookingForm from './forms/actions-booking-form.json'
 import bookingForm from './forms/booking-form.json'
-import {testLicense} from './testLicense'
 import '../config/toAllHaveLocaleTextContent'
 import '../config/toHaveExactValues'
 import '../config/toAllSelectsHaveValues'

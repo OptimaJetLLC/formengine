@@ -1,4 +1,4 @@
-import {color, define, number, oneOf, string} from '@react-form-builder/core'
+import {color, define, number, oneOf, string, useLicense} from '@react-form-builder/core'
 import init, {qr_svg, SvgOptions} from 'fast_qr'
 import module from 'fast_qr/fast_qr_bg.wasm?url'
 import type {RefObject} from 'react'
@@ -147,10 +147,17 @@ const renderQr = async (props: FastQrProps, ref: RefObject<HTMLDivElement | null
 
 const FastQr = (props: FastQrProps) => {
   const ref = useRef<HTMLDivElement>(null)
+  const {checkLicense} = useLicense()
 
   useEffect(() => {
     renderQr(props, ref).catch(console.error)
   }, [props])
+
+  useEffect(() => {
+    checkLicense([{
+      name: 'ftComponentQrCode'
+    }])
+  }, [checkLicense])
 
   return <div className={props.className} style={{width: props.width}} ref={ref}></div>
 }

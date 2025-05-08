@@ -1,10 +1,10 @@
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {BiDi, ComponentStore, createView, FormViewer, Language, PersistedForm, View} from '@react-form-builder/core'
+import {testLicense} from '@react-form-builder/tests-common/license/vaild'
 import {fireEvent, render} from '@testing-library/react'
 import {useCallback} from 'react'
 import {expect} from 'vitest'
 import {eachComponentStore} from './eachComponentStore'
-import {testLicense} from './testLicense'
 
 function randomString(prefix?: string) {
   return `${prefix ?? ''}${new Date().toISOString()}`
@@ -373,7 +373,11 @@ describe(`TemplateField test`, function () {
       for (const inputKey of allInputKeys) {
         eachComponentStore(form, inputKey, (componentStore) => {
           const fnValue = defaultValues[inputKey]
-          componentStore.props.value = {value: 'defaultValue', computeType: 'function', fnSource: `return '${fnValue}'`}
+          componentStore.props.value = {
+            value: 'defaultValue',
+            computeType: 'function',
+            fnSource: `return '${fnValue}'`
+          }
         })
       }
     }

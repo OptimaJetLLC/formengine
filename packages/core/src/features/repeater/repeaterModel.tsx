@@ -1,9 +1,11 @@
+import {useEffect} from 'react'
 import {useBuilderContext} from '../../utils/contexts/BuilderContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {array, containerStyles, getDefaultCss, node, string} from '../annotation'
 import {toArray} from '../annotation/toArray'
 import {toStyleProperties} from '../annotation/toStyleProperties'
 import {Model} from '../define'
+import {useLicense} from '../license/LicenseManager'
 import {RepeaterItem} from './RepeaterItem'
 import type {RepeaterProps} from './RepeaterProps'
 import {RepeaterPropsProvider} from './RepeaterPropsContext'
@@ -26,6 +28,12 @@ const RepeaterContainer = (props: RepeaterContainerProps) => {
 }
 
 const Repeater = (props: RepeaterProps) => {
+  const {checkLicense} = useLicense()
+
+  useEffect(() => {
+    checkLicense([{name: 'ftComponentRepeater'}])
+  }, [checkLicense])
+
   return <RepeaterPropsProvider value={props}>
     <RepeaterContainer wrapperClassName={props.wrapperClassName}>
       {props.children}

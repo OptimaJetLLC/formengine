@@ -534,6 +534,14 @@
     "messageIsNull": "Lokalisierungsnachricht ist null",
     "messageNotFound": "Lokalisierungsnachricht nicht gefunden"
   },
+  "presetComponent": {
+    "category": "Zimmerkategorie",
+    "createPreset": "Erstellen einer voreingestellten Komponente",
+    "enterPresetName": "Bitte geben Sie einen Preset-Namen ein",
+    "name": "Name",
+    "nameExists": "Ein Preset oder eine Komponente mit diesem Namen ist bereits vorhanden.",
+    "namePlaceholder": "Geben Sie einen Voreinstellungsnamen ein"
+  },
   "promptDialog": {
     "cancel": "Stornieren",
     "ok": "Okay"

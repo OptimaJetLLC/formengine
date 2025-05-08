@@ -2,7 +2,8 @@ import {css, cx} from '@emotion/css'
 import type {DetailedHTMLProps, HTMLAttributes} from 'react'
 import {useMemo} from 'react'
 import {namedObserver} from '../../utils'
-import {TrialMessage} from '../licensing/TrialMessage'
+import {LicenseManager} from '../license/LicenseManager'
+import {TrialMessage} from '../license/TrialMessage'
 import {ViewerLocalizationProvider} from '../localization/ViewerLocalizationProvider'
 import {SuppressResizeObserverErrors} from '../ui/SuppressResizeObserverErrors'
 import {Viewer} from './components/Viewer'
@@ -37,12 +38,14 @@ export const SDiv = (props: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HT
 const RawFormViewer = (props: FormViewerProps) =>
   <SuppressResizeObserverErrors>
     <ViewerStoreProvider props={props}>
-      <ViewerLocalizationProvider>
-        <SDiv>
-          <TrialMessage/>
-          <Viewer/>
-        </SDiv>
-      </ViewerLocalizationProvider>
+      <LicenseManager>
+        <ViewerLocalizationProvider>
+          <SDiv>
+            <TrialMessage/>
+            <Viewer/>
+          </SDiv>
+        </ViewerLocalizationProvider>
+      </LicenseManager>
     </ViewerStoreProvider>
   </SuppressResizeObserverErrors>
 

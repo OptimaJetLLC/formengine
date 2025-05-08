@@ -9,6 +9,7 @@ const [
   /**
    * **Internal use only.**
    */
-  BuilderStoreProvider] = createNonNullableContext<BuilderStore>('BuildStoreContext')
+  BuilderStoreProvider,
+] = createNonNullableContext<BuilderStore>('BuildStoreContext')
 
 export {useBuilderStore, BuilderStoreProvider}

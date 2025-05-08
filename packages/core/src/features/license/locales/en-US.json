@@ -1,0 +1,18 @@
+{
+  "license": {
+    "errEndDateStrict": "License expired {{licenseEndDate}}",
+    "errEndDate": "License expired {{licenseEndDate}}",
+    "errLicenseInvalid": "Provided license key is invalid.",
+    "errNoKey": "No license key provided.",
+    "errDomain": "Your license allow only following domains: {{Domain}}",
+    "ftComponentQrCode": "Your license does not allow usage of the QR Code component",
+    "ftComponentRepeater": "Your license does not allow usage of the Repeater",
+    "ftComponentSignature": "Your license does not allow usage of the Signature component",
+    "ftComponentTable": "Your license does not allow usage of the Table component",
+    "ftComponentTemplates": "Your license does not allow usage of Templates",
+    "ftDesignerCustomization": "Your license does not allow Designer Customization",
+    "ftComponentPreset": "Your license does not allow Component Presets",
+    "ftLocaleCount": "Your license allows translation only for {{ftLocaleCount}} languages",
+    "mismatchMessage": "You are using features that are not included in your license. The product operates in “non-commercial use” mode. Change your license to use the options below:"
+  }
+}

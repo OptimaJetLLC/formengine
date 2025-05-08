@@ -1,0 +1,18 @@
+{
+  "license": {
+    "errDomain": "Ihre Lizenz erlaubt nur folgende Domains: {{Domain}}",
+    "errEndDate": "Lizenz abgelaufen {{licenseEndDate}}",
+    "errEndDateStrict": "Lizenz abgelaufen {{licenseEndDate}}",
+    "errLicenseInvalid": "Der angegebene Lizenzschlüssel ist ungültig.",
+    "errNoKey": "Kein Lizenzschlüssel bereitgestellt.",
+    "ftComponentPreset": "Ihre Lizenz erlaubt keine Komponentenvoreinstellungen",
+    "ftComponentQrCode": "Ihre Lizenz erlaubt keine Verwendung der QR-Code-Komponente",
+    "ftComponentRepeater": "Ihre Lizenz erlaubt keine Nutzung des Repeaters",
+    "ftComponentSignature": "Ihre Lizenz erlaubt keine Verwendung der Signaturkomponente",
+    "ftComponentTable": "Ihre Lizenz erlaubt keine Verwendung der Tabellenkomponente",
+    "ftComponentTemplates": "Ihre Lizenz erlaubt keine Verwendung von Vorlagen",
+    "ftDesignerCustomization": "Ihre Lizenz erlaubt keine Designeranpassung",
+    "ftLocaleCount": "Ihre Lizenz erlaubt die Übersetzung nur für {{ftLocaleCount}} Sprache",
+    "mismatchMessage": "Sie verwenden Funktionen, die nicht in Ihrer Lizenz enthalten sind. Das Produkt arbeitet im Modus \"nichtkommerzielle Nutzung\". Ändern Sie Ihre Lizenz, um die folgenden Optionen zu verwenden:"
+  }
+}

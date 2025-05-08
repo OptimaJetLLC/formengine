@@ -15,9 +15,11 @@ if (!isBrowserMode()) {
   addMatchMediaFunctionToWindow()
 }
 
-failOnConsole({
-  shouldFailOnWarn: true,
-})
+if (!isBrowserMode()) {
+  failOnConsole({
+    shouldFailOnWarn: true,
+  })
+}
 
 beforeAll(() => {
   vi.spyOn(console, 'error').mockImplementation((msg, b, c) => {

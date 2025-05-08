@@ -1050,6 +1050,15 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   }
 
   /**
+   * @returns true if builder components contains preset components.
+   */
+  get hasPresetComponents() {
+    const {builderComponents} = this
+
+    return builderComponents.some(bc => bc.model.kind === 'preset')
+  }
+
+  /**
    * @returns form metadata from an external form storage.
    */
   get formsMetadata() {

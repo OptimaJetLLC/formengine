@@ -1,5 +1,5 @@
 import type {CSSProperties, ReactNode} from 'react'
-import {useMemo} from 'react'
+import {useEffect, useMemo} from 'react'
 import type {Store} from '../../stores/Store'
 import type {ComponentData} from '../../utils/contexts/ComponentDataContext'
 import {useComponentData} from '../../utils/contexts/ComponentDataContext'
@@ -11,6 +11,7 @@ import {Model} from '../define'
 import type {FormViewerProps} from '../form-viewer'
 import {FormViewer} from '../form-viewer'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
+import {useLicense} from '../license/LicenseManager'
 import {generateTemplateTypeName, getTemplateName} from '../ui/templateUtil'
 import {TemplateField} from '../validation/utils/TemplateField'
 
@@ -42,6 +43,7 @@ export const [
 const Template = (templateProps: Record<string, any>) => {
   const viewerProps = useViewerProps()
   const data = useComponentData()
+  const {checkLicense} = useLicense()
   const templateViewerProps = useMemo(() => {
     const overrideProps: Partial<FormViewerProps> = {
       formName: getTemplateName(data.store.type),
@@ -52,6 +54,10 @@ const Template = (templateProps: Record<string, any>) => {
   }, [data.store.type, viewerProps])
 
   const templateProviderValue = useMemo(() => ({templateProps, viewerProps, data}), [templateProps, viewerProps, data])
+
+  useEffect(() => {
+    checkLicense([{name: 'ftComponentTemplates'}])
+  }, [checkLicense])
 
   if (!templateViewerProps.getForm) return <TemplateLoadError>Please define the <code>getForm</code> property!</TemplateLoadError>
   if (!(data.field instanceof TemplateField)) return null

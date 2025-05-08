@@ -28,6 +28,20 @@ the initial localization value.
 
 The localization data.
 
+## Accessors
+
+### langCodes
+
+#### Get Signature
+
+> **get** **langCodes**(): \`$\{string\}-$\{string\}\`[]
+
+##### Returns
+
+\`$\{string\}-$\{string\}\`[]
+
+the available language codes.
+
 ## Methods
 
 ### addLocalizationWithNewKey()

@@ -534,6 +534,14 @@
     "messageIsNull": "رسالة التعريب فارغة",
     "messageNotFound": "لم يتم العثور على رسالة التعريب"
   },
+  "presetComponent": {
+    "category": "الفئة",
+    "createPreset": "إنشاء مكون محدد مسبقا",
+    "enterPresetName": "الرجاء إدخال اسم محدد مسبقا",
+    "name": "الاسم",
+    "nameExists": "يوجد بالفعل إعداد مسبق أو مكون بهذا الاسم.",
+    "namePlaceholder": "أدخل اسما محددا مسبقا"
+  },
   "promptDialog": {
     "cancel": "إلغاء",
     "ok": "حسنا"

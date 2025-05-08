@@ -26,6 +26,9 @@ export default defineConfig(({command}) => ({
   resolve: {
     dedupe: ['react', 'react-dom'],
   },
+  server: {
+    allowedHosts: ['foo.testnet.local', 'bar.foo.testnet.local', 'foobar.testnet.local', 'testnet.local']
+  },
   test: {
     globals: true,
     environment: 'jsdom',

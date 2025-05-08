@@ -1,0 +1,18 @@
+{
+  "license": {
+    "errDomain": "Su licencia permite solo los siguientes dominios: {{Domain}}",
+    "errEndDate": "Licencia caducada {{licenseEndDate}}",
+    "errEndDateStrict": "Licencia caducada {{licenseEndDate}}",
+    "errLicenseInvalid": "La clave de licencia proporcionada no es válida.",
+    "errNoKey": "No se proporciona clave de licencia.",
+    "ftComponentPreset": "Su licencia no permite Ajustes preestablecidos de componentes",
+    "ftComponentQrCode": "Su licencia no permite el uso del componente de código QR",
+    "ftComponentRepeater": "Su licencia no permite el uso del repetidor",
+    "ftComponentSignature": "Su licencia no permite el uso del componente de firma",
+    "ftComponentTable": "Su licencia no permite el uso del componente Tabla",
+    "ftComponentTemplates": "Su licencia no permite el uso de plantillas",
+    "ftDesignerCustomization": "Su licencia no permite la personalización del Diseñador",
+    "ftLocaleCount": "Su licencia permite la traducción solo para {{ftLocaleCount}} idiomas",
+    "mismatchMessage": "Está utilizando funciones que no están incluidas en su licencia. El producto funciona en modo de \"uso no comercial\". Cambie su licencia para usar las siguientes opciones:"
+  }
+}

@@ -77,4 +77,35 @@ function sortObject(object) {
   return sortedObj;
 }
 
-export {saveToFile, objectValues, objectKeys, flattenArrayToObject, diffByKeys, sortObject, hasObsolete, removeObsolete}
+const extractPlaceholders = text => {
+  const matches = [...text.matchAll(/\{\{([^{}]+)\}\}/g)]
+  const result = new Set([])
+
+  matches.forEach(m => {
+    result.add(m[0]);
+  })
+
+  return Array.from(result.values());
+}
+
+function wrapPlaceholders(text) {
+  return text.replace(/\{\{([^}]+)\}\}/g, '<span translate="no">{{$1}}</span>');
+}
+
+function stripSpanTags(text) {
+  return text.replace(/<span\s+translate\s*=\s*["']?no["']?\s*>({{[^}]+}})<\/span>/gi, '$1');
+}
+
+export {
+  saveToFile,
+  objectValues,
+  objectKeys,
+  flattenArrayToObject,
+  diffByKeys,
+  sortObject,
+  hasObsolete,
+  removeObsolete,
+  extractPlaceholders,
+  wrapPlaceholders,
+  stripSpanTags
+}

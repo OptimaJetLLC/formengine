@@ -16,7 +16,8 @@ const RawDesignerLocalizationPicker = (props: DesignerLocalizationPickerProps) =
     builderStore.localizationLanguage = language
   }, [builderStore, viewerStore])
 
-  return <LocalizationPicker {...props} value={builderStore.localizationLanguage.fullCode} onSelect={handleSelect}/>
+  return <LocalizationPicker {...props} data-testid={'designer-form-language'} value={builderStore.localizationLanguage.fullCode}
+                             onSelect={handleSelect}/>
 }
 
 export const DesignerLocalizationPicker = customizableObserver('LocalizationSelect', RawDesignerLocalizationPicker)

@@ -6,9 +6,9 @@ import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
  * @param initialState the initial state
  * @returns a stateful value, and a function to update it.
  */
-export default function useSafeState<S = undefined>(initialState?: S): [S | undefined, Dispatch<SetStateAction<S | undefined>>] {
+export default function useSafeState<S>(initialState: S): [S, Dispatch<SetStateAction<S>>] {
   const mountedRef = useRef(false)
-  const [state, setState] = useState<S | undefined>(initialState)
+  const [state, setState] = useState<S>(initialState)
 
   useEffect(() => {
     mountedRef.current = true
@@ -17,7 +17,7 @@ export default function useSafeState<S = undefined>(initialState?: S): [S | unde
     }
   }, [])
 
-  const safeSetState: Dispatch<SetStateAction<S | undefined>> = useCallback(value => {
+  const safeSetState: Dispatch<SetStateAction<S>> = useCallback(value => {
     mountedRef.current && setState(value)
   }, [])
 

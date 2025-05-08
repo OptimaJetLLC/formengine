@@ -534,6 +534,14 @@
     "messageIsNull": "本地化消息为null",
     "messageNotFound": "找不到本地化消息"
   },
+  "presetComponent": {
+    "category": "类别：",
+    "createPreset": "创建预设组件",
+    "enterPresetName": "请输入预设名称",
+    "name": "姓名",
+    "nameExists": "已存在具有此名称的预设或组件。",
+    "namePlaceholder": "输入预设名称"
+  },
   "promptDialog": {
     "cancel": "取消",
     "ok": "好的"

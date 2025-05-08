@@ -1,34 +1,20 @@
-import {antdComponents, antTooltip} from '@react-form-builder/components-antd'
-import {fastQrComponent} from '@react-form-builder/components-fast-qr'
-import {googleMapComponent} from '@react-form-builder/components-google-map'
-import {richTextComponent} from '@react-form-builder/components-rich-text'
+import {antTooltip} from '@react-form-builder/components-antd'
 import {
   formEngineRsuiteCssLoader,
   ltrCssLoader,
   rsErrorMessage,
   RsLocalizationWrapper,
   rsTooltip,
-  rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
-import {
-  ActionDefinition,
-  BiDi,
-  ComponentStore,
-  definePreset,
-  FormValidators,
-  IFormViewer,
-  Language,
-  Validators
-} from '@react-form-builder/core'
+import {ActionDefinition, BiDi, ComponentStore, FormValidators, IFormViewer, Language, Validators} from '@react-form-builder/core'
 import type {AnnotationEditorProps, CustomizationMap, FormBuilderI18n, FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useState, version} from 'react'
 import {frFR, trTR} from 'rsuite/esm/locales/index.js'
+import {allComponentsBuilder} from '../all-conponents'
 import {CustomErrorWrapper} from './components/CustomErrorWrapper'
-import initialPresets from './components/preset-components.json'
-import {throwErrorComponent} from './components/ThrowErrorComponent'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
 import {generatedLicenseKey} from './utils/license'
 import {useRefWithLog} from './utils/useRefWithLog'
@@ -86,18 +72,8 @@ const data = {
     },
   ]
 }
-const presets = initialPresets.map(preset => {
-  const components = preset.components.map(component => {
-    return Object.assign(new ComponentStore('', component.key), component)
-  })
-  return definePreset(preset.name, components).category('Presets')
-})
 
-const components = [...rSuiteComponents, ...antdComponents, ...presets,
-  throwErrorComponent, fastQrComponent, richTextComponent, googleMapComponent]
-  .map(definer => definer.build())
-
-const view = new BuilderView(components)
+const view = new BuilderView(allComponentsBuilder)
   .withErrorMeta(rsErrorMessage.build())
   .withTooltipMeta(rsTooltip.build())
   .withTooltipMeta(antTooltip.build())
@@ -232,9 +208,10 @@ const useCustomErrorWrapper = false
 
 type FormBuilderAppProps = {
   customization?: CustomizationMap
+  license?: string
 }
 
-const FormBuilderApp = ({customization}: FormBuilderAppProps) => {
+const FormBuilderApp = ({license, customization}: FormBuilderAppProps) => {
   const viewerRef = useRefWithLog<IFormViewer>('ViewerRef', logEvents)
   const builderRef = useRefWithLog<IFormBuilder>('BuilderRef', logEvents, builder => {
     if (builder) console.log(builder.formAsString)
@@ -279,7 +256,7 @@ const FormBuilderApp = ({customization}: FormBuilderAppProps) => {
       string: StringEditor
     }}
     customization={customization}
-    licenseKey={generatedLicenseKey}
+    licenseKey={license ?? generatedLicenseKey}
     getForm={getFormFn}
     formName={sampleFormName}
     theme={cycleThroughThemes ? theme : undefined}

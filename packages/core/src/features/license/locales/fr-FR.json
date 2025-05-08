@@ -1,0 +1,18 @@
+{
+  "license": {
+    "errDomain": "Votre licence n'autorise que les domaines suivants: {{Domain}}",
+    "errEndDate": "Licence expirée {{licenseEndDate}}",
+    "errEndDateStrict": "Licence expirée {{licenseEndDate}}",
+    "errLicenseInvalid": "La clé de licence fournie n'est pas valide.",
+    "errNoKey": "Aucune clé de licence fournie.",
+    "ftComponentPreset": "Votre licence n'autorise pas les préréglages de composants",
+    "ftComponentQrCode": "Votre licence n'autorise pas l'utilisation du composant de code QR",
+    "ftComponentRepeater": "Votre licence ne permet pas l'utilisation du répéteur",
+    "ftComponentSignature": "Votre licence n'autorise pas l'utilisation du composant de signature",
+    "ftComponentTable": "Votre licence n'autorise pas l'utilisation du composant Table",
+    "ftComponentTemplates": "Votre licence n'autorise pas l'utilisation de modèles",
+    "ftDesignerCustomization": "Votre licence n'autorise pas la personnalisation du concepteur",
+    "ftLocaleCount": "Votre licence autorise la traduction uniquement pour {{ftLocaleCount}} langues",
+    "mismatchMessage": "Vous utilisez des fonctionnalités qui ne sont pas incluses dans votre licence. Le produit fonctionne en mode “utilisation non commerciale\". Modifiez votre licence pour utiliser les options ci-dessous:"
+  }
+}

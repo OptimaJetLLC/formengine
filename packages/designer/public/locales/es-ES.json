@@ -534,6 +534,14 @@
     "messageIsNull": "El mensaje de localización es nulo",
     "messageNotFound": "Mensaje de localización no encontrado"
   },
+  "presetComponent": {
+    "category": "Categoría",
+    "createPreset": "Crear un componente preestablecido",
+    "enterPresetName": "Por favor, introduzca un nombre preestablecido",
+    "name": "Nombre",
+    "nameExists": "Ya existe un ajuste preestablecido o componente con este nombre.",
+    "namePlaceholder": "Introduzca un nombre preestablecido"
+  },
   "promptDialog": {
     "cancel": "Cancelar",
     "ok": "OK"

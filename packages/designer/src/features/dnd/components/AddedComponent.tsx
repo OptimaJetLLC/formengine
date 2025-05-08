@@ -47,9 +47,9 @@ const Container = styled.div`
 const DraggableContainer = styled.div`
   position: relative;
   flex: 1;
-  
+
   * {
-    cursor: grab;    
+    cursor: grab;
   }
 
   & > div {

@@ -1,5 +1,5 @@
-import {color, define, event, number, string} from '@react-form-builder/core'
-import {useCallback, useMemo, useRef} from 'react'
+import {color, define, event, number, string, useLicense} from '@react-form-builder/core'
+import {useCallback, useEffect, useMemo, useRef} from 'react'
 import {Button} from 'rsuite'
 import {alignItems, nonNegNumber, readOnly} from '../commonProperties'
 import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
@@ -20,11 +20,18 @@ const RsSignature = ({value, style, className, label, clearButtonText, readOnly,
   const buttonStyle = useMemo(() => ({width: props.width, marginTop: 6}),
     [props.width])
   const onChange = useTouchOnEvent(props, 'onChange')
+  const {checkLicense} = useLicense()
 
   const clear = useCallback(() => {
     padRef.current?.clear()
     onChange(undefined)
   }, [onChange])
+
+  useEffect(() => {
+    checkLicense([{
+      name: 'ftComponentSignature'
+    }])
+  }, [checkLicense])
 
   return <RsLabeledInput style={style} className={className} data-testid={props['data-testid']}>
     <Rows>

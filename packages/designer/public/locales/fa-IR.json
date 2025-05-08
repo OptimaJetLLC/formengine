@@ -534,6 +534,14 @@
     "messageIsNull": "پیام ترجمه خالی است",
     "messageNotFound": "پیام ترجمه یافت نشد"
   },
+  "presetComponent": {
+    "category": "دسته بندی",
+    "createPreset": "یک جزء از پیش تعیین شده ایجاد کنید",
+    "enterPresetName": "لطفا یک نام از پیش تعیین شده وارد کنید",
+    "name": "نام",
+    "nameExists": "یک پیش تنظیم یا جزء با این نام در حال حاضر وجود دارد.",
+    "namePlaceholder": "نام از پیش تعیین شده را وارد کنید"
+  },
   "promptDialog": {
     "cancel": "لغو",
     "ok": "تایید"
