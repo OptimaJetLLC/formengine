@@ -87,7 +87,7 @@ Otherwise, an empty FluentBundle is returned.
 
 #### Parameters
 
-• **languageFullCode**: `string`
+• **languageFullCode**: \`$\{string\}-$\{string\}\`
 
 the full code (en-US, en-GB etc.) of the language to get fluent bundle.
 
@@ -107,7 +107,7 @@ Returns value of localization constant.
 
 #### Parameters
 
-• **languageFullCode**: `string`
+• **languageFullCode**: \`$\{string\}-$\{string\}\`
 
 the full code (en-US, en-GB etc.) of the language we are looking to localize.
 
@@ -159,7 +159,7 @@ Checks that the specified language exists in the localization.
 
 #### Parameters
 
-• **languageFullCode**: `string`
+• **languageFullCode**: \`$\{string\}-$\{string\}\`
 
 The full code (en-US, en-GB etc.) of the language to be checked.
 
@@ -247,7 +247,7 @@ Sets localization for component property.
 
 #### Parameters
 
-• **languageFullCode**: `string`
+• **languageFullCode**: \`$\{string\}-$\{string\}\`
 
 the full code (en-US, en-GB etc.) of the language in which localization will be set.
 

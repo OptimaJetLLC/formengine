@@ -1,4 +1,4 @@
-import type {Annotation, ComponentData, ComponentPropertyComputeType} from '@react-form-builder/core'
+import type {Annotation, ComponentData, ComponentPropertyComputeType, LanguageFullCode} from '@react-form-builder/core'
 
 /**
  * Localization compute parameters.
@@ -7,7 +7,7 @@ export type LocalizationComputeCodeParams = {
   /**
    * The full language code.
    */
-  langCode?: string
+  langCode?: LanguageFullCode
 }
 
 /**

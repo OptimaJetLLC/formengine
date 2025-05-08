@@ -1,6 +1,11 @@
 import {BiDi} from './bidi'
 
 /**
+ * The full language code, e.g. 'en-US'.
+ */
+export type LanguageFullCode = `${string}-${string}`
+
+/**
  * The language to localize the form builder.
  */
 export class Language {
@@ -25,7 +30,7 @@ export class Language {
   /**
    * @returns Full code of the Language i.e en-US, en-GB etc.
    */
-  get fullCode() {
+  get fullCode(): LanguageFullCode {
     return `${this.code}-${this.dialect}`
   }
 

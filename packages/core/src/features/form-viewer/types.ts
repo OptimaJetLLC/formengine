@@ -3,7 +3,7 @@ import type {ViewMode} from '../../types'
 import type {ComputeChildren} from '../../utils/ComputeChildren'
 import type {IFormData} from '../../utils/IFormData'
 import type {View} from '../define'
-import type {Language} from '../localization/types'
+import type {LanguageFullCode} from '../localization/types'
 import type {ErrorWrapperProps} from '../validation'
 import type {Validators} from '../validation/types/CustomValidationRules'
 import type {ComponentLocalizer} from './ComponentLocalizer'
@@ -69,9 +69,9 @@ export interface FormViewerProps {
   viewMode?: ViewMode
 
   /**
-   * The language of form.
+   * The language of the form, e.g. 'en-US'.
    */
-  language?: Language
+  language?: LanguageFullCode
 
   /**
    * The function to localize the properties of a component.

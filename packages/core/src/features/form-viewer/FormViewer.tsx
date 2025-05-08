@@ -37,7 +37,7 @@ export const SDiv = (props: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HT
 const RawFormViewer = (props: FormViewerProps) =>
   <SuppressResizeObserverErrors>
     <ViewerStoreProvider props={props}>
-      <ViewerLocalizationProvider language={props.language}>
+      <ViewerLocalizationProvider>
         <SDiv>
           <TrialMessage/>
           <Viewer/>

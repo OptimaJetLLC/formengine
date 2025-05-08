@@ -91,9 +91,9 @@ The initial data of the form.
 
 ### language?
 
-> `optional` **language**: [`Language`](../classes/Language.md)
+> `optional` **language**: \`$\{string\}-$\{string\}\`
 
-The language of form.
+The language of the form, e.g. 'en-US'.
 
 ***
 

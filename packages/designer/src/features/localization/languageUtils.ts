@@ -1,4 +1,5 @@
-import {BiDi, globalDefaultLanguage, Language} from '@react-form-builder/core'
+import type {LanguageFullCode} from '@react-form-builder/core'
+import {BiDi, findLanguage, globalDefaultLanguage, Language} from '@react-form-builder/core'
 import {merge} from 'lodash-es'
 import {arEG, deDE, enUS, esES, faIR, frFR, itIT, zhCN} from 'rsuite/esm/locales/index.js'
 import enUsTranslation from '../../../public/locales/en-US.json'
@@ -43,36 +44,6 @@ export const builtInLanguages: FormBuilderI18n = {
   }
 }
 
-function findLanguageByCode(availableLanguages: Language[], code: string) {
-  return availableLanguages.find(language => language.code === code)
-}
-
-/**
- * Full language code.
- */
-export type LanguageFullCode = `${string}-${string}`
-
-/**
- * Finds {@link Language} by language code.
- * @param i18n FormBuilderI18n.
- * @param language the language code.
- * @returns found {@link Language}, or the default Language if no Language exists for the language code.
- */
-function findLanguage(i18n: FormBuilderI18n, language: LanguageFullCode): Language | undefined {
-  const [code, dialect] = language.split('-')
-  const {languages} = i18n
-
-  if (dialect) {
-    const langByFullCode = languages
-      .find(language => language.code === code && language.dialect === dialect)
-    if (langByFullCode) return langByFullCode
-    const languageByCode = findLanguageByCode(languages, code)
-    if (languageByCode) return languageByCode
-  }
-
-  return findLanguageByCode(languages, language)
-}
-
 const loadLanguage = async (i18n: FormBuilderI18n, language: LanguageFullCode) => {
   try {
     return await i18n.getData(language)
@@ -93,7 +64,7 @@ export const loadTranslation = async (i18n: FormBuilderI18n,
                                       language: LanguageFullCode): Promise<FormBuilderI18nData> => {
   const found = [defaultData]
 
-  if (i18n !== builtInLanguages && findLanguage(builtInLanguages, language)) {
+  if (i18n !== builtInLanguages && findLanguage(builtInLanguages.languages, language)) {
     const builtin = await loadLanguage(builtInLanguages, language)
     if (builtin) found.push(builtin)
   }

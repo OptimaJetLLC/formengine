@@ -1031,6 +1031,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/findLanguage",
+            "label": "findLanguage"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/functions/findTreeElementDepth",
             "label": "findTreeElementDepth"
           },

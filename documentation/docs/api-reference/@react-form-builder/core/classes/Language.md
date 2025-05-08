@@ -82,11 +82,11 @@ the name of the language, for example 'English'.
 
 #### Get Signature
 
-> **get** **fullCode**(): `string`
+> **get** **fullCode**(): \`$\{string\}-$\{string\}\`
 
 ##### Returns
 
-`string`
+\`$\{string\}-$\{string\}\`
 
 Full code of the Language i.e en-US, en-GB etc.
 

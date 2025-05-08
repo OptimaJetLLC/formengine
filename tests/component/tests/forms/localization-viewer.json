@@ -1,0 +1,78 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsStaticContent1",
+        "type": "RsStaticContent",
+        "props": {
+          "content": {
+            "computeType": "localization"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "staticContent"
+          }
+        ]
+      }
+    ],
+    "htmlAttributes": [
+      {
+        "name": "data-testid",
+        "value": "mainScreen"
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "rsStaticContent1": {
+        "component": {
+          "content": "Enter your text here"
+        }
+      }
+    },
+    "de-DE": {
+      "rsStaticContent1": {
+        "component": {
+          "content": "Geben Sie hier Ihren Text ein"
+        }
+      }
+    },
+    "ar-EG": {
+      "rsStaticContent1": {
+        "component": {
+          "content": "أدخل النص هنا"
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    },
+    {
+      "code": "de",
+      "dialect": "DE",
+      "name": "Deutsch",
+      "description": "German",
+      "bidi": "ltr"
+    },
+    {
+      "code": "ar",
+      "dialect": "EG",
+      "name": "عرب",
+      "description": "Arabic (Egypt)",
+      "bidi": "rtl"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

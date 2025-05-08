@@ -66,9 +66,9 @@ The function to localize the properties of a component.
 
 ### propsLanguage?
 
-> `optional` **propsLanguage**: [`Language`](Language.md)
+> `optional` **propsLanguage**: \`$\{string\}-$\{string\}\`
 
-The full language code passed in the FormViewer properties.
+The full language code passed in the FormViewer properties, e.g. 'en-US'.
 
 ***
 

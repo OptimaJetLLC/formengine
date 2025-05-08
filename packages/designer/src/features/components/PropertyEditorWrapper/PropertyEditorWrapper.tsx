@@ -1,4 +1,4 @@
-import type {Annotation, ComponentProperty, PropertyBlockType} from '@react-form-builder/core'
+import type {Annotation, ComponentProperty, LanguageFullCode, PropertyBlockType} from '@react-form-builder/core'
 import {isProperty, isValidatorPropertyBlockType, namedObserver, useComponentData} from '@react-form-builder/core'
 import {createElement, useCallback, useEffect, useMemo, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
@@ -48,7 +48,7 @@ const RawPropertyEditorWrapper = ({
     context[annotation.key] = Object.assign(context[annotation.key] ?? {}, newComponentProperty)
   }, [context, annotation])
 
-  const setComputedLocalization = useCallback((value: string, langCode?: string) => {
+  const setComputedLocalization = useCallback((value: string, langCode?: LanguageFullCode) => {
     if (!langCode) return
     store.viewer.form.localization.setLocalization(langCode, componentData.key, annotation.key, propertyBlockType, value)
     if (isValidatorPropertyBlockType(propertyBlockType)) return
@@ -69,7 +69,7 @@ const RawPropertyEditorWrapper = ({
     return context[annotation.key]?.fnSource
   }, [context, annotation])
 
-  const getComputedLocalization = useCallback((langCode: string) => {
+  const getComputedLocalization = useCallback((langCode: LanguageFullCode) => {
     const localization = store.viewer.form.localization
       .getLocalization(langCode, componentData.key, annotation.key, propertyBlockType)
     const defaultLocalization = store.viewer.form.localization

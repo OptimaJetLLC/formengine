@@ -215,6 +215,7 @@
 - [createView](functions/createView.md)
 - [define](functions/define.md)
 - [definePreset](functions/definePreset.md)
+- [findLanguage](functions/findLanguage.md)
 - [findTreeElementDepth](functions/findTreeElementDepth.md)
 - [forwardRef](functions/forwardRef.md)
 - [generateTemplateTypeName](functions/generateTemplateTypeName.md)

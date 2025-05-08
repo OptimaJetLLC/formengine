@@ -1,10 +1,9 @@
-import type {Language} from '@react-form-builder/core'
+import type {Language, LanguageFullCode} from '@react-form-builder/core'
 import {globalDefaultLanguage} from '@react-form-builder/core'
 import i18next from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import resourcesToBackend from 'i18next-resources-to-backend'
 import {initReactI18next} from 'react-i18next'
-import type {LanguageFullCode} from './languageUtils'
 
 /**
  * A callback function that returns JSON with a translation by the specified language.

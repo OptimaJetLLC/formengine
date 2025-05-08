@@ -6,7 +6,7 @@ import type {FormViewerProps} from '../features/form-viewer'
 import type {ComponentLocalizer} from '../features/form-viewer/ComponentLocalizer'
 import {customActionsToActionsValues} from '../features/form-viewer/CustomActions'
 import type {FormValidators} from '../features/form-viewer/FormValidators'
-import type {Language} from '../features/localization/types'
+import type {LanguageFullCode} from '../features/localization/types'
 import type {ErrorWrapperProps} from '../features/validation'
 import type {Validators} from '../features/validation/types/CustomValidationRules'
 import {nameObservable} from '../utils/observableNaming'
@@ -40,9 +40,9 @@ export class FormViewerPropsStore {
    */
   actions?: ActionValues
   /**
-   * The full language code passed in the FormViewer properties.
+   * The full language code passed in the FormViewer properties, e.g. 'en-US'.
    */
-  propsLanguage?: Language
+  propsLanguage?: LanguageFullCode
   /**
    * The default error wrapper used when errorType is not specified in the form.
    */

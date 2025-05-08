@@ -2,6 +2,7 @@ import {FluentBundle, FluentResource} from '@fluent/bundle'
 import {makeAutoObservable} from 'mobx'
 import {replaceDots} from '../features/localization/dots'
 import {getFluentCompatibleId} from '../features/localization/getFluentCompatibleId'
+import type {LanguageFullCode} from '../features/localization/types'
 import {nameObservable} from '../utils/observableNaming'
 
 /**
@@ -33,11 +34,6 @@ export type TypedLocalization = Partial<Record<LocalizationType, ComponentPropsL
  * A record containing localizations for the component properties.
  */
 export type ComponentPropsLocalization = Record<ComponentPropertyName, string>
-
-/**
- * The full language code, e.g. 'en-US'.
- */
-export type LanguageFullCode = string
 
 /**
  * The component key.
@@ -116,7 +112,7 @@ export class LocalizationStore {
    * @param type the type of localization.
    * @returns the value of localization constant.
    */
-  getLocalization(languageFullCode: string, componentKey: string, propertyName: string, type: LocalizationType) {
+  getLocalization(languageFullCode: LanguageFullCode, componentKey: string, propertyName: string, type: LocalizationType) {
     const fluentCompatibleComponentKey = getFluentCompatibleId(componentKey)
     const fluentCompatiblePropertyName = getFluentCompatibleId(propertyName)
     return this.value[languageFullCode]?.[fluentCompatibleComponentKey]?.[type]?.[fluentCompatiblePropertyName]
@@ -130,7 +126,7 @@ export class LocalizationStore {
    * @param type the type of localization.
    * @param value the localization value.
    */
-  setLocalization(languageFullCode: string, componentKey: string, propertyName: string, type: LocalizationType, value: string) {
+  setLocalization(languageFullCode: LanguageFullCode, componentKey: string, propertyName: string, type: LocalizationType, value: string) {
     const fluentCompatibleComponentKey = getFluentCompatibleId(componentKey)
     const fluentCompatiblePropertyName = getFluentCompatibleId(propertyName)
     this.value[languageFullCode] ??= {}
@@ -145,10 +141,10 @@ export class LocalizationStore {
    */
   removeLocalization(componentKey: string) {
     const fluentCompatibleComponentKey = getFluentCompatibleId(componentKey)
-    for (const key in this.value) {
-      delete this.value[key][fluentCompatibleComponentKey]
-      if (Object.keys(this.value[key]).length === 0) {
-        delete this.value[key]
+    for (const languageFullCode of this.langCodes) {
+      delete this.value[languageFullCode][fluentCompatibleComponentKey]
+      if (Object.keys(this.value[languageFullCode]).length === 0) {
+        delete this.value[languageFullCode]
       }
     }
   }
@@ -160,14 +156,14 @@ export class LocalizationStore {
    */
   removeLocalizationForType(componentKey: string, type: LocalizationType) {
     const fluentCompatibleComponentKey = getFluentCompatibleId(componentKey)
-    for (const key in this.value) {
-      if (!this.value[key][fluentCompatibleComponentKey]) continue
-      delete this.value[key][fluentCompatibleComponentKey][type]
-      if (Object.keys(this.value[key][fluentCompatibleComponentKey]).length === 0) {
-        delete this.value[key][fluentCompatibleComponentKey]
+    for (const languageFullCode of this.langCodes) {
+      if (!this.value[languageFullCode][fluentCompatibleComponentKey]) continue
+      delete this.value[languageFullCode][fluentCompatibleComponentKey][type]
+      if (Object.keys(this.value[languageFullCode][fluentCompatibleComponentKey]).length === 0) {
+        delete this.value[languageFullCode][fluentCompatibleComponentKey]
       }
-      if (Object.keys(this.value[key]).length === 0) {
-        delete this.value[key]
+      if (Object.keys(this.value[languageFullCode]).length === 0) {
+        delete this.value[languageFullCode]
       }
     }
   }
@@ -177,7 +173,7 @@ export class LocalizationStore {
    * @param languageFullCode The full code (en-US, en-GB etc.) of the language to be checked.
    * @returns true if the specified language exists in the localization.
    */
-  hasLanguage(languageFullCode: string) {
+  hasLanguage(languageFullCode: LanguageFullCode) {
     return !!this.value[languageFullCode]
   }
 
@@ -202,7 +198,7 @@ export class LocalizationStore {
    * @param languageFullCode the full code (en-US, en-GB etc.) of the language to get fluent bundle.
    * @returns the FluentBundle for the specified language.
    */
-  getFluentBundle(languageFullCode: string) {
+  getFluentBundle(languageFullCode: LanguageFullCode) {
     const holder = this.localizationCache.get(languageFullCode) ?? new FluentBundleHolder(languageFullCode, this)
     if (!this.localizationCache.has(languageFullCode)) this.localizationCache.set(languageFullCode, holder)
     return holder.fluentBundle
@@ -216,7 +212,7 @@ export class LocalizationStore {
   changeComponentKey(oldComponentKey: string, newComponentKey: string) {
     const fluentCompatibleOldComponentKey = getFluentCompatibleId(oldComponentKey)
     const fluentCompatibleNewComponentKey = getFluentCompatibleId(newComponentKey)
-    for (const languageFullCode in this.value) {
+    for (const languageFullCode of this.langCodes) {
       const component = this.value[languageFullCode][fluentCompatibleOldComponentKey]
       if (component) {
         this.value[languageFullCode][fluentCompatibleNewComponentKey] = component
@@ -233,7 +229,7 @@ export class LocalizationStore {
   getLocalizationForComponent(componentKey: string) {
     const fluentCompatibleComponentKey = getFluentCompatibleId(componentKey)
     const localization: LocalizationValue = {}
-    for (const languageFullCode in this.value) {
+    for (const languageFullCode of this.langCodes) {
       const component = this.value[languageFullCode][fluentCompatibleComponentKey]
       if (component) {
         localization[languageFullCode] = {}
@@ -251,12 +247,20 @@ export class LocalizationStore {
    */
   addLocalizationWithNewKey(localization: LocalizationValue, oldComponentKey: string, newComponentKey: string) {
     const fluentCompatibleNewComponentKey = getFluentCompatibleId(newComponentKey)
-    for (const languageFullCode in localization) {
+    const langCodes = Object.keys(localization) as Array<LanguageFullCode>
+    for (const languageFullCode of langCodes) {
       const component = localization[languageFullCode][oldComponentKey]
       if (component) {
         this.value[languageFullCode][fluentCompatibleNewComponentKey] = component
       }
     }
+  }
+
+  /**
+   * @returns the available language codes.
+   */
+  get langCodes() {
+    return Object.keys(this.value) as Array<LanguageFullCode>
   }
 
   /**

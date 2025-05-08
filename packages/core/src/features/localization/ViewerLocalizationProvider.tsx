@@ -10,8 +10,7 @@ import {emotionCache} from './emotionCache'
 import type {Language} from './types'
 
 interface ViewerLocalizationProviderProps {
-  children: ReactNode,
-  language?: Language
+  children: ReactNode
 }
 
 const localizationProviderClass = css`
@@ -33,7 +32,7 @@ const nestViewerWrappers = ([Wrapper, ...more]: ComponentType<FormViewerWrapperC
 
 const RawViewerLocalizationProvider = (props: ViewerLocalizationProviderProps) => {
   const viewerStore = useStore()
-  const language = props.language ?? viewerStore.displayedLanguage
+  const language = viewerStore.displayedLanguage
 
   useEffect(() => {
     const loaders = viewerStore.formViewerPropsStore.view.getCssLoaders(language.bidi)

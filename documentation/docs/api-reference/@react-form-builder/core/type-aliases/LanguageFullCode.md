@@ -1,5 +1,5 @@
 # Type Alias: LanguageFullCode
 
-> **LanguageFullCode**: `string`
+> **LanguageFullCode**: \`$\{string\}-$\{string\}\`
 
 The full language code, e.g. 'en-US'.

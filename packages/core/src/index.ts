@@ -35,12 +35,14 @@ export {generateTemplateTypeName} from './features/ui/templateUtil'
 export {slotModel} from './features/template/slotModel'
 export {BiDi} from './features/localization/bidi'
 export {Language} from './features/localization/types'
+export type {LanguageFullCode} from './features/localization/types'
 export {LocalizationStore} from './stores/LocalizationStore'
 export type {PersistedForm} from './stores/PersistedForm'
 export {PersistedFormVersion} from './stores/PersistedForm'
 export {testFluentLocalization} from './features/localization/localizer'
 export {getFluentData} from './features/localization/getFluentData'
 export {getFluentCompatibleId} from './features/localization/getFluentCompatibleId'
+export {findLanguage} from './features/localization/findLanguage'
 export {DataValidator} from './features/validation'
 export type {
   SchemaType, SchemaTypeMap, ValidationRuleSettings, ResolvedValidator, RuleValidator, RuleValidatorResult
@@ -110,7 +112,6 @@ export type {MessagesMap, ValidationMessages, ValidationResult} from './features
 export type {
   ComponentKey,
   ComponentPropertyName,
-  LanguageFullCode,
   LocalizationValue,
   LocalizationType,
   ComponentsLocalization,

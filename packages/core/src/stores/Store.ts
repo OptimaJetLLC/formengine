@@ -6,6 +6,7 @@ import {createActionValuesFromObject} from '../features/event'
 import {commonActions} from '../features/event/consts/actions'
 import type {IFormViewer} from '../features/form-viewer'
 import {globalDefaultLanguage} from '../features/localization/default'
+import {findLanguage} from '../features/localization/findLanguage'
 import {localizeErrorMessage, localizeProperties} from '../features/localization/localizer'
 import {Language} from '../features/localization/types'
 import {createTemplateModel} from '../features/template'
@@ -455,7 +456,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
   get displayedLanguage(): Language {
     if (this.parentStore) return this.parentStore.displayedLanguage
     if (this.formViewerPropsStore.propsLanguage) {
-      const propsLanguage = this.form.languages.find(l => l === this.formViewerPropsStore.propsLanguage)
+      const propsLanguage = findLanguage(this.form.languages, this.formViewerPropsStore.propsLanguage)
       if (propsLanguage) return propsLanguage
     }
     return this.selectedLanguage ?? this.form.defaultLanguage

@@ -18,28 +18,6 @@ the initial data.
 
 ## Methods
 
-### calculateValue()
-
-> **calculateValue**(`component`, `key`): [`boolean`, `any?`]
-
-Calculates the value for the field.
-
-#### Parameters
-
-• **component**: [`ComponentStore`](../classes/ComponentStore.md)
-
-the component settings.
-
-• **key**: `string`
-
-the field's key.
-
-#### Returns
-
-[`boolean`, `any?`]
-
-***
-
 ### createDataValidator()
 
 > **createDataValidator**(`componentStore`, `valueType`, `onError`): [`DataValidator`](../classes/DataValidator.md)
