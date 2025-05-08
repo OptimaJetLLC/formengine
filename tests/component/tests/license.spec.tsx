@@ -14,6 +14,7 @@ import {CustomizationMap, FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder, allComponentsViewer} from '@react-form-builder/tests-common/lib/all-conponents'
 import {
   license2030Enterprise,
+  licenseBusiness,
   licenseExpired,
   licenseExpiredStrict,
   licenseInvalid,
@@ -21,6 +22,7 @@ import {
   licenseNoDomain
 } from '@react-form-builder/tests-common/license'
 import {render, RenderResult} from '@testing-library/react'
+import {useCallback} from 'react'
 import {expect} from 'vitest'
 import {changeFormLanguage} from '../util/controls'
 import agreementForm from './forms/agreement-form.json'
@@ -61,7 +63,16 @@ const Viewer = ({license, language, formName}: { license: string, language?: str
 }
 Viewer.displayName = 'Viewer'
 
-const view = new BuilderView(allComponentsBuilder)
+const viewAllComponents = new BuilderView(allComponentsBuilder)
+  .withErrorMeta(rsErrorMessage.build())
+  .withTooltipMeta(rsTooltip.build())
+  .withTemplates(['agreement'])
+  .withViewerWrapper(RsLocalizationWrapper)
+  .withCssLoader(BiDi.LTR, ltrCssLoader)
+  .withCssLoader(BiDi.RTL, rtlCssLoader)
+  .withCssLoader('common', formEngineRsuiteCssLoader)
+
+const viewNoComponents = new BuilderView([])
   .withErrorMeta(rsErrorMessage.build())
   .withTooltipMeta(rsTooltip.build())
   .withTemplates(['agreement'])
@@ -82,20 +93,57 @@ export const simpleCustomization: CustomizationMap = {
   }
 }
 
-const Designer = ({license, customization}: { license: string, customization?: CustomizationMap }) => {
-  return <FormBuilder view={view} getForm={getForm} licenseKey={license} customization={customization}/>
+type DesignerProps = { license: string, customization?: CustomizationMap, view?: BuilderView, formName?: string }
+const Designer = ({license, customization, view = viewAllComponents, formName}: DesignerProps) => {
+  const formGet = useCallback((name?: string) => getForm(name ?? formName), [formName])
+  return <FormBuilder view={view} getForm={formGet} licenseKey={license} customization={customization}/>
 }
 Designer.displayName = 'Designer'
 
 const trialMessage = `${enEN.license.mismatchMessage}`
 const trialMessageDE = `${deDE.license.mismatchMessage}`
 const noKeyMessage = `${enEN.license.errNoKey}`
-// const qrCodeMessage = `${enEN.license.ftComponentQrCode}`
+const invalidMessage = `${enEN.license.errLicenseInvalid}`
+const qrCodeMessage = `${enEN.license.ftComponentQrCode}`
 const repeaterMessage = `${enEN.license.ftComponentRepeater}`
+const signatureMessage = `${enEN.license.ftComponentSignature}`
+const tableMessage = `${enEN.license.ftComponentTable}`
+const templatesMessage = `${enEN.license.ftComponentTemplates}`
+const customizationMessage = `${enEN.license.ftDesignerCustomization}`
+const presetMessage = `${enEN.license.ftComponentPreset}`
 const localeMessage = `${enEN.license.ftLocaleCount.substring(0, 40)}`
+const localeMessage1 = `${enEN.license.ftLocaleCount.replaceAll('{{ftLocaleCount}}', '1')}`
 const domainMessage = `${enEN.license.errDomain.substring(0, 40)}`
 
 const components = [Viewer, Designer]
+
+const allComponentMessagesPresent = async (app: RenderResult, mode: TestComponent) => {
+  expect(await app.findByText(trialMessage)).toBeInTheDocument()
+  // expect(await app.findByText(qrCodeMessage)).toBeInTheDocument()
+  expect(await app.findByText(repeaterMessage)).toBeInTheDocument()
+  expect(await app.findByText(signatureMessage)).toBeInTheDocument()
+  // expect(await app.findByText(tableMessage)).toBeInTheDocument()
+  expect(await app.findByText(templatesMessage)).toBeInTheDocument()
+
+  if (mode === 'Designer') {
+    expect(await app.findByText(customizationMessage)).toBeInTheDocument()
+    expect(await app.findByText(presetMessage)).toBeInTheDocument()
+  }
+}
+
+const allComponentMessagesMissing = async (app: RenderResult, mode: TestComponent) => {
+  // expect(await app.queryByText(trialMessage)).toBeNull()
+  // expect(await app.queryByText(qrCodeMessage)).toBeNull()
+  expect(await app.queryByText(repeaterMessage)).toBeNull()
+  expect(await app.queryByText(signatureMessage)).toBeNull()
+  // expect(await app.findByText(tableMessage)).toBeNull()
+  expect(await app.queryByText(templatesMessage)).toBeNull()
+
+  if (mode === 'Designer') {
+    expect(await app.queryByText(customizationMessage)).toBeNull()
+    expect(await app.queryByText(presetMessage)).toBeNull()
+  }
+}
 
 describe(`License test`, function () {
   for (const Component of components) {
@@ -113,6 +161,21 @@ describe(`License test`, function () {
 
         try {
           expect(await app.findByText(trialMessage)).toBeInTheDocument()
+        } catch (err) {
+          console.log('License:', l)
+          throw err
+        }
+      })
+    }
+
+    for (const l of licenseBusiness) {
+      it(`${Component.displayName} should show locale count`, async () => {
+        const app = render(<Component license={l}/>)
+
+        await ready(app, Component.displayName as TestComponent)
+
+        try {
+          expect(await app.findByText(localeMessage1)).toBeInTheDocument()
         } catch (err) {
           console.log('License:', l)
           throw err
@@ -180,18 +243,27 @@ describe(`License test`, function () {
     const app = render(<Viewer license={licenseInvalid[0]}/>)
 
     await viewerReady(app)
+    await allComponentMessagesPresent(app, 'Viewer')
+  })
 
-    expect(await app.findByText(trialMessage)).toBeInTheDocument()
-    expect(await app.findByText(repeaterMessage)).toBeInTheDocument()
-    // TODO more messages
+  it(`Viewer with invalid license should not show trial message, if restricted features are not used`, async () => {
+    const app = render(<Viewer license={licenseInvalid[0]} formName={'empty'}/>)
+
+    await viewerReady(app)
+
+    expect(await app.findByText(invalidMessage)).toBeInTheDocument()
+
+    await allComponentMessagesMissing(app, 'Viewer')
   })
 
   it(`Designer invalid license should produce trial message`, async () => {
-    const app = render(<Designer license={licenseInvalid[0]}/>)
+    const app = render(<Designer license={licenseInvalid[0]} customization={simpleCustomization}/>)
 
     await designerReady(app)
 
     expect(await app.findByText(trialMessage)).toBeInTheDocument()
+    expect(await app.findByText(customizationMessage)).toBeInTheDocument()
+    await allComponentMessagesPresent(app, 'Designer')
   })
 
   it('designer should translate license related messages', async () => {
@@ -228,10 +300,24 @@ describe(`License test`, function () {
     expect(app.queryByText(`${noKeyMessage}`)).toBeNull()
   })
 
-  it('should check domain list', async () => {
-    expect(verifyDomain(['*'], 'testnet.local')).toBeTruthy()
-    expect(verifyDomain(['*'], 'localhost')).toBeTruthy()
+  it(`Viewer should not show descriptive message, if restricted component not in the tree`, async () => {
+    const app = render(<Viewer license=""/>)
 
+    await viewerReady(app)
+
+    expect(app.queryByText(`${tableMessage}`)).toBeNull()
+    expect(app.queryByText(`${qrCodeMessage}`)).toBeNull()
+  })
+
+  it(`Designer should not show descriptive message, if restricted component not in the palette`, async () => {
+    const app = render(<Designer license="" view={viewNoComponents} formName={'empty'}/>)
+
+    await designerReady(app)
+
+    expect(app.queryByText(`${presetMessage}`)).toBeNull()
+  })
+
+  it('should check domain list', async () => {
     const domain = [
       'testnet.local',
       'foo.testnet.local',

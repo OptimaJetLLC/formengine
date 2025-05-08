@@ -46,4 +46,4 @@ export const license2030Enterprise = [licenseEnterprise2030AnyDomain, licenseEnt
 
 export const licenseAnyDomain = [licenseBusiness2030AnyDomain]
 
-export const licenseBusiness = [licenseBusiness2030AnyDomain, licenseBusinessStrict2030AnyDomain, licenseEnterprise2030AnyDomain]
+export const licenseBusiness = [licenseBusiness2030AnyDomain, licenseBusinessStrict2030AnyDomain]

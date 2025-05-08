@@ -3,9 +3,28 @@
   "form": {
     "key": "Screen",
     "type": "Screen",
-    "props": {}
+    "props": {},
+    "htmlAttributes": [
+      {
+        "name": "data-testid",
+        "value": "mainScreen"
+      }
+    ]
   },
-  "localization": {},
+  "localization": {
+    "en-US": {
+      "comment": {
+        "component": {
+          "placeholder": "Enter your text here"
+        }
+      },
+      "last_name": {
+        "validator-code": {
+          "message": "That username is taken. Try another."
+        }
+      }
+    }
+  },
   "languages": [
     {
       "code": "en",

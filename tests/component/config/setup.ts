@@ -16,6 +16,7 @@ if (!isBrowserMode()) {
 }
 
 if (!isBrowserMode()) {
+  // TODO check https://github.com/thomasbrodusch/vitest-fail-on-console/issues/115
   failOnConsole({
     shouldFailOnWarn: true,
   })
