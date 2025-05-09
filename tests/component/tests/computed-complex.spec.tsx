@@ -106,6 +106,7 @@ const expectedFormData = {
   ]
 }
 
+// The localizer adds Unicode characters (FSI, PDI)
 const expectedFormErrors = {
   'parentSource': 'min 100, real: ⁨7⁩',
   'parentDestination': 'min 100, real: ⁨18⁩',
@@ -187,27 +188,51 @@ const expectedFormErrors = {
 
 // Repeater does not fully calculate its fields during the test, the data in the real form will be different
 const expectedLocalizedFormData = {
-  'repeater1': [{
-    'c0': 'c0',
-    'repeater2': [
-      {
-        'b0': 'b0',
-        'repeater3': [{'a0': 'a0', 'a1': 'a'}, {'a0': 'a0', 'a1': 'a'}]
-      }, {
-        'b0': 'b0',
-        'repeater3': [{'a0': 'a0', 'a1': 'a'}, {'a0': 'a0', 'a1': 'a'}]
-      }]
-  }, {
-    'c0': 'c0',
-    'repeater2': [
-      {
-        'b0': 'b0',
-        'repeater3': [{'a0': 'a0', 'a1': 'a'}, {'a0': 'a0', 'a1': 'a'}]
-      }, {
-        'b0': 'b0',
-        'repeater3': [{'a0': 'a0', 'a1': 'a'}, {'a0': 'a0', 'a1': 'a'}]
-      }]
-  }]
+  'repeater1': [
+    {
+      'c0': 'c0',
+      'c1': 'level 1 (⁨c0⁩)',
+      'repeater2': [
+        {
+          'b0': 'b0',
+          'b1': 'level 2 (⁨b0⁩)',
+          'repeater3': [
+            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'},
+            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'}
+          ]
+        },
+        {
+          'b0': 'b0',
+          'b1': 'level 2 (⁨b0⁩)',
+          'repeater3': [
+            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'},
+            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'}
+          ]
+        }
+      ]
+    }, {
+      'c0': 'c0',
+      'c1': 'level 1 (⁨c0⁩)',
+      'repeater2': [
+        {
+          'b0': 'b0',
+          'b1': 'level 2 (⁨b0⁩)',
+          'repeater3': [
+            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'},
+            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'}
+          ]
+        },
+        {
+          'b0': 'b0',
+          'b1': 'level 2 (⁨b0⁩)',
+          'repeater3': [
+            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'},
+            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'}
+          ]
+        }
+      ]
+    }
+  ]
 }
 
 // Repeater does not fully calculate its fields during the test, some fields are disabled!

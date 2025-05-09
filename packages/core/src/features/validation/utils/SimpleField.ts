@@ -128,6 +128,12 @@ export class SimpleField implements Field {
    */
   init() {
     this.deferFieldCalculation = false
+    if (this.isComputed) {
+      // we set the value asynchronously to prevent loops in MobX
+      setTimeout(() => {
+        this.value = this.computedValue
+      }, 0)
+    }
   }
 
   /**
