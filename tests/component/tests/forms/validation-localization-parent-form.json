@@ -1,0 +1,97 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "child",
+        "type": "Template:child",
+        "props": {
+          "storeDataInParentForm": {
+            "value": false
+          }
+        }
+      },
+      {
+        "key": "repeater",
+        "type": "Repeater",
+        "props": {
+          "value": {
+            "value": [
+              {},
+              {},
+              {}
+            ]
+          }
+        },
+        "children": [
+          {
+            "key": "justInput",
+            "type": "RsInput",
+            "props": {
+              "value": {
+                "value": "good",
+                "computeType": "function",
+                "fnSource": "  const index = form.index ?? 0\n  return `good#${index}`"
+              },
+              "label": {
+                "computeType": "function",
+                "fnSource": "  const index = form.index ?? 0\n  return `Just input#${index}`"
+              }
+            },
+            "schema": {
+              "validations": [
+                {
+                  "key": "min",
+                  "args": {
+                    "limit": 10
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "key": "embedded",
+            "type": "Template:child",
+            "props": {}
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "justInput": {
+        "validator-min": {
+          "message": "Min 10 {$justInput}"
+        }
+      }
+    },
+    "de-DE": {
+      "justInput": {
+        "validator-min": {
+          "message": "DE Min 10 {$justInput}"
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    },
+    {
+      "code": "de",
+      "dialect": "DE",
+      "name": "Deutsch",
+      "description": "German",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
