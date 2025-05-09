@@ -11,6 +11,7 @@ import {autoConvertField} from './autoConvertField'
 import type {CalculatePropertyFn} from './CalculatePropertyFn'
 import {dataPart} from './dataPart'
 import type {DataValidator} from './DataValidator'
+import type {DataValidatorFactoryFn} from './DataValidatorFactoryFn'
 import type {Disposer} from './Disposer'
 import type {Field} from './Field'
 import type {FieldType} from './FieldType'
@@ -55,12 +56,14 @@ export class SimpleField implements Field {
    * Creates the field with form data for the component.
    * @param componentData the component data.
    * @param calculateValue the function for calculating the value of the field.
+   * @param createDataValidator the function to create a data validator.
    * @param dataContext the data context for this field.
    * @param deferFieldCalculation if true, then the calculated field must be explicitly initialized.
    */
   constructor(
     readonly componentData: ComponentData,
     readonly calculateValue: CalculatePropertyFn,
+    readonly createDataValidator: DataValidatorFactoryFn,
     readonly dataContext: IDataContext,
     public deferFieldCalculation: boolean,
   ) {
@@ -87,7 +90,7 @@ export class SimpleField implements Field {
     this.#disposers = [
       autorun(
         () => {
-          this.dataValidator = this.dataContext.createDataValidator(
+          this.dataValidator = this.createDataValidator(
             componentStore,
             this.valueType,
             error => this.error = error

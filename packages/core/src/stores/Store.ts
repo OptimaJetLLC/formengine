@@ -20,7 +20,9 @@ import {calculateProperty} from '../features/validation/utils/calculateProperty'
 import type {CalculatePropertyFn} from '../features/validation/utils/CalculatePropertyFn'
 import {ZodValidationRules} from '../features/validation/utils/consts'
 import {dataPart} from '../features/validation/utils/dataPart'
+import type {ErrorMessageLocalizer} from '../features/validation/utils/DataValidator'
 import {getDefaultErrorMessage} from '../features/validation/utils/DataValidator'
+import type {DataValidatorFactoryFn} from '../features/validation/utils/DataValidatorFactoryFn'
 import type {IComponentDataFactory} from '../features/validation/utils/IComponentDataFactory'
 import type {IDataContext} from '../features/validation/utils/IDataContext'
 import {RepeaterField} from '../features/validation/utils/RepeaterField'
@@ -81,30 +83,11 @@ class StoreFormContext implements IDataContext {
   constructor(readonly store: Store) {
   }
 
-  private get dataRoot() {
-    return this.store.form.componentTree
-  }
-
   /**
    * @inheritDoc
    */
   get initialData() {
     return this.store.initialDataSlice
-  }
-
-  /**
-   * @inheritDoc
-   */
-  createDataValidator(componentStore: ComponentStore, valueType: SchemaType,
-                      onError: Setter<string | undefined>) {
-    const validationRules = this.store.getValidationRules(valueType)
-    return DataValidator.create(
-      this.store,
-      typedValidatorsResolver(validationRules),
-      componentStore.schema,
-      onError,
-      this.store.localizeErrorMessages.bind(this.store, this.dataRoot, componentStore)
-    )
   }
 }
 
@@ -351,15 +334,20 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
     }
 
     const {model, store: componentStore} = componentData
+    const createDataValidator: DataValidatorFactoryFn = (componentStore: ComponentStore,
+                                                         valueType: SchemaType,
+                                                         onError: Setter<string | undefined>) => {
+      return this.createDataValidator(componentData, componentStore, valueType, onError)
+    }
+
     if (model.kind === 'repeater') {
-      return new RepeaterField(componentData, calculateValue, dataContext, this, this, this.getValidationRules.bind(this),
-        deferFieldCalculation)
+      return new RepeaterField(componentData, calculateValue, createDataValidator, dataContext, this, deferFieldCalculation)
     }
 
     if (!model.valued) return
 
     if (!isTemplateType(model.type)) {
-      return new SimpleField(componentData, calculateValue, dataContext, deferFieldCalculation)
+      return new SimpleField(componentData, calculateValue, createDataValidator, dataContext, deferFieldCalculation)
     }
 
     const childStore = new Store(this.formViewerPropsStore.clone(), this.componentStateFactory, this, componentStore, dataContext)
@@ -488,6 +476,29 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
       key,
       dataRoot,
       (type, componentStore) => this.localizeComponent(type, dataRoot, componentStore)
+    )
+  }
+
+  /**
+   * Creates a data validator for the field.
+   * @param componentData the component data.
+   * @param componentStore the component settings.
+   * @param valueType the field's data type.
+   * @param onError the callback function called when the validation error text is set.
+   * @returns the data validator.
+   */
+  private createDataValidator(componentData: ComponentData, componentStore: ComponentStore, valueType: SchemaType,
+                              onError: Setter<string | undefined>) {
+    const validationRules = this.getValidationRules(valueType)
+    const localizer: ErrorMessageLocalizer = (validationResults) => {
+      return this.localizeErrorMessages(componentData.dataRoot, componentStore, validationResults)
+    }
+    return DataValidator.create(
+      this,
+      typedValidatorsResolver(validationRules),
+      componentStore.schema,
+      onError,
+      localizer
     )
   }
 }

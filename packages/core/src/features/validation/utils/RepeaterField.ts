@@ -1,25 +1,21 @@
 import {autorun, makeAutoObservable, observable, reaction, runInAction, untracked} from 'mobx'
 import {ComponentStore, isComputedProperty} from '../../../stores/ComponentStore'
-import type {FormViewerValidationRules} from '../../../stores/FormViewerValidationRules'
-import type {IStore} from '../../../stores/IStore'
-import type {Setter} from '../../../types'
 import {isRecord} from '../../../utils'
 import type {ComponentData, IComponentDataProvider} from '../../../utils/contexts/ComponentDataContext'
 import {needRender} from '../../../utils/needRender'
 import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
 import type {Model} from '../../define'
 import type {SchemaType} from '../types/SchemaType'
-import type {SchemaTypeMap} from '../types/SchemaTypeMap'
 import type {ValidationMessages} from '../types/ValidationResult'
 import type {CalculatePropertyFn} from './CalculatePropertyFn'
 import {dataPart} from './dataPart'
-import {DataValidator} from './DataValidator'
+import type {DataValidator} from './DataValidator'
+import type {DataValidatorFactoryFn} from './DataValidatorFactoryFn'
 import type {Disposer} from './Disposer'
 import type {Field} from './Field'
 import type {FieldType} from './FieldType'
 import type {IComponentDataFactory} from './IComponentDataFactory'
 import type {IDataContext} from './IDataContext'
-import {typedValidatorsResolver} from './validatorsResolver'
 
 /**
  * Field with repeater data. **Internal use only.**
@@ -58,19 +54,17 @@ export class RepeaterField implements Field, IComponentDataProvider {
    * Creates the field with repeater data for the component.
    * @param repeaterComponentData the component data.
    * @param calculateValue the function for calculating the value of the field.
+   * @param createDataValidator the function to create a data validator.
    * @param dataContext the context for working with data.
    * @param componentDataFactory the factory for creating ComponentData instances.
-   * @param store the form viewer settings.
-   * @param getValidationRules the function to get the validation rules.
    * @param deferFieldCalculation if true, then the calculated field must be explicitly initialized.
    */
   constructor(
     readonly repeaterComponentData: ComponentData,
     readonly calculateValue: CalculatePropertyFn,
+    readonly createDataValidator: DataValidatorFactoryFn,
     readonly dataContext: IDataContext,
     readonly componentDataFactory: IComponentDataFactory,
-    readonly store: IStore,
-    readonly getValidationRules: (type: SchemaType) => FormViewerValidationRules,
     public deferFieldCalculation: boolean,
   ) {
     const {model, store: componentStore} = repeaterComponentData
@@ -95,7 +89,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
     this.#disposers = [
       autorun(
         () => {
-          this.dataValidator = this.dataContext.createDataValidator(
+          this.dataValidator = this.createDataValidator(
             componentStore,
             this.valueType,
             error => this.error = error,
@@ -345,7 +339,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
 
         // then we create a data context
         // eslint-disable-next-line @typescript-eslint/no-use-before-define
-        const repeaterFormContext = new RepeaterFormContext(this, this.store, this.getValidationRules, contextData, i)
+        const repeaterFormContext = new RepeaterFormContext(this, i)
 
         // now create the root element of the inner form, it is necessary for correct work of itemRenderWhen property
         const rootStore = new ComponentStore(`${repeaterKey}-root-item-${i}`, 'Fragment')
@@ -418,15 +412,9 @@ class RepeaterFormContext implements IDataContext {
   /**
    * Creates the context for the RepeaterField.
    * @param repeaterField the RepeaterField instance.
-   * @param store the form viewer settings.
-   * @param getValidationRules the function to get the validation rules.
-   * @param dataRoot the root component data.
    * @param index the index of the current item in the repeater.
    */
   constructor(readonly repeaterField: RepeaterField,
-              readonly store: IStore,
-              readonly getValidationRules: (type: SchemaType) => FormViewerValidationRules,
-              readonly dataRoot: ComponentData,
               readonly index: number) {
   }
 
@@ -437,19 +425,5 @@ class RepeaterFormContext implements IDataContext {
     const initialData = this.repeaterField.initialData
     if (Array.isArray(initialData)) return initialData[this.index]
     return undefined
-  }
-
-  /**
-   * @inheritDoc
-   */
-  createDataValidator(componentStore: ComponentStore, valueType: keyof SchemaTypeMap, onError: Setter<string | undefined>) {
-    const validationRules = this.getValidationRules(valueType)
-    return DataValidator.create(
-      this.store,
-      typedValidatorsResolver(validationRules),
-      componentStore.schema,
-      onError,
-      this.store.localizeErrorMessages.bind(this.store, this.dataRoot, componentStore)
-    )
   }
 }
