@@ -52,7 +52,7 @@ function patchPackageVersion(packagePath, version) {
 
   if (!patched) return
 
-  const patchedContent = JSON.stringify(packageJson, undefined, 4) + '\n'
+  const patchedContent = JSON.stringify(packageJson, undefined, 2) + '\n'
   writeFileSync(path, patchedContent)
 }
 
