@@ -1,5 +1,13 @@
 import type {LanguageFullCode} from '@react-form-builder/core'
 import {BiDi, findLanguage, globalDefaultLanguage, Language} from '@react-form-builder/core'
+import dfAR from 'date-fns/locale/ar-EG/index.js'
+import dfDE from 'date-fns/locale/de/index.js'
+import dfEN from 'date-fns/locale/en-US/index.js'
+import dfES from 'date-fns/locale/es/index.js'
+import dfFA from 'date-fns/locale/fa-IR/index.js'
+import dfFR from 'date-fns/locale/fr/index.js'
+import dfIT from 'date-fns/locale/it/index.js'
+import dfCN from 'date-fns/locale/zh-CN/index.js'
 import {merge} from 'lodash-es'
 import {arEG, deDE, enUS, esES, faIR, frFR, itIT, zhCN} from 'rsuite/esm/locales/index.js'
 import enUsTranslation from '../../../public/locales/en-US.json'
@@ -14,6 +22,17 @@ const rSuiteLocales: Record<string, any> = {
   'fr-FR': frFR,
   'es-ES': esES,
   'zh-CN': zhCN
+}
+
+export const dateFnsLocales: Record<string, any> = {
+  'ar-EG': dfAR,
+  'de-DE': dfDE,
+  'en-US': dfEN,
+  'it-IT': dfIT,
+  'fa-IR': dfFA,
+  'fr-FR': dfFR,
+  'es-ES': dfES,
+  'zh-CN': dfCN
 }
 
 export const defaultComponentsLocale = enUS
