@@ -5,6 +5,7 @@ import {useEffect} from 'react'
 import {CustomProvider} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {defaultComponentsLocale} from '../languageUtils'
+import {format as formatDate} from 'date-fns'
 
 const styles = {
   [BiDi.LTR]: () => import('../../../../public/css/rsuite-no-reset.min.css?url'),
@@ -44,7 +45,7 @@ const RawLocalizationProvider = (props: LocalizationProps) => {
 
   return (
     <CacheProvider value={selectedCache}>
-      <CustomProvider rtl={builderStore.isRTL} locale={componentsLocale} theme={builderStore.theme}>
+      <CustomProvider rtl={builderStore.isRTL} locale={componentsLocale} theme={builderStore.theme} formatDate={formatDate}>
         {props.children}
       </CustomProvider>
     </CacheProvider>

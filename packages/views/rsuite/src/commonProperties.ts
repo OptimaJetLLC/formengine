@@ -57,8 +57,7 @@ export const headerSize = oneOf('h1', 'h2', 'h3', 'h4', 'h5', 'h6')
 
 export const navProps = {
   activeKey: string.hinted('Active key, corresponding to one of items value').default('Item1'),
-  // TODO 'pills' avaliable in newer rsuite versions
-  appearance: oneOf('default', 'tabs', 'subtle')
+  appearance: oneOf('default', 'tabs', 'subtle', 'pills')
     .default('default')
     .hinted('A navigation can have different appearances'),
   items: array.default(toLabeledValues(['Item1', 'Item2', 'Item3'])),

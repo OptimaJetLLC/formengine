@@ -22,7 +22,7 @@ const RsUploader = ({customElement, children, disabled, multiple, fileList, ...p
 
   return <Uploader {...props} disabled={disabledButton} multiple={multiple}
                    fileList={fileList} onRemove={onRemove}>
-    {customElement && <div>{children}</div>}
+    {customElement ? <div>{children}</div> : undefined}
   </Uploader>
 }
 

@@ -10,7 +10,7 @@ type MenuItem = {
   title?: string
 }
 
-const makeItems = (data: string[]) => data.map(title => ({title, href: title}))
+const makeItems = (data: string[]) => data.map(title => ({title, href: `#${title}`}))
 
 const suitableReactElementTypes = new Set([
   'a',
