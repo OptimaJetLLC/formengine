@@ -1,5 +1,5 @@
 import {useEffect} from 'react'
-import {useBuilderContext} from '../../utils/contexts/BuilderContext'
+import {useBuilderMode} from '../../utils/contexts/BuilderModeContext'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {array, containerStyles, getDefaultCss, node, string} from '../annotation'
 import {toArray} from '../annotation/toArray'
@@ -13,7 +13,7 @@ import {RepeaterPropsProvider} from './RepeaterPropsContext'
 type RepeaterContainerProps = Pick<RepeaterProps, 'wrapperClassName' | 'children'>
 
 const RepeaterContainer = (props: RepeaterContainerProps) => {
-  const viewerMode = useBuilderContext().builderMode === 'viewer'
+  const viewerMode = useBuilderMode() === 'viewer'
   const store = useStore()
   const insideTemplate = store.parentStore
 

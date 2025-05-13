@@ -1,4 +1,4 @@
-import {array, boolean, cssSize, define, event, number, oneOf, string, useBuilderContext} from '@react-form-builder/core'
+import {array, boolean, cssSize, define, event, number, oneOf, string, useBuilderMode} from '@react-form-builder/core'
 import {APIProvider} from '@vis.gl/react-google-maps'
 import type {GoogleMapProps} from './GoogleMapProps'
 import {GoogleMapRenderer} from './GoogleMapRenderer'
@@ -11,7 +11,7 @@ const NoApiKey = ({className}: { className?: string }) => {
 }
 
 const GoogleMapLoader = ({apiKey, region, language, ...props}: GoogleMapProps) => {
-  const {builderMode} = useBuilderContext()
+  const builderMode = useBuilderMode()
 
   if (!apiKey) return builderMode === 'builder' ? <NoApiKey className={props.className}/> : null
 

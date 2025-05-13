@@ -389,11 +389,6 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
-            "id": "api-reference/@react-form-builder/core/type-aliases/BuilderContextType",
-            "label": "BuilderContextType"
-          },
-          {
-            "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/BuilderMode",
             "label": "BuilderMode"
           },
@@ -931,13 +926,8 @@ const typedocSidebar = { items: [
         "items": [
           {
             "type": "doc",
-            "id": "api-reference/@react-form-builder/core/functions/BuilderContext",
-            "label": "BuilderContext"
-          },
-          {
-            "type": "doc",
-            "id": "api-reference/@react-form-builder/core/functions/BuilderContextProvider",
-            "label": "BuilderContextProvider"
+            "id": "api-reference/@react-form-builder/core/functions/BuilderModeProvider",
+            "label": "BuilderModeProvider"
           },
           {
             "type": "doc",
@@ -1196,8 +1186,8 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
-            "id": "api-reference/@react-form-builder/core/functions/useBuilderContext",
-            "label": "useBuilderContext"
+            "id": "api-reference/@react-form-builder/core/functions/useBuilderMode",
+            "label": "useBuilderMode"
           },
           {
             "type": "doc",

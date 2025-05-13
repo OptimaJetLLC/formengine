@@ -1417,6 +1417,19 @@ The component localized character set.
 
 ***
 
+### maxHeight?
+
+> `optional` **maxHeight**: `number`
+
+The maximum height of the table.
+Usually used together with `autoHeight`. When the height of the table exceeds `maxHeight`, the table will have a scroll bar.
+
+#### Inherited from
+
+`TableProps.maxHeight`
+
+***
+
 ### maxRows?
 
 > `optional` **maxRows**: `number`

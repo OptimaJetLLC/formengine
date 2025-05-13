@@ -11,7 +11,7 @@ import {
   number,
   oneOf,
   string,
-  useBuilderContext,
+  useBuilderMode,
   useComponentData
 } from '@react-form-builder/core'
 import type {CSSProperties, PropsWithChildren} from 'react'
@@ -61,11 +61,7 @@ const SCentered = styled.div`
   height: 100px;
 `
 
-const EmptyContent = () => {
-  const {translate} = useBuilderContext()
-  const label = translate?.('RsWizard.wizardHasNoSteps') ?? 'Missing content.'
-  return <SCentered>{label}</SCentered>
-}
+const EmptyContent = () => <SCentered>Missing content</SCentered>
 
 const RsWizard = ({
                     children,
@@ -86,7 +82,7 @@ const RsWizard = ({
                     ...props
                   }: RsWizardProps) => {
   const [visited, setVisited] = useState(activeIndex)
-  const isBuilderMode = useBuilderContext().builderMode === 'builder'
+  const isBuilderMode = useBuilderMode() === 'builder'
 
   useEffect(() => {
     if (visited < activeIndex) setVisited(activeIndex)

@@ -298,8 +298,8 @@ _September_ 13, 2024
 - Added the `Rich text editor` component.
 - Added the [object](/api-reference/@react-form-builder/core/variables/object) annotation builder and property editor for editing properties
   with the `object` type.
-- Added the [BuilderContextProvider](/api-reference/@react-form-builder/core/functions/BuilderContextProvider)
-  and [useBuilderContext](/api-reference/@react-form-builder/core/functions/useBuilderContext) hook to use the Designer's state in custom
+- Added the [BuilderContextProvider](/api-reference/@react-form-builder/core/functions/BuilderModeProvider)
+  and [useBuilderContext](/api-reference/@react-form-builder/core/functions/useBuilderMode) hook to use the Designer's state in custom
   components.
 - Fixed a bug where the `One tap` property in the `Date picker` component had the `event` type instead of `boolean`.
 - Fixed a bug where the application crashed if the date was entered from the keyboard into the `Date picker` component.
