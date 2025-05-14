@@ -42,6 +42,14 @@ The component CSS styles.
 
 ***
 
+### dataKey?
+
+> `optional` **dataKey**: `string`
+
+The component data key.
+
+***
+
 ### events?
 
 > `optional` **events**: `Record`\<`string`, [`ActionData`](../type-aliases/ActionData.md)[]\>

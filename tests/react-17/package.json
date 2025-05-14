@@ -8,8 +8,8 @@
     "start:designer": "vite --port=15002 -c designer.vite.config.ts",
     "clean": "rimraf dist",
     "test": "dotenv -v NODE_OPTIONS=\"--loader ./import.js -r ./require.cjs\" vitest run",
-    "test:component": "npm run test",
-    "test:dbg": "dotenv -v NODE_OPTIONS=\"--loader ./import.js -r ./require.cjs\" vitest run --ui --open --inspectBrk --no-file-parallelism"
+    "test:debug": "dotenv -v NODE_OPTIONS=\"--loader ./import.js -r ./require.cjs\" vitest run -- --test-timeout=0 --no-file-parallelism --inspect-brk",
+    "test:component": "npm run test"
   },
   "dependencies": {
     "@react-form-builder/components-antd": "^3.6.0",

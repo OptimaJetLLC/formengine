@@ -34,10 +34,10 @@ const removeRow = (data: Record<string, any>, repeaterKey: string, index: number
   data[repeaterKey] = modifiedData
 }
 
-const getParentRepeaterKey = (componentData: ComponentData) => {
+const getParentRepeaterDataKey = (componentData: ComponentData) => {
   const dataRoot = componentData.dataRoot
   if (typeof dataRoot.index === 'number') {
-    return dataRoot.store.props?.repeaterKey?.value
+    return dataRoot.store.props?.repeaterDataKey?.value
   }
 }
 
@@ -47,9 +47,9 @@ export const addRowAction = ActionDefinition.functionalAction(((e, args) => {
     return
   }
 
-  const repeaterKey = getParentRepeaterKey(e.sender)
-  if (repeaterKey && e.parentData) {
-    addRow(e.parentData, repeaterKey, args.max, args.rowData, args.index)
+  const repeaterDataKey = getParentRepeaterDataKey(e.sender)
+  if (repeaterDataKey && e.parentData) {
+    addRow(e.parentData, repeaterDataKey, args.max, args.rowData, args.index)
   }
 }), {
   dataKey: 'string',
@@ -67,9 +67,9 @@ export const removeRowAction = ActionDefinition.functionalAction(((e, args) => {
     return
   }
 
-  const repeaterKey = getParentRepeaterKey(e.sender)
-  if (repeaterKey && e.parentData) {
-    removeRow(e.parentData, repeaterKey, index, args.min)
+  const repeaterDataKey = getParentRepeaterDataKey(e.sender)
+  if (repeaterDataKey && e.parentData) {
+    removeRow(e.parentData, repeaterDataKey, index, args.min)
   }
 }), {
   dataKey: 'string',

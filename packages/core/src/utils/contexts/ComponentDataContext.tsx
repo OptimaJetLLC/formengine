@@ -7,6 +7,7 @@ import {getFluentData} from '../../features/localization/getFluentData'
 import type {Field} from '../../features/validation'
 import type {ValidationMessages} from '../../features/validation/types/ValidationResult'
 import type {ComponentStore} from '../../stores/ComponentStore'
+import {dataKey} from '../../stores/ComponentStore'
 import {defaultComponentState} from '../../stores/IComponentState'
 import {createNonNullableContext} from '../createNonNullableContext'
 import type {IFormData} from '../IFormData'
@@ -540,7 +541,7 @@ export class ComponentData implements IFormData {
   }
 
   private collectAllFields(acc: Map<string, Field>) {
-    if (this.field) acc.set(this.key, this.field)
+    if (this.field) acc.set(dataKey(this.store), this.field)
     // we must skip all children in the repeater field
     if (this.field?.fieldType === 'repeater') return acc
     for (let i = 0; i < this.children.length; i++) {

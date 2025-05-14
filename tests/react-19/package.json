@@ -8,11 +8,11 @@
     "start:designer": "vite --port=15002 -c designer.vite.config.ts",
     "clean": "rimraf dist",
     "test": "vitest run",
+    "test:debug": "vitest run -- --test-timeout=0 --no-file-parallelism --inspect-brk",
     "test:browser": "npm run test -- --browser",
     "test:browser:debug": "dotenv -v BROWSER_DEVTOOL=1 npm run test:browser -- -- --inspectBrk --no-file-parallelism",
     "test:browser:headless": "npm run test -- --browser.headless",
-    "test:component": "npm run test",
-    "test:dbg": "vitest run --ui --open --inspectBrk --no-file-parallelism"
+    "test:component": "npm run test"
   },
   "dependencies": {
     "@react-form-builder/components-antd": "^3.6.0",

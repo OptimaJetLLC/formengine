@@ -1,5 +1,5 @@
 import {autorun, makeAutoObservable, observable, reaction, runInAction, untracked} from 'mobx'
-import {ComponentStore, isComputedProperty} from '../../../stores/ComponentStore'
+import {ComponentStore, dataKey, isComputedProperty} from '../../../stores/ComponentStore'
 import {isRecord} from '../../../utils'
 import type {ComponentData, IComponentDataProvider} from '../../../utils/contexts/ComponentDataContext'
 import {needRender} from '../../../utils/needRender'
@@ -284,7 +284,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
 
     this.error = error[this.errorFieldName] as string
 
-    const itemErrors = error[this.componentStore.key] as Array<Record<string, unknown>>
+    const itemErrors = error[dataKey(this.componentStore)] as Array<Record<string, unknown>>
     this.componentData.forEach((cd, index) => {
       const item = itemErrors?.[index]
       cd.fields.forEach((field, name) => field.setError(item?.[name]))
@@ -319,6 +319,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
     const itemsCount = this.itemsCount
     const originalStore = this.repeaterItemStore
     const repeaterKey = this.componentStore.key
+    const repeaterDataKey = dataKey(this.componentStore)
     const repeaterDataRoot = this.repeaterComponentData.dataRoot
 
     return runInAction(() => {
@@ -327,7 +328,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
         // first, create an element that will be the parent for the context
         const contextStore = new ComponentStore(`${repeaterKey}-context-item-${i}`, 'Fragment')
         // save the repeater key for use in repeater actions (addRow, removeRow)
-        contextStore.props = {repeaterKey: {value: repeaterKey}}
+        contextStore.props = {repeaterDataKey: {value: repeaterDataKey}}
         const contextData = this.componentDataFactory.createComponentData(contextStore, false)
         contextData.index = i
         contextData.parent = repeaterDataRoot
@@ -365,7 +366,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
    * @returns the initial data value for the field.
    */
   get initialDataValue() {
-    const initialData = dataPart(this.dataContext.initialData, this.componentStore.key)
+    const initialData = dataPart(this.dataContext.initialData, dataKey(this.componentStore))
     return initialData ?? this.initialValue
   }
 
@@ -394,7 +395,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
   }
 
   private get errorFieldName() {
-    return `${this.componentStore.key}Error`
+    return `${dataKey(this.componentStore)}Error`
   }
 
   private disposeOldComponentDatas() {

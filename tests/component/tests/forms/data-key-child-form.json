@@ -1,0 +1,90 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsToggle1",
+        "type": "RsToggle",
+        "dataKey": "childToggle",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "childToggle"
+          }
+        ]
+      },
+      {
+        "key": "rsInput1",
+        "type": "RsInput",
+        "dataKey": "childInput",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "childInput"
+          }
+        ],
+        "schema": {
+          "validations": [
+            {
+              "key": "required"
+            }
+          ]
+        }
+      },
+      {
+        "key": "rsInput2",
+        "type": "RsInput",
+        "dataKey": "childInput",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "childInput"
+          }
+        ],
+        "schema": {
+          "validations": [
+            {
+              "key": "required"
+            }
+          ]
+        }
+      },
+      {
+        "key": "rsTagPicker1",
+        "type": "RsTagPicker",
+        "dataKey": "childTagPicker",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "childTagPicker"
+          }
+        ],
+        "schema": {
+          "validations": [
+            {
+              "key": "nonEmpty"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

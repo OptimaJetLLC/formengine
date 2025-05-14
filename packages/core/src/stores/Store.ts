@@ -35,7 +35,7 @@ import {isNumber, isPromise, isRecord, isString} from '../utils'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import type {IFormData} from '../utils/IFormData'
 import {nameObservable} from '../utils/observableNaming'
-import {ComponentStore} from './ComponentStore'
+import {ComponentStore, dataKey} from './ComponentStore'
 import {Form} from './Form'
 import type {FormViewerPropsStore} from './FormViewerPropsStore'
 import type {FormViewerValidationRules} from './FormViewerValidationRules'
@@ -228,7 +228,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
     if (!this.parentStoreContext || !this.parentComponentStore) return this.formViewerPropsStore.initialData
     const dataSlice = this.parentStoreContext.initialData
     if (isStoreDataInParentForm(this.parentComponentStore)) return dataSlice
-    const projection = dataPart(dataSlice, this.parentComponentStore.key)
+    const projection = dataPart(dataSlice, dataKey(this.parentComponentStore))
     return (Array.isArray(projection) || isRecord(projection)) ? projection : undefined
   }
 

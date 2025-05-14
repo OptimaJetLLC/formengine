@@ -1,0 +1,88 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "templateDataKeyChildForm1",
+        "type": "Template:data-key-child-form",
+        "dataKey": "ignored",
+        "props": {}
+      },
+      {
+        "key": "templateDataKeyChildForm1",
+        "type": "Template:data-key-child-form",
+        "dataKey": "subForm",
+        "props": {
+          "storeDataInParentForm": {
+            "value": false
+          }
+        }
+      },
+      {
+        "key": "repeater1",
+        "type": "Repeater",
+        "dataKey": "myRepeater",
+        "props": {},
+        "children": [
+          {
+            "key": "rsRadioGroup1",
+            "type": "RsRadioGroup",
+            "dataKey": "radio",
+            "props": {},
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "radio"
+              }
+            ]
+          },
+          {
+            "key": "rsInput1",
+            "type": "RsInput",
+            "dataKey": "input",
+            "props": {},
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "input"
+              }
+            ],
+            "schema": {
+              "validations": [
+                {
+                  "key": "required"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "key": "rsToggle1",
+        "type": "RsToggle",
+        "dataKey": "toggle",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "parent-rsToggle"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

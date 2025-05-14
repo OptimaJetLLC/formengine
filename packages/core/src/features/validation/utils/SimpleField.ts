@@ -1,6 +1,6 @@
 import {autorun, makeAutoObservable, observable, reaction, untracked} from 'mobx'
 import type {ComponentStore} from '../../../stores/ComponentStore'
-import {isComputedProperty} from '../../../stores/ComponentStore'
+import {dataKey, isComputedProperty} from '../../../stores/ComponentStore'
 import type {ComponentData} from '../../../utils/contexts/ComponentDataContext'
 import {needRender} from '../../../utils/needRender'
 import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
@@ -251,7 +251,7 @@ export class SimpleField implements Field {
    * @returns the initial data value for the field.
    */
   get initialDataValue() {
-    const initialData = dataPart(this.dataContext.initialData, this.componentStore.key)
+    const initialData = dataPart(this.dataContext.initialData, dataKey(this.componentStore))
     return initialData ?? this.initialValue
   }
 

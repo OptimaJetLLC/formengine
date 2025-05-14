@@ -74,6 +74,15 @@ export function isComputedProperty(componentProperty?: ComponentProperty) {
 }
 
 /**
+ * Returns the data key of the component. **Internal use only.**
+ * @param componentStore the component store.
+ * @returns the data key of the component.
+ */
+export function dataKey(componentStore: ComponentStore) {
+  return componentStore.dataKey ?? componentStore.key
+}
+
+/**
  * The arbitrary HTML attributes for the component.
  */
 export type HtmlAttribute = Record<string, string>
@@ -88,6 +97,11 @@ export class ComponentStore {
    * The React component key.
    */
   key = ''
+
+  /**
+   * The component data key.
+   */
+  dataKey?: string
 
   /**
    * The component type of the form viewer.
