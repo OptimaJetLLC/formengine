@@ -1,0 +1,103 @@
+{
+  "errorType": "RsErrorMessage",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "container",
+        "type": "RsContainer",
+        "props": {},
+        "css": {
+          "any": {
+            "string": "background-color: red"
+          }
+        },
+        "children": [
+          {
+            "key": "container1",
+            "type": "RsContainer",
+            "props": {},
+            "css": {
+              "any": {
+                "object": {
+                  "flexDirection": "row"
+                }
+              }
+            },
+            "children": [
+              {
+                "key": "name",
+                "type": "RsInput",
+                "props": {
+                  "placeholder": {
+                    "value": "Enter your name"
+                  },
+                  "label": {
+                    "value": "Name"
+                  }
+                },
+                "schema": {
+                  "validations": [
+                    {
+                      "key": "required"
+                    }
+                  ]
+                }
+              },
+              {
+                "key": "password",
+                "type": "RsInput",
+                "props": {
+                  "label": {
+                    "value": "Password"
+                  },
+                  "passwordMask": {
+                    "value": true
+                  }
+                },
+                "schema": {
+                  "validations": [
+                    {
+                      "key": "required"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "key": "submit",
+            "type": "RsButton",
+            "props": {
+              "children": {
+                "value": "Login"
+              },
+              "color": {
+                "value": "blue"
+              },
+              "appearance": {
+                "value": "primary"
+              }
+            },
+            "events": {
+              "onClick": [
+                {
+                  "type": "common",
+                  "name": "validate",
+                  "args": {
+                    "failOnError": true
+                  }
+                },
+                {
+                  "type": "custom",
+                  "name": "onSubmit"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

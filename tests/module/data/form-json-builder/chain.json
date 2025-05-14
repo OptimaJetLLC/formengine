@@ -1,0 +1,52 @@
+{
+  "errorType": "RsErrorMessage",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "container",
+        "type": "RsContainer",
+        "props": {
+          "prop": {
+            "value": "My prop"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required"
+            }
+          ]
+        },
+        "events": {
+          "onClick": [
+            {
+              "type": "common",
+              "name": "validate",
+              "args": {
+                "failOnError": true
+              }
+            },
+            {
+              "type": "custom",
+              "name": "onSubmit"
+            }
+          ]
+        },
+        "css": {
+          "any": {
+            "string": "background-color: red"
+          }
+        },
+        "children": [
+          {
+            "key": "container1",
+            "type": "RsContainer",
+            "props": {}
+          }
+        ]
+      }
+    ]
+  }
+}

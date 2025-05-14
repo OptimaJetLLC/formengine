@@ -258,6 +258,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/interfaces/IComponentBuilder",
+            "label": "IComponentBuilder"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/interfaces/IComponentDataFactory",
             "label": "IComponentDataFactory"
           },
@@ -278,8 +283,18 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/interfaces/IEventHandlerBuilder",
+            "label": "IEventHandlerBuilder"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/interfaces/IFormData",
             "label": "IFormData"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/interfaces/IFormJsonBuilder",
+            "label": "IFormJsonBuilder"
           },
           {
             "type": "doc",
@@ -290,6 +305,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/interfaces/IStore",
             "label": "IStore"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/interfaces/IValidationBuilder",
+            "label": "IValidationBuilder"
           },
           {
             "type": "doc",
@@ -494,6 +514,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/Device",
+            "label": "Device"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/DeviceStyle",
             "label": "DeviceStyle"
           },
@@ -526,6 +551,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/FirstParameter",
             "label": "FirstParameter"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/FormOptions",
+            "label": "FormOptions"
           },
           {
             "type": "doc",
@@ -973,6 +1003,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/functions/ViewerPropsProvider",
             "label": "ViewerPropsProvider"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/buildForm",
+            "label": "buildForm"
           },
           {
             "type": "doc",
