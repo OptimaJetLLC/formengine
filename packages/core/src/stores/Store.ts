@@ -304,11 +304,11 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
   /**
    * @inheritDoc
    */
-  createComponentData(componentStore: ComponentStore, deferFieldCalculation = false, model?: Model,
+  createComponentData(componentStore: ComponentStore, deferFieldCalculation = false,
                       dataContext?: IDataContext): ComponentData {
     dataContext ??= this.dataContext
-    model ??= this.getModel(componentStore.type)
-    const factory = (cs: ComponentStore) => this.createComponentData(cs, deferFieldCalculation, undefined, dataContext)
+    const model = this.getModel(componentStore.type)
+    const factory = (cs: ComponentStore) => this.createComponentData(cs, deferFieldCalculation, dataContext)
     const componentData = new ComponentData(componentStore, model, factory, this.formViewerPropsStore.formValidators)
     componentData.field = this.createField(componentData, dataContext, deferFieldCalculation)
     componentData.componentState = this.componentStateFactory(componentData, this)

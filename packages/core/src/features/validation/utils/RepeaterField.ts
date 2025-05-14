@@ -343,13 +343,13 @@ export class RepeaterField implements Field, IComponentDataProvider {
 
         // now create the root element of the inner form, it is necessary for correct work of itemRenderWhen property
         const rootStore = new ComponentStore(`${repeaterKey}-root-item-${i}`, 'Fragment')
-        const rootData = this.componentDataFactory.createComponentData(rootStore, false, undefined, repeaterFormContext)
+        const rootData = this.componentDataFactory.createComponentData(rootStore, false, repeaterFormContext)
         rootData.setParent(contextData)
 
         // finally create a repeater element
         const cs = ComponentStore.createFromObject(originalStore)
         cs.key = `${repeaterKey}-item-${i}`
-        const repeaterItem = this.componentDataFactory.createComponentData(cs, true, undefined, repeaterFormContext)
+        const repeaterItem = this.componentDataFactory.createComponentData(cs, true, repeaterFormContext)
         repeaterItem.setParent(rootData)
 
         result.push(contextData)
