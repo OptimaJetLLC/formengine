@@ -1,5 +1,5 @@
 import type {Definer} from '@react-form-builder/core'
-import {createView} from '@react-form-builder/core'
+import {BiDi, BuilderView, createView} from '@react-form-builder/core'
 import {rsBreadcrumb} from './components/RsBreadcrumb'
 import {rsButton} from './components/RsButton'
 import {rsCalendar} from './components/RsCalendar'
@@ -133,3 +133,28 @@ export const models = components.map(({model}) => model)
  * An assembled set of rSuite components, ready to be passed as a property to the FormViewer.
  */
 export const view = createView(models)
+
+/**
+ * An assembled set of rSuite components, ready to be passed as a property to the FormViewer.
+ * This view contains CSS loaders.
+ */
+export const viewWithCss = createView(models)
+  // The following parameters are required for correct CSS loading in LTR and RTL modes
+  .withViewerWrapper(RsLocalizationWrapper)
+  .withCssLoader(BiDi.LTR, ltrCssLoader)
+  .withCssLoader(BiDi.RTL, rtlCssLoader)
+  .withCssLoader('common', formEngineRsuiteCssLoader)
+
+/**
+ * An assembled set of rSuite components metadata, ready to be passed as a property to the FormBuilder.
+ * This view contains CSS loaders.
+ */
+export const builderViewWithCss = new BuilderView(components)
+  .withErrorMeta(rsErrorMessage.build())
+  .withTooltipMeta(rsTooltip.build())
+  .withTemplates([])
+  .withViewerWrapper(RsLocalizationWrapper)
+  .withCssLoader(BiDi.LTR, ltrCssLoader)
+  .withCssLoader(BiDi.RTL, rtlCssLoader)
+  .withCssLoader('common', formEngineRsuiteCssLoader)
+

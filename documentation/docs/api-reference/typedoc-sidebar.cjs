@@ -1548,6 +1548,11 @@ const typedocSidebar = { items: [
                 "items": [
                   {
                     "type": "doc",
+                    "id": "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/builderViewWithCss",
+                    "label": "builderViewWithCss"
+                  },
+                  {
+                    "type": "doc",
                     "id": "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/models",
                     "label": "models"
                   },
@@ -1570,6 +1575,11 @@ const typedocSidebar = { items: [
                     "type": "doc",
                     "id": "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/view",
                     "label": "view"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/viewWithCss",
+                    "label": "viewWithCss"
                   }
                 ]
               },
@@ -1809,6 +1819,11 @@ const typedocSidebar = { items: [
         "items": [
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/components-rsuite/variables/builderViewWithCss",
+            "label": "builderViewWithCss"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/components-rsuite/variables/models",
             "label": "models"
           },
@@ -1831,6 +1846,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/components-rsuite/variables/view",
             "label": "view"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-rsuite/variables/viewWithCss",
+            "label": "viewWithCss"
           }
         ]
       },

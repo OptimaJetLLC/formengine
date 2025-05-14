@@ -7,11 +7,13 @@
 
 ## Variables
 
+- [builderViewWithCss](variables/builderViewWithCss.md)
 - [models](variables/models.md)
 - [rSuiteComponents](variables/rSuiteComponents.md)
 - [rsErrorMessage](variables/rsErrorMessage.md)
 - [rsTooltip](variables/rsTooltip.md)
 - [view](variables/view.md)
+- [viewWithCss](variables/viewWithCss.md)
 
 ## Functions
 

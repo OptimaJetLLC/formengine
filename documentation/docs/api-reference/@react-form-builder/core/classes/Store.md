@@ -260,7 +260,7 @@ Clears the form in Form Viewer.
 
 ### createComponentData()
 
-> **createComponentData**(`componentStore`, `deferFieldCalculation`, `model`?, `dataContext`?): [`ComponentData`](ComponentData.md)
+> **createComponentData**(`componentStore`, `deferFieldCalculation`, `dataContext`?): [`ComponentData`](ComponentData.md)
 
 Creates the element for the component tree. **Internal use only.**
 
@@ -273,10 +273,6 @@ the component settings.
 • **deferFieldCalculation**: `boolean` = `false`
 
 if true, then the calculated field must be explicitly initialized.
-
-• **model?**: [`Model`](Model.md)\<`any`\>
-
-the component's metadata.
 
 • **dataContext?**: [`IDataContext`](../interfaces/IDataContext.md)
 

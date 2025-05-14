@@ -6,7 +6,7 @@ The factory for creating ComponentData instances. **Internal use only.**
 
 ### createComponentData()
 
-> **createComponentData**(`componentStore`, `deferFieldCalculation`, `model`?, `dataContext`?): [`ComponentData`](../classes/ComponentData.md)
+> **createComponentData**(`componentStore`, `deferFieldCalculation`, `dataContext`?): [`ComponentData`](../classes/ComponentData.md)
 
 Creates the element for the component tree. **Internal use only.**
 
@@ -19,10 +19,6 @@ the component settings.
 • **deferFieldCalculation**: `boolean`
 
 if true, then the calculated field must be explicitly initialized.
-
-• **model?**: [`Model`](../classes/Model.md)\<`any`\>
-
-the component's metadata.
 
 • **dataContext?**: [`IDataContext`](IDataContext.md)
 
