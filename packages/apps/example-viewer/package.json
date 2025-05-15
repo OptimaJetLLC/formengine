@@ -5,7 +5,9 @@
   "main": "src/index.tsx",
   "type": "module",
   "description": "OptimaJet Form Viewer Application",
-  "license": "Contact sales@optimajet.com",
+  "author": "Optimajet",
+  "homepage": "https://formengine.io/",
+  "license": "https://optimajet.com/products/formengine/eula/",
   "bugs": {
     "email": "support@optimajet.com"
   },

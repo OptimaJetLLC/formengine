@@ -4,6 +4,8 @@
   "private": true,
   "main": "index.ts",
   "type": "module",
+  "author": "Optimajet",
+  "homepage": "https://formengine.io/",
   "dependencies": {
     "@testing-library/dom": "*",
     "@testing-library/jest-dom": "*",

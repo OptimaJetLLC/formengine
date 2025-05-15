@@ -3,190 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>FormEngine Designer bundle embedding example</title>
+  <script src="../../packages/designer-bundle/dist/index.iife.js" async defer></script>
 </head>
-<body style="margin: 0">
+<body style="margin: 20px">
+<div id="designer"></div>
 
 <script type="text/javascript">
-  function elementOnLoad(htmlElement, callback) {
-    function onLoad() {
-      htmlElement.removeEventListener('load', onLoad);
-      callback?.();
+  window.onload = function () {
+    const {renderFormBuilder} = window.FormEngineDesignerBundle;
+
+    const props = {
     }
 
-    htmlElement.addEventListener('load', onLoad);
-  }
-
-  function whenScriptLoaded(scriptId, scriptUrl, callback) {
-    if (!window._dynamicScripts) window._dynamicScripts = {};
-
-    if (window._dynamicScripts[scriptId] === true) {
-      callback?.();
-      return;
-    }
-
-    const htmlElement = document.getElementById(scriptId);
-    if (htmlElement) {
-      elementOnLoad(htmlElement, () => callback?.());
-      return;
-    }
-
-    const scriptTag = document.createElement('script');
-    scriptTag.id = scriptId;
-    scriptTag.src = scriptUrl;
-    scriptTag.async = true;
-    scriptTag.defer = true;
-
-    elementOnLoad(scriptTag, () => {
-      window._dynamicScripts[scriptId] = true;
-      callback?.();
-    });
-
-    const head = document.head || document.getElementsByTagName('head')[0];
-    head.insertBefore(scriptTag, head.firstChild);
-  }
-
-  function doRemove() {
-    if (window.reactRoot) {
-      window.reactRoot.unmount()
-      delete window.reactRoot
-    }
-  }
-
-  function doRender() {
-    doRemove()
-
-    const form = `
-{
-  "version": "1",
-  "tooltipType": "RsTooltip",
-  "errorType": "RsErrorMessage",
-  "form": {
-    "key": "Screen",
-    "type": "Screen",
-    "props": {},
-    "children": [
-      {
-        "key": "name",
-        "type": "RsInput",
-        "props": {
-          "placeholder": {
-            "value": "Enter your name"
-          },
-          "label": {
-            "value": "Name"
-          }
-        },
-        "schema": {
-          "validations": [
-            {
-              "key": "required"
-            }
-          ]
-        },
-        "tooltipProps": {
-          "text": {
-            "value": "Name"
-          }
-        }
-      },
-      {
-        "key": "password",
-        "type": "RsInput",
-        "props": {
-          "label": {
-            "value": "Password"
-          },
-          "passwordMask": {
-            "value": true
-          }
-        },
-        "schema": {
-          "validations": [
-            {
-              "key": "required"
-            }
-          ]
-        },
-        "tooltipProps": {
-          "text": {
-            "value": "Password"
-          },
-          "placement": {
-            "value": "left"
-          }
-        }
-      },
-      {
-        "key": "submit",
-        "type": "RsButton",
-        "props": {
-          "children": {
-            "value": "Login"
-          },
-          "color": {
-            "value": "blue"
-          },
-          "appearance": {
-            "value": "primary"
-          }
-        }
-      }
-    ]
-  },
-  "localization": {},
-  "languages": [
-    {
-      "code": "en",
-      "dialect": "US",
-      "name": "English",
-      "description": "American English",
-      "bidi": "ltr"
-    }
-  ],
-  "defaultLanguage": "en-US"
-}
-`
-
-    whenScriptLoaded('designer-script', '../../packages/designer-bundle/dist/index.iife.js', () => {
-      const bundle = window.FormEngineDesignerBundle;
-
-      const {Language} = bundle;
-      const builderLanguages = {
-        languages: [
-          new Language('fr', 'FR', 'French', 'Français'),
-          new Language('tr', 'TR', 'Turkish', 'Türkçe'),
-          new Language('sr', 'Sr', 'Serbian', 'Српски'),
-        ],
-        getData: async languageFullCode => {
-          if (languageFullCode === 'tr-TR') {
-            return {
-              data: {leftMenu: {menu: 'Menü'}},
-            }
-          }
-          if (languageFullCode === 'sr-Sr') {
-            return {
-              data: {leftMenu: {menu: 'Мени'}, validation: {addRule: 'Додај правило'}},
-            }
-          }
-          return {
-            data: {leftMenu: {menu: 'Menu'}},
-          }
-        }
-      }
-
-      const props = {
-        i18n: builderLanguages,
-        getForm: () => form,
-      }
-
-      window.reactRoot = bundle.renderFormBuilder('root', props)
-    })
+    window.designerRoot = renderFormBuilder('designer', props)
   }
 </script>
-<button onclick="doRender()">Start</button>
-<button onclick="doRemove()">Remove</button>
-
-<div id="root"></div>
-
 </body>
 </html>

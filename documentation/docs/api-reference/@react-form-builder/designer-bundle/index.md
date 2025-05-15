@@ -7,5 +7,6 @@
 
 ## Functions
 
+- [buildForm](functions/buildForm.md)
 - [renderFormBuilder](functions/renderFormBuilder.md)
 - [renderFormBuilderTo](functions/renderFormBuilderTo.md)

@@ -3,6 +3,8 @@
   "version": "3.6.0",
   "private": true,
   "type": "module",
+  "author": "Optimajet",
+  "homepage": "https://formengine.io/",
   "scripts": {
     "record": "npx playwright codegen http://localhost:15173",
     "ui": "npx playwright test --ui",

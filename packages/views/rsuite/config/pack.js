@@ -25,6 +25,7 @@ function copyFiles() {
 
   fs.copyFileSync(path.join(sourceDir, packageJson), path.join(tempDir, packageJson))
   fs.copyFileSync(path.join(sourceDir, 'README.md'), path.join(tempDir, 'README.md'))
+  fs.copyFileSync(path.join(sourceDir, 'LICENSE'), path.join(tempDir, 'LICENSE'))
   const dirName = 'dist'
   const srcDir = path.join(sourceDir, dirName)
   const destDir = path.join(tempDir, dirName)

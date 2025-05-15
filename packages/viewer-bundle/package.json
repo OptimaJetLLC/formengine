@@ -10,7 +10,8 @@
     "optimajet"
   ],
   "author": "Optimajet",
-  "license": "Contact sales@optimajet.com",
+  "homepage": "https://formengine.io/",
+  "license": "MIT",
   "bugs": {
     "email": "support@optimajet.com"
   },
@@ -45,6 +46,7 @@
     "dist/formengine-rsuite.css",
     "dist/rsuite-no-reset.min.css",
     "dist/rsuite-no-reset-rtl.min.css",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ]
 }

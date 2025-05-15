@@ -202,7 +202,7 @@ do this, it is enough to install the package with the designer and connect compo
   }}>
 
 ```bash
-npm install @react-form-builder/designer
+npm install @react-form-builder/designer @react-form-builder/components-rsuite
 ```
 
 </div>

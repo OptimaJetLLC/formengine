@@ -2,6 +2,8 @@
   "name": "formengine",
   "version": "3.6.0",
   "description": "Example application",
+  "author": "Optimajet",
+  "homepage": "https://formengine.io/",
   "private": true,
   "dependencies": {
     "@react-form-builder/components-rsuite": "^3.4.1",

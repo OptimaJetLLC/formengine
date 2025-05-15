@@ -23,7 +23,8 @@
     "optimajet"
   ],
   "author": "Optimajet",
-  "license": "Contact sales@optimajet.com",
+  "homepage": "https://formengine.io/",
+  "license": "https://optimajet.com/products/formengine/eula/",
   "bugs": {
     "email": "support@optimajet.com"
   },

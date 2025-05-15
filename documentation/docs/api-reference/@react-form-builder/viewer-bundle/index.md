@@ -11,5 +11,6 @@
 
 ## Functions
 
+- [buildForm](functions/buildForm.md)
 - [renderFormViewer](functions/renderFormViewer.md)
 - [renderFormViewerTo](functions/renderFormViewerTo.md)

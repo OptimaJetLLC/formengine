@@ -2,12 +2,13 @@
   "name": "upload-test",
   "version": "1.0.0",
   "main": "index.js",
+  "author": "Optimajet",
+  "homepage": "https://formengine.io/",
   "scripts": {
     "start": "node index.js",
     "clean": "rimraf ./uploads/*"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {

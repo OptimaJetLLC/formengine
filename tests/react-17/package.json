@@ -3,6 +3,8 @@
   "version": "3.6.0",
   "private": true,
   "type": "module",
+  "author": "Optimajet",
+  "homepage": "https://formengine.io/",
   "scripts": {
     "start:viewer": "vite --port=15001 -c viewer.vite.config.ts",
     "start:designer": "vite --port=15002 -c designer.vite.config.ts",

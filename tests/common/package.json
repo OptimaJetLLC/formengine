@@ -2,6 +2,8 @@
   "name": "@react-form-builder/tests-common",
   "version": "3.6.0",
   "private": true,
+  "author": "Optimajet",
+  "homepage": "https://formengine.io/",
   "main": "lib/loader/util.cjs",
   "module": "index.ts",
   "type": "module",

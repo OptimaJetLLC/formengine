@@ -1498,6 +1498,11 @@ const typedocSidebar = { items: [
         "items": [
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/designer-bundle/functions/buildForm",
+            "label": "buildForm"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/designer-bundle/functions/renderFormBuilder",
             "label": "renderFormBuilder"
           },
@@ -1637,6 +1642,11 @@ const typedocSidebar = { items: [
         "type": "category",
         "label": "Functions",
         "items": [
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/viewer-bundle/functions/buildForm",
+            "label": "buildForm"
+          },
           {
             "type": "doc",
             "id": "api-reference/@react-form-builder/viewer-bundle/functions/renderFormViewer",

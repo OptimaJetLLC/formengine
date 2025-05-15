@@ -5,7 +5,9 @@
   "main": "src/index.ts",
   "type": "module",
   "description": "OptimaJet Form Builder Components - RSuite",
-  "license": "Contact sales@optimajet.com",
+  "author": "Optimajet",
+  "homepage": "https://formengine.io/",
+  "license": "MIT",
   "bugs": {
     "email": "support@optimajet.com"
   },
@@ -31,6 +33,7 @@
   },
   "files": [
     "dist/*",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ]
 }

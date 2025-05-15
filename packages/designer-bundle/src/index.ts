@@ -53,4 +53,4 @@ export function renderFormBuilder(elementId: string, props: Partial<FormBuilderP
   return renderFormBuilderTo(container, props)
 }
 
-export {ActionDefinition, Language} from '@react-form-builder/core'
+export {ActionDefinition, buildForm, Language} from '@react-form-builder/core'

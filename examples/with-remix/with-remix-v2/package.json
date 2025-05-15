@@ -1,6 +1,8 @@
 {
   "name": "formengine-with-remix-v2",
   "private": true,
+  "author": "Optimajet",
+  "homepage": "https://formengine.io/",
   "sideEffects": false,
   "type": "module",
   "scripts": {

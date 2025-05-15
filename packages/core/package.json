@@ -24,7 +24,8 @@
     "optimajet"
   ],
   "author": "Optimajet",
-  "license": "Contact sales@optimajet.com",
+  "homepage": "https://formengine.io/",
+  "license": "MIT",
   "bugs": {
     "email": "support@optimajet.com"
   },
@@ -69,6 +70,7 @@
     "dist/index.js.map",
     "dist/index.js",
     "dist/index.d.ts",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ]
 }

@@ -4,6 +4,7 @@
   "private": true,
   "main": "src/index.tsx",
   "type": "module",
+  "author": "Optimajet",
   "description": "OptimaJet Form Landing Application",
   "license": "Contact sales@optimajet.com",
   "bugs": {

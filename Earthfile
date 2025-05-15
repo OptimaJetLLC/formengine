@@ -362,6 +362,7 @@ dependencies:
   RUN mkdir documentation packages \
    documentation/website packages/apps packages/views \
    packages/apps/demo packages/apps/example-builder packages/apps/example-viewer \
+   packages/apps/landing \
    packages/core packages/designer packages/designer-bundle packages/indexed-db-form-storage \
    packages/viewer-bundle packages/views/antd packages/views/default packages/views/rsuite \
    packages/views/fast-qr \
@@ -375,6 +376,7 @@ dependencies:
   COPY packages/apps/example-builder/package.json packages/apps/example-builder
   COPY packages/apps/example-viewer/package.json packages/apps/example-viewer
   COPY packages/apps/example-viewer/package.json packages/apps/example-viewer
+  COPY packages/apps/landing/package.json packages/apps/landing
 
   COPY packages/core/package.json packages/core
   COPY packages/designer/package.json packages/designer

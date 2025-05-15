@@ -3,6 +3,8 @@
   "version": "3.6.0",
   "private": true,
   "type": "module",
+  "author": "Optimajet",
+  "homepage": "https://formengine.io/",
   "scripts": {
     "test": "vitest run",
     "test:module": "npm run test"

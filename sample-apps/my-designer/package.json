@@ -2,6 +2,8 @@
   "name": "my-designer",
   "version": "0.1.0",
   "private": true,
+  "author": "Optimajet",
+  "homepage": "https://formengine.io/",
   "dependencies": {
     "@react-form-builder/components-fast-qr": "file:react-form-builder-components-fast-qr-1.12.0.tgz",
     "@react-form-builder/components-rsuite": "file:react-form-builder-components-rsuite-1.12.0.tgz",
