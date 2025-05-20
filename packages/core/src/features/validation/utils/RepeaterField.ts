@@ -90,9 +90,9 @@ export class RepeaterField implements Field, IComponentDataProvider {
       autorun(
         () => {
           this.dataValidator = this.createDataValidator(
-            componentStore,
+            repeaterComponentData,
             this.valueType,
-            error => this.error = error,
+            error => this.error = error
           )
           untracked(() => {
             this.#oldDataValidator?.dispose()

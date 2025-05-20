@@ -91,7 +91,7 @@ export class SimpleField implements Field {
       autorun(
         () => {
           this.dataValidator = this.createDataValidator(
-            componentStore,
+            componentData,
             this.valueType,
             error => this.error = error
           )

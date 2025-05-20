@@ -1,5 +1,5 @@
 import type {ErrorMessageLocalizer, IStore, SchemaResolver, Setter} from '@react-form-builder/core'
-import {DataValidator} from '@react-form-builder/core'
+import {DataValidator, useComponentData} from '@react-form-builder/core'
 import {useEffect, useMemo} from 'react'
 
 /**
@@ -14,8 +14,9 @@ import {useEffect, useMemo} from 'react'
  */
 export function useDataValidator<T>(store: IStore, resolver: SchemaResolver<T>, args: T,
                                     setter: Setter<string | undefined>, localizer?: ErrorMessageLocalizer) {
-  const dataValidator = useMemo(() => DataValidator.create(store, resolver, args, setter, localizer),
-    [store, resolver, args, setter, localizer])
+  const componentData = useComponentData()
+  const dataValidator = useMemo(() => DataValidator.create(store, () => componentData.dataRoot, resolver, args, setter, localizer),
+    [store, resolver, args, setter, localizer, componentData])
 
   useEffect(() => () => dataValidator.dispose(), [dataValidator])
 

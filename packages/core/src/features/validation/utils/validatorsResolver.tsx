@@ -53,7 +53,7 @@ function parse(validationRules: FormViewerValidationRules, schema?: BoundValueSc
 function validatorsResolver(validationRules: FormViewerValidationRules, schema?: BoundValueSchema): ResolvedValidator {
   const validators = parse(validationRules, schema)
 
-  return async (value, store) => {
+  return async (value, store, getFormData) => {
     if (!validators) return
 
     const validationResults: ValidationResult[] = []
@@ -62,7 +62,7 @@ function validatorsResolver(validationRules: FormViewerValidationRules, schema?:
       params?.filter(param => typeof param.default !== 'undefined')
         .map(param => args[param.key] = param.default)
       Object.assign(args, settings.args)
-      const result = validator(value, store, args)
+      const result = validator(value, store, args, getFormData?.())
       const ruleResult = isPromise(result) ? await result : result
       if (ruleResult !== true) {
         validationResults.push({

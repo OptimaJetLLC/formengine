@@ -76,7 +76,7 @@ the Promise with the result of the validation.
 
 ### create()
 
-> `static` **create**\<`T`\>(`store`, `resolver`, `args`, `setter`, `localizer`?): [`DataValidator`](DataValidator.md)
+> `static` **create**\<`T`\>(`store`, `getFormData`, `resolver`, `args`, `setter`, `localizer`?): [`DataValidator`](DataValidator.md)
 
 Creates a DataValidator instance.
 
@@ -90,7 +90,11 @@ the validation function factory arguments.
 
 • **store**: [`IStore`](../interfaces/IStore.md)
 
-the form viewer settings
+the form viewer settings.
+
+• **getFormData**
+
+the function that returns a form data.
 
 • **resolver**: [`SchemaResolver`](../type-aliases/SchemaResolver.md)\<`T`\>
 

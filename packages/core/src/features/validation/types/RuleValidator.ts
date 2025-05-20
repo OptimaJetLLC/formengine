@@ -1,4 +1,5 @@
 import type {IStore} from '../../../stores/IStore'
+import type {IFormData} from '../../../utils/IFormData'
 
 /**
  * The result of validation of a single rule, true means validation was successful,
@@ -11,8 +12,10 @@ export type RuleValidatorResult = string | boolean
  * @param value the value.
  * @param store the form viewer settings
  * @param args the rule arguments.
+ * @param formData the form data.
  * @template T the value type.
  */
 export type RuleValidator<T = any> = (value: T,
                                       store: IStore,
-                                      args?: Record<string, unknown>) => RuleValidatorResult | Promise<RuleValidatorResult>
+                                      args?: Record<string, unknown>,
+                                      formData?: IFormData) => RuleValidatorResult | Promise<RuleValidatorResult>

@@ -1,0 +1,87 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "input1",
+        "type": "RsInput",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "input1"
+          }
+        ]
+      },
+      {
+        "key": "repeater1",
+        "type": "Repeater",
+        "props": {
+          "value": {
+            "value": []
+          }
+        },
+        "children": [
+          {
+            "key": "repeaterInput1",
+            "type": "RsInput",
+            "props": {},
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "repeaterInput1"
+              }
+            ]
+          },
+          {
+            "key": "repeaterInput2",
+            "type": "RsInput",
+            "props": {},
+            "schema": {
+              "validations": [
+                {
+                  "key": "testValidator",
+                  "type": "custom"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "key": "rsButton1",
+        "type": "RsButton",
+        "props": {
+          "children": {
+            "value": "+"
+          }
+        },
+        "events": {
+          "onClick": [
+            {
+              "name": "addRow",
+              "type": "common",
+              "args": {
+                "dataKey": "repeater1"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

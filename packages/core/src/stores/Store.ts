@@ -334,10 +334,10 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
     }
 
     const {model, store: componentStore} = componentData
-    const createDataValidator: DataValidatorFactoryFn = (componentStore: ComponentStore,
+    const createDataValidator: DataValidatorFactoryFn = (componentData: ComponentData,
                                                          valueType: SchemaType,
                                                          onError: Setter<string | undefined>) => {
-      return this.createDataValidator(componentData, componentStore, valueType, onError)
+      return this.createDataValidator(componentData, valueType, onError)
     }
 
     if (model.kind === 'repeater') {
@@ -482,21 +482,21 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
   /**
    * Creates a data validator for the field.
    * @param componentData the component data.
-   * @param componentStore the component settings.
    * @param valueType the field's data type.
    * @param onError the callback function called when the validation error text is set.
    * @returns the data validator.
    */
-  private createDataValidator(componentData: ComponentData, componentStore: ComponentStore, valueType: SchemaType,
+  private createDataValidator(componentData: ComponentData, valueType: SchemaType,
                               onError: Setter<string | undefined>) {
     const validationRules = this.getValidationRules(valueType)
     const localizer: ErrorMessageLocalizer = (validationResults) => {
-      return this.localizeErrorMessages(componentData.dataRoot, componentStore, validationResults)
+      return this.localizeErrorMessages(componentData.dataRoot, componentData.store, validationResults)
     }
     return DataValidator.create(
       this,
+      () => componentData.dataRoot,
       typedValidatorsResolver(validationRules),
-      componentStore.schema,
+      componentData.store.schema,
       onError,
       localizer
     )

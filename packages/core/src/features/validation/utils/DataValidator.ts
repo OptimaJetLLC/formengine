@@ -1,6 +1,7 @@
 import {debounceTime, map, Subject, switchMap} from 'rxjs'
 import type {IStore} from '../../../stores/IStore'
 import type {Setter} from '../../../types'
+import type {IFormData} from '../../../utils/IFormData'
 import type {ValidationResult} from '../types/ValidationResult'
 
 /**
@@ -14,9 +15,10 @@ export type ErrorMessageLocalizer = (value: ValidationResult[] | undefined) => s
  * The function that validates a value and returns the validation result.
  * @param value the validated value.
  * @param store the form viewer settings.
+ * @param getFormData the function that returns a form data.
  * @returns the Promise with the results of the validation.
  */
-export type ResolvedValidator = (value: any, store: IStore) => Promise<ValidationResult[] | undefined>
+export type ResolvedValidator = (value: any, store: IStore, getFormData?: () => IFormData) => Promise<ValidationResult[] | undefined>
 
 /**
  * The validation function factory.
@@ -51,6 +53,7 @@ export class DataValidator {
 
   private constructor(
     store: IStore,
+    getFormData: () => IFormData,
     validator: ResolvedValidator,
     setter: Setter<string | undefined>,
     errorMessageLocalizer?: ErrorMessageLocalizer
@@ -63,7 +66,7 @@ export class DataValidator {
       return errorMessageLocalizer?.([messages[0]]) ?? getDefaultErrorMessage(messages[0])
     }
 
-    this.#validator = (value: any) => validator(value, store)
+    this.#validator = (value: any) => validator(value, store, getFormData)
     this.#stream = this.#subject
       .pipe(
         debounceTime(200),
@@ -78,7 +81,8 @@ export class DataValidator {
 
   /**
    * Creates a DataValidator instance.
-   * @param store the form viewer settings
+   * @param store the form viewer settings.
+   * @param getFormData the function that returns a form data.
    * @param resolver the validation function factory.
    * @param args the validation function factory arguments.
    * @param setter the callback function called to set a validation error.
@@ -86,9 +90,9 @@ export class DataValidator {
    * @template T the validation function factory arguments.
    * @returns the DataValidator instance.
    */
-  static create = <T>(store: IStore, resolver: SchemaResolver<T>, args: T,
+  static create = <T>(store: IStore, getFormData: () => IFormData, resolver: SchemaResolver<T>, args: T,
                       setter: Setter<string | undefined>, localizer?: ErrorMessageLocalizer) => {
-    return new DataValidator(store, resolver(args), setter, localizer)
+    return new DataValidator(store, getFormData, resolver(args), setter, localizer)
   }
 
   /**
