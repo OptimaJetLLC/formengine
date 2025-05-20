@@ -168,6 +168,8 @@ export const App = () => {
     }}
   />
 }
+
+export default App
 ```
 
 Modify the contents of the `src/App.tsx` file as in the example above to finalize the application.
