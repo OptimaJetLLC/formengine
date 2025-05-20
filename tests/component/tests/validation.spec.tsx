@@ -1,7 +1,8 @@
 import {view} from '@react-form-builder/components-rsuite'
 import {FormViewer, FormViewerProps} from '@react-form-builder/core'
-import {render, waitFor} from '@testing-library/react'
+import {fireEvent, render, waitFor} from '@testing-library/react'
 import {asyncAct} from './asyncAct'
+import formDataInValidation from './forms/form-data-in-validation.json'
 import loginForm from './forms/login-form.json'
 import validationLocalizationChildForm from './forms/validation-localization-child-form.json'
 import validationLocalizationParentForm from './forms/validation-localization-parent-form.json'
@@ -147,5 +148,26 @@ describe('Validation', () => {
     const expectedDeErrors = JSON.stringify(deErrors)
     await waitFor(() => expect(JSON.stringify(returnedDeErrors)).toEqual(expectedDeErrors))
     expect(JSON.stringify(formData.errors)).toEqual(expectedDeErrors)
+  })
+
+  it('should provide the current form data in the code validation function', async () => {
+    const getForm = () => JSON.stringify(formDataInValidation)
+    const viewerRef: FormViewerProps['viewerRef'] = {current: null}
+
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+
+    const formData = viewerRef.current?.formData
+    if (!formData) throw new Error('FormData is not defined')
+
+    await asyncAct(async () => await formData.validate())
+    expect(JSON.stringify(formData.errors)).toEqual('{}')
+
+    const checkbox = await findByTestId('checkbox')
+    fireEvent.click(checkbox)
+    expect(formData.data.checkbox).toEqual(false)
+
+    await asyncAct(async () => await formData.validate())
+    const expectedErrors = JSON.stringify({input: 'Validation failed'})
+    expect(JSON.stringify(formData.errors)).toEqual(expectedErrors)
   })
 })

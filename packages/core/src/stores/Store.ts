@@ -18,7 +18,7 @@ import {DataValidator} from '../features/validation'
 import type {ValidationResult} from '../features/validation/types/ValidationResult'
 import {calculateProperty} from '../features/validation/utils/calculateProperty'
 import type {CalculatePropertyFn} from '../features/validation/utils/CalculatePropertyFn'
-import {ZodValidationRules} from '../features/validation/utils/consts'
+import {codeValidationRule, ZodValidationRules} from '../features/validation/utils/consts'
 import {dataPart} from '../features/validation/utils/dataPart'
 import type {ErrorMessageLocalizer} from '../features/validation/utils/DataValidator'
 import {getDefaultErrorMessage} from '../features/validation/utils/DataValidator'
@@ -323,7 +323,10 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
   getValidationRules(type: SchemaType): FormViewerValidationRules {
     return {
       custom: this.formViewerPropsStore.validators?.[type],
-      internal: ZodValidationRules[type]
+      internal: {
+        ...ZodValidationRules[type],
+        code: codeValidationRule
+      }
     }
   }
 

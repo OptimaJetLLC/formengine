@@ -1,0 +1,49 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "checkbox",
+        "type": "RsToggle",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "checkbox"
+          }
+        ]
+      },
+      {
+        "key": "input",
+        "type": "RsInput",
+        "props": {},
+        "schema": {
+          "validations": [
+            {
+              "key": "code",
+              "args": {
+                "code": "return form.data.checkbox === true",
+                "message": "Validation failed"
+              }
+            }
+          ],
+          "autoValidate": true
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

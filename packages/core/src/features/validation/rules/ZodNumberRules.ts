@@ -1,5 +1,4 @@
 import {z} from 'zod'
-import {AsyncFunction} from '../../../utils/AsyncFunction'
 import type {ValidationRuleSet} from '../types/ValidationRuleSet'
 import {ruleBuilder} from '../utils/ruleBuilder'
 import {zodAnyToValidator} from './zodAnyToValidator'
@@ -31,12 +30,5 @@ export const ZodNumberRules: ValidationRuleSet = {
     .withValidatorFactory(({message, value}) => zodAnyToValidator(scheme.multipleOf(value, message))),
 
   finite: ruleBuilder()
-    .withValidatorFactory(({message}) => zodAnyToValidator(scheme.finite(message))),
-
-  code: ruleBuilder()
-    .withParameter('code', 'number', true, undefined, 'code')
-    .withValidatorFactory(({code, message}) => {
-      const checker = AsyncFunction('value', code) as (value: number) => Promise<boolean>
-      return zodAnyToValidator(scheme.refine(checker, message))
-    })
+    .withValidatorFactory(({message}) => zodAnyToValidator(scheme.finite(message)))
 }

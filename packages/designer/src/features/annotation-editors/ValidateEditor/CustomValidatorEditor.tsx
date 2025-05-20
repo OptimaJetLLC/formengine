@@ -7,9 +7,10 @@ import type {AnnotationEditorProps} from '../AnnotationEditorProps'
 
 const getFunctionSignature = (type?: string) => `/**
  * @param {${type}} value the validated value.
+ * @param {IFormData} form the form.
  * @return {boolean} the validation result.
  */
-async (value) => {`
+async (value, form) => {`
 
 const RawCustomValidatorEditor = (props: AnnotationEditorProps) => {
   const {annotation, componentData, value, onChange} = props
