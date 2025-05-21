@@ -1,3 +1,4 @@
+import type {ComponentProperty} from '../../../stores/ComponentStore'
 import type {ValidatorType} from './ValidatorType'
 
 /**
@@ -19,4 +20,9 @@ export type ValidationRuleSettings = {
    * Arguments of the validation rule.
    */
   args?: Record<string, any>
+
+  /**
+   * The property that determines when validation needs to be performed.
+   */
+  validateWhen?: ComponentProperty
 }

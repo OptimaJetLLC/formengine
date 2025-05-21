@@ -9,7 +9,7 @@ import {RemoveButton} from '../../../components/Buttons'
 import {Columns, Rows} from '../../../components/Containers'
 import {useTranslationPart} from '../../../localization/hooks'
 import {PropertyBlock} from '../../../ui/RightPanel/PropertiesEditor/components/Properties'
-import {convertValidationRuleParametersToAnnotations} from '../../../validation/utils/parameterConverter'
+import {convertValidationRuleParametersToAnnotations, validateWhen} from '../../../validation/utils/parameterConverter'
 import {HintedIconButton} from '../../Hinted'
 
 const SRuleName = styled.span`
@@ -79,6 +79,8 @@ const RawValidationRuleEditor = ({rule, onRemove}: ValidationRuleEditorProps) =>
         <PropertyBlock annotations={annotations} propertyBlockType={getValidatorPropertyBlockType(rule.key)} context={rule.args ?? {}}
                        initContext={initValidatorArgs}/>
       }
+      <PropertyBlock annotations={[validateWhen]} propertyBlockType={getValidatorPropertyBlockType('validateWhen')}
+                     context={rule}/>
     </Rows>
   )
 }

@@ -1,0 +1,129 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "checkbox",
+        "type": "RsCheckbox",
+        "props": {
+          "children": {
+            "value": "Turn on validation"
+          },
+          "checked": {
+            "value": false
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "checkbox"
+          }
+        ]
+      },
+      {
+        "key": "repeater1",
+        "type": "Repeater",
+        "props": {
+          "value": {
+            "value": []
+          }
+        },
+        "children": [
+          {
+            "key": "checkboxInRepeater",
+            "type": "RsCheckbox",
+            "props": {
+              "children": {
+                "value": "Turn on validation in repeater"
+              },
+              "checked": {
+                "value": false
+              }
+            }
+          },
+          {
+            "key": "email",
+            "type": "RsInput",
+            "props": {
+              "label": {
+                "value": "Email"
+              }
+            },
+            "schema": {
+              "validations": [
+                {
+                  "key": "required",
+                  "args": {
+                    "message": "Email is required"
+                  },
+                  "validateWhen": {
+                    "value": "form.rootData.checkbox"
+                  }
+                }
+              ],
+              "autoValidate": false
+            }
+          },
+          {
+            "key": "address",
+            "type": "RsInput",
+            "props": {
+              "label": {
+                "value": "Address"
+              }
+            },
+            "schema": {
+              "validations": [
+                {
+                  "key": "required",
+                  "args": {
+                    "message": "Address is required"
+                  },
+                  "validateWhen": {
+                    "computeType": "function",
+                    "fnSource": "return form.data.checkboxInRepeater"
+                  }
+                }
+              ],
+              "autoValidate": false
+            }
+          }
+        ]
+      },
+      {
+        "key": "rsButton1",
+        "type": "RsButton",
+        "props": {
+          "children": {
+            "value": "+"
+          }
+        },
+        "events": {
+          "onClick": [
+            {
+              "name": "addRow",
+              "type": "common",
+              "args": {
+                "dataKey": "repeater1"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

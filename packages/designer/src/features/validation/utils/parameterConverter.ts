@@ -1,5 +1,13 @@
 import type {ValidationRuleParameter} from '@react-form-builder/core'
-import {createAnnotation} from '@react-form-builder/core'
+import {createAnnotation, createProperty} from '@react-form-builder/core'
+
+/**
+ * The annotation that defines the validateWhen parameter.
+ */
+export const validateWhen = createProperty('string')
+  .typed('boolean')
+  .calculable(true)
+  .build('validateWhen')
 
 /**
  * Converts a ValidationRuleParameter to an annotation.

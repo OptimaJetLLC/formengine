@@ -277,6 +277,10 @@
     "showWeekNumbers": {
       "name": "Show week numbers",
       "hint": "Whether to show week numbers"
+    },
+    "validateWhen": {
+      "name": "Validate when",
+      "hint": "The condition that determines whether to run this validation"
     }
   },
   "RsDatePicker": {

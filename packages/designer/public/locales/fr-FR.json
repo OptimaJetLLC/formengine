@@ -417,6 +417,10 @@
       "hint": "Le texte affiché à l'état non coché",
       "name": "Texte décoché"
     },
+    "validateWhen": {
+      "hint": "La condition qui détermine s'il faut exécuter cette validation",
+      "name": "Valider quand"
+    },
     "value": {
       "hint": "Valeur (contrôlée)",
       "name": "Valeur"

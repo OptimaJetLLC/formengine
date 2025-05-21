@@ -1,0 +1,80 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "checkbox",
+        "type": "RsCheckbox",
+        "props": {
+          "children": {
+            "value": "Turn on validation"
+          },
+          "checked": {
+            "value": true
+          }
+        }
+      },
+      {
+        "key": "email",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Email"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "Email is required"
+              },
+              "validateWhen": {
+                "value": "form.data.checkbox"
+              }
+            }
+          ],
+          "autoValidate": false
+        }
+      },
+      {
+        "key": "address",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Address"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "Address is required"
+              },
+              "validateWhen": {
+                "computeType": "function",
+                "fnSource": "    return form.data.checkbox"
+              }
+            }
+          ],
+          "autoValidate": false
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

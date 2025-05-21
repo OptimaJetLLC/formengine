@@ -417,6 +417,10 @@
       "hint": "Il testo che viene visualizzato nello stato deselezionato",
       "name": "Testo non controllato"
     },
+    "validateWhen": {
+      "hint": "La condizione che determina se eseguire questa convalida",
+      "name": "Convalida quando"
+    },
     "value": {
       "hint": "Valore (controllato)",
       "name": "Valore"

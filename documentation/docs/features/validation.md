@@ -52,6 +52,53 @@ We can switch to form view mode and start entering data to see how the validator
 
 ![Validation 04](/assets/validation/validation-04.png)
 
+### Conditional validation
+
+If you want the [built-in](#built-in-validators) or [custom](#user-defined-validators) validation to be executed only when certain
+conditions are met, then you can use the _Validate when_ property.
+
+:::info
+Automatic validation is triggered only when the value of its field is changed. For example, if the form data has been changed, but the field
+with conditional validation has not changed, then automatic conditional validation for the field will not be triggered.
+:::
+
+![Validation 08](/assets/validation/validation-08.png)
+
+It is located in the list of parameters of each validation rule and allows you to set the condition in two ways:
+
+* Simplified, through the input field, where you can specify a one-line expression, for example `form.data.check1 === true`.
+* Through the code editor, which can be opened by clicking on the pen icon to the left of the _Validate when_ label.
+
+![Validation 09](/assets/validation/validation-09.png)
+
+#### Example
+
+1. Create a simple form with three controls: `Checkbox`, `Input` and `Button`.
+2. Set the `check1` key to the checkbox.
+
+   ![Validation 15](/assets/validation/validation-15.png)
+
+3. For the button, add the action `validate`.
+
+   ![Validation 10](/assets/validation/validation-10.png)
+
+4. For the input field, add the validation `Required`.
+
+   ![Validation 11](/assets/validation/validation-11.png)
+
+5. Set the _Validate when_ property for the `Required` validator to `form.data.check1`.
+
+   ![Validation 12](/assets/validation/validation-12.png)
+
+6. Now, go to the `Preview` mode and press the checkbox to the off position.
+7. Click the validation button. You'll notice that no validation is triggered, despite the email field being empty.
+
+   ![Validation 13](/assets/validation/validation-13.png)
+
+8. If you check the checkbox and then click on the validation button, validation will be triggered.
+
+   ![Validation 14](/assets/validation/validation-14.png)
+
 ### Code validator
 
 This type of validation is defined for data of type string. To use this validator - select "Code" from the drop-down menu.

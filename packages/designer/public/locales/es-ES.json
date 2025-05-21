@@ -417,6 +417,10 @@
       "hint": "El texto que se muestra en el estado desmarcado",
       "name": "Texto sin marcar"
     },
+    "validateWhen": {
+      "hint": "La condición que determina si se ejecuta esta validación",
+      "name": "Validar cuando"
+    },
     "value": {
       "hint": "Valor (controlado)",
       "name": "Valor"

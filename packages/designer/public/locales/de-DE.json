@@ -417,6 +417,10 @@
       "hint": "Der Text, der im ungeprüften Zustand angezeigt wird",
       "name": "Ungeprüfter Text"
     },
+    "validateWhen": {
+      "hint": "Die Bedingung, die bestimmt, ob diese Validierung ausgeführt werden soll",
+      "name": "Validieren wann"
+    },
     "value": {
       "hint": "Wert (kontrolliert)",
       "name": "Wert"

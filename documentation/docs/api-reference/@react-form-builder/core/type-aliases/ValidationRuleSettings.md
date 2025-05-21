@@ -23,3 +23,9 @@ The unique key of the validation rule. The key is unique within the value type.
 > `optional` **type**: [`ValidatorType`](ValidatorType.md)
 
 The type of validator.
+
+### validateWhen?
+
+> `optional` **validateWhen**: [`ComponentProperty`](../interfaces/ComponentProperty.md)
+
+The property that determines when validation needs to be performed.
