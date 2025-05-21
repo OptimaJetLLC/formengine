@@ -22,6 +22,16 @@ if (!isBrowserMode()) {
   })
 }
 
+// fixes click on svg elements, fireEvent also affected
+// @ts-ignore
+if (!SVGElement.prototype.click) {
+  // @ts-ignore
+  SVGElement.prototype.click = function () {
+    const event = new MouseEvent('click', {bubbles: true})
+    this.dispatchEvent(event)
+  }
+}
+
 beforeAll(() => {
   vi.spyOn(console, 'error').mockImplementation((msg, b, c) => {
     console.log('ERROR:', msg)

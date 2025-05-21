@@ -95,7 +95,7 @@ const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
             <Icon onClick={toggleExpand} as={expanded ? ArrowDownLineIcon : ArrowRightLineIcon} style={{cursor: 'pointer'}}/>
           }
         </SIndent>
-        <div>{componentData.key}</div>
+        <div data-testid={componentData.key}>{componentData.key}</div>
         <label>{componentData.model.name}</label>
         {hovered && <Toolbar compact/>}
       </SNodeItem>

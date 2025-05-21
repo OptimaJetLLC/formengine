@@ -21,7 +21,6 @@ import {
   screenModel,
   treeForEach
 } from '@react-form-builder/core'
-import {assign, cloneDeep} from 'lodash-es'
 import type {IReactionDisposer} from 'mobx'
 import {action, makeAutoObservable, observable, reaction} from 'mobx'
 import {debounceTime, distinctUntilChanged, Subject} from 'rxjs'
@@ -719,7 +718,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       throw new Error('Can\'t add component')
     }
 
-    const clone = assign(new ComponentStore('', ''), cloneDeep(source.store))
+    const clone = Object.assign(new ComponentStore('', ''), JSON.parse(JSON.stringify(source.store)))
 
     const componentData = this.viewer.createComponentData(clone)
 

@@ -47,10 +47,9 @@ const AddButton = ({slot, slotCondition}: { slot?: string, slotCondition?: strin
       return builderStore.canAddComponent(componentData, target, 'inner', slot)
     })
   }
-  return <>
-    <IconButton onClick={handleClick} icon={<PlusIcon/>} color="green"
-                appearance={'primary'} circle size={'xs'}/>
-  </>
+
+  return <IconButton onClick={handleClick} icon={<PlusIcon/>} color="green" data-testid="add-button" appearance={'primary'} circle
+                     size={'xs'}/>
 }
 
 /**

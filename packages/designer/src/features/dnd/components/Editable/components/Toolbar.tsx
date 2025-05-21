@@ -104,7 +104,7 @@ const RawToolbar = ({compact}: ToolbarProps) => {
     <AddButton/>
     {!data.isRoot && <>
       <Hinted hint={t('cloneComponent')} placement={'autoVertical'}>
-        <FaIcon onClick={onClone} icon={faClone as unknown as IconDefinition} className={'clone-button'}/>
+        <FaIcon data-testid="tree-clone-button" onClick={onClone} icon={faClone as unknown as IconDefinition} className={'clone-button'}/>
       </Hinted>
       {!store.presetComponentOptions.disableCreation && <PresetComponentButton/>}
       <Hinted hint={t('removeComponent')} placement={'autoVertical'}>
