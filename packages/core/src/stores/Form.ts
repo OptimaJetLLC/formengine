@@ -84,7 +84,7 @@ export class Form {
    * Initializes form fields.
    */
   initFields() {
-    this.componentTree.allFields.forEach(field => field.init())
+    this.componentTree.fields.forEach(field => field.init())
   }
 
   /**

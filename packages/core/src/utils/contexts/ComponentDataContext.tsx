@@ -6,7 +6,6 @@ import type {FormValidator, FormValidators} from '../../features/form-viewer/For
 import {getFluentData} from '../../features/localization/getFluentData'
 import type {Field} from '../../features/validation'
 import type {ValidationMessages} from '../../features/validation/types/ValidationResult'
-import type {ComponentField} from '../../features/validation/utils/Field'
 import type {ComponentStore} from '../../stores/ComponentStore'
 import {dataKey} from '../../stores/ComponentStore'
 import {defaultComponentState} from '../../stores/IComponentState'
@@ -84,8 +83,8 @@ export interface IDataRootProvider {
  */
 export const initFormFields = (form: ComponentData) => {
   const result: Record<string, unknown> = {}
-  form.allComponentFields.forEach(({dataKey}) => {
-    result[dataKey] = form.data[dataKey] ?? ''
+  form.fields.forEach((field, key) => {
+    result[key] = form.data[key] ?? ''
   })
   return result
 }
@@ -279,34 +278,7 @@ export class ComponentData implements IFormData {
    * @returns all the fields in the tree as a map. Starts from this node.
    */
   get fields(): Map<string, Field> {
-    const map = this.collectAllFields(new Map<ComponentData, Field>())
-    const result = new Map<string, Field>()
-    map.forEach((field, componentData) => {
-      result.set(dataKey(componentData.store), field)
-    })
-    return result
-  }
-
-  /**
-   * @returns an array of all component fields, including non-unique data keys.
-   */
-  get allComponentFields(): ComponentField[] {
-    const map = this.collectAllFields(new Map<ComponentData, Field>())
-    const result: ComponentField[] = []
-    map.forEach((field, componentData) => {
-      result.push({
-        dataKey: dataKey(componentData.store),
-        field
-      })
-    })
-    return result
-  }
-
-  /**
-   * @returns an array of all fields, including non-unique data keys.
-   */
-  get allFields(): Field[] {
-    return this.allComponentFields.map(item => item.field)
+    return this.collectAllFields(new Map<string, Field>())
   }
 
   /**
@@ -324,12 +296,12 @@ export class ComponentData implements IFormData {
    */
   get data() {
     const result: Record<string, unknown> = {}
-    for (const {dataKey, field} of this.allComponentFields) {
+    for (const [key, field] of this.fields) {
       if (field.storeDataInParentForm) {
         const fieldValue: Record<string, any> = field.value || {}
         Object.keys(fieldValue).forEach(i => result[i] = fieldValue[i])
       } else {
-        result[dataKey] = field.value
+        result[key] = field.value
       }
     }
     return result
@@ -365,15 +337,15 @@ export class ComponentData implements IFormData {
    */
   get errors() {
     const result: Record<string, unknown> = {}
-    for (const {dataKey, field} of this.allComponentFields) {
-      if (field.error) result[dataKey] = field.error
+    for (const [key, field] of this.fields) {
+      if (field.error) result[key] = field.error
       const errors = field.errors
       if (errors) {
         if (!Array.isArray(errors)) {
           if (field.storeDataInParentForm) Object.keys(errors).forEach(i => result[i] = errors[i])
-          if (!field.storeDataInParentForm && Object.keys(errors).length > 0) result[dataKey] = errors
+          if (!field.storeDataInParentForm && Object.keys(errors).length > 0) result[key] = errors
         } else {
-          result[dataKey] = errors
+          result[key] = errors
         }
       }
     }
@@ -391,7 +363,7 @@ export class ComponentData implements IFormData {
    * @inheritDoc
    */
   setAllErrors(message?: string) {
-    this.allFields.forEach(f => f.error = message)
+    this.fields.forEach(f => f.error = message)
   }
 
   /**
@@ -408,7 +380,7 @@ export class ComponentData implements IFormData {
   async getValidationResult() {
     let messages = undefined
 
-    const getFieldMessages = async ({dataKey, field}: ComponentField) => {
+    const getFieldMessages = async ([key, field]: [key: string, field: Field]) => {
       const result = await field.getValidationResult()
       if (isEmpty(result)) return
 
@@ -416,13 +388,14 @@ export class ComponentData implements IFormData {
       let source = messages
       if (!field.storeDataInParentForm) {
         const initialValue = isArray(result) ? [] : {}
-        messages[dataKey] ??= initialValue
-        source = messages[dataKey]
+        messages[key] ??= initialValue
+        source = messages[key]
       }
       merge(source, result)
     }
 
-    await Promise.allSettled(this.allComponentFields.map(getFieldMessages))
+    const entries = [...this.fields.entries()]
+    await Promise.allSettled(entries.map(getFieldMessages))
 
     if (!this.#formValidators) return messages
 
@@ -449,14 +422,14 @@ export class ComponentData implements IFormData {
    * @inheritDoc
    */
   reset() {
-    this.allFields.forEach(f => f.reset())
+    this.fields.forEach(f => f.reset())
   }
 
   /**
    * @inheritDoc
    */
   clear() {
-    this.allFields.forEach(f => f.clear())
+    this.fields.forEach(f => f.clear())
   }
 
   /**
@@ -494,10 +467,10 @@ export class ComponentData implements IFormData {
   private async validateForm() {
     this.validating = true
     try {
-      await Promise.allSettled([...this.allFields].map(f => f.validate()))
+      await Promise.allSettled([...this.fields.values()].map(f => f.validate()))
       if (!this.#formValidators) return
 
-      const fields = this.allComponentFields
+      const fields = this.fields
       const customValidatorPromises = this.#formValidators.map(v => v(this.data))
       const results = await Promise.allSettled(customValidatorPromises)
 
@@ -509,8 +482,8 @@ export class ComponentData implements IFormData {
         return result.value
       }).forEach(resultValue => {
         if (!resultValue) return
-        fields.forEach(({field, dataKey}) => {
-          if (resultValue[dataKey]) return field.setError(resultValue[dataKey])
+        fields.forEach((field, key) => {
+          if (resultValue[key]) return field.setError(resultValue[key])
           if (field.storeDataInParentForm) return field.setError(resultValue)
         })
       })
@@ -567,8 +540,8 @@ export class ComponentData implements IFormData {
     return acc
   }
 
-  private collectAllFields(acc: Map<ComponentData, Field>) {
-    if (this.field) acc.set(this, this.field)
+  private collectAllFields(acc: Map<string, Field>) {
+    if (this.field) acc.set(dataKey(this.store), this.field)
     // we must skip all children in the repeater field
     if (this.field?.fieldType === 'repeater') return acc
     for (let i = 0; i < this.children.length; i++) {
