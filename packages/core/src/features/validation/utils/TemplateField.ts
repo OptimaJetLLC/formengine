@@ -95,8 +95,8 @@ export class TemplateField implements Field {
     if (typeof value !== 'object') throw new Error(`Expected 'object' type, got '${typeof value}'`)
 
     const data: Record<string, any> = value
-    this.form.fields.forEach((field, key) => {
-      const val = data[key]
+    this.form.allComponentFields.forEach(({field, dataKey}) => {
+      const val = data[dataKey]
       // prevent uncontrolled value
       typeof val === 'undefined' ? field.reset() : field.setValue(val)
     })
@@ -120,7 +120,7 @@ export class TemplateField implements Field {
    * @inheritDoc
    */
   init() {
-    this.form.fields.forEach(field => field.init())
+    this.form.allFields.forEach(field => field.init())
   }
 
   /**
@@ -144,8 +144,8 @@ export class TemplateField implements Field {
     if (!error) return
     if (typeof error !== 'object') throw new Error(`Expected 'object' type, got '${typeof error}'`)
     const errorObject: Record<string, any> = error
-    this.form.fields.forEach((field, key) => {
-      if (errorObject[key]) return field.setError(errorObject[key])
+    this.form.allComponentFields.forEach(({field, dataKey}) => {
+      if (errorObject[dataKey]) return field.setError(errorObject[dataKey])
       if (field.storeDataInParentForm) return field.setError(errorObject)
     })
   }
