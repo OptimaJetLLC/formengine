@@ -22,6 +22,15 @@ function generateId(prefix: string) {
   return `${prefix}_${++counter}`
 }
 
+function assignNewKey(item: ComponentStore, existingKeys: Set<string>) {
+  let count = 1
+  const baseKey = camelCase(item.type)
+  const generateKey = () => `${baseKey}${count}`
+  while (existingKeys.has(generateKey())) count++
+  item.key = generateKey()
+  return item.key
+}
+
 /**
  * Represents the event argument for the event when the component key changes.
  */
@@ -263,16 +272,36 @@ export class ComponentData implements IFormData {
       keysList.push(key)
     })
     treeForEach(this as ComponentData, item => {
-      let count = 1
-      const baseKey = camelCase(item.store.type)
-      const generateKey = () => `${baseKey}${count}`
-      while (keysList.includes(generateKey())) count++
-      const newKey = generateKey()
+      const newKey = assignNewKey(item.store, new Set(keysList))
       keysMap.set(newKey, item.key)
-      item.store.key = newKey
       keysList.push(newKey)
     })
     return keysMap
+  }
+
+  /**
+   * Assigns unique keys to the items in the tree.
+   */
+  unifyTree() {
+    const existingKeysMap = new Map<string, Set<ComponentStore>>()
+    const root = this as ComponentData
+
+    treeForEach(root, ({key, store}: ComponentData) => {
+      const set = existingKeysMap.get(key) ?? new Set<ComponentStore>()
+      set.add(store)
+      existingKeysMap.set(key, set)
+    })
+
+    const existingKeys = new Set<string>(existingKeysMap.keys())
+
+    existingKeysMap.forEach((set, key) => {
+      if (set.size <= 1) return
+      const items = Array.from(set).slice(1)
+      items.forEach(item => {
+        const newKey = assignNewKey(item, existingKeys)
+        existingKeys.add(newKey)
+      })
+    })
   }
 
   /**

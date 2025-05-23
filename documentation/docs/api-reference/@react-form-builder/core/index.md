@@ -48,6 +48,7 @@
 
 - [BaseCompilationResult](interfaces/BaseCompilationResult.md)
 - [BuilderComponent](interfaces/BuilderComponent.md)
+- [ComponentField](interfaces/ComponentField.md)
 - [ComponentMetadataEventListeners](interfaces/ComponentMetadataEventListeners.md)
 - [ComponentProperty](interfaces/ComponentProperty.md)
 - [ComponentTreeProps](interfaces/ComponentTreeProps.md)

@@ -135,11 +135,11 @@ If true, then validation is in progress.
 
 #### Get Signature
 
-> **get** **allComponentFields**(): `ComponentField`[]
+> **get** **allComponentFields**(): [`ComponentField`](../interfaces/ComponentField.md)[]
 
 ##### Returns
 
-`ComponentField`[]
+[`ComponentField`](../interfaces/ComponentField.md)[]
 
 an array of all component fields, including non-unique data keys.
 
@@ -595,6 +595,18 @@ the root of the tree to unify keys. Defaults to the root of this tree.
 `Map`\<`string`, `string`\>
 
 the map of new keys to old keys.
+
+***
+
+### unifyTree()
+
+> **unifyTree**(): `void`
+
+Assigns unique keys to the items in the tree.
+
+#### Returns
+
+`void`
 
 ***
 

@@ -436,6 +436,8 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
     this.form.tooltipType = persistedForm.tooltipType
     this.form.errorType = persistedForm.errorType
 
+    // here we need to make the keys unique, because no reactions will be triggered during the action
+    this.form.componentTree.unifyTree()
     // here we initialize the fields after the form is created, since the calculated field values are depends on 'this.form'
     this.form.initFields()
     oldForm.dispose()

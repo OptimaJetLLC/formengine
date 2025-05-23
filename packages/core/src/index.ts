@@ -119,7 +119,7 @@ export type {
   ComponentPropsLocalization
 } from './stores/LocalizationStore'
 export type {FormViewerValidationRules} from './stores/FormViewerValidationRules'
-export type {Field} from './features/validation'
+export type {Field, ComponentField} from './features/validation/utils/Field'
 export {ComponentDataEvents, initFormFields} from './utils/contexts/ComponentDataContext'
 export type {ValidationRuleSet} from './features/validation/types/ValidationRuleSet'
 export type {ValidationRule} from './features/validation/types/ValidationRule'

@@ -223,6 +223,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/interfaces/ComponentField",
+            "label": "ComponentField"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/interfaces/ComponentMetadataEventListeners",
             "label": "ComponentMetadataEventListeners"
           },
