@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/viewer-bundle",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "private": false,
   "main": "src/index.ts",
   "type": "module",
@@ -22,8 +22,8 @@
     "create-archive": "node ./config/pack"
   },
   "dependencies": {
-    "@react-form-builder/components-rsuite": "^4.0.0",
-    "@react-form-builder/core": "^4.0.0",
+    "@react-form-builder/components-rsuite": "^4.1.0",
+    "@react-form-builder/core": "^4.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0"

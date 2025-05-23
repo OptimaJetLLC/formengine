@@ -110,11 +110,12 @@ Then click the "Edit code" button to edit the validation function code. Paste th
 ```javascript
 /**
  * @param {string} value the validated value.
+ * @param {IFormData} form the form.
  * @return {boolean} the validation result.
  */
-async (value) => {
+async (value, form) => {
   // highlight-next-line
-  return value !== 'test'
+  return value !== 'test' && value !== form.data.lastName
 }
 ```
 
