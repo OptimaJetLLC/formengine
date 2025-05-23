@@ -9,7 +9,11 @@ function createComponentDataProxy(componentData: ComponentData) {
       return target.data[property]
     },
     set(target, property: string, value): boolean {
-      target.fields.get(property)?.setValue(value)
+      target.allComponentFields
+        .filter(({dataKey}) => dataKey === property)
+        .forEach(({field}) => {
+          field.setValue(value)
+        })
       return true
     }
   })

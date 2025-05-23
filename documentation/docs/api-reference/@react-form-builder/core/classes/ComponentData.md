@@ -131,6 +131,34 @@ If true, then validation is in progress.
 
 ## Accessors
 
+### allComponentFields
+
+#### Get Signature
+
+> **get** **allComponentFields**(): `ComponentField`[]
+
+##### Returns
+
+`ComponentField`[]
+
+an array of all component fields, including non-unique data keys.
+
+***
+
+### allFields
+
+#### Get Signature
+
+> **get** **allFields**(): [`Field`](../interfaces/Field.md)[]
+
+##### Returns
+
+[`Field`](../interfaces/Field.md)[]
+
+an array of all fields, including non-unique data keys.
+
+***
+
 ### data
 
 #### Get Signature

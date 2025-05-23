@@ -1,6 +1,8 @@
 import {view} from '@react-form-builder/components-rsuite'
 import {ActionEventArgs, FormViewer, FormViewerProps} from '@react-form-builder/core'
 import {fireEvent, render, waitFor} from '@testing-library/react'
+import {expect} from 'vitest'
+import changeDataForm from './forms/action-event-args-change-data.form.json'
 import form from './forms/action-event-args-main-form.json'
 import parentTemplate from './forms/action-event-args-parent-template.json'
 import template from './forms/action-event-args-template.json'
@@ -336,4 +338,19 @@ describe('ActionEventArgs data tests', function () {
       }
       expect(JSON.stringify(sender.rootData)).toBe(JSON.stringify(actualActionEventArgs.rootData))
     })
+
+  it('The Set data method should change the data in the corresponding fields', async function () {
+    const getForm = () => JSON.stringify(changeDataForm)
+    const initialValue = 'Claude'
+    const {findByTestId} = render(<FormViewer getForm={getForm} view={view} initialData={{name: initialValue}}/>)
+
+    expect(await findByTestId('input1')).toHaveValue(initialValue)
+    expect(await findByTestId('input2')).toHaveValue(initialValue)
+
+    fireEvent.click(await findByTestId('changeDataButton'))
+
+    const expectedValue = 'Claude changed'
+    expect(await findByTestId('input1')).toHaveValue(expectedValue)
+    expect(await findByTestId('input2')).toHaveValue(expectedValue)
+  })
 })

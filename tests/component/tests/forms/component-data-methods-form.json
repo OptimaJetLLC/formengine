@@ -1,0 +1,146 @@
+{
+  "version": "1",
+  "errorType": "CustomErrorMessage",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsInput1",
+        "type": "RsInput",
+        "dataKey": "name",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "input1"
+          }
+        ]
+      },
+      {
+        "key": "rsInput2",
+        "type": "RsInput",
+        "dataKey": "name",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "input2"
+          }
+        ]
+      },
+      {
+        "key": "rsInput3",
+        "type": "RsInput",
+        "props": {
+          "value": {
+            "value": "Karl"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "input3"
+          }
+        ]
+      },
+      {
+        "key": "repeaterOne",
+        "type": "Repeater",
+        "props": {
+          "value": {
+            "value": [
+              {
+                "name": "number one"
+              },
+              {
+                "name": "number two"
+              }
+            ]
+          }
+        },
+        "children": [
+          {
+            "key": "rsInput4",
+            "dataKey": "name",
+            "type": "RsInput",
+            "props": {},
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "input4"
+              }
+            ]
+          },
+          {
+            "key": "rsInput5",
+            "dataKey": "name",
+            "type": "RsInput",
+            "props": {},
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "input5"
+              }
+            ]
+          },
+          {
+            "key": "rsInput6",
+            "type": "RsInput",
+            "props": {
+              "value": {
+                "value": "Karl"
+              }
+            },
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "input6"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "templateComponentDataClearChildForm1",
+        "type": "Template:component-data-methods-child-form",
+        "props": {}
+      },
+      {
+        "key": "button",
+        "type": "RsButton",
+        "props": {
+          "appearance": {
+            "value": "primary"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "actionButton"
+          }
+        ],
+        "events": {
+          "onClick": [
+            {
+              "name": "buttonClickAction",
+              "type": "custom"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

@@ -226,7 +226,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
   reset() {
     this.setValue(this.initialValue)
     this.componentData.forEach(cd => {
-      cd.fields.forEach(field => field.reset())
+      cd.allFields.forEach(field => field.reset())
     })
     this.clearError()
   }
@@ -253,7 +253,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
   clearError() {
     this.error = undefined
     this.componentData.forEach(cd => {
-      cd.fields.forEach(field => field.setError(undefined))
+      cd.allFields.forEach(field => field.setError(undefined))
     })
   }
 
@@ -284,10 +284,10 @@ export class RepeaterField implements Field, IComponentDataProvider {
 
     this.error = error[this.errorFieldName] as string
 
-    const itemErrors = error[dataKey(this.componentStore)] as Array<Record<string, unknown>>
+    const itemErrors = error as unknown as Array<Record<string, unknown>>
     this.componentData.forEach((cd, index) => {
       const item = itemErrors?.[index]
-      cd.fields.forEach((field, name) => field.setError(item?.[name]))
+      cd.allComponentFields.forEach(({field, dataKey}) => field.setError(item?.[dataKey]))
     })
   }
 
@@ -390,7 +390,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
 
   private initFields(components: ComponentData[]) {
     components.map(cd => {
-      cd.fields.forEach(field => field.init())
+      cd.allFields.forEach(field => field.init())
     })
   }
 

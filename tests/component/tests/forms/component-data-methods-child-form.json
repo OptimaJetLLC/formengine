@@ -1,0 +1,49 @@
+{
+  "version": "1",
+  "errorType": "CustomErrorMessage",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "one",
+        "type": "RsInput",
+        "dataKey": "one",
+        "props": {}
+      },
+      {
+        "key": "two",
+        "type": "RsInput",
+        "dataKey": "one",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "two"
+          }
+        ]
+      },
+      {
+        "key": "three",
+        "type": "RsInput",
+        "props": {
+          "value": {
+            "value": "three"
+          }
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

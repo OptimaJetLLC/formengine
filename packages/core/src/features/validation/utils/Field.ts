@@ -1,4 +1,4 @@
-import type {ValidationMessages} from "../types/ValidationResult";
+import type {ValidationMessages} from '../types/ValidationResult'
 import type {FieldType} from './FieldType'
 
 /**
@@ -89,4 +89,18 @@ export interface Field {
    * Initializes the value of the field.
    */
   init: () => void
+}
+
+/**
+ * Describes the field of the component.
+ */
+export interface ComponentField {
+  /**
+   * The component data key.
+   */
+  dataKey: string
+  /**
+   * The component field.
+   */
+  field: Field
 }
