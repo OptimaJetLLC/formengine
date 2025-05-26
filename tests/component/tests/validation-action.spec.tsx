@@ -150,6 +150,9 @@ describe('Validation action', () => {
 
     fireEvent.click(await findByTestId('validateButton'))
 
+    // waiting for the first asynchronous action
+    await waitFor(() => expect(formViewer.formData.hasErrors).toEqual(false))
+    // waiting for the second asynchronous action
     await waitFor(() => expect(testActionExecuteCount).toEqual(1))
 
     expect(formViewer.formData.hasErrors).toEqual(false)
