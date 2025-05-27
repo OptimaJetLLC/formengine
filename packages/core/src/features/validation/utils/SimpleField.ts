@@ -1,6 +1,6 @@
 import {autorun, makeAutoObservable, observable, reaction, untracked} from 'mobx'
 import type {ComponentStore} from '../../../stores/ComponentStore'
-import {dataKey, isComputedProperty} from '../../../stores/ComponentStore'
+import {isComputedProperty} from '../../../stores/ComponentStore'
 import type {ComponentData} from '../../../utils/contexts/ComponentDataContext'
 import {needRender} from '../../../utils/needRender'
 import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
@@ -9,13 +9,12 @@ import type {SchemaType} from '../types/SchemaType'
 import type {ValidationMessages} from '../types/ValidationResult'
 import {autoConvertField} from './autoConvertField'
 import type {CalculatePropertyFn} from './CalculatePropertyFn'
-import {dataPart} from './dataPart'
 import type {DataValidator} from './DataValidator'
 import type {DataValidatorFactoryFn} from './DataValidatorFactoryFn'
 import type {Disposer} from './Disposer'
 import type {Field} from './Field'
 import type {FieldType} from './FieldType'
-import type {IDataContext} from './IDataContext'
+import type {GetInitialDataFn} from './GetInitialDataFn'
 
 /**
  * Field with form data, contains only one value. **Internal use only.**
@@ -57,14 +56,14 @@ export class SimpleField implements Field {
    * @param componentData the component data.
    * @param calculateValue the function for calculating the value of the field.
    * @param createDataValidator the function to create a data validator.
-   * @param dataContext the data context for this field.
+   * @param getInitialData the function to get initial data for the field.
    * @param deferFieldCalculation if true, then the calculated field must be explicitly initialized.
    */
   constructor(
     readonly componentData: ComponentData,
     readonly calculateValue: CalculatePropertyFn,
     readonly createDataValidator: DataValidatorFactoryFn,
-    readonly dataContext: IDataContext,
+    readonly getInitialData: GetInitialDataFn,
     public deferFieldCalculation: boolean,
   ) {
     const {model, store: componentStore} = componentData
@@ -81,7 +80,6 @@ export class SimpleField implements Field {
     makeAutoObservable(this, {
       model: false,
       dataValidator: observable.ref,
-      dataContext: observable.ref
     }, {name: nameObservable(className, {key: componentStore.key}), autoBind: true})
 
     // first, we initialize the value
@@ -131,12 +129,16 @@ export class SimpleField implements Field {
    */
   init() {
     this.deferFieldCalculation = false
+
     if (this.isComputed) {
       // we set the value asynchronously to prevent loops in MobX
       setTimeout(() => {
         this.value = this.computedValue
       }, 0)
+      return
     }
+
+    this.value = this.initialDataValue
   }
 
   /**
@@ -251,8 +253,7 @@ export class SimpleField implements Field {
    * @returns the initial data value for the field.
    */
   get initialDataValue() {
-    const initialData = dataPart(this.dataContext.initialData, dataKey(this.componentStore))
-    return initialData ?? this.initialValue
+    return this.getInitialData() ?? this.initialValue
   }
 
   /**

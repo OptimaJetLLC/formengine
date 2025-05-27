@@ -278,11 +278,6 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
-            "id": "api-reference/@react-form-builder/core/interfaces/IDataContext",
-            "label": "IDataContext"
-          },
-          {
-            "type": "doc",
             "id": "api-reference/@react-form-builder/core/interfaces/IDataRootProvider",
             "label": "IDataRootProvider"
           },
@@ -586,6 +581,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/Func",
             "label": "Func"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/GetInitialDataFn",
+            "label": "GetInitialDataFn"
           },
           {
             "type": "doc",

@@ -159,6 +159,11 @@ export class ComponentData implements IFormData {
   componentState = defaultComponentState
 
   /**
+   * The function for getting initial data.
+   */
+  getInitialData?: () => unknown
+
+  /**
    * Constructor.
    * @param componentStore the component settings.
    * @param model the component metadata for the form viewer.
@@ -226,6 +231,13 @@ export class ComponentData implements IFormData {
    */
   get dataRoot(): ComponentData {
     return this.dataRootProvider?.dataRoot ?? this.parent?.dataRoot ?? this
+  }
+
+  /**
+   * @returns the initial data.
+   */
+  get initialData() {
+    return this.dataRoot.getInitialData?.()
   }
 
   /**

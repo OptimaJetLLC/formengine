@@ -12,7 +12,7 @@ The form viewer settings. **Internal use only.**
 
 ### new Store()
 
-> **new Store**(`formViewerPropsStore`, `componentStateFactory`, `parentStore`?, `parentComponentStore`?, `parentStoreContext`?): [`Store`](Store.md)
+> **new Store**(`formViewerPropsStore`, `componentStateFactory`, `parentStore`?, `getInitialData`?): [`Store`](Store.md)
 
 Creates form viewer settings.
 
@@ -30,13 +30,9 @@ the factory for creating component states.
 
 the form viewer settings, used in templates.
 
-• **parentComponentStore?**: [`ComponentStore`](ComponentStore.md)
+• **getInitialData?**: [`GetInitialDataFn`](../type-aliases/GetInitialDataFn.md)
 
-the parent component settings.
-
-• **parentStoreContext?**: [`IDataContext`](../interfaces/IDataContext.md)
-
-the parent store data context.
+the function to get initial data for the Store.
 
 #### Returns
 
@@ -49,14 +45,6 @@ the parent store data context.
 > `readonly` **componentStateFactory**: [`ComponentStateFactory`](../type-aliases/ComponentStateFactory.md)
 
 the factory for creating component states.
-
-***
-
-### dataContext
-
-> **dataContext**: [`IDataContext`](../interfaces/IDataContext.md)
-
-The context for working with data. **Internal use only**.
 
 ***
 
@@ -88,11 +76,11 @@ the form viewer store settings.
 
 ***
 
-### parentComponentStore?
+### getInitialData?
 
-> `readonly` `optional` **parentComponentStore**: [`ComponentStore`](ComponentStore.md)
+> `readonly` `optional` **getInitialData**: [`GetInitialDataFn`](../type-aliases/GetInitialDataFn.md)
 
-the parent component settings.
+the function to get initial data for the Store.
 
 ***
 
@@ -101,14 +89,6 @@ the parent component settings.
 > `readonly` `optional` **parentStore**: [`Store`](Store.md)
 
 the form viewer settings, used in templates.
-
-***
-
-### parentStoreContext?
-
-> `readonly` `optional` **parentStoreContext**: [`IDataContext`](../interfaces/IDataContext.md)
-
-the parent store data context.
 
 ***
 
@@ -260,7 +240,7 @@ Clears the form in Form Viewer.
 
 ### createComponentData()
 
-> **createComponentData**(`componentStore`, `deferFieldCalculation`, `dataContext`?): [`ComponentData`](ComponentData.md)
+> **createComponentData**(`componentStore`, `deferFieldCalculation`): [`ComponentData`](ComponentData.md)
 
 Creates the element for the component tree. **Internal use only.**
 
@@ -273,10 +253,6 @@ the component settings.
 • **deferFieldCalculation**: `boolean` = `false`
 
 if true, then the calculated field must be explicitly initialized.
-
-• **dataContext?**: [`IDataContext`](../interfaces/IDataContext.md)
-
-the context for working with data.
 
 #### Returns
 

@@ -8,14 +8,13 @@ import type {Model} from '../../define'
 import type {SchemaType} from '../types/SchemaType'
 import type {ValidationMessages} from '../types/ValidationResult'
 import type {CalculatePropertyFn} from './CalculatePropertyFn'
-import {dataPart} from './dataPart'
 import type {DataValidator} from './DataValidator'
 import type {DataValidatorFactoryFn} from './DataValidatorFactoryFn'
 import type {Disposer} from './Disposer'
 import type {Field} from './Field'
 import type {FieldType} from './FieldType'
+import type {GetInitialDataFn} from './GetInitialDataFn'
 import type {IComponentDataFactory} from './IComponentDataFactory'
-import type {IDataContext} from './IDataContext'
 
 /**
  * Field with repeater data. **Internal use only.**
@@ -55,7 +54,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
    * @param repeaterComponentData the component data.
    * @param calculateValue the function for calculating the value of the field.
    * @param createDataValidator the function to create a data validator.
-   * @param dataContext the context for working with data.
+   * @param getInitialData the function to get initial data for the field.
    * @param componentDataFactory the factory for creating ComponentData instances.
    * @param deferFieldCalculation if true, then the calculated field must be explicitly initialized.
    */
@@ -63,7 +62,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
     readonly repeaterComponentData: ComponentData,
     readonly calculateValue: CalculatePropertyFn,
     readonly createDataValidator: DataValidatorFactoryFn,
-    readonly dataContext: IDataContext,
+    readonly getInitialData: GetInitialDataFn,
     readonly componentDataFactory: IComponentDataFactory,
     public deferFieldCalculation: boolean,
   ) {
@@ -130,6 +129,17 @@ export class RepeaterField implements Field, IComponentDataProvider {
    */
   init() {
     this.deferFieldCalculation = false
+
+    if (this.isComputed) {
+      // we set the value asynchronously to prevent loops in MobX
+      setTimeout(() => {
+        this.initialData = this.computedValue
+        this.initFields(this.componentData)
+      }, 0)
+      return
+    }
+
+    this.initialData = this.initialDataValue
     this.initFields(this.componentData)
   }
 
@@ -338,19 +348,20 @@ export class RepeaterField implements Field, IComponentDataProvider {
           }
         }
 
-        // then we create a data context
-        // eslint-disable-next-line @typescript-eslint/no-use-before-define
-        const repeaterFormContext = new RepeaterFormContext(this, i)
+        contextData.getInitialData = () => {
+          const initialData = this.initialData
+          if (Array.isArray(initialData)) return initialData[i]
+        }
 
         // now create the root element of the inner form, it is necessary for correct work of itemRenderWhen property
         const rootStore = new ComponentStore(`${repeaterKey}-root-item-${i}`, 'Fragment')
-        const rootData = this.componentDataFactory.createComponentData(rootStore, false, repeaterFormContext)
+        const rootData = this.componentDataFactory.createComponentData(rootStore, false)
         rootData.setParent(contextData)
 
         // finally create a repeater element
         const cs = ComponentStore.createFromObject(originalStore)
         cs.key = `${repeaterKey}-item-${i}`
-        const repeaterItem = this.componentDataFactory.createComponentData(cs, true, repeaterFormContext)
+        const repeaterItem = this.componentDataFactory.createComponentData(cs, true)
         repeaterItem.setParent(rootData)
 
         result.push(contextData)
@@ -366,8 +377,7 @@ export class RepeaterField implements Field, IComponentDataProvider {
    * @returns the initial data value for the field.
    */
   get initialDataValue() {
-    const initialData = dataPart(this.dataContext.initialData, dataKey(this.componentStore))
-    return initialData ?? this.initialValue
+    return this.getInitialData() ?? this.initialValue
   }
 
   /**
@@ -402,29 +412,5 @@ export class RepeaterField implements Field, IComponentDataProvider {
     this.#oldComponentDatas.forEach(componentData => {
       componentData.dispose()
     })
-  }
-}
-
-/**
- * The context for the RepeaterField. **Internal use only.**
- */
-class RepeaterFormContext implements IDataContext {
-
-  /**
-   * Creates the context for the RepeaterField.
-   * @param repeaterField the RepeaterField instance.
-   * @param index the index of the current item in the repeater.
-   */
-  constructor(readonly repeaterField: RepeaterField,
-              readonly index: number) {
-  }
-
-  /**
-   * @inheritDoc
-   */
-  get initialData() {
-    const initialData = this.repeaterField.initialData
-    if (Array.isArray(initialData)) return initialData[this.index]
-    return undefined
   }
 }

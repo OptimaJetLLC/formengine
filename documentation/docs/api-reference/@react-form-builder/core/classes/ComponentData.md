@@ -70,6 +70,18 @@ The field with the form data.
 
 ***
 
+### getInitialData()?
+
+> `optional` **getInitialData**: () => `unknown`
+
+The function for getting initial data.
+
+#### Returns
+
+`unknown`
+
+***
+
 ### id
 
 > `readonly` **id**: `string`
@@ -271,6 +283,20 @@ true if the form contains errors, otherwise false.
 #### Implementation of
 
 [`IFormData`](../interfaces/IFormData.md).[`hasErrors`](../interfaces/IFormData.md#haserrors)
+
+***
+
+### initialData
+
+#### Get Signature
+
+> **get** **initialData**(): `unknown`
+
+##### Returns
+
+`unknown`
+
+the initial data.
 
 ***
 

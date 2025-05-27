@@ -1,5 +1,5 @@
 import {assign} from 'lodash-es'
-import {makeObservable, observable} from 'mobx'
+import {makeObservable, observable, runInAction} from 'mobx'
 import type {Model} from '../features/define'
 import type {ActionData, ActionDefinition, ActionType} from '../features/event'
 import {createActionValuesFromObject} from '../features/event'
@@ -23,15 +23,15 @@ import {dataPart} from '../features/validation/utils/dataPart'
 import type {ErrorMessageLocalizer} from '../features/validation/utils/DataValidator'
 import {getDefaultErrorMessage} from '../features/validation/utils/DataValidator'
 import type {DataValidatorFactoryFn} from '../features/validation/utils/DataValidatorFactoryFn'
+import type {GetInitialDataFn} from '../features/validation/utils/GetInitialDataFn'
 import type {IComponentDataFactory} from '../features/validation/utils/IComponentDataFactory'
-import type {IDataContext} from '../features/validation/utils/IDataContext'
 import {RepeaterField} from '../features/validation/utils/RepeaterField'
 import {SimpleField} from '../features/validation/utils/SimpleField'
 import {TemplateField} from '../features/validation/utils/TemplateField'
 import {isStoreDataInParentForm} from '../features/validation/utils/util'
 import {typedValidatorsResolver} from '../features/validation/utils/validatorsResolver'
 import type {Setter, ViewMode} from '../types'
-import {isNumber, isPromise, isRecord, isString} from '../utils'
+import {isNumber, isPromise, isString} from '../utils'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import type {IFormData} from '../utils/IFormData'
 import {nameObservable} from '../utils/observableNaming'
@@ -72,26 +72,6 @@ function reduceTree<U extends object, T, K extends keyof U>(tree: Tree<U, K>,
 }
 
 /**
- * The root data context for the form viewer.
- */
-class StoreFormContext implements IDataContext {
-
-  /**
-   * Create the data context for the store.
-   * @param store the store.
-   */
-  constructor(readonly store: Store) {
-  }
-
-  /**
-   * @inheritDoc
-   */
-  get initialData() {
-    return this.store.initialDataSlice
-  }
-}
-
-/**
  * The component state factory that calculates the properties of the form viewer component.
  * @param data the data needed to display the component.
  * @param store the form viewer settings.
@@ -125,11 +105,6 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
   #templateMap = new Map<string, Model>()
 
   /**
-   * The context for working with data. **Internal use only**.
-   */
-  dataContext: IDataContext
-
-  /**
    * The loading form error.
    */
   formLoadError?: string
@@ -139,18 +114,15 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
    * @param formViewerPropsStore the form viewer store settings.
    * @param componentStateFactory the factory for creating component states.
    * @param parentStore the form viewer settings, used in templates.
-   * @param parentComponentStore the parent component settings.
-   * @param parentStoreContext the parent store data context.
+   * @param getInitialData the function to get initial data for the Store.
    */
   constructor(public formViewerPropsStore: FormViewerPropsStore,
               public readonly componentStateFactory: ComponentStateFactory,
               public readonly parentStore?: Store,
-              public readonly parentComponentStore?: ComponentStore,
-              public readonly parentStoreContext?: IDataContext) {
-    const componentTree = this.createComponentData(new ComponentStore(screenModel.name, screenModel.type))
+              public readonly getInitialData?: GetInitialDataFn) {
+    const componentTree = this.createDataRoot()
     const localization = new LocalizationStore()
     this.form = new Form(componentTree, localization, {}, [], globalDefaultLanguage)
-    this.dataContext = new StoreFormContext(this)
 
     makeObservable(this, {
       form: observable,
@@ -158,8 +130,6 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
       selectedLanguage: true,
       clear: true,
       parentStore: observable.ref,
-      parentComponentStore: observable.ref,
-      parentStoreContext: observable.ref,
       initialDataSlice: true,
       formLoadError: true
     }, {name: nameObservable(`ViewerStore`)})
@@ -208,7 +178,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
    */
   clear() {
     const oldForm = this.form
-    const componentTree = this.createComponentData(new ComponentStore(screenModel.name, screenModel.type))
+    const componentTree = this.createDataRoot()
     const localization = new LocalizationStore()
     this.form = new Form(componentTree, localization, {}, oldForm.languages, oldForm.defaultLanguage)
     oldForm.dispose()
@@ -225,11 +195,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
    * @inheritDoc
    */
   get initialDataSlice(): unknown {
-    if (!this.parentStoreContext || !this.parentComponentStore) return this.formViewerPropsStore.initialData
-    const dataSlice = this.parentStoreContext.initialData
-    if (isStoreDataInParentForm(this.parentComponentStore)) return dataSlice
-    const projection = dataPart(dataSlice, dataKey(this.parentComponentStore))
-    return (Array.isArray(projection) || isRecord(projection)) ? projection : undefined
+    return this.parentStore ? this.getInitialData?.() : this.formViewerPropsStore.initialData
   }
 
   /**
@@ -304,13 +270,11 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
   /**
    * @inheritDoc
    */
-  createComponentData(componentStore: ComponentStore, deferFieldCalculation = false,
-                      dataContext?: IDataContext): ComponentData {
-    dataContext ??= this.dataContext
+  createComponentData(componentStore: ComponentStore, deferFieldCalculation = false): ComponentData {
     const model = this.getModel(componentStore.type)
-    const factory = (cs: ComponentStore) => this.createComponentData(cs, deferFieldCalculation, dataContext)
+    const factory = (cs: ComponentStore) => this.createComponentData(cs, deferFieldCalculation)
     const componentData = new ComponentData(componentStore, model, factory, this.formViewerPropsStore.formValidators)
-    componentData.field = this.createField(componentData, dataContext, deferFieldCalculation)
+    componentData.field = this.createField(componentData, deferFieldCalculation)
     componentData.componentState = this.componentStateFactory(componentData, this)
     return componentData
   }
@@ -330,30 +294,38 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
     }
   }
 
-  private createField(componentData: ComponentData, dataContext: IDataContext,
-                      deferFieldCalculation: boolean) {
+  private createField(componentData: ComponentData, deferFieldCalculation: boolean) {
+    const {model, store: componentStore} = componentData
+    if (!model.valued) return
+
     const calculateValue: CalculatePropertyFn = (component: ComponentStore, key: string) => {
       return this.calculateProperty(componentData, component, key)
     }
 
-    const {model, store: componentStore} = componentData
     const createDataValidator: DataValidatorFactoryFn = (componentData: ComponentData,
                                                          valueType: SchemaType,
                                                          onError: Setter<string | undefined>) => {
       return this.createDataValidator(componentData, valueType, onError)
     }
 
-    if (model.kind === 'repeater') {
-      return new RepeaterField(componentData, calculateValue, createDataValidator, dataContext, this, deferFieldCalculation)
+    const getInitialData: GetInitialDataFn = () => {
+      return dataPart(componentData.initialData, dataKey(componentStore))
     }
 
-    if (!model.valued) return
+    if (model.kind === 'repeater') {
+      return new RepeaterField(componentData, calculateValue, createDataValidator, getInitialData, this, deferFieldCalculation)
+    }
 
     if (!isTemplateType(model.type)) {
-      return new SimpleField(componentData, calculateValue, createDataValidator, dataContext, deferFieldCalculation)
+      return new SimpleField(componentData, calculateValue, createDataValidator, getInitialData, deferFieldCalculation)
     }
 
-    const childStore = new Store(this.formViewerPropsStore.clone(), this.componentStateFactory, this, componentStore, dataContext)
+    const templateGetInitialData: GetInitialDataFn = () => {
+      if (isStoreDataInParentForm(componentStore)) return componentData.initialData
+      return dataPart(componentData.initialData, dataKey(componentStore))
+    }
+
+    const childStore = new Store(this.formViewerPropsStore.clone(), this.componentStateFactory, this, templateGetInitialData)
     return new TemplateField(componentStore, childStore)
   }
 
@@ -420,21 +392,25 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
         ` the form as version '${PersistedFormVersion.version1}'.`)
     }
 
-    const componentStore = ComponentStore.createFromObject(persistedForm.form)
+    runInAction(() => {
+      const componentStore: ComponentStore = ComponentStore.createFromObject(persistedForm.form)
 
-    const componentData = this.createComponentData(componentStore, true)
-    const localization = new LocalizationStore(assign({}, persistedForm.localization))
+      const componentData = this.createComponentData(componentStore, true)
+      componentData.getInitialData = () => this.initialDataSlice
 
-    const languages = persistedForm.languages?.map(Language.clone) ?? []
-    const defaultLanguage = languages.find(l => l.fullCode === persistedForm.defaultLanguage) ?? globalDefaultLanguage
+      const localization = new LocalizationStore(assign({}, persistedForm.localization))
 
-    const actions = createActionValuesFromObject(persistedForm.actions)
+      const languages = persistedForm.languages?.map(Language.clone) ?? []
+      const defaultLanguage = languages.find(l => l.fullCode === persistedForm.defaultLanguage) ?? globalDefaultLanguage
 
-    this.form = new Form(componentData, localization, actions, languages, defaultLanguage)
+      const actions = createActionValuesFromObject(persistedForm.actions)
 
-    this.form.errorProps = persistedForm.errorProps ?? {}
-    this.form.tooltipType = persistedForm.tooltipType
-    this.form.errorType = persistedForm.errorType
+      this.form = new Form(componentData, localization, actions, languages, defaultLanguage)
+
+      this.form.errorProps = persistedForm.errorProps ?? {}
+      this.form.tooltipType = persistedForm.tooltipType
+      this.form.errorType = persistedForm.errorType
+    })
 
     // here we need to make the keys unique, because no reactions will be triggered during the action
     this.form.componentTree.unifyTree()
@@ -505,5 +481,12 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
       onError,
       localizer
     )
+  }
+
+  private createDataRoot() {
+    const componentStore = new ComponentStore(screenModel.name, screenModel.type)
+    const componentData = this.createComponentData(componentStore)
+    componentData.getInitialData = () => this.initialDataSlice
+    return componentData
   }
 }
