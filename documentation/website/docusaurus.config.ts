@@ -193,7 +193,6 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
   plugins: [
-    require.resolve('custom-webpack-plugin'),
     require.resolve('docusaurus-plugin-image-zoom'),
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),

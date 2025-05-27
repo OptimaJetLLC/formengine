@@ -63,11 +63,17 @@ In the end, we will get a simple web form:
 
 Let's create an application and install dependencies.
 
+import Tracking from '@site/src/components/Tracking';
+
+<Tracking eventData='{"code_block_click": "landing_install_viewer_npm_code_block"}'>
+
 ```bash
 npx create-vite formbuilder-app --template react-ts
 cd formbuilder-app
 npm install @react-form-builder/core @react-form-builder/components-rsuite
 ```
+
+</Tracking>
 
 So now we have a Vite application. Let's add a form to the application.
 
@@ -77,6 +83,8 @@ Each form is just JSON with a description of the form. The library takes care of
 
 Each form element is a component described by a unique key and type, and a set of properties. They can also describe how the component
 should be validated and what CSS styles should be applied. You can create form's JSON using the builder:
+
+<Tracking eventData='{"code_block_click": "landing_form_code_block"}'>
 
 ```typescript {2,6,11,17,22}
 const simpleForm = buildForm({errorType: 'RsErrorMessage'})
@@ -110,6 +118,8 @@ const simpleForm = buildForm({errorType: 'RsErrorMessage'})
   .json()
 ```
 
+</Tracking>
+
 ### Add the form to the page
 
 The component that displays forms is called `FormViewer`. It is necessary to pass to this component the `getForm` function to get the JSON
@@ -118,6 +128,8 @@ of the form and the `view` property, this is the set of components for rendering
 
 You can also pass your custom actions to the `actions` property to submit the form to the backend. In this example, we will simply call the
 `alert` function.
+
+<Tracking eventData='{"code_block_click": "landing_viewer_app_code_block"}'>
 
 ```tsx title='src/App.tsx' {1-2,31,38-47} src/App.tsx showLineNumbers
 import {viewWithCss} from '@react-form-builder/components-rsuite'
@@ -172,15 +184,21 @@ export const App = () => {
 export default App
 ```
 
+</Tracking>
+
 Modify the contents of the `src/App.tsx` file as in the example above to finalize the application.
 
 ### Run the application
 
 Now we can run the application. In the terminal, run:
 
+<Tracking eventData='{"code_block_click": "landing_run_vite_app_code_block"}'>
+
 ```bash
 npm run dev
 ```
+
+</Tracking>
 
 Open your browser and go to [http://localhost:5173](http://localhost:5173) (your port may be different). You should see the form we created.
 
@@ -199,18 +217,18 @@ If you fill out the form and click _Submit_, you will see an alert with the form
 Creating forms using JSON may not be as convenient as creating them visually in the Form Designer. Let's run the Form Designer locally. To
 do this, it is enough to install the package with the designer and connect components to it.
 
-<div onClick={() => {
-    dataLayer?.push({ event: "button_click", action: "install_designer_npm" });
-  }}>
+<Tracking eventData='{"code_block_click": "landing_install_designer_npm_code_block"}'>
 
 ```bash
 npm install @react-form-builder/designer @react-form-builder/components-rsuite
 ```
 
-</div>
+</Tracking>
 
 In the simplest configuration, the `FormBuilder` component has one mandatory `view` property, a visual description of the components. We
 will use the ready-made React Suite, you can use your own components.
+
+<Tracking eventData='{"code_block_click": "landing_designer_app_code_block"}'>
 
 ```tsx title='src/Designer.tsx'
 import {builderViewWithCss} from '@react-form-builder/components-rsuite'
@@ -223,6 +241,8 @@ export const Designer = () => {
   return <FormBuilder view={builderViewWithCss}/>
 }
 ```
+
+</Tracking>
 
 When you launch the Designer, you'll see roughly the following:
 
