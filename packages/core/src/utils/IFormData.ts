@@ -26,11 +26,6 @@ export interface IFormData {
   get errors(): Record<string, unknown>
 
   /**
-   * Sets the form error messages.
-   */
-  set errors(errors: Record<string, unknown>)
-
-  /**
    * true if the form contains errors, otherwise false.
    */
   get hasErrors(): boolean

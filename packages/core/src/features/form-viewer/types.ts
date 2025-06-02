@@ -48,11 +48,6 @@ export interface FormViewerProps {
   initialData?: Record<string, unknown>
 
   /**
-   * The form validation errors.
-   */
-  errors?: Record<string, unknown>
-
-  /**
    * If true, the component will not be wrapped by the error display component.
    * **Attention! Don't use it! Unstable API.**
    */

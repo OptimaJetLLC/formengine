@@ -30,18 +30,6 @@ function useAutoViewMode() {
   }, [props.viewMode, store])
 }
 
-function useFormErrors() {
-  const store = useStore()
-  const props = useViewerProps()
-
-  useEffect(() => {
-    if (props.errors) {
-      store.form.componentTree.errors = props.errors
-      return
-    }
-  }, [props.errors, store])
-}
-
 /**
  * The React component of the form viewer, which displays the form itself with its components.
  * @returns the React element.
@@ -53,7 +41,6 @@ const RawViewer = () => {
   const data = useMemo(() => [store.form.componentTree], [store.form.componentTree])
 
   useAutoViewMode()
-  useFormErrors()
 
   useEffect(() => store.loadForm(props.getForm, props.formName), [store, props.getForm, props.formName])
 

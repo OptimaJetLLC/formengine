@@ -424,16 +424,6 @@ export class ComponentData implements IFormData {
   /**
    * @inheritDoc
    */
-  set errors(errors) {
-    this.allComponentFields.forEach(item => {
-      const error = errors[item.dataKey]
-      item.field.setError(error)
-    })
-  }
-
-  /**
-   * @inheritDoc
-   */
   get hasErrors() {
     return Object.keys(this.errors).length > 0
   }
