@@ -1,11 +1,15 @@
 import {z} from 'zod'
 import type {ValidationRuleSet} from '../types/ValidationRuleSet'
 import {ruleBuilder} from '../utils/ruleBuilder'
+import {required} from '../utils/util'
 import {zodAnyToValidator} from './zodAnyToValidator'
 
 const scheme = z.array(z.any())
 
 export const ZodArrayRules: ValidationRuleSet = {
+  required: ruleBuilder()
+    .withValidatorFactory(({message}) => zodAnyToValidator(scheme.nonempty(required(message)))),
+
   nonEmpty: ruleBuilder()
     .withValidatorFactory(({message}) => zodAnyToValidator(scheme.nonempty(message))),
 

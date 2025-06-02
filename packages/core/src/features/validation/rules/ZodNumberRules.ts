@@ -1,11 +1,16 @@
+import {isNull, isUndefined} from 'lodash-es'
 import {z} from 'zod'
 import type {ValidationRuleSet} from '../types/ValidationRuleSet'
 import {ruleBuilder} from '../utils/ruleBuilder'
+import {required} from '../utils/util'
 import {zodAnyToValidator} from './zodAnyToValidator'
 
 const scheme = z.number()
 
 export const ZodNumberRules: ValidationRuleSet = {
+  required: ruleBuilder()
+    .withValidatorFactory(({message}) => zodAnyToValidator(scheme.refine(val => !isUndefined(val) && !isNull(val), required(message)))),
+
   min: ruleBuilder()
     .withParameter('limit', 'number', true)
     .withValidatorFactory(({limit, message}) => zodAnyToValidator(scheme.min(limit, message))),

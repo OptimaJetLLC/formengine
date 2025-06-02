@@ -9,3 +9,10 @@ export function isStoreDataInParentForm(componentStore: ComponentStore) {
   const val = componentStore.props['storeDataInParentForm']?.value
   return typeof val === 'undefined' ? true : val
 }
+
+/**
+ * Returns 'Required' or message if it is passed.
+ * @param message the message
+ * @returns 'Required' or message if it is passed.
+ */
+export const required = (message: string) => message ?? 'Required'
