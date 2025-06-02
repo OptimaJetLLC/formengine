@@ -4,7 +4,7 @@
   "private": false,
   "main": "index.ts",
   "type": "module",
-  "description": "OptimaJet Form Designer. Develop front-end drag and drop forms with ease. User-friendly interface reduce the learning curve for your team.",
+  "description": "React Form Library Drag and Drop.",
   "keywords": [
     "react",
     "form",

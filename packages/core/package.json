@@ -4,7 +4,7 @@
   "private": false,
   "main": "src/index.ts",
   "type": "module",
-  "description": "Optimajet Drag & Drop Form Builder Library for React. Simple way to implement drag and drop form functionality in your React applications.",
+  "description": "React hook form alternative.",
   "keywords": [
     "react",
     "form",
@@ -21,7 +21,11 @@
     "react-component",
     "schema",
     "form-builder",
-    "optimajet"
+    "optimajet",
+    "react-hook-form",
+    "react hook form alternative",
+    "react form validation",
+    "react form library"
   ],
   "author": "Optimajet",
   "homepage": "https://formengine.io/",
