@@ -1,0 +1,54 @@
+{
+  "version": "1",
+  "errorType": "ErrorComponent",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "firstName",
+        "type": "RsInput",
+        "dataKey": "firstName",
+        "props": {
+          "label": {
+            "value": "First name"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "firstName"
+          }
+        ]
+      },
+      {
+        "key": "firstNameClone",
+        "type": "RsInput",
+        "dataKey": "firstName",
+        "props": {
+          "label": {
+            "value": "First name"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "firstName"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

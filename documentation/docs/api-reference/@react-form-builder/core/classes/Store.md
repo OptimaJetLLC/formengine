@@ -372,11 +372,9 @@ the object with validators for the specified value type.
 
 ***
 
-### loadForm()
+### ~~loadForm()~~
 
 > **loadForm**(`getForm`?, `formName`?): `void`
-
-Loads a form by form name and sets that form in the form viewer.
 
 #### Parameters
 
@@ -391,6 +389,10 @@ the form name.
 #### Returns
 
 `void`
+
+#### Deprecated
+
+Loads a form by form name and sets that form in the form viewer.
 
 ***
 

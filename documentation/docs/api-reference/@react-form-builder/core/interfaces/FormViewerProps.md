@@ -45,6 +45,14 @@ The default error wrapper used when errorType is not specified in the form.
 
 ***
 
+### errors?
+
+> `optional` **errors**: `Record`\<`string`, `unknown`\>
+
+The form validation errors.
+
+***
+
 ### formName?
 
 > `optional` **formName**: `string`

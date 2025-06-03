@@ -110,6 +110,20 @@ the Record with all the form data.
 
 the Record with all validation error messages.
 
+#### Set Signature
+
+> **set** **errors**(`errors`): `void`
+
+Sets the form error messages.
+
+##### Parameters
+
+• **errors**: `Record`\<`string`, `unknown`\>
+
+##### Returns
+
+`void`
+
 ***
 
 ### fluentData

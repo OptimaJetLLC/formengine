@@ -246,6 +246,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
   }
 
   /**
+   * @deprecated
    * Loads a form by form name and sets that form in the form viewer.
    * @param getForm the function that loads the form.
    * @param formName the form name.
