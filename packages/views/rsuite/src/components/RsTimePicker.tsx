@@ -3,10 +3,10 @@ import {format as formatDate, parse} from 'date-fns'
 import type {SyntheticEvent} from 'react'
 import {useCallback, useMemo} from 'react'
 import type {DatePickerProps} from 'rsuite'
-import {DatePicker, Form} from 'rsuite'
+import {DatePicker} from 'rsuite'
 import {placement, readOnly, size} from '../commonProperties'
 import {formatValidator, toSafeFormat} from '../dateTimeUtils'
-import {RsLabeledInput} from './components/Labeled'
+import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
 const isValidDate = (value: any) => value instanceof Date && !Number.isNaN(value.getTime())
@@ -54,11 +54,10 @@ const RsTimePicker = ({open, label, value, className, format, defaultValue, onCh
   }, [onChange])
 
   return (
-    <RsLabeledInput className={className}>
-      <Form.ControlLabel>{label}</Form.ControlLabel>
+    <Labeled label={label} className={className}>
       <DatePicker {...props} onChange={handleChange} value={parsedValue ?? parsedDefaultValue ?? null}
                   open={pickerOpen} format={safeFormat ?? timeFormat} onClean={onClean} preventOverflow/>
-    </RsLabeledInput>
+    </Labeled>
   )
 }
 

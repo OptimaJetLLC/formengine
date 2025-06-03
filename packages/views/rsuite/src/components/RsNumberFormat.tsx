@@ -5,7 +5,7 @@ import {NumericFormat} from 'react-number-format'
 import type {NumberFormatValues} from 'react-number-format/types/types'
 import type {InputProps} from 'rsuite'
 import {inputProps, nonNegNumber} from '../commonProperties'
-import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
+import {Labeled} from './components/Labeled'
 import {WrappedInput} from './components/WrappedInput'
 
 interface RsNumberFormatProps extends NumericFormatProps<InputProps> {
@@ -53,8 +53,7 @@ const RsNumberFormat = ({style, className, label, onChange, value, ...props}: Rs
 
   const onValueChange = useCallback((values: NumberFormatValues) => onChange?.(values.value), [onChange])
 
-  return <RsLabeledInput style={style} className={className}>
-    <RsRtlLabel>{label}</RsRtlLabel>
+  return <Labeled label={label} style={style} className={className}>
     {/* TODO FE-1066 */}
     {/* @ts-ignore FE-1066 */}
     <NumericFormat customInput={WrappedInput}
@@ -63,7 +62,7 @@ const RsNumberFormat = ({style, className, label, onChange, value, ...props}: Rs
                    thousandSeparator={thousandSeparator}
                    onValueChange={onValueChange}
                    value={value}/>
-  </RsLabeledInput>
+  </Labeled>
 }
 
 export const rsNumberFormat = define(RsNumberFormat, 'RsNumberFormat')

@@ -2,11 +2,11 @@ import {array, boolean, define, string, toLabeledValues} from '@react-form-build
 import type {ReactNode} from 'react'
 import {useCallback} from 'react'
 import type {InputPickerProps} from 'rsuite'
-import {Form, InputPicker} from 'rsuite'
+import {InputPicker} from 'rsuite'
 import {pickerProps} from '../commonProperties'
 import type {LoadDataHandler} from '../hooks'
 import {useLoadData} from '../hooks'
-import {RsLabeledInput} from './components/Labeled'
+import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 import {SLoader} from './SLoader'
 
@@ -26,15 +26,14 @@ const RsDropdown = ({data, label, onLoadData, onSearch, onOpen, value = '', clas
   </>, [loading])
 
   return (
-    <RsLabeledInput className={className}>
-      <Form.ControlLabel>{label}</Form.ControlLabel>
+    <Labeled label={label} className={className}>
       <InputPicker
         {...props}
         {...loadProps}
         onClean={onClean}
         renderMenu={renderMenu}
       />
-    </RsLabeledInput>
+    </Labeled>
   )
 }
 

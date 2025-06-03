@@ -1,10 +1,10 @@
 import {boolean, date, define, event, number, oneOf, string} from '@react-form-builder/core'
 import {useMemo} from 'react'
 import type {DatePickerProps} from 'rsuite'
-import {DatePicker, Form} from 'rsuite'
+import {DatePicker} from 'rsuite'
 import {placement, readOnly, size} from '../commonProperties'
 import {formatValidator, toSafeFormat} from '../dateTimeUtils'
-import {RsLabeledInput} from './components/Labeled'
+import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
 interface RsDatePickerProps extends DatePickerProps {
@@ -34,10 +34,9 @@ const RsDatePicker = ({label, value, className, format, defaultValue, ...props}:
   const parsedValue = useMemo(() => parseDateValue(value), [value])
 
   return (
-    <RsLabeledInput className={className}>
-      <Form.ControlLabel>{label}</Form.ControlLabel>
+    <Labeled label={label} className={className}>
       <DatePicker {...props} value={parsedValue ?? defaultValue ?? null} format={safeFormat} onClean={onClean}/>
-    </RsLabeledInput>
+    </Labeled>
   )
 }
 

@@ -1,8 +1,16 @@
+import styled from '@emotion/styled'
 import {boolean, define, event, oneOf, string} from '@react-form-builder/core'
 import {Toggle} from 'rsuite'
 import {controlColor, readOnly} from '../commonProperties'
+import {requiredStyle} from './components/Labeled'
 
-export const rsToggle = define(Toggle, 'RsToggle')
+const SToggle = styled(Toggle)`
+  &.required .rs-toggle-label::after {
+    ${requiredStyle};
+  }
+`
+
+export const rsToggle = define(SToggle, 'RsToggle')
   .name('Toggle')
   .props({
     children: string.named('Label'),

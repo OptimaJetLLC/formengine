@@ -1,0 +1,38 @@
+import styled from '@emotion/styled'
+import type {ComponentProps} from 'react'
+
+const Container = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  label {
+    margin-inline-start: 5px;
+    margin-bottom: 2px;
+    text-align: left;
+  }
+
+  &.required > label::after {
+    margin-inline-start: 3px;
+    content: "*";
+    color: #f44336;
+  }
+`
+
+interface LabeledProps extends ComponentProps<any> {
+  label?: string
+}
+
+/**
+ * The React component that adds a label to a child component.
+ * @param props the React component properties.
+ * @param props.label the component label.
+ * @param props.children the children component.
+ * @returns the React element.
+ */
+export const Labeled = ({label, children, ...props}: LabeledProps) => (
+  <Container {...props}>
+    {label && <label>{label}</label>}
+    {children}
+  </Container>
+)

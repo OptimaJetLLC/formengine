@@ -4,7 +4,7 @@ import {useState} from 'react'
 import type {InputProps} from 'rsuite'
 import {Input, InputGroup} from 'rsuite'
 import {inputProps} from '../commonProperties'
-import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
+import {Labeled} from './components/Labeled'
 
 interface RsInputProps extends InputProps {
   label: string
@@ -24,10 +24,9 @@ const RsInput = ({style, className, label, passwordMask, type, value, ...props}:
     </InputGroup>
     : <Input type={type} value={value ?? ''} {...props}/>
 
-  return <RsLabeledInput style={style} className={className}>
-    <RsRtlLabel>{label}</RsRtlLabel>
+  return <Labeled label={label} style={style} className={className}>
     {input}
-  </RsLabeledInput>
+  </Labeled>
 }
 export const rsInput = define(RsInput, 'RsInput')
   .name('Input')

@@ -3,7 +3,7 @@ import type {PatternFormatProps} from 'react-number-format'
 import {PatternFormat} from 'react-number-format'
 import type {InputProps} from 'rsuite'
 import {inputProps} from '../commonProperties'
-import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
+import {Labeled} from './components/Labeled'
 import {WrappedInput} from './components/WrappedInput'
 
 interface RsPatternFormatProps extends PatternFormatProps<InputProps> {
@@ -21,12 +21,11 @@ const RsPatternFormat = ({style, className, label, format, onChange, value, ...p
     }
   }
 
-  return <RsLabeledInput style={style} className={className}>
-    <RsRtlLabel>{label}</RsRtlLabel>
+  return <Labeled label={label} style={style} className={className}>
     <PatternFormat customInput={WrappedInput} format={format ?? ''} {...props} mask={mask}
                    onValueChange={values => onChange?.(values.formattedValue)}
                    value={value ?? ''}/>
-  </RsLabeledInput>
+  </Labeled>
 }
 
 export const rsPatternFormat = define(RsPatternFormat, 'RsPatternFormat')

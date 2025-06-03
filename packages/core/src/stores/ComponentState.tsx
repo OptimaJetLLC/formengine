@@ -42,6 +42,10 @@ const getHtmlAttributes = (componentStore: ComponentStore) => componentStore.htm
     return result
   }, {})
 
+const isRequired = (componentStore: ComponentStore) => {
+  return !!componentStore.schema?.validations?.find(v => v.key === 'required')
+}
+
 function createActionHandlersChain(store: Store, actionDataList: ActionData[]) {
   const actions = actionDataList.map(data => ({
     func: store.findAction(data).func,
@@ -205,6 +209,7 @@ export class ComponentState implements IComponentState {
    */
   get className() {
     const className = cx(
+      {required: isRequired(this.data.store)},
       this.propsWithoutChildren.className,
       this.getClassNameFromCssPart('css')
     )

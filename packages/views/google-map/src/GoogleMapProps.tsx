@@ -142,4 +142,9 @@ export interface GoogleMapProps {
    * The caption for the remove marker button.
    */
   removeMarkerCaption: string
+
+  /**
+   * The label of the component.
+   */
+  label?: string
 }

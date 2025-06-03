@@ -1,21 +1,28 @@
-import {boolean, date, define, event} from '@react-form-builder/core'
+import {boolean, date, define, event, string} from '@react-form-builder/core'
 import {Calendar} from 'rsuite'
 import type {CalendarProps} from 'rsuite/esm/Calendar/Calendar'
 import {readOnly} from '../commonProperties'
+import {Labeled} from './components/Labeled'
 
 interface RsCalendarProps extends CalendarProps {
   readOnly: boolean
+  label?: string
 }
 
-const RsCalendar = (props: RsCalendarProps) => {
-  return props.readOnly
-    ? <Calendar {...props} onChange={undefined}/>
-    : <Calendar {...props}/>
+const RsCalendar = ({label, style, className, ...props}: RsCalendarProps) => {
+  return <Labeled label={label} style={style} className={className}>
+    {
+      props.readOnly
+        ? <Calendar {...props} onChange={undefined}/>
+        : <Calendar {...props}/>
+    }
+  </Labeled>
 }
 
 export const rsCalendar = define(RsCalendar, 'RsCalendar')
   .name('Calendar')
   .props({
+    label: string,
     bordered: boolean.hinted('Show border').default(false),
     compact: boolean.hinted('Display a compact calendar').default(false),
     defaultValue: date.hinted('Default value'),

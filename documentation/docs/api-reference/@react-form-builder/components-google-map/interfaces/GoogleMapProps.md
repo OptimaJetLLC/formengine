@@ -69,6 +69,14 @@ This setting controls how the API handles gestures on the map.
 
 ***
 
+### label?
+
+> `optional` **label**: `string`
+
+The label of the component.
+
+***
+
 ### language?
 
 > `optional` **language**: `string`

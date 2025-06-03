@@ -5,6 +5,7 @@ import {useCallback, useEffect, useMemo, useState} from 'react'
 import type {Address} from './Address'
 import {CustomMapControl} from './CustomMapControl'
 import type {GoogleMapProps} from './GoogleMapProps'
+import {Labeled} from './Labeled'
 import type {MapMarker} from './MapMarker'
 import {MarkerInfo} from './MarkerInfo'
 import {Markers} from './Markers'
@@ -38,6 +39,7 @@ const toMarkers = (markers?: MapMarker[]) => {
  */
 export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region' | 'language'>) => {
   const {
+    label,
     mapId,
     className,
     colorScheme,
@@ -162,17 +164,19 @@ export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region
     return data.find(item => item.id === selectedId) ?? markers.find(item => item.id === selectedId)
   }, [field?.value, selectedId, markers])
 
-  return <Map id={id} mapId={mapId} zoom={zoom} center={center} className={className}
-              onClick={handleMapClick} onZoomChanged={onZoomChanged} onCameraChanged={onCameraChanged}
-              colorScheme={colorScheme} gestureHandling={gestureHandling} mapTypeId={mapTypeId}>
-    <Markers markers={markers} collisionBehavior={collisionBehavior} onMarkerClick={handleMarkerClick}/>
-    {infoWindowShown && selectedMarker &&
-      <MarkerInfo marker={selectedMarker} markerData={markerData} allowChangingMarkers={allowChangingMarkers}
-                  title={markerWindowTitle} removeMarkerCaption={removeMarkerCaption}
-                  onClose={closeMarkerInfoWindow} onDelete={handleMarkerDelete}/>
-    }
-    {showMapControl && <CustomMapControl controlPosition={mapControlPosition} onPlaceSelect={handlePlaceSelect}
-                                         placeholder={searchPlaceholder}
-    />}
-  </Map>
+  return <Labeled label={label} className={className}>
+    <Map id={id} mapId={mapId} zoom={zoom} center={center}
+         onClick={handleMapClick} onZoomChanged={onZoomChanged} onCameraChanged={onCameraChanged}
+         colorScheme={colorScheme} gestureHandling={gestureHandling} mapTypeId={mapTypeId}>
+      <Markers markers={markers} collisionBehavior={collisionBehavior} onMarkerClick={handleMarkerClick}/>
+      {infoWindowShown && selectedMarker &&
+        <MarkerInfo marker={selectedMarker} markerData={markerData} allowChangingMarkers={allowChangingMarkers}
+                    title={markerWindowTitle} removeMarkerCaption={removeMarkerCaption}
+                    onClose={closeMarkerInfoWindow} onDelete={handleMarkerDelete}/>
+      }
+      {showMapControl && <CustomMapControl controlPosition={mapControlPosition} onPlaceSelect={handlePlaceSelect}
+                                           placeholder={searchPlaceholder}
+      />}
+    </Map>
+  </Labeled>
 }

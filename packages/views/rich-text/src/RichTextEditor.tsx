@@ -5,7 +5,7 @@ import {useEffect, useMemo, useRef, useState} from 'react'
 import ReactQuill from 'react-quill-new'
 import 'react-quill-new/dist/quill.snow.css'
 import './styles.css'
-import {RsLabeledInput, RsRtlLabel} from './Labeled'
+import {Labeled} from './Labeled'
 
 const options = {
   font: [{font: []}],
@@ -75,6 +75,7 @@ const RichTextEditor = ({
                           style,
                           toolbarOptions,
                           placeholder,
+                          className,
                           modules: customModules,
                           ...props
                         }: RichTextEditorProps) => {
@@ -96,8 +97,7 @@ const RichTextEditor = ({
     ...(customModules ?? {})
   }), [customModules, toolbarOptions])
 
-  return <RsLabeledInput style={style}>
-    <RsRtlLabel>{label}</RsRtlLabel>
+  return <Labeled label={label} style={style} className={className}>
     <ReactQuill key={key}
                 defaultValue={plainInitialValue}
                 modules={modules}
@@ -108,7 +108,7 @@ const RichTextEditor = ({
                 }}
                 {...props}
     />
-  </RsLabeledInput>
+  </Labeled>
 }
 
 export const richTextEditor = define(RichTextEditor, 'RichTextEditor')

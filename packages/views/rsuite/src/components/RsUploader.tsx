@@ -4,13 +4,15 @@ import type {UploaderProps} from 'rsuite'
 import {Uploader} from 'rsuite'
 import {nonNegNumber, readOnly} from '../commonProperties'
 import {InputCell} from './components/InputCell'
+import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
 interface RsUploaderProps extends UploaderProps {
   customElement: boolean
+  label?: string
 }
 
-const RsUploader = ({customElement, children, disabled, multiple, fileList, ...props}: RsUploaderProps) => {
+const RsUploader = ({customElement, children, disabled, multiple, fileList, className, label, ...props}: RsUploaderProps) => {
   const onRemove = useTouchOnEvent(props, 'onRemove')
 
   const canUpload = useMemo(() => {
@@ -20,10 +22,12 @@ const RsUploader = ({customElement, children, disabled, multiple, fileList, ...p
 
   const disabledButton = useMemo(() => disabled || !canUpload, [disabled, canUpload])
 
-  return <Uploader {...props} disabled={disabledButton} multiple={multiple}
-                   fileList={fileList} onRemove={onRemove}>
-    {customElement ? <div>{children}</div> : undefined}
-  </Uploader>
+  return <Labeled label={label} className={className}>
+    <Uploader {...props} disabled={disabledButton} multiple={multiple}
+              fileList={fileList} onRemove={onRemove}>
+      {customElement ? <div>{children}</div> : undefined}
+    </Uploader>
+  </Labeled>
 }
 
 const columns = [
@@ -35,6 +39,7 @@ const columns = [
 export const rsUploader = define(RsUploader, 'RsUploader')
   .name('Uploader')
   .props({
+    label: string,
     action: string.required.default('/'),
     accept: string,
     autoUpload: boolean.default(true),

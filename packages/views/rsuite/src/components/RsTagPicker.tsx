@@ -2,11 +2,11 @@ import {array, define, toLabeledValues} from '@react-form-builder/core'
 import type {ReactNode} from 'react'
 import {useCallback} from 'react'
 import type {TagPickerProps} from 'rsuite'
-import {Form, TagPicker} from 'rsuite'
+import {TagPicker} from 'rsuite'
 import {pickerProps} from '../commonProperties'
 import type {LoadDataHandler} from '../hooks'
 import {useLoadData} from '../hooks'
-import {RsLabeledInput} from './components/Labeled'
+import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 import {SLoader} from './SLoader'
 
@@ -33,8 +33,7 @@ const RsTagPicker = ({data, label, onLoadData, onSearch, onOpen, value = [], cla
     : toLabeledValues(data || []).filter(isNonEmptyValueAndLabel)
 
   return (
-    <RsLabeledInput className={className}>
-      <Form.ControlLabel>{label}</Form.ControlLabel>
+    <Labeled label={label} className={className}>
       <TagPicker
         {...props}
         {...loadProps}
@@ -42,7 +41,7 @@ const RsTagPicker = ({data, label, onLoadData, onSearch, onOpen, value = [], cla
         onClean={onClean}
         renderMenu={renderMenu}
       />
-    </RsLabeledInput>
+    </Labeled>
   )
 }
 

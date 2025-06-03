@@ -3,11 +3,11 @@ import {boolean, define, string} from '@react-form-builder/core'
 import {Search} from '@rsuite/icons'
 import type {ReactNode} from 'react'
 import type {InputPickerProps} from 'rsuite'
-import {Form, InputPicker, Loader} from 'rsuite'
+import {InputPicker, Loader} from 'rsuite'
 import {pickerProps} from '../commonProperties'
 import type {LoadDataHandler} from '../hooks'
 import {useLoadData} from '../hooks'
-import {RsLabeledInput} from './components/Labeled'
+import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
 const Container = styled.div`
@@ -46,13 +46,12 @@ const RsSearch = ({data, label, onLoadData, onSearch, value = '', className, pre
   const Icon = loading ? Loader : Search
 
   return (
-    <RsLabeledInput className={className}>
-      <Form.ControlLabel>{label}</Form.ControlLabel>
+    <Labeled label={label} className={className}>
       <Container>
         <SInputPicker {...props} {...loadProps} onClean={onClean} renderMenu={renderMenu} caretAs={CustomCaret}/>
         {!(props.cleanable && value) && <Icon className={'search-icon'}/>}
       </Container>
-    </RsLabeledInput>
+    </Labeled>
   )
 }
 

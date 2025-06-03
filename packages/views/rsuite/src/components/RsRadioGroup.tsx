@@ -3,6 +3,7 @@ import {array, boolean, define, event, oneOf, string, toLabeledValues} from '@re
 import type {RadioGroupProps} from 'rsuite'
 import {Radio, RadioGroup} from 'rsuite'
 import {readOnly} from '../commonProperties'
+import {Labeled} from './components/Labeled'
 
 interface RsRadioGroupProps extends RadioGroupProps<string> {
   items: LabeledValue[]
@@ -11,15 +12,14 @@ interface RsRadioGroupProps extends RadioGroupProps<string> {
 
 const RsRadioGroup = ({items, label, value, className, ...props}: RsRadioGroupProps) => {
   return (
-    <div className={className}>
-      <label>{label}</label>
+    <Labeled label={label} className={className}>
       <RadioGroup {...props as any} value={value ?? ''}>
         {items.map(({value, label}, i) => (
           <Radio value={value} key={i}>{label ?? value}</Radio>
         ))
         }
       </RadioGroup>
-    </div>
+    </Labeled>
   )
 }
 

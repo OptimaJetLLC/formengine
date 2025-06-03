@@ -2,8 +2,7 @@ import {color, define, event, number, string, useLicense} from '@react-form-buil
 import {useCallback, useEffect, useMemo, useRef} from 'react'
 import {Button} from 'rsuite'
 import {alignItems, nonNegNumber, readOnly} from '../commonProperties'
-import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
-import {Rows} from './components/Layout'
+import {Labeled} from './components/Labeled'
 import type {SignaturePadHandle, SignaturePadProps} from './components/SignaturePad'
 import {SignaturePad} from './components/SignaturePad'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
@@ -33,15 +32,12 @@ const RsSignature = ({value, style, className, label, clearButtonText, readOnly,
     }])
   }, [checkLicense])
 
-  return <RsLabeledInput style={style} className={className} data-testid={props['data-testid']}>
-    <Rows>
-      {label && <RsRtlLabel>{label}</RsRtlLabel>}
-      <SignaturePad {...props} readOnly={readOnly} value={value} ref={padRef} onChange={onChange}/>
-    </Rows>
+  return <Labeled label={label} style={style} className={className} data-testid={props['data-testid']}>
+    <SignaturePad {...props} readOnly={readOnly} value={value} ref={padRef} onChange={onChange}/>
     {!readOnly &&
       <Button onClick={clear} disabled={!value} appearance={'primary'} style={buttonStyle}>{clearButtonText}</Button>
     }
-  </RsLabeledInput>
+  </Labeled>
 }
 
 export const rsSignature = define(RsSignature, 'RsSignature')

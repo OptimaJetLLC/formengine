@@ -2,7 +2,7 @@ import {boolean, define, event, string} from '@react-form-builder/core'
 import type {InputProps} from 'rsuite'
 import {Input} from 'rsuite'
 import {positiveNumber, readOnly, size} from '../commonProperties'
-import {RsLabeledInput, RsRtlLabel} from './components/Labeled'
+import {Labeled} from './components/Labeled'
 
 interface RsTextAreaProps extends InputProps {
   label: string
@@ -10,10 +10,9 @@ interface RsTextAreaProps extends InputProps {
 }
 
 const RsTextArea = ({style, className, label, ...props}: RsTextAreaProps) => (
-  <RsLabeledInput style={style} className={className}>
-    <RsRtlLabel>{label}</RsRtlLabel>
+  <Labeled label={label} style={style} className={className}>
     <Input as="textarea" {...props}/>
-  </RsLabeledInput>
+  </Labeled>
 )
 
 export const rsTextArea = define(RsTextArea, 'RsTextArea')

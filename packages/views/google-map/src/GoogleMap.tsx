@@ -53,6 +53,7 @@ export const googleMap = define(GoogleMapLoader, 'GoogleMap')
   .category('fields')
   .icon(MapIcon)
   .props({
+    label: string,
     latitude: number.default(-33.860664),
     longitude: number.default(151.208138),
     zoom: number.default(13),
