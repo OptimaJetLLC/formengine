@@ -32,7 +32,7 @@ our [documentation](https://formengine.io/documentation/).
 ## Install
 
 ```bash
-npm install @optimajet/react-form-builder-core @react-form-builder/components-rsuite
+npm install @react-form-builder/core @react-form-builder/components-rsuite
 ```
 
 ## Quickstart

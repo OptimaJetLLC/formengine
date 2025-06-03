@@ -33,7 +33,7 @@ This is the core package of the project. How to use the package, read in our [do
 [Quick start from scratch](https://formengine.io/documentation/#quick-start).
 
 ```bash
-npm install @optimajet/react-form-builder-core @react-form-builder/components-rsuite
+npm install @react-form-builder/core @react-form-builder/components-rsuite
 ```
 
 ## Quickstart
