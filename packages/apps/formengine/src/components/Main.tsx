@@ -1,7 +1,10 @@
 import {Link} from 'wouter'
 
-export const Main = () => {
-  return <>
+/**
+ * @returns the main page component.
+ */
+export const Main = () =>
+  <>
     <h1 className="page-title">Drag & Drop Form Builder Library for React</h1>
     <h2 className="page-subtitle">Develop front-end drag and drop forms with ease, resulting in cost savings and
       reduced development
@@ -27,4 +30,3 @@ export const Main = () => {
       </div>
     </div>
   </>
-}
