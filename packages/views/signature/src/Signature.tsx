@@ -1,20 +1,14 @@
 import {color, define, event, number, string, useLicense} from '@react-form-builder/core'
 import {useCallback, useEffect, useMemo, useRef} from 'react'
-import {Button} from 'rsuite'
-import {alignItems, nonNegNumber, readOnly} from '../commonProperties'
-import {Labeled} from './components/Labeled'
-import type {SignaturePadHandle, SignaturePadProps} from './components/SignaturePad'
-import {SignaturePad} from './components/SignaturePad'
-import {useTouchOnEvent} from './hooks/useTouchOnEvent'
+import {Button} from './Button'
+import {alignItems, nonNegNumber, readOnly} from './props'
+import type {SignaturePadHandle} from './SignaturePad'
+import {SignaturePad} from './SignaturePad'
+import type {SignatureProps} from './SignatureProps'
+import {LabeledInput, LabelLeft, Rows} from './styled'
+import {useTouchOnEvent} from './useTouchOnEvent'
 
-interface RsSignatureProps extends SignaturePadProps {
-  value?: string
-  label?: string
-  clearButtonText?: string
-  'data-testid'?: string
-}
-
-const RsSignature = ({value, style, className, label, clearButtonText, readOnly, ...props}: RsSignatureProps) => {
+const Signature = ({value, style, className, label, clearButtonText, readOnly, ...props}: SignatureProps) => {
   const padRef = useRef<SignaturePadHandle>(null)
   const buttonStyle = useMemo(() => ({width: props.width, marginTop: 6}),
     [props.width])
@@ -32,15 +26,18 @@ const RsSignature = ({value, style, className, label, clearButtonText, readOnly,
     }])
   }, [checkLicense])
 
-  return <Labeled label={label} style={style} className={className} data-testid={props['data-testid']}>
-    <SignaturePad {...props} readOnly={readOnly} value={value} ref={padRef} onChange={onChange}/>
+  return <LabeledInput style={style} className={className}>
+    <Rows>
+      {label && <LabelLeft>{label}</LabelLeft>}
+      <SignaturePad {...props} readOnly={readOnly} value={value} ref={padRef} onChange={onChange}/>
+    </Rows>
     {!readOnly &&
-      <Button onClick={clear} disabled={!value} appearance={'primary'} style={buttonStyle}>{clearButtonText}</Button>
+      <Button onClick={clear} disabled={!value} style={buttonStyle}>{clearButtonText}</Button>
     }
-  </Labeled>
+  </LabeledInput>
 }
 
-export const rsSignature = define(RsSignature, 'RsSignature')
+export const signature = define(Signature, 'RsSignature')
   .name('Signature')
   .props({
     value: string.valued,

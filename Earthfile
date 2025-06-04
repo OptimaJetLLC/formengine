@@ -72,7 +72,7 @@ npm-check-tsc:
 prepare-npm-archives:
   FROM +sources
   RUN apt-get update && apt-get -y install jq
-  LET packagesToArchive = 'packages/core packages/designer packages/designer-bundle packages/viewer-bundle packages/views/rsuite packages/views/fast-qr packages/views/rich-text packages/views/google-map'
+  LET packagesToArchive = 'packages/core packages/designer packages/designer-bundle packages/viewer-bundle packages/views/rsuite packages/views/fast-qr packages/views/rich-text packages/views/google-map packages/views/signature'
   LET archiveName = ''
   FOR package IN $packagesToArchive
     RUN cd $package && npm run bundle
@@ -364,7 +364,9 @@ dependencies:
    packages/apps/demo packages/apps/example-builder packages/apps/example-viewer \
    packages/apps/landing \
    packages/core packages/designer packages/designer-bundle packages/indexed-db-form-storage \
-   packages/viewer-bundle packages/views/antd packages/views/default packages/views/rsuite \
+   packages/viewer-bundle packages/views/antd packages/views/default \
+   packages/views/rsuite \
+   packages/views/signature \
    packages/views/fast-qr \
    packages/views/rich-text \
    packages/views/google-map \
@@ -387,6 +389,7 @@ dependencies:
   COPY packages/views/antd/package.json packages/views/antd
   COPY packages/views/default/package.json packages/views/default
   COPY packages/views/rsuite/package.json packages/views/rsuite
+  COPY packages/views/signature/package.json packages/views/signature
   COPY packages/views/fast-qr/package.json packages/views/fast-qr
   COPY packages/views/rich-text/package.json packages/views/rich-text
   COPY packages/views/google-map/package.json packages/views/google-map

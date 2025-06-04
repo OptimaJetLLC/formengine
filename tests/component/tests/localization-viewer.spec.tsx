@@ -1,6 +1,6 @@
 import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {BiDi, createView, FormViewer, LanguageFullCode} from '@react-form-builder/core'
-import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-conponents'
+import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
 import {render, RenderResult} from '@testing-library/react'
 import {expect} from 'vitest'
 import {default as formJson} from './forms/localization-viewer.json'

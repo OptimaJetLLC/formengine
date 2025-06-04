@@ -55,6 +55,7 @@ function copySources(srcPath, dstPath) {
     'packages/indexed-db-form-storage',
     'packages/views/antd',
     'packages/views/rsuite',
+    'packages/views/signature',
     '.editorconfig',
     'lerna.json',
     'LICENSE.md',

@@ -11,6 +11,7 @@ import {
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
+import {signatureComponent} from '@react-form-builder/components-signature'
 import type {ComponentStore, FormValidators, FormViewerProps, IFormData, IFormViewer, Validators} from '@react-form-builder/core'
 import {ActionDefinition, BiDi, definePreset, Language} from '@react-form-builder/core'
 import type {FormBuilderI18n, FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
@@ -86,7 +87,7 @@ const presets = initialPresets.map(preset => {
 })
 
 const components = [...rSuiteComponents, ...antdComponents, ...presets,
-  throwErrorComponent, fastQrComponent, richTextComponent, googleMapComponent]
+  throwErrorComponent, fastQrComponent, richTextComponent, googleMapComponent, signatureComponent]
   .map(definer => definer.build())
 
 const view = new BuilderView(components)

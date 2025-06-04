@@ -5,6 +5,7 @@ import {
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
+import {signatureModel} from '@react-form-builder/components-signature'
 import type {ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
 import {ActionDefinition, BiDi, createView, FormViewer} from '@react-form-builder/core'
 import {useCallback, useRef} from 'react'
@@ -15,7 +16,7 @@ const componentsMetadata = rSuiteComponents.map(definer => definer.build().model
 // highlight-end
 
 // highlight-start
-const view = createView(componentsMetadata)
+const view = createView([...componentsMetadata, signatureModel])
   // The following parameters are required for correct CSS loading in LTR and RTL modes
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)

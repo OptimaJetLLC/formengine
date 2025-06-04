@@ -18,8 +18,7 @@
     "create-archive": "node ./config/pack"
   },
   "dependencies": {
-    "@react-form-builder/core": "^4.2.0",
-    "signature_pad": "^5.0.1"
+    "@react-form-builder/core": "^4.2.0"
   },
   "peerDependencies": {
     "@emotion/css": "^11.13.5",

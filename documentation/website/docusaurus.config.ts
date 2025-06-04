@@ -222,6 +222,7 @@ const config: Config = {
           '../../packages/views/rich-text',
           '../../packages/views/google-map',
           '../../packages/views/rsuite',
+          '../../packages/views/signature',
         ],
         entryPointStrategy: 'packages',
         tsconfig: '../../tsconfig.json',

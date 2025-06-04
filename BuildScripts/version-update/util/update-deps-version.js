@@ -20,6 +20,7 @@ const packageList = [
   'packages/views/antd',
   'packages/views/default',
   'packages/views/rsuite',
+  'packages/views/signature',
   'examples/with-formik'
 ]
 

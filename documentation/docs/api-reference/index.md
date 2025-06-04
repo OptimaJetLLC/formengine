@@ -10,3 +10,4 @@
 - [@react-form-builder/components-rich-text](@react-form-builder/components-rich-text/index.md)
 - [@react-form-builder/components-google-map](@react-form-builder/components-google-map/index.md)
 - [@react-form-builder/components-rsuite](@react-form-builder/components-rsuite/index.md)
+- [@react-form-builder/components-signature](@react-form-builder/components-signature/index.md)

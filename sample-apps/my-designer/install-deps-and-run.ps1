@@ -65,11 +65,13 @@ try
   RemoveFromPackageJson "@react-form-builder/core"
   RemoveFromPackageJson "@react-form-builder/designer"
   RemoveFromPackageJson "@react-form-builder/components-rsuite"
+  RemoveFromPackageJson "@react-form-builder/components-signature"
   RemoveFromPackageJson "@react-form-builder/components-fast-qr"
 
   InstallLocalPackage $PSScriptRoot/../../packages/core
   InstallLocalPackage $PSScriptRoot/../../packages/designer
   InstallLocalPackage $PSScriptRoot/../../packages/views/rsuite
+  InstallLocalPackage $PSScriptRoot/../../packages/views/signature
   InstallLocalPackage $PSScriptRoot/../../packages/views/fast-qr
   npm run start
 }

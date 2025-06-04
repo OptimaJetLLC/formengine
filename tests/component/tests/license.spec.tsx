@@ -11,7 +11,7 @@ import {verifyDomain} from '@react-form-builder/core/src/features/license/domain
 import deDE from '@react-form-builder/core/src/features/license/locales/de-DE.json'
 import enEN from '@react-form-builder/core/src/features/license/locales/en-US.json'
 import {CustomizationMap, FormBuilder} from '@react-form-builder/designer'
-import {allComponentsBuilder, allComponentsViewer} from '@react-form-builder/tests-common/lib/all-conponents'
+import {allComponentsBuilder, allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
 import {
   license2030Enterprise,
   licenseBusiness,
@@ -117,31 +117,31 @@ const domainMessage = `${enEN.license.errDomain.substring(0, 40)}`
 
 const components = [Viewer, Designer]
 
-const allComponentMessagesPresent = async (app: RenderResult, mode: TestComponent) => {
-  expect(await app.findByText(trialMessage)).toBeInTheDocument()
-  // expect(await app.findByText(qrCodeMessage)).toBeInTheDocument()
-  expect(await app.findByText(repeaterMessage)).toBeInTheDocument()
-  expect(await app.findByText(signatureMessage)).toBeInTheDocument()
-  // expect(await app.findByText(tableMessage)).toBeInTheDocument()
-  expect(await app.findByText(templatesMessage)).toBeInTheDocument()
+const allComponentMessagesPresent = async ({findByText}: RenderResult, mode: TestComponent) => {
+  expect(await findByText(trialMessage)).toBeInTheDocument()
+  // expect(await findByText(qrCodeMessage)).toBeInTheDocument()
+  expect(await findByText(repeaterMessage)).toBeInTheDocument()
+  expect(await findByText(signatureMessage)).toBeInTheDocument()
+  // expect(await findByText(tableMessage)).toBeInTheDocument()
+  expect(await findByText(templatesMessage)).toBeInTheDocument()
 
   if (mode === 'Designer') {
-    expect(await app.findByText(customizationMessage)).toBeInTheDocument()
-    expect(await app.findByText(presetMessage)).toBeInTheDocument()
+    expect(await findByText(customizationMessage)).toBeInTheDocument()
+    expect(await findByText(presetMessage)).toBeInTheDocument()
   }
 }
 
-const allComponentMessagesMissing = async (app: RenderResult, mode: TestComponent) => {
-  // expect(await app.queryByText(trialMessage)).toBeNull()
-  // expect(await app.queryByText(qrCodeMessage)).toBeNull()
-  expect(await app.queryByText(repeaterMessage)).toBeNull()
-  expect(await app.queryByText(signatureMessage)).toBeNull()
-  // expect(await app.findByText(tableMessage)).toBeNull()
-  expect(await app.queryByText(templatesMessage)).toBeNull()
+const allComponentMessagesMissing = async ({queryByText}: RenderResult, mode: TestComponent) => {
+  // expect(queryByText(trialMessage)).toBeNull()
+  // expect(queryByText(qrCodeMessage)).toBeNull()
+  expect(queryByText(repeaterMessage)).toBeNull()
+  expect(queryByText(signatureMessage)).toBeNull()
+  // expect(findByText(tableMessage)).toBeNull()
+  expect(queryByText(templatesMessage)).toBeNull()
 
   if (mode === 'Designer') {
-    expect(await app.queryByText(customizationMessage)).toBeNull()
-    expect(await app.queryByText(presetMessage)).toBeNull()
+    expect(queryByText(customizationMessage)).toBeNull()
+    expect(queryByText(presetMessage)).toBeNull()
   }
 }
 

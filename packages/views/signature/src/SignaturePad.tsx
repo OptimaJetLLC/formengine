@@ -1,7 +1,7 @@
 import {forwardRef} from '@react-form-builder/core'
-import type {ComponentPropsWithoutRef, CSSProperties} from 'react'
 import {useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState} from 'react'
 import VanillaSignaturePad from 'signature_pad'
+import type {SignatureProps} from './SignatureProps'
 
 /**
  * The Signature component reference type.
@@ -10,56 +10,7 @@ export type SignaturePadHandle = {
   clear(): void
 }
 
-/**
- * The Signature pad properties.
- */
-export interface SignaturePadProps
-  extends Omit<ComponentPropsWithoutRef<'canvas'>, 'width' | 'height' | 'onChange'> {
-  /**
-   * The initial data URL for drawing the signature image.
-   */
-  value?: string
-
-  /**
-   * The canvas width.
-   * @default 300
-   */
-  width?: number
-
-  /**
-   * The canvas height.
-   * @default 150
-   */
-  height?: number
-
-  /**
-   * The line width.
-   * @default 1.5
-   */
-  lineWidth?: number
-
-  /**
-   * Triggered after stroke update.
-   */
-  onChange?: (value?: string) => void
-
-  /**
-   * The pen color.
-   */
-  penColor?: CSSProperties['fill']
-
-  /**
-   * The background color.
-   */
-  backgroundColor?: CSSProperties['fill']
-
-  /**
-   * Flag, if true - the component is running in read-only mode.
-   */
-  readOnly?: boolean
-}
-
-const withDefaultProps = ({lineWidth = 1.5, ...props}: SignaturePadProps) => {
+const withDefaultProps = ({lineWidth = 1.5, ...props}: SignatureProps) => {
   return {
     velocityFilterWeight: 0.7,
     minWidth: lineWidth > 0.5 ? lineWidth - 0.5 : lineWidth,
@@ -73,7 +24,7 @@ const withDefaultProps = ({lineWidth = 1.5, ...props}: SignaturePadProps) => {
   }
 }
 
-export const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>((props, ref) => {
+export const SignaturePad = forwardRef<SignaturePadHandle, SignatureProps>((props, ref) => {
   const {
     value,
     width = 300,
