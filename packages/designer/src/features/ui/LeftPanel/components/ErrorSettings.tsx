@@ -2,8 +2,11 @@ import type {Annotation} from '@react-form-builder/core'
 import {ComponentDataProvider, namedObserver, useErrorModel} from '@react-form-builder/core'
 import {useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
-import {Checkbox, Input} from 'rsuite'
+import {Input} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
+import {SCheckbox} from '../../../annotation-editors/BooleanInput'
+import {Rows} from '../../../components/Containers'
+import {LabeledWrapper} from '../../../components/LabeledProperty'
 import {PropertyBlock} from '../../RightPanel/PropertiesEditor/components/Properties'
 import {ErrorComponentPicker} from './ErrorComponentPicker'
 
@@ -29,16 +32,19 @@ const RawErrorSettings = () => {
     return Object.assign(property, {localizable: false, calculable: false} as Annotation)
   }) ?? []
   const context = store.viewer.form.errorProps
+  const label = t('annotation.errorConfig.show')
 
   return (
-    <div>
-      {t('annotation.errorConfig.show')}: <Checkbox onChange={(_, checked) => setErrorVisible(checked)} checked={errorVisible}/>
+    <Rows gap={10}>
+      <LabeledWrapper label={label}>
+        <SCheckbox onChange={(_, checked) => setErrorVisible(checked)} checked={errorVisible}/>
+      </LabeledWrapper>
       {errorVisible && <Input style={{marginTop: 4, marginBottom: 4}} onChange={setErrorMessage} value={errorMessage}/>}
       <ErrorComponentPicker/>
       <ComponentDataProvider value={store.viewer.form.componentTree}>
         <PropertyBlock annotations={properties} context={context}/>
       </ComponentDataProvider>
-    </div>
+    </Rows>
   )
 }
 

@@ -1,32 +1,42 @@
-import styled from '@emotion/styled'
-import type {HTMLAttributes} from 'react'
+import type {ComponentProps, HTMLAttributes} from 'react'
+import {Rows} from '../../../components/Containers'
 import {customizableObserver} from '../../../customization'
 import {useTranslationPart} from '../../../localization/hooks'
 import {ActionList} from './ActionList'
 import {ErrorSettings} from './ErrorSettings'
 import {FormLanguageSettings} from './FormLanguageSettings'
-
 import {TooltipSettings} from './TooltipSettings'
 
-const Header = styled.label<{ marginTop?: number }>`
-  padding-inline: 4px;
-  font-size: 16px;
-  font-weight: bold;
-  margin-top: ${({marginTop}) => marginTop ?? '24'}px;
-`
+interface BlockProps extends ComponentProps<any> {
+  label: string
+}
+
+const blockStyle = {marginBottom: 4}
+
+const Block = ({label, children}: BlockProps) =>
+  <div>
+    <h6 style={blockStyle}>{label}</h6>
+    {children}
+  </div>
+
+const rowsStyle = {paddingInline: 4}
 
 const RawFormSettings = (props: HTMLAttributes<HTMLDivElement>) => {
   const t = useTranslationPart('leftPanel.formSettings')
-  return <div {...props}>
-    <Header marginTop={0}>{t('actions')}</Header>
-    <ActionList/>
-    <Header>{t('error')}</Header>
-    <ErrorSettings/>
-    <Header>{t('tooltip')}</Header>
-    <TooltipSettings/>
-    <Header>{t('language')}</Header>
-    <FormLanguageSettings/>
-  </div>
+  return <Rows style={rowsStyle} gap={10} {...props}>
+    <Block label={t('actions')}>
+      <ActionList/>
+    </Block>
+    <Block label={t('error')}>
+      <ErrorSettings/>
+    </Block>
+    <Block label={t('tooltip')}>
+      <TooltipSettings/>
+    </Block>
+    <Block label={t('language')}>
+      <FormLanguageSettings/>
+    </Block>
+  </Rows>
 }
 
 export const FormSettings = customizableObserver('Settings_Tab_Content', RawFormSettings)

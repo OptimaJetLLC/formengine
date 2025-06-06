@@ -1,11 +1,11 @@
-import {css} from '@emotion/css'
+import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
 import * as faGlobe from '@fortawesome/free-solid-svg-icons/faGlobe.js'
 import * as faEdit from '@fortawesome/free-solid-svg-icons/faMarker.js'
 import type {Annotation, ComponentData} from '@react-form-builder/core'
-import type {HTMLAttributes} from 'react'
+import type {ComponentProps, HTMLAttributes, ReactNode} from 'react'
 import {cloneElement, useCallback, useMemo} from 'react'
 import {IconButton} from 'rsuite'
 import {EditableProperty} from '../../stores/BuilderStore'
@@ -21,14 +21,6 @@ import {FaIcon} from './Icons'
 const SIconButton = styled(IconButton)`
   min-width: 24px;
   margin-inline-end: -6px;
-`
-
-const afterRedAsterisk = css`
-  &:after {
-    padding-left: 3px;
-    content: "*";
-    color: red;
-  }
 `
 
 /**
@@ -151,25 +143,60 @@ const RawCustomizedInput = (props: HTMLAttributes<HTMLDivElement>) => <div style
 
 const CustomizedInput = customizable('PropertyInput', RawCustomizedInput)
 
-const RawLabeledProperty = (props: LabeledPropertyProps) => {
-  const {annotation, children, style} = props
-  const {className, ...codeButtonProps} = props
+interface LabeledWrapperProps extends ComponentProps<any> {
+  leftButton?: ReactNode
+  label?: string
+  hint?: ReactNode
+  required?: boolean
+}
+
+const LeftButtonPlaceholder = styled.div`
+  min-width: 18px;
+`
+
+/**
+ * The LabeledWrapper
+ * @param props the React component properties.
+ * @returns the React element.
+ */
+export const LabeledWrapper = (props: LabeledWrapperProps) => {
+  const {children, className, style, label, hint, required, leftButton} = props
   const id = useUniqueId('id-')
-  const componentType = props.componentData.model.type
-  const commonLabels = useTranslationPart(`annotation.${annotation.key}`)
-  const componentLabels = useTranslationPart(`${componentType}.${annotation.key}`)
-  const getLabel = (key: string) => componentLabels(key) || commonLabels(key)
-  const labelClassName = annotation.required ? afterRedAsterisk : undefined
+  const labelClassName = useMemo(() => cx({required}), [required])
 
   return <LabeledInput style={style} className={className}>
     <Columns gap={10} style={{alignItems: 'center'}}>
-      <CodeButton {...codeButtonProps}/>
-      <CustomizedLabel htmlFor={id} hint={annotation.hint ?? getLabel('hint')} className={labelClassName}>
-        <>{getLabel('name') || annotation.name}</>
+      {leftButton ?? <LeftButtonPlaceholder/>}
+      <CustomizedLabel htmlFor={id} hint={hint} className={labelClassName}>
+        <>{label}</>
       </CustomizedLabel>
     </Columns>
     {!!children && <CustomizedInput>{cloneElement(children, {id})}</CustomizedInput>}
   </LabeledInput>
+}
+
+const RawLabeledProperty = (props: LabeledPropertyProps) => {
+  const {annotation, children, style} = props
+  const {className, ...codeButtonProps} = props
+  const componentType = props.componentData.model.type
+  const commonLabels = useTranslationPart(`annotation.${annotation.key}`)
+  const componentLabels = useTranslationPart(`${componentType}.${annotation.key}`)
+
+  const getLabel = useCallback((key: string) => {
+    return componentLabels(key) || commonLabels(key)
+  }, [commonLabels, componentLabels])
+
+  const hint = useMemo(() => {
+    return annotation.hint ?? getLabel('hint')
+  }, [annotation.hint, getLabel])
+
+  const label = useMemo(() => getLabel('name') || annotation.name, [annotation.name, getLabel])
+
+  return <LabeledWrapper style={style} className={className} required={annotation.required}
+                         hint={hint} label={label}
+                         leftButton={<CodeButton {...codeButtonProps}/>}>
+    {children}
+  </LabeledWrapper>
 }
 
 /**

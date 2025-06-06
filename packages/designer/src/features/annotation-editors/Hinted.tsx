@@ -8,6 +8,8 @@ import {useTooltipPlacement} from '../../utils/TooltipPlacementContext'
 
 const SLabel = styled.label<{ hinted?: boolean }>`
   min-width: 80px;
+  cursor: pointer;
+  user-select: none;
 
   ${({hinted}) => hinted && `
     :hover {
@@ -15,6 +17,12 @@ const SLabel = styled.label<{ hinted?: boolean }>`
       text-decoration-style: dotted;
     }
   `};
+
+  &.required:after {
+    padding-left: 3px;
+    content: "*";
+    color: red;
+  }
 `
 
 /**
