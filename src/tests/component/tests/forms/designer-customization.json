@@ -1,0 +1,36 @@
+{
+  "version": "1",
+  "form": {
+    "key": "screen 1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "comment",
+        "type": "RsTextArea",
+        "props": {
+          "placeholder": {
+            "computeType": "localization"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "reactVersion"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

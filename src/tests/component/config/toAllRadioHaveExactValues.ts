@@ -3,7 +3,7 @@ import {expect} from 'vitest'
 expect.extend({
   toAllRadioHaveExactValues(received: HTMLElement[], expected: any[]) {
     const actualValues = received.map(el => {
-      const innerInput = el.querySelector('input[type="radio"]:checked')
+      const innerInput = el.querySelector('input[type="radio"][checked]')
       if (!innerInput) throw new Error('Expected input for element: ' + el)
       return innerInput.getAttribute('value')
     })

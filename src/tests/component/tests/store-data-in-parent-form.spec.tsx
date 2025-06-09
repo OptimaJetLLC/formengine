@@ -1,9 +1,27 @@
-import {rSuiteComponents} from '@react-form-builder/components-rsuite'
+import {builderViewWithCss, rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {BuilderView, FormBuilder, FormBuilderProps} from '@react-form-builder/designer'
 import {fireEvent, render} from '@testing-library/react'
 import {expect} from 'vitest'
-import App from '../../common/lib/designer/App'
 import {switchToDesignerMode, switchToViewerMode} from './designerUtils'
+import appTemplateForm from './forms/store-data-in-parent-form-template.json'
+import appForm from './forms/store-data-in-parent-form.json'
+
+const appGetForm = (name?: string) => {
+  if (name === 'template') return JSON.stringify(appTemplateForm)
+  return JSON.stringify(appForm)
+}
+
+const appData = {
+  login: '1',
+  password: 'ok',
+  'Template:Test form 1': {login: 'tortuga', password: 'man!'},
+}
+
+const appView = builderViewWithCss.withTemplates(['template'])
+
+const App = () => {
+  return <FormBuilder view={appView} getForm={appGetForm} initialData={appData}/>
+}
 
 const childForm = {
   'version': '1',

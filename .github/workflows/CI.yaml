@@ -54,6 +54,10 @@ jobs:
         run: npm run test:e2e
         working-directory: src
 
+      - name: Run components tests
+        run: npm run test:browser
+        working-directory: src
+
       #      - name: Upload Playwright Report
       #        uses: actions/upload-artifact@v4
       #        if: ${{ !cancelled() }}

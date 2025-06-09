@@ -178,9 +178,9 @@ ios/Pods
 *.gradle
 
 # Test reports
-tests/e2e/playwright-report
-tests/e2e/reports
-tests/module/reports
-tests/react-17/reports
-tests/react-18/reports
-tests/react-19/reports
+src/tests/e2e/playwright-report
+src/tests/e2e/reports
+src/tests/module/reports
+src/tests/react-17/reports
+src/tests/react-18/reports
+src/tests/react-19/reports

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import {namedObserver} from '@react-form-builder/core'
 import {useCallback, useState} from 'react'
+import {isDesignerLocalStorageEnabled} from '../../../../utils/isDesignerLocalStorageEnabled'
 import {NavTab} from './components/NavTab'
 import {Properties} from './components/Properties'
 import {Section} from './Section'
@@ -26,12 +27,16 @@ const tabs: Record<Section, boolean> = {
 const localStoragePropertiesActiveTabKey = 'propertiesActiveTab'
 
 const saveActiveTab = (tabName: Section) => {
-  localStorage.setItem(localStoragePropertiesActiveTabKey, tabName)
+  if (isDesignerLocalStorageEnabled()) {
+    localStorage.setItem(localStoragePropertiesActiveTabKey, tabName)
+  }
 }
 
 const getActiveTab = () => {
   const defaultTab = Section.Main
-  const value = localStorage.getItem(localStoragePropertiesActiveTabKey) as Section ?? defaultTab
+  const value = isDesignerLocalStorageEnabled()
+    ? localStorage.getItem(localStoragePropertiesActiveTabKey) as Section ?? defaultTab
+    : defaultTab
   return tabs[value] ? value : defaultTab
 }
 

@@ -1,5 +1,6 @@
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
+import {isDesignerLocalStorageEnabled} from '@react-form-builder/designer/src/utils/isDesignerLocalStorageEnabled'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {expect} from 'vitest'
 
@@ -94,8 +95,14 @@ describe(`Changing the designer's language`, function () {
     const deItem = container.querySelector('li[data-event-key="de-DE"]')
     if (!deItem) throw new Error('Language "de-DE" not found')
 
-    const currentLangItem = currentLang === 'en-US' ? enItem : deItem
-    const nextLangItem = currentLang === 'en-US' ? deItem : enItem
+    const isEnglish = () => {
+      if (!isDesignerLocalStorageEnabled()) return true
+      return currentLang === 'en-US' || currentLang === 'en'
+    }
+
+    const currentLangItem = isEnglish() ? enItem : deItem
+    const nextLangItem = isEnglish() ? deItem : enItem
+
     await waitFor(() => expect(currentLangItem).toHaveAttribute('aria-checked', 'true'))
 
     // let's change the language

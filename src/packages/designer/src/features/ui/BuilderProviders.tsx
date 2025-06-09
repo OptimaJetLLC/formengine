@@ -22,6 +22,7 @@ import {BuilderStore} from '../../stores/BuilderStore'
 import {LocalStorageSynchronizer} from '../../stores/LocalStorageSynchronizer'
 import {BuilderStoreProvider} from '../../utils/BuilderStoreContext'
 import {determineTheme} from '../../utils/determineTheme'
+import {isDesignerLocalStorageEnabled} from '../../utils/isDesignerLocalStorageEnabled'
 import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
 import {getBuilderChildren} from '../dnd'
 import {CustomDragLayer} from '../dnd/components/CustomDragLayer'
@@ -33,12 +34,12 @@ import {StylesProvider} from './StylesProvider'
 class BuilderProviderData {
   constructor(public readonly store: Store,
               public readonly builderStore: BuilderStore,
-              public readonly localStorageSynchronizer: LocalStorageSynchronizer
+              public readonly localStorageSynchronizer?: LocalStorageSynchronizer
   ) {
   }
 
   dispose() {
-    this.localStorageSynchronizer.dispose()
+    this.localStorageSynchronizer?.dispose()
     this.builderStore.dispose()
     this.store.dispose()
   }
@@ -92,7 +93,9 @@ const useBuilderProviderData = (props: FormBuilderProps) => useCallback(() => {
   builderStore.changeBuilderMode('builder')
   stateFactory.builderStore = builderStore
 
-  const localStorageSynchronizer = new LocalStorageSynchronizer(builderStore)
+  const localStorageSynchronizer = isDesignerLocalStorageEnabled()
+    ? new LocalStorageSynchronizer(builderStore)
+    : undefined
   return new BuilderProviderData(store, builderStore, localStorageSynchronizer)
 }, [props])
 

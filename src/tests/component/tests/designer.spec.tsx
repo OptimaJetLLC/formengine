@@ -1,7 +1,21 @@
+import {builderViewWithCss} from '@react-form-builder/components-rsuite'
+import {FormBuilder} from '@react-form-builder/designer'
+import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer/utils/license'
 import {render} from '@testing-library/react'
 import React from 'react'
 import {expect} from 'vitest'
-import App from '../../common/lib/designer/App'
+import form from './forms/designer-form.json'
+
+const getFormFn = () => JSON.stringify(form)
+
+const App = () => {
+  return <FormBuilder
+    initialData={{title: 'Hello! Hello!'}}
+    licenseKey={generatedLicenseKey}
+    getForm={getFormFn}
+    view={builderViewWithCss}
+  />
+}
 
 console.log('REACT VERSION IN TEST:', React.version)
 

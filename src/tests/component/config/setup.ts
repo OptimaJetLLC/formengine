@@ -43,6 +43,9 @@ beforeAll(() => {
       const canvas = new Canvas()
       return canvas.getContext('2d')
     })
+  } else {
+    // disable local storage for the designer
+    process.env.FORM_BUILDER_DESIGNER_DISABLE_LOCAL_STORAGE = 'true'
   }
 
   // disable i18n logging

@@ -1,0 +1,74 @@
+{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "RsContainer 1",
+        "type": "RsContainer",
+        "children": [
+          {
+            "key": "login",
+            "type": "RsInput",
+            "props": {
+              "label": {
+                "value": "Login"
+              },
+              "placeholder": {
+                "value": "Enter login here"
+              }
+            },
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "template-login"
+              }
+            ]
+          },
+          {
+            "key": "password",
+            "type": "RsInput",
+            "props": {
+              "placeholder": {
+                "value": "Enter password here"
+              },
+              "label": {
+                "value": "Password"
+              },
+              "passwordMask": {
+                "value": true
+              }
+            },
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "template-password"
+              }
+            ]
+          },
+          {
+            "key": "submitButton",
+            "type": "RsButton",
+            "props": {
+              "appearance": {
+                "value": "primary"
+              },
+              "color": {
+                "value": "orange"
+              },
+              "loading": {
+                "value": false
+              },
+              "active": {
+                "value": false
+              },
+              "children": {
+                "value": "Submit"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,10 +1,31 @@
-import {type CustomizableKey, CustomizableZone, CustomizationMap, Options, useFormBuilder} from '@react-form-builder/designer'
+import {builderViewWithCss} from '@react-form-builder/components-rsuite'
+import {
+  type CustomizableKey,
+  CustomizableZone,
+  CustomizationMap,
+  FormBuilder,
+  FormBuilderProps,
+  Options,
+  useFormBuilder
+} from '@react-form-builder/designer'
+import {generatedLicenseKey} from '@react-form-builder/tests-common/lib/designer/utils/license'
 import {fireEvent, render} from '@testing-library/react'
 import {klona} from 'klona/full'
 import {useCallback} from 'react'
 import {Button} from 'rsuite'
 import {describe, expect} from 'vitest'
-import App from '../../common/lib/designer/App'
+import form from './forms/designer-customization.json'
+
+const getFormFn = () => JSON.stringify(form)
+
+const App = ({customization}: Partial<FormBuilderProps>) => {
+  return <FormBuilder
+    customization={customization}
+    licenseKey={generatedLicenseKey}
+    getForm={getFormFn}
+    view={builderViewWithCss}
+  />
+}
 
 // TODO FE-1134
 const disabledZones = new Set([

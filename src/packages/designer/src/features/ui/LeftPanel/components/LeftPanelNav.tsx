@@ -8,6 +8,7 @@ import type {ReactNode} from 'react'
 import {useCallback, useMemo, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
+import {isDesignerLocalStorageEnabled} from '../../../../utils/isDesignerLocalStorageEnabled'
 import {Rows} from '../../../components/Containers'
 import {CustomizableTab, SNav} from '../../../components/NavIconItem'
 import {customizable} from '../../../customization'
@@ -56,12 +57,16 @@ const Tab = ({section, ...rest}: Record<string, unknown> & { section: keyof type
 const localStorageLeftPanelActiveTabKey = 'leftPanelActiveTab'
 
 const saveActiveTab = (tabName: LeftPanelSection) => {
-  localStorage.setItem(localStorageLeftPanelActiveTabKey, tabName)
+  if (isDesignerLocalStorageEnabled()) {
+    localStorage.setItem(localStorageLeftPanelActiveTabKey, tabName)
+  }
 }
 
 const getActiveTab = () => {
   const defaultTab = 'components'
-  const value = localStorage.getItem(localStorageLeftPanelActiveTabKey) as LeftPanelSection ?? defaultTab
+  const value = isDesignerLocalStorageEnabled()
+    ? localStorage.getItem(localStorageLeftPanelActiveTabKey) as LeftPanelSection ?? defaultTab
+    : defaultTab
   return tabsProps[value] ? value : defaultTab
 }
 
