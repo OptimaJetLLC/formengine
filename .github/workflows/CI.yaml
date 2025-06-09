@@ -23,8 +23,10 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        working-directory: src
 
       - name: Check installed browsers
+        working-directory: src
         shell: pwsh
         run: |
           Write-Host "Checking if Chrome is installed..."
@@ -45,10 +47,16 @@ jobs:
 
       - name: Install playwright browsers
         run: npx playwright install --with-deps --only-shell chrome
+        working-directory: src
         if: env.PLAYWRIGHT_CHROME_INSTALLED!='true'
 
       - name: Run e2e tests
         run: npm run test:e2e
+        working-directory: src
+
+      - name: Run components tests
+        run: npm run test:browser
+        working-directory: src
 
       #      - name: Upload Playwright Report
       #        uses: actions/upload-artifact@v4
@@ -60,7 +68,7 @@ jobs:
 
       - name: Generate Report
         run: npx github-actions-ctrf reports/ctrf/ctrf-report.json
-        working-directory: tests/e2e
+        working-directory: src/tests/e2e
         if: always()
 
   tests:

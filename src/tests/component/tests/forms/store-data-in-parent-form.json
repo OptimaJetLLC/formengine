@@ -1,0 +1,24 @@
+{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "Template:Test form 1",
+        "type": "Template:template",
+        "children": [
+          {
+            "key": "Input in template",
+            "type": "RsInput",
+            "slot": "TemplateSlot",
+            "props": {
+              "label": {
+                "value": "Input in template form"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
