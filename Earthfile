@@ -1,6 +1,6 @@
 VERSION --try 0.8
 FROM node:20.17.0
-WORKDIR /form-engine
+WORKDIR /form-engine/src
 
 # npm-build builds all npm packages
 npm-build:
@@ -103,6 +103,7 @@ prepare-github-formengine-archive:
 # prepare-github-formenginesupport-archive creates an archive for the GitHub repository optimajet/formenginesupport
 prepare-github-formenginesupport-archive:
   FROM +sources
+  WORKDIR /form-engine
   COPY --dir BuildScripts/private-sources BuildScripts/private-sources
   COPY .editorconfig .editorconfig
   RUN cd BuildScripts/private-sources && npm install
@@ -350,58 +351,62 @@ run-sonar-analysis:
 # sources copies the source code
 sources:
   FROM +dependencies
-  COPY .eslintignore .eslintrc.cjs lerna.json LICENSE.md nx.json README.md tsconfig.json vite.config.ts .npmrc ./
-  COPY --dir types documentation packages scripts ./
-  COPY --dir tests/module tests/react-17 tests/react-18 tests/react-19 tests/common tests/component ./tests
-  SAVE ARTIFACT /form-engine
+  WORKDIR /form-engine
+  COPY src ./src
+  WORKDIR /form-engine/src
+  SAVE ARTIFACT /form-engine/src
 
 # dependencies installs node_modules dependencies
 dependencies:
-  COPY package.json package-lock.json ./
+  WORKDIR /form-engine
+  COPY src/package.json src/package-lock.json ./src
 
-  RUN mkdir documentation packages \
-   documentation/website packages/apps packages/views \
-   packages/apps/demo packages/apps/example-builder packages/apps/example-viewer \
-   packages/apps/landing \
-   packages/core packages/designer packages/designer-bundle packages/indexed-db-form-storage \
-   packages/viewer-bundle packages/views/antd packages/views/default packages/views/rsuite \
-   packages/views/fast-qr \
-   packages/views/rich-text \
-   packages/views/google-map \
-   tests tests/common tests/module tests/component tests/react-17 tests/react-18 tests/react-19
+  RUN mkdir src/documentation src/packages \
+   src/documentation/website src/packages/apps src/packages/views \
+   src/packages/apps/demo src/packages/apps/example-builder src/packages/apps/example-viewer \
+   src/packages/apps/landing \
+   src/packages/core src/packages/designer src/packages/designer-bundle src/packages/indexed-db-form-storage \
+   src/packages/viewer-bundle src/packages/views/antd src/packages/views/default src/packages/views/rsuite \
+   src/packages/views/fast-qr \
+   src/packages/views/rich-text \
+   src/packages/views/google-map \
+   src/tests src/tests/common src/tests/module src/tests/component src/tests/react-17 src/tests/react-18 src/tests/react-19 \
+   src/tests/e2e
 
-  COPY documentation/website/package.json documentation/website
+  COPY src/documentation/website/package.json src/documentation/website
 
-  COPY packages/apps/demo/package.json packages/apps/demo
-  COPY packages/apps/example-builder/package.json packages/apps/example-builder
-  COPY packages/apps/example-viewer/package.json packages/apps/example-viewer
-  COPY packages/apps/example-viewer/package.json packages/apps/example-viewer
-  COPY packages/apps/landing/package.json packages/apps/landing
+  COPY src/packages/apps/demo/package.json src/packages/apps/demo
+  COPY src/packages/apps/example-builder/package.json src/packages/apps/example-builder
+  COPY src/packages/apps/example-viewer/package.json src/packages/apps/example-viewer
+  COPY src/packages/apps/example-viewer/package.json src/packages/apps/example-viewer
+  COPY src/packages/apps/landing/package.json src/packages/apps/landing
 
-  COPY packages/core/package.json packages/core
-  COPY packages/designer/package.json packages/designer
-  COPY packages/designer-bundle/package.json packages/designer-bundle
-  COPY packages/indexed-db-form-storage/package.json packages/indexed-db-form-storage
-  COPY packages/viewer-bundle/package.json packages/viewer-bundle
+  COPY src/packages/core/package.json src/packages/core
+  COPY src/packages/designer/package.json src/packages/designer
+  COPY src/packages/designer-bundle/package.json src/packages/designer-bundle
+  COPY src/packages/indexed-db-form-storage/package.json src/packages/indexed-db-form-storage
+  COPY src/packages/viewer-bundle/package.json src/packages/viewer-bundle
 
-  COPY packages/views/antd/package.json packages/views/antd
-  COPY packages/views/default/package.json packages/views/default
-  COPY packages/views/rsuite/package.json packages/views/rsuite
-  COPY packages/views/fast-qr/package.json packages/views/fast-qr
-  COPY packages/views/rich-text/package.json packages/views/rich-text
-  COPY packages/views/google-map/package.json packages/views/google-map
+  COPY src/packages/views/antd/package.json src/packages/views/antd
+  COPY src/packages/views/default/package.json src/packages/views/default
+  COPY src/packages/views/rsuite/package.json src/packages/views/rsuite
+  COPY src/packages/views/fast-qr/package.json src/packages/views/fast-qr
+  COPY src/packages/views/rich-text/package.json src/packages/views/rich-text
+  COPY src/packages/views/google-map/package.json src/packages/views/google-map
 
-  COPY tests/component/package.json tests/component
-  COPY tests/common/package.json tests/common
-  COPY tests/module/package.json tests/react-17
-  COPY tests/react-17/package.json tests/react-17
-  COPY tests/react-18/package.json tests/react-18
-  COPY tests/react-19/package.json tests/react-19
+  COPY src/tests/component/package.json src/tests/component
+  COPY src/tests/common/package.json src/tests/common
+  COPY src/tests/module/package.json src/tests/react-17
+  COPY src/tests/react-17/package.json src/tests/react-17
+  COPY src/tests/react-18/package.json src/tests/react-18
+  COPY src/tests/react-19/package.json src/tests/react-19
+  COPY src/tests/e2e/package.json src/tests/e2e
 
+  WORKDIR /form-engine/src
   RUN npm ci
 
-  SAVE ARTIFACT package.json AS LOCAL package.json
-  SAVE ARTIFACT package-lock.json AS LOCAL package-lock.json
+  SAVE ARTIFACT package.json AS LOCAL src/package.json
+  SAVE ARTIFACT package-lock.json AS LOCAL src/package-lock.json
 
 GITHUB_COMMIT_AND_PUSH:
   FUNCTION

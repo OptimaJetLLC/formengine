@@ -1,6 +1,5 @@
 /* eslint-env node */
 const projects = [
-  './scripts/localization/tsconfig.json',
   './packages/core/tsconfig.json',
   './packages/designer/tsconfig.json',
   './packages/designer-bundle/tsconfig.json',
@@ -115,23 +114,5 @@ module.exports = {
     project: projects,
     tsconfigRootDir: __dirname,
   },
-  overrides: [
-    {
-      files: ['./scripts/localization/**/*'],
-      "env": {
-        "es6": true,
-        "node": true
-      },
-      "rules": {
-        "@typescript-eslint/no-var-requires": "off",
-        'import/no-nodejs-modules': 'off',
-        'no-console': 'off',
-        'jsdoc/require-jsdoc': 'off'
-      },
-      parserOptions: {
-        "ecmaVersion": "latest"
-      }
-    }
-  ],
   root: true,
 };

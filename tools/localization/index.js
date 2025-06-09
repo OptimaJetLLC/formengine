@@ -25,8 +25,8 @@ import locales from './localizations.js'
 const {YA_API_URL, YA_FOLDER_ID, YA_IAM_TOKEN} = process.env;
 
 const LOCALIZATION_FOLDER = [
-  '../../packages/designer/public/locales',
-  '../../packages/core/src/features/license/locales'
+  '../../src/packages/designer/public/locales',
+  '../../src/packages/core/src/features/license/locales'
 ];
 
 const {en, ...localizations} = locales;

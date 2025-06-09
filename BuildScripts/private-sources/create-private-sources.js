@@ -55,7 +55,6 @@ function copySources(srcPath, dstPath) {
     'packages/indexed-db-form-storage',
     'packages/views/antd',
     'packages/views/rsuite',
-    '.editorconfig',
     'lerna.json',
     'LICENSE.md',
     'nx.json',
@@ -67,6 +66,7 @@ function copySources(srcPath, dstPath) {
 
   filesToCopy.forEach(item => fse.copySync(join(srcPath, item), join(dstPath, item)))
   fse.copySync(join(__dirname, 'includes', 'README.md'), join(dstPath, 'README.md'))
+  fse.copySync(join(srcPath, '..', '.editorconfig'), join(dstPath, '.editorconfig'))
 
   patchPackageJson(join(dstPath, 'package.json'))
 
@@ -117,8 +117,9 @@ function testSources(zipPath, output) {
 const rootPath = join(__dirname, '..', '..')
 const archivesPath = join(rootPath, '.archives')
 const destPath = join(archivesPath, 'private-github')
+const srcPath = join(rootPath, 'src')
 
-copySources(rootPath, destPath)
+copySources(srcPath, destPath)
 
 const zipPath = join(archivesPath, 'formenginesupport.zip')
 zip(destPath, zipPath)
