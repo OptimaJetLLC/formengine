@@ -95,7 +95,7 @@ prepare-documentation-archive:
 
 # prepare-github-formengine-archive creates an archive for the GitHub repository optimajet/formengine
 prepare-github-formengine-archive:
-  COPY --dir packages/apps/formengine github-formengine
+  COPY --dir src/packages/apps/formengine github-formengine
   COPY --dir examples github-formengine
   RUN tar -czvf formengine.tgz -C github-formengine .
   SAVE ARTIFACT formengine.tgz AS LOCAL .archives/formengine.tgz
