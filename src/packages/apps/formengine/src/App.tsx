@@ -4,10 +4,7 @@ import {FormBuilderExample} from './components/FormBuilderExample'
 import {FormViewerExample} from './components/FormViewerExample'
 import {Main} from './components/Main'
 
-/**
- * @returns the main application component.
- */
-export default function App() {
+function App() {
   return (
     <Switch>
       <Route path="/" component={Main}/>
@@ -15,3 +12,5 @@ export default function App() {
       <Route path="/form-viewer" component={FormViewerExample}/>
     </Switch>)
 }
+
+export default App

@@ -3,16 +3,18 @@ import {
   ltrCssLoader,
   rsErrorMessage,
   RsLocalizationWrapper,
+  rsTooltip,
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
-import {BiDi, createView, FormViewer} from '@react-form-builder/core'
+import {BiDi} from '@react-form-builder/core'
+import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import * as SampleForm from './SampleForm.json'
 
-const viewerComponents = rSuiteComponents.map(c => c.build().model)
-viewerComponents.push(rsErrorMessage.build().model)
-
-const view = createView(viewerComponents)
+const builderComponents = rSuiteComponents.map(c => c.build())
+const builderView = new BuilderView(builderComponents)
+  .withErrorMeta(rsErrorMessage.build())
+  .withTooltipMeta(rsTooltip.build())
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
@@ -20,10 +22,6 @@ const view = createView(viewerComponents)
 
 const getForm = (_?: string) => JSON.stringify(SampleForm)
 
-/**
- * @returns the FormViewer example page component.
- */
-export const FormViewerExample = () =>
-  <div style={{margin: 20}}>
-    <FormViewer view={view} formName="SampleForm" getForm={getForm}/>
-  </div>
+export const FormBuilderExample = () => {
+  return <FormBuilder view={builderView} formName="SampleForm" getForm={getForm}/>
+}
