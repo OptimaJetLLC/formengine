@@ -1,4 +1,4 @@
-import {boolean, define, event, string, time, timeFormat} from '@react-form-builder/core'
+import {boolean, define, disabled, event, string, time, timeFormat} from '@react-form-builder/core'
 import {format as formatDate, parse} from 'date-fns'
 import type {SyntheticEvent} from 'react'
 import {useCallback, useMemo} from 'react'
@@ -77,7 +77,7 @@ export const rsTimePicker = define(RsTimePicker, 'RsTimePicker')
       .default('HH:mm'),
     editable: boolean.default(true),
     cleanable: boolean.default(false),
-    disabled: boolean.default(false),
+    disabled: disabled.default(false),
     readOnly,
     open: boolean,
     placement: placement,

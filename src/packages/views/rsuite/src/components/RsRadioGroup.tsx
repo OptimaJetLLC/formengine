@@ -1,5 +1,5 @@
 import type {LabeledValue} from '@react-form-builder/core'
-import {array, boolean, define, event, oneOf, string, toLabeledValues} from '@react-form-builder/core'
+import {array, boolean, define, disabled, event, oneOf, string, toLabeledValues} from '@react-form-builder/core'
 import type {RadioGroupProps} from 'rsuite'
 import {Radio, RadioGroup} from 'rsuite'
 import {readOnly} from '../commonProperties'
@@ -29,7 +29,7 @@ export const rsRadioGroup = define(RsRadioGroup, 'RsRadioGroup')
     name: string.default('RadioGroup').hinted('Radio group name'),
     appearance: oneOf('default', 'picker').labeled('Default', 'Picker').default('default'),
     label: string.default('Radio'),
-    disabled: boolean.hinted('The disable of component').default(false),
+    disabled: disabled.hinted('The disable of component').default(false),
     readOnly,
     inline: boolean.default(false),
     onChange: event,

@@ -1,4 +1,4 @@
-import {boolean, define, event, oneOf, string} from '@react-form-builder/core'
+import {boolean, define, disabled, event, oneOf, string} from '@react-form-builder/core'
 import {Button} from 'rsuite'
 import {controlColor, readOnly, size} from '../commonProperties'
 
@@ -11,7 +11,7 @@ export const rsButton = define(Button, 'RsButton')
       .hinted('A button can have different appearances'),
     children: string.required.named('Content').default('Button'),
     color: controlColor,
-    disabled: boolean.hinted('A button can show it is currently unable to be interacted with').default(false),
+    disabled: disabled.hinted('A button can show it is currently unable to be interacted with').default(false),
     readOnly,
     href: string.hinted('Providing a href will render an <a> element'),
     loading: boolean.hinted('A button can show a loading indicator').default(false),

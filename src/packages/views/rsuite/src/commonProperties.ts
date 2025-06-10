@@ -87,7 +87,7 @@ export const pickerProps = {
   data: array,
   cleanable: boolean.default(true),
   creatable: boolean.default(false),
-  disabled: boolean.default(false),
+  disabled: disabled.default(false),
   readOnly,
   groupBy: string.default(''),
   onLoadData: event,

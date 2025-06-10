@@ -1,4 +1,4 @@
-import {boolean, define, event, string} from '@react-form-builder/core'
+import {define, disabled, event, string} from '@react-form-builder/core'
 import type {InputProps} from 'rsuite'
 import {Input} from 'rsuite'
 import {positiveNumber, readOnly, size} from '../commonProperties'
@@ -23,7 +23,7 @@ export const rsTextArea = define(RsTextArea, 'RsTextArea')
     placeholder: string,
     rows: positiveNumber.default(5),
     size,
-    disabled: boolean.hinted('Disabled component').default(false),
+    disabled: disabled.hinted('Disabled component').default(false),
     readOnly,
     onChange: event,
     onPressEnter: event
