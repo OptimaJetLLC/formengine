@@ -20,8 +20,10 @@ const view = createView(viewerComponents)
 
 const getForm = (_?: string) => JSON.stringify(SampleForm)
 
-export const FormViewerExample = () => {
-  return <div style={{margin: 20}}>
+/**
+ * @returns the FormViewer example page component.
+ */
+export const FormViewerExample = () =>
+  <div style={{margin: 20}}>
     <FormViewer view={view} formName="SampleForm" getForm={getForm}/>
   </div>
-}

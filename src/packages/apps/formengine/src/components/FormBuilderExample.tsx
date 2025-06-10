@@ -22,6 +22,9 @@ const builderView = new BuilderView(builderComponents)
 
 const getForm = (_?: string) => JSON.stringify(SampleForm)
 
-export const FormBuilderExample = () => {
-  return <FormBuilder view={builderView} formName="SampleForm" getForm={getForm}/>
-}
+/**
+ * @returns the FormBuilder example page component.
+ */
+export const FormBuilderExample = () => (
+  <FormBuilder view={builderView} formName="SampleForm" getForm={getForm}/>
+)
