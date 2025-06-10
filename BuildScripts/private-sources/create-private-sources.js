@@ -56,7 +56,7 @@ function copySources(srcPath, dstPath) {
     'packages/views/antd',
     'packages/views/rsuite',
     'packages/views/signature',
-    '.editorconfig',
+    '../.editorconfig',
     'lerna.json',
     'LICENSE.md',
     'nx.json',

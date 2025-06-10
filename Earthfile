@@ -97,6 +97,7 @@ prepare-documentation-archive:
 prepare-github-formengine-archive:
   COPY --dir src/packages/apps/formengine github-formengine
   COPY --dir examples github-formengine
+  COPY --dir .editorconfig github-formengine
   RUN tar -czvf formengine.tgz -C github-formengine .
   SAVE ARTIFACT formengine.tgz AS LOCAL .archives/formengine.tgz
 
@@ -105,7 +106,7 @@ prepare-github-formenginesupport-archive:
   FROM +sources
   WORKDIR /form-engine
   COPY --dir BuildScripts/private-sources BuildScripts/private-sources
-  COPY .editorconfig .editorconfig
+  COPY .editorconfig .
   RUN cd BuildScripts/private-sources && npm install
   RUN cd BuildScripts/private-sources && npm run create-private-sources
   SAVE ARTIFACT .archives/formenginesupport.zip AS LOCAL .archives/formenginesupport.zip
