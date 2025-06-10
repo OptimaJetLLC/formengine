@@ -1,0 +1,67 @@
+{
+  "version": "1",
+  "formValidator": "    const result = {}\n  if (formData.input0 !== 'input0') result.input0 = 'invalid input0'\n    if (formData.input2 !== 'input2') result.input2 = 'invalid input2'\n    console.log(result); return result",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "input0",
+        "type": "RsInput",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "input0"
+          }
+        ],
+        "schema": {
+          "validations": [],
+          "autoValidate": false
+        }
+      },
+      {
+        "key": "input1",
+        "type": "RsInput",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "input1"
+          }
+        ],
+        "schema": {
+          "validations": [],
+          "autoValidate": false
+        }
+      },
+      {
+        "key": "input2",
+        "type": "RsInput",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "input2"
+          }
+        ],
+        "schema": {
+          "validations": [],
+          "autoValidate": false
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

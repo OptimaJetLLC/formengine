@@ -583,6 +583,7 @@
     "chooseValidation": "Choose your type",
     "addRule": "Add a validation rule",
     "editCustomValidationCode": "Edit custom validation code for component",
+    "editFormValidatorCode": "Edit form validation code",
     "rule": {
       "required": "Required",
       "nonEmpty": "Non empty",
@@ -628,7 +629,8 @@
       "actions": "Actions",
       "error": "Error settings",
       "tooltip": "Tooltip",
-      "language": "Language settings"
+      "language": "Language settings",
+      "formValidator": "Form validator"
     }
   },
   "bottomPanel": {

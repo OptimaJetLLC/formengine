@@ -176,6 +176,33 @@ const customValidators: Validators = {
 
 ## Form validation
 
+### Form validator editor
+
+When editing a form in the designer, you can set a code that will validate the entire form. To do this, go to the **Settings** tab and click
+the **Edit code** button at the **Form validator** property.
+
+![Validation 16](/assets/validation/validation-16.png)
+
+In the edit window, write your validation function, which receives form data as input and returns the result in object format, where the key
+is the field key and the value is the error text. You can also return an empty object or `undefined` if validation is successful.
+
+Example:
+
+```ts
+/**
+ * @param {Record<string, unknown>} formData the form data.
+ * @returns {Record<string, string> | undefined} the validation result.
+ */
+async (formData) => {
+  const result = {}
+  if (formData.input0 !== 'input0') result.input0 = 'invalid input0'
+  if (formData.input2 !== 'input2') result.input2 = 'invalid input2'
+  return result
+}
+```
+
+### External
+
 Whole form validation can be implemented if validators have been passed to the FormBuilder/FormViewer properties in
 the [formValidators](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#formvalidators) property.
 

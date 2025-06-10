@@ -2,7 +2,6 @@ import {camelCase, isArray, isEmpty, merge} from 'lodash-es'
 import type {IReactionDisposer} from 'mobx'
 import {makeAutoObservable, reaction} from 'mobx'
 import type {Model} from '../../features/define'
-import type {FormValidator, FormValidators} from '../../features/form-viewer/FormValidators'
 import {getFluentData} from '../../features/localization/getFluentData'
 import type {Field} from '../../features/validation'
 import type {ValidationMessages} from '../../features/validation/types/ValidationResult'
@@ -105,7 +104,7 @@ export const initFormFields = (form: ComponentData) => {
 export class ComponentData implements IFormData {
   #disposers: IReactionDisposer[]
   #events?: ComponentDataEvents
-  #formValidators?: FormValidators
+  #getFormValidatorsResult?: () => Promise<Record<string, string>[]>
   private _state: Record<string, unknown> = {}
   /**
    * The unique identifier.
@@ -168,14 +167,15 @@ export class ComponentData implements IFormData {
    * @param componentStore the component settings.
    * @param model the component metadata for the form viewer.
    * @param childFactory the factory function that creates {@link ComponentData} instance.
-   * @param formValidators the array of functions that validate the form data.
+   * @param getFormValidationResult the function that returns a form validation results.
    */
   constructor(componentStore: ComponentStore, model: Model,
-              childFactory: (componentStore: ComponentStore) => ComponentData, formValidators?: FormValidators) {
+              childFactory: (componentStore: ComponentStore) => ComponentData,
+              getFormValidationResult?: () => Promise<Record<string, string>[]>) {
     this.store = componentStore
     this.model = model
     this.id = generateId(this.model.type)
-    this.#formValidators = formValidators
+    this.#getFormValidatorsResult = getFormValidationResult
 
     componentStore.children?.forEach(childComponentStore => {
       const child = childFactory(childComponentStore)
@@ -475,16 +475,11 @@ export class ComponentData implements IFormData {
 
     await Promise.allSettled(this.allComponentFields.map(getFieldMessages))
 
-    if (!this.#formValidators) return messages
-
-    const getFormMessages = async (validator: FormValidator) => {
-      const result = await validator(this.data)
-      if (isEmpty(result)) return
+    const results = await this.#getFormValidatorsResult?.()
+    results?.forEach(result => {
       messages ??= {}
       merge(messages, result)
-    }
-
-    await Promise.allSettled(this.#formValidators.map(getFormMessages))
+    })
 
     return messages
   }
@@ -546,19 +541,12 @@ export class ComponentData implements IFormData {
     this.validating = true
     try {
       await Promise.allSettled([...this.allFields].map(f => f.validate()))
-      if (!this.#formValidators) return
+
+      const results = await this.#getFormValidatorsResult?.()
+      if (!results?.length) return
 
       const fields = this.allComponentFields
-      const customValidatorPromises = this.#formValidators.map(v => v(this.data))
-      const results = await Promise.allSettled(customValidatorPromises)
-
-      results.map(result => {
-        if (result.status === 'rejected') {
-          console.error(result.reason)
-          return undefined
-        }
-        return result.value
-      }).forEach(resultValue => {
+      results.forEach(resultValue => {
         if (!resultValue) return
         fields.forEach(({field, dataKey}) => {
           if (resultValue[dataKey]) return field.setError(resultValue[dataKey])

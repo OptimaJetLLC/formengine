@@ -274,7 +274,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
   createComponentData(componentStore: ComponentStore, deferFieldCalculation = false): ComponentData {
     const model = this.getModel(componentStore.type)
     const factory = (cs: ComponentStore) => this.createComponentData(cs, deferFieldCalculation)
-    const componentData = new ComponentData(componentStore, model, factory, this.formViewerPropsStore.formValidators)
+    const componentData = new ComponentData(componentStore, model, factory, this.getFormValidatorsResult.bind(this))
     componentData.field = this.createField(componentData, deferFieldCalculation)
     componentData.componentState = this.componentStateFactory(componentData, this)
     return componentData
@@ -411,6 +411,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
       this.form.errorProps = persistedForm.errorProps ?? {}
       this.form.tooltipType = persistedForm.tooltipType
       this.form.errorType = persistedForm.errorType
+      this.form.formValidator = persistedForm.formValidator
     })
 
     // here we need to make the keys unique, because no reactions will be triggered during the action
@@ -490,4 +491,29 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
     componentData.getInitialData = () => this.initialDataSlice
     return componentData
   }
+
+  private async getFormValidatorsResult() {
+    const validatorsFromProps = this.formViewerPropsStore.formValidators
+    const formValidator = this.form.formValidatorFunction
+
+    const validatorPromises = []
+    if (validatorsFromProps) {
+      validatorPromises.push(...validatorsFromProps.map(v => v(this.form.componentTree.data)))
+    }
+    if (formValidator) {
+      validatorPromises.push(formValidator(this.form.componentTree?.data ?? {}))
+    }
+
+    const settledPromises = await Promise.allSettled(validatorPromises)
+    const results = settledPromises?.map(result => {
+      if (result.status === 'rejected') {
+        console.error(result.reason)
+        return undefined
+      }
+      return result.value
+    })
+
+    return results.filter(value => typeof value !== 'undefined') as Record<string, string>[]
+  }
+
 }

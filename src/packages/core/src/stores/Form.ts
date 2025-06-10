@@ -1,7 +1,9 @@
 import {makeAutoObservable} from 'mobx'
 import type {ActionData, ActionValues, NamedActionDefinition} from '../features/event'
 import {ActionDefinition} from '../features/event'
+import type {FormValidator} from '../features/form-viewer/FormValidators'
 import type {Language} from '../features/localization/types'
+import {AsyncFunction} from '../utils/AsyncFunction'
 import type {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {generateUniqueName} from '../utils/generateUniqueName'
 import type {ComponentStore} from './ComponentStore'
@@ -52,6 +54,11 @@ export class Form {
   defaultLanguage: Language
 
   /**
+   * The form validator.
+   */
+  formValidator?: string
+
+  /**
    * Creates a new instance of Form.
    * @param componentTree the root component of the form.
    * @param localization the localization of the form.
@@ -78,6 +85,14 @@ export class Form {
    */
   get actionNames(): string[] {
     return Object.keys(this.actions)
+  }
+
+  /**
+   * @returns the form validator function.
+   */
+  get formValidatorFunction(): FormValidator | undefined {
+    if (!this.formValidator) return
+    return AsyncFunction('formData', this.formValidator)
   }
 
   /**
