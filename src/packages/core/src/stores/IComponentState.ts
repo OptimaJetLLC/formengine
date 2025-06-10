@@ -33,6 +33,16 @@ export interface IComponentState {
    * The method that is called when the component is unmounted.
    */
   onWillUnmount(): void
+
+  /**
+   * @returns true if the component has a read-only property and this property is true, false otherwise.
+   */
+  get isReadOnly(): boolean
+
+  /**
+   * @returns true if the component has a disabled property and this property is true, false otherwise.
+   */
+  get isDisabled(): boolean
 }
 
 /**
@@ -73,4 +83,16 @@ export const defaultComponentState: IComponentState = {
    */
   onWillUnmount(): void {
   },
+  /**
+   * @inheritDoc
+   */
+  get isReadOnly() {
+    return false
+  },
+  /**
+   * @inheritDoc
+   */
+  get isDisabled() {
+    return false
+  }
 }

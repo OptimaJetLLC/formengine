@@ -1,0 +1,63 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "slot",
+        "type": "Slot",
+        "props": {}
+      },
+      {
+        "key": "rsContainer1",
+        "type": "RsContainer",
+        "props": {},
+        "children": [
+          {
+            "key": "templateInputInContainer",
+            "type": "RsInput",
+            "props": {},
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "test-input"
+              },
+              {
+                "name": "data-testkey",
+                "value": "templateInputInContainer"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "templateInput",
+        "type": "RsInput",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "test-input"
+          },
+          {
+            "name": "data-testkey",
+            "value": "templateInput"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

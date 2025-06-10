@@ -115,6 +115,11 @@ export interface FormViewerProps {
   readOnly?: boolean
 
   /**
+   * If true, the form is disabled.
+   */
+  disabled?: boolean
+
+  /**
    * If true, all validation errors will be displayed.
    */
   showAllValidationErrors?: boolean

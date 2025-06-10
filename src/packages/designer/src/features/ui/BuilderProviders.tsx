@@ -122,7 +122,7 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
     store.formViewerPropsStore.applyProps(viewerProps)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.initialData, props.view, props.validators, props.formValidators, props.localize, props.language, props.actions,
-    props.errorWrapper, props.readOnly, props.componentWrapper])
+    props.errorWrapper, props.readOnly, props.disabled, props.componentWrapper])
 
   useEffect(() => {
     props.onFormSchemaChange?.(builderStore.formAsString)

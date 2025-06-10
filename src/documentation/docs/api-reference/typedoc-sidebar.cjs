@@ -840,6 +840,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/variables/disabled",
+            "label": "disabled"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/variables/emotionCache",
             "label": "emotionCache"
           },

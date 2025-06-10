@@ -49,9 +49,11 @@ const Template = (templateProps: Record<string, any>) => {
       formName: getTemplateName(data.store.type),
       onFormDataChange: undefined,
       formValidators: undefined,
+      disabled: templateProps.disabled,
+      readOnly: templateProps.readOnly
     }
     return Object.assign({}, viewerProps, overrideProps)
-  }, [data.store.type, viewerProps])
+  }, [data.store.type, viewerProps, templateProps])
 
   const templateProviderValue = useMemo(() => ({templateProps, viewerProps, data}), [templateProps, viewerProps, data])
 
@@ -84,5 +86,5 @@ export function createTemplateModel(name: string) {
   const typeName = generateTemplateTypeName(name)
   const defaultProps = {name, storeDataInParentForm: true}
   return new Model(Template, name, undefined, typeName, 'object', defaultProps, defaultCss,
-    undefined, typeName, 'template')
+    undefined, typeName, 'template', 'readOnly', undefined, undefined, 'disabled')
 }

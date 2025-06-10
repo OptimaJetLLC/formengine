@@ -156,6 +156,7 @@ export class ComponentState implements IComponentState {
       this.localizedProps,
       this.value,
       this.readOnly,
+      this.disabled,
       this.events,
       htmlAttributes ?? this.htmlAttributes,
       this.data.userDefinedProps,
@@ -174,12 +175,43 @@ export class ComponentState implements IComponentState {
   }
 
   /**
-   * @returns the component's read-only flag, if the component can have a read-only flag.
+   * @returns the read-only property of a component if the component has a read-only flag.
    */
   get readOnly() {
-    if (this.store.formViewerPropsStore.readOnly && this.data.model.readOnly) {
-      return {[this.data.model.readOnly]: true}
+    if (this.data.model.readOnly) {
+      return {[this.data.model.readOnly]: this.isReadOnly}
     }
+  }
+
+  /**
+   * @inheritDoc
+   */
+  get isReadOnly() {
+    if (!this.data.model.readOnly) return false
+
+    return this.store.formViewerPropsStore.readOnly
+      || this.data.parent?.componentState.isReadOnly
+      || (this.selfProps[this.data.model.readOnly] ?? false)
+  }
+
+  /**
+   * @returns the disabled property of a component if the component has a disabled flag.
+   */
+  get disabled() {
+    if (this.data.model.disabled) {
+      return {[this.data.model.disabled]: this.isDisabled}
+    }
+  }
+
+  /**
+   * @inheritDoc
+   */
+  get isDisabled() {
+    if (!this.data.model.disabled) return false
+
+    return this.store.formViewerPropsStore.disabled
+      || this.data.parent?.componentState.isDisabled
+      || (this.selfProps[this.data.model.disabled] ?? false)
   }
 
   /**
@@ -280,5 +312,16 @@ export class ComponentState implements IComponentState {
         ${store[cssPart]?.[viewMode]?.string}
       }
     `
+  }
+
+  private get selfProps() {
+    const {htmlAttributes, ...calculated} = this.calculatedProps
+    return {
+      ...this.data.model.defaultProps,
+      ...calculated,
+      ...this.localizedProps,
+      ...this.value,
+      ...this.data.userDefinedProps,
+    }
   }
 }

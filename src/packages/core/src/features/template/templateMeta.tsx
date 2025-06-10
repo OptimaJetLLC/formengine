@@ -1,4 +1,4 @@
-import {boolean} from '../annotation'
+import {boolean, disabled, readOnly} from '../annotation'
 import {toArray} from '../annotation/toArray'
 import {modules} from '../define/constants'
 import {Meta} from '../define/utils/Meta'
@@ -7,6 +7,8 @@ import {templateStyleProperties} from './templateModel'
 
 interface TemplateProps {
   storeDataInParentForm?: boolean
+  disabled?: boolean
+  readOnly?: boolean
 }
 
 const storeDataInParentForm = boolean
@@ -25,6 +27,8 @@ export function createTemplateMeta(name: string) {
   return new Meta(typeName,
     toArray<TemplateProps>({
       storeDataInParentForm,
+      disabled: disabled,
+      readOnly: readOnly,
     }),
     [], templateStyleProperties, modules, undefined, undefined, 'template')
 }

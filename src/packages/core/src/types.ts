@@ -27,6 +27,16 @@ export interface ScreenProps {
    * The React child node.
    */
   children: ReactNode
+
+  /**
+   * If true, the children are in disabled state.
+   */
+  disabled?: boolean
+
+  /**
+   * If true, the children are in read-only state.
+   */
+  readOnly?: boolean
 }
 
 /**

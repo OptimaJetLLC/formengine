@@ -52,6 +52,10 @@ export class FormViewerPropsStore {
    */
   readOnly?: boolean
   /**
+   * If true, the form is disabled.
+   */
+  disabled?: boolean
+  /**
    * If true, all validation errors will be displayed.
    */
   showAllValidationErrors?: boolean
@@ -75,6 +79,7 @@ export class FormViewerPropsStore {
       actions: observable.ref,
       propsLanguage: observable.ref,
       errorWrapper: observable.ref,
+      disabled: observable.ref,
       readOnly: observable.ref,
       showAllValidationErrors: observable.ref,
     }, {name: nameObservable(`FormViewerPropsStore`)})
@@ -94,6 +99,7 @@ export class FormViewerPropsStore {
     this.propsLanguage = formViewerProps.language
     this.errorWrapper = formViewerProps.errorWrapper
     this.readOnly = formViewerProps.readOnly
+    this.disabled = formViewerProps.disabled
     this.showAllValidationErrors = formViewerProps.showAllValidationErrors
   }
 
@@ -112,6 +118,7 @@ export class FormViewerPropsStore {
     clone.propsLanguage = this.propsLanguage
     clone.errorWrapper = this.errorWrapper
     clone.readOnly = this.readOnly
+    clone.disabled = this.disabled
     clone.showAllValidationErrors = this.showAllValidationErrors
     return clone
   }
