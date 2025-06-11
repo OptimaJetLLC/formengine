@@ -524,6 +524,7 @@
     "formSettings": {
       "actions": "Aktionen",
       "error": "Fehlereinstellungen",
+      "formValidator": "Formular-Validator",
       "language": "Spracheinstellungen",
       "tooltip": "QuickInfo"
     },
@@ -626,6 +627,7 @@
     "addRule": "Regel hinzufügen",
     "chooseValidation": "Wählen Sie Ihren Typ",
     "editCustomValidationCode": "Benutzerdefinierten Validierungscode für Komponente bearbeiten",
+    "editFormValidatorCode": "Formular-Validierungscode bearbeiten",
     "formErrors": "Formularfehler",
     "rule": {
       "code": "Code",

@@ -24,6 +24,9 @@ import locales from './localizations.js'
 //https://cloud.yandex.ru/docs/translate/quickstart
 const {YA_API_URL, YA_FOLDER_ID, YA_IAM_TOKEN} = process.env;
 
+const rSuiteFolder = '../../src/packages/designer/src/features/localization/rsuite/locales'
+const rSuiteComponentsFolder = '../../src/packages/views/rsuite/src/components/i18n/locales'
+
 const LOCALIZATION_FOLDER = [
   '../../src/packages/designer/public/locales',
   '../../src/packages/core/src/features/license/locales'
@@ -104,8 +107,39 @@ function translateFolder(folder) {
   console.log('translating ', folder, 'done!');
 }
 
+function translateRSuiteFolder() {
+  console.log('translating ', rSuiteFolder)
+
+  const enUS = getLocalization(rSuiteFolder, 'en-US')
+  const defaultLanguage = sortObject(enUS)
+
+  const rSuiteLocales = {
+    'hi': 'hi-IN',
+    'sr': 'sr-RS'
+  }
+
+  const localesData = {}
+  Object.entries(rSuiteLocales).forEach(([_, locale]) => {
+    localesData[locale] = getLocalization(rSuiteFolder, locale)
+  })
+
+  Object.entries(rSuiteLocales).forEach(([key, fullCode]) => {
+    updateLocalization(rSuiteFolder, defaultLanguage, localesData[fullCode], key)
+
+    const fileName = `${fullCode}.json`
+    // update components localization
+    fs.copyFileSync(
+      path.join(rSuiteFolder, fileName),
+      path.join(rSuiteComponentsFolder, fileName)
+    )
+  });
+
+  console.log('translating ', rSuiteFolder, 'done!');
+}
+
 function run() {
   LOCALIZATION_FOLDER.forEach(translateFolder)
+  translateRSuiteFolder()
 }
 
 

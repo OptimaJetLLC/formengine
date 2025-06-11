@@ -524,6 +524,7 @@
     "formSettings": {
       "actions": "Actions",
       "error": "Paramètres d'erreur",
+      "formValidator": "Validateur de formulaire",
       "language": "Paramètres de langue",
       "tooltip": "Infobulle"
     },
@@ -626,6 +627,7 @@
     "addRule": "Ajouter une règle",
     "chooseValidation": "Choisissez votre type",
     "editCustomValidationCode": "Modifier le code de validation personnalisé pour le composant",
+    "editFormValidatorCode": "Modifier le code de validation du formulaire",
     "formErrors": "Erreurs de formulaire",
     "rule": {
       "code": "Code",

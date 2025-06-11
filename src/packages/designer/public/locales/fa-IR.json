@@ -524,6 +524,7 @@
     "formSettings": {
       "actions": "اقدامات",
       "error": "تنظیمات خطا",
+      "formValidator": "اعتبار سنج فرم",
       "language": "تنظیمات زبان",
       "tooltip": "راهنمای ابزار"
     },
@@ -626,6 +627,7 @@
     "addRule": "اضافه کردن قاعده",
     "chooseValidation": "انتخاب نوع خود",
     "editCustomValidationCode": "ویرایش کد اعتبارسنجی سفارشی اجزا",
+    "editFormValidatorCode": "ویرایش کد اعتبارسنجی فرم",
     "formErrors": "خطاهای فرم",
     "rule": {
       "code": "کد",

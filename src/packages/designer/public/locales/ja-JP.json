@@ -1,0 +1,660 @@
+{
+  "GoogleMap": {
+    "addMarkerOnSearch": {
+      "hint": "検索時にマーカーを追加するかどうか。"
+    },
+    "allowChangingMarkers": {
+      "hint": "チェックされている場合、ユーザーはマーカーを変更できます。"
+    },
+    "allowMultipleMarkers": {
+      "hint": "複数のマーカー"
+    },
+    "apiKey": {
+      "hint": "GoogleマップAPIキー。 フォームを保存し、ページを更新して変更を適用します。",
+      "name": "APIキー"
+    },
+    "collisionBehavior": {
+      "hint": "マーカーの衝突の動作。"
+    },
+    "colorScheme": {
+      "hint": "使用する配色。"
+    },
+    "gestureHandling": {
+      "hint": "使用するジェスチャ処理。"
+    },
+    "language": {
+      "hint": "使用する言語。"
+    },
+    "latitude": {
+      "hint": "中心点の緯度"
+    },
+    "longitude": {
+      "hint": "中心点の経度"
+    },
+    "mapControlPosition": {
+      "hint": "マップコントロールの位置。"
+    },
+    "mapId": {
+      "hint": "マップIDは、特定のマップスタイルまたはフィーチャに関連付けられた識別子です。",
+      "name": "マップID"
+    },
+    "mapTypeId": {
+      "hint": "使用するデフォルトのマップタイプ。",
+      "name": "マップタイプ"
+    },
+    "markerWindowTitle": {
+      "hint": "マーカーウィンドウのタイトル。",
+      "name": "マーカーウィンドウのタイトル"
+    },
+    "markers": {
+      "hint": "マーカーの座標"
+    },
+    "region": {
+      "hint": "使用するリージョンコード。"
+    },
+    "removeMarkerCaption": {
+      "hint": "マーカー除去ボタンのキャプション。",
+      "name": "マーカーキャプションを削除する"
+    },
+    "searchPlaceholder": {
+      "hint": "マップ検索入力のプレースホルダーテキスト。",
+      "name": "検索プレースホルダ"
+    },
+    "showMapControl": {
+      "hint": "マップコントロールを表示するかどうか。"
+    },
+    "zoom": {
+      "hint": "ズームレベル"
+    }
+  },
+  "RichTextEditor": {
+    "modules": {
+      "hint": "エディタの動作と機能をカスタマイズできます。 より多くの情報のためのdocsを読んで下さい。",
+      "name": "モジュール"
+    },
+    "toolbarOptions": {
+      "hint": "ツールバーに表示されるボタンのグループ",
+      "name": "ツールバーオプション"
+    }
+  },
+  "RsDatePicker": {
+    "format": {
+      "hint": "入力でレンダリングされたときの日付の形式",
+      "name": "フォーマット"
+    }
+  },
+  "RsMenu": {
+    "itemsAs": {
+      "hint": "メニュー項目をレンダリングするHTML要素",
+      "name": "としての項目"
+    }
+  },
+  "RsTimePicker": {
+    "format": {
+      "hint": "入力でレンダリングされた時刻の形式",
+      "name": "フォーマット"
+    }
+  },
+  "RsWizard": {
+    "activeIndex": {
+      "hint": "アクティブステップインデックス",
+      "name": "アクティブインデックス"
+    },
+    "finishButtonLabel": {
+      "hint": "終了ボタンのラベル",
+      "name": "終了ボタンラベル"
+    },
+    "nextButtonLabel": {
+      "hint": "次のボタンのラベル",
+      "name": "[次へ]ボタンのラベル"
+    },
+    "prevButtonLabel": {
+      "hint": "前のボタンのラベル",
+      "name": "前のボタンのラベル"
+    },
+    "showSteps": {
+      "hint": "Trueの場合、手順が表示されます",
+      "name": "ステップを表示"
+    },
+    "showStepsLabels": {
+      "hint": "Trueの場合、ステップラベルが表示されます",
+      "name": "ステップラベルを表示"
+    },
+    "steps": {
+      "hint": "ウィザードの手順",
+      "name": "ステップ"
+    },
+    "stepsNavigation": {
+      "hint": "ナビゲーションに使用できる手順をクリックして決定します",
+      "name": "ステップナビゲーション"
+    },
+    "validateOnFinish": {
+      "hint": "Trueの場合、ウィザードはウィザードを終了する前に検証されます",
+      "name": "終了時に検証"
+    },
+    "validateOnNext": {
+      "hint": "Trueの場合、ステップは次のステップに移動する前に検証されます",
+      "name": "次への検証"
+    },
+    "verticalSteps": {
+      "hint": "Trueの場合、ステップは垂直方向に表示されます",
+      "name": "縦のステップ"
+    },
+    "wizardHasNoSteps": "ウィザードのステップを追加するには、コンポーネントを選択し、プロパティパネルでステップを追加します。"
+  },
+  "actions": {
+    "add": "追加",
+    "addAction": "アクションの追加",
+    "addCodeAction": "コードアクションの追加",
+    "arguments": "引数",
+    "code": "コード",
+    "common": "共通",
+    "custom": "カスタム",
+    "delete": "削除",
+    "duplicate": "複製",
+    "edit": "編集",
+    "name": "名前",
+    "parameters": "パラメータ",
+    "type": "タイプ"
+  },
+  "annotation": {
+    "accept": {
+      "hint": "受け入れることができるファイルの種類。 標準のHTML属性:acceptを見る",
+      "name": "受け入れる"
+    },
+    "action": {
+      "hint": "URLのアップロード",
+      "name": "演技はじめ！"
+    },
+    "allowEmptyFormatting": {
+      "hint": "デフォルトでは、値が空（null、undefined、または\"）の場合、PatternFormatコンポーネントは書式設定を適用しません。",
+      "name": "空の書式設定を許可する "
+    },
+    "allowLeadingZeros": {
+      "hint": "これにより、入力フィールドの先行ゼロを有効または無効にできます。 デフォルトでは、入力のぼかし時に、先行ゼロが削除されます",
+      "name": "先行ゼロを許可する"
+    },
+    "allowNegative": {
+      "hint": "Falseに設定すると、負の数は許可されません",
+      "name": "負の値を許可する"
+    },
+    "allowedDecimalSeparators": {
+      "hint": "押されたときに小数点区切り文字になる文字。 欠落している場合は、小数点記号と'。'が使用されています",
+      "name": "許可される小数点区切り文字"
+    },
+    "appearance": {
+      "hint": "ピッカーの外観を設定する",
+      "name": "外観"
+    },
+    "autoUpload": {
+      "hint": "ファイルを選択した後に自動的にアップロードする",
+      "name": "自動アップロード"
+    },
+    "block": {
+      "hint": "行全体をブロックする",
+      "name": "ブロック"
+    },
+    "bodyFill": {
+      "hint": "コンテナで満たされたコンテンツエリア",
+      "name": "ボディフィル"
+    },
+    "calendarDefaultDate": {
+      "hint": "カレンダーパネルのデフォルトの表示日時",
+      "name": "カレンダーのデフォルトの日付"
+    },
+    "checked": {
+      "hint": "値がチェックされるかどうか",
+      "name": "チェック済み"
+    },
+    "checkedChildren": {
+      "hint": "チェックされた状態で表示されるテキスト",
+      "name": "チェックされたテキスト"
+    },
+    "cleanable": {
+      "hint": "オプションを空にできるかどうか",
+      "name": "クリーニング可能"
+    },
+    "code": {
+      "hint": "コードの編集",
+      "name": "コード"
+    },
+    "color": {
+      "hint": "コンポーネントの主な色",
+      "name": "色"
+    },
+    "creatable": {
+      "hint": "設定で新しいオプションを作成できます",
+      "name": "作成可能"
+    },
+    "data": {
+      "hint": "選択可能なデータ",
+      "name": "データ"
+    },
+    "decimalScale": {
+      "hint": "定義されている場合、小数点以下の桁数を制限します",
+      "name": "10進スケール"
+    },
+    "decimalSeparator": {
+      "hint": "小数点以下の文字を定義します",
+      "name": "小数点区切り記号"
+    },
+    "defaultOpen": {
+      "hint": "Openプロパティのデフォルト値",
+      "name": "デフォルトオープン"
+    },
+    "defaultValue": {
+      "hint": "デフォルト値",
+      "name": "デフォルト値"
+    },
+    "disableMultipart": {
+      "hint": "'True'の場合、ファイルのアップロードにマルチパートフォームを使用することを無効にし、代わりにファイルをストリーミングします。 一部のApi（Amazon S3など）では、フォームを介して送信するのではなく、ファイルがストリーミングされることを期待している場合があります",
+      "name": "マルチパートを無効にする"
+    },
+    "disabled": {
+      "hint": "コンポーネントが無効になっているかどうか",
+      "name": "無効"
+    },
+    "download": {
+      "hint": "ブラウザがリンクされたURLをダウンロードとして扱うようにします",
+      "name": "ダウンロード"
+    },
+    "downloadFilename": {
+      "hint": "値を定義すると、ファイル名として示唆されます。 /および\\文字はアンダースコア(_)に変換されます",
+      "name": "ダウンロードファイル名"
+    },
+    "draggable": {
+      "hint": "アップロードするためのドラッグアンドドロップを有効にしました",
+      "name": "ドラッグ可能"
+    },
+    "editable": {
+      "hint": "入力としてレンダリングされ、値はキーボードを介して入力できます",
+      "name": "編集可能"
+    },
+    "errorConfig": {
+      "show": "ショー"
+    },
+    "eventKey": {
+      "hint": "この要素に対応するイベントキー",
+      "name": "イベントキー"
+    },
+    "fixedDecimalScale": {
+      "hint": "Trueに設定すると、decimalSeparatorの後に後続の0が追加され、指定されたdecimalScaleに一致します",
+      "name": "固定小数点スケール"
+    },
+    "flexDirection": {
+      "hint": "容器の子供の屈曲の方向",
+      "name": "方向"
+    },
+    "format": {
+      "hint": "#(またはPattern char)文字を使用してパターンを書式設定します。 #は数字のプレースホルダー文字です。 例:'######'",
+      "name": "フォーマット"
+    },
+    "groupBy": {
+      "hint": "'Data'にグループ化基準'key'を設定する",
+      "name": "グループ化"
+    },
+    "href": {
+      "hint": "ハイパーリンクが指すURL",
+      "name": "Href"
+    },
+    "htmlAttributes": {
+      "hint": "React(camelCase)形式のHTML属性",
+      "name": "HTML属性"
+    },
+    "isoWeek": {
+      "hint": "ISO8601規格は、各カレンダーの週は七日目に月曜日と日曜日に始まります",
+      "name": "Iso週間"
+    },
+    "justifyContent": {
+      "name": "正当化する"
+    },
+    "label": {
+      "hint": "ラベルの設定",
+      "name": "ラベル"
+    },
+    "limitEndYear": {
+      "hint": "現在の選択日を基準にして、使用可能な年の上限を設定します",
+      "name": "年末限定"
+    },
+    "limitStartYear": {
+      "hint": "現在の選択日を基準にして、利用可能な年の下限を設定します",
+      "name": "制限開始年"
+    },
+    "loading": {
+      "hint": "コンポーネントがロード状態にあるかどうか",
+      "name": "積み込み"
+    },
+    "mask": {
+      "hint": "その位置に任意の数値文字が提供されるまで、数値の場所のマスク文字として使用されます",
+      "name": "マスク"
+    },
+    "method": {
+      "hint": "アップロード要求のHTTPメソッド",
+      "name": "メソッド"
+    },
+    "name": {
+      "hint": "対応するファイルのパラメータ名をアップロードします",
+      "name": "名前"
+    },
+    "objectFit": {
+      "name": "フィット"
+    },
+    "objectPosition": {
+      "name": "ポジション"
+    },
+    "oneTap": {
+      "hint": "ワンクリックで選択値を完了します",
+      "name": "ワンタップ"
+    },
+    "open": {
+      "hint": "コンポーネントを開くかどうか",
+      "name": "オープン"
+    },
+    "passwordMask": {
+      "hint": "パスワードマスクを使う",
+      "name": "パスワードマスク"
+    },
+    "patternChar": {
+      "hint": "これは、書式パターン文字を定義するのに役立ちます",
+      "name": "パターン文字"
+    },
+    "placeholder": {
+      "hint": "プレースホルダの設定",
+      "name": "プレースホルダ"
+    },
+    "placement": {
+      "hint": "コンポーネントの配置",
+      "name": "配置"
+    },
+    "prefix": {
+      "hint": "入力値の前に接頭辞文字を追加します",
+      "name": "プレフィクス"
+    },
+    "preload": {
+      "hint": "ドロップダウンを開く前に、事前にデータをアップロードしてください",
+      "name": "プリロード"
+    },
+    "preventOverflow": {
+      "hint": "フローティング要素のオーバーフローを防ぐ",
+      "name": "オーバーフローを防ぐ"
+    },
+    "readOnly": {
+      "hint": "Trueの場合、コンポーネントは読み取り専用になります",
+      "name": "読み取り専用"
+    },
+    "showMeridian": {
+      "hint": "時間を12形式で表示する",
+      "name": "子午線を表示"
+    },
+    "showWeekNumbers": {
+      "hint": "週番号を表示するかどうか",
+      "name": "週番号を表示"
+    },
+    "size": {
+      "hint": "部品は異なったサイズを持つことができます",
+      "name": "サイズ"
+    },
+    "suffix": {
+      "hint": "入力値の後に接尾辞を追加します",
+      "name": "サフィックス "
+    },
+    "target": {
+      "hint": "リンクされたURLを参照コンテキストの名前として表示する場所(タブ、ウィンドウ、または <iframe>)",
+      "name": "ターゲット"
+    },
+    "textAlign": {
+      "name": "アライメント"
+    },
+    "thousandsGroupStyle": {
+      "hint": "千スタイル（千）：123,456,789、インドスタイル（lakh）：12,34,56,789、中国スタイル（wan）：1,2345,6789",
+      "name": "千グループスタイル"
+    },
+    "tooltipProps": {
+      "hint": "この要素にツールチップを使用する",
+      "tooltip": "ツールチップ"
+    },
+    "unCheckedChildren": {
+      "hint": "チェックされていない状態で表示されるテキスト",
+      "name": "チェックされていないテキスト"
+    },
+    "validateWhen": {
+      "hint": "この検証を実行するかどうかを決定する条件",
+      "name": "次の場合に検証します"
+    },
+    "value": {
+      "hint": "値(制御)",
+      "name": "値"
+    },
+    "withCredentials": {
+      "hint": "リクエストをアップロードするときにcookieを運ぶかどうか",
+      "name": "資格情報付き"
+    }
+  },
+  "bottomPanel": {
+    "editCodeAction": "コードアクションの編集",
+    "editProperty": "プロパティの編集",
+    "function": "計算可能な値",
+    "localization": "流暢なローカリゼーション",
+    "simpleValue": "単純な値",
+    "simpleValueHint": "右側のパネルでプロパティを編集します",
+    "use": "使用"
+  },
+  "codeActionEditor": {
+    "actionNameExists": "この名前のアクションは既に存在します",
+    "nameIsRequired": "アクション名は必須です",
+    "parameterNameExists": "この名前のパラメータは既に存在します",
+    "parameterNameIsNotValid": "パラメータ名が無効です",
+    "parameterNameIsRequired": "パラメータ名は必須です"
+  },
+  "codeEditor": {
+    "codeActionHeader": "コードアクションエディタ",
+    "codePlaceholder": "//ここにあなたのコードを入力してください",
+    "compilationResult": "コンパイル結果:",
+    "compile": "コンパイル",
+    "generic": {
+      "json": {
+        "title": "JSONデータの編集"
+      }
+    },
+    "ok": "OK"
+  },
+  "common": {
+    "apply": "適用",
+    "cancel": "キャンセル",
+    "clone": "クローン",
+    "close": "閉じる",
+    "edit": "編集",
+    "name": "名前",
+    "remove": "削除",
+    "save": "保存",
+    "test": "テスト"
+  },
+  "componentToolbar": {
+    "add": "新しい要素の追加",
+    "after": "後",
+    "before": "前に",
+    "inside": "中"
+  },
+  "componentsList": {
+    "categories": {
+      "fields": "フィールド",
+      "static": "静的",
+      "structure": "構造",
+      "templates": "テンプレート"
+    }
+  },
+  "componentsModal": {
+    "clickToAdd": "をクリックしてコントロールを追加します"
+  },
+  "editJson": "JSONの編集",
+  "errorsPanel": {
+    "data": "データ",
+    "errors": "エラー"
+  },
+  "formsList": {
+    "addNewForm": "新しいフォームを追加する",
+    "formWithNameExists": "この名前のフォームは既に存在します。",
+    "noFormsInFormStorage": "フォームのリストに表示されるようにフォームを保存します。"
+  },
+  "leftMenu": {
+    "clear": "クリア",
+    "currentFormName": "現在のフォームの名前",
+    "download": "ダウンロード",
+    "enterFormName": "フォーム名を入力してください",
+    "exportForms": "フォームのエクスポート",
+    "exportFormsError": "フォームのエクスポートに失敗しました！ ブラウザコンソールのログを参照してください",
+    "exportFormsSuccess": "エクスポートされたフォーム",
+    "formNamePlaceholder": "私の美しい形",
+    "formSaveError": "フォームの保存に失敗しました！ ブラウザコンソールのログを参照してください",
+    "formSaved": "フォームが保存されます",
+    "importForms": "フォームのインポート",
+    "importFormsError": "フォームのインポートに失敗しました！ ブラウザコンソールのログを参照してください",
+    "importFormsSuccess": "インポートされたフォーム",
+    "menu": "メニュー",
+    "print": "印刷",
+    "save": "保存",
+    "saveAs": "名前を付けて保存します。..",
+    "settings": "設定",
+    "translation": "翻訳",
+    "undo": "元に戻す",
+    "upload": "アップロード",
+    "validateForm": "フォームの検証"
+  },
+  "leftPanel": {
+    "formSettings": {
+      "actions": "アクション",
+      "error": "エラー設定",
+      "formValidator": "フォームバリデーター",
+      "language": "言語設定",
+      "tooltip": "ツールチップ"
+    },
+    "sectionName": {
+      "components": "コンポーネント",
+      "forms": "フォーム",
+      "settings": "設定",
+      "tree": "木"
+    }
+  },
+  "localization": {
+    "messageIsNull": "ローカリゼーションメッセージがnullです",
+    "messageNotFound": "ローカリゼーションメッセージが見つかりません"
+  },
+  "presetComponent": {
+    "category": "カテゴリー",
+    "createPreset": "プリセットコンポーネントを作成する",
+    "enterPresetName": "プリセット名を入力してください",
+    "name": "名前",
+    "nameExists": "この名前のプリセットまたはコンポーネントが既に存在します。",
+    "namePlaceholder": "プリセット名を入力します"
+  },
+  "promptDialog": {
+    "cancel": "キャンセル",
+    "ok": "OK"
+  },
+  "propertiesEditor": {
+    "applyKey": "キーの変更を適用する",
+    "clean": "クリーン",
+    "codeButton": {
+      "editCalculable": "計算可能な編集",
+      "editLocalizable": "Fluentローカリゼーションの編集",
+      "hintCalculable": "このプロパティを計算可能にする",
+      "hintCalculableAndLocalizable": "このプロパティを計算可能にするか、Fluentでローカライズします",
+      "hintLocalizable": "Fluentでこのプロパティをローカライズする",
+      "neitherCalculableNorLocalizable": "計算可能でもローカライズ可能でもありません"
+    },
+    "keyMustBeUnique": "キーは一意でなければなりません",
+    "keyMustNotBeEmpty": "キーは空であってはなりません",
+    "sectionName": {
+      "actions": "アクション",
+      "expression": "式",
+      "linkedProperty": "リンクされたプロパティ",
+      "main": "メイン",
+      "rules": "ルール",
+      "style": "スタイル",
+      "withTarget": "ターゲットを使って",
+      "withoutTarget": "ターゲットなし"
+    },
+    "selectElementForEdit": "プロパティを編集するためにフォーム上の要素を選択",
+    "setInputHint": "Enterキーを押して値を追加します",
+    "subSection": {
+      "additionalProperties": "追加のプロパティ"
+    }
+  },
+  "rightMenu": {
+    "modes": {
+      "builder": "プレビュー",
+      "desktop": "デスクトップ",
+      "mobile": "モバイル",
+      "tablet": "タブレット",
+      "viewer": "編集"
+    },
+    "toggleTheme": "テーマを切り替える"
+  },
+  "searchForm": {
+    "search": "検索。.."
+  },
+  "style": {
+    "any": "任意の",
+    "component": "コンポーネント",
+    "componentHint": "コンポーネントに適用されるスタイル",
+    "desktop": "デスクトップ",
+    "forDevice": "デバイス用",
+    "mobile": "モバイル",
+    "other": "その他",
+    "tablet": "タブレット",
+    "wrapper": "ラッパー",
+    "wrapperHint": "コンポーネントラッパーに適用されるスタイル"
+  },
+  "testingEditor": {
+    "autorun": "オートラン",
+    "compilationOk": "コンパイル結果:OK",
+    "hasNotReturnedValue": "値が返されていません",
+    "run": "走れ。",
+    "testFormData": "テストフォームデータ"
+  },
+  "toolbar": {
+    "cloneComponent": "クローンコンポーネント",
+    "elements": "要素",
+    "notFound": "見つかりません",
+    "removeComponent": "コンポーネントの削除",
+    "reset": "リセット"
+  },
+  "tree": {
+    "collapse": "すべて折りたたむ",
+    "expand": "すべて展開"
+  },
+  "validation": {
+    "addRule": "検証ルールを追加する",
+    "chooseValidation": "あなたのタイプを選択してください",
+    "editCustomValidationCode": "コンポーネントのカスタム検証コードの編集",
+    "editFormValidatorCode": "フォーム検証コードの編集",
+    "formErrors": "フォームエラー",
+    "rule": {
+      "code": "コード",
+      "custom": "カスタム",
+      "datetime": "日時",
+      "email": "メール",
+      "endsWith": "で終わる",
+      "falsy": "ファルシ",
+      "finite": "有限",
+      "includes": "含まれるもの：",
+      "integer": "整数",
+      "ip": "Ip",
+      "length": "長さ",
+      "lessThan": "より少しより",
+      "max": "マックス",
+      "min": "分",
+      "moreThan": "より多く",
+      "multipleOf": "の倍数",
+      "nonEmpty": "空でない",
+      "regex": "正規表現",
+      "required": "必須",
+      "startsWith": "で始まる",
+      "truthy": "トゥルーシー",
+      "url": "Url",
+      "uuid": "Uuid"
+    },
+    "ruleNotFound": "ルールが見つからないか接続されていません",
+    "showFormErrors": "フォームエラーを表示する"
+  }
+}

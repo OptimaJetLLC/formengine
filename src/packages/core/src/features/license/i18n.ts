@@ -4,7 +4,11 @@ import en from './locales/en-US.json'
 import es from './locales/es-ES.json'
 import fa from './locales/fa-IR.json'
 import fr from './locales/fr-FR.json'
+import hi from './locales/hi-IN.json'
 import it from './locales/it-IT.json'
+import ja from './locales/ja-JP.json'
+import ko from './locales/ko-KR.json'
+import sr from './locales/sr-RS.json'
 import zh from './locales/zh-CN.json'
 
 const translations = {
@@ -14,7 +18,11 @@ const translations = {
   es,
   fa,
   fr,
+  hi,
   it,
+  ja,
+  ko,
+  sr,
   zh
 }
 
