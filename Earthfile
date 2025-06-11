@@ -383,7 +383,7 @@ dependencies:
   COPY src/packages/apps/example-viewer/package.json src/packages/apps/example-viewer
   COPY src/packages/apps/example-viewer/package.json src/packages/apps/example-viewer
   COPY src/packages/apps/landing/package.json src/packages/apps/landing
-  COPY src/packages/apps/formengine/package.json packages/apps/formengine
+  COPY src/packages/apps/formengine/package.json src/packages/apps/formengine
 
   COPY src/packages/core/package.json src/packages/core
   COPY src/packages/designer/package.json src/packages/designer
