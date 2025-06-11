@@ -366,6 +366,7 @@ dependencies:
    src/documentation/website src/packages/apps src/packages/views \
    src/packages/apps/demo src/packages/apps/example-builder src/packages/apps/example-viewer \
    src/packages/apps/landing \
+   src/packages/apps/formengine \
    src/packages/core src/packages/designer src/packages/designer-bundle src/packages/indexed-db-form-storage \
    src/packages/viewer-bundle src/packages/views/antd src/packages/views/default \
    src/packages/views/rsuite \
