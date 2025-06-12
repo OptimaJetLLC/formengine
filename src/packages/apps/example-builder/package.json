@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/example-builder",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "private": true,
   "main": "src/index.ts",
   "type": "module",
@@ -17,14 +17,14 @@
     "start-ssl": "vite --open --host --config vite.ssl.config.ts"
   },
   "dependencies": {
-    "@react-form-builder/components-antd": "^4.2.0",
-    "@react-form-builder/components-fast-qr": "^4.2.0",
-    "@react-form-builder/components-google-map": "^4.2.0",
-    "@react-form-builder/components-rich-text": "^4.2.0",
-    "@react-form-builder/components-rsuite": "^4.2.0",
-    "@react-form-builder/core": "^4.2.0",
-    "@react-form-builder/designer": "^4.2.0",
-    "@react-form-builder/indexed-db-form-storage": "^4.2.0",
+    "@react-form-builder/components-antd": "^4.3.0",
+    "@react-form-builder/components-fast-qr": "^4.3.0",
+    "@react-form-builder/components-google-map": "^4.3.0",
+    "@react-form-builder/components-rich-text": "^4.3.0",
+    "@react-form-builder/components-rsuite": "^4.3.0",
+    "@react-form-builder/core": "^4.3.0",
+    "@react-form-builder/designer": "^4.3.0",
+    "@react-form-builder/indexed-db-form-storage": "^4.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "rsuite": "5.80.2"
