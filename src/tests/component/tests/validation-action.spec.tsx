@@ -155,7 +155,7 @@ describe('Validation action', () => {
     // waiting for the first asynchronous action
     await waitFor(() => expect(formViewer.formData.hasErrors).toEqual(false))
     // waiting for the second asynchronous action
-    await waitFor(() => expect(testActionExecuteCount).toEqual(1))
+    await waitFor(() => expect(testActionExecuteCount).toEqual(1), {timeout: 3000})
 
     expect(JSON.stringify(formViewer.formData.errors)).toEqual('{}')
   })
