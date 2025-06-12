@@ -230,6 +230,7 @@ export class Definer<T extends object> {
     }
     const valuedAn = firstValuedAn ?? propAns.find(an => an.name === 'value')
     const readOnlyAn = propAns.find(an => an.readOnly)
+    const disabledAn = propAns.find(an => an.disabled)
     const propsBindingTypes = propAns.reduce((props, an) => {
       if (an.bindingType) props[an.key] = an.bindingType
       return props
@@ -249,6 +250,7 @@ export class Definer<T extends object> {
       readOnlyAn?.key,
       propsBindingTypes,
       valuedAn?.uncontrolledValue,
+      disabledAn?.key
     )
 
     const meta = new Meta(

@@ -1,4 +1,4 @@
-import {boolean, define, event, object, someOf, string} from '@react-form-builder/core'
+import {define, event, object, readOnly, someOf, string} from '@react-form-builder/core'
 import {uniqueId} from 'lodash-es'
 import type {CSSProperties} from 'react'
 import {useEffect, useMemo, useRef, useState} from 'react'
@@ -119,7 +119,7 @@ export const richTextEditor = define(RichTextEditor, 'RichTextEditor')
     initialValue: string,
     label: string.default('Rich text editor'),
     placeholder: string,
-    readOnly: boolean.default(false),
+    readOnly: readOnly.default(false),
     toolbarOptions: someOf(...Object.keys(options)).withEditorProps({
       creatable: false
     }).default(defaultOptions),

@@ -1,4 +1,4 @@
-import {boolean, date, define, event, number, oneOf, string} from '@react-form-builder/core'
+import {boolean, date, define, disabled, event, number, oneOf, string} from '@react-form-builder/core'
 import {useMemo} from 'react'
 import type {DatePickerProps} from 'rsuite'
 import {DatePicker} from 'rsuite'
@@ -49,7 +49,7 @@ export const rsDatePicker = define(RsDatePicker, 'RsDatePicker')
     cleanable: boolean.hinted('Whether the selected value can be cleared').default(false),
     defaultOpen: boolean.hinted('Default value of open property').default(false),
     defaultValue: date.hinted('Default value'),
-    disabled: boolean.hinted('Whether disabled the component').default(false),
+    disabled: disabled.hinted('Whether disabled the component').default(false),
     readOnly,
     editable: boolean.hinted('Rendered as an input, the date can be entered via the keyboard').default(true),
     format: string.validated(formatValidator, {

@@ -1,4 +1,4 @@
-import {array, boolean, define, event, node, oneOf, string} from '@react-form-builder/core'
+import {array, boolean, define, disabled, event, node, oneOf, string} from '@react-form-builder/core'
 import {useMemo} from 'react'
 import type {UploaderProps} from 'rsuite'
 import {Uploader} from 'rsuite'
@@ -46,7 +46,7 @@ export const rsUploader = define(RsUploader, 'RsUploader')
     customElement: boolean.default(false),
     children: node,
     disableMultipart: boolean.default(false),
-    disabled: boolean.default(false),
+    disabled: disabled.default(false),
     readOnly,
     disabledFileItem: boolean.default(false),
     draggable: boolean.default(false),

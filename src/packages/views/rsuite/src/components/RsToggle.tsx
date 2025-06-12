@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {boolean, define, event, oneOf, string} from '@react-form-builder/core'
+import {boolean, define, disabled, event, oneOf, string} from '@react-form-builder/core'
 import {Toggle} from 'rsuite'
 import {controlColor, readOnly} from '../commonProperties'
 import {requiredStyle} from './components/Labeled'
@@ -17,7 +17,7 @@ export const rsToggle = define(SToggle, 'RsToggle')
     checked: boolean.valued.default(true).uncontrolledValue(false),
     checkedChildren: string.named('Checked text'),
     unCheckedChildren: string.named('Unchecked text'),
-    disabled: boolean.hinted('Whether disabled').default(false),
+    disabled: disabled.hinted('Whether disabled').default(false),
     readOnly,
     size: oneOf('sm', 'md', 'lg')
       .labeled('Small', 'Medium', 'Large')

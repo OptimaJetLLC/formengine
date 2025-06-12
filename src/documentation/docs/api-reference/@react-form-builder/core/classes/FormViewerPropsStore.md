@@ -32,6 +32,14 @@ Custom actions for the form viewer.
 
 ***
 
+### disabled?
+
+> `optional` **disabled**: `boolean`
+
+If true, the form is disabled.
+
+***
+
 ### errorWrapper?
 
 > `optional` **errorWrapper**: `ComponentType`\<[`ErrorWrapperProps`](../interfaces/ErrorWrapperProps.md)\>

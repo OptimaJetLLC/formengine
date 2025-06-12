@@ -45,6 +45,11 @@ export const boolean = createProperty('boolean').typed('boolean')
 export const readOnly = boolean.setup({readOnly: true})
 
 /**
+ * Annotation builder for a disabled property of a component with type 'boolean'.
+ */
+export const disabled = boolean.setup({disabled: true})
+
+/**
  * The annotation builder for a component property with type 'number'.
  */
 export const number = createProperty('number').typed('number')

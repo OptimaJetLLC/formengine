@@ -58,6 +58,14 @@ The default property value.
 
 ***
 
+### disabled
+
+> `readonly` **disabled**: `boolean` = `false`
+
+True if the property value controls a disabled flag, false otherwise.
+
+***
+
 ### editor
 
 > `readonly` **editor**: `string`

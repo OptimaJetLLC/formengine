@@ -60,6 +60,18 @@ The map of customizations for the FormBuilder components.
 
 ***
 
+### disabled?
+
+> `optional` **disabled**: `boolean`
+
+If true, the form is disabled.
+
+#### Inherited from
+
+`Omit.disabled`
+
+***
+
 ### erroneous?
 
 > `optional` **erroneous**: `boolean`

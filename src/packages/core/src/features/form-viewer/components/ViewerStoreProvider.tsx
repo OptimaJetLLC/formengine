@@ -48,7 +48,7 @@ const RawNotifier = (props: Omit<ExistingStoreProviderProps, 'children'>) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewerProps.initialData, viewerProps.view, viewerProps.validators, viewerProps.formValidators,
     viewerProps.localize, viewerProps.language, viewerProps.actions, viewerProps.errorWrapper,
-    viewerProps.readOnly, viewerProps.componentWrapper])
+    viewerProps.readOnly, viewerProps.disabled, viewerProps.componentWrapper])
 
   return null
 }

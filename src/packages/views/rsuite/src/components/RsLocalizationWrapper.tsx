@@ -22,6 +22,8 @@ import {
   zhCN,
   zhTW
 } from 'rsuite/esm/locales/index.js'
+import {hiIN} from './i18n/hi-IN'
+import {srRS} from './i18n/sr-RS'
 
 const rSuiteLocales: Record<string, any> = {
   'ar-EG': arEG,
@@ -35,11 +37,13 @@ const rSuiteLocales: Record<string, any> = {
   'en-GB': enGB,
   'es-AR': esAR,
   'fi-FI': fiFI,
+  'hi-IN': hiIN,
   'hu-HU': huHU,
   'kk-KZ': kkKZ,
   'ko-KR': koKR,
   'nl-NL': nlNL,
   'pt-BR': ptBR,
+  'sr-RS': srRS,
   'sv-SE': svSE,
   'tr-TR': trTR,
   'zh-TW': zhTW,

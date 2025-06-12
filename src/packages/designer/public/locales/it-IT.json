@@ -524,6 +524,7 @@
     "formSettings": {
       "actions": "Azione",
       "error": "Impostazioni di errore",
+      "formValidator": "Validatore modulo",
       "language": "Impostazioni della lingua",
       "tooltip": "Tooltip"
     },
@@ -626,6 +627,7 @@
     "addRule": "Aggiungi regola",
     "chooseValidation": "Scegli il tuo tipo",
     "editCustomValidationCode": "Modifica del codice di convalida personalizzato per il componente",
+    "editFormValidatorCode": "Modifica il codice di convalida del modulo",
     "formErrors": "Errori di modulo",
     "rule": {
       "code": "Codice",

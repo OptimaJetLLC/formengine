@@ -524,6 +524,7 @@
     "formSettings": {
       "actions": "行动",
       "error": "错误设置",
+      "formValidator": "表格验证人",
       "language": "语言设定",
       "tooltip": "工具提示"
     },
@@ -626,6 +627,7 @@
     "addRule": "添加规则",
     "chooseValidation": "选择你的类型",
     "editCustomValidationCode": "编辑组件的自定义验证代码",
+    "editFormValidatorCode": "编辑表单验证代码",
     "formErrors": "表单错误",
     "rule": {
       "code": "代码",

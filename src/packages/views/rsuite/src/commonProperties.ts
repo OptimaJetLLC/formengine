@@ -1,4 +1,15 @@
-import {array, boolean, color, event, number, oneOf, readOnly as readOnlyProp, string, toLabeledValues} from '@react-form-builder/core'
+import {
+  array,
+  boolean,
+  color,
+  disabled,
+  event,
+  number,
+  oneOf,
+  readOnly as readOnlyProp,
+  string,
+  toLabeledValues
+} from '@react-form-builder/core'
 import type {TypeAttributes} from 'rsuite/esm/internals/types'
 
 type Placement = TypeAttributes.Placement;
@@ -46,7 +57,7 @@ export const readOnly = readOnlyProp.hinted('Read only component').default(false
 export const inputProps = {
   placeholder: string.hinted('Input placeholder'),
   size,
-  disabled: boolean.hinted('Disabled component').default(false),
+  disabled: disabled.hinted('Disabled component').default(false),
   readOnly,
   onChange: event,
 }
@@ -76,7 +87,7 @@ export const pickerProps = {
   data: array,
   cleanable: boolean.default(true),
   creatable: boolean.default(false),
-  disabled: boolean.default(false),
+  disabled: disabled.default(false),
   readOnly,
   groupBy: string.default(''),
   onLoadData: event,

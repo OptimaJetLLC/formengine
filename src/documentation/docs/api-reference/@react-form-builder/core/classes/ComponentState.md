@@ -104,6 +104,20 @@ the Record that contains the className property for the component.
 
 ***
 
+### disabled
+
+#### Get Signature
+
+> **get** **disabled**(): `undefined` \| `object`
+
+##### Returns
+
+`undefined` \| `object`
+
+the disabled property of a component if the component has a disabled flag.
+
+***
+
 ### events
 
 #### Get Signature
@@ -147,6 +161,42 @@ combined in order of priority component properties.
 `undefined` \| [`HtmlAttribute`](../type-aliases/HtmlAttribute.md)
 
 all arbitrary HTML attributes of the component.
+
+***
+
+### isDisabled
+
+#### Get Signature
+
+> **get** **isDisabled**(): `any`
+
+##### Returns
+
+`any`
+
+true if the component has a disabled property and this property is true, false otherwise.
+
+#### Implementation of
+
+[`IComponentState`](../interfaces/IComponentState.md).[`isDisabled`](../interfaces/IComponentState.md#isdisabled)
+
+***
+
+### isReadOnly
+
+#### Get Signature
+
+> **get** **isReadOnly**(): `any`
+
+##### Returns
+
+`any`
+
+true if the component has a read-only property and this property is true, false otherwise.
+
+#### Implementation of
+
+[`IComponentState`](../interfaces/IComponentState.md).[`isReadOnly`](../interfaces/IComponentState.md#isreadonly)
 
 ***
 
@@ -215,7 +265,7 @@ does not contain styles additionally defined for the component.
 
 `undefined` \| `object`
 
-the component's read-only flag, if the component can have a read-only flag.
+the read-only property of a component if the component has a read-only flag.
 
 ***
 

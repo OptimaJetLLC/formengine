@@ -68,6 +68,7 @@ export const listStyle = css`
     flex: 1;
     flex-direction: column;
     gap: ${DEFAULT_GAP}px;
+    overflow-y: auto;
   }
 `
 

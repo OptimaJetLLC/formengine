@@ -12,7 +12,7 @@ the type of React component properties.
 
 ### new Model()
 
-> **new Model**\<`T`\>(`component`, `name`?, `actionsInitializer`?, `valued`?, `valueType`?, `defaultProps`?, `css`?, `wrapperCss`?, `typeName`?, `kind`?, `readOnly`?, `propsBindingTypes`?, `uncontrolledValue`?): [`Model`](Model.md)\<`T`\>
+> **new Model**\<`T`\>(`component`, `name`?, `actionsInitializer`?, `valued`?, `valueType`?, `defaultProps`?, `css`?, `wrapperCss`?, `typeName`?, `kind`?, `readOnly`?, `propsBindingTypes`?, `uncontrolledValue`?, `disabled`?): [`Model`](Model.md)\<`T`\>
 
 Creates component metadata for the form viewer.
 
@@ -70,6 +70,10 @@ the component property binding types.
 
 the value for the uncontrolled (undefined) state.
 
+• **disabled?**: `string`
+
+the name of the component property that stores the disabled flag.
+
 #### Returns
 
 [`Model`](Model.md)\<`T`\>
@@ -105,6 +109,14 @@ the component's CSS values.
 > `readonly` `optional` **defaultProps**: `Readonly`\<`Record`\<`string`, `any`\>\>
 
 the component's default property values.
+
+***
+
+### disabled?
+
+> `readonly` `optional` **disabled**: `string`
+
+the name of the component property that stores the disabled flag.
 
 ***
 

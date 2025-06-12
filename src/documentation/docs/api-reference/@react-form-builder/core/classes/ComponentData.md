@@ -10,7 +10,7 @@ This tree of elements contains the data required to display the component. It is
 
 ### new ComponentData()
 
-> **new ComponentData**(`componentStore`, `model`, `childFactory`, `formValidators`?): [`ComponentData`](ComponentData.md)
+> **new ComponentData**(`componentStore`, `model`, `childFactory`, `getFormValidationResult`?): [`ComponentData`](ComponentData.md)
 
 Constructor.
 
@@ -28,9 +28,9 @@ the component metadata for the form viewer.
 
 the factory function that creates [ComponentData](ComponentData.md) instance.
 
-• **formValidators?**: [`FormValidators`](../type-aliases/FormValidators.md)
+• **getFormValidationResult?**
 
-the array of functions that validate the form data.
+the function that returns a form validation results.
 
 #### Returns
 

@@ -28,6 +28,14 @@ The React component that wraps every component in a form. **Internal use only.**
 
 ***
 
+### disabled?
+
+> `optional` **disabled**: `boolean`
+
+If true, the form is disabled.
+
+***
+
 ### erroneous?
 
 > `optional` **erroneous**: `boolean`

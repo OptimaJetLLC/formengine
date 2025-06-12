@@ -1,0 +1,81 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "templateDisabledReadOnlyTemplate1",
+        "type": "Template:disabled-read-only-template",
+        "props": {},
+        "children": [
+          {
+            "key": "inputInSlot",
+            "type": "RsInput",
+            "props": {},
+            "slot": "slot",
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "test-input"
+              },
+              {
+                "name": "data-testkey",
+                "value": "inputInSlot"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "rsContainer1",
+        "type": "RsContainer",
+        "props": {},
+        "children": [
+          {
+            "key": "rsInput1",
+            "type": "RsInput",
+            "props": {},
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "test-input"
+              },
+              {
+                "name": "data-testkey",
+                "value": "rsInput1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "rsInput2",
+        "type": "RsInput",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "rsInput2"
+          },
+          {
+            "name": "data-testid",
+            "value": "test-input"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

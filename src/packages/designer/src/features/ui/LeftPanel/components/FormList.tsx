@@ -5,7 +5,7 @@ import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {useCreateForm} from '../../../../utils/useCreateForm'
 import {EditButton, RemoveButton} from '../../../components/Buttons'
-import {List, ListItem} from '../../../components/Containers'
+import {List, ListItem, Rows} from '../../../components/Containers'
 import {customizableObserver} from '../../../customization'
 import {useShowMessage} from '../../../toast/toast'
 import {SearchForm} from '../../ComponentBar/components/SearchForm'
@@ -35,6 +35,14 @@ function FormListItem({active, onLoadForm, onRemoveForm, name}: {
       <RemoveButton onClick={handleRemove}/>
     </ButtonGroup>
   </ListItem>
+}
+
+const searchStyle = {
+  maxWidth: 300
+}
+
+const containerStyle = {
+  height: '100%'
 }
 
 const RawFormList = (props: ComponentProps<typeof List>) => {
@@ -72,17 +80,17 @@ const RawFormList = (props: ComponentProps<typeof List>) => {
     [formList, searchValue]
   )
 
-  return <List {...props}>
-    <SearchForm style={{maxWidth: 300}} onChange={setSearchValue}/>
-    <ListItem>
-      <Button block onClick={showPromptDialog}>{t('formsList.addNewForm')}</Button>
-    </ListItem>
-    {filteredFormList.length
-      ? filteredFormList.map((name, index) =>
-        <FormListItem key={index} active={name === builderStore.formName} name={name} onLoadForm={loadForm} onRemoveForm={removeForm}/>)
-      : <ListItem>{t('formsList.noFormsInFormStorage')}</ListItem>
-    }
-  </List>
+  return <Rows style={containerStyle} gap={10}>
+    <SearchForm style={searchStyle} onChange={setSearchValue}/>
+    <Button block onClick={showPromptDialog}>{t('formsList.addNewForm')}</Button>
+    <List {...props}>
+      {filteredFormList.length
+        ? filteredFormList.map((name, index) =>
+          <FormListItem key={index} active={name === builderStore.formName} name={name} onLoadForm={loadForm} onRemoveForm={removeForm}/>)
+        : <ListItem>{t('formsList.noFormsInFormStorage')}</ListItem>
+      }
+    </List>
+  </Rows>
 }
 
 export const FormList = customizableObserver('Forms_Tab_Content', RawFormList)

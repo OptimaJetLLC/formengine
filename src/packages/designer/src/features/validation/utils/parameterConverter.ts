@@ -34,5 +34,11 @@ function convertValidationRuleParameterToAnnotation(parameter: ValidationRulePar
  * @returns the array of annotations generated from the conversion.
  */
 export function convertValidationRuleParametersToAnnotations(parameters: ValidationRuleParameter[]) {
-  return parameters.map(convertValidationRuleParameterToAnnotation)
+  return parameters
+    .map(convertValidationRuleParameterToAnnotation)
+    .sort((a, b) => {
+      if (a.required === b.required || a.required) return -1
+      if (a.key === 'message') return 1
+      return 0
+    })
 }

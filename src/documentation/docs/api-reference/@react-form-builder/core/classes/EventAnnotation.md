@@ -70,6 +70,18 @@ The default property value.
 
 ***
 
+### disabled
+
+> `readonly` **disabled**: `boolean` = `false`
+
+True if the property value controls a disabled flag, false otherwise.
+
+#### Inherited from
+
+[`Annotation`](Annotation.md).[`disabled`](Annotation.md#disabled)
+
+***
+
 ### editor
 
 > `readonly` **editor**: `string`

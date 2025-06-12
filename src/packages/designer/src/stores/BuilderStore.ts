@@ -45,6 +45,7 @@ import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
 import {AvailableComponents} from './AvailableComponents'
 import {CachedFormStorage} from './CachedFormStorage'
 import {defaultBottomPanelHeight, defaultOpenedPanels, defaultViewMode} from './constants'
+import {EditableFormValidator} from './EditableFormValidator'
 import {uploadStringFile} from './fileUpload'
 import type {IComponentMetadataProvider} from './IComponentMetadataProvider'
 import {trackUndo} from './undo'
@@ -314,7 +315,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   localizationLanguage: Language
   readonly #loadedLanguages: Record<string, FormBuilderI18nData> = {}
 
-  currentEditable?: EditableProperty | EditableAction | CustomValidationCode | JsonCode
+  currentEditable?: EditableProperty | EditableAction | CustomValidationCode | JsonCode | EditableFormValidator
   lastSaveTime = new Date()
   readonly componentsModalState: ComponentsModalState = {
     opened: false,
@@ -430,6 +431,18 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   editCustomValidationCode(componentKey: string, code: string, functionSignature: string,
                            onChange: (value: string) => void) {
     this.currentEditable = new CustomValidationCode(componentKey, code, functionSignature, onChange)
+  }
+
+  /**
+   * Opens the editor for the form validator.
+   */
+  editFormValidator() {
+    const form = this.viewer.form
+    this.currentEditable = new EditableFormValidator(
+      'form-validator',
+      form.formValidator ?? '',
+      code => form.formValidator = code
+    )
   }
 
   /**
@@ -830,6 +843,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     const serializedObject: PersistedForm = {
       version: PersistedFormVersion.version1,
       actions: actions,
+      formValidator: this.viewer.form.formValidator,
       errorProps: errorProps,
       tooltipType: this.viewer.form.tooltipType,
       errorType: this.viewer.form.errorType,

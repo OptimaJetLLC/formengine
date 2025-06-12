@@ -18,6 +18,34 @@ combined in order of priority component properties.
 
 ***
 
+### isDisabled
+
+#### Get Signature
+
+> **get** **isDisabled**(): `boolean`
+
+##### Returns
+
+`boolean`
+
+true if the component has a disabled property and this property is true, false otherwise.
+
+***
+
+### isReadOnly
+
+#### Get Signature
+
+> **get** **isReadOnly**(): `boolean`
+
+##### Returns
+
+`boolean`
+
+true if the component has a read-only property and this property is true, false otherwise.
+
+***
+
 ### ownProps
 
 #### Get Signature

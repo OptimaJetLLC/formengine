@@ -26,6 +26,11 @@ export interface PersistedForm {
   actions?: ActionValues,
 
   /**
+   * The form validator.
+   */
+  formValidator?: string
+
+  /**
    * Properties of the component displaying the error.
    */
   errorProps?: any,

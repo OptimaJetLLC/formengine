@@ -6,12 +6,18 @@ import dfEN from 'date-fns/locale/en-US/index.js'
 import dfES from 'date-fns/locale/es/index.js'
 import dfFA from 'date-fns/locale/fa-IR/index.js'
 import dfFR from 'date-fns/locale/fr/index.js'
+import dfHI from 'date-fns/locale/hi/index.js'
 import dfIT from 'date-fns/locale/it/index.js'
+import dfJA from 'date-fns/locale/ja/index.js'
+import dfKO from 'date-fns/locale/ko/index.js'
+import dfSR from 'date-fns/locale/sr/index.js'
 import dfCN from 'date-fns/locale/zh-CN/index.js'
 import {merge} from 'lodash-es'
-import {arEG, deDE, enUS, esES, faIR, frFR, itIT, zhCN} from 'rsuite/esm/locales/index.js'
+import {arEG, deDE, enUS, esES, faIR, frFR, itIT, jaJP, koKR, zhCN} from 'rsuite/esm/locales/index.js'
 import enUsTranslation from '../../../public/locales/en-US.json'
 import type {FormBuilderI18n, FormBuilderI18nData} from './FormBuilderLanguage'
+import {hiIN} from './rsuite/hi-IN'
+import {srRS} from './rsuite/sr-RS'
 
 const rSuiteLocales: Record<string, any> = {
   'ar-EG': arEG,
@@ -20,7 +26,11 @@ const rSuiteLocales: Record<string, any> = {
   'it-IT': itIT,
   'fa-IR': faIR,
   'fr-FR': frFR,
+  'hi-IN': hiIN,
   'es-ES': esES,
+  'ja-JP': jaJP,
+  'ko-KR': koKR,
+  'sr-RS': srRS,
   'zh-CN': zhCN
 }
 
@@ -31,7 +41,11 @@ export const dateFnsLocales: Record<string, any> = {
   'it-IT': dfIT,
   'fa-IR': dfFA,
   'fr-FR': dfFR,
+  'hi-IN': dfHI,
   'es-ES': dfES,
+  'ja-JP': dfJA,
+  'ko-KR': dfKO,
+  'sr-RS': dfSR,
   'zh-CN': dfCN
 }
 
@@ -50,7 +64,11 @@ export const builtInLanguages: FormBuilderI18n = {
     new Language('it', 'IT', 'Italiano', 'Italian'),
     new Language('fa', 'IR', 'فارسی', 'Persian', BiDi.RTL),
     new Language('fr', 'FR', 'Français', 'French'),
+    new Language('hi', 'IN', 'हिन्दी', 'Hindi (India)'),
     new Language('es', 'ES', 'Español', 'Spanish'),
+    new Language('ja', 'JP', '日本語', 'Japanese'),
+    new Language('ko', 'KR', '한국어', 'Korean'),
+    new Language('sr', 'RS', 'Српски', 'Serbian'),
     new Language('zh', 'CN', '中文', 'Chinese')
   ],
 

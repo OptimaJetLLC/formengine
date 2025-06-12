@@ -524,6 +524,7 @@
     "formSettings": {
       "actions": "الإجراءات",
       "error": "إعدادات الخطأ",
+      "formValidator": "مدقق النموذج",
       "language": "اعدادات اللغة",
       "tooltip": "تلميح الأدوات"
     },
@@ -626,6 +627,7 @@
     "addRule": "إضافة قاعدة",
     "chooseValidation": "اختر النوع الخاص بك",
     "editCustomValidationCode": "تحرير رمز التحقق المخصص للمكون",
+    "editFormValidatorCode": "تحرير رمز التحقق من صحة النموذج",
     "formErrors": "أخطاء النموذج",
     "rule": {
       "code": "شفرة",

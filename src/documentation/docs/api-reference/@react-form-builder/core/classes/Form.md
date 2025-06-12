@@ -78,6 +78,14 @@ The type name of the component displaying the error.
 
 ***
 
+### formValidator?
+
+> `optional` **formValidator**: `string`
+
+The form validator.
+
+***
+
 ### languages
 
 > `readonly` **languages**: [`Language`](Language.md)[] = `[]`
@@ -113,6 +121,20 @@ The type name of the component displaying the tooltip.
 `string`[]
 
 the actions names array.
+
+***
+
+### formValidatorFunction
+
+#### Get Signature
+
+> **get** **formValidatorFunction**(): `undefined` \| [`FormValidator`](../type-aliases/FormValidator.md)
+
+##### Returns
+
+`undefined` \| [`FormValidator`](../type-aliases/FormValidator.md)
+
+the form validator function.
 
 ## Methods
 

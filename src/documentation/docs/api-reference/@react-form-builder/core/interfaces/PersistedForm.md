@@ -44,6 +44,14 @@ Settings for components that display the form.
 
 ***
 
+### formValidator?
+
+> `optional` **formValidator**: `string`
+
+The form validator.
+
+***
+
 ### languages
 
 > **languages**: [`Language`](../classes/Language.md)[]

@@ -45,6 +45,11 @@ export class Annotation {
   readonly readOnly: boolean = false
 
   /**
+   * True if the property value controls a disabled flag, false otherwise.
+   */
+  readonly disabled: boolean = false
+
+  /**
    * Additional properties for the component property editor.
    */
   readonly editorProps?: any
