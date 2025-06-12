@@ -1,6 +1,6 @@
-import {view} from '@react-form-builder/components-rsuite'
-import {FormViewer, FormViewerProps, RuleValidator, type Validators} from '@react-form-builder/core'
-import {fireEvent, render} from '@testing-library/react'
+import {RuleValidator, type Validators} from '@react-form-builder/core'
+import {fireEvent} from '@testing-library/react'
+import {renderForm} from '../util/renderForm'
 import {asyncAct} from './asyncAct'
 import formWithRepeater from './forms/custom-validation-with-form-data/repeater.json'
 import formWithSimpleField from './forms/custom-validation-with-form-data/simple-field.json'
@@ -8,9 +8,6 @@ import formWithSimpleField from './forms/custom-validation-with-form-data/simple
 const expectedValue = 'test value'
 
 const renderFormWithValidator = (form: object, validator: RuleValidator, initialData?: Record<string, any>) => {
-  const getForm = () => JSON.stringify(form)
-  const viewerRef: FormViewerProps['viewerRef'] = {current: null}
-
   const validators: Validators = {
     string: {
       testValidator: {
@@ -19,17 +16,7 @@ const renderFormWithValidator = (form: object, validator: RuleValidator, initial
     }
   }
 
-  const {findByTestId} = render(
-    <FormViewer view={view} getForm={getForm} viewerRef={viewerRef}
-                validators={validators} initialData={initialData}/>
-  )
-
-  const formData = viewerRef.current?.formData
-  if (!formData) {
-    throw new Error('FormData is not defined')
-  }
-
-  return {findByTestId, formData}
+  return renderForm(form, {validators, initialData})
 }
 
 describe('Custom validators', () => {

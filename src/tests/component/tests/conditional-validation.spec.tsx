@@ -1,25 +1,8 @@
-import {view} from '@react-form-builder/components-rsuite'
-import {FormViewer, FormViewerProps} from '@react-form-builder/core'
-import {fireEvent, render} from '@testing-library/react'
+import {fireEvent} from '@testing-library/react'
+import {renderForm} from '../util/renderForm'
 import {asyncAct} from './asyncAct'
 import withRepeater from './forms/conditional-validation/repeater.json'
 import form from './forms/conditional-validation/simple.json'
-
-const renderForm = (form: object, initialData?: Record<string, any>) => {
-  const getForm = () => JSON.stringify(form)
-  const viewerRef: FormViewerProps['viewerRef'] = {current: null}
-
-  const {findByText, getAllByText} = render(
-    <FormViewer view={view} getForm={getForm} viewerRef={viewerRef} initialData={initialData}/>
-  )
-
-  const formData = viewerRef.current?.formData
-  if (!formData) {
-    throw new Error('FormData is not defined')
-  }
-
-  return {findByText, formData, getAllByText}
-}
 
 describe('Conditional validation', () => {
   it('should return the error messages if the condition is met', async () => {
@@ -45,10 +28,12 @@ describe('Conditional validation', () => {
 
   it('should have access to row data in repeater field', async () => {
     const {formData, getAllByText} = renderForm(withRepeater, {
-      repeater1: [
-        {},
-        {address: 'address'}
-      ]
+      initialData: {
+        repeater1: [
+          {},
+          {address: 'address'}
+        ]
+      }
     })
 
     let returnedErrors = await asyncAct(async () => await formData.validate())
@@ -69,7 +54,9 @@ describe('Conditional validation', () => {
 
   it('should have access to form data in repeater field', async () => {
     const {formData, findByText} = renderForm(withRepeater, {
-      repeater1: [{}]
+      initialData: {
+        repeater1: [{}]
+      }
     })
 
     let returnedErrors = await asyncAct(async () => await formData.validate())
