@@ -8,7 +8,7 @@ const __dirname = dirname(__filename)
 
 function updateLernaVersion() {
   const versions = readVersions()
-  const path = join(__dirname, '..', '..')
+  const path = join(__dirname, '..', '..', 'src')
   const command = `npx lerna version ${versions['NpmVersion']} --preid ${versions['NpmPublishTag']} --no-git-tag-version --yes`
   executeCommand(command, path)
 }

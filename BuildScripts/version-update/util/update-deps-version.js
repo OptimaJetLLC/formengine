@@ -9,17 +9,17 @@ const __dirname = dirname(__filename)
 const packagePrefix = '@react-form-builder/'
 
 const packageList = [
-  'packages/apps/demo',
-  'packages/apps/example-builder',
-  'packages/apps/example-viewer',
-  'packages/core',
-  'packages/designer',
-  'packages/designer-bundle',
-  'packages/indexed-db-form-storage',
-  'packages/viewer-bundle',
-  'packages/views/antd',
-  'packages/views/default',
-  'packages/views/rsuite',
+  'src/packages/apps/demo',
+  'src/packages/apps/example-builder',
+  'src/packages/apps/example-viewer',
+  'src/packages/core',
+  'src/packages/designer',
+  'src/packages/designer-bundle',
+  'src/packages/indexed-db-form-storage',
+  'src/packages/viewer-bundle',
+  'src/packages/views/antd',
+  'src/packages/views/default',
+  'src/packages/views/rsuite',
   'examples/with-formik'
 ]
 
@@ -60,6 +60,6 @@ export function updateDependenciesVersion(version) {
   packageList.forEach(packagePath => patchPackageVersion(packagePath, version))
 
   // update package-lock.json
-  const path = join(__dirname, '..', '..')
+  const path = join(__dirname, '..', '..', '..', 'src')
   executeCommand('npm install', path)
 }
