@@ -8,7 +8,7 @@ slug: /release-notes
 
 _June_ 13, 2025
 
-- Fixed a bug where the **Designer** application crashed  trying to access the `process.ENV`.
+- Fixed a bug where the **Designer** application crashed trying to access the `process.env`.
 
 ## 4.3.0
 
