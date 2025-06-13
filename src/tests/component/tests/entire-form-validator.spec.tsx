@@ -1,6 +1,6 @@
-import {view} from '@react-form-builder/components-rsuite'
-import {FormValidator, FormValidators, FormViewer, FormViewerProps} from '@react-form-builder/core'
-import {fireEvent, render} from '@testing-library/react'
+import {FormValidator} from '@react-form-builder/core'
+import {fireEvent} from '@testing-library/react'
+import {renderForm} from '../util/renderForm'
 import {asyncAct} from './asyncAct'
 import form from './forms/entire-form-validator.json'
 
@@ -15,26 +15,9 @@ const formValidatorErrors = {
   input2: 'invalid input2'
 }
 
-const renderFormWithValidators = (form: object, validators?: FormValidators, initialData?: Record<string, any>) => {
-  const getForm = () => JSON.stringify(form)
-  const viewerRef: FormViewerProps['viewerRef'] = {current: null}
-
-  const {findByTestId} = render(
-    <FormViewer view={view} getForm={getForm} viewerRef={viewerRef}
-                formValidators={validators} initialData={initialData}/>
-  )
-
-  const formData = viewerRef.current?.formData
-  if (!formData) {
-    throw new Error('FormData is not defined')
-  }
-
-  return {findByTestId, formData}
-}
-
 describe('Form validator', () => {
   it('should validate form', async () => {
-    const {findByTestId, formData} = renderFormWithValidators(form)
+    const {findByTestId, formData} = renderForm(form)
 
     let returnedErrors = await asyncAct(async () => await formData.validate())
 
@@ -62,7 +45,7 @@ describe('Form validator', () => {
     }
     const validator: FormValidator = async () => externalValidatorErrors
 
-    const {formData} = renderFormWithValidators(form, [validator])
+    const {formData} = renderForm(form, {formValidators: [validator]})
 
     const returnedErrors = await asyncAct(async () => await formData.validate())
     const expectedErrors = {

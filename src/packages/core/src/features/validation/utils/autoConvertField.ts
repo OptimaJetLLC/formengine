@@ -27,6 +27,7 @@ const ifInstanceThenSame = (constructor: any) => {
   return (from: any) => from instanceof constructor ? from : error(from)
 }
 const toNumber = (from: any) => {
+  if (from === '') return undefined
   const result = Number(from)
   if (isNaN(result)) error(from)
   return result
