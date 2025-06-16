@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/components-google-map",
-  "version": "4.3.1",
+  "version": "4.3.2",
   "private": false,
   "main": "src/index.ts",
   "type": "module",
@@ -18,7 +18,7 @@
     "create-archive": "node ./config/pack"
   },
   "dependencies": {
-    "@react-form-builder/core": "^4.3.1",
+    "@react-form-builder/core": "^4.3.2",
     "@types/google.maps": "^3.58.1",
     "@vis.gl/react-google-maps": "^1.2.0"
   },

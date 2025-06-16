@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/example-viewer",
-  "version": "4.3.1",
+  "version": "4.3.2",
   "private": true,
   "main": "src/index.tsx",
   "type": "module",
@@ -17,8 +17,8 @@
     "dev": "vite -c ../../../vite.config.ts"
   },
   "dependencies": {
-    "@react-form-builder/components-rsuite": "^4.3.1",
-    "@react-form-builder/core": "^4.3.1",
+    "@react-form-builder/components-rsuite": "^4.3.2",
+    "@react-form-builder/core": "^4.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

@@ -4,6 +4,16 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 4.3.2
+
+_June_ 16, 2025
+
+- Fixed a bug where the **Designer** application crashed trying to access the `process.env`.
+
+### Updated internal dependencies
+
+- _brace-expansion_ from 1.1.11 to 1.1.12.
+
 ## 4.3.1
 
 _June_ 13, 2025
