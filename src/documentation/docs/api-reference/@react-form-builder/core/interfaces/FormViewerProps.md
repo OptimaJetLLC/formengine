@@ -20,14 +20,6 @@ The React component that wraps every component in a form. **Internal use only.**
 
 ***
 
-### computeChildren?
-
-> `optional` **computeChildren**: [`ComputeChildren`](../type-aliases/ComputeChildren.md)
-
-**Deprecated, unused.** Function that calculates all child properties of a component. **Internal use only.**
-
-***
-
 ### disabled?
 
 > `optional` **disabled**: `boolean`
