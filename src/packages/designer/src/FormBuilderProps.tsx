@@ -19,6 +19,11 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
   view: BuilderView
 
   /**
+   * The FormEngine license key.
+   */
+  licenseKey?: string
+
+  /**
    * The external form storage.
    */
   formStorage?: IFormStorage

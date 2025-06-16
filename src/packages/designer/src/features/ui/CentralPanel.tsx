@@ -5,6 +5,7 @@ import type {ComponentProps} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {customizable, customizableObserver} from '../customization'
 import {EditableWrapper} from '../dnd'
+import {TrialMessage} from '../license/TrialMessage'
 import {ErrorFormWrapper} from './ErrorFormWrapper'
 import {Header} from './Header/Header'
 import {PanelContainer} from './Panel'
@@ -21,6 +22,7 @@ const SFormContainer = customizable('FormContainer', styled(PanelContainer)`
   flex: 1;
   z-index: 4;
   flex-direction: column;
+  gap: 0.5em;
   width: initial;
   margin-inline: 15px;
   overflow: auto;
@@ -73,6 +75,7 @@ const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
       <Header/>
       <SFormContainer className={cx(viewMode, builderMode, {landscapeMode, withForm: !formLoadError})}>
         <BuilderModeProvider value={builderMode}>
+          <TrialMessage/>
           <ErrorFormWrapper>
             <FormViewer {...viewerProps} componentWrapper={componentWrapper} viewMode={viewMode}
                         formName={builderStore.activeFormName}/>

@@ -1,56 +1,12 @@
+import {namedObserver} from '@react-form-builder/core'
 import type {ComponentType, PropsWithChildren} from 'react'
-import {useCallback, useContext, useEffect, useMemo} from 'react'
-import {namedObserver} from '../../utils'
-import {useStore} from '../../utils/contexts/StoreContext'
-import {createNonNullableContext} from '../../utils/createNonNullableContext'
-import useSafeState from '../../utils/useSafeState'
-import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
-import type {LicenseData, LicenseFeatureDescription, LicenseFeatureName, Restrictions} from './license'
+import {useCallback, useEffect, useMemo} from 'react'
+import type {LicenseData, LicenseFeatureDescription, Restrictions, Violations} from './license'
 import {LicenseError} from './license'
+import {LicenseProvider} from './LicenseContext'
+import useSafeState from './useSafeState'
+import {useTreeChecker} from './useTreeChecker'
 import {extractLicenseKey, verifyLicenseParams} from './verify'
-
-type LicenseErrorDescription = {
-  name: LicenseError
-}
-
-type Violations = Partial<Record<LicenseFeatureName | LicenseError, LicenseFeatureDescription | LicenseErrorDescription>>
-
-type LicenseContext = {
-  /**
-   * Indicates whether the license key is valid (excluding feature checks).
-   */
-  valid: boolean,
-  /**
-   * Array of violation messages.
-   */
-  missing: Violations,
-  /**
-   * Function to check license restriction.
-   */
-  checkLicense: (features: Array<LicenseFeatureDescription>, ...args: any) => void,
-  /**
-   * Indicates this is a nested form.
-   */
-  isNested: boolean
-}
-
-export const [
-  /**
-   * @internal
-   * @ignore
-   */
-  useLicense,
-  /**
-   * @internal
-   * @ignore
-   */
-  LicenseProvider,
-  /**
-   * @internal
-   * @ignore
-   */
-  LicenseContext
-] = createNonNullableContext<LicenseContext>('LicenseContext')
 
 // used if not licenseKey passed, should check only features
 const emptyLicense: LicenseData = {
@@ -58,27 +14,25 @@ const emptyLicense: LicenseData = {
     StrictCheck: false,
     ftLocaleCount: 1
   },
+  version: 'v2',
   licenseEndDate: '04.26.2130',
   companyName: ''
 }
 
-const RawLicenseManager: ComponentType<PropsWithChildren> = ({children}) => {
-  const {licenseKey} = useViewerProps()
-  const {parentStore} = useStore()
+const RawLicenseManager: ComponentType<PropsWithChildren<{ licenseKey?: string }>> = ({children, licenseKey = ''}) => {
   const [missing, setMissing] = useSafeState<Violations>({})
   const [ready, setReady] = useSafeState<boolean>(false)
   const [valid, setValid] = useSafeState<boolean>(true)
   const [data, setData] = useSafeState<LicenseData | null>(null)
-  const existingContext = useContext(LicenseContext)
-  const isNested = !!parentStore
+  const [currentViewerFeatures, viewerFeaturesList] = useTreeChecker()
 
   const checkLicense = useCallback((features: Array<LicenseFeatureDescription>) => {
     if (!features || features.length === 0 || !data) return
 
     setMissing((prev) => {
-      const {restrictions} = data
-      // legacy license, StrictCheck only
-      if (Object.keys(restrictions).length < 2) return prev
+      const {version, restrictions} = data
+
+      if (version === 'v1') return prev
 
       const notAllowed = features.filter(f => {
         return typeof f?.check === 'undefined' && !restrictions[f.name as keyof Restrictions]
@@ -106,13 +60,6 @@ const RawLicenseManager: ComponentType<PropsWithChildren> = ({children}) => {
       return {...prev}
     })
   }, [data, setMissing])
-
-  const context = useMemo(() => (existingContext ?? {
-    valid,
-    isNested,
-    missing,
-    checkLicense
-  }), [checkLicense, isNested, existingContext, missing, valid])
 
   useEffect(() => {
     if (ready && data) {
@@ -158,13 +105,40 @@ const RawLicenseManager: ComponentType<PropsWithChildren> = ({children}) => {
         }))
 
         setValid(false)
-        // eslint-disable-next-line no-console
-        console.info(data)
       }
 
       setReady(true)
     })
   }, [licenseKey, setData, setMissing, setReady, setValid])
+
+  useEffect(() => {
+    if (!data || data.version === 'v1') return
+
+    setMissing((prev) => {
+      const next = {...prev}
+      const {restrictions} = data
+
+      for (const [key] of viewerFeaturesList.entries()) {
+        delete next[key]
+      }
+
+      for (const f of currentViewerFeatures) {
+        next[f.name] = {
+          ...f,
+          [f.name]: restrictions[f.name as keyof Restrictions]
+        }
+      }
+
+      return next
+    })
+  }, [setMissing, currentViewerFeatures, viewerFeaturesList, data])
+
+
+  const context = useMemo(() => ({
+    valid,
+    missing,
+    checkLicense
+  }), [checkLicense, missing, valid])
 
   return <LicenseProvider value={context}>{children}</LicenseProvider>
 }

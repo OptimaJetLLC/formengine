@@ -1,6 +1,5 @@
 import {view} from '@react-form-builder/components-rsuite'
 import {ActionData, FormViewer, FormViewerProps, PersistedForm} from '@react-form-builder/core'
-import {licenseEnterprise2030AnyDomain} from '@react-form-builder/tests-common/license/enterprise-2030-any-domain'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {asyncAct} from './asyncAct'
 
@@ -128,9 +127,7 @@ describe('Validation action', () => {
       }
     }
 
-    const {findByTestId} = render(<FormViewer view={view} getForm={getForm}
-                                              licenseKey={licenseEnterprise2030AnyDomain}
-                                              viewerRef={viewerRef} actions={actions}/>)
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} actions={actions}/>)
 
     const validateButton = await findByTestId('validateButton')
     expect(validateButton).toBeInTheDocument()

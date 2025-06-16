@@ -1,6 +1,5 @@
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {BiDi, ComponentStore, createView, FormViewer, Language, PersistedForm, View} from '@react-form-builder/core'
-import {testLicense} from '@react-form-builder/tests-common/license/vaild'
 import {fireEvent, render} from '@testing-library/react'
 import {useEffect, useState} from 'react'
 import {expect} from 'vitest'
@@ -21,7 +20,6 @@ interface SimpleFieldAppProps {
 const SimpleFieldApp = ({formJson, view, initialData}: SimpleFieldAppProps) => {
   return <FormViewer
     initialData={initialData}
-    licenseKey={testLicense}
     view={view ?? componentsView}
     getForm={() => JSON.stringify(formJson)}
   />

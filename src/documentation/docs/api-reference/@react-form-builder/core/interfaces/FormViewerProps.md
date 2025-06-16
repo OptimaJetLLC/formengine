@@ -113,14 +113,6 @@ The language of the form, e.g. 'en-US'.
 
 ***
 
-### licenseKey?
-
-> `optional` **licenseKey**: `string`
-
-The FormEngine license key.
-
-***
-
 ### localize?
 
 > `optional` **localize**: [`ComponentLocalizer`](../type-aliases/ComponentLocalizer.md)

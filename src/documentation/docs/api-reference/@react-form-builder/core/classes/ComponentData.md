@@ -143,6 +143,20 @@ If true, then validation is in progress.
 
 ## Accessors
 
+### allChildren
+
+#### Get Signature
+
+> **get** **allChildren**(): [`ComponentData`](ComponentData.md)[]
+
+##### Returns
+
+[`ComponentData`](ComponentData.md)[]
+
+an array of all children components.
+
+***
+
 ### allComponentFields
 
 #### Get Signature

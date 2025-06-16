@@ -4,7 +4,6 @@ import {
   ComponentTree,
   FormViewerPropsStore,
   getChildren,
-  LicenseManager,
   namedObserver,
   nameObservable,
   Store,
@@ -27,6 +26,7 @@ import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
 import {getBuilderChildren} from '../dnd'
 import {CustomDragLayer} from '../dnd/components/CustomDragLayer'
 import {useHotkeys} from '../hotkeys/useHotKeys'
+import {LicenseManager} from '../license/LicenseManager'
 import {LocalizationProvider} from '../localization'
 import {FormBuilderContextProvider} from './FormBuilderContextProvider'
 import {StylesProvider} from './StylesProvider'
@@ -109,7 +109,7 @@ const useBuilderProviderData = (props: FormBuilderProps) => useCallback(() => {
  * @returns the React element.
  */
 const RawProviders = ({children, props, builderStore, store}: BuilderProvidersProps) => {
-  const {builderRef, ...viewerProps} = props
+  const {builderRef, licenseKey, ...viewerProps} = props
 
   useHotkeys(builderStore)
 
@@ -138,7 +138,7 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
       <BuilderStoreProvider value={builderStore}>
         <FormBuilderContextProvider builderRef={builderRef}>
           <StoreProvider value={store}>
-            <LicenseManager>
+            <LicenseManager licenseKey={licenseKey}>
               <LocalizationProvider>
                 <StylesProvider>
                   <TooltipPlacementProvider value={'auto'}>

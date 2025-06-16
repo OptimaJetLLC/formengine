@@ -88,4 +88,17 @@ export type LicenseData = {
    * License end date.
    */
   licenseEndDate: string
+  /**
+   * License format version.
+   */
+  version: 'v1' | 'v2'
 }
+
+type LicenseErrorDescription = {
+  name: LicenseError
+}
+
+/**
+ * List of license usage violations.
+ */
+export type Violations = Partial<Record<LicenseFeatureName | LicenseError, LicenseFeatureDescription | LicenseErrorDescription>>

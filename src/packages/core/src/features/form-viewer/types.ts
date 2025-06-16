@@ -105,11 +105,6 @@ export interface FormViewerProps {
   onFormDataChange?: (data: IFormData) => void
 
   /**
-   * The FormEngine license key.
-   */
-  licenseKey?: string
-
-  /**
    * If true, the form is read-only.
    */
   readOnly?: boolean

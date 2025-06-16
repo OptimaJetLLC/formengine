@@ -103,6 +103,12 @@ export async function extractLicenseKey(licenseKey: string): Promise<LicenseData
 
     const parsedData = JSON.parse(extractedData) as LicenseData
 
+    // v1 - legacy license, StrictCheck only
+    parsedData.version = (
+      Object.keys(parsedData.restrictions).length === 1
+      && typeof parsedData.restrictions.StrictCheck !== 'undefined'
+    ) ? 'v1' : 'v2'
+
     const {licenseEndDate, companyName} = parsedData
     const dateParts = licenseEndDate.split('.')
 

@@ -8,7 +8,7 @@ examples
 scripts/*.js
 scripts/test/**/*
 packages/apps/demo/scripts
-packages/core/scripts
+packages/designer/scripts
 packages/views/antd
 packages/views/default
 sample-apps

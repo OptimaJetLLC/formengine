@@ -1,30 +1,23 @@
-import {color, define, event, number, string, useLicense} from '@react-form-builder/core'
-import {useCallback, useEffect, useMemo, useRef} from 'react'
+import {color, define, event, number, string} from '@react-form-builder/core'
+import {useCallback, useMemo, useRef} from 'react'
 import {Button} from './Button'
 import {alignItems, nonNegNumber, readOnly} from './props'
 import type {SignaturePadHandle} from './SignaturePad'
 import {SignaturePad} from './SignaturePad'
-import {useTouchOnEvent} from './useTouchOnEvent'
 import type {SignatureProps} from './SignatureProps'
 import {LabeledInput, LabelLeft, Rows} from './styled'
+import {useTouchOnEvent} from './useTouchOnEvent'
 
 const Signature = ({value, style, className, label, clearButtonText, readOnly, ...props}: SignatureProps) => {
   const padRef = useRef<SignaturePadHandle>(null)
   const buttonStyle = useMemo(() => ({width: props.width, marginTop: 6}),
     [props.width])
   const onChange = useTouchOnEvent(props, 'onChange')
-  const {checkLicense} = useLicense()
 
   const clear = useCallback(() => {
     padRef.current?.clear()
     onChange(undefined)
   }, [onChange])
-
-  useEffect(() => {
-    checkLicense([{
-      name: 'ftComponentSignature'
-    }])
-  }, [checkLicense])
 
   return <LabeledInput style={style} className={className}>
     <Rows>

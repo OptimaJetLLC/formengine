@@ -1,6 +1,5 @@
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {BiDi, ComponentStore, createView, FormViewer, Language, PersistedForm, View} from '@react-form-builder/core'
-import {testLicense} from '@react-form-builder/tests-common/license/vaild'
 import {fireEvent, render} from '@testing-library/react'
 import {useCallback} from 'react'
 import {expect} from 'vitest'
@@ -29,7 +28,6 @@ const SimpleFieldApp = ({view, initialData, modifyForm}: SimpleFieldAppProps) =>
   return <FormViewer
     formName="root"
     initialData={initialData}
-    licenseKey={testLicense}
     view={view ?? componentsView}
     getForm={wrappedGetForm}
   />

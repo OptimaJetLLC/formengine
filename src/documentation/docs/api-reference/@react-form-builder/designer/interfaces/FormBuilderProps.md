@@ -203,10 +203,6 @@ The language of the form, e.g. 'en-US'.
 
 The FormEngine license key.
 
-#### Inherited from
-
-`Omit.licenseKey`
-
 ***
 
 ### localize?
