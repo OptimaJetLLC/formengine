@@ -1,0 +1,1 @@
+- Fixed a bug where the **Designer** application crashed trying to access the `process.env`.

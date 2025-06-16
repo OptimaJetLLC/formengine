@@ -4,6 +4,12 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 4.3.1
+
+_June_ 13, 2025
+
+- Fixed a bug where the **Designer** application crashed trying to access the `process.env`.
+
 ## 4.3.0
 
 _June_ 12, 2025
