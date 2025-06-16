@@ -85,7 +85,7 @@ const loadLanguage = async (i18n: FormBuilderI18n, language: LanguageFullCode) =
   try {
     return await i18n.getData(language)
   } catch (error) {
-    if (process?.env?.FORM_BUILDER_I18N_DISABLE_LOGGING !== 'true') {
+    if (globalThis.FORM_BUILDER_I18N_DISABLE_LOGGING !== 'true') {
       console.warn(`Error loading language ${language}:`, error)
     }
   }
