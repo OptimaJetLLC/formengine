@@ -1,6 +1,6 @@
 {
   "name": "formengine",
-  "version": "4.3.1",
+  "version": "4.3.2",
   "description": "FormEngine example application",
   "author": "Optimajet",
   "homepage": "https://formengine.io/",
@@ -11,9 +11,9 @@
     "start": "vite preview"
   },
   "dependencies": {
-    "@react-form-builder/components-rsuite": "^4.3.1",
-    "@react-form-builder/core": "^4.3.1",
-    "@react-form-builder/designer": "^4.3.1",
+    "@react-form-builder/components-rsuite": "^4.3.2",
+    "@react-form-builder/core": "^4.3.2",
+    "@react-form-builder/designer": "^4.3.2",
     "@vitejs/plugin-react-swc": "^3.7.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
