@@ -40,9 +40,9 @@ export class BuilderI18n {
             escapeValue: false,
           },
           missingKeyNoValueFallbackToKey: false,
-          saveMissing: process?.env?.NODE_ENV !== 'production',
+          saveMissing: process.env.NODE_ENV !== 'production',
           missingKeyHandler: (lng, ns, key, _fallbackValue) => {
-            if (process?.env?.FORM_BUILDER_I18N_DISABLE_LOGGING !== 'true') {
+            if (globalThis.FORM_BUILDER_I18N_DISABLE_LOGGING !== 'true') {
               console.warn(`Missing translation: ${key}`, lng, ns)
             }
           }
