@@ -1,4 +1,4 @@
-import {forwardRef} from '@react-form-builder/core'
+import {forwardRef, useAriaAttributesIds} from '@react-form-builder/core'
 import type {ComponentPropsWithoutRef, CSSProperties} from 'react'
 import {useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState} from 'react'
 import VanillaSignaturePad from 'signature_pad'
@@ -91,6 +91,7 @@ export const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>((p
   const signPadRef = useRef<VanillaSignaturePad>(null)
   const clear = useCallback(() => signPadRef.current?.clear(), [])
   const [vanillaSignaturePad, setVanillaSignaturePad] = useState<VanillaSignaturePad>()
+  const ariaAttributes = useAriaAttributesIds()
 
   useImperativeHandle(ref, () => ({clear}), [clear])
 
@@ -126,5 +127,6 @@ export const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>((p
   const canvasStyle = useMemo(() => ({borderRadius: 6, backgroundColor}),
     [backgroundColor])
 
-  return <canvas ref={canvasRef} className={className} width={width} height={height} style={canvasStyle}/>
+  return <canvas ref={canvasRef} className={className} width={width} height={height} style={canvasStyle}
+                 id={padProps.id} {...ariaAttributes}/>
 })

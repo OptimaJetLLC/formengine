@@ -3,6 +3,7 @@ import {useCallback, useEffect, useMemo, useRef} from 'react'
 import {Button} from 'rsuite'
 import {alignItems, nonNegNumber, readOnly} from '../commonProperties'
 import {Labeled} from './components/Labeled'
+import {Rows} from './components/Layout'
 import type {SignaturePadHandle, SignaturePadProps} from './components/SignaturePad'
 import {SignaturePad} from './components/SignaturePad'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
@@ -32,12 +33,14 @@ const RsSignature = ({value, style, className, label, clearButtonText, readOnly,
     }])
   }, [checkLicense])
 
-  return <Labeled label={label} style={style} className={className} data-testid={props['data-testid']}>
-    <SignaturePad {...props} readOnly={readOnly} value={value} ref={padRef} onChange={onChange}/>
+  return <Rows>
+    <Labeled label={label} style={style} className={className} data-testid={props['data-testid']}>
+      <SignaturePad {...props} readOnly={readOnly} value={value} ref={padRef} onChange={onChange}/>
+    </Labeled>
     {!readOnly &&
       <Button onClick={clear} disabled={!value} appearance={'primary'} style={buttonStyle}>{clearButtonText}</Button>
     }
-  </Labeled>
+  </Rows>
 }
 
 export const rsSignature = define(RsSignature, 'RsSignature')

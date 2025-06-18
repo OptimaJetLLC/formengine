@@ -5,7 +5,6 @@ import {useCallback, useEffect, useMemo, useState} from 'react'
 import type {Address} from './Address'
 import {CustomMapControl} from './CustomMapControl'
 import type {GoogleMapProps} from './GoogleMapProps'
-import {Labeled} from './Labeled'
 import type {MapMarker} from './MapMarker'
 import {MarkerInfo} from './MarkerInfo'
 import {Markers} from './Markers'
@@ -39,9 +38,7 @@ const toMarkers = (markers?: MapMarker[]) => {
  */
 export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region' | 'language'>) => {
   const {
-    label,
     mapId,
-    className,
     colorScheme,
     collisionBehavior,
     gestureHandling,
@@ -164,7 +161,7 @@ export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region
     return data.find(item => item.id === selectedId) ?? markers.find(item => item.id === selectedId)
   }, [field?.value, selectedId, markers])
 
-  return <Labeled label={label} className={className}>
+  return (
     <Map id={id} mapId={mapId} zoom={zoom} center={center}
          onClick={handleMapClick} onZoomChanged={onZoomChanged} onCameraChanged={onCameraChanged}
          colorScheme={colorScheme} gestureHandling={gestureHandling} mapTypeId={mapTypeId}>
@@ -178,5 +175,5 @@ export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region
                                            placeholder={searchPlaceholder}
       />}
     </Map>
-  </Labeled>
+  )
 }

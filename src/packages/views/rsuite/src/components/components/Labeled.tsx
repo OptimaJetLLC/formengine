@@ -1,6 +1,8 @@
 import {css} from '@emotion/react'
 import styled from '@emotion/styled'
+import {namedObserver, useAriaAttributes, useComponentData} from '@react-form-builder/core'
 import type {ComponentProps} from 'react'
+import {cloneElement} from 'react'
 
 export const requiredStyle = css`
   margin-inline-start: 3px;
@@ -35,9 +37,13 @@ interface LabeledProps extends ComponentProps<any> {
  * @param props.children the children component.
  * @returns the React element.
  */
-export const Labeled = ({label, children, ...props}: LabeledProps) => (
-  <Container {...props}>
-    {label && <label>{label}</label>}
-    {children}
+export const RawLabeled = ({label, children, ...props}: LabeledProps) => {
+  const {id} = useComponentData()
+  const aria = useAriaAttributes()
+  return <Container {...props} role="group">
+    {label && <label id={aria['aria-labelledby']} htmlFor={id}>{label}</label>}
+    {cloneElement(children, {id, ...aria})}
   </Container>
-)
+}
+
+export const Labeled = namedObserver('Labeled', RawLabeled)
