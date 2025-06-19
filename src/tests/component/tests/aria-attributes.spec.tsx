@@ -28,8 +28,14 @@ describe('All valued components', () => {
       const label = await findByText(key)
       const fieldId = label.getAttribute('for')
       const field = container.querySelector(`*[id=${fieldId}]`)
-      expect(field).toBeInTheDocument()
-      expect(field?.getAttribute('aria-labelledby')).toEqual(label.getAttribute('id'))
+
+      try {
+        expect(field).toBeInTheDocument()
+        expect(field?.getAttribute('aria-labelledby')).toEqual(label.getAttribute('id'))
+      } catch (e) {
+        console.error(`Failed for: ${key}`)
+        throw e
+      }
     }
   })
 
@@ -42,7 +48,12 @@ describe('All valued components', () => {
       const field = container.querySelector(`*[id=${fieldId}]`)
       const errorId = field?.getAttribute('aria-errormessage')
 
-      expect(container.querySelector(`*[id=${errorId}]`)).toBeInTheDocument()
+      try {
+        expect(container.querySelector(`*[id=${errorId}]`)).toBeInTheDocument()
+      } catch (e) {
+        console.error(`Failed for: ${key}`)
+        throw e
+      }
     }
   })
 })
