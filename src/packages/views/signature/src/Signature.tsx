@@ -1,4 +1,4 @@
-import {color, define, event, number, string} from '@react-form-builder/core'
+import {color, define, event, number, string, useAriaAttributes, useComponentData} from '@react-form-builder/core'
 import {useCallback, useMemo, useRef} from 'react'
 import {Button} from './Button'
 import {alignItems, nonNegNumber, readOnly} from './props'
@@ -10,6 +10,8 @@ import {useTouchOnEvent} from './useTouchOnEvent'
 
 const Signature = ({value, style, className, label, clearButtonText, readOnly, ...props}: SignatureProps) => {
   const padRef = useRef<SignaturePadHandle>(null)
+  const {id} = useComponentData()
+  const aria = useAriaAttributes()
   const buttonStyle = useMemo(() => ({width: props.width, marginTop: 6}),
     [props.width])
   const onChange = useTouchOnEvent(props, 'onChange')
@@ -21,8 +23,8 @@ const Signature = ({value, style, className, label, clearButtonText, readOnly, .
 
   return <LabeledInput style={style} className={className}>
     <Rows>
-      {label && <LabelLeft>{label}</LabelLeft>}
-      <SignaturePad {...props} readOnly={readOnly} value={value} ref={padRef} onChange={onChange}/>
+      {label && <LabelLeft id={aria['aria-labelledby']} htmlFor={id}>{label}</LabelLeft>}
+      <SignaturePad {...props} id={id} readOnly={readOnly} value={value} ref={padRef} onChange={onChange}/>
     </Rows>
     {!readOnly &&
       <Button onClick={clear} disabled={!value} style={buttonStyle}>{clearButtonText}</Button>
