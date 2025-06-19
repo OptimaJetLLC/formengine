@@ -4,20 +4,29 @@ import {useCallback} from 'react'
 import type {InputPickerProps} from 'rsuite'
 import {InputPicker} from 'rsuite'
 import {pickerProps} from '../commonProperties'
-import type {LoadDataHandler} from '../hooks'
+import type {LoadDataProps} from '../hooks'
 import {useLoadData} from '../hooks'
 import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 import {SLoader} from './SLoader'
 
-interface RsDropdownProps extends InputPickerProps {
+interface RsDropdownProps extends InputPickerProps, LoadDataProps {
   label: string
-  onLoadData?: LoadDataHandler
-  preload?: boolean
 }
 
-const RsDropdown = ({data, label, onLoadData, onSearch, onOpen, value = '', className, preload, ...props}: RsDropdownProps) => {
-  const {loading, ...loadProps} = useLoadData({data, onLoadData, onSearch, onOpen, value, preload})
+const RsDropdown = ({
+                      data,
+                      label,
+                      onLoadData,
+                      onSearch,
+                      onOpen,
+                      value = '',
+                      className,
+                      preload,
+                      disableVirtualized,
+                      ...props
+                    }: RsDropdownProps) => {
+  const {loading, ...loadProps} = useLoadData({data, onLoadData, onSearch, onOpen, value, preload, disableVirtualized})
   const onClean = useTouchOnEvent(props, 'onClean')
 
   const renderMenu = useCallback((menu: ReactNode) => <>

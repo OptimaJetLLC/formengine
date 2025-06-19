@@ -17,10 +17,28 @@ export type LoadDataHandler = (
   currentDataLength: number
 ) => {}
 
-interface LoadDataProps extends Pick<InputPickerProps,
-  'data' | 'value' | 'onSearch' | 'onOpen' | 'onCreate'> {
+
+/**
+ * Interface for load data props.
+ */
+export interface LoadDataProps {
+  /**
+   * The callback function called when data should be load.
+   */
   onLoadData?: LoadDataHandler
+  /**
+   * Flag, if true, the data will be loaded in advance, before opening the dropdown, false otherwise.
+   */
   preload?: boolean
+  /**
+   * Flag, if true, the virtualized will be disabled, false otherwise.
+   */
+  disableVirtualized?: boolean
+}
+
+
+interface UseLoadDataProps extends Pick<InputPickerProps,
+  'data' | 'value' | 'onSearch' | 'onOpen' | 'onCreate'>, LoadDataProps {
 }
 
 /**
@@ -32,9 +50,10 @@ interface LoadDataProps extends Pick<InputPickerProps,
  * @param props.onOpen the callback function called when the list is displayed.
  * @param props.value the current value of the component.
  * @param props.preload flag, if true, the data will be loaded in advance, before opening the dropdown, false otherwise.
+ * @param props.disableVirtualized flag, if true, the virtualized will be disabled, false otherwise.
  * @returns the object with prepared properties for the picker.
  */
-export const useLoadData = ({data: initialData, onLoadData, value, preload, ...props}: LoadDataProps) => {
+export const useLoadData = ({data: initialData, onLoadData, value, preload, disableVirtualized, ...props}: UseLoadDataProps) => {
   // TODO lint ignored, will be fixed after merger with #FE-619
   const [searchValue, setSearchValue] = useState('')
   const [data, setData] = useState<ItemDataType[]>(initialData ?? [])
@@ -98,5 +117,7 @@ export const useLoadData = ({data: initialData, onLoadData, value, preload, ...p
     setSearchValue('')
   }
 
-  return {data, value, loading, listProps, onSearch, onOpen, onCreate, virtualized: !!onLoadData}
+  const virtualized = !!onLoadData && disableVirtualized !== true
+
+  return {data, value, loading, listProps, onSearch, onOpen, onCreate, virtualized}
 }

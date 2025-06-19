@@ -281,6 +281,10 @@
     "validateWhen": {
       "name": "Validate when",
       "hint": "The condition that determines whether to run this validation"
+    },
+    "disableVirtualized": {
+      "name": "Disable virtualized",
+      "hint": "If true, the virtualized will be disabled"
     }
   },
   "RsDatePicker": {
