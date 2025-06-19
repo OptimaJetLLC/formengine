@@ -95,9 +95,29 @@ prepare-documentation-archive:
 
 # prepare-github-formengine-archive creates an archive for the GitHub repository optimajet/formengine
 prepare-github-formengine-archive:
-  COPY --dir src/packages/apps/formengine github-formengine
+  COPY --dir src/packages/apps/formengine github-formengine/formengine/packages/apps/formengine
+  COPY --dir src/packages/core github-formengine/formengine/packages/core
+  COPY --dir src/packages/views/rsuite github-formengine/formengine/packages/views/rsuite
+  COPY --dir src/packages/viewer-bundle github-formengine/formengine/packages/viewer-bundle
+  COPY --dir src/README.md github-formengine/
+  COPY --dir src/lerna.json github-formengine/formengine/
+  COPY --dir src/nx.json github-formengine/formengine/
+  COPY --dir src/tsconfig.json github-formengine/formengine/
+  COPY --dir src/vite.config.ts github-formengine/formengine/
+  COPY --dir src/.eslintrc.cjs github-formengine/formengine/
+  COPY --dir src/.eslintignore github-formengine/formengine/
+  COPY --dir .editorconfig github-formengine/
+  COPY --dir src/package.public.json github-formengine/formengine/package.json
+  COPY --dir src/package-lock.json github-formengine/formengine/
   COPY --dir examples github-formengine
-  COPY --dir .editorconfig github-formengine
+  COPY +prepare-version-archive/version.txt github-formengine
+  WORKDIR /form-engine/src/github-formengine
+  LET libVersion=$(awk -F "=" '/NpmVersion/ {print $2}' version.txt | tr -d "\r")
+  RUN rm version.txt
+  WORKDIR /form-engine/src/github-formengine/formengine/packages/apps/formengine/
+  # at this point new version of the packages must be published to npm
+  RUN npm install @react-form-builder/designer@$libVersion --package-lock-only
+  WORKDIR /form-engine/src
   RUN tar -czvf formengine.tgz -C github-formengine .
   SAVE ARTIFACT formengine.tgz AS LOCAL .archives/formengine.tgz
 
@@ -185,6 +205,24 @@ PUBLISH_GITHUB_OPTIMAJET_FORMENGINE:
   RUN npm install --force @react-form-builder/core@$libVersion @react-form-builder/designer@$libVersion @react-form-builder/components-rsuite@$libVersion
   RUN rm -rf node_modules
   DO +GITHUB_COMMIT_AND_PUSH --gitRepository=$gitUrl --gitBranch=master --commitMessage="Version $libVersion (autocommit)" --disableDryRun=$disableDryRun
+
+test-github-formengine-archive:
+  FROM +prepare-github-formengine-archive
+  COPY +prepare-github-formengine-archive/formengine.tgz formengine.tgz
+  RUN tar zxvf formengine.tgz
+  RUN cd formengine && npm install && npm run build
+  RUN cd examples/file-upload-server && npm install && npm run build
+  RUN cd examples/with-formik && npm install && npm run build
+  RUN cd examples/with-nextjs/with-nextjs-v15 && npm install && npm run build
+  RUN cd examples/with-remix/with-remix-v2 && npm install && npm run build
+
+test-github-formenginesupport-archive:
+  FROM +prepare-github-formenginesupport-archive
+  COPY +prepare-github-formenginesupport-archive/formenginesupport.zip formenginesupport.zip
+  RUN unzip -o formenginesupport.zip
+  RUN npm install
+  RUN npm run build
+  RUN npm run bundle
 
 # publish-artifact-github-optimajet-formengine updates the GitHub repository optimajet/formengine from the local artifact
 publish-artifact-github-optimajet-formengine:
@@ -395,7 +433,7 @@ dependencies:
   COPY src/packages/views/antd/package.json src/packages/views/antd
   COPY src/packages/views/default/package.json src/packages/views/default
   COPY src/packages/views/rsuite/package.json src/packages/views/rsuite
-  COPY src/packages/views/signature/package.json packages/views/signature
+  COPY src/packages/views/signature/package.json src/packages/views/signature
   COPY src/packages/views/fast-qr/package.json src/packages/views/fast-qr
   COPY src/packages/views/rich-text/package.json src/packages/views/rich-text
   COPY src/packages/views/google-map/package.json src/packages/views/google-map

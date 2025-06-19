@@ -22,7 +22,9 @@ const packageList = [
   'src/packages/views/default',
   'src/packages/views/rsuite',
   'src/packages/views/signature',
-  'examples/with-formik'
+  'examples/with-formik',
+  'examples/with-nextjs/with-nextjs-v15',
+  'examples/with-remix/with-remix-v2',
 ]
 
 const depsSections = [
