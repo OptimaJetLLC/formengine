@@ -1231,6 +1231,21 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/useAriaAttributes",
+            "label": "useAriaAttributes"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/useAriaAttributesIds",
+            "label": "useAriaAttributesIds"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/useAriaInvalid",
+            "label": "useAriaInvalid"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/functions/useBuilderMode",
             "label": "useBuilderMode"
           },

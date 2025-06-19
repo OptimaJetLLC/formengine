@@ -97,17 +97,20 @@ const RichTextEditor = ({
     ...(customModules ?? {})
   }), [customModules, toolbarOptions])
 
+  // div wrapper is needed because the Labeled wrapper applies attributes to the child, but the ReactQuill component does not accept this props.
   return <Labeled label={label} style={style} className={className}>
-    <ReactQuill key={key}
-                defaultValue={plainInitialValue}
-                modules={modules}
-                placeholder={placeholder}
-                style={{
-                  ...editorStyle,
-                  ...style
-                }}
-                {...props}
-    />
+    <div>
+      <ReactQuill key={key}
+                  defaultValue={plainInitialValue}
+                  modules={modules}
+                  placeholder={placeholder}
+                  style={{
+                    ...editorStyle,
+                    ...style
+                  }}
+                  {...props}
+      />
+    </div>
   </Labeled>
 }
 

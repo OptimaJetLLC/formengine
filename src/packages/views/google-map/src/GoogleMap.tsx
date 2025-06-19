@@ -1,23 +1,35 @@
+import type {BuilderMode} from '@react-form-builder/core'
 import {array, boolean, cssSize, define, event, number, oneOf, string, useBuilderMode} from '@react-form-builder/core'
 import {APIProvider} from '@vis.gl/react-google-maps'
+import type {ComponentProps} from 'react'
 import type {GoogleMapProps} from './GoogleMapProps'
 import {GoogleMapRenderer} from './GoogleMapRenderer'
 import {MapIcon} from './icon'
+import {Labeled} from './Labeled'
 
-const NoApiKey = ({className}: { className?: string }) => {
-  return <div className={className}>
-    <p>Google Maps API key is required. Insert the key, save the form and reload the page.</p>
+const errorLabels: Record<BuilderMode, string> = {
+  builder: 'Google Maps API key is required. Insert the key, save the form and reload the page.',
+  viewer: 'Google Maps API key is required.'
+}
+
+const NoApiKey = (props: ComponentProps<any>) => {
+  const builderMode = useBuilderMode()
+  return <div {...props}>
+    <p>{errorLabels[builderMode]}</p>
   </div>
 }
 
-const GoogleMapLoader = ({apiKey, region, language, ...props}: GoogleMapProps) => {
-  const builderMode = useBuilderMode()
+const GoogleMapLoader = ({apiKey, region, language, label, className, ...props}: GoogleMapProps) => {
+  // div wrapper is needed because the Labeled wrapper applies attributes to the child, but the GoogleMapRenderer component does not accept this props.
+  const content = <div>
+    <APIProvider apiKey={apiKey} region={region} language={language}>
+      <GoogleMapRenderer {...props}/>
+    </APIProvider>
+  </div>
 
-  if (!apiKey) return builderMode === 'builder' ? <NoApiKey className={props.className}/> : null
-
-  return <APIProvider apiKey={apiKey} region={region} language={language}>
-    <GoogleMapRenderer {...props}/>
-  </APIProvider>
+  return <Labeled label={label} className={className}>
+    {apiKey ? content : <NoApiKey className={className}/>}
+  </Labeled>
 }
 
 const controlPositions: Record<string, number> = {

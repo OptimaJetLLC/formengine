@@ -1,8 +1,9 @@
-import {view} from '@react-form-builder/components-rsuite'
-import {FormViewer, FormViewerProps} from '@react-form-builder/core'
+import {createView, FormViewer, FormViewerProps} from '@react-form-builder/core'
+import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-conponents'
 import {render} from '@testing-library/react'
 
 type ViewerProps = Omit<FormViewerProps, 'view'>
+const view = createView(allComponentsViewer)
 
 export const renderForm = (form: object, props?: ViewerProps) => {
   const getForm = () => JSON.stringify(form)

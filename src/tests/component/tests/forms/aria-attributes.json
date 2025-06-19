@@ -1,0 +1,306 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "RsUploader",
+        "type": "RsUploader",
+        "props": {
+          "label": {
+            "value": "RsUploader"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "RsUploader error"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "RsTimePicker",
+        "type": "RsTimePicker",
+        "props": {
+          "label": {
+            "value": "RsTimePicker"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "RsTimePicker error"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "RsTextArea",
+        "type": "RsTextArea",
+        "props": {
+          "label": {
+            "value": "RsTextArea"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "RsTextArea error"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "RsTagPicker",
+        "type": "RsTagPicker",
+        "props": {
+          "label": {
+            "value": "RsTagPicker"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "RsTagPicker error"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "RsSignature",
+        "type": "RsSignature",
+        "props": {
+          "label": {
+            "value": "RsSignature"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "RsSignature error"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "RsSearch",
+        "type": "RsSearch",
+        "props": {
+          "label": {
+            "value": "RsSearch"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "RsSearch error"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "RichTextEditor",
+        "type": "RichTextEditor",
+        "props": {
+          "label": {
+            "value": "RichTextEditor"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "RichTextEditor error"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "RsRadioGroup",
+        "type": "RsRadioGroup",
+        "props": {
+          "label": {
+            "value": "RsRadioGroup"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "RsRadioGroup error"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "RsPatternFormat",
+        "type": "RsPatternFormat",
+        "props": {
+          "label": {
+            "value": "RsPatternFormat"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "RsPatternFormat error"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "RsNumberFormat",
+        "type": "RsNumberFormat",
+        "props": {
+          "label": {
+            "value": "RsNumberFormat"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "RsNumberFormat error"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "RsInput",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "RsInput"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "RsInput error"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "GoogleMap",
+        "type": "GoogleMap",
+        "props": {
+          "label": {
+            "value": "GoogleMap"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "GoogleMap error"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "RsDropdown",
+        "type": "RsDropdown",
+        "props": {
+          "label": {
+            "value": "RsDropdown"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "RsDropdown error"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "RsDatePicker",
+        "type": "RsDatePicker",
+        "props": {
+          "label": {
+            "value": "RsDatePicker"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "RsDatePicker error"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "RsCalendar",
+        "type": "RsCalendar",
+        "props": {
+          "label": {
+            "value": "RsCalendar"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "RsCalendar error"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
