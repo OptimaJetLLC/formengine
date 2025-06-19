@@ -1,5 +1,4 @@
 import {forwardRef, useAriaAttributesIds} from '@react-form-builder/core'
-import type {ComponentPropsWithoutRef, CSSProperties} from 'react'
 import {useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState} from 'react'
 import VanillaSignaturePad from 'signature_pad'
 import type {SignatureProps} from './SignatureProps'
