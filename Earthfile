@@ -205,8 +205,7 @@ PUBLISH_GITHUB_OPTIMAJET_FORMENGINE:
   DO +GITHUB_COMMIT_AND_PUSH --gitRepository=$gitUrl --gitBranch=master --commitMessage="Version $libVersion (autocommit)" --disableDryRun=$disableDryRun
 
 test-github-formengine-archive:
-  FROM +prepare-github-formengine-archive
-  COPY +prepare-github-formengine-archive/formengine.tgz formengine.tgz
+  COPY .archives/formengine.tgz formengine.tgz
   RUN tar zxvf formengine.tgz
   RUN cd formengine && npm install && npm run build
   RUN cd examples/file-upload-server && npm install && npm run build
@@ -215,8 +214,7 @@ test-github-formengine-archive:
   RUN cd examples/with-remix/with-remix-v2 && npm install && npm run build
 
 test-github-formenginesupport-archive:
-  FROM +prepare-github-formenginesupport-archive
-  COPY +prepare-github-formenginesupport-archive/formenginesupport.zip formenginesupport.zip
+  COPY .archives/formenginesupport.zip formenginesupport.zip
   RUN unzip -o formenginesupport.zip
   RUN npm install
   RUN npm run build
