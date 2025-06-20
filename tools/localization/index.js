@@ -28,8 +28,7 @@ const rSuiteFolder = '../../src/packages/designer/src/features/localization/rsui
 const rSuiteComponentsFolder = '../../src/packages/views/rsuite/src/components/i18n/locales'
 
 const LOCALIZATION_FOLDER = [
-  '../../src/packages/designer/public/locales',
-  '../../src/packages/core/src/features/license/locales'
+  '../../src/packages/designer/public/locales'
 ];
 
 const {en, ...localizations} = locales;

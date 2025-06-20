@@ -1,5 +1,5 @@
 import {createView, FormViewer, FormViewerProps} from '@react-form-builder/core'
-import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-conponents'
+import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
 import {render} from '@testing-library/react'
 
 type ViewerProps = Omit<FormViewerProps, 'view'>

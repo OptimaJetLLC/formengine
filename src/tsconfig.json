@@ -41,6 +41,7 @@
     "packages/core/dist",
     "packages/designer/dist",
     "packages/views/fast-qr/dist",
-    "packages/views/rsuite/dist"
+    "packages/views/rsuite/dist",
+    "packages/views/signature/dist"
   ]
 }

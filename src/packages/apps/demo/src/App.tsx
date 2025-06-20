@@ -10,6 +10,7 @@ import {
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
+import {signatureComponent} from '@react-form-builder/components-signature'
 import {BiDi} from '@react-form-builder/core'
 import type {IPresetComponentOptions, PresetComponent} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
@@ -30,7 +31,7 @@ const initialData = {
   ['last name']: 'Bret',
 }
 
-const components = [...rSuiteComponents, fastQrComponent, richTextComponent, googleMapComponent]
+const components = [...rSuiteComponents, fastQrComponent, richTextComponent, googleMapComponent, signatureComponent]
   .map(definer => definer.build())
 const view = new BuilderView(components)
   .withErrorMeta(rsErrorMessage.build())

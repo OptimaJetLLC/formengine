@@ -100,8 +100,4 @@ export const pickerProps = {
   onSearch: event,
 }
 
-export const alignItems = oneOf('start', 'center', 'end')
-  .default('start')
-  .radio()
-
 export const controlColor = oneOf('red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'violet')

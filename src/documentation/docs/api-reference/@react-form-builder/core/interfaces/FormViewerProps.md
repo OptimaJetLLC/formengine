@@ -20,14 +20,6 @@ The React component that wraps every component in a form. **Internal use only.**
 
 ***
 
-### computeChildren?
-
-> `optional` **computeChildren**: [`ComputeChildren`](../type-aliases/ComputeChildren.md)
-
-**Deprecated, unused.** Function that calculates all child properties of a component. **Internal use only.**
-
-***
-
 ### disabled?
 
 > `optional` **disabled**: `boolean`
@@ -110,14 +102,6 @@ The initial data of the form.
 > `optional` **language**: \`$\{string\}-$\{string\}\`
 
 The language of the form, e.g. 'en-US'.
-
-***
-
-### licenseKey?
-
-> `optional` **licenseKey**: `string`
-
-The FormEngine license key.
 
 ***
 

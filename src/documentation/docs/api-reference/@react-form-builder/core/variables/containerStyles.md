@@ -8,11 +8,11 @@ The annotations for generic CSS properties of a container component.
 
 ### alignItems
 
-> **alignItems**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"end"` \| `"center"` \| `"start"` \| `"baseline"` \| `"stretch"`\>
+> **alignItems**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"center"` \| `"start"` \| `"baseline"` \| `"end"` \| `"stretch"`\>
 
 ### flexDirection
 
-> **flexDirection**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"column"` \| `"column-reverse"` \| `"row"` \| `"row-reverse"`\>
+> **flexDirection**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"column"` \| `"row"` \| `"column-reverse"` \| `"row-reverse"`\>
 
 ### flexWrap
 
@@ -24,4 +24,4 @@ The annotations for generic CSS properties of a container component.
 
 ### justifyContent
 
-> **justifyContent**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"end"` \| `"center"` \| `"left"` \| `"right"` \| `"start"` \| `"flex-start"` \| `"flex-end"` \| `"space-between"` \| `"space-around"` \| `"space-evenly"`\>
+> **justifyContent**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"center"` \| `"start"` \| `"end"` \| `"flex-start"` \| `"flex-end"` \| `"space-between"` \| `"space-around"` \| `"space-evenly"` \| `"left"` \| `"right"`\>

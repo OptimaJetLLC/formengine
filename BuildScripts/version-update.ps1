@@ -25,7 +25,7 @@ finally
 }
 
 # Updating the version in the public example on GitHub
-Push-Location $PSScriptRoot/../sample-apps/formengine
+Push-Location $PSScriptRoot/../src/packages/apps/formengine
 try
 {
   $Data = Get-Content $PSScriptRoot/version.txt | Out-String | ConvertFrom-StringData

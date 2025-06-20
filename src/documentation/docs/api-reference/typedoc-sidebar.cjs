@@ -1920,6 +1920,43 @@ const typedocSidebar = { items: [
       "type": "doc",
       "id": "api-reference/@react-form-builder/components-rsuite/index"
     }
+  },
+  {
+    "type": "category",
+    "label": "@react-form-builder/components-signature",
+    "items": [
+      {
+        "type": "category",
+        "label": "Interfaces",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-signature/interfaces/SignatureProps",
+            "label": "SignatureProps"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Variables",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-signature/variables/signatureComponent",
+            "label": "signatureComponent"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/components-signature/variables/signatureModel",
+            "label": "signatureModel"
+          }
+        ]
+      }
+    ],
+    "link": {
+      "type": "doc",
+      "id": "api-reference/@react-form-builder/components-signature/index"
+    }
   }
 ]};
 module.exports = typedocSidebar.items;

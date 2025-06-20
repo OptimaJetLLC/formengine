@@ -31,7 +31,6 @@ import {rsPatternFormat} from './components/RsPatternFormat'
 import {rsProgressCircle, rsProgressLine} from './components/RsProgress'
 import {rsRadioGroup} from './components/RsRadioGroup'
 import {rsSearch} from './components/RsSearch'
-import {rsSignature} from './components/RsSignature'
 import {rsStaticContent} from './components/RsStaticContent'
 import {rsTab} from './components/RsTab'
 import {rsTagPicker} from './components/RsTagPicker'
@@ -58,7 +57,6 @@ const categories = {
     rsPatternFormat,
     rsRadioGroup,
     rsSearch,
-    rsSignature,
     rsTagPicker,
     rsTextArea,
     rsToggle,

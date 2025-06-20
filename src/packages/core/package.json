@@ -1,10 +1,13 @@
 {
   "name": "@react-form-builder/core",
+  "description": "React hook form alternative.",
   "version": "4.3.2",
+  "license": "MIT",
   "private": false,
+  "author": "Optimajet",
+  "homepage": "https://github.com/optimajet/formengine",
   "main": "src/index.ts",
   "type": "module",
-  "description": "React hook form alternative.",
   "keywords": [
     "react",
     "form",
@@ -27,16 +30,12 @@
     "react form validation",
     "react form library"
   ],
-  "author": "Optimajet",
-  "homepage": "https://formengine.io/",
-  "license": "MIT",
   "bugs": {
     "email": "support@optimajet.com"
   },
   "scripts": {
     "build": "vite build",
     "clean": "rimraf dist temp",
-    "prebundle": "node ./scripts/update-assembly-date",
     "bundle": "npm-run-all -l clean build create-archive",
     "create-archive": "node ./config/pack"
   },

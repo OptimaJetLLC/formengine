@@ -9,6 +9,7 @@ const projects = [
   './packages/views/google-map/tsconfig.json',
   './packages/views/fast-qr/tsconfig.json',
   './packages/views/rsuite/tsconfig.json',
+  './packages/views/signature/tsconfig.json',
   './tests/component/tsconfig.json'
 ]
 

@@ -351,6 +351,13 @@ export class ComponentData implements IFormData {
   }
 
   /**
+   * @returns an array of all children components.
+   */
+  get allChildren(): ComponentData[] {
+    return this.collectAllChildren([])
+  }
+
+  /**
    * Deletes this node from the tree.
    */
   delete() {
@@ -613,6 +620,15 @@ export class ComponentData implements IFormData {
     for (let i = 0; i < this.children.length; i++) {
       const child = this.children[i]
       child.collectAllFields(acc)
+    }
+    return acc
+  }
+
+  private collectAllChildren(acc: Array<ComponentData>) {
+    acc.push(this)
+    for (let i = 0; i < this.children.length; i++) {
+      const child = this.children[i]
+      child.collectAllChildren(acc)
     }
     return acc
   }

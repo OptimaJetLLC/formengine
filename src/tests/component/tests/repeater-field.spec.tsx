@@ -14,7 +14,6 @@ import {
   useComponentData,
   View
 } from '@react-form-builder/core'
-import {testLicense} from '@react-form-builder/tests-common/license/vaild'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {useCallback} from 'react'
 import {expect} from 'vitest'
@@ -53,7 +52,6 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
 
     return <FormViewer
       initialData={initialData}
-      licenseKey={testLicense}
       view={view ?? componentsView}
       getForm={wrappedGetForm}
       viewerRef={viewerRef}

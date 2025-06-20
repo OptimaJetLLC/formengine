@@ -1,6 +1,6 @@
 import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {BiDi, createView, FormViewer, LanguageFullCode} from '@react-form-builder/core'
-import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-conponents'
+import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
 import {render, RenderResult} from '@testing-library/react'
 import {expect} from 'vitest'
 import {default as formJson} from './forms/localization-viewer.json'
@@ -23,14 +23,14 @@ const viewerView = createView(allComponentsViewer)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
   .withCssLoader('common', formEngineRsuiteCssLoader)
 
-const Viewer = ({license, language}: { license: string, language?: LanguageFullCode }) => {
-  return <FormViewer view={viewerView} getForm={getForm} licenseKey={license} language={language}/>
+const Viewer = ({language}: { language?: LanguageFullCode }) => {
+  return <FormViewer view={viewerView} getForm={getForm} language={language}/>
 }
 Viewer.displayName = 'Viewer'
 
 describe('Viewer localization test', function () {
   it('should apply provided language', async () => {
-    const app = render(<Viewer license={''} language={enUS}/>)
+    const app = render(<Viewer language={enUS}/>)
 
     await viewerReady(app)
 
@@ -39,14 +39,14 @@ describe('Viewer localization test', function () {
   })
 
   it('should apply change language on the fly', async () => {
-    const app = render(<Viewer license={''} language={enUS}/>)
+    const app = render(<Viewer language={enUS}/>)
 
     await viewerReady(app)
 
     let content = await app.findByTestId('staticContent')
     expect(content).toHaveTextContent(contentEN)
 
-    app.rerender(<Viewer license={''} language={deDE}/>)
+    app.rerender(<Viewer language={deDE}/>)
 
     content = await app.findByTestId('staticContent')
     expect(content).toHaveTextContent(contentDE)

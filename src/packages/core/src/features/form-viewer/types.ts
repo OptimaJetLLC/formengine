@@ -1,6 +1,5 @@
 import type {ComponentType, ForwardedRef} from 'react'
 import type {ViewMode} from '../../types'
-import type {ComputeChildren} from '../../utils/ComputeChildren'
 import type {IFormData} from '../../utils/IFormData'
 import type {View} from '../define'
 import type {LanguageFullCode} from '../localization/types'
@@ -89,11 +88,6 @@ export interface FormViewerProps {
   validators?: Validators
 
   /**
-   * **Deprecated, unused.** Function that calculates all child properties of a component. **Internal use only.**
-   */
-  computeChildren?: ComputeChildren
-
-  /**
    * The reference to {@link IFormViewer}.
    */
   viewerRef?: ForwardedRef<IFormViewer>
@@ -103,11 +97,6 @@ export interface FormViewerProps {
    * @param data the {@link IFormData} with all the form data.
    */
   onFormDataChange?: (data: IFormData) => void
-
-  /**
-   * The FormEngine license key.
-   */
-  licenseKey?: string
 
   /**
    * If true, the form is read-only.

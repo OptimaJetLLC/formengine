@@ -8,19 +8,13 @@ slug: /license-key
 
 Contact our [sales department](https://formengine.io/pricing) to obtain a licence key.
 
-Once you have the licence key, you need to pass it to the `FormBuilder` or `FormViewer`
-component [property](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#licensekey).
+Once you have the licence key, you need to pass it to the `FormBuilder`
+component [property](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#licensekey).
 
 Examples:
 
 ```typescript jsx
 <FormBuilder
-  licenseKey={'YOUR_LICENSE_KEY_HERE'}
-/>
-```
-
-```typescript jsx
-<FormViewer
   licenseKey={'YOUR_LICENSE_KEY_HERE'}
 />
 ```

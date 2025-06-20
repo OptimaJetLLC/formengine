@@ -157,8 +157,6 @@ export type {IComponentState} from './stores/IComponentState'
 export type {ComponentStateFactory} from './stores/Store'
 export {getChildren} from './utils/getChildren'
 export {globalDefaultLanguage} from './features/localization/default'
-export {LicenseManager, useLicense} from './features/license/LicenseManager'
-export {TrialMessage} from './features/license/TrialMessage'
 export {buildForm} from './features/form-json-builder/FormJsonBuilder'
 export type {
   Device, IFormJsonBuilder, IComponentBuilder, IEventHandlerBuilder, FormOptions, IValidationBuilder
