@@ -2,8 +2,10 @@
   "name": "formengine",
   "version": "4.3.2",
   "description": "FormEngine example application",
+  "license": "MIT",
+  "private": false,
   "author": "Optimajet",
-  "homepage": "https://formengine.io/",
+  "homepage": "https://github.com/optimajet/formengine",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -1,9 +1,11 @@
 {
   "name": "with-formik",
+  "description": "FormEngine with Formik example",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
+  "private": false,
   "author": "Optimajet",
-  "homepage": "https://formengine.io/",
+  "homepage": "https://github.com/optimajet/formengine",
   "dependencies": {
     "@react-form-builder/components-rsuite": "^4.3.2",
     "@react-form-builder/core": "^4.3.2",

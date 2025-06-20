@@ -2,9 +2,10 @@
   "name": "formengine-nextjs-v15",
   "description": "FormEngine with Next.js v15 example",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
+  "private": false,
   "author": "Optimajet",
-  "homepage": "https://formengine.io/",
+  "homepage": "https://github.com/optimajet/formengine",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

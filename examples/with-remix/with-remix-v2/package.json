@@ -1,8 +1,11 @@
 {
   "name": "formengine-with-remix-v2",
-  "private": true,
+  "description": "FormEngine with Remix v2 example",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": false,
   "author": "Optimajet",
-  "homepage": "https://formengine.io/",
+  "homepage": "https://github.com/optimajet/formengine",
   "sideEffects": false,
   "type": "module",
   "scripts": {
