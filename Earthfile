@@ -100,6 +100,7 @@ prepare-github-formengine-archive:
   COPY --dir src/packages/views/rsuite github-formengine/formengine/packages/views/rsuite
   COPY --dir src/packages/viewer-bundle github-formengine/formengine/packages/viewer-bundle
   COPY --dir src/README.md github-formengine/
+  COPY --dir src/screenshots github-formengine/
   COPY --dir src/lerna.json github-formengine/formengine/
   COPY --dir src/nx.json github-formengine/formengine/
   COPY --dir src/tsconfig.json github-formengine/formengine/
@@ -201,9 +202,6 @@ PUBLISH_GITHUB_OPTIMAJET_FORMENGINE:
   RUN tar -xvf formengine.tgz -C $tempGitDir
 
   WORKDIR $tempGitDir
-  RUN npm install
-  RUN npm install --force @react-form-builder/core@$libVersion @react-form-builder/designer@$libVersion @react-form-builder/components-rsuite@$libVersion
-  RUN rm -rf node_modules
   DO +GITHUB_COMMIT_AND_PUSH --gitRepository=$gitUrl --gitBranch=master --commitMessage="Version $libVersion (autocommit)" --disableDryRun=$disableDryRun
 
 test-github-formengine-archive:
