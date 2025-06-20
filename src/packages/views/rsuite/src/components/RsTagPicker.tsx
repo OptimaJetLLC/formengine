@@ -4,19 +4,28 @@ import {useCallback} from 'react'
 import type {TagPickerProps} from 'rsuite'
 import {TagPicker} from 'rsuite'
 import {pickerProps} from '../commonProperties'
-import type {LoadDataHandler} from '../hooks'
+import type {LoadDataProps} from '../hooks'
 import {useLoadData} from '../hooks'
 import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 import {SLoader} from './SLoader'
 
-interface RsTagPickerProps extends TagPickerProps {
+interface RsTagPickerProps extends TagPickerProps, LoadDataProps {
   label: string
-  onLoadData?: LoadDataHandler
 }
 
-const RsTagPicker = ({data, label, onLoadData, onSearch, onOpen, value = [], className, ...props}: RsTagPickerProps) => {
-  const {loading, ...loadProps} = useLoadData({data, onLoadData, onSearch, onOpen, value})
+const RsTagPicker = ({
+                       data,
+                       label,
+                       onLoadData,
+                       onSearch,
+                       onOpen,
+                       value = [],
+                       className,
+                       disableVirtualized,
+                       ...props
+                     }: RsTagPickerProps) => {
+  const {loading, ...loadProps} = useLoadData({data, onLoadData, onSearch, onOpen, value, disableVirtualized})
   const onClean = useTouchOnEvent(props, 'onClean')
 
   const renderMenu = useCallback((menu: ReactNode) => <>

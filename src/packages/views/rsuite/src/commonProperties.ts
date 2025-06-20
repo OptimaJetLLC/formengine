@@ -90,6 +90,7 @@ export const pickerProps = {
   disabled: disabled.default(false),
   readOnly,
   groupBy: string.default(''),
+  disableVirtualized: boolean,
   onLoadData: event,
   onSelect: event,
   onClean: event,

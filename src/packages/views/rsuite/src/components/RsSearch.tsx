@@ -5,7 +5,7 @@ import type {ReactNode} from 'react'
 import type {InputPickerProps} from 'rsuite'
 import {InputPicker, Loader} from 'rsuite'
 import {pickerProps} from '../commonProperties'
-import type {LoadDataHandler} from '../hooks'
+import type {LoadDataProps} from '../hooks'
 import {useLoadData} from '../hooks'
 import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
@@ -30,16 +30,14 @@ const SInputPicker = styled(InputPicker)`
   flex: 1;
 `
 
-interface RsSearchProps extends InputPickerProps {
+interface RsSearchProps extends InputPickerProps, LoadDataProps {
   label: string
-  onLoadData?: LoadDataHandler
-  preload?: boolean
 }
 
 const CustomCaret = () => null
 
-const RsSearch = ({data, label, onLoadData, onSearch, value = '', className, preload, ...props}: RsSearchProps) => {
-  const {loading, onOpen, ...loadProps} = useLoadData({data, onLoadData, onSearch, value, preload})
+const RsSearch = ({data, label, onLoadData, onSearch, value = '', className, preload, disableVirtualized, ...props}: RsSearchProps) => {
+  const {loading, onOpen, ...loadProps} = useLoadData({data, onLoadData, onSearch, value, preload, disableVirtualized})
   const renderMenu = (menu: ReactNode) => loadProps.data?.length ? menu : null
   const onClean = useTouchOnEvent(props, 'onClean')
 
