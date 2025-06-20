@@ -8,14 +8,14 @@ slug: /
 
 Form Builder is a client-side library for creating web forms. The library allows you to map a form from JSON to a dynamic HTML form and send
 the results to your server. The library has no built-in visual components to display the form. Instead, it is made to display your
-components. However, if you don't have your component set, there is a ready-made component set based on [React Suite](/components-library)
+components. However, if you don't have your component set, there is a ready-made component set based on [React Suite](/components-library/)
 to work with.
 
 ## Key features
 
 - **UI-Agnostic Components:** Works seamlessly with any UI
   library ([MUI](https://mui.com/), [Ant Design](https://ant.design/), [shadcn/ui](https://ui.shadcn.com/)
-  and [others](/custom-components))
+  and [others](/custom-components)).
 - **Pre-Built React Suite Integration:** Includes a ready-to-use component
   library – [@react-form-builder/components-rsuite](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
 - Framework Support:
