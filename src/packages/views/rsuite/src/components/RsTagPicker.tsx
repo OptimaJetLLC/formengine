@@ -1,63 +1,46 @@
+import type {LabeledValue} from '@react-form-builder/core'
 import {array, define, toLabeledValues} from '@react-form-builder/core'
-import type {ReactNode} from 'react'
-import {useCallback} from 'react'
+import {useMemo} from 'react'
 import type {TagPickerProps} from 'rsuite'
 import {TagPicker} from 'rsuite'
 import {pickerProps} from '../commonProperties'
-import type {LoadDataProps} from '../hooks'
-import {useLoadData} from '../hooks'
 import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
-import {SLoader} from './SLoader'
 
-interface RsTagPickerProps extends TagPickerProps, LoadDataProps {
+interface RsTagPickerProps extends TagPickerProps {
   label: string
 }
 
-const RsTagPicker = ({
-                       data,
-                       label,
-                       onLoadData,
-                       onSearch,
-                       onOpen,
-                       value = [],
-                       className,
-                       disableVirtualized,
-                       ...props
-                     }: RsTagPickerProps) => {
-  const {loading, ...loadProps} = useLoadData({data, onLoadData, onSearch, onOpen, value, disableVirtualized})
+const fixEmptyItem = ({value, label}: LabeledValue) => ({
+  value: value ?? '',
+  label: label ?? ''
+})
+
+const RsTagPicker = ({data, label, value, className, ...props}: RsTagPickerProps) => {
   const onClean = useTouchOnEvent(props, 'onClean')
 
-  const renderMenu = useCallback((menu: ReactNode) => <>
-    {menu}
-    {loading && <SLoader/>}
-  </>, [loading])
-
-  const isNonEmptyValueAndLabel = function (item: any) {
-    return item && item.value && item.label
-  }
-
-  const transformedData = Array.isArray(data)
-    ? data.filter(isNonEmptyValueAndLabel)
-    : toLabeledValues(data || []).filter(isNonEmptyValueAndLabel)
+  const transformedData = useMemo(() => {
+    return toLabeledValues((data ?? []) as LabeledValue[]).map(fixEmptyItem)
+  }, [data])
 
   return (
     <Labeled label={label} className={className}>
       <TagPicker
-        {...props}
-        {...loadProps}
+        value={value ?? []}
         data={transformedData}
         onClean={onClean}
-        renderMenu={renderMenu}
+        {...props}
       />
     </Labeled>
   )
 }
 
+const {disableVirtualized, onLoadData, ...tagPickerProps} = pickerProps
+
 export const rsTagPicker = define(RsTagPicker, 'RsTagPicker')
   .name('TagPicker')
   .props({
-    ...pickerProps,
+    ...tagPickerProps,
     value: array.valued.ofString,
     label: pickerProps.label.default('Select'),
     data: array.default(toLabeledValues(['a', 'b', 'c']))
