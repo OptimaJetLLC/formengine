@@ -99,18 +99,19 @@ prepare-github-formengine-archive:
   COPY --dir src/packages/core github-formengine/formengine/packages/core
   COPY --dir src/packages/views/rsuite github-formengine/formengine/packages/views/rsuite
   COPY --dir src/packages/viewer-bundle github-formengine/formengine/packages/viewer-bundle
-  COPY --dir src/README.md github-formengine/
   COPY --dir src/screenshots github-formengine/
-  COPY --dir src/lerna.json github-formengine/formengine/
-  COPY --dir src/nx.json github-formengine/formengine/
-  COPY --dir src/tsconfig.json github-formengine/formengine/
-  COPY --dir src/vite.config.ts github-formengine/formengine/
-  COPY --dir src/.eslintrc.cjs github-formengine/formengine/
-  COPY --dir src/.eslintignore github-formengine/formengine/
-  COPY --dir .editorconfig github-formengine/
-  COPY --dir src/package.public.json github-formengine/formengine/package.json
-  COPY --dir src/package-lock.json github-formengine/formengine/
   COPY --dir examples github-formengine
+  COPY src/README.md github-formengine/
+  COPY src/lerna.json github-formengine/formengine/
+  COPY src/nx.json github-formengine/formengine/
+  COPY src/tsconfig.json github-formengine/formengine/
+  COPY src/vite.config.ts github-formengine/formengine/
+  COPY src/.eslintrc.cjs github-formengine/formengine/
+  COPY src/.eslintignore github-formengine/formengine/
+  COPY .editorconfig github-formengine/
+  COPY src/package.public.json github-formengine/formengine/package.json
+  COPY src/package-lock.json github-formengine/formengine/
+  COPY src/packages/core/LICENSE github-formengine
   RUN tar -czvf formengine.tgz -C github-formengine .
   SAVE ARTIFACT formengine.tgz AS LOCAL .archives/formengine.tgz
 
