@@ -111,14 +111,6 @@ prepare-github-formengine-archive:
   COPY --dir src/package.public.json github-formengine/formengine/package.json
   COPY --dir src/package-lock.json github-formengine/formengine/
   COPY --dir examples github-formengine
-  COPY +prepare-version-archive/version.txt github-formengine
-  WORKDIR /form-engine/src/github-formengine
-  LET libVersion=$(awk -F "=" '/NpmVersion/ {print $2}' version.txt | tr -d "\r")
-  RUN rm version.txt
-  WORKDIR /form-engine/src/github-formengine/formengine/packages/apps/formengine/
-  # at this point new version of the packages must be published to npm
-  RUN npm install @react-form-builder/designer@$libVersion --package-lock-only
-  WORKDIR /form-engine/src
   RUN tar -czvf formengine.tgz -C github-formengine .
   SAVE ARTIFACT formengine.tgz AS LOCAL .archives/formengine.tgz
 
@@ -200,6 +192,10 @@ PUBLISH_GITHUB_OPTIMAJET_FORMENGINE:
   RUN cp -r $gitDestDir/.git $tempGitDir
   RUN rm -rf $gitDestDir
   RUN tar -xvf formengine.tgz -C $tempGitDir
+
+  WORKDIR $tempGitDir/formengine/packages/apps/formengine/
+  # at this point new version of the packages must be published to npm
+  RUN npm install @react-form-builder/designer@$libVersion --package-lock-only
 
   WORKDIR $tempGitDir
   DO +GITHUB_COMMIT_AND_PUSH --gitRepository=$gitUrl --gitBranch=master --commitMessage="Version $libVersion (autocommit)" --disableDryRun=$disableDryRun

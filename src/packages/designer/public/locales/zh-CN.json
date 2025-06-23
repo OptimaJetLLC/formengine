@@ -250,6 +250,10 @@
       "hint": "如果'true'，则禁用使用多部分表单进行文件上传，而是流式传输文件。 某些Api（例如Amazon S3）可能期望将文件流式传输，而不是通过表单发送",
       "name": "禁用多部分"
     },
+    "disableVirtualized": {
+      "hint": "如果为true，虚拟化将被禁用",
+      "name": "禁用虚拟化"
+    },
     "disabled": {
       "hint": "组件是否被禁用",
       "name": "残疾人士"

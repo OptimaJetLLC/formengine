@@ -250,6 +250,10 @@
       "hint": "Wenn 'true', deaktivieren Sie die Verwendung eines mehrteiligen Formulars zum Hochladen von Dateien und streamen Sie stattdessen die Datei. Einige APIs (z. B. Amazon S3) erwarten möglicherweise, dass die Datei gestreamt und nicht über ein Formular gesendet wird",
       "name": "Multipart deaktivieren"
     },
+    "disableVirtualized": {
+      "hint": "Wenn true, wird die virtualisierte deaktiviert",
+      "name": "Virtualisierte deaktivieren"
+    },
     "disabled": {
       "hint": "Ob die Komponente deaktiviert ist oder nicht",
       "name": "Behinderte"

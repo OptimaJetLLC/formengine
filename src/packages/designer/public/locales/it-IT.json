@@ -250,6 +250,10 @@
       "hint": "Se' true', disabilitare l'utilizzo di un modulo multipart per il caricamento del file e invece lo streaming del file. Alcune API (ad esempio Amazon S3) potrebbero aspettarsi che il file venga trasmesso in streaming anziché inviato tramite un modulo",
       "name": "Disabilita multipart"
     },
+    "disableVirtualized": {
+      "hint": "Se vero, il virtualizzato verrà disabilitato",
+      "name": "Disabilita virtualizzato"
+    },
     "disabled": {
       "hint": "Indica se il componente è disabilitato o meno",
       "name": "Disabilita"

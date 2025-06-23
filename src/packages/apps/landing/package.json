@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/landing",
-  "version": "4.3.2",
+  "version": "5.0.0",
   "private": true,
   "main": "src/index.tsx",
   "type": "module",
@@ -16,9 +16,9 @@
     "dev": "vite -c ../../../vite.config.ts"
   },
   "dependencies": {
-    "@react-form-builder/components-rsuite": "^4.3.2",
-    "@react-form-builder/core": "^4.3.2",
-    "@react-form-builder/designer": "^4.3.2",
+    "@react-form-builder/components-rsuite": "^5.0.0",
+    "@react-form-builder/core": "^5.0.0",
+    "@react-form-builder/designer": "^5.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

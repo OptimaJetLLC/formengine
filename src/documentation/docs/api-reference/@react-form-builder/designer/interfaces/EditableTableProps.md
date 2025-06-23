@@ -232,7 +232,7 @@ aria-owns.
 
 ### aria-current?
 
-> `optional` **aria-current**: `boolean` \| `"true"` \| `"false"` \| `"time"` \| `"date"` \| `"page"` \| `"step"` \| `"location"`
+> `optional` **aria-current**: `boolean` \| `"time"` \| `"date"` \| `"true"` \| `"false"` \| `"page"` \| `"step"` \| `"location"`
 
 Indicates the element that represents the current item within a container or set of related elements.
 
@@ -383,7 +383,7 @@ in ARIA 1.1
 
 ### aria-haspopup?
 
-> `optional` **aria-haspopup**: `boolean` \| `"true"` \| `"false"` \| `"dialog"` \| `"menu"` \| `"grid"` \| `"listbox"` \| `"tree"`
+> `optional` **aria-haspopup**: `boolean` \| `"dialog"` \| `"menu"` \| `"true"` \| `"false"` \| `"grid"` \| `"listbox"` \| `"tree"`
 
 Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 

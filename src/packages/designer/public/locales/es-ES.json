@@ -250,6 +250,10 @@
       "hint": "Si es 'verdadero', deshabilite el uso de un formulario de varias partes para cargar archivos y, en su lugar, transmita el archivo. Algunas API (por ejemplo, Amazon S3) pueden esperar que el archivo se transmita en lugar de enviarse a través de un formulario",
       "name": "Deshabilitar multiparte"
     },
+    "disableVirtualized": {
+      "hint": "Si es verdadero, el virtualizado se deshabilitará",
+      "name": "Deshabilitar virtualizado"
+    },
     "disabled": {
       "hint": "Si el componente está deshabilitado o no",
       "name": "Discapacitados"
