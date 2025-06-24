@@ -109,6 +109,7 @@ prepare-github-formengine-archive:
   COPY src/.eslintrc.cjs github-formengine/formengine/
   COPY src/.eslintignore github-formengine/formengine/
   COPY .editorconfig github-formengine/
+  COPY .gitignore github-formengine/
   COPY src/package.public.json github-formengine/formengine/package.json
   COPY src/package-lock.json github-formengine/formengine/
   COPY src/packages/core/LICENSE github-formengine
@@ -121,6 +122,7 @@ prepare-github-formenginesupport-archive:
   WORKDIR /form-engine
   COPY --dir BuildScripts/private-sources BuildScripts/private-sources
   COPY .editorconfig .
+  COPY .gitignore .
   RUN cd BuildScripts/private-sources && npm install
   RUN cd BuildScripts/private-sources && npm run create-private-sources
   SAVE ARTIFACT .archives/formenginesupport.zip AS LOCAL .archives/formenginesupport.zip

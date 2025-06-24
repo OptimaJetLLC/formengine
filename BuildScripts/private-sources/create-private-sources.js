@@ -57,6 +57,7 @@ function copySources(srcPath, dstPath) {
     'packages/views/rsuite',
     'packages/views/signature',
     '../.editorconfig',
+    '../.gitignore',
     'lerna.json',
     'LICENSE.md',
     'nx.json',
@@ -69,6 +70,7 @@ function copySources(srcPath, dstPath) {
   filesToCopy.forEach(item => fse.copySync(join(srcPath, item), join(dstPath, item)))
   fse.copySync(join(__dirname, 'includes', 'README.md'), join(dstPath, 'README.md'))
   fse.copySync(join(srcPath, '..', '.editorconfig'), join(dstPath, '.editorconfig'))
+  fse.copySync(join(srcPath, '..', '.gitignore'), join(dstPath, '.gitignore'))
 
   patchPackageJson(join(dstPath, 'package.json'))
 
@@ -80,6 +82,7 @@ function copySources(srcPath, dstPath) {
     'packages/core/dist',
     'packages/designer/dist',
     'packages/views/antd/dist',
+    'packages/views/antd/node_modules',
     'packages/views/rsuite/.swc',
     'packages/views/rsuite/dist',
   ]
