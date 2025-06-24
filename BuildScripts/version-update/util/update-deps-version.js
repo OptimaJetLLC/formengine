@@ -10,7 +10,6 @@ const packagePrefix = '@react-form-builder/'
 
 const packageList = [
   'src/packages/apps/demo',
-  'src/packages/apps/formengine',
   'src/packages/apps/example-builder',
   'src/packages/apps/example-viewer',
   'src/packages/core',
@@ -22,6 +21,7 @@ const packageList = [
   'src/packages/views/default',
   'src/packages/views/rsuite',
   'src/packages/views/signature',
+  'examples/formengine',
   'examples/with-formik',
   'examples/with-nextjs/with-nextjs-v15',
   'examples/with-remix/with-remix-v2',

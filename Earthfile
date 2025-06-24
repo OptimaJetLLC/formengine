@@ -95,10 +95,10 @@ prepare-documentation-archive:
 
 # prepare-github-formengine-archive creates an archive for the GitHub repository optimajet/formengine
 prepare-github-formengine-archive:
-  COPY --dir src/packages/apps/formengine github-formengine/formengine/packages/apps/formengine
   COPY --dir src/packages/core github-formengine/formengine/packages/core
   COPY --dir src/packages/views/rsuite github-formengine/formengine/packages/views/rsuite
   COPY --dir src/packages/viewer-bundle github-formengine/formengine/packages/viewer-bundle
+  COPY --dir src/packages/apps/example-viewer github-formengine/formengine/packages/apps/example-viewer
   COPY --dir src/screenshots github-formengine/
   COPY --dir examples github-formengine
   COPY src/README.md github-formengine/
@@ -195,10 +195,6 @@ PUBLISH_GITHUB_OPTIMAJET_FORMENGINE:
   RUN cp -r $gitDestDir/.git $tempGitDir
   RUN rm -rf $gitDestDir
   RUN tar -xvf formengine.tgz -C $tempGitDir
-
-  WORKDIR $tempGitDir/formengine/packages/apps/formengine/
-  # at this point new version of the packages must be published to npm
-  RUN npm install @react-form-builder/designer@$libVersion --package-lock-only
 
   WORKDIR $tempGitDir
   DO +GITHUB_COMMIT_AND_PUSH --gitRepository=$gitUrl --gitBranch=master --commitMessage="Version $libVersion (autocommit)" --disableDryRun=$disableDryRun
@@ -399,7 +395,6 @@ dependencies:
    src/documentation/website src/packages/apps src/packages/views \
    src/packages/apps/demo src/packages/apps/example-builder src/packages/apps/example-viewer \
    src/packages/apps/landing \
-   src/packages/apps/formengine \
    src/packages/core src/packages/designer src/packages/designer-bundle src/packages/indexed-db-form-storage \
    src/packages/viewer-bundle src/packages/views/antd src/packages/views/default \
    src/packages/views/rsuite \
@@ -417,7 +412,6 @@ dependencies:
   COPY src/packages/apps/example-viewer/package.json src/packages/apps/example-viewer
   COPY src/packages/apps/example-viewer/package.json src/packages/apps/example-viewer
   COPY src/packages/apps/landing/package.json src/packages/apps/landing
-  COPY src/packages/apps/formengine/package.json src/packages/apps/formengine
 
   COPY src/packages/core/package.json src/packages/core
   COPY src/packages/designer/package.json src/packages/designer

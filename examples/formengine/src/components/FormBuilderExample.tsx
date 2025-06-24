@@ -22,9 +22,13 @@ const builderView = new BuilderView(builderComponents)
 
 const getForm = (_?: string) => JSON.stringify(SampleForm)
 
+const divStyle = {height: '100vh'}
+
 /**
  * @returns the FormBuilder example page component.
  */
 export const FormBuilderExample = () => (
-  <FormBuilder view={builderView} formName="SampleForm" getForm={getForm}/>
+  <div style={divStyle}>
+    <FormBuilder view={builderView} formName="SampleForm" getForm={getForm}/>
+  </div>
 )

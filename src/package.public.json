@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "bootstrap": "npx lerna bootstrap",
-    "start": "npx lerna run dev --scope=formengine",
+    "start": "npx lerna run dev --scope=@react-form-builder/example-viewer",
     "build": "npx lerna run build",
     "bundle": "npx lerna run bundle",
     "clean": "lerna exec -- npx rimraf node_modules dist build *.tgz && rimraf node_modules",
