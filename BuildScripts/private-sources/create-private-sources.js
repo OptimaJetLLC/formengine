@@ -39,7 +39,7 @@ function patchPackageJson(path) {
     'packages/views/*',
   ]
 
-  const patchedData = JSON.stringify(data, undefined, 2)
+  const patchedData = JSON.stringify(data, undefined, 4)
   writeFileSync(path, patchedData, 'utf8')
 }
 
@@ -52,9 +52,7 @@ function copySources(srcPath, dstPath) {
     'packages/apps/example-viewer',
     'packages/core',
     'packages/designer',
-    'packages/designer-bundle',
     'packages/indexed-db-form-storage',
-    'packages/viewer-bundle',
     'packages/views/antd',
     'packages/views/rsuite',
     'packages/views/signature',
@@ -83,8 +81,6 @@ function copySources(srcPath, dstPath) {
     'packages/apps/example-viewer/node_modules',
     'packages/core/dist',
     'packages/designer/dist',
-    'packages/designer-bundle/node_modules',
-    'packages/viewer-bundle/node_modules',
     'packages/views/antd/dist',
     'packages/views/antd/node_modules',
     'packages/views/rsuite/.swc',
