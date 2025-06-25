@@ -119,12 +119,43 @@ prepare-github-formengine-archive:
 prepare-github-formenginesupport-archive:
   FROM +sources
   WORKDIR /form-engine
-  COPY --dir BuildScripts/private-sources BuildScripts/private-sources
-  COPY .editorconfig .
-  COPY .gitignore .
-  RUN cd BuildScripts/private-sources && npm install
-  RUN cd BuildScripts/private-sources && npm run create-private-sources
-  SAVE ARTIFACT .archives/formenginesupport.zip AS LOCAL .archives/formenginesupport.zip
+
+  LET dst = private-github
+
+  COPY --dir src/types $dst/types
+  COPY --dir src/packages/apps/example-builder $dst/packages/apps/example-builder
+  COPY --dir src/packages/apps/example-viewer $dst/packages/apps/example-viewer
+  COPY --dir src/packages/core $dst/packages/core
+  COPY --dir src/packages/designer $dst/packages/designer
+  COPY --dir src/packages/designer-bundle $dst/packages/designer-bundle
+  COPY --dir src/packages/indexed-db-form-storage $dst/packages/indexed-db-form-storage
+  COPY --dir src/packages/viewer-bundle $dst/packages/viewer-bundle
+  COPY --dir src/packages/views/antd $dst/packages/views/antd
+  COPY --dir src/packages/views/rsuite $dst/packages/views/rsuite
+  COPY --dir src/packages/views/signature $dst/packages/views/signature
+  COPY --dir src/packages/views/fast-qr $dst/packages/views/fast-qr
+  COPY --dir src/packages/views/rich-text $dst/packages/views/rich-text
+  COPY --dir src/packages/views/google-map $dst/packages/views/google-map
+
+  COPY src/lerna.json $dst/
+  COPY src/LICENSE.md $dst/
+  COPY src/nx.json $dst/
+  COPY src/package.private.json $dst/package.json
+  COPY src/README.private.md $dst/README.md
+  COPY src/package-lock.json $dst/
+  COPY src/.eslintrc.cjs $dst/
+  COPY src/.eslintignore $dst/
+  COPY src/tsconfig.json $dst/
+  COPY src/vite.config.ts $dst/
+
+  COPY .editorconfig $dst/
+  COPY .gitignore $dst/
+
+  RUN cd $dst && npm install --package-lock-only
+
+  RUN tar -czvf formenginesupport.tgz -C $dst .
+
+  SAVE ARTIFACT formenginesupport.tgz AS LOCAL .archives/formenginesupport.tgz
 
 prepare-version-archive:
   COPY BuildScripts/version.txt version.txt
@@ -201,15 +232,16 @@ PUBLISH_GITHUB_OPTIMAJET_FORMENGINE:
 test-github-formengine-archive:
   COPY .archives/formengine.tgz formengine.tgz
   RUN tar zxvf formengine.tgz
-  RUN cd formengine && npm install && npm run build
-  RUN cd examples/file-upload-server && npm install && npm run build
-  RUN cd examples/with-formik && npm install && npm run build
-  RUN cd examples/with-nextjs/with-nextjs-v15 && npm install && npm run build
-  RUN cd examples/with-remix/with-remix-v2 && npm install && npm run build
+  RUN cd community/examples/file-upload-server && npm install
+  RUN cd community/src && npm install && npm run bundle
+  RUN cd premium/examples/formengine && npm install && npm run build
+  RUN cd premium/examples/with-formik && npm install && npm run build
+  RUN cd premium/examples/with-nextjs/with-nextjs-v15 && npm install && npm run build
+  RUN cd premium/examples/with-remix/with-remix-v2 && npm install && npm run build
 
 test-github-formenginesupport-archive:
-  COPY .archives/formenginesupport.zip formenginesupport.zip
-  RUN unzip -o formenginesupport.zip
+  COPY .archives/formenginesupport.tgz formenginesupport.tgz
+  RUN tar zxvf formenginesupport.tgz
   RUN npm install
   RUN npm run build
   RUN npm run bundle
@@ -240,21 +272,21 @@ PUBLISH_GITHUB_OPTIMAJET_FORMENGINESUPPORT:
   RUN mkdir -p $tempGitDir
   RUN cp -r $gitDestDir/.git $tempGitDir
   RUN rm -rf $gitDestDir
-  RUN unzip formenginesupport.zip -d $tempGitDir
+  RUN tar zxvf formenginesupport.tgz -C $tempGitDir
 
   WORKDIR $tempGitDir
   DO +GITHUB_COMMIT_AND_PUSH --gitRepository=$gitUrl --gitBranch=master --commitMessage="Version $libVersion (autocommit)" --disableDryRun=$disableDryRun
 
 # publish-artifact-github-optimajet-formenginesupport updates the GitHub repository optimajet/formenginesupport from the local artifact
 publish-artifact-github-optimajet-formenginesupport:
-  COPY +prepare-github-formenginesupport-archive/formenginesupport.zip formenginesupport.zip
+  COPY +prepare-github-formenginesupport-archive/formenginesupport.tgz formenginesupport.tgz
   COPY +prepare-version-archive/version.txt version.txt
   ARG disableDryRun=false
   DO +PUBLISH_GITHUB_OPTIMAJET_FORMENGINESUPPORT --disableDryRun=$disableDryRun
 
 # publish-archive-github-optimajet-formenginesupport updates the GitHub repository optimajet/formenginesupport from the local ".archives" folder
 publish-archive-github-optimajet-formenginesupport:
-  COPY .archives/formenginesupport.zip ./
+  COPY .archives/formenginesupport.tgz ./
   COPY .archives/version.txt ./
   ARG disableDryRun=false
   DO +PUBLISH_GITHUB_OPTIMAJET_FORMENGINESUPPORT --disableDryRun=$disableDryRun

@@ -11,3 +11,5 @@
 **/.devServer
 **/.DS_Store
 **/.swc
+
+src/**/*.tgz
