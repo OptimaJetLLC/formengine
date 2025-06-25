@@ -1,4 +1,4 @@
-# Formik integration example
+# FormEngine Formik integration example
 
 This code corresponds to Formik [integration example](https://formengine.io/documentation/formik-integration).
 
@@ -6,7 +6,7 @@ This code corresponds to Formik [integration example](https://formengine.io/docu
 
 ```shell
 git clone git@github.com:optimajet/formengine.git
-cd examples/with-formik
+cd formengine/premium/examples/with-formik
 npm install
 npm run dev
 ```

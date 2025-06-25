@@ -21,10 +21,10 @@ const packageList = [
   'src/packages/views/default',
   'src/packages/views/rsuite',
   'src/packages/views/signature',
-  'examples/formengine',
-  'examples/with-formik',
-  'examples/with-nextjs/with-nextjs-v15',
-  'examples/with-remix/with-remix-v2',
+  'examples/premium/formengine',
+  'examples/premium/with-formik',
+  'examples/premium/with-nextjs/with-nextjs-v15',
+  'examples/premium/with-remix/with-remix-v2',
 ]
 
 const depsSections = [

@@ -95,24 +95,23 @@ prepare-documentation-archive:
 
 # prepare-github-formengine-archive creates an archive for the GitHub repository optimajet/formengine
 prepare-github-formengine-archive:
-  COPY --dir src/packages/core github-formengine/formengine/packages/core
-  COPY --dir src/packages/views/rsuite github-formengine/formengine/packages/views/rsuite
-  COPY --dir src/packages/viewer-bundle github-formengine/formengine/packages/viewer-bundle
-  COPY --dir src/packages/apps/example-viewer github-formengine/formengine/packages/apps/example-viewer
-  COPY --dir src/screenshots github-formengine/
-  COPY --dir examples github-formengine
-  COPY src/README.md github-formengine/
-  COPY src/lerna.json github-formengine/formengine/
-  COPY src/nx.json github-formengine/formengine/
-  COPY src/tsconfig.json github-formengine/formengine/
-  COPY src/vite.config.ts github-formengine/formengine/
-  COPY src/.eslintrc.cjs github-formengine/formengine/
-  COPY src/.eslintignore github-formengine/formengine/
-  COPY .editorconfig github-formengine/
+  COPY --dir BuildScripts/includes/github-optimajet-formengine/ github-formengine
+  COPY --dir src/packages/core github-formengine/community/src/packages/core
+  COPY --dir src/packages/views/rsuite github-formengine/community/src/packages/views/rsuite
+  COPY --dir src/packages/viewer-bundle github-formengine/community/src/packages/viewer-bundle
+  COPY --dir src/packages/apps/example-viewer github-formengine/community/src/packages/apps/example-viewer
+  COPY --dir examples/community github-formengine/community/examples
+  COPY --dir examples/premium github-formengine/premium/examples
+  COPY src/lerna.json github-formengine/community/src/
+  COPY src/nx.json github-formengine/community/src/
+  COPY src/tsconfig.json github-formengine/community/src/
+  COPY src/vite.config.ts github-formengine/community/src/
+  COPY src/.eslintrc.cjs github-formengine/community/src/
+  COPY src/.eslintignore github-formengine/community/src/
+  COPY .editorconfig github-formengine/community/src/
   COPY .gitignore github-formengine/
-  COPY src/package.public.json github-formengine/formengine/package.json
-  COPY src/package-lock.json github-formengine/formengine/
-  COPY src/packages/core/LICENSE github-formengine
+  COPY src/package.public.json github-formengine/community/src/package.json
+  COPY src/package-lock.json github-formengine/community/src/
   RUN tar -czvf formengine.tgz -C github-formengine .
   SAVE ARTIFACT formengine.tgz AS LOCAL .archives/formengine.tgz
 
