@@ -34,7 +34,7 @@ export const AntTooltip = ({text, placement, trigger, children}: AntTooltipProps
 export const antTooltip = define(AntTooltip, 'AntTooltip')
   .name('Ant Tooltip')
   .props({
-    text: string.required.default('Tooltip message...').hinted('Tooltip text'),
+    text: string.required.default('Tooltip message...').hinted('Tooltip text').dataBound,
     children: node,
     placement: oneOf('top'
       , 'left'

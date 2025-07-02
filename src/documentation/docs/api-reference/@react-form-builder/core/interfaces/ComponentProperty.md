@@ -1,6 +1,12 @@
-# Interface: ComponentProperty
+# Interface: ComponentProperty\<T\>
 
 The value of the component property.
+
+## Type Parameters
+
+• **T** = `any`
+
+the value type.
 
 ## Properties
 
@@ -22,6 +28,6 @@ Source code of the function for calculating the value of a component property.
 
 ### value?
 
-> `optional` **value**: `any`
+> `optional` **value**: `T`
 
 The simple value of a component property.

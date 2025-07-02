@@ -230,6 +230,10 @@
       "hint": "Données sélectionnables",
       "name": "Données"
     },
+    "dataKey": {
+      "hint": "Clé de données du composant",
+      "name": "Clé de données"
+    },
     "decimalScale": {
       "hint": "S'il est défini, il limite le nombre de chiffres après la virgule décimale",
       "name": "Échelle décimale"
@@ -245,6 +249,10 @@
     "defaultValue": {
       "hint": "Valeur par défaut",
       "name": "Valeur par défaut"
+    },
+    "disableDataBinding": {
+      "hint": "Désactive la liaison de données pour le composant",
+      "name": "Désactiver la liaison de données"
     },
     "disableMultipart": {
       "hint": "Si 'true', désactivez l'utilisation d'un formulaire en plusieurs parties pour le téléchargement de fichiers et diffusez le fichier à la place. Certaines API (par exemple Amazon S3) peuvent s'attendre à ce que le fichier soit diffusé en continu plutôt qu'envoyé via un formulaire",

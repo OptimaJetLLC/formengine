@@ -285,6 +285,14 @@
     "disableVirtualized": {
       "name": "Disable virtualized",
       "hint": "If true, the virtualized will be disabled"
+    },
+    "dataKey": {
+      "name": "Data key",
+      "hint": "Component data key"
+    },
+    "disableDataBinding": {
+      "name": "Disable data binding",
+      "hint": "Disables data binding for the component"
     }
   },
   "RsDatePicker": {

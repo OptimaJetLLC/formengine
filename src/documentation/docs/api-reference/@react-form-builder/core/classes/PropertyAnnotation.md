@@ -66,6 +66,18 @@ Possible values for the property.
 
 ***
 
+### dataBindingType
+
+> `readonly` **dataBindingType**: [`DataBindingType`](../type-aliases/DataBindingType.md) = `'none'`
+
+The type of component data binding.
+
+#### Inherited from
+
+[`Annotation`](Annotation.md).[`dataBindingType`](Annotation.md#databindingtype)
+
+***
+
 ### default?
 
 > `readonly` `optional` **default**: `any`

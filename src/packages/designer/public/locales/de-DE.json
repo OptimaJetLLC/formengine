@@ -230,6 +230,10 @@
       "hint": "Auswählbare Daten",
       "name": "Daten"
     },
+    "dataKey": {
+      "hint": "Komponentendatenschlüssel",
+      "name": "Datenschlüssel"
+    },
     "decimalScale": {
       "hint": "Wenn definiert, begrenzt es die Anzahl der Nachkommastellen",
       "name": "Dezimalskala"
@@ -245,6 +249,10 @@
     "defaultValue": {
       "hint": "Standardwert",
       "name": "Standardwert"
+    },
+    "disableDataBinding": {
+      "hint": "Deaktiviert die Datenbindung für die Komponente",
+      "name": "Datenbindung deaktivieren"
     },
     "disableMultipart": {
       "hint": "Wenn 'true', deaktivieren Sie die Verwendung eines mehrteiligen Formulars zum Hochladen von Dateien und streamen Sie stattdessen die Datei. Einige APIs (z. B. Amazon S3) erwarten möglicherweise, dass die Datei gestreamt und nicht über ein Formular gesendet wird",

@@ -10,6 +10,8 @@ import {CenteredLabel} from '../../../../components/Labels'
 import {PropertyEditorWrapper} from '../../../../components/PropertyEditorWrapper'
 import {customizableObserver} from '../../../../customization'
 import {useTranslationPart} from '../../../../localization/hooks'
+import {dataKey} from '../annotations/dataKeyAnnotation'
+import {disableDataBinding} from '../annotations/disableDataBindingAnnotation'
 import {Section, SubSection} from '../Section'
 import {DevicePicker} from './DevicePicker'
 
@@ -173,7 +175,16 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
       <Container  {...props}>
         <PropertiesList>
           {activeTab === Section.Main && <PropertyEditorWrapper annotation={key} context={data.store}/>}
-          {notSlot && <PropertyBlock annotations={properties} context={data.store.props}/>}
+          {notSlot && <>
+            {data.model.dataBindingType === 'oneWay' && <>
+              <PropertyEditorWrapper annotation={disableDataBinding} context={data.store}/>
+              {data.store.disableDataBinding?.value !== true &&
+                <PropertyEditorWrapper annotation={dataKey} context={data.store}/>
+              }
+            </>}
+            <PropertyBlock annotations={properties} context={data.store.props}/>
+          </>
+          }
           {activeTab === Section.Style && notSlot &&
             // eslint-disable-next-line @typescript-eslint/no-use-before-define
             <Styles meta={meta} store={data.store}/>

@@ -475,6 +475,123 @@ changes:
 
 ![Custom components 06](/assets/custom-components/custom-components-06.png)
 
+### One-way data binding
+
+Sometimes you just need to bind one of the component properties to the form data, but in such a way that the component cannot change the
+form data. In this case, the [valued](/api-reference/@react-form-builder/core/classes/BaseBuilder#valued) method may not be suitable for
+you. Then you can use the [dataBound](/api-reference/@react-form-builder/core/classes/BaseBuilder#databound) method, which binds the
+component property to the form data. For binding, you also need to define the
+component's [dataKey](/api-reference/@react-form-builder/core/classes/ComponentStore#datakey) property to specify which form field the
+binding will be made to.
+
+:::tip
+
+Binding of a component property to the form data can also be done using [computed properties](/computed-properties).
+
+Using the Designer, you can also create [presets](/presets-components) for components.
+
+:::
+
+Here is a simple example of two components, one of which uses one-way binding:
+
+```typescript jsx {26,27,33,34}
+import {define, string} from '@react-form-builder/core'
+import type {ChangeEvent, InputHTMLAttributes, LabelHTMLAttributes} from 'react'
+import {useCallback} from 'react'
+
+type MyInputProps = InputHTMLAttributes<HTMLInputElement> & {
+  onChange?: (value: string) => void
+}
+
+const MyInput = (props: MyInputProps) => {
+  const {onChange, ...otherProps} = props
+
+  const onChangeHandler = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    onChange?.(event.target.value)
+  }, [onChange])
+
+  return <input {...otherProps} onChange={onChangeHandler} />
+}
+
+const MyLabel = (props: LabelHTMLAttributes<HTMLLabelElement>) => {
+  return <label {...props} />
+}
+
+export const myInput = define(MyInput, 'MyInput')
+  .name('My input')
+  .props({
+    // two-way data binding
+    value: string.valued
+  })
+
+export const myLabel = define(MyLabel, 'MyLabel')
+  .name('My label')
+  .props({
+    // one-way data binding
+    children: string.default('Label').dataBound
+  })
+```
+
+Using the components above, we can create a form with an input field and two components displaying the data of this input field, as shown in
+the screenshot below:
+
+![A one-way data binding form](/assets/custom-components/custom-components-08.png "A one-way data binding form")
+
+```json title='Example of a one-way data binding form' {9,10,18-20,29-31}
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "input",
+        "type": "MyInput",
+        "props": {
+          "value": {
+            "value": "test"
+          }
+        }
+      },
+      {
+        "key": "myLabel1",
+        "type": "MyLabel",
+        "dataKey": "input",
+        "props": {},
+        "css": {
+          "any": {
+            "string": "  color: blue;"
+          }
+        }
+      },
+      {
+        "key": "myLabel2",
+        "dataKey": "input",
+        "type": "MyLabel",
+        "props": {},
+        "css": {
+          "any": {
+            "string": "  color: green;"
+          }
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
+```
+
 ### Kind of a component
 
 Also, in some cases, you may need to set the [`kind`](/api-reference/@react-form-builder/core/classes/Definer#kind) of the component. This

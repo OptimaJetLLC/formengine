@@ -12,7 +12,7 @@ the type of React component properties.
 
 ### new Model()
 
-> **new Model**\<`T`\>(`component`, `name`?, `actionsInitializer`?, `valued`?, `valueType`?, `defaultProps`?, `css`?, `wrapperCss`?, `typeName`?, `kind`?, `readOnly`?, `propsBindingTypes`?, `uncontrolledValue`?, `disabled`?): [`Model`](Model.md)\<`T`\>
+> **new Model**\<`T`\>(`component`, `name`?, `actionsInitializer`?, `valued`?, `valueType`?, `defaultProps`?, `css`?, `wrapperCss`?, `typeName`?, `kind`?, `readOnly`?, `propsBindingTypes`?, `uncontrolledValue`?, `disabled`?, `dataBindingType`?): [`Model`](Model.md)\<`T`\>
 
 Creates component metadata for the form viewer.
 
@@ -74,6 +74,10 @@ the value for the uncontrolled (undefined) state.
 
 the name of the component property that stores the disabled flag.
 
+• **dataBindingType?**: [`DataBindingType`](../type-aliases/DataBindingType.md) = `'none'`
+
+the type of component data binding.
+
 #### Returns
 
 [`Model`](Model.md)\<`T`\>
@@ -101,6 +105,14 @@ The React component.
 > `readonly` `optional` **css**: [`Css`](../type-aliases/Css.md)
 
 the component's CSS values.
+
+***
+
+### dataBindingType
+
+> `readonly` **dataBindingType**: [`DataBindingType`](../type-aliases/DataBindingType.md) = `'none'`
+
+the type of component data binding.
 
 ***
 

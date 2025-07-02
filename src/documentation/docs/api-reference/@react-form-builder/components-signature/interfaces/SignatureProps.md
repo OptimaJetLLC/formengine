@@ -801,7 +801,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### autoCapitalize?
 
-> `optional` **autoCapitalize**: `string` & `object` \| `"off"` \| `"none"` \| `"on"` \| `"sentences"` \| `"words"` \| `"characters"`
+> `optional` **autoCapitalize**: `"none"` \| `string` & `object` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"` \| `"characters"`
 
 #### Inherited from
 

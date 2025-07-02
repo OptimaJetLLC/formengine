@@ -7,7 +7,9 @@ import {ArrayOfStringInput} from './ArrayOfStringInput'
 import {AttributesInput} from './AttributesInput'
 import {BooleanInput} from './BooleanInput'
 import {ColorInput} from './ColorInput'
+import {DataKeyInput} from './DataKeyInput'
 import {DateInput} from './DateInput'
+import {DisableDataBindingInput} from './DisableDataBindingInput'
 import {EventEditor} from './EventEditor'
 import {KeyInput} from './KeyInput'
 import {MultiPicker} from './MultiPicker'
@@ -25,6 +27,8 @@ import {CustomValidatorEditor} from './ValidateEditor/CustomValidatorEditor'
 
 export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>> = {
   key: KeyInput,
+  dataKey: DataKeyInput,
+  disableDataBinding: DisableDataBindingInput,
   htmlAttributes: AttributesInput,
   validation: ComponentValidationSettingsEditor,
   string: StringInput,

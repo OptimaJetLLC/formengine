@@ -1,0 +1,82 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "input",
+        "type": "RsInput",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "test-input"
+          }
+        ]
+      },
+      {
+        "key": "staticBound",
+        "type": "RsStaticContent",
+        "dataKey": "input",
+        "props": {
+          "content": {
+            "value": "static bound"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "test-static-bound"
+          }
+        ]
+      },
+      {
+        "key": "staticUnboundNoDataKey",
+        "type": "RsStaticContent",
+        "props": {
+          "content": {
+            "value": "no dataKey"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "test-static-unbound-no-data-key"
+          }
+        ]
+      },
+      {
+        "key": "staticUnboundBindingIsDisabled",
+        "type": "RsStaticContent",
+        "dataKey": "input",
+        "props": {
+          "content": {
+            "value": "binding is disabled"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "test-static-unbound-binding-is-disabled"
+          }
+        ],
+        "disableDataBinding": {
+          "value": true
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

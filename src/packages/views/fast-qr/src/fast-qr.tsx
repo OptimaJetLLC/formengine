@@ -163,7 +163,7 @@ export const fastQr = define(FastQr, 'FastQR')
   .icon(QrIcon)
   .props({
     width: nonNegNumber.default(300).hinted('The QR code width'),
-    content: string.default('https://formengine.io').hinted('The QR code content'),
+    content: string.default('https://formengine.io').hinted('The QR code content').dataBound,
     moduleColor: color.hinted('The module color'),
     shape: oneOf(0, 1, 2, 3, 4, 5).default(0)
       .labeled('Square', 'Circle', 'RoundedSquare', 'Vertical', 'Horizontal', 'Diamond')

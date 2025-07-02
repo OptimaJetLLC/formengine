@@ -94,6 +94,7 @@ const wrappedComponents = new Set(['RsCalendar', 'RsTagPicker', 'RsUploader'])
 const componentsMetadata = definers
   .map(definer => definer.build().model)
   .filter(model => typeof model.valued !== 'undefined')
+  .filter(model => model.dataBindingType === 'twoWay')
   .filter(model => !wrappedComponents.has(model.type))
 
 const componentsView = createView(componentsMetadata)

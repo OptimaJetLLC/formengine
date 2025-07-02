@@ -1,9 +1,11 @@
 import {createView, Definer} from '@react-form-builder/core'
 import {antButton} from './components/AntButton'
+import {antInput} from './components/AntInput'
 import {antTooltip} from './components/AtnTooltip'
 
 const definitions = [
   antButton,
+  antInput,
   antTooltip
 ]
 

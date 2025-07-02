@@ -6,7 +6,7 @@ Returns true if the property value is calculated by the function, otherwise fals
 
 ## Parameters
 
-• **componentProperty?**: [`ComponentProperty`](../interfaces/ComponentProperty.md)
+• **componentProperty?**: [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>
 
 the component property.
 

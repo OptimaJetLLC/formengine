@@ -1,9 +1,9 @@
 # Function: useAriaAttributesIds()
 
-> **useAriaAttributesIds**(): `AriaAttributesIds`
+> **useAriaAttributesIds**(): [`AriaAttributesIds`](../type-aliases/AriaAttributesIds.md)
 
 ## Returns
 
-`AriaAttributesIds`
+[`AriaAttributesIds`](../type-aliases/AriaAttributesIds.md)
 
 a map of aria attributes ids.

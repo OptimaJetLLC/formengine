@@ -230,6 +230,10 @@
       "hint": "Dati selezionabili",
       "name": "Dati"
     },
+    "dataKey": {
+      "hint": "Chiave dati componente",
+      "name": "Chiave dati"
+    },
     "decimalScale": {
       "hint": "Se definito, limita il numero di cifre dopo il punto decimale",
       "name": "Scala decimale"
@@ -245,6 +249,10 @@
     "defaultValue": {
       "hint": "Valore predefinito",
       "name": "Valore predefinito"
+    },
+    "disableDataBinding": {
+      "hint": "Disabilita l'associazione dati per il componente",
+      "name": "Disabilita associazione dati"
     },
     "disableMultipart": {
       "hint": "Se' true', disabilitare l'utilizzo di un modulo multipart per il caricamento del file e invece lo streaming del file. Alcune API (ad esempio Amazon S3) potrebbero aspettarsi che il file venga trasmesso in streaming anziché inviato tramite un modulo",

@@ -6,7 +6,7 @@ Returns true if the property value is localized, otherwise false. **Internal use
 
 ## Parameters
 
-• **componentProperty?**: [`ComponentProperty`](../interfaces/ComponentProperty.md)
+• **componentProperty?**: [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>
 
 the component property.
 

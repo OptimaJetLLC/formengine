@@ -2,7 +2,10 @@ import type {AriaAttributes} from 'react'
 import {useMemo} from 'react'
 import {useComponentData} from './contexts/ComponentDataContext'
 
-type AriaAttributesIds = Record<
+/**
+ * The record with 'aria' attributes.
+ */
+export type AriaAttributesIds = Record<
   keyof Pick<AriaAttributes, 'aria-labelledby' | 'aria-errormessage'>,
   string
 >

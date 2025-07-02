@@ -833,7 +833,7 @@ Flag, if true, one new row will be automatically added when editing the last row
 
 ### autoCapitalize?
 
-> `optional` **autoCapitalize**: `string` & `object` \| `"off"` \| `"none"` \| `"on"` \| `"sentences"` \| `"words"` \| `"characters"`
+> `optional` **autoCapitalize**: `"none"` \| `string` & `object` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"` \| `"characters"`
 
 #### Inherited from
 

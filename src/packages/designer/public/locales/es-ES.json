@@ -230,6 +230,10 @@
       "hint": "Datos seleccionables",
       "name": "Datos"
     },
+    "dataKey": {
+      "hint": "Clave de datos de componentes",
+      "name": "Clave de datos"
+    },
     "decimalScale": {
       "hint": "Si se define, limita el número de dígitos después del punto decimal",
       "name": "Escala decimal"
@@ -245,6 +249,10 @@
     "defaultValue": {
       "hint": "Valor predeterminado",
       "name": "Valor predeterminado"
+    },
+    "disableDataBinding": {
+      "hint": "Deshabilita el enlace de datos para el componente",
+      "name": "Deshabilitar el enlace de datos"
     },
     "disableMultipart": {
       "hint": "Si es 'verdadero', deshabilite el uso de un formulario de varias partes para cargar archivos y, en su lugar, transmita el archivo. Algunas API (por ejemplo, Amazon S3) pueden esperar que el archivo se transmita en lugar de enviarse a través de un formulario",

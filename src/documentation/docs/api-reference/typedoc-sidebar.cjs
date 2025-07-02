@@ -404,6 +404,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/AriaAttributesIds",
+            "label": "AriaAttributesIds"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/BoundValueSchema",
             "label": "BoundValueSchema"
           },
@@ -431,6 +436,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/ComponentLocalizer",
             "label": "ComponentLocalizer"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/ComponentPropertiesContext",
+            "label": "ComponentPropertiesContext"
           },
           {
             "type": "doc",
@@ -501,6 +511,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/CustomValidationRules",
             "label": "CustomValidationRules"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/DataBindingType",
+            "label": "DataBindingType"
           },
           {
             "type": "doc",
@@ -661,6 +676,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/PropertyKey",
             "label": "PropertyKey"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/ReactProperty",
+            "label": "ReactProperty"
           },
           {
             "type": "doc",

@@ -50,6 +50,14 @@ The component data key.
 
 ***
 
+### disableDataBinding?
+
+> `optional` **disableDataBinding**: [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`boolean`\>
+
+Disables data binding for the component.
+
+***
+
 ### events?
 
 > `optional` **events**: `Record`\<`string`, [`ActionData`](../type-aliases/ActionData.md)[]\>
@@ -76,7 +84,7 @@ The React component key.
 
 ### props
 
-> **props**: `Record`\<`string`, [`ComponentProperty`](../interfaces/ComponentProperty.md)\> = `{}`
+> **props**: `Record`\<`string`, [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>\> = `{}`
 
 The component properties.
 
@@ -84,7 +92,7 @@ The component properties.
 
 ### renderWhen?
 
-> `optional` **renderWhen**: [`ComponentProperty`](../interfaces/ComponentProperty.md)
+> `optional` **renderWhen**: [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>
 
 The expression or function to conditionally render a component.
 
@@ -116,7 +124,7 @@ The condition for binding a child element to a parent element.
 
 ### tooltipProps?
 
-> `optional` **tooltipProps**: `Record`\<`string`, [`ComponentProperty`](../interfaces/ComponentProperty.md)\>
+> `optional` **tooltipProps**: `Record`\<`string`, [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>\>
 
 The tooltip settings.
 

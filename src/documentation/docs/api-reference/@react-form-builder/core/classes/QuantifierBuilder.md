@@ -74,6 +74,24 @@ Possible values for the property.
 
 ## Accessors
 
+### dataBound
+
+#### Get Signature
+
+> **get** **dataBound**(): `this`
+
+##### Returns
+
+`this`
+
+the main property of the component that uses the form data as data (one-way data binding).
+
+#### Inherited from
+
+[`TypedBuilder`](TypedBuilder.md).[`dataBound`](TypedBuilder.md#databound)
+
+***
+
 ### localize
 
 #### Get Signature

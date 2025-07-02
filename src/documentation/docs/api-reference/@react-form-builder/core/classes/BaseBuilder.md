@@ -41,6 +41,20 @@ Options for building an annotation.
 
 ## Accessors
 
+### dataBound
+
+#### Get Signature
+
+> **get** **dataBound**(): `this`
+
+##### Returns
+
+`this`
+
+the main property of the component that uses the form data as data (one-way data binding).
+
+***
+
 ### localize
 
 #### Get Signature

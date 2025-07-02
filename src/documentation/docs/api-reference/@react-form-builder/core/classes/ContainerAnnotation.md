@@ -59,6 +59,18 @@ True if the property value can be a calculated property, false otherwise.
 
 ***
 
+### dataBindingType
+
+> `readonly` **dataBindingType**: [`DataBindingType`](../type-aliases/DataBindingType.md) = `'none'`
+
+The type of component data binding.
+
+#### Inherited from
+
+[`Annotation`](Annotation.md).[`dataBindingType`](Annotation.md#databindingtype)
+
+***
+
 ### default?
 
 > `readonly` `optional` **default**: `any`

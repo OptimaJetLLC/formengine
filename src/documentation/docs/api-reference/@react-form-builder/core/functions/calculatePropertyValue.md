@@ -6,7 +6,7 @@ Calculates the value for the component property. **Internal use only.**
 
 ## Parameters
 
-• **componentProperty**: [`ComponentProperty`](../interfaces/ComponentProperty.md)
+• **componentProperty**: [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>
 
 the component property.
 

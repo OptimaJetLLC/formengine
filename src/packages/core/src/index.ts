@@ -52,6 +52,7 @@ export {nameAutorun, nameObservable} from './utils/observableNaming'
 export {ComponentTree} from './features/ui/ComponentTree'
 export {useTooltipType} from './utils/useTooltipType'
 export {useAriaAttributesIds, useAriaInvalid, useAriaAttributes} from './utils/useAriaAttributesIds'
+export type {AriaAttributesIds} from './utils/useAriaAttributesIds'
 export {Form} from './stores/Form'
 export {checkSlotCondition} from './utils/getChildren'
 export {TemplateField} from './features/validation/utils/TemplateField'
@@ -161,3 +162,5 @@ export {buildForm} from './features/form-json-builder/FormJsonBuilder'
 export type {
   Device, IFormJsonBuilder, IComponentBuilder, IEventHandlerBuilder, FormOptions, IValidationBuilder
 } from './features/form-json-builder/types'
+export type {DataBindingType} from './features/define/utils/DataBindingType'
+export type {ComponentPropertiesContext, ReactProperty} from './features/properties-context/ComponentPropertiesContext'

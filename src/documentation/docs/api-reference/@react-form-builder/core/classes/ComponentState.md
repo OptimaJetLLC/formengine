@@ -46,6 +46,14 @@ the function that calculates all child properties of a component.
 
 ***
 
+### context
+
+> `readonly` **context**: [`ComponentPropertiesContext`](../type-aliases/ComponentPropertiesContext.md)
+
+The context for working with component properties.
+
+***
+
 ### data
 
 > `readonly` **data**: [`ComponentData`](ComponentData.md)
