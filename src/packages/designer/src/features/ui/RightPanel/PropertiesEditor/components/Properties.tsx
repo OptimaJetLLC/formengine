@@ -176,7 +176,7 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
         <PropertiesList>
           {activeTab === Section.Main && <PropertyEditorWrapper annotation={key} context={data.store}/>}
           {notSlot && <>
-            {data.model.dataBindingType === 'oneWay' && <>
+            {data.model.dataBindingType === 'oneWay' && activeTab === Section.Main && <>
               <PropertyEditorWrapper annotation={disableDataBinding} context={data.store}/>
               {data.store.disableDataBinding?.value !== true &&
                 <PropertyEditorWrapper annotation={dataKey} context={data.store}/>
