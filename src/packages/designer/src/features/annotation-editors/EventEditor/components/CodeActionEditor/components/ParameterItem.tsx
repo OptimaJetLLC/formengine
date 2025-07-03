@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import type {ParameterName, ParameterType} from '@react-form-builder/core'
 import {toLabeledValues} from '@react-form-builder/core'
 import {ArrowDownLine, ArrowUpLine, Close} from '@rsuite/icons'
+import type {ComponentProps} from 'react'
 import {useRef, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import type {FormInstance} from 'rsuite'
@@ -36,6 +37,10 @@ const ParamName = ({value, collapsed, onClick}: { value: Parameter, collapsed: b
   const [name, type] = value
   const ParamIcon = collapsed ? ArrowDownLine : ArrowUpLine
   return <SParamName onClick={onClick}><ParamIcon/> {name}: {type}</SParamName>
+}
+
+const ValueTypeSelector = (props: ComponentProps<typeof InputPicker>) => {
+  return <InputPicker {...props} placement={'autoVertical'}/>
 }
 
 /**
@@ -88,7 +93,7 @@ export const ParameterItem = ({value, onRemove, onChange, parameters}: Parameter
           </Form.Group>
           <Form.Group>
             <Form.ControlLabel>{t('actions.type')}</Form.ControlLabel>
-            <Form.Control name="type" accepter={InputPicker} data={ArgumentTypes}
+            <Form.Control name="type" accepter={ValueTypeSelector} data={ArgumentTypes}
                           cleanable={false} creatable={false}/>
           </Form.Group>
         </Form>
