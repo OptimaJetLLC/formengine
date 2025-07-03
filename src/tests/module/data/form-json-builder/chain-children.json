@@ -1,0 +1,110 @@
+{
+  "errorType": "RsErrorMessage",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "container",
+        "type": "RsContainer",
+        "props": {
+          "prop": {
+            "value": "My prop"
+          },
+          "computed": {
+            "fnSource": "return 1",
+            "computeType": "function"
+          },
+          "locProps": {
+            "computeType": "localization"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required"
+            }
+          ]
+        },
+        "events": {
+          "onClick": [
+            {
+              "type": "common",
+              "name": "validate",
+              "args": {
+                "failOnError": true
+              }
+            },
+            {
+              "type": "custom",
+              "name": "onSubmit"
+            }
+          ]
+        },
+        "css": {
+          "any": {
+            "string": "background-color: red"
+          }
+        },
+        "children": [
+          {
+            "key": "container1",
+            "type": "RsContainer",
+            "props": {
+              "locProps": {
+                "computeType": "localization"
+              },
+              "computed": {
+                "computeType": "function",
+                "fnSource": "return 23"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "container": {
+        "component": {
+          "locProps": "English"
+        }
+      },
+      "container1": {
+        "component": {
+          "locProps": "EN"
+        }
+      }
+    },
+    "de-DE": {
+      "container": {
+        "component": {
+          "locProps": "Deutsch"
+        }
+      }
+    },
+    "es-ES": {
+      "container1": {
+        "component": {
+          "locProps": "El gata"
+        }
+      }
+    }
+  },
+  "defaultLanguage": "en-US",
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US"
+    },
+    {
+      "code": "de",
+      "dialect": "DE"
+    },
+    {
+      "code": "es",
+      "dialect": "ES"
+    }
+  ]
+}

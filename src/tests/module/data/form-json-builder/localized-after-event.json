@@ -1,0 +1,43 @@
+{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "button",
+        "type": "Button",
+        "props": {
+          "prop": {
+            "computeType": "localization"
+          }
+        }
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "button": {
+        "component": {
+          "prop": "return \"alpha\""
+        }
+      }
+    },
+    "es-ES": {
+      "button": {
+        "component": {
+          "prop": "return \"beta\""
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US"
+    },
+    {
+      "code": "es",
+      "dialect": "ES"
+    }
+  ]
+}

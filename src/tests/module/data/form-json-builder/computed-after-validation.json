@@ -1,0 +1,22 @@
+{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "button",
+        "type": "Button",
+        "props": {
+          "enabled": {
+            "computeType": "function",
+            "fnSource": "return false"
+          },
+          "visible": {
+            "computeType": "function",
+            "fnSource": "return true"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "button",
+        "type": "Button",
+        "props": {
+          "prop1": {
+            "computeType": "function",
+            "fnSource": "throw new Error()"
+          },
+          "prop2": {
+            "computeType": "function",
+            "fnSource": "throw new Error(\"test\")"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -6,6 +6,12 @@ Options for configuring the form behavior.
 
 ## Type declaration
 
+### defaultLanguage?
+
+> `optional` **defaultLanguage**: `string`
+
+The default form language.
+
 ### errorType?
 
 > `optional` **errorType**: `string`

@@ -100,6 +100,34 @@ the component builder for further configuration.
 
 ***
 
+### computedProp()
+
+> **computedProp**(`key`, `value`): [`IComponentBuilder`](IComponentBuilder.md)
+
+Sets a computed property on the component.
+
+#### Parameters
+
+• **key**: `string`
+
+the name of the property.
+
+• **value**: `string`
+
+the code of the function for calculating the property value.
+
+#### Returns
+
+[`IComponentBuilder`](IComponentBuilder.md)
+
+the component builder for method chaining.
+
+#### Inherited from
+
+[`IComponentBuilder`](IComponentBuilder.md).[`computedProp`](IComponentBuilder.md#computedprop)
+
+***
+
 ### customAction()
 
 > **customAction**(`name`): [`IEventHandlerBuilder`](IEventHandlerBuilder.md)
@@ -159,6 +187,38 @@ JSON representation of the form.
 #### Inherited from
 
 [`IComponentBuilder`](IComponentBuilder.md).[`json`](IComponentBuilder.md#json)
+
+***
+
+### localizedProp()
+
+> **localizedProp**(`key`, `language`, `value`): [`IComponentBuilder`](IComponentBuilder.md)
+
+Sets a localized property on the component.
+
+#### Parameters
+
+• **key**: `string`
+
+the name of the property.
+
+• **language**: \`$\{string\}-$\{string\}\`
+
+the localized code, e.g. 'en-US'.
+
+• **value**: `any`
+
+the localized value of the property.
+
+#### Returns
+
+[`IComponentBuilder`](IComponentBuilder.md)
+
+the component builder for method chaining.
+
+#### Inherited from
+
+[`IComponentBuilder`](IComponentBuilder.md).[`localizedProp`](IComponentBuilder.md#localizedprop)
 
 ***
 
