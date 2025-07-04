@@ -1,0 +1,75 @@
+{
+  "version": "1",
+  "actions": {
+    "codeaction": {
+      "body": "    console.log('codeaction', e, args)",
+      "params": {
+        "prop1": "string",
+        "prop2": "number",
+        "prop3": "boolean"
+      }
+    }
+  },
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsButton1",
+        "type": "RsButton",
+        "props": {},
+        "events": {
+          "onClick": [
+            {
+              "name": "logEventArgs",
+              "type": "custom"
+            },
+            {
+              "name": "codeaction",
+              "type": "code",
+              "args": {
+                "prop1": "FOO",
+                "prop2": -3,
+                "prop3": true
+              }
+            },
+            {
+              "name": "assertArgs",
+              "type": "custom",
+              "args": {
+                "p1": "BAR",
+                "p2": false,
+                "p3": 6
+              }
+            },
+            {
+              "name": "validate",
+              "type": "common",
+              "args": {
+                "failOnError": true
+              }
+            }
+          ]
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "button"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

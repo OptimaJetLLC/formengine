@@ -20,6 +20,6 @@ export default defineConfig((env) => mergeConfig(base(env), {
     reporters: ['default', 'junit'],
     outputFile: {
       junit: './reports/junit-report.xml',
-    },
+    }
   }
 }))

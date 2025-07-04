@@ -64,6 +64,7 @@ export const CustomizableTab = ({eventKey, customizableKey, title, icon, props}:
     role="tab"
     as="button"
     type="button"
+    data-testid={customizableKey}
     {...props}
   >
     {icon && <FaIcon icon={icon} {...{size: 1.2, ...props, color: undefined}} tabIndex={-1}/>}
