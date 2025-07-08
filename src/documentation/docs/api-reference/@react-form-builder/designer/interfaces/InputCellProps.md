@@ -867,8 +867,6 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 > `optional` **className**: `string`
 
-Additional classes
-
 #### Inherited from
 
 `InnerCellProps.className`
@@ -879,7 +877,7 @@ Additional classes
 
 > `optional` **classPrefix**: `string`
 
-The prefix of the component CSS class
+CSS class prefix for component styling customization
 
 #### Inherited from
 
@@ -3238,8 +3236,6 @@ Row Number
 ### style?
 
 > `optional` **style**: `CSSProperties`
-
-Additional style
 
 #### Inherited from
 

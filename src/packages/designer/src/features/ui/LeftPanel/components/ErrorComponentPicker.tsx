@@ -17,8 +17,10 @@ const RawErrorComponentPicker = () => {
   const hasComputeCode = useCallback(() => false, [])
 
   const values = builderStore.view.errors
+  const defaultValue = values[0]
+  const value = viewerStore.form.errorType ?? defaultValue
   const annotation = oneOf(...values)
-    .default(values[0])
+    .default(defaultValue)
     .calculable(false)
     .notLocalize
     .withEditorProps({
@@ -27,10 +29,10 @@ const RawErrorComponentPicker = () => {
     .build('errorType')
 
   const props: AnnotationEditorProps = {
-    value: viewerStore.form.errorType,
+    value,
     onChange,
     onClean,
-    annotation: annotation,
+    annotation,
     componentData: builderStore.viewer.form.componentTree,
     disableCompute,
     setComputeCode,

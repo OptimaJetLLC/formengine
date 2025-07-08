@@ -5,6 +5,7 @@ import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
 import * as faGlobe from '@fortawesome/free-solid-svg-icons/faGlobe.js'
 import * as faEdit from '@fortawesome/free-solid-svg-icons/faMarker.js'
 import type {Annotation, ComponentData} from '@react-form-builder/core'
+import {isEqual} from 'lodash-es'
 import type {ComponentProps, HTMLAttributes, ReactNode} from 'react'
 import {cloneElement, useCallback, useMemo} from 'react'
 import {IconButton} from 'rsuite'
@@ -43,6 +44,10 @@ export interface LabeledPropertyProps extends CalculableEditorProps, HTMLAttribu
    * The label style.
    */
   style?: any
+  /**
+   * Annotation editor value.
+   */
+  value?: any
 }
 
 /**
@@ -176,7 +181,7 @@ export const LabeledWrapper = (props: LabeledWrapperProps) => {
 }
 
 const RawLabeledProperty = (props: LabeledPropertyProps) => {
-  const {annotation, children, style} = props
+  const {annotation, children, style, value} = props
   const {className, ...codeButtonProps} = props
   const componentType = props.componentData.model.type
   const commonLabels = useTranslationPart(`annotation.${annotation.key}`)
@@ -192,7 +197,12 @@ const RawLabeledProperty = (props: LabeledPropertyProps) => {
 
   const label = useMemo(() => getLabel('name') || annotation.name, [annotation.name, getLabel])
 
-  return <LabeledWrapper style={style} className={className} required={annotation.required}
+  const valueModified = !isEqual(value, annotation.default)
+  const adjustedClassName = [className, valueModified ? 'valueModified' : ''].filter(v => !!v).join(' ')
+
+  return <LabeledWrapper style={style}
+                         className={adjustedClassName}
+                         required={annotation.required}
                          hint={hint} label={label}
                          leftButton={<CodeButton {...codeButtonProps}/>}>
     {children}

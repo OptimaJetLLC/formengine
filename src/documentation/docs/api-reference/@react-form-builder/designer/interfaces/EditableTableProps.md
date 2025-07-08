@@ -936,6 +936,11 @@ Display the borders of table cells
 
 > `optional` **children**: `ReactNode` \| `ReactNode`[] \| (`props`) => ReactNode \| ReactNode\[\]
 
+Defines the content of the table. Can be:
+- React elements (typically Column or ColumnGroup)
+- A function that returns React elements
+The function receives an object with Cell, Column, ColumnGroup, and HeaderCell components.
+
 #### Inherited from
 
 `TableProps.children`
@@ -945,8 +950,6 @@ Display the borders of table cells
 ### className?
 
 > `optional` **className**: `string`
-
-Additional classes
 
 #### Inherited from
 
@@ -958,7 +961,7 @@ Additional classes
 
 > `optional` **classPrefix**: `string`
 
-The prefix of the component CSS class
+CSS class prefix for component styling customization
 
 #### Inherited from
 
@@ -3696,8 +3699,6 @@ Sort type
 ### style?
 
 > `optional` **style**: `CSSProperties`
-
-Additional style
 
 #### Inherited from
 
