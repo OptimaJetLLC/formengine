@@ -46,7 +46,7 @@ const RawComponentValidationSettingsEditor = (props: AnnotationEditorProps) => {
     return store.schema
   }, [store])
 
-  if (!type) return null
+  if (!type || model.dataBindingType !== 'twoWay') return null
 
   return (
     <Rows>
