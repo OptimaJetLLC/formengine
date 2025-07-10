@@ -63,4 +63,10 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
    * Indicates the theme preference.
    */
   theme?: FormBuilderTheme
+  
+  /**
+   * If true, the form name will be saved to localStorage and restored when the Form builder is reopened.
+   * This functionality is enabled by default.
+   */
+  persistFormName?: boolean
 }

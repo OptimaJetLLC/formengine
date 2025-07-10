@@ -94,7 +94,7 @@ const useBuilderProviderData = (props: FormBuilderProps) => useCallback(() => {
   stateFactory.builderStore = builderStore
 
   const localStorageSynchronizer = isDesignerLocalStorageEnabled()
-    ? new LocalStorageSynchronizer(builderStore)
+    ? new LocalStorageSynchronizer(builderStore, props)
     : undefined
   return new BuilderProviderData(store, builderStore, localStorageSynchronizer)
 }, [props])

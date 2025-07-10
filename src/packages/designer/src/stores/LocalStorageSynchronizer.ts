@@ -2,6 +2,7 @@ import type {ViewMode} from '@react-form-builder/core'
 import {nameAutorun} from '@react-form-builder/core'
 import type {IReactionDisposer} from 'mobx'
 import {autorun} from 'mobx'
+import type {FormBuilderProps} from '../FormBuilderProps'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {parseJson} from '../utils/parseJson'
 import type {BuilderTheme} from '../utils/types'
@@ -17,8 +18,9 @@ export class LocalStorageSynchronizer {
   /**
    * Creates {@LocalStorageSynchronizer}.
    * @param builderStore the form builder settings.
+   * @param builderProps the form builder props.
    */
-  constructor(builderStore: BuilderStore) {
+  constructor(builderStore: BuilderStore, builderProps: FormBuilderProps) {
     const resolutionKey = 'resolution'
     builderStore.viewMode = this.getItem<ViewMode>(resolutionKey, defaultViewMode)
 
@@ -37,8 +39,10 @@ export class LocalStorageSynchronizer {
     const className = 'LocalStorageSynchronizer'
 
     const formNameKey = 'formName'
-    const formName = this.getItem<string>(formNameKey)
-    if (formName) builderStore.activeFormName = formName
+    if (builderProps.persistFormName !== false) {
+      const formName = this.getItem<string>(formNameKey)
+      if (formName) builderStore.activeFormName = formName
+    }
 
     const i18nextLngKey = 'i18nextLng'
     const i18nextLng = this.getItem<string>(i18nextLngKey)
@@ -67,12 +71,15 @@ export class LocalStorageSynchronizer {
       autorun(
         () => this.updateItem(testingAutorunKey, builderStore.testingAutorun),
         {name: nameAutorun(className, 'saveTestingAutorunSetting')}
-      ),
-      autorun(
+      )
+    ]
+
+    if (builderProps.persistFormName !== false) {
+      this.#disposers.push(autorun(
         () => this.updateItem(formNameKey, builderStore.activeFormName),
         {name: nameAutorun(className, 'saveFormName')}
-      ),
-    ]
+      ))
+    }
   }
 
   /**

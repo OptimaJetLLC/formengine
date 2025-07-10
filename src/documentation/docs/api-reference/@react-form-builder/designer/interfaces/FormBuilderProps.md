@@ -263,6 +263,15 @@ the current form schema serialized to JSON.
 
 ***
 
+### persistFormName?
+
+> `optional` **persistFormName**: `boolean`
+
+If true, the form name will be saved to localStorage and restored when the Form builder is reopened.
+This functionality is enabled by default.
+
+***
+
 ### presetComponentOptions?
 
 > `optional` **presetComponentOptions**: [`IPresetComponentOptions`](IPresetComponentOptions.md)

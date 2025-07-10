@@ -1,0 +1,104 @@
+import {BuilderView} from '@react-form-builder/core'
+import {FormBuilder, IFormStorage} from '@react-form-builder/designer'
+import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
+import {fireEvent, render, waitFor} from '@testing-library/react'
+import {expect} from 'vitest'
+
+const defaultFormName = 'default-form'
+const secondFormName = 'second-form'
+
+const createForm = (name?: string) => `
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "rsLabel1",
+        "type": "RsLabel",
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "${name}"
+          }
+        ]
+      }
+    ]
+  }
+}
+`
+
+class MockFormStorage implements IFormStorage {
+  constructor(private onLoadForm: (formName?: string) => void) {
+  }
+
+  getForm = (formName?: string) => {
+    this.onLoadForm(formName)
+    return Promise.resolve(createForm(formName))
+  }
+
+  getFormNames(): Promise<string[]> {
+    return Promise.resolve([defaultFormName, secondFormName])
+  }
+
+  removeForm(formName: string): Promise<any> {
+    return Promise.resolve(undefined)
+  }
+
+  saveForm(formName: string, formValue: string): Promise<any> {
+    return Promise.resolve(undefined)
+  }
+}
+
+const view = new BuilderView(allComponentsBuilder)
+
+describe('The persistFormName prop in FormBuilder', function () {
+  beforeAll(() => globalThis.FORM_BUILDER_DESIGNER_DISABLE_LOCAL_STORAGE = 'false')
+
+  it('when enabled, should save the form name between sessions', async () => {
+    const onLoadForm = vi.fn()
+    const formStorage = new MockFormStorage(onLoadForm)
+    const builderComponent = (
+      <FormBuilder formName={defaultFormName} view={view} formStorage={formStorage}
+                   getForm={formStorage.getForm}/>
+    )
+
+    const {findByTestId, unmount} = render(builderComponent)
+    await waitFor(() => expect(onLoadForm).toHaveBeenLastCalledWith(defaultFormName))
+
+    fireEvent.click(await findByTestId('Forms_Tab'))
+    fireEvent.click(await findByTestId(`form-list-open-item-${secondFormName}`))
+    await waitFor(async () => expect(await findByTestId(secondFormName)).toBeInTheDocument())
+
+    unmount()
+    onLoadForm.mockClear()
+
+    render(builderComponent)
+    await waitFor(() => expect(onLoadForm).toHaveBeenLastCalledWith(secondFormName))
+    await waitFor(async () => expect(await findByTestId(secondFormName)).toBeInTheDocument())
+  })
+
+  it('when disabled, should not save the form name between sessions', async () => {
+    const onLoadForm = vi.fn()
+    const formStorage = new MockFormStorage(onLoadForm)
+    const builderComponent = (
+      <FormBuilder formName={defaultFormName} view={view} formStorage={formStorage}
+                   getForm={formStorage.getForm} persistFormName={false}/>
+    )
+
+    const {findByTestId, unmount} = render(builderComponent)
+    await waitFor(() => expect(onLoadForm).toHaveBeenLastCalledWith(defaultFormName))
+
+    fireEvent.click(await findByTestId('Forms_Tab'))
+    fireEvent.click(await findByTestId(`form-list-open-item-${secondFormName}`))
+    await waitFor(async () => expect(await findByTestId(secondFormName)).toBeInTheDocument())
+
+    unmount()
+    onLoadForm.mockClear()
+
+    render(builderComponent)
+    await waitFor(() => expect(onLoadForm).toHaveBeenLastCalledWith(defaultFormName))
+    await waitFor(async () => expect(await findByTestId(defaultFormName)).toBeInTheDocument())
+  })
+})
