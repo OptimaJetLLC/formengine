@@ -145,14 +145,14 @@ describe('Validation action', () => {
     expect(testActionExecuteCount).toEqual(0)
 
     fireEvent.change(await findByTestId('input'), {target: {value: '123'}})
-    expect(await findByTestId('input')).toHaveValue('123')
+    await waitFor(() => expect(formViewer.formData.data.input).toEqual('123'), {timeout: 5000})
 
     await asyncAct(async () => fireEvent.click(validateButton))
 
     // waiting for the first asynchronous action
     await waitFor(() => expect(formViewer.formData.hasErrors).toEqual(false))
     // waiting for the second asynchronous action
-    await waitFor(() => expect(testActionExecuteCount).toEqual(1), {timeout: 3000})
+    await waitFor(() => expect(testActionExecuteCount).toEqual(1))
 
     expect(JSON.stringify(formViewer.formData.errors)).toEqual('{}')
   })
