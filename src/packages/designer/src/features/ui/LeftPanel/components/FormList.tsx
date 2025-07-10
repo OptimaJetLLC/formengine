@@ -31,7 +31,7 @@ function FormListItem({active, onLoadForm, onRemoveForm, name}: {
       {name}
     </span>
     <ButtonGroup>
-      <EditButton onClick={handleLoad}/>
+      <EditButton onClick={handleLoad} data-testid={`form-list-open-item-${name}`}/>
       <RemoveButton onClick={handleRemove}/>
     </ButtonGroup>
   </ListItem>

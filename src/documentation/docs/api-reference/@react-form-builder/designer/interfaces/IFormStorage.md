@@ -6,7 +6,7 @@ Interface for storing forms in an external storage.
 
 ### getForm()
 
-> **getForm**: (`formName`) => `Promise`\<`string`\>
+> **getForm**: (`formName`, `options`?) => `Promise`\<`string`\>
 
 Returns the form serialized in JSON by the form name.
 
@@ -15,6 +15,10 @@ Returns the form serialized in JSON by the form name.
 • **formName**: `string`
 
 the form name.
+
+• **options?**: `any`
+
+the form options.
 
 #### Returns
 

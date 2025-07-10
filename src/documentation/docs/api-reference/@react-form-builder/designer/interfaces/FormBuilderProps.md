@@ -102,10 +102,24 @@ The form validation errors.
 > `optional` **formName**: `string`
 
 The form name.
+Updating the value triggers the [FormViewerProps.getForm](../../core/interfaces/FormViewerProps.md#getform) function.
 
 #### Inherited from
 
 `Omit.formName`
+
+***
+
+### formOptions?
+
+> `optional` **formOptions**: `any`
+
+The form options. Used to transfer any options to the [FormViewerProps.getForm](../../core/interfaces/FormViewerProps.md#getform) function.
+Updating the value triggers the [FormViewerProps.getForm](../../core/interfaces/FormViewerProps.md#getform) function.
+
+#### Inherited from
+
+`Omit.formOptions`
 
 ***
 
@@ -131,7 +145,7 @@ The set of functions that validate the form data.
 
 ### getForm()?
 
-> `optional` **getForm**: (`name`?) => `string` \| `Promise`\<`string`\>
+> `optional` **getForm**: (`name`?, `options`?) => `string` \| `Promise`\<`string`\>
 
 Loads the form.
 
@@ -140,6 +154,10 @@ Loads the form.
 • **name?**: `string`
 
 the form name.
+
+• **options?**: `any`
+
+the form options.
 
 #### Returns
 

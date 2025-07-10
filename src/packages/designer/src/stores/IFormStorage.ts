@@ -18,9 +18,10 @@ export interface IFormStorage {
   /**
    * Returns the form serialized in JSON by the form name.
    * @param formName the form name.
+   * @param options the form options.
    * @returns the Promise with the form serialized in JSON.
    */
-  getForm: (formName: string) => Promise<string>
+  getForm: (formName: string, options?: any) => Promise<string>
 
   /**
    * Saves the form serialized in JSON.
