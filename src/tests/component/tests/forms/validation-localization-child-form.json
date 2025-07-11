@@ -11,6 +11,9 @@
         "props": {
           "value": {
             "value": "bad"
+          },
+          "label": {
+            "computeType": "localization"
           }
         },
         "schema": {
@@ -96,6 +99,9 @@
       "input": {
         "validator-startsWith": {
           "message": "Eingabe ist ungültig {$input}"
+        },
+        "component": {
+          "label": "Current_lang_DE"
         }
       }
     }

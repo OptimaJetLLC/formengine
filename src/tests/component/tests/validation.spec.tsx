@@ -71,15 +71,14 @@ describe('Validation', () => {
     const initialData = {login: 't1', password: 't2'}
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
 
-    const {findByTestId} = render(<FormViewer view={view} getForm={getForm}
-                                              initialData={initialData} viewerRef={viewerRef}/>)
+    render(<FormViewer view={view} getForm={getForm} initialData={initialData} viewerRef={viewerRef}/>)
 
-    expect(await findByTestId('login')).toHaveValue('t1')
     const formData = viewerRef.current?.formData
     if (!formData) {
       throw new Error('FormData is not defined')
     }
 
+    await waitFor(() => expect(formData.data.login).toEqual('t1'), {timeout: 5000})
     const returnedErrors = await asyncAct(async () => await formData.validate())
     const expectedErrors = JSON.stringify({login: 'String must contain at least 3 character(s)'})
     await waitFor(() => expect(JSON.stringify(returnedErrors)).toEqual(expectedErrors))
@@ -90,7 +89,7 @@ describe('Validation', () => {
     const getForm = () => JSON.stringify(validationLocalizationChildForm)
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
 
-    const {findByTestId, rerender} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+    const {findByTestId, findByLabelText, rerender} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
 
     expect(await findByTestId('child-date')).toBeInTheDocument()
     const formData = viewerRef.current?.formData
@@ -109,6 +108,7 @@ describe('Validation', () => {
     expect(JSON.stringify(formData.errors)).toEqual(expectedErrors)
 
     rerender(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} language="de-DE"/>)
+    expect(await findByLabelText('Current_lang_DE')).toBeInTheDocument()
 
     const returnedDeErrors = await asyncAct(async () => await formData.validate())
     const expectedDeErrors = JSON.stringify({
@@ -127,7 +127,7 @@ describe('Validation', () => {
     }
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
 
-    const {findAllByTestId, rerender} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+    const {findAllByTestId, findAllByLabelText, rerender} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
 
     expect(await findAllByTestId('child-date')).toHaveLength(4)
 
@@ -143,6 +143,7 @@ describe('Validation', () => {
     expect(JSON.stringify(formData.errors)).toEqual(expectedErrors)
 
     rerender(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} language="de-DE"/>)
+    expect(await findAllByLabelText('Current_lang_DE')).not.toHaveLength(0)
 
     const returnedDeErrors = await asyncAct(async () => await formData.validate())
     const expectedDeErrors = JSON.stringify(deErrors)
