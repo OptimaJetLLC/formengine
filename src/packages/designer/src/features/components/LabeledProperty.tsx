@@ -18,6 +18,7 @@ import {customizable, customizableObserver} from '../customization'
 import {useTranslationPart} from '../localization/hooks'
 import {Columns, LabeledInput} from './Containers'
 import {FaIcon} from './Icons'
+import {useTranslatedComponentProperty} from './useTranslatedComponentProperty'
 
 const SIconButton = styled(IconButton)`
   min-width: 24px;
@@ -184,18 +185,8 @@ const RawLabeledProperty = (props: LabeledPropertyProps) => {
   const {annotation, children, style, value} = props
   const {className, ...codeButtonProps} = props
   const componentType = props.componentData.model.type
-  const commonLabels = useTranslationPart(`annotation.${annotation.key}`)
-  const componentLabels = useTranslationPart(`${componentType}.${annotation.key}`)
 
-  const getLabel = useCallback((key: string) => {
-    return componentLabels(key) || commonLabels(key)
-  }, [commonLabels, componentLabels])
-
-  const hint = useMemo(() => {
-    return annotation.hint ?? getLabel('hint')
-  }, [annotation.hint, getLabel])
-
-  const label = useMemo(() => getLabel('name') || annotation.name, [annotation.name, getLabel])
+  const {hint, label} = useTranslatedComponentProperty(annotation, componentType)
 
   const valueModified = !isEqual(value, annotation.default)
   const adjustedClassName = [className, valueModified ? 'valueModified' : ''].filter(v => !!v).join(' ')

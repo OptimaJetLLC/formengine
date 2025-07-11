@@ -77,6 +77,96 @@
       "name": "도구 모음 옵션"
     }
   },
+  "RsAutoComplete": {
+    "classPrefix": {
+      "hint": "구성 요소 클래스의 접두사",
+      "name": "클래스 접두사"
+    },
+    "data": {
+      "hint": "구성 요소의 데이터",
+      "name": "데이터"
+    },
+    "defaultValue": {
+      "hint": "기본값(제어되지 않음)",
+      "name": "기본값"
+    },
+    "disabled": {
+      "hint": "사용 안 함 선택 여부",
+      "name": "사용 안 함"
+    },
+    "filterBy": {
+      "hint": "사용자 정의 필터 규칙(값이 기본적으로 하위 문자열인 항목만 표시됨)",
+      "name": "필터 기준"
+    },
+    "label": {
+      "hint": "구성 요소 레이블",
+      "name": "라벨"
+    },
+    "menuClassName": {
+      "hint": "메뉴 돔에 적용 할 클래스",
+      "name": "메뉴 클래스 이름"
+    },
+    "onChange": {
+      "hint": "옵션 또는 입력 값 변경을 선택하거나 입력 값이 변경될 때 호출됩니다",
+      "name": "변경"
+    },
+    "onClose": {
+      "hint": "숨겼을 때 콜백 발생",
+      "name": "온클로즈"
+    },
+    "onEnter": {
+      "hint": "오버레이가 전환되기 전에 발생한 콜백",
+      "name": "원엔터"
+    },
+    "onEntered": {
+      "hint": "오버레이가 전환이 완료된 후 콜백이 발생합니다.",
+      "name": "원엔터드"
+    },
+    "onEntering": {
+      "hint": "오버레이가 전환되기 시작할 때 콜백이 발생합니다.",
+      "name": "원엔터링"
+    },
+    "onExit": {
+      "hint": "오버레이가 전환되기 바로 전에 콜백이 발생했습니다",
+      "name": "원엑시트"
+    },
+    "onExited": {
+      "hint": "오버레이 전환이 완료된 후 콜백이 실행됩니다",
+      "name": "하나출출"
+    },
+    "onExiting": {
+      "hint": "오버레이가 전환되기 시작하면 콜백이 실행됩니다",
+      "name": "원엑시팅"
+    },
+    "onSelect": {
+      "hint": "옵션을 선택하면 호출됩니다",
+      "name": "선택"
+    },
+    "placeholder": {
+      "hint": "입력의 자리 표시자",
+      "name": "위치 지정자"
+    },
+    "renderMenu": {
+      "hint": "렌더링 메뉴 목록 사용자 지정",
+      "name": "렌더 메뉴"
+    },
+    "renderMenuItem": {
+      "hint": "사용자 정의 렌더링 메뉴 항목",
+      "name": "렌더링 메뉴 항목"
+    },
+    "selectOnEnter": {
+      "hint": "거짓으로 설정하면 키 선택 입력 기능이 잘못되었습니다",
+      "name": "입력 시 선택"
+    },
+    "size": {
+      "hint": "구성 요소는 크기가 다를 수 있습니다",
+      "name": "크기"
+    },
+    "value": {
+      "hint": "현재 값(제어)",
+      "name": "값"
+    }
+  },
   "RsDatePicker": {
     "format": {
       "hint": "입력에서 렌더링될 때의 날짜 형식",

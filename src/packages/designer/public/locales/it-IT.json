@@ -77,6 +77,96 @@
       "name": "Opzioni barra degli strumenti"
     }
   },
+  "RsAutoComplete": {
+    "classPrefix": {
+      "hint": "Il prefisso della classe CSS componente",
+      "name": "Prefisso classe"
+    },
+    "data": {
+      "hint": "I dati del componente",
+      "name": "Dati"
+    },
+    "defaultValue": {
+      "hint": "Il valore predefinito (non controllato)",
+      "name": "Valore predefinito"
+    },
+    "disabled": {
+      "hint": "Se disabilitato selezionare",
+      "name": "Disabilita"
+    },
+    "filterBy": {
+      "hint": "Regole di filtro personalizzate (visualizzeranno solo elementi il cui valore è una sottostringa di default)",
+      "name": "Filtra per"
+    },
+    "label": {
+      "hint": "L'etichetta del componente",
+      "name": "Etichetta"
+    },
+    "menuClassName": {
+      "hint": "Una classe CSS da applicare al Menu DOM",
+      "name": "Nome classe menu"
+    },
+    "onChange": {
+      "hint": "Chiamato quando si seleziona un'opzione o una modifica del valore di input o il valore di input viene modificato",
+      "name": "onChange"
+    },
+    "onClose": {
+      "hint": "Callback attivato quando nascosto",
+      "name": "onClose"
+    },
+    "onEnter": {
+      "hint": "Callback attivato prima che le transizioni di sovrapposizione in",
+      "name": "onEnter"
+    },
+    "onEntered": {
+      "hint": "Callback attivato dopo che la sovrapposizione termina la transizione in",
+      "name": "onEntered"
+    },
+    "onEntering": {
+      "hint": "Callback attivato quando l'overlay inizia a passare",
+      "name": "onEntering"
+    },
+    "onExit": {
+      "hint": "Callback sparato a destra prima che la sovrapposizione transizioni fuori",
+      "name": "onExit"
+    },
+    "onExited": {
+      "hint": "Callback attivato dopo che la sovrapposizione termina la transizione",
+      "name": "onExited"
+    },
+    "onExiting": {
+      "hint": "Callback sparato come l'overlay inizia a transizione fuori",
+      "name": "In uscita"
+    },
+    "onSelect": {
+      "hint": "Chiamata quando viene selezionata un'opzione",
+      "name": "onSelect"
+    },
+    "placeholder": {
+      "hint": "Il segnaposto di input",
+      "name": "Segnaposto"
+    },
+    "renderMenu": {
+      "hint": "Personalizzazione dell'elenco dei menu di rendering",
+      "name": "Menu Rendering"
+    },
+    "renderMenuItem": {
+      "hint": "Voci di menu di rendering personalizzate",
+      "name": "Voce di menu Render"
+    },
+    "selectOnEnter": {
+      "hint": "Se impostato su false, la funzione di selezione del tasto Invio non è valida",
+      "name": "Seleziona su Invio"
+    },
+    "size": {
+      "hint": "Un componente può avere dimensioni diverse",
+      "name": "Dimensione"
+    },
+    "value": {
+      "hint": "Il valore corrente (controllato)",
+      "name": "Valore"
+    }
+  },
   "RsDatePicker": {
     "format": {
       "hint": "Formato della data quando reso nell'input",

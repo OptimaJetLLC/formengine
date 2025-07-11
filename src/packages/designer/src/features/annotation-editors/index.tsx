@@ -6,6 +6,7 @@ import {ArrayOfObjectInput} from './ArrayOfObjectInput'
 import {ArrayOfStringInput} from './ArrayOfStringInput'
 import {AttributesInput} from './AttributesInput'
 import {BooleanInput} from './BooleanInput'
+import {FunctionEditorInput} from './FunctionEditorInput'
 import {ColorInput} from './ColorInput'
 import {DataKeyInput} from './DataKeyInput'
 import {DateInput} from './DateInput'
@@ -49,5 +50,6 @@ export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>>
   tooltipProps: TooltipPropertiesEditor,
   useTooltip: BooleanInput,
   renderWhen: RenderWhenEditor,
-  customValidator: CustomValidatorEditor
+  customValidator: CustomValidatorEditor,
+  function: FunctionEditorInput,
 }

@@ -46,6 +46,7 @@ import {AvailableComponents} from './AvailableComponents'
 import {CachedFormStorage} from './CachedFormStorage'
 import {defaultBottomPanelHeight, defaultOpenedPanels, defaultViewMode} from './constants'
 import {EditableFormValidator} from './EditableFormValidator'
+import type {EditableFunction} from './EditableFunction'
 import {uploadStringFile} from './fileUpload'
 import type {IComponentMetadataProvider} from './IComponentMetadataProvider'
 import {trackUndo} from './undo'
@@ -315,7 +316,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   localizationLanguage: Language
   readonly #loadedLanguages: Record<string, FormBuilderI18nData> = {}
 
-  currentEditable?: EditableProperty | EditableAction | CustomValidationCode | JsonCode | EditableFormValidator
+  currentEditable?: EditableProperty | EditableAction | CustomValidationCode | JsonCode | EditableFormValidator | EditableFunction
   lastSaveTime = new Date()
   readonly componentsModalState: ComponentsModalState = {
     opened: false,
@@ -456,6 +457,14 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   editJsonCode(componentKey: string, editorTitle: string, json: string, onChange: (value: string) => void,
                onValidate?: (value: string) => void) {
     this.currentEditable = new JsonCode(componentKey, editorTitle, json, onChange, onValidate)
+  }
+
+  /**
+   * Opens the editor for a function.
+   * @param fn the properties of the function being edited.
+   */
+  editFunction(fn: EditableFunction) {
+    this.currentEditable = fn
   }
 
   /**

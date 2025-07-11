@@ -1,0 +1,72 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "testComponent1",
+        "type": "TestComponent",
+        "props": {
+          "filter": {
+            "computeType": "function",
+            "fnSource": "/**\n * @param {string} value\n * @param {number} index\n * @param {string[]} array\n * @return {boolean}\n */\nreturn function filter(value, index, array) {  return index === 1\n}",
+            "value": "  return index === 1"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "testComponent1"
+          }
+        ]
+      },
+      {
+        "key": "testComponent2",
+        "type": "TestComponent",
+        "props": {
+          "filter": {
+            "computeType": "function",
+            "fnSource": "/**\n * @param {string} value\n * @param {number} index\n * @param {string[]} array\n * @return {boolean}\n */\nreturn function filter(value, index, array) {  return value === 'One'\n}",
+            "value": "  return value === 'One'"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "testComponent2"
+          }
+        ]
+      },
+      {
+        "key": "testComponent3",
+        "type": "TestComponent",
+        "props": {
+          "filter": {
+            "computeType": "function",
+            "fnSource": "/**\n * @param {string} value\n * @param {number} index\n * @param {string[]} array\n * @return {boolean}\n */\nreturn function filter(value, index, array) {  const needle = form.data.testComponent1\n  return value === needle\n}",
+            "value": "  const needle = form.data.testComponent1\n  console.info('needle', needle)\n  return value === needle"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "testComponent3"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

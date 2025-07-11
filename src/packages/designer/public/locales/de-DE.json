@@ -77,6 +77,96 @@
       "name": "Symbolleistenoptionen"
     }
   },
+  "RsAutoComplete": {
+    "classPrefix": {
+      "hint": "Das Präfix der CSS-Klasse der Komponente",
+      "name": "Klassenpräfix"
+    },
+    "data": {
+      "hint": "Die Daten der Komponente",
+      "name": "Daten"
+    },
+    "defaultValue": {
+      "hint": "Der Standardwert (unkontrolliert)",
+      "name": "Standardwert"
+    },
+    "disabled": {
+      "hint": "Ob deaktiviert auswählen",
+      "name": "Behinderte"
+    },
+    "filterBy": {
+      "hint": "Benutzerdefinierte Filterregeln (zeigt standardmäßig nur Elemente an, deren Wert eine Teilzeichenfolge ist)",
+      "name": "Filtern nach"
+    },
+    "label": {
+      "hint": "Das Komponentenlabel",
+      "name": "Etikett"
+    },
+    "menuClassName": {
+      "hint": "Eine CSS-Klasse, die auf das Menü-DOM angewendet werden soll",
+      "name": "Name der Menüklasse"
+    },
+    "onChange": {
+      "hint": "Wird aufgerufen, wenn eine Option ausgewählt oder der Eingabewert geändert wird oder der Eingabewert geändert wird",
+      "name": "Bei Änderung"
+    },
+    "onClose": {
+      "hint": "Rückruf wird ausgelöst, wenn er ausgeblendet ist",
+      "name": "Aufschließen"
+    },
+    "onEnter": {
+      "hint": "Rückruf ausgelöst, bevor die Überlagerung übergeht",
+      "name": "Eineintreten"
+    },
+    "onEntered": {
+      "hint": "Callback wird ausgelöst, nachdem der Übergang des Overlays abgeschlossen ist",
+      "name": "Eineingegeben"
+    },
+    "onEntering": {
+      "hint": "Callback wird ausgelöst, wenn das Overlay zu wechseln beginnt",
+      "name": "Eineintritt"
+    },
+    "onExit": {
+      "hint": "Callback wird direkt vor dem Übergang des Overlays ausgelöst",
+      "name": "OnExit"
+    },
+    "onExited": {
+      "hint": "Callback wird ausgelöst, nachdem der Übergang des Overlays beendet ist",
+      "name": "Oneexited"
+    },
+    "onExiting": {
+      "hint": "Callback wird ausgelöst, wenn das Overlay zu wechseln beginnt",
+      "name": "Beim Verlassen"
+    },
+    "onSelect": {
+      "hint": "Wird aufgerufen, wenn eine Option ausgewählt ist",
+      "name": "Bei Auswahl"
+    },
+    "placeholder": {
+      "hint": "Der Platzhalter der Eingabe",
+      "name": "Platzhalter"
+    },
+    "renderMenu": {
+      "hint": "Anpassen der Rendering-Menüliste",
+      "name": "Menü Rendern"
+    },
+    "renderMenuItem": {
+      "hint": "Benutzerdefinierte Rendermenüelemente",
+      "name": "Menüpunkt Rendern"
+    },
+    "selectOnEnter": {
+      "hint": "Wenn auf false gesetzt, ist die Auswahlfunktion der Eingabetaste ungültig",
+      "name": "Bei Eingabe auswählen"
+    },
+    "size": {
+      "hint": "Ein Bauteil kann verschiedene Größen haben",
+      "name": "Größe"
+    },
+    "value": {
+      "hint": "Der aktuelle Wert (kontrolliert)",
+      "name": "Wert"
+    }
+  },
   "RsDatePicker": {
     "format": {
       "hint": "Format des Datums beim Rendern in der Eingabe",

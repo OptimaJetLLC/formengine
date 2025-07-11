@@ -1096,6 +1096,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/fn",
+            "label": "fn"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/functions/forwardRef",
             "label": "forwardRef"
           },

@@ -4,11 +4,13 @@ import type {ResizableProps} from 're-resizable'
 import {Resizable} from 're-resizable'
 import {CustomValidationCode, EditableAction, EditableProperty, JsonCode} from '../../../stores/BuilderStore'
 import {EditableFormValidator} from '../../../stores/EditableFormValidator'
+import {EditableFunction} from '../../../stores/EditableFunction'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {CodeActionEditor} from '../../annotation-editors/EventEditor/components/CodeActionEditor/CodeActionEditor'
 import {ComputedPropertyEditor} from './ComputedPropertyEditor'
 import {CustomValidationCodeEditor} from './CustomValidationCodeEditor'
 import {FormValidatorCodeEditor} from './FormValidatorCodeEditor'
+import {FunctionEditor} from './FunctionEditor'
 import {JsonCodeEditor} from './JsonCodeEditor'
 
 const resizableStyles = css`
@@ -44,6 +46,10 @@ const RawBottomPanel = () => {
 
   if (currentEditable instanceof EditableFormValidator) {
     editor = <FormValidatorCodeEditor {...currentEditable}/>
+  }
+
+  if (currentEditable instanceof EditableFunction) {
+    editor = <FunctionEditor {...currentEditable}/>
   }
 
   if (!editor) return null

@@ -77,6 +77,96 @@
       "name": "工具栏选项"
     }
   },
+  "RsAutoComplete": {
+    "classPrefix": {
+      "hint": "组件CSS类的前缀",
+      "name": "类前缀"
+    },
+    "data": {
+      "hint": "组件的数据",
+      "name": "数据资料"
+    },
+    "defaultValue": {
+      "hint": "默认值（不受控制）",
+      "name": "默认值"
+    },
+    "disabled": {
+      "hint": "是否禁用选择",
+      "name": "残疾人士"
+    },
+    "filterBy": {
+      "hint": "自定义过滤规则（默认情况下只显示值为其子字符串的项目）",
+      "name": "过滤方式"
+    },
+    "label": {
+      "hint": "组件标签",
+      "name": "标签"
+    },
+    "menuClassName": {
+      "hint": "要应用于菜单DOM的CSS类",
+      "name": "菜单类名"
+    },
+    "onChange": {
+      "hint": "当选择选项或输入值更改或输入值更改时调用",
+      "name": "交换/交换"
+    },
+    "onClose": {
+      "hint": "隐藏时触发回调",
+      "name": "n.锁,锁"
+    },
+    "onEnter": {
+      "hint": "在复盖转换之前触发的回调",
+      "name": "中心,中心"
+    },
+    "onEntered": {
+      "hint": "复盖完成转换后触发的回调",
+      "name": "一个,一个"
+    },
+    "onEntering": {
+      "hint": "当复盖开始转换时触发回调",
+      "name": "onEntering"
+    },
+    "onExit": {
+      "hint": "在复盖过渡之前触发回调",
+      "name": "onExit,onExit"
+    },
+    "onExited": {
+      "hint": "复盖完成过渡后触发回调",
+      "name": "已登记"
+    },
+    "onExiting": {
+      "hint": "当复盖开始过渡时触发回调",
+      "name": "onExiting,onExiting"
+    },
+    "onSelect": {
+      "hint": "当选择选项时调用",
+      "name": "选择,选择"
+    },
+    "placeholder": {
+      "hint": "输入的占位符",
+      "name": "占位符"
+    },
+    "renderMenu": {
+      "hint": "自定义渲染菜单列表",
+      "name": "渲染菜单"
+    },
+    "renderMenuItem": {
+      "hint": "自定义渲染菜单项",
+      "name": "渲染菜单项"
+    },
+    "selectOnEnter": {
+      "hint": "设置为false时，Enter键选择功能无效",
+      "name": "选择进入"
+    },
+    "size": {
+      "hint": "一个组件可以有不同的大小",
+      "name": "大小"
+    },
+    "value": {
+      "hint": "电流值（受控）",
+      "name": "价值"
+    }
+  },
   "RsDatePicker": {
     "format": {
       "hint": "在输入中呈现日期的格式",

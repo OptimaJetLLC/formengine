@@ -198,6 +198,9 @@ const expectedSettings: Record<string, TestComponentSettings> = {
   SimpleHtmlInput: {
     controlledValue: 'value',
   },
+  RsAutoComplete: {
+    controlledValue: `${new Date()}`,
+  },
 }
 
 describe.each(componentsMetadata)(`Uncontrolled state test`, function (model) {

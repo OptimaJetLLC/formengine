@@ -438,6 +438,96 @@
     },
     "wizardHasNoSteps": "To add the wizard steps, select the component and add the steps in the properties panel."
   },
+  "RsAutoComplete":  {
+    "classPrefix": {
+      "name": "Class prefix",
+      "hint": "The prefix of the component CSS class"
+    },
+    "data": {
+      "name": "Data",
+      "hint": "The data of component"
+    },
+    "defaultValue": {
+      "name": "Default value",
+      "hint": "The default value (uncontrolled)"
+    },
+    "disabled": {
+      "name": "Disabled",
+      "hint": "Whether disabled select"
+    },
+    "filterBy": {
+      "name": "Filter by",
+      "hint": "Custom filter rules (will only display items that value is a substring of which by default)"
+    },
+    "menuClassName": {
+      "name": "Menu class name",
+      "hint": "A CSS class to apply to the Menu DOM"
+    },
+    "onChange": {
+      "name": "onChange",
+      "hint": "Called when select an option or input value change, or value of input is changed"
+    },
+    "onClose": {
+      "name": "onClose",
+      "hint": "Callback fired when hidden"
+    },
+    "onEnter": {
+      "name": "onEnter",
+      "hint": "Callback fired before the overlay transitions in"
+    },
+    "onEntered": {
+      "name": "onEntered",
+      "hint": "Callback fired after the overlay finishes transitioning in"
+    },
+    "onEntering": {
+      "name": "onEntering",
+      "hint": "Callback fired as the overlay begins to transition in"
+    },
+    "onExit": {
+      "name": "onExit",
+      "hint": "Callback fired right before the overlay transitions out"
+    },
+    "onExited": {
+      "name": "onExited",
+      "hint": "Callback fired after the overlay finishes transitioning out"
+    },
+    "onExiting": {
+      "name": "onExiting",
+      "hint": "Callback fired as the overlay begins to transition out"
+    },
+    "onSelect": {
+      "name": "onSelect",
+      "hint": "Called when a option is selected"
+    },
+    "placeholder": {
+      "name": "Placeholder",
+      "hint": "The placeholder of input"
+    },
+    "renderMenu": {
+      "name": "Render menu",
+      "hint": "Customizing the Rendering Menu list"
+    },
+    "renderMenuItem": {
+      "name": "Render menu item",
+      "hint": "Custom render menu items"
+    },
+    "selectOnEnter": {
+      "name": "Select on Enter",
+      "hint": "When set to false, the Enter key selection function is invalid"
+    },
+    "size": {
+      "name": "Size",
+      "hint": "A component can have different sizes"
+    },
+    "value": {
+      "name": "Value",
+      "hint": "The current value (controlled)"
+    },
+    "label": {
+      "name": "Label",
+      "hint": "The component label"
+    }
+  },
   "leftMenu": {
     "translation": "Translation",
     "undo": "Undo",

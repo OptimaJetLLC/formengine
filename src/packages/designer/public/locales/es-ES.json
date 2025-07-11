@@ -77,6 +77,96 @@
       "name": "Opciones de la barra de herramientas"
     }
   },
+  "RsAutoComplete": {
+    "classPrefix": {
+      "hint": "El prefijo de la clase CSS del componente",
+      "name": "Prefijo de clase"
+    },
+    "data": {
+      "hint": "Los datos del componente",
+      "name": "Datos"
+    },
+    "defaultValue": {
+      "hint": "El valor predeterminado (no controlado)",
+      "name": "Valor predeterminado"
+    },
+    "disabled": {
+      "hint": "Si está deshabilitado, seleccione",
+      "name": "Discapacitados"
+    },
+    "filterBy": {
+      "hint": "Reglas de filtro personalizadas (solo mostrarán elementos cuyo valor sea una subcadena de forma predeterminada)",
+      "name": "Filtrar por"
+    },
+    "label": {
+      "hint": "La etiqueta del componente",
+      "name": "Etiqueta"
+    },
+    "menuClassName": {
+      "hint": "Una clase CSS para aplicar al DOM del Menú",
+      "name": "Nombre de la clase de menú"
+    },
+    "onChange": {
+      "hint": "Se llama cuando se selecciona una opción o cambia el valor de entrada, o se cambia el valor de entrada",
+      "name": "Cambio"
+    },
+    "onClose": {
+      "hint": "Devolución de llamada activada cuando está oculta",
+      "name": "Al cerrar"
+    },
+    "onEnter": {
+      "hint": "La devolución de llamada se activa antes de que la superposición haga la transición",
+      "name": "onEnter"
+    },
+    "onEntered": {
+      "hint": "Devolución de llamada activada después de que la superposición termine de hacer la transición",
+      "name": "onEntrado"
+    },
+    "onEntering": {
+      "hint": "Devolución de llamada activada cuando la superposición comienza a hacer la transición en",
+      "name": "onEntrando"
+    },
+    "onExit": {
+      "hint": "Devolución de llamada activada justo antes de que salga la superposición",
+      "name": "OnExit"
+    },
+    "onExited": {
+      "hint": "Devolución de llamada activada después de que la superposición termine de hacer la transición",
+      "name": "onExited"
+    },
+    "onExiting": {
+      "hint": "Devolución de llamada activada a medida que la superposición comienza a salir",
+      "name": "onExiting"
+    },
+    "onSelect": {
+      "hint": "Se llama cuando se selecciona una opción",
+      "name": "oneleccionar"
+    },
+    "placeholder": {
+      "hint": "El marcador de posición de la entrada",
+      "name": "Marcador de posición"
+    },
+    "renderMenu": {
+      "hint": "Personalización de la lista del Menú de Renderizado",
+      "name": "Menú de renderizado"
+    },
+    "renderMenuItem": {
+      "hint": "Elementos de menú de renderizado personalizados",
+      "name": "Elemento del menú Renderizar"
+    },
+    "selectOnEnter": {
+      "hint": "Cuando se establece en false, la función de selección de la tecla Intro no es válida",
+      "name": "Seleccione al Ingresar"
+    },
+    "size": {
+      "hint": "Un componente puede tener diferentes tamaños",
+      "name": "Tamaño"
+    },
+    "value": {
+      "hint": "El valor actual (controlado)",
+      "name": "Valor"
+    }
+  },
   "RsDatePicker": {
     "format": {
       "hint": "Formato de la fecha cuando se representa en la entrada",

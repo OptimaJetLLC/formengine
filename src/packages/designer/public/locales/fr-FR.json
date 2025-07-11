@@ -77,6 +77,96 @@
       "name": "Options de la barre d'outils"
     }
   },
+  "RsAutoComplete": {
+    "classPrefix": {
+      "hint": "Le préfixe de la classe CSS du composant",
+      "name": "Préfixe de classe"
+    },
+    "data": {
+      "hint": "Les données du composant",
+      "name": "Données"
+    },
+    "defaultValue": {
+      "hint": "La valeur par défaut (non contrôlée)",
+      "name": "Valeur par défaut"
+    },
+    "disabled": {
+      "hint": "Si désactivé sélectionnez",
+      "name": "Désactivé"
+    },
+    "filterBy": {
+      "hint": "Règles de filtrage personnalisées (n'affichera que les éléments dont la valeur est une sous-chaîne par défaut)",
+      "name": "Filtrer par"
+    },
+    "label": {
+      "hint": "L'étiquette du composant",
+      "name": "Étiquette"
+    },
+    "menuClassName": {
+      "hint": "Une classe CSS à appliquer au Menu DOM",
+      "name": "Nom de la classe de menu"
+    },
+    "onChange": {
+      "hint": "Appelé lors de la sélection d'une option ou d'un changement de valeur d'entrée, ou lorsque la valeur d'entrée est modifiée",
+      "name": "Changement"
+    },
+    "onClose": {
+      "hint": "Rappel déclenché lorsqu'il est masqué",
+      "name": "Fermer"
+    },
+    "onEnter": {
+      "hint": "Rappel déclenché avant les transitions de superposition dans",
+      "name": "Entrer"
+    },
+    "onEntered": {
+      "hint": "Rappel déclenché après la fin de la transition de la superposition",
+      "name": "Onentré"
+    },
+    "onEntering": {
+      "hint": "Rappel déclenché lorsque la superposition commence à effectuer une transition",
+      "name": "Une entrée"
+    },
+    "onExit": {
+      "hint": "Rappel déclenché juste avant la sortie de la superposition",
+      "name": "OnExit"
+    },
+    "onExited": {
+      "hint": "Rappel déclenché après la fin de la transition de la superposition",
+      "name": "Surexcité"
+    },
+    "onExiting": {
+      "hint": "Rappel déclenché lorsque la superposition commence à sortir",
+      "name": "Sortie"
+    },
+    "onSelect": {
+      "hint": "Appelé lorsqu'une option est sélectionnée",
+      "name": "Sélectionner"
+    },
+    "placeholder": {
+      "hint": "L'espace réservé de l'entrée",
+      "name": "Espace Réservé"
+    },
+    "renderMenu": {
+      "hint": "Personnalisation de la liste des menus de rendu",
+      "name": "Menu Rendu"
+    },
+    "renderMenuItem": {
+      "hint": "Éléments de menu de rendu personnalisés",
+      "name": "Élément de menu Rendu"
+    },
+    "selectOnEnter": {
+      "hint": "Lorsqu'elle est définie sur false, la fonction de sélection de la touche Entrée n'est pas valide",
+      "name": "Sélectionnez sur Entrée"
+    },
+    "size": {
+      "hint": "Un composant peut avoir différentes tailles",
+      "name": "Taille"
+    },
+    "value": {
+      "hint": "La valeur actuelle (contrôlée)",
+      "name": "Valeur"
+    }
+  },
   "RsDatePicker": {
     "format": {
       "hint": "Format de la date lors du rendu dans l'entrée",

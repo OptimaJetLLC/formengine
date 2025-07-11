@@ -228,6 +228,7 @@
 - [definePreset](functions/definePreset.md)
 - [findLanguage](functions/findLanguage.md)
 - [findTreeElementDepth](functions/findTreeElementDepth.md)
+- [fn](functions/fn.md)
 - [forwardRef](functions/forwardRef.md)
 - [generateTemplateTypeName](functions/generateTemplateTypeName.md)
 - [generateUniqueName](functions/generateUniqueName.md)

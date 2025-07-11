@@ -22,26 +22,27 @@ Meta-information on component properties in Form Builder is called an annotation
 
 Form Builder has the following APIs for describing a component:
 
-1. [define](/api-reference/@react-form-builder/core/functions/define) - is the primary method for defining a component.
-2. [string](/api-reference/@react-form-builder/core/variables/string) - annotation builder for properties of type `string`.
-3. [boolean](/api-reference/@react-form-builder/core/variables/boolean) - annotation builder for properties of type `boolean`.
-4. [number](/api-reference/@react-form-builder/core/variables/number) - annotation builder for properties of type `number`.
-5. [size](/api-reference/@react-form-builder/core/variables/size) - annotation builder for properties of type 'CSS unit'.
-6. [date](/api-reference/@react-form-builder/core/variables/date) - annotation builder for properties of type `Date`.
-7. [time](/api-reference/@react-form-builder/core/variables/time) - annotation builder for properties of type `Time`.
-8. [array](/api-reference/@react-form-builder/core/variables/array) - annotation builder for properties of type `array`.
-9. [color](/api-reference/@react-form-builder/core/variables/color) - annotation builder for properties of type `color`.
-10. [className](/api-reference/@react-form-builder/core/variables/className) - annotation builder for properties containing the CSS class
+1. [define](/api-reference/@react-form-builder/core/functions/define): is the primary method for defining a component.
+2. [string](/api-reference/@react-form-builder/core/variables/string): annotation builder for properties of type `string`.
+3. [boolean](/api-reference/@react-form-builder/core/variables/boolean): annotation builder for properties of type `boolean`.
+4. [number](/api-reference/@react-form-builder/core/variables/number): annotation builder for properties of type `number`.
+5. [size](/api-reference/@react-form-builder/core/variables/size): annotation builder for properties of type 'CSS unit'.
+6. [date](/api-reference/@react-form-builder/core/variables/date): annotation builder for properties of type `Date`.
+7. [time](/api-reference/@react-form-builder/core/variables/time): annotation builder for properties of type `Time`.
+8. [array](/api-reference/@react-form-builder/core/variables/array): annotation builder for properties of type `array`.
+9. [color](/api-reference/@react-form-builder/core/variables/color): annotation builder for properties of type `color`.
+10. [className](/api-reference/@react-form-builder/core/variables/className): annotation builder for properties containing the CSS class
     name.
-11. [event](/api-reference/@react-form-builder/core/variables/event) - annotation builder for properties of type `event`.
-12. [node](/api-reference/@react-form-builder/core/variables/node) - annotation builder for properties of type `ReactNode`.
-13. [oneOf](/api-reference/@react-form-builder/core/functions/oneOf) - annotation builder for properties of type `enum`, the property value
+11. [event](/api-reference/@react-form-builder/core/variables/event): annotation builder for properties of type `event`.
+12. [node](/api-reference/@react-form-builder/core/variables/node): annotation builder for properties of type `ReactNode`.
+13. [oneOf](/api-reference/@react-form-builder/core/functions/oneOf): annotation builder for properties of type `enum`, the property value
     can only be one of enum.
-14. [someOf](/api-reference/@react-form-builder/core/functions/someOf) - annotation builder for properties of type `enum`, the property
+14. [someOf](/api-reference/@react-form-builder/core/functions/someOf): annotation builder for properties of type `enum`, the property
     value can contain multiple enum values.
-15. [readOnly](/api-reference/@react-form-builder/core/variables/readOnly) - annotation builder for `boolean` properties that make a
+15. [readOnly](/api-reference/@react-form-builder/core/variables/readOnly): annotation builder for `boolean` properties that make a
     component read-only.
-16. There are other APIs for describing component properties, you can find them in the documentation, these APIs deal with describing
+16. [fn](/api-reference/@react-form-builder/core/functions/fn): annotation builder for `function` properties.
+17. There are other APIs for describing component properties, you can find them in the documentation, these APIs deal with describing
     synthetic properties of a component (e.g. a set of arbitrary HTML attributes).
 
 ## Example of a custom component definition
@@ -591,6 +592,35 @@ the screenshot below:
   "defaultLanguage": "en-US"
 }
 ```
+
+### Functional properties
+
+There are [rare cases](https://rsuitejs.com/components/auto-complete/#code-lt-auto-complete-gt-code) where a component takes a function as a
+property value. In such a case, you can define the component property as a [function](/api-reference/@react-form-builder/core/functions/fn)
+and describe the function parameters to edit the function code in the Designer. See the example below:
+
+```typescript jsx title='Functional property example' {1-4,6-11,16}
+interface RsAutoCompleteProps {
+  /** Custom filter function to determine whether the item will be displayed */
+  filterBy?: (value: string, item: ItemDataType) => boolean;
+}
+
+const filterByFnDescriptionBegin = `/**
+ * @param {string} value
+ * @param {ItemDataType} item
+ * @return {boolean}
+ */
+function filterBy(value, item) {`
+
+export const rsAutoComplete = define(RsAutoComplete, 'RsAutoComplete')
+  .props({
+    label: string.default('Input'),
+    filterBy: fn(filterByFnDescriptionBegin),
+    value: string.valued.uncontrolledValue(''),
+  })
+```
+
+![Functional property](/assets/custom-components/custom-components-09.png "Functional property")
 
 ### Kind of a component
 
