@@ -1,5 +1,5 @@
 import {FormValidator} from '@react-form-builder/core'
-import {fireEvent} from '@testing-library/react'
+import {fireEvent, waitFor} from '@testing-library/react'
 import {renderForm} from '../util/renderForm'
 import {asyncAct} from './asyncAct'
 import form from './forms/entire-form-validator.json'
@@ -29,7 +29,7 @@ describe('Form validator', () => {
       fireEvent.change(input, {target: {value: key}})
       expect(input).toHaveValue(key)
     }
-    expect(formData.data).toStrictEqual(expectedValues)
+    await waitFor(() => expect(formData.data).toStrictEqual(expectedValues))
 
     returnedErrors = await asyncAct(async () => await formData.validate())
 
