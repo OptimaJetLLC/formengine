@@ -14,7 +14,9 @@
     "test:browser": "npm run test -- --browser",
     "test:browser:debug": "dotenv -v BROWSER_DEVTOOL=1 npm run test:browser -- -- --inspectBrk --no-file-parallelism",
     "test:browser:headless": "npm run test -- --browser.headless",
-    "test:component": "npm run test"
+    "test:component": "npm run test",
+    "test:ui": "vitest --ui",
+    "test:browser:ui": "vitest --ui --browser"
   },
   "dependencies": {
     "@react-form-builder/components-antd": "^5.0.1",
