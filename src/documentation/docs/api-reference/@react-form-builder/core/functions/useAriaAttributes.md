@@ -1,12 +1,18 @@
 # Function: useAriaAttributes()
 
-> **useAriaAttributes**(): `object`
+> **useAriaAttributes**(`options`): `object`
+
+## Parameters
+
+• **options**: [`AriaAttributesOptions`](../type-aliases/AriaAttributesOptions.md)
+
+options for configuring the generation of ARIA attributes.
 
 ## Returns
 
 `object`
 
-a record with an 'aria' attributes.
+a record with 'aria' attributes.
 
 ### aria-errormessage
 

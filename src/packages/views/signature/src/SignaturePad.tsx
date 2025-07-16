@@ -1,4 +1,5 @@
-import {forwardRef, useAriaAttributesIds} from '@react-form-builder/core'
+import type {AriaAttributesIds} from '@react-form-builder/core'
+import {forwardRef} from '@react-form-builder/core'
 import {useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState} from 'react'
 import VanillaSignaturePad from 'signature_pad'
 import type {SignatureProps} from './SignatureProps'
@@ -8,6 +9,16 @@ import type {SignatureProps} from './SignatureProps'
  */
 export type SignaturePadHandle = {
   clear(): void
+}
+
+/**
+ * The internal Signature pad properties.
+ */
+export interface SignaturePadProps extends SignatureProps {
+  /**
+   * The 'aria' attributes for internal Signature pad.
+   */
+  ariaAttributes: AriaAttributesIds
 }
 
 const withDefaultProps = ({lineWidth = 1.5, ...props}: SignatureProps) => {
@@ -24,7 +35,7 @@ const withDefaultProps = ({lineWidth = 1.5, ...props}: SignatureProps) => {
   }
 }
 
-export const SignaturePad = forwardRef<SignaturePadHandle, SignatureProps>((props, ref) => {
+export const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>((props, ref) => {
   const {
     value,
     width = 300,
@@ -33,6 +44,7 @@ export const SignaturePad = forwardRef<SignaturePadHandle, SignatureProps>((prop
     onChange,
     backgroundColor,
     readOnly,
+    ariaAttributes,
     ...padProps
   } = props
 
@@ -42,7 +54,6 @@ export const SignaturePad = forwardRef<SignaturePadHandle, SignatureProps>((prop
   const signPadRef = useRef<VanillaSignaturePad>(null)
   const clear = useCallback(() => signPadRef.current?.clear(), [])
   const [vanillaSignaturePad, setVanillaSignaturePad] = useState<VanillaSignaturePad>()
-  const ariaAttributes = useAriaAttributesIds()
 
   useImperativeHandle(ref, () => ({clear}), [clear])
 

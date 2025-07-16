@@ -33,6 +33,5 @@ fn(
   function filterBy(value, item) {`
 )
 ```
-
 This will create a function property with proper type hints and documentation
 that describes a filter function taking a string and an item, returning a boolean.

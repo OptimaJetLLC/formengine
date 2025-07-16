@@ -11,7 +11,7 @@ import {useTouchOnEvent} from './useTouchOnEvent'
 const Signature = ({value, style, className, label, clearButtonText, readOnly, ...props}: SignatureProps) => {
   const padRef = useRef<SignaturePadHandle>(null)
   const {id} = useComponentData()
-  const aria = useAriaAttributes()
+  const aria = useAriaAttributes({labeled: !!label})
   const buttonStyle = useMemo(() => ({width: props.width, marginTop: 6}),
     [props.width])
   const onChange = useTouchOnEvent(props, 'onChange')
@@ -24,7 +24,7 @@ const Signature = ({value, style, className, label, clearButtonText, readOnly, .
   return <LabeledInput style={style} className={className}>
     <Rows>
       {label && <LabelLeft id={aria['aria-labelledby']} htmlFor={id}>{label}</LabelLeft>}
-      <SignaturePad {...props} id={id} readOnly={readOnly} value={value} ref={padRef} onChange={onChange}/>
+      <SignaturePad {...props} id={id} readOnly={readOnly} value={value} ref={padRef} ariaAttributes={aria} onChange={onChange}/>
     </Rows>
     {!readOnly &&
       <Button onClick={clear} disabled={!value} style={buttonStyle}>{clearButtonText}</Button>

@@ -30,7 +30,7 @@ describe('All valued components', () => {
       const field = container.querySelector(`*[id=${fieldId}]`)
 
       try {
-        expect(field).toBeInTheDocument()
+        expect(field).not.toBeNull();
         expect(field?.getAttribute('aria-labelledby')).toEqual(label.getAttribute('id'))
       } catch (e) {
         console.error(`Failed for: ${key}`)
@@ -49,7 +49,7 @@ describe('All valued components', () => {
       const errorId = field?.getAttribute('aria-errormessage')
 
       try {
-        expect(container.querySelector(`*[id=${errorId}]`)).toBeInTheDocument()
+        expect(container.querySelector(`*[id=${errorId}]`)).not.toBeNull()
       } catch (e) {
         console.error(`Failed for: ${key}`)
         throw e

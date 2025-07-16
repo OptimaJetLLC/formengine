@@ -409,6 +409,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/AriaAttributesOptions",
+            "label": "AriaAttributesOptions"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/BoundValueSchema",
             "label": "BoundValueSchema"
           },
@@ -1263,6 +1268,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/functions/useAriaAttributesIds",
             "label": "useAriaAttributesIds"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/functions/useAriaErrorMessage",
+            "label": "useAriaErrorMessage"
           },
           {
             "type": "doc",
