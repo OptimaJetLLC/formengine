@@ -334,7 +334,7 @@ the action.
 
 ### getModel()
 
-> **getModel**(`type`): [`Model`](Model.md)\<`Record`\<`string`, `any`\>\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\>
+> **getModel**(`type`): [`Model`](Model.md)\<`any`\> \| [`Model`](Model.md)\<[`TemplateProps`](../interfaces/TemplateProps.md)\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\>
 
 Returns model for the specified type.
 
@@ -346,7 +346,7 @@ the component type.
 
 #### Returns
 
-[`Model`](Model.md)\<`Record`\<`string`, `any`\>\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\>
+[`Model`](Model.md)\<`any`\> \| [`Model`](Model.md)\<[`TemplateProps`](../interfaces/TemplateProps.md)\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\>
 
 the model for the specified type.
 

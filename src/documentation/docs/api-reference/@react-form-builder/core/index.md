@@ -71,6 +71,7 @@
 - [PersistedForm](interfaces/PersistedForm.md)
 - [ScreenProps](interfaces/ScreenProps.md)
 - [SuppressResizeObserverErrorsProps](interfaces/SuppressResizeObserverErrorsProps.md)
+- [TemplateProps](interfaces/TemplateProps.md)
 - [WrapperProps](interfaces/WrapperProps.md)
 
 ## Type Aliases

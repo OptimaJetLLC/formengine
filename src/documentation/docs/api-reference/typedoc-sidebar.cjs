@@ -338,6 +338,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/interfaces/TemplateProps",
+            "label": "TemplateProps"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/interfaces/WrapperProps",
             "label": "WrapperProps"
           }

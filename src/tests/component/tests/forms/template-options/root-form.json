@@ -1,0 +1,43 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "templateSimpleForm11",
+        "type": "Template:simple-form-1",
+        "props": {
+          "options": {
+            "value": {
+              "version": 1
+            }
+          }
+        }
+      },
+      {
+        "key": "templateSimpleForm12",
+        "type": "Template:simple-form-1",
+        "props": {
+          "options": {
+            "value": {
+              "version": 2
+            }
+          }
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
