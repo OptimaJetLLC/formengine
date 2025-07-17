@@ -4,6 +4,40 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 5.1.0
+
+_July_ 17, 2025
+
+### New
+
+- Added support for [functional type properties](/custom-components#functional-properties).
+- Added the [formOptions](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#formoptions)
+  property to pass custom options to
+  the [getForm](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#getform) function.
+- Added the [options](/api-reference/@react-form-builder/core/interfaces/TemplateProps#options) property
+  for templates, similar
+  to [formOptions](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#formoptions).
+- Added support for [one-way data binding](/custom-components#one-way-data-binding) for component
+  properties.
+- Added ability to
+  create [computed](/api-reference/@react-form-builder/core/interfaces/IComponentBuilder#computedprop)
+  and [localized](/api-reference/@react-form-builder/core/interfaces/IComponentBuilder#localizedprop)
+  properties using the [form JSON builder](/api-reference/@react-form-builder/core/functions/buildForm).
+- Added
+  the [persistFormName](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#persistformname)
+  property to disable form name persistence in localStorage.
+- Added the [AutoComplete](/components-library/fields-components/autocomplete) component.
+- Added visual highlighting for user-modified component properties.
+
+### Fixed bugs
+
+- Fixed dropdown positioning in code action arguments editor (previously appearing off-screen).
+- Fixed  `aria-label` attribute added on components without labels.
+
+### Updated internal dependencies
+
+- _rsuite_ from 5.80.2 to 5.83.1.
+
 ## 5.0.1
 
 _June_ 26, 2025

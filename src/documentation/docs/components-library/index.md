@@ -46,6 +46,7 @@ The components are divided into the following categories:
 - [DatePicker](https://rsuitejs.com/components/date-picker/).
 - [TimePicker](https://rsuitejs.com/components/date-picker/).
 - [TagPicker](https://rsuitejs.com/components/tag-picker/).
+- [AutoComplete](/components-library/fields-components/autocomplete).
 - Dropdown is a component based on [InputPicker](https://rsuitejs.com/components/input-picker/).
 - Input is a component based on [Input and InputGroup](https://rsuitejs.com/components/input/).
 - Number format is a component based on [NumericFormat](https://www.npmjs.com/package/react-number-format).
