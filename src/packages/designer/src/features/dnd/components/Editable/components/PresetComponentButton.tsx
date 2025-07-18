@@ -20,9 +20,14 @@ export const PresetComponentButton = () => {
   const onPreset: MouseEventHandler = useCallback(() => {
     // eslint-disable-next-line @typescript-eslint/require-await
     const validate: PromptDialogProps['validate'] = async ({name}) => {
+      if (!name) return {name: t('enterPresetName')}
       if (builderStore.view.findMeta(name)) return {name: t('nameExists')}
     }
-    const categories = new Set(builderStore.builderComponents.map(({category}) => category))
+
+    const categoriesArray = builderStore.builderComponents
+      .map(({category}) => category ?? '')
+      .filter(value => !!value)
+    const categories = new Set(categoriesArray)
     const props = {
       data: [...categories.values()].map((value) => ({label: value, value})),
       block: true,

@@ -35,6 +35,7 @@ const Signature = ({value, style, className, label, clearButtonText, readOnly, .
 export const signature = define(Signature, 'Signature')
   .name('Signature')
   .type('RsSignature')
+  .category('fields')
   .props({
     value: string.valued,
     label: string.default('Signature'),

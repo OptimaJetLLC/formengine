@@ -17,6 +17,7 @@ function CustomComponent(props: {
 }
 
 const customComponentDefinition = define(CustomComponent, 'CustomComponent')
+  .category('test')
   .props({
     onLoad: event,
   })

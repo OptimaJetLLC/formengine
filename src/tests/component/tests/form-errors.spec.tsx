@@ -62,7 +62,7 @@ const ErrorComponent = (props: ErrorWrapperProps) => {
   </div>
 }
 
-const errorComponent = define(ErrorComponent, 'ErrorComponent')
+const errorComponent = define(ErrorComponent, 'ErrorComponent').category('test')
 
 describe('Form errors prop', () => {
   it('should set errors after form load', async () => {

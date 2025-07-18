@@ -18,6 +18,7 @@ const MyCustomComponent = (props: MyCustomComponentProps) => {
 }
 
 const myCustomComponent = define(MyCustomComponent, 'MyCustomComponent')
+  .category('test')
   .name('My custom component')
   .props({
     children: stringNode,

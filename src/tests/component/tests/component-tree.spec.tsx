@@ -18,7 +18,7 @@ const CustomErrorMessage = ({error, children}: ErrorWrapperProps) => {
   </div>
 }
 
-const customErrorMessage = define(CustomErrorMessage, 'CustomErrorMessage')
+const customErrorMessage = define(CustomErrorMessage, 'CustomErrorMessage').category('test')
 
 describe('ComponentTree tests', () => {
   it('Elements in component tree should not use component actions', async () => {

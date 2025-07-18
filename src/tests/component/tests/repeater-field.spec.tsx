@@ -335,6 +335,7 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     }
 
     const simpleComponent = define(SimpleComponent, 'SimpleComponent')
+      .category('test')
       .props({
         value: string.valued
       })

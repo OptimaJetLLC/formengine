@@ -20,6 +20,7 @@ const SimpleHtmlInput = (props: any) => {
 }
 
 const simpleHtmlInput = define(SimpleHtmlInput, 'SimpleHtmlInput')
+  .category('test')
   .props({
     value: string.valued.uncontrolledValue('')
   })
@@ -41,6 +42,7 @@ const WrappedCalendar = (props: any) => {
 }
 
 const wrappedCalendar = define(WrappedCalendar, 'WrappedCalendar')
+  .category('test')
   .props({
     value: date.valued
   })
@@ -59,6 +61,7 @@ const WrappedTagPicker = (props: any) => {
 }
 
 const wrappedTagPicker = define(WrappedTagPicker, 'WrappedTagPicker')
+  .category('test')
   .props({
     value: array.valued
   })
@@ -77,6 +80,7 @@ const WrappedUploader = (props: any) => {
 }
 
 const wrappedUploader = define(WrappedUploader, 'WrappedUploader')
+  .category('test')
   .props({
     fileList: array.valued
   })

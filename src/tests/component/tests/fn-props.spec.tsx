@@ -34,6 +34,7 @@ return function filter(value, index, array) {`
 const fnDescriptionEnd = '\n}'
 
 const testComponent = define(TestComponent, 'TestComponent')
+  .category('test')
   .props({
     data: array.default(['One', 'Two', 'Three']),
     filter: fn(fnDescriptionBegin, fnDescriptionEnd),

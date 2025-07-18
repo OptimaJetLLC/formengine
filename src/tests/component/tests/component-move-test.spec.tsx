@@ -19,7 +19,7 @@ describe('Component move test', () => {
       return <span>{content}</span>
     }
 
-    const storeStaticContext = define(StoreStaticContext, 'StoreStaticContext')
+    const storeStaticContext = define(StoreStaticContext, 'StoreStaticContext').category('test')
 
     const models = [...rSuiteComponents, storeStaticContext].map(d => d.build().model)
     const view = createView(models)
