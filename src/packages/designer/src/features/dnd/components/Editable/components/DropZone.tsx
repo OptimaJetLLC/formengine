@@ -115,7 +115,7 @@ const RawDropZone = ({isAfter, isInner, ...props}: DropZoneProps) => {
   return <>
     {inner
       ? <InnerDropView ref={ref} className={className} {...props}/>
-      : <SContainer ref={ref} className={className}/>
+      : <SContainer ref={ref} className={className} data-testid="dropzone"/>
     }
     {!inner && <DropView className={className}/>}
   </>

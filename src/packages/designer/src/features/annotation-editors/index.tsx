@@ -14,6 +14,7 @@ import {DisableDataBindingInput} from './DisableDataBindingInput'
 import {EventEditor} from './EventEditor'
 import {KeyInput} from './KeyInput'
 import {MultiPicker} from './MultiPicker'
+import {NodeInput} from './NodeInput'
 import {NumberInput} from './NumberInput'
 import {ObjectInput} from './ObjectInput'
 import {Picker} from './Picker'
@@ -52,4 +53,5 @@ export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>>
   renderWhen: RenderWhenEditor,
   customValidator: CustomValidatorEditor,
   function: FunctionEditorInput,
+  node: NodeInput,
 }

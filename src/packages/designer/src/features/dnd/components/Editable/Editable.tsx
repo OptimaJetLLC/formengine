@@ -1,5 +1,5 @@
 import {cx} from '@emotion/css'
-import type {ComponentData, ComponentStore, WrapperProps} from '@react-form-builder/core'
+import type {Annotation, ComponentData, ComponentStore, WrapperProps} from '@react-form-builder/core'
 import {
   checkSlotCondition,
   ComponentTree,
@@ -53,7 +53,11 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
   const currentProps: Record<string, any> = {}
   const meta = builderStore.getComponentMetadata(componentData.model.type)
 
-  const availableSlots = meta.properties.filter(isContainer)
+  const availableSlots: Annotation[] = meta.properties.filter(isContainer)
+    .filter(an => {
+      const prop = componentData.store.props[an.key]
+      return an.getNodeEditorType(prop) === 'node'
+    })
   const templateSlots = getTemplateSlots(componentData)
   availableSlots.push(...templateSlots)
 

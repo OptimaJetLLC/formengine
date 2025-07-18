@@ -519,6 +519,10 @@
       "hint": "チェックされていない状態で表示されるテキスト",
       "name": "チェックされていないテキスト"
     },
+    "useDropzone": {
+      "hint": "'にはdropzoneを使用します{{propertyName}}'プロパティ",
+      "name": "Dropzoneを使う"
+    },
     "validateWhen": {
       "hint": "この検証を実行するかどうかを決定する条件",
       "name": "次の場合に検証します"

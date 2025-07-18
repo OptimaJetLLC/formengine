@@ -22,6 +22,10 @@
       "tooltip": "Tooltip",
       "hint": "Use tooltip for this element"
     },
+    "useDropzone": {
+      "name": "Use dropzone",
+      "hint": "Use dropzone for the '{{propertyName}}' property"
+    },
     "objectPosition": {
       "name": "Position"
     },

@@ -64,11 +64,11 @@ const CleanButton = ({onClick}: CleanButtonProps) => {
 }
 
 /**
- * The property editor for the string property type.
+ * The property editor for the string property type without a label.
  * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const StringInput = (props: AnnotationEditorProps) => {
+export const ResizableStringInput = (props: AnnotationEditorProps) => {
   const {value = '', annotation, onChange, onClean} = props
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -90,13 +90,20 @@ export const StringInput = (props: AnnotationEditorProps) => {
     }
   }, [])
 
-  return (
-    <LabeledProperty {...props} >
-      <STextareaSizer ref={containerRef}>
-        <Input ref={inputRef} rows={1} name={annotation.key} value={value} onChange={onChange} size="xs" as="textarea"
-               {...props.annotation.editorProps}/>
-        <CleanButton onClick={onClean}/>
-      </STextareaSizer>
-    </LabeledProperty>
-  )
+  return <STextareaSizer ref={containerRef} data-testid={`resizable-string-input-${props.annotation.key}`}>
+    <Input ref={inputRef} rows={1} name={annotation.key} value={value} onChange={onChange} size="xs" as="textarea"
+           {...props.annotation.editorProps}/>
+    <CleanButton onClick={onClean}/>
+  </STextareaSizer>
+}
+
+/**
+ * The property editor for the string property type.
+ * @param props the Annotation editor component properties.
+ * @returns the React element.
+ */
+export const StringInput = (props: AnnotationEditorProps) => {
+  return <LabeledProperty {...props} >
+    <ResizableStringInput {...props} />
+  </LabeledProperty>
 }

@@ -519,6 +519,10 @@
       "hint": "Le texte affiché à l'état non coché",
       "name": "Texte décoché"
     },
+    "useDropzone": {
+      "hint": "Utilisez dropzone pour le '{{propertyName}}\"propriété",
+      "name": "Utiliser la zone de dépôt"
+    },
     "validateWhen": {
       "hint": "La condition qui détermine s'il faut exécuter cette validation",
       "name": "Valider quand"

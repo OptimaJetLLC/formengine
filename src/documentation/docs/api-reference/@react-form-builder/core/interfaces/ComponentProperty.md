@@ -18,6 +18,14 @@ Type of the component's calculated property. If not specified - the value from v
 
 ***
 
+### editorType?
+
+> `optional` **editorType**: `string`
+
+The component property editor type, only used in Designer mode.
+
+***
+
 ### fnSource?
 
 > `optional` **fnSource**: `string`

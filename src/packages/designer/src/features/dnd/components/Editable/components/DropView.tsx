@@ -59,7 +59,7 @@ const AddButton = ({slot, slotCondition}: { slot?: string, slotCondition?: strin
  */
 export const InnerDropView = forwardRef<any, DropViewProps>(({slot, slotCondition, className}, ref) => {
   // TODO FE-1065
-  return <InnerContainer className={className} ref={ref as unknown as RefCallback<HTMLDivElement>}>
+  return <InnerContainer className={className} ref={ref as unknown as RefCallback<HTMLDivElement>} data-testid="inner-dropzone">
     <AddButton slot={slot} slotCondition={slotCondition}/>
   </InnerContainer>
 })

@@ -519,6 +519,10 @@
       "hint": "在未选中状态下显示的文本",
       "name": "未选中的文本"
     },
+    "useDropzone": {
+      "hint": "使用dropzone为'{{propertyName}}'财产",
+      "name": "使用dropzone"
+    },
     "validateWhen": {
       "hint": "确定是否运行此验证的条件",
       "name": "验证时"

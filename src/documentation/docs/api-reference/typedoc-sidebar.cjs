@@ -659,6 +659,11 @@ const typedocSidebar = { items: [
           },
           {
             "type": "doc",
+            "id": "api-reference/@react-form-builder/core/type-aliases/NodeEditorType",
+            "label": "NodeEditorType"
+          },
+          {
+            "type": "doc",
             "id": "api-reference/@react-form-builder/core/type-aliases/ParameterDefinition",
             "label": "ParameterDefinition"
           },
@@ -962,6 +967,11 @@ const typedocSidebar = { items: [
             "type": "doc",
             "id": "api-reference/@react-form-builder/core/variables/string",
             "label": "string"
+          },
+          {
+            "type": "doc",
+            "id": "api-reference/@react-form-builder/core/variables/stringNode",
+            "label": "stringNode"
           },
           {
             "type": "doc",

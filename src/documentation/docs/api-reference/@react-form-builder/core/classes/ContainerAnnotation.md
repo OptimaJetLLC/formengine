@@ -83,6 +83,14 @@ The default property value.
 
 ***
 
+### defaultEditor?
+
+> `optional` **defaultEditor**: [`NodeEditorType`](../type-aliases/NodeEditorType.md)
+
+The default editor.
+
+***
+
 ### disabled
 
 > `readonly` **disabled**: `boolean` = `false`
@@ -304,3 +312,23 @@ the metadata clone.
 #### Inherited from
 
 [`Annotation`](Annotation.md).[`clone`](Annotation.md#clone)
+
+***
+
+### getNodeEditorType()
+
+> **getNodeEditorType**(`componentProperty`?): [`NodeEditorType`](../type-aliases/NodeEditorType.md)
+
+Returns the node editor type for the component property.
+
+#### Parameters
+
+• **componentProperty?**: [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>
+
+the component property.
+
+#### Returns
+
+[`NodeEditorType`](../type-aliases/NodeEditorType.md)
+
+the node editor type for the component property.

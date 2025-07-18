@@ -519,6 +519,10 @@
       "hint": "Der Text, der im ungeprüften Zustand angezeigt wird",
       "name": "Ungeprüfter Text"
     },
+    "useDropzone": {
+      "hint": "Verwenden Sie Dropzone für die '{{propertyName}}' Eigenschaft",
+      "name": "Dropzone verwenden"
+    },
     "validateWhen": {
       "hint": "Die Bedingung, die bestimmt, ob diese Validierung ausgeführt werden soll",
       "name": "Validieren wann"

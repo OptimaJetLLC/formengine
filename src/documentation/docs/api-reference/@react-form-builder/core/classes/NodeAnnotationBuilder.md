@@ -48,6 +48,14 @@ Partial metadata for a component property.
 
 ***
 
+### defaultEditor?
+
+> `optional` **defaultEditor**: [`NodeEditorType`](../type-aliases/NodeEditorType.md)
+
+The default editor.
+
+***
+
 ### insertPredicate()?
 
 > `optional` **insertPredicate**: (`self`, `child`) => `boolean`
@@ -455,6 +463,26 @@ the modified instance of the builder.
 #### Inherited from
 
 [`AnnotationBuilder`](AnnotationBuilder.md).[`uncontrolledValue`](AnnotationBuilder.md#uncontrolledvalue)
+
+***
+
+### withDefaultEditor()
+
+> **withDefaultEditor**(`defaultEditor`): [`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+
+Specifies the default editor for the property.
+
+#### Parameters
+
+• **defaultEditor**: [`NodeEditorType`](../type-aliases/NodeEditorType.md)
+
+the default editor.
+
+#### Returns
+
+[`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+
+the modified instance of the builder.
 
 ***
 
