@@ -21,9 +21,9 @@ import {
   screenModel,
   treeForEach
 } from '@react-form-builder/core'
+import {debounce} from 'lodash-es'
 import type {IReactionDisposer} from 'mobx'
 import {action, makeAutoObservable, observable, reaction} from 'mobx'
-import {debounceTime, distinctUntilChanged, Subject} from 'rxjs'
 import {EditorMap} from '../features/annotation-editors'
 import type {CalculableEditorProps} from '../features/annotation-editors/AnnotationEditorProps'
 import type {CodeActionEditorData, CodeActionEditorProps} from '../features/annotation-editors/EventEditor/components/CodeActionEditor'
@@ -191,15 +191,22 @@ export interface PromptModalState extends PromptDialogProps {
 class BuilderUndoer {
   private serializedForm: string
   readonly undoer
-  readonly #formChanged = new Subject<string>()
-  readonly #subscriptions
   #disposer: IReactionDisposer
 
   constructor(readonly builderStore: BuilderStore, maxStackSize?: number, debounceInterval = 1000) {
     makeAutoObservable(this, undefined, {name: nameObservable('BuilderUndoer')})
 
+    let lastFormAsString = this.builderStore.formAsString
+
+    const trackSerializedForm = debounce((formString: string) => {
+      if (lastFormAsString !== formString) {
+        lastFormAsString = formString
+        this.serializedForm = formString
+      }
+    }, debounceInterval)
+
     const createReaction = () => {
-      return reaction(() => this.builderStore.formAsString, formString => this.#formChanged.next(formString))
+      return reaction(() => this.builderStore.formAsString, trackSerializedForm)
     }
 
     this.serializedForm = this.builderStore.formAsString
@@ -216,16 +223,6 @@ class BuilderUndoer {
       },
       maxStackSize
     )
-
-    const stream = this.#formChanged
-      .pipe(
-        debounceTime(debounceInterval),
-        distinctUntilChanged(),
-      )
-
-    this.#subscriptions = [
-      stream.subscribe(value => this.serializedForm = value),
-    ]
   }
 
   undo() {
@@ -251,7 +248,6 @@ class BuilderUndoer {
    */
   dispose() {
     this.#disposer()
-    this.#subscriptions.forEach(s => s.unsubscribe())
     this.undoer.dispose()
   }
 }
