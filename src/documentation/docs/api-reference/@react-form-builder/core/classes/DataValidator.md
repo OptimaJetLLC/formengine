@@ -4,18 +4,6 @@ Binds all parts of the validation and performs the validation.
 
 ## Methods
 
-### dispose()
-
-> **dispose**(): `void`
-
-Releases allocated resources, must be used when destroying an object instance.
-
-#### Returns
-
-`void`
-
-***
-
 ### getValidationResult()
 
 > **getValidationResult**(`value`): `Promise`\<`undefined` \| [`ValidationResult`](../type-aliases/ValidationResult.md)[]\>
