@@ -44,7 +44,7 @@ async function Action(e, args) {
 
 ## Overriding the properties of an arbitrary component
 
-Inside the React component, you can use the [useComponentData](/api-reference/@react-form-builder/core/functions/useComponentData) hook to
+Inside the React component, you can use the [useComponentData](/api-reference/@react-form-builder/core/variables/useComponentData) hook to
 access the [userDefinedProps](/api-reference/@react-form-builder/core/classes/ComponentData#userdefinedprops)
 and [setUserDefinedProps](/api-reference/@react-form-builder/core/classes/ActionEventArgs#setuserdefinedprops) of the current component. You
 can consider its use using the example of the [Tabs component implementation](/using-tabs).

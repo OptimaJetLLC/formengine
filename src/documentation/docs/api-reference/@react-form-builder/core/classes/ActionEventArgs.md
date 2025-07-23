@@ -4,37 +4,47 @@ Arguments passed to the event handler.
 
 ## Constructors
 
-### new ActionEventArgs()
+### Constructor
 
-> **new ActionEventArgs**(`type`, `sender`, `store`, `args`, `renderedProps`): [`ActionEventArgs`](ActionEventArgs.md)
+> **new ActionEventArgs**(`type`, `sender`, `store`, `args`, `renderedProps`): `ActionEventArgs`
 
 Creates arguments for the event handler.
 
 #### Parameters
 
-• **type**: `string`
+##### type
+
+`string`
 
 the event type.
 
-• **sender**: [`ComponentData`](ComponentData.md)
+##### sender
+
+[`ComponentData`](ComponentData.md)
 
 the component that triggered the event.
 
-• **store**: [`Store`](Store.md)
+##### store
+
+[`Store`](Store.md)
 
 the form viewer settings.
 
-• **args**: `any`[]
+##### args
+
+`any`[]
 
 the event arguments.
 
-• **renderedProps**: `Record`\<`string`, `any`\>
+##### renderedProps
+
+`Record`\<`string`, `any`\>
 
 the component properties that were used to render the sender component.
 
 #### Returns
 
-[`ActionEventArgs`](ActionEventArgs.md)
+`ActionEventArgs`
 
 ## Properties
 
@@ -158,13 +168,15 @@ the first element of the event argument array, which is treated as a value.
 
 ### setUserDefinedProps()
 
-> **setUserDefinedProps**(`props`?): `void`
+> **setUserDefinedProps**(`props?`): `void`
 
 Sets user-defined properties for the React component that override other properties of the component.
 
 #### Parameters
 
-• **props?**: `Record`\<`string`, `any`\>
+##### props?
+
+`Record`\<`string`, `any`\>
 
 the component properties.
 

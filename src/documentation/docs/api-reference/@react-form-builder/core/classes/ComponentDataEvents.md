@@ -4,13 +4,13 @@ Represents a class that holds events related to component data.
 
 ## Constructors
 
-### new ComponentDataEvents()
+### Constructor
 
-> **new ComponentDataEvents**(): [`ComponentDataEvents`](ComponentDataEvents.md)
+> **new ComponentDataEvents**(): `ComponentDataEvents`
 
 #### Returns
 
-[`ComponentDataEvents`](ComponentDataEvents.md)
+`ComponentDataEvents`
 
 ## Properties
 

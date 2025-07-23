@@ -4,65 +4,89 @@ Component metadata for the form builder.
 
 ## Constructors
 
-### new Meta()
+### Constructor
 
-> **new Meta**(`type`, `properties`, `css`, `wrapperCss`, `modules`, `customPreview`?, `valuedAn`?, `kind`?, `initialJson`?, `eventListeners`?, `icon`?, `insertRestriction`?): [`Meta`](Meta.md)
+> **new Meta**(`type`, `properties`, `css`, `wrapperCss`, `modules`, `customPreview?`, `valuedAn?`, `kind?`, `initialJson?`, `eventListeners?`, `icon?`, `insertRestriction?`): `Meta`
 
 Creates the component metadata for the form builder.
 
 #### Parameters
 
-• **type**: `string`
+##### type
+
+`string`
 
 the component type name.
 
-• **properties**: [`Annotation`](Annotation.md)[]
+##### properties
+
+[`Annotation`](Annotation.md)[]
 
 the component's properties metadata.
 
-• **css**: [`Annotation`](Annotation.md)[]
+##### css
+
+[`Annotation`](Annotation.md)[]
 
 the component's CSS metadata.
 
-• **wrapperCss**: [`Annotation`](Annotation.md)[]
+##### wrapperCss
+
+[`Annotation`](Annotation.md)[]
 
 the component's wrapper CSS metadata.
 
-• **modules**: [`Annotation`](Annotation.md)[]
+##### modules
+
+[`Annotation`](Annotation.md)[]
 
 common metadata for the component.
 
-• **customPreview?**: `ReactNode`
+##### customPreview?
+
+`ReactNode`
 
 the custom ReactNode to be drawn on the toolbar.
 
-• **valuedAn?**: [`Annotation`](Annotation.md)
+##### valuedAn?
+
+[`Annotation`](Annotation.md)
 
 the metadata for the component value.
 
-• **kind?**: [`ComponentKind`](../type-aliases/ComponentKind.md) = `'component'`
+##### kind?
+
+[`ComponentKind`](../type-aliases/ComponentKind.md) = `'component'`
 
 the component kind.
 
-• **initialJson?**: `string`
+##### initialJson?
+
+`string`
 
 the JSON source for the component (instance of [ComponentStore](ComponentStore.md) class serialised to JSON).
 
-• **eventListeners?**: [`ComponentMetadataEventListeners`](../interfaces/ComponentMetadataEventListeners.md)
+##### eventListeners?
+
+[`ComponentMetadataEventListeners`](../interfaces/ComponentMetadataEventListeners.md)
 
 the component metadata event listeners.
 
-• **icon?**: `ComponentType`
+##### icon?
+
+`ComponentType`
 
 the component icon.
 
-• **insertRestriction?**: [`InsertRestrictionFn`](../type-aliases/InsertRestrictionFn.md)
+##### insertRestriction?
+
+[`InsertRestrictionFn`](../type-aliases/InsertRestrictionFn.md)
 
 the function that restricts the insertion of a component into another component.
 
 #### Returns
 
-[`Meta`](Meta.md)
+`Meta`
 
 ## Properties
 

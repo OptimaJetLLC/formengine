@@ -1,16 +1,18 @@
 # Type Alias: ReactProperty
 
-> **ReactProperty**: `object`
+> **ReactProperty** = `object`
 
 The React component property.
 
-## Type declaration
+## Properties
 
 ### propertyName
 
 > `readonly` **propertyName**: `string`
 
 The value property name.
+
+***
 
 ### propertyValue
 

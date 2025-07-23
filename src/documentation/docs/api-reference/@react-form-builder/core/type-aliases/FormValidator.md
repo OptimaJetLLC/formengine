@@ -1,12 +1,14 @@
 # Type Alias: FormValidator()
 
-> **FormValidator**: (`data`) => `Promise`\<`Record`\<`string`, `string`\> \| `undefined`\>
+> **FormValidator** = (`data`) => `Promise`\<`Record`\<`string`, `string`\> \| `undefined`\>
 
 Represents a function that validate the form data.
 
 ## Parameters
 
-• **data**: `Record`\<`string`, `unknown`\>
+### data
+
+`Record`\<`string`, `unknown`\>
 
 the form data.
 

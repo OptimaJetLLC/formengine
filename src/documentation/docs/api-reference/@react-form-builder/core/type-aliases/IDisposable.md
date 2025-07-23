@@ -1,10 +1,10 @@
 # Type Alias: IDisposable
 
-> **IDisposable**: `object`
+> **IDisposable** = `object`
 
 Type of disposable object.
 
-## Type declaration
+## Properties
 
 ### dispose()
 

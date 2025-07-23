@@ -8,25 +8,27 @@ Represents all the metadata of the form builder components.
 
 ## Constructors
 
-### new BuilderView()
+### Constructor
 
-> **new BuilderView**(`builderComponents`): [`BuilderView`](BuilderView.md)
+> **new BuilderView**(`builderComponents`): `BuilderView`
 
 Creates metadata for form builder components.
 
 #### Parameters
 
-• **builderComponents**: [`BuilderComponent`](../../core/interfaces/BuilderComponent.md)[]
+##### builderComponents
+
+[`BuilderComponent`](../../core/interfaces/BuilderComponent.md)[]
 
 the array of metadata of form builder components.
 
 #### Returns
 
-[`BuilderView`](BuilderView.md)
+`BuilderView`
 
 #### Overrides
 
-[`View`](../../core/classes/View.md).[`constructor`](../../core/classes/View.md#constructors)
+[`View`](../../core/classes/View.md).[`constructor`](../../core/classes/View.md#constructor)
 
 ## Properties
 
@@ -94,7 +96,9 @@ Adds the component metadata to the form builder.
 
 #### Parameters
 
-• **component**: [`BuilderComponent`](../../core/interfaces/BuilderComponent.md)
+##### component
+
+[`BuilderComponent`](../../core/interfaces/BuilderComponent.md)
 
 the component metadata.
 
@@ -128,7 +132,9 @@ Defines the component's metadata for the form viewer.
 
 #### Parameters
 
-• **model**: [`Model`](../../core/classes/Model.md)\<`any`\>
+##### model
+
+[`Model`](../../core/classes/Model.md)
 
 the component's metadata.
 
@@ -150,7 +156,9 @@ Returns the component's metadata for the form viewer for the specified type.
 
 #### Parameters
 
-• **type**: `string`
+##### type
+
+`string`
 
 the component type.
 
@@ -174,7 +182,9 @@ Returns the component metadata for the specified component type name or undefine
 
 #### Parameters
 
-• **type**: `string`
+##### type
+
+`string`
 
 the component type name.
 
@@ -194,7 +204,9 @@ Returns the component's metadata for the form viewer for the specified type.
 
 #### Parameters
 
-• **type**: `string`
+##### type
+
+`string`
 
 the component type.
 
@@ -218,7 +230,9 @@ Retrieves the CSS loaders for a given BiDi.
 
 #### Parameters
 
-• **biDi**: [`BiDi`](../../core/enumerations/BiDi.md)
+##### biDi
+
+[`BiDi`](../../core/enumerations/BiDi.md)
 
 the BiDi object for which to retrieve the CSS loaders.
 
@@ -242,7 +256,9 @@ Returns the array of metadata properties of the error component.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 the name of the error component type.
 
@@ -262,7 +278,9 @@ Returns the component metadata for the specified component type name.
 
 #### Parameters
 
-• **type**: `string`
+##### type
+
+`string`
 
 the component type name.
 
@@ -282,7 +300,9 @@ Returns the array of metadata properties of the tooltip component.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 the name of the tooltip component type.
 
@@ -302,7 +322,9 @@ Removes the component metadata from the form builder.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 the component type name.
 
@@ -314,23 +336,27 @@ the component type name.
 
 ### withCssLoader()
 
-> **withCssLoader**(`cssLoaderType`, `loader`): [`BuilderView`](BuilderView.md)
+> **withCssLoader**(`cssLoaderType`, `loader`): `BuilderView`
 
 Applies the given CSS loader to the component based on the BiDi layout.
 
 #### Parameters
 
-• **cssLoaderType**: [`CssLoaderType`](../../core/type-aliases/CssLoaderType.md)
+##### cssLoaderType
+
+[`CssLoaderType`](../../core/type-aliases/CssLoaderType.md)
 
 the BiDi layout type, either 'common', 'ltr', or 'rtl'.
 
-• **loader**
+##### loader
+
+() => `Promise`\<`void`\>
 
 the function that returns a Promise to load CSS or other required localization resources.
 
 #### Returns
 
-[`BuilderView`](BuilderView.md)
+`BuilderView`
 
 the [View](../../core/classes/View.md) instance.
 
@@ -348,7 +374,9 @@ Sets the metadata of the component that displays form's errors.
 
 #### Parameters
 
-• **builderComponent**: [`BuilderComponent`](../../core/interfaces/BuilderComponent.md)
+##### builderComponent
+
+[`BuilderComponent`](../../core/interfaces/BuilderComponent.md)
 
 the metadata of the component that displays the form's errors.
 
@@ -356,7 +384,7 @@ the metadata of the component that displays the form's errors.
 
 `this`
 
-the instance of the [BuilderView](BuilderView.md) class.
+the instance of the BuilderView class.
 
 ***
 
@@ -368,7 +396,9 @@ Creates metadata for the form builder for templates from the specified template 
 
 #### Parameters
 
-• **templates**: `string`[]
+##### templates
+
+`string`[]
 
 the array of template names.
 
@@ -376,7 +406,7 @@ the array of template names.
 
 `this`
 
-the instance of the [BuilderView](BuilderView.md) class.
+the instance of the BuilderView class.
 
 ***
 
@@ -388,7 +418,9 @@ Sets the metadata of the component that displays the form's tooltips.
 
 #### Parameters
 
-• **builderComponent**: [`BuilderComponent`](../../core/interfaces/BuilderComponent.md)
+##### builderComponent
+
+[`BuilderComponent`](../../core/interfaces/BuilderComponent.md)
 
 the metadata of the component that displays the form's tooltips.
 
@@ -396,25 +428,27 @@ the metadata of the component that displays the form's tooltips.
 
 `this`
 
-the instance of the [BuilderView](BuilderView.md) class.
+the instance of the BuilderView class.
 
 ***
 
 ### withViewerWrapper()
 
-> **withViewerWrapper**(`wrapper`): [`BuilderView`](BuilderView.md)
+> **withViewerWrapper**(`wrapper`): `BuilderView`
 
 Adds a wrapper to the list of viewers for this viewer wrapper.
 
 #### Parameters
 
-• **wrapper**: [`FormViewerWrapper`](../../core/type-aliases/FormViewerWrapper.md)
+##### wrapper
+
+[`FormViewerWrapper`](../../core/type-aliases/FormViewerWrapper.md)
 
 the viewer wrapper to be added. The wrapper is a component that wraps the form viewer.
 
 #### Returns
 
-[`BuilderView`](BuilderView.md)
+`BuilderView`
 
 the [View](../../core/classes/View.md) instance.
 
@@ -432,7 +466,9 @@ Static wrapper for the [View](../../core/classes/View.md) constructor.
 
 #### Parameters
 
-• **models**: [`Model`](../../core/classes/Model.md)\<`any`\>[]
+##### models
+
+[`Model`](../../core/classes/Model.md)\<`any`\>[]
 
 the components metadata.
 
@@ -456,7 +492,9 @@ Creates an instance of BuilderComponent for the specified template name.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 the template name
 

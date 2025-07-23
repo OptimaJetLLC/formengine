@@ -14,23 +14,25 @@ Used for properties where the property value can be selected from predefined val
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 the property type.
 
 ## Constructors
 
-### new QuantifierBuilder()
+### Constructor
 
-> **new QuantifierBuilder**\<`T`\>(): [`QuantifierBuilder`](QuantifierBuilder.md)\<`T`\>
+> **new QuantifierBuilder**\<`T`\>(): `QuantifierBuilder`\<`T`\>
 
 #### Returns
 
-[`QuantifierBuilder`](QuantifierBuilder.md)\<`T`\>
+`QuantifierBuilder`\<`T`\>
 
 #### Inherited from
 
-[`TypedBuilder`](TypedBuilder.md).[`constructor`](TypedBuilder.md#constructors)
+[`TypedBuilder`](TypedBuilder.md).[`constructor`](TypedBuilder.md#constructor)
 
 ## Properties
 
@@ -132,13 +134,13 @@ the non-localizable component property.
 
 #### Get Signature
 
-> **get** **required**(): [`QuantifierBuilder`](QuantifierBuilder.md)\<`NonNullable`\<`T`\>\>
+> **get** **required**(): `QuantifierBuilder`\<`NonNullable`\<`T`\>\>
 
 Marks the component property as required.
 
 ##### Returns
 
-[`QuantifierBuilder`](QuantifierBuilder.md)\<`NonNullable`\<`T`\>\>
+`QuantifierBuilder`\<`NonNullable`\<`T`\>\>
 
 the modified instance of the builder.
 
@@ -174,7 +176,9 @@ Creates component property metadata for the form builder.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the unique key of the component property.
 
@@ -192,19 +196,21 @@ the instance of the component property metadata for the form builder.
 
 ### calculable()
 
-> **calculable**(`calculable`): [`QuantifierBuilder`](QuantifierBuilder.md)\<`T`\>
+> **calculable**(`calculable`): `QuantifierBuilder`\<`T`\>
 
 Marks the component property as calculable.
 
 #### Parameters
 
-• **calculable**: `boolean`
+##### calculable
+
+`boolean`
 
 true if the property is calculable.
 
 #### Returns
 
-[`QuantifierBuilder`](QuantifierBuilder.md)\<`T`\>
+`QuantifierBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -240,9 +246,11 @@ Sets the default value for the component property.
 
 #### Parameters
 
-• **value**: `T` \| `T`[]
+##### value
 
 the default value, can be an array of values.
+
+`T` | `T`[]
 
 #### Returns
 
@@ -264,7 +272,9 @@ Returns the annotation name.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the property name
 
@@ -300,19 +310,21 @@ the modified instance of the builder.
 
 ### hinted()
 
-> **hinted**(`hint`): [`QuantifierBuilder`](QuantifierBuilder.md)\<`T`\>
+> **hinted**(`hint`): `QuantifierBuilder`\<`T`\>
 
 Adds the hint to the property name of the component.
 
 #### Parameters
 
-• **hint**: `ReactNode`
+##### hint
+
+`ReactNode`
 
 the hint.
 
 #### Returns
 
-[`QuantifierBuilder`](QuantifierBuilder.md)\<`T`\>
+`QuantifierBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -324,19 +336,21 @@ the modified instance of the builder.
 
 ### labeled()
 
-> **labeled**(...`labels`): [`QuantifierBuilder`](QuantifierBuilder.md)\<`T`\>
+> **labeled**(...`labels`): `QuantifierBuilder`\<`T`\>
 
 Sets the labels for predefined values.
 
 #### Parameters
 
-• ...**labels**: `string`[]
+##### labels
+
+...`string`[]
 
 the labels.
 
 #### Returns
 
-[`QuantifierBuilder`](QuantifierBuilder.md)\<`T`\>
+`QuantifierBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -344,19 +358,21 @@ the modified instance of the builder.
 
 ### named()
 
-> **named**(`name`): [`QuantifierBuilder`](QuantifierBuilder.md)\<`T`\>
+> **named**(`name`): `QuantifierBuilder`\<`T`\>
 
 Specifies the name of the component property.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 the property name.
 
 #### Returns
 
-[`QuantifierBuilder`](QuantifierBuilder.md)\<`T`\>
+`QuantifierBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -374,7 +390,9 @@ Modifies the component property metadata builder with custom options.
 
 #### Parameters
 
-• **options**: `Partial`\<`Partial`\<`Omit`\<[`Annotation`](Annotation.md), `"key"`\>\> & `Pick`\<[`Annotation`](Annotation.md), `"editor"`\> & [`BuilderOptions`](BuilderOptions.md)\>
+##### options
+
+[`BuilderSetup`](../type-aliases/BuilderSetup.md)
 
 the custom options.
 
@@ -392,19 +410,21 @@ the modified instance of the builder.
 
 ### uncontrolledValue()
 
-> **uncontrolledValue**(`uncontrolledValue`): [`QuantifierBuilder`](QuantifierBuilder.md)\<`T`\>
+> **uncontrolledValue**(`uncontrolledValue`): `QuantifierBuilder`\<`T`\>
 
 Sets the value for the property that prevents uncontrolled state.
 
 #### Parameters
 
-• **uncontrolledValue**: `unknown`
+##### uncontrolledValue
+
+`unknown`
 
 the value for the uncontrolled state.
 
 #### Returns
 
-[`QuantifierBuilder`](QuantifierBuilder.md)\<`T`\>
+`QuantifierBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -422,11 +442,15 @@ Modifies the component property metadata builder with validation properties.
 
 #### Parameters
 
-• **validator**: [`RuleValidator`](../type-aliases/RuleValidator.md)\<`T`\>
+##### validator
+
+[`RuleValidator`](../type-aliases/RuleValidator.md)\<`T`\>
 
 the validation function.
 
-• **errorMap**: [`ErrorMap`](../type-aliases/ErrorMap.md)
+##### errorMap
+
+[`ErrorMap`](../type-aliases/ErrorMap.md)
 
 the validation error settings.
 
@@ -450,7 +474,9 @@ Sets custom properties for the component's property editor.
 
 #### Parameters
 
-• **props**: `any`
+##### props
+
+`any`
 
 the custom properties
 

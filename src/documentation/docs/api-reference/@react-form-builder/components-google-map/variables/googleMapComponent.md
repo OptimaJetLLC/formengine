@@ -1,3 +1,3 @@
 # Variable: googleMapComponent
 
-> `const` **googleMapComponent**: [`Definer`](../../core/classes/Definer.md)\<[`GoogleMapProps`](../interfaces/GoogleMapProps.md)\> = `googleMap`
+> `const` **googleMapComponent**: [`Definer`](../../core/interfaces/Definer.md)\<[`GoogleMapProps`](../interfaces/GoogleMapProps.md)\> = `googleMap`

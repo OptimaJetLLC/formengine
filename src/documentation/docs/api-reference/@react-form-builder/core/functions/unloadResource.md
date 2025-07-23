@@ -6,7 +6,9 @@ Unloads a resource from the DOM based on its ID. **Internal use only.**
 
 ## Parameters
 
-• **id**: `string`
+### id
+
+`string`
 
 the ID of the resource to unload.
 

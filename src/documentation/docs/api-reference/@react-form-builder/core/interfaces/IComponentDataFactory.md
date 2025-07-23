@@ -12,11 +12,15 @@ Creates the element for the component tree. **Internal use only.**
 
 #### Parameters
 
-• **componentStore**: [`ComponentStore`](../classes/ComponentStore.md)
+##### componentStore
+
+[`ComponentStore`](../classes/ComponentStore.md)
 
 the component settings.
 
-• **deferFieldCalculation**: `boolean`
+##### deferFieldCalculation
+
+`boolean`
 
 if true, then the calculated field must be explicitly initialized.
 

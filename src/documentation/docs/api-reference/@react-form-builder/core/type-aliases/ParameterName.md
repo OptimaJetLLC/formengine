@@ -1,5 +1,5 @@
 # Type Alias: ParameterName
 
-> **ParameterName**: `string`
+> **ParameterName** = `string`
 
 The type for the parameter name.

@@ -1,12 +1,14 @@
-# Function: FormBuilder()
+# Variable: FormBuilder()
 
-> **FormBuilder**(`props`): `Element`
+> `const` **FormBuilder**: (`props`) => `Element`
 
 The React component that displays the form builder.
 
 ## Parameters
 
-• **props**: [`FormBuilderProps`](../interfaces/FormBuilderProps.md)
+### props
+
+[`FormBuilderProps`](../interfaces/FormBuilderProps.md)
 
 the React component properties.
 

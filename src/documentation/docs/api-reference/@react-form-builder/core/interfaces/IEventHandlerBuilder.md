@@ -10,19 +10,21 @@ Interface for defining event handlers for a component.
 
 ### args()
 
-> **args**(`val`): [`IEventHandlerBuilder`](IEventHandlerBuilder.md)
+> **args**(`val`): `IEventHandlerBuilder`
 
 Specifies the arguments passed to the event handler.
 
 #### Parameters
 
-• **val**: `any`
+##### val
+
+`any`
 
 the arguments to pass to the handler.
 
 #### Returns
 
-[`IEventHandlerBuilder`](IEventHandlerBuilder.md)
+`IEventHandlerBuilder`
 
 the event handler builder.
 
@@ -36,7 +38,9 @@ Adds child components inside this component.
 
 #### Parameters
 
-• **childrenBuilder**
+##### childrenBuilder
+
+(`builder`) => [`IFormJsonBuilder`](IFormJsonBuilder.md)
 
 the function that builds the child components.
 
@@ -54,19 +58,21 @@ the component builder for method chaining.
 
 ### commonAction()
 
-> **commonAction**(`name`): [`IEventHandlerBuilder`](IEventHandlerBuilder.md)
+> **commonAction**(`name`): `IEventHandlerBuilder`
 
 Sets a common handler for the event.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 the name of the common handler.
 
 #### Returns
 
-[`IEventHandlerBuilder`](IEventHandlerBuilder.md)
+`IEventHandlerBuilder`
 
 the event handler builder.
 
@@ -80,11 +86,15 @@ Adds a component to the form.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the unique identifier of the component.
 
-• **type**: `string`
+##### type
+
+`string`
 
 the type of the component.
 
@@ -108,11 +118,15 @@ Sets a computed property on the component.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the name of the property.
 
-• **value**: `string`
+##### value
+
+`string`
 
 the code of the function for calculating the property value.
 
@@ -130,19 +144,21 @@ the component builder for method chaining.
 
 ### customAction()
 
-> **customAction**(`name`): [`IEventHandlerBuilder`](IEventHandlerBuilder.md)
+> **customAction**(`name`): `IEventHandlerBuilder`
 
 Sets a custom handler for the event.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 the name of the custom handler function.
 
 #### Returns
 
-[`IEventHandlerBuilder`](IEventHandlerBuilder.md)
+`IEventHandlerBuilder`
 
 the event handler builder.
 
@@ -150,19 +166,21 @@ the event handler builder.
 
 ### event()
 
-> **event**(`eventName`): [`IEventHandlerBuilder`](IEventHandlerBuilder.md)
+> **event**(`eventName`): `IEventHandlerBuilder`
 
 Starts configuring an event handler for the given event name.
 
 #### Parameters
 
-• **eventName**: `string`
+##### eventName
+
+`string`
 
 the name of the event (e.g., "onClick", "onChange").
 
 #### Returns
 
-[`IEventHandlerBuilder`](IEventHandlerBuilder.md)
+`IEventHandlerBuilder`
 
 the event handler builder.
 
@@ -198,15 +216,21 @@ Sets a localized property on the component.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the name of the property.
 
-• **language**: \`$\{string\}-$\{string\}\`
+##### language
+
+`` `${string}-${string}` ``
 
 the localized code, e.g. 'en-US'.
 
-• **value**: `any`
+##### value
+
+`any`
 
 the localized value of the property.
 
@@ -230,11 +254,15 @@ Sets a property on the component.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the name of the property.
 
-• **value**: `any`
+##### value
+
+`any`
 
 the value of the property.
 
@@ -252,17 +280,21 @@ the component builder for method chaining.
 
 ### style()
 
-> **style**(`value`, `device`?): [`IComponentBuilder`](IComponentBuilder.md)
+> **style**(`value`, `device?`): [`IComponentBuilder`](IComponentBuilder.md)
 
 Applies styles to the component, optionally per device.
 
 #### Parameters
 
-• **value**: `string` \| `CSSProperties`
+##### value
 
 the style string (e.g., "color: red") or object with style properties.
 
-• **device?**: [`Device`](../type-aliases/Device.md)
+`string` | `CSSProperties`
+
+##### device?
+
+[`Device`](../type-aliases/Device.md)
 
 the optional device-specific styling.
 
@@ -286,7 +318,9 @@ Starts configuring validation rules for the specified field.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the name of the validation rule.
 

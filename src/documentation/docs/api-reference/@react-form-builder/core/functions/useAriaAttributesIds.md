@@ -4,7 +4,9 @@
 
 ## Parameters
 
-• **options**: [`AriaAttributesOptions`](../type-aliases/AriaAttributesOptions.md)
+### options
+
+[`AriaAttributesOptions`](../type-aliases/AriaAttributesOptions.md)
 
 options for configuring the generation of ARIA attributes.
 

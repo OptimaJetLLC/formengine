@@ -6,7 +6,9 @@ Determines if the given type is a validator property block type. **Internal use 
 
 ## Parameters
 
-• **type**: `string`
+### type
+
+`string`
 
 the type to be checked.
 

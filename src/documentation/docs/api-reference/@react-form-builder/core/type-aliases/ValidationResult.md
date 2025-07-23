@@ -1,16 +1,18 @@
 # Type Alias: ValidationResult
 
-> **ValidationResult**: `object`
+> **ValidationResult** = `object`
 
 The result of the validation.
 
-## Type declaration
+## Properties
 
 ### message?
 
 > `optional` **message**: `string`
 
 The validation error message text.
+
+***
 
 ### settings
 

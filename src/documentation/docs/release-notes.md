@@ -191,7 +191,7 @@ contact [support@optimajet.com](mailto:support@optimajet.com).
 ### New
 
 - Added [FormJsonBuilder](/api-reference/@react-form-builder/core/functions/buildForm#returns), a code-based tool for form creation.
-- [useBuilderMode](/api-reference/@react-form-builder/core/functions/useBuilderMode) hook has been introduced.
+- [useBuilderMode](/api-reference/@react-form-builder/core/variables/useBuilderMode) hook has been introduced.
 - [Tab](/components-library/structure-components/tab) and [Menu](/components-library/static-components/menu) components now supports `pill`
   display variant.
 
@@ -258,7 +258,7 @@ _April_ 14, 2025
 
 _March_ 31, 2025
 
-- Added the [useFormBuilder](/api-reference/@react-form-builder/designer/functions/useFormBuilder) hook to get and manage the Form Builder
+- Added the [useFormBuilder](/api-reference/@react-form-builder/designer/variables/useFormBuilder) hook to get and manage the Form Builder
   from [customization](/designer-customization).
 - Now the insertion order when moving several elements corresponds to their position on the form. Previously, they were inserted in the
   order in which the user selected them.
@@ -286,7 +286,7 @@ _February_ 27, 2025
 - Added ability to restrict drag-and-drop
   for [node](/api-reference/@react-form-builder/core/classes/NodeAnnotationBuilder#withinsertrestriction) and `nodeArray`.
 - Added ability to restrict drag-and-drop
-  for [components](/api-reference/@react-form-builder/core/classes/Definer#insertrestriction).
+  for [components](/api-reference/@react-form-builder/core/interfaces/Definer#insertrestriction).
 - Added a clear button for the `string` type property editor.
 
 ### Changed
@@ -390,8 +390,8 @@ _December_ 16, 2024
 - Added a search field on the Forms tab.
 - Added the ability to use hooks and functions
   inside [custom property editors](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#propertyeditors) to access
-  component and engine data. These are, for example, [useComponentData](/api-reference/@react-form-builder/core/functions/useComponentData),
-  [useStore](/api-reference/@react-form-builder/core/functions/useStore),
+  component and engine data. These are, for example, [useComponentData](/api-reference/@react-form-builder/core/variables/useComponentData),
+  [useStore](/api-reference/@react-form-builder/core/variables/useStore),
   and [others](/api-reference/@react-form-builder/core/#functions).
 - The [formLoadError](/api-reference/@react-form-builder/core/classes/Store#formloaderror) field has been added to the FormViewer API that
   signals the failure of loading the form, and also contains the error text.
@@ -499,8 +499,8 @@ _September_ 13, 2024
 - Added the `Rich text editor` component.
 - Added the [object](/api-reference/@react-form-builder/core/variables/object) annotation builder and property editor for editing properties
   with the `object` type.
-- Added the [BuilderContextProvider](/api-reference/@react-form-builder/core/functions/BuilderModeProvider)
-  and [useBuilderContext](/api-reference/@react-form-builder/core/functions/useBuilderMode) hook to use the Designer's state in custom
+- Added the [BuilderContextProvider](/api-reference/@react-form-builder/core/variables/BuilderModeProvider)
+  and [useBuilderContext](/api-reference/@react-form-builder/core/variables/useBuilderMode) hook to use the Designer's state in custom
   components.
 - Fixed a bug where the `One tap` property in the `Date picker` component had the `event` type instead of `boolean`.
 - Fixed a bug where the application crashed if the date was entered from the keyboard into the `Date picker` component.

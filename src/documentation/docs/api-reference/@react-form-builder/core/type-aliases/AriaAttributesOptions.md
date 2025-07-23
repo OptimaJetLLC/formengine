@@ -1,10 +1,10 @@
 # Type Alias: AriaAttributesOptions
 
-> **AriaAttributesOptions**: `object`
+> **AriaAttributesOptions** = `object`
 
 Represents the options for ARIA attributes configurations.
 
-## Type declaration
+## Properties
 
 ### labeled
 

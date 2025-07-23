@@ -23,7 +23,7 @@ component that is specified in the `node` property is considered a nested compon
 
 A template is simply a form within another form. The template is treated as a normal component, but with some features:
 
-1. The [FormViewer](/api-reference/@react-form-builder/core/functions/FormViewer) component is used to display the template.
+1. The [FormViewer](/api-reference/@react-form-builder/core/variables/FormViewer) component is used to display the template.
 2. The data inside the template is isolated from the parent form.
 3. Data can be transferred to the parent form as a nested object, or as a part of the parent form (regulated by the "Store data in parent
    form" flag).

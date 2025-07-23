@@ -6,13 +6,19 @@ Shim to be compatible with React 19.
 
 ## Type Parameters
 
-• **T**
+### T
 
-• **P** = `object`
+`T`
+
+### P
+
+`P` = \{ \}
 
 ## Parameters
 
-• **render**: `ForwardRefRenderFunction`\<`T`, `P` & `object`\>
+### render
+
+`ForwardRefRenderFunction`\<`T`, `P` & `object`\>
 
 the forward ref render function.
 

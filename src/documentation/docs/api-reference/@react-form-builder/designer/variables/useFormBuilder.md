@@ -1,6 +1,6 @@
-# Function: useFormBuilder()
+# Variable: useFormBuilder()
 
-> **useFormBuilder**(): [`IFormBuilder`](../interfaces/IFormBuilder.md)
+> **useFormBuilder**: () => [`IFormBuilder`](../interfaces/IFormBuilder.md)
 
 The hook to get the form builder settings.
 

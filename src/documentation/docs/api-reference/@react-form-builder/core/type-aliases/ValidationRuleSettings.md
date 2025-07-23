@@ -1,10 +1,10 @@
 # Type Alias: ValidationRuleSettings
 
-> **ValidationRuleSettings**: `object`
+> **ValidationRuleSettings** = `object`
 
 The validation rule settings.
 
-## Type declaration
+## Properties
 
 ### args?
 
@@ -12,17 +12,23 @@ The validation rule settings.
 
 Arguments of the validation rule.
 
+***
+
 ### key
 
 > **key**: `string`
 
 The unique key of the validation rule. The key is unique within the value type.
 
+***
+
 ### type?
 
 > `optional` **type**: [`ValidatorType`](ValidatorType.md)
 
 The type of validator.
+
+***
 
 ### validateWhen?
 

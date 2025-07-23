@@ -12,7 +12,9 @@ Returns the validation results without triggering an events and changing the sta
 
 #### Parameters
 
-• **value**: `any`
+##### value
+
+`any`
 
 the validated value.
 
@@ -32,7 +34,9 @@ Generates an event to perform validation.
 
 #### Parameters
 
-• **value**: `any`
+##### value
+
+`any`
 
 the validated value.
 
@@ -50,7 +54,9 @@ Performs a validation of the value.
 
 #### Parameters
 
-• **value**: `any`
+##### value
+
+`any`
 
 the validated value.
 
@@ -64,44 +70,58 @@ the Promise with the result of the validation.
 
 ### create()
 
-> `static` **create**\<`T`\>(`store`, `getFormData`, `resolver`, `args`, `setter`, `localizer`?): [`DataValidator`](DataValidator.md)
+> `static` **create**\<`T`\>(`store`, `getFormData`, `resolver`, `args`, `setter`, `localizer?`): `DataValidator`
 
 Creates a DataValidator instance.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 the validation function factory arguments.
 
 #### Parameters
 
-• **store**: [`IStore`](../interfaces/IStore.md)
+##### store
+
+[`IStore`](../interfaces/IStore.md)
 
 the form viewer settings.
 
-• **getFormData**
+##### getFormData
+
+() => [`IFormData`](../interfaces/IFormData.md)
 
 the function that returns a form data.
 
-• **resolver**: [`SchemaResolver`](../type-aliases/SchemaResolver.md)\<`T`\>
+##### resolver
+
+[`SchemaResolver`](../type-aliases/SchemaResolver.md)\<`T`\>
 
 the validation function factory.
 
-• **args**: `T`
+##### args
+
+`T`
 
 the validation function factory arguments.
 
-• **setter**: [`Setter`](../type-aliases/Setter.md)\<`undefined` \| `string`\>
+##### setter
+
+[`Setter`](../type-aliases/Setter.md)\<`undefined` \| `string`\>
 
 the callback function called to set a validation error.
 
-• **localizer?**: [`ErrorMessageLocalizer`](../type-aliases/ErrorMessageLocalizer.md)
+##### localizer?
+
+[`ErrorMessageLocalizer`](../type-aliases/ErrorMessageLocalizer.md)
 
 the function that localizes validation error messages.
 
 #### Returns
 
-[`DataValidator`](DataValidator.md)
+`DataValidator`
 
 the DataValidator instance.

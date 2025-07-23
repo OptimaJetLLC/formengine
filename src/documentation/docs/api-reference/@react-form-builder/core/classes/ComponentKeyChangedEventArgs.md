@@ -4,25 +4,29 @@ Represents the event argument for the event when the component key changes.
 
 ## Constructors
 
-### new ComponentKeyChangedEventArgs()
+### Constructor
 
-> **new ComponentKeyChangedEventArgs**(`oldKey`, `newKey`): [`ComponentKeyChangedEventArgs`](ComponentKeyChangedEventArgs.md)
+> **new ComponentKeyChangedEventArgs**(`oldKey`, `newKey`): `ComponentKeyChangedEventArgs`
 
 Constructs a new instance of the ComponentKeyChangedEventArgs class.
 
 #### Parameters
 
-• **oldKey**: `string`
+##### oldKey
+
+`string`
 
 the old key.
 
-• **newKey**: `string`
+##### newKey
+
+`string`
 
 the new key.
 
 #### Returns
 
-[`ComponentKeyChangedEventArgs`](ComponentKeyChangedEventArgs.md)
+`ComponentKeyChangedEventArgs`
 
 ## Properties
 

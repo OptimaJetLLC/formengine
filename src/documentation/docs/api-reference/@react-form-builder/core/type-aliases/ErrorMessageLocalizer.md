@@ -1,14 +1,16 @@
 # Type Alias: ErrorMessageLocalizer()
 
-> **ErrorMessageLocalizer**: (`value`) => `string` \| `undefined`
+> **ErrorMessageLocalizer** = (`value`) => `string` \| `undefined`
 
 A function that localizes validation error messages.
 
 ## Parameters
 
-• **value**: [`ValidationResult`](ValidationResult.md)[] \| `undefined`
+### value
 
 the results of the validation.
+
+[`ValidationResult`](ValidationResult.md)[] | `undefined`
 
 ## Returns
 

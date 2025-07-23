@@ -1,16 +1,18 @@
 # Type Alias: FormViewerValidationRules
 
-> **FormViewerValidationRules**: `object`
+> **FormViewerValidationRules** = `object`
 
 Validation rules for FormViewer.
 
-## Type declaration
+## Properties
 
 ### custom?
 
 > `optional` **custom**: [`CustomValidationRules`](CustomValidationRules.md)
 
 The set of custom validators.
+
+***
 
 ### internal
 

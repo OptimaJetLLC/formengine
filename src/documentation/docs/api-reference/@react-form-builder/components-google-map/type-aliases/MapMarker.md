@@ -1,10 +1,10 @@
 # Type Alias: MapMarker
 
-> **MapMarker**: `object`
+> **MapMarker** = `object`
 
 Represents the marker data on the map.
 
-## Type declaration
+## Properties
 
 ### address?
 
@@ -12,11 +12,15 @@ Represents the marker data on the map.
 
 The address of the location.
 
+***
+
 ### id
 
 > **id**: `string`
 
 The unique identifier of the marker.
+
+***
 
 ### position
 
@@ -24,11 +28,15 @@ The unique identifier of the marker.
 
 Latitude and longitude of the geographical location.
 
+***
+
 ### title?
 
 > `optional` **title**: `string`
 
 The title of the marker.
+
+***
 
 ### zIndex
 

@@ -851,7 +851,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### children?
 
-> `optional` **children**: `ReactNode` \| (`rowData`, `rowIndex`?) => `ReactNode`
+> `optional` **children**: `ReactNode` \| (`rowData`, `rowIndex?`) => `ReactNode`
 
 #### Inherited from
 
@@ -1089,13 +1089,13 @@ Data binding key, but also a sort of key
 
 ### icon()
 
-> **icon**: () => `ReactElement`\<`IconProps`, `string` \| `JSXElementConstructor`\<`any`\>\>
+> **icon**: () => `ReactElement`\<`IconProps`\>
 
 The cell icon.
 
 #### Returns
 
-`ReactElement`\<`IconProps`, `string` \| `JSXElementConstructor`\<`any`\>\>
+`ReactElement`\<`IconProps`\>
 
 ***
 
@@ -1287,13 +1287,15 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onAction()
 
-> **onAction**: (`rowIndex`?) => `void`
+> **onAction**: (`rowIndex?`) => `void`
 
 The callback function called when the cell is clicked.
 
 #### Parameters
 
-• **rowIndex?**: `number`
+##### rowIndex?
+
+`number`
 
 the row index.
 
@@ -2081,26 +2083,6 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
-### onLoadStart?
-
-> `optional` **onLoadStart**: `ReactEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-`InnerCellProps.onLoadStart`
-
-***
-
-### onLoadStartCapture?
-
-> `optional` **onLoadStartCapture**: `ReactEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-`InnerCellProps.onLoadStartCapture`
-
-***
-
 ### onLoadedData?
 
 > `optional` **onLoadedData**: `ReactEventHandler`\<`HTMLElement`\>
@@ -2138,6 +2120,26 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 #### Inherited from
 
 `InnerCellProps.onLoadedMetadataCapture`
+
+***
+
+### onLoadStart?
+
+> `optional` **onLoadStart**: `ReactEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`InnerCellProps.onLoadStart`
+
+***
+
+### onLoadStartCapture?
+
+> `optional` **onLoadStartCapture**: `ReactEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`InnerCellProps.onLoadStartCapture`
 
 ***
 
@@ -2913,17 +2915,25 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### onTreeToggle()?
 
-> `optional` **onTreeToggle**: (`rowKey`?, `rowIndex`?, `rowData`?, `event`?) => `void`
+> `optional` **onTreeToggle**: (`rowKey?`, `rowIndex?`, `rowData?`, `event?`) => `void`
 
 #### Parameters
 
-• **rowKey?**: `string` \| `number`
+##### rowKey?
 
-• **rowIndex?**: `number`
+`string` | `number`
 
-• **rowData?**: `RowDataType`\<`any`\>
+##### rowIndex?
 
-• **event?**: `MouseEvent`\<`Element`, `MouseEvent`\>
+`number`
+
+##### rowData?
+
+`RowDataType`\<`any`\>
+
+##### event?
+
+`MouseEvent`\<`Element`, `MouseEvent`\>
 
 #### Returns
 
@@ -3091,7 +3101,9 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 #### Parameters
 
-• **contentChildren**: `any`
+##### contentChildren
+
+`any`
 
 #### Returns
 
@@ -3105,15 +3117,21 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### renderTreeToggle()?
 
-> `optional` **renderTreeToggle**: (`expandButton`, `rowData`?, `expanded`?) => `ReactNode`
+> `optional` **renderTreeToggle**: (`expandButton`, `rowData?`, `expanded?`) => `ReactNode`
 
 #### Parameters
 
-• **expandButton**: `ReactNode`
+##### expandButton
 
-• **rowData?**: `RowDataType`\<`any`\>
+`ReactNode`
 
-• **expanded?**: `boolean`
+##### rowData?
+
+`RowDataType`\<`any`\>
+
+##### expanded?
+
+`boolean`
 
 #### Returns
 

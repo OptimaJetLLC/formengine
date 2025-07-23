@@ -4,21 +4,23 @@ Observable storage of localization. **Internal use only.**
 
 ## Constructors
 
-### new LocalizationStore()
+### Constructor
 
-> **new LocalizationStore**(`value`): [`LocalizationStore`](LocalizationStore.md)
+> **new LocalizationStore**(`value`): `LocalizationStore`
 
 The constructor.
 
 #### Parameters
 
-• **value**: [`LocalizationValue`](../type-aliases/LocalizationValue.md) = `{}`
+##### value
+
+[`LocalizationValue`](../type-aliases/LocalizationValue.md) = `{}`
 
 the initial localization value.
 
 #### Returns
 
-[`LocalizationStore`](LocalizationStore.md)
+`LocalizationStore`
 
 ## Properties
 
@@ -34,11 +36,11 @@ The localization data.
 
 #### Get Signature
 
-> **get** **langCodes**(): \`$\{string\}-$\{string\}\`[]
+> **get** **langCodes**(): `` `${string}-${string}` ``[]
 
 ##### Returns
 
-\`$\{string\}-$\{string\}\`[]
+`` `${string}-${string}` ``[]
 
 the available language codes.
 
@@ -52,15 +54,21 @@ Inserts the localization values for a given component key. Replaces the old comp
 
 #### Parameters
 
-• **localization**: [`LocalizationValue`](../type-aliases/LocalizationValue.md)
+##### localization
+
+[`LocalizationValue`](../type-aliases/LocalizationValue.md)
 
 the localization object for insertion.
 
-• **oldComponentKey**: `string`
+##### oldComponentKey
+
+`string`
 
 the old component key that needs to be replaced.
 
-• **newComponentKey**: `string`
+##### newComponentKey
+
+`string`
 
 the new component key to be added.
 
@@ -78,11 +86,15 @@ Changes the component key for all languages in the value object.
 
 #### Parameters
 
-• **oldComponentKey**: `string`
+##### oldComponentKey
+
+`string`
 
 the old component key to be replaced.
 
-• **newComponentKey**: `string`
+##### newComponentKey
+
+`string`
 
 the new component key to replace the old component key.
 
@@ -101,7 +113,9 @@ Otherwise, an empty FluentBundle is returned.
 
 #### Parameters
 
-• **languageFullCode**: \`$\{string\}-$\{string\}\`
+##### languageFullCode
+
+`` `${string}-${string}` ``
 
 the full code (en-US, en-GB etc.) of the language to get fluent bundle.
 
@@ -121,19 +135,27 @@ Returns value of localization constant.
 
 #### Parameters
 
-• **languageFullCode**: \`$\{string\}-$\{string\}\`
+##### languageFullCode
+
+`` `${string}-${string}` ``
 
 the full code (en-US, en-GB etc.) of the language we are looking to localize.
 
-• **componentKey**: `string`
+##### componentKey
+
+`string`
 
 the component we are looking to localize.
 
-• **propertyName**: `string`
+##### propertyName
+
+`string`
 
 the property name we are looking to localize.
 
-• **type**: `string`
+##### type
+
+`string`
 
 the type of localization.
 
@@ -153,7 +175,9 @@ Retrieves the localization values for a given component key.
 
 #### Parameters
 
-• **componentKey**: `string`
+##### componentKey
+
+`string`
 
 the key of the component to retrieve localization for.
 
@@ -173,7 +197,9 @@ Checks that the specified language exists in the localization.
 
 #### Parameters
 
-• **languageFullCode**: \`$\{string\}-$\{string\}\`
+##### languageFullCode
+
+`` `${string}-${string}` ``
 
 The full code (en-US, en-GB etc.) of the language to be checked.
 
@@ -193,15 +219,21 @@ Checks that the specified property has localization.
 
 #### Parameters
 
-• **componentKey**: `string`
+##### componentKey
+
+`string`
 
 the component we are looking to localize.
 
-• **propertyName**: `string`
+##### propertyName
+
+`string`
 
 the component's property name to be localized.
 
-• **type**: `string`
+##### type
+
+`string`
 
 the type of localization.
 
@@ -221,7 +253,9 @@ Removes localization for component.
 
 #### Parameters
 
-• **componentKey**: `string`
+##### componentKey
+
+`string`
 
 the component key that requires localization removal.
 
@@ -239,11 +273,15 @@ Removes localization for component with specified type.
 
 #### Parameters
 
-• **componentKey**: `string`
+##### componentKey
+
+`string`
 
 the component key that requires localization removal.
 
-• **type**: `string`
+##### type
+
+`string`
 
 the localization type.
 
@@ -261,23 +299,33 @@ Sets localization for component property.
 
 #### Parameters
 
-• **languageFullCode**: \`$\{string\}-$\{string\}\`
+##### languageFullCode
+
+`` `${string}-${string}` ``
 
 the full code (en-US, en-GB etc.) of the language in which localization will be set.
 
-• **componentKey**: `string`
+##### componentKey
+
+`string`
 
 the component key that requires localization.
 
-• **propertyName**: `string`
+##### propertyName
+
+`string`
 
 the component's property name to be localized.
 
-• **type**: `string`
+##### type
+
+`string`
 
 the type of localization.
 
-• **value**: `string`
+##### value
+
+`string`
 
 the localization value.
 

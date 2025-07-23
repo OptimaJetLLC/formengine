@@ -1,10 +1,10 @@
 # Type Alias: FormBuilderI18n
 
-> **FormBuilderI18n**: `object`
+> **FormBuilderI18n** = `object`
 
 The i18n data of the form builder.
 
-## Type declaration
+## Properties
 
 ### getData()
 
@@ -15,11 +15,15 @@ Accepts the full code (en-US, en-GB, etc.) of a language.
 
 #### Parameters
 
-• **languageFullCode**: `string`
+##### languageFullCode
+
+`string`
 
 #### Returns
 
 `Promise`\<[`FormBuilderI18nData`](FormBuilderI18nData.md)\>
+
+***
 
 ### languages
 

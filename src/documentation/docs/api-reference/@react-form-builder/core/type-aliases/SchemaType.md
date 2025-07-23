@@ -1,5 +1,5 @@
 # Type Alias: SchemaType
 
-> **SchemaType**: keyof [`SchemaTypeMap`](SchemaTypeMap.md)
+> **SchemaType** = keyof [`SchemaTypeMap`](SchemaTypeMap.md)
 
 The value type name.

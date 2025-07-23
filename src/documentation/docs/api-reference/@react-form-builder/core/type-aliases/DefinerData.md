@@ -1,16 +1,18 @@
 # Type Alias: DefinerData\<T\>
 
-> **DefinerData**\<`T`\>: `object`
+> **DefinerData**\<`T`\> = `object`
 
 Definer class data.
 
 ## Type Parameters
 
-• **T** *extends* `object`
+### T
+
+`T` *extends* `object`
 
 React component property type.
 
-## Type declaration
+## Properties
 
 ### actionsInitializer?
 
@@ -18,11 +20,15 @@ React component property type.
 
 The function that initializes an actions on a component (for internal use only).
 
+***
+
 ### category?
 
 > `optional` **category**: `string`
 
 The component category.
+
+***
 
 ### component
 
@@ -30,11 +36,15 @@ The component category.
 
 The React component.
 
+***
+
 ### cssObject?
 
 > `optional` **cssObject**: [`Annotations`](Annotations.md)\<`CSSObject`\>
 
 The CSS metadata.
+
+***
 
 ### customPreview?
 
@@ -42,11 +52,15 @@ The CSS metadata.
 
 The custom component to display in the component list (unused).
 
+***
+
 ### eventListeners?
 
 > `optional` **eventListeners**: [`ComponentMetadataEventListeners`](../interfaces/ComponentMetadataEventListeners.md)
 
 The component metadata event listeners.
+
+***
 
 ### icon?
 
@@ -54,11 +68,15 @@ The component metadata event listeners.
 
 The component icon.
 
+***
+
 ### initialJson?
 
 > `optional` **initialJson**: `string`
 
 The JSON source for the component (instance of [ComponentStore](../classes/ComponentStore.md) class serialised to JSON).
+
+***
 
 ### insertRestriction?
 
@@ -66,17 +84,23 @@ The JSON source for the component (instance of [ComponentStore](../classes/Compo
 
 The function that restricts the insertion of a component into another component.
 
+***
+
 ### kind?
 
 > `optional` **kind**: [`ComponentKind`](ComponentKind.md)
 
 The component kind.
 
+***
+
 ### name?
 
 > `optional` **name**: `string`
 
 The component name.
+
+***
 
 ### properties?
 

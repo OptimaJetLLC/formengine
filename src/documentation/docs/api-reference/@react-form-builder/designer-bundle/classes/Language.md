@@ -4,37 +4,47 @@ The language to localize the form builder.
 
 ## Constructors
 
-### new Language()
+### Constructor
 
-> **new Language**(`code`, `dialect`, `name`, `description`, `bidi`): [`Language`](Language.md)
+> **new Language**(`code`, `dialect`, `name`, `description`, `bidi`): `Language`
 
 Creates a localization language for the form builder.
 
 #### Parameters
 
-• **code**: `string`
+##### code
+
+`string`
 
 the language code, for example, 'en'.
 
-• **dialect**: `string`
+##### dialect
+
+`string`
 
 the dialect code, for example, 'US'.
 
-• **name**: `string`
+##### name
+
+`string`
 
 the name of the language, for example 'English'.
 
-• **description**: `string`
+##### description
+
+`string`
 
 the description of the language, for example 'American English'.
 
-• **bidi**: [`BiDi`](../../core/enumerations/BiDi.md) = `BiDi.LTR`
+##### bidi
+
+[`BiDi`](../../core/enumerations/BiDi.md) = `BiDi.LTR`
 
 the type of text layout, for example, BiDi.LTR.
 
 #### Returns
 
-[`Language`](Language.md)
+`Language`
 
 ## Properties
 
@@ -82,11 +92,11 @@ the name of the language, for example 'English'.
 
 #### Get Signature
 
-> **get** **fullCode**(): \`$\{string\}-$\{string\}\`
+> **get** **fullCode**(): `` `${string}-${string}` ``
 
 ##### Returns
 
-\`$\{string\}-$\{string\}\`
+`` `${string}-${string}` ``
 
 Full code of the Language i.e en-US, en-GB etc.
 
@@ -94,18 +104,20 @@ Full code of the Language i.e en-US, en-GB etc.
 
 ### clone()
 
-> `static` **clone**(`source`): [`Language`](Language.md)
+> `static` **clone**(`source`): `Language`
 
 Clones an existing instance of the language.
 
 #### Parameters
 
-• **source**: [`Language`](Language.md)
+##### source
+
+`Language`
 
 the cloning object.
 
 #### Returns
 
-[`Language`](Language.md)
+`Language`
 
 the object clone.

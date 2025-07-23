@@ -1,3 +1,3 @@
 # Variable: richTextComponent
 
-> `const` **richTextComponent**: [`Definer`](../../core/classes/Definer.md)\<[`RichTextEditorProps`](../interfaces/RichTextEditorProps.md)\> = `richTextEditor`
+> `const` **richTextComponent**: [`Definer`](../../core/interfaces/Definer.md)\<[`RichTextEditorProps`](../interfaces/RichTextEditorProps.md)\> = `richTextEditor`

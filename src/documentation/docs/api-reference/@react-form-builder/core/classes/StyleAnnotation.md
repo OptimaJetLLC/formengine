@@ -8,29 +8,33 @@ Metadata for the component style property for the form builder.
 
 ## Constructors
 
-### new StyleAnnotation()
+### Constructor
 
-> **new StyleAnnotation**(`key`, `name`): [`StyleAnnotation`](StyleAnnotation.md)
+> **new StyleAnnotation**(`key`, `name`): `StyleAnnotation`
 
 Creates metadata for a React component property.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the property name.
 
-• **name**: `string`
+##### name
+
+`string`
 
 the human-readable property name.
 
 #### Returns
 
-[`StyleAnnotation`](StyleAnnotation.md)
+`StyleAnnotation`
 
 #### Inherited from
 
-[`Annotation`](Annotation.md).[`constructor`](Annotation.md#constructors)
+[`Annotation`](Annotation.md).[`constructor`](Annotation.md#constructor)
 
 ## Properties
 
@@ -210,7 +214,9 @@ A function that returns a string containing the source code of the function to b
 
 #### Parameters
 
-• **props**: `any`
+##### props
+
+`any`
 
 the properties of the component, which are available only inside Form Builder Designer.
 

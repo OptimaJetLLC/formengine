@@ -1,30 +1,40 @@
 # Type Alias: DefineActionHelper()
 
-> **DefineActionHelper**: \<`T`\>(`name`, `func`, `params`?, `description`?) => [`ActionDefinition`](../classes/ActionDefinition.md)
+> **DefineActionHelper** = \<`T`\>(`name`, `func`, `params?`, `description?`) => [`ActionDefinition`](../classes/ActionDefinition.md)
 
 The defineAction helper type. **Internal use only.**
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 the type of action parameter.
 
 ## Parameters
 
-• **name**: `string`
+### name
+
+`string`
 
 the action name.
 
-• **func**: [`ActionHandler`](ActionHandler.md)\<`T`\>
+### func
+
+[`ActionHandler`](ActionHandler.md)\<`T`\>
 
 the action handler.
 
-• **params?**: [`ParameterDefinition`](ParameterDefinition.md)\<`T`\>[]
+### params?
+
+[`ParameterDefinition`](ParameterDefinition.md)\<`T`\>[]
 
 the definition of action parameters.
 
-• **description?**: `string`
+### description?
+
+`string`
 
 the action description.
 

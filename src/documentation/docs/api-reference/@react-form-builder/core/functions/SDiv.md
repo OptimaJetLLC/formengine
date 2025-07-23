@@ -6,7 +6,9 @@ The React component that wraps every component in a form.
 
 ## Parameters
 
-• **props**: `DetailedHTMLProps`\<`HTMLAttributes`\<`HTMLDivElement`\>, `HTMLDivElement`\>
+### props
+
+`DetailedHTMLProps`\<`HTMLAttributes`\<`HTMLDivElement`\>, `HTMLDivElement`\>
 
 the React component properties.
 

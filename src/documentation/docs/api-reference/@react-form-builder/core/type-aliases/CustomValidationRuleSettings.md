@@ -1,16 +1,18 @@
 # Type Alias: CustomValidationRuleSettings
 
-> **CustomValidationRuleSettings**: `object`
+> **CustomValidationRuleSettings** = `object`
 
 Custom validation rule settings.
 
-## Type declaration
+## Properties
 
 ### params?
 
 > `optional` **params**: [`ValidationRuleParameter`](ValidationRuleParameter.md)[]
 
 Metadata of validation rule parameters.
+
+***
 
 ### validate
 

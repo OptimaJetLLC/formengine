@@ -9,19 +9,21 @@ The base builder class to define the metadata property of the form builder compo
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 the property type.
 
 ## Constructors
 
-### new BaseBuilder()
+### Constructor
 
-> **new BaseBuilder**\<`T`\>(): [`BaseBuilder`](BaseBuilder.md)\<`T`\>
+> **new BaseBuilder**\<`T`\>(): `BaseBuilder`\<`T`\>
 
 #### Returns
 
-[`BaseBuilder`](BaseBuilder.md)\<`T`\>
+`BaseBuilder`\<`T`\>
 
 ## Properties
 
@@ -105,7 +107,9 @@ Creates component property metadata for the form builder.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the unique key of the component property.
 
@@ -119,19 +123,21 @@ the instance of the component property metadata for the form builder.
 
 ### calculable()
 
-> **calculable**(`calculable`): [`BaseBuilder`](BaseBuilder.md)\<`T`\>
+> **calculable**(`calculable`): `BaseBuilder`\<`T`\>
 
 Marks the component property as calculable.
 
 #### Parameters
 
-• **calculable**: `boolean`
+##### calculable
+
+`boolean`
 
 true if the property is calculable.
 
 #### Returns
 
-[`BaseBuilder`](BaseBuilder.md)\<`T`\>
+`BaseBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -159,7 +165,9 @@ Returns the annotation name.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the property name
 
@@ -187,19 +195,21 @@ the modified instance of the builder.
 
 ### hinted()
 
-> **hinted**(`hint`): [`BaseBuilder`](BaseBuilder.md)\<`T`\>
+> **hinted**(`hint`): `BaseBuilder`\<`T`\>
 
 Adds the hint to the property name of the component.
 
 #### Parameters
 
-• **hint**: `ReactNode`
+##### hint
+
+`ReactNode`
 
 the hint.
 
 #### Returns
 
-[`BaseBuilder`](BaseBuilder.md)\<`T`\>
+`BaseBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -207,19 +217,21 @@ the modified instance of the builder.
 
 ### named()
 
-> **named**(`name`): [`BaseBuilder`](BaseBuilder.md)\<`T`\>
+> **named**(`name`): `BaseBuilder`\<`T`\>
 
 Specifies the name of the component property.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 the property name.
 
 #### Returns
 
-[`BaseBuilder`](BaseBuilder.md)\<`T`\>
+`BaseBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -233,7 +245,9 @@ Modifies the component property metadata builder with custom options.
 
 #### Parameters
 
-• **options**: `Partial`\<`Partial`\<`Omit`\<[`Annotation`](Annotation.md), `"key"`\>\> & `Pick`\<[`Annotation`](Annotation.md), `"editor"`\> & [`BuilderOptions`](BuilderOptions.md)\>
+##### options
+
+[`BuilderSetup`](../type-aliases/BuilderSetup.md)
 
 the custom options.
 
@@ -247,19 +261,21 @@ the modified instance of the builder.
 
 ### uncontrolledValue()
 
-> **uncontrolledValue**(`uncontrolledValue`): [`BaseBuilder`](BaseBuilder.md)\<`T`\>
+> **uncontrolledValue**(`uncontrolledValue`): `BaseBuilder`\<`T`\>
 
 Sets the value for the property that prevents uncontrolled state.
 
 #### Parameters
 
-• **uncontrolledValue**: `unknown`
+##### uncontrolledValue
+
+`unknown`
 
 the value for the uncontrolled state.
 
 #### Returns
 
-[`BaseBuilder`](BaseBuilder.md)\<`T`\>
+`BaseBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -273,7 +289,9 @@ Sets custom properties for the component's property editor.
 
 #### Parameters
 
-• **props**: `any`
+##### props
+
+`any`
 
 the custom properties
 

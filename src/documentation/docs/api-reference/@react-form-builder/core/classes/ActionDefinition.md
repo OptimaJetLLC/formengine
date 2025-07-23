@@ -4,29 +4,35 @@ Represents the definition of an action.
 
 ## Constructors
 
-### new ActionDefinition()
+### Constructor
 
-> **new ActionDefinition**(`func`, `body`?, `params`?): [`ActionDefinition`](ActionDefinition.md)
+> **new ActionDefinition**(`func`, `body?`, `params?`): `ActionDefinition`
 
 Creates a new instance of the ActionDefinition class.
 
 #### Parameters
 
-• **func**: [`Func`](../type-aliases/Func.md)
+##### func
+
+[`Func`](../type-aliases/Func.md)
 
 the function of an action.
 
-• **body?**: `string`
+##### body?
+
+`string`
 
 the source code of the Action.
 
-• **params?**: [`ActionParameters`](../type-aliases/ActionParameters.md) = `{}`
+##### params?
+
+[`ActionParameters`](../type-aliases/ActionParameters.md) = `{}`
 
 the parameters of the Action.
 
 #### Returns
 
-[`ActionDefinition`](ActionDefinition.md)
+`ActionDefinition`
 
 ## Properties
 
@@ -56,19 +62,21 @@ the parameters of the Action.
 
 ### createFromObject()
 
-> `static` **createFromObject**(`value`): [`ActionDefinition`](ActionDefinition.md)
+> `static` **createFromObject**(`value`): `ActionDefinition`
 
-Correctly creates the [ActionDefinition](ActionDefinition.md) from deserialized data.
+Correctly creates the ActionDefinition from deserialized data.
 
 #### Parameters
 
-• **value**: `any`
+##### value
+
+`any`
 
 the deserialized data.
 
 #### Returns
 
-[`ActionDefinition`](ActionDefinition.md)
+`ActionDefinition`
 
 the ActionDefinition instance.
 
@@ -76,23 +84,27 @@ the ActionDefinition instance.
 
 ### functionalAction()
 
-> `static` **functionalAction**(`func`, `params`): [`ActionDefinition`](ActionDefinition.md)
+> `static` **functionalAction**(`func`, `params`): `ActionDefinition`
 
 Creates an action from the function.
 
 #### Parameters
 
-• **func**: [`Func`](../type-aliases/Func.md)
+##### func
+
+[`Func`](../type-aliases/Func.md)
 
 the function of an action.
 
-• **params**: [`ActionParameters`](../type-aliases/ActionParameters.md) = `{}`
+##### params
+
+[`ActionParameters`](../type-aliases/ActionParameters.md) = `{}`
 
 the parameters of the Action.
 
 #### Returns
 
-[`ActionDefinition`](ActionDefinition.md)
+`ActionDefinition`
 
 the new instance of the ActionDefinition class.
 
@@ -100,22 +112,26 @@ the new instance of the ActionDefinition class.
 
 ### sourceAction()
 
-> `static` **sourceAction**(`body`, `params`): [`ActionDefinition`](ActionDefinition.md)
+> `static` **sourceAction**(`body`, `params`): `ActionDefinition`
 
 Creates an action from the source code.
 
 #### Parameters
 
-• **body**: `string`
+##### body
+
+`string`
 
 the source code of the Action.
 
-• **params**: [`ActionParameters`](../type-aliases/ActionParameters.md) = `{}`
+##### params
+
+[`ActionParameters`](../type-aliases/ActionParameters.md) = `{}`
 
 the parameters of the Action.
 
 #### Returns
 
-[`ActionDefinition`](ActionDefinition.md)
+`ActionDefinition`
 
 the new instance of the ActionDefinition class.

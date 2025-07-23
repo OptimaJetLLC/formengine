@@ -4,23 +4,27 @@ Represents a synchronous event that can be subscribed to and invoked. **Internal
 
 ## Type Parameters
 
-• **TSender**
+### TSender
+
+`TSender`
 
 the type of the object that raises the event.
 
-• **TEventArgs**
+### TEventArgs
+
+`TEventArgs`
 
 the type of the event arguments.
 
 ## Constructors
 
-### new SyncEvent()
+### Constructor
 
-> **new SyncEvent**\<`TSender`, `TEventArgs`\>(): [`SyncEvent`](SyncEvent.md)\<`TSender`, `TEventArgs`\>
+> **new SyncEvent**\<`TSender`, `TEventArgs`\>(): `SyncEvent`\<`TSender`, `TEventArgs`\>
 
 #### Returns
 
-[`SyncEvent`](SyncEvent.md)\<`TSender`, `TEventArgs`\>
+`SyncEvent`\<`TSender`, `TEventArgs`\>
 
 ## Accessors
 
@@ -60,11 +64,15 @@ Invokes the event by calling all registered event handlers.
 
 #### Parameters
 
-• **sender**: `TSender`
+##### sender
+
+`TSender`
 
 the sender of the event.
 
-• **eventArgs**: `TEventArgs`
+##### eventArgs
+
+`TEventArgs`
 
 the event arguments.
 
@@ -82,7 +90,9 @@ Adds a handler to the list of subscribers.
 
 #### Parameters
 
-• **handler**: [`SyncEventHandler`](../type-aliases/SyncEventHandler.md)\<`TSender`, `TEventArgs`\>
+##### handler
+
+[`SyncEventHandler`](../type-aliases/SyncEventHandler.md)\<`TSender`, `TEventArgs`\>
 
 the handler function to be added.
 
@@ -100,7 +110,9 @@ Removes the specified event handler from the list of handlers.
 
 #### Parameters
 
-• **handler**: [`SyncEventHandler`](../type-aliases/SyncEventHandler.md)\<`TSender`, `TEventArgs`\>
+##### handler
+
+[`SyncEventHandler`](../type-aliases/SyncEventHandler.md)\<`TSender`, `TEventArgs`\>
 
 the event handler to remove.
 

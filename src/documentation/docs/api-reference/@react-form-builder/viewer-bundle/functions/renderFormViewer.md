@@ -6,11 +6,15 @@ Displays the FormViewer component on the specified HTML element.
 
 ## Parameters
 
-• **elementId**: `string`
+### elementId
+
+`string`
 
 the HTML element identifier.
 
-• **props**: `Partial`\<[`FormViewerProps`](../../core/interfaces/FormViewerProps.md)\>
+### props
+
+`Partial`\<[`FormViewerProps`](../../core/interfaces/FormViewerProps.md)\>
 
 the component properties.
 

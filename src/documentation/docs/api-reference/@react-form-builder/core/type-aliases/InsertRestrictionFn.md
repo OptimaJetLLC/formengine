@@ -1,16 +1,22 @@
 # Type Alias: InsertRestrictionFn()
 
-> **InsertRestrictionFn**: (`self`, `target`, `slot`?) => `boolean`
+> **InsertRestrictionFn** = (`self`, `target`, `slot?`) => `boolean`
 
 The function that restricts the insertion of a component into another component.
 
 ## Parameters
 
-• **self**: [`ComponentData`](../classes/ComponentData.md)
+### self
 
-• **target**: [`ComponentData`](../classes/ComponentData.md)
+[`ComponentData`](../classes/ComponentData.md)
 
-• **slot?**: `string`
+### target
+
+[`ComponentData`](../classes/ComponentData.md)
+
+### slot?
+
+`string`
 
 ## Returns
 

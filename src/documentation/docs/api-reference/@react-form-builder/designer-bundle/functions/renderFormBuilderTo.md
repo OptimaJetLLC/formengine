@@ -6,11 +6,15 @@ Displays the FormBuilder component on the specified HTML element.
 
 ## Parameters
 
-• **container**: `HTMLElement`
+### container
+
+`HTMLElement`
 
 the HTML element.
 
-• **props**: `Partial`\<[`FormBuilderProps`](../../designer/interfaces/FormBuilderProps.md)\>
+### props
+
+`Partial`\<[`FormBuilderProps`](../../designer/interfaces/FormBuilderProps.md)\>
 
 the component properties.
 

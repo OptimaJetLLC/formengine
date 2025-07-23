@@ -1,6 +1,6 @@
-# Function: useBuilderMode()
+# Variable: useBuilderMode()
 
-> **useBuilderMode**(): [`BuilderMode`](../type-aliases/BuilderMode.md)
+> **useBuilderMode**: () => [`BuilderMode`](../type-aliases/BuilderMode.md)
 
 ## Returns
 

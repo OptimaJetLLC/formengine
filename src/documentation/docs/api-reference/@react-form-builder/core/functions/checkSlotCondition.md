@@ -6,11 +6,15 @@ Performs the function of checking if the child component can be bound. **Interna
 
 ## Parameters
 
-• **childStore**: [`ComponentStore`](../classes/ComponentStore.md)
+### childStore
+
+[`ComponentStore`](../classes/ComponentStore.md)
 
 the child component settings.
 
-• **parentProps**: `any`
+### parentProps
+
+`any`
 
 the parent component properties.
 

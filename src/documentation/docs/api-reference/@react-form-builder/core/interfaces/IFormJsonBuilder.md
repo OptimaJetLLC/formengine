@@ -16,11 +16,15 @@ Adds a component to the form.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the unique identifier of the component.
 
-• **type**: `string`
+##### type
+
+`string`
 
 the type of the component.
 

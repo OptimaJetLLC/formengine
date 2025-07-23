@@ -6,7 +6,9 @@ Converts the input object to an ActionValues object. **Internal use only.**
 
 ## Parameters
 
-• **obj**: `any`
+### obj
+
+`any`
 
 the input object.
 

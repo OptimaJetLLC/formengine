@@ -44,7 +44,9 @@ The callback function called when a new preset component is created.
 
 #### Parameters
 
-• **preset**: [`PresetComponent`](PresetComponent.md)
+##### preset
+
+[`PresetComponent`](PresetComponent.md)
 
 #### Returns
 
@@ -60,7 +62,9 @@ The callback function called when a preset component is removed.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 #### Returns
 

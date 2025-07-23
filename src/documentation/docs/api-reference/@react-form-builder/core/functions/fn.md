@@ -6,11 +6,15 @@ The annotation builder for a component property with type 'function'.
 
 ## Parameters
 
-• **fnDescriptionBegin**: `string`
+### fnDescriptionBegin
+
+`string`
 
 the beginning of function description.
 
-• **fnDescriptionEnd**: `string` = `'}'`
+### fnDescriptionEnd
+
+`string` = `'}'`
 
 the ending  of function description.
 

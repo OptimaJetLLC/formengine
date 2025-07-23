@@ -8,39 +8,47 @@ This tree of elements contains the data required to display the component. It is
 
 ## Constructors
 
-### new ComponentData()
+### Constructor
 
-> **new ComponentData**(`componentStore`, `model`, `childFactory`, `getFormValidationResult`?): [`ComponentData`](ComponentData.md)
+> **new ComponentData**(`componentStore`, `model`, `childFactory`, `getFormValidationResult?`): `ComponentData`
 
 Constructor.
 
 #### Parameters
 
-• **componentStore**: [`ComponentStore`](ComponentStore.md)
+##### componentStore
+
+[`ComponentStore`](ComponentStore.md)
 
 the component settings.
 
-• **model**: [`Model`](Model.md)\<`any`\>
+##### model
+
+[`Model`](Model.md)
 
 the component metadata for the form viewer.
 
-• **childFactory**
+##### childFactory
 
-the factory function that creates [ComponentData](ComponentData.md) instance.
+(`componentStore`) => `ComponentData`
 
-• **getFormValidationResult?**
+the factory function that creates ComponentData instance.
+
+##### getFormValidationResult?
+
+() => `Promise`\<`Record`\<`string`, `string`\>[]\>
 
 the function that returns a form validation results.
 
 #### Returns
 
-[`ComponentData`](ComponentData.md)
+`ComponentData`
 
 ## Properties
 
 ### children
 
-> **children**: [`ComponentData`](ComponentData.md)[] = `[]`
+> **children**: `ComponentData`[] = `[]`
 
 The child nodes in the component data tree.
 
@@ -105,7 +113,7 @@ This is not an index in a parent-child structure.
 
 ### model
 
-> `readonly` **model**: [`Model`](Model.md)\<`any`\>
+> `readonly` **model**: [`Model`](Model.md)
 
 The component metadata.
 
@@ -113,7 +121,7 @@ The component metadata.
 
 ### parent?
 
-> `optional` **parent**: [`ComponentData`](ComponentData.md)
+> `optional` **parent**: `ComponentData`
 
 The parent node in the component data tree.
 
@@ -147,11 +155,11 @@ If true, then validation is in progress.
 
 #### Get Signature
 
-> **get** **allChildren**(): [`ComponentData`](ComponentData.md)[]
+> **get** **allChildren**(): `ComponentData`[]
 
 ##### Returns
 
-[`ComponentData`](ComponentData.md)[]
+`ComponentData`[]
 
 an array of all children components.
 
@@ -207,11 +215,11 @@ the Record with all the form data.
 
 #### Get Signature
 
-> **get** **dataRoot**(): [`ComponentData`](ComponentData.md)
+> **get** **dataRoot**(): `ComponentData`
 
 ##### Returns
 
-[`ComponentData`](ComponentData.md)
+`ComponentData`
 
 the root component for the data in the component tree.
 
@@ -237,7 +245,9 @@ Sets the form error messages.
 
 ##### Parameters
 
-• **errors**: `Record`\<`string`, `unknown`\>
+###### errors
+
+`Record`\<`string`, `unknown`\>
 
 ##### Returns
 
@@ -338,7 +348,7 @@ the initial data.
 
 `boolean`
 
-true if it has no parent [ComponentData](ComponentData.md), false otherwise.
+true if it has no parent ComponentData, false otherwise.
 
 ***
 
@@ -411,11 +421,11 @@ the object to read and modify parent data (available for array elements).
 
 #### Get Signature
 
-> **get** **root**(): [`ComponentData`](ComponentData.md)
+> **get** **root**(): `ComponentData`
 
 ##### Returns
 
-[`ComponentData`](ComponentData.md)
+`ComponentData`
 
 the root of the component tree.
 
@@ -461,8 +471,6 @@ A user-defined key-value observable storage. Utilize it to store and share any c
 
 > **clear**(): `void`
 
-Clears the form data.
-
 #### Returns
 
 `void`
@@ -502,19 +510,21 @@ It disposes the field and all the children objects.
 
 ### findByKey()
 
-> **findByKey**(`key`): `undefined` \| [`ComponentData`](ComponentData.md)
+> **findByKey**(`key`): `undefined` \| `ComponentData`
 
 Find the node with the given key.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the key to find.
 
 #### Returns
 
-`undefined` \| [`ComponentData`](ComponentData.md)
+`undefined` \| `ComponentData`
 
 the node or undefined if not found.
 
@@ -523,8 +533,6 @@ the node or undefined if not found.
 ### getValidationResult()
 
 > **getValidationResult**(): `Promise`\<`undefined`\>
-
-Returns the validation results without triggering an events and changing the state of the form.
 
 #### Returns
 
@@ -546,7 +554,9 @@ Inserts the given node after this node.
 
 #### Parameters
 
-• **inserted**: [`ComponentData`](ComponentData.md)
+##### inserted
+
+`ComponentData`
 
 the node to insert.
 
@@ -564,7 +574,9 @@ Inserts the given node before this node.
 
 #### Parameters
 
-• **inserted**: [`ComponentData`](ComponentData.md)
+##### inserted
+
+`ComponentData`
 
 the node to insert.
 
@@ -577,8 +589,6 @@ the node to insert.
 ### reset()
 
 > **reset**(): `void`
-
-Sets the form to its default value.
 
 #### Returns
 
@@ -594,13 +604,13 @@ Sets the form to its default value.
 
 ### setAllErrors()
 
-> **setAllErrors**(`message`?): `void`
-
-Sets the validation error message for all form data fields.
+> **setAllErrors**(`message?`): `void`
 
 #### Parameters
 
-• **message?**: `string`
+##### message?
+
+`string`
 
 #### Returns
 
@@ -622,7 +632,9 @@ Sets the new parent for this node.
 
 #### Parameters
 
-• **newParent**: [`ComponentData`](ComponentData.md)
+##### newParent
+
+`ComponentData`
 
 the new parent.
 
@@ -640,7 +652,9 @@ Assigns unique keys to the items in the tree.
 
 #### Parameters
 
-• **root**: [`ComponentData`](ComponentData.md)
+##### root
+
+`ComponentData`
 
 the root of the tree to unify keys. Defaults to the root of this tree.
 
@@ -667,8 +681,6 @@ Assigns unique keys to the items in the tree.
 ### validate()
 
 > **validate**(): `Promise`\<[`ValidationMessages`](../type-aliases/ValidationMessages.md)\>
-
-Validates the data in the form.
 
 #### Returns
 

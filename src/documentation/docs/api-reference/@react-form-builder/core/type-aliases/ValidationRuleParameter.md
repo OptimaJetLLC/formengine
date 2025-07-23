@@ -1,10 +1,10 @@
 # Type Alias: ValidationRuleParameter
 
-> **ValidationRuleParameter**: `object`
+> **ValidationRuleParameter** = `object`
 
 Describes the settings of the validation rule parameter.
 
-## Type declaration
+## Properties
 
 ### default?
 
@@ -12,11 +12,15 @@ Describes the settings of the validation rule parameter.
 
 The default value.
 
+***
+
 ### editorType?
 
 > `optional` **editorType**: `string`
 
 The editor type of the setting value.
+
+***
 
 ### key
 
@@ -24,11 +28,15 @@ The editor type of the setting value.
 
 The unique setting key of the parameter.
 
+***
+
 ### required
 
 > **required**: `boolean`
 
 Flag whether the setting value must be filled in.
+
+***
 
 ### type
 

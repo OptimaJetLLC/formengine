@@ -1,10 +1,10 @@
 # Type Alias: Address
 
-> **Address**: `object`
+> **Address** = `object`
 
 Represents an address.
 
-## Type declaration
+## Properties
 
 ### address?
 
@@ -12,11 +12,15 @@ Represents an address.
 
 The first line of the address.
 
+***
+
 ### city?
 
 > `optional` **city**: `string`
 
 The city of the address.
+
+***
 
 ### country?
 
@@ -24,11 +28,15 @@ The city of the address.
 
 The country of the address.
 
+***
+
 ### postalCode?
 
 > `optional` **postalCode**: `string`
 
 The postal code of the address.
+
+***
 
 ### state?
 

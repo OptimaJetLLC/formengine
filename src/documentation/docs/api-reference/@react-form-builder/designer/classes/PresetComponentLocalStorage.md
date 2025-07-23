@@ -4,21 +4,23 @@ Class for working with the preset components in the local storage.
 
 ## Constructors
 
-### new PresetComponentLocalStorage()
+### Constructor
 
-> **new PresetComponentLocalStorage**(`presetsKey`): [`PresetComponentLocalStorage`](PresetComponentLocalStorage.md)
+> **new PresetComponentLocalStorage**(`presetsKey`): `PresetComponentLocalStorage`
 
 Creates an instance of preset storage in local storage.
 
 #### Parameters
 
-• **presetsKey**: `string` = `'presetComponents'`
+##### presetsKey
+
+`string` = `'presetComponents'`
 
 the key for the preset components in the local storage.
 
 #### Returns
 
-[`PresetComponentLocalStorage`](PresetComponentLocalStorage.md)
+`PresetComponentLocalStorage`
 
 ## Methods
 
@@ -44,7 +46,9 @@ Removes the preset component from the local storage.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 the name of the preset component.
 
@@ -62,7 +66,9 @@ Saves the preset component to the local storage.
 
 #### Parameters
 
-• **preset**: [`PresetComponent`](../interfaces/PresetComponent.md)
+##### preset
+
+[`PresetComponent`](../interfaces/PresetComponent.md)
 
 the preset component to save.
 

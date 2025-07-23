@@ -494,7 +494,7 @@ The function accepts the following parameters:
 1. `form` is the JSON of the form.
 2. `container` is the HTML element where the form will be rendered.
 3. `additionalProps` are the additional [properties](/api-reference/@react-form-builder/core/interfaces/FormViewerProps) of
-   the [FormViewer](/api-reference/@react-form-builder/core/functions/FormViewer) component.
+   the [FormViewer](/api-reference/@react-form-builder/core/variables/FormViewer) component.
 
 ```javascript
 function renderFormEngineForm(form, container, additionalProps) {

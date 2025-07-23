@@ -1,5 +1,5 @@
 # Type Alias: EventName
 
-> **EventName**: `string`
+> **EventName** = `string`
 
 The type for the event name.

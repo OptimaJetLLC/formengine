@@ -6,7 +6,9 @@ Localization testing function. **Internal use only.**
 
 ## Parameters
 
-• **request**: [`LocalizationTestRequest`](../type-aliases/LocalizationTestRequest.md)
+### request
+
+[`LocalizationTestRequest`](../type-aliases/LocalizationTestRequest.md)
 
 the localization testing request.
 

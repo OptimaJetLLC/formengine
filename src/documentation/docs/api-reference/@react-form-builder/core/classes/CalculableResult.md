@@ -4,33 +4,41 @@ Calculable result.
 
 ## Constructors
 
-### new CalculableResult()
+### Constructor
 
-> **new CalculableResult**(`error`, `result`?, `exceptions`?, `warning`?): [`CalculableResult`](CalculableResult.md)
+> **new CalculableResult**(`error`, `result?`, `exceptions?`, `warning?`): `CalculableResult`
 
 Constructor.
 
 #### Parameters
 
-• **error**: `boolean` = `false`
+##### error
+
+`boolean` = `false`
 
 the error.
 
-• **result?**: `any`
+##### result?
+
+`any`
 
 the result.
 
-• **exceptions?**: `Error`[]
+##### exceptions?
+
+`Error`[]
 
 the exceptions.
 
-• **warning?**: `boolean`
+##### warning?
+
+`boolean`
 
 the warning.
 
 #### Returns
 
-[`CalculableResult`](CalculableResult.md)
+`CalculableResult`
 
 ## Properties
 
@@ -68,19 +76,21 @@ the warning.
 
 ### error()
 
-> `static` **error**(`exceptions`): [`CalculableResult`](CalculableResult.md)
+> `static` **error**(`exceptions`): `CalculableResult`
 
 Creates a new instance of CalculableResult class with an error.
 
 #### Parameters
 
-• **exceptions**: `Error`[]
+##### exceptions
+
+`Error`[]
 
 the exception array.
 
 #### Returns
 
-[`CalculableResult`](CalculableResult.md)
+`CalculableResult`
 
 the new instance of CalculableResult class.
 
@@ -88,19 +98,21 @@ the new instance of CalculableResult class.
 
 ### success()
 
-> `static` **success**(`result`): [`CalculableResult`](CalculableResult.md)
+> `static` **success**(`result`): `CalculableResult`
 
 Creates a new instance of the CalculableResult class with a successful result.
 
 #### Parameters
 
-• **result**: `any`
+##### result
+
+`any`
 
 the calculable result.
 
 #### Returns
 
-[`CalculableResult`](CalculableResult.md)
+`CalculableResult`
 
 the new instance of CalculableResult class.
 
@@ -108,18 +120,20 @@ the new instance of CalculableResult class.
 
 ### warning()
 
-> `static` **warning**(`result`): [`CalculableResult`](CalculableResult.md)
+> `static` **warning**(`result`): `CalculableResult`
 
 Creates a new instance of the CalculableResult class with a warning result.
 
 #### Parameters
 
-• **result**: `any`
+##### result
+
+`any`
 
 the calculable result.
 
 #### Returns
 
-[`CalculableResult`](CalculableResult.md)
+`CalculableResult`
 
 the new instance of CalculableResult class.

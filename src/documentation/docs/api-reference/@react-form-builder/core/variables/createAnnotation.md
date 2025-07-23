@@ -1,18 +1,22 @@
-# Function: createAnnotation()
+# Variable: createAnnotation()
 
-> **createAnnotation**\<`T`\>(`editor`): [`AnnotationBuilder`](../classes/AnnotationBuilder.md)\<`T`\>
+> `const` **createAnnotation**: \<`T`\>(`editor`) => [`AnnotationBuilder`](../classes/AnnotationBuilder.md)\<`T`\> = `AnnotationBuilder.create`
 
 Creates a component property metadata builder.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 the property type.
 
 ## Parameters
 
-• **editor**: `string`
+### editor
+
+`string`
 
 the property editor type.
 

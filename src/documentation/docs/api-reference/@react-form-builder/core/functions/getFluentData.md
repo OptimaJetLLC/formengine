@@ -6,11 +6,15 @@ Converts the form data to a Fluent compatible. **Internal use only.**
 
 ## Parameters
 
-• **data**: `Record`\<`string`, `unknown`\>
+### data
+
+`Record`\<`string`, `unknown`\>
 
 the form data.
 
-• **parentKey**: `string` = `''`
+### parentKey
+
+`string` = `''`
 
 the parent property key.
 

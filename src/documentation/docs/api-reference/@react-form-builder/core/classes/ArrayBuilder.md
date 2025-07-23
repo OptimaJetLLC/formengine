@@ -9,23 +9,25 @@ Used for properties where the property value is an array.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 the property type.
 
 ## Constructors
 
-### new ArrayBuilder()
+### Constructor
 
-> **new ArrayBuilder**\<`T`\>(): [`ArrayBuilder`](ArrayBuilder.md)\<`T`\>
+> **new ArrayBuilder**\<`T`\>(): `ArrayBuilder`\<`T`\>
 
 #### Returns
 
-[`ArrayBuilder`](ArrayBuilder.md)\<`T`\>
+`ArrayBuilder`\<`T`\>
 
 #### Inherited from
 
-[`TypedBuilder`](TypedBuilder.md).[`constructor`](TypedBuilder.md#constructors)
+[`TypedBuilder`](TypedBuilder.md).[`constructor`](TypedBuilder.md#constructor)
 
 ## Properties
 
@@ -117,13 +119,13 @@ the non-localizable component property.
 
 #### Get Signature
 
-> **get** **ofObject**(): [`ArrayBuilder`](ArrayBuilder.md)\<`undefined` \| `object`[]\>
+> **get** **ofObject**(): `ArrayBuilder`\<`undefined` \| `object`[]\>
 
 Sets the component's value type to an array of objects.
 
 ##### Returns
 
-[`ArrayBuilder`](ArrayBuilder.md)\<`undefined` \| `object`[]\>
+`ArrayBuilder`\<`undefined` \| `object`[]\>
 
 the modified instance of the builder.
 
@@ -133,13 +135,13 @@ the modified instance of the builder.
 
 #### Get Signature
 
-> **get** **ofString**(): [`ArrayBuilder`](ArrayBuilder.md)\<`undefined` \| `string`[]\>
+> **get** **ofString**(): `ArrayBuilder`\<`undefined` \| `string`[]\>
 
 Sets the component's value type to an array of strings.
 
 ##### Returns
 
-[`ArrayBuilder`](ArrayBuilder.md)\<`undefined` \| `string`[]\>
+`ArrayBuilder`\<`undefined` \| `string`[]\>
 
 the modified instance of the builder.
 
@@ -191,7 +193,9 @@ Creates component property metadata for the form builder.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the unique key of the component property.
 
@@ -209,19 +213,21 @@ the instance of the component property metadata for the form builder.
 
 ### calculable()
 
-> **calculable**(`calculable`): [`ArrayBuilder`](ArrayBuilder.md)\<`T`\>
+> **calculable**(`calculable`): `ArrayBuilder`\<`T`\>
 
 Marks the component property as calculable.
 
 #### Parameters
 
-• **calculable**: `boolean`
+##### calculable
+
+`boolean`
 
 true if the property is calculable.
 
 #### Returns
 
-[`ArrayBuilder`](ArrayBuilder.md)\<`T`\>
+`ArrayBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -257,7 +263,9 @@ Sets the default value for the component property.
 
 #### Parameters
 
-• **value**: `T`
+##### value
+
+`T`
 
 the default value.
 
@@ -281,7 +289,9 @@ Returns the annotation name.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the property name
 
@@ -317,19 +327,21 @@ the modified instance of the builder.
 
 ### hinted()
 
-> **hinted**(`hint`): [`ArrayBuilder`](ArrayBuilder.md)\<`T`\>
+> **hinted**(`hint`): `ArrayBuilder`\<`T`\>
 
 Adds the hint to the property name of the component.
 
 #### Parameters
 
-• **hint**: `ReactNode`
+##### hint
+
+`ReactNode`
 
 the hint.
 
 #### Returns
 
-[`ArrayBuilder`](ArrayBuilder.md)\<`T`\>
+`ArrayBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -341,19 +353,21 @@ the modified instance of the builder.
 
 ### named()
 
-> **named**(`name`): [`ArrayBuilder`](ArrayBuilder.md)\<`T`\>
+> **named**(`name`): `ArrayBuilder`\<`T`\>
 
 Specifies the name of the component property.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 the property name.
 
 #### Returns
 
-[`ArrayBuilder`](ArrayBuilder.md)\<`T`\>
+`ArrayBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -371,7 +385,9 @@ Modifies the component property metadata builder with custom options.
 
 #### Parameters
 
-• **options**: `Partial`\<`Partial`\<`Omit`\<[`Annotation`](Annotation.md), `"key"`\>\> & `Pick`\<[`Annotation`](Annotation.md), `"editor"`\> & [`BuilderOptions`](BuilderOptions.md)\>
+##### options
+
+[`BuilderSetup`](../type-aliases/BuilderSetup.md)
 
 the custom options.
 
@@ -389,19 +405,21 @@ the modified instance of the builder.
 
 ### uncontrolledValue()
 
-> **uncontrolledValue**(`uncontrolledValue`): [`ArrayBuilder`](ArrayBuilder.md)\<`T`\>
+> **uncontrolledValue**(`uncontrolledValue`): `ArrayBuilder`\<`T`\>
 
 Sets the value for the property that prevents uncontrolled state.
 
 #### Parameters
 
-• **uncontrolledValue**: `unknown`
+##### uncontrolledValue
+
+`unknown`
 
 the value for the uncontrolled state.
 
 #### Returns
 
-[`ArrayBuilder`](ArrayBuilder.md)\<`T`\>
+`ArrayBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -419,11 +437,15 @@ Modifies the component property metadata builder with validation properties.
 
 #### Parameters
 
-• **validator**: [`RuleValidator`](../type-aliases/RuleValidator.md)\<`T`\>
+##### validator
+
+[`RuleValidator`](../type-aliases/RuleValidator.md)\<`T`\>
 
 the validation function.
 
-• **errorMap**: [`ErrorMap`](../type-aliases/ErrorMap.md)
+##### errorMap
+
+[`ErrorMap`](../type-aliases/ErrorMap.md)
 
 the validation error settings.
 
@@ -447,7 +469,9 @@ Sets custom properties for the component's property editor.
 
 #### Parameters
 
-• **props**: `any`
+##### props
+
+`any`
 
 the custom properties
 

@@ -23,6 +23,6 @@ The component metadata for the form builder.
 
 ### model
 
-> `readonly` **model**: [`Model`](../classes/Model.md)\<`any`\>
+> `readonly` **model**: [`Model`](../classes/Model.md)
 
 The component metadata for the form viewer.

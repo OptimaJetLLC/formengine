@@ -1,16 +1,20 @@
 # Type Alias: ComponentLocalizer()
 
-> **ComponentLocalizer**: (`componentStore`, `language`) => `Record`\<`string`, `any`\>
+> **ComponentLocalizer** = (`componentStore`, `language`) => `Record`\<`string`, `any`\>
 
 The function to localize the properties of a component.
 
 ## Parameters
 
-• **componentStore**: [`ComponentStore`](../classes/ComponentStore.md)
+### componentStore
+
+[`ComponentStore`](../classes/ComponentStore.md)
 
 the component settings.
 
-• **language**: [`Language`](../classes/Language.md)
+### language
+
+[`Language`](../classes/Language.md)
 
 the language selected in the form viewer.
 

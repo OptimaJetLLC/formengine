@@ -1,6 +1,6 @@
 # Type Alias: LocalizationValue
 
-> **LocalizationValue**: `Record`\<[`LanguageFullCode`](LanguageFullCode.md), [`ComponentsLocalization`](ComponentsLocalization.md)\>
+> **LocalizationValue** = `Record`\<[`LanguageFullCode`](LanguageFullCode.md), [`ComponentsLocalization`](ComponentsLocalization.md)\>
 
 The format in which localization is stored.
 

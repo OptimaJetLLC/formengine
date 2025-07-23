@@ -4,31 +4,35 @@ Component settings for serialization in JSON.
 
 ## Constructors
 
-### new ComponentStore()
+### Constructor
 
-> **new ComponentStore**(`key`, `type`): [`ComponentStore`](ComponentStore.md)
+> **new ComponentStore**(`key`, `type`): `ComponentStore`
 
 Creates the component settings.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the React component key.
 
-• **type**: `string`
+##### type
+
+`string`
 
 the component type of the form viewer.
 
 #### Returns
 
-[`ComponentStore`](ComponentStore.md)
+`ComponentStore`
 
 ## Properties
 
 ### children?
 
-> `optional` **children**: [`ComponentStore`](ComponentStore.md)[]
+> `optional` **children**: `ComponentStore`[]
 
 The array of child components.
 
@@ -84,7 +88,7 @@ The React component key.
 
 ### props
 
-> **props**: `Record`\<`string`, [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>\> = `{}`
+> **props**: `Record`\<`string`, [`ComponentProperty`](../interfaces/ComponentProperty.md)\> = `{}`
 
 The component properties.
 
@@ -154,15 +158,21 @@ Adds the event handler for component.
 
 #### Parameters
 
-• **store**: [`ComponentStore`](ComponentStore.md)
+##### store
 
-the target [ComponentStore](ComponentStore.md).
+`ComponentStore`
 
-• **eventName**: `string`
+the target ComponentStore.
+
+##### eventName
+
+`string`
 
 the target event name.
 
-• **data**: [`ActionData`](../type-aliases/ActionData.md)
+##### data
+
+[`ActionData`](../type-aliases/ActionData.md)
 
 the [ActionData](../type-aliases/ActionData.md).
 
@@ -176,11 +186,13 @@ the [ActionData](../type-aliases/ActionData.md).
 
 > `static` **createFromObject**(`value`): `any`
 
-Correctly creates the [ComponentStore](ComponentStore.md) from deserialized data.
+Correctly creates the ComponentStore from deserialized data.
 
 #### Parameters
 
-• **value**: `any`
+##### value
+
+`any`
 
 the deserialized data.
 

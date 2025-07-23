@@ -6,7 +6,9 @@ Creates table columns based on their descriptions. **Internal use only.**
 
 ## Parameters
 
-• **columns**: [`ColumnDescription`](../interfaces/ColumnDescription.md)[]
+### columns
+
+[`ColumnDescription`](../interfaces/ColumnDescription.md)[]
 
 the column descriptions.
 

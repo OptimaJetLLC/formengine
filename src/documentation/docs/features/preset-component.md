@@ -41,7 +41,7 @@ In the current version, localization is not saved in the preset. We plan to add 
 ## Predefined presets
 
 You can pre-define presets that will be immediately available to the user in the designer. They are created in the same way as regular
-components, through the [definePreset](/api-reference/@react-form-builder/core/functions/definePreset) function. Here is an example:
+components, through the [definePreset](/api-reference/@react-form-builder/core/variables/definePreset) function. Here is an example:
 
 ```tsx
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'

@@ -1,10 +1,10 @@
 # Type Alias: LocalizationTestRequest
 
-> **LocalizationTestRequest**: `object`
+> **LocalizationTestRequest** = `object`
 
 Localization testing request.
 
-## Type declaration
+## Properties
 
 ### data
 
@@ -12,17 +12,23 @@ Localization testing request.
 
 The test form data.
 
+***
+
 ### language
 
 > **language**: [`Language`](../classes/Language.md)
 
 The localization Language.
 
+***
+
 ### localization
 
 > **localization**: `string`
 
 Localization value to be tested.
+
+***
 
 ### localizationStringId
 

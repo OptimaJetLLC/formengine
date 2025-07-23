@@ -6,15 +6,21 @@ Executes a given function on each node of a tree. **Internal use only.**
 
 ## Type Parameters
 
-• **T** *extends* `object`
+### T
+
+`T` *extends* `object`
 
 ## Parameters
 
-• **tree**: `T`
+### tree
+
+`T`
 
 the root node of the tree.
 
-• **fn**
+### fn
+
+(`treeNode`) => `void`
 
 the function to be executed on each node of the tree.
 

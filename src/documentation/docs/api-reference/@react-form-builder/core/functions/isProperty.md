@@ -6,7 +6,9 @@ Type predicate, asserts that the value is an instance of PropertyAnnotation. **I
 
 ## Parameters
 
-• **value**: [`Annotation`](../classes/Annotation.md)
+### value
+
+[`Annotation`](../classes/Annotation.md)
 
 the value.
 

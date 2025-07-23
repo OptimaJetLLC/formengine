@@ -100,13 +100,15 @@ Allows to customize the behavior and functionality of the editor.
 
 ### onChange()
 
-> **onChange**: (`value`?) => `void`
+> **onChange**: (`value?`) => `void`
 
 Triggered after the content changed.
 
 #### Parameters
 
-• **value?**: `string`
+##### value?
+
+`string`
 
 #### Returns
 
@@ -124,7 +126,9 @@ Triggered after the content changed.
 
 #### Parameters
 
-• **event**: `any`
+##### event
+
+`any`
 
 #### Returns
 
@@ -142,7 +146,9 @@ Triggered after the content changed.
 
 #### Parameters
 
-• **event**: `any`
+##### event
+
+`any`
 
 #### Returns
 
@@ -160,7 +166,9 @@ Triggered after the content changed.
 
 #### Parameters
 
-• **event**: `any`
+##### event
+
+`any`
 
 #### Returns
 
@@ -256,11 +264,17 @@ Groups of buttons to be displayed on the toolbar.
 
 #### Parameters
 
-• **previousSelection**: `Range`
+##### previousSelection
 
-• **source**: `EmitterSource`
+`Range`
 
-• **editor**: `UnprivilegedEditor`
+##### source
+
+`EmitterSource`
+
+##### editor
+
+`UnprivilegedEditor`
 
 #### Returns
 
@@ -278,11 +292,17 @@ Groups of buttons to be displayed on the toolbar.
 
 #### Parameters
 
-• **selection**: `Range`
+##### selection
 
-• **source**: `EmitterSource`
+`Range`
 
-• **editor**: `UnprivilegedEditor`
+##### source
+
+`EmitterSource`
+
+##### editor
+
+`UnprivilegedEditor`
 
 #### Returns
 
@@ -300,11 +320,17 @@ Groups of buttons to be displayed on the toolbar.
 
 #### Parameters
 
-• **selection**: `Range`
+##### selection
 
-• **source**: `EmitterSource`
+`Range`
 
-• **editor**: `UnprivilegedEditor`
+##### source
+
+`EmitterSource`
+
+##### editor
+
+`UnprivilegedEditor`
 
 #### Returns
 

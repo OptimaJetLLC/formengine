@@ -127,19 +127,19 @@ The default map type to use.
 
 ***
 
-### markerWindowTitle
-
-> **markerWindowTitle**: `string`
-
-The title for the marker window.
-
-***
-
 ### markers?
 
 > `optional` **markers**: [`MapMarker`](../type-aliases/MapMarker.md)[]
 
 Coordinates of the markers
+
+***
+
+### markerWindowTitle
+
+> **markerWindowTitle**: `string`
+
+The title for the marker window.
 
 ***
 
@@ -151,7 +151,9 @@ The callback function called when the map is clicked.
 
 #### Parameters
 
-• **event**: `MapMouseEvent`
+##### event
+
+`MapMouseEvent`
 
 #### Returns
 
@@ -167,7 +169,9 @@ The callback function called when a marker is added.
 
 #### Parameters
 
-• **marker**: [`MapMarker`](../type-aliases/MapMarker.md)
+##### marker
+
+[`MapMarker`](../type-aliases/MapMarker.md)
 
 #### Returns
 
@@ -183,9 +187,13 @@ The callback function called when a marker is clicked.
 
 #### Parameters
 
-• **marker**: `null` \| [`MapMarker`](../type-aliases/MapMarker.md)
+##### marker
 
-• **element**: `AdvancedMarkerElement`
+`null` | [`MapMarker`](../type-aliases/MapMarker.md)
+
+##### element
+
+`AdvancedMarkerElement`
 
 #### Returns
 
@@ -201,7 +209,9 @@ The callback function called when a marker is deleted.
 
 #### Parameters
 
-• **marker**: [`MapMarker`](../type-aliases/MapMarker.md)
+##### marker
+
+[`MapMarker`](../type-aliases/MapMarker.md)
 
 #### Returns
 
@@ -211,17 +221,21 @@ The callback function called when a marker is deleted.
 
 ### onPlaceSelect()?
 
-> `optional` **onPlaceSelect**: (`place`, `address`?) => `void`
+> `optional` **onPlaceSelect**: (`place`, `address?`) => `void`
 
 The callback function called when a place is selected.
 
 #### Parameters
 
-• **place**: `PlaceResult`
+##### place
+
+`PlaceResult`
 
 the selected place.
 
-• **address?**: [`Address`](../type-aliases/Address.md)
+##### address?
+
+[`Address`](../type-aliases/Address.md)
 
 the address of the selected place.
 

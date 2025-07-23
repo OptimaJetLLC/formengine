@@ -1,16 +1,18 @@
 # Type Alias: Options
 
-> **Options**: `object`
+> **Options** = `object`
 
 Customization options for the FormBuilder component.
 
-## Type declaration
+## Properties
 
 ### className?
 
 > `optional` **className**: `string`
 
 The component className.
+
+***
 
 ### customRenderer()?
 
@@ -20,15 +22,21 @@ The component custom renderer.
 
 #### Parameters
 
-• **defaultElement**: `ReactElement`
+##### defaultElement
+
+`ReactElement`
 
 the default rendering result.
 
-• **component**: `ComponentType`\<`any`\>
+##### component
+
+`ComponentType`\<`any`\>
 
 the React component.
 
-• **props**: `any`
+##### props
+
+`any`
 
 the props that were sent to the component.
 
@@ -38,11 +46,15 @@ the props that were sent to the component.
 
 the customized ReactElement.
 
+***
+
 ### hidden?
 
 > `optional` **hidden**: `boolean`
 
 True if you want to hide the component.
+
+***
 
 ### style?
 

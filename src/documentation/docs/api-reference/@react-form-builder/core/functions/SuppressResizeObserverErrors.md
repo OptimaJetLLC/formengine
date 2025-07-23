@@ -6,7 +6,9 @@ SuppressResizeObserverErrors component is used to suppress ResizeObserver errors
 
 ## Parameters
 
-• **props**: [`SuppressResizeObserverErrorsProps`](../interfaces/SuppressResizeObserverErrorsProps.md)
+### props
+
+[`SuppressResizeObserverErrorsProps`](../interfaces/SuppressResizeObserverErrorsProps.md)
 
 the component props.
 

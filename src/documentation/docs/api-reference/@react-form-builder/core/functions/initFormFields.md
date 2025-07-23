@@ -6,7 +6,9 @@ Replaces empty form fields with an empty string. **Internal use only.**
 
 ## Parameters
 
-• **form**: [`ComponentData`](../classes/ComponentData.md)
+### form
+
+[`ComponentData`](../classes/ComponentData.md)
 
 the form.
 

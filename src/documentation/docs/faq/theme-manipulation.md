@@ -15,7 +15,7 @@ by directly modifying  `theme` value in `localStorage`.
 
 ### Using the theme property in FormBuilder component
 
-To set the theme in [FormBuilder](/api-reference/@react-form-builder/designer/functions/FormBuilder), simply pass one of the following
+To set the theme in [FormBuilder](/api-reference/@react-form-builder/designer/variables/FormBuilder), simply pass one of the following
 values to the [theme](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#theme) property:
 
 - `light` - forces the application to use the light theme.

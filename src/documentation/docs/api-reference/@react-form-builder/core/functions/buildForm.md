@@ -1,12 +1,14 @@
 # Function: buildForm()
 
-> **buildForm**(`options`?): [`IFormJsonBuilder`](../interfaces/IFormJsonBuilder.md)
+> **buildForm**(`options?`): [`IFormJsonBuilder`](../interfaces/IFormJsonBuilder.md)
 
 Creates and returns a new form JSON builder instance.
 
 ## Parameters
 
-• **options?**: [`FormOptions`](../type-aliases/FormOptions.md)
+### options?
+
+[`FormOptions`](../type-aliases/FormOptions.md)
 
 the optional configuration options for the form.
 

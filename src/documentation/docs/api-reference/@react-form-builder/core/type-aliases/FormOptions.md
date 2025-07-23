@@ -1,16 +1,18 @@
 # Type Alias: FormOptions
 
-> **FormOptions**: `object`
+> **FormOptions** = `object`
 
 Options for configuring the form behavior.
 
-## Type declaration
+## Properties
 
 ### defaultLanguage?
 
 > `optional` **defaultLanguage**: `string`
 
 The default form language.
+
+***
 
 ### errorType?
 

@@ -1373,13 +1373,15 @@ The line width.
 
 ### onChange()?
 
-> `optional` **onChange**: (`value`?) => `void`
+> `optional` **onChange**: (`value?`) => `void`
 
 Triggered after stroke update.
 
 #### Parameters
 
-• **value?**: `string`
+##### value?
+
+`string`
 
 #### Returns
 
@@ -1985,26 +1987,6 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
-### onLoadStart?
-
-> `optional` **onLoadStart**: `ReactEventHandler`\<`HTMLCanvasElement`\>
-
-#### Inherited from
-
-`Omit.onLoadStart`
-
-***
-
-### onLoadStartCapture?
-
-> `optional` **onLoadStartCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
-
-#### Inherited from
-
-`Omit.onLoadStartCapture`
-
-***
-
 ### onLoadedData?
 
 > `optional` **onLoadedData**: `ReactEventHandler`\<`HTMLCanvasElement`\>
@@ -2042,6 +2024,26 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 #### Inherited from
 
 `Omit.onLoadedMetadataCapture`
+
+***
+
+### onLoadStart?
+
+> `optional` **onLoadStart**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+
+#### Inherited from
+
+`Omit.onLoadStart`
+
+***
+
+### onLoadStartCapture?
+
+> `optional` **onLoadStartCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
+
+#### Inherited from
+
+`Omit.onLoadStartCapture`
 
 ***
 

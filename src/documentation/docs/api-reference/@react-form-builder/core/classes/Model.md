@@ -4,83 +4,115 @@ Represents component metadata for the form viewer.
 
 ## Type Parameters
 
-• **T** = `any`
+### T
+
+`T` = `any`
 
 the type of React component properties.
 
 ## Constructors
 
-### new Model()
+### Constructor
 
-> **new Model**\<`T`\>(`component`, `name`?, `actionsInitializer`?, `valued`?, `valueType`?, `defaultProps`?, `css`?, `wrapperCss`?, `typeName`?, `kind`?, `readOnly`?, `propsBindingTypes`?, `uncontrolledValue`?, `disabled`?, `dataBindingType`?): [`Model`](Model.md)\<`T`\>
+> **new Model**\<`T`\>(`component`, `name?`, `actionsInitializer?`, `valued?`, `valueType?`, `defaultProps?`, `css?`, `wrapperCss?`, `typeName?`, `kind?`, `readOnly?`, `propsBindingTypes?`, `uncontrolledValue?`, `disabled?`, `dataBindingType?`): `Model`\<`T`\>
 
 Creates component metadata for the form viewer.
 
 #### Parameters
 
-• **component**: `ComponentType`\<`T`\>
+##### component
+
+`ComponentType`\<`T`\>
 
 the React component.
 
-• **name?**: `string`
+##### name?
+
+`string`
 
 the component name.
 
-• **actionsInitializer?**: [`ActionsInitializer`](../type-aliases/ActionsInitializer.md)
+##### actionsInitializer?
+
+[`ActionsInitializer`](../type-aliases/ActionsInitializer.md)
 
 the function to initialize actions in the component.
 
-• **valued?**: `string`
+##### valued?
+
+`string`
 
 the name of the component property where the component value is stored.
 
-• **valueType?**: keyof SchemaTypeMap
+##### valueType?
+
+keyof SchemaTypeMap
 
 the type of the component value.
 
-• **defaultProps?**: `Readonly`\<`Record`\<`string`, `any`\>\>
+##### defaultProps?
+
+`Readonly`\<`Record`\<`string`, `any`\>\>
 
 the component's default property values.
 
-• **css?**: [`Css`](../type-aliases/Css.md)
+##### css?
+
+[`Css`](../type-aliases/Css.md)
 
 the component's CSS values.
 
-• **wrapperCss?**: [`Css`](../type-aliases/Css.md)
+##### wrapperCss?
+
+[`Css`](../type-aliases/Css.md)
 
 the component's wrapper CSS values.
 
-• **typeName?**: `string`
+##### typeName?
+
+`string`
 
 the component type name.
 
-• **kind?**: [`ComponentKind`](../type-aliases/ComponentKind.md) = `'component'`
+##### kind?
+
+[`ComponentKind`](../type-aliases/ComponentKind.md) = `'component'`
 
 the component kind.
 
-• **readOnly?**: `string`
+##### readOnly?
+
+`string`
 
 the name of the component property that stores the read-only flag.
 
-• **propsBindingTypes?**: `Readonly`\<`Record`\<`string`, [`ComponentPropertyBindType`](../type-aliases/ComponentPropertyBindType.md)\>\> = `{}`
+##### propsBindingTypes?
+
+`Readonly`\<`Record`\<`string`, [`ComponentPropertyBindType`](../type-aliases/ComponentPropertyBindType.md)\>\> = `{}`
 
 the component property binding types.
 
-• **uncontrolledValue?**: `unknown`
+##### uncontrolledValue?
+
+`unknown`
 
 the value for the uncontrolled (undefined) state.
 
-• **disabled?**: `string`
+##### disabled?
+
+`string`
 
 the name of the component property that stores the disabled flag.
 
-• **dataBindingType?**: [`DataBindingType`](../type-aliases/DataBindingType.md) = `'none'`
+##### dataBindingType?
+
+[`DataBindingType`](../type-aliases/DataBindingType.md) = `'none'`
 
 the type of component data binding.
 
 #### Returns
 
-[`Model`](Model.md)\<`T`\>
+`Model`\<`T`\>
 
 ## Properties
 
@@ -172,19 +204,19 @@ the value for the uncontrolled (undefined) state.
 
 ***
 
-### valueType?
-
-> `readonly` `optional` **valueType**: keyof SchemaTypeMap
-
-the type of the component value.
-
-***
-
 ### valued?
 
 > `readonly` `optional` **valued**: `string`
 
 the name of the component property where the component value is stored.
+
+***
+
+### valueType?
+
+> `readonly` `optional` **valueType**: keyof SchemaTypeMap
+
+the type of the component value.
 
 ***
 

@@ -4,37 +4,47 @@ Represents a form that is rendered in Viewer or edited in Builder.
 
 ## Constructors
 
-### new Form()
+### Constructor
 
-> **new Form**(`componentTree`, `localization`, `actions`, `languages`, `defaultLanguage`): [`Form`](Form.md)
+> **new Form**(`componentTree`, `localization`, `actions`, `languages`, `defaultLanguage`): `Form`
 
 Creates a new instance of Form.
 
 #### Parameters
 
-• **componentTree**: [`ComponentData`](ComponentData.md)
+##### componentTree
+
+[`ComponentData`](ComponentData.md)
 
 the root component of the form.
 
-• **localization**: [`LocalizationStore`](LocalizationStore.md)
+##### localization
+
+[`LocalizationStore`](LocalizationStore.md)
 
 the localization of the form.
 
-• **actions**: [`ActionValues`](../type-aliases/ActionValues.md)
+##### actions
+
+[`ActionValues`](../type-aliases/ActionValues.md)
 
 the form custom actions.
 
-• **languages**: [`Language`](Language.md)[]
+##### languages
+
+[`Language`](Language.md)[]
 
 the localization languages of the form.
 
-• **defaultLanguage**: [`Language`](Language.md)
+##### defaultLanguage
+
+[`Language`](Language.md)
 
 the default localization language of the form.
 
 #### Returns
 
-[`Form`](Form.md)
+`Form`
 
 ## Properties
 
@@ -146,7 +156,9 @@ Clones the action.
 
 #### Parameters
 
-• **namedAction**: [`NamedActionDefinition`](../type-aliases/NamedActionDefinition.md)
+##### namedAction
+
+[`NamedActionDefinition`](../type-aliases/NamedActionDefinition.md)
 
 the named action to clone.
 
@@ -188,7 +200,9 @@ Removes the action from the form.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 the action name to remove.
 
@@ -206,11 +220,15 @@ Changes the existing action to the new one, adds the action if the existing acti
 
 #### Parameters
 
-• **oldActionName**: `string`
+##### oldActionName
+
+`string`
 
 the existing action name.
 
-• **newAction**: [`NamedActionDefinition`](../type-aliases/NamedActionDefinition.md)
+##### newAction
+
+[`NamedActionDefinition`](../type-aliases/NamedActionDefinition.md)
 
 the new named action.
 

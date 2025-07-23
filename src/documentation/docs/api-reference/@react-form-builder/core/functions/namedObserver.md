@@ -6,15 +6,21 @@ Creates the observable React component. **Internal use only.**
 
 ## Type Parameters
 
-• **T** *extends* `ComponentType`\<`any`\>
+### T
+
+`T` *extends* `ComponentType`\<`any`\>
 
 ## Parameters
 
-• **displayName**: `string`
+### displayName
+
+`string`
 
 the displayName value of the React component.
 
-• **component**: `T`
+### component
+
+`T`
 
 the React component.
 

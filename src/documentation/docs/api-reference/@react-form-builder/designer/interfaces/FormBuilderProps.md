@@ -73,18 +73,6 @@ If true, the component will not be wrapped by the error display component.
 
 ***
 
-### errorWrapper?
-
-> `optional` **errorWrapper**: `ComponentType`\<[`ErrorWrapperProps`](../../core/interfaces/ErrorWrapperProps.md)\>
-
-The default error wrapper used when errorType is not specified in the form.
-
-#### Inherited from
-
-`Omit.errorWrapper`
-
-***
-
 ### errors?
 
 > `optional` **errors**: `Record`\<`string`, `unknown`\>
@@ -94,6 +82,18 @@ The form validation errors.
 #### Inherited from
 
 `Omit.errors`
+
+***
+
+### errorWrapper?
+
+> `optional` **errorWrapper**: `ComponentType`\<[`ErrorWrapperProps`](../../core/interfaces/ErrorWrapperProps.md)\>
+
+The default error wrapper used when errorType is not specified in the form.
+
+#### Inherited from
+
+`Omit.errorWrapper`
 
 ***
 
@@ -145,17 +145,21 @@ The set of functions that validate the form data.
 
 ### getForm()?
 
-> `optional` **getForm**: (`name`?, `options`?) => `string` \| `Promise`\<`string`\>
+> `optional` **getForm**: (`name?`, `options?`) => `string` \| `Promise`\<`string`\>
 
 Loads the form.
 
 #### Parameters
 
-• **name?**: `string`
+##### name?
+
+`string`
 
 the form name.
 
-• **options?**: `any`
+##### options?
+
+`any`
 
 the form options.
 
@@ -193,7 +197,7 @@ The initial data of the form.
 
 ### language?
 
-> `optional` **language**: \`$\{string\}-$\{string\}\`
+> `optional` **language**: `` `${string}-${string}` ``
 
 The language of the form, e.g. 'en-US'.
 
@@ -231,7 +235,9 @@ The event is called whenever a form data changes.
 
 #### Parameters
 
-• **data**: [`IFormData`](../../core/interfaces/IFormData.md)
+##### data
+
+[`IFormData`](../../core/interfaces/IFormData.md)
 
 the [IFormData](../../core/interfaces/IFormData.md) with all the form data.
 
@@ -253,7 +259,9 @@ The event is called whenever a form schema changes.
 
 #### Parameters
 
-• **formSchema**: `string`
+##### formSchema
+
+`string`
 
 the current form schema serialized to JSON.
 
@@ -340,18 +348,6 @@ All the metadata of the components of the form builder.
 
 ***
 
-### viewMode?
-
-> `optional` **viewMode**: [`ViewMode`](../../core/type-aliases/ViewMode.md)
-
-Display resolution type.
-
-#### Inherited from
-
-`Omit.viewMode`
-
-***
-
 ### viewerRef?
 
 > `optional` **viewerRef**: `ForwardedRef`\<[`IFormViewer`](../../core/interfaces/IFormViewer.md)\>
@@ -361,3 +357,15 @@ The reference to [IFormViewer](../../core/interfaces/IFormViewer.md).
 #### Inherited from
 
 `Omit.viewerRef`
+
+***
+
+### viewMode?
+
+> `optional` **viewMode**: [`ViewMode`](../../core/type-aliases/ViewMode.md)
+
+Display resolution type.
+
+#### Inherited from
+
+`Omit.viewMode`

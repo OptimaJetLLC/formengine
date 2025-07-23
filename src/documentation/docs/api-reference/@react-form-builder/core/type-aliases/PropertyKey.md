@@ -1,11 +1,13 @@
 # Type Alias: PropertyKey\<T\>
 
-> **PropertyKey**\<`T`\>: keyof `T` & `string`
+> **PropertyKey**\<`T`\> = keyof `T` & `string`
 
 Component property key type.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 the type of action parameter

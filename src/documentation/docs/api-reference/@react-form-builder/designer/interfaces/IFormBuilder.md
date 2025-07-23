@@ -12,7 +12,9 @@ Sets the form serialized in JSON as the current form.
 
 #### Parameters
 
-• **text**: `string`
+##### text
+
+`string`
 
 the form serialized in JSON.
 
@@ -42,7 +44,9 @@ Sets the form builder mode. Builder or viewer.
 
 ##### Parameters
 
-• **mode**: [`BuilderMode`](../../core/type-aliases/BuilderMode.md)
+###### mode
+
+[`BuilderMode`](../../core/type-aliases/BuilderMode.md)
 
 ##### Returns
 

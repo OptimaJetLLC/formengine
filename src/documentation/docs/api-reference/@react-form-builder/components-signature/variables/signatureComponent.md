@@ -1,3 +1,3 @@
 # Variable: signatureComponent
 
-> `const` **signatureComponent**: [`Definer`](../../core/classes/Definer.md)\<[`SignatureProps`](../interfaces/SignatureProps.md)\> = `signature`
+> `const` **signatureComponent**: [`Definer`](../../core/interfaces/Definer.md)\<[`SignatureProps`](../interfaces/SignatureProps.md)\> = `signature`

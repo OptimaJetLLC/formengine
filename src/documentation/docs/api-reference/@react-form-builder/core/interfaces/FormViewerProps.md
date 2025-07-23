@@ -37,14 +37,6 @@ If true, the component will not be wrapped by the error display component.
 
 ***
 
-### errorWrapper?
-
-> `optional` **errorWrapper**: `ComponentType`\<[`ErrorWrapperProps`](ErrorWrapperProps.md)\>
-
-The default error wrapper used when errorType is not specified in the form.
-
-***
-
 ### errors?
 
 > `optional` **errors**: `Record`\<`string`, `unknown`\>
@@ -53,12 +45,20 @@ The form validation errors.
 
 ***
 
+### errorWrapper?
+
+> `optional` **errorWrapper**: `ComponentType`\<[`ErrorWrapperProps`](ErrorWrapperProps.md)\>
+
+The default error wrapper used when errorType is not specified in the form.
+
+***
+
 ### formName?
 
 > `optional` **formName**: `string`
 
 The form name.
-Updating the value triggers the [FormViewerProps.getForm](FormViewerProps.md#getform) function.
+Updating the value triggers the [FormViewerProps.getForm](#getform) function.
 
 ***
 
@@ -66,8 +66,8 @@ Updating the value triggers the [FormViewerProps.getForm](FormViewerProps.md#get
 
 > `optional` **formOptions**: `any`
 
-The form options. Used to transfer any options to the [FormViewerProps.getForm](FormViewerProps.md#getform) function.
-Updating the value triggers the [FormViewerProps.getForm](FormViewerProps.md#getform) function.
+The form options. Used to transfer any options to the [FormViewerProps.getForm](#getform) function.
+Updating the value triggers the [FormViewerProps.getForm](#getform) function.
 
 ***
 
@@ -81,17 +81,21 @@ The set of functions that validate the form data.
 
 ### getForm()?
 
-> `optional` **getForm**: (`name`?, `options`?) => `string` \| `Promise`\<`string`\>
+> `optional` **getForm**: (`name?`, `options?`) => `string` \| `Promise`\<`string`\>
 
 Loads the form.
 
 #### Parameters
 
-• **name?**: `string`
+##### name?
+
+`string`
 
 the form name.
 
-• **options?**: `any`
+##### options?
+
+`any`
 
 the form options.
 
@@ -113,7 +117,7 @@ The initial data of the form.
 
 ### language?
 
-> `optional` **language**: \`$\{string\}-$\{string\}\`
+> `optional` **language**: `` `${string}-${string}` ``
 
 The language of the form, e.g. 'en-US'.
 
@@ -135,7 +139,9 @@ The event is called whenever a form data changes.
 
 #### Parameters
 
-• **data**: [`IFormData`](IFormData.md)
+##### data
+
+[`IFormData`](IFormData.md)
 
 the [IFormData](IFormData.md) with all the form data.
 
@@ -177,16 +183,16 @@ All the metadata of the components of the form viewer.
 
 ***
 
-### viewMode?
-
-> `optional` **viewMode**: [`ViewMode`](../type-aliases/ViewMode.md)
-
-Display resolution type.
-
-***
-
 ### viewerRef?
 
 > `optional` **viewerRef**: `ForwardedRef`\<[`IFormViewer`](IFormViewer.md)\>
 
 The reference to [IFormViewer](IFormViewer.md).
+
+***
+
+### viewMode?
+
+> `optional` **viewMode**: [`ViewMode`](../type-aliases/ViewMode.md)
+
+Display resolution type.

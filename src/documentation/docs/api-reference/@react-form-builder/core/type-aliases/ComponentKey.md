@@ -1,5 +1,5 @@
 # Type Alias: ComponentKey
 
-> **ComponentKey**: `string`
+> **ComponentKey** = `string`
 
 The component key.

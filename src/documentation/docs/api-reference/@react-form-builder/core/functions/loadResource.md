@@ -6,15 +6,21 @@ Loads a resource into the document head asynchronously. **Internal use only.**
 
 ## Parameters
 
-• **id**: `string`
+### id
+
+`string`
 
 the identifier of the resource.
 
-• **href**: `string`
+### href
+
+`string`
 
 represents a URL to the resource.
 
-• **rel**: `string`
+### rel
+
+`string`
 
 the relationship of the resource to the document.
 

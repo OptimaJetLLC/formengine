@@ -4,6 +4,9 @@ Properties of the React component that wraps the form view component and display
 
 ## Extended by
 
+- [`RsErrorMessageProps`](../../viewer-bundle/namespaces/rSuiteComponents/interfaces/RsErrorMessageProps.md)
+- [`RsErrorMessageProps`](../../components-rsuite/interfaces/RsErrorMessageProps.md)
+
 ## Properties
 
 ### children?

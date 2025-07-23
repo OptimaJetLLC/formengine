@@ -4,21 +4,23 @@ Represents the props passed to the FormViewer Store. **Internal use only.**
 
 ## Constructors
 
-### new FormViewerPropsStore()
+### Constructor
 
-> **new FormViewerPropsStore**(`formViewerProps`?): [`FormViewerPropsStore`](FormViewerPropsStore.md)
+> **new FormViewerPropsStore**(`formViewerProps?`): `FormViewerPropsStore`
 
 Constructs a new FormViewerPropsStore from the given FormViewerProps.
 
 #### Parameters
 
-• **formViewerProps?**: [`FormViewerProps`](../interfaces/FormViewerProps.md)
+##### formViewerProps?
+
+[`FormViewerProps`](../interfaces/FormViewerProps.md)
 
 the FormViewer props.
 
 #### Returns
 
-[`FormViewerPropsStore`](FormViewerPropsStore.md)
+`FormViewerPropsStore`
 
 the FormViewerPropsStore.
 
@@ -74,7 +76,7 @@ The function to localize the properties of a component.
 
 ### propsLanguage?
 
-> `optional` **propsLanguage**: \`$\{string\}-$\{string\}\`
+> `optional` **propsLanguage**: `` `${string}-${string}` ``
 
 The full language code passed in the FormViewer properties, e.g. 'en-US'.
 
@@ -120,7 +122,9 @@ Applies the given FormViewerProps.
 
 #### Parameters
 
-• **formViewerProps**: [`FormViewerProps`](../interfaces/FormViewerProps.md)
+##### formViewerProps
+
+[`FormViewerProps`](../interfaces/FormViewerProps.md)
 
 the properties to apply.
 
@@ -132,12 +136,12 @@ the properties to apply.
 
 ### clone()
 
-> **clone**(): [`FormViewerPropsStore`](FormViewerPropsStore.md)
+> **clone**(): `FormViewerPropsStore`
 
 Returns the clone of the FormViewerPropsStore object.
 
 #### Returns
 
-[`FormViewerPropsStore`](FormViewerPropsStore.md)
+`FormViewerPropsStore`
 
 the clone of the FormViewerPropsStore object.

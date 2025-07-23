@@ -6,7 +6,9 @@ Generates the template type name from the specified template name. **Internal us
 
 ## Parameters
 
-• **name**: `string`
+### name
+
+`string`
 
 the template name.
 

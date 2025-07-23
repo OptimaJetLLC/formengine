@@ -42,23 +42,29 @@ Disables the ability to make the property computable.
 
 ### getComputeCode()
 
-> **getComputeCode**: \<`T`\>(`type`, `params`?) => `string`
+> **getComputeCode**: \<`T`\>(`type`, `params?`) => `string`
 
 Returns the code of the computed property.
 
 #### Type Parameters
 
-• **T** *extends* [`ComponentPropertyComputeType`](../../core/type-aliases/ComponentPropertyComputeType.md)
+##### T
+
+`T` *extends* [`ComponentPropertyComputeType`](../../core/type-aliases/ComponentPropertyComputeType.md)
 
 the component property value type.
 
 #### Parameters
 
-• **type**: `T`
+##### type
+
+`T`
 
 the component property value type.
 
-• **params?**: [`ComputeTypeParams`](../type-aliases/ComputeTypeParams.md)\<`T`\>
+##### params?
+
+[`ComputeTypeParams`](../type-aliases/ComputeTypeParams.md)\<`T`\>
 
 the parameters of the compute code.
 
@@ -98,7 +104,9 @@ Returns true if the property has a compute code for the specified type, false ot
 
 #### Parameters
 
-• **type**: [`ComponentPropertyComputeType`](../../core/type-aliases/ComponentPropertyComputeType.md)
+##### type
+
+[`ComponentPropertyComputeType`](../../core/type-aliases/ComponentPropertyComputeType.md)
 
 the compute type.
 
@@ -122,7 +130,9 @@ Annotation editor onChange handler.
 
 #### Parameters
 
-• **value**: `any`
+##### value
+
+`any`
 
 #### Returns
 
@@ -144,27 +154,35 @@ Annotation editor onClean handler.
 
 ### setComputeCode()
 
-> **setComputeCode**: \<`T`\>(`value`, `type`, `params`?) => `void`
+> **setComputeCode**: \<`T`\>(`value`, `type`, `params?`) => `void`
 
 Sets the computed property code.
 
 #### Type Parameters
 
-• **T** *extends* [`ComponentPropertyComputeType`](../../core/type-aliases/ComponentPropertyComputeType.md)
+##### T
+
+`T` *extends* [`ComponentPropertyComputeType`](../../core/type-aliases/ComponentPropertyComputeType.md)
 
 the component property value type.
 
 #### Parameters
 
-• **value**: `string`
+##### value
+
+`string`
 
 the code of computed property.
 
-• **type**: `T`
+##### type
+
+`T`
 
 the component property value type.
 
-• **params?**: [`ComputeTypeParams`](../type-aliases/ComputeTypeParams.md)\<`T`\>
+##### params?
+
+[`ComputeTypeParams`](../type-aliases/ComputeTypeParams.md)\<`T`\>
 
 the parameters of the compute code.
 
@@ -180,13 +198,15 @@ the parameters of the compute code.
 
 ### showError()?
 
-> `optional` **showError**: (`message`?) => `void`
+> `optional` **showError**: (`message?`) => `void`
 
 Displays an error message to the user.
 
 #### Parameters
 
-• **message?**: `string`
+##### message?
+
+`string`
 
 #### Returns
 

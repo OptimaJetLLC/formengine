@@ -1,11 +1,11 @@
 # Type Alias: ActionData
 
-> **ActionData**: `object`
+> **ActionData** = `object`
 
 Action Storage.
 Used for add a new action, store information about it.
 
-## Type declaration
+## Properties
 
 ### \[KeySymbol\]?
 
@@ -13,17 +13,23 @@ Used for add a new action, store information about it.
 
 The unique action key.
 
+***
+
 ### args?
 
 > `optional` **args**: [`Arguments`](Arguments.md)
 
 The action arguments.
 
+***
+
 ### name
 
 > **name**: `string`
 
 The action name.
+
+***
 
 ### type
 

@@ -12,31 +12,35 @@ The builder class to define the metadata property of the form builder component.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 the property type.
 
 ## Constructors
 
-### new AnnotationBuilder()
+### Constructor
 
-> **new AnnotationBuilder**\<`T`\>(`editor`): [`AnnotationBuilder`](AnnotationBuilder.md)\<`T`\>
+> **new AnnotationBuilder**\<`T`\>(`editor`): `AnnotationBuilder`\<`T`\>
 
 Creates a component property metadata builder.
 
 #### Parameters
 
-• **editor**: `string`
+##### editor
+
+`string`
 
 the property editor type.
 
 #### Returns
 
-[`AnnotationBuilder`](AnnotationBuilder.md)\<`T`\>
+`AnnotationBuilder`\<`T`\>
 
 #### Overrides
 
-[`BaseBuilder`](BaseBuilder.md).[`constructor`](BaseBuilder.md#constructors)
+[`BaseBuilder`](BaseBuilder.md).[`constructor`](BaseBuilder.md#constructor)
 
 ## Properties
 
@@ -160,7 +164,9 @@ Creates component property metadata for the form builder.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the unique key of the component property.
 
@@ -178,19 +184,21 @@ the instance of the component property metadata for the form builder.
 
 ### calculable()
 
-> **calculable**(`calculable`): [`AnnotationBuilder`](AnnotationBuilder.md)\<`T`\>
+> **calculable**(`calculable`): `AnnotationBuilder`\<`T`\>
 
 Marks the component property as calculable.
 
 #### Parameters
 
-• **calculable**: `boolean`
+##### calculable
+
+`boolean`
 
 true if the property is calculable.
 
 #### Returns
 
-[`AnnotationBuilder`](AnnotationBuilder.md)\<`T`\>
+`AnnotationBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -226,7 +234,9 @@ Returns the annotation name.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the property name
 
@@ -262,19 +272,21 @@ the modified instance of the builder.
 
 ### hinted()
 
-> **hinted**(`hint`): [`AnnotationBuilder`](AnnotationBuilder.md)\<`T`\>
+> **hinted**(`hint`): `AnnotationBuilder`\<`T`\>
 
 Adds the hint to the property name of the component.
 
 #### Parameters
 
-• **hint**: `ReactNode`
+##### hint
+
+`ReactNode`
 
 the hint.
 
 #### Returns
 
-[`AnnotationBuilder`](AnnotationBuilder.md)\<`T`\>
+`AnnotationBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -286,19 +298,21 @@ the modified instance of the builder.
 
 ### named()
 
-> **named**(`name`): [`AnnotationBuilder`](AnnotationBuilder.md)\<`T`\>
+> **named**(`name`): `AnnotationBuilder`\<`T`\>
 
 Specifies the name of the component property.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 the property name.
 
 #### Returns
 
-[`AnnotationBuilder`](AnnotationBuilder.md)\<`T`\>
+`AnnotationBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -316,11 +330,15 @@ Sets the property as a "single select" property.
 
 #### Type Parameters
 
-• **U** *extends* `string` \| `number`
+##### U
+
+`U` *extends* `string` \| `number`
 
 #### Parameters
 
-• ...**values**: `U`[]
+##### values
+
+...`U`[]
 
 the possible values for the property.
 
@@ -340,7 +358,9 @@ Modifies the component property metadata builder with custom options.
 
 #### Parameters
 
-• **options**: `Partial`\<`Partial`\<`Omit`\<[`Annotation`](Annotation.md), `"key"`\>\> & `Pick`\<[`Annotation`](Annotation.md), `"editor"`\> & [`BuilderOptions`](BuilderOptions.md)\>
+##### options
+
+[`BuilderSetup`](../type-aliases/BuilderSetup.md)
 
 the custom options.
 
@@ -364,11 +384,15 @@ Sets the property as a "multiple select" property.
 
 #### Type Parameters
 
-• **U** *extends* `string` \| `number`
+##### U
+
+`U` *extends* `string` \| `number`
 
 #### Parameters
 
-• ...**values**: `U`[]
+##### values
+
+...`U`[]
 
 the possible values for the property.
 
@@ -388,11 +412,15 @@ Sets the field type for the component property.
 
 #### Type Parameters
 
-• **T** *extends* keyof [`SchemaTypeMap`](../type-aliases/SchemaTypeMap.md)
+##### T
+
+`T` *extends* keyof [`SchemaTypeMap`](../type-aliases/SchemaTypeMap.md)
 
 #### Parameters
 
-• **type**: `T`
+##### type
+
+`T`
 
 the field type.
 
@@ -406,19 +434,21 @@ the instance of the metadata property builder.
 
 ### uncontrolledValue()
 
-> **uncontrolledValue**(`uncontrolledValue`): [`AnnotationBuilder`](AnnotationBuilder.md)\<`T`\>
+> **uncontrolledValue**(`uncontrolledValue`): `AnnotationBuilder`\<`T`\>
 
 Sets the value for the property that prevents uncontrolled state.
 
 #### Parameters
 
-• **uncontrolledValue**: `unknown`
+##### uncontrolledValue
+
+`unknown`
 
 the value for the uncontrolled state.
 
 #### Returns
 
-[`AnnotationBuilder`](AnnotationBuilder.md)\<`T`\>
+`AnnotationBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -436,7 +466,9 @@ Sets custom properties for the component's property editor.
 
 #### Parameters
 
-• **props**: `any`
+##### props
+
+`any`
 
 the custom properties
 
@@ -454,24 +486,28 @@ the modified instance of the builder.
 
 ### create()
 
-> `static` **create**\<`T`\>(`editor`): [`AnnotationBuilder`](AnnotationBuilder.md)\<`T`\>
+> `static` **create**\<`T`\>(`editor`): `AnnotationBuilder`\<`T`\>
 
 Creates a component property metadata builder.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 the property type.
 
 #### Parameters
 
-• **editor**: `string`
+##### editor
+
+`string`
 
 the property editor type.
 
 #### Returns
 
-[`AnnotationBuilder`](AnnotationBuilder.md)\<`T`\>
+`AnnotationBuilder`\<`T`\>
 
 the component property metadata builder.

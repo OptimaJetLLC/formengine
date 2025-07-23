@@ -1,25 +1,23 @@
 # rSuiteComponents
 
-## Index
-
-### Interfaces
+## Interfaces
 
 - [RsErrorMessageProps](interfaces/RsErrorMessageProps.md)
 - [RsTooltipProps](interfaces/RsTooltipProps.md)
 
-### Variables
+## Variables
 
 - [builderViewWithCss](variables/builderViewWithCss.md)
 - [models](variables/models.md)
-- [rSuiteComponents](variables/rSuiteComponents.md)
 - [rsErrorMessage](variables/rsErrorMessage.md)
 - [rsTooltip](variables/rsTooltip.md)
+- [rSuiteComponents](variables/rSuiteComponents.md)
 - [view](variables/view.md)
 - [viewWithCss](variables/viewWithCss.md)
 
-### Functions
+## Functions
 
-- [RsLocalizationWrapper](functions/RsLocalizationWrapper.md)
 - [formEngineRsuiteCssLoader](functions/formEngineRsuiteCssLoader.md)
 - [ltrCssLoader](functions/ltrCssLoader.md)
+- [RsLocalizationWrapper](functions/RsLocalizationWrapper.md)
 - [rtlCssLoader](functions/rtlCssLoader.md)

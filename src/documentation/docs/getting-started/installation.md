@@ -10,7 +10,7 @@ slug: /installation
 ## Designer
 
 The form designer in Form Builder is represented by the React
-component [FormBuilder](/api-reference/@react-form-builder/designer/functions/FormBuilder). The `FormBuilder` component is located in the
+component [FormBuilder](/api-reference/@react-form-builder/designer/variables/FormBuilder). The `FormBuilder` component is located in the
 package [@react-form-builder/designer](https://www.npmjs.com/package/@react-form-builder/designer).
 
 To install the package in your application, use the command:
@@ -95,8 +95,8 @@ This is the minimal React component code with which you can add a form designer 
 
 ## Viewer
 
-The [FormViewer](/api-reference/@react-form-builder/core/functions/FormViewer) component is responsible for displaying the form in Form
-Builder. The [FormBuilder](/api-reference/@react-form-builder/designer/functions/FormBuilder) uses the `FormViewer` component to display
+The [FormViewer](/api-reference/@react-form-builder/core/variables/FormViewer) component is responsible for displaying the form in Form
+Builder. The [FormBuilder](/api-reference/@react-form-builder/designer/variables/FormBuilder) uses the `FormViewer` component to display
 the form in the center panel.
 
 To install the package in your application, use the command:

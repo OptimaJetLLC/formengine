@@ -1,5 +1,5 @@
 # Type Alias: ComponentPropertyName
 
-> **ComponentPropertyName**: `string`
+> **ComponentPropertyName** = `string`
 
 The component property name.

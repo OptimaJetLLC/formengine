@@ -1,16 +1,22 @@
-# Function: oneOf()
+# Variable: oneOf()
 
-> **oneOf**\<`U`\>(...`values`): [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`U`\>
+> `const` **oneOf**: \<`U`\>(...`values`) => [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`U`\>
 
 The annotation builder for a component property with type 'enum', the property value can only be one of enum.
 
+Sets the property as a "single select" property.
+
 ## Type Parameters
 
-• **U** *extends* `string` \| `number`
+### U
+
+`U` *extends* `string` \| `number`
 
 ## Parameters
 
-• ...**values**: `U`[]
+### values
+
+...`U`[]
 
 the possible values for the property.
 

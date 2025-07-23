@@ -6,7 +6,9 @@ Type predicate, asserts that the value is a string. **Internal use only.**
 
 ## Parameters
 
-• **value**: `any`
+### value
+
+`any`
 
 the value.
 

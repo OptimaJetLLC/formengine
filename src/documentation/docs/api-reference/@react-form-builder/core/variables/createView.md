@@ -1,12 +1,14 @@
-# Function: createView()
+# Variable: createView()
 
-> **createView**(`models`): [`View`](../classes/View.md)
+> `const` **createView**: (`models`) => [`View`](../classes/View.md) = `View.create`
 
 Static wrapper for the [View](../classes/View.md) constructor.
 
 ## Parameters
 
-• **models**: [`Model`](../classes/Model.md)\<`any`\>[]
+### models
+
+[`Model`](../classes/Model.md)\<`any`\>[]
 
 the components metadata.
 

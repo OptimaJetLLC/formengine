@@ -1,10 +1,10 @@
 # Type Alias: LocalizationComputeCodeParams
 
-> **LocalizationComputeCodeParams**: `object`
+> **LocalizationComputeCodeParams** = `object`
 
 Localization compute parameters.
 
-## Type declaration
+## Properties
 
 ### langCode?
 

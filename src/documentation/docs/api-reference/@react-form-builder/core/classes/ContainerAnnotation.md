@@ -9,29 +9,33 @@ The Container property of a component can contain other React components.
 
 ## Constructors
 
-### new ContainerAnnotation()
+### Constructor
 
-> **new ContainerAnnotation**(`key`, `name`): [`ContainerAnnotation`](ContainerAnnotation.md)
+> **new ContainerAnnotation**(`key`, `name`): `ContainerAnnotation`
 
 Creates metadata for a React component property.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the property name.
 
-• **name**: `string`
+##### name
+
+`string`
 
 the human-readable property name.
 
 #### Returns
 
-[`ContainerAnnotation`](ContainerAnnotation.md)
+`ContainerAnnotation`
 
 #### Inherited from
 
-[`Annotation`](Annotation.md).[`constructor`](Annotation.md#constructors)
+[`Annotation`](Annotation.md).[`constructor`](Annotation.md#constructor)
 
 ## Properties
 
@@ -159,9 +163,13 @@ The function that checks whether a child component can be inserted into a parent
 
 #### Parameters
 
-• **self**: [`ComponentData`](ComponentData.md)
+##### self
 
-• **child**: [`ComponentData`](ComponentData.md)
+[`ComponentData`](ComponentData.md)
+
+##### child
+
+[`ComponentData`](ComponentData.md)
 
 #### Returns
 
@@ -237,7 +245,9 @@ A function that returns a string containing the source code of the function to b
 
 #### Parameters
 
-• **props**: `any`
+##### props
+
+`any`
 
 the properties of the component, which are available only inside Form Builder Designer.
 
@@ -317,13 +327,15 @@ the metadata clone.
 
 ### getNodeEditorType()
 
-> **getNodeEditorType**(`componentProperty`?): [`NodeEditorType`](../type-aliases/NodeEditorType.md)
+> **getNodeEditorType**(`componentProperty?`): [`NodeEditorType`](../type-aliases/NodeEditorType.md)
 
 Returns the node editor type for the component property.
 
 #### Parameters
 
-• **componentProperty?**: [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>
+##### componentProperty?
+
+[`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>
 
 the component property.
 

@@ -1,16 +1,18 @@
 # Type Alias: NamedActionDefinition
 
-> **NamedActionDefinition**: `object`
+> **NamedActionDefinition** = `object`
 
 Represents a named action definition.
 
-## Type declaration
+## Properties
 
 ### actionDefinition
 
 > **actionDefinition**: [`ActionDefinition`](../classes/ActionDefinition.md)
 
 The definition of an action.
+
+***
 
 ### name
 

@@ -8,33 +8,41 @@ Calculates all the properties of the form view component.
 
 ## Constructors
 
-### new ComponentState()
+### Constructor
 
-> **new ComponentState**(`data`, `store`, `localizer`, `computeChildren`): [`ComponentState`](ComponentState.md)
+> **new ComponentState**(`data`, `store`, `localizer`, `computeChildren`): `ComponentState`
 
 Creates an instance that calculates the properties of the form viewer component.
 
 #### Parameters
 
-• **data**: [`ComponentData`](ComponentData.md)
+##### data
+
+[`ComponentData`](ComponentData.md)
 
 the data needed to display the component.
 
-• **store**: [`Store`](Store.md)
+##### store
+
+[`Store`](Store.md)
 
 the form viewer settings.
 
-• **localizer**: [`ComponentStoreLocalizer`](../type-aliases/ComponentStoreLocalizer.md)
+##### localizer
+
+[`ComponentStoreLocalizer`](../type-aliases/ComponentStoreLocalizer.md)
 
 the function to localize the properties of a component, returns a Record with localized properties.
 
-• **computeChildren**: [`ComputeChildren`](../type-aliases/ComputeChildren.md)
+##### computeChildren
+
+[`ComputeChildren`](../type-aliases/ComputeChildren.md)
 
 the function that calculates all child properties of a component.
 
 #### Returns
 
-[`ComponentState`](ComponentState.md)
+`ComponentState`
 
 ## Properties
 
@@ -116,11 +124,11 @@ the Record that contains the className property for the component.
 
 #### Get Signature
 
-> **get** **disabled**(): `undefined` \| `object`
+> **get** **disabled**(): `undefined` \| \{[`key`: `string`]: `any`; \}
 
 ##### Returns
 
-`undefined` \| `object`
+`undefined` \| \{[`key`: `string`]: `any`; \}
 
 the disabled property of a component if the component has a disabled flag.
 
@@ -267,11 +275,11 @@ does not contain styles additionally defined for the component.
 
 #### Get Signature
 
-> **get** **readOnly**(): `undefined` \| `object`
+> **get** **readOnly**(): `undefined` \| \{[`key`: `string`]: `any`; \}
 
 ##### Returns
 
-`undefined` \| `object`
+`undefined` \| \{[`key`: `string`]: `any`; \}
 
 the read-only property of a component if the component has a read-only flag.
 
@@ -281,11 +289,11 @@ the read-only property of a component if the component has a read-only flag.
 
 #### Get Signature
 
-> **get** **value**(): `undefined` \| `object`
+> **get** **value**(): `undefined` \| \{[`key`: `string`]: `unknown`; \}
 
 ##### Returns
 
-`undefined` \| `object`
+`undefined` \| \{[`key`: `string`]: `unknown`; \}
 
 the component's field value data, if the component can have a field value.
 
@@ -319,7 +327,9 @@ Calculates and returns all child components.
 
 #### Parameters
 
-• **props**: `any`
+##### props
+
+`any`
 
 the React component properties.
 

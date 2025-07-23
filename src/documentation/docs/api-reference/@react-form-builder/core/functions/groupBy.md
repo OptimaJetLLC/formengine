@@ -6,15 +6,21 @@ Groups the array of values by function predicate. **Internal use only.**
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 ## Parameters
 
-• **array**: `T`[]
+### array
+
+`T`[]
 
 the array of values.
 
-• **predicate**
+### predicate
+
+(`value`, `index`, `array`) => `string`
 
 the function that returns a string to group the values of the array.
 

@@ -9,23 +9,25 @@ Used for properties where the property value can be a set of predefined values.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 the property type.
 
 ## Constructors
 
-### new SomeOfBuilder()
+### Constructor
 
-> **new SomeOfBuilder**\<`T`\>(): [`SomeOfBuilder`](SomeOfBuilder.md)\<`T`\>
+> **new SomeOfBuilder**\<`T`\>(): `SomeOfBuilder`\<`T`\>
 
 #### Returns
 
-[`SomeOfBuilder`](SomeOfBuilder.md)\<`T`\>
+`SomeOfBuilder`\<`T`\>
 
 #### Inherited from
 
-[`QuantifierBuilder`](QuantifierBuilder.md).[`constructor`](QuantifierBuilder.md#constructors)
+[`QuantifierBuilder`](QuantifierBuilder.md).[`constructor`](QuantifierBuilder.md#constructor)
 
 ## Properties
 
@@ -177,7 +179,9 @@ Creates component property metadata for the form builder.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the unique key of the component property.
 
@@ -195,19 +199,21 @@ the instance of the component property metadata for the form builder.
 
 ### calculable()
 
-> **calculable**(`calculable`): [`SomeOfBuilder`](SomeOfBuilder.md)\<`T`\>
+> **calculable**(`calculable`): `SomeOfBuilder`\<`T`\>
 
 Marks the component property as calculable.
 
 #### Parameters
 
-• **calculable**: `boolean`
+##### calculable
+
+`boolean`
 
 true if the property is calculable.
 
 #### Returns
 
-[`SomeOfBuilder`](SomeOfBuilder.md)\<`T`\>
+`SomeOfBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -243,7 +249,9 @@ Sets the default value for the component property.
 
 #### Parameters
 
-• **value**: `T`[]
+##### value
+
+`T`[]
 
 the default value.
 
@@ -267,7 +275,9 @@ Returns the annotation name.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the property name
 
@@ -303,19 +313,21 @@ the modified instance of the builder.
 
 ### hinted()
 
-> **hinted**(`hint`): [`SomeOfBuilder`](SomeOfBuilder.md)\<`T`\>
+> **hinted**(`hint`): `SomeOfBuilder`\<`T`\>
 
 Adds the hint to the property name of the component.
 
 #### Parameters
 
-• **hint**: `ReactNode`
+##### hint
+
+`ReactNode`
 
 the hint.
 
 #### Returns
 
-[`SomeOfBuilder`](SomeOfBuilder.md)\<`T`\>
+`SomeOfBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -327,19 +339,21 @@ the modified instance of the builder.
 
 ### labeled()
 
-> **labeled**(...`labels`): [`SomeOfBuilder`](SomeOfBuilder.md)\<`T`\>
+> **labeled**(...`labels`): `SomeOfBuilder`\<`T`\>
 
 Sets the labels for predefined values.
 
 #### Parameters
 
-• ...**labels**: `string`[]
+##### labels
+
+...`string`[]
 
 the labels.
 
 #### Returns
 
-[`SomeOfBuilder`](SomeOfBuilder.md)\<`T`\>
+`SomeOfBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -351,19 +365,21 @@ the modified instance of the builder.
 
 ### named()
 
-> **named**(`name`): [`SomeOfBuilder`](SomeOfBuilder.md)\<`T`\>
+> **named**(`name`): `SomeOfBuilder`\<`T`\>
 
 Specifies the name of the component property.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 the property name.
 
 #### Returns
 
-[`SomeOfBuilder`](SomeOfBuilder.md)\<`T`\>
+`SomeOfBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -381,7 +397,9 @@ Modifies the component property metadata builder with custom options.
 
 #### Parameters
 
-• **options**: `Partial`\<`Partial`\<`Omit`\<[`Annotation`](Annotation.md), `"key"`\>\> & `Pick`\<[`Annotation`](Annotation.md), `"editor"`\> & [`BuilderOptions`](BuilderOptions.md)\>
+##### options
+
+[`BuilderSetup`](../type-aliases/BuilderSetup.md)
 
 the custom options.
 
@@ -399,19 +417,21 @@ the modified instance of the builder.
 
 ### uncontrolledValue()
 
-> **uncontrolledValue**(`uncontrolledValue`): [`SomeOfBuilder`](SomeOfBuilder.md)\<`T`\>
+> **uncontrolledValue**(`uncontrolledValue`): `SomeOfBuilder`\<`T`\>
 
 Sets the value for the property that prevents uncontrolled state.
 
 #### Parameters
 
-• **uncontrolledValue**: `unknown`
+##### uncontrolledValue
+
+`unknown`
 
 the value for the uncontrolled state.
 
 #### Returns
 
-[`SomeOfBuilder`](SomeOfBuilder.md)\<`T`\>
+`SomeOfBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -429,11 +449,15 @@ Modifies the component property metadata builder with validation properties.
 
 #### Parameters
 
-• **validator**: [`RuleValidator`](../type-aliases/RuleValidator.md)\<`T`\>
+##### validator
+
+[`RuleValidator`](../type-aliases/RuleValidator.md)\<`T`\>
 
 the validation function.
 
-• **errorMap**: [`ErrorMap`](../type-aliases/ErrorMap.md)
+##### errorMap
+
+[`ErrorMap`](../type-aliases/ErrorMap.md)
 
 the validation error settings.
 
@@ -457,7 +481,9 @@ Sets custom properties for the component's property editor.
 
 #### Parameters
 
-• **props**: `any`
+##### props
+
+`any`
 
 the custom properties
 

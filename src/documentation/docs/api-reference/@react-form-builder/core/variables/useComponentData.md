@@ -1,6 +1,6 @@
-# Function: useComponentData()
+# Variable: useComponentData()
 
-> **useComponentData**(): [`ComponentData`](../classes/ComponentData.md)
+> **useComponentData**: () => [`ComponentData`](../classes/ComponentData.md)
 
 ## Returns
 

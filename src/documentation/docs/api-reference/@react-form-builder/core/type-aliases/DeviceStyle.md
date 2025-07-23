@@ -1,16 +1,18 @@
 # Type Alias: DeviceStyle
 
-> **DeviceStyle**: `object`
+> **DeviceStyle** = `object`
 
 CSS styles for a device.
 
-## Type declaration
+## Properties
 
 ### object?
 
 > `optional` **object**: `CSSObject`
 
 CSS styles defined in the general style settings.
+
+***
 
 ### string?
 

@@ -8,29 +8,33 @@ Metadata for the component property for the form builder.
 
 ## Constructors
 
-### new PropertyAnnotation()
+### Constructor
 
-> **new PropertyAnnotation**(`key`, `name`): [`PropertyAnnotation`](PropertyAnnotation.md)
+> **new PropertyAnnotation**(`key`, `name`): `PropertyAnnotation`
 
 Creates metadata for a React component property.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the property name.
 
-• **name**: `string`
+##### name
+
+`string`
 
 the human-readable property name.
 
 #### Returns
 
-[`PropertyAnnotation`](PropertyAnnotation.md)
+`PropertyAnnotation`
 
 #### Inherited from
 
-[`Annotation`](Annotation.md).[`constructor`](Annotation.md#constructors)
+[`Annotation`](Annotation.md).[`constructor`](Annotation.md#constructor)
 
 ## Properties
 
@@ -218,7 +222,9 @@ A function that returns a string containing the source code of the function to b
 
 #### Parameters
 
-• **props**: `any`
+##### props
+
+`any`
 
 the properties of the component, which are available only inside Form Builder Designer.
 

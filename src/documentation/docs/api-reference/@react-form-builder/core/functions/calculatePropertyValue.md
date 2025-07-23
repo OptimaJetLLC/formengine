@@ -2,15 +2,21 @@
 
 > **calculatePropertyValue**(`componentProperty`, `formViewerData`): [`CalculableResult`](../classes/CalculableResult.md)
 
+**`Internal`**
+
 Calculates the value for the component property. **Internal use only.**
 
 ## Parameters
 
-• **componentProperty**: [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>
+### componentProperty
+
+[`ComponentProperty`](../interfaces/ComponentProperty.md)
 
 the component property.
 
-• **formViewerData**: [`IFormData`](../interfaces/IFormData.md)
+### formViewerData
+
+[`IFormData`](../interfaces/IFormData.md)
 
 the formViewerData data.
 

@@ -7,7 +7,9 @@ Original source code from https://developers.google.com/maps/documentation/javas
 
 ## Parameters
 
-• **components**: `GeocoderAddressComponent`[]
+### components
+
+`GeocoderAddressComponent`[]
 
 the address components.
 

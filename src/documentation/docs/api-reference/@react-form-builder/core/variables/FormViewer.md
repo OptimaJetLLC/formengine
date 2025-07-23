@@ -1,12 +1,14 @@
-# Function: FormViewer()
+# Variable: FormViewer()
 
-> **FormViewer**(`props`): `Element`
+> `const` **FormViewer**: (`props`) => `Element`
 
 The main React component of the form viewer.
 
 ## Parameters
 
-• **props**: [`FormViewerProps`](../interfaces/FormViewerProps.md)
+### props
+
+[`FormViewerProps`](../interfaces/FormViewerProps.md)
 
 the React component properties.
 

@@ -1,5 +1,5 @@
 # Type Alias: BuilderMode
 
-> **BuilderMode**: `"builder"` \| `"viewer"`
+> **BuilderMode** = `"builder"` \| `"viewer"`
 
 Form builder mode. Builder or viewer.

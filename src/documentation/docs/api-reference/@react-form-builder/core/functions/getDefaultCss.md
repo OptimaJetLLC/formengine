@@ -6,7 +6,9 @@ Extracts CSS properties default values from annotations . **Internal use only.**
 
 ## Parameters
 
-• **annotations**: [`Annotation`](../classes/Annotation.md)[]
+### annotations
+
+[`Annotation`](../classes/Annotation.md)[]
 
 the array of component annotations.
 

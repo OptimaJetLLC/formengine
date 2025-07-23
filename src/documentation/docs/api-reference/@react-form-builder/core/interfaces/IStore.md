@@ -32,17 +32,23 @@ Performs the callback function on each element of the component tree, accumulate
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 the return value type.
 
 #### Parameters
 
-• **callback**
+##### callback
+
+(`accumulator`, `current`) => `T`
 
 the function that calculates the value for the accumulator.
 
-• **initialValue**: `T`
+##### initialValue
+
+`T`
 
 the initial value for the accumulator.
 
@@ -90,15 +96,21 @@ Localizes a component store based on the given localization type. If a custom lo
 
 #### Parameters
 
-• **type**: `string`
+##### type
+
+`string`
 
 the type of localization.
 
-• **formData**: [`IFormData`](IFormData.md)
+##### formData
+
+[`IFormData`](IFormData.md)
 
 the form data.
 
-• **componentStore**: [`ComponentStore`](../classes/ComponentStore.md)
+##### componentStore
+
+[`ComponentStore`](../classes/ComponentStore.md)
 
 the component settings.
 
@@ -112,21 +124,27 @@ the Record with the localized properties.
 
 ### localizeErrorMessages()
 
-> **localizeErrorMessages**(`formData`, `componentStore`, `validationResults`?): `undefined` \| `string`
+> **localizeErrorMessages**(`formData`, `componentStore`, `validationResults?`): `undefined` \| `string`
 
 The function to localize the validation error message.
 
 #### Parameters
 
-• **formData**: [`IFormData`](IFormData.md)
+##### formData
+
+[`IFormData`](IFormData.md)
 
 the form data.
 
-• **componentStore**: [`ComponentStore`](../classes/ComponentStore.md)
+##### componentStore
+
+[`ComponentStore`](../classes/ComponentStore.md)
 
 the component settings.
 
-• **validationResults?**: [`ValidationResult`](../type-aliases/ValidationResult.md)[]
+##### validationResults?
+
+[`ValidationResult`](../type-aliases/ValidationResult.md)[]
 
 the results of the validation.
 

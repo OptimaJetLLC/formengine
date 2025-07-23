@@ -1,16 +1,18 @@
 # Type Alias: ErrorMap
 
-> **ErrorMap**: `object`
+> **ErrorMap** = `object`
 
 The result of validating a component property in the form builder.
 
-## Type declaration
+## Properties
 
 ### code?
 
 > `optional` **code**: `string`
 
 The validation code.
+
+***
 
 ### message?
 

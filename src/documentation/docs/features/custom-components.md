@@ -22,7 +22,7 @@ Meta-information on component properties in Form Builder is called an annotation
 
 Form Builder has the following APIs for describing a component:
 
-1. [define](/api-reference/@react-form-builder/core/functions/define): is the primary method for defining a component.
+1. [define](/api-reference/@react-form-builder/core/variables/define): is the primary method for defining a component.
 2. [string](/api-reference/@react-form-builder/core/variables/string): annotation builder for properties of type `string`.
 3. [boolean](/api-reference/@react-form-builder/core/variables/boolean): annotation builder for properties of type `boolean`.
 4. [number](/api-reference/@react-form-builder/core/variables/number): annotation builder for properties of type `number`.
@@ -35,9 +35,9 @@ Form Builder has the following APIs for describing a component:
     name.
 11. [event](/api-reference/@react-form-builder/core/variables/event): annotation builder for properties of type `event`.
 12. [node](/api-reference/@react-form-builder/core/variables/node): annotation builder for properties of type `ReactNode`.
-13. [oneOf](/api-reference/@react-form-builder/core/functions/oneOf): annotation builder for properties of type `enum`, the property value
+13. [oneOf](/api-reference/@react-form-builder/core/variables/oneOf): annotation builder for properties of type `enum`, the property value
     can only be one of enum.
-14. [someOf](/api-reference/@react-form-builder/core/functions/someOf): annotation builder for properties of type `enum`, the property
+14. [someOf](/api-reference/@react-form-builder/core/variables/someOf): annotation builder for properties of type `enum`, the property
     value can contain multiple enum values.
 15. [readOnly](/api-reference/@react-form-builder/core/variables/readOnly): annotation builder for `boolean` properties that make a
     component read-only.
@@ -174,7 +174,7 @@ Once the application is compiled, the Form Builder should appear on the web page
 Now let's break down what we did.
 
 1. Imported [BuilderView](/api-reference/@react-form-builder/core/classes/BuilderView),
-   [FormBuilder](/api-reference/@react-form-builder/designer/functions/FormBuilder) from `@react-form-builder/designer` package.
+   [FormBuilder](/api-reference/@react-form-builder/designer/variables/FormBuilder) from `@react-form-builder/designer` package.
 2. Created a `builderView` variable of type `BuilderView`. We passed an empty array as a parameter to the `BuilderView` constructor - this
    is an empty array with the component's metadata.
 3. In the React component `App`, we rendered the `FormBuilder` component with the component metadata from the `builderView` variable.
@@ -234,7 +234,7 @@ export default App
 ```
 
 We use the `matButton.build()` method because the `matButton` variable is the component's metadata builder. After calling
-the [build](/api-reference/@react-form-builder/core/classes/Definer#build) method, we will
+the [build](/api-reference/@react-form-builder/core/interfaces/Definer#build) method, we will
 get an instance of [BuilderComponent](/api-reference/@react-form-builder/core/interfaces/BuilderComponent), which contains the metadata
 needed at design time and at runtime.
 
@@ -261,7 +261,7 @@ component we can see how the component changes on the form:
 ### Form with custom component
 
 After creating a form in the designer, you can copy (or download) the form code and pass the form code to
-the [FormViewer](/api-reference/@react-form-builder/core/functions/FormViewer), a component for displaying forms. Here is an example of a
+the [FormViewer](/api-reference/@react-form-builder/core/variables/FormViewer), a component for displaying forms. Here is an example of a
 form with a custom component:
 
 ```json
@@ -379,9 +379,9 @@ export default App
 
 Let's take a look at what has changed in the application:
 
-1. Imported createView, [FormViewer](/api-reference/@react-form-builder/core/functions/FormViewer) from @react-form-builder/core package.
+1. Imported createView, [FormViewer](/api-reference/@react-form-builder/core/variables/FormViewer) from @react-form-builder/core package.
 2. Created a set of metadata for `FormViewer` and saved it to a view variable. The `FormViewer` component does not need all the metadata of
-   the component, what is in the `model` field is enough. The [createView](/api-reference/@react-form-builder/core/functions/createView)
+   the component, what is in the `model` field is enough. The [createView](/api-reference/@react-form-builder/core/variables/createView)
    function creates a [View](/api-reference/@react-form-builder/core/classes/View) object that contains information about the components
    required to display the form.
 3. Added a form and saved it to the `form` variable.
@@ -624,8 +624,8 @@ export const rsAutoComplete = define(RsAutoComplete, 'RsAutoComplete')
 
 ### Kind of a component
 
-Also, in some cases, you may need to set the [`kind`](/api-reference/@react-form-builder/core/classes/Definer#kind) of the component. This
-is a property that shows [how to render](/component-styling#structure) the component. For regular components, it is set to `'component'` by
+Also, in some cases, you may need to set the [`kind`](/api-reference/@react-form-builder/core/interfaces/Definer#kind) of the component.
+This is a property that shows [how to render](/component-styling#structure) the component. For regular components, it is set to `'component'` by
 default. You can the `kind` value to `'container'` in case you need the component to be only a container, for its children, without having
 its own wrappers.
 
@@ -645,8 +645,8 @@ const myContainer = define(MyContainer)
 ### Component icon
 
 If you want to change the component icon that is displayed next to the component name, it is quite easy to do so. Just call
-the [icon](/api-reference/@react-form-builder/core/classes/Definer#icon) method when selecting a component and pass React `ComponentType` to
-it, which will draw the icon.
+the [icon](/api-reference/@react-form-builder/core/interfaces/Definer#icon) method when selecting a component and pass React `ComponentType`
+to it, which will draw the icon.
 
 Illustrating example:
 

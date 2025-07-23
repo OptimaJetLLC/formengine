@@ -1,16 +1,18 @@
 # Type Alias: ValidationRule
 
-> **ValidationRule**: `object`
+> **ValidationRule** = `object`
 
 Validation rule metadata required to create a validation function.
 
-## Type declaration
+## Properties
 
 ### params?
 
 > `optional` **params**: [`ValidationRuleParameter`](ValidationRuleParameter.md)[]
 
 Metadata of validation rule parameters.
+
+***
 
 ### validatorFactory
 

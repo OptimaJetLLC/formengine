@@ -1,16 +1,18 @@
 # Type Alias: ComputePropertiesParameters
 
-> **ComputePropertiesParameters**: `object`
+> **ComputePropertiesParameters** = `object`
 
 The parameter type of the component property value parameters.
 
-## Type declaration
+## Properties
 
 ### function
 
 > **function**: `never`
 
 Function parameters.
+
+***
 
 ### localization
 

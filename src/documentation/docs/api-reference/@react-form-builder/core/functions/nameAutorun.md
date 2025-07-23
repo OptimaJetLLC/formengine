@@ -6,15 +6,21 @@ Computes the autorun name based on the owner, name, and parameters. **Internal u
 
 ## Parameters
 
-• **owner**: `string`
+### owner
+
+`string`
 
 the owner of the autorun.
 
-• **name**: `string`
+### name
+
+`string`
 
 the name of the autorun.
 
-• **params**: `Record`\<`string`, `any`\> = `{}`
+### params
+
+`Record`\<`string`, `any`\> = `{}`
 
 the parameters for specific autorun.
 

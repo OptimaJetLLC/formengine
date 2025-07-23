@@ -6,7 +6,9 @@ Extracts component properties default values from annotations . **Internal use o
 
 ## Parameters
 
-• **annotations**: [`Annotation`](../classes/Annotation.md)[]
+### annotations
+
+[`Annotation`](../classes/Annotation.md)[]
 
 the array of component annotations.
 

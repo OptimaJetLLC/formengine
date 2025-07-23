@@ -4,13 +4,13 @@ Options for building an annotation.
 
 ## Constructors
 
-### new BuilderOptions()
+### Constructor
 
-> **new BuilderOptions**(): [`BuilderOptions`](BuilderOptions.md)
+> **new BuilderOptions**(): `BuilderOptions`
 
 #### Returns
 
-[`BuilderOptions`](BuilderOptions.md)
+`BuilderOptions`
 
 ## Properties
 

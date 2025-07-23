@@ -1,16 +1,22 @@
-# Function: someOf()
+# Variable: someOf()
 
-> **someOf**\<`U`\>(...`values`): [`SomeOfBuilder`](../classes/SomeOfBuilder.md)\<`U`\>
+> `const` **someOf**: \<`U`\>(...`values`) => [`SomeOfBuilder`](../classes/SomeOfBuilder.md)\<`U`\>
 
 The annotation builder for a component property with type 'enum', the property value can contain multiple enum values.
 
+Sets the property as a "multiple select" property.
+
 ## Type Parameters
 
-• **U** *extends* `string` \| `number`
+### U
+
+`U` *extends* `string` \| `number`
 
 ## Parameters
 
-• ...**values**: `U`[]
+### values
+
+...`U`[]
 
 the possible values for the property.
 

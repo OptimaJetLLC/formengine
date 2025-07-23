@@ -4,7 +4,9 @@ The value of the component property.
 
 ## Type Parameters
 
-• **T** = `any`
+### T
+
+`T` = `any`
 
 the value type.
 

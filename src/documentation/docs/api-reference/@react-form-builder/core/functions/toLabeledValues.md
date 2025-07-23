@@ -6,11 +6,15 @@ Converts the array of elements into the array of [LabeledValue](../interfaces/La
 
 ## Parameters
 
-• **items**: `string`[] \| [`LabeledValue`](../interfaces/LabeledValue.md)[]
+### items
 
 the array of elements.
 
-• **upper**: `boolean` = `true`
+`string`[] | [`LabeledValue`](../interfaces/LabeledValue.md)[]
+
+### upper
+
+`boolean` = `true`
 
 if true, the first character in [LabeledValue.label](../interfaces/LabeledValue.md#label) will be capitalized.
 

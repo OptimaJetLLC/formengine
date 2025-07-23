@@ -15,7 +15,7 @@ the [options](/api-reference/@react-form-builder/designer/type-aliases/Options) 
 its [customizable key](/api-reference/@react-form-builder/designer/type-aliases/CustomizableKey).
 
 You can manage the FormBuilder and get its state in custom components
-using [useFormBuilder](/api-reference/@react-form-builder/designer/functions/useFormBuilder). It provides access
+using [useFormBuilder](/api-reference/@react-form-builder/designer/variables/useFormBuilder). It provides access
 to [IFormBuilder](/api-reference/@react-form-builder/designer/interfaces/IFormBuilder). The management options are limited at the moment,
 but they will be expanded in the future.
 

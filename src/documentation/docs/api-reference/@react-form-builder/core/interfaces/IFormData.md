@@ -54,13 +54,15 @@ Sets the form to its default value.
 
 ### setAllErrors()
 
-> **setAllErrors**: (`message`?) => `void`
+> **setAllErrors**: (`message?`) => `void`
 
 Sets the validation error message for all form data fields.
 
 #### Parameters
 
-• **message?**: `string`
+##### message?
+
+`string`
 
 the validation error message.
 
@@ -118,7 +120,9 @@ Sets the form error messages.
 
 ##### Parameters
 
-• **errors**: `Record`\<`string`, `unknown`\>
+###### errors
+
+`Record`\<`string`, `unknown`\>
 
 ##### Returns
 

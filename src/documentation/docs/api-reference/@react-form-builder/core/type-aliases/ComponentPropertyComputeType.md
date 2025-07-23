@@ -1,5 +1,5 @@
 # Type Alias: ComponentPropertyComputeType
 
-> **ComponentPropertyComputeType**: `"function"` \| `"localization"`
+> **ComponentPropertyComputeType** = `"function"` \| `"localization"`
 
 The component property value type.

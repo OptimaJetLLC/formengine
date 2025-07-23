@@ -6,7 +6,9 @@ The React component that displays the table with editable cells. **Internal use 
 
 ## Parameters
 
-• **props**: [`EditableTableProps`](../interfaces/EditableTableProps.md)
+### props
+
+[`EditableTableProps`](../interfaces/EditableTableProps.md)
 
 the React component properties.
 

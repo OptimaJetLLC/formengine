@@ -6,15 +6,21 @@ Returns the Record with all child components. **Internal use only.**
 
 ## Parameters
 
-• **data**: [`ComponentData`](../classes/ComponentData.md)
+### data
+
+[`ComponentData`](../classes/ComponentData.md)
 
 the parent component's data necessary to display the component.
 
-• **componentTreeItem**: `ComponentType`\<[`ComponentTreeProps`](../interfaces/ComponentTreeProps.md)\>
+### componentTreeItem
+
+`ComponentType`\<[`ComponentTreeProps`](../interfaces/ComponentTreeProps.md)\>
 
 the type of React component that wraps child components.
 
-• **componentProps**: `Record`\<`string`, `any`\>
+### componentProps
+
+`Record`\<`string`, `any`\>
 
 the properties of the parent component.
 

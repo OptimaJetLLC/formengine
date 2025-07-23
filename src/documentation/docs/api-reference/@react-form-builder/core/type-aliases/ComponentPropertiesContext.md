@@ -1,10 +1,10 @@
 # Type Alias: ComponentPropertiesContext
 
-> **ComponentPropertiesContext**: `object`
+> **ComponentPropertiesContext** = `object`
 
 The component properties context type.
 
-## Type declaration
+## Properties
 
 ### valueProperty?
 

@@ -1,10 +1,10 @@
 # Type Alias: SchemaTypeMap
 
-> **SchemaTypeMap**: `object`
+> **SchemaTypeMap** = `object`
 
 Describes the mapping of a value type name to a type.
 
-## Type declaration
+## Properties
 
 ### array
 
@@ -12,11 +12,15 @@ Describes the mapping of a value type name to a type.
 
 The array.
 
+***
+
 ### boolean
 
 > **boolean**: `boolean`
 
 The boolean.
+
+***
 
 ### date
 
@@ -24,11 +28,15 @@ The boolean.
 
 The date.
 
+***
+
 ### enum
 
 > **enum**: `any`
 
 The enumeration.
+
+***
 
 ### number
 
@@ -36,17 +44,23 @@ The enumeration.
 
 The number.
 
+***
+
 ### object
 
 > **object**: `object`
 
 The object.
 
+***
+
 ### string
 
 > **string**: `string`
 
 The string.
+
+***
 
 ### time
 

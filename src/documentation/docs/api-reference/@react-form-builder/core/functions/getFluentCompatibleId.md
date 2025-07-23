@@ -6,7 +6,9 @@ Converts the raw id to a Fluent compatible id, i.e. replaces all the spaces with
 
 ## Parameters
 
-• **rawId**: `string`
+### rawId
+
+`string`
 
 some raw id.
 

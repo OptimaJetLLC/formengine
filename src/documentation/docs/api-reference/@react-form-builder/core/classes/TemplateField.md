@@ -8,25 +8,29 @@ The field with the form data, contains the value of the nested form. **Internal 
 
 ## Constructors
 
-### new TemplateField()
+### Constructor
 
-> **new TemplateField**(`componentStore`, `viewerStore`): [`TemplateField`](TemplateField.md)
+> **new TemplateField**(`componentStore`, `viewerStore`): `TemplateField`
 
 Creates the nested form field with form data for the component.
 
 #### Parameters
 
-• **componentStore**: [`ComponentStore`](ComponentStore.md)
+##### componentStore
+
+[`ComponentStore`](ComponentStore.md)
 
 the component settings.
 
-• **viewerStore**: [`IStore`](../interfaces/IStore.md)
+##### viewerStore
+
+[`IStore`](../interfaces/IStore.md)
 
 viewerStore the form viewer settings.
 
 #### Returns
 
-[`TemplateField`](TemplateField.md)
+`TemplateField`
 
 ## Properties
 
@@ -170,8 +174,6 @@ Value of the field.
 
 > **clear**(): `void`
 
-Clears the data in the field.
-
 #### Returns
 
 `void`
@@ -187,8 +189,6 @@ Clears the data in the field.
 ### dispose()
 
 > **dispose**(): `void`
-
-Releases allocated resources, must be used when destroying an object instance.
 
 #### Returns
 
@@ -206,8 +206,6 @@ Releases allocated resources, must be used when destroying an object instance.
 
 > **getValidationResult**(): `Promise`\<`undefined`\>
 
-Returns the validation results without triggering an events and changing the state of the form.
-
 #### Returns
 
 `Promise`\<`undefined`\>
@@ -223,8 +221,6 @@ the [ValidationMessages](../type-aliases/ValidationMessages.md) validation resul
 ### init()
 
 > **init**(): `void`
-
-Initializes the value of the field.
 
 #### Returns
 
@@ -242,8 +238,6 @@ Initializes the value of the field.
 
 > **reset**(): `void`
 
-Sets the field to its default value.
-
 #### Returns
 
 `void`
@@ -260,11 +254,11 @@ Sets the field to its default value.
 
 > **setError**(`error`): `void`
 
-Sets the error value.
-
 #### Parameters
 
-• **error**: `unknown`
+##### error
+
+`unknown`
 
 #### Returns
 
@@ -282,8 +276,6 @@ Sets the error value.
 
 > **setTouched**(): `void`
 
-Marks the field as touched.
-
 #### Returns
 
 `void`
@@ -300,11 +292,11 @@ Marks the field as touched.
 
 > **setValue**(`value`): `void`
 
-Sets the value of the field.
-
 #### Parameters
 
-• **value**: `unknown`
+##### value
+
+`unknown`
 
 #### Returns
 
@@ -321,8 +313,6 @@ Sets the value of the field.
 ### validate()
 
 > **validate**(): `Promise`\<`void`\>
-
-Validates the field value.
 
 #### Returns
 

@@ -6,7 +6,9 @@ Wrapper component for RSuite components localization.
 
 ## Parameters
 
-• **props**: [`FormViewerWrapperComponentProps`](../../core/interfaces/FormViewerWrapperComponentProps.md)
+### props
+
+[`FormViewerWrapperComponentProps`](../../core/interfaces/FormViewerWrapperComponentProps.md)
 
 the component props.
 

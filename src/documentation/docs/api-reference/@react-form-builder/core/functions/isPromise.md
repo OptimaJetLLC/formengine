@@ -6,11 +6,15 @@ Type predicate, asserts that the value is a Promise. **Internal use only.**
 
 ## Type Parameters
 
-• **T** = `any`
+### T
+
+`T` = `any`
 
 ## Parameters
 
-• **value**: `any`
+### value
+
+`any`
 
 the value.
 

@@ -84,7 +84,7 @@ Let's take an in-depth look at how this component works.
 - Lines 13-17 define the type of properties of the `RsTabProps` component. Line 16 shows that the `pane` property is of type `ReactNode`.
 - In lines 19-40, the React component `RsTab` is defined. It is a functional React component that receives properties of type `RsTabProps`.
 - In line 20, the `RsTab` component uses the Form
-  Builder [useComponentData](/api-reference/@react-form-builder/core/functions/useComponentData) hook. This hook returns an instance of
+  Builder [useComponentData](/api-reference/@react-form-builder/core/variables/useComponentData) hook. This hook returns an instance of
   class [ComponentData](/api-reference/@react-form-builder/core/classes/ComponentData). The `ComponentData` class is responsible for storing
   all the data needed to render the component.
 - The `ComponentData` contains the [userDefinedProps](/api-reference/@react-form-builder/core/classes/ComponentData#userdefinedprops)

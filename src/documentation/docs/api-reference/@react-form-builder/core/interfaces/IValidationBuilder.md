@@ -16,7 +16,9 @@ Specifies the arguments for the validation rule.
 
 #### Parameters
 
-• **val**: `any`
+##### val
+
+`any`
 
 the validation arguments.
 
@@ -36,7 +38,9 @@ Adds child components inside this component.
 
 #### Parameters
 
-• **childrenBuilder**
+##### childrenBuilder
+
+(`builder`) => [`IFormJsonBuilder`](IFormJsonBuilder.md)
 
 the function that builds the child components.
 
@@ -60,11 +64,15 @@ Adds a component to the form.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the unique identifier of the component.
 
-• **type**: `string`
+##### type
+
+`string`
 
 the type of the component.
 
@@ -88,11 +96,15 @@ Sets a computed property on the component.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the name of the property.
 
-• **value**: `string`
+##### value
+
+`string`
 
 the code of the function for calculating the property value.
 
@@ -116,7 +128,9 @@ Starts configuring an event handler for the given event name.
 
 #### Parameters
 
-• **eventName**: `string`
+##### eventName
+
+`string`
 
 the name of the event (e.g., "onClick", "onChange").
 
@@ -158,15 +172,21 @@ Sets a localized property on the component.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the name of the property.
 
-• **language**: \`$\{string\}-$\{string\}\`
+##### language
+
+`` `${string}-${string}` ``
 
 the localized code, e.g. 'en-US'.
 
-• **value**: `any`
+##### value
+
+`any`
 
 the localized value of the property.
 
@@ -190,11 +210,15 @@ Sets a property on the component.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the name of the property.
 
-• **value**: `any`
+##### value
+
+`any`
 
 the value of the property.
 
@@ -212,17 +236,21 @@ the component builder for method chaining.
 
 ### style()
 
-> **style**(`value`, `device`?): [`IComponentBuilder`](IComponentBuilder.md)
+> **style**(`value`, `device?`): [`IComponentBuilder`](IComponentBuilder.md)
 
 Applies styles to the component, optionally per device.
 
 #### Parameters
 
-• **value**: `string` \| `CSSProperties`
+##### value
 
 the style string (e.g., "color: red") or object with style properties.
 
-• **device?**: [`Device`](../type-aliases/Device.md)
+`string` | `CSSProperties`
+
+##### device?
+
+[`Device`](../type-aliases/Device.md)
 
 the optional device-specific styling.
 
@@ -240,19 +268,21 @@ the component builder for method chaining.
 
 ### validation()
 
-> **validation**(`key`): [`IValidationBuilder`](IValidationBuilder.md)
+> **validation**(`key`): `IValidationBuilder`
 
 Starts configuring validation rules for the specified field.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the name of the validation rule.
 
 #### Returns
 
-[`IValidationBuilder`](IValidationBuilder.md)
+`IValidationBuilder`
 
 the validation builder for defining arguments.
 

@@ -10,33 +10,41 @@ The form viewer settings. **Internal use only.**
 
 ## Constructors
 
-### new Store()
+### Constructor
 
-> **new Store**(`formViewerPropsStore`, `componentStateFactory`, `parentStore`?, `getInitialData`?): [`Store`](Store.md)
+> **new Store**(`formViewerPropsStore`, `componentStateFactory`, `parentStore?`, `getInitialData?`): `Store`
 
 Creates form viewer settings.
 
 #### Parameters
 
-• **formViewerPropsStore**: [`FormViewerPropsStore`](FormViewerPropsStore.md)
+##### formViewerPropsStore
+
+[`FormViewerPropsStore`](FormViewerPropsStore.md)
 
 the form viewer store settings.
 
-• **componentStateFactory**: [`ComponentStateFactory`](../type-aliases/ComponentStateFactory.md)
+##### componentStateFactory
+
+[`ComponentStateFactory`](../type-aliases/ComponentStateFactory.md)
 
 the factory for creating component states.
 
-• **parentStore?**: [`Store`](Store.md)
+##### parentStore?
+
+`Store`
 
 the form viewer settings, used in templates.
 
-• **getInitialData?**: [`GetInitialDataFn`](../type-aliases/GetInitialDataFn.md)
+##### getInitialData?
+
+[`GetInitialDataFn`](../type-aliases/GetInitialDataFn.md)
 
 the function to get initial data for the Store.
 
 #### Returns
 
-[`Store`](Store.md)
+`Store`
 
 ## Properties
 
@@ -86,7 +94,7 @@ the function to get initial data for the Store.
 
 ### parentStore?
 
-> `readonly` `optional` **parentStore**: [`Store`](Store.md)
+> `readonly` `optional` **parentStore**: `Store`
 
 the form viewer settings, used in templates.
 
@@ -198,7 +206,9 @@ Populates the value of this store with the values of the saved form.
 
 #### Parameters
 
-• **persistedForm**: [`PersistedForm`](../interfaces/PersistedForm.md)
+##### persistedForm
+
+[`PersistedForm`](../interfaces/PersistedForm.md)
 
 saved form value.
 
@@ -216,7 +226,9 @@ Populates the value of this store with the values of the saved form.
 
 #### Parameters
 
-• **text**: `string`
+##### text
+
+`string`
 
 saved form value.
 
@@ -246,11 +258,15 @@ Creates the element for the component tree. **Internal use only.**
 
 #### Parameters
 
-• **componentStore**: [`ComponentStore`](ComponentStore.md)
+##### componentStore
+
+[`ComponentStore`](ComponentStore.md)
 
 the component settings.
 
-• **deferFieldCalculation**: `boolean` = `false`
+##### deferFieldCalculation
+
+`boolean` = `false`
 
 if true, then the calculated field must be explicitly initialized.
 
@@ -269,8 +285,6 @@ the element for the component tree.
 ### dispose()
 
 > **dispose**(): `void`
-
-Correctly clears allocated resources, the function must be called when destroying an instance of the class.
 
 #### Returns
 
@@ -292,7 +306,9 @@ Searches for an action, returns definition for the found action.
 
 #### Parameters
 
-• **actionData**: [`ActionData`](../type-aliases/ActionData.md)
+##### actionData
+
+[`ActionData`](../type-aliases/ActionData.md)
 
 the action's data.
 
@@ -316,11 +332,15 @@ Returns an action by the specified action name and action type.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 the action name.
 
-• **type**: [`ActionType`](../type-aliases/ActionType.md)
+##### type
+
+[`ActionType`](../type-aliases/ActionType.md)
 
 the action type.
 
@@ -340,7 +360,9 @@ Returns model for the specified type.
 
 #### Parameters
 
-• **type**: `string`
+##### type
+
+`string`
 
 the component type.
 
@@ -360,7 +382,9 @@ Returns the object with validators for the specified value type.
 
 #### Parameters
 
-• **type**: keyof [`SchemaTypeMap`](../type-aliases/SchemaTypeMap.md)
+##### type
+
+keyof [`SchemaTypeMap`](../type-aliases/SchemaTypeMap.md)
 
 the value type.
 
@@ -374,15 +398,19 @@ the object with validators for the specified value type.
 
 ### ~~loadForm()~~
 
-> **loadForm**(`getForm`?, `formName`?): `void`
+> **loadForm**(`getForm?`, `formName?`): `void`
 
 #### Parameters
 
-• **getForm?**
+##### getForm?
+
+(`name?`) => `string` \| `Promise`\<`string`\>
 
 the function that loads the form.
 
-• **formName?**: `string`
+##### formName?
+
+`string`
 
 the form name.
 
@@ -404,15 +432,21 @@ Localizes a component store based on the given localization type. If a custom lo
 
 #### Parameters
 
-• **type**: `string`
+##### type
+
+`string`
 
 the type of localization.
 
-• **formData**: [`IFormData`](../interfaces/IFormData.md)
+##### formData
+
+[`IFormData`](../interfaces/IFormData.md)
 
 the form data.
 
-• **componentStore**: [`ComponentStore`](ComponentStore.md)
+##### componentStore
+
+[`ComponentStore`](ComponentStore.md)
 
 the component settings.
 
@@ -430,21 +464,27 @@ the Record with the localized properties.
 
 ### localizeErrorMessages()
 
-> **localizeErrorMessages**(`formData`, `componentStore`, `validationResults`?): `undefined` \| `string`
+> **localizeErrorMessages**(`formData`, `componentStore`, `validationResults?`): `undefined` \| `string`
 
 The function to localize the validation error message.
 
 #### Parameters
 
-• **formData**: [`IFormData`](../interfaces/IFormData.md)
+##### formData
+
+[`IFormData`](../interfaces/IFormData.md)
 
 the form data.
 
-• **componentStore**: [`ComponentStore`](ComponentStore.md)
+##### componentStore
+
+[`ComponentStore`](ComponentStore.md)
 
 the component settings.
 
-• **validationResults?**: [`ValidationResult`](../type-aliases/ValidationResult.md)[]
+##### validationResults?
+
+[`ValidationResult`](../type-aliases/ValidationResult.md)[]
 
 the results of the validation.
 
@@ -464,21 +504,25 @@ the result of localization or undefined.
 
 > **reduceScreen**\<`T`\>(`callback`, `initialValue`): `T`
 
-Performs the callback function on each element of the component tree, accumulates the return values.
-
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 the return value type.
 
 #### Parameters
 
-• **callback**
+##### callback
+
+(`accumulator`, `current`) => `T`
 
 the function that calculates the value for the accumulator.
 
-• **initialValue**: `T`
+##### initialValue
+
+`T`
 
 the initial value for the accumulator.
 

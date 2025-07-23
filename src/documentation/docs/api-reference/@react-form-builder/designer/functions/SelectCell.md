@@ -6,7 +6,9 @@ The React component that displays the table cell with the select input. **Intern
 
 ## Parameters
 
-• **props**: [`SelectCellProps`](../interfaces/SelectCellProps.md)
+### props
+
+[`SelectCellProps`](../interfaces/SelectCellProps.md)
 
 the React component properties.
 

@@ -892,7 +892,9 @@ A ref attached to the table body element
 
 #### Parameters
 
-• **ref**: `HTMLElement`
+##### ref
+
+`HTMLElement`
 
 #### Returns
 
@@ -1491,7 +1493,9 @@ The callback function called when data in the table is added.
 
 #### Parameters
 
-• **index**: `number`
+##### index
+
+`number`
 
 #### Returns
 
@@ -1839,9 +1843,13 @@ Callback after table data update.
 
 #### Parameters
 
-• **nextData**: `any`[]
+##### nextData
 
-• **scrollTo**
+`any`[]
+
+##### scrollTo
+
+(`coord`) => `void`
 
 #### Returns
 
@@ -2145,9 +2153,13 @@ Tree table, the callback function in the expanded node
 
 #### Parameters
 
-• **expanded**: `boolean`
+##### expanded
 
-• **rowData**: `any`
+`boolean`
+
+##### rowData
+
+`any`
 
 #### Returns
 
@@ -2327,26 +2339,6 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
-### onLoadStart?
-
-> `optional` **onLoadStart**: `ReactEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-`TableProps.onLoadStart`
-
-***
-
-### onLoadStartCapture?
-
-> `optional` **onLoadStartCapture**: `ReactEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-`TableProps.onLoadStartCapture`
-
-***
-
 ### onLoadedData?
 
 > `optional` **onLoadedData**: `ReactEventHandler`\<`HTMLElement`\>
@@ -2384,6 +2376,26 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 #### Inherited from
 
 `TableProps.onLoadedMetadataCapture`
+
+***
+
+### onLoadStart?
+
+> `optional` **onLoadStart**: `ReactEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`TableProps.onLoadStart`
+
+***
+
+### onLoadStartCapture?
+
+> `optional` **onLoadStartCapture**: `ReactEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`TableProps.onLoadStartCapture`
 
 ***
 
@@ -2795,7 +2807,9 @@ The callback function called when data in the table is removed.
 
 #### Parameters
 
-• **index**: `number`
+##### index
+
+`number`
 
 #### Returns
 
@@ -2851,9 +2865,13 @@ Click the callback function after the row and return to rowDate
 
 #### Parameters
 
-• **rowData**: `any`
+##### rowData
 
-• **event**: `MouseEvent`\<`Element`, `MouseEvent`\>
+`any`
+
+##### event
+
+`MouseEvent`
 
 #### Returns
 
@@ -2873,9 +2891,13 @@ Callback after right-click row
 
 #### Parameters
 
-• **rowData**: `any`
+##### rowData
 
-• **event**: `MouseEvent`\<`Element`, `MouseEvent`\>
+`any`
+
+##### event
+
+`MouseEvent`
 
 #### Returns
 
@@ -2895,9 +2917,13 @@ Callback function for scroll bar scrolling
 
 #### Parameters
 
-• **scrollX**: `number`
+##### scrollX
 
-• **scrollY**: `number`
+`number`
+
+##### scrollY
+
+`number`
 
 #### Returns
 
@@ -2981,15 +3007,19 @@ Callback function for scroll bar scrolling
 
 ### onSortColumn()?
 
-> `optional` **onSortColumn**: (`dataKey`, `sortType`?) => `void`
+> `optional` **onSortColumn**: (`dataKey`, `sortType?`) => `void`
 
 Click the callback function of the sort sequence to return the value sortColumn, sortType
 
 #### Parameters
 
-• **dataKey**: `string`
+##### dataKey
 
-• **sortType?**: `SortType`
+`string`
+
+##### sortType?
+
+`SortType`
 
 #### Returns
 
@@ -3119,7 +3149,9 @@ Callback for the `touchend` event.
 
 #### Parameters
 
-• **event**: `TouchEvent`\<`Element`\>
+##### event
+
+`TouchEvent`
 
 #### Returns
 
@@ -3149,7 +3181,9 @@ Callback for the `touchmove` event.
 
 #### Parameters
 
-• **event**: `TouchEvent`\<`Element`\>
+##### event
+
+`TouchEvent`
 
 #### Returns
 
@@ -3179,7 +3213,9 @@ Callback for the `touchstart` event.
 
 #### Parameters
 
-• **event**: `TouchEvent`\<`Element`\>
+##### event
+
+`TouchEvent`
 
 #### Returns
 
@@ -3419,7 +3455,9 @@ Customized data is empty display content
 
 #### Parameters
 
-• **info**: `ReactNode`
+##### info
+
+`ReactNode`
 
 #### Returns
 
@@ -3439,7 +3477,9 @@ Customize the display content in the data load
 
 #### Parameters
 
-• **loading**: `ReactNode`
+##### loading
+
+`ReactNode`
 
 #### Returns
 
@@ -3453,15 +3493,19 @@ Customize the display content in the data load
 
 ### renderRow()?
 
-> `optional` **renderRow**: (`children`?, `rowData`?) => `ReactNode`
+> `optional` **renderRow**: (`children?`, `rowData?`) => `ReactNode`
 
 Custom row element
 
 #### Parameters
 
-• **children?**: `ReactNode`
+##### children?
 
-• **rowData?**: `any`
+`ReactNode`
+
+##### rowData?
+
+`any`
 
 #### Returns
 
@@ -3475,13 +3519,15 @@ Custom row element
 
 ### renderRowExpanded()?
 
-> `optional` **renderRowExpanded**: (`rowData`?) => `ReactNode`
+> `optional` **renderRowExpanded**: (`rowData?`) => `ReactNode`
 
 Customize what you can do to expand a zone
 
 #### Parameters
 
-• **rowData?**: `any`
+##### rowData?
+
+`any`
 
 #### Returns
 
@@ -3495,17 +3541,23 @@ Customize what you can do to expand a zone
 
 ### renderTreeToggle()?
 
-> `optional` **renderTreeToggle**: (`expandButton`, `rowData`?, `expanded`?) => `ReactNode`
+> `optional` **renderTreeToggle**: (`expandButton`, `rowData?`, `expanded?`) => `ReactNode`
 
 Tree table, the callback function in the expanded node
 
 #### Parameters
 
-• **expandButton**: `ReactNode`
+##### expandButton
 
-• **rowData?**: `any`
+`ReactNode`
 
-• **expanded?**: `boolean`
+##### rowData?
+
+`any`
+
+##### expanded?
+
+`boolean`
 
 #### Returns
 
@@ -3571,7 +3623,7 @@ Add an optional extra class name to row
 
 ### rowExpandedHeight?
 
-> `optional` **rowExpandedHeight**: `number` \| (`rowData`?) => `number`
+> `optional` **rowExpandedHeight**: `number` \| (`rowData?`) => `number`
 
 Set the height of an expandable area
 
@@ -3583,7 +3635,7 @@ Set the height of an expandable area
 
 ### rowHeight?
 
-> `optional` **rowHeight**: `number` \| (`rowData`?) => `number`
+> `optional` **rowHeight**: `number` \| (`rowData?`) => `number`
 
 The row height of the table
 

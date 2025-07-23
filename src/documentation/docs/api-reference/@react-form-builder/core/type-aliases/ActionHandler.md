@@ -1,22 +1,28 @@
 # Type Alias: ActionHandler()\<T\>
 
-> **ActionHandler**\<`T`\>: (`e`, `params`) => `void` \| `Promise`\<`void`\>
+> **ActionHandler**\<`T`\> = (`e`, `params`) => `void` \| `Promise`\<`void`\>
 
 Action function type.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 the type of action parameters.
 
 ## Parameters
 
-• **e**: [`ActionEventArgs`](../classes/ActionEventArgs.md)
+### e
+
+[`ActionEventArgs`](../classes/ActionEventArgs.md)
 
 the action arguments.
 
-• **params**: `{ [k in keyof T]: any }`
+### params
+
+`{ [k in keyof T]: any }`
 
 the action parameters arguments.
 

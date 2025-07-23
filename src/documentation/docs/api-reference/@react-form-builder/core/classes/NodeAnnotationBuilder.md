@@ -8,31 +8,35 @@ The builder class to define the node metadata property.
 
 ## Type Parameters
 
-• **T**
+### T
+
+`T`
 
 the property type.
 
 ## Constructors
 
-### new NodeAnnotationBuilder()
+### Constructor
 
-> **new NodeAnnotationBuilder**\<`T`\>(`editor`): [`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+> **new NodeAnnotationBuilder**\<`T`\>(`editor`): `NodeAnnotationBuilder`\<`T`\>
 
 Creates a component property metadata builder.
 
 #### Parameters
 
-• **editor**: `string`
+##### editor
+
+`string`
 
 the property editor type.
 
 #### Returns
 
-[`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+`NodeAnnotationBuilder`\<`T`\>
 
 #### Overrides
 
-[`AnnotationBuilder`](AnnotationBuilder.md).[`constructor`](AnnotationBuilder.md#constructors)
+[`AnnotationBuilder`](AnnotationBuilder.md).[`constructor`](AnnotationBuilder.md#constructor)
 
 ## Properties
 
@@ -64,9 +68,13 @@ The function that checks whether a child component can be inserted into a parent
 
 #### Parameters
 
-• **self**: [`ComponentData`](ComponentData.md)
+##### self
 
-• **child**: [`ComponentData`](ComponentData.md)
+[`ComponentData`](ComponentData.md)
+
+##### child
+
+[`ComponentData`](ComponentData.md)
 
 #### Returns
 
@@ -186,7 +194,9 @@ Creates component property metadata for the form builder.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the unique key of the component property.
 
@@ -204,19 +214,21 @@ the instance of the component property metadata for the form builder.
 
 ### calculable()
 
-> **calculable**(`calculable`): [`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+> **calculable**(`calculable`): `NodeAnnotationBuilder`\<`T`\>
 
 Marks the component property as calculable.
 
 #### Parameters
 
-• **calculable**: `boolean`
+##### calculable
+
+`boolean`
 
 true if the property is calculable.
 
 #### Returns
 
-[`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+`NodeAnnotationBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -252,7 +264,9 @@ Returns the annotation name.
 
 #### Parameters
 
-• **key**: `string`
+##### key
+
+`string`
 
 the property name
 
@@ -288,19 +302,21 @@ the modified instance of the builder.
 
 ### hinted()
 
-> **hinted**(`hint`): [`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+> **hinted**(`hint`): `NodeAnnotationBuilder`\<`T`\>
 
 Adds the hint to the property name of the component.
 
 #### Parameters
 
-• **hint**: `ReactNode`
+##### hint
+
+`ReactNode`
 
 the hint.
 
 #### Returns
 
-[`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+`NodeAnnotationBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -312,19 +328,21 @@ the modified instance of the builder.
 
 ### named()
 
-> **named**(`name`): [`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+> **named**(`name`): `NodeAnnotationBuilder`\<`T`\>
 
 Specifies the name of the component property.
 
 #### Parameters
 
-• **name**: `string`
+##### name
+
+`string`
 
 the property name.
 
 #### Returns
 
-[`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+`NodeAnnotationBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -342,11 +360,15 @@ Sets the property as a "single select" property.
 
 #### Type Parameters
 
-• **U** *extends* `string` \| `number`
+##### U
+
+`U` *extends* `string` \| `number`
 
 #### Parameters
 
-• ...**values**: `U`[]
+##### values
+
+...`U`[]
 
 the possible values for the property.
 
@@ -370,7 +392,9 @@ Modifies the component property metadata builder with custom options.
 
 #### Parameters
 
-• **options**: `Partial`\<`Partial`\<`Omit`\<[`Annotation`](Annotation.md), `"key"`\>\> & `Pick`\<[`Annotation`](Annotation.md), `"editor"`\> & [`BuilderOptions`](BuilderOptions.md)\>
+##### options
+
+[`BuilderSetup`](../type-aliases/BuilderSetup.md)
 
 the custom options.
 
@@ -394,11 +418,15 @@ Sets the property as a "multiple select" property.
 
 #### Type Parameters
 
-• **U** *extends* `string` \| `number`
+##### U
+
+`U` *extends* `string` \| `number`
 
 #### Parameters
 
-• ...**values**: `U`[]
+##### values
+
+...`U`[]
 
 the possible values for the property.
 
@@ -422,11 +450,15 @@ Sets the field type for the component property.
 
 #### Type Parameters
 
-• **T** *extends* keyof [`SchemaTypeMap`](../type-aliases/SchemaTypeMap.md)
+##### T
+
+`T` *extends* keyof [`SchemaTypeMap`](../type-aliases/SchemaTypeMap.md)
 
 #### Parameters
 
-• **type**: `T`
+##### type
+
+`T`
 
 the field type.
 
@@ -444,19 +476,21 @@ the instance of the metadata property builder.
 
 ### uncontrolledValue()
 
-> **uncontrolledValue**(`uncontrolledValue`): [`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+> **uncontrolledValue**(`uncontrolledValue`): `NodeAnnotationBuilder`\<`T`\>
 
 Sets the value for the property that prevents uncontrolled state.
 
 #### Parameters
 
-• **uncontrolledValue**: `unknown`
+##### uncontrolledValue
+
+`unknown`
 
 the value for the uncontrolled state.
 
 #### Returns
 
-[`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+`NodeAnnotationBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -468,19 +502,21 @@ the modified instance of the builder.
 
 ### withDefaultEditor()
 
-> **withDefaultEditor**(`defaultEditor`): [`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+> **withDefaultEditor**(`defaultEditor`): `NodeAnnotationBuilder`\<`T`\>
 
 Specifies the default editor for the property.
 
 #### Parameters
 
-• **defaultEditor**: [`NodeEditorType`](../type-aliases/NodeEditorType.md)
+##### defaultEditor
+
+[`NodeEditorType`](../type-aliases/NodeEditorType.md)
 
 the default editor.
 
 #### Returns
 
-[`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+`NodeAnnotationBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -494,7 +530,9 @@ Sets custom properties for the component's property editor.
 
 #### Parameters
 
-• **props**: `any`
+##### props
+
+`any`
 
 the custom properties
 
@@ -512,19 +550,21 @@ the modified instance of the builder.
 
 ### withInsertRestriction()
 
-> **withInsertRestriction**(`predicate`?): [`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+> **withInsertRestriction**(`predicate?`): `NodeAnnotationBuilder`\<`T`\>
 
 Specifies a function that checks whether a child component can be inserted into a parent component.
 
 #### Parameters
 
-• **predicate?**
+##### predicate?
+
+(`self`, `child`) => `boolean`
 
 the function that returns a boolean value.
 
 #### Returns
 
-[`NodeAnnotationBuilder`](NodeAnnotationBuilder.md)\<`T`\>
+`NodeAnnotationBuilder`\<`T`\>
 
 the modified instance of the builder.
 
@@ -538,7 +578,9 @@ Specifies a function that will create conditions that check if a child component
 
 #### Parameters
 
-• **slotConditionBuilder**
+##### slotConditionBuilder
+
+(`props`) => `string`
 
 the function that returns a string containing the source code of the function to bind child components.
 
@@ -558,13 +600,17 @@ Creates a component property metadata builder.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 the property type.
 
 #### Parameters
 
-• **editor**: `string`
+##### editor
+
+`string`
 
 the property editor type.
 

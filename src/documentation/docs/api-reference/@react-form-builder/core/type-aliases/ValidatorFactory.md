@@ -1,18 +1,22 @@
 # Type Alias: ValidatorFactory()\<Params\>
 
-> **ValidatorFactory**\<`Params`\>: (`args`) => [`RuleValidator`](RuleValidator.md)
+> **ValidatorFactory**\<`Params`\> = (`args`) => [`RuleValidator`](RuleValidator.md)
 
 The validation function factory.
 
 ## Type Parameters
 
-• **Params**
+### Params
+
+`Params`
 
 the factory arguments type.
 
 ## Parameters
 
-• **args**: `Params`
+### args
+
+`Params`
 
 the factory arguments.
 

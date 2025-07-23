@@ -5,24 +5,27 @@ Represents all the metadata of the form viewer components.
 ## Extended by
 
 - [`BuilderView`](BuilderView.md)
+- [`BuilderView`](../../designer/classes/BuilderView.md)
 
 ## Constructors
 
-### new View()
+### Constructor
 
-> **new View**(`models`): [`View`](View.md)
+> **new View**(`models`): `View`
 
-Creates an instance of the [View](View.md).
+Creates an instance of the View.
 
 #### Parameters
 
-• **models**: [`Model`](Model.md)\<`any`\>[] = `[]`
+##### models
+
+[`Model`](Model.md)\<`any`\>[] = `[]`
 
 the components metadata.
 
 #### Returns
 
-[`View`](View.md)
+`View`
 
 ## Accessors
 
@@ -62,7 +65,9 @@ Defines the component's metadata for the form viewer.
 
 #### Parameters
 
-• **model**: [`Model`](Model.md)\<`any`\>
+##### model
+
+[`Model`](Model.md)
 
 the component's metadata.
 
@@ -80,7 +85,9 @@ Returns the component's metadata for the form viewer for the specified type.
 
 #### Parameters
 
-• **type**: `string`
+##### type
+
+`string`
 
 the component type.
 
@@ -100,7 +107,9 @@ Returns the component's metadata for the form viewer for the specified type.
 
 #### Parameters
 
-• **type**: `string`
+##### type
+
+`string`
 
 the component type.
 
@@ -120,7 +129,9 @@ Retrieves the CSS loaders for a given BiDi.
 
 #### Parameters
 
-• **biDi**: [`BiDi`](../enumerations/BiDi.md)
+##### biDi
+
+[`BiDi`](../enumerations/BiDi.md)
 
 the BiDi object for which to retrieve the CSS loaders.
 
@@ -134,62 +145,70 @@ the array containing the CSS loaders for the specified BiDi.
 
 ### withCssLoader()
 
-> **withCssLoader**(`cssLoaderType`, `loader`): [`View`](View.md)
+> **withCssLoader**(`cssLoaderType`, `loader`): `View`
 
 Applies the given CSS loader to the component based on the BiDi layout.
 
 #### Parameters
 
-• **cssLoaderType**: [`CssLoaderType`](../type-aliases/CssLoaderType.md)
+##### cssLoaderType
+
+[`CssLoaderType`](../type-aliases/CssLoaderType.md)
 
 the BiDi layout type, either 'common', 'ltr', or 'rtl'.
 
-• **loader**
+##### loader
+
+() => `Promise`\<`void`\>
 
 the function that returns a Promise to load CSS or other required localization resources.
 
 #### Returns
 
-[`View`](View.md)
+`View`
 
-the [View](View.md) instance.
+the View instance.
 
 ***
 
 ### withViewerWrapper()
 
-> **withViewerWrapper**(`wrapper`): [`View`](View.md)
+> **withViewerWrapper**(`wrapper`): `View`
 
 Adds a wrapper to the list of viewers for this viewer wrapper.
 
 #### Parameters
 
-• **wrapper**: [`FormViewerWrapper`](../type-aliases/FormViewerWrapper.md)
+##### wrapper
+
+[`FormViewerWrapper`](../type-aliases/FormViewerWrapper.md)
 
 the viewer wrapper to be added. The wrapper is a component that wraps the form viewer.
 
 #### Returns
 
-[`View`](View.md)
+`View`
 
-the [View](View.md) instance.
+the View instance.
 
 ***
 
 ### create()
 
-> `static` **create**(`models`): [`View`](View.md)
+> `static` **create**(`models`): `View`
 
-Static wrapper for the [View](View.md) constructor.
+Static wrapper for the View constructor.
 
 #### Parameters
 
-• **models**: [`Model`](Model.md)\<`any`\>[]
+##### models
+
+[`Model`](Model.md)\<`any`\>[]
 
 the components metadata.
 
 #### Returns
 
-[`View`](View.md)
+`View`
 
-the [View](View.md) instance.
+the View instance.

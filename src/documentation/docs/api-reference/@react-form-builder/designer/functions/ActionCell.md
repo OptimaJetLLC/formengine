@@ -6,7 +6,9 @@ The React component that displays the table cell with the icon button. **Interna
 
 ## Parameters
 
-• **props**: [`ActionCellProps`](../interfaces/ActionCellProps.md)
+### props
+
+[`ActionCellProps`](../interfaces/ActionCellProps.md)
 
 the React component properties.
 
