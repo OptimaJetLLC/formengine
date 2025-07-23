@@ -4,6 +4,30 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 5.2.0
+
+_July_ 23, 2025
+
+### New
+
+- Added clear button for boolean field editor.
+- Added [editor configuration](/api-reference/@react-form-builder/core/classes/NodeAnnotationBuilder#withdefaulteditor)
+  for [node annotation](/api-reference/@react-form-builder/core/classes/NodeAnnotationBuilder) type.
+- Components with [no category](/designer-customization#components-group) defined will pop to the top of the list.
+
+### Fixed bugs
+
+- Fixed crash in create Presets component modal when selecting category.
+
+### Changed
+
+- New TypeDoc version, documentation regenerated, some links are changed.
+- Drop `rxjs` as dependency from `core` and `Designer` packages.
+
+### Updated internal dependencies
+
+- _form-data_ from 4.0.1 to 4.04.4.
+
 ## 5.1.0
 
 _July_ 17, 2025

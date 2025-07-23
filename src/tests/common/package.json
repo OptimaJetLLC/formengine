@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/tests-common",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "private": true,
   "author": "Optimajet",
   "homepage": "https://formengine.io/",
@@ -11,13 +11,13 @@
     "@fortawesome/fontawesome-common-types": "^0.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@playwright/test": "^1.49.1",
-    "@react-form-builder/components-antd": "^5.1.0",
-    "@react-form-builder/components-fast-qr": "^5.1.0",
-    "@react-form-builder/components-google-map": "^5.1.0",
-    "@react-form-builder/components-rich-text": "^5.1.0",
-    "@react-form-builder/core": "^5.1.0",
-    "@react-form-builder/designer": "^5.1.0",
-    "@react-form-builder/indexed-db-form-storage": "^5.1.0",
+    "@react-form-builder/components-antd": "^5.2.0",
+    "@react-form-builder/components-fast-qr": "^5.2.0",
+    "@react-form-builder/components-google-map": "^5.2.0",
+    "@react-form-builder/components-rich-text": "^5.2.0",
+    "@react-form-builder/core": "^5.2.0",
+    "@react-form-builder/designer": "^5.2.0",
+    "@react-form-builder/indexed-db-form-storage": "^5.2.0",
     "@rsuite/icons": "^1.3.2",
     "rsuite": "5.83.1"
   }
