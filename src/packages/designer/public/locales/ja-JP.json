@@ -675,7 +675,7 @@
   },
   "propertiesEditor": {
     "applyKey": "キーの変更を適用する",
-    "clean": "クリーン",
+    "clean": "デフォルトにリセット",
     "codeButton": {
       "editCalculable": "計算可能な編集",
       "editLocalizable": "Fluentローカリゼーションの編集",

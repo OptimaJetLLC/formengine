@@ -1,12 +1,9 @@
-import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {Close} from '@rsuite/icons'
-import {useEffect, useMemo, useRef} from 'react'
+import {useEffect, useRef} from 'react'
 import {Input} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
-import {useTranslationPart} from '../localization/hooks'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
-import {Hinted} from './Hinted'
+import {CleanButton} from './CleanButton'
 
 // The idea here is to have an offscreen element with exactly the same styles
 // which can autoresize natively and stretch target the element via aligning
@@ -47,21 +44,6 @@ const STextareaSizer = styled.div`
     height: 12px;
   }
 `
-
-interface CleanButtonProps {
-  onClick: () => void
-}
-
-const CleanButton = ({onClick}: CleanButtonProps) => {
-  const getLabel = useTranslationPart('propertiesEditor')
-  const cleanLabel = useMemo(() => getLabel('clean'), [getLabel])
-
-  return <Hinted hint={cleanLabel}>
-    <button className={cx(['rs-picker-clean', 'rs-btn-close'])} onClick={onClick}>
-      <Close/>
-    </button>
-  </Hinted>
-}
 
 /**
  * The property editor for the string property type without a label.

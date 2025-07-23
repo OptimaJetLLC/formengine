@@ -675,7 +675,7 @@
   },
   "propertiesEditor": {
     "applyKey": "키 변경 사항 적용",
-    "clean": "청소",
+    "clean": "기본값으로 재설정",
     "codeButton": {
       "editCalculable": "계산 가능한 편집",
       "editLocalizable": "유창한 현지화 편집",

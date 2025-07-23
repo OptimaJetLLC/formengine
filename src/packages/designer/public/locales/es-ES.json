@@ -675,7 +675,7 @@
   },
   "propertiesEditor": {
     "applyKey": "Aplicar cambios de clave",
-    "clean": "Limpiar",
+    "clean": "Restablecer a los valores predeterminados",
     "codeButton": {
       "editCalculable": "Editar calculable",
       "editLocalizable": "Editar localización fluida",

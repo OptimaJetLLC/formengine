@@ -675,7 +675,7 @@
   },
   "propertiesEditor": {
     "applyKey": "应用关键更改",
-    "clean": "清洁",
+    "clean": "重置为默认值",
     "codeButton": {
       "editCalculable": "编辑可计算",
       "editLocalizable": "编辑流利的本地化",

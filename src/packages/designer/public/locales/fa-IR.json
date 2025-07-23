@@ -675,7 +675,7 @@
   },
   "propertiesEditor": {
     "applyKey": "اعمال تغییرات اصلی",
-    "clean": "تمیز",
+    "clean": "تنظیم مجدد به حالت پیش فرض",
     "codeButton": {
       "editCalculable": "ویرایش قابل محاسبه",
       "editLocalizable": "ویرایش ترجمه مسلط",

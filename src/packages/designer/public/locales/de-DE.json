@@ -675,7 +675,7 @@
   },
   "propertiesEditor": {
     "applyKey": "Wichtige Änderungen anwenden",
-    "clean": "Sauber",
+    "clean": "Auf Standard zurücksetzen",
     "codeButton": {
       "editCalculable": "Berechenbar bearbeiten",
       "editLocalizable": "Fluent Lokalisierung bearbeiten",

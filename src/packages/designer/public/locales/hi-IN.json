@@ -675,7 +675,7 @@
   },
   "propertiesEditor": {
     "applyKey": "मुख्य परिवर्तन लागू करें",
-    "clean": "स्वच्छ",
+    "clean": "डिफ़ॉल्ट पर रीसेट करें",
     "codeButton": {
       "editCalculable": "गणना योग्य संपादित करें",
       "editLocalizable": "धाराप्रवाह स्थानीयकरण संपादित करें",

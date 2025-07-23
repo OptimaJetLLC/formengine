@@ -675,7 +675,7 @@
   },
   "propertiesEditor": {
     "applyKey": "Примените кључне промене",
-    "clean": "Чист",
+    "clean": "Ресетовање на подразумевану вредност",
     "codeButton": {
       "editCalculable": "Уређивање се може израчунати",
       "editLocalizable": "Уредите глатку локализацију",

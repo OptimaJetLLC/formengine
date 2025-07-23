@@ -675,7 +675,7 @@
   },
   "propertiesEditor": {
     "applyKey": "تطبيق التغييرات الرئيسية",
-    "clean": "نظيفة",
+    "clean": "إعادة تعيين إلى الافتراضي",
     "codeButton": {
       "editCalculable": "تحرير حساب",
       "editLocalizable": "تحرير الترجمة بطلاقة",
