@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import type {ComponentData, Model} from '@react-form-builder/core'
 import {ComponentDataProvider, namedObserver} from '@react-form-builder/core'
 import {useCallback, useMemo, useState} from 'react'
+import {EmptyComponentCategory} from '../../../stores/EmptyComponentCategory'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {transformComponentNameToCssClass} from '../../../utils/transformComponentNameToCssClass'
 import {AddedComponent} from '../../dnd'
@@ -107,7 +108,15 @@ const RawControlGroups = (props: ControlGroupsProps) => {
 
   const filteredComponents = useMemo(() => {
     const result: Record<string, ComponentData[]> = {}
-    for (const category in availableComponents) {
+    const categories = Object.keys(availableComponents)
+    const emptyCategoryIdx = categories.indexOf(EmptyComponentCategory)
+
+    if (emptyCategoryIdx > -1) {
+      categories.splice(emptyCategoryIdx, 1)
+      categories.unshift(EmptyComponentCategory)
+    }
+
+    for (const category of categories) {
       const components = availableComponents[category]
       const filtered = components.filter(component => isMatch(component.model))
       if (filtered.length > 0) {
@@ -120,9 +129,12 @@ const RawControlGroups = (props: ControlGroupsProps) => {
   const result = []
 
   for (const category in filteredComponents) {
+    const noCategory = category === EmptyComponentCategory
+    const header = noCategory ? null : <Subheader>{t(category) || category}</Subheader>
+    const className = noCategory ? 'top' : category
     result.push(
-      <div key={category} className={cx([componentGroupStaticClassname, transformComponentNameToCssClass(category)])}>
-        <Subheader>{t(category) || category}</Subheader>
+      <div key={category} className={cx([componentGroupStaticClassname, transformComponentNameToCssClass(className)])}>
+        {header}
         <AddedComponents availableComponents={filteredComponents[category]} {...componentProps}/>
       </div>
     )

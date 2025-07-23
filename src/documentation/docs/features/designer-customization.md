@@ -169,13 +169,15 @@ export const richTextEditor = define(RichTextEditor, 'RichTextEditor')
 
 #### Components group
 
-A component group receives the static class `FE_Palette_ComponentGroup` plus a category name prefixed with FE_.
+A component group is assigned the static class `FE_Palette_ComponentGroup` along with a category name prefixed with `FE_`.
+If a component group is not defined, components appear at the top of the list without a title and within container with additional class
+`FE_top`.
 
 ![Groups classes](/assets/customization/customization-groups-classes.png)
 
 #### Single component
 
-A component receives the static class `FE_Palette_Component` composed with its title and name, both prefixed with FE_.
+A component receives the static class `FE_Palette_Component` composed with its title and name, both prefixed with `FE_`.
 
 ```typescript {2}
 export const rsCalendar = define(RsCalendar, 'RsCalendar')

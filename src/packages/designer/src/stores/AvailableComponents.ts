@@ -1,6 +1,7 @@
 import type {BuilderComponent, IDisposable, Model, Store} from '@react-form-builder/core'
 import {ComponentData, ComponentStore, getKey} from '@react-form-builder/core'
 import {runInAction} from 'mobx'
+import {EmptyComponentCategory} from './EmptyComponentCategory'
 import type {IComponentMetadataProvider} from './IComponentMetadataProvider'
 
 /**
@@ -55,7 +56,7 @@ export class AvailableComponents implements IDisposable {
   constructor(store: Store, componentMetadataProvider: IComponentMetadataProvider, builderComponents: BuilderComponent[]) {
     runInAction(() => {
       builderComponents.forEach(component => {
-        const category = component.category || ''
+        const category = component.category ?? EmptyComponentCategory
         const components = this.byCategory[category] ?? []
         const componentData = createAddedComponentData(component.model, componentMetadataProvider, store)
         components.push(componentData)
