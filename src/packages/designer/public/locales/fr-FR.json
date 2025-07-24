@@ -173,6 +173,16 @@
       "name": "Format"
     }
   },
+  "RsDivider": {
+    "children": {
+      "hint": "Placez le texte sur la ligne de séparation",
+      "name": "Contenu"
+    },
+    "vertical": {
+      "hint": "Ligne de séparation verticale",
+      "name": "Verticale"
+    }
+  },
   "RsMenu": {
     "itemsAs": {
       "hint": "Élément HTML à afficher élément de menu",

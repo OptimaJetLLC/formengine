@@ -305,6 +305,16 @@
       "hint": "Format of the date when rendered in the input"
     }
   },
+  "RsDivider": {
+    "children": {
+      "name": "Content",
+      "hint": "Set the text on the dividing line"
+    },
+    "vertical": {
+      "name": "Vertical",
+      "hint": "Vertical dividing line"
+    }
+  },
   "GoogleMap": {
     "latitude": {
       "hint": "Latitude of the center point"

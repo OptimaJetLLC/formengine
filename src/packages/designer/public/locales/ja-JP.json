@@ -173,6 +173,16 @@
       "name": "フォーマット"
     }
   },
+  "RsDivider": {
+    "children": {
+      "hint": "分割線にテキストを設定します",
+      "name": "コンテンツ"
+    },
+    "vertical": {
+      "hint": "縦の分割線",
+      "name": "縦型"
+    }
+  },
   "RsMenu": {
     "itemsAs": {
       "hint": "メニュー項目をレンダリングするHTML要素",

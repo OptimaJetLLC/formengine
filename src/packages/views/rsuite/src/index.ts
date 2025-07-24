@@ -9,6 +9,7 @@ import {rsCard} from './components/RsCard'
 import {rsCheckbox} from './components/RsCheckbox'
 import {rsContainer} from './components/RsContainer'
 import {rsDatePicker} from './components/RsDatePicker'
+import {rsDivider} from './components/RsDivider'
 import {rsDropdown} from './components/RsDropdown'
 import type {RsErrorMessageProps} from './components/RsErrorMessage'
 import {rsErrorMessage} from './components/RsErrorMessage'
@@ -59,6 +60,7 @@ const categories = {
   static: [
     rsButton,
     rsErrorMessage,
+    rsDivider,
     rsHeader,
     rsImage,
     rsLabel,

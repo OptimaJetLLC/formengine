@@ -173,6 +173,16 @@
       "name": "형식"
     }
   },
+  "RsDivider": {
+    "children": {
+      "hint": "구분선에 텍스트 설정",
+      "name": "내용"
+    },
+    "vertical": {
+      "hint": "수직 분할선",
+      "name": "수직"
+    }
+  },
   "RsMenu": {
     "itemsAs": {
       "hint": "메뉴 항목을 렌더링할 요소",

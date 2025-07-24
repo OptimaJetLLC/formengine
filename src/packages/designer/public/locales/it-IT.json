@@ -173,6 +173,16 @@
       "name": "Formato"
     }
   },
+  "RsDivider": {
+    "children": {
+      "hint": "Imposta il testo sulla linea di demarcazione",
+      "name": "Contenuto"
+    },
+    "vertical": {
+      "hint": "Linea di divisione verticale",
+      "name": "Verticale"
+    }
+  },
   "RsMenu": {
     "itemsAs": {
       "hint": "Elemento HTML per rendere la voce di menu",

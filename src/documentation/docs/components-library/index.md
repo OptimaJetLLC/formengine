@@ -61,6 +61,7 @@ The components are divided into the following categories:
 ## Static components
 
 - [Button](https://rsuitejs.com/components/button/).
+- [Divider](https://rsuitejs.com/components/divider/).
 - Error message - a component that displays a form validation error.
 - Header is a component that displays HTML headers (h1-h6).
 - Image is a component that displays an image.

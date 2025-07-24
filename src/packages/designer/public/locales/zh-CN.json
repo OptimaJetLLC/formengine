@@ -173,6 +173,16 @@
       "name": "格式"
     }
   },
+  "RsDivider": {
+    "children": {
+      "hint": "将文本设置在分界线上",
+      "name": "内容"
+    },
+    "vertical": {
+      "hint": "垂直分界线",
+      "name": "垂直方向"
+    }
+  },
   "RsMenu": {
     "itemsAs": {
       "hint": "Html元素呈现菜单项",

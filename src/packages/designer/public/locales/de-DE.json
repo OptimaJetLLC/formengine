@@ -173,6 +173,16 @@
       "name": "Formatierung"
     }
   },
+  "RsDivider": {
+    "children": {
+      "hint": "Setzen Sie den Text auf die Trennlinie",
+      "name": "Inhalt"
+    },
+    "vertical": {
+      "hint": "Vertikale Trennlinie",
+      "name": "Vertikal"
+    }
+  },
   "RsMenu": {
     "itemsAs": {
       "hint": "HTML-Element zum Rendern des Menüelements",
