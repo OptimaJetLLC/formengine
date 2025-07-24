@@ -542,6 +542,64 @@
       "hint": "The component label"
     }
   },
+  "RsPlaceholderGraph": {
+    "width": {
+      "name": "Width",
+      "hint": "The graph width"
+    },
+    "height": {
+      "name": "Height",
+      "hint": "The graph height"
+    },
+    "active": {
+      "name": "Active",
+      "hint": "Whether the placeholder is active"
+    }
+  },
+  "RsPlaceholderGrid": {
+    "rows": {
+      "name": "Rows",
+      "hint": "The number of rows"
+    },
+    "columns": {
+      "name": "Columns",
+      "hint": "The number of columns"
+    },
+    "rowHeight": {
+      "name": "Row height",
+      "hint": "The height of the row"
+    },
+    "rowSpacing": {
+      "name": "Row spacing",
+      "hint": "The spacing between rows"
+    },
+    "active": {
+      "name": "Active",
+      "hint": "Whether the placeholder is active"
+    }
+  },
+  "RsPlaceholderParagraph": {
+    "rows": {
+      "name": "Rows",
+      "hint": "The number of rows"
+    },
+    "rowHeight": {
+      "name": "Row height",
+      "hint": "The height of the row"
+    },
+    "rowSpacing": {
+      "name": "Row spacing",
+      "hint": "The spacing between rows"
+    },
+    "graph": {
+      "name": "Graph",
+      "hint": "The shape of the graph"
+    },
+    "active": {
+      "name": "Active",
+      "hint": "Whether the placeholder is active"
+    }
+  },
   "leftMenu": {
     "translation": "Translation",
     "undo": "Undo",

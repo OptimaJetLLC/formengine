@@ -189,6 +189,64 @@
       "name": "Artikel als"
     }
   },
+  "RsPlaceholderGraph": {
+    "active": {
+      "hint": "Ob der Platzhalter aktiv ist",
+      "name": "Aktiv"
+    },
+    "height": {
+      "hint": "Die Diagrammhöhe",
+      "name": "Höhe"
+    },
+    "width": {
+      "hint": "Die Diagrammbreite",
+      "name": "Breite"
+    }
+  },
+  "RsPlaceholderGrid": {
+    "active": {
+      "hint": "Ob der Platzhalter aktiv ist",
+      "name": "Aktiv"
+    },
+    "columns": {
+      "hint": "Die Anzahl der Spalten",
+      "name": "Spalten"
+    },
+    "rowHeight": {
+      "hint": "Die Höhe der Zeile",
+      "name": "Zeilenhöhe"
+    },
+    "rowSpacing": {
+      "hint": "Der Abstand zwischen den Zeilen",
+      "name": "Zeilenabstand"
+    },
+    "rows": {
+      "hint": "Die Anzahl der Zeilen",
+      "name": "Tabellenzeilen"
+    }
+  },
+  "RsPlaceholderParagraph": {
+    "active": {
+      "hint": "Ob der Platzhalter aktiv ist",
+      "name": "Aktiv"
+    },
+    "graph": {
+      "hint": "Die Form des Graphen",
+      "name": "Graph"
+    },
+    "rowHeight": {
+      "hint": "Die Höhe der Zeile",
+      "name": "Zeilenhöhe"
+    },
+    "rowSpacing": {
+      "hint": "Der Abstand zwischen den Zeilen",
+      "name": "Zeilenabstand"
+    },
+    "rows": {
+      "hint": "Die Anzahl der Zeilen",
+      "name": "Tabellenzeilen"
+    }
+  },
   "RsTimePicker": {
     "format": {
       "hint": "Format der Uhrzeit beim Rendern in der Eingabe",

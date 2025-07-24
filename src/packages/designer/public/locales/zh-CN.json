@@ -189,6 +189,64 @@
       "name": "项目作为"
     }
   },
+  "RsPlaceholderGraph": {
+    "active": {
+      "hint": "占位符是否处于活动状态",
+      "name": "活动中"
+    },
+    "height": {
+      "hint": "图形高度",
+      "name": "身高"
+    },
+    "width": {
+      "hint": "图形宽度",
+      "name": "阔度"
+    }
+  },
+  "RsPlaceholderGrid": {
+    "active": {
+      "hint": "占位符是否处于活动状态",
+      "name": "活动中"
+    },
+    "columns": {
+      "hint": "列数",
+      "name": "列"
+    },
+    "rowHeight": {
+      "hint": "行的高度",
+      "name": "行高"
+    },
+    "rowSpacing": {
+      "hint": "行之间的间距",
+      "name": "行间距"
+    },
+    "rows": {
+      "hint": "行数",
+      "name": "行"
+    }
+  },
+  "RsPlaceholderParagraph": {
+    "active": {
+      "hint": "占位符是否处于活动状态",
+      "name": "活动中"
+    },
+    "graph": {
+      "hint": "图形的形状",
+      "name": "图表"
+    },
+    "rowHeight": {
+      "hint": "行的高度",
+      "name": "行高"
+    },
+    "rowSpacing": {
+      "hint": "行之间的间距",
+      "name": "行间距"
+    },
+    "rows": {
+      "hint": "行数",
+      "name": "行"
+    }
+  },
   "RsTimePicker": {
     "format": {
       "hint": "在输入中呈现的时间格式",

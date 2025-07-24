@@ -68,6 +68,9 @@ The components are divided into the following categories:
 - Label is a component that displays the HTML tag `label`.
 - Menu is a component that displays menus, based on [Nav](https://rsuitejs.com/components/nav/).
 - [Message](https://rsuitejs.com/components/message/).
+- [Placeholder paragraph](https://rsuitejs.com/components/placeholder/#code-lt-placeholder-paragraph-gt-code).
+- [Placeholder graph](https://rsuitejs.com/components/placeholder/#code-lt-placeholder-graph-gt-code).
+- [Placeholder grid](https://rsuitejs.com/components/placeholder/#code-lt-placeholder-grid-gt-code).
 - [Progress circle](https://rsuitejs.com/components/progress/#code-lt-progress-circle-gt-code).
 - [Progress line](https://rsuitejs.com/components/progress/#code-lt-progress-line-gt-code).
 - Static content - displays the text in the HTML `span` tag.

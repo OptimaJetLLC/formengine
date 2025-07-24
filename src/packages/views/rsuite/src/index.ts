@@ -23,6 +23,7 @@ import {rsMenu} from './components/RsMenu'
 import {rsMessage} from './components/RsMessage'
 import {rsNumberFormat} from './components/RsNumberFormat'
 import {rsPatternFormat} from './components/RsPatternFormat'
+import {rsPlaceholderGraph, rsPlaceholderGrid, rsPlaceholderParagraph} from './components/RsPlaceholder'
 import {rsProgressCircle, rsProgressLine} from './components/RsProgress'
 import {rsRadioGroup} from './components/RsRadioGroup'
 import {rsSearch} from './components/RsSearch'
@@ -66,6 +67,9 @@ const categories = {
     rsLabel,
     rsMenu,
     rsMessage,
+    rsPlaceholderGraph,
+    rsPlaceholderGrid,
+    rsPlaceholderParagraph,
     rsProgressCircle,
     rsProgressLine,
     rsStaticContent,

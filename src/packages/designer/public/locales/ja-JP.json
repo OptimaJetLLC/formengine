@@ -189,6 +189,64 @@
       "name": "としての項目"
     }
   },
+  "RsPlaceholderGraph": {
+    "active": {
+      "hint": "プレースホルダーがアクティブかどうか",
+      "name": "アクティブ"
+    },
+    "height": {
+      "hint": "グラフの高さ",
+      "name": "高さ"
+    },
+    "width": {
+      "hint": "グラフの幅",
+      "name": "幅"
+    }
+  },
+  "RsPlaceholderGrid": {
+    "active": {
+      "hint": "プレースホルダーがアクティブかどうか",
+      "name": "アクティブ"
+    },
+    "columns": {
+      "hint": "列の数",
+      "name": "コラム"
+    },
+    "rowHeight": {
+      "hint": "行の高さ",
+      "name": "行の高さ"
+    },
+    "rowSpacing": {
+      "hint": "行間の間隔",
+      "name": "行の間隔"
+    },
+    "rows": {
+      "hint": "行の数",
+      "name": "行"
+    }
+  },
+  "RsPlaceholderParagraph": {
+    "active": {
+      "hint": "プレースホルダーがアクティブかどうか",
+      "name": "アクティブ"
+    },
+    "graph": {
+      "hint": "グラフの形状",
+      "name": "グラフ"
+    },
+    "rowHeight": {
+      "hint": "行の高さ",
+      "name": "行の高さ"
+    },
+    "rowSpacing": {
+      "hint": "行間の間隔",
+      "name": "行の間隔"
+    },
+    "rows": {
+      "hint": "行の数",
+      "name": "行"
+    }
+  },
   "RsTimePicker": {
     "format": {
       "hint": "入力でレンダリングされた時刻の形式",

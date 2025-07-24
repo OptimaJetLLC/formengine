@@ -189,6 +189,64 @@
       "name": "Articles Comme"
     }
   },
+  "RsPlaceholderGraph": {
+    "active": {
+      "hint": "Indique si l'espace réservé est actif",
+      "name": "Actif"
+    },
+    "height": {
+      "hint": "La hauteur du graphique",
+      "name": "Hauteur"
+    },
+    "width": {
+      "hint": "La largeur du graphique",
+      "name": "Largeur"
+    }
+  },
+  "RsPlaceholderGrid": {
+    "active": {
+      "hint": "Indique si l'espace réservé est actif",
+      "name": "Actif"
+    },
+    "columns": {
+      "hint": "Le nombre de colonnes",
+      "name": "Colonnes"
+    },
+    "rowHeight": {
+      "hint": "La hauteur de la rangée",
+      "name": "Hauteur de rangée"
+    },
+    "rowSpacing": {
+      "hint": "L'espacement entre les lignes",
+      "name": "Espacement des lignes"
+    },
+    "rows": {
+      "hint": "Le nombre de lignes",
+      "name": "Rangées"
+    }
+  },
+  "RsPlaceholderParagraph": {
+    "active": {
+      "hint": "Indique si l'espace réservé est actif",
+      "name": "Actif"
+    },
+    "graph": {
+      "hint": "La forme du graphique",
+      "name": "Graphique"
+    },
+    "rowHeight": {
+      "hint": "La hauteur de la rangée",
+      "name": "Hauteur de rangée"
+    },
+    "rowSpacing": {
+      "hint": "L'espacement entre les lignes",
+      "name": "Espacement des lignes"
+    },
+    "rows": {
+      "hint": "Le nombre de lignes",
+      "name": "Rangées"
+    }
+  },
   "RsTimePicker": {
     "format": {
       "hint": "Format de l'heure lors du rendu dans l'entrée",

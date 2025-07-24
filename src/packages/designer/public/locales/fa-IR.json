@@ -189,6 +189,64 @@
       "name": "موارد به عنوان"
     }
   },
+  "RsPlaceholderGraph": {
+    "active": {
+      "hint": "آیا جای نگهدارنده فعال است",
+      "name": "فعال"
+    },
+    "height": {
+      "hint": "ارتفاع نمودار",
+      "name": "ارتفاع"
+    },
+    "width": {
+      "hint": "عرض نمودار",
+      "name": "عرض"
+    }
+  },
+  "RsPlaceholderGrid": {
+    "active": {
+      "hint": "آیا جای نگهدارنده فعال است",
+      "name": "فعال"
+    },
+    "columns": {
+      "hint": "تعداد ستون ها",
+      "name": "ستون ها"
+    },
+    "rowHeight": {
+      "hint": "ارتفاع ردیف",
+      "name": "ارتفاع ردیف"
+    },
+    "rowSpacing": {
+      "hint": "فاصله بین ردیف ها",
+      "name": "فاصله ردیف"
+    },
+    "rows": {
+      "hint": "تعداد ردیف ها",
+      "name": "ردیف ها"
+    }
+  },
+  "RsPlaceholderParagraph": {
+    "active": {
+      "hint": "آیا جای نگهدارنده فعال است",
+      "name": "فعال"
+    },
+    "graph": {
+      "hint": "شکل نمودار",
+      "name": "نمودار"
+    },
+    "rowHeight": {
+      "hint": "ارتفاع ردیف",
+      "name": "ارتفاع ردیف"
+    },
+    "rowSpacing": {
+      "hint": "فاصله بین ردیف ها",
+      "name": "فاصله ردیف"
+    },
+    "rows": {
+      "hint": "تعداد ردیف ها",
+      "name": "ردیف ها"
+    }
+  },
   "RsTimePicker": {
     "format": {
       "hint": "فرمت زمانی که در ورودی ارائه شده است",

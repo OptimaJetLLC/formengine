@@ -189,6 +189,64 @@
       "name": "Artículos Como"
     }
   },
+  "RsPlaceholderGraph": {
+    "active": {
+      "hint": "Si el marcador de posición está activo",
+      "name": "Activo"
+    },
+    "height": {
+      "hint": "La altura del gráfico",
+      "name": "Altura"
+    },
+    "width": {
+      "hint": "El ancho del gráfico",
+      "name": "Ancho"
+    }
+  },
+  "RsPlaceholderGrid": {
+    "active": {
+      "hint": "Si el marcador de posición está activo",
+      "name": "Activo"
+    },
+    "columns": {
+      "hint": "El número de columnas",
+      "name": "Columnas"
+    },
+    "rowHeight": {
+      "hint": "La altura de la fila",
+      "name": "Altura de fila"
+    },
+    "rowSpacing": {
+      "hint": "El espaciado entre filas",
+      "name": "Espaciado de filas"
+    },
+    "rows": {
+      "hint": "El número de filas",
+      "name": "Filas"
+    }
+  },
+  "RsPlaceholderParagraph": {
+    "active": {
+      "hint": "Si el marcador de posición está activo",
+      "name": "Activo"
+    },
+    "graph": {
+      "hint": "La forma del gráfico",
+      "name": "Gráfico"
+    },
+    "rowHeight": {
+      "hint": "La altura de la fila",
+      "name": "Altura de fila"
+    },
+    "rowSpacing": {
+      "hint": "El espaciado entre filas",
+      "name": "Espaciado de filas"
+    },
+    "rows": {
+      "hint": "El número de filas",
+      "name": "Filas"
+    }
+  },
   "RsTimePicker": {
     "format": {
       "hint": "Formato de la hora cuando se procesa en la entrada",

@@ -189,6 +189,64 @@
       "name": "Articoli come"
     }
   },
+  "RsPlaceholderGraph": {
+    "active": {
+      "hint": "Indica se il segnaposto è attivo",
+      "name": "Attivo"
+    },
+    "height": {
+      "hint": "L'altezza del grafico",
+      "name": "Altezza"
+    },
+    "width": {
+      "hint": "La larghezza del grafico",
+      "name": "Larghezza"
+    }
+  },
+  "RsPlaceholderGrid": {
+    "active": {
+      "hint": "Indica se il segnaposto è attivo",
+      "name": "Attivo"
+    },
+    "columns": {
+      "hint": "Il numero di colonne",
+      "name": "Colonna"
+    },
+    "rowHeight": {
+      "hint": "L'altezza della riga",
+      "name": "Altezza riga"
+    },
+    "rowSpacing": {
+      "hint": "La spaziatura tra le righe",
+      "name": "Spaziatura riga"
+    },
+    "rows": {
+      "hint": "Il numero di righe",
+      "name": "Fila"
+    }
+  },
+  "RsPlaceholderParagraph": {
+    "active": {
+      "hint": "Indica se il segnaposto è attivo",
+      "name": "Attivo"
+    },
+    "graph": {
+      "hint": "La forma del grafico",
+      "name": "Grafico"
+    },
+    "rowHeight": {
+      "hint": "L'altezza della riga",
+      "name": "Altezza riga"
+    },
+    "rowSpacing": {
+      "hint": "La spaziatura tra le righe",
+      "name": "Spaziatura riga"
+    },
+    "rows": {
+      "hint": "Il numero di righe",
+      "name": "Fila"
+    }
+  },
   "RsTimePicker": {
     "format": {
       "hint": "Formato del tempo quando reso nell'input",

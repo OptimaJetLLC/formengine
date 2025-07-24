@@ -189,6 +189,64 @@
       "name": "항목"
     }
   },
+  "RsPlaceholderGraph": {
+    "active": {
+      "hint": "자리 표시자가 활성 상태인지 여부",
+      "name": "활성"
+    },
+    "height": {
+      "hint": "그래프 높이",
+      "name": "높이"
+    },
+    "width": {
+      "hint": "그래프 너비",
+      "name": "폭"
+    }
+  },
+  "RsPlaceholderGrid": {
+    "active": {
+      "hint": "자리 표시자가 활성 상태인지 여부",
+      "name": "활성"
+    },
+    "columns": {
+      "hint": "열 수",
+      "name": "열"
+    },
+    "rowHeight": {
+      "hint": "행의 높이",
+      "name": "줄 고도"
+    },
+    "rowSpacing": {
+      "hint": "행 사이의 간격",
+      "name": "행 간격"
+    },
+    "rows": {
+      "hint": "행 수",
+      "name": "행"
+    }
+  },
+  "RsPlaceholderParagraph": {
+    "active": {
+      "hint": "자리 표시자가 활성 상태인지 여부",
+      "name": "활성"
+    },
+    "graph": {
+      "hint": "그래프의 모양",
+      "name": "그래프"
+    },
+    "rowHeight": {
+      "hint": "행의 높이",
+      "name": "줄 고도"
+    },
+    "rowSpacing": {
+      "hint": "행 사이의 간격",
+      "name": "행 간격"
+    },
+    "rows": {
+      "hint": "행 수",
+      "name": "행"
+    }
+  },
   "RsTimePicker": {
     "format": {
       "hint": "입력에서 렌더링될 때의 시간 형식",
