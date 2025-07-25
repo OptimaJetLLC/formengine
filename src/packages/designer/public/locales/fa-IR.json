@@ -183,6 +183,12 @@
       "name": "عمودی"
     }
   },
+  "RsInput": {
+    "showPasswordAriaLabel": {
+      "hint": "مقدار ویژگی aria-label برای دکمه show password زمانی که ورودی در حالت password mask است.",
+      "name": "برچسب آریا برای نمایش دکمه رمز عبور"
+    }
+  },
   "RsMenu": {
     "itemsAs": {
       "hint": "عنصر html برای ارائه آیتم منو",

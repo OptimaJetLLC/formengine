@@ -183,6 +183,12 @@
       "name": "Vertical"
     }
   },
+  "RsInput": {
+    "showPasswordAriaLabel": {
+      "hint": "Valor del atributo aria-label para el botón mostrar contraseña cuando la entrada está en modo máscara de contraseña.",
+      "name": "Etiqueta ARIA para mostrar el botón de contraseña"
+    }
+  },
   "RsMenu": {
     "itemsAs": {
       "hint": "Elemento HTML para renderizar elemento de menú",

@@ -183,6 +183,12 @@
       "name": "Verticale"
     }
   },
+  "RsInput": {
+    "showPasswordAriaLabel": {
+      "hint": "Valeur de l'attribut aria-label pour le bouton afficher le mot de passe lorsque l'entrée est en mode masque de mot de passe.",
+      "name": "Étiquette ARIA pour afficher le bouton de mot de passe"
+    }
+  },
   "RsMenu": {
     "itemsAs": {
       "hint": "Élément HTML à afficher élément de menu",

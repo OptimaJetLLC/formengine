@@ -183,6 +183,12 @@
       "name": "縦型"
     }
   },
+  "RsInput": {
+    "showPasswordAriaLabel": {
+      "hint": "入力がパスワードマスクモードの場合のshow passwordボタンのaria-label属性の値。",
+      "name": "パスワードを表示するボタンのARIAラベル"
+    }
+  },
   "RsMenu": {
     "itemsAs": {
       "hint": "メニュー項目をレンダリングするHTML要素",

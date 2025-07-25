@@ -183,6 +183,12 @@
       "name": "Vertikal"
     }
   },
+  "RsInput": {
+    "showPasswordAriaLabel": {
+      "hint": "Wert des Attributs aria-label für die Schaltfläche Passwort anzeigen, wenn sich die Eingabe im Passwortmaskenmodus befindet.",
+      "name": "ARIA-Label für Passwort-Schaltfläche anzeigen"
+    }
+  },
   "RsMenu": {
     "itemsAs": {
       "hint": "HTML-Element zum Rendern des Menüelements",

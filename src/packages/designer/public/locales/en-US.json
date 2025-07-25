@@ -315,6 +315,12 @@
       "hint": "Vertical dividing line"
     }
   },
+  "RsInput" : {
+    "showPasswordAriaLabel" : {
+      "name" : "ARIA label for show password button",
+      "hint" : "Value of the aria-label attribute for the show password button when the input is in password mask mode."
+    }
+  },
   "GoogleMap": {
     "latitude": {
       "hint": "Latitude of the center point"

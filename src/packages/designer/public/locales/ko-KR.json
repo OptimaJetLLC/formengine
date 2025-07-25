@@ -183,6 +183,12 @@
       "name": "수직"
     }
   },
+  "RsInput": {
+    "showPasswordAriaLabel": {
+      "hint": "입력이 암호 마스크 모드에 있을 때 암호 표시 단추에 대한 아리아 레이블 속성의 값입니다.",
+      "name": "암호 버튼 표시를위한 아리아 라벨"
+    }
+  },
   "RsMenu": {
     "itemsAs": {
       "hint": "메뉴 항목을 렌더링할 요소",

@@ -183,6 +183,12 @@
       "name": "Verticale"
     }
   },
+  "RsInput": {
+    "showPasswordAriaLabel": {
+      "hint": "Valore dell'attributo aria-label per il pulsante Mostra password quando l'input è in modalità maschera password.",
+      "name": "Etichetta ARIA per il pulsante mostra password"
+    }
+  },
   "RsMenu": {
     "itemsAs": {
       "hint": "Elemento HTML per rendere la voce di menu",

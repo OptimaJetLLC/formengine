@@ -183,6 +183,12 @@
       "name": "垂直方向"
     }
   },
+  "RsInput": {
+    "showPasswordAriaLabel": {
+      "hint": "输入处于密码掩码模式时显示密码按钮的aria-label属性的值。",
+      "name": "显示密码按钮的咏叹调标签"
+    }
+  },
   "RsMenu": {
     "itemsAs": {
       "hint": "Html元素呈现菜单项",
