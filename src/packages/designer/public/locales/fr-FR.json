@@ -793,13 +793,25 @@
     "any": "Tout",
     "component": "Composant",
     "componentHint": "Styles qui s'appliquent au composant",
+    "componentTab": {
+      "hint": "Styles CSS appliqués au composant via le 'Nom de classe'",
+      "name": "Composant"
+    },
     "desktop": "Bureau",
     "forDevice": "Pour l'appareil:",
+    "header": {
+      "hint": "Styles CSS appliqués via la propriété 'className' ",
+      "name": "Styles pour le nom de classe"
+    },
     "mobile": "Mobiles",
     "other": "Autres",
     "tablet": "Tablette",
     "wrapper": "Emballage",
-    "wrapperHint": "Styles qui s'appliquent à l'encapsuleur de composant"
+    "wrapperHint": "Styles qui s'appliquent à l'encapsuleur de composant",
+    "wrapperTab": {
+      "hint": "Styles CSS appliqués au wrapper du composant via le 'Nom de classe'",
+      "name": "Emballage"
+    }
   },
   "testingEditor": {
     "autorun": "Exécution Automatique",

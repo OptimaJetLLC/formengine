@@ -793,13 +793,25 @@
     "any": "Cualquiera",
     "component": "Componente",
     "componentHint": "Estilos que se aplican al componente",
+    "componentTab": {
+      "hint": "Estilos CSS que se aplican al componente a través del'Nombre de clase'",
+      "name": "Componente"
+    },
     "desktop": "Escritorio",
     "forDevice": "Para el dispositivo:",
+    "header": {
+      "hint": "Estilos CSS que se aplican a través de la propiedad 'className' ",
+      "name": "Estilos para className"
+    },
     "mobile": "Móvil",
     "other": "Los demás",
     "tablet": "Comprimido",
     "wrapper": "Envoltura",
-    "wrapperHint": "Estilos que se aplican al contenedor de componentes"
+    "wrapperHint": "Estilos que se aplican al contenedor de componentes",
+    "wrapperTab": {
+      "hint": "Estilos CSS que se aplican al contenedor del componente a través del 'Nombre de clase'",
+      "name": "Envoltura"
+    }
   },
   "testingEditor": {
     "autorun": "Ejecución automática",

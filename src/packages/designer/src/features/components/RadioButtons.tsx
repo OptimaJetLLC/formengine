@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import type {LabeledValue} from '@react-form-builder/core'
 import {Radio, RadioGroup as RRadioGroup} from 'rsuite'
 import type {RadioGroupProps} from 'rsuite/esm/RadioGroup/RadioGroup'
+import {Hinted} from '../annotation-editors/Hinted'
 
 const Container = styled.div`
   display: flex;
@@ -32,6 +33,16 @@ const Container = styled.div`
 `
 
 /**
+ * The radio button group element.
+ */
+export interface RadioButtonItem extends LabeledValue {
+  /**
+   * The radio button hint.
+   */
+  hint?: string
+}
+
+/**
  * The properties of the React {@link RadioButtons} component.
  */
 export interface RadioButtonsProps extends RadioGroupProps {
@@ -51,7 +62,7 @@ export interface RadioButtonsProps extends RadioGroupProps {
   /**
    * The array of possible values.
    */
-  items?: LabeledValue[]
+  items?: RadioButtonItem[]
 }
 
 /**
@@ -68,8 +79,12 @@ export const RadioButtons = ({label, items, style, ...props}: RadioButtonsProps)
     <Container style={style}>
       {!!label && <label>{label}</label>}
       <RRadioGroup {...props as any} size={'xs'} inline appearance={'picker'}>
-        {items?.map(({value, label}, i) => (
-          <Radio value={value} key={i}>{label ?? value}</Radio>
+        {items?.map(({value, label, hint}, i) => (
+          <Radio value={value} key={i}>
+            <Hinted hint={hint} placement={'autoHorizontal'}>
+              {label ?? value}
+            </Hinted>
+          </Radio>
         ))
         }
       </RRadioGroup>

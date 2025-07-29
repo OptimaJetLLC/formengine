@@ -730,6 +730,18 @@
     "collapse": "Collapse all"
   },
   "style": {
+    "header": {
+      "name": "Styles for className",
+      "hint": "CSS styles that are applied via the 'className' property"
+    },
+    "componentTab": {
+      "name": "Component",
+      "hint": "CSS styles that are applied to the component via the 'className'"
+    },
+    "wrapperTab": {
+      "name": "Wrapper",
+      "hint": "CSS styles that are applied to the component wrapper via the 'className'"
+    },
     "other": "Other",
     "forDevice": "For device",
     "component": "Component",

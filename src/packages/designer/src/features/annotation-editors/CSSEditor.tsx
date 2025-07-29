@@ -8,6 +8,7 @@ import {Rows} from '../components/Containers'
 import type {RadioButtonsProps} from '../components/RadioButtons'
 import {RadioButtons} from '../components/RadioButtons'
 import {useTranslationPart} from '../localization/hooks'
+import {PropertyBlockHeader} from '../ui/RightPanel/PropertiesEditor/components/PropertyBlockHeader'
 
 const SCodeEditor = styled(CodeEditor)`
   .suggest-widget {
@@ -35,7 +36,7 @@ export interface CSSEditorProps {
   defaultActiveTab?: CssPart
 }
 
-type Item = { value: CssPart, label: string }
+type Item = { value: CssPart, label: string, hint?: string }
 
 const RawCSSEditor = ({device, useWrapperStyles, defaultActiveTab}: CSSEditorProps) => {
   const {store} = useComponentData()
@@ -55,12 +56,13 @@ const RawCSSEditor = ({device, useWrapperStyles, defaultActiveTab}: CSSEditorPro
   const handleSelect: RadioButtonsProps['onChange'] = value => setActiveTab(value as CssPart)
 
   const items: Item[] = [
-    {value: 'css', label: t('component')},
-    {value: 'wrapperCss', label: t('wrapper')}
+    {value: 'css', label: t('component'), hint: t('componentTab.hint')},
+    {value: 'wrapperCss', label: t('wrapper'), hint: t('wrapperTab.hint')}
   ]
 
   return (
     <Rows>
+      <PropertyBlockHeader header={t('header.name')} hint={t('header.hint')}/>
       {useWrapperStyles && <RadioButtons value={activeTab} onChange={handleSelect} items={items}/>}
       <SCodeEditor
         key={`${store.key}${activeTab}${device}`}

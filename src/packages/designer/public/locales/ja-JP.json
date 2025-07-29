@@ -793,13 +793,25 @@
     "any": "任意の",
     "component": "コンポーネント",
     "componentHint": "コンポーネントに適用されるスタイル",
+    "componentTab": {
+      "hint": "'ClassName'を介してコンポーネントに適用されるCSSスタイル",
+      "name": "コンポーネント"
+    },
     "desktop": "デスクトップ",
     "forDevice": "デバイス用",
+    "header": {
+      "hint": "'ClassName'プロパティを介して適用されるCSSスタイル",
+      "name": "クラス名のスタイル"
+    },
     "mobile": "モバイル",
     "other": "その他",
     "tablet": "タブレット",
     "wrapper": "ラッパー",
-    "wrapperHint": "コンポーネントラッパーに適用されるスタイル"
+    "wrapperHint": "コンポーネントラッパーに適用されるスタイル",
+    "wrapperTab": {
+      "hint": "'ClassName'を介してコンポーネントラッパーに適用されるCSSスタイル",
+      "name": "ラッパー"
+    }
   },
   "testingEditor": {
     "autorun": "オートラン",

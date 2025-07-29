@@ -793,13 +793,25 @@
     "any": "Qualsiasi",
     "component": "Componente",
     "componentHint": "Stili che si applicano al componente",
+    "componentTab": {
+      "hint": "Stili CSS che vengono applicati al componente tramite il'className'",
+      "name": "Componente"
+    },
     "desktop": "Desktop",
     "forDevice": "Per dispositivo:",
+    "header": {
+      "hint": "Stili CSS applicati tramite la proprietà 'className'",
+      "name": "Stili per className"
+    },
     "mobile": "Mobile",
     "other": "Altri",
     "tablet": "Tablet",
     "wrapper": "Involucro",
-    "wrapperHint": "Stili che si applicano al componente wrapper"
+    "wrapperHint": "Stili che si applicano al componente wrapper",
+    "wrapperTab": {
+      "hint": "Stili CSS che vengono applicati al componente wrapper tramite il'className'",
+      "name": "Involucro"
+    }
   },
   "testingEditor": {
     "autorun": "Autorun",

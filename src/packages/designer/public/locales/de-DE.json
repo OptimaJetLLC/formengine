@@ -793,13 +793,25 @@
     "any": "Jedes Gerät",
     "component": "Komponente",
     "componentHint": "Stile, die für die Komponente gelten",
+    "componentTab": {
+      "hint": "CSS-Stile, die über den 'Klassennamen' auf die Komponente angewendet werden",
+      "name": "Komponente"
+    },
     "desktop": "Desktop",
     "forDevice": "Für Gerät:",
+    "header": {
+      "hint": "CSS-Stile, die über die Eigenschaft 'Klassenname' angewendet werden",
+      "name": "Stile für Klassennamen"
+    },
     "mobile": "Mobile",
     "other": "Andere",
     "tablet": "Tablet",
     "wrapper": "Wickler",
-    "wrapperHint": "Stile, die für den Komponenten-Wrapper gelten"
+    "wrapperHint": "Stile, die für den Komponenten-Wrapper gelten",
+    "wrapperTab": {
+      "hint": "CSS-Stile, die über den 'Klassennamen' auf den Komponenten-Wrapper angewendet werden",
+      "name": "Wickler"
+    }
   },
   "testingEditor": {
     "autorun": "Autostart",

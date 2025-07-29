@@ -793,13 +793,25 @@
     "any": "어떤",
     "component": "구성 요소",
     "componentHint": "구성 요소에 적용되는 스타일",
+    "componentTab": {
+      "hint": "'클래스 이름'을 통해 구성 요소에 적용되는 스타일",
+      "name": "구성 요소"
+    },
     "desktop": "데스크톱",
     "forDevice": "장치를 위해",
+    "header": {
+      "hint": "'클래스 이름'속성을 통해 적용되는 스타일",
+      "name": "클래스 이름 스타일"
+    },
     "mobile": "모바일",
     "other": "다른",
     "tablet": "태블릿",
     "wrapper": "래퍼",
-    "wrapperHint": "구성 요소 래퍼에 적용되는 스타일"
+    "wrapperHint": "구성 요소 래퍼에 적용되는 스타일",
+    "wrapperTab": {
+      "hint": "'클래스 이름'을 통해 구성 요소 래퍼에 적용되는 스타일",
+      "name": "래퍼"
+    }
   },
   "testingEditor": {
     "autorun": "자동 실행",

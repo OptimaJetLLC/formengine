@@ -793,13 +793,25 @@
     "any": "任何",
     "component": "组件",
     "componentHint": "适用于组件的样式",
+    "componentTab": {
+      "hint": "通过'className'应用于组件的CSS样式",
+      "name": "组件"
+    },
     "desktop": "桌面版",
     "forDevice": "用于设备:",
+    "header": {
+      "hint": "通过'className'属性应用的CSS样式",
+      "name": "类名的样式"
+    },
     "mobile": "流动电话",
     "other": "其他",
     "tablet": "平板电脑",
     "wrapper": "包装器,包装器",
-    "wrapperHint": "适用于组件包装器的样式"
+    "wrapperHint": "适用于组件包装器的样式",
+    "wrapperTab": {
+      "hint": "通过'className'应用于组件包装器的CSS样式",
+      "name": "包装器,包装器"
+    }
   },
   "testingEditor": {
     "autorun": "自动运行",
