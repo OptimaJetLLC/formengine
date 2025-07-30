@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import type {Annotation, ComponentStore, CssPart, Meta, PropertyBlockType} from '@react-form-builder/core'
-import {className, ComponentDataProvider, key, namedObserver, useTooltipType} from '@react-form-builder/core'
+import {className, ComponentDataProvider, key, namedObserver, useStore, useTooltipType} from '@react-form-builder/core'
 import {useCallback, useState} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import type {Device} from '../../../../../utils/types'
@@ -132,8 +132,10 @@ interface StyleBlockProps {
 
 const RawStyleBlock = ({meta, store, device, cssPart, header, headerHint}: StyleBlockProps) => {
   const initContext = useCssContextInitializer(cssPart, store, device)
+  const viewerStore = useStore()
+  const model = viewerStore.getModel(meta.type)
   const context = store[cssPart]?.[device]?.object ?? {}
-  const isComponent = meta.kind === 'component' || meta.kind === 'repeater'
+  const isComponent = model.kind === 'component' || model.kind === 'repeater'
 
   return (
     <PropertyBlock header={isComponent ? header : undefined}
@@ -162,13 +164,14 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
   }
 
   const meta = store.getComponentMetadata(data.store.type)
+  const {model} = data
 
   const current = meta.properties.concat(meta.modules).filter(bySection(activeTab))
   const properties = current.filter(bySubSection())
   const additionalProperties = current.filter(bySubSection(SubSection.Additional))
   const tooltipProps = current.filter(bySubSection(SubSection.Tooltip))
-  const showTooltipProps = meta.kind === 'component' && !!tooltipProps?.length && !!tooltipType
-  const notSlot = meta.kind !== 'slot'
+  const showTooltipProps = model.kind === 'component' && !!tooltipProps?.length && !!tooltipType
+  const notSlot = model.kind !== 'slot'
 
   return (
     <ComponentDataProvider value={data}>
@@ -211,8 +214,10 @@ const StyleBlock = namedObserver('StyleBlock', RawStyleBlock)
 const RawStyles = ({meta, store}: { meta: Meta, store: ComponentStore }) => {
   const t = useTranslationPart('style')
   const [device, setDevice] = useState<Device>('any')
-  const isComponent = meta.kind === 'component'
-  const isTemplate = meta.kind === 'template'
+  const viewerStore = useStore()
+  const model = viewerStore.getModel(meta.type)
+  const isComponent = model.kind === 'component'
+  const isTemplate = model.kind === 'template'
   const classNameEditor = <PropertyEditorWrapper annotation={className} context={store.props}/>
 
   return <>

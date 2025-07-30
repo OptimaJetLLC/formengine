@@ -138,11 +138,13 @@ the function that restricts the insertion of a component into another component.
 
 ***
 
-### kind
+### ~~kind~~
 
-> `readonly` **kind**: [`ComponentKind`](../type-aliases/ComponentKind.md) = `'component'`
+> `readonly` **kind**: [`ComponentKind`](../type-aliases/ComponentKind.md)
 
-the component kind.
+#### Deprecated
+
+the component kind. Use the [Model.kind](Model.md#kind).
 
 ***
 
