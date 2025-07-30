@@ -75,14 +75,10 @@ const RawFormList = (props: ComponentProps<typeof List>) => {
     reloadForms()
   }, [builderStore.lastSaveTime, reloadForms])
 
-  const filteredFormList = useMemo(() => {
-    const result = [...formList]
-    if (!result.includes(builderStore.formName)) result.push(builderStore.formName)
-
-    if (!searchValue) return result
-
-    return result.filter(name => name.toLowerCase().includes(searchValue.toLowerCase()))
-  }, [formList, searchValue, builderStore.formName])
+  const filteredFormList = useMemo(
+    () => formList.filter(name => name.toLowerCase().includes(searchValue.toLowerCase())),
+    [formList, searchValue]
+  )
 
   return <Rows style={containerStyle} gap={10}>
     <SearchForm style={searchStyle} onChange={setSearchValue}/>
