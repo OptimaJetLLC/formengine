@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FormEngine bundle embedding example</title>
+  <script src="../viewer-bundle-premium/dist/index.iife.js" async defer></script>
+</head>
+<body style="margin: 0">
+<div id="viewer"></div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    const {
+      renderFormViewer,
+      createView,
+      rSuiteComponents,
+      richTextComponent,
+      signatureComponent,
+      fastQrComponent,
+      googleMapComponent
+    } = window.FormEngineViewerBundle
+
+    const {
+      formEngineRsuiteCssLoader,
+      ltrCssLoader,
+      RsLocalizationWrapper,
+      rtlCssLoader
+    } = rSuiteComponents
+
+    const filteredRsuiteComponents = rSuiteComponents.rSuiteComponents.filter(component => {
+      return component.data.component.displayName !== 'RsTimePicker'
+    })
+
+    const myComponentsSet = [
+      ...filteredRsuiteComponents,
+      richTextComponent.richTextComponent,
+      //signatureComponent.signatureComponent,
+      fastQrComponent.fastQrComponent,
+      googleMapComponent.googleMapComponent
+    ].map(component => component.build().model)
+
+    const view = createView(myComponentsSet)
+      .withViewerWrapper(RsLocalizationWrapper)
+      .withCssLoader('ltr', ltrCssLoader)
+      .withCssLoader('rtl', rtlCssLoader)
+      .withCssLoader('common', formEngineRsuiteCssLoader)
+
+    window.viewerRoot = renderFormViewer('viewer', {
+      getForm: () => form,
+      view
+    })
+  }
+  const form = `
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "RsInput",
+        "type": "RsInput",
+        "props": {}
+      },
+      {
+        "key": "RsTimePicker",
+        "type": "RsTimePicker",
+        "props": {}
+      },
+      {
+        "key": "RsSignature",
+        "type": "RsSignature",
+        "props": {}
+      },
+      {
+        "key": "RichTextEditor",
+        "type": "RichTextEditor",
+        "props": {}
+      },
+      {
+        "key": "FastQR",
+        "type": "FastQR",
+        "props": {}
+      },
+      {
+        "key": "GoogleMap",
+        "type": "GoogleMap",
+        "props": {}
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
+`
+</script>
+</body>
+</html>

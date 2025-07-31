@@ -149,18 +149,21 @@ export default App
 ```
 
 This code sample creates a `form` variable that contains a JSON form string, there is one input field on the form. In the component
-`FormViewer` is passed the mandatory [view](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#view) property, which is a set
-of component metadata for the React Suite library. As well as
-the [getForm](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#getform) property, which accepts a function that returns the
-value of the `form` variable.
+`FormViewer` is passed the mandatory [view](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#view) property, which is a
+set of component metadata for the React Suite library. As well as
+the [getForm](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#getform) property, which accepts a function that returns
+the value of the `form` variable.
 
 ## CDN
 
-You can immediately start using the FormEngine without using npm, bundlers and other frontend infrastructure by installing it via CDN. Two
-bundles are provided:
+You can immediately start using the FormEngine without using npm, bundlers and other frontend infrastructure by installing it via CDN. The
+following bundles are provided:
 
 - designer bundle: https://unpkg.com/@react-form-builder/designer-bundle@latest/dist/index.iife.js
 - viewer bundle: https://unpkg.com/@react-form-builder/viewer-bundle@latest/dist/index.iife.js
+- viewer premium bundle: https://unpkg.com/@react-form-builder/viewer-bundle-premium@latest/dist/index.iife.js
+
+### Using Designer bundle
 
 Here's an example of the usage:
 
@@ -169,13 +172,11 @@ Here's an example of the usage:
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>FormEngine bundle embedding example</title>
+  <title>FormEngine Designer bundle embedding example</title>
   <script src="https://unpkg.com/@react-form-builder/designer-bundle@latest/dist/index.iife.js" async defer></script>
-  <script src="https://unpkg.com/@react-form-builder/viewer-bundle@latest/dist/index.iife.js" async defer></script>
 </head>
 <body style="margin: 0">
 <div id="designer"></div>
-<div id="viewer"></div>
 
 <script type="text/javascript">
   window.onload = function () {
@@ -184,10 +185,7 @@ Here's an example of the usage:
     }
 
     const designerBundle = window.FormEngineDesignerBundle;
-    window.reactRoot = designerBundle.renderFormBuilder('designer', props)
-
-    const viewerBundle = window.FormEngineViewerBundle;
-    window.designerRoot = viewerBundle.renderFormViewer('viewer', props)
+    window.designerRoot = designerBundle.renderFormBuilder('designer', props)
   }
   const form = `
 {
@@ -220,4 +218,218 @@ Here's an example of the usage:
 </script>
 </body>
 </html>
+```
+
+By default, the [renderFormBuilder](/api-reference/@react-form-builder/designer-bundle/functions/renderFormBuilder) function creates a
+designer with a full set of [available components](/components-library/). If you want to change the list of added components, you can use
+the [createBuilderView](/api-reference/@react-form-builder/designer-bundle/functions/createBuilderView) function:
+
+```javascript
+window.onload = function () {
+  const {
+    renderFormBuilder,
+    createBuilderView,
+    rSuiteComponents,
+    richTextComponent,
+    signatureComponent,
+    fastQrComponent,
+    googleMapComponent
+  } = window.FormEngineDesignerBundle
+
+  const {
+    formEngineRsuiteCssLoader,
+    ltrCssLoader,
+    rsErrorMessage,
+    RsLocalizationWrapper,
+    rsTooltip,
+    rtlCssLoader
+  } = rSuiteComponents
+
+  const filteredRSuiteComponents = rSuiteComponents.rSuiteComponents.filter(component => {
+    return component.data.component.displayName !== 'RsTimePicker'
+  })
+
+  const myComponentsSet = [
+    ...filteredRSuiteComponents,
+    richTextComponent.richTextComponent,
+    signatureComponent.signatureComponent,
+    fastQrComponent.fastQrComponent,
+    googleMapComponent.googleMapComponent
+  ].map(component => component.build())
+
+  const view = createBuilderView(myComponentsSet)
+    .withErrorMeta(rsErrorMessage.build())
+    .withTooltipMeta(rsTooltip.build())
+    .withViewerWrapper(RsLocalizationWrapper)
+    .withCssLoader('ltr', ltrCssLoader)
+    .withCssLoader('rtl', rtlCssLoader)
+    .withCssLoader('common', formEngineRsuiteCssLoader)
+
+  window.designerRoot = renderFormBuilder('designer', {
+    getForm: () => form,
+    view
+  })
+}
+```
+
+### Using Viewer bundle
+
+Here's an example of the usage:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FormEngine Viewer bundle embedding example</title>
+  <script src="https://unpkg.com/@react-form-builder/viewer-bundle@latest/dist/index.iife.js" async defer></script>
+</head>
+<body style="margin: 0">
+<div id="viewer"></div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    const props = {
+      getForm: () => form
+    }
+
+    const viewerBundle = window.FormEngineViewerBundle;
+    window.viewerRoot = viewerBundle.renderFormViewer('viewer', props)
+  }
+  const form = `
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "RsInput",
+        "type": "RsInput",
+        "props": {}
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
+`
+</script>
+</body>
+</html>
+```
+
+### Using Viewer premium bundle
+
+Here's an example of the usage:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FormEngine Viewer premium bundle embedding example</title>
+  <script src="https://unpkg.com/@react-form-builder/viewer-bundle-premium@latest/dist/index.iife.js" async defer></script>
+</head>
+<body style="margin: 0">
+<div id="viewer"></div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    const props = {
+      getForm: () => form
+    }
+
+    const viewerBundle = window.FormEngineViewerBundle;
+    window.viewerRoot = viewerBundle.renderFormViewer('viewer', props)
+  }
+  const form = `
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "RsInput",
+        "type": "RsInput",
+        "props": {}
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
+`
+</script>
+</body>
+</html>
+```
+
+By default, in the premium bundle, the [renderFormViewer](/api-reference/@react-form-builder/viewer-bundle/functions/renderFormViewer)
+function creates a viewer with a full set of [available components](/components-library/). If you want to change the list of added
+components, you can use the [createView](/api-reference/@react-form-builder/viewer-bundle-premium/variables/createView) function:
+
+```javascript
+window.onload = function () {
+  const {
+    renderFormViewer,
+    createView,
+    rSuiteComponents,
+    richTextComponent,
+    signatureComponent,
+    fastQrComponent,
+    googleMapComponent
+  } = window.FormEngineViewerBundle
+
+  const {
+    formEngineRsuiteCssLoader,
+    ltrCssLoader,
+    RsLocalizationWrapper,
+    rtlCssLoader
+  } = rSuiteComponents
+
+  const filteredRsuiteComponents = rSuiteComponents.rSuiteComponents.filter(component => {
+    return component.data.component.displayName !== 'RsTimePicker'
+  })
+
+  const myComponentsSet = [
+    ...filteredRsuiteComponents,
+    richTextComponent.richTextComponent,
+    signatureComponent.signatureComponent,
+    fastQrComponent.fastQrComponent,
+    googleMapComponent.googleMapComponent
+  ].map(component => component.build().model)
+
+  const view = createView(myComponentsSet)
+    .withViewerWrapper(RsLocalizationWrapper)
+    .withCssLoader('ltr', ltrCssLoader)
+    .withCssLoader('rtl', rtlCssLoader)
+    .withCssLoader('common', formEngineRsuiteCssLoader)
+
+  window.viewerRoot = renderFormViewer('viewer', {
+    getForm: () => form,
+    view
+  })
+}
 ```

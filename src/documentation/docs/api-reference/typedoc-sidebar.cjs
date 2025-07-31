@@ -1822,6 +1822,280 @@ const typedocSidebar = {
       items: [
         {
           type: "category",
+          label: "Namespaces",
+          items: [
+            {
+              type: "category",
+              label: "fastQrComponent",
+              items: [
+                {
+                  type: "category",
+                  label: "Interfaces",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/fastQrComponent/interfaces/FastQrProps",
+                      label: "FastQrProps"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/fastQrComponent/variables/fastQrComponent",
+                      label: "fastQrComponent"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/fastQrComponent/variables/fastQrModel",
+                      label: "fastQrModel"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/designer-bundle/namespaces/fastQrComponent/index"
+              }
+            },
+            {
+              type: "category",
+              label: "googleMapComponent",
+              items: [
+                {
+                  type: "category",
+                  label: "Interfaces",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/googleMapComponent/interfaces/GoogleMapProps",
+                      label: "GoogleMapProps"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Type Aliases",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/googleMapComponent/type-aliases/Address",
+                      label: "Address"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/googleMapComponent/type-aliases/MapMarker",
+                      label: "MapMarker"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/googleMapComponent/variables/googleMapComponent",
+                      label: "googleMapComponent"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/googleMapComponent/variables/googleMapModel",
+                      label: "googleMapModel"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Functions",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/googleMapComponent/functions/toAddress",
+                      label: "toAddress"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/designer-bundle/namespaces/googleMapComponent/index"
+              }
+            },
+            {
+              type: "category",
+              label: "richTextComponent",
+              items: [
+                {
+                  type: "category",
+                  label: "Interfaces",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/richTextComponent/interfaces/RichTextEditorProps",
+                      label: "RichTextEditorProps"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/richTextComponent/variables/richTextComponent",
+                      label: "richTextComponent"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/richTextComponent/variables/richTextModel",
+                      label: "richTextModel"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/designer-bundle/namespaces/richTextComponent/index"
+              }
+            },
+            {
+              type: "category",
+              label: "rSuiteComponents",
+              items: [
+                {
+                  type: "category",
+                  label: "Interfaces",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/interfaces/RsErrorMessageProps",
+                      label: "RsErrorMessageProps"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/interfaces/RsTooltipProps",
+                      label: "RsTooltipProps"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/builderViewWithCss",
+                      label: "builderViewWithCss"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/models",
+                      label: "models"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/rsErrorMessage",
+                      label: "rsErrorMessage"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/rsTooltip",
+                      label: "rsTooltip"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/rSuiteComponents",
+                      label: "rSuiteComponents"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/view",
+                      label: "view"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/viewWithCss",
+                      label: "viewWithCss"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Functions",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/functions/formEngineRsuiteCssLoader",
+                      label: "formEngineRsuiteCssLoader"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/functions/ltrCssLoader",
+                      label: "ltrCssLoader"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/functions/RsLocalizationWrapper",
+                      label: "RsLocalizationWrapper"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/functions/rtlCssLoader",
+                      label: "rtlCssLoader"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/index"
+              }
+            },
+            {
+              type: "category",
+              label: "signatureComponent",
+              items: [
+                {
+                  type: "category",
+                  label: "Interfaces",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/signatureComponent/interfaces/SignatureProps",
+                      label: "SignatureProps"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/signatureComponent/variables/signatureComponent",
+                      label: "signatureComponent"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/signatureComponent/variables/signatureModel",
+                      label: "signatureModel"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/designer-bundle/namespaces/signatureComponent/index"
+              }
+            }
+          ]
+        },
+        {
+          type: "category",
           label: "Classes",
           items: [
             {
@@ -1844,6 +2118,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/designer-bundle/functions/buildForm",
               label: "buildForm"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/designer-bundle/functions/createBuilderView",
+              label: "createBuilderView"
             },
             {
               type: "doc",
@@ -1984,6 +2263,17 @@ const typedocSidebar = {
         },
         {
           type: "category",
+          label: "Variables",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/viewer-bundle/variables/createView",
+              label: "createView"
+            }
+          ]
+        },
+        {
+          type: "category",
           label: "Functions",
           items: [
             {
@@ -2007,6 +2297,338 @@ const typedocSidebar = {
       link: {
         type: "doc",
         id: "api-reference/@react-form-builder/viewer-bundle/index"
+      }
+    },
+    {
+      type: "category",
+      label: "@react-form-builder/viewer-bundle-premium",
+      items: [
+        {
+          type: "category",
+          label: "Namespaces",
+          items: [
+            {
+              type: "category",
+              label: "fastQrComponent",
+              items: [
+                {
+                  type: "category",
+                  label: "Interfaces",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/fastQrComponent/interfaces/FastQrProps",
+                      label: "FastQrProps"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/fastQrComponent/variables/fastQrComponent",
+                      label: "fastQrComponent"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/fastQrComponent/variables/fastQrModel",
+                      label: "fastQrModel"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/fastQrComponent/index"
+              }
+            },
+            {
+              type: "category",
+              label: "googleMapComponent",
+              items: [
+                {
+                  type: "category",
+                  label: "Interfaces",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/googleMapComponent/interfaces/GoogleMapProps",
+                      label: "GoogleMapProps"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Type Aliases",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/googleMapComponent/type-aliases/Address",
+                      label: "Address"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/googleMapComponent/type-aliases/MapMarker",
+                      label: "MapMarker"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/googleMapComponent/variables/googleMapComponent",
+                      label: "googleMapComponent"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/googleMapComponent/variables/googleMapModel",
+                      label: "googleMapModel"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Functions",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/googleMapComponent/functions/toAddress",
+                      label: "toAddress"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/googleMapComponent/index"
+              }
+            },
+            {
+              type: "category",
+              label: "richTextComponent",
+              items: [
+                {
+                  type: "category",
+                  label: "Interfaces",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/richTextComponent/interfaces/RichTextEditorProps",
+                      label: "RichTextEditorProps"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/richTextComponent/variables/richTextComponent",
+                      label: "richTextComponent"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/richTextComponent/variables/richTextModel",
+                      label: "richTextModel"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/richTextComponent/index"
+              }
+            },
+            {
+              type: "category",
+              label: "rSuiteComponents",
+              items: [
+                {
+                  type: "category",
+                  label: "Interfaces",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/interfaces/RsErrorMessageProps",
+                      label: "RsErrorMessageProps"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/interfaces/RsTooltipProps",
+                      label: "RsTooltipProps"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/builderViewWithCss",
+                      label: "builderViewWithCss"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/models",
+                      label: "models"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/rsErrorMessage",
+                      label: "rsErrorMessage"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/rsTooltip",
+                      label: "rsTooltip"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/rSuiteComponents",
+                      label: "rSuiteComponents"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/view",
+                      label: "view"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/viewWithCss",
+                      label: "viewWithCss"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Functions",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/functions/formEngineRsuiteCssLoader",
+                      label: "formEngineRsuiteCssLoader"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/functions/ltrCssLoader",
+                      label: "ltrCssLoader"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/functions/RsLocalizationWrapper",
+                      label: "RsLocalizationWrapper"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/functions/rtlCssLoader",
+                      label: "rtlCssLoader"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/index"
+              }
+            },
+            {
+              type: "category",
+              label: "signatureComponent",
+              items: [
+                {
+                  type: "category",
+                  label: "Interfaces",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/signatureComponent/interfaces/SignatureProps",
+                      label: "SignatureProps"
+                    }
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/signatureComponent/variables/signatureComponent",
+                      label: "signatureComponent"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/signatureComponent/variables/signatureModel",
+                      label: "signatureModel"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/signatureComponent/index"
+              }
+            }
+          ]
+        },
+        {
+          type: "category",
+          label: "Classes",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/viewer-bundle-premium/classes/ActionDefinition",
+              label: "ActionDefinition"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/viewer-bundle-premium/classes/Language",
+              label: "Language"
+            }
+          ]
+        },
+        {
+          type: "category",
+          label: "Variables",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/viewer-bundle-premium/variables/createView",
+              label: "createView"
+            }
+          ]
+        },
+        {
+          type: "category",
+          label: "Functions",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/viewer-bundle-premium/functions/buildForm",
+              label: "buildForm"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/viewer-bundle-premium/functions/renderFormViewer",
+              label: "renderFormViewer"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/viewer-bundle-premium/functions/renderFormViewerTo",
+              label: "renderFormViewerTo"
+            }
+          ]
+        }
+      ],
+      link: {
+        type: "doc",
+        id: "api-reference/@react-form-builder/viewer-bundle-premium/index"
       }
     }
   ]

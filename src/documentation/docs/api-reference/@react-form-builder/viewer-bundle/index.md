@@ -9,6 +9,10 @@
 - [ActionDefinition](classes/ActionDefinition.md)
 - [Language](classes/Language.md)
 
+## Variables
+
+- [createView](variables/createView.md)
+
 ## Functions
 
 - [buildForm](functions/buildForm.md)

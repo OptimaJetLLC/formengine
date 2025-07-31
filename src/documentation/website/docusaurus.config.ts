@@ -219,6 +219,7 @@ const config: Config = {
           '../../packages/designer',
           '../../packages/designer-bundle',
           '../../packages/viewer-bundle',
+          '../../packages/viewer-bundle-premium',
           '../../packages/views/fast-qr',
           '../../packages/views/rich-text',
           '../../packages/views/google-map',

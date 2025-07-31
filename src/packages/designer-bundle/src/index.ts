@@ -1,18 +1,31 @@
+import * as rSuiteComponents from '@react-form-builder/components-rsuite'
 import {
   formEngineRsuiteCssLoader,
   ltrCssLoader,
   rsErrorMessage,
   RsLocalizationWrapper,
   rsTooltip,
-  rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
+import type {BuilderComponent} from '@react-form-builder/core';
 import {BiDi, BuilderView} from '@react-form-builder/core'
 import type {FormBuilderProps} from '@react-form-builder/designer'
 import {FormBuilder} from '@react-form-builder/designer'
 import {createElement} from 'react'
+import * as richTextComponent from '@react-form-builder/components-rich-text'
+import * as signatureComponent from '@react-form-builder/components-signature'
+import * as fastQrComponent from '@react-form-builder/components-fast-qr'
+import * as googleMapComponent from '@react-form-builder/components-google-map'
 // eslint-disable-next-line import/extensions
 import {createRoot} from 'react-dom/client'
+
+const components = [
+  ...rSuiteComponents.rSuiteComponents,
+  richTextComponent.richTextComponent,
+  signatureComponent.signatureComponent,
+  fastQrComponent.fastQrComponent,
+  googleMapComponent.googleMapComponent
+].map(definer => definer.build())
 
 /**
  * Displays the FormBuilder component on the specified HTML element.
@@ -23,8 +36,7 @@ import {createRoot} from 'react-dom/client'
 export function renderFormBuilderTo(container: HTMLElement, props: Partial<FormBuilderProps>) {
   const root = createRoot(container)
 
-  const components = rSuiteComponents.map(definer => definer.build())
-  const view = new BuilderView(components)
+  const view = props.view ?? new BuilderView(components)
     .withErrorMeta(rsErrorMessage.build())
     .withTooltipMeta(rsTooltip.build())
     .withViewerWrapper(RsLocalizationWrapper)
@@ -33,12 +45,21 @@ export function renderFormBuilderTo(container: HTMLElement, props: Partial<FormB
     .withCssLoader('common', formEngineRsuiteCssLoader)
 
   const formBuilderProps: FormBuilderProps = {
-    view: view,
-    ...props
+    ...props,
+    view
   }
 
   root.render(createElement(FormBuilder, formBuilderProps, null))
   return root
+}
+
+/**
+ * Creates metadata for form builder components.
+ * @param components the array of metadata of form builder components.
+ * @returns the {@link BuilderView} instance.
+ */
+export function createBuilderView(components: BuilderComponent[]) {
+  return new BuilderView(components)
 }
 
 /**
@@ -53,4 +74,5 @@ export function renderFormBuilder(elementId: string, props: Partial<FormBuilderP
   return renderFormBuilderTo(container, props)
 }
 
+export {rSuiteComponents, richTextComponent, signatureComponent, fastQrComponent, googleMapComponent}
 export {ActionDefinition, buildForm, Language} from '@react-form-builder/core'

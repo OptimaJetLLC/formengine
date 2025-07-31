@@ -17,6 +17,7 @@ const packageList = [
   'src/packages/designer-bundle',
   'src/packages/indexed-db-form-storage',
   'src/packages/viewer-bundle',
+  'src/packages/viewer-bundle-premium',
   'src/packages/views/antd',
   'src/packages/views/default',
   'src/packages/views/rsuite',

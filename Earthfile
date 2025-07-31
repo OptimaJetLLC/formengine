@@ -72,7 +72,7 @@ npm-check-tsc:
 prepare-npm-archives:
   FROM +sources
   RUN apt-get update && apt-get -y install jq
-  LET packagesToArchive = 'packages/core packages/designer packages/designer-bundle packages/viewer-bundle packages/views/rsuite packages/views/fast-qr packages/views/rich-text packages/views/google-map packages/views/signature'
+  LET packagesToArchive = 'packages/core packages/designer packages/designer-bundle packages/viewer-bundle packages/viewer-bundle-premium packages/views/rsuite packages/views/fast-qr packages/views/rich-text packages/views/google-map packages/views/signature'
   LET archiveName = ''
   FOR package IN $packagesToArchive
     RUN cd $package && npm run bundle
@@ -130,6 +130,7 @@ prepare-github-formenginesupport-archive:
   COPY --dir src/packages/designer-bundle $dst/packages/designer-bundle
   COPY --dir src/packages/indexed-db-form-storage $dst/packages/indexed-db-form-storage
   COPY --dir src/packages/viewer-bundle $dst/packages/viewer-bundle
+  COPY --dir src/packages/viewer-bundle-premium $dst/packages/viewer-bundle-premium
   COPY --dir src/packages/views/antd $dst/packages/views/antd
   COPY --dir src/packages/views/rsuite $dst/packages/views/rsuite
   COPY --dir src/packages/views/signature $dst/packages/views/signature
@@ -383,6 +384,7 @@ PUBLISH_RELEASE_TO_NPM:
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-google-map"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-designer-bundle"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-viewer-bundle"
+  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-viewer-bundle-premium"
 
 # publish-artifact-release-to-npm publishes npm packages from local artifacts
 publish-artifact-release-to-npm:
@@ -428,7 +430,8 @@ dependencies:
    src/packages/apps/demo src/packages/apps/example-builder src/packages/apps/example-viewer \
    src/packages/apps/landing \
    src/packages/core src/packages/designer src/packages/designer-bundle src/packages/indexed-db-form-storage \
-   src/packages/viewer-bundle src/packages/views/antd src/packages/views/default \
+   src/packages/viewer-bundle src/packages/views/antd src/packages/views/default \ 
+   src/packages/viewer-bundle-premium \
    src/packages/views/rsuite \
    src/packages/views/signature \
    src/packages/views/fast-qr \
@@ -450,6 +453,7 @@ dependencies:
   COPY src/packages/designer-bundle/package.json src/packages/designer-bundle
   COPY src/packages/indexed-db-form-storage/package.json src/packages/indexed-db-form-storage
   COPY src/packages/viewer-bundle/package.json src/packages/viewer-bundle
+  COPY src/packages/viewer-bundle-premium/package.json src/packages/viewer-bundle-premium
 
   COPY src/packages/views/antd/package.json src/packages/views/antd
   COPY src/packages/views/default/package.json src/packages/views/default
