@@ -4,6 +4,36 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 6.0.0
+
+_August_ 1, 2025
+
+### Breaking changes
+
+- When using [formStorage](/form-storage) in Designer, forms are now loaded through [IFormStorage.getForm](/api-reference/@react-form-builder/designer/interfaces/IFormStorage#getform) instead of [FormViewerProps.getForm](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#getform).
+- The `formName` parameter is now optional in the [IFormStorage.getForm](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#getform) function.
+
+### New
+
+- Added **Placeholder**
+  components: [Paragraph](/components-library/static-components/placeholder-paragraph), [Graph](/components-library/static-components/placeholder-graph), [Grid](/components-library/static-components/placeholder-grid)
+- Added [Divider](/components-library/static-components/divider) component.
+- Premium components are now included in the [Designer CDN bundle](/installation#using-designer-bundle).
+- Released new [viewer-bundle-premium](/installation#using-viewer-premium-bundle) CDN package containing all free and premium components.
+- Added [examples](/installation#cdn) for selective component inclusion with CDN bundles.
+- Added the [reloadFormList](/api-reference/@react-form-builder/designer/interfaces/IFormBuilder#reloadformlist) method
+  to [useFormBuilder](/api-reference/@react-form-builder/designer/variables/useFormBuilder)
+  and [builderRef](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#builderref).
+
+### Changed
+
+- Deprecated the [Meta.kind](/api-reference/@react-form-builder/core/classes/Meta#kind-1) field.
+- Enhanced **CSS Editor** with new "Styles for className" header in Styles tab.
+
+### Fixed bugs
+
+- Fixed accessibility issue in [RSuite Input component](/components-library/fields-components/input).
+
 ## 5.2.0
 
 _July_ 23, 2025
