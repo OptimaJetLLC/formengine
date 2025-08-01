@@ -313,7 +313,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   readonly #loadedLanguages: Record<string, FormBuilderI18nData> = {}
 
   currentEditable?: EditableProperty | EditableAction | CustomValidationCode | JsonCode | EditableFormValidator | EditableFunction
-  lastSaveTime = new Date()
+  formListLastReloadTime = new Date()
   readonly componentsModalState: ComponentsModalState = {
     opened: false,
     onSelect: () => {
@@ -602,6 +602,13 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     this.viewer.applyStringForm(text)
 
     this.currentEditable = undefined
+  }
+
+  /**
+   * @inheritDoc
+   */
+  reloadFormList() {
+    this.formListLastReloadTime = new Date()
   }
 
   /**
@@ -912,7 +919,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @returns the {@link Promise} with the result of saving the form.
    */
   saveForm(formName: string, formValue: string) {
-    this.lastSaveTime = new Date()
+    this.formListLastReloadTime = new Date()
     this.activeFormName = formName
     return this.formStorage.saveForm(formName, formValue)
   }

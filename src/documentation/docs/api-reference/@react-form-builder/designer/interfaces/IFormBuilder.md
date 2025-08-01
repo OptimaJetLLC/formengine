@@ -22,6 +22,18 @@ the form serialized in JSON.
 
 `void`
 
+***
+
+### reloadFormList()
+
+> **reloadFormList**: () => `void`
+
+Updates the form list on the Forms tab.
+
+#### Returns
+
+`void`
+
 ## Accessors
 
 ### builderMode

@@ -73,7 +73,7 @@ const RawFormList = (props: ComponentProps<typeof List>) => {
 
   useEffect(() => {
     reloadForms()
-  }, [builderStore.lastSaveTime, reloadForms])
+  }, [builderStore.formListLastReloadTime, reloadForms])
 
   const filteredFormList = useMemo(
     () => formList.filter(name => name.toLowerCase().includes(searchValue.toLowerCase())),

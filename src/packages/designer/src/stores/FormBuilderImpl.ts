@@ -44,4 +44,11 @@ export class FormBuilderImpl implements IFormBuilder {
   parseForm(text: string) {
     this.builderStore.parseForm(text)
   }
+
+  /**
+   * @inheritDoc
+   */
+  reloadFormList() {
+    this.builderStore.reloadFormList()
+  }
 }

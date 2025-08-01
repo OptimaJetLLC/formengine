@@ -39,5 +39,10 @@ export interface IFormBuilder {
    * @param text the form serialized in JSON.
    */
   parseForm: (text: string) => void
+
+  /**
+   * Updates the form list on the Forms tab.
+   */
+  reloadFormList: () => void
 }
 
