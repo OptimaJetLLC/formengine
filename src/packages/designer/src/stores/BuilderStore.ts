@@ -978,7 +978,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @param options the form options.
    * @returns the {@link Promise} with a form serialized in JSON.
    */
-  getStoredFormJson(formName: string, options?: any) {
+  getStoredFormJson(formName?: string, options?: any) {
     return this.formStorage.getForm(formName, options)
   }
 

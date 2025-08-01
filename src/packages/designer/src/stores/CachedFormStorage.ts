@@ -28,9 +28,9 @@ export class CachedFormStorage implements IFormStorage {
   /**
    * @inheritDoc
    */
-  async getForm(formName: string, options?: any): Promise<string> {
+  async getForm(formName?: string, options?: any): Promise<string> {
     const result = await this.delegate.getForm(formName, options)
-    this.#addToCache(formName)
+    if (formName) this.#addToCache(formName)
     return result
   }
 
