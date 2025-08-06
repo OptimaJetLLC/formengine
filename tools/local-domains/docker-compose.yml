@@ -1,0 +1,18 @@
+services:
+  caddy:
+    image: caddy:latest
+    container_name: formengine-local
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      - caddy-net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  caddy-net:
+    driver: bridge

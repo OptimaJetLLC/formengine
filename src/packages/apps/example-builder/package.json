@@ -12,9 +12,8 @@
     "email": "support@optimajet.com"
   },
   "scripts": {
-    "start": "vite --open",
-    "dev": "vite",
-    "start-ssl": "vite --open --host --config vite.ssl.config.ts"
+    "start": "vite --open --host",
+    "dev": "vite --host"
   },
   "dependencies": {
     "@react-form-builder/components-antd": "^6.0.0",
@@ -32,7 +31,6 @@
   },
   "devDependencies": {
     "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "@vitejs/plugin-basic-ssl": "^1.2.0"
+    "@types/react-dom": "^19.0.4"
   }
 }

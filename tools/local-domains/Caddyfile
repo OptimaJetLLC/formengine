@@ -1,0 +1,13 @@
+{
+  auto_https disable_redirects
+}
+
+http://formengine.local {
+    reverse_proxy http://host.docker.internal:5173
+}
+
+https://formengine.local {
+    reverse_proxy http://host.docker.internal:5173
+    tls internal
+}
+
