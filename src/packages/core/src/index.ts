@@ -166,3 +166,7 @@ export type {
 export type {DataBindingType} from './features/define/utils/DataBindingType'
 export type {ComponentPropertiesContext, ReactProperty} from './features/properties-context/ComponentPropertiesContext'
 export type {NodeEditorType} from './features/annotation/utils/builders/NodeEditorType'
+export {
+  cfDisableMainComponentProperties, cfDisableTooltipProperties, cfDisableStyleProperties, cfDisableAdditionalProperties, cfComponentIsPreset
+} from './features/define/utils/integratedComponentFeatures'
+export type {ComponentFeature, ComponentFeatures} from './features/define/utils/ComponentFeature'

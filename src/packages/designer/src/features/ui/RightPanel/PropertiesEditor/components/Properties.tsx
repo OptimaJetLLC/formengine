@@ -1,6 +1,23 @@
 import styled from '@emotion/styled'
-import type {Annotation, ComponentStore, CssPart, Meta, PropertyBlockType} from '@react-form-builder/core'
-import {className, ComponentDataProvider, key, namedObserver, useStore, useTooltipType} from '@react-form-builder/core'
+import type {
+  Annotation,
+  ComponentStore,
+  CssPart,
+  Meta,
+  PropertyBlockType
+} from '@react-form-builder/core'
+import {
+  cfDisableAdditionalProperties,
+  cfDisableMainComponentProperties,
+  cfDisableStyleProperties,
+  cfDisableTooltipProperties,
+  className,
+  ComponentDataProvider,
+  key,
+  namedObserver,
+  useStore,
+  useTooltipType
+} from '@react-form-builder/core'
 import {useCallback, useState} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import type {Device} from '../../../../../utils/types'
@@ -171,14 +188,13 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
   const additionalProperties = current.filter(bySubSection(SubSection.Additional))
   const tooltipProps = current.filter(bySubSection(SubSection.Tooltip))
   const showTooltipProps = model.kind === 'component' && !!tooltipProps?.length && !!tooltipType
-  const notSlot = model.kind !== 'slot'
 
   return (
     <ComponentDataProvider value={data}>
       <Container  {...props}>
         <PropertiesList>
           {activeTab === Section.Main && <PropertyEditorWrapper annotation={key} context={data.store}/>}
-          {notSlot && <>
+          {!model.isFeatureEnabled(cfDisableMainComponentProperties) && <>
             {data.model.dataBindingType === 'oneWay' && activeTab === Section.Main && <>
               <PropertyEditorWrapper annotation={disableDataBinding} context={data.store}/>
               {data.store.disableDataBinding?.value !== true &&
@@ -188,17 +204,17 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
             <PropertyBlock annotations={properties} context={data.store.props}/>
           </>
           }
-          {activeTab === Section.Style && notSlot &&
+          {activeTab === Section.Style && !model.isFeatureEnabled(cfDisableStyleProperties) &&
             // eslint-disable-next-line @typescript-eslint/no-use-before-define
             <Styles meta={meta} store={data.store}/>
           }
         </PropertiesList>
 
-        {showTooltipProps && notSlot &&
+        {showTooltipProps && !model.isFeatureEnabled(cfDisableTooltipProperties) &&
           <PropertyBlock annotations={tooltipProps} context={data.store.props}/>
         }
 
-        {!!additionalProperties?.length && notSlot &&
+        {!!additionalProperties?.length && !model.isFeatureEnabled(cfDisableAdditionalProperties) &&
           <PropertyBlock annotations={additionalProperties} context={data.store.props}
                          header={getLabel('subSection.additionalProperties')}/>
         }

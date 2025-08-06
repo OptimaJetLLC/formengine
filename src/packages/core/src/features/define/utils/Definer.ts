@@ -8,9 +8,13 @@ import type {Annotations} from '../../annotation/utils/builders/Annotations'
 import {modules} from '../constants'
 import type {ActionsInitializer, ComponentKind} from '../types'
 import type {BuilderComponent} from './BuilderComponent'
+import type {ComponentFeatures} from './ComponentFeature'
+import {addOrUpdateFeature} from './ComponentFeature'
 import type {ComponentMetadataEventListeners} from './ComponentMetadataEventListeners'
 import type {ComponentPropertyBindType} from './ComponentPropertyBindType'
+import type {ComponentRole} from './ComponentRole'
 import type {InsertRestrictionFn} from './InsertRestrictionFn'
+import {cfComponentIsPreset, cfComponentRole} from './integratedComponentFeatures'
 import {Meta} from './Meta'
 import {Model} from './Model'
 
@@ -31,6 +35,10 @@ export type DefinerData<T extends object> = {
    * The component kind.
    */
   kind?: ComponentKind,
+  /**
+   * The set of component features.
+   */
+  features?: ComponentFeatures
   /**
    * The component category.
    */
@@ -105,6 +113,7 @@ export class Definer<T extends object> {
     const PresetComponent = () => null
     const definer = new Definer(PresetComponent)
       .kind('preset')
+      .addFeature(cfComponentIsPreset, true)
       .type(name)
       .name(name)
 
@@ -130,6 +139,17 @@ export class Definer<T extends object> {
    * @returns the modified Definer class instance.
    */
   kind = (kind: ComponentKind) => this.#updateWith({kind})
+
+  /*
+   * Sets the component features that provide additional information about component's characteristic. **Internal use only.**
+   * @param name the feature name.
+   * @param value the feature value.
+   * @returns the modified Definer class instance.
+   */
+  addFeature = (name: string, value: unknown) => {
+    const item = addOrUpdateFeature(this.data.features ?? {}, name, value)
+    return this.#updateWith({features: item})
+  }
 
   /**
    * Sets the icon of the component.
@@ -214,6 +234,15 @@ export class Definer<T extends object> {
   }
 
   /**
+   * Sets the role (e.g., label, tooltip, etc.) for the component.
+   * @param value the component role.
+   * @returns the modified Definer class instance.
+   */
+  componentRole(value: ComponentRole) {
+    return this.addFeature(cfComponentRole, value)
+  }
+
+  /**
    * Creates component metadata for the form builder and form viewer.
    * @returns component metadata for the form builder and form viewer.
    */
@@ -252,6 +281,7 @@ export class Definer<T extends object> {
       valuedAn?.uncontrolledValue,
       disabledAn?.key,
       valuedAn?.dataBindingType,
+      this.data.features,
     )
 
     const meta = new Meta(

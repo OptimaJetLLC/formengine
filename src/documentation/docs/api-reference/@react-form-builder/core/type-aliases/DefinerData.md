@@ -62,6 +62,14 @@ The component metadata event listeners.
 
 ***
 
+### features?
+
+> `optional` **features**: [`ComponentFeatures`](ComponentFeatures.md)
+
+The set of component features.
+
+***
+
 ### icon?
 
 > `optional` **icon**: `ComponentType`

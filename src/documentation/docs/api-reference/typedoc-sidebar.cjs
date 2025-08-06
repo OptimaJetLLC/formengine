@@ -703,6 +703,16 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/ComponentFeature",
+              label: "ComponentFeature"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/ComponentFeatures",
+              label: "ComponentFeatures"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/ComponentKey",
               label: "ComponentKey"
             },
@@ -1096,6 +1106,31 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/variables/BuilderModeProvider",
               label: "BuilderModeProvider"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/cfComponentIsPreset",
+              label: "cfComponentIsPreset"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/cfDisableAdditionalProperties",
+              label: "cfDisableAdditionalProperties"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/cfDisableMainComponentProperties",
+              label: "cfDisableMainComponentProperties"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/cfDisableStyleProperties",
+              label: "cfDisableStyleProperties"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/cfDisableTooltipProperties",
+              label: "cfDisableTooltipProperties"
             },
             {
               type: "doc",

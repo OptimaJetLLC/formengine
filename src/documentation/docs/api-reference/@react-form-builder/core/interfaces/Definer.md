@@ -46,6 +46,26 @@ the modified Definer class instance.
 
 ***
 
+### addFeature()
+
+> **addFeature**(`name`, `value`): `Definer`\<`T`\>
+
+#### Parameters
+
+##### name
+
+`string`
+
+##### value
+
+`unknown`
+
+#### Returns
+
+`Definer`\<`T`\>
+
+***
+
 ### build()
 
 > **build**(): [`BuilderComponent`](BuilderComponent.md)
@@ -73,6 +93,28 @@ Sets the category of the component.
 `string`
 
 the component category.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.
+
+***
+
+### componentRole()
+
+> **componentRole**(`value`): `Definer`\<`T`\>
+
+Sets the role (e.g., label, tooltip, etc.) for the component.
+
+#### Parameters
+
+##### value
+
+`string`
+
+the component role.
 
 #### Returns
 

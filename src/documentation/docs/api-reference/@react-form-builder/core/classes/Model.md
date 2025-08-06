@@ -14,7 +14,7 @@ the type of React component properties.
 
 ### Constructor
 
-> **new Model**\<`T`\>(`component`, `name?`, `actionsInitializer?`, `valued?`, `valueType?`, `defaultProps?`, `css?`, `wrapperCss?`, `typeName?`, `kind?`, `readOnly?`, `propsBindingTypes?`, `uncontrolledValue?`, `disabled?`, `dataBindingType?`): `Model`\<`T`\>
+> **new Model**\<`T`\>(`component`, `name?`, `actionsInitializer?`, `valued?`, `valueType?`, `defaultProps?`, `css?`, `wrapperCss?`, `typeName?`, `kind?`, `readOnly?`, `propsBindingTypes?`, `uncontrolledValue?`, `disabled?`, `dataBindingType?`, `features?`): `Model`\<`T`\>
 
 Creates component metadata for the form viewer.
 
@@ -110,6 +110,12 @@ the name of the component property that stores the disabled flag.
 
 the type of component data binding.
 
+##### features?
+
+[`ComponentFeatures`](../type-aliases/ComponentFeatures.md) = `{}`
+
+the component features that provide additional information about component's characteristic.
+
 #### Returns
 
 `Model`\<`T`\>
@@ -161,6 +167,14 @@ the component's default property values.
 > `readonly` `optional` **disabled**: `string`
 
 the name of the component property that stores the disabled flag.
+
+***
+
+### features
+
+> `readonly` **features**: [`ComponentFeatures`](../type-aliases/ComponentFeatures.md) = `{}`
+
+the component features that provide additional information about component's characteristic.
 
 ***
 
@@ -253,3 +267,75 @@ the component name, or type if there is no component name.
 `string`
 
 the component type name.
+
+## Methods
+
+### hasComponentRole()
+
+> **hasComponentRole**(`value`): `boolean`
+
+Returns true if the role is defined in the component's roles, false otherwise.
+
+#### Parameters
+
+##### value
+
+`string`
+
+the component role.
+
+#### Returns
+
+`boolean`
+
+true if the role is defined in the component's roles, false otherwise.
+
+***
+
+### hasFeatureValue()
+
+> **hasFeatureValue**(`name`, `value`): `boolean`
+
+Returns true if feature is present in the component feature set and equals value, false otherwise.
+
+#### Parameters
+
+##### name
+
+`string`
+
+the feature name.
+
+##### value
+
+`unknown`
+
+the feature value.
+
+#### Returns
+
+`boolean`
+
+true if feature is present in the component feature set and equals value, false otherwise.
+
+***
+
+### isFeatureEnabled()
+
+> **isFeatureEnabled**(`name`): `boolean`
+
+Returns true if feature is present in the component feature set and equals `true`, false otherwise.
+
+#### Parameters
+
+##### name
+
+`string`
+
+the feature name.
+
+#### Returns
+
+`boolean`
+
+true if feature is present in the component feature set and equals `true`, false otherwise.

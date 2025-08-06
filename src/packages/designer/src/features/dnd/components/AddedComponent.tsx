@@ -1,6 +1,6 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {namedObserver, useComponentData} from '@react-form-builder/core'
+import {cfComponentIsPreset, namedObserver, useComponentData} from '@react-form-builder/core'
 import {camelCase, replace, upperFirst} from 'lodash-es'
 import type {MouseEventHandler, ReactNode, RefCallback} from 'react'
 import {useCallback, useMemo} from 'react'
@@ -73,15 +73,15 @@ const componentStaticClassname = 'FE_Palette_Component'
 
 const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggableProps) => {
   const data = useComponentData()
-  const {name = '', kind, type} = data.model
+  const {name = '', type} = data.model
   const builderStore = useBuilderStore()
 
   const Icon = useMemo(() => {
     const {icon: CustomIcon} = builderStore.getComponentMetadata(type)
     const iconName = replace(upperFirst(camelCase(name)), ' ', '') as keyof typeof icons
-    const defaultIcon = kind === 'preset' ? PresetIcon : icons.Default
+    const defaultIcon = data.model.isFeatureEnabled(cfComponentIsPreset) ? PresetIcon : icons.Default
     return CustomIcon ?? icons[iconName] ?? defaultIcon
-  }, [builderStore, kind, name, type])
+  }, [builderStore, data.model, name, type])
 
   const {hovered, ...hoveredProps} = useHovered()
 
@@ -107,9 +107,9 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
   }, [disabled, onDoubleClick, data])
 
   const elementToolbar = useMemo(() => {
-    if (!hovered || data.model.kind !== 'preset') return null
+    if (!hovered || !data.model.isFeatureEnabled(cfComponentIsPreset)) return null
     return <PresetToolbar/>
-  }, [data.model.kind, hovered])
+  }, [data.model, hovered])
 
   const element = (
     <Container onClick={onClick} onDoubleClick={handleDoubleClick} className={cls}

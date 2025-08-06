@@ -13,6 +13,7 @@ import {
   ActionDefinition,
   BiDi,
   BuilderView,
+  cfComponentIsPreset,
   ComponentStore,
   isContainer,
   namedObserver,
@@ -702,7 +703,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    */
   add(source: ComponentData, target: ComponentData, insertPosition: InsertPosition = 'after',
       slot?: string, slotCondition?: string) {
-    if (source.model.kind === 'preset') {
+    if (source.model.isFeatureEnabled(cfComponentIsPreset)) {
       const result: ComponentStore[] = []
       const orderedChildren = insertPosition === 'after'
         ? [...source.children].reverse()
@@ -1081,7 +1082,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   get hasPresetComponents() {
     const {builderComponents} = this
 
-    return builderComponents.some(bc => bc.model.kind === 'preset')
+    return builderComponents.some(bc => bc.model.isFeatureEnabled(cfComponentIsPreset))
   }
 
   /**
