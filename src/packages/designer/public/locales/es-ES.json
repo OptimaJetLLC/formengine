@@ -813,6 +813,20 @@
       "name": "Envoltura"
     }
   },
+  "styleEditor": {
+    "componentTab": {
+      "hint": "Estilos CSS que se aplican al componente a través de la propiedad 'style'",
+      "name": "Componente"
+    },
+    "header": {
+      "hint": "Estilos CSS que se aplican a través de la propiedad 'style'",
+      "name": "Estilos en línea"
+    },
+    "wrapperTab": {
+      "hint": "Estilos CSS que se aplican al contenedor del componente a través de la propiedad 'className' ",
+      "name": "Envoltura"
+    }
+  },
   "testingEditor": {
     "autorun": "Ejecución automática",
     "compilationOk": "Resultado de la compilación: OK",

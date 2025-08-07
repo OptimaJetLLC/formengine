@@ -813,6 +813,20 @@
       "name": "래퍼"
     }
   },
+  "styleEditor": {
+    "componentTab": {
+      "hint": "'스타일'속성을 통해 구성 요소에 적용되는 스타일",
+      "name": "구성 요소"
+    },
+    "header": {
+      "hint": "'스타일'속성을 통해 적용되는 스타일",
+      "name": "인라인 스타일"
+    },
+    "wrapperTab": {
+      "hint": "클래스 이름 속성을 통해 구성 요소 래퍼에 적용되는 스타일",
+      "name": "래퍼"
+    }
+  },
   "testingEditor": {
     "autorun": "자동 실행",
     "compilationOk": "컴파일 결과:확인",

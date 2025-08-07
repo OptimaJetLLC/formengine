@@ -813,6 +813,20 @@
       "name": "Emballage"
     }
   },
+  "styleEditor": {
+    "componentTab": {
+      "hint": "Styles CSS appliqués au composant via la propriété 'style' ",
+      "name": "Composant"
+    },
+    "header": {
+      "hint": "Styles CSS appliqués via la propriété 'style' ",
+      "name": "Styles en ligne"
+    },
+    "wrapperTab": {
+      "hint": "Styles CSS appliqués au wrapper du composant via la propriété 'className' ",
+      "name": "Emballage"
+    }
+  },
   "testingEditor": {
     "autorun": "Exécution Automatique",
     "compilationOk": "Résultat de la compilation: OK",

@@ -813,6 +813,20 @@
       "name": "Wickler"
     }
   },
+  "styleEditor": {
+    "componentTab": {
+      "hint": "CSS-Stile, die über die Eigenschaft 'style' auf die Komponente angewendet werden",
+      "name": "Komponente"
+    },
+    "header": {
+      "hint": "CSS-Stile, die über die Eigenschaft 'style' angewendet werden",
+      "name": "Inline-Stile"
+    },
+    "wrapperTab": {
+      "hint": "CSS-Stile, die über die Eigenschaft 'Klassenname' auf den Komponenten-Wrapper angewendet werden",
+      "name": "Wickler"
+    }
+  },
   "testingEditor": {
     "autorun": "Autostart",
     "compilationOk": "Kompilierungsergebnis: OK",

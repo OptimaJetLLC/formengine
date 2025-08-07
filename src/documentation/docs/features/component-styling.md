@@ -155,3 +155,36 @@ Use the [css](/api-reference/@react-form-builder/core/interfaces/Definer#css) an
 designer. After description is added - the style editors will appear on the "Style" tab:
 
 ![Component styling 08](/assets/component-styling/component-styling-08.png)
+
+## Passing styles to the style attribute
+
+In some rare cases, you may need to pass CSS styles to the `style` property of a component. For example, a base component does not support
+the `className` property, but can accept styles via the `style` property. Or perhaps you want to pass some styles via the `className`
+property and some via the `style` property.
+
+By default, the editor for the `style` property is hidden, while the editor for the `className` property is displayed. You can change the
+display of these editors using
+the [showInlineStylesEditor](/api-reference/@react-form-builder/core/interfaces/Definer#showinlinestyleseditor)
+and [showClassNameStylesEditor](/api-reference/@react-form-builder/core/interfaces/Definer#showclassnamestyleseditor) methods, respectively.
+
+```typescript jsx title='Component example' {14,15}
+import {define, string} from '@react-form-builder/core'
+import type {ButtonProps} from 'rsuite'
+import {Button} from 'rsuite'
+
+export const MyButton = (props: ButtonProps) => {
+  return <Button {...props}/>
+}
+
+export const myButton = define(MyButton, 'MyButton')
+  .name('My button')
+  .props({
+    children: string.required.named('Content').default('Button'),
+  })
+  .showClassNameStylesEditor(false)
+  .showInlineStylesEditor(true)
+```
+
+Styles will be compiled from CSS into `CSSProperties` and passed to the component's `style` property.
+
+![Component styled with the style property](/assets/component-styling/component-styling-12.png "Component styled with the style property")

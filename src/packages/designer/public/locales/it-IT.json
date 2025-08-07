@@ -813,6 +813,20 @@
       "name": "Involucro"
     }
   },
+  "styleEditor": {
+    "componentTab": {
+      "hint": "Stili CSS applicati al componente tramite la proprietà 'style'",
+      "name": "Componente"
+    },
+    "header": {
+      "hint": "Stili CSS applicati tramite la proprietà 'style'",
+      "name": "Stili in linea"
+    },
+    "wrapperTab": {
+      "hint": "Stili CSS applicati al componente wrapper tramite la proprietà 'className'",
+      "name": "Involucro"
+    }
+  },
   "testingEditor": {
     "autorun": "Autorun",
     "compilationOk": "Risultato della compilazione: OK",

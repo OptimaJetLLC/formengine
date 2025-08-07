@@ -334,6 +334,50 @@ the modified Definer class instance.
 
 ***
 
+### showClassNameStylesEditor()
+
+> **showClassNameStylesEditor**(`value`): `Definer`\<`T`\>
+
+Show or hide 'Styles for className' editor.
+
+#### Parameters
+
+##### value
+
+`boolean`
+
+if the value is `true` or `undefined`, the editor will be displayed.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.
+
+***
+
+### showInlineStylesEditor()
+
+> **showInlineStylesEditor**(`value`): `Definer`\<`T`\>
+
+Show or hide 'Inline styles' properties editor.
+
+#### Parameters
+
+##### value
+
+`boolean`
+
+if the value is `true` or `undefined`, the editor will be displayed.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.
+
+***
+
 ### type()
 
 > **type**(`type`): `Definer`\<`T`\>

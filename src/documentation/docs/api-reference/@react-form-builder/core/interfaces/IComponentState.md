@@ -87,7 +87,21 @@ Calculates and returns wrapper className property.
 
 `string`
 
-the Record that contains the className property for the wrapper of component.
+the className for the wrapper of component.
+
+***
+
+### wrapperStyle
+
+#### Get Signature
+
+> **get** **wrapperStyle**(): `undefined` \| \{ `style`: `CSSProperties`; \}
+
+##### Returns
+
+`undefined` \| \{ `style`: `CSSProperties`; \}
+
+the Record that contains the style property for the wrapper of component.
 
 ## Methods
 

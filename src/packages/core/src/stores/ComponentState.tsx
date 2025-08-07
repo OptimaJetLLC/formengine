@@ -2,6 +2,7 @@ import {css, cx} from '@emotion/css'
 import {assign} from 'lodash-es'
 import {makeAutoObservable} from 'mobx'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
+import {silentTransformCssString} from '../features/css-style/cssTransform'
 import type {ActionData, EventName} from '../features/event'
 import {ActionEventArgs, DidMountEvent, WillUnmountEvent} from '../features/event'
 import type {ComponentPropertiesContext} from '../features/properties-context/ComponentPropertiesContext'
@@ -11,7 +12,7 @@ import {isPromise} from '../utils'
 import type {ComputeChildren} from '../utils/ComputeChildren'
 import type {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
-import type {ComponentStore} from './ComponentStore'
+import type {ComponentStore, ComponentStyle} from './ComponentStore'
 import type {ComponentStoreLocalizer} from './ComponentStoreLocalizer'
 import type {IComponentState} from './IComponentState'
 import type {Store} from './Store'
@@ -167,6 +168,7 @@ export class ComponentState implements IComponentState {
       this.disabled,
       this.events,
       htmlAttributes ?? this.htmlAttributes,
+      this.style,
       this.data.userDefinedProps,
     )
   }
@@ -263,6 +265,20 @@ export class ComponentState implements IComponentState {
   }
 
   /**
+   * @returns the Record that contains the style property for the component.
+   */
+  get style() {
+    return this.getStyleFromStylePart(this.data.store.style)
+  }
+
+  /**
+   * @inheritDoc
+   */
+  get wrapperStyle() {
+    return this.getStyleFromStylePart(this.data.store.wrapperStyle)
+  }
+
+  /**
    * @returns all arbitrary HTML attributes of the component.
    */
   get htmlAttributes() {
@@ -298,6 +314,15 @@ export class ComponentState implements IComponentState {
     handler(mountEvent).catch(console.error)
   }
 
+  private getStyleFromStylePart(stylePart?: ComponentStyle) {
+    const {viewMode} = this.store
+
+    const anyCss = silentTransformCssString(stylePart?.any?.string)
+    const viewModeCss = silentTransformCssString(stylePart?.[viewMode]?.string)
+
+    if (anyCss || viewModeCss) return {style: {...anyCss, ...viewModeCss}}
+  }
+
   private getClassNameFromCssPart(cssPart: CssPart) {
     const {model, store} = this.data
     const {viewMode} = this.store
@@ -328,7 +353,8 @@ export class ComponentState implements IComponentState {
       ...calculated,
       ...this.localizedProps,
       ...this.value,
+      ...this.style,
       ...this.data.userDefinedProps,
-    }
+    } as Record<string, any>
   }
 }

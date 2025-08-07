@@ -813,6 +813,20 @@
       "name": "بسته بندی"
     }
   },
+  "styleEditor": {
+    "componentTab": {
+      "hint": "سبک های CSS که از طریق ویژگی style به جزء اعمال می شوند",
+      "name": "جزء"
+    },
+    "header": {
+      "hint": "سبک های CSS که از طریق ویژگی style اعمال می شوند",
+      "name": "سبک های خطی"
+    },
+    "wrapperTab": {
+      "hint": "سبک های CSS که از طریق ویژگی \"className\" به بسته بندی اجزای اعمال می شوند",
+      "name": "بسته بندی"
+    }
+  },
   "testingEditor": {
     "autorun": "اجرای خودکار",
     "compilationOk": "نتیجه کامپایل: موفق",

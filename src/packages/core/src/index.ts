@@ -24,7 +24,7 @@ export {namedObserver} from './utils'
 export {ActionEventArgs} from './features/event'
 export type {ActionData, ActionEventHandler, ActionParameters, ParameterName, ParameterType} from './features/event'
 export type {WrapperProps, ViewMode} from './types'
-export type {ComponentProperty, ComponentPropertyComputeType} from './stores/ComponentStore'
+export type {ComponentProperty, ComponentPropertyComputeType, ComponentStyle, ComponentDeviceStyle} from './stores/ComponentStore'
 export {ActionEventArgsDeclaration} from './features/event'
 export {IFormDataDeclaration} from './utils/IFormData'
 export type {IFormData} from './utils/IFormData'
@@ -167,6 +167,12 @@ export type {DataBindingType} from './features/define/utils/DataBindingType'
 export type {ComponentPropertiesContext, ReactProperty} from './features/properties-context/ComponentPropertiesContext'
 export type {NodeEditorType} from './features/annotation/utils/builders/NodeEditorType'
 export {
-  cfDisableMainComponentProperties, cfDisableTooltipProperties, cfDisableStyleProperties, cfDisableAdditionalProperties, cfComponentIsPreset
+  cfDisableMainComponentProperties,
+  cfDisableTooltipProperties,
+  cfDisableStyleProperties,
+  cfDisableAdditionalProperties,
+  cfComponentIsPreset,
+  cfDisableStylesForClassNameEditor,
+  cfEnableInlineStylesEditor,
 } from './features/define/utils/integratedComponentFeatures'
 export type {ComponentFeature, ComponentFeatures} from './features/define/utils/ComponentFeature'

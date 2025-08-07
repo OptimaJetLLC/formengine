@@ -1,16 +1,12 @@
 import styled from '@emotion/styled'
-import type {
-  Annotation,
-  ComponentStore,
-  CssPart,
-  Meta,
-  PropertyBlockType
-} from '@react-form-builder/core'
+import type {Annotation, ComponentStore, CssPart, Meta, PropertyBlockType} from '@react-form-builder/core'
 import {
   cfDisableAdditionalProperties,
   cfDisableMainComponentProperties,
   cfDisableStyleProperties,
+  cfDisableStylesForClassNameEditor,
   cfDisableTooltipProperties,
+  cfEnableInlineStylesEditor,
   className,
   ComponentDataProvider,
   key,
@@ -23,6 +19,7 @@ import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import type {Device} from '../../../../../utils/types'
 import {CSSEditor} from '../../../../annotation-editors/CSSEditor'
 import {Hinted} from '../../../../annotation-editors/Hinted'
+import {StyleEditor} from '../../../../annotation-editors/StyleEditor'
 import {CenteredLabel} from '../../../../components/Labels'
 import {PropertyEditorWrapper} from '../../../../components/PropertyEditorWrapper'
 import {customizableObserver} from '../../../../customization'
@@ -235,6 +232,8 @@ const RawStyles = ({meta, store}: { meta: Meta, store: ComponentStore }) => {
   const isComponent = model.kind === 'component'
   const isTemplate = model.kind === 'template'
   const classNameEditor = <PropertyEditorWrapper annotation={className} context={store.props}/>
+  const cssEditorHidden = model.isFeatureEnabled(cfDisableStylesForClassNameEditor)
+  const stylesEditorVisible = model.isFeatureEnabled(cfEnableInlineStylesEditor)
 
   return <>
     <DevicePicker value={device} onChange={setDevice}/>
@@ -244,7 +243,14 @@ const RawStyles = ({meta, store}: { meta: Meta, store: ComponentStore }) => {
     {isComponent && classNameEditor}
     <StyleBlock meta={meta} store={store} device={device} cssPart={'wrapperCss'} header={t('wrapper')} headerHint={t('wrapperHint')}/>
     {!isComponent && classNameEditor}
-    <CSSEditor device={device} useWrapperStyles={isComponent} defaultActiveTab={isTemplate ? 'wrapperCss' : 'css'}/>
+
+    {!cssEditorHidden &&
+      <CSSEditor device={device} useWrapperStyles={isComponent} defaultActiveTab={isTemplate ? 'wrapperCss' : 'css'}/>
+    }
+
+    {stylesEditorVisible &&
+      <StyleEditor device={device} useWrapperStyles={isComponent} defaultActiveTab={isTemplate ? 'wrapperStyle' : 'style'}/>
+    }
   </>
 }
 

@@ -66,6 +66,7 @@ loader.init().then(monaco => {
     monaco?.languages.typescript?.javascriptDefaults.addExtraLib(content, filePath)
   })
   monaco?.languages.css?.scssDefaults.setOptions({lint: {emptyRules: 'ignore'}})
+  monaco?.languages.css?.cssDefaults.setOptions({lint: {emptyRules: 'ignore'}})
   //fluent syntax reference https://projectfluent.org/fluent/guide/
   //init fluent syntax highlight
   const identifier = /[a-zA-Z-][a-zA-Z0-9_-]*/.source

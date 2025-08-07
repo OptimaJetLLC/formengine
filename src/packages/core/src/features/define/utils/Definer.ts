@@ -14,7 +14,12 @@ import type {ComponentMetadataEventListeners} from './ComponentMetadataEventList
 import type {ComponentPropertyBindType} from './ComponentPropertyBindType'
 import type {ComponentRole} from './ComponentRole'
 import type {InsertRestrictionFn} from './InsertRestrictionFn'
-import {cfComponentIsPreset, cfComponentRole} from './integratedComponentFeatures'
+import {
+  cfComponentIsPreset,
+  cfComponentRole,
+  cfDisableStylesForClassNameEditor,
+  cfEnableInlineStylesEditor
+} from './integratedComponentFeatures'
 import {Meta} from './Meta'
 import {Model} from './Model'
 
@@ -240,6 +245,24 @@ export class Definer<T extends object> {
    */
   componentRole(value: ComponentRole) {
     return this.addFeature(cfComponentRole, value)
+  }
+
+  /**
+   * Show or hide 'Styles for className' editor.
+   * @param value if the value is `true` or `undefined`, the editor will be displayed.
+   * @returns the modified Definer class instance.
+   */
+  showClassNameStylesEditor(value: boolean) {
+    return this.addFeature(cfDisableStylesForClassNameEditor, !value)
+  }
+
+  /**
+   * Show or hide 'Inline styles' properties editor.
+   * @param value if the value is `true` or `undefined`, the editor will be displayed.
+   * @returns the modified Definer class instance.
+   */
+  showInlineStylesEditor(value: boolean) {
+    return this.addFeature(cfEnableInlineStylesEditor, value)
   }
 
   /**

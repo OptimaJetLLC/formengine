@@ -38,3 +38,15 @@ registerBooleanComponentFeature(cfDisableStyleProperties)
  */
 export const cfDisableAdditionalProperties = 'disable-additional-properties'
 registerBooleanComponentFeature(cfDisableAdditionalProperties)
+
+/**
+ * Enabling this component feature will hide the 'Styles for className' editor.
+ */
+export const cfDisableStylesForClassNameEditor = 'disable-styles-for-classname-editor'
+registerBooleanComponentFeature(cfDisableStylesForClassNameEditor)
+
+/**
+ * Enabling this component feature will show the 'Inline styles' editor.
+ */
+export const cfEnableInlineStylesEditor = 'enable-inline-styles-editor'
+registerBooleanComponentFeature(cfEnableInlineStylesEditor)

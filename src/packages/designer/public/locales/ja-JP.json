@@ -813,6 +813,20 @@
       "name": "ラッパー"
     }
   },
+  "styleEditor": {
+    "componentTab": {
+      "hint": "'Style'プロパティを介してコンポーネントに適用されるCSSスタイル",
+      "name": "コンポーネント"
+    },
+    "header": {
+      "hint": "'Style'プロパティを介して適用されるCSSスタイル",
+      "name": "インラインスタイル"
+    },
+    "wrapperTab": {
+      "hint": "'ClassName'プロパティを介してコンポーネントラッパーに適用されるCSSスタイル",
+      "name": "ラッパー"
+    }
+  },
   "testingEditor": {
     "autorun": "オートラン",
     "compilationOk": "コンパイル結果:OK",

@@ -813,6 +813,20 @@
       "name": "包装器,包装器"
     }
   },
+  "styleEditor": {
+    "componentTab": {
+      "hint": "通过'style'属性应用于组件的CSS样式",
+      "name": "组件"
+    },
+    "header": {
+      "hint": "通过'style'属性应用的CSS样式",
+      "name": "内联样式"
+    },
+    "wrapperTab": {
+      "hint": "通过'className'属性应用于组件包装器的CSS样式",
+      "name": "包装器,包装器"
+    }
+  },
   "testingEditor": {
     "autorun": "自动运行",
     "compilationOk": "编译结果：OK",

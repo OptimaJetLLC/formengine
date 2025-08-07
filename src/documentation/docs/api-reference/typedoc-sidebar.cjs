@@ -703,6 +703,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/ComponentDeviceStyle",
+              label: "ComponentDeviceStyle"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/ComponentFeature",
               label: "ComponentFeature"
             },
@@ -765,6 +770,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/ComponentStoreLocalizer",
               label: "ComponentStoreLocalizer"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/ComponentStyle",
+              label: "ComponentStyle"
             },
             {
               type: "doc",
@@ -1141,8 +1151,18 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/cfDisableStylesForClassNameEditor",
+              label: "cfDisableStylesForClassNameEditor"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/variables/cfDisableTooltipProperties",
               label: "cfDisableTooltipProperties"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/cfEnableInlineStylesEditor",
+              label: "cfEnableInlineStylesEditor"
             },
             {
               type: "doc",

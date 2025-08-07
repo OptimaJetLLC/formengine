@@ -126,6 +126,14 @@ The condition for binding a child element to a parent element.
 
 ***
 
+### style?
+
+> `optional` **style**: [`ComponentStyle`](../type-aliases/ComponentStyle.md)
+
+The component styles for the `style` attribute.
+
+***
+
 ### tooltipProps?
 
 > `optional` **tooltipProps**: `Record`\<`string`, [`ComponentProperty`](../interfaces/ComponentProperty.md)\<`any`\>\>
@@ -147,6 +155,14 @@ The component type of the form viewer.
 > `optional` **wrapperCss**: [`Css`](../type-aliases/Css.md)
 
 The component wrapper CSS styles.
+
+***
+
+### wrapperStyle?
+
+> `optional` **wrapperStyle**: [`ComponentStyle`](../type-aliases/ComponentStyle.md)
+
+The component wrapper styles for the `style` attribute.
 
 ## Methods
 

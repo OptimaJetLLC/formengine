@@ -285,6 +285,20 @@ the read-only property of a component if the component has a read-only flag.
 
 ***
 
+### style
+
+#### Get Signature
+
+> **get** **style**(): `undefined` \| \{ `style`: `any`; \}
+
+##### Returns
+
+`undefined` \| \{ `style`: `any`; \}
+
+the Record that contains the style property for the component.
+
+***
+
 ### value
 
 #### Get Signature
@@ -311,11 +325,29 @@ Calculates and returns wrapper className property.
 
 `string`
 
-the Record that contains the className property for the wrapper of component.
+the className for the wrapper of component.
 
 #### Implementation of
 
 [`IComponentState`](../interfaces/IComponentState.md).[`wrapperClassName`](../interfaces/IComponentState.md#wrapperclassname)
+
+***
+
+### wrapperStyle
+
+#### Get Signature
+
+> **get** **wrapperStyle**(): `undefined` \| \{ `style`: `any`; \}
+
+##### Returns
+
+`undefined` \| \{ `style`: `any`; \}
+
+the Record that contains the style property for the wrapper of component.
+
+#### Implementation of
+
+[`IComponentState`](../interfaces/IComponentState.md).[`wrapperStyle`](../interfaces/IComponentState.md#wrapperstyle)
 
 ## Methods
 

@@ -1,0 +1,42 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsLabel1",
+        "type": "RsLabel",
+        "props": {},
+        "style": {
+          "any": {
+            "string": "  font-size: 20pt;\n  margin: 15pt;"
+          }
+        },
+        "wrapperStyle": {
+          "any": {
+            "string": "  background-color: azure;"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "test-label"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

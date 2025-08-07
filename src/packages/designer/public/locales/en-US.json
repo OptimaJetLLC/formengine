@@ -299,6 +299,20 @@
       "hint": "Disables data binding for the component"
     }
   },
+  "styleEditor": {
+    "header": {
+      "name": "Inline styles",
+      "hint": "CSS styles that are applied via the 'style' property"
+    },
+    "componentTab": {
+      "name": "Component",
+      "hint": "CSS styles that are applied to the component via the 'style' property"
+    },
+    "wrapperTab": {
+      "name": "Wrapper",
+      "hint": "CSS styles that are applied to the component wrapper via the 'className' property"
+    }
+  },
   "RsDatePicker": {
     "format": {
       "name": "Format",
