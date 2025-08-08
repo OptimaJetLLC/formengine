@@ -12,7 +12,7 @@ import {
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
 import {signatureComponent} from '@react-form-builder/components-signature'
-import type {ComponentStore, FormValidators, FormViewerProps, IFormData, IFormViewer, Validators} from '@react-form-builder/core'
+import type {Arguments, ComponentStore, FormValidators, FormViewerProps, IFormData, IFormViewer, Validators} from '@react-form-builder/core'
 import {ActionDefinition, BiDi, definePreset, Language} from '@react-form-builder/core'
 import type {FormBuilderI18n, FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
@@ -306,6 +306,26 @@ const FormBuilderApp = () => {
         p1: 'string',
         p2: 'boolean',
         p3: 'number'
+      }),
+      funcArgs: ActionDefinition.functionalAction(async (e, args: Arguments) => {
+        const {fnArg, fnArg1, fnArg2, fnArg3} = args
+
+        // @ts-ignore for test
+        const r = await fnArg('foo', 123)
+        // @ts-ignore for test
+        const r1 = await fnArg1('bar', 234)
+        // @ts-ignore for test
+        const r2 = await fnArg2('baz', 345)
+        // @ts-ignore for test
+        const r3 = await fnArg3('boo', 567)
+
+        // eslint-disable-next-line no-console
+        console.log('funcArgs', {r, r1, r2, r3})
+      }, {
+        fnArg: 'function',
+        fnArg1: 'function',
+        fnArg2: 'function',
+        fnArg3: 'function'
       })
     }}
   />

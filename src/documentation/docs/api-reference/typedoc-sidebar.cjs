@@ -910,6 +910,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/FunctionArgumentValue",
+              label: "FunctionArgumentValue"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/GetInitialDataFn",
               label: "GetInitialDataFn"
             },
@@ -982,6 +987,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/PreAnnotation",
               label: "PreAnnotation"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/PrimitiveArgumentValue",
+              label: "PrimitiveArgumentValue"
             },
             {
               type: "doc",

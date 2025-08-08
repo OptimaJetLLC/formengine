@@ -1,5 +1,5 @@
 # Type Alias: ParameterType
 
-> **ParameterType** = `"string"` \| `"number"` \| `"boolean"`
+> **ParameterType** = `"string"` \| `"number"` \| `"boolean"` \| `"function"`
 
 Parameter type.

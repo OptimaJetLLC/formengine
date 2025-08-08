@@ -3,6 +3,7 @@ import {namedObserver, useStore} from '@react-form-builder/core'
 import {ArrowDownLine, ArrowUpLine} from '@rsuite/icons'
 import {t} from 'i18next'
 import {isEmpty} from 'lodash-es'
+import type {MouseEventHandler} from 'react'
 import {useCallback, useEffect, useReducer} from 'react'
 import {Animation, Button} from 'rsuite'
 import {useComputed} from '../../../../../../../../utils/useComputed'
@@ -35,6 +36,9 @@ const useClearableArguments = () => {
   }, [data.args])
 }
 
+const rowStyle = {marginBlock: 8, paddingInline: 10}
+const expandStyle = {marginTop: -2}
+
 const RawArgumentList = () => {
   const store = useStore()
   const data = useActionData()
@@ -42,15 +46,16 @@ const RawArgumentList = () => {
   const action = useComputed(getAction)
   const [show, toggleShow] = useReducer(state => !state, false)
   const ExpandIcon = show ? ArrowUpLine : ArrowDownLine
+  const preventClick = useCallback<MouseEventHandler<HTMLDivElement>>((e) => e.stopPropagation(), [])
 
   useClearableArguments()
 
   if (!Object.keys(action.params).length) return null
 
   return (
-    <div onMouseDown={e => e.stopPropagation()}>
+    <div onMouseDown={preventClick}>
       <Animation.Collapse in={show} unmountOnExit>
-        <Rows gap={1} style={{marginBlock: 8, paddingInline: 10}}>
+        <Rows gap={1} style={rowStyle}>
           {Object.entries(action.params).map((arg, index) =>
             <ArgumentItem key={index} data={arg}/>)}
         </Rows>
@@ -59,7 +64,7 @@ const RawArgumentList = () => {
       <ExpandButton block onClick={toggleShow}>
         <>
           {t('actions.arguments')}
-          <ExpandIcon style={{marginTop: -2}}/>
+          <ExpandIcon style={expandStyle}/>
         </>
       </ExpandButton>
     </div>

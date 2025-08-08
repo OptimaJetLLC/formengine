@@ -2,7 +2,7 @@
   "version": "1",
   "actions": {
     "codeaction": {
-      "body": "    console.log('codeaction', e, args)",
+      "body": "    console.log('codeaction', args)",
       "params": {
         "prop1": "string",
         "prop2": "number",
@@ -21,6 +21,28 @@
         "props": {},
         "events": {
           "onClick": [
+            {
+              "name": "funcArgs",
+              "type": "custom",
+              "args": {
+                "fnArg": {
+                  "type": "fn",
+                  "body": "    console.log('fnArg', args, userArgs)\n\n    debugger\n\n    return {\n        result: true\n    }"
+                },
+                "fnArg1": {
+                  "type": "fn",
+                  "body": "    console.log('fnArg1', args, userArgs)\n\n    const r2 = await args.fnArg2('from fnArgs1')\n\n    return false"
+                },
+                "fnArg3": {
+                  "type": "fn",
+                  "body": "    console.log('fnArg3', args, userArgs)\n\n    const r = await args.fnArg('from fnArg3', 321)\n\n    debugger\n\n    r.result = false\n\n    return r"
+                },
+                "fnArg2": {
+                  "type": "fn",
+                  "body": "    console.log('fnArg2', args, userArgs)\n\n    const r = await args.fnArg('from fnArg2')\n    const r2 = await args.fnArg3('from fnArg2')\n\n    debugger\n\n    return undefined"
+                }
+              }
+            },
             {
               "name": "logEventArgs",
               "type": "custom"

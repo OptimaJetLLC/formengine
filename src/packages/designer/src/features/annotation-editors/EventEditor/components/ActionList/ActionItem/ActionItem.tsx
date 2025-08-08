@@ -1,5 +1,6 @@
 import type {ActionData, NamedActionDefinition} from '@react-form-builder/core'
 import {namedObserver, useStore} from '@react-form-builder/core'
+import {useCallback} from 'react'
 import {ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../../../../../utils/BuilderStoreContext'
 import {EditButton, RemoveButton} from '../../../../../components/Buttons'
@@ -16,7 +17,7 @@ const RawActionItem = ({data, onRemove}: ActionItemProps) => {
   const builderStore = useBuilderStore()
   const viewerStore = useStore()
   const isCodeAction = data.type === 'code'
-  const edit = () => {
+  const edit = useCallback(() => {
     const actionDefinition = viewerStore.form.actions[data.name]
     if (!actionDefinition) {
       console.error(`Cannot find custom action: '${data.name}'`)
@@ -24,7 +25,7 @@ const RawActionItem = ({data, onRemove}: ActionItemProps) => {
     }
     const namedAction: NamedActionDefinition = {name: data.name, actionDefinition}
     builderStore.editCodeAction(namedAction)
-  }
+  }, [builderStore, data.name, viewerStore.form.actions])
 
   return (
     <ActionDataProvider value={data}>

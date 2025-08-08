@@ -128,7 +128,8 @@ example [this](/usage#designer) page.
     }, {
       p1: 'string',
       p2: 'boolean',
-      p3: 'number'
+      p3: 'number',
+      p4: 'function'
     })
   }}
 />

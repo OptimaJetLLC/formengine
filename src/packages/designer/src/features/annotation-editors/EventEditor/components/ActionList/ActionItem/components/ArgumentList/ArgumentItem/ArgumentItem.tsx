@@ -3,6 +3,7 @@ import {namedObserver} from '@react-form-builder/core'
 import type {ComponentType} from 'react'
 import {Rows} from '../../../../../../../../components/Containers'
 import {InputBoolean} from './components/InputBoolean'
+import {InputFunction} from './components/InputFunction'
 import {InputNumber} from './components/InputNumber'
 import {InputString} from './components/InputString'
 import type {InputProps} from './InputProps'
@@ -16,6 +17,8 @@ const getArgumentInputByType = (type: ParameterType): ComponentType<InputProps> 
       return InputNumber
     case 'boolean':
       return InputBoolean
+    case 'function':
+      return InputFunction
   }
 }
 

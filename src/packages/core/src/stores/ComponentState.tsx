@@ -5,6 +5,7 @@ import {calculateProperties} from '../features/calculation/propertyCalculator'
 import {silentTransformCssString} from '../features/css-style/cssTransform'
 import type {ActionData, EventName} from '../features/event'
 import {ActionEventArgs, DidMountEvent, WillUnmountEvent} from '../features/event'
+import {getArgumentFunction, isFunctionArgumentValue} from '../features/event/consts/functionArgument'
 import type {ComponentPropertiesContext} from '../features/properties-context/ComponentPropertiesContext'
 import {getDefaultPropertiesContext} from '../features/properties-context/getDefaultPropertiesContext'
 import type {CssPart} from '../features/style/types'
@@ -49,6 +50,24 @@ const isRequired = (componentStore: ComponentStore) => {
   return !!componentStore.schema?.validations?.find(v => v.key === 'required')
 }
 
+const bindFunctionsInArgs = (e: ActionEventArgs, args: Record<string, any>) => {
+  const functionEntries: [string, Function][] = []
+
+  for (const [key, value] of Object.entries(args)) {
+    if (isFunctionArgumentValue(value)) {
+      const fn = getArgumentFunction(value.body || '')
+      functionEntries.push([key, fn])
+    }
+  }
+
+  const boundArgs = {...args}
+  for (const [key, fn] of functionEntries) {
+    boundArgs[key] = fn.bind(null, e, boundArgs)
+  }
+
+  return boundArgs
+}
+
 function createActionHandlersChain(store: Store, actionDataList: ActionData[]) {
   const actions = actionDataList.map(data => ({
     func: store.findAction(data).func,
@@ -58,7 +77,9 @@ function createActionHandlersChain(store: Store, actionDataList: ActionData[]) {
   return async (e: ActionEventArgs) => {
     try {
       for (const {func, args} of actions) {
-        const result = func(e, args)
+        const withBoundFnArgs = bindFunctionsInArgs(e, args)
+
+        const result = func(e, withBoundFnArgs)
         if (isPromise(result)) await result
       }
     } catch (e) {

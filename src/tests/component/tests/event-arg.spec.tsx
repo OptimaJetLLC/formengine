@@ -1,10 +1,11 @@
-import {ActionDefinition, BuilderView, type IFormViewer, Store} from '@react-form-builder/core'
+import {ActionDefinition, Arguments, BuilderView, type IFormViewer, ParameterType, Store} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {testLicense} from '@react-form-builder/tests-common/license/vaild'
 import {cleanup, fireEvent, render, RenderResult, within} from '@testing-library/react'
 import {useCallback, useEffect, useState} from 'react'
 import {MockInstance} from 'vitest'
+import {asyncAct} from './asyncAct'
 import form from './forms/event-arg.form.json'
 
 const view = new BuilderView(allComponentsBuilder)
@@ -13,29 +14,64 @@ const getForm = (_?: string) => JSON.stringify(form)
 
 const mockAssert = vi.fn()
 const mockLog = vi.fn()
+const mockFunc = vi.fn()
+const mockFuncResult = vi.fn()
 let mockCode: ReturnType<typeof vi.spyOn>
 let mockValidate: ReturnType<typeof vi.spyOn>
+
+if (!window?.ResizeObserver) {
+  const ResizeObserverMock = vi.fn(() => ({
+    observe: vi.fn(),
+    unobserve: vi.fn(),
+    disconnect: vi.fn(),
+  }))
+
+  vi.stubGlobal('ResizeObserver', ResizeObserverMock)
+}
 
 const actions = {
   logEventArgs: ActionDefinition.functionalAction((e, args) => {
     mockLog(args)
     // eslint-disable-next-line no-console
-    console.log('logEventArgs', e, args)
+    console.log('logEventArgs', args)
   }),
   assertArgs: ActionDefinition.functionalAction((e, args) => {
     mockAssert(args)
     // eslint-disable-next-line no-console
-    console.log('assertArgs', e, args)
+    console.log('assertArgs', args)
 
     const throwAssert = e.store.formData.getInitialData()?.throwAssert
     if (throwAssert) {
-      debugger
       throw new Error('stop processing')
     }
   }, {
     p1: 'string',
     p2: 'boolean',
     p3: 'number'
+  }),
+  funcArgs: ActionDefinition.functionalAction(async (e, args: Arguments) => {
+    mockFunc(e, args)
+    debugger
+    const {fnArg, fnArg1, fnArg2, fnArg3} = args
+
+    // @ts-ignore for test
+    const r = await fnArg('foo', 123)
+    // @ts-ignore for test
+    const r1 = await fnArg1('bar', 234)
+    // @ts-ignore for test
+    const r2 = await fnArg2('baz', 345)
+    // @ts-ignore for test
+    const r3 = await fnArg3('boo', 567)
+
+    // eslint-disable-next-line no-console
+    console.log('funcArgs', {r, r1, r2, r3})
+
+    mockFuncResult({r, r1, r2, r3})
+  }, {
+    fnArg: 'function',
+    fnArg1: 'function',
+    fnArg2: 'function',
+    fnArg3: 'function'
   }),
 }
 
@@ -82,6 +118,13 @@ function getRightPanel({container}: RenderResult) {
   return container.querySelector('.FE_RightPanel_Content') as HTMLElement
 }
 
+async function getActionBlock(app: RenderResult, argName: string) {
+  const rightPanel = getRightPanel(app)
+  const label = await within(rightPanel).findByText(argName)
+
+  return label?.parentNode?.parentNode as HTMLElement
+}
+
 const toggleArguments = async (app: RenderResult, argName: string) => {
   const rightPanel = getRightPanel(app)
   const label = await within(rightPanel).findByText(argName)
@@ -94,11 +137,9 @@ const toggleArguments = async (app: RenderResult, argName: string) => {
 const matchAllArguments = async (app: RenderResult, argName: string, values: Array<{
   name: string,
   value: string,
-  type: 'string' | 'number' | 'boolean'
+  type: ParameterType
 }>) => {
-  const rightPanel = getRightPanel(app)
-  const label = await within(rightPanel).findByText(argName)
-  const block = label?.parentNode?.parentNode as HTMLElement
+  const block = await getActionBlock(app, argName)
 
   for (const {name, value, type} of values) {
     const label = await within(block).findByText(name)
@@ -119,6 +160,10 @@ const matchAllArguments = async (app: RenderResult, argName: string, values: Arr
         input = label?.nextElementSibling?.querySelector('.rs-picker-toggle-value') as HTMLElement
         expect(input).toHaveTextContent(value)
         break
+      case 'function':
+        input = label?.nextElementSibling?.firstChild?.firstChild as HTMLElement
+        expect(input).toHaveTextContent(value)
+        break
     }
   }
 }
@@ -132,11 +177,22 @@ const togglePreview = async (app: RenderResult) => {
 }
 
 const clickButton = async (app: RenderResult) => {
-  const {container} = app
-  const form = container.querySelector('.FE_FormContainer') as HTMLElement
-  const button = await within(form).findByText('Button')
+  await asyncAct(async () => {
+    const {container} = app
+    const form = container.querySelector('.FE_FormContainer') as HTMLElement
+    const button = await within(form).findByText('Button')
 
-  fireEvent.click(button)
+    fireEvent.click(button)
+  })
+}
+
+const openCodeEditor = async (app: RenderResult, argName: string) => {
+  await asyncAct(async () => {
+    const block = await getActionBlock(app, argName)
+    const button = await within(block.children[1] as HTMLElement).getAllByText('Edit code')
+
+    fireEvent.click(button[0])
+  })
 }
 
 async function selectActions<Container>(app: RenderResult) {
@@ -166,10 +222,13 @@ describe('Event args UI should display and pass arguments', () => {
     mockAssert.mockClear()
     mockLog.mockClear()
     mockCode.mockClear()
+    mockFunc.mockClear()
+    mockFuncResult.mockClear()
 
     await toggleArguments(app, 'codeaction')
     await toggleArguments(app, 'assertArgs')
     await toggleArguments(app, 'validate')
+    await toggleArguments(app, 'funcArgs')
   })
 
   afterEach(() => {
@@ -182,6 +241,7 @@ describe('Event args UI should display and pass arguments', () => {
     expect(await within(rightPanel).findByText('logEventArgs')).toBeInTheDocument()
     expect(await within(rightPanel).findByText('codeaction')).toBeInTheDocument()
     expect(await within(rightPanel).findByText('assertArgs')).toBeInTheDocument()
+    expect(await within(rightPanel).findByText('funcArgs')).toBeInTheDocument()
   })
 
   it('should display saved args values', async () => {
@@ -197,6 +257,13 @@ describe('Event args UI should display and pass arguments', () => {
       {name: 'p3', value: '6', type: 'number'}
     ])
 
+    await matchAllArguments(app, 'funcArgs', [
+      {name: 'fnArg', value: 'Edit code', type: 'function'},
+      {name: 'fnArg1', value: 'Edit code', type: 'function'},
+      {name: 'fnArg2', value: 'Edit code', type: 'function'},
+      {name: 'fnArg3', value: 'Edit code', type: 'function'},
+    ])
+
     await matchAllArguments(app, 'validate', [
       {name: 'failOnError', value: 'True', type: 'boolean'},
     ])
@@ -205,6 +272,23 @@ describe('Event args UI should display and pass arguments', () => {
   it('should call actions with specified values and in specified order', async () => {
     await togglePreview(app)
     await clickButton(app)
+
+    expect(mockFunc).toHaveBeenCalledWith(expect.objectContaining({}), expect.objectContaining({
+      fnArg: expect.any(Function),
+      fnArg1: expect.any(Function),
+      fnArg2: expect.any(Function),
+      fnArg3: expect.any(Function),
+    }))
+    expect(mockFuncResult).toHaveBeenCalledWith(expect.objectContaining({
+      r: {
+        result: true
+      },
+      r1: false,
+      r2: undefined,
+      r3: {
+        result: false
+      }
+    }))
 
     expect(mockLog).toHaveBeenCalledWith({})
 
@@ -224,7 +308,7 @@ describe('Event args UI should display and pass arguments', () => {
       failOnError: true
     }))
 
-    expectCallOrder(mockLog, mockCode, mockAssert, mockValidate)
+    expectCallOrder(mockFunc, mockLog, mockCode, mockAssert, mockValidate)
   })
 
   it('should call actions before first failed actions', async () => {
@@ -235,8 +319,14 @@ describe('Event args UI should display and pass arguments', () => {
     await togglePreview(app)
     await clickButton(app)
 
-    expectCallOrder(mockLog, mockCode, mockAssert)
+    expectCallOrder(mockFunc, mockLog, mockCode, mockAssert)
     expect(mockValidate.mock.invocationCallOrder.length).toBe(0)
   })
 
+  it('should provide code editor for functional action', async () => {
+    await openCodeEditor(app, 'funcArgs')
+
+    await app.findByText('Edit code action: rsButton1.fnArg')
+  })
 })
+

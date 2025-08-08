@@ -26,7 +26,7 @@ interface ParameterItemProps {
   parameters?: Parameter[]
 }
 
-const ArgumentTypes = toLabeledValues(['string', 'number', 'boolean'], false)
+const ArgumentTypes = toLabeledValues(['string', 'number', 'boolean', 'function'], false)
 
 type FormModel = { name: ParameterName, type: ParameterType }
 
