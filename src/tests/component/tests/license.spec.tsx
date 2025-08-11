@@ -24,7 +24,7 @@ import {
 import {render, RenderResult} from '@testing-library/react'
 import {useCallback} from 'react'
 import {expect} from 'vitest'
-import {changeDesignerLanguage} from '../util/controls'
+import {clickItemInMainMenu} from '../util/controls'
 import agreementForm from './forms/agreement-form.json'
 import {default as formEmpty} from './forms/empty-form.json'
 import {default as formJson} from './forms/license-form.json'
@@ -239,7 +239,7 @@ describe(`License test`, function () {
     const app = render(<Designer license={''} customization={simpleCustomization}/>)
 
     await designerReady(app)
-    await changeDesignerLanguage(app, 'DE')
+    await clickItemInMainMenu(app.container, 'Translation', 'DE')
 
     expect(await app.findByText(trialMessageDE)).not.toBeNull()
   })

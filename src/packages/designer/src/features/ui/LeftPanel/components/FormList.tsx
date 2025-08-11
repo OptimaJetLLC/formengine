@@ -26,7 +26,7 @@ function FormListItem({active, onLoadForm, onRemoveForm, name}: {
     onRemoveForm(name)
   }, [name, onRemoveForm])
 
-  return <ListItem>
+  return <ListItem data-testid={`form-list-item-${name}`} data-active={active}>
     <span style={labelStyle}>
       {name}
     </span>
@@ -82,7 +82,7 @@ const RawFormList = (props: ComponentProps<typeof List>) => {
 
   return <Rows style={containerStyle} gap={10}>
     <SearchForm style={searchStyle} onChange={setSearchValue}/>
-    <Button block onClick={showPromptDialog}>{t('formsList.addNewForm')}</Button>
+    <Button block onClick={showPromptDialog} data-testid={'add-new-form-button'}>{t('formsList.addNewForm')}</Button>
     <List {...props}>
       {filteredFormList.length
         ? filteredFormList.map((name, index) =>

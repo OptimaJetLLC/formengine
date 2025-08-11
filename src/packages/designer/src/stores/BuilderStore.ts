@@ -910,7 +910,8 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     const name = formName || this.activeFormName
     if (!name) return
 
-    return await this.saveForm(name, this.formAsString)
+    await this.saveForm(name, this.formAsString)
+    if (formName) this.activeFormName = formName
   }
 
   /**
@@ -921,7 +922,6 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    */
   saveForm(formName: string, formValue: string) {
     this.formListLastReloadTime = new Date()
-    this.activeFormName = formName
     return this.formStorage.saveForm(formName, formValue)
   }
 
@@ -937,7 +937,8 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       languages: [],
       defaultLanguage: this.defaultLanguage.fullCode
     }
-    return this.saveForm(formName, toPrettyJsonString(persistedForm))
+    await this.saveForm(formName, toPrettyJsonString(persistedForm))
+    this.activeFormName = formName
   }
 
   /**

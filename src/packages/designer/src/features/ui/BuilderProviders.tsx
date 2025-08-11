@@ -115,8 +115,8 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
 
   useEffect(() => {
     // If activeFormName is already set from LocalStorageSynchronizer, do not change it
-    if (!builderStore.activeFormName) builderStore.activeFormName = props.formName
-  }, [builderStore, props.formName])
+    if (!builderStore.activeFormName || props.persistFormName === false) builderStore.activeFormName = props.formName
+  }, [builderStore, props.formName, props.persistFormName])
 
   useEffect(() => {
     store.formViewerPropsStore.applyProps(viewerProps)

@@ -54,7 +54,7 @@ const RawHeader = (props: ComponentProps<typeof Container>) => {
         <Menu/>
         <Toolbar size={'sm'}>
           {builderStore.formStorageEnabled &&
-            <IconButton onClick={() => onSave()}
+            <IconButton onClick={() => onSave()} data-testid={'header-save-form-button'}
                         icon={<FaIcon icon={faSave as unknown as IconDefinition}/>} size={'sm'}/>
           }
           <IconButton onClick={() => undoer.undo()} disabled={!undoer.hasUndo}

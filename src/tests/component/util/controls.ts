@@ -1,4 +1,5 @@
 import {fireEvent, RenderResult, waitFor, within} from '@testing-library/react'
+import {expect} from 'vitest'
 
 export const selectDropDownOption = async <T extends HTMLElement>(rendered: RenderResult, dropdown: T, byValue: string): Promise<void> => {
   fireEvent.click(dropdown)
@@ -26,27 +27,28 @@ export const changeFormLanguage = async (rendered: RenderResult, language: strin
 }
 */
 
-export const changeDesignerLanguage = async (rendered: RenderResult, language: string) => {
-  const formLanguageDropdown = rendered.container.querySelector('.FE_MainMenu_Dropdown') as HTMLElement
-  const formLanguageButton = formLanguageDropdown.querySelector('.FE_MainMenu_Button > button') as HTMLElement
+export const clickItemInMainMenu = async (container: HTMLElement, itemName: string, subItemName?: string) => {
+  const mainMenuDropdown = container.querySelector('.FE_MainMenu_Dropdown') as HTMLElement
+  const mainMenuButton = mainMenuDropdown.querySelector('.FE_MainMenu_Button > button') as HTMLElement
 
-  expect(formLanguageDropdown).toBeInTheDocument()
-  expect(formLanguageButton).toBeInTheDocument()
+  expect(mainMenuDropdown).toBeInTheDocument()
+  expect(mainMenuButton).toBeInTheDocument()
 
-  fireEvent.click(formLanguageButton)
+  fireEvent.click(mainMenuButton)
 
-  const subMenu = await within(formLanguageDropdown).findByText('Translation')
+  const item = await within(mainMenuDropdown).findByText(itemName)
 
-  expect(subMenu).not.toBeNull()
-  expect(subMenu).toBeVisible()
+  expect(item).not.toBeNull()
+  expect(item).toBeVisible()
 
-  fireEvent.click(subMenu)
+  fireEvent.click(item)
 
-  const deOption = within(formLanguageDropdown).getByText(language)
+  if (!subItemName) return
 
-  expect(deOption).not.toBeNull()
+  const subItemOption = within(mainMenuDropdown).getByText(subItemName)
 
-  fireEvent.click(deOption)
+  expect(subItemOption).not.toBeNull()
 
+  fireEvent.click(subItemOption)
   fireEvent.mouseDown(document)
 }

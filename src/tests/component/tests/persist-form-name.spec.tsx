@@ -1,55 +1,14 @@
 import {BuilderView} from '@react-form-builder/core'
-import {FormBuilder, IFormStorage} from '@react-form-builder/designer'
+import {FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {expect} from 'vitest'
+import {MockFormStorage} from '../util/mockFormStorage'
 
 const defaultFormName = 'default-form'
 const secondFormName = 'second-form'
 
-const createForm = (name?: string) => `
-{
-  "version": "1",
-  "form": {
-    "key": "Screen",
-    "type": "Screen",
-    "children": [
-      {
-        "key": "rsLabel1",
-        "type": "RsLabel",
-        "htmlAttributes": [
-          {
-            "name": "data-testid",
-            "value": "${name}"
-          }
-        ]
-      }
-    ]
-  }
-}
-`
-
-class MockFormStorage implements IFormStorage {
-  constructor(private onLoadForm: (formName?: string) => void) {
-  }
-
-  getForm = (formName?: string) => {
-    this.onLoadForm(formName)
-    return Promise.resolve(createForm(formName))
-  }
-
-  getFormNames(): Promise<string[]> {
-    return Promise.resolve([defaultFormName, secondFormName])
-  }
-
-  removeForm(formName: string): Promise<any> {
-    return Promise.resolve(undefined)
-  }
-
-  saveForm(formName: string, formValue: string): Promise<any> {
-    return Promise.resolve(undefined)
-  }
-}
+const formNames = [defaultFormName, secondFormName]
 
 const view = new BuilderView(allComponentsBuilder)
 
@@ -58,7 +17,7 @@ describe('The persistFormName prop in FormBuilder', function () {
 
   it('when enabled, should save the form name between sessions', async () => {
     const onLoadForm = vi.fn()
-    const formStorage = new MockFormStorage(onLoadForm)
+    const formStorage = new MockFormStorage({onLoadForm, formNames})
     const builderComponent = (
       <FormBuilder formName={defaultFormName} view={view} formStorage={formStorage}
                    getForm={formStorage.getForm}/>
@@ -81,7 +40,7 @@ describe('The persistFormName prop in FormBuilder', function () {
 
   it('when disabled, should not save the form name between sessions', async () => {
     const onLoadForm = vi.fn()
-    const formStorage = new MockFormStorage(onLoadForm)
+    const formStorage = new MockFormStorage({onLoadForm, formNames})
     const builderComponent = (
       <FormBuilder formName={defaultFormName} view={view} formStorage={formStorage}
                    getForm={formStorage.getForm} persistFormName={false}/>

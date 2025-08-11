@@ -66,7 +66,8 @@ const RawPromptDialog = () => {
             return <Form.Group key={name}>
               <Form.ControlLabel>{label}</Form.ControlLabel>
               <Form.Control key={name} name={name} value={fieldValue ?? ''} accepter={component}
-                            placeholder={placeholder} autoFocus={true} onKeyDown={handleKeys} {...props}/>
+                            placeholder={placeholder} autoFocus={true} onKeyDown={handleKeys}
+                            data-testid={`modal-${name}-input`} {...props}/>
               <Form.ErrorMessage show={!!error}>{error}</Form.ErrorMessage>
             </Form.Group>
           }
@@ -74,7 +75,7 @@ const RawPromptDialog = () => {
       </Form>
     </Modal.Body>
     <Modal.Footer>
-      <Button onClick={handleOk} appearance="primary" active={true} disabled={!inputValid}>
+      <Button onClick={handleOk} appearance="primary" active={true} disabled={!inputValid} data-testid={'modal-ok-button'}>
         {okLabel}
       </Button>
       <Button onClick={handleCancel} appearance="subtle">
