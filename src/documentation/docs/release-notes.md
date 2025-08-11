@@ -4,6 +4,40 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 6.1.0
+
+_August_ 11, 2025
+
+### New
+
+- Added support for using
+  a [functional](/api-reference/@react-form-builder/core/type-aliases/FunctionArgumentValue) [argument type](/api-reference/@react-form-builder/core/type-aliases/ParameterType)
+  in [custom actions](/actions#custom-actions).
+- Added support for [passing CSS styles via the style property](/component-styling#passing-styles-to-the-style-attribute) instead of
+  className.
+- Added support for [specifying a component role](/api-reference/@react-form-builder/core/interfaces/Definer#componentrole) (e.g., label,
+  tooltip, etc.).
+- Added the ability
+  to [manage](/api-reference/@react-form-builder/core/interfaces/Definer#addfeature) [component features](/api-reference/@react-form-builder/core/type-aliases/ComponentFeature),
+  including:
+  - [cfComponentIsPreset](/api-reference/@react-form-builder/core/variables/cfComponentIsPreset)
+  - [cfDisableAdditionalProperties](/api-reference/@react-form-builder/core/variables/cfDisableAdditionalProperties)
+  - [cfDisableMainComponentProperties](/api-reference/@react-form-builder/core/variables/cfDisableMainComponentProperties)
+  - [cfDisableStyleProperties](/api-reference/@react-form-builder/core/variables/cfDisableStyleProperties)
+  - [cfDisableStylesForClassNameEditor](/api-reference/@react-form-builder/core/variables/cfDisableStylesForClassNameEditor)
+  - [cfEnableInlineStylesEditor](/api-reference/@react-form-builder/core/variables/cfEnableInlineStylesEditor)
+  - [cfDisableTooltipProperties](/api-reference/@react-form-builder/core/variables/cfDisableTooltipProperties)
+
+### Changed
+
+- Deprecated the `slot` and `preset` options in the [ComponentKind](/api-reference/@react-form-builder/core/type-aliases/ComponentKind)
+  type.
+
+### Fixed bugs
+
+- Fixed an issue where saving or creating a new form could break the behavior of the custom form list.
+- Fixed an issue where deleting a form that was not currently open caused a "formName is undefined" error.
+
 ## 6.0.0
 
 _August_ 1, 2025
