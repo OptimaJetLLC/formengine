@@ -928,7 +928,6 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   /**
    * Creates a new form in the form storage.
    * @param formName the form name.
-   * @returns the Promise with the result of the form creation.
    */
   async createForm(formName: string) {
     const persistedForm: PersistedForm = {
