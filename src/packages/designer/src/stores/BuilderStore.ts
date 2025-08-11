@@ -954,7 +954,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @param onSuccess the callback function that is called when a form is successfully removed.
    */
   removeForm(value: string, onSuccess: () => void) {
-    this.activeFormName = undefined
+    if (value === this.activeFormName) this.activeFormName = undefined
     this.formStorage.removeForm(value).then(onSuccess)
   }
 
