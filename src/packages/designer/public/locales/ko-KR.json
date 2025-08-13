@@ -763,6 +763,7 @@
     },
     "keyMustBeUnique": "키는 고유해야 합니다",
     "keyMustNotBeEmpty": "키가 비어 있지 않아야 합니다",
+    "removeRow": "행 제거",
     "sectionName": {
       "actions": "행동",
       "expression": "표현",

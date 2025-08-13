@@ -763,6 +763,7 @@
     },
     "keyMustBeUnique": "密钥必须是唯一的",
     "keyMustNotBeEmpty": "密钥不能为空",
+    "removeRow": "删除一行",
     "sectionName": {
       "actions": "行动",
       "expression": "表达方式",

@@ -763,6 +763,7 @@
     },
     "keyMustBeUnique": "キーは一意でなければなりません",
     "keyMustNotBeEmpty": "キーは空であってはなりません",
+    "removeRow": "行を削除する",
     "sectionName": {
       "actions": "アクション",
       "expression": "式",

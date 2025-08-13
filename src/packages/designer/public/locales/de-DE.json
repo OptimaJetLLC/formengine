@@ -763,6 +763,7 @@
     },
     "keyMustBeUnique": "Schlüssel muss eindeutig sein",
     "keyMustNotBeEmpty": "Schlüssel darf nicht leer sein",
+    "removeRow": "Eine Zeile entfernen",
     "sectionName": {
       "actions": "Aktionen",
       "expression": "Ausdruck",

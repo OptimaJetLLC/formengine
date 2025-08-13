@@ -763,6 +763,7 @@
     },
     "keyMustBeUnique": "Кључ мора бити јединствен",
     "keyMustNotBeEmpty": "Кључ не сме бити празан",
+    "removeRow": "Избришите ред",
     "sectionName": {
       "actions": "Акције",
       "expression": "Израз",

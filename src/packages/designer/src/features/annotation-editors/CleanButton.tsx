@@ -5,6 +5,40 @@ import {useTranslationPart} from '../localization/hooks'
 import {Hinted} from './Hinted'
 
 /**
+ * The properties of the cross button.
+ */
+export interface CrossButtonProps {
+  /**
+   * The callback function called when the button is clicked.
+   */
+  onClick: () => void
+  /**
+   * The hint text.
+   */
+  hint?: string
+  /**
+   * The class name.
+   */
+  className?: string
+}
+
+/**
+ * The React component that displays the cross button.
+ * @param props the React component properties.
+ * @returns the React element.
+ */
+export const CrossButton = (props: CrossButtonProps) => {
+  const {onClick, hint, className} = props
+  const cls = useMemo(() => cx(['rs-picker-clean', 'rs-btn-close', className]), [className])
+
+  return <Hinted hint={hint}>
+    <button className={cls} onClick={onClick}>
+      <Close/>
+    </button>
+  </Hinted>
+}
+
+/**
  * The properties of the clean button.
  */
 export interface CleanButtonProps {
@@ -12,22 +46,21 @@ export interface CleanButtonProps {
    * The callback function called when the button is clicked.
    */
   onClick: () => void
+  /**
+   * The class name.
+   */
+  className?: string
 }
 
 /**
- * The React component that the clean button.
+ * The React component that displays the clean button.
  * @param props the React component properties.
- * @param props.onClick the callback function called when the button is clicked.
  * @returns the React element.
  */
-export const CleanButton = ({onClick}: CleanButtonProps) => {
+export const CleanButton = (props: CleanButtonProps) => {
+  const {onClick, className} = props
   const getLabel = useTranslationPart('propertiesEditor')
   const cleanLabel = useMemo(() => getLabel('clean'), [getLabel])
-  const cls = useMemo(() => cx(['rs-picker-clean', 'rs-btn-close']), [])
 
-  return <Hinted hint={cleanLabel}>
-    <button className={cls} onClick={onClick}>
-      <Close/>
-    </button>
-  </Hinted>
+  return <CrossButton hint={cleanLabel} onClick={onClick} className={className}/>
 }

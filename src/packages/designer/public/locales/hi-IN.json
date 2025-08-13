@@ -763,6 +763,7 @@
     },
     "keyMustBeUnique": "कुंजी अद्वितीय होना चाहिए",
     "keyMustNotBeEmpty": "कुंजी खाली नहीं होनी चाहिए",
+    "removeRow": "एक पंक्ति निकालें",
     "sectionName": {
       "actions": "क्रियाएँ",
       "expression": "अभिव्यक्ति",

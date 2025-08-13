@@ -763,6 +763,7 @@
     },
     "keyMustBeUnique": "La clave debe ser única",
     "keyMustNotBeEmpty": "La clave no debe estar vacía",
+    "removeRow": "Eliminar una fila",
     "sectionName": {
       "actions": "Acciones",
       "expression": "Expresión",

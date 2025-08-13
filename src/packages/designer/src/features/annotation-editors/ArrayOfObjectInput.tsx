@@ -1,13 +1,35 @@
+import {css} from '@emotion/css'
+import styled from '@emotion/styled'
+import {Plus} from '@rsuite/icons'
 import {useCallback, useMemo} from 'react'
-import type {InputCellProps} from '../components/EditableTable'
-import {EditableTable, makeColumns, SCell} from '../components/EditableTable'
+import {Button} from 'rsuite'
+import {Rows} from '../components/Containers'
 import LabeledProperty from '../components/LabeledProperty'
+import {useTranslationPart} from '../localization/hooks'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
+import {CleanButton, CrossButton} from './CleanButton'
 import {JsonInput} from './JsonInput'
 
-interface JsonCellProps extends InputCellProps {
-  editorTitle: string
-}
+const InputRows = styled(Rows)`
+  overflow-y: auto;
+  max-height: 160px;
+`
+
+const SDiv = styled.div`
+  display: flex;
+  margin-left: 4px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+`
+
+const CleanDiv = styled.div`
+  display: flex;
+  justify-content: end;
+`
+
+const crossButtonClass = css`
+  color: var(--rs-text-primary);
+`
 
 const valueIsObject = (value: string): void => {
   const parsed = JSON.parse(value)
@@ -16,28 +38,9 @@ const valueIsObject = (value: string): void => {
   }
 }
 
-const JsonCell = ({rowData, dataKey, rowIndex, onChange, editorTitle, ...props}: JsonCellProps) => {
-  const value = rowData[dataKey] ?? {}
-  const title = useMemo(() => `${editorTitle}[${rowIndex}]`, [editorTitle, rowIndex])
-
-  const handleChange = useCallback((newValue: any) => {
-    rowData[dataKey] = newValue
-    onChange?.(newValue, dataKey, rowIndex)
-  }, [dataKey, onChange, rowData, rowIndex])
-
-  const handleClean = useCallback(() => {
-    handleChange(undefined)
-  }, [handleChange])
-
-  return (
-    <SCell {...props}>
-      <JsonInput editorKey={`${dataKey}-${rowIndex}`} editorTitle={title} value={value}
-                 onChange={handleChange} onClean={handleClean} onValidate={valueIsObject}/>
-    </SCell>
-  )
+const buttonStyle = {
+  marginTop: 10
 }
-
-const DEFAULT_COLUMNS = [{name: 'item', input: JsonCell}]
 
 /**
  * The property editor for the array of objects property type.
@@ -45,19 +48,48 @@ const DEFAULT_COLUMNS = [{name: 'item', input: JsonCell}]
  * @returns the React element.
  */
 export const ArrayOfObjectInput = (props: AnnotationEditorProps) => {
-  const {value, onChange, annotation} = props
+  const {value, onChange, onClean, annotation} = props
+  const t = useTranslationPart('propertiesEditor')
 
-  const editorColumns = useMemo(() => {
-    const result = annotation.editorProps?.columns ?? DEFAULT_COLUMNS
-    const column = result?.[0]
-    if (column && !column.inputProps) {
-      column.inputProps = {editorTitle: `${props.componentData.key}.${annotation.name}`}
-    }
-    return makeColumns(result)
-  }, [annotation.editorProps?.columns, annotation.name, props.componentData.key])
+  const items: unknown[] = useMemo(() => value ?? [], [value])
+
+  const handleOnChange = useCallback((value: any, index: number) => {
+    const data = [...items]
+    data[index] = value
+    onChange(data)
+  }, [onChange, items])
+
+  const onAdd = useCallback(() => {
+    onChange?.([...items, {}])
+  }, [onChange, items])
+
+  const onRemove = useCallback((index: number) => {
+    items.splice(index, 1)
+    onChange?.([...items])
+  }, [onChange, items])
+
+  const inputs = items.map((item, index) => {
+    const editorTitle = `${props.componentData.key}.${annotation.name}[${index}]`
+    return <SDiv key={editorTitle} style={{marginLeft: 4, marginBottom: 4, marginTop: 4}}>
+      <JsonInput editorKey={editorTitle} editorTitle={editorTitle} value={item}
+                 onChange={value => handleOnChange(value, index)}
+                 onClean={() => handleOnChange({}, index)}
+                 onValidate={valueIsObject}/>
+      <CrossButton onClick={() => onRemove(index)} hint={t('removeRow')} className={crossButtonClass}/>
+    </SDiv>
+  })
 
   return <>
-    <LabeledProperty {...props}/>
-    <EditableTable data={value} onChange={onChange} columns={editorColumns}/>
+    <LabeledProperty {...props}>
+      <CleanDiv>
+        <CleanButton onClick={onClean} className={crossButtonClass}/>
+      </CleanDiv>
+    </LabeledProperty>
+    <InputRows gap={0}>
+      {inputs}
+    </InputRows>
+    <Button appearance="default" size="sm" onClick={onAdd} style={buttonStyle} block>
+      <Plus/>
+    </Button>
   </>
 }

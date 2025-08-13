@@ -715,7 +715,8 @@
     "applyKey": "Apply key changes",
     "keyMustBeUnique": "Key must be unique",
     "keyMustNotBeEmpty": "Key must not be empty",
-    "clean": "Reset to default"
+    "clean": "Reset to default",
+    "removeRow": "Remove a row"
   },
   "toolbar": {
     "elements": "Elements",
