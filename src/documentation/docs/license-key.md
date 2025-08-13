@@ -6,7 +6,7 @@ slug: /license-key
 
 # License key
 
-Contact our [sales department](https://formengine.io/pricing) to obtain a licence key.
+Contact our [sales department](https://optimajet.com/contact-us/) to obtain a licence key.
 
 Once you have the licence key, you need to pass it to the `FormBuilder`
 component [property](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#licensekey).

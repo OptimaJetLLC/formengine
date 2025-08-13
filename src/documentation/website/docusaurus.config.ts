@@ -73,28 +73,11 @@ const config: Config = {
       },
       items: [
         {
-          label: 'Features',
-          to: 'https://formengine.io/features/',
-          position: 'right',
-          target: '_self',
-        },
-        {
           label: 'Demo',
           to: 'https://demo.formengine.io/',
           position: 'right',
           target: '_self',
           className: 'demo-link'
-        },
-        {
-          label: 'Pricing',
-          to: 'https://formengine.io/pricing/',
-          position: 'right',
-          target: '_self',
-        },
-        {
-          label: 'Documentation',
-          to: '/',
-          position: 'right',
         },
       ],
     },
