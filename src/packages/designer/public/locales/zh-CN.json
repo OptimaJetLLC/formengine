@@ -668,8 +668,11 @@
   },
   "editJson": "编辑JSON",
   "errorsPanel": {
+    "clear": "清楚",
     "data": "数据资料",
-    "errors": "错误"
+    "errors": "错误",
+    "reset": "重置为默认值",
+    "validate": "验证"
   },
   "formsList": {
     "addNewForm": "添加新表单",

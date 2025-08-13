@@ -734,6 +734,9 @@
   },
   "errorsPanel": {
     "data": "Data",
+    "validate": "Validate",
+    "reset": "Reset to default",
+    "clear": "Clear",
     "errors": "Errors"
   },
   "searchForm": {

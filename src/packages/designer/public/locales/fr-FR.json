@@ -668,8 +668,11 @@
   },
   "editJson": "Modifier JSON",
   "errorsPanel": {
+    "clear": "Clair",
     "data": "Données",
-    "errors": "Erreurs"
+    "errors": "Erreurs",
+    "reset": "Réinitialiser",
+    "validate": "Valider"
   },
   "formsList": {
     "addNewForm": "Ajouter un nouveau formulaire",

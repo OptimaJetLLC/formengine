@@ -668,8 +668,11 @@
   },
   "editJson": "JSONの編集",
   "errorsPanel": {
+    "clear": "クリア",
     "data": "データ",
-    "errors": "エラー"
+    "errors": "エラー",
+    "reset": "リセット",
+    "validate": "検証"
   },
   "formsList": {
     "addNewForm": "新しいフォームを追加する",

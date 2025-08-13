@@ -668,8 +668,11 @@
   },
   "editJson": "تحرير جسون",
   "errorsPanel": {
+    "clear": "واضح",
     "data": "البيانات",
-    "errors": "أخطاء"
+    "errors": "أخطاء",
+    "reset": "إعادة تعيين",
+    "validate": "التحقق من صحة"
   },
   "formsList": {
     "addNewForm": "إضافة نموذج جديد",

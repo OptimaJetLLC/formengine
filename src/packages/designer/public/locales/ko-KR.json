@@ -668,8 +668,11 @@
   },
   "editJson": "편집",
   "errorsPanel": {
+    "clear": "클리어",
     "data": "데이터",
-    "errors": "오류"
+    "errors": "오류",
+    "reset": "재설정",
+    "validate": "유효성 검사"
   },
   "formsList": {
     "addNewForm": "새 양식 추가",

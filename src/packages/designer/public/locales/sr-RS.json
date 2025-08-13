@@ -668,8 +668,11 @@
   },
   "editJson": "Уреди ЈСОН",
   "errorsPanel": {
+    "clear": "Јасно",
     "data": "Подаци",
-    "errors": "Грешке"
+    "errors": "Грешке",
+    "reset": "Ресетуј",
+    "validate": "Тврдити"
   },
   "formsList": {
     "addNewForm": "Додајте нови облик",

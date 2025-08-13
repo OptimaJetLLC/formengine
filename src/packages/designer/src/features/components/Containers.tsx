@@ -48,13 +48,17 @@ export const LabeledInput = styled.div`
   }
 `
 
+export const itemStyle = css`
+  background-color: var(--rs-btn-default-bg);
+  border-radius: 10px;
+  padding: 8px;
+`
+
 export const listItemStyle = css`
   && {
     display: flex;
     position: relative;
-    background-color: var(--rs-btn-default-bg);
-    border-radius: 10px;
-    padding: 8px;
+    ${itemStyle};
     padding-inline-start: 12px;
     align-items: center;
     user-select: none;

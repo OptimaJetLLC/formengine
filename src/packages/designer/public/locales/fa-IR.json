@@ -668,8 +668,11 @@
   },
   "editJson": "ویرایش JSON",
   "errorsPanel": {
+    "clear": "واضح",
     "data": "داده‌ها",
-    "errors": "خطاها"
+    "errors": "خطاها",
+    "reset": "تنظیم مجدد",
+    "validate": "اعتبار سنجی"
   },
   "formsList": {
     "addNewForm": "افزودن فرم جدید",

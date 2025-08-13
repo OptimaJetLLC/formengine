@@ -668,8 +668,11 @@
   },
   "editJson": "जेएसओएन संपादित करें",
   "errorsPanel": {
+    "clear": "साफ़ करें",
     "data": "डेटा",
-    "errors": "त्रुटियां"
+    "errors": "त्रुटियां",
+    "reset": "रीसेट करें",
+    "validate": "मान्य करें"
   },
   "formsList": {
     "addNewForm": "एक नया रूप जोड़ें",

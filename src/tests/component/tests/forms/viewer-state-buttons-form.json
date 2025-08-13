@@ -1,0 +1,48 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "input",
+        "type": "RsInput",
+        "props": {
+          "value": {
+            "value": "default"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "min",
+              "args": {
+                "limit": 6,
+                "message": "invalid"
+              }
+            }
+          ],
+          "autoValidate": false
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "test-input"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
