@@ -87,6 +87,13 @@ prepare-demo-archive:
   RUN cd packages/apps/demo/dist/ && tar -zcvf demo.tgz *
   SAVE ARTIFACT packages/apps/demo/dist/demo.tgz AS LOCAL .archives/demo.tgz
 
+# prepare-archive-formbuilder archive the formbuilder
+prepare-archive-formbuilder:
+  # temporarily, formbuilder and demo are the same thing
+  FROM +npm-demo-build
+  RUN cd packages/apps/demo/dist/ && tar -zcvf formbuilder.tgz *
+  SAVE ARTIFACT packages/apps/demo/dist/formbuilder.tgz AS LOCAL .archives/formbuilder.tgz
+
 # prepare-documentation-archive archive the documentation
 prepare-documentation-archive:
   FROM +npm-documentation-build
@@ -195,6 +202,23 @@ publish-artifact-demo:
 publish-archive-demo:
   COPY .archives/demo.tgz ./
   DO +PUBLISH_DEMO
+
+PUBLISH_FORMBUILDER:
+  FUNCTION
+  RUN mkdir -p ~/.ssh
+  RUN echo "formbuilder.formengine.io ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBA0e2FxO/vVLKPM9R4Xd64wmh7G//xe2yZyY2SKF8CXx3SjxuIScKaUx9B8gEPz2Xq7iIFiUT3rVDgCbFQ72bvQ=" >> ~/.ssh/known_hosts
+  RUN --push --ssh scp formbuilder.tgz root@formbuilder.formengine.io:/home/service-formbuilder/archive
+  RUN --push --ssh ssh root@formbuilder.formengine.io 'tar -xvf /home/service-formbuilder/archive/formbuilder.tgz -C /home/service-formbuilder/www/'
+
+# publish-artifact-formbuilder publishes a formbuilder from a local artifact
+publish-artifact-formbuilder:
+  COPY +prepare-formbuilder-archive/formbuilder.tgz formbuilder.tgz
+  DO +PUBLISH_FORMBUILDER
+
+# publish-archive-formbuilder publishes a formbuilder from the local ".archives" folder
+publish-archive-formbuilder:
+  COPY .archives/formbuilder.tgz ./
+  DO +PUBLISH_FORMBUILDER
 
 PUBLISH_DOCUMENTATION:
   FUNCTION
