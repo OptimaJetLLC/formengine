@@ -61,7 +61,7 @@ export interface FormViewerProps {
 
   /**
    * If true, the component will not be wrapped by the error display component.
-   * **Attention! Don't use it! Unstable API.**
+   * @deprecated **Attention! Don't use it! Unstable API.**
    */
   erroneous?: boolean
 
