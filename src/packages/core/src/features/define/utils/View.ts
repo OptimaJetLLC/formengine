@@ -100,6 +100,16 @@ export class View {
   }
 
   /**
+   * Returns the array of component metadata filtered using the predicate function.
+   * @param predicate the filter function.
+   * @returns the array of component metadata filtered using the predicate function.
+   */
+  filterModels(predicate: (model: Model) => boolean) {
+    return Array.from(this.#modelMap.values())
+      .filter(predicate)
+  }
+
+  /**
    * Adds a wrapper to the list of viewers for this viewer wrapper.
    * @param wrapper  the viewer wrapper to be added. The wrapper is a component that wraps the form viewer.
    * @returns the {@link View} instance.

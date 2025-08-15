@@ -1,11 +1,4 @@
-import {
-  formEngineRsuiteCssLoader,
-  ltrCssLoader,
-  rsErrorMessage,
-  RsLocalizationWrapper,
-  rsTooltip,
-  rtlCssLoader,
-} from '@react-form-builder/components-rsuite'
+import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader,} from '@react-form-builder/components-rsuite'
 import {BiDi, BuilderView} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
@@ -92,8 +85,6 @@ const getForm = () => JSON.stringify(testForm)
 const getSavedForm = () => JSON.stringify(savedForm)
 
 const view = new BuilderView(allComponentsBuilder)
-  .withErrorMeta(rsErrorMessage.build())
-  .withTooltipMeta(rsTooltip.build())
   .withTemplates(['agreement'])
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)

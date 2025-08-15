@@ -103,6 +103,7 @@
 - [ComponentPropertyComputeType](type-aliases/ComponentPropertyComputeType.md)
 - [ComponentPropertyName](type-aliases/ComponentPropertyName.md)
 - [ComponentPropsLocalization](type-aliases/ComponentPropsLocalization.md)
+- [ComponentRole](type-aliases/ComponentRole.md)
 - [ComponentsLocalization](type-aliases/ComponentsLocalization.md)
 - [ComponentStateFactory](type-aliases/ComponentStateFactory.md)
 - [ComponentStoreLocalizer](type-aliases/ComponentStoreLocalizer.md)

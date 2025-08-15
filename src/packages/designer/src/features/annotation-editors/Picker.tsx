@@ -26,12 +26,16 @@ const addCustomValue = ({data}: PropertyAnnotation, value: string) => {
  * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const Picker = (props: AnnotationEditorProps) => {
+export const Picker = (props: AnnotationEditorProps & { 'data-testid'?: string }) => {
+  const labeledProps = {...props}
+  delete labeledProps['data-testid']
+
   const {value, onChange, annotation, onClean} = props
   const data = addCustomValue(annotation as PropertyAnnotation, value)
 
-  return <LabeledProperty {...props}>
+  return <LabeledProperty {...labeledProps}>
     <SInputPicker value={value ?? props.annotation.default ?? ''} data={data} onChange={onChange} onClean={onClean}
-                  block cleanable creatable size={'xs'} {...props.annotation.editorProps} placement={'autoVerticalEnd'}/>
+                  block cleanable creatable size={'xs'} {...props.annotation.editorProps} placement={'autoVerticalEnd'}
+                  data-testid={props['data-testid']}/>
   </LabeledProperty>
 }

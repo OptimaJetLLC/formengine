@@ -1,5 +1,5 @@
 import {namedObserver, oneOf, useStore} from '@react-form-builder/core'
-import {useCallback} from 'react'
+import {useCallback, useMemo} from 'react'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps} from '../../../annotation-editors/AnnotationEditorProps'
 import {Picker} from '../../../annotation-editors/Picker'
@@ -16,7 +16,14 @@ const RawErrorComponentPicker = () => {
   const getComputeType = useCallback(() => undefined, [])
   const hasComputeCode = useCallback(() => false, [])
 
-  const values = builderStore.view.errors
+  const values = useMemo(() => {
+    const names = builderStore.view
+      .filterModels(model => model.hasComponentRole('error-message'))
+      .map(model => model.type)
+    names.push(...builderStore.view.errors)
+    return Array.from(new Set(names))
+  }, [builderStore.view])
+
   const defaultValue = values[0]
   const value = viewerStore.form.errorType ?? defaultValue
   const annotation = oneOf(...values)
@@ -41,7 +48,7 @@ const RawErrorComponentPicker = () => {
     hasComputeCode,
   }
 
-  return <Picker {...props}/>
+  return <Picker {...props} data-testid="error-type-picker"/>
 }
 
 export const ErrorComponentPicker = namedObserver('ErrorComponentPicker', RawErrorComponentPicker)

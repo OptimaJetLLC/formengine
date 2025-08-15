@@ -1,13 +1,11 @@
-import {antdComponents, antTooltip} from '@react-form-builder/components-antd'
+import {antdComponents} from '@react-form-builder/components-antd'
 import {fastQrComponent} from '@react-form-builder/components-fast-qr'
 import {googleMapComponent} from '@react-form-builder/components-google-map'
 import {richTextComponent} from '@react-form-builder/components-rich-text'
 import {
   formEngineRsuiteCssLoader,
   ltrCssLoader,
-  rsErrorMessage,
   RsLocalizationWrapper,
-  rsTooltip,
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
@@ -91,9 +89,6 @@ const components = [...rSuiteComponents, ...antdComponents, ...presets,
   .map(definer => definer.build())
 
 const view = new BuilderView(components)
-  .withErrorMeta(rsErrorMessage.build())
-  .withTooltipMeta(rsTooltip.build())
-  .withTooltipMeta(antTooltip.build())
   .withTemplates(['template', 'agreement', 'login form'])
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)

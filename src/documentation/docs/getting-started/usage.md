@@ -41,10 +41,6 @@ import {useCallback, useRef} from 'react'
 const componentsMetadata = rSuiteComponents.map(definer => definer.build())
 
 const builderView = new BuilderView(componentsMetadata)
-  // You can pass multiple components to display error messages by calling the withErrorMeta function multiple times
-  .withErrorMeta(rsErrorMessage.build())
-  // You can pass multiple components to display tooltip messages by calling the withTooltipMeta function multiple times
-  .withTooltipMeta(rsTooltip.build())
   // Pass an array of template names to the withTemplates function to display them in the designer
   .withTemplates([])
   // The following parameters are required for correct CSS loading in LTR and RTL modes

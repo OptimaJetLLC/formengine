@@ -60,6 +60,7 @@ export class BuilderView extends View {
   }
 
   /**
+   * @deprecated
    * Returns the array of metadata properties of the tooltip component.
    * @param name the name of the tooltip component type.
    * @returns the array of metadata properties of the tooltip component.
@@ -69,6 +70,7 @@ export class BuilderView extends View {
   }
 
   /**
+   * @deprecated
    * Returns the array of metadata properties of the error component.
    * @param name the name of the error component type.
    * @returns the array of metadata properties of the error component.
@@ -78,6 +80,7 @@ export class BuilderView extends View {
   }
 
   /**
+   * @deprecated
    * @returns the array of strings with the names of the component types of the tooltip.
    */
   get tooltips() {
@@ -85,6 +88,7 @@ export class BuilderView extends View {
   }
 
   /**
+   * @deprecated
    * @returns the array of strings with the names of the component types of the error.
    */
   get errors() {
@@ -92,6 +96,7 @@ export class BuilderView extends View {
   }
 
   /**
+   * @deprecated use the {@link Definer.componentRole}('tooltip') instead.
    * Sets the metadata of the component that displays the form's tooltips.
    * @param builderComponent the metadata of the component that displays the form's tooltips.
    * @returns the instance of the {@link BuilderView} class.
@@ -104,6 +109,7 @@ export class BuilderView extends View {
   }
 
   /**
+   * @deprecated use the {@link Definer.componentRole}('error-message') instead.
    * Sets the metadata of the component that displays form's errors.
    * @param builderComponent the metadata of the component that displays the form's errors.
    * @returns the instance of the {@link BuilderView} class.

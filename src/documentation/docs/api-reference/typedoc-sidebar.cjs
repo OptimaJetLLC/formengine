@@ -758,6 +758,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/ComponentRole",
+              label: "ComponentRole"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/ComponentsLocalization",
               label: "ComponentsLocalization"
             },

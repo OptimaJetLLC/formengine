@@ -1,21 +1,14 @@
+import * as fastQrComponent from '@react-form-builder/components-fast-qr'
+import * as googleMapComponent from '@react-form-builder/components-google-map'
+import * as richTextComponent from '@react-form-builder/components-rich-text'
 import * as rSuiteComponents from '@react-form-builder/components-rsuite'
-import {
-  formEngineRsuiteCssLoader,
-  ltrCssLoader,
-  rsErrorMessage,
-  RsLocalizationWrapper,
-  rsTooltip,
-  rtlCssLoader
-} from '@react-form-builder/components-rsuite'
-import type {BuilderComponent} from '@react-form-builder/core';
+import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import * as signatureComponent from '@react-form-builder/components-signature'
+import type {BuilderComponent} from '@react-form-builder/core'
 import {BiDi, BuilderView} from '@react-form-builder/core'
 import type {FormBuilderProps} from '@react-form-builder/designer'
 import {FormBuilder} from '@react-form-builder/designer'
 import {createElement} from 'react'
-import * as richTextComponent from '@react-form-builder/components-rich-text'
-import * as signatureComponent from '@react-form-builder/components-signature'
-import * as fastQrComponent from '@react-form-builder/components-fast-qr'
-import * as googleMapComponent from '@react-form-builder/components-google-map'
 // eslint-disable-next-line import/extensions
 import {createRoot} from 'react-dom/client'
 
@@ -37,8 +30,6 @@ export function renderFormBuilderTo(container: HTMLElement, props: Partial<FormB
   const root = createRoot(container)
 
   const view = props.view ?? new BuilderView(components)
-    .withErrorMeta(rsErrorMessage.build())
-    .withTooltipMeta(rsTooltip.build())
     .withViewerWrapper(RsLocalizationWrapper)
     .withCssLoader(BiDi.LTR, ltrCssLoader)
     .withCssLoader(BiDi.RTL, rtlCssLoader)

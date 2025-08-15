@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import {namedObserver, useTooltipType} from '@react-form-builder/core'
 import {startCase} from 'lodash-es'
+import {useMemo} from 'react'
 import {InputPicker} from 'rsuite'
 import type {ItemDataType} from 'rsuite/esm/internals/types'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
@@ -20,16 +21,26 @@ const RawTooltipTypePicker = (props: AnnotationEditorProps) => {
   const {value, onChange, onClean} = props
   const builderStore = useBuilderStore()
   const tooltipType = useTooltipType()
-  const data = builderStore.view.tooltips.map(name => {
-    return {
-      value: name,
-      label: startCase(name)
-    } as ItemDataType
-  })
+
+  const data = useMemo(() => {
+    const names = builderStore.view
+      .filterModels(model => model.hasComponentRole('tooltip'))
+      .map(model => model.type)
+    names.push(...builderStore.view.tooltips)
+
+    const uniqueNames = Array.from(new Set(names))
+
+    return uniqueNames.map(name => {
+      return {
+        value: name,
+        label: startCase(name)
+      } as ItemDataType
+    })
+  }, [builderStore.view])
 
   return <LabeledProperty {...props}>
     <SInputPicker value={value ?? tooltipType ?? ''} data={data} onChange={onChange}
-                  onClean={onClean} block cleanable size={'xs'} placement={'auto'}/>
+                  onClean={onClean} block cleanable size={'xs'} placement={'auto'} data-testid="tooltip-type-picker"/>
   </LabeledProperty>
 }
 

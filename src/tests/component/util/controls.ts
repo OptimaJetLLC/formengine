@@ -9,6 +9,11 @@ export const selectDropDownOption = async <T extends HTMLElement>(rendered: Rend
   await waitFor(() => expect(rendered.queryAllByRole('option', {name: byValue})).toHaveLength(0))
 }
 
+export const expectDropDownToHaveTextContent = async <T extends HTMLElement>(dropdown: T, value: string) => {
+  const pickerDescribe = await within(dropdown).findByTestId('picker-describe')
+  expect(pickerDescribe).toHaveTextContent(value)
+}
+
 /*
 export const changeFormLanguage = async (rendered: RenderResult, language: string) => {
   const formLanguageDropdown = await rendered.findByTestId('designer-form-language')

@@ -4,9 +4,7 @@ import {richTextComponent} from '@react-form-builder/components-rich-text'
 import {
   formEngineRsuiteCssLoader,
   ltrCssLoader,
-  rsErrorMessage,
   RsLocalizationWrapper,
-  rsTooltip,
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
@@ -34,8 +32,6 @@ const initialData = {
 const components = [...rSuiteComponents, fastQrComponent, richTextComponent, googleMapComponent, signatureComponent]
   .map(definer => definer.build())
 const view = new BuilderView(components)
-  .withErrorMeta(rsErrorMessage.build())
-  .withTooltipMeta(rsTooltip.build())
   .withTemplates([])
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)

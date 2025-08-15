@@ -46,6 +46,8 @@ the array of metadata of form builder components.
 
 > **get** **errors**(): `string`[]
 
+##### Deprecated
+
 ##### Returns
 
 `string`[]
@@ -59,6 +61,8 @@ the array of strings with the names of the component types of the error.
 #### Get Signature
 
 > **get** **tooltips**(): `string`[]
+
+##### Deprecated
 
 ##### Returns
 
@@ -145,6 +149,32 @@ the component's metadata.
 #### Inherited from
 
 [`View`](../../core/classes/View.md).[`define`](../../core/classes/View.md#define)
+
+***
+
+### filterModels()
+
+> **filterModels**(`predicate`): [`Model`](../../core/classes/Model.md)\<`any`\>[]
+
+Returns the array of component metadata filtered using the predicate function.
+
+#### Parameters
+
+##### predicate
+
+(`model`) => `boolean`
+
+the filter function.
+
+#### Returns
+
+[`Model`](../../core/classes/Model.md)\<`any`\>[]
+
+the array of component metadata filtered using the predicate function.
+
+#### Inherited from
+
+[`View`](../../core/classes/View.md).[`filterModels`](../../core/classes/View.md#filtermodels)
 
 ***
 
@@ -248,11 +278,9 @@ the array containing the CSS loaders for the specified BiDi.
 
 ***
 
-### getErrorAnnotations()
+### ~~getErrorAnnotations()~~
 
 > **getErrorAnnotations**(`name`): `undefined` \| [`Annotation`](../../core/classes/Annotation.md)[]
-
-Returns the array of metadata properties of the error component.
 
 #### Parameters
 
@@ -267,6 +295,10 @@ the name of the error component type.
 `undefined` \| [`Annotation`](../../core/classes/Annotation.md)[]
 
 the array of metadata properties of the error component.
+
+#### Deprecated
+
+Returns the array of metadata properties of the error component.
 
 ***
 
@@ -292,11 +324,9 @@ the component metadata for the specified component type name.
 
 ***
 
-### getTooltipAnnotations()
+### ~~getTooltipAnnotations()~~
 
 > **getTooltipAnnotations**(`name`): `undefined` \| [`Annotation`](../../core/classes/Annotation.md)[]
-
-Returns the array of metadata properties of the tooltip component.
 
 #### Parameters
 
@@ -311,6 +341,10 @@ the name of the tooltip component type.
 `undefined` \| [`Annotation`](../../core/classes/Annotation.md)[]
 
 the array of metadata properties of the tooltip component.
+
+#### Deprecated
+
+Returns the array of metadata properties of the tooltip component.
 
 ***
 
@@ -366,11 +400,9 @@ the [View](../../core/classes/View.md) instance.
 
 ***
 
-### withErrorMeta()
+### ~~withErrorMeta()~~
 
 > **withErrorMeta**(`builderComponent`): `this`
-
-Sets the metadata of the component that displays form's errors.
 
 #### Parameters
 
@@ -385,6 +417,11 @@ the metadata of the component that displays the form's errors.
 `this`
 
 the instance of the BuilderView class.
+
+#### Deprecated
+
+use the Definer.componentRole('error-message') instead.
+Sets the metadata of the component that displays form's errors.
 
 ***
 
@@ -410,11 +447,9 @@ the instance of the BuilderView class.
 
 ***
 
-### withTooltipMeta()
+### ~~withTooltipMeta()~~
 
 > **withTooltipMeta**(`builderComponent`): `this`
-
-Sets the metadata of the component that displays the form's tooltips.
 
 #### Parameters
 
@@ -429,6 +464,11 @@ the metadata of the component that displays the form's tooltips.
 `this`
 
 the instance of the BuilderView class.
+
+#### Deprecated
+
+use the Definer.componentRole('tooltip') instead.
+Sets the metadata of the component that displays the form's tooltips.
 
 ***
 

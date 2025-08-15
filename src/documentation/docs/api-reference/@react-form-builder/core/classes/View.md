@@ -77,6 +77,28 @@ the component's metadata.
 
 ***
 
+### filterModels()
+
+> **filterModels**(`predicate`): [`Model`](Model.md)\<`any`\>[]
+
+Returns the array of component metadata filtered using the predicate function.
+
+#### Parameters
+
+##### predicate
+
+(`model`) => `boolean`
+
+the filter function.
+
+#### Returns
+
+[`Model`](Model.md)\<`any`\>[]
+
+the array of component metadata filtered using the predicate function.
+
+***
+
 ### find()
 
 > **find**(`type`): `undefined` \| [`Model`](Model.md)\<`any`\>

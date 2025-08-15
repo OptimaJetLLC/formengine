@@ -133,8 +133,6 @@ export const viewWithCss = createView(models)
  * This view contains CSS loaders.
  */
 export const builderViewWithCss = new BuilderView(components)
-  .withErrorMeta(rsErrorMessage.build())
-  .withTooltipMeta(rsTooltip.build())
   .withTemplates([])
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)

@@ -16,15 +16,10 @@ import React from 'react'
 const components = [...rSuiteComponents, fastQrComponent, signatureComponent]
   .map(definer => definer.build())
 const view = new BuilderView(components)
-  .withErrorMeta(rsErrorMessage.build())
-  .withTooltipMeta(rsTooltip.build())
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
   .withCssLoader('common', formEngineRsuiteCssLoader)
-
-  .withErrorMeta(rsErrorMessage.build())
-  .withTooltipMeta(rsTooltip.build())
 
 function App() {
   return <FormBuilder view={view}/>

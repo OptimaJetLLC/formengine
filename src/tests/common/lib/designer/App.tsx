@@ -1,12 +1,4 @@
-import {antTooltip} from '@react-form-builder/components-antd'
-import {
-  formEngineRsuiteCssLoader,
-  ltrCssLoader,
-  rsErrorMessage,
-  RsLocalizationWrapper,
-  rsTooltip,
-  rtlCssLoader
-} from '@react-form-builder/components-rsuite'
+import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {ActionDefinition, BiDi, ComponentStore, FormValidators, IFormViewer, Language, Validators} from '@react-form-builder/core'
 import type {AnnotationEditorProps, CustomizationMap, FormBuilderI18n, FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
@@ -74,9 +66,6 @@ const data = {
 }
 
 const view = new BuilderView(allComponentsBuilder)
-  .withErrorMeta(rsErrorMessage.build())
-  .withTooltipMeta(rsTooltip.build())
-  .withTooltipMeta(antTooltip.build())
   .withTemplates(['template', 'agreement', 'login form'])
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)

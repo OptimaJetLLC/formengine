@@ -258,8 +258,6 @@ window.onload = function () {
   ].map(component => component.build())
 
   const view = createBuilderView(myComponentsSet)
-    .withErrorMeta(rsErrorMessage.build())
-    .withTooltipMeta(rsTooltip.build())
     .withViewerWrapper(RsLocalizationWrapper)
     .withCssLoader('ltr', ltrCssLoader)
     .withCssLoader('rtl', rtlCssLoader)

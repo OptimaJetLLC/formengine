@@ -1,11 +1,4 @@
-import {
-  formEngineRsuiteCssLoader,
-  ltrCssLoader,
-  rsErrorMessage,
-  RsLocalizationWrapper,
-  rsTooltip,
-  rtlCssLoader
-} from '@react-form-builder/components-rsuite'
+import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {BiDi, BuilderView, createView, FormViewer, LanguageFullCode} from '@react-form-builder/core'
 import {CustomizationMap, FormBuilder} from '@react-form-builder/designer'
 import deDE from '@react-form-builder/designer/public/locales/de-DE.json'
@@ -64,8 +57,6 @@ const Viewer = ({language, formName}: { language?: string, formName?: string }) 
 Viewer.displayName = 'Viewer'
 
 const viewAllComponents = new BuilderView(allComponentsBuilder)
-  .withErrorMeta(rsErrorMessage.build())
-  .withTooltipMeta(rsTooltip.build())
   .withTemplates(['agreement'])
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
@@ -73,8 +64,6 @@ const viewAllComponents = new BuilderView(allComponentsBuilder)
   .withCssLoader('common', formEngineRsuiteCssLoader)
 
 const viewNoComponents = new BuilderView([])
-  .withErrorMeta(rsErrorMessage.build())
-  .withTooltipMeta(rsTooltip.build())
   .withTemplates(['agreement'])
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)

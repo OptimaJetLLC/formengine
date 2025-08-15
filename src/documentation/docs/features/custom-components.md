@@ -642,6 +642,39 @@ const myContainer = define(MyContainer)
   })
 ```
 
+### Component role
+
+There are several components that play a special [role](/api-reference/@react-form-builder/core/type-aliases/ComponentRole) in the form. For
+example, a tooltip component or a component that displays an error message. To indicate that a custom component performs a specific role,
+you can use the [componentRole](/api-reference/@react-form-builder/core/interfaces/Definer#componentrole) function. The tooltip components
+and error-displaying components will also be available when configuring the form in the Designer.
+
+```typescript {13,21} title='Example of a component role'
+export const rsTooltip = define(RsTooltip, 'RsTooltip')
+  .name('Tooltip')
+  .props({
+    text: string.required.default('Tooltip message...').hinted('Tooltip text').dataBound,
+    children: node,
+    placement: oneOf('top', 'bottom', 'right', 'left', 'bottomStart', 'bottomEnd',
+      'topStart', 'topEnd', 'leftStart', 'rightStart', 'leftEnd', 'rightEnd', 'auto',
+      'autoVertical', 'autoVerticalStart', 'autoVerticalEnd', 'autoHorizontal', 'autoHorizontalStart')
+      .required.default('bottom'),
+    trigger: someOf('click', 'hover', 'focus', 'active', 'contextMenu')
+      .required.default(['hover'])
+  })
+  .componentRole('tooltip')
+
+export const rsErrorMessage = define(RsErrorMessage, 'RsErrorMessage')
+  .name('Error message')
+  .props({
+    placement: placement.default('bottomStart'),
+    className: string,
+  })
+  .componentRole('error-message')
+```
+
+![Custom components 10](/assets/custom-components/custom-components-10.png "Tooltip picker")
+
 ### Component icon
 
 If you want to change the component icon that is displayed next to the component name, it is quite easy to do so. Just call
