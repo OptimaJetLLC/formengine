@@ -326,7 +326,7 @@ describe('Event args UI should display and pass arguments', () => {
   it('should provide code editor for functional action', async () => {
     await openCodeEditor(app, 'funcArgs')
 
-    await app.findByText('Edit code action: rsButton1.fnArg')
+    await app.findByText('Edit code action: rsButton1.onClick[0] funcArgs:fnArg')
   })
 })
 

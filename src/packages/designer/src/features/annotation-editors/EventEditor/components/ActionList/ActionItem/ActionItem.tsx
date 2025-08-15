@@ -9,29 +9,30 @@ import {ArgumentList} from './components/ArgumentList'
 import {ActionDataProvider} from './contexts/ActionDataContext'
 
 interface ActionItemProps {
-  data: ActionData
+  action: ActionData
   onRemove: () => void
 }
 
-const RawActionItem = ({data, onRemove}: ActionItemProps) => {
+const RawActionItem = ({action, onRemove}: ActionItemProps) => {
   const builderStore = useBuilderStore()
   const viewerStore = useStore()
-  const isCodeAction = data.type === 'code'
+  const {name, type} = action
+  const isCodeAction = type === 'code'
   const edit = useCallback(() => {
-    const actionDefinition = viewerStore.form.actions[data.name]
+    const actionDefinition = viewerStore.form.actions[name]
     if (!actionDefinition) {
-      console.error(`Cannot find custom action: '${data.name}'`)
+      console.error(`Cannot find custom action: '${name}'`)
       return
     }
-    const namedAction: NamedActionDefinition = {name: data.name, actionDefinition}
+    const namedAction: NamedActionDefinition = {name: name, actionDefinition}
     builderStore.editCodeAction(namedAction)
-  }, [builderStore, data.name, viewerStore.form.actions])
+  }, [builderStore, name, viewerStore.form.actions])
 
   return (
-    <ActionDataProvider value={data}>
+    <ActionDataProvider value={action}>
       <Columns style={{justifyContent: 'space-between', padding: 8}}>
         <b style={{color: 'violet', marginLeft: 5}}>
-          {`${data.name || 'Action'}`}
+          {`${name || 'Action'}`}
         </b>
         <ButtonGroup size={'xs'}>
           {isCodeAction && <EditButton onClick={edit}/>}

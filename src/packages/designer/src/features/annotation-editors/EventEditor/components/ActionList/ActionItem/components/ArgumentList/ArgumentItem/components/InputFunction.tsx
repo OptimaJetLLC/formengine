@@ -8,6 +8,7 @@ import {useBuilderStore} from '../../../../../../../../../../utils/BuilderStoreC
 import {RemoveButton} from '../../../../../../../../../components/Buttons'
 import {Columns} from '../../../../../../../../../components/Containers'
 import {useActionData} from '../../../../contexts/ActionDataContext'
+import {useEventHandlerItem} from '../../../../contexts/EventHandlerItemContext'
 import type {InputProps} from '../InputProps'
 
 const buttonStyle = {borderStyle: 'dashed'}
@@ -41,7 +42,10 @@ const RawInputFunction = ({name}: InputProps) => {
   const [value, setFn] = useFnArgument(name)
   const {t} = useTranslation()
   const componentData = useComponentData()
-  const title = `${t('bottomPanel.editCodeAction')}: ${componentData.key}.${name}`
+  const data = useActionData()
+  const eventHandlerItem = useEventHandlerItem()
+  const eventHandlerName = `${eventHandlerItem.eventName}[${eventHandlerItem.index}]`
+  const title = `${t('bottomPanel.editCodeAction')}: ${componentData.key}.${eventHandlerName} ${data.name}:${name}`
 
   const clear = useCallback(() => setFn(undefined), [setFn])
 

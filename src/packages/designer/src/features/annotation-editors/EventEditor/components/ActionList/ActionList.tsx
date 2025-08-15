@@ -1,11 +1,12 @@
 import styled from '@emotion/styled'
 import type {ActionData} from '@react-form-builder/core'
 import {KeySymbol, namedObserver} from '@react-form-builder/core'
-import {useCallback} from 'react'
+import {useCallback, useMemo} from 'react'
 import {List} from 'rsuite'
 import {listItemStyle, listStyle} from '../../../../components/Containers'
 import type {AnnotationEditorProps} from '../../../AnnotationEditorProps'
 import {ActionItem} from './ActionItem'
+import {EventHandlerItemProvider} from './ActionItem/contexts/EventHandlerItemContext'
 
 const SList = styled(List)`
   ${listStyle}
@@ -31,17 +32,25 @@ const SListItem = styled(List.Item)`
 
 interface ActionListItemProps {
   index: number,
-  data: ActionData,
-  onRemove: (index: number) => ActionData[] | undefined
+  action: ActionData,
+  onRemove: (index: number) => ActionData[] | undefined,
+  eventName: string
 }
 
-function ActionListItem({data, index, onRemove}: ActionListItemProps) {
+const RawActionListItem = ({action, index, onRemove, eventName}: ActionListItemProps) => {
   const handleRemove = useCallback(() => onRemove(index), [index, onRemove])
+  const value = useMemo(() => ({
+    index, eventName
+  }), [eventName, index])
 
-  return <SListItem index={index}>
-    <ActionItem data={data} onRemove={handleRemove}/>
-  </SListItem>
+  return <EventHandlerItemProvider value={value}>
+    <SListItem index={index}>
+      <ActionItem action={action} onRemove={handleRemove}/>
+    </SListItem>
+  </EventHandlerItemProvider>
 }
+
+const ActionListItem = namedObserver('ActionListItem', RawActionListItem)
 
 const RawActionList = (props: AnnotationEditorProps) => {
   const eventName = props.annotation.key
@@ -61,7 +70,7 @@ const RawActionList = (props: AnnotationEditorProps) => {
 
   return <SList sortable onSort={handleSortEnd}>
     {actions.map((action, index) => (
-      <ActionListItem key={action[KeySymbol]} index={index} data={action} onRemove={onRemove}/>
+      <ActionListItem key={action[KeySymbol]} index={index} action={action} onRemove={onRemove} eventName={eventName}/>
     ))}
   </SList>
 }
