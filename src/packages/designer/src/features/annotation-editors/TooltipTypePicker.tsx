@@ -1,16 +1,11 @@
-import styled from '@emotion/styled'
 import {namedObserver, useTooltipType} from '@react-form-builder/core'
 import {startCase} from 'lodash-es'
 import {useMemo} from 'react'
-import {InputPicker} from 'rsuite'
 import type {ItemDataType} from 'rsuite/esm/internals/types'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
-
-const SInputPicker = styled(InputPicker)`
-  width: 100%;
-`
+import {SInputPicker} from './SInputPicker'
 
 /**
  * React form builder component that displays tooltip picker

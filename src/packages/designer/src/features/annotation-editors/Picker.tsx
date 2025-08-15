@@ -1,13 +1,8 @@
-import styled from '@emotion/styled'
 import type {PropertyAnnotation} from '@react-form-builder/core'
 import {isUndefined} from 'lodash-es'
-import {InputPicker} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
-
-const SInputPicker = styled(InputPicker)`
-  width: 100%;
-`
+import {SInputPicker} from './SInputPicker'
 
 const addCustomValue = ({data}: PropertyAnnotation, value: string) => {
   if (isUndefined(value)) {

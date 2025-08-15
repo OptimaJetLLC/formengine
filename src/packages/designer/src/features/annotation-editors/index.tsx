@@ -6,6 +6,8 @@ import {ArrayOfObjectInput} from './ArrayOfObjectInput'
 import {ArrayOfStringInput} from './ArrayOfStringInput'
 import {AttributesInput} from './AttributesInput'
 import {BooleanInput} from './BooleanInput'
+import {ComponentTypePicker} from './ComponentTypePicker'
+import {FormComponentPicker} from './FormComponentPicker'
 import {FunctionEditorInput} from './FunctionEditorInput'
 import {ColorInput} from './ColorInput'
 import {DataKeyInput} from './DataKeyInput'
@@ -54,4 +56,6 @@ export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>>
   customValidator: CustomValidatorEditor,
   function: FunctionEditorInput,
   node: NodeInput,
+  formComponent: FormComponentPicker,
+  componentType: ComponentTypePicker,
 }
