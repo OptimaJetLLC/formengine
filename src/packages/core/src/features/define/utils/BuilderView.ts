@@ -4,6 +4,9 @@ import {screenMeta} from '../../components/screenMeta'
 import {repeaterMeta} from '../../repeater/repeaterMeta'
 import {repeaterModel} from '../../repeater/repeaterModel'
 import {createTemplateMeta, createTemplateModel, slotMeta, slotModel} from '../../template'
+import {internalErrorModel} from '../../ui/internalErrorModel'
+import {screenModel} from '../../ui/screenModel'
+import {errorMessageModel} from '../../validation/components/DefaultErrorMessage'
 import {errorMessageMeta} from '../../validation/errorMessageMeta'
 import type {BuilderComponent} from './BuilderComponent'
 import type {Meta} from './Meta'
@@ -18,9 +21,12 @@ const structureCategoryName = 'structure'
 export class BuilderView extends View {
   #metaMap = new Map<string, Meta>()
   #tooltipsMeta = new Map<string, Meta>()
-  #errorMeta = new Map<string, Meta>([
-    [errorMessageMeta.type, errorMessageMeta],
-  ])
+  #errorMeta = new Map<string, Meta>()
+
+  /**
+   * The function for filtering components on the component palette.
+   */
+  paletteFilter?: (builderComponent: BuilderComponent) => boolean
 
   /**
    * Returns the component metadata for the specified component type name.
@@ -137,6 +143,16 @@ export class BuilderView extends View {
   }
 
   /**
+   * Sets a function for filtering components on the component palette.
+   * @param filter the component filtering function.
+   * @returns the instance of the {@link BuilderView} class.
+   */
+  withPaletteFilter(filter: (builderComponent: BuilderComponent) => boolean): this {
+    this.paletteFilter = filter
+    return this
+  }
+
+  /**
    * Creates an instance of BuilderComponent for the specified template name.
    * @param name the template name
    * @returns the BuilderComponent instance.
@@ -153,10 +169,11 @@ export class BuilderView extends View {
    */
   constructor(public builderComponents: BuilderComponent[]) {
     super(builderComponents.map(({model}) => model))
-    this.#metaMap.set(screenMeta.type, screenMeta)
-    this.#metaMap.set(internalErrorMeta.type, internalErrorMeta)
+    this.builderComponents.push({meta: screenMeta, model: screenModel})
+    this.builderComponents.push({meta: internalErrorMeta, model: internalErrorModel})
     this.builderComponents.push({meta: slotMeta, model: slotModel, category: templatesCategoryName})
     this.builderComponents.push({meta: repeaterMeta, model: repeaterModel, category: structureCategoryName})
+    this.builderComponents.push({meta: errorMessageMeta, model: errorMessageModel})
 
     const metas = builderComponents.map(({meta}) => meta)
 

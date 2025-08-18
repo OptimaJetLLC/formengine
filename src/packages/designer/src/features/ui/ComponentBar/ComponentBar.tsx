@@ -133,7 +133,8 @@ const RawControlGroups = (props: ControlGroupsProps) => {
     const header = noCategory ? null : <Subheader>{t(category) || category}</Subheader>
     const className = noCategory ? 'top' : category
     result.push(
-      <div key={category} className={cx([componentGroupStaticClassname, transformComponentNameToCssClass(className)])}>
+      <div key={category} className={cx([componentGroupStaticClassname, transformComponentNameToCssClass(className)])}
+           data-testid={`${category}-palette-category`}>
         {header}
         <AddedComponents availableComponents={filteredComponents[category]} {...componentProps}/>
       </div>

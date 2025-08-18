@@ -1181,6 +1181,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/cfHideFromComponentPalette",
+              label: "cfHideFromComponentPalette"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/variables/className",
               label: "className"
             },

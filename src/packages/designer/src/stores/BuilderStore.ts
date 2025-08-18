@@ -14,6 +14,7 @@ import {
   BiDi,
   BuilderView,
   cfComponentIsPreset,
+  cfHideFromComponentPalette,
   ComponentStore,
   isContainer,
   namedObserver,
@@ -323,7 +324,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   }
   readonly promptModalState: PromptModalState = initialModalState
   readonly errorMap = new Map<ComponentData, Record<string, string | undefined>>
-  readonly view: BuilderView
+  view: BuilderView
   readonly formStorageEnabled: boolean
   readonly selected = new Set<ComponentData>()
   readonly expanded = new Set<ComponentData>()
@@ -352,7 +353,6 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
         viewMode: true,
         openedPanels: true,
         changeBuilderMode: action,
-        view: false
       }
       , {name: nameObservable('BuilderStore')})
     this.formStorageEnabled = !!props.formStorage
@@ -1073,7 +1073,11 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     const externalForms = this.formsMetadata
       .filter(value => !typeSet.has(value.model.type) && currentFormComponent.model.type !== value.model.type)
     result.push(...externalForms)
+
+    const paletteFilter = this.view.paletteFilter ?? (() => true)
     return result
+      .filter(({model}) => !model.isFeatureEnabled(cfHideFromComponentPalette))
+      .filter(paletteFilter)
   }
 
   /**

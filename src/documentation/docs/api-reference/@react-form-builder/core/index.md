@@ -189,6 +189,7 @@
 - [cfDisableStylesForClassNameEditor](variables/cfDisableStylesForClassNameEditor.md)
 - [cfDisableTooltipProperties](variables/cfDisableTooltipProperties.md)
 - [cfEnableInlineStylesEditor](variables/cfEnableInlineStylesEditor.md)
+- [cfHideFromComponentPalette](variables/cfHideFromComponentPalette.md)
 - [className](variables/className.md)
 - [color](variables/color.md)
 - [commonStyles](variables/commonStyles.md)

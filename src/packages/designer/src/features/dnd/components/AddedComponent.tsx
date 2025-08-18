@@ -113,7 +113,7 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
 
   const element = (
     <Container onClick={onClick} onDoubleClick={handleDoubleClick} className={cls}
-               {...hoveredProps}>
+               {...hoveredProps} data-testid={`${data.model.type}-palette-component`}>
       <Icon width={18} height={18} viewBox="0 0 24 24"/>
       <label>{name}</label>
       {elementToolbar}

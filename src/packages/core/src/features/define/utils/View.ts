@@ -7,6 +7,7 @@ import {slotModel} from '../../template'
 import {fragmentModel} from '../../template/fragmentModel'
 import {internalErrorModel} from '../../ui/internalErrorModel'
 import {screenModel} from '../../ui/screenModel'
+import {errorMessageModel} from '../../validation/components/DefaultErrorMessage'
 import type {Model} from './Model'
 
 /**
@@ -61,6 +62,7 @@ export class View {
     this.define(fragmentModel)
     this.define(repeaterModel)
     this.define(repeaterItemModel)
+    this.define(errorMessageModel)
     models.forEach(this.define.bind(this))
   }
 

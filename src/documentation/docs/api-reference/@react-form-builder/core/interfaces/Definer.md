@@ -180,6 +180,28 @@ the component type name.
 
 ***
 
+### hideFromComponentPalette()
+
+> **hideFromComponentPalette**(`value`): `Definer`\<`T`\>
+
+Hides a component from the component palette.
+
+#### Parameters
+
+##### value
+
+`boolean` = `true`
+
+true to hide the component, false otherwise.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.
+
+***
+
 ### icon()
 
 > **icon**(`icon`): `Definer`\<`T`\>

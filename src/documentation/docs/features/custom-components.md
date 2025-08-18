@@ -675,6 +675,32 @@ export const rsErrorMessage = define(RsErrorMessage, 'RsErrorMessage')
 
 ![Custom components 10](/assets/custom-components/custom-components-10.png "Tooltip picker")
 
+### Hidden component
+
+You may want to hide some components from the component palette. You can mark a component as hidden in the component definition:
+
+```typescript
+export const rsErrorMessage = define(RsErrorMessage, 'RsErrorMessage')
+  .name('Error message')
+  .props({
+    placement: placement.default('bottomStart'),
+    className: string,
+  })
+  .componentRole('error-message')
+  .hideFromComponentPalette()
+```
+
+You can also hide components or entire categories of components using
+the [filter](/api-reference/@react-form-builder/core/classes/BuilderView#withpalettefilter) function
+in [BuilderView](/api-reference/@react-form-builder/core/classes/BuilderView). Example:
+
+```typescript
+const view = new BuilderView(components)
+  .withPaletteFilter(({category, model}) => {
+    return !(category === 'templates' || model.type === 'RsAutoComplete')
+  })
+```
+
 ### Component icon
 
 If you want to change the component icon that is displayed next to the component name, it is quite easy to do so. Just call

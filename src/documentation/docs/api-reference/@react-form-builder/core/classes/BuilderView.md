@@ -38,6 +38,24 @@ the array of metadata of form builder components.
 
 the array of metadata of form builder components.
 
+***
+
+### paletteFilter()?
+
+> `optional` **paletteFilter**: (`builderComponent`) => `boolean`
+
+The function for filtering components on the component palette.
+
+#### Parameters
+
+##### builderComponent
+
+[`BuilderComponent`](../interfaces/BuilderComponent.md)
+
+#### Returns
+
+`boolean`
+
 ## Accessors
 
 ### errors
@@ -422,6 +440,28 @@ the instance of the BuilderView class.
 
 use the [Definer.componentRole](../interfaces/Definer.md#componentrole)('error-message') instead.
 Sets the metadata of the component that displays form's errors.
+
+***
+
+### withPaletteFilter()
+
+> **withPaletteFilter**(`filter`): `this`
+
+Sets a function for filtering components on the component palette.
+
+#### Parameters
+
+##### filter
+
+(`builderComponent`) => `boolean`
+
+the component filtering function.
+
+#### Returns
+
+`this`
+
+the instance of the BuilderView class.
 
 ***
 
