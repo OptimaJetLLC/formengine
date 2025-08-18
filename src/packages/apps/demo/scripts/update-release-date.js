@@ -1,20 +1,15 @@
-import {readFileSync, writeFileSync} from 'node:fs'
-import {fileURLToPath} from 'node:url'
-import {dirname, join} from 'node:path'
-import packageJson from '../package.json' with {type: 'json'}
+import fs from 'fs'
+import {fileURLToPath} from 'url';
+import path from 'path';
 
 const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const __dirname = path.dirname(__filename)
 
-const configFilePath = join(__dirname, '..', 'src', 'utils', 'config.json')
+const configFilePath = path.join(__dirname, '..', 'src', 'utils', 'config.json')
 
-const content = readFileSync(configFilePath, 'utf8');
+const content = fs.readFileSync(configFilePath, 'utf8');
 const config = JSON.parse(content)
 
-const designerPackageJsonVersion = packageJson.dependencies?.['@react-form-builder/designer'] ?? ''
-const designerVersion = designerPackageJsonVersion.replace('^', '')
-
 config.releaseDate = new Date().getTime()
-config.version = designerVersion ? `v${designerVersion}` : ''
 const modifiedContent = JSON.stringify(config, undefined, 2) + '\n'
-writeFileSync(configFilePath, modifiedContent)
+fs.writeFileSync(configFilePath, modifiedContent)
