@@ -10,7 +10,7 @@ import {
 } from '@react-form-builder/components-rsuite'
 import {signatureComponent} from '@react-form-builder/components-signature'
 import {BiDi} from '@react-form-builder/core'
-import type {IPresetComponentOptions, PresetComponent} from '@react-form-builder/designer'
+import type {CustomizationMap, IPresetComponentOptions, PresetComponent} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage, IndexedDbPresetStorage} from '@react-form-builder/indexed-db-form-storage'
 import {observer} from 'mobx-react'
@@ -92,6 +92,22 @@ const getPresetOptions = (): IPresetComponentOptions | undefined => {
   }
 }
 
+const versionStyle = {
+  marginLeft: 10,
+  color: 'var(--rs-text-secondary)',
+}
+
+const customization: CustomizationMap = {
+  Header_Toolbar: {
+    customRenderer: (defaultElement) => {
+      return <div>
+        {defaultElement}
+        <span style={versionStyle}>{config.version}</span>
+      </div>
+    }
+  }
+}
+
 const FormBuilderApp = observer(() => {
   const [indexedDbInitialized, setIndexedDbInitialized] = useState(false)
   const [presetOptions, setPresetOptions] = useState(getPresetOptions)
@@ -125,6 +141,7 @@ const FormBuilderApp = observer(() => {
     initialData={initialData}
     formStorage={formStorage}
     presetComponentOptions={presetOptions}
+    customization={customization}
   />
 })
 
