@@ -331,6 +331,6 @@ const showDocumentationExample = false
 /**
  * @returns the main application component.
  */
-const App = () => showDocumentationExample ? <Designer/> : <FormBuilderApp/>
+const ExampleBuilderApp = () => showDocumentationExample ? <Designer/> : <FormBuilderApp/>
 
-export default App
+export default ExampleBuilderApp

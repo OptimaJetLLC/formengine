@@ -1,6 +1,6 @@
 import React from 'react'
 import {createRoot} from 'react-dom/client'
-import App from '../../common/lib/designer/App'
+import TestDesignerApp from '../../common/lib/designer/TestDesignerApp'
 
 const element = document.getElementById('root')
 
@@ -11,5 +11,5 @@ if (!element) {
 const root = createRoot(element)
 
 root.render(<React.StrictMode>
-  <App/>
+  <TestDesignerApp/>
 </React.StrictMode>)

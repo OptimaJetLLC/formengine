@@ -2,9 +2,7 @@ import {fastQrComponent} from '@react-form-builder/components-fast-qr'
 import {
   formEngineRsuiteCssLoader,
   ltrCssLoader,
-  rsErrorMessage,
   RsLocalizationWrapper,
-  rsTooltip,
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
@@ -21,8 +19,8 @@ const view = new BuilderView(components)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
   .withCssLoader('common', formEngineRsuiteCssLoader)
 
-function App() {
+function MyDesignerApp() {
   return <FormBuilder view={view}/>
 }
 
-export default App
+export default MyDesignerApp

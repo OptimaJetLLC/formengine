@@ -1,4 +1,4 @@
-import App from '@react-form-builder/tests-common/lib/designer/App'
+import TestDesignerApp from '@react-form-builder/tests-common/lib/designer/TestDesignerApp'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -10,7 +10,7 @@ if (!element) {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App/>
+    <TestDesignerApp/>
   </React.StrictMode>,
   element
 )

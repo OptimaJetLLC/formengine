@@ -148,6 +148,6 @@ const FormBuilderApp = observer(() => {
 /**
  * @returns the main application component.
  */
-const App = () => <FormBuilderApp/>
+const DemoApp = () => <FormBuilderApp/>
 
-export default App
+export default DemoApp

@@ -34,7 +34,7 @@ const simpleForm = buildForm({errorType: 'RsErrorMessage'})
 /**
  * @returns the App element.
  */
-export const App = () => {
+export const LandingApp = () => {
   return <FormViewer
     view={viewWithCss}
     getForm={() => simpleForm}

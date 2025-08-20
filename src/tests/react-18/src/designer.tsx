@@ -1,4 +1,4 @@
-import App from '@react-form-builder/tests-common/lib/designer/App'
+import TestDesignerApp from '@react-form-builder/tests-common/lib/designer/TestDesignerApp'
 import React from 'react'
 import {createRoot} from 'react-dom/client'
 
@@ -11,5 +11,5 @@ if (!element) {
 const root = createRoot(element)
 
 root.render(<React.StrictMode>
-  <App/>
+  <TestDesignerApp/>
 </React.StrictMode>)

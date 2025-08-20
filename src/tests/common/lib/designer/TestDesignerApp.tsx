@@ -200,7 +200,7 @@ type FormBuilderAppProps = {
   license?: string
 }
 
-const FormBuilderApp = ({license, customization}: FormBuilderAppProps) => {
+const TestDesignerApp = ({license, customization}: FormBuilderAppProps) => {
   const viewerRef = useRefWithLog<IFormViewer>('ViewerRef', logEvents)
   const builderRef = useRefWithLog<IFormBuilder>('BuilderRef', logEvents, builder => {
     if (builder) console.log(builder.formAsString)
@@ -287,4 +287,4 @@ const FormBuilderApp = ({license, customization}: FormBuilderAppProps) => {
   />
 }
 
-export default FormBuilderApp
+export default TestDesignerApp
