@@ -19,7 +19,9 @@
   },
   "dependencies": {
     "@react-form-builder/core": "^6.1.0",
-    "fast_qr": "^0.12.5",
+    "fast_qr": "^0.12.5"
+  },
+  "peerDependencies": {
     "react": ">=17.0.2 || ^18 || ^19"
   },
   "files": [
