@@ -859,6 +859,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       formValidator: this.viewer.form.formValidator,
       errorProps: errorProps,
       tooltipType: this.viewer.form.tooltipType,
+      modalType: this.viewer.form.modalType,
       errorType: this.viewer.form.errorType,
       form: this.viewer.form.componentTree.store,
       localization: this.viewer.form.localization.value,

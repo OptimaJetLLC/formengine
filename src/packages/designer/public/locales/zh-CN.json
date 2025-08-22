@@ -67,6 +67,12 @@
       "hint": "缩放级别"
     }
   },
+  "Modal": {
+    "modalTemplate": {
+      "hint": "用作模态体的模板",
+      "name": "模态模板"
+    }
+  },
   "RichTextEditor": {
     "modules": {
       "hint": "允许自定义编辑器的行为和功能。 阅读文档以获取更多信息。",
@@ -193,6 +199,50 @@
     "itemsAs": {
       "hint": "Html元素呈现菜单项",
       "name": "项目作为"
+    }
+  },
+  "RsModal": {
+    "autoFocus": {
+      "hint": "当设置为true时，模式将打开并自动聚焦于它自己，屏幕阅读器可以访问",
+      "name": "自动对焦"
+    },
+    "backdrop": {
+      "hint": "当设置为true时，模式将在打开时显示背景。 点击背景将关闭模态",
+      "name": "背景"
+    },
+    "backdropClassName": {
+      "hint": "添加一个可选的额外类名。模态背景它可能最终看起来像class=\"模态背景foo-模态背景in\"",
+      "name": "背景类名"
+    },
+    "classPrefix": {
+      "hint": "组件CSS类的前缀",
+      "name": "CSS类前缀"
+    },
+    "dialogClassName": {
+      "hint": "应用于对话框DOM节点的CSS类",
+      "name": "对话框的CSS类"
+    },
+    "enforceFocus": {
+      "hint": "当设置为true时，Modal将防止焦点在打开时离开，使辅助屏幕阅读器更容易访问",
+      "name": "强制执行焦点"
+    },
+    "keyboard": {
+      "hint": "按下Esc键时关闭模态",
+      "name": "靠近Esc"
+    },
+    "overflow": {
+      "hint": "正文内容过长时自动设置高度",
+      "name": "溢出"
+    },
+    "size": {
+      "hint": "确定模态的宽度",
+      "name": "大小"
+    }
+  },
+  "RsModalLayout": {
+    "closeButton": {
+      "hint": "显示关闭按钮",
+      "name": "关闭按钮"
     }
   },
   "RsPlaceholderGraph": {
@@ -508,6 +558,12 @@
       "hint": "上传请求的HTTP方法",
       "name": "方法"
     },
+    "modalProps": {
+      "modalComponentProperties": "模态组件属性",
+      "modalComponentPropertiesHint": "模态组件属性",
+      "noModalComponent": "无模态组件",
+      "noModalComponentHint": "在窗体设置中指定模态组件类型"
+    },
     "name": {
       "hint": "上传对应文件的参数名",
       "name": "姓名"
@@ -658,6 +714,7 @@
   "componentsList": {
     "categories": {
       "fields": "字段",
+      "modal": "模态分析",
       "static": "静态",
       "structure": "结构",
       "templates": "模板"
@@ -709,6 +766,7 @@
       "error": "错误设置",
       "formValidator": "表格验证人",
       "language": "语言设定",
+      "modal": "模态分析",
       "tooltip": "工具提示"
     },
     "sectionName": {

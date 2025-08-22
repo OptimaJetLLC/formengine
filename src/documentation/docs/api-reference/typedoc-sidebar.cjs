@@ -1682,6 +1682,16 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/useModalComponentData",
+              label: "useModalComponentData"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/useModalType",
+              label: "useModalType"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/useTooltipType",
               label: "useTooltipType"
             }

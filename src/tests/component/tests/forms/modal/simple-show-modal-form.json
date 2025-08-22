@@ -1,0 +1,64 @@
+{
+  "version": "1",
+  "modalType": "RsModal",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "modal1",
+        "type": "Modal",
+        "props": {
+          "modalTemplate": {
+            "value": "Template:modal-layout"
+          }
+        },
+        "modal": {
+          "props": {},
+          "events": {}
+        }
+      },
+      {
+        "key": "showModalButton",
+        "type": "RsButton",
+        "props": {
+          "appearance": {
+            "value": "link"
+          },
+          "children": {
+            "value": "Show modal"
+          }
+        },
+        "events": {
+          "onClick": [
+            {
+              "name": "openModal",
+              "type": "common",
+              "args": {
+                "modalKey": "modal1"
+              }
+            }
+          ]
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "showModalButton"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

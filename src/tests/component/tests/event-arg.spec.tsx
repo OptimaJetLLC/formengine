@@ -37,8 +37,6 @@ const actions = {
   }),
   assertArgs: ActionDefinition.functionalAction((e, args) => {
     mockAssert(args)
-    // eslint-disable-next-line no-console
-    console.log('assertArgs', args)
 
     const throwAssert = e.store.formData.getInitialData()?.throwAssert
     if (throwAssert) {
@@ -51,15 +49,17 @@ const actions = {
   }),
   funcArgs: ActionDefinition.functionalAction(async (e, args: Arguments) => {
     mockFunc(e, args)
-    debugger
     const {fnArg, fnArg1, fnArg2, fnArg3} = args
 
     // @ts-ignore for test
     const r = await fnArg('foo', 123)
+
     // @ts-ignore for test
     const r1 = await fnArg1('bar', 234)
+
     // @ts-ignore for test
     const r2 = await fnArg2('baz', 345)
+
     // @ts-ignore for test
     const r3 = await fnArg3('boo', 567)
 

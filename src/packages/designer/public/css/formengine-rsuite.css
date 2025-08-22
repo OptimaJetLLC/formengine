@@ -295,6 +295,10 @@
   }
 }
 
+.optimajet-formbuilder .rs-modal-title {
+  overflow: visible !important;
+}
+
 .rs-picker .rs-picker-clean.rs-btn-close {
   color: var(--rs-text-secondary);
 }

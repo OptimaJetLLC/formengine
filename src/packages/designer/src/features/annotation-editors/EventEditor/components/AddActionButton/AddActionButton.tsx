@@ -36,7 +36,7 @@ const RawAddActionButton = (props: AnnotationEditorProps) => {
 
   return <Whisper placement="leftStart" ref={ref} trigger="click"
                   speaker={<MenuPopover onSelect={handleSelect} annotation={annotation}/>}>
-    <IconButton icon={<PlusIcon/>} size="sm">{t('addAction')}</IconButton>
+    <IconButton icon={<PlusIcon/>} size="sm" data-testid={`${eventName}-add-button`}>{t('addAction')}</IconButton>
   </Whisper>
 }
 

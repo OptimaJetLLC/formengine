@@ -57,3 +57,45 @@ export const clickItemInMainMenu = async (container: HTMLElement, itemName: stri
   fireEvent.click(subItemOption)
   fireEvent.mouseDown(document)
 }
+
+export const addCustomEventHandler = async (renderResult: RenderResult, eventName: string, actionName: string) => {
+  const {findByTestId, findByRole} = renderResult
+  fireEvent.click(await findByTestId('Actions_Tab'))
+
+  const addButton = await findByTestId(`${eventName}-add-button`)
+  fireEvent.click(addButton)
+
+  const menu = await findByRole('menubar')
+  const menuItems = await within(menu).findAllByRole('menuitem')
+
+  const customActionsItem = menuItems.find(menuItem => menuItem.getAttribute('data-event-key') === 'custom')
+  if (!customActionsItem) {
+    throw new Error(`Unable to find custom event key`)
+  }
+
+  fireEvent.click(customActionsItem)
+
+  const actions = await within(menu).findAllByRole('menuitem')
+  const actionDataEventKey = `custom-${actionName}`
+  const action = actions.find(action => action.getAttribute('data-event-key') === actionDataEventKey)
+  if (!action) {
+    throw new Error(`Unable to find action with data-event-key: '${actionDataEventKey}'`)
+  }
+
+  fireEvent.click(action)
+}
+
+export const togglePreview = async (app: RenderResult) => {
+  const {container} = app
+
+  await waitFor(() => expect(container.querySelector('.FE_Header:not(.FE_Palette_Component)')).toBeInTheDocument())
+
+  const header = container.querySelector('.FE_Header:not(.FE_Palette_Component)')
+  if (!header) {
+    throw new Error(`Unable to find header element`)
+  }
+
+  const button = await within(header as HTMLElement).findByText('Preview')
+
+  fireEvent.click(button)
+}

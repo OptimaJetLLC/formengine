@@ -6,15 +6,16 @@ import {ArrayOfObjectInput} from './ArrayOfObjectInput'
 import {ArrayOfStringInput} from './ArrayOfStringInput'
 import {AttributesInput} from './AttributesInput'
 import {BooleanInput} from './BooleanInput'
-import {ComponentTypePicker} from './ComponentTypePicker'
-import {FormComponentPicker} from './FormComponentPicker'
-import {FunctionEditorInput} from './FunctionEditorInput'
 import {ColorInput} from './ColorInput'
+import {ComponentTypePicker} from './ComponentTypePicker'
 import {DataKeyInput} from './DataKeyInput'
 import {DateInput} from './DateInput'
 import {DisableDataBindingInput} from './DisableDataBindingInput'
 import {EventEditor} from './EventEditor'
+import {FormComponentPicker} from './FormComponentPicker'
+import {FunctionEditorInput} from './FunctionEditorInput'
 import {KeyInput} from './KeyInput'
+import {ModalPropertiesEditor} from './ModalPropertiesEditor'
 import {MultiPicker} from './MultiPicker'
 import {NodeInput} from './NodeInput'
 import {NumberInput} from './NumberInput'
@@ -51,6 +52,7 @@ export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>>
   someOf: MultiPicker,
   radio: RadioInput,
   tooltipProps: TooltipPropertiesEditor,
+  modalProps: ModalPropertiesEditor,
   useTooltip: BooleanInput,
   renderWhen: RenderWhenEditor,
   customValidator: CustomValidatorEditor,

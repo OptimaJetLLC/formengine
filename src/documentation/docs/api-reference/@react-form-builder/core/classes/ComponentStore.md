@@ -86,6 +86,14 @@ The React component key.
 
 ***
 
+### modal?
+
+> `optional` **modal**: `ModalComponentStore`
+
+The modal settings.
+
+***
+
 ### props
 
 > **props**: `Record`\<`string`, [`ComponentProperty`](../interfaces/ComponentProperty.md)\> = `{}`

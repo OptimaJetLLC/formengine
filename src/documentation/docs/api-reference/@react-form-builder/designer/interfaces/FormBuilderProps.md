@@ -40,6 +40,18 @@ The React component that wraps every component in a form. **Internal use only.**
 
 ***
 
+### context?
+
+> `optional` **context**: `any`
+
+The arbitrary user context.
+
+#### Inherited from
+
+`Omit.context`
+
+***
+
 ### customization?
 
 > `optional` **customization**: `Partial`\<`Record`\<`string`, [`Options`](../type-aliases/Options.md)\>\>

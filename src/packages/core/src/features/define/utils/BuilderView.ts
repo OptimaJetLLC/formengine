@@ -1,6 +1,8 @@
 import type {Annotation} from '../../annotation/types/annotations/Annotation'
 import {internalErrorMeta} from '../../components/internalErrorMeta'
 import {screenMeta} from '../../components/screenMeta'
+import {modalMeta} from '../../modal/modalMeta'
+import {modalModel} from '../../modal/modalModel'
 import {repeaterMeta} from '../../repeater/repeaterMeta'
 import {repeaterModel} from '../../repeater/repeaterModel'
 import {createTemplateMeta, createTemplateModel, slotMeta, slotModel} from '../../template'
@@ -14,6 +16,7 @@ import {View} from './View'
 
 const templatesCategoryName = 'templates'
 const structureCategoryName = 'structure'
+const modalCategoryName = 'modal'
 
 /**
  * Represents all the metadata of the form builder components.
@@ -174,6 +177,7 @@ export class BuilderView extends View {
     this.builderComponents.push({meta: slotMeta, model: slotModel, category: templatesCategoryName})
     this.builderComponents.push({meta: repeaterMeta, model: repeaterModel, category: structureCategoryName})
     this.builderComponents.push({meta: errorMessageMeta, model: errorMessageModel})
+    this.builderComponents.push({meta: modalMeta, model: modalModel, category: modalCategoryName})
 
     const metas = builderComponents.map(({meta}) => meta)
 

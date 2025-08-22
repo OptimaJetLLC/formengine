@@ -101,6 +101,10 @@ export interface PropertyBlockProps {
    * The property block type.
    */
   propertyBlockType?: PropertyBlockType
+  /**
+   * The displayed section.
+   */
+  displayedSection?: Section
 }
 
 /**
@@ -112,12 +116,14 @@ export interface PropertyBlockProps {
  * @param props.header the property block title.
  * @param props.headerHint the hint for the property block title.
  * @param props.propertyBlockType the type of the property block.
+ * @param props.displayedSection the displayed section.
  * @returns the React element.
  */
 export const PropertyBlock = ({
                                 annotations,
                                 context,
                                 initContext,
+                                displayedSection,
                                 header,
                                 headerHint,
                                 propertyBlockType = 'component'
@@ -131,7 +137,9 @@ export const PropertyBlock = ({
       propertyBlockType={propertyBlockType}
       annotation={annotation}
       context={context}
-      initContext={initContext}/>)}
+      initContext={initContext}
+      displayedSection={displayedSection}
+    />)}
   </>
 }
 
@@ -164,10 +172,10 @@ interface PropertiesProps {
 }
 
 const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
-  const store = useBuilderStore()
+  const builderStore = useBuilderStore()
   const tooltipType = useTooltipType()
   const getLabel = useTranslationPart('propertiesEditor')
-  const data = store.oneSelectedComponentData
+  const data = builderStore.oneSelectedComponentData
 
   if (!data) {
     return (
@@ -177,9 +185,10 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
     )
   }
 
-  const meta = store.getComponentMetadata(data.store.type)
+  const meta = builderStore.getComponentMetadata(data.store.type)
   const {model} = data
 
+  const modalActions = data.model.type === 'Modal' && activeTab === Section.Actions
   const current = meta.properties.concat(meta.modules).filter(bySection(activeTab))
   const properties = current.filter(bySubSection())
   const additionalProperties = current.filter(bySubSection(SubSection.Additional))
@@ -205,6 +214,7 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
             // eslint-disable-next-line @typescript-eslint/no-use-before-define
             <Styles meta={meta} store={data.store}/>
           }
+          {modalActions && <PropertyBlock annotations={meta.modules} context={data.store.props} displayedSection={activeTab}/>}
         </PropertiesList>
 
         {showTooltipProps && !model.isFeatureEnabled(cfDisableTooltipProperties) &&

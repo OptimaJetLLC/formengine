@@ -68,6 +68,14 @@ Localization of the form.
 
 ***
 
+### modalType?
+
+> `optional` **modalType**: `string`
+
+Name of the type of component that displays the modal.
+
+***
+
 ### tooltipType?
 
 > `optional` **tooltipType**: `string`

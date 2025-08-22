@@ -84,6 +84,8 @@ The components are divided into the following categories:
 - Breadcrumb displays the current path on the page using [Breadcrumb](https://rsuitejs.com/components/breadcrumb/).
 - Card - displays a title card using [Panel](https://rsuitejs.com/components/panel/).
 - Container displays the HTML `div` tag.
+- Modal is a component that displays modal windows.
+- Modal layout is a component that defines the appearance of a modal window.
 - Tab displays a tabbed component based on [Nav](https://rsuitejs.com/components/nav/).
 
 ## Template components

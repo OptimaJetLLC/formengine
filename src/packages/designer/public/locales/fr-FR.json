@@ -67,6 +67,12 @@
       "hint": "Niveau de zoom"
     }
   },
+  "Modal": {
+    "modalTemplate": {
+      "hint": "Modèle à utiliser comme corps modal",
+      "name": "Modèle modal"
+    }
+  },
   "RichTextEditor": {
     "modules": {
       "hint": "Permet de personnaliser le comportement et les fonctionnalités de l'éditeur. Lisez la documentation pour plus d'informations.",
@@ -193,6 +199,50 @@
     "itemsAs": {
       "hint": "Élément HTML à afficher élément de menu",
       "name": "Articles Comme"
+    }
+  },
+  "RsModal": {
+    "autoFocus": {
+      "hint": "Lorsqu'il est défini sur true, le modal est ouvert et se concentre automatiquement sur lui - même, accessible aux lecteurs d'écran",
+      "name": "Mise au point automatique"
+    },
+    "backdrop": {
+      "hint": "Lorsqu'il est défini sur true, le modal affichera l'arrière-plan lors de son ouverture. Cliquer sur l'arrière-plan fermera le Modal",
+      "name": "Toile de fond"
+    },
+    "backdropClassName": {
+      "hint": "Ajoutez un nom de classe supplémentaire facultatif à .modal-backdrop Cela pourrait finir par ressembler à class= \"modal-backdrop foo-modal-backdrop in\"",
+      "name": "Nom de classe de toile de fond"
+    },
+    "classPrefix": {
+      "hint": "Le préfixe de la classe CSS du composant",
+      "name": "Préfixe de classe CSS"
+    },
+    "dialogClassName": {
+      "hint": "Classe CSS appliquée aux nœuds DOM de dialogue",
+      "name": "Classe CSS pour la boîte de dialogue"
+    },
+    "enforceFocus": {
+      "hint": "Lorsqu'il est défini sur true, Modal empêchera le focus de quitter lorsqu'il est ouvert, ce qui facilitera l'accès du lecteur d'écran secondaire",
+      "name": "Renforcer la concentration"
+    },
+    "keyboard": {
+      "hint": "Fermer le modal lorsque la touche Échap est enfoncée",
+      "name": "Proche de Esc"
+    },
+    "overflow": {
+      "hint": "Règle automatiquement la hauteur lorsque le contenu du corps est trop long",
+      "name": "Débordement"
+    },
+    "size": {
+      "hint": "Déterminer la largeur du modal",
+      "name": "Taille"
+    }
+  },
+  "RsModalLayout": {
+    "closeButton": {
+      "hint": "Bouton de fermeture de l'affichage",
+      "name": "Bouton de fermeture"
     }
   },
   "RsPlaceholderGraph": {
@@ -508,6 +558,12 @@
       "hint": "La méthode HTTP de demande de téléchargement",
       "name": "Méthode"
     },
+    "modalProps": {
+      "modalComponentProperties": "Propriétés des composants modaux",
+      "modalComponentPropertiesHint": "Propriétés des composants modaux",
+      "noModalComponent": "Aucune composante modale",
+      "noModalComponentHint": "Spécifiez le type de composant modal dans les paramètres du formulaire"
+    },
     "name": {
       "hint": "Télécharger le nom du paramètre du fichier correspondant",
       "name": "Nom"
@@ -658,6 +714,7 @@
   "componentsList": {
     "categories": {
       "fields": "Champs",
+      "modal": "Modale",
       "static": "Statique",
       "structure": "Structure",
       "templates": "Modèles"
@@ -709,6 +766,7 @@
       "error": "Paramètres d'erreur",
       "formValidator": "Validateur de formulaire",
       "language": "Paramètres de langue",
+      "modal": "Modale",
       "tooltip": "Infobulle"
     },
     "sectionName": {

@@ -18,7 +18,7 @@ export const CommonActionsList = ({onSelect}: ActionsMenuProps) => {
   )
 
   return (
-    <Dropdown.Menu title={t('common')}>
+    <Dropdown.Menu title={t('common')} eventKey="common">
       {items}
     </Dropdown.Menu>
   )

@@ -7,6 +7,7 @@ import {ActionList} from './ActionList'
 import {ErrorSettings} from './ErrorSettings'
 import {FormLanguageSettings} from './FormLanguageSettings'
 import {FormValidator} from './FormValidator'
+import {ModalSettings} from './ModalSettings'
 import {TooltipSettings} from './TooltipSettings'
 
 interface BlockProps extends ComponentProps<any> {
@@ -38,6 +39,9 @@ const RawFormSettings = (props: HTMLAttributes<HTMLDivElement>) => {
       </Block>
       <Block label={t('tooltip')}>
         <TooltipSettings/>
+      </Block>
+      <Block label={t('modal')}>
+        <ModalSettings/>
       </Block>
       <Block label={t('language')}>
         <FormLanguageSettings/>

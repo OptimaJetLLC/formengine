@@ -1,0 +1,149 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsModalLayout1",
+        "type": "RsModalLayout",
+        "props": {
+          "closeButton": {
+            "value": false
+          }
+        },
+        "children": [
+          {
+            "key": "rsHeader1",
+            "type": "RsHeader",
+            "props": {
+              "content": {
+                "value": "Are you sure?"
+              }
+            },
+            "slot": "headerTitle"
+          },
+          {
+            "key": "buttonsContainer",
+            "type": "RsContainer",
+            "props": {},
+            "css": {
+              "any": {
+                "object": {
+                  "flexDirection": "row",
+                  "justifyContent": "end"
+                }
+              }
+            },
+            "children": [
+              {
+                "key": "okButton",
+                "type": "RsButton",
+                "props": {
+                  "children": {
+                    "value": "Ok"
+                  },
+                  "appearance": {
+                    "value": "primary"
+                  }
+                },
+                "wrapperCss": {
+                  "any": {
+                    "object": {
+                      "width": "fit-content"
+                    }
+                  }
+                },
+                "events": {
+                  "onClick": [
+                    {
+                      "name": "closeModal",
+                      "type": "common",
+                      "args": {
+                        "result": "ok"
+                      }
+                    }
+                  ]
+                },
+                "htmlAttributes": [
+                  {
+                    "name": "data-testid",
+                    "value": "confirmOk"
+                  }
+                ]
+              },
+              {
+                "key": "cancelButton",
+                "type": "RsButton",
+                "props": {
+                  "children": {
+                    "value": "Cancel"
+                  }
+                },
+                "wrapperCss": {
+                  "any": {
+                    "object": {
+                      "width": "fit-content"
+                    }
+                  }
+                },
+                "events": {
+                  "onClick": [
+                    {
+                      "name": "closeModal",
+                      "type": "common",
+                      "args": {
+                        "result": "cancel"
+                      }
+                    }
+                  ]
+                },
+                "htmlAttributes": [
+                  {
+                    "name": "data-testid",
+                    "value": "confirmCancel"
+                  }
+                ]
+              }
+            ],
+            "slot": "footer"
+          },
+          {
+            "key": "modalInput",
+            "type": "RsInput",
+            "props": {
+              "label": {
+                "value": "Your value"
+              },
+              "disabled": {
+                "value": true
+              },
+              "readOnly": {
+                "value": true
+              }
+            },
+            "htmlAttributes": [
+              {
+                "name": "data-testid",
+                "value": "confirmationModalInput"
+              }
+            ],
+            "slot": "body"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

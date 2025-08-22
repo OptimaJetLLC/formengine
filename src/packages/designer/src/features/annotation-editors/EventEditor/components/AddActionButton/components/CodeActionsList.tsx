@@ -34,7 +34,7 @@ const RawCodeActionsList = ({onSelect, annotation}: ActionsMenuProps) => {
     </Dropdown.Item>
   )
 
-  return <Dropdown.Menu title={t('code')}>
+  return <Dropdown.Menu title={t('code')} eventKey="code">
     {actionNames?.map(renderAction)}
 
     {!!actionNames?.length && <Dropdown.Item disabled>

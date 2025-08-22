@@ -67,6 +67,12 @@
       "hint": "ズームレベル"
     }
   },
+  "Modal": {
+    "modalTemplate": {
+      "hint": "モーダルボディとして使用するテンプレート",
+      "name": "モーダルテンプレート"
+    }
+  },
   "RichTextEditor": {
     "modules": {
       "hint": "エディタの動作と機能をカスタマイズできます。 より多くの情報のためのdocsを読んで下さい。",
@@ -193,6 +199,50 @@
     "itemsAs": {
       "hint": "メニュー項目をレンダリングするHTML要素",
       "name": "としての項目"
+    }
+  },
+  "RsModal": {
+    "autoFocus": {
+      "hint": "Trueに設定すると、モーダルが開かれ、自動的にスクリーンリーダーがアクセスできる独自のモーダルに焦点が当てられます",
+      "name": "オートフォーカス"
+    },
+    "backdrop": {
+      "hint": "Trueに設定すると、モーダルは開いたときに背景を表示します。 背景をクリックするとモーダルが閉じます",
+      "name": "背景"
+    },
+    "backdropClassName": {
+      "hint": "オプションの追加クラス名を追加します。modal-backdropそれはclass=\"modal-backdrop foo-modal-backdrop in\"のように見えることになるかもしれません",
+      "name": "背景クラス名"
+    },
+    "classPrefix": {
+      "hint": "コンポーネントCSSクラスの接頭辞",
+      "name": "CSSクラスの接頭辞"
+    },
+    "dialogClassName": {
+      "hint": "Dialog DOMノードに適用されるCSSクラス",
+      "name": "Dialog用のCSSクラス"
+    },
+    "enforceFocus": {
+      "hint": "Trueに設定すると、Modalは開いたときにフォーカスが離れるのを防ぎ、セカンダリスクリーンリーダーがアクセスしやすくなります",
+      "name": "フォーカスを強制する"
+    },
+    "keyboard": {
+      "hint": "Escキーが押されたときにモーダルを閉じる",
+      "name": "Escで閉じる"
+    },
+    "overflow": {
+      "hint": "本文の内容が長すぎる場合は、自動的に高さを設定します",
+      "name": "オーバーフロー"
+    },
+    "size": {
+      "hint": "モーダルの幅を決定する",
+      "name": "サイズ"
+    }
+  },
+  "RsModalLayout": {
+    "closeButton": {
+      "hint": "閉じるボタンを表示する",
+      "name": "閉じるボタン"
     }
   },
   "RsPlaceholderGraph": {
@@ -508,6 +558,12 @@
       "hint": "アップロード要求のHTTPメソッド",
       "name": "メソッド"
     },
+    "modalProps": {
+      "modalComponentProperties": "モーダルコンポーネントプロパティ",
+      "modalComponentPropertiesHint": "モーダルコンポーネントプロパティ",
+      "noModalComponent": "モーダルコンポーネントなし",
+      "noModalComponentHint": "フォーム設定でモーダルコンポーネントの種類を指定します"
+    },
     "name": {
       "hint": "対応するファイルのパラメータ名をアップロードします",
       "name": "名前"
@@ -658,6 +714,7 @@
   "componentsList": {
     "categories": {
       "fields": "フィールド",
+      "modal": "モーダル",
       "static": "静的",
       "structure": "構造",
       "templates": "テンプレート"
@@ -709,6 +766,7 @@
       "error": "エラー設定",
       "formValidator": "フォームバリデーター",
       "language": "言語設定",
+      "modal": "モーダル",
       "tooltip": "ツールチップ"
     },
     "sectionName": {

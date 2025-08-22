@@ -20,6 +20,14 @@ The React component that wraps every component in a form. **Internal use only.**
 
 ***
 
+### context?
+
+> `optional` **context**: `any`
+
+The arbitrary user context.
+
+***
+
 ### disabled?
 
 > `optional` **disabled**: `boolean`

@@ -411,6 +411,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
       this.form.errorProps = persistedForm.errorProps ?? {}
       this.form.tooltipType = persistedForm.tooltipType
       this.form.errorType = persistedForm.errorType
+      this.form.modalType = persistedForm.modalType
       this.form.formValidator = persistedForm.formValidator
     })
 

@@ -67,6 +67,12 @@
       "hint": "Nivel de zoom"
     }
   },
+  "Modal": {
+    "modalTemplate": {
+      "hint": "Plantilla para usar como cuerpo modal",
+      "name": "Plantilla modal"
+    }
+  },
   "RichTextEditor": {
     "modules": {
       "hint": "Permite personalizar el comportamiento y funcionalidad del editor. Lea los documentos para obtener más información.",
@@ -193,6 +199,50 @@
     "itemsAs": {
       "hint": "Elemento HTML para renderizar elemento de menú",
       "name": "Artículos Como"
+    }
+  },
+  "RsModal": {
+    "autoFocus": {
+      "hint": "Cuando se establece en verdadero, el Modal se abre y se enfoca automáticamente por sí solo, accesible para los lectores de pantalla.",
+      "name": "Enfoque automático"
+    },
+    "backdrop": {
+      "hint": "Cuando se establece en verdadero, el Modal mostrará el fondo cuando se abra. Al hacer clic en el fondo se cerrará el Modal",
+      "name": "Telón de fondo"
+    },
+    "backdropClassName": {
+      "hint": "Agregue un nombre de clase adicional opcional a .modal-backdrop Podría terminar pareciéndose a class=\"modal-backdrop foo-modal-backdrop in\"",
+      "name": "Nombre de clase de fondo"
+    },
+    "classPrefix": {
+      "hint": "El prefijo de la clase CSS del componente",
+      "name": "Prefijo de clase CSS"
+    },
+    "dialogClassName": {
+      "hint": "Clase CSS aplicada a nodos DOM de diálogo",
+      "name": "Clase CSS para diálogo"
+    },
+    "enforceFocus": {
+      "hint": "Cuando se establece en verdadero, Modal evitará que el foco se vaya cuando se abra, lo que facilitará el acceso del lector de pantalla secundario",
+      "name": "Hacer cumplir el enfoque"
+    },
+    "keyboard": {
+      "hint": "Cerrar Modal cuando se presiona la tecla Esc",
+      "name": "Cerrar por Esc"
+    },
+    "overflow": {
+      "hint": "Establece automáticamente la altura cuando el contenido del cuerpo es demasiado largo",
+      "name": "Desbordamiento"
+    },
+    "size": {
+      "hint": "Determina el ancho del modal",
+      "name": "Tamaño"
+    }
+  },
+  "RsModalLayout": {
+    "closeButton": {
+      "hint": "Botón de cierre de pantalla",
+      "name": "Botón Cerrar"
     }
   },
   "RsPlaceholderGraph": {
@@ -508,6 +558,12 @@
       "hint": "El método HTTP de solicitud de carga",
       "name": "Método"
     },
+    "modalProps": {
+      "modalComponentProperties": "Propiedades de los componentes modales",
+      "modalComponentPropertiesHint": "Propiedades de los componentes modales",
+      "noModalComponent": "Sin componente modal",
+      "noModalComponentHint": "Especifique el tipo de componente modal en la configuración del formulario"
+    },
     "name": {
       "hint": "Cargue el nombre del parámetro del archivo correspondiente",
       "name": "Nombre"
@@ -658,6 +714,7 @@
   "componentsList": {
     "categories": {
       "fields": "Campos",
+      "modal": "Modal",
       "static": "Estática",
       "structure": "Estructura",
       "templates": "Plantillas"
@@ -709,6 +766,7 @@
       "error": "Configuración de errores",
       "formValidator": "Validador de formularios",
       "language": "Ajustes de idioma",
+      "modal": "Modal",
       "tooltip": "Información sobre Herramientas"
     },
     "sectionName": {

@@ -16,7 +16,7 @@ const buttonStyle = {borderStyle: 'dashed'}
 const beginContextLine = `/**
  * @param {ActionEventArgs} e the action arguments.
  * @param {} args the action parameters arguments.
- * @param {Array} userArgs the rest parameters passed to the function form user space code.
+ * @param {Array} userArgs the rest parameters passed to the function from the user code.
  */
 async function ArgumentCallback(e, args, ...userArgs) {`
 

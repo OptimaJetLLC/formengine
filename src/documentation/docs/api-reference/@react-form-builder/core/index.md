@@ -291,4 +291,6 @@
 - [useAriaInvalid](functions/useAriaInvalid.md)
 - [useDisposable](functions/useDisposable.md)
 - [useErrorModel](functions/useErrorModel.md)
+- [useModalComponentData](functions/useModalComponentData.md)
+- [useModalType](functions/useModalType.md)
 - [useTooltipType](functions/useTooltipType.md)

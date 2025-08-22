@@ -182,16 +182,18 @@ parameters.
 }
 ```
 
-### Types of error and tooltip components
+### Types of error, modal and tooltip components
 
 - `tooltipType` - the name of the component type (usually the displayName of the React component) that displays the tooltip.
 - `errorType` - the name of the component type (usually the displayName of the React component) that displays the error.
+- `modalType` - the name of the component type (usually the displayName of the React component) that displays the modal window.
 
 ```json
 {
   ...
   "tooltipType": "RsTooltip",
   "errorType": "RsErrorMessage",
+  "modalType": "RsModal",
   ...
 }
 ```

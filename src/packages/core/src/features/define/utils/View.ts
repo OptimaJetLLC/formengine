@@ -1,6 +1,7 @@
 import type {ComponentType, ReactNode} from 'react'
 import {BiDi} from '../../localization/bidi'
 import type {Language} from '../../localization/types'
+import {modalModel} from '../../modal/modalModel'
 import {repeaterItemModel} from '../../repeater/RepeaterItem'
 import {repeaterModel} from '../../repeater/repeaterModel'
 import {slotModel} from '../../template'
@@ -63,6 +64,7 @@ export class View {
     this.define(repeaterModel)
     this.define(repeaterItemModel)
     this.define(errorMessageModel)
+    this.define(modalModel)
     models.forEach(this.define.bind(this))
   }
 

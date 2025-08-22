@@ -34,6 +34,14 @@ Custom actions for the form viewer.
 
 ***
 
+### context?
+
+> `optional` **context**: `any`
+
+The arbitrary user context.
+
+***
+
 ### disabled?
 
 > `optional` **disabled**: `boolean`

@@ -1,4 +1,5 @@
 import type {Annotation, ComponentData, ComponentPropertyComputeType, LanguageFullCode} from '@react-form-builder/core'
+import type {Section} from '../ui/RightPanel/PropertiesEditor/Section'
 
 /**
  * Localization compute parameters.
@@ -95,4 +96,8 @@ export interface AnnotationEditorProps extends CalculableEditorProps {
    * The component data.
    */
   componentData: ComponentData
+  /**
+   * The displayed section.
+   */
+  displayedSection?: Section
 }

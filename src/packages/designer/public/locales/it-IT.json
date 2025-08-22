@@ -67,6 +67,12 @@
       "hint": "Livello di zoom"
     }
   },
+  "Modal": {
+    "modalTemplate": {
+      "hint": "Modello da usare come corpo modale",
+      "name": "Modello modale"
+    }
+  },
   "RichTextEditor": {
     "modules": {
       "hint": "Permette di personalizzare il comportamento e la funzionalità dell'editor. Leggi i documenti per maggiori informazioni.",
@@ -193,6 +199,50 @@
     "itemsAs": {
       "hint": "Elemento HTML per rendere la voce di menu",
       "name": "Articoli come"
+    }
+  },
+  "RsModal": {
+    "autoFocus": {
+      "hint": "Quando è impostato su true, il Modale viene aperto e viene automaticamente focalizzato sul proprio, accessibile agli screen reader",
+      "name": "Autofocus"
+    },
+    "backdrop": {
+      "hint": "Quando è impostato su true, il Modale visualizzerà lo sfondo quando viene aperto. Cliccando sullo sfondo si chiuderà il Modale",
+      "name": "Sfondo"
+    },
+    "backdropClassName": {
+      "hint": "Aggiungere un nome di classe extra opzionale a .modal-backdrop Potrebbe finire per assomigliare a class=\"modal-backdrop foo-modal-backdrop in\"",
+      "name": "Nome classe sfondo"
+    },
+    "classPrefix": {
+      "hint": "Il prefisso della classe CSS componente",
+      "name": "Prefisso classe CSS"
+    },
+    "dialogClassName": {
+      "hint": "Classe CSS applicata ai nodi DOM di dialogo",
+      "name": "Classe CSS per la finestra di dialogo"
+    },
+    "enforceFocus": {
+      "hint": "Quando è impostato su true, Modal impedirà la messa a fuoco di lasciare una volta aperto, rendendo più facile per lo screen reader secondario per accedere",
+      "name": "Applicare il focus"
+    },
+    "keyboard": {
+      "hint": "Chiudi modale quando viene premuto il tasto Esc",
+      "name": "Vicino Esc"
+    },
+    "overflow": {
+      "hint": "Imposta automaticamente l'altezza quando il contenuto del corpo è troppo lungo",
+      "name": "Overflow"
+    },
+    "size": {
+      "hint": "Determina la larghezza del modale",
+      "name": "Dimensione"
+    }
+  },
+  "RsModalLayout": {
+    "closeButton": {
+      "hint": "Pulsante di chiusura del display",
+      "name": "Pulsante Chiudi"
     }
   },
   "RsPlaceholderGraph": {
@@ -508,6 +558,12 @@
       "hint": "Il metodo HTTP della richiesta di upload",
       "name": "Metodo"
     },
+    "modalProps": {
+      "modalComponentProperties": "Proprietà dei componenti modali",
+      "modalComponentPropertiesHint": "Proprietà dei componenti modali",
+      "noModalComponent": "Nessuna componente modale",
+      "noModalComponentHint": "Specificare il tipo di componente modale nelle impostazioni del modulo"
+    },
     "name": {
       "hint": "Carica il nome del parametro del file corrispondente",
       "name": "Nome"
@@ -658,6 +714,7 @@
   "componentsList": {
     "categories": {
       "fields": "Campo",
+      "modal": "Modale",
       "static": "Statico",
       "structure": "Struttura",
       "templates": "Modelli"
@@ -709,6 +766,7 @@
       "error": "Impostazioni di errore",
       "formValidator": "Validatore modulo",
       "language": "Impostazioni della lingua",
+      "modal": "Modale",
       "tooltip": "Tooltip"
     },
     "sectionName": {

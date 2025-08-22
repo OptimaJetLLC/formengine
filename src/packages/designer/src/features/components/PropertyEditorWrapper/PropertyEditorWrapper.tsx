@@ -3,6 +3,7 @@ import {isProperty, isValidatorPropertyBlockType, namedObserver, useComponentDat
 import {createElement, useCallback, useEffect, useMemo, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps, CalculableEditorProps} from '../../annotation-editors/AnnotationEditorProps'
+import type {Section} from '../../ui/RightPanel/PropertiesEditor/Section'
 import {Erroneous} from './Erroneous'
 
 interface PropertyEditorWrapperProps {
@@ -10,13 +11,15 @@ interface PropertyEditorWrapperProps {
   context: Record<string, any>
   initContext?: () => Record<string, any>
   propertyBlockType?: PropertyBlockType
+  displayedSection?: Section
 }
 
 const RawPropertyEditorWrapper = ({
                                     annotation,
                                     context,
                                     initContext,
-                                    propertyBlockType = 'component'
+                                    propertyBlockType = 'component',
+                                    displayedSection
                                   }: PropertyEditorWrapperProps) => {
   const store = useBuilderStore()
   const componentData = useComponentData()
@@ -123,6 +126,7 @@ const RawPropertyEditorWrapper = ({
     disableCompute,
     getComputeType,
     hasComputeCode,
+    displayedSection
   }
 
   useEffect(() => {

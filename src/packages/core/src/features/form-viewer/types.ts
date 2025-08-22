@@ -120,6 +120,11 @@ export interface FormViewerProps {
    * If true, all validation errors will be displayed.
    */
   showAllValidationErrors?: boolean
+
+  /**
+   * The arbitrary user context.
+   */
+  context?: any
 }
 
 /**

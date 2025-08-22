@@ -1,10 +1,12 @@
 import {createView, Definer} from '@react-form-builder/core'
 import {antButton} from './components/AntButton'
 import {antInput} from './components/AntInput'
+import {antModal} from './components/AntModal'
 import {antTooltip} from './components/AntTooltip'
 
 const definitions = [
   antButton,
+  antModal,
   antInput,
   antTooltip
 ]
@@ -19,7 +21,7 @@ definitions.forEach(c => {
 
 export const antdComponents: Definer<any>[] = definitions
 
-export {antTooltip}
+export {antModal, antTooltip}
 
 const components = antdComponents.map(def => def.build())
 export const models = components.map(({model}) => model)

@@ -40,6 +40,14 @@ Disables the ability to make the property computable.
 
 ***
 
+### displayedSection?
+
+> `optional` **displayedSection**: `Section`
+
+The displayed section.
+
+***
+
 ### getComputeCode()
 
 > **getComputeCode**: \<`T`\>(`type`, `params?`) => `string`
