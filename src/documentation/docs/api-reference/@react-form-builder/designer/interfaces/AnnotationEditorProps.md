@@ -42,7 +42,7 @@ Disables the ability to make the property computable.
 
 ### displayedSection?
 
-> `optional` **displayedSection**: `Section`
+> `optional` **displayedSection**: [`Section`](../enumerations/Section.md)
 
 The displayed section.
 

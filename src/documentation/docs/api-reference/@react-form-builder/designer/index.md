@@ -1,5 +1,9 @@
 # @react-form-builder/designer
 
+## Enumerations
+
+- [Section](enumerations/Section.md)
+
 ## Classes
 
 - [BuilderView](classes/BuilderView.md)

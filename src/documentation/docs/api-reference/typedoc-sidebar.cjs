@@ -965,6 +965,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/ModalComponentStore",
+              label: "ModalComponentStore"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/NamedActionDefinition",
               label: "NamedActionDefinition"
             },
@@ -1707,6 +1712,17 @@ const typedocSidebar = {
       type: "category",
       label: "@react-form-builder/designer",
       items: [
+        {
+          type: "category",
+          label: "Enumerations",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/designer/enumerations/Section",
+              label: "Section"
+            }
+          ]
+        },
         {
           type: "category",
           label: "Classes",

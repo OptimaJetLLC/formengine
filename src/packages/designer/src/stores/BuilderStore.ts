@@ -761,6 +761,9 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
 
     if (selectAfterInsert) this.selectNode(componentData)
 
+    const meta = this.view.findMeta(componentData.model.type)
+    meta?.eventListeners?.onCreateNode?.(componentData, this.viewer)
+
     return clone
   }
 

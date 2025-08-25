@@ -352,6 +352,28 @@ the action.
 
 ***
 
+### getFirstComponentTypeWithRole()
+
+> **getFirstComponentTypeWithRole**(`componentRole`): `undefined` \| `string`
+
+Returns the first type of component with the specified role.
+
+#### Parameters
+
+##### componentRole
+
+`string`
+
+the component role.
+
+#### Returns
+
+`undefined` \| `string`
+
+the first type of component with the specified role.
+
+***
+
 ### getModel()
 
 > **getModel**(`type`): [`Model`](Model.md)\<`any`\> \| [`Model`](Model.md)\<[`TemplateProps`](../interfaces/TemplateProps.md)\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\>

@@ -88,7 +88,7 @@ The React component key.
 
 ### modal?
 
-> `optional` **modal**: `ModalComponentStore`
+> `optional` **modal**: [`ModalComponentStore`](../type-aliases/ModalComponentStore.md)
 
 The modal settings.
 

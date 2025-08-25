@@ -144,6 +144,7 @@
 - [LocalizationType](type-aliases/LocalizationType.md)
 - [LocalizationValue](type-aliases/LocalizationValue.md)
 - [MessagesMap](type-aliases/MessagesMap.md)
+- [ModalComponentStore](type-aliases/ModalComponentStore.md)
 - [NamedActionDefinition](type-aliases/NamedActionDefinition.md)
 - [NodeEditorType](type-aliases/NodeEditorType.md)
 - [ParameterDefinition](type-aliases/ParameterDefinition.md)
