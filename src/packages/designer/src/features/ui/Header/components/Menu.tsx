@@ -107,7 +107,8 @@ const RawMenu = () => {
         <ExportFormsButton/>
         <ImportFormsButton/>
       </>}
-      <Dropdown.Item onSelect={builderStore.clear.bind(builderStore)} icon={<FaIcon icon={faTrash as unknown as IconDefinition}/>}>
+      <Dropdown.Item onSelect={builderStore.clear.bind(builderStore)} data-testid="main-menu-clear"
+                     icon={<FaIcon icon={faTrash as unknown as IconDefinition}/>}>
         {t('leftMenu.clear')}
       </Dropdown.Item>
     </MenuDropdown>

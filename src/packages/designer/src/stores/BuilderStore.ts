@@ -935,7 +935,9 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       form: new ComponentStore(screenModel.name, screenModel.type),
       localization: {},
       languages: [],
-      defaultLanguage: this.defaultLanguage.fullCode
+      defaultLanguage: this.defaultLanguage.fullCode,
+      modalType: this.viewer.getFirstComponentTypeWithRole('modal'),
+      tooltipType: this.viewer.getFirstComponentTypeWithRole('tooltip'),
     }
     await this.saveForm(formName, toPrettyJsonString(persistedForm))
     this.activeFormName = formName

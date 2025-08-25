@@ -1,9 +1,16 @@
-import {BuilderView, FormBuilder} from '@react-form-builder/designer'
+import {buildForm, PersistedForm} from '@react-form-builder/core'
+import {BuilderView, FormBuilder, IFormStorage} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
-import {fireEvent, render} from '@testing-library/react'
+import {fireEvent, render, waitFor} from '@testing-library/react'
 import {expectDropDownToHaveTextContent, selectDropDownOption} from '../util/controls'
+import {renderBuilder} from '../util/renderBuilder'
 
 const builderView = new BuilderView(allComponentsBuilder)
+
+const parseForm = (form?: string) => {
+  if (!form) return
+  return JSON.parse(form) as PersistedForm
+}
 
 describe('Form settings test', () => {
   it('The tooltip dropdown should contain the tooltip components', async () => {
@@ -38,5 +45,104 @@ describe('Form settings test', () => {
 
     await selectDropDownOption(renderResult, tooltipTypePicker, 'Default Error Message')
     await expectDropDownToHaveTextContent(tooltipTypePicker, 'Default Error Message')
+  })
+
+  it('The default form should have the default tooltip type and modal type', async () => {
+    const builderView = new BuilderView(allComponentsBuilder)
+    const props = {view: builderView, getForm: undefined}
+
+    const {getFormBuilder, findByTestId} = await renderBuilder({}, props)
+
+    const settingsTabButton = await findByTestId('Settings_Tab')
+    fireEvent.click(settingsTabButton)
+
+    const tooltipTypePicker = await findByTestId('tooltip-type-picker')
+    await expectDropDownToHaveTextContent(tooltipTypePicker, 'Rs Tooltip')
+
+    const modalTypePicker = await findByTestId('modal-type-picker')
+    await expectDropDownToHaveTextContent(modalTypePicker, 'Rs Modal')
+
+    const form = parseForm(getFormBuilder()?.formAsString)
+    expect(form?.tooltipType).toEqual('RsTooltip')
+    expect(form?.modalType).toEqual('RsModal')
+  })
+
+  it('The form cleanup should set the default tooltip type and modal window type', async () => {
+    const emptyForm = JSON.parse(buildForm().json())
+    const {getFormBuilder, findByTestId} = await renderBuilder(emptyForm)
+
+    const settingsTabButton = await findByTestId('Settings_Tab')
+    fireEvent.click(settingsTabButton)
+
+    const tooltipTypePicker = await findByTestId('tooltip-type-picker')
+    await expectDropDownToHaveTextContent(tooltipTypePicker, 'Select')
+
+    const modalTypePicker = await findByTestId('modal-type-picker')
+    await expectDropDownToHaveTextContent(modalTypePicker, 'Select')
+
+    const menuClear = await findByTestId('main-menu-clear')
+    fireEvent.click(menuClear)
+
+    await expectDropDownToHaveTextContent(tooltipTypePicker, 'Rs Tooltip')
+    await expectDropDownToHaveTextContent(modalTypePicker, 'Rs Modal')
+
+    const form = parseForm(getFormBuilder()?.formAsString)
+    expect(form?.tooltipType).toEqual('RsTooltip')
+    expect(form?.modalType).toEqual('RsModal')
+  })
+
+  it('The new form should have a default tooltip type and modal window type set', async () => {
+    const formNames = ['default']
+    const forms: Record<string, string> = {
+      default: buildForm().json(),
+    }
+    const formStorage: IFormStorage = {
+      getForm(formName?: string) {
+        return Promise.resolve(forms[formName ?? 'default'])
+      }, getFormNames() {
+        return Promise.resolve(formNames)
+      }, removeForm(formName: string) {
+        delete forms[formName]
+        return Promise.resolve()
+      }, saveForm(formName: string, formValue: string) {
+        forms[formName] = formValue
+        return Promise.resolve()
+      }
+    }
+
+    const emptyForm = JSON.parse(buildForm().json())
+    const {findByTestId, queryByTestId} = await renderBuilder(emptyForm, {formStorage, formName: 'default'})
+
+    const settingsTabButton = await findByTestId('Settings_Tab')
+    fireEvent.click(settingsTabButton)
+
+    const tooltipTypePicker = await findByTestId('tooltip-type-picker')
+    await expectDropDownToHaveTextContent(tooltipTypePicker, 'Select')
+
+    const modalTypePicker = await findByTestId('modal-type-picker')
+    await expectDropDownToHaveTextContent(modalTypePicker, 'Select')
+
+    const formsTabButton = await findByTestId('Forms_Tab')
+    fireEvent.click(formsTabButton)
+
+    const addNewFormButton = await findByTestId('add-new-form-button')
+    fireEvent.click(addNewFormButton)
+
+    const modalNameInput = await findByTestId('modal-name-input')
+    fireEvent.change(modalNameInput, {target: {value: 'myNewForm'}})
+
+    const modalOkButton = await findByTestId('modal-ok-button')
+    fireEvent.click(modalOkButton)
+
+    await waitFor(() => expect(queryByTestId('modal-ok-button')).not.toBeInTheDocument())
+    await waitFor(() => expect(forms.myNewForm).toBeDefined())
+
+    const form = parseForm(forms.myNewForm)
+    expect(form?.tooltipType).toEqual('RsTooltip')
+    expect(form?.modalType).toEqual('RsModal')
+
+    fireEvent.click(settingsTabButton)
+    await expectDropDownToHaveTextContent(await findByTestId('tooltip-type-picker'), 'Rs Tooltip')
+    await expectDropDownToHaveTextContent(await findByTestId('modal-type-picker'), 'Rs Modal')
   })
 })

@@ -1,6 +1,7 @@
 {
   "tooltipType": "RsTooltip",
   "errorType": "RsErrorMessage",
+  "modalType": "RsModal",
   "form": {
     "key": "Screen",
     "type": "Screen",

@@ -8,9 +8,12 @@ type BuilderProps = Omit<FormBuilderProps, 'view'>
 export const renderBuilder = async (form: object, props?: BuilderProps) => {
   const getForm = () => JSON.stringify(form)
   const viewerRef: FormViewerProps['viewerRef'] = {current: null}
+  const builderRef: FormBuilderProps['builderRef'] = {current: null}
 
-  const result = render(<FormBuilder view={builderViewWithCss} getForm={getForm} viewerRef={viewerRef} {...props}/>)
+  const result = render(<FormBuilder view={builderViewWithCss} getForm={getForm}
+                                     viewerRef={viewerRef} builderRef={builderRef} {...props}/>)
   const getFormData = () => viewerRef.current?.formData
+  const getFormBuilder = () => builderRef.current
 
-  return {getFormData, ...result}
+  return {getFormData, getFormBuilder, ...result}
 }

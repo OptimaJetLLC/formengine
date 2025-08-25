@@ -12,6 +12,7 @@
   },
   "tooltipType": "RsTooltip",
   "errorType": "RsErrorMessage",
+  "modalType": "RsModal",
   "form": {
     "key": "screen 1",
     "type": "Screen",
