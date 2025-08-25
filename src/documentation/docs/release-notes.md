@@ -4,6 +4,44 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 6.2.0
+
+_August_ 25, 2025
+
+### New
+
+- Added support for [creating modal windows](/modal-components) on the form.
+- Added **Validate**, **Reset to default**, and **Clear** buttons to the left panel in Preview mode for form data management.
+- Added a **Reset to default** button to the object array editor to reset values.
+- Code editor title for functional arguments now display the related event information.
+- Added the [View.filterModels](/api-reference/@react-form-builder/core/classes/View#filtermodels)
+  and [BuilderView.filterModels](/api-reference/@react-form-builder/core/classes/BuilderView#filtermodels) methods that returns an array of
+  component metadata filtered by a predicate function.
+- Added a `formComponent` property editor to select the key of a component on the form, with an optional filter for the list.
+- Added the ability to [hide components](/custom-components#hidden-component) from the palette and filter components by their properties.
+- When creating a new form, the **tooltip type** and **modal type** are now set automatically.
+- In the designer localization languages list, labels have been added to indicate which translations were generated using AI.
+
+### Changed
+
+- Deprecated the `erroneous` property in [FormViewerProps](/api-reference/@react-form-builder/core/interfaces/FormViewerProps)
+  and [FormBuilderProps](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps) types.
+- Deprecated the following methods in the [BuilderView](/api-reference/@react-form-builder/core/classes/BuilderView) class:
+  - `getTooltipAnnotations`
+  - `getErrorAnnotations`
+  - `tooltips`
+  - `errors`
+  - `withErrorMeta`
+  - `withTooltipMeta`
+
+### Fixed
+
+- Fixed an issue where the object array editor wrapped items in an extra `item` field.
+- Fixed dependency issues
+  in [components-fast-qr](https://www.npmjs.com/package/@react-form-builder/components-fast-qr), [components-rich-text](https://www.npmjs.com/package/@react-form-builder/components-rich-text),
+  and [components-signature](https://www.npmjs.com/package/@react-form-builder/components-signature) packages that caused problems when
+  using the `yarn` package manager.
+
 ## 6.1.0
 
 _August_ 11, 2025

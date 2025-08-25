@@ -1,0 +1,27 @@
+### New
+
+- Added support for [creating modal windows](https://formengine.io/documentation/modal-components) on the form.
+- Added **Validate**, **Reset to default**, and **Clear** buttons to the left panel in Preview mode for form data management.
+- Added a **Reset to default** button to the object array editor to reset values.
+- Code editor title for functional arguments now display the related event information.
+- Added the [View.filterModels](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/View#filtermodels) and [BuilderView.filterModels](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/BuilderView#filtermodels) methods that returns an array of component metadata filtered by a predicate function.
+- Added a `formComponent` property editor to select the key of a component on the form, with an optional filter for the list.
+- Added the ability to [hide components](https://formengine.io/documentation/custom-components#hidden-component) from the palette and filter components by their properties.
+- When creating a new form, the **tooltip type** and **modal type** are now set automatically.
+- In the designer localization languages list, labels have been added to indicate which translations were generated using AI.
+
+### Changed
+
+- Deprecated the `erroneous` property in [FormViewerProps](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/FormViewerProps) and [FormBuilderProps](https://formengine.io/documentation/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps) types.
+- Deprecated the following methods in the [BuilderView](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/BuilderView) class:
+  - `getTooltipAnnotations`
+  - `getErrorAnnotations`
+  - `tooltips`
+  - `errors`
+  - `withErrorMeta`
+  - `withTooltipMeta`
+
+### Fixed
+
+- Fixed an issue where the object array editor wrapped items in an extra `item` field.
+- Fixed dependency issues in [components-fast-qr](https://www.npmjs.com/package/@react-form-builder/components-fast-qr), [components-rich-text](https://www.npmjs.com/package/@react-form-builder/components-rich-text), and [components-signature](https://www.npmjs.com/package/@react-form-builder/components-signature) packages that caused problems when using the `yarn` package manager. 
