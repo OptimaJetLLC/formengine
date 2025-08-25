@@ -33,6 +33,7 @@ import RichTextEditor from './RichTextEditor.svg'
 import Search from './Search.svg'
 import Sidebar from './Sidebar.svg'
 import Signature from './Signature.svg'
+import Sparks from './Sparks.svg'
 import StaticContent from './StaticContent.svg'
 import Tab from './Tab.svg'
 import TextArea from './TextArea.svg'
@@ -78,6 +79,7 @@ export const icons = {
   RichTextEditor,
   Search,
   Signature,
+  Sparks,
   StaticContent,
   Tab,
   TextArea,

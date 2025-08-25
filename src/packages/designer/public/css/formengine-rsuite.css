@@ -299,6 +299,10 @@
   overflow: visible !important;
 }
 
+.optimajet-formbuilder .rs-dropdown-item {
+  gap: 8px;
+}
+
 .rs-picker .rs-picker-clean.rs-btn-close {
   color: var(--rs-text-secondary);
 }
