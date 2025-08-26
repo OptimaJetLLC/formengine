@@ -4,7 +4,7 @@ import type {editor} from 'monaco-editor'
 /**
  * Supported languages formatting.
  */
-export type CodeEditorLanguage = 'javascript' | 'json' | 'scss' | 'fluent' | 'css'
+export type CodeEditorLanguage = 'javascript' | 'json' | 'fluent' | 'css'
 
 /**
  * The properties of the UnconstrainedCodeEditor React component.

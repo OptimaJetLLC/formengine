@@ -60,7 +60,7 @@ the `Subheader` component and click on the "Style" tab as in the screenshot belo
 
 Now select the "Center" value in the "Alignment" property. In the Component style code editor, copy the value of the **selected** lines:
 
-```scss
+```css
 element.style {
   // highlight-start
   font-size: 48px;

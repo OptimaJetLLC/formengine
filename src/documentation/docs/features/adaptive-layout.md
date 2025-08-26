@@ -147,7 +147,7 @@ the "Edit JSON" window.
 
 We have added the following styles for the `Screen` in `Desktop` mode:
 
-```scss
+```css
 element.style {
   padding: 20px;
   border: 1px solid lightgrey;

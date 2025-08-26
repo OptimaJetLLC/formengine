@@ -66,7 +66,7 @@ const RawCSSEditor = ({device, useWrapperStyles, defaultActiveTab}: CSSEditorPro
       {useWrapperStyles && <RadioButtons value={activeTab} onChange={handleSelect} items={items}/>}
       <SCodeEditor
         key={`${store.key}${activeTab}${device}`}
-        language="scss"
+        language="css"
         beginContextLine={'element.style {'}
         endContextLine="}"
         initialValue={initialValue}
