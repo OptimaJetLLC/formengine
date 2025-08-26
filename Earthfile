@@ -87,8 +87,8 @@ prepare-demo-archive:
   RUN cd packages/apps/demo/dist/ && tar -zcvf demo.tgz *
   SAVE ARTIFACT packages/apps/demo/dist/demo.tgz AS LOCAL .archives/demo.tgz
 
-# prepare-archive-formbuilder archive the formbuilder
-prepare-archive-formbuilder:
+# prepare-formbuilder-archive archive the formbuilder
+prepare-formbuilder-archive:
   # temporarily, formbuilder and demo are the same thing
   FROM +npm-demo-build
   RUN cd packages/apps/demo/dist/ && tar -zcvf formbuilder.tgz *
@@ -182,6 +182,7 @@ prepare-all-archives:
   BUILD +prepare-github-formengine-archive
   BUILD +prepare-github-formenginesupport-archive
   BUILD +prepare-demo-archive
+  BUILD +prepare-formbuilder-archive
   BUILD +prepare-documentation-archive
   BUILD +prepare-version-archive
   BUILD +prepare-github-release-notes-archive
