@@ -524,7 +524,7 @@
       "name": "Href"
     },
     "htmlAttributes": {
-      "hint": "HTML-Attribute im React (camelCase) -Format",
+      "hint": "An die Komponente übergebene HTML-Attribute",
       "name": "HTML-Attribute"
     },
     "isoWeek": {

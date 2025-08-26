@@ -16,7 +16,7 @@
     },
     "htmlAttributes": {
       "name": "HTML attributes",
-      "hint": "HTML attributes in React (camelCase) format"
+      "hint": "HTML attributes passed to the component"
     },
     "tooltipProps": {
       "tooltip": "Tooltip",

@@ -524,7 +524,7 @@
       "name": "FRH"
     },
     "htmlAttributes": {
-      "hint": "Attributs HTML au format React (CamelCase) ",
+      "hint": "Attributs HTML transmis au composant",
       "name": "Attributs HTML"
     },
     "isoWeek": {

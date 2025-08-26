@@ -524,7 +524,7 @@
       "name": "Href"
     },
     "htmlAttributes": {
-      "hint": "React(camelCase)格式的HTML属性",
+      "hint": "传递给组件的HTML属性",
       "name": "HTML属性"
     },
     "isoWeek": {

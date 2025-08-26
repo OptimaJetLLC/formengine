@@ -524,7 +524,7 @@
       "name": "Href"
     },
     "htmlAttributes": {
-      "hint": "React(camelCase)形式のHTML属性",
+      "hint": "コンポーネントに渡されるHTML属性",
       "name": "HTML属性"
     },
     "isoWeek": {
