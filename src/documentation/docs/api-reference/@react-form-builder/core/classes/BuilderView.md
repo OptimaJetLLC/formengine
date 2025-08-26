@@ -58,38 +58,6 @@ The function for filtering components on the component palette.
 
 ## Accessors
 
-### errors
-
-#### Get Signature
-
-> **get** **errors**(): `string`[]
-
-##### Deprecated
-
-##### Returns
-
-`string`[]
-
-the array of strings with the names of the component types of the error.
-
-***
-
-### tooltips
-
-#### Get Signature
-
-> **get** **tooltips**(): `string`[]
-
-##### Deprecated
-
-##### Returns
-
-`string`[]
-
-the array of strings with the names of the component types of the tooltip.
-
-***
-
 ### viewerWrappers
 
 #### Get Signature
@@ -296,30 +264,6 @@ the array containing the CSS loaders for the specified BiDi.
 
 ***
 
-### ~~getErrorAnnotations()~~
-
-> **getErrorAnnotations**(`name`): `undefined` \| [`Annotation`](Annotation.md)[]
-
-#### Parameters
-
-##### name
-
-`string`
-
-the name of the error component type.
-
-#### Returns
-
-`undefined` \| [`Annotation`](Annotation.md)[]
-
-the array of metadata properties of the error component.
-
-#### Deprecated
-
-Returns the array of metadata properties of the error component.
-
-***
-
 ### getMeta()
 
 > **getMeta**(`type`): [`Meta`](Meta.md)
@@ -339,30 +283,6 @@ the component type name.
 [`Meta`](Meta.md)
 
 the component metadata for the specified component type name.
-
-***
-
-### ~~getTooltipAnnotations()~~
-
-> **getTooltipAnnotations**(`name`): `undefined` \| [`Annotation`](Annotation.md)[]
-
-#### Parameters
-
-##### name
-
-`string`
-
-the name of the tooltip component type.
-
-#### Returns
-
-`undefined` \| [`Annotation`](Annotation.md)[]
-
-the array of metadata properties of the tooltip component.
-
-#### Deprecated
-
-Returns the array of metadata properties of the tooltip component.
 
 ***
 
@@ -418,31 +338,6 @@ the [View](View.md) instance.
 
 ***
 
-### ~~withErrorMeta()~~
-
-> **withErrorMeta**(`builderComponent`): `this`
-
-#### Parameters
-
-##### builderComponent
-
-[`BuilderComponent`](../interfaces/BuilderComponent.md)
-
-the metadata of the component that displays the form's errors.
-
-#### Returns
-
-`this`
-
-the instance of the BuilderView class.
-
-#### Deprecated
-
-use the [Definer.componentRole](../interfaces/Definer.md#componentrole)('error-message') instead.
-Sets the metadata of the component that displays form's errors.
-
-***
-
 ### withPaletteFilter()
 
 > **withPaletteFilter**(`filter`): `this`
@@ -484,31 +379,6 @@ the array of template names.
 `this`
 
 the instance of the BuilderView class.
-
-***
-
-### ~~withTooltipMeta()~~
-
-> **withTooltipMeta**(`builderComponent`): `this`
-
-#### Parameters
-
-##### builderComponent
-
-[`BuilderComponent`](../interfaces/BuilderComponent.md)
-
-the metadata of the component that displays the form's tooltips.
-
-#### Returns
-
-`this`
-
-the instance of the BuilderView class.
-
-#### Deprecated
-
-use the [Definer.componentRole](../interfaces/Definer.md#componentrole)('tooltip') instead.
-Sets the metadata of the component that displays the form's tooltips.
 
 ***
 

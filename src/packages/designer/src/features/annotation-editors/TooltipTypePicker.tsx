@@ -21,7 +21,6 @@ const RawTooltipTypePicker = (props: AnnotationEditorProps) => {
     const names = builderStore.view
       .filterModels(model => model.hasComponentRole('tooltip'))
       .map(model => model.type)
-    names.push(...builderStore.view.tooltips)
 
     const uniqueNames = Array.from(new Set(names))
 

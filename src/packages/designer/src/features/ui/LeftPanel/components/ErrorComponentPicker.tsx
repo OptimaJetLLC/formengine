@@ -20,7 +20,6 @@ const RawErrorComponentPicker = () => {
     const names = builderStore.view
       .filterModels(model => model.hasComponentRole('error-message'))
       .map(model => model.type)
-    names.push(...builderStore.view.errors)
     return Array.from(new Set(names))
   }, [builderStore.view])
 

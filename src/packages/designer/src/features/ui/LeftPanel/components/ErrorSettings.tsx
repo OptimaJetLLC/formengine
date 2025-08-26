@@ -27,8 +27,7 @@ const RawErrorSettings = () => {
   }, [message, store.viewer.form.componentTree])
 
   const errorModel = useErrorModel()
-  const errorAnnotations = store.view.getErrorAnnotations(errorModel.type) ?? store.view.getMeta(errorModel.type)?.properties
-  const properties = errorAnnotations?.map(property => {
+  const properties = store.view.getMeta(errorModel.type)?.properties?.map(property => {
     return Object.assign(property, {localizable: false, calculable: false} as Annotation)
   }) ?? []
   const context = store.viewer.form.errorProps
