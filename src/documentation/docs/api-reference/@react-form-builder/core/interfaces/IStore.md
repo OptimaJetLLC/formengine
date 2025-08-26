@@ -124,7 +124,7 @@ the Record with the localized properties.
 
 ### localizeErrorMessages()
 
-> **localizeErrorMessages**(`formData`, `componentStore`, `validationResults?`): `undefined` \| `string`
+> **localizeErrorMessages**(`formData`, `componentStore`, `validationResults?`): `undefined` \| `string`[]
 
 The function to localize the validation error message.
 
@@ -150,6 +150,6 @@ the results of the validation.
 
 #### Returns
 
-`undefined` \| `string`
+`undefined` \| `string`[]
 
 the result of localization or undefined.

@@ -1,6 +1,7 @@
 import {view} from '@react-form-builder/components-rsuite'
 import {FormViewer, FormViewerProps} from '@react-form-builder/core'
 import {fireEvent, render, waitFor} from '@testing-library/react'
+import {renderForm} from '../util/renderForm'
 import {asyncAct} from './asyncAct'
 import formDataInValidation from './forms/form-data-in-validation.json'
 import loginForm from './forms/login-form.json'
@@ -81,6 +82,17 @@ describe('Validation', () => {
     await waitFor(() => expect(formData.data.login).toEqual('t1'), {timeout: 5000})
     const returnedErrors = await asyncAct(async () => await formData.validate())
     const expectedErrors = JSON.stringify({login: 'String must contain at least 3 character(s)'})
+    await waitFor(() => expect(JSON.stringify(returnedErrors)).toEqual(expectedErrors))
+    expect(JSON.stringify(formData.errors)).toEqual(expectedErrors)
+  })
+
+  it('validation should show all error messages if showAllValidationErrors is enabled', async () => {
+    const initialData = {login: 't1', password: 't2'}
+    const {formData} = renderForm(loginForm, {initialData, showAllValidationErrors: true})
+
+    await waitFor(() => expect(formData.data.login).toEqual('t1'))
+    const returnedErrors = await asyncAct(async () => await formData.validate())
+    const expectedErrors = JSON.stringify({login: 'String must contain at least 3 character(s) Should include 2'})
     await waitFor(() => expect(JSON.stringify(returnedErrors)).toEqual(expectedErrors))
     expect(JSON.stringify(formData.errors)).toEqual(expectedErrors)
   })

@@ -6,7 +6,7 @@ Binds all parts of the validation and performs the validation.
 
 ### getValidationResult()
 
-> **getValidationResult**(`value`): `Promise`\<`undefined` \| [`ValidationResult`](../type-aliases/ValidationResult.md)[]\>
+> **getValidationResult**(`value`): `Promise`\<`undefined` \| `string`[]\>
 
 Returns the validation results without triggering an events and changing the state of the form.
 
@@ -20,7 +20,7 @@ the validated value.
 
 #### Returns
 
-`Promise`\<`undefined` \| [`ValidationResult`](../type-aliases/ValidationResult.md)[]\>
+`Promise`\<`undefined` \| `string`[]\>
 
 the validation results.
 

@@ -1,0 +1,99 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "login",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Login"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "min",
+              "args": {
+                "limit": 3
+              }
+            },
+            {
+              "key": "includes",
+              "args": {
+                "value": "2",
+                "message": "Should include 2"
+              }
+            }
+          ],
+          "autoValidate": false
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "login"
+          }
+        ]
+      },
+      {
+        "key": "password",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Password"
+          },
+          "type": {
+            "value": "password"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "max",
+              "args": {
+                "limit": 12
+              }
+            },
+            {
+              "key": "customPasswordValidator",
+              "type": "custom"
+            },
+            {
+              "key": "anotherCustomValidator",
+              "type": "custom"
+            }
+          ],
+          "autoValidate": false
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "password"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "password": {
+        "validator-max": {
+          "message": " localized error message"
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

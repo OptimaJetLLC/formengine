@@ -6,7 +6,6 @@ import {needRender} from '../../../utils/needRender'
 import {nameAutorun, nameObservable} from '../../../utils/observableNaming'
 import type {Model} from '../../define'
 import type {SchemaType} from '../types/SchemaType'
-import type {ValidationMessages} from '../types/ValidationResult'
 import {autoConvertField} from './autoConvertField'
 import type {CalculatePropertyFn} from './CalculatePropertyFn'
 import type {DataValidator} from './DataValidator'
@@ -192,8 +191,7 @@ export class SimpleField implements Field {
    */
   async getValidationResult() {
     if (!this.needValidate) return
-    const result = await this.dataValidator?.getValidationResult?.(this.value)
-    return result?.map(({message}) => message) as ValidationMessages
+    return this.dataValidator?.getValidationResult?.(this.value)
   }
 
   /**

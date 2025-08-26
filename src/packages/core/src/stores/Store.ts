@@ -455,7 +455,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
     return validationResults.map(result => {
       const errorMessage = localizeErrorMessage(this.form, formData, this.displayedLanguage, componentStore, result.settings.key)
       return errorMessage ?? getDefaultErrorMessage(result)
-    }).join(' ')
+    })
   }
 
   private calculateProperty(componentData: ComponentData, component: ComponentStore, key: string) {

@@ -20,6 +20,13 @@
               "args": {
                 "limit": 3
               }
+            },
+            {
+              "key": "includes",
+              "args": {
+                "value": "2",
+                "message": "Should include 2"
+              }
             }
           ]
         },
