@@ -186,6 +186,11 @@ const RawLabeledProperty = (props: LabeledPropertyProps) => {
   const {className, ...codeButtonProps} = props
   const componentType = props.componentData.model.type
 
+  const leftButton = useMemo(() => {
+    const needCodeButton = annotation.calculable || annotation.localizable
+    return needCodeButton ? <CodeButton {...codeButtonProps}/> : undefined
+  }, [annotation.calculable, annotation.localizable, codeButtonProps])
+
   const {hint, label} = useTranslatedComponentProperty(annotation, componentType)
 
   const valueModified = !isEqual(value, annotation.default)
@@ -195,7 +200,7 @@ const RawLabeledProperty = (props: LabeledPropertyProps) => {
                          className={adjustedClassName}
                          required={annotation.required}
                          hint={hint} label={label}
-                         leftButton={<CodeButton {...codeButtonProps}/>}>
+                         leftButton={leftButton}>
     {children}
   </LabeledWrapper>
 }
