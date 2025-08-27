@@ -14,8 +14,8 @@ function getForm(componentType: string, disabled: boolean, readOnly: boolean, ad
           "key": "mainInput",
           "type": "${componentType}",
           "props": {
-            "disabled" : ${disabled},
-            "readOnly" : ${readOnly},
+            "disabled" : { "value" : ${disabled} },
+            "readOnly" : { "value" : ${readOnly} },
              "label": {
                 "value": "${componentType}"
               }
