@@ -4,6 +4,14 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 6.2.1
+
+_August_ 27, 2025
+
+### Fixed
+
+- Fixed a bug where a message was displayed that the license allows "-1" languages or an empty list of domains.
+
 ## 6.2.0
 
 _August_ 25, 2025
