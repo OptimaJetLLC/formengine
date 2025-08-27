@@ -196,7 +196,7 @@ describe(`License test`, function () {
       await designerReady(app)
 
       try {
-        expect(app.queryByText(domainMessage)).toBeNull()
+        expect(app.queryByText(domainMessage, {exact: false})).toBeNull()
       } catch (err) {
         console.log('License:', l)
         throw err
@@ -210,7 +210,7 @@ describe(`License test`, function () {
 
       await designerReady(app)
 
-      expect(app.queryByText(localeMessage)).toBeNull()
+      expect(app.queryByText(localeMessage, {exact: false})).toBeNull()
     })
   }
 

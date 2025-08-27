@@ -114,24 +114,20 @@ const RawLicenseManager: ComponentType<PropsWithChildren<{ licenseKey?: string }
   useEffect(() => {
     if (!data || data.version === 'v1') return
 
-    setMissing((prev) => {
-      const next = {...prev}
-      const {restrictions} = data
+    if (currentViewerFeatures.length) {
+      setMissing((prev) => {
+        const next = {...prev}
 
-      for (const [key] of viewerFeaturesList.entries()) {
-        delete next[key]
-      }
-
-      for (const f of currentViewerFeatures) {
-        next[f.name] = {
-          ...f,
-          [f.name]: restrictions[f.name as keyof Restrictions]
+        for (const [key] of viewerFeaturesList.entries()) {
+          delete next[key]
         }
-      }
 
-      return next
-    })
-  }, [setMissing, currentViewerFeatures, viewerFeaturesList, data])
+        return next
+      })
+
+      checkLicense(currentViewerFeatures)
+    }
+  }, [setMissing, currentViewerFeatures, viewerFeaturesList, data, checkLicense])
 
 
   const context = useMemo(() => ({

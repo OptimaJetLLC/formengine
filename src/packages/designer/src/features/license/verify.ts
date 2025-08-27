@@ -50,7 +50,7 @@ export function verifyLicenseParams(data: LicenseData): [LicenseError, Record<st
   const isoDate = `${dateParts[2]}-${dateParts[0]}-${dateParts[1]}`
   const licenseEndDt = new Date(isoDate)
 
-  if (domains && !verifyDomain(domains)) {
+  if (domains?.length && !verifyDomain(domains)) {
     log(LicenseError.DOMAIN, domains)
     return [LicenseError.DOMAIN, {Domain: Array.isArray(domains) ? domains.join(', ') : domains}]
   }
