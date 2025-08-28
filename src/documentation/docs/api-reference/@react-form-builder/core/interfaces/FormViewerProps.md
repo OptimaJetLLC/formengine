@@ -36,18 +36,6 @@ If true, the form is disabled.
 
 ***
 
-### ~~erroneous?~~
-
-> `optional` **erroneous**: `boolean`
-
-If true, the component will not be wrapped by the error display component.
-
-#### Deprecated
-
-**Attention! Don't use it! Unstable API.**
-
-***
-
 ### errors?
 
 > `optional` **errors**: `Record`\<`string`, `unknown`\>
