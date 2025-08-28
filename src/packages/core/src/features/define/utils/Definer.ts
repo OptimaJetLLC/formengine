@@ -324,7 +324,6 @@ export class Definer<T extends object> {
       modules,
       this.data.customPreview,
       valuedAn,
-      this.data.kind,
       this.data.initialJson,
       this.data.eventListeners,
       this.data.icon,

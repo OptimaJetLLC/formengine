@@ -107,7 +107,7 @@ _August_ 1, 2025
 
 ### Changed
 
-- Deprecated the [Meta.kind](/api-reference/@react-form-builder/core/classes/Meta#kind-1) field.
+- Deprecated the `Meta.kind` field.
 - Enhanced **CSS Editor** with new "Styles for className" header in Styles tab.
 
 ### Fixed bugs

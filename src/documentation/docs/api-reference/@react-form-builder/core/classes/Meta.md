@@ -6,7 +6,7 @@ Component metadata for the form builder.
 
 ### Constructor
 
-> **new Meta**(`type`, `properties`, `css`, `wrapperCss`, `modules`, `customPreview?`, `valuedAn?`, `kind?`, `initialJson?`, `eventListeners?`, `icon?`, `insertRestriction?`): `Meta`
+> **new Meta**(`type`, `properties`, `css`, `wrapperCss`, `modules`, `customPreview?`, `valuedAn?`, `initialJson?`, `eventListeners?`, `icon?`, `insertRestriction?`): `Meta`
 
 Creates the component metadata for the form builder.
 
@@ -53,12 +53,6 @@ the custom ReactNode to be drawn on the toolbar.
 [`Annotation`](Annotation.md)
 
 the metadata for the component value.
-
-##### kind?
-
-[`ComponentKind`](../type-aliases/ComponentKind.md) = `'component'`
-
-the component kind.
 
 ##### initialJson?
 
@@ -135,16 +129,6 @@ the JSON source for the component (instance of [ComponentStore](ComponentStore.m
 > `readonly` `optional` **insertRestriction**: [`InsertRestrictionFn`](../type-aliases/InsertRestrictionFn.md)
 
 the function that restricts the insertion of a component into another component.
-
-***
-
-### ~~kind~~
-
-> `readonly` **kind**: [`ComponentKind`](../type-aliases/ComponentKind.md)
-
-#### Deprecated
-
-the component kind. Use the [Model.kind](Model.md#kind).
 
 ***
 
