@@ -1,0 +1,72 @@
+{
+  "version": "1",
+  "tooltipType": "RsTooltip",
+  "modalType": "RsModal",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsInput1",
+        "type": "RsInput",
+        "props": {},
+        "schema": {
+          "validations": [
+            {
+              "key": "required"
+            },
+            {
+              "key": "url"
+            }
+          ]
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "test-input-1"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "rsInput1": {
+        "validator-required": {
+          "message": "EN"
+        },
+        "validator-url": {
+          "message": "EN"
+        }
+      }
+    },
+    "de-DE": {
+      "rsInput1": {
+        "validator-required": {
+          "message": "DE"
+        },
+        "validator-url": {
+          "message": "DE"
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    },
+    {
+      "code": "de",
+      "dialect": "DE",
+      "name": "Deutsch",
+      "description": "German",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

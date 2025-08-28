@@ -1,16 +1,12 @@
-import {buildForm, PersistedForm} from '@react-form-builder/core'
+import {buildForm} from '@react-form-builder/core'
 import {BuilderView, FormBuilder, IFormStorage} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {expectDropDownToHaveTextContent, selectDropDownOption} from '../util/controls'
+import {parseForm} from '../util/parseForm'
 import {renderBuilder} from '../util/renderBuilder'
 
 const builderView = new BuilderView(allComponentsBuilder)
-
-const parseForm = (form?: string) => {
-  if (!form) return
-  return JSON.parse(form) as PersistedForm
-}
 
 describe('Form settings test', () => {
   it('The tooltip dropdown should contain the tooltip components', async () => {

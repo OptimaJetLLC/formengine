@@ -3,7 +3,7 @@ import type {Annotation, SchemaType, ValidationRuleSettings} from '@react-form-b
 import {getValidatorPropertyBlockType, namedObserver, useComponentData, useStore} from '@react-form-builder/core'
 import {RemindFill} from '@rsuite/icons'
 import type {ComponentProps} from 'react'
-import {useCallback} from 'react'
+import {useCallback, useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
 import {RemoveButton} from '../../../components/Buttons'
 import {Columns, Rows} from '../../../components/Containers'
@@ -38,15 +38,22 @@ export interface ValidationRuleEditorProps {
 }
 
 const RawValidationRuleEditor = ({rule, onRemove}: ValidationRuleEditorProps) => {
-  const {store, model} = useComponentData()
+  const {store, model, key} = useComponentData()
   const {t} = useTranslation()
   const schema = store.schema
   const viewerStore = useStore()
+  const {localization} = viewerStore.form
+  const propertyBlockType = useMemo(() => getValidatorPropertyBlockType(rule.key), [rule.key])
 
   const initValidatorArgs = useCallback(() => {
     rule.args ??= {}
     return rule.args
   }, [rule])
+
+  const handleRemove = useCallback(() => {
+    onRemove()
+    localization.removeLocalizationForType(key, propertyBlockType)
+  }, [key, localization, onRemove, propertyBlockType])
 
   const type = model.valueType
   if (!type || !schema) return null
@@ -73,10 +80,10 @@ const RawValidationRuleEditor = ({rule, onRemove}: ValidationRuleEditorProps) =>
           }
           <SRuleName>{t(`validation.rule.${rule.key}`, rule.key)}</SRuleName>
         </div>
-        <RemoveButton onClick={onRemove} hintPlacement={'autoHorizontal'}/>
+        <RemoveButton onClick={handleRemove} hintPlacement={'autoHorizontal'} data-testid={`${propertyBlockType}-remove-button`}/>
       </Columns>
       {annotations &&
-        <PropertyBlock annotations={annotations} propertyBlockType={getValidatorPropertyBlockType(rule.key)} context={rule.args ?? {}}
+        <PropertyBlock annotations={annotations} propertyBlockType={propertyBlockType} context={rule.args ?? {}}
                        initContext={initValidatorArgs}/>
       }
       <PropertyBlock annotations={[validateWhen]} propertyBlockType={getValidatorPropertyBlockType('validateWhen')}
