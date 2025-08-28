@@ -418,34 +418,6 @@ the object with validators for the specified value type.
 
 ***
 
-### ~~loadForm()~~
-
-> **loadForm**(`getForm?`, `formName?`): `void`
-
-#### Parameters
-
-##### getForm?
-
-(`name?`) => `string` \| `Promise`\<`string`\>
-
-the function that loads the form.
-
-##### formName?
-
-`string`
-
-the form name.
-
-#### Returns
-
-`void`
-
-#### Deprecated
-
-Loads a form by form name and sets that form in the form viewer.
-
-***
-
 ### localizeComponent()
 
 > **localizeComponent**(`type`, `formData`, `componentStore`): `Record`\<`string`, `any`\>

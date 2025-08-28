@@ -11,7 +11,7 @@ import {findLanguage} from '../features/localization/findLanguage'
 import {localizeErrorMessage, localizeProperties} from '../features/localization/localizer'
 import {Language} from '../features/localization/types'
 import {createTemplateModel} from '../features/template'
-import {buildInternalErrorModel, buildInternalErrorStore} from '../features/ui/internalErrorModel'
+import {buildInternalErrorModel} from '../features/ui/internalErrorModel'
 import {screenModel} from '../features/ui/screenModel'
 import {getTemplateName, isTemplateType} from '../features/ui/templateUtil'
 import type {SchemaType} from '../features/validation'
@@ -32,7 +32,7 @@ import {TemplateField} from '../features/validation/utils/TemplateField'
 import {isStoreDataInParentForm} from '../features/validation/utils/util'
 import {typedValidatorsResolver} from '../features/validation/utils/validatorsResolver'
 import type {Setter, ViewMode} from '../types'
-import {isNumber, isPromise, isString} from '../utils'
+import {isNumber, isString} from '../utils'
 import {ComponentData} from '../utils/contexts/ComponentDataContext'
 import type {IFormData} from '../utils/IFormData'
 import {nameObservable} from '../utils/observableNaming'
@@ -251,29 +251,6 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
   }
 
   /**
-   * @deprecated
-   * Loads a form by form name and sets that form in the form viewer.
-   * @param getForm the function that loads the form.
-   * @param formName the form name.
-   */
-  loadForm(getForm?: (name?: string) => string | Promise<string>, formName?: string) {
-    if (!getForm) return
-
-    try {
-      const form = getForm(formName)
-      if (isPromise<string>(form)) {
-        form
-          .then(this.applyStringForm.bind(this))
-          .catch(this.#onLoadError.bind(this))
-        return
-      }
-      this.applyStringForm(form)
-    } catch (e) {
-      this.#onLoadError(e)
-    }
-  }
-
-  /**
    * @inheritDoc
    */
   createComponentData(componentStore: ComponentStore, deferFieldCalculation = false): ComponentData {
@@ -333,22 +310,6 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
 
     const childStore = new Store(this.formViewerPropsStore.clone(), this.componentStateFactory, this, templateGetInitialData)
     return new TemplateField(componentStore, childStore)
-  }
-
-  /**
-   * Changes the form to the component with an error description.
-   * @param e the error.
-   */
-  #onLoadError(e: any) {
-    console.error(e)
-    this.formLoadError = e?.message ?? e
-    const componentStore = buildInternalErrorStore(e)
-    this.applyPersistedForm({
-      form: componentStore,
-      localization: {},
-      defaultLanguage: globalDefaultLanguage.fullCode,
-      languages: []
-    })
   }
 
   /**

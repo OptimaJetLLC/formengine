@@ -272,7 +272,7 @@ _June_ 3, 2025
   the [FormViewerProps](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#errors),
   [FormBuilderProps](/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#errors)
   and to the [IFormData](/api-reference/@react-form-builder/core/interfaces/IFormData#errors).
-- The [loadForm](/api-reference/@react-form-builder/core/classes/Store#loadform) method is marked as deprecated.
+- The `Store.loadForm` method is marked as deprecated.
 
 ## 4.1.0
 
