@@ -118,8 +118,6 @@
 - [DataBindingType](type-aliases/DataBindingType.md)
 - [DefineActionHelper](type-aliases/DefineActionHelper.md)
 - [DefinerData](type-aliases/DefinerData.md)
-- [~~DeprecatedPresetComponentKind~~](type-aliases/DeprecatedPresetComponentKind.md)
-- [~~DeprecatedSlotComponentKind~~](type-aliases/DeprecatedSlotComponentKind.md)
 - [Device](type-aliases/Device.md)
 - [DeviceStyle](type-aliases/DeviceStyle.md)
 - [EditorType](type-aliases/EditorType.md)

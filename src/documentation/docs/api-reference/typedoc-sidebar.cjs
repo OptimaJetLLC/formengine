@@ -833,18 +833,6 @@ const typedocSidebar = {
             },
             {
               type: "doc",
-              id: "api-reference/@react-form-builder/core/type-aliases/DeprecatedPresetComponentKind",
-              label: "DeprecatedPresetComponentKind",
-              className: "typedoc-sidebar-item-deprecated"
-            },
-            {
-              type: "doc",
-              id: "api-reference/@react-form-builder/core/type-aliases/DeprecatedSlotComponentKind",
-              label: "DeprecatedSlotComponentKind",
-              className: "typedoc-sidebar-item-deprecated"
-            },
-            {
-              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/Device",
               label: "Device"
             },

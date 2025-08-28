@@ -1,5 +1,5 @@
 # Type Alias: ComponentKind
 
-> **ComponentKind** = `"container"` \| `"component"` \| `"template"` \| `"repeater"` \| [`DeprecatedSlotComponentKind`](DeprecatedSlotComponentKind.md) \| [`DeprecatedPresetComponentKind`](DeprecatedPresetComponentKind.md)
+> **ComponentKind** = `"container"` \| `"component"` \| `"template"` \| `"repeater"`
 
 The component kind type.

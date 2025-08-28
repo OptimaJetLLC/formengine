@@ -118,7 +118,6 @@ export class Definer<T extends object> {
     if (!name) throw Error('Anonymous components are not allowed!')
     const PresetComponent = () => null
     const definer = new Definer(PresetComponent)
-      .kind('preset')
       .addFeature(cfComponentIsPreset, true)
       .type(name)
       .name(name)
