@@ -207,6 +207,9 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
                 <PropertyEditorWrapper annotation={dataKey} context={data.store}/>
               }
             </>}
+            {data.model.dataBindingType === 'twoWay' && activeTab === Section.Main && <>
+              <PropertyEditorWrapper annotation={dataKey} context={data.store}/>
+            </>}
             <PropertyBlock annotations={properties} context={data.store.props}/>
           </>
           }
