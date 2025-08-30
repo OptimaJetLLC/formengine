@@ -1,0 +1,53 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "templateInitialDataParentNotStore1",
+        "type": "Template:initial-data-parent-not-store",
+        "props": {
+          "storeDataInParentForm": {
+            "value": false
+          }
+        }
+      },
+      {
+        "key": "templateInitialDataParentNotStore2",
+        "type": "Template:initial-data-parent-not-store",
+        "props": {
+          "storeDataInParentForm": {
+            "value": true
+          }
+        }
+      },
+      {
+        "key": "templateInitialDataParentStore1",
+        "type": "Template:initial-data-parent-store",
+        "props": {}
+      },
+      {
+        "key": "templateInitialDataParentStore2",
+        "type": "Template:initial-data-parent-store",
+        "props": {
+          "storeDataInParentForm": {
+            "value": false
+          }
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

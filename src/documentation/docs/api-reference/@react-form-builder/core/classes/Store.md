@@ -12,7 +12,7 @@ The form viewer settings. **Internal use only.**
 
 ### Constructor
 
-> **new Store**(`formViewerPropsStore`, `componentStateFactory`, `parentStore?`, `getInitialData?`): `Store`
+> **new Store**(`formViewerPropsStore`, `componentStateFactory`, `parentStore?`, `getInitialData?`, `setInitialData?`): `Store`
 
 Creates form viewer settings.
 
@@ -41,6 +41,12 @@ the form viewer settings, used in templates.
 [`GetInitialDataFn`](../type-aliases/GetInitialDataFn.md)
 
 the function to get initial data for the Store.
+
+##### setInitialData?
+
+[`SetInitialDataFn`](../type-aliases/SetInitialDataFn.md)
+
+the function for updating initial data.
 
 #### Returns
 
@@ -105,6 +111,14 @@ the form viewer settings, used in templates.
 > `optional` **selectedLanguage**: [`Language`](Language.md)
 
 The currently selected language.
+
+***
+
+### setInitialData?
+
+> `readonly` `optional` **setInitialData**: [`SetInitialDataFn`](../type-aliases/SetInitialDataFn.md)
+
+the function for updating initial data.
 
 ***
 
@@ -376,7 +390,7 @@ the first type of component with the specified role.
 
 ### getModel()
 
-> **getModel**(`type`): [`Model`](Model.md)\<`any`\> \| [`Model`](Model.md)\<[`TemplateProps`](../interfaces/TemplateProps.md)\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\>
+> **getModel**(`type`): [`Model`](Model.md)\<`any`\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\> \| [`Model`](Model.md)\<[`TemplateProps`](../interfaces/TemplateProps.md)\>
 
 Returns model for the specified type.
 
@@ -390,7 +404,7 @@ the component type.
 
 #### Returns
 
-[`Model`](Model.md)\<`any`\> \| [`Model`](Model.md)\<[`TemplateProps`](../interfaces/TemplateProps.md)\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\>
+[`Model`](Model.md)\<`any`\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\> \| [`Model`](Model.md)\<[`TemplateProps`](../interfaces/TemplateProps.md)\>
 
 the model for the specified type.
 

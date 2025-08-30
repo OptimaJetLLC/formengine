@@ -1,0 +1,101 @@
+{
+  "version": "1",
+  "actions": {
+    "updateData": {
+      "body": "  e.data.childCounter = (e.data.childCounter ?? 0) + 1\n  e.data.childKey = `some data: ${e.data.testInput ?? 'no data'}`\n  e.parentData.parentCounter = (e.parentData.parentCounter ?? 0) + 1\n  e.rootData.rootCounter = (e.rootData.rootCounter ?? 0) + 1",
+      "params": {}
+    }
+  },
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rootRepeater",
+        "type": "Repeater",
+        "props": {
+          "value": {
+            "value": [
+              {}
+            ]
+          }
+        },
+        "children": [
+          {
+            "key": "parentRepeater",
+            "type": "Repeater",
+            "props": {
+              "value": {
+                "value": [
+                  {}
+                ]
+              }
+            },
+            "children": [
+              {
+                "key": "childRepeater",
+                "type": "Repeater",
+                "props": {
+                  "value": {
+                    "value": [
+                      {},
+                      {}
+                    ]
+                  }
+                },
+                "children": [
+                  {
+                    "key": "testInput",
+                    "type": "RsInput",
+                    "props": {},
+                    "htmlAttributes": [
+                      {
+                        "name": "data-testid",
+                        "value": "test-input"
+                      }
+                    ]
+                  },
+                  {
+                    "key": "rsButton1",
+                    "type": "RsButton",
+                    "props": {
+                      "children": {
+                        "value": "Update initial data"
+                      }
+                    },
+                    "events": {
+                      "onClick": [
+                        {
+                          "name": "updateData",
+                          "type": "code"
+                        }
+                      ]
+                    },
+                    "htmlAttributes": [
+                      {
+                        "name": "data-testid",
+                        "value": "test-button"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

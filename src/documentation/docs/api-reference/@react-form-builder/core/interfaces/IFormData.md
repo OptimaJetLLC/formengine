@@ -6,13 +6,27 @@ The interface for accessing the form data.
 
 ### clear()
 
-> **clear**: () => `void`
+> **clear**: (`clearInitialData?`) => `void`
 
 Clears the form data.
+
+#### Parameters
+
+##### clearInitialData?
+
+`boolean`
+
+if true, then also clear the initial data.
 
 #### Returns
 
 `void`
+
+#### Default
+
+```ts
+true
+```
 
 ***
 
@@ -42,13 +56,27 @@ the index in the array if the component is in the component array.
 
 ### reset()
 
-> **reset**: () => `void`
+> **reset**: (`clearInitialData?`) => `void`
 
 Sets the form to its default value.
+
+#### Parameters
+
+##### clearInitialData?
+
+`boolean`
+
+if true, then also clear the initial data.
 
 #### Returns
 
 `void`
+
+#### Default
+
+```ts
+true
+```
 
 ***
 

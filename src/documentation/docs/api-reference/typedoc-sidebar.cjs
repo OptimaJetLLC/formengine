@@ -1043,6 +1043,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/SetInitialDataFn",
+              label: "SetInitialDataFn"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/Setter",
               label: "Setter"
             },

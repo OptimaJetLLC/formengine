@@ -1,0 +1,76 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsButton1",
+        "type": "RsButton",
+        "props": {
+          "children": {
+            "value": "Reset"
+          },
+          "appearance": {
+            "value": "primary"
+          }
+        },
+        "events": {
+          "onClick": [
+            {
+              "name": "reset",
+              "type": "common",
+              "args": {
+                "clearInitialData": false
+              }
+            }
+          ]
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "resetButton"
+          }
+        ]
+      },
+      {
+        "key": "input1",
+        "type": "RsInput",
+        "props": {
+          "value": {
+            "value": "123"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "input1"
+          }
+        ]
+      },
+      {
+        "key": "input2",
+        "type": "RsInput",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "input2"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

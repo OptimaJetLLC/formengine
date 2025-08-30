@@ -1,0 +1,44 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "templateTHeader1",
+        "type": "Template:T:Header",
+        "props": {}
+      },
+      {
+        "key": "templateTEmployeeFields1",
+        "type": "Template:T:EmployeeFields",
+        "props": {
+          "readOnly": {
+            "value": true
+          }
+        }
+      },
+      {
+        "key": "templateTManagerFields1",
+        "type": "Template:T:ManagerFields",
+        "props": {
+          "readOnly": {
+            "value": true
+          }
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

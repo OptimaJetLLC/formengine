@@ -1,0 +1,71 @@
+{
+  "version": "1",
+  "actions": {
+    "appendInitialData": {
+      "body": "  e.data.lastNameInput = `last name for: ${e.data.firstNameInput}`\n  e.data.counter ??= 0\n  e.data.counter++",
+      "params": {}
+    }
+  },
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "firstNameInput",
+        "type": "RsInput",
+        "props": {
+          "label": {
+            "value": "Name"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "firstNameInput"
+          }
+        ]
+      },
+      {
+        "key": "appendDataButton",
+        "type": "RsButton",
+        "props": {
+          "appearance": {
+            "value": "primary"
+          },
+          "color": {
+            "value": "orange"
+          },
+          "children": {
+            "value": "Append initial data"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "appendDataButton"
+          }
+        ],
+        "events": {
+          "onClick": [
+            {
+              "name": "appendInitialData",
+              "type": "code"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

@@ -1,0 +1,86 @@
+{
+  "version": "1",
+  "actions": {
+    "modifyInitialData": {
+      "body": "  e.data.subHeader = 'new value'\n  e.data.andNewVal = [{\n    test: true\n  }]",
+      "params": {}
+    }
+  },
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsHeader1",
+        "type": "RsHeader",
+        "props": {
+          "content": {
+            "computeType": "function",
+            "fnSource": "  return `${form.data.header ?? 'Header'} | ${form.data.subHeader ?? 'SubHeader'}`"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "header1"
+          }
+        ]
+      },
+      {
+        "key": "rsHeader2",
+        "dataKey": "subHeader",
+        "type": "RsHeader",
+        "props": {
+          "content": {
+            "computeType": "function",
+            "fnSource": "  return `${form.data.header ?? 'Header'} | ${form.data.subHeader ?? 'SubHeader'}`"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "header2"
+          }
+        ]
+      },
+      {
+        "key": "rsButton1",
+        "type": "RsButton",
+        "props": {
+          "appearance": {
+            "value": "primary"
+          },
+          "children": {
+            "value": "Modify initial data"
+          }
+        },
+        "events": {
+          "onClick": [
+            {
+              "name": "modifyInitialData",
+              "type": "code"
+            }
+          ]
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "button1"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

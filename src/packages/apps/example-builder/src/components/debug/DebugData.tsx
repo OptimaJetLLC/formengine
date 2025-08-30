@@ -1,0 +1,75 @@
+import {define, useComponentData} from '@react-form-builder/core'
+import './styles.css'
+
+function highlightJson(json: string) {
+  const escapeHTML = (str: string) => str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+
+  const processString = (str: string) =>
+    `<span class="string">"${escapeHTML(str)}"</span>`
+
+  const processValue = (value: any, indent = 0) => {
+    const indentStr = '  '.repeat(indent)
+
+    if (typeof value === 'string') {
+      return processString(value)
+    }
+
+    if (typeof value === 'number') {
+      return `<span class="number">${value}</span>`
+    }
+
+    if (typeof value === 'boolean') {
+      return `<span class="boolean">${value}</span>`
+    }
+
+    if (value === null) {
+      return `<span class="null">null</span>`
+    }
+
+    if (Array.isArray(value)) {
+      if (value.length === 0) return '[]'
+
+      let result = '[\n'
+      value.forEach((item, i) => {
+        result += `${indentStr}  ${processValue(item, indent + 1)}`
+        result += i < value.length - 1 ? '<span class="comma">,</span>\n' : '\n'
+      })
+      return result + `${indentStr}]`
+    }
+
+    if (typeof value === 'object') {
+      const keys = Object.keys(value)
+      if (keys.length === 0) return '{}'
+
+      let result = '{\n'
+      keys.forEach((key, i) => {
+        result += `${indentStr}  <span class="key">"${escapeHTML(key)}"</span><span class="colon">:</span> `
+        result += processValue(value[key], indent + 1)
+        result += i < keys.length - 1 ? '<span class="comma">,</span>\n' : '\n'
+      })
+      return result + `${indentStr}}`
+    }
+
+    return value
+  }
+
+  try {
+    const parsed = JSON.parse(json)
+    return processValue(parsed)
+  } catch (e) {
+    return `<span style="color: red;">JSON parsing error: ${(e as Error).message}</span>`
+  }
+}
+
+const DebugData = () => {
+  const componentData = useComponentData()
+  const html = highlightJson(JSON.stringify(componentData.dataRoot.data))
+  return <div className="json-container" dangerouslySetInnerHTML={{__html: html}}/>
+}
+
+export const debugData = define(DebugData, 'DebugData')
+  .name('Debug data')
+  .category('Debug')

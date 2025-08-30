@@ -18,6 +18,7 @@ import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useCallback, useEffect, useState} from 'react'
 import {frFR, trTR} from 'rsuite/esm/locales/index.js'
 import {CustomErrorWrapper} from './components/CustomErrorWrapper'
+import {debugData} from './components/debug/DebugData'
 import {throwErrorComponent} from './components/ThrowErrorComponent'
 import {simpleCustomization} from './customization'
 import {Designer} from './Designer'
@@ -85,7 +86,7 @@ const presets = initialPresets.map(preset => {
 })
 
 const components = [...rSuiteComponents, ...antdComponents, ...presets,
-  throwErrorComponent, fastQrComponent, richTextComponent, googleMapComponent, signatureComponent]
+  throwErrorComponent, fastQrComponent, richTextComponent, googleMapComponent, signatureComponent, debugData]
   .map(definer => definer.build())
 
 const view = new BuilderView(components)

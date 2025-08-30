@@ -127,6 +127,14 @@ The parent node in the component data tree.
 
 ***
 
+### setInitialData?
+
+> `optional` **setInitialData**: [`SetInitialDataFn`](../type-aliases/SetInitialDataFn.md)
+
+The function for updating initial data.
+
+***
+
 ### store
 
 > `readonly` **store**: [`ComponentStore`](ComponentStore.md)
@@ -469,7 +477,13 @@ A user-defined key-value observable storage. Utilize it to store and share any c
 
 ### clear()
 
-> **clear**(): `void`
+> **clear**(`clearInitialData`): `void`
+
+#### Parameters
+
+##### clearInitialData
+
+`boolean` = `true`
 
 #### Returns
 
@@ -527,6 +541,18 @@ the key to find.
 `undefined` \| `ComponentData`
 
 the node or undefined if not found.
+
+***
+
+### generatedData()
+
+> **generatedData**(): `Record`\<`string`, `unknown`\>
+
+#### Returns
+
+`Record`\<`string`, `unknown`\>
+
+the generated form data.
 
 ***
 
@@ -588,7 +614,13 @@ the node to insert.
 
 ### reset()
 
-> **reset**(): `void`
+> **reset**(`clearInitialData`): `void`
+
+#### Parameters
+
+##### clearInitialData
+
+`boolean` = `true`
 
 #### Returns
 
@@ -671,6 +703,32 @@ the map of new keys to old keys.
 > **unifyTree**(): `void`
 
 Assigns unique keys to the items in the tree.
+
+#### Returns
+
+`void`
+
+***
+
+### updateInitialData()
+
+> **updateInitialData**(`key`, `value`): `void`
+
+Updates the initial data.
+
+#### Parameters
+
+##### key
+
+the initial data key.
+
+`string` | `number`
+
+##### value
+
+`unknown`
+
+the initial data value.
 
 #### Returns
 

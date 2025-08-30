@@ -1,0 +1,95 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsHeader1",
+        "type": "RsHeader",
+        "props": {
+          "content": {
+            "value": "Weekly Employee Report",
+            "computeType": "function",
+            "fnSource": "return `Weekly Employee Report : ${form.data.name ?? 'unnamed'} : ${form.data.stateName ?? 'state?'}`"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "rsHeader1"
+          }
+        ]
+      },
+      {
+        "key": "rsContainer1",
+        "type": "RsContainer",
+        "props": {
+          "readOnly": {
+            "value": true
+          }
+        },
+        "css": {
+          "any": {
+            "object": {
+              "flexDirection": "row"
+            }
+          }
+        },
+        "children": [
+          {
+            "key": "submittedBy",
+            "type": "RsInput",
+            "props": {
+              "readOnly": {
+                "value": false
+              },
+              "label": {
+                "value": "Submitted by"
+              }
+            }
+          },
+          {
+            "key": "submittedOn",
+            "type": "RsDatePicker",
+            "props": {
+              "readOnly": {
+                "value": false
+              },
+              "label": {
+                "value": "Submitted on"
+              },
+              "editable": {
+                "value": true
+              }
+            }
+          },
+          {
+            "key": "reviewedBy",
+            "type": "RsInput",
+            "props": {
+              "readOnly": {
+                "value": false
+              },
+              "label": {
+                "value": "Reviewed by"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

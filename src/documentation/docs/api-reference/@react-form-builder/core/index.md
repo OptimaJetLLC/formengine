@@ -160,6 +160,7 @@
 - [SchemaResolver](type-aliases/SchemaResolver.md)
 - [SchemaType](type-aliases/SchemaType.md)
 - [SchemaTypeMap](type-aliases/SchemaTypeMap.md)
+- [SetInitialDataFn](type-aliases/SetInitialDataFn.md)
 - [Setter](type-aliases/Setter.md)
 - [SyncEventHandler](type-aliases/SyncEventHandler.md)
 - [TypedLocalization](type-aliases/TypedLocalization.md)

@@ -1,0 +1,44 @@
+.json-container {
+  word-wrap: break-word;
+  padding: 20px;
+  border-radius: 5px;
+  overflow-x: auto;
+  font-size: 10px;
+}
+
+.brace {
+  color: #9cdcfe;
+}
+
+.bracket {
+  color: #9cdcfe;
+}
+
+.colon {
+  color: #d4d4d4;
+}
+
+.comma {
+  color: #d4d4d4;
+}
+
+.string {
+  color: #ce9178;
+}
+
+.number {
+  color: #b5cea8;
+}
+
+.boolean {
+  color: #569cd6;
+}
+
+.null {
+  color: #569cd6;
+}
+
+.key {
+  color: #00bcd4;
+  font-weight: bold;
+}
