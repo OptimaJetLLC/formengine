@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/components-rich-text",
-  "version": "6.2.1",
+  "version": "7.0.0",
   "private": false,
   "main": "src/index.ts",
   "type": "module",
@@ -18,7 +18,7 @@
     "create-archive": "node ./config/pack"
   },
   "dependencies": {
-    "@react-form-builder/core": "^6.2.1",
+    "@react-form-builder/core": "^7.0.0",
     "lodash-es": "^4.17.21",
     "react-quill-new": "^3.3.0"
   },
