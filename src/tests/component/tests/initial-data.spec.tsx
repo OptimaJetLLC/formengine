@@ -1,5 +1,5 @@
 import {viewWithCss} from '@react-form-builder/components-rsuite'
-import {FormViewer} from '@react-form-builder/core'
+import {buildForm, FormViewer} from '@react-form-builder/core'
 import {fireEvent, render} from '@testing-library/react'
 import {renderForm} from '../util/renderForm'
 import formManagerEmployeeFieldsForm from './forms/initial-data/form-manager-t-employee-fields-form.json'
@@ -350,5 +350,36 @@ describe('Initial data test', () => {
 
     const header = await findByTestId('rsHeader1')
     expect(header).toHaveTextContent('Weekly Employee Report : Jimmy : Finished')
+  })
+
+  it('Null values should be saved from the initial data', async () => {
+    const jsonForm = buildForm()
+      .component('id', 'RsInput')
+      .component('submittedBy', 'RsInput')
+      .component('reviewedBy', 'RsInput')
+      .json()
+    const form = JSON.parse(jsonForm)
+    const initialData = {
+      id: 'cfae1452-e523-42e0-8c07-084ffe4ff1ef',
+      submittedBy: 'Paula',
+      submittedOn: '2025-09-02T14:02:29.557',
+      name: 'Week 36, 2025',
+      reviewedBy: null,
+      testedBy: null,
+      version: 0,
+      stateName: 'Created'
+    }
+
+    const {formData} = renderForm(form, {initialData})
+    expect(formData.data).toStrictEqual({
+      id: 'cfae1452-e523-42e0-8c07-084ffe4ff1ef',
+      submittedBy: 'Paula',
+      submittedOn: '2025-09-02T14:02:29.557',
+      name: 'Week 36, 2025',
+      reviewedBy: undefined,
+      testedBy: null,
+      version: 0,
+      stateName: 'Created'
+    })
   })
 })
