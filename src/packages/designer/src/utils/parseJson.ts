@@ -1,4 +1,4 @@
-import {isUndefined} from 'lodash-es'
+import {isNumber, isUndefined} from 'lodash-es'
 import {humanizeFileSize} from './formatters'
 
 const isValidDate = (value: any) => value instanceof Date && !Number.isNaN(value.getTime())
@@ -69,7 +69,15 @@ export const prepareForJson = (data: any, options?: {
       return
     }
 
-    if (!(typeIs('string') || typeIs('number') || typeIs('boolean'))) {
+    if (isNumber(value)) {
+      // displays NaN, Infinity, -Infinity
+      if (!Number.isFinite(value)) {
+        filtered[key] = value.toString()
+      }
+      return
+    }
+
+    if (!(typeIs('string') || typeIs('boolean'))) {
       return
     }
 
