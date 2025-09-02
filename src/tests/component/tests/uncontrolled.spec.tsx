@@ -147,7 +147,7 @@ const expectedSettings: Record<string, TestComponentSettings> = {
     valueProp: 'checked',
   },
   RsDatePicker: {
-    controlledValue: '2020-01-01',
+    controlledValue: new Date('2020-01-01'),
   },
   RsTimePicker: {
     controlledValue: '23:12:56',
@@ -245,6 +245,6 @@ describe.each(componentsMetadata)(`Uncontrolled state test`, function (model) {
     rerender(<TestApplication form={persistedForm} viewerRef={viewerRef} initialData={{testData: ''}}/>)
 
     const rerenderedData = viewerRef.current?.formData.data
-    expect(rerenderedData?.testedComponent).equals(settings.controlledValue)
+    expect(rerenderedData?.testedComponent).toEqual(settings.controlledValue)
   })
 })

@@ -1,0 +1,59 @@
+{
+  "version": "1",
+  "tooltipType": "RsTooltip",
+  "modalType": "RsModal",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsDatePicker1",
+        "type": "RsDatePicker",
+        "props": {},
+        "schema": {
+          "validations": [
+            {
+              "key": "required"
+            }
+          ]
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "rsDatePicker1"
+          }
+        ]
+      },
+      {
+        "key": "rsDatePicker2",
+        "type": "RsDatePicker",
+        "props": {},
+        "schema": {
+          "validations": [
+            {
+              "key": "required"
+            }
+          ]
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "rsDatePicker2"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

@@ -1,5 +1,5 @@
-import {boolean, date, define, disabled, event, number, oneOf, string} from '@react-form-builder/core'
-import {useMemo} from 'react'
+import {boolean, date, define, disabled, event, number, oneOf, string, useComponentData} from '@react-form-builder/core'
+import {useEffect, useMemo} from 'react'
 import type {DatePickerProps} from 'rsuite'
 import {DatePicker} from 'rsuite'
 import {placement, readOnly, size} from '../commonProperties'
@@ -29,9 +29,19 @@ const parseDateValue = (value: any) => {
 }
 
 const RsDatePicker = ({label, value, className, format, defaultValue, ...props}: RsDatePickerProps) => {
+  const componentData = useComponentData()
   const safeFormat = useMemo(() => toSafeFormat(format), [format])
   const onClean = useTouchOnEvent(props, 'onClean')
   const parsedValue = useMemo(() => parseDateValue(value), [value])
+
+  useEffect(() => {
+    if (typeof (value as unknown) === 'string') {
+      const parsed = parseDateValue(value)
+      if (parsed instanceof Date) {
+        componentData.field?.setValue(parsed)
+      }
+    }
+  }, [value, componentData])
 
   return (
     <Labeled label={label} className={className} passAriaToChildren={true}>
