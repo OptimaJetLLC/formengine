@@ -16,11 +16,17 @@ npm-bundle:
 npm-update-release-date:
   FROM +sources
   RUN cd ./packages/apps/demo && npm run update-release-date
+  RUN cd ./packages/apps/formbuilder && npm run update-release-date
 
 # npm-demo-build builds demo
 npm-demo-build:
   FROM +npm-update-release-date
   RUN npm run demo:build
+
+# npm-formbuilder-build builds formbuilder
+npm-formbuilder-build:
+  FROM +npm-update-release-date
+  RUN cd ./packages/apps/formbuilder && npm run build
 
 # npm-documentation-build builds documentation
 npm-documentation-build:
@@ -89,10 +95,9 @@ prepare-demo-archive:
 
 # prepare-formbuilder-archive archive the formbuilder
 prepare-formbuilder-archive:
-  # temporarily, formbuilder and demo are the same thing
-  FROM +npm-demo-build
-  RUN cd packages/apps/demo/dist/ && tar -zcvf formbuilder.tgz *
-  SAVE ARTIFACT packages/apps/demo/dist/formbuilder.tgz AS LOCAL .archives/formbuilder.tgz
+  FROM +npm-formbuilder-build
+  RUN cd packages/apps/formbuilder/dist/ && tar -zcvf formbuilder.tgz *
+  SAVE ARTIFACT packages/apps/formbuilder/dist/formbuilder.tgz AS LOCAL .archives/formbuilder.tgz
 
 # prepare-documentation-archive archive the documentation
 prepare-documentation-archive:
@@ -454,8 +459,9 @@ dependencies:
    src/documentation/website src/packages/apps src/packages/views \
    src/packages/apps/demo src/packages/apps/example-builder src/packages/apps/example-viewer \
    src/packages/apps/landing \
+   src/packages/apps/formbuilder \
    src/packages/core src/packages/designer src/packages/designer-bundle src/packages/indexed-db-form-storage \
-   src/packages/viewer-bundle src/packages/views/antd src/packages/views/default \ 
+   src/packages/viewer-bundle src/packages/views/antd src/packages/views/default \
    src/packages/viewer-bundle-premium \
    src/packages/views/rsuite \
    src/packages/views/signature \
@@ -470,7 +476,7 @@ dependencies:
   COPY src/packages/apps/demo/package.json src/packages/apps/demo
   COPY src/packages/apps/example-builder/package.json src/packages/apps/example-builder
   COPY src/packages/apps/example-viewer/package.json src/packages/apps/example-viewer
-  COPY src/packages/apps/example-viewer/package.json src/packages/apps/example-viewer
+  COPY src/packages/apps/formbuilder/package.json src/packages/apps/formbuilder
   COPY src/packages/apps/landing/package.json src/packages/apps/landing
 
   COPY src/packages/core/package.json src/packages/core
