@@ -22,6 +22,7 @@ const packageList = [
   'src/packages/views/default',
   'src/packages/views/rsuite',
   'src/packages/views/signature',
+  'examples/community/formdata',
   'examples/premium/formengine',
   'examples/premium/with-formik',
   'examples/premium/with-nextjs/with-nextjs-v15',

@@ -82,7 +82,7 @@ The field with the form data.
 
 > `optional` **getInitialData**: () => `unknown`
 
-The function for getting initial data.
+The function for getting initial data. **Internal use only.**
 
 #### Returns
 
@@ -131,7 +131,7 @@ The parent node in the component data tree.
 
 > `optional` **setInitialData**: [`SetInitialDataFn`](../type-aliases/SetInitialDataFn.md)
 
-The function for updating initial data.
+The function for updating initial data. **Internal use only.**
 
 ***
 
@@ -714,7 +714,7 @@ Assigns unique keys to the items in the tree.
 
 > **updateInitialData**(`key`, `value`): `void`
 
-Updates the initial data.
+Updates the initial data. **Internal use only.**
 
 #### Parameters
 
