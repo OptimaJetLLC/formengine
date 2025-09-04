@@ -32,7 +32,7 @@
     "date-fns": "^2.30.0",
     "react": ">=17.0.2 || ^18 || ^19",
     "react-number-format": "^5.1.4",
-    "rsuite": "5.83.1"
+    "rsuite": "5.83.3"
   },
   "files": [
     "dist/*",
