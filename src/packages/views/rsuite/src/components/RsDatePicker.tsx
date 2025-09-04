@@ -92,7 +92,7 @@ export const rsDatePicker = define(RsDatePicker, 'RsDatePicker')
     placeholder: string.hinted('Placeholder'),
     placement: placement.hinted('The placement of component'),
     preventOverflow: boolean.hinted('Prevent floating element overflow').default(false),
-    showMeridian: boolean.hinted('Display hours in 12 format').default(false),
+    showMeridiem: boolean.hinted('Display hours in 12 format').default(false),
     showWeekNumbers: boolean.hinted('Whether to show week numbers').default(false),
     size: size.hinted('A picker size'),
     value: date.valued.hinted('Value (Controlled)')

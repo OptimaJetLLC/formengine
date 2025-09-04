@@ -614,7 +614,7 @@
       "hint": "如果为true，则该组件将为只读",
       "name": "只读"
     },
-    "showMeridian": {
+    "showMeridiem": {
       "hint": "以12格式显示小时数",
       "name": "显示子午线"
     },

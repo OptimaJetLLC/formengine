@@ -614,7 +614,7 @@
       "hint": "Trueの場合、コンポーネントは読み取り専用になります",
       "name": "読み取り専用"
     },
-    "showMeridian": {
+    "showMeridiem": {
       "hint": "時間を12形式で表示する",
       "name": "子午線を表示"
     },

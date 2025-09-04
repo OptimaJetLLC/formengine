@@ -614,7 +614,7 @@
       "hint": "Wenn true, ist die Komponente schreibgeschützt",
       "name": "Schreibgesch"
     },
-    "showMeridian": {
+    "showMeridiem": {
       "hint": "Stunden im 12-Format anzeigen",
       "name": "Meridian anzeigen"
     },

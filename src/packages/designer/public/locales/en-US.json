@@ -280,7 +280,7 @@
       "name": "Limit start year",
       "hint": "Set the lower limit of the available year relative to the current selection date"
     },
-    "showMeridian": {
+    "showMeridiem": {
       "name": "Show meridian",
       "hint": "Display hours in 12 format"
     },

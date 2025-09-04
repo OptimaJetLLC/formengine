@@ -614,7 +614,7 @@
       "hint": "Se true, il componente sarà di sola lettura",
       "name": "Sola lettura"
     },
-    "showMeridian": {
+    "showMeridiem": {
       "hint": "Visualizzare le ore in formato 12",
       "name": "Mostra meridiano"
     },
