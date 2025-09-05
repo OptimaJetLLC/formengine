@@ -4,6 +4,27 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 7.1.0
+
+_September_ 5, 2025
+
+### New
+
+- Added [article](/form-data) on how to work with form data.
+
+### Changed
+
+- **RsDatePicker** prop `showMeridian` renamed to `showMeridiem` due to deprecation in **RSuite**.
+
+### Fixed bugs
+
+- Fixed broken validation for dates passed as strings in `initialData`.
+- Crash in RsNumberFormat in edge cases.
+
+### Updated internal dependencies
+
+- _rsuite_ from 5.83.1 to 5.83.3.
+
 ## 7.0.0
 
 _September_ 1, 2025
