@@ -71,9 +71,7 @@ export const prepareForJson = (data: any, options?: {
 
     if (isNumber(value)) {
       // displays NaN, Infinity, -Infinity
-      if (!Number.isFinite(value)) {
-        filtered[key] = value.toString()
-      }
+      filtered[key] = value.toString()
       return
     }
 

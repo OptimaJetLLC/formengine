@@ -39,6 +39,17 @@
             "value": "nfNan"
           }
         ]
+      },
+      {
+        "key": "nfNormalNumber",
+        "type": "RsNumberFormat",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "nfNormalNumber"
+          }
+        ]
       }
     ]
   },

@@ -1,5 +1,7 @@
 import {fireEvent} from '@testing-library/dom'
+import {renderBuilder} from '../util/renderBuilder'
 import {renderForm} from '../util/renderForm'
+import {switchToViewerMode} from './designerUtils'
 import form from './forms/number-format-infinity-form.json'
 
 describe('RsNumberFormat infinity value test', () => {
@@ -8,6 +10,7 @@ describe('RsNumberFormat infinity value test', () => {
       nfPositiveInfinity: Number.POSITIVE_INFINITY,
       nfNegativeInfinity: Number.NEGATIVE_INFINITY,
       nfNan: Number.NaN,
+      nfNormalNumber: undefined,
     }
 
     const {formData, findByTestId} = renderForm(form, {initialData})
@@ -25,6 +28,7 @@ describe('RsNumberFormat infinity value test', () => {
       nfNan: Number.NaN,
       nfNegativeInfinity: Number.NEGATIVE_INFINITY,
       nfPositiveInfinity: Number.POSITIVE_INFINITY,
+      nfNormalNumber: undefined,
     })
 
     fireEvent.change(nfNan, {target: {value: 12}})
@@ -35,6 +39,23 @@ describe('RsNumberFormat infinity value test', () => {
       nfNan: 12,
       nfNegativeInfinity: 34,
       nfPositiveInfinity: 56,
+      nfNormalNumber: undefined,
     })
+  })
+
+  it('The numbers should be displayed in the preview mode', async () => {
+    const initialData = {
+      nfPositiveInfinity: Number.POSITIVE_INFINITY,
+      nfNegativeInfinity: Number.NEGATIVE_INFINITY,
+      nfNan: Number.NaN,
+      nfNormalNumber: 1.3,
+    }
+
+    const {findByTestId, findByText} = await renderBuilder(form, {initialData})
+    await switchToViewerMode(findByText)
+
+    const dataPre = await findByTestId('form-viewer-state-json-data')
+    const expectedData = '{ "nfPositiveInfinity": "Infinity", "nfNegativeInfinity": "-Infinity", "nfNan": "NaN", "nfNormalNumber": "1.3" }'
+    expect(dataPre).toHaveTextContent(expectedData)
   })
 })

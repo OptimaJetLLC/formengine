@@ -37,8 +37,10 @@ const buttonStyle = {
   gap: 10
 }
 
-const prettyPrint = (obj: Object) => {
-  return <pre>{JSON.stringify(prepareForJson(obj, {previewNativeObjects: true}), null, 2)}</pre>
+const prettyPrint = (obj: any, dataTestId: string) => {
+  const json = prepareForJson(obj, {previewNativeObjects: true})
+  const jsonText = JSON.stringify(json, null, 2)
+  return <pre data-testid={dataTestId}>{jsonText}</pre>
 }
 
 const RawFormViewerState = () => {
@@ -61,11 +63,11 @@ const RawFormViewerState = () => {
         <Button onClick={reset} size={'sm'} appearance={'ghost'} data-testid={'viewer-reset-button'}>{t('reset')}</Button>
         <Button onClick={clear} size={'sm'} appearance={'ghost'} data-testid={'viewer-clear-button'}>{t('clear')}</Button>
       </SToolbar>
-      {prettyPrint(form.data)}
+      {prettyPrint(form.data, 'form-viewer-state-json-data')}
     </SDiv>
     <SDiv>
       <h6>{t('errors')}</h6>
-      {prettyPrint(form.errors)}
+      {prettyPrint(form.errors, 'form-viewer-state-json-errors')}
     </SDiv>
   </>
 }
