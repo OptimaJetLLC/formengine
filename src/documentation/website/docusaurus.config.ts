@@ -130,6 +130,21 @@ const config: Config = {
             },
           ],
         },
+        {
+          title: 'LLMs.txt',
+          items: [
+            {
+              label: 'llms.txt',
+              to: 'https://formengine.io/documentation/llms.txt',
+              target: '_blank',
+            },
+            {
+              label: 'llms-full.txt',
+              to: 'https://formengine.io/documentation/llms-full.txt',
+              target: '_blank',
+            },
+          ],
+        },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Optimajet Limited. All rights reserved.`,
     },
@@ -278,11 +293,14 @@ const config: Config = {
           return {allMdx}
         },
         postBuild: async ({content, routes, outDir}) => {
+          const prefix = 'This is the documentation for the FormEngine packages.\n' +
+            'It contains detailed manuals, components, and utilities for creating user interfaces.\n\n'
+
           const {allMdx} = content as { allMdx: string[] }
 
           // Write concatenated MDX content
           const concatenatedPath = path.join(outDir, 'llms-full.txt')
-          await fs.promises.writeFile(concatenatedPath, allMdx.join('\n---\n\n'))
+          await fs.promises.writeFile(concatenatedPath, prefix + allMdx.join('\n---\n\n'))
 
           // we need to dig down several layers:
           // find PluginRouteConfig marked by plugin.name === "docusaurus-plugin-content-docs"
@@ -315,7 +333,7 @@ const config: Config = {
 
           // Write llms.txt file
           const llmsTxtPath = path.join(outDir, 'llms.txt')
-          await fs.promises.writeFile(llmsTxtPath, llmsTxt)
+          await fs.promises.writeFile(llmsTxtPath, prefix + llmsTxt)
         },
       }
     },
