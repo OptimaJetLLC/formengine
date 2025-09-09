@@ -15,12 +15,9 @@ if (!isBrowserMode()) {
   addMatchMediaFunctionToWindow()
 }
 
-if (!isBrowserMode()) {
-  // TODO check https://github.com/thomasbrodusch/vitest-fail-on-console/issues/115
-  failOnConsole({
-    shouldFailOnWarn: true,
-  })
-}
+failOnConsole({
+  shouldFailOnWarn: true,
+})
 
 // fixes click on svg elements, fireEvent also affected
 // @ts-ignore
