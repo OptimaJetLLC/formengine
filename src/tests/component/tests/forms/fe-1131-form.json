@@ -1,0 +1,34 @@
+{
+  "version": "1",
+  "tooltipType": "RsTooltip",
+  "modalType": "RsModal",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsCard1",
+        "type": "RsCard",
+        "props": {}
+      }
+    ],
+    "htmlAttributes": [
+      {
+        "name": "data-testid",
+        "value": "rsCard"
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

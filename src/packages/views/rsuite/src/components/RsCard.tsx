@@ -10,10 +10,10 @@ interface RsCardProps extends PanelProps {
 }
 
 const RsCard = ({header, title, headerSize, ...props}: RsCardProps) => {
-  const panelHeader = <>
+  const panelHeader = <div>
     {!!title && <RsHeader headerSize={headerSize} content={title}/>}
     {header}
-  </>
+  </div>
   return <Panel header={panelHeader} {...props}/>
 }
 
