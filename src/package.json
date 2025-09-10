@@ -31,7 +31,7 @@
     "check:wrong-imports": "node ./scripts/find-wrong-imports",
     "eslint": "npx eslint .",
     "eslint-fix": "npx eslint . --fix",
-    "todo": "npx leasot '(packages|tests|sample-apps|tools|types|examples|documentation)/**/*.(ts|tsx|js)' -S --ignore '**/node_modules'"
+    "todo": "npx leasot '(packages|tests|sample-apps|tools|types|examples|documentation)/**/*.(ts|tsx|js)' -S --ignore '**/node_modules,**/dist'"
   },
   "workspaces": [
     "packages/*",
@@ -58,7 +58,9 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsdoc": "^46.8.2",
     "eslint-plugin-no-secrets": "^1.0.2",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-perf": "^3.3.3",
     "eslint-plugin-unused-imports": "^2.0.0",
     "fs-extra": "^11.1.1",
     "jsdom": "^26.0.0",
