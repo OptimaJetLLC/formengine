@@ -2,7 +2,7 @@ import {color, define, number, oneOf, string} from '@react-form-builder/core'
 import init, {qr_svg, SvgOptions} from 'fast_qr'
 import module from 'fast_qr/fast_qr_bg.wasm?url'
 import type {RefObject} from 'react'
-import {useEffect, useRef} from 'react'
+import {useEffect, useMemo, useRef} from 'react'
 import {QrIcon} from './icon'
 
 /**
@@ -110,7 +110,9 @@ const rgbaColorToHex = (color?: string) => {
   }
 }
 
-const renderQr = async (props: FastQrProps, ref: RefObject<HTMLDivElement | null>) => {
+type RenderQrProps = Omit<FastQrProps, 'width' | 'className'>
+
+const renderQr = async (props: RenderQrProps, ref: RefObject<HTMLDivElement | null>) => {
   await init(module)
 
   if (!ref.current) return
@@ -145,14 +147,53 @@ const renderQr = async (props: FastQrProps, ref: RefObject<HTMLDivElement | null
   ref.current.innerHTML = qr_svg(props.content, svgOptions)
 }
 
-const FastQr = (props: FastQrProps) => {
+const FastQr = ({
+                  backgroundColor,
+                  className,
+                  content,
+                  errorCorrectionLevel,
+                  image,
+                  imageBackgroundColor,
+                  imageBackgroundShape,
+                  imageGap,
+                  imagePositionX,
+                  imagePositionY,
+                  imageSize,
+                  margin,
+                  moduleColor,
+                  shape,
+                  version,
+                  width
+                }: FastQrProps) => {
+
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    renderQr(props, ref).catch(console.error)
-  }, [props])
+    // construct a plain object to avoid capturing props
+    const qrProps: RenderQrProps = {
+      backgroundColor,
+      content,
+      errorCorrectionLevel,
+      image,
+      imageBackgroundColor,
+      imageBackgroundShape,
+      imageGap,
+      imagePositionX,
+      imagePositionY,
+      imageSize,
+      margin,
+      moduleColor,
+      shape,
+      version
+    }
 
-  return <div className={props.className} style={{width: props.width}} ref={ref}></div>
+    renderQr(qrProps, ref).catch(console.error)
+  }, [backgroundColor, content, errorCorrectionLevel, image, imageBackgroundColor, imageBackgroundShape, imageGap,
+    imagePositionX, imagePositionY, imageSize, margin, moduleColor, shape, version])
+
+  const divStyle = useMemo(() => ({width} as const), [width])
+
+  return <div className={className} style={divStyle} ref={ref}></div>
 }
 
 const nonNegNumber = number.withEditorProps({min: 0})

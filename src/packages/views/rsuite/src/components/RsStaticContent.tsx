@@ -1,4 +1,5 @@
 import {boolean, define, string} from '@react-form-builder/core'
+import {useMemo} from 'react'
 
 interface RsStaticContentProps {
   content: string
@@ -7,7 +8,12 @@ interface RsStaticContentProps {
 
 const RsStaticContent = (props: RsStaticContentProps) => {
   const {content, allowHtml, ...otherProps} = props
-  if (allowHtml) return <span dangerouslySetInnerHTML={{__html: content}} {...otherProps}/>
+  const html = useMemo(() => ({__html: content}), [content])
+
+  if (allowHtml) {
+    return <span {...otherProps} dangerouslySetInnerHTML={html}/>
+  }
+
   return <span {...otherProps}>{content}</span>
 }
 

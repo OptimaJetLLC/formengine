@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import {InfoWindow} from '@vis.gl/react-google-maps'
+import {useMemo} from 'react'
 import type {MapMarker} from './MapMarker'
 
 type MarkerType = google.maps.marker.AdvancedMarkerElement
@@ -79,8 +80,9 @@ export const MarkerInfo = (props: MarkerInfoProps) => {
   const {marker, markerData, onClose, onDelete, title, removeMarkerCaption, allowChangingMarkers} = props
   const {lat, lng} = positionToFixed(marker.position)
   const {address, city, postalCode, state, country} = markerData?.address ?? {}
+  const headerContent = useMemo(() => title ? <b>{title}</b> : null, [title])
   return <InfoWindow anchor={marker} onCloseClick={onClose} style={infoWindowStyle}
-                     headerContent={<b>{title}</b>}>
+                     headerContent={headerContent}>
     <>
       <InfoWindowContent>
         {typeof markerData?.address !== 'undefined' && <>

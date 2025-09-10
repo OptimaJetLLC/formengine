@@ -1,5 +1,5 @@
 import type {CollisionBehavior} from '@vis.gl/react-google-maps'
-import {useCallback, useState} from 'react'
+import {useCallback, useMemo, useState} from 'react'
 import {AdvancedMarkerWithRef} from './AdvancedMarkerWithRef'
 import type {MapMarker} from './MapMarker'
 
@@ -42,22 +42,29 @@ export const Markers = (props: MarkersProps) => {
   const zIndexSelected = markers.length
   const zIndexHover = markers.length + 1
 
-  const children = markers.map(({id, zIndex: zIndexDefault, position, title}, index) => {
+  const clickHandlers = useMemo(() => markers.map(({id}) => {
+    return (marker?: google.maps.marker.AdvancedMarkerElement) => onMarkerClick(id, marker)
+  }), [markers, onMarkerClick])
+
+  const mouseEnterHandlers = useMemo(() => markers.map(({id}) => () => setHoverId(id)), [markers])
+  const mouseLeaveHandlers = useMemo(() => markers.map(() => () => setHoverId(null)), [markers])
+
+  const children = useMemo(() => markers.map(({id, zIndex: zIndexDefault, position, title}, index) => {
     let zIndex = zIndexDefault
     if (hoverId === id) zIndex = zIndexHover
     if (selectedId === id) zIndex = zIndexSelected
 
     return <AdvancedMarkerWithRef
       key={index}
-      onMarkerClick={marker => onMarkerClick(id, marker)}
-      onMouseEnter={() => setHoverId(id)}
-      onMouseLeave={() => setHoverId(null)}
+      onMarkerClick={clickHandlers[index]}
+      onMouseEnter={mouseEnterHandlers[index]}
+      onMouseLeave={mouseLeaveHandlers[index]}
       zIndex={zIndex}
       position={position}
       collisionBehavior={collisionBehavior}
       title={title}
     />
-  })
+  }), [clickHandlers, collisionBehavior, hoverId, markers, mouseEnterHandlers, mouseLeaveHandlers, selectedId, zIndexHover, zIndexSelected])
 
   return <>{children}</>
 }

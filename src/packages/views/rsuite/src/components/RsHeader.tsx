@@ -17,7 +17,7 @@ interface RsHeaderProps extends TextProps {
  * @returns the React element.
  */
 export const RsHeader = ({content, headerSize, ...props}: RsHeaderProps) => {
-  return createElement(headerSize, {children: content, ...props})
+  return createElement(headerSize, props, content)
 }
 
 const {textAlign, color} = textStyles

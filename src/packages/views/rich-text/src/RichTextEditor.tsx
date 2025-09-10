@@ -97,6 +97,8 @@ const RichTextEditor = ({
     ...(customModules ?? {})
   }), [customModules, toolbarOptions])
 
+  const mergedStyle = useMemo(() => ({...editorStyle, ...style}), [style])
+
   // div wrapper is needed because the Labeled wrapper applies attributes to the child, but the ReactQuill component does not accept this props.
   return <Labeled label={label} style={style} className={className}>
     <div>
@@ -104,10 +106,7 @@ const RichTextEditor = ({
                   defaultValue={plainInitialValue}
                   modules={modules}
                   placeholder={placeholder}
-                  style={{
-                    ...editorStyle,
-                    ...style
-                  }}
+                  style={mergedStyle}
                   {...props}
       />
     </div>
