@@ -9,7 +9,7 @@ import type {ComponentLocalizer, IFormViewer, Validators} from '@react-form-buil
 import {ActionDefinition, BiDi} from '@react-form-builder/core'
 import type {IFormStorage} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
-import {useCallback, useRef} from 'react'
+import {useCallback, useMemo, useRef} from 'react'
 
 // Here you can pass the metadata of your components
 const componentsMetadata = rSuiteComponents.map(definer => definer.build())
@@ -175,6 +175,7 @@ async function getFormFn(name?: string) {
  */
 export const Designer = () => {
   const ref = useRef<IFormViewer>(null)
+  const initialEmptyData = useMemo(() => ({} as Record<string, unknown>), [])
 
   const setRef = useCallback((viewer: IFormViewer | null) => {
     if (viewer) {
@@ -193,32 +194,36 @@ export const Designer = () => {
       : {}
   }, [])
 
+  const handleFormDataChange = useCallback(({data, errors}: { data: unknown, errors: unknown }) => {
+    // eslint-disable-next-line no-console
+    console.log('onFormDataChange', {data, errors})
+  }, [])
+
+  const actions = useMemo(() => ({
+    // eslint-disable-next-line no-console
+    logEventArgs: (e: unknown) => console.log(e),
+    assertArgs: ActionDefinition.functionalAction((e, args) => {
+      // eslint-disable-next-line no-console
+      console.log(e, args)
+    }, {
+      p1: 'string',
+      p2: 'boolean',
+      p3: 'number'
+    })
+  }), [])
+
   return (
     <FormBuilder
       view={builderView}
       getForm={getFormFn}
       formName={formName}
-      initialData={({})}
+      initialData={initialEmptyData}
       formStorage={formStorage}
       localize={localizeFn}
-      onFormDataChange={({data, errors}) => {
-        // eslint-disable-next-line no-console
-        console.log('onFormDataChange', {data, errors})
-      }}
+      onFormDataChange={handleFormDataChange}
       viewerRef={setRef}
       validators={customValidators}
-      actions={{
-        // eslint-disable-next-line no-console
-        logEventArgs: e => console.log(e),
-        assertArgs: ActionDefinition.functionalAction((e, args) => {
-          // eslint-disable-next-line no-console
-          console.log(e, args)
-        }, {
-          p1: 'string',
-          p2: 'boolean',
-          p3: 'number'
-        })
-      }}
+      actions={actions}
     />
   )
 }

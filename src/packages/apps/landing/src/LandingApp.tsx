@@ -31,18 +31,21 @@ const simpleForm = buildForm({errorType: 'RsErrorMessage'})
   .customAction('onSubmit')
   .json()
 
+const getForm = () => simpleForm
+
+const onSubmit = (e: any) => {
+  // submit the form to the backend
+  alert('Form data: ' + JSON.stringify(e.data))
+}
+
 /**
  * @returns the App element.
  */
 export const LandingApp = () => {
+  const actions = {onSubmit} as const
   return <FormViewer
     view={viewWithCss}
-    getForm={() => simpleForm}
-    actions={{
-      onSubmit: (e) => {
-        // submit the form to the backend
-        alert('Form data: ' + JSON.stringify(e.data))
-      },
-    }}
+    getForm={getForm}
+    actions={actions}
   />
 }

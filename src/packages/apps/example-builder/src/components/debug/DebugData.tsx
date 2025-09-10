@@ -1,4 +1,5 @@
 import {define, useComponentData} from '@react-form-builder/core'
+import {useMemo} from 'react'
 import './styles.css'
 
 function highlightJson(json: string) {
@@ -66,8 +67,13 @@ function highlightJson(json: string) {
 
 const DebugData = () => {
   const componentData = useComponentData()
-  const html = highlightJson(JSON.stringify(componentData.dataRoot.data))
-  return <div className="json-container" dangerouslySetInnerHTML={{__html: html}}/>
+
+  const innerHtml = useMemo(() => {
+    const html = highlightJson(JSON.stringify(componentData.dataRoot.data))
+    return {__html: html}
+  }, [componentData.dataRoot.data])
+
+  return <div className="json-container" dangerouslySetInnerHTML={innerHtml}/>
 }
 
 export const debugData = define(DebugData, 'DebugData')

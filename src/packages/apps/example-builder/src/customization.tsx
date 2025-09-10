@@ -18,6 +18,8 @@ const CustomToggleModeButton = () => {
   return <Button onClick={toggleMode}>{label}</Button>
 }
 
+const toolbarStyle = {display: 'flex', gap: 10} as const
+
 export const simpleCustomization: CustomizationMap = {
   MainMenu_Dropdown: {
     style: `
@@ -38,10 +40,14 @@ export const simpleCustomization: CustomizationMap = {
     }
   },
   Header_Toolbar: {
-    customRenderer: defaultElement => <div style={{display: 'flex', gap: 10}}>
-      {defaultElement}
-      <button className={'rs-btn rs-btn-sm'}>My button</button>
-    </div>
+    customRenderer: defaultElement => {
+      const button = <button className={'rs-btn rs-btn-sm'}>My button</button>
+
+      return <div style={toolbarStyle}>
+        {defaultElement}
+        {button}
+      </div>
+    }
   },
   ToggleModeButton: {
     customRenderer: () => <CustomToggleModeButton/>

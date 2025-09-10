@@ -16,7 +16,7 @@ const ThrowErrorComponent = () => {
   }, [])
 
   if (error) throw new Error('Unexpected error')
-  return <div onClick={clickError}>I'm fine!</div>
+  return <div onClick={clickError}>{`I'm fine!`}</div>
 }
 
 export const throwErrorComponent = define(ThrowErrorComponent, 'ThrowErrorComponent')

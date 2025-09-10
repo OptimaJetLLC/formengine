@@ -206,6 +206,47 @@ const builderLanguages: FormBuilderI18n = {
   }
 }
 
+const actions = {
+  logEventArgs: (e: any) => {
+    // eslint-disable-next-line no-console
+    if (logEvents) console.info(e.type, e.sender.key, e.sender.id, `${new Date().getTime()}`.substr(-4))
+  },
+  assertArgs: ActionDefinition.functionalAction((e, args) => {
+    if (!e) throw new Error(`'e' is undefined`)
+    if (!args) throw new Error(`'args' is args`)
+    if (args.p1 !== 'testValue') console.error(`args.p1 !== 'testValue'`, args.p1)
+    if (!args.p2) console.error(`args.p2 !== true`, args.p2)
+    if (args.p3 !== 6.62607015) console.error(`args.p3 !== 6.62607015`, args.p3)
+  }, {
+    p1: 'string',
+    p2: 'boolean',
+    p3: 'number'
+  }),
+  funcArgs: ActionDefinition.functionalAction(async (e, args: Arguments) => {
+    const {fnArg, fnArg1, fnArg2, fnArg3} = args
+    // @ts-ignore for test
+    const r = await fnArg('foo', 123)
+    // @ts-ignore for test
+    const r1 = await fnArg1('bar', 234)
+    // @ts-ignore for test
+    const r2 = await fnArg2('baz', 345)
+    // @ts-ignore for test
+    const r3 = await fnArg3('boo', 567)
+    // eslint-disable-next-line no-console
+    if (logEvents) console.log('funcArgs', {r, r1, r2, r3})
+  }, {
+    fnArg: 'function',
+    fnArg1: 'function',
+    fnArg2: 'function',
+    fnArg3: 'function'
+  })
+}
+
+const onFormSchemaChange = (formSchema: unknown) => {
+  // eslint-disable-next-line no-console
+  if (logEvents) console.log('onFormSchemaChange', formSchema)
+}
+
 // tests don't wait for promises now
 const getFormFn = (formName?: string) => {
   const name = formName ?? sampleFormName
@@ -262,9 +303,11 @@ const FormBuilderApp = () => {
     formData.state.isValid = !silentValidationResult
   }, [])
 
-  if (!indexedDbInitialized) return null
-
   const useCustomization = false
+
+  if (!indexedDbInitialized) {
+    return null
+  }
 
   return <FormBuilder
     customization={useCustomization ? simpleCustomization : undefined}
@@ -277,53 +320,14 @@ const FormBuilderApp = () => {
     formStorage={formStorage}
     localize={localizeFn}
     onFormDataChange={customOnFormDataChange}
-    onFormSchemaChange={(formSchema) => {
-      // eslint-disable-next-line no-console
-      if (logEvents) console.log('onFormSchemaChange', formSchema)
-    }}
+    onFormSchemaChange={onFormSchemaChange}
     viewerRef={viewerRef}
     builderRef={builderRef}
     validators={customValidators}
     formValidators={formValidators}
     i18n={enableCustomLanguages ? builderLanguages : undefined}
     errorWrapper={useCustomErrorWrapper ? CustomErrorWrapper : undefined}
-    actions={{
-      logEventArgs: e => {
-        // eslint-disable-next-line no-console
-        console.info(e.type, e.sender.key, e.sender.id, `${new Date().getTime()}`.substr(-4))
-      },
-      assertArgs: ActionDefinition.functionalAction((e, args) => {
-        if (!e) throw new Error(`'e' is undefined`)
-        if (!args) throw new Error(`'args' is args`)
-        if (args.p1 !== 'testValue') console.error(`args.p1 !== 'testValue'`, args.p1)
-        if (!args.p2) console.error(`args.p2 !== true`, args.p2)
-        if (args.p3 !== 6.62607015) console.error(`args.p3 !== 6.62607015`, args.p3)
-      }, {
-        p1: 'string',
-        p2: 'boolean',
-        p3: 'number'
-      }),
-      funcArgs: ActionDefinition.functionalAction(async (e, args: Arguments) => {
-        const {fnArg, fnArg1, fnArg2, fnArg3} = args
-
-        // @ts-ignore for test
-        const r = await fnArg('foo', 123)
-        // @ts-ignore for test
-        const r1 = await fnArg1('bar', 234)
-        // @ts-ignore for test
-        const r2 = await fnArg2('baz', 345)
-        // @ts-ignore for test
-        const r3 = await fnArg3('boo', 567)
-
-        // eslint-disable-next-line no-console
-        console.log('funcArgs', {r, r1, r2, r3})
-      }, {
-        fnArg: 'function',
-        fnArg1: 'function',
-        fnArg2: 'function',
-        fnArg3: 'function'
-      })
-    }}
+    actions={actions}
   />
 }
 
