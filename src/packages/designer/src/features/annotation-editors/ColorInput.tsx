@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import {Close} from '@rsuite/icons'
+import {useCallback, useMemo} from 'react'
 import type {RgbaColor} from 'react-colorful'
 import {RgbaColorPicker} from 'react-colorful'
 import {Input, InputGroup, Popover, Whisper} from 'rsuite'
@@ -45,6 +46,8 @@ export function rgbFromString(value: string): RgbaColor {
   return {r: Number(r), g: Number(g), b: Number(b), a: Number(a)}
 }
 
+const fullWidthStyle = {width: '100%'} as const
+
 /**
  * The property editor for the color property type.
  * @param props the Annotation editor component properties.
@@ -52,14 +55,17 @@ export function rgbFromString(value: string): RgbaColor {
  */
 export const ColorInput = (props: AnnotationEditorProps) => {
   const {value, onChange, onClean} = props
+  const color = useMemo(() => rgbFromString(value ?? 'rgba(255, 255, 255, 0)'), [value])
+  const handleChange = useCallback((rgba: RgbaColor) => onChange(rgbToString(rgba)), [onChange])
 
-  const color = rgbFromString(value ?? 'rgba(255, 255, 255, 0)')
-  const speaker = <Popover>
-    <RgbaColorPicker color={color} onChange={(rgba) => onChange(rgbToString(rgba))}/>
-  </Popover>
+  const speaker = useMemo(() => (
+    <Popover>
+      <RgbaColorPicker color={color} onChange={handleChange}/>
+    </Popover>
+  ), [color, handleChange])
 
   return <LabeledProperty {...props}>
-    <InputGroup inside style={{width: '100%'}} size={'xs'}>
+    <InputGroup inside style={fullWidthStyle} size={'xs'}>
       <Whisper placement="auto" trigger="hover" speaker={speaker} enterable>
         <SInput color={value} readOnly/>
       </Whisper>

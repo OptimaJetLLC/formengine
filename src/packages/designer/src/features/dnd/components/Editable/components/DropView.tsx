@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import {forwardRef, useComponentData} from '@react-form-builder/core'
 import {Plus as PlusIcon} from '@rsuite/icons'
 import type {PropsWithoutRef, RefCallback} from 'react'
+import {useCallback, useMemo} from 'react'
 import {IconButton} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 
@@ -40,15 +41,17 @@ interface DropViewProps extends PropsWithoutRef<any> {
 const AddButton = ({slot, slotCondition}: { slot?: string, slotCondition?: string }) => {
   const builderStore = useBuilderStore()
   const target = useComponentData()
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     builderStore.showComponentsModal(source => {
       builderStore.add(source, target, 'inner', slot, slotCondition)
     }, componentData => {
       return builderStore.canAddComponent(componentData, target, 'inner', slot)
     })
-  }
+  }, [builderStore, target, slot, slotCondition])
 
-  return <IconButton onClick={handleClick} icon={<PlusIcon/>} color="green" data-testid="add-button" appearance={'primary'} circle
+  const plusIcon = useMemo(() => <PlusIcon/>, [])
+
+  return <IconButton onClick={handleClick} icon={plusIcon} color="green" data-testid="add-button" appearance={'primary'} circle
                      size={'xs'}/>
 }
 

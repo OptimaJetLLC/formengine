@@ -57,7 +57,7 @@ const RawToggleTheme = (props: ToggleThemeProps) => {
     onClick: () => store.theme = isDark ? 'light' : 'dark',
     className: store.theme
   }), [icon, isDark, store])
-  const speaker = <Tooltip>{t('toggleTheme')}</Tooltip>
+  const speaker = useMemo(() => <Tooltip>{t('toggleTheme')}</Tooltip>, [t])
 
   return (
     <Whisper {...props} speaker={speaker} placement="bottom">

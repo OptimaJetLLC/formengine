@@ -8,15 +8,43 @@ import type {AnnotationEditorProps} from '../AnnotationEditorProps'
 import {AddRuleButton} from './components/AddRuleButton'
 import {ValidationRuleEditor} from './components/ValidationRuleEditor'
 
-const renderRules = (validations?: ValidationRuleSettings[]) => (
-  validations?.map((rule, index) => {
-    const key = `${rule.key}-${rule.type ?? 'internal'}`
-    const handleRemove = () => validations?.splice(index, 1)
-    return <ListItem key={key}>
-      <ValidationRuleEditor rule={rule} onRemove={handleRemove}/>
-    </ListItem>
-  })
-)
+interface RuleItemProps {
+  rule: ValidationRuleSettings
+  index: number
+  onRemove: (index: number) => void
+}
+
+const RawRuleItem = ({rule, index, onRemove}: RuleItemProps) => {
+  const handleRemove = useCallback(() => {
+    onRemove(index)
+  }, [index, onRemove])
+
+  return <ListItem>
+    <ValidationRuleEditor rule={rule} onRemove={handleRemove}/>
+  </ListItem>
+}
+
+const RuleItem = namedObserver('RuleItem', RawRuleItem)
+
+interface RulesListProps {
+  validations?: ValidationRuleSettings[]
+  onRemove: (index: number) => void
+}
+
+const RawRulesList = ({validations, onRemove}: RulesListProps) => {
+  if (!validations) return null
+
+  return <List>
+    {validations.map((rule, index) => {
+      return <RuleItem key={`${rule.key}-${rule.type ?? 'internal'}`}
+                       rule={rule}
+                       index={index}
+                       onRemove={onRemove}/>
+    })}
+  </List>
+}
+
+const RulesList = namedObserver('RulesList', RawRulesList)
 
 const SWrapper = styled.div`
   label {
@@ -39,6 +67,8 @@ const RawComponentValidationSettingsEditor = (props: AnnotationEditorProps) => {
   const {store, model} = props.componentData
   const type = model.valueType
   const schema = store.schema ?? {}
+  const {validations} = schema
+  const handleRemove = useCallback((index: number) => validations?.splice(index, 1), [validations])
 
   const initValidationContext = useCallback(() => {
     store.schema ??= {}
@@ -55,7 +85,7 @@ const RawComponentValidationSettingsEditor = (props: AnnotationEditorProps) => {
                                initContext={initValidationContext}/>
       </SWrapper>
       <AddRuleButton/>
-      <List>{renderRules(store.schema?.validations)}</List>
+      <RulesList validations={validations} onRemove={handleRemove}/>
     </Rows>
   )
 }

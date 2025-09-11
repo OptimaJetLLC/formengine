@@ -4,6 +4,12 @@ import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps} from '../../../annotation-editors/AnnotationEditorProps'
 import {TooltipTypePicker} from '../../../annotation-editors/TooltipTypePicker'
 
+const disableCompute = () => undefined
+const setComputeCode = () => undefined
+const getComputeCode = () => ''
+const getComputeType = () => undefined
+const hasComputeCode = () => false
+
 /**
  * React form builder component that displays the configuration properties of the validation error display component.
  * @returns the React element.
@@ -13,11 +19,6 @@ const RawTooltipSettings = () => {
 
   const onChange = useCallback((value: string) => builderStore.viewer.form.tooltipType = value, [builderStore])
   const onClean = useCallback(() => builderStore.viewer.form.tooltipType = undefined, [builderStore])
-  const disableCompute = useCallback(() => undefined, [])
-  const setComputeCode = useCallback(() => undefined, [])
-  const getComputeCode = useCallback(() => '', [])
-  const getComputeType = useCallback(() => undefined, [])
-  const hasComputeCode = useCallback(() => false, [])
 
   const annotationEditorProps: AnnotationEditorProps = {
     onChange,

@@ -4,6 +4,12 @@ import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps} from '../../../annotation-editors/AnnotationEditorProps'
 import {Picker} from '../../../annotation-editors/Picker'
 
+const disableCompute = () => undefined
+const setComputeCode = () => undefined
+const getComputeCode = () => ''
+const getComputeType = () => undefined
+const hasComputeCode = () => false
+
 const RawFormLanguageSettings = () => {
   const builderStore = useBuilderStore()
   const viewerStore = useStore()
@@ -29,12 +35,6 @@ const RawFormLanguageSettings = () => {
 
   const onClean = useCallback(() => viewerStore.form.defaultLanguage = builderStore.defaultLanguage,
     [viewerStore, builderStore])
-
-  const disableCompute = useCallback(() => undefined, [])
-  const setComputeCode = useCallback(() => undefined, [])
-  const getComputeCode = useCallback(() => '', [])
-  const getComputeType = useCallback(() => undefined, [])
-  const hasComputeCode = useCallback(() => false, [])
 
   const annotationEditorProps: AnnotationEditorProps = {
     onChange,

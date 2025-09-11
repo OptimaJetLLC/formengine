@@ -13,13 +13,13 @@ import type {AnnotationEditorProps, CalculableEditorProps} from './AnnotationEdi
 const RawRenderWhenEditor = (props: AnnotationEditorProps) => {
   const componentStore = props.componentData.store
 
-  const onChange = (value: string) => {
+  const onChange = useCallback((value: string) => {
     if (!componentStore.renderWhen) {
       componentStore.renderWhen = {value}
       return
     }
     componentStore.renderWhen.value = value
-  }
+  }, [componentStore])
 
   const getComputeCode = useCallback(() => componentStore.renderWhen?.fnSource ?? '', [componentStore])
   const getComputeType = useCallback(() => componentStore.renderWhen?.computeType, [componentStore])

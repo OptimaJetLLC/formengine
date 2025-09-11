@@ -25,6 +25,8 @@ const SIconButton = styled(IconButton)`
   margin-inline-end: -6px;
 `
 
+const columnsStyle = {alignItems: 'center'} as const
+
 /**
  * The properties of the React {@link LabeledProperty} component.
  */
@@ -134,9 +136,11 @@ const RawCodeButton = (props: CodeButtonProps) => {
       getComputeCode, getComputeType, hasComputeCode, annotation, componentData.key)
   }, [annotation, componentData.key, disableCompute, getComputeCode, getComputeType, hasComputeCode, setComputeCode, store])
 
+  const icon = useMemo(() => <FaIcon icon={buttonStyle.icon} color={buttonStyle.color}/>, [buttonStyle.icon, buttonStyle.color])
+
   return <Hinted hint={buttonStyle.hint}>
     <SIconButton onClick={handleClick} disabled={disabled}
-                 icon={<FaIcon icon={buttonStyle.icon} color={buttonStyle.color}/>}
+                 icon={icon}
                  size={'xs'} appearance={'subtle'}/>
   </Hinted>
 }
@@ -145,7 +149,11 @@ const CodeButton = customizableObserver('PropertyCodeButton', RawCodeButton)
 
 const CustomizedLabel = customizable('PropertyLabel', HintedLabel)
 
-const RawCustomizedInput = (props: HTMLAttributes<HTMLDivElement>) => <div style={{width: '100%'}} {...props}/>
+const customizedInputStyle = {width: '100%'} as const
+
+const RawCustomizedInput = (props: HTMLAttributes<HTMLDivElement>) => {
+  return <div style={customizedInputStyle} {...props}/>
+}
 
 const CustomizedInput = customizable('PropertyInput', RawCustomizedInput)
 
@@ -171,7 +179,7 @@ export const LabeledWrapper = (props: LabeledWrapperProps) => {
   const labelClassName = useMemo(() => cx({required}), [required])
 
   return <LabeledInput style={style} className={className}>
-    <Columns gap={10} style={{alignItems: 'center'}}>
+    <Columns gap={10} style={columnsStyle}>
       {leftButton ?? <LeftButtonPlaceholder/>}
       <CustomizedLabel htmlFor={id} hint={hint} className={labelClassName}>
         <>{label}</>

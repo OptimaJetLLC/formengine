@@ -7,8 +7,10 @@ import {Panel} from '../Panel'
 import {FormViewerState} from './components/FormViewerState'
 import {LeftPanelNav} from './components/LeftPanelNav'
 
+const rowsStyle = {marginTop: 55, paddingInlineStart: 5, minHeight: 80} as const
+
 const ViewerContent = () => (
-  <Rows style={{marginTop: 55, paddingInlineStart: 5, minHeight: 80}}>
+  <Rows style={rowsStyle}>
     <FormViewerState/>
   </Rows>
 )

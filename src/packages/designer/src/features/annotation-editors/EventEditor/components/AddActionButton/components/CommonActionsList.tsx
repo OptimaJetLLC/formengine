@@ -1,4 +1,5 @@
 import {useStore} from '@react-form-builder/core'
+import {useCallback, useMemo} from 'react'
 import {Dropdown} from 'rsuite'
 import {useTranslationPart} from '../../../../../localization/hooks'
 import type {ActionsMenuProps} from '../types'
@@ -13,9 +14,13 @@ export const CommonActionsList = ({onSelect}: ActionsMenuProps) => {
   const store = useStore()
   const t = useTranslationPart('actions')
 
-  const items = Object.keys(store.commonActions).map(name =>
-    <Dropdown.Item key={name} children={name} onClick={() => onSelect({name, type: 'common'})}/>
-  )
+  const handleSelect = useCallback((name: string) => () => onSelect({name, type: 'common'}), [onSelect])
+
+  const items = useMemo(() => Object.keys(store.commonActions).map(name => (
+    <Dropdown.Item key={name} onClick={handleSelect(name)}>
+      {name}
+    </Dropdown.Item>
+  )), [handleSelect, store.commonActions])
 
   return (
     <Dropdown.Menu title={t('common')} eventKey="common">

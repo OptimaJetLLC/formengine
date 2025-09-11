@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import type {PropertyAnnotation} from '@react-form-builder/core'
 import {startCase} from 'lodash-es'
+import {useMemo} from 'react'
 import {TagPicker} from 'rsuite'
 import type {ItemDataType} from 'rsuite/esm/internals/types'
 import LabeledProperty from '../components/LabeledProperty'
@@ -34,10 +35,11 @@ const prepareData = ({data}: PropertyAnnotation, values: string[]) => {
  */
 export const MultiPicker = (props: AnnotationEditorProps) => {
   const {value, onChange, annotation, onClean} = props
-  const data = prepareData(annotation as PropertyAnnotation, value)
+  const data = useMemo(() => prepareData(annotation as PropertyAnnotation, value), [annotation, value])
+  const defaultValue = useMemo(() => value ?? [], [value])
 
   return <LabeledProperty {...props}>
-    <STagPicker value={value ?? []} data={data} onChange={onChange} onClean={onClean}
+    <STagPicker value={defaultValue} data={data} onChange={onChange} onClean={onClean}
                 cleanable creatable size={'xs'} placement={'auto'}/>
   </LabeledProperty>
 }

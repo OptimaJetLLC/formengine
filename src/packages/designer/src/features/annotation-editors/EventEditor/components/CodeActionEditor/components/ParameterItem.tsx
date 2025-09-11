@@ -3,7 +3,7 @@ import type {ParameterName, ParameterType} from '@react-form-builder/core'
 import {toLabeledValues} from '@react-form-builder/core'
 import {ArrowDownLine, ArrowUpLine, Close} from '@rsuite/icons'
 import type {ComponentProps} from 'react'
-import {useRef, useState} from 'react'
+import {useCallback, useMemo, useRef, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import type {FormInstance} from 'rsuite'
 import {Animation, Form, InputPicker, Schema} from 'rsuite'
@@ -23,10 +23,13 @@ interface ParameterItemProps {
   value: Parameter
   onRemove: () => void
   onChange: (value: Parameter) => void
-  parameters?: Parameter[]
+  isParameterNameExists: (name: string) => boolean
 }
 
 const ArgumentTypes = toLabeledValues(['string', 'number', 'boolean', 'function'], false)
+
+const columnsStyle = {justifyContent: 'space-between'} as const
+const controlStyle = {maxWidth: '100%'} as const
 
 type FormModel = { name: ParameterName, type: ParameterType }
 
@@ -49,26 +52,28 @@ const ValueTypeSelector = (props: ComponentProps<typeof InputPicker>) => {
  * @param props.value the parameter description.
  * @param props.onRemove the callback function called when data should be removed.
  * @param props.onChange the callback function called when data should be changed.
- * @param props.parameters the action parameters.
+ * @param props.isParameterNameExists the function to check if the parameter name already exists.
  * @returns the React element.
  */
-export const ParameterItem = ({value, onRemove, onChange, parameters}: ParameterItemProps) => {
+export const ParameterItem = ({value, onRemove, onChange, isParameterNameExists}: ParameterItemProps) => {
   const [paramName, paramType] = value
   const [collapsed, setCollapsed] = useState(true)
   const {t} = useTranslation()
   const [formState, setFormState] = useState<FormModel>({name: paramName, type: paramType})
   const formRef = useRef<FormInstance>(null)
 
-  const isValid = (name: string) => name === paramName || !parameters?.find(([pName]) => pName === name)
+  const isValid = useCallback((name: string) => {
+    return name === paramName || !isParameterNameExists(name)
+  }, [paramName, isParameterNameExists])
 
-  const isFormValid = (value: FormModel) => {
+  const isFormValid = useCallback((value: FormModel) => {
     return isValid(value.name) && isValidParamName(value.name)
-  }
+  }, [isValid])
 
-  const updateFormState = (value: FormModel) => {
+  const updateFormState = useCallback((value: FormModel) => {
     setFormState(value)
     if (isFormValid(value)) onChange([value.name, value.type])
-  }
+  }, [onChange, isFormValid])
 
   const model = Schema.Model({
     name: Schema.Types.StringType()
@@ -77,19 +82,26 @@ export const ParameterItem = ({value, onRemove, onChange, parameters}: Parameter
       .addRule(isValidParamName, t('codeActionEditor.parameterNameIsNotValid'))
   })
 
+  const paramValue = useMemo(() => [formState.name, formState.type] as Parameter, [formState.name, formState.type])
+  const handleToggleCollapsed = useCallback(() => setCollapsed(!collapsed), [collapsed])
+
+  const handleFormChange = useCallback((data: any) => {
+    updateFormState({name: data.name, type: data.type})
+  }, [updateFormState])
+
   return <div>
-    <Columns style={{justifyContent: 'space-between'}}>
-      <ParamName value={[formState.name, formState.type]} collapsed={collapsed} onClick={() => setCollapsed(!collapsed)}/>
+    <Columns style={columnsStyle}>
+      <ParamName value={paramValue} collapsed={collapsed} onClick={handleToggleCollapsed}/>
       <RemoveButton onClick={onRemove}/>
     </Columns>
 
     <Animation.Collapse in={!collapsed} unmountOnExit>
       <Rows gap={10}>
         <Form model={model} checkTrigger={'change'} formValue={formState} ref={formRef}
-              onChange={data => updateFormState({name: data.name, type: data.type})}>
+              onChange={handleFormChange}>
           <Form.Group>
             <Form.ControlLabel>{t('actions.name')}</Form.ControlLabel>
-            <Form.Control name="name" style={{maxWidth: '100%'}}/>
+            <Form.Control name="name" style={controlStyle}/>
           </Form.Group>
           <Form.Group>
             <Form.ControlLabel>{t('actions.type')}</Form.ControlLabel>

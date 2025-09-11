@@ -1,4 +1,5 @@
 import {namedObserver} from '@react-form-builder/core'
+import {useCallback} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Button} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
@@ -12,17 +13,23 @@ const getFunctionSignature = (type?: string) => `/**
  */
 async (value, form) => {`
 
+const buttonStyle = {borderStyle: 'dashed'} as const
+
 const RawCustomValidatorEditor = (props: AnnotationEditorProps) => {
   const {annotation, componentData, value, onChange} = props
   const builderStore = useBuilderStore()
   const componentKey = `${componentData.key}[${annotation.key}][${annotation.type}]`
-  const handleEdit = () => builderStore.editCustomValidationCode(componentKey, value, getFunctionSignature(annotation.type), onChange)
+
+  const handleEdit = useCallback(() => {
+    builderStore.editCustomValidationCode(componentKey, value, getFunctionSignature(annotation.type), onChange)
+  }, [builderStore, componentKey, value, annotation.type, onChange])
+
   const {t} = useTranslation()
   const label = t(`annotation.${annotation.key}.hint`)
 
   return (
     <LabeledProperty {...props}>
-      <Button name={annotation.key} onClick={handleEdit} size={'xs'} appearance={'ghost'} block style={{borderStyle: 'dashed'}}>
+      <Button name={annotation.key} onClick={handleEdit} size={'xs'} appearance={'ghost'} block style={buttonStyle}>
         {label}
       </Button>
     </LabeledProperty>

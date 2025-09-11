@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import {Close} from '@rsuite/icons'
-import {useCallback} from 'react'
+import {useCallback, useMemo} from 'react'
 import {InputNumber} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
@@ -10,6 +10,8 @@ const SNumberInput = styled(InputNumber)`
     padding: 1px 8px !important;
   }
 `
+
+const closeButtonStyle = {cursor: 'pointer'} as const
 
 /**
  * The property editor for the numeric property type.
@@ -31,7 +33,7 @@ const NumberInput = (props: AnnotationEditorProps) => {
     ...(calculateEditorProps?.(componentData) ?? {}),
     value: typeof value === 'number' ? value : null,
   }
-  const closeButton = <Close onClick={onClean} style={{cursor: 'pointer'}}/>
+  const closeButton = useMemo(() => <Close onClick={onClean} style={closeButtonStyle}/>, [onClean])
 
   return <LabeledProperty {...props}>
     <SNumberInput {...inputNumberProps} onChange={handleChange} size={'xs'} postfix={closeButton}/>

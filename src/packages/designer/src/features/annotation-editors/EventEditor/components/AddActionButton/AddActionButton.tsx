@@ -1,7 +1,7 @@
 import type {ActionData} from '@react-form-builder/core'
 import {ComponentStore, forwardRef, namedObserver} from '@react-form-builder/core'
 import {Plus as PlusIcon} from '@rsuite/icons'
-import {useCallback, useRef} from 'react'
+import {useCallback, useMemo, useRef} from 'react'
 import {Dropdown, IconButton, Popover, Whisper} from 'rsuite'
 import type {OverlayTriggerHandle} from 'rsuite/esm/internals/Picker'
 import {useTranslationPart} from '../../../../localization/hooks'
@@ -21,6 +21,8 @@ const MenuPopover = forwardRef(({onSelect, annotation, ...props}: ActionsMenuPro
   </Popover>
 ))
 
+const addButtonIcon = <PlusIcon/>
+
 const RawAddActionButton = (props: AnnotationEditorProps) => {
   const t = useTranslationPart('actions')
   const {componentData, annotation} = props
@@ -34,9 +36,10 @@ const RawAddActionButton = (props: AnnotationEditorProps) => {
     ComponentStore.addEventHandler(store, eventName, action)
   }, [ref, store, eventName])
 
-  return <Whisper placement="leftStart" ref={ref} trigger="click"
-                  speaker={<MenuPopover onSelect={handleSelect} annotation={annotation}/>}>
-    <IconButton icon={<PlusIcon/>} size="sm" data-testid={`${eventName}-add-button`}>{t('addAction')}</IconButton>
+  const speaker = useMemo(() => <MenuPopover onSelect={handleSelect} annotation={annotation}/>, [handleSelect, annotation])
+
+  return <Whisper placement="leftStart" ref={ref} trigger="click" speaker={speaker}>
+    <IconButton icon={addButtonIcon} size="sm" data-testid={`${eventName}-add-button`}>{t('addAction')}</IconButton>
   </Whisper>
 }
 

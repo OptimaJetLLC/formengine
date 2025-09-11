@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
+import {useCallback} from 'react'
 import {Checkbox} from 'rsuite'
+import type {CheckboxProps, ValueType} from 'rsuite/esm/Checkbox/Checkbox'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 import {CleanButton} from './CleanButton'
@@ -32,8 +34,12 @@ interface BooleanCheckboxProps extends AnnotationEditorProps {
 
 const BooleanCheckbox = (props: BooleanCheckboxProps) => {
   const {id, value, onChange, onClean} = props
+  const handleChange: CheckboxProps['onChange'] = useCallback((_: ValueType | undefined, checked: boolean) => {
+    onChange(checked)
+  }, [onChange])
+
   return <SDiv>
-    <SCheckbox id={id} checked={!!value} onChange={(_, checked) => onChange(checked)}/>
+    <SCheckbox id={id} checked={!!value} onChange={handleChange}/>
     <CleanButton onClick={onClean}/>
   </SDiv>
 }

@@ -38,9 +38,13 @@ const valueIsObject = (value: string): void => {
   }
 }
 
-const buttonStyle = {
-  marginTop: 10
-}
+const buttonStyle = {marginTop: 10} as const
+
+const sDivInlineStyle = {
+  marginLeft: 4,
+  marginBottom: 4,
+  marginTop: 4
+} as const
 
 /**
  * The property editor for the array of objects property type.
@@ -68,14 +72,18 @@ export const ArrayOfObjectInput = (props: AnnotationEditorProps) => {
     onChange?.([...items])
   }, [onChange, items])
 
+  const changeHandlers = useMemo(() => items.map((_, idx) => (value: any) => handleOnChange(value, idx)), [items, handleOnChange])
+  const cleanHandlers = useMemo(() => items.map((_, idx) => () => handleOnChange({}, idx)), [items, handleOnChange])
+  const removeHandlers = useMemo(() => items.map((_, idx) => () => onRemove(idx)), [items, onRemove])
+
   const inputs = items.map((item, index) => {
     const editorTitle = `${props.componentData.key}.${annotation.name}[${index}]`
-    return <SDiv key={editorTitle} style={{marginLeft: 4, marginBottom: 4, marginTop: 4}}>
+    return <SDiv key={editorTitle} style={sDivInlineStyle}>
       <JsonInput editorKey={editorTitle} editorTitle={editorTitle} value={item}
-                 onChange={value => handleOnChange(value, index)}
-                 onClean={() => handleOnChange({}, index)}
+                 onChange={changeHandlers[index]}
+                 onClean={cleanHandlers[index]}
                  onValidate={valueIsObject}/>
-      <CrossButton onClick={() => onRemove(index)} hint={t('removeRow')} className={crossButtonClass}/>
+      <CrossButton onClick={removeHandlers[index]} hint={t('removeRow')} className={crossButtonClass}/>
     </SDiv>
   })
 

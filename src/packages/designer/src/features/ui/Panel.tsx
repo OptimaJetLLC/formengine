@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import {namedObserver} from '@react-form-builder/core'
 import {ArrowDownLine} from '@rsuite/icons'
 import type {PropsWithChildren} from 'react'
+import {useCallback} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
 import type {PanelPlacement} from './PanelPlacement'
@@ -166,7 +167,7 @@ const RawPanel = ({
   const store = useBuilderStore()
   const visible = !!store.openedPanels?.includes(placement)
   const collapsed = !visible
-  const handleCollapse = () => store.setPanelVisible(placement, !visible)
+  const handleCollapse = useCallback(() => store.setPanelVisible(placement, !visible), [store, placement, visible])
   const tooltipPlacement = placement === 'right' ? 'autoHorizontal' : 'auto'
 
   return <PanelContainer className={cx(className, placement, {collapsed})} {...props}>

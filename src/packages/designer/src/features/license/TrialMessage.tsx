@@ -45,7 +45,7 @@ const RawTrialMessage = () => {
       {messages.map((lm) => <li key={lm}>{lm}</li>)}
     </ul>
     <div style={linkStyles}>
-      <a target="_blank" href={'https://formengine.io/pricing'}>https://formengine.io/pricing</a>
+      <a target="_blank" href={'https://formengine.io/pricing'} rel="noreferrer">https://formengine.io/pricing</a>
     </div>
   </div>
 }

@@ -20,6 +20,9 @@ const SDiv = styled.div`
   align-items: center;
 `
 
+const columnsStyle = {minHeight: 0, flex: 1} as const
+const rowsStyle = {minHeight: 0, minWidth: 0, flex: 1.5} as const
+
 const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditorProps) => {
   const t = useTranslationPart('common')
   const localizationStringId = getFluentCompatibleId(`${editableProperty.componentKey}_${editableProperty.annotation.key}`)
@@ -35,11 +38,11 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
     setValue(initialValue)
   }, [initialValue, language, editableProperty])
 
-  const handleSave = () => {
+  const handleSave = useCallback(() => {
     const result = testingEditor.current.test?.()
     if (result?.error || result?.exceptions) return
     action(() => editableProperty.setComputeCode(value, 'localization', {langCode: language.fullCode}))()
-  }
+  }, [editableProperty, value, language.fullCode])
 
   const beginContextLine = `${localizationStringId} =`
   const endContextLine = ''
@@ -54,8 +57,8 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
     [localizationStringId, value, language]
   )
 
-  return <Columns style={{minHeight: 0, flex: 1}}>
-    <Rows gap={10} style={{minHeight: 0, minWidth: 0, flex: 1.5}}>
+  return <Columns style={columnsStyle}>
+    <Rows gap={10} style={rowsStyle}>
       <CodeEditor key={`${editableProperty.annotation.key}_${language.fullCode}`} language={fluentLanguageId}
                   initialValue={initialValue}
                   beginContextLine={beginContextLine}

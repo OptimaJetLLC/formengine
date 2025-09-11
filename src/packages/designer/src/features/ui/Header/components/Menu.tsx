@@ -5,7 +5,7 @@ import * as faTrash from '@fortawesome/free-solid-svg-icons/faTrash.js'
 import {namedObserver} from '@react-form-builder/core'
 import {Export as ExportIcon, FileDownload as FileDownloadIcon, FileUpload as FileUploadIcon, Import as ImportIcon} from '@rsuite/icons'
 import type {HTMLAttributes, Ref} from 'react'
-import {useCallback} from 'react'
+import {useCallback, useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Dropdown, IconButton} from 'rsuite'
 import type {WithAsProps} from 'rsuite/esm/internals/types'
@@ -19,21 +19,25 @@ import {useSaveFormDialog} from '../../dialogs/useSaveFormDialog'
 import {exportForms, importForms} from './formUtils'
 import {useSaveForm} from './useSaveForm'
 
+const menuStyle = {width: 'fit-content'} as const
+
 const RawExportFormsButton = () => {
   const store = useBuilderStore()
   const {t} = useTranslation()
   const showMessage = useShowMessage()
 
-  const onExport = () => {
+  const onExport = useCallback(() => {
     exportForms(store, 'forms.zip')
       .then(() => showMessage({type: 'success', message: t('leftMenu.exportFormsSuccess')}))
       .catch(err => {
         console.error(err)
         showMessage({type: 'error', message: t('leftMenu.exportFormsError')})
       })
-  }
+  }, [store, showMessage, t])
 
-  return <Dropdown.Item onSelect={onExport} icon={<ExportIcon/>}>
+  const exportIcon = useMemo(() => <ExportIcon/>, [])
+
+  return <Dropdown.Item onSelect={onExport} icon={exportIcon}>
     {t('leftMenu.exportForms')}
   </Dropdown.Item>
 }
@@ -45,7 +49,7 @@ const RawImportFormsButton = () => {
   const {t} = useTranslation()
   const showMessage = useShowMessage()
 
-  const onImport = () => {
+  const onImport = useCallback(() => {
     uploadBinaryFile(content => {
         content
           .then(data => importForms(store, data))
@@ -56,9 +60,11 @@ const RawImportFormsButton = () => {
           })
       }
     )
-  }
+  }, [store, showMessage, t])
 
-  return <Dropdown.Item onSelect={onImport} icon={<ImportIcon/>}>
+  const importIcon = useMemo(() => <ImportIcon/>, [])
+
+  return <Dropdown.Item onSelect={onImport} icon={importIcon}>
     {t('leftMenu.importForms')}
   </Dropdown.Item>
 }
@@ -68,9 +74,11 @@ const ImportFormsButton = namedObserver('ImportFormsButton', RawImportFormsButto
 const RawWrapper = (props: HTMLAttributes<HTMLDivElement>) => <div {...props}/>
 const Wrapper = customizable('MainMenu_Button', RawWrapper)
 
+const barsIcon = <FaIcon icon={faBars}/>
+
 const renderToggle = (props: WithAsProps, ref: Ref<any>) => (
   <Wrapper>
-    <IconButton icon={<FaIcon icon={faBars}/>} {...props} ref={ref} size={'sm'}
+    <IconButton icon={barsIcon} {...props} ref={ref} size={'sm'}
                 appearance={'primary'}/>
   </Wrapper>
 )
@@ -87,28 +95,36 @@ const RawMenu = () => {
   }, [onSave])
 
   const onSaveAs = useSaveFormDialog(handleSaveAs)
+  const handleDownload = useCallback(() => builderStore.download(), [builderStore])
+  const handleUpload = useCallback(() => builderStore.upload(), [builderStore])
+  const handleClear = useCallback(() => builderStore.clear(), [builderStore])
+  const fileDownloadIcon = useMemo(() => <FileDownloadIcon/>, [])
+  const fileUploadIcon = useMemo(() => <FileUploadIcon/>, [])
+  const saveIcon = useMemo(() => <FaIcon icon={faSave as unknown as IconDefinition}/>, [])
+  const saveAsIcon = useMemo(() => <FaIcon icon={faSave as unknown as IconDefinition}/>, [])
+  const trashIcon = useMemo(() => <FaIcon icon={faTrash as unknown as IconDefinition}/>, [])
 
   return <>
-    <MenuDropdown title={t('leftMenu.menu')} size={'sm'} renderToggle={renderToggle} menuStyle={{width: 'fit-content'}}>
-      <Dropdown.Item onSelect={builderStore.download.bind(builderStore)} icon={<FileDownloadIcon/>}>
+    <MenuDropdown title={t('leftMenu.menu')} size={'sm'} renderToggle={renderToggle} menuStyle={menuStyle}>
+      <Dropdown.Item onSelect={handleDownload} icon={fileDownloadIcon}>
         {t('leftMenu.download')}
       </Dropdown.Item>
-      <Dropdown.Item onSelect={builderStore.upload.bind(builderStore)} icon={<FileUploadIcon/>}>
+      <Dropdown.Item onSelect={handleUpload} icon={fileUploadIcon}>
         {t('leftMenu.upload')}
       </Dropdown.Item>
       <MenuLanguageSwitch/>
       {builderStore.formStorageEnabled && <>
-        <Dropdown.Item onSelect={onSave} icon={<FaIcon icon={faSave as unknown as IconDefinition}/>}>
+        <Dropdown.Item onSelect={onSave} icon={saveIcon}>
           {t('leftMenu.save')}
         </Dropdown.Item>
-        <Dropdown.Item onSelect={onSaveAs} icon={<FaIcon icon={faSave as unknown as IconDefinition}/>}>
+        <Dropdown.Item onSelect={onSaveAs} icon={saveAsIcon}>
           {t('leftMenu.saveAs')}
         </Dropdown.Item>
         <ExportFormsButton/>
         <ImportFormsButton/>
       </>}
-      <Dropdown.Item onSelect={builderStore.clear.bind(builderStore)} data-testid="main-menu-clear"
-                     icon={<FaIcon icon={faTrash as unknown as IconDefinition}/>}>
+      <Dropdown.Item onSelect={handleClear} data-testid="main-menu-clear"
+                     icon={trashIcon}>
         {t('leftMenu.clear')}
       </Dropdown.Item>
     </MenuDropdown>

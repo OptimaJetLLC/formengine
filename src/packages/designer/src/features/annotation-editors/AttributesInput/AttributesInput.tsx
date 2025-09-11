@@ -17,10 +17,11 @@ const COLUMNS = makeColumns([
   {name: 'value'}
 ])
 
+const confirmButtonIcon = <Check/>
 const ConfirmButton = ({confirm}: { confirm: () => void }) => {
   const getLabel = useTranslationPart('common')
 
-  return <IconButton icon={<Check/>} onClick={confirm} color="green" appearance={'primary'} size={'xs'}>
+  return <IconButton icon={confirmButtonIcon} onClick={confirm} color="green" appearance={'primary'} size={'xs'}>
     {getLabel('apply')}
   </IconButton>
 }
@@ -37,6 +38,7 @@ const RawAttributesInput = (props: AnnotationEditorProps) => {
     [store])
   const [value, setValue] = useState(initialState)
   const [changed, setChanged] = useState(false)
+  const tableData = value ?? []
 
   const handleChange = useCallback((value: any) => {
     setValue(value)
@@ -57,7 +59,7 @@ const RawAttributesInput = (props: AnnotationEditorProps) => {
     <LabeledProperty {...props}>
       {changed && <ConfirmButton confirm={confirm}/>}
     </LabeledProperty>
-    {!calculated && <EditableTable data={value ?? []} onChange={handleChange} columns={COLUMNS}/>}
+    {!calculated && <EditableTable data={tableData} onChange={handleChange} columns={COLUMNS}/>}
   </>
 }
 

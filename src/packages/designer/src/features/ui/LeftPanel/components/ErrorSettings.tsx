@@ -1,14 +1,17 @@
 import type {Annotation} from '@react-form-builder/core'
 import {ComponentDataProvider, namedObserver, useErrorModel} from '@react-form-builder/core'
-import {useEffect, useState} from 'react'
+import {useCallback, useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {Input} from 'rsuite'
+import type {CheckboxProps, ValueType} from 'rsuite/esm/Checkbox/Checkbox'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {SCheckbox} from '../../../annotation-editors/BooleanInput'
 import {Rows} from '../../../components/Containers'
 import {LabeledWrapper} from '../../../components/LabeledProperty'
 import {PropertyBlock} from '../../RightPanel/PropertiesEditor/components/Properties'
 import {ErrorComponentPicker} from './ErrorComponentPicker'
+
+const inputStyle = {marginTop: 4, marginBottom: 4} as const
 
 /**
  * React form builder component that displays the configuration properties of the validation error display component.
@@ -33,12 +36,16 @@ const RawErrorSettings = () => {
   const context = store.viewer.form.errorProps
   const label = t('annotation.errorConfig.show')
 
+  const handleCheckboxChange: CheckboxProps['onChange'] = useCallback((_: ValueType | undefined, checked: boolean) => {
+    setErrorVisible(checked)
+  }, [])
+
   return (
     <Rows gap={10}>
       <LabeledWrapper label={label}>
-        <SCheckbox onChange={(_, checked) => setErrorVisible(checked)} checked={errorVisible}/>
+        <SCheckbox onChange={handleCheckboxChange} checked={errorVisible}/>
       </LabeledWrapper>
-      {errorVisible && <Input style={{marginTop: 4, marginBottom: 4}} onChange={setErrorMessage} value={errorMessage}/>}
+      {errorVisible && <Input style={inputStyle} onChange={setErrorMessage} value={errorMessage}/>}
       <ErrorComponentPicker/>
       <ComponentDataProvider value={store.viewer.form.componentTree}>
         <PropertyBlock annotations={properties} context={context}/>

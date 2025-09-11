@@ -1,10 +1,36 @@
 import {generateUniqueName} from '@react-form-builder/core'
-import {useEffect, useState} from 'react'
+import {useCallback} from 'react'
 import {Button} from 'rsuite'
 import {Columns, Rows} from '../../../../../components/Containers'
 import {useTranslationPart} from '../../../../../localization/hooks'
 import type {Parameter} from '../../ActionList/ActionItem/components/ArgumentList/ArgumentItem/Parameter'
 import {ParameterItem} from './ParameterItem'
+import {useArrayMapMemo} from './UseArrayMapMemo'
+
+let counter = 0
+
+function generateUniqueId() {
+  return ++counter
+}
+
+const rowsStyle = {maxWidth: 240} as const
+const columnsStyle = {alignItems: 'center', justifyContent: 'space-between', height: 34} as const
+const itemsStyle = {overflow: 'auto'} as const
+
+/**
+ * The element in the list of action parameters.
+ */
+export type ParameterListItem = {
+  /**
+   * The action parameter unique key.
+   */
+  key: number
+
+  /**
+   * The action parameter.
+   */
+  parameter: Parameter
+}
 
 /**
  * The React {@link ParameterList} component properties.
@@ -14,13 +40,25 @@ interface ParameterPanelProps {
   /**
    * The array of action parameters.
    */
-  value?: Parameter[]
+  value?: ParameterListItem[]
 
   /**
    * the callback function called when data should be changed.
    * @param value the array of parameters.
    */
-  onChange: (value?: Parameter[]) => void
+  onChange: (value?: ParameterListItem[]) => void
+}
+
+/**
+ * Converts the action parameter to the element in the list of action parameters.
+ * @param parameter the action parameter.
+ * @returns the element in the list of action parameters.
+ */
+export const toParameterListItem = (parameter: Parameter): ParameterListItem => {
+  return {
+    key: generateUniqueId(),
+    parameter
+  }
 }
 
 /**
@@ -32,51 +70,62 @@ interface ParameterPanelProps {
  */
 export const ParameterList = ({value, onChange}: ParameterPanelProps) => {
   const t = useTranslationPart('actions')
-  const [params, setParams] = useState(value)
+  const params = value
 
-  useEffect(() => {
-    setParams(value)
-  }, [value])
-
-  const changeParams = (value?: Parameter[]) => {
-    setParams(value)
+  const changeParams = useCallback((value?: ParameterListItem[]) => {
     onChange(value)
-  }
+  }, [onChange])
 
-  const handleCreateParam = () => {
-    const names = params?.map(value => value[0]) ?? []
+  const handleCreateParam = useCallback(() => {
+    const names = params?.map(value => value.parameter[0]) ?? []
     const existingNames = new Set(names)
     const paramName = generateUniqueName('prop', existingNames)
-    const newParam: Parameter = [paramName, 'string']
+    const newParam = toParameterListItem([paramName, 'string'])
     const paramArray = params ? [...params, newParam] : [newParam]
     changeParams(paramArray)
-  }
+  }, [params, changeParams])
 
-  const handleRemoveParam = (index: number) => {
+  const handleRemoveParam = useCallback((index: number) => {
     const paramArray = params ? [...params] : []
     paramArray?.splice(index, 1)
     changeParams(paramArray)
-  }
+  }, [params, changeParams])
 
-  const handleChangeParam = (value: Parameter, index: number) => {
+  const handleChangeParam = useCallback((value: Parameter, index: number) => {
     const paramArray = params ? [...params] : []
-    paramArray[index] = value
+    paramArray[index].parameter = value
     changeParams(paramArray)
-  }
+  }, [params, changeParams])
 
-  const items = params?.map((param, index) => {
-    return <ParameterItem key={index} value={param} onRemove={() => handleRemoveParam(index)} parameters={params}
-                          onChange={value => handleChangeParam(value, index)}/>
-  })
+  const createRemoveHandler = useCallback((index: number) => {
+    return () => handleRemoveParam(index)
+  }, [handleRemoveParam])
+
+  const createChangeHandler = useCallback((index: number) => {
+    return (value: Parameter) => handleChangeParam(value, index)
+  }, [handleChangeParam])
+
+  const createIsParameterNameExistsHandler = useCallback(() => {
+    return (name: string) => {
+      return !!params?.find(({parameter}) => parameter[0] === name)
+    }
+  }, [params])
+
+  const toParameterItem = useCallback((item: ParameterListItem, index: number) => {
+    return <ParameterItem key={item.key} value={item.parameter} onRemove={createRemoveHandler(index)}
+                          onChange={createChangeHandler(index)} isParameterNameExists={createIsParameterNameExistsHandler()}/>
+  }, [createChangeHandler, createIsParameterNameExistsHandler, createRemoveHandler])
+
+  const items = useArrayMapMemo(params, toParameterItem)
 
   return (
-    <Rows style={{maxWidth: 240}}>
-      <Columns style={{alignItems: 'center', justifyContent: 'space-between', height: 34}}>
+    <Rows style={rowsStyle}>
+      <Columns style={columnsStyle}>
         <h6>{t('parameters')}</h6>
         <Button onClick={handleCreateParam} appearance={'link'}><h6>{t('add')}</h6></Button>
       </Columns>
 
-      <Rows style={{overflow: 'auto'}}>
+      <Rows style={itemsStyle}>
         {items}
       </Rows>
     </Rows>

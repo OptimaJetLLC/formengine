@@ -25,7 +25,7 @@ const RawCustomValidationCodeEditor = (props: CustomValidationCode) => {
   }, [beginContextLine, endContextLine, t])
 
   return <>
-    <Header>{t('validation.editCustomValidationCode')} '{props.editorKey}'</Header>
+    <Header>{`${t('validation.editCustomValidationCode')} '${props.editorKey}'`}</Header>
     <GenericCodeEditor key={props.editorKey}
                        beginContextLine={beginContextLine}
                        endContextLine={endContextLine}

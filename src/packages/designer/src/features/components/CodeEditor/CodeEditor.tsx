@@ -5,8 +5,10 @@ import type {CodeEditorProps} from './CodeEditorProps'
 import {ConstrainedCodeEditor} from './ConstrainedCodeEditor'
 import {UnconstrainedCodeEditor} from './UnconstrainedCodeEditor'
 
+const ltrStyle = {width: '100%', height: '100%', minHeight: 0} as const
+
 const LtrDiv = ({children}: WrapperProps) => {
-  return <div dir="ltr" style={{width: '100%', height: '100%', minHeight: 0}}>{children}</div>
+  return <div dir="ltr" style={ltrStyle}>{children}</div>
 }
 
 const RawCodeEditor = (props: CodeEditorProps) => {

@@ -1,3 +1,4 @@
+import {useMemo} from 'react'
 import type {SelectPickerProps} from 'rsuite'
 import {SelectPicker} from 'rsuite'
 
@@ -20,5 +21,7 @@ export interface FixedSelectPickerProps<T> extends SelectPickerProps<T> {
  * @returns the RSuite select picker.
  */
 export const FixedSelectPicker = <T, >({width, ...props}: FixedSelectPickerProps<T>) => {
-  return <SelectPicker {...props} style={{width: width}}/>
+  const style = useMemo(() => ({width}), [width])
+
+  return <SelectPicker {...props} style={style}/>
 }

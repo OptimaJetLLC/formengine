@@ -48,7 +48,7 @@ export const customizable = <T = any>(key: CustomizableKey, component: Component
   const CustomizableComponent = component
   const customizationStaticClassName = `FE_${key}`
 
-  return (props: any) => {
+  return function Customizable(props: any) {
     const builderStore = useBuilderStore()
     const settings = builderStore.props.customization?.[key]
 

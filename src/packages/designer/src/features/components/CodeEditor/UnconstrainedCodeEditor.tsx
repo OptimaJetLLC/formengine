@@ -1,6 +1,6 @@
 import type {OnMount} from '@monaco-editor/react'
 import type {editor} from 'monaco-editor'
-import {useEffect, useRef} from 'react'
+import {useCallback, useEffect, useMemo, useRef} from 'react'
 import type {UnconstrainedCodeEditorProps} from './CodeEditorProps'
 import {MonacoCodeEditor} from './MonacoCodeEditor'
 
@@ -11,15 +11,21 @@ import {MonacoCodeEditor} from './MonacoCodeEditor'
  */
 export const UnconstrainedCodeEditor = (props: UnconstrainedCodeEditorProps) => {
   const editorRef = useRef<editor.IStandaloneCodeEditor>(null)
+  const {onChange} = props
 
   useEffect(() => {
     editorRef.current?.setValue(props.initialValue)
   }, [props.initialValue])
 
-  const handleMount: OnMount = editor => {
-    editor.onDidChangeModelContent(() => props.onChange(editor.getValue()))
+  const handleMount: OnMount = useCallback(editor => {
+    editor.onDidChangeModelContent(() => onChange(editor.getValue()))
     editorRef.current = editor
-  }
+  }, [onChange])
+
+  const options: editor.IStandaloneEditorConstructionOptions = useMemo(() => ({
+    wordWrap: 'on',
+    ...props.options
+  }), [props.options])
 
   return <MonacoCodeEditor
     onMount={handleMount}
@@ -28,10 +34,7 @@ export const UnconstrainedCodeEditor = (props: UnconstrainedCodeEditorProps) => 
     height={props.height ?? '100%'}
     width={props.width ?? '100%'}
     language={props.language ?? 'javascript'}
-    options={{
-      wordWrap: 'on',
-      ...props.options
-    }}
+    options={options}
     theme={props.theme}
   />
 }

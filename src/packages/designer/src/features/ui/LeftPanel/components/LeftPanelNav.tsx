@@ -39,10 +39,10 @@ const ComponentsTab = (props: DraggableProps) => {
 }
 
 const tabsProps: Record<LeftPanelSection, [content: ReactNode, key: CustomizableKey, icon: any, color: string]> = {
-  components: [<ComponentsTab/>, 'Components_Tab', faPlusCircle, 'var(--rs-green-600)'],
-  tree: [<Tree/>, 'Tree_Tab', faSitemap, 'var(--rs-navs-selected)'],
-  settings: [<FormSettings/>, 'Settings_Tab', faSliders, 'violet'],
-  forms: [<FormList/>, 'Forms_Tab', faList, '#f67f1f']
+  components: [<ComponentsTab key={'components'}/>, 'Components_Tab', faPlusCircle, 'var(--rs-green-600)'],
+  tree: [<Tree key={'tree'}/>, 'Tree_Tab', faSitemap, 'var(--rs-navs-selected)'],
+  settings: [<FormSettings key={'settings'}/>, 'Settings_Tab', faSliders, 'violet'],
+  forms: [<FormList key={'forms'}/>, 'Forms_Tab', faList, '#f67f1f']
 }
 
 const Tab = ({section, ...rest}: Record<string, unknown> & { section: keyof typeof tabsProps }) => {
@@ -70,6 +70,8 @@ const getActiveTab = () => {
   return tabsProps[value] ? value : defaultTab
 }
 
+const navContentStyle = {minHeight: 0, overflow: 'auto', padding: 4} as const
+
 const RawLeftPanelNav = () => {
   const {formStorageEnabled} = useBuilderStore()
   const [activeTab, setActiveTab] = useState<LeftPanelSection>(getActiveTab())
@@ -86,7 +88,7 @@ const RawLeftPanelNav = () => {
       <Tab section="settings"/>
       {formStorageEnabled && <Tab section="forms"/>}
     </Nav>
-    <NavContent style={{minHeight: 0, overflow: 'auto', padding: 4}}>
+    <NavContent style={navContentStyle}>
       {tabsProps[activeTab][0]}
     </NavContent>
   </>

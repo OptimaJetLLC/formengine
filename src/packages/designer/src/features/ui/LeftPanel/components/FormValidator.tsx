@@ -12,7 +12,7 @@ const buttonStyle = {borderStyle: 'dashed'}
 const RawFormValidator = () => {
   const builderStore = useBuilderStore()
   const form = builderStore.viewer.form
-  const handleEdit = () => builderStore.editFormValidator()
+  const handleEdit = useCallback(() => builderStore.editFormValidator(), [builderStore])
   const t = useTranslationPart('annotation.code')
   const remove = useCallback(() => form.formValidator = undefined, [form])
 

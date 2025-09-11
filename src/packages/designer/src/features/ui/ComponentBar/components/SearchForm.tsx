@@ -10,6 +10,8 @@ interface SearchFormProps {
   className?: string
 }
 
+const addonStyle = {cursor: 'pointer'} as const
+
 /**
  * Search input.
  * @param props the React component properties.
@@ -35,7 +37,9 @@ export const SearchForm = ({style, className, onChange}: SearchFormProps) => {
         value={value}
         autoFocus
       />
-      <InputGroup.Addon style={{cursor: 'pointer'}} onClick={clear} children={<Icon/>}/>
+      <InputGroup.Addon style={addonStyle} onClick={clear}>
+        <Icon/>
+      </InputGroup.Addon>
     </InputGroup>
   )
 }

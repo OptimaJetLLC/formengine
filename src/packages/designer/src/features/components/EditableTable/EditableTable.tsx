@@ -12,6 +12,8 @@ const {ErrorMessage} = Form
 
 const {Column, HeaderCell} = Table
 
+const buttonStyle = {marginTop: 10} as const
+
 const STable = styled(Table)`
   .rs-table-cell, .rs-table-row {
     background-color: transparent !important;
@@ -90,6 +92,8 @@ export interface EditableTableState {
   maxHeight?: number
 }
 
+const removeCellIcon = <Close/>
+
 /**
  * The React component that displays the table with editable cells. **Internal use only.**
  * @param props the React component properties.
@@ -100,6 +104,7 @@ export const EditableTable = (props: EditableTableProps) => {
   const [shouldScroll, setShouldScroll] = useState(false)
 
   const {
+    // eslint-disable-next-line react-perf/jsx-no-new-array-as-prop
     data = [],
     onChange,
     columns,
@@ -150,18 +155,20 @@ export const EditableTable = (props: EditableTableProps) => {
     onRemove?.(index)
   }, [data, handleChange, updateHeight, onRemove])
 
-  const prepareColumns = () => columns?.map(col => cloneElement(col, {
-    onChange: () => handleChange?.([...data] as any)
-  }))
+  const columnChangeHandler = useCallback(() => handleChange?.([...data] as any), [handleChange, data])
 
-  const shouldUpdateScroll = () => {
+  const prepareColumns = useCallback(() => columns?.map(col =>
+    cloneElement(col, {onChange: columnChangeHandler})
+  ), [columns, columnChangeHandler])
+
+  const shouldUpdateScroll = useCallback(() => {
     const scrollPos: { y?: number } = {}
     if (shouldScroll) {
       scrollPos.y = Number.MAX_SAFE_INTEGER
       setShouldScroll(false)
     }
     return scrollPos
-  }
+  }, [shouldScroll])
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(updateHeight, [])
@@ -181,14 +188,14 @@ export const EditableTable = (props: EditableTableProps) => {
         <HeaderCell>
           <div/>
         </HeaderCell>
-        <ActionCell onAction={onRemoveColumn} icon={() => <Close/>}/>
+        <ActionCell onAction={onRemoveColumn} icon={removeCellIcon}/>
       </Column>
     </STable>
     {!!errorMessage && <ErrorMessage show={!!errorMessage} placement="bottomStart">
       {errorMessage}
     </ErrorMessage>}
     {!autoAdd &&
-      <Button appearance="default" size="sm" onClick={onAddColumn} style={{marginTop: 10}} block>
+      <Button appearance="default" size="sm" onClick={onAddColumn} style={buttonStyle} block>
         <Plus/>
       </Button>
     }

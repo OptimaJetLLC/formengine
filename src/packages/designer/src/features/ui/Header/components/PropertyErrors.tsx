@@ -23,6 +23,11 @@ export interface PropertyErrorsProps {
 
 const {Cell, Column, HeaderCell} = Table
 
+const ComponentCell = ({rowData, onLinkClick}: { rowData: PropertyErrorColumn, onLinkClick: (component: ComponentData) => void }) => {
+  const handleClick = useCallback(() => onLinkClick(rowData.component), [onLinkClick, rowData.component])
+  return <a onClick={handleClick}>{rowData.component.key}</a>
+}
+
 const RawPropertyErrors = ({onClose}: PropertyErrorsProps) => {
   const store = useBuilderStore()
 
@@ -38,24 +43,24 @@ const RawPropertyErrors = ({onClose}: PropertyErrorsProps) => {
 
   const data = useComputed(getData)
 
+  const handleLinkClick = useCallback((component: ComponentData) => {
+    onClose()
+    store.selectNode(component)
+  }, [onClose, store])
+
+  const cellRenderer = useCallback((rowData: PropertyErrorColumn) => {
+    return <ComponentCell rowData={rowData} onLinkClick={handleLinkClick}/>
+  }, [handleLinkClick])
+
   useEffect(() => {
     store.validate().catch(console.error)
   }, [store])
-
-  const handleLinkClick = (component: ComponentData) => {
-    onClose()
-    store.selectNode(component)
-  }
 
   return (
     <Table height={400} data={data}>
       <Column width={220} align="center" fixed>
         <HeaderCell>Component</HeaderCell>
-        <Cell>
-          {(rowData: PropertyErrorColumn) => {
-            return <a onClick={() => handleLinkClick(rowData.component)}>{rowData.component.key}</a>
-          }}
-        </Cell>
+        <Cell>{cellRenderer}</Cell>
       </Column>
 
       <Column width={150}>

@@ -16,11 +16,12 @@ const SRuleName = styled.span`
   font-size: medium;
 `
 
+const warningButtonIcon = <RemindFill color="#f5a623"/>
+
 const WarningButton = (props: ComponentProps<any>) => {
   const t = useTranslationPart('validation')
-  const icon = <RemindFill color="#f5a623"/>
 
-  return <HintedIconButton hint={t('ruleNotFound')} icon={icon}{...props}/>
+  return <HintedIconButton hint={t('ruleNotFound')} icon={warningButtonIcon} {...props}/>
 }
 
 /**
@@ -55,6 +56,9 @@ const RawValidationRuleEditor = ({rule, onRemove}: ValidationRuleEditorProps) =>
     localization.removeLocalizationForType(key, propertyBlockType)
   }, [key, localization, onRemove, propertyBlockType])
 
+  const validateWhenAnnotations = useMemo(() => [validateWhen], [])
+  const contextValue = useMemo(() => rule.args ?? {}, [rule.args])
+
   const type = model.valueType
   if (!type || !schema) return null
 
@@ -83,10 +87,10 @@ const RawValidationRuleEditor = ({rule, onRemove}: ValidationRuleEditorProps) =>
         <RemoveButton onClick={handleRemove} hintPlacement={'autoHorizontal'} data-testid={`${propertyBlockType}-remove-button`}/>
       </Columns>
       {annotations &&
-        <PropertyBlock annotations={annotations} propertyBlockType={propertyBlockType} context={rule.args ?? {}}
+        <PropertyBlock annotations={annotations} propertyBlockType={propertyBlockType} context={contextValue}
                        initContext={initValidatorArgs}/>
       }
-      <PropertyBlock annotations={[validateWhen]} propertyBlockType={getValidatorPropertyBlockType('validateWhen')}
+      <PropertyBlock annotations={validateWhenAnnotations} propertyBlockType={getValidatorPropertyBlockType('validateWhen')}
                      context={rule}/>
     </Rows>
   )

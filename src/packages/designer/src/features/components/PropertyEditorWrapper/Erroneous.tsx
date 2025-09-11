@@ -32,7 +32,7 @@ const ErrorMessage = styled.p`
 const PropertyErrorMessage = ({children, error}: ErrorWrapperProps) => (
   <SDiv>
     {children}
-    {error && <ErrorMessage children={error}/>}
+    {error && <ErrorMessage>{error}</ErrorMessage>}
   </SDiv>
 )
 

@@ -4,17 +4,18 @@ import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps} from '../../../annotation-editors/AnnotationEditorProps'
 import {Picker} from '../../../annotation-editors/Picker'
 
+const disableCompute = () => undefined
+const setComputeCode = () => undefined
+const getComputeCode = () => ''
+const getComputeType = () => undefined
+const hasComputeCode = () => false
+
 const RawErrorComponentPicker = () => {
   const viewerStore = useStore()
   const builderStore = useBuilderStore()
 
   const onChange = useCallback((value?: string) => viewerStore.form.errorType = value, [viewerStore])
   const onClean = useCallback(() => viewerStore.form.errorType = undefined, [viewerStore])
-  const disableCompute = useCallback(() => undefined, [])
-  const setComputeCode = useCallback(() => undefined, [])
-  const getComputeCode = useCallback(() => '', [])
-  const getComputeType = useCallback(() => undefined, [])
-  const hasComputeCode = useCallback(() => false, [])
 
   const values = useMemo(() => {
     const names = builderStore.view

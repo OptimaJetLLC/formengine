@@ -37,13 +37,12 @@ const SCheckbox = styled(Checkbox)`
  */
 export const InputCell = ({rowData, dataKey, rowIndex, onChange, type, ...props}: InputCellProps) => {
   const value = rowData[dataKey] ?? ''
+  const Input = type === 'number' ? InputNumber : RsInput
 
   const handleChange = useCallback((newValue: any) => {
     rowData[dataKey] = newValue
     onChange?.(newValue, dataKey, rowIndex)
   }, [dataKey, onChange, rowData, rowIndex])
-
-  const Input = type === 'number' ? InputNumber : RsInput
 
   return (
     <SCell {...props}>
@@ -120,16 +119,19 @@ export const SelectCell = ({rowData, dataKey, rowIndex, options, onChange, ...pr
  * @param props.props the other properties of the component.
  * @returns the React element.
  */
-export const ActionCell = ({rowData, rowIndex, onAction, icon, ...props}: ActionCellProps) =>
-  (
+export const ActionCell = ({rowData, rowIndex, onAction, icon, ...props}: ActionCellProps) => {
+  const onClick = useCallback(() => onAction(rowIndex), [onAction, rowIndex])
+
+  return (
     <SCell {...props}>
       <IconButton
         appearance="subtle" size="sm"
-        onClick={() => onAction(rowIndex)}
-        icon={icon()}
+        onClick={onClick}
+        icon={icon}
       />
     </SCell>
   )
+}
 
 /**
  * The properties of InputCell component.
@@ -179,5 +181,5 @@ export interface ActionCellProps extends InnerCellProps<RowDataType, string | nu
   /**
    * The cell icon.
    */
-  icon: () => ReactElement<IconProps>
+  icon: ReactElement<IconProps>
 }

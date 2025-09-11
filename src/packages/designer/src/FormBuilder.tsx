@@ -35,6 +35,8 @@ const Content = styled.div`
   padding-bottom: 15px;
 `
 
+const loaderFallbackElement = <Loader center content="loading"/>
+
 const RawFormBuilderView = (props: ComponentProps<typeof Container>) => {
   const builderStore = useBuilderStore()
   const {checkLicense} = useLicense()
@@ -53,7 +55,7 @@ const RawFormBuilderView = (props: ComponentProps<typeof Container>) => {
 
   return (
     <SuppressResizeObserverErrors>
-      <Suspense fallback={<Loader center content="loading"/>}>
+      <Suspense fallback={loaderFallbackElement}>
         <Container>
           <Content {...props}>
             <LeftPanel/>

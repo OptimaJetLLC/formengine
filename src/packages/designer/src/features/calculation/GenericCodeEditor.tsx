@@ -17,6 +17,9 @@ const SDiv = styled.div`
   justify-content: space-between;
 `
 
+const columnsStyle = {minHeight: 0, flex: 1} as const
+const rowsStyle = {minHeight: 0, flex: 1.5} as const
+
 /**
  * Properties of the React component {@link GenericCodeEditor}.
  */
@@ -87,14 +90,16 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
 
   const testingFunction = useCallback((formData: IFormData) => onCompile(sourceCode, formData), [sourceCode, onCompile])
 
-  return <Columns style={{minHeight: 0, flex: 1}}>
-    <Rows gap={10} style={{minHeight: 0, flex: 1.5}}>
+  const handleClose = useCallback(() => props.onClose(), [props])
+
+  return <Columns style={columnsStyle}>
+    <Rows gap={10} style={rowsStyle}>
       <CodeEditor beginContextLine={props.beginContextLine} endContextLine={props.endContextLine}
                   initialValue={initialValue} language={props.language} onChange={setSourceCode}/>
       <SDiv>
         <ButtonGroup size={'sm'}>
           <Button appearance="primary" onClick={handleSave}>{t('common.save')}</Button>
-          <Button appearance="ghost" onClick={() => props.onClose()}>{t('common.close')}</Button>
+          <Button appearance="ghost" onClick={handleClose}>{t('common.close')}</Button>
         </ButtonGroup>
         {props.compact && <TestRunner testingFunction={testingFunction} ref={testingEditor} compact/>}
       </SDiv>

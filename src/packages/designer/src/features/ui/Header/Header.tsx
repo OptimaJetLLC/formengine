@@ -4,6 +4,7 @@ import * as faRedo from '@fortawesome/free-solid-svg-icons/faRedo.js'
 import * as faSave from '@fortawesome/free-solid-svg-icons/faSave.js'
 import * as faUndo from '@fortawesome/free-solid-svg-icons/faUndo.js'
 import type {ComponentProps} from 'react'
+import {useCallback, useMemo} from 'react'
 import {ButtonGroup, IconButton} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../components/Icons'
@@ -48,19 +49,27 @@ const RawHeader = (props: ComponentProps<typeof Container>) => {
   const undoer = builderStore.undoer
   const showErrorsPanel = false
 
+  const handleSave = useCallback(() => onSave(), [onSave])
+  const handleUndo = useCallback(() => undoer.undo(), [undoer])
+  const handleRedo = useCallback(() => undoer.redo(), [undoer])
+
+  const saveIcon = useMemo(() => <FaIcon icon={faSave as unknown as IconDefinition}/>, [])
+  const undoIcon = useMemo(() => <FaIcon icon={faUndo as unknown as IconDefinition}/>, [])
+  const redoIcon = useMemo(() => <FaIcon icon={faRedo as unknown as IconDefinition}/>, [])
+
   return (
     <Container {...props}>
       <LeftPart>
         <Menu/>
         <Toolbar size={'sm'}>
           {builderStore.formStorageEnabled &&
-            <IconButton onClick={() => onSave()} data-testid={'header-save-form-button'}
-                        icon={<FaIcon icon={faSave as unknown as IconDefinition}/>} size={'sm'}/>
+            <IconButton onClick={handleSave} data-testid={'header-save-form-button'}
+                        icon={saveIcon} size={'sm'}/>
           }
-          <IconButton onClick={() => undoer.undo()} disabled={!undoer.hasUndo}
-                      icon={<FaIcon icon={faUndo as unknown as IconDefinition}/>} size={'sm'}/>
-          <IconButton onClick={() => undoer.redo()} disabled={!undoer.hasRedo}
-                      icon={<FaIcon icon={faRedo as unknown as IconDefinition}/>} size={'sm'}/>
+          <IconButton onClick={handleUndo} disabled={!undoer.hasUndo}
+                      icon={undoIcon} size={'sm'}/>
+          <IconButton onClick={handleRedo} disabled={!undoer.hasRedo}
+                      icon={redoIcon} size={'sm'}/>
 
         </Toolbar>
       </LeftPart>

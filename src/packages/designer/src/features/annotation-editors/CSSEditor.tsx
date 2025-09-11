@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 import type {CssPart} from '@react-form-builder/core'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
-import {useEffect, useMemo, useState} from 'react'
+import type {editor} from 'monaco-editor'
+import {useCallback, useEffect, useMemo, useState} from 'react'
 import type {Device} from '../../utils/types'
 import {CodeEditor} from '../components/CodeEditor/CodeEditor'
 import {Rows} from '../components/Containers'
@@ -48,17 +49,30 @@ const RawCSSEditor = ({device, useWrapperStyles, defaultActiveTab}: CSSEditorPro
   const initialValue = useMemo(() => {
     return store[activeTab]?.[device]?.string ?? ''
   }, [store, device, activeTab])
-  const onChange = (value: any) => {
+
+  const onChange = useCallback((value: any) => {
     store[activeTab] ??= {}
     store[activeTab]![device] ??= {}
     store[activeTab]![device]!.string = value
-  }
-  const handleSelect: RadioButtonsProps['onChange'] = value => setActiveTab(value as CssPart)
+  }, [store, activeTab, device])
 
-  const items: Item[] = [
+  const handleSelect: RadioButtonsProps['onChange'] = useCallback(value => setActiveTab(value as CssPart), [setActiveTab])
+
+  const items: Item[] = useMemo(() => ([
     {value: 'css', label: t('component'), hint: t('componentTab.hint')},
     {value: 'wrapperCss', label: t('wrapper'), hint: t('wrapperTab.hint')}
-  ]
+  ]), [t])
+
+  const options = useMemo(() => ({
+    contextmenu: false,
+    lineNumbers: 'off',
+    minimap: {enabled: false},
+    glyphMargin: false,
+    folding: false,
+    lineDecorationsWidth: 0,
+    lineNumbersMinChars: 0,
+    autoIndent: 'full'
+  } satisfies editor.IStandaloneEditorConstructionOptions), [])
 
   return (
     <Rows>
@@ -72,16 +86,7 @@ const RawCSSEditor = ({device, useWrapperStyles, defaultActiveTab}: CSSEditorPro
         initialValue={initialValue}
         onChange={onChange}
         height={'20vh'}
-        options={{
-          contextmenu: false,
-          lineNumbers: 'off',
-          minimap: {enabled: false},
-          glyphMargin: false,
-          folding: false,
-          lineDecorationsWidth: 0,
-          lineNumbersMinChars: 0,
-          autoIndent: 'full'
-        }}
+        options={options}
       />
     </Rows>
   )

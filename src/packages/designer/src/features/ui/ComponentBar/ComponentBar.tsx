@@ -10,6 +10,8 @@ import {AddedComponent} from '../../dnd'
 import {useTranslationPart} from '../../localization/hooks'
 import {SearchForm} from './components/SearchForm'
 
+const searchFormStyle = {maxWidth: 300} as const
+
 const componentBar = css`
   display: flex;
   flex-direction: column;
@@ -160,7 +162,7 @@ export const ComponentBar = (componentProps: DraggableProps) => {
 
   return <div className={componentBar}>
     <Header>
-      <SearchForm style={{maxWidth: 300}} onChange={setFiltered}/>
+      <SearchForm style={searchFormStyle} onChange={setFiltered}/>
     </Header>
     {controls || <Subheader>{t('notFound')}</Subheader>}
   </div>

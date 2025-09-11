@@ -13,6 +13,9 @@ interface ActionItemProps {
   onRemove: () => void
 }
 
+const columnsStyle = {justifyContent: 'space-between', padding: 8} as const
+const nameStyle = {color: 'violet', marginLeft: 5} as const
+
 const RawActionItem = ({action, onRemove}: ActionItemProps) => {
   const builderStore = useBuilderStore()
   const viewerStore = useStore()
@@ -30,8 +33,8 @@ const RawActionItem = ({action, onRemove}: ActionItemProps) => {
 
   return (
     <ActionDataProvider value={action}>
-      <Columns style={{justifyContent: 'space-between', padding: 8}}>
-        <b style={{color: 'violet', marginLeft: 5}}>
+      <Columns style={columnsStyle}>
+        <b style={nameStyle}>
           {`${name || 'Action'}`}
         </b>
         <ButtonGroup size={'xs'}>

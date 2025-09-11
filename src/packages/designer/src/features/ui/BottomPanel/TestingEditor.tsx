@@ -7,9 +7,9 @@ import {CalculableResult, forwardRef, initFormFields, namedObserver, useStore} f
 import {isUndefined} from 'lodash-es'
 import type {editor} from 'monaco-editor'
 import type {RefObject} from 'react'
-import {useCallback, useEffect, useState} from 'react'
+import {useCallback, useEffect, useMemo, useState} from 'react'
 import {Button, Checkbox, Message} from 'rsuite'
-import type {CheckboxProps} from 'rsuite/esm/Checkbox/Checkbox'
+import type {CheckboxProps, ValueType} from 'rsuite/esm/Checkbox/Checkbox'
 import type {TypeAttributes} from 'rsuite/esm/internals/types'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {prepareForJson} from '../../../utils/parseJson'
@@ -90,11 +90,14 @@ const ResultMessage = ({result}: { result: CalculableResult }) => {
   </div>
 }
 
+const divStyle = {maxHeight: 80, overflow: 'auto', wordBreak: 'break-word'} as const
+const preStyle = {whiteSpace: 'pre-wrap', margin: 0} as const
+
 const TestingResult = ({result, onClose, compact}: { result: CalculableResult, onClose: () => void, compact?: boolean }) => {
   const MessageComponent = compact ? SCompactMessage : SMessage
   const formattedContent = (
-    <div style={{maxHeight: 80, overflow: 'auto', wordBreak: 'break-word'}}>
-        <pre style={{whiteSpace: 'pre-wrap', margin: 0}}>
+    <div style={divStyle}>
+        <pre style={preStyle}>
           <ResultMessage result={result}/>
         </pre>
     </div>
@@ -140,6 +143,18 @@ type TestingFunction = (data: IFormData) => CalculableResult
 type TestingEditorProps = { testingFunction: TestingFunction }
 type TestRunnerProps = { data?: string, testingFunction: TestingFunction, compact?: boolean }
 
+const buttonStyle = {display: 'flex', gap: 10} as const
+const checkboxStyle = {height: 32} as const
+
+const columnsStyleBase = {
+  paddingInlineEnd: 10,
+  paddingTop: 3,
+  alignItems: 'end',
+  flex: 1
+} as const
+
+const rowsStyle = {width: '100%', flex: 0} as const
+
 const RawTestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerProps, ref) => {
   const t = useTranslationPart('testingEditor')
   const builderStore = useBuilderStore()
@@ -163,26 +178,38 @@ const RawTestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerPr
     setResult(undefined)
   }, [test, builderStore.testingAutorun, ref])
 
-  const handleAutorunChecked: CheckboxProps['onChange'] = (_, val) => builderStore.testingAutorun = val
+  const handleAutorunChecked: CheckboxProps['onChange'] = useCallback((_: ValueType | undefined, checked: boolean) => {
+    return builderStore.testingAutorun = checked
+  }, [builderStore])
 
-  const buttons = <Columns
-    style={{justifyContent: compact ? 'end' : 'space-between', paddingInlineEnd: 10, paddingTop: 3, alignItems: 'end', flex: 1}}>
-    {compact && result && <TestingResult compact result={result} onClose={() => setResult(undefined)}/>}
-    <Button onClick={test} size={'sm'} appearance={'ghost'} style={{display: 'flex', gap: 10}}>
+  const handleCloseResult = useCallback(() => setResult(undefined), [])
+
+  const columnsStyle = useMemo(() => ({
+    ...columnsStyleBase,
+    justifyContent: compact ? 'end' : 'space-between',
+  }), [compact])
+
+  const buttons = <Columns style={columnsStyle}>
+    {compact && result && <TestingResult compact result={result} onClose={handleCloseResult}/>}
+    <Button onClick={test} size={'sm'} appearance={'ghost'} style={buttonStyle}>
       <FaIcon icon={faPlay as unknown as IconDefinition}/> {t('run')}
     </Button>
-    <Checkbox checked={builderStore.testingAutorun} onChange={handleAutorunChecked} style={{height: 32}}>{t('autorun')}</Checkbox>
+    <Checkbox checked={builderStore.testingAutorun} onChange={handleAutorunChecked} style={checkboxStyle}>{t('autorun')}</Checkbox>
   </Columns>
 
   return compact
     ? buttons
-    : <Rows style={{width: '100%', flex: 0}}>
-      {result && <TestingResult result={result} onClose={() => setResult(undefined)}/>}
+    : <Rows style={rowsStyle}>
+      {result && <TestingResult result={result} onClose={handleCloseResult}/>}
       {buttons}
     </Rows>
 })
 
 export const TestRunner = namedObserver('TestRunner', RawTestRunner)
+
+const rowsStyle2 = {flex: 1, minHeight: 100, minWidth: 0, alignItems: 'start', position: 'relative'} as const
+const spanStyle = {marginTop: -40, paddingBlock: 7, opacity: 0.6} as const
+const divStyle2 = {flex: 1, minHeight: 20, width: '100%'} as const
 
 const RawTestingEditor = forwardRef(({testingFunction}: TestingEditorProps, ref) => {
   const t = useTranslationPart('testingEditor')
@@ -196,9 +223,9 @@ const RawTestingEditor = forwardRef(({testingFunction}: TestingEditorProps, ref)
   }, [builderStore, data])
 
   return (
-    <Rows style={{flex: 1, minHeight: 100, minWidth: 0, alignItems: 'start', position: 'relative'}}>
-      <span style={{marginTop: -40, paddingBlock: 7, opacity: 0.6}}>{t('testFormData')}</span>
-      <div style={{flex: 1, minHeight: 20, width: '100%'}}>
+    <Rows style={rowsStyle2}>
+      <span style={spanStyle}>{t('testFormData')}</span>
+      <div style={divStyle2}>
         <CodeEditor language="json" initialValue={initialData} onChange={setData} options={editorOptions}/>
       </div>
       <TestRunner data={data} testingFunction={testingFunction} ref={ref}/>

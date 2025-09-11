@@ -1,6 +1,7 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {toLabeledValues} from '@react-form-builder/core'
+import {useCallback} from 'react'
 import {Input, InputNumber, InputPicker} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
@@ -73,8 +74,13 @@ const SizeInput = (props: AnnotationEditorProps) => {
   const {value: CSSValue, onChange, onClean} = props
   const {value, unit} = parseCSSValue(CSSValue)
 
-  const handleValueChange = (value: InputValue) => onChange(makeCSSValue(value, unit))
-  const handleUnitChange = (unit: string) => unit && onChange(makeCSSValue(value ?? 10, unit))
+  const handleValueChange = useCallback((value: InputValue) => {
+    onChange(makeCSSValue(value, unit))
+  }, [onChange, unit])
+
+  const handleUnitChange = useCallback((unit: string) => {
+    return unit && onChange(makeCSSValue(value ?? 10, unit))
+  }, [onChange, value])
 
   const input = unit === OtherUnit
     ? <Input value={value} size={'xs'} onChange={handleValueChange}/>

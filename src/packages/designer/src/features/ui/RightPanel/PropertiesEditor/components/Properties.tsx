@@ -171,6 +171,8 @@ interface PropertiesProps {
   activeTab: Section
 }
 
+const centeredLabelStyle = {height: '40%'} as const
+
 const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
   const builderStore = useBuilderStore()
   const tooltipType = useTooltipType()
@@ -180,7 +182,7 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
   if (!data) {
     return (
       <Container>
-        <CenteredLabel style={{height: '40%'}}>{getLabel('selectElementForEdit')}</CenteredLabel>
+        <CenteredLabel style={centeredLabelStyle}>{getLabel('selectElementForEdit')}</CenteredLabel>
       </Container>
     )
   }

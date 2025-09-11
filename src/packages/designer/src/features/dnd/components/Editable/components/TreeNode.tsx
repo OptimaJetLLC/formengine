@@ -57,6 +57,8 @@ export interface TreeNodeProps {
   componentDataViewer?: ComponentType
 }
 
+const iconStyle = {cursor: 'pointer'} as const
+
 const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
   const componentData = useComponentData()
   const {expanded: expandedNodes, viewer} = useBuilderStore()
@@ -85,6 +87,7 @@ const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
   }, [selected])
 
   const withChildren = (componentData.store.children?.length ?? 0) > 0
+  const iconAs = expanded ? ArrowDownLineIcon : ArrowRightLineIcon
 
   return (
     <>
@@ -92,7 +95,7 @@ const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
                  onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         <SIndent depth={depth}>
           {withChildren &&
-            <Icon onClick={toggleExpand} as={expanded ? ArrowDownLineIcon : ArrowRightLineIcon} style={{cursor: 'pointer'}}/>
+            <Icon onClick={toggleExpand} as={iconAs} style={iconStyle}/>
           }
         </SIndent>
         <div data-testid={componentData.key}>{componentData.key}</div>

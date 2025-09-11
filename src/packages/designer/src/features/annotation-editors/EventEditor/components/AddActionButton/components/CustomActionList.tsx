@@ -1,4 +1,5 @@
 import {useStore} from '@react-form-builder/core'
+import {useCallback, useMemo} from 'react'
 import {Dropdown} from 'rsuite'
 import {useTranslationPart} from '../../../../../localization/hooks'
 import type {ActionsMenuProps} from '../types'
@@ -12,13 +13,17 @@ import type {ActionsMenuProps} from '../types'
 export const CustomActionList = ({onSelect}: ActionsMenuProps) => {
   const store = useStore()
   const t = useTranslationPart('actions')
+  const {actions} = store.formViewerPropsStore
 
-  const actions = store.formViewerPropsStore.actions
+  const handleSelect = useCallback((name: string) => {
+    return () => onSelect({name, type: 'custom'})
+  }, [onSelect])
+
+  const items = useMemo(() => Object.keys(actions ?? []).map(name => (
+    <Dropdown.Item key={name} eventKey={`custom-${name}`} onClick={handleSelect(name)}>{name}</Dropdown.Item>
+  )), [actions, handleSelect])
+
   if (!actions) return null
-
-  const items = Object.keys(actions).map(name =>
-    <Dropdown.Item key={name} eventKey={`custom-${name}`} children={name} onClick={() => onSelect({name, type: 'custom'})}/>
-  )
 
   return (
     <Dropdown.Menu title={t('custom')} eventKey="custom">

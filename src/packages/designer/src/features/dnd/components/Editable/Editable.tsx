@@ -75,7 +75,8 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
 
     if (filteredChildren.length) {
       currentProps[key] = componentData.model.propsBindingTypes[key] === 'array'
-        ? filteredChildren.map((item, index) => <ComponentTree key={index} data={[item]}/>)
+        ? filteredChildren.map((item, index) => [item])
+          .map((data, index) => <ComponentTree key={index} data={data}/>)
         : <ComponentTree data={filteredChildren}/>
     }
   }
@@ -110,7 +111,10 @@ const Editable = namedObserver('Editable', RawEditable)
 const RawEditableWrapper = ({children, ...props}: WrapperProps) => {
   const viewerStore = useStore()
   const Wrapper = viewerStore.parentStore ? DefaultWrapper : Editable
-  return <Wrapper children={children} {...props}/>
+
+  return <Wrapper {...props}>
+    {children}
+  </Wrapper>
 }
 
 export const EditableWrapper = namedObserver('EditableWrapper', RawEditableWrapper)

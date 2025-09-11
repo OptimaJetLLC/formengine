@@ -3,6 +3,8 @@ import LabeledProperty from '../components/LabeledProperty'
 import {useTranslationPart} from '../localization/hooks'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 
+const style = {width: '100%'} as const
+
 /**
  * The property editor for property of type "multiple select", displays values as a tag editor.
  * @param props the Annotation editor component properties.
@@ -14,7 +16,7 @@ export const ArrayOfStringInput = (props: AnnotationEditorProps) => {
 
   return <LabeledProperty {...props}>
     <TagInput value={value ?? ''} onChange={onChange} onClean={onClean} block
-              size={'xs'} style={{width: '100%'}} placeholder={t('setInputHint')}
+              size={'xs'} style={style} placeholder={t('setInputHint')}
     />
   </LabeledProperty>
 }

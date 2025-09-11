@@ -83,6 +83,11 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
     constrainedMonacoEditorModelRef.current = constrainedModel
   }, [props.beginContextLine, props.endContextLine, getRestrictions, onChange])
 
+  const options = useMemo(() => ({
+    wordWrap: 'on',
+    ...props.options
+  } satisfies editor.IStandaloneEditorConstructionOptions), [props.options])
+
   return <MonacoCodeEditor
     onMount={handleMount}
     className={props.className}
@@ -90,10 +95,7 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
     height={props.height ?? '100%'}
     width={props.width ?? '100%'}
     language={props.language ?? 'javascript'}
-    options={{
-      wordWrap: 'on',
-      ...props.options
-    }}
+    options={options}
     theme={props.theme}
   />
 }

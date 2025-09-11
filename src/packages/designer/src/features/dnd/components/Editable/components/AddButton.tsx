@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
 import {Plus as PlusIcon, SortDown, SortUp} from '@rsuite/icons'
-import {useRef} from 'react'
+import {useCallback, useMemo, useRef} from 'react'
 import type {WhisperInstance} from 'rsuite'
 import {ButtonGroup, IconButton, Popover, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
@@ -34,26 +34,35 @@ const RawAddButton = () => {
   const target = useComponentData()
   const t = useTranslationPart('componentToolbar')
   const whisperRef = useRef<WhisperInstance>(null)
-  const handleClick = (position: InsertPosition) => {
+
+  const handleClick = useCallback((position: InsertPosition) => {
     whisperRef.current?.close()
     builderStore.showComponentsModal(source => {
       builderStore.add(source, target, position)
     }, componentData => {
       return builderStore.canAddComponent(componentData, target, position)
     })
-  }
+  }, [builderStore, target])
 
-  const popover = <SPopover arrow={false}>
-    <Container>
-      <Label>{t('add')}</Label>
-      <ButtonGroup vertical>
-        <IconButton onClick={() => handleClick('before')} icon={<SortUp/>} size={'xs'}
-                    appearance={'primary'}>{t('before')}</IconButton>
-        <IconButton onClick={() => handleClick('after')} icon={<SortDown/>} size={'xs'}
-                    appearance={'primary'}>{t('after')}</IconButton>
-      </ButtonGroup>
-    </Container>
-  </SPopover>
+  const sortUpIcon = useMemo(() => <SortUp/>, [])
+  const sortDownIcon = useMemo(() => <SortDown/>, [])
+
+  const handleClickBefore = useCallback(() => handleClick('before'), [handleClick])
+  const handleClickAfter = useCallback(() => handleClick('after'), [handleClick])
+
+  const popover = useMemo(() => {
+    return <SPopover arrow={false}>
+      <Container>
+        <Label>{t('add')}</Label>
+        <ButtonGroup vertical>
+          <IconButton onClick={handleClickBefore} icon={sortUpIcon} size={'xs'}
+                      appearance={'primary'}>{t('before')}</IconButton>
+          <IconButton onClick={handleClickAfter} icon={sortDownIcon} size={'xs'}
+                      appearance={'primary'}>{t('after')}</IconButton>
+        </ButtonGroup>
+      </Container>
+    </SPopover>
+  }, [t, handleClickBefore, handleClickAfter, sortUpIcon, sortDownIcon])
 
   return <>
     <Whisper placement={builderStore.isRTL ? 'right' : 'left'} speaker={popover} ref={whisperRef} enterable trigger="hover">
