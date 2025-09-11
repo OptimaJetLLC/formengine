@@ -10,10 +10,11 @@ import {
 } from '@react-form-builder/components-rsuite'
 import {signatureComponent} from '@react-form-builder/components-signature'
 import {BiDi, namedObserver} from '@react-form-builder/core'
-import type {CustomizationMap, IPresetComponentOptions, PresetComponent} from '@react-form-builder/designer'
+import type {CustomizationMap, IFormBuilder, IPresetComponentOptions, PresetComponent} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage, IndexedDbPresetStorage} from '@react-form-builder/indexed-db-form-storage'
-import {useEffect, useState} from 'react'
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
+import {Button, ButtonGroup} from 'rsuite'
 import config from './utils/config.json'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
 import {generatedLicenseKey} from './utils/license'
@@ -82,23 +83,66 @@ const getPresetOptions = (): IPresetComponentOptions | undefined => {
 
 const versionStyle = {
   marginLeft: 10,
+  marginRight: 10,
   color: 'var(--rs-text-secondary)',
 }
 
-const customization: CustomizationMap = {
-  Header_Toolbar: {
-    customRenderer: (defaultElement) => {
-      return <div>
-        {defaultElement}
-        <span style={versionStyle}>{config.version}</span>
-      </div>
-    }
-  }
-}
+const rootDivCentralPanelStyle = {display: 'flex', width: '100%', flexDirection: 'column'} as const
+const buttonDivStyle = {display: 'flex', width: '100%', justifyContent: 'center', marginTop: 5} as const
 
 const RawFormBuilderApp = () => {
   const [indexedDbInitialized, setIndexedDbInitialized] = useState(false)
   const [presetOptions, setPresetOptions] = useState(getPresetOptions)
+  const builderRef = useRef<IFormBuilder>(null)
+
+  const setRef = useCallback((builder: IFormBuilder | null) => {
+    if (builder) builderRef.current = builder
+  }, [])
+
+  const pasteFormFromClipboard = useCallback(() => {
+    const iFormBuilder = builderRef.current
+    if (!iFormBuilder) return
+
+    navigator.clipboard.readText()
+      .then(text => {
+        iFormBuilder.parseForm(text)
+      })
+      .catch(console.error)
+  }, [])
+
+  const copyFormToClipboard = useCallback(() => {
+    const iFormBuilder = builderRef.current
+    if (!iFormBuilder) return
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(iFormBuilder.formAsString)
+        .catch(console.error)
+    }
+  }, [])
+
+  const customization: CustomizationMap = useMemo(() => ({
+    CentralPanel: {
+      customRenderer: (defaultElement) => {
+        return <div style={rootDivCentralPanelStyle}>
+          <div style={buttonDivStyle}>
+            <ButtonGroup>
+              <Button appearance={'ghost'} onClick={copyFormToClipboard}>Copy form&#39;s JSON</Button>
+              <Button appearance={'ghost'} onClick={pasteFormFromClipboard}>Paste form&#39;s JSON</Button>
+            </ButtonGroup>
+          </div>
+          {defaultElement}
+        </div>
+      }
+    },
+    Header_Toolbar: {
+      customRenderer: (defaultElement) => {
+        return <div>
+          {defaultElement}
+          <span style={versionStyle}>{config.version}</span>
+        </div>
+      }
+    }
+  }), [copyFormToClipboard, pasteFormFromClipboard])
 
   useEffect(() => {
     async function initDb() {
@@ -129,6 +173,7 @@ const RawFormBuilderApp = () => {
     formStorage={formStorage}
     presetComponentOptions={presetOptions}
     customization={customization}
+    builderRef={setRef}
   />
 }
 
