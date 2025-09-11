@@ -10,7 +10,6 @@ import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../components/Icons'
 import {customizableObserver} from '../../customization'
 import {DesignerLocalizationPicker} from './components/DesignerLocalizationPicker'
-import {ErrorsPanel} from './components/ErrorsPanel'
 import {Menu} from './components/Menu'
 import {ToggleModeButton} from './components/ToggleModeButton'
 import {ToggleTheme} from './components/ToggleTheme'
@@ -47,7 +46,6 @@ const RawHeader = (props: ComponentProps<typeof Container>) => {
   const builderStore = useBuilderStore()
   const onSave = useSaveForm()
   const undoer = builderStore.undoer
-  const showErrorsPanel = false
 
   const handleSave = useCallback(() => onSave(), [onSave])
   const handleUndo = useCallback(() => undoer.undo(), [undoer])
@@ -81,7 +79,6 @@ const RawHeader = (props: ComponentProps<typeof Container>) => {
       <RightPart>
         <ViewModes/>
         <DesignerLocalizationPicker/>
-        {showErrorsPanel && <ErrorsPanel/>}
         <ToggleTheme/>
       </RightPart>
     </Container>

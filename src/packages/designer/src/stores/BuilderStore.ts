@@ -37,7 +37,6 @@ import {BuilderPresetComponentOptions} from '../features/preset-component/Builde
 import {removePresetLocalization} from '../features/preset-component/removePresetLocalization'
 import type {PanelPlacement} from '../features/ui/PanelPlacement'
 import type {PromptDialogProps} from '../features/ui/PromptDialogProps'
-import {annotationResolver} from '../features/validation'
 import type {FormBuilderProps} from '../FormBuilderProps'
 import {determineTheme} from '../utils/determineTheme'
 import {getSystemTheme} from '../utils/getSystemTheme'
@@ -323,7 +322,6 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     canAdd: () => true,
   }
   readonly promptModalState: PromptModalState = initialModalState
-  readonly errorMap = new Map<ComponentData, Record<string, string | undefined>>
   view: BuilderView
   readonly formStorageEnabled: boolean
   readonly selected = new Set<ComponentData>()
@@ -504,36 +502,6 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    */
   get componentsLocale() {
     return this.#loadedLanguages[this.formBuilderLanguage.fullCode]?.componentsLocale
-  }
-
-  /**
-   * Validates all properties of all components on the form.
-   */
-  validate = async () => {
-    await Promise.allSettled(this.viewer.reduceScreen((acc: Promise<string | undefined>[], current) => {
-      const meta = this.getComponentMetadata(current.store.type)
-
-      meta.properties.forEach(annotation => {
-        const validator = annotationResolver({annotation, store: this.viewer})
-        if (!this.errorMap.has(current)) {
-          this.errorMap.set(current, {})
-        }
-        const errors = this.errorMap.get(current)!
-        for (const key in current.store.props) {
-          acc.push(validator(current.store.props[key].value, this.viewer)
-            .then(error => {
-              if (!error) return errors[annotation.key] = undefined
-
-              const messages = error.map(e => e.message)
-                .filter(e => e !== 'undefined')
-                .join('; ')
-              return errors[annotation.key] = messages
-            }))
-        }
-      })
-
-      return acc
-    }, []))
   }
 
   /**
