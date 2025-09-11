@@ -52,16 +52,16 @@ const actions = {
     const {fnArg, fnArg1, fnArg2, fnArg3} = args
 
     // @ts-ignore for test
-    const r = await fnArg('foo', 123)
+    const r = await fnArg?.('foo', 123)
 
     // @ts-ignore for test
-    const r1 = await fnArg1('bar', 234)
+    const r1 = await fnArg1?.('bar', 234)
 
     // @ts-ignore for test
-    const r2 = await fnArg2('baz', 345)
+    const r2 = await fnArg2?.('baz', 345)
 
     // @ts-ignore for test
-    const r3 = await fnArg3('boo', 567)
+    const r3 = await fnArg3?.('boo', 567)
 
     // eslint-disable-next-line no-console
     console.log('funcArgs', {r, r1, r2, r3})
@@ -329,4 +329,3 @@ describe('Event args UI should display and pass arguments', () => {
     await app.findByText('Edit code action: rsButton1.onClick[0] funcArgs:fnArg')
   })
 })
-
