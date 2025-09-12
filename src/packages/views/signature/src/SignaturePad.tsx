@@ -86,6 +86,13 @@ export const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>((p
     return () => vanillaSignaturePad?.off()
   }, [readOnly, vanillaSignaturePad])
 
+  useEffect(() => {
+    if (!value) {
+      clear()
+    }
+  }, [clear, value])
+
+
   const canvasStyle = useMemo(() => ({borderRadius: 6, backgroundColor}),
     [backgroundColor])
 
