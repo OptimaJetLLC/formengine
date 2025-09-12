@@ -1,0 +1,37 @@
+{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsInput1",
+        "type": "RsInput",
+        "props": {},
+        "events": {
+          "onChange": [
+            {
+              "name": "log",
+              "type": "common"
+            }
+          ]
+        },
+        "htmlAttributes": [{
+          "name": "data-testid",
+          "value": "testInput"
+        }]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

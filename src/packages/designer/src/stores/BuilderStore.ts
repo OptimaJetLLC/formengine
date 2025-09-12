@@ -712,7 +712,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       throw new Error('Can\'t add component')
     }
 
-    const clone = Object.assign(new ComponentStore('', ''), JSON.parse(JSON.stringify(source.store)))
+    const clone = ComponentStore.clone(source.store)
 
     const componentData = this.viewer.createComponentData(clone)
 

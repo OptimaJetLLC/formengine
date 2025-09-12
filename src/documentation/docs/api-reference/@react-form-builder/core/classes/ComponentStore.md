@@ -206,6 +206,28 @@ the [ActionData](../type-aliases/ActionData.md).
 
 ***
 
+### clone()
+
+> `static` **clone**(`store`): `any`
+
+Returns a clone of the specified component settings.
+
+#### Parameters
+
+##### store
+
+`ComponentStore`
+
+the component settings.
+
+#### Returns
+
+`any`
+
+the clone of the specified component settings.
+
+***
+
 ### createFromObject()
 
 > `static` **createFromObject**(`value`): `any`
