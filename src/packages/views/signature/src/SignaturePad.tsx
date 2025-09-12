@@ -92,7 +92,6 @@ export const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>((p
     }
   }, [clear, value])
 
-
   const canvasStyle = useMemo(() => ({borderRadius: 6, backgroundColor}),
     [backgroundColor])
 
