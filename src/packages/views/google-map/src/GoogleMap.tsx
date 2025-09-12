@@ -27,7 +27,10 @@ const GoogleMapLoader = ({apiKey, region, language, label, className, ...props}:
     </APIProvider>
   </div>
 
-  return <Labeled label={label} className={className}>
+  // GoogleMapRenderer does not display the data-testid attribute
+  const dataTestId = (props as any)?.['data-testid']
+
+  return <Labeled label={label} className={className} data-testid={dataTestId}>
     {apiKey ? content : <NoApiKey className={className}/>}
   </Labeled>
 }

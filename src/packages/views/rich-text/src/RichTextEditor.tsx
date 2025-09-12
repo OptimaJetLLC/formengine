@@ -99,8 +99,11 @@ const RichTextEditor = ({
 
   const mergedStyle = useMemo(() => ({...editorStyle, ...style}), [style])
 
+  // ReactQuill does not display the data-testid attribute
+  const dataTestId = (props as any)?.['data-testid']
+
   // div wrapper is needed because the Labeled wrapper applies attributes to the child, but the ReactQuill component does not accept this props.
-  return <Labeled label={label} style={style} className={className}>
+  return <Labeled label={label} style={style} className={className} data-testid={dataTestId}>
     <div>
       <ReactQuill key={key}
                   defaultValue={plainInitialValue}

@@ -1,4 +1,4 @@
-import {color, define, number, oneOf, string} from '@react-form-builder/core'
+import {color, define, number, oneOf, string, useBuilderValue} from '@react-form-builder/core'
 import init, {qr_svg, SvgOptions} from 'fast_qr'
 import module from 'fast_qr/fast_qr_bg.wasm?url'
 import type {RefObject} from 'react'
@@ -147,6 +147,8 @@ const renderQr = async (props: RenderQrProps, ref: RefObject<HTMLDivElement | nu
   ref.current.innerHTML = qr_svg(props.content, svgOptions)
 }
 
+const defaultContent = 'https://formengine.io'
+
 const FastQr = ({
                   backgroundColor,
                   className,
@@ -163,16 +165,19 @@ const FastQr = ({
                   moduleColor,
                   shape,
                   version,
-                  width
+                  width,
+                  ...rest
                 }: FastQrProps) => {
 
   const ref = useRef<HTMLDivElement>(null)
+
+  const data = useBuilderValue(content, defaultContent)
 
   useEffect(() => {
     // construct a plain object to avoid capturing props
     const qrProps: RenderQrProps = {
       backgroundColor,
-      content,
+      content: data,
       errorCorrectionLevel,
       image,
       imageBackgroundColor,
@@ -188,12 +193,12 @@ const FastQr = ({
     }
 
     renderQr(qrProps, ref).catch(console.error)
-  }, [backgroundColor, content, errorCorrectionLevel, image, imageBackgroundColor, imageBackgroundShape, imageGap,
+  }, [backgroundColor, data, errorCorrectionLevel, image, imageBackgroundColor, imageBackgroundShape, imageGap,
     imagePositionX, imagePositionY, imageSize, margin, moduleColor, shape, version])
 
   const divStyle = useMemo(() => ({width} as const), [width])
 
-  return <div className={className} style={divStyle} ref={ref}></div>
+  return <div {...rest} className={className} style={divStyle} ref={ref}></div>
 }
 
 const nonNegNumber = number.withEditorProps({min: 0})
@@ -204,7 +209,7 @@ export const fastQr = define(FastQr, 'FastQR')
   .icon(QrIcon)
   .props({
     width: nonNegNumber.default(300).hinted('The QR code width'),
-    content: string.default('https://formengine.io').hinted('The QR code content').dataBound,
+    content: string.default(defaultContent).hinted('The QR code content').dataBound,
     moduleColor: color.hinted('The module color'),
     shape: oneOf(0, 1, 2, 3, 4, 5).default(0)
       .labeled('Square', 'Circle', 'RoundedSquare', 'Vertical', 'Horizontal', 'Diamond')

@@ -289,6 +289,7 @@
 - [useAriaAttributesIds](functions/useAriaAttributesIds.md)
 - [useAriaErrorMessage](functions/useAriaErrorMessage.md)
 - [useAriaInvalid](functions/useAriaInvalid.md)
+- [useBuilderValue](functions/useBuilderValue.md)
 - [useDisposable](functions/useDisposable.md)
 - [useErrorModel](functions/useErrorModel.md)
 - [useModalComponentData](functions/useModalComponentData.md)

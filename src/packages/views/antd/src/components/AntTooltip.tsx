@@ -23,11 +23,13 @@ interface AntTooltipProps extends WrapperProps {
   trigger?: ActionType | ActionType[]
 }
 
-export const AntTooltip = ({text, placement, trigger, children}: AntTooltipProps) => {
+const tooltipStyle = {width: '100%', height: '100%'}
+
+export const AntTooltip = ({text, placement, trigger, children, ...props}: AntTooltipProps) => {
   if (!children) return null
 
   return <Tooltip placement={placement} trigger={trigger} title={text}>
-    <div style={{width: '100%', height: '100%'}}>{children}</div>
+    <div style={tooltipStyle} {...props}>{children}</div>
   </Tooltip>
 }
 

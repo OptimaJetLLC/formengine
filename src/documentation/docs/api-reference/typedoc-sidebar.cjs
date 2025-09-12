@@ -1670,6 +1670,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/useBuilderValue",
+              label: "useBuilderValue"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/useDisposable",
               label: "useDisposable"
             },

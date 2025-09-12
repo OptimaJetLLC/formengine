@@ -16,12 +16,15 @@ const Signature = ({value, style, className, label, clearButtonText, readOnly, .
     [props.width])
   const onChange = useTouchOnEvent(props, 'onChange')
 
+  // SignaturePad does not display the data-testid attribute
+  const dataTestId = (props as any)?.['data-testid']
+
   const clear = useCallback(() => {
     padRef.current?.clear()
     onChange(undefined)
   }, [onChange])
 
-  return <LabeledInput style={style} className={className}>
+  return <LabeledInput style={style} className={className} data-testid={dataTestId}>
     <Rows>
       {label && <LabelLeft id={aria['aria-labelledby']} htmlFor={id}>{label}</LabelLeft>}
       <SignaturePad {...props} id={id} readOnly={readOnly} value={value} ref={padRef} ariaAttributes={aria} onChange={onChange}/>

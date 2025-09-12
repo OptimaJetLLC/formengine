@@ -4,12 +4,9 @@ import '@testing-library/jest-dom'
 import {Canvas} from 'skia-canvas'
 import {beforeAll} from 'vitest'
 import failOnConsole from 'vitest-fail-on-console'
+import {isBrowserMode} from './isBrowserMode'
 
 import {addMatchMediaFunctionToWindow} from './matchMedia'
-
-const isBrowserMode = () => {
-  return typeof process.env.VITEST_BROWSER_DEBUG !== 'undefined'
-}
 
 if (!isBrowserMode()) {
   addMatchMediaFunctionToWindow()

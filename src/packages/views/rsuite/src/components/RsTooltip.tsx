@@ -25,13 +25,13 @@ export interface RsTooltipProps extends WrapperProps {
 
 const wrapperStyle = {width: '100%', height: '100%'} as const
 
-const RsTooltip = ({text, placement, trigger, children}: RsTooltipProps) => {
+const RsTooltip = ({text, placement, trigger, children, ...props}: RsTooltipProps) => {
   const tooltip = useMemo(() => <Tooltip>{text}</Tooltip>, [text])
 
   if (!children) return null
 
   return <Whisper placement={placement} trigger={trigger} speaker={tooltip}>
-    <div style={wrapperStyle}>{children}</div>
+    <div {...props} style={wrapperStyle}>{children}</div>
   </Whisper>
 }
 

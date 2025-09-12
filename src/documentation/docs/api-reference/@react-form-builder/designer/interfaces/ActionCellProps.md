@@ -1087,15 +1087,11 @@ Data binding key, but also a sort of key
 
 ***
 
-### icon()
+### icon
 
-> **icon**: () => `ReactElement`\<`IconProps`\>
+> **icon**: `ReactElement`\<`IconProps`\>
 
 The cell icon.
-
-#### Returns
-
-`ReactElement`\<`IconProps`\>
 
 ***
 
