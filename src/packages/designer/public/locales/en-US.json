@@ -677,6 +677,7 @@
     }
   },
   "leftMenu": {
+    "addNewForm": "Add a new form",
     "translation": "Translation",
     "undo": "Undo",
     "menu": "Menu",

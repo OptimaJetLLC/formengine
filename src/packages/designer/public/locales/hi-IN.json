@@ -737,6 +737,7 @@
     "noFormsInFormStorage": "फ़ॉर्म को सहेजें ताकि यह फ़ॉर्म की सूची में दिखाई दे । "
   },
   "leftMenu": {
+    "addNewForm": "एक नया रूप जोड़ें",
     "clear": "साफ़ करें",
     "currentFormName": "वर्तमान स्वरूप का नाम",
     "download": "डाउनलोड करें",

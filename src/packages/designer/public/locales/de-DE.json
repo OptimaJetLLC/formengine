@@ -737,6 +737,7 @@
     "noFormsInFormStorage": "Speichern Sie das Formular so, dass es in der Liste der Formulare angezeigt wird."
   },
   "leftMenu": {
+    "addNewForm": "Fügen Sie ein neues Formular hinzu",
     "clear": "Klar",
     "currentFormName": "Der Name des aktuellen Formulars",
     "download": "Herunterladen",

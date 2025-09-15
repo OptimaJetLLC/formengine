@@ -737,6 +737,7 @@
     "noFormsInFormStorage": "양식 목록에 표시되도록 양식을 저장합니다."
   },
   "leftMenu": {
+    "addNewForm": "새 양식 추가",
     "clear": "클리어",
     "currentFormName": "현재 양식의 이름",
     "download": "다운로드",

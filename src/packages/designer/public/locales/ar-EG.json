@@ -737,6 +737,7 @@
     "noFormsInFormStorage": "احفظ النموذج بحيث يظهر في قائمة النماذج."
   },
   "leftMenu": {
+    "addNewForm": "إضافة نموذج جديد",
     "clear": "واضح",
     "currentFormName": "اسم النموذج الحالي",
     "download": "تحميل",

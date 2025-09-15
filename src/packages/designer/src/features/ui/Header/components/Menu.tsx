@@ -3,7 +3,13 @@ import {faBars} from '@fortawesome/free-solid-svg-icons'
 import * as faSave from '@fortawesome/free-solid-svg-icons/faSave.js'
 import * as faTrash from '@fortawesome/free-solid-svg-icons/faTrash.js'
 import {namedObserver} from '@react-form-builder/core'
-import {Export as ExportIcon, FileDownload as FileDownloadIcon, FileUpload as FileUploadIcon, Import as ImportIcon} from '@rsuite/icons'
+import {
+  Export as ExportIcon,
+  FileDownload as FileDownloadIcon,
+  FileUpload as FileUploadIcon,
+  Import as ImportIcon,
+  Plus as PlusIcon
+} from '@rsuite/icons'
 import type {HTMLAttributes, Ref} from 'react'
 import {useCallback, useMemo} from 'react'
 import {useTranslation} from 'react-i18next'
@@ -11,6 +17,7 @@ import {Dropdown, IconButton} from 'rsuite'
 import type {WithAsProps} from 'rsuite/esm/internals/types'
 import {uploadBinaryFile} from '../../../../stores/fileUpload'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
+import {useCreateForm} from '../../../../utils/useCreateForm'
 import {FaIcon} from '../../../components/Icons'
 import {customizable} from '../../../customization'
 import {MenuLanguageSwitch} from '../../../localization'
@@ -75,6 +82,7 @@ const RawWrapper = (props: HTMLAttributes<HTMLDivElement>) => <div {...props}/>
 const Wrapper = customizable('MainMenu_Button', RawWrapper)
 
 const barsIcon = <FaIcon icon={faBars}/>
+const plusIcon = <PlusIcon/>
 
 const renderToggle = (props: WithAsProps, ref: Ref<any>) => (
   <Wrapper>
@@ -104,8 +112,14 @@ const RawMenu = () => {
   const saveAsIcon = useMemo(() => <FaIcon icon={faSave as unknown as IconDefinition}/>, [])
   const trashIcon = useMemo(() => <FaIcon icon={faTrash as unknown as IconDefinition}/>, [])
 
+  const showPromptDialog = useCreateForm()
+
   return <>
     <MenuDropdown title={t('leftMenu.menu')} size={'sm'} renderToggle={renderToggle} menuStyle={menuStyle}>
+      {builderStore.formStorageEnabled && <Dropdown.Item onSelect={showPromptDialog} icon={plusIcon}
+                                                         data-testid="menu-add-new-form-button">
+        {t('leftMenu.addNewForm')}
+      </Dropdown.Item>}
       <Dropdown.Item onSelect={handleDownload} icon={fileDownloadIcon}>
         {t('leftMenu.download')}
       </Dropdown.Item>

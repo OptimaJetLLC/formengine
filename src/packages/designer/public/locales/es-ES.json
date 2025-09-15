@@ -737,6 +737,7 @@
     "noFormsInFormStorage": "Guarde el formulario para que aparezca en la lista de formularios."
   },
   "leftMenu": {
+    "addNewForm": "Agregar un nuevo formulario",
     "clear": "Claro",
     "currentFormName": "El nombre del formulario actual",
     "download": "Descargar",

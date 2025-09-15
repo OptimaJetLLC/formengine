@@ -737,6 +737,7 @@
     "noFormsInFormStorage": "Сачувајте образац тако да се појави на листи образаца."
   },
   "leftMenu": {
+    "addNewForm": "Додајте нови облик",
     "clear": "Јасно",
     "currentFormName": "Назив тренутног обрасца",
     "download": "Преузимање",

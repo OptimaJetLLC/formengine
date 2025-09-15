@@ -737,6 +737,7 @@
     "noFormsInFormStorage": "フォームのリストに表示されるようにフォームを保存します。"
   },
   "leftMenu": {
+    "addNewForm": "新しいフォームを追加する",
     "clear": "クリア",
     "currentFormName": "現在のフォームの名前",
     "download": "ダウンロード",

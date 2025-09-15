@@ -737,6 +737,7 @@
     "noFormsInFormStorage": "Salvare il modulo in modo che venga visualizzato nell'elenco dei moduli."
   },
   "leftMenu": {
+    "addNewForm": "Aggiungi un nuovo modulo",
     "clear": "Chiaro",
     "currentFormName": "Il nome del modulo corrente",
     "download": "Scaricare",

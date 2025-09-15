@@ -737,6 +737,7 @@
     "noFormsInFormStorage": "保存表单，使其显示在表单列表中。"
   },
   "leftMenu": {
+    "addNewForm": "添加新表单",
     "clear": "清楚",
     "currentFormName": "当前表单的名称",
     "download": "下载",
