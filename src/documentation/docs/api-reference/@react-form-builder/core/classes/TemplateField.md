@@ -26,7 +26,7 @@ the component settings.
 
 [`IStore`](../interfaces/IStore.md)
 
-viewerStore the form viewer settings.
+the form viewer settings.
 
 #### Returns
 
@@ -70,7 +70,7 @@ The name of the component property that contains the field value.
 
 > `readonly` **viewerStore**: [`IStore`](../interfaces/IStore.md)
 
-viewerStore the form viewer settings.
+the form viewer settings.
 
 ## Accessors
 
