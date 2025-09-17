@@ -19,7 +19,8 @@ import {
   cfComponentRole,
   cfDisableStylesForClassNameEditor,
   cfEnableInlineStylesEditor,
-  cfHideFromComponentPalette
+  cfHideFromComponentPalette,
+  cfSkipChildrenDuringFieldCollection
 } from './integratedComponentFeatures'
 import {Meta} from './Meta'
 import {Model} from './Model'
@@ -272,6 +273,16 @@ export class Definer<T extends object> {
    */
   showInlineStylesEditor(value: boolean) {
     return this.addFeature(cfEnableInlineStylesEditor, value)
+  }
+
+  /**
+   * Hides child components from the field collection.
+   * It is used when components are dynamically added to the form, for example in the Repeater component.
+   * @param value true if the feature is enabled.
+   * @returns the modified Definer class instance.
+   */
+  skipChildrenDuringFieldCollection(value = true) {
+    return this.addFeature(cfSkipChildrenDuringFieldCollection, value)
   }
 
   /**

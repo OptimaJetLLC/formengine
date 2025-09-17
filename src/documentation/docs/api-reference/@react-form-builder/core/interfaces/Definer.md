@@ -400,6 +400,29 @@ the modified Definer class instance.
 
 ***
 
+### skipChildrenDuringFieldCollection()
+
+> **skipChildrenDuringFieldCollection**(`value`): `Definer`\<`T`\>
+
+Hides child components from the field collection.
+It is used when components are dynamically added to the form, for example in the Repeater component.
+
+#### Parameters
+
+##### value
+
+`boolean` = `true`
+
+true if the feature is enabled.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.
+
+***
+
 ### type()
 
 > **type**(`type`): `Definer`\<`T`\>

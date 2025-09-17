@@ -2,10 +2,9 @@ import {createView, FormViewer, FormViewerProps} from '@react-form-builder/core'
 import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
 import {render} from '@testing-library/react'
 
-type ViewerProps = Omit<FormViewerProps, 'view'>
 const view = createView(allComponentsViewer)
 
-export const renderForm = (form: object, props?: ViewerProps) => {
+export const renderForm = (form: object, props?: Partial<FormViewerProps>) => {
   const getForm = () => JSON.stringify(form)
   const viewerRef: FormViewerProps['viewerRef'] = {current: null}
 
