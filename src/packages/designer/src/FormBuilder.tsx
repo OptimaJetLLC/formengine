@@ -1,9 +1,10 @@
 import styled from '@emotion/styled'
 import {namedObserver, SuppressResizeObserverErrors} from '@react-form-builder/core'
-import type {ComponentProps} from 'react'
+import type {ComponentProps, ReactNode} from 'react'
 import {Suspense, useEffect} from 'react'
 import {Loader} from 'rsuite'
 import {customizableObserver} from './features/customization'
+import {useHotkeys} from './features/hotkeys/useHotKeys'
 import {useLicense} from './features/license/LicenseContext'
 import {BottomPanel} from './features/ui/BottomPanel'
 import {BuilderProviders} from './features/ui/BuilderProviders'
@@ -35,6 +36,18 @@ const Content = styled.div`
   padding-bottom: 15px;
 `
 
+const GlobalHotkeys = ({children}: { children: ReactNode }) => {
+  const handleKeyDown = useHotkeys()
+
+  // we need this effect to be inside Suspense
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [handleKeyDown])
+
+  return <Container>{children}</Container>
+}
+
 const loaderFallbackElement = <Loader center content="loading"/>
 
 const RawFormBuilderView = (props: ComponentProps<typeof Container>) => {
@@ -56,7 +69,7 @@ const RawFormBuilderView = (props: ComponentProps<typeof Container>) => {
   return (
     <SuppressResizeObserverErrors>
       <Suspense fallback={loaderFallbackElement}>
-        <Container>
+        <GlobalHotkeys>
           <Content {...props}>
             <LeftPanel/>
             <CentralPanel/>
@@ -65,7 +78,7 @@ const RawFormBuilderView = (props: ComponentProps<typeof Container>) => {
             <PromptDialog/>
           </Content>
           <BottomPanel/>
-        </Container>
+        </GlobalHotkeys>
       </Suspense>
     </SuppressResizeObserverErrors>
   )

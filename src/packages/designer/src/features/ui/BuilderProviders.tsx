@@ -25,7 +25,6 @@ import {isDesignerLocalStorageEnabled} from '../../utils/isDesignerLocalStorageE
 import {TooltipPlacementProvider} from '../../utils/TooltipPlacementContext'
 import {getBuilderChildren} from '../dnd'
 import {CustomDragLayer} from '../dnd/components/CustomDragLayer'
-import {useHotkeys} from '../hotkeys/useHotKeys'
 import {LicenseManager} from '../license/LicenseManager'
 import {LocalizationProvider} from '../localization'
 import {FormBuilderContextProvider} from './FormBuilderContextProvider'
@@ -110,8 +109,6 @@ const useBuilderProviderData = (props: FormBuilderProps) => useCallback(() => {
  */
 const RawProviders = ({children, props, builderStore, store}: BuilderProvidersProps) => {
   const {builderRef, licenseKey, ...viewerProps} = props
-
-  useHotkeys(builderStore)
 
   useEffect(() => {
     // If activeFormName is already set from LocalStorageSynchronizer, do not change it

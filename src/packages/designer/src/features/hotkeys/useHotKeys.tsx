@@ -1,5 +1,6 @@
-import {useCallback, useEffect} from 'react'
-import type {BuilderStore} from '../../stores/BuilderStore'
+import {useCallback, useMemo} from 'react'
+import {useBuilderStore} from '../../utils/BuilderStoreContext'
+import {useSaveForm} from '../ui/Header/components/useSaveForm'
 
 /**
  * Stop the event from propagating and prevent its default action.
@@ -10,31 +11,103 @@ const stopEvent = (event: KeyboardEvent) => {
   event.stopPropagation()
 }
 
-/**
- * Handle the "Delete" key action.
- * @param event the Keyboard event.
- * @param builderStore the form builder settings store.
- */
-const handleDeleteKey = (event: KeyboardEvent, builderStore: BuilderStore) => {
-  if (document.activeElement === document.body) {
-    builderStore.deleteSelectedComponents()
-    stopEvent(event)
-  }
+type HotkeyAction = 'deleteSelectedAction'
+  | 'cloneOneSelectedAction'
+  | 'saveFormAction'
+  | 'undoAction'
+  | 'redoAction'
+
+type OS = 'macos' | 'default'
+
+type Hotkey = {
+  alt?: boolean
+  shift?: boolean
+  ctrl?: boolean
+  meta?: boolean
+  key: string
+}
+
+type HotkeyHandler = () => void
+
+const hotKeys: Record<OS, Array<[Hotkey, HotkeyAction]>> = {
+  default: [
+    [{key: 'Delete'}, 'deleteSelectedAction'],
+    [{key: 'd', ctrl: true}, 'cloneOneSelectedAction'],
+    [{key: 's', ctrl: true}, 'saveFormAction'],
+    [{key: 'z', ctrl: true}, 'undoAction'],
+    [{key: 'z', ctrl: true, shift: true}, 'redoAction'],
+    [{key: 'y', ctrl: true}, 'redoAction'],
+  ],
+  macos: [
+    [{key: 'Delete'}, 'deleteSelectedAction'],
+    [{key: 'd', meta: true}, 'cloneOneSelectedAction'],
+    [{key: 's', meta: true}, 'saveFormAction'],
+    [{key: 'z', meta: true, shift: true}, 'redoAction'],
+    [{key: 'z', meta: true}, 'undoAction'],
+  ],
+}
+
+const getOs = (): OS => {
+  const ua = navigator.userAgent
+  return ua.indexOf('Mac') === -1 ? 'default' : 'macos'
+}
+
+const findHotkeyAction = (event: KeyboardEvent) => {
+  const os = getOs()
+
+  const keys = hotKeys[os]
+  const item = keys.find(([hotkey]) => {
+    return !(hotkey.key.toLowerCase() !== event.key.toLowerCase()
+      || !!hotkey.alt !== event.altKey
+      || !!hotkey.shift !== event.shiftKey
+      || !!hotkey.ctrl !== event.ctrlKey
+      || !!hotkey.meta !== event.metaKey)
+  })
+  return item?.[1]
+}
+
+const useHotkeyHandlers = (): Record<HotkeyAction, HotkeyHandler> => {
+  const builderStore = useBuilderStore()
+  const onSave = useSaveForm()
+
+  return useMemo(() => ({
+    deleteSelectedAction: () => {
+      builderStore.deleteSelectedComponents()
+    },
+    cloneOneSelectedAction: () => {
+      const oneSelected = builderStore.oneSelected
+      if (oneSelected) {
+        builderStore.clone(oneSelected)
+      }
+    },
+    saveFormAction: () => {
+      onSave()
+    },
+    undoAction: () => {
+      builderStore.undoer.undo()
+    },
+    redoAction: () => {
+      builderStore.undoer.redo()
+    },
+  }), [builderStore, onSave])
 }
 
 /**
- * The global hotkeys handler hook.
- * @param builderStore the form builder settings store.
+ * @returns the global hotkeys handler.
  */
-export const useHotkeys = (builderStore: BuilderStore) => {
-  const handleKeyDown = useCallback((event: KeyboardEvent) => {
-    if (event.key === 'Delete') {
-      handleDeleteKey(event, builderStore)
-    }
-  }, [builderStore])
+export const useHotkeys = () => {
+  const handlers = useHotkeyHandlers()
 
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [handleKeyDown])
+  return useCallback((event: KeyboardEvent) => {
+    if (document.activeElement !== document.body) return
+
+    const action = findHotkeyAction(event)
+    if (action) {
+      const handler = handlers[action]
+      if (handler) {
+        stopEvent(event)
+        handler()
+      }
+    }
+  }, [handlers])
 }
