@@ -1,0 +1,48 @@
+{
+  "version": "1",
+  "actions": {
+    "onClick": {
+      "body": "  const {userDefinedProps} = e\n  const children = `${userDefinedProps.children ?? 'New caption'}1`\n  e.setUserDefinedProps({...userDefinedProps, children})",
+      "params": {}
+    }
+  },
+  "tooltipType": "RsTooltip",
+  "modalType": "RsModal",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "rsButton1",
+        "type": "RsButton",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "button1"
+          }
+        ],
+        "events": {
+          "onClick": [
+            {
+              "name": "onClick",
+              "type": "code"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
