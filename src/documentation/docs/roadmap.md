@@ -18,19 +18,19 @@ our [GitHub repository](https://github.com/optimajet/formengine/issues).
 
 :::
 
-| Task                                                                | Status      |
-|---------------------------------------------------------------------|-------------|
-| Integration with Camunda                                            | Done        |
-| Hand-drawn signature component                                      | Done        |
-| QR-code component                                                   | Done        |
-| Wizard component                                                    | Done        |
-| Component working with data arrays (repeater)                       | Done        |
-| Support for properties of type "object"                             | In progress |
-| Table component                                                     | Planned     |
-| Integrations with other popular component libraries (MUI, Tailwind) | Planned     |
-| React 19 support                                                    | Done        |
-| Camera component                                                    | Analysis    |
-| Support Server-Side Rendering                                       | Analysis    |
-| Export form to PDF                                                  | Analysis    |
-| Support React Native                                                | Analysis    |
-| Role-based access                                                   | Analysis    |
+| Task                                                                | Status   |
+|---------------------------------------------------------------------|----------|
+| Integration with Camunda                                            | Done     |
+| Hand-drawn signature component                                      | Done     |
+| QR-code component                                                   | Done     |
+| Wizard component                                                    | Done     |
+| Component working with data arrays (repeater)                       | Done     |
+| Support for properties of type "object"                             | Done     |
+| Table component                                                     | Planned  |
+| Integrations with other popular component libraries (MUI, Tailwind) | Planned  |
+| React 19 support                                                    | Done     |
+| Camera component                                                    | Analysis |
+| Support Server-Side Rendering                                       | Analysis |
+| Export form to PDF                                                  | Analysis |
+| Support React Native                                                | Analysis |
+| Role-based access                                                   | Analysis |
