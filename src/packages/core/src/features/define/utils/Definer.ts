@@ -18,6 +18,7 @@ import {
   cfComponentIsPreset,
   cfComponentRole,
   cfDisableStylesForClassNameEditor,
+  cfDisableTooltipProperties,
   cfEnableInlineStylesEditor,
   cfHideFromComponentPalette,
   cfSkipChildrenDuringFieldCollection
@@ -283,6 +284,15 @@ export class Definer<T extends object> {
    */
   skipChildrenDuringFieldCollection(value = true) {
     return this.addFeature(cfSkipChildrenDuringFieldCollection, value)
+  }
+
+  /**
+   * Show or hide 'Tooltip' properties editor.
+   * @param value if the value is `false` or `undefined`, the editor will be displayed.
+   * @returns the modified Definer class instance.
+   */
+  hideTooltipEditor(value = true) {
+    return this.addFeature(cfDisableTooltipProperties, value)
   }
 
   /**

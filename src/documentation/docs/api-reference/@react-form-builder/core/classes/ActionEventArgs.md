@@ -152,6 +152,20 @@ the object to read and modify root form data.
 
 ***
 
+### userDefinedProps
+
+#### Get Signature
+
+> **get** **userDefinedProps**(): `Record`\<`string`, `any`\>
+
+##### Returns
+
+`Record`\<`string`, `any`\>
+
+user-defined properties for the React component that override other properties of the component.
+
+***
+
 ### value
 
 #### Get Signature

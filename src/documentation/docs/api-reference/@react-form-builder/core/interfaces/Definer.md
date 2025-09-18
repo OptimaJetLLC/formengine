@@ -202,6 +202,28 @@ the modified Definer class instance.
 
 ***
 
+### hideTooltipEditor()
+
+> **hideTooltipEditor**(`value`): `Definer`\<`T`\>
+
+Show or hide 'Tooltip' properties editor.
+
+#### Parameters
+
+##### value
+
+`boolean` = `true`
+
+if the value is `false` or `undefined`, the editor will be displayed.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.
+
+***
+
 ### icon()
 
 > **icon**(`icon`): `Definer`\<`T`\>

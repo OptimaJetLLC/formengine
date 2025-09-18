@@ -3,9 +3,7 @@ import {FormViewerProps} from '@react-form-builder/core'
 import {FormBuilder, FormBuilderProps} from '@react-form-builder/designer'
 import {render} from '@testing-library/react'
 
-type BuilderProps = Omit<FormBuilderProps, 'view'>
-
-export const renderBuilder = async (form: object, props?: BuilderProps) => {
+export const renderBuilder = async (form: object, props?: Partial<FormBuilderProps>) => {
   const getForm = () => JSON.stringify(form)
   const viewerRef: FormViewerProps['viewerRef'] = {current: null}
   const builderRef: FormBuilderProps['builderRef'] = {current: null}
