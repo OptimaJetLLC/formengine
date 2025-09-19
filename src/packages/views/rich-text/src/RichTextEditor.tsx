@@ -1,6 +1,7 @@
 import {define, event, object, readOnly, someOf, string} from '@react-form-builder/core'
 import {uniqueId} from 'lodash-es'
 import type {CSSProperties} from 'react'
+import {useCallback} from 'react'
 import {useEffect, useMemo, useRef, useState} from 'react'
 import ReactQuill from 'react-quill-new'
 import 'react-quill-new/dist/quill.snow.css'
@@ -68,6 +69,8 @@ const editorStyle: CSSProperties = {
   flex: 1
 }
 
+const QUILL_EMPTY_VALUE = '<p><br></p>'
+
 const RichTextEditor = ({
                           value,
                           initialValue,
@@ -77,10 +80,13 @@ const RichTextEditor = ({
                           placeholder,
                           className,
                           modules: customModules,
+                          onChange,
                           ...props
                         }: RichTextEditorProps) => {
   const [key, setKey] = useState(uniqueId())
   const valueRef = useRef(value)
+  const quillRef = useRef<ReactQuill>(null)
+
   valueRef.current = value
 
   const plainInitialValue = useMemo(() => {
@@ -102,14 +108,31 @@ const RichTextEditor = ({
   // ReactQuill does not display the data-testid attribute
   const dataTestId = (props as any)?.['data-testid']
 
+  const handleChange = useCallback((value: string, _delta: any, _source: string, _editor: any) => {
+      const adjustedValue = value === QUILL_EMPTY_VALUE ? undefined : value
+
+      valueRef.current = adjustedValue
+      onChange?.(adjustedValue)
+    },
+    [onChange]
+  )
+
+  useEffect(() => {
+    if (!value) {
+      quillRef.current?.getEditor()?.setContents([{insert: '\n'}]) // force value to be exactly QUILL_EMPTY_VALUE
+    }
+  }, [value])
+
   // div wrapper is needed because the Labeled wrapper applies attributes to the child, but the ReactQuill component does not accept this props.
   return <Labeled label={label} style={style} className={className} data-testid={dataTestId}>
     <div>
       <ReactQuill key={key}
+                  ref={quillRef}
                   defaultValue={plainInitialValue}
                   modules={modules}
                   placeholder={placeholder}
                   style={mergedStyle}
+                  onChange={handleChange}
                   {...props}
       />
     </div>
