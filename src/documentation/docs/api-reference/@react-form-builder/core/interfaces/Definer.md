@@ -334,6 +334,28 @@ the modified Definer class instance.
 
 ***
 
+### overrideEventHandlers()
+
+> **overrideEventHandlers**(`eventHandlers`): `Definer`\<`T`\>
+
+Overrides event handlers (for example, onChange, onBlur) that are added to the component.
+
+#### Parameters
+
+##### eventHandlers
+
+`Record`\<[`EventName`](../type-aliases/EventName.md), [`ActionEventHandler`](../type-aliases/ActionEventHandler.md)\>
+
+the custom event handlers.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified instance of the builder.
+
+***
+
 ### preview()
 
 > **preview**(`customPreview`): `Definer`\<`T`\>

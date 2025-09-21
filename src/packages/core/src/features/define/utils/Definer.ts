@@ -5,6 +5,7 @@ import {commonStyles, getDefault, getDefaultCss} from '../../annotation'
 import {toArray} from '../../annotation/toArray'
 import {toStyleProperties} from '../../annotation/toStyleProperties'
 import type {Annotations} from '../../annotation/utils/builders/Annotations'
+import type {ActionEventHandler, EventName} from '../../event'
 import {modules} from '../constants'
 import type {ActionsInitializer, ComponentKind} from '../types'
 import type {BuilderComponent} from './BuilderComponent'
@@ -20,6 +21,7 @@ import {
   cfDisableStylesForClassNameEditor,
   cfDisableTooltipProperties,
   cfEnableInlineStylesEditor,
+  cfEventHandlers,
   cfHideFromComponentPalette,
   cfSkipChildrenDuringFieldCollection
 } from './integratedComponentFeatures'
@@ -293,6 +295,15 @@ export class Definer<T extends object> {
    */
   hideTooltipEditor(value = true) {
     return this.addFeature(cfDisableTooltipProperties, value)
+  }
+
+  /**
+   * Overrides event handlers (for example, onChange, onBlur) that are added to the component.
+   * @param eventHandlers the custom event handlers.
+   * @returns the modified instance of the builder.
+   */
+  overrideEventHandlers(eventHandlers: Record<EventName, ActionEventHandler>) {
+    return this.addFeature(cfEventHandlers, eventHandlers)
   }
 
   /**

@@ -418,30 +418,30 @@ function onChange(event: React.ChangeEvent): void
 Well, we can just make a wrapper component and define everything we need in it. Create a file `src/MatInput.tsx` and add the following
 content to it:
 
-```tsx title='src/MatInput.tsx'
-import {Input, InputProps} from '@mui/material'
+```tsx title='src/MatInput.tsx' {6-8,13-15,17,23}
+import type {InputProps} from '@mui/material'
+import {Input} from '@mui/material'
 import {define, string} from '@react-form-builder/core'
+import {useCallback} from 'react'
 
-// highlight-start
 type MatInputProps = InputProps & {
   onChange?: (value: any) => void
 }
-// highlight-end
 
 const MatInput = (props: MatInputProps) => {
   const {onChange, ...otherProps} = props
-  // highlight-start
-  return <Input {...otherProps} onChange={event => {
+
+  const handleChange = useCallback((event: any) => {
     onChange?.(event.target.value)
-  }}/>
-  // highlight-end
+  }, [onChange])
+
+  return <Input {...otherProps} onChange={handleChange}/>
 }
 
 export const matInput = define(MatInput, 'MatInput')
   .name('Input')
   .props({
-    // highlight-next-line
-    value: string.valued.default('')
+    value: string.valued.uncontrolledValue('')
   })
 ```
 
@@ -451,6 +451,31 @@ From the code above, you can see that:
 2. We defined a `MatInput` component where we set the required behaviour for the `onChange` property.
 3. We described the component by adding the `value` property as a string containing a value and having the default value of an empty string
    (this is to prevent React from writing errors about uncontrolled value to the console).
+
+An alternative way is to [define event handlers](/api-reference/@react-form-builder/core/interfaces/Definer#overrideeventhandlers) in the
+component description:
+
+```tsx title='src/MatInput.tsx' {8,10-19}
+import {Input} from '@mui/material'
+import type {ActionEventArgs} from '@react-form-builder/core'
+import {define, string} from '@react-form-builder/core'
+
+export const matInput = define(Input, 'MatInput')
+  .name('Input')
+  .props({
+    value: string.valued.uncontrolledValue('')
+  })
+  .overrideEventHandlers({
+    onChange: (e: ActionEventArgs) => {
+      const value = e.args[0].target.value
+      e.sender.field?.setValue(value)
+    },
+    // optional, to track the touched field property
+    onBlur: (e: ActionEventArgs) => {
+      e.sender.field?.setTouched()
+    },
+  })
+```
 
 Now you can add this component to `src/App.tsx`. For simplicity only the code for the designer is shown:
 

@@ -3,7 +3,8 @@ import {assign} from 'lodash-es'
 import {makeAutoObservable} from 'mobx'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
 import {silentTransformCssString} from '../features/css-style/cssTransform'
-import type {ActionData, EventName} from '../features/event'
+import {cfEventHandlers} from '../features/define/utils/integratedComponentFeatures'
+import type {ActionData, ActionEventHandler, EventName} from '../features/event'
 import {ActionEventArgs, DidMountEvent, WillUnmountEvent} from '../features/event'
 import {getArgumentFunction, isFunctionArgumentValue} from '../features/event/consts/functionArgument'
 import type {ComponentPropertiesContext} from '../features/properties-context/ComponentPropertiesContext'
@@ -18,12 +19,10 @@ import type {ComponentStoreLocalizer} from './ComponentStoreLocalizer'
 import type {IComponentState} from './IComponentState'
 import type {Store} from './Store'
 
-/**
- * The generic asynchronous function type.
- */
-type GenericVoidFunction = (...args: any[]) => void
+const createEventHandlers = (data: ComponentData): Record<EventName, ActionEventHandler> => {
+  const customHandlers = data.model.features[cfEventHandlers]
+  if (customHandlers) return customHandlers as Record<EventName, ActionEventHandler>
 
-const createEventHandlers = (data: ComponentData): Record<EventName, GenericVoidFunction> => {
   if (!data.field) return {}
 
   return {
@@ -126,7 +125,8 @@ const computeEvents = (componentState: ComponentState) => {
       const handler = eventHandlers[name]
       if (handler) {
         const actionEventArgs = new ActionEventArgs(name, data, componentState.store, args, componentState.get)
-        handler(actionEventArgs)
+        const handlerResult = handler(actionEventArgs)
+        if (isPromise(handlerResult)) await handlerResult
       }
 
       const defaultHandler = createDefaultActionHandler(componentState, name)

@@ -1,0 +1,55 @@
+{
+  "version": "1",
+  "errorType": "RsErrorMessage",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "inputWithDefaultEventHandlers",
+        "type": "InputWithDefaultEventHandlers",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "inputWithDefaultEventHandlers"
+          }
+        ]
+      },
+      {
+        "key": "inputWithoutEventHandlers",
+        "type": "InputWithoutDefaultEventHandlers",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "inputWithoutEventHandlers"
+          }
+        ]
+      },
+      {
+        "key": "inputWithCustomEventHandlers",
+        "type": "InputWithCustomEventHandlers",
+        "props": {},
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "inputWithCustomEventHandlers"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

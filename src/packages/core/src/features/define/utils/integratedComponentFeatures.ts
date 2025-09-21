@@ -62,3 +62,12 @@ registerBooleanComponentFeature(cfHideFromComponentPalette)
  */
 export const cfSkipChildrenDuringFieldCollection = 'skip-children-during-field-collection'
 registerBooleanComponentFeature(cfSkipChildrenDuringFieldCollection)
+
+/**
+ * Adding this feature allows you to override the standard onBlur and onChange handlers.
+ */
+export const cfEventHandlers = 'event-handlers'
+registerComponentFeature({
+  name: cfEventHandlers,
+  allowMultiple: false,
+})
