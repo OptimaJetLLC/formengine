@@ -19,6 +19,7 @@
     "docs:start": "npx lerna run start --scope=@react-form-builder/docs",
     "docs:build": "npx lerna run build --scope=@react-form-builder/docs",
     "docs:serve": "npx lerna run serve --scope=@react-form-builder/docs",
+    "docs:generate-bundles": "node ./scripts/generate-doc-bundles",
     "test": "npx lerna run test",
     "test:module": "npx lerna run test:module",
     "test:component": "npx lerna run test:component --concurrency=1",

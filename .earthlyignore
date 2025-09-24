@@ -12,3 +12,4 @@
 **/.swc
 
 src/**/*.tgz
+!src/documentation/website/packages/*.tgz

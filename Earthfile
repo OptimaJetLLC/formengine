@@ -472,6 +472,7 @@ dependencies:
    src/tests/e2e
 
   COPY src/documentation/website/package.json src/documentation/website
+  COPY --dir src/documentation/website/packages src/documentation/website
 
   COPY src/packages/apps/demo/package.json src/packages/apps/demo
   COPY src/packages/apps/example-builder/package.json src/packages/apps/example-builder
