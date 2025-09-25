@@ -27,6 +27,10 @@ const Container = styled.div`
   background-color: var(--rs-btn-default-bg);
   font-size: 13px;
 
+  & > svg {
+    color: #9CA3AF;
+  }
+
   &:hover:not(.disabled) {
     background-color: var(--rs-btn-default-hover-bg);
   }
