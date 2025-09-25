@@ -13,7 +13,7 @@ const matchHostnameWildcard = (wildcard: string, domain: string): boolean => {
  * @param hostname to check against.
  * @returns boolean check result.
  */
-export const verifyDomain = (domains: string[], hostname = window.location.hostname): boolean => {
+export const verifyDomain = (domains: string[], hostname = globalThis.location.hostname): boolean => {
   if (domains.some(domain => domain === '*')) return true
   return domains.some((d) => matchHostnameWildcard(d, hostname))
 }

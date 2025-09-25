@@ -1,7 +1,7 @@
 import type {UseStore} from 'idb-keyval'
 import {clear, createStore, del, entries, get, keys, set} from 'idb-keyval'
 
-const indexedDbExists = !!window.indexedDB
+const indexedDbExists = !!globalThis.indexedDB
 
 /**
  * Creates key-value storage.

@@ -4,7 +4,7 @@
  * @returns the array buffer.
  */
 export function decodeB64(data: string) {
-  const byteStr = window.atob(data)
+  const byteStr = globalThis.atob(data)
   const bytes = new Uint8Array(byteStr.length)
   for (let i = 0; i < byteStr.length; i++) {
     bytes[i] = byteStr.charCodeAt(i)
@@ -18,7 +18,7 @@ export function decodeB64(data: string) {
  * @returns a Promise that fulfills with the imported key as a CryptoKey object.
  */
 export function importPublicKey(pem: string) {
-  return window.crypto.subtle.importKey(
+  return globalThis.crypto.subtle.importKey(
     'spki',
     decodeB64(pem),
     {

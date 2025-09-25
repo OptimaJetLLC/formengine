@@ -83,7 +83,7 @@ const localizeFn = useCustomLocalizer ? localizer : undefined
 const logEvents = false
 const cycleThroughThemes = false
 
-const indexedDbExists = !!window.indexedDB
+const indexedDbExists = !!globalThis.indexedDB
 const formStorage = indexedDbExists
   ? new IndexedDbFormStorage('form-builder-store', 'form-store')
   : undefined

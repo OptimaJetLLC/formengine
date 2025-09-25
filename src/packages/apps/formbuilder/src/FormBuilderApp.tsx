@@ -29,7 +29,7 @@ const view = new BuilderView(components)
 
 const sampleFormName = 'SampleForm'
 
-const indexedDbExists = !!window.indexedDB
+const indexedDbExists = !!globalThis.indexedDB
 const formStorage = indexedDbExists
   ? new IndexedDbFormStorage('demo-db', 'demo-store')
   : undefined

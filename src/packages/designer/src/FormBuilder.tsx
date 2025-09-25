@@ -41,8 +41,8 @@ const GlobalHotkeys = ({children}: { children: ReactNode }) => {
 
   // we need this effect to be inside Suspense
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
+    globalThis.addEventListener('keydown', handleKeyDown)
+    return () => globalThis.removeEventListener('keydown', handleKeyDown)
   }, [handleKeyDown])
 
   return <Container>{children}</Container>

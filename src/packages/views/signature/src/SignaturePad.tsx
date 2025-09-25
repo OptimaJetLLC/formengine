@@ -62,7 +62,7 @@ export const SignaturePad = forwardRef<SignaturePadHandle, SignaturePadProps>((p
 
     const pad = new VanillaSignaturePad(canvasRef.current, withDefaultProps(initialPadProps.current))
     if (initialValue.current) {
-      const ratio = Math.max(window.devicePixelRatio ?? 1, 1)
+      const ratio = Math.max(globalThis.devicePixelRatio ?? 1, 1)
       const options = {ratio, width, height}
       pad.fromDataURL(initialValue.current, options).catch(console.error)
     }

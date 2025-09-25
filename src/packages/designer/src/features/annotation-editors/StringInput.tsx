@@ -66,7 +66,7 @@ export const ResizableStringInput = (props: AnnotationEditorProps) => {
     const input = inputRef.current
     const container = containerRef.current
     if (input && container) {
-      const style = window.getComputedStyle(input)
+      const style = globalThis.getComputedStyle(input)
       container.style.lineHeight = style.lineHeight
       container.style.fontSize = style.fontSize
     }

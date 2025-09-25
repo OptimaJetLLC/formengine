@@ -11,8 +11,8 @@ const log = (...args: any[]) => {
 }
 
 async function verify(data: string, signature: ArrayBuffer, publicKeyString: string) {
-  if (!window.crypto.subtle) {
-    log('window.crypto.subtle is not available')
+  if (!globalThis.crypto.subtle) {
+    log('crypto.subtle is not available')
     return false
   }
 
@@ -27,7 +27,7 @@ async function verify(data: string, signature: ArrayBuffer, publicKeyString: str
     return
   }
 
-  return await window.crypto.subtle.verify(
+  return await globalThis.crypto.subtle.verify(
     {
       name: 'ECDSA',
       hash: {name: 'SHA-384'}
@@ -93,7 +93,7 @@ export async function extractLicenseKey(licenseKey: string): Promise<LicenseData
       return LicenseError.BROKEN_KEY_SEPARATOR
     }
 
-    const extractedData = window.atob(license.slice(0, separatorIndex))
+    const extractedData = globalThis.atob(license.slice(0, separatorIndex))
     const extractedSign = decodeB64(license.slice(separatorIndex + separator.length))
     const verified = await verify(extractedData, extractedSign, publicKeyPem)
 
