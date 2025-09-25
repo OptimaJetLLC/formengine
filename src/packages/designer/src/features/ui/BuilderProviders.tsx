@@ -1,4 +1,4 @@
-import type {ComponentData, ComponentStore} from '@react-form-builder/core'
+import type {ComponentData, ComponentPropertiesContext, ComponentStore} from '@react-form-builder/core'
 import {
   ComponentState,
   ComponentTree,
@@ -63,7 +63,7 @@ class BuilderComponentStateFactory {
     }, {name: nameObservable(`BuilderComponentStateFactory`)})
   }
 
-  createComponentState(data: ComponentData, store: Store) {
+  createComponentState(data: ComponentData, store: Store, context?: ComponentPropertiesContext) {
     const localizer = (componentStore: ComponentStore) => {
       return store.localizeComponent('component', data.dataRoot, componentStore)
     }
@@ -75,7 +75,7 @@ class BuilderComponentStateFactory {
       return getChildren(componentData, ComponentTree, componentProps)
     }
 
-    return new ComponentState(data, store, localizer, computeChildren)
+    return new ComponentState(data, store, localizer, computeChildren, context)
   }
 }
 
@@ -83,8 +83,8 @@ const useBuilderProviderData = (props: FormBuilderProps) => useCallback(() => {
   const {builderRef, ...viewerProps} = props
 
   const stateFactory = new BuilderComponentStateFactory()
-  const componentStateFactory = (data: ComponentData, store: Store) => {
-    return stateFactory.createComponentState(data, store)
+  const componentStateFactory = (data: ComponentData, store: Store, context?: ComponentPropertiesContext) => {
+    return stateFactory.createComponentState(data, store, context)
   }
   const store = new Store(new FormViewerPropsStore(viewerProps), componentStateFactory)
 

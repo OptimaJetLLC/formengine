@@ -6,7 +6,7 @@ Arguments passed to the event handler.
 
 ### Constructor
 
-> **new ActionEventArgs**(`type`, `sender`, `store`, `args`, `renderedProps`): `ActionEventArgs`
+> **new ActionEventArgs**(`type`, `sender`, `store`, `args`, `renderedProps`, `cellInfo?`): `ActionEventArgs`
 
 Creates arguments for the event handler.
 
@@ -42,6 +42,12 @@ the event arguments.
 
 the component properties that were used to render the sender component.
 
+##### cellInfo?
+
+[`CellInfo`](../type-aliases/CellInfo.md)
+
+the information about the current table cell.
+
 #### Returns
 
 `ActionEventArgs`
@@ -53,6 +59,14 @@ the component properties that were used to render the sender component.
 > `readonly` **args**: `any`[]
 
 the event arguments.
+
+***
+
+### cellInfo?
+
+> `readonly` `optional` **cellInfo**: [`CellInfo`](../type-aliases/CellInfo.md)
+
+the information about the current table cell.
 
 ***
 

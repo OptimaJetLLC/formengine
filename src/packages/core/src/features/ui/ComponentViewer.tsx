@@ -1,17 +1,27 @@
 import {cx} from '@emotion/css'
-import {Fragment, useEffect} from 'react'
+import {Fragment, useContext, useEffect, useMemo} from 'react'
 import {namedObserver} from '../../utils'
 import {useComponentData} from '../../utils/contexts/ComponentDataContext'
+import {useStore} from '../../utils/contexts/StoreContext'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
+import {getCellInfoPropertiesContext} from '../properties-context/getCellInfoPropertiesContext'
+import {CellInfoContext} from '../table/CellInfoContext'
 import {TooltipWrapper} from '../tooltip/TooltipWrapper'
 import {Erroneous} from '../validation'
 import {DefaultWrapper} from './DefaultWrapper'
 
 const RawComponentViewer = () => {
   const data = useComponentData()
+  const formViewerStore = useStore()
   const {componentWrapper} = useViewerProps()
 
-  const componentState = data.componentState
+  const cellInfoContext = useContext(CellInfoContext)
+  const componentState = useMemo(() => {
+    if (!cellInfoContext) return data.componentState
+
+    const cellInfoPropertiesContext = getCellInfoPropertiesContext(data, cellInfoContext, formViewerStore)
+    return formViewerStore.componentStateFactory(data, formViewerStore, cellInfoPropertiesContext)
+  }, [data, formViewerStore, cellInfoContext])
 
   useEffect(() => {
     componentState.onDidMount()

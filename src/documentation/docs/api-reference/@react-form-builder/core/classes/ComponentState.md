@@ -10,7 +10,7 @@ Calculates all the properties of the form view component.
 
 ### Constructor
 
-> **new ComponentState**(`data`, `store`, `localizer`, `computeChildren`): `ComponentState`
+> **new ComponentState**(`data`, `store`, `localizer`, `computeChildren`, `context?`): `ComponentState`
 
 Creates an instance that calculates the properties of the form viewer component.
 
@@ -39,6 +39,12 @@ the function to localize the properties of a component, returns a Record with lo
 [`ComputeChildren`](../type-aliases/ComputeChildren.md)
 
 the function that calculates all child properties of a component.
+
+##### context?
+
+[`ComponentPropertiesContext`](../type-aliases/ComponentPropertiesContext.md)
+
+the context for working with component properties.
 
 #### Returns
 

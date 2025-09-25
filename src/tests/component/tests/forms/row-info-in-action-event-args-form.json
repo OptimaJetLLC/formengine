@@ -1,0 +1,43 @@
+{
+  "version": "1",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "testTable1",
+        "type": "TestTable",
+        "props": {},
+        "dataKey": "tableData",
+        "children": [
+          {
+            "key": "simpleCell1",
+            "type": "SimpleCell",
+            "props": {},
+            "slot": "cellChild",
+            "events": {
+              "onClick": [
+                {
+                  "name": "handleCellClick",
+                  "type": "custom"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

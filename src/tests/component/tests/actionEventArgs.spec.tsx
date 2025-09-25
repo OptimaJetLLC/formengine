@@ -1,11 +1,15 @@
 import {view} from '@react-form-builder/components-rsuite'
-import {ActionEventArgs, FormViewer, FormViewerProps} from '@react-form-builder/core'
+import {ActionEventArgs, createView, FormViewer, FormViewerProps} from '@react-form-builder/core'
+import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {expect} from 'vitest'
+import {renderForm} from '../util/renderForm'
 import changeDataForm from './forms/action-event-args-change-data.form.json'
 import form from './forms/action-event-args-main-form.json'
 import parentTemplate from './forms/action-event-args-parent-template.json'
 import template from './forms/action-event-args-template.json'
+import rowInActionEventArgsForm from './forms/row-info-in-action-event-args-form.json'
+import {simpleCell, testTable} from './TestTable'
 
 const getForm = (name?: string) => {
   if (name === 'action-event-args-template') {
@@ -352,5 +356,49 @@ describe('ActionEventArgs data tests', function () {
     const expectedValue = 'Claude changed'
     expect(await findByTestId('input1')).toHaveValue(expectedValue)
     expect(await findByTestId('input2')).toHaveValue(expectedValue)
+  })
+
+  it('The information about the row is passed to the action event args', async () => {
+    const models = [
+      ...allComponentsBuilder,
+      testTable.build(),
+      simpleCell.build(),
+    ].map(c => c.model)
+    const view = createView(models)
+
+    const tableData = [
+      {key: 1, value: 'Claude'},
+      {key: 2, value: 'Margo'},
+      {key: 3, value: 'George'},
+    ] as const
+
+    const initialData = {tableData}
+
+    const actionsResult: ActionEventArgs[] = []
+
+    const actions = {
+      handleCellClick: (e: ActionEventArgs) => {
+        actionsResult.push(e)
+      }
+    }
+
+    const {findByTestId} = renderForm(rowInActionEventArgsForm, {view, initialData, actions})
+
+    for (let i = 0; i < tableData.length; i++) {
+      const cell = await findByTestId(`cell-${i}-value`)
+      const span = cell.querySelector('span')
+      if (span) {
+        fireEvent.click(span)
+        expect(span).toHaveTextContent(tableData[i].value)
+      }
+    }
+
+    expect(actionsResult.length).toEqual(3)
+
+    actionsResult.forEach((({cellInfo}, resultIndex) => {
+      expect(cellInfo?.dataKey).toEqual('value')
+      expect(cellInfo?.rowIndex).toEqual(resultIndex)
+      expect(cellInfo?.rowData).toStrictEqual(tableData[resultIndex])
+    }))
   })
 })

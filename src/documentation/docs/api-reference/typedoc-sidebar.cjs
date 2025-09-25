@@ -703,6 +703,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/CellInfo",
+              label: "CellInfo"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/ComponentDeviceStyle",
               label: "ComponentDeviceStyle"
             },
@@ -820,6 +825,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/DataBindingType",
               label: "DataBindingType"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/DataKeyType",
+              label: "DataKeyType"
             },
             {
               type: "doc",
@@ -1141,6 +1151,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/variables/BuilderModeProvider",
               label: "BuilderModeProvider"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/CellInfoContextProvider",
+              label: "CellInfoContextProvider"
             },
             {
               type: "doc",
@@ -1615,6 +1630,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/needRender",
+              label: "needRender"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/SDiv",
               label: "SDiv"
             },
@@ -1667,6 +1687,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/functions/useAriaInvalid",
               label: "useAriaInvalid"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/useBuilderComponent",
+              label: "useBuilderComponent"
             },
             {
               type: "doc",
