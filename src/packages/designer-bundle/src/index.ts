@@ -3,6 +3,7 @@ import * as googleMapComponent from '@react-form-builder/components-google-map'
 import * as richTextComponent from '@react-form-builder/components-rich-text'
 import * as rSuiteComponents from '@react-form-builder/components-rsuite'
 import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import * as rSuiteTableComponents from '@react-form-builder/components-rsuite-table'
 import * as signatureComponent from '@react-form-builder/components-signature'
 import type {BuilderComponent} from '@react-form-builder/core'
 import {BiDi, BuilderView} from '@react-form-builder/core'
@@ -17,7 +18,8 @@ const components = [
   richTextComponent.richTextComponent,
   signatureComponent.signatureComponent,
   fastQrComponent.fastQrComponent,
-  googleMapComponent.googleMapComponent
+  googleMapComponent.googleMapComponent,
+  ...rSuiteTableComponents.rSuiteTableComponents,
 ].map(definer => definer.build())
 
 /**
@@ -65,5 +67,5 @@ export function renderFormBuilder(elementId: string, props: Partial<FormBuilderP
   return renderFormBuilderTo(container, props)
 }
 
-export {rSuiteComponents, richTextComponent, signatureComponent, fastQrComponent, googleMapComponent}
+export {rSuiteComponents, richTextComponent, signatureComponent, fastQrComponent, googleMapComponent, rSuiteTableComponents}
 export {ActionDefinition, buildForm, Language} from '@react-form-builder/core'

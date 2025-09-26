@@ -1,0 +1,5 @@
+export const rsCellTypeName = 'RsCell'
+export const rsColumnGroupTypeName = 'RsColumnGroup'
+export const rsColumnTypeName = 'RsColumn'
+export const rsHeaderCellTypeName = 'RsHeaderCell'
+export const rsTableTypeName = 'RsTable'

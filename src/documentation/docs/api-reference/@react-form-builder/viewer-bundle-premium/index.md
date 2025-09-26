@@ -6,6 +6,7 @@
 - [googleMapComponent](namespaces/googleMapComponent/index.md)
 - [richTextComponent](namespaces/richTextComponent/index.md)
 - [rSuiteComponents](namespaces/rSuiteComponents/index.md)
+- [rSuiteTableComponents](namespaces/rSuiteTableComponents/index.md)
 - [signatureComponent](namespaces/signatureComponent/index.md)
 
 ## Classes

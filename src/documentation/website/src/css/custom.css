@@ -138,3 +138,8 @@ img.medium-zoom-image--opened {
   font-style: italic;
   font-size: large;
 }
+
+.json-code-block-container {
+  max-height: 400px;
+  overflow: scroll;
+}

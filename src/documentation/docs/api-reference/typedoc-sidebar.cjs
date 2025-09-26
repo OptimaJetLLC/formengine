@@ -2910,6 +2910,32 @@ const typedocSidebar = {
             },
             {
               type: "category",
+              label: "rSuiteTableComponents",
+              items: [
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteTableComponents/variables/rSuiteTableComponents",
+                      label: "rSuiteTableComponents"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteTableComponents/variables/tableModels",
+                      label: "tableModels"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteTableComponents/index"
+              }
+            },
+            {
+              type: "category",
               label: "signatureComponent",
               items: [
                 {
@@ -4091,6 +4117,32 @@ const typedocSidebar = {
               link: {
                 type: "doc",
                 id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/index"
+              }
+            },
+            {
+              type: "category",
+              label: "rSuiteTableComponents",
+              items: [
+                {
+                  type: "category",
+                  label: "Variables",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteTableComponents/variables/rSuiteTableComponents",
+                      label: "rSuiteTableComponents"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteTableComponents/variables/tableModels",
+                      label: "tableModels"
+                    }
+                  ]
+                }
+              ],
+              link: {
+                type: "doc",
+                id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteTableComponents/index"
               }
             },
             {

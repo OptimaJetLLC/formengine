@@ -459,6 +459,184 @@
       "hint": "Placeholder text for the map search input."
     }
   },
+  "RsCell": {
+    "dataKey": {
+      "name": "Data key",
+      "hint": "Data binding key, but also a sort of key"
+    }
+  },
+  "RsColumn": {
+    "align": {
+      "name": "Align",
+      "hint": "Alignment"
+    },
+    "colSpan": {
+      "name": "Col span",
+      "hint": "Merges column cells to merge when the 'Data key' value for the merged column is null or undefined"
+    },
+    "fixed": {
+      "name": "Fixed",
+      "hint": "Fixed column"
+    },
+    "flexGrow": {
+      "name": "Flex grow",
+      "hint": "Set the column width automatically adjusts, when set 'Flex grow' cannot set 'Resizable' and 'Width' property"
+    },
+    "fullText": {
+      "name": "Full text",
+      "hint": "Whether to display the full text of the cell content when the mouse is hovered"
+    },
+    "minWidth": {
+      "name": "Min width",
+      "hint": "When you use 'Flex grow', you can set a minimum width"
+    },
+    "resizable": {
+      "name": "Resizable",
+      "hint": "Customizable resize column width"
+    },
+    "rowSpan": {
+      "name": "Row span",
+      "hint": "Merges rows on the specified column"
+    },
+    "sortable": {
+      "name": "Sortable",
+      "hint": "Sortable"
+    },
+    "verticalAlign": {
+      "name": "Vertical align",
+      "hint": "Vertical alignment"
+    },
+    "width": {
+      "name": "Width",
+      "hint": "Column width"
+    }
+  },
+  "RsColumnGroup": {
+    "align": {
+      "name": "Align",
+      "hint": "Alignment"
+    },
+    "fixed": {
+      "name": "Fixed",
+      "hint": "Fixed column group"
+    },
+    "groupHeaderHeight": {
+      "name": "Group header height",
+      "hint": "The height of the header of the merged cell group"
+    },
+    "header": {
+      "name": "Header",
+      "hint": "Group header"
+    },
+    "verticalAlign": {
+      "name": "Vertical align",
+      "hint": "Vertical alignment"
+    }
+  },
+  "RsHeaderCell": {
+    "children": {
+      "name": "Content",
+      "hint": "Table column header"
+    }
+  },
+  "RsTable": {
+    "affixHeader": {
+      "name": "Affix header",
+      "hint": "Affix the table header to the specified location on the page"
+    },
+    "affixHorizontalScrollbar": {
+      "name": "Affix horizontal scrollbar",
+      "hint": "Affix the table horizontal scrollbar to the specified position on the page"
+    },
+    "autoHeight": {
+      "name": "Auto height",
+      "hint": "The height of the table will be automatically expanded according to the number of data rows, and no vertical scroll bar will appear"
+    },
+    "bordered": {
+      "name": "Bordered",
+      "hint": "Show border"
+    },
+    "cellBordered": {
+      "name": "Cell bordered",
+      "hint": "Show cell border"
+    },
+    "data": {
+      "name": "Data",
+      "hint": "Table data"
+    },
+    "defaultSortType": {
+      "name": "Default sort type",
+      "hint": "Sort type"
+    },
+    "fillHeight": {
+      "name": "Fill height",
+      "hint": "Force the height of the table to be equal to the height of its parent container. Cannot be used together with 'Auto height'"
+    },
+    "headerHeight": {
+      "name": "Header height",
+      "hint": "Table header height"
+    },
+    "height": {
+      "name": "Height",
+      "hint": "Table height"
+    },
+    "hover": {
+      "name": "Hover",
+      "hint": "The row of the table has a mouseover effect"
+    },
+    "loading": {
+      "name": "Loading",
+      "hint": "Show loading"
+    },
+    "maxHeight": {
+      "name": "Max height",
+      "hint": "Maximum height"
+    },
+    "minHeight": {
+      "name": "Min height",
+      "hint": "Minimum height"
+    },
+    "rowClassName": {
+      "name": "Row class name",
+      "hint": "Add an optional extra class name to row"
+    },
+    "rowHeight": {
+      "name": "Row height",
+      "hint": "Row height"
+    },
+    "rowKey": {
+      "name": "Row key",
+      "hint": "Each row corresponds to the unique key in data"
+    },
+    "shouldUpdateScroll": {
+      "name": "Should update scroll",
+      "hint": "Whether to update the scroll after the table size is updated"
+    },
+    "showHeader": {
+      "name": "Show header",
+      "hint": "Display header"
+    },
+    "sortColumn": {
+      "name": "Sort column",
+      "hint": "Sort column name"
+    },
+    "sortType": {
+      "name": "Sort type",
+      "hint": "Sort type"
+    },
+    "virtualized": {
+      "name": "Virtualized",
+      "hint": "Effectively render large tabular data"
+    },
+    "width": {
+      "name": "Width",
+      "hint": "Table width"
+    },
+    "wordWrap": {
+      "name": "Word wrap",
+      "hint": "Whether to appear line breaks where text overflows its content box"
+    }
+  },
   "RsTimePicker": {
     "format": {
       "name": "Format",

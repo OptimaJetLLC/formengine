@@ -13,6 +13,7 @@ const packagesDir = join(__rootDir, 'packages')
 const packages = {
   '@react-form-builder/core': join(packagesDir, 'core'),
   '@react-form-builder/components-rsuite': join(packagesDir, 'views', 'rsuite'),
+  '@react-form-builder/components-rsuite-table': join(packagesDir, 'views', 'rsuite-table'),
 }
 
 const createArchive = (folder) => {

@@ -8,6 +8,7 @@ import {
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
+import {rSuiteTableComponents} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent} from '@react-form-builder/components-signature'
 import {BiDi} from '@react-form-builder/core'
 import type {CustomizationMap, IPresetComponentOptions, PresetComponent} from '@react-form-builder/designer'
@@ -29,8 +30,10 @@ const initialData = {
   ['last name']: 'Bret',
 }
 
-const components = [...rSuiteComponents, fastQrComponent, richTextComponent, googleMapComponent, signatureComponent]
+const components = [...rSuiteComponents, fastQrComponent, richTextComponent, googleMapComponent, signatureComponent,
+  ...rSuiteTableComponents]
   .map(definer => definer.build())
+
 const view = new BuilderView(components)
   .withTemplates([])
   .withViewerWrapper(RsLocalizationWrapper)

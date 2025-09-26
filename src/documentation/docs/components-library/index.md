@@ -87,6 +87,7 @@ The components are divided into the following categories:
 - Modal is a component that displays modal windows.
 - Modal layout is a component that defines the appearance of a modal window.
 - Tab displays a tabbed component based on [Nav](https://rsuitejs.com/components/nav/).
+- [Table](/components-library/structure-components/table) displays rows of data.
 
 ## Template components
 
