@@ -1164,6 +1164,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/cfDisableActionEditors",
+              label: "cfDisableActionEditors"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/variables/cfDisableAdditionalProperties",
               label: "cfDisableAdditionalProperties"
             },

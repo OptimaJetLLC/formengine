@@ -18,6 +18,7 @@ import type {InsertRestrictionFn} from './InsertRestrictionFn'
 import {
   cfComponentIsPreset,
   cfComponentRole,
+  cfDisableActionEditors,
   cfDisableStylesForClassNameEditor,
   cfDisableTooltipProperties,
   cfEnableInlineStylesEditor,
@@ -304,6 +305,15 @@ export class Definer<T extends object> {
    */
   overrideEventHandlers(eventHandlers: Record<EventName, ActionEventHandler>) {
     return this.addFeature(cfEventHandlers, eventHandlers)
+  }
+
+  /**
+   * Hides or shows the 'Actions' editors.
+   * @param value if the value is true, the editors will be hidden.
+   * @returns the modified Definer class instance.
+   */
+  hideActionEditors(value = true) {
+    return this.addFeature(cfDisableActionEditors, value)
   }
 
   /**

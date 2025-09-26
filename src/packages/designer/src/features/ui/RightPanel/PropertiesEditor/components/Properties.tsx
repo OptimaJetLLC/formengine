@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import type {Annotation, ComponentStore, CssPart, Meta, PropertyBlockType} from '@react-form-builder/core'
 import {
+  cfDisableActionEditors,
   cfDisableAdditionalProperties,
   cfDisableMainComponentProperties,
   cfDisableStyleProperties,
@@ -196,6 +197,7 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
   const additionalProperties = current.filter(bySubSection(SubSection.Additional))
   const tooltipProps = current.filter(bySubSection(SubSection.Tooltip))
   const showTooltipProps = model.kind === 'component' && !!tooltipProps?.length && !!tooltipType
+  const editorsDisabled = activeTab === Section.Actions && model.isFeatureEnabled(cfDisableActionEditors)
 
   return (
     <ComponentDataProvider value={data}>
@@ -212,7 +214,7 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
             {data.model.dataBindingType === 'twoWay' && activeTab === Section.Main && <>
               <PropertyEditorWrapper annotation={dataKey} context={data.store}/>
             </>}
-            <PropertyBlock annotations={properties} context={data.store.props}/>
+            {!editorsDisabled && <PropertyBlock annotations={properties} context={data.store.props}/>}
           </>
           }
           {activeTab === Section.Style && !model.isFeatureEnabled(cfDisableStyleProperties) &&

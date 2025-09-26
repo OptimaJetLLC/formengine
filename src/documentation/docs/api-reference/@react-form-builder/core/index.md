@@ -186,6 +186,7 @@
 - [BuilderModeProvider](variables/BuilderModeProvider.md)
 - [CellInfoContextProvider](variables/CellInfoContextProvider.md)
 - [cfComponentIsPreset](variables/cfComponentIsPreset.md)
+- [cfDisableActionEditors](variables/cfDisableActionEditors.md)
 - [cfDisableAdditionalProperties](variables/cfDisableAdditionalProperties.md)
 - [cfDisableMainComponentProperties](variables/cfDisableMainComponentProperties.md)
 - [cfDisableStyleProperties](variables/cfDisableStyleProperties.md)

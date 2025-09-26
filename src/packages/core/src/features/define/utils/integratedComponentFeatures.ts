@@ -71,3 +71,9 @@ registerComponentFeature({
   name: cfEventHandlers,
   allowMultiple: false,
 })
+
+/**
+ * Enabling this component feature will hide the 'Actions' editors.
+ */
+export const cfDisableActionEditors = 'disable-action-editors'
+registerBooleanComponentFeature(cfDisableActionEditors)

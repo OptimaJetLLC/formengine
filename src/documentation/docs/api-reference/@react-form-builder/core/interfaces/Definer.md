@@ -180,6 +180,28 @@ the component type name.
 
 ***
 
+### hideActionEditors()
+
+> **hideActionEditors**(`value`): `Definer`\<`T`\>
+
+Hides or shows the 'Actions' editors.
+
+#### Parameters
+
+##### value
+
+`boolean` = `true`
+
+if the value is true, the editors will be hidden.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.
+
+***
+
 ### hideFromComponentPalette()
 
 > **hideFromComponentPalette**(`value`): `Definer`\<`T`\>
