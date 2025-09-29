@@ -8,6 +8,7 @@ import {InputPicker, Loader} from 'rsuite'
 import {pickerProps} from '../commonProperties'
 import type {LoadDataProps} from '../hooks'
 import {useFixAriaAttributesForInputPicker, useLoadData} from '../hooks'
+import {fieldsCategory} from './categories'
 import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
@@ -67,6 +68,7 @@ const RsSearch = ({data, label, onLoadData, onSearch, value = '', className, pre
 
 export const rsSearch = define(RsSearch, 'RsSearch')
   .name('Search')
+  .category(fieldsCategory)
   .props({
     ...pickerProps,
     preload: boolean.default(false),

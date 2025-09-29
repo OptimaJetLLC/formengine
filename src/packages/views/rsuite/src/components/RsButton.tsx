@@ -2,6 +2,7 @@ import {boolean, define, disabled, event, oneOf, string, useBuilderValue} from '
 import type {ButtonProps} from 'rsuite'
 import {Button} from 'rsuite'
 import {controlColor, size} from '../commonProperties'
+import {staticCategory} from './categories'
 
 const defaultContent = 'Button'
 
@@ -12,6 +13,7 @@ const RsButton = ({children, ...props}: ButtonProps) => {
 
 export const rsButton = define(RsButton, 'RsButton')
   .name('Button')
+  .category(staticCategory)
   .props({
     active: boolean.hinted('A button can show it is currently the active user selection').default(false),
     appearance: oneOf('default', 'primary', 'link', 'subtle', 'ghost')

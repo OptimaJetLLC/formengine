@@ -3,6 +3,7 @@ import {useMemo} from 'react'
 import type {PanelProps} from 'rsuite'
 import {Panel} from 'rsuite'
 import {headerSize} from '../commonProperties'
+import {structureCategory} from './categories'
 import {RsHeader} from './RsHeader'
 
 interface RsCardProps extends PanelProps {
@@ -29,6 +30,7 @@ const RsCard = ({header, title, headerSize, ...props}: RsCardProps) => {
 
 export const rsCard = define(RsCard, 'RsCard')
   .name('Card')
+  .category(structureCategory)
   .props({
     header: node,
     children: node,

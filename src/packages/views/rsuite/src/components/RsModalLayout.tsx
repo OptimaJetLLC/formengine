@@ -1,6 +1,7 @@
 import {boolean, define, node} from '@react-form-builder/core'
 import type {ReactNode} from 'react'
 import {Modal} from 'rsuite'
+import {modalCategory} from './categories'
 
 const {Header, Title, Body, Footer} = Modal
 
@@ -30,6 +31,7 @@ const RsModalLayout = (props: RsModalLayoutProps) => {
 
 export const rsModalLayout = define(RsModalLayout, 'RsModalLayout')
   .name('Modal layout')
+  .category(modalCategory)
   .props({
     closeButton: boolean.default(true),
     headerTitle: node,

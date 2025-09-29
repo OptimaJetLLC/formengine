@@ -4,6 +4,7 @@ import type {DatePickerProps} from 'rsuite'
 import {DatePicker} from 'rsuite'
 import {placement, readOnly, size} from '../commonProperties'
 import {formatValidator, toSafeFormat} from '../dateTimeUtils'
+import {fieldsCategory} from './categories'
 import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
@@ -52,6 +53,7 @@ const RsDatePicker = ({label, value, className, format, defaultValue, ...props}:
 
 export const rsDatePicker = define(RsDatePicker, 'RsDatePicker')
   .name('DatePicker')
+  .category(fieldsCategory)
   .props({
     label: string.default('Date'),
     appearance: oneOf('default', 'subtle').hinted('Set picker appearance'),

@@ -6,6 +6,7 @@ import type {DatePickerProps} from 'rsuite'
 import {DatePicker} from 'rsuite'
 import {placement, readOnly, size} from '../commonProperties'
 import {formatValidator, toSafeFormat} from '../dateTimeUtils'
+import {fieldsCategory} from './categories'
 import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
@@ -63,6 +64,7 @@ const RsTimePicker = ({open, label, value, className, format, defaultValue, onCh
 
 export const rsTimePicker = define(RsTimePicker, 'RsTimePicker')
   .name('TimePicker')
+  .category(fieldsCategory)
   .props({
     label: string.default('Time'),
     placeholder: string,

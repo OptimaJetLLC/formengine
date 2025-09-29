@@ -3,6 +3,7 @@ import type {SyntheticEvent} from 'react'
 import {useCallback} from 'react'
 import type {ModalProps} from 'rsuite'
 import {Modal} from 'rsuite'
+import {modalCategory} from './categories'
 
 interface RsModalProps extends ModalProps {
   handleClose?: () => void
@@ -27,6 +28,7 @@ const modalSize = oneOf('xs', 'sm', 'md', 'lg', 'full')
 
 export const rsModal = define(RsModal, 'RsModal')
   .name('RsModal')
+  .category(modalCategory)
   .props({
     autoFocus: boolean.default(true),
     backdrop: boolean.default(true),

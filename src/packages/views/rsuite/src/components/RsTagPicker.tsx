@@ -5,6 +5,7 @@ import type {PickerHandle, TagPickerProps} from 'rsuite'
 import {TagPicker} from 'rsuite'
 import {pickerProps} from '../commonProperties'
 import {setAriaHiddenIfNotExists} from '../hooks'
+import {fieldsCategory} from './categories'
 import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
@@ -49,6 +50,7 @@ const {disableVirtualized, onLoadData, ...tagPickerProps} = pickerProps
 
 export const rsTagPicker = define(RsTagPicker, 'RsTagPicker')
   .name('TagPicker')
+  .category(fieldsCategory)
   .props({
     ...tagPickerProps,
     value: array.valued.ofString,

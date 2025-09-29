@@ -4,6 +4,7 @@ import type {UploaderProps} from 'rsuite'
 import {Uploader} from 'rsuite'
 import {nonNegNumber, readOnly} from '../commonProperties'
 import {setAriaHiddenIfNotExists} from '../hooks'
+import {fieldsCategory} from './categories'
 import {InputCell} from './components/InputCell'
 import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
@@ -48,6 +49,7 @@ const columns = [
 
 export const rsUploader = define(RsUploader, 'RsUploader')
   .name('Uploader')
+  .category(fieldsCategory)
   .props({
     label: string,
     action: string.required.default('/'),

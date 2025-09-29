@@ -1,5 +1,6 @@
 import {boolean, color, define, number, oneOf, string} from '@react-form-builder/core'
 import {Progress} from 'rsuite'
+import {staticCategory} from './categories'
 
 const rsCommonProgressProps = {
   classPrefix: string.default('progress').hinted('The prefix of the component CSS class'),
@@ -17,6 +18,7 @@ const rsCommonProgressProps = {
 
 export const rsProgressCircle = define(Progress.Circle, 'RsProgressCircle')
   .name('Progress circle')
+  .category(staticCategory)
   .props({
     ...rsCommonProgressProps,
     gapDegree: number.withEditorProps({min: 0, max: 360}).hinted('The gap degree of half circle, 0 ~ 360'),
@@ -33,6 +35,7 @@ export const rsProgressCircle = define(Progress.Circle, 'RsProgressCircle')
 
 export const rsProgressLine = define(Progress.Line, 'RsProgressLine')
   .name('Progress line')
+  .category(staticCategory)
   .props({
     ...rsCommonProgressProps,
     vertical: boolean.default(false).hinted('The progress bar is displayed vertically')

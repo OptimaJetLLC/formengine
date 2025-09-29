@@ -1,6 +1,7 @@
 import {define, string, useBuilderValue} from '@react-form-builder/core'
 import {textStyles} from '../commonProperties'
 import type {TextProps} from '../commonTypes'
+import {staticCategory} from './categories'
 
 const defaultText = 'Label'
 
@@ -15,6 +16,7 @@ const RsLabel = ({text, ...props}: RsLabelProps) => {
 
 export const rsLabel = define(RsLabel, 'RsLabel')
   .name('Label')
+  .category(staticCategory)
   .props({
     text: string.default(defaultText).dataBound,
   })

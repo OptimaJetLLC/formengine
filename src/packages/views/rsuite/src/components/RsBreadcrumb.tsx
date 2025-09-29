@@ -3,6 +3,7 @@ import {useMemo} from 'react'
 import type {BreadcrumbProps} from 'rsuite'
 import {Breadcrumb} from 'rsuite'
 import {nonNegNumber} from '../commonProperties'
+import {structureCategory} from './categories'
 import {CheckCell} from './components/CheckCell'
 import {InputCell} from './components/InputCell'
 
@@ -47,6 +48,7 @@ const RsBreadcrumb = ({items, onItemClick, ...props}: RsBreadcrumbProps) => {
 
 export const rsBreadcrumb = define(RsBreadcrumb, 'RsBreadcrumb')
   .name('Breadcrumb')
+  .category(structureCategory)
   .props({
     separator: string.default('/'),
     maxItems: nonNegNumber.hinted('Set the maximum number of breadcrumbs to display'),

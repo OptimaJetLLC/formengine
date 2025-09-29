@@ -6,6 +6,7 @@ import {InputPicker} from 'rsuite'
 import {pickerProps} from '../commonProperties'
 import type {LoadDataProps} from '../hooks'
 import {useFixAriaAttributesForInputPicker, useLoadData} from '../hooks'
+import {fieldsCategory} from './categories'
 import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 import {SLoader} from './SLoader'
@@ -52,6 +53,7 @@ const RsDropdown = ({
 
 export const rsDropdown = define(RsDropdown, 'RsDropdown')
   .name('Dropdown')
+  .category(fieldsCategory)
   .props({
     ...pickerProps,
     preload: boolean.default(false),

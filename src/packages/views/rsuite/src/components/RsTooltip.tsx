@@ -4,6 +4,7 @@ import {useMemo} from 'react'
 import {Tooltip, Whisper} from 'rsuite'
 import type {OverlayTriggerType} from 'rsuite/esm/internals/Overlay/OverlayTrigger'
 import type {TypeAttributes} from 'rsuite/esm/internals/types'
+import {staticCategory} from './categories'
 
 /**
  * The properties of RsTooltip component.
@@ -40,6 +41,7 @@ const RsTooltip = ({text, placement, trigger, children, ...props}: RsTooltipProp
  */
 export const rsTooltip = define(RsTooltip, 'RsTooltip')
   .name('Tooltip')
+  .category(staticCategory)
   .props({
     text: string.required.default('Tooltip message...').hinted('Tooltip text').dataBound,
     children: node,

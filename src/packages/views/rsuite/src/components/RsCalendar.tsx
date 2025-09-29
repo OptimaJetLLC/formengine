@@ -2,6 +2,7 @@ import {boolean, date, define, event, string} from '@react-form-builder/core'
 import {Calendar} from 'rsuite'
 import type {CalendarProps} from 'rsuite/esm/Calendar/Calendar'
 import {readOnly} from '../commonProperties'
+import {fieldsCategory} from './categories'
 import {Labeled} from './components/Labeled'
 
 interface RsCalendarProps extends CalendarProps {
@@ -21,6 +22,7 @@ const RsCalendar = ({label, style, className, ...props}: RsCalendarProps) => {
 
 export const rsCalendar = define(RsCalendar, 'RsCalendar')
   .name('Calendar')
+  .category(fieldsCategory)
   .props({
     label: string,
     bordered: boolean.hinted('Show border').default(false),

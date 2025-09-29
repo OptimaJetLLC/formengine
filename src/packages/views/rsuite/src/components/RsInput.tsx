@@ -4,6 +4,7 @@ import {useCallback, useState} from 'react'
 import type {InputProps} from 'rsuite'
 import {Input, InputGroup} from 'rsuite'
 import {inputProps} from '../commonProperties'
+import {fieldsCategory} from './categories'
 import {Labeled} from './components/Labeled'
 
 interface RsInputProps extends InputProps {
@@ -35,6 +36,7 @@ const RsInput = ({style, className, label, passwordMask, showPasswordAriaLabel, 
 }
 export const rsInput = define(RsInput, 'RsInput')
   .name('Input')
+  .category(fieldsCategory)
   .props({
     label: string.default('Input').hinted('Input label'),
     ...inputProps,

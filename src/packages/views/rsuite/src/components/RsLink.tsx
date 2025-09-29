@@ -2,6 +2,7 @@ import {boolean, define, event, node, oneOf, string} from '@react-form-builder/c
 import type {ComponentProps} from 'react'
 import {textStyles} from '../commonProperties'
 import type {TextProps} from '../commonTypes'
+import {staticCategory} from './categories'
 
 interface RsLinkProps extends ComponentProps<'a'>, TextProps {
   text: string
@@ -17,6 +18,7 @@ const RsLink = ({text, download, downloadFilename, content, children, ...props}:
 
 export const rsLink = define(RsLink, 'RsLink')
   .name('Link')
+  .category(staticCategory)
   .props({
     content: oneOf('text', 'custom').default('text').radio(),
     text: string.default('Link'),

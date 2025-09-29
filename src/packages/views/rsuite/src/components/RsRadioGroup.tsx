@@ -3,6 +3,7 @@ import {array, boolean, define, disabled, event, oneOf, string, toLabeledValues}
 import type {RadioGroupProps} from 'rsuite'
 import {Radio, RadioGroup} from 'rsuite'
 import {readOnly} from '../commonProperties'
+import {fieldsCategory} from './categories'
 import {Labeled} from './components/Labeled'
 
 interface RsRadioGroupProps extends RadioGroupProps<string> {
@@ -25,6 +26,7 @@ const RsRadioGroup = ({items, label, value, className, ...props}: RsRadioGroupPr
 
 export const rsRadioGroup = define(RsRadioGroup, 'RsRadioGroup')
   .name('Radio group')
+  .category(fieldsCategory)
   .props({
     name: string.default('RadioGroup').hinted('Radio group name'),
     appearance: oneOf('default', 'picker').labeled('Default', 'Picker').default('default'),

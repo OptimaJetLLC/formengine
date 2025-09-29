@@ -5,6 +5,7 @@ import {useCallback} from 'react'
 import type {NavProps} from 'rsuite'
 import {Nav} from 'rsuite'
 import {navProps} from '../commonProperties'
+import {structureCategory} from './categories'
 
 type RsItem = {
   label: string
@@ -67,6 +68,7 @@ const RsTab = ({
 
 export const rsTab = define(RsTab, 'RsTab')
   .name('Tab')
+  .category(structureCategory)
   .props({
     ...navProps,
     items: array.default(toLabeledValues(['Item1', 'Item2', 'Item3'])),

@@ -4,6 +4,7 @@ import type {PatternFormatProps} from 'react-number-format'
 import {PatternFormat} from 'react-number-format'
 import type {InputProps} from 'rsuite'
 import {inputProps} from '../commonProperties'
+import {fieldsCategory} from './categories'
 import {Labeled} from './components/Labeled'
 import {WrappedInput} from './components/WrappedInput'
 
@@ -34,6 +35,7 @@ const RsPatternFormat = ({style, className, label, format, onChange, value, ...p
 
 export const rsPatternFormat = define(RsPatternFormat, 'RsPatternFormat')
   .name('Pattern format')
+  .category(fieldsCategory)
   .props({
     label: string.default('Formatted input'),
     value: string.valued,

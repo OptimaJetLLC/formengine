@@ -5,6 +5,7 @@ import {define, string, useAriaErrorMessage} from '@react-form-builder/core'
 import {Form} from 'rsuite'
 import type {TypeAttributes} from 'rsuite/esm/internals/types'
 import {placement} from '../commonProperties'
+import {staticCategory} from './categories'
 
 const SDiv = styled.div`
   display: flex;
@@ -40,6 +41,7 @@ const RsErrorMessage = ({error, children, placement, className}: RsErrorMessageP
  */
 export const rsErrorMessage = define(RsErrorMessage, 'RsErrorMessage')
   .name('Error message')
+  .category(staticCategory)
   .props({
     placement: placement.default('bottomStart'),
     className: string,

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import {boolean, define, node, oneOf} from '@react-form-builder/core'
 import {Message} from 'rsuite'
+import {staticCategory} from './categories'
 
 const SMessage = styled(Message)`
   .rs-message-header {
@@ -10,6 +11,7 @@ const SMessage = styled(Message)`
 
 export const rsMessage = define(SMessage, 'RsMessage')
   .name('Message')
+  .category(staticCategory)
   .props({
     children: node,
     closable: boolean.default(false),

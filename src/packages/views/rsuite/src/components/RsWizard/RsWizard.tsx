@@ -19,6 +19,7 @@ import {useCallback, useEffect, useMemo, useState} from 'react'
 import type {StepItemProps} from 'rsuite'
 import {Button, ButtonToolbar, Steps} from 'rsuite'
 import {useArrayMapMemo} from '../../hooks'
+import {structureCategory} from '../categories'
 import {Rows} from '../components/Layout'
 import {createStep, editorProps} from './editorProps'
 import {eventListeners} from './eventListeners'
@@ -223,6 +224,7 @@ const getInitialJson = () => {
 
 export const rsWizard = define(RsWizard, RsWizardComponentType)
   .name('Wizard')
+  .category(structureCategory)
   .icon(WizardIcon)
   .initialJson(getInitialJson())
   .eventListeners(eventListeners)

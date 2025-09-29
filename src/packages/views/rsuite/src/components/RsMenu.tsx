@@ -4,6 +4,7 @@ import {useCallback} from 'react'
 import type {NavProps} from 'rsuite'
 import {Nav} from 'rsuite'
 import {navProps} from '../commonProperties'
+import {staticCategory} from './categories'
 import {InputCell} from './components/InputCell'
 
 type MenuItem = {
@@ -75,6 +76,7 @@ const tags = Array.from(suitableReactElementTypes)
 
 export const rsMenu = define(RsMenu, 'RsMenu')
   .name('Menu')
+  .category(staticCategory)
   .props({
     activeKey: activeKey.default('Home'),
     ...props,

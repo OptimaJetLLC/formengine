@@ -1,5 +1,6 @@
 import {boolean, define, string, useBuilderValue} from '@react-form-builder/core'
 import {useMemo} from 'react'
+import {staticCategory} from './categories'
 
 const defaultContent = 'Text...'
 
@@ -22,6 +23,7 @@ const RsStaticContent = (props: RsStaticContentProps) => {
 
 export const rsStaticContent = define(RsStaticContent, 'RsStaticContent')
   .name('Static content')
+  .category(staticCategory)
   .props({
     content: string.required.default(defaultContent).dataBound,
     allowHtml: boolean.named('Allow HTML').default(false),

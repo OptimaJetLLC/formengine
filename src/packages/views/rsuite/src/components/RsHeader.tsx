@@ -2,6 +2,7 @@ import {define, string, useBuilderValue} from '@react-form-builder/core'
 import {createElement} from 'react'
 import {backgroundColor, headerSize, textStyles} from '../commonProperties'
 import type {TextProps} from '../commonTypes'
+import {staticCategory} from './categories'
 
 const defaultContent = 'Header'
 
@@ -27,6 +28,7 @@ const {textAlign, color} = textStyles
 
 export const rsHeader = define(RsHeader, 'RsHeader')
   .name('Header')
+  .category(staticCategory)
   .props({
     content: string.required.default(defaultContent).dataBound,
     headerSize

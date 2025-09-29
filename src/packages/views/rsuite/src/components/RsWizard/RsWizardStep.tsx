@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import {containerStyles, define, node, string} from '@react-form-builder/core'
+import {structureCategory} from '../categories'
 import {WizardStepIcon} from './WizardStepIcon'
 
 interface RsWizardStepProps {
@@ -16,6 +17,7 @@ export const RsWizardStepComponentType = 'RsWizardStep'
 
 export const rsWizardStep = define(RsWizardStep, RsWizardStepComponentType)
   .name('Wizard step')
+  .category(structureCategory)
   .kind('container')
   .icon(WizardStepIcon)
   .props({

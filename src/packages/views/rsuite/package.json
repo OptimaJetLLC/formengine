@@ -12,6 +12,7 @@
   },
   "main": "src/index.ts",
   "type": "module",
+  "sideEffects": false,
   "bugs": {
     "email": "support@optimajet.com"
   },

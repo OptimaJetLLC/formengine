@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import {containerStyles, define, disabled, node, readOnly} from '@react-form-builder/core'
 import type {ReactNode} from 'react'
+import {structureCategory} from './categories'
 
 const SDiv = styled.div`
   display: flex;
@@ -20,6 +21,7 @@ const RsContainer = (props: RsContainerProps) => {
 
 export const rsContainer = define(RsContainer, 'RsContainer')
   .name('Container')
+  .category(structureCategory)
   .kind('container')
   .props({
     children: node.hinted('Component children'),

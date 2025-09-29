@@ -5,6 +5,7 @@ import {NumericFormat} from 'react-number-format'
 import type {NumberFormatValues} from 'react-number-format/types/types'
 import type {InputProps} from 'rsuite'
 import {inputProps, nonNegNumber} from '../commonProperties'
+import {fieldsCategory} from './categories'
 import {Labeled} from './components/Labeled'
 import {WrappedInput} from './components/WrappedInput'
 
@@ -70,6 +71,7 @@ const RsNumberFormat = ({style, className, label, onChange, value, ...props}: Rs
 
 export const rsNumberFormat = define(RsNumberFormat, 'RsNumberFormat')
   .name('Number format')
+  .category(fieldsCategory)
   .props({
     label: string.default('Number input'),
     value: number.valued,
