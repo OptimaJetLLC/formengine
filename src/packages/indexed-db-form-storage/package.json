@@ -5,6 +5,7 @@
   "main": "index.ts",
   "type": "module",
   "description": "OptimaJet Form Builder IndexedDB form storage",
+  "sideEffects": false,
   "keywords": [
     "form-builder",
     "optimajet"
