@@ -7,13 +7,45 @@ import {inputProps} from '../commonProperties'
 import {fieldsCategory} from './categories'
 import {Labeled} from './components/Labeled'
 
-interface RsInputProps extends InputProps {
+/**
+ * Props for the RsInput component.
+ */
+export interface RsInputProps extends InputProps {
+  /**
+   * The label for the input.
+   */
   label: string
+  /**
+   * Whether to show password mask.
+   */
   passwordMask?: boolean,
+  /**
+   * The aria label for the show password button.
+   */
   showPasswordAriaLabel: string,
+  /**
+   * The type of the input.
+   */
   type?: 'text' | 'password' | 'email' | 'number' | 'search' | 'tel' | 'url' | 'time'
+  /**
+   * The htmlSize attribute defines the width of the &laquo;input> element.
+   */
+  htmlSize?: number
 }
 
+/**
+ * Input component with label and password mask support.
+ * @param props the component props.
+ * @param props.style the CSS styles.
+ * @param props.className the CSS class name.
+ * @param props.label the label for the input.
+ * @param props.passwordMask whether to show password mask.
+ * @param props.showPasswordAriaLabel the aria label for the show password button.
+ * @param props.type the type of the input.
+ * @param props.value the value of the input.
+ * @param props.props the additional input props.
+ * @returns the React element.
+ */
 const RsInput = ({style, className, label, passwordMask, showPasswordAriaLabel, type, value, ...props}: RsInputProps) => {
   const [visible, setVisible] = useState(false)
   const {id} = useComponentData()
@@ -34,6 +66,7 @@ const RsInput = ({style, className, label, passwordMask, showPasswordAriaLabel, 
     {input}
   </Labeled>
 }
+
 export const rsInput = define(RsInput, 'RsInput')
   .name('Input')
   .category(fieldsCategory)

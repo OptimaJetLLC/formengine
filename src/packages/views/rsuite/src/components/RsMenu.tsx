@@ -7,8 +7,17 @@ import {navProps} from '../commonProperties'
 import {staticCategory} from './categories'
 import {InputCell} from './components/InputCell'
 
-type MenuItem = {
+/**
+ * Menu item for RsMenu component.
+ */
+export type MenuItem = {
+  /**
+   * The href for the menu item.
+   */
   href?: string
+  /**
+   * The title for the menu item.
+   */
   title?: string
 }
 
@@ -40,11 +49,29 @@ const suitableReactElementTypes = new Set([
   'pre'
 ])
 
-interface RsMenuProps extends NavProps {
+/**
+ * Props for the RsMenu component.
+ */
+export interface RsMenuProps extends NavProps {
+  /**
+   * The items for the menu.
+   */
   items?: MenuItem[],
+  /**
+   * The element type for menu items.
+   */
   itemsAs: ElementType
 }
 
+/**
+ * Menu component with navigation support.
+ * @param props the component props.
+ * @param props.onSelect the callback when menu item is selected.
+ * @param props.items the items for the menu.
+ * @param props.itemsAs the element type for menu items.
+ * @param props.props the additional menu props.
+ * @returns the React element.
+ */
 const RsMenu = ({onSelect, items, itemsAs, ...props}: RsMenuProps) => {
   const componentData = useComponentData()
 

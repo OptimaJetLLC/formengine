@@ -4,11 +4,25 @@ import {staticCategory} from './categories'
 
 const defaultContent = 'Text...'
 
-interface RsStaticContentProps {
+/**
+ * Props for the RsStaticContent component.
+ */
+export interface RsStaticContentProps {
+  /**
+   * The content to display.
+   */
   content: string
+  /**
+   * Whether to allow HTML content.
+   */
   allowHtml: boolean
 }
 
+/**
+ * A static content component that displays text or HTML content.
+ * @param props the component props.
+ * @returns the React element.
+ */
 const RsStaticContent = (props: RsStaticContentProps) => {
   const {content, allowHtml, ...otherProps} = props
   const data = useBuilderValue(content, defaultContent)

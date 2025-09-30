@@ -1,0 +1,3616 @@
+# Interface: RsNumberFormatProps
+
+Props for the RsNumberFormat component.
+
+## Extends
+
+- `NumericFormatProps`\<`InputProps`\>
+
+## Properties
+
+### about?
+
+> `optional` **about**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.about`
+
+***
+
+### accept?
+
+> `optional` **accept**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.accept`
+
+***
+
+### accessKey?
+
+> `optional` **accessKey**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.accessKey`
+
+***
+
+### allowedDecimalSeparators?
+
+> `optional` **allowedDecimalSeparators**: `string`[]
+
+#### Inherited from
+
+`NumericFormatProps.allowedDecimalSeparators`
+
+***
+
+### allowLeadingZeros?
+
+> `optional` **allowLeadingZeros**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.allowLeadingZeros`
+
+***
+
+### allowNegative?
+
+> `optional` **allowNegative**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.allowNegative`
+
+***
+
+### alt?
+
+> `optional` **alt**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.alt`
+
+***
+
+### aria-activedescendant?
+
+> `optional` **aria-activedescendant**: `string`
+
+Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application.
+
+#### Inherited from
+
+`NumericFormatProps.aria-activedescendant`
+
+***
+
+### aria-atomic?
+
+> `optional` **aria-atomic**: `Booleanish`
+
+Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute.
+
+#### Inherited from
+
+`NumericFormatProps.aria-atomic`
+
+***
+
+### aria-autocomplete?
+
+> `optional` **aria-autocomplete**: `"inline"` \| `"none"` \| `"list"` \| `"both"`
+
+Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
+presented if they are made.
+
+#### Inherited from
+
+`NumericFormatProps.aria-autocomplete`
+
+***
+
+### aria-braillelabel?
+
+> `optional` **aria-braillelabel**: `string`
+
+Defines a string value that labels the current element, which is intended to be converted into Braille.
+
+#### See
+
+aria-label.
+
+#### Inherited from
+
+`NumericFormatProps.aria-braillelabel`
+
+***
+
+### aria-brailleroledescription?
+
+> `optional` **aria-brailleroledescription**: `string`
+
+Defines a human-readable, author-localized abbreviated description for the role of an element, which is intended to be converted into Braille.
+
+#### See
+
+aria-roledescription.
+
+#### Inherited from
+
+`NumericFormatProps.aria-brailleroledescription`
+
+***
+
+### aria-busy?
+
+> `optional` **aria-busy**: `Booleanish`
+
+#### Inherited from
+
+`NumericFormatProps.aria-busy`
+
+***
+
+### aria-checked?
+
+> `optional` **aria-checked**: `boolean` \| `"true"` \| `"false"` \| `"mixed"`
+
+Indicates the current "checked" state of checkboxes, radio buttons, and other widgets.
+
+#### See
+
+ - aria-pressed
+ - aria-selected.
+
+#### Inherited from
+
+`NumericFormatProps.aria-checked`
+
+***
+
+### aria-colcount?
+
+> `optional` **aria-colcount**: `number`
+
+Defines the total number of columns in a table, grid, or treegrid.
+
+#### See
+
+aria-colindex.
+
+#### Inherited from
+
+`NumericFormatProps.aria-colcount`
+
+***
+
+### aria-colindex?
+
+> `optional` **aria-colindex**: `number`
+
+Defines an element's column index or position with respect to the total number of columns within a table, grid, or treegrid.
+
+#### See
+
+ - aria-colcount
+ - aria-colspan.
+
+#### Inherited from
+
+`NumericFormatProps.aria-colindex`
+
+***
+
+### aria-colindextext?
+
+> `optional` **aria-colindextext**: `string`
+
+Defines a human readable text alternative of aria-colindex.
+
+#### See
+
+aria-rowindextext.
+
+#### Inherited from
+
+`NumericFormatProps.aria-colindextext`
+
+***
+
+### aria-colspan?
+
+> `optional` **aria-colspan**: `number`
+
+Defines the number of columns spanned by a cell or gridcell within a table, grid, or treegrid.
+
+#### See
+
+ - aria-colindex
+ - aria-rowspan.
+
+#### Inherited from
+
+`NumericFormatProps.aria-colspan`
+
+***
+
+### aria-controls?
+
+> `optional` **aria-controls**: `string`
+
+Identifies the element (or elements) whose contents or presence are controlled by the current element.
+
+#### See
+
+aria-owns.
+
+#### Inherited from
+
+`NumericFormatProps.aria-controls`
+
+***
+
+### aria-current?
+
+> `optional` **aria-current**: `boolean` \| `"date"` \| `"time"` \| `"page"` \| `"true"` \| `"false"` \| `"step"` \| `"location"`
+
+Indicates the element that represents the current item within a container or set of related elements.
+
+#### Inherited from
+
+`NumericFormatProps.aria-current`
+
+***
+
+### aria-describedby?
+
+> `optional` **aria-describedby**: `string`
+
+Identifies the element (or elements) that describes the object.
+
+#### See
+
+aria-labelledby
+
+#### Inherited from
+
+`NumericFormatProps.aria-describedby`
+
+***
+
+### aria-description?
+
+> `optional` **aria-description**: `string`
+
+Defines a string value that describes or annotates the current element.
+
+#### See
+
+related aria-describedby.
+
+#### Inherited from
+
+`NumericFormatProps.aria-description`
+
+***
+
+### aria-details?
+
+> `optional` **aria-details**: `string`
+
+Identifies the element that provides a detailed, extended description for the object.
+
+#### See
+
+aria-describedby.
+
+#### Inherited from
+
+`NumericFormatProps.aria-details`
+
+***
+
+### aria-disabled?
+
+> `optional` **aria-disabled**: `Booleanish`
+
+Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
+
+#### See
+
+ - aria-hidden
+ - aria-readonly.
+
+#### Inherited from
+
+`NumericFormatProps.aria-disabled`
+
+***
+
+### ~~aria-dropeffect?~~
+
+> `optional` **aria-dropeffect**: `"none"` \| `"link"` \| `"copy"` \| `"execute"` \| `"move"` \| `"popup"`
+
+Indicates what functions can be performed when a dragged object is released on the drop target.
+
+#### Deprecated
+
+in ARIA 1.1
+
+#### Inherited from
+
+`NumericFormatProps.aria-dropeffect`
+
+***
+
+### aria-errormessage?
+
+> `optional` **aria-errormessage**: `string`
+
+Identifies the element that provides an error message for the object.
+
+#### See
+
+ - aria-invalid
+ - aria-describedby.
+
+#### Inherited from
+
+`NumericFormatProps.aria-errormessage`
+
+***
+
+### aria-expanded?
+
+> `optional` **aria-expanded**: `Booleanish`
+
+Indicates whether the element, or another grouping element it controls, is currently expanded or collapsed.
+
+#### Inherited from
+
+`NumericFormatProps.aria-expanded`
+
+***
+
+### aria-flowto?
+
+> `optional` **aria-flowto**: `string`
+
+Identifies the next element (or elements) in an alternate reading order of content which, at the user's discretion,
+allows assistive technology to override the general default of reading in document source order.
+
+#### Inherited from
+
+`NumericFormatProps.aria-flowto`
+
+***
+
+### ~~aria-grabbed?~~
+
+> `optional` **aria-grabbed**: `Booleanish`
+
+Indicates an element's "grabbed" state in a drag-and-drop operation.
+
+#### Deprecated
+
+in ARIA 1.1
+
+#### Inherited from
+
+`NumericFormatProps.aria-grabbed`
+
+***
+
+### aria-haspopup?
+
+> `optional` **aria-haspopup**: `boolean` \| `"grid"` \| `"dialog"` \| `"menu"` \| `"true"` \| `"false"` \| `"listbox"` \| `"tree"`
+
+Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
+
+#### Inherited from
+
+`NumericFormatProps.aria-haspopup`
+
+***
+
+### aria-hidden?
+
+> `optional` **aria-hidden**: `Booleanish`
+
+Indicates whether the element is exposed to an accessibility API.
+
+#### See
+
+aria-disabled.
+
+#### Inherited from
+
+`NumericFormatProps.aria-hidden`
+
+***
+
+### aria-invalid?
+
+> `optional` **aria-invalid**: `boolean` \| `"true"` \| `"false"` \| `"grammar"` \| `"spelling"`
+
+Indicates the entered value does not conform to the format expected by the application.
+
+#### See
+
+aria-errormessage.
+
+#### Inherited from
+
+`NumericFormatProps.aria-invalid`
+
+***
+
+### aria-keyshortcuts?
+
+> `optional` **aria-keyshortcuts**: `string`
+
+Indicates keyboard shortcuts that an author has implemented to activate or give focus to an element.
+
+#### Inherited from
+
+`NumericFormatProps.aria-keyshortcuts`
+
+***
+
+### aria-label?
+
+> `optional` **aria-label**: `string`
+
+Defines a string value that labels the current element.
+
+#### See
+
+aria-labelledby.
+
+#### Inherited from
+
+`NumericFormatProps.aria-label`
+
+***
+
+### aria-labelledby?
+
+> `optional` **aria-labelledby**: `string`
+
+Identifies the element (or elements) that labels the current element.
+
+#### See
+
+aria-describedby.
+
+#### Inherited from
+
+`NumericFormatProps.aria-labelledby`
+
+***
+
+### aria-level?
+
+> `optional` **aria-level**: `number`
+
+Defines the hierarchical level of an element within a structure.
+
+#### Inherited from
+
+`NumericFormatProps.aria-level`
+
+***
+
+### aria-live?
+
+> `optional` **aria-live**: `"off"` \| `"assertive"` \| `"polite"`
+
+Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.
+
+#### Inherited from
+
+`NumericFormatProps.aria-live`
+
+***
+
+### aria-modal?
+
+> `optional` **aria-modal**: `Booleanish`
+
+Indicates whether an element is modal when displayed.
+
+#### Inherited from
+
+`NumericFormatProps.aria-modal`
+
+***
+
+### aria-multiline?
+
+> `optional` **aria-multiline**: `Booleanish`
+
+Indicates whether a text box accepts multiple lines of input or only a single line.
+
+#### Inherited from
+
+`NumericFormatProps.aria-multiline`
+
+***
+
+### aria-multiselectable?
+
+> `optional` **aria-multiselectable**: `Booleanish`
+
+Indicates that the user may select more than one item from the current selectable descendants.
+
+#### Inherited from
+
+`NumericFormatProps.aria-multiselectable`
+
+***
+
+### aria-orientation?
+
+> `optional` **aria-orientation**: `"horizontal"` \| `"vertical"`
+
+Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.
+
+#### Inherited from
+
+`NumericFormatProps.aria-orientation`
+
+***
+
+### aria-owns?
+
+> `optional` **aria-owns**: `string`
+
+Identifies an element (or elements) in order to define a visual, functional, or contextual parent/child relationship
+between DOM elements where the DOM hierarchy cannot be used to represent the relationship.
+
+#### See
+
+aria-controls.
+
+#### Inherited from
+
+`NumericFormatProps.aria-owns`
+
+***
+
+### aria-placeholder?
+
+> `optional` **aria-placeholder**: `string`
+
+Defines a short hint (a word or short phrase) intended to aid the user with data entry when the control has no value.
+A hint could be a sample value or a brief description of the expected format.
+
+#### Inherited from
+
+`NumericFormatProps.aria-placeholder`
+
+***
+
+### aria-posinset?
+
+> `optional` **aria-posinset**: `number`
+
+Defines an element's number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.
+
+#### See
+
+aria-setsize.
+
+#### Inherited from
+
+`NumericFormatProps.aria-posinset`
+
+***
+
+### aria-pressed?
+
+> `optional` **aria-pressed**: `boolean` \| `"true"` \| `"false"` \| `"mixed"`
+
+Indicates the current "pressed" state of toggle buttons.
+
+#### See
+
+ - aria-checked
+ - aria-selected.
+
+#### Inherited from
+
+`NumericFormatProps.aria-pressed`
+
+***
+
+### aria-readonly?
+
+> `optional` **aria-readonly**: `Booleanish`
+
+Indicates that the element is not editable, but is otherwise operable.
+
+#### See
+
+aria-disabled.
+
+#### Inherited from
+
+`NumericFormatProps.aria-readonly`
+
+***
+
+### aria-relevant?
+
+> `optional` **aria-relevant**: `"all"` \| `"text"` \| `"additions"` \| `"additions removals"` \| `"additions text"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text additions"` \| `"text removals"`
+
+Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified.
+
+#### See
+
+aria-atomic.
+
+#### Inherited from
+
+`NumericFormatProps.aria-relevant`
+
+***
+
+### aria-required?
+
+> `optional` **aria-required**: `Booleanish`
+
+Indicates that user input is required on the element before a form may be submitted.
+
+#### Inherited from
+
+`NumericFormatProps.aria-required`
+
+***
+
+### aria-roledescription?
+
+> `optional` **aria-roledescription**: `string`
+
+Defines a human-readable, author-localized description for the role of an element.
+
+#### Inherited from
+
+`NumericFormatProps.aria-roledescription`
+
+***
+
+### aria-rowcount?
+
+> `optional` **aria-rowcount**: `number`
+
+Defines the total number of rows in a table, grid, or treegrid.
+
+#### See
+
+aria-rowindex.
+
+#### Inherited from
+
+`NumericFormatProps.aria-rowcount`
+
+***
+
+### aria-rowindex?
+
+> `optional` **aria-rowindex**: `number`
+
+Defines an element's row index or position with respect to the total number of rows within a table, grid, or treegrid.
+
+#### See
+
+ - aria-rowcount
+ - aria-rowspan.
+
+#### Inherited from
+
+`NumericFormatProps.aria-rowindex`
+
+***
+
+### aria-rowindextext?
+
+> `optional` **aria-rowindextext**: `string`
+
+Defines a human readable text alternative of aria-rowindex.
+
+#### See
+
+aria-colindextext.
+
+#### Inherited from
+
+`NumericFormatProps.aria-rowindextext`
+
+***
+
+### aria-rowspan?
+
+> `optional` **aria-rowspan**: `number`
+
+Defines the number of rows spanned by a cell or gridcell within a table, grid, or treegrid.
+
+#### See
+
+ - aria-rowindex
+ - aria-colspan.
+
+#### Inherited from
+
+`NumericFormatProps.aria-rowspan`
+
+***
+
+### aria-selected?
+
+> `optional` **aria-selected**: `Booleanish`
+
+Indicates the current "selected" state of various widgets.
+
+#### See
+
+ - aria-checked
+ - aria-pressed.
+
+#### Inherited from
+
+`NumericFormatProps.aria-selected`
+
+***
+
+### aria-setsize?
+
+> `optional` **aria-setsize**: `number`
+
+Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.
+
+#### See
+
+aria-posinset.
+
+#### Inherited from
+
+`NumericFormatProps.aria-setsize`
+
+***
+
+### aria-sort?
+
+> `optional` **aria-sort**: `"none"` \| `"ascending"` \| `"descending"` \| `"other"`
+
+Indicates if items in a table or grid are sorted in ascending or descending order.
+
+#### Inherited from
+
+`NumericFormatProps.aria-sort`
+
+***
+
+### aria-valuemax?
+
+> `optional` **aria-valuemax**: `number`
+
+Defines the maximum allowed value for a range widget.
+
+#### Inherited from
+
+`NumericFormatProps.aria-valuemax`
+
+***
+
+### aria-valuemin?
+
+> `optional` **aria-valuemin**: `number`
+
+Defines the minimum allowed value for a range widget.
+
+#### Inherited from
+
+`NumericFormatProps.aria-valuemin`
+
+***
+
+### aria-valuenow?
+
+> `optional` **aria-valuenow**: `number`
+
+Defines the current value for a range widget.
+
+#### See
+
+aria-valuetext.
+
+#### Inherited from
+
+`NumericFormatProps.aria-valuenow`
+
+***
+
+### aria-valuetext?
+
+> `optional` **aria-valuetext**: `string`
+
+Defines the human readable text alternative of aria-valuenow for a range widget.
+
+#### Inherited from
+
+`NumericFormatProps.aria-valuetext`
+
+***
+
+### as?
+
+> `optional` **as**: `ElementType`\<`any`, keyof IntrinsicElements\>
+
+You can use a custom element for this component
+
+#### Inherited from
+
+`NumericFormatProps.as`
+
+***
+
+### autoCapitalize?
+
+> `optional` **autoCapitalize**: `"none"` \| `string` & `object` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"` \| `"characters"`
+
+#### Inherited from
+
+`NumericFormatProps.autoCapitalize`
+
+***
+
+### autoComplete?
+
+> `optional` **autoComplete**: `HTMLInputAutoCompleteAttribute`
+
+#### Inherited from
+
+`NumericFormatProps.autoComplete`
+
+***
+
+### autoCorrect?
+
+> `optional` **autoCorrect**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.autoCorrect`
+
+***
+
+### autoFocus?
+
+> `optional` **autoFocus**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.autoFocus`
+
+***
+
+### autoSave?
+
+> `optional` **autoSave**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.autoSave`
+
+***
+
+### capture?
+
+> `optional` **capture**: `boolean` \| `"environment"` \| `"user"`
+
+#### Inherited from
+
+`NumericFormatProps.capture`
+
+***
+
+### checked?
+
+> `optional` **checked**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.checked`
+
+***
+
+### children?
+
+> `optional` **children**: `ReactNode`
+
+Primary content
+
+#### Inherited from
+
+`NumericFormatProps.children`
+
+***
+
+### className?
+
+> `optional` **className**: `string`
+
+Additional classes
+
+#### Inherited from
+
+`NumericFormatProps.className`
+
+***
+
+### classPrefix?
+
+> `optional` **classPrefix**: `string`
+
+The prefix of the component CSS class
+
+#### Inherited from
+
+`NumericFormatProps.classPrefix`
+
+***
+
+### color?
+
+> `optional` **color**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.color`
+
+***
+
+### content?
+
+> `optional` **content**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.content`
+
+***
+
+### contentEditable?
+
+> `optional` **contentEditable**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
+
+#### Inherited from
+
+`NumericFormatProps.contentEditable`
+
+***
+
+### contextMenu?
+
+> `optional` **contextMenu**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.contextMenu`
+
+***
+
+### customInput?
+
+> `optional` **customInput**: `ComponentType`\<`InputProps`\>
+
+#### Inherited from
+
+`NumericFormatProps.customInput`
+
+***
+
+### dangerouslySetInnerHTML?
+
+> `optional` **dangerouslySetInnerHTML**: `object`
+
+#### \_\_html
+
+> **\_\_html**: `string` \| `TrustedHTML`
+
+#### Inherited from
+
+`NumericFormatProps.dangerouslySetInnerHTML`
+
+***
+
+### datatype?
+
+> `optional` **datatype**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.datatype`
+
+***
+
+### decimalScale?
+
+> `optional` **decimalScale**: `number`
+
+#### Inherited from
+
+`NumericFormatProps.decimalScale`
+
+***
+
+### decimalSeparator?
+
+> `optional` **decimalSeparator**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.decimalSeparator`
+
+***
+
+### defaultChecked?
+
+> `optional` **defaultChecked**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.defaultChecked`
+
+***
+
+### defaultValue?
+
+> `optional` **defaultValue**: `null` \| `string` \| `number`
+
+#### Inherited from
+
+`NumericFormatProps.defaultValue`
+
+***
+
+### dir?
+
+> `optional` **dir**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.dir`
+
+***
+
+### disabled?
+
+> `optional` **disabled**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.disabled`
+
+***
+
+### displayType?
+
+> `optional` **displayType**: `"input"` \| `"text"`
+
+#### Inherited from
+
+`NumericFormatProps.displayType`
+
+***
+
+### draggable?
+
+> `optional` **draggable**: `Booleanish`
+
+#### Inherited from
+
+`NumericFormatProps.draggable`
+
+***
+
+### enterKeyHint?
+
+> `optional` **enterKeyHint**: `"done"` \| `"search"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"send"`
+
+#### Inherited from
+
+`NumericFormatProps.enterKeyHint`
+
+***
+
+### fixedDecimalScale?
+
+> `optional` **fixedDecimalScale**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.fixedDecimalScale`
+
+***
+
+### form?
+
+> `optional` **form**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.form`
+
+***
+
+### formAction?
+
+> `optional` **formAction**: `string` \| (`formData`) => `void` \| `Promise`\<`void`\>
+
+#### Inherited from
+
+`NumericFormatProps.formAction`
+
+***
+
+### formEncType?
+
+> `optional` **formEncType**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.formEncType`
+
+***
+
+### formMethod?
+
+> `optional` **formMethod**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.formMethod`
+
+***
+
+### formNoValidate?
+
+> `optional` **formNoValidate**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.formNoValidate`
+
+***
+
+### formTarget?
+
+> `optional` **formTarget**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.formTarget`
+
+***
+
+### getInputRef?
+
+> `optional` **getInputRef**: `Ref`\<`any`\> \| (`el`) => `void`
+
+#### Inherited from
+
+`NumericFormatProps.getInputRef`
+
+***
+
+### height?
+
+> `optional` **height**: `string` \| `number`
+
+#### Inherited from
+
+`NumericFormatProps.height`
+
+***
+
+### hidden?
+
+> `optional` **hidden**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.hidden`
+
+***
+
+### htmlSize?
+
+> `optional` **htmlSize**: `number`
+
+The htmlSize attribute defines the width of the &laquo;input> element.
+
+#### Overrides
+
+`NumericFormatProps.htmlSize`
+
+***
+
+### id?
+
+> `optional` **id**: `string`
+
+The HTML input id
+
+#### Inherited from
+
+`NumericFormatProps.id`
+
+***
+
+### inert?
+
+> `optional` **inert**: `boolean`
+
+#### See
+
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
+
+#### Inherited from
+
+`NumericFormatProps.inert`
+
+***
+
+### inlist?
+
+> `optional` **inlist**: `any`
+
+#### Inherited from
+
+`NumericFormatProps.inlist`
+
+***
+
+### inputMode?
+
+> `optional` **inputMode**: `"none"` \| `"search"` \| `"text"` \| `"tel"` \| `"url"` \| `"email"` \| `"numeric"` \| `"decimal"`
+
+#### Inherited from
+
+`NumericFormatProps.inputMode`
+
+***
+
+### inputRef?
+
+> `optional` **inputRef**: `Ref`\<`any`\>
+
+Ref of input element
+
+#### Inherited from
+
+`NumericFormatProps.inputRef`
+
+***
+
+### is?
+
+> `optional` **is**: `string`
+
+Specify that a standard HTML element should behave like a defined custom built-in element
+
+#### See
+
+[https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is](https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is)
+
+#### Inherited from
+
+`NumericFormatProps.is`
+
+***
+
+### isAllowed()?
+
+> `optional` **isAllowed**: (`values`) => `boolean`
+
+#### Parameters
+
+##### values
+
+`NumberFormatValues`
+
+#### Returns
+
+`boolean`
+
+#### Inherited from
+
+`NumericFormatProps.isAllowed`
+
+***
+
+### itemID?
+
+> `optional` **itemID**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.itemID`
+
+***
+
+### itemProp?
+
+> `optional` **itemProp**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.itemProp`
+
+***
+
+### itemRef?
+
+> `optional` **itemRef**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.itemRef`
+
+***
+
+### itemScope?
+
+> `optional` **itemScope**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.itemScope`
+
+***
+
+### itemType?
+
+> `optional` **itemType**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.itemType`
+
+***
+
+### label
+
+> **label**: `string`
+
+The label for the number input.
+
+***
+
+### lang?
+
+> `optional` **lang**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.lang`
+
+***
+
+### list?
+
+> `optional` **list**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.list`
+
+***
+
+### max?
+
+> `optional` **max**: `string` \| `number`
+
+#### Inherited from
+
+`NumericFormatProps.max`
+
+***
+
+### maxLength?
+
+> `optional` **maxLength**: `number`
+
+#### Inherited from
+
+`NumericFormatProps.maxLength`
+
+***
+
+### min?
+
+> `optional` **min**: `string` \| `number`
+
+#### Inherited from
+
+`NumericFormatProps.min`
+
+***
+
+### minLength?
+
+> `optional` **minLength**: `number`
+
+#### Inherited from
+
+`NumericFormatProps.minLength`
+
+***
+
+### multiple?
+
+> `optional` **multiple**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.multiple`
+
+***
+
+### name?
+
+> `optional` **name**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.name`
+
+***
+
+### nonce?
+
+> `optional` **nonce**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.nonce`
+
+***
+
+### onAbort?
+
+> `optional` **onAbort**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onAbort`
+
+***
+
+### onAbortCapture?
+
+> `optional` **onAbortCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onAbortCapture`
+
+***
+
+### onAnimationEnd?
+
+> `optional` **onAnimationEnd**: `AnimationEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onAnimationEnd`
+
+***
+
+### onAnimationEndCapture?
+
+> `optional` **onAnimationEndCapture**: `AnimationEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onAnimationEndCapture`
+
+***
+
+### onAnimationIteration?
+
+> `optional` **onAnimationIteration**: `AnimationEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onAnimationIteration`
+
+***
+
+### onAnimationIterationCapture?
+
+> `optional` **onAnimationIterationCapture**: `AnimationEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onAnimationIterationCapture`
+
+***
+
+### onAnimationStart?
+
+> `optional` **onAnimationStart**: `AnimationEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onAnimationStart`
+
+***
+
+### onAnimationStartCapture?
+
+> `optional` **onAnimationStartCapture**: `AnimationEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onAnimationStartCapture`
+
+***
+
+### onAuxClick?
+
+> `optional` **onAuxClick**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onAuxClick`
+
+***
+
+### onAuxClickCapture?
+
+> `optional` **onAuxClickCapture**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onAuxClickCapture`
+
+***
+
+### onBeforeInput?
+
+> `optional` **onBeforeInput**: `FormEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onBeforeInput`
+
+***
+
+### onBeforeInputCapture?
+
+> `optional` **onBeforeInputCapture**: `FormEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onBeforeInputCapture`
+
+***
+
+### onBeforeToggle?
+
+> `optional` **onBeforeToggle**: `ToggleEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onBeforeToggle`
+
+***
+
+### onBlur?
+
+> `optional` **onBlur**: `FocusEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onBlur`
+
+***
+
+### onBlurCapture?
+
+> `optional` **onBlurCapture**: `FocusEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onBlurCapture`
+
+***
+
+### onCanPlay?
+
+> `optional` **onCanPlay**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onCanPlay`
+
+***
+
+### onCanPlayCapture?
+
+> `optional` **onCanPlayCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onCanPlayCapture`
+
+***
+
+### onCanPlayThrough?
+
+> `optional` **onCanPlayThrough**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onCanPlayThrough`
+
+***
+
+### onCanPlayThroughCapture?
+
+> `optional` **onCanPlayThroughCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onCanPlayThroughCapture`
+
+***
+
+### onChange()
+
+> **onChange**: (`value`) => `void`
+
+The callback function called when the value changes.
+
+#### Parameters
+
+##### value
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+`NumericFormatProps.onChange`
+
+***
+
+### onChangeCapture?
+
+> `optional` **onChangeCapture**: `FormEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onChangeCapture`
+
+***
+
+### onClick?
+
+> `optional` **onClick**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onClick`
+
+***
+
+### onClickCapture?
+
+> `optional` **onClickCapture**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onClickCapture`
+
+***
+
+### onCompositionEnd?
+
+> `optional` **onCompositionEnd**: `CompositionEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onCompositionEnd`
+
+***
+
+### onCompositionEndCapture?
+
+> `optional` **onCompositionEndCapture**: `CompositionEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onCompositionEndCapture`
+
+***
+
+### onCompositionStart?
+
+> `optional` **onCompositionStart**: `CompositionEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onCompositionStart`
+
+***
+
+### onCompositionStartCapture?
+
+> `optional` **onCompositionStartCapture**: `CompositionEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onCompositionStartCapture`
+
+***
+
+### onCompositionUpdate?
+
+> `optional` **onCompositionUpdate**: `CompositionEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onCompositionUpdate`
+
+***
+
+### onCompositionUpdateCapture?
+
+> `optional` **onCompositionUpdateCapture**: `CompositionEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onCompositionUpdateCapture`
+
+***
+
+### onContextMenu?
+
+> `optional` **onContextMenu**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onContextMenu`
+
+***
+
+### onContextMenuCapture?
+
+> `optional` **onContextMenuCapture**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onContextMenuCapture`
+
+***
+
+### onCopy?
+
+> `optional` **onCopy**: `ClipboardEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onCopy`
+
+***
+
+### onCopyCapture?
+
+> `optional` **onCopyCapture**: `ClipboardEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onCopyCapture`
+
+***
+
+### onCut?
+
+> `optional` **onCut**: `ClipboardEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onCut`
+
+***
+
+### onCutCapture?
+
+> `optional` **onCutCapture**: `ClipboardEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onCutCapture`
+
+***
+
+### onDoubleClick?
+
+> `optional` **onDoubleClick**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDoubleClick`
+
+***
+
+### onDoubleClickCapture?
+
+> `optional` **onDoubleClickCapture**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDoubleClickCapture`
+
+***
+
+### onDrag?
+
+> `optional` **onDrag**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDrag`
+
+***
+
+### onDragCapture?
+
+> `optional` **onDragCapture**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDragCapture`
+
+***
+
+### onDragEnd?
+
+> `optional` **onDragEnd**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDragEnd`
+
+***
+
+### onDragEndCapture?
+
+> `optional` **onDragEndCapture**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDragEndCapture`
+
+***
+
+### onDragEnter?
+
+> `optional` **onDragEnter**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDragEnter`
+
+***
+
+### onDragEnterCapture?
+
+> `optional` **onDragEnterCapture**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDragEnterCapture`
+
+***
+
+### onDragExit?
+
+> `optional` **onDragExit**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDragExit`
+
+***
+
+### onDragExitCapture?
+
+> `optional` **onDragExitCapture**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDragExitCapture`
+
+***
+
+### onDragLeave?
+
+> `optional` **onDragLeave**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDragLeave`
+
+***
+
+### onDragLeaveCapture?
+
+> `optional` **onDragLeaveCapture**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDragLeaveCapture`
+
+***
+
+### onDragOver?
+
+> `optional` **onDragOver**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDragOver`
+
+***
+
+### onDragOverCapture?
+
+> `optional` **onDragOverCapture**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDragOverCapture`
+
+***
+
+### onDragStart?
+
+> `optional` **onDragStart**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDragStart`
+
+***
+
+### onDragStartCapture?
+
+> `optional` **onDragStartCapture**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDragStartCapture`
+
+***
+
+### onDrop?
+
+> `optional` **onDrop**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDrop`
+
+***
+
+### onDropCapture?
+
+> `optional` **onDropCapture**: `DragEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDropCapture`
+
+***
+
+### onDurationChange?
+
+> `optional` **onDurationChange**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDurationChange`
+
+***
+
+### onDurationChangeCapture?
+
+> `optional` **onDurationChangeCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onDurationChangeCapture`
+
+***
+
+### onEmptied?
+
+> `optional` **onEmptied**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onEmptied`
+
+***
+
+### onEmptiedCapture?
+
+> `optional` **onEmptiedCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onEmptiedCapture`
+
+***
+
+### onEncrypted?
+
+> `optional` **onEncrypted**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onEncrypted`
+
+***
+
+### onEncryptedCapture?
+
+> `optional` **onEncryptedCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onEncryptedCapture`
+
+***
+
+### onEnded?
+
+> `optional` **onEnded**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onEnded`
+
+***
+
+### onEndedCapture?
+
+> `optional` **onEndedCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onEndedCapture`
+
+***
+
+### onError?
+
+> `optional` **onError**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onError`
+
+***
+
+### onErrorCapture?
+
+> `optional` **onErrorCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onErrorCapture`
+
+***
+
+### onFocus?
+
+> `optional` **onFocus**: `FocusEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onFocus`
+
+***
+
+### onFocusCapture?
+
+> `optional` **onFocusCapture**: `FocusEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onFocusCapture`
+
+***
+
+### onGotPointerCapture?
+
+> `optional` **onGotPointerCapture**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onGotPointerCapture`
+
+***
+
+### onGotPointerCaptureCapture?
+
+> `optional` **onGotPointerCaptureCapture**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onGotPointerCaptureCapture`
+
+***
+
+### onInput?
+
+> `optional` **onInput**: `FormEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onInput`
+
+***
+
+### onInputCapture?
+
+> `optional` **onInputCapture**: `FormEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onInputCapture`
+
+***
+
+### onInvalid?
+
+> `optional` **onInvalid**: `FormEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onInvalid`
+
+***
+
+### onInvalidCapture?
+
+> `optional` **onInvalidCapture**: `FormEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onInvalidCapture`
+
+***
+
+### onKeyDown?
+
+> `optional` **onKeyDown**: `KeyboardEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onKeyDown`
+
+***
+
+### onKeyDownCapture?
+
+> `optional` **onKeyDownCapture**: `KeyboardEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onKeyDownCapture`
+
+***
+
+### ~~onKeyPress?~~
+
+> `optional` **onKeyPress**: `KeyboardEventHandler`\<`HTMLInputElement`\>
+
+#### Deprecated
+
+Use `onKeyUp` or `onKeyDown` instead
+
+#### Inherited from
+
+`NumericFormatProps.onKeyPress`
+
+***
+
+### ~~onKeyPressCapture?~~
+
+> `optional` **onKeyPressCapture**: `KeyboardEventHandler`\<`HTMLInputElement`\>
+
+#### Deprecated
+
+Use `onKeyUpCapture` or `onKeyDownCapture` instead
+
+#### Inherited from
+
+`NumericFormatProps.onKeyPressCapture`
+
+***
+
+### onKeyUp?
+
+> `optional` **onKeyUp**: `KeyboardEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onKeyUp`
+
+***
+
+### onKeyUpCapture?
+
+> `optional` **onKeyUpCapture**: `KeyboardEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onKeyUpCapture`
+
+***
+
+### onLoad?
+
+> `optional` **onLoad**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onLoad`
+
+***
+
+### onLoadCapture?
+
+> `optional` **onLoadCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onLoadCapture`
+
+***
+
+### onLoadedData?
+
+> `optional` **onLoadedData**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onLoadedData`
+
+***
+
+### onLoadedDataCapture?
+
+> `optional` **onLoadedDataCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onLoadedDataCapture`
+
+***
+
+### onLoadedMetadata?
+
+> `optional` **onLoadedMetadata**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onLoadedMetadata`
+
+***
+
+### onLoadedMetadataCapture?
+
+> `optional` **onLoadedMetadataCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onLoadedMetadataCapture`
+
+***
+
+### onLoadStart?
+
+> `optional` **onLoadStart**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onLoadStart`
+
+***
+
+### onLoadStartCapture?
+
+> `optional` **onLoadStartCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onLoadStartCapture`
+
+***
+
+### onLostPointerCapture?
+
+> `optional` **onLostPointerCapture**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onLostPointerCapture`
+
+***
+
+### onLostPointerCaptureCapture?
+
+> `optional` **onLostPointerCaptureCapture**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onLostPointerCaptureCapture`
+
+***
+
+### onMouseDown?
+
+> `optional` **onMouseDown**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onMouseDown`
+
+***
+
+### onMouseDownCapture?
+
+> `optional` **onMouseDownCapture**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onMouseDownCapture`
+
+***
+
+### onMouseEnter?
+
+> `optional` **onMouseEnter**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onMouseEnter`
+
+***
+
+### onMouseLeave?
+
+> `optional` **onMouseLeave**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onMouseLeave`
+
+***
+
+### onMouseMove?
+
+> `optional` **onMouseMove**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onMouseMove`
+
+***
+
+### onMouseMoveCapture?
+
+> `optional` **onMouseMoveCapture**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onMouseMoveCapture`
+
+***
+
+### onMouseOut?
+
+> `optional` **onMouseOut**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onMouseOut`
+
+***
+
+### onMouseOutCapture?
+
+> `optional` **onMouseOutCapture**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onMouseOutCapture`
+
+***
+
+### onMouseOver?
+
+> `optional` **onMouseOver**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onMouseOver`
+
+***
+
+### onMouseOverCapture?
+
+> `optional` **onMouseOverCapture**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onMouseOverCapture`
+
+***
+
+### onMouseUp?
+
+> `optional` **onMouseUp**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onMouseUp`
+
+***
+
+### onMouseUpCapture?
+
+> `optional` **onMouseUpCapture**: `MouseEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onMouseUpCapture`
+
+***
+
+### onPaste?
+
+> `optional` **onPaste**: `ClipboardEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPaste`
+
+***
+
+### onPasteCapture?
+
+> `optional` **onPasteCapture**: `ClipboardEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPasteCapture`
+
+***
+
+### onPause?
+
+> `optional` **onPause**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPause`
+
+***
+
+### onPauseCapture?
+
+> `optional` **onPauseCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPauseCapture`
+
+***
+
+### onPlay?
+
+> `optional` **onPlay**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPlay`
+
+***
+
+### onPlayCapture?
+
+> `optional` **onPlayCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPlayCapture`
+
+***
+
+### onPlaying?
+
+> `optional` **onPlaying**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPlaying`
+
+***
+
+### onPlayingCapture?
+
+> `optional` **onPlayingCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPlayingCapture`
+
+***
+
+### onPointerCancel?
+
+> `optional` **onPointerCancel**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPointerCancel`
+
+***
+
+### onPointerCancelCapture?
+
+> `optional` **onPointerCancelCapture**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPointerCancelCapture`
+
+***
+
+### onPointerDown?
+
+> `optional` **onPointerDown**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPointerDown`
+
+***
+
+### onPointerDownCapture?
+
+> `optional` **onPointerDownCapture**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPointerDownCapture`
+
+***
+
+### onPointerEnter?
+
+> `optional` **onPointerEnter**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPointerEnter`
+
+***
+
+### onPointerLeave?
+
+> `optional` **onPointerLeave**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPointerLeave`
+
+***
+
+### onPointerMove?
+
+> `optional` **onPointerMove**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPointerMove`
+
+***
+
+### onPointerMoveCapture?
+
+> `optional` **onPointerMoveCapture**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPointerMoveCapture`
+
+***
+
+### onPointerOut?
+
+> `optional` **onPointerOut**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPointerOut`
+
+***
+
+### onPointerOutCapture?
+
+> `optional` **onPointerOutCapture**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPointerOutCapture`
+
+***
+
+### onPointerOver?
+
+> `optional` **onPointerOver**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPointerOver`
+
+***
+
+### onPointerOverCapture?
+
+> `optional` **onPointerOverCapture**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPointerOverCapture`
+
+***
+
+### onPointerUp?
+
+> `optional` **onPointerUp**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPointerUp`
+
+***
+
+### onPointerUpCapture?
+
+> `optional` **onPointerUpCapture**: `PointerEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onPointerUpCapture`
+
+***
+
+### onPressEnter?
+
+> `optional` **onPressEnter**: `KeyboardEventHandler`\<`HTMLInputElement`\>
+
+Called on press enter
+
+#### Inherited from
+
+`NumericFormatProps.onPressEnter`
+
+***
+
+### onProgress?
+
+> `optional` **onProgress**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onProgress`
+
+***
+
+### onProgressCapture?
+
+> `optional` **onProgressCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onProgressCapture`
+
+***
+
+### onRateChange?
+
+> `optional` **onRateChange**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onRateChange`
+
+***
+
+### onRateChangeCapture?
+
+> `optional` **onRateChangeCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onRateChangeCapture`
+
+***
+
+### onReset?
+
+> `optional` **onReset**: `FormEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onReset`
+
+***
+
+### onResetCapture?
+
+> `optional` **onResetCapture**: `FormEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onResetCapture`
+
+***
+
+### onResize?
+
+> `optional` **onResize**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onResize`
+
+***
+
+### onResizeCapture?
+
+> `optional` **onResizeCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onResizeCapture`
+
+***
+
+### onScroll?
+
+> `optional` **onScroll**: `UIEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onScroll`
+
+***
+
+### onScrollCapture?
+
+> `optional` **onScrollCapture**: `UIEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onScrollCapture`
+
+***
+
+### onSeeked?
+
+> `optional` **onSeeked**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onSeeked`
+
+***
+
+### onSeekedCapture?
+
+> `optional` **onSeekedCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onSeekedCapture`
+
+***
+
+### onSeeking?
+
+> `optional` **onSeeking**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onSeeking`
+
+***
+
+### onSeekingCapture?
+
+> `optional` **onSeekingCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onSeekingCapture`
+
+***
+
+### onSelect?
+
+> `optional` **onSelect**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onSelect`
+
+***
+
+### onSelectCapture?
+
+> `optional` **onSelectCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onSelectCapture`
+
+***
+
+### onStalled?
+
+> `optional` **onStalled**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onStalled`
+
+***
+
+### onStalledCapture?
+
+> `optional` **onStalledCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onStalledCapture`
+
+***
+
+### onSubmit?
+
+> `optional` **onSubmit**: `FormEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onSubmit`
+
+***
+
+### onSubmitCapture?
+
+> `optional` **onSubmitCapture**: `FormEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onSubmitCapture`
+
+***
+
+### onSuspend?
+
+> `optional` **onSuspend**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onSuspend`
+
+***
+
+### onSuspendCapture?
+
+> `optional` **onSuspendCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onSuspendCapture`
+
+***
+
+### onTimeUpdate?
+
+> `optional` **onTimeUpdate**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTimeUpdate`
+
+***
+
+### onTimeUpdateCapture?
+
+> `optional` **onTimeUpdateCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTimeUpdateCapture`
+
+***
+
+### onToggle?
+
+> `optional` **onToggle**: `ToggleEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onToggle`
+
+***
+
+### onTouchCancel?
+
+> `optional` **onTouchCancel**: `TouchEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTouchCancel`
+
+***
+
+### onTouchCancelCapture?
+
+> `optional` **onTouchCancelCapture**: `TouchEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTouchCancelCapture`
+
+***
+
+### onTouchEnd?
+
+> `optional` **onTouchEnd**: `TouchEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTouchEnd`
+
+***
+
+### onTouchEndCapture?
+
+> `optional` **onTouchEndCapture**: `TouchEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTouchEndCapture`
+
+***
+
+### onTouchMove?
+
+> `optional` **onTouchMove**: `TouchEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTouchMove`
+
+***
+
+### onTouchMoveCapture?
+
+> `optional` **onTouchMoveCapture**: `TouchEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTouchMoveCapture`
+
+***
+
+### onTouchStart?
+
+> `optional` **onTouchStart**: `TouchEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTouchStart`
+
+***
+
+### onTouchStartCapture?
+
+> `optional` **onTouchStartCapture**: `TouchEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTouchStartCapture`
+
+***
+
+### onTransitionCancel?
+
+> `optional` **onTransitionCancel**: `TransitionEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTransitionCancel`
+
+***
+
+### onTransitionCancelCapture?
+
+> `optional` **onTransitionCancelCapture**: `TransitionEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTransitionCancelCapture`
+
+***
+
+### onTransitionEnd?
+
+> `optional` **onTransitionEnd**: `TransitionEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTransitionEnd`
+
+***
+
+### onTransitionEndCapture?
+
+> `optional` **onTransitionEndCapture**: `TransitionEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTransitionEndCapture`
+
+***
+
+### onTransitionRun?
+
+> `optional` **onTransitionRun**: `TransitionEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTransitionRun`
+
+***
+
+### onTransitionRunCapture?
+
+> `optional` **onTransitionRunCapture**: `TransitionEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTransitionRunCapture`
+
+***
+
+### onTransitionStart?
+
+> `optional` **onTransitionStart**: `TransitionEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTransitionStart`
+
+***
+
+### onTransitionStartCapture?
+
+> `optional` **onTransitionStartCapture**: `TransitionEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onTransitionStartCapture`
+
+***
+
+### onValueChange?
+
+> `optional` **onValueChange**: `OnValueChange`
+
+#### Inherited from
+
+`NumericFormatProps.onValueChange`
+
+***
+
+### onVolumeChange?
+
+> `optional` **onVolumeChange**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onVolumeChange`
+
+***
+
+### onVolumeChangeCapture?
+
+> `optional` **onVolumeChangeCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onVolumeChangeCapture`
+
+***
+
+### onWaiting?
+
+> `optional` **onWaiting**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onWaiting`
+
+***
+
+### onWaitingCapture?
+
+> `optional` **onWaitingCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onWaitingCapture`
+
+***
+
+### onWheel?
+
+> `optional` **onWheel**: `WheelEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onWheel`
+
+***
+
+### onWheelCapture?
+
+> `optional` **onWheelCapture**: `WheelEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onWheelCapture`
+
+***
+
+### pattern?
+
+> `optional` **pattern**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.pattern`
+
+***
+
+### placeholder?
+
+> `optional` **placeholder**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.placeholder`
+
+***
+
+### plaintext?
+
+> `optional` **plaintext**: `boolean`
+
+Render the control as plain text
+
+#### Inherited from
+
+`NumericFormatProps.plaintext`
+
+***
+
+### popover?
+
+> `optional` **popover**: `""` \| `"auto"` \| `"manual"`
+
+#### Inherited from
+
+`NumericFormatProps.popover`
+
+***
+
+### popoverTarget?
+
+> `optional` **popoverTarget**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.popoverTarget`
+
+***
+
+### popoverTargetAction?
+
+> `optional` **popoverTargetAction**: `"toggle"` \| `"show"` \| `"hide"`
+
+#### Inherited from
+
+`NumericFormatProps.popoverTargetAction`
+
+***
+
+### prefix?
+
+> `optional` **prefix**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.prefix`
+
+***
+
+### property?
+
+> `optional` **property**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.property`
+
+***
+
+### radioGroup?
+
+> `optional` **radioGroup**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.radioGroup`
+
+***
+
+### readOnly?
+
+> `optional` **readOnly**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.readOnly`
+
+***
+
+### rel?
+
+> `optional` **rel**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.rel`
+
+***
+
+### renderText()?
+
+> `optional` **renderText**: (`formattedValue`, `otherProps`) => `ReactNode`
+
+#### Parameters
+
+##### formattedValue
+
+`string`
+
+##### otherProps
+
+`Partial`\<`NumberFormatBase`\>
+
+#### Returns
+
+`ReactNode`
+
+#### Inherited from
+
+`NumericFormatProps.renderText`
+
+***
+
+### required?
+
+> `optional` **required**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.required`
+
+***
+
+### resource?
+
+> `optional` **resource**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.resource`
+
+***
+
+### results?
+
+> `optional` **results**: `number`
+
+#### Inherited from
+
+`NumericFormatProps.results`
+
+***
+
+### rev?
+
+> `optional` **rev**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.rev`
+
+***
+
+### role?
+
+> `optional` **role**: `AriaRole`
+
+#### Inherited from
+
+`NumericFormatProps.role`
+
+***
+
+### security?
+
+> `optional` **security**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.security`
+
+***
+
+### size?
+
+> `optional` **size**: `Size`
+
+A component can have different sizes
+
+#### Inherited from
+
+`NumericFormatProps.size`
+
+***
+
+### slot?
+
+> `optional` **slot**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.slot`
+
+***
+
+### spellCheck?
+
+> `optional` **spellCheck**: `Booleanish`
+
+#### Inherited from
+
+`NumericFormatProps.spellCheck`
+
+***
+
+### src?
+
+> `optional` **src**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.src`
+
+***
+
+### step?
+
+> `optional` **step**: `string` \| `number`
+
+#### Inherited from
+
+`NumericFormatProps.step`
+
+***
+
+### style?
+
+> `optional` **style**: `CSSProperties`
+
+Additional style
+
+#### Inherited from
+
+`NumericFormatProps.style`
+
+***
+
+### suffix?
+
+> `optional` **suffix**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.suffix`
+
+***
+
+### suppressContentEditableWarning?
+
+> `optional` **suppressContentEditableWarning**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.suppressContentEditableWarning`
+
+***
+
+### suppressHydrationWarning?
+
+> `optional` **suppressHydrationWarning**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.suppressHydrationWarning`
+
+***
+
+### tabIndex?
+
+> `optional` **tabIndex**: `number`
+
+#### Inherited from
+
+`NumericFormatProps.tabIndex`
+
+***
+
+### thousandSeparator?
+
+> `optional` **thousandSeparator**: `string` \| `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.thousandSeparator`
+
+***
+
+### thousandsGroupStyle?
+
+> `optional` **thousandsGroupStyle**: `"none"` \| `"thousand"` \| `"lakh"` \| `"wan"`
+
+#### Inherited from
+
+`NumericFormatProps.thousandsGroupStyle`
+
+***
+
+### title?
+
+> `optional` **title**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.title`
+
+***
+
+### translate?
+
+> `optional` **translate**: `"yes"` \| `"no"`
+
+#### Inherited from
+
+`NumericFormatProps.translate`
+
+***
+
+### type?
+
+> `optional` **type**: `"text"` \| `"tel"` \| `"password"`
+
+#### Inherited from
+
+`NumericFormatProps.type`
+
+***
+
+### typeof?
+
+> `optional` **typeof**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.typeof`
+
+***
+
+### unselectable?
+
+> `optional` **unselectable**: `"off"` \| `"on"`
+
+#### Inherited from
+
+`NumericFormatProps.unselectable`
+
+***
+
+### value?
+
+> `optional` **value**: `null` \| `string` \| `number`
+
+#### Inherited from
+
+`NumericFormatProps.value`
+
+***
+
+### valueIsNumericString?
+
+> `optional` **valueIsNumericString**: `boolean`
+
+#### Inherited from
+
+`NumericFormatProps.valueIsNumericString`
+
+***
+
+### vocab?
+
+> `optional` **vocab**: `string`
+
+#### Inherited from
+
+`NumericFormatProps.vocab`
+
+***
+
+### width?
+
+> `optional` **width**: `string` \| `number`
+
+#### Inherited from
+
+`NumericFormatProps.width`

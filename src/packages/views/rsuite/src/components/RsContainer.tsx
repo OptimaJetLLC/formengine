@@ -8,12 +8,29 @@ const SDiv = styled.div`
 `
 const {flexDirection, gap} = containerStyles
 
-interface RsContainerProps {
+/**
+ * Props for the RsContainer component.
+ */
+export interface RsContainerProps {
+  /**
+   * Whether the container is disabled.
+   */
   disabled?: boolean
+  /**
+   * Whether the container is read only.
+   */
   readOnly?: boolean
+  /**
+   * Children elements of the container.
+   */
   children?: ReactNode
 }
 
+/**
+ * Container component with flex layout.
+ * @param props the component props.
+ * @returns the React element.
+ */
 const RsContainer = (props: RsContainerProps) => {
   const {disabled, readOnly, ...otherProps} = props
   return <SDiv {...otherProps} />

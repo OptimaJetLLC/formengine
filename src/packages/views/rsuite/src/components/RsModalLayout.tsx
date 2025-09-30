@@ -5,13 +5,33 @@ import {modalCategory} from './categories'
 
 const {Header, Title, Body, Footer} = Modal
 
-interface RsModalLayoutProps {
+/**
+ * Props for the RsModalLayout component.
+ */
+export interface RsModalLayoutProps {
+  /**
+   * Whether to show the close button.
+   */
   closeButton: boolean,
+  /**
+   * The title for the modal header.
+   */
   headerTitle: ReactNode,
+  /**
+   * The content for the modal body.
+   */
   body: ReactNode,
+  /**
+   * The content for the modal footer.
+   */
   footer: ReactNode,
 }
 
+/**
+ * Modal layout component with header, body and footer sections.
+ * @param props the component props.
+ * @returns the React element.
+ */
 const RsModalLayout = (props: RsModalLayoutProps) => {
   const {closeButton, headerTitle, body, footer, ...rest} = props
   return <div {...rest}>

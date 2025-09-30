@@ -5,7 +5,10 @@ import logo from '../../public/images/logo.png'
 import type {AreaProps} from '../commonTypes'
 import {staticCategory} from './categories'
 
-interface RsImageProps extends ComponentProps<'img'>, AreaProps {
+/**
+ * Props for the RsImage component.
+ */
+export interface RsImageProps extends ComponentProps<'img'>, AreaProps {
 }
 
 const SImage = styled.img`
@@ -13,6 +16,13 @@ const SImage = styled.img`
   height: 100%;
 `
 
+/**
+ * An image component that displays an image with configurable source and styling.
+ * @param props the component props.
+ * @param props.alt the alternative text for the image.
+ * @param props.src the image source URL.
+ * @returns the React element.
+ */
 const RsImage = ({alt, src, ...props}: RsImageProps) => {
   const source = useBuilderValue(src, logo)
   return <SImage {...props} alt={alt} src={source}/>

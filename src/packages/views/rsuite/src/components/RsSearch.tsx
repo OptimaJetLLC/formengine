@@ -32,12 +32,37 @@ const SInputPicker = styled(InputPicker)`
   flex: 1;
 `
 
-interface RsSearchProps extends InputPickerProps, LoadDataProps {
+/**
+ * Props for the RsSearch component.
+ */
+export interface RsSearchProps extends InputPickerProps, LoadDataProps {
+  /**
+   * The label for the search input.
+   */
   label: string
+  /**
+   * Called after the value has been changed.
+   * @param value the value.
+   */
+  onChange?: (value: any) => void
 }
 
 const CustomCaret = () => null
 
+/**
+ * Search component with label and data loading support.
+ * @param props the component props.
+ * @param props.data the data for the search.
+ * @param props.label the label for the search input.
+ * @param props.onLoadData the callback for loading data.
+ * @param props.onSearch the callback for search.
+ * @param props.value the value of the search.
+ * @param props.className the CSS class name.
+ * @param props.preload whether to preload data.
+ * @param props.disableVirtualized whether to disable virtualization.
+ * @param props.props the additional search props.
+ * @returns the React element.
+ */
 const RsSearch = ({data, label, onLoadData, onSearch, value = '', className, preload, disableVirtualized, ...props}: RsSearchProps) => {
   const {loading, onOpen, ...loadProps} = useLoadData({data, onLoadData, onSearch, value, preload, disableVirtualized})
 

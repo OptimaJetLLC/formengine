@@ -8,8 +8,23 @@ import {fieldsCategory} from './categories'
 import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
-interface RsDatePickerProps extends DatePickerProps {
+/**
+ * Props for the RsDatePicker component.
+ */
+export interface RsDatePickerProps extends DatePickerProps {
+  /**
+   * Label for the date picker.
+   */
   label: string
+  /**
+   * Called after the value has been changed.
+   * @param value the value.
+   */
+  onChange?: (value: Date | null) => void
+  /**
+   * @deprecated
+   */
+  inline?: boolean
 }
 
 /**
@@ -29,6 +44,17 @@ const parseDateValue = (value: any) => {
   return value
 }
 
+/**
+ * Date picker component with label support.
+ * @param props the component props.
+ * @param props.label the label for the date picker.
+ * @param props.value the value of the date picker.
+ * @param props.className the CSS class name.
+ * @param props.format the format of the date.
+ * @param props.defaultValue the default value of the date picker.
+ * @param props.props the additional date picker props.
+ * @returns the React element.
+ */
 const RsDatePicker = ({label, value, className, format, defaultValue, ...props}: RsDatePickerProps) => {
   const componentData = useComponentData()
   const safeFormat = useMemo(() => toSafeFormat(format), [format])

@@ -6,11 +6,35 @@ import {readOnly} from '../commonProperties'
 import {fieldsCategory} from './categories'
 import {Labeled} from './components/Labeled'
 
-interface RsRadioGroupProps extends RadioGroupProps<string> {
+/**
+ * Props for the RsRadioGroup component.
+ */
+export interface RsRadioGroupProps extends RadioGroupProps<string> {
+  /**
+   * The items for the radio group.
+   */
   items: LabeledValue[]
+  /**
+   * The label for the radio group.
+   */
   label?: string
+  /**
+   * Called after the value has been changed.
+   * @param value the value.
+   */
+  onChange?: (value: string) => void
 }
 
+/**
+ * Radio group component with label support.
+ * @param props the component props.
+ * @param props.items the items for the radio group.
+ * @param props.label the label for the radio group.
+ * @param props.value the value of the radio group.
+ * @param props.className the CSS class name.
+ * @param props.props the additional radio group props.
+ * @returns the React element.
+ */
 const RsRadioGroup = ({items, label, value, className, ...props}: RsRadioGroupProps) => {
   return (
     <Labeled label={label} className={className} passAriaToChildren={true}>

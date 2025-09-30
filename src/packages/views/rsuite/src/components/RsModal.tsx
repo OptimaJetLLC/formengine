@@ -5,10 +5,21 @@ import type {ModalProps} from 'rsuite'
 import {Modal} from 'rsuite'
 import {modalCategory} from './categories'
 
-interface RsModalProps extends ModalProps {
+/**
+ * Props for the RsModal component.
+ */
+export interface RsModalProps extends ModalProps {
+  /**
+   * Custom close handler function.
+   */
   handleClose?: () => void
 }
 
+/**
+ * A modal component that displays content in an overlay dialog.
+ * @param props the component props.
+ * @returns the React element.
+ */
 const RsModal = (props: RsModalProps) => {
   const {children, handleClose, onClose, ...rest} = props
 

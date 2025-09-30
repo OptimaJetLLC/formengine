@@ -8,11 +8,36 @@ import {fieldsCategory} from './categories'
 import {Labeled} from './components/Labeled'
 import {WrappedInput} from './components/WrappedInput'
 
-interface RsPatternFormatProps extends PatternFormatProps<InputProps> {
+/**
+ * Props for the RsPatternFormat component.
+ */
+export interface RsPatternFormatProps extends PatternFormatProps<InputProps> {
+  /**
+   * The label for the pattern format input.
+   */
   label: string
+  /**
+   * The callback when value changes.
+   */
   onChange: (value: any) => void
+  /**
+   * The htmlSize attribute defines the width of the &laquo;input> element.
+   */
+  htmlSize?: number
 }
 
+/**
+ * Pattern format input component with label support.
+ * @param props the component props.
+ * @param props.style the CSS styles.
+ * @param props.className the CSS class name.
+ * @param props.label the label for the pattern format input.
+ * @param props.format the format pattern.
+ * @param props.onChange the callback when value changes.
+ * @param props.value the value of the input.
+ * @param props.props the additional pattern format props.
+ * @returns the React element.
+ */
 const RsPatternFormat = ({style, className, label, format, onChange, value, ...props}: RsPatternFormatProps) => {
   let {mask} = props
 

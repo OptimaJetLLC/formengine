@@ -3,10 +3,23 @@ import {containerStyles, define, node, string} from '@react-form-builder/core'
 import {structureCategory} from '../categories'
 import {WizardStepIcon} from './WizardStepIcon'
 
-interface RsWizardStepProps {
+/**
+ * Props for the RsWizardStep component.
+ */
+export interface RsWizardStepProps {
+  /**
+   * Label for the wizard step.
+   */
   label?: string
 }
 
+/**
+ * Wizard step component with flex layout.
+ * @param props the component props.
+ * @param props.label the label for the wizard step.
+ * @param props.props the additional step props.
+ * @returns the React element.
+ */
 const RsWizardStep = styled.div<RsWizardStepProps>`
   display: flex;
 `

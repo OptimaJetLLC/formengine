@@ -7,14 +7,35 @@ import {Nav} from 'rsuite'
 import {navProps} from '../commonProperties'
 import {structureCategory} from './categories'
 
-type RsItem = {
+/**
+ * Tab item for RsTab component.
+ */
+export type RsTabItem = {
+  /**
+   * Label for the tab item.
+   */
   label: string
+  /**
+   * Value for the tab item.
+   */
   value: string
 }
 
-interface RsTabProps extends NavProps {
-  items?: RsItem[]
+/**
+ * Props for the RsTab component.
+ */
+export interface RsTabProps extends NavProps {
+  /**
+   * Items for the tab.
+   */
+  items?: RsTabItem[]
+  /**
+   * Whether to show navigation.
+   */
   showNavigation?: boolean
+  /**
+   * Pane content for the tab.
+   */
   pane: ReactNode
 }
 
@@ -30,6 +51,16 @@ const STabs = styled(Nav)({
   }
 })
 
+/**
+ * Tab component with navigation and pane support.
+ * @param props the component props.
+ * @param props.pane the pane content for the tab.
+ * @param props.onSelect the callback when tab is selected.
+ * @param props.showNavigation whether to show navigation.
+ * @param props.items the items for the tab.
+ * @param props.props the additional tab props.
+ * @returns the React element.
+ */
 const RsTab = ({
                  pane,
                  onSelect,

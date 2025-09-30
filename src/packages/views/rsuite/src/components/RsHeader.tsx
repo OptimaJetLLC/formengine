@@ -6,8 +6,17 @@ import {staticCategory} from './categories'
 
 const defaultContent = 'Header'
 
-interface RsHeaderProps extends TextProps {
+/**
+ * Props for the RsHeader component.
+ */
+export interface RsHeaderProps extends TextProps {
+  /**
+   * The content of the header.
+   */
   content?: string
+  /**
+   * The size of the header.
+   */
   headerSize: string
 }
 

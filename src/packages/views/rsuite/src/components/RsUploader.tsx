@@ -9,11 +9,32 @@ import {InputCell} from './components/InputCell'
 import {Labeled} from './components/Labeled'
 import {useTouchOnEvent} from './hooks/useTouchOnEvent'
 
-interface RsUploaderProps extends UploaderProps {
+/**
+ * Props for the RsUploader component.
+ */
+export interface RsUploaderProps extends UploaderProps {
+  /**
+   * Whether to use a custom element for the uploader.
+   */
   customElement: boolean
+  /**
+   * The label for the uploader.
+   */
   label?: string
 }
 
+/**
+ * A file uploader component that allows users to select and upload files.
+ * @param props the component props.
+ * @param props.customElement whether to use a custom element for the uploader.
+ * @param props.children the custom content when customElement is true.
+ * @param props.disabled whether the uploader is disabled.
+ * @param props.multiple whether multiple files can be selected.
+ * @param props.fileList the list of uploaded files.
+ * @param props.className the CSS class name for the component.
+ * @param props.label the label for the uploader.
+ * @returns the React element.
+ */
 const RsUploader = ({customElement, children, disabled, multiple, fileList, className, label, ...props}: RsUploaderProps) => {
   const uploaderRef = useRef<any>(null)
   const onRemove = useTouchOnEvent(props, 'onRemove')
