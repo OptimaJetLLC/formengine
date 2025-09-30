@@ -12,6 +12,7 @@
   },
   "main": "src/index.ts",
   "type": "module",
+  "sideEffects": false,
   "keywords": [
     "react",
     "form",
