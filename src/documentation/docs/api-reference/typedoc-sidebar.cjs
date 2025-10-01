@@ -1535,6 +1535,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/cfDisableStyles",
+              label: "cfDisableStyles"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/variables/cfDisableStylesForClassNameEditor",
               label: "cfDisableStylesForClassNameEditor"
             },
@@ -1542,6 +1547,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/variables/cfDisableTooltipProperties",
               label: "cfDisableTooltipProperties"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/cfDisableWrapperStyles",
+              label: "cfDisableWrapperStyles"
             },
             {
               type: "doc",

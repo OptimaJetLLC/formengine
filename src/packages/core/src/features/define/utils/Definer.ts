@@ -19,8 +19,10 @@ import {
   cfComponentIsPreset,
   cfComponentRole,
   cfDisableActionEditors,
+  cfDisableStyles,
   cfDisableStylesForClassNameEditor,
   cfDisableTooltipProperties,
+  cfDisableWrapperStyles,
   cfEnableInlineStylesEditor,
   cfEventHandlers,
   cfHideFromComponentPalette,
@@ -259,6 +261,24 @@ export class Definer<T extends object> {
    */
   hideFromComponentPalette(value = true) {
     return this.addFeature(cfHideFromComponentPalette, value)
+  }
+
+  /**
+   * Disables the styling of the component.
+   * @param value true to disable the styling of the component.
+   * @returns the modified Definer class instance.
+   */
+  withoutStyles(value = true) {
+    return this.addFeature(cfDisableStyles, value)
+  }
+
+  /**
+   * Disables the styling of the component wrapper.
+   * @param value true to disable the styling of the component wrapper.
+   * @returns the modified Definer class instance.
+   */
+  withoutWrapperStyles(value = true) {
+    return this.addFeature(cfDisableWrapperStyles, value)
   }
 
   /**

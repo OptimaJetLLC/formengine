@@ -34,7 +34,7 @@ export const cfDisableStyleProperties = 'disable-style-properties'
 registerBooleanComponentFeature(cfDisableStyleProperties)
 
 /**
- * Enabling this component feature will hide the component's additional properties editor.
+ * Enabling this component feature will hide the component's additional properties' editor.
  */
 export const cfDisableAdditionalProperties = 'disable-additional-properties'
 registerBooleanComponentFeature(cfDisableAdditionalProperties)
@@ -56,6 +56,18 @@ registerBooleanComponentFeature(cfEnableInlineStylesEditor)
  */
 export const cfHideFromComponentPalette = 'hide-from-component-palette'
 registerBooleanComponentFeature(cfHideFromComponentPalette)
+
+/**
+ * Enabling this component feature will disable the styling of the component.
+ */
+export const cfDisableStyles = 'disable-component-styling'
+registerBooleanComponentFeature(cfDisableStyles)
+
+/**
+ * Enabling this component feature will disable the styling of the component wrapper.
+ */
+export const cfDisableWrapperStyles = 'disable-component-wrapper-styling'
+registerBooleanComponentFeature(cfDisableWrapperStyles)
 
 /**
  * Enabling this feature of the component will exclude the fields of the child components when assembling all the fields of the form.

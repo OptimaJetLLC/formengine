@@ -1,12 +1,14 @@
 import styled from '@emotion/styled'
-import type {Annotation, ComponentStore, CssPart, Meta, PropertyBlockType} from '@react-form-builder/core'
+import type {Annotation, ComponentStore, CssPart, Meta, Model, PropertyBlockType} from '@react-form-builder/core'
 import {
   cfDisableActionEditors,
   cfDisableAdditionalProperties,
   cfDisableMainComponentProperties,
   cfDisableStyleProperties,
+  cfDisableStyles,
   cfDisableStylesForClassNameEditor,
   cfDisableTooltipProperties,
+  cfDisableWrapperStyles,
   cfEnableInlineStylesEditor,
   className,
   ComponentDataProvider,
@@ -241,6 +243,50 @@ const Properties = customizableObserver('RightPanel_Content', RawProperties)
 
 const StyleBlock = namedObserver('StyleBlock', RawStyleBlock)
 
+const isCssEditorHidden = (model: Model) => {
+  if (model.isFeatureEnabled(cfDisableStylesForClassNameEditor)) return true
+
+  const disableStyles = model.isFeatureEnabled(cfDisableStyles)
+  const disableWrapperStyles = model.isFeatureEnabled(cfDisableWrapperStyles)
+
+  if (model.kind === 'template' && disableWrapperStyles) return true
+  if (model.kind === 'component' && disableStyles && disableWrapperStyles) return true
+
+  return disableStyles
+}
+
+const getDefaultActiveCssTab = (model: Model) => {
+  if (model.kind === 'template') return 'wrapperCss'
+
+  if (model.kind === 'component' && model.isFeatureEnabled(cfDisableStyles)) {
+    return 'wrapperCss'
+  }
+
+  return 'css'
+}
+
+const isStylesEditorVisible = (model: Model) => {
+  if (!model.isFeatureEnabled(cfEnableInlineStylesEditor)) return false
+
+  const disableStyles = model.isFeatureEnabled(cfDisableStyles)
+  const disableWrapperStyles = model.isFeatureEnabled(cfDisableWrapperStyles)
+
+  if (model.kind === 'template' && disableWrapperStyles) return false
+  if (model.kind === 'component' && disableStyles && disableWrapperStyles) return false
+
+  return disableStyles
+}
+
+const getDefaultActiveStyleTab = (model: Model) => {
+  if (model.kind === 'template') return 'wrapperStyle'
+
+  if (model.kind === 'component' && model.isFeatureEnabled(cfDisableStyles)) {
+    return 'wrapperStyle'
+  }
+
+  return 'style'
+}
+
 const RawStyles = ({meta, store}: { meta: Meta, store: ComponentStore }) => {
   const t = useTranslationPart('style')
   const [device, setDevice] = useState<Device>('any')
@@ -249,24 +295,37 @@ const RawStyles = ({meta, store}: { meta: Meta, store: ComponentStore }) => {
   const isComponent = model.kind === 'component'
   const isTemplate = model.kind === 'template'
   const classNameEditor = <PropertyEditorWrapper annotation={className} context={store.props}/>
-  const cssEditorHidden = model.isFeatureEnabled(cfDisableStylesForClassNameEditor)
-  const stylesEditorVisible = model.isFeatureEnabled(cfEnableInlineStylesEditor)
+
+  const cssEditorHidden = isCssEditorHidden(model)
+  const stylesEditorVisible = isStylesEditorVisible(model)
+  const disableStyles = model.isFeatureEnabled(cfDisableStyles)
+  const disableWrapperStyles = model.isFeatureEnabled(cfDisableWrapperStyles)
+
+  // only components have styles and wrapper styles
+  const useWrapperStyles = isComponent && !disableStyles && !disableWrapperStyles
+
+  const activeCssTab = getDefaultActiveCssTab(model)
+  const activeStyleTab = getDefaultActiveStyleTab(model)
+
+  if (disableStyles && disableWrapperStyles) return null
 
   return <>
     <DevicePicker value={device} onChange={setDevice}/>
-    {!isTemplate &&
+    {!isTemplate && !disableStyles &&
       <StyleBlock meta={meta} store={store} device={device} cssPart={'css'} header={t('component')} headerHint={t('componentHint')}/>
     }
-    {isComponent && classNameEditor}
-    <StyleBlock meta={meta} store={store} device={device} cssPart={'wrapperCss'} header={t('wrapper')} headerHint={t('wrapperHint')}/>
-    {!isComponent && classNameEditor}
+    {isComponent && !disableStyles && classNameEditor}
+    {!disableWrapperStyles &&
+      <StyleBlock meta={meta} store={store} device={device} cssPart={'wrapperCss'} header={t('wrapper')} headerHint={t('wrapperHint')}/>
+    }
+    {!isComponent && !disableWrapperStyles && classNameEditor}
 
     {!cssEditorHidden &&
-      <CSSEditor device={device} useWrapperStyles={isComponent} defaultActiveTab={isTemplate ? 'wrapperCss' : 'css'}/>
+      <CSSEditor device={device} useWrapperStyles={useWrapperStyles} defaultActiveTab={activeCssTab}/>
     }
 
     {stylesEditorVisible &&
-      <StyleEditor device={device} useWrapperStyles={isComponent} defaultActiveTab={isTemplate ? 'wrapperStyle' : 'style'}/>
+      <StyleEditor device={device} useWrapperStyles={useWrapperStyles} defaultActiveTab={activeStyleTab}/>
     }
   </>
 }

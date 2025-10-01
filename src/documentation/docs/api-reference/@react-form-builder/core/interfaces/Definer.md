@@ -508,3 +508,47 @@ the component type.
 `Definer`\<`T`\>
 
 the modified Definer class instance.
+
+***
+
+### withoutStyles()
+
+> **withoutStyles**(`value`): `Definer`\<`T`\>
+
+Disables the styling of the component.
+
+#### Parameters
+
+##### value
+
+`boolean` = `true`
+
+true to disable the styling of the component.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.
+
+***
+
+### withoutWrapperStyles()
+
+> **withoutWrapperStyles**(`value`): `Definer`\<`T`\>
+
+Disables the styling of the component wrapper.
+
+#### Parameters
+
+##### value
+
+`boolean` = `true`
+
+true to disable the styling of the component wrapper.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.
