@@ -188,6 +188,7 @@
 - [cfComponentIsPreset](variables/cfComponentIsPreset.md)
 - [cfDisableActionEditors](variables/cfDisableActionEditors.md)
 - [cfDisableAdditionalProperties](variables/cfDisableAdditionalProperties.md)
+- [cfDisableComponentRemove](variables/cfDisableComponentRemove.md)
 - [cfDisableMainComponentProperties](variables/cfDisableMainComponentProperties.md)
 - [cfDisableStyleProperties](variables/cfDisableStyleProperties.md)
 - [cfDisableStyles](variables/cfDisableStyles.md)

@@ -14,6 +14,7 @@ import {
   BiDi,
   BuilderView,
   cfComponentIsPreset,
+  cfDisableComponentRemove,
   cfHideFromComponentPalette,
   ComponentStore,
   isContainer,
@@ -803,11 +804,16 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   /**
    * Removes the component from the component tree.
    * @param source the component for removal.
+   * @returns true, if the component was removed, false otherwise.
    */
   remove(source: ComponentData) {
+    if (source.model.isFeatureEnabled(cfDisableComponentRemove)) return false
+
     this.selected.delete(source)
     this.viewer.form.localization.removeLocalization(source.key)
     source.delete()
+
+    return true
   }
 
   /**
@@ -1148,7 +1154,9 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
 
     selectedComponents.forEach((component) => {
       if (component !== root) {
-        this.remove(component)
+        if (!this.remove(component)) {
+          resultArray.unshift(component)
+        }
       }
     })
 

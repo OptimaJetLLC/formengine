@@ -180,6 +180,7 @@ export {
   cfDisableActionEditors,
   cfDisableStyles,
   cfDisableWrapperStyles,
+  cfDisableComponentRemove
 } from './features/define/utils/integratedComponentFeatures'
 export type {ComponentFeature, ComponentFeatures} from './features/define/utils/ComponentFeature'
 export type {ComponentRole} from './features/define/utils/ComponentRole'

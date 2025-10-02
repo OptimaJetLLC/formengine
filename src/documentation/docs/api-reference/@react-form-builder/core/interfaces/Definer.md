@@ -146,6 +146,28 @@ the modified Definer class instance.
 
 ***
 
+### disableRemove()
+
+> **disableRemove**(`value`): `Definer`\<`T`\>
+
+Prevent this component from being removed.
+
+#### Parameters
+
+##### value
+
+`boolean` = `false`
+
+true to disable removal, false otherwise.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.
+
+***
+
 ### eventListeners()
 
 > **eventListeners**(`eventListeners?`): `Definer`\<`T`\>

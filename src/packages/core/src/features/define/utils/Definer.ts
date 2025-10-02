@@ -19,6 +19,7 @@ import {
   cfComponentIsPreset,
   cfComponentRole,
   cfDisableActionEditors,
+  cfDisableComponentRemove,
   cfDisableStyles,
   cfDisableStylesForClassNameEditor,
   cfDisableTooltipProperties,
@@ -261,6 +262,15 @@ export class Definer<T extends object> {
    */
   hideFromComponentPalette(value = true) {
     return this.addFeature(cfHideFromComponentPalette, value)
+  }
+
+  /**
+   * Prevent this component from being removed.
+   * @param value true to disable removal, false otherwise.
+   * @returns the modified Definer class instance.
+   */
+  disableRemove(value = false) {
+    return this.addFeature(cfDisableComponentRemove, value)
   }
 
   /**

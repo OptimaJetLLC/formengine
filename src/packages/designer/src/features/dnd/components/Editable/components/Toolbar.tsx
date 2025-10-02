@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faClone from '@fortawesome/free-regular-svg-icons/faClone.js'
 import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt.js'
-import {namedObserver, useComponentData} from '@react-form-builder/core'
+import {cfDisableComponentRemove, namedObserver, useComponentData} from '@react-form-builder/core'
 import type {MouseEventHandler} from 'react'
 import {useCallback, useEffect, useMemo, useRef} from 'react'
 import scrollIntoView from 'scroll-into-view-if-needed'
@@ -67,21 +67,23 @@ export interface ToolbarProps {
 }
 
 const RawToolbar = ({compact}: ToolbarProps) => {
-  const store = useBuilderStore()
+  const builderStore = useBuilderStore()
   const data = useComponentData()
+  const {model, parent, store, isRoot} = data
   const [{selected}] = useSelection()
   const ref = useRef<HTMLDivElement>(null)
   const t = useTranslationPart('toolbar')
+  const disableRemove = useMemo(() => model.isFeatureEnabled(cfDisableComponentRemove), [model])
 
   const onClone: MouseEventHandler = useCallback(e => {
     stopEvent(e)
-    store.clone(data)
-  }, [data, store])
+    builderStore.clone(data)
+  }, [data, builderStore])
 
   const onRemove: MouseEventHandler = useCallback(e => {
     stopEvent(e)
-    store.remove(data)
-  }, [data, store])
+    builderStore.remove(data)
+  }, [data, builderStore])
 
   useEffect(() => {
     if (!compact && selected && ref.current) {
@@ -90,27 +92,29 @@ const RawToolbar = ({compact}: ToolbarProps) => {
   }, [selected, compact])
 
   const clsName = useMemo(() => {
-    const parentType = data.parent ? `parent-type-${data.parent?.model.type}` : ''
-    const type = `type-${data.model.type}`
+    const parentType = parent ? `parent-type-${parent?.model.type}` : ''
+    const type = `type-${model.type}`
     return cx({compact: compact}, 'Toolbar', parentType, type)
-  }, [compact, data.model.type, data.parent])
+  }, [compact, model.type, parent])
 
   return <ToolbarContainer ref={ref} className={clsName}>
     {!compact && <Title>
-      {data.store.key}
-      <label>{` (${data.store.type})`}</label>
+      {store.key}
+      <label>{` (${store.type})`}</label>
     </Title>
     }
     <AddButton/>
-    {!data.isRoot && <>
+    {!isRoot && <>
       <Hinted hint={t('cloneComponent')} placement={'autoVertical'}>
         <FaIcon data-testid="tree-clone-button" onClick={onClone} icon={faClone as unknown as IconDefinition} className={'clone-button'}/>
       </Hinted>
-      {!store.presetComponentOptions.disableCreation && <PresetComponentButton/>}
+      {!builderStore.presetComponentOptions.disableCreation && <PresetComponentButton/>}
+    </>}
+    {!disableRemove &&
       <Hinted hint={t('removeComponent')} placement={'autoVertical'}>
         <FaIcon onClick={onRemove} icon={faTrash as unknown as IconDefinition} className={'remove-button'}/>
       </Hinted>
-    </>}
+    }
   </ToolbarContainer>
 }
 

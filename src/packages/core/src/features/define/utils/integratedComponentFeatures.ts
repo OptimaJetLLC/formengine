@@ -58,6 +58,12 @@ export const cfHideFromComponentPalette = 'hide-from-component-palette'
 registerBooleanComponentFeature(cfHideFromComponentPalette)
 
 /**
+ * Enabling this component feature will prevent this component from being removed.
+ */
+export const cfDisableComponentRemove = 'disable-component-remove'
+registerBooleanComponentFeature(cfDisableComponentRemove)
+
+/**
  * Enabling this component feature will disable the styling of the component.
  */
 export const cfDisableStyles = 'disable-component-styling'
