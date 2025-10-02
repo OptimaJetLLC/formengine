@@ -1,5 +1,6 @@
 import type {PropertyAnnotation} from '@react-form-builder/core'
 import {isUndefined} from 'lodash-es'
+import {useState} from 'react'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 import {SInputPicker} from './SInputPicker'
@@ -10,7 +11,7 @@ const addCustomValue = ({data}: PropertyAnnotation, value: string) => {
   }
 
   if (!data.find(item => item.value === value || item.label === value)) {
-    data.push({value, label: value})
+    return [...data, {value, label: value}]
   }
 
   return data
@@ -26,7 +27,7 @@ export const Picker = (props: AnnotationEditorProps & { 'data-testid'?: string }
   delete labeledProps['data-testid']
 
   const {value, onChange, annotation, onClean} = props
-  const data = addCustomValue(annotation as PropertyAnnotation, value)
+  const [data] = useState(() => addCustomValue(annotation as PropertyAnnotation, value))
 
   return <LabeledProperty {...labeledProps}>
     <SInputPicker value={value ?? props.annotation.default ?? ''} data={data} onChange={onChange} onClean={onClean}
