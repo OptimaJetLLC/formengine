@@ -84,7 +84,8 @@ export const rsUploader = define(RsUploader, 'RsUploader')
     disabledFileItem: boolean.default(false),
     draggable: boolean.default(false),
     fileListVisible: boolean.default(true),
-    listType: oneOf('text', 'picture-text', 'picture'),
+    listType: oneOf('text', 'picture-text', 'picture')
+      .withEditorProps({creatable: false}),
     method: string,
     multiple: boolean.default(false),
     name: string,

@@ -82,7 +82,8 @@ export const rsDatePicker = define(RsDatePicker, 'RsDatePicker')
   .category(fieldsCategory)
   .props({
     label: string.default('Date'),
-    appearance: oneOf('default', 'subtle').hinted('Set picker appearance'),
+    appearance: oneOf('default', 'subtle').hinted('Set picker appearance')
+      .withEditorProps({creatable: false}),
     calendarDefaultDate: date.hinted('Calendar panel default presentation date and time'),
     cleanable: boolean.hinted('Whether the selected value can be cleared').default(false),
     defaultOpen: boolean.hinted('Default value of open property').default(false),

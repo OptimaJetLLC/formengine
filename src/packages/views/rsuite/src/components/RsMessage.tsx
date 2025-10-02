@@ -17,4 +17,5 @@ export const rsMessage = define(SMessage, 'RsMessage')
     closable: boolean.default(false),
     header: node,
     type: oneOf('info', 'success', 'warning', 'error').default('info')
+      .withEditorProps({creatable: false})
   })

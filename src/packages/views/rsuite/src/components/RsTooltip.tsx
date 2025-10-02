@@ -48,7 +48,8 @@ export const rsTooltip = define(RsTooltip, 'RsTooltip')
     placement: oneOf('top', 'bottom', 'right', 'left', 'bottomStart', 'bottomEnd',
       'topStart', 'topEnd', 'leftStart', 'rightStart', 'leftEnd', 'rightEnd', 'auto',
       'autoVertical', 'autoVerticalStart', 'autoVerticalEnd', 'autoHorizontal', 'autoHorizontalStart')
-      .required.default('bottom'),
+      .required.default('bottom')
+      .withEditorProps({creatable: false}),
     trigger: someOf('click', 'hover', 'focus', 'active', 'contextMenu')
       .required.default(['hover'])
   })

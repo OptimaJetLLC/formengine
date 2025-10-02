@@ -331,7 +331,8 @@ export const rsWizard = define(RsWizard, RsWizardComponentType)
       }),
     stepsNavigation: oneOf('disable', 'onlyVisited', 'any')
       .labeled('Disable', 'Only visited', 'Any')
-      .default('onlyVisited'),
+      .default('onlyVisited')
+      .withEditorProps({creatable: false}),
     steps: array
       .default([])
       .withEditorProps(editorProps),

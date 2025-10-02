@@ -53,7 +53,8 @@ export const rsRadioGroup = define(RsRadioGroup, 'RsRadioGroup')
   .category(fieldsCategory)
   .props({
     name: string.default('RadioGroup').hinted('Radio group name'),
-    appearance: oneOf('default', 'picker').labeled('Default', 'Picker').default('default'),
+    appearance: oneOf('default', 'picker').labeled('Default', 'Picker').default('default')
+      .withEditorProps({creatable: false}),
     label: string.default('Radio'),
     disabled: disabled.hinted('The disable of component').default(false),
     readOnly,

@@ -23,7 +23,8 @@ export const rsToggle = define(SToggle, 'RsToggle')
     readOnly,
     size: oneOf('sm', 'md', 'lg')
       .labeled('Small', 'Medium', 'Large')
-      .default('md'),
+      .default('md')
+      .withEditorProps({creatable: false}),
     color: controlColor,
     loading: boolean.default(false),
     onChange: event,

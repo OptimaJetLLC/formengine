@@ -11,7 +11,8 @@ const rsCommonProgressProps = {
   showInfo: boolean.default(true).hinted('Show text'),
   status: oneOf('success', 'fail', 'active')
     .default('active')
-    .hinted('Progress status'),
+    .hinted('Progress status')
+    .withEditorProps({creatable: false}),
   strokeColor: color.hinted('Line color'),
   strokeWidth: number.hinted('Line width'),
 }
@@ -24,10 +25,12 @@ export const rsProgressCircle = define(Progress.Circle, 'RsProgressCircle')
     gapDegree: number.withEditorProps({min: 0, max: 360}).hinted('The gap degree of half circle, 0 ~ 360'),
     gapPosition: oneOf('right', 'top', 'bottom', 'left')
       .default('top')
-      .hinted('Circular progress bar Notch position'),
+      .hinted('Circular progress bar Notch position')
+      .withEditorProps({creatable: false}),
     strokeLinecap: oneOf('round', 'square', 'butt')
       .default('round')
-      .hinted('The end of different types of open paths'),
+      .hinted('The end of different types of open paths')
+      .withEditorProps({creatable: false}),
     strokeWidth: number.default(6).hinted('Line width'),
     trailColor: color.hinted('Trail color'),
     trailWidth: number.default(6).hinted('Trail width')

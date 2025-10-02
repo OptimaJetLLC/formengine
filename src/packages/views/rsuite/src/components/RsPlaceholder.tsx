@@ -59,6 +59,7 @@ export const rsPlaceholderParagraph = define(Placeholder.Paragraph, 'RsPlacehold
     rows: number.default(2),
     rowHeight: number.default(10),
     rowSpacing: number.default(20),
-    graph: oneOf('circle', 'square', 'image'),
+    graph: oneOf('circle', 'square', 'image')
+      .withEditorProps({creatable: false}),
     active: boolean,
   })
