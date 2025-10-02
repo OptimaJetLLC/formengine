@@ -408,6 +408,7 @@ PUBLISH_RELEASE_TO_NPM:
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-core"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-designer"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rsuite"
+  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rsuite-table"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-fast-qr"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rich-text"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-signature"
