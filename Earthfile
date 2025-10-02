@@ -145,6 +145,7 @@ prepare-github-formenginesupport-archive:
   COPY --dir src/packages/viewer-bundle-premium $dst/packages/viewer-bundle-premium
   COPY --dir src/packages/views/antd $dst/packages/views/antd
   COPY --dir src/packages/views/rsuite $dst/packages/views/rsuite
+  COPY --dir src/packages/views/rsuite-table $dst/packages/views/rsuite-table
   COPY --dir src/packages/views/signature $dst/packages/views/signature
   COPY --dir src/packages/views/fast-qr $dst/packages/views/fast-qr
   COPY --dir src/packages/views/rich-text $dst/packages/views/rich-text
