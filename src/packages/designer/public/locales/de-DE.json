@@ -173,6 +173,80 @@
       "name": "Wert"
     }
   },
+  "RsCell": {
+    "dataKey": {
+      "hint": "Datenbindungsschlüssel, aber auch eine Art Schlüssel",
+      "name": "Datenschlüssel"
+    }
+  },
+  "RsColumn": {
+    "align": {
+      "hint": "Ausrichtung",
+      "name": "Ausrichten"
+    },
+    "colSpan": {
+      "hint": "Führt Spaltenzellen zusammen, um sie zusammenzuführen, wenn der 'Datenschlüssel'-Wert für die zusammengeführte Spalte null oder undefiniert ist",
+      "name": "Col span"
+    },
+    "fixed": {
+      "hint": "Feste Säule",
+      "name": "Fest"
+    },
+    "flexGrow": {
+      "hint": "Stellen Sie die Spaltenbreite automatisch ein, wenn set 'Flex grow' die Eigenschaften 'Resizable' und 'Width' nicht festlegen kann",
+      "name": "Flex wachsen"
+    },
+    "fullText": {
+      "hint": "Gibt an, ob der vollständige Text des Zellinhalts angezeigt werden soll, wenn die Maus bewegt wird",
+      "name": "Volltext"
+    },
+    "minWidth": {
+      "hint": "Wenn Sie 'Flex grow' verwenden, können Sie eine Mindestbreite festlegen",
+      "name": "Minimale Breite"
+    },
+    "resizable": {
+      "hint": "Anpassbare Größenänderung der Spaltenbreite",
+      "name": "Veränderbar"
+    },
+    "rowSpan": {
+      "hint": "Führt Zeilen in der angegebenen Spalte zusammen",
+      "name": "Zeilenspanne"
+    },
+    "sortable": {
+      "hint": "Sortierbaren",
+      "name": "Sortierbaren"
+    },
+    "verticalAlign": {
+      "hint": "Vertikale Ausrichtung",
+      "name": "Vertikale Ausrichtung"
+    },
+    "width": {
+      "hint": "Spaltenbreite",
+      "name": "Breite"
+    }
+  },
+  "RsColumnGroup": {
+    "align": {
+      "hint": "Ausrichtung",
+      "name": "Ausrichten"
+    },
+    "fixed": {
+      "hint": "Feste Spaltengruppe",
+      "name": "Fest"
+    },
+    "groupHeaderHeight": {
+      "hint": "Die Höhe der Kopfzeile der verbundenen Zellengruppe",
+      "name": "Höhe des Gruppenkopfs"
+    },
+    "header": {
+      "hint": "Gruppenkopf",
+      "name": "Header"
+    },
+    "verticalAlign": {
+      "hint": "Vertikale Ausrichtung",
+      "name": "Vertikale Ausrichtung"
+    }
+  },
   "RsDatePicker": {
     "format": {
       "hint": "Format des Datums beim Rendern in der Eingabe",
@@ -187,6 +261,12 @@
     "vertical": {
       "hint": "Vertikale Trennlinie",
       "name": "Vertikal"
+    }
+  },
+  "RsHeaderCell": {
+    "children": {
+      "hint": "Spaltenüberschrift der Tabelle",
+      "name": "Inhalt"
     }
   },
   "RsInput": {
@@ -301,6 +381,104 @@
     "rows": {
       "hint": "Die Anzahl der Zeilen",
       "name": "Tabellenzeilen"
+    }
+  },
+  "RsTable": {
+    "affixHeader": {
+      "hint": "Befestigen Sie den Tabellenkopf an der angegebenen Stelle auf der Seite",
+      "name": "Kopfzeile anbringen"
+    },
+    "affixHorizontalScrollbar": {
+      "hint": "Befestigen Sie die horizontale Bildlaufleiste der Tabelle an der angegebenen Position auf der Seite",
+      "name": "Horizontale Bildlaufleiste anbringen"
+    },
+    "autoHeight": {
+      "hint": "Die Höhe der Tabelle wird automatisch entsprechend der Anzahl der Datenzeilen erweitert, und es wird keine vertikale Bildlaufleiste angezeigt",
+      "name": "Automatische Höhe"
+    },
+    "bordered": {
+      "hint": "Rahmen anzeigen",
+      "name": "Gesäumt"
+    },
+    "cellBordered": {
+      "hint": "Zellrahmen anzeigen",
+      "name": "Zelle umrandet"
+    },
+    "data": {
+      "hint": "Tabellendaten",
+      "name": "Daten"
+    },
+    "defaultSortType": {
+      "hint": "Sortiertyp",
+      "name": "Standardsortiertyp"
+    },
+    "fillHeight": {
+      "hint": "Erzwingen Sie, dass die Höhe der Tabelle der Höhe des übergeordneten Containers entspricht. Kann nicht zusammen mit 'Auto height' verwendet werden",
+      "name": "Füllhöhe"
+    },
+    "headerHeight": {
+      "hint": "Höhe des Tabellenkopfs",
+      "name": "Kopfhöhe"
+    },
+    "height": {
+      "hint": "Tischhöhe",
+      "name": "Höhe"
+    },
+    "hover": {
+      "hint": "Die Zeile der Tabelle hat einen Mouseover-Effekt",
+      "name": "Schweben"
+    },
+    "loading": {
+      "hint": "Laden anzeigen",
+      "name": "Laden"
+    },
+    "maxHeight": {
+      "hint": "Maximale Höhe",
+      "name": "Maximale Höhe"
+    },
+    "minHeight": {
+      "hint": "Mindesthöhe",
+      "name": "Minimale Höhe"
+    },
+    "rowClassName": {
+      "hint": "Fügen Sie der Zeile einen optionalen zusätzlichen Klassennamen hinzu",
+      "name": "Name der Zeilenklasse"
+    },
+    "rowHeight": {
+      "hint": "Zeilenhöhe",
+      "name": "Zeilenhöhe"
+    },
+    "rowKey": {
+      "hint": "Jede Zeile entspricht dem eindeutigen Schlüssel in den Daten",
+      "name": "Zeilenschlüssel"
+    },
+    "shouldUpdateScroll": {
+      "hint": "Gibt an, ob der Bildlauf nach der Aktualisierung der Tabellengröße aktualisiert werden soll",
+      "name": "Sollte Scroll aktualisieren"
+    },
+    "showHeader": {
+      "hint": "Kopfzeile anzeigen",
+      "name": "Kopfzeile anzeigen"
+    },
+    "sortColumn": {
+      "hint": "Spaltenname sortieren",
+      "name": "Sortierspalte"
+    },
+    "sortType": {
+      "hint": "Sortiertyp",
+      "name": "Sortiertyp"
+    },
+    "virtualized": {
+      "hint": "Effektives Rendern großer Tabellendaten",
+      "name": "Virtualisiert"
+    },
+    "width": {
+      "hint": "Tabellenbreite",
+      "name": "Breite"
+    },
+    "wordWrap": {
+      "hint": "Gibt an, ob Zeilenumbrüche angezeigt werden sollen, bei denen Text das Inhaltsfeld überläuft",
+      "name": "Zeilenumbruch"
     }
   },
   "RsTimePicker": {

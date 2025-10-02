@@ -173,6 +173,80 @@
       "name": "값"
     }
   },
+  "RsCell": {
+    "dataKey": {
+      "hint": "데이터 바인딩 키뿐만 아니라 키의 종류",
+      "name": "데이터 키"
+    }
+  },
+  "RsColumn": {
+    "align": {
+      "hint": "정렬",
+      "name": "정렬"
+    },
+    "colSpan": {
+      "hint": "병합된 열의'데이터 키'값이 널 또는 정의되지 않은 경우 병합할 열 셀을 병합합니다",
+      "name": "콜 스팬"
+    },
+    "fixed": {
+      "hint": "고정 열",
+      "name": "고정"
+    },
+    "flexGrow": {
+      "hint": "열 너비를 설정하면'플렉스 성장'을 설정하면'크기 조정 가능'및'너비'속성을 설정할 수 없습니다",
+      "name": "플렉스 성장"
+    },
+    "fullText": {
+      "hint": "마우스를 이동할 때 셀 내용의 전체 텍스트를 표시할지 여부",
+      "name": "전체 텍스트"
+    },
+    "minWidth": {
+      "hint": "'플렉스 성장'을 사용할 때 최소 너비를 설정할 수 있습니다",
+      "name": "최소한도 폭"
+    },
+    "resizable": {
+      "hint": "사용자 정의 크기 조정 열 너비",
+      "name": "크기 조정 가능"
+    },
+    "rowSpan": {
+      "hint": "지정된 열의 행을 병합합니다",
+      "name": "줄 경간"
+    },
+    "sortable": {
+      "hint": "분류 가능",
+      "name": "분류 가능"
+    },
+    "verticalAlign": {
+      "hint": "수직 정렬",
+      "name": "수직 정렬"
+    },
+    "width": {
+      "hint": "란 폭",
+      "name": "폭"
+    }
+  },
+  "RsColumnGroup": {
+    "align": {
+      "hint": "정렬",
+      "name": "정렬"
+    },
+    "fixed": {
+      "hint": "고정 열 그룹",
+      "name": "고정"
+    },
+    "groupHeaderHeight": {
+      "hint": "병합된 셀 그룹의 머리글 높이",
+      "name": "그룹 헤더 높이"
+    },
+    "header": {
+      "hint": "그룹 헤더",
+      "name": "헤더"
+    },
+    "verticalAlign": {
+      "hint": "수직 정렬",
+      "name": "수직 정렬"
+    }
+  },
   "RsDatePicker": {
     "format": {
       "hint": "입력에서 렌더링될 때의 날짜 형식",
@@ -187,6 +261,12 @@
     "vertical": {
       "hint": "수직 분할선",
       "name": "수직"
+    }
+  },
+  "RsHeaderCell": {
+    "children": {
+      "hint": "테이블 열 머리글",
+      "name": "내용"
     }
   },
   "RsInput": {
@@ -301,6 +381,104 @@
     "rows": {
       "hint": "행 수",
       "name": "행"
+    }
+  },
+  "RsTable": {
+    "affixHeader": {
+      "hint": "페이지의 지정된 위치에 테이블 머리글을 붙입니다",
+      "name": "접두사 헤더"
+    },
+    "affixHorizontalScrollbar": {
+      "hint": "페이지의 지정된 위치에 테이블 가로 스크롤 막대를 부착합니다",
+      "name": "수평 스크롤 막대 부착"
+    },
+    "autoHeight": {
+      "hint": "테이블의 높이는 데이터 행 수에 따라 자동으로 확장되며 세로 스크롤 막대가 나타나지 않습니다",
+      "name": "자동 고도"
+    },
+    "bordered": {
+      "hint": "테두리 표시",
+      "name": "경계"
+    },
+    "cellBordered": {
+      "hint": "셀 테두리 표시",
+      "name": "경계 셀"
+    },
+    "data": {
+      "hint": "테이블 데이터",
+      "name": "데이터"
+    },
+    "defaultSortType": {
+      "hint": "정렬 유형",
+      "name": "기본 정렬 유형"
+    },
+    "fillHeight": {
+      "hint": "테이블의 높이가 부모 컨테이너의 높이와 같도록 합니다. '자동 높이'와 함께 사용할 수 없습니다.",
+      "name": "채우기 높이"
+    },
+    "headerHeight": {
+      "hint": "테이블 헤더 높이",
+      "name": "헤더 높이"
+    },
+    "height": {
+      "hint": "테이블 높이",
+      "name": "높이"
+    },
+    "hover": {
+      "hint": "테이블의 행에 마우스 오버 효과가 있습니다",
+      "name": "호버"
+    },
+    "loading": {
+      "hint": "로드 표시",
+      "name": "로드 중"
+    },
+    "maxHeight": {
+      "hint": "최대 고도",
+      "name": "최대 고도"
+    },
+    "minHeight": {
+      "hint": "최소 높이",
+      "name": "최소한도 고도"
+    },
+    "rowClassName": {
+      "hint": "행에 선택적 추가 클래스 이름 추가",
+      "name": "행 클래스 이름"
+    },
+    "rowHeight": {
+      "hint": "줄 고도",
+      "name": "줄 고도"
+    },
+    "rowKey": {
+      "hint": "각 행은 데이터의 고유 키에 해당합니다",
+      "name": "행 키"
+    },
+    "shouldUpdateScroll": {
+      "hint": "테이블 크기가 업데이트된 후 스크롤을 업데이트할지 여부",
+      "name": "스크롤을 업데이트해야 함"
+    },
+    "showHeader": {
+      "hint": "디스플레이 헤더",
+      "name": "헤더 표시"
+    },
+    "sortColumn": {
+      "hint": "열 이름 정렬",
+      "name": "열 정렬"
+    },
+    "sortType": {
+      "hint": "정렬 유형",
+      "name": "정렬 유형"
+    },
+    "virtualized": {
+      "hint": "큰 테이블 형식의 데이터를 효과적으로 렌더링",
+      "name": "가상화"
+    },
+    "width": {
+      "hint": "테이블 폭",
+      "name": "폭"
+    },
+    "wordWrap": {
+      "hint": "텍스트가 콘텐츠 상자를 오버플로할 때 줄 바꿈을 표시할지 여부",
+      "name": "단어 줄 바꿈"
     }
   },
   "RsTimePicker": {

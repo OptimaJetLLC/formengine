@@ -173,6 +173,80 @@
       "name": "Valore"
     }
   },
+  "RsCell": {
+    "dataKey": {
+      "hint": "Data binding key, ma anche una sorta di chiave",
+      "name": "Chiave dati"
+    }
+  },
+  "RsColumn": {
+    "align": {
+      "hint": "Allineamento",
+      "name": "Allineare"
+    },
+    "colSpan": {
+      "hint": "Unisce le celle della colonna da unire quando il valore 'Data key' per la colonna unita è null o undefined",
+      "name": "Col span"
+    },
+    "fixed": {
+      "hint": "Colonna fissa",
+      "name": "Fisso"
+    },
+    "flexGrow": {
+      "hint": "Imposta la larghezza della colonna si regola automaticamente, quando impostato 'Flex grow' non può impostare la proprietà' Ridimensionabile 'e' Width'",
+      "name": "Flex grow"
+    },
+    "fullText": {
+      "hint": "Indica se visualizzare il testo completo del contenuto della cella quando il mouse è sospeso",
+      "name": "Testo integrale"
+    },
+    "minWidth": {
+      "hint": "Quando si utilizza 'Flex grow', è possibile impostare una larghezza minima",
+      "name": "Larghezza minima"
+    },
+    "resizable": {
+      "hint": "Personalizzabile ridimensionare la larghezza della colonna",
+      "name": "Ridimensionabili"
+    },
+    "rowSpan": {
+      "hint": "Unisce le righe nella colonna specificata",
+      "name": "Span riga"
+    },
+    "sortable": {
+      "hint": "Ordinabile",
+      "name": "Ordinabile"
+    },
+    "verticalAlign": {
+      "hint": "Allineamento verticale",
+      "name": "Allineamento verticale"
+    },
+    "width": {
+      "hint": "Larghezza colonna",
+      "name": "Larghezza"
+    }
+  },
+  "RsColumnGroup": {
+    "align": {
+      "hint": "Allineamento",
+      "name": "Allineare"
+    },
+    "fixed": {
+      "hint": "Gruppo di colonne fisso",
+      "name": "Fisso"
+    },
+    "groupHeaderHeight": {
+      "hint": "L'altezza dell'intestazione del gruppo di celle unite",
+      "name": "Altezza intestazione gruppo"
+    },
+    "header": {
+      "hint": "Intestazione gruppo",
+      "name": "Intestazione"
+    },
+    "verticalAlign": {
+      "hint": "Allineamento verticale",
+      "name": "Allineamento verticale"
+    }
+  },
   "RsDatePicker": {
     "format": {
       "hint": "Formato della data quando reso nell'input",
@@ -187,6 +261,12 @@
     "vertical": {
       "hint": "Linea di divisione verticale",
       "name": "Verticale"
+    }
+  },
+  "RsHeaderCell": {
+    "children": {
+      "hint": "Intestazione colonna tabella",
+      "name": "Contenuto"
     }
   },
   "RsInput": {
@@ -301,6 +381,104 @@
     "rows": {
       "hint": "Il numero di righe",
       "name": "Fila"
+    }
+  },
+  "RsTable": {
+    "affixHeader": {
+      "hint": "Apporre l'intestazione della tabella nella posizione specificata nella pagina",
+      "name": "Apporre intestazione"
+    },
+    "affixHorizontalScrollbar": {
+      "hint": "Apporre la barra di scorrimento orizzontale della tabella nella posizione specificata nella pagina",
+      "name": "Apporre barra di scorrimento orizzontale"
+    },
+    "autoHeight": {
+      "hint": "L'altezza della tabella verrà automaticamente espansa in base al numero di righe di dati e non verrà visualizzata alcuna barra di scorrimento verticale",
+      "name": "Altezza automatica"
+    },
+    "bordered": {
+      "hint": "Mostra bordo",
+      "name": "Border"
+    },
+    "cellBordered": {
+      "hint": "Mostra bordo cella",
+      "name": "Cella delimitata"
+    },
+    "data": {
+      "hint": "Dati della tabella",
+      "name": "Dati"
+    },
+    "defaultSortType": {
+      "hint": "Tipo di ordinamento",
+      "name": "Tipo di ordinamento predefinito"
+    },
+    "fillHeight": {
+      "hint": "Forza l'altezza della tabella per essere uguale all'altezza del suo contenitore padre. Non può essere utilizzato insieme a'Auto height'",
+      "name": "Altezza riempimento"
+    },
+    "headerHeight": {
+      "hint": "Altezza intestazione tabella",
+      "name": "Altezza intestazione"
+    },
+    "height": {
+      "hint": "Altezza tavola",
+      "name": "Altezza"
+    },
+    "hover": {
+      "hint": "La riga della tabella ha un effetto mouseover",
+      "name": "Aleggiare"
+    },
+    "loading": {
+      "hint": "Mostra caricamento",
+      "name": "Caricamento"
+    },
+    "maxHeight": {
+      "hint": "Altezza massima",
+      "name": "Altezza massima"
+    },
+    "minHeight": {
+      "hint": "Altezza minima",
+      "name": "Altezza minima"
+    },
+    "rowClassName": {
+      "hint": "Aggiungere un nome di classe extra opzionale alla riga",
+      "name": "Nome classe riga"
+    },
+    "rowHeight": {
+      "hint": "Altezza riga",
+      "name": "Altezza riga"
+    },
+    "rowKey": {
+      "hint": "Ogni riga corrisponde alla chiave univoca nei dati",
+      "name": "Chiave riga"
+    },
+    "shouldUpdateScroll": {
+      "hint": "Indica se aggiornare lo scorrimento dopo l'aggiornamento delle dimensioni della tabella",
+      "name": "Dovrebbe aggiornare scroll"
+    },
+    "showHeader": {
+      "hint": "Intestazione del display",
+      "name": "Mostra intestazione"
+    },
+    "sortColumn": {
+      "hint": "Ordina nome colonna",
+      "name": "Ordina colonna"
+    },
+    "sortType": {
+      "hint": "Tipo di ordinamento",
+      "name": "Tipo di ordinamento"
+    },
+    "virtualized": {
+      "hint": "Renderizzare efficacemente grandi dati tabulari",
+      "name": "Virtualizzare"
+    },
+    "width": {
+      "hint": "Larghezza tabella",
+      "name": "Larghezza"
+    },
+    "wordWrap": {
+      "hint": "Indica se visualizzare interruzioni di riga in cui il testo trabocca la casella del contenuto",
+      "name": "A capo campo"
     }
   },
   "RsTimePicker": {

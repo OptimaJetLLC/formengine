@@ -173,6 +173,80 @@
       "name": "Valeur"
     }
   },
+  "RsCell": {
+    "dataKey": {
+      "hint": "Clé de liaison de données, mais aussi une sorte de clé",
+      "name": "Clé de données"
+    }
+  },
+  "RsColumn": {
+    "align": {
+      "hint": "Alignement",
+      "name": "Aligner"
+    },
+    "colSpan": {
+      "hint": "Fusionne les cellules de colonne à fusionner lorsque la valeur de la \"clé de données\" de la colonne fusionnée est nulle ou indéfinie",
+      "name": "Portée du col"
+    },
+    "fixed": {
+      "hint": "Colonne fixe",
+      "name": "Fixe"
+    },
+    "flexGrow": {
+      "hint": "Définir la largeur de la colonne s'ajuste automatiquement, lorsque la valeur 'Flex grow' ne peut pas définir les propriétés 'Redimensionnable' et 'Largeur' ",
+      "name": "Croissance flexible"
+    },
+    "fullText": {
+      "hint": "Indique s'il faut afficher le texte intégral du contenu de la cellule lorsque la souris est survolée",
+      "name": "Texte intégral"
+    },
+    "minWidth": {
+      "hint": "Lorsque vous utilisez 'Flex grow' , vous pouvez définir une largeur minimale",
+      "name": "Largeur minimum"
+    },
+    "resizable": {
+      "hint": "Largeur de colonne redimensionnable personnalisable",
+      "name": "Redimensionnable"
+    },
+    "rowSpan": {
+      "hint": "Fusionne les lignes sur la colonne spécifiée",
+      "name": "Envergure de rangée"
+    },
+    "sortable": {
+      "hint": "Triables",
+      "name": "Triables"
+    },
+    "verticalAlign": {
+      "hint": "Alignement vertical",
+      "name": "Alignement vertical"
+    },
+    "width": {
+      "hint": "Largeur de colonne",
+      "name": "Largeur"
+    }
+  },
+  "RsColumnGroup": {
+    "align": {
+      "hint": "Alignement",
+      "name": "Aligner"
+    },
+    "fixed": {
+      "hint": "Groupe de colonnes fixe",
+      "name": "Fixe"
+    },
+    "groupHeaderHeight": {
+      "hint": "La hauteur de l'en-tête du groupe de cellules fusionné",
+      "name": "Hauteur de l'en-tête du groupe"
+    },
+    "header": {
+      "hint": "En-tête de groupe",
+      "name": "En-tête"
+    },
+    "verticalAlign": {
+      "hint": "Alignement vertical",
+      "name": "Alignement vertical"
+    }
+  },
   "RsDatePicker": {
     "format": {
       "hint": "Format de la date lors du rendu dans l'entrée",
@@ -187,6 +261,12 @@
     "vertical": {
       "hint": "Ligne de séparation verticale",
       "name": "Verticale"
+    }
+  },
+  "RsHeaderCell": {
+    "children": {
+      "hint": "En-tête de colonne de tableau",
+      "name": "Contenu"
     }
   },
   "RsInput": {
@@ -301,6 +381,104 @@
     "rows": {
       "hint": "Le nombre de lignes",
       "name": "Rangées"
+    }
+  },
+  "RsTable": {
+    "affixHeader": {
+      "hint": "Apposez l'en-tête du tableau à l'emplacement spécifié sur la page",
+      "name": "Apposer l'en-tête"
+    },
+    "affixHorizontalScrollbar": {
+      "hint": "Apposez la barre de défilement horizontale du tableau à la position spécifiée sur la page",
+      "name": "Apposer une barre de défilement horizontale"
+    },
+    "autoHeight": {
+      "hint": "La hauteur du tableau sera automatiquement étendue en fonction du nombre de lignes de données et aucune barre de défilement verticale n'apparaîtra",
+      "name": "Hauteur automatique"
+    },
+    "bordered": {
+      "hint": "Afficher la bordure",
+      "name": "Bordé"
+    },
+    "cellBordered": {
+      "hint": "Afficher la bordure de la cellule",
+      "name": "Cellule bordée"
+    },
+    "data": {
+      "hint": "Données de tableau",
+      "name": "Données"
+    },
+    "defaultSortType": {
+      "hint": "Type de tri",
+      "name": "Type de tri par défaut"
+    },
+    "fillHeight": {
+      "hint": "Forcer la hauteur de la table à être égale à la hauteur de son conteneur parent. Ne peut pas être utilisé avec \"Hauteur automatique\"",
+      "name": "Hauteur de remplissage"
+    },
+    "headerHeight": {
+      "hint": "Hauteur de l'en-tête du tableau",
+      "name": "Hauteur de l'en-tête"
+    },
+    "height": {
+      "hint": "Hauteur de la table",
+      "name": "Hauteur"
+    },
+    "hover": {
+      "hint": "La ligne du tableau a un effet de survol de la souris",
+      "name": "Survoler"
+    },
+    "loading": {
+      "hint": "Afficher le chargement",
+      "name": "Chargement"
+    },
+    "maxHeight": {
+      "hint": "Hauteur maximale",
+      "name": "Hauteur maximale"
+    },
+    "minHeight": {
+      "hint": "Hauteur minimale",
+      "name": "Taille minimum"
+    },
+    "rowClassName": {
+      "hint": "Ajouter un nom de classe supplémentaire facultatif à la ligne",
+      "name": "Nom de la classe de ligne"
+    },
+    "rowHeight": {
+      "hint": "Hauteur de rangée",
+      "name": "Hauteur de rangée"
+    },
+    "rowKey": {
+      "hint": "Chaque ligne correspond à la clé unique dans les données",
+      "name": "Clé de ligne"
+    },
+    "shouldUpdateScroll": {
+      "hint": "Indique s'il faut mettre à jour le défilement après la mise à jour de la taille de la table",
+      "name": "Devrait mettre à jour le défilement"
+    },
+    "showHeader": {
+      "hint": "En-tête d'affichage",
+      "name": "Afficher l'en-tête"
+    },
+    "sortColumn": {
+      "hint": "Trier le nom de la colonne",
+      "name": "Colonne de tri"
+    },
+    "sortType": {
+      "hint": "Type de tri",
+      "name": "Type de tri"
+    },
+    "virtualized": {
+      "hint": "Rendre efficacement de grandes données tabulaires",
+      "name": "Virtualisé"
+    },
+    "width": {
+      "hint": "Largeur de la table",
+      "name": "Largeur"
+    },
+    "wordWrap": {
+      "hint": "Indique s'il faut afficher des sauts de ligne là où le texte déborde de sa zone de contenu",
+      "name": "Retour à la ligne"
     }
   },
   "RsTimePicker": {

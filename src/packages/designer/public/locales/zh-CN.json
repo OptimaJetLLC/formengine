@@ -173,6 +173,80 @@
       "name": "价值"
     }
   },
+  "RsCell": {
+    "dataKey": {
+      "hint": "数据绑定密钥，也是一种密钥",
+      "name": "数据密钥"
+    }
+  },
+  "RsColumn": {
+    "align": {
+      "hint": "对齐方式",
+      "name": "对齐;对齐"
+    },
+    "colSpan": {
+      "hint": "当合并列的\"数据键\"值为null或未定义时，合并要合并的列单元格",
+      "name": "Col跨度"
+    },
+    "fixed": {
+      "hint": "固定柱",
+      "name": "固定"
+    },
+    "flexGrow": {
+      "hint": "当set'Flex grow'不能设置'Resizable'和'Width'属性时，设置列宽会自动调整",
+      "name": "弹性增长"
+    },
+    "fullText": {
+      "hint": "鼠标悬停时是否显示单元格内容全文",
+      "name": "全文"
+    },
+    "minWidth": {
+      "hint": "当您使用'Flex grow'时，您可以设置最小宽度",
+      "name": "最小宽度"
+    },
+    "resizable": {
+      "hint": "可自定义调整列宽",
+      "name": "可调整大小"
+    },
+    "rowSpan": {
+      "hint": "合并指定列上的行",
+      "name": "行跨度"
+    },
+    "sortable": {
+      "hint": "可分类",
+      "name": "可分类"
+    },
+    "verticalAlign": {
+      "hint": "垂直对齐",
+      "name": "垂直对齐"
+    },
+    "width": {
+      "hint": "列宽",
+      "name": "阔度"
+    }
+  },
+  "RsColumnGroup": {
+    "align": {
+      "hint": "对齐方式",
+      "name": "对齐;对齐"
+    },
+    "fixed": {
+      "hint": "固定柱组",
+      "name": "固定"
+    },
+    "groupHeaderHeight": {
+      "hint": "合并单元格组的标题的高度",
+      "name": "组头高度"
+    },
+    "header": {
+      "hint": "组头",
+      "name": "标题"
+    },
+    "verticalAlign": {
+      "hint": "垂直对齐",
+      "name": "垂直对齐"
+    }
+  },
   "RsDatePicker": {
     "format": {
       "hint": "在输入中呈现日期的格式",
@@ -187,6 +261,12 @@
     "vertical": {
       "hint": "垂直分界线",
       "name": "垂直方向"
+    }
+  },
+  "RsHeaderCell": {
+    "children": {
+      "hint": "表列标题",
+      "name": "内容"
     }
   },
   "RsInput": {
@@ -301,6 +381,104 @@
     "rows": {
       "hint": "行数",
       "name": "行"
+    }
+  },
+  "RsTable": {
+    "affixHeader": {
+      "hint": "将表头粘贴到页面上的指定位置",
+      "name": "词缀头"
+    },
+    "affixHorizontalScrollbar": {
+      "hint": "将表格水平滚动条粘贴到页面上的指定位置",
+      "name": "附加水平滚动条"
+    },
+    "autoHeight": {
+      "hint": "表的高度会根据数据行数自动展开，不会出现垂直滚动条",
+      "name": "自动高度"
+    },
+    "bordered": {
+      "hint": "显示边框",
+      "name": "边界,边界"
+    },
+    "cellBordered": {
+      "hint": "显示单元格边框",
+      "name": "细胞边缘"
+    },
+    "data": {
+      "hint": "表数据",
+      "name": "数据资料"
+    },
+    "defaultSortType": {
+      "hint": "排序类型",
+      "name": "默认排序类型"
+    },
+    "fillHeight": {
+      "hint": "强制表的高度等于其父容器的高度。 不能与\"自动高度\"一起使用",
+      "name": "填充高度"
+    },
+    "headerHeight": {
+      "hint": "表头高度",
+      "name": "头高度"
+    },
+    "height": {
+      "hint": "桌子高度",
+      "name": "身高"
+    },
+    "hover": {
+      "hint": "表的行具有mouseover效果",
+      "name": "悬停,悬停"
+    },
+    "loading": {
+      "hint": "显示加载",
+      "name": "装载量"
+    },
+    "maxHeight": {
+      "hint": "最大高度",
+      "name": "最大高度"
+    },
+    "minHeight": {
+      "hint": "最低高度",
+      "name": "最小高度"
+    },
+    "rowClassName": {
+      "hint": "向行添加可选的额外类名",
+      "name": "行类名"
+    },
+    "rowHeight": {
+      "hint": "行高",
+      "name": "行高"
+    },
+    "rowKey": {
+      "hint": "每一行对应于数据中的唯一键",
+      "name": "行键"
+    },
+    "shouldUpdateScroll": {
+      "hint": "表大小更新后是否更新滚动",
+      "name": "应该更新滚动"
+    },
+    "showHeader": {
+      "hint": "显示标题",
+      "name": "显示标题"
+    },
+    "sortColumn": {
+      "hint": "排序列名",
+      "name": "排序列"
+    },
+    "sortType": {
+      "hint": "排序类型",
+      "name": "排序类型"
+    },
+    "virtualized": {
+      "hint": "有效呈现大型表格数据",
+      "name": "虚拟化"
+    },
+    "width": {
+      "hint": "表格宽度",
+      "name": "阔度"
+    },
+    "wordWrap": {
+      "hint": "是否在文本溢出其内容框的位置显示换行符",
+      "name": "自动换行"
     }
   },
   "RsTimePicker": {
