@@ -14,10 +14,6 @@ const SDiv = styled.div`
   height: 100%;
 `
 
-const SErrorMessage = styled(Form.ErrorMessage)`
-  z-index: 6;
-`
-
 /**
  * The properties of RsErrorMessage component.
  */
@@ -34,9 +30,9 @@ const RsErrorMessage = ({error, children, placement, className}: RsErrorMessageP
 
   return <SDiv className={cx(className, divClassName)}>
     {children}
-    <SErrorMessage show={Boolean(error)} placement={placement ?? 'bottomStart'} id={aria['aria-errormessage']}>
+    <Form.ErrorMessage show={Boolean(error)} placement={placement ?? 'bottomStart'} id={aria['aria-errormessage']}>
       {error}
-    </SErrorMessage>
+    </Form.ErrorMessage>
   </SDiv>
 }
 
