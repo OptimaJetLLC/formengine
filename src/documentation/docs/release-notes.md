@@ -4,6 +4,42 @@ title: Release notes
 slug: /release-notes
 ---
 
+## 7.3.0
+
+_October_ 2, 2025
+
+### New
+
+- Added [Table](/components-library/structure-components/table) component.
+- Added the feature to [override or disable](/api-reference/@react-form-builder/core/interfaces/Definer#overrideeventhandlers)
+  the `onChange` and `onBlur` component handlers.
+- Added the feature to [disable styling](/api-reference/@react-form-builder/core/interfaces/Definer#withoutstyles) for certain components.
+- Added an interactive, editable, live-coding [form example](/#add-the-form-to-the-page) to documentation.
+- Added [CellInfoContextProvider](/api-reference/@react-form-builder/core/variables/CellInfoContextProvider) for implementing table
+  components.
+- Added a standard color for svg icons in the component palette.
+- Added the feature to [hide property editors](/api-reference/@react-form-builder/core/interfaces/Definer#hideactioneditors) on the Actions
+  tab.
+- The sideEffects property has been added to packages (to better support tree-shaking).
+- Added feature to [disable component removal](/custom-components#disable-component-remove).
+- Added export of individual components for
+  the [RSuite Components library](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+
+### Changed
+
+- Replaced `window` with `globalThis` in project code.
+
+### Fixed bugs
+
+- Fixed a bug that caused the [Rich Text Editor](/components-library/fields-components/rich-text-editor) component not being cleared.
+- Fixed an issue that allowed adding items to the color pickers with a predefined list of colors.
+- Fixed partially displayed error messages.
+- Fixed a bug that caused duplicates in the Picker component when adding new values.
+
+### Updated internal dependencies
+
+- Bumped `tar-fs` from 2.1.3 to 2.1.4.
+
 ## 7.2.0
 
 _September_ 18, 2025
@@ -65,7 +101,9 @@ _September_ 1, 2025
 - Multiple fields with the same `dataKey` are now updated in sync when form data changes.
 - Fields from the initial data are always preserved in form data, even if not bound to form fields.
 - Changed two-way data binding to one-way in the `Progress` component.
-- Changed the return type of [DataValidator.getValidationResult](/api-reference/@react-form-builder/core/classes/DataValidator#getvalidationresult), [IStore.localizeErrorMessages](/api-reference/@react-form-builder/core/interfaces/IStore#localizeerrormessages), and [ErrorMessageLocalizer](/api-reference/@react-form-builder/core/type-aliases/ErrorMessageLocalizer) from `string` to `string[]`.
+- Changed the return type
+  of [DataValidator.getValidationResult](/api-reference/@react-form-builder/core/classes/DataValidator#getvalidationresult), [IStore.localizeErrorMessages](/api-reference/@react-form-builder/core/interfaces/IStore#localizeerrormessages),
+  and [ErrorMessageLocalizer](/api-reference/@react-form-builder/core/type-aliases/ErrorMessageLocalizer) from `string` to `string[]`.
 - Changed the style editor language from **SCSS** to **CSS**.
 - Removed deprecated fields and methods:
   - `Store.getForm`
@@ -98,7 +136,8 @@ _September_ 1, 2025
 ### Fixed bugs
 
 - Fixed a bug where deleting a validation rule did not remove its localized messages from the form JSON.
-- Fixed an issue where [IFormData.getValidationResult](/api-reference/@react-form-builder/core/interfaces/IFormData#getvalidationresult) returned unlocalized error messages.
+- Fixed an issue where [IFormData.getValidationResult](/api-reference/@react-form-builder/core/interfaces/IFormData#getvalidationresult)
+  returned unlocalized error messages.
 
 ## 6.2.1
 
@@ -186,8 +225,11 @@ _August_ 1, 2025
 
 ### Breaking changes
 
-- When using [formStorage](/form-storage) in Designer, forms are now loaded through [IFormStorage.getForm](/api-reference/@react-form-builder/designer/interfaces/IFormStorage#getform) instead of [FormViewerProps.getForm](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#getform).
-- The `formName` parameter is now optional in the [IFormStorage.getForm](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#getform) function.
+- When using [formStorage](/form-storage) in Designer, forms are now loaded
+  through [IFormStorage.getForm](/api-reference/@react-form-builder/designer/interfaces/IFormStorage#getform) instead
+  of [FormViewerProps.getForm](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#getform).
+- The `formName` parameter is now optional in
+  the [IFormStorage.getForm](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#getform) function.
 
 ### New
 

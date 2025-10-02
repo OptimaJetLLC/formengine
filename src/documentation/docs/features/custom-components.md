@@ -452,6 +452,8 @@ From the code above, you can see that:
 3. We described the component by adding the `value` property as a string containing a value and having the default value of an empty string
    (this is to prevent React from writing errors about uncontrolled value to the console).
 
+### Override event handlers
+
 An alternative way is to [define event handlers](/api-reference/@react-form-builder/core/interfaces/Definer#overrideeventhandlers) in the
 component description:
 
@@ -724,6 +726,20 @@ const view = new BuilderView(components)
   .withPaletteFilter(({category, model}) => {
     return !(category === 'templates' || model.type === 'RsAutoComplete')
   })
+```
+
+### Disable component remove
+
+You may want to prevent some components from being removed from the form. You can mark a component as non-removable in the component
+definition using the [disableRemove](/api-reference/@react-form-builder/core/interfaces/Definer#disableremove) function:
+
+```typescript
+export const rsHeader = define(MyHeader, 'MyHeader')
+  .name('Header')
+  .props({
+    className: string
+  })
+  .disableRemove()
 ```
 
 ### Component icon

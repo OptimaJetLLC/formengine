@@ -1,4 +1,4 @@
-import {cfDisableComponentRemove, define} from '@react-form-builder/core'
+import {define} from '@react-form-builder/core'
 
 const divStyle = {
   width: 100,
@@ -11,4 +11,4 @@ const NotRemovable = () => <div style={divStyle}/>
 export const notRemovable = define(NotRemovable, 'NotRemovable')
   .name('Not removable')
   .category('Debug')
-  .addFeature(cfDisableComponentRemove, true)
+  .disableRemove()

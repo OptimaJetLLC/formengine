@@ -269,7 +269,7 @@ export class Definer<T extends object> {
    * @param value true to disable removal, false otherwise.
    * @returns the modified Definer class instance.
    */
-  disableRemove(value = false) {
+  disableRemove(value = true) {
     return this.addFeature(cfDisableComponentRemove, value)
   }
 
