@@ -1,8 +1,36 @@
 import type * as Preset from '@docusaurus/preset-classic'
 import type {Config} from '@docusaurus/types'
-import fs from 'node:fs'
-import path from 'node:path'
+import {env} from 'node:process'
 import {themes as prismThemes} from 'prism-react-renderer'
+
+const docusaurusPluginTypedocConfig = [
+  'docusaurus-plugin-typedoc',
+  // Options
+  {
+    entryPoints: [
+      '../../packages/core',
+      '../../packages/designer',
+      '../../packages/designer-bundle',
+      '../../packages/viewer-bundle',
+      '../../packages/viewer-bundle-premium',
+      '../../packages/views/fast-qr',
+      '../../packages/views/rich-text',
+      '../../packages/views/google-map',
+      '../../packages/views/rsuite',
+      '../../packages/views/signature',
+    ],
+    entryPointStrategy: 'packages',
+    tsconfig: '../../tsconfig.json',
+    out: '../docs/api-reference',
+    name: 'API reference',
+    disableSources: true,
+    readme: 'none',
+    sidebar: {
+      autoConfiguration: true,
+      pretty: true,
+    },
+  },
+]
 
 const config: Config = {
   future: {
@@ -225,35 +253,11 @@ const config: Config = {
         // ```
       },
     ],
-    [
-      'docusaurus-plugin-typedoc',
-      // Options
-      {
-        entryPoints: [
-          '../../packages/core',
-          '../../packages/designer',
-          '../../packages/designer-bundle',
-          '../../packages/viewer-bundle',
-          '../../packages/viewer-bundle-premium',
-          '../../packages/views/fast-qr',
-          '../../packages/views/rich-text',
-          '../../packages/views/google-map',
-          '../../packages/views/rsuite',
-          '../../packages/views/signature',
-        ],
-        entryPointStrategy: 'packages',
-        tsconfig: '../../tsconfig.json',
-        out: '../docs/api-reference',
-        name: 'API reference',
-        disableSources: true,
-        readme: 'none',
-        sidebar: {
-          autoConfiguration: true,
-          pretty: true,
-        },
-      },
-    ],
   ],
+}
+
+if (env.ENABLE_TYPEDOC === 'true') {
+  config.plugins.push(docusaurusPluginTypedocConfig)
 }
 
 export default config
