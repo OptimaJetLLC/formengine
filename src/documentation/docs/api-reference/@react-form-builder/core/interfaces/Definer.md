@@ -156,7 +156,7 @@ Prevent this component from being removed.
 
 ##### value
 
-`boolean` = `false`
+`boolean` = `true`
 
 true to disable removal, false otherwise.
 
