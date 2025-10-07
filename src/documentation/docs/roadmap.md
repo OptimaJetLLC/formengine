@@ -26,7 +26,7 @@ our [GitHub repository](https://github.com/optimajet/formengine/issues).
 | Wizard component                                                    | Done     |
 | Component working with data arrays (repeater)                       | Done     |
 | Support for properties of type "object"                             | Done     |
-| Table component                                                     | Planned  |
+| Table component                                                     | Done     |
 | Integrations with other popular component libraries (MUI, Tailwind) | Planned  |
 | React 19 support                                                    | Done     |
 | Camera component                                                    | Analysis |
