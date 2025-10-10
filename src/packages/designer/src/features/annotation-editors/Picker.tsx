@@ -1,5 +1,5 @@
 import type {PropertyAnnotation} from '@react-form-builder/core'
-import {isUndefined} from 'lodash-es'
+import {isUndefined} from '@react-form-builder/core'
 import {useState} from 'react'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'

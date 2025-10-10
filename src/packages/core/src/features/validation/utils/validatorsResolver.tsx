@@ -1,6 +1,7 @@
 import type {FormViewerValidationRules} from '../../../stores/FormViewerValidationRules'
 import {isPromise} from '../../../utils'
 import {needValidate} from '../../../utils/needValidate'
+import {isUndefined} from '../../../utils/tools'
 import type {BoundValueSchema} from '../types/BoundValueSchema'
 import type {RuleValidator} from '../types/RuleValidator'
 import type {ValidationResult} from '../types/ValidationResult'
@@ -62,7 +63,7 @@ function validatorsResolver(validationRules: FormViewerValidationRules, schema?:
       const args: Record<string, unknown> = {}
       if (!needValidate(settings.validateWhen, getFormData?.())) continue
 
-      params?.filter(param => typeof param.default !== 'undefined')
+      params?.filter(param => !isUndefined(param.default))
         .map(param => args[param.key] = param.default)
       Object.assign(args, settings.args)
       const result = validator(value, store, args, getFormData?.())

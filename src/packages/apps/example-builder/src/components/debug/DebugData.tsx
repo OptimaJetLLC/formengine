@@ -1,4 +1,4 @@
-import {define, useComponentData} from '@react-form-builder/core'
+import {define, isNull, useComponentData} from '@react-form-builder/core'
 import {useMemo} from 'react'
 import './styles.css'
 
@@ -36,7 +36,7 @@ function highlightJson(json: string) {
       return `<span class="boolean">${value}</span>`
     }
 
-    if (value === null) {
+    if (isNull(value)) {
       return `<span class="null">null</span>`
     }
 

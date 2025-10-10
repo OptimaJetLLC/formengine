@@ -50,7 +50,6 @@
     "i18next-browser-languagedetector": "^6.1.2",
     "i18next-resources-to-backend": "^1.0.0",
     "jszip": "^3.10.1",
-    "lodash-es": "^4.17.21",
     "monaco-editor": "^0.52.2",
     "re-resizable": "^6.9.11",
     "react-colorful": "^5.6.1",
@@ -60,8 +59,7 @@
     "scroll-into-view-if-needed": "^3.0.10"
   },
   "devDependencies": {
-    "@types/file-saver": "^2.0.5",
-    "@types/lodash-es": "^4.17.7"
+    "@types/file-saver": "^2.0.5"
   },
   "peerDependencies": {
     "@emotion/css": "^11.13.5",

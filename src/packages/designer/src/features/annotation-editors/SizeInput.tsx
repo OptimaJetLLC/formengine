@@ -1,6 +1,6 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {toLabeledValues} from '@react-form-builder/core'
+import {isUndefined, toLabeledValues} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {Input, InputNumber, InputPicker} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
@@ -27,7 +27,7 @@ function parseCSSValue(cssValue?: string) {
     : {value: `${value}${unit}`, unit: OtherUnit}
 }
 
-const isNeedValue = (unit?: string) => typeof unit !== 'undefined' && !SizeKeywords.includes(unit)
+const isNeedValue = (unit?: string) => !isUndefined(unit) && !SizeKeywords.includes(unit)
 
 /**
  * Converts the measured value to a number if the value is not measured in 'other'.

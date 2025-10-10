@@ -1,5 +1,5 @@
 import type {LanguageFullCode} from '@react-form-builder/core'
-import {BiDi, findLanguage, globalDefaultLanguage, Language} from '@react-form-builder/core'
+import {BiDi, findLanguage, globalDefaultLanguage, Language, merge} from '@react-form-builder/core'
 import dfAR from 'date-fns/locale/ar-EG/index.js'
 import dfDE from 'date-fns/locale/de/index.js'
 import dfEN from 'date-fns/locale/en-US/index.js'
@@ -12,7 +12,6 @@ import dfJA from 'date-fns/locale/ja/index.js'
 import dfKO from 'date-fns/locale/ko/index.js'
 import dfSR from 'date-fns/locale/sr/index.js'
 import dfCN from 'date-fns/locale/zh-CN/index.js'
-import {merge} from 'lodash-es'
 import {arEG, deDE, enUS, esES, faIR, frFR, itIT, jaJP, koKR, zhCN} from 'rsuite/esm/locales/index.js'
 import enUsTranslation from '../../../public/locales/en-US.json'
 import type {FormBuilderI18n, FormBuilderI18nData} from './FormBuilderLanguage'
@@ -111,5 +110,5 @@ export const loadTranslation = async (i18n: FormBuilderI18n,
 
   // we need to create a copy of the objects to prevent them from being modified
   const items = found.map(item => JSON.parse(JSON.stringify(item)))
-  return merge({}, ...items)
+  return merge({data: {}}, ...items)
 }

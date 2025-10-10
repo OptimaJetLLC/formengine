@@ -1,5 +1,5 @@
 import type {ComponentData} from '@react-form-builder/core'
-import {isEqualWith} from 'lodash-es'
+import {isEqualWith} from '@react-form-builder/core'
 import {reaction} from 'mobx'
 import {useEffect, useMemo, useState} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'

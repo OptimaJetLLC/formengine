@@ -1,7 +1,7 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import type {ComponentData} from '@react-form-builder/core'
-import {namedObserver, useComponentData} from '@react-form-builder/core'
+import {isNull, namedObserver, useComponentData} from '@react-form-builder/core'
 import type {ComponentProps, RefCallback} from 'react'
 import {useCallback} from 'react'
 import {useDrop} from 'react-dnd'
@@ -54,7 +54,7 @@ const useDropZone = (isAfter?: boolean, isInner?: boolean, slot?: string, slotCo
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       isActive: monitor.isOver() && monitor.canDrop(),
-      isDragging: monitor.getItemType() !== null,
+      isDragging: !isNull(monitor.getItemType()),
       canDrop: monitor.canDrop(),
     })
   }, [store, target, insertPosition, slot, slotCondition])

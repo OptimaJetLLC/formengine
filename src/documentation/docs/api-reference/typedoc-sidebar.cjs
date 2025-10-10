@@ -1841,8 +1841,18 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/camelCase",
+              label: "camelCase"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/checkSlotCondition",
               label: "checkSlotCondition"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/cloneDeep",
+              label: "cloneDeep"
             },
             {
               type: "doc",
@@ -1863,6 +1873,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/functions/createProperty",
               label: "createProperty"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/debounce",
+              label: "debounce"
             },
             {
               type: "doc",
@@ -1951,6 +1966,21 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/isEmpty",
+              label: "isEmpty"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/isEqual",
+              label: "isEqual"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/isEqualWith",
+              label: "isEqualWith"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/isFunctionalProperty",
               label: "isFunctionalProperty"
             },
@@ -1958,6 +1988,21 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/functions/isLocalizedProperty",
               label: "isLocalizedProperty"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/isNull",
+              label: "isNull"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/isNumber",
+              label: "isNumber"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/isObject",
+              label: "isObject"
             },
             {
               type: "doc",
@@ -1976,6 +2021,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/isUndefined",
+              label: "isUndefined"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/isValidatorPropertyBlockType",
               label: "isValidatorPropertyBlockType"
             },
@@ -1983,6 +2033,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/functions/loadResource",
               label: "loadResource"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/merge",
+              label: "merge"
             },
             {
               type: "doc",
@@ -2011,6 +2066,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/startCase",
+              label: "startCase"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/SuppressResizeObserverErrors",
               label: "SuppressResizeObserverErrors"
             },
@@ -2031,13 +2091,28 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/toUpper",
+              label: "toUpper"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/treeForEach",
               label: "treeForEach"
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/uniqueId",
+              label: "uniqueId"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/unloadResource",
               label: "unloadResource"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/upperFirst",
+              label: "upperFirst"
             },
             {
               type: "doc",

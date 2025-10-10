@@ -1,5 +1,4 @@
 import {namedObserver} from '@react-form-builder/core'
-import {assign} from 'lodash-es'
 import {useCallback} from 'react'
 import {Input as RInput, InputGroup} from 'rsuite'
 import {useActionData} from '../../../../contexts/ActionDataContext'
@@ -10,7 +9,9 @@ const RawInputString = ({name}: InputProps) => {
   const value = data.args?.[name]?.toString() ?? ''
 
   const handleChange = useCallback((value: string) => {
-    return data.args = assign({}, data.args, {[name]: value})
+    const next = Object.assign({}, data.args)
+    next[name] = value
+    return (data.args = next as any)
   }, [data, name])
 
   return (

@@ -1,7 +1,6 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {cfComponentIsPreset, namedObserver, useComponentData} from '@react-form-builder/core'
-import {camelCase, replace, upperFirst} from 'lodash-es'
+import {cfComponentIsPreset, namedObserver, startCase, useComponentData} from '@react-form-builder/core'
 import type {MouseEventHandler, ReactNode, RefCallback} from 'react'
 import {useCallback, useMemo} from 'react'
 import {icons} from '../../../icons'
@@ -82,7 +81,7 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
 
   const Icon = useMemo(() => {
     const {icon: CustomIcon} = builderStore.getComponentMetadata(type)
-    const iconName = replace(upperFirst(camelCase(name)), ' ', '') as keyof typeof icons
+    const iconName = startCase(name).replaceAll(' ', '') as keyof typeof icons
     const defaultIcon = data.model.isFeatureEnabled(cfComponentIsPreset) ? PresetIcon : icons.Default
     return CustomIcon ?? icons[iconName] ?? defaultIcon
   }, [builderStore, data.model, name, type])

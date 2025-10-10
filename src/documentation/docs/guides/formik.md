@@ -297,7 +297,7 @@ import React, {useCallback, useMemo} from 'react'
 // <&chg
 // &new>
 import {BookingFormErrors, useBookingForm} from './useBookingForm'
-import debounce from 'lodash/debounce';
+import {debounce} from '@react-form-builder/core';
 // <&new
 import {BuilderView, FormBuilder, IFormStorage} from '@react-form-builder/designer'
 import {
@@ -516,7 +516,7 @@ import {ActionDefinition, BiDi, ComponentData, IFormData, RuleValidatorResult, V
 import React, {useMemo} from 'react'
 import {useBookingForm} from './useBookingForm'
 // <&chg
-import debounce from 'lodash/debounce';
+import {debounce} from '@react-form-builder/core';
 import {BuilderView, FormBuilder, IFormStorage} from '@react-form-builder/designer'
 import {
   formEngineRsuiteCssLoader,

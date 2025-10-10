@@ -1,4 +1,4 @@
-import {useComponentData} from '@react-form-builder/core'
+import {isNull, useComponentData} from '@react-form-builder/core'
 import type {MapCameraChangedEvent, MapMouseEvent} from '@vis.gl/react-google-maps'
 import {Map} from '@vis.gl/react-google-maps'
 import {useCallback, useEffect, useMemo, useState} from 'react'
@@ -13,7 +13,7 @@ import {useGeocoding} from './useGeocoding'
 import {uniqueId, useUniqueId} from './useUniqueId'
 
 const isCorrectPosition = (pos: google.maps.LatLngLiteral) => {
-  return pos.lat !== null && pos.lng !== null && !isNaN(pos.lat) && !isNaN(pos.lng)
+  return !isNull(pos.lat) && !isNull(pos.lng) && !isNaN(pos.lat) && !isNaN(pos.lng)
 }
 
 const generateMarkerId = () => uniqueId('m')

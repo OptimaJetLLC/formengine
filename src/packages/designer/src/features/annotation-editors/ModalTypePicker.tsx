@@ -1,5 +1,4 @@
-import {namedObserver, useModalType} from '@react-form-builder/core'
-import {startCase} from 'lodash-es'
+import {namedObserver, startCase, useModalType} from '@react-form-builder/core'
 import {useMemo} from 'react'
 import type {ItemDataType} from 'rsuite/esm/internals/types'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
@@ -21,12 +20,10 @@ const RawModalTypePicker = (props: AnnotationEditorProps) => {
     return builderStore.view
       .filterModels(model => model.hasComponentRole('modal'))
       .map(model => model.typeName)
-      .map(name => {
-        return {
-          value: name,
-          label: startCase(name)
-        } as ItemDataType
-      })
+      .map((name): ItemDataType => ({
+        value: name,
+        label: startCase(String(name))
+      }))
   }, [builderStore.view])
 
   return <LabeledProperty {...props}>

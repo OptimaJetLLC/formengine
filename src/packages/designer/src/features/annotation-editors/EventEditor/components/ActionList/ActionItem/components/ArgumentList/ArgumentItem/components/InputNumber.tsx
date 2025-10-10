@@ -1,6 +1,5 @@
-import {namedObserver} from '@react-form-builder/core'
+import {isUndefined, namedObserver} from '@react-form-builder/core'
 import {Close} from '@rsuite/icons'
-import {assign} from 'lodash-es'
 import {useCallback} from 'react'
 import {InputGroup, InputNumber as RInputNumber} from 'rsuite'
 import {useActionData} from '../../../../contexts/ActionDataContext'
@@ -8,10 +7,10 @@ import type {InputProps} from '../InputProps'
 
 const RawInputNumber = ({name}: InputProps) => {
   const data = useActionData()
-  const value = typeof data.args?.[name] !== 'undefined' ? Number(data.args[name]) : ''
+  const value = !isUndefined(data.args?.[name]) ? Number(data.args![name]) : ''
 
   const handleChange = useCallback((value: string | number | null) => {
-    const newArgs = assign({}, data.args)
+    const newArgs = Object.assign({}, data.args)
     delete newArgs[name]
     if (typeof value === 'string' || typeof value === 'number') {
       newArgs[name] = Number(value)

@@ -1,3 +1,4 @@
+import {isUndefined} from '@react-form-builder/core'
 import {assemblyDate} from './assemblyDate'
 import {licenseSeparator, publicKeyPem, separator} from './consts'
 import {verifyDomain} from './domain'
@@ -106,7 +107,7 @@ export async function extractLicenseKey(licenseKey: string): Promise<LicenseData
     // v1 - legacy license, StrictCheck only
     parsedData.version = (
       Object.keys(parsedData.restrictions).length === 1
-      && typeof parsedData.restrictions.StrictCheck !== 'undefined'
+      && !isUndefined(parsedData.restrictions.StrictCheck)
     ) ? 'v1' : 'v2'
 
     const {licenseEndDate, companyName} = parsedData

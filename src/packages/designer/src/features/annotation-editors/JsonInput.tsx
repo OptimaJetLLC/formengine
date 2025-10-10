@@ -1,5 +1,5 @@
+import {isObject} from '@react-form-builder/core'
 import {Close, Code} from '@rsuite/icons'
-import {isObject} from 'lodash-es'
 import {useCallback, useMemo} from 'react'
 import {Input, InputGroup} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'

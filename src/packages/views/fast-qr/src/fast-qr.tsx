@@ -1,4 +1,4 @@
-import {color, define, number, oneOf, string, useBuilderValue} from '@react-form-builder/core'
+import {color, define, isUndefined, number, oneOf, string, useBuilderValue} from '@react-form-builder/core'
 import init, {qr_svg, SvgOptions} from 'fast_qr'
 import module from 'fast_qr/fast_qr_bg.wasm?url'
 import type {RefObject} from 'react'
@@ -133,7 +133,7 @@ const renderQr = async (props: RenderQrProps, ref: RefObject<HTMLDivElement | nu
   if (imageBackgroundColor) svgOptions = svgOptions.image_background_color(imageBackgroundColor)
 
   if (props.imageBackgroundShape) svgOptions = svgOptions.image_background_shape(props.imageBackgroundShape)
-  if (props.imageSize !== undefined && props.imageGap !== undefined) {
+  if (!isUndefined(props.imageSize) && !isUndefined(props.imageGap)) {
     svgOptions = svgOptions.image_size(props.imageSize, props.imageGap)
   }
   if (props.imagePositionX && props.imagePositionY) {

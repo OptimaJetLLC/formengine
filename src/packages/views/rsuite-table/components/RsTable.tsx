@@ -4,6 +4,7 @@ import {
   boolean,
   define,
   event,
+  isNull,
   nameObservable,
   needRender,
   node,
@@ -80,7 +81,7 @@ class TableColumns {
         if (!needRender(item.store, item.dataRoot)) return null
         if (item.model.typeName === rsColumnGroupTypeName) return this.getColumnGroupElement(item)
         return this.getColumnElement(item)
-      }).filter(item => !item !== null)
+      }).filter(item => !isNull(item))
   }
 
   private getColumnGroupElement(item: ComponentData) {

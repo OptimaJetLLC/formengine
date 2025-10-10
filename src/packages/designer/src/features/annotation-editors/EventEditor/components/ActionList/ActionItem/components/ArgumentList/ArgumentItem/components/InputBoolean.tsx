@@ -1,5 +1,4 @@
-import {namedObserver} from '@react-form-builder/core'
-import {assign} from 'lodash-es'
+import {isUndefined, namedObserver} from '@react-form-builder/core'
 import {useCallback} from 'react'
 import {FixedSelectPicker} from '../../../../../../../../../ui/FixedSelectPicker'
 import {useActionData} from '../../../../contexts/ActionDataContext'
@@ -14,9 +13,9 @@ const RawInputBoolean = ({name}: InputProps) => {
   const data = useActionData()
 
   const handleChange = useCallback((value?: string) => {
-    const newArgs = assign({}, data.args)
+    const newArgs = Object.assign({}, data.args)
     delete newArgs[name]
-    if (typeof value !== 'undefined') {
+    if (!isUndefined(value)) {
       newArgs[name] = value
     }
     data.args = newArgs

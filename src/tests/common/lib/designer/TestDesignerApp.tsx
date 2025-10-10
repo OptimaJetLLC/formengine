@@ -1,5 +1,14 @@
 import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
-import {ActionDefinition, BiDi, ComponentStore, FormValidators, IFormViewer, Language, Validators} from '@react-form-builder/core'
+import {
+  ActionDefinition,
+  BiDi,
+  ComponentStore,
+  FormValidators,
+  IFormViewer,
+  isUndefined,
+  Language,
+  Validators
+} from '@react-form-builder/core'
 import type {AnnotationEditorProps, CustomizationMap, FormBuilderI18n, FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
@@ -92,7 +101,7 @@ const sampleFormName = 'SampleForm'
 
 async function getForm(name?: string): Promise<string> {
   if (!formStorage) throw new Error('IndexedDB not supported')
-  if (typeof name === 'undefined') throw new Error('Form name is not defined')
+  if (isUndefined(name)) throw new Error('Form name is not defined')
   return await formStorage.getForm(name)
 }
 

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {namedObserver, SuppressResizeObserverErrors} from '@react-form-builder/core'
+import {isUndefined, namedObserver, SuppressResizeObserverErrors} from '@react-form-builder/core'
 import type {ComponentProps, ReactNode} from 'react'
 import {Suspense, useEffect} from 'react'
 import {Loader} from 'rsuite'
@@ -55,7 +55,7 @@ const RawFormBuilderView = (props: ComponentProps<typeof Container>) => {
   const {checkLicense} = useLicense()
 
   useEffect(() => {
-    if (typeof builderStore.props.customization !== 'undefined') {
+    if (!isUndefined(builderStore.props.customization)) {
       checkLicense([{name: 'ftDesignerCustomization'}])
     }
   }, [checkLicense, builderStore.props.customization])

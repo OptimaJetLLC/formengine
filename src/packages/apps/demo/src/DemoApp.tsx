@@ -10,7 +10,7 @@ import {
 } from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent} from '@react-form-builder/components-signature'
-import {BiDi} from '@react-form-builder/core'
+import {BiDi, isUndefined} from '@react-form-builder/core'
 import type {CustomizationMap, IPresetComponentOptions, PresetComponent} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage, IndexedDbPresetStorage} from '@react-form-builder/indexed-db-form-storage'
@@ -50,12 +50,12 @@ const formStorage = indexedDbExists
 
 async function getForm(name?: string): Promise<string> {
   if (!formStorage) throw new Error('IndexedDB not supported')
-  if (typeof name === 'undefined') throw new Error('Form name is not defined')
+  if (isUndefined(name)) throw new Error('Form name is not defined')
   return await formStorage.getForm(name)
 }
 
 const getFormFn = (formName?: string) => {
-  const name = !formName || formName === 'undefined' ? sampleFormName : formName
+  const name = !formName || isUndefined(formName) ? sampleFormName : formName
   return indexedDbExists ? getForm(name) : getFormFromJson(name)
 }
 
@@ -118,7 +118,7 @@ const FormBuilderApp = observer(() => {
   useEffect(() => {
     async function initDb() {
       const presetComponents = await presetStorage?.loadPresets()
-      if (typeof presetComponents !== 'undefined') {
+      if (!isUndefined(presetComponents)) {
         setPresetOptions({
           ...getPresetOptions(),
           components: presetComponents,

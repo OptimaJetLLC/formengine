@@ -1,4 +1,4 @@
-import {namedObserver} from '@react-form-builder/core'
+import {isNull, isUndefined, namedObserver} from '@react-form-builder/core'
 import type {ComponentType, PropsWithChildren} from 'react'
 import {useCallback, useEffect, useMemo} from 'react'
 import type {LicenseData, LicenseFeatureDescription, Restrictions, Violations} from './license'
@@ -35,10 +35,10 @@ const RawLicenseManager: ComponentType<PropsWithChildren<{ licenseKey?: string }
       if (version === 'v1') return prev
 
       const notAllowed = features.filter(f => {
-        return typeof f?.check === 'undefined' && !restrictions[f.name as keyof Restrictions]
+        return isUndefined(f?.check) && !restrictions[f.name as keyof Restrictions]
       })
       const needCheck = features.filter(f => {
-        return typeof restrictions[f.name as keyof Restrictions] !== 'undefined' && typeof f?.check === 'function'
+        return !isUndefined(restrictions[f.name as keyof Restrictions]) && typeof f?.check === 'function'
       })
 
       notAllowed.forEach(f => {
@@ -65,7 +65,7 @@ const RawLicenseManager: ComponentType<PropsWithChildren<{ licenseKey?: string }
     if (ready && data) {
       const verificationResult = verifyLicenseParams(data)
 
-      if (verificationResult !== null) {
+      if (!isNull(verificationResult)) {
         const [code, args] = verificationResult
         setMissing((prev) => ({
           ...prev,

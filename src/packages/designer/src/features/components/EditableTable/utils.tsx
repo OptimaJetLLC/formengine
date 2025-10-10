@@ -1,4 +1,4 @@
-import {upperFirst} from 'lodash-es'
+import {upperFirst} from '@react-form-builder/core'
 import type {ComponentType} from 'react'
 import {Table} from 'rsuite'
 import {InputCell} from './CustomCells'

@@ -1,6 +1,5 @@
 import type {Annotation, ResolvedValidator, Store} from '@react-form-builder/core'
-import {isPromise} from '@react-form-builder/core'
-import {isEmpty} from 'lodash-es'
+import {isEmpty, isPromise} from '@react-form-builder/core'
 
 const isDate = (value: any) => value instanceof Date
 

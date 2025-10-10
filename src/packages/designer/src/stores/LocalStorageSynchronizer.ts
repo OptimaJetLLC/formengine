@@ -1,5 +1,5 @@
 import type {ViewMode} from '@react-form-builder/core'
-import {nameAutorun} from '@react-form-builder/core'
+import {isUndefined, nameAutorun} from '@react-form-builder/core'
 import type {IReactionDisposer} from 'mobx'
 import {autorun} from 'mobx'
 import type {FormBuilderProps} from '../FormBuilderProps'
@@ -95,7 +95,7 @@ export class LocalStorageSynchronizer {
   }
 
   private updateItem = <T>(key: string, value: T) => {
-    if (typeof value === 'undefined') {
+    if (isUndefined(value)) {
       localStorage.removeItem(key)
       return
     }

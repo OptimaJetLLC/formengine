@@ -1,4 +1,4 @@
-import {isNumber, isUndefined} from 'lodash-es'
+import {isNull, isNumber, isUndefined} from '@react-form-builder/core'
 import {humanizeFileSize} from './formatters'
 
 const isValidDate = (value: any) => value instanceof Date && !Number.isNaN(value.getTime())
@@ -40,7 +40,7 @@ const createFilePreview = ({lastModified, name, type, webkitRelativePath, size}:
 export const prepareForJson = (data: any, options?: {
   previewNativeObjects: boolean
 }) => {
-  if (typeof data !== 'object' || data === null) return data
+  if (typeof data !== 'object' || isNull(data)) return data
 
   const {previewNativeObjects} = options || {}
 

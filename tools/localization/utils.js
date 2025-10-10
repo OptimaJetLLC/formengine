@@ -1,6 +1,28 @@
 import fs from 'fs';
-import {each, forIn, isArray, isEmpty, isPlainObject, isUndefined, keys, sortBy} from 'lodash-es';
 import stringify from 'json-stable-stringify';
+
+const isUndefined = (v) => typeof v === 'undefined';
+
+const isPlainObject = (v) => v !== null && typeof v === 'object' && Object.getPrototypeOf(v) === Object.prototype;
+
+const isEmpty = (v) => {
+  if (v == null) return true;
+  if (typeof v === 'string') return v.length === 0;
+  if (Array.isArray(v)) return v.length === 0;
+  if (v instanceof Map || v instanceof Set) return v.size === 0;
+  if (typeof v === 'object') return Object.keys(v).length === 0;
+  return false;
+}
+
+const sortBy = (arr, iteratee) => [...arr].sort((a, b) => {
+  const ka = iteratee(a);
+  const kb = iteratee(b);
+  return ka < kb ? -1 : ka > kb ? 1 : 0;
+});
+
+const forIn = (obj, fn) => {
+  for (const k in obj) fn(obj[k], k);
+};
 
 function saveToFile(path, obj) {
   const windowsContent = stringify(obj, {space: '  '}).replaceAll('\n', '\r\n');
@@ -8,7 +30,7 @@ function saveToFile(path, obj) {
   fs.writeFileSync(path, buffer);
 }
 
-const isObject = val => isArray(val) || isPlainObject(val)
+const isObject = val => Array.isArray(val) || isPlainObject(val)
 
 function objectKeys(object, result = []) {
   for (let key in object) {
@@ -68,9 +90,9 @@ function removeObsolete(referenceObject, targetObject) {
 
 function sortObject(object) {
   const sortedObj = {};
-  const objectKeys = sortBy(keys(object), key => key);
+  const objectKeys = sortBy(Object.keys(object), key => key);
 
-  each(objectKeys, key => sortedObj[key] =
+  objectKeys.forEach(key => sortedObj[key] =
     isObject(object[key]) ? sortObject(object[key]) : object[key]
   );
 

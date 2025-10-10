@@ -1,5 +1,4 @@
-import {namedObserver, useTooltipType} from '@react-form-builder/core'
-import {startCase} from 'lodash-es'
+import {namedObserver, startCase, useTooltipType} from '@react-form-builder/core'
 import {useMemo} from 'react'
 import type {ItemDataType} from 'rsuite/esm/internals/types'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'

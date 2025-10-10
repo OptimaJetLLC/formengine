@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import {isUndefined} from '@react-form-builder/core'
 import {InfoWindow} from '@vis.gl/react-google-maps'
 import {useMemo} from 'react'
 import type {MapMarker} from './MapMarker'
@@ -85,7 +86,7 @@ export const MarkerInfo = (props: MarkerInfoProps) => {
                      headerContent={headerContent}>
     <>
       <InfoWindowContent>
-        {typeof markerData?.address !== 'undefined' && <>
+        {!isUndefined(markerData?.address) && <>
           <span>{address}</span>
           <span>{`${city}, ${postalCode}, ${state}`}</span>
           <span style={countrySpanStyle}>{country}</span>

@@ -17,14 +17,15 @@ import {
   cfDisableComponentRemove,
   cfHideFromComponentPalette,
   ComponentStore,
+  debounce,
   isContainer,
+  isUndefined,
   namedObserver,
   nameObservable,
   PersistedFormVersion,
   screenModel,
   treeForEach
 } from '@react-form-builder/core'
-import {debounce} from 'lodash-es'
 import type {IReactionDisposer} from 'mobx'
 import {action, makeAutoObservable, observable, reaction} from 'mobx'
 import {EditorMap} from '../features/annotation-editors'
@@ -766,7 +767,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     if (selectedComponents.indexOf(parentComponent) >= 0) return false
 
     const parentRoots = [parentComponent.parent]
-    while (typeof parentRoots[parentRoots.length - 1] !== 'undefined') {
+    while (!isUndefined(parentRoots[parentRoots.length - 1])) {
       parentRoots.push(parentRoots[parentRoots.length - 1]?.parent)
     }
 
