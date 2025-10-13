@@ -35,18 +35,6 @@ to work with.
   - Store complete form definitions as JSON.
   - Programmatically generate forms [via code](/building-forms-via-code).
 
-## Paid features
-
-- **Drag & Drop Form Designer**: intuitive form building with easy drag-and-drop functionality. [Demo](https://demo.formengine.io/).
-- **Customizable Designer**: tailor the form builder to match your workflow and [branding](/designer-customization).
-- **Templates**: create [reusable components](/nested-components#templates) from your forms.
-- **Signature Component**: capture [digital signatures](/components-library/fields-components/signature) directly in your forms.
-- **QR Code Component**: generate and embed [QR codes](/components-library/static-components/qr-code) dynamically.
-- **Table Component** _(in development)_: structured data display and input.
-- **Preset Componens**: save and reuse [custom-configured form elements](/presets-components).
-- **i18n Support**: built-in multilingual form [localization](/localization).
-- **Repeater Component**: create [repeatable](/components-library/structure-components/repeater) sections for dynamic form fields.
-
 ## Quick start
 
 Let's create a sample form application from scratch. We will need to do the following:
