@@ -21,7 +21,7 @@ const RawErrorComponentPicker = () => {
     const names = builderStore.view
       .filterModels(model => model.hasComponentRole('error-message'))
       .map(model => model.type)
-    return Array.from(new Set(names))
+    return [...new Set(names)]
   }, [builderStore.view])
 
   const defaultValue = values[0]

@@ -98,7 +98,7 @@ const RichTextEditor = ({
 
   const modules = useMemo(() => ({
     toolbar: toolbarOptions?.map(option => options[option]),
-    ...(customModules ?? {})
+    ...customModules
   }), [customModules, toolbarOptions])
 
   const mergedStyle = useMemo(() => ({...editorStyle, ...style}), [style])

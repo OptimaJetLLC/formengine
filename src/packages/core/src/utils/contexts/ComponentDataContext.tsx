@@ -325,7 +325,7 @@ export class ComponentData implements IFormData {
 
     existingKeysMap.forEach((set, key) => {
       if (set.size <= 1) return
-      const items = Array.from(set).slice(1)
+      const items = [...set].slice(1)
       items.forEach(item => {
         const newKey = assignNewKey(item, existingKeys)
         existingKeys.add(newKey)

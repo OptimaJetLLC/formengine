@@ -194,7 +194,7 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
   const {model} = data
 
   const modalActions = data.model.type === 'Modal' && activeTab === Section.Actions
-  const current = meta.properties.concat(meta.modules).filter(bySection(activeTab))
+  const current = [...meta.properties, ...meta.modules].filter(bySection(activeTab))
   const properties = current.filter(bySubSection())
   const additionalProperties = current.filter(bySubSection(SubSection.Additional))
   const tooltipProps = current.filter(bySubSection(SubSection.Tooltip))

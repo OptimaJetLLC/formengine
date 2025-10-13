@@ -22,7 +22,7 @@ export class CachedFormStorage implements IFormStorage {
    * @returns the cached instances of BuilderComponent.
    */
   get builderComponents(): BuilderComponent[] {
-    return Array.from(this.cache.values())
+    return [...this.cache.values()]
   }
 
   /**

@@ -66,7 +66,7 @@ function splitFirstGrapheme(input: string): [string, string] {
   } catch {
     // ignore
   }
-  const arr = Array.from(input)
+  const arr = [...input]
   return [arr[0] ?? '', arr.slice(1).join('')]
 }
 
@@ -329,6 +329,7 @@ export function cloneDeep<T>(value: T, weakMap = new WeakMap()): T {
     return new (value.constructor as any)(value) as T
   }
   if (value instanceof ArrayBuffer) {
+    // eslint-disable-next-line unicorn/prefer-spread
     return value.slice(0) as T
   }
 

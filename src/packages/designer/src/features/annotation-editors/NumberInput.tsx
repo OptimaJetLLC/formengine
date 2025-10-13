@@ -30,7 +30,7 @@ const NumberInput = (props: AnnotationEditorProps) => {
   const {calculateEditorProps, ...editorProps} = annotation.editorProps ?? {}
   const inputNumberProps = {
     ...editorProps,
-    ...(calculateEditorProps?.(componentData) ?? {}),
+    ...calculateEditorProps?.(componentData),
     value: typeof value === 'number' ? value : null,
   }
   const closeButton = useMemo(() => <Close onClick={onClean} style={closeButtonStyle}/>, [onClean])

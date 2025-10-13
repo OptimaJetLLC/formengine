@@ -510,7 +510,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * @returns selected component if only one component is selected in the form builder, otherwise undefined.
    */
   get oneSelected() {
-    return this.selected.size === 1 ? Array.from(this.selected)[0] : undefined
+    return this.selected.size === 1 ? [...this.selected][0] : undefined
   }
 
   /**
@@ -761,7 +761,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   canMoveComponents(source: Set<ComponentData>, target: ComponentData, insertPosition: InsertPosition = 'after', slot?: string) {
     const parentComponent = insertPosition === 'inner' ? target : (target.parent ?? target.root)
 
-    const selectedComponents = Array.from(source)
+    const selectedComponents = [...source]
       .filter(component => component !== this.viewer.form.componentTree)
 
     if (selectedComponents.indexOf(parentComponent) >= 0) return false
@@ -1083,7 +1083,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   get orderedSelected() {
     return sortByPositionInTree(
       this.viewer.form.componentTree,
-      Array.from(this.selected.values())
+      [...this.selected.values()]
     )
   }
 
@@ -1131,7 +1131,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * Deletes the selected components from the component tree.
    */
   deleteSelectedComponents() {
-    const selectedComponents = Array.from(this.selected)
+    const selectedComponents = [...this.selected]
 
     if (selectedComponents.length <= 0) return
 
