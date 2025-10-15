@@ -30,8 +30,12 @@ function parse(validationRules: FormViewerValidationRules, schema?: BoundValueSc
 
   const rules = [...schema.validations].sort(byPriority)
   const toValidator = (rule: ValidationRuleSettings) => {
-    if (!rule.type) {
+    if (!rule.type || rule.type === 'internal') {
       const definition = validationRules.internal[rule.key]
+      if (!definition) {
+        console.warn(`Cannot find 'internal' rule, key: '${rule.key}'`)
+        return {settings: rule, validator: noOpValidator}
+      }
       const validator = definition.validatorFactory(rule.args ?? {})
       return {settings: rule, validator, params: definition.params}
     }
