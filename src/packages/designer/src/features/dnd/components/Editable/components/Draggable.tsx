@@ -1,4 +1,4 @@
-import {cx} from '@emotion/css'
+import {css, cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import type {ComponentData} from '@react-form-builder/core'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
@@ -18,32 +18,38 @@ const DraggableBody = styled.div`
   z-index: 7;
 `
 
-const SLabel = styled.label`
+const SDragPreview = styled(DragPreview)`
   padding: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 `
 
-const Container = styled.div`
-  position: relative;
+const ContainerLabel = styled.label`
+  position: absolute;
+  justify-self: center;
+  color: var(--rs-primary-300);
+  inset: 2px;
+  line-height: 13px;
+
+  .rs-theme-dark & {
+    color: var(--rs-primary-400);
+    opacity: 0.4;
+  }
+`
+
+const DefaultContainer = styled.div`
   display: flex;
   flex-direction: column;
-  transition: padding 200ms ease-in-out;
 
-  .containerLabel {
-    display: none;
-    position: absolute;
-    justify-self: center;
-    color: var(--rs-primary-300);
-    inset: 2px;
-    line-height: 13px;
-
-    .rs-theme-dark & {
-      color: var(--rs-primary-400);
-      opacity: 0.4;
-    }
+  .horizontal > & {
+    flex-direction: row;
   }
+`
+
+const containerStyle = css`
+  position: relative;
+  transition: padding 200ms ease-in-out;
 
   &.isDraggingCurrent {
     opacity: 0.4;
@@ -72,19 +78,11 @@ const Container = styled.div`
       .rs-theme-dark & {
         background-color: rgb(from var(--rs-primary-600) r g b/10%);
       }
-
-      & > .containerLabel {
-        display: initial;
-      }
     }
 
     .horizontal > &.isDragging.isContainer {
       padding: 10px 20px;
     }
-  }
-
-  .horizontal > & {
-    flex-direction: row;
   }
 `
 
@@ -137,20 +135,30 @@ const RawDraggable = ({children, isInner, className, isTree, ...props}: Draggabl
   const horizontal = !isTree && direction
   const [{isActive, isDragging: isDraggingCurrent}, dnd] = useDnd(isRoot)
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
-  const dragPreview = <DragPreview><SLabel>{key}</SLabel></DragPreview>
   const afterChildren = isDragging && !isRoot
   const beforeChildren = isDragging && !isRoot && !isInner
+  const showContainerHint = isContainer && isDragging && !isRoot && !isTree
+  const Container = isContainer ? model.component : DefaultContainer
 
   const clsName = useMemo(() => {
     const parentType = parent ? `parent-type-${parent?.model.type}` : ''
     const type = `type-${model.type}`
-    return cx(className, {isActive, isContainer, isRoot, isInner, isDragging, isDraggingCurrent, horizontal, isTree}, parentType, type)
+    return cx(containerStyle, className, {
+      isActive,
+      isContainer,
+      isRoot,
+      isInner,
+      isDragging,
+      isDraggingCurrent,
+      horizontal,
+      isTree
+    }, parentType, type)
   }, [className, horizontal, isActive, isContainer, isDragging, isDraggingCurrent, isInner, isRoot, isTree, model.type, parent])
 
   return <>
-    {isDraggingCurrent && dragPreview}
-    <Container ref={dnd} {...props} className={clsName}>
-      <label className={'containerLabel'}>{key}</label>
+    {isDraggingCurrent && <SDragPreview>{key}</SDragPreview>}
+    <Container ref={dnd} className={clsName} {...props}>
+      {showContainerHint && <ContainerLabel>{key}</ContainerLabel>}
       {!isTree && <DraggableBody/>}
       {beforeChildren && <DropZone/>}
       {children}

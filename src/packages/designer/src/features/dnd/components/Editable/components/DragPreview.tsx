@@ -19,7 +19,6 @@ const getDragPreview = () => document.getElementById('fb-drag-preview') || docum
 /**
  * The React component that displays a preview for the dragged item.
  * @param props the React component properties.
- * @param props.children the draggable component.
  * @returns the React element.
  */
-export const DragPreview = ({children}: ComponentProps<any>) => createPortal(<Container>{children}</Container>, getDragPreview())
+export const DragPreview = (props: ComponentProps<any>) => createPortal(<Container {...props}/>, getDragPreview())

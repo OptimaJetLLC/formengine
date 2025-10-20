@@ -11,6 +11,7 @@ import {
   slotModel,
   TemplateField,
   toArray,
+  useComponentData,
   useStore
 } from '@react-form-builder/core'
 import {useDragLayer} from 'react-dnd'
@@ -91,14 +92,16 @@ export function getBuilderChildren(builderStore: BuilderStore, componentData: Co
   return currentProps
 }
 
-const RawEditable = ({children, className}: WrapperProps) => {
+const RawEditable = ({children, className, ...props}: WrapperProps) => {
   const [{selected}, selectionHandlers, selectionClassName] = useSelection()
   const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
+  const {key} = useComponentData()
   const toolbars = selected && !isDragging && <Toolbar/>
+  const testId = `${key}-editable-wrapper`
 
   return (
     <ErrorBoundary>
-      <Draggable {...selectionHandlers} className={cx(selectionClassName, className)}>
+      <Draggable data-testid={testId} {...props} {...selectionHandlers} className={cx(selectionClassName, className)}>
         {children}
         {toolbars}
       </Draggable>

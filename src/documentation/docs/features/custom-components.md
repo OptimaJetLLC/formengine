@@ -669,6 +669,22 @@ const myContainer = define(MyContainer)
   })
 ```
 
+:::info
+
+To ensure proper behavior of the container in designer mode, the component must support refs. Wrap it with `React.forwardRef` (for React
+versions below 19) and attach the received ref to the outermost DOM element of the component.
+
+:::
+
+```tsx
+const MyContainer = forwardRef((props: ComponentProps, ref: ForwardedRef) => {
+  const {children, ...otherProps} = props
+  return <div {...otherProps} ref={ref}>
+    {children}
+  </div>
+})
+```
+
 ### Component role
 
 There are several components that play a special [role](/api-reference/@react-form-builder/core/type-aliases/ComponentRole) in the form. For

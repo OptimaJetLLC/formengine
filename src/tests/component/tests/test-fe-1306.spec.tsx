@@ -147,11 +147,8 @@ describe('FE-1306: After container clone inner components should have unique key
     if (!cloneBtn) throw new Error('Not Found: svg[data-testid="tree-clone-button"]')
     fireEvent.click(cloneBtn)
 
-    const target = await expandTreeNode(app, 'rsContainer3')
-    await waitFor(() => expect(target?.parentElement?.nextElementSibling).not.toBeNull())
-
-    if (!target.parentElement?.nextElementSibling) throw new Error('Not Found: target.parentElement?.nextElementSibling')
-    expect(target.parentElement.nextElementSibling.querySelector('label')).toHaveTextContent('rsLabel2')
+    await waitFor(async () => expect(await findByTestId('rsContainer3-editable-wrapper')).toBeInTheDocument())
+    await waitFor(async () => expect(await findByTestId('rsLabel2-editable-wrapper')).toBeInTheDocument())
   })
 
   it('Labels should be unique after container clone, preloaded form', async () => {
@@ -171,10 +168,7 @@ describe('FE-1306: After container clone inner components should have unique key
     if (!cloneBtn) throw new Error('Not Found: svg[data-testid="tree-clone-button"]')
     fireEvent.click(cloneBtn)
 
-    const target = await expandTreeNode(app, 'rsContainer3')
-    await waitFor(() => expect(target?.parentElement?.nextElementSibling).not.toBeNull())
-
-    if (!target.parentElement?.nextElementSibling) throw new Error('Not Found: target.parentElement?.nextElementSibling')
-    expect(target.parentElement.nextElementSibling.querySelector('label')).toHaveTextContent('rsLabel2')
+    await waitFor(async () => expect(await findByTestId('rsContainer3-editable-wrapper')).toBeInTheDocument())
+    await waitFor(async () => expect(await findByTestId('rsLabel2-editable-wrapper')).toBeInTheDocument())
   })
 })

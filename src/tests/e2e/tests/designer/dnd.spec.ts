@@ -12,7 +12,7 @@ test('can drop component', {
 
   await page.locator('div').filter({hasText: /^Calendar$/}).nth(1).hover()
   await page.mouse.down()
-  await page.locator('div').filter({hasText: /^Breadcrumb 1one\/two\/three$/}).locator('div').first().hover()
+  await page.locator('div').filter({hasText: /^one\/two\/three$/}).locator('div').first().hover()
   await page.mouse.up()
 
   await expect(page.locator('div').filter({hasText: /^rsCalendar1 \(RsCalendar\)$/})).toBeVisible()
