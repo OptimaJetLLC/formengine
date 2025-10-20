@@ -54,8 +54,7 @@
     "@emotion/react": "^11.14.0",
     "mobx": "^6.13.5",
     "mobx-react": "^9.2.0",
-    "react": ">=17.0.2 || ^18 || ^19",
-    "stylis-plugin-rtl": "^2.1.1"
+    "react": ">=17.0.2 || ^18 || ^19"
   },
   "browserslist": {
     "production": [

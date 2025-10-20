@@ -13,7 +13,7 @@ const Container = styled.div`
   flex: 1;
 
   .placement-left .rs-popover {
-    margin-left: -14px;
+    margin-inline-start: -14px;
   }
 `
 

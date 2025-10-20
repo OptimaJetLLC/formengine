@@ -24,11 +24,11 @@ const SNodeItem = styled.div`
   justify-content: start;
   flex-direction: row;
   padding-block: 8px;
-  padding-right: 8px;
+  padding-inline-end: 8px;
 
   label {
     opacity: 0.4;
-    margin-left: 6px;
+    margin-inline-start: 6px;
   }
 
   &.hovered {

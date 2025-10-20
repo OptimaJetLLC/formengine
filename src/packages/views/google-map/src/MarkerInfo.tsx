@@ -66,7 +66,7 @@ const InfoWindowContent = styled.div`
   flex-direction: column;
   width: max-content;
   border-collapse: collapse;
-  margin-left: -10px;
+  margin-inline-start: -10px;
 `
 
 const countrySpanStyle = {marginBottom: 10}

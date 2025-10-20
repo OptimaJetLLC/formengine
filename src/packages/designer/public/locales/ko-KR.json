@@ -728,6 +728,12 @@
       "hint": "구성 요소가 로드 상태인지 여부",
       "name": "로드 중"
     },
+    "marginInlineEnd": {
+      "name": "여백 오른쪽"
+    },
+    "marginInlineStart": {
+      "name": "여백 왼쪽"
+    },
     "mask": {
       "hint": "해당 위치에 대해 숫자 문자가 제공될 때까지 숫자 위치의 마스크 문자로 사용됩니다",
       "name": "마스크"

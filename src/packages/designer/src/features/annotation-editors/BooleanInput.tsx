@@ -14,8 +14,8 @@ export const SCheckbox = styled(Checkbox)`
     width: 100%;
 
     .rs-checkbox-checker {
-      padding-left: 0;
-      margin-left: -10px;
+      padding-inline-start: 0;
+      margin-inline-start: -10px;
     }
   }
 `

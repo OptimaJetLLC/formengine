@@ -7,7 +7,7 @@
 
 .optimajet-formbuilder, .optimajet-formviewer {
   .ql-tooltip.ql-editing {
-    left: auto !important;
+    inset-inline-start: auto !important;
     z-index: 10;
   }
 

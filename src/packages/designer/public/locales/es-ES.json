@@ -728,6 +728,12 @@
       "hint": "Si el componente está en estado de carga",
       "name": "Cargando"
     },
+    "marginInlineEnd": {
+      "name": "Margen Derecho"
+    },
+    "marginInlineStart": {
+      "name": "Margen Izquierdo"
+    },
     "mask": {
       "hint": "Se utiliza como carácter de máscara para lugares numéricos, hasta que se proporcione cualquier carácter numérico para esa posición",
       "name": "Máscara"

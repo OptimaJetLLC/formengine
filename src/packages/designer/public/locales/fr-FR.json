@@ -728,6 +728,12 @@
       "hint": "Indique si le composant est en état de chargement",
       "name": "Chargement"
     },
+    "marginInlineEnd": {
+      "name": "Marge Droite"
+    },
+    "marginInlineStart": {
+      "name": "Marge Gauche"
+    },
     "mask": {
       "hint": "Utilisé comme caractère de masque pour les emplacements numériques, jusqu'à ce qu'un caractère numérique soit fourni pour cette position",
       "name": "Masque"

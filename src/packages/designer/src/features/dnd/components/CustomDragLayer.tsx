@@ -8,7 +8,7 @@ const Layer = styled.div`
   position: fixed;
   pointer-events: none;
   z-index: 100;
-  left: 0;
+  inset-inline-start: 0;
   top: 0;
   width: 100%;
   height: 100%;
@@ -36,13 +36,13 @@ const Container = styled.div`
     }
 
     &::before {
-      left: 7px;
+      inset-inline-start: 7px;
       top: 5px;
       z-index: -1;
     }
 
     &::after {
-      left: 12px;
+      inset-inline-start: 12px;
       top: 10px;
       z-index: -2;
     }

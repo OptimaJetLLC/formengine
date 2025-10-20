@@ -14,7 +14,7 @@ import {PropertyBlockHeader} from '../ui/RightPanel/PropertiesEditor/components/
 const SCodeEditor = styled(CodeEditor)`
   .suggest-widget {
     width: 100% !important;
-    left: 0 !important;
+    inset-inline-start: 0 !important;
     overflow: hidden;
   }
 `

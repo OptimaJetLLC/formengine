@@ -38,7 +38,7 @@ const STextareaSizer = styled.div`
   button {
     position: absolute;
     top: 4px;
-    right: 14px;
+    inset-inline-end: 14px;
     color: var(--rs-text-secondary);
     width: 12px;
     height: 12px;

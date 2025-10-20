@@ -17,7 +17,7 @@ const InputRows = styled(Rows)`
 
 const SDiv = styled.div`
   display: flex;
-  margin-left: 4px;
+  margin-inline-start: 4px;
   margin-bottom: 4px;
   margin-top: 4px;
 `
@@ -41,7 +41,7 @@ const valueIsObject = (value: string): void => {
 const buttonStyle = {marginTop: 10} as const
 
 const sDivInlineStyle = {
-  marginLeft: 4,
+  marginInlineStart: 4,
   marginBottom: 4,
   marginTop: 4
 } as const

@@ -57,7 +57,7 @@ export const HideButton = styled.div`
   }
 
   &.bottom {
-    left: 50%;
+    inset-inline-start: 50%;
     width: 80px;
     height: 20px;
     justify-content: center;

@@ -20,7 +20,7 @@ const SLabel = styled.label<{ hinted?: boolean }>`
   `};
 
   &.required:after {
-    padding-left: 3px;
+    padding-inline-start: 3px;
     content: "*";
     color: red;
   }

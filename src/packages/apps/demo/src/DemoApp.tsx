@@ -96,7 +96,7 @@ const getPresetOptions = (): IPresetComponentOptions | undefined => {
 }
 
 const versionStyle = {
-  marginLeft: 10,
+  marginInlineStart: 10,
   color: 'var(--rs-text-secondary)',
 }
 

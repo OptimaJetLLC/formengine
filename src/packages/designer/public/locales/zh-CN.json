@@ -728,6 +728,12 @@
       "hint": "组件是否处于加载状态",
       "name": "装载量"
     },
+    "marginInlineEnd": {
+      "name": "保证金权利"
+    },
+    "marginInlineStart": {
+      "name": "左边空白"
+    },
     "mask": {
       "hint": "用作数字位置的掩码字符，直到为该位置提供任何数字字符为止",
       "name": "面具"

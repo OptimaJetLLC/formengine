@@ -9,7 +9,7 @@ const SHeader = styled.h6`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 28px;
+  margin-inline-start: 28px;
   gap: 10px;
 `
 

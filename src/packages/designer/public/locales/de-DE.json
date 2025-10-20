@@ -728,6 +728,12 @@
       "hint": "Ob sich die Komponente im Ladezustand befindet",
       "name": "Laden"
     },
+    "marginInlineEnd": {
+      "name": "Rand rechts"
+    },
+    "marginInlineStart": {
+      "name": "Rand links"
+    },
     "mask": {
       "hint": "Wird als Maskenzeichen für numerische Stellen verwendet, bis ein beliebiges numerisches Zeichen für diese Position bereitgestellt wird",
       "name": "Maske"

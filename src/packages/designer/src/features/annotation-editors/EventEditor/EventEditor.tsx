@@ -11,7 +11,7 @@ const SDiv = styled.div`
 `
 
 const SH6 = styled.h6`
-  margin-left: 10px;
+  margin-inline-start: 10px;
 `
 
 //EventEditor: one eventName - one editor - some actions

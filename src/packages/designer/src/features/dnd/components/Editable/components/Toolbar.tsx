@@ -18,7 +18,7 @@ import {PresetComponentButton} from './PresetComponentButton'
 
 const ToolbarContainer = styled.div`
   inset: initial;
-  right: 5px;
+  inset-inline-end: 5px;
   top: -13px;
 
   &.compact {

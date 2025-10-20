@@ -184,6 +184,12 @@
       "name": "Code",
       "hint": "Edit code"
     },
+    "marginInlineEnd": {
+      "name": "Margin Right"
+    },
+    "marginInlineStart": {
+      "name": "Margin Left"
+    },
     "flexDirection": {
       "name": "Direction",
       "hint": "Flex direction of container children"
