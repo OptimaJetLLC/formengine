@@ -237,6 +237,7 @@ const config: Config = {
         siteDescription: 'It contains detailed manuals, components, and utilities for creating user interfaces.',
         depth: 2,
         content: {
+          relativePaths: false,
           includeBlog: false,
           includePages: false,
           enableLlmsFullTxt: true,
