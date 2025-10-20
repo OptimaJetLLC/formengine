@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/core",
-  "description": "React hook form alternative.",
+  "description": "React JSON Schema Form Builder to create complex, validated, reusable forms with no deep React knowledge required",
   "version": "7.3.0",
   "license": "MIT",
   "private": false,
