@@ -74,7 +74,7 @@ describe('getValidationResult function test', () => {
 
     await waitFor(() => expect(formData.data.login).toEqual('t1'))
     const returnedErrors = await asyncAct(async () => await formData.getValidationResult())
-    const expectedErrors = {login: ['String must contain at least 3 character(s)', 'Should include 2']}
+    const expectedErrors = {login: ['Too small: expected string to have >=3 characters', 'Should include 2']}
     await waitFor(() => expect(returnedErrors).toStrictEqual(expectedErrors))
   })
 
@@ -169,8 +169,8 @@ describe('getValidationResult function test', () => {
 
     const returnedErrors = await asyncAct(async () => await formData.getValidationResult())
     expect(returnedErrors).toStrictEqual({
-      login: ['String must contain at least 3 character(s)', 'Should include 2'],
-      password: ['Validation failed: customPasswordValidator', 'another error']
+      login: ['Too small: expected string to have >=3 characters', 'Should include 2'],
+      password: [false, 'another error']
     })
     await waitFor(() => expect(formData.errors).toStrictEqual({}))
   })

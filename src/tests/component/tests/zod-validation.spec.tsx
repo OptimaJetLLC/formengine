@@ -98,7 +98,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     componentType: 'FakeInputComponent',
     skipInputValueCheck: true,
     validation: {key: 'required'},
-    expected: {zodInput: 'Expected string, received date'}
+    expected: {zodInput: 'Invalid input: expected string, received Date'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 'test1'},
@@ -114,7 +114,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'with empty string',
     initialData: {zodInput: ''},
     validation: {key: 'nonEmpty'},
-    expected: {zodInput: 'String must contain at least 1 character(s)'}
+    expected: {zodInput: 'Too small: expected string to have >=1 characters'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 'test2'},
@@ -130,7 +130,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'with empty string',
     initialData: {zodInput: ''},
     validation: {key: 'length', args: {length: 3}},
-    expected: {zodInput: 'String must contain exactly 3 character(s)'}
+    expected: {zodInput: 'Too small: expected string to have >=3 characters'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 't34'},
@@ -140,7 +140,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'incorrect filled data',
     initialData: {zodInput: 't344'},
     validation: {key: 'length', args: {length: 3}},
-    expected: {zodInput: 'String must contain exactly 3 character(s)'}
+    expected: {zodInput: 'Too big: expected string to have <=3 characters'}
   }],
 
   min: [{
@@ -151,7 +151,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'with empty string',
     initialData: {zodInput: ''},
     validation: {key: 'min', args: {limit: 3}},
-    expected: {zodInput: 'String must contain at least 3 character(s)'}
+    expected: {zodInput: 'Too small: expected string to have >=3 characters'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 'ttt'},
@@ -172,7 +172,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'filled data',
     initialData: {zodInput: 'tttt'},
     validation: {key: 'max', args: {limit: 3}},
-    expected: {zodInput: 'String must contain at most 3 character(s)'}
+    expected: {zodInput: 'Too big: expected string to have <=3 characters'}
   }],
 
   regex: [{
@@ -183,7 +183,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'with empty string',
     initialData: {zodInput: ''},
     validation: {key: 'regex', args: {regex: '1'}},
-    expected: {zodInput: 'Invalid'}
+    expected: {zodInput: 'Invalid string: must match pattern /1/'}
   }, {
     name: 'filled data',
     initialData: {zodInput: '1'},
@@ -199,7 +199,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'with empty string',
     initialData: {zodInput: ''},
     validation: {key: 'email'},
-    expected: {zodInput: 'Invalid email'}
+    expected: {zodInput: 'Invalid email address'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 'test@email.com'},
@@ -215,7 +215,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'with empty string',
     initialData: {zodInput: ''},
     validation: {key: 'url'},
-    expected: {zodInput: 'Invalid url'}
+    expected: {zodInput: 'Invalid URL'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 'http://duck.ai'},
@@ -231,7 +231,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'with empty string',
     initialData: {zodInput: ''},
     validation: {key: 'uuid'},
-    expected: {zodInput: 'Invalid uuid'}
+    expected: {zodInput: 'Invalid UUID'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 'da6db298-cec9-42a4-beba-002f4c208812'},
@@ -268,12 +268,12 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'with empty string',
     initialData: {zodInput: ''},
     validation: {key: 'datetime'},
-    expected: {zodInput: 'Invalid datetime'}
+    expected: {zodInput: 'Invalid ISO datetime'}
   }, {
     name: 'filled data date only',
     initialData: {zodInput: '2023-01-10'},
     validation: {key: 'datetime'},
-    expected: {zodInput: 'Invalid datetime'}
+    expected: {zodInput: 'Invalid ISO datetime'}
   }, {
     name: 'filled data',
     initialData: {zodInput: '2023-01-10T00:00:00.000Z'},
@@ -285,7 +285,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     skipInputValueCheck: true,
     initialData: {zodInput: new Date()},
     validation: {key: 'datetime'},
-    expected: {zodInput: 'Expected string, received date'}
+    expected: {zodInput: 'Invalid input: expected string, received Date'}
   }],
 
   includes: [{
@@ -296,7 +296,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'with empty string',
     initialData: {zodInput: ''},
     validation: {key: 'includes', args: {value: 'at'}},
-    expected: {zodInput: 'Invalid input: must include \"at\"'}
+    expected: {zodInput: 'Invalid string: must include \"at\"'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 'Cat'},
@@ -312,7 +312,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'with empty string',
     initialData: {zodInput: ''},
     validation: {key: 'startsWith', args: {value: 'do'}},
-    expected: {zodInput: 'Invalid input: must start with \"do\"'}
+    expected: {zodInput: 'Invalid string: must start with \"do\"'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 'dog'},
@@ -328,7 +328,7 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'with empty string',
     initialData: {zodInput: ''},
     validation: {key: 'endsWith', args: {value: 'er'}},
-    expected: {zodInput: 'Invalid input: must end with \"er\"'}
+    expected: {zodInput: 'Invalid string: must end with \"er\"'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 'summer'},
@@ -339,12 +339,12 @@ const stringValidators: Record<string, ValidatorTestParameters[]> = {
   code: [{
     name: 'empty data',
     validation: {key: 'code', args: {code: '  return value === \'ok\''}},
-    expected: {zodInput: 'Validation failed: code'}
+    expected: {zodInput: 'false'}
   }, {
     name: 'with empty string',
     initialData: {zodInput: ''},
     validation: {key: 'code', args: {code: '  return value === \'ok\''}},
-    expected: {zodInput: 'Validation failed: code'}
+    expected: {zodInput: 'false'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 'ok'},
@@ -370,7 +370,7 @@ const numberValidators: Record<string, ValidatorTestParameters[]> = {
     initialData: {zodInput: ''},
     componentType: 'RsNumberFormat',
     validation: {key: 'required'},
-    expected: {zodInput: 'Expected number, received string'}
+    expected: {zodInput: 'Invalid input: expected number, received string'}
   }],
 
   min: [{
@@ -383,7 +383,7 @@ const numberValidators: Record<string, ValidatorTestParameters[]> = {
     initialData: {zodInput: 3},
     componentType: 'RsNumberFormat',
     validation: {key: 'min', args: {limit: 7}},
-    expected: {zodInput: 'Number must be greater than or equal to 7'}
+    expected: {zodInput: 'Too small: expected number to be >=7'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 7},
@@ -402,7 +402,7 @@ const numberValidators: Record<string, ValidatorTestParameters[]> = {
     initialData: {zodInput: 8},
     componentType: 'RsNumberFormat',
     validation: {key: 'max', args: {limit: 7}},
-    expected: {zodInput: 'Number must be less than or equal to 7'}
+    expected: {zodInput: 'Too big: expected number to be <=7'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 7},
@@ -421,7 +421,7 @@ const numberValidators: Record<string, ValidatorTestParameters[]> = {
     initialData: {zodInput: 4},
     componentType: 'RsNumberFormat',
     validation: {key: 'lessThan', args: {value: 4}},
-    expected: {zodInput: 'Number must be less than 4'}
+    expected: {zodInput: 'Too big: expected number to be <4'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 3},
@@ -440,7 +440,7 @@ const numberValidators: Record<string, ValidatorTestParameters[]> = {
     initialData: {zodInput: 2},
     componentType: 'RsNumberFormat',
     validation: {key: 'moreThan', args: {value: 2}},
-    expected: {zodInput: 'Number must be greater than 2'}
+    expected: {zodInput: 'Too small: expected number to be >2'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 3},
@@ -459,7 +459,7 @@ const numberValidators: Record<string, ValidatorTestParameters[]> = {
     initialData: {zodInput: 1.2},
     componentType: 'RsNumberFormat',
     validation: {key: 'integer'},
-    expected: {zodInput: 'Expected integer, received float'}
+    expected: {zodInput: 'Invalid input: expected int, received number'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 6},
@@ -478,7 +478,7 @@ const numberValidators: Record<string, ValidatorTestParameters[]> = {
     initialData: {zodInput: 8},
     componentType: 'RsNumberFormat',
     validation: {key: 'multipleOf', args: {value: 3}},
-    expected: {zodInput: 'Number must be a multiple of 3'}
+    expected: {zodInput: 'Invalid number: must be a multiple of 3'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 3},
@@ -501,7 +501,7 @@ const numberValidators: Record<string, ValidatorTestParameters[]> = {
     skipDataCheck: true,
     componentType: 'RsNumberFormat',
     validation: {key: 'finite'},
-    expected: {zodInput: 'Number must be finite'}
+    expected: {zodInput: 'Invalid number: must be finite'}
   }, {
     name: 'filled with Number.NEGATIVE_INFINITY',
     initialData: {zodInput: Number.NEGATIVE_INFINITY},
@@ -511,7 +511,7 @@ const numberValidators: Record<string, ValidatorTestParameters[]> = {
     skipDataCheck: true,
     componentType: 'RsNumberFormat',
     validation: {key: 'finite'},
-    expected: {zodInput: 'Number must be finite'}
+    expected: {zodInput: 'Invalid number: must be finite'}
   }, {
     name: 'filled with Number.NaN',
     initialData: {zodInput: Number.NaN},
@@ -519,7 +519,7 @@ const numberValidators: Record<string, ValidatorTestParameters[]> = {
     skipInputValueCheck: true,
     componentType: 'RsNumberFormat',
     validation: {key: 'finite'},
-    expected: {zodInput: 'Expected number, received nan'}
+    expected: {zodInput: 'Invalid number: must be finite'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 3},
@@ -532,13 +532,13 @@ const numberValidators: Record<string, ValidatorTestParameters[]> = {
     name: 'empty data',
     componentType: 'RsNumberFormat',
     validation: {key: 'code', args: {code: '  return value === 24'}},
-    expected: {zodInput: 'Validation failed: code'}
+    expected: {zodInput: 'false'}
   }, {
     name: 'with wrong number',
     initialData: {zodInput: 3},
     componentType: 'RsNumberFormat',
     validation: {key: 'code', args: {code: '  return value === 24'}},
-    expected: {zodInput: 'Validation failed: code'}
+    expected: {zodInput: 'false'}
   }, {
     name: 'filled data',
     initialData: {zodInput: 24},
@@ -575,7 +575,7 @@ const booleanValidators: Record<string, ValidatorTestParameters[]> = {
     skipInputValueCheck: true,
     initialData: {zodInput: ''},
     validation: {key: 'required'},
-    expected: {zodInput: 'Expected boolean, received string'}
+    expected: {zodInput: 'Invalid input: expected boolean, received string'}
   }],
 
   truthy: [{
@@ -643,7 +643,7 @@ const dateValidators: Record<string, ValidatorTestParameters[]> = {
     componentType: 'FakeDateComponent',
     skipInputValueCheck: true,
     validation: {key: 'required'},
-    expected: {zodInput: 'Expected date, received string'}
+    expected: {zodInput: 'Invalid input: expected date, received string'}
   }],
 
   min: [{
@@ -658,7 +658,7 @@ const dateValidators: Record<string, ValidatorTestParameters[]> = {
     componentType: 'RsDatePicker',
     skipInputValueCheck: true,
     validation: {key: 'min', args: {value: '2024-08-29T14:53:27.294Z'}},
-    expected: {zodInput: `Date must be greater than or equal to ${new Date(Date.parse('2024-08-29T14:53:27.294Z'))}`}
+    expected: {zodInput: `Too small: expected date to be >=${new Date(Date.parse('2024-08-29T14:53:27.294Z'))}`}
   }, {
     name: 'filled data',
     initialData: {zodInput: new Date()},
@@ -680,7 +680,7 @@ const dateValidators: Record<string, ValidatorTestParameters[]> = {
     componentType: 'RsDatePicker',
     skipInputValueCheck: true,
     validation: {key: 'max', args: {value: '2054-08-29T14:53:27.294Z'}},
-    expected: {zodInput: `Date must be smaller than or equal to ${new Date(Date.parse('2054-08-29T14:53:27.294Z'))}`}
+    expected: {zodInput: `Too big: expected date to be <=${new Date(Date.parse('2054-08-29T14:53:27.294Z'))}`}
   }, {
     name: 'filled data',
     initialData: {zodInput: new Date()},
@@ -695,14 +695,14 @@ const dateValidators: Record<string, ValidatorTestParameters[]> = {
     componentType: 'RsDatePicker',
     skipInputValueCheck: true,
     validation: {key: 'code', args: {code: '  return value instanceof Date && value.getFullYear() === 2025'}},
-    expected: {zodInput: 'Validation failed: code'}
+    expected: {zodInput: 'false'}
   }, {
     name: 'with wrong date',
     initialData: {zodInput: new Date(Date.parse('2043-08-29T14:53:27.294Z'))},
     componentType: 'RsDatePicker',
     skipInputValueCheck: true,
     validation: {key: 'code', args: {code: '  return value instanceof Date && value.getFullYear() === 2025'}},
-    expected: {zodInput: 'Validation failed: code'}
+    expected: {zodInput: 'false'}
   }, {
     name: 'filled data',
     initialData: {zodInput: new Date(Date.parse('2025-03-29T14:53:27.294Z'))},
@@ -733,7 +733,7 @@ const timeValidators: Record<string, ValidatorTestParameters[]> = {
     componentType: 'RsTimePicker',
     skipInputValueCheck: true,
     validation: {key: 'required'},
-    expected: {zodInput: 'Expected string, received date'}
+    expected: {zodInput: 'Invalid input: expected string, received Date'}
   }],
 }
 
@@ -842,7 +842,7 @@ const arrayValidators: Record<string, ValidatorTestParameters[]> = {
     componentType: 'FakeArrayComponent',
     skipInputValueCheck: true,
     validation: {key: 'required'},
-    expected: {zodInput: 'Expected array, received symbol'}
+    expected: {zodInput: 'Invalid input: expected array, received symbol'}
   }],
 
   nonEmpty: [{
@@ -857,7 +857,7 @@ const arrayValidators: Record<string, ValidatorTestParameters[]> = {
     componentType: 'FakeArrayComponent',
     skipInputValueCheck: true,
     validation: {key: 'nonEmpty'},
-    expected: {zodInput: 'Array must contain at least 1 element(s)'}
+    expected: {zodInput: 'Too small: expected array to have >=1 items'}
   }, {
     name: 'filled data',
     initialData: {zodInput: [4, 5, 6]},
@@ -879,7 +879,7 @@ const arrayValidators: Record<string, ValidatorTestParameters[]> = {
     componentType: 'FakeArrayComponent',
     skipInputValueCheck: true,
     validation: {key: 'nonEmpty'},
-    expected: {zodInput: 'Expected array, received symbol'}
+    expected: {zodInput: 'Invalid input: expected array, received symbol'}
   }],
 
   length: [{
@@ -894,7 +894,7 @@ const arrayValidators: Record<string, ValidatorTestParameters[]> = {
     componentType: 'FakeArrayComponent',
     skipInputValueCheck: true,
     validation: {key: 'length', args: {length: 2}},
-    expected: {zodInput: 'Array must contain exactly 2 element(s)'}
+    expected: {zodInput: 'Too small: expected array to have >=2 items'}
   }, {
     name: 'filled data',
     initialData: {zodInput: ['a', 'b']},
@@ -916,7 +916,7 @@ const arrayValidators: Record<string, ValidatorTestParameters[]> = {
     componentType: 'FakeArrayComponent',
     skipInputValueCheck: true,
     validation: {key: 'min', args: {limit: 1}},
-    expected: {zodInput: 'Array must contain at least 1 element(s)'}
+    expected: {zodInput: 'Too small: expected array to have >=1 items'}
   }, {
     name: 'filled data',
     initialData: {zodInput: [{}, {}]},
@@ -945,7 +945,7 @@ const arrayValidators: Record<string, ValidatorTestParameters[]> = {
     componentType: 'FakeArrayComponent',
     skipInputValueCheck: true,
     validation: {key: 'max', args: {limit: 3}},
-    expected: {zodInput: 'Array must contain at most 3 element(s)'}
+    expected: {zodInput: 'Too big: expected array to have <=3 items'}
   }],
 }
 

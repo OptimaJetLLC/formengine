@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@fluent/bundle": "^0.18.0",
-    "zod": "^3.22.4"
+    "zod": "^4.0.0"
   },
   "peerDependencies": {
     "@emotion/cache": "^11.14.0",

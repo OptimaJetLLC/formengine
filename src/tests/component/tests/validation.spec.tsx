@@ -81,7 +81,7 @@ describe('Validation', () => {
 
     await waitFor(() => expect(formData.data.login).toEqual('t1'), {timeout: 5000})
     const returnedErrors = await asyncAct(async () => await formData.validate())
-    const expectedErrors = JSON.stringify({login: 'String must contain at least 3 character(s)'})
+    const expectedErrors = JSON.stringify({login: 'Too small: expected string to have >=3 characters'})
     await waitFor(() => expect(JSON.stringify(returnedErrors)).toEqual(expectedErrors))
     expect(JSON.stringify(formData.errors)).toEqual(expectedErrors)
   })
@@ -92,7 +92,7 @@ describe('Validation', () => {
 
     await waitFor(() => expect(formData.data.login).toEqual('t1'))
     const returnedErrors = await asyncAct(async () => await formData.validate())
-    const expectedErrors = JSON.stringify({login: 'String must contain at least 3 character(s) Should include 2'})
+    const expectedErrors = JSON.stringify({login: 'Too small: expected string to have >=3 characters Should include 2'})
     await waitFor(() => expect(JSON.stringify(returnedErrors)).toEqual(expectedErrors))
     expect(JSON.stringify(formData.errors)).toEqual(expectedErrors)
   })

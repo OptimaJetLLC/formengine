@@ -22,13 +22,13 @@ The annotations for generic CSS properties of a component.
 
 > **marginBottom**: [`AnnotationBuilder`](../classes/AnnotationBuilder.md)\<`unknown`\> = `cssSize`
 
-### marginLeft
+### marginInlineEnd
 
-> **marginLeft**: [`AnnotationBuilder`](../classes/AnnotationBuilder.md)\<`unknown`\> = `cssSize`
+> **marginInlineEnd**: [`AnnotationBuilder`](../classes/AnnotationBuilder.md)\<`unknown`\> = `cssSize`
 
-### marginRight
+### marginInlineStart
 
-> **marginRight**: [`AnnotationBuilder`](../classes/AnnotationBuilder.md)\<`unknown`\> = `cssSize`
+> **marginInlineStart**: [`AnnotationBuilder`](../classes/AnnotationBuilder.md)\<`unknown`\> = `cssSize`
 
 ### marginTop
 

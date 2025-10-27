@@ -1615,6 +1615,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/DefaultWrapper",
+              label: "DefaultWrapper"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/variables/define",
               label: "define"
             },
@@ -1878,11 +1883,6 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/functions/debounce",
               label: "debounce"
-            },
-            {
-              type: "doc",
-              id: "api-reference/@react-form-builder/core/functions/DefaultWrapper",
-              label: "DefaultWrapper"
             },
             {
               type: "doc",

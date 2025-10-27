@@ -907,7 +907,7 @@ CSS class prefix for component styling customization
 
 ### contentEditable?
 
-> `optional` **contentEditable**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
+> `optional` **contentEditable**: `"inherit"` \| `Booleanish` \| `"plaintext-only"`
 
 #### Inherited from
 
