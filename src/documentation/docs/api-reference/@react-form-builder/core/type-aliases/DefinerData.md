@@ -46,9 +46,11 @@ The CSS metadata.
 
 ***
 
-### customPreview?
+### ~~customPreview?~~
 
 > `optional` **customPreview**: `ReactNode`
+
+#### Deprecated
 
 The custom component to display in the component list (unused).
 

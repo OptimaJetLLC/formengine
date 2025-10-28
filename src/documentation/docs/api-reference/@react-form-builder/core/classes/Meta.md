@@ -92,11 +92,13 @@ the component's CSS metadata.
 
 ***
 
-### customPreview?
+### ~~customPreview?~~
 
 > `readonly` `optional` **customPreview**: `ReactNode`
 
-the custom ReactNode to be drawn on the toolbar.
+#### Deprecated
+
+The custom ReactNode to be drawn on the toolbar.
 
 ***
 

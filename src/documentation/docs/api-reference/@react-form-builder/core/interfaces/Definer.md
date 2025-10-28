@@ -400,11 +400,9 @@ the modified instance of the builder.
 
 ***
 
-### preview()
+### ~~preview()~~
 
 > **preview**(`customPreview`): `Definer`\<`T`\>
-
-Adds the custom component to be displayed in the component list. **Internal use only.**
 
 #### Parameters
 
@@ -419,6 +417,10 @@ the custom component.
 `Definer`\<`T`\>
 
 the modified Definer class instance.
+
+#### Deprecated
+
+Adds the custom component to be displayed in the component list. **Internal use only.**
 
 ***
 
