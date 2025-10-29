@@ -1,6 +1,13 @@
 import styled from '@emotion/styled'
 import type {IFormData} from '@react-form-builder/core'
-import {getFluentCompatibleId, getFluentData, namedObserver, testFluentLocalization} from '@react-form-builder/core'
+import {
+  getEditableFormData,
+  getFluentCompatibleId,
+  getFluentData,
+  namedObserver,
+  testFluentLocalization,
+  useStore
+} from '@react-form-builder/core'
 import {action} from 'mobx'
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import {Button, ButtonGroup} from 'rsuite'
@@ -28,6 +35,10 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
   const localizationStringId = getFluentCompatibleId(`${editableProperty.componentKey}_${editableProperty.annotation.key}`)
   const builderStore = useBuilderStore()
   const testingEditor = useRef<TestingEditorRef>({})
+  const {formData} = useStore()
+  const initialData = useMemo(() => {
+    return getEditableFormData(formData)
+  }, [formData])
 
   const [language, setLanguage] = useState(builderStore.localizationLanguage)
   const initialValue = useMemo(() => {
@@ -71,7 +82,7 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
         <LocalizationPicker value={language.fullCode} onSelect={setLanguage}/>
       </SDiv>
     </Rows>
-    <TestingEditor testingFunction={testingFunction} ref={testingEditor}/>
+    <TestingEditor initialData={initialData} testingFunction={testingFunction} ref={testingEditor}/>
   </Columns>
 }
 

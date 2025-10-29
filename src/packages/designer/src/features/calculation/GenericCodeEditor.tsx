@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import type {BaseCompilationResult, IFormData} from '@react-form-builder/core'
+import {useStore} from '@react-form-builder/core'
 import {action} from 'mobx'
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import {useTranslation} from 'react-i18next'
@@ -75,6 +76,7 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
   const [sourceCode, setSourceCode] = useState(propsSourceCode)
   const [initialValue, setInitialValue] = useState(propsSourceCode)
   const testingEditor = useRef<TestingEditorRef>({})
+  const {formData} = useStore()
 
   const handleSave = useCallback(() => {
     const result = testingEditor.current.test?.()
@@ -104,6 +106,6 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
         {props.compact && <TestRunner testingFunction={testingFunction} ref={testingEditor} compact/>}
       </SDiv>
     </Rows>
-    {!props.compact && <TestingEditor testingFunction={testingFunction} ref={testingEditor}/>}
+    {!props.compact && <TestingEditor initialData={formData} testingFunction={testingFunction} ref={testingEditor}/>}
   </Columns>
 }

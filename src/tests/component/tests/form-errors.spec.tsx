@@ -7,7 +7,7 @@ import {asyncAct} from './asyncAct'
 import sameDataKeyForm from './forms/form-errors-prop/same-data-key-form.json'
 import template from './forms/form-errors-prop/template.json'
 import testForm from './forms/form-errors-prop/test-form.json'
-import '../config/toAllHaveLocaleTextContent'
+import '../config/localeTextContent'
 
 const forms: Record<string, object> = {testForm, template}
 const externalErrors = {

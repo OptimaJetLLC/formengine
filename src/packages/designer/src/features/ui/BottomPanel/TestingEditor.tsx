@@ -2,8 +2,8 @@ import {css} from '@emotion/react'
 import styled from '@emotion/styled'
 import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faPlay from '@fortawesome/free-solid-svg-icons/faPlay.js'
-import type {ComponentData, IFormData} from '@react-form-builder/core'
-import {CalculableResult, forwardRef, initFormFields, isUndefined, namedObserver, useStore} from '@react-form-builder/core'
+import type {IFormData} from '@react-form-builder/core'
+import {CalculableResult, forwardRef, isUndefined, namedObserver} from '@react-form-builder/core'
 import type {editor} from 'monaco-editor'
 import type {RefObject} from 'react'
 import {useCallback, useEffect, useMemo, useState} from 'react'
@@ -75,8 +75,8 @@ const stringify = (data: any) => {
   return JSON.stringify(prepareForJson(data, {previewNativeObjects: true}), null, 2)
 }
 
-const init = (data: ComponentData) => {
-  return stringify({data: initFormFields(data), errors: {}})
+const init = (data: Record<string, any>) => {
+  return stringify({data, errors: {}})
 }
 
 const ResultMessage = ({result}: { result: CalculableResult }) => {
@@ -139,7 +139,7 @@ export type TestingEditorRef = {
   test?: () => CalculableResult
 }
 type TestingFunction = (data: IFormData) => CalculableResult
-type TestingEditorProps = { testingFunction: TestingFunction }
+type TestingEditorProps = { testingFunction: TestingFunction, initialData: Record<string, any> }
 type TestRunnerProps = { data?: string, testingFunction: TestingFunction, compact?: boolean }
 
 const buttonStyle = {display: 'flex', gap: 10} as const
@@ -210,12 +210,11 @@ const rowsStyle2 = {flex: 1, minHeight: 100, minWidth: 0, alignItems: 'start', p
 const spanStyle = {marginTop: -40, paddingBlock: 7, opacity: 0.6} as const
 const divStyle2 = {flex: 1, minHeight: 20, width: '100%'} as const
 
-const RawTestingEditor = forwardRef(({testingFunction}: TestingEditorProps, ref) => {
+const RawTestingEditor = forwardRef(({testingFunction, initialData}: TestingEditorProps, ref) => {
   const t = useTranslationPart('testingEditor')
   const builderStore = useBuilderStore()
-  const {formData} = useStore()
-  const [data, setData] = useState(builderStore.testingData ?? init(formData))
-  const [initialData] = useState(data)
+  const [data, setData] = useState(builderStore.testingData ?? init(initialData))
+  const [editorInitialData] = useState(data)
 
   useEffect(() => () => {
     builderStore.testingData = data
@@ -225,7 +224,7 @@ const RawTestingEditor = forwardRef(({testingFunction}: TestingEditorProps, ref)
     <Rows style={rowsStyle2}>
       <span style={spanStyle}>{t('testFormData')}</span>
       <div style={divStyle2}>
-        <CodeEditor language="json" initialValue={initialData} onChange={setData} options={editorOptions}/>
+        <CodeEditor language="json" initialValue={editorInitialData} onChange={setData} options={editorOptions}/>
       </div>
       <TestRunner data={data} testingFunction={testingFunction} ref={ref}/>
     </Rows>

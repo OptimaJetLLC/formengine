@@ -4,12 +4,20 @@ import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-comp
 import {render, RenderResult} from '@testing-library/react'
 import {expect} from 'vitest'
 import {default as formJson} from './forms/localization-viewer.json'
+import '../config/localeTextContent'
 
 const enUS = 'en-US'
 const deDE = 'de-DE'
 
+const initialData = {
+  someData: 'foobar'
+}
+
 const contentEN = formJson.localization[enUS].rsStaticContent1.component.content
 const contentDE = formJson.localization[deDE].rsStaticContent1.component.content
+
+const expectedEN = contentEN.replaceAll('{$someData}', initialData.someData)
+const expectedDE = contentDE.replaceAll('{$someData}', initialData.someData)
 
 const getForm = () => JSON.stringify(formJson)
 
@@ -24,8 +32,9 @@ const viewerView = createView(allComponentsViewer)
   .withCssLoader('common', formEngineRsuiteCssLoader)
 
 const Viewer = ({language}: { language?: LanguageFullCode }) => {
-  return <FormViewer view={viewerView} getForm={getForm} language={language}/>
+  return <FormViewer view={viewerView} getForm={getForm} language={language} initialData={initialData}/>
 }
+
 Viewer.displayName = 'Viewer'
 
 describe('Viewer localization test', function () {
@@ -35,7 +44,8 @@ describe('Viewer localization test', function () {
     await viewerReady(app)
 
     const content = await app.findByTestId('staticContent')
-    expect(content).toHaveTextContent(contentEN)
+
+    expect(content).toHaveLocaleTextContent(expectedEN)
   })
 
   it('should apply change language on the fly', async () => {
@@ -44,11 +54,12 @@ describe('Viewer localization test', function () {
     await viewerReady(app)
 
     let content = await app.findByTestId('staticContent')
-    expect(content).toHaveTextContent(contentEN)
+    expect(content).toHaveLocaleTextContent(expectedEN)
 
     app.rerender(<Viewer language={deDE}/>)
 
     content = await app.findByTestId('staticContent')
-    expect(content).toHaveTextContent(contentDE)
+
+    expect(content).toHaveLocaleTextContent(expectedDE)
   })
 })

@@ -32,21 +32,21 @@
     "en-US": {
       "rsStaticContent1": {
         "component": {
-          "content": "Enter your text here"
+          "content": "Enter your text here {$someData}"
         }
       }
     },
     "de-DE": {
       "rsStaticContent1": {
         "component": {
-          "content": "Geben Sie hier Ihren Text ein"
+          "content": "Geben Sie hier Ihren Text ein {$someData}"
         }
       }
     },
     "ar-EG": {
       "rsStaticContent1": {
         "component": {
-          "content": "أدخل النص هنا"
+          "content": "أدخل النص هنا {$someData}"
         }
       }
     }

@@ -1931,6 +1931,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/getEditableFormData",
+              label: "getEditableFormData"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/getFluentCompatibleId",
               label: "getFluentCompatibleId"
             },
@@ -1953,11 +1958,6 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/functions/groupBy",
               label: "groupBy"
-            },
-            {
-              type: "doc",
-              id: "api-reference/@react-form-builder/core/functions/initFormFields",
-              label: "initFormFields"
             },
             {
               type: "doc",

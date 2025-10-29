@@ -1,6 +1,6 @@
-# Function: initFormFields()
+# Function: getEditableFormData()
 
-> **initFormFields**(`form`): `Record`\<`string`, `unknown`\>
+> **getEditableFormData**(`form`): `Record`\<`string`, `unknown`\>
 
 Replaces empty form fields with an empty string. **Internal use only.**
 

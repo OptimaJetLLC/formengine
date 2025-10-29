@@ -21,7 +21,7 @@ import {selectDropDownOption} from '../util/controls'
 import {eachComponentStore} from './eachComponentStore'
 import actionsBookingForm from './forms/actions-booking-form.json'
 import bookingForm from './forms/booking-form.json'
-import '../config/toAllHaveLocaleTextContent'
+import '../config/localeTextContent'
 import '../config/toHaveExactValues'
 import '../config/toAllSelectsHaveValues'
 
