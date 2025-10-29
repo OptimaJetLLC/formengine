@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import {isUndefined, namedObserver, SuppressResizeObserverErrors} from '@react-form-builder/core'
+import {isUndefined, namedObserver, SuppressResizeObserverErrors, useMobxConfig} from '@react-form-builder/core'
 import type {ComponentProps, ReactNode} from 'react'
 import {Suspense, useEffect} from 'react'
 import {Loader} from 'rsuite'
@@ -91,9 +91,15 @@ const FormBuilderView = customizableObserver('MainContainer', RawFormBuilderView
  * @param props the React component properties.
  * @returns the React element.
  */
-const RawFormBuilder = (props: FormBuilderProps) =>
-  <BuilderProviders props={props}>
-    <FormBuilderView/>
-  </BuilderProviders>
+const RawFormBuilder = (props: FormBuilderProps) => {
+  useMobxConfig()
+
+  return (
+    <BuilderProviders props={props}>
+      <FormBuilderView/>
+    </BuilderProviders>
+  )
+}
+
 
 export const FormBuilder = namedObserver('FormBuilder', RawFormBuilder)

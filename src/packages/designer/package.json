@@ -28,7 +28,7 @@
   "bugs": {
     "email": "support@optimajet.com"
   },
-  "sideEffects": true,
+  "sideEffects": false,
   "scripts": {
     "build": "vite build",
     "clean": "rimraf dist temp",

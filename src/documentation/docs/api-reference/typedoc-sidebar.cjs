@@ -2156,6 +2156,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/useMobxConfig",
+              label: "useMobxConfig"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/useModalComponentData",
               label: "useModalComponentData"
             },
