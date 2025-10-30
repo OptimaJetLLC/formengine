@@ -315,6 +315,7 @@
 - [useBuilderComponent](functions/useBuilderComponent.md)
 - [useBuilderValue](functions/useBuilderValue.md)
 - [useDisposable](functions/useDisposable.md)
+- [useErrorMessage](functions/useErrorMessage.md)
 - [useErrorModel](functions/useErrorModel.md)
 - [useMobxConfig](functions/useMobxConfig.md)
 - [useModalComponentData](functions/useModalComponentData.md)

@@ -2151,6 +2151,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/useErrorMessage",
+              label: "useErrorMessage"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/useErrorModel",
               label: "useErrorModel"
             },
