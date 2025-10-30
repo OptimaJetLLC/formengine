@@ -456,14 +456,12 @@ From the code above, you can see that:
 
 By default, FormEngine [wraps](/component-styling#structure) each component in an
 external [error wrapper](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#errorwrapper), responsible for displaying
-validation messages.  
-If you want the error to appear inside the component itself rather than outside, you can disable this mechanism and implement your own error
-display.
+validation messages. If you want the error to appear inside the component itself rather than outside, you can disable this mechanism and
+implement your own error display.
 
 1. To remove the external wrapper, provide a custom `errorWrapper` that simply renders nothing.
 2. Inside a custom component, FormEngine provides the [useErrorMessage](/api-reference/@react-form-builder/core/functions/useErrorMessage)
-   hook. It returns the error message associated with the current
-   field.
+   hook. It returns the error message associated with the current field.
 
 Example:
 
