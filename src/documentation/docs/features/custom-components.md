@@ -452,6 +452,63 @@ From the code above, you can see that:
 3. We described the component by adding the `value` property as a string containing a value and having the default value of an empty string
    (this is to prevent React from writing errors about uncontrolled value to the console).
 
+### Displaying errors inside a custom component
+
+By default, FormEngine [wraps](/component-styling#structure) each component in an
+external [error wrapper](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#errorwrapper), responsible for displaying
+validation messages.  
+If you want the error to appear inside the component itself rather than outside, you can disable this mechanism and implement your own error
+display.
+
+1. To remove the external wrapper, provide a custom `errorWrapper` that simply renders nothing.
+2. Inside a custom component, FormEngine provides the [useErrorMessage](/api-reference/@react-form-builder/core/functions/useErrorMessage)
+   hook. It returns the error message associated with the current
+   field.
+
+Example:
+
+```tsx
+import {define, string, useErrorMessage} from '@react-form-builder/core'
+import {BuilderView, FormBuilder} from '@react-form-builder/designer'
+import type {ChangeEvent, InputHTMLAttributes, LabelHTMLAttributes} from 'react'
+import {useCallback} from 'react'
+
+type MyInputProps = InputHTMLAttributes<HTMLInputElement> & {
+  onChange?: (value: string) => void
+}
+
+const MyInput = ({onChange, ...otherProps}: MyInputProps) => {
+// highlight-next-line
+  const error = useErrorMessage()
+
+  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    onChange?.(event.target.value)
+  }, [onChange])
+
+  return <div>
+    <input onChange={handleChange} {...otherProps}/>
+    {error && <div style={{color: 'red'}}>{error}</div>}
+  </div>
+}
+
+const myInput = define(MyInput, 'MyInput')
+  .props({
+    value: string.valued
+  })
+
+const builderView = new BuilderView([myInput.build()])
+// highlight-next-line
+const NoErrorWrapper = (props: ErrorWrapperProps) => <div {...props}/>
+
+function App() {
+  return <FormBuilder view={builderView} errorWrapper={NoErrorWrapper}/>
+}
+```
+
+Now MyCustomInput manages its own error display, and the external `errorWrapper` does not interfere:
+
+![Displaying errors inside a custom component](/assets/custom-components/custom-components-11.png)
+
 ### Override event handlers
 
 An alternative way is to [define event handlers](/api-reference/@react-form-builder/core/interfaces/Definer#overrideeventhandlers) in the
