@@ -471,29 +471,33 @@ Example:
 import {define, string, useErrorMessage} from '@react-form-builder/core'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import type {ChangeEvent, InputHTMLAttributes, LabelHTMLAttributes} from 'react'
-import {useCallback} from 'react'
+import {useCallback, useMemo} from 'react'
 
 type MyInputProps = InputHTMLAttributes<HTMLInputElement> & {
   onChange?: (value: string) => void
 }
 
-const MyInput = ({onChange, ...otherProps}: MyInputProps) => {
+const MyInput = ({onChange, ...props}: MyInputProps) => {
 // highlight-next-line
   const error = useErrorMessage()
+
+  const style = useMemo(() => {
+    return error ? {color: 'red'} : undefined
+  }, [error])
 
   const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     onChange?.(event.target.value)
   }, [onChange])
 
-  return <div>
-    <input onChange={handleChange} {...otherProps}/>
-    {error && <div style={{color: 'red'}}>{error}</div>}
+  return <div style={style}>
+    <input onChange={handleChange} {...props}/>
+    {!!error && <div>{error}</div>}
   </div>
 }
 
 const myInput = define(MyInput, 'MyInput')
   .props({
-    value: string.valued
+    value: string.valued.uncontrolledValue('')
   })
 
 const builderView = new BuilderView([myInput.build()])
@@ -505,7 +509,7 @@ function App() {
 }
 ```
 
-Now MyCustomInput manages its own error display, and the external `errorWrapper` does not interfere:
+Now `MyInput` manages its own error display, and the external `errorWrapper` does not interfere:
 
 ![Displaying errors inside a custom component](/assets/custom-components/custom-components-11.png)
 
