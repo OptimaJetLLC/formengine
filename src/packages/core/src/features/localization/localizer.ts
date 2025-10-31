@@ -1,6 +1,6 @@
 import {FluentBundle, FluentResource} from '@fluent/bundle'
 import type {Pattern} from '@fluent/bundle/esm/ast'
-import type {FluentVariable} from '@fluent/bundle/esm/bundle'
+import type {FluentVariable} from '@fluent/bundle'
 import type {ComponentStore} from '../../stores/ComponentStore'
 import {isLocalizedProperty} from '../../stores/ComponentStore'
 import type {Form} from '../../stores/Form'
