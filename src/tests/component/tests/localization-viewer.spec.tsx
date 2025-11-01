@@ -4,7 +4,6 @@ import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-comp
 import {render, RenderResult} from '@testing-library/react'
 import {expect} from 'vitest'
 import {default as formJson} from './forms/localization-viewer.json'
-import '../config/localeTextContent'
 
 const enUS = 'en-US'
 const deDE = 'de-DE'
@@ -45,7 +44,7 @@ describe('Viewer localization test', function () {
 
     const content = await app.findByTestId('staticContent')
 
-    expect(content).toHaveLocaleTextContent(expectedEN)
+    expect(content).toHaveTextContent(expectedEN)
   })
 
   it('should apply change language on the fly', async () => {
@@ -54,12 +53,12 @@ describe('Viewer localization test', function () {
     await viewerReady(app)
 
     let content = await app.findByTestId('staticContent')
-    expect(content).toHaveLocaleTextContent(expectedEN)
+    expect(content).toHaveTextContent(expectedEN)
 
     app.rerender(<Viewer language={deDE}/>)
 
     content = await app.findByTestId('staticContent')
 
-    expect(content).toHaveLocaleTextContent(expectedDE)
+    expect(content).toHaveTextContent(expectedDE)
   })
 })

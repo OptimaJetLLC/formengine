@@ -8,31 +8,30 @@ import loginForm from './forms/login-form.json'
 import validationLocalizationChildForm from './forms/validation-localization-child-form.json'
 import validationLocalizationParentForm from './forms/validation-localization-parent-form.json'
 
-// The localizer adds Unicode characters (FSI, PDI)
 const enErrors = {
   'child': {
-    'input': 'Input is invalid ⁨bad⁩',
-    'checkbox': 'Checkbox is invalid ⁨true⁩',
-    'date': 'Date is invalid ⁨true⁩ ⁨bad⁩'
+    'input': 'Input is invalid bad',
+    'checkbox': 'Checkbox is invalid true',
+    'date': 'Date is invalid true bad'
   },
   'repeater': [
     {
-      'justInput': 'Min 10 ⁨good#0⁩',
-      'input': 'Input is invalid ⁨bad⁩',
-      'checkbox': 'Checkbox is invalid ⁨true⁩',
-      'date': 'Date is invalid ⁨true⁩ ⁨bad⁩'
+      'justInput': 'Min 10 good#0',
+      'input': 'Input is invalid bad',
+      'checkbox': 'Checkbox is invalid true',
+      'date': 'Date is invalid true bad'
     },
     {
-      'justInput': 'Min 10 ⁨good#1⁩',
-      'input': 'Input is invalid ⁨bad⁩',
-      'checkbox': 'Checkbox is invalid ⁨true⁩',
-      'date': 'Date is invalid ⁨true⁩ ⁨bad⁩'
+      'justInput': 'Min 10 good#1',
+      'input': 'Input is invalid bad',
+      'checkbox': 'Checkbox is invalid true',
+      'date': 'Date is invalid true bad'
     },
     {
-      'justInput': 'Min 10 ⁨good#2⁩',
-      'input': 'Input is invalid ⁨bad⁩',
-      'checkbox': 'Checkbox is invalid ⁨true⁩',
-      'date': 'Date is invalid ⁨true⁩ ⁨bad⁩'
+      'justInput': 'Min 10 good#2',
+      'input': 'Input is invalid bad',
+      'checkbox': 'Checkbox is invalid true',
+      'date': 'Date is invalid true bad'
     }
   ]
 }
@@ -40,28 +39,28 @@ const enErrors = {
 // The localizer adds Unicode characters (FSI, PDI)
 const deErrors = {
   'child': {
-    'input': 'Eingabe ist ungültig ⁨bad⁩',
-    'checkbox': 'Kontrollkästchen ist ungültig ⁨true⁩',
-    'date': 'Das Datum ist ungültig ⁨true⁩ ⁨bad⁩'
+    'input': 'Eingabe ist ungültig bad',
+    'checkbox': 'Kontrollkästchen ist ungültig true',
+    'date': 'Das Datum ist ungültig true bad'
   },
   'repeater': [
     {
-      'justInput': 'DE Min 10 ⁨good#0⁩',
-      'input': 'Eingabe ist ungültig ⁨bad⁩',
-      'checkbox': 'Kontrollkästchen ist ungültig ⁨true⁩',
-      'date': 'Das Datum ist ungültig ⁨true⁩ ⁨bad⁩'
+      'justInput': 'DE Min 10 good#0',
+      'input': 'Eingabe ist ungültig bad',
+      'checkbox': 'Kontrollkästchen ist ungültig true',
+      'date': 'Das Datum ist ungültig true bad'
     },
     {
-      'justInput': 'DE Min 10 ⁨good#1⁩',
-      'input': 'Eingabe ist ungültig ⁨bad⁩',
-      'checkbox': 'Kontrollkästchen ist ungültig ⁨true⁩',
-      'date': 'Das Datum ist ungültig ⁨true⁩ ⁨bad⁩'
+      'justInput': 'DE Min 10 good#1',
+      'input': 'Eingabe ist ungültig bad',
+      'checkbox': 'Kontrollkästchen ist ungültig true',
+      'date': 'Das Datum ist ungültig true bad'
     },
     {
-      'justInput': 'DE Min 10 ⁨good#2⁩',
-      'input': 'Eingabe ist ungültig ⁨bad⁩',
-      'checkbox': 'Kontrollkästchen ist ungültig ⁨true⁩',
-      'date': 'Das Datum ist ungültig ⁨true⁩ ⁨bad⁩'
+      'justInput': 'DE Min 10 good#2',
+      'input': 'Eingabe ist ungültig bad',
+      'checkbox': 'Kontrollkästchen ist ungültig true',
+      'date': 'Das Datum ist ungültig true bad'
     }
   ]
 }
@@ -112,9 +111,9 @@ describe('Validation', () => {
     const returnedErrors = await asyncAct(async () => await formData.validate())
 
     const expectedErrors = JSON.stringify({
-      'input': 'Input is invalid ⁨bad⁩',
-      'checkbox': 'Checkbox is invalid ⁨true⁩',
-      'date': 'Date is invalid ⁨true⁩ ⁨bad⁩'
+      'input': 'Input is invalid bad',
+      'checkbox': 'Checkbox is invalid true',
+      'date': 'Date is invalid true bad'
     })
     await waitFor(() => expect(JSON.stringify(returnedErrors)).toEqual(expectedErrors))
     expect(JSON.stringify(formData.errors)).toEqual(expectedErrors)
@@ -124,9 +123,9 @@ describe('Validation', () => {
 
     const returnedDeErrors = await asyncAct(async () => await formData.validate())
     const expectedDeErrors = JSON.stringify({
-      'input': 'Eingabe ist ungültig ⁨bad⁩',
-      'checkbox': 'Kontrollkästchen ist ungültig ⁨true⁩',
-      'date': 'Das Datum ist ungültig ⁨true⁩ ⁨bad⁩'
+      'input': 'Eingabe ist ungültig bad',
+      'checkbox': 'Kontrollkästchen ist ungültig true',
+      'date': 'Das Datum ist ungültig true bad'
     })
     await waitFor(() => expect(JSON.stringify(returnedDeErrors)).toEqual(expectedDeErrors))
     expect(JSON.stringify(formData.errors)).toEqual(expectedDeErrors)

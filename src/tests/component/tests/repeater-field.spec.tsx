@@ -21,7 +21,7 @@ import {selectDropDownOption} from '../util/controls'
 import {eachComponentStore} from './eachComponentStore'
 import actionsBookingForm from './forms/actions-booking-form.json'
 import bookingForm from './forms/booking-form.json'
-import '../config/localeTextContent'
+import '../config/toAllHaveTextContent'
 import '../config/toHaveExactValues'
 import '../config/toAllSelectsHaveValues'
 
@@ -147,7 +147,7 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     }
 
     const {findAllByTestId} = render(<RepeaterFieldApp initialData={initialData}/>)
-    expect(await findAllByTestId('roomLabel')).toAllHaveLocaleTextContent(['Room standard', 'Room ', 'Room luxe'])
+    expect(await findAllByTestId('roomLabel')).toAllHaveTextContent(['Room standard', 'Room ', 'Room luxe'])
   })
 
   it('Repeater should have a [NOT LOCALIZED] value', async () => {
@@ -160,7 +160,7 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     }
 
     const {findAllByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData}/>)
-    expect(await findAllByTestId('roomLabel')).toAllHaveLocaleTextContent(['[NOT LOCALIZED]'])
+    expect(await findAllByTestId('roomLabel')).toAllHaveTextContent(['[NOT LOCALIZED]'])
   })
 
   it('Repeater should have a [NOT LOCALIZED] value (no default localization)', async () => {
@@ -172,7 +172,7 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     }
 
     const {findAllByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData}/>)
-    expect(await findAllByTestId('roomLabel')).toAllHaveLocaleTextContent(['[NOT LOCALIZED]', '[NOT LOCALIZED]'])
+    expect(await findAllByTestId('roomLabel')).toAllHaveTextContent(['[NOT LOCALIZED]', '[NOT LOCALIZED]'])
   })
 
   it('Repeater should have a [NOT LOCALIZED] value (de-DE default lang)', async () => {
@@ -186,7 +186,7 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     }
 
     const {findAllByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData}/>)
-    expect(await findAllByTestId('roomLabel')).toAllHaveLocaleTextContent(['[NOT LOCALIZED]'])
+    expect(await findAllByTestId('roomLabel')).toAllHaveTextContent(['[NOT LOCALIZED]'])
   })
 
   it('Repeater should have a localized value (de-DE default lang)', async () => {
@@ -200,7 +200,7 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
     }
 
     const {findAllByTestId} = render(<RepeaterFieldApp modifyForm={modifyForm} initialData={initialData}/>)
-    expect(await findAllByTestId('roomLabel')).toAllHaveLocaleTextContent(['Zimmer standard'])
+    expect(await findAllByTestId('roomLabel')).toAllHaveTextContent(['Zimmer standard'])
   })
 
   it('Repeater should have a function value from initialData', async () => {

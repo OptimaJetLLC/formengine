@@ -106,80 +106,79 @@ const expectedFormData = {
   ]
 }
 
-// The localizer adds Unicode characters (FSI, PDI)
 const expectedFormErrors = {
-  'parentSource': 'min 100, real: ⁨7⁩',
-  'parentDestination': 'min 100, real: ⁨18⁩',
-  'templateSource': 'max 1, real: ⁨3⁩',
-  'templateDestination': 'max 2, real: ⁨8⁩',
-  'parentSlotSource': 'min 100, real: ⁨13⁩',
-  'parentSlotDestination': 'min 100, real: ⁨56⁩',
+  'parentSource': 'min 100, real: 7',
+  'parentDestination': 'min 100, real: 18',
+  'templateSource': 'max 1, real: 3',
+  'templateDestination': 'max 2, real: 8',
+  'parentSlotSource': 'min 100, real: 13',
+  'parentSlotDestination': 'min 100, real: 56',
   'rootRepeater': [
     {
-      'parentSource': 'min 100, real: ⁨7⁩',
-      'parentDestination': 'min 100, real: ⁨18⁩',
-      'templateSource': 'max 1, real: ⁨3⁩',
-      'templateDestination': 'max 2, real: ⁨8⁩',
-      'parentSlotSource': 'min 100, real: ⁨13⁩',
-      'parentSlotDestination': 'min 100, real: ⁨56⁩',
+      'parentSource': 'min 100, real: 7',
+      'parentDestination': 'min 100, real: 18',
+      'templateSource': 'max 1, real: 3',
+      'templateDestination': 'max 2, real: 8',
+      'parentSlotSource': 'min 100, real: 13',
+      'parentSlotDestination': 'min 100, real: 56',
       'childRepeater': [
         {
-          'parentSource': 'min 100, real: ⁨7⁩',
-          'parentDestination': 'min 100, real: ⁨18⁩',
-          'templateSource': 'max 1, real: ⁨3⁩',
-          'templateDestination': 'max 2, real: ⁨8⁩',
-          'parentSlotSource': 'min 100, real: ⁨13⁩',
-          'parentSlotDestination': 'min 100, real: ⁨56⁩'
+          'parentSource': 'min 100, real: 7',
+          'parentDestination': 'min 100, real: 18',
+          'templateSource': 'max 1, real: 3',
+          'templateDestination': 'max 2, real: 8',
+          'parentSlotSource': 'min 100, real: 13',
+          'parentSlotDestination': 'min 100, real: 56'
         },
         {
-          'parentSource': 'min 100, real: ⁨7⁩',
-          'parentDestination': 'min 100, real: ⁨18⁩',
-          'templateSource': 'max 1, real: ⁨3⁩',
-          'templateDestination': 'max 2, real: ⁨8⁩',
-          'parentSlotSource': 'min 100, real: ⁨13⁩',
-          'parentSlotDestination': 'min 100, real: ⁨56⁩'
+          'parentSource': 'min 100, real: 7',
+          'parentDestination': 'min 100, real: 18',
+          'templateSource': 'max 1, real: 3',
+          'templateDestination': 'max 2, real: 8',
+          'parentSlotSource': 'min 100, real: 13',
+          'parentSlotDestination': 'min 100, real: 56'
         },
         {
-          'parentSource': 'min 100, real: ⁨7⁩',
-          'parentDestination': 'min 100, real: ⁨18⁩',
-          'templateSource': 'max 1, real: ⁨3⁩',
-          'templateDestination': 'max 2, real: ⁨8⁩',
-          'parentSlotSource': 'min 100, real: ⁨13⁩',
-          'parentSlotDestination': 'min 100, real: ⁨56⁩'
+          'parentSource': 'min 100, real: 7',
+          'parentDestination': 'min 100, real: 18',
+          'templateSource': 'max 1, real: 3',
+          'templateDestination': 'max 2, real: 8',
+          'parentSlotSource': 'min 100, real: 13',
+          'parentSlotDestination': 'min 100, real: 56'
         }
       ]
     },
     {
-      'parentSource': 'min 100, real: ⁨7⁩',
-      'parentDestination': 'min 100, real: ⁨18⁩',
-      'templateSource': 'max 1, real: ⁨3⁩',
-      'templateDestination': 'max 2, real: ⁨8⁩',
-      'parentSlotSource': 'min 100, real: ⁨13⁩',
-      'parentSlotDestination': 'min 100, real: ⁨56⁩',
+      'parentSource': 'min 100, real: 7',
+      'parentDestination': 'min 100, real: 18',
+      'templateSource': 'max 1, real: 3',
+      'templateDestination': 'max 2, real: 8',
+      'parentSlotSource': 'min 100, real: 13',
+      'parentSlotDestination': 'min 100, real: 56',
       'childRepeater': [
         {
-          'parentSource': 'min 100, real: ⁨7⁩',
-          'parentDestination': 'min 100, real: ⁨18⁩',
-          'templateSource': 'max 1, real: ⁨3⁩',
-          'templateDestination': 'max 2, real: ⁨8⁩',
-          'parentSlotSource': 'min 100, real: ⁨13⁩',
-          'parentSlotDestination': 'min 100, real: ⁨56⁩'
+          'parentSource': 'min 100, real: 7',
+          'parentDestination': 'min 100, real: 18',
+          'templateSource': 'max 1, real: 3',
+          'templateDestination': 'max 2, real: 8',
+          'parentSlotSource': 'min 100, real: 13',
+          'parentSlotDestination': 'min 100, real: 56'
         },
         {
-          'parentSource': 'min 100, real: ⁨7⁩',
-          'parentDestination': 'min 100, real: ⁨18⁩',
-          'templateSource': 'max 1, real: ⁨3⁩',
-          'templateDestination': 'max 2, real: ⁨8⁩',
-          'parentSlotSource': 'min 100, real: ⁨13⁩',
-          'parentSlotDestination': 'min 100, real: ⁨56⁩'
+          'parentSource': 'min 100, real: 7',
+          'parentDestination': 'min 100, real: 18',
+          'templateSource': 'max 1, real: 3',
+          'templateDestination': 'max 2, real: 8',
+          'parentSlotSource': 'min 100, real: 13',
+          'parentSlotDestination': 'min 100, real: 56'
         },
         {
-          'parentSource': 'min 100, real: ⁨7⁩',
-          'parentDestination': 'min 100, real: ⁨18⁩',
-          'templateSource': 'max 1, real: ⁨3⁩',
-          'templateDestination': 'max 2, real: ⁨8⁩',
-          'parentSlotSource': 'min 100, real: ⁨13⁩',
-          'parentSlotDestination': 'min 100, real: ⁨56⁩'
+          'parentSource': 'min 100, real: 7',
+          'parentDestination': 'min 100, real: 18',
+          'templateSource': 'max 1, real: 3',
+          'templateDestination': 'max 2, real: 8',
+          'parentSlotSource': 'min 100, real: 13',
+          'parentSlotDestination': 'min 100, real: 56'
         }
       ]
     }
@@ -191,43 +190,43 @@ const expectedLocalizedFormData = {
   'repeater1': [
     {
       'c0': 'c0',
-      'c1': 'level 1 (⁨c0⁩)',
+      'c1': 'level 1 (c0)',
       'repeater2': [
         {
           'b0': 'b0',
-          'b1': 'level 2 (⁨b0⁩)',
+          'b1': 'level 2 (b0)',
           'repeater3': [
-            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'},
-            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'}
+            {'a0': 'a0', 'a1': 'level 3 (a0)'},
+            {'a0': 'a0', 'a1': 'level 3 (a0)'}
           ]
         },
         {
           'b0': 'b0',
-          'b1': 'level 2 (⁨b0⁩)',
+          'b1': 'level 2 (b0)',
           'repeater3': [
-            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'},
-            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'}
+            {'a0': 'a0', 'a1': 'level 3 (a0)'},
+            {'a0': 'a0', 'a1': 'level 3 (a0)'}
           ]
         }
       ]
     }, {
       'c0': 'c0',
-      'c1': 'level 1 (⁨c0⁩)',
+      'c1': 'level 1 (c0)',
       'repeater2': [
         {
           'b0': 'b0',
-          'b1': 'level 2 (⁨b0⁩)',
+          'b1': 'level 2 (b0)',
           'repeater3': [
-            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'},
-            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'}
+            {'a0': 'a0', 'a1': 'level 3 (a0)'},
+            {'a0': 'a0', 'a1': 'level 3 (a0)'}
           ]
         },
         {
           'b0': 'b0',
-          'b1': 'level 2 (⁨b0⁩)',
+          'b1': 'level 2 (b0)',
           'repeater3': [
-            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'},
-            {'a0': 'a0', 'a1': 'level 3 (⁨a0⁩)'}
+            {'a0': 'a0', 'a1': 'level 3 (a0)'},
+            {'a0': 'a0', 'a1': 'level 3 (a0)'}
           ]
         }
       ]

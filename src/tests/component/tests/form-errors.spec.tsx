@@ -7,7 +7,7 @@ import {asyncAct} from './asyncAct'
 import sameDataKeyForm from './forms/form-errors-prop/same-data-key-form.json'
 import template from './forms/form-errors-prop/template.json'
 import testForm from './forms/form-errors-prop/test-form.json'
-import '../config/localeTextContent'
+import '../config/toAllHaveTextContent'
 
 const forms: Record<string, object> = {testForm, template}
 const externalErrors = {
@@ -140,10 +140,10 @@ describe('Form errors prop', () => {
 
     const {findAllByTestId, queryAllByTestId, rerender} = render(<FormViewer view={testView} getForm={getForm}
                                                                              errors={{firstName: errorMessage}}/>)
-    expect(await findAllByTestId('errorComponent')).toAllHaveLocaleTextContent([errorMessage, errorMessage])
+    expect(await findAllByTestId('errorComponent')).toAllHaveTextContent([errorMessage, errorMessage])
 
     rerender(<FormViewer view={testView} getForm={getForm} errors={{firstName: 'ohohoh'}}/>)
-    expect(await findAllByTestId('errorComponent')).toAllHaveLocaleTextContent(['ohohoh', 'ohohoh'])
+    expect(await findAllByTestId('errorComponent')).toAllHaveTextContent(['ohohoh', 'ohohoh'])
 
     rerender(<FormViewer view={testView} getForm={getForm} errors={undefined}/>)
     expect(queryAllByTestId('errorComponent')).toHaveLength(0)

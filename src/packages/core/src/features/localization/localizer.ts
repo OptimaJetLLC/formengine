@@ -93,7 +93,7 @@ export const testFluentLocalization = (request: LocalizationTestRequest): Calcul
   request.localization = replaceDots(request.localization)
   const localizationSting = `${request.localizationStringId} = ${request.localization}`
   const resource = new FluentResource(localizationSting)
-  const bundle = new FluentBundle(`${request.language.fullCode}`)
+  const bundle = new FluentBundle(`${request.language.fullCode}`, {useIsolating: false})
   const errors = bundle.addResource(resource)
   if (errors.length > 0) {
     return CalculableResult.error([...errors])
