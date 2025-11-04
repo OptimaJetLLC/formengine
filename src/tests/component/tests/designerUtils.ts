@@ -1,4 +1,6 @@
-import {fireEvent, RenderResult} from '@testing-library/react'
+import type {LanguageFullCode} from '@react-form-builder/core'
+import type {RenderResult} from '@testing-library/react'
+import {fireEvent, waitFor} from '@testing-library/react'
 
 const previewButtonText = 'Preview'
 const editButtonText = 'Edit'
@@ -29,4 +31,18 @@ export const switchToDesignerMode = async (findByText: RenderResult['findByText'
   fireEvent.click(editButton)
 
   expect(await findByText(previewButtonText)).toBeInTheDocument()
+}
+
+/**
+ * Switches the designer language.
+ * @param code the full language code.
+ * @param container the root HTML element.
+ */
+export const switchLanguage = async (code: LanguageFullCode, container: HTMLElement) => {
+  const langSelector = `li[data-event-key="${code}"]`
+  await waitFor(() => expect(container.querySelector(langSelector)).toBeInTheDocument())
+
+  const langItem = container.querySelector(langSelector)
+  if (!langItem) throw new Error(`Language "${code}" not found`)
+  fireEvent.click(langItem)
 }

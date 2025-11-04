@@ -4,6 +4,7 @@ import {fireEvent, render, waitFor} from '@testing-library/react'
 import {frFR, trTR} from 'rsuite/locales'
 import {expect} from 'vitest'
 import {default as builtinFR} from '../../../packages/designer/public/locales/fr-FR.json'
+import {switchLanguage} from './designerUtils'
 
 const testForm = {
   'version': '1',
@@ -172,6 +173,9 @@ describe('user defined i18n should be merged with built-in in to Designer, "en-U
 
   it('should apply change default locale if key not exists in custom', async () => {
     const {container} = render(<TestApp i18n={i18nFrTrNoValue}/>)
+
+    // workaround. broken in tests jsdom + react 18-19, works in browser.
+    await switchLanguage('fr-FR', container)
 
     await waitFor(() => expect(container.querySelector(testElementSelector)).toHaveTextContent(builtinElementFrContent))
   })
