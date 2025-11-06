@@ -15,7 +15,12 @@
   "scripts": {
     "build": "vite build"
   },
-  "dependencies": {
-    "@react-form-builder/core": "^7.5.0"
+  "peerDependencies": {
+    "@react-form-builder/core": "7.5.0"
+  },
+  "peerDependenciesMeta": {
+    "@react-form-builder/core": {
+      "optional": false
+    }
   }
 }

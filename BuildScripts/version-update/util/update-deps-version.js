@@ -21,6 +21,12 @@ const packageList = [
   'src/packages/views/antd',
   'src/packages/views/default',
   'src/packages/views/rsuite',
+
+  'src/packages/views/fast-qr',
+  'src/packages/views/google-map',
+  'src/packages/views/rich-text',
+  'src/packages/views/rsuite-table',
+
   'src/packages/views/signature',
   'examples/community/formdata',
   'examples/premium/formengine',
@@ -43,6 +49,8 @@ function patchPackageVersion(packagePath, version) {
   const path = join(__dirname, '..', '..', '..', packagePath, 'package.json')
   const packageJsonContent = readFileSync(path, 'utf-8')
   const packageJson = JSON.parse(packageJsonContent)
+  const coreMeta = packageJson?.peerDependenciesMeta?.["@react-form-builder/core"] || {};
+  const coreRequired = coreMeta?.optional === false
 
   let patched = false
   depsSections.forEach(section => {
@@ -50,7 +58,11 @@ function patchPackageVersion(packagePath, version) {
     if (!deps) return
     Object.entries(deps).forEach(([key]) => {
       if (key.startsWith(packagePrefix)) {
-        deps[key] = version === '*' ? version : `^${version}`
+        if (key === '@react-form-builder/core' && coreRequired) {
+          deps[key] = version
+        } else {
+          deps[key] = version === '*' ? version : `^${version}`
+        }
         patched = true
       }
     })

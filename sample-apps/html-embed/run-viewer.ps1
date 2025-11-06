@@ -10,7 +10,7 @@ function CheckExitCode()
   }
 }
 
-Push-Location $PSScriptRoot/../../packages/viewer-bundle
+Push-Location $PSScriptRoot/../../src/packages/viewer-bundle
 try
 {
   npm install

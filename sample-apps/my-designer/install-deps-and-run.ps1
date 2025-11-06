@@ -68,11 +68,11 @@ try
   RemoveFromPackageJson "@react-form-builder/components-signature"
   RemoveFromPackageJson "@react-form-builder/components-fast-qr"
 
-  InstallLocalPackage $PSScriptRoot/../../packages/core
-  InstallLocalPackage $PSScriptRoot/../../packages/designer
-  InstallLocalPackage $PSScriptRoot/../../packages/views/rsuite
-  InstallLocalPackage $PSScriptRoot/../../packages/views/signature
-  InstallLocalPackage $PSScriptRoot/../../packages/views/fast-qr
+  InstallLocalPackage $PSScriptRoot/../../src/packages/core
+  InstallLocalPackage $PSScriptRoot/../../src/packages/designer
+  InstallLocalPackage $PSScriptRoot/../../src/packages/views/rsuite
+  InstallLocalPackage $PSScriptRoot/../../src/packages/views/signature
+  InstallLocalPackage $PSScriptRoot/../../src/packages/views/fast-qr
   npm run start
 }
 finally

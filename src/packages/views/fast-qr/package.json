@@ -19,11 +19,16 @@
     "create-archive": "node ./config/pack"
   },
   "dependencies": {
-    "@react-form-builder/core": "^7.5.0",
     "fast_qr": "^0.12.5"
   },
   "peerDependencies": {
+    "@react-form-builder/core": "7.5.0",
     "react": ">=17.0.2 || ^18 || ^19"
+  },
+  "peerDependenciesMeta": {
+    "@react-form-builder/core": {
+      "optional": false
+    }
   },
   "files": [
     "dist/*",

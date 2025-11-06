@@ -10,7 +10,7 @@ function CheckExitCode()
   }
 }
 
-Push-Location $PSScriptRoot/../../packages/designer-bundle
+Push-Location $PSScriptRoot/../../src/packages/designer-bundle
 try
 {
   npm install

@@ -17,13 +17,16 @@
     "bundle": "npm-run-all -l clean build create-archive",
     "create-archive": "node ./config/pack"
   },
-  "dependencies": {
-    "@react-form-builder/core": "^7.5.0"
-  },
   "peerDependencies": {
+    "@react-form-builder/core": "7.5.0",
     "mobx": "^6.13.5",
     "react": ">=17.0.2 || ^18 || ^19",
     "rsuite": "5.83.3"
+  },
+  "peerDependenciesMeta": {
+    "@react-form-builder/core": {
+      "optional": false
+    }
   },
   "files": [
     "dist/*",

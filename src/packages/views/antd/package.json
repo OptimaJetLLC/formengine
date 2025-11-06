@@ -16,7 +16,14 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@react-form-builder/core": "^7.5.0",
     "antd": "^5.23.2"
+  },
+  "peerDependencies": {
+    "@react-form-builder/core": "7.5.0"
+  },
+  "peerDependenciesMeta": {
+    "@react-form-builder/core": {
+      "optional": false
+    }
   }
 }

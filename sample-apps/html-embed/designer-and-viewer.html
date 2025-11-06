@@ -163,7 +163,7 @@
 
     const moduleName = useUmdModule === true ? 'index.umd.js' : 'index.iife.js'
 
-    whenScriptLoaded('designer-script', `../../packages/designer-bundle/dist/${moduleName}`, () => {
+    whenScriptLoaded('designer-script', `../../src/packages/designer-bundle/dist/${moduleName}`, () => {
       const bundle = window.FormEngineDesignerBundle;
       const props = {
         getForm: () => form,
@@ -174,7 +174,7 @@
 
       window.designerRoot = bundle.renderFormBuilder('root', props)
 
-      whenScriptLoaded('viewer-script', `../../packages/viewer-bundle/dist/${moduleName}`, () => {
+      whenScriptLoaded('viewer-script', `../../src/packages/viewer-bundle/dist/${moduleName}`, () => {
         const bundle = window.FormEngineViewerBundle;
         const props = {
           getForm: () => form,

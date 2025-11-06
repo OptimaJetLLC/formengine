@@ -19,12 +19,17 @@
     "create-archive": "node ./config/pack"
   },
   "dependencies": {
-    "@react-form-builder/core": "^7.5.0",
     "react-quill-new": "^3.3.0"
   },
   "peerDependencies": {
     "@emotion/styled": "^11.14.0",
+    "@react-form-builder/core": "7.5.0",
     "react": ">=17.0.2 || ^18 || ^19"
+  },
+  "peerDependenciesMeta": {
+    "@react-form-builder/core": {
+      "optional": false
+    }
   },
   "files": [
     "dist/*",
