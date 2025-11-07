@@ -1,5 +1,5 @@
 VERSION --try 0.8
-FROM node:20.19.4
+FROM node:24.11.0
 WORKDIR /form-engine/src
 
 # npm-build builds all npm packages

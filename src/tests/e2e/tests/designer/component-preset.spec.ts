@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {expect, test} from '@playwright/test'
-import {Page} from 'playwright'
+import type {Page} from 'playwright'
 
 const clearForm = async (page: Page) => {
   await page.locator('.FE_MainMenu_Button').first().hover()
