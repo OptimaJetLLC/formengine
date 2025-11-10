@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/components-rich-text",
-  "version": "7.5.0",
+  "version": "7.6.0",
   "private": false,
   "main": "src/index.ts",
   "type": "module",
@@ -23,7 +23,7 @@
   },
   "peerDependencies": {
     "@emotion/styled": "^11.14.0",
-    "@react-form-builder/core": "7.5.0",
+    "@react-form-builder/core": "7.6.0",
     "react": ">=17.0.2 || ^18 || ^19"
   },
   "peerDependenciesMeta": {
