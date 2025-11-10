@@ -5,6 +5,7 @@
       "domains": [],
       "ftLocaleCount": 1,
       "ftDesignerCustomization": false,
+      "ftElectron": false,
       "ftComponentTemplates": false,
       "ftComponentPreset": false,
       "ftComponentRepeater": false,
@@ -19,4 +20,4 @@
   "companyName": "TRIAL",
   "bitrixUrl": "demo"
 }*/
-export const licenseBusiness2024NoDomain = 'TRIAL-eyJsaWNlbnNlRW5kRGF0ZSI6IjAxLjAxLjIwMjQiLCJyZWxlYXNlRXhwaXJ5IjoiMDEuMDEuMjAyNCIsImNvbXBhbnlOYW1lIjoiVFJJQUwiLCJyZXN0cmljdGlvbnMiOnsiU3RyaWN0Q2hlY2siOmZhbHNlLCJkb21haW5zIjpbXSwiZnRMb2NhbGVDb3VudCI6MSwiZnREZXNpZ25lckN1c3RvbWl6YXRpb24iOmZhbHNlLCJmdENvbXBvbmVudFRlbXBsYXRlcyI6ZmFsc2UsImZ0Q29tcG9uZW50UHJlc2V0IjpmYWxzZSwiZnRDb21wb25lbnRSZXBlYXRlciI6ZmFsc2UsImZ0Q29tcG9uZW50VGFibGUiOmZhbHNlLCJmdENvbXBvbmVudFNpZ25hdHVyZSI6ZmFsc2UsImZ0Q29tcG9uZW50UXJDb2RlIjpmYWxzZX19:5UEmyFIq1Vsk9ARReux8qsVWRHFsbjRm/dDftd5AsUwZnLT8a8eNpyw1tXl1pqadEjrpDxbl1B6grAGRa+IoxNfzFw5sgbhnTtnJew8VYUjQ3mbXvETGb5PMuSk9n/J9'
+export const licenseBusiness2024NoDomain = 'TRIAL-eyJsaWNlbnNlRW5kRGF0ZSI6IjAxLjAxLjIwMjQiLCJyZWxlYXNlRXhwaXJ5IjoiMDEuMDEuMjAyNCIsImNvbXBhbnlOYW1lIjoiVFJJQUwiLCJyZXN0cmljdGlvbnMiOnsiU3RyaWN0Q2hlY2siOmZhbHNlLCJkb21haW5zIjpbXSwiZnRMb2NhbGVDb3VudCI6MSwiZnREZXNpZ25lckN1c3RvbWl6YXRpb24iOmZhbHNlLCJmdEVsZWN0cm9uIjpmYWxzZSwiZnRDb21wb25lbnRUZW1wbGF0ZXMiOmZhbHNlLCJmdENvbXBvbmVudFByZXNldCI6ZmFsc2UsImZ0Q29tcG9uZW50UmVwZWF0ZXIiOmZhbHNlLCJmdENvbXBvbmVudFRhYmxlIjpmYWxzZSwiZnRDb21wb25lbnRTaWduYXR1cmUiOmZhbHNlLCJmdENvbXBvbmVudFFyQ29kZSI6ZmFsc2V9fQ==:w0xEwW3X4SK9Uh74LPS6qHB8kD2w7cjKBe7DotZ9BfzjC/lKNCIHdlxG0IPGdS55nMtEeOPV3zBvGTPgZFEvbK7v9bwnywsxzlDKCg3XVmvUtn7pEhb3DtHsE/iXmgPj'

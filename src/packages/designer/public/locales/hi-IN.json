@@ -963,6 +963,7 @@
   },
   "license": {
     "errDomain": "आपका लाइसेंस केवल निम्नलिखित डोमेन की अनुमति देता है: {{Domain}}",
+    "errElectron": "आपका लाइसेंस इलेक्ट्रॉन में चलने की अनुमति नहीं देता है",
     "errEndDate": "लाइसेंस समाप्त हो गया {{licenseEndDate}}",
     "errEndDateStrict": "लाइसेंस समाप्त हो गया {{licenseEndDate}}",
     "errLicenseInvalid": "बशर्ते लाइसेंस कुंजी अमान्य है । ",

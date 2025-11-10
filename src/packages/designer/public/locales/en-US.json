@@ -1116,6 +1116,7 @@
     "errLicenseInvalid": "Provided license key is invalid.",
     "errNoKey": "No license key provided.",
     "errDomain": "Your license allow only following domains: {{Domain}}",
+    "errElectron": "Your license does not allow running in Electron",
     "ftComponentQrCode": "Your license does not allow usage of the QR Code component",
     "ftComponentRepeater": "Your license does not allow usage of the Repeater",
     "ftComponentSignature": "Your license does not allow usage of the Signature component",

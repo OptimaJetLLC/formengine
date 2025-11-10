@@ -963,6 +963,7 @@
   },
   "license": {
     "errDomain": "Su licencia permite solo los siguientes dominios: {{Domain}}",
+    "errElectron": "Su licencia no permite la ejecución en Electrónica",
     "errEndDate": "Licencia caducada {{licenseEndDate}}",
     "errEndDateStrict": "Licencia caducada {{licenseEndDate}}",
     "errLicenseInvalid": "La clave de licencia proporcionada no es válida.",

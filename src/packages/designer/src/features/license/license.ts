@@ -31,7 +31,9 @@ export type LicenseFeatureName =
 // qr-code component
   'ftComponentQrCode' |
 // preset components
-  'ftComponentPreset'
+  'ftComponentPreset' |
+// allow run in Electron
+  'ftElectron'
 
 /**
  * Feature description metadata.
@@ -57,6 +59,7 @@ export type LicenseFeatureDescription = LicenseFeatureDescriptionMeta & {
  */
 export enum LicenseError {
   DOMAIN = 'errDomain',
+  ELECTRON = 'errElectron',
   END_DATE_STRICT = 'errEndDateStrict',
   END_DATE = 'errEndDate',
   NO_KEY = 'errNoKey',

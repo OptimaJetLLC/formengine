@@ -963,6 +963,7 @@
   },
   "license": {
     "errDomain": "La tua licenza consente solo i seguenti domini: {{Domain}}",
+    "errElectron": "La tua licenza non consente l'esecuzione in Electron",
     "errEndDate": "Licenza scaduta {{licenseEndDate}}",
     "errEndDateStrict": "Licenza scaduta {{licenseEndDate}}",
     "errLicenseInvalid": "La chiave di licenza fornita non è valida.",

@@ -963,6 +963,7 @@
   },
   "license": {
     "errDomain": "Ваша лиценца дозвољава употребу само следећих домена:{{Domain}}",
+    "errElectron": "Ваша лиценца не дозвољава рад у Елецтрону",
     "errEndDate": "Лиценца је истекла{{licenseEndDate}}",
     "errEndDateStrict": "Лиценца је истекла{{licenseEndDate}}",
     "errLicenseInvalid": "Наведени лиценцни кључ је неважећи.",

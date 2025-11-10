@@ -963,6 +963,7 @@
   },
   "license": {
     "errDomain": "라이센스는 다음 도메인만 허용합니다: {{Domain}}",
+    "errElectron": "귀하의 라이센스는 전자에서 실행을 허용하지 않습니다",
     "errEndDate": "라이센스 만료 {{licenseEndDate}}",
     "errEndDateStrict": "라이센스 만료 {{licenseEndDate}}",
     "errLicenseInvalid": "제공된 라이센스 키가 잘못되었습니다.",

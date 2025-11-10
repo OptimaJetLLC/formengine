@@ -963,6 +963,7 @@
   },
   "license": {
     "errDomain": "Votre licence n'autorise que les domaines suivants: {{Domain}}",
+    "errElectron": "Votre licence n'autorise pas l'exécution dans Electron",
     "errEndDate": "Licence expirée {{licenseEndDate}}",
     "errEndDateStrict": "Licence expirée {{licenseEndDate}}",
     "errLicenseInvalid": "La clé de licence fournie n'est pas valide.",

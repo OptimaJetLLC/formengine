@@ -6,7 +6,7 @@ const URL = 'http://localhost:3000/api/generate/fe'
 const HEADERS = {
   'Accept': '*',
   'Content-Type': 'application/json',
-  Cookie: 'userData=%7B%22id%22%3A1%2C%22username%22%3A%22oj%22%2C%22passwordHash%22%3A%22%22%2C%22firstName%22%3A%22%22%2C%22lastName%22%3A%22%22%2C%22active%22%3Atrue%7D; _ga=GA1.1.1367769651.1745582492; _gcl_au=1.1.1538252040.1745582492; _ym_uid=1732271244463346334; _ym_d=1745582492; gdpr=0; _ga_J6BY719RT7=GS1.1.1745582491.1.1.1745585632.0.0.0; .AspNetCore.Cookies=CfDJ8LGHipjZC7FHgAm-myyr4laOLa75su3BYWcpRCxjhH4rFCeJaWkGKv4d9du7aGtjCb4b9zf0bkJq3Tb6kcYAWEmNPBtXjPRhoks_ytc_QGvS065SbxgncMCWtKhwIGkjABCTLJCxxHMs2a4-bmOMweDmHRYRH2gFh4eSo3Qhk2YtZIntOv1_vvGKuNIfN-j10KwD6DGsZP9He3l3MX25Fx0upo5QdVBXE-UmwxXDW-oguYlzsLZKPNLPigy4qFt5zZpD8zII5yMQIzuYV7k1pNwRT4GToPBUjUkM3hlsZVy8NYpchbqEVzDMD_iZgry6mmRtyoP3Tzm2kg9IF4ldt_R421__ah9YOWxBrTXMN_mVD7Tjuq2pxaTJZmMoO3z-EcRFbXnKnlfyejwW9jUIBSE5hBtPfu46l3XTo7knrSIh'
+  Cookie: '_ga=GA1.1.241856649.1760629457; _gcl_au=1.1.1621790874.1760629457; _clck=yp769q%5E2%5Eg0b%5E0%5E2115; _rdt_uuid=1760629457894.46133cc3-ef46-40c8-beba-faed4e562f5e; _ga_MNS3X8H57G=GS2.1.s1760961585$o2$g1$t1760961781$j60$l0$h0; _ga_J6BY719RT7=GS2.1.s1760961585$o2$g1$t1760961781$j60$l0$h0; .AspNetCore.Cookies=CfDJ8G55VI_KI5tPmzNZTQtWpvh6y5v5Ec-5ZyYGNQ3JAW6uo6pCelxAPdbJoXA5CKlKamRfaI9IytJEiP5VOZgjGuK53YKxTugIq-Vn40piEUEbpVfUaGq3gpSG4E3oJqJHsuSgQXGw_je5DS1yvWWqyYZljP2wlY0vuicmXAdISA7Yv4nz1oDeX59brpDFZwbaoCs_QSpqB6JkgwKRCVAEDSXzn-U4fcdCHb0FwgZhQKvEvqCrvnJh0Yywv-gAqy-DWrrdwS8VnXeWiJiYdurR-QROMVB6HHQsEkU2a3hmMEjh4O471Eq5q5uG8WGypgUiTUq3g-enGrzWwWIGO3EZxvzNuqdu2SNeKb7hgcQQCl0Yb18NookA_-RrqiqAfMW-GHgNpDSZuxXuls3k59V4hOXIQkTftxY8ve6FsWB41CemeHnUUsQ-Uy2TmqqVUcepLw; userData=%7B%22id%22%3A1%2C%22username%22%3A%22username%22%2C%22passwordHash%22%3A%22%22%2C%22firstName%22%3A%22first_name%22%2C%22lastName%22%3A%22last_name%22%2C%22active%22%3Atrue%7D'
 }
 
 const expiredDate = "2024-01-01T00:00:00.000Z"
@@ -32,16 +32,18 @@ const restrictions = {
   Enterprise: {
     "ftLocaleCount": -1,
     "ftDesignerCustomization": true,
+    "ftElectron": true,
     "ftComponentTemplates": true,
     "ftComponentPreset": true,
     "ftComponentRepeater": true,
     "ftComponentTable": true,
     "ftComponentSignature": true,
-    "ftComponentQrCode": true
+    "ftComponentQrCode": true,
   },
   Business: {
     "ftLocaleCount": 1,
     "ftDesignerCustomization": false,
+    "ftElectron": false,
     "ftComponentTemplates": false,
     "ftComponentPreset": false,
     "ftComponentRepeater": false,
@@ -72,10 +74,11 @@ async function getLicense(payload) {
     return key
   } catch (e) {
     console.error(e)
+    process.exit(1)
   }
 }
 
-const outputDir = '../../tests/common/license'
+const outputDir = '../../src/tests/common/license'
 
 async function write(licenses) {
   try {
@@ -86,6 +89,7 @@ async function write(licenses) {
     }
   } catch (err) {
     console.error('Error:', err);
+    process.exit(1)
   }
 }
 

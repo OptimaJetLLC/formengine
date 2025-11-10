@@ -963,6 +963,7 @@
   },
   "license": {
     "errDomain": "ライセンスでは、次のドメインのみが許可されています: {{Domain}}",
+    "errElectron": "ライセンスではElectronでの実行が許可されていません",
     "errEndDate": "ライセンスの有効期限が切れた {{licenseEndDate}}",
     "errEndDateStrict": "ライセンスの有効期限が切れた {{licenseEndDate}}",
     "errLicenseInvalid": "提供されたライセンスキーが無効です。",

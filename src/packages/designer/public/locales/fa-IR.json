@@ -963,6 +963,7 @@
   },
   "license": {
     "errDomain": "مجوز شما فقط دامنه های زیر را مجاز می کند: {{Domain}}",
+    "errElectron": "مجوز شما اجازه اجرا در الکترون را نمی دهد",
     "errEndDate": "مجوز منقضی شده {{licenseEndDate}}",
     "errEndDateStrict": "مجوز منقضی شده {{licenseEndDate}}",
     "errLicenseInvalid": "ارائه کلید مجوز نامعتبر است.",

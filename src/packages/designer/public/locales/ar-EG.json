@@ -963,6 +963,7 @@
   },
   "license": {
     "errDomain": "الترخيص الخاص بك يسمح فقط المجالات التالية: {{Domain}}",
+    "errElectron": "الترخيص الخاص بك لا يسمح بتشغيل في الإلكترون",
     "errEndDate": "انتهت صلاحية الترخيص {{licenseEndDate}}",
     "errEndDateStrict": "انتهت صلاحية الترخيص {{licenseEndDate}}",
     "errLicenseInvalid": "مفتاح الترخيص المقدم غير صالح.",

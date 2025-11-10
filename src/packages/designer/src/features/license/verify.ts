@@ -2,6 +2,7 @@ import {isUndefined} from '@react-form-builder/core'
 import {assemblyDate} from './assemblyDate'
 import {licenseSeparator, publicKeyPem, separator} from './consts'
 import {verifyDomain} from './domain'
+import {isElectron} from './isElectron'
 import type {LicenseData} from './license'
 import {LicenseError} from './license'
 import {decodeB64, importPublicKey} from './utils'
@@ -46,14 +47,22 @@ async function verify(data: string, signature: ArrayBuffer, publicKeyString: str
  */
 export function verifyLicenseParams(data: LicenseData): [LicenseError, Record<string, any>?] | null {
   const {licenseEndDate, restrictions} = data
-  const {domains, StrictCheck} = restrictions
+  const {domains, StrictCheck, ftElectron} = restrictions
   const dateParts = licenseEndDate.split('.')
   const isoDate = `${dateParts[2]}-${dateParts[0]}-${dateParts[1]}`
   const licenseEndDt = new Date(isoDate)
 
-  if (domains?.length && !verifyDomain(domains)) {
-    log(LicenseError.DOMAIN, domains)
-    return [LicenseError.DOMAIN, {Domain: Array.isArray(domains) ? domains.join(', ') : domains}]
+  if (isElectron()) {
+    if (!ftElectron) {
+      log(LicenseError.ELECTRON)
+
+      return [LicenseError.ELECTRON]
+    }
+  } else {
+    if (domains?.length && !verifyDomain(domains)) {
+      log(LicenseError.DOMAIN, domains)
+      return [LicenseError.DOMAIN, {Domain: Array.isArray(domains) ? domains.join(', ') : domains}]
+    }
   }
 
   const currentDate = new Date()

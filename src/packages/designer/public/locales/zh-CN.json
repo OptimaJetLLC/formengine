@@ -963,6 +963,7 @@
   },
   "license": {
     "errDomain": "您的许可证只允许以下域: {{Domain}}",
+    "errElectron": "您的许可证不允许在Electron中运行",
     "errEndDate": "许可证过期 {{licenseEndDate}}",
     "errEndDateStrict": "许可证过期 {{licenseEndDate}}",
     "errLicenseInvalid": "提供的许可证密钥无效。",
