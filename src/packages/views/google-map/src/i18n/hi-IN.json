@@ -1,0 +1,107 @@
+{
+  "categories": {
+    "fields": {
+      "name": "फील्ड्स"
+    }
+  },
+  "components": {
+    "GoogleMap": {
+      "description": "एक गूगल मानचित्र प्रदर्शित घटक",
+      "name": "गूगल मानचित्र",
+      "props": {
+        "addMarkerOnSearch": {
+          "description": "चाहे जोड़ने के लिए एक मार्कर पर खोज",
+          "name": "खोज पर मार्कर जोड़ें"
+        },
+        "allowChangingMarkers": {
+          "description": "जाँच की, तो उपयोगकर्ता को बदल सकते हैं मार्करों",
+          "name": "बदलने की अनुमति मार्करों"
+        },
+        "allowMultipleMarkers": {
+          "description": "कई मार्करों",
+          "name": "की अनुमति कई मार्करों"
+        },
+        "apiKey": {
+          "description": "गूगल मैप्स एपीआई कुंजी",
+          "name": "एपीआई कुंजी"
+        },
+        "collisionBehavior": {
+          "description": "मार्करों टकराव व्यवहार",
+          "name": "टकराव व्यवहार"
+        },
+        "colorScheme": {
+          "description": "रंग योजना का उपयोग करने के लिए",
+          "name": "रंग योजना"
+        },
+        "gestureHandling": {
+          "description": "इशारे से निपटने का उपयोग करने के लिए",
+          "name": "इशारे से निपटने"
+        },
+        "height": {
+          "description": "ऊंचाई नक्शे के",
+          "name": "ऊंचाई"
+        },
+        "label": {
+          "description": "मानचित्र लेबल",
+          "name": "लेबल"
+        },
+        "language": {
+          "description": "भाषा का उपयोग करने के लिए",
+          "name": "भाषा"
+        },
+        "latitude": {
+          "description": "अक्षांश के केंद्र बिंदु",
+          "name": "अक्षांश"
+        },
+        "longitude": {
+          "description": "देशांतर के केंद्र बिंदु",
+          "name": "देशांतर"
+        },
+        "mapControlPosition": {
+          "description": "नक्शे की स्थिति नियंत्रण",
+          "name": "नक्शा नियंत्रण की स्थिति"
+        },
+        "mapId": {
+          "description": "नक्शा आईडी है एक पहचानकर्ता के साथ जुड़े है कि एक विशिष्ट नक्शा शैली या सुविधा का",
+          "name": "नक्शा आईडी"
+        },
+        "mapTypeId": {
+          "description": "डिफ़ॉल्ट नक्शा प्रकार का उपयोग करने के लिए",
+          "name": "मानचित्र प्रकार"
+        },
+        "markerWindowTitle": {
+          "description": "शीर्षक के मार्कर खिड़की",
+          "name": "मार्कर विंडो शीर्षक"
+        },
+        "markers": {
+          "description": "निर्देशांक के मार्करों",
+          "name": "मार्करों"
+        },
+        "region": {
+          "description": "क्षेत्र कोड का उपयोग करने के लिए",
+          "name": "क्षेत्र"
+        },
+        "removeMarkerCaption": {
+          "description": "कैप्शन पर मार्कर को हटाने के बटन",
+          "name": "मार्कर को दूर शीर्षक"
+        },
+        "searchPlaceholder": {
+          "description": "प्लेसहोल्डर पाठ के लिए नक्शा खोज इनपुट",
+          "name": "खोज प्लेसहोल्डर"
+        },
+        "showMapControl": {
+          "description": "कि क्या दिखाने के लिए नक्शा नियंत्रण",
+          "name": "दिखा नक्शा नियंत्रण"
+        },
+        "width": {
+          "description": "चौड़ाई नक्शे के",
+          "name": "चौड़ाई"
+        },
+        "zoom": {
+          "description": "ज़ूम स्तर",
+          "name": "ज़ूम"
+        }
+      }
+    }
+  }
+}

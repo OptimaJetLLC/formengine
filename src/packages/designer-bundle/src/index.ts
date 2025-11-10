@@ -1,10 +1,21 @@
 import * as fastQrComponent from '@react-form-builder/components-fast-qr'
+import {fastQrComponentsDescriptions} from '@react-form-builder/components-fast-qr'
 import * as googleMapComponent from '@react-form-builder/components-google-map'
+import {googleMapComponentsDescriptions} from '@react-form-builder/components-google-map'
 import * as richTextComponent from '@react-form-builder/components-rich-text'
+import {richTextEditorComponentsDescriptions} from '@react-form-builder/components-rich-text'
 import * as rSuiteComponents from '@react-form-builder/components-rsuite'
-import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {
+  formEngineRsuiteCssLoader,
+  ltrCssLoader,
+  RsLocalizationWrapper,
+  rSuiteComponentsDescriptions,
+  rtlCssLoader
+} from '@react-form-builder/components-rsuite'
 import * as rSuiteTableComponents from '@react-form-builder/components-rsuite-table'
+import {rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import * as signatureComponent from '@react-form-builder/components-signature'
+import {signatureComponentsDescriptions} from '@react-form-builder/components-signature'
 import type {BuilderComponent} from '@react-form-builder/core'
 import {BiDi, BuilderView} from '@react-form-builder/core'
 import type {FormBuilderProps} from '@react-form-builder/designer'
@@ -36,6 +47,12 @@ export function renderFormBuilderTo(container: HTMLElement, props: Partial<FormB
     .withCssLoader(BiDi.LTR, ltrCssLoader)
     .withCssLoader(BiDi.RTL, rtlCssLoader)
     .withCssLoader('common', formEngineRsuiteCssLoader)
+    .withComponentLibraryDescription(fastQrComponentsDescriptions)
+    .withComponentLibraryDescription(googleMapComponentsDescriptions)
+    .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
+    .withComponentLibraryDescription(signatureComponentsDescriptions)
+    .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
+    .withComponentLibraryDescription(rSuiteComponentsDescriptions)
 
   const formBuilderProps: FormBuilderProps = {
     ...props,

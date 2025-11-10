@@ -849,6 +849,40 @@ Once the component is connected to the designer, the component icon will be disp
 
 ![Custom components 07](/assets/custom-components/custom-components-07.png)
 
+### Internationalization of components for the Designer
+
+You can connect descriptions of components, their properties, and categories in various languages using
+the [withComponentLibraryDescription](/api-reference/@react-form-builder/core/classes/BuilderView#withcomponentlibrarydescription)
+function:
+
+```typescript
+const components = [/*your custom components/*/]
+
+const componentsDescriptions = {
+  'en-US': {
+    categories: {
+      myCategory: {
+        name: 'My category',
+      }
+    },
+    components: {
+      MyComponent: {
+        name: 'My component',
+        props: {
+          property: {
+            name: 'My property',
+            description: 'My property description',
+          }
+        }
+      }
+    }
+  }
+}
+
+const view = new BuilderView(components)
+  .withComponentLibraryDescription(componentsDescriptions)
+```
+
 ## Conclusion
 
 This article showed how to easily connect a custom component to use it in the designer. And also how a custom component is connected and

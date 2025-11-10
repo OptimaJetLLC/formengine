@@ -25,7 +25,7 @@ interface AntTooltipProps extends WrapperProps {
 
 const tooltipStyle = {width: '100%', height: '100%'}
 
-export const AntTooltip = ({text, placement, trigger, children, ...props}: AntTooltipProps) => {
+const AntTooltip = ({text, placement, trigger, children, ...props}: AntTooltipProps) => {
   if (!children) return null
 
   return <Tooltip placement={placement} trigger={trigger} title={text}>
@@ -34,9 +34,9 @@ export const AntTooltip = ({text, placement, trigger, children, ...props}: AntTo
 }
 
 export const antTooltip = define(AntTooltip, 'AntTooltip')
-  .name('Ant Tooltip')
+  .category('antd')
   .props({
-    text: string.required.default('Tooltip message...').hinted('Tooltip text').dataBound,
+    text: string.required.default('Tooltip message...').dataBound,
     children: node,
     placement: oneOf('top'
       , 'left'

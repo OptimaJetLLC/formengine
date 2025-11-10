@@ -1,0 +1,39 @@
+{
+  "categories": {
+    "fields": {
+      "name": "字段"
+    }
+  },
+  "components": {
+    "RichTextEditor": {
+      "description": "您强大的富文本编辑器",
+      "name": "富文本编辑器",
+      "props": {
+        "initialValue": {
+          "description": "初始值",
+          "name": "初始值"
+        },
+        "label": {
+          "description": "标签",
+          "name": "标签"
+        },
+        "modules": {
+          "description": "允许自定义编辑器的行为和功能。 阅读文档以获取更多信息",
+          "name": "模块"
+        },
+        "placeholder": {
+          "description": "占位符",
+          "name": "占位符"
+        },
+        "readOnly": {
+          "description": "只读标志",
+          "name": "只读"
+        },
+        "toolbarOptions": {
+          "description": "要显示在工具栏上的按钮组",
+          "name": "工具栏选项"
+        }
+      }
+    }
+  }
+}

@@ -1,15 +1,16 @@
-import {fastQrComponent} from '@react-form-builder/components-fast-qr'
-import {googleMapComponent} from '@react-form-builder/components-google-map'
-import {richTextComponent} from '@react-form-builder/components-rich-text'
+import {fastQrComponent, fastQrComponentsDescriptions} from '@react-form-builder/components-fast-qr'
+import {googleMapComponent, googleMapComponentsDescriptions} from '@react-form-builder/components-google-map'
+import {richTextComponent, richTextEditorComponentsDescriptions} from '@react-form-builder/components-rich-text'
 import {
   formEngineRsuiteCssLoader,
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
+  rSuiteComponentsDescriptions,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
-import {rSuiteTableComponents} from '@react-form-builder/components-rsuite-table'
-import {signatureComponent} from '@react-form-builder/components-signature'
+import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
+import {signatureComponent, signatureComponentsDescriptions} from '@react-form-builder/components-signature'
 import {BiDi, isUndefined, namedObserver} from '@react-form-builder/core'
 import type {CustomizationMap, IFormBuilder, IPresetComponentOptions, PresetComponent} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
@@ -29,6 +30,12 @@ const view = new BuilderView(components)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
   .withCssLoader('common', formEngineRsuiteCssLoader)
+  .withComponentLibraryDescription(fastQrComponentsDescriptions)
+  .withComponentLibraryDescription(googleMapComponentsDescriptions)
+  .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
+  .withComponentLibraryDescription(signatureComponentsDescriptions)
+  .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
+  .withComponentLibraryDescription(rSuiteComponentsDescriptions)
 
 const sampleFormName = 'SampleForm'
 

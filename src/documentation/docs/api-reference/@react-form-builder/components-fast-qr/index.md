@@ -7,4 +7,6 @@
 ## Variables
 
 - [fastQrComponent](variables/fastQrComponent.md)
+- [fastQrComponentsDescriptions](variables/fastQrComponentsDescriptions.md)
+- [fastQrEnUsComponentsDescriptions](variables/fastQrEnUsComponentsDescriptions.md)
 - [fastQrModel](variables/fastQrModel.md)

@@ -2,6 +2,7 @@ import {boolean, define, node, number, oneOf} from '@react-form-builder/core'
 import {Row} from 'antd'
 
 export const antRow = define(Row, 'AntRow')
+  .category('antd')
   .kind('container')
   .props({
     children: node,

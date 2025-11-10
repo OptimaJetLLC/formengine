@@ -1,0 +1,207 @@
+{
+  "categories": {
+    "structure": {
+      "name": "Struttura"
+    }
+  },
+  "components": {
+    "RsCell": {
+      "description": "Cella tabella",
+      "name": "Cellula",
+      "props": {
+        "dataKey": {
+          "description": "Data binding key, ma anche una sorta di chiave",
+          "name": "Chiave dati"
+        }
+      }
+    },
+    "RsColumn": {
+      "description": "Colonna tabella",
+      "name": "Colonna",
+      "props": {
+        "align": {
+          "description": "Allineamento",
+          "name": "Allineare"
+        },
+        "colSpan": {
+          "description": "Unisce le celle della colonna da unire quando il valore 'Data key' per la colonna unita è null o undefined",
+          "name": "Col span"
+        },
+        "fixed": {
+          "description": "Colonna fissa",
+          "name": "Fisso"
+        },
+        "flexGrow": {
+          "description": "Imposta la larghezza della colonna si regola automaticamente, quando impostato 'Flex grow' non può impostare la proprietà' Ridimensionabile 'e' Width'",
+          "name": "Flex grow"
+        },
+        "fullText": {
+          "description": "Indica se visualizzare il testo completo del contenuto della cella quando il mouse è sospeso",
+          "name": "Testo integrale"
+        },
+        "minWidth": {
+          "description": "Quando si utilizza 'Flex grow', è possibile impostare una larghezza minima",
+          "name": "Larghezza minima"
+        },
+        "resizable": {
+          "description": "Personalizzabile ridimensionare la larghezza della colonna",
+          "name": "Ridimensionabili"
+        },
+        "rowSpan": {
+          "description": "Unisce le righe nella colonna specificata",
+          "name": "Span riga"
+        },
+        "sortable": {
+          "description": "Ordinabile",
+          "name": "Ordinabile"
+        },
+        "verticalAlign": {
+          "description": "Allineamento verticale",
+          "name": "Allineamento verticale"
+        },
+        "width": {
+          "description": "Larghezza colonna",
+          "name": "Larghezza"
+        }
+      }
+    },
+    "RsColumnGroup": {
+      "description": "Gruppo colonna tabella",
+      "name": "Gruppo di colonne",
+      "props": {
+        "align": {
+          "description": "Allineamento",
+          "name": "Allineare"
+        },
+        "fixed": {
+          "description": "Gruppo di colonne fisso",
+          "name": "Fisso"
+        },
+        "groupHeaderHeight": {
+          "description": "L'altezza dell'intestazione del gruppo di celle unite",
+          "name": "Altezza intestazione gruppo"
+        },
+        "header": {
+          "description": "Intestazione gruppo",
+          "name": "Intestazione"
+        },
+        "verticalAlign": {
+          "description": "Allineamento verticale",
+          "name": "Allineamento verticale"
+        }
+      }
+    },
+    "RsHeaderCell": {
+      "description": "Cella intestazione tabella",
+      "name": "Cella intestazione",
+      "props": {
+        "children": {
+          "description": "Intestazione colonna tabella",
+          "name": "Contenuto"
+        }
+      }
+    },
+    "RsTable": {
+      "description": "Tavolo",
+      "name": "Tavolo",
+      "props": {
+        "affixHeader": {
+          "description": "Apporre l'intestazione della tabella nella posizione specificata nella pagina",
+          "name": "Apporre intestazione"
+        },
+        "affixHorizontalScrollbar": {
+          "description": "Apporre la barra di scorrimento orizzontale della tabella nella posizione specificata nella pagina",
+          "name": "Apporre barra di scorrimento orizzontale"
+        },
+        "autoHeight": {
+          "description": "L'altezza della tabella verrà automaticamente espansa in base al numero di righe di dati e non verrà visualizzata alcuna barra di scorrimento verticale",
+          "name": "Altezza automatica"
+        },
+        "bordered": {
+          "description": "Mostra bordo",
+          "name": "Border"
+        },
+        "cellBordered": {
+          "description": "Mostra bordo cella",
+          "name": "Cella delimitata"
+        },
+        "data": {
+          "description": "Dati della tabella",
+          "name": "Dati"
+        },
+        "defaultSortType": {
+          "description": "Tipo di ordinamento",
+          "name": "Tipo di ordinamento predefinito"
+        },
+        "fillHeight": {
+          "description": "Forza l'altezza della tabella per essere uguale all'altezza del suo contenitore padre. Non può essere utilizzato insieme a'Auto height'",
+          "name": "Altezza riempimento"
+        },
+        "headerHeight": {
+          "description": "Altezza intestazione tabella",
+          "name": "Altezza intestazione"
+        },
+        "height": {
+          "description": "Altezza tavola",
+          "name": "Altezza"
+        },
+        "hover": {
+          "description": "La riga della tabella ha un effetto mouseover",
+          "name": "Aleggiare"
+        },
+        "loading": {
+          "description": "Mostra caricamento",
+          "name": "Caricamento"
+        },
+        "maxHeight": {
+          "description": "Altezza massima",
+          "name": "Altezza massima"
+        },
+        "minHeight": {
+          "description": "Altezza minima",
+          "name": "Altezza minima"
+        },
+        "rowClassName": {
+          "description": "Aggiungere un nome di classe extra opzionale alla riga",
+          "name": "Nome classe riga"
+        },
+        "rowHeight": {
+          "description": "Altezza riga",
+          "name": "Altezza riga"
+        },
+        "rowKey": {
+          "description": "Ogni riga corrisponde alla chiave univoca nei dati",
+          "name": "Chiave riga"
+        },
+        "shouldUpdateScroll": {
+          "description": "Indica se aggiornare lo scorrimento dopo l'aggiornamento delle dimensioni della tabella",
+          "name": "Dovrebbe aggiornare scroll"
+        },
+        "showHeader": {
+          "description": "Intestazione del display",
+          "name": "Mostra intestazione"
+        },
+        "sortColumn": {
+          "description": "Ordina nome colonna",
+          "name": "Ordina colonna"
+        },
+        "sortType": {
+          "description": "Tipo di ordinamento",
+          "name": "Tipo di ordinamento"
+        },
+        "virtualized": {
+          "description": "Renderizzare efficacemente grandi dati tabulari",
+          "name": "Virtualizzare"
+        },
+        "width": {
+          "description": "Larghezza tabella",
+          "name": "Larghezza"
+        },
+        "wordWrap": {
+          "description": "Indica se visualizzare interruzioni di riga in cui il testo trabocca la casella del contenuto",
+          "name": "A capo campo"
+        }
+      }
+    }
+  }
+}

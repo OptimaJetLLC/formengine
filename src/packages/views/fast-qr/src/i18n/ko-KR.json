@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "static": {
+      "name": "정적"
+    }
+  },
+  "components": {
+    "FastQR": {
+      "description": "텍스트 변환 및 사용자 정의 색상 및 로고 지원",
+      "name": "코드",
+      "props": {
+        "content": {
+          "description": "코드 내용",
+          "name": "내용"
+        },
+        "errorCorrectionLevel": {
+          "description": "오류 수정 코딩 수준",
+          "name": "오류 수정 수준"
+        },
+        "image": {
+          "description": "이미지,베이스 64 또는",
+          "name": "이미지"
+        },
+        "imageBackgroundColor": {
+          "description": "이미지 배경 색상",
+          "name": "이미지 배경 색상"
+        },
+        "imageBackgroundShape": {
+          "description": "이미지 배경 모양",
+          "name": "이미지 배경 모양"
+        },
+        "moduleColor": {
+          "description": "모듈 색상",
+          "name": "단위 색깔"
+        },
+        "shape": {
+          "description": "모듈을 나타내는 다른 가능한 모양",
+          "name": "모양"
+        },
+        "version": {
+          "description": "코드 버전",
+          "name": "버전"
+        },
+        "width": {
+          "description": "코드 폭",
+          "name": "폭"
+        }
+      }
+    }
+  }
+}

@@ -12,6 +12,8 @@
 ## Variables
 
 - [googleMapComponent](variables/googleMapComponent.md)
+- [googleMapComponentsDescriptions](variables/googleMapComponentsDescriptions.md)
+- [googleMapEnUsComponentsDescriptions](variables/googleMapEnUsComponentsDescriptions.md)
 - [googleMapModel](variables/googleMapModel.md)
 
 ## Functions

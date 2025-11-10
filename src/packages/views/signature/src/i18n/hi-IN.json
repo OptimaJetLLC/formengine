@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "fields": {
+      "name": "फील्ड्स"
+    }
+  },
+  "components": {
+    "RsSignature": {
+      "description": "एचटीएमएल 5 कैनवास आधारित चिकना हस्ताक्षर ड्राइंग",
+      "name": "हस्ताक्षर",
+      "props": {
+        "backgroundColor": {
+          "description": "पृष्ठभूमि रंग",
+          "name": "पृष्ठभूमि रंग"
+        },
+        "clearButtonText": {
+          "description": "बटन लेबल साफ़ करें",
+          "name": "स्पष्ट बटन पाठ"
+        },
+        "height": {
+          "description": "कैनवास ऊंचाई",
+          "name": "ऊंचाई"
+        },
+        "label": {
+          "description": "घटक के लिए लेबल",
+          "name": "लेबल"
+        },
+        "lineWidth": {
+          "description": "लाइन चौड़ाई",
+          "name": "लाइन चौड़ाई"
+        },
+        "penColor": {
+          "description": "कलम का रंग",
+          "name": "कलम का रंग"
+        },
+        "readOnly": {
+          "description": "केवल पढ़ने के लिए झंडा",
+          "name": "केवल पढ़ें"
+        },
+        "value": {
+          "description": "हस्ताक्षर छवि खींचने के लिए प्रारंभिक डेटा यूआरएल",
+          "name": "मूल्य"
+        },
+        "width": {
+          "description": "कैनवास चौड़ाई",
+          "name": "चौड़ाई"
+        }
+      }
+    }
+  }
+}

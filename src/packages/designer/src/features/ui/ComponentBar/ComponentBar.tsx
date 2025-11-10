@@ -9,6 +9,7 @@ import {transformComponentNameToCssClass} from '../../../utils/transformComponen
 import {AddedComponent} from '../../dnd'
 import {useTranslationPart} from '../../localization/hooks'
 import {SearchForm} from './components/SearchForm'
+import {useComponentLibraryDescription} from './useComponentLibraryDescription'
 
 const searchFormStyle = {maxWidth: 300} as const
 
@@ -102,7 +103,14 @@ interface ControlGroupsProps extends DraggableProps {
 const RawControlGroups = (props: ControlGroupsProps) => {
   const {availableComponents} = useBuilderStore()
   const t = useTranslationPart('componentsList.categories')
+  const getLibraryDescription = useComponentLibraryDescription()
   const {filter, ...componentProps} = props
+
+  const getCategoryName = useCallback((category: string) => {
+    return getLibraryDescription(libraryDescription => libraryDescription?.categories?.[category]?.name)
+      || t(category)
+      || category
+  }, [getLibraryDescription, t])
 
   const isMatch = useCallback((el: Model) => {
     return filter ? el.name.toLowerCase().includes(filter.toLowerCase()) : true
@@ -132,7 +140,7 @@ const RawControlGroups = (props: ControlGroupsProps) => {
 
   for (const category in filteredComponents) {
     const noCategory = category === EmptyComponentCategory
-    const header = noCategory ? null : <Subheader>{t(category) || category}</Subheader>
+    const header = noCategory ? null : <Subheader>{getCategoryName(category)}</Subheader>
     const className = noCategory ? 'top' : category
     result.push(
       <div key={category} className={cx([componentGroupStaticClassname, transformComponentNameToCssClass(className)])}

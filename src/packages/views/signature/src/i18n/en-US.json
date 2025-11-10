@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "fields": {
+      "name": "Fields"
+    }
+  },
+  "components": {
+    "RsSignature": {
+      "name": "Signature",
+      "description": "HTML5 canvas based smooth signature drawing",
+      "props": {
+        "value": {
+          "name": "Value",
+          "description": "The initial data URL for drawing the signature image"
+        },
+        "label": {
+          "name": "Label",
+          "description": "The label for the component"
+        },
+        "clearButtonText": {
+          "name": "Clear button text",
+          "description": "Clear button label"
+        },
+        "width": {
+          "name": "Width",
+          "description": "The canvas width"
+        },
+        "height": {
+          "name": "Height",
+          "description": "The canvas height"
+        },
+        "lineWidth": {
+          "name": "Line width",
+          "description": "The line width"
+        },
+        "penColor": {
+          "name": "Pen color",
+          "description": "The pen color"
+        },
+        "backgroundColor": {
+          "name": "Background color",
+          "description": "The background color"
+        },
+        "readOnly": {
+          "name": "Read only",
+          "description": "Read-only flag"
+        }
+      }
+    }
+  }
+}

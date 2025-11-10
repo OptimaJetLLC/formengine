@@ -40,6 +40,14 @@ the array of metadata of form builder components.
 
 ***
 
+### i18nDescriptions?
+
+> `optional` **i18nDescriptions**: `Record`\<`` `${string}-${string}` ``, [`ComponentLibraryDescription`](../type-aliases/ComponentLibraryDescription.md)\>[]
+
+The description of the component library in different languages.
+
+***
+
 ### paletteFilter()?
 
 > `optional` **paletteFilter**: (`builderComponent`) => `boolean`
@@ -303,6 +311,28 @@ the component type name.
 #### Returns
 
 `void`
+
+***
+
+### withComponentLibraryDescription()
+
+> **withComponentLibraryDescription**(`i18nDescription`): `this`
+
+Adds a description of the component library in different languages.
+
+#### Parameters
+
+##### i18nDescription
+
+`Record`\<[`LanguageFullCode`](../type-aliases/LanguageFullCode.md), [`ComponentLibraryDescription`](../type-aliases/ComponentLibraryDescription.md)\>
+
+the description of the component library in different languages.
+
+#### Returns
+
+`this`
+
+the instance of the BuilderView class.
 
 ***
 

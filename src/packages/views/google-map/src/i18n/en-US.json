@@ -1,0 +1,107 @@
+{
+  "categories": {
+    "fields": {
+      "name": "Fields"
+    }
+  },
+  "components": {
+    "GoogleMap": {
+      "name": "Google Map",
+      "description": "Component displaying a Google map",
+      "props": {
+        "latitude": {
+          "name": "Latitude",
+          "description": "Latitude of the center point"
+        },
+        "longitude": {
+          "name": "Longitude",
+          "description": "Longitude of the center point"
+        },
+        "zoom": {
+          "name": "Zoom",
+          "description": "Zoom level"
+        },
+        "apiKey": {
+          "name": "API key",
+          "description": "Google Maps API key"
+        },
+        "markers": {
+          "name": "Markers",
+          "description": "Coordinates of the markers"
+        },
+        "collisionBehavior": {
+          "name": "Collision behavior",
+          "description": "The markers collision behavior"
+        },
+        "allowMultipleMarkers": {
+          "name": "Allow multiple markers",
+          "description": "Multiple markers"
+        },
+        "allowChangingMarkers": {
+          "name": "Allow changing markers",
+          "description": "If checked, the user can change the markers"
+        },
+        "mapId": {
+          "name": "Map ID",
+          "description": "The map ID is an identifier that's associated with a specific map style or feature"
+        },
+        "region": {
+          "name": "Region",
+          "description": "The region code to use"
+        },
+        "language": {
+          "name": "Language",
+          "description": "The language to use"
+        },
+        "colorScheme": {
+          "name": "Color scheme",
+          "description": "The color scheme to use"
+        },
+        "gestureHandling": {
+          "name": "Gesture handling",
+          "description": "The gesture handling to use"
+        },
+        "mapTypeId": {
+          "name": "Map type",
+          "description": "The default map type to use"
+        },
+        "showMapControl": {
+          "name": "Show map control",
+          "description": "Whether to show the map control"
+        },
+        "mapControlPosition": {
+          "name": "Map control position",
+          "description": "The position of the map control"
+        },
+        "addMarkerOnSearch": {
+          "name": "Add marker on search",
+          "description": "Whether to add a marker on search"
+        },
+        "markerWindowTitle": {
+          "name": "Marker window title",
+          "description": "The title of the marker window"
+        },
+        "removeMarkerCaption": {
+          "name": "Remove marker caption",
+          "description": "The caption on the marker removal button"
+        },
+        "searchPlaceholder": {
+          "name": "Search placeholder",
+          "description": "Placeholder text for the map search input"
+        },
+        "label": {
+          "name": "Label",
+          "description": "Map label"
+        },
+        "width": {
+          "name": "Width",
+          "description": "Width of the map"
+        },
+        "height": {
+          "name": "Height",
+          "description": "Height of the map"
+        }
+      }
+    }
+  }
+}

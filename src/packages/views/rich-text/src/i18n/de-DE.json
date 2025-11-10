@@ -1,0 +1,39 @@
+{
+  "categories": {
+    "fields": {
+      "name": "Datenfelder"
+    }
+  },
+  "components": {
+    "RichTextEditor": {
+      "description": "Ihr leistungsstarker Rich-Text-Editor",
+      "name": "Rich-Text-Editor",
+      "props": {
+        "initialValue": {
+          "description": "Anfangswert",
+          "name": "Anfangswert"
+        },
+        "label": {
+          "description": "Etikett",
+          "name": "Etikett"
+        },
+        "modules": {
+          "description": "Ermöglicht die Anpassung des Verhaltens und der Funktionalität des Editors. Lesen Sie die Dokumente für weitere Informationen",
+          "name": "Funktionsbausteine"
+        },
+        "placeholder": {
+          "description": "Platzhalter",
+          "name": "Platzhalter"
+        },
+        "readOnly": {
+          "description": "Schreibgeschütztes Flag",
+          "name": "Schreibgesch"
+        },
+        "toolbarOptions": {
+          "description": "Gruppen von Schaltflächen, die in der Symbolleiste angezeigt werden sollen",
+          "name": "Symbolleistenoptionen"
+        }
+      }
+    }
+  }
+}

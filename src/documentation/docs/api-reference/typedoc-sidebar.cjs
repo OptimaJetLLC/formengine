@@ -28,6 +28,16 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-fast-qr/variables/fastQrComponentsDescriptions",
+              label: "fastQrComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-fast-qr/variables/fastQrEnUsComponentsDescriptions",
+              label: "fastQrEnUsComponentsDescriptions"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-fast-qr/variables/fastQrModel",
               label: "fastQrModel"
             }
@@ -81,6 +91,16 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-google-map/variables/googleMapComponentsDescriptions",
+              label: "googleMapComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-google-map/variables/googleMapEnUsComponentsDescriptions",
+              label: "googleMapEnUsComponentsDescriptions"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-google-map/variables/googleMapModel",
               label: "googleMapModel"
             }
@@ -126,6 +146,16 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/components-rich-text/variables/richTextComponent",
               label: "richTextComponent"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rich-text/variables/richTextEditorComponentsDescriptions",
+              label: "richTextEditorComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rich-text/variables/richTextEditorEnUsComponentsDescriptions",
+              label: "richTextEditorEnUsComponentsDescriptions"
             },
             {
               type: "doc",
@@ -527,6 +557,16 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite/variables/rSuiteComponentsDescriptions",
+              label: "rSuiteComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite/variables/rSuiteEnUsComponentsDescriptions",
+              label: "rSuiteEnUsComponentsDescriptions"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-rsuite/variables/rsUploader",
               label: "rsUploader"
             },
@@ -607,6 +647,16 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/components-signature/variables/signatureComponent",
               label: "signatureComponent"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-signature/variables/signatureComponentsDescriptions",
+              label: "signatureComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-signature/variables/signatureEnUsComponentsDescriptions",
+              label: "signatureEnUsComponentsDescriptions"
             },
             {
               type: "doc",
@@ -1059,6 +1109,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/ComponentDescription",
+              label: "ComponentDescription"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/ComponentDeviceStyle",
               label: "ComponentDeviceStyle"
             },
@@ -1081,6 +1136,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/ComponentKind",
               label: "ComponentKind"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/ComponentLibraryDescription",
+              label: "ComponentLibraryDescription"
             },
             {
               type: "doc",
@@ -1276,6 +1336,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/HtmlAttribute",
               label: "HtmlAttribute"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/I18nItem",
+              label: "I18nItem"
             },
             {
               type: "doc",
@@ -1592,6 +1657,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/variables/containerStyles",
               label: "containerStyles"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/coreComponentsDescriptions",
+              label: "coreComponentsDescriptions"
             },
             {
               type: "doc",
@@ -2442,6 +2512,16 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/fastQrComponent/variables/fastQrComponentsDescriptions",
+                      label: "fastQrComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/fastQrComponent/variables/fastQrEnUsComponentsDescriptions",
+                      label: "fastQrEnUsComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/fastQrComponent/variables/fastQrModel",
                       label: "fastQrModel"
                     }
@@ -2495,6 +2575,16 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/googleMapComponent/variables/googleMapComponentsDescriptions",
+                      label: "googleMapComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/googleMapComponent/variables/googleMapEnUsComponentsDescriptions",
+                      label: "googleMapEnUsComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/googleMapComponent/variables/googleMapModel",
                       label: "googleMapModel"
                     }
@@ -2540,6 +2630,16 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/richTextComponent/variables/richTextComponent",
                       label: "richTextComponent"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/richTextComponent/variables/richTextEditorComponentsDescriptions",
+                      label: "richTextEditorComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/richTextComponent/variables/richTextEditorEnUsComponentsDescriptions",
+                      label: "richTextEditorEnUsComponentsDescriptions"
                     },
                     {
                       type: "doc",
@@ -2941,6 +3041,16 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/rSuiteComponentsDescriptions",
+                      label: "rSuiteComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/rSuiteEnUsComponentsDescriptions",
+                      label: "rSuiteEnUsComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/rsUploader",
                       label: "rsUploader"
                     },
@@ -3013,6 +3123,16 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteTableComponents/variables/rSuiteTableComponentsDescriptions",
+                      label: "rSuiteTableComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteTableComponents/variables/rSuiteTableEnUsComponentsDescriptions",
+                      label: "rSuiteTableEnUsComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteTableComponents/variables/tableModels",
                       label: "tableModels"
                     }
@@ -3047,6 +3167,16 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/signatureComponent/variables/signatureComponent",
                       label: "signatureComponent"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/signatureComponent/variables/signatureComponentsDescriptions",
+                      label: "signatureComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/signatureComponent/variables/signatureEnUsComponentsDescriptions",
+                      label: "signatureEnUsComponentsDescriptions"
                     },
                     {
                       type: "doc",
@@ -3506,6 +3636,16 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/rSuiteComponentsDescriptions",
+                      label: "rSuiteComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/rSuiteEnUsComponentsDescriptions",
+                      label: "rSuiteEnUsComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/rsUploader",
                       label: "rsUploader"
                     },
@@ -3653,6 +3793,16 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/fastQrComponent/variables/fastQrComponentsDescriptions",
+                      label: "fastQrComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/fastQrComponent/variables/fastQrEnUsComponentsDescriptions",
+                      label: "fastQrEnUsComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/fastQrComponent/variables/fastQrModel",
                       label: "fastQrModel"
                     }
@@ -3706,6 +3856,16 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/googleMapComponent/variables/googleMapComponentsDescriptions",
+                      label: "googleMapComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/googleMapComponent/variables/googleMapEnUsComponentsDescriptions",
+                      label: "googleMapEnUsComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/googleMapComponent/variables/googleMapModel",
                       label: "googleMapModel"
                     }
@@ -3751,6 +3911,16 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/richTextComponent/variables/richTextComponent",
                       label: "richTextComponent"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/richTextComponent/variables/richTextEditorComponentsDescriptions",
+                      label: "richTextEditorComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/richTextComponent/variables/richTextEditorEnUsComponentsDescriptions",
+                      label: "richTextEditorEnUsComponentsDescriptions"
                     },
                     {
                       type: "doc",
@@ -4152,6 +4322,16 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/rSuiteComponentsDescriptions",
+                      label: "rSuiteComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/rSuiteEnUsComponentsDescriptions",
+                      label: "rSuiteEnUsComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/rsUploader",
                       label: "rsUploader"
                     },
@@ -4224,6 +4404,16 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteTableComponents/variables/rSuiteTableComponentsDescriptions",
+                      label: "rSuiteTableComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteTableComponents/variables/rSuiteTableEnUsComponentsDescriptions",
+                      label: "rSuiteTableEnUsComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteTableComponents/variables/tableModels",
                       label: "tableModels"
                     }
@@ -4258,6 +4448,16 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/signatureComponent/variables/signatureComponent",
                       label: "signatureComponent"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/signatureComponent/variables/signatureComponentsDescriptions",
+                      label: "signatureComponentsDescriptions"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/signatureComponent/variables/signatureEnUsComponentsDescriptions",
+                      label: "signatureEnUsComponentsDescriptions"
                     },
                     {
                       type: "doc",

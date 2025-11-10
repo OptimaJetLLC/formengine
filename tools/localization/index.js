@@ -1,11 +1,8 @@
 import 'dotenv/config.js'
-
-import path from 'path';
-import fs from 'fs';
-
+import {join} from 'node:path';
+import {copyFileSync, existsSync, readFileSync} from 'node:fs';
 import axios from 'axios';
 import deepMerge from 'deepmerge';
-
 import {
   diffByKeys,
   flattenArrayToObject,
@@ -18,7 +15,6 @@ import {
   stripSpanTags,
   wrapPlaceholders
 } from './utils.js';
-
 import locales from './localizations.js'
 
 //https://cloud.yandex.ru/docs/translate/quickstart
@@ -34,12 +30,16 @@ const LOCALIZATION_FOLDER = [
 const {en, ...localizations} = locales;
 
 function getLocalization(folder, languageCode) {
-  const contents = fs.readFileSync(`${folder}/${languageCode}.json`, {encoding: 'utf8'})
+  const filename = `${folder}/${languageCode}.json`
+
+  if (!existsSync(filename)) return {}
+
+  const contents = readFileSync(filename, {encoding: 'utf8'})
   return JSON.parse(contents)
 }
 
 function save(folder, targetLang, localization) {
-  saveToFile(path.join(folder, String(localizations[targetLang]) + '.json'), localization);
+  saveToFile(join(folder, String(localizations[targetLang]) + '.json'), localization);
 }
 
 //texts should be an array like ["first word", "second", ...]
@@ -127,18 +127,34 @@ function translateRSuiteFolder() {
 
     const fileName = `${fullCode}.json`
     // update components localization
-    fs.copyFileSync(
-      path.join(rSuiteFolder, fileName),
-      path.join(rSuiteComponentsFolder, fileName)
+    copyFileSync(
+      join(rSuiteFolder, fileName),
+      join(rSuiteComponentsFolder, fileName)
     )
   });
 
   console.log('translating ', rSuiteFolder, 'done!');
 }
 
+function translateComponentsDescriptions() {
+  const componentsFolders = [
+    '../../src/packages/views/antd/src/i18n',
+    '../../src/packages/views/fast-qr/src/i18n',
+    '../../src/packages/views/google-map/src/i18n',
+    '../../src/packages/views/rich-text/src/i18n',
+    '../../src/packages/views/rsuite/src/i18n',
+    '../../src/packages/views/rsuite-table/src/i18n',
+    '../../src/packages/views/signature/src/i18n',
+    '../../src/packages/core/src/i18n',
+  ]
+
+  componentsFolders.forEach(translateFolder)
+}
+
 function run() {
   LOCALIZATION_FOLDER.forEach(translateFolder)
   translateRSuiteFolder()
+  translateComponentsDescriptions()
 }
 
 

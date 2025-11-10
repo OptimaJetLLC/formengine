@@ -1,0 +1,255 @@
+{
+  "categories": {
+    "antd": {
+      "name": "Componenti di progettazione Ant"
+    }
+  },
+  "components": {
+    "AntButton": {
+      "description": "Un pulsante indica un'operazione (o una serie di operazioni). Facendo clic su un pulsante si attiverà la logica di business corrispondente",
+      "name": "Pulsante Ant",
+      "props": {
+        "block": {
+          "description": "Opzione per adattare la larghezza del pulsante alla larghezza padre",
+          "name": "Blocco"
+        },
+        "children": {
+          "description": "Didascalia",
+          "name": "Contenuto"
+        },
+        "danger": {
+          "description": "Impostare lo stato di pericolo del pulsante",
+          "name": "Pericolo"
+        },
+        "disabled": {
+          "description": "Stato disabilitato del pulsante",
+          "name": "Disabilita"
+        },
+        "ghost": {
+          "description": "Rendi trasparente lo sfondo e inverti i colori del testo e del bordo",
+          "name": "Fantasma"
+        },
+        "href": {
+          "description": "Reindirizzare l'URL del pulsante di collegamento",
+          "name": "Href"
+        },
+        "htmlType": {
+          "description": "Imposta il tipo di pulsante HTML originale",
+          "name": "Tipo HTML"
+        },
+        "loading": {
+          "description": "Impostare lo stato di caricamento del pulsante",
+          "name": "Caricamento"
+        },
+        "shape": {
+          "description": "Può essere impostato forma del pulsante",
+          "name": "Forma"
+        },
+        "size": {
+          "description": "Imposta la dimensione del pulsante",
+          "name": "Dimensione"
+        },
+        "target": {
+          "description": "Uguale all'attributo target di a, funziona quando viene specificato href",
+          "name": "Obiettivo"
+        },
+        "type": {
+          "description": "Può essere impostato su primario fantasma tratteggiata link testo predefinito",
+          "name": "Tipo"
+        }
+      }
+    },
+    "AntCol": {
+      "description": "La colonna della griglia",
+      "name": "Ant Col",
+      "props": {
+        "flex": {
+          "description": "Stile di layout flessibile",
+          "name": "Flex"
+        },
+        "lg": {
+          "description": "Schermo ≥ 992px",
+          "name": "LG"
+        },
+        "md": {
+          "description": "Schermo ≥ 768px",
+          "name": "Md"
+        },
+        "offset": {
+          "description": "Il numero di celle da sfalsare Col da sinistra",
+          "name": "Offset"
+        },
+        "order": {
+          "description": "Ordine raster",
+          "name": "Ordine"
+        },
+        "pull": {
+          "description": "Il numero di celle che raster viene spostato a sinistra",
+          "name": "Tirare"
+        },
+        "push": {
+          "description": "Il numero di celle che raster viene spostato a destra",
+          "name": "Spingere"
+        },
+        "sm": {
+          "description": "Schermo ≥ 576px",
+          "name": "Sm"
+        },
+        "span": {
+          "description": "Raster numero di celle da occupare",
+          "name": "Campata"
+        },
+        "xl": {
+          "description": "Schermo ≥ 1200px",
+          "name": "Xl"
+        },
+        "xs": {
+          "description": "Schermo &lt; 576px e anche impostazione predefinita",
+          "name": "X"
+        },
+        "xxl": {
+          "description": "Schermo ≥ 1600px",
+          "name": "Xxl"
+        }
+      }
+    },
+    "AntInput": {
+      "description": "Attraverso il contenuto di input del mouse o della tastiera, è il wrapper del campo del modulo più semplice",
+      "name": "Ingresso Ant",
+      "props": {
+        "disabled": {
+          "description": "Se l'input è disabilitato",
+          "name": "Disabilita"
+        },
+        "showCount": {
+          "description": "Indica se mostrare il conteggio dei caratteri",
+          "name": "Mostra conteggio"
+        },
+        "size": {
+          "description": "La dimensione della casella di input",
+          "name": "Dimensione"
+        },
+        "status": {
+          "description": "Imposta lo stato di convalida",
+          "name": "Stato"
+        },
+        "value": {
+          "description": "Il valore contenuto di input",
+          "name": "Valore"
+        },
+        "variant": {
+          "description": "Varianti di input",
+          "name": "Variante"
+        }
+      }
+    },
+    "AntModal": {
+      "description": "Visualizzare una finestra di dialogo modale, che fornisce un titolo, un'area del contenuto e pulsanti di azione",
+      "name": "Formica Modale",
+      "props": {
+        "cancelText": {
+          "description": "Testo del pulsante Annulla",
+          "name": "Annulla testo"
+        },
+        "centered": {
+          "description": "Modale centrato",
+          "name": "Centrato"
+        },
+        "keyboard": {
+          "description": "Se supporto premere ESC per chiudere",
+          "name": "Tastiera"
+        },
+        "okText": {
+          "description": "Testo del pulsante OK",
+          "name": "OK testo"
+        }
+      }
+    },
+    "AntRow": {
+      "description": "La riga della griglia",
+      "name": "Ant Row",
+      "props": {
+        "align": {
+          "description": "Allineamento verticale",
+          "name": "Allineare"
+        },
+        "gutter": {
+          "description": "Spaziatura tra le griglie",
+          "name": "Grondaia"
+        },
+        "justify": {
+          "description": "Disposizione orizzontale",
+          "name": "Giustificare"
+        },
+        "wrap": {
+          "description": "Linea Auto wrap",
+          "name": "Avvolgere"
+        }
+      }
+    },
+    "AntTable": {
+      "description": "Una tabella visualizza righe di dati",
+      "name": "Ant Table",
+      "props": {
+        "bordered": {
+          "description": "Indica se mostrare tutti i bordi della tabella",
+          "name": "Border"
+        },
+        "columns": {
+          "description": "Colonne della tabella",
+          "name": "Colonna"
+        },
+        "dataSource": {
+          "description": "Array di record di dati da visualizzare",
+          "name": "Origine dati"
+        },
+        "loading": {
+          "description": "Stato di caricamento della tabella",
+          "name": "Caricamento"
+        },
+        "rowHoverable": {
+          "description": "Row hover",
+          "name": "Riga hoverable"
+        },
+        "rowKey": {
+          "description": "Chiave unica di Row",
+          "name": "Chiave riga"
+        },
+        "showHeader": {
+          "description": "Indica se mostrare l'intestazione della tabella",
+          "name": "Mostra intestazione"
+        },
+        "showSorterTooltip": {
+          "description": "L'intestazione mostra il suggerimento per la direzione del sorter successivo",
+          "name": "Mostra descrizione del selezionatore"
+        },
+        "size": {
+          "description": "Dimensione della tabella",
+          "name": "Dimensione"
+        },
+        "sticky": {
+          "description": "Imposta intestazione appiccicosa e barra di scorrimento",
+          "name": "Appiccicoso"
+        }
+      }
+    },
+    "AntTooltip": {
+      "description": "Casella popup di testo semplice",
+      "name": "Ant Tooltip",
+      "props": {
+        "placement": {
+          "description": "La posizione del tooltip rispetto al target",
+          "name": "Posizionamento"
+        },
+        "text": {
+          "description": "Il testo mostrato nel tooltip",
+          "name": "Testo"
+        },
+        "trigger": {
+          "description": "Tooltip modalità trigger",
+          "name": "Innescare"
+        }
+      }
+    }
+  }
+}

@@ -210,3 +210,7 @@ export {
   isNumber,
   cloneDeep
 } from './utils/tools'
+export type {
+  ComponentDescription, ComponentLibraryDescription, I18nItem
+} from './features/annotation/ComponentDescriptions'
+export {coreComponentsDescriptions} from './i18n/coreComponentsDescriptions'

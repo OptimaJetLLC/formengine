@@ -1,0 +1,255 @@
+{
+  "categories": {
+    "antd": {
+      "name": "Composants de conception Ant"
+    }
+  },
+  "components": {
+    "AntButton": {
+      "description": "Un bouton signifie une opération (ou une série d'opérations). Cliquer sur un bouton déclenchera sa logique métier correspondante",
+      "name": "Bouton Fourmi",
+      "props": {
+        "block": {
+          "description": "Option pour ajuster la largeur du bouton à sa largeur parent",
+          "name": "Bloquer"
+        },
+        "children": {
+          "description": "Légende",
+          "name": "Contenu"
+        },
+        "danger": {
+          "description": "Définir l'état de danger du bouton",
+          "name": "Danger"
+        },
+        "disabled": {
+          "description": "État désactivé du bouton",
+          "name": "Désactivé"
+        },
+        "ghost": {
+          "description": "Rendre l'arrière-plan transparent et inverser les couleurs du texte et des bordures",
+          "name": "Fantôme"
+        },
+        "href": {
+          "description": "Rediriger l'URL du bouton de lien",
+          "name": "FRH"
+        },
+        "htmlType": {
+          "description": "Définir le type de bouton HTML d'origine",
+          "name": "Type de code HTML"
+        },
+        "loading": {
+          "description": "Définir l'état de chargement du bouton",
+          "name": "Chargement"
+        },
+        "shape": {
+          "description": "Peut être réglé en forme de bouton",
+          "name": "Forme"
+        },
+        "size": {
+          "description": "Définir la taille du bouton",
+          "name": "Taille"
+        },
+        "target": {
+          "description": "Identique à l'attribut cible de a, fonctionne lorsque href est spécifié",
+          "name": "Cible"
+        },
+        "type": {
+          "description": "Peut être défini sur le texte de lien pointillé fantôme principal par défaut",
+          "name": "Type"
+        }
+      }
+    },
+    "AntCol": {
+      "description": "La colonne de la grille",
+      "name": "Chou Fourmi",
+      "props": {
+        "flex": {
+          "description": "Style de mise en page flexible",
+          "name": "Souple"
+        },
+        "lg": {
+          "description": "Écran ≥ 992 pixels",
+          "name": "L"
+        },
+        "md": {
+          "description": "Écran ≥ 768 pixels",
+          "name": "Dm"
+        },
+        "offset": {
+          "description": "Le nombre de cellules à décaler Col à partir de la gauche",
+          "name": "Décalage"
+        },
+        "order": {
+          "description": "Ordre raster",
+          "name": "Commande"
+        },
+        "pull": {
+          "description": "Le nombre de cellules que le raster est déplacé vers la gauche",
+          "name": "Tirer"
+        },
+        "push": {
+          "description": "Le nombre de cellules que le raster est déplacé vers la droite",
+          "name": "Pousser"
+        },
+        "sm": {
+          "description": "Écran ≥ 576 pixels",
+          "name": "SM"
+        },
+        "span": {
+          "description": "Nombre raster de cellules à occuper",
+          "name": "Envergure"
+        },
+        "xl": {
+          "description": "Écran ≥ 1200 pixels",
+          "name": "L"
+        },
+        "xs": {
+          "description": "Écran &lt; 576px et également réglage par défaut",
+          "name": "L"
+        },
+        "xxl": {
+          "description": "Écran ≥ 1600 pixels",
+          "name": "L"
+        }
+      }
+    },
+    "AntInput": {
+      "description": "Grâce au contenu d'entrée de la souris ou du clavier, il s'agit de l'encapsuleur de champ de formulaire le plus basique",
+      "name": "Entrée de Fourmi",
+      "props": {
+        "disabled": {
+          "description": "Indique si l'entrée est désactivée",
+          "name": "Désactivé"
+        },
+        "showCount": {
+          "description": "Indique s'il faut afficher le nombre de caractères",
+          "name": "Afficher le nombre"
+        },
+        "size": {
+          "description": "La taille de la zone de saisie",
+          "name": "Taille"
+        },
+        "status": {
+          "description": "Définir le statut de validation",
+          "name": "Statut"
+        },
+        "value": {
+          "description": "La valeur du contenu d'entrée",
+          "name": "Valeur"
+        },
+        "variant": {
+          "description": "Variantes d'entrée",
+          "name": "Variante"
+        }
+      }
+    },
+    "AntModal": {
+      "description": "Afficher une boîte de dialogue modale, fournissant un titre, une zone de contenu et des boutons d'action",
+      "name": "Fourmi Modale",
+      "props": {
+        "cancelText": {
+          "description": "Texte du bouton d'annulation",
+          "name": "Annuler le texte"
+        },
+        "centered": {
+          "description": "Modale Centrée",
+          "name": "Centré"
+        },
+        "keyboard": {
+          "description": "Si le support appuie sur ECHAP pour fermer",
+          "name": "Clavier"
+        },
+        "okText": {
+          "description": "Texte du bouton OK",
+          "name": "Texte d'ACCORD"
+        }
+      }
+    },
+    "AntRow": {
+      "description": "La ligne de la grille",
+      "name": "Rangée de Fourmis",
+      "props": {
+        "align": {
+          "description": "Alignement vertical",
+          "name": "Aligner"
+        },
+        "gutter": {
+          "description": "Espacement entre les grilles",
+          "name": "Gouttière"
+        },
+        "justify": {
+          "description": "Disposition horizontale",
+          "name": "Justifier"
+        },
+        "wrap": {
+          "description": "Ligne d'emballage automatique",
+          "name": "Envelopper"
+        }
+      }
+    },
+    "AntTable": {
+      "description": "Un tableau affiche des lignes de données",
+      "name": "Table de Fourmis",
+      "props": {
+        "bordered": {
+          "description": "Indique s'il faut afficher toutes les bordures de table",
+          "name": "Bordé"
+        },
+        "columns": {
+          "description": "Colonnes de tableau",
+          "name": "Colonnes"
+        },
+        "dataSource": {
+          "description": "Tableau d'enregistrements de données à afficher",
+          "name": "Source des données"
+        },
+        "loading": {
+          "description": "État de chargement de la table",
+          "name": "Chargement"
+        },
+        "rowHoverable": {
+          "description": "Survol de ligne",
+          "name": "Rangée hoverable"
+        },
+        "rowKey": {
+          "description": "Clé unique de Row",
+          "name": "Clé de ligne"
+        },
+        "showHeader": {
+          "description": "Indique s'il faut afficher l'en-tête du tableau",
+          "name": "Afficher l'en-tête"
+        },
+        "showSorterTooltip": {
+          "description": "L'en-tête affiche l'info-bulle de la direction du trieur suivant",
+          "name": "Afficher l'info-bulle du trieur"
+        },
+        "size": {
+          "description": "Taille de la table",
+          "name": "Taille"
+        },
+        "sticky": {
+          "description": "Définir un en-tête collant et une barre de défilement",
+          "name": "Collant"
+        }
+      }
+    },
+    "AntTooltip": {
+      "description": "Boîte contextuelle de texte simple",
+      "name": "Infobulle de Fourmi",
+      "props": {
+        "placement": {
+          "description": "La position de l'info-bulle par rapport à la cible",
+          "name": "Placement"
+        },
+        "text": {
+          "description": "Le texte affiché dans l'info-bulle",
+          "name": "Texte"
+        },
+        "trigger": {
+          "description": "Mode de déclenchement de l'info-bulle",
+          "name": "Déclencheur"
+        }
+      }
+    }
+  }
+}

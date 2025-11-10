@@ -1,0 +1,255 @@
+{
+  "categories": {
+    "antd": {
+      "name": "مكونات تصميم النمل"
+    }
+  },
+  "components": {
+    "AntButton": {
+      "description": "زر يعني عملية (أو سلسلة من العمليات). سيؤدي النقر فوق زر إلى تشغيل منطق العمل المقابل",
+      "name": "زر النمل",
+      "props": {
+        "block": {
+          "description": "خيار لملاءمة عرض الزر مع عرضه الأصلي",
+          "name": "بلوك"
+        },
+        "children": {
+          "description": "شرح",
+          "name": "المحتوى"
+        },
+        "danger": {
+          "description": "تعيين حالة الخطر من زر",
+          "name": "خطر"
+        },
+        "disabled": {
+          "description": "حالة تعطيل زر",
+          "name": "معاق"
+        },
+        "ghost": {
+          "description": "اجعل الخلفية شفافة وعكس ألوان النص والحدود",
+          "name": "شبح"
+        },
+        "href": {
+          "description": "إعادة توجيه رابط زر الارتباط",
+          "name": "هريف"
+        },
+        "htmlType": {
+          "description": "تعيين نوع هتمل الأصلي من زر",
+          "name": "نوع أتش تي أم أل"
+        },
+        "loading": {
+          "description": "اضبط حالة تحميل الزر",
+          "name": "تحميل"
+        },
+        "shape": {
+          "description": "يمكن تعيين شكل زر",
+          "name": "الشكل"
+        },
+        "size": {
+          "description": "تعيين حجم زر",
+          "name": "الحجم"
+        },
+        "target": {
+          "description": "نفس السمة الهدف من, يعمل عندما يتم تحديد هريف",
+          "name": "الهدف"
+        },
+        "type": {
+          "description": "يمكن تعيين إلى شبح الأساسي متقطع نص الارتباط الافتراضي",
+          "name": "النوع"
+        }
+      }
+    },
+    "AntCol": {
+      "description": "العمود من الشبكة",
+      "name": "النمل العقيد",
+      "props": {
+        "flex": {
+          "description": "نمط تخطيط فليكس",
+          "name": "فليكس"
+        },
+        "lg": {
+          "description": "شاشة ≥ 992 بكسل",
+          "name": "إل جي"
+        },
+        "md": {
+          "description": "شاشة ≥ 768 بكسل",
+          "name": "دكتوراه في الطب"
+        },
+        "offset": {
+          "description": "عدد الخلايا لتعويض العقيد من اليسار",
+          "name": "الإزاحة"
+        },
+        "order": {
+          "description": "ترتيب النقطية",
+          "name": "النظام"
+        },
+        "pull": {
+          "description": "عدد الخلايا التي يتم نقل النقطية إلى اليسار",
+          "name": "سحب"
+        },
+        "push": {
+          "description": "عدد الخلايا التي يتم نقل النقطية إلى اليمين",
+          "name": "ادفع"
+        },
+        "sm": {
+          "description": "شاشة ≥ 576 بكسل",
+          "name": "سم"
+        },
+        "span": {
+          "description": "عدد النقطية من الخلايا لاحتلال",
+          "name": "سبان"
+        },
+        "xl": {
+          "description": "شاشة ≥ 1200 بكسل",
+          "name": "إكس إل"
+        },
+        "xs": {
+          "description": "الشاشة &lt; 576 بكسل وأيضا الإعداد الافتراضي",
+          "name": "شس"
+        },
+        "xxl": {
+          "description": "شاشة ≥ 1600 بكسل",
+          "name": "إكس إكس إل"
+        }
+      }
+    },
+    "AntInput": {
+      "description": "من خلال محتوى إدخال الماوس أو لوحة المفاتيح، فهو غلاف حقل النموذج الأساسي",
+      "name": "مدخلات النمل",
+      "props": {
+        "disabled": {
+          "description": "ما إذا كان الإدخال معطلا",
+          "name": "معاق"
+        },
+        "showCount": {
+          "description": "سواء لإظهار عدد الأحرف",
+          "name": "عرض العد"
+        },
+        "size": {
+          "description": "حجم مربع الإدخال",
+          "name": "الحجم"
+        },
+        "status": {
+          "description": "تعيين حالة التحقق من الصحة",
+          "name": "الحالة"
+        },
+        "value": {
+          "description": "قيمة محتوى الإدخال",
+          "name": "القيمة"
+        },
+        "variant": {
+          "description": "المتغيرات من المدخلات",
+          "name": "البديل"
+        }
+      }
+    },
+    "AntModal": {
+      "description": "عرض مربع حوار مشروط ، مع توفير العنوان ومنطقة المحتوى وأزرار الإجراءات",
+      "name": "النمل مشروط",
+      "props": {
+        "cancelText": {
+          "description": "نص زر الإلغاء",
+          "name": "إلغاء النص"
+        },
+        "centered": {
+          "description": "مركز مشروط",
+          "name": "تتمحور"
+        },
+        "keyboard": {
+          "description": "سواء دعم الصحافة خروج لإغلاق",
+          "name": "لوحة المفاتيح"
+        },
+        "okText": {
+          "description": "نص زر موافق",
+          "name": "موافق النص"
+        }
+      }
+    },
+    "AntRow": {
+      "description": "الصف من الشبكة",
+      "name": "صف النمل",
+      "props": {
+        "align": {
+          "description": "المحاذاة العمودية",
+          "name": "محاذاة"
+        },
+        "gutter": {
+          "description": "التباعد بين الشبكات",
+          "name": "مزراب"
+        },
+        "justify": {
+          "description": "الترتيب الأفقي",
+          "name": "تبرير"
+        },
+        "wrap": {
+          "description": "خط التفاف السيارات",
+          "name": "التفاف"
+        }
+      }
+    },
+    "AntTable": {
+      "description": "يعرض جدول صفوف من البيانات",
+      "name": "طاولة النمل",
+      "props": {
+        "bordered": {
+          "description": "سواء لإظهار جميع حدود الجدول",
+          "name": "يحدها"
+        },
+        "columns": {
+          "description": "أعمدة الجدول",
+          "name": "الأعمدة"
+        },
+        "dataSource": {
+          "description": "صفيف سجل البيانات ليتم عرضها",
+          "name": "مصدر البيانات"
+        },
+        "loading": {
+          "description": "حالة تحميل الجدول",
+          "name": "تحميل"
+        },
+        "rowHoverable": {
+          "description": "تحوم الصف",
+          "name": "الصف هوفيرابل"
+        },
+        "rowKey": {
+          "description": "مفتاح الصف الفريد",
+          "name": "مفتاح الصف"
+        },
+        "showHeader": {
+          "description": "سواء لإظهار رأس الجدول",
+          "name": "إظهار الرأس"
+        },
+        "showSorterTooltip": {
+          "description": "يظهر الرأس تلميح أداة اتجاه فارز التالي",
+          "name": "إظهار تلميح أداة فارز"
+        },
+        "size": {
+          "description": "حجم الجدول",
+          "name": "الحجم"
+        },
+        "sticky": {
+          "description": "تعيين رأس مثبت وشريط التمرير",
+          "name": "مثبت"
+        }
+      }
+    },
+    "AntTooltip": {
+      "description": "مربع منبثق نص بسيط",
+      "name": "تلميح النمل",
+      "props": {
+        "placement": {
+          "description": "موقف تلميح الأدوات بالنسبة إلى الهدف",
+          "name": "التنسيب"
+        },
+        "text": {
+          "description": "النص الموضح في تلميح الأداة",
+          "name": "النص"
+        },
+        "trigger": {
+          "description": "وضع الزناد تلميح الأدوات",
+          "name": "الزناد"
+        }
+      }
+    }
+  }
+}

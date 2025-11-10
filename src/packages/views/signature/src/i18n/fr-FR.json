@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "fields": {
+      "name": "Champs"
+    }
+  },
+  "components": {
+    "RsSignature": {
+      "description": "Dessin de signature lisse basé sur une toile HTML5",
+      "name": "Signature",
+      "props": {
+        "backgroundColor": {
+          "description": "La couleur de fond",
+          "name": "Couleur de fond"
+        },
+        "clearButtonText": {
+          "description": "Étiquette de bouton claire",
+          "name": "Effacer le texte du bouton"
+        },
+        "height": {
+          "description": "La hauteur de la toile",
+          "name": "Hauteur"
+        },
+        "label": {
+          "description": "L'étiquette du composant",
+          "name": "Étiquette"
+        },
+        "lineWidth": {
+          "description": "La largeur de la ligne",
+          "name": "Largeur de ligne"
+        },
+        "penColor": {
+          "description": "La couleur du stylo",
+          "name": "Couleur du stylo"
+        },
+        "readOnly": {
+          "description": "Indicateur en lecture seule",
+          "name": "Lecture seule"
+        },
+        "value": {
+          "description": "L'URL de données initiale pour dessiner l'image de signature",
+          "name": "Valeur"
+        },
+        "width": {
+          "description": "La largeur de la toile",
+          "name": "Largeur"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,255 @@
+{
+  "categories": {
+    "antd": {
+      "name": "Componentes de Diseño Ant"
+    }
+  },
+  "components": {
+    "AntButton": {
+      "description": "Un botón significa una operación (o una serie de operaciones). Al hacer clic en un botón, se activará su lógica comercial correspondiente",
+      "name": "Botón Ant",
+      "props": {
+        "block": {
+          "description": "Opción para ajustar el ancho del botón a su ancho principal",
+          "name": "Bloque"
+        },
+        "children": {
+          "description": "Leyenda",
+          "name": "Contenido"
+        },
+        "danger": {
+          "description": "Establecer el estado de peligro del botón",
+          "name": "Peligro"
+        },
+        "disabled": {
+          "description": "Estado deshabilitado del botón",
+          "name": "Discapacitados"
+        },
+        "ghost": {
+          "description": "Haga que el fondo sea transparente e invierta los colores del texto y los bordes",
+          "name": "Fantasma"
+        },
+        "href": {
+          "description": "Redirigir URL del botón de enlace",
+          "name": "Href"
+        },
+        "htmlType": {
+          "description": "Establecer el tipo de botón HTML original",
+          "name": "Tipo HTML"
+        },
+        "loading": {
+          "description": "Establecer el estado de carga del botón",
+          "name": "Cargando"
+        },
+        "shape": {
+          "description": "Se puede configurar la forma del botón",
+          "name": "Forma"
+        },
+        "size": {
+          "description": "Establecer el tamaño del botón",
+          "name": "Tamaño"
+        },
+        "target": {
+          "description": "Igual que el atributo de destino de a, funciona cuando se especifica href",
+          "name": "Objetivo"
+        },
+        "type": {
+          "description": "Se puede establecer en texto de enlace discontinuo fantasma primario predeterminado",
+          "name": "Tipo"
+        }
+      }
+    },
+    "AntCol": {
+      "description": "La columna de la cuadrícula",
+      "name": "Col de Hormiga",
+      "props": {
+        "flex": {
+          "description": "Estilo de diseño flexible",
+          "name": "Flexionar"
+        },
+        "lg": {
+          "description": "Pantalla ≥ 992px",
+          "name": "Lg"
+        },
+        "md": {
+          "description": "Pantalla ≥ 768px",
+          "name": "Md"
+        },
+        "offset": {
+          "description": "El número de celdas para desplazar Col desde la izquierda",
+          "name": "Desplazamiento"
+        },
+        "order": {
+          "description": "Orden de trama",
+          "name": "Orden"
+        },
+        "pull": {
+          "description": "El número de celdas que rasteriza se mueve a la izquierda",
+          "name": "Tirar"
+        },
+        "push": {
+          "description": "El número de celdas que rasteriza se mueve a la derecha",
+          "name": "Empuje"
+        },
+        "sm": {
+          "description": "Pantalla ≥ 576px",
+          "name": "Sm"
+        },
+        "span": {
+          "description": "Raster número de celdas a ocupar",
+          "name": "Palmo"
+        },
+        "xl": {
+          "description": "Pantalla ≥ 1200 píxeles",
+          "name": "Talla Xl"
+        },
+        "xs": {
+          "description": "Pantalla &lt; 576px y también configuración predeterminada",
+          "name": "Xs"
+        },
+        "xxl": {
+          "description": "Pantalla ≥ 1600 píxeles",
+          "name": "Xxl"
+        }
+      }
+    },
+    "AntInput": {
+      "description": "A través del contenido de entrada del mouse o del teclado, es el contenedor de campo de formulario más básico",
+      "name": "Entrada de Hormigas",
+      "props": {
+        "disabled": {
+          "description": "Si la entrada está deshabilitada",
+          "name": "Discapacitados"
+        },
+        "showCount": {
+          "description": "Si mostrar el recuento de caracteres",
+          "name": "Mostrar recuento"
+        },
+        "size": {
+          "description": "El tamaño del cuadro de entrada",
+          "name": "Tamaño"
+        },
+        "status": {
+          "description": "Establecer el estado de validación",
+          "name": "Estado"
+        },
+        "value": {
+          "description": "El valor del contenido de entrada",
+          "name": "Valor"
+        },
+        "variant": {
+          "description": "Variantes de Entrada",
+          "name": "Variante"
+        }
+      }
+    },
+    "AntModal": {
+      "description": "Mostrar un cuadro de diálogo modal, que proporciona un título, un área de contenido y botones de acción",
+      "name": "Hormiga Modal",
+      "props": {
+        "cancelText": {
+          "description": "Texto del botón Cancelar",
+          "name": "Cancelar texto"
+        },
+        "centered": {
+          "description": "Modal Centrado",
+          "name": "Centrado"
+        },
+        "keyboard": {
+          "description": "Si es compatible, presione ESC para cerrar",
+          "name": "Teclado"
+        },
+        "okText": {
+          "description": "Texto del botón Aceptar",
+          "name": "Texto OK"
+        }
+      }
+    },
+    "AntRow": {
+      "description": "La fila de la cuadrícula",
+      "name": "Fila de Hormigas",
+      "props": {
+        "align": {
+          "description": "Alineación vertical",
+          "name": "Alinear"
+        },
+        "gutter": {
+          "description": "Espaciado entre cuadrículas",
+          "name": "Canalón"
+        },
+        "justify": {
+          "description": "Disposición horizontal",
+          "name": "Justificar"
+        },
+        "wrap": {
+          "description": "Línea de envoltura automática",
+          "name": "Envoltura"
+        }
+      }
+    },
+    "AntTable": {
+      "description": "Una tabla muestra filas de datos",
+      "name": "Mesa de Hormigas",
+      "props": {
+        "bordered": {
+          "description": "Si mostrar todos los bordes de la tabla",
+          "name": "Bordeado"
+        },
+        "columns": {
+          "description": "Columnas de la tabla",
+          "name": "Columnas"
+        },
+        "dataSource": {
+          "description": "Matriz de registro de datos que se mostrará",
+          "name": "Fuente de datos"
+        },
+        "loading": {
+          "description": "Estado de carga de la tabla",
+          "name": "Cargando"
+        },
+        "rowHoverable": {
+          "description": "Desplazamiento de fila",
+          "name": "Fila flotante"
+        },
+        "rowKey": {
+          "description": "Clave única de Row",
+          "name": "Clave de fila"
+        },
+        "showHeader": {
+          "description": "Si mostrar el encabezado de la tabla",
+          "name": "Mostrar encabezado"
+        },
+        "showSorterTooltip": {
+          "description": "El encabezado muestra la información sobre herramientas de la siguiente dirección del clasificador",
+          "name": "Mostrar información sobre herramientas del clasificador"
+        },
+        "size": {
+          "description": "Tamaño de la tabla",
+          "name": "Tamaño"
+        },
+        "sticky": {
+          "description": "Establecer encabezado adhesivo y barra de desplazamiento",
+          "name": "Pegajoso"
+        }
+      }
+    },
+    "AntTooltip": {
+      "description": "Cuadro emergente de texto simple",
+      "name": "Información sobre herramientas Ant",
+      "props": {
+        "placement": {
+          "description": "La posición de la información sobre herramientas en relación con el objetivo",
+          "name": "Colocación"
+        },
+        "text": {
+          "description": "El texto que se muestra en la información sobre herramientas",
+          "name": "Texto"
+        },
+        "trigger": {
+          "description": "Modo de activación de información sobre herramientas",
+          "name": "Disparador"
+        }
+      }
+    }
+  }
+}

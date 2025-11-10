@@ -1,0 +1,39 @@
+{
+  "categories": {
+    "fields": {
+      "name": "필드"
+    }
+  },
+  "components": {
+    "RichTextEditor": {
+      "description": "강력한 서식있는 텍스트 편집기",
+      "name": "서식 있는 텍스트 편집기",
+      "props": {
+        "initialValue": {
+          "description": "초기 값",
+          "name": "초기 값"
+        },
+        "label": {
+          "description": "라벨",
+          "name": "라벨"
+        },
+        "modules": {
+          "description": "편집기의 동작 및 기능을 사용자 정의 할 수 있습니다. 더 많은 정보를 원하시면 문서 읽기",
+          "name": "모듈"
+        },
+        "placeholder": {
+          "description": "자리 표시자",
+          "name": "위치 지정자"
+        },
+        "readOnly": {
+          "description": "읽기 전용 플래그",
+          "name": "읽기 전용"
+        },
+        "toolbarOptions": {
+          "description": "도구 모음에 표시할 단추 그룹",
+          "name": "도구 모음 옵션"
+        }
+      }
+    }
+  }
+}

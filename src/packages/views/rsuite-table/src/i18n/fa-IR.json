@@ -1,0 +1,207 @@
+{
+  "categories": {
+    "structure": {
+      "name": "ساختار"
+    }
+  },
+  "components": {
+    "RsCell": {
+      "description": "سلول جدول",
+      "name": "سلول",
+      "props": {
+        "dataKey": {
+          "description": "کلید اتصال داده ، اما همچنین نوعی کلید",
+          "name": "کلید داده"
+        }
+      }
+    },
+    "RsColumn": {
+      "description": "ستون جدول",
+      "name": "ستون",
+      "props": {
+        "align": {
+          "description": "تراز بندی",
+          "name": "تراز کردن"
+        },
+        "colSpan": {
+          "description": "سلول های ستون را با هم ادغام می کند تا زمانی که مقدار \"کلید داده\" برای ستون ادغام شده null یا undefined باشد ، ادغام شود",
+          "name": "کلن اسپان"
+        },
+        "fixed": {
+          "description": "ستون ثابت",
+          "name": "ثابت"
+        },
+        "flexGrow": {
+          "description": "تنظیم عرض ستون به طور خودکار تنظیم می شود ، هنگامی که تنظیم \"flex grow\" نمی تواند ویژگی \"تغییر اندازه\" و \" عرض \" را تنظیم کند",
+          "name": "رشد انعطاف پذیر"
+        },
+        "fullText": {
+          "description": "اینکه آیا متن کامل محتوای سلول را هنگام حرکت ماوس نمایش دهد",
+          "name": "متن کامل"
+        },
+        "minWidth": {
+          "description": "وقتی از \"flex grow\" استفاده می کنید ، می توانید حداقل عرض را تنظیم کنید",
+          "name": "عرض حداقل"
+        },
+        "resizable": {
+          "description": "تغییر اندازه قابل تنظیم عرض ستون",
+          "name": "قابل تغییر اندازه"
+        },
+        "rowSpan": {
+          "description": "ردیف ها را در ستون مشخص شده ادغام می کند",
+          "name": "طول ردیف"
+        },
+        "sortable": {
+          "description": "قابل مرتب سازی",
+          "name": "قابل مرتب سازی"
+        },
+        "verticalAlign": {
+          "description": "تراز عمودی",
+          "name": "تراز عمودی"
+        },
+        "width": {
+          "description": "عرض ستون",
+          "name": "عرض"
+        }
+      }
+    },
+    "RsColumnGroup": {
+      "description": "گروه ستون جدول",
+      "name": "گروه ستون",
+      "props": {
+        "align": {
+          "description": "تراز بندی",
+          "name": "تراز کردن"
+        },
+        "fixed": {
+          "description": "گروه ستون ثابت",
+          "name": "ثابت"
+        },
+        "groupHeaderHeight": {
+          "description": "ارتفاع سرصفحه گروه سلول های ادغام شده",
+          "name": "ارتفاع هدر گروه"
+        },
+        "header": {
+          "description": "هدر گروه",
+          "name": "هدر"
+        },
+        "verticalAlign": {
+          "description": "تراز عمودی",
+          "name": "تراز عمودی"
+        }
+      }
+    },
+    "RsHeaderCell": {
+      "description": "سلول سر جدول",
+      "name": "سلول هدر",
+      "props": {
+        "children": {
+          "description": "سرصفحه ستون جدول",
+          "name": "محتوا"
+        }
+      }
+    },
+    "RsTable": {
+      "description": "جدول",
+      "name": "جدول",
+      "props": {
+        "affixHeader": {
+          "description": "سر جدول را به مکان مشخص شده در صفحه متصل کنید",
+          "name": "سرصفحه"
+        },
+        "affixHorizontalScrollbar": {
+          "description": "نوار اسکرول افقی جدول را به موقعیت مشخص شده در صفحه بچسبانید",
+          "name": "نوار پیمایش افقی را ضمیمه کنید"
+        },
+        "autoHeight": {
+          "description": "ارتفاع جدول به طور خودکار با توجه به تعداد ردیف های داده گسترش می یابد و هیچ نوار اسکرول عمودی ظاهر نمی شود",
+          "name": "ارتفاع خودکار"
+        },
+        "bordered": {
+          "description": "مرز نمایش",
+          "name": "مرز"
+        },
+        "cellBordered": {
+          "description": "مرز سلول را نشان دهید",
+          "name": "سلول مرزی"
+        },
+        "data": {
+          "description": "داده های جدول",
+          "name": "داده ها"
+        },
+        "defaultSortType": {
+          "description": "نوع مرتب سازی",
+          "name": "نوع مرتب سازی پیش فرض"
+        },
+        "fillHeight": {
+          "description": "ارتفاع میز را مجبور کنید که برابر با ارتفاع ظرف اصلی آن باشد. نمیتونه با \"ارتفاع خودکار\" استفاده بشه",
+          "name": "ارتفاع را پر کنید"
+        },
+        "headerHeight": {
+          "description": "ارتفاع سر جدول",
+          "name": "ارتفاع هدر"
+        },
+        "height": {
+          "description": "ارتفاع میز",
+          "name": "ارتفاع"
+        },
+        "hover": {
+          "description": "ردیف جدول دارای اثر ماوس است",
+          "name": "شناور"
+        },
+        "loading": {
+          "description": "نمایش بارگذاری",
+          "name": "بارگیری"
+        },
+        "maxHeight": {
+          "description": "حداکثر ارتفاع",
+          "name": "حداکثر ارتفاع"
+        },
+        "minHeight": {
+          "description": "حداقل ارتفاع",
+          "name": "حداقل ارتفاع"
+        },
+        "rowClassName": {
+          "description": "اضافه کردن یک نام کلاس اضافی اختیاری به ردیف",
+          "name": "نام کلاس ردیف"
+        },
+        "rowHeight": {
+          "description": "ارتفاع ردیف",
+          "name": "ارتفاع ردیف"
+        },
+        "rowKey": {
+          "description": "هر ردیف با کلید منحصر به فرد در داده ها مطابقت دارد",
+          "name": "کلید ردیف"
+        },
+        "shouldUpdateScroll": {
+          "description": "آیا پس از به روز رسانی اندازه جدول ، طومار را به روز کنیم ؟ ",
+          "name": "باید به روز رسانی اسکرول"
+        },
+        "showHeader": {
+          "description": "سرصفحه نمایش",
+          "name": "نمایش هدر"
+        },
+        "sortColumn": {
+          "description": "مرتب سازی نام ستون",
+          "name": "ستون مرتب سازی"
+        },
+        "sortType": {
+          "description": "نوع مرتب سازی",
+          "name": "نوع مرتب سازی"
+        },
+        "virtualized": {
+          "description": "به طور موثر داده های جدول بزرگ را ارائه دهید",
+          "name": "مجازی سازی"
+        },
+        "width": {
+          "description": "عرض جدول",
+          "name": "عرض"
+        },
+        "wordWrap": {
+          "description": "اینکه آیا ظاهر شود ، خط شکسته می شود ، جایی که متن پر می شود جعبه محتوای آن",
+          "name": "کلمه بسته بندی"
+        }
+      }
+    }
+  }
+}

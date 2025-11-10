@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "fields": {
+      "name": "Поља"
+    }
+  },
+  "components": {
+    "RsSignature": {
+      "description": "Глатка слика потписа заснована на ХТМЛ5 платну",
+      "name": "Потпис",
+      "props": {
+        "backgroundColor": {
+          "description": "Боја позадине",
+          "name": "Боја позадине"
+        },
+        "clearButtonText": {
+          "description": "Обришите пречицу дугмета",
+          "name": "Обриши Текст дугмета"
+        },
+        "height": {
+          "description": "Висина платна",
+          "name": "Висина"
+        },
+        "label": {
+          "description": "Ознака за компоненту",
+          "name": "Ознака"
+        },
+        "lineWidth": {
+          "description": "Ширина линије",
+          "name": "Ширина линије"
+        },
+        "penColor": {
+          "description": "Боја оловке",
+          "name": "Боја оловке"
+        },
+        "readOnly": {
+          "description": "Застава само за читање",
+          "name": "Само за читање"
+        },
+        "value": {
+          "description": "УРЛ изворних података за креирање слике потписа",
+          "name": "Вредност"
+        },
+        "width": {
+          "description": "Ширина платна",
+          "name": "Ширина"
+        }
+      }
+    }
+  }
+}

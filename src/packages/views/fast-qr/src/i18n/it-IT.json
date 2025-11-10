@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "static": {
+      "name": "Statico"
+    }
+  },
+  "components": {
+    "FastQR": {
+      "description": "Componente in grado di convertire il testo in codici QR e supportare colori e logo personalizzati",
+      "name": "Codice QR",
+      "props": {
+        "content": {
+          "description": "Il contenuto del codice QR",
+          "name": "Contenuto"
+        },
+        "errorCorrectionLevel": {
+          "description": "Il livello di codifica correzione errori",
+          "name": "Livello di correzione degli errori"
+        },
+        "image": {
+          "description": "L'immagine, base64 o URL",
+          "name": "Immagine"
+        },
+        "imageBackgroundColor": {
+          "description": "Il colore di sfondo dell'immagine",
+          "name": "Colore di sfondo dell'immagine"
+        },
+        "imageBackgroundShape": {
+          "description": "La forma di sfondo dell'immagine",
+          "name": "Immagine sfondo forma"
+        },
+        "moduleColor": {
+          "description": "Il colore del modulo",
+          "name": "Colore del modulo"
+        },
+        "shape": {
+          "description": "Le diverse forme possibili per rappresentare i moduli",
+          "name": "Forma"
+        },
+        "version": {
+          "description": "La versione QR code",
+          "name": "Versione QR"
+        },
+        "width": {
+          "description": "La larghezza del codice QR",
+          "name": "Larghezza"
+        }
+      }
+    }
+  }
+}

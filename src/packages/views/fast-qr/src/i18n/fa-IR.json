@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "static": {
+      "name": "استاتیک"
+    }
+  },
+  "components": {
+    "FastQR": {
+      "description": "جزء که می تواند متن را به کد QR تبدیل کند و از رنگ و لوگو سفارشی پشتیبانی کند",
+      "name": "کد QR",
+      "props": {
+        "content": {
+          "description": "محتوای کد QR",
+          "name": "محتوا"
+        },
+        "errorCorrectionLevel": {
+          "description": "سطح کدگذاری اصلاح خطا",
+          "name": "سطح اصلاح خطا"
+        },
+        "image": {
+          "description": "تصویر ، base64 یا URL",
+          "name": "تصویر"
+        },
+        "imageBackgroundColor": {
+          "description": "رنگ پس زمینه تصویر",
+          "name": "رنگ پس زمینه تصویر"
+        },
+        "imageBackgroundShape": {
+          "description": "شکل پس زمینه تصویر",
+          "name": "شکل پس زمینه تصویر"
+        },
+        "moduleColor": {
+          "description": "رنگ ماژول",
+          "name": "رنگ ماژول"
+        },
+        "shape": {
+          "description": "اشکال مختلف ممکن برای نشان دادن ماژول ها",
+          "name": "شکل"
+        },
+        "version": {
+          "description": "نسخه کد QR",
+          "name": "نسخه QR"
+        },
+        "width": {
+          "description": "عرض کد QR",
+          "name": "عرض"
+        }
+      }
+    }
+  }
+}

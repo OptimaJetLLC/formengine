@@ -1,0 +1,207 @@
+{
+  "categories": {
+    "structure": {
+      "name": "Estructura"
+    }
+  },
+  "components": {
+    "RsCell": {
+      "description": "Celda de tabla",
+      "name": "Célula",
+      "props": {
+        "dataKey": {
+          "description": "Clave de enlace de datos, pero también una especie de clave",
+          "name": "Clave de datos"
+        }
+      }
+    },
+    "RsColumn": {
+      "description": "Columna de la tabla",
+      "name": "Columna",
+      "props": {
+        "align": {
+          "description": "Alineación",
+          "name": "Alinear"
+        },
+        "colSpan": {
+          "description": "Combina celdas de columna para fusionarlas cuando el valor de 'Clave de datos' de la columna combinada es nulo o indefinido",
+          "name": "Tramo de col"
+        },
+        "fixed": {
+          "description": "Columna fija",
+          "name": "Fijo"
+        },
+        "flexGrow": {
+          "description": "Establecer el ancho de la columna se ajusta automáticamente, cuando se establece 'Flex grow' no se pueden establecer las propiedades 'Redimensionable' y 'Ancho'",
+          "name": "Crecimiento flexible"
+        },
+        "fullText": {
+          "description": "Si mostrar el texto completo del contenido de la celda cuando el mouse está suspendido",
+          "name": "Texto completo"
+        },
+        "minWidth": {
+          "description": "Cuando usa 'Flex grow', puede establecer un ancho mínimo",
+          "name": "Anchura mínima"
+        },
+        "resizable": {
+          "description": "Ancho de columna de cambio de tamaño personalizable",
+          "name": "Redimensionable"
+        },
+        "rowSpan": {
+          "description": "Combina filas en la columna especificada",
+          "name": "Tramo de fila"
+        },
+        "sortable": {
+          "description": "Ordenable",
+          "name": "Ordenable"
+        },
+        "verticalAlign": {
+          "description": "Alineación vertical",
+          "name": "Alineación vertical"
+        },
+        "width": {
+          "description": "Ancho de columna",
+          "name": "Ancho"
+        }
+      }
+    },
+    "RsColumnGroup": {
+      "description": "Grupo de columnas de tabla",
+      "name": "Grupo de columnas",
+      "props": {
+        "align": {
+          "description": "Alineación",
+          "name": "Alinear"
+        },
+        "fixed": {
+          "description": "Grupo de columnas fijas",
+          "name": "Fijo"
+        },
+        "groupHeaderHeight": {
+          "description": "La altura del encabezado del grupo de celdas combinado",
+          "name": "Altura del encabezado del grupo"
+        },
+        "header": {
+          "description": "Encabezado de grupo",
+          "name": "Cabecera"
+        },
+        "verticalAlign": {
+          "description": "Alineación vertical",
+          "name": "Alineación vertical"
+        }
+      }
+    },
+    "RsHeaderCell": {
+      "description": "Celda de encabezado de tabla",
+      "name": "Celda de encabezado",
+      "props": {
+        "children": {
+          "description": "Encabezado de columna de tabla",
+          "name": "Contenido"
+        }
+      }
+    },
+    "RsTable": {
+      "description": "Cuadro",
+      "name": "Cuadro",
+      "props": {
+        "affixHeader": {
+          "description": "Coloque el encabezado de la tabla en la ubicación especificada en la página",
+          "name": "Encabezado de afijo"
+        },
+        "affixHorizontalScrollbar": {
+          "description": "Coloque la barra de desplazamiento horizontal de la tabla en la posición especificada en la página",
+          "name": "Fijar barra de desplazamiento horizontal"
+        },
+        "autoHeight": {
+          "description": "La altura de la tabla se expandirá automáticamente de acuerdo con el número de filas de datos, y no aparecerá una barra de desplazamiento vertical",
+          "name": "Altura automática"
+        },
+        "bordered": {
+          "description": "Mostrar borde",
+          "name": "Bordeado"
+        },
+        "cellBordered": {
+          "description": "Mostrar borde de celda",
+          "name": "Borde de celda"
+        },
+        "data": {
+          "description": "Datos de la tabla",
+          "name": "Datos"
+        },
+        "defaultSortType": {
+          "description": "Tipo de clasificación",
+          "name": "Tipo de ordenación predeterminado"
+        },
+        "fillHeight": {
+          "description": "Fuerce la altura de la mesa a ser igual a la altura de su contenedor principal. No se puede usar junto con'Altura automática'",
+          "name": "Altura de llenado"
+        },
+        "headerHeight": {
+          "description": "Altura del encabezado de la tabla",
+          "name": "Altura del encabezado"
+        },
+        "height": {
+          "description": "Altura de la mesa",
+          "name": "Altura"
+        },
+        "hover": {
+          "description": "La fila de la tabla tiene un efecto de mouseover",
+          "name": "Pase el ratón"
+        },
+        "loading": {
+          "description": "Mostrar cargando",
+          "name": "Cargando"
+        },
+        "maxHeight": {
+          "description": "Altura máxima",
+          "name": "Altura máxima"
+        },
+        "minHeight": {
+          "description": "Altura mínima",
+          "name": "Altura mínima"
+        },
+        "rowClassName": {
+          "description": "Agregue un nombre de clase adicional opcional a row",
+          "name": "Nombre de clase de fila"
+        },
+        "rowHeight": {
+          "description": "Altura de fila",
+          "name": "Altura de fila"
+        },
+        "rowKey": {
+          "description": "Cada fila corresponde a la clave única en los datos",
+          "name": "Clave de fila"
+        },
+        "shouldUpdateScroll": {
+          "description": "Si actualizar el desplazamiento después de actualizar el tamaño de la tabla",
+          "name": "Debería actualizar el desplazamiento"
+        },
+        "showHeader": {
+          "description": "Encabezado de pantalla",
+          "name": "Mostrar encabezado"
+        },
+        "sortColumn": {
+          "description": "Ordenar nombre de columna",
+          "name": "Ordenar columna"
+        },
+        "sortType": {
+          "description": "Tipo de clasificación",
+          "name": "Tipo de clasificación"
+        },
+        "virtualized": {
+          "description": "Renderice de manera efectiva datos tabulares grandes",
+          "name": "Virtualizado"
+        },
+        "width": {
+          "description": "Ancho de la mesa",
+          "name": "Ancho"
+        },
+        "wordWrap": {
+          "description": "Si aparecen saltos de línea donde el texto desborda su cuadro de contenido",
+          "name": "Ajuste de palabras"
+        }
+      }
+    }
+  }
+}

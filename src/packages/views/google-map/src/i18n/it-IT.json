@@ -1,0 +1,107 @@
+{
+  "categories": {
+    "fields": {
+      "name": "Campo"
+    }
+  },
+  "components": {
+    "GoogleMap": {
+      "description": "Componente visualizzazione di una mappa Google",
+      "name": "Mappa Google",
+      "props": {
+        "addMarkerOnSearch": {
+          "description": "Indica se aggiungere un marcatore alla ricerca",
+          "name": "Aggiungi marcatore alla ricerca"
+        },
+        "allowChangingMarkers": {
+          "description": "Se selezionato, l'utente può modificare i marcatori",
+          "name": "Consenti la modifica dei marcatori"
+        },
+        "allowMultipleMarkers": {
+          "description": "Marcatori multipli",
+          "name": "Consenti più marcatori"
+        },
+        "apiKey": {
+          "description": "Chiave API di Google Maps",
+          "name": "Chiave API"
+        },
+        "collisionBehavior": {
+          "description": "Il comportamento di collisione dei marcatori",
+          "name": "Comportamento di collisione"
+        },
+        "colorScheme": {
+          "description": "La combinazione di colori da utilizzare",
+          "name": "Combinazione di colori"
+        },
+        "gestureHandling": {
+          "description": "La gestione dei gesti da usare",
+          "name": "Gesture handling"
+        },
+        "height": {
+          "description": "Altezza della mappa",
+          "name": "Altezza"
+        },
+        "label": {
+          "description": "Etichetta mappa",
+          "name": "Etichetta"
+        },
+        "language": {
+          "description": "Il linguaggio da usare",
+          "name": "Lingua"
+        },
+        "latitude": {
+          "description": "Latitudine del punto centrale",
+          "name": "Latitudine"
+        },
+        "longitude": {
+          "description": "Longitudine del punto centrale",
+          "name": "Longitudine"
+        },
+        "mapControlPosition": {
+          "description": "La posizione del controllo della mappa",
+          "name": "Posizione di controllo della mappa"
+        },
+        "mapId": {
+          "description": "L'ID mappa è un identificatore associato a uno stile o a una caratteristica specifica della mappa",
+          "name": "ID mappa"
+        },
+        "mapTypeId": {
+          "description": "Il tipo di mappa predefinito da utilizzare",
+          "name": "Tipo di mappa"
+        },
+        "markerWindowTitle": {
+          "description": "Il titolo della finestra marker",
+          "name": "Titolo finestra Marker"
+        },
+        "markers": {
+          "description": "Coordinate dei marcatori",
+          "name": "Marcatore"
+        },
+        "region": {
+          "description": "Il codice regione da utilizzare",
+          "name": "Regione"
+        },
+        "removeMarkerCaption": {
+          "description": "La didascalia sul pulsante rimozione marcatore",
+          "name": "Rimuovi la didascalia del marcatore"
+        },
+        "searchPlaceholder": {
+          "description": "Testo segnaposto per l'input di ricerca della mappa",
+          "name": "Cerca segnaposto"
+        },
+        "showMapControl": {
+          "description": "Indica se mostrare il controllo della mappa",
+          "name": "Visualizza mappa controllo"
+        },
+        "width": {
+          "description": "Larghezza della mappa",
+          "name": "Larghezza"
+        },
+        "zoom": {
+          "description": "Livello di zoom",
+          "name": "Zoom"
+        }
+      }
+    }
+  }
+}

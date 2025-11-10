@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "fields": {
+      "name": "字段"
+    }
+  },
+  "components": {
+    "RsSignature": {
+      "description": "基于HTML5画布的平滑签名绘图",
+      "name": "签名",
+      "props": {
+        "backgroundColor": {
+          "description": "背景颜色",
+          "name": "背景颜色"
+        },
+        "clearButtonText": {
+          "description": "清除按钮标签",
+          "name": "清除按钮文本"
+        },
+        "height": {
+          "description": "画布高度",
+          "name": "身高"
+        },
+        "label": {
+          "description": "组件的标签",
+          "name": "标签"
+        },
+        "lineWidth": {
+          "description": "线宽",
+          "name": "线宽"
+        },
+        "penColor": {
+          "description": "笔的颜色",
+          "name": "钢笔颜色"
+        },
+        "readOnly": {
+          "description": "只读标志",
+          "name": "只读"
+        },
+        "value": {
+          "description": "用于绘制签名图像的初始数据URL",
+          "name": "价值"
+        },
+        "width": {
+          "description": "画布宽度",
+          "name": "阔度"
+        }
+      }
+    }
+  }
+}

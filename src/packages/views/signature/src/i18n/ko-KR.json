@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "fields": {
+      "name": "필드"
+    }
+  },
+  "components": {
+    "RsSignature": {
+      "description": "캔버스 기반의 부드러운 서명 그리기",
+      "name": "서명",
+      "props": {
+        "backgroundColor": {
+          "description": "배경 색상",
+          "name": "배경 색상"
+        },
+        "clearButtonText": {
+          "description": "버튼 레이블 지우기",
+          "name": "버튼 텍스트 지우기"
+        },
+        "height": {
+          "description": "캔버스 높이",
+          "name": "높이"
+        },
+        "label": {
+          "description": "구성 요소의 레이블",
+          "name": "라벨"
+        },
+        "lineWidth": {
+          "description": "선 폭",
+          "name": "선 폭"
+        },
+        "penColor": {
+          "description": "펜 색상",
+          "name": "펜 색깔"
+        },
+        "readOnly": {
+          "description": "읽기 전용 플래그",
+          "name": "읽기 전용"
+        },
+        "value": {
+          "description": "서명 이미지를 그리기 위한 초기 데이터",
+          "name": "값"
+        },
+        "width": {
+          "description": "캔버스 너비",
+          "name": "폭"
+        }
+      }
+    }
+  }
+}

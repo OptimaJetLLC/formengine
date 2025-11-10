@@ -1,4 +1,10 @@
-import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader,} from '@react-form-builder/components-rsuite'
+import {
+  formEngineRsuiteCssLoader,
+  ltrCssLoader,
+  RsLocalizationWrapper,
+  rSuiteComponentsDescriptions,
+  rtlCssLoader,
+} from '@react-form-builder/components-rsuite'
 import {BiDi, BuilderView} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
@@ -90,6 +96,7 @@ const view = new BuilderView(allComponentsBuilder)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
   .withCssLoader('common', formEngineRsuiteCssLoader)
+  .withComponentLibraryDescription(rSuiteComponentsDescriptions)
 
 const TestApp = ({getForm}: { getForm: () => string }) => <FormBuilder view={view} getForm={getForm} formName={'foo'}
                                                                        licenseKey={testLicense}/>
@@ -114,16 +121,15 @@ describe('FE-1306: After container clone inner components should have unique key
   it('Labels should be unique after container clone, created from scratch', async () => {
     const app = render(<TestApp getForm={getForm}/>)
     const {container, findByText, findByTestId, findByRole} = app
-    let addBtn, dialog, contBtn
 
     const treeBtn = await findByText('Tree')
     fireEvent.click(treeBtn)
 
-    addBtn = await findByTestId('add-button')
+    let addBtn = await findByTestId('add-button')
     fireEvent.click(addBtn)
 
-    dialog = await findByRole('dialog')
-    contBtn = await within(dialog).findByText('Container')
+    let dialog = await findByRole('dialog')
+    let contBtn = await within(dialog).findByText('Container')
     fireEvent.click(contBtn)
 
     addBtn = await findByTestId('add-button')

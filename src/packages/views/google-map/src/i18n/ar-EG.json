@@ -1,0 +1,107 @@
+{
+  "categories": {
+    "fields": {
+      "name": "الحقول"
+    }
+  },
+  "components": {
+    "GoogleMap": {
+      "description": "مكون عرض خريطة جوجل",
+      "name": "خريطة جوجل",
+      "props": {
+        "addMarkerOnSearch": {
+          "description": "ما إذا كنت تريد إضافة علامة على البحث",
+          "name": "إضافة علامة على البحث"
+        },
+        "allowChangingMarkers": {
+          "description": "إذا تم تحديده ، يمكن للمستخدم تغيير العلامات",
+          "name": "السماح بتغيير العلامات"
+        },
+        "allowMultipleMarkers": {
+          "description": "علامات متعددة",
+          "name": "السماح بعلامات متعددة"
+        },
+        "apiKey": {
+          "description": "مفتاح واجهة برمجة تطبيقات خرائط جوجل",
+          "name": "مفتاح واجهة برمجة التطبيقات"
+        },
+        "collisionBehavior": {
+          "description": "سلوك تصادم العلامات",
+          "name": "سلوك الاصطدام"
+        },
+        "colorScheme": {
+          "description": "نظام الألوان لاستخدام",
+          "name": "نظام الألوان"
+        },
+        "gestureHandling": {
+          "description": "التعامل مع الإيماءات للاستخدام",
+          "name": "التعامل مع الإيماءات"
+        },
+        "height": {
+          "description": "ارتفاع الخريطة",
+          "name": "الارتفاع"
+        },
+        "label": {
+          "description": "تسمية الخريطة",
+          "name": "التسمية"
+        },
+        "language": {
+          "description": "اللغة التي يجب استخدامها",
+          "name": "اللغة"
+        },
+        "latitude": {
+          "description": "خط العرض من نقطة المركز",
+          "name": "خط العرض"
+        },
+        "longitude": {
+          "description": "خط الطول من نقطة المركز",
+          "name": "خط الطول"
+        },
+        "mapControlPosition": {
+          "description": "موقف التحكم في الخريطة",
+          "name": "موقع التحكم في الخريطة"
+        },
+        "mapId": {
+          "description": "معرف الخريطة هو معرف مرتبط بنمط أو ميزة خريطة معينة",
+          "name": "معرف الخريطة"
+        },
+        "mapTypeId": {
+          "description": "نوع الخريطة الافتراضي للاستخدام",
+          "name": "نوع الخريطة"
+        },
+        "markerWindowTitle": {
+          "description": "عنوان نافذة علامة",
+          "name": "علامة نافذة العنوان"
+        },
+        "markers": {
+          "description": "إحداثيات علامات",
+          "name": "علامات"
+        },
+        "region": {
+          "description": "رمز المنطقة المراد استخدامه",
+          "name": "المنطقة"
+        },
+        "removeMarkerCaption": {
+          "description": "التسمية التوضيحية على زر إزالة العلامة",
+          "name": "إزالة التسمية التوضيحية للعلامة"
+        },
+        "searchPlaceholder": {
+          "description": "نص العنصر النائب لإدخال بحث الخريطة",
+          "name": "البحث عن العنصر النائب"
+        },
+        "showMapControl": {
+          "description": "سواء لإظهار التحكم في الخريطة",
+          "name": "إظهار التحكم في الخريطة"
+        },
+        "width": {
+          "description": "عرض الخريطة",
+          "name": "العرض"
+        },
+        "zoom": {
+          "description": "مستوى التكبير",
+          "name": "زووم"
+        }
+      }
+    }
+  }
+}

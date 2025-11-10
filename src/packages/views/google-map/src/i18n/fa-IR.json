@@ -1,0 +1,107 @@
+{
+  "categories": {
+    "fields": {
+      "name": "رشته ها"
+    }
+  },
+  "components": {
+    "GoogleMap": {
+      "description": "کامپوننت نمایش نقشه گوگل",
+      "name": "نقشه گوگل",
+      "props": {
+        "addMarkerOnSearch": {
+          "description": "آیا برای اضافه کردن یک نشانگر در جستجو",
+          "name": "اضافه کردن نشانگر در جستجو"
+        },
+        "allowChangingMarkers": {
+          "description": "اگر بررسی شود ، کاربر می تواند نشانگرها را تغییر دهد",
+          "name": "اجازه تغییر نشانگرها"
+        },
+        "allowMultipleMarkers": {
+          "description": "نشانگرهای متعدد",
+          "name": "اجازه دهید چندین نشانگر"
+        },
+        "apiKey": {
+          "description": "کلید API نقشه های گوگل",
+          "name": "کلید API"
+        },
+        "collisionBehavior": {
+          "description": "رفتار برخورد نشانگرها",
+          "name": "رفتار برخورد"
+        },
+        "colorScheme": {
+          "description": "طرح رنگی برای استفاده",
+          "name": "طرح رنگ"
+        },
+        "gestureHandling": {
+          "description": "دست زدن به ژست برای استفاده",
+          "name": "دست زدن به حرکات"
+        },
+        "height": {
+          "description": "ارتفاع نقشه",
+          "name": "ارتفاع"
+        },
+        "label": {
+          "description": "برچسب نقشه",
+          "name": "برچسب"
+        },
+        "language": {
+          "description": "زبان مورد استفاده",
+          "name": "زبان"
+        },
+        "latitude": {
+          "description": "عرض جغرافیایی نقطه مرکزی",
+          "name": "عرض جغرافیایی"
+        },
+        "longitude": {
+          "description": "طول جغرافیایی نقطه مرکزی",
+          "name": "طول جغرافیایی"
+        },
+        "mapControlPosition": {
+          "description": "موقعیت کنترل نقشه",
+          "name": "موقعیت کنترل نقشه"
+        },
+        "mapId": {
+          "description": "شناسه نقشه یک شناسه است که با یک سبک یا ویژگی نقشه خاص مرتبط است",
+          "name": "شناسه نقشه"
+        },
+        "mapTypeId": {
+          "description": "نوع نقشه پیش فرض برای استفاده",
+          "name": "نوع نقشه"
+        },
+        "markerWindowTitle": {
+          "description": "عنوان پنجره نشانگر",
+          "name": "عنوان پنجره نشانگر"
+        },
+        "markers": {
+          "description": "مختصات نشانگرها",
+          "name": "نشانگرها"
+        },
+        "region": {
+          "description": "کد منطقه برای استفاده",
+          "name": "منطقه"
+        },
+        "removeMarkerCaption": {
+          "description": "عنوان روی دکمه حذف نشانگر",
+          "name": "حذف عنوان نشانگر"
+        },
+        "searchPlaceholder": {
+          "description": "متن جای نگهدارنده برای ورودی جستجوی نقشه",
+          "name": "جای نگهدارنده جستجو"
+        },
+        "showMapControl": {
+          "description": "آیا کنترل نقشه را نشان دهد",
+          "name": "کنترل نقشه را نشان دهید"
+        },
+        "width": {
+          "description": "عرض نقشه",
+          "name": "عرض"
+        },
+        "zoom": {
+          "description": "سطح زوم",
+          "name": "زوم"
+        }
+      }
+    }
+  }
+}

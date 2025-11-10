@@ -1,0 +1,207 @@
+{
+  "categories": {
+    "structure": {
+      "name": "Structure"
+    }
+  },
+  "components": {
+    "RsCell": {
+      "description": "Cellule de tableau",
+      "name": "Cellule",
+      "props": {
+        "dataKey": {
+          "description": "Clé de liaison de données, mais aussi une sorte de clé",
+          "name": "Clé de données"
+        }
+      }
+    },
+    "RsColumn": {
+      "description": "Colonne de tableau",
+      "name": "Colonne",
+      "props": {
+        "align": {
+          "description": "Alignement",
+          "name": "Aligner"
+        },
+        "colSpan": {
+          "description": "Fusionne les cellules de colonne à fusionner lorsque la valeur de la \"clé de données\" de la colonne fusionnée est nulle ou indéfinie",
+          "name": "Portée du col"
+        },
+        "fixed": {
+          "description": "Colonne fixe",
+          "name": "Fixe"
+        },
+        "flexGrow": {
+          "description": "Définir la largeur de la colonne s'ajuste automatiquement, lorsque la valeur 'Flex grow' ne peut pas définir les propriétés 'Redimensionnable' et 'Largeur' ",
+          "name": "Croissance flexible"
+        },
+        "fullText": {
+          "description": "Indique s'il faut afficher le texte intégral du contenu de la cellule lorsque la souris est survolée",
+          "name": "Texte intégral"
+        },
+        "minWidth": {
+          "description": "Lorsque vous utilisez 'Flex grow' , vous pouvez définir une largeur minimale",
+          "name": "Largeur minimum"
+        },
+        "resizable": {
+          "description": "Largeur de colonne redimensionnable personnalisable",
+          "name": "Redimensionnable"
+        },
+        "rowSpan": {
+          "description": "Fusionne les lignes sur la colonne spécifiée",
+          "name": "Envergure de rangée"
+        },
+        "sortable": {
+          "description": "Triables",
+          "name": "Triables"
+        },
+        "verticalAlign": {
+          "description": "Alignement vertical",
+          "name": "Alignement vertical"
+        },
+        "width": {
+          "description": "Largeur de colonne",
+          "name": "Largeur"
+        }
+      }
+    },
+    "RsColumnGroup": {
+      "description": "Groupe de colonnes de tableau",
+      "name": "Groupe de colonnes",
+      "props": {
+        "align": {
+          "description": "Alignement",
+          "name": "Aligner"
+        },
+        "fixed": {
+          "description": "Groupe de colonnes fixe",
+          "name": "Fixe"
+        },
+        "groupHeaderHeight": {
+          "description": "La hauteur de l'en-tête du groupe de cellules fusionné",
+          "name": "Hauteur de l'en-tête du groupe"
+        },
+        "header": {
+          "description": "En-tête de groupe",
+          "name": "En-tête"
+        },
+        "verticalAlign": {
+          "description": "Alignement vertical",
+          "name": "Alignement vertical"
+        }
+      }
+    },
+    "RsHeaderCell": {
+      "description": "Cellule d'en-tête de tableau",
+      "name": "Cellule d'en-tête",
+      "props": {
+        "children": {
+          "description": "En-tête de colonne de tableau",
+          "name": "Contenu"
+        }
+      }
+    },
+    "RsTable": {
+      "description": "Tableau",
+      "name": "Tableau",
+      "props": {
+        "affixHeader": {
+          "description": "Apposez l'en-tête du tableau à l'emplacement spécifié sur la page",
+          "name": "Apposer l'en-tête"
+        },
+        "affixHorizontalScrollbar": {
+          "description": "Apposez la barre de défilement horizontale du tableau à la position spécifiée sur la page",
+          "name": "Apposer une barre de défilement horizontale"
+        },
+        "autoHeight": {
+          "description": "La hauteur du tableau sera automatiquement étendue en fonction du nombre de lignes de données et aucune barre de défilement verticale n'apparaîtra",
+          "name": "Hauteur automatique"
+        },
+        "bordered": {
+          "description": "Afficher la bordure",
+          "name": "Bordé"
+        },
+        "cellBordered": {
+          "description": "Afficher la bordure de la cellule",
+          "name": "Cellule bordée"
+        },
+        "data": {
+          "description": "Données de tableau",
+          "name": "Données"
+        },
+        "defaultSortType": {
+          "description": "Type de tri",
+          "name": "Type de tri par défaut"
+        },
+        "fillHeight": {
+          "description": "Forcer la hauteur de la table à être égale à la hauteur de son conteneur parent. Ne peut pas être utilisé avec \"Hauteur automatique\"",
+          "name": "Hauteur de remplissage"
+        },
+        "headerHeight": {
+          "description": "Hauteur de l'en-tête du tableau",
+          "name": "Hauteur de l'en-tête"
+        },
+        "height": {
+          "description": "Hauteur de la table",
+          "name": "Hauteur"
+        },
+        "hover": {
+          "description": "La ligne du tableau a un effet de survol de la souris",
+          "name": "Survoler"
+        },
+        "loading": {
+          "description": "Afficher le chargement",
+          "name": "Chargement"
+        },
+        "maxHeight": {
+          "description": "Hauteur maximale",
+          "name": "Hauteur maximale"
+        },
+        "minHeight": {
+          "description": "Hauteur minimale",
+          "name": "Taille minimum"
+        },
+        "rowClassName": {
+          "description": "Ajouter un nom de classe supplémentaire facultatif à la ligne",
+          "name": "Nom de la classe de ligne"
+        },
+        "rowHeight": {
+          "description": "Hauteur de rangée",
+          "name": "Hauteur de rangée"
+        },
+        "rowKey": {
+          "description": "Chaque ligne correspond à la clé unique dans les données",
+          "name": "Clé de ligne"
+        },
+        "shouldUpdateScroll": {
+          "description": "Indique s'il faut mettre à jour le défilement après la mise à jour de la taille de la table",
+          "name": "Devrait mettre à jour le défilement"
+        },
+        "showHeader": {
+          "description": "En-tête d'affichage",
+          "name": "Afficher l'en-tête"
+        },
+        "sortColumn": {
+          "description": "Trier le nom de la colonne",
+          "name": "Colonne de tri"
+        },
+        "sortType": {
+          "description": "Type de tri",
+          "name": "Type de tri"
+        },
+        "virtualized": {
+          "description": "Rendre efficacement de grandes données tabulaires",
+          "name": "Virtualisé"
+        },
+        "width": {
+          "description": "Largeur de la table",
+          "name": "Largeur"
+        },
+        "wordWrap": {
+          "description": "Indique s'il faut afficher des sauts de ligne là où le texte déborde de sa zone de contenu",
+          "name": "Retour à la ligne"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,255 @@
+{
+  "categories": {
+    "antd": {
+      "name": "Ant Design Komponenten"
+    }
+  },
+  "components": {
+    "AntButton": {
+      "description": "Eine Schaltfläche bedeutet eine Operation (oder eine Reihe von Operationen). Durch Klicken auf eine Schaltfläche wird die entsprechende Geschäftslogik ausgelöst",
+      "name": "Ameisen-Knopf",
+      "props": {
+        "block": {
+          "description": "Option zum Anpassen der Schaltflächenbreite an die übergeordnete Breite",
+          "name": "Block"
+        },
+        "children": {
+          "description": "Beschriftung",
+          "name": "Inhalt"
+        },
+        "danger": {
+          "description": "Stellen Sie den Gefahrenstatus der Taste ein",
+          "name": "Gefahr"
+        },
+        "disabled": {
+          "description": "Deaktivierter Status der Schaltfläche",
+          "name": "Behinderte"
+        },
+        "ghost": {
+          "description": "Hintergrund transparent machen und Text- und Rahmenfarben invertieren",
+          "name": "Geist"
+        },
+        "href": {
+          "description": "Weiterleitungs-URL der Link-Schaltfläche",
+          "name": "Href"
+        },
+        "htmlType": {
+          "description": "Legen Sie den ursprünglichen HTML-Typ der Schaltfläche fest",
+          "name": "HTML-Typ"
+        },
+        "loading": {
+          "description": "Stellen Sie den Ladestatus der Schaltfläche ein",
+          "name": "Laden"
+        },
+        "shape": {
+          "description": "Kann Knopfform eingestellt werden",
+          "name": "Form"
+        },
+        "size": {
+          "description": "Legen Sie die Größe der Schaltfläche fest",
+          "name": "Größe"
+        },
+        "target": {
+          "description": "Wie das Zielattribut von a, funktioniert, wenn href angegeben ist",
+          "name": "Ziel"
+        },
+        "type": {
+          "description": "Kann auf primären Geist gestrichelten Linktext Standard gesetzt werden",
+          "name": "Art"
+        }
+      }
+    },
+    "AntCol": {
+      "description": "Die Spalte des Gitters",
+      "name": "Ant Col",
+      "props": {
+        "flex": {
+          "description": "Flexibler Layoutstil",
+          "name": "Flex"
+        },
+        "lg": {
+          "description": "Bildschirm ≥ 992 Pixel",
+          "name": "Lg"
+        },
+        "md": {
+          "description": "Bildschirm ≥ 768 Pixel",
+          "name": "Md"
+        },
+        "offset": {
+          "description": "Die Anzahl der Zellen, die Col von links versetzt werden sollen",
+          "name": "Offset"
+        },
+        "order": {
+          "description": "Rasterreihenfolge",
+          "name": "Bestellen"
+        },
+        "pull": {
+          "description": "Die Anzahl der Zellen, für die das Raster nach links verschoben wird",
+          "name": "Ziehen"
+        },
+        "push": {
+          "description": "Die Anzahl der Zellen, deren Raster nach rechts verschoben wird",
+          "name": "Schieben"
+        },
+        "sm": {
+          "description": "Bildschirm ≥ 576 Pixel",
+          "name": "Sm"
+        },
+        "span": {
+          "description": "Raster Anzahl der zu belegenden Zellen",
+          "name": "Span"
+        },
+        "xl": {
+          "description": "Bildschirm ≥ 1200 Pixel",
+          "name": "Größe Xl"
+        },
+        "xs": {
+          "description": "Bildschirm &lt; 576px und auch Standardeinstellung",
+          "name": "Größe Xs"
+        },
+        "xxl": {
+          "description": "Bildschirm ≥ 1600 Pixel",
+          "name": "Größe Xxl"
+        }
+      }
+    },
+    "AntInput": {
+      "description": "Durch Maus- oder Tastatureingabeinhalte ist dies der grundlegendste Formularfeld-Wrapper",
+      "name": "Ant-Eingabe",
+      "props": {
+        "disabled": {
+          "description": "Ob die Eingabe deaktiviert ist",
+          "name": "Behinderte"
+        },
+        "showCount": {
+          "description": "Gibt an, ob die Anzahl der Zeichen angezeigt werden soll",
+          "name": "Anzahl anzeigen"
+        },
+        "size": {
+          "description": "Die Größe des Eingabefelds",
+          "name": "Größe"
+        },
+        "status": {
+          "description": "Validierungsstatus festlegen",
+          "name": "Status"
+        },
+        "value": {
+          "description": "Der Eingabe-Inhaltswert",
+          "name": "Wert"
+        },
+        "variant": {
+          "description": "Varianten der Eingabe",
+          "name": "Variante"
+        }
+      }
+    },
+    "AntModal": {
+      "description": "Zeigen Sie ein modales Dialogfeld an, das einen Titel, einen Inhaltsbereich und Aktionsschaltflächen bereitstellt",
+      "name": "Ant Modal",
+      "props": {
+        "cancelText": {
+          "description": "Text der Schaltfläche Abbrechen",
+          "name": "Text abbrechen"
+        },
+        "centered": {
+          "description": "Zentriertes Modal",
+          "name": "Egozentrisch"
+        },
+        "keyboard": {
+          "description": "Ob unterstützung drücken sie ESC zu schließen",
+          "name": "Tastatur"
+        },
+        "okText": {
+          "description": "Text der Schaltfläche OK",
+          "name": "OK-Text"
+        }
+      }
+    },
+    "AntRow": {
+      "description": "Die Zeile des Gitters",
+      "name": "Ameisenreihe",
+      "props": {
+        "align": {
+          "description": "Vertikale Ausrichtung",
+          "name": "Ausrichten"
+        },
+        "gutter": {
+          "description": "Abstand zwischen Gittern",
+          "name": "Rinne"
+        },
+        "justify": {
+          "description": "Horizontale Anordnung",
+          "name": "Rechtfertigen"
+        },
+        "wrap": {
+          "description": "Automatische Wickellinie",
+          "name": "Wickeln"
+        }
+      }
+    },
+    "AntTable": {
+      "description": "Eine Tabelle zeigt Datenzeilen an",
+      "name": "Ameisentisch",
+      "props": {
+        "bordered": {
+          "description": "Gibt an, ob alle Tabellenränder angezeigt werden sollen",
+          "name": "Gesäumt"
+        },
+        "columns": {
+          "description": "Spalten der Tabelle",
+          "name": "Spalten"
+        },
+        "dataSource": {
+          "description": "Anzuzeigendes Datensatz-Array",
+          "name": "Datenquelle"
+        },
+        "loading": {
+          "description": "Ladezustand der Tabelle",
+          "name": "Laden"
+        },
+        "rowHoverable": {
+          "description": "Zeilenheben",
+          "name": "Zeile schwebbar"
+        },
+        "rowKey": {
+          "description": "Eindeutiger Schlüssel der Zeile",
+          "name": "Zeilenschlüssel"
+        },
+        "showHeader": {
+          "description": "Gibt an, ob die Tabellenüberschrift angezeigt werden soll",
+          "name": "Kopfzeile anzeigen"
+        },
+        "showSorterTooltip": {
+          "description": "Die Kopfzeile zeigt den Tooltip für die nächste Sortierrichtung an",
+          "name": "Sortierer-Tooltip anzeigen"
+        },
+        "size": {
+          "description": "Größe der Tabelle",
+          "name": "Größe"
+        },
+        "sticky": {
+          "description": "Klebrige Kopfzeile und Bildlaufleiste festlegen",
+          "name": "Klebrig"
+        }
+      }
+    },
+    "AntTooltip": {
+      "description": "Einfaches Text-Popup-Feld",
+      "name": "Ameisen-Tooltip",
+      "props": {
+        "placement": {
+          "description": "Die Position des Tooltips relativ zum Ziel",
+          "name": "Platzierung"
+        },
+        "text": {
+          "description": "Der im Tooltip angezeigte Text",
+          "name": "Text"
+        },
+        "trigger": {
+          "description": "Tooltip-Trigger-Modus",
+          "name": "Auslösen"
+        }
+      }
+    }
+  }
+}

@@ -26,14 +26,14 @@ const simpleHtmlInput = define(SimpleHtmlInput, 'SimpleHtmlInput')
   })
 
 const findUnderlyingComponent = (type: string) => {
-  const definer = rSuiteComponents.find(definer => definer.data.name === type)
+  const definer = rSuiteComponents.find(definer => definer.data.component.displayName === type)
   if (!definer) throw new Error('Calendar component not found')
   return definer.data.component
 }
 
 const WrappedCalendar = (props: any) => {
   const RealComponent = useMemo(() => {
-    return findUnderlyingComponent('Calendar')
+    return findUnderlyingComponent('RsCalendar')
   }, [])
 
   const {value, ...rest} = props
@@ -49,7 +49,7 @@ const wrappedCalendar = define(WrappedCalendar, 'WrappedCalendar')
 
 const WrappedTagPicker = (props: any) => {
   const RealComponent = useMemo(() => {
-    return findUnderlyingComponent('TagPicker')
+    return findUnderlyingComponent('RsTagPicker')
   }, [])
 
   const {value, ...rest} = props
@@ -68,7 +68,7 @@ const wrappedTagPicker = define(WrappedTagPicker, 'WrappedTagPicker')
 
 const WrappedUploader = (props: any) => {
   const RealComponent = useMemo(() => {
-    return findUnderlyingComponent('Uploader')
+    return findUnderlyingComponent('RsUploader')
   }, [])
 
   const {fileList, ...rest} = props

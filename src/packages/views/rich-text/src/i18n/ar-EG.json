@@ -1,0 +1,39 @@
+{
+  "categories": {
+    "fields": {
+      "name": "الحقول"
+    }
+  },
+  "components": {
+    "RichTextEditor": {
+      "description": "محرر نص غني قوي",
+      "name": "محرر نص منسق",
+      "props": {
+        "initialValue": {
+          "description": "القيمة الأولية",
+          "name": "القيمة الأولية"
+        },
+        "label": {
+          "description": "التسمية",
+          "name": "التسمية"
+        },
+        "modules": {
+          "description": "يسمح لتخصيص السلوك والأداء الوظيفي للمحرر. اقرأ المستندات لمزيد من المعلومات",
+          "name": "وحدات"
+        },
+        "placeholder": {
+          "description": "العنصر النائب",
+          "name": "نائب"
+        },
+        "readOnly": {
+          "description": "علم للقراءة فقط",
+          "name": "للقراءة فقط"
+        },
+        "toolbarOptions": {
+          "description": "مجموعات من الأزرار ليتم عرضها على شريط الأدوات",
+          "name": "خيارات شريط الأدوات"
+        }
+      }
+    }
+  }
+}

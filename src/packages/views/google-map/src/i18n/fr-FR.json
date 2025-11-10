@@ -1,0 +1,107 @@
+{
+  "categories": {
+    "fields": {
+      "name": "Champs"
+    }
+  },
+  "components": {
+    "GoogleMap": {
+      "description": "Composant affichant une carte Google",
+      "name": "Carte Google",
+      "props": {
+        "addMarkerOnSearch": {
+          "description": "Indique s'il faut ajouter un marqueur sur la recherche",
+          "name": "Ajouter un marqueur sur la recherche"
+        },
+        "allowChangingMarkers": {
+          "description": "Si coché, l'utilisateur peut modifier les marqueurs",
+          "name": "Autoriser le changement de marqueurs"
+        },
+        "allowMultipleMarkers": {
+          "description": "Marqueurs multiples",
+          "name": "Autoriser plusieurs marqueurs"
+        },
+        "apiKey": {
+          "description": "Clé d'API Google Maps",
+          "name": "Clé API"
+        },
+        "collisionBehavior": {
+          "description": "Le comportement de collision des marqueurs",
+          "name": "Comportement de collision"
+        },
+        "colorScheme": {
+          "description": "La palette de couleurs à utiliser",
+          "name": "Schéma de couleurs"
+        },
+        "gestureHandling": {
+          "description": "La manipulation gestuelle à utiliser",
+          "name": "Gestion des gestes"
+        },
+        "height": {
+          "description": "Hauteur de la carte",
+          "name": "Hauteur"
+        },
+        "label": {
+          "description": "Étiquette de la carte",
+          "name": "Étiquette"
+        },
+        "language": {
+          "description": "La langue à utiliser",
+          "name": "Langue"
+        },
+        "latitude": {
+          "description": "Latitude du point central",
+          "name": "Latitude"
+        },
+        "longitude": {
+          "description": "Longitude du point central",
+          "name": "Longueur"
+        },
+        "mapControlPosition": {
+          "description": "La position du contrôle de la carte",
+          "name": "Position de contrôle de la carte"
+        },
+        "mapId": {
+          "description": "L'ID de carte est un identifiant associé à un style de carte ou à une entité spécifique",
+          "name": "Identifiant de la CARTE"
+        },
+        "mapTypeId": {
+          "description": "Le type de carte par défaut à utiliser",
+          "name": "Type de carte"
+        },
+        "markerWindowTitle": {
+          "description": "Le titre de la fenêtre de marqueur",
+          "name": "Titre de la fenêtre de marqueur"
+        },
+        "markers": {
+          "description": "Coordonnées des marqueurs",
+          "name": "Marqueurs"
+        },
+        "region": {
+          "description": "Le code de région à utiliser",
+          "name": "Région"
+        },
+        "removeMarkerCaption": {
+          "description": "La légende sur le bouton de suppression du marqueur",
+          "name": "Supprimer la légende du marqueur"
+        },
+        "searchPlaceholder": {
+          "description": "Texte d'espace réservé pour l'entrée de recherche de carte",
+          "name": "Espace réservé de recherche"
+        },
+        "showMapControl": {
+          "description": "Indique s'il faut afficher le contrôle de la carte",
+          "name": "Afficher le contrôle de la carte"
+        },
+        "width": {
+          "description": "Largeur de la carte",
+          "name": "Largeur"
+        },
+        "zoom": {
+          "description": "Niveau de zoom",
+          "name": "Zoom Avant"
+        }
+      }
+    }
+  }
+}

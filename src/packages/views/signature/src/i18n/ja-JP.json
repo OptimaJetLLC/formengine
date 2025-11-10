@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "fields": {
+      "name": "フィールド"
+    }
+  },
+  "components": {
+    "RsSignature": {
+      "description": "HTML5キャンバスベースの滑らかな署名描画",
+      "name": "署名",
+      "props": {
+        "backgroundColor": {
+          "description": "背景色",
+          "name": "背景色"
+        },
+        "clearButtonText": {
+          "description": "クリアボタンラベル",
+          "name": "ボタンのテキストを消去する"
+        },
+        "height": {
+          "description": "キャンバスの高さ",
+          "name": "高さ"
+        },
+        "label": {
+          "description": "コンポーネントのラベル",
+          "name": "ラベル"
+        },
+        "lineWidth": {
+          "description": "線の幅",
+          "name": "線幅"
+        },
+        "penColor": {
+          "description": "ペンの色",
+          "name": "ペンの色"
+        },
+        "readOnly": {
+          "description": "読み取り専用フラグ",
+          "name": "読み取り専用"
+        },
+        "value": {
+          "description": "署名画像を描画するための初期データURL",
+          "name": "値"
+        },
+        "width": {
+          "description": "キャンバスの幅",
+          "name": "幅"
+        }
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ import {define, node, number, string} from '@react-form-builder/core'
 import {Col} from 'antd'
 
 export const antCol = define(Col, 'AntCol')
+  .category('antd')
   .kind('container')
   .props({
     children: node,

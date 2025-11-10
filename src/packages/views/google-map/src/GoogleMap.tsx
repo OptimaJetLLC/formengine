@@ -103,6 +103,6 @@ export const googleMap = define(GoogleMapLoader, 'GoogleMap')
     onPlaceSelect: event,
   })
   .css({
-    width: cssSize.setup({default: '100%'}).hinted('Width of the map'),
-    height: cssSize.setup({default: '400px'}).hinted('Height of the map'),
+    width: cssSize.setup({default: '100%'}),
+    height: cssSize.setup({default: '400px'}),
   })

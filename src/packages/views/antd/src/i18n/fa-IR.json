@@ -1,0 +1,255 @@
+{
+  "categories": {
+    "antd": {
+      "name": "اجزای طراحی مورچه"
+    }
+  },
+  "components": {
+    "AntButton": {
+      "description": "یک دکمه به معنی یک عملیات (یا یک سری عملیات) است. کلیک کردن روی یک دکمه منطق تجاری مربوطه را ایجاد می کند",
+      "name": "دکمه مورچه",
+      "props": {
+        "block": {
+          "description": "گزینه ای برای متناسب کردن عرض دکمه به عرض مادر",
+          "name": "بلوک"
+        },
+        "children": {
+          "description": "عنوان",
+          "name": "محتوا"
+        },
+        "danger": {
+          "description": "وضعیت خطر دکمه را تنظیم کنید",
+          "name": "خطر"
+        },
+        "disabled": {
+          "description": "حالت دکمه غیرفعال شده",
+          "name": "معلول"
+        },
+        "ghost": {
+          "description": "پس زمینه را شفاف کنید و متن و رنگ های مرزی را معکوس کنید",
+          "name": "روح"
+        },
+        "href": {
+          "description": "تغییر مسیر buttonl دکمه لینک",
+          "name": "Href"
+        },
+        "htmlType": {
+          "description": "نوع دکمه اصلی HTML را تنظیم کنید",
+          "name": "نوع HTML"
+        },
+        "loading": {
+          "description": "وضعیت بارگذاری دکمه را تنظیم کنید",
+          "name": "بارگیری"
+        },
+        "shape": {
+          "description": "می توان شکل دکمه را تنظیم کرد",
+          "name": "شکل"
+        },
+        "size": {
+          "description": "اندازه دکمه را تنظیم کنید",
+          "name": "اندازه"
+        },
+        "target": {
+          "description": "همان ویژگی هدف a ، زمانی کار می کند که href مشخص شده باشد",
+          "name": "هدف"
+        },
+        "type": {
+          "description": "می تواند به پیش فرض متن لینک اصلی ghost dashed تنظیم شود",
+          "name": "نوع"
+        }
+      }
+    },
+    "AntCol": {
+      "description": "ستون شبکه",
+      "name": "مورچه کول",
+      "props": {
+        "flex": {
+          "description": "سبک طرح انعطاف پذیر",
+          "name": "فلکس"
+        },
+        "lg": {
+          "description": "صفحه نمایش ≥ 992px",
+          "name": "ال جی"
+        },
+        "md": {
+          "description": "صفحه نمایش ≥ 768px",
+          "name": "دکتر"
+        },
+        "offset": {
+          "description": "تعداد سلول هایی که Col را از سمت چپ جبران می کنند",
+          "name": "جبران"
+        },
+        "order": {
+          "description": "سفارش رستر",
+          "name": "سفارش"
+        },
+        "pull": {
+          "description": "تعداد سلول هایی که راستر به سمت چپ منتقل می شود",
+          "name": "کشش"
+        },
+        "push": {
+          "description": "تعداد سلول هایی که راستر به سمت راست منتقل می شود",
+          "name": "فشار"
+        },
+        "sm": {
+          "description": "صفحه نمایش ≥ 576px",
+          "name": "اس ام"
+        },
+        "span": {
+          "description": "تعداد سلول های راستر برای اشغال",
+          "name": "طول"
+        },
+        "xl": {
+          "description": "صفحه نمایش ≥ 1200px",
+          "name": "Xl"
+        },
+        "xs": {
+          "description": "صفحه نمایش &lt; 576px و همچنین تنظیم پیش فرض",
+          "name": "Xs"
+        },
+        "xxl": {
+          "description": "صفحه نمایش ≥ 1600px",
+          "name": "Xxl"
+        }
+      }
+    },
+    "AntInput": {
+      "description": "از طریق محتوای ورودی ماوس یا صفحه کلید ، این اساسی ترین بسته بندی میدان فرم است",
+      "name": "ورودی مورچه",
+      "props": {
+        "disabled": {
+          "description": "آیا ورودی غیرفعال است",
+          "name": "معلول"
+        },
+        "showCount": {
+          "description": "آیا تعداد شخصیت ها را نشان دهیم",
+          "name": "تعداد نمایش"
+        },
+        "size": {
+          "description": "اندازه جعبه ورودی",
+          "name": "اندازه"
+        },
+        "status": {
+          "description": "وضعیت اعتبار سنجی را تنظیم کنید",
+          "name": "وضعیت"
+        },
+        "value": {
+          "description": "مقدار محتوای ورودی",
+          "name": "ارزش"
+        },
+        "variant": {
+          "description": "انواع ورودی",
+          "name": "نوع"
+        }
+      }
+    },
+    "AntModal": {
+      "description": "نمایش یک جعبه گفتگو مودال ، ارائه عنوان ، منطقه محتوا و دکمه های عمل",
+      "name": "مدال مورچه",
+      "props": {
+        "cancelText": {
+          "description": "متن دکمه لغو",
+          "name": "لغو متن"
+        },
+        "centered": {
+          "description": "مدال مرکزی",
+          "name": "مرکز"
+        },
+        "keyboard": {
+          "description": "آیا پشتیبانی esc را فشار دهید تا بسته شود",
+          "name": "صفحه کلید"
+        },
+        "okText": {
+          "description": "متن دکمه OK",
+          "name": "متن خوب"
+        }
+      }
+    },
+    "AntRow": {
+      "description": "ردیف شبکه",
+      "name": "ردیف مورچه",
+      "props": {
+        "align": {
+          "description": "تراز عمودی",
+          "name": "تراز کردن"
+        },
+        "gutter": {
+          "description": "فاصله بین شبکه ها",
+          "name": "رودخانه"
+        },
+        "justify": {
+          "description": "ترتیب افقی",
+          "name": "توجیه"
+        },
+        "wrap": {
+          "description": "خط بسته بندی خودکار",
+          "name": "بسته بندی"
+        }
+      }
+    },
+    "AntTable": {
+      "description": "یک جدول ردیف داده ها را نمایش می دهد",
+      "name": "میز مورچه",
+      "props": {
+        "bordered": {
+          "description": "آیا برای نشان دادن تمام مرزهای جدول",
+          "name": "مرز"
+        },
+        "columns": {
+          "description": "ستون های جدول",
+          "name": "ستون ها"
+        },
+        "dataSource": {
+          "description": "آرایه ثبت داده ها نمایش داده می شود",
+          "name": "منبع داده"
+        },
+        "loading": {
+          "description": "وضعیت بارگذاری جدول",
+          "name": "بارگیری"
+        },
+        "rowHoverable": {
+          "description": "ردیف شناور",
+          "name": "ردیف قابل حرکت"
+        },
+        "rowKey": {
+          "description": "کلید منحصر به فرد Row",
+          "name": "کلید ردیف"
+        },
+        "showHeader": {
+          "description": "آیا برای نشان دادن سرصفحه جدول",
+          "name": "نمایش هدر"
+        },
+        "showSorterTooltip": {
+          "description": "سرصفحه نشان می دهد بعدی مرتب سازی جهت tooltip",
+          "name": "نمایش مرتب کننده ابزار"
+        },
+        "size": {
+          "description": "اندازه جدول",
+          "name": "اندازه"
+        },
+        "sticky": {
+          "description": "تنظیم هدر چسبنده و نوار اسکرول",
+          "name": "چسبنده"
+        }
+      }
+    },
+    "AntTooltip": {
+      "description": "جعبه پاپ آپ متن ساده",
+      "name": "نوک ابزار مورچه",
+      "props": {
+        "placement": {
+          "description": "موقعیت نوک ابزار نسبت به هدف",
+          "name": "قرار دادن"
+        },
+        "text": {
+          "description": "متن نشان داده شده در tooltip",
+          "name": "متن"
+        },
+        "trigger": {
+          "description": "حالت ماشه ابزار",
+          "name": "ماشه"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "static": {
+      "name": "静的"
+    }
+  },
+  "components": {
+    "FastQR": {
+      "description": "テキストをQRコードに変換でき、カスタムカラーとロゴをサポートするコンポーネント",
+      "name": "QRコード",
+      "props": {
+        "content": {
+          "description": "QRコードの内容",
+          "name": "コンテンツ"
+        },
+        "errorCorrectionLevel": {
+          "description": "誤り訂正符号化レベル",
+          "name": "誤り訂正レベル"
+        },
+        "image": {
+          "description": "画像、base64またはURL",
+          "name": "イメージ"
+        },
+        "imageBackgroundColor": {
+          "description": "画像の背景色",
+          "name": "画像の背景色"
+        },
+        "imageBackgroundShape": {
+          "description": "イメージの背景の形",
+          "name": "イメージの背景の形"
+        },
+        "moduleColor": {
+          "description": "モジュールの色",
+          "name": "モジュール色"
+        },
+        "shape": {
+          "description": "モジュールを表すために可能なさまざまな形状",
+          "name": "形"
+        },
+        "version": {
+          "description": "QRコード版",
+          "name": "QRバージョン"
+        },
+        "width": {
+          "description": "QRコードの幅",
+          "name": "幅"
+        }
+      }
+    }
+  }
+}

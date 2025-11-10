@@ -1,0 +1,107 @@
+{
+  "categories": {
+    "fields": {
+      "name": "字段"
+    }
+  },
+  "components": {
+    "GoogleMap": {
+      "description": "显示Google地图的组件",
+      "name": "谷歌地图",
+      "props": {
+        "addMarkerOnSearch": {
+          "description": "是否在搜索中添加标记",
+          "name": "在搜索中添加标记"
+        },
+        "allowChangingMarkers": {
+          "description": "如果选中，用户可以更改标记",
+          "name": "允许更改标记"
+        },
+        "allowMultipleMarkers": {
+          "description": "多个标记",
+          "name": "允许多个标记"
+        },
+        "apiKey": {
+          "description": "谷歌地图API密钥",
+          "name": "API密钥"
+        },
+        "collisionBehavior": {
+          "description": "标记碰撞行为",
+          "name": "碰撞行为"
+        },
+        "colorScheme": {
+          "description": "要使用的配色方案",
+          "name": "配色方案"
+        },
+        "gestureHandling": {
+          "description": "要使用的手势处理",
+          "name": "手势处理"
+        },
+        "height": {
+          "description": "地图的高度",
+          "name": "身高"
+        },
+        "label": {
+          "description": "地图标签",
+          "name": "标签"
+        },
+        "language": {
+          "description": "要使用的语言",
+          "name": "语言"
+        },
+        "latitude": {
+          "description": "中心点的纬度",
+          "name": "纬度"
+        },
+        "longitude": {
+          "description": "中心点的经度",
+          "name": "经度"
+        },
+        "mapControlPosition": {
+          "description": "地图控件的位置",
+          "name": "地图控制位置"
+        },
+        "mapId": {
+          "description": "地图ID是与特定地图样式或要素关联的标识符",
+          "name": "地图ID"
+        },
+        "mapTypeId": {
+          "description": "要使用的默认地图类型",
+          "name": "地图类型"
+        },
+        "markerWindowTitle": {
+          "description": "标记窗口的标题",
+          "name": "标记窗口标题"
+        },
+        "markers": {
+          "description": "标记的坐标",
+          "name": "标记物"
+        },
+        "region": {
+          "description": "要使用的区域代码",
+          "name": "区域"
+        },
+        "removeMarkerCaption": {
+          "description": "标记移除按钮上的标题",
+          "name": "删除标记标题"
+        },
+        "searchPlaceholder": {
+          "description": "地图搜索输入的占位符文本",
+          "name": "搜索占位符"
+        },
+        "showMapControl": {
+          "description": "是否显示地图控件",
+          "name": "显示地图控制"
+        },
+        "width": {
+          "description": "地图的宽度",
+          "name": "阔度"
+        },
+        "zoom": {
+          "description": "缩放级别",
+          "name": "变焦/变焦"
+        }
+      }
+    }
+  }
+}

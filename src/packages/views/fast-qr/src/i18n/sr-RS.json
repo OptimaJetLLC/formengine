@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "static": {
+      "name": "Статички"
+    }
+  },
+  "components": {
+    "FastQR": {
+      "description": "Компонента која може претворити текст у КР кодове и одржавати прилагођену боју и логотип",
+      "name": "КР код",
+      "props": {
+        "content": {
+          "description": "Садржај КР кода",
+          "name": "Садржај"
+        },
+        "errorCorrectionLevel": {
+          "description": "Ниво кодирања за исправљање грешака",
+          "name": "Ниво корекције грешака"
+        },
+        "image": {
+          "description": "Слика, басе64 или УРЛ",
+          "name": "Слика"
+        },
+        "imageBackgroundColor": {
+          "description": "Боја позадине слике",
+          "name": "Боја позадине слике"
+        },
+        "imageBackgroundShape": {
+          "description": "Облик позадине слике",
+          "name": "Облик позадине слике"
+        },
+        "moduleColor": {
+          "description": "Боја модула",
+          "name": "Боја модула"
+        },
+        "shape": {
+          "description": "Различити могући облици за представљање модула",
+          "name": "Облик"
+        },
+        "version": {
+          "description": "Верзија са КР кодом",
+          "name": "Верзија КР кода"
+        },
+        "width": {
+          "description": "Ширина КР кода",
+          "name": "Ширина"
+        }
+      }
+    }
+  }
+}

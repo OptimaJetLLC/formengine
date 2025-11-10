@@ -1,0 +1,255 @@
+{
+  "categories": {
+    "antd": {
+      "name": "개미 디자인 구성 요소"
+    }
+  },
+  "components": {
+    "AntButton": {
+      "description": "버튼은 작업(또는 일련의 작업)을 의미합니다. 버튼을 클릭하면 해당 비즈니스 로직이 트리거됩니다",
+      "name": "개미 버튼",
+      "props": {
+        "block": {
+          "description": "버튼 너비를 부모 너비에 맞추는 옵션",
+          "name": "블록"
+        },
+        "children": {
+          "description": "캡션",
+          "name": "내용"
+        },
+        "danger": {
+          "description": "버튼의 위험 상태 설정",
+          "name": "위험"
+        },
+        "disabled": {
+          "description": "버튼의 비활성화 상태",
+          "name": "사용 안 함"
+        },
+        "ghost": {
+          "description": "배경을 투명하게 만들고 텍스트 및 테두리 색상을 반전",
+          "name": "유령"
+        },
+        "href": {
+          "description": "링크 버튼 리디렉션",
+          "name": "헤프"
+        },
+        "htmlType": {
+          "description": "원래 버튼 유형 설정",
+          "name": "유형"
+        },
+        "loading": {
+          "description": "버튼의 로딩 상태 설정",
+          "name": "로드 중"
+        },
+        "shape": {
+          "description": "단추 모양을 놓을 수 있습니다",
+          "name": "모양"
+        },
+        "size": {
+          "description": "버튼의 크기를 설정",
+          "name": "크기"
+        },
+        "target": {
+          "description": "의 대상 속성과 동일,헤 레프가 지정 될 때 작동",
+          "name": "목표"
+        },
+        "type": {
+          "description": "기본 고스트 파선 링크 텍스트 기본값으로 설정할 수 있습니다",
+          "name": "유형"
+        }
+      }
+    },
+    "AntCol": {
+      "description": "그리드의 열",
+      "name": "앤트 콜",
+      "props": {
+        "flex": {
+          "description": "플렉스 레이아웃 스타일",
+          "name": "플렉스"
+        },
+        "lg": {
+          "description": "2018 년 11 월 19 일에 확인함.",
+          "name": "이지"
+        },
+        "md": {
+          "description": "화면≥768px",
+          "name": "메드"
+        },
+        "offset": {
+          "description": "왼쪽에서 콜을 오프셋할 셀 수",
+          "name": "오프셋"
+        },
+        "order": {
+          "description": "라스터 순서",
+          "name": "주문"
+        },
+        "pull": {
+          "description": "래스터가 왼쪽으로 이동하는 셀 수",
+          "name": "당겨"
+        },
+        "push": {
+          "description": "래스터가 오른쪽으로 이동하는 셀 수",
+          "name": "푸시"
+        },
+        "sm": {
+          "description": "2018 년 10 월 15 일에 확인함.",
+          "name": "에스엠"
+        },
+        "span": {
+          "description": "점유 할 래스터 셀 수",
+          "name": "스팬"
+        },
+        "xl": {
+          "description": "1200 픽셀의 화면 1200 픽셀의 화면 1200 픽셀",
+          "name": "2015 년"
+        },
+        "xs": {
+          "description": "화면 &lt; 576 픽셀 및 기본 설정",
+          "name": "엑스"
+        },
+        "xxl": {
+          "description": "1600 픽셀의 화면 1600 픽셀의 화면 1600 픽셀",
+          "name": "큰"
+        }
+      }
+    },
+    "AntInput": {
+      "description": "마우스 또는 키보드 입력 콘텐츠를 통해 가장 기본적인 양식 필드 래퍼입니다",
+      "name": "개미 입력",
+      "props": {
+        "disabled": {
+          "description": "입력이 비활성화되었는지 여부",
+          "name": "사용 안 함"
+        },
+        "showCount": {
+          "description": "문자 수 표시 여부",
+          "name": "카운트 표시"
+        },
+        "size": {
+          "description": "입력 상자의 크기",
+          "name": "크기"
+        },
+        "status": {
+          "description": "유효성 검사 상태 설정",
+          "name": "상태"
+        },
+        "value": {
+          "description": "입력 내용 값",
+          "name": "값"
+        },
+        "variant": {
+          "description": "입력의 변형",
+          "name": "변종"
+        }
+      }
+    },
+    "AntModal": {
+      "description": "제목,콘텐츠 영역 및 작업 단추를 제공하는 모달 대화 상자를 표시합니다",
+      "name": "개미 모달",
+      "props": {
+        "cancelText": {
+          "description": "취소 단추의 텍스트",
+          "name": "텍스트 취소"
+        },
+        "centered": {
+          "description": "중심 모달",
+          "name": "중심"
+        },
+        "keyboard": {
+          "description": "지원을 눌러 닫을지 여부",
+          "name": "키보드"
+        },
+        "okText": {
+          "description": "확인 버튼의 텍스트",
+          "name": "확인 텍스트"
+        }
+      }
+    },
+    "AntRow": {
+      "description": "그리드의 행",
+      "name": "개미 줄",
+      "props": {
+        "align": {
+          "description": "수직 정렬",
+          "name": "정렬"
+        },
+        "gutter": {
+          "description": "격자 사이의 간격",
+          "name": "하수구"
+        },
+        "justify": {
+          "description": "수평 배열",
+          "name": "정당화"
+        },
+        "wrap": {
+          "description": "자동 랩 라인",
+          "name": "포장"
+        }
+      }
+    },
+    "AntTable": {
+      "description": "테이블에는 데이터 행이 표시됩니다",
+      "name": "개미 테이블",
+      "props": {
+        "bordered": {
+          "description": "모든 테이블 테두리 표시 여부",
+          "name": "경계"
+        },
+        "columns": {
+          "description": "테이블의 열",
+          "name": "열"
+        },
+        "dataSource": {
+          "description": "표시할 데이터 레코드 배열",
+          "name": "데이터 소스"
+        },
+        "loading": {
+          "description": "테이블의 로딩 상태",
+          "name": "로드 중"
+        },
+        "rowHoverable": {
+          "description": "행 호버",
+          "name": "행 호버 가능"
+        },
+        "rowKey": {
+          "description": "행의 고유 키",
+          "name": "행 키"
+        },
+        "showHeader": {
+          "description": "테이블 머리글 표시 여부",
+          "name": "헤더 표시"
+        },
+        "showSorterTooltip": {
+          "description": "헤더 표시 다음 분류기 방향 툴팁",
+          "name": "분류기 툴팁 표시"
+        },
+        "size": {
+          "description": "테이블의 크기",
+          "name": "크기"
+        },
+        "sticky": {
+          "description": "고정 헤더 및 스크롤 막대 설정",
+          "name": "끈적끈적"
+        }
+      }
+    },
+    "AntTooltip": {
+      "description": "간단한 텍스트 팝업 상자",
+      "name": "개미 툴팁",
+      "props": {
+        "placement": {
+          "description": "대상에 대한 툴팁의 위치",
+          "name": "배치"
+        },
+        "text": {
+          "description": "도구 설명에 표시된 텍스트",
+          "name": "본문"
+        },
+        "trigger": {
+          "description": "툴팁 트리거 모드",
+          "name": "트리거"
+        }
+      }
+    }
+  }
+}

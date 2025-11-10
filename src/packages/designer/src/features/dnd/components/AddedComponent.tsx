@@ -9,6 +9,7 @@ import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {transformComponentNameToCssClass} from '../../../utils/transformComponentNameToCssClass'
 import {PresetIcon} from '../../preset-component/PresetIcon'
 import type {DraggableProps} from '../../ui/ComponentBar'
+import {useComponentLibraryDescription} from '../../ui/ComponentBar/useComponentLibraryDescription'
 import {ItemType} from '../consts'
 import {DragPreview} from './Editable/components/DragPreview'
 import {useDragWithPreview} from './Editable/hooks/useDragWithPreview'
@@ -88,6 +89,13 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
 
   const {hovered, ...hoveredProps} = useHovered()
 
+  const getLibraryDescription = useComponentLibraryDescription()
+
+  const componentName = useMemo(() => {
+    return getLibraryDescription(libraryDescription => libraryDescription?.components?.[type]?.name)
+      || name || type
+  }, [getLibraryDescription, name, type])
+
   const canAddComponent = useCanAddComponent()
   const disabled = useMemo(() => !canAddComponent(data), [canAddComponent, data])
   const cls = useMemo(() => cx([
@@ -118,7 +126,7 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
     <Container onClick={onClick} onDoubleClick={handleDoubleClick} className={cls}
                {...hoveredProps} data-testid={`${data.model.type}-palette-component`}>
       <Icon width={18} height={18} viewBox="0 0 24 24"/>
-      <label>{name}</label>
+      <label>{componentName}</label>
       {elementToolbar}
     </Container>
   )

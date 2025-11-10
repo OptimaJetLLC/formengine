@@ -1,0 +1,39 @@
+{
+  "categories": {
+    "fields": {
+      "name": "フィールド"
+    }
+  },
+  "components": {
+    "RichTextEditor": {
+      "description": "強力なリッチテキストエディタ",
+      "name": "リッチテキストエディタ",
+      "props": {
+        "initialValue": {
+          "description": "初期値",
+          "name": "初期値"
+        },
+        "label": {
+          "description": "ラベル",
+          "name": "ラベル"
+        },
+        "modules": {
+          "description": "エディタの動作と機能をカスタマイズできます。 より多くの情報のためのdocsを読んで下さい",
+          "name": "モジュール"
+        },
+        "placeholder": {
+          "description": "プレースホルダ",
+          "name": "プレースホルダ"
+        },
+        "readOnly": {
+          "description": "読み取り専用フラグ",
+          "name": "読み取り専用"
+        },
+        "toolbarOptions": {
+          "description": "ツールバーに表示されるボタンのグループ",
+          "name": "ツールバーオプション"
+        }
+      }
+    }
+  }
+}

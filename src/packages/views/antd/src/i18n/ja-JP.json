@@ -1,0 +1,255 @@
+{
+  "categories": {
+    "antd": {
+      "name": "Antデザインコンポーネント"
+    }
+  },
+  "components": {
+    "AntButton": {
+      "description": "ボタンとは、操作（または一連の操作）を意味します。 ボタンをクリックすると、対応するビジネスロジックがトリガーされます",
+      "name": "アリボタン",
+      "props": {
+        "block": {
+          "description": "ボタンの幅を親の幅に合わせるオプション",
+          "name": "ブロック"
+        },
+        "children": {
+          "description": "キャプション",
+          "name": "コンテンツ"
+        },
+        "danger": {
+          "description": "ボタンの危険状態を設定する",
+          "name": "危険"
+        },
+        "disabled": {
+          "description": "ボタンの無効状態",
+          "name": "無効"
+        },
+        "ghost": {
+          "description": "背景を透明にし、テキストと境界線の色を反転します",
+          "name": "ゴースト"
+        },
+        "href": {
+          "description": "リンクボタンのurlをリダイレクトする",
+          "name": "Href"
+        },
+        "htmlType": {
+          "description": "ボタンの元のHTMLタイプを設定する",
+          "name": "HTMLタイプ"
+        },
+        "loading": {
+          "description": "ボタンの読み込み状態を設定する",
+          "name": "積み込み"
+        },
+        "shape": {
+          "description": "ボタンの形は置くことができます",
+          "name": "形"
+        },
+        "size": {
+          "description": "ボタンのサイズを設定する",
+          "name": "サイズ"
+        },
+        "target": {
+          "description": "Aのtarget属性と同じで、hrefが指定されている場合に動作します",
+          "name": "ターゲット"
+        },
+        "type": {
+          "description": "プライマリゴーストダッシュリンクテキストデフォルトに設定できます",
+          "name": "タイプ"
+        }
+      }
+    },
+    "AntCol": {
+      "description": "グリッドの列",
+      "name": "アリ-コル",
+      "props": {
+        "flex": {
+          "description": "フレックスレイアウトスタイル",
+          "name": "Flex（フレックス）"
+        },
+        "lg": {
+          "description": "画面№992px",
+          "name": "Lg"
+        },
+        "md": {
+          "description": "画面№768px",
+          "name": "Md"
+        },
+        "offset": {
+          "description": "左からColをオフセットするセルの数",
+          "name": "オフセット"
+        },
+        "order": {
+          "description": "ラスター順",
+          "name": "ご注文"
+        },
+        "pull": {
+          "description": "ラスターが左に移動するセルの数",
+          "name": "プル"
+        },
+        "push": {
+          "description": "ラスターが右に移動するセルの数",
+          "name": "プッシュ"
+        },
+        "sm": {
+          "description": "画面№576px",
+          "name": "Sm"
+        },
+        "span": {
+          "description": "占有するセルのラスタ数",
+          "name": "スパン"
+        },
+        "xl": {
+          "description": "画面№1200px",
+          "name": "Xl"
+        },
+        "xs": {
+          "description": "画面 &lt; 576pxとデフォルト設定",
+          "name": "Xs"
+        },
+        "xxl": {
+          "description": "画面№1600px",
+          "name": "Xxl"
+        }
+      }
+    },
+    "AntInput": {
+      "description": "マウスまたはキーボードの入力コンテンツを介して、最も基本的なフォームフィールドラッパーです",
+      "name": "アリ入力",
+      "props": {
+        "disabled": {
+          "description": "入力が無効になっているかどうか",
+          "name": "無効"
+        },
+        "showCount": {
+          "description": "文字数を表示するかどうか",
+          "name": "カウントを表示"
+        },
+        "size": {
+          "description": "入力ボックスのサイズ",
+          "name": "サイズ"
+        },
+        "status": {
+          "description": "検証ステータスの設定",
+          "name": "ステータス"
+        },
+        "value": {
+          "description": "入力コンテンツの値",
+          "name": "値"
+        },
+        "variant": {
+          "description": "入力のバリエーション",
+          "name": "変型"
+        }
+      }
+    },
+    "AntModal": {
+      "description": "モーダルダイアログボックスを表示し、タイトル、コンテンツエリア、およびアクションボタンを提供します",
+      "name": "アリ-モーダル",
+      "props": {
+        "cancelText": {
+          "description": "キャンセルボタンのテキスト",
+          "name": "テキストをキャンセルする"
+        },
+        "centered": {
+          "description": "中央モーダル",
+          "name": "中央に配置される"
+        },
+        "keyboard": {
+          "description": "かどうかサポートプレスESCに閉じる",
+          "name": "キーボード"
+        },
+        "okText": {
+          "description": "OKボタンのテキスト",
+          "name": "OKテキスト"
+        }
+      }
+    },
+    "AntRow": {
+      "description": "グリッドの行",
+      "name": "アリ行",
+      "props": {
+        "align": {
+          "description": "縦の直線",
+          "name": "整列"
+        },
+        "gutter": {
+          "description": "グリッド間の間隔",
+          "name": "樋"
+        },
+        "justify": {
+          "description": "水平配置",
+          "name": "正当化する"
+        },
+        "wrap": {
+          "description": "自動折り返しライン",
+          "name": "ラップ"
+        }
+      }
+    },
+    "AntTable": {
+      "description": "テーブルにはデータの行が表示されます",
+      "name": "蟻のテーブル",
+      "props": {
+        "bordered": {
+          "description": "すべての表の枠線を表示するかどうか",
+          "name": "縁取り"
+        },
+        "columns": {
+          "description": "テーブルの列",
+          "name": "コラム"
+        },
+        "dataSource": {
+          "description": "表示するデータレコード配列",
+          "name": "データソース"
+        },
+        "loading": {
+          "description": "テーブルの読み込み状況",
+          "name": "積み込み"
+        },
+        "rowHoverable": {
+          "description": "行ホバー",
+          "name": "行ホバー可能"
+        },
+        "rowKey": {
+          "description": "行の一意キー",
+          "name": "行キー"
+        },
+        "showHeader": {
+          "description": "テーブルヘッダーを表示するかどうか",
+          "name": "ヘッダーを表示"
+        },
+        "showSorterTooltip": {
+          "description": "ヘッダーは次のソーター方向のツールチップを表示します",
+          "name": "ソーターツールチップを表示"
+        },
+        "size": {
+          "description": "テーブルのサイズ",
+          "name": "サイズ"
+        },
+        "sticky": {
+          "description": "スティッキーヘッダーとスクロールバーを設定する",
+          "name": "スティッキー"
+        }
+      }
+    },
+    "AntTooltip": {
+      "description": "シンプルテキストポップアップボックス",
+      "name": "Antツールチップ",
+      "props": {
+        "placement": {
+          "description": "ターゲットに対するツールチップの相対位置",
+          "name": "配置"
+        },
+        "text": {
+          "description": "ツールチップに表示されるテキスト",
+          "name": "テキスト"
+        },
+        "trigger": {
+          "description": "ツールチップトリガーモード",
+          "name": "トリガー"
+        }
+      }
+    }
+  }
+}

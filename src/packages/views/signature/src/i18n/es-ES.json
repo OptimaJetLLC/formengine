@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "fields": {
+      "name": "Campos"
+    }
+  },
+  "components": {
+    "RsSignature": {
+      "description": "Dibujo de firma suave basado en lienzo HTML5",
+      "name": "Firma",
+      "props": {
+        "backgroundColor": {
+          "description": "El color de fondo",
+          "name": "Color de fondo"
+        },
+        "clearButtonText": {
+          "description": "Etiqueta de botón transparente",
+          "name": "Texto claro del botón"
+        },
+        "height": {
+          "description": "La altura del lienzo",
+          "name": "Altura"
+        },
+        "label": {
+          "description": "La etiqueta del componente",
+          "name": "Etiqueta"
+        },
+        "lineWidth": {
+          "description": "El ancho de línea",
+          "name": "Ancho de línea"
+        },
+        "penColor": {
+          "description": "El color de la pluma",
+          "name": "Color de la pluma"
+        },
+        "readOnly": {
+          "description": "Indicador de solo lectura",
+          "name": "Solo lectura"
+        },
+        "value": {
+          "description": "La URL de datos inicial para dibujar la imagen de la firma",
+          "name": "Valor"
+        },
+        "width": {
+          "description": "El ancho del lienzo",
+          "name": "Ancho"
+        }
+      }
+    }
+  }
+}

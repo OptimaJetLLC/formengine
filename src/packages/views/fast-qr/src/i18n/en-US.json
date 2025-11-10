@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "static": {
+      "name": "Static"
+    }
+  },
+  "components": {
+    "FastQR": {
+      "name": "QR Code",
+      "description": "Component that can convert text into QR codes, and support custom color and logo",
+      "props": {
+        "width": {
+          "name": "Width",
+          "description": "The QR code width"
+        },
+        "content": {
+          "name": "Content",
+          "description": "The QR code content"
+        },
+        "moduleColor": {
+          "name": "Module color",
+          "description": "The module color"
+        },
+        "shape": {
+          "name": "Shape",
+          "description": "The different possible shapes to represent modules"
+        },
+        "errorCorrectionLevel": {
+          "name": "Error correction level",
+          "description": "The error correction coding level"
+        },
+        "version": {
+          "name": "QR version",
+          "description": "The QR code version"
+        },
+        "image": {
+          "name": "Image",
+          "description": "The image, base64 or URL"
+        },
+        "imageBackgroundColor": {
+          "name": "Image background color",
+          "description": "The image background color"
+        },
+        "imageBackgroundShape": {
+          "name": "Image background shape",
+          "description": "The image background shape"
+        }
+      }
+    }
+  }
+}

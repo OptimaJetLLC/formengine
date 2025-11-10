@@ -1,35 +1,14 @@
-import {createView, Definer} from '@react-form-builder/core'
-import {antButton} from './components/AntButton'
-import {antCol} from './components/AntCol'
-import {antInput} from './components/AntInput'
-import {antModal} from './components/AntModal'
-import {antRow} from './components/AntRow'
-import {antTable} from './components/AntTable'
-import {antTooltip} from './components/AntTooltip'
+import antEnUsComponentsDescriptions from './i18n/en-US.json'
 
-const definitions = [
-  antButton,
-  antCol,
-  antModal,
-  antInput,
-  antRow,
-  antTable,
-  antTooltip
-]
+export {antButton} from './components/AntButton'
+export {antCol} from './components/AntCol'
+export {antInput} from './components/AntInput'
+export {antModal} from './components/AntModal'
+export {antRow} from './components/AntRow'
+export {antTable} from './components/AntTable'
+export {antTooltip} from './components/AntTooltip'
 
-const prefix = 'Ant'
-definitions.forEach(c => {
-  if (!c.getType().startsWith(prefix)) {
-    throw new Error(`The component type must start with '${prefix}', type: '${c.getType()}'`)
-  }
-  c.category('Ant Design components')
-})
+export {antdComponents} from './antdComponents'
 
-export const antdComponents: Definer<any>[] = definitions
-
-export {antModal, antTooltip}
-
-const components = antdComponents.map(def => def.build())
-export const models = components.map(({model}) => model)
-
-export const view = createView(models)
+export {antEnUsComponentsDescriptions}
+export {antI18nComponentsDescriptions} from './i18n/antI18nComponentsDescriptions'

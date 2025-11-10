@@ -81,6 +81,8 @@
 - [rsToggle](variables/rsToggle.md)
 - [rsTooltip](variables/rsTooltip.md)
 - [rSuiteComponents](variables/rSuiteComponents.md)
+- [rSuiteComponentsDescriptions](variables/rSuiteComponentsDescriptions.md)
+- [rSuiteEnUsComponentsDescriptions](variables/rSuiteEnUsComponentsDescriptions.md)
 - [rsUploader](variables/rsUploader.md)
 - [rsWizard](variables/rsWizard.md)
 - [rsWizardStep](variables/rsWizardStep.md)

@@ -1,0 +1,39 @@
+{
+  "categories": {
+    "fields": {
+      "name": "رشته ها"
+    }
+  },
+  "components": {
+    "RichTextEditor": {
+      "description": "ویرایشگر متن قدرتمند و غنی شما",
+      "name": "ویرایشگر متن غنی",
+      "props": {
+        "initialValue": {
+          "description": "مقدار اولیه",
+          "name": "ارزش اولیه"
+        },
+        "label": {
+          "description": "برچسب ها",
+          "name": "برچسب"
+        },
+        "modules": {
+          "description": "اجازه می دهد تا رفتار و عملکرد ویرایشگر را سفارشی کند. برای اطلاعات بیشتر اسناد را بخوانید",
+          "name": "ماژول ها"
+        },
+        "placeholder": {
+          "description": "جای نگهدار",
+          "name": "جای نگهدارنده"
+        },
+        "readOnly": {
+          "description": "پرچم فقط برای خواندن",
+          "name": "فقط بخوانید"
+        },
+        "toolbarOptions": {
+          "description": "گروه دکمه هایی که باید در نوار ابزار نمایش داده شوند",
+          "name": "گزینه های نوار ابزار"
+        }
+      }
+    }
+  }
+}

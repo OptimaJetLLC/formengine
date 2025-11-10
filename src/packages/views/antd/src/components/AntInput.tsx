@@ -1,7 +1,8 @@
 import {boolean, define, disabled, oneOf, string} from '@react-form-builder/core'
 import {Input} from 'antd'
 import type {InputProps} from 'antd/es/input/Input'
-import {ChangeEvent, useCallback} from 'react'
+import type {ChangeEvent} from 'react'
+import {useCallback} from 'react'
 
 interface AntInputProps extends InputProps {
   onChange?: (value: any) => void
@@ -12,13 +13,13 @@ const AntInput = (props: AntInputProps) => {
 
   const onChangeHandler = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     onChange?.(event.target.value)
-  }, [])
+  }, [onChange])
 
   return <Input {...otherProps} onChange={onChangeHandler}/>
 }
 
 export const antInput = define(AntInput, 'AntInput')
-  .name('Ant Input')
+  .category('antd')
   .props({
     disabled: disabled,
     showCount: boolean,

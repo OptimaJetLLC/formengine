@@ -1,16 +1,17 @@
-import {antdComponents} from '@react-form-builder/components-antd'
-import {fastQrComponent} from '@react-form-builder/components-fast-qr'
-import {googleMapComponent} from '@react-form-builder/components-google-map'
-import {richTextComponent} from '@react-form-builder/components-rich-text'
+import {antdComponents, antI18nComponentsDescriptions} from '@react-form-builder/components-antd'
+import {fastQrComponent, fastQrComponentsDescriptions} from '@react-form-builder/components-fast-qr'
+import {googleMapComponent, googleMapComponentsDescriptions} from '@react-form-builder/components-google-map'
+import {richTextComponent, richTextEditorComponentsDescriptions} from '@react-form-builder/components-rich-text'
 import {
   formEngineRsuiteCssLoader,
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
+  rSuiteComponentsDescriptions,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
-import {rSuiteTableComponents} from '@react-form-builder/components-rsuite-table'
-import {signatureComponent} from '@react-form-builder/components-signature'
+import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
+import {signatureComponent, signatureComponentsDescriptions} from '@react-form-builder/components-signature'
 import type {Arguments, ComponentStore, FormValidators, FormViewerProps, IFormData, IFormViewer, Validators} from '@react-form-builder/core'
 import {ActionDefinition, BiDi, definePreset, isUndefined, Language} from '@react-form-builder/core'
 import type {FormBuilderI18n, FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
@@ -98,6 +99,13 @@ const view = new BuilderView(components)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
   .withCssLoader('common', formEngineRsuiteCssLoader)
+  .withComponentLibraryDescription(antI18nComponentsDescriptions)
+  .withComponentLibraryDescription(fastQrComponentsDescriptions)
+  .withComponentLibraryDescription(googleMapComponentsDescriptions)
+  .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
+  .withComponentLibraryDescription(signatureComponentsDescriptions)
+  .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
+  .withComponentLibraryDescription(rSuiteComponentsDescriptions)
 
 function localizer(componentStore: ComponentStore, language: Language): Record<string, any> {
   return componentStore.key === 'comment'

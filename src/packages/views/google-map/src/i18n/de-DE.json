@@ -1,0 +1,107 @@
+{
+  "categories": {
+    "fields": {
+      "name": "Datenfelder"
+    }
+  },
+  "components": {
+    "GoogleMap": {
+      "description": "Komponente, die eine Google-Karte anzeigt",
+      "name": "Google Karte anzeigen",
+      "props": {
+        "addMarkerOnSearch": {
+          "description": "Gibt an, ob bei der Suche eine Markierung hinzugefügt werden soll",
+          "name": "Markierung bei der Suche hinzufügen"
+        },
+        "allowChangingMarkers": {
+          "description": "Wenn aktiviert, kann der Benutzer die Markierungen ändern",
+          "name": "Markerwechsel zulassen"
+        },
+        "allowMultipleMarkers": {
+          "description": "Mehrere Marker",
+          "name": "Mehrere Marker zulassen"
+        },
+        "apiKey": {
+          "description": "Google Maps API-Schlüssel",
+          "name": "API-Schlüssel"
+        },
+        "collisionBehavior": {
+          "description": "Das Kollisionsverhalten der Marker",
+          "name": "Kollisionsverhalten"
+        },
+        "colorScheme": {
+          "description": "Das zu verwendende Farbschema",
+          "name": "Farbschema"
+        },
+        "gestureHandling": {
+          "description": "Die zu verwendende Gestenbehandlung",
+          "name": "Gesten-Handhabung"
+        },
+        "height": {
+          "description": "Höhe der Karte",
+          "name": "Höhe"
+        },
+        "label": {
+          "description": "Kartenbeschriftung",
+          "name": "Etikett"
+        },
+        "language": {
+          "description": "Die zu verwendende Sprache",
+          "name": "Sprachlich"
+        },
+        "latitude": {
+          "description": "Breitengrad des Mittelpunkts",
+          "name": "Breitengrad"
+        },
+        "longitude": {
+          "description": "Längengrad des Mittelpunkts",
+          "name": "Längengrad"
+        },
+        "mapControlPosition": {
+          "description": "Die Position des Kartensteuerelements",
+          "name": "Kartenkontrollposition"
+        },
+        "mapId": {
+          "description": "Die Karten-ID ist eine Kennung, die einem bestimmten Kartenstil oder Feature zugeordnet ist",
+          "name": "Karten-ID"
+        },
+        "mapTypeId": {
+          "description": "Der zu verwendende Standardkartentyp",
+          "name": "Kartentyp"
+        },
+        "markerWindowTitle": {
+          "description": "Der Titel des Markierungsfensters",
+          "name": "Titel des Markierungsfensters"
+        },
+        "markers": {
+          "description": "Koordinaten der Marker",
+          "name": "Kartenmarkierungen"
+        },
+        "region": {
+          "description": "Der zu verwendende Regionalcode",
+          "name": "Region"
+        },
+        "removeMarkerCaption": {
+          "description": "Die Beschriftung auf der Schaltfläche zum Entfernen von Markern",
+          "name": "Markierungsbeschriftung entfernen"
+        },
+        "searchPlaceholder": {
+          "description": "Platzhaltertext für die Kartensucheingabe",
+          "name": "Platzhalter suchen"
+        },
+        "showMapControl": {
+          "description": "Gibt an, ob das Kartensteuerelement angezeigt werden soll",
+          "name": "Kartensteuerung anzeigen"
+        },
+        "width": {
+          "description": "Breite der Karte",
+          "name": "Breite"
+        },
+        "zoom": {
+          "description": "Zoomstufe",
+          "name": "Zoom"
+        }
+      }
+    }
+  }
+}

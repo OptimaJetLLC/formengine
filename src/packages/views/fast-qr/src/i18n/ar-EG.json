@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "static": {
+      "name": "ثابت"
+    }
+  },
+  "components": {
+    "FastQR": {
+      "description": "المكون الذي يمكن تحويل النص إلى رموز ريال قطري ، ودعم لون مخصص والشعار",
+      "name": "رمز الاستجابة السريعة",
+      "props": {
+        "content": {
+          "description": "محتوى رمز الاستجابة السريعة",
+          "name": "المحتوى"
+        },
+        "errorCorrectionLevel": {
+          "description": "تصحيح الخطأ مستوى الترميز",
+          "name": "مستوى تصحيح الخطأ"
+        },
+        "image": {
+          "description": "الصورة ، قاعدة 64 أو رابط",
+          "name": "صورة"
+        },
+        "imageBackgroundColor": {
+          "description": "لون خلفية الصورة",
+          "name": "لون خلفية الصورة"
+        },
+        "imageBackgroundShape": {
+          "description": "شكل خلفية الصورة",
+          "name": "شكل خلفية الصورة"
+        },
+        "moduleColor": {
+          "description": "لون الوحدة",
+          "name": "لون الوحدة"
+        },
+        "shape": {
+          "description": "الأشكال المختلفة الممكنة لتمثيل الوحدات",
+          "name": "الشكل"
+        },
+        "version": {
+          "description": "إصدار رمز الاستجابة السريعة",
+          "name": "نسخة ريال قطري"
+        },
+        "width": {
+          "description": "عرض رمز الاستجابة السريعة",
+          "name": "العرض"
+        }
+      }
+    }
+  }
+}

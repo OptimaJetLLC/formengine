@@ -1,0 +1,207 @@
+{
+  "categories": {
+    "structure": {
+      "name": "الهيكل"
+    }
+  },
+  "components": {
+    "RsCell": {
+      "description": "خلية الجدول",
+      "name": "الخلية",
+      "props": {
+        "dataKey": {
+          "description": "مفتاح ربط البيانات ، ولكن أيضا نوع من المفتاح",
+          "name": "مفتاح البيانات"
+        }
+      }
+    },
+    "RsColumn": {
+      "description": "عمود الجدول",
+      "name": "العمود",
+      "props": {
+        "align": {
+          "description": "المحاذاة",
+          "name": "محاذاة"
+        },
+        "colSpan": {
+          "description": "يدمج خلايا العمود لدمج عندما تكون قيمة 'مفتاح البيانات' للعمود المدمج فارغة أو غير محددة",
+          "name": "العقيد سبان"
+        },
+        "fixed": {
+          "description": "عمود ثابت",
+          "name": "ثابت"
+        },
+        "flexGrow": {
+          "description": "تعيين عرض العمود يضبط تلقائيا ، عند تعيين 'فليكس تنمو' لا يمكن تعيين' تغيير الحجم 'و' العرض ' الملكية",
+          "name": "فليكس تنمو"
+        },
+        "fullText": {
+          "description": "ما إذا كان سيتم عرض النص الكامل لمحتوى الخلية عند تحريك الماوس",
+          "name": "النص الكامل"
+        },
+        "minWidth": {
+          "description": "عند استخدام 'فليكس تنمو' ، يمكنك تعيين الحد الأدنى للعرض",
+          "name": "دقيقة العرض"
+        },
+        "resizable": {
+          "description": "تخصيص تغيير حجم عرض العمود",
+          "name": "يمكن تغيير حجمها"
+        },
+        "rowSpan": {
+          "description": "يدمج الصفوف في العمود المحدد",
+          "name": "صف سبان"
+        },
+        "sortable": {
+          "description": "قابل للفرز",
+          "name": "قابل للفرز"
+        },
+        "verticalAlign": {
+          "description": "المحاذاة العمودية",
+          "name": "محاذاة عمودية"
+        },
+        "width": {
+          "description": "عرض العمود",
+          "name": "العرض"
+        }
+      }
+    },
+    "RsColumnGroup": {
+      "description": "مجموعة عمود الجدول",
+      "name": "مجموعة الأعمدة",
+      "props": {
+        "align": {
+          "description": "المحاذاة",
+          "name": "محاذاة"
+        },
+        "fixed": {
+          "description": "مجموعة الأعمدة الثابتة",
+          "name": "ثابت"
+        },
+        "groupHeaderHeight": {
+          "description": "ارتفاع رأس مجموعة الخلايا المدمجة",
+          "name": "ارتفاع رأس المجموعة"
+        },
+        "header": {
+          "description": "رأس المجموعة",
+          "name": "رأس"
+        },
+        "verticalAlign": {
+          "description": "المحاذاة العمودية",
+          "name": "محاذاة عمودية"
+        }
+      }
+    },
+    "RsHeaderCell": {
+      "description": "خلية رأس الجدول",
+      "name": "خلية الرأس",
+      "props": {
+        "children": {
+          "description": "رأس عمود الجدول",
+          "name": "المحتوى"
+        }
+      }
+    },
+    "RsTable": {
+      "description": "الجدول",
+      "name": "الجدول",
+      "props": {
+        "affixHeader": {
+          "description": "ضع رأس الجدول على الموقع المحدد في الصفحة",
+          "name": "يضعوا رأس"
+        },
+        "affixHorizontalScrollbar": {
+          "description": "ضع شريط التمرير الأفقي للجدول على الموضع المحدد في الصفحة",
+          "name": "يضعوا شريط التمرير الأفقي"
+        },
+        "autoHeight": {
+          "description": "سيتم توسيع ارتفاع الجدول تلقائيا وفقا لعدد صفوف البيانات ، ولن يظهر أي شريط تمرير عمودي",
+          "name": "ارتفاع السيارات"
+        },
+        "bordered": {
+          "description": "إظهار الحدود",
+          "name": "يحدها"
+        },
+        "cellBordered": {
+          "description": "إظهار حدود الخلية",
+          "name": "خلية يحدها"
+        },
+        "data": {
+          "description": "بيانات الجدول",
+          "name": "البيانات"
+        },
+        "defaultSortType": {
+          "description": "نوع الفرز",
+          "name": "نوع الفرز الافتراضي"
+        },
+        "fillHeight": {
+          "description": "اجبر ارتفاع الجدول على أن يكون مساويا لارتفاع الحاوية الأصلية. لا يمكن استخدامها جنبا إلى جنب مع 'ارتفاع السيارات'",
+          "name": "ملء الارتفاع"
+        },
+        "headerHeight": {
+          "description": "ارتفاع رأس الجدول",
+          "name": "ارتفاع الرأس"
+        },
+        "height": {
+          "description": "ارتفاع الجدول",
+          "name": "الارتفاع"
+        },
+        "hover": {
+          "description": "صف الجدول له تأثير تمرير الماوس",
+          "name": "تحوم"
+        },
+        "loading": {
+          "description": "عرض التحميل",
+          "name": "تحميل"
+        },
+        "maxHeight": {
+          "description": "أقصى ارتفاع",
+          "name": "أقصى ارتفاع"
+        },
+        "minHeight": {
+          "description": "الحد الأدنى للارتفاع",
+          "name": "الحد الأدنى للارتفاع"
+        },
+        "rowClassName": {
+          "description": "أضف اسم فئة إضافي اختياري إلى الصف",
+          "name": "اسم فئة الصف"
+        },
+        "rowHeight": {
+          "description": "ارتفاع الصف",
+          "name": "ارتفاع الصف"
+        },
+        "rowKey": {
+          "description": "يتوافق كل صف مع المفتاح الفريد في البيانات",
+          "name": "مفتاح الصف"
+        },
+        "shouldUpdateScroll": {
+          "description": "ما إذا كان سيتم تحديث التمرير بعد تحديث حجم الجدول",
+          "name": "يجب تحديث التمرير"
+        },
+        "showHeader": {
+          "description": "رأس العرض",
+          "name": "إظهار الرأس"
+        },
+        "sortColumn": {
+          "description": "فرز اسم العمود",
+          "name": "فرز العمود"
+        },
+        "sortType": {
+          "description": "نوع الفرز",
+          "name": "نوع الفرز"
+        },
+        "virtualized": {
+          "description": "تقديم بيانات جدولية كبيرة بشكل فعال",
+          "name": "الافتراضية"
+        },
+        "width": {
+          "description": "عرض الجدول",
+          "name": "العرض"
+        },
+        "wordWrap": {
+          "description": "ما إذا كان سيظهر فواصل الأسطر حيث يفيض النص مربع المحتوى الخاص به",
+          "name": "كلمة التفاف"
+        }
+      }
+    }
+  }
+}

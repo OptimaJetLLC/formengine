@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "fields": {
+      "name": "Datenfelder"
+    }
+  },
+  "components": {
+    "RsSignature": {
+      "description": "HTML5 Canvas basierte glatte Signaturzeichnung",
+      "name": "Signatur",
+      "props": {
+        "backgroundColor": {
+          "description": "Hintergrundfarbe",
+          "name": "Hintergrundfarbe"
+        },
+        "clearButtonText": {
+          "description": "Tastenbeschriftung löschen",
+          "name": "Schaltflächentext löschen"
+        },
+        "height": {
+          "description": "Die Leinwandhöhe",
+          "name": "Höhe"
+        },
+        "label": {
+          "description": "Das Etikett für die Komponente",
+          "name": "Etikett"
+        },
+        "lineWidth": {
+          "description": "Linienbreite",
+          "name": "Linienbreite"
+        },
+        "penColor": {
+          "description": "Stiftfarbe",
+          "name": "Stiftfarbe"
+        },
+        "readOnly": {
+          "description": "Schreibgeschütztes Flag",
+          "name": "Schreibgesch"
+        },
+        "value": {
+          "description": "Die anfängliche Daten-URL zum Zeichnen des Signaturbilds",
+          "name": "Wert"
+        },
+        "width": {
+          "description": "Die Leinwandbreite",
+          "name": "Breite"
+        }
+      }
+    }
+  }
+}

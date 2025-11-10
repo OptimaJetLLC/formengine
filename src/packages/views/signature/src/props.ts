@@ -6,4 +6,4 @@ export const alignItems = oneOf('start', 'center', 'end')
 
 export const nonNegNumber = number.withEditorProps({min: 0})
 
-export const readOnly = readOnlyProp.hinted('Read only component').default(false)
+export const readOnly = readOnlyProp.default(false)

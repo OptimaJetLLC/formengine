@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "fields": {
+      "name": "الحقول"
+    }
+  },
+  "components": {
+    "RsSignature": {
+      "description": "هتمل5 قماش على أساس السلس توقيع الرسم",
+      "name": "التوقيع",
+      "props": {
+        "backgroundColor": {
+          "description": "لون الخلفية",
+          "name": "لون الخلفية"
+        },
+        "clearButtonText": {
+          "description": "مسح تسمية الزر",
+          "name": "مسح نص الزر"
+        },
+        "height": {
+          "description": "ارتفاع قماش",
+          "name": "الارتفاع"
+        },
+        "label": {
+          "description": "التسمية للمكون",
+          "name": "التسمية"
+        },
+        "lineWidth": {
+          "description": "عرض الخط",
+          "name": "عرض الخط"
+        },
+        "penColor": {
+          "description": "لون القلم",
+          "name": "لون القلم"
+        },
+        "readOnly": {
+          "description": "علم للقراءة فقط",
+          "name": "للقراءة فقط"
+        },
+        "value": {
+          "description": "عنوان ورل للبيانات الأولية لرسم صورة التوقيع",
+          "name": "القيمة"
+        },
+        "width": {
+          "description": "عرض قماش",
+          "name": "العرض"
+        }
+      }
+    }
+  }
+}

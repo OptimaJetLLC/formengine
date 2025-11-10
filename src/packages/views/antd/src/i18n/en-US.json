@@ -1,0 +1,255 @@
+{
+  "categories": {
+    "antd": {
+      "name": "Ant Design components"
+    }
+  },
+  "components": {
+    "AntButton": {
+      "name": "Ant Button",
+      "description": "A button means an operation (or a series of operations). Clicking a button will trigger its corresponding business logic",
+      "props": {
+        "block": {
+          "name": "Block",
+          "description": "Option to fit button width to its parent width"
+        },
+        "children": {
+          "name": "Content",
+          "description": "Caption"
+        },
+        "danger": {
+          "name": "Danger",
+          "description": "Set the danger status of button"
+        },
+        "disabled": {
+          "name": "Disabled",
+          "description": "Disabled state of button"
+        },
+        "ghost": {
+          "name": "Ghost",
+          "description": "Make background transparent and invert text and border colors"
+        },
+        "href": {
+          "name": "Href",
+          "description": "Redirect URL of link button"
+        },
+        "htmlType": {
+          "name": "HTML type",
+          "description": "Set the original HTML type of button"
+        },
+        "loading": {
+          "name": "Loading",
+          "description": "Set the loading status of button"
+        },
+        "shape": {
+          "name": "Shape",
+          "description": "Can be set button shape"
+        },
+        "size": {
+          "name": "Size",
+          "description": "Set the size of button"
+        },
+        "target": {
+          "name": "Target",
+          "description": "Same as target attribute of a, works when href is specified"
+        },
+        "type": {
+          "name": "Type",
+          "description": "Can be set to primary ghost dashed link text default"
+        }
+      }
+    },
+    "AntCol": {
+      "name": "Ant Col",
+      "description": "The column of the grid",
+      "props": {
+        "flex": {
+          "name": "Flex",
+          "description": "Flex layout style"
+        },
+        "offset": {
+          "name": "Offset",
+          "description": "The number of cells to offset Col from the left"
+        },
+        "order": {
+          "name": "Order",
+          "description": "Raster order"
+        },
+        "pull": {
+          "name": "Pull",
+          "description": "The number of cells that raster is moved to the left"
+        },
+        "push": {
+          "name": "Push",
+          "description": "The number of cells that raster is moved to the right"
+        },
+        "span": {
+          "name": "Span",
+          "description": "Raster number of cells to occupy"
+        },
+        "xs": {
+          "name": "Xs",
+          "description": "Screen < 576px and also default setting"
+        },
+        "sm": {
+          "name": "Sm",
+          "description": "Screen ≥ 576px"
+        },
+        "md": {
+          "name": "Md",
+          "description": "Screen ≥ 768px"
+        },
+        "lg": {
+          "name": "Lg",
+          "description": "Screen ≥ 992px"
+        },
+        "xl": {
+          "name": "Xl",
+          "description": "Screen ≥ 1200px"
+        },
+        "xxl": {
+          "name": "Xxl",
+          "description": "Screen ≥ 1600px"
+        }
+      }
+    },
+    "AntInput": {
+      "name": "Ant Input",
+      "description": "Through mouse or keyboard input content, it is the most basic form field wrapper",
+      "props": {
+        "disabled": {
+          "name": "Disabled",
+          "description": "Whether the input is disabled"
+        },
+        "showCount": {
+          "name": "Show count",
+          "description": "Whether to show character count"
+        },
+        "status": {
+          "name": "Status",
+          "description": "Set validation status"
+        },
+        "size": {
+          "name": "Size",
+          "description": "The size of the input box"
+        },
+        "value": {
+          "name": "Value",
+          "description": "The input content value"
+        },
+        "variant": {
+          "name": "Variant",
+          "description": "Variants of Input"
+        }
+      }
+    },
+    "AntModal": {
+      "name": "Ant Modal",
+      "description": "Display a modal dialog box, providing a title, content area, and action buttons",
+      "props": {
+        "centered": {
+          "name": "Centered",
+          "description": "Centered Modal"
+        },
+        "keyboard": {
+          "name": "Keyboard",
+          "description": "Whether support press ESC to close"
+        },
+        "okText": {
+          "name": "OK text",
+          "description": "Text of the OK button"
+        },
+        "cancelText": {
+          "name": "Cancel text",
+          "description": "Text of the Cancel button"
+        }
+      }
+    },
+    "AntRow": {
+      "name": "Ant Row",
+      "description": "The row of the grid",
+      "props": {
+        "align": {
+          "name": "Align",
+          "description": "Vertical alignment"
+        },
+        "gutter": {
+          "name": "Gutter",
+          "description": "Spacing between grids"
+        },
+        "justify": {
+          "name": "Justify",
+          "description": "Horizontal arrangement"
+        },
+        "wrap": {
+          "name": "Wrap",
+          "description": "Auto wrap line"
+        }
+      }
+    },
+    "AntTable": {
+      "name": "Ant Table",
+      "description": "A table displays rows of data",
+      "props": {
+        "bordered": {
+          "name": "Bordered",
+          "description": "Whether to show all table borders"
+        },
+        "columns": {
+          "name": "Columns",
+          "description": "Columns of table"
+        },
+        "dataSource": {
+          "name": "Data source",
+          "description": "Data record array to be displayed"
+        },
+        "loading": {
+          "name": "Loading",
+          "description": "Loading status of table"
+        },
+        "rowKey": {
+          "name": "Row key",
+          "description": "Row's unique key"
+        },
+        "rowHoverable": {
+          "name": "Row hoverable",
+          "description": "Row hover"
+        },
+        "showHeader": {
+          "name": "Show header",
+          "description": "Whether to show table header"
+        },
+        "showSorterTooltip": {
+          "name": "Show sorter tooltip",
+          "description": "The header show next sorter direction tooltip"
+        },
+        "size": {
+          "name": "Size",
+          "description": "Size of table"
+        },
+        "sticky": {
+          "name": "Sticky",
+          "description": "Set sticky header and scroll bar"
+        }
+      }
+    },
+    "AntTooltip": {
+      "name": "Ant Tooltip",
+      "description": "Simple text popup box",
+      "props": {
+        "text": {
+          "name": "Text",
+          "description": "The text shown in the tooltip"
+        },
+        "placement": {
+          "name": "Placement",
+          "description": "The position of the tooltip relative to the target"
+        },
+        "trigger": {
+          "name": "Trigger",
+          "description": "Tooltip trigger mode"
+        }
+      }
+    }
+  }
+}

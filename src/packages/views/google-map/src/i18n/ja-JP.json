@@ -1,0 +1,107 @@
+{
+  "categories": {
+    "fields": {
+      "name": "フィールド"
+    }
+  },
+  "components": {
+    "GoogleMap": {
+      "description": "Googleマップを表示するコンポーネント",
+      "name": "グーグルマップ",
+      "props": {
+        "addMarkerOnSearch": {
+          "description": "検索時にマーカーを追加するかどうか",
+          "name": "検索にマーカーを追加"
+        },
+        "allowChangingMarkers": {
+          "description": "チェックされている場合、ユーザーはマーカーを変更できます",
+          "name": "マーカーの変更を許可する"
+        },
+        "allowMultipleMarkers": {
+          "description": "複数のマーカー",
+          "name": "複数のマーカーを許可する"
+        },
+        "apiKey": {
+          "description": "GoogleマップAPIキー",
+          "name": "APIキー"
+        },
+        "collisionBehavior": {
+          "description": "マーカーの衝突の動作",
+          "name": "衝突の挙動"
+        },
+        "colorScheme": {
+          "description": "使用する配色",
+          "name": "配色"
+        },
+        "gestureHandling": {
+          "description": "使用するジェスチャ処理",
+          "name": "ジェスチャー処理"
+        },
+        "height": {
+          "description": "マップの高さ",
+          "name": "高さ"
+        },
+        "label": {
+          "description": "地図ラベル",
+          "name": "ラベル"
+        },
+        "language": {
+          "description": "使用する言語",
+          "name": "言語"
+        },
+        "latitude": {
+          "description": "中心点の緯度",
+          "name": "緯度"
+        },
+        "longitude": {
+          "description": "中心点の経度",
+          "name": "経度"
+        },
+        "mapControlPosition": {
+          "description": "マップコントロールの位置",
+          "name": "マップ制御位置"
+        },
+        "mapId": {
+          "description": "マップIDは、特定のマップスタイルまたはフィーチャに関連付けられた識別子です",
+          "name": "マップID"
+        },
+        "mapTypeId": {
+          "description": "使用するデフォルトのマップタイプ",
+          "name": "マップタイプ"
+        },
+        "markerWindowTitle": {
+          "description": "マーカーウィンドウのタイトル",
+          "name": "マーカーウィンドウのタイトル"
+        },
+        "markers": {
+          "description": "マーカーの座標",
+          "name": "マーカー"
+        },
+        "region": {
+          "description": "使用するリージョンコード",
+          "name": "地域"
+        },
+        "removeMarkerCaption": {
+          "description": "マーカー除去ボタンのキャプション",
+          "name": "マーカーキャプションを削除する"
+        },
+        "searchPlaceholder": {
+          "description": "マップ検索入力のプレースホルダテキスト",
+          "name": "検索プレースホルダ"
+        },
+        "showMapControl": {
+          "description": "マップコントロールを表示するかどうか",
+          "name": "マップコントロールを表示"
+        },
+        "width": {
+          "description": "マップの幅",
+          "name": "幅"
+        },
+        "zoom": {
+          "description": "ズームレベル",
+          "name": "ズーム"
+        }
+      }
+    }
+  }
+}

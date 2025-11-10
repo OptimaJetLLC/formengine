@@ -1,0 +1,39 @@
+{
+  "categories": {
+    "fields": {
+      "name": "Fields"
+    }
+  },
+  "components": {
+    "RichTextEditor": {
+      "name": "Rich text editor",
+      "description": "Your powerful rich text editor",
+      "props": {
+        "initialValue": {
+          "name": "Initial value",
+          "description": "The initial value"
+        },
+        "label": {
+          "name": "Label",
+          "description": "The label"
+        },
+        "placeholder": {
+          "name": "Placeholder",
+          "description": "The placeholder"
+        },
+        "readOnly": {
+          "name": "Read only",
+          "description": "Read-only flag"
+        },
+        "toolbarOptions": {
+          "name": "Toolbar options",
+          "description": "Groups of buttons to be displayed on the toolbar"
+        },
+        "modules": {
+          "name": "Modules",
+          "description": "Allows to customize the behavior and functionality of the editor. Read docs for more info"
+        }
+      }
+    }
+  }
+}

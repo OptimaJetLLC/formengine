@@ -208,24 +208,19 @@ export const fastQr = define(FastQr, 'FastQR')
   .category('static')
   .icon(QrIcon)
   .props({
-    width: nonNegNumber.default(300).hinted('The QR code width'),
-    content: string.default(defaultContent).hinted('The QR code content').dataBound,
-    moduleColor: color.hinted('The module color'),
+    width: nonNegNumber.default(300),
+    content: string.default(defaultContent).dataBound,
+    moduleColor: color,
     shape: oneOf(0, 1, 2, 3, 4, 5).default(0)
       .labeled('Square', 'Circle', 'RoundedSquare', 'Vertical', 'Horizontal', 'Diamond')
-      .withEditorProps({creatable: false})
-      .hinted('The different possible shapes to represent modules'),
+      .withEditorProps({creatable: false}),
     errorCorrectionLevel: oneOf(0, 1, 2, 3).default(0)
       .labeled('Low, 7%', 'Medium, 15%', 'Quartile, 25%', 'High, 30%')
-      .withEditorProps({creatable: false})
-      .hinted('The error correction coding level'),
-    version: number.withEditorProps({min: 0, max: 39})
-      .named('QR version')
-      .hinted('The QR code version'),
-    image: string.hinted('The image, base64 or URL'),
-    imageBackgroundColor: color.hinted('The image background color'),
+      .withEditorProps({creatable: false}),
+    version: number.withEditorProps({min: 0, max: 39}),
+    image: string,
+    imageBackgroundColor: color,
     imageBackgroundShape: oneOf(0, 1, 2).default(0)
       .labeled('Square', 'Circle', 'RoundedSquare')
-      .withEditorProps({creatable: false})
-      .hinted('The image background shape'),
+      .withEditorProps({creatable: false}),
   })
