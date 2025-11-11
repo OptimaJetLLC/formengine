@@ -1,16 +1,20 @@
-import type {Annotation, ComponentPropertyComputeType} from '@react-form-builder/core'
+import type {ComponentPropertyComputeType} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
 import {useCallback, useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
-import type {EditableProperty} from '../../../stores/BuilderStore'
+import type {BuilderStore, EditableProperty} from '../../../stores/BuilderStore'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
+import {withLocalization} from '../../../utils/withLocalization'
 import {CalculableCodeEditor} from '../../calculation/CalculableCodeEditor'
 import {RadioButtons} from '../../components/RadioButtons'
+import {useTranslationPart} from '../../localization/hooks'
 import {LocalizationEditor} from '../../localization/LocalizationEditor'
 import {Header} from './Header'
 import {SimpleValueEditor} from './SimpleValueEditor'
 
-const getToggleItems = ({calculable, localizable}: Annotation, translate: (key: string) => string) => [
+const getToggleItems = (calculable: boolean,
+                        localizable: boolean,
+                        translate: (key: string) => string) => [
   ...calculable ? ['function'] : [],
   ...localizable ? ['localization'] : [],
   ...calculable || localizable ? ['simpleValue'] : []
@@ -18,10 +22,21 @@ const getToggleItems = ({calculable, localizable}: Annotation, translate: (key: 
 
 type ComputeType = ComponentPropertyComputeType | 'simpleValue'
 
-const editors: Record<ComputeType, any> = {
-  function: CalculableCodeEditor,
-  localization: LocalizationEditor,
-  simpleValue: SimpleValueEditor
+const NoopLocalizationStub = () => {
+  const t = useTranslationPart('bottomPanel')
+
+  return <h4>{t('localizationNotSet')}</h4>
+}
+
+const getEditor = (computeType: ComputeType, builderStore: BuilderStore) => {
+  switch (computeType) {
+    case 'simpleValue':
+      return SimpleValueEditor
+    case 'localization':
+      return withLocalization(builderStore) ? LocalizationEditor : NoopLocalizationStub
+    case 'function':
+      return CalculableCodeEditor
+  }
 }
 
 /**
@@ -42,8 +57,9 @@ const RawComputedPropertyEditor = ({property}: ComputedPropertyEditorProps) => {
   const initialComputeType = property.getComputeType() ?? 'simpleValue'
   const [computeType, setComputeType] = useState<ComputeType>(initialComputeType)
   const {annotation, componentKey} = property
-  const Editor = editors[computeType]
-  const toggleItems = getToggleItems(annotation, t)
+  const Editor = getEditor(computeType, builderStore)
+  const localizable = annotation.localizable && withLocalization(builderStore)
+  const toggleItems = getToggleItems(annotation.calculable, localizable, t)
   const handleClose = useCallback(() => builderStore.currentEditable = undefined, [builderStore])
   const handleComputeTypeChange = useCallback((value: string | number) => setComputeType(value as ComponentPropertyComputeType), [])
 

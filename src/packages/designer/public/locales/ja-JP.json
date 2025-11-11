@@ -854,7 +854,8 @@
     "editCodeAction": "コードアクションの編集",
     "editProperty": "プロパティの編集",
     "function": "計算可能な値",
-    "localization": "流暢なローカリゼーション",
+    "localization": "ローカリゼーション",
+    "localizationNotSet": "ローカリゼーションエンジンが設定されていません",
     "simpleValue": "単純な値",
     "simpleValueHint": "右側のパネルでプロパティを編集します",
     "use": "使用"
@@ -999,10 +1000,10 @@
     "clean": "デフォルトにリセット",
     "codeButton": {
       "editCalculable": "計算可能な編集",
-      "editLocalizable": "Fluentローカリゼーションの編集",
+      "editLocalizable": "ローカリゼーションの編集",
       "hintCalculable": "このプロパティを計算可能にする",
-      "hintCalculableAndLocalizable": "このプロパティを計算可能にするか、Fluentでローカライズします",
-      "hintLocalizable": "Fluentでこのプロパティをローカライズする",
+      "hintCalculableAndLocalizable": "この物件の計算できたの現地化",
+      "hintLocalizable": "このプロパティをローカライズする",
       "neitherCalculableNorLocalizable": "計算可能でもローカライズ可能でもありません"
     },
     "keyMustBeUnique": "キーは一意でなければなりません",

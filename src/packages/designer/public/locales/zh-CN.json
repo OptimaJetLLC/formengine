@@ -854,7 +854,8 @@
     "editCodeAction": "编辑代码操作",
     "editProperty": "编辑属性",
     "function": "可计算价值",
-    "localization": "流利的本地化",
+    "localization": "本地化",
+    "localizationNotSet": "本地化引擎未设置",
     "simpleValue": "简单值",
     "simpleValueHint": "在右侧面板中编辑属性",
     "use": "使用方法"
@@ -999,10 +1000,10 @@
     "clean": "重置为默认值",
     "codeButton": {
       "editCalculable": "编辑可计算",
-      "editLocalizable": "编辑流利的本地化",
+      "editLocalizable": "编辑本地化",
       "hintCalculable": "使此属性可计算",
-      "hintCalculableAndLocalizable": "使用Fluent使此属性可计算或本地化",
-      "hintLocalizable": "使用Fluent本地化此属性",
+      "hintCalculableAndLocalizable": "使此属性可计算或本地化",
+      "hintLocalizable": "本地化此属性",
       "neitherCalculableNorLocalizable": "既不可计算也不可本地化"
     },
     "keyMustBeUnique": "密钥必须是唯一的",

@@ -36,14 +36,11 @@ export {generateTemplateTypeName} from './features/ui/templateUtil'
 export {slotModel} from './features/template/slotModel'
 export type {TemplateProps} from './features/template/TemplateProps'
 export {BiDi} from './features/localization/bidi'
-export {Language} from './features/localization/types'
-export type {LanguageFullCode} from './features/localization/types'
+export {Language} from './features/localization/language'
+export type {LanguageFullCode} from './features/localization/language'
 export {LocalizationStore} from './stores/LocalizationStore'
 export type {PersistedForm} from './stores/PersistedForm'
 export {PersistedFormVersion} from './stores/PersistedForm'
-export {testFluentLocalization} from './features/localization/localizer'
-export {getFluentData} from './features/localization/getFluentData'
-export {getFluentCompatibleId} from './features/localization/getFluentCompatibleId'
 export {findLanguage} from './features/localization/findLanguage'
 export {DataValidator} from './features/validation'
 export type {
@@ -104,7 +101,6 @@ export {Meta} from './features/define/utils/Meta'
 export type {DefinerData} from './features/define/utils/Definer'
 export type {Annotations} from './features/annotation/utils/builders/Annotations'
 export type {ComponentLocalizer} from './features/form-viewer/ComponentLocalizer'
-export type {LocalizationTestRequest} from './features/localization/localizer'
 export type {ComponentTreeProps} from './ComponentTreeProps'
 export type {InternalErrorProps} from './features/ui/internalErrorModel'
 export type {SchemaResolver} from './features/validation/utils/DataValidator'
@@ -121,11 +117,11 @@ export type {
   ComponentKey,
   ComponentPropertyName,
   LocalizationValue,
-  LocalizationType,
   ComponentsLocalization,
   TypedLocalization,
-  ComponentPropsLocalization
-} from './stores/LocalizationStore'
+  ComponentPropsLocalization,
+  LocalizationType
+} from './features/localization/types'
 export type {FormViewerValidationRules} from './stores/FormViewerValidationRules'
 export type {Field, ComponentField} from './features/validation/utils/Field'
 export {ComponentDataEvents, getEditableFormData} from './utils/contexts/ComponentDataContext'
@@ -214,3 +210,7 @@ export type {
   ComponentDescription, ComponentLibraryDescription, I18nItem
 } from './features/annotation/ComponentDescriptions'
 export {coreComponentsDescriptions} from './i18n/coreComponentsDescriptions'
+
+export type {ILocalizationEngine} from './features/localization/ILocalizationEngine'
+export {FluentLocalizationEngine} from './features/localization/fluent/FluentLocalizationEngine'
+export {NoopLocalizationEngine} from './features/localization/NoopLocalizationEngine'

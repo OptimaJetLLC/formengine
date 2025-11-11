@@ -1,4 +1,4 @@
-import {isNull, isNumber, isUndefined} from '@react-form-builder/core'
+import {isNull, isNumber, isObject, isUndefined} from '@react-form-builder/core'
 import {humanizeFileSize} from './formatters'
 
 const isValidDate = (value: any) => value instanceof Date && !Number.isNaN(value.getTime())
@@ -40,7 +40,7 @@ const createFilePreview = ({lastModified, name, type, webkitRelativePath, size}:
 export const prepareForJson = (data: any, options?: {
   previewNativeObjects: boolean
 }) => {
-  if (typeof data !== 'object' || isNull(data)) return data
+  if (!isObject(data) || isNull(data)) return data
 
   const {previewNativeObjects} = options || {}
 
@@ -59,12 +59,11 @@ export const prepareForJson = (data: any, options?: {
     }
 
     if (value instanceof Date) {
-      const data = isValidDate(value) ? value.toISOString() : 'Invalid date'
-      filtered[key] = data
+      filtered[key] = isValidDate(value) ? value.toISOString() : 'Invalid date'
       return
     }
 
-    if (typeIs('object')) {
+    if (isObject(value)) {
       filtered[key] = prepareForJson(value, options)
       return
     }

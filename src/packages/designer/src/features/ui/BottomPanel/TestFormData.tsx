@@ -41,9 +41,4 @@ export class TestFormData implements IFormData {
   getValidationResult() {
     return Promise.resolve(undefined)
   }
-
-  /** @inheritDoc */
-  get fluentData() {
-    return this.data
-  }
 }

@@ -12,6 +12,7 @@ import {IconButton} from 'rsuite'
 import {EditableProperty} from '../../stores/BuilderStore'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {useUniqueId} from '../../utils/useUniqueId'
+import {withLocalization} from '../../utils/withLocalization'
 import type {CalculableEditorProps} from '../annotation-editors/AnnotationEditorProps'
 import {Hinted, HintedLabel} from '../annotation-editors/Hinted'
 import {customizable, customizableObserver} from '../customization'
@@ -114,17 +115,18 @@ const RawCodeButton = (props: CodeButtonProps) => {
 
   const buttonType = useMemo<ButtonType>(() => {
     const calculation = calculableType === 'function' && hasComputeCode('function')
-    const localization = calculableType === 'localization' && hasComputeCode('localization')
+    const localizationAvailable = withLocalization(store)
+    const localization = localizationAvailable && calculableType === 'localization' && hasComputeCode('localization')
 
     if (disabled) return 'disabled'
     if (calculation) return 'calculation'
     if (localization) return 'localization'
-    if (annotation.calculable && annotation.localizable) return 'calculableAndLocalizable'
+    if (annotation.calculable && (localizationAvailable && annotation.localizable)) return 'calculableAndLocalizable'
     if (annotation.calculable) return 'calculable'
     if (annotation.localizable) return 'localizable'
 
     return 'disabled'
-  }, [annotation.calculable, annotation.localizable, disabled, hasComputeCode, calculableType])
+  }, [calculableType, hasComputeCode, store, disabled, annotation.calculable, annotation.localizable])
 
   const buttonStyle = useMemo(() => {
     const {hint, icon, color} = ButtonAppearance[buttonType]
@@ -177,7 +179,7 @@ const LeftButtonPlaceholder = styled.div`
 export const LabeledWrapper = (props: LabeledWrapperProps) => {
   const {children, className, style, label, hint, required, leftButton, dataTestId} = props
   const id = useUniqueId('id-')
-  const labelClassName = useMemo(() => cx({required}), [required])
+  const labelClassName = cx({required})
 
   return <LabeledInput style={style} className={className} data-testid={dataTestId}>
     <Columns gap={10} style={columnsStyle}>
@@ -208,7 +210,8 @@ const RawLabeledProperty = (props: LabeledPropertyProps) => {
   return <LabeledWrapper style={style}
                          className={adjustedClassName}
                          required={annotation.required}
-                         hint={hint} label={label}
+                         hint={hint}
+                         label={label}
                          leftButton={leftButton}
                          dataTestId={`${annotation.key}-labeled-wrapper`}>
     {children}

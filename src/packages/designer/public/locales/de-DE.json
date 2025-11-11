@@ -854,7 +854,8 @@
     "editCodeAction": "Codeaktion bearbeiten",
     "editProperty": "Eigenschaft bearbeiten",
     "function": "Kalkulierbarer Wert",
-    "localization": "Fließende Lokalisierung",
+    "localization": "Lokalisierung",
+    "localizationNotSet": "Lokalisierungs-Engine ist nicht eingestellt",
     "simpleValue": "Einfacher Wert",
     "simpleValueHint": "Bearbeiten Sie die Eigenschaft im rechten Bereich",
     "use": "Verwenden"
@@ -999,10 +1000,10 @@
     "clean": "Auf Standard zurücksetzen",
     "codeButton": {
       "editCalculable": "Berechenbar bearbeiten",
-      "editLocalizable": "Fluent Lokalisierung bearbeiten",
+      "editLocalizable": "Lokalisierung bearbeiten",
       "hintCalculable": "Machen Sie diese Eigenschaft berechenbar",
-      "hintCalculableAndLocalizable": "Machen Sie diese Eigenschaft berechenbar oder lokalisieren Sie sie mit Fluent",
-      "hintLocalizable": "Lokalisieren Sie diese Eigenschaft mit Fluent",
+      "hintCalculableAndLocalizable": "Diese Eigenschaft berechenbar machen oder lokalisieren",
+      "hintLocalizable": "Lokalisieren Sie diese Eigenschaft",
       "neitherCalculableNorLocalizable": "Weder kalkulierbar noch lokalisierbar"
     },
     "keyMustBeUnique": "Schlüssel muss eindeutig sein",

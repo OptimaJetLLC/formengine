@@ -947,10 +947,10 @@
     },
     "codeButton": {
       "hintCalculable": "Make this property calculable",
-      "hintLocalizable": "Localize this property with Fluent",
-      "hintCalculableAndLocalizable": "Make this property calculable or localize with Fluent",
+      "hintLocalizable": "Localize this property",
+      "hintCalculableAndLocalizable": "Make this property calculable or localize",
       "editCalculable": "Edit calculable",
-      "editLocalizable": "Edit Fluent localization",
+      "editLocalizable": "Edit localization",
       "neitherCalculableNorLocalizable": "Neither calculable nor localizable"
     },
     "setInputHint": "Press Enter to add a value",
@@ -1088,7 +1088,8 @@
   },
   "bottomPanel": {
     "use": "Use",
-    "localization": "Fluent localization",
+    "localization": "Localization",
+    "localizationNotSet": "Localization engine is not set",
     "function": "Calculable value",
     "simpleValue": "Simple value",
     "simpleValueHint": "Edit the property in the right panel",

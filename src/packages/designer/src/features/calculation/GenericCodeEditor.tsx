@@ -106,6 +106,6 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
         {props.compact && <TestRunner testingFunction={testingFunction} ref={testingEditor} compact/>}
       </SDiv>
     </Rows>
-    {!props.compact && <TestingEditor initialData={formData} testingFunction={testingFunction} ref={testingEditor}/>}
+    {!props.compact && <TestingEditor initialData={formData.data} testingFunction={testingFunction} ref={testingEditor}/>}
   </Columns>
 }

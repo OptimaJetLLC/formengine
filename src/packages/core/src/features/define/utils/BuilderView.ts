@@ -1,7 +1,7 @@
 import type {ComponentLibraryDescription} from '../../annotation/ComponentDescriptions'
 import {internalErrorMeta} from '../../components/internalErrorMeta'
 import {screenMeta} from '../../components/screenMeta'
-import type {LanguageFullCode} from '../../localization/types'
+import type {LanguageFullCode} from '../../localization/language'
 import {modalMeta} from '../../modal/modalMeta'
 import {modalModel} from '../../modal/modalModel'
 import {repeaterMeta} from '../../repeater/repeaterMeta'

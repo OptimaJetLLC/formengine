@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
-import {isUndefined, namedObserver, SuppressResizeObserverErrors, useMobxConfig} from '@react-form-builder/core'
+import {FluentLocalizationEngine, isUndefined, namedObserver, SuppressResizeObserverErrors, useMobxConfig} from '@react-form-builder/core'
 import type {ComponentProps, ReactNode} from 'react'
-import {Suspense, useEffect} from 'react'
+import {Suspense, useEffect, useMemo} from 'react'
 import {Loader} from 'rsuite'
 import {customizableObserver} from './features/customization'
 import {useHotkeys} from './features/hotkeys/useHotKeys'
@@ -94,8 +94,15 @@ const FormBuilderView = customizableObserver('MainContainer', RawFormBuilderView
 const RawFormBuilder = (props: FormBuilderProps) => {
   useMobxConfig()
 
+
+  const localizationEngine = useMemo(() => props.localizationEngine ?? new FluentLocalizationEngine(), [props.localizationEngine])
+  const finalProps = useMemo(() => ({
+    ...props,
+    localizationEngine
+  }), [localizationEngine, props])
+
   return (
-    <BuilderProviders props={props}>
+    <BuilderProviders props={finalProps}>
       <FormBuilderView/>
     </BuilderProviders>
   )

@@ -854,7 +854,8 @@
     "editCodeAction": "Акција уређивања кода",
     "editProperty": "Уреди својство",
     "function": "Израчуната вредност",
-    "localization": "Брза локализација",
+    "localization": "Локализација",
+    "localizationNotSet": "Механизам локализације није инсталиран",
     "simpleValue": "Једноставно значење",
     "simpleValueHint": "Уредите својство у десном окну",
     "use": "Користите"
@@ -999,10 +1000,10 @@
     "clean": "Ресетовање на подразумевану вредност",
     "codeButton": {
       "editCalculable": "Уређивање се може израчунати",
-      "editLocalizable": "Уредите глатку локализацију",
+      "editLocalizable": "Уреди локализацију",
       "hintCalculable": "Нека ово својство буде израчунато",
-      "hintCalculableAndLocalizable": "Нека ово својство буде израчунато или локализовано помоћу Флуента",
-      "hintLocalizable": "Локализујте ово својство помоћу Флуента",
+      "hintCalculableAndLocalizable": "Нека ово својство буде израчунато или локализовано",
+      "hintLocalizable": "Локализујте ово својство",
       "neitherCalculableNorLocalizable": "Не може се израчунати, нити локализовати"
     },
     "keyMustBeUnique": "Кључ мора бити јединствен",

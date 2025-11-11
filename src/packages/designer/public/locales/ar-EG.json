@@ -854,7 +854,8 @@
     "editCodeAction": "تحرير إجراء التعليمات البرمجية",
     "editProperty": "تحرير الممتلكات",
     "function": "قيمة قابلة للحساب",
-    "localization": "التعريب بطلاقة",
+    "localization": "التعريب",
+    "localizationNotSet": "لم يتم تعيين محرك التعريب",
     "simpleValue": "قيمة بسيطة",
     "simpleValueHint": "تحرير الخاصية في اللوحة اليمنى",
     "use": "استخدام"
@@ -999,10 +1000,10 @@
     "clean": "إعادة تعيين إلى الافتراضي",
     "codeButton": {
       "editCalculable": "تحرير حساب",
-      "editLocalizable": "تحرير الترجمة بطلاقة",
+      "editLocalizable": "تحرير الترجمة",
       "hintCalculable": "اجعل هذه الخاصية قابلة للحساب",
-      "hintCalculableAndLocalizable": "اجعل هذه الخاصية قابلة للحساب أو التوطين بطلاقة",
-      "hintLocalizable": "توطين هذه الخاصية بطلاقة",
+      "hintCalculableAndLocalizable": "اجعل هذه الخاصية قابلة للحساب أو التوطين",
+      "hintLocalizable": "توطين هذه الخاصية",
       "neitherCalculableNorLocalizable": "لا يمكن حسابه ولا توطينه"
     },
     "keyMustBeUnique": "يجب أن يكون المفتاح فريدا",

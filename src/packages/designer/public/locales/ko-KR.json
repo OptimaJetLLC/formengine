@@ -854,7 +854,8 @@
     "editCodeAction": "코드 편집 작업",
     "editProperty": "속성 편집",
     "function": "계산 가능한 값",
-    "localization": "유창한 현지화",
+    "localization": "현지화",
+    "localizationNotSet": "현지화 엔진이 설정되지 않았습니다",
     "simpleValue": "단순 값",
     "simpleValueHint": "오른쪽 패널에서 속성 편집",
     "use": "사용"
@@ -999,10 +1000,10 @@
     "clean": "기본값으로 재설정",
     "codeButton": {
       "editCalculable": "계산 가능한 편집",
-      "editLocalizable": "유창한 현지화 편집",
+      "editLocalizable": "현지화 편집",
       "hintCalculable": "이 속성을 계산할 수 있도록 합니다",
-      "hintCalculableAndLocalizable": "이 속성을 계산 가능하게하거나 유창하게 지역화",
-      "hintLocalizable": "이 속성을 유창하게 지역화",
+      "hintCalculableAndLocalizable": "이 속성을 계산 가능 또는 지역화",
+      "hintLocalizable": "이 속성을 지역화",
       "neitherCalculableNorLocalizable": "계산 가능하거나 지역화 가능하지 않습니다."
     },
     "keyMustBeUnique": "키는 고유해야 합니다",

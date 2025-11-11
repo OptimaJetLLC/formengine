@@ -1,13 +1,6 @@
 import styled from '@emotion/styled'
 import type {IFormData} from '@react-form-builder/core'
-import {
-  getEditableFormData,
-  getFluentCompatibleId,
-  getFluentData,
-  namedObserver,
-  testFluentLocalization,
-  useStore
-} from '@react-form-builder/core'
+import {CalculableResult, getEditableFormData, namedObserver, useStore} from '@react-form-builder/core'
 import {action} from 'mobx'
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import {Button, ButtonGroup} from 'rsuite'
@@ -32,8 +25,9 @@ const rowsStyle = {minHeight: 0, minWidth: 0, flex: 1.5} as const
 
 const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditorProps) => {
   const t = useTranslationPart('common')
-  const localizationStringId = getFluentCompatibleId(`${editableProperty.componentKey}_${editableProperty.annotation.key}`)
   const builderStore = useBuilderStore()
+  const locEngine = builderStore.viewer.form.localization.engine
+  const localizationStringId = locEngine.getCompatibleId(`${editableProperty.componentKey}_${editableProperty.annotation.key}`)
   const testingEditor = useRef<TestingEditorRef>({})
   const {formData} = useStore()
   const initialData = useMemo(() => {
@@ -58,15 +52,25 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
   const beginContextLine = `${localizationStringId} =`
   const endContextLine = ''
 
-  const testingFunction = useCallback(
-    (formData: IFormData) => testFluentLocalization({
-      localizationStringId: localizationStringId,
-      localization: value,
-      data: getFluentData(formData.data),
-      language
-    }),
-    [localizationStringId, value, language]
-  )
+  const testingFunction = useCallback((formData: IFormData) => {
+    if (!locEngine.testLocalization) {
+      // If the localization testing function is not set, then we return a successful testing response with a message
+      return CalculableResult.success('Localization testing function is missing')
+    }
+
+    const result = locEngine.testLocalization(
+      value,
+      localizationStringId,
+      language,
+      formData,
+    )
+
+    if (Array.isArray(result) && result.length > 0) {
+      return CalculableResult.error(result as Array<Error>)
+    }
+
+    return CalculableResult.success(result)
+  }, [locEngine, localizationStringId, value, language])
 
   return <Columns style={columnsStyle}>
     <Rows gap={10} style={rowsStyle}>
@@ -82,7 +86,9 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
         <LocalizationPicker value={language.fullCode} onSelect={setLanguage}/>
       </SDiv>
     </Rows>
-    <TestingEditor initialData={initialData} testingFunction={testingFunction} ref={testingEditor}/>
+    {locEngine.testLocalization &&
+      <TestingEditor initialData={initialData} testingFunction={testingFunction} ref={testingEditor}/>
+    }
   </Columns>
 }
 

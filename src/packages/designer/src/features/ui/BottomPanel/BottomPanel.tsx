@@ -2,6 +2,7 @@ import {css} from '@emotion/css'
 import {namedObserver} from '@react-form-builder/core'
 import type {ResizableProps} from 're-resizable'
 import {Resizable} from 're-resizable'
+import {useMemo} from 'react'
 import {CustomValidationCode, EditableAction, EditableProperty, JsonCode} from '../../../stores/BuilderStore'
 import {EditableFormValidator} from '../../../stores/EditableFormValidator'
 import {EditableFunction} from '../../../stores/EditableFunction'
@@ -13,7 +14,7 @@ import {FormValidatorCodeEditor} from './FormValidatorCodeEditor'
 import {FunctionEditor} from './FunctionEditor'
 import {JsonCodeEditor} from './JsonCodeEditor'
 
-const resizableStyles = css`
+const resizableClass = css`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -52,16 +53,16 @@ const RawBottomPanel = () => {
     editor = <FunctionEditor {...currentEditable}/>
   }
 
-  if (!editor) return null
-
-  const resizableProps: ResizableProps = {
-    className: resizableStyles,
+  const resizableProps: ResizableProps = useMemo(() => ({
+    className: resizableClass,
     enable: {top: true},
     onResizeStop: (e, direction, ref, delta) => store.bottomPanelHeight += delta.height,
     defaultSize: {width: 'initial', height: bottomPanelHeight},
     minHeight: 250,
     maxHeight: '92vh'
-  }
+  }), [bottomPanelHeight, store])
+
+  if (!editor) return null
 
   return <Resizable {...resizableProps}>{editor}</Resizable>
 }

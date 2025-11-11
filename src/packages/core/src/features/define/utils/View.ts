@@ -1,6 +1,6 @@
 import type {ComponentType, ReactNode} from 'react'
 import {BiDi} from '../../localization/bidi'
-import type {Language} from '../../localization/types'
+import type {Language} from '../../localization/language'
 import {modalModel} from '../../modal/modalModel'
 import {repeaterItemModel} from '../../repeater/RepeaterItem'
 import {repeaterModel} from '../../repeater/repeaterModel'

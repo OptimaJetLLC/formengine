@@ -854,7 +854,8 @@
     "editCodeAction": "ویرایش عملکرد کد",
     "editProperty": "ویرایش ویژگی",
     "function": "مقدار قابل محاسبه",
-    "localization": "محلی‌سازی دقیق",
+    "localization": "محلی سازی",
+    "localizationNotSet": "موتور محلی سازی تنظیم نشده است",
     "simpleValue": "مقدار ساده",
     "simpleValueHint": "ویرایش ویژگی در صفحه راست",
     "use": "استفاده"
@@ -999,10 +1000,10 @@
     "clean": "تنظیم مجدد به حالت پیش فرض",
     "codeButton": {
       "editCalculable": "ویرایش قابل محاسبه",
-      "editLocalizable": "ویرایش ترجمه مسلط",
+      "editLocalizable": "ویرایش محلی سازی",
       "hintCalculable": "این خصوصیت قابل محاسبه است",
-      "hintCalculableAndLocalizable": "این خصوصیت قابل محاسبه یا ترجمه مسلط است",
-      "hintLocalizable": "این خصوصیت ترجمه مسلط است",
+      "hintCalculableAndLocalizable": "این ویژگی را قابل محاسبه یا محلی سازی کنید",
+      "hintLocalizable": "این ملک را محلی کنید",
       "neitherCalculableNorLocalizable": "قابل محاسبه یا ترجمه مسلط نیست"
     },
     "keyMustBeUnique": "کلید باید یکتا باشد",

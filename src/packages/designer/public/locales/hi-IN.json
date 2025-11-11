@@ -854,7 +854,8 @@
     "editCodeAction": "कोड कार्रवाई संपादित करें",
     "editProperty": "संपत्ति संपादित करें",
     "function": "गणना योग्य मूल्य",
-    "localization": "धाराप्रवाह स्थानीयकरण",
+    "localization": "स्थानीयकरण",
+    "localizationNotSet": "स्थानीयकरण इंजन सेट नहीं है",
     "simpleValue": "सरल मूल्य",
     "simpleValueHint": "सही पैनल में संपत्ति संपादित करें",
     "use": "उपयोग करें"
@@ -999,10 +1000,10 @@
     "clean": "डिफ़ॉल्ट पर रीसेट करें",
     "codeButton": {
       "editCalculable": "गणना योग्य संपादित करें",
-      "editLocalizable": "धाराप्रवाह स्थानीयकरण संपादित करें",
+      "editLocalizable": "स्थानीयकरण संपादित करें",
       "hintCalculable": "इस संपत्ति को गणना योग्य बनाएं",
-      "hintCalculableAndLocalizable": "इस संपत्ति को गणना योग्य बनाएं या धाराप्रवाह के साथ स्थानीयकरण करें",
-      "hintLocalizable": "धाराप्रवाह के साथ इस संपत्ति का स्थानीयकरण करें",
+      "hintCalculableAndLocalizable": "इस संपत्ति को गणना योग्य या स्थानीयकरण करें",
+      "hintLocalizable": "इस संपत्ति का स्थानीयकरण करें",
       "neitherCalculableNorLocalizable": "न तो गणना योग्य और न ही स्थानीयकरण योग्य"
     },
     "keyMustBeUnique": "कुंजी अद्वितीय होना चाहिए",

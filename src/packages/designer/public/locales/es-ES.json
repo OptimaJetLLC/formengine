@@ -854,7 +854,8 @@
     "editCodeAction": "Editar acción de código",
     "editProperty": "Editar propiedad",
     "function": "Valor calculable",
-    "localization": "Localización fluida",
+    "localization": "Localización",
+    "localizationNotSet": "El motor de localización no está configurado",
     "simpleValue": "Valor simple",
     "simpleValueHint": "Edite la propiedad en el panel derecho",
     "use": "Uso"
@@ -999,10 +1000,10 @@
     "clean": "Restablecer a los valores predeterminados",
     "codeButton": {
       "editCalculable": "Editar calculable",
-      "editLocalizable": "Editar localización fluida",
+      "editLocalizable": "Editar localización",
       "hintCalculable": "Hacer calculable esta propiedad",
-      "hintCalculableAndLocalizable": "Haga que esta propiedad sea calculable o localice con Fluent",
-      "hintLocalizable": "Localice esta propiedad con Fluent",
+      "hintCalculableAndLocalizable": "Haga que esta propiedad sea calculable o localice",
+      "hintLocalizable": "Localizar esta propiedad",
       "neitherCalculableNorLocalizable": "Ni calculable ni localizable"
     },
     "keyMustBeUnique": "La clave debe ser única",
