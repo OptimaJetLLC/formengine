@@ -1,5 +1,5 @@
 import {promises as fs} from 'fs'
-import type {Page} from 'playwright'
+import type {Page} from '@playwright/test'
 
 const {writeFile, mkdir} = fs
 

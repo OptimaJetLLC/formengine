@@ -88,6 +88,7 @@
     "react-dom": "^19.0.0"
   },
   "overrides": {
-    "@parcel/watcher": "^2.5.1"
+    "@parcel/watcher": "^2.5.1",
+    "playwright": "1.56.1"
   }
 }

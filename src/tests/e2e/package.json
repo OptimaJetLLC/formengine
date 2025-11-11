@@ -16,12 +16,12 @@
   },
   "devDependencies": {
     "@nx/devkit": "^20.3.1",
-    "@playwright/test": "^1.49.1",
+    "@playwright/test": "^1.56.1",
     "cross-spawn": "^7.0.6",
     "ctrf": "^0.0.10",
     "github-actions-ctrf": "^0.0.54",
     "monocart-reporter": "^2.9.13",
-    "playwright": "^1.49.1",
+    "playwright": "^1.56.1",
     "playwright-ctrf-json-reporter": "^0.0.18"
   }
 }

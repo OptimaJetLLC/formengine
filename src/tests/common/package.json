@@ -10,7 +10,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-common-types": "^0.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@playwright/test": "^1.49.1",
+    "@playwright/test": "^1.56.1",
     "@react-form-builder/components-antd": "^7.6.0",
     "@react-form-builder/components-fast-qr": "^7.6.0",
     "@react-form-builder/components-google-map": "^7.6.0",
