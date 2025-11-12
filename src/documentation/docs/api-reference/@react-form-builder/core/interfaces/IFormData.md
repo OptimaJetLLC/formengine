@@ -158,21 +158,6 @@ Sets the form error messages.
 
 ***
 
-### fluentData
-
-#### Get Signature
-
-> **get** **fluentData**(): `Record`\<`string`, `FluentVariable`\>
-
-##### Returns
-
-`Record`\<`string`, `FluentVariable`\>
-
-all the form data that is of the FluentVariable type.
-Additionally, the keys of the returned object are converted to the snake case.
-
-***
-
 ### hasErrors
 
 #### Get Signature

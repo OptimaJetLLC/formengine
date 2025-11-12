@@ -214,6 +214,18 @@ The FormEngine license key.
 
 ***
 
+### localizationEngine?
+
+> `optional` **localizationEngine**: [`ILocalizationEngine`](../../core/interfaces/ILocalizationEngine.md)
+
+The localization engine used by the viewer.
+
+#### Inherited from
+
+`Omit.localizationEngine`
+
+***
+
 ### localize?
 
 > `optional` **localize**: [`ComponentLocalizer`](../../core/type-aliases/ComponentLocalizer.md)

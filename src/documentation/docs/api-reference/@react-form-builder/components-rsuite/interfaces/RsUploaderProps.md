@@ -555,7 +555,7 @@ Indicates that the user may select more than one item from the current selectabl
 
 ### aria-orientation?
 
-> `optional` **aria-orientation**: `"horizontal"` \| `"vertical"`
+> `optional` **aria-orientation**: `"vertical"` \| `"horizontal"`
 
 Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.
 
@@ -983,7 +983,7 @@ A button can have different colors
 
 ### contentEditable?
 
-> `optional` **contentEditable**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
+> `optional` **contentEditable**: `"inherit"` \| `Booleanish` \| `"plaintext-only"`
 
 #### Inherited from
 

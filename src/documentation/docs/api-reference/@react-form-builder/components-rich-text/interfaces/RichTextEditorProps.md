@@ -242,7 +242,7 @@ Triggered after the content changed.
 
 ### toolbarOptions?
 
-> `optional` **toolbarOptions**: (`"color"` \| `"direction"` \| `"font"` \| `"header"` \| `"script"` \| `"list"` \| `"insert"` \| `"size"` \| `"clean"` \| `"align"` \| `"decoration"` \| `"block"` \| `"indent"`)[]
+> `optional` **toolbarOptions**: (`"color"` \| `"direction"` \| `"font"` \| `"header"` \| `"script"` \| `"insert"` \| `"size"` \| `"list"` \| `"clean"` \| `"align"` \| `"decoration"` \| `"block"` \| `"indent"`)[]
 
 Groups of buttons to be displayed on the toolbar.
 

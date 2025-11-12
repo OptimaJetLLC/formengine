@@ -8,7 +8,7 @@ Replaces empty form fields with an empty string. **Internal use only.**
 
 ### form
 
-[`ComponentData`](../classes/ComponentData.md)
+[`IFormData`](../interfaces/IFormData.md)
 
 the form.
 

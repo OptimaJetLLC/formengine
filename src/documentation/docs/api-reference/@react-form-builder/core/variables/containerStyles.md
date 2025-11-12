@@ -12,7 +12,7 @@ The annotations for generic CSS properties of a container component.
 
 ### flexDirection
 
-> **flexDirection**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"row"` \| `"column"` \| `"column-reverse"` \| `"row-reverse"`\>
+> **flexDirection**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"column"` \| `"row"` \| `"column-reverse"` \| `"row-reverse"`\>
 
 ### flexWrap
 

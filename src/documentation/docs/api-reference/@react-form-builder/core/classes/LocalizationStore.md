@@ -2,13 +2,17 @@
 
 Observable storage of localization. **Internal use only.**
 
+## Implements
+
+- [`ILocalizationStore`](../interfaces/ILocalizationStore.md)
+
 ## Constructors
 
 ### Constructor
 
-> **new LocalizationStore**(`value`): `LocalizationStore`
+> **new LocalizationStore**(`value`, `engine`): `LocalizationStore`
 
-The constructor.
+Creates a new LocalizationStore instance.
 
 #### Parameters
 
@@ -18,17 +22,31 @@ The constructor.
 
 the initial localization value.
 
+##### engine
+
+[`ILocalizationEngine`](../interfaces/ILocalizationEngine.md)
+
+the localization engine to use.
+
 #### Returns
 
 `LocalizationStore`
 
 ## Properties
 
+### engine
+
+> `readonly` **engine**: [`ILocalizationEngine`](../interfaces/ILocalizationEngine.md)
+
+the localization engine to use.
+
+***
+
 ### value
 
 > `readonly` **value**: [`LocalizationValue`](../type-aliases/LocalizationValue.md) = `{}`
 
-The localization data.
+the initial localization value.
 
 ## Accessors
 
@@ -104,12 +122,11 @@ the new component key to replace the old component key.
 
 ***
 
-### getFluentBundle()
+### getItems()
 
-> **getFluentBundle**(`languageFullCode`): `FluentBundle`
+> **getItems**(`languageFullCode`): `null` \| `Record`\<`string`, `string`\>
 
-If the FluentBundle for the specified language is found, this function returns it.
-Otherwise, an empty FluentBundle is returned.
+Returns all localization items provided by engine.
 
 #### Parameters
 
@@ -117,13 +134,17 @@ Otherwise, an empty FluentBundle is returned.
 
 `` `${string}-${string}` ``
 
-the full code (en-US, en-GB etc.) of the language to get fluent bundle.
+the full code (en-US, en-GB etc.).
 
 #### Returns
 
-`FluentBundle`
+`null` \| `Record`\<`string`, `string`\>
 
-the FluentBundle for the specified language.
+all localization items.
+
+#### Implementation of
+
+[`ILocalizationStore`](../interfaces/ILocalizationStore.md).[`getItems`](../interfaces/ILocalizationStore.md#getitems)
 
 ***
 

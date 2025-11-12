@@ -74,6 +74,14 @@ The initial form data.
 
 ***
 
+### localizationEngine?
+
+> `optional` **localizationEngine**: [`ILocalizationEngine`](../interfaces/ILocalizationEngine.md)
+
+The localization engine provided via FormViewer props.
+
+***
+
 ### localizer?
 
 > `optional` **localizer**: [`ComponentLocalizer`](../type-aliases/ComponentLocalizer.md)

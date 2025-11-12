@@ -4,7 +4,7 @@ import type {ILocalizationStore} from './ILocalizationStore'
 /**
  * A form.
  */
-export type IForm = {
+export interface IForm {
   /**
    * Localization of the form.
    */

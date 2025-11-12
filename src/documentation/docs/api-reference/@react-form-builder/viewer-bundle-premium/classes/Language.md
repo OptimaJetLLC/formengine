@@ -98,7 +98,7 @@ the name of the language, for example 'English'.
 
 `` `${string}-${string}` ``
 
-Full code of the Language i.e en-US, en-GB etc.
+the full code of the Language i.e. en-US, en-GB etc.
 
 ## Methods
 

@@ -122,6 +122,14 @@ The language of the form, e.g. 'en-US'.
 
 ***
 
+### localizationEngine?
+
+> `optional` **localizationEngine**: [`ILocalizationEngine`](ILocalizationEngine.md)
+
+The localization engine used by the viewer.
+
+***
+
 ### localize?
 
 > `optional` **localize**: [`ComponentLocalizer`](../type-aliases/ComponentLocalizer.md)

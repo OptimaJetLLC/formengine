@@ -2,6 +2,10 @@
 
 Represents a form that is rendered in Viewer or edited in Builder.
 
+## Implements
+
+- [`IForm`](../interfaces/IForm.md)
+
 ## Constructors
 
 ### Constructor
@@ -70,6 +74,10 @@ Root component of the form.
 
 Default localization language of the form.
 
+#### Implementation of
+
+[`IForm`](../interfaces/IForm.md).[`defaultLanguage`](../interfaces/IForm.md#defaultlanguage)
+
 ***
 
 ### errorProps
@@ -109,6 +117,10 @@ Localization languages of the form.
 > `readonly` **localization**: [`LocalizationStore`](LocalizationStore.md)
 
 Localization of the form.
+
+#### Implementation of
+
+[`IForm`](../interfaces/IForm.md).[`localization`](../interfaces/IForm.md#localization)
 
 ***
 

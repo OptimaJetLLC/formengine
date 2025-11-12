@@ -903,7 +903,7 @@ The background color.
 
 ### contentEditable?
 
-> `optional` **contentEditable**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
+> `optional` **contentEditable**: `"inherit"` \| `Booleanish` \| `"plaintext-only"`
 
 #### Inherited from
 
@@ -1183,7 +1183,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### loading?
 
-> `optional` **loading**: `"eager"` \| `"lazy"`
+> `optional` **loading**: `"lazy"` \| `"eager"`
 
 #### Inherited from
 

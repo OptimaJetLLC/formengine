@@ -943,7 +943,7 @@ The prefix of the component CSS class
 
 ### contentEditable?
 
-> `optional` **contentEditable**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
+> `optional` **contentEditable**: `"inherit"` \| `Booleanish` \| `"plaintext-only"`
 
 #### Inherited from
 

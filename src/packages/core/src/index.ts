@@ -210,7 +210,9 @@ export type {
   ComponentDescription, ComponentLibraryDescription, I18nItem
 } from './features/annotation/ComponentDescriptions'
 export {coreComponentsDescriptions} from './i18n/coreComponentsDescriptions'
-
+export type {IForm} from './stores/IForm'
+export type {ILocalizationStore} from './stores/ILocalizationStore'
+export type {LocalizationError} from './features/localization/LocalizationError'
 export type {ILocalizationEngine} from './features/localization/ILocalizationEngine'
 export {FluentLocalizationEngine} from './features/localization/fluent/FluentLocalizationEngine'
 export {NoopLocalizationEngine} from './features/localization/NoopLocalizationEngine'

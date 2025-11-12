@@ -8,12 +8,10 @@ The format in which localization is stored.
 
 ```ts
 {
- *  "en-US" :
- *  {
- *    "componentKey:
- *      {
- *        "property" : "This {$value} is localized!"
- *      }
+ *  "en-US": {
+ *    "componentKey": {
+ *      "property": "This {$value} is localized!"
+ *    }
  *  }
  * }
 ```

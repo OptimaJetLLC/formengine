@@ -295,25 +295,6 @@ all the fields in the tree as a map. Starts from this node.
 
 ***
 
-### fluentData
-
-#### Get Signature
-
-> **get** **fluentData**(): `Record`\<`string`, `FluentVariable`\>
-
-##### Returns
-
-`Record`\<`string`, `FluentVariable`\>
-
-all the form data that is of the FluentVariable type.
-Additionally, the keys of the returned object are converted to the snake case.
-
-#### Implementation of
-
-[`IFormData`](../interfaces/IFormData.md).[`fluentData`](../interfaces/IFormData.md#fluentdata)
-
-***
-
 ### hasErrors
 
 #### Get Signature

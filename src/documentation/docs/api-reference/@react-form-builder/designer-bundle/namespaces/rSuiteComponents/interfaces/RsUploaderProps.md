@@ -983,7 +983,7 @@ A button can have different colors
 
 ### contentEditable?
 
-> `optional` **contentEditable**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
+> `optional` **contentEditable**: `"inherit"` \| `Booleanish` \| `"plaintext-only"`
 
 #### Inherited from
 

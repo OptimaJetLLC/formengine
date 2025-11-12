@@ -782,6 +782,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/classes/FluentLocalizationEngine",
+              label: "FluentLocalizationEngine"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/classes/Form",
               label: "Form"
             },
@@ -819,6 +824,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/classes/NodeAnnotationBuilder",
               label: "NodeAnnotationBuilder"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/classes/NoopLocalizationEngine",
+              label: "NoopLocalizationEngine"
             },
             {
               type: "doc",
@@ -958,6 +968,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/interfaces/IForm",
+              label: "IForm"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/interfaces/IFormData",
               label: "IFormData"
             },
@@ -970,6 +985,16 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/interfaces/IFormViewer",
               label: "IFormViewer"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/interfaces/ILocalizationEngine",
+              label: "ILocalizationEngine"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/interfaces/ILocalizationStore",
+              label: "ILocalizationStore"
             },
             {
               type: "doc",
@@ -990,6 +1015,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/interfaces/LabeledValue",
               label: "LabeledValue"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/interfaces/LocalizationError",
+              label: "LocalizationError"
             },
             {
               type: "doc",
@@ -1356,11 +1386,6 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/LanguageFullCode",
               label: "LanguageFullCode"
-            },
-            {
-              type: "doc",
-              id: "api-reference/@react-form-builder/core/type-aliases/LocalizationTestRequest",
-              label: "LocalizationTestRequest"
             },
             {
               type: "doc",
@@ -2006,16 +2031,6 @@ const typedocSidebar = {
             },
             {
               type: "doc",
-              id: "api-reference/@react-form-builder/core/functions/getFluentCompatibleId",
-              label: "getFluentCompatibleId"
-            },
-            {
-              type: "doc",
-              id: "api-reference/@react-form-builder/core/functions/getFluentData",
-              label: "getFluentData"
-            },
-            {
-              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/getKey",
               label: "getKey"
             },
@@ -2143,11 +2158,6 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/functions/SuppressResizeObserverErrors",
               label: "SuppressResizeObserverErrors"
-            },
-            {
-              type: "doc",
-              id: "api-reference/@react-form-builder/core/functions/testFluentLocalization",
-              label: "testFluentLocalization"
             },
             {
               type: "doc",
