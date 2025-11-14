@@ -49,6 +49,11 @@ npm-test:
     SAVE ARTIFACT tests/react-19/reports/junit-report.xml AS LOCAL test-results/react-19-report.xml
   END
 
+# npm-check-all performs all checks
+npm-check-all:
+  FROM +sources
+  RUN npm run check:all
+
 # npm-check-circular-deps checks for cyclic dependencies
 npm-check-circular-deps:
   FROM +sources

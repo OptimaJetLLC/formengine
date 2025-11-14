@@ -102,55 +102,15 @@ jobs:
       - name: Run Build
         run: earthly --ci +npm-build
 
-  check-circular-deps:
-    name: Check circular dependencies
+  checks:
+    name: Static checks
     runs-on: [ self-hosted, earthly ]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
       - name: Run Check
-        run: earthly --ci +npm-check-circular-deps
-
-  check-wrong-imports:
-    name: Check wrong imports
-    runs-on: [ self-hosted, earthly ]
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Run Check
-        run: earthly --ci +npm-check-wrong-imports
-
-  eslint:
-    name: ESLint
-    runs-on: [ self-hosted, earthly ]
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Run ESLint
-        run: earthly --ci +npm-eslint
-
-  unused-exports:
-    name: Check unused exports
-    runs-on: [ self-hosted, earthly ]
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Run check unused exports
-        run: earthly --ci +npm-check-unused-exports
-
-  type-check:
-    name: Perform a type check
-    runs-on: [ self-hosted, earthly ]
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Perform a type check
-        run: earthly --ci +npm-check-tsc
+        run: earthly --ci +npm-check-all
 
   bundle:
     name: Bundle packages
