@@ -192,11 +192,15 @@ const FastQr = ({
       version
     }
 
+    if (!data) return
+
     renderQr(qrProps, ref).catch(console.error)
   }, [backgroundColor, data, errorCorrectionLevel, image, imageBackgroundColor, imageBackgroundShape, imageGap,
     imagePositionX, imagePositionY, imageSize, margin, moduleColor, shape, version])
 
   const divStyle = useMemo(() => ({width} as const), [width])
+
+  if (!data) return null
 
   return <div {...rest} className={className} style={divStyle} ref={ref}></div>
 }
