@@ -1,6 +1,6 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {BuilderModeProvider, FormViewer, useStore, useViewerProps} from '@react-form-builder/core'
+import {BuilderModeProvider, BuilderThemeProvider, FormViewer, useStore, useViewerProps} from '@react-form-builder/core'
 import type {ComponentProps} from 'react'
 import {useMemo} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
@@ -67,7 +67,7 @@ const SFormContainer = customizable('FormContainer', styled(PanelContainer)`
 const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
   const builderStore = useBuilderStore()
   const {formLoadError} = useStore()
-  const {viewMode, landscapeMode, builderMode, formStorageEnabled} = builderStore
+  const {viewMode, landscapeMode, builderMode, theme, formStorageEnabled} = builderStore
   const viewerProps = useViewerProps()
   const componentWrapper = builderMode === 'builder' ? EditableWrapper : undefined
 
@@ -83,11 +83,13 @@ const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
       <Header/>
       <SFormContainer className={cx(viewMode, builderMode, {landscapeMode, withForm: !formLoadError})}>
         <BuilderModeProvider value={builderMode}>
-          <TrialMessage/>
-          <ErrorFormWrapper>
-            <FormViewer {...viewerProps} componentWrapper={componentWrapper} viewMode={viewMode}
-                        formName={builderStore.activeFormName} getForm={getForm}/>
-          </ErrorFormWrapper>
+          <BuilderThemeProvider value={theme}>
+            <TrialMessage/>
+            <ErrorFormWrapper>
+              <FormViewer {...viewerProps} componentWrapper={componentWrapper} viewMode={viewMode}
+                          formName={builderStore.activeFormName} getForm={getForm}/>
+            </ErrorFormWrapper>
+          </BuilderThemeProvider>
         </BuilderModeProvider>
       </SFormContainer>
     </SContainer>

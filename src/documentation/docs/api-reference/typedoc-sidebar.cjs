@@ -1134,6 +1134,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/BuilderTheme",
+              label: "BuilderTheme"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/CellInfo",
               label: "CellInfo"
             },
@@ -1595,6 +1600,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/BuilderThemeProvider",
+              label: "BuilderThemeProvider"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/variables/CellInfoContextProvider",
               label: "CellInfoContextProvider"
             },
@@ -1892,6 +1902,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/variables/useBuilderMode",
               label: "useBuilderMode"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/useBuilderTheme",
+              label: "useBuilderTheme"
             },
             {
               type: "doc",

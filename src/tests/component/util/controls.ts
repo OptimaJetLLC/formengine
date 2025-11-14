@@ -1,6 +1,10 @@
 import {fireEvent, RenderResult, waitFor, within} from '@testing-library/react'
 import {expect} from 'vitest'
 
+const checkIsElementFound = (name: string, element: Element | null) => {
+  if (!element) throw new Error(`Unable to find ${name} element`)
+}
+
 export const selectDropDownOption = async <T extends HTMLElement>(rendered: RenderResult, dropdown: T, byValue: string): Promise<void> => {
   fireEvent.click(dropdown)
   const option = await rendered.findByRole('option', {name: byValue})
@@ -91,11 +95,18 @@ export const togglePreview = async (app: RenderResult) => {
   await waitFor(() => expect(container.querySelector('.FE_Header:not(.FE_Palette_Component)')).toBeInTheDocument())
 
   const header = container.querySelector('.FE_Header:not(.FE_Palette_Component)')
-  if (!header) {
-    throw new Error(`Unable to find header element`)
-  }
+  checkIsElementFound('header', header)
 
   const button = await within(header as HTMLElement).findByText('Preview')
 
   fireEvent.click(button)
+}
+
+export const toggleTheme = async (container: HTMLElement) => {
+  const getButton = () => container.querySelector('.FE_Header .FE_ToggleThemeButton')
+  await waitFor(() => expect(getButton()).toBeInTheDocument())
+  const button = getButton()
+  checkIsElementFound('ToggleThemeButton', button)
+
+  fireEvent.click(button as Element)
 }

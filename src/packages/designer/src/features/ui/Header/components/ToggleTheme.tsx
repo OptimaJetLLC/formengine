@@ -1,11 +1,12 @@
+import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import * as faMoon from '@fortawesome/free-solid-svg-icons/faMoon.js'
 import * as faSun from '@fortawesome/free-solid-svg-icons/faSun.js'
+import type {BuilderTheme} from '@react-form-builder/core'
 import type {ComponentProps} from 'react'
 import {useMemo} from 'react'
 import {Tooltip, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
-import type {BuilderTheme} from '../../../../utils/types'
 import {FaIcon} from '../../../components/Icons'
 import {customizableObserver} from '../../../customization'
 import {useTranslationPart} from '../../../localization/hooks'
@@ -43,7 +44,7 @@ const icons: Record<BuilderTheme, any> = {
 
 type ToggleThemeProps = Omit<ComponentProps<typeof Whisper>, 'placement' | 'speaker' | 'children'>
 
-const RawToggleTheme = (props: ToggleThemeProps) => {
+const RawToggleTheme = ({className, ...props}: ToggleThemeProps) => {
   const store = useBuilderStore()
   const t = useTranslationPart('rightMenu')
   const {theme} = store
@@ -55,8 +56,8 @@ const RawToggleTheme = (props: ToggleThemeProps) => {
     color: isDark ? 'var(--rs-yellow-300)' : 'white',
     size: 1.4,
     onClick: () => store.theme = isDark ? 'light' : 'dark',
-    className: store.theme
-  }), [icon, isDark, store])
+    className: cx(store.theme, className)
+  }), [className, icon, isDark, store])
   const speaker = useMemo(() => <Tooltip>{t('toggleTheme')}</Tooltip>, [t])
 
   return (

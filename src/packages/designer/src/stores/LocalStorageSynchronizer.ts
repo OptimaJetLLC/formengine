@@ -1,11 +1,10 @@
-import type {ViewMode} from '@react-form-builder/core'
+import type {BuilderTheme, ViewMode} from '@react-form-builder/core'
 import {isUndefined, nameAutorun} from '@react-form-builder/core'
 import type {IReactionDisposer} from 'mobx'
 import {autorun} from 'mobx'
 import type {FormBuilderProps} from '../FormBuilderProps'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {parseJson} from '../utils/parseJson'
-import type {BuilderTheme} from '../utils/types'
 import type {BuilderStore} from './BuilderStore'
 import {defaultBottomPanelHeight, defaultOpenedPanels, defaultViewMode} from './constants'
 

@@ -1,6 +1,7 @@
 import type {
   Annotation,
   BuilderMode,
+  BuilderTheme,
   ComponentData,
   EditorType,
   Language,
@@ -43,7 +44,7 @@ import type {FormBuilderProps} from '../FormBuilderProps'
 import {determineTheme} from '../utils/determineTheme'
 import {getSystemTheme} from '../utils/getSystemTheme'
 import {sortByPositionInTree} from '../utils/sortByPositionInTree'
-import type {BuilderTheme, IFormBuilder, InsertPosition} from '../utils/types'
+import type {IFormBuilder, InsertPosition} from '../utils/types'
 import {AlwaysRejectFormStorage} from './AlwaysRejectFormStorage'
 import {AvailableComponents} from './AvailableComponents'
 import {CachedFormStorage} from './CachedFormStorage'

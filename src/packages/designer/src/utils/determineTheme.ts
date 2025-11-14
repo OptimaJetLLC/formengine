@@ -1,6 +1,6 @@
+import type {BuilderTheme} from '@react-form-builder/core'
 import type {FormBuilderTheme} from '../FormBuilderTheme'
 import {getSystemTheme} from './getSystemTheme'
-import type {BuilderTheme} from './types'
 
 /**
  * Determines the theme based on the given theme preference.

@@ -1,4 +1,4 @@
-import type {BuilderTheme} from './types'
+import type {BuilderTheme} from '@react-form-builder/core'
 
 /**
  * @returns the {@link BuilderTheme} from the current browser settings.

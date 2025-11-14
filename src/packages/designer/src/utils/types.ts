@@ -6,11 +6,6 @@ import type {BuilderMode, ViewMode} from '@react-form-builder/core'
 export type InsertPosition = 'before' | 'after' | 'inner'
 
 /**
- * Browser theme. Dark or light.
- */
-export type BuilderTheme = 'dark' | 'light'
-
-/**
  * Display resolution type of the form builder.
  */
 export type Device = 'any' | ViewMode
