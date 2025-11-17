@@ -16,7 +16,7 @@
         "htmlAttributes": [
           {
             "name": "data-testid",
-              "value": "testInput"
+            "value": "testInput"
           }
         ]
       },

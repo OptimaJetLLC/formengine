@@ -460,6 +460,7 @@ sources:
 # dependencies installs node_modules dependencies
 dependencies:
   WORKDIR /form-engine
+  COPY .gitignore biome.json .
   COPY src/package.json src/package-lock.json ./src
 
   RUN mkdir src/documentation src/packages \

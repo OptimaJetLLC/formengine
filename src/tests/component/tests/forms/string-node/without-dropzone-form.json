@@ -8,8 +8,7 @@
       {
         "key": "myCustomComponent1",
         "type": "MyCustomComponent",
-        "props": {
-        },
+        "props": {},
         "htmlAttributes": [
           {
             "name": "data-testid",

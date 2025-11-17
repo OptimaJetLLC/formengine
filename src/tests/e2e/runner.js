@@ -5,15 +5,11 @@ import {dirname, join, resolve} from 'path'
 import {fileURLToPath} from 'url'
 import {cwd} from 'node:process'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const config = {
-  templates: [
-    'react-17',
-    'react-18',
-    'react-19'
-  ],
+  templates: ['react-17', 'react-18', 'react-19'],
   projects: [
     {
       name: 'viewer',
@@ -25,7 +21,7 @@ const config = {
       port: '15002',
       command: 'npm run start:designer',
     },
-  ]
+  ],
 }
 
 const reactVersions = {
@@ -51,7 +47,7 @@ for (const tpl of config.templates) {
 
   for (const {name, port, command} of config.projects) {
     const path = resolve(join(__dirname, '..', tpl))
-    const args = ['--verbose', 'playwright', 'test'];
+    const args = ['--verbose', 'playwright', 'test']
 
     if (debug) {
       args.push('--ui')
@@ -70,7 +66,7 @@ for (const tpl of config.templates) {
         TEST_START_CMD: command,
         TEST_REACT_VERSION: reactVersions[tpl],
       },
-      stdio: 'inherit'
+      stdio: 'inherit',
     })
 
     if (result.status !== 0) {
@@ -82,19 +78,18 @@ for (const tpl of config.templates) {
     // https://github.com/allure-framework/allure2/issues/2336
     // https://timdeschryver.dev/blog/merging-your-playwright-sharded-reports-into-a-single-html-report#updating-the-ci-pipeline-github-actions
     const reportPath = join(cwd(), 'reports', 'blob')
-    const mergeResult = spawn.sync('npx',
-      `playwright merge-reports -c playwright.config.ts --reporter html ${reportPath}`.split(' '), {
-        cwd: __dirname,
-        env: {
-          ...ENV,
-          TEST_PROJECT: path,
-          TEST_TESTS_PATH: name,
-          TEST_PORT: port,
-          TEST_START_CMD: command,
-          CI: true
-        },
-        stdio: 'inherit'
-      })
+    const mergeResult = spawn.sync('npx', `playwright merge-reports -c playwright.config.ts --reporter html ${reportPath}`.split(' '), {
+      cwd: __dirname,
+      env: {
+        ...ENV,
+        TEST_PROJECT: path,
+        TEST_TESTS_PATH: name,
+        TEST_PORT: port,
+        TEST_START_CMD: command,
+        CI: true,
+      },
+      stdio: 'inherit',
+    })
 
     if (mergeResult.status !== 0) {
       console.error('Error merging reports', __dirname, tpl)
@@ -103,19 +98,18 @@ for (const tpl of config.templates) {
     }
 
     // merge CTRF reports
-    const ctrfMergeResult = spawn.sync('npx',
-      `npx ctrf merge reports/ctrf`.split(' '), {
-        cwd: __dirname,
-        env: {
-          ...ENV,
-          TEST_PROJECT: path,
-          TEST_TESTS_PATH: name,
-          TEST_PORT: port,
-          TEST_START_CMD: command,
-          CI: true
-        },
-        stdio: 'inherit'
-      })
+    const ctrfMergeResult = spawn.sync('npx', `npx ctrf merge reports/ctrf`.split(' '), {
+      cwd: __dirname,
+      env: {
+        ...ENV,
+        TEST_PROJECT: path,
+        TEST_TESTS_PATH: name,
+        TEST_PORT: port,
+        TEST_START_CMD: command,
+        CI: true,
+      },
+      stdio: 'inherit',
+    })
 
     if (ctrfMergeResult.status !== 0) {
       console.error('Error merging CTFR reports', __dirname, tpl)

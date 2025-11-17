@@ -18,7 +18,7 @@
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
+[data-theme="dark"] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
@@ -31,7 +31,9 @@
 
 div.markdown img {
   border-radius: 5px;
-  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0, rgba(255, 255, 255, 0.8) -6px -2px 16px 0;
+  box-shadow:
+    rgba(136, 165, 191, 0.48) 6px 2px 16px 0,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0;
 }
 
 /* announce styles */
@@ -46,7 +48,9 @@ div.markdown img {
 }
 
 .announce-container .announce-content {
-  font: 400 14px / 20px Inter, sans-serif;
+  font:
+    400 14px / 20px Inter,
+    sans-serif;
   font-weight: 600;
   margin: 0 auto;
   padding: 8px 32px;
@@ -87,12 +91,12 @@ div.markdown img {
 
 .code-block-changed {
   background-color: #ffe4003d;
-  border-color: #CC9900;
+  border-color: #cc9900;
 }
 
 .code-block-deleted {
   background-color: #f8514926;
-  border-color: #CC3366;
+  border-color: #cc3366;
 }
 
 @media only screen and (min-width: 998px) {

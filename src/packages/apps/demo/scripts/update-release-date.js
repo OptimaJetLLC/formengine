@@ -8,7 +8,7 @@ const __dirname = dirname(__filename)
 
 const configFilePath = join(__dirname, '..', 'src', 'utils', 'config.json')
 
-const content = readFileSync(configFilePath, 'utf8');
+const content = readFileSync(configFilePath, 'utf8')
 const config = JSON.parse(content)
 
 const designerPackageJsonVersion = packageJson.dependencies?.['@react-form-builder/designer'] ?? ''

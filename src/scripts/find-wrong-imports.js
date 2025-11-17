@@ -2,20 +2,20 @@ import fs from 'node:fs'
 
 const wrongImportRegex = /import.*from\s*['|"]@.*\/src\/.*['|"]/g
 
-const errors = [];
+const errors = []
 
-const needAnalyzeFile = (file) => {
+const needAnalyzeFile = file => {
   return file.endsWith('.ts') || file.endsWith('.tsx') || file.endsWith('.js') || file.endsWith('.jsx')
 }
 
 function readFiles(dir) {
-  const fileList = fs.readdirSync(dir);
+  const fileList = fs.readdirSync(dir)
   for (const file of fileList) {
-    const name = `${dir}/${file}`;
+    const name = `${dir}/${file}`
     if (fs.statSync(name).isDirectory()) {
-      readFiles(name);
+      readFiles(name)
     } else {
-      const content = fs.readFileSync(name, 'utf-8');
+      const content = fs.readFileSync(name, 'utf-8')
       if (needAnalyzeFile(name) && content.match(wrongImportRegex)) {
         errors.push(name)
       }
@@ -23,7 +23,7 @@ function readFiles(dir) {
   }
 }
 
-readFiles('./packages');
+readFiles('./packages')
 
 if (errors.length === 0) {
   process.exit(0)

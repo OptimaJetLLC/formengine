@@ -8,8 +8,7 @@
       {
         "key": "checkbox",
         "type": "RsCheckbox",
-        "props": {
-        },
+        "props": {},
         "events": {
           "onDidMount": [
             {

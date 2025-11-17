@@ -16,18 +16,14 @@ const packages = {
   '@react-form-builder/components-rsuite-table': join(packagesDir, 'views', 'rsuite-table'),
 }
 
-const createArchive = (folder) => {
+const createArchive = folder => {
   execSync('npm run bundle', {cwd: folder})
 
   const packageJson = join(folder, 'package.json')
-  const buffer = readFileSync(packageJson, 'utf8');
-  const data = JSON.parse(buffer);
-  const filename = `${data.name}-${data.version}.tgz`
-    .replace('@', '')
-    .replace('/', '-')
-  const withoutVersionName = `${data.name}.tgz`
-    .replace('@', '')
-    .replace('/', '-')
+  const buffer = readFileSync(packageJson, 'utf8')
+  const data = JSON.parse(buffer)
+  const filename = `${data.name}-${data.version}.tgz`.replace('@', '').replace('/', '-')
+  const withoutVersionName = `${data.name}.tgz`.replace('@', '').replace('/', '-')
 
   renameSync(join(folder, filename), join(docDir, 'packages', withoutVersionName))
 
@@ -42,8 +38,7 @@ const uninstallPackages = () => {
 
 const updatePackages = () => {
   uninstallPackages()
-  Object.values(packages)
-    .forEach(dir => createArchive(dir))
+  Object.values(packages).forEach(dir => createArchive(dir))
 }
 
 // We need to create archives to integrate the product into the documentation.

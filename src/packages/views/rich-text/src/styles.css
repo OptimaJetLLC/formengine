@@ -5,15 +5,16 @@
   --editor-placeholder-colour: white;
 }
 
-.optimajet-formbuilder, .optimajet-formviewer {
+.optimajet-formbuilder,
+.optimajet-formviewer {
   .ql-tooltip.ql-editing {
     inset-inline-start: auto !important;
     z-index: 10;
   }
 
   &.dark {
-    .ql-editor ul[data-checked=true] > li::before,
-    .ql-editor ul[data-checked=false] > li::before {
+    .ql-editor ul[data-checked="true"] > li::before,
+    .ql-editor ul[data-checked="false"] > li::before {
       color: #777;
       cursor: pointer;
       pointer-events: all;
@@ -29,7 +30,10 @@
     }
 
     .ql-snow {
-      .ql-editor pre.ql-syntax, .ql-picker-options, .ql-tooltip, input {
+      .ql-editor pre.ql-syntax,
+      .ql-picker-options,
+      .ql-tooltip,
+      input {
         background-color: #23241f;
         color: #f8f8f2;
         overflow: visible;
