@@ -1,0 +1,19 @@
+### New
+
+- Added new [`EmbeddedForm`](https://formengine.io/documentation/components-library/templates-components/embedded-form) component that allows embedding forms using the `formName` property instead of embedding the form name in the component type.
+- Introduced [`useBuilderTheme`](https://formengine.io/documentation/api-reference/@react-form-builder/core/variables/useBuilderTheme) hook for accessing the current BuilderStore theme from the core package and custom components.
+
+### Changed
+
+- Templates are now rendered through the `EmbeddedForm` component for better compatibility and flexibility.
+- Added support for building the core package without localization dependencies to reduce bundle size.
+- Updated NumberFormat component types for better React 19 compatibility.
+
+### Fixed bugs
+
+- Fixed FastQr component error: `TypeError: Cannot read properties of undefined (reading 'length')`.
+
+### Updated internal dependencies
+
+- Bumped `js-yaml` from 4.1.0 to 4.1.1 in examples.
+- Bumped `glob` from 10.4.5 to 10.5.0 in examples.

@@ -1,2 +1,2 @@
-NpmVersion=7.6.0
+NpmVersion=7.7.0
 NpmPublishTag=latest
