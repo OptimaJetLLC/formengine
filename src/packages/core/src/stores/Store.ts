@@ -313,7 +313,7 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
         this, deferFieldCalculation)
     }
 
-    if (!isTemplateType(model.type)) {
+    if (model.kind !== 'template') {
       return new SimpleField(componentData, calculateValue, createDataValidator, getInitialData, deferFieldCalculation)
     }
 

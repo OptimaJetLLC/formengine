@@ -4,8 +4,11 @@ import {render} from '@testing-library/react'
 
 const view = createView(allComponentsViewer)
 
-export const renderForm = (form: object, props?: Partial<FormViewerProps>) => {
-  const getForm = () => JSON.stringify(form)
+export const renderForm = (form: object | string, props?: Partial<FormViewerProps>) => {
+  const getForm = () => {
+    return typeof form === 'string' ? form : JSON.stringify(form)
+  }
+
   const viewerRef: FormViewerProps['viewerRef'] = {current: null}
 
   const result = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} {...props}/>)

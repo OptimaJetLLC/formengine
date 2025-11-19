@@ -208,7 +208,7 @@ the [ActionData](../type-aliases/ActionData.md).
 
 ### clone()
 
-> `static` **clone**(`store`): `any`
+> `static` **clone**(`store`): `ComponentStore`
 
 Returns a clone of the specified component settings.
 
@@ -222,7 +222,7 @@ the component settings.
 
 #### Returns
 
-`any`
+`ComponentStore`
 
 the clone of the specified component settings.
 

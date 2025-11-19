@@ -13,6 +13,7 @@ import {DateInput} from './DateInput'
 import {DisableDataBindingInput} from './DisableDataBindingInput'
 import {EventEditor} from './EventEditor'
 import {FormComponentPicker} from './FormComponentPicker'
+import {FormNamePicker} from './FormNamePicker'
 import {FunctionEditorInput} from './FunctionEditorInput'
 import {KeyInput} from './KeyInput'
 import {ModalPropertiesEditor} from './ModalPropertiesEditor'
@@ -60,4 +61,5 @@ export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>>
   node: NodeInput,
   formComponent: FormComponentPicker,
   componentType: ComponentTypePicker,
+  formNamePicker: FormNamePicker,
 }

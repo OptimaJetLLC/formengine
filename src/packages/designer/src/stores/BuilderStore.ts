@@ -19,7 +19,10 @@ import {
   cfHideFromComponentPalette,
   ComponentStore,
   debounce,
+  embeddedFormModel,
+  getTemplateName,
   isContainer,
+  isTemplateType,
   isUndefined,
   namedObserver,
   nameObservable,
@@ -716,6 +719,13 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     }
 
     const clone = ComponentStore.clone(source.store)
+
+    // converting a Template component to an EmbeddedForm component
+    if (isTemplateType(clone.type)) {
+      clone.props ??= {}
+      clone.props.formName = {value: getTemplateName(clone.type)}
+      clone.type = embeddedFormModel.type
+    }
 
     const componentData = this.viewer.createComponentData(clone)
 

@@ -923,6 +923,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/interfaces/EmbeddedFormProps",
+              label: "EmbeddedFormProps"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/interfaces/ErrorWrapperProps",
               label: "ErrorWrapperProps"
             },
@@ -1745,6 +1750,16 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/embeddedFormMeta",
+              label: "embeddedFormMeta"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/embeddedFormModel",
+              label: "embeddedFormModel"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/variables/emotionCache",
               label: "emotionCache"
             },
@@ -2051,6 +2066,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/getTemplateName",
+              label: "getTemplateName"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/getValidatorPropertyBlockType",
               label: "getValidatorPropertyBlockType"
             },
@@ -2118,6 +2138,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/functions/isString",
               label: "isString"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/isTemplateType",
+              label: "isTemplateType"
             },
             {
               type: "doc",
