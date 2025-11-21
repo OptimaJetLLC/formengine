@@ -28,7 +28,7 @@
     "@react-form-builder/indexed-db-form-storage": "^7.7.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "rsuite": "5.83.3"
+    "rsuite": "5.83.4"
   },
   "devDependencies": {
     "@types/react": "^19.0.10",
