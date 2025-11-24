@@ -73,7 +73,7 @@ export const rsUploader = define(RsUploader, 'RsUploader')
   .category(fieldsCategory)
   .props({
     label: string,
-    action: string.required.default('/'),
+    action: string.default('/'),
     accept: string,
     autoUpload: boolean.default(true),
     customElement: boolean.default(false),
