@@ -10,6 +10,8 @@
     "ignoreUnknown": false,
     "includes": [
       "**/*.{js,jsx,json,css,md}",
+      "src/packages/views/rsuite/config/**/*",
+      "src/packages/views/rsuite/vite.config.ts",
       "!**/rsuite-no-reset*.css",
       "!**/formengine-rsuite.css"
     ]

@@ -1,6 +1,9 @@
-import {execSync} from 'child_process'
+import {execSync} from 'node:child_process'
 
-const buffer = execSync('npx ts-prune | grep -v -e "(used in module)" -e "index.ts" -e ".config.ts" -e "view.ts" || echo OK')
+const patterns = ['index.ts', '.config.ts', 'view.ts', 'packages/.*/config/']
+const grepArgs = patterns.map(pattern => `-e "${pattern.toString()}"`).join(' ')
+
+const buffer = execSync(`npx ts-prune | grep -v -e "(used in module)" ${grepArgs} || echo OK`)
 
 const errors = buffer.toString()
 
