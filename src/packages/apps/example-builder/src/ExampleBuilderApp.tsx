@@ -12,6 +12,7 @@ import {
 } from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent, signatureComponentsDescriptions} from '@react-form-builder/components-signature'
+import {uploaderComponent, uploaderComponentsDescriptions} from '@react-form-builder/components-uploader'
 import type {Arguments, ComponentStore, FormValidators, FormViewerProps, IFormData, IFormViewer, Validators} from '@react-form-builder/core'
 import {ActionDefinition, BiDi, definePreset, isUndefined, Language} from '@react-form-builder/core'
 import type {FormBuilderI18n, FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
@@ -90,7 +91,7 @@ const presets = initialPresets.map(preset => {
 
 const components = [...rSuiteComponents, ...antdComponents, ...presets,
   throwErrorComponent, fastQrComponent, richTextComponent, googleMapComponent, signatureComponent, debugData,
-  ...rSuiteTableComponents, notRemovable]
+  ...rSuiteTableComponents, notRemovable, uploaderComponent]
   .map(definer => definer.build())
 
 const view = new BuilderView(components)
@@ -106,6 +107,7 @@ const view = new BuilderView(components)
   .withComponentLibraryDescription(signatureComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteComponentsDescriptions)
+  .withComponentLibraryDescription(uploaderComponentsDescriptions)
 
 function localizer(componentStore: ComponentStore, language: Language): Record<string, any> {
   return componentStore.key === 'comment'

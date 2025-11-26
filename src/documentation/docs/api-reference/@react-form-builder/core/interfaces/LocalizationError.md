@@ -8,6 +8,16 @@ Localization error class.
 
 ## Properties
 
+### cause?
+
+> `optional` **cause**: `unknown`
+
+#### Inherited from
+
+`Error.cause`
+
+***
+
 ### message
 
 > **message**: `string`

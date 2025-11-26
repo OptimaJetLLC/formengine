@@ -145,6 +145,7 @@ function translateComponentsDescriptions() {
     '../../src/packages/views/rsuite/src/i18n',
     '../../src/packages/views/rsuite-table/src/i18n',
     '../../src/packages/views/signature/src/i18n',
+    '../../src/packages/views/uploader/src/i18n',
     '../../src/packages/core/src/i18n',
   ]
 

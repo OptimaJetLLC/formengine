@@ -21,6 +21,7 @@
     "@react-form-builder/components-google-map": "^7.7.0",
     "@react-form-builder/components-rich-text": "^7.7.0",
     "@react-form-builder/components-rsuite": "^7.7.0",
+    "@react-form-builder/components-uploader": "^7.7.0",
     "@react-form-builder/components-rsuite-table": "^7.7.0",
     "@react-form-builder/components-signature": "^7.7.0",
     "@react-form-builder/core": "^7.7.0",

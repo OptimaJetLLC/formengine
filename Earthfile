@@ -83,7 +83,7 @@ npm-check-tsc:
 prepare-npm-archives:
   FROM +sources
   RUN apt-get update && apt-get -y install jq
-  LET packagesToArchive = 'packages/core packages/designer packages/designer-bundle packages/viewer-bundle packages/viewer-bundle-premium packages/views/rsuite packages/views/fast-qr packages/views/rich-text packages/views/google-map packages/views/signature packages/views/rsuite-table'
+  LET packagesToArchive = 'packages/core packages/designer packages/designer-bundle packages/viewer-bundle packages/viewer-bundle-premium packages/views/rsuite packages/views/fast-qr packages/views/rich-text packages/views/google-map packages/views/uploader packages/views/signature packages/views/rsuite-table'
   LET archiveName = ''
   FOR package IN $packagesToArchive
     RUN cd $package && npm run bundle
@@ -115,6 +115,7 @@ prepare-github-formengine-archive:
   COPY --dir BuildScripts/includes/github-optimajet-formengine/ github-formengine
   COPY --dir src/packages/core github-formengine/community/src/packages/core
   COPY --dir src/packages/views/rsuite github-formengine/community/src/packages/views/rsuite
+  COPY --dir src/packages/views/uploader github-formengine/community/src/packages/views/uploader
   COPY --dir src/packages/viewer-bundle github-formengine/community/src/packages/viewer-bundle
   COPY --dir src/packages/apps/example-viewer github-formengine/community/src/packages/apps/example-viewer
   COPY --dir examples/community github-formengine/community/examples
@@ -155,6 +156,7 @@ prepare-github-formenginesupport-archive:
   COPY --dir src/packages/views/fast-qr $dst/packages/views/fast-qr
   COPY --dir src/packages/views/rich-text $dst/packages/views/rich-text
   COPY --dir src/packages/views/google-map $dst/packages/views/google-map
+  COPY --dir src/packages/views/uploader $dst/packages/views/uploader
 
   COPY src/lerna.json $dst/
   COPY src/LICENSE.md $dst/
@@ -419,6 +421,7 @@ PUBLISH_RELEASE_TO_NPM:
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rich-text"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-signature"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-google-map"
+  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-uploader"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-designer-bundle"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-viewer-bundle"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-viewer-bundle-premium"
@@ -477,6 +480,7 @@ dependencies:
    src/packages/views/fast-qr \
    src/packages/views/rich-text \
    src/packages/views/google-map \
+   src/packages/views/uploader \
    src/tests src/tests/common src/tests/module src/tests/component src/tests/react-17 src/tests/react-18 src/tests/react-19 \
    src/tests/e2e
 
@@ -504,6 +508,7 @@ dependencies:
   COPY src/packages/views/fast-qr/package.json src/packages/views/fast-qr
   COPY src/packages/views/rich-text/package.json src/packages/views/rich-text
   COPY src/packages/views/google-map/package.json src/packages/views/google-map
+  COPY src/packages/views/uploader/package.json src/packages/views/uploader
 
   COPY src/tests/component/package.json src/tests/component
   COPY src/tests/common/package.json src/tests/common

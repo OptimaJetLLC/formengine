@@ -673,6 +673,74 @@ const typedocSidebar = {
     },
     {
       type: "category",
+      label: "@react-form-builder/components-uploader",
+      items: [
+        {
+          type: "category",
+          label: "Interfaces",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-uploader/interfaces/FileType",
+              label: "FileType"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-uploader/interfaces/UploaderProps",
+              label: "UploaderProps"
+            }
+          ]
+        },
+        {
+          type: "category",
+          label: "Type Aliases",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-uploader/type-aliases/OnError",
+              label: "OnError"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-uploader/type-aliases/OnSuccess",
+              label: "OnSuccess"
+            }
+          ]
+        },
+        {
+          type: "category",
+          label: "Variables",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-uploader/variables/uploaderComponent",
+              label: "uploaderComponent"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-uploader/variables/uploaderComponentsDescriptions",
+              label: "uploaderComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-uploader/variables/uploaderEnUsComponentsDescriptions",
+              label: "uploaderEnUsComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-uploader/variables/uploaderModel",
+              label: "uploaderModel"
+            }
+          ]
+        }
+      ],
+      link: {
+        type: "doc",
+        id: "api-reference/@react-form-builder/components-uploader/index"
+      }
+    },
+    {
+      type: "category",
       label: "@react-form-builder/core",
       items: [
         {

@@ -1,11 +1,13 @@
 import agreement from '../../forms/agreement.json'
 import SampleForm from '../../forms/SampleForm.json'
 import template from '../../forms/template.json'
+import uploader from '../../forms/uploader.json'
 
 const forms: Record<string, any> = {
   SampleForm,
   template,
-  agreement
+  agreement,
+  uploader
 }
 
 export const initialForms: Record<string, string> = {}

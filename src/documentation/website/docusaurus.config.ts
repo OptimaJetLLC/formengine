@@ -18,6 +18,7 @@ const docusaurusPluginTypedocConfig = [
       '../../packages/views/google-map',
       '../../packages/views/rsuite',
       '../../packages/views/signature',
+      '../../packages/views/uploader'
     ],
     entryPointStrategy: 'packages',
     tsconfig: '../../tsconfig.json',

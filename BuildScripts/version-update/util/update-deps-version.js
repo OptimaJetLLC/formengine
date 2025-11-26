@@ -26,8 +26,9 @@ const packageList = [
   'src/packages/views/google-map',
   'src/packages/views/rich-text',
   'src/packages/views/rsuite-table',
-
   'src/packages/views/signature',
+  'src/packages/views/uploader',
+
   'examples/community/formdata',
   'examples/premium/formengine',
   'examples/premium/with-formik',
