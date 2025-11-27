@@ -2,7 +2,6 @@ import {fileURLToPath} from 'url'
 import path from 'path'
 import fs from 'fs'
 import {execSync} from 'child_process'
-import fse from 'fs-extra'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -28,7 +27,7 @@ function copyFiles() {
   const dirName = 'dist'
   const srcDir = path.join(sourceDir, dirName)
   const destDir = path.join(tempDir, dirName)
-  fse.copySync(srcDir, destDir, {overwrite: true})
+  fs.cpSync(srcDir, destDir, {recursive: true})
 }
 
 function patchPackageJson() {
