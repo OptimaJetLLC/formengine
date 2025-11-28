@@ -1,7 +1,9 @@
 import react from '@vitejs/plugin-react-swc'
 import path from 'path'
+import type {ModuleFormat} from 'rollup'
 // @ts-ignore
 import {fileURLToPath} from 'url'
+import type {LibraryFormats} from 'vite'
 import {defineConfig} from 'vite'
 import cp from 'vite-plugin-cp'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
@@ -12,7 +14,7 @@ import base from '../../vite.config'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-export default defineConfig(({command}) => ({
+export default defineConfig(() => ({
   ...base,
   // with this setting only the production version of React will be included in the bundle
   define: {'process.env.NODE_ENV': '"production"'},
@@ -20,8 +22,8 @@ export default defineConfig(({command}) => ({
     cssCodeSplit: false,
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      formats: ['umd', 'iife'],
-      fileName: format => `index.${format}.js`,
+      formats: ['umd', 'iife'] satisfies LibraryFormats[],
+      fileName: (format: ModuleFormat) => `index.${format}.js`,
       name: 'FormEngineDesignerBundle',
     },
     rollupOptions: {

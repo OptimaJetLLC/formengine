@@ -1,6 +1,8 @@
 import {normalize, resolve} from 'node:path'
+import type {ModuleFormat, OutputOptions} from 'rollup'
 // @ts-ignore
 import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle'
+import type {LibraryFormats} from 'vite'
 import {defineConfig} from 'vite'
 import dts from 'vite-plugin-dts'
 import base from '../../../vite.config'
@@ -34,7 +36,7 @@ if (missingInEntry.length > 0) {
   process.exit(1)
 }
 
-export default defineConfig(({command}) => ({
+export default defineConfig(() => ({
   ...base,
   // publicDir: false, // do not copy static files
   plugins: [dts({rollupTypes: true, tsconfigPath: './bundle.tsconfig.json'})],
@@ -43,8 +45,8 @@ export default defineConfig(({command}) => ({
     assetsInlineLimit: 0, // don't inline
     lib: {
       entry,
-      formats: ['es'],
-      fileName: (_format, entryName) => {
+      formats: ['es'] satisfies LibraryFormats[],
+      fileName: (_: ModuleFormat, entryName: string): string => {
         if (entryName === 'index') {
           return 'index.js'
         }
@@ -54,7 +56,7 @@ export default defineConfig(({command}) => ({
     rollupOptions: {
       plugins: [excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})],
       output: {
-        exports: 'named',
+        exports: 'named' as const satisfies OutputOptions['exports'],
       },
     },
   },
