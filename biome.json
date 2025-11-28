@@ -13,7 +13,12 @@
       "src/packages/views/rsuite/config/**/*",
       "src/packages/views/rsuite/vite.config.ts",
       "!**/rsuite-no-reset*.css",
-      "!**/formengine-rsuite.css"
+      "!**/formengine-rsuite.css",
+      "src/packages/apps/**/*.{ts,tsx}",
+      "src/packages/designer-bundle/**/*.{ts,tsx}",
+      "src/packages/indexed-db-form-storage/**/*.{ts,tsx}",
+      "src/packages/viewer-bundle/**/*.{ts,tsx}",
+      "src/packages/viewer-bundle-premium/**/*.{ts,tsx}"
     ]
   },
   "formatter": {

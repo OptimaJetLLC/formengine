@@ -7,7 +7,7 @@ import {
   RsLocalizationWrapper,
   rSuiteComponents,
   rSuiteComponentsDescriptions,
-  rtlCssLoader
+  rtlCssLoader,
 } from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent, signatureComponentsDescriptions} from '@react-form-builder/components-signature'
@@ -21,9 +21,14 @@ import config from './utils/config.json'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
 import {generatedLicenseKey} from './utils/license'
 
-const components = [...rSuiteComponents, fastQrComponent, richTextComponent, googleMapComponent, signatureComponent,
-  ...rSuiteTableComponents]
-  .map(definer => definer.build())
+const components = [
+  ...rSuiteComponents,
+  fastQrComponent,
+  richTextComponent,
+  googleMapComponent,
+  signatureComponent,
+  ...rSuiteTableComponents,
+].map(definer => definer.build())
 
 const view = new BuilderView(components)
   .withViewerWrapper(RsLocalizationWrapper)
@@ -40,9 +45,7 @@ const view = new BuilderView(components)
 const sampleFormName = 'SampleForm'
 
 const indexedDbExists = !!globalThis.indexedDB
-const formStorage = indexedDbExists
-  ? new IndexedDbFormStorage('demo-db', 'demo-store')
-  : undefined
+const formStorage = indexedDbExists ? new IndexedDbFormStorage('demo-db', 'demo-store') : undefined
 
 async function getForm(name?: string): Promise<string> {
   if (!formStorage) throw new Error('IndexedDB not supported')
@@ -74,9 +77,7 @@ const initDatabase = async (dbFormStorage: IndexedDbFormStorage) => {
   return await dbFormStorage.init(initialForms)
 }
 
-const presetStorage = indexedDbExists
-  ? new IndexedDbPresetStorage('demo-presets-db', 'presets')
-  : undefined
+const presetStorage = indexedDbExists ? new IndexedDbPresetStorage('demo-presets-db', 'presets') : undefined
 
 const getPresetOptions = (): IPresetComponentOptions | undefined => {
   if (!indexedDbExists) return undefined
@@ -113,7 +114,8 @@ const RawFormBuilderApp = () => {
     const iFormBuilder = builderRef.current
     if (!iFormBuilder) return
 
-    navigator.clipboard.readText()
+    navigator.clipboard
+      .readText()
       .then(text => {
         iFormBuilder.parseForm(text)
       })
@@ -125,34 +127,44 @@ const RawFormBuilderApp = () => {
     if (!iFormBuilder) return
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(iFormBuilder.formAsString)
-        .catch(console.error)
+      navigator.clipboard.writeText(iFormBuilder.formAsString).catch(console.error)
     }
   }, [])
 
-  const customization: CustomizationMap = useMemo(() => ({
-    CentralPanel: {
-      customRenderer: (defaultElement) => {
-        return <div style={rootDivCentralPanelStyle}>
-          <div style={buttonDivStyle}>
-            <ButtonGroup>
-              <Button appearance={'ghost'} onClick={copyFormToClipboard}>Copy form&#39;s JSON</Button>
-              <Button appearance={'ghost'} onClick={pasteFormFromClipboard}>Paste form&#39;s JSON</Button>
-            </ButtonGroup>
-          </div>
-          {defaultElement}
-        </div>
-      }
-    },
-    Header_Toolbar: {
-      customRenderer: (defaultElement) => {
-        return <div>
-          {defaultElement}
-          <span style={versionStyle}>{config.version}</span>
-        </div>
-      }
-    }
-  }), [copyFormToClipboard, pasteFormFromClipboard])
+  const customization: CustomizationMap = useMemo(
+    () => ({
+      CentralPanel: {
+        customRenderer: defaultElement => {
+          return (
+            <div style={rootDivCentralPanelStyle}>
+              <div style={buttonDivStyle}>
+                <ButtonGroup>
+                  <Button appearance={'ghost'} onClick={copyFormToClipboard}>
+                    Copy form&#39;s JSON
+                  </Button>
+                  <Button appearance={'ghost'} onClick={pasteFormFromClipboard}>
+                    Paste form&#39;s JSON
+                  </Button>
+                </ButtonGroup>
+              </div>
+              {defaultElement}
+            </div>
+          )
+        },
+      },
+      Header_Toolbar: {
+        customRenderer: defaultElement => {
+          return (
+            <div>
+              {defaultElement}
+              <span style={versionStyle}>{config.version}</span>
+            </div>
+          )
+        },
+      },
+    }),
+    [copyFormToClipboard, pasteFormFromClipboard]
+  )
 
   useEffect(() => {
     async function initDb() {
@@ -175,16 +187,18 @@ const RawFormBuilderApp = () => {
 
   if (!indexedDbInitialized) return null
 
-  return <FormBuilder
-    licenseKey={generatedLicenseKey}
-    getForm={getFormFn}
-    formName={sampleFormName}
-    view={view}
-    formStorage={formStorage}
-    presetComponentOptions={presetOptions}
-    customization={customization}
-    builderRef={setRef}
-  />
+  return (
+    <FormBuilder
+      licenseKey={generatedLicenseKey}
+      getForm={getFormFn}
+      formName={sampleFormName}
+      view={view}
+      formStorage={formStorage}
+      presetComponentOptions={presetOptions}
+      customization={customization}
+      builderRef={setRef}
+    />
+  )
 }
 
 export const FormBuilderApp = namedObserver('FormBuilderApp', RawFormBuilderApp)

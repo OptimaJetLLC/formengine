@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 export default defineConfig(({command}) => {
-  return ({
+  return {
     ...base,
     // with this setting only the production version of React will be included in the bundle
     define: {'process.env.NODE_ENV': '"production"'},
@@ -24,16 +24,18 @@ export default defineConfig(({command}) => {
       rollupOptions: {
         plugins: [
           cp({
-            targets: [{
-              src: '../views/rsuite/public/css/*.*',
-              dest: 'dist'
-            }]
+            targets: [
+              {
+                src: '../views/rsuite/public/css/*.*',
+                dest: 'dist',
+              },
+            ],
           }),
-        ]
+        ],
       },
     },
     resolve: {
       dedupe: ['react', 'react-dom', 'react-is'],
     },
-  })
+  }
 })

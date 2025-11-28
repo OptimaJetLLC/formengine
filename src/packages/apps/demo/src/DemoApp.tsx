@@ -7,7 +7,7 @@ import {
   RsLocalizationWrapper,
   rSuiteComponents,
   rSuiteComponentsDescriptions,
-  rtlCssLoader
+  rtlCssLoader,
 } from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent, signatureComponentsDescriptions} from '@react-form-builder/components-signature'
@@ -31,9 +31,14 @@ const initialData = {
   ['last name']: 'Bret',
 }
 
-const components = [...rSuiteComponents, fastQrComponent, richTextComponent, googleMapComponent, signatureComponent,
-  ...rSuiteTableComponents]
-  .map(definer => definer.build())
+const components = [
+  ...rSuiteComponents,
+  fastQrComponent,
+  richTextComponent,
+  googleMapComponent,
+  signatureComponent,
+  ...rSuiteTableComponents,
+].map(definer => definer.build())
 
 const view = new BuilderView(components)
   .withViewerWrapper(RsLocalizationWrapper)
@@ -50,9 +55,7 @@ const view = new BuilderView(components)
 const sampleFormName = 'SampleForm'
 
 const indexedDbExists = !!globalThis.indexedDB
-const formStorage = indexedDbExists
-  ? new IndexedDbFormStorage('demo-db', 'demo-store')
-  : undefined
+const formStorage = indexedDbExists ? new IndexedDbFormStorage('demo-db', 'demo-store') : undefined
 
 async function getForm(name?: string): Promise<string> {
   if (!formStorage) throw new Error('IndexedDB not supported')
@@ -84,9 +87,7 @@ const initDatabase = async (dbFormStorage: IndexedDbFormStorage) => {
   return await dbFormStorage.init(initialForms)
 }
 
-const presetStorage = indexedDbExists
-  ? new IndexedDbPresetStorage('demo-presets-db', 'presets')
-  : undefined
+const presetStorage = indexedDbExists ? new IndexedDbPresetStorage('demo-presets-db', 'presets') : undefined
 
 const getPresetOptions = (): IPresetComponentOptions | undefined => {
   if (!indexedDbExists) return undefined
@@ -108,13 +109,15 @@ const versionStyle = {
 
 const customization: CustomizationMap = {
   Header_Toolbar: {
-    customRenderer: (defaultElement) => {
-      return <div>
-        {defaultElement}
-        <span style={versionStyle}>{config.version}</span>
-      </div>
-    }
-  }
+    customRenderer: defaultElement => {
+      return (
+        <div>
+          {defaultElement}
+          <span style={versionStyle}>{config.version}</span>
+        </div>
+      )
+    },
+  },
 }
 
 const FormBuilderApp = observer(() => {
@@ -142,21 +145,23 @@ const FormBuilderApp = observer(() => {
 
   if (!indexedDbInitialized) return null
 
-  return <FormBuilder
-    licenseKey={generatedLicenseKey}
-    getForm={getFormFn}
-    formName={sampleFormName}
-    view={view}
-    initialData={initialData}
-    formStorage={formStorage}
-    presetComponentOptions={presetOptions}
-    customization={customization}
-  />
+  return (
+    <FormBuilder
+      licenseKey={generatedLicenseKey}
+      getForm={getFormFn}
+      formName={sampleFormName}
+      view={view}
+      initialData={initialData}
+      formStorage={formStorage}
+      presetComponentOptions={presetOptions}
+      customization={customization}
+    />
+  )
 })
 
 /**
  * @returns the main application component.
  */
-const DemoApp = () => <FormBuilderApp/>
+const DemoApp = () => <FormBuilderApp />
 
 export default DemoApp

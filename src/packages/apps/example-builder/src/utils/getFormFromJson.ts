@@ -7,13 +7,12 @@ const forms: Record<string, any> = {
   SampleForm,
   template,
   agreement,
-  uploader
+  uploader,
 }
 
 export const initialForms: Record<string, string> = {}
 
-Object.entries(forms)
-  .forEach(([key, value]) => initialForms[key] = JSON.stringify(value))
+Object.entries(forms).forEach(([key, value]) => (initialForms[key] = JSON.stringify(value)))
 
 /**
  * Returns the form from json.

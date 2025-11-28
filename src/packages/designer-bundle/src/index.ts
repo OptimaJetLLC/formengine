@@ -10,7 +10,7 @@ import {
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponentsDescriptions,
-  rtlCssLoader
+  rtlCssLoader,
 } from '@react-form-builder/components-rsuite'
 import * as rSuiteTableComponents from '@react-form-builder/components-rsuite-table'
 import {rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
@@ -42,21 +42,23 @@ const components = [
 export function renderFormBuilderTo(container: HTMLElement, props: Partial<FormBuilderProps>) {
   const root = createRoot(container)
 
-  const view = props.view ?? new BuilderView(components)
-    .withViewerWrapper(RsLocalizationWrapper)
-    .withCssLoader(BiDi.LTR, ltrCssLoader)
-    .withCssLoader(BiDi.RTL, rtlCssLoader)
-    .withCssLoader('common', formEngineRsuiteCssLoader)
-    .withComponentLibraryDescription(fastQrComponentsDescriptions)
-    .withComponentLibraryDescription(googleMapComponentsDescriptions)
-    .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
-    .withComponentLibraryDescription(signatureComponentsDescriptions)
-    .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
-    .withComponentLibraryDescription(rSuiteComponentsDescriptions)
+  const view =
+    props.view ??
+    new BuilderView(components)
+      .withViewerWrapper(RsLocalizationWrapper)
+      .withCssLoader(BiDi.LTR, ltrCssLoader)
+      .withCssLoader(BiDi.RTL, rtlCssLoader)
+      .withCssLoader('common', formEngineRsuiteCssLoader)
+      .withComponentLibraryDescription(fastQrComponentsDescriptions)
+      .withComponentLibraryDescription(googleMapComponentsDescriptions)
+      .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
+      .withComponentLibraryDescription(signatureComponentsDescriptions)
+      .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
+      .withComponentLibraryDescription(rSuiteComponentsDescriptions)
 
   const formBuilderProps: FormBuilderProps = {
     ...props,
-    view
+    view,
   }
 
   root.render(createElement(FormBuilder, formBuilderProps, null))

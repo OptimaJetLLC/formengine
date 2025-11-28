@@ -5,7 +5,7 @@ import {Button} from 'rsuite'
 
 const toggleLabels = {
   builder: 'EditMode',
-  viewer: 'PreviewMode'
+  viewer: 'PreviewMode',
 }
 
 const CustomToggleModeButton = () => {
@@ -28,7 +28,7 @@ export const simpleCustomization: CustomizationMap = {
       #menuitem-\\:r5\\: {
         display: none;
       }
-    `
+    `,
   },
   Header: {
     className: 'MyClassName',
@@ -36,26 +36,28 @@ export const simpleCustomization: CustomizationMap = {
       backgroundColor: 'lightblue',
       borderRadius: '0 0 10px 10px',
       marginInline: 10,
-      marginBottom: 10
-    }
+      marginBottom: 10,
+    },
   },
   Header_Toolbar: {
     customRenderer: defaultElement => {
       const button = <button className={'rs-btn rs-btn-sm'}>My button</button>
 
-      return <div style={toolbarStyle}>
-        {defaultElement}
-        {button}
-      </div>
-    }
+      return (
+        <div style={toolbarStyle}>
+          {defaultElement}
+          {button}
+        </div>
+      )
+    },
   },
   ToggleModeButton: {
-    customRenderer: () => <CustomToggleModeButton/>
+    customRenderer: () => <CustomToggleModeButton />,
   },
   LocalizationSelect: {
-    hidden: true
+    hidden: true,
   },
   JsonViewButton: {
-    hidden: true
-  }
+    hidden: true,
+  },
 }

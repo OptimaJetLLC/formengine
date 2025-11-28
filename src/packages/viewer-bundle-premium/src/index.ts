@@ -29,15 +29,17 @@ const models = [
 export function renderFormViewerTo(container: HTMLElement, props: Partial<FormViewerProps>) {
   const root = createRoot(container)
 
-  const view = props.view ?? createView(models)
-    .withViewerWrapper(RsLocalizationWrapper)
-    .withCssLoader(BiDi.LTR, ltrCssLoader)
-    .withCssLoader(BiDi.RTL, rtlCssLoader)
-    .withCssLoader('common', formEngineRsuiteCssLoader)
+  const view =
+    props.view ??
+    createView(models)
+      .withViewerWrapper(RsLocalizationWrapper)
+      .withCssLoader(BiDi.LTR, ltrCssLoader)
+      .withCssLoader(BiDi.RTL, rtlCssLoader)
+      .withCssLoader('common', formEngineRsuiteCssLoader)
 
   const formViewerProps: FormViewerProps = {
     ...props,
-    view
+    view,
   }
 
   root.render(createElement(FormViewer, formViewerProps, null))

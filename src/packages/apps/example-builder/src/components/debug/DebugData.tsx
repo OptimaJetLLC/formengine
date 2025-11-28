@@ -6,20 +6,16 @@ const iconStyle = {width: 24, height: 24}
 
 const DebugDataIcon = () => (
   <svg style={iconStyle} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M7 8 L4 12 L7 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-    <line x1="14" y1="8" x2="10" y2="16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-    <path d="M17 8 L20 12 L17 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M7 8 L4 12 L7 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <line x1="14" y1="8" x2="10" y2="16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <path d="M17 8 L20 12 L17 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
   </svg>
 )
 
 function highlightJson(json: string) {
-  const escapeHTML = (str: string) => str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
+  const escapeHTML = (str: string) => str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
-  const processString = (str: string) =>
-    `<span class="string">"${escapeHTML(str)}"</span>`
+  const processString = (str: string) => `<span class="string">"${escapeHTML(str)}"</span>`
 
   const processValue = (value: any, indent = 0) => {
     const indentStr = '  '.repeat(indent)
@@ -83,10 +79,7 @@ const DebugData = () => {
     return {__html: html}
   }, [componentData.dataRoot.data])
 
-  return <div className="json-container" dangerouslySetInnerHTML={innerHtml}/>
+  return <div className="json-container" dangerouslySetInnerHTML={innerHtml} />
 }
 
-export const debugData = define(DebugData, 'DebugData')
-  .name('Debug data')
-  .category('Debug')
-  .icon(DebugDataIcon)
+export const debugData = define(DebugData, 'DebugData').name('Debug data').category('Debug').icon(DebugDataIcon)

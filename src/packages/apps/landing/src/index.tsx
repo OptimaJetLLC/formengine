@@ -9,8 +9,4 @@ const root = createRoot(container)
 
 const designer = true
 
-root.render(
-  <React.StrictMode>
-    {designer ? <Designer/> : <LandingApp/>}
-  </React.StrictMode>
-)
+root.render(<React.StrictMode>{designer ? <Designer /> : <LandingApp />}</React.StrictMode>)

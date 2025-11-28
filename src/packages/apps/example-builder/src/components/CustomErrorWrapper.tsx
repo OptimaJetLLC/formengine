@@ -20,8 +20,10 @@ const spanStyle: CSSProperties = {
  * @returns the React element.
  */
 export const CustomErrorWrapper = (props: ErrorWrapperProps) => {
-  return <div className={props.className} style={divStyle}>
-    {props.children}
-    {!!props.error && <span style={spanStyle}>{props.error}</span>}
-  </div>
+  return (
+    <div className={props.className} style={divStyle}>
+      {props.children}
+      {!!props.error && <span style={spanStyle}>{props.error}</span>}
+    </div>
+  )
 }

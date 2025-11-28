@@ -18,9 +18,7 @@ export default defineConfig(({command}) => ({
       formats: ['es'],
     },
     rollupOptions: {
-      plugins: [
-        excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})
-      ]
-    }
+      plugins: [excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})],
+    },
   },
 }))

@@ -30,19 +30,19 @@ export default defineConfig(({command}) => ({
           targets: [
             {
               src: '../views/rsuite/public/css/*.*',
-              dest: 'dist'
-            }
-          ]
+              dest: 'dist',
+            },
+          ],
         }),
-      ]
-    }
+      ],
+    },
   },
   plugins: [
     react({jsxImportSource: '@emotion/react'}),
     svgr({
-      include: '**/*.svg'
+      include: '**/*.svg',
     }),
-    cssInjectedByJsPlugin()
+    cssInjectedByJsPlugin(),
   ],
   resolve: {
     dedupe: ['react', 'react-dom', 'react-is'],

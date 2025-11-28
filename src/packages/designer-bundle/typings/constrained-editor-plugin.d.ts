@@ -1,6 +1,5 @@
 // https://constrained-editor-plugin.vercel.app/docs/TypeDefinitions/available-type-definitions
 declare module 'constrained-editor-plugin' {
-
   // eslint-disable-next-line import/no-extraneous-dependencies
   import type {Monaco} from '@monaco-editor/react'
   // eslint-disable-next-line import/no-extraneous-dependencies
@@ -18,7 +17,7 @@ declare module 'constrained-editor-plugin' {
     /**
      * true if the content to be edited is on the end line of the range, false otherwise.
      */
-    endLineOfRange: boolean,
+    endLineOfRange: boolean
     /**
      * true if the content to be edited is on the start line of the range, false otherwise.
      */
@@ -106,7 +105,6 @@ declare module 'constrained-editor-plugin' {
    * Constrained Editor Plugin instance.
    */
   export type ConstrainedInstance = {
-
     /**
      * This API is used to add the necessary functions to monaco editor instance to facilitate the constraints.
      * @param editor the monaco editor instance.
@@ -150,15 +148,16 @@ declare module 'constrained-editor-plugin' {
   /**
    * Callback function for the 'onDidChangeContentInEditableRange' method.
    */
-  export type OnDidChangeContentInEditableRangeCallback = (currentlyChangedContent: ValueInEditableRanges,
-                                                           allValuesInEditableRanges: ValueInEditableRanges,
-                                                           currentEditableRangeObject: EditableRangeObject) => void
+  export type OnDidChangeContentInEditableRangeCallback = (
+    currentlyChangedContent: ValueInEditableRanges,
+    allValuesInEditableRanges: ValueInEditableRanges,
+    currentEditableRangeObject: EditableRangeObject
+  ) => void
 
   /**
    * Constrained Editor Plugin model.
    */
   export type ConstrainedEditorModel = {
-
     /**
      * This method will give the current value of the editable ranges.
      */

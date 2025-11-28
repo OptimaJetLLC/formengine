@@ -10,6 +10,6 @@ const root = createRoot(container)
 
 root.render(
   <React.StrictMode>
-    <ExampleBuilderApp/>
+    <ExampleBuilderApp />
   </React.StrictMode>
 )

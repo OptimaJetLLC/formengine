@@ -25,7 +25,7 @@ self.MonacoEnvironment = {
       default:
         return new DefaultWorker()
     }
-  }
+  },
 }
 
 loader.config({monaco})

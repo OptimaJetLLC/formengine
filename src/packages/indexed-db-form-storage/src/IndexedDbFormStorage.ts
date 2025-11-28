@@ -39,7 +39,7 @@ export class IndexedDbFormStorage implements IFormStorage {
    * @inheritDoc
    */
   async getForm(formName?: string) {
-    if (!formName) throw new Error('The formName is not defined')    
+    if (!formName) throw new Error('The formName is not defined')
     const formValue = await kvGet(formName, this.#customStore)
     if (!formValue) throw new Error(`Cannot find form '${formName}'`)
     return formValue

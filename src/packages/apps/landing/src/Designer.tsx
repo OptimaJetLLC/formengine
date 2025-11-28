@@ -5,5 +5,5 @@ import {FormBuilder} from '@react-form-builder/designer'
  * @returns the Designer element.
  */
 export const Designer = () => {
-  return <FormBuilder view={builderViewWithCss}/>
+  return <FormBuilder view={builderViewWithCss} />
 }

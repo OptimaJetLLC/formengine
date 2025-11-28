@@ -3,7 +3,7 @@ import {
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
-  rtlCssLoader
+  rtlCssLoader,
 } from '@react-form-builder/components-rsuite'
 import type {ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
 import {ActionDefinition, BiDi} from '@react-form-builder/core'
@@ -28,32 +28,32 @@ const formStorage: IFormStorage | undefined = undefined
 
 // You can define custom validators for form fields
 const customValidators: Validators = {
-  'string': {
-    'isHex': {
-      validate: value => /^[0-9A-F]*$/i.test(value)
+  string: {
+    isHex: {
+      validate: value => /^[0-9A-F]*$/i.test(value),
     },
-    'isHappy': {
+    isHappy: {
       params: [],
-      validate: value => value === 'Happy'
+      validate: value => value === 'Happy',
     },
-    'equals': {
+    equals: {
       params: [
         {key: 'value', type: 'string', required: false, default: 'Ring'},
-        {key: 'message', type: 'string', required: false, default: 'Value must be equals to '}
+        {key: 'message', type: 'string', required: false, default: 'Value must be equals to '},
       ],
       validate: (value, _, args) => {
         const errorMessage = args?.['message'] as string
         const checkedValue = args?.['value'] as string
         const errorResult = errorMessage ? errorMessage + checkedValue : false
         return value !== args?.['value'] ? errorResult : true
-      }
-    }
+      },
+    },
   },
-  'number': {},
-  'boolean': {
-    'onlyTrue': {
-      validate: value => value === true
-    }
+  number: {},
+  boolean: {
+    onlyTrue: {
+      validate: value => value === true,
+    },
   },
 }
 
@@ -175,7 +175,7 @@ async function getFormFn(name?: string) {
  */
 export const Designer = () => {
   const ref = useRef<IFormViewer>(null)
-  const initialEmptyData = useMemo(() => ({} as Record<string, unknown>), [])
+  const initialEmptyData = useMemo(() => ({}) as Record<string, unknown>, [])
 
   const setRef = useCallback((viewer: IFormViewer | null) => {
     if (viewer) {
@@ -189,28 +189,32 @@ export const Designer = () => {
   // custom function for localizing component properties
   const localizeFn = useCallback<ComponentLocalizer>((componentStore, language) => {
     // localizes only the component whose key has the value "password"
-    return componentStore.key === 'submit' && language.code === 'en'
-      ? {'children': `Submit`}
-      : {}
+    return componentStore.key === 'submit' && language.code === 'en' ? {children: `Submit`} : {}
   }, [])
 
-  const handleFormDataChange = useCallback(({data, errors}: { data: unknown, errors: unknown }) => {
+  const handleFormDataChange = useCallback(({data, errors}: {data: unknown; errors: unknown}) => {
     // eslint-disable-next-line no-console
     console.log('onFormDataChange', {data, errors})
   }, [])
 
-  const actions = useMemo(() => ({
-    // eslint-disable-next-line no-console
-    logEventArgs: (e: unknown) => console.log(e),
-    assertArgs: ActionDefinition.functionalAction((e, args) => {
+  const actions = useMemo(
+    () => ({
       // eslint-disable-next-line no-console
-      console.log(e, args)
-    }, {
-      p1: 'string',
-      p2: 'boolean',
-      p3: 'number'
-    })
-  }), [])
+      logEventArgs: (e: unknown) => console.log(e),
+      assertArgs: ActionDefinition.functionalAction(
+        (e, args) => {
+          // eslint-disable-next-line no-console
+          console.log(e, args)
+        },
+        {
+          p1: 'string',
+          p2: 'boolean',
+          p3: 'number',
+        }
+      ),
+    }),
+    []
+  )
 
   return (
     <FormBuilder

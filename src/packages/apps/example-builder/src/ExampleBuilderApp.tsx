@@ -8,7 +8,7 @@ import {
   RsLocalizationWrapper,
   rSuiteComponents,
   rSuiteComponentsDescriptions,
-  rtlCssLoader
+  rtlCssLoader,
 } from '@react-form-builder/components-rsuite'
 import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent, signatureComponentsDescriptions} from '@react-form-builder/components-signature'
@@ -42,10 +42,7 @@ const data = {
   agreeCheckbox: true,
   mainRepeater: [
     {
-      repeater1: [
-        {},
-        {rsDatePicker1: new Date()},
-      ]
+      repeater1: [{}, {rsDatePicker1: new Date()}],
     },
     {rsInput1: 'initial data in repeater'},
   ],
@@ -54,45 +51,54 @@ const data = {
       rsDatePicker1: new Date(),
       repeater2: [
         {
-          rsToggle1: false
+          rsToggle1: false,
         },
         {
           rsToggle1: true,
           repeater3: [
             {
-              rsDropdown1: ['A']
+              rsDropdown1: ['A'],
             },
             {
               rsDropdown1: ['A'],
-              rsNumberFormat1: 1
-            }
-          ]
-        }
-      ]
+              rsNumberFormat1: 1,
+            },
+          ],
+        },
+      ],
     },
     {
-      rsDatePicker7: new Date(1901, 2, 4)
+      rsDatePicker7: new Date(1901, 2, 4),
     },
     {
       rsDatePicker6: new Date(2001, 4, 6),
       repeater2: [
         {
-          rsToggle1: false
+          rsToggle1: false,
         },
-      ]
+      ],
     },
-  ]
+  ],
 }
 
 const presets = initialPresets.map(preset => {
-  return definePreset(preset.name, preset.components as ComponentStore[])
-    .category('Presets')
+  return definePreset(preset.name, preset.components as ComponentStore[]).category('Presets')
 })
 
-const components = [...rSuiteComponents, ...antdComponents, ...presets,
-  throwErrorComponent, fastQrComponent, richTextComponent, googleMapComponent, signatureComponent, debugData,
-  ...rSuiteTableComponents, notRemovable, uploaderComponent]
-  .map(definer => definer.build())
+const components = [
+  ...rSuiteComponents,
+  ...antdComponents,
+  ...presets,
+  throwErrorComponent,
+  fastQrComponent,
+  richTextComponent,
+  googleMapComponent,
+  signatureComponent,
+  debugData,
+  ...rSuiteTableComponents,
+  notRemovable,
+  uploaderComponent,
+].map(definer => definer.build())
 
 const view = new BuilderView(components)
   .withTemplates(['template', 'agreement', 'login form'])
@@ -110,9 +116,7 @@ const view = new BuilderView(components)
   .withComponentLibraryDescription(uploaderComponentsDescriptions)
 
 function localizer(componentStore: ComponentStore, language: Language): Record<string, any> {
-  return componentStore.key === 'comment'
-    ? {'placeholder': `${language?.fullCode || 'default language'} ${Math.random()}`}
-    : {}
+  return componentStore.key === 'comment' ? {placeholder: `${language?.fullCode || 'default language'} ${Math.random()}`} : {}
 }
 
 const useCustomLocalizer = false
@@ -121,9 +125,7 @@ const logEvents = false
 const cycleThroughThemes = false
 
 const indexedDbExists = !!globalThis.indexedDB
-const formStorage = indexedDbExists
-  ? new IndexedDbFormStorage('form-builder-store', 'form-store')
-  : undefined
+const formStorage = indexedDbExists ? new IndexedDbFormStorage('form-builder-store', 'form-store') : undefined
 
 const sampleFormName = 'SampleForm'
 
@@ -134,38 +136,38 @@ async function getForm(name?: string): Promise<string> {
 }
 
 const customValidators: Validators = {
-  'string': {
-    'isHex': {
-      validate: value => /^[0-9A-F]*$/i.test(value)
+  string: {
+    isHex: {
+      validate: value => /^[0-9A-F]*$/i.test(value),
     },
-    'isHappy': {
+    isHappy: {
       params: [],
-      validate: value => value === 'Happy'
+      validate: value => value === 'Happy',
     },
-    'equals': {
+    equals: {
       params: [
         {key: 'value', type: 'string', required: false, default: 'Ring'},
-        {key: 'message', type: 'string', required: false, default: 'Value must be equals to '}
+        {key: 'message', type: 'string', required: false, default: 'Value must be equals to '},
       ],
       validate: (value, _, args) => {
         const errorMessage = args?.['message'] as string
         const checkedValue = args?.['value'] as string
         const errorResult = errorMessage ? errorMessage + checkedValue : false
         return value !== args?.['value'] ? errorResult : true
-      }
-    }
+      },
+    },
   },
-  'number': {},
-  'boolean': {
-    'onlyTrue': {
-      validate: value => value === true
-    }
+  number: {},
+  boolean: {
+    onlyTrue: {
+      validate: value => value === true,
+    },
   },
 }
 
 const formValidators: FormValidators = [
   // eslint-disable-next-line @typescript-eslint/require-await
-  async (data) => {
+  async data => {
     const result: any = {}
     if (data.login === 'sun') {
       result.login = 'Login already exists - sun'
@@ -185,7 +187,7 @@ const formValidators: FormValidators = [
       result['Template:agreement 1'] ??= {}
       result['Template:agreement 1'].agreeCheckbox = 'Agree checkbox must be checked'
     }
-    if (((data['Template:Test form 1'] as any)?.['Template:agreement 1'])?.agreeCheckbox === false) {
+    if ((data['Template:Test form 1'] as any)?.['Template:agreement 1']?.agreeCheckbox === false) {
       result['Template:Test form 1'] ??= {}
       result['Template:Test form 1']['Template:agreement 1'] ??= {}
       result['Template:Test form 1']['Template:agreement 1'].agreeCheckbox = 'Agree checkbox must be checked'
@@ -194,29 +196,26 @@ const formValidators: FormValidators = [
       result.comment = 'Comment is weird'
     }
     return result
-  }
+  },
 ]
 
 const enableCustomLanguages = false
 
 const builderLanguages: FormBuilderI18n = {
-  languages: [
-    new Language('fr', 'FR', 'French', 'Français'),
-    new Language('tr', 'TR', 'Turkish', 'Türkçe'),
-  ],
+  languages: [new Language('fr', 'FR', 'French', 'Français'), new Language('tr', 'TR', 'Turkish', 'Türkçe')],
   // eslint-disable-next-line @typescript-eslint/require-await
   getData: async languageFullCode => {
     if (languageFullCode === 'tr-TR') {
       return {
         data: {leftMenu: {menu: 'Menü'}},
-        componentsLocale: trTR
+        componentsLocale: trTR,
       }
     }
     return {
       data: {leftMenu: {menu: 'Menu'}},
-      componentsLocale: frFR
+      componentsLocale: frFR,
     }
-  }
+  },
 }
 
 const actions = {
@@ -224,35 +223,41 @@ const actions = {
     // eslint-disable-next-line no-console
     if (logEvents) console.info(e.type, e.sender.key, e.sender.id, `${new Date().getTime()}`.substr(-4))
   },
-  assertArgs: ActionDefinition.functionalAction((e, args) => {
-    if (!e) throw new Error(`'e' is undefined`)
-    if (!args) throw new Error(`'args' is args`)
-    if (args.p1 !== 'testValue') console.error(`args.p1 !== 'testValue'`, args.p1)
-    if (!args.p2) console.error(`args.p2 !== true`, args.p2)
-    if (args.p3 !== 6.62607015) console.error(`args.p3 !== 6.62607015`, args.p3)
-  }, {
-    p1: 'string',
-    p2: 'boolean',
-    p3: 'number'
-  }),
-  funcArgs: ActionDefinition.functionalAction(async (e, args: Arguments) => {
-    const {fnArg, fnArg1, fnArg2, fnArg3} = args
-    // @ts-ignore for test
-    const r = await fnArg?.('foo', 123)
-    // @ts-ignore for test
-    const r1 = await fnArg1?.('bar', 234)
-    // @ts-ignore for test
-    const r2 = await fnArg2?.('baz', 345)
-    // @ts-ignore for test
-    const r3 = await fnArg3?.('boo', 567)
-    // eslint-disable-next-line no-console
-    if (logEvents) console.log('funcArgs', {r, r1, r2, r3})
-  }, {
-    fnArg: 'function',
-    fnArg1: 'function',
-    fnArg2: 'function',
-    fnArg3: 'function'
-  })
+  assertArgs: ActionDefinition.functionalAction(
+    (e, args) => {
+      if (!e) throw new Error(`'e' is undefined`)
+      if (!args) throw new Error(`'args' is args`)
+      if (args.p1 !== 'testValue') console.error(`args.p1 !== 'testValue'`, args.p1)
+      if (!args.p2) console.error(`args.p2 !== true`, args.p2)
+      if (args.p3 !== 6.62607015) console.error(`args.p3 !== 6.62607015`, args.p3)
+    },
+    {
+      p1: 'string',
+      p2: 'boolean',
+      p3: 'number',
+    }
+  ),
+  funcArgs: ActionDefinition.functionalAction(
+    async (e, args: Arguments) => {
+      const {fnArg, fnArg1, fnArg2, fnArg3} = args
+      // @ts-ignore for test
+      const r = await fnArg?.('foo', 123)
+      // @ts-ignore for test
+      const r1 = await fnArg1?.('bar', 234)
+      // @ts-ignore for test
+      const r2 = await fnArg2?.('baz', 345)
+      // @ts-ignore for test
+      const r3 = await fnArg3?.('boo', 567)
+      // eslint-disable-next-line no-console
+      if (logEvents) console.log('funcArgs', {r, r1, r2, r3})
+    },
+    {
+      fnArg: 'function',
+      fnArg1: 'function',
+      fnArg2: 'function',
+      fnArg3: 'function',
+    }
+  ),
 }
 
 const onFormSchemaChange = (formSchema: unknown) => {
@@ -284,7 +289,8 @@ const FormBuilderApp = () => {
       setIndexedDbInitialized(true)
       return
     }
-    formStorage.init(initialForms)
+    formStorage
+      .init(initialForms)
       .then(() => setIndexedDbInitialized(true))
       .catch(e => console.error(e))
   }, [])
@@ -322,26 +328,28 @@ const FormBuilderApp = () => {
     return null
   }
 
-  return <FormBuilder
-    customization={useCustomization ? simpleCustomization : undefined}
-    licenseKey={generatedLicenseKey}
-    getForm={getFormFn}
-    formName={sampleFormName}
-    theme={cycleThroughThemes ? theme : undefined}
-    view={view}
-    initialData={initialData}
-    formStorage={formStorage}
-    localize={localizeFn}
-    onFormDataChange={customOnFormDataChange}
-    onFormSchemaChange={onFormSchemaChange}
-    viewerRef={viewerRef}
-    builderRef={builderRef}
-    validators={customValidators}
-    formValidators={formValidators}
-    i18n={enableCustomLanguages ? builderLanguages : undefined}
-    errorWrapper={useCustomErrorWrapper ? CustomErrorWrapper : undefined}
-    actions={actions}
-  />
+  return (
+    <FormBuilder
+      customization={useCustomization ? simpleCustomization : undefined}
+      licenseKey={generatedLicenseKey}
+      getForm={getFormFn}
+      formName={sampleFormName}
+      theme={cycleThroughThemes ? theme : undefined}
+      view={view}
+      initialData={initialData}
+      formStorage={formStorage}
+      localize={localizeFn}
+      onFormDataChange={customOnFormDataChange}
+      onFormSchemaChange={onFormSchemaChange}
+      viewerRef={viewerRef}
+      builderRef={builderRef}
+      validators={customValidators}
+      formValidators={formValidators}
+      i18n={enableCustomLanguages ? builderLanguages : undefined}
+      errorWrapper={useCustomErrorWrapper ? CustomErrorWrapper : undefined}
+      actions={actions}
+    />
+  )
 }
 
 const showDocumentationExample = false
@@ -349,6 +357,6 @@ const showDocumentationExample = false
 /**
  * @returns the main application component.
  */
-const ExampleBuilderApp = () => showDocumentationExample ? <Designer/> : <FormBuilderApp/>
+const ExampleBuilderApp = () => (showDocumentationExample ? <Designer /> : <FormBuilderApp />)
 
 export default ExampleBuilderApp

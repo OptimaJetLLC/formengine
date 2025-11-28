@@ -4,7 +4,7 @@ import {buildForm, FormViewer} from '@react-form-builder/core'
 const simpleForm = buildForm({errorType: 'RsErrorMessage'})
   .component('container', 'RsContainer')
   .style({flexDirection: 'row'})
-  .children((builder) =>
+  .children(builder =>
     builder
       .component('firstName', 'RsInput')
       .prop('placeholder', 'Enter your first name')
@@ -20,14 +20,16 @@ const simpleForm = buildForm({errorType: 'RsErrorMessage'})
   .component('birthDate', 'RsDatePicker')
   .prop('label', 'Birth Date')
   .prop('oneTap', true)
-  .validation('min').args({value: '1900-01-07T12:25:37.000Z'})
+  .validation('min')
+  .args({value: '1900-01-07T12:25:37.000Z'})
 
   .component('submit', 'RsButton')
   .prop('children', 'Submit')
   .prop('color', 'blue')
   .prop('appearance', 'primary')
   .event('onClick')
-  .commonAction('validate').args({failOnError: true})
+  .commonAction('validate')
+  .args({failOnError: true})
   .customAction('onSubmit')
   .json()
 
@@ -43,9 +45,5 @@ const onSubmit = (e: any) => {
  */
 export const LandingApp = () => {
   const actions = {onSubmit} as const
-  return <FormViewer
-    view={viewWithCss}
-    getForm={getForm}
-    actions={actions}
-  />
+  return <FormViewer view={viewWithCss} getForm={getForm} actions={actions} />
 }

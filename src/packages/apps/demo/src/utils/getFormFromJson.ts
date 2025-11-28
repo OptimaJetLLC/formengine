@@ -1,7 +1,7 @@
 import SampleForm from '../../forms/SampleForm.json'
 
 export const initialForms: Record<string, string> = {
-  SampleForm: JSON.stringify(SampleForm)
+  SampleForm: JSON.stringify(SampleForm),
 }
 
 /**
