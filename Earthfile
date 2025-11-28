@@ -469,7 +469,6 @@ dependencies:
   RUN mkdir src/documentation src/packages \
    src/documentation/website src/packages/apps src/packages/views \
    src/packages/apps/demo src/packages/apps/example-builder src/packages/apps/example-viewer \
-   src/packages/apps/landing \
    src/packages/apps/formbuilder \
    src/packages/core src/packages/designer src/packages/designer-bundle src/packages/indexed-db-form-storage \
    src/packages/viewer-bundle src/packages/views/antd src/packages/views/default \
@@ -491,7 +490,6 @@ dependencies:
   COPY src/packages/apps/example-builder/package.json src/packages/apps/example-builder
   COPY src/packages/apps/example-viewer/package.json src/packages/apps/example-viewer
   COPY src/packages/apps/formbuilder/package.json src/packages/apps/formbuilder
-  COPY src/packages/apps/landing/package.json src/packages/apps/landing
 
   COPY src/packages/core/package.json src/packages/core
   COPY src/packages/designer/package.json src/packages/designer
