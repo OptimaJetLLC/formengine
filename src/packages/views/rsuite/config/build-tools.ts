@@ -49,6 +49,10 @@ export function patchExports(packageJson: PackageJson): void {
     const itemName = fn.replace('./', '')
     packageJson.exports[name].import = `./dist/${itemName}.js`
     packageJson.exports[name].types = `./dist/${itemName}.d.ts`
+
+    if (name === '.') {
+      packageJson.exports[name].require = `./dist/${itemName}.js`
+    }
   })
 }
 
