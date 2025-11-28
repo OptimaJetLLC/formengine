@@ -54,7 +54,7 @@ npm run start:viewer
 npm run build
 
 # Create bundles
-npm run bundle
+npm run pack
 ```
 
 ## Code Quality Commands

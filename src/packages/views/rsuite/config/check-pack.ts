@@ -15,7 +15,7 @@ function findTarball(): string {
   const tarballPath = join(sourceDir, filename)
 
   if (!existsSync(tarballPath)) {
-    throw new Error(`Tarball not found: ${filename}\nPlease run 'npm run bundle' first to create the package tarball.`)
+    throw new Error(`Tarball not found: ${filename}\nPlease run 'npm run pack' first to create the package tarball.`)
   }
 
   return tarballPath

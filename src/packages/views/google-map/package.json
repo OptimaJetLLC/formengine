@@ -15,7 +15,7 @@
   "scripts": {
     "build": "vite build",
     "clean": "rimraf dist temp",
-    "bundle": "npm-run-all clean build create-archive",
+    "pack": "npm-run-all clean build create-archive",
     "create-archive": "node ./config/pack"
   },
   "dependencies": {

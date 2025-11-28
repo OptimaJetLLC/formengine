@@ -17,7 +17,7 @@ const packages = {
 }
 
 const createArchive = folder => {
-  execSync('npm run bundle', {cwd: folder})
+  execSync('npm run pack', {cwd: folder})
 
   const packageJson = join(folder, 'package.json')
   const buffer = readFileSync(packageJson, 'utf8')

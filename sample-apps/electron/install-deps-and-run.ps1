@@ -35,7 +35,7 @@ function InstallLocalPackage($Path)
     RemoveIfExists $PackageArchive
 
     Set-Location $Path
-    npm run bundle
+    npm run pack
 
     Move-Item $PackageArchive $PSScriptRoot/
 

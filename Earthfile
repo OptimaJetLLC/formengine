@@ -10,7 +10,7 @@ npm-build:
 # npm-bundle builds all npm bundles
 npm-bundle:
   FROM +sources
-  RUN npm run bundle
+  RUN npm run pack
 
 # npm-update-release-date updates the demo release date
 npm-update-release-date:
@@ -86,7 +86,7 @@ prepare-npm-archives:
   LET packagesToArchive = 'packages/core packages/designer packages/designer-bundle packages/viewer-bundle packages/viewer-bundle-premium packages/views/rsuite packages/views/fast-qr packages/views/rich-text packages/views/google-map packages/views/uploader packages/views/signature packages/views/rsuite-table'
   LET archiveName = ''
   FOR package IN $packagesToArchive
-    RUN cd $package && npm run bundle
+    RUN cd $package && npm run pack
     # We use jq to get the archive name from the npm pack command
     SET archiveName=$(cd $package && npm pack --json | jq -r .[0].filename)
     SAVE ARTIFACT $package/$archiveName AS LOCAL .archives/$archiveName
@@ -272,7 +272,7 @@ test-github-formengine-archive:
   COPY .archives/formengine.tgz formengine.tgz
   RUN tar zxvf formengine.tgz
   RUN cd community/examples/file-upload-server && npm install
-  RUN cd community/src && npm install && npm run bundle
+  RUN cd community/src && npm install && npm run pack
   RUN cd premium/examples/formengine && npm install && npm run build
   RUN cd premium/examples/with-formik && npm install && npm run build
   RUN cd premium/examples/with-nextjs/with-nextjs-v15 && npm install && npm run build
@@ -283,7 +283,7 @@ test-github-formenginesupport-archive:
   RUN tar zxvf formenginesupport.tgz
   RUN npm install
   RUN npm run build
-  RUN npm run bundle
+  RUN npm run pack
 
 # publish-artifact-github-optimajet-formengine updates the GitHub repository optimajet/formengine from the local artifact
 publish-artifact-github-optimajet-formengine:

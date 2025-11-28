@@ -10,7 +10,7 @@
   "homepage": "https://formengine.io/",
   "repository": {
     "type": "git",
-    "url": "git@github.com:optimajet/formengine.git"
+    "url": "git+ssh://git@github.com/optimajet/formengine.git"
   },
   "bugs": {
     "email": "support@optimajet.com"

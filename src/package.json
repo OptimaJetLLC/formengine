@@ -7,7 +7,7 @@
     "show:bundle": "npx lerna run show:bundle --scope=@react-form-builder/example-builder",
     "bootstrap": "npx lerna bootstrap",
     "build": "npx lerna run build --ignore @react-form-builder/docs",
-    "bundle": "npx lerna run bundle --ignore @react-form-builder/docs",
+    "pack": "npx lerna run pack --ignore @react-form-builder/docs",
     "start": "npx lerna run start --scope=@react-form-builder/example-builder",
     "demo:build": "npx lerna run build --scope=@react-form-builder/demo",
     "demo:start": "npx lerna run start --scope=@react-form-builder/demo",
@@ -37,6 +37,7 @@
     "eslint-fix": "npx eslint . --fix",
     "format": "npx biome format . --write",
     "check:format": "npx biome format .",
+    "check:package": "npx lerna exec -- npx @e18e/cli analyze",
     "todo": "npx leasot '(packages|tests|sample-apps|tools|types|examples|documentation)/**/*.(ts|tsx|js)' -S --ignore '**/node_modules,**/dist'"
   },
   "workspaces": [

@@ -2,7 +2,7 @@
   "name": "@react-form-builder/example-builder",
   "version": "7.7.0",
   "private": true,
-  "main": "src/index.ts",
+  "main": "src/index.tsx",
   "type": "module",
   "description": "OptimaJet Form Builder Application",
   "author": "Optimajet",

@@ -16,5 +16,5 @@ npm run build
 ## Bundle all npm packages
 
 ```bash
-npm run bundle
+npm run pack
 ```
