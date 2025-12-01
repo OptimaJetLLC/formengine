@@ -4,7 +4,7 @@ _December_ 1, 2025
 
 ### New
 
-- Added an `Uploader` component in a [separate package](https://www.npmjs.com/package/@react-form-builder/components-rsuite).
+- Added an `Uploader` component in a [separate package](https://www.npmjs.com/package/@react-form-builder/components-uploader).
 
 ### Changed
 
