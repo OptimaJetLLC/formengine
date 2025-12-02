@@ -1030,6 +1030,7 @@
       "builder": "پیش‌نمایش",
       "desktop": "دسکتاپ",
       "mobile": "موبایل",
+      "orientation": "جهت گیری",
       "tablet": "تبلت",
       "viewer": "ویرایش"
     },

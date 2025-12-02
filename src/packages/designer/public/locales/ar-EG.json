@@ -1030,6 +1030,7 @@
       "builder": "معاينة",
       "desktop": "سطح المكتب",
       "mobile": "موبايل",
+      "orientation": "التوجيه",
       "tablet": "تابلت",
       "viewer": "تحرير"
     },

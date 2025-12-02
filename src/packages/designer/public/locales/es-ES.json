@@ -1030,6 +1030,7 @@
       "builder": "Vista previa",
       "desktop": "Escritorio",
       "mobile": "Móvil",
+      "orientation": "Orientación",
       "tablet": "Comprimido",
       "viewer": "Editar"
     },

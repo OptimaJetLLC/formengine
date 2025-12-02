@@ -1030,6 +1030,7 @@
       "builder": "Anteprima",
       "desktop": "Desktop",
       "mobile": "Mobile",
+      "orientation": "Orientamento",
       "tablet": "Tablet",
       "viewer": "Modificare"
     },

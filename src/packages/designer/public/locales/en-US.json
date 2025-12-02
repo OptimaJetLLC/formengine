@@ -897,7 +897,8 @@
       "viewer": "Edit",
       "desktop": "Desktop",
       "mobile": "Mobile",
-      "tablet": "Tablet"
+      "tablet": "Tablet",
+      "orientation": "Orientation"
     }
   },
   "componentsModal": {

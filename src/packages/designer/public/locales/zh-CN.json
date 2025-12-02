@@ -1030,6 +1030,7 @@
       "builder": "预览",
       "desktop": "桌面版",
       "mobile": "流动电话",
+      "orientation": "方向感",
       "tablet": "平板电脑",
       "viewer": "编辑"
     },

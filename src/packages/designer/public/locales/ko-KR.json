@@ -1030,6 +1030,7 @@
       "builder": "미리보기",
       "desktop": "데스크톱",
       "mobile": "모바일",
+      "orientation": "방향",
       "tablet": "태블릿",
       "viewer": "편집"
     },

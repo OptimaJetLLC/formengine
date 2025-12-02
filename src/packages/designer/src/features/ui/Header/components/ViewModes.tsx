@@ -63,10 +63,14 @@ const RawViewModes = (props: ComponentProps<typeof SDiv>) => {
   const resolutionButtons = useMemo(() => resolutions.map(([value, icon], index) => {
     return <ResolutionButton key={index} value={value} icon={icon}/>
   }), [])
+  const t = useTranslationPart('rightMenu.modes')
+  const tooltipContent = useMemo(() => <Tooltip>{t("orientation")}</Tooltip>, [t])
 
   return <SDiv {...props}>
     {(viewMode === 'mobile' || viewMode === 'tablet') &&
-      <IconButton onClick={toggleOrientation} icon={orientationIcon} size={'sm'}/>
+      <Whisper speaker={tooltipContent} placement={'bottom'}>
+        <IconButton onClick={toggleOrientation} icon={orientationIcon} size={'sm'}/>
+      </Whisper>
     }
     <ButtonGroup size={'sm'}>
       {resolutionButtons}
