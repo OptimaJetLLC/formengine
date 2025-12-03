@@ -6,8 +6,6 @@
 - add new project
   - add test to project
 
-For some reason the nx configuration crashes periodically, `npx nx reset` helps
-
 ## Testing
 
 ### Test recorder
@@ -47,15 +45,15 @@ https://playwright.dev/docs/input#drag-and-drop
 
 ### CLI
 
-`npx nx e2e e2e`
+`npm run test:e2e`
 
 ### Debugging the test code
 
-`npx nx e2e e2e --debug`
+`npm run test:dbg`
 
 ### Interactive mode
 
-`npx nx e2e e2e --ui`
+`npm run ui`
 
 Installing additional browsers:
 
@@ -116,17 +114,13 @@ test.describe('two tests', {
 
 - https://playwright.dev/docs/debug
 
-Run code debugger
+Run code debugger using:
 
-```
-npx nx e2e e2e --debug
-```
+`npm run test:dbg`
 
-Start interactive ui
+Start interactive UI using:
 
-```
-npx nx e2e e2e --ui
-```
+`npm run ui`
 
 ### Examples
 
@@ -148,7 +142,6 @@ npx nx e2e e2e --ui
 
 ### Misc
 
-- https://blog.nrwl.io/introducing-playwright-support-for-nx-d8108ee11d46
 - https://playwright.dev/docs/trace-viewer
 - https://www.the-koi.com/projects/how-to-run-playwright-within-vitest/
 - https://vitest.dev/guide/browser/
@@ -156,8 +149,6 @@ npx nx e2e e2e --ui
 - https://vitest.dev/guide/test-context
 - https://vitest.dev/guide/workspace.html
 - https://stackblitz.com/edit/vitest-dev-vitest-dbyv73?file=package.json&initialPath=__vitest__/
-- https://nx.dev/ci/features/split-e2e-tasks
-- https://nx.dev/blog/introducing-playwright-support-for-nx
 - https://dev.to/samuel_kinuthia/end-to-end-testing-react-components-with-playwright-part-1-3c15
 
 ## Useful extensions
@@ -196,23 +187,3 @@ npx nx e2e e2e --ui
 
 - screenshot comparison
 - raise the interface for results (Allure?)
-
-### NX
-
-There is a plugin for NX, failed to parameterize the playwright config, any access to process collapses the NX graph.
-
-```json5
-  "plugins": [
-{
-"plugin": "@nx/playwright/plugin",
-"options": {
-"ciTargetName": "e2e-ci",
-"targetName": "e2e"
-}
-}
-]
-```
-
-```typescript
-const {env} = process
-```

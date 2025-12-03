@@ -2,10 +2,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-nodejs-modules */
 
-import {workspaceRoot} from '@nx/devkit'
 import {defineConfig, devices} from '@playwright/test'
 import {chdir} from 'node:process'
-import {resolve} from 'path'
+import {dirname, resolve} from 'path'
+import {fileURLToPath} from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+const workspaceRoot = resolve(__dirname, '../..')
 
 chdir(workspaceRoot)
 console.log(`Running playwright... from ${workspaceRoot}`)

@@ -121,7 +121,6 @@ prepare-github-formengine-archive:
   COPY --dir examples/community github-formengine/community/examples
   COPY --dir examples/premium github-formengine/premium/examples
   COPY src/lerna.json github-formengine/community/src/
-  COPY src/nx.json github-formengine/community/src/
   COPY src/tsconfig.json github-formengine/community/src/
   COPY src/vite.config.ts github-formengine/community/src/
   COPY src/.eslintrc.cjs github-formengine/community/src/
@@ -160,7 +159,6 @@ prepare-github-formenginesupport-archive:
 
   COPY src/lerna.json $dst/
   COPY src/LICENSE.md $dst/
-  COPY src/nx.json $dst/
   COPY src/package.private.json $dst/package.json
   COPY src/README.private.md $dst/README.md
   COPY src/package-lock.json $dst/
