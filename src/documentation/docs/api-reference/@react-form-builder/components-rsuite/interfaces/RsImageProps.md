@@ -64,7 +64,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"inline"` \| `"none"` \| `"list"` \| `"both"`
+> `optional` **aria-autocomplete**: `"none"` \| `"inline"` \| `"list"` \| `"both"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -295,7 +295,7 @@ Indicates that the element is perceivable but disabled, so it is not editable or
 
 ### ~~aria-dropeffect?~~
 
-> `optional` **aria-dropeffect**: `"none"` \| `"link"` \| `"copy"` \| `"execute"` \| `"move"` \| `"popup"`
+> `optional` **aria-dropeffect**: `"link"` \| `"none"` \| `"copy"` \| `"execute"` \| `"move"` \| `"popup"`
 
 Indicates what functions can be performed when a dragged object is released on the drop target.
 
@@ -517,7 +517,7 @@ Indicates that the user may select more than one item from the current selectabl
 
 ### aria-orientation?
 
-> `optional` **aria-orientation**: `"vertical"` \| `"horizontal"`
+> `optional` **aria-orientation**: `"horizontal"` \| `"vertical"`
 
 Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.
 
@@ -863,7 +863,7 @@ The background color.
 
 ### children?
 
-> `optional` **children**: `ReactI18NextChild` \| `Iterable`\<`ReactI18NextChild`\>
+> `optional` **children**: `ReactNode`
 
 #### Inherited from
 
@@ -1007,7 +1007,7 @@ The background color.
 
 ### enterKeyHint?
 
-> `optional` **enterKeyHint**: `"done"` \| `"search"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"send"`
+> `optional` **enterKeyHint**: `"search"` \| `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"send"`
 
 #### Inherited from
 
@@ -1081,7 +1081,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 ### inputMode?
 
-> `optional` **inputMode**: `"none"` \| `"search"` \| `"text"` \| `"tel"` \| `"url"` \| `"email"` \| `"numeric"` \| `"decimal"`
+> `optional` **inputMode**: `"search"` \| `"none"` \| `"text"` \| `"tel"` \| `"url"` \| `"email"` \| `"numeric"` \| `"decimal"`
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 

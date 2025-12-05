@@ -863,7 +863,7 @@ The background color.
 
 ### children?
 
-> `optional` **children**: `ReactI18NextChild` \| `Iterable`\<`ReactI18NextChild`\>
+> `optional` **children**: `ReactNode`
 
 #### Inherited from
 

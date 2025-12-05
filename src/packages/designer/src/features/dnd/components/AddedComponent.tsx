@@ -1,7 +1,7 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
 import {cfComponentIsPreset, namedObserver, startCase, useComponentData} from '@react-form-builder/core'
-import type {MouseEventHandler, ReactNode, RefCallback} from 'react'
+import type {FunctionComponent, MouseEventHandler, ReactNode, RefCallback, SVGProps} from 'react'
 import {useCallback, useMemo} from 'react'
 import {icons} from '../../../icons'
 import {useCanAddComponent} from '../../../utils/AddComponentContext'
@@ -15,6 +15,8 @@ import {DragPreview} from './Editable/components/DragPreview'
 import {useDragWithPreview} from './Editable/hooks/useDragWithPreview'
 import {PresetToolbar} from './PresetToolbar'
 import {useHovered} from './useHovered'
+
+type IconComponent = FunctionComponent<SVGProps<SVGSVGElement>>
 
 const Container = styled.div`
   display: flex;
@@ -80,11 +82,11 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
   const {name = '', type} = data.model
   const builderStore = useBuilderStore()
 
-  const Icon = useMemo(() => {
+  const Icon = useMemo((): IconComponent => {
     const {icon: CustomIcon} = builderStore.getComponentMetadata(type)
     const iconName = startCase(name).replaceAll(' ', '') as keyof typeof icons
     const defaultIcon = data.model.isFeatureEnabled(cfComponentIsPreset) ? PresetIcon : icons.Default
-    return CustomIcon ?? icons[iconName] ?? defaultIcon
+    return (CustomIcon ?? icons[iconName] ?? defaultIcon) as IconComponent
   }, [builderStore, data.model, name, type])
 
   const {hovered, ...hoveredProps} = useHovered()

@@ -43,6 +43,7 @@
 ## Variables
 
 - [builderViewWithCss](variables/builderViewWithCss.md)
+- [components](variables/components.md)
 - [models](variables/models.md)
 - [rsAutoComplete](variables/rsAutoComplete.md)
 - [rsBreadcrumb](variables/rsBreadcrumb.md)

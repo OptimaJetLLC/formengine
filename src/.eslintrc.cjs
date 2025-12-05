@@ -1,21 +1,4 @@
 /* eslint-env node */
-const project = [
-  './packages/core/tsconfig.json',
-  './packages/designer/tsconfig.json',
-  './packages/designer-bundle/tsconfig.json',
-  './packages/indexed-db-form-storage/tsconfig.json',
-  './packages/viewer-bundle/tsconfig.json',
-  './packages/viewer-bundle-premium/tsconfig.json',
-  './packages/views/rich-text/tsconfig.json',
-  './packages/views/google-map/tsconfig.json',
-  './packages/views/fast-qr/tsconfig.json',
-  './packages/views/rsuite/tsconfig.json',
-  './packages/views/rsuite/config/tsconfig.json',
-  './packages/views/signature/tsconfig.json',
-  './packages/views/uploader/tsconfig.json',
-  './tests/component/tsconfig.json'
-]
-
 module.exports = {
   extends: [
     'eslint:recommended',
@@ -125,7 +108,7 @@ module.exports = {
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project,
+    project: './tsconfig.json',
     tsconfigRootDir: __dirname,
   },
   root: true,

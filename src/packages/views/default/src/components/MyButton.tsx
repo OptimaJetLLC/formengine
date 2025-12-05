@@ -1,7 +1,7 @@
 import {define, disabled, event, string} from '@react-form-builder/core'
-import {JSX} from 'react'
+import type {ButtonHTMLAttributes, DetailedHTMLProps} from 'react'
 
-const MyButton = (props: JSX.IntrinsicElements['button']) => {
+const MyButton = (props: DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>) => {
   return <button {...props}/>
 }
 export const myButton = define(MyButton, 'MyButton')

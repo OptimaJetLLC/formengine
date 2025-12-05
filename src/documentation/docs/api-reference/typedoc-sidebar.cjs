@@ -367,6 +367,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite/variables/components",
+              label: "components"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-rsuite/variables/models",
               label: "models"
             },
@@ -2969,6 +2974,11 @@ const typedocSidebar = {
                     },
                     {
                       type: "doc",
+                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/components",
+                      label: "components"
+                    },
+                    {
+                      type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/variables/models",
                       label: "models"
                     },
@@ -3561,6 +3571,11 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/builderViewWithCss",
                       label: "builderViewWithCss"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/variables/components",
+                      label: "components"
                     },
                     {
                       type: "doc",
@@ -4247,6 +4262,11 @@ const typedocSidebar = {
                       type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/builderViewWithCss",
                       label: "builderViewWithCss"
+                    },
+                    {
+                      type: "doc",
+                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/variables/components",
+                      label: "components"
                     },
                     {
                       type: "doc",
