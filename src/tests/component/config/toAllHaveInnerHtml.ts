@@ -21,7 +21,7 @@ expect.extend({
   }
 })
 
-declare module 'vitest' {
+declare module '@vitest/expect' {
   interface Assertion {
     toAllHaveInnerHtml(expected: string[]): void;
   }

@@ -66,7 +66,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"none"` \| `"inline"` \| `"list"` \| `"both"`
+> `optional` **aria-autocomplete**: `"none"` \| `"list"` \| `"inline"` \| `"both"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -1017,6 +1017,20 @@ The filename for download when download is enabled.
 
 ***
 
+### exportparts?
+
+> `optional` **exportparts**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/exportparts](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/exportparts)
+
+#### Inherited from
+
+`ComponentProps.exportparts`
+
+***
+
 ### fontSize?
 
 > `optional` **fontSize**: `number`
@@ -1329,7 +1343,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onBeforeInput?
 
-> `optional` **onBeforeInput**: `FormEventHandler`\<`HTMLAnchorElement`\>
+> `optional` **onBeforeInput**: `InputEventHandler`\<`HTMLAnchorElement`\>
 
 #### Inherited from
 
@@ -2505,26 +2519,6 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
-### onResize?
-
-> `optional` **onResize**: `ReactEventHandler`\<`HTMLAnchorElement`\>
-
-#### Inherited from
-
-`ComponentProps.onResize`
-
-***
-
-### onResizeCapture?
-
-> `optional` **onResizeCapture**: `ReactEventHandler`\<`HTMLAnchorElement`\>
-
-#### Inherited from
-
-`ComponentProps.onResizeCapture`
-
-***
-
 ### onScroll?
 
 > `optional` **onScroll**: `UIEventHandler`\<`HTMLAnchorElement`\>
@@ -2542,6 +2536,26 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 #### Inherited from
 
 `ComponentProps.onScrollCapture`
+
+***
+
+### onScrollEnd?
+
+> `optional` **onScrollEnd**: `UIEventHandler`\<`HTMLAnchorElement`\>
+
+#### Inherited from
+
+`ComponentProps.onScrollEnd`
+
+***
+
+### onScrollEndCapture?
+
+> `optional` **onScrollEndCapture**: `UIEventHandler`\<`HTMLAnchorElement`\>
+
+#### Inherited from
+
+`ComponentProps.onScrollEndCapture`
 
 ***
 
@@ -2915,6 +2929,20 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
+### part?
+
+> `optional` **part**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/part](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part)
+
+#### Inherited from
+
+`ComponentProps.part`
+
+***
+
 ### ping?
 
 > `optional` **ping**: `string`
@@ -2927,7 +2955,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### popover?
 
-> `optional` **popover**: `""` \| `"auto"` \| `"manual"`
+> `optional` **popover**: `""` \| `"hint"` \| `"auto"` \| `"manual"`
 
 #### Inherited from
 

@@ -1027,6 +1027,20 @@ The cell data key.
 
 ***
 
+### exportparts?
+
+> `optional` **exportparts**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/exportparts](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/exportparts)
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`exportparts`](InputCellProps.md#exportparts)
+
+***
+
 ### firstColumn?
 
 > `optional` **firstColumn**: `boolean`
@@ -1355,7 +1369,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onBeforeInput?
 
-> `optional` **onBeforeInput**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onBeforeInput**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2557,26 +2571,6 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
-### onResize?
-
-> `optional` **onResize**: `ReactEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-[`InputCellProps`](InputCellProps.md).[`onResize`](InputCellProps.md#onresize)
-
-***
-
-### onResizeCapture?
-
-> `optional` **onResizeCapture**: `ReactEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-[`InputCellProps`](InputCellProps.md).[`onResizeCapture`](InputCellProps.md#onresizecapture)
-
-***
-
 ### onScroll?
 
 > `optional` **onScroll**: `UIEventHandler`\<`HTMLElement`\>
@@ -2594,6 +2588,26 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 #### Inherited from
 
 [`InputCellProps`](InputCellProps.md).[`onScrollCapture`](InputCellProps.md#onscrollcapture)
+
+***
+
+### onScrollEnd?
+
+> `optional` **onScrollEnd**: `UIEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`onScrollEnd`](InputCellProps.md#onscrollend)
+
+***
+
+### onScrollEndCapture?
+
+> `optional` **onScrollEndCapture**: `UIEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`onScrollEndCapture`](InputCellProps.md#onscrollendcapture)
 
 ***
 
@@ -3007,9 +3021,23 @@ The select options.
 
 ***
 
+### part?
+
+> `optional` **part**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/part](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part)
+
+#### Inherited from
+
+[`InputCellProps`](InputCellProps.md).[`part`](InputCellProps.md#part)
+
+***
+
 ### popover?
 
-> `optional` **popover**: `""` \| `"auto"` \| `"manual"`
+> `optional` **popover**: `""` \| `"hint"` \| `"auto"` \| `"manual"`
 
 #### Inherited from
 

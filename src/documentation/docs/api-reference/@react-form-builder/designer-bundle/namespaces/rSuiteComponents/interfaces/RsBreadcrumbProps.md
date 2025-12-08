@@ -126,7 +126,7 @@ Callback function for clicking the ellipsis.
 
 ### onItemClick()
 
-> **onItemClick**: (`item`) => `object`
+> **onItemClick**: (`item`) => `void`
 
 Callback function when a breadcrumb item is clicked.
 
@@ -138,7 +138,7 @@ Callback function when a breadcrumb item is clicked.
 
 #### Returns
 
-`object`
+`void`
 
 ***
 

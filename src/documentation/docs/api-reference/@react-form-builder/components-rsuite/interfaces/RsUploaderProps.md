@@ -102,7 +102,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"none"` \| `"inline"` \| `"list"` \| `"both"`
+> `optional` **aria-autocomplete**: `"none"` \| `"list"` \| `"inline"` \| `"both"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -1158,6 +1158,20 @@ The icon element placed _after_ the button text
 
 ***
 
+### exportparts?
+
+> `optional` **exportparts**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/exportparts](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/exportparts)
+
+#### Inherited from
+
+`UploaderProps.exportparts`
+
+***
+
 ### fileList?
 
 > `optional` **fileList**: `FileType`[]
@@ -1546,7 +1560,7 @@ Upload the parameter name of the corresponding file
 
 ### onBeforeInput?
 
-> `optional` **onBeforeInput**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onBeforeInput**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2834,26 +2848,6 @@ In the file list, click the callback function to delete a file
 
 ***
 
-### onResize?
-
-> `optional` **onResize**: `ReactEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-`UploaderProps.onResize`
-
-***
-
-### onResizeCapture?
-
-> `optional` **onResizeCapture**: `ReactEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-`UploaderProps.onResizeCapture`
-
-***
-
 ### onReupload()?
 
 > `optional` **onReupload**: (`file`) => `void`
@@ -2893,6 +2887,26 @@ In the file list, for uploading failed files, click the callback function to upl
 #### Inherited from
 
 `UploaderProps.onScrollCapture`
+
+***
+
+### onScrollEnd?
+
+> `optional` **onScrollEnd**: `UIEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`UploaderProps.onScrollEnd`
+
+***
+
+### onScrollEndCapture?
+
+> `optional` **onScrollEndCapture**: `UIEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`UploaderProps.onScrollEndCapture`
 
 ***
 
@@ -3330,6 +3344,20 @@ The callback function that starts the upload file
 
 ***
 
+### part?
+
+> `optional` **part**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/part](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part)
+
+#### Inherited from
+
+`UploaderProps.part`
+
+***
+
 ### plaintext?
 
 > `optional` **plaintext**: `boolean`
@@ -3344,7 +3372,7 @@ Render the control as plain text
 
 ### popover?
 
-> `optional` **popover**: `""` \| `"auto"` \| `"manual"`
+> `optional` **popover**: `""` \| `"hint"` \| `"auto"` \| `"manual"`
 
 #### Inherited from
 

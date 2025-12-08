@@ -20,11 +20,14 @@ let mockCode: ReturnType<typeof vi.spyOn>
 let mockValidate: ReturnType<typeof vi.spyOn>
 
 if (!window?.ResizeObserver) {
-  const ResizeObserverMock = vi.fn(() => ({
-    observe: vi.fn(),
-    unobserve: vi.fn(),
-    disconnect: vi.fn(),
-  }))
+  class ResizeObserverMock {
+    observe = vi.fn()
+    unobserve = vi.fn()
+    disconnect = vi.fn()
+    constructor(callback: ResizeObserverCallback) {
+      // Store callback if needed
+    }
+  }
 
   vi.stubGlobal('ResizeObserver', ResizeObserverMock)
 }

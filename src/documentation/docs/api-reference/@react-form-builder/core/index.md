@@ -78,7 +78,6 @@
 - [PersistedForm](interfaces/PersistedForm.md)
 - [ScreenProps](interfaces/ScreenProps.md)
 - [SuppressResizeObserverErrorsProps](interfaces/SuppressResizeObserverErrorsProps.md)
-- [TemplateProps](interfaces/TemplateProps.md)
 - [WrapperProps](interfaces/WrapperProps.md)
 
 ## Type Aliases
@@ -135,6 +134,7 @@
 - [EditorType](type-aliases/EditorType.md)
 - [ErrorMap](type-aliases/ErrorMap.md)
 - [ErrorMessageLocalizer](type-aliases/ErrorMessageLocalizer.md)
+- [EventHandler](type-aliases/EventHandler.md)
 - [EventName](type-aliases/EventName.md)
 - [FieldType](type-aliases/FieldType.md)
 - [FirstParameter](type-aliases/FirstParameter.md)
@@ -175,6 +175,7 @@
 - [SetInitialDataFn](type-aliases/SetInitialDataFn.md)
 - [Setter](type-aliases/Setter.md)
 - [SyncEventHandler](type-aliases/SyncEventHandler.md)
+- [TemplateProps](type-aliases/TemplateProps.md)
 - [TypedLocalization](type-aliases/TypedLocalization.md)
 - [ValidationMessages](type-aliases/ValidationMessages.md)
 - [ValidationResult](type-aliases/ValidationResult.md)

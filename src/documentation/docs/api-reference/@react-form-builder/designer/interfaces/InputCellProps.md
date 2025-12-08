@@ -1031,6 +1031,20 @@ The cell data key.
 
 ***
 
+### exportparts?
+
+> `optional` **exportparts**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/exportparts](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/exportparts)
+
+#### Inherited from
+
+`InnerCellProps.exportparts`
+
+***
+
 ### firstColumn?
 
 > `optional` **firstColumn**: `boolean`
@@ -1359,7 +1373,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onBeforeInput?
 
-> `optional` **onBeforeInput**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onBeforeInput**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -2561,26 +2575,6 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
-### onResize?
-
-> `optional` **onResize**: `ReactEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-`InnerCellProps.onResize`
-
-***
-
-### onResizeCapture?
-
-> `optional` **onResizeCapture**: `ReactEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-`InnerCellProps.onResizeCapture`
-
-***
-
 ### onScroll?
 
 > `optional` **onScroll**: `UIEventHandler`\<`HTMLElement`\>
@@ -2598,6 +2592,26 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 #### Inherited from
 
 `InnerCellProps.onScrollCapture`
+
+***
+
+### onScrollEnd?
+
+> `optional` **onScrollEnd**: `UIEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`InnerCellProps.onScrollEnd`
+
+***
+
+### onScrollEndCapture?
+
+> `optional` **onScrollEndCapture**: `UIEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`InnerCellProps.onScrollEndCapture`
 
 ***
 
@@ -3003,9 +3017,23 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
+### part?
+
+> `optional` **part**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/part](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part)
+
+#### Inherited from
+
+`InnerCellProps.part`
+
+***
+
 ### popover?
 
-> `optional` **popover**: `""` \| `"auto"` \| `"manual"`
+> `optional` **popover**: `""` \| `"hint"` \| `"auto"` \| `"manual"`
 
 #### Inherited from
 

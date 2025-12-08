@@ -1116,11 +1116,6 @@ const typedocSidebar = {
             },
             {
               type: "doc",
-              id: "api-reference/@react-form-builder/core/interfaces/TemplateProps",
-              label: "TemplateProps"
-            },
-            {
-              type: "doc",
               id: "api-reference/@react-form-builder/core/interfaces/WrapperProps",
               label: "WrapperProps"
             }
@@ -1392,6 +1387,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/EventHandler",
+              label: "EventHandler"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/EventName",
               label: "EventName"
             },
@@ -1589,6 +1589,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/SyncEventHandler",
               label: "SyncEventHandler"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/TemplateProps",
+              label: "TemplateProps"
             },
             {
               type: "doc",

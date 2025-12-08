@@ -1,3 +1,4 @@
+// @ts-nocheck
 import TestDesignerApp from '@react-form-builder/tests-common/lib/designer/TestDesignerApp'
 import React from 'react'
 import ReactDOM from 'react-dom'

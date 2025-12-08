@@ -55,9 +55,9 @@ const Container = styled.div`
 const useCssContextInitializer = (fieldKey: CssPart, store: ComponentStore, device: Device) =>
   useCallback(() => {
     store[fieldKey] ??= {}
-    store[fieldKey]![device] ??= {}
-    store[fieldKey]![device]!.object ??= {}
-    return store[fieldKey]![device]!.object ?? {}
+    store[fieldKey][device] ??= {}
+    store[fieldKey][device].object ??= {}
+    return store[fieldKey][device].object ?? {}
   }, [fieldKey, store, device])
 
 const SectionMap: Record<string, Section> = {
@@ -72,9 +72,9 @@ const SubSectionMap: Record<string, SubSection> = {
   renderWhen: SubSection.Additional,
 }
 
-const bySection = (section: string) => (annotation: Annotation) => (SectionMap[annotation.editor] ?? Section.Main) === section
+const bySection = (section: Section) => (annotation: Annotation) => (SectionMap[annotation.editor] ?? Section.Main) === section
 
-const bySubSection = (section?: string) => (annotation: Annotation) => SubSectionMap[annotation.editor] === section
+const bySubSection = (section?: SubSection) => (annotation: Annotation) => SubSectionMap[annotation.editor] === section
 
 /**
  * Represents the properties of PropertyBlock component.

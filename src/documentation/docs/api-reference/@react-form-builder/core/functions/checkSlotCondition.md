@@ -1,6 +1,6 @@
 # Function: checkSlotCondition()
 
-> **checkSlotCondition**(`childStore`, `parentProps`): `any`
+> **checkSlotCondition**(`childStore`, `parentProps`): `boolean`
 
 Performs the function of checking if the child component can be bound. **Internal use only.**
 
@@ -20,6 +20,6 @@ the parent component properties.
 
 ## Returns
 
-`any`
+`boolean`
 
 true, if the child component can be bound, false otherwise.

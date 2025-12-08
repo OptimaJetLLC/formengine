@@ -5,7 +5,7 @@ import type {IFormStorage} from './IFormStorage'
  * Used if the external form storage is not connected to the form builder.
  */
 export class AlwaysRejectFormStorage implements IFormStorage {
-  #reason = 'Not implemented'
+  #reason = new Error('Not implemented')
 
   /**
    * @inheritDoc

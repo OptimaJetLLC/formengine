@@ -15,7 +15,11 @@ const RawJsonCodeEditor = (props: JsonCode) => {
 
   const handleCompile = useCallback((value: string) => {
     try {
-      onValidate ? onValidate(value) : JSON.parse(value)
+      if (onValidate) {
+        onValidate(value)
+      } else {
+        JSON.parse(value)
+      }
       return CalculableResult.success(t('testingEditor.compilationOk'))
     } catch (e) {
       return CalculableResult.error([e as Error])

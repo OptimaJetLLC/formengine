@@ -12,7 +12,7 @@ Shim to be compatible with React 19.
 
 ### P
 
-`P` = \{ \}
+`P` = `Record`\<`string`, `unknown`\>
 
 ## Parameters
 

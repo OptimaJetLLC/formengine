@@ -37,6 +37,19 @@ beforeAll(() => {
       const canvas = new Canvas()
       return canvas.getContext('2d')
     })
+
+    // Mock ResizeObserver for jsdom environment
+    if (typeof global.ResizeObserver === 'undefined') {
+      global.ResizeObserver = class ResizeObserver {
+        observe = vi.fn()
+        unobserve = vi.fn()
+        disconnect = vi.fn()
+
+        constructor(callback: ResizeObserverCallback) {
+          // Store callback if needed
+        }
+      } as any
+    }
   } else {
     // disable local storage for the designer
     globalThis.FORM_BUILDER_DESIGNER_DISABLE_LOCAL_STORAGE = 'true'

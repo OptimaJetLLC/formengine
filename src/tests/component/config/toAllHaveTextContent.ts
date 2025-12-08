@@ -21,7 +21,7 @@ expect.extend({
   }
 })
 
-declare module 'vitest' {
+declare module '@vitest/expect' {
   interface Assertion {
     toAllHaveTextContent(expected: string[]): void;
   }

@@ -58,12 +58,13 @@
     "scroll-into-view-if-needed": "^3.0.10"
   },
   "devDependencies": {
-    "@types/file-saver": "^2.0.5"
+    "@types/file-saver": "^2.0.5",
+    "vite-inline-css-plugin": "^0.0.1"
   },
   "peerDependencies": {
     "@emotion/css": "^11.13.5",
     "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@react-form-builder/core": "7.8.0",
     "mobx": "^6.13.5",
     "mobx-react": "^9.2.0",

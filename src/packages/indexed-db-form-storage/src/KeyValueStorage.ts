@@ -2,6 +2,7 @@ import type {UseStore} from 'idb-keyval'
 import {clear, createStore, del, entries, get, keys, set} from 'idb-keyval'
 
 const indexedDbExists = !!globalThis.indexedDB
+const indexedDbUnavailableError = new Error('IndexedDB is not available in this environment.')
 
 /**
  * Creates key-value storage.
@@ -21,7 +22,7 @@ export const kvCreateStore = (dbName: string, storeName: string): UseStore => {
  * @returns the Promise, which can be rejected if operations failed to complete.
  */
 export const kvDel = (key: IDBValidKey, customStore?: UseStore): Promise<void> => {
-  if (!indexedDbExists) return Promise.reject()
+  if (!indexedDbExists) return Promise.reject(indexedDbUnavailableError)
   return del(key, customStore)
 }
 
@@ -32,7 +33,7 @@ export const kvDel = (key: IDBValidKey, customStore?: UseStore): Promise<void> =
  * @returns the Promise with a value or undefined if no value is found.
  */
 export const kvGet = <T = any>(key: IDBValidKey, customStore?: UseStore): Promise<T | undefined> => {
-  if (!indexedDbExists) return Promise.reject()
+  if (!indexedDbExists) return Promise.reject(indexedDbUnavailableError)
   return get<T>(key, customStore)
 }
 
@@ -42,7 +43,7 @@ export const kvGet = <T = any>(key: IDBValidKey, customStore?: UseStore): Promis
  * @returns the Promise with the array with all available keys.
  */
 export const kvKeys = <KeyType extends IDBValidKey>(customStore?: UseStore): Promise<KeyType[]> => {
-  if (!indexedDbExists) return Promise.reject()
+  if (!indexedDbExists) return Promise.reject(indexedDbUnavailableError)
   return keys(customStore)
 }
 
@@ -54,7 +55,7 @@ export const kvKeys = <KeyType extends IDBValidKey>(customStore?: UseStore): Pro
  * @returns the Promise, which can be rejected if operations failed to complete.
  */
 export const kvSet = (key: IDBValidKey, value: any, customStore?: UseStore): Promise<void> => {
-  if (!indexedDbExists) return Promise.reject()
+  if (!indexedDbExists) return Promise.reject(indexedDbUnavailableError)
   return set(key, value, customStore)
 }
 
@@ -64,7 +65,7 @@ export const kvSet = (key: IDBValidKey, value: any, customStore?: UseStore): Pro
  * @returns the Promise, which can be rejected if operations failed to complete.
  */
 export const kvClear = (customStore?: UseStore): Promise<void> => {
-  if (!indexedDbExists) return Promise.reject()
+  if (!indexedDbExists) return Promise.reject(indexedDbUnavailableError)
   return clear(customStore)
 }
 
@@ -74,6 +75,6 @@ export const kvClear = (customStore?: UseStore): Promise<void> => {
  * @returns the Promise with the array of all entries in the store.
  */
 export const kvEntries = (customStore?: UseStore) => {
-  if (!indexedDbExists) return Promise.reject()
+  if (!indexedDbExists) return Promise.reject(indexedDbUnavailableError)
   return entries(customStore)
 }

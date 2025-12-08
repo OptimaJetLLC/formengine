@@ -104,7 +104,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"none"` \| `"inline"` \| `"list"` \| `"both"`
+> `optional` **aria-autocomplete**: `"none"` \| `"list"` \| `"inline"` \| `"both"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -1131,6 +1131,20 @@ The prefix of the component CSS class
 
 ***
 
+### exportparts?
+
+> `optional` **exportparts**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/exportparts](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/exportparts)
+
+#### Inherited from
+
+`NumericFormatProps.exportparts`
+
+***
+
 ### fixedDecimalScale?
 
 > `optional` **fixedDecimalScale**: `boolean`
@@ -1587,7 +1601,7 @@ The label for the number input.
 
 ### onBeforeInput?
 
-> `optional` **onBeforeInput**: `FormEventHandler`\<`HTMLInputElement`\>
+> `optional` **onBeforeInput**: `InputEventHandler`\<`HTMLInputElement`\>
 
 #### Inherited from
 
@@ -2787,26 +2801,6 @@ Called on press enter
 
 ***
 
-### onResize?
-
-> `optional` **onResize**: `ReactEventHandler`\<`HTMLInputElement`\>
-
-#### Inherited from
-
-`NumericFormatProps.onResize`
-
-***
-
-### onResizeCapture?
-
-> `optional` **onResizeCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
-
-#### Inherited from
-
-`NumericFormatProps.onResizeCapture`
-
-***
-
 ### onScroll?
 
 > `optional` **onScroll**: `UIEventHandler`\<`HTMLInputElement`\>
@@ -2824,6 +2818,26 @@ Called on press enter
 #### Inherited from
 
 `NumericFormatProps.onScrollCapture`
+
+***
+
+### onScrollEnd?
+
+> `optional` **onScrollEnd**: `UIEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onScrollEnd`
+
+***
+
+### onScrollEndCapture?
+
+> `optional` **onScrollEndCapture**: `UIEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`NumericFormatProps.onScrollEndCapture`
 
 ***
 
@@ -3207,6 +3221,20 @@ Called on press enter
 
 ***
 
+### part?
+
+> `optional` **part**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/part](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part)
+
+#### Inherited from
+
+`NumericFormatProps.part`
+
+***
+
 ### pattern?
 
 > `optional` **pattern**: `string`
@@ -3241,7 +3269,7 @@ Render the control as plain text
 
 ### popover?
 
-> `optional` **popover**: `""` \| `"auto"` \| `"manual"`
+> `optional` **popover**: `""` \| `"hint"` \| `"auto"` \| `"manual"`
 
 #### Inherited from
 

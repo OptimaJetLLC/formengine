@@ -389,7 +389,7 @@ _July_ 17, 2025
 - Added the [formOptions](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#formoptions)
   property to pass custom options to
   the [getForm](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#getform) function.
-- Added the [options](/api-reference/@react-form-builder/core/interfaces/TemplateProps#options) property
+- Added the [options](/api-reference/@react-form-builder/core/interfaces/EmbeddedFormProps#options) property
   for templates, similar
   to [formOptions](/api-reference/@react-form-builder/core/interfaces/FormViewerProps#formoptions).
 - Added support for [one-way data binding](/custom-components#one-way-data-binding) for component

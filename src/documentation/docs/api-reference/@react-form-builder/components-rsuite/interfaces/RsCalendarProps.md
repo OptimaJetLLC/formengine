@@ -289,7 +289,7 @@ Controlled value
 
 ### weekStart?
 
-> `optional` **weekStart**: `0` \| `3` \| `1` \| `2` \| `4` \| `5` \| `6`
+> `optional` **weekStart**: `0` \| `1` \| `3` \| `2` \| `4` \| `5` \| `6`
 
 The index of the first day of the week (0 - Sunday)
 If `isoWeek` is `true`, the value of `weekStart` is ignored.

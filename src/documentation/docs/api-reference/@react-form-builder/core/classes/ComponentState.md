@@ -144,11 +144,11 @@ the disabled property of a component if the component has a disabled flag.
 
 #### Get Signature
 
-> **get** **events**(): `Record`\<`string`, `Function`\>
+> **get** **events**(): `Record`\<`string`, (...`args`) => `Promise`\<`void`\>\>
 
 ##### Returns
 
-`Record`\<`string`, `Function`\>
+`Record`\<`string`, (...`args`) => `Promise`\<`void`\>\>
 
 the component event handlers that send events to the event bus.
 

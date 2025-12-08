@@ -54,7 +54,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"inline"` \| `"none"` \| `"list"` \| `"both"`
+> `optional` **aria-autocomplete**: `"none"` \| `"list"` \| `"inline"` \| `"both"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -989,6 +989,20 @@ Clear button label.
 
 ***
 
+### exportparts?
+
+> `optional` **exportparts**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/exportparts](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/exportparts)
+
+#### Inherited from
+
+`Omit.exportparts`
+
+***
+
 ### height?
 
 > `optional` **height**: `number`
@@ -1283,7 +1297,7 @@ The line width.
 
 ### onBeforeInput?
 
-> `optional` **onBeforeInput**: `FormEventHandler`\<`HTMLCanvasElement`\>
+> `optional` **onBeforeInput**: `InputEventHandler`\<`HTMLCanvasElement`\>
 
 #### Inherited from
 
@@ -2467,26 +2481,6 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
-### onResize?
-
-> `optional` **onResize**: `ReactEventHandler`\<`HTMLCanvasElement`\>
-
-#### Inherited from
-
-`Omit.onResize`
-
-***
-
-### onResizeCapture?
-
-> `optional` **onResizeCapture**: `ReactEventHandler`\<`HTMLCanvasElement`\>
-
-#### Inherited from
-
-`Omit.onResizeCapture`
-
-***
-
 ### onScroll?
 
 > `optional` **onScroll**: `UIEventHandler`\<`HTMLCanvasElement`\>
@@ -2504,6 +2498,26 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 #### Inherited from
 
 `Omit.onScrollCapture`
+
+***
+
+### onScrollEnd?
+
+> `optional` **onScrollEnd**: `UIEventHandler`\<`HTMLCanvasElement`\>
+
+#### Inherited from
+
+`Omit.onScrollEnd`
+
+***
+
+### onScrollEndCapture?
+
+> `optional` **onScrollEndCapture**: `UIEventHandler`\<`HTMLCanvasElement`\>
+
+#### Inherited from
+
+`Omit.onScrollEndCapture`
 
 ***
 
@@ -2877,6 +2891,20 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
+### part?
+
+> `optional` **part**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/part](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part)
+
+#### Inherited from
+
+`Omit.part`
+
+***
+
 ### penColor?
 
 > `optional` **penColor**: `Fill`
@@ -2887,7 +2915,7 @@ The pen color.
 
 ### popover?
 
-> `optional` **popover**: `""` \| `"auto"` \| `"manual"`
+> `optional` **popover**: `""` \| `"auto"` \| `"manual"` \| `"hint"`
 
 #### Inherited from
 

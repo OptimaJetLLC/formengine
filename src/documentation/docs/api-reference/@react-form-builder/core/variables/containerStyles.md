@@ -24,4 +24,4 @@ The annotations for generic CSS properties of a container component.
 
 ### justifyContent
 
-> **justifyContent**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"center"` \| `"left"` \| `"right"` \| `"start"` \| `"end"` \| `"flex-start"` \| `"flex-end"` \| `"space-between"` \| `"space-around"` \| `"space-evenly"`\>
+> **justifyContent**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"left"` \| `"right"` \| `"center"` \| `"start"` \| `"end"` \| `"flex-start"` \| `"flex-end"` \| `"space-between"` \| `"space-around"` \| `"space-evenly"`\>

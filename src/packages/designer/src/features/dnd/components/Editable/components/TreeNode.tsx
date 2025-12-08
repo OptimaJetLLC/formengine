@@ -72,9 +72,11 @@ const RawTreeNode = ({className, componentDataViewer}: TreeNodeProps) => {
 
   const expanded = expandedNodes.has(componentData)
   const toggleExpand = useCallback(() => {
-    expandedNodes.has(componentData)
-      ? expandedNodes.delete(componentData)
-      : expandedNodes.add(componentData)
+    if (expandedNodes.has(componentData)) {
+      expandedNodes.delete(componentData)
+    } else {
+      expandedNodes.add(componentData)
+    }
   }, [componentData, expandedNodes])
 
   const onMouseEnter = useCallback(() => setHovered(true), [])

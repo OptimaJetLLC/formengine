@@ -60,5 +60,8 @@
     "dist/rsuite-no-reset-rtl.min.css",
     "README.md",
     "LICENSE"
-  ]
+  ],
+  "devDependencies": {
+    "vite-inline-css-plugin": "^0.0.1"
+  }
 }

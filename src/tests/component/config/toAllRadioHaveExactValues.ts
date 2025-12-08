@@ -26,7 +26,7 @@ expect.extend({
   }
 })
 
-declare module 'vitest' {
+declare module '@vitest/expect' {
   interface Assertion<T = any> {
     toAllRadioHaveExactValues(expected: any[]): void;
   }

@@ -12,7 +12,7 @@ const log = (...args: any[]) => {
   console.info('license check failed, error : ', args.join('\n'))
 }
 
-async function verify(data: string, signature: ArrayBuffer, publicKeyString: string) {
+async function verify(data: string, signature: Uint8Array<ArrayBuffer>, publicKeyString: string) {
   if (!globalThis.crypto.subtle) {
     log('crypto.subtle is not available')
     return false

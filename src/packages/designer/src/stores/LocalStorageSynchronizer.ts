@@ -15,7 +15,7 @@ export class LocalStorageSynchronizer {
   readonly #disposers: IReactionDisposer[]
 
   /**
-   * Creates {@LocalStorageSynchronizer}.
+   * Creates {@link LocalStorageSynchronizer}.
    * @param builderStore the form builder settings.
    * @param builderProps the form builder props.
    */

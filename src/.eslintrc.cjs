@@ -1,5 +1,10 @@
 /* eslint-env node */
 module.exports = {
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   extends: [
     'eslint:recommended',
     'plugin:react-hooks/recommended',
@@ -34,6 +39,10 @@ module.exports = {
     'react-hooks/exhaustive-deps': ['error', {
       'additionalHooks': ''
     }],
+    'react-hooks/immutability': 'warn',
+    'react-hooks/refs': 'warn',
+    'react-hooks/set-state-in-effect': 'warn',
+    'react-hooks/static-components': 'warn',
     'unicorn/no-useless-fallback-in-spread': 'error',
     'unicorn/no-useless-spread': 'error',
     'unicorn/prefer-spread': 'error',
@@ -71,11 +80,15 @@ module.exports = {
     'import/first': 'error',
     'import/newline-after-import': 'error',
     '@typescript-eslint/no-import-type-side-effects': 'error',
+    '@typescript-eslint/no-redundant-type-constituents': 'warn',
+    '@typescript-eslint/no-base-to-string': 'warn',
+    '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
+    '@typescript-eslint/no-unsafe-enum-comparison': 'warn',
+    '@typescript-eslint/require-await': 'warn',
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/no-confusing-non-null-assertion': 'error',
     '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'error',
     'no-throw-literal': 'off',
-    '@typescript-eslint/no-throw-literal': 'error',
     'init-declarations': 'off',
     '@typescript-eslint/init-declarations': ['error', 'always'],
     'import/extensions': ['error', {

@@ -206,7 +206,7 @@ Callback function called when files are successfully uploaded.
 
 ##### T
 
-`T` *extends* `File`\<`T`\>
+`T` *extends* `File`
 
 #### Parameters
 
@@ -240,7 +240,7 @@ Callback function called when files are successfully uploaded.
 
 ##### T
 
-`T` *extends* `File`\<`T`\>
+`T` *extends* `File`
 
 #### Parameters
 
@@ -362,7 +362,7 @@ If true, the children are in read-only state.
 
 ##### T
 
-`T` *extends* `File`\<`T`\>
+`T` *extends* `File`
 
 #### Parameters
 

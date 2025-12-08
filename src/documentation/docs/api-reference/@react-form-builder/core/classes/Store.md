@@ -334,7 +334,7 @@ the action definition.
 
 #### Throws
 
-Error, if action was not found.
+If the action was not found.
 
 ***
 
@@ -390,7 +390,7 @@ the first type of component with the specified role.
 
 ### getModel()
 
-> **getModel**(`type`): [`Model`](Model.md)\<`any`\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\> \| [`Model`](Model.md)\<[`TemplateProps`](../interfaces/TemplateProps.md)\>
+> **getModel**(`type`): [`Model`](Model.md)\<`any`\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\> \| [`Model`](Model.md)\<[`TemplateProps`](../type-aliases/TemplateProps.md)\>
 
 Returns model for the specified type.
 
@@ -404,7 +404,7 @@ the component type.
 
 #### Returns
 
-[`Model`](Model.md)\<`any`\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\> \| [`Model`](Model.md)\<[`TemplateProps`](../interfaces/TemplateProps.md)\>
+[`Model`](Model.md)\<`any`\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\> \| [`Model`](Model.md)\<[`TemplateProps`](../type-aliases/TemplateProps.md)\>
 
 the model for the specified type.
 

@@ -1014,9 +1014,11 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     const isSelected = this.selected.has(target)
 
     if (multipleSelection) {
-      isSelected
-        ? this.selected.delete(target)
-        : this.addNodeToSelection(target)
+      if (isSelected) {
+        this.selected.delete(target)
+      } else {
+        this.addNodeToSelection(target)
+      }
     }
 
     if (!multipleSelection && !isSelected) {

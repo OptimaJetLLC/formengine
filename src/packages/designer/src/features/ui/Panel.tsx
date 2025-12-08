@@ -153,7 +153,7 @@ export interface PanelProps extends PropsWithChildren<any>, CollapsedSizeProps {
   /**
    * Callback function called when the panel is collapsed/expanded.
    */
-  onCollapse?: Function
+  onCollapse?: () => void
 }
 
 const RawPanel = ({

@@ -139,7 +139,6 @@ prepare-github-formenginesupport-archive:
 
   LET dst = private-github
 
-  COPY --dir src/types $dst/types
   COPY --dir src/packages/apps/example-builder $dst/packages/apps/example-builder
   COPY --dir src/packages/apps/example-viewer $dst/packages/apps/example-viewer
   COPY --dir src/packages/core $dst/packages/core

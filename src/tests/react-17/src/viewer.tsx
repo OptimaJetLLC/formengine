@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {Viewer} from '@react-form-builder/tests-common/lib/viewer/Viewer'
 import React from 'react'
 import ReactDOM from 'react-dom'

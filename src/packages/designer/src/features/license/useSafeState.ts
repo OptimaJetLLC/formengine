@@ -18,7 +18,9 @@ export default function useSafeState<S>(initialState: S): [S, Dispatch<SetStateA
   }, [])
 
   const safeSetState: Dispatch<SetStateAction<S>> = useCallback(value => {
-    mountedRef.current && setState(value)
+    if (mountedRef.current) {
+      setState(value)
+    }
   }, [])
 
   return useMemo(() => [state, safeSetState], [state, safeSetState])

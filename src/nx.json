@@ -1,8 +1,0 @@
-{
-  "useDaemonProcess": false,
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default"
-    }
-  }
-}

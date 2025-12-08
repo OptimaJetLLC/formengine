@@ -305,7 +305,7 @@ Indicates that the element is perceivable but disabled, so it is not editable or
 
 ### ~~aria-dropeffect?~~
 
-> `optional` **aria-dropeffect**: `"none"` \| `"link"` \| `"copy"` \| `"execute"` \| `"move"` \| `"popup"`
+> `optional` **aria-dropeffect**: `"link"` \| `"none"` \| `"copy"` \| `"execute"` \| `"move"` \| `"popup"`
 
 Indicates what functions can be performed when a dragged object is released on the drop target.
 
@@ -1053,11 +1053,25 @@ The prefix of the component CSS class
 
 ### enterKeyHint?
 
-> `optional` **enterKeyHint**: `"done"` \| `"search"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"send"`
+> `optional` **enterKeyHint**: `"search"` \| `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"send"`
 
 #### Inherited from
 
 `InputProps.enterKeyHint`
+
+***
+
+### exportparts?
+
+> `optional` **exportparts**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/exportparts](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/exportparts)
+
+#### Inherited from
+
+`InputProps.exportparts`
 
 ***
 
@@ -1191,7 +1205,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 ### inputMode?
 
-> `optional` **inputMode**: `"none"` \| `"search"` \| `"text"` \| `"tel"` \| `"url"` \| `"email"` \| `"numeric"` \| `"decimal"`
+> `optional` **inputMode**: `"search"` \| `"none"` \| `"text"` \| `"tel"` \| `"url"` \| `"email"` \| `"numeric"` \| `"decimal"`
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 
@@ -1483,7 +1497,7 @@ The label for the input.
 
 ### onBeforeInput?
 
-> `optional` **onBeforeInput**: `FormEventHandler`\<`HTMLInputElement`\>
+> `optional` **onBeforeInput**: `InputEventHandler`\<`HTMLInputElement`\>
 
 #### Inherited from
 
@@ -2673,26 +2687,6 @@ Called on press enter
 
 ***
 
-### onResize?
-
-> `optional` **onResize**: `ReactEventHandler`\<`HTMLInputElement`\>
-
-#### Inherited from
-
-`InputProps.onResize`
-
-***
-
-### onResizeCapture?
-
-> `optional` **onResizeCapture**: `ReactEventHandler`\<`HTMLInputElement`\>
-
-#### Inherited from
-
-`InputProps.onResizeCapture`
-
-***
-
 ### onScroll?
 
 > `optional` **onScroll**: `UIEventHandler`\<`HTMLInputElement`\>
@@ -2710,6 +2704,26 @@ Called on press enter
 #### Inherited from
 
 `InputProps.onScrollCapture`
+
+***
+
+### onScrollEnd?
+
+> `optional` **onScrollEnd**: `UIEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`InputProps.onScrollEnd`
+
+***
+
+### onScrollEndCapture?
+
+> `optional` **onScrollEndCapture**: `UIEventHandler`\<`HTMLInputElement`\>
+
+#### Inherited from
+
+`InputProps.onScrollEndCapture`
 
 ***
 
@@ -3083,6 +3097,20 @@ Called on press enter
 
 ***
 
+### part?
+
+> `optional` **part**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/part](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part)
+
+#### Inherited from
+
+`InputProps.part`
+
+***
+
 ### passwordMask?
 
 > `optional` **passwordMask**: `boolean`
@@ -3125,7 +3153,7 @@ Render the control as plain text
 
 ### popover?
 
-> `optional` **popover**: `""` \| `"auto"` \| `"manual"`
+> `optional` **popover**: `""` \| `"hint"` \| `"auto"` \| `"manual"`
 
 #### Inherited from
 
@@ -3387,7 +3415,7 @@ Additional style
 
 ### type?
 
-> `optional` **type**: `"number"` \| `"time"` \| `"search"` \| `"text"` \| `"tel"` \| `"url"` \| `"email"` \| `"password"`
+> `optional` **type**: `"number"` \| `"search"` \| `"time"` \| `"text"` \| `"tel"` \| `"url"` \| `"email"` \| `"password"`
 
 The type of the input.
 

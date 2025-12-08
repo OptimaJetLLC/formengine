@@ -15,12 +15,11 @@
     "clean": "rimraf reports"
   },
   "devDependencies": {
-    "@playwright/test": "^1.56.1",
+    "@playwright/test": "^1.57.0",
     "cross-spawn": "^7.0.6",
-    "ctrf": "^0.0.10",
-    "github-actions-ctrf": "^0.0.54",
-    "monocart-reporter": "^2.9.13",
-    "playwright": "^1.56.1",
-    "playwright-ctrf-json-reporter": "^0.0.18"
+    "ctrf": "^0.0.17",
+    "github-actions-ctrf": "^0.0.58",
+    "monocart-reporter": "^2.9.23",
+    "playwright-ctrf-json-reporter": "^0.0.27"
   }
 }

@@ -1,6 +1,6 @@
 # Type Alias: LoadDataHandler()
 
-> **LoadDataHandler** = (`searchKeyword`, `loadCallback`, `currentDataLength`) => `object`
+> **LoadDataHandler** = (`searchKeyword`, `loadCallback`, `currentDataLength`) => `void`
 
 Describes a function that is called when data is to be loaded into the component.
 
@@ -26,4 +26,4 @@ the length of the data already loaded.
 
 ## Returns
 
-`object`
+`void`
