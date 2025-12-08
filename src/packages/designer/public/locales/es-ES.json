@@ -933,6 +933,7 @@
     "formNamePlaceholder": "Mi hermosa forma",
     "formSaveError": "Error al guardar el formulario! Ver los registros en la consola del navegador",
     "formSaved": "El formulario se guarda",
+    "generateJsonFormSchema": "Generar esquema de formulario JSON",
     "importForms": "Formularios de importación",
     "importFormsError": "Error al importar formularios! Ver los registros en la consola del navegador",
     "importFormsSuccess": "Formularios importados",

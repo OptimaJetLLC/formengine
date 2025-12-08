@@ -18,30 +18,49 @@ function readJsonFile(file) {
   return JSON.parse(buffer)
 }
 
-function getFiles() {
-  const data = readJsonFile(packageJson)
-  return data.files || []
-}
-
 function copyFiles() {
   removePath(tempDir)
   fs.mkdirSync(tempDir, {recursive: true})
 
   fs.copyFileSync(path.join(sourceDir, packageJson), path.join(tempDir, packageJson))
-  const files = getFiles()
+
+  const files = ['LICENSE', 'README.md', 'dist']
   files.forEach(file => {
     const dest = path.join(tempDir, file)
     const dirname = path.dirname(dest)
     fs.mkdirSync(dirname, {recursive: true})
-    fs.copyFileSync(path.join(sourceDir, file), dest)
+    fs.cpSync(path.join(sourceDir, file), dest, {recursive: true})
   })
+}
+
+function patchExports(exports) {
+  Object.entries(exports).forEach(([name]) => {
+    const fn = name === '.' ? 'index' : name
+
+    if (typeof exports[name] !== 'object') {
+      return
+    }
+
+    const itemName = fn.replace('./', '')
+    exports[name].import = `./dist/${itemName}.js`
+    exports[name].types = `./dist/${itemName}.d.ts`
+
+    if (name === '.') {
+      exports[name].require = `./dist/${itemName}.js`
+    }
+  })
+
+  exports['./schemas/persisted-form.schema.json'] = './dist/schemas/persisted-form.schema.json'
 }
 
 function patchPackageJson() {
   const data = readJsonFile(packageJson)
   const patch = readJsonFile(path.join(__dirname, 'part.package.json'))
+
   delete data.scripts
+  patchExports(data.exports)
   Object.assign(data, patch)
+
   const patchedData = JSON.stringify(data, undefined, '  ')
   fs.writeFileSync(path.join(tempDir, packageJson), patchedData, 'utf-8')
 }

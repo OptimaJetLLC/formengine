@@ -933,6 +933,7 @@
     "formNamePlaceholder": "मेरा सुंदर रूप",
     "formSaveError": "फार्म को बचाने में विफल! ब्राउज़र कंसोल में लॉग देखें",
     "formSaved": "फॉर्म सहेजा गया है",
+    "generateJsonFormSchema": "जेएसओएन फॉर्म स्कीमा उत्पन्न करें",
     "importForms": "आयात प्रपत्र",
     "importFormsError": "प्रपत्र आयात करने में विफल! ब्राउज़र कंसोल में लॉग देखें",
     "importFormsSuccess": "आयातित प्रपत्र",

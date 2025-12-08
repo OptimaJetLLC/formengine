@@ -1,4 +1,4 @@
-import type {Theme} from '@monaco-editor/react'
+import type {OnMount, Theme} from '@monaco-editor/react'
 import type {editor} from 'monaco-editor'
 
 /**
@@ -44,6 +44,10 @@ export interface UnconstrainedCodeEditorProps {
    * The theme for the monaco.
    */
   theme?: Theme | string;
+  /**
+   * Callback function called when the Monaco editor is mounted.
+   */
+  onMount?: OnMount
 }
 
 /**
@@ -66,6 +70,10 @@ export interface ConstrainedProps {
    * Flag, if true then the context string before the source code is editable, false otherwise.
    */
   canEditBeginContextLine?: boolean
+  /**
+   * Callback function called when the Monaco editor is mounted.
+   */
+  onMount?: OnMount
 }
 
 /**

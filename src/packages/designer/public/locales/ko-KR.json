@@ -933,6 +933,7 @@
     "formNamePlaceholder": "내 아름다운 형태",
     "formSaveError": "양식을 저장하지 못했습니다! 브라우저 콘솔에서 로그 보기",
     "formSaved": "양식이 저장됩니다",
+    "generateJsonFormSchema": "양식 스키마 생성",
     "importForms": "양식 가져오기",
     "importFormsError": "양식을 가져오지 못했습니다! 브라우저 콘솔에서 로그 보기",
     "importFormsSuccess": "가져온 양식",

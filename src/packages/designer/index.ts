@@ -17,3 +17,4 @@ export type {PresetComponent} from './src/features/preset-component/PresetCompon
 export type {IPresetComponentOptions} from './src/features/preset-component/IPresetComponentOptions'
 export {PresetComponentLocalStorage} from './src/features/preset-component/PresetComponentLocalStorage'
 export {Section} from './src/features/ui/RightPanel/PropertiesEditor/Section'
+export type {GenerateJsonFormSchemaOptions} from './src/FormBuilderProps'

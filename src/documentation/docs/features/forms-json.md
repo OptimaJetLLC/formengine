@@ -299,3 +299,34 @@ The next set of data relates to localization.
   "defaultLanguage": "en-US"
 }
 ```
+
+## JSON schema
+
+You can generate a schema using the [createSchema](/api-reference/@react-form-builder/json-schema-generator/functions/createSchema) function
+from the [@react-form-builder/json-schema-generator](https://www.npmjs.com/package/@react-form-builder/json-schema-generator) package.
+
+You can also enable JSON schema generation from the Designer:
+
+```tsx
+import {builderViewWithCss} from '@react-form-builder/components-rsuite'
+import type {GenerateJsonFormSchemaOptions} from '@react-form-builder/designer'
+import {FormBuilder} from '@react-form-builder/designer'
+import {createSchema} from '@react-form-builder/json-schema-generator'
+
+const generateJsonFormSchema = (options: GenerateJsonFormSchemaOptions) => {
+  const {components, descriptions} = options
+  const schema = createSchema(components, descriptions)
+  return JSON.stringify(schema, undefined, 2)
+}
+
+export const App = () => {
+  return <FormBuilder
+    view={builderViewWithCss}
+    generateJsonFormSchema={generateJsonFormSchema}
+  />
+}
+```
+
+After that, the menu item for downloading JSON schema will be available.
+
+![Form's JSON 05](/assets/forms-json/forms-json-05.png)

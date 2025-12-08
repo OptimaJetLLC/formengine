@@ -13,6 +13,13 @@
   "main": "src/index.ts",
   "type": "module",
   "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./package.json": "./package.json",
+    "./schemas/persisted-form.schema.json": "./public/schemas/persisted-form.schema.json"
+  },
   "keywords": [
     "react",
     "form",
@@ -41,8 +48,9 @@
   "scripts": {
     "build": "vite build",
     "clean": "rimraf dist temp",
-    "pack": "npm-run-all -l clean build create-archive",
-    "create-archive": "node ./config/pack"
+    "pack": "npm-run-all -l clean build create-json-schema create-archive",
+    "create-archive": "node ./config/pack",
+    "create-json-schema": "vite-node scripts/json-schema/generator.ts"
   },
   "dependencies": {
     "@fluent/bundle": "^0.19.1",
@@ -55,6 +63,10 @@
     "mobx": "^6.13.5",
     "mobx-react": "^9.2.0",
     "react": ">=17.0.2 || ^18 || ^19"
+  },
+  "devDependencies": {
+    "ts-json-schema-generator": "^2.4.0",
+    "vite-node": "^5.2.0"
   },
   "browserslist": {
     "production": [
@@ -69,9 +81,7 @@
     ]
   },
   "files": [
-    "dist/index.js.map",
-    "dist/index.js",
-    "dist/index.d.ts",
+    "dist",
     "README.md",
     "LICENSE"
   ]

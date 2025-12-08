@@ -1,4 +1,4 @@
-import type {BuilderView, EditorType, FormViewerProps} from '@react-form-builder/core'
+import type {BuilderComponent, BuilderView, ComponentLibraryDescription, EditorType, FormViewerProps} from '@react-form-builder/core'
 import type {ComponentType, ForwardedRef} from 'react'
 import type {AnnotationEditorProps} from './features/annotation-editors/AnnotationEditorProps'
 import type {CustomizationMap} from './features/customization'
@@ -7,6 +7,20 @@ import type {IPresetComponentOptions} from './features/preset-component/IPresetC
 import type {FormBuilderTheme} from './FormBuilderTheme'
 import type {IFormStorage} from './stores/IFormStorage'
 import type {IFormBuilder} from './utils/types'
+
+/**
+ * The JSON schema generator.
+ */
+export type GenerateJsonFormSchemaOptions = {
+  /**
+   * The array with components metadata.
+   */
+  components: BuilderComponent[]
+  /**
+   * The component library description.
+   */
+  descriptions?: ComponentLibraryDescription[]
+}
 
 /**
  * Properties of the React Form builder component.
@@ -63,10 +77,22 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
    * Indicates the theme preference.
    */
   theme?: FormBuilderTheme
-  
+
   /**
    * If true, the form name will be saved to localStorage and restored when the Form builder is reopened.
    * This functionality is enabled by default.
    */
   persistFormName?: boolean
+
+  /**
+   * The JSON schema generator for a form.
+   * @param options the generator options.
+   * @returns the JSON schema in string format.
+   */
+  generateJsonFormSchema?: (options: GenerateJsonFormSchemaOptions) => string
+
+  /**
+   * The file name for the generated JSON schema.
+   */
+  jsonSchemaFilename?: string
 }

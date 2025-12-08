@@ -142,6 +142,28 @@ The set of functions that validate the form data.
 
 ***
 
+### generateJsonFormSchema()?
+
+> `optional` **generateJsonFormSchema**: (`options`) => `string`
+
+The JSON schema generator for a form.
+
+#### Parameters
+
+##### options
+
+[`GenerateJsonFormSchemaOptions`](../type-aliases/GenerateJsonFormSchemaOptions.md)
+
+the generator options.
+
+#### Returns
+
+`string`
+
+the JSON schema in string format.
+
+***
+
 ### getForm()?
 
 > `optional` **getForm**: (`name?`, `options?`) => `string` \| `Promise`\<`string`\>
@@ -191,6 +213,14 @@ The initial data of the form.
 #### Inherited from
 
 `Omit.initialData`
+
+***
+
+### jsonSchemaFilename?
+
+> `optional` **jsonSchemaFilename**: `string`
+
+The file name for the generated JSON schema.
 
 ***
 

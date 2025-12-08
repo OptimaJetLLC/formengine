@@ -12,9 +12,16 @@ import {
 import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent, signatureComponentsDescriptions} from '@react-form-builder/components-signature'
 import {BiDi, isUndefined, namedObserver} from '@react-form-builder/core'
-import type {CustomizationMap, IFormBuilder, IPresetComponentOptions, PresetComponent} from '@react-form-builder/designer'
+import type {
+  CustomizationMap,
+  GenerateJsonFormSchemaOptions,
+  IFormBuilder,
+  IPresetComponentOptions,
+  PresetComponent,
+} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage, IndexedDbPresetStorage} from '@react-form-builder/indexed-db-form-storage'
+import {createSchema} from '@react-form-builder/json-schema-generator'
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import {Button, ButtonGroup} from 'rsuite'
 import config from './utils/config.json'
@@ -100,6 +107,12 @@ const versionStyle = {
 
 const rootDivCentralPanelStyle = {display: 'flex', width: '100%', flexDirection: 'column'} as const
 const buttonDivStyle = {display: 'flex', width: '100%', justifyContent: 'center', marginTop: 5} as const
+
+const generateJsonFormSchema = (options: GenerateJsonFormSchemaOptions) => {
+  const {components, descriptions} = options
+  const schema = createSchema(components, descriptions)
+  return JSON.stringify(schema, undefined, 2)
+}
 
 const RawFormBuilderApp = () => {
   const [indexedDbInitialized, setIndexedDbInitialized] = useState(false)
@@ -197,6 +210,7 @@ const RawFormBuilderApp = () => {
       presetComponentOptions={presetOptions}
       customization={customization}
       builderRef={setRef}
+      generateJsonFormSchema={generateJsonFormSchema}
     />
   )
 }

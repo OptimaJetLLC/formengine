@@ -83,7 +83,7 @@ npm-check-tsc:
 prepare-npm-archives:
   FROM +sources
   RUN apt-get update && apt-get -y install jq
-  LET packagesToArchive = 'packages/core packages/designer packages/designer-bundle packages/viewer-bundle packages/viewer-bundle-premium packages/views/rsuite packages/views/fast-qr packages/views/rich-text packages/views/google-map packages/views/uploader packages/views/signature packages/views/rsuite-table'
+  LET packagesToArchive = 'packages/core packages/designer packages/designer-bundle packages/json-schema-generator packages/viewer-bundle packages/viewer-bundle-premium packages/views/rsuite packages/views/fast-qr packages/views/rich-text packages/views/google-map packages/views/uploader packages/views/signature packages/views/rsuite-table'
   LET archiveName = ''
   FOR package IN $packagesToArchive
     RUN cd $package && npm run pack
@@ -114,6 +114,7 @@ prepare-documentation-archive:
 prepare-github-formengine-archive:
   COPY --dir BuildScripts/includes/github-optimajet-formengine/ github-formengine
   COPY --dir src/packages/core github-formengine/community/src/packages/core
+  COPY --dir src/packages/json-schema-generator github-formengine/community/src/packages/json-schema-generator
   COPY --dir src/packages/views/rsuite github-formengine/community/src/packages/views/rsuite
   COPY --dir src/packages/views/uploader github-formengine/community/src/packages/views/uploader
   COPY --dir src/packages/viewer-bundle github-formengine/community/src/packages/viewer-bundle
@@ -145,6 +146,7 @@ prepare-github-formenginesupport-archive:
   COPY --dir src/packages/designer $dst/packages/designer
   COPY --dir src/packages/designer-bundle $dst/packages/designer-bundle
   COPY --dir src/packages/indexed-db-form-storage $dst/packages/indexed-db-form-storage
+  COPY --dir src/packages/json-schema-generator $dst/packages/json-schema-generator
   COPY --dir src/packages/viewer-bundle $dst/packages/viewer-bundle
   COPY --dir src/packages/viewer-bundle-premium $dst/packages/viewer-bundle-premium
   COPY --dir src/packages/views/antd $dst/packages/views/antd
@@ -468,6 +470,7 @@ dependencies:
    src/packages/apps/demo src/packages/apps/example-builder src/packages/apps/example-viewer \
    src/packages/apps/formbuilder \
    src/packages/core src/packages/designer src/packages/designer-bundle src/packages/indexed-db-form-storage \
+   src/packages/json-schema-generator \
    src/packages/viewer-bundle src/packages/views/antd src/packages/views/default \
    src/packages/viewer-bundle-premium \
    src/packages/views/rsuite \
@@ -492,6 +495,7 @@ dependencies:
   COPY src/packages/designer/package.json src/packages/designer
   COPY src/packages/designer-bundle/package.json src/packages/designer-bundle
   COPY src/packages/indexed-db-form-storage/package.json src/packages/indexed-db-form-storage
+  COPY src/packages/json-schema-generator/package.json src/packages/json-schema-generator
   COPY src/packages/viewer-bundle/package.json src/packages/viewer-bundle
   COPY src/packages/viewer-bundle-premium/package.json src/packages/viewer-bundle-premium
 

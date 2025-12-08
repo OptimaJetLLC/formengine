@@ -1,5 +1,4 @@
 import {BuilderView, buildForm, ComponentData, define, string} from '@react-form-builder/core'
-import {isTemplateType} from '@react-form-builder/core/src/features/ui/templateUtil'
 import {FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {fireEvent, render, within} from '@testing-library/react'
@@ -17,7 +16,7 @@ const TestComponent = (props: TestComponentProps) => {
 const testComponent = define(TestComponent, 'TestComponent')
   .props({
     template: string.setup({editor: 'componentType'}).withEditorProps({
-      filter: (componentData: ComponentData) => isTemplateType(componentData.model.type)
+      filter: (componentData: ComponentData) => componentData.model.type.startsWith('Template:')
     }),
   })
   .build()

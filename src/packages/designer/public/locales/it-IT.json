@@ -933,6 +933,7 @@
     "formNamePlaceholder": "La mia bella forma",
     "formSaveError": "Salvataggio del modulo non riuscito! Vedere i log nella console del browser",
     "formSaved": "Il modulo viene salvato",
+    "generateJsonFormSchema": "Genera schema modulo JSON",
     "importForms": "Importa moduli",
     "importFormsError": "Importazione dei moduli non riuscita! Vedere i log nella console del browser",
     "importFormsSuccess": "Moduli importati",

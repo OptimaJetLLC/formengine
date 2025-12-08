@@ -12,24 +12,17 @@ import {
 import {rSuiteTableComponents, rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import {signatureComponent, signatureComponentsDescriptions} from '@react-form-builder/components-signature'
 import {BiDi, isUndefined} from '@react-form-builder/core'
-import type {CustomizationMap, IPresetComponentOptions, PresetComponent} from '@react-form-builder/designer'
+import type {CustomizationMap, GenerateJsonFormSchemaOptions, IPresetComponentOptions, PresetComponent} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage, IndexedDbPresetStorage} from '@react-form-builder/indexed-db-form-storage'
+import {createSchema} from '@react-form-builder/json-schema-generator'
 import {observer} from 'mobx-react'
 import {useEffect, useState} from 'react'
 import config from './utils/config.json'
 import {getFormFromJson, initialForms} from './utils/getFormFromJson'
 import {generatedLicenseKey} from './utils/license'
 
-const initialData = {
-  title: 'Hello! Hello!',
-  login: '1',
-  password: 'ok',
-  'Template:Test form 1': {login: 'tortuga', password: 'man!', agreement: false},
-  'Agreement Title': 'Data in agreement template',
-  'Input in template': 'Data in template level 1',
-  ['last name']: 'Bret',
-}
+const initialData = {}
 
 const components = [
   ...rSuiteComponents,
@@ -120,6 +113,12 @@ const customization: CustomizationMap = {
   },
 }
 
+const generateJsonFormSchema = (options: GenerateJsonFormSchemaOptions) => {
+  const {components, descriptions} = options
+  const schema = createSchema(components, descriptions)
+  return JSON.stringify(schema, undefined, 2)
+}
+
 const FormBuilderApp = observer(() => {
   const [indexedDbInitialized, setIndexedDbInitialized] = useState(false)
   const [presetOptions, setPresetOptions] = useState(getPresetOptions)
@@ -155,6 +154,7 @@ const FormBuilderApp = observer(() => {
       formStorage={formStorage}
       presetComponentOptions={presetOptions}
       customization={customization}
+      generateJsonFormSchema={generateJsonFormSchema}
     />
   )
 })

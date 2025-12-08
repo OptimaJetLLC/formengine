@@ -11,16 +11,18 @@ import {MonacoCodeEditor} from './MonacoCodeEditor'
  */
 export const UnconstrainedCodeEditor = (props: UnconstrainedCodeEditorProps) => {
   const editorRef = useRef<editor.IStandaloneCodeEditor>(null)
-  const {onChange} = props
+  const {onChange, onMount} = props
 
   useEffect(() => {
     editorRef.current?.setValue(props.initialValue)
   }, [props.initialValue])
 
-  const handleMount: OnMount = useCallback(editor => {
+  const handleMount: OnMount = useCallback((editor, monaco) => {
     editor.onDidChangeModelContent(() => onChange(editor.getValue()))
     editorRef.current = editor
-  }, [onChange])
+
+    onMount?.(editor, monaco)
+  }, [onChange, onMount])
 
   const options: editor.IStandaloneEditorConstructionOptions = useMemo(() => ({
     wordWrap: 'on',

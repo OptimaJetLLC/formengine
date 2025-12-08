@@ -2528,6 +2528,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/designer/type-aliases/GenerateJsonFormSchemaOptions",
+              label: "GenerateJsonFormSchemaOptions"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/designer/type-aliases/LocalizationComputeCodeParams",
               label: "LocalizationComputeCodeParams"
             },
@@ -3372,6 +3377,27 @@ const typedocSidebar = {
       link: {
         type: "doc",
         id: "api-reference/@react-form-builder/designer-bundle/index"
+      }
+    },
+    {
+      type: "category",
+      label: "@react-form-builder/json-schema-generator",
+      items: [
+        {
+          type: "category",
+          label: "Functions",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/json-schema-generator/functions/createSchema",
+              label: "createSchema"
+            }
+          ]
+        }
+      ],
+      link: {
+        type: "doc",
+        id: "api-reference/@react-form-builder/json-schema-generator/index"
       }
     },
     {

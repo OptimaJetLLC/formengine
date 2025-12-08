@@ -1,5 +1,6 @@
 import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import {faBars} from '@fortawesome/free-solid-svg-icons'
+import {faSitemap} from '@fortawesome/free-solid-svg-icons'
 import * as faSave from '@fortawesome/free-solid-svg-icons/faSave.js'
 import * as faTrash from '@fortawesome/free-solid-svg-icons/faTrash.js'
 import {namedObserver} from '@react-form-builder/core'
@@ -83,6 +84,7 @@ const Wrapper = customizable('MainMenu_Button', RawWrapper)
 
 const barsIcon = <FaIcon icon={faBars}/>
 const plusIcon = <PlusIcon/>
+const sitemapIcon = <FaIcon icon={faSitemap}/>
 
 const renderToggle = (props: WithAsProps, ref: Ref<any>) => (
   <Wrapper>
@@ -101,6 +103,10 @@ const RawMenu = () => {
   const handleSaveAs = useCallback((value: string) => {
     if (value) onSave(value)
   }, [onSave])
+
+  const handleGenerateSchema = useCallback(() => {
+    builderStore.downloadJsonFormSchema()
+  }, [builderStore])
 
   const onSaveAs = useSaveFormDialog(handleSaveAs)
   const handleDownload = useCallback(() => builderStore.download(), [builderStore])
@@ -141,6 +147,11 @@ const RawMenu = () => {
                      icon={trashIcon}>
         {t('leftMenu.clear')}
       </Dropdown.Item>
+      {builderStore.props.generateJsonFormSchema &&
+        <Dropdown.Item onSelect={handleGenerateSchema} icon={sitemapIcon}>
+          {t('leftMenu.generateJsonFormSchema')}
+        </Dropdown.Item>
+      }
     </MenuDropdown>
   </>
 }

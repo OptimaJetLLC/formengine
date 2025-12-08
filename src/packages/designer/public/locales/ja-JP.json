@@ -933,6 +933,7 @@
     "formNamePlaceholder": "私の美しい形",
     "formSaveError": "フォームの保存に失敗しました！ ブラウザコンソールのログを参照してください",
     "formSaved": "フォームが保存されます",
+    "generateJsonFormSchema": "JSONフォームスキーマの生成",
     "importForms": "フォームのインポート",
     "importFormsError": "フォームのインポートに失敗しました！ ブラウザコンソールのログを参照してください",
     "importFormsSuccess": "インポートされたフォーム",

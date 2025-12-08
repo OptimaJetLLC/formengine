@@ -933,6 +933,7 @@
     "formNamePlaceholder": "我美丽的形式",
     "formSaveError": "未能保存表格！ 查看浏览器控制台中的日志",
     "formSaved": "表格已保存",
+    "generateJsonFormSchema": "生成JSON表单架构",
     "importForms": "进口表格",
     "importFormsError": "导入表单失败! 查看浏览器控制台中的日志",
     "importFormsSuccess": "输入的表格",

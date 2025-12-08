@@ -11,6 +11,7 @@ const docusaurusPluginTypedocConfig = [
       '../../packages/core',
       '../../packages/designer',
       '../../packages/designer-bundle',
+      '../../packages/json-schema-generator',
       '../../packages/viewer-bundle',
       '../../packages/viewer-bundle-premium',
       '../../packages/views/fast-qr',

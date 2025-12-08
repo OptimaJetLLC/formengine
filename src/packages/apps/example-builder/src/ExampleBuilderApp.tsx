@@ -15,9 +15,10 @@ import {signatureComponent, signatureComponentsDescriptions} from '@react-form-b
 import {uploaderComponent, uploaderComponentsDescriptions} from '@react-form-builder/components-uploader'
 import type {Arguments, ComponentStore, FormValidators, FormViewerProps, IFormData, IFormViewer, Validators} from '@react-form-builder/core'
 import {ActionDefinition, BiDi, definePreset, isUndefined, Language} from '@react-form-builder/core'
-import type {FormBuilderI18n, FormBuilderTheme, IFormBuilder} from '@react-form-builder/designer'
+import type {FormBuilderI18n, FormBuilderTheme, GenerateJsonFormSchemaOptions, IFormBuilder} from '@react-form-builder/designer'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
+import {createSchema} from '@react-form-builder/json-schema-generator'
 import {useCallback, useEffect, useState} from 'react'
 import {frFR, trTR} from 'rsuite/esm/locales/index.js'
 import {CustomErrorWrapper} from './components/CustomErrorWrapper'
@@ -114,6 +115,12 @@ const view = new BuilderView(components)
   .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
   .withComponentLibraryDescription(rSuiteComponentsDescriptions)
   .withComponentLibraryDescription(uploaderComponentsDescriptions)
+
+const generateJsonFormSchema = (options: GenerateJsonFormSchemaOptions) => {
+  const {components, descriptions} = options
+  const schema = createSchema(components, descriptions)
+  return JSON.stringify(schema, undefined, 2)
+}
 
 function localizer(componentStore: ComponentStore, language: Language): Record<string, any> {
   return componentStore.key === 'comment' ? {placeholder: `${language?.fullCode || 'default language'} ${Math.random()}`} : {}
@@ -348,6 +355,7 @@ const FormBuilderApp = () => {
       i18n={enableCustomLanguages ? builderLanguages : undefined}
       errorWrapper={useCustomErrorWrapper ? CustomErrorWrapper : undefined}
       actions={actions}
+      generateJsonFormSchema={generateJsonFormSchema}
     />
   )
 }

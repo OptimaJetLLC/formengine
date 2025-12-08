@@ -21,6 +21,7 @@ import {
   debounce,
   embeddedFormModel,
   getTemplateName,
+  globalDefaultLanguage,
   isContainer,
   isTemplateType,
   isUndefined,
@@ -872,16 +873,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * Downloads the current form to a file in the browser.
    */
   download = () => {
-    const data = 'data:text/json;charset=utf-8,' + encodeURIComponent(this.formAsString)
-
-    const link = document.createElement('a')
-    link.setAttribute('href', data)
-    link.setAttribute('download', 'form.json')
-    document.body.appendChild(link)
-    link.onclick = () => {
-      document.body.removeChild(link)
-    }
-    link.click()
+    this.downloadJson(this.formAsString, 'form.json')
   }
 
   /**
@@ -1178,5 +1170,52 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     if (nextComponent) {
       this.selectNode(nextComponent)
     }
+  }
+
+  /**
+   * @returns the generated JSON schema for the form.
+   */
+  generateJsonFormSchema() {
+    const generator = this.props.generateJsonFormSchema
+    if (!generator) return
+
+    const descriptions = this.view.i18nDescriptions?.map(item => {
+      return item[globalDefaultLanguage.fullCode]
+    }) ?? []
+
+    const components = this.view.builderComponents
+      .filter(item => {
+        const {model} = item
+        return !isTemplateType(model.type) && !model.isFeatureEnabled(cfComponentIsPreset)
+      })
+
+    return generator({
+      components,
+      descriptions,
+    })
+  }
+
+  /**
+   * Downloads the form schema to a file in the browser.
+   */
+  downloadJsonFormSchema() {
+    const schema = this.generateJsonFormSchema()
+    if (!schema) return
+
+    const filename = this.props.jsonSchemaFilename ?? 'schema.json'
+    this.downloadJson(schema, filename)
+  }
+
+  private downloadJson(json: string, filename: string) {
+    const data = 'data:text/json;charset=utf-8,' + encodeURIComponent(json)
+
+    const link = document.createElement('a')
+    link.setAttribute('href', data)
+    link.setAttribute('download', filename)
+    document.body.appendChild(link)
+    link.onclick = () => {
+      document.body.removeChild(link)
+    }
+    link.click()
   }
 }

@@ -1,3 +1,4 @@
+import {resolve} from 'path'
 import {defineConfig, mergeConfig} from 'vite'
 
 import base from '../../vite.config'
@@ -20,5 +21,10 @@ export default defineConfig((env) => mergeConfig(base(env), {
     outputFile: {
       junit: './reports/junit-report.xml',
     },
-  }
+  },
+  resolve: {
+    alias: {
+      '@react-form-builder/core/src/features/form-viewer/components/ViewerStoreProvider': resolve(__dirname, '../../packages/core/src/features/form-viewer/components/ViewerStoreProvider.tsx'),
+    }
+  },
 }))

@@ -933,6 +933,7 @@
     "formNamePlaceholder": "فرم زیبای من",
     "formSaveError": "خطا در ذخیره فرم! لطفاً لاگ‌های کنسول مرورگر را بررسی نمایید.",
     "formSaved": "فرم ذخیره شده است",
+    "generateJsonFormSchema": "ایجاد طرح فرم JSON",
     "importForms": "واردات فرم‌ها",
     "importFormsError": "خطا در واردات فرم‌ها! لطفاً لاگ‌های کنسول مرورگر را بررسی نمایید.",
     "importFormsSuccess": "فرم‌ها با موفقیت وارد شدند",

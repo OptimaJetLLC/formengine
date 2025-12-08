@@ -933,6 +933,7 @@
     "formNamePlaceholder": "بلدي شكل جميل",
     "formSaveError": "فشل في حفظ النموذج! راجع السجلات في وحدة تحكم المتصفح",
     "formSaved": "يتم حفظ النموذج",
+    "generateJsonFormSchema": "إنشاء مخطط نموذج جسون",
     "importForms": "نماذج الاستيراد",
     "importFormsError": "فشل في استيراد النماذج! راجع السجلات في وحدة تحكم المتصفح",
     "importFormsSuccess": "النماذج المستوردة",

@@ -56,8 +56,10 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
     constrainedMonacoEditorModelRef.current.updateRestrictions(restrictions)
   }, [getRestrictions, initialValue])
 
-  const {onChange} = props
+  const {onChange, onMount} = props
   const handleMount: OnMount = useCallback((editor, monaco) => {
+    onMount?.(editor, monaco)
+
     editorRef.current = editor
 
     const model = editor.getModel()
@@ -81,7 +83,7 @@ export const ConstrainedCodeEditor = (props: CodeEditorProps) => {
       onChange(editableCode)
     })
     constrainedMonacoEditorModelRef.current = constrainedModel
-  }, [props.beginContextLine, props.endContextLine, getRestrictions, onChange])
+  }, [getRestrictions, onMount, props.beginContextLine, props.endContextLine, onChange])
 
   const options = useMemo(() => ({
     wordWrap: 'on',
