@@ -16,7 +16,7 @@ describe('Form settings test', () => {
     const settingsTabButton = await findByTestId('Settings_Tab')
     fireEvent.click(settingsTabButton)
 
-    const tooltipTypePicker = await findByTestId('tooltip-type-picker')
+    const tooltipTypePicker = await findByTestId('tooltipType-property-input')
     expect(tooltipTypePicker).toBeInTheDocument()
 
     await selectDropDownOption(renderResult, tooltipTypePicker, 'Rs Tooltip')
@@ -33,7 +33,7 @@ describe('Form settings test', () => {
     const settingsTabButton = await findByTestId('Settings_Tab')
     fireEvent.click(settingsTabButton)
 
-    const tooltipTypePicker = await findByTestId('error-type-picker')
+    const tooltipTypePicker = await findByTestId('errorType-property-input')
     expect(tooltipTypePicker).toBeInTheDocument()
 
     await selectDropDownOption(renderResult, tooltipTypePicker, 'Rs Error Message')
@@ -52,10 +52,10 @@ describe('Form settings test', () => {
     const settingsTabButton = await findByTestId('Settings_Tab')
     fireEvent.click(settingsTabButton)
 
-    const tooltipTypePicker = await findByTestId('tooltip-type-picker')
+    const tooltipTypePicker = await findByTestId('tooltipType-property-input')
     await expectDropDownToHaveTextContent(tooltipTypePicker, 'Rs Tooltip')
 
-    const modalTypePicker = await findByTestId('modal-type-picker')
+    const modalTypePicker = await findByTestId('modalType-property-input')
     await expectDropDownToHaveTextContent(modalTypePicker, 'Rs Modal')
 
     const form = parseForm(getFormBuilder()?.formAsString)
@@ -70,10 +70,10 @@ describe('Form settings test', () => {
     const settingsTabButton = await findByTestId('Settings_Tab')
     fireEvent.click(settingsTabButton)
 
-    const tooltipTypePicker = await findByTestId('tooltip-type-picker')
+    const tooltipTypePicker = await findByTestId('tooltipType-property-input')
     await expectDropDownToHaveTextContent(tooltipTypePicker, 'Select')
 
-    const modalTypePicker = await findByTestId('modal-type-picker')
+    const modalTypePicker = await findByTestId('modalType-property-input')
     await expectDropDownToHaveTextContent(modalTypePicker, 'Select')
 
     const menuClear = await findByTestId('main-menu-clear')
@@ -112,10 +112,10 @@ describe('Form settings test', () => {
     const settingsTabButton = await findByTestId('Settings_Tab')
     fireEvent.click(settingsTabButton)
 
-    const tooltipTypePicker = await findByTestId('tooltip-type-picker')
+    const tooltipTypePicker = await findByTestId('tooltipType-property-input')
     await expectDropDownToHaveTextContent(tooltipTypePicker, 'Select')
 
-    const modalTypePicker = await findByTestId('modal-type-picker')
+    const modalTypePicker = await findByTestId('modalType-property-input')
     await expectDropDownToHaveTextContent(modalTypePicker, 'Select')
 
     const formsTabButton = await findByTestId('Forms_Tab')
@@ -138,7 +138,7 @@ describe('Form settings test', () => {
     expect(form?.modalType).toEqual('RsModal')
 
     fireEvent.click(settingsTabButton)
-    await expectDropDownToHaveTextContent(await findByTestId('tooltip-type-picker'), 'Rs Tooltip')
-    await expectDropDownToHaveTextContent(await findByTestId('modal-type-picker'), 'Rs Modal')
+    await expectDropDownToHaveTextContent(await findByTestId('tooltipType-property-input'), 'Rs Tooltip')
+    await expectDropDownToHaveTextContent(await findByTestId('modalType-property-input'), 'Rs Modal')
   })
 })

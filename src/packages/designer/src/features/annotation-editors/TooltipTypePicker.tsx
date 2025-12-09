@@ -33,7 +33,7 @@ const RawTooltipTypePicker = (props: AnnotationEditorProps) => {
 
   return <LabeledProperty {...props}>
     <SInputPicker value={value ?? tooltipType ?? ''} data={data} onChange={onChange}
-                  onClean={onClean} block cleanable size={'xs'} placement={'auto'} data-testid="tooltip-type-picker"/>
+                  onClean={onClean} block cleanable size={'xs'} placement={'auto'}/>
   </LabeledProperty>
 }
 

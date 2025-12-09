@@ -95,7 +95,7 @@ describe('EmbeddedForm tests', () => {
     const component = await findByText(message)
     fireEvent.click(component)
 
-    const formNamePicker = await findByTestId('formName-form-name-picker')
+    const formNamePicker = await findByTestId('formName-property-input')
 
     fireEvent.click(formNamePicker)
 

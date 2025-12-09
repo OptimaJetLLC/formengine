@@ -45,10 +45,10 @@ describe('FormComponentPicker test', () => {
     const testComponent = await findByTestId('test-component')
     fireEvent.click(testComponent)
 
-    const screenPropPicker = await findByTestId('screen-component-key-by-filter-picker')
+    const screenPropPicker = await findByTestId('screen-property-input')
     await selectDropDownOption(renderResult, screenPropPicker, 'Screen')
 
-    const buttonPropPicker = await findByTestId('button-component-key-by-filter-picker')
+    const buttonPropPicker = await findByTestId('button-property-input')
     await selectDropDownOption(renderResult, buttonPropPicker, 'button1')
 
     expect(await findByTestId('test-component-screen')).toHaveTextContent('Screen')

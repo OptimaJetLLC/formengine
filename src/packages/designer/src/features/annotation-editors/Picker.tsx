@@ -1,6 +1,6 @@
 import type {PropertyAnnotation} from '@react-form-builder/core'
 import {isUndefined} from '@react-form-builder/core'
-import {useState} from 'react'
+import {useMemo} from 'react'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 import {SInputPicker} from './SInputPicker'
@@ -23,15 +23,15 @@ const addCustomValue = ({data}: PropertyAnnotation, value: string) => {
  * @returns the React element.
  */
 export const Picker = (props: AnnotationEditorProps & { 'data-testid'?: string }) => {
-  const labeledProps = {...props}
-  delete labeledProps['data-testid']
-
+  const {['data-testid']: testId, ...labeledProps} = props
   const {value, onChange, annotation, onClean} = props
-  const [data] = useState(() => addCustomValue(annotation as PropertyAnnotation, value))
+  const data = useMemo(() => {
+    return addCustomValue(annotation as PropertyAnnotation, value)
+  },[annotation, value])
 
   return <LabeledProperty {...labeledProps}>
     <SInputPicker value={value ?? props.annotation.default ?? ''} data={data} onChange={onChange} onClean={onClean}
                   block cleanable creatable size={'xs'} {...props.annotation.editorProps} placement={'autoVerticalEnd'}
-                  data-testid={props['data-testid']}/>
+                  data-testid={testId}/>
   </LabeledProperty>
 }

@@ -65,7 +65,7 @@ const RawUseDropzoneInput = (props: AnnotationEditorProps) => {
   const labelProps = useDropzoneLabelProps(props, editorType)
 
   return <LabeledProperty {...labelProps}>
-    <SCheckbox checked={value} onChange={onChange} data-testid={`checkbox-${props.annotation.key}`}/>
+    <SCheckbox checked={value} onChange={onChange}/>
   </LabeledProperty>
 }
 

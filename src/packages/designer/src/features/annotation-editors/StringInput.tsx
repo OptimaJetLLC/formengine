@@ -45,13 +45,17 @@ const STextareaSizer = styled.div`
   }
 `
 
+interface ResizableStringInputProps extends AnnotationEditorProps {
+  'data-testid'?: string
+}
+
 /**
  * The property editor for the string property type without a label.
  * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const ResizableStringInput = (props: AnnotationEditorProps) => {
-  const {value = '', annotation, onChange, onClean} = props
+export const ResizableStringInput = (props: ResizableStringInputProps) => {
+  const {value = '', ['data-testid']: testId, annotation, onChange, onClean} = props
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -72,7 +76,7 @@ export const ResizableStringInput = (props: AnnotationEditorProps) => {
     }
   }, [])
 
-  return <STextareaSizer ref={containerRef} data-testid={`resizable-string-input-${props.annotation.key}`}>
+  return <STextareaSizer ref={containerRef} data-testid={testId}>
     <Input ref={inputRef} rows={1} name={annotation.key} value={value} onChange={onChange} size="xs" as="textarea"
            {...props.annotation.editorProps}/>
     <CleanButton onClick={onClean}/>

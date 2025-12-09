@@ -165,6 +165,7 @@ interface LabeledWrapperProps extends ComponentProps<any> {
   hint?: ReactNode
   required?: boolean
   dataTestId?: string
+  inputTestId?: string
 }
 
 const LeftButtonPlaceholder = styled.div`
@@ -177,7 +178,7 @@ const LeftButtonPlaceholder = styled.div`
  * @returns the React element.
  */
 export const LabeledWrapper = (props: LabeledWrapperProps) => {
-  const {children, className, style, label, hint, required, leftButton, dataTestId} = props
+  const {children, className, style, label, hint, required, leftButton, dataTestId, inputTestId} = props
   const id = useUniqueId('id-')
   const labelClassName = cx({required})
 
@@ -188,7 +189,9 @@ export const LabeledWrapper = (props: LabeledWrapperProps) => {
         <>{label}</>
       </CustomizedLabel>
     </Columns>
-    {!!children && <CustomizedInput>{cloneElement(children, {id})}</CustomizedInput>}
+    {!!children && <CustomizedInput>
+      {cloneElement(children, {id, 'data-testid': inputTestId})}
+    </CustomizedInput>}
   </LabeledInput>
 }
 
@@ -213,7 +216,8 @@ const RawLabeledProperty = (props: LabeledPropertyProps) => {
                          hint={hint}
                          label={label}
                          leftButton={leftButton}
-                         dataTestId={`${annotation.key}-labeled-wrapper`}>
+                         dataTestId={`${annotation.key}-labeled-wrapper`}
+                         inputTestId={`${annotation.key}-property-input`}>
     {children}
   </LabeledWrapper>
 }

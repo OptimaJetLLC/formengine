@@ -39,7 +39,7 @@ describe('ComponentTypePicker test', () => {
     const testComponent = await findByTestId('test-component-template')
     fireEvent.click(testComponent)
 
-    const templatePropPicker = await findByTestId('template-component-by-filter-picker')
+    const templatePropPicker = await findByTestId('template-property-input')
     await selectDropDownOption(renderResult, templatePropPicker, 'template one')
 
     expect(testComponent).toHaveTextContent('template one')

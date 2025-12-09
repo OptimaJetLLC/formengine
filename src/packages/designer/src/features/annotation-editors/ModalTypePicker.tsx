@@ -28,7 +28,7 @@ const RawModalTypePicker = (props: AnnotationEditorProps) => {
 
   return <LabeledProperty {...props}>
     <SInputPicker value={value ?? modalType ?? ''} data={data} onChange={onChange}
-                  onClean={onClean} block cleanable size={'xs'} placement={'auto'} data-testid="modal-type-picker"/>
+                  onClean={onClean} block cleanable size={'xs'} placement={'auto'}/>
   </LabeledProperty>
 }
 

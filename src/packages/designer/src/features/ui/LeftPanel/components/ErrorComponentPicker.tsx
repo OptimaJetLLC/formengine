@@ -48,7 +48,7 @@ const RawErrorComponentPicker = () => {
     hasComputeCode,
   }
 
-  return <Picker {...props} data-testid="error-type-picker"/>
+  return <Picker {...props}/>
 }
 
 export const ErrorComponentPicker = namedObserver('ErrorComponentPicker', RawErrorComponentPicker)

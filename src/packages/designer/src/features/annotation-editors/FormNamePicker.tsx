@@ -27,7 +27,6 @@ export const FormNamePicker = (props: AnnotationEditorProps) => {
 
   return <LabeledProperty {...props}>
     <SInputPicker value={value ?? annotation.default ?? ''} data={labelChildren} onChange={onChange} onClean={onClean}
-                  block cleanable size={'xs'} {...editorProps} placement={'autoVerticalEnd'}
-                  data-testid={`${props.annotation.key}-form-name-picker`}/>
+                  block cleanable size={'xs'} {...editorProps} placement={'autoVerticalEnd'}/>
   </LabeledProperty>
 }

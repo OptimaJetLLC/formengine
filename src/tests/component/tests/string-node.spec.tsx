@@ -76,7 +76,7 @@ describe('string-node annotation test', () => {
 
     fireEvent.click(testDivider)
 
-    const textValue = await findByTestId('resizable-string-input-children')
+    const textValue = await findByTestId('children-property-input')
     const textArea = textValue.querySelector('textarea')
     if (!textArea) {
       throw new Error('Cannot find text area')
@@ -88,7 +88,7 @@ describe('string-node annotation test', () => {
     expect(within(testDivider).queryByText('test value')).toBeInTheDocument()
 
     // dropzone should be displayed in the component
-    const checkboxChildren = await findByTestId('checkbox-children')
+    const checkboxChildren = await findByTestId('useDropzone-property-input')
     const useDropzone = await within(checkboxChildren).findByTestId('checkbox-control-inner')
     fireEvent.click(useDropzone)
     expect(await within(testDivider).findByTestId('inner-dropzone')).toBeInTheDocument()
@@ -96,7 +96,7 @@ describe('string-node annotation test', () => {
     // dropzone should not be displayed in the component
     fireEvent.click(useDropzone)
     expect(within(testDivider).queryByTestId('inner-dropzone')).not.toBeInTheDocument()
-    const newTextValue = await findByTestId('resizable-string-input-children')
+    const newTextValue = await findByTestId('children-property-input')
     const newTextArea = newTextValue.querySelector('textarea')
     expect(newTextArea).toHaveValue('')
   })
