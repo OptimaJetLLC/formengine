@@ -1,0 +1,119 @@
+{
+  "version": "1",
+  "tooltipType": "RsTooltip",
+  "modalType": "RsModal",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "datepicker_limityear",
+        "type": "RsDatePicker",
+        "props": {
+          "limitEndYear": {
+            "value": 2
+          },
+          "limitStartYear": {
+            "value": 1
+          },
+          "label": {
+            "value": "Limit year"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "limityear"
+          }
+        ]
+      },
+      {
+        "key": "datepicker_isoweek",
+        "type": "RsDatePicker",
+        "props": {
+          "isoWeek": {
+            "value": true
+          },
+          "label": {
+            "value": "ISO Week"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "isoweek"
+          }
+        ]
+      },
+      {
+        "key": "datepicker_weeknumbers",
+        "type": "RsDatePicker",
+        "props": {
+          "showWeekNumbers": {
+            "value": true
+          },
+          "label": {
+            "value": "Show Week numbers"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "weeknumbers"
+          }
+        ]
+      },
+      {
+        "key": "datepicker_onetap",
+        "type": "RsDatePicker",
+        "props": {
+          "oneTap": {
+            "value": true
+          },
+          "label": {
+            "value": "One tap"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "onetap"
+          }
+        ]
+      },
+      {
+        "key": "datepicker_showmeridiem",
+        "type": "RsDatePicker",
+        "props": {
+          "format": {
+            "value": "yyyy-MM-dd hh:mm"
+          },
+          "showMeridiem": {
+            "value": true
+          },
+          "label": {
+            "value": "Show Meridiem"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "showmeridiem"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

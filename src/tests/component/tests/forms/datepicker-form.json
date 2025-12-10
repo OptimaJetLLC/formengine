@@ -1,0 +1,185 @@
+{
+  "version": "1",
+  "tooltipType": "RsTooltip",
+  "modalType": "RsModal",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "datepicker_showdialog",
+        "type": "RsDatePicker",
+        "props": {
+          "label": {
+            "value": "Show Dialog"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "showdialog"
+          }
+        ]
+      },
+      {
+        "key": "datepicker_disabled",
+        "type": "RsDatePicker",
+        "props": {
+          "label": {
+            "value": "disabled"
+          },
+          "disabled": {
+            "value": true
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "disabled"
+          }
+        ]
+      },
+      {
+        "key": "datepicker_defaultopen",
+        "type": "RsDatePicker",
+        "props": {
+          "defaultOpen": {
+            "value": true
+          },
+          "label": {
+            "value": "Default open"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "defaultopen"
+          }
+        ]
+      },
+      {
+        "key": "datepicker_cleanable",
+        "type": "RsDatePicker",
+        "props": {
+          "cleanable": {
+            "value": true
+          },
+          "label": {
+            "value": "Cleanable"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "cleanable"
+          }
+        ]
+      },
+      {
+        "key": "datepicker_format",
+        "type": "RsDatePicker",
+        "props": {
+          "format": {
+            "value": "yyyy-MM-dd"
+          },
+          "label": {
+            "value": "Format"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "format"
+          }
+        ]
+      },
+      {
+        "key": "datepicker_placeholder",
+        "type": "RsDatePicker",
+        "props": {
+          "placeholder": {
+            "value": "datetime picker"
+          },
+          "label": {
+            "value": "Placeholder"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "placeholder"
+          }
+        ]
+      },
+      {
+        "key": "datepicker_defaultvalue",
+        "type": "RsDatePicker",
+        "props": {
+          "readOnly": {
+            "value": false
+          },
+          "defaultValue": {
+            "value": "2025-12-01T12:00:00.000Z"
+          },
+          "label": {
+            "value": "Default value"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "defaultvalue"
+          }
+        ]
+      },
+      {
+        "key": "datepicker_readonly",
+        "type": "RsDatePicker",
+        "props": {
+          "readOnly": {
+            "value": true
+          },
+          "label": {
+            "value": "Readonly"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "readonly"
+          }
+        ]
+      },
+      {
+        "key": "datepicker_editable",
+        "type": "RsDatePicker",
+        "props": {
+          "editable": {
+            "value": false
+          },
+          "label": {
+            "value": "Editable"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "editable"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
