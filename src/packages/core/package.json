@@ -10,16 +10,6 @@
     "type": "git",
     "url": "git+ssh://git@github.com/optimajet/formengine.git"
   },
-  "main": "src/index.ts",
-  "type": "module",
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "import": "./src/index.ts"
-    },
-    "./package.json": "./package.json",
-    "./schemas/persisted-form.schema.json": "./public/schemas/persisted-form.schema.json"
-  },
   "keywords": [
     "react",
     "form",
@@ -45,11 +35,24 @@
   "bugs": {
     "email": "support@optimajet.com"
   },
+  "main": "src/index.ts",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./lite": {
+      "import": "./src/index-lite.ts"
+    },
+    "./package.json": "./package.json",
+    "./schemas/persisted-form.schema.json": "./public/schemas/persisted-form.schema.json"
+  },
   "scripts": {
     "build": "vite build",
     "clean": "rimraf dist temp",
     "pack": "npm-run-all -l clean build create-json-schema create-archive",
-    "create-archive": "node ./config/pack",
+    "create-archive": "node ./config/pack.ts",
     "create-json-schema": "vite-node scripts/json-schema/generator.ts"
   },
   "dependencies": {
@@ -81,7 +84,8 @@
     ]
   },
   "files": [
-    "dist",
+    "dist/",
+    "package.json",
     "README.md",
     "LICENSE"
   ]

@@ -2,12 +2,16 @@ import {resolve} from 'path'
 import {defineConfig, mergeConfig} from 'vite'
 
 import base from '../../vite.config'
+import {rewriteDeepImports} from './vite-plugin-rewrite-deep-imports'
 
 const testDir = './tests/**/*.{test,spec}.?(c|m)[jt]s?(x)'
 const configDir = '../component/config/setup.ts'
 
 // TODO move common to base config
 export default defineConfig((env) => mergeConfig(base(env), {
+  plugins: [
+    rewriteDeepImports()
+  ],
   test: {
     environment: 'jsdom', // Use jsdom for testing in the browser
     include: [testDir],
