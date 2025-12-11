@@ -53,6 +53,8 @@ const getOs = (): OS => {
 }
 
 const findHotkeyAction = (event: KeyboardEvent) => {
+  if (!event.key) return
+
   const os = getOs()
 
   const keys = hotKeys[os]
