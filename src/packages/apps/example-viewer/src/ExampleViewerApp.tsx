@@ -1,67 +1,64 @@
-import {
-  formEngineRsuiteCssLoader,
-  ltrCssLoader,
-  rsButton,
-  rsContainer,
-  rsDatePicker,
-  rsErrorMessage,
-  rsInput,
-  RsLocalizationWrapper,
-} from '@react-form-builder/components-rsuite'
-import {BiDi, buildForm, createView, FormViewer} from '@react-form-builder/core'
-import {useMemo} from 'react'
+import type {BuilderTheme} from '@react-form-builder/core'
+import {BuilderThemeProvider} from '@react-form-builder/core'
+import {useEffect, useMemo, useState} from 'react'
+import {MuiViewer} from './components/MuiViewer'
+import {RsuiteViewer} from './components/RsuiteViewer'
+import {ThemePicker} from './components/ThemePicker'
+import type {ViewType} from './components/ViewContext'
+import {ViewProvider} from './components/ViewContext'
+import {ViewPicker} from './components/ViewPicker'
 
-const simpleForm = buildForm({errorType: 'RsErrorMessage'})
-  .component('container', 'RsContainer')
-  .style({flexDirection: 'row'})
-  .children(builder =>
-    builder
-      .component('firstName', 'RsInput')
-      .prop('placeholder', 'Enter your first name')
-      .prop('label', 'First Name')
-      .validation('required')
+const storageKey = 'react-form-viewer-view'
+const defaultView: ViewType = 'rsuite'
 
-      .component('lastName', 'RsInput')
-      .prop('placeholder', 'Enter your last name')
-      .prop('label', 'Last Name')
-      .validation('required')
-  )
+const themeStorageKey = 'react-form-viewer-theme'
+const defaultTheme: BuilderTheme = 'light'
 
-  .component('birthDate', 'RsDatePicker')
-  .prop('label', 'Birth Date')
-  .prop('oneTap', true)
-  .validation('min')
-  .args({value: '1900-01-07T12:25:37.000Z'})
+const usePersistentView = (): [ViewType, (view: ViewType) => void] => {
+  const [view, setViewState] = useState<ViewType>(() => {
+    return (localStorage.getItem(storageKey) ?? defaultView) as ViewType
+  })
 
-  .component('submit', 'RsButton')
-  .prop('children', 'Submit')
-  .prop('color', 'blue')
-  .prop('appearance', 'primary')
-  .event('onClick')
-  .commonAction('validate')
-  .args({failOnError: true})
-  .customAction('onSubmit')
-  .json()
+  useEffect(() => localStorage.setItem(storageKey, view), [view])
 
-// Utility functions that don't depend on component state
-const getForm = () => simpleForm
-const onSubmit = (e: any) => {
-  // submit the form to the backend
-  alert('Form data: ' + JSON.stringify(e.data))
+  return [view, setViewState]
 }
 
-const components = [rsContainer, rsInput, rsButton, rsDatePicker, rsErrorMessage].map(def => def.build().model)
+const usePersistentTheme = () => {
+  const [theme, setTheme] = useState<BuilderTheme>(() => {
+    return (localStorage.getItem(themeStorageKey) ?? defaultTheme) as BuilderTheme
+  })
 
-const viewWithCss = createView(components)
-  .withViewerWrapper(RsLocalizationWrapper)
-  .withCssLoader(BiDi.LTR, ltrCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
+  useEffect(() => localStorage.setItem(themeStorageKey, theme), [theme])
+
+  return [theme, setTheme] as const
+}
+
+const controlsWrapperStyle = {
+  display: 'flex',
+  justifyContent: 'end',
+  alignItems: 'center',
+  padding: 15,
+  gap: 10,
+}
 
 /**
  * @returns the App element.
  */
 export const ExampleViewerApp = () => {
-  const actions = useMemo(() => ({onSubmit}), [])
+  const [view, setView] = usePersistentView()
+  const [theme, setTheme] = usePersistentTheme()
+  const providerValue = useMemo(() => ({view, setView}), [view, setView])
 
-  return <FormViewer view={viewWithCss} getForm={getForm} actions={actions} />
+  return (
+    <BuilderThemeProvider value={theme}>
+      <ViewProvider value={providerValue}>
+        <div style={controlsWrapperStyle}>
+          <ThemePicker theme={theme} onChange={setTheme} />
+          <ViewPicker />
+        </div>
+        {view === 'rsuite' ? <RsuiteViewer /> : <MuiViewer />}
+      </ViewProvider>
+    </BuilderThemeProvider>
+  )
 }

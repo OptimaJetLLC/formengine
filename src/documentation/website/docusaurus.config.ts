@@ -15,9 +15,11 @@ const docusaurusPluginTypedocConfig = [
       '../../packages/viewer-bundle',
       '../../packages/viewer-bundle-premium',
       '../../packages/views/fast-qr',
-      '../../packages/views/rich-text',
       '../../packages/views/google-map',
+      '../../packages/views/material-ui',
+      '../../packages/views/rich-text',
       '../../packages/views/rsuite',
+      '../../packages/views/rsuite-table',
       '../../packages/views/signature',
       '../../packages/views/uploader'
     ],

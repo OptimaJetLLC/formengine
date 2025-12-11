@@ -1,18 +1,4 @@
-import agreement from '../../forms/agreement.json'
-import SampleForm from '../../forms/SampleForm.json'
-import template from '../../forms/template.json'
-import uploader from '../../forms/uploader.json'
-
-const forms: Record<string, any> = {
-  SampleForm,
-  template,
-  agreement,
-  uploader,
-}
-
-export const initialForms: Record<string, string> = {}
-
-Object.entries(forms).forEach(([key, value]) => (initialForms[key] = JSON.stringify(value)))
+import {forms} from '../../forms'
 
 /**
  * Returns the form from json.
@@ -20,6 +6,6 @@ Object.entries(forms).forEach(([key, value]) => (initialForms[key] = JSON.string
  * @returns the form.
  */
 export function getFormFromJson(name?: string) {
-  if (name && initialForms[name]) return initialForms[name]
+  if (name && forms[name]) return forms[name]
   throw new Error(`Unable to load form '${name}'`)
 }

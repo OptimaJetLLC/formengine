@@ -59,6 +59,12 @@ export const disabled = boolean.setup({disabled: true})
  */
 export const number = createProperty('number').typed('number')
 
+
+/**
+ * The annotation builder for a component property with type 'number' that cannot be negative.
+ */
+export const nonNegNumber = number.withEditorProps({min: 0})
+
 /**
  * The annotation builder for a component property with type 'CSS unit' (width, height, etc.).
  */
@@ -133,6 +139,12 @@ export const nodeArray = createNodeAnnotation<ReactNode[]>('nodeArray')
  * The annotation builder for a component property with type 'enum', the property value can only be one of enum.
  */
 export const oneOf = createProperty('oneOf').oneOf.bind(createProperty('oneOf'))
+
+/**
+ * The annotation builder for a component property with type 'enum', the property value can only be one of enum.
+ * New values cannot be created (non-creatable).
+ */
+export const oneOfStrict = createProperty('oneOf').oneOf.bind(createProperty('oneOf').withEditorProps({creatable: false}))
 
 /**
  * The annotation builder for a component property with type 'enum', the property value can contain multiple enum values.

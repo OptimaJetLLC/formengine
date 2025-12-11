@@ -83,7 +83,21 @@ npm-check-tsc:
 prepare-npm-archives:
   FROM +sources
   RUN apt-get update && apt-get -y install jq
-  LET packagesToArchive = 'packages/core packages/designer packages/designer-bundle packages/json-schema-generator packages/viewer-bundle packages/viewer-bundle-premium packages/views/rsuite packages/views/fast-qr packages/views/rich-text packages/views/google-map packages/views/uploader packages/views/signature packages/views/rsuite-table'
+  LET packagesToArchive = "
+    packages/core
+    packages/designer
+    packages/designer-bundle
+    packages/json-schema-generator packages/viewer-bundle
+    packages/viewer-bundle-premium
+    packages/views/rsuite
+    packages/views/material-ui
+    packages/views/fast-qr
+    packages/views/rich-text
+    packages/views/google-map
+    packages/views/uploader
+    packages/views/signature
+    packages/views/rsuite-table
+  "
   LET archiveName = ''
   FOR package IN $packagesToArchive
     RUN cd $package && npm run pack
@@ -116,6 +130,7 @@ prepare-github-formengine-archive:
   COPY --dir src/packages/core github-formengine/community/src/packages/core
   COPY --dir src/packages/json-schema-generator github-formengine/community/src/packages/json-schema-generator
   COPY --dir src/packages/views/rsuite github-formengine/community/src/packages/views/rsuite
+  COPY --dir src/packages/views/material-ui github-formengine/community/src/packages/views/material-ui
   COPY --dir src/packages/views/uploader github-formengine/community/src/packages/views/uploader
   COPY --dir src/packages/viewer-bundle github-formengine/community/src/packages/viewer-bundle
   COPY --dir src/packages/apps/example-viewer github-formengine/community/src/packages/apps/example-viewer
@@ -151,6 +166,7 @@ prepare-github-formenginesupport-archive:
   COPY --dir src/packages/viewer-bundle-premium $dst/packages/viewer-bundle-premium
   COPY --dir src/packages/views/antd $dst/packages/views/antd
   COPY --dir src/packages/views/rsuite $dst/packages/views/rsuite
+  COPY --dir src/packages/views/material-ui $dst/packages/views/material-ui
   COPY --dir src/packages/views/rsuite-table $dst/packages/views/rsuite-table
   COPY --dir src/packages/views/signature $dst/packages/views/signature
   COPY --dir src/packages/views/fast-qr $dst/packages/views/fast-qr
@@ -415,6 +431,7 @@ PUBLISH_RELEASE_TO_NPM:
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-core"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-designer"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rsuite"
+  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-material-ui"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rsuite-table"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-fast-qr"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rich-text"
@@ -474,6 +491,7 @@ dependencies:
    src/packages/viewer-bundle src/packages/views/antd src/packages/views/default \
    src/packages/viewer-bundle-premium \
    src/packages/views/rsuite \
+   src/packages/views/material-ui \
    src/packages/views/rsuite-table \
    src/packages/views/signature \
    src/packages/views/fast-qr \
@@ -502,6 +520,7 @@ dependencies:
   COPY src/packages/views/antd/package.json src/packages/views/antd
   COPY src/packages/views/default/package.json src/packages/views/default
   COPY src/packages/views/rsuite/package.json src/packages/views/rsuite
+  COPY src/packages/views/material-ui/package.json src/packages/views/material-ui
   COPY src/packages/views/rsuite-table/package.json src/packages/views/rsuite-table
   COPY src/packages/views/signature/package.json src/packages/views/signature
   COPY src/packages/views/fast-qr/package.json src/packages/views/fast-qr

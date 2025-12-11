@@ -281,6 +281,19 @@
   }
 }
 
+.optimajet-formbuilder .subtle-style {
+  .rs-picker-toggle-value {
+    color: var(--rs-btn-default-text) !important;
+    line-height: 22px;
+  }
+
+  .rs-picker-toggle {
+    background-color: var(--rs-btn-default-bg) !important;
+    border: none;
+    min-width: 30px;
+  }
+}
+
 .optimajet-formbuilder,
 .rs-toast-provider,
 .rs-modal,

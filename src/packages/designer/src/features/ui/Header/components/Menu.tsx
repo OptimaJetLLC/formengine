@@ -22,6 +22,7 @@ import {useCreateForm} from '../../../../utils/useCreateForm'
 import {FaIcon} from '../../../components/Icons'
 import {customizable} from '../../../customization'
 import {MenuLanguageSwitch} from '../../../localization'
+import {useTranslationPart} from '../../../localization/hooks'
 import {useShowMessage} from '../../../toast/toast'
 import {useSaveFormDialog} from '../../dialogs/useSaveFormDialog'
 import {exportForms, importForms} from './formUtils'
@@ -95,9 +96,9 @@ const renderToggle = (props: WithAsProps, ref: Ref<any>) => (
 
 const MenuDropdown = customizable('MainMenu_Dropdown', Dropdown)
 
-const RawMenu = () => {
+const RawMenuItems = () => {
   const builderStore = useBuilderStore()
-  const {t} = useTranslation()
+  const t = useTranslationPart('leftMenu')
   const onSave = useSaveForm()
 
   const handleSaveAs = useCallback((value: string) => {
@@ -121,39 +122,52 @@ const RawMenu = () => {
   const showPromptDialog = useCreateForm()
 
   return <>
-    <MenuDropdown title={t('leftMenu.menu')} size={'sm'} renderToggle={renderToggle} menuStyle={menuStyle}>
-      {builderStore.formStorageEnabled && <Dropdown.Item onSelect={showPromptDialog} icon={plusIcon}
-                                                         data-testid="menu-add-new-form-button">
-        {t('leftMenu.addNewForm')}
-      </Dropdown.Item>}
-      <Dropdown.Item onSelect={handleDownload} icon={fileDownloadIcon}>
-        {t('leftMenu.download')}
+    {builderStore.formStorageEnabled && (
+      <Dropdown.Item onSelect={showPromptDialog} icon={plusIcon}
+                     data-testid="menu-add-new-form-button">
+        {t('addNewForm')}
       </Dropdown.Item>
-      <Dropdown.Item onSelect={handleUpload} icon={fileUploadIcon}>
-        {t('leftMenu.upload')}
+    )}
+    <Dropdown.Item onSelect={handleDownload} icon={fileDownloadIcon}>
+      {t('download')}
+    </Dropdown.Item>
+    <Dropdown.Item onSelect={handleUpload} icon={fileUploadIcon}>
+      {t('upload')}
+    </Dropdown.Item>
+    <MenuLanguageSwitch/>
+    {builderStore.formStorageEnabled && <>
+      <Dropdown.Item onSelect={onSave} icon={saveIcon}>
+        {t('save')}
       </Dropdown.Item>
-      <MenuLanguageSwitch/>
-      {builderStore.formStorageEnabled && <>
-        <Dropdown.Item onSelect={onSave} icon={saveIcon}>
-          {t('leftMenu.save')}
-        </Dropdown.Item>
-        <Dropdown.Item onSelect={onSaveAs} icon={saveAsIcon}>
-          {t('leftMenu.saveAs')}
-        </Dropdown.Item>
-        <ExportFormsButton/>
-        <ImportFormsButton/>
-      </>}
-      <Dropdown.Item onSelect={handleClear} data-testid="main-menu-clear"
-                     icon={trashIcon}>
-        {t('leftMenu.clear')}
+      <Dropdown.Item onSelect={onSaveAs} icon={saveAsIcon}>
+        {t('saveAs')}
       </Dropdown.Item>
+      <ExportFormsButton/>
+      <ImportFormsButton/>
+    </>}
+    <Dropdown.Item onSelect={handleClear} data-testid="main-menu-clear"
+                   icon={trashIcon}>
+      {t('clear')}
+    </Dropdown.Item>
       {builderStore.props.generateJsonFormSchema &&
         <Dropdown.Item onSelect={handleGenerateSchema} icon={sitemapIcon}>
           {t('leftMenu.generateJsonFormSchema')}
         </Dropdown.Item>
       }
-    </MenuDropdown>
   </>
 }
 
-export const Menu = namedObserver('Menu', RawMenu)
+const MenuItems = customizable('MainMenu_Items', RawMenuItems)
+
+/**
+ * Main menu component for the form builder header.
+ * @returns the React element.
+ */
+export const Menu = () => {
+  const t = useTranslationPart('leftMenu')
+  return (
+    <MenuDropdown title={t('menu')} size={'sm'} renderToggle={renderToggle} menuStyle={menuStyle}>
+      <MenuItems/>
+    </MenuDropdown>
+  )
+}

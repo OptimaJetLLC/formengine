@@ -143,6 +143,7 @@ function translateComponentsDescriptions() {
     '../../src/packages/views/google-map/src/i18n',
     '../../src/packages/views/rich-text/src/i18n',
     '../../src/packages/views/rsuite/src/i18n',
+    '../../src/packages/views/material-ui/src/i18n',
     '../../src/packages/views/rsuite-table/src/i18n',
     '../../src/packages/views/signature/src/i18n',
     '../../src/packages/views/uploader/src/i18n',

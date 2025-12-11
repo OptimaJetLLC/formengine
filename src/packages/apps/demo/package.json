@@ -22,6 +22,7 @@
     "@monaco-editor/react": "^4.7.0",
     "@react-form-builder/components-fast-qr": "^7.9.0",
     "@react-form-builder/components-google-map": "^7.9.0",
+    "@react-form-builder/components-material-ui": "^7.9.0",
     "@react-form-builder/components-rich-text": "^7.9.0",
     "@react-form-builder/components-rsuite": "^7.9.0",
     "@react-form-builder/components-rsuite-table": "^7.9.0",
@@ -33,7 +34,8 @@
     "mobx-react": "^9.2.0",
     "monaco-editor": "^0.52.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "rsuite": "5.83.4"
   },
   "devDependencies": {
     "@types/react": "^19.0.14",

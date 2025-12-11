@@ -19,19 +19,6 @@ const LanguageItem = styled.div`
   }
 `
 
-const SPicker = styled(FixedSelectPicker)`
-  .rs-picker-toggle-value {
-    color: var(--rs-btn-default-text) !important;
-    line-height: 22px;
-  }
-
-  .rs-picker-toggle {
-    background-color: var(--rs-btn-default-bg) !important;
-    border: none;
-    min-width: 30px;
-  }
-`
-
 /**
  * The function that renders the languages list item.
  * @param language the language.
@@ -77,16 +64,17 @@ const RawLocalizationPicker = ({value, onSelect, ...props}: LocalizationPickerPr
     return !!value && renderLanguageItem(langData[value])
   }, [langData])
 
-  return <SPicker {...props}
-                  value={value}
-                  data={data}
-                  onSelect={handleSelect}
-                  cleanable={false}
-                  placement={'autoVerticalEnd'}
-                  size={'sm'}
-                  searchable={false}
-                  width={62}
-                  renderMenuItem={renderMenuItem}/>
+  return <FixedSelectPicker {...props}
+                            value={value}
+                            data={data}
+                            onSelect={handleSelect}
+                            cleanable={false}
+                            placement={'autoVerticalEnd'}
+                            size={'sm'}
+                            searchable={false}
+                            width={62}
+                            renderMenuItem={renderMenuItem}
+                            className={'subtle-style'}/>
 }
 
 export const LocalizationPicker = namedObserver('LocalizationPicker', RawLocalizationPicker)

@@ -12,6 +12,8 @@
       "**/*.{js,jsx,json,css,md}",
       "src/packages/views/rsuite/config/**/*",
       "src/packages/views/rsuite/vite.config.ts",
+      "src/packages/views/material-ui/config/*",
+      "src/packages/views/material-ui/vite.config.ts",
       "!**/rsuite-no-reset*.css",
       "!**/formengine-rsuite.css",
       "src/packages/apps/**/*.{ts,tsx}",

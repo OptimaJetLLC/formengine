@@ -64,12 +64,14 @@ try
 {
   RemoveFromPackageJson "@react-form-builder/core"
   RemoveFromPackageJson "@react-form-builder/designer"
+  RemoveFromPackageJson "@react-form-builder/components-material-ui"
   RemoveFromPackageJson "@react-form-builder/components-rsuite"
   RemoveFromPackageJson "@react-form-builder/components-signature"
   RemoveFromPackageJson "@react-form-builder/components-fast-qr"
 
   InstallLocalPackage $PSScriptRoot/../../src/packages/core
   InstallLocalPackage $PSScriptRoot/../../src/packages/designer
+  InstallLocalPackage $PSScriptRoot/../../src/packages/views/material-ui
   InstallLocalPackage $PSScriptRoot/../../src/packages/views/rsuite
   InstallLocalPackage $PSScriptRoot/../../src/packages/views/signature
   InstallLocalPackage $PSScriptRoot/../../src/packages/views/fast-qr

@@ -19,6 +19,7 @@
     "@react-form-builder/components-antd": "^7.9.0",
     "@react-form-builder/components-fast-qr": "^7.9.0",
     "@react-form-builder/components-google-map": "^7.9.0",
+    "@react-form-builder/components-material-ui": "^7.9.0",
     "@react-form-builder/components-rich-text": "^7.9.0",
     "@react-form-builder/components-rsuite": "^7.9.0",
     "@react-form-builder/components-rsuite-table": "^7.9.0",

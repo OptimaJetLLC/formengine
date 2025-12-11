@@ -1,8 +1,4 @@
-import SampleForm from '../../forms/SampleForm.json'
-
-export const initialForms: Record<string, string> = {
-  SampleForm: JSON.stringify(SampleForm),
-}
+import {forms} from '../../forms'
 
 /**
  * Returns the form from json.
@@ -10,6 +6,6 @@ export const initialForms: Record<string, string> = {
  * @returns the form.
  */
 export function getFormFromJson(name?: string) {
-  if (name && initialForms[name]) return initialForms[name]
+  if (name && forms[name]) return forms[name]
   throw new Error(`Unable to load form '${name}'`)
 }

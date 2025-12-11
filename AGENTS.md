@@ -38,6 +38,8 @@ fb/
 
 ## Commands for Development
 
+Run the commands in the `src` folder.
+
 ### Basic Commands
 
 ```bash

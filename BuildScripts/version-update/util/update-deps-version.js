@@ -21,6 +21,7 @@ const packageList = [
   'src/packages/views/antd',
   'src/packages/views/default',
   'src/packages/views/rsuite',
+  'src/packages/views/material-ui',
 
   'src/packages/views/fast-qr',
   'src/packages/views/google-map',

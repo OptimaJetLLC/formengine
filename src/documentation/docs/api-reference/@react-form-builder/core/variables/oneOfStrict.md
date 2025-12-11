@@ -1,0 +1,28 @@
+# Variable: oneOfStrict()
+
+> `const` **oneOfStrict**: \<`U`\>(...`values`) => [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`U`\>
+
+The annotation builder for a component property with type 'enum', the property value can only be one of enum.
+New values cannot be created (non-creatable).
+
+Sets the property as a "single select" property.
+
+## Type Parameters
+
+### U
+
+`U` *extends* `string` \| `number`
+
+## Parameters
+
+### values
+
+...`U`[]
+
+the possible values for the property.
+
+## Returns
+
+[`OneOfBuilder`](../classes/OneOfBuilder.md)\<`U`\>
+
+the instance of the metadata property builder.

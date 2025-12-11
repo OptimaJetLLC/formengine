@@ -125,6 +125,200 @@ const typedocSidebar = {
     },
     {
       type: "category",
+      label: "@react-form-builder/components-material-ui",
+      items: [
+        {
+          type: "category",
+          label: "Interfaces",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/BreadcrumbsItem",
+              label: "BreadcrumbsItem"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiBreadcrumbsItemProps",
+              label: "MuiBreadcrumbsItemProps"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiBreadcrumbsProps",
+              label: "MuiBreadcrumbsProps"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiCardProps",
+              label: "MuiCardProps"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiFormControlLabelProps",
+              label: "MuiFormControlLabelProps"
+            }
+          ]
+        },
+        {
+          type: "category",
+          label: "Type Aliases",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/type-aliases/MuiTextFieldProps",
+              label: "MuiTextFieldProps"
+            }
+          ]
+        },
+        {
+          type: "category",
+          label: "Variables",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/materialUiComponentsDescriptions",
+              label: "materialUiComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/models",
+              label: "models"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiBox",
+              label: "muiBox"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiBreadcrumbs",
+              label: "muiBreadcrumbs"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiButton",
+              label: "muiButton"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiButtonGroup",
+              label: "muiButtonGroup"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiCard",
+              label: "muiCard"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiCheckbox",
+              label: "muiCheckbox"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiCircularProgress",
+              label: "muiCircularProgress"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiComponents",
+              label: "muiComponents"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiContainer",
+              label: "muiContainer"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiErrorWrapper",
+              label: "muiErrorWrapper"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiFormControlLabel",
+              label: "muiFormControlLabel"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiFormLabel",
+              label: "muiFormLabel"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiLinearProgress",
+              label: "muiLinearProgress"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiLink",
+              label: "muiLink"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiRadioGroup",
+              label: "muiRadioGroup"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiRadioItem",
+              label: "muiRadioItem"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiSelect",
+              label: "muiSelect"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiSwitch",
+              label: "muiSwitch"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiTextField",
+              label: "muiTextField"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiTooltip",
+              label: "muiTooltip"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiTypography",
+              label: "muiTypography"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/MuiViewerWrapper",
+              label: "MuiViewerWrapper"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/view",
+              label: "view"
+            }
+          ]
+        },
+        {
+          type: "category",
+          label: "Functions",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/functions/MuiErrorWrapper",
+              label: "MuiErrorWrapper"
+            }
+          ]
+        }
+      ],
+      link: {
+        type: "doc",
+        id: "api-reference/@react-form-builder/components-material-ui/index"
+      }
+    },
+    {
+      type: "category",
       label: "@react-form-builder/components-rich-text",
       items: [
         {
@@ -627,6 +821,42 @@ const typedocSidebar = {
       link: {
         type: "doc",
         id: "api-reference/@react-form-builder/components-rsuite/index"
+      }
+    },
+    {
+      type: "category",
+      label: "@react-form-builder/components-rsuite-table",
+      items: [
+        {
+          type: "category",
+          label: "Variables",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite-table/variables/rSuiteTableComponents",
+              label: "rSuiteTableComponents"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite-table/variables/rSuiteTableComponentsDescriptions",
+              label: "rSuiteTableComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite-table/variables/rSuiteTableEnUsComponentsDescriptions",
+              label: "rSuiteTableEnUsComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-rsuite-table/variables/tableModels",
+              label: "tableModels"
+            }
+          ]
+        }
+      ],
+      link: {
+        type: "doc",
+        id: "api-reference/@react-form-builder/components-rsuite-table/index"
       }
     },
     {
@@ -1908,6 +2138,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/nonNegNumber",
+              label: "nonNegNumber"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/variables/number",
               label: "number"
             },
@@ -1920,6 +2155,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/variables/oneOf",
               label: "oneOf"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/oneOfStrict",
+              label: "oneOfStrict"
             },
             {
               type: "doc",

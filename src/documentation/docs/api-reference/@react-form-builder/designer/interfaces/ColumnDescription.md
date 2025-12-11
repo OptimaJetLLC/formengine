@@ -12,6 +12,14 @@ The React component that displays the value of a column.
 
 ***
 
+### inputName?
+
+> `optional` **inputName**: `"InputCell"` \| `"CheckCell"` \| `"SelectCell"` \| `"ActionCell"`
+
+The name of the React component that displays the value of a column.
+
+***
+
 ### inputProps?
 
 > `optional` **inputProps**: `any`

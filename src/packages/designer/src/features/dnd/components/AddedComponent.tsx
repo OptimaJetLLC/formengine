@@ -4,6 +4,7 @@ import {cfComponentIsPreset, namedObserver, startCase, useComponentData} from '@
 import type {FunctionComponent, MouseEventHandler, ReactNode, RefCallback, SVGProps} from 'react'
 import {useCallback, useMemo} from 'react'
 import {icons} from '../../../icons'
+import {getIcon} from '../../../icons/utils'
 import {useCanAddComponent} from '../../../utils/AddComponentContext'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {transformComponentNameToCssClass} from '../../../utils/transformComponentNameToCssClass'
@@ -83,10 +84,10 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
   const builderStore = useBuilderStore()
 
   const Icon = useMemo((): IconComponent => {
-    const {icon: CustomIcon} = builderStore.getComponentMetadata(type)
-    const iconName = startCase(name).replaceAll(' ', '') as keyof typeof icons
+    const iconName = startCase(name).replaceAll(' ', '')
+    const componentIcon = getIcon(builderStore.getComponentMetadata(type).icon ?? iconName)
     const defaultIcon = data.model.isFeatureEnabled(cfComponentIsPreset) ? PresetIcon : icons.Default
-    return (CustomIcon ?? icons[iconName] ?? defaultIcon) as IconComponent
+    return (componentIcon ?? defaultIcon) as IconComponent
   }, [builderStore, data.model, name, type])
 
   const {hovered, ...hoveredProps} = useHovered()

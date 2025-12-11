@@ -62,9 +62,9 @@ export type DefinerData<T extends object> = {
    */
   cssObject?: Annotations<CSSObject>,
   /**
-   * The component icon.
+   * The component icon or the icon name.
    */
-  icon?: ComponentType,
+  icon?: ComponentType | string,
   /**
    * The function that initializes an actions on a component (for internal use only).
    */
@@ -167,10 +167,10 @@ export class Definer<T extends object> {
 
   /**
    * Sets the icon of the component.
-   * @param icon the component icon.
+   * @param icon the component icon or the icon name.
    * @returns the modified Definer class instance.
    */
-  icon = (icon: ComponentType) => this.#updateWith({icon})
+  icon = (icon: ComponentType | string) => this.#updateWith({icon})
 
   /**
    * Sets the category of the component.

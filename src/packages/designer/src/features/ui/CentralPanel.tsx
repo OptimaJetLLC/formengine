@@ -30,15 +30,10 @@ const SFormContainer = customizable('FormContainer', styled(PanelContainer)`
   transition: max-width .2s ease, max-height .2s ease, border-radius .2s ease;
 
   &.withForm {
-    padding: 12px;
+    padding: 0;
     border: 2px solid var(--rs-gray-500);
     border-radius: 10px;
     box-shadow: 0 5px 20px 0 rgb(0 0 0 / 15%);
-    background-color: #ffffffa1;
-
-    .rs-theme-dark & {
-      background-color: #414549;
-    }
   }
 
   &.mobile {
@@ -81,17 +76,17 @@ const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
   return (
     <SContainer {...props}>
       <Header/>
-      <SFormContainer className={cx(viewMode, builderMode, {landscapeMode, withForm: !formLoadError})}>
-        <BuilderModeProvider value={builderMode}>
-          <BuilderThemeProvider value={theme}>
+      <BuilderModeProvider value={builderMode}>
+        <BuilderThemeProvider value={theme}>
+          <SFormContainer className={cx(viewMode, builderMode, {landscapeMode, withForm: !formLoadError})}>
             <TrialMessage/>
             <ErrorFormWrapper>
               <FormViewer {...viewerProps} componentWrapper={componentWrapper} viewMode={viewMode}
                           formName={builderStore.activeFormName} getForm={getForm}/>
             </ErrorFormWrapper>
-          </BuilderThemeProvider>
-        </BuilderModeProvider>
-      </SFormContainer>
+          </SFormContainer>
+        </BuilderThemeProvider>
+      </BuilderModeProvider>
     </SContainer>
   )
 }

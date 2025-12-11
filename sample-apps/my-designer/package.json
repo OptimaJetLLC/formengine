@@ -6,6 +6,7 @@
   "homepage": "https://formengine.io/",
   "dependencies": {
     "@react-form-builder/components-fast-qr": "file:react-form-builder-components-fast-qr-7.8.0.tgz",
+    "@react-form-builder/components-material-ui": "file:react-form-builder-components-material-ui-7.8.0.tgz",
     "@react-form-builder/components-rsuite": "file:react-form-builder-components-rsuite-7.8.0.tgz",
     "@react-form-builder/components-signature": "file:react-form-builder-components-signature-7.8.0.tgz",
     "@react-form-builder/core": "file:react-form-builder-core-7.8.0.tgz",

@@ -1,4 +1,5 @@
 import {fastQrComponent} from '@react-form-builder/components-fast-qr'
+import {muiButton} from '@react-form-builder/components-material-ui'
 import {
   formEngineRsuiteCssLoader,
   ltrCssLoader,
@@ -17,7 +18,7 @@ import React from 'react'
 console.info('persisted-form.schema.json', schema)
 console.info('package.json', corePackageJson)
 
-const components = [...rSuiteComponents, fastQrComponent, signatureComponent]
+const components = [...rSuiteComponents, fastQrComponent, signatureComponent, muiButton]
   .map(definer => definer.build())
 const view = new BuilderView(components)
   .withViewerWrapper(RsLocalizationWrapper)
