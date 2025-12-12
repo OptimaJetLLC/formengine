@@ -1,5 +1,5 @@
 import {Container} from '@mui/material'
-import {boolean, define, node, oneOf} from '@react-form-builder/core'
+import {boolean, define, node, oneOf, size} from '@react-form-builder/core'
 import {sx} from '../commonProperties'
 import {layoutCategory} from './categories'
 
@@ -13,4 +13,7 @@ export const muiContainer = define(Container, 'MuiContainer')
     fixed: boolean,
     maxWidth: oneOf('xs', 'sm', 'md', 'lg', 'xl'),
     sx
+  })
+  .css({
+    gap: size.default('10px')
   })

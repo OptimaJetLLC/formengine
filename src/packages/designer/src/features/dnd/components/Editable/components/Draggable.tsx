@@ -138,7 +138,7 @@ const RawDraggable = ({children, isInner, className, isTree, ...props}: Draggabl
   const afterChildren = isDragging && !isRoot
   const beforeChildren = isDragging && !isRoot && !isInner
   const showContainerHint = isContainer && isDragging && !isRoot && !isTree
-  const Container = isContainer ? model.component : DefaultContainer
+  const Container = isContainer && !isTree ? model.component : DefaultContainer
 
   const clsName = useMemo(() => {
     const parentType = parent ? `parent-type-${parent?.model.type}` : ''

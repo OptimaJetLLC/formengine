@@ -25,6 +25,7 @@
   "peerDependencies": {
     "@mui/material": "^7.3.2",
     "@react-form-builder/core": "^7.8.0",
+    "@react-form-builder/components-uploader": "^7.9.0",
     "react": ">=17.0.2 || ^18 || ^19",
     "react-is": ">=17.0.2 || ^18 || ^19"
   },
@@ -96,6 +97,12 @@
     "./link": {
       "import": "./src/components/MuiLink.tsx"
     },
+    "./list": {
+      "import": "./src/components/MuiList.tsx"
+    },
+    "./list-item": {
+      "import": "./src/components/MuiListItem.tsx"
+    },
     "./radio-group": {
       "import": "./src/components/MuiRadioGroup.tsx"
     },
@@ -116,6 +123,9 @@
     },
     "./typography": {
       "import": "./src/components/MuiTypography.tsx"
+    },
+    "./uploader": {
+      "import": "./src/components/MuiUploader.tsx"
     },
     "./viewer-wrapper": {
       "import": "./src/components/MuiViewerWrapper.tsx"

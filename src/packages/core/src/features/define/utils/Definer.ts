@@ -7,7 +7,7 @@ import {toStyleProperties} from '../../annotation/toStyleProperties'
 import type {Annotations} from '../../annotation/utils/builders/Annotations'
 import type {ActionEventHandler, EventName} from '../../event'
 import {modules} from '../constants'
-import type {ActionsInitializer, ComponentKind} from '../types'
+import type {ActionsInitializer, ComponentKind, FormBuilderComponentIconName} from '../types'
 import type {BuilderComponent} from './BuilderComponent'
 import type {ComponentFeatures} from './ComponentFeature'
 import {addOrUpdateFeature} from './ComponentFeature'
@@ -170,7 +170,7 @@ export class Definer<T extends object> {
    * @param icon the component icon or the icon name.
    * @returns the modified Definer class instance.
    */
-  icon = (icon: ComponentType | string) => this.#updateWith({icon})
+  icon = (icon: ComponentType | FormBuilderComponentIconName) => this.#updateWith({icon})
 
   /**
    * Sets the category of the component.
