@@ -18,7 +18,6 @@ const createMuiTheme = (theme: Theme, language?: Language) => {
 }
 
 const containerStyle = {
-  overflow: 'auto',
   height: '100%',
   width: '100%'
 }

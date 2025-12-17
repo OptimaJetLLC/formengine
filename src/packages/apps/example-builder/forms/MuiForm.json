@@ -55,27 +55,27 @@
       },
       {
         "key": "Main container",
-        "type": "MuiBox",
+        "type": "MuiStack",
         "props": {
+          "spacing": {
+            "value": "10px"
+          },
           "sx": {
-            "value": {
-              "border": "1px solid lightgray",
-              "borderRadius": "6px",
-              "p": 2
-            }
+            "value": "    return {\n        \"border\": \"1px solid lightgray\",\n        \"borderRadius\": \"6px\"\n    }",
+            "computeType": "function",
+            "fnSource": "return (/**\n * @param {object} theme\n * @returns {object|array}\n */\nfunction sx(theme) {    return {\n        \"border\": \"1px solid lightgray\",\n        \"borderRadius\": \"6px\"\n    }})"
           }
         },
         "children": [
           {
             "key": "Name container",
-            "type": "MuiBox",
+            "type": "MuiStack",
             "props": {
-              "sx": {
-                "value": {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "gap": 2
-                }
+              "spacing": {
+                "value": "10px"
+              },
+              "direction": {
+                "value": "row"
               }
             },
             "children": [
@@ -188,14 +188,13 @@
           },
           {
             "key": "Adress container",
-            "type": "MuiBox",
+            "type": "MuiStack",
             "props": {
-              "sx": {
-                "value": {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "gap": 2
-                }
+              "spacing": {
+                "value": "10px"
+              },
+              "direction": {
+                "value": "row"
               }
             },
             "children": [
@@ -230,14 +229,13 @@
           },
           {
             "key": "Country container",
-            "type": "MuiBox",
+            "type": "MuiStack",
             "props": {
-              "sx": {
-                "value": {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "gap": 2
-                }
+              "spacing": {
+                "value": "10px"
+              },
+              "direction": {
+                "value": "row"
               }
             },
             "children": [
@@ -516,14 +514,10 @@
           },
           {
             "key": "Checkbox container 1",
-            "type": "MuiBox",
+            "type": "MuiStack",
             "props": {
-              "sx": {
-                "value": {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "gap": 0
-                }
+              "spacing": {
+                "value": "10px"
               }
             },
             "children": [
@@ -561,14 +555,10 @@
           },
           {
             "key": "Checkbox container 2",
-            "type": "MuiBox",
+            "type": "MuiStack",
             "props": {
-              "sx": {
-                "value": {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "gap": 0
-                }
+              "spacing": {
+                "value": "10px"
               }
             },
             "children": [
@@ -606,14 +596,10 @@
           },
           {
             "key": "Checkbox container 3",
-            "type": "MuiBox",
+            "type": "MuiStack",
             "props": {
-              "sx": {
-                "value": {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "gap": 0
-                }
+              "spacing": {
+                "value": "10px"
               }
             },
             "children": [
@@ -764,7 +750,7 @@
               }
             },
             "renderWhen": {
-              "value": true
+              "value": false
             }
           },
           {
@@ -785,7 +771,17 @@
               "value": false
             }
           }
-        ]
+        ],
+        "css": {
+          "any": {
+            "string": "    padding: 10px;\n    border: 1px solid lightgray;\n    border-radius: 6px;"
+          }
+        },
+        "wrapperCss": {
+          "any": {
+            "object": {}
+          }
+        }
       }
     ]
   },

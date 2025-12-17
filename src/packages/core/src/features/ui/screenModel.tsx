@@ -1,4 +1,4 @@
-import {commonStyles, containerStyles, cssSize, getDefaultCss} from '../annotation'
+import {commonStyles, containerStyles, getDefaultCss} from '../annotation'
 import {toStyleProperties} from '../annotation/toStyleProperties'
 import {Model} from '../define'
 import {addOrUpdateFeatures} from '../define/utils/ComponentFeature'
@@ -9,7 +9,6 @@ const {height} = commonStyles
 const {flexDirection, gap} = containerStyles
 export const screenStyleProperties = toStyleProperties({
   ...containerStyles,
-  padding: cssSize.setup({default: '12px'}),
   ...commonStyles,
   height: height.setup({default: '100%'}),
   flexDirection: flexDirection.default('column'),

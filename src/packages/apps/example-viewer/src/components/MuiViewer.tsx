@@ -1,27 +1,8 @@
 import {view} from '@react-form-builder/components-material-ui'
-import {buildForm, FormViewer} from '@react-form-builder/core'
+import {FormViewer} from '@react-form-builder/core'
+import RawMuiForm from '../forms/MuiForm.json'
 
-const simpleForm = buildForm({errorType: 'MuiErrorWrapper'})
-  .component('container', 'MuiBox')
-  .children(builder =>
-    builder
-      .component('firstName', 'MuiTextField')
-      .prop('placeholder', 'Enter your first name')
-      .prop('label', 'First Name')
-      .validation('required')
-
-      .component('lastName', 'MuiTextField')
-      .prop('placeholder', 'Enter your last name')
-      .prop('label', 'Last Name')
-      .validation('required')
-  )
-
-  .component('submit', 'MuiButton')
-  .prop('children', 'Submit')
-  .prop('variant', 'contained')
-  .json()
-
-const getForm = () => simpleForm
+const getForm = () => JSON.stringify(RawMuiForm)
 
 /**
  * @returns the MUI Form builder.

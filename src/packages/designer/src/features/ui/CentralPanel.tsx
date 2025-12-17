@@ -26,7 +26,7 @@ const SFormContainer = customizable('FormContainer', styled(PanelContainer)`
   gap: 0.5em;
   width: initial;
   margin-inline: 15px;
-  overflow: auto;
+  overflow: hidden;
   transition: max-width .2s ease, max-height .2s ease, border-radius .2s ease;
 
   &.withForm {

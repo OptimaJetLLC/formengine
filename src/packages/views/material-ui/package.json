@@ -112,6 +112,9 @@
     "./select": {
       "import": "./src/components/MuiSelect.tsx"
     },
+    "./mui-stack": {
+      "import": "./src/components/MuiStack.tsx"
+    },
     "./switch": {
       "import": "./src/components/MuiSwitch.tsx"
     },

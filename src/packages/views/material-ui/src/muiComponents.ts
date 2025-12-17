@@ -18,6 +18,7 @@ import {muiListItem} from './components/MuiListItem'
 import {muiRadioGroup} from './components/MuiRadioGroup'
 import {muiRadioItem} from './components/MuiRadioItem'
 import {muiSelect} from './components/MuiSelect'
+import {muiStack} from './components/MuiStack'
 import {muiSwitch} from './components/MuiSwitch'
 import {muiTextField} from './components/MuiTextField'
 import {muiTooltip} from './components/MuiTooltip'
@@ -49,6 +50,7 @@ export const muiComponents: Definer<any>[] = [
   // layout
   muiBox,
   muiContainer,
+  muiStack,
   // surfaces
   muiCard,
   // navigation
