@@ -26,6 +26,12 @@ if (!SVGElement.prototype.click) {
   }
 }
 
+if (!globalThis.removeEventListener) {
+  globalThis.removeEventListener = () => {
+    // do nothing
+  }
+}
+
 beforeAll(() => {
   vi.spyOn(console, 'error').mockImplementation((msg, b, c) => {
     console.log('ERROR:', msg)
