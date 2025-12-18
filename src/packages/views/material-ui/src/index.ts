@@ -1,3 +1,5 @@
+import muiEnUsComponentsDescriptions from './i18n/en-US.json'
+
 export {MuiViewerWrapper} from './components/MuiViewerWrapper'
 export {MuiErrorWrapper} from './components/MuiErrorWrapper'
 export {muiComponents} from './muiComponents'
@@ -32,6 +34,7 @@ export {muiTooltip} from './components/MuiTooltip'
 export {muiTypography} from './components/MuiTypography'
 export {muiUploader} from './components/MuiUploader'
 
+export {muiEnUsComponentsDescriptions}
 export {materialUiComponentsDescriptions} from './i18n/materialUiComponentsDescriptions'
 
 export type {BreadcrumbsItem, MuiBreadcrumbsItemProps, MuiBreadcrumbsProps} from './components/MuiBreadcrumbs'
