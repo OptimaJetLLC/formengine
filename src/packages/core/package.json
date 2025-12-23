@@ -40,7 +40,8 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "import": "./src/index.ts"
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
     },
     "./lite": {
       "import": "./src/index-lite.ts"

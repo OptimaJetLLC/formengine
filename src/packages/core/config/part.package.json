@@ -6,7 +6,8 @@
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.js"
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./lite": {
       "import": "./dist/index-lite.js",
