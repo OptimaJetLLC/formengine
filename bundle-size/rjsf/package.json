@@ -1,0 +1,20 @@
+{
+  "name": "rjsf-bundle-size",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "serve": "serve dist"
+  },
+  "dependencies": {
+    "@rjsf/core": "^6.1.2",
+    "@rjsf/mui": "^6.1.2",
+    "@rjsf/utils": "^6.1.2",
+    "@rjsf/validator-ajv8": "^6.1.2",
+    "bootstrap": "^3.4.1"
+  }
+}
