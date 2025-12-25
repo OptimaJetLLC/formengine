@@ -1,28 +1,20 @@
-import {useEffect, useMemo, useState} from 'react'
-import type {ViewType} from './components/BuilderViewContext'
-import {BuilderViewProvider} from './components/BuilderViewContext'
-import {MuiBuilder} from './MuiBuilder'
-import {RsuiteBuilder} from './RsuiteBuilder'
+import {BuilderViewProvider, MuiBuilder, usePersistentView} from '@react-form-builder/apps-common'
+import {useMemo} from 'react'
+import {customization} from './customization'
+import {RSuiteBuilder} from './RSuiteBuilder'
 
-const storageKey = 'react-form-builder-view'
-const defaultView: ViewType = 'rsuite'
-
-const usePersistentView = (): [ViewType, (view: ViewType) => void] => {
-  const [view, setViewState] = useState<ViewType>(() => {
-    return (localStorage.getItem(storageKey) ?? defaultView) as ViewType
-  })
-
-  useEffect(() => localStorage.setItem(storageKey, view), [view])
-
-  return [view, setViewState]
-}
+const appName = 'example'
 
 /**
  * @returns the main app.
  */
 export const ExampleBuilderApp = () => {
-  const [view, setView] = usePersistentView()
+  const [view, setView] = usePersistentView(appName)
   const providerValue = useMemo(() => ({view, setView}), [view, setView])
 
-  return <BuilderViewProvider value={providerValue}>{view === 'rsuite' ? <RsuiteBuilder /> : <MuiBuilder />}</BuilderViewProvider>
+  return (
+    <BuilderViewProvider value={providerValue}>
+      {view === 'rsuite' ? <RSuiteBuilder /> : <MuiBuilder appName={appName} customization={customization} />}
+    </BuilderViewProvider>
+  )
 }

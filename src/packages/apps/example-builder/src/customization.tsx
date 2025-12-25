@@ -1,35 +1,12 @@
 import type {CustomizationMap} from '@react-form-builder/designer'
-import {Dropdown} from 'rsuite'
-import {version} from '../package.json'
-import {BuilderViewPicker} from './components/BuilderViewPicker'
-import {info} from './components/icons'
-
-const containerStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: 10,
-}
+import {BuilderViewPicker} from '@react-form-builder/apps-common'
+import {addToDefaultElement} from '@react-form-builder/apps-common'
+import {customization as common} from '@react-form-builder/apps-common'
 
 /**
  * Customization map for the form builder UI.
  */
 export const customization: CustomizationMap = {
-  Header_Toolbar: {
-    customRenderer: defaultElement => (
-      <div style={containerStyle}>
-        {defaultElement}
-        <BuilderViewPicker />
-      </div>
-    ),
-  },
-  MainMenu_Items: {
-    customRenderer: defaultElement => (
-      <div>
-        {defaultElement}
-        <Dropdown.Item icon={info} disabled={true}>
-          v{version}
-        </Dropdown.Item>
-      </div>
-    ),
-  },
+  ...common,
+  Header_Toolbar: addToDefaultElement(<BuilderViewPicker />),
 }

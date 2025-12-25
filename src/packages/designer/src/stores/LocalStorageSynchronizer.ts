@@ -20,30 +20,35 @@ export class LocalStorageSynchronizer {
    * @param builderProps the form builder props.
    */
   constructor(builderStore: BuilderStore, builderProps: FormBuilderProps) {
-    const resolutionKey = 'resolution'
+    const withPrefix = (name: string) => {
+      const prefix = builderProps.localStoragePrefix
+      return prefix ? `${prefix}-${name}` : name
+    }
+
+    const resolutionKey = withPrefix('resolution')
     builderStore.viewMode = this.getItem<ViewMode>(resolutionKey, defaultViewMode)
 
-    const openedPanelsKey = 'openedPanels'
+    const openedPanelsKey = withPrefix('openedPanels')
     builderStore.openedPanels = parseJson(this.getItem<string>(openedPanelsKey)) ?? defaultOpenedPanels
 
-    const bottomPanelHeightKey = 'bottomPanelHeight'
+    const bottomPanelHeightKey = withPrefix('bottomPanelHeight')
     builderStore.bottomPanelHeight = parseJson(this.getItem<string>(bottomPanelHeightKey)) ?? defaultBottomPanelHeight
 
-    const themeKey = 'theme'
+    const themeKey = withPrefix('theme')
     builderStore.theme = this.getItem<BuilderTheme>(themeKey, getSystemTheme()) === 'dark' ? 'dark' : 'light'
 
-    const testingAutorunKey = 'testingAutorun'
+    const testingAutorunKey = withPrefix('testingAutorun')
     builderStore.testingAutorun = this.getItem<string>(testingAutorunKey) === 'true'
 
-    const className = 'LocalStorageSynchronizer'
+    const className = withPrefix('LocalStorageSynchronizer')
 
-    const formNameKey = 'formName'
+    const formNameKey = withPrefix('formName')
     if (builderProps.persistFormName !== false) {
       const formName = this.getItem<string>(formNameKey)
       if (formName) builderStore.activeFormName = formName
     }
 
-    const i18nextLngKey = 'i18nextLng'
+    const i18nextLngKey = withPrefix('i18nextLng')
     const i18nextLng = this.getItem<string>(i18nextLngKey)
     if (i18nextLng) {
       const i18nextLang = builderStore.availableLanguages.find(l => l.fullCode === i18nextLng)

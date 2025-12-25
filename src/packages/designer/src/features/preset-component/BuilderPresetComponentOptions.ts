@@ -11,7 +11,7 @@ import {PresetIcon} from './PresetIcon'
  */
 export class BuilderPresetComponentOptions implements IPresetComponentOptions {
 
-  private readonly storage = new PresetComponentLocalStorage()
+  private readonly storage: PresetComponentLocalStorage
   public presets: BuilderComponent[] = []
 
   /**
@@ -19,10 +19,14 @@ export class BuilderPresetComponentOptions implements IPresetComponentOptions {
    * @param afterRemove the callback function called when a preset component is removed.
    * @param afterAdd the callback function called when a new preset component is created.
    * @param options the parent preset component options.
+   * @param localStoragePrefix the prefix for localStorage key.
    */
   constructor(readonly afterRemove: (name: string) => void,
               readonly afterAdd: (builderComponent: BuilderComponent) => void,
-              readonly options?: IPresetComponentOptions) {
+              readonly options?: IPresetComponentOptions,
+              localStoragePrefix?: string) {
+    const localStorageKey = localStoragePrefix ? `${localStoragePrefix}-presetComponents` : 'presetComponents'
+    this.storage = new PresetComponentLocalStorage(localStorageKey)
     const items = this.components ?? []
     items.forEach(preset => this.addPresetComponent(preset))
 

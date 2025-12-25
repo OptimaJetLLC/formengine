@@ -2,7 +2,7 @@ import type {BuilderTheme} from '@react-form-builder/core'
 import {BuilderThemeProvider} from '@react-form-builder/core'
 import {useEffect, useMemo, useState} from 'react'
 import {MuiViewer} from './components/MuiViewer'
-import {RsuiteViewer} from './components/RsuiteViewer'
+import {RSuiteViewer} from './components/RSuiteViewer'
 import {ThemePicker} from './components/ThemePicker'
 import type {ViewType} from './components/ViewContext'
 import {ViewProvider} from './components/ViewContext'
@@ -57,7 +57,7 @@ export const ExampleViewerApp = () => {
           <ThemePicker theme={theme} onChange={setTheme} />
           <ViewPicker />
         </div>
-        {view === 'rsuite' ? <RsuiteViewer /> : <MuiViewer />}
+        {view === 'rsuite' ? <RSuiteViewer /> : <MuiViewer />}
       </ViewProvider>
     </BuilderThemeProvider>
   )

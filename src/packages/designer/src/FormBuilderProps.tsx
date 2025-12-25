@@ -85,6 +85,11 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
   persistFormName?: boolean
 
   /**
+   * The prefix for localStorage keys.
+   */
+  localStoragePrefix?: string
+
+  /**
    * The JSON schema generator for a form.
    * @param options the generator options.
    * @returns the JSON schema in string format.

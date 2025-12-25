@@ -377,7 +377,8 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     this.presetComponentOptions = new BuilderPresetComponentOptions(
       name => this.view.removeComponent(name),
       builderComponent => this.view.addComponent(builderComponent),
-      props.presetComponentOptions
+      props.presetComponentOptions,
+      props.localStoragePrefix
     )
 
     const translationResolver: TranslationResolver = async language => {

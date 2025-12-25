@@ -34,4 +34,9 @@ export interface IPresetComponentOptions {
    * The flag to disable the preset component feature.
    */
   disable?: boolean
+
+  /**
+   * The prefix for localStorage key.
+   */
+  localStoragePrefix?: string
 }
