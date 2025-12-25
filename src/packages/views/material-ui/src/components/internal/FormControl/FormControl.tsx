@@ -14,6 +14,10 @@ export interface MuiFormControlProps extends FormControlProps {
    */
   label?: string
   /**
+   * The id for the label element.
+   */
+  labelId?: string
+  /**
    * If true, the form control will be disabled.
    */
   disabled?: boolean
@@ -27,22 +31,15 @@ export interface MuiFormControlProps extends FormControlProps {
   helperText?: string
 }
 
-const Label = ({id, children}: { id?: string; children: React.ReactNode }) => {
-  const labelId = useMemo(() => `${id}-label`, [id])
-  if (!children) return null
-  return <InputLabel id={labelId}>{children}</InputLabel>
-}
-
 const ErrorMessage = ({errorMessage}: { errorMessage?: string }) => {
   if (!errorMessage) return null
   return <FormHelperText>{errorMessage}</FormHelperText>
 }
 
 const FormControlWrapper = (props: MuiFormControlProps) => {
-  const {children, label, helperText, ...otherProps} = props
-  const {key} = useComponentData()
-  return <FormControl id={key} {...otherProps}>
-    <Label id={key}>{label}</Label>
+const { children, label, labelId, helperText, ...otherProps } = props
+  return <FormControl {...otherProps} fullWidth>
+    {!!label &&  <InputLabel id={labelId}>{label}</InputLabel>}
     {children}
     <ErrorMessage errorMessage={helperText}/>
   </FormControl>
@@ -56,6 +53,7 @@ const FormControlWrapper = (props: MuiFormControlProps) => {
 export const useFormControlProps = (props: any): [MuiFormControlProps, any] => {
   const {fullWidth, label, onChange, error: errorProp, helperText: helperTextProp, ...otherProps} = props
   const {field} = useComponentData()
+
   const helperText = field?.error ?? helperTextProp
   const error = field?.error !== undefined || errorProp
   const required = useRequired()
@@ -65,7 +63,7 @@ export const useFormControlProps = (props: any): [MuiFormControlProps, any] => {
 
   return [
     {fullWidth, label, error, helperText, required},
-    {onChange: handleChange, ...otherProps}
+    {onChange: handleChange, label, ...otherProps}
   ]
 }
 
@@ -78,9 +76,11 @@ export const useFormControlProps = (props: any): [MuiFormControlProps, any] => {
 export const withFormControl = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: any) => {
     const [formControlProps, componentProps] = useFormControlProps(props)
+    const {key} = useComponentData()
+    const labelId = useMemo(() => `${key}-label`, [key])
 
-    return <FormControlWrapper {...formControlProps}>
-      <Component {...componentProps}/>
+    return <FormControlWrapper {...formControlProps} labelId={labelId}>
+      <Component {...componentProps} id={key} labelId={labelId}/>
     </FormControlWrapper>
   }
 

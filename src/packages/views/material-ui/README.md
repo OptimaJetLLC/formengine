@@ -5,6 +5,11 @@ This library is part of the [React Form Builder](https://formengine.io/) project
 This package contains visual components based on [Material UI](https://www.npmjs.com/package/@mui/material).
 To learn how to use the package, see our [documentation](https://formengine.io/documentation/).
 
+## React 18 and below
+
+If you are using React 18 or below, you need to set up a resolution of `react-is` package to the same version as the react you are using.
+[Follow this guide](https://mui.com/material-ui/getting-started/installation/#react-18-and-below).
+
 ## Connect to FormViewer
 
 ### Install
@@ -17,7 +22,6 @@ npm install @react-form-builder/core @mui/material @emotion/react @emotion/style
 
 ```typescript jsx
 import {buildForm, FormViewer} from '@react-form-builder/core'
-import {FormBuilder} from '@react-form-builder/designer'
 import {view} from '@react-form-builder/components-material-ui'
 
 const simpleForm = buildForm({errorType: 'MuiErrorWrapper'})

@@ -62,7 +62,7 @@ export const typography: Partial<Record<keyof TypographyProps, any>> = {
     'overline'
   ),
   color: color,
-  textAlign: oneOfStrict('left', 'center', 'right', 'justify').radio(),
+  textAlign: oneOfStrict('left', 'center', 'right', 'justify'),
   noWrap: boolean,
   gutterBottom: boolean,
 }
