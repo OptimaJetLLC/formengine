@@ -1,16 +1,9 @@
-import type {TooltipProps} from '@mui/material'
-import {Box, Tooltip} from '@mui/material'
+import {Tooltip} from '@mui/material'
 import {boolean, define, node, number, string} from '@react-form-builder/core'
 import {placement} from '../commonProperties'
 import {dataDisplayCategory} from './categories'
 
-const MuiTooltip = ({children, ...props}: TooltipProps) => {
-  return <Tooltip {...props}>
-    <Box>{children}</Box>
-  </Tooltip>
-}
-
-export const muiTooltip = define(MuiTooltip, 'MuiTooltip')
+export const muiTooltip = define(Tooltip, 'MuiTooltip')
   .icon('Tooltip')
   .category(dataDisplayCategory)
   .kind('container')
