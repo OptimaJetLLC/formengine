@@ -1,4 +1,15 @@
+import muiArEgComponentsDescriptions from './i18n/ar-EG.json'
+import muiDeDeComponentsDescriptions from './i18n/de-DE.json'
 import muiEnUsComponentsDescriptions from './i18n/en-US.json'
+import muiEsEsComponentsDescriptions from './i18n/es-ES.json'
+import muiFaIrComponentsDescriptions from './i18n/fa-IR.json'
+import muiFrFrComponentsDescriptions from './i18n/fr-FR.json'
+import muiHiInComponentsDescriptions from './i18n/hi-IN.json'
+import muiItItComponentsDescriptions from './i18n/it-IT.json'
+import muiJaJpComponentsDescriptions from './i18n/ja-JP.json'
+import muiKoKrComponentsDescriptions from './i18n/ko-KR.json'
+import muiSrRsComponentsDescriptions from './i18n/sr-RS.json'
+import muiZhCnComponentsDescriptions from './i18n/zh-CN.json'
 
 export {MuiViewerWrapper} from './components/MuiViewerWrapper'
 export {MuiErrorWrapper} from './components/MuiErrorWrapper'
@@ -34,7 +45,19 @@ export {muiTooltip} from './components/MuiTooltip'
 export {muiTypography} from './components/MuiTypography'
 export {muiUploader} from './components/MuiUploader'
 
+export {muiArEgComponentsDescriptions}
+export {muiDeDeComponentsDescriptions}
 export {muiEnUsComponentsDescriptions}
+export {muiEsEsComponentsDescriptions}
+export {muiFaIrComponentsDescriptions}
+export {muiFrFrComponentsDescriptions}
+export {muiHiInComponentsDescriptions}
+export {muiItItComponentsDescriptions}
+export {muiJaJpComponentsDescriptions}
+export {muiKoKrComponentsDescriptions}
+export {muiSrRsComponentsDescriptions}
+export {muiZhCnComponentsDescriptions}
+
 export {materialUiComponentsDescriptions} from './i18n/materialUiComponentsDescriptions'
 
 export type {BreadcrumbsItem, MuiBreadcrumbsItemProps, MuiBreadcrumbsProps} from './components/MuiBreadcrumbs'
