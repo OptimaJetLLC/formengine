@@ -151,7 +151,7 @@ const RawMenuItems = () => {
     </Dropdown.Item>
       {builderStore.props.generateJsonFormSchema &&
         <Dropdown.Item onSelect={handleGenerateSchema} icon={sitemapIcon}>
-          {t('leftMenu.generateJsonFormSchema')}
+          {t('exportJsonFormSchema')}
         </Dropdown.Item>
       }
   </>

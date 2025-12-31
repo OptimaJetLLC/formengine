@@ -877,14 +877,14 @@
     "formSaved": "The form is saved",
     "formSaveError": "Failed to save form! See the logs in the browser console",
     "enterFormName": "Please enter form name",
+    "exportJsonFormSchema": "Export JSON form schema",
     "formNamePlaceholder": "My beautiful form",
     "exportForms": "Export forms",
     "exportFormsSuccess": "Forms exported",
     "exportFormsError": "Failed to export forms! See the logs in the browser console",
     "importForms": "Import forms",
     "importFormsSuccess": "Forms imported",
-    "importFormsError": "Failed to import forms! See the logs in the browser console",
-    "generateJsonFormSchema": "Generate JSON form schema"
+    "importFormsError": "Failed to import forms! See the logs in the browser console"
   },
   "formsList": {
     "noFormsInFormStorage": "Save the form so that it appears in the list of forms.",
