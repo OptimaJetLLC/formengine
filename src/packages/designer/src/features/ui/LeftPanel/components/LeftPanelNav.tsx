@@ -62,8 +62,9 @@ const saveActiveTab = (tabName: LeftPanelSection) => {
   }
 }
 
+const defaultTab = 'components'
+
 const getActiveTab = () => {
-  const defaultTab = 'components'
   const value = isDesignerLocalStorageEnabled()
     ? localStorage.getItem(localStorageLeftPanelActiveTabKey) as LeftPanelSection ?? defaultTab
     : defaultTab
@@ -75,6 +76,7 @@ const navContentStyle = {minHeight: 0, overflow: 'auto', padding: 4} as const
 const RawLeftPanelNav = () => {
   const {formStorageEnabled} = useBuilderStore()
   const [activeTab, setActiveTab] = useState<LeftPanelSection>(getActiveTab())
+  const activeKey = activeTab === 'forms' && !formStorageEnabled ? defaultTab : activeTab
 
   const handleTabChange = useCallback((tab: LeftPanelSection) => {
     setActiveTab(tab)
@@ -82,14 +84,14 @@ const RawLeftPanelNav = () => {
   }, [])
 
   return <>
-    <Nav appearance="subtle" activeKey={activeTab} onSelect={handleTabChange}>
+    <Nav appearance="subtle" activeKey={activeKey} onSelect={handleTabChange}>
       <Tab section="components"/>
       <Tab section="tree"/>
       <Tab section="settings"/>
       {formStorageEnabled && <Tab section="forms"/>}
     </Nav>
     <NavContent style={navContentStyle}>
-      {tabsProps[activeTab][0]}
+      {tabsProps[activeKey][0]}
     </NavContent>
   </>
 }
