@@ -61,7 +61,7 @@ const config: Config = {
   onBrokenMarkdownLinks: 'throw',
 
   scripts: [
-    'https://formengine.io/js/analytics.js?id=GTM-PPS66XRX',
+    '/documentation/js/analytics.js?id=GTM-PPS66XRX'
   ],
 
   markdown: {

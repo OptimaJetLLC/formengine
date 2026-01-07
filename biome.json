@@ -20,7 +20,8 @@
       "src/packages/designer-bundle/**/*.{ts,tsx}",
       "src/packages/indexed-db-form-storage/**/*.{ts,tsx}",
       "src/packages/viewer-bundle/**/*.{ts,tsx}",
-      "src/packages/viewer-bundle-premium/**/*.{ts,tsx}"
+      "src/packages/viewer-bundle-premium/**/*.{ts,tsx}",
+      "!src/documentation/website/static"
     ]
   },
   "formatter": {
