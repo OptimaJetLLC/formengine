@@ -1,6 +1,6 @@
 {
-  "name": "@react-form-builder/bundle-size",
-  "version": "7.4.0",
+  "name": "@react-form-builder/bundle-size-formengine",
+  "version": "0.0.1",
   "license": "MIT",
   "private": true,
   "main": "src/index.tsx",
@@ -19,9 +19,15 @@
     "i": "node ../scripts/install-local-formengine.ts .",
     "build": "vite build",
     "dev": "vite",
+    "dev-login": "dotenv -v APP_INPUT=login npm run dev",
+    "dev-login-mui": "dotenv -v APP_INPUT=login-mui npm run dev",
+    "dev-booking": "dotenv -v APP_INPUT=booking npm run dev",
+    "dev-booking-mui": "dotenv -v APP_INPUT=booking-mui npm run dev",
+    "lint": "eslint .",
     "serve": "serve dist"
   },
   "dependencies": {
+    "@react-form-builder/bundle-size-shared": "*",
     "@react-form-builder/components-material-ui": "file:react-form-builder-components-material-ui-7.9.0.tgz",
     "@react-form-builder/components-rsuite": "file:react-form-builder-components-rsuite-7.9.0.tgz",
     "@react-form-builder/core": "file:react-form-builder-core-7.9.0.tgz"

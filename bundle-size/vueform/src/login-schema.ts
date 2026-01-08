@@ -17,7 +17,7 @@ export const loginSchema = ref({
   },
   rememberMe: {
     type: 'checkbox',
-    label: 'Remember me',
+    text: 'Remember me',
     default: true,
   },
   submit: {

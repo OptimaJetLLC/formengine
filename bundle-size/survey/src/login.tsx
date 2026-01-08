@@ -6,6 +6,8 @@ import 'survey-core/survey-core.min.css'
 import {json} from './login-json.tsx'
 import {themeJson} from './theme'
 
+import '@react-form-builder/bundle-size-shared/index.css'
+
 function SurveyComponent() {
   const survey = new Model(json)
   survey.applyTheme(themeJson)

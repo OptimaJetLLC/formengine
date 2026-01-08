@@ -108,17 +108,4 @@ export const themeJson = {
   },
   themeName: 'custom',
   colorPalette: 'light',
-  header: {
-    height: 320,
-    inheritWidthFrom: 'container',
-    textAreaWidth: 340,
-    overlapEnabled: false,
-    logoPositionX: 'left',
-    logoPositionY: 'top',
-    titlePositionX: 'left',
-    titlePositionY: 'bottom',
-    descriptionPositionX: 'right',
-    descriptionPositionY: 'bottom',
-  },
-  headerView: 'advanced',
 } as const

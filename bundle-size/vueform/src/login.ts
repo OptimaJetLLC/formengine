@@ -1,32 +1,34 @@
-import Vueform, {
+import en from '@vueform/vueform/locales/en'
+import {defineConfig, email, min, regex, required} from '@vueform/vueform/src/core.js'
+import {
   ButtonElement,
   CheckboxElement,
-  ElementAddon,
+  classes,
+  columns,
   ElementDescription,
   ElementError,
   ElementInfo,
   ElementLabel,
   ElementLabelFloating,
   ElementLayout,
-  ElementLoader,
   ElementMessage,
   ElementRequired,
   ElementText,
+  FormElements,
   FormErrors,
   TextElement,
-} from '@vueform/vueform/src/core.js'
-import {createApp} from 'vue'
-import vueformConfig from '../vueform.config-login.ts'
-import {LoginApp} from './utils.ts'
+  Vueform,
+} from '@vueform/vueform/themes/vueform'
 
-const app = createApp(LoginApp)
+import '@vueform/vueform/themes/vueform/css/index.min.css'
 
-app.use(Vueform, {
-  ...vueformConfig,
-  components: {
+import {main} from './login-form'
+
+const vueform = {
+  templates: {
+    Vueform,
+    FormElements,
     FormErrors,
-    ElementLoader,
-    ElementAddon,
     ElementLayout,
     ElementLabelFloating,
     ElementLabel,
@@ -40,6 +42,20 @@ app.use(Vueform, {
     CheckboxElement,
     ButtonElement,
   },
+  classes,
+  columns,
+}
+
+const vueformConfig = defineConfig({
+  theme: vueform,
+  locales: {en},
+  locale: 'en',
+  rules: {
+    required,
+    email,
+    min,
+    regex,
+  },
 })
 
-app.mount('#app')
+main(vueformConfig)

@@ -1,79 +1,100 @@
-# Bundle Size Comparison Monorepo
+# Form Libraries Bundle Size Comparison
 
-This monorepo contains multiple applications for comparing bundle sizes of different form builder libraries.
+This project contains multiple applications for comparing the bundle sizes of different form libraries.
 
-## Structure
+## Project Structure
 
-- **formengine** - React Form Builder bundle size application
-- **rjsf** - React JSON Schema Form bundle size application
-- **survey** - SurveyJS bundle size application
-- **vueform** - VueForm bundle size application
-- **bundlers** - Utility scripts for testing different bundlers
+### Engines
+
+- **formengine** — FormEngine Core
+- **rjsf** — React JSON Schema Form
+- **survey** — SurveyJS
+- **vueform** — VueForm
+
+### Test Applications
+
+For comparison, two real-world use cases are used: a **login form** and a **hotel booking wizard**. They are implemented to be as similar as
+possible, using the default UI kits and Material UI where applicable.
+
+To run a build or development server, set the `APP_INPUT` environment variable beforehand to choose which application to start or build.
+
+Available `APP_INPUT` values:
+
+- **login** — login application
+- **login-mui** — login application with MUI library/styling
+- **booking** — booking application
+- **booking-mui** — booking application with MUI library/styling
 
 ## Setup
 
-Install all dependencies from the root:
+Install all dependencies from the project root:
 
 ```bash
 npm install
 ```
 
-This will install all dependencies and hoist common ones to the root `node_modules`.
-
 ## Running Applications
-
-Run all applications in development mode:
-
-```bash
-npm run dev
-```
 
 Run a specific application:
 
+**Login:**
+
 ```bash
-cd formengine && npm run dev
-cd rjsf && npm run dev
-cd survey && npm run dev
-cd vueform && npm run dev
+cd formengine && npm run dev-login
+cd rjsf && npm run dev-login
+cd survey && npm run dev-login
+cd vueform && npm run dev-login
+```
+
+**Login MUI:**
+
+```bash
+cd formengine && npm run dev-login-mui
+cd rjsf && npm run dev-login-mui
+cd survey && npm run dev-login-mui
+cd vueform && npm run dev-login-mui
+```
+
+**Booking:**
+
+```bash
+cd formengine && npm run dev-booking
+cd rjsf && npm run dev-booking
+cd survey && npm run dev-booking
+cd vueform && npm run dev-booking
+```
+
+**Booking MUI:**
+
+```bash
+cd formengine && npm run dev-booking-mui
+cd rjsf && npm run dev-booking-mui
+cd survey && npm run dev-booking-mui
+cd vueform && npm run dev-booking-mui
 ```
 
 ## Building
 
-Build all applications:
+Build a specific application variant:
 
 ```bash
-npm run build
+APP_INPUT=login npm run build
 ```
 
 ## Bundle Size Analysis
 
-Build all applications first:
+To generate an overall report, run the following command.  
+The `APP_INPUT` variable is not required here—it will be set automatically for all variants.  
+All builds will be executed before generating the report.
 
 ```bash
-npm run build
+npm run report
 ```
 
-Then analyze bundle sizes for all applications:
+The resulting report will be available at:
 
-```bash
-npm run bundle-size
+```
+.bundle-stats/bundle-sizes-report.html
 ```
 
-This will read the `vite-stat.json` files from each app's `dist` directory and display a comparison table showing:
-- Total bundle size for each app
-- Number of chunks
-- Detailed chunk information sorted by size
-
-The script will automatically find and compare bundle sizes across all apps in the monorepo.
-
-## Workspaces
-
-This monorepo uses npm workspaces. Common dependencies are hoisted to the root `package.json`:
-
-- `react` and `react-dom` (shared by React-based apps)
-- `vite` and related plugins
-- `typescript` and TypeScript tooling
-- `eslint` and ESLint plugins
-- `vite-bundle-visualizer` for bundle analysis
-
-Each workspace maintains its own specific dependencies.
+Each build variant will also be available in its corresponding folder under the `.bundle-stats` directory.

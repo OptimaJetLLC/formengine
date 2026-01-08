@@ -13,6 +13,7 @@ export default (_: unknown) =>
       }),
     ],
     resolve: {
+      dedupe: ['react-is'], // MUI
       alias: {
         lodash: 'lodash-es',
       },

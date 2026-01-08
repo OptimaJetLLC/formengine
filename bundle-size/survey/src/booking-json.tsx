@@ -23,6 +23,7 @@ export const json = {
           ],
           inputType: 'date',
           placeholder: 'Check-in',
+          isRequired: true,
         },
         {
           type: 'text',
@@ -38,11 +39,12 @@ export const json = {
             {
               type: 'expression',
               text: 'Invalid date range: check-out date cannot precede check-in date.',
-              expression: 'getDate({check-out-date}) >= getDate({check-in-date})',
+              expression: 'getDate({check-out-date}) > getDate({check-in-date})',
             },
           ],
           inputType: 'date',
           placeholder: 'Check-out',
+          isRequired: true,
         },
         {
           type: 'dropdown',
@@ -234,6 +236,7 @@ export const json = {
           description: 'Must match the passport exactly',
           descriptionLocation: 'underInput',
           placeholder: 'Last name',
+          isRequired: true,
         },
         {
           type: 'text',
@@ -243,6 +246,7 @@ export const json = {
           startWithNewLine: false,
           titleLocation: 'hidden',
           placeholder: 'First name',
+          isRequired: true,
         },
         {
           type: 'text',
@@ -309,6 +313,9 @@ export const json = {
           description: 'Example: +1 (555) 777-55-22',
           descriptionLocation: 'underInput',
           placeholder: 'Phone',
+          isRequired: true,
+          maskType: 'pattern',
+          maskSettings: {pattern: '+1 (999) 999-9999'},
         },
       ],
     },
@@ -319,11 +326,8 @@ export const json = {
       expression: 'iif({first-name} notempty, {first-name}, guests)',
     },
   ],
-  showPrevButton: false,
   questionErrorLocation: 'bottom',
   pagePrevText: 'Booking Details',
   pageNextText: 'Traveler Info ➝',
   completeText: 'Book Now',
-  widthMode: 'static',
-  width: '904',
 }
