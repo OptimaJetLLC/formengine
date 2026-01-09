@@ -8,7 +8,7 @@ import docs from '../images/docs.svg?url'
  * @returns the React element.
  */
 export const Header = () => (
-  <div className="navbar">
+  <div className="navbar rs-theme-dark">
     <div className="navbar-container">
       <div className="left-menu">
         <a href="https://formengine.io" target="_blank" className="logo-1" aria-label="home" rel="noreferrer">

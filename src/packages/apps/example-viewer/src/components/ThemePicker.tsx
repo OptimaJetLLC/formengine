@@ -1,6 +1,8 @@
 import type {BuilderTheme} from '@react-form-builder/core'
-import type {ChangeEvent, ReactNode} from 'react'
-import {useCallback} from 'react'
+import type {ReactNode} from 'react'
+import type {SelectPickerProps} from 'rsuite'
+import {SelectPicker} from 'rsuite'
+import 'rsuite/SelectPicker/styles/index.css'
 
 type Labeled = {value: BuilderTheme; label: string; icon?: ReactNode}
 
@@ -9,9 +11,8 @@ const items: Labeled[] = [
   {value: 'dark', label: 'Dark'},
 ]
 
-type ThemePickerProps = {
+interface ThemePickerProps extends Partial<SelectPickerProps> {
   theme: BuilderTheme
-  onChange: (theme: BuilderTheme) => void
 }
 
 /**
@@ -21,19 +22,15 @@ type ThemePickerProps = {
  */
 export const ThemePicker = (props: ThemePickerProps) => {
   const {theme, onChange} = props
-  const handleChange = useCallback(
-    (event: ChangeEvent<HTMLSelectElement>) => {
-      onChange((event.target.value as BuilderTheme) ?? 'light')
-    },
-    [onChange]
-  )
   return (
-    <select value={theme} onChange={handleChange}>
-      {items.map(item => (
-        <option key={item.value} value={item.value}>
-          {item.label}
-        </option>
-      ))}
-    </select>
+    <SelectPicker
+      value={theme}
+      data={items}
+      onChange={onChange}
+      size={'sm'}
+      searchable={false}
+      cleanable={false}
+      className={'subtle-style'}
+    />
   )
 }
