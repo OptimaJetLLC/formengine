@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react'
 import type {ViewType} from '../components/BuilderViewContext'
-
-const defaultView: ViewType = 'rsuite'
+import {availableView, defaultView} from '../components/BuilderViewContext'
 
 /**
  * React hook that provides a persistent view state synced with localStorage.
@@ -12,7 +11,8 @@ const defaultView: ViewType = 'rsuite'
 export const usePersistentView = (appName = 'form-builder'): [ViewType, (view: ViewType) => void] => {
   const storageKey = `${appName}-view-name`
   const [view, setViewState] = useState<ViewType>(() => {
-    return (localStorage.getItem(storageKey) ?? defaultView) as ViewType
+    const item = (localStorage.getItem(storageKey) ?? defaultView) as ViewType
+    return availableView.indexOf(item) < 0 ? defaultView : item
   })
 
   useEffect(() => localStorage.setItem(storageKey, view), [storageKey, view])

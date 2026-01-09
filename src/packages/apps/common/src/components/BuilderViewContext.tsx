@@ -7,6 +7,21 @@ const name = 'BuilderViewContext'
  */
 export type ViewType = 'rsuite' | 'mui'
 
+const allViews: Record<ViewType, undefined> = {
+  rsuite: undefined,
+  mui: undefined,
+}
+
+/**
+ * All available views (component libraries).
+ */
+export const availableView = Object.keys(allViews) as ViewType[]
+
+/**
+ * The default builder view.
+ */
+export const defaultView: ViewType = 'mui'
+
 type BuilderViewContext = {
   view: ViewType
   setView: (viewType: ViewType) => void

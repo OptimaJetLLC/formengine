@@ -2,9 +2,9 @@ import type {ReactNode} from 'react'
 import type {SelectPickerProps} from 'rsuite'
 import {SelectPicker} from 'rsuite'
 import type {ItemDataType} from 'rsuite/esm/internals/types'
+import {material, rsuite} from '../images/icons'
 import type {ViewType} from './BuilderViewContext'
 import {useBuilderView} from './BuilderViewContext'
-import {material, rsuite} from '../images/icons'
 
 type Labeled = {value: ViewType; label: string; icon?: ReactNode}
 
@@ -19,14 +19,12 @@ const iconItemStyle = {
   alignItems: 'center',
 }
 
-const renderItem = (_: unknown, {label, icon}: ItemDataType) => {
-  return (
-    <div style={iconItemStyle}>
-      {icon}
-      {label}
-    </div>
-  )
-}
+const renderItem = (_: unknown, item: ItemDataType) => (
+  <div style={iconItemStyle}>
+    {item?.icon}
+    {item?.label}
+  </div>
+)
 
 /**
  * Component for selecting the builder view type (RSuite or Material UI).
@@ -35,6 +33,7 @@ const renderItem = (_: unknown, {label, icon}: ItemDataType) => {
  */
 export const BuilderViewPicker = (props: Partial<SelectPickerProps>) => {
   const {view, setView} = useBuilderView()
+
   return (
     <SelectPicker
       data={items}
