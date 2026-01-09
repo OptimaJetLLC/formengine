@@ -28,6 +28,7 @@ to work with.
   with [Yup](https://github.com/jquense/yup), [AJV](https://github.com/ajv-validator/ajv), [Zod](https://github.com/colinhacks/zod),
   [Superstruct](https://github.com/ianstormtaylor/superstruct),
   [Joi](https://github.com/hapijs/joi), and other custom validation libraries.
+- **Localization** - Powerful capabilities for localizing forms using [Fluent.js](https://projectfluent.org).
 - **Responsive Layouts**: Build forms that automatically [adapt](/adaptive-layout) to all screen sizes.
 - **Custom Actions**: Enhance forms with interactive logic through [custom JavaScript code](/actions).
 - **Dynamic Properties**: Implement real-time component changes with [MobX](https://github.com/mobxjs/mobx)-powered reactive properties.
