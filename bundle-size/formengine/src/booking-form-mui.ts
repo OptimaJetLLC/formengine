@@ -20,7 +20,7 @@ export const bookingDetailsForm = JSON.stringify({
                 key: 'col-check-in',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '37%', minWidth: '256px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '37%', minWidth: '256px'}}},
                 children: [
                   {
                     key: 'check-in-date',
@@ -54,7 +54,7 @@ export const bookingDetailsForm = JSON.stringify({
                 key: 'col-check-out',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '37%', minWidth: '256px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '37%', minWidth: '256px'}}},
                 children: [
                   {
                     key: 'check-out-date',
@@ -91,7 +91,7 @@ export const bookingDetailsForm = JSON.stringify({
                 key: 'col-guests',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '15%', minWidth: '192px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '15%', minWidth: '192px'}}},
                 children: [
                   {
                     key: 'number-of-guests',
@@ -135,7 +135,7 @@ export const bookingDetailsForm = JSON.stringify({
                 key: 'col-room-type',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '74%', minWidth: '256px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '74%', minWidth: '256px'}}},
                 children: [
                   {
                     key: 'room-type',
@@ -168,7 +168,6 @@ export const bookingDetailsForm = JSON.stringify({
                     object: {
                       padding: 0,
                       margin: 0,
-                      flexDirection: 'column',
                       width: '26%',
                       minWidth: '192px',
                       justifyContent: 'flex-end',
@@ -195,7 +194,7 @@ export const bookingDetailsForm = JSON.stringify({
                 key: 'col-room-preview',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '37%', minWidth: '192px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '37%', minWidth: '192px'}}},
                 children: [
                   {
                     key: 'room-preview-image',
@@ -215,7 +214,7 @@ export const bookingDetailsForm = JSON.stringify({
                 key: 'col-room-description',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '63%', minWidth: '256px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '63%', minWidth: '256px'}}},
                 children: [
                   {
                     key: 'room-description',
@@ -242,6 +241,7 @@ export const bookingDetailsForm = JSON.stringify({
                 key: 'col-number-of-rooms',
                 type: 'MuiContainer',
                 props: {},
+                css: {any: {object: {padding: 0, margin: 0, width: '50%', minWidth: '192px'}}},
                 children: [
                   {
                     key: 'number-of-rooms',
@@ -262,7 +262,6 @@ export const bookingDetailsForm = JSON.stringify({
                       },
                       value: {value: '1'},
                     },
-                    css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '50%', minWidth: '192px'}}},
                   },
                 ],
               },
@@ -275,8 +274,7 @@ export const bookingDetailsForm = JSON.stringify({
                     object: {
                       padding: 0,
                       margin: 0,
-                      flexDirection: 'column',
-                      width: '20%',
+                      width: '40%',
                       minWidth: '256px',
                       justifyContent: 'flex-end',
                     },
@@ -302,7 +300,7 @@ export const bookingDetailsForm = JSON.stringify({
                 key: 'col-extras',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '100%', minWidth: '256px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '100%', minWidth: '256px'}}},
                 children: [
                   {
                     key: 'extras',
@@ -342,7 +340,7 @@ export const bookingDetailsForm = JSON.stringify({
                 key: 'col-notes',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '100%', minWidth: '256px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '100%', minWidth: '256px'}}},
                 children: [
                   {
                     key: 'notes',
@@ -381,7 +379,7 @@ export const travelerInfoForm = JSON.stringify({
                 key: 'col-last-name',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '64%', minWidth: '192px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '64%', minWidth: '192px'}}},
                 children: [
                   {
                     key: 'last-name',
@@ -395,7 +393,7 @@ export const travelerInfoForm = JSON.stringify({
                 key: 'col-first-name',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '36%', minWidth: '256px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '36%', minWidth: '256px'}}},
                 children: [
                   {
                     key: 'first-name',
@@ -417,7 +415,7 @@ export const travelerInfoForm = JSON.stringify({
                 key: 'col-address-line-1',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '100%', minWidth: '256px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '100%', minWidth: '256px'}}},
                 children: [
                   {
                     key: 'address-line-1',
@@ -438,7 +436,7 @@ export const travelerInfoForm = JSON.stringify({
                 key: 'col-address-line-2',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '100%', minWidth: '256px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '100%', minWidth: '256px'}}},
                 children: [
                   {
                     key: 'address-line-2',
@@ -459,14 +457,14 @@ export const travelerInfoForm = JSON.stringify({
                 key: 'col-city',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '36%', minWidth: '256px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '36%', minWidth: '256px'}}},
                 children: [{key: 'city', type: 'MuiTextField', props: {label: {value: 'City'}, placeholder: {value: 'City'}}}],
               },
               {
                 key: 'col-zip',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '28%', minWidth: '192px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '28%', minWidth: '192px'}}},
                 children: [
                   {
                     key: 'zip',
@@ -479,7 +477,7 @@ export const travelerInfoForm = JSON.stringify({
                 key: 'col-state',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '36%', minWidth: '256px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '36%', minWidth: '256px'}}},
                 children: [{key: 'state', type: 'MuiTextField', props: {label: {value: 'State'}, placeholder: {value: 'State'}}}],
               },
             ],
@@ -494,7 +492,7 @@ export const travelerInfoForm = JSON.stringify({
                 key: 'col-country',
                 type: 'MuiContainer',
                 props: {},
-                css: {any: {object: {padding: 0, margin: 0, flexDirection: 'column', width: '36%', minWidth: '256px'}}},
+                css: {any: {object: {padding: 0, margin: 0, width: '36%', minWidth: '256px'}}},
                 children: [
                   {
                     key: 'country',
