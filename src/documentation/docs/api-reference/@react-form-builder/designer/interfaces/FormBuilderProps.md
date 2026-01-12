@@ -268,6 +268,14 @@ The function to localize the properties of a component.
 
 ***
 
+### localStoragePrefix?
+
+> `optional` **localStoragePrefix**: `string`
+
+The prefix for localStorage keys.
+
+***
+
 ### onFormDataChange()?
 
 > `optional` **onFormDataChange**: (`data`) => `void`

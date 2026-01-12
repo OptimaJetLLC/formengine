@@ -1,5 +1,5 @@
 import type {Annotations} from '@react-form-builder/core'
-import {boolean, define, disabled, event, oneOfStrict, string} from '@react-form-builder/core'
+import {boolean, define, disabled, event, oneOfStrict, required, string} from '@react-form-builder/core'
 import type {ComponentType} from 'react'
 import {inputsCategory} from '../../categories'
 import {withFormControl} from './FormControl'
@@ -7,6 +7,7 @@ import type {MuiControlProps} from './types'
 
 export const formControlProperties: Partial<Record<keyof MuiControlProps, any>> = {
   label: string,
+  required: required,
   disabled: disabled,
   variant: oneOfStrict('outlined', 'standard', 'filled'),
   fullWidth: boolean,

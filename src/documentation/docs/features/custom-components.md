@@ -41,8 +41,10 @@ Form Builder has the following APIs for describing a component:
     value can contain multiple enum values.
 15. [readOnly](/api-reference/@react-form-builder/core/variables/readOnly): annotation builder for `boolean` properties that make a
     component read-only.
-16. [fn](/api-reference/@react-form-builder/core/functions/fn): annotation builder for `function` properties.
-17. There are other APIs for describing component properties, you can find them in the documentation, these APIs deal with describing
+16. [required](/api-reference/@react-form-builder/core/variables/required): annotation builder for `boolean` properties that mark a field as
+    required.
+17. [fn](/api-reference/@react-form-builder/core/functions/fn): annotation builder for `function` properties.
+18. There are other APIs for describing component properties, you can find them in the documentation, these APIs deal with describing
     synthetic properties of a component (e.g. a set of arbitrary HTML attributes).
 
 ## Example of a custom component definition

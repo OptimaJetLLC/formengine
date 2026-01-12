@@ -62,5 +62,7 @@ export {materialUiComponentsDescriptions} from './i18n/materialUiComponentsDescr
 
 export type {BreadcrumbsItem, MuiBreadcrumbsItemProps, MuiBreadcrumbsProps} from './components/MuiBreadcrumbs'
 export type {MuiCardProps} from './components/MuiCard'
+export type {MuiCheckboxProps} from './components/MuiCheckbox'
 export type {MuiFormControlLabelProps} from './components/MuiFormControlLabel'
+export type {MuiRadioItemProps} from './components/MuiRadioItem'
 export type {MuiTextFieldProps} from './components/MuiTextField'

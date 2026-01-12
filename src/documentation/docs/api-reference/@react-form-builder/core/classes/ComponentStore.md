@@ -206,6 +206,38 @@ the [ActionData](../type-aliases/ActionData.md).
 
 ***
 
+### addValidationRule()
+
+> `static` **addValidationRule**(`store`, `key`, `type`): `void`
+
+Adds a validation rule to the component.
+
+#### Parameters
+
+##### store
+
+`ComponentStore`
+
+the component settings.
+
+##### key
+
+`string`
+
+the validation key.
+
+##### type
+
+[`ValidatorType`](../type-aliases/ValidatorType.md)
+
+the validation type.
+
+#### Returns
+
+`void`
+
+***
+
 ### clone()
 
 > `static` **clone**(`store`): `ComponentStore`
@@ -247,3 +279,57 @@ the deserialized data.
 `any`
 
 the component Store.
+
+***
+
+### hasValidationRule()
+
+> `static` **hasValidationRule**(`store`, `key`): `undefined` \| `boolean`
+
+Returns true if the component has a validation rule.
+
+#### Parameters
+
+##### store
+
+`ComponentStore`
+
+the component settings.
+
+##### key
+
+`string`
+
+the validation key.
+
+#### Returns
+
+`undefined` \| `boolean`
+
+true if the component has a validation rule, otherwise false.
+
+***
+
+### removeValidationRule()
+
+> `static` **removeValidationRule**(`store`, `key`): `void`
+
+Removes a validation rule from the component.
+
+#### Parameters
+
+##### store
+
+`ComponentStore`
+
+the component settings.
+
+##### key
+
+`string`
+
+the validation key.
+
+#### Returns
+
+`void`

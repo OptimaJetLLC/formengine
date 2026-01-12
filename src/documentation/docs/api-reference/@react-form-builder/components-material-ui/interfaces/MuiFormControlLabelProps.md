@@ -1,8 +1,10 @@
 # Interface: MuiFormControlLabelProps
 
+Props for the MuiFormControlLabel component.
+
 ## Extends
 
-- `Omit`\<`FormControlLabelProps`, `"control"`\>
+- `Omit`\<`FormControlLabelProps`, `"control"` \| `"onChange"`\>
 
 ## Properties
 
@@ -52,7 +54,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"inline"` \| `"none"` \| `"list"` \| `"both"`
+> `optional` **aria-autocomplete**: `"none"` \| `"list"` \| `"inline"` \| `"both"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -283,7 +285,7 @@ Indicates that the element is perceivable but disabled, so it is not editable or
 
 ### ~~aria-dropeffect?~~
 
-> `optional` **aria-dropeffect**: `"none"` \| `"link"` \| `"copy"` \| `"execute"` \| `"move"` \| `"popup"`
+> `optional` **aria-dropeffect**: `"link"` \| `"none"` \| `"copy"` \| `"execute"` \| `"move"` \| `"popup"`
 
 Indicates what functions can be performed when a dragged object is released on the drop target.
 
@@ -950,6 +952,8 @@ use the `slotProps` prop instead. This prop will be removed in a future major re
 
 > **control**: `string`
 
+Type of control to use (Checkbox, Radio, or Switch).
+
 ***
 
 ### dangerouslySetInnerHTML?
@@ -1042,11 +1046,25 @@ If `true`, the label is rendered as it is passed without an additional typograph
 
 ### enterKeyHint?
 
-> `optional` **enterKeyHint**: `"done"` \| `"search"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"send"`
+> `optional` **enterKeyHint**: `"search"` \| `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"send"`
 
 #### Inherited from
 
 `Omit.enterKeyHint`
+
+***
+
+### exportparts?
+
+> `optional` **exportparts**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/exportparts](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/exportparts)
+
+#### Inherited from
+
+`Omit.exportparts`
 
 ***
 
@@ -1116,7 +1134,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 ### inputMode?
 
-> `optional` **inputMode**: `"none"` \| `"search"` \| `"text"` \| `"tel"` \| `"url"` \| `"email"` \| `"numeric"` \| `"decimal"`
+> `optional` **inputMode**: `"search"` \| `"none"` \| `"text"` \| `"tel"` \| `"url"` \| `"email"` \| `"numeric"` \| `"decimal"`
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 
@@ -1370,7 +1388,7 @@ The position of the label.
 
 ### onBeforeInput?
 
-> `optional` **onBeforeInput**: `FormEventHandler`\<`HTMLLabelElement`\>
+> `optional` **onBeforeInput**: `InputEventHandler`\<`HTMLLabelElement`\>
 
 #### Inherited from
 
@@ -1458,32 +1476,21 @@ The position of the label.
 
 ***
 
-### onChange()?
+### onChange()
 
-> `optional` **onChange**: (`event`, `checked`) => `void`
+> **onChange**: (`checked?`) => `void`
 
-Callback fired when the state is changed.
+Callback fired when the control state changes.
 
 #### Parameters
 
-##### event
-
-`SyntheticEvent`
-
-The event source of the callback.
-You can pull out the new checked state by accessing `event.target.checked` (boolean).
-
-##### checked
+##### checked?
 
 `boolean`
 
 #### Returns
 
 `void`
-
-#### Inherited from
-
-`Omit.onChange`
 
 ***
 
@@ -2565,26 +2572,6 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
-### onResize?
-
-> `optional` **onResize**: `ReactEventHandler`\<`HTMLLabelElement`\>
-
-#### Inherited from
-
-`Omit.onResize`
-
-***
-
-### onResizeCapture?
-
-> `optional` **onResizeCapture**: `ReactEventHandler`\<`HTMLLabelElement`\>
-
-#### Inherited from
-
-`Omit.onResizeCapture`
-
-***
-
 ### onScroll?
 
 > `optional` **onScroll**: `UIEventHandler`\<`HTMLLabelElement`\>
@@ -2602,6 +2589,26 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 #### Inherited from
 
 `Omit.onScrollCapture`
+
+***
+
+### onScrollEnd?
+
+> `optional` **onScrollEnd**: `UIEventHandler`\<`HTMLLabelElement`\>
+
+#### Inherited from
+
+`Omit.onScrollEnd`
+
+***
+
+### onScrollEndCapture?
+
+> `optional` **onScrollEndCapture**: `UIEventHandler`\<`HTMLLabelElement`\>
+
+#### Inherited from
+
+`Omit.onScrollEndCapture`
 
 ***
 
@@ -2975,9 +2982,23 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
+### part?
+
+> `optional` **part**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/part](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part)
+
+#### Inherited from
+
+`Omit.part`
+
+***
+
 ### popover?
 
-> `optional` **popover**: `""` \| `"auto"` \| `"manual"`
+> `optional` **popover**: `""` \| `"hint"` \| `"auto"` \| `"manual"`
 
 #### Inherited from
 

@@ -1,7 +1,7 @@
 import type {ComponentStore} from '../../stores/ComponentStore'
 import type {ActionDefinition, ActionEventHandler, DefineActionHelper, EventName} from '../event'
 
-const iconsList = [
+export const iconsList = [
   'Breadcrumb',
   'Button',
   'Card',

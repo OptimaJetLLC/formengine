@@ -1,5 +1,5 @@
 import type {FormViewerValidationRules, SchemaType, ValidationRuleSettings, ValidatorType} from '@react-form-builder/core'
-import {namedObserver, useComponentData, useStore} from '@react-form-builder/core'
+import {ComponentStore, namedObserver, useComponentData, useStore} from '@react-form-builder/core'
 import type {Ref} from 'react'
 import {useCallback} from 'react'
 import {useTranslation} from 'react-i18next'
@@ -52,12 +52,7 @@ const RawRulesList = ({type}: { type: SchemaType }) => {
 
   const availableRules = getAvailableRules(validationRules, store.schema?.validations)
 
-  const onSelect = useCallback((key: string, type: ValidatorType) => {
-    store.schema ??= {validations: []}
-    // don't keep the default 'internal' type for JSON
-    const validationRecord = type === 'internal' ? {key} : {key, type}
-    store.schema.validations?.push(validationRecord)
-  }, [store])
+  const onSelect = useCallback((key: string, type: ValidatorType) => ComponentStore.addValidationRule(store, key, type), [store])
 
   const createSelectHandler = useCallback((key: string, type: ValidatorType) => () => {
     onSelect(key, type)

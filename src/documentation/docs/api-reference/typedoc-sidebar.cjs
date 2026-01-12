@@ -153,8 +153,18 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiCheckboxProps",
+              label: "MuiCheckboxProps"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiFormControlLabelProps",
               label: "MuiFormControlLabelProps"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiRadioItemProps",
+              label: "MuiRadioItemProps"
             }
           ]
         },
@@ -175,6 +185,16 @@ const typedocSidebar = {
           items: [
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/builderView",
+              label: "builderView"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/components",
+              label: "components"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/variables/materialUiComponentsDescriptions",
               label: "materialUiComponentsDescriptions"
             },
@@ -182,6 +202,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/variables/models",
               label: "models"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiArEgComponentsDescriptions",
+              label: "muiArEgComponentsDescriptions"
             },
             {
               type: "doc",
@@ -230,8 +255,28 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiDeDeComponentsDescriptions",
+              label: "muiDeDeComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiEnUsComponentsDescriptions",
+              label: "muiEnUsComponentsDescriptions"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/variables/muiErrorWrapper",
               label: "muiErrorWrapper"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiEsEsComponentsDescriptions",
+              label: "muiEsEsComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiFaIrComponentsDescriptions",
+              label: "muiFaIrComponentsDescriptions"
             },
             {
               type: "doc",
@@ -245,6 +290,31 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiFrFrComponentsDescriptions",
+              label: "muiFrFrComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiHiInComponentsDescriptions",
+              label: "muiHiInComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiItItComponentsDescriptions",
+              label: "muiItItComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiJaJpComponentsDescriptions",
+              label: "muiJaJpComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiKoKrComponentsDescriptions",
+              label: "muiKoKrComponentsDescriptions"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/variables/muiLinearProgress",
               label: "muiLinearProgress"
             },
@@ -252,6 +322,16 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/variables/muiLink",
               label: "muiLink"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiList",
+              label: "muiList"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiListItem",
+              label: "muiListItem"
             },
             {
               type: "doc",
@@ -267,6 +347,16 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/variables/muiSelect",
               label: "muiSelect"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiSrRsComponentsDescriptions",
+              label: "muiSrRsComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiStack",
+              label: "muiStack"
             },
             {
               type: "doc",
@@ -290,8 +380,18 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiUploader",
+              label: "muiUploader"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/variables/MuiViewerWrapper",
               label: "MuiViewerWrapper"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiZhCnComponentsDescriptions",
+              label: "muiZhCnComponentsDescriptions"
             },
             {
               type: "doc",
@@ -1637,6 +1737,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/FormBuilderComponentIconName",
+              label: "FormBuilderComponentIconName"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/FormOptions",
               label: "FormOptions"
             },
@@ -1684,6 +1789,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/I18nItem",
               label: "I18nItem"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/iconsList",
+              label: "iconsList"
             },
             {
               type: "doc",
@@ -2093,6 +2203,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/FormViewerLite",
+              label: "FormViewerLite"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/variables/globalDefaultLanguage",
               label: "globalDefaultLanguage"
             },
@@ -2170,6 +2285,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/variables/renderWhen",
               label: "renderWhen"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/variables/required",
+              label: "required"
             },
             {
               type: "doc",
@@ -2501,11 +2621,6 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/core/functions/needRender",
               label: "needRender"
-            },
-            {
-              type: "doc",
-              id: "api-reference/@react-form-builder/core/functions/SDiv",
-              label: "SDiv"
             },
             {
               type: "doc",

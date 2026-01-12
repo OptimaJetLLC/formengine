@@ -1,6 +1,6 @@
 # Interface: MuiBreadcrumbsItemProps
 
-Settings for a single breadcrumb item.
+Props for a single breadcrumb item component.
 
 ## Extends
 
@@ -35,6 +35,8 @@ URL for the breadcrumb item.
 ### onClick()?
 
 > `optional` **onClick**: (`item`) => `void`
+
+Callback function when the breadcrumb item is clicked.
 
 #### Parameters
 

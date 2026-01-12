@@ -1,5 +1,7 @@
 # Interface: MuiCardProps
 
+Props for the MuiCard component.
+
 ## Extends
 
 - `CardProps`
@@ -30,6 +32,8 @@
 
 > **actions**: `ReactNode`
 
+Actions content.
+
 ***
 
 ### aria-activedescendant?
@@ -58,7 +62,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"inline"` \| `"none"` \| `"list"` \| `"both"`
+> `optional` **aria-autocomplete**: `"none"` \| `"list"` \| `"inline"` \| `"both"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -289,7 +293,7 @@ Indicates that the element is perceivable but disabled, so it is not editable or
 
 ### ~~aria-dropeffect?~~
 
-> `optional` **aria-dropeffect**: `"none"` \| `"link"` \| `"copy"` \| `"execute"` \| `"move"` \| `"popup"`
+> `optional` **aria-dropeffect**: `"link"` \| `"none"` \| `"copy"` \| `"execute"` \| `"move"` \| `"popup"`
 
 Indicates what functions can be performed when a dragged object is released on the drop target.
 
@@ -1012,7 +1016,7 @@ It accepts values between 0 and 24 inclusive.
 
 ### enterKeyHint?
 
-> `optional` **enterKeyHint**: `"done"` \| `"search"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"send"`
+> `optional` **enterKeyHint**: `"search"` \| `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"send"`
 
 #### Inherited from
 
@@ -1020,9 +1024,25 @@ It accepts values between 0 and 24 inclusive.
 
 ***
 
+### exportparts?
+
+> `optional` **exportparts**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/exportparts](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/exportparts)
+
+#### Inherited from
+
+`CardProps.exportparts`
+
+***
+
 ### header
 
 > **header**: `ReactNode`
+
+Header content to display.
 
 ***
 
@@ -1030,11 +1050,15 @@ It accepts values between 0 and 24 inclusive.
 
 > **headerAction**: `ReactNode`
 
+Header action content.
+
 ***
 
 ### headerAvatar
 
 > **headerAvatar**: `ReactNode`
+
+Header avatar content.
 
 ***
 
@@ -1084,7 +1108,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 ### inputMode?
 
-> `optional` **inputMode**: `"none"` \| `"search"` \| `"text"` \| `"tel"` \| `"url"` \| `"email"` \| `"numeric"` \| `"decimal"`
+> `optional` **inputMode**: `"search"` \| `"none"` \| `"text"` \| `"tel"` \| `"url"` \| `"email"` \| `"numeric"` \| `"decimal"`
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 
@@ -1187,6 +1211,8 @@ Specify that a standard HTML element should behave like a defined custom built-i
 ### media
 
 > **media**: `ReactNode`
+
+Media content.
 
 ***
 
@@ -1302,7 +1328,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### onBeforeInput?
 
-> `optional` **onBeforeInput**: `FormEventHandler`\<`HTMLDivElement`\>
+> `optional` **onBeforeInput**: `InputEventHandler`\<`HTMLDivElement`\>
 
 #### Inherited from
 
@@ -2478,26 +2504,6 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
-### onResize?
-
-> `optional` **onResize**: `ReactEventHandler`\<`HTMLDivElement`\>
-
-#### Inherited from
-
-`CardProps.onResize`
-
-***
-
-### onResizeCapture?
-
-> `optional` **onResizeCapture**: `ReactEventHandler`\<`HTMLDivElement`\>
-
-#### Inherited from
-
-`CardProps.onResizeCapture`
-
-***
-
 ### onScroll?
 
 > `optional` **onScroll**: `UIEventHandler`\<`HTMLDivElement`\>
@@ -2515,6 +2521,26 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 #### Inherited from
 
 `CardProps.onScrollCapture`
+
+***
+
+### onScrollEnd?
+
+> `optional` **onScrollEnd**: `UIEventHandler`\<`HTMLDivElement`\>
+
+#### Inherited from
+
+`CardProps.onScrollEnd`
+
+***
+
+### onScrollEndCapture?
+
+> `optional` **onScrollEndCapture**: `UIEventHandler`\<`HTMLDivElement`\>
+
+#### Inherited from
+
+`CardProps.onScrollEndCapture`
 
 ***
 
@@ -2888,9 +2914,23 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
+### part?
+
+> `optional` **part**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/part](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part)
+
+#### Inherited from
+
+`CardProps.part`
+
+***
+
 ### popover?
 
-> `optional` **popover**: `""` \| `"auto"` \| `"manual"`
+> `optional` **popover**: `""` \| `"hint"` \| `"auto"` \| `"manual"`
 
 #### Inherited from
 
@@ -3096,6 +3136,8 @@ false
 
 > **subHeader**: `ReactNode`
 
+Subheader content.
+
 ***
 
 ### suppressContentEditableWarning?
@@ -3184,11 +3226,15 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 > `optional` **useActions**: `boolean`
 
+Whether to show actions section.
+
 ***
 
 ### useCardActionArea?
 
 > `optional` **useCardActionArea**: `boolean`
+
+Whether to use card action area wrapper.
 
 ***
 
@@ -3196,11 +3242,15 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 > `optional` **useHeader**: `boolean`
 
+Whether to show the card header.
+
 ***
 
 ### useHeaderAction?
 
 > `optional` **useHeaderAction**: `boolean`
+
+Whether to show header action area.
 
 ***
 
@@ -3208,17 +3258,23 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 > `optional` **useHeaderAvatar**: `boolean`
 
+Whether to show header avatar.
+
 ***
 
 ### useMedia?
 
 > `optional` **useMedia**: `boolean`
 
+Whether to show media section.
+
 ***
 
 ### useSubheader?
 
 > `optional` **useSubheader**: `boolean`
+
+Whether to show subheader.
 
 ***
 

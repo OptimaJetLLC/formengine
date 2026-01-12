@@ -68,9 +68,9 @@ the component metadata event listeners.
 
 ##### icon?
 
-`ComponentType`
+the component icon or the icon name.
 
-the component icon.
+`string` | `ComponentType`
 
 ##### insertRestriction?
 
@@ -112,9 +112,9 @@ the component metadata event listeners.
 
 ### icon?
 
-> `readonly` `optional` **icon**: `ComponentType`
+> `readonly` `optional` **icon**: `string` \| `ComponentType`
 
-the component icon.
+the component icon or the icon name.
 
 ***
 

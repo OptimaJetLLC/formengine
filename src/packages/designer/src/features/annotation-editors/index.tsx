@@ -24,6 +24,7 @@ import {ObjectInput} from './ObjectInput'
 import {Picker} from './Picker'
 import {RadioInput} from './RadioInput'
 import {RenderWhenEditor} from './RenderWhenEditor'
+import {RequiredPropertyInput} from './RequiredPropertyInput'
 import {SizeInput} from './SizeInput'
 import {StringInput} from './StringInput'
 import {TimeInput} from './TimeInput'
@@ -45,6 +46,7 @@ export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>>
   size: SizeInput,
   array: ArrayInput,
   object: ObjectInput,
+  required: RequiredPropertyInput,
   arrayOfString: ArrayOfStringInput,
   arrayOfObject: ArrayOfObjectInput,
   color: ColorInput,

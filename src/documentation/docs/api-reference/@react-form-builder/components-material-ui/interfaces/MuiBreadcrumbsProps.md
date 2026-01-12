@@ -54,7 +54,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"inline"` \| `"none"` \| `"list"` \| `"both"`
+> `optional` **aria-autocomplete**: `"none"` \| `"list"` \| `"inline"` \| `"both"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -285,7 +285,7 @@ Indicates that the element is perceivable but disabled, so it is not editable or
 
 ### ~~aria-dropeffect?~~
 
-> `optional` **aria-dropeffect**: `"none"` \| `"link"` \| `"copy"` \| `"execute"` \| `"move"` \| `"popup"`
+> `optional` **aria-dropeffect**: `"link"` \| `"none"` \| `"copy"` \| `"execute"` \| `"move"` \| `"popup"`
 
 Indicates what functions can be performed when a dragged object is released on the drop target.
 
@@ -989,7 +989,7 @@ Override or extend the styles applied to the component.
 
 ### enterKeyHint?
 
-> `optional` **enterKeyHint**: `"done"` \| `"search"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"send"`
+> `optional` **enterKeyHint**: `"search"` \| `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"send"`
 
 #### Inherited from
 
@@ -1014,6 +1014,20 @@ For localization purposes, you can use the provided [translations](https://mui.c
 #### Inherited from
 
 `BreadcrumbsProps.expandText`
+
+***
+
+### exportparts?
+
+> `optional` **exportparts**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/exportparts](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/exportparts)
+
+#### Inherited from
+
+`BreadcrumbsProps.exportparts`
 
 ***
 
@@ -1063,7 +1077,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 ### inputMode?
 
-> `optional` **inputMode**: `"none"` \| `"search"` \| `"text"` \| `"tel"` \| `"url"` \| `"email"` \| `"numeric"` \| `"decimal"`
+> `optional` **inputMode**: `"search"` \| `"none"` \| `"text"` \| `"tel"` \| `"url"` \| `"email"` \| `"numeric"` \| `"decimal"`
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 
@@ -1339,7 +1353,7 @@ will be shown, with an ellipsis in between.
 
 ### onBeforeInput?
 
-> `optional` **onBeforeInput**: `FormEventHandler`\<`HTMLElement`\>
+> `optional` **onBeforeInput**: `InputEventHandler`\<`HTMLElement`\>
 
 #### Inherited from
 
@@ -1949,7 +1963,7 @@ will be shown, with an ellipsis in between.
 
 ### onItemClick()
 
-> **onItemClick**: (`item`) => `object`
+> **onItemClick**: (`item`) => `void`
 
 Callback function when a breadcrumb item is clicked.
 
@@ -1961,7 +1975,7 @@ Callback function when a breadcrumb item is clicked.
 
 #### Returns
 
-`object`
+`void`
 
 ***
 
@@ -2533,26 +2547,6 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
-### onResize?
-
-> `optional` **onResize**: `ReactEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-`BreadcrumbsProps.onResize`
-
-***
-
-### onResizeCapture?
-
-> `optional` **onResizeCapture**: `ReactEventHandler`\<`HTMLElement`\>
-
-#### Inherited from
-
-`BreadcrumbsProps.onResizeCapture`
-
-***
-
 ### onScroll?
 
 > `optional` **onScroll**: `UIEventHandler`\<`HTMLElement`\>
@@ -2570,6 +2564,26 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 #### Inherited from
 
 `BreadcrumbsProps.onScrollCapture`
+
+***
+
+### onScrollEnd?
+
+> `optional` **onScrollEnd**: `UIEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`BreadcrumbsProps.onScrollEnd`
+
+***
+
+### onScrollEndCapture?
+
+> `optional` **onScrollEndCapture**: `UIEventHandler`\<`HTMLElement`\>
+
+#### Inherited from
+
+`BreadcrumbsProps.onScrollEndCapture`
 
 ***
 
@@ -2943,9 +2957,23 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ***
 
+### part?
+
+> `optional` **part**: `string`
+
+#### See
+
+[https://developer.mozilla.org/en-US/docs/Web/HTML/Global\_attributes/part](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part)
+
+#### Inherited from
+
+`BreadcrumbsProps.part`
+
+***
+
 ### popover?
 
-> `optional` **popover**: `""` \| `"auto"` \| `"manual"`
+> `optional` **popover**: `""` \| `"hint"` \| `"auto"` \| `"manual"`
 
 #### Inherited from
 

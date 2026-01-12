@@ -14,7 +14,8 @@ import {isPromise} from '../utils'
 import type {ComputeChildren} from '../utils/ComputeChildren'
 import type {ComponentData} from '../utils/contexts/ComponentDataContext'
 import {nameObservable} from '../utils/observableNaming'
-import type {ComponentStore, ComponentStyle} from './ComponentStore'
+import type {ComponentStyle} from './ComponentStore'
+import {ComponentStore} from './ComponentStore'
 import type {ComponentStoreLocalizer} from './ComponentStoreLocalizer'
 import type {IComponentState} from './IComponentState'
 import type {Store} from './Store'
@@ -33,10 +34,6 @@ const getHtmlAttributes = (componentStore: ComponentStore) => componentStore.htm
     }
     return result
   }, {})
-
-const isRequired = (componentStore: ComponentStore) => {
-  return !!componentStore.schema?.validations?.find(v => v.key === 'required')
-}
 
 const bindFunctionsInArgs = (e: ActionEventArgs, args: Record<string, any>) => {
   const functionEntries: Array<[string, (...fnArgs: unknown[]) => unknown]> = []
@@ -184,6 +181,7 @@ export class ComponentState implements IComponentState {
       this.localizedProps,
       this.value,
       this.readOnly,
+      this.required,
       this.disabled,
       this.events,
       htmlAttributes ?? this.htmlAttributes,
@@ -208,6 +206,15 @@ export class ComponentState implements IComponentState {
   get readOnly() {
     if (this.data.model.readOnly) {
       return {[this.data.model.readOnly]: this.isReadOnly}
+    }
+  }
+
+  /**
+   * @returns the required property of a component if the component has a required flag.
+   */
+  get required() {
+    if (ComponentStore.hasValidationRule(this.data.store, 'required')) {
+      return {required: true}
     }
   }
 
@@ -269,7 +276,7 @@ export class ComponentState implements IComponentState {
    */
   get className() {
     const className = cx(
-      {required: isRequired(this.data.store)},
+      this.required,
       this.propsWithoutChildren.className,
       this.getClassNameFromCssPart('css')
     )

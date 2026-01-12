@@ -55,6 +55,11 @@ export const readOnly = boolean.setup({readOnly: true})
 export const disabled = boolean.setup({disabled: true})
 
 /**
+ * Annotation builder for a required property of a component with type 'boolean'.
+ */
+export const required = createProperty('required').typed('boolean')
+
+/**
  * The annotation builder for a component property with type 'number'.
  */
 export const number = createProperty('number').typed('number')

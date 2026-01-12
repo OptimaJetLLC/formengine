@@ -74,9 +74,9 @@ The set of component features.
 
 ### icon?
 
-> `optional` **icon**: `ComponentType`
+> `optional` **icon**: `ComponentType` \| `string`
 
-The component icon.
+The component icon or the icon name.
 
 ***
 

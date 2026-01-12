@@ -291,6 +291,20 @@ the read-only property of a component if the component has a read-only flag.
 
 ***
 
+### required
+
+#### Get Signature
+
+> **get** **required**(): `undefined` \| \{ `required`: `boolean`; \}
+
+##### Returns
+
+`undefined` \| \{ `required`: `boolean`; \}
+
+the required property of a component if the component has a required flag.
+
+***
+
 ### style
 
 #### Get Signature

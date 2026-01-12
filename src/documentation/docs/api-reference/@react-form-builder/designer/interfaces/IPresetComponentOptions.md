@@ -36,6 +36,14 @@ The flag to disable the removing of preset components.
 
 ***
 
+### localStoragePrefix?
+
+> `optional` **localStoragePrefix**: `string`
+
+The prefix for localStorage key.
+
+***
+
 ### onCreate()?
 
 > `optional` **onCreate**: (`preset`) => `void`

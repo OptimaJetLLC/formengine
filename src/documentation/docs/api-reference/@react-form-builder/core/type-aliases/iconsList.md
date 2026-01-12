@@ -1,0 +1,3 @@
+# Type Alias: iconsList
+
+> **iconsList** = readonly \[`"Breadcrumb"`, `"Button"`, `"Card"`, `"Checkbox"`, `"CollectionEditor"`, `"Container"`, `"Content"`, `"CustomBlock"`, `"CustomControl"`, `"DatePicker"`, `"Default"`, `"Dropdown"`, `"Dropzone"`, `"ErrorMessage"`, `"Grid"`, `"GridLayout"`, `"GridView"`, `"Image"`, `"Input"`, `"Label"`, `"Link"`, `"Footer"`, `"Header"`, `"Sidebar"`, `"Menu"`, `"Message"`, `"NumberFormat"`, `"PatternFormat"`, `"ProgressCircle"`, `"ProgressLine"`, `"RadioGroup"`, `"Repeater"`, `"RichTextEditor"`, `"Search"`, `"Signature"`, `"Sparks"`, `"StaticContent"`, `"Tab"`, `"TextArea"`, `"TimePicker"`, `"Toggle"`, `"Tooltip"`, `"TreePicker"`, `"Uploader"`\]
