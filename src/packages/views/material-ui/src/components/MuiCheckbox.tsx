@@ -38,6 +38,7 @@ export const muiCheckbox = define(MuiCheckbox, 'MuiCheckbox')
   .icon('Checkbox')
   .category(inputsCategory)
   .props({
+    label: string.default('Checkbox label'),
     checked: boolean.valued.uncontrolledValue(false),
     color: string,
     disabled: disabled,

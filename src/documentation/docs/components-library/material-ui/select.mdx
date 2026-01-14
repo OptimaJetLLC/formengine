@@ -1,0 +1,49 @@
+---
+title: Select
+description: The Select component is a dropdown menu that allows users to choose one option from a list
+slug: /components-library/material-ui/select
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/material-ui/src/components/MuiSelect.tsx"
+/>
+
+## Introduction
+
+The Select component is a dropdown menu that allows users to choose one option from a list of predefined choices. It provides a compact
+way to present multiple options while conserving space in forms and interfaces. The component features Material Design styling with
+proper accessibility support.
+
+The Select component is based on [Material UI Select](https://mui.com/material-ui/react-select/). It is included within the following
+NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The Select component can be styled and configured to fit specific design and functionality requirements by using various properties
+that are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name        | Type      | Description                                                                          |
+|:------------|:----------|:-------------------------------------------------------------------------------------|
+| Label       | `string`  | Text that is displayed as the label for the dropdown                                 |
+| Disabled    | `boolean` | Disables the dropdown, making it non-interactive                                     |
+| Variant     | `choice`  | Sets the visual variant (`outlined`, `standard`, `filled`)                           |
+| Full width  | `boolean` | Makes the dropdown take the full width of its container                              |
+| Size        | `choice`  | Sets the size of the dropdown (`small`, `medium`, `large`)                           |
+| Error       | `boolean` | Applies error styling to indicate invalid selection                                  |
+| Helper text | `string`  | Additional text displayed below the field (e.g., for validation messages)            |
+| Value       | `string`  | Sets the default selected value                                                      |
+| Items       | `array`   | Array of options to display in the dropdown (default: `["Item1", "Item2", "Item3"]`) |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

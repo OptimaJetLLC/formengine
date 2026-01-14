@@ -1,0 +1,44 @@
+---
+title: Container
+description: The Container component provides a responsive container to center and constrain content width
+slug: /components-library/material-ui/container
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/material-ui/src/components/MuiContainer.tsx"
+/>
+
+## Introduction
+
+The Container component provides a responsive container to center and constrain content width. It is commonly used as a top-level wrapper
+for page content to ensure proper alignment, responsive behavior, and consistent spacing across different screen sizes. The component
+follows Material Design guidelines for layout containers with responsive breakpoints and centered content.
+
+The Container component is based on [Material UI Container](https://mui.com/material-ui/react-container/). It is included within the
+following NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The Container component can be styled and configured to fit specific design and functionality requirements by using various properties
+that are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name            | Type                                            | Description                                                                              |
+|:----------------|:------------------------------------------------|:-----------------------------------------------------------------------------------------|
+| Disable gutters | `boolean`                                       | If `true`, the left and right padding (gutters) will be disabled                         |
+| Fixed           | `boolean`                                       | If `true`, the container will use a fixed max-width instead of growing with the viewport |
+| Max width       | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| false` | The maximum width of the container                                                       |
+| Sx              | `object`                                        | The system prop that allows defining system overrides as well as additional CSS styles   |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

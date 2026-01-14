@@ -1,0 +1,54 @@
+---
+title: Radio Group
+description: The Radio Group component allows users to select one option from a mutually exclusive set of choices
+slug: /components-library/material-ui/radio-group
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/material-ui/src/components/MuiRadioGroup.tsx"
+/>
+
+## Introduction
+
+The Radio Group component allows users to select exactly one option from a mutually exclusive set of choices. It presents multiple radio
+buttons as a cohesive group where selecting one option automatically deselects others. This component is ideal for scenarios where users
+must make a single selection from multiple options, such as choosing a payment method, selecting a category, or picking a preference.
+
+The Radio Group component is based on [Material UI Radio Group](https://mui.com/material-ui/react-radio-button/). It is included within
+the following NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The Radio Group component can be styled and configured to fit specific design and functionality requirements by using various properties
+that are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name  | Type      | Description                                                                 |
+|:------|:----------|:----------------------------------------------------------------------------|
+| Name  | `string`  | Name attribute for the radio group (default: `"RadioGroup"`)                |
+| Row   | `boolean` | Arranges radio buttons horizontally (row) instead of vertically (column)    |
+| Value | `string`  | Sets the default selected value                                             |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
+
+## MuiRadioItem properties
+
+Each radio item within the group can be configured with the following properties:
+
+| Name     | Type      | Description                                                                                     |
+|:---------|:----------|:------------------------------------------------------------------------------------------------|
+| Value    | `string`  | The value associated with this radio button                                                     |
+| Label    | `string`  | Text displayed next to the radio button                                                         |
+| Color    | `string`  | Color of the radio button (e.g., `primary`, `secondary`, `success`, `error`, `info`, `warning`) |
+| Disabled | `boolean` | Disables this specific radio button                                                             |

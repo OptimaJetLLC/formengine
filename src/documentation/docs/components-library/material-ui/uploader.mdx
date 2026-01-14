@@ -1,0 +1,36 @@
+---
+title: Uploader
+description: The Uploader component allows users to upload files with a Material UI styled interface
+slug: /components-library/material-ui/uploader
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/material-ui/src/components/MuiUploader.tsx"
+/>
+
+## Introduction
+
+The Uploader component allows users to upload files through a user-friendly interface with Material Design styling. It provides a complete
+file upload solution with upload button, file list display, and status feedback. The component is built as a preset that combines multiple
+Material UI components to create a robust upload experience.
+
+The Uploader component is included within the following NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The Uploader component can be configured to fit specific file upload requirements by using various properties and customization options
+that are presented and described below.
+
+## Component structure
+
+The MuiUploader is a preset component that combines several subcomponents:
+
+1. **Upload Container** - MuiContainer that wraps the upload interface
+2. **Upload Button** - MuiButton that triggers file selection
+3. **File List** - MuiList that displays uploaded files
+4. **File Items** - MuiListItem for each uploaded file
+5. **File Status** - MuiTypography for file names and status messages

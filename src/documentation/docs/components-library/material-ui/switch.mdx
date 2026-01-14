@@ -1,0 +1,44 @@
+---
+title: Switch
+description: The Switch component is a toggle switch that allows users to choose between two mutually exclusive states
+slug: /components-library/material-ui/switch
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/material-ui/src/components/MuiSwitch.tsx"
+/>
+
+## Introduction
+
+The Switch component is a toggle switch that allows users to choose between two mutually exclusive states (on/off, true/false,
+enabled/disabled). It provides a visual alternative to checkboxes for binary choices, often used for settings, preferences, or
+feature toggles. The component features Material Design styling with smooth animations and accessibility support.
+
+The Switch component is based on [Material UI Switch](https://mui.com/material-ui/react-switch/). It is included within the following
+NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The Switch component can be styled and configured to fit specific design and functionality requirements by using various properties that
+are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name     | Type      | Description                                                                                                          |
+|:---------|:----------|:---------------------------------------------------------------------------------------------------------------------|
+| Color    | `choice`  | Sets the color of the switch when checked (`primary`, `secondary`, `error`, `info`, `success`, `warning`, `default`) |
+| Checked  | `boolean` | Sets the initial state of the switch (true = on, false = off)                                                        |
+| Disabled | `boolean` | Disables the switch, making it non-interactive                                                                       |
+| Size     | `choice`  | Sets the size of the switch (`small`, `medium`)                                                                      |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

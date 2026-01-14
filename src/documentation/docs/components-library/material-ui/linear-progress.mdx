@@ -1,0 +1,44 @@
+---
+title: LinearProgress
+description: The LinearProgress component displays a horizontal loading indicator for indeterminate or determinate progress
+slug: /components-library/material-ui/linear-progress
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/material-ui/src/components/MuiLinearProgress.tsx"
+/>
+
+## Introduction
+
+The LinearProgress component displays a horizontal loading indicator for indeterminate or determinate progress. It is commonly used to
+indicate loading states, progress of operations, file uploads, or any process that has a measurable completion percentage. The component
+follows Material Design guidelines for progress indicators with smooth animations and clear visual feedback.
+
+The LinearProgress component is based on [Material UI LinearProgress](https://mui.com/material-ui/react-progress/). It is included within
+the following NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The LinearProgress component can be styled and configured to fit specific design and functionality requirements by using various properties
+that are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name         | Type                                                                                   | Description                                                            |
+|:-------------|:---------------------------------------------------------------------------------------|:-----------------------------------------------------------------------|
+| Value        | `number`                                                                               | The value of the progress indicator for determinate variant (0 to 100) |
+| Value buffer | `number`                                                                               | The value of the buffer indicator for buffer variant (0 to 100)        |
+| Variant      | `'determinate' \| 'indeterminate' \| 'buffer' \| 'query'`                              | The variant of the progress indicator                                  |
+| Color        | `'primary' \| 'secondary' \| 'error' \| 'info' \| 'success' \| 'warning' \| 'inherit'` | The color of the component                                             |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

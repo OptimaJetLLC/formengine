@@ -1,0 +1,42 @@
+---
+title: RadioItem
+description: The RadioItem component represents a single radio button option within a radio group with label and value association
+slug: /components-library/material-ui/radio-item
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/material-ui/src/components/MuiRadioItem.tsx"
+/>
+
+## Introduction
+
+The RadioItem component represents a single radio button option within a radio group with label and value association. It is commonly
+used as a building block for creating radio button groups where each option needs to be individually configured with specific properties. The component follows Material Design guidelines for radio buttons with proper labeling, interaction states, and accessibility features.
+
+The RadioItem component is a custom FormEngine component built on Material UI foundations. It is included within the following
+NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The RadioItem component can be styled and configured to fit specific design and functionality requirements by using various properties
+that are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name     | Type                                                                                   | Description                                                                            |
+|:---------|:---------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------|
+| Value    | `string`                                                                               | The value of the radio item                                                            |
+| Color    | `'primary' \| 'secondary' \| 'error' \| 'info' \| 'success' \| 'warning' \| 'default'` | The color of the radio button                                                          |
+| Disabled | `boolean`                                                                              | If `true`, the radio item will be disabled                                             |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

@@ -1,0 +1,54 @@
+---
+title: Card
+description: The Card component is a versatile container for displaying content and actions about a single subject
+slug: /components-library/material-ui/card
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/material-ui/src/components/MuiCard.tsx"
+/>
+
+## Introduction
+
+The Card component is a versatile container for displaying content and actions about a single subject. It is commonly used to group
+related information, create product displays, show user profiles, or present any self-contained content unit. The component follows
+Material Design card guidelines with elevation, rounded corners, and flexible content areas.
+
+The Card component is based on [Material UI Card](https://mui.com/material-ui/react-card/). It is included within the following
+NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The Card component can be styled and configured to fit specific design and functionality requirements by using various properties
+that are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name                 | Type                        | Description                                      |
+|:---------------------|:----------------------------|:-------------------------------------------------|
+| Use header           | `boolean`                   | Enables the card header section                  |
+| Use header action    | `boolean`                   | Enables an action area inside the header         |
+| Use header avatar    | `boolean`                   | Displays an avatar inside the header             |
+| Use subheader        | `boolean`                   | Displays a subheader below the main header       |
+| Use media            | `boolean`                   | Enables a media section inside the card          |
+| Use actions          | `boolean`                   | Displays an actions section at the bottom        |
+| Use card action area | `boolean`                   | Wraps content with a clickable action area       |
+| Header               | `ReactNode`                 | Content rendered in the card header              |
+| Header action        | `ReactNode`                 | Action element displayed in the header           |
+| Header avatar        | `ReactNode`                 | Avatar element displayed in the header           |
+| Sub header           | `string`                    | Secondary text displayed below the header        |
+| Media                | `ReactNode`                 | Media content such as an image or video          |
+| Actions              | `ReactNode`                 | Action buttons or controls for the card          |
+| Variant              | `'elevation' \| 'outlined'` | The variant of the card (default: `'elevation'`) |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

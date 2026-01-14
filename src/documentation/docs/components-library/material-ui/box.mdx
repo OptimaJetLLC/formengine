@@ -1,0 +1,56 @@
+---
+title: Box
+description: The Box component is a generic container component for layout and styling with Material UI's styling system
+slug: /components-library/material-ui/box
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/material-ui/src/components/MuiBox.tsx"
+/>
+
+## Introduction
+
+The Box component is a generic container component for layout and styling with Material UI's styling system. It serves as a wrapper
+component for most CSS utility needs, providing a convenient way to apply spacing, sizing, colors, and other styling properties.
+
+The Box component is based on [Material UI Box](https://mui.com/material-ui/react-box/). It is included within the following
+NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The Box component can be styled and configured to fit specific design and functionality requirements by using various properties that
+are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name      | Type        | Description                                                                            |
+|:----------|:------------|:---------------------------------------------------------------------------------------|
+| Sx        | `object`    | The system prop that allows defining system overrides as well as additional CSS styles |
+
+### System props (available via `sx` prop)
+
+The Box component supports all system props from Material UI's system. Here are the most commonly used:
+
+| Category        | Properties                                                                                                                                                                                       | Description                  |
+|:----------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------|
+| **Spacing**     | `m`, `mt`, `mr`, `mb`, `ml`, `mx`, `my`, `p`, `pt`, `pr`, `pb`, `pl`, `px`, `py`                                                                                                                 | Margin and padding utilities |
+| **Sizing**      | `width`, `height`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight`                                                                                                                              | Width and height utilities   |
+| **Layout**      | `display`, `flexDirection`, `flexWrap`, `justifyContent`, `alignItems`, `alignContent`, `order`, `flex`, `flexGrow`, `flexShrink`, `flexBasis`, `alignSelf`                                      | Flexbox utilities            |
+| **Positioning** | `position`, `top`, `right`, `bottom`, `left`, `zIndex`                                                                                                                                           | Positioning utilities        |
+| **Background**  | `bgcolor`, `backgroundColor`, `backgroundImage`, `backgroundSize`, `backgroundPosition`, `backgroundRepeat`                                                                                      | Background utilities         |
+| **Borders**     | `border`, `borderTop`, `borderRight`, `borderBottom`, `borderLeft`, `borderColor`, `borderRadius`                                                                                                | Border utilities             |
+| **Typography**  | `fontFamily`, `fontSize`, `fontWeight`, `lineHeight`, `letterSpacing`, `textAlign`, `color`                                                                                                      | Typography utilities         |
+| **Shadows**     | `boxShadow`                                                                                                                                                                                      | Shadow utilities             |
+| **Grid**        | `gridGap`, `gridColumnGap`, `gridRowGap`, `gridColumn`, `gridRow`, `gridAutoFlow`, `gridAutoColumns`, `gridAutoRows`, `gridTemplateColumns`, `gridTemplateRows`, `gridTemplateAreas`, `gridArea` | CSS Grid utilities           |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

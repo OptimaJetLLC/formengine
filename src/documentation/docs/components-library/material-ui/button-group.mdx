@@ -1,0 +1,44 @@
+---
+title: ButtonGroup
+description: The ButtonGroup component groups related buttons together for better visual organization
+slug: /components-library/material-ui/button-group
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/material-ui/src/components/MuiButtonGroup.tsx"
+/>
+
+## Introduction
+
+The ButtonGroup component groups related buttons together for better visual organization and visual consistency. It is commonly used for
+toolbars, segmented controls, and groups of related actions. The component provides a cohesive visual grouping with Material Design styling.
+
+The ButtonGroup component is based on [Material UI ButtonGroup](https://mui.com/material-ui/react-button-group/). It is included within
+the following NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The ButtonGroup component can be styled and configured to fit specific design and functionality requirements by using various properties
+that are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name        | Type                                                                                   | Description                                                              |
+|:------------|:---------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|
+| Variant     | `'text' \| 'outlined' \| 'contained'`                                                  | The variant of the button group style                                    |
+| Color       | `'primary' \| 'secondary' \| 'success' \| 'error' \| 'info' \| 'warning' \| 'inherit'` | The color of the button group                                            |
+| Orientation | `'horizontal' \| 'vertical'`                                                           | The orientation of the button group                                      |
+| Disabled    | `boolean`                                                                              | If `true`, all buttons in the group will be disabled                     |
+| Full width  | `boolean`                                                                              | If `true`, the button group will take up the full width of its container |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

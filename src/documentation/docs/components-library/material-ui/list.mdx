@@ -1,0 +1,43 @@
+---
+title: List
+description: The List component displays a collection of items in a structured, scrollable container
+slug: /components-library/material-ui/list
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/material-ui/src/components/MuiList.tsx"
+/>
+
+## Introduction
+
+The List component displays a collection of items in a structured, scrollable container. It is commonly used for navigation menus,
+data listings, selection interfaces, and any scenario where items need to be presented in an organized, vertical layout. The component
+follows Material Design guidelines for lists with proper spacing, dividers, and interactive states.
+
+The List component is based on [Material UI List](https://mui.com/material-ui/react-list/). It is included within the following
+NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The List component can be styled and configured to fit specific design and functionality requirements by using various properties that
+are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name            | Type      | Description                                                                            |
+|:----------------|:----------|:---------------------------------------------------------------------------------------|
+| Dense           | `boolean` | If `true`, compact vertical padding will be used for list items                        |
+| Disable padding | `boolean` | If `true`, vertical padding will be removed from the list                              |
+| Sx              | `object`  | The system prop that allows defining system overrides as well as additional CSS styles |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
