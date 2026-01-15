@@ -253,7 +253,7 @@ export class ComponentStore {
    * @param key the validation key.
    * @param type the validation type.
    */
-  static addValidationRule(store: ComponentStore, key: string, type: ValidatorType) {
+  static addValidationRule(store: ComponentStore, key: string, type: ValidatorType = 'internal') {
     if (ComponentStore.hasValidationRule(store, key)) return
 
     store.schema ??= {validations: []}

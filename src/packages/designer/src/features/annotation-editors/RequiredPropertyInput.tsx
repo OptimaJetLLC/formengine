@@ -10,13 +10,13 @@ import {BooleanInput} from './BooleanInput'
  */
 export const RequiredPropertyInput = (props: AnnotationEditorProps) => {
   const {store} = useComponentData()
-  const hasRule = ComponentStore.hasValidationRule(store, 'required')
+  const hasRule = ComponentStore.hasValidationRule(store, 'required') || undefined
   const [value, setValue] = useState<boolean | undefined>(hasRule)
 
   const handleChange = useCallback((checked: boolean) => {
     setValue(checked)
     if (checked) {
-      ComponentStore.addValidationRule(store, 'required', 'internal')
+      ComponentStore.addValidationRule(store, 'required')
       return
     }
     ComponentStore.removeValidationRule(store, 'required')

@@ -1,0 +1,18 @@
+{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "test-input",
+        "type": "MyInput",
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "test-input"
+          }
+        ]
+      }
+    ]
+  }
+}

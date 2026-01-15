@@ -59,7 +59,7 @@ const RawRulesList = ({type}: { type: SchemaType }) => {
   }, [onSelect])
 
   const toDropdownItem = useCallback((key: string, type: ValidatorType, name: string) => (
-    <Dropdown.Item key={key} eventKey={key} onSelect={createSelectHandler(key, type)}>
+    <Dropdown.Item key={key} eventKey={key} onSelect={createSelectHandler(key, type)} data-testid={`rule-menu-item-${type}-${key}`}>
       {name}
     </Dropdown.Item>
   ), [createSelectHandler])
@@ -93,7 +93,7 @@ const RawAddRuleButton = () => {
   const viewerStore = useStore()
 
   const renderToggle: DropdownProps['renderToggle'] = useCallback((props: WithAsProps, ref: Ref<any>) => (
-    <Button {...props} ref={ref} block>
+    <Button {...props} ref={ref} block data-testid={'add-rule-button'}>
       {t('validation.addRule')}
     </Button>
   ), [t])

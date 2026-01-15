@@ -76,7 +76,7 @@ const RawValidationRuleEditor = ({rule, onRemove}: ValidationRuleEditorProps) =>
   }
 
   return (
-    <Rows>
+    <Rows data-testid={`existing-rule-${rule.type ?? 'internal'}-${rule.key}`}>
       <Columns spaceBetween>
         <div>
           {!annotations &&
