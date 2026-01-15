@@ -1,0 +1,80 @@
+{
+  "version": "1",
+  "tooltipType": "RsTooltip",
+  "modalType": "RsModal",
+  "errorType": "RsErrorMessage",
+  "form": {
+    "key": "screen 1",
+    "type": "Screen",
+    "props": {
+      "error": {
+        "value": {}
+      }
+    },
+    "children": [
+      {
+        "key": "First name",
+        "type": "HtmlInput",
+        "props": {
+          "label": {
+            "value": "First name"
+          },
+          "className": {
+            "value": "AAAAAA"
+          }
+        },
+        "schema": {
+          "type": "string",
+          "validations": [
+            {
+              "key": "required"
+            }
+          ],
+          "autoValidate": true
+        },
+        "wrapperCss": {
+          "any": {
+            "object": {
+              "height": "10%",
+              "marginTop": "10vw"
+            },
+            "string": "    background-color: #0aa;\n\n    &.active {\n        opacity: 0.7;\n      } \n\n    @media (prefers-color-scheme: dark) {\n        background-color: #222;\n        color: #faf;\n        border-color: #c0c;\n    }\n\n    @media (prefers-color-scheme: light) {\n        background-color: #eef;\n        color: #135;\n        border-color: #0cc;\n    }"
+          },
+          "mobile": {
+            "object": {
+              "height": "15px",
+              "marginInlineEnd": "50px",
+              "marginTop": "23px"
+            },
+            "string": "    background-color: #fa0;\n\n    &.active {\n        opacity: 0.4;\n      }\n\n    @media (prefers-color-scheme: dark) {\n        background-color: #101;\n        color: #0ff;\n        border-color: #f00;\n    }\n\n    @media (prefers-color-scheme: light) {\n        background-color: #dff;\n        color: #210;\n        border-color: #0f0;\n    }"
+          }
+        },
+        "css": {
+          "any": {
+            "string": "    background-color: #e11;\n    \n    @media (prefers-color-scheme: dark) {\n      background-color: #111;\n      color: #eee;\n      border-color: #0ff;\n    }\n    @media (prefers-color-scheme: light) {\n      background-color: #fef;\n      color: #123;\n      border-color: #0a0;\n    }"
+          },
+          "mobile": {
+            "string": "    background-color: #ff0;\n    \n    @media (prefers-color-scheme: dark) {\n      background-color: #024;\n      color: #f0f;\n      border-color: #fa0;\n    }\n    @media (prefers-color-scheme: light) {\n      background-color: #0f0;\n      color: #005;\n      border-color: #00f;\n    }\n"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "styled-element"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}
