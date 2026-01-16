@@ -33,6 +33,7 @@ export const muiTextField = define(MuiTextField, 'MuiTextField')
     multiline: boolean,
     maxRows: number,
     ...formControlProperties,
+    variant: oneOfStrict('outlined', 'standard', 'filled'),
     size: oneOfStrict('small', 'medium'),
     margin: oneOfStrict('dense', 'normal', 'none')
   })

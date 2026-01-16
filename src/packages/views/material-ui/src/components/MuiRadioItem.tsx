@@ -27,6 +27,10 @@ export const muiRadioItem = define(MuiRadioItem, 'MuiRadioItem')
   .category(inputsCategory)
   .props({
     value: string,
+    label: string.default('Radio item'),
     color: string,
     disabled: disabled
+  })
+  .wrapperCss({
+    width: undefined
   })

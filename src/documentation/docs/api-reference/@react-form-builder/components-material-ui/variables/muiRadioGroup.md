@@ -1,3 +1,3 @@
 # Variable: muiRadioGroup
 
-> `const` **muiRadioGroup**: [`Definer`](../../core/interfaces/Definer.md)\<`RadioGroupProps`\>
+> `const` **muiRadioGroup**: [`Definer`](../../core/interfaces/Definer.md)\<`any`\>

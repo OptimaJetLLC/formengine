@@ -576,3 +576,25 @@ true to disable the styling of the component wrapper.
 `Definer`\<`T`\>
 
 the modified Definer class instance.
+
+***
+
+### wrapperCss()
+
+> **wrapperCss**(`css`): `Definer`\<`T`\>
+
+Sets the component wrapper CSS metadata.
+
+#### Parameters
+
+##### css
+
+[`Annotations`](../type-aliases/Annotations.md)\<`CSSObject`\>
+
+the component wrapper CSS metadata.
+
+#### Returns
+
+`Definer`\<`T`\>
+
+the modified Definer class instance.

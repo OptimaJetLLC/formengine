@@ -42,7 +42,7 @@ The React component.
 
 > `optional` **cssObject**: [`Annotations`](Annotations.md)\<`CSSObject`\>
 
-The CSS metadata.
+The component CSS metadata.
 
 ***
 
@@ -117,3 +117,11 @@ The component name.
 > `optional` **properties**: [`Annotations`](Annotations.md)\<`T`\>
 
 The property metadata.
+
+***
+
+### wrapperCssObject?
+
+> `optional` **wrapperCssObject**: [`Annotations`](Annotations.md)\<`CSSObject`\>
+
+The wrapper CSS metadata.

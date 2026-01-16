@@ -59,9 +59,13 @@ export type DefinerData<T extends object> = {
    */
   category?: string,
   /**
-   * The CSS metadata.
+   * The component CSS metadata.
    */
   cssObject?: Annotations<CSSObject>,
+  /**
+   * The wrapper CSS metadata.
+   */
+  wrapperCssObject?: Annotations<CSSObject>,
   /**
    * The component icon or the icon name.
    */
@@ -203,6 +207,13 @@ export class Definer<T extends object> {
    * @returns the modified Definer class instance.
    */
   css = (css: Annotations<CSSObject>): Definer<T> => this.#updateWith({cssObject: css})
+
+  /**
+   * Sets the component wrapper CSS metadata.
+   * @param css the component wrapper CSS metadata.
+   * @returns the modified Definer class instance.
+   */
+  wrapperCss = (css: Annotations<CSSObject>): Definer<T> => this.#updateWith({wrapperCssObject: css})
 
   /**
    * Adds the metadata of the component's actions. **Internal use only.**
@@ -356,7 +367,10 @@ export class Definer<T extends object> {
   build(): BuilderComponent {
     const propAns = toArray(this.data.properties)
     const cssAns = toStyleProperties(this.data.cssObject)
-    const cssWrapperAns = toStyleProperties(commonStyles)
+    const cssWrapperAns = toStyleProperties({
+      ...commonStyles,
+      ...this.data.wrapperCssObject
+    })
     const valuedAnnotations = propAns.filter(an => an.valued === true)
     const firstValuedAn = valuedAnnotations[0]
     if (valuedAnnotations.length > 1) {
