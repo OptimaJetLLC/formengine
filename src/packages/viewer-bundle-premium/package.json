@@ -1,6 +1,6 @@
 {
   "name": "@react-form-builder/viewer-bundle-premium",
-  "version": "7.9.0",
+  "version": "7.10.0",
   "private": false,
   "main": "src/index.ts",
   "type": "module",
@@ -23,12 +23,12 @@
     "create-archive": "node ./config/pack"
   },
   "dependencies": {
-    "@react-form-builder/components-fast-qr": "^7.9.0",
-    "@react-form-builder/components-google-map": "^7.9.0",
-    "@react-form-builder/components-rich-text": "^7.9.0",
-    "@react-form-builder/components-rsuite": "^7.9.0",
-    "@react-form-builder/components-rsuite-table": "^7.9.0",
-    "@react-form-builder/components-signature": "^7.9.0",
+    "@react-form-builder/components-fast-qr": "^7.10.0",
+    "@react-form-builder/components-google-map": "^7.10.0",
+    "@react-form-builder/components-rich-text": "^7.10.0",
+    "@react-form-builder/components-rsuite": "^7.10.0",
+    "@react-form-builder/components-rsuite-table": "^7.10.0",
+    "@react-form-builder/components-signature": "^7.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0"
@@ -37,7 +37,7 @@
     "vite-plugin-css-injected-by-js": "^3.5.2"
   },
   "peerDependencies": {
-    "@react-form-builder/core": "7.9.0"
+    "@react-form-builder/core": "7.10.0"
   },
   "peerDependenciesMeta": {
     "@react-form-builder/core": {
