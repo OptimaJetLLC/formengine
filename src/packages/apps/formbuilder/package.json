@@ -15,8 +15,7 @@
     "start": "vite -c ../../../vite.config.ts --open",
     "dev": "vite -c ../../../vite.config.ts",
     "build": "vite -c ../../../vite.config.ts build",
-    "serve": "serve dist",
-    "update-release-date": "node ./scripts/update-release-date"
+    "serve": "serve dist"
   },
   "dependencies": {
     "@react-form-builder/apps-common": "^7.10.0",
