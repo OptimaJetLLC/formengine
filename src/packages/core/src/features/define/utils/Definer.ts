@@ -27,6 +27,7 @@ import {
   cfEnableInlineStylesEditor,
   cfEventHandlers,
   cfHideFromComponentPalette,
+  cfRequiredProperties,
   cfSkipChildrenDuringFieldCollection
 } from './integratedComponentFeatures'
 import {Meta} from './Meta'
@@ -371,6 +372,16 @@ export class Definer<T extends object> {
       return props
     }, {} as Record<string, ComponentPropertyBindType>)
 
+    const features = {...this.data.features}
+
+    const requiredProps = propAns
+      .filter(an => an.controlsRequiredProp)
+      .map(an => an.key)
+
+    if (requiredProps.length > 0) {
+      features[cfRequiredProperties] = requiredProps
+    }
+
     const model = new Model(
       this.data.component,
       this.data.name || this.getType(),
@@ -387,7 +398,7 @@ export class Definer<T extends object> {
       valuedAn?.uncontrolledValue,
       disabledAn?.key,
       valuedAn?.dataBindingType,
-      this.data.features,
+      features,
     )
 
     const meta = new Meta(

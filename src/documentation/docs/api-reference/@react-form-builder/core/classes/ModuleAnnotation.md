@@ -63,6 +63,18 @@ True if the property value can be a calculated property, false otherwise.
 
 ***
 
+### controlsRequiredProp
+
+> `readonly` **controlsRequiredProp**: `boolean` = `false`
+
+True if the property value controls a required flag, false otherwise.
+
+#### Inherited from
+
+[`Annotation`](Annotation.md).[`controlsRequiredProp`](Annotation.md#controlsrequiredprop)
+
+***
+
 ### dataBindingType
 
 > `readonly` **dataBindingType**: [`DataBindingType`](../type-aliases/DataBindingType.md) = `'none'`

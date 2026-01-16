@@ -1,9 +1,40 @@
-import {BuilderView, ComponentStore, define, PersistedForm, required, string, type ValidatorType} from '@react-form-builder/core'
+import {
+  BuilderView,
+  ComponentStore,
+  createView,
+  define,
+  PersistedForm,
+  required,
+  string,
+  type ValidatorType
+} from '@react-form-builder/core'
 import {IFormBuilder} from '@react-form-builder/designer'
 import {fireEvent, RenderResult} from '@testing-library/react'
+import type {HTMLAttributes} from 'react'
 import {getPropertyInput} from '../util/controls'
 import {renderBuilder} from '../util/renderBuilder'
+import {renderForm} from '../util/renderForm'
 import form from './forms/required-property.json'
+
+interface MyCustomRequiredComponentProps extends HTMLAttributes<HTMLDivElement> {
+  requiredOne?: boolean
+  requiredTwo?: boolean
+}
+
+const MyCustomRequiredComponent = (props: MyCustomRequiredComponentProps) => {
+  const {requiredOne, requiredTwo, ...rest} = props
+  return <div {...rest}>
+    <span data-testid="required-one">requiredOne: {`${requiredOne}`}</span>
+    <span data-testid="required-two">requiredTwo: {`${requiredTwo}`}</span>
+  </div>
+}
+
+const myCustomRequiredComponent = define(MyCustomRequiredComponent, 'MyCustomRequiredComponent')
+  .props({
+    requiredOne: required,
+    requiredTwo: required,
+  })
+  .build()
 
 const MyInput = (props: any) => {
   return <input {...props} />
@@ -58,7 +89,7 @@ const getActualComponentStore = (iFormBuilder: IFormBuilder) => {
   return componentStore
 }
 
-describe('The required property', () => {
+describe('The required property tests', () => {
   it('should add or remove "required" validation when the property checkbox is toggled', async () => {
     const view = new BuilderView([myInput])
     const {findByTestId, getFormBuilder} = await renderBuilder(form, {view})
@@ -97,5 +128,50 @@ describe('The required property', () => {
 
     requiredPropertyInput = await getRequiredPropertyInput(findByTestId)
     expect(requiredPropertyInput.checked).toBeFalsy()
+  })
+
+  it('The required property should be set for both attributes', async () => {
+    const requiredForm = {
+      form: {
+        key: 'Screen',
+        type: 'Screen',
+        children: [
+          {
+            key: 'testComponent',
+            type: 'MyCustomRequiredComponent',
+            schema: {
+              validations: [{key: 'required'}]
+            }
+          }
+        ]
+      }
+    }
+
+    const view = createView([myCustomRequiredComponent.model])
+    const {findByTestId} = renderForm(requiredForm, {view})
+
+    expect(await findByTestId('required-one')).toHaveTextContent('requiredOne: true')
+    expect(await findByTestId('required-two')).toHaveTextContent('requiredTwo: true')
+  })
+
+  it('The required property should not be set for both attributes', async () => {
+    const requiredForm = {
+      form: {
+        key: 'Screen',
+        type: 'Screen',
+        children: [
+          {
+            key: 'testComponent',
+            type: 'MyCustomRequiredComponent'
+          }
+        ]
+      }
+    }
+
+    const view = createView([myCustomRequiredComponent.model])
+    const {findByTestId} = renderForm(requiredForm, {view})
+
+    expect(await findByTestId('required-one')).toHaveTextContent('requiredOne: undefined')
+    expect(await findByTestId('required-two')).toHaveTextContent('requiredTwo: undefined')
   })
 })

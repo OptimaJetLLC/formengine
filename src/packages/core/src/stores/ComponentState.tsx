@@ -3,7 +3,7 @@ import {makeAutoObservable} from 'mobx'
 import {calculateProperties} from '../features/calculation/propertyCalculator'
 import {silentTransformCssString} from '../features/css-style/cssTransform'
 import type {Model} from '../features/define'
-import {cfEventHandlers} from '../features/define/utils/integratedComponentFeatures'
+import {cfEventHandlers, cfRequiredProperties} from '../features/define/utils/integratedComponentFeatures'
 import type {ActionData, ActionEventHandler, EventName} from '../features/event'
 import {ActionEventArgs, DidMountEvent, WillUnmountEvent} from '../features/event'
 import {getArgumentFunction, isFunctionArgumentValue} from '../features/event/consts/functionArgument'
@@ -213,9 +213,13 @@ export class ComponentState implements IComponentState {
    * @returns the required property of a component if the component has a required flag.
    */
   get required() {
-    if (ComponentStore.hasValidationRule(this.data.store, 'required')) {
-      return {required: true}
-    }
+    const requiredProps = this.data.model.features[cfRequiredProperties] as string[] | undefined
+
+    if (!requiredProps || !this.hasRequiredValidation) return
+
+    const result: Record<string, boolean> = {}
+    requiredProps.forEach(prop => result[prop] = true)
+    return result
   }
 
   /**
@@ -276,7 +280,7 @@ export class ComponentState implements IComponentState {
    */
   get className() {
     const className = cx(
-      this.required,
+      this.requiredClassName,
       this.propsWithoutChildren.className,
       this.getClassNameFromCssPart('css')
     )
@@ -382,5 +386,15 @@ export class ComponentState implements IComponentState {
       ...this.style,
       ...this.data.userDefinedProps,
     } as Record<string, any>
+  }
+
+  private get hasRequiredValidation() {
+    return ComponentStore.hasValidationRule(this.data.store, 'required')
+  }
+
+  private get requiredClassName() {
+    if (this.hasRequiredValidation) {
+      return {required: true}
+    }
   }
 }

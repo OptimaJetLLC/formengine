@@ -295,11 +295,11 @@ the read-only property of a component if the component has a read-only flag.
 
 #### Get Signature
 
-> **get** **required**(): `undefined` \| \{ `required`: `boolean`; \}
+> **get** **required**(): `undefined` \| `Record`\<`string`, `boolean`\>
 
 ##### Returns
 
-`undefined` \| \{ `required`: `boolean`; \}
+`undefined` \| `Record`\<`string`, `boolean`\>
 
 the required property of a component if the component has a required flag.
 

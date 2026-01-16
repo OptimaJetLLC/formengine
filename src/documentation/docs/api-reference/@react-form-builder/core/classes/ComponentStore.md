@@ -228,7 +228,7 @@ the validation key.
 
 ##### type
 
-[`ValidatorType`](../type-aliases/ValidatorType.md)
+[`ValidatorType`](../type-aliases/ValidatorType.md) = `'internal'`
 
 the validation type.
 

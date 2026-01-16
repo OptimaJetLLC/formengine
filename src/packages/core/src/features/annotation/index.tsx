@@ -57,7 +57,9 @@ export const disabled = boolean.setup({disabled: true})
 /**
  * Annotation builder for a required property of a component with type 'boolean'.
  */
-export const required = createProperty('required').typed('boolean')
+export const required = createProperty('required')
+  .setup({controlsRequiredProp: true})
+  .typed('boolean')
 
 /**
  * The annotation builder for a component property with type 'number'.
