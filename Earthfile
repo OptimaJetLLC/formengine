@@ -12,11 +12,10 @@ npm-bundle:
   FROM +sources
   RUN npm run pack
 
-# npm-update-release-date updates the demo release date
+# npm-update-release-date updates apps release date
 npm-update-release-date:
   FROM +sources
-  RUN cd ./packages/apps/demo && npm run update-release-date
-  RUN cd ./packages/apps/formbuilder && npm run update-release-date
+  RUN cd ./packages/apps/common && npm run update-release-date
 
 # npm-demo-build builds demo
 npm-demo-build:
