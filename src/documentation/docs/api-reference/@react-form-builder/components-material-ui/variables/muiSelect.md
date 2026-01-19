@@ -1,3 +1,3 @@
 # Variable: muiSelect
 
-> `const` **muiSelect**: [`Definer`](../../core/interfaces/Definer.md)\<`any`\>
+> `const` **muiSelect**: [`Definer`](../../core/interfaces/Definer.md)\<`MuiSelectProps`\>

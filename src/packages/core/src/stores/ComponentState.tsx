@@ -226,11 +226,10 @@ export class ComponentState implements IComponentState {
    * @inheritDoc
    */
   get isReadOnly() {
-    if (!this.data.model.readOnly) return false
-
+    const selfReadOnly = this.data.model.readOnly && this.selfProps[this.data.model.readOnly]
     return this.store.formViewerPropsStore.readOnly
       || this.data.parent?.componentState.isReadOnly
-      || (this.selfProps[this.data.model.readOnly] ?? false)
+      || (selfReadOnly ?? false)
   }
 
   /**
@@ -246,11 +245,10 @@ export class ComponentState implements IComponentState {
    * @inheritDoc
    */
   get isDisabled() {
-    if (!this.data.model.disabled) return false
-
+    const selfDisabled = this.data.model.disabled && this.selfProps[this.data.model.disabled]
     return this.store.formViewerPropsStore.disabled
       || this.data.parent?.componentState.isDisabled
-      || (this.selfProps[this.data.model.disabled] ?? false)
+      || (selfDisabled ?? false)
   }
 
   /**

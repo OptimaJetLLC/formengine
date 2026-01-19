@@ -196,7 +196,7 @@ all arbitrary HTML attributes of the component.
 
 `any`
 
-true if the component has a disabled property and this property is true, false otherwise.
+true if the component is disabled, false otherwise.
 
 #### Implementation of
 
@@ -214,7 +214,7 @@ true if the component has a disabled property and this property is true, false o
 
 `any`
 
-true if the component has a read-only property and this property is true, false otherwise.
+true if the component is read-only, false otherwise.
 
 #### Implementation of
 

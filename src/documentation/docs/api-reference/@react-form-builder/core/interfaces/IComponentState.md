@@ -28,7 +28,7 @@ combined in order of priority component properties.
 
 `boolean`
 
-true if the component has a disabled property and this property is true, false otherwise.
+true if the component is disabled, false otherwise.
 
 ***
 
@@ -42,7 +42,7 @@ true if the component has a disabled property and this property is true, false o
 
 `boolean`
 
-true if the component has a read-only property and this property is true, false otherwise.
+true if the component is read-only, false otherwise.
 
 ***
 
