@@ -10,6 +10,11 @@ import {addMatchMediaFunctionToWindow} from './matchMedia'
 
 if (!isBrowserMode()) {
   addMatchMediaFunctionToWindow()
+
+  const originalGetComputedStyle = globalThis.getComputedStyle
+  vi.spyOn(global, 'getComputedStyle').mockImplementation((elem) => {
+    return originalGetComputedStyle(elem)
+  })
 }
 
 failOnConsole({
