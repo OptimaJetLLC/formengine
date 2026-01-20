@@ -132,6 +132,7 @@ prepare-github-formengine-archive:
   COPY --dir src/packages/views/material-ui github-formengine/community/src/packages/views/material-ui
   COPY --dir src/packages/views/uploader github-formengine/community/src/packages/views/uploader
   COPY --dir src/packages/viewer-bundle github-formengine/community/src/packages/viewer-bundle
+  COPY --dir src/packages/apps/common github-formengine/community/src/packages/apps/common
   COPY --dir src/packages/apps/example-viewer github-formengine/community/src/packages/apps/example-viewer
   COPY --dir examples/community github-formengine/community/examples
   COPY --dir examples/premium github-formengine/premium/examples
@@ -154,6 +155,7 @@ prepare-github-formenginesupport-archive:
 
   LET dst = private-github
 
+  COPY --dir src/packages/apps/common $dst/packages/apps/common
   COPY --dir src/packages/apps/example-builder $dst/packages/apps/example-builder
   COPY --dir src/packages/apps/example-viewer $dst/packages/apps/example-viewer
   COPY --dir src/packages/core $dst/packages/core
@@ -484,8 +486,8 @@ dependencies:
 
   RUN mkdir src/documentation src/packages \
    src/documentation/website src/packages/apps src/packages/views \
-   src/packages/apps/demo src/packages/apps/example-builder src/packages/apps/example-viewer \
-   src/packages/apps/formbuilder \
+   src/packages/apps/common src/packages/apps/demo src/packages/apps/example-builder \
+   src/packages/apps/example-viewer src/packages/apps/formbuilder \
    src/packages/core src/packages/designer src/packages/designer-bundle src/packages/indexed-db-form-storage \
    src/packages/json-schema-generator \
    src/packages/viewer-bundle src/packages/views/antd src/packages/views/default \
@@ -504,6 +506,7 @@ dependencies:
   COPY src/documentation/website/package.json src/documentation/website
   COPY --dir src/documentation/website/packages src/documentation/website
 
+  COPY src/packages/apps/common/package.json src/packages/apps/common
   COPY src/packages/apps/demo/package.json src/packages/apps/demo
   COPY src/packages/apps/example-builder/package.json src/packages/apps/example-builder
   COPY src/packages/apps/example-viewer/package.json src/packages/apps/example-viewer
