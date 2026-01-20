@@ -132,7 +132,6 @@ prepare-github-formengine-archive:
   COPY --dir src/packages/views/material-ui github-formengine/community/src/packages/views/material-ui
   COPY --dir src/packages/views/uploader github-formengine/community/src/packages/views/uploader
   COPY --dir src/packages/viewer-bundle github-formengine/community/src/packages/viewer-bundle
-  COPY --dir src/packages/apps/common github-formengine/community/src/packages/apps/common
   COPY --dir src/packages/apps/example-viewer github-formengine/community/src/packages/apps/example-viewer
   COPY --dir examples/community github-formengine/community/examples
   COPY --dir examples/premium github-formengine/premium/examples
