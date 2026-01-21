@@ -12,11 +12,10 @@ npm-bundle:
   FROM +sources
   RUN npm run pack
 
-# npm-update-release-date updates the demo release date
+# npm-update-release-date updates apps release date
 npm-update-release-date:
   FROM +sources
-  RUN cd ./packages/apps/demo && npm run update-release-date
-  RUN cd ./packages/apps/formbuilder && npm run update-release-date
+  RUN cd ./packages/apps/common && npm run update-release-date
 
 # npm-demo-build builds demo
 npm-demo-build:
@@ -155,6 +154,7 @@ prepare-github-formenginesupport-archive:
 
   LET dst = private-github
 
+  COPY --dir src/packages/apps/common $dst/packages/apps/common
   COPY --dir src/packages/apps/example-builder $dst/packages/apps/example-builder
   COPY --dir src/packages/apps/example-viewer $dst/packages/apps/example-viewer
   COPY --dir src/packages/core $dst/packages/core
@@ -485,8 +485,8 @@ dependencies:
 
   RUN mkdir src/documentation src/packages \
    src/documentation/website src/packages/apps src/packages/views \
-   src/packages/apps/demo src/packages/apps/example-builder src/packages/apps/example-viewer \
-   src/packages/apps/formbuilder \
+   src/packages/apps/common src/packages/apps/demo src/packages/apps/example-builder \
+   src/packages/apps/example-viewer src/packages/apps/formbuilder \
    src/packages/core src/packages/designer src/packages/designer-bundle src/packages/indexed-db-form-storage \
    src/packages/json-schema-generator \
    src/packages/viewer-bundle src/packages/views/antd src/packages/views/default \
@@ -505,6 +505,7 @@ dependencies:
   COPY src/documentation/website/package.json src/documentation/website
   COPY --dir src/documentation/website/packages src/documentation/website
 
+  COPY src/packages/apps/common/package.json src/packages/apps/common
   COPY src/packages/apps/demo/package.json src/packages/apps/demo
   COPY src/packages/apps/example-builder/package.json src/packages/apps/example-builder
   COPY src/packages/apps/example-viewer/package.json src/packages/apps/example-viewer
