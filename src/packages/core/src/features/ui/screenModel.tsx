@@ -1,5 +1,6 @@
-import {commonStyles, containerStyles, getDefaultCss} from '../annotation'
+import {commonStyles, containerStyles} from '../annotation'
 import {toStyleProperties} from '../annotation/toStyleProperties'
+import {getDefaultCss} from '../annotation/utils/getDefaultCss'
 import {Model} from '../define'
 import {addOrUpdateFeatures} from '../define/utils/ComponentFeature'
 import {cfDisableComponentRemove, cfHideFromComponentPalette} from '../define/utils/integratedComponentFeatures'

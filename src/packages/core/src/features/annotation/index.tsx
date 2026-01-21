@@ -1,6 +1,7 @@
 import type {ReactNode} from 'react'
-import {createAnnotation, createProperty} from './utils'
 import {createNodeAnnotation} from './utils/builders/NodeAnnotationBuilder'
+import {createAnnotation} from './utils/createAnnotation'
+import {createProperty} from './utils/createProperty'
 import {isUniqueKey} from './utils/isUniqueKey'
 
 /**
@@ -224,5 +225,4 @@ export const containerStyles = {
   flexWrap: oneOf('wrap', 'nowrap', 'wrap-reverse')
 }
 
-export * from './utils'
 export {timeFormat} from './consts'
