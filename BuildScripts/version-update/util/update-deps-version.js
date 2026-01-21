@@ -1,6 +1,6 @@
-import {fileURLToPath} from 'node:url'
-import {dirname, join} from 'node:path'
 import {readFileSync, writeFileSync} from 'node:fs'
+import {dirname, join} from 'node:path'
+import {fileURLToPath} from 'node:url'
 import {executeCommand} from './execute-command.js'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -31,19 +31,14 @@ const packageList = [
   'src/packages/views/uploader',
 
   'examples/community/formdata',
+  'examples/community/bundle-size/formengine',
   'examples/premium/formengine',
   'examples/premium/with-formik',
   'examples/premium/with-nextjs/with-nextjs-v15',
   'examples/premium/with-remix/with-remix-v2',
 ]
 
-const depsSections = [
-  'dependencies',
-  'devDependencies',
-  'peerDependencies',
-  'bundleDependencies',
-  'optionalDependencies',
-]
+const depsSections = ['dependencies', 'devDependencies', 'peerDependencies', 'bundleDependencies', 'optionalDependencies']
 
 function patchPackageVersion(packagePath, version) {
   console.log(`Updating package dependencies '${packagePath}' to version '${version}'`)
@@ -51,7 +46,7 @@ function patchPackageVersion(packagePath, version) {
   const path = join(__dirname, '..', '..', '..', packagePath, 'package.json')
   const packageJsonContent = readFileSync(path, 'utf-8')
   const packageJson = JSON.parse(packageJsonContent)
-  const coreMeta = packageJson?.peerDependenciesMeta?.["@react-form-builder/core"] || {};
+  const coreMeta = packageJson?.peerDependenciesMeta?.['@react-form-builder/core'] || {}
   const coreRequired = coreMeta?.optional === false
 
   let patched = false

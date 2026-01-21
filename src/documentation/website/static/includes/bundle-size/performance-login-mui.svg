@@ -1,0 +1,31 @@
+<svg width="1000" height="500" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1000" height="500" fill="white"/>
+      <line x1="80" y1="380" x2="850" y2="380" stroke="#e0e0e0" stroke-width="1"/><line x1="80" y1="325.6" x2="850" y2="325.6" stroke="#e0e0e0" stroke-width="1"/><line x1="80" y1="271.2" x2="850" y2="271.2" stroke="#e0e0e0" stroke-width="1"/><line x1="80" y1="216.79999999999998" x2="850" y2="216.79999999999998" stroke="#e0e0e0" stroke-width="1"/><line x1="80" y1="162.39999999999998" x2="850" y2="162.39999999999998" stroke="#e0e0e0" stroke-width="1"/><line x1="80" y1="108" x2="850" y2="108" stroke="#e0e0e0" stroke-width="1"/>
+      <rect x="122.35" y="168.45853180451635" width="15.4" height="211.54146819548365" fill="#2E7D32" opacity="0.8"><title>3G LCP: 8004ms</title></rect><rect x="145.45" y="108" width="15.4" height="272" fill="#1565C0" opacity="0.8"><title>3G TTI: 10292ms</title></rect><rect x="168.55" y="319.5414681954837" width="15.4" height="60.45853180451634" fill="#FF9800" opacity="0.8"><title>Parse: 2288ms (3G: 2288ms, 4G: 2288ms)</title></rect><rect x="191.65" y="357.6544186812438" width="15.4" height="22.345581318756235" fill="#4CAF50" opacity="0.8"><title>4G LCP: 846ms</title></rect><rect x="214.75" y="297.1958868767274" width="15.4" height="82.80411312327257" fill="#2196F3" opacity="0.8"><title>4G TTI: 3133ms</title></rect><rect x="314.85" y="255.7127580955629" width="15.4" height="124.28724190443712" fill="#2E7D32" opacity="0.8"><title>3G LCP: 4703ms</title></rect><rect x="337.95" y="226.9620907527409" width="15.4" height="153.0379092472591" fill="#1565C0" opacity="0.8"><title>3G TTI: 5791ms</title></rect><rect x="361.05" y="351.249332657178" width="15.4" height="28.750667342821995" fill="#FF9800" opacity="0.8"><title>Parse: 1088ms (3G: 1088ms, 4G: 1088ms)</title></rect><rect x="384.15" y="366.3798413103484" width="15.4" height="13.620158689651582" fill="#4CAF50" opacity="0.8"><title>4G LCP: 515ms</title></rect><rect x="407.25" y="337.6291739675264" width="15.4" height="42.37082603247358" fill="#2196F3" opacity="0.8"><title>4G TTI: 1603ms</title></rect><rect x="507.35" y="278.5464115968894" width="15.4" height="101.4535884031106" fill="#2E7D32" opacity="0.8"><title>3G LCP: 3839ms</title></rect><rect x="530.45" y="253.87775792927573" width="15.4" height="126.12224207072427" fill="#1565C0" opacity="0.8"><title>3G TTI: 4772ms</title></rect><rect x="553.55" y="355.3313463323863" width="15.4" height="24.668653667613672" fill="#FF9800" opacity="0.8"><title>Parse: 933ms (3G: 933ms, 4G: 933ms)</title></rect><rect x="576.65" y="368.6632066604811" width="15.4" height="11.33679333951893" fill="#4CAF50" opacity="0.8"><title>4G LCP: 429ms</title></rect><rect x="599.75" y="343.9945529928674" width="15.4" height="36.0054470071326" fill="#2196F3" opacity="0.8"><title>4G TTI: 1362ms</title></rect><rect x="699.85" y="303.04035188922364" width="15.4" height="76.95964811077637" fill="#2E7D32" opacity="0.8"><title>3G LCP: 2912ms</title></rect><rect x="722.95" y="286.56406374856203" width="15.4" height="93.43593625143794" fill="#1565C0" opacity="0.8"><title>3G TTI: 3535ms</title></rect><rect x="746.05" y="363.52371185933845" width="15.4" height="16.476288140661563" fill="#FF9800" opacity="0.8"><title>Parse: 623ms (3G: 623ms, 4G: 623ms)</title></rect><rect x="769.15" y="370.1892871509565" width="15.4" height="9.810712849043483" fill="#4CAF50" opacity="0.8"><title>4G LCP: 371ms</title></rect><rect x="792.25" y="353.71299901029494" width="15.4" height="26.287000989705046" fill="#2196F3" opacity="0.8"><title>4G TTI: 995ms</title></rect>
+      <text x="70" y="384" text-anchor="end" font-size="11" fill="#666">0ms</text><text x="70" y="329.6" text-anchor="end" font-size="11" fill="#666">2058ms</text><text x="70" y="275.2" text-anchor="end" font-size="11" fill="#666">4117ms</text><text x="70" y="220.79999999999998" text-anchor="end" font-size="11" fill="#666">6175ms</text><text x="70" y="166.39999999999998" text-anchor="end" font-size="11" fill="#666">8234ms</text><text x="70" y="112" text-anchor="end" font-size="11" fill="#666">10292ms</text>
+      <text x="176.25" y="415" text-anchor="middle" font-size="10" fill="#333" transform="rotate(-45 176.25 415)">SurveyJS</text><text x="368.75" y="415" text-anchor="middle" font-size="10" fill="#333" transform="rotate(-45 368.75 415)">RJSF</text><text x="561.25" y="415" text-anchor="middle" font-size="10" fill="#333" transform="rotate(-45 561.25 415)">FormEngine</text><text x="561.25" y="427" text-anchor="middle" font-size="10" fill="#333" transform="rotate(-45 561.25 427)">Core</text><text x="753.75" y="415" text-anchor="middle" font-size="10" fill="#333" transform="rotate(-45 753.75 415)">VueForm</text>
+      <text x="500" y="485" text-anchor="middle" font-size="14" font-weight="600" fill="#333">Performance Comparison: Slow 3G vs Average 4G</text>
+      <g transform="translate(860, 50)">
+        <text x="0" y="0" font-size="12" font-weight="600" fill="#333">Legend:</text>
+      </g>
+      <g transform="translate(860, 70)">
+        <rect width="14" height="14" fill="#2E7D32" opacity="0.8"/>
+        <text x="18" y="12" font-size="11" fill="#333">3G LCP</text>
+      </g>
+      <g transform="translate(860, 90)">
+        <rect width="14" height="14" fill="#4CAF50" opacity="0.8"/>
+        <text x="18" y="12" font-size="11" fill="#333">4G LCP</text>
+      </g>
+      <g transform="translate(860, 110)">
+        <rect width="14" height="14" fill="#1565C0" opacity="0.8"/>
+        <text x="18" y="12" font-size="11" fill="#333">3G TTI</text>
+      </g>
+      <g transform="translate(860, 130)">
+        <rect width="14" height="14" fill="#2196F3" opacity="0.8"/>
+        <text x="18" y="12" font-size="11" fill="#333">4G TTI</text>
+      </g>
+      <g transform="translate(860, 150)">
+        <rect width="14" height="14" fill="#FF9800" opacity="0.8"/>
+        <text x="18" y="12" font-size="11" fill="#333">Parse</text>
+      </g>
+    </svg>

@@ -134,6 +134,7 @@ prepare-github-formengine-archive:
   COPY --dir src/packages/viewer-bundle github-formengine/community/src/packages/viewer-bundle
   COPY --dir src/packages/apps/example-viewer github-formengine/community/src/packages/apps/example-viewer
   COPY --dir examples/community github-formengine/community/examples
+  RUN rm -rf github-formengine/community/examples/bundle-size/scripts/install-local-formengine.ts
   COPY --dir examples/premium github-formengine/premium/examples
   COPY src/lerna.json github-formengine/community/src/
   COPY src/tsconfig.json github-formengine/community/src/
@@ -287,6 +288,7 @@ test-github-formengine-archive:
   COPY .archives/formengine.tgz formengine.tgz
   RUN tar zxvf formengine.tgz
   RUN cd community/examples/file-upload-server && npm install
+  RUN cd community/examples/bundle-size && npm install
   RUN cd community/src && npm install && npm run pack
   RUN cd premium/examples/formengine && npm install && npm run build
   RUN cd premium/examples/with-formik && npm install && npm run build

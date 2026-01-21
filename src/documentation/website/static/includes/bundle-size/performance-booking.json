@@ -1,0 +1,167 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Performance Comparison: booking (Slow 3G vs Average 4G)",
+  "data": {
+    "values": [
+      {
+        "framework": "SurveyJS",
+        "metric": "3G LCP",
+        "value": 8832
+      },
+      {
+        "framework": "SurveyJS",
+        "metric": "3G TTI",
+        "value": 11356
+      },
+      {
+        "framework": "SurveyJS",
+        "metric": "4G LCP",
+        "value": 1066
+      },
+      {
+        "framework": "SurveyJS",
+        "metric": "4G TTI",
+        "value": 3590
+      },
+      {
+        "framework": "SurveyJS",
+        "metric": "Parse",
+        "value": 2525
+      },
+      {
+        "framework": "FormEngine Core",
+        "metric": "3G LCP",
+        "value": 6621
+      },
+      {
+        "framework": "FormEngine Core",
+        "metric": "3G TTI",
+        "value": 8103
+      },
+      {
+        "framework": "FormEngine Core",
+        "metric": "4G LCP",
+        "value": 904
+      },
+      {
+        "framework": "FormEngine Core",
+        "metric": "4G TTI",
+        "value": 2387
+      },
+      {
+        "framework": "FormEngine Core",
+        "metric": "Parse",
+        "value": 1482
+      },
+      {
+        "framework": "VueForm",
+        "metric": "3G LCP",
+        "value": 4097
+      },
+      {
+        "framework": "VueForm",
+        "metric": "3G TTI",
+        "value": 5037
+      },
+      {
+        "framework": "VueForm",
+        "metric": "4G LCP",
+        "value": 515
+      },
+      {
+        "framework": "VueForm",
+        "metric": "4G TTI",
+        "value": 1455
+      },
+      {
+        "framework": "VueForm",
+        "metric": "Parse",
+        "value": 940
+      },
+      {
+        "framework": "RJSF",
+        "metric": "3G LCP",
+        "value": 3678
+      },
+      {
+        "framework": "RJSF",
+        "metric": "3G TTI",
+        "value": 4472
+      },
+      {
+        "framework": "RJSF",
+        "metric": "4G LCP",
+        "value": 466
+      },
+      {
+        "framework": "RJSF",
+        "metric": "4G TTI",
+        "value": 1259
+      },
+      {
+        "framework": "RJSF",
+        "metric": "Parse",
+        "value": 793
+      }
+    ]
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusTopLeft": 2,
+    "cornerRadiusTopRight": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "framework",
+      "type": "nominal",
+      "axis": {
+        "labelAngle": -45
+      }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Time (ms)"
+    },
+    "xOffset": {
+      "field": "metric",
+      "scale": {
+        "paddingInner": 0.1
+      }
+    },
+    "color": {
+      "field": "metric",
+      "scale": {
+        "domain": [
+          "3G LCP",
+          "4G LCP",
+          "3G TTI",
+          "4G TTI",
+          "Parse"
+        ],
+        "range": [
+          "#2E7D32",
+          "#4CAF50",
+          "#1565C0",
+          "#2196F3",
+          "#FF9800"
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "framework",
+        "type": "nominal"
+      },
+      {
+        "field": "metric",
+        "type": "nominal"
+      },
+      {
+        "field": "value",
+        "type": "quantitative",
+        "format": ","
+      }
+    ]
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Impact of Bundle Size on LCP and TTI with Slow 3G Estimates",
+  "title": "Impact of Bundle Size on LCP and TTI with Slow 3G Estimates",
+  "width": 600,
+  "height": 350,
+  "data": {
+    "values": [
+      {
+        "additionalKB": 50,
+        "seconds": 1.0,
+        "series": "LCP 3G"
+      },
+      {
+        "additionalKB": 100,
+        "seconds": 2.0,
+        "series": "LCP 3G"
+      },
+      {
+        "additionalKB": 300,
+        "seconds": 6.0,
+        "series": "LCP 3G"
+      },
+      {
+        "additionalKB": 500,
+        "seconds": 10.0,
+        "series": "LCP 3G"
+      },
+
+      {
+        "additionalKB": 50,
+        "seconds": 1.2,
+        "series": "TTI 3G"
+      },
+      {
+        "additionalKB": 100,
+        "seconds": 2.3,
+        "series": "TTI 3G"
+      },
+      {
+        "additionalKB": 300,
+        "seconds": 6.8,
+        "series": "TTI 3G"
+      },
+      {
+        "additionalKB": 500,
+        "seconds": 11.0,
+        "series": "TTI 3G"
+      },
+
+      {
+        "additionalKB": 50,
+        "seconds": 0.05,
+        "series": "LCP 4G"
+      },
+      {
+        "additionalKB": 100,
+        "seconds": 0.1,
+        "series": "LCP 4G"
+      },
+      {
+        "additionalKB": 300,
+        "seconds": 0.3,
+        "series": "LCP 4G"
+      },
+      {
+        "additionalKB": 500,
+        "seconds": 0.5,
+        "series": "LCP 4G"
+      },
+
+      {
+        "additionalKB": 50,
+        "seconds": 0.15,
+        "series": "TTI 4G"
+      },
+      {
+        "additionalKB": 100,
+        "seconds": 0.3,
+        "series": "TTI 4G"
+      },
+      {
+        "additionalKB": 300,
+        "seconds": 0.7,
+        "series": "TTI 4G"
+      },
+      {
+        "additionalKB": 500,
+        "seconds": 1.1,
+        "series": "TTI 4G"
+      },
+
+      {
+        "additionalKB": 50,
+        "seconds": 1.6,
+        "series": "LCP 3G + Latency + Parse"
+      },
+      {
+        "additionalKB": 100,
+        "seconds": 2.7,
+        "series": "LCP 3G + Latency + Parse"
+      },
+      {
+        "additionalKB": 300,
+        "seconds": 7.1,
+        "series": "LCP 3G + Latency + Parse"
+      },
+      {
+        "additionalKB": 500,
+        "seconds": 11.6,
+        "series": "LCP 3G + Latency + Parse"
+      }
+    ]
+  },
+  "mark": {
+    "type": "line",
+    "point": true
+  },
+  "encoding": {
+    "x": {
+      "field": "additionalKB",
+      "type": "quantitative",
+      "title": "Additional JS Bundle Size (KB)"
+    },
+    "y": {
+      "field": "seconds",
+      "type": "quantitative",
+      "title": "Added Time (seconds)"
+    },
+    "color": {
+      "field": "series",
+      "type": "nominal",
+      "title": null
+    },
+    "strokeDash": {
+      "field": "series",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "LCP 3G",
+          "TTI 3G",
+          "LCP 4G",
+          "TTI 4G",
+          "LCP 3G + Latency + Parse"
+        ],
+        "range": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            5,
+            2
+          ]
+        ]
+      },
+      "legend": null
+    }
+  },
+  "config": {
+    "legend": {
+      "title": null
+    }
+  }
+}

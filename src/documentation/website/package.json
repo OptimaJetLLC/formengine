@@ -12,7 +12,8 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "generate-typedoc": "dotenv -v ENABLE_TYPEDOC=\"true\" docusaurus build"
+    "generate-typedoc": "dotenv -v ENABLE_TYPEDOC=\"true\" docusaurus build",
+    "copy-bundle-charts": "node scripts/copy-bundle-charts.ts"
   },
   "dependencies": {
     "@docusaurus/core": "^3.8.1",
@@ -31,7 +32,10 @@
     "prism-react-renderer": "^2.4.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "rsuite": "^5.83.4"
+    "react-vega": "^7.6.0",
+    "rsuite": "^5.83.4",
+    "vega": "^5.25.0",
+    "vega-lite": "^5.2.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.8.1",

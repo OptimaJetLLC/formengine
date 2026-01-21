@@ -1,0 +1,164 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Performance Comparison: login (Slow 3G vs Average 4G)",
+  "data": {
+    "values": [
+      {
+        "framework": "survey",
+        "metric": "3G LCP",
+        "value": 8636
+      },
+      {
+        "framework": "survey",
+        "metric": "3G TTI",
+        "value": 9071
+      },
+      {
+        "framework": "survey",
+        "metric": "4G LCP",
+        "value": 1045
+      },
+      {
+        "framework": "survey",
+        "metric": "4G TTI",
+        "value": 1481
+      },
+      {
+        "framework": "survey",
+        "metric": "Parse",
+        "value": 435
+      },
+      {
+        "framework": "formengine",
+        "metric": "3G LCP",
+        "value": 5172
+      },
+      {
+        "framework": "formengine",
+        "metric": "3G TTI",
+        "value": 6327
+      },
+      {
+        "framework": "formengine",
+        "metric": "4G LCP",
+        "value": 759
+      },
+      {
+        "framework": "formengine",
+        "metric": "4G TTI",
+        "value": 1915
+      },
+      {
+        "framework": "formengine",
+        "metric": "Parse",
+        "value": 1156
+      },
+      {
+        "framework": "rjsf",
+        "metric": "3G LCP",
+        "value": 4252
+      },
+      {
+        "framework": "rjsf",
+        "metric": "3G TTI",
+        "value": 5185
+      },
+      {
+        "framework": "rjsf",
+        "metric": "4G LCP",
+        "value": 523
+      },
+      {
+        "framework": "rjsf",
+        "metric": "4G TTI",
+        "value": 1456
+      },
+      {
+        "framework": "rjsf",
+        "metric": "Parse",
+        "value": 933
+      },
+      {
+        "framework": "vueform",
+        "metric": "3G LCP",
+        "value": 2902
+      },
+      {
+        "framework": "vueform",
+        "metric": "3G TTI",
+        "value": 3403
+      },
+      {
+        "framework": "vueform",
+        "metric": "4G LCP",
+        "value": 370
+      },
+      {
+        "framework": "vueform",
+        "metric": "4G TTI",
+        "value": 871
+      },
+      {
+        "framework": "vueform",
+        "metric": "Parse",
+        "value": 501
+      }
+    ]
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusTopLeft": 2,
+    "cornerRadiusTopRight": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "framework",
+      "type": "nominal",
+      "axis": {
+        "labelAngle": -45
+      }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Time (ms)"
+    },
+    "xOffset": {
+      "field": "metric"
+    },
+    "color": {
+      "field": "metric",
+      "scale": {
+        "domain": [
+          "3G LCP",
+          "4G LCP",
+          "3G TTI",
+          "4G TTI",
+          "Parse"
+        ],
+        "range": [
+          "#2E7D32",
+          "#4CAF50",
+          "#1565C0",
+          "#2196F3",
+          "#FF9800"
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "framework",
+        "type": "nominal"
+      },
+      {
+        "field": "metric",
+        "type": "nominal"
+      },
+      {
+        "field": "value",
+        "type": "quantitative",
+        "format": ","
+      }
+    ]
+  }
+}
