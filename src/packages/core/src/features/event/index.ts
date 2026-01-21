@@ -1,5 +1,5 @@
 export * from './types'
-export * from './consts'
+export {DidMountEvent, WillUnmountEvent} from './eventNames'
 export type {
   ActionHandler,
   DefineActionHelper,

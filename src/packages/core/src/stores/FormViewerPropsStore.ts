@@ -8,7 +8,7 @@ import {customActionsToActionsValues} from '../features/form-viewer/CustomAction
 import type {FormValidators} from '../features/form-viewer/FormValidators'
 import type {ILocalizationEngine} from '../features/localization/ILocalizationEngine'
 import type {LanguageFullCode} from '../features/localization/language'
-import type {ErrorWrapperProps} from '../features/validation'
+import type {ErrorWrapperProps} from '../features/validation/components/DefaultErrorMessage'
 import type {Validators} from '../features/validation/types/CustomValidationRules'
 import {nameObservable} from '../utils/observableNaming'
 

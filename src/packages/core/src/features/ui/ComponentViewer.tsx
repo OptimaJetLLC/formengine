@@ -8,7 +8,7 @@ import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 import {getCellInfoPropertiesContext} from '../properties-context/getCellInfoPropertiesContext'
 import {CellInfoContext} from '../table/CellInfoContext'
 import {TooltipWrapper} from '../tooltip/TooltipWrapper'
-import {Erroneous} from '../validation'
+import {Erroneous} from '../validation/components/Erroneous'
 import {DefaultWrapper} from './DefaultWrapper'
 
 const RawComponentViewer = () => {
@@ -64,7 +64,7 @@ const RawComponentViewer = () => {
       {component}
     </Wrapper>
   }
-  
+
   const wrapperClassName = useWrapperStyles ? componentState.wrapperClassName : undefined
 
   return <Tooltip>
