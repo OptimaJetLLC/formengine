@@ -27,15 +27,29 @@ export function useIndexedDbStorage(dbName: string, storeName: string, forms?: R
   useEffect(() => {
     if (!indexedDbExists) return
 
-    const storage = new IndexedDbFormStorage(dbName, storeName)
+    let cancelled: boolean = false
 
-    storage
-      .init(forms || {})
-      .then(() => setState({formStorage: storage, initialized: true, error: undefined, indexedDbExists}))
-      .catch(e => {
+    const initStorage = async () => {
+      try {
+        const storage = new IndexedDbFormStorage(dbName, storeName)
+        await storage.init(forms || {})
+
+        if (!cancelled) {
+          setState({formStorage: storage, initialized: true, error: undefined, indexedDbExists})
+        }
+      } catch (e) {
         console.error('Failed to initialize IndexedDB storage:', e)
-        setState({formStorage: undefined, initialized: true, error: e as Error, indexedDbExists})
-      })
+        if (!cancelled) {
+          setState({formStorage: undefined, initialized: true, error: e as Error, indexedDbExists})
+        }
+      }
+    }
+
+    initStorage().catch(console.error)
+
+    return () => {
+      cancelled = true
+    }
   }, [dbName, storeName, forms, indexedDbExists])
 
   return state

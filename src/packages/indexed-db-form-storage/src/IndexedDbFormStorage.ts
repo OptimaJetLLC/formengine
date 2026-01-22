@@ -2,7 +2,7 @@ import {nameObservable} from '@react-form-builder/core'
 import type {IFormStorage} from '@react-form-builder/designer'
 import type {UseStore} from 'idb-keyval'
 import {makeAutoObservable} from 'mobx'
-import {kvClear, kvCreateStore, kvDel, kvGet, kvKeys, kvSet} from './KeyValueStorage'
+import {kvClear, kvCreateStore, kvDel, kvEnsureObjectStore, kvGet, kvKeys, kvSet} from './KeyValueStorage'
 
 const className = 'IndexedDbFormStorage'
 
@@ -11,6 +11,8 @@ const className = 'IndexedDbFormStorage'
  */
 export class IndexedDbFormStorage implements IFormStorage {
   #customStore: UseStore
+  #dbName: string
+  #storeName: string
 
   /**
    * Constructor.
@@ -18,6 +20,8 @@ export class IndexedDbFormStorage implements IFormStorage {
    * @param storeName the store name.
    */
   constructor(dbName: string, storeName: string) {
+    this.#dbName = dbName
+    this.#storeName = storeName
     this.#customStore = kvCreateStore(dbName, storeName)
     makeAutoObservable(this, undefined, {name: nameObservable(className)})
   }
@@ -27,8 +31,10 @@ export class IndexedDbFormStorage implements IFormStorage {
    * @param initialData the initial data.
    */
   async init(initialData: Record<string, string>) {
+    await kvEnsureObjectStore(this.#dbName, this.#storeName)
+
+    const formNames = await this.getFormNames()
     for (const formName in initialData) {
-      const formNames = await this.getFormNames()
       if (formNames.indexOf(formName) === -1) {
         await this.saveForm(formName, initialData[formName])
       }

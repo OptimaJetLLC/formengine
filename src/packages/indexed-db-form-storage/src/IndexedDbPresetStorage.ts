@@ -1,12 +1,15 @@
 import type {PresetComponent} from '@react-form-builder/designer'
 import type {UseStore} from 'idb-keyval'
-import {kvCreateStore, kvDel, kvEntries, kvSet} from './KeyValueStorage'
+import {kvCreateStoreEnsured, kvDel, kvEntries, kvSet} from './KeyValueStorage'
 
 /**
  * Stores preset components in IndexedDB.
  */
 export class IndexedDbPresetStorage {
-  readonly #customStore: UseStore
+  readonly #dbName: string
+  readonly #storeName: string
+  #customStore?: UseStore
+  #storePromise?: Promise<UseStore>
 
   /**
    * Constructor.
@@ -14,7 +17,21 @@ export class IndexedDbPresetStorage {
    * @param storeName the store name.
    */
   constructor(dbName: string, storeName: string) {
-    this.#customStore = kvCreateStore(dbName, storeName)
+    this.#dbName = dbName
+    this.#storeName = storeName
+  }
+
+  private async getStore(): Promise<UseStore> {
+    if (this.#customStore) return this.#customStore
+
+    if (!this.#storePromise) {
+      this.#storePromise = kvCreateStoreEnsured(this.#dbName, this.#storeName).then(store => {
+        this.#customStore = store
+        return store
+      })
+    }
+
+    return this.#storePromise
   }
 
   /**
@@ -22,7 +39,8 @@ export class IndexedDbPresetStorage {
    * @returns the preset components.
    */
   loadPresets = async () => {
-    const items = await kvEntries(this.#customStore)
+    const store = await this.getStore()
+    const items = await kvEntries(store)
     const result: PresetComponent[] = []
     items.forEach(item => {
       try {
@@ -39,7 +57,8 @@ export class IndexedDbPresetStorage {
    * @param preset the preset component to save.
    */
   savePreset = async (preset: PresetComponent) => {
-    await kvSet(preset.name, JSON.stringify(preset), this.#customStore)
+    const store = await this.getStore()
+    await kvSet(preset.name, JSON.stringify(preset), store)
   }
 
   /**
@@ -47,6 +66,7 @@ export class IndexedDbPresetStorage {
    * @param name the name of the preset component.
    */
   removePreset = async (name: string) => {
-    await kvDel(name, this.#customStore)
+    const store = await this.getStore()
+    await kvDel(name, store)
   }
 }
