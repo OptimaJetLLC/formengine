@@ -138,6 +138,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiBoxProps",
+              label: "MuiBoxProps"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiBreadcrumbsItemProps",
               label: "MuiBreadcrumbsItemProps"
             },
@@ -158,13 +163,48 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiContainerProps",
+              label: "MuiContainerProps"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiFormControlLabelProps",
               label: "MuiFormControlLabelProps"
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiFormControlProps",
+              label: "MuiFormControlProps"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiListItemProps",
+              label: "MuiListItemProps"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiListProps",
+              label: "MuiListProps"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiRadioItemProps",
               label: "MuiRadioItemProps"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiSelectProps",
+              label: "MuiSelectProps"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiStackProps",
+              label: "MuiStackProps"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiSwitchProps",
+              label: "MuiSwitchProps"
             }
           ]
         },

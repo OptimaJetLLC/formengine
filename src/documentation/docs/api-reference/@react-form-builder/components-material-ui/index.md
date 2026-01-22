@@ -3,12 +3,20 @@
 ## Interfaces
 
 - [BreadcrumbsItem](interfaces/BreadcrumbsItem.md)
+- [MuiBoxProps](interfaces/MuiBoxProps.md)
 - [MuiBreadcrumbsItemProps](interfaces/MuiBreadcrumbsItemProps.md)
 - [MuiBreadcrumbsProps](interfaces/MuiBreadcrumbsProps.md)
 - [MuiCardProps](interfaces/MuiCardProps.md)
 - [MuiCheckboxProps](interfaces/MuiCheckboxProps.md)
+- [MuiContainerProps](interfaces/MuiContainerProps.md)
 - [MuiFormControlLabelProps](interfaces/MuiFormControlLabelProps.md)
+- [MuiFormControlProps](interfaces/MuiFormControlProps.md)
+- [MuiListItemProps](interfaces/MuiListItemProps.md)
+- [MuiListProps](interfaces/MuiListProps.md)
 - [MuiRadioItemProps](interfaces/MuiRadioItemProps.md)
+- [MuiSelectProps](interfaces/MuiSelectProps.md)
+- [MuiStackProps](interfaces/MuiStackProps.md)
+- [MuiSwitchProps](interfaces/MuiSwitchProps.md)
 
 ## Type Aliases
 

@@ -1,3 +1,3 @@
 # Variable: muiList
 
-> `const` **muiList**: [`Definer`](../../core/interfaces/Definer.md)\<`DefaultComponentProps`\<`ExtendListTypeMap`\<`ListTypeMap`\<\{ \}, `"ul"`\>\>\>\>
+> `const` **muiList**: [`Definer`](../../core/interfaces/Definer.md)\<`Omit`\<[`MuiListProps`](../interfaces/MuiListProps.md), `"ref"`\> & `RefAttributes`\<`HTMLUListElement`\>\>

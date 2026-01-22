@@ -4,7 +4,7 @@ Props for the MuiCard component.
 
 ## Extends
 
-- `CardProps`
+- `CardProps`.`DisabledProps`.`ReadOnlyProps`
 
 ## Properties
 
@@ -62,7 +62,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"none"` \| `"list"` \| `"inline"` \| `"both"`
+> `optional` **aria-autocomplete**: `"none"` \| `"list"` \| `"both"` \| `"inline"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -216,7 +216,7 @@ aria-owns.
 
 ### aria-current?
 
-> `optional` **aria-current**: `boolean` \| `"date"` \| `"time"` \| `"page"` \| `"true"` \| `"false"` \| `"step"` \| `"location"`
+> `optional` **aria-current**: `boolean` \| `"date"` \| `"time"` \| `"true"` \| `"false"` \| `"page"` \| `"step"` \| `"location"`
 
 Indicates the element that represents the current item within a container or set of related elements.
 
@@ -293,7 +293,7 @@ Indicates that the element is perceivable but disabled, so it is not editable or
 
 ### ~~aria-dropeffect?~~
 
-> `optional` **aria-dropeffect**: `"link"` \| `"none"` \| `"copy"` \| `"execute"` \| `"move"` \| `"popup"`
+> `optional` **aria-dropeffect**: `"link"` \| `"none"` \| `"copy"` \| `"move"` \| `"execute"` \| `"popup"`
 
 Indicates what functions can be performed when a dragged object is released on the drop target.
 
@@ -367,7 +367,7 @@ in ARIA 1.1
 
 ### aria-haspopup?
 
-> `optional` **aria-haspopup**: `boolean` \| `"grid"` \| `"dialog"` \| `"menu"` \| `"true"` \| `"false"` \| `"listbox"` \| `"tree"`
+> `optional` **aria-haspopup**: `boolean` \| `"true"` \| `"false"` \| `"dialog"` \| `"menu"` \| `"grid"` \| `"listbox"` \| `"tree"`
 
 Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 
@@ -606,7 +606,7 @@ aria-disabled.
 
 ### aria-relevant?
 
-> `optional` **aria-relevant**: `"all"` \| `"text"` \| `"additions"` \| `"additions removals"` \| `"additions text"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text additions"` \| `"text removals"`
+> `optional` **aria-relevant**: `"text"` \| `"all"` \| `"additions"` \| `"additions removals"` \| `"additions text"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text additions"` \| `"text removals"`
 
 Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified.
 
@@ -982,6 +982,18 @@ Override or extend the styles applied to the component.
 #### Inherited from
 
 `CardProps.dir`
+
+***
+
+### disabled?
+
+> `optional` **disabled**: `boolean`
+
+If true, the component will be disabled.
+
+#### Inherited from
+
+`DisabledProps.disabled`
 
 ***
 
@@ -3003,6 +3015,18 @@ false
 #### Inherited from
 
 `CardProps.raised`
+
+***
+
+### readOnly?
+
+> `optional` **readOnly**: `boolean`
+
+If true, the component will be read-only.
+
+#### Inherited from
+
+`ReadOnlyProps.readOnly`
 
 ***
 

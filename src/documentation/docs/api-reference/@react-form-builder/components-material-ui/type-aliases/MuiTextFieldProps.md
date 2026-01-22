@@ -21,3 +21,9 @@ Callback function when the text field value changes.
 #### Returns
 
 `void`
+
+### readOnly?
+
+> `optional` **readOnly**: `boolean`
+
+If true, the form control will be read-only.
