@@ -82,6 +82,24 @@
     "./container": {
       "import": "./src/components/MuiContainer.tsx"
     },
+    "./dialog": {
+      "import": "./src/components/MuiDialog.tsx"
+    },
+    "./dialog-layout": {
+      "import": "./src/components/MuiDialogLayout.tsx"
+    },
+    "./dialog-actions": {
+      "import": "./src/components/MuiDialogActions.tsx"
+    },
+    "./dialog-content": {
+      "import": "./src/components/MuiDialogContent.tsx"
+    },
+    "./dialog-content-text": {
+      "import": "./src/components/MuiDialogContentText.tsx"
+    },
+    "./dialog-title": {
+      "import": "./src/components/MuiDialogTitle.tsx"
+    },
     "./error-wrapper": {
       "import": "./src/components/MuiErrorWrapper.tsx"
     },

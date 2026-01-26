@@ -168,6 +168,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiDialogProps",
+              label: "MuiDialogProps"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiFormControlLabelProps",
               label: "MuiFormControlLabelProps"
             },
@@ -297,6 +302,36 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/variables/muiDeDeComponentsDescriptions",
               label: "muiDeDeComponentsDescriptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiDialog",
+              label: "muiDialog"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiDialogActions",
+              label: "muiDialogActions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiDialogContent",
+              label: "muiDialogContent"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiDialogContentText",
+              label: "muiDialogContentText"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiDialogLayout",
+              label: "muiDialogLayout"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiDialogTitle",
+              label: "muiDialogTitle"
             },
             {
               type: "doc",

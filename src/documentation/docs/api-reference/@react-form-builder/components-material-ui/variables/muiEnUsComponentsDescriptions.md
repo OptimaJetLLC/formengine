@@ -808,6 +808,314 @@
 
 > **components.MuiContainer.props.maxWidth.name**: `string` = `"Max width"`
 
+#### components.MuiDialog
+
+> **components.MuiDialog**: `object`
+
+#### components.MuiDialog.description
+
+> **components.MuiDialog.description**: `string` = `"A modal dialog component that displays content in an overlay"`
+
+#### components.MuiDialog.name
+
+> **components.MuiDialog.name**: `string` = `"Dialog"`
+
+#### components.MuiDialog.props
+
+> **components.MuiDialog.props**: `object`
+
+#### components.MuiDialog.props.disableEscapeKeyDown
+
+> **components.MuiDialog.props.disableEscapeKeyDown**: `object`
+
+#### components.MuiDialog.props.disableEscapeKeyDown.description
+
+> **components.MuiDialog.props.disableEscapeKeyDown.description**: `string` = `"If true, pressing the escape key will not close the dialog"`
+
+#### components.MuiDialog.props.disableEscapeKeyDown.name
+
+> **components.MuiDialog.props.disableEscapeKeyDown.name**: `string` = `"Disable escape key down"`
+
+#### components.MuiDialog.props.fullScreen
+
+> **components.MuiDialog.props.fullScreen**: `object`
+
+#### components.MuiDialog.props.fullScreen.description
+
+> **components.MuiDialog.props.fullScreen.description**: `string` = `"If true, the dialog will be full screen"`
+
+#### components.MuiDialog.props.fullScreen.name
+
+> **components.MuiDialog.props.fullScreen.name**: `string` = `"Full screen"`
+
+#### components.MuiDialog.props.fullWidth
+
+> **components.MuiDialog.props.fullWidth**: `object`
+
+#### components.MuiDialog.props.fullWidth.description
+
+> **components.MuiDialog.props.fullWidth.description**: `string` = `"If true, the dialog stretches to maxWidth"`
+
+#### components.MuiDialog.props.fullWidth.name
+
+> **components.MuiDialog.props.fullWidth.name**: `string` = `"Full width"`
+
+#### components.MuiDialog.props.maxWidth
+
+> **components.MuiDialog.props.maxWidth**: `object`
+
+#### components.MuiDialog.props.maxWidth.description
+
+> **components.MuiDialog.props.maxWidth.description**: `string` = `"Maximum width of the dialog (xs, sm, md, lg, xl)"`
+
+#### components.MuiDialog.props.maxWidth.name
+
+> **components.MuiDialog.props.maxWidth.name**: `string` = `"Max width"`
+
+#### components.MuiDialog.props.onClose
+
+> **components.MuiDialog.props.onClose**: `object`
+
+#### components.MuiDialog.props.onClose.description
+
+> **components.MuiDialog.props.onClose.description**: `string` = `"Callback fired when the dialog is closing"`
+
+#### components.MuiDialog.props.onClose.name
+
+> **components.MuiDialog.props.onClose.name**: `string` = `"onClose"`
+
+#### components.MuiDialog.props.open
+
+> **components.MuiDialog.props.open**: `object`
+
+#### components.MuiDialog.props.open.description
+
+> **components.MuiDialog.props.open.description**: `string` = `"If true, the dialog is open"`
+
+#### components.MuiDialog.props.open.name
+
+> **components.MuiDialog.props.open.name**: `string` = `"Open"`
+
+#### components.MuiDialog.props.scroll
+
+> **components.MuiDialog.props.scroll**: `object`
+
+#### components.MuiDialog.props.scroll.description
+
+> **components.MuiDialog.props.scroll.description**: `string` = `"Determines the container for scrolling the dialog (paper or body)"`
+
+#### components.MuiDialog.props.scroll.name
+
+> **components.MuiDialog.props.scroll.name**: `string` = `"Scroll"`
+
+#### components.MuiDialog.props.sx
+
+> **components.MuiDialog.props.sx**: `object`
+
+#### components.MuiDialog.props.sx.description
+
+> **components.MuiDialog.props.sx.description**: `string` = `"The system prop that allows defining system overrides as well as additional CSS styles"`
+
+#### components.MuiDialog.props.sx.name
+
+> **components.MuiDialog.props.sx.name**: `string` = `"Sx"`
+
+#### components.MuiDialogActions
+
+> **components.MuiDialogActions**: `object`
+
+#### components.MuiDialogActions.description
+
+> **components.MuiDialogActions.description**: `string` = `"Container for dialog action buttons"`
+
+#### components.MuiDialogActions.name
+
+> **components.MuiDialogActions.name**: `string` = `"Dialog actions"`
+
+#### components.MuiDialogActions.props
+
+> **components.MuiDialogActions.props**: `object`
+
+#### components.MuiDialogActions.props.children
+
+> **components.MuiDialogActions.props.children**: `object`
+
+#### components.MuiDialogActions.props.children.description
+
+> **components.MuiDialogActions.props.children.description**: `string` = `"The content of the component"`
+
+#### components.MuiDialogActions.props.children.name
+
+> **components.MuiDialogActions.props.children.name**: `string` = `"Children"`
+
+#### components.MuiDialogActions.props.disableSpacing
+
+> **components.MuiDialogActions.props.disableSpacing**: `object`
+
+#### components.MuiDialogActions.props.disableSpacing.description
+
+> **components.MuiDialogActions.props.disableSpacing.description**: `string` = `"If true, the actions do not have additional margin"`
+
+#### components.MuiDialogActions.props.disableSpacing.name
+
+> **components.MuiDialogActions.props.disableSpacing.name**: `string` = `"Disable spacing"`
+
+#### components.MuiDialogActions.props.sx
+
+> **components.MuiDialogActions.props.sx**: `object`
+
+#### components.MuiDialogActions.props.sx.description
+
+> **components.MuiDialogActions.props.sx.description**: `string` = `"The system prop that allows defining system overrides as well as additional CSS styles"`
+
+#### components.MuiDialogActions.props.sx.name
+
+> **components.MuiDialogActions.props.sx.name**: `string` = `"Sx"`
+
+#### components.MuiDialogContent
+
+> **components.MuiDialogContent**: `object`
+
+#### components.MuiDialogContent.description
+
+> **components.MuiDialogContent.description**: `string` = `"Main content area of a dialog"`
+
+#### components.MuiDialogContent.name
+
+> **components.MuiDialogContent.name**: `string` = `"Dialog content"`
+
+#### components.MuiDialogContent.props
+
+> **components.MuiDialogContent.props**: `object`
+
+#### components.MuiDialogContent.props.children
+
+> **components.MuiDialogContent.props.children**: `object`
+
+#### components.MuiDialogContent.props.children.description
+
+> **components.MuiDialogContent.props.children.description**: `string` = `"The content of the component"`
+
+#### components.MuiDialogContent.props.children.name
+
+> **components.MuiDialogContent.props.children.name**: `string` = `"Children"`
+
+#### components.MuiDialogContent.props.dividers
+
+> **components.MuiDialogContent.props.dividers**: `object`
+
+#### components.MuiDialogContent.props.dividers.description
+
+> **components.MuiDialogContent.props.dividers.description**: `string` = `"If true, borders are added to the top and bottom of the dialog content"`
+
+#### components.MuiDialogContent.props.dividers.name
+
+> **components.MuiDialogContent.props.dividers.name**: `string` = `"Dividers"`
+
+#### components.MuiDialogContent.props.sx
+
+> **components.MuiDialogContent.props.sx**: `object`
+
+#### components.MuiDialogContent.props.sx.description
+
+> **components.MuiDialogContent.props.sx.description**: `string` = `"The system prop that allows defining system overrides as well as additional CSS styles"`
+
+#### components.MuiDialogContent.props.sx.name
+
+> **components.MuiDialogContent.props.sx.name**: `string` = `"Sx"`
+
+#### components.MuiDialogContentText
+
+> **components.MuiDialogContentText**: `object`
+
+#### components.MuiDialogContentText.description
+
+> **components.MuiDialogContentText.description**: `string` = `"Text content inside a dialog"`
+
+#### components.MuiDialogContentText.name
+
+> **components.MuiDialogContentText.name**: `string` = `"Dialog content text"`
+
+#### components.MuiDialogContentText.props
+
+> **components.MuiDialogContentText.props**: `object`
+
+#### components.MuiDialogContentText.props.children
+
+> **components.MuiDialogContentText.props.children**: `object`
+
+#### components.MuiDialogContentText.props.children.description
+
+> **components.MuiDialogContentText.props.children.description**: `string` = `"The text content"`
+
+#### components.MuiDialogContentText.props.children.name
+
+> **components.MuiDialogContentText.props.children.name**: `string` = `"Content"`
+
+#### components.MuiDialogContentText.props.sx
+
+> **components.MuiDialogContentText.props.sx**: `object`
+
+#### components.MuiDialogContentText.props.sx.description
+
+> **components.MuiDialogContentText.props.sx.description**: `string` = `"The system prop that allows defining system overrides as well as additional CSS styles"`
+
+#### components.MuiDialogContentText.props.sx.name
+
+> **components.MuiDialogContentText.props.sx.name**: `string` = `"Sx"`
+
+#### components.MuiDialogLayout
+
+> **components.MuiDialogLayout**: `object`
+
+#### components.MuiDialogLayout.description
+
+> **components.MuiDialogLayout.description**: `string` = `"A preset dialog layout with title, content, and action buttons"`
+
+#### components.MuiDialogLayout.name
+
+> **components.MuiDialogLayout.name**: `string` = `"Dialog layout"`
+
+#### components.MuiDialogTitle
+
+> **components.MuiDialogTitle**: `object`
+
+#### components.MuiDialogTitle.description
+
+> **components.MuiDialogTitle.description**: `string` = `"Title of a dialog"`
+
+#### components.MuiDialogTitle.name
+
+> **components.MuiDialogTitle.name**: `string` = `"Dialog title"`
+
+#### components.MuiDialogTitle.props
+
+> **components.MuiDialogTitle.props**: `object`
+
+#### components.MuiDialogTitle.props.children
+
+> **components.MuiDialogTitle.props.children**: `object`
+
+#### components.MuiDialogTitle.props.children.description
+
+> **components.MuiDialogTitle.props.children.description**: `string` = `"The title text"`
+
+#### components.MuiDialogTitle.props.children.name
+
+> **components.MuiDialogTitle.props.children.name**: `string` = `"Content"`
+
+#### components.MuiDialogTitle.props.sx
+
+> **components.MuiDialogTitle.props.sx**: `object`
+
+#### components.MuiDialogTitle.props.sx.description
+
+> **components.MuiDialogTitle.props.sx.description**: `string` = `"The system prop that allows defining system overrides as well as additional CSS styles"`
+
+#### components.MuiDialogTitle.props.sx.name
+
+> **components.MuiDialogTitle.props.sx.name**: `string` = `"Sx"`
+
 #### components.MuiErrorWrapper
 
 > **components.MuiErrorWrapper**: `object`

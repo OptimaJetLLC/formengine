@@ -1,0 +1,46 @@
+---
+title: Dialog Title
+description: The DialogTitle component provides a styled title area for dialog windows with Material Design typography
+slug: /components-library/material-ui/dialog-title
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-material-ui"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-material-ui"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/material-ui/src/components/MuiDialogTitle.tsx"
+/>
+
+## Introduction
+
+The DialogTitle component provides a styled title area for dialog windows. It follows Material Design guidelines for dialog titles,
+ensuring proper typography, spacing, and visual hierarchy for dialog headers. The component applies appropriate typography styles that
+work well within dialog containers and maintains consistent title presentation across your application.
+
+The DialogTitle component is based on [Material UI DialogTitle](https://mui.com/material-ui/api/dialog-title/). It is included within the
+following NPM package: [@react-form-builder/components-material-ui](https://www.npmjs.com/package/@react-form-builder/components-material-ui).
+
+The DialogTitle component can be configured to display various title content with customizable typography properties to fit specific
+design requirements.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name          | Type                                                                                                                                                   | Description                                                                              | Default          |
+|:--------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------|:-----------------|
+| Children      | `string`                                                                                                                                               | The title text displayed in the dialog header                                            | `'Dialog title'` |
+| Variant       | `'body1' \| 'body2' \| 'button' \| 'caption' \| 'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6' \| 'inherit' \| 'overline' \| 'subtitle1' \| 'subtitle2'` | The typography variant to use                                                            |                  |
+| Color         | `'primary' \| 'secondary' \| 'error' \| 'info' \| 'success' \| 'warning' \| 'textPrimary' \| 'textSecondary' \| 'inherit'`                             | The color of the link                                                                    |                  |
+| Alignment     | `'inherit' \| 'left' \| 'center' \| 'right' \| 'justify'`                                                                                              | Text alignment                                                                           |                  |
+| No wrap       | `boolean`                                                                                                                                              | If true, the text will not wrap, but instead will truncate with a text overflow ellipsis |                  |
+| Gutter bottom | `boolean`                                                                                                                                              | If true, the text will have a bottom margin                                              |                  |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
