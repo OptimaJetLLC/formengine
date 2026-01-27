@@ -1,6 +1,6 @@
 import {Store} from '../../stores/Store'
 import type {ComponentData} from '../../utils/contexts/ComponentDataContext'
-import {string} from '../annotation'
+import {string} from '../annotation/stringAnnotation'
 import {toArray} from '../annotation/toArray'
 import {createAnnotation} from '../annotation/utils/createAnnotation'
 import type {ComponentMetadataEventListeners} from '../define/utils/ComponentMetadataEventListeners'

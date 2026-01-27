@@ -1,7 +1,7 @@
 import type {CSSObject} from '@emotion/serialize'
 import type {ComponentType, ReactNode} from 'react'
 import {ComponentStore} from '../../../stores/ComponentStore'
-import {commonStyles} from '../../annotation'
+import {commonStyles} from '../../annotation/commonStyles'
 import {toArray} from '../../annotation/toArray'
 import {toStyleProperties} from '../../annotation/toStyleProperties'
 import type {Annotations} from '../../annotation/utils/builders/Annotations'

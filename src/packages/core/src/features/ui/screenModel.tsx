@@ -1,4 +1,5 @@
-import {commonStyles, containerStyles} from '../annotation'
+import {commonStyles} from '../annotation/commonStyles'
+import {containerStyles} from '../annotation/containerStyles'
 import {toStyleProperties} from '../annotation/toStyleProperties'
 import {getDefaultCss} from '../annotation/utils/getDefaultCss'
 import {Model} from '../define'
