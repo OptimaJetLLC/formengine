@@ -1,8 +1,8 @@
 import type {CSSProperties} from 'react'
 import type {Store} from '../../stores/Store'
-import {namedObserver} from '../../utils'
 import {ComponentDataProvider, useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {StoreProvider, useStore} from '../../utils/contexts/StoreContext'
+import {namedObserver} from '../../utils/namedObserver'
 import {Model} from '../define'
 import {addOrUpdateFeatures} from '../define/utils/ComponentFeature'
 import {

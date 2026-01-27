@@ -1,5 +1,5 @@
 import {useMemo} from 'react'
-import {namedObserver} from '../../utils'
+import {namedObserver} from '../../utils/namedObserver'
 import {useMobxConfig} from '../../utils/useMobxConfig'
 import {FluentLocalizationEngine} from '../localization/fluent/FluentLocalizationEngine'
 import {ViewerLocalizationProvider} from '../localization/ViewerLocalizationProvider'
