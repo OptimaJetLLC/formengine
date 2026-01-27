@@ -277,6 +277,21 @@
   }
 }
 
+.optimajet-formbuilder {
+  & [class*=rs-],
+  & [class*=rs-]:after,
+  & [class*=rs-]:before {
+    -webkit-box-sizing: initial;
+    box-sizing: initial;
+  }
+
+  & [class^="rs-"],
+  & [class*=" rs-"] {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
 .optimajet-formbuilder, .optimajet-formviewer {
   .rs-nav button {
     font-size: 14px;
