@@ -1,10 +1,13 @@
+import {view as muiView} from '@react-form-builder/components-material-ui'
 import {BuilderView, Language} from '@react-form-builder/core'
 import {FormBuilder, type FormBuilderI18n, FormBuilderI18nData} from '@react-form-builder/designer'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {frFR, trTR} from 'rsuite/locales'
 import {expect} from 'vitest'
 import {default as builtinFR} from '../../../packages/designer/public/locales/fr-FR.json'
+import {renderForm} from '../util/renderForm'
 import {switchLanguage} from './designerUtils'
+import localizationWithoutLanguageFrom from './forms/localization-without-language.json'
 
 const testForm = {
   'version': '1',
@@ -178,5 +181,18 @@ describe('user defined i18n should be merged with built-in in to Designer, "en-U
     await switchLanguage('fr-FR', container)
 
     await waitFor(() => expect(container.querySelector(testElementSelector)).toHaveTextContent(builtinElementFrContent))
+  })
+
+  it('The fallback option should work even if there is no language in JSON', async () => {
+    const {findByTestId} = renderForm(localizationWithoutLanguageFrom, {
+      language: 'fr-CA',
+      view: muiView
+    })
+
+    const emailElement = await findByTestId('email')
+    const targetLocale = localizationWithoutLanguageFrom.localization['fr-FR']
+    const fallbackLocale = localizationWithoutLanguageFrom.localization['en-US']
+    expect(emailElement.querySelector('legend span')).toHaveTextContent(targetLocale.email.component.label)
+    expect(emailElement.querySelector('p')).toHaveTextContent(fallbackLocale.email.component.helperText)
   })
 })

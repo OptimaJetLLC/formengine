@@ -1,0 +1,67 @@
+{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "email",
+        "type": "MuiTextField",
+        "props": {
+          "label": {
+            "computeType": "localization"
+          },
+          "helperText": {
+            "computeType": "localization"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "email"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "email": {
+        "component": {
+          "label": "Email Address",
+          "helperText": "Enter your full name"
+        }
+      }
+    },
+    "fr-FR": {
+      "email": {
+        "component": {
+          "label": "Adresse Email"
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    },
+    {
+      "code": "fr",
+      "dialect": "FR",
+      "name": "Français",
+      "description": "French",
+      "bidi": "ltr"
+    },
+    {
+      "code": "fr",
+      "dialect": "CA",
+      "name": "Français canadien",
+      "description": "Canadian French",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

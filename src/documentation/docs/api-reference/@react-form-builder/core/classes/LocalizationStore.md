@@ -122,6 +122,29 @@ the new component key to replace the old component key.
 
 ***
 
+### findLocalizationKey()
+
+> **findLocalizationKey**(`languageFullCode`): `null` \| `` `${string}-${string}` ``
+
+Finds the best matching localization key for the given language code.
+Looks for exact match first, then match by language code only.
+
+#### Parameters
+
+##### languageFullCode
+
+`` `${string}-${string}` ``
+
+the requested language full code.
+
+#### Returns
+
+`null` \| `` `${string}-${string}` ``
+
+the best matching language full code or null if no match found.
+
+***
+
 ### getItems()
 
 > **getItems**(`languageFullCode`): `null` \| `Record`\<`string`, `string`\>
@@ -215,6 +238,7 @@ the object containing the localization values for the component in each supporte
 > **hasLanguage**(`languageFullCode`): `boolean`
 
 Checks that the specified language exists in the localization.
+Looks for exact match first, then match by language code only.
 
 #### Parameters
 
