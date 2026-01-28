@@ -1,7 +1,7 @@
 import {makeObservable, observable} from 'mobx'
 import type {ComponentType} from 'react'
 import {View} from '../features/define'
-import type {ActionValues} from '../features/event'
+import type {ActionValues} from '../features/event/ActionValues'
 import type {FormViewerProps} from '../features/form-viewer'
 import type {ComponentLocalizer} from '../features/form-viewer/ComponentLocalizer'
 import {customActionsToActionsValues} from '../features/form-viewer/CustomActions'

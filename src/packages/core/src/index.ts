@@ -5,7 +5,7 @@ export {errorMessageModel} from './features/validation/components/DefaultErrorMe
 export {screenModel} from './features/ui/screenModel'
 export type {ActionsInitializer, ComponentKind, FormBuilderComponentIconName} from './features/define/types'
 export type {iconsList} from './features/define/types'
-export {DidMountEvent, WillUnmountEvent} from './features/event'
+export {DidMountEvent, WillUnmountEvent} from './features/event/eventNames'
 export {emptyComponentStore} from './utils/emptyComponentStore'
 export {createNonNullableContext} from './utils/createNonNullableContext'
 export {FormViewer} from './features/form-viewer/FormViewer'
@@ -24,12 +24,34 @@ export {calculatePropertyValue} from './features/calculation/propertyCalculator'
 export type {BaseCompilationResult} from './features/calculation/propertyCalculator'
 export {ComponentData} from './utils/contexts/ComponentDataContext'
 export {namedObserver} from './utils/namedObserver'
-export {ActionEventArgs} from './features/event'
-export type {ActionData, ActionEventHandler, ActionParameters, ParameterName, ParameterType} from './features/event'
+export {ActionEventArgs} from './features/event/utils/ActionEventArgs'
+export type {
+  ActionData,
+  ActionParameters,
+  ActionType,
+  ArgumentValue,
+  Arguments,
+  EventName,
+  Func,
+  FunctionArgumentValue,
+  ParameterName,
+  ParameterType,
+  PrimitiveArgumentValue,
+} from './features/event/types'
+export {createActionValuesFromObject} from './features/event/createActionValuesFromObject'
+export type {ActionValues} from './features/event/ActionValues'
+export type {NamedActionDefinition} from './features/event/namedActionDefinition'
+export type {ActionEventHandler} from './features/event/ActionEventHandler'
+export type {
+  ActionHandler,
+  DefineActionHelper,
+  ParameterDefinition,
+  PropertyKey,
+} from './features/event/utils/defineAction'
 export type {WrapperProps, ViewMode} from './types'
 export type {ComponentStyle, ComponentDeviceStyle} from './stores/ComponentStore'
 export type {ComponentProperty, ComponentPropertyComputeType} from './stores/ComponentProperty'
-export {ActionEventArgsDeclaration} from './features/event'
+export {ActionEventArgsDeclaration} from './features/event/utils/ActionEventArgs'
 export {IFormDataDeclaration} from './utils/IFormData'
 export type {IFormData} from './utils/IFormData'
 export {useViewerProps, ViewerPropsProvider} from './features/form-viewer/components/ViewerPropsContext'
@@ -70,10 +92,9 @@ export type {ValidatorType} from './features/validation/types/ValidatorType'
 export type {Validators} from './features/validation/types/CustomValidationRules'
 export {isFunctionalProperty, isLocalizedProperty} from './stores/ComponentStore'
 export {KeySymbol} from './consts'
-export {ActionDefinition} from './features/event'
+export {ActionDefinition} from './features/event/ActionDefinition'
 export {generateUniqueName} from './utils/generateUniqueName'
 export type {CustomActions} from './features/form-viewer/CustomActions'
-export type {NamedActionDefinition} from './features/event'
 export {isUniqueKey} from './features/annotation/utils/isUniqueKey'
 export {array} from './features/annotation/arrayAnnotation'
 export {boolean} from './features/annotation/booleanAnnotation'
@@ -138,7 +159,6 @@ export {useErrorMessage} from './utils/useErrorMessage'
 export {ComponentState} from './stores/ComponentState'
 export type {ErrorMap} from './features/validation/ErrorMap'
 export {BuilderOptions} from './features/annotation/utils/builders/BaseBuilder'
-export * from './features/event'
 export * from './features/define'
 export {Meta} from './features/define/utils/Meta'
 export type {DefinerData} from './features/define/utils/Definer'

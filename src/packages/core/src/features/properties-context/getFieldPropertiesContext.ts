@@ -1,5 +1,7 @@
 import type {Model} from '../define'
-import type {ActionEventArgs, ActionEventHandler, EventName} from '../event'
+import type {ActionEventHandler} from '../event/ActionEventHandler'
+import type {EventName} from '../event/types'
+import type {ActionEventArgs} from '../event/utils/ActionEventArgs'
 import type {CellInfo} from '../table/CellInfo'
 import type {Field} from '../validation/utils/Field'
 import type {ComponentPropertiesContext, ReactProperty} from './ComponentPropertiesContext'

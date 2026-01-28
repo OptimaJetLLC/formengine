@@ -1,6 +1,6 @@
 import {makeAutoObservable} from 'mobx'
 import {KeySymbol} from '../consts'
-import type {ActionData, EventName} from '../features/event'
+import type {ActionData, EventName} from '../features/event/types'
 import type {Css} from '../features/style/types'
 import type {BoundValueSchema} from '../features/validation/types/BoundValueSchema'
 import type {ValidatorType} from '../features/validation/types/ValidatorType'
