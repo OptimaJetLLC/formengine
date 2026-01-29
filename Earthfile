@@ -292,7 +292,7 @@ test-github-formengine-archive:
   RUN cd community/src && npm install && npm run pack
   RUN cd premium/examples/formengine && npm install && npm run build
   RUN cd premium/examples/with-formik && npm install && npm run build
-  RUN cd premium/examples/with-nextjs/with-nextjs-v15 && npm install && npm run build
+  RUN cd premium/examples/with-nextjs/with-nextjs-v16 && npm install && npm run build
   RUN cd premium/examples/with-remix/with-remix-v2 && npm install && npm run build
 
 test-github-formenginesupport-archive:

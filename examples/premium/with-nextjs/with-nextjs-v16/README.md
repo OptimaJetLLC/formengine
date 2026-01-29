@@ -6,7 +6,7 @@ This code corresponds to Next.js [integration example](https://formengine.io/doc
 
 ```shell
 git clone git@github.com:optimajet/formengine.git
-cd formengine/premium/examples/with-nextjs/with-nextjs-v15
+cd formengine/premium/examples/with-nextjs/with-nextjs-v16
 npm install
 npm run dev
 ```

@@ -34,7 +34,7 @@ const packageList = [
   'examples/community/bundle-size/formengine',
   'examples/premium/formengine',
   'examples/premium/with-formik',
-  'examples/premium/with-nextjs/with-nextjs-v15',
+  'examples/premium/with-nextjs/with-nextjs-v16',
   'examples/premium/with-remix/with-remix-v2',
 ]
 
