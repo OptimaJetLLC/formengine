@@ -6,13 +6,13 @@ Represents the props passed to the FormViewer Store. **Internal use only.**
 
 ### Constructor
 
-> **new FormViewerPropsStore**(`formViewerProps?`): `FormViewerPropsStore`
+> **new FormViewerPropsStore**(`formViewerProps`): `FormViewerPropsStore`
 
 Constructs a new FormViewerPropsStore from the given FormViewerProps.
 
 #### Parameters
 
-##### formViewerProps?
+##### formViewerProps
 
 [`FormViewerProps`](../interfaces/FormViewerProps.md)
 
@@ -124,7 +124,7 @@ The set of metadata of validation rules, grouped by the type of value being vali
 
 ### view
 
-> **view**: [`View`](View.md)
+> **view**: [`IView`](../interfaces/IView.md)
 
 The metadata of the form viewer components.
 

@@ -1,4 +1,4 @@
-import type {Model} from '../define'
+import type {Model} from '../define/utils/Model'
 import type {ActionEventHandler} from '../event/ActionEventHandler'
 import type {EventName} from '../event/types'
 import type {ActionEventArgs} from '../event/utils/ActionEventArgs'

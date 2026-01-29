@@ -1,7 +1,7 @@
 import type {IReactionDisposer} from 'mobx'
 import {makeAutoObservable, reaction} from 'mobx'
-import type {Model} from '../../features/define'
 import {cfSkipChildrenDuringFieldCollection} from '../../features/define/utils/integratedComponentFeatures'
+import type {Model} from '../../features/define/utils/Model'
 import type {ValidationMessages} from '../../features/validation/types/ValidationResult'
 import type {ComponentField, Field} from '../../features/validation/utils/Field'
 import type {IDataReaction} from '../../features/validation/utils/IDataReaction'

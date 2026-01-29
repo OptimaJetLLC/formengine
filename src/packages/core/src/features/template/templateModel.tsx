@@ -1,5 +1,5 @@
 import {useComponentData} from '../../utils/contexts/ComponentDataContext'
-import {Model} from '../define'
+import {Model} from '../define/utils/Model'
 import {generateTemplateTypeName, getTemplateName} from '../ui/templateUtil'
 import {defaultEmbeddedFormCss, EmbeddedForm} from './embeddedFormModel'
 import type {TemplateProps} from './TemplateProps'

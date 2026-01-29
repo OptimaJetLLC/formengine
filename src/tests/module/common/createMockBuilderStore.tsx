@@ -1,4 +1,4 @@
-import {BuilderView, define, FormViewerPropsStore, Store} from '@react-form-builder/core'
+import {BuilderView, createView, define, FormViewerPropsStore, Store} from '@react-form-builder/core'
 import {defaultComponentStateFactory} from '@react-form-builder/core/src/features/form-viewer/components/ViewerStoreProvider'
 import {BuilderStore} from '@react-form-builder/designer/src/stores/BuilderStore'
 
@@ -8,7 +8,8 @@ export const mockComponent = define(() => <div></div>, 'MockComponent')
   .build()
 
 export const createMockStore = () => {
-  return new Store(new FormViewerPropsStore(), defaultComponentStateFactory)
+  const view = createView([])
+  return new Store(new FormViewerPropsStore({view}), defaultComponentStateFactory)
 }
 
 export const createMockBuilderStore = (store: Store) => {

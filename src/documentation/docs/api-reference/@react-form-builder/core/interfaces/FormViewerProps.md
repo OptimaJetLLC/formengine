@@ -184,7 +184,7 @@ The set of metadata of validation rules, grouped by the type of value being vali
 
 ### view
 
-> **view**: [`View`](../classes/View.md)
+> **view**: [`IView`](IView.md)
 
 All the metadata of the components of the form viewer.
 

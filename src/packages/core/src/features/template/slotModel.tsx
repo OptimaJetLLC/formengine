@@ -3,7 +3,6 @@ import type {Store} from '../../stores/Store'
 import {ComponentDataProvider, useComponentData} from '../../utils/contexts/ComponentDataContext'
 import {StoreProvider, useStore} from '../../utils/contexts/StoreContext'
 import {namedObserver} from '../../utils/namedObserver'
-import {Model} from '../define'
 import {addOrUpdateFeatures} from '../define/utils/ComponentFeature'
 import {
   cfDisableAdditionalProperties,
@@ -11,6 +10,7 @@ import {
   cfDisableStyleProperties,
   cfDisableTooltipProperties
 } from '../define/utils/integratedComponentFeatures'
+import {Model} from '../define/utils/Model'
 import {ViewerPropsProvider} from '../form-viewer/components/ViewerPropsContext'
 import {useEmbeddedForm} from './embeddedFormModel'
 

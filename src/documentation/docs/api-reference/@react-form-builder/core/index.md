@@ -73,6 +73,7 @@
 - [InternalErrorProps](interfaces/InternalErrorProps.md)
 - [IStore](interfaces/IStore.md)
 - [IValidationBuilder](interfaces/IValidationBuilder.md)
+- [IView](interfaces/IView.md)
 - [LabeledValue](interfaces/LabeledValue.md)
 - [LocalizationError](interfaces/LocalizationError.md)
 - [PersistedForm](interfaces/PersistedForm.md)

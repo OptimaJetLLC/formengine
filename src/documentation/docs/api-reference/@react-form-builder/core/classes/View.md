@@ -7,6 +7,10 @@ Represents all the metadata of the form viewer components.
 - [`BuilderView`](BuilderView.md)
 - [`BuilderView`](../../designer/classes/BuilderView.md)
 
+## Implements
+
+- [`IView`](../interfaces/IView.md)
+
 ## Constructors
 
 ### Constructor
@@ -43,6 +47,12 @@ Retrieves the viewer wrappers array.
 
 the viewer wrappers array.
 
+Retrieves the viewer wrappers array.
+
+#### Implementation of
+
+[`IView`](../interfaces/IView.md).[`viewerWrappers`](../interfaces/IView.md#viewerwrappers)
+
 ## Methods
 
 ### all()
@@ -55,13 +65,15 @@ the viewer wrappers array.
 
 all component metadata for the form viewer.
 
+#### Implementation of
+
+[`IView`](../interfaces/IView.md).[`all`](../interfaces/IView.md#all)
+
 ***
 
 ### define()
 
 > **define**(`model`): `void`
-
-Defines the component's metadata for the form viewer.
 
 #### Parameters
 
@@ -69,19 +81,21 @@ Defines the component's metadata for the form viewer.
 
 [`Model`](Model.md)
 
-the component's metadata.
-
 #### Returns
 
 `void`
+
+#### Inherit Doc
+
+#### Implementation of
+
+[`IView`](../interfaces/IView.md).[`define`](../interfaces/IView.md#define)
 
 ***
 
 ### filterModels()
 
 > **filterModels**(`predicate`): [`Model`](Model.md)\<`any`\>[]
-
-Returns the array of component metadata filtered using the predicate function.
 
 #### Parameters
 
@@ -97,13 +111,15 @@ the filter function.
 
 the array of component metadata filtered using the predicate function.
 
+#### Implementation of
+
+[`IView`](../interfaces/IView.md).[`filterModels`](../interfaces/IView.md#filtermodels)
+
 ***
 
 ### find()
 
 > **find**(`type`): `undefined` \| [`Model`](Model.md)\<`any`\>
-
-Returns the component's metadata for the form viewer for the specified type.
 
 #### Parameters
 
@@ -119,13 +135,15 @@ the component type.
 
 the component metadata for the form viewer for the specified type or undefined.
 
+#### Implementation of
+
+[`IView`](../interfaces/IView.md).[`find`](../interfaces/IView.md#find)
+
 ***
 
 ### get()
 
 > **get**(`type`): [`Model`](Model.md)\<`any`\>
-
-Returns the component's metadata for the form viewer for the specified type.
 
 #### Parameters
 
@@ -141,13 +159,15 @@ the component type.
 
 the component metadata for the form viewer for the specified type.
 
+#### Implementation of
+
+[`IView`](../interfaces/IView.md).[`get`](../interfaces/IView.md#get)
+
 ***
 
 ### getCssLoaders()
 
 > **getCssLoaders**(`biDi`): () => `Promise`\<`void`\>[]
-
-Retrieves the CSS loaders for a given BiDi.
 
 #### Parameters
 
@@ -163,13 +183,15 @@ the BiDi object for which to retrieve the CSS loaders.
 
 the array containing the CSS loaders for the specified BiDi.
 
+#### Implementation of
+
+[`IView`](../interfaces/IView.md).[`getCssLoaders`](../interfaces/IView.md#getcssloaders)
+
 ***
 
 ### withCssLoader()
 
 > **withCssLoader**(`cssLoaderType`, `loader`): `View`
-
-Applies the given CSS loader to the component based on the BiDi layout.
 
 #### Parameters
 
@@ -191,13 +213,15 @@ the function that returns a Promise to load CSS or other required localization r
 
 the View instance.
 
+#### Implementation of
+
+[`IView`](../interfaces/IView.md).[`withCssLoader`](../interfaces/IView.md#withcssloader)
+
 ***
 
 ### withViewerWrapper()
 
 > **withViewerWrapper**(`wrapper`): `View`
-
-Adds a wrapper to the list of viewers for this viewer wrapper.
 
 #### Parameters
 
@@ -212,6 +236,10 @@ the viewer wrapper to be added. The wrapper is a component that wraps the form v
 `View`
 
 the View instance.
+
+#### Implementation of
+
+[`IView`](../interfaces/IView.md).[`withViewerWrapper`](../interfaces/IView.md#withviewerwrapper)
 
 ***
 

@@ -2,9 +2,9 @@ import {commonStyles} from '../annotation/commonStyles'
 import {containerStyles} from '../annotation/containerStyles'
 import {toStyleProperties} from '../annotation/toStyleProperties'
 import {getDefaultCss} from '../annotation/utils/getDefaultCss'
-import {Model} from '../define'
 import {addOrUpdateFeatures} from '../define/utils/ComponentFeature'
 import {cfDisableComponentRemove, cfHideFromComponentPalette} from '../define/utils/integratedComponentFeatures'
+import {Model} from '../define/utils/Model'
 import {DefaultWrapper} from './DefaultWrapper'
 
 const {height} = commonStyles

@@ -6,7 +6,7 @@ import {useStore} from '../../utils/contexts/StoreContext'
 import {namedObserver} from '../../utils/namedObserver'
 import {useTooltipType} from '../../utils/useTooltipType'
 import {useWrapperState} from '../../utils/useWrapperState'
-import type {Model} from '../define'
+import type {Model} from '../define/utils/Model'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 
 /**

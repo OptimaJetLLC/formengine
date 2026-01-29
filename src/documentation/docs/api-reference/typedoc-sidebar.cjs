@@ -1496,6 +1496,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/interfaces/IView",
+              label: "IView"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/interfaces/LabeledValue",
               label: "LabeledValue"
             },

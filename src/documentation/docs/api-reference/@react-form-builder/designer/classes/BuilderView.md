@@ -80,6 +80,8 @@ Retrieves the viewer wrappers array.
 
 the viewer wrappers array.
 
+Retrieves the viewer wrappers array.
+
 #### Inherited from
 
 [`View`](../../core/classes/View.md).[`viewerWrappers`](../../core/classes/View.md#viewerwrappers)
@@ -126,19 +128,17 @@ all component metadata for the form viewer.
 
 > **define**(`model`): `void`
 
-Defines the component's metadata for the form viewer.
-
 #### Parameters
 
 ##### model
 
 [`Model`](../../core/classes/Model.md)
 
-the component's metadata.
-
 #### Returns
 
 `void`
+
+#### Inherit Doc
 
 #### Inherited from
 
@@ -149,8 +149,6 @@ the component's metadata.
 ### filterModels()
 
 > **filterModels**(`predicate`): [`Model`](../../core/classes/Model.md)\<`any`\>[]
-
-Returns the array of component metadata filtered using the predicate function.
 
 #### Parameters
 
@@ -175,8 +173,6 @@ the array of component metadata filtered using the predicate function.
 ### find()
 
 > **find**(`type`): `undefined` \| [`Model`](../../core/classes/Model.md)\<`any`\>
-
-Returns the component's metadata for the form viewer for the specified type.
 
 #### Parameters
 
@@ -224,8 +220,6 @@ the component metadata for the specified component type name or undefined.
 
 > **get**(`type`): [`Model`](../../core/classes/Model.md)\<`any`\>
 
-Returns the component's metadata for the form viewer for the specified type.
-
 #### Parameters
 
 ##### type
@@ -249,8 +243,6 @@ the component metadata for the form viewer for the specified type.
 ### getCssLoaders()
 
 > **getCssLoaders**(`biDi`): () => `Promise`\<`void`\>[]
-
-Retrieves the CSS loaders for a given BiDi.
 
 #### Parameters
 
@@ -340,8 +332,6 @@ the instance of the BuilderView class.
 
 > **withCssLoader**(`cssLoaderType`, `loader`): `BuilderView`
 
-Applies the given CSS loader to the component based on the BiDi layout.
-
 #### Parameters
 
 ##### cssLoaderType
@@ -415,8 +405,6 @@ the instance of the BuilderView class.
 ### withViewerWrapper()
 
 > **withViewerWrapper**(`wrapper`): `BuilderView`
-
-Adds a wrapper to the list of viewers for this viewer wrapper.
 
 #### Parameters
 
