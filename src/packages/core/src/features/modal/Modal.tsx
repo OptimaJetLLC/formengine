@@ -9,7 +9,7 @@ import {modalBeforeHideFnName, modalStateKey} from '../event/consts/modalActions
 import {createDataProxy} from '../event/utils/createComponentDataProxy'
 import {useViewerProps} from '../form-viewer/components/ViewerPropsContext'
 import {NewStoreProvider} from '../form-viewer/components/ViewerStoreProvider'
-import {FormViewer} from '../form-viewer/FormViewer'
+import {useEmbeddedFormViewer} from '../form-viewer/EmbeddedFormViewerContext'
 import type {FormViewerProps} from '../form-viewer/types'
 import {getTemplateName, isTemplateType} from '../ui/templateUtil'
 import {closeCurrentModalActionName} from './closeCurrentModalActionName'
@@ -85,6 +85,7 @@ const RawModalViewer = (props: ModalProps) => {
   const parentStore = useStore()
   const {context} = parentStore.formViewerPropsStore
   const modalModel = useModalModel()
+  const EmbeddedFormViewer = useEmbeddedFormViewer()
   const {modalTemplate} = props
 
   const {
@@ -129,7 +130,7 @@ const RawModalViewer = (props: ModalProps) => {
 
   return <ComponentModal model={modalModel} open={open} handleClose={handleClose}>
     <NewStoreProvider props={modalViewerProps}>
-      <FormViewer {...modalViewerProps} />
+      <EmbeddedFormViewer {...modalViewerProps} />
     </NewStoreProvider>
   </ComponentModal>
 }

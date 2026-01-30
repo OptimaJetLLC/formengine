@@ -1,6 +1,5 @@
 import {makeObservable, observable, runInAction} from 'mobx'
 import type {ComponentRole} from '../features/define/utils/ComponentRole'
-import type {Model} from '../features/define/utils/Model'
 import type {ActionDefinition} from '../features/event/ActionDefinition'
 import {commonActions} from '../features/event/consts/actions'
 import {createActionValuesFromObject} from '../features/event/createActionValuesFromObject'
@@ -12,10 +11,10 @@ import {Language} from '../features/localization/language'
 import {NoopLocalizationEngine} from '../features/localization/NoopLocalizationEngine'
 import type {LocalizationType} from '../features/localization/types'
 import type {ComponentPropertiesContext} from '../features/properties-context/ComponentPropertiesContext'
-import {createTemplateModel} from '../features/template'
+import {templateTypeName} from '../features/template/templateTypeName'
 import {buildInternalErrorModel} from '../features/ui/internalErrorModel'
 import {screenModel} from '../features/ui/screenModel'
-import {getTemplateName, isTemplateType} from '../features/ui/templateUtil'
+import {isTemplateType} from '../features/ui/templateUtil'
 import type {SchemaType} from '../features/validation/types/SchemaType'
 import type {ValidationResult} from '../features/validation/types/ValidationResult'
 import {calculateProperty} from '../features/validation/utils/calculateProperty'
@@ -103,11 +102,6 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
    * The form.
    */
   form: Form
-
-  /**
-   * Models for templates that have not been explicitly defined.
-   */
-  #templateMap = new Map<string, Model>()
 
   /**
    * The loading form error.
@@ -245,18 +239,10 @@ export class Store implements IStore, IFormViewer, IComponentDataFactory {
     const model = this.formViewerPropsStore.view.find(type)
     if (model) return model
     if (isTemplateType(type)) {
-      const templateModel = this.#templateMap.get(type)
-      return templateModel ?? this.addTemplateModel(type)
+      const templateModel = this.formViewerPropsStore.view.find(templateTypeName)
+      if (templateModel) return templateModel
     }
     return buildInternalErrorModel(`Type '${type}' is not found!`)
-  }
-
-  private addTemplateModel(type: string) {
-    // we don't change the view properties to add a template
-    const templateName = getTemplateName(type)
-    const templateModel = createTemplateModel(templateName)
-    this.#templateMap.set(templateModel.type, templateModel)
-    return templateModel
   }
 
   /**

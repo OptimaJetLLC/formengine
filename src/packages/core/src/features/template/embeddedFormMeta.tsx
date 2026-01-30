@@ -6,8 +6,9 @@ import {string} from '../annotation/stringAnnotation'
 import {toArray} from '../annotation/toArray'
 import {modules} from '../define/constants'
 import {Meta} from '../define/utils/Meta'
-import {embeddedFormModel, embeddedFormStyleProperties} from './embeddedFormModel'
+import {embeddedFormModel} from './embeddedFormModel'
 import type {EmbeddedFormProps} from './EmbeddedFormProps'
+import {embeddedFormStyleProperties} from './embeddedFormStyleProperties'
 
 const storeDataInParentForm = boolean
   .default(true)

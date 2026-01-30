@@ -12,7 +12,7 @@ import {
 } from '../define/utils/integratedComponentFeatures'
 import {Model} from '../define/utils/Model'
 import {ViewerPropsProvider} from '../form-viewer/components/ViewerPropsContext'
-import {useEmbeddedForm} from './embeddedFormModel'
+import {useEmbeddedForm} from './EmbeddedForm'
 
 const RawSlotContent = ({parentStore}: { parentStore: Store }) => {
   const {key} = useComponentData()

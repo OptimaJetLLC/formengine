@@ -6,7 +6,7 @@ import {toArray} from '../annotation/toArray'
 import {modules} from '../define/constants'
 import {Meta} from '../define/utils/Meta'
 import {generateTemplateTypeName} from '../ui/templateUtil'
-import {embeddedFormStyleProperties} from './embeddedFormModel'
+import {embeddedFormStyleProperties} from './embeddedFormStyleProperties'
 import type {TemplateProps} from './TemplateProps'
 
 const storeDataInParentForm = boolean
