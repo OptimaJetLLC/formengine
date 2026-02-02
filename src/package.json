@@ -5,6 +5,7 @@
   "scripts": {
     "show:bundle": "npx lerna run --stream show:bundle --scope=@react-form-builder/example-builder",
     "build": "npx lerna run --stream build --ignore @react-form-builder/docs",
+    "build:ci": "node ./scripts/build-with-concurrency.js",
     "pack": "npx lerna run --stream pack --ignore @react-form-builder/docs",
     "start": "npx lerna run --stream start --scope=@react-form-builder/example-builder",
     "demo:build": "npx lerna run --stream build --scope=@react-form-builder/demo",

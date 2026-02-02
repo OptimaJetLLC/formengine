@@ -5,7 +5,7 @@ WORKDIR /form-engine/src
 # npm-build builds all npm packages
 npm-build:
   FROM +sources
-  RUN npm run build
+  RUN npm run build:ci
 
 # npm-bundle builds all npm bundles
 npm-bundle:
@@ -25,7 +25,7 @@ npm-demo-build:
 # npm-formbuilder-build builds formbuilder
 npm-formbuilder-build:
   FROM +npm-update-release-date
-  RUN cd ./packages/apps/formbuilder && npm run build
+  RUN cd ./packages/apps/formbuilder && npm run build:ci
 
 # npm-documentation-build builds documentation
 npm-documentation-build:
@@ -290,16 +290,16 @@ test-github-formengine-archive:
   RUN cd community/examples/file-upload-server && npm install
   RUN cd community/examples/bundle-size && npm install
   RUN cd community/src && npm install && npm run pack
-  RUN cd premium/examples/formengine && npm install && npm run build
-  RUN cd premium/examples/with-formik && npm install && npm run build
-  RUN cd premium/examples/with-nextjs/with-nextjs-v16 && npm install && npm run build
-  RUN cd premium/examples/with-remix/with-remix-v2 && npm install && npm run build
+  RUN cd premium/examples/formengine && npm install && npm run build:ci
+  RUN cd premium/examples/with-formik && npm install && npm run build:ci
+  RUN cd premium/examples/with-nextjs/with-nextjs-v16 && npm install && npm run build:ci
+  RUN cd premium/examples/with-remix/with-remix-v2 && npm install && npm run build:ci
 
 test-github-formenginesupport-archive:
   COPY .archives/formenginesupport.tgz formenginesupport.tgz
   RUN tar zxvf formenginesupport.tgz
   RUN npm install
-  RUN npm run build
+  RUN npm run build:ci
   RUN npm run pack
 
 # publish-artifact-github-optimajet-formengine updates the GitHub repository optimajet/formengine from the local artifact
