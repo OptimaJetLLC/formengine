@@ -1,6 +1,6 @@
 import {configure} from '@testing-library/react'
 // eslint-disable-next-line import/no-extraneous-dependencies
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom/vitest'
 import {Canvas} from 'skia-canvas'
 import {beforeAll} from 'vitest'
 import failOnConsole from 'vitest-fail-on-console'

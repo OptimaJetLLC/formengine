@@ -21,8 +21,8 @@ expect.extend({
   }
 })
 
-declare module '@vitest/expect' {
+declare module 'vitest' {
   interface Assertion<T = any> {
-    toHaveExactValues(expected: any[]): void;
+    toHaveExactValues(expected: any[]): void
   }
 }

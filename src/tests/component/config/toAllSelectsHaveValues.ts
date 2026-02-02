@@ -27,8 +27,8 @@ expect.extend({
   }
 })
 
-declare module '@vitest/expect' {
+declare module 'vitest' {
   interface Assertion<T = any> {
-    toAllSelectsHaveValues(expected: any[]): Promise<void>;
+    toAllSelectsHaveValues(expected: any[]): Promise<void>
   }
 }

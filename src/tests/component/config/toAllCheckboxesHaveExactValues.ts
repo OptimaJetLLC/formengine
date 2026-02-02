@@ -26,8 +26,8 @@ expect.extend({
   }
 })
 
-declare module '@vitest/expect' {
+declare module 'vitest' {
   interface Assertion<T = any> {
-    toAllCheckboxesHaveExactValues(expected: any[]): void;
+    toAllCheckboxesHaveExactValues(expected: any[]): void
   }
 }
