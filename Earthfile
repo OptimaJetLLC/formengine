@@ -290,10 +290,10 @@ test-github-formengine-archive:
   RUN cd community/examples/file-upload-server && npm install
   RUN cd community/examples/bundle-size && npm install
   RUN cd community/src && npm install && npm run pack
-  RUN cd premium/examples/formengine && npm install && npm run build:ci
-  RUN cd premium/examples/with-formik && npm install && npm run build:ci
-  RUN cd premium/examples/with-nextjs/with-nextjs-v16 && npm install && npm run build:ci
-  RUN cd premium/examples/with-remix/with-remix-v2 && npm install && npm run build:ci
+  RUN cd premium/examples/formengine && npm install && npm run build
+  RUN cd premium/examples/with-formik && npm install && npm run build
+  RUN cd premium/examples/with-nextjs/with-nextjs-v16 && npm install && npm run build
+  RUN cd premium/examples/with-remix/with-remix-v2 && npm install && npm run build
 
 test-github-formenginesupport-archive:
   COPY .archives/formenginesupport.tgz formenginesupport.tgz
