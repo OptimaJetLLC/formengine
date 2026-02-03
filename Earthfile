@@ -25,7 +25,7 @@ npm-demo-build:
 # npm-formbuilder-build builds formbuilder
 npm-formbuilder-build:
   FROM +npm-update-release-date
-  RUN cd ./packages/apps/formbuilder && npm run build:ci
+  RUN cd ./packages/apps/formbuilder && npm run build
 
 # npm-documentation-build builds documentation
 npm-documentation-build:
@@ -299,7 +299,7 @@ test-github-formenginesupport-archive:
   COPY .archives/formenginesupport.tgz formenginesupport.tgz
   RUN tar zxvf formenginesupport.tgz
   RUN npm install
-  RUN npm run build:ci
+  RUN npm run build
   RUN npm run pack
 
 # publish-artifact-github-optimajet-formengine updates the GitHub repository optimajet/formengine from the local artifact
