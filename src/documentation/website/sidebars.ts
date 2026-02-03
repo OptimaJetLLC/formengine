@@ -16,7 +16,7 @@ const sidebars: SidebarsConfig = {
   typedocSidebar: [
     {
       type: 'ref',
-      id: 'documentation',
+      id: 'index',
       label: 'Back to documentation',
     },
     {

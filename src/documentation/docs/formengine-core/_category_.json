@@ -1,0 +1,8 @@
+{
+  "label": "FormEngine Core",
+  "description": "FormEngine Core, Open-Source, free JSON form renderer React library",
+  "className": "formengine-core-category",
+  "position": -50,
+  "collapsible": true,
+  "collapsed": false
+}

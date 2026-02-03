@@ -199,6 +199,7 @@ The project uses BiomeJS for code formatting and linting. BiomeJS is configured 
 
 - **Indentation**: 2 spaces
 - **Line width**: 140 characters
+- **Maximum line length**: Keep code and documentation lines at or under 140 characters.
 - **Quotes**: Single quotes for JavaScript, double quotes for JSX
 - **Semicolons**: Always
 - **Trailing commas**: ES5 style
@@ -229,6 +230,15 @@ npm run lint
 # Fix lint issues automatically
 npm run lint:fix
 ```
+
+#### Form JSON Hygiene
+
+- Do not include the top-level `version` field in form examples.
+- Only include `localization`, `languages`, or `defaultLanguage` when the example is about localization.
+- For multi-line `fnSource` values in JS/TS examples, prefer template literals over string concatenation and align subsequent lines with
+  leading spaces so the code appears vertically aligned in the snippet.
+- For multi-line `fnSource` values in JSON examples, use `\n` escapes with no extra leading spaces and place the string value on the next
+  line after the `fnSource` key when it improves readability.
 
 #### Before Commit
 
@@ -451,3 +461,7 @@ const logger = {
 - [React Documentation](https://react.dev/)
 - [Testing Library](https://testing-library.com/)
 - [ESLint Rules](https://eslint.org/docs/rules/)
+
+## Documentation Style Guide
+
+For documentation work under `src/documentation/docs`, follow `src/documentation/AGENTS.md`.

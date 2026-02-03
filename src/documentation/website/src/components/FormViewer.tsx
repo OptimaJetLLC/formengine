@@ -1,14 +1,14 @@
 import {useColorMode} from '@docusaurus/theme-common'
-import {FormViewer as Viewer, FormViewerProps} from '@react-form-builder/core'
+import {BuilderThemeProvider, FormViewer as Viewer, FormViewerProps} from '@react-form-builder/core'
 import {createRoot} from 'react-dom/client'
-import {CreateRootContextProvider, CustomProvider} from 'rsuite'
+import {CreateRootContextProvider} from 'rsuite'
 
 export const FormViewer = (props: FormViewerProps) => {
   const {colorMode} = useColorMode()
 
   return <CreateRootContextProvider value={createRoot}>
-    <CustomProvider theme={colorMode}>
-      <Viewer {...props} />
-    </CustomProvider>
+    <BuilderThemeProvider value={colorMode}>
+      <Viewer {...props}/>
+    </BuilderThemeProvider>
   </CreateRootContextProvider>
 }

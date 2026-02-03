@@ -1,0 +1,8 @@
+{
+  "label": "Custom components",
+  "description": "Custom components are the heart of FormEngine Core's extensibility",
+  "position": 400,
+  "collapsible": true,
+  "collapsed": true,
+  "className": "formengine-core-advanced"
+}

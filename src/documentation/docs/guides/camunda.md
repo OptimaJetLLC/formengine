@@ -423,8 +423,8 @@ This is what the second form looks like:
 
 ## Connecting FormEngine to Camunda
 
-When connecting FormEngine to Camunda, we decided to use a [bundle](/installation#cdn) designed for use on any web page. This method does
-not require a separate React connection.
+When connecting FormEngine to Camunda, we decided to use a [bundle](/formengine-designer/getting-started/installation#cdn) designed for use
+on any web page. This method does not require a separate React connection.
 
 During the connection process, we discovered that Camunda uses a strict Content Security Policy, which prohibits some inline CSS used in the
 bundle. Therefore, we will connect the component styles separately.

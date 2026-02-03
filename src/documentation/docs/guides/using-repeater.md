@@ -830,9 +830,9 @@ Let's look at how you can add and remove items in the Repeater.
 
 ### Adding items to the Repeater
 
-If we look at the "Book a room" button, then the [Action](/actions) `addRepeaterElement` is linked to this button. This action has a fairly
-general code that can be used in other forms too. The action parameters `name` and `max` define the name of the Repeater property in the
-form data and the maximum number of elements that can be added to the repeater, respectively.
+If we look at the "Book a room" button, then the [Action](/formengine-designer/features/actions) `addRepeaterElement` is linked to this
+button. This action has a fairly general code that can be used in other forms too. The action parameters `name` and `max` define the name of
+the Repeater property in the form data and the maximum number of elements that can be added to the repeater, respectively.
 
 The action code is pretty straightforward, it gets the current repeater data from the form data and then adds a new element to the data
 array if the number of elements is lower than the maximum.
@@ -908,7 +908,7 @@ async function Action(e, args) {
 
 ### Computed properties
 
-In [computed properties](/computed-properties) you have the same data available to you as in actions.
+In [computed properties](/formengine-designer/features/computed-properties) you have the same data available to you as in actions.
 
 For example, you can look at the `childAge` component (the field for selecting the child's age), which has the tooltip text set as a
 calculated field.
@@ -933,7 +933,7 @@ The tooltip text is glued together from these components, which are at different
 
 ### Validation
 
-[Validating](/validation) the value of a component that is inside the Repeater is not different from normal validation. The validation
+[Validating](/formengine-designer/features/validation) the value of a component that is inside the Repeater is not different from normal validation. The validation
 function also operates on the value of the component. Validation messages can also be localized.
 
 The data of the components inside the Repeater will be organized into an array. Component validation errors will also be in the
@@ -985,8 +985,8 @@ corresponding array elements. The following are examples.
 
 ### Localization
 
-In [localization](/localization), only the data of the current element inside the Repeater is available to you. This is how the localization
-of the `Content` property for the `rsStaticContent1` component looks like:
+In [localization](/formengine-designer/features/designer-localization), only the data of the current element inside the Repeater is
+available to you. This is how the localization of the `Content` property for the `rsStaticContent1` component looks like:
 
 ```text title='EN'
 rsStaticContent1_content =Room {$roomType}

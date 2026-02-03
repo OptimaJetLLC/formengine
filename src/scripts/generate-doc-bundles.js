@@ -9,11 +9,14 @@ const __rootDir = join(__dirname, '..')
 
 const docDir = join(__rootDir, 'documentation', 'website')
 const packagesDir = join(__rootDir, 'packages')
+const viewsDir = join(packagesDir, 'views')
 
 const packages = {
   '@react-form-builder/core': join(packagesDir, 'core'),
-  '@react-form-builder/components-rsuite': join(packagesDir, 'views', 'rsuite'),
-  '@react-form-builder/components-rsuite-table': join(packagesDir, 'views', 'rsuite-table'),
+  '@react-form-builder/components-material-ui': join(viewsDir, 'material-ui'),
+  '@react-form-builder/components-rsuite': join(viewsDir, 'rsuite'),
+  '@react-form-builder/components-rsuite-table': join(viewsDir, 'rsuite-table'),
+  '@react-form-builder/components-uploader': join(viewsDir, 'uploader'),
 }
 
 const createArchive = folder => {

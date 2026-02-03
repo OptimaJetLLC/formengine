@@ -11,7 +11,7 @@ slug: /adding-wasm-component
 
 You can find the ready-to-connect component in
 the [@react-form-builder/components-fast-qr](https://www.npmjs.com/package/@react-form-builder/components-fast-qr) NPM package.
-You can find information on connecting the component in [this section](/components-library/static-components/qr-code).
+You can find information on connecting the component in [this section](/formengine-designer/components/qr-code).
 
 :::
 

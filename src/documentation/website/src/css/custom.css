@@ -15,6 +15,8 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --fe-mit-badge-bg: #10b981;
+  --fe-mit-badge-text: #0f172a;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -27,6 +29,8 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --fe-mit-badge-bg: #34d399;
+  --fe-mit-badge-text: #0b1f1a;
 }
 
 div.markdown img {
@@ -197,4 +201,84 @@ img.medium-zoom-image--opened {
 .json-code-block-container {
   max-height: 400px;
   overflow: scroll;
+}
+
+:root {
+  --color-essential: #10b981;
+  --color-additional: #f59e0b;
+  --color-advanced: #3f9af4;
+}
+
+.formengine-core-essential,
+.formengine-core-additional,
+.formengine-core-advanced {
+  border-left-width: 2px;
+  border-left-style: solid;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-essential: #34d399;
+    --color-additional: #fbbf24;
+    --color-advanced: #717ffb;
+  }
+}
+
+.formengine-core-essential {
+  border-left-color: var(--color-essential);
+}
+
+.formengine-core-additional {
+  border-left-color: var(--color-additional);
+}
+
+.formengine-core-advanced {
+  border-left-color: var(--color-advanced);
+}
+
+.menu__list-item.formengine-core-category.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link--sublist {
+  display: inline-flex;
+  align-items: center;
+}
+
+.menu__list-item.formengine-core-category.theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible
+  > .menu__link--sublist::after {
+  content: "MIT";
+  margin-left: 6px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: var(--fe-mit-badge-bg);
+  color: var(--fe-mit-badge-text);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: none;
+}
+
+.complexity-item {
+  position: relative;
+  top: -0.13em;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  box-shadow:
+    inset 0 -0.1em 0.2em rgba(0, 0, 0, 0.2),
+    0 0.1em 0.2em rgba(0, 0, 0, 0.2);
+}
+
+span.essential-item {
+  background-color: var(--color-essential);
+}
+
+span.additional-item {
+  background-color: var(--color-additional);
+}
+
+span.advanced-item {
+  background-color: var(--color-advanced);
 }

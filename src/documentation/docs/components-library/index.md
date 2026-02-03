@@ -138,10 +138,10 @@ The components are divided into the following categories:
 
 - **Complete documentation**: [React Suite components](/components-library/rsuite-components).
 - **Fields components**: Calendar, Checkbox, DatePicker, TimePicker, TagPicker, AutoComplete, Dropdown, Input, Number format, Pattern
-  format, Radio group, Search, Text area, Uploader, Rich text editor.
+  format, Radio group, Search, Text area, Uploader.
 - **Static components**: Button, Divider, Error message, Header, Image, Label, Menu, Message, Placeholder components, Progress components,
-  Static content, Tooltip, QR code.
-- **Structure components**: Breadcrumb, Card, Container, Modal, Modal layout, Tab, Table.
+  Static content, Tooltip.
+- **Structure components**: Breadcrumb, Card, Container, Modal, Modal layout, Tab.
 
 ### Material UI Components
 
@@ -191,7 +191,7 @@ For detailed documentation on individual components, refer to:
 ## Custom Components
 
 Both libraries support custom component integration. You can create your own components or integrate third-party components into the form
-builder. See the [custom components documentation](/custom-components) for more information.
+builder. See the [custom components documentation](/formengine-designer/features/custom-components) for more information.
 
 ## Support and Resources
 

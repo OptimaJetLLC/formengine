@@ -147,7 +147,7 @@ Here, initial form data is defined within `initialData`. The `onFormDataChange` 
 
 The comparison results are saved within a user defined key-value observable storage called `state`. Learn more about the state storage by
 using [the API-reference](/api-reference/@react-form-builder/core/interfaces/IFormData#state)
-and [the article in FAQ](/storing-user-defined-data).
+and [the article in FAQ](/formengine-designer/faq/storing-user-defined-data).
 
 ### Previewing form
 

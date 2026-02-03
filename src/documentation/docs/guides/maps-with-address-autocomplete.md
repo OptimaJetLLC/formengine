@@ -9,7 +9,7 @@ slug: /enabling-google-maps-autocomplete
 
 ## Introduction
 
-This guide explains how to set up [Google Maps](/components-library/fields-components/google-map) with autocomplete functionality for
+This guide explains how to set up [Google Maps](/formengine-designer/components/google-map) with autocomplete functionality for
 address fields.
 
 ### Set up the Google Maps component with Autocomplete
@@ -31,7 +31,7 @@ _Address_, _City_, _Country_, _ZIP_, and _State_.
 
 - Select the map component in Designer.
 - Go to the _Actions_ tab.
-- Create a new [code action](/actions) for the `onPlaceSelect` event.
+- Create a new [code action](/formengine-designer/features/actions) for the `onPlaceSelect` event.
 - Choose the newly created action to handle address population.
 
 ![MapOnPlaceSelectAction](/assets/guides/maps-with-address-autocomplete/map-on-place-select-action.png)
