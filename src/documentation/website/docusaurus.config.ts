@@ -246,6 +246,7 @@ const config: Config = {
           includePages: false,
           enableLlmsFullTxt: true,
           includeVersionedDocs: false,
+          enableMarkdownFiles: false,
         }
       }
     ],
