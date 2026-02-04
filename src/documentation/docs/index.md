@@ -104,12 +104,12 @@ flowchart TD
     
     Core --> Rendered["🚀 Rendered Forms<br/>in Your Applications"]
     
-    style AI fill:#e1f5fe
-    style Online fill:#e8f5e8
-    style Designer fill:#fff3e0
-    style JSON fill:#f3e5f5
-    style Core fill:#ffebee
-    style Rendered fill:#e0f2f1
+    class AI mermaid-ai-form-builder;
+    class Designer mermaid-form-engine-designer;
+    class Online mermaid-online-form-builder;
+    class JSON mermaid-form-engine-core-json;
+    class Core mermaid-form-engine-core;
+    class Rendered mermaid-rendered-forms;
 ```
 
 **Workflow Explanation:**
