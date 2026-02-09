@@ -1,12 +1,12 @@
 import {useColorMode} from '@docusaurus/theme-common'
 import {viewWithCss} from '@react-form-builder/components-rsuite'
 import {tableModels} from '@react-form-builder/components-rsuite-table'
-import {buildForm, FormViewer, FormViewerProps} from '@react-form-builder/core'
+import {buildForm, FormViewerProps} from '@react-form-builder/core'
 import CodeBlock from '@theme/CodeBlock'
 import TabItem from '@theme/TabItem'
 import Tabs from '@theme/Tabs'
 import {useEffect, useMemo, useState} from 'react'
-import {CustomProvider} from 'rsuite'
+import {FormViewer} from './FormViewer'
 
 const emptyForm = buildForm().json()
 
@@ -42,14 +42,10 @@ export const TableExample = (props: Partial<FormViewerProps>) => {
     return result
   }, [])
 
-  const {colorMode} = useColorMode()
-
   return <div>
     <Tabs>
       <TabItem value="form" label="Form" default>
-        <CustomProvider theme={colorMode}>
-          <FormViewer view={view} getForm={getForm} {...props} />
-        </CustomProvider>
+        <FormViewer view={view} getForm={getForm} {...props} />
       </TabItem>
       <TabItem value="json" label="JSON">
         <JsonBlock formName={props.formName}/>
