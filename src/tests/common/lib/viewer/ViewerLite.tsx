@@ -44,12 +44,15 @@ const localizeFn: ComponentLocalizer = (componentStore, language) => {
     : {}
 }
 
-export const ViewerLite = (({withLocalizer}: { withLocalizer?: boolean }) =>
+export const ViewerLite = ((
+  {withLocalizer, getForm, formName: formNameProps}: {
+    withLocalizer?: boolean, getForm?: (name?: string) => string, formName?: string
+  }) =>
   (
     <FormViewerLite
       view={view}
-      getForm={getFormFn}
-      formName={formName}
+      getForm={getForm ?? getFormFn}
+      formName={formNameProps ?? formName}
       localize={withLocalizer ? localizeFn : undefined}
       initialData={{}}
       onFormDataChange={onFormDataChange}
