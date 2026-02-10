@@ -160,8 +160,8 @@ Additional documentation includes:
 - **[Styling Components and Forms](/formengine-core/styling-components-and-forms)** – Customize appearance with CSS, JSON, and responsive
   design
 - **[Disabled and Read-Only Components](/formengine-core/disabled-and-read-only)** – Control component interaction states
-- **[Components Library](/components-library)** – Explore available components (under construction)
-- **[Layout System](/formengine-core/adaptive-layout)** – Understand form layout mechanisms (under construction)
+- **[Components Library](/components-library)** – Explore available components
+- **[Layout System](/formengine-core/adaptive-layout)** – Understand form layout mechanisms
 
 ### <span className="complexity-item advanced-item"></span> Advanced {#advanced}
 
@@ -173,12 +173,12 @@ control for complex use cases.
 Advanced documentation includes:
 
 - **[Form JSON](/formengine-core/forms-json)** – Deep dive into the shared structure of FormEngine form JSON
-- **[Computed Properties](/formengine-core/computed-properties)** – Create dynamic form properties (under construction)
-- **[User Defined Properties](/formengine-core/user-defined-properties)** – Extend forms with custom properties (under construction)
-- **[HTML Attributes](/formengine-core/html-attributes)** – Work with HTML attributes (under construction)
-- **[Embedded Forms](/formengine-core/embedded-forms)** – Nest forms within forms (under construction)
-- **[Modal](/formengine-core/modal)** – Implement modal dialogs (under construction)
-- **[JSON Schema](/formengine-core/json-schema)** – Understand the JSON schema for forms (under construction)
+- **[Computed Properties](/formengine-core/computed-properties)** – Create dynamic form properties
+- **[User Defined Properties](/formengine-core/user-defined-properties)** – Extend forms with custom properties
+- **[HTML Attributes](/formengine-core/html-attributes)** – Work with HTML attributes
+- **[Embedded Forms](/formengine-core/embedded-forms)** – Nest forms within forms
+- **[Modal](/formengine-core/modal)** – Implement modal dialogs
+- **[JSON Schema](/formengine-core/json-schema)** – Understand the JSON schema for forms
 - **[Custom Components](/formengine-core/custom-components)** – Extend FormEngine Core with your own components
 
 ## Color Coding in FormEngine Core Documentation
