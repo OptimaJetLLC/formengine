@@ -1,6 +1,6 @@
 import {cx} from '@emotion/css'
 import styled from '@emotion/styled'
-import {cfComponentIsPreset, namedObserver, startCase, useComponentData} from '@react-form-builder/core'
+import {cfComponentIsPreset, getTemplateName, isTemplateType, namedObserver, startCase, useComponentData} from '@react-form-builder/core'
 import type {FunctionComponent, MouseEventHandler, ReactNode, RefCallback, SVGProps} from 'react'
 import {useCallback, useMemo} from 'react'
 import {icons} from '../../../icons'
@@ -95,9 +95,12 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
   const getLibraryDescription = useComponentLibraryDescription()
 
   const componentName = useMemo(() => {
+    if (isTemplateType(data.store.type)) {
+      return getTemplateName(data.store.type)
+    }
     return getLibraryDescription(libraryDescription => libraryDescription?.components?.[type]?.name)
       || name || type
-  }, [getLibraryDescription, name, type])
+  }, [data.store.type, getLibraryDescription, name, type])
 
   const canAddComponent = useCanAddComponent()
   const disabled = useMemo(() => !canAddComponent(data), [canAddComponent, data])
