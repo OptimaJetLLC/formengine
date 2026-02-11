@@ -23,7 +23,7 @@ const loadRsuiteCss = async (biDi: BiDi) => {
 
 const loadFormEngineCss = async () => {
   const href = (await styles['common']()).default
-  await loadResource('form-engine-css', href, 'stylesheet')
+  await loadResource('designer-form-engine-css', href, 'stylesheet')
 }
 
 interface LocalizationProps {
