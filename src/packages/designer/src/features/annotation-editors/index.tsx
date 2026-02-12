@@ -27,6 +27,7 @@ import {RenderWhenEditor} from './RenderWhenEditor'
 import {RequiredPropertyInput} from './RequiredPropertyInput'
 import {SizeInput} from './SizeInput'
 import {StringInput} from './StringInput'
+import {TemplateTypePicker} from './TemplateTypePicker'
 import {TimeInput} from './TimeInput'
 import {TooltipPropertiesEditor} from './TooltipPropertiesEditor'
 import {ComponentValidationSettingsEditor} from './ValidateEditor'
@@ -64,4 +65,5 @@ export const EditorMap: Record<EditorType, ComponentType<AnnotationEditorProps>>
   formComponent: FormComponentPicker,
   componentType: ComponentTypePicker,
   formNamePicker: FormNamePicker,
+  templateTypePicker: TemplateTypePicker,
 }
