@@ -446,7 +446,7 @@ If supporting multiple UI libraries, ensure consistency in prop names and behavi
 - **Check:** Are you using the `open` prop to control visibility?
 - **Check:** Are you overriding the `open` prop with local state? (Don't do this - use the prop directly)
 
-## Conclusion
+## Summary
 
 Custom modal components in FormEngine Core are powerful tools for creating complex, nested form interfaces. By implementing the
 `CustomModalProps` interface and using the `.componentRole('modal')` method, you can create modal dialogs that:

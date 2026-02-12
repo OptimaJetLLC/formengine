@@ -184,7 +184,7 @@ customView.define(muiTooltip.model)
 - Ensure there's enough space for tooltip display
 - Consider using `autoPlacement` if supported by library
 
-## Conclusion
+## Summary
 
 Custom tooltip components in FormEngine Core provide powerful, flexible ways to enhance user experience across different UI libraries. By
 following the patterns outlined in this guide, you can:

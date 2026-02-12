@@ -712,7 +712,7 @@ const CustomField = () => {
 - Include `role="alert"` or `aria-live` attributes
 - Ensure error messages have proper `id` attributes
 
-## Conclusion
+## Summary
 
 Custom error components in FormEngine Core provide powerful, flexible ways to display validation errors that match your application's design
 system. By following the patterns outlined in this guide, you can:

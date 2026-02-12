@@ -953,15 +953,14 @@ If you encounter issues:
 4. **Consult the community** on GitHub discussions.
 5. **File an issue** with reproducible example.
 
-## Next Steps
 
-Now that you understand form rendering basics:
+---
 
-1. Explore [Handling Form Data](handling-form-data) for data management.
-2. Learn about [Validation](validation) for data integrity.
-3. Discover [Components Library](/components-library) for UI options.
-4. Study [Actions and Events](actions-and-events) for interactivity.
-5. Check [API Reference](../api-reference) for advanced features.
+For more information:
 
-FormEngine Core's rendering system provides the foundation for building complex, interactive forms with minimal code. By mastering these
-concepts, you can create forms that are both powerful and maintainable.
+- [Form JSON structure](/formengine-core/forms-json)
+- [Handling form data](/formengine-core/handling-form-data)
+- [Validation](/formengine-core/validation)
+- [Actions and events](/formengine-core/actions-and-events)
+- [Conditional rendering](/formengine-core/conditional-rendering)
+- [Styling components and forms](/formengine-core/styling-components-and-forms)

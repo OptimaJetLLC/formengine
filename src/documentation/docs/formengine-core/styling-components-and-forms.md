@@ -1322,7 +1322,7 @@ function App() {
 - Remember that containers don't have wrapper elements
 - Check if styles are being applied to the correct element (wrapper vs component)
 
-## Conclusion
+## Summary
 
 FormEngine Core's styling system provides powerful, flexible options for customizing your forms. By understanding the difference between
 container and component rendering, and leveraging the `css`, `wrapperCss`, and responsive styling features, you can create beautiful,
@@ -1330,3 +1330,13 @@ responsive forms that work seamlessly across all devices.
 
 Start with basic styling and gradually incorporate more advanced techniques as needed. Remember to test your forms on different screen sizes
 and keep your styling approach consistent across your application.
+
+---
+
+For more information:
+
+- [Form JSON structure](/formengine-core/forms-json)
+- [Conditional rendering](/formengine-core/conditional-rendering)
+- [Adaptive layout](/formengine-core/adaptive-layout)
+- [HTML attributes](/formengine-core/html-attributes)
+- [Component types](/formengine-core/custom-components)
