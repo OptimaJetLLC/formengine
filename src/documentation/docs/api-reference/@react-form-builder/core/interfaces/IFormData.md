@@ -225,3 +225,19 @@ the object to read and modify root form data.
 `Record`\<`string`, `unknown`\>
 
 A user-defined key-value observable storage. Utilize it to store and share any custom data.
+
+#### Set Signature
+
+> **set** **state**(`state`): `void`
+
+Sets state object.
+
+##### Parameters
+
+###### state
+
+`Record`\<`string`, `unknown`\>
+
+##### Returns
+
+`void`

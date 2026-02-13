@@ -390,7 +390,7 @@ the first type of component with the specified role.
 
 ### getModel()
 
-> **getModel**(`type`): [`Model`](Model.md)\<`any`\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\> \| [`Model`](Model.md)\<[`TemplateProps`](../type-aliases/TemplateProps.md)\>
+> **getModel**(`type`): [`Model`](Model.md)\<`any`\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\>
 
 Returns model for the specified type.
 
@@ -404,7 +404,7 @@ the component type.
 
 #### Returns
 
-[`Model`](Model.md)\<`any`\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\> \| [`Model`](Model.md)\<[`TemplateProps`](../type-aliases/TemplateProps.md)\>
+[`Model`](Model.md)\<`any`\> \| [`Model`](Model.md)\<[`InternalErrorProps`](../interfaces/InternalErrorProps.md)\>
 
 the model for the specified type.
 

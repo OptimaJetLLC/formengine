@@ -908,18 +908,6 @@
 
 > **components.MuiDialog.props.scroll.name**: `string` = `"Scroll"`
 
-#### components.MuiDialog.props.sx
-
-> **components.MuiDialog.props.sx**: `object`
-
-#### components.MuiDialog.props.sx.description
-
-> **components.MuiDialog.props.sx.description**: `string` = `"The system prop that allows defining system overrides as well as additional CSS styles"`
-
-#### components.MuiDialog.props.sx.name
-
-> **components.MuiDialog.props.sx.name**: `string` = `"Sx"`
-
 #### components.MuiDialogActions
 
 > **components.MuiDialogActions**: `object`
@@ -959,18 +947,6 @@
 #### components.MuiDialogActions.props.disableSpacing.name
 
 > **components.MuiDialogActions.props.disableSpacing.name**: `string` = `"Disable spacing"`
-
-#### components.MuiDialogActions.props.sx
-
-> **components.MuiDialogActions.props.sx**: `object`
-
-#### components.MuiDialogActions.props.sx.description
-
-> **components.MuiDialogActions.props.sx.description**: `string` = `"The system prop that allows defining system overrides as well as additional CSS styles"`
-
-#### components.MuiDialogActions.props.sx.name
-
-> **components.MuiDialogActions.props.sx.name**: `string` = `"Sx"`
 
 #### components.MuiDialogContent
 
@@ -1012,18 +988,6 @@
 
 > **components.MuiDialogContent.props.dividers.name**: `string` = `"Dividers"`
 
-#### components.MuiDialogContent.props.sx
-
-> **components.MuiDialogContent.props.sx**: `object`
-
-#### components.MuiDialogContent.props.sx.description
-
-> **components.MuiDialogContent.props.sx.description**: `string` = `"The system prop that allows defining system overrides as well as additional CSS styles"`
-
-#### components.MuiDialogContent.props.sx.name
-
-> **components.MuiDialogContent.props.sx.name**: `string` = `"Sx"`
-
 #### components.MuiDialogContentText
 
 > **components.MuiDialogContentText**: `object`
@@ -1051,18 +1015,6 @@
 #### components.MuiDialogContentText.props.children.name
 
 > **components.MuiDialogContentText.props.children.name**: `string` = `"Content"`
-
-#### components.MuiDialogContentText.props.sx
-
-> **components.MuiDialogContentText.props.sx**: `object`
-
-#### components.MuiDialogContentText.props.sx.description
-
-> **components.MuiDialogContentText.props.sx.description**: `string` = `"The system prop that allows defining system overrides as well as additional CSS styles"`
-
-#### components.MuiDialogContentText.props.sx.name
-
-> **components.MuiDialogContentText.props.sx.name**: `string` = `"Sx"`
 
 #### components.MuiDialogLayout
 
@@ -1103,18 +1055,6 @@
 #### components.MuiDialogTitle.props.children.name
 
 > **components.MuiDialogTitle.props.children.name**: `string` = `"Content"`
-
-#### components.MuiDialogTitle.props.sx
-
-> **components.MuiDialogTitle.props.sx**: `object`
-
-#### components.MuiDialogTitle.props.sx.description
-
-> **components.MuiDialogTitle.props.sx.description**: `string` = `"The system prop that allows defining system overrides as well as additional CSS styles"`
-
-#### components.MuiDialogTitle.props.sx.name
-
-> **components.MuiDialogTitle.props.sx.name**: `string` = `"Sx"`
 
 #### components.MuiErrorWrapper
 

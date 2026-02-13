@@ -108,6 +108,14 @@ the form viewer settings.
 
 the event type.
 
+***
+
+### userContext?
+
+> `readonly` `optional` **userContext**: `unknown`
+
+The user-defined context passed from the form viewer props.
+
 ## Accessors
 
 ### data

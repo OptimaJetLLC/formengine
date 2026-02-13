@@ -38,7 +38,7 @@ Custom actions for the form viewer.
 
 > `optional` **context**: `any`
 
-The arbitrary user context.
+The arbitrary internal context.
 
 ***
 
@@ -71,6 +71,14 @@ The set of functions that validate the form data.
 > **initialData**: `Record`\<`string`, `unknown`\> = `{}`
 
 The initial form data.
+
+***
+
+### initialState
+
+> **initialState**: `Record`\<`string`, `unknown`\> = `{}`
+
+The initial user-defined state.
 
 ***
 
@@ -111,6 +119,15 @@ If true, the form is read-only.
 > `optional` **showAllValidationErrors**: `boolean`
 
 If true, all validation errors will be displayed.
+
+***
+
+### userContext?
+
+> `optional` **userContext**: `unknown`
+
+The arbitrary user context passed via props.
+This value is not observable and is intended to be non-reactive.
 
 ***
 

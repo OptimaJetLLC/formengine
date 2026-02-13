@@ -1,6 +1,6 @@
 # Type Alias: MuiTextFieldProps
 
-> **MuiTextFieldProps** = `ComponentProps`\<*typeof* `TextField`\> & `object`
+> **MuiTextFieldProps** = `TextFieldProps` & `MuiControlProps` & `object`
 
 Props for the MuiTextField component.
 

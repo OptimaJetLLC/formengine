@@ -808,6 +808,254 @@
 
 > **components.MuiContainer.props.maxWidth.name**: `string` = `"最大宽度"`
 
+#### components.MuiDialog
+
+> **components.MuiDialog**: `object`
+
+#### components.MuiDialog.description
+
+> **components.MuiDialog.description**: `string` = `"在叠加中显示内容的模态对话框组件"`
+
+#### components.MuiDialog.name
+
+> **components.MuiDialog.name**: `string` = `"对话"`
+
+#### components.MuiDialog.props
+
+> **components.MuiDialog.props**: `object`
+
+#### components.MuiDialog.props.disableEscapeKeyDown
+
+> **components.MuiDialog.props.disableEscapeKeyDown**: `object`
+
+#### components.MuiDialog.props.disableEscapeKeyDown.description
+
+> **components.MuiDialog.props.disableEscapeKeyDown.description**: `string` = `"如果为true，按escape键不会关闭对话框"`
+
+#### components.MuiDialog.props.disableEscapeKeyDown.name
+
+> **components.MuiDialog.props.disableEscapeKeyDown.name**: `string` = `"禁用转义键"`
+
+#### components.MuiDialog.props.fullScreen
+
+> **components.MuiDialog.props.fullScreen**: `object`
+
+#### components.MuiDialog.props.fullScreen.description
+
+> **components.MuiDialog.props.fullScreen.description**: `string` = `"如果为true，对话框将全屏"`
+
+#### components.MuiDialog.props.fullScreen.name
+
+> **components.MuiDialog.props.fullScreen.name**: `string` = `"全屏"`
+
+#### components.MuiDialog.props.fullWidth
+
+> **components.MuiDialog.props.fullWidth**: `object`
+
+#### components.MuiDialog.props.fullWidth.description
+
+> **components.MuiDialog.props.fullWidth.description**: `string` = `"如果为true，则对话框将延伸到maxWidth"`
+
+#### components.MuiDialog.props.fullWidth.name
+
+> **components.MuiDialog.props.fullWidth.name**: `string` = `"全幅"`
+
+#### components.MuiDialog.props.maxWidth
+
+> **components.MuiDialog.props.maxWidth**: `object`
+
+#### components.MuiDialog.props.maxWidth.description
+
+> **components.MuiDialog.props.maxWidth.description**: `string` = `"对话框的最大宽度（xs，sm，md，lg，xl）"`
+
+#### components.MuiDialog.props.maxWidth.name
+
+> **components.MuiDialog.props.maxWidth.name**: `string` = `"最大宽度"`
+
+#### components.MuiDialog.props.onClose
+
+> **components.MuiDialog.props.onClose**: `object`
+
+#### components.MuiDialog.props.onClose.description
+
+> **components.MuiDialog.props.onClose.description**: `string` = `"对话框关闭时触发的回调"`
+
+#### components.MuiDialog.props.onClose.name
+
+> **components.MuiDialog.props.onClose.name**: `string` = `"n.锁,锁"`
+
+#### components.MuiDialog.props.open
+
+> **components.MuiDialog.props.open**: `object`
+
+#### components.MuiDialog.props.open.description
+
+> **components.MuiDialog.props.open.description**: `string` = `"如果为true，则对话框处于打开状态"`
+
+#### components.MuiDialog.props.open.name
+
+> **components.MuiDialog.props.open.name**: `string` = `"打开"`
+
+#### components.MuiDialog.props.scroll
+
+> **components.MuiDialog.props.scroll**: `object`
+
+#### components.MuiDialog.props.scroll.description
+
+> **components.MuiDialog.props.scroll.description**: `string` = `"确定滚动对话框的容器（纸张或正文）"`
+
+#### components.MuiDialog.props.scroll.name
+
+> **components.MuiDialog.props.scroll.name**: `string` = `"滚动"`
+
+#### components.MuiDialogActions
+
+> **components.MuiDialogActions**: `object`
+
+#### components.MuiDialogActions.description
+
+> **components.MuiDialogActions.description**: `string` = `"对话框操作按钮的容器"`
+
+#### components.MuiDialogActions.name
+
+> **components.MuiDialogActions.name**: `string` = `"对话框操作"`
+
+#### components.MuiDialogActions.props
+
+> **components.MuiDialogActions.props**: `object`
+
+#### components.MuiDialogActions.props.children
+
+> **components.MuiDialogActions.props.children**: `object`
+
+#### components.MuiDialogActions.props.children.description
+
+> **components.MuiDialogActions.props.children.description**: `string` = `"组件的内容"`
+
+#### components.MuiDialogActions.props.children.name
+
+> **components.MuiDialogActions.props.children.name**: `string` = `"儿童"`
+
+#### components.MuiDialogActions.props.disableSpacing
+
+> **components.MuiDialogActions.props.disableSpacing**: `object`
+
+#### components.MuiDialogActions.props.disableSpacing.description
+
+> **components.MuiDialogActions.props.disableSpacing.description**: `string` = `"如果为true，则操作没有额外的余量"`
+
+#### components.MuiDialogActions.props.disableSpacing.name
+
+> **components.MuiDialogActions.props.disableSpacing.name**: `string` = `"禁用间距"`
+
+#### components.MuiDialogContent
+
+> **components.MuiDialogContent**: `object`
+
+#### components.MuiDialogContent.description
+
+> **components.MuiDialogContent.description**: `string` = `"对话框的主要内容区域"`
+
+#### components.MuiDialogContent.name
+
+> **components.MuiDialogContent.name**: `string` = `"对话内容"`
+
+#### components.MuiDialogContent.props
+
+> **components.MuiDialogContent.props**: `object`
+
+#### components.MuiDialogContent.props.children
+
+> **components.MuiDialogContent.props.children**: `object`
+
+#### components.MuiDialogContent.props.children.description
+
+> **components.MuiDialogContent.props.children.description**: `string` = `"组件的内容"`
+
+#### components.MuiDialogContent.props.children.name
+
+> **components.MuiDialogContent.props.children.name**: `string` = `"儿童"`
+
+#### components.MuiDialogContent.props.dividers
+
+> **components.MuiDialogContent.props.dividers**: `object`
+
+#### components.MuiDialogContent.props.dividers.description
+
+> **components.MuiDialogContent.props.dividers.description**: `string` = `"如果为true，则将边框添加到对话框内容的顶部和底部"`
+
+#### components.MuiDialogContent.props.dividers.name
+
+> **components.MuiDialogContent.props.dividers.name**: `string` = `"分频器"`
+
+#### components.MuiDialogContentText
+
+> **components.MuiDialogContentText**: `object`
+
+#### components.MuiDialogContentText.description
+
+> **components.MuiDialogContentText.description**: `string` = `"对话框中的文本内容"`
+
+#### components.MuiDialogContentText.name
+
+> **components.MuiDialogContentText.name**: `string` = `"对话框内容文本"`
+
+#### components.MuiDialogContentText.props
+
+> **components.MuiDialogContentText.props**: `object`
+
+#### components.MuiDialogContentText.props.children
+
+> **components.MuiDialogContentText.props.children**: `object`
+
+#### components.MuiDialogContentText.props.children.description
+
+> **components.MuiDialogContentText.props.children.description**: `string` = `"文本内容"`
+
+#### components.MuiDialogContentText.props.children.name
+
+> **components.MuiDialogContentText.props.children.name**: `string` = `"内容"`
+
+#### components.MuiDialogLayout
+
+> **components.MuiDialogLayout**: `object`
+
+#### components.MuiDialogLayout.description
+
+> **components.MuiDialogLayout.description**: `string` = `"带有标题、内容和操作按钮的预设对话框布局"`
+
+#### components.MuiDialogLayout.name
+
+> **components.MuiDialogLayout.name**: `string` = `"对话框布局"`
+
+#### components.MuiDialogTitle
+
+> **components.MuiDialogTitle**: `object`
+
+#### components.MuiDialogTitle.description
+
+> **components.MuiDialogTitle.description**: `string` = `"对话框的标题"`
+
+#### components.MuiDialogTitle.name
+
+> **components.MuiDialogTitle.name**: `string` = `"对话框标题"`
+
+#### components.MuiDialogTitle.props
+
+> **components.MuiDialogTitle.props**: `object`
+
+#### components.MuiDialogTitle.props.children
+
+> **components.MuiDialogTitle.props.children**: `object`
+
+#### components.MuiDialogTitle.props.children.description
+
+> **components.MuiDialogTitle.props.children.description**: `string` = `"标题文本"`
+
+#### components.MuiDialogTitle.props.children.name
+
+> **components.MuiDialogTitle.props.children.name**: `string` = `"内容"`
+
 #### components.MuiErrorWrapper
 
 > **components.MuiErrorWrapper**: `object`

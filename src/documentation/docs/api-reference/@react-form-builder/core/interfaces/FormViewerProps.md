@@ -24,7 +24,7 @@ The React component that wraps every component in a form. **Internal use only.**
 
 > `optional` **context**: `any`
 
-The arbitrary user context.
+The arbitrary context used internally by the form viewer.
 
 ***
 
@@ -114,6 +114,15 @@ The initial data of the form.
 
 ***
 
+### initialState?
+
+> `optional` **initialState**: `Record`\<`string`, `unknown`\>
+
+The initial user-defined state for the form.
+This object is set into [IFormData.state](IFormData.md#state) when the form is initialized, this property is reactive.
+
+***
+
 ### language?
 
 > `optional` **language**: `` `${string}-${string}` ``
@@ -171,6 +180,15 @@ If true, the form is read-only.
 > `optional` **showAllValidationErrors**: `boolean`
 
 If true, all validation errors will be displayed.
+
+***
+
+### userContext?
+
+> `optional` **userContext**: `unknown`
+
+The arbitrary context object passed to the form viewer.
+It is forwarded to custom actions as the third argument of the handler.
 
 ***
 

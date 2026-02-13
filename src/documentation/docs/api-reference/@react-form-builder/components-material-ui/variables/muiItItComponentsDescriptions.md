@@ -808,6 +808,254 @@
 
 > **components.MuiContainer.props.maxWidth.name**: `string` = `"Larghezza massima"`
 
+#### components.MuiDialog
+
+> **components.MuiDialog**: `object`
+
+#### components.MuiDialog.description
+
+> **components.MuiDialog.description**: `string` = `"Un componente di dialogo modale che visualizza il contenuto in una sovrapposizione"`
+
+#### components.MuiDialog.name
+
+> **components.MuiDialog.name**: `string` = `"Dialogo"`
+
+#### components.MuiDialog.props
+
+> **components.MuiDialog.props**: `object`
+
+#### components.MuiDialog.props.disableEscapeKeyDown
+
+> **components.MuiDialog.props.disableEscapeKeyDown**: `object`
+
+#### components.MuiDialog.props.disableEscapeKeyDown.description
+
+> **components.MuiDialog.props.disableEscapeKeyDown.description**: `string` = `"Se true, premere il tasto esc non chiuderà la finestra di dialogo"`
+
+#### components.MuiDialog.props.disableEscapeKeyDown.name
+
+> **components.MuiDialog.props.disableEscapeKeyDown.name**: `string` = `"Disabilita escape key giù"`
+
+#### components.MuiDialog.props.fullScreen
+
+> **components.MuiDialog.props.fullScreen**: `object`
+
+#### components.MuiDialog.props.fullScreen.description
+
+> **components.MuiDialog.props.fullScreen.description**: `string` = `"Se vero, la finestra di dialogo sarà a schermo intero"`
+
+#### components.MuiDialog.props.fullScreen.name
+
+> **components.MuiDialog.props.fullScreen.name**: `string` = `"Schermo intero"`
+
+#### components.MuiDialog.props.fullWidth
+
+> **components.MuiDialog.props.fullWidth**: `object`
+
+#### components.MuiDialog.props.fullWidth.description
+
+> **components.MuiDialog.props.fullWidth.description**: `string` = `"Se true, la finestra di dialogo si estende fino a maxWidth"`
+
+#### components.MuiDialog.props.fullWidth.name
+
+> **components.MuiDialog.props.fullWidth.name**: `string` = `"Larghezza completa"`
+
+#### components.MuiDialog.props.maxWidth
+
+> **components.MuiDialog.props.maxWidth**: `object`
+
+#### components.MuiDialog.props.maxWidth.description
+
+> **components.MuiDialog.props.maxWidth.description**: `string` = `"Larghezza massima della finestra di dialogo (xs, sm, md, lg, xl)"`
+
+#### components.MuiDialog.props.maxWidth.name
+
+> **components.MuiDialog.props.maxWidth.name**: `string` = `"Larghezza massima"`
+
+#### components.MuiDialog.props.onClose
+
+> **components.MuiDialog.props.onClose**: `object`
+
+#### components.MuiDialog.props.onClose.description
+
+> **components.MuiDialog.props.onClose.description**: `string` = `"Callback attivato quando la finestra di dialogo si chiude"`
+
+#### components.MuiDialog.props.onClose.name
+
+> **components.MuiDialog.props.onClose.name**: `string` = `"onClose"`
+
+#### components.MuiDialog.props.open
+
+> **components.MuiDialog.props.open**: `object`
+
+#### components.MuiDialog.props.open.description
+
+> **components.MuiDialog.props.open.description**: `string` = `"Se è vero, la finestra di dialogo è aperta"`
+
+#### components.MuiDialog.props.open.name
+
+> **components.MuiDialog.props.open.name**: `string` = `"Aprire"`
+
+#### components.MuiDialog.props.scroll
+
+> **components.MuiDialog.props.scroll**: `object`
+
+#### components.MuiDialog.props.scroll.description
+
+> **components.MuiDialog.props.scroll.description**: `string` = `"Determina il contenitore per lo scorrimento della finestra di dialogo (carta o corpo)"`
+
+#### components.MuiDialog.props.scroll.name
+
+> **components.MuiDialog.props.scroll.name**: `string` = `"Scorrere"`
+
+#### components.MuiDialogActions
+
+> **components.MuiDialogActions**: `object`
+
+#### components.MuiDialogActions.description
+
+> **components.MuiDialogActions.description**: `string` = `"Contenitore per i pulsanti di azione della finestra di dialogo"`
+
+#### components.MuiDialogActions.name
+
+> **components.MuiDialogActions.name**: `string` = `"Azioni di dialogo"`
+
+#### components.MuiDialogActions.props
+
+> **components.MuiDialogActions.props**: `object`
+
+#### components.MuiDialogActions.props.children
+
+> **components.MuiDialogActions.props.children**: `object`
+
+#### components.MuiDialogActions.props.children.description
+
+> **components.MuiDialogActions.props.children.description**: `string` = `"Il contenuto del componente"`
+
+#### components.MuiDialogActions.props.children.name
+
+> **components.MuiDialogActions.props.children.name**: `string` = `"Bambino"`
+
+#### components.MuiDialogActions.props.disableSpacing
+
+> **components.MuiDialogActions.props.disableSpacing**: `object`
+
+#### components.MuiDialogActions.props.disableSpacing.description
+
+> **components.MuiDialogActions.props.disableSpacing.description**: `string` = `"Se vero, le azioni non hanno margine aggiuntivo"`
+
+#### components.MuiDialogActions.props.disableSpacing.name
+
+> **components.MuiDialogActions.props.disableSpacing.name**: `string` = `"Disabilita spaziatura"`
+
+#### components.MuiDialogContent
+
+> **components.MuiDialogContent**: `object`
+
+#### components.MuiDialogContent.description
+
+> **components.MuiDialogContent.description**: `string` = `"Area del contenuto principale di una finestra di dialogo"`
+
+#### components.MuiDialogContent.name
+
+> **components.MuiDialogContent.name**: `string` = `"Contenuto della finestra di dialogo"`
+
+#### components.MuiDialogContent.props
+
+> **components.MuiDialogContent.props**: `object`
+
+#### components.MuiDialogContent.props.children
+
+> **components.MuiDialogContent.props.children**: `object`
+
+#### components.MuiDialogContent.props.children.description
+
+> **components.MuiDialogContent.props.children.description**: `string` = `"Il contenuto del componente"`
+
+#### components.MuiDialogContent.props.children.name
+
+> **components.MuiDialogContent.props.children.name**: `string` = `"Bambino"`
+
+#### components.MuiDialogContent.props.dividers
+
+> **components.MuiDialogContent.props.dividers**: `object`
+
+#### components.MuiDialogContent.props.dividers.description
+
+> **components.MuiDialogContent.props.dividers.description**: `string` = `"Se true, i bordi vengono aggiunti alla parte superiore e inferiore del contenuto della finestra di dialogo"`
+
+#### components.MuiDialogContent.props.dividers.name
+
+> **components.MuiDialogContent.props.dividers.name**: `string` = `"Divisore"`
+
+#### components.MuiDialogContentText
+
+> **components.MuiDialogContentText**: `object`
+
+#### components.MuiDialogContentText.description
+
+> **components.MuiDialogContentText.description**: `string` = `"Contenuto di testo all'interno di una finestra di dialogo"`
+
+#### components.MuiDialogContentText.name
+
+> **components.MuiDialogContentText.name**: `string` = `"Testo del contenuto della finestra di dialogo"`
+
+#### components.MuiDialogContentText.props
+
+> **components.MuiDialogContentText.props**: `object`
+
+#### components.MuiDialogContentText.props.children
+
+> **components.MuiDialogContentText.props.children**: `object`
+
+#### components.MuiDialogContentText.props.children.description
+
+> **components.MuiDialogContentText.props.children.description**: `string` = `"Il contenuto del testo"`
+
+#### components.MuiDialogContentText.props.children.name
+
+> **components.MuiDialogContentText.props.children.name**: `string` = `"Contenuto"`
+
+#### components.MuiDialogLayout
+
+> **components.MuiDialogLayout**: `object`
+
+#### components.MuiDialogLayout.description
+
+> **components.MuiDialogLayout.description**: `string` = `"Un layout di dialogo predefinito con i pulsanti titolo, contenuto e azione"`
+
+#### components.MuiDialogLayout.name
+
+> **components.MuiDialogLayout.name**: `string` = `"Layout finestra di dialogo"`
+
+#### components.MuiDialogTitle
+
+> **components.MuiDialogTitle**: `object`
+
+#### components.MuiDialogTitle.description
+
+> **components.MuiDialogTitle.description**: `string` = `"Titolo di una finestra di dialogo"`
+
+#### components.MuiDialogTitle.name
+
+> **components.MuiDialogTitle.name**: `string` = `"Titolo della finestra di dialogo"`
+
+#### components.MuiDialogTitle.props
+
+> **components.MuiDialogTitle.props**: `object`
+
+#### components.MuiDialogTitle.props.children
+
+> **components.MuiDialogTitle.props.children**: `object`
+
+#### components.MuiDialogTitle.props.children.description
+
+> **components.MuiDialogTitle.props.children.description**: `string` = `"Il testo del titolo"`
+
+#### components.MuiDialogTitle.props.children.name
+
+> **components.MuiDialogTitle.props.children.name**: `string` = `"Contenuto"`
+
 #### components.MuiErrorWrapper
 
 > **components.MuiErrorWrapper**: `object`

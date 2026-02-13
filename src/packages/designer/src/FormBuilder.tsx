@@ -94,7 +94,6 @@ const FormBuilderView = customizableObserver('MainContainer', RawFormBuilderView
 const RawFormBuilder = (props: FormBuilderProps) => {
   useMobxConfig()
 
-
   const localizationEngine = useMemo(() => props.localizationEngine ?? new FluentLocalizationEngine(), [props.localizationEngine])
   const finalProps = useMemo(() => ({
     ...props,
@@ -107,6 +106,5 @@ const RawFormBuilder = (props: FormBuilderProps) => {
     </BuilderProviders>
   )
 }
-
 
 export const FormBuilder = namedObserver('FormBuilder', RawFormBuilder)

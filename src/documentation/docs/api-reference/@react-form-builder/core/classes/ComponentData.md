@@ -450,6 +450,22 @@ the object to read and modify root form data.
 
 A user-defined key-value observable storage. Utilize it to store and share any custom data.
 
+#### Set Signature
+
+> **set** **state**(`state`): `void`
+
+Sets state object.
+
+##### Parameters
+
+###### state
+
+`Record`\<`string`, `unknown`\>
+
+##### Returns
+
+`void`
+
 #### Implementation of
 
 [`IFormData`](../interfaces/IFormData.md).[`state`](../interfaces/IFormData.md#state)

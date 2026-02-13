@@ -44,7 +44,7 @@ The React component that wraps every component in a form. **Internal use only.**
 
 > `optional` **context**: `any`
 
-The arbitrary user context.
+The arbitrary context used internally by the form viewer.
 
 #### Inherited from
 
@@ -216,6 +216,19 @@ The initial data of the form.
 
 ***
 
+### initialState?
+
+> `optional` **initialState**: `Record`\<`string`, `unknown`\>
+
+The initial user-defined state for the form.
+This object is set into [IFormData.state](../../core/interfaces/IFormData.md#state) when the form is initialized, this property is reactive.
+
+#### Inherited from
+
+`Omit.initialState`
+
+***
+
 ### jsonSchemaFilename?
 
 > `optional` **jsonSchemaFilename**: `string`
@@ -374,6 +387,19 @@ If true, all validation errors will be displayed.
 > `optional` **theme**: [`FormBuilderTheme`](../type-aliases/FormBuilderTheme.md)
 
 Indicates the theme preference.
+
+***
+
+### userContext?
+
+> `optional` **userContext**: `unknown`
+
+The arbitrary context object passed to the form viewer.
+It is forwarded to custom actions as the third argument of the handler.
+
+#### Inherited from
+
+`Omit.userContext`
 
 ***
 

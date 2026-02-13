@@ -121,9 +121,10 @@ const RawProviders = ({children, props, builderStore, store}: BuilderProvidersPr
 
   useEffect(() => {
     store.formViewerPropsStore.applyProps(viewerProps)
+    store.form.componentTree.state = store.formViewerPropsStore.initialState
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.initialData, props.view, props.validators, props.formValidators, props.localize, props.language, props.actions,
-    props.errorWrapper, props.readOnly, props.disabled, props.componentWrapper])
+  }, [props.initialData, props.initialState, props.view, props.validators, props.formValidators, props.localize, props.language,
+    props.actions, props.errorWrapper, props.readOnly, props.disabled, props.componentWrapper, props.userContext])
 
   useEffect(() => {
     props.onFormSchemaChange?.(builderStore.formAsString)
