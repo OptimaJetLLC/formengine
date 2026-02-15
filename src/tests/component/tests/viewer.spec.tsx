@@ -8,6 +8,6 @@ describe('Component Viewer', function () {
 
     // ensure that the form is rendered
     expect(await findByTestId('password')).toBeInTheDocument()
-    expect(container.firstChild).toHaveClass('optimajet-formviewer')
+    expect(container.firstChild?.firstChild).toHaveClass('optimajet-formviewer')
   })
 })

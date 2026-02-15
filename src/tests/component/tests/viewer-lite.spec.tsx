@@ -7,7 +7,7 @@ describe('Component ViewerLite', function () {
     const {container, findByTestId, findByRole} = render(<ViewerLite/>)
 
     expect(await findByTestId('password')).toBeInTheDocument()
-    expect(container.firstChild).toHaveClass('optimajet-formviewer')
+    expect(container.firstChild?.firstChild).toHaveClass('optimajet-formviewer')
 
     const button = await findByRole('button', {name: /Login/i})
     expect(button).toBeInTheDocument()
@@ -17,7 +17,7 @@ describe('Component ViewerLite', function () {
     const {container, findByTestId, findByRole} = render(<ViewerLite withLocalizer/>)
 
     expect(await findByTestId('password')).toBeInTheDocument()
-    expect(container.firstChild).toHaveClass('optimajet-formviewer')
+    expect(container.firstChild?.firstChild).toHaveClass('optimajet-formviewer')
 
     const button = await findByRole('button', {name: /Submit/i})
     expect(button).toBeInTheDocument()

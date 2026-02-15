@@ -6,7 +6,7 @@
       "params": {}
     },
     "editClick": {
-      "body": "  const rowData = e.rowInfo?.rowData\n  alert(`id:${rowData?.id}`)",
+      "body": "  const rowData = e.cellInfo?.rowData\n  alert(`id:${rowData?.id}`)",
       "params": {}
     }
   },
