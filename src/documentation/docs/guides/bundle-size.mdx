@@ -1,375 +1,211 @@
 ---
-sidebar_position: 5
 title: Bundle Size Comparison of Form Libraries
-description: Comparison of bundle sizes of FormEngine Core, SurveyJS, react-jsonschema-form, Vueform
+description: Compare bundle sizes of FormEngine Core, SurveyJS, RJSF, and Vueform to choose the best form library for performance-critical applications
 slug: /bundle-size-comparison
+sidebar_position: 5
 ---
 
 import './bundle-size.module.css'
 
-# Preface
+# Bundle Size Comparison of Form Libraries
 
-Modern frontend applications increasingly operate under strict bundle size constraints - whether due to performance budgets, mobile usage,
-edge delivery, or embedding into third-party products. Form and survey libraries, while often treated as _infrastructure_,
-can contribute a non-trivial share of the total JavaScript payload, especially when they bring their own rendering layers,
-validation engines, and UI abstractions.
+Choosing the right form library significantly impacts your application's performance, especially on mobile devices and slow networks.
+This comprehensive comparison analyzes bundle sizes of four popular form libraries: **FormEngine Core**, **SurveyJS**,
+**react-jsonschema-form (RJSF)**, and **Vueform**, helping you make an informed decision based on actual shipping code rather than
+feature lists.
 
-This article compares several popular form libraries - **SurveyJS**, **react-jsonschema-form (RJSF)**, **Vueform**, and
-**FormEngine Core (FormEngine)**, specifically through the lens of bundle size.
+## Why bundle size matters for form libraries
 
-Rather than evaluating features, developer experience, or visual quality, we will focus on what actually ships to the browser.
+Modern web applications face strict performance budgets, particularly when serving users on mobile devices or in regions with limited
+network connectivity. Every kilobyte of JavaScript affects load times, user experience, and conversion rates.
 
-To ensure comparability, we will:
-- Measure production bundle size (minified + gzipped)
-- Use default configurations, without extra optimizations
-- Use the app setup and UI as close as possible to each other
-- Compare setup with MUI library to evaluate UI kit overhead
+### The performance impact of bundle size
 
-We compare:
-- Core runtime size
-- UI-layer overhead
-- Tree-shaking behavior and unavoidable baseline cost
+| Additional JavaScript | Slow 3G Impact   | 4G Impact     | User Experience Impact                  |
+|-----------------------|------------------|---------------|-----------------------------------------|
+| +50 KB                | ~1.5–1.7 seconds | ~0.15 seconds | Noticeable delay on mobile              |
+| +100 KB               | ~2.6–2.8 seconds | ~0.30 seconds | Significant delay, possible abandonment |
+| +300 KB               | ~7.0–7.5 seconds | ~0.70 seconds | High abandonment rate                   |
+| +500 KB               | ~11–12 seconds   | ~1.1 seconds  | Critical performance issue              |
 
-We do **not** evaluate:
-- Feature completeness
-- Developer experience
-- Visual quality
-- Accessibility
+Form libraries, while essential for user interaction, can contribute substantially to your total JavaScript payload. Understanding how
+different libraries approach bundle size helps you choose one that aligns with your performance goals.
 
-## Why this matters
+## Testing methodology and fair comparison
 
-Modern web applications are often built and tested on fast devices and reliable networks, but that environment is not representative of
-real users. Network speed, latency, and device performance vary widely, directly impacting how quickly a web app becomes usable.
-As JavaScript bundles grow, they amplify these delays: larger bundles take longer to transfer on slow connections and longer to parse and
-execute on constrained devices, resulting in slower
-[**Largest Contentful Paint (LCP)**](https://developer.mozilla.org/en-US/docs/Glossary/Largest_contentful_paint),
-delayed [**Time to Interactive (TTI)**](https://developer.mozilla.org/en-US/docs/Glossary/Time_to_interactive), and worse user
-experience. A significant share of global web traffic comes from emerging markets, where users rely on slow or unstable mobile networks.
-In these environments, "acceptable" bundle sizes on fast Wi-Fi can translate into multi-second delays on real devices. On slow mobile
-networks, even an extra 50–100 KB of JavaScript can noticeably delay interactivity, pushing load times beyond commonly accepted
-UX thresholds.
+:::tip info
 
-The tables below illustrate how bundle size increases behave differently on Slow 3G versus 4G, and how bundle growth impacts core web performance metrics. Users expect initial visual feedback within 1–2 seconds, and abandonment rates rise significantly around the 3-second mark, especially on mobile devices. Beyond 5 seconds, many users assume something is broken or leave altogether. Keeping JavaScript payloads small is one of the most reliable ways to stay within acceptable wait times across devices, networks, and regions.
+All mentioned tools, testing data, and the complete test suite are available in our
+[GitHub repository](https://github.com/optimajet/formengine/tree/master/community/examples/bundle-size). The repository includes build
+configurations, test applications for each library, and scripts to reproduce these measurements. Feel free to explore the code,
+run your own tests, or contact us with questions.
 
-| Additional JS | Slow 3G (total added time) | 4G (total added time) |
-|---------------|----------------------------|-----------------------|
-| +50 KB        | ~1.5–1.7 s                 | ~0.15 s               |
-| +100 KB       | ~2.6–2.8 s                 | ~0.30 s               |
-| +300 KB       | ~7.0–7.5 s                 | ~0.70 s               |
-| +500 KB       | ~11–12 s                   | ~1.1 s                |
+:::
 
-These delays affect [**Largest Contentful Paint (LCP)**](https://developer.mozilla.org/en-US/docs/Glossary/Largest_contentful_paint) and,
-more critically, [**Time to Interactive (TTI)**](https://developer.mozilla.org/en-US/docs/Glossary/Time_to_interactive).
-On 4G, bundle growth is often barely noticeable. On Slow 3G, the same increase can add multiple seconds to the critical path.
-
-| Additional JS | LCP (Slow 3G) | LCP (4G) | TTI (Slow 3G) | TTI (4G) |
-|---------------|---------------|----------|---------------|----------|
-| +50 KB        | ~1.0 s        | ~0.05 s  | ~1.2 s        | ~0.15 s  |
-| +100 KB       | ~2.0 s        | ~0.1 s   | ~2.3 s        | ~0.3 s   |
-| +300 KB       | ~6.0 s        | ~0.3 s   | ~6.8 s        | ~0.7 s   |
-| +500 KB       | ~10 s         | ~0.5 s   | ~11 s         | ~1.1 s   |
-
-The gap widens as bundle size increases, especially for TTI, which is heavily influenced by JavaScript execution on slower devices.
-
-The following chart illustrates how bundle size impacts performance across different network conditions:
-
-import impactData2 from '@site/static/includes/bundle-size/bundle_size_impact_slow3g.json'
-
-<VegaLite spec={impactData2}/>
-
-# Measuring methodology
+To ensure accurate, comparable results, we implemented a standardized testing approach:
 
 ### Test scenarios
 
-Two realistic use cases were implemented for each library:
-
-- Simple login form, which is the simplest case for a form
-- Multi-step booking form (validation, conditional logic, most common UI controls)
-
-Comparing them side-by-side exposes how architectural choices directly impact bundle size.
-
-## Tooling
+- **Login form**: Simple form with email and password fields
+- **Booking form**: Complex multi-step form with validation and conditional logic
 
 ### Tooling assumptions
 
-To ensure comparability, all measurements use:
+- **Build tool**: Vite (default production configuration)
+- **Optimizations**: Minification + gzip enabled
+- **Tree-shaking**: Enabled by default
+- **UI variations**: Tested with default UI and Material UI (MUI) where applicable
 
-- **Vite** - the most widespread build tool at the moment
-- Default production build, as described in documentation
-- Tree-shaking enabled by default
-- No manual optimizations
-- No SSR / SSG
-- No custom code splitting
-- Default rendering engine and with **Material UI (MUI)** library
+### Equalization approaches
 
-The goal is to measure what a typical setup ships, not an aggressively optimized edge case. To ensure fair comparison, we applied the
-following equalization approaches:
+1. **Duplicate package removal**: Eliminated version mismatches
+2. **UI kit equalization**: Tested with and without Material UI
+3. **Tree-shaking evaluation**: Measured effectiveness of dead code elimination
 
-#### Equalize duplicated packages
+## Bundle size results: gzipped comparison
 
-Duplicated packages from mismatched versions or imports bloat bundles, wasting mobile users' data and parse time on repeated code. This
-can significantly shift test results, so we equalize duplicates as would be done in production.
+The following tables present gzipped bundle sizes for each library across different scenarios. Gzipped size represents what actually
+travels over the network to users' browsers.
 
-#### Equalize with UI kit
+### Simple login form results
 
-To evaluate UI kit overhead, we also test setups using **Material UI (MUI)** library, where applicable. **MUI** is a battle-tested
-solution with excellent tree-shaking support.
+| Library             | Default UI Size | With Material UI | Difference    | Key Insight                                 |
+|---------------------|-----------------|------------------|---------------|---------------------------------------------|
+| **Vueform**         | 140.72 KB       | 141.09 KB        | +0.37 KB      | Minimal change, smallest baseline           |
+| **RJSF**            | 175.26 KB       | 231.62 KB        | +56.36 KB     | MUI adds significant overhead               |
+| **FormEngine Core** | 244.19 KB       | **188.54 KB**    | **-55.65 KB** | **Only library that reduces size with MUI** |
+| **SurveyJS**        | 421.67 KB       | 391.72 KB        | -29.95 KB     | Large baseline, modest reduction            |
 
-Each library uses its default rendering approach:
+### Complex booking form results
 
-- **Vueform** — Vue-native, opinionated form framework with built-in UI
-- **RJSF** — JSON Schema renderer tightly integrated with React and UI kits
-- **SurveyJS** — framework-agnostic engine with its own rendering layer
-- **FormEngine Core** — form engine with pluggable custom components, designed for flexibility and minimal bundle overhead
+| Library             | Default UI Size | With Material UI | Difference     | Key Insight                         |
+|---------------------|-----------------|------------------|----------------|-------------------------------------|
+| **Vueform**         | 199.06 KB       | 199.23 KB        | +0.17 KB       | Stable size, integrated UI          |
+| **RJSF**            | 178.07 KB       | 234.50 KB        | +56.43 KB      | Predictable growth with MUI         |
+| **FormEngine Core** | 316.69 KB       | **199.26 KB**    | **-117.43 KB** | **Dramatic 37% reduction with MUI** |
+| **SurveyJS**        | 423.75 KB       | 455.73 KB        | +31.98 KB      | Inconsistent MUI impact             |
 
-##### Default UI-kit
+## Architectural analysis: Why results vary
 
-Each library uses its default UI approach:
+Different libraries adopt distinct architectural approaches that directly impact their bundle size characteristics.
 
-- **Vueform** — custom theming, CSS-based
-- **RJSF** — plain HTML, using **Bootstrap 3** CSS classes
-- **SurveyJS** — its own CSS theming, custom components
-- **FormEngine Core** — **no default UI kit**; requires a UI component library to be selected. Currently implemented options:
-[**React Suite (Rsuite)**](https://www.npmjs.com/package/@react-form-builder/components-rsuite),
-[**Material UI (MUI)**](https://www.npmjs.com/package/@react-form-builder/components-material-ui). This design choice
-allows **FormEngine Core** to achieve zero UI overhead when using external UI kits, as demonstrated in the measurements below.
+### FormEngine Core: The modular advantage
 
-| Feature          | **FormEngine Core** | **Vueform** | **RJSF**   | **SurveyJS** |
-|------------------|---------------------|-------------|------------|--------------|
-| Default UI       | None                | Vueform UI  | Plain HTML | CSS          |
-| External UI kits | ✅ **Native**        | ❌           | ✅          | Possible     |
-| Extensibility    | **High**            | Medium      | High       | Medium       |
-| Zero UI overhead | ✅ **Yes**           | ❌           | ❌          | ❌            |
+FormEngine's pluggable architecture enables complete UI replacement. When you switch from its default React Suite components to Material UI:
 
-##### Material UI support
+:::info Important
 
-| Library             | Native MUI support | Effort to match MUI |
-|---------------------|--------------------|---------------------|
-| **RJSF**            | ✅ **Yes**          | 🟢 Low              |
-| **SurveyJS**        | ❌ No               | 🔴 High             |
-| **Vueform**         | ❌ No               | 🔴 High             |
-| **FormEngine Core** | ✅ **Yes**          | 🟢 Low              |
+FormEngine's modular design means you only pay for what you use. When integrated with Material UI, the default React Suite components
+are completely removed from your bundle, resulting in significant size reductions.
 
+:::
 
-#### Equalize by tree-shaking
+- **Complete UI replacement**: Default UI components are entirely removed
+- **Optimal tree-shaking**: Unused code is effectively eliminated
+- **Zero UI overhead**: No duplicate UI code shipped
+- **Best-in-class MUI integration**: Actually reduces bundle size
 
-Tree-shaking is essential for reducing bundle size. It allows bundlers to remove unused exports from your final bundle, ensuring that you
-only ship the code that is actually used. This is especially important when working with large libraries, where a "small" feature can
-silently add hundreds of kilobytes to the bundle if tree-shaking is not effective. We measure each library's tree-shaking effectiveness
-to understand how their architecture impacts bundle size.
+This makes FormEngine Core particularly valuable for teams already using established UI libraries like Material UI.
 
-#### Equalize by SSR
+### Vueform: Integrated efficiency
 
-As none of the libraries fully support SSR at the moment, we're not going to test against it.
+Vueform delivers the smallest baseline through tight integration:
+- **Monolithic architecture**: UI, validation, and rendering are coupled
+- **Stable size**: Consistent across UI variations
+- **Suitable for**: Standalone applications with strict size budgets
 
-| Form Library        | SSR Support           | Notes                                          |
-|---------------------|-----------------------|------------------------------------------------|
-| **FormEngine Core** | Partial / Client‑only | Designed as a client‑side React form library.  |
-| **RJSF**            | Limited SSR           | Possible with some hacks related to hydration. |
-| **Vueform**         | Partial / Client‑only | Must be used client-side only.                 |
-| **SurveyJS**        | Partial / Client‑only | Designed as a client‑side React form library.  |
+### RJSF: Predictable performance
 
-## Summary (gzip sizes)
+RJSF offers predictable bundle growth:
+- **Small core runtime**: Lightweight foundation
+- **Linear scaling**: Bundle size grows with feature usage
+- **MUI overhead**: Adds 21-32% to bundle size
 
-Now that we've established the testing methodology and equalization approaches, let's examine the actual bundle size results.
-The following summary tables present gzipped bundle sizes for each library across different scenarios.
+### SurveyJS: Feature-rich foundation
 
-##### Login
+SurveyJS prioritizes features over size:
+- **Large baseline**: Substantial runtime even for simple forms
+- **Framework-agnostic**: Flexibility comes at a size cost
+- **Inconsistent optimization**: MUI impact varies by scenario
+- **Best for**: Survey-focused applications needing extensive features
 
-| Library               | Smallest Variant | gzip size     |
-|-----------------------|------------------|---------------|
-| **Vueform**           | login            | **140.72 KB** |
-| **RJSF**              | login            | 175.26 KB     |
-| **FormEngine Rsuite** | login            | 244.19 KB     |
-| **SurveyJS**          | login            | 421.67 KB     |
+## Key takeaways for library selection
 
-##### Login MUI
+### When using Material UI or established UI libraries
 
-| Library            | Variant   | gzip size     |
-|--------------------|-----------|---------------|
-| **Vueform**        | login-mui | **141.09 KB** |
-| **FormEngine MUI** | login-mui | 188.54 KB     |
-| **RJSF**           | login-mui | 231.62 KB     |
-| **SurveyJS**       | login-mui | 391.72 KB     |
+> **Choose FormEngine Core for optimal size-to-capability ratio**
 
-#### Booking
-
-| Library               | Variant | gzip size     |
-|-----------------------|---------|---------------|
-| **RJSF**              | booking | **178.07 KB** |
-| **Vueform**           | booking | 199.06 KB     |
-| **FormEngine Rsuite** | booking | 316.69 KB     |
-| **SurveyJS**          | booking | 423.75 KB     |
+FormEngine Core is the only library that **reduces** bundle size when integrating with Material UI, achieving 40-48% reduction compared to
+React Suite UI. This makes it ideal for teams leveraging existing UI infrastructure.
 
-#### Booking MUI
-
-| Library            | Variant     | gzip size     |
-|--------------------|-------------|---------------|
-| **FormEngine MUI** | booking-mui | **199.26 KB** |
-| **Vueform**        | booking-mui | 199.23 KB     |
-| **RJSF**           | booking-mui | 234.50 KB     |
-| **SurveyJS**       | booking-mui | 455.73 KB     |
-
-
-#### MUI Impact
+**Benefits:**
+- Complete UI replacement eliminates default UI overhead
+- Exceptional tree-shaking removes unused code
+- Future-proof architecture adapts to any UI library
+- Best performance for complex forms with MUI
 
-| Library             | login → login-mui delta (gzip)              | booking → booking-mui delta (gzip)           |
-|---------------------|---------------------------------------------|----------------------------------------------|
-| **FormEngine Core** | **-55.65 KB** (**MUI** replaces **Rsuite**) | **-117.43 KB** (**MUI** replaces **Rsuite**) |
-| **SurveyJS**        | -29.95 KB                                   | +31.98 KB                                    |
-| **Vueform**         | +0.37 KB                                    | +0.17 KB                                     |
-| **RJSF**            | **+56.36 KB**                               | **+56.43 KB**                                |
+### When building from scratch with minimal dependencies
 
-**FormEngine Core** uniquely benefits from **MUI** integration, achieving significant bundle size reductions by replacing **Rsuite** components
-with **Material UI**'s optimized implementations. This makes **FormEngine Core** the **only library** that becomes more efficient when integrating with
-external UI kits, rather than adding overhead. Notably, **FormEngine Core** achieves one of the smallest bundle sizes for booking forms when
-using **MUI** (199.26 KB), essentially tied with **Vueform** (199.23 KB) and significantly smaller than **RJSF** (234.50 KB) and **SurveyJS** (455.73 KB).
-
-The data reveals clear patterns in how different libraries handle bundle size, particularly when integrating with external UI kits.
-**FormEngine**'s modular architecture allows complete removal of unused UI components when switching to external UI kits, enabling it to
-achieve among the smallest bundles when integrated with **Material UI**.
-
-**FormEngine Core** demonstrates exceptional tree-shaking behavior, with its modular architecture allowing complete removal of unused UI
-components when switching to external UI kits. This architectural advantage enables **FormEngine Core** to achieve among the smallest bundles
-when integrated with **Material UI**, as demonstrated in the booking form scenario where **FormEngine** with **MUI** (199.26 KB) achieves essentially
-the same size as **Vueform** (199.23 KB) while starting from a larger default UI baseline.
-
-## Conclusion
+> **Choose Vueform for the smallest baseline**
 
-The measurements show that architectural choices dominate bundle size outcomes far more than individual features. However, one factor
-stands out as equally critical: **the choice of UI kit plays a defining role in determining final bundle size**, often more significant
-than the form library itself.
+Vueform delivers the most compact bundles when no external UI library is required, making it suitable for standalone applications or
+strict performance budgets.
 
-#### The Critical Role of UI Kit Selection
+### When needing predictable, controllable growth
 
-Choosing a UI library is a fundamental architectural choice that directly impacts bundle size, performance, and user experience. The data
-reveals dramatic differences in how libraries integrate with UI kits, with some benefiting significantly from external UI libraries while
-others experience substantial overhead.
+> **Choose RJSF for linear scaling**
 
-#### FormEngine: The UI Kit Advantage
+RJSF offers predictable bundle sizes, though Material UI integration adds measurable overhead.
 
-**FormEngine demonstrates the most dramatic impact of UI kit selection**, leveraging external UI libraries to achieve optimal bundle sizes.
-When using FormEngine with Material UI, the results are striking:
+### When survey-specific features are essential
 
-##### Login Form: Default UI vs MUI
+> **Choose SurveyJS for specialized capabilities**
 
-| Library        | Default UI (raw/gzip) | MUI (raw/gzip)            | Difference (raw/gzip)  | Impact             |
-|----------------|-----------------------|---------------------------|------------------------|--------------------|
-| **FormEngine** | 1.04 MB / 244.19 KB   | **618.80 KB / 188.54 KB** | **-421 KB / -55.6 KB** | **-40% / -23%** ⬇️ |
-| **RJSF**       | 596.70 KB / 175.26 KB | 721.54 KB / 231.62 KB     | +125 KB / +56.4 KB     | +21% / +32% ⬆️     |
-| **SurveyJS**   | 1.81 MB / 421.67 KB   | 1.47 MB / 391.72 KB       | -340 KB / -30 KB       | -19% / -7% ⬇️      |
-| **Vueform**    | 465.41 KB / 140.72 KB | 467.35 KB / 141.09 KB     | +2 KB / +0.4 KB        | +0.4% / +0.3% ⬆️   |
+SurveyJS provides extensive survey-focused features but carries a substantial size penalty that may not justify the cost for general form
+use cases.
 
-##### Booking Form: Default UI vs MUI
+## Practical recommendations
 
-| Library        | Default UI (raw/gzip) | MUI (raw/gzip)            | Difference (raw/gzip)   | Impact             |
-|----------------|-----------------------|---------------------------|-------------------------|--------------------|
-| **FormEngine** | 1.25 MB / 316.69 KB   | **647.70 KB / 199.26 KB** | **-602 KB / -117.4 KB** | **-48% / -37%** ⬇️ |
-| **RJSF**       | 606.07 KB / 178.07 KB | 731.02 KB / 234.50 KB     | +125 KB / +56.4 KB      | +21% / +32% ⬆️     |
-| **SurveyJS**   | 1.82 MB / 423.75 KB   | 1.72 MB / 455.73 KB       | -100 KB / +32 KB        | -5% / +8% ⬆️       |
-| **Vueform**    | 716.68 KB / 199.06 KB | 716.33 KB / 199.23 KB     | -0.35 KB / +0.17 KB     | -0.05% / +0.09% ⬆️ |
+### For performance-critical applications
 
-**Key Insight:** **FormEngine** is the only library that achieves **significant bundle size reduction** when switching to **MUI**. **FormEngine**'s
-default UI implementation includes substantial CSS and component code that gets completely replaced by **MUI**'s optimized components,
-resulting in a **40-48% reduction in raw bundle size** and **23-37% reduction in gzipped size**. This makes **FormEngine** with **MUI** one of the
-most efficient combinations for applications already using **Material UI**.
+1. **Audit your UI library usage**: If already using Material UI, FormEngine Core provides the best efficiency
+2. **Consider network conditions**: On Slow 3G networks, every 50KB adds ~1.5 seconds to load time
+3. **Test with your actual forms**: Bundle size impact varies with form complexity
+4. **Monitor tree-shaking effectiveness**: Use bundle analyzers to verify dead code elimination
 
-**Additional Advantages of FormEngine:**
-- **Complete UI replacement**: **FormEngine**'s architecture allows full replacement of UI components, eliminating default UI overhead
-- **Best-in-class MUI integration**: **FormEngine** is the only library where **MUI** integration reduces bundle size rather than increasing it
-- **Optimal for complex forms**: For booking forms with **MUI**, **FormEngine** achieves one of the smallest bundles (199.26 KB), essentially tied
-  with **Vueform** (199.23 KB) and significantly outperforming **RJSF** and **SurveyJS**
-- **Future-proof architecture**: The pluggable component system ensures **FormEngine** can adapt to any UI library without bundle bloat
+### Integration considerations
 
-This architectural advantage makes **FormEngine** particularly valuable for:
-- Applications already using **Material UI** or other established UI libraries
-- Projects where bundle size is a primary concern
-- Teams that want to leverage existing UI infrastructure rather than shipping duplicate UI code
-- Complex forms requiring conditional logic and validation (where **FormEngine**'s **MUI** variant excels)
-- Long-term projects where UI library choices may evolve (**FormEngine**'s flexibility prevents vendor lock-in)
+- **FormEngine Core**: Requires UI library selection but offers maximum flexibility
+- **Vueform**: Works best with its integrated UI, limited external UI support
+- **RJSF**: Good Material UI integration but adds overhead
+- **SurveyJS**: Limited UI kit support, primarily uses custom rendering
 
+## Summary
 
-#### Vueform
+FormEngine's architecture makes it the most efficient choice for teams already invested in UI library ecosystems, while Vueform
+offers the smallest footprint for new projects. The choice ultimately depends on your specific constraints around existing infrastructure,
+performance requirements, and feature needs.
 
-**Vueform** ships the smallest baseline. Its tightly coupled UI, validation, and rendering layers create a compact bundle, even for simple
-forms. Tree-shaking opportunities are limited due to the monolithic architecture, but the overall size remains the smallest across all
-tested scenarios. However, **Vueform** shows minimal benefit from external UI kits, as its integrated UI cannot be easily replaced. This makes
-**Vueform** the most suitable option under strict bundle budgets or slow-network constraints, but only if you're comfortable with its
-built-in UI.
+---
 
-#### SurveyJS
+:::warning
 
-**SurveyJS** carries a heavy baseline. Its framework-agnostic engine and custom rendering layer provide flexibility, but require shipping
-substantial runtime code even for minimal use cases. While switching to **MUI** provides some reduction for simple forms, the benefit is
-inconsistent and the overall bundle remains large. It is reasonable for survey-centric applications, but expensive when embedded into
-existing products with established UI kits.
+Below is a detailed, in-depth library comparison with graphs. This may be of interest to those who plan to replicate these
+measurements and compare them with our results.
 
-#### RJSF
-
-**RJSF** occupies a predictable middle ground. The core runtime is relatively small, but adding **MUI** increases bundle size by 21-32% because
-**RJSF**'s default plain HTML approach is lightweight, and **MUI** adds substantial overhead. Tree-shaking behaves as expected, duplicated chunks
-are avoidable, and bundle growth scales linearly with actual usage. This makes **RJSF** easier to control in performance-sensitive
-environments, but the **MUI** integration comes at a measurable cost.
-
-### Key takeaways
-
-- **UI kit selection is as critical as form library selection.** The choice of UI library can result in 20-50% bundle size differences,
-often more significant than the form engine itself.
-
-- **FormEngine uniquely benefits from external UI kits.** When paired with **Material UI**, **FormEngine** achieves 40-48% bundle size reduction,
-  making it the optimal choice for applications already using established UI libraries.
-- **Baseline cost matters more than feature count.** Monolithic runtimes impose a fixed performance tax that cannot be optimized away.
-- **Tree-shaking only works when the architecture allows it.** Modular exports and UI adapters make a measurable difference, as
-  demonstrated by **FormEngine**'s ability to replace its default UI entirely.
-- **Integration quality matters more than raw feature sets.** Libraries that integrate seamlessly with existing UI infrastructure provide
-  better long-term value than those that require shipping duplicate UI code.
-- **For applications using Material UI or similar libraries**, **FormEngine** provides excellent bundle size efficiency. In the booking form
-  scenario with **MUI**, **FormEngine** (199.26 KB) is essentially tied with **Vueform** (199.23 KB) and significantly outperforms **RJSF** (234.50 KB)
-  and **SurveyJS** (455.73 KB). **FormEngine** is the only library that achieves this efficiency through bundle size reduction rather than
-  starting with a small baseline.
-
-These insights point to a fundamental principle that should guide library selection decisions:
-
-### When using Material UI or other established UI libraries
-
-> **FormEngine provides the best size-to-capability ratio**
-
-**FormEngine**'s ability to leverage external UI kits results in the smallest bundle sizes when integrated with **Material UI**, achieving
-40-48% reduction compared to its default UI. This makes **FormEngine** the optimal choice for applications already committed to a UI library
-ecosystem. **FormEngine**'s unique architecture with complete UI replaceability and exceptional tree-shaking ensures that integrating with
-**Material UI** actually reduces bundle size rather than adding overhead, a benefit no other library provides.
-
-### When building from scratch or requiring minimal dependencies
-
-> **Vueform provides the smallest baseline**
-
-**Vueform**'s integrated approach delivers the smallest bundles when no external UI library is used, making it suitable for standalone
-applications or strict bundle budgets.
-
-### For predictable, controllable growth
-
-**RJSF** offers predictable bundle sizes with good tree-shaking, though **MUI** integration adds overhead. **SurveyJS** should be chosen only
-when its specific survey-focused ecosystem is a primary requirement.
-
-## Source code
-
-All mentioned tools, testing data, and the complete test suite are available in our [GitHub repository](https://github.com/optimajet/formengine/tree/master/community/examples/bundle-size). The repository includes
-build configurations, test applications for each library, and scripts to reproduce these measurements. Feel free to explore the code,
-run your own tests, or contact us with questions.
-
-## Full report
-
-The summary tables above provide a high-level overview of bundle size comparisons. The full report below contains detailed breakdowns by
-library, variant, and build tool, including:
-
-- Detailed chunk analysis showing how bundle size is distributed across code and CSS
-- Performance impact visualizations comparing Slow 3G vs 4G network conditions
-- Duplicate package detection and wasted size calculations
-- Per-variant comparisons highlighting the smallest bundles in each category
-
-This detailed data helps you understand not just which library is smallest overall, but how each library's bundle composition affects
-real-world performance across different scenarios.
+:::
 
 import FullReport from '@site/static/includes/bundle-size/bundle-sizes-report.mdx'
+import impactData2 from '@site/static/includes/bundle-size/bundle_size_impact_slow3g.json'
+
+### Detailed performance impact visualization
+
+The chart below illustrates how bundle size affects load times across different network conditions:
+
+import VegaLite from "@react-form-builder/docs/src/components/VegaLite.tsx";
+
+<VegaLite spec={impactData2}/>
+
+### Complete test data and methodology
 
 <FullReport />

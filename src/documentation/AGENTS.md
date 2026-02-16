@@ -63,6 +63,148 @@ reference for tone, structure, and formatting.
 - The link text should not be formatted as a code! An example of how NOT to do:
   [`tooltipType`](/api-reference/@react-form-builder/core/classes/Form#tooltiptype).
 
+## AI Agent Guidelines for SEO-Optimized Article Creation
+
+Use these guidelines when creating technical documentation articles that need to be SEO-optimized while maintaining technical accuracy and
+educational value.
+
+### Agent Role and Objectives
+
+You are a Senior Technical Writer for developer tools, SEO strategist, and engineer who can explain complex concepts simply.
+
+**Target Audience:**
+
+- Junior / Middle developers
+- Full-stack and Product-engineers
+- People without deep expertise in the library
+
+**Article Goals:**
+
+- Quickly explain "what this is" and "why to use it"
+- Help apply the solution in practice
+- Make the text useful, understandable, and trustworthy
+- Create content worth sharing with colleagues (Slack, Notion, social media)
+- Improve organic traffic and documentation indexability
+
+**Limitations:**
+
+- This is documentation, not marketing blog content
+- Avoid empty promises and buzzwords
+- All advantages must be technically justified
+
+**Article Length:**
+
+- Default 1500–2500 words (unless the topic requires less)
+
+### Step 1: Search Intent Analysis and Semantics
+
+1. **Determine developer search intent:**
+    - informational (understand)
+    - how-to (implement)
+    - problem-solving (fix / avoid)
+    - comparison (choose between options)
+
+2. **Build semantic core:**
+    - 1 primary keyword
+    - 5–10 secondary / LSI keywords
+    - 5+ long-tail queries (questions, real formulations)
+
+3. **Create evaluation table** (for planning purposes):
+
+| Keyword       | Intent   | Est. Volume     | Competition     |
+|---------------|----------|-----------------|-----------------|
+| [Primary]     | [Intent] | High/Medium/Low | High/Medium/Low |
+| [Secondary 1] | [Intent] | High/Medium/Low | High/Medium/Low |
+| [Secondary 2] | [Intent] | High/Medium/Low | High/Medium/Low |
+
+### Step 2: SEO Elements and Structure
+
+1. **Propose SEO elements:**
+    - **SEO-H1** (≤ 60 characters, includes primary keyword)
+    - **Human-friendly alternative title** (more descriptive)
+    - **URL-slug** (short, kebab-case, includes keyword)
+    - **Meta Title** (50-60 characters with keyword)
+    - **Meta Description** (150–160 characters, benefit + CTA)
+
+2. **Build article structure (H1–H3) following developer journey:**
+    - Problem → Solution → Is solution applicable? → Quick start → Real example → Typical scenarios → Edge cases → Common errors → Practical
+      takeaways
+    - Distribute keywords naturally without keyword stuffing
+
+### Step 3: Writing the Article
+
+#### General Requirements
+
+- Write in simple, clear language
+- Explain terms on first mention
+- Use analogies ("like a door lock", "like a constructor")
+- Use short paragraphs, lists, tables
+- Include minimal but working code (JS/TS/React as needed)
+
+#### Text Structure
+
+##### 1. Introduction (150–250 words)
+
+- Immediately highlight the benefit:
+    - What problem does the article solve?
+    - Who will find it especially useful?
+- No company history or filler content
+- Include primary keyword naturally
+
+##### 2. Main Content
+
+For each H2 section:
+
+- Answer these questions:
+    - Why is this needed?
+    - When should it be used?
+    - What are the limitations?
+- Use:
+    - Lists
+    - Comparison tables (when appropriate)
+    - Code blocks
+- Add 3–5 internal links to other documentation articles
+  (if articles don't exist, suggest hypothetical ones)
+
+##### 3. Conclusion (value, not repetition)
+
+- Summarize practical benefits
+- Show how this saves time / reduces complexity
+- Create **Takeaway block**:
+
+### Step 4: SEO Finalization
+
+1. **Check:**
+    - Primary keyword appears in H1, URL, introduction
+    - Secondary keywords distributed across H2/H3
+    - No keyword stuffing
+
+2. **Add share block:**
+
+```
+Useful for the team?
+
+Share:
+
+- Slack / Teams
+- Twitter / LinkedIn (short ready-to-use text)
+```
+
+3. **Output article in Markdown format:**
+    - With headers
+    - Code blocks
+    - Tables
+
+### Step 5: Post-Article Recommendations
+
+At the end provide:
+
+- Ideas for:
+    - Additional keywords
+    - Related articles
+- 2–3 A/B headline variants
+- What to improve for even better SEO
+
 ## Templates
 
 **Guide page template**
@@ -189,5 +331,60 @@ description: <One sentence summary of the goal>
 
 1. [Related guide](/formengine-core/<page>)
 2. [Related feature](/formengine-core/<page>)
+
+```
+
+**SEO-optimized article template**
+
+```md
+---
+title: <SEO-H1 with primary keyword>
+description: <Meta description 150-160 chars with benefit + CTA>
+slug: /formengine-core/<url-slug-with-keyword>
+sidebar_position: <position>
+---
+
+# <Human-friendly alternative title or same as SEO-H1>
+
+<Introduction: 150-250 words highlighting the problem solved and who benefits. Include primary keyword naturally.>
+
+## <H2 section with secondary keyword>
+
+<Answer: Why is this needed? When should it be used? What are the limitations?>
+
+### <H3 subsection>
+
+<Use lists, tables, or code blocks as appropriate>
+
+```tsx
+// Minimal but working code example
+```
+
+## <Another H2 section>
+
+### <H3 subsection>
+
+<Include internal links to related documentation>
+
+## Common scenarios and edge cases
+
+<Describe typical use cases and potential pitfalls>
+
+## Troubleshooting common errors
+
+<List common mistakes and how to fix them>
+
+## Summary and takeaways
+
+<Summarize practical benefits and time savings>
+
+**TL;DR for the team:**
+
+- Use [feature] when you need to [achieve goal] without [complication].
+
+For more information:
+
+- [Related topic](/formengine-core/<page>)
+- [API reference](/api-reference/<path>)
 
 ```
