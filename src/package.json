@@ -19,6 +19,7 @@
     "docs:build": "npx lerna run --stream build --scope=@react-form-builder/docs",
     "docs:serve": "npx lerna run --stream serve --scope=@react-form-builder/docs",
     "docs:generate-bundles": "node ./scripts/generate-doc-bundles",
+    "create-json-schema": "npx lerna run --stream create-json-schema",
     "test": "npx lerna run --stream test",
     "test:module": "npx lerna run --stream test:module",
     "test:component": "npx lerna run --stream test:component --concurrency=1",

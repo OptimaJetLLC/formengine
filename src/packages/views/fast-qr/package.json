@@ -4,6 +4,12 @@
   "private": false,
   "main": "src/index.ts",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./schemas/fast-qr-components.schema.json": "./public/schemas/fast-qr-components.schema.json"
+  },
   "description": "OptimaJet Form Builder Components - Fast QR",
   "author": "Optimajet",
   "homepage": "https://formengine.io/",
@@ -15,7 +21,8 @@
   "scripts": {
     "build": "vite build",
     "clean": "rimraf dist temp",
-    "pack": "npm-run-all -l clean build create-archive",
+    "create-json-schema": "vite-node ./config/json-schema-generator.ts",
+    "pack": "npm-run-all -l clean build create-json-schema create-archive",
     "create-archive": "node ./config/pack"
   },
   "dependencies": {
@@ -29,6 +36,10 @@
     "@react-form-builder/core": {
       "optional": false
     }
+  },
+  "devDependencies": {
+    "@react-form-builder/json-schema-generator": "^7.11.0",
+    "vite-node": "^5.2.0"
   },
   "files": [
     "dist/*",

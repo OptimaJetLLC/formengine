@@ -1,5 +1,9 @@
 import {fastQrComponent} from '@react-form-builder/components-fast-qr'
+import fastQrSchema from '@react-form-builder/components-fast-qr/schemas/fast-qr-components.schema.json'
+import googleMapSchema from '@react-form-builder/components-google-map/schemas/google-map-components.schema.json'
 import {muiButton} from '@react-form-builder/components-material-ui'
+import materialUiSchema from '@react-form-builder/components-material-ui/schemas/material-ui-components.schema.json'
+import richTextSchema from '@react-form-builder/components-rich-text/schemas/rich-text-components.schema.json'
 import {
   formEngineRsuiteCssLoader,
   ltrCssLoader,
@@ -7,7 +11,11 @@ import {
   rSuiteComponents,
   rtlCssLoader
 } from '@react-form-builder/components-rsuite'
+import rsuiteTableSchema from '@react-form-builder/components-rsuite-table/schemas/rsuite-table-components.schema.json'
+import rsuiteSchema from '@react-form-builder/components-rsuite/schemas/rsuite-components.schema.json'
 import {signatureComponent} from '@react-form-builder/components-signature'
+import signatureSchema from '@react-form-builder/components-signature/schemas/signature-components.schema.json'
+import uploaderSchema from '@react-form-builder/components-uploader/schemas/uploader-components.schema.json'
 import {BiDi} from '@react-form-builder/core'
 import corePackageJson from '@react-form-builder/core/package.json'
 import schema from '@react-form-builder/core/schemas/persisted-form.schema.json'
@@ -17,6 +25,16 @@ import React from 'react'
 // just to test import
 console.info('persisted-form.schema.json', schema)
 console.info('package.json', corePackageJson)
+
+// schemas import
+console.info('fastQrSchema', fastQrSchema)
+console.info('googleMapSchema', googleMapSchema)
+console.info('materialUiSchema', materialUiSchema)
+console.info('richTextSchema', richTextSchema)
+console.info('rsuiteSchema', rsuiteSchema)
+console.info('rsuiteTableSchema', rsuiteTableSchema)
+console.info('signatureSchema', signatureSchema)
+console.info('uploaderSchema', uploaderSchema)
 
 const components = [...rSuiteComponents, fastQrComponent, signatureComponent, muiButton]
   .map(definer => definer.build())

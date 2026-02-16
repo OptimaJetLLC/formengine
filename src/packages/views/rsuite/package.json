@@ -148,7 +148,8 @@
     },
     "./components-descriptions": {
       "import": "./src/i18n/rSuiteComponentsDescriptions.ts"
-    }
+    },
+    "./schemas/rsuite-components.schema.json": "./public/schemas/rsuite-components.schema.json"
   },
   "bugs": {
     "email": "support@optimajet.com"
@@ -157,8 +158,9 @@
     "build": "vite build",
     "check:dist": "node ./config/check-pack.ts",
     "clean": "rimraf dist temp",
-    "pack": "npm-run-all -l clean build create-archive",
-    "create-archive": "node ./config/pack.ts"
+    "pack": "npm-run-all -l clean build create-json-schema create-archive",
+    "create-archive": "node ./config/pack.ts",
+    "create-json-schema": "vite-node ./config/json-schema-generator.ts"
   },
   "peerDependencies": {
     "@emotion/css": "^11.13.5",
@@ -182,6 +184,8 @@
     "LICENSE"
   ],
   "devDependencies": {
-    "vite-inline-css-plugin": "^0.0.1"
+    "@react-form-builder/json-schema-generator": "^7.11.0",
+    "vite-inline-css-plugin": "^0.0.1",
+    "vite-node": "^5.2.0"
   }
 }

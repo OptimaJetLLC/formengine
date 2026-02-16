@@ -19,7 +19,8 @@
   "scripts": {
     "build": "vite build",
     "clean": "rimraf dist temp",
-    "pack": "npm-run-all -l clean build create-archive",
+    "create-json-schema": "vite-node ./config/json-schema-generator.ts",
+    "pack": "npm-run-all -l clean build create-json-schema create-archive",
     "create-archive": "node ./config/pack.ts"
   },
   "peerDependencies": {
@@ -33,6 +34,10 @@
     "@react-form-builder/core": {
       "optional": false
     }
+  },
+  "devDependencies": {
+    "@react-form-builder/json-schema-generator": "^7.11.0",
+    "vite-node": "^5.2.0"
   },
   "files": [
     "dist/*",
@@ -153,6 +158,7 @@
     },
     "./components-descriptions": {
       "import": "./src/i18n/materialUiComponentsDescriptions.ts"
-    }
+    },
+    "./schemas/material-ui-components.schema.json": "./public/schemas/material-ui-components.schema.json"
   }
 }

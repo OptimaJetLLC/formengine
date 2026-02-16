@@ -64,17 +64,25 @@ try
 {
   RemoveFromPackageJson "@react-form-builder/core"
   RemoveFromPackageJson "@react-form-builder/designer"
-  RemoveFromPackageJson "@react-form-builder/components-material-ui"
-  RemoveFromPackageJson "@react-form-builder/components-rsuite"
-  RemoveFromPackageJson "@react-form-builder/components-signature"
   RemoveFromPackageJson "@react-form-builder/components-fast-qr"
+  RemoveFromPackageJson "@react-form-builder/components-google-map"
+  RemoveFromPackageJson "@react-form-builder/components-material-ui"
+  RemoveFromPackageJson "@react-form-builder/components-rich-text"
+  RemoveFromPackageJson "@react-form-builder/components-rsuite"
+  RemoveFromPackageJson "@react-form-builder/components-rsuite-table"
+  RemoveFromPackageJson "@react-form-builder/components-signature"
+  RemoveFromPackageJson "@react-form-builder/components-uploader"
 
   InstallLocalPackage $PSScriptRoot/../../src/packages/core
   InstallLocalPackage $PSScriptRoot/../../src/packages/designer
-  InstallLocalPackage $PSScriptRoot/../../src/packages/views/material-ui
-  InstallLocalPackage $PSScriptRoot/../../src/packages/views/rsuite
-  InstallLocalPackage $PSScriptRoot/../../src/packages/views/signature
   InstallLocalPackage $PSScriptRoot/../../src/packages/views/fast-qr
+  InstallLocalPackage $PSScriptRoot/../../src/packages/views/google-map
+  InstallLocalPackage $PSScriptRoot/../../src/packages/views/material-ui
+  InstallLocalPackage $PSScriptRoot/../../src/packages/views/rich-text
+  InstallLocalPackage $PSScriptRoot/../../src/packages/views/rsuite
+  InstallLocalPackage $PSScriptRoot/../../src/packages/views/rsuite-table
+  InstallLocalPackage $PSScriptRoot/../../src/packages/views/signature
+  InstallLocalPackage $PSScriptRoot/../../src/packages/views/uploader
   npm run start
 }
 finally

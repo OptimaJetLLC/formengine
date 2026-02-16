@@ -4,6 +4,12 @@
   "private": false,
   "main": "src/index.ts",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./schemas/rich-text-components.schema.json": "./public/schemas/rich-text-components.schema.json"
+  },
   "description": "OptimaJet Form Builder Components - Rich text editor",
   "author": "Optimajet",
   "homepage": "https://formengine.io/",
