@@ -27,7 +27,7 @@
               "args": {
                 "fnArg": {
                   "type": "fn",
-                  "body": "    console.log('fnArg', args, userArgs)\n\n    debugger\n\n    return {\n        result: true\n    }"
+                  "body": "    console.log('fnArg', args, userArgs)\n\n    return {\n        result: true\n    }"
                 },
                 "fnArg1": {
                   "type": "fn",
@@ -35,11 +35,11 @@
                 },
                 "fnArg3": {
                   "type": "fn",
-                  "body": "    console.log('fnArg3', args, userArgs)\n\n    const r = await args.fnArg('from fnArg3', 321)\n\n    debugger\n\n    r.result = false\n\n    return r"
+                  "body": "    console.log('fnArg3', args, userArgs)\n\n    const r = await args.fnArg('from fnArg3', 321)\n\n    r.result = false\n\n    return r"
                 },
                 "fnArg2": {
                   "type": "fn",
-                  "body": "    console.log('fnArg2', args, userArgs)\n\n    const r = await args.fnArg('from fnArg2')\n    const r2 = await args.fnArg3('from fnArg2')\n\n    debugger\n\n    return undefined"
+                  "body": "    console.log('fnArg2', args, userArgs)\n\n    const r = await args.fnArg('from fnArg2')\n    const r2 = await args.fnArg3('from fnArg2')\n\n    return undefined"
                 }
               }
             },

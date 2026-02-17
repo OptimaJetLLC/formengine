@@ -24,8 +24,8 @@ finally
   Pop-Location
 }
 
-# Update the build time for the apps/common, to force IndexedDB updates in the public demo
-Push-Location $PSScriptRoot/../src/packages/apps/common
+# Update the build time for the apps/common-designer, to force IndexedDB updates in the public demo
+Push-Location $PSScriptRoot/../src/packages/apps/common-designer
 try
 {
   npm run update-release-date

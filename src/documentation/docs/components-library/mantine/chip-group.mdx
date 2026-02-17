@@ -1,0 +1,72 @@
+---
+title: ChipGroup
+description: Chip groups for single or multiple selection using chip-style options
+slug: /components-library/mantine/chip-group
+---
+
+import StyleBlock from '../\_style-props.mdx';
+import AdditionalOptions from '../\_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/mantine/src/components/MtChipGroup.tsx"
+/>
+
+## Introduction
+
+The ChipGroup components render a set of chips as either a **single-selection** group (MtChipRadioGroup) or a **multiple-selection**
+group (MtChipCheckboxGroup). They share the same underlying [Mantine Chip.Group](https://mantine.dev/core/chip/) and are useful for
+filters, tags, or compact option lists.
+
+It is included within the following NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+## Component variants
+
+- [MtChipRadioGroup](/components-library/mantine/chip-radio-group) – single selection; value is a single string.
+- [MtChipCheckboxGroup](/components-library/mantine/chip-checkbox-group) – multiple selection; value is an array of strings.
+
+## Differences between variants
+
+| Component                 | Selection type     | Value shape        | Typical use case                         |
+|:--------------------------|:------------------|:-------------------|:------------------------------------------|
+| **MtChipRadioGroup**     | Single selection  | `string`           | Pick one option from a chip list          |
+| **MtChipCheckboxGroup**  | Multiple selection| `string[]`         | Select multiple chips (filters, tags)     |
+
+### MtChipRadioGroup
+
+Chip-based radio group that enforces a single selected value. It behaves similarly to a classic radio group but uses chips as the
+interactive elements.
+
+### MtChipCheckboxGroup
+
+Chip-based checkbox group that lets the user select any subset of chips. It is best suited for filters and tag-style multi-select.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name          | Type                                                                                  | Description                                                                              |
+|:--------------|:--------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------|
+| Label         | `string`                                                                              | Label for the group (default: "Chip Radio Group" / "Chip Group")                         |
+| Description   | `string`                                                                              | Helper text below the group                                                              |
+| Error         | `string`                                                                              | Error message; when set, applies error styling                                           |
+| Value         | `string` (radio) or `array` (checkbox)                                                | Selected value(s) (data-bound)                                                           |
+| Items         | `array`                                                                               | Options (e.g. `[{ value: 'a', label: 'Option A' }, ...]`); default: three sample options |
+| Variant       | `'filled' \| 'outline'`                                                               | Chip visual variant (default: `'filled'`)                                                |
+| Size          | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                | Size of the chips                                                                        |
+| Disabled      | `boolean`                                                                             | Disables all chips (default: `false`)                                                    |
+| With asterisk | `boolean`                                                                             | If `true`, shows required indicator next to the label                                    |
+| Gap           | `string`                                                                              | Spacing between chips                                                                    |
+| Align         | `'start' \| 'center' \| 'end' \| 'stretch'`                                           | Alignment of chips in the group                                                          |
+| Justify       | `'start' \| 'center' \| 'end' \| 'space-between' \| 'space-around' \| 'space-evenly'` | Justify content                                                                          |
+| Wrap          | `'wrap' \| 'nowrap' \| 'wrap-reverse'`                                                | Wrap behavior of the chip row                                                            |
+| Grow          | `boolean`                                                                             | If `true`, chips grow to fill space (default: `false`)                                   |
+| On change     | `event`                                                                               | Fired when the selection changes                                                         |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

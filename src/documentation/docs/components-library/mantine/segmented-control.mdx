@@ -1,0 +1,41 @@
+---
+title: SegmentedControl
+description: The SegmentedControl component displays a set of mutually exclusive options as segments
+slug: /components-library/mantine/segmented-control
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/mantine/src/components/MtSegmentedControl.tsx"
+/>
+
+## Introduction
+
+The SegmentedControl component displays a horizontal group of options where only one can be selected at a time. It is useful for
+view toggles, size options, or similar choices. The component is based on [Mantine SegmentedControl](https://mantine.dev/core/segmented-control/).
+
+It is included within the following NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name         | Type      | Description                                                                                  |
+|:-------------|:----------|:---------------------------------------------------------------------------------------------|
+| Value        | `string`  | The selected value (uncontrolled value)                                                      |
+| Data         | `array`   | Options (e.g. `[{ value: 'a', label: 'Option A' }, ...]`)                                   |
+| Size         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                       | Size of the control                                  |
+| Full width   | `boolean` | If `true`, segments stretch to fill the container                                          |
+| Disabled     | `boolean` | Disables the control                                                                         |
+| On change    | `event`   | Fired when the selection changes                                                            |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

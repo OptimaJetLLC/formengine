@@ -1,0 +1,45 @@
+---
+title: YearMultiplePicker
+description: The MtYearMultiplePicker component selects multiple years
+slug: /components-library/mantine/year-multiple-picker
+---
+
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/mantine/src/components/MtYearPicker.tsx"
+/>
+
+## Introduction
+
+`MtYearMultiplePicker` is the multiple-year variant of the year picker. It lets users select several specific years.
+
+This page describes the properties of the **MtYearMultiplePicker** component. For other variants, see the
+[YearPicker overview](/components-library/mantine/year-picker).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name      | Type                                   | Description                          |
+|:----------|:---------------------------------------|:-------------------------------------|
+| Value     | `Date[]`                               | Array of selected years              |
+| Min date  | `Date`                                 | Minimum selectable year              |
+| Max date  | `Date`                                 | Maximum selectable year              |
+| Size      | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Size of the picker                   |
+| Disabled  | `boolean`                              | Disables the picker                  |
+| On change | `event`                                | Fired when the selected years change |
+
+Additional configuration (columns, locale, formats, levels, etc.) is inherited from Mantine `YearPicker`.
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
+

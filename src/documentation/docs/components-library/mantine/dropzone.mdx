@@ -1,0 +1,41 @@
+---
+title: Dropzone
+description: The Dropzone component provides a drag-and-drop area for file uploads
+slug: /components-library/mantine/dropzone
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/mantine/src/components/MtDropzone.tsx"
+/>
+
+## Introduction
+
+The Dropzone component provides a dedicated area where users can drop files or click to select them. It supports accept types,
+multiple files, and max size. It requires the optional package `@mantine/dropzone`. The component is based on
+[Mantine Dropzone](https://mantine.dev/dropzone/).
+
+It is included within the following NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name         | Type      | Description                                                                                  |
+|:-------------|:----------|:---------------------------------------------------------------------------------------------|
+| Accept       | `array`   | Accepted MIME types or extensions                                                           |
+| Multiple     | `boolean` | If `true`, allows multiple files                                                          |
+| Max size     | `number`  | Maximum file size in bytes                                                                  |
+| On drop      | `event`   | Fired when files are dropped or selected                                                    |
+| Disabled     | `boolean` | Disables the dropzone                                                                      |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

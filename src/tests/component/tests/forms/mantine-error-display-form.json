@@ -1,0 +1,72 @@
+{
+  "version": "1",
+  "errorType": "MtErrorWrapper",
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "dateField",
+        "type": "MtDatePickerInput",
+        "props": {
+          "label": {
+            "value": "Date"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "Date is required"
+              }
+            }
+          ]
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "date-field"
+          }
+        ]
+      },
+      {
+        "key": "numberField",
+        "type": "MtNumberInput",
+        "props": {
+          "label": {
+            "value": "Number"
+          }
+        },
+        "schema": {
+          "validations": [
+            {
+              "key": "required",
+              "args": {
+                "message": "Number is required"
+              }
+            }
+          ]
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "number-field"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {},
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

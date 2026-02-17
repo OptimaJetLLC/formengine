@@ -15,7 +15,7 @@ npm-bundle:
 # npm-update-release-date updates apps release date
 npm-update-release-date:
   FROM +sources
-  RUN cd ./packages/apps/common && npm run update-release-date
+  RUN cd ./packages/apps/common-designer && npm run update-release-date
 
 # npm-demo-build builds demo
 npm-demo-build:
@@ -86,16 +86,18 @@ prepare-npm-archives:
     packages/core
     packages/designer
     packages/designer-bundle
-    packages/json-schema-generator packages/viewer-bundle
+    packages/json-schema-generator
+    packages/viewer-bundle
     packages/viewer-bundle-premium
-    packages/views/rsuite
-    packages/views/material-ui
     packages/views/fast-qr
-    packages/views/rich-text
     packages/views/google-map
-    packages/views/uploader
-    packages/views/signature
+    packages/views/mantine
+    packages/views/material-ui
+    packages/views/rsuite
     packages/views/rsuite-table
+    packages/views/rich-text
+    packages/views/signature
+    packages/views/uploader
   "
   LET archiveName = ''
   FOR package IN $packagesToArchive
@@ -130,8 +132,10 @@ prepare-github-formengine-archive:
   COPY --dir src/packages/json-schema-generator github-formengine/community/src/packages/json-schema-generator
   COPY --dir src/packages/views/rsuite github-formengine/community/src/packages/views/rsuite
   COPY --dir src/packages/views/material-ui github-formengine/community/src/packages/views/material-ui
+  COPY --dir src/packages/views/mantine github-formengine/community/src/packages/views/mantine
   COPY --dir src/packages/views/uploader github-formengine/community/src/packages/views/uploader
   COPY --dir src/packages/viewer-bundle github-formengine/community/src/packages/viewer-bundle
+  COPY --dir src/packages/apps/common github-formengine/community/src/packages/apps/common
   COPY --dir src/packages/apps/example-viewer github-formengine/community/src/packages/apps/example-viewer
   COPY --dir examples/community github-formengine/community/examples
   RUN rm -rf github-formengine/community/examples/bundle-size/scripts/install-local-formengine.ts
@@ -156,6 +160,7 @@ prepare-github-formenginesupport-archive:
   LET dst = private-github
 
   COPY --dir src/packages/apps/common $dst/packages/apps/common
+  COPY --dir src/packages/apps/common-designer $dst/packages/apps/common-designer
   COPY --dir src/packages/apps/example-builder $dst/packages/apps/example-builder
   COPY --dir src/packages/apps/example-viewer $dst/packages/apps/example-viewer
   COPY --dir src/packages/core $dst/packages/core
@@ -167,6 +172,7 @@ prepare-github-formenginesupport-archive:
   COPY --dir src/packages/viewer-bundle-premium $dst/packages/viewer-bundle-premium
   COPY --dir src/packages/views/antd $dst/packages/views/antd
   COPY --dir src/packages/views/rsuite $dst/packages/views/rsuite
+  COPY --dir src/packages/views/mantine $dst/packages/views/mantine
   COPY --dir src/packages/views/material-ui $dst/packages/views/material-ui
   COPY --dir src/packages/views/rsuite-table $dst/packages/views/rsuite-table
   COPY --dir src/packages/views/signature $dst/packages/views/signature
@@ -433,6 +439,7 @@ PUBLISH_RELEASE_TO_NPM:
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-core"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-designer"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rsuite"
+  DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-mantine"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-material-ui"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-rsuite-table"
   DO +PUBLISH_NPM_PACKAGE --disableDryRun=$disableDryRun --archivePrefix="react-form-builder-components-fast-qr"
@@ -487,13 +494,14 @@ dependencies:
 
   RUN mkdir src/documentation src/packages \
    src/documentation/website src/packages/apps src/packages/views \
-   src/packages/apps/common src/packages/apps/demo src/packages/apps/example-builder \
+   src/packages/apps/common src/packages/apps/common-designer src/packages/apps/demo src/packages/apps/example-builder \
    src/packages/apps/example-viewer src/packages/apps/formbuilder \
    src/packages/core src/packages/designer src/packages/designer-bundle src/packages/indexed-db-form-storage \
    src/packages/json-schema-generator \
    src/packages/viewer-bundle src/packages/views/antd src/packages/views/default \
    src/packages/viewer-bundle-premium \
    src/packages/views/rsuite \
+   src/packages/views/mantine \
    src/packages/views/material-ui \
    src/packages/views/rsuite-table \
    src/packages/views/signature \
@@ -508,6 +516,7 @@ dependencies:
   COPY --dir src/documentation/website/packages src/documentation/website
 
   COPY src/packages/apps/common/package.json src/packages/apps/common
+  COPY src/packages/apps/common-designer/package.json src/packages/apps/common-designer
   COPY src/packages/apps/demo/package.json src/packages/apps/demo
   COPY src/packages/apps/example-builder/package.json src/packages/apps/example-builder
   COPY src/packages/apps/example-viewer/package.json src/packages/apps/example-viewer
@@ -524,6 +533,7 @@ dependencies:
   COPY src/packages/views/antd/package.json src/packages/views/antd
   COPY src/packages/views/default/package.json src/packages/views/default
   COPY src/packages/views/rsuite/package.json src/packages/views/rsuite
+  COPY src/packages/views/mantine/package.json src/packages/views/mantine
   COPY src/packages/views/material-ui/package.json src/packages/views/material-ui
   COPY src/packages/views/rsuite-table/package.json src/packages/views/rsuite-table
   COPY src/packages/views/signature/package.json src/packages/views/signature

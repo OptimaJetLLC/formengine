@@ -2,6 +2,7 @@
 title: Material UI components
 description: The list of Material UI components used in the FormEngine library.
 sidebar_label: Material UI components
+sidebar_position: 10000
 ---
 
 import CustomComponents from '../_custom-components.mdx'

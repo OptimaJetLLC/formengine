@@ -1,0 +1,38 @@
+---
+title: Label
+description: The Label component provides a form label for inputs and controls
+slug: /components-library/mantine/label
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/mantine/src/components/MtLabel.tsx"
+/>
+
+## Introduction
+
+The Label component renders a form label that can be associated with form controls. It supports required indicator and size. The
+component is based on [Mantine Input.Label](https://mantine.dev/core/input/).
+
+It is included within the following NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name     | Type      | Description                                                                                  |
+|:---------|:----------|:---------------------------------------------------------------------------------------------|
+| Children | `string`  | The label text (data-bound)                                                                  |
+| Size     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                       | Size of the label text                                 |
+| Required| `boolean` | If `true`, shows the required asterisk (default: `false`)                                   |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

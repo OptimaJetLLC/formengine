@@ -1,0 +1,73 @@
+---
+title: YearPicker
+description: The YearPicker component allows users to select a year
+slug: /components-library/mantine/year-picker
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/mantine/src/components/MtYearPicker.tsx"
+/>
+
+## Introduction
+
+The YearPicker component allows users to select a year. Variants include single year, year range, and multiple years. The component
+requires `@mantine/dates` and is based on [Mantine YearPicker](https://mantine.dev/dates/year-picker/).
+
+It is included within the following NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+## Components covered
+
+- **MtYearPicker**: Single year selection.
+- **MtYearRangePicker**: Year range selection.
+- **MtYearMultiplePicker**: Multiple years selection.
+
+## Differences between components
+
+| Component                  | Selection type     | Value shape                     | Typical use case                         |
+|:---------------------------|:------------------|:--------------------------------|:-----------------------------------------|
+| **MtYearPicker**          | Single year       | `Date \| null`                  | Pick one year (e.g. fiscal year)        |
+| **MtYearRangePicker**     | Year range        | `[Date, Date] \| null`          | Define a continuous span of years        |
+| **MtYearMultiplePicker**  | Multiple years    | `Date[]`                        | Choose several specific years            |
+
+### MtYearPicker
+
+Single-year picker for selecting one specific year, most useful in scenarios like choosing a fiscal year or graduation year.
+
+### MtYearRangePicker
+
+Range picker that allows selecting a start and end year. Use it when representing multi-year intervals like projects or studies.
+
+### MtYearMultiplePicker
+
+Multiple-year picker that supports an arbitrary set of years, useful when you need to mark specific, non-contiguous years.
+
+## Detailed component pages
+
+- [MtYearPicker (single)](/components-library/mantine/year-picker-single)
+- [MtYearRangePicker](/components-library/mantine/year-range-picker)
+- [MtYearMultiplePicker](/components-library/mantine/year-multiple-picker)
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name         | Type      | Description                                                                                  |
+|:-------------|:----------|:---------------------------------------------------------------------------------------------|
+| Value        | `Date \| null` (or range/multiple) | Selected year(s) (uncontrolled value)                            |
+| Min date     | `Date`    | Minimum selectable year                                                                     |
+| Max date     | `Date`    | Maximum selectable year                                                                     |
+| Size         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                       | Size of the picker                                  |
+| Disabled     | `boolean` | Disables the picker                                                                        |
+| On change    | `event`   | Fired when the selection changes                                                            |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

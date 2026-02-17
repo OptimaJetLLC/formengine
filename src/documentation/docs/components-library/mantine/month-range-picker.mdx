@@ -1,0 +1,45 @@
+---
+title: MonthRangePicker
+description: The MtMonthRangePicker component selects a start and end month
+slug: /components-library/mantine/month-range-picker
+---
+
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/mantine/src/components/MtMonthPicker.tsx"
+/>
+
+## Introduction
+
+`MtMonthRangePicker` is the range variant of the month picker. It lets users select a start and end month.
+
+This page describes the properties of the **MtMonthRangePicker** component. For other variants, see the
+[MonthPicker overview](/components-library/mantine/month-picker).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name      | Type                                   | Description                           |
+|:----------|:---------------------------------------|:--------------------------------------|
+| Value     | `[Date, Date] \| null`                 | Selected month range (start and end)  |
+| Min date  | `Date`                                 | Minimum selectable month              |
+| Max date  | `Date`                                 | Maximum selectable month              |
+| Size      | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | Size of the picker                    |
+| Disabled  | `boolean`                              | Disables the picker                   |
+| On change | `event`                                | Fired when the selected range changes |
+
+Additional configuration (columns, locale, formats, levels, etc.) is inherited from Mantine `MonthPicker`.
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
+

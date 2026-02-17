@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@react-form-builder/apps-common": "^7.11.0",
+    "@react-form-builder/apps-common-designer": "^7.11.0",
     "@react-form-builder/components-antd": "^7.11.0",
     "@react-form-builder/components-fast-qr": "^7.11.0",
     "@react-form-builder/components-google-map": "^7.11.0",

@@ -9,6 +9,8 @@ const __dirname = dirname(__filename)
 const packagePrefix = '@react-form-builder/'
 
 const packageList = [
+  'src/packages/apps/common',
+  'src/packages/apps/common-designer',
   'src/packages/apps/demo',
   'src/packages/apps/example-builder',
   'src/packages/apps/example-viewer',
@@ -21,6 +23,7 @@ const packageList = [
   'src/packages/views/antd',
   'src/packages/views/default',
   'src/packages/views/rsuite',
+  'src/packages/views/mantine',
   'src/packages/views/material-ui',
 
   'src/packages/views/fast-qr',

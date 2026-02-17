@@ -1,0 +1,44 @@
+---
+title: Tiptap
+description: The Tiptap component provides a rich text editor powered by Tiptap and Mantine
+slug: /components-library/mantine/tiptap
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/mantine/src/components/MtTiptap.tsx"
+/>
+
+## Introduction
+
+The Tiptap component provides a rich text editor (WYSIWYG) with formatting toolbar and support for headings, lists, links, and more.
+It requires the optional package `@mantine/tiptap` and is based on [Mantine Tiptap](https://mantine.dev/tiptap/).
+
+It is included within the following NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name        | Type      | Description                                          |
+|:------------|:----------|:-----------------------------------------------------|
+| Content     | `string`  | Initial or controlled HTML/content (data-bound)      |
+| Placeholder | `string`  | Placeholder when editor is empty                     |
+| Editable    | `boolean` | If `true`, the content is editable (default: `true`) |
+| On change   | `event`   | Fired when the content changes                       |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
+
+## Additional resources
+
+- [Mantine Tiptap documentation](https://mantine.dev/tiptap/)
+- [Tiptap editor documentation](https://tiptap.dev/)

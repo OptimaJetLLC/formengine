@@ -1,0 +1,49 @@
+---
+title: Button
+description: The Button component allows users to trigger actions with a single click
+slug: /components-library/mantine/button
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/mantine/src/components/MtButton.tsx"
+/>
+
+## Introduction
+
+The Button component allows users to trigger actions with a single click. It is commonly used for form submissions, dialog confirmations,
+navigation, and other interactive elements. The component provides a visually prominent call-to-action with Mantine styling.
+
+The Button component is based on [Mantine Button](https://mantine.dev/core/button/). It is included within the following
+NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+The Button component can be styled and configured to fit specific design and functionality requirements by using various properties that
+are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name         | Type                                                                                       | Description                                           |
+|:-------------|:-------------------------------------------------------------------------------------------|:------------------------------------------------------|
+| Content      | `string`                                                                                   | The text displayed on the button                      |
+| Variant      | `'filled' \| 'default' \| 'outline' \| 'light' \| 'gradient' \| 'subtle' \| 'transparent' \| 'white'` | The variant of the button style                       |
+| Size         | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'compact-xs' \| ... \| 'compact-xl'`               | The size of the button                                |
+| Color        | `string`                                                                                   | The color of the button (Mantine theme color or CSS)  |
+| Disabled     | `boolean`                                                                                  | If `true`, the button will be disabled                |
+| Loading      | `boolean`                                                                                  | Displays a loading indicator and disables interaction  |
+| Full width   | `boolean`                                                                                  | If `true`, the button stretches to full width         |
+| Justify      | `'center' \| 'start' \| 'end' \| 'space-between' \| 'space-around' \| 'space-evenly'`       | Flexbox justify content                               |
+| Type         | `'button' \| 'submit' \| 'reset'`                                                          | The button type                                       |
+| On click     | `event`                                                                                    | Event handler when the button is clicked              |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>

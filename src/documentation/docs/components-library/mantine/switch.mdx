@@ -1,0 +1,51 @@
+---
+title: Switch
+description: The Switch component is a toggle switch that allows users to choose between two mutually exclusive states
+slug: /components-library/mantine/switch
+---
+
+import StyleBlock from '../_style-props.mdx';
+import AdditionalOptions from '../_additional-options.mdx';
+import ComponentInfo from "@site/src/components/ComponentInfo.tsx";
+
+<ComponentInfo
+  packageName="@react-form-builder/components-mantine"
+  packageUrl="https://www.npmjs.com/package/@react-form-builder/components-mantine"
+  sourceUrl="https://github.com/optimajet/formengine/blob/master/community/src/packages/views/mantine/src/components/MtSwitch.tsx"
+/>
+
+## Introduction
+
+The Switch component is a toggle switch that allows users to choose between two mutually exclusive states (on/off, true/false,
+enabled/disabled). It provides a visual alternative to checkboxes for binary choices, often used for settings, preferences, or
+feature toggles. The component features Mantine styling with smooth transitions.
+
+The Switch component is based on [Mantine Switch](https://mantine.dev/core/switch/). It is included within the following
+NPM package: [@react-form-builder/components-mantine](https://www.npmjs.com/package/@react-form-builder/components-mantine).
+
+The Switch component can be styled and configured to fit specific design and functionality requirements by using various properties
+that are presented and described below.
+
+## Main properties
+
+The following general properties are available within the _Main_ tab:
+
+| Name               | Type      | Description                                                                                  |
+|:-------------------|:----------|:---------------------------------------------------------------------------------------------|
+| Label              | `string`  | Text displayed next to the switch                                                            |
+| Checked            | `boolean` | Sets the initial state (true = on, false = off) (uncontrolled value)                         |
+| Label position     | `'left' \| 'right'` | Position of the label relative to the switch                                    |
+| Description        | `string`  | Helper text below the switch                                                                 |
+| Size               | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'`                                                       | The size of the switch                                 |
+| Color              | `string`  | Mantine theme color when checked                                                             |
+| Disabled           | `boolean` | Disables the switch                                                                          |
+| With thumb indicator| `boolean` | If `true`, shows an indicator on the thumb                                                   |
+| On label           | `string`  | Label text when switch is on                                                                 |
+| Off label          | `string`  | Label text when switch is off                                                                |
+| On change          | `event`   | Fired when the checked state changes                                                         |
+
+<AdditionalOptions/>
+
+## Style properties
+
+<StyleBlock/>
