@@ -41,7 +41,7 @@ const config: Config = {
     experimental_faster: true,
     v4: true
   },
-  title: 'Documentation | FormBuilder',
+  title: 'Documentation | FormEngine',
   tagline: 'Lightweight, React-based, Drag&Drop, Customizable, JavaScript',
   favicon: 'img/favicon.ico',
 
@@ -54,7 +54,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'Optimajet Limited', // Usually your GitHub org/user name.
-  projectName: 'formbuilder', // Usually your repo name.
+  projectName: 'formengine', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
@@ -95,6 +95,40 @@ const config: Config = {
         },
       } satisfies Preset.Options,
     ],
+  ],
+
+  headTags: [
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json',
+      },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org/',
+        '@type': 'Organization',
+        name: 'Optimajet Limited',
+        url: 'https://optimajet.com/',
+        logo: '/documentation/img/optimajet-logo.png',
+      }),
+    },
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json',
+      },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        '@id': 'https://formengine.io/documentation/',
+        'url': 'https://formengine.io/documentation/',
+        'name': 'FormEngine documentation',
+        'description': 'Documentation for libraries and tools for creating forms from JSON FormEngine',
+        'publisher': {
+          '@id': 'https://optimajet.com/company/',
+        },
+        'inLanguage': 'en-EN',
+      }),
+    },
   ],
 
   themeConfig: {

@@ -12,12 +12,28 @@ reference for tone, structure, and formatting.
 
 ## Page Structure
 
-- Use frontmatter with `sidebar_position`. Add `title`, `description`, and `slug` for entry or landing pages.
+- Use frontmatter with `sidebar_position`. All documentation pages must include `title`, `description`, `image`, and `tags`. For entry or
+  landing pages, also add `slug`.
 - Include a single H1 that matches the page title.
 - Start with a 1-2 sentence lead paragraph defining the topic and why it matters.
 - For guides, add an "In this guide, you'll learn:" bullet list.
 - Use H2 sections for major topics, H3 for subsections, and H4 for "Live example".
 - End with "Summary", "Next Steps", or "Further Reading" and include related links. Use a horizontal rule before the closing block.
+
+## Important Notes
+
+### Frontmatter Requirements
+
+All documentation pages have to include the following frontmatter fields:
+- `title`: Page title (SEO-H1 with primary keyword)
+- `description`: Meta description (150-160 characters with benefit + CTA)
+- `image`: Featured image for social sharing and preview
+- `tags`: Relevant keywords for categorization and search
+
+### API Reference Files
+
+Files in `src/documentation/docs/api-reference` are automatically generated from source code. Do not modify these files manually. Any
+changes to API documentation should be made in the corresponding source code files and will be regenerated automatically.
 
 ## Formatting Conventions
 
