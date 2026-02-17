@@ -1,0 +1,53 @@
+## 7.12.0
+
+_February 17, 2026_
+
+
+## Overview
+
+FormEngine 7.12.0 introduces **[Mantine components](https://formengine.io/documentation/components-library/mantine)** as a new option in the [component library](https://formengine.io/documentation/components-library/), alongside Material UI and RSuite. This release
+also adds **JSON schemas for component libraries**, improves configuration options with support for passing [user-defined context](https://formengine.io/documentation/formengine-core/storing-user-defined-data#accessing-your-environment-via-usercontext)
+and configuring [initial state](https://formengine.io/documentation/formengine-core/storing-user-defined-data#initializing-form-state-from-formviewer), and contains multiple bug fixes and dependency updates across the platform.
+
+### Why update
+
+- Start building forms with the new **Mantine components** set.
+- Take advantage of JSON schemas for component libraries and improved configuration options.
+- Benefit from fixes in RSuite views, nested forms, templates, documentation, and test infrastructure, plus updated dependencies.
+
+## Key features
+
+* Mantine components integration for building forms with the Mantine UI library.
+* JSON schemas for component libraries.
+* Extended configuration options, including support for passing user-defined context.
+
+## Changelog
+
+### Update instructions
+
+Update all packages to version **7.12.0**. No additional actions are required.
+
+### Features
+
+* Added **Mantine components** to the [component library](https://formengine.io/documentation/components-library/mantine) as an alternative to Material UI and RSuite.
+* Added **JSON schemas for component libraries** to improve tooling and validation.
+* Added support for passing **[user-defined context](https://formengine.io/documentation/formengine-core/storing-user-defined-data#accessing-your-environment-via-usercontext)** and **[initial state](https://formengine.io/documentation/formengine-core/storing-user-defined-data#initializing-form-state-from-formviewer)** so that advanced scenarios can inject additional data into forms at runtime.
+
+### Bug fixes
+
+* Fixed an issue where the **RSuite view** could break styles on the first load.
+* Fixed a problem where **every created form** appeared as a **Template** in the templates section.
+* Fixed **extra indentation in nested forms** so layouts render correctly.
+* Fixed documentation issues related to the **data table dark theme**.
+* Fixed a bug where the **modal template picker** could appear empty.
+
+### Resources
+
+* Core documentation: [Storing user-defined data](https://formengine.io/documentation/formengine-core/storing-user-defined-data).
+* Designer documentation: [Storing user-defined data](https://formengine.io/documentation/formengine-designer/faq/storing-user-defined-data) updated with the new features.
+
+### Security
+
+* Bumped `qs` from `6.14.1` to `6.14.2` Remix example.
+* Bumped `axios` from `1.13.2` to `1.13.5`.
+* Bumped `@isaacs/brace-expansion` from `5.0.0` to `5.0.1`.
