@@ -1,5 +1,7 @@
 ---
 sidebar_position: 40
+title: Custom Error Components
+description: Custom error components allow you to create tailored error message displays that match your application's design system
 ---
 
 # Custom Error Components

@@ -2,6 +2,7 @@
 sidebar_position: -100
 title: Introduction
 slug: /
+description: FormEngine is a comprehensive suite of products that enables you to create, manage, and deploy online forms with unprecedented ease and flexibility
 ---
 
 # Introduction

@@ -2,6 +2,7 @@
 sidebar_position: 34
 title: License key
 slug: /formengine-designer/license-key
+description: How to obtain and use a license key for FormEngine Designer
 ---
 
 # License key

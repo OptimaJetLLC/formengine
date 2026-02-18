@@ -1,6 +1,7 @@
 ---
-sidebar_position: 2
 title: Nested components
+description: Form Builder supports nested components out of the box
+sidebar_position: 2
 slug: /formengine-designer/features/nested-components
 ---
 

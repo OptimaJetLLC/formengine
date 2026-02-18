@@ -1,7 +1,8 @@
 ---
 sidebar_position: 1
-title: External API access
+title: Access to external API from Form Designer
 slug: /formengine-designer/faq/external-api-access
+description: You can access the desired API via custom actions, which are called on a specific event, such as onClick
 ---
 
 # Access to external API from Form Designer

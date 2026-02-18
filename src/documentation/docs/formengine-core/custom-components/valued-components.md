@@ -1,5 +1,7 @@
 ---
 sidebar_position: 3
+title: Valued Components (Data Binding)
+description: Valued components are interactive components that can read from and write to form data
 ---
 
 # Valued Components (Data Binding)

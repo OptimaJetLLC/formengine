@@ -1,5 +1,7 @@
 ---
 sidebar_position: 5
+title: Components with Events
+description: Events enable components to respond to user interactions and communicate with other parts of your application. This guide covers creating components with custom events, handling user interactions
 ---
 
 # Components with Events

@@ -1,5 +1,7 @@
 ---
 sidebar_position: 70
+title: Custom Component Wrapper
+description: A custom component wrapper is a React component that wraps the entire form viewer, allowing you to inject additional functionality, context providers, or styling at the root level of your form
 ---
 
 # Custom Component Wrapper

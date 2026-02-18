@@ -2,6 +2,7 @@
 sidebar_position: 7
 title: Localization
 slug: /formengine-designer/features/localization
+description: In this guide, we will look at how to localize the string properties of a component
 ---
 
 # Localization

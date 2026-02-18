@@ -2,6 +2,7 @@
 sidebar_position: 11
 title: Form storage
 slug: /formengine-designer/features/form-storage
+description: In this guide, we will look at how to connect external storage for forms
 ---
 
 # Form storage

@@ -2,6 +2,7 @@
 sidebar_position: 1
 title: Custom components
 slug: /formengine-designer/features/custom-components
+description: Custom components in Form Builder are regular React components that are described using the Form Builder API
 ---
 
 # Custom components

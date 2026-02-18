@@ -2,6 +2,7 @@
 sidebar_position: 8
 title: Conditional rendering
 slug: /formengine-designer/features/conditional-rendering
+description: FormBuilder out of the box supports conditional rendering for components
 ---
 
 # Conditional rendering

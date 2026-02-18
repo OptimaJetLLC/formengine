@@ -1,5 +1,7 @@
 ---
 sidebar_position: 8
+title: Styling Custom Components
+description: Styling is a crucial aspect of creating visually appealing and consistent custom components in FormEngine Core
 ---
 
 # Styling Custom Components

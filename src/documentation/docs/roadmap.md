@@ -2,6 +2,7 @@
 sidebar_position: 45
 title: Roadmap
 slug: /roadmap
+description: On this page you can see what tasks are planned to improve FormEngine, as well as tasks that may be done, but are not yet planned
 ---
 
 # Roadmap

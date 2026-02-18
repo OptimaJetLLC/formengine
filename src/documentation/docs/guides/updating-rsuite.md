@@ -2,6 +2,7 @@
 sidebar_position: 30
 title: Updating RSuite library
 slug: /updating-rsuite
+description: How to update React Suite in FormEngine Designer
 ---
 
 # Updating RSuite library

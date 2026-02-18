@@ -1,6 +1,7 @@
 ---
-sidebar_position: 5
 title: Validation
+description: In this article, you will learn how to validate fields and the entire form
+sidebar_position: 5
 slug: /formengine-designer/features/validation
 ---
 

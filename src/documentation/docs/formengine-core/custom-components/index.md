@@ -1,3 +1,8 @@
+---
+title: Custom Components
+description: Custom components are the heart of FormEngine Core's extensibility. They allow you to create reusable UI elements that integrate seamlessly with the form system
+---
+
 # Custom Components
 
 Custom components are the heart of FormEngine Core's extensibility. They allow you to create reusable UI elements that integrate seamlessly

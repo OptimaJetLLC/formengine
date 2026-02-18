@@ -2,6 +2,7 @@
 sidebar_position: 90
 title: Formik integration
 slug: /formik-integration
+description: How to work with a form using Formik and FormEngine simultaneously
 ---
 
 # Formik integration

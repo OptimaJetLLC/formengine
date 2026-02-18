@@ -1,6 +1,8 @@
 ---
 sidebar_position: 80
 sidebar_class_name: formengine-core-additional
+title: Disabled and Read-Only Components
+description: FormEngine Core supports disabled and readOnly properties out of the box and propagates them through the component tree
 ---
 
 # Disabled and Read-Only Components

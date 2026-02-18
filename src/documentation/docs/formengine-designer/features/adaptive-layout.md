@@ -2,6 +2,7 @@
 sidebar_position: 4
 title: Adaptive layout
 slug: /formengine-designer/features/adaptive-layout
+description: Form Builder allows you to set different styles for different layouts
 ---
 
 # Adaptive layout

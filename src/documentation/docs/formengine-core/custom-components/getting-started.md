@@ -1,5 +1,7 @@
 ---
 sidebar_position: 1
+title: Getting Started with Custom Components
+description: This guide will help you create your first custom component for FormEngine Cor
 ---
 
 # Getting Started with Custom Components

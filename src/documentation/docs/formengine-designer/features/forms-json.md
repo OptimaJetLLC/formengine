@@ -2,6 +2,7 @@
 sidebar_position: 10
 title: Form's JSON
 slug: /formengine-designer/features/forms-json
+description: Each form created in the form designer is JSON, with the designer, you can export a form to JSON, and you can import a form from JSON
 ---
 
 # Form's JSON

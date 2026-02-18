@@ -1,5 +1,7 @@
 ---
 sidebar_position: 10
+title: Disabled and Read-Only Components
+description: Using the disabled and readOnly property annotations, you can create components that automatically respect and propagate these states throughout the component hierarchy
 ---
 
 # Disabled and Read-Only Components

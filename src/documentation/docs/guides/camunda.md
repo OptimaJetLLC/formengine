@@ -2,6 +2,7 @@
 sidebar_position: 10
 title: Camunda integration
 slug: /camunda-integration
+description: How to connect FormEngine Designer to Camunda
 ---
 
 # Camunda integration

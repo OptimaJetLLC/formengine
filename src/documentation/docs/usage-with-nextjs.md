@@ -2,6 +2,7 @@
 sidebar_position: 31
 title: Usage with Next.js
 slug: /usage-with-nextjs
+description: How to use FormEngine with Next.js
 ---
 
 # Usage with Next.js

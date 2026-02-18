@@ -1,5 +1,7 @@
 ---
 sidebar_position: 30
+title: Container Components
+description: Container components are special components in FormEngine Core that can hold and render child components. Unlike regular components that primarily display their own content, container components
 ---
 
 # Container Components

@@ -1,6 +1,8 @@
 ---
 sidebar_position: 70
 sidebar_class_name: formengine-core-additional
+title: Localization and Internationalization
+description: FormEngine Core provides comprehensive support for localization and internationalization, allowing you to create forms that can be displayed in multiple languages
 ---
 
 # Localization and Internationalization

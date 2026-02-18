@@ -1,5 +1,7 @@
 ---
 sidebar_position: 6
+title: Advanced Component Patterns
+description: This guide covers advanced patterns for creating sophisticated custom components that handle complex scenarios, including composite components, context access, performance optimization
 ---
 
 # Advanced Component Patterns

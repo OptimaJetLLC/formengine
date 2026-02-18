@@ -1,5 +1,7 @@
 ---
 sidebar_position: 2
+title: Simple Components
+description: Simple components are display-only components that don't interact with form data
 ---
 
 # Simple Components

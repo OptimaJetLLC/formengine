@@ -1,5 +1,7 @@
 ---
 sidebar_position: 60
+title: Custom Modal Component
+description: Modal components in FormEngine Core are special UI elements that display content in a dialog window on top of the current form
 ---
 
 # Custom Modal Component

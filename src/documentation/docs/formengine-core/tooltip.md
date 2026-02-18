@@ -1,6 +1,8 @@
 ---
 sidebar_position: 80
 sidebar_class_name: formengine-core-additional
+title: Tooltip
+description: Tooltips let you attach contextual help to form fields without taking up layout space
 ---
 
 # Tooltip

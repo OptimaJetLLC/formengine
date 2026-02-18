@@ -1,5 +1,7 @@
 ---
 sidebar_position: 20
+title: Functional Properties
+description: Functional properties allow you to define component properties that execute custom JavaScript functions at runtime to transform or compute values based on form data
 ---
 
 # Functional Properties

@@ -1,5 +1,7 @@
 ---
 sidebar_position: 50
+title: Custom Tooltip Components
+description: Tooltip components provide contextual help and information to users when they interact with form elements
 ---
 
 # Custom Tooltip Components

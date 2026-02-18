@@ -2,6 +2,7 @@
 sidebar_position: 12
 title: Designer localization
 slug: /formengine-designer/features/designer-localization
+description: Using custom languages in Designer can greatly enhance your project by allowing you to target a specific audience or customize the user experience
 ---
 
 Using custom languages in Designer can greatly enhance your project by allowing you to target a specific audience or customize the user

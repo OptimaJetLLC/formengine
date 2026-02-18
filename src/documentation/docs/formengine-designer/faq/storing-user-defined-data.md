@@ -2,6 +2,7 @@
 sidebar_position: 4
 title: Storing user-defined data
 slug: /formengine-designer/faq/storing-user-defined-data
+description: Each component that implements IFormData can maintain a user-defined data object of any shape
 ---
 
 # Storing user-defined data

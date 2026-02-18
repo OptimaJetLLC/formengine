@@ -2,6 +2,7 @@
 sidebar_position: 3
 title: Component styling
 slug: /formengine-designer/features/component-styling
+description: Styling of components in Form Builder is quite simple, you can customize styles for a component on the "Style" tab
 ---
 
 # Component styling

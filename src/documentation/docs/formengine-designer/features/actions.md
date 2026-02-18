@@ -2,6 +2,7 @@
 sidebar_position: 8
 title: Actions
 slug: /formengine-designer/features/actions
+description: Actions are reusable, asynchronous JavaScript functions that enable you to handle events and interact with your form in FormEngine Designer
 ---
 
 # Actions

@@ -1,6 +1,8 @@
 ---
 sidebar_position: 60
 sidebar_class_name: formengine-core-additional
+title: Actions and Events
+description: Actions and events are the core building blocks for creating interactive forms in FormEngine Core
 ---
 
 # Actions and Events

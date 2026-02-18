@@ -2,6 +2,7 @@
 sidebar_position: 6
 title: Computed properties
 slug: /formengine-designer/features/computed-properties
+description: When designing a form in the designer, you can set the values of the component properties in the right pane
 ---
 
 # Computed properties

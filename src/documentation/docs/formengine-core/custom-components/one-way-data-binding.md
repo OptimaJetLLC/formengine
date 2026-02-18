@@ -1,5 +1,7 @@
 ---
 sidebar_position: 4
+title: One-Way Data Binding
+description: One-way data binding enables components to read from form data without writing back to it, making them perfect for read-only displays, calculated fields, and data presentation
 ---
 
 # One-Way Data Binding

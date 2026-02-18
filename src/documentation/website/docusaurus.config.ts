@@ -129,6 +129,13 @@ const config: Config = {
         'inLanguage': 'en-EN',
       }),
     },
+    {
+      tagName: 'meta',
+      attributes: {
+        property: 'og:image',
+        content: 'https://formengine.io/documentation/img/formengine.png',
+      }
+    },
   ],
 
   themeConfig: {

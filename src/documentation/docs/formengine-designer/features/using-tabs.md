@@ -2,6 +2,7 @@
 sidebar_position: 9
 title: Using tabs
 slug: /formengine-designer/features/using-tabs
+description: In this guide, you will learn how to connect components with tabs
 ---
 
 # Using tabs

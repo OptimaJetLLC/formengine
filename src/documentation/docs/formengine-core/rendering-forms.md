@@ -1,6 +1,8 @@
 ---
 sidebar_position: 10
 sidebar_class_name: formengine-core-essential
+title: Rendering Forms
+description: FormEngine Core provides a flexible and powerful system for rendering forms defined in JSON format
 ---
 
 # Rendering Forms

@@ -2,6 +2,7 @@
 sidebar_position: 12
 title: Designer customization
 slug: /formengine-designer/features/designer-customization
+description: Using the customization FormBuilder prop, you can hide, style, or replace any parts of the FormBuilder interface
 ---
 
 # Designer customization

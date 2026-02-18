@@ -1,5 +1,7 @@
 ---
 sidebar_position: 25
+title: Required Property
+description: The required property in FormEngine Core is a special boolean property that indicates whether a form field is mandatory
 ---
 
 # Required Property
