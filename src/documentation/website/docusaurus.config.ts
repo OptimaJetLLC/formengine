@@ -133,7 +133,7 @@ const config: Config = {
       tagName: 'meta',
       attributes: {
         property: 'og:image',
-        content: 'https://formengine.io/images/og-image.png',
+        content: 'https://formengine.io/documentation/img/og-image.jpg',
       }
     },
   ],
