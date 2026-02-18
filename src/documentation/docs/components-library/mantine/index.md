@@ -170,7 +170,7 @@ npm install @mantine/core @mantine/dates
 
 - [Mantine Official Documentation](https://mantine.dev/)
 - [Mantine Core Components](https://mantine.dev/core/package/)
-- [Mantine Dates](https://mantine.dev/dates/)
+- [Mantine Dates](https://mantine.dev/dates/getting-started/)
 - [Mantine GitHub Repository](https://github.com/mantinedev/mantine)
 - [Mantine Getting Started](https://mantine.dev/getting-started/)
 
