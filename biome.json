@@ -38,6 +38,9 @@
     "enabled": false
   },
   "css": {
+    "parser": {
+      "cssModules": true
+    },
     "formatter": {
       "quoteStyle": "double"
     }

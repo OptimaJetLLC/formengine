@@ -1,4 +1,6 @@
+import {createTheme, localStorageColorSchemeManager, MantineProvider} from '@mantine/core'
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle} from '@mui/material'
+import {view as mantineView} from '@react-form-builder/components-mantine'
 import {view as muiView} from '@react-form-builder/components-material-ui'
 import {viewWithCss} from '@react-form-builder/components-rsuite'
 import {
@@ -38,6 +40,7 @@ const ReactLiveScope: unknown = {
   ...React,
   viewWithCss,
   muiView,
+  mantineView,
   buildForm,
   FormViewer,
   define,
@@ -68,7 +71,10 @@ const ReactLiveScope: unknown = {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle
+  DialogTitle,
+  createTheme,
+  MantineProvider,
+  localStorageColorSchemeManager
 }
 
 export default ReactLiveScope

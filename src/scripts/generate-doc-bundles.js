@@ -1,7 +1,7 @@
-import {fileURLToPath} from 'node:url'
-import {dirname, join} from 'node:path'
-import {readFileSync, renameSync} from 'node:fs'
 import {execSync} from 'node:child_process'
+import {readFileSync, renameSync} from 'node:fs'
+import {dirname, join} from 'node:path'
+import {fileURLToPath} from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -14,6 +14,7 @@ const viewsDir = join(packagesDir, 'views')
 const packages = {
   '@react-form-builder/core': join(packagesDir, 'core'),
   '@react-form-builder/components-material-ui': join(viewsDir, 'material-ui'),
+  '@react-form-builder/components-mantine': join(viewsDir, 'mantine'),
   '@react-form-builder/components-rsuite': join(viewsDir, 'rsuite'),
   '@react-form-builder/components-rsuite-table': join(viewsDir, 'rsuite-table'),
   '@react-form-builder/components-uploader': join(viewsDir, 'uploader'),

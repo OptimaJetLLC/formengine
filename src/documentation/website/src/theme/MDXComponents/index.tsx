@@ -1,6 +1,7 @@
 import MDXComponents from '@theme-original/MDXComponents';
 import {VegaLite} from '@site/src/components/VegaLite';
 import {CsvTable} from '@site/src/components/CsvTable';
+import {LiveCodeWithDetails} from '@site/src/components/LiveCodeWithDetails';
 
 /**
  * Custom MDX components that extend the default Docusaurus MDX components.
@@ -11,5 +12,6 @@ export default {
   ...MDXComponents,
   // Add custom components
   VegaLite,
-  CsvTable
+  CsvTable,
+  LiveCodeWithDetails
 };
