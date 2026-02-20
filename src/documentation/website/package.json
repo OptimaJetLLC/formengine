@@ -13,7 +13,9 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "generate-typedoc": "dotenv -v ENABLE_TYPEDOC=\"true\" docusaurus build",
-    "copy-bundle-charts": "node scripts/copy-bundle-charts.ts"
+    "copy-bundle-charts": "node scripts/copy-bundle-charts.ts",
+    "compress-all-images": "node scripts/compress-images.ts ./static",
+    "compress-image": "node scripts/compress-images.ts"
   },
   "dependencies": {
     "@docusaurus/core": "^3.8.1",
@@ -46,6 +48,7 @@
     "@docusaurus/tsconfig": "^3.8.1",
     "@docusaurus/types": "^3.8.1",
     "docusaurus-plugin-typedoc": "^1.4.0",
+    "sharp": "^0.34.5",
     "typedoc": "^0.28.7",
     "typedoc-plugin-markdown": "^4.7.1",
     "typescript": "5.8.3"
