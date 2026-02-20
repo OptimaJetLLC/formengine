@@ -36,7 +36,7 @@ the array of metadata of form builder components.
 
 > **builderComponents**: [`BuilderComponent`](../interfaces/BuilderComponent.md)[]
 
-the array of metadata of form builder components.
+The array of metadata of form builder components.
 
 ***
 
