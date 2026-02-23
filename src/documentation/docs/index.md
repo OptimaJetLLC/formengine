@@ -1,11 +1,14 @@
 ---
+description: 'Complete guide to FormEngine: React form library, drag & drop designer,
+  AI form builder. Learn how to build, validate, and deploy forms in minutes. Free
+  & open source.'
+sidebar_label: Introduction
 sidebar_position: -100
-title: Introduction
 slug: /
-description: FormEngine is a comprehensive suite of products that enables you to create, manage, and deploy online forms with unprecedented ease and flexibility
+title: FormEngine Documentation - React Form Builder Guide
 ---
 
-# Introduction
+# FormEngine Documentation - React Form Builder Guide
 
 FormEngine is a comprehensive suite of products that enables you to create, manage, and deploy online forms with unprecedented ease and
 flexibility. The platform offers solutions for every stage of form development—from visual building tools to powerful rendering engines and

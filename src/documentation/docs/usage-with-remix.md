@@ -1,11 +1,13 @@
 ---
+description: 'Use FormEngine in Remix applications: loader/action integration, progressive
+  enhancement, form validation, and server-side rendering with Remix forms.'
+sidebar_label: Usage with Remix
 sidebar_position: 32
-title: Usage with Remix
 slug: /usage-with-remix
-description: How to use FormEngine with Remix
+title: FormEngine with Remix - Integration Guide
 ---
 
-# Usage with Remix
+# FormEngine with Remix - Integration Guide
 
 The FormEngine is fully compatible with the latest versions of the [Remix](https://remix.run/).
 

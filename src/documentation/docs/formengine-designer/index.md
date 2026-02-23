@@ -1,11 +1,13 @@
 ---
+description: Visual form builder for React. Drag & drop interface to create forms
+  without code. Export to JSON for FormEngine Core. Embed in your applications.
+sidebar_label: FormEngine Designer
 sidebar_position: -25
-title: FormEngine Designer
-description: FormEngine Designer, React drag and drop form builder library
 slug: /formengine-designer
+title: FormEngine Designer - Visual Drag & Drop Form Builder
 ---
 
-# FormEngine Designer
+# FormEngine Designer - Visual Drag & Drop Form Builder
 
 Form Builder is a client-side library for creating web forms. The library allows you to map a form from JSON to a dynamic HTML form and send
 the results to your server. The library has no built-in visual components to display the form. Instead, it is made to display your

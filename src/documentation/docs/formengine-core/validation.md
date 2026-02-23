@@ -1,12 +1,14 @@
 ---
-sidebar_position: 30
+description: 'Comprehensive form validation in FormEngine: built-in rules, Zod integration,
+  async validation, custom validators, cross-field validation, and error handling.'
 sidebar_class_name: formengine-core-essential
-title: Validation
-description: Comprehensive guide to form validation in FormEngine Core
+sidebar_label: Validation
+sidebar_position: 30
 slug: /formengine-core/validation
+title: Form Validation Guide - Zod, Custom Rules & More
 ---
 
-# Validation in FormEngine Core
+# Form Validation Guide - Zod, Custom Rules & More
 
 FormEngine Core provides a powerful, flexible validation system built on the robust [Zod](https://zod.dev/) validation library. This guide
 will help you understand how to implement validation in your forms, from simple required fields to complex conditional validation logic.

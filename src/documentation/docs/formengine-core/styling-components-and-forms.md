@@ -1,11 +1,14 @@
 ---
-sidebar_position: 40
+description: 'Complete guide to styling FormEngine forms: CSS customization, theme
+  integration with Material UI/React Suite, responsive layouts, and custom component
+  styling.'
 sidebar_class_name: formengine-core-additional
-title: Styling Components and Forms
-description: Learn how to style forms and components in FormEngine Core using CSS, JSON, and responsive design techniques
+sidebar_label: Styling Components and Forms
+sidebar_position: 40
+title: Style React Forms - CSS, Themes & Responsive Design
 ---
 
-# Styling Components and Forms
+# Style React Forms - CSS, Themes & Responsive Design
 
 FormEngine Core provides multiple ways to style your forms and components, giving you full control over the appearance while maintaining
 flexibility and responsiveness. This guide covers everything from basic CSS styling to advanced responsive design techniques.

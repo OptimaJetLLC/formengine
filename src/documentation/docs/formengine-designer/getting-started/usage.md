@@ -1,11 +1,13 @@
 ---
+description: 'Learn how to use FormEngine Designer: create forms visually, configure
+  properties, add validation, export JSON, and integrate with FormEngine Core.'
+sidebar_label: Usage
 sidebar_position: 3
-title: Usage
-description: Examples of Designer and Viewer usage.
 slug: /formengine-designer/getting-started/usage
+title: Using FormEngine Designer - Build Your First Form
 ---
 
-# Usage
+# Using FormEngine Designer - Build Your First Form
 
 ## Designer
 

@@ -1,11 +1,14 @@
 ---
-sidebar_position: 60
+description: 'Handle form events in FormEngine: submit, reset, change events, custom
+  actions, API calls, and integration with external systems. Complete event handling
+  guide.'
 sidebar_class_name: formengine-core-additional
-title: Actions and Events
-description: Actions and events are the core building blocks for creating interactive forms in FormEngine Core
+sidebar_label: Actions and Events
+sidebar_position: 60
+title: Form Events & Actions - Handle User Interactions
 ---
 
-# Actions and Events
+# Form Events & Actions - Handle User Interactions
 
 Actions and events are the core building blocks for creating interactive forms in FormEngine Core. They allow you to define what happens
 when users interact with your forms: clicking buttons, typing text, selecting options, and more.

@@ -1,12 +1,13 @@
 ---
-sidebar_position: 300
+description: Add custom HTML attributes to FormEngine forms
 sidebar_class_name: formengine-core-advanced
-title: HTML attributes
-description: Add custom HTML attributes to components for testing, accessibility, and integration.
+sidebar_label: HTML attributes
+sidebar_position: 300
 slug: /formengine-core/html-attributes
+title: Custom HTML Attributes - Accessibility
 ---
 
-# HTML attributes
+# Custom HTML Attributes - Accessibility
 
 HTML attributes let you add extra metadata and behavior to the underlying HTML elements of your form components. In FormEngine Core, you can
 attach arbitrary HTML attributes through the [htmlAttributes](/api-reference/@react-form-builder/core/classes/ComponentStore#htmlattributes)

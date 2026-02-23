@@ -1,12 +1,14 @@
 ---
-sidebar_position: 45
+description: 'Create responsive forms that adapt to any screen size. Learn FormEngine
+  adaptive layout system: breakpoints, grid layouts, and mobile-first design patterns.'
 sidebar_class_name: formengine-core-additional
-title: Adaptive Layout
-description: Learn how FormEngine Core automatically adapts forms to different screen sizes with device-specific styling and view modes
+sidebar_label: Adaptive Layout
+sidebar_position: 45
 slug: /formengine-core/adaptive-layout
+title: Responsive Form Layouts - Mobile & Desktop Optimization
 ---
 
-# Adaptive Layout
+# Responsive Form Layouts - Mobile & Desktop Optimization
 
 FormEngine Core provides a powerful adaptive layout system that automatically adjusts your forms to different screen sizes. When you use
 the [FormViewer](/api-reference/@react-form-builder/core/variables/FormViewer) component, it automatically detects the current view mode

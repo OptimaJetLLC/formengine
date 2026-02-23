@@ -1,11 +1,13 @@
 ---
-sidebar_position: 80
+description: Improve form UX with tooltips in FormEngine. Add contextual help, field
+  descriptions, examples, and guidance for better user experience and fewer errors.
 sidebar_class_name: formengine-core-additional
-title: Tooltip
-description: Tooltips let you attach contextual help to form fields without taking up layout space
+sidebar_label: Tooltip
+sidebar_position: 80
+title: Add Tooltips to Forms - Help Text & Field Descriptions
 ---
 
-# Tooltip
+# Add Tooltips to Forms - Help Text & Field Descriptions
 
 Tooltips let you attach contextual help to form fields without taking up layout space. In FormEngine Core, tooltips are rendered by wrapping
 components at runtime based on your form and component configuration.

@@ -1,12 +1,14 @@
 ---
-sidebar_position: 330
+description: Build complex forms with nested sub-forms in FormEngine. Create repeatable
+  sections, form arrays, and hierarchical form structures for advanced use cases.
 sidebar_class_name: formengine-core-advanced
-title: Embedded forms
-description: Nest forms inside other forms using the EmbeddedForm component and the getForm function.
+sidebar_label: Embedded forms
+sidebar_position: 330
 slug: /formengine-core/embedded-forms
+title: Nested Forms - Embed Forms Within Forms
 ---
 
-# Embedded forms
+# Nested Forms - Embed Forms Within Forms
 
 Embedded forms let you include one form as a component inside another form. In FormEngine Core, you use the `EmbeddedForm` component
 together with the `getForm` callback to load and display a nested form at runtime.

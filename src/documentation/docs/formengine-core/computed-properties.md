@@ -1,12 +1,14 @@
 ---
-sidebar_position: 320
+description: 'Create dynamic calculated fields in FormEngine: auto-compute totals,
+  percentages, dates, and derived values based on other form fields in real-time.'
 sidebar_class_name: formengine-core-advanced
-title: Computed Properties
-description: Define component properties that recalculate automatically based on form state.
+sidebar_label: Computed Properties
+sidebar_position: 320
 slug: /formengine-core/computed-properties
+title: Dynamic Form Fields - Computed Values & Calculations
 ---
 
-# Computed Properties
+# Dynamic Form Fields - Computed Values & Calculations
 
 Computed properties let you make component settings dynamic, they recalculate automatically whenever the form state changes. In FormEngine
 Core, you turn a static property into a computed one by setting `computeType: "function"` and providing the calculation logic in `fnSource`.

@@ -1,11 +1,13 @@
 ---
-sidebar_position: 80
+description: 'Control form field states in FormEngine: disable fields, create read-only
+  views based on data.'
 sidebar_class_name: formengine-core-additional
-title: Disabled and Read-Only Components
-description: FormEngine Core supports disabled and readOnly properties out of the box and propagates them through the component tree
+sidebar_label: Disabled and Read-Only Components
+sidebar_position: 80
+title: Disabled & Read-Only Form Fields - Control User Input
 ---
 
-# Disabled and Read-Only Components
+# Disabled & Read-Only Form Fields - Control User Input
 
 Many component libraries expose `disabled` and `readOnly` flags. `disabled` usually blocks interaction, while `readOnly` allows viewing
 without editing. FormEngine Core supports these flags out of the box and propagates them through the component tree so you can lock down

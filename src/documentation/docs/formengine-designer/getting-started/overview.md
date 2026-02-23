@@ -1,11 +1,13 @@
 ---
+description: 'Discover FormEngine Designer features: drag & drop builder, real-time
+  preview, JSON export, component library, property editors, and application integration.'
+sidebar_label: Overview
 sidebar_position: 1
-title: Overview
-description: Overview of FormEngine's NPM packages.
 slug: /formengine-designer/getting-started/overview
+title: FormEngine Designer Overview - Features & Capabilities
 ---
 
-# Overview
+# FormEngine Designer Overview - Features & Capabilities
 
 Form Builder consists of the following NPM packages:
 

@@ -1,11 +1,13 @@
 ---
-sidebar_position: 0
+description: Install FormEngine Core in under 5 minutes. Works with npm, yarn, and
+  pnpm. Compatible with React 17.2+, Next.js, Remix, and Create React App.
 sidebar_class_name: formengine-core-essential
-title: Installation
-description: Get FormEngine Core up and running in your React project in under 5 minutes with our simple installation guide
+sidebar_label: Installation
+sidebar_position: 0
+title: Install FormEngine Core - Quick Start Guide
 ---
 
-# Installation
+# Install FormEngine Core - Quick Start Guide
 
 Get FormEngine Core up and running in your React project in under 5 minutes. Whether you're starting a new project or adding it to an
 existing one, we've got you covered.

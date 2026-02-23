@@ -1,12 +1,14 @@
 ---
-sidebar_position: 340
+description: Create modal forms and dialog windows in FormEngine. Build confirmation
+  dialogs, multi-step wizards, and pop-up forms with complete control and customization.
 sidebar_class_name: formengine-core-advanced
-title: Modal windows
-description: Create interactive modal dialogs with nested forms using Modal component and showModal/closeModal actions.
+sidebar_label: Modal windows
+sidebar_position: 340
 slug: /formengine-core/modal
+title: Modal Forms & Pop-up Dialogs - User Interactions
 ---
 
-# Modal windows
+# Modal Forms & Pop-up Dialogs - User Interactions
 
 Modal windows in FormEngine Core allow you to display nested forms in overlay dialogs that appear above the main form content. Modals are
 perfect for confirmation dialogs, detailed edit forms, additional information panels, or any secondary interaction that should temporarily

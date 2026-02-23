@@ -1,12 +1,15 @@
 ---
-sidebar_position: 50
+description: Build dynamic forms with conditional rendering in FormEngine. Show/hide
+  fields based on user input, create multi-step flows, and implement complex form
+  logic.
 sidebar_class_name: formengine-core-additional
-title: Conditional rendering
-description: Show or hide components with renderWhen based on current form state.
+sidebar_label: Conditional rendering
+sidebar_position: 50
 slug: /formengine-core/conditional-rendering
+title: Dynamic Forms with Conditional Logic & Field Dependencies
 ---
 
-# Conditional rendering
+# Dynamic Forms with Conditional Logic & Field Dependencies
 
 Conditional rendering lets you show or hide components as the user fills out a form. In FormEngine Core, the primary mechanism is the
 [renderWhen][cs-renderwhen] field on a component.

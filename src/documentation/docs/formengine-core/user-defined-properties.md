@@ -1,12 +1,14 @@
 ---
-sidebar_position: 310
+description: 'Learn how to define custom properties in FormEngine Core.
+  Guide with syntax, examples, and best practices for building dynamic, flexible forms.'
 sidebar_class_name: formengine-core-advanced
-title: User defined properties
-description: Override component properties at runtime using userDefinedProps and setUserDefinedProps.
+sidebar_label: User defined properties
+sidebar_position: 310
 slug: /formengine-core/user-defined-properties
+title: Extend Forms with User‑Defined Properties
 ---
 
-# User defined properties
+# Extend Forms with User‑Defined Properties
 
 User-defined properties let you override component properties at runtime, bypassing the static and computed values that FormEngine Core
 normally calculates. You can change properties through actions or directly in React code using [userDefinedProps][user-defined-props]

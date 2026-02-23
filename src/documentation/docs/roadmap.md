@@ -1,11 +1,13 @@
 ---
+description: 'See what''s coming to FormEngine: planned features, improvements, community
+  requests, and our vision for the future of React form building.'
+sidebar_label: Roadmap
 sidebar_position: 45
-title: Roadmap
 slug: /roadmap
-description: On this page you can see what tasks are planned to improve FormEngine, as well as tasks that may be done, but are not yet planned
+title: FormEngine Roadmap - Upcoming Features & Plans
 ---
 
-# Roadmap
+# FormEngine Roadmap - Upcoming Features & Plans
 
 On this page you can see what tasks are planned to improve FormEngine. As well as tasks that may be done, but are not yet planned.
 

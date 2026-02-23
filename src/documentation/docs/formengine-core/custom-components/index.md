@@ -1,9 +1,11 @@
 ---
-title: Custom Components
-description: Custom components are the heart of FormEngine Core's extensibility. They allow you to create reusable UI elements that integrate seamlessly with the form system
+description: 'Create custom form components for FormEngine: integrate third-party
+  libraries, build specialized inputs, and extend FormEngine with your own React components.'
+sidebar_label: Custom Components
+title: Build Custom Form Components - Extend FormEngine
 ---
 
-# Custom Components
+# Build Custom Form Components - Extend FormEngine
 
 Custom components are the heart of FormEngine Core's extensibility. They allow you to create reusable UI elements that integrate seamlessly
 with the form system, providing custom functionality while leveraging FormEngine's powerful features like data binding, validation, and

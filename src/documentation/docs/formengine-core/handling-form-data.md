@@ -1,12 +1,14 @@
 ---
-sidebar_position: 20
+description: 'Master form data handling in FormEngine: state management, data binding,
+  form submission, validation, and integration with APIs. Complete guide with examples.'
 sidebar_class_name: formengine-core-essential
-title: Handling Form Data
-description: Complete guide to working with form data in FormViewer - from basic data binding to advanced data manipulation
+sidebar_label: Handling Form Data
+sidebar_position: 20
 slug: /formengine-core/handling-form-data
+title: Form Data Management - FormEngine Core Guide
 ---
 
-# Handling Form Data in FormViewer
+# Form Data Management - FormEngine Core Guide
 
 Form data management is at the heart of every form application. FormEngine Core provides multiple ways to work with form data, from simple
 data binding to complex data manipulation scenarios. This guide will walk you through all aspects of form data handling, starting from basic

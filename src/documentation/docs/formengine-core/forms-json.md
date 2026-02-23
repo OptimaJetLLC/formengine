@@ -1,11 +1,13 @@
 ---
-sidebar_position: 350
+description: 'Complete reference for FormEngine JSON format: schema structure, field
+  types, validation rules, actions, events, and all configuration options explained.'
 sidebar_class_name: formengine-core-advanced
-title: Form JSON
-description: Understand the shared structure of FormEngine form JSON and how component sets extend it.
+sidebar_label: Form JSON
+sidebar_position: 350
+title: FormEngine JSON Schema - Form Configuration Reference
 ---
 
-# Form JSON
+# FormEngine JSON Schema - Form Configuration Reference
 
 Form JSON is the blueprint for a form. It lists every component in a tree and adds the extra settings FormEngine Core needs to render,
 validate, and localize your form.

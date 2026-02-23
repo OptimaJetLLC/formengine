@@ -1,11 +1,13 @@
 ---
-sidebar_position: 70
+description: Build multi-language forms with FormEngine i18n support. Translate labels,
+  error messages, and validation rules. Works with react-i18next and custom solutions.
 sidebar_class_name: formengine-core-additional
-title: Localization and Internationalization
-description: FormEngine Core provides comprehensive support for localization and internationalization, allowing you to create forms that can be displayed in multiple languages
+sidebar_label: Localization and Internationalization
+sidebar_position: 70
+title: Multi-Language Forms - i18n & Localization Guide
 ---
 
-# Localization and Internationalization
+# Multi-Language Forms - i18n & Localization Guide
 
 FormEngine Core provides comprehensive support for localization and internationalization, allowing you to create forms that can be displayed
 in multiple languages. This guide covers all aspects of localization in FormEngine, from basic property localization to advanced validation

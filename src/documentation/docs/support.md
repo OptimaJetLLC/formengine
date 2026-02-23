@@ -1,11 +1,13 @@
 ---
-title: Support
-description: Do you need help, found a bug or have an idea?
-slug: /support
+description: 'Get support for FormEngine: GitHub discussions, documentation, community
+  forum, bug reports, feature requests, and professional support options.'
+sidebar_label: Support
 sidebar_position: 50
+slug: /support
+title: Get Help with FormEngine - Support & Resources
 ---
 
-# Support
+# Get Help with FormEngine - Support & Resources
 
 ## Bugs
 

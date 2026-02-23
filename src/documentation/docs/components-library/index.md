@@ -1,11 +1,12 @@
 ---
-title: Components library
-description: FormEngine supports multiple UI component libraries. The primary libraries available are MUI, Mantine, React Suite
+description: 'Browse 30+ pre-built form components for FormEngine: inputs, selects,
+  date pickers, file uploads, rich text editors, and more. All MIT-licensed and customizable.'
 sidebar_label: Components library
 sidebar_position: 0
+title: FormEngine Component Library - 30+ Ready UI Components
 ---
 
-# Components library
+# FormEngine Component Library - 30+ Ready UI Components
 
 FormEngine supports multiple UI component libraries. The primary libraries available are:
 

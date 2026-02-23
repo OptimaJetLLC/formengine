@@ -1,12 +1,13 @@
 ---
-sidebar_position: 360
+description: Create React forms based on JSON Schema definitions. Learn how to validate the form configuration using the schema in your IDE.
 sidebar_class_name: formengine-core-advanced
-title: JSON Schema
-description: Learn how to create and use JSON Schema for validating FormEngine form definitions
+sidebar_label: JSON Schema
+sidebar_position: 360
 slug: /formengine-core/json-schema
+title: JSON Schema - validate the form configuration using the schema
 ---
 
-# JSON Schema for Form Validation
+# JSON Schema - validate the form configuration using the schema
 
 JSON Schema provides a powerful way to validate your form definitions and get intelligent editing support in your IDE. By creating a schema
 for your component library, you can ensure your JSON forms are correctly structured and catch errors before runtime.

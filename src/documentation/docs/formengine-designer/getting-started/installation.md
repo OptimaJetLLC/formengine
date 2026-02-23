@@ -1,11 +1,13 @@
 ---
+description: Install FormEngine Designer in your React application. Complete setup
+  guide with npm, configuration, and integration with your existing codebase.
+sidebar_label: Installation
 sidebar_position: 2
-title: Installation
-description: Installing the Designer and Viewer packages of FormEngine.
 slug: /formengine-designer/getting-started/installation
+title: Install FormEngine Designer - Setup Guide
 ---
 
-# Installation
+# Install FormEngine Designer - Setup Guide
 
 ## Designer
 

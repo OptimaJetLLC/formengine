@@ -1,11 +1,13 @@
 ---
+description: 'Integrate FormEngine with Next.js: App Router support, Server Components,
+  API routes, form submission, and deployment. Complete Next.js guide.'
+sidebar_label: Usage with Next.js
 sidebar_position: 31
-title: Usage with Next.js
 slug: /usage-with-nextjs
-description: How to use FormEngine with Next.js
+title: FormEngine with Next.js - Integration Guide
 ---
 
-# Usage with Next.js
+# FormEngine with Next.js - Integration Guide
 
 The FormEngine is fully compatible with the latest versions of the [Next.js](https://nextjs.org/).
 

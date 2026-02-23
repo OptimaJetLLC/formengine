@@ -1,11 +1,13 @@
 ---
+description: FormEngine Core is a free, MIT-licensed React library for rendering JSON-driven
+  forms. Built-in validation, state management, and support for any UI library.
+sidebar_label: FormEngine Core
 sidebar_position: -50
-title: FormEngine Core
-description: FormEngine Core - The easiest way to create beautiful forms with Material UI components
 slug: /formengine-core
+title: FormEngine Core - React Form Library Documentation
 ---
 
-# FormEngine Core
+# FormEngine Core - React Form Library Documentation
 
 **@react-form-builder/core** is a free, open-source tool that helps you create beautiful, functional forms using Material UI
 components without writing complex code. Build forms visually using simple JSON configuration and get fully functional, validated forms in

@@ -1,12 +1,14 @@
 ---
-sidebar_position: 35
+description: Store and manage custom user data in FormEngine forms. Learn how to add
+  metadata, custom properties, and application-specific fields to form configurations.
 sidebar_class_name: formengine-core-additional
-title: Storing user-defined data
-description: Use form-level state and userContext to attach custom data, HTTP clients, and loggers to your forms.
+sidebar_label: Storing user-defined data
+sidebar_position: 35
 slug: /formengine-core/storing-user-defined-data
+title: Store Custom Data in Forms - User-Defined Fields
 ---
 
-# Storing user-defined data
+# Store Custom Data in Forms - User-Defined Fields
 
 Each form that implements [IFormData](/api-reference/@react-form-builder/core/interfaces/IFormData) can maintain a user-defined `state`
 object of any shape. You can also pass a free-form `userContext` object from your host application to expose HTTP clients, loggers, and

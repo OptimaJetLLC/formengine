@@ -1,11 +1,13 @@
 ---
-sidebar_position: 10
+description: Learn how FormEngine Core renders React forms from JSON configuration.
+  Step-by-step guide with examples using Material UI, React Suite, and custom components.
 sidebar_class_name: formengine-core-essential
-title: Rendering Forms
-description: FormEngine Core provides a flexible and powerful system for rendering forms defined in JSON format
+sidebar_label: Rendering Forms
+sidebar_position: 10
+title: How to Render Forms in FormEngine Core
 ---
 
-# Rendering Forms
+# How to Render Forms in FormEngine Core
 
 FormEngine Core provides a flexible and powerful system for rendering forms defined in JSON format. This document covers the fundamentals of
 form rendering, from basic setup to advanced configuration options.
