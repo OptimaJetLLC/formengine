@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@rspack/cli": "^1.6.8",
-    "ajv": "8.17.1",
+    "ajv": "8.18.0",
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "rollup-plugin-bundle-stats": "^4.21.7"
