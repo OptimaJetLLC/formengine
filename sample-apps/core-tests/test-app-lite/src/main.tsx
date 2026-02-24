@@ -1,11 +1,17 @@
-import {FormViewerLite} from '@react-form-builder/core/lite'
+import {createView, FormViewerLite} from '@react-form-builder/core/lite'
 
-const getForm = () => ''
+const view = createView([])
+const getForm = () => JSON.stringify({
+  form: {
+    key: 'Screen',
+    type: 'Screen'
+  }
+})
 
 /**
  * Lite test app.
  * @returns React app.
  */
 export const App = () => {
-  return <FormViewerLite view={{} as any} getForm={getForm} />
+  return <FormViewerLite view={view} getForm={getForm}/>
 }

@@ -1,7 +1,7 @@
-import {defineConfig} from 'vite'
 import react from '@vitejs/plugin-react-swc'
-import {analyzer} from 'vite-bundle-analyzer'
 import path from 'node:path'
+import {defineConfig} from 'vite'
+import {analyzer} from 'vite-bundle-analyzer'
 
 export default defineConfig({
   plugins: [
@@ -14,6 +14,7 @@ export default defineConfig({
     }),
   ],
   build: {
+    minify: 'terser',
     outDir: path.resolve(__dirname, '../dist'),
     lib: {
       entry: path.resolve(__dirname, 'src/main.tsx'),
@@ -22,7 +23,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['react', 'react-dom', '@fluent/bundle'],
+      external: ['react', 'react-dom', 'react-is'],
     },
   }/*,
   resolve: {

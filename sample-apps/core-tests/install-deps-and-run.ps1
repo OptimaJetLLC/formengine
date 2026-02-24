@@ -45,7 +45,7 @@ function InstallLocalPackage($Path)
 #     npm install $PackageArchive --force
 
     # Update and install tgz in test apps
-    $TestApps = @("test-app-lite", "test-app-full")
+    $TestApps = @("test-app-lite", "test-app-full", "test-app-full-rsbuild")
     $PackageArchivePath = Join-Path $PSScriptRoot $PackageArchive
     foreach ($App in $TestApps)
     {

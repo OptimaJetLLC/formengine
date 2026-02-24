@@ -4,10 +4,10 @@
 // @ts-nocheck TS5097 allow .ts import
 
 import {execSync} from 'child_process'
-import {join, dirname} from 'path'
-import {fileURLToPath} from 'url'
 import {existsSync} from 'fs'
-import {analyzeBundle, getDistTestDir, generateStats} from './utils.ts'
+import {dirname, join} from 'path'
+import {fileURLToPath} from 'url'
+import {analyzeBundle, generateStats, getDistTestDir} from './utils.ts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -113,6 +113,13 @@ console.log('Lite stats:', join(distTestDir, 'stats-lite.json'))
 console.log('Full stats:', join(distTestDir, 'stats-full.json'))
 
 console.log('')
+
+console.log('Bundling with rsbuild')
+execSync('npm run build', {
+  cwd: join(packageDir, 'test-app-full-rsbuild'),
+  stdio: 'inherit',
+})
+
 console.log('✅ All tests completed!')
 
 
