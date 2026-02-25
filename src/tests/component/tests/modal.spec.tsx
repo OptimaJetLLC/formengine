@@ -1,7 +1,7 @@
 import {builderViewWithCss, viewWithCss} from '@react-form-builder/components-rsuite'
 import {FormViewer} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
-import {fireEvent, render, waitFor} from '@testing-library/react'
+import {fireEvent, render, waitFor, within} from '@testing-library/react'
 import {addCustomEventHandler, togglePreview} from '../util/controls'
 import beforeHideDataShowModalForm from './forms/modal/before-hide-show-modal.json'
 import beforeShowShowModalForm from './forms/modal/before-show-show-modal-form.json'
@@ -196,6 +196,40 @@ describe('Modal tests', () => {
     fireEvent.click(okButton)
 
     expect(await findByTestId('formModalInput')).toHaveValue('three')
+  })
+
+  it('openModal.beforeHide test result should match returned value', async () => {
+    const getForm = (name?: string) => {
+      const form = name === 'modal-layout' ? modalLayoutForm : beforeHideDataShowModalForm
+      return JSON.stringify(form)
+    }
+
+    const renderResult = render(<FormBuilder view={builderViewWithCss} getForm={getForm}/>)
+    const {container, findByTestId, findByText} = renderResult
+
+    fireEvent.click(await findByTestId('Tree_Tab'))
+    const showModalButtons = await renderResult.findAllByTestId('showModalButton')
+    const treeShowModalButton = showModalButtons.find(item => item.tagName.toLowerCase() === 'div')
+    if (!treeShowModalButton) {
+      throw new Error('Unable to find showModalButton in tree panel')
+    }
+    fireEvent.click(treeShowModalButton)
+    fireEvent.click(await findByTestId('Actions_Tab'))
+
+    const rightPanel = container.querySelector('.FE_RightPanel_Content') as HTMLElement
+    const argumentsButton = await within(rightPanel).findByText('Arguments')
+    fireEvent.click(argumentsButton)
+    const beforeHideLabel = await within(rightPanel).findByText('beforeHide')
+    const beforeHideBlock = beforeHideLabel.parentNode as HTMLElement
+    const editCodeButton = await within(beforeHideBlock).findByText('Edit code')
+    fireEvent.click(editCodeButton)
+
+    const runButton = await findByText('Run')
+    fireEvent.click(runButton)
+
+    const result = await findByTestId('test-result')
+    await waitFor(() => expect(result).toHaveTextContent('{}'))
+    expect(result).not.toHaveTextContent('function')
   })
 
   it.skip('Confirmation should close the parent modal', async () => {

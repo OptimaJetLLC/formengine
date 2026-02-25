@@ -22,8 +22,6 @@ async function ArgumentCallback(e, args, ...userArgs) {`
 
 const endContextLine = '}'
 
-const getFunctionSource = (source: string) => `${beginContextLine}${source}${endContextLine}`
-
 const useFnArgument = (name: string): [string | undefined, (src?: string) => void] => {
   const data = useActionData()
   const arg = data?.args?.[name] as FunctionArgumentValue
@@ -55,9 +53,9 @@ const RawInputFunction = ({name}: InputProps) => {
 
   const onCompile = useCallback((source: string) => {
     try {
-      const src = getFunctionSource(source)
-      const compiled = new Function('e', 'args', src)
-      const result = compiled()
+      const compiled = new Function('e', 'args', '...userArgs', source)
+      const testEventArgs = {data: {}, errors: {}}
+      const result = compiled(testEventArgs, {result: 'ok'})
       return {error: false, result}
     } catch (e) {
       return {error: true, exceptions: [e as Error]}

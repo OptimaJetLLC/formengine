@@ -331,4 +331,15 @@ describe('Event args UI should display and pass arguments', () => {
 
     await app.findByText('Edit code action: rsButton1.onClick[0] funcArgs:fnArg')
   })
+
+  it('should show function argument execution result in test output', async () => {
+    await openCodeEditor(app, 'funcArgs')
+
+    const runButton = await app.findByText('Run')
+    fireEvent.click(runButton)
+
+    const result = await app.findByTestId('test-result')
+    expect(result).toHaveTextContent('"result": true')
+    expect(result).not.toHaveTextContent('function')
+  })
 })

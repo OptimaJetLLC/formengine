@@ -81,7 +81,8 @@ const init = (data: Record<string, any>) => {
 
 const ResultMessage = ({result}: { result: CalculableResult }) => {
   const t = useTranslationPart('testingEditor')
-  return <div>
+
+  return <div data-testid={'test-result'}>
     {!isUndefined(result.result)
       ? stringify(result?.result)
       : result.exceptions?.map(e => e.message) ?? t('hasNotReturnedValue')
