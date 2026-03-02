@@ -25,9 +25,9 @@ const RawActionItem = ({name, action}: ActionItemProps) => {
     <ListItem>
       <span>{name}</span>
       <ButtonGroup>
-        <EditButton onClick={handleEdit}/>
+        <EditButton onClick={handleEdit} data-testid={`edit-action-${name}`}/>
         <CloneButton onClick={handleClone}/>
-        <RemoveButton onClick={handleRemove}/>
+        <RemoveButton onClick={handleRemove} data-testid={`remove-action-${name}`}/>
       </ButtonGroup>
     </ListItem>
   )

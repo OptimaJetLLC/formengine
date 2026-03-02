@@ -1,4 +1,4 @@
-import type {ActionData, Annotation} from '@react-form-builder/core'
+import type {ActionData, Annotation, ComponentData} from '@react-form-builder/core'
 import type {ComponentProps} from 'react'
 
 /**
@@ -13,4 +13,8 @@ export interface ActionsMenuProps extends ComponentProps<any> {
    * The metadata for a React component property.
    */
   annotation: Annotation
+  /**
+   * The component data.
+   */
+  componentData: ComponentData
 }

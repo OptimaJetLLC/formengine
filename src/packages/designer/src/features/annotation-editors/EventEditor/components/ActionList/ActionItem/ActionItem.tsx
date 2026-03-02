@@ -11,12 +11,13 @@ import {ActionDataProvider} from './contexts/ActionDataContext'
 interface ActionItemProps {
   action: ActionData
   onRemove: () => void
+  eventName: string
 }
 
 const columnsStyle = {justifyContent: 'space-between', padding: 8} as const
 const nameStyle = {color: 'violet', marginLeft: 5} as const
 
-const RawActionItem = ({action, onRemove}: ActionItemProps) => {
+const RawActionItem = ({action, onRemove, eventName}: ActionItemProps) => {
   const builderStore = useBuilderStore()
   const viewerStore = useStore()
   const {name, type} = action
@@ -38,8 +39,8 @@ const RawActionItem = ({action, onRemove}: ActionItemProps) => {
           {`${name || 'Action'}`}
         </b>
         <ButtonGroup size={'xs'}>
-          {isCodeAction && <EditButton onClick={edit}/>}
-          <RemoveButton onClick={onRemove}/>
+          {isCodeAction && <EditButton onClick={edit} data-testid={`edit-action-${eventName}-${action.type}-${action.name}`}/>}
+          <RemoveButton onClick={onRemove} data-testid={`remove-action-${eventName}-${action.type}-${action.name}`}/>
         </ButtonGroup>
       </Columns>
       <ArgumentList/>

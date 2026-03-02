@@ -43,9 +43,11 @@ const RawActionListItem = ({action, index, onRemove, eventName}: ActionListItemP
     index, eventName
   }), [eventName, index])
 
+  const dataTestId = `bound-action-${eventName}-${action.type}-${action.name}`
+
   return <EventHandlerItemProvider value={value}>
-    <SListItem index={index}>
-      <ActionItem action={action} onRemove={handleRemove}/>
+    <SListItem index={index} data-testid={dataTestId}>
+      <ActionItem action={action} onRemove={handleRemove} eventName={eventName}/>
     </SListItem>
   </EventHandlerItemProvider>
 }

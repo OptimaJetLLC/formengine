@@ -11,12 +11,12 @@ import {CommonActionsList} from './components/CommonActionsList'
 import {CustomActionList} from './components/CustomActionList'
 import type {ActionsMenuProps} from './types'
 
-const MenuPopover = forwardRef(({onSelect, annotation, ...props}: ActionsMenuProps, ref: any) => (
+const MenuPopover = forwardRef(({onSelect, annotation, componentData, ...props}: ActionsMenuProps, ref: any) => (
   <Popover ref={ref} {...props} full>
     <Dropdown.Menu>
-      <CommonActionsList onSelect={onSelect} annotation={annotation}/>
-      <CodeActionsList onSelect={onSelect} annotation={annotation}/>
-      <CustomActionList onSelect={onSelect} annotation={annotation}/>
+      <CommonActionsList onSelect={onSelect} annotation={annotation} componentData={componentData}/>
+      <CodeActionsList onSelect={onSelect} annotation={annotation} componentData={componentData}/>
+      <CustomActionList onSelect={onSelect} annotation={annotation} componentData={componentData}/>
     </Dropdown.Menu>
   </Popover>
 ))
@@ -36,7 +36,9 @@ const RawAddActionButton = (props: AnnotationEditorProps) => {
     ComponentStore.addEventHandler(store, eventName, action)
   }, [ref, store, eventName])
 
-  const speaker = useMemo(() => <MenuPopover onSelect={handleSelect} annotation={annotation}/>, [handleSelect, annotation])
+  const speaker = useMemo(() => {
+    return <MenuPopover onSelect={handleSelect} annotation={annotation} componentData={componentData}/>
+  }, [handleSelect, annotation, componentData])
 
   return <Whisper placement="leftStart" ref={ref} trigger="click" speaker={speaker}>
     <IconButton icon={addButtonIcon} size="sm" data-testid={`${eventName}-add-button`}>{t('addAction')}</IconButton>

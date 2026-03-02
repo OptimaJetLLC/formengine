@@ -100,7 +100,7 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
                   initialValue={initialValue} language={props.language} onChange={setSourceCode}/>
       <SDiv>
         <ButtonGroup size={'sm'}>
-          <Button appearance="primary" onClick={handleSave}>{t('common.save')}</Button>
+          <Button appearance="primary" onClick={handleSave} data-testid={'save-code-action-button'}>{t('common.save')}</Button>
           <Button appearance="ghost" onClick={handleClose}>{t('common.close')}</Button>
         </ButtonGroup>
         {props.compact && <TestRunner testingFunction={testingFunction} ref={testingEditor} compact/>}

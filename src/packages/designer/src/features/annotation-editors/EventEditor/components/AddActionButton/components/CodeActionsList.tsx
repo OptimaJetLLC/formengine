@@ -15,14 +15,13 @@ const addButtonIcon = <PlusIcon/>
 /**
  * React form builder component that displays the list of code actions.
  * @param props the React component properties.
- * @param props.onSelect the callback function called when an action is selected.
- * @param props.annotation the metadata for a React component property.
  * @returns the React element.
  */
-const RawCodeActionsList = ({onSelect, annotation}: ActionsMenuProps) => {
+const RawCodeActionsList = (props: ActionsMenuProps) => {
+  const {onSelect, annotation, componentData} = props
   const store = useStore()
   const builderStore = useBuilderStore()
-  const selectedStore = builderStore.oneSelected?.store
+  const selectedStore = componentData.store
   const eventName = annotation.key
   const actionNames = store.form.actionNames
   const t = useTranslationPart('actions')
@@ -43,14 +42,14 @@ const RawCodeActionsList = ({onSelect, annotation}: ActionsMenuProps) => {
     </Dropdown.Item>
   ), [handleSelect])
 
-  return <Dropdown.Menu title={t('code')} eventKey="code">
+  return <Dropdown.Menu title={t('code')} eventKey="code" data-testid={'dropdown-menu-code-actions'}>
     {actionNames?.map(renderAction)}
 
     {!!actionNames?.length && <Dropdown.Item disabled>
       <Divider style={dividerStyle}/>
     </Dropdown.Item>}
 
-    <Dropdown.Item icon={addButtonIcon} onClick={addAction}>
+    <Dropdown.Item icon={addButtonIcon} onClick={addAction} data-testid={'dropdown-item-add-code-action'}>
       {t('addCodeAction')}
     </Dropdown.Item>
   </Dropdown.Menu>
