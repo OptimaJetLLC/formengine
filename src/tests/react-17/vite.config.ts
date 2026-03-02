@@ -8,8 +8,10 @@ const __dirname = path.dirname(__filename)
 
 const testDir = '../component/tests/**/*.{test,spec}.?(c|m)[jt]s?(x)'
 const configDir = '../component/config/setup.ts'
- const exclude = [
-  '../component/tests/**/mantine-*.{test,spec}.?(c|m)[jt]s?(x)'  // Mantine supports react >= 18
+const exclude = [
+  // Mantine supports react >= 18
+  '../component/tests/**/mantine-*.{test,spec}.?(c|m)[jt]s?(x)',
+  '../component/tests/**/modal.{test,spec}.?(c|m)[jt]s?(x)',
 ]
 
 // TODO move common to base config

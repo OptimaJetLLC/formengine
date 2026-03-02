@@ -481,6 +481,10 @@
           "description": "Contenu de la boîte de dialogue",
           "name": "Enfants"
         },
+        "onOpen": {
+          "description": "Appelé lorsque la propriété open est définie sur true",
+          "name": "ONOUVERT"
+        },
         "onOpenedChange": {
           "description": "Appelé lorsque la propriété ouverte est modifiée",
           "name": "Changement ouvert"

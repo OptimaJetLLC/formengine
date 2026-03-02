@@ -127,3 +127,21 @@ export const toggleTheme = async (container: HTMLElement) => {
 
   fireEvent.click(button as Element)
 }
+
+/**
+ * Given an element that is either an <input> or contains one,
+ * returns the first <input> descendant. Throws if no input is found.
+ */
+export function getInputElement(element: HTMLElement): HTMLInputElement {
+  // If the element itself is an input, return it
+  if (element.tagName === 'INPUT') {
+    return element as HTMLInputElement
+  }
+
+  // Otherwise, look for an input inside
+  const input = element.querySelector('input')
+  if (!input) {
+    throw new Error('No input element found inside the provided element.')
+  }
+  return input
+}
