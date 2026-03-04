@@ -1,5 +1,5 @@
 # Type Alias: FormBuilderTheme
 
-> **FormBuilderTheme** = `"light"` \| `"dark"` \| `"system"`
+> **FormBuilderTheme** = `"dark"` \| `"light"` \| `"system"`
 
 Indicates the theme preference.

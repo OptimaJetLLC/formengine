@@ -1,5 +1,5 @@
 # Type Alias: ComponentPropertyBindType
 
-> **ComponentPropertyBindType** = `"single"` \| `"array"`
+> **ComponentPropertyBindType** = `"array"` \| `"single"`
 
 The component property binding type.

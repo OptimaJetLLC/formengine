@@ -1,5 +1,5 @@
 # Type Alias: FieldType
 
-> **FieldType** = `"simple"` \| `"template"` \| `"repeater"`
+> **FieldType** = `"repeater"` \| `"simple"` \| `"template"`
 
 The field type.

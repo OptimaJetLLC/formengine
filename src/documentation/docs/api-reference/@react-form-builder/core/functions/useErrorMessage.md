@@ -1,9 +1,9 @@
 # Function: useErrorMessage()
 
-> **useErrorMessage**(): `undefined` \| `string`
+> **useErrorMessage**(): `string` \| `undefined`
 
 ## Returns
 
-`undefined` \| `string`
+`string` \| `undefined`
 
 a field validation error message if the field data is not valid.

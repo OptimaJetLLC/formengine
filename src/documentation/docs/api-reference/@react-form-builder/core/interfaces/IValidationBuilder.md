@@ -246,7 +246,7 @@ Applies styles to the component, optionally per device.
 
 the style string (e.g., "color: red") or object with style properties.
 
-`string` | `CSSProperties`
+`CSSProperties` | `string`
 
 ##### device?
 

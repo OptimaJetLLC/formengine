@@ -4,13 +4,13 @@ Props for the MuiRadioItem component.
 
 ## Extends
 
-- `Pick`\<`RadioProps`, `"value"` \| `"color"` \| `"disabled"`\>
+- `Pick`\<`RadioProps`, `"color"` \| `"disabled"` \| `"value"`\>
 
 ## Properties
 
 ### color?
 
-> `optional` **color**: `OverridableStringUnion`\<`"error"` \| `"default"` \| `"success"` \| `"primary"` \| `"secondary"` \| `"warning"` \| `"info"`, `RadioPropsColorOverrides`\>
+> `optional` **color**: `OverridableStringUnion`\<`"default"` \| `"error"` \| `"info"` \| `"primary"` \| `"secondary"` \| `"success"` \| `"warning"`, `RadioPropsColorOverrides`\>
 
 The color of the component.
 It supports both default and custom theme colors, which can be added as shown in the

@@ -142,7 +142,7 @@ Whether the panel is disabled
 
 ### eventKey?
 
-> `optional` **eventKey**: `string` \| `number`
+> `optional` **eventKey**: `number` \| `string`
 
 The event key corresponding to the panel
 
@@ -350,7 +350,7 @@ Called when the panel is selected
 
 ##### eventKey
 
-`undefined` | `string` | `number`
+`number` | `string` | `undefined`
 
 ##### event
 

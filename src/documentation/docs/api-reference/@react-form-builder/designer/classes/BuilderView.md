@@ -172,7 +172,7 @@ the array of component metadata filtered using the predicate function.
 
 ### find()
 
-> **find**(`type`): `undefined` \| [`Model`](../../core/classes/Model.md)\<`any`\>
+> **find**(`type`): [`Model`](../../core/classes/Model.md)\<`any`\> \| `undefined`
 
 #### Parameters
 
@@ -184,7 +184,7 @@ the component type.
 
 #### Returns
 
-`undefined` \| [`Model`](../../core/classes/Model.md)\<`any`\>
+[`Model`](../../core/classes/Model.md)\<`any`\> \| `undefined`
 
 the component metadata for the form viewer for the specified type or undefined.
 
@@ -196,7 +196,7 @@ the component metadata for the form viewer for the specified type or undefined.
 
 ### findMeta()
 
-> **findMeta**(`type`): `undefined` \| [`Meta`](../../core/classes/Meta.md)
+> **findMeta**(`type`): [`Meta`](../../core/classes/Meta.md) \| `undefined`
 
 Returns the component metadata for the specified component type name or undefined.
 
@@ -210,7 +210,7 @@ the component type name.
 
 #### Returns
 
-`undefined` \| [`Meta`](../../core/classes/Meta.md)
+[`Meta`](../../core/classes/Meta.md) \| `undefined`
 
 the component metadata for the specified component type name or undefined.
 

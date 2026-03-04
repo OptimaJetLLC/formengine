@@ -130,11 +130,11 @@ the Record that contains the className property for the component.
 
 #### Get Signature
 
-> **get** **disabled**(): `undefined` \| \{[`key`: `string`]: `any`; \}
+> **get** **disabled**(): \{[`key`: `string`]: `any`; \} \| `undefined`
 
 ##### Returns
 
-`undefined` \| \{[`key`: `string`]: `any`; \}
+\{[`key`: `string`]: `any`; \} \| `undefined`
 
 the disabled property of a component if the component has a disabled flag.
 
@@ -176,11 +176,11 @@ combined in order of priority component properties.
 
 #### Get Signature
 
-> **get** **htmlAttributes**(): `undefined` \| [`HtmlAttribute`](../type-aliases/HtmlAttribute.md)
+> **get** **htmlAttributes**(): [`HtmlAttribute`](../type-aliases/HtmlAttribute.md) \| `undefined`
 
 ##### Returns
 
-`undefined` \| [`HtmlAttribute`](../type-aliases/HtmlAttribute.md)
+[`HtmlAttribute`](../type-aliases/HtmlAttribute.md) \| `undefined`
 
 all arbitrary HTML attributes of the component.
 
@@ -281,11 +281,11 @@ does not contain styles additionally defined for the component.
 
 #### Get Signature
 
-> **get** **readOnly**(): `undefined` \| \{[`key`: `string`]: `any`; \}
+> **get** **readOnly**(): \{[`key`: `string`]: `any`; \} \| `undefined`
 
 ##### Returns
 
-`undefined` \| \{[`key`: `string`]: `any`; \}
+\{[`key`: `string`]: `any`; \} \| `undefined`
 
 the read-only property of a component if the component has a read-only flag.
 
@@ -295,11 +295,11 @@ the read-only property of a component if the component has a read-only flag.
 
 #### Get Signature
 
-> **get** **required**(): `undefined` \| `Record`\<`string`, `boolean`\>
+> **get** **required**(): `Record`\<`string`, `boolean`\> \| `undefined`
 
 ##### Returns
 
-`undefined` \| `Record`\<`string`, `boolean`\>
+`Record`\<`string`, `boolean`\> \| `undefined`
 
 the required property of a component if the component has a required flag.
 
@@ -309,11 +309,11 @@ the required property of a component if the component has a required flag.
 
 #### Get Signature
 
-> **get** **style**(): `undefined` \| \{ `style`: `any`; \}
+> **get** **style**(): \{ `style`: `any`; \} \| `undefined`
 
 ##### Returns
 
-`undefined` \| \{ `style`: `any`; \}
+\{ `style`: `any`; \} \| `undefined`
 
 the Record that contains the style property for the component.
 
@@ -323,11 +323,11 @@ the Record that contains the style property for the component.
 
 #### Get Signature
 
-> **get** **value**(): `undefined` \| \{[`key`: `string`]: `unknown`; \}
+> **get** **value**(): \{[`key`: `string`]: `unknown`; \} \| `undefined`
 
 ##### Returns
 
-`undefined` \| \{[`key`: `string`]: `unknown`; \}
+\{[`key`: `string`]: `unknown`; \} \| `undefined`
 
 the component's field value data, if the component can have a field value.
 
@@ -357,11 +357,11 @@ the className for the wrapper of component.
 
 #### Get Signature
 
-> **get** **wrapperStyle**(): `undefined` \| \{ `style`: `any`; \}
+> **get** **wrapperStyle**(): \{ `style`: `any`; \} \| `undefined`
 
 ##### Returns
 
-`undefined` \| \{ `style`: `any`; \}
+\{ `style`: `any`; \} \| `undefined`
 
 the Record that contains the style property for the wrapper of component.
 

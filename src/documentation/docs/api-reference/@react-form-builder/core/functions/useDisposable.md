@@ -1,6 +1,6 @@
 # Function: useDisposable()
 
-> **useDisposable**\<`T`\>(`factory`): `undefined` \| `T`
+> **useDisposable**\<`T`\>(`factory`): `T` \| `undefined`
 
 Creates a disposable object and dispose the object when the React component is unmounted. **Internal use only.**
 
@@ -20,6 +20,6 @@ the factory function to create a disposable object.
 
 ## Returns
 
-`undefined` \| `T`
+`T` \| `undefined`
 
 the disposable object.

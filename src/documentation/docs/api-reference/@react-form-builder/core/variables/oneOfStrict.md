@@ -11,7 +11,7 @@ Sets the property as a "single select" property.
 
 ### U
 
-`U` *extends* `string` \| `number`
+`U` *extends* `number` \| `string`
 
 ## Parameters
 

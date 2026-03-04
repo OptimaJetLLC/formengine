@@ -200,7 +200,7 @@ Custom close button, used when rendered as a Drawer
 
 ### container?
 
-> `optional` **container**: `HTMLElement` \| () => `HTMLElement`
+> `optional` **container**: () => `HTMLElement` \| `HTMLElement`
 
 #### Inherited from
 

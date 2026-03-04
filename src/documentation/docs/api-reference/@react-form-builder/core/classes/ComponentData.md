@@ -377,11 +377,11 @@ the key of this node (same as the key of the ComponentStore).
 
 #### Get Signature
 
-> **get** **nearestIndex**(): `undefined` \| `number`
+> **get** **nearestIndex**(): `number` \| `undefined`
 
 ##### Returns
 
-`undefined` \| `number`
+`number` \| `undefined`
 
 the index in the array if the component is in the component array
 (looks for the nearest index in the component hierarchy).
@@ -392,11 +392,11 @@ the index in the array if the component is in the component array
 
 #### Get Signature
 
-> **get** **parentData**(): `undefined` \| `Record`\<`string`, `unknown`\>
+> **get** **parentData**(): `Record`\<`string`, `unknown`\> \| `undefined`
 
 ##### Returns
 
-`undefined` \| `Record`\<`string`, `unknown`\>
+`Record`\<`string`, `unknown`\> \| `undefined`
 
 the object to read and modify parent data (available for array elements).
 
@@ -521,7 +521,7 @@ It disposes the field and all the children objects.
 
 ### findByKey()
 
-> **findByKey**(`key`): `undefined` \| `ComponentData`
+> **findByKey**(`key`): `ComponentData` \| `undefined`
 
 Find the node with the given key.
 
@@ -535,7 +535,7 @@ the key to find.
 
 #### Returns
 
-`undefined` \| `ComponentData`
+`ComponentData` \| `undefined`
 
 the node or undefined if not found.
 
@@ -719,7 +719,7 @@ Updates the initial data. **Internal use only.**
 
 the initial data key.
 
-`string` | `number`
+`number` | `string`
 
 ##### value
 

@@ -20,7 +20,7 @@ the second value.
 
 ### customizer?
 
-(`a`, `b`, `key?`) => `undefined` \| `boolean`
+(`a`, `b`, `key?`) => `boolean` \| `undefined`
 
 the optional comparator callback.
 

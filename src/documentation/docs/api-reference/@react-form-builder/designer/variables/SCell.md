@@ -1,3 +1,3 @@
 # Variable: SCell
 
-> `const` **SCell**: `StyledComponent`\<`InnerCellProps`\<`RowDataType`\<`any`\>, `string` \| `number`\> & `RefAttributes`\<`HTMLDivElement`\> & `object`, \{ \}, \{ \}\>
+> `const` **SCell**: `StyledComponent`\<`InnerCellProps`\<`RowDataType`\<`any`\>, `number` \| `string`\> & `RefAttributes`\<`HTMLDivElement`\> & `object`, \{ \}, \{ \}\>

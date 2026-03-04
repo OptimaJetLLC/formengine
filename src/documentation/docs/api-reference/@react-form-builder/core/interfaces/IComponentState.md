@@ -95,11 +95,11 @@ the className for the wrapper of component.
 
 #### Get Signature
 
-> **get** **wrapperStyle**(): `undefined` \| \{ `style`: `CSSProperties`; \}
+> **get** **wrapperStyle**(): \{ `style`: `CSSProperties`; \} \| `undefined`
 
 ##### Returns
 
-`undefined` \| \{ `style`: `CSSProperties`; \}
+\{ `style`: `CSSProperties`; \} \| `undefined`
 
 the Record that contains the style property for the wrapper of component.
 

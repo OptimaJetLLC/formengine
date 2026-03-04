@@ -1,6 +1,6 @@
 # Type Alias: ActionsInitializer()
 
-> **ActionsInitializer** = (`props`, `def`) => `Record`\<[`EventName`](EventName.md), [`ActionEventHandler`](ActionEventHandler.md) \| [`ActionDefinition`](../classes/ActionDefinition.md)\>
+> **ActionsInitializer** = (`props`, `def`) => `Record`\<[`EventName`](EventName.md), [`ActionDefinition`](../classes/ActionDefinition.md) \| [`ActionEventHandler`](ActionEventHandler.md)\>
 
 The type of function that initializes an actions on a component. **Internal use only.**
 
@@ -20,6 +20,6 @@ the helper to create an action event handler.
 
 ## Returns
 
-`Record`\<[`EventName`](EventName.md), [`ActionEventHandler`](ActionEventHandler.md) \| [`ActionDefinition`](../classes/ActionDefinition.md)\>
+`Record`\<[`EventName`](EventName.md), [`ActionDefinition`](../classes/ActionDefinition.md) \| [`ActionEventHandler`](ActionEventHandler.md)\>
 
 the Record with action event handlers.

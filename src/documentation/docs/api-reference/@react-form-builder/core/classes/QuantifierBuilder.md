@@ -70,7 +70,7 @@ Options for building an annotation.
 
 ### values
 
-> **values**: (`string` \| `number`)[]
+> **values**: (`number` \| `string`)[]
 
 Possible values for the property.
 
@@ -250,7 +250,7 @@ Sets the default value for the component property.
 
 the default value, can be an array of values.
 
-`T` | `T`[]
+`T`[] | `T`
 
 #### Returns
 

@@ -1,6 +1,6 @@
 # Type Alias: ActionEventHandler()
 
-> **ActionEventHandler** = (`e`, `args?`) => `void` \| `Promise`\<`void`\>
+> **ActionEventHandler** = (`e`, `args?`) => `Promise`\<`void`\> \| `void`
 
 Event handler function type.
 
@@ -20,4 +20,4 @@ the action parameters.
 
 ## Returns
 
-`void` \| `Promise`\<`void`\>
+`Promise`\<`void`\> \| `void`

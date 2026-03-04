@@ -30,7 +30,7 @@ The MuiBox component properties.
 
 ### alignContent?
 
-> `optional` **alignContent**: `ResponsiveStyleValue`\<readonly string\[\] \| AlignContent \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| AlignContent \| undefined\>
+> `optional` **alignContent**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| AlignContent \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| AlignContent \| undefined\>
 
 #### Inherited from
 
@@ -40,7 +40,7 @@ The MuiBox component properties.
 
 ### alignItems?
 
-> `optional` **alignItems**: `ResponsiveStyleValue`\<readonly string\[\] \| AlignItems \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| AlignItems \| undefined\>
+> `optional` **alignItems**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| AlignItems \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| AlignItems \| undefined\>
 
 #### Inherited from
 
@@ -50,7 +50,7 @@ The MuiBox component properties.
 
 ### alignSelf?
 
-> `optional` **alignSelf**: `ResponsiveStyleValue`\<readonly string\[\] \| AlignSelf \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| AlignSelf \| undefined\>
+> `optional` **alignSelf**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| AlignSelf \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| AlignSelf \| undefined\>
 
 #### Inherited from
 
@@ -84,7 +84,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"none"` \| `"list"` \| `"both"` \| `"inline"`
+> `optional` **aria-autocomplete**: `"both"` \| `"inline"` \| `"list"` \| `"none"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -139,7 +139,7 @@ aria-roledescription.
 
 ### aria-checked?
 
-> `optional` **aria-checked**: `boolean` \| `"true"` \| `"false"` \| `"mixed"`
+> `optional` **aria-checked**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
 
 Indicates the current "checked" state of checkboxes, radio buttons, and other widgets.
 
@@ -238,7 +238,7 @@ aria-owns.
 
 ### aria-current?
 
-> `optional` **aria-current**: `boolean` \| `"page"` \| `"date"` \| `"time"` \| `"true"` \| `"false"` \| `"step"` \| `"location"`
+> `optional` **aria-current**: `boolean` \| `"date"` \| `"false"` \| `"location"` \| `"page"` \| `"step"` \| `"time"` \| `"true"`
 
 Indicates the element that represents the current item within a container or set of related elements.
 
@@ -315,7 +315,7 @@ Indicates that the element is perceivable but disabled, so it is not editable or
 
 ### ~~aria-dropeffect?~~
 
-> `optional` **aria-dropeffect**: `"link"` \| `"none"` \| `"copy"` \| `"move"` \| `"execute"` \| `"popup"`
+> `optional` **aria-dropeffect**: `"copy"` \| `"execute"` \| `"link"` \| `"move"` \| `"none"` \| `"popup"`
 
 Indicates what functions can be performed when a dragged object is released on the drop target.
 
@@ -389,7 +389,7 @@ in ARIA 1.1
 
 ### aria-haspopup?
 
-> `optional` **aria-haspopup**: `boolean` \| `"grid"` \| `"true"` \| `"dialog"` \| `"menu"` \| `"false"` \| `"listbox"` \| `"tree"`
+> `optional` **aria-haspopup**: `boolean` \| `"dialog"` \| `"false"` \| `"grid"` \| `"listbox"` \| `"menu"` \| `"tree"` \| `"true"`
 
 Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 
@@ -417,7 +417,7 @@ aria-disabled.
 
 ### aria-invalid?
 
-> `optional` **aria-invalid**: `boolean` \| `"true"` \| `"false"` \| `"grammar"` \| `"spelling"`
+> `optional` **aria-invalid**: `boolean` \| `"false"` \| `"grammar"` \| `"spelling"` \| `"true"`
 
 Indicates the entered value does not conform to the format expected by the application.
 
@@ -489,7 +489,7 @@ Defines the hierarchical level of an element within a structure.
 
 ### aria-live?
 
-> `optional` **aria-live**: `"off"` \| `"assertive"` \| `"polite"`
+> `optional` **aria-live**: `"assertive"` \| `"off"` \| `"polite"`
 
 Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.
 
@@ -595,7 +595,7 @@ aria-setsize.
 
 ### aria-pressed?
 
-> `optional` **aria-pressed**: `boolean` \| `"true"` \| `"false"` \| `"mixed"`
+> `optional` **aria-pressed**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
 
 Indicates the current "pressed" state of toggle buttons.
 
@@ -628,7 +628,7 @@ aria-disabled.
 
 ### aria-relevant?
 
-> `optional` **aria-relevant**: `"all"` \| `"text"` \| `"additions"` \| `"additions removals"` \| `"additions text"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text additions"` \| `"text removals"`
+> `optional` **aria-relevant**: `"additions"` \| `"additions removals"` \| `"additions text"` \| `"all"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text"` \| `"text additions"` \| `"text removals"`
 
 Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified.
 
@@ -767,7 +767,7 @@ aria-posinset.
 
 ### aria-sort?
 
-> `optional` **aria-sort**: `"none"` \| `"ascending"` \| `"descending"` \| `"other"`
+> `optional` **aria-sort**: `"ascending"` \| `"descending"` \| `"none"` \| `"other"`
 
 Indicates if items in a table or grid are sorted in ascending or descending order.
 
@@ -831,7 +831,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### autoCapitalize?
 
-> `optional` **autoCapitalize**: `"none"` \| `string` & `object` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"` \| `"characters"`
+> `optional` **autoCapitalize**: `string` & `object` \| `"characters"` \| `"none"` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"`
 
 #### Inherited from
 
@@ -871,7 +871,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### bgcolor?
 
-> `optional` **bgcolor**: `ResponsiveStyleValue`\<readonly string\[\] \| BackgroundColor \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| BackgroundColor \| undefined\>
+> `optional` **bgcolor**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| BackgroundColor \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| BackgroundColor \| undefined\>
 
 #### Inherited from
 
@@ -881,7 +881,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### border?
 
-> `optional` **border**: `ResponsiveStyleValue`\<`undefined` \| `number` \| `"none"` \| `string` & `object` \| `"inset"` \| `"hidden"` \| `"red"` \| `"-moz-initial"` \| `"inherit"` \| `"initial"` \| `"revert"` \| `"revert-layer"` \| `"unset"` \| `"aliceblue"` \| `"antiquewhite"` \| `"aqua"` \| `"aquamarine"` \| `"azure"` \| `"beige"` \| `"bisque"` \| `"black"` \| `"blanchedalmond"` \| `"blue"` \| `"blueviolet"` \| `"brown"` \| `"burlywood"` \| `"cadetblue"` \| `"chartreuse"` \| `"chocolate"` \| `"coral"` \| `"cornflowerblue"` \| `"cornsilk"` \| `"crimson"` \| `"cyan"` \| `"darkblue"` \| `"darkcyan"` \| `"darkgoldenrod"` \| `"darkgray"` \| `"darkgreen"` \| `"darkgrey"` \| `"darkkhaki"` \| `"darkmagenta"` \| `"darkolivegreen"` \| `"darkorange"` \| `"darkorchid"` \| `"darkred"` \| `"darksalmon"` \| `"darkseagreen"` \| `"darkslateblue"` \| `"darkslategray"` \| `"darkslategrey"` \| `"darkturquoise"` \| `"darkviolet"` \| `"deeppink"` \| `"deepskyblue"` \| `"dimgray"` \| `"dimgrey"` \| `"dodgerblue"` \| `"firebrick"` \| `"floralwhite"` \| `"forestgreen"` \| `"fuchsia"` \| `"gainsboro"` \| `"ghostwhite"` \| `"gold"` \| `"goldenrod"` \| `"gray"` \| `"green"` \| `"greenyellow"` \| `"grey"` \| `"honeydew"` \| `"hotpink"` \| `"indianred"` \| `"indigo"` \| `"ivory"` \| `"khaki"` \| `"lavender"` \| `"lavenderblush"` \| `"lawngreen"` \| `"lemonchiffon"` \| `"lightblue"` \| `"lightcoral"` \| `"lightcyan"` \| `"lightgoldenrodyellow"` \| `"lightgray"` \| `"lightgreen"` \| `"lightgrey"` \| `"lightpink"` \| `"lightsalmon"` \| `"lightseagreen"` \| `"lightskyblue"` \| `"lightslategray"` \| `"lightslategrey"` \| `"lightsteelblue"` \| `"lightyellow"` \| `"lime"` \| `"limegreen"` \| `"linen"` \| `"magenta"` \| `"maroon"` \| `"mediumaquamarine"` \| `"mediumblue"` \| `"mediumorchid"` \| `"mediumpurple"` \| `"mediumseagreen"` \| `"mediumslateblue"` \| `"mediumspringgreen"` \| `"mediumturquoise"` \| `"mediumvioletred"` \| `"midnightblue"` \| `"mintcream"` \| `"mistyrose"` \| `"moccasin"` \| `"navajowhite"` \| `"navy"` \| `"oldlace"` \| `"olive"` \| `"olivedrab"` \| `"orange"` \| `"orangered"` \| `"orchid"` \| `"palegoldenrod"` \| `"palegreen"` \| `"paleturquoise"` \| `"palevioletred"` \| `"papayawhip"` \| `"peachpuff"` \| `"peru"` \| `"pink"` \| `"plum"` \| `"powderblue"` \| `"purple"` \| `"rebeccapurple"` \| `"rosybrown"` \| `"royalblue"` \| `"saddlebrown"` \| `"salmon"` \| `"sandybrown"` \| `"seagreen"` \| `"seashell"` \| `"sienna"` \| `"silver"` \| `"skyblue"` \| `"slateblue"` \| `"slategray"` \| `"slategrey"` \| `"snow"` \| `"springgreen"` \| `"steelblue"` \| `"tan"` \| `"teal"` \| `"thistle"` \| `"tomato"` \| `"turquoise"` \| `"violet"` \| `"wheat"` \| `"white"` \| `"whitesmoke"` \| `"yellow"` \| `"yellowgreen"` \| `"transparent"` \| `"AccentColor"` \| `"AccentColorText"` \| `"ActiveText"` \| `"ButtonBorder"` \| `"ButtonFace"` \| `"ButtonText"` \| `"Canvas"` \| `"CanvasText"` \| `"Field"` \| `"FieldText"` \| `"GrayText"` \| `"Highlight"` \| `"HighlightText"` \| `"LinkText"` \| `"Mark"` \| `"MarkText"` \| `"SelectedItem"` \| `"SelectedItemText"` \| `"VisitedText"` \| `"ActiveBorder"` \| `"ActiveCaption"` \| `"AppWorkspace"` \| `"Background"` \| `"ButtonHighlight"` \| `"ButtonShadow"` \| `"CaptionText"` \| `"InactiveBorder"` \| `"InactiveCaption"` \| `"InactiveCaptionText"` \| `"InfoBackground"` \| `"InfoText"` \| `"Menu"` \| `"MenuText"` \| `"Scrollbar"` \| `"ThreeDDarkShadow"` \| `"ThreeDFace"` \| `"ThreeDHighlight"` \| `"ThreeDLightShadow"` \| `"ThreeDShadow"` \| `"Window"` \| `"WindowFrame"` \| `"WindowText"` \| `"currentColor"` \| `"medium"` \| `"dashed"` \| `"dotted"` \| `"double"` \| `"groove"` \| `"outset"` \| `"ridge"` \| `"solid"` \| `"thick"` \| `"thin"`\> \| (`theme`) => `ResponsiveStyleValue`\<`undefined` \| `number` \| `"none"` \| `string` & `object` \| `"inset"` \| `"hidden"` \| `"red"` \| `"-moz-initial"` \| `"inherit"` \| `"initial"` \| `"revert"` \| `"revert-layer"` \| `"unset"` \| `"aliceblue"` \| `"antiquewhite"` \| `"aqua"` \| `"aquamarine"` \| `"azure"` \| `"beige"` \| `"bisque"` \| `"black"` \| `"blanchedalmond"` \| `"blue"` \| `"blueviolet"` \| `"brown"` \| `"burlywood"` \| `"cadetblue"` \| `"chartreuse"` \| `"chocolate"` \| `"coral"` \| `"cornflowerblue"` \| `"cornsilk"` \| `"crimson"` \| `"cyan"` \| `"darkblue"` \| `"darkcyan"` \| `"darkgoldenrod"` \| `"darkgray"` \| `"darkgreen"` \| `"darkgrey"` \| `"darkkhaki"` \| `"darkmagenta"` \| `"darkolivegreen"` \| `"darkorange"` \| `"darkorchid"` \| `"darkred"` \| `"darksalmon"` \| `"darkseagreen"` \| `"darkslateblue"` \| `"darkslategray"` \| `"darkslategrey"` \| `"darkturquoise"` \| `"darkviolet"` \| `"deeppink"` \| `"deepskyblue"` \| `"dimgray"` \| `"dimgrey"` \| `"dodgerblue"` \| `"firebrick"` \| `"floralwhite"` \| `"forestgreen"` \| `"fuchsia"` \| `"gainsboro"` \| `"ghostwhite"` \| `"gold"` \| `"goldenrod"` \| `"gray"` \| `"green"` \| `"greenyellow"` \| `"grey"` \| `"honeydew"` \| `"hotpink"` \| `"indianred"` \| `"indigo"` \| `"ivory"` \| `"khaki"` \| `"lavender"` \| `"lavenderblush"` \| `"lawngreen"` \| `"lemonchiffon"` \| `"lightblue"` \| `"lightcoral"` \| `"lightcyan"` \| `"lightgoldenrodyellow"` \| `"lightgray"` \| `"lightgreen"` \| `"lightgrey"` \| `"lightpink"` \| `"lightsalmon"` \| `"lightseagreen"` \| `"lightskyblue"` \| `"lightslategray"` \| `"lightslategrey"` \| `"lightsteelblue"` \| `"lightyellow"` \| `"lime"` \| `"limegreen"` \| `"linen"` \| `"magenta"` \| `"maroon"` \| `"mediumaquamarine"` \| `"mediumblue"` \| `"mediumorchid"` \| `"mediumpurple"` \| `"mediumseagreen"` \| `"mediumslateblue"` \| `"mediumspringgreen"` \| `"mediumturquoise"` \| `"mediumvioletred"` \| `"midnightblue"` \| `"mintcream"` \| `"mistyrose"` \| `"moccasin"` \| `"navajowhite"` \| `"navy"` \| `"oldlace"` \| `"olive"` \| `"olivedrab"` \| `"orange"` \| `"orangered"` \| `"orchid"` \| `"palegoldenrod"` \| `"palegreen"` \| `"paleturquoise"` \| `"palevioletred"` \| `"papayawhip"` \| `"peachpuff"` \| `"peru"` \| `"pink"` \| `"plum"` \| `"powderblue"` \| `"purple"` \| `"rebeccapurple"` \| `"rosybrown"` \| `"royalblue"` \| `"saddlebrown"` \| `"salmon"` \| `"sandybrown"` \| `"seagreen"` \| `"seashell"` \| `"sienna"` \| `"silver"` \| `"skyblue"` \| `"slateblue"` \| `"slategray"` \| `"slategrey"` \| `"snow"` \| `"springgreen"` \| `"steelblue"` \| `"tan"` \| `"teal"` \| `"thistle"` \| `"tomato"` \| `"turquoise"` \| `"violet"` \| `"wheat"` \| `"white"` \| `"whitesmoke"` \| `"yellow"` \| `"yellowgreen"` \| `"transparent"` \| `"AccentColor"` \| `"AccentColorText"` \| `"ActiveText"` \| `"ButtonBorder"` \| `"ButtonFace"` \| `"ButtonText"` \| `"Canvas"` \| `"CanvasText"` \| `"Field"` \| `"FieldText"` \| `"GrayText"` \| `"Highlight"` \| `"HighlightText"` \| `"LinkText"` \| `"Mark"` \| `"MarkText"` \| `"SelectedItem"` \| `"SelectedItemText"` \| `"VisitedText"` \| `"ActiveBorder"` \| `"ActiveCaption"` \| `"AppWorkspace"` \| `"Background"` \| `"ButtonHighlight"` \| `"ButtonShadow"` \| `"CaptionText"` \| `"InactiveBorder"` \| `"InactiveCaption"` \| `"InactiveCaptionText"` \| `"InfoBackground"` \| `"InfoText"` \| `"Menu"` \| `"MenuText"` \| `"Scrollbar"` \| `"ThreeDDarkShadow"` \| `"ThreeDFace"` \| `"ThreeDHighlight"` \| `"ThreeDLightShadow"` \| `"ThreeDShadow"` \| `"Window"` \| `"WindowFrame"` \| `"WindowText"` \| `"currentColor"` \| `"medium"` \| `"dashed"` \| `"dotted"` \| `"double"` \| `"groove"` \| `"outset"` \| `"ridge"` \| `"solid"` \| `"thick"` \| `"thin"`\>
+> `optional` **border**: (`theme`) => `ResponsiveStyleValue`\<`string` & `object` \| `"-moz-initial"` \| `"AccentColor"` \| `"AccentColorText"` \| `"ActiveBorder"` \| `"ActiveCaption"` \| `"ActiveText"` \| `"aliceblue"` \| `"antiquewhite"` \| `"AppWorkspace"` \| `"aqua"` \| `"aquamarine"` \| `"azure"` \| `"Background"` \| `"beige"` \| `"bisque"` \| `"black"` \| `"blanchedalmond"` \| `"blue"` \| `"blueviolet"` \| `"brown"` \| `"burlywood"` \| `"ButtonBorder"` \| `"ButtonFace"` \| `"ButtonHighlight"` \| `"ButtonShadow"` \| `"ButtonText"` \| `"cadetblue"` \| `"Canvas"` \| `"CanvasText"` \| `"CaptionText"` \| `"chartreuse"` \| `"chocolate"` \| `"coral"` \| `"cornflowerblue"` \| `"cornsilk"` \| `"crimson"` \| `"currentColor"` \| `"cyan"` \| `"darkblue"` \| `"darkcyan"` \| `"darkgoldenrod"` \| `"darkgray"` \| `"darkgreen"` \| `"darkgrey"` \| `"darkkhaki"` \| `"darkmagenta"` \| `"darkolivegreen"` \| `"darkorange"` \| `"darkorchid"` \| `"darkred"` \| `"darksalmon"` \| `"darkseagreen"` \| `"darkslateblue"` \| `"darkslategray"` \| `"darkslategrey"` \| `"darkturquoise"` \| `"darkviolet"` \| `"dashed"` \| `"deeppink"` \| `"deepskyblue"` \| `"dimgray"` \| `"dimgrey"` \| `"dodgerblue"` \| `"dotted"` \| `"double"` \| `"Field"` \| `"FieldText"` \| `"firebrick"` \| `"floralwhite"` \| `"forestgreen"` \| `"fuchsia"` \| `"gainsboro"` \| `"ghostwhite"` \| `"gold"` \| `"goldenrod"` \| `"gray"` \| `"GrayText"` \| `"green"` \| `"greenyellow"` \| `"grey"` \| `"groove"` \| `"hidden"` \| `"Highlight"` \| `"HighlightText"` \| `"honeydew"` \| `"hotpink"` \| `"InactiveBorder"` \| `"InactiveCaption"` \| `"InactiveCaptionText"` \| `"indianred"` \| `"indigo"` \| `"InfoBackground"` \| `"InfoText"` \| `"inherit"` \| `"initial"` \| `"inset"` \| `"ivory"` \| `"khaki"` \| `"lavender"` \| `"lavenderblush"` \| `"lawngreen"` \| `"lemonchiffon"` \| `"lightblue"` \| `"lightcoral"` \| `"lightcyan"` \| `"lightgoldenrodyellow"` \| `"lightgray"` \| `"lightgreen"` \| `"lightgrey"` \| `"lightpink"` \| `"lightsalmon"` \| `"lightseagreen"` \| `"lightskyblue"` \| `"lightslategray"` \| `"lightslategrey"` \| `"lightsteelblue"` \| `"lightyellow"` \| `"lime"` \| `"limegreen"` \| `"linen"` \| `"LinkText"` \| `"magenta"` \| `"Mark"` \| `"MarkText"` \| `"maroon"` \| `"medium"` \| `"mediumaquamarine"` \| `"mediumblue"` \| `"mediumorchid"` \| `"mediumpurple"` \| `"mediumseagreen"` \| `"mediumslateblue"` \| `"mediumspringgreen"` \| `"mediumturquoise"` \| `"mediumvioletred"` \| `"Menu"` \| `"MenuText"` \| `"midnightblue"` \| `"mintcream"` \| `"mistyrose"` \| `"moccasin"` \| `"navajowhite"` \| `"navy"` \| `"none"` \| `number` \| `"oldlace"` \| `"olive"` \| `"olivedrab"` \| `"orange"` \| `"orangered"` \| `"orchid"` \| `"outset"` \| `"palegoldenrod"` \| `"palegreen"` \| `"paleturquoise"` \| `"palevioletred"` \| `"papayawhip"` \| `"peachpuff"` \| `"peru"` \| `"pink"` \| `"plum"` \| `"powderblue"` \| `"purple"` \| `"rebeccapurple"` \| `"red"` \| `"revert"` \| `"revert-layer"` \| `"ridge"` \| `"rosybrown"` \| `"royalblue"` \| `"saddlebrown"` \| `"salmon"` \| `"sandybrown"` \| `"Scrollbar"` \| `"seagreen"` \| `"seashell"` \| `"SelectedItem"` \| `"SelectedItemText"` \| `"sienna"` \| `"silver"` \| `"skyblue"` \| `"slateblue"` \| `"slategray"` \| `"slategrey"` \| `"snow"` \| `"solid"` \| `"springgreen"` \| `"steelblue"` \| `"tan"` \| `"teal"` \| `"thick"` \| `"thin"` \| `"thistle"` \| `"ThreeDDarkShadow"` \| `"ThreeDFace"` \| `"ThreeDHighlight"` \| `"ThreeDLightShadow"` \| `"ThreeDShadow"` \| `"tomato"` \| `"transparent"` \| `"turquoise"` \| `undefined` \| `"unset"` \| `"violet"` \| `"VisitedText"` \| `"wheat"` \| `"white"` \| `"whitesmoke"` \| `"Window"` \| `"WindowFrame"` \| `"WindowText"` \| `"yellow"` \| `"yellowgreen"`\> \| `ResponsiveStyleValue`\<`string` & `object` \| `"-moz-initial"` \| `"AccentColor"` \| `"AccentColorText"` \| `"ActiveBorder"` \| `"ActiveCaption"` \| `"ActiveText"` \| `"aliceblue"` \| `"antiquewhite"` \| `"AppWorkspace"` \| `"aqua"` \| `"aquamarine"` \| `"azure"` \| `"Background"` \| `"beige"` \| `"bisque"` \| `"black"` \| `"blanchedalmond"` \| `"blue"` \| `"blueviolet"` \| `"brown"` \| `"burlywood"` \| `"ButtonBorder"` \| `"ButtonFace"` \| `"ButtonHighlight"` \| `"ButtonShadow"` \| `"ButtonText"` \| `"cadetblue"` \| `"Canvas"` \| `"CanvasText"` \| `"CaptionText"` \| `"chartreuse"` \| `"chocolate"` \| `"coral"` \| `"cornflowerblue"` \| `"cornsilk"` \| `"crimson"` \| `"currentColor"` \| `"cyan"` \| `"darkblue"` \| `"darkcyan"` \| `"darkgoldenrod"` \| `"darkgray"` \| `"darkgreen"` \| `"darkgrey"` \| `"darkkhaki"` \| `"darkmagenta"` \| `"darkolivegreen"` \| `"darkorange"` \| `"darkorchid"` \| `"darkred"` \| `"darksalmon"` \| `"darkseagreen"` \| `"darkslateblue"` \| `"darkslategray"` \| `"darkslategrey"` \| `"darkturquoise"` \| `"darkviolet"` \| `"dashed"` \| `"deeppink"` \| `"deepskyblue"` \| `"dimgray"` \| `"dimgrey"` \| `"dodgerblue"` \| `"dotted"` \| `"double"` \| `"Field"` \| `"FieldText"` \| `"firebrick"` \| `"floralwhite"` \| `"forestgreen"` \| `"fuchsia"` \| `"gainsboro"` \| `"ghostwhite"` \| `"gold"` \| `"goldenrod"` \| `"gray"` \| `"GrayText"` \| `"green"` \| `"greenyellow"` \| `"grey"` \| `"groove"` \| `"hidden"` \| `"Highlight"` \| `"HighlightText"` \| `"honeydew"` \| `"hotpink"` \| `"InactiveBorder"` \| `"InactiveCaption"` \| `"InactiveCaptionText"` \| `"indianred"` \| `"indigo"` \| `"InfoBackground"` \| `"InfoText"` \| `"inherit"` \| `"initial"` \| `"inset"` \| `"ivory"` \| `"khaki"` \| `"lavender"` \| `"lavenderblush"` \| `"lawngreen"` \| `"lemonchiffon"` \| `"lightblue"` \| `"lightcoral"` \| `"lightcyan"` \| `"lightgoldenrodyellow"` \| `"lightgray"` \| `"lightgreen"` \| `"lightgrey"` \| `"lightpink"` \| `"lightsalmon"` \| `"lightseagreen"` \| `"lightskyblue"` \| `"lightslategray"` \| `"lightslategrey"` \| `"lightsteelblue"` \| `"lightyellow"` \| `"lime"` \| `"limegreen"` \| `"linen"` \| `"LinkText"` \| `"magenta"` \| `"Mark"` \| `"MarkText"` \| `"maroon"` \| `"medium"` \| `"mediumaquamarine"` \| `"mediumblue"` \| `"mediumorchid"` \| `"mediumpurple"` \| `"mediumseagreen"` \| `"mediumslateblue"` \| `"mediumspringgreen"` \| `"mediumturquoise"` \| `"mediumvioletred"` \| `"Menu"` \| `"MenuText"` \| `"midnightblue"` \| `"mintcream"` \| `"mistyrose"` \| `"moccasin"` \| `"navajowhite"` \| `"navy"` \| `"none"` \| `number` \| `"oldlace"` \| `"olive"` \| `"olivedrab"` \| `"orange"` \| `"orangered"` \| `"orchid"` \| `"outset"` \| `"palegoldenrod"` \| `"palegreen"` \| `"paleturquoise"` \| `"palevioletred"` \| `"papayawhip"` \| `"peachpuff"` \| `"peru"` \| `"pink"` \| `"plum"` \| `"powderblue"` \| `"purple"` \| `"rebeccapurple"` \| `"red"` \| `"revert"` \| `"revert-layer"` \| `"ridge"` \| `"rosybrown"` \| `"royalblue"` \| `"saddlebrown"` \| `"salmon"` \| `"sandybrown"` \| `"Scrollbar"` \| `"seagreen"` \| `"seashell"` \| `"SelectedItem"` \| `"SelectedItemText"` \| `"sienna"` \| `"silver"` \| `"skyblue"` \| `"slateblue"` \| `"slategray"` \| `"slategrey"` \| `"snow"` \| `"solid"` \| `"springgreen"` \| `"steelblue"` \| `"tan"` \| `"teal"` \| `"thick"` \| `"thin"` \| `"thistle"` \| `"ThreeDDarkShadow"` \| `"ThreeDFace"` \| `"ThreeDHighlight"` \| `"ThreeDLightShadow"` \| `"ThreeDShadow"` \| `"tomato"` \| `"transparent"` \| `"turquoise"` \| `undefined` \| `"unset"` \| `"violet"` \| `"VisitedText"` \| `"wheat"` \| `"white"` \| `"whitesmoke"` \| `"Window"` \| `"WindowFrame"` \| `"WindowText"` \| `"yellow"` \| `"yellowgreen"`\>
 
 #### Inherited from
 
@@ -891,7 +891,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### borderBottom?
 
-> `optional` **borderBottom**: `ResponsiveStyleValue`\<BorderBottom\<string \| number\> \| readonly NonNullable\<BorderBottom\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<BorderBottom\<string \| number\> \| readonly NonNullable\<BorderBottom\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **borderBottom**: (`theme`) => `ResponsiveStyleValue`\<BorderBottom\<string \| number\> \| readonly NonNullable\<BorderBottom\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<BorderBottom\<string \| number\> \| readonly NonNullable\<BorderBottom\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -901,7 +901,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### borderColor?
 
-> `optional` **borderColor**: `ResponsiveStyleValue`\<readonly string\[\] \| BorderColor \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| BorderColor \| undefined\>
+> `optional` **borderColor**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| BorderColor \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| BorderColor \| undefined\>
 
 #### Inherited from
 
@@ -911,7 +911,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### borderLeft?
 
-> `optional` **borderLeft**: `ResponsiveStyleValue`\<BorderLeft\<string \| number\> \| readonly NonNullable\<BorderLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<BorderLeft\<string \| number\> \| readonly NonNullable\<BorderLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **borderLeft**: (`theme`) => `ResponsiveStyleValue`\<BorderLeft\<string \| number\> \| readonly NonNullable\<BorderLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<BorderLeft\<string \| number\> \| readonly NonNullable\<BorderLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -921,7 +921,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### borderRadius?
 
-> `optional` **borderRadius**: `ResponsiveStyleValue`\<BorderRadius\<string \| number\> \| readonly NonNullable\<BorderRadius\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<BorderRadius\<string \| number\> \| readonly NonNullable\<BorderRadius\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **borderRadius**: (`theme`) => `ResponsiveStyleValue`\<BorderRadius\<string \| number\> \| readonly NonNullable\<BorderRadius\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<BorderRadius\<string \| number\> \| readonly NonNullable\<BorderRadius\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -931,7 +931,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### borderRight?
 
-> `optional` **borderRight**: `ResponsiveStyleValue`\<BorderRight\<string \| number\> \| readonly NonNullable\<BorderRight\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<BorderRight\<string \| number\> \| readonly NonNullable\<BorderRight\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **borderRight**: (`theme`) => `ResponsiveStyleValue`\<BorderRight\<string \| number\> \| readonly NonNullable\<BorderRight\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<BorderRight\<string \| number\> \| readonly NonNullable\<BorderRight\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -941,7 +941,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### borderTop?
 
-> `optional` **borderTop**: `ResponsiveStyleValue`\<BorderTop\<string \| number\> \| readonly NonNullable\<BorderTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<BorderTop\<string \| number\> \| readonly NonNullable\<BorderTop\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **borderTop**: (`theme`) => `ResponsiveStyleValue`\<BorderTop\<string \| number\> \| readonly NonNullable\<BorderTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<BorderTop\<string \| number\> \| readonly NonNullable\<BorderTop\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -951,7 +951,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### bottom?
 
-> `optional` **bottom**: `ResponsiveStyleValue`\<Bottom\<string \| number\> \| readonly NonNullable\<Bottom\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<Bottom\<string \| number\> \| readonly NonNullable\<Bottom\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **bottom**: (`theme`) => `ResponsiveStyleValue`\<Bottom\<string \| number\> \| readonly NonNullable\<Bottom\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<Bottom\<string \| number\> \| readonly NonNullable\<Bottom\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -961,7 +961,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### boxShadow?
 
-> `optional` **boxShadow**: `ResponsiveStyleValue`\<number \| BoxShadow \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<number \| BoxShadow \| undefined\>
+> `optional` **boxShadow**: (`theme`) => `ResponsiveStyleValue`\<number \| BoxShadow \| undefined\> \| `ResponsiveStyleValue`\<number \| BoxShadow \| undefined\>
 
 #### Inherited from
 
@@ -971,7 +971,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### boxSizing?
 
-> `optional` **boxSizing**: `ResponsiveStyleValue`\<BoxSizing \| readonly NonNullable\<BoxSizing \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<BoxSizing \| readonly NonNullable\<BoxSizing \| undefined\>\[\] \| undefined\>
+> `optional` **boxSizing**: (`theme`) => `ResponsiveStyleValue`\<BoxSizing \| readonly NonNullable\<BoxSizing \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<BoxSizing \| readonly NonNullable\<BoxSizing \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1013,7 +1013,7 @@ Override or extend the styles applied to the component.
 
 ### color?
 
-> `optional` **color**: `ResponsiveStyleValue`\<readonly string\[\] \| Color \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| Color \| undefined\>
+> `optional` **color**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| Color \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| Color \| undefined\>
 
 #### Inherited from
 
@@ -1023,7 +1023,7 @@ Override or extend the styles applied to the component.
 
 ### columnGap?
 
-> `optional` **columnGap**: `ResponsiveStyleValue`\<ColumnGap\<string \| number\> \| readonly NonNullable\<ColumnGap\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<ColumnGap\<string \| number\> \| readonly NonNullable\<ColumnGap\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **columnGap**: (`theme`) => `ResponsiveStyleValue`\<ColumnGap\<string \| number\> \| readonly NonNullable\<ColumnGap\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<ColumnGap\<string \| number\> \| readonly NonNullable\<ColumnGap\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1053,7 +1053,7 @@ Override or extend the styles applied to the component.
 
 ### contentEditable?
 
-> `optional` **contentEditable**: `"inherit"` \| `Booleanish` \| `"plaintext-only"`
+> `optional` **contentEditable**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
 
 #### Inherited from
 
@@ -1107,7 +1107,7 @@ Override or extend the styles applied to the component.
 
 ### defaultValue?
 
-> `optional` **defaultValue**: `string` \| `number` \| readonly `string`[]
+> `optional` **defaultValue**: readonly `string`[] \| `number` \| `string`
 
 #### Inherited from
 
@@ -1139,7 +1139,7 @@ If true, the component will be disabled.
 
 ### display?
 
-> `optional` **display**: `ResponsiveStyleValue`\<readonly string\[\] \| Display \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| Display \| undefined\>
+> `optional` **display**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| Display \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| Display \| undefined\>
 
 #### Inherited from
 
@@ -1149,7 +1149,7 @@ If true, the component will be disabled.
 
 ### displayPrint?
 
-> `optional` **displayPrint**: `ResponsiveStyleValue`\<readonly string\[\] \| Display \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| Display \| undefined\>
+> `optional` **displayPrint**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| Display \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| Display \| undefined\>
 
 #### Inherited from
 
@@ -1169,7 +1169,7 @@ If true, the component will be disabled.
 
 ### enterKeyHint?
 
-> `optional` **enterKeyHint**: `"search"` \| `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"send"`
+> `optional` **enterKeyHint**: `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"search"` \| `"send"`
 
 #### Inherited from
 
@@ -1193,7 +1193,7 @@ If true, the component will be disabled.
 
 ### flex?
 
-> `optional` **flex**: `ResponsiveStyleValue`\<Flex\<string \| number\> \| readonly NonNullable\<Flex\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<Flex\<string \| number\> \| readonly NonNullable\<Flex\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **flex**: (`theme`) => `ResponsiveStyleValue`\<Flex\<string \| number\> \| readonly NonNullable\<Flex\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<Flex\<string \| number\> \| readonly NonNullable\<Flex\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1203,7 +1203,7 @@ If true, the component will be disabled.
 
 ### flexBasis?
 
-> `optional` **flexBasis**: `ResponsiveStyleValue`\<FlexBasis\<string \| number\> \| readonly NonNullable\<FlexBasis\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<FlexBasis\<string \| number\> \| readonly NonNullable\<FlexBasis\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **flexBasis**: (`theme`) => `ResponsiveStyleValue`\<FlexBasis\<string \| number\> \| readonly NonNullable\<FlexBasis\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<FlexBasis\<string \| number\> \| readonly NonNullable\<FlexBasis\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1213,7 +1213,7 @@ If true, the component will be disabled.
 
 ### flexDirection?
 
-> `optional` **flexDirection**: `ResponsiveStyleValue`\<FlexDirection \| readonly NonNullable\<FlexDirection \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<FlexDirection \| readonly NonNullable\<FlexDirection \| undefined\>\[\] \| undefined\>
+> `optional` **flexDirection**: (`theme`) => `ResponsiveStyleValue`\<FlexDirection \| readonly NonNullable\<FlexDirection \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<FlexDirection \| readonly NonNullable\<FlexDirection \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1223,7 +1223,7 @@ If true, the component will be disabled.
 
 ### flexGrow?
 
-> `optional` **flexGrow**: `ResponsiveStyleValue`\<FlexGrow \| readonly NonNullable\<FlexGrow \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<FlexGrow \| readonly NonNullable\<FlexGrow \| undefined\>\[\] \| undefined\>
+> `optional` **flexGrow**: (`theme`) => `ResponsiveStyleValue`\<FlexGrow \| readonly NonNullable\<FlexGrow \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<FlexGrow \| readonly NonNullable\<FlexGrow \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1233,7 +1233,7 @@ If true, the component will be disabled.
 
 ### flexShrink?
 
-> `optional` **flexShrink**: `ResponsiveStyleValue`\<FlexShrink \| readonly NonNullable\<FlexShrink \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<FlexShrink \| readonly NonNullable\<FlexShrink \| undefined\>\[\] \| undefined\>
+> `optional` **flexShrink**: (`theme`) => `ResponsiveStyleValue`\<FlexShrink \| readonly NonNullable\<FlexShrink \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<FlexShrink \| readonly NonNullable\<FlexShrink \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1243,7 +1243,7 @@ If true, the component will be disabled.
 
 ### flexWrap?
 
-> `optional` **flexWrap**: `ResponsiveStyleValue`\<FlexWrap \| readonly NonNullable\<FlexWrap \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<FlexWrap \| readonly NonNullable\<FlexWrap \| undefined\>\[\] \| undefined\>
+> `optional` **flexWrap**: (`theme`) => `ResponsiveStyleValue`\<FlexWrap \| readonly NonNullable\<FlexWrap \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<FlexWrap \| readonly NonNullable\<FlexWrap \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1253,7 +1253,7 @@ If true, the component will be disabled.
 
 ### fontFamily?
 
-> `optional` **fontFamily**: `ResponsiveStyleValue`\<readonly string\[\] \| FontFamily \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| FontFamily \| undefined\>
+> `optional` **fontFamily**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| FontFamily \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| FontFamily \| undefined\>
 
 #### Inherited from
 
@@ -1263,7 +1263,7 @@ If true, the component will be disabled.
 
 ### fontSize?
 
-> `optional` **fontSize**: `ResponsiveStyleValue`\<FontSize\<string \| number\> \| readonly NonNullable\<FontSize\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<FontSize\<string \| number\> \| readonly NonNullable\<FontSize\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **fontSize**: (`theme`) => `ResponsiveStyleValue`\<FontSize\<string \| number\> \| readonly NonNullable\<FontSize\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<FontSize\<string \| number\> \| readonly NonNullable\<FontSize\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1273,7 +1273,7 @@ If true, the component will be disabled.
 
 ### fontStyle?
 
-> `optional` **fontStyle**: `ResponsiveStyleValue`\<readonly string\[\] \| FontStyle \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| FontStyle \| undefined\>
+> `optional` **fontStyle**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| FontStyle \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| FontStyle \| undefined\>
 
 #### Inherited from
 
@@ -1283,7 +1283,7 @@ If true, the component will be disabled.
 
 ### fontWeight?
 
-> `optional` **fontWeight**: `ResponsiveStyleValue`\<`undefined` \| `string` \| `string` & `object` \| `number` & `object`\> \| (`theme`) => `ResponsiveStyleValue`\<`undefined` \| `string` \| `string` & `object` \| `number` & `object`\>
+> `optional` **fontWeight**: (`theme`) => `ResponsiveStyleValue`\<`string` & `object` \| `number` & `object` \| `string` \| `undefined`\> \| `ResponsiveStyleValue`\<`string` & `object` \| `number` & `object` \| `string` \| `undefined`\>
 
 #### Inherited from
 
@@ -1293,7 +1293,7 @@ If true, the component will be disabled.
 
 ### gap?
 
-> `optional` **gap**: `ResponsiveStyleValue`\<Gap\<string \| number\> \| readonly NonNullable\<Gap\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<Gap\<string \| number\> \| readonly NonNullable\<Gap\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **gap**: (`theme`) => `ResponsiveStyleValue`\<Gap\<string \| number\> \| readonly NonNullable\<Gap\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<Gap\<string \| number\> \| readonly NonNullable\<Gap\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1303,7 +1303,7 @@ If true, the component will be disabled.
 
 ### gridArea?
 
-> `optional` **gridArea**: `ResponsiveStyleValue`\<GridArea \| readonly NonNullable\<GridArea \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<GridArea \| readonly NonNullable\<GridArea \| undefined\>\[\] \| undefined\>
+> `optional` **gridArea**: (`theme`) => `ResponsiveStyleValue`\<GridArea \| readonly NonNullable\<GridArea \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<GridArea \| readonly NonNullable\<GridArea \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1313,7 +1313,7 @@ If true, the component will be disabled.
 
 ### gridAutoColumns?
 
-> `optional` **gridAutoColumns**: `ResponsiveStyleValue`\<GridAutoColumns\<string \| number\> \| readonly NonNullable\<GridAutoColumns\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<GridAutoColumns\<string \| number\> \| readonly NonNullable\<GridAutoColumns\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **gridAutoColumns**: (`theme`) => `ResponsiveStyleValue`\<GridAutoColumns\<string \| number\> \| readonly NonNullable\<GridAutoColumns\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<GridAutoColumns\<string \| number\> \| readonly NonNullable\<GridAutoColumns\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1323,7 +1323,7 @@ If true, the component will be disabled.
 
 ### gridAutoFlow?
 
-> `optional` **gridAutoFlow**: `ResponsiveStyleValue`\<readonly string\[\] \| GridAutoFlow \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| GridAutoFlow \| undefined\>
+> `optional` **gridAutoFlow**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| GridAutoFlow \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| GridAutoFlow \| undefined\>
 
 #### Inherited from
 
@@ -1333,7 +1333,7 @@ If true, the component will be disabled.
 
 ### gridAutoRows?
 
-> `optional` **gridAutoRows**: `ResponsiveStyleValue`\<GridAutoRows\<string \| number\> \| readonly NonNullable\<GridAutoRows\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<GridAutoRows\<string \| number\> \| readonly NonNullable\<GridAutoRows\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **gridAutoRows**: (`theme`) => `ResponsiveStyleValue`\<GridAutoRows\<string \| number\> \| readonly NonNullable\<GridAutoRows\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<GridAutoRows\<string \| number\> \| readonly NonNullable\<GridAutoRows\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1343,7 +1343,7 @@ If true, the component will be disabled.
 
 ### gridColumn?
 
-> `optional` **gridColumn**: `ResponsiveStyleValue`\<GridColumn \| readonly NonNullable\<GridColumn \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<GridColumn \| readonly NonNullable\<GridColumn \| undefined\>\[\] \| undefined\>
+> `optional` **gridColumn**: (`theme`) => `ResponsiveStyleValue`\<GridColumn \| readonly NonNullable\<GridColumn \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<GridColumn \| readonly NonNullable\<GridColumn \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1353,7 +1353,7 @@ If true, the component will be disabled.
 
 ### gridRow?
 
-> `optional` **gridRow**: `ResponsiveStyleValue`\<GridRow \| readonly NonNullable\<GridRow \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<GridRow \| readonly NonNullable\<GridRow \| undefined\>\[\] \| undefined\>
+> `optional` **gridRow**: (`theme`) => `ResponsiveStyleValue`\<GridRow \| readonly NonNullable\<GridRow \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<GridRow \| readonly NonNullable\<GridRow \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1363,7 +1363,7 @@ If true, the component will be disabled.
 
 ### gridTemplateAreas?
 
-> `optional` **gridTemplateAreas**: `ResponsiveStyleValue`\<readonly string\[\] \| GridTemplateAreas \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| GridTemplateAreas \| undefined\>
+> `optional` **gridTemplateAreas**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| GridTemplateAreas \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| GridTemplateAreas \| undefined\>
 
 #### Inherited from
 
@@ -1373,7 +1373,7 @@ If true, the component will be disabled.
 
 ### gridTemplateColumns?
 
-> `optional` **gridTemplateColumns**: `ResponsiveStyleValue`\<GridTemplateColumns\<string \| number\> \| readonly NonNullable\<GridTemplateColumns\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<GridTemplateColumns\<string \| number\> \| readonly NonNullable\<GridTemplateColumns\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **gridTemplateColumns**: (`theme`) => `ResponsiveStyleValue`\<GridTemplateColumns\<string \| number\> \| readonly NonNullable\<GridTemplateColumns\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<GridTemplateColumns\<string \| number\> \| readonly NonNullable\<GridTemplateColumns\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1383,7 +1383,7 @@ If true, the component will be disabled.
 
 ### gridTemplateRows?
 
-> `optional` **gridTemplateRows**: `ResponsiveStyleValue`\<GridTemplateRows\<string \| number\> \| readonly NonNullable\<GridTemplateRows\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<GridTemplateRows\<string \| number\> \| readonly NonNullable\<GridTemplateRows\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **gridTemplateRows**: (`theme`) => `ResponsiveStyleValue`\<GridTemplateRows\<string \| number\> \| readonly NonNullable\<GridTemplateRows\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<GridTemplateRows\<string \| number\> \| readonly NonNullable\<GridTemplateRows\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1393,7 +1393,7 @@ If true, the component will be disabled.
 
 ### height?
 
-> `optional` **height**: `ResponsiveStyleValue`\<Height\<string \| number\> \| readonly NonNullable\<Height\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<Height\<string \| number\> \| readonly NonNullable\<Height\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **height**: (`theme`) => `ResponsiveStyleValue`\<Height\<string \| number\> \| readonly NonNullable\<Height\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<Height\<string \| number\> \| readonly NonNullable\<Height\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1447,7 +1447,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 ### inputMode?
 
-> `optional` **inputMode**: `"search"` \| `"none"` \| `"text"` \| `"email"` \| `"url"` \| `"tel"` \| `"numeric"` \| `"decimal"`
+> `optional` **inputMode**: `"decimal"` \| `"email"` \| `"none"` \| `"numeric"` \| `"search"` \| `"tel"` \| `"text"` \| `"url"`
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 
@@ -1529,7 +1529,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### justifyContent?
 
-> `optional` **justifyContent**: `ResponsiveStyleValue`\<readonly string\[\] \| JustifyContent \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| JustifyContent \| undefined\>
+> `optional` **justifyContent**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| JustifyContent \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| JustifyContent \| undefined\>
 
 #### Inherited from
 
@@ -1539,7 +1539,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### justifyItems?
 
-> `optional` **justifyItems**: `ResponsiveStyleValue`\<readonly string\[\] \| JustifyItems \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| JustifyItems \| undefined\>
+> `optional` **justifyItems**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| JustifyItems \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| JustifyItems \| undefined\>
 
 #### Inherited from
 
@@ -1549,7 +1549,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### justifySelf?
 
-> `optional` **justifySelf**: `ResponsiveStyleValue`\<readonly string\[\] \| JustifySelf \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| JustifySelf \| undefined\>
+> `optional` **justifySelf**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| JustifySelf \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| JustifySelf \| undefined\>
 
 #### Inherited from
 
@@ -1559,7 +1559,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### key?
 
-> `optional` **key**: `null` \| `Key`
+> `optional` **key**: `Key` \| `null`
 
 #### Inherited from
 
@@ -1579,7 +1579,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### left?
 
-> `optional` **left**: `ResponsiveStyleValue`\<Left\<string \| number\> \| readonly NonNullable\<Left\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<Left\<string \| number\> \| readonly NonNullable\<Left\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **left**: (`theme`) => `ResponsiveStyleValue`\<Left\<string \| number\> \| readonly NonNullable\<Left\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<Left\<string \| number\> \| readonly NonNullable\<Left\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1589,7 +1589,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### letterSpacing?
 
-> `optional` **letterSpacing**: `ResponsiveStyleValue`\<LetterSpacing\<string \| number\> \| readonly NonNullable\<LetterSpacing\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<LetterSpacing\<string \| number\> \| readonly NonNullable\<LetterSpacing\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **letterSpacing**: (`theme`) => `ResponsiveStyleValue`\<LetterSpacing\<string \| number\> \| readonly NonNullable\<LetterSpacing\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<LetterSpacing\<string \| number\> \| readonly NonNullable\<LetterSpacing\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1599,7 +1599,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### lineHeight?
 
-> `optional` **lineHeight**: `ResponsiveStyleValue`\<LineHeight\<string \| number\> \| readonly NonNullable\<LineHeight\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<LineHeight\<string \| number\> \| readonly NonNullable\<LineHeight\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **lineHeight**: (`theme`) => `ResponsiveStyleValue`\<LineHeight\<string \| number\> \| readonly NonNullable\<LineHeight\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<LineHeight\<string \| number\> \| readonly NonNullable\<LineHeight\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1609,7 +1609,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### m?
 
-> `optional` **m**: `ResponsiveStyleValue`\<Margin\<string \| number\> \| readonly NonNullable\<Margin\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<Margin\<string \| number\> \| readonly NonNullable\<Margin\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **m**: (`theme`) => `ResponsiveStyleValue`\<Margin\<string \| number\> \| readonly NonNullable\<Margin\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<Margin\<string \| number\> \| readonly NonNullable\<Margin\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1619,7 +1619,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### margin?
 
-> `optional` **margin**: `ResponsiveStyleValue`\<Margin\<string \| number\> \| readonly NonNullable\<Margin\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<Margin\<string \| number\> \| readonly NonNullable\<Margin\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **margin**: (`theme`) => `ResponsiveStyleValue`\<Margin\<string \| number\> \| readonly NonNullable\<Margin\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<Margin\<string \| number\> \| readonly NonNullable\<Margin\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1629,7 +1629,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### marginBlock?
 
-> `optional` **marginBlock**: `ResponsiveStyleValue`\<MarginBlock\<string \| number\> \| readonly NonNullable\<MarginBlock\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginBlock\<string \| number\> \| readonly NonNullable\<MarginBlock\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **marginBlock**: (`theme`) => `ResponsiveStyleValue`\<MarginBlock\<string \| number\> \| readonly NonNullable\<MarginBlock\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginBlock\<string \| number\> \| readonly NonNullable\<MarginBlock\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1639,7 +1639,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### marginBlockEnd?
 
-> `optional` **marginBlockEnd**: `ResponsiveStyleValue`\<MarginBlockEnd\<string \| number\> \| readonly NonNullable\<MarginBlockEnd\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginBlockEnd\<string \| number\> \| readonly NonNullable\<MarginBlockEnd\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **marginBlockEnd**: (`theme`) => `ResponsiveStyleValue`\<MarginBlockEnd\<string \| number\> \| readonly NonNullable\<MarginBlockEnd\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginBlockEnd\<string \| number\> \| readonly NonNullable\<MarginBlockEnd\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1649,7 +1649,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### marginBlockStart?
 
-> `optional` **marginBlockStart**: `ResponsiveStyleValue`\<MarginBlockStart\<string \| number\> \| readonly NonNullable\<MarginBlockStart\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginBlockStart\<string \| number\> \| readonly NonNullable\<MarginBlockStart\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **marginBlockStart**: (`theme`) => `ResponsiveStyleValue`\<MarginBlockStart\<string \| number\> \| readonly NonNullable\<MarginBlockStart\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginBlockStart\<string \| number\> \| readonly NonNullable\<MarginBlockStart\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1659,7 +1659,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### marginBottom?
 
-> `optional` **marginBottom**: `ResponsiveStyleValue`\<MarginBottom\<string \| number\> \| readonly NonNullable\<MarginBottom\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginBottom\<string \| number\> \| readonly NonNullable\<MarginBottom\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **marginBottom**: (`theme`) => `ResponsiveStyleValue`\<MarginBottom\<string \| number\> \| readonly NonNullable\<MarginBottom\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginBottom\<string \| number\> \| readonly NonNullable\<MarginBottom\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1669,7 +1669,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### marginInline?
 
-> `optional` **marginInline**: `ResponsiveStyleValue`\<MarginInline\<string \| number\> \| readonly NonNullable\<MarginInline\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginInline\<string \| number\> \| readonly NonNullable\<MarginInline\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **marginInline**: (`theme`) => `ResponsiveStyleValue`\<MarginInline\<string \| number\> \| readonly NonNullable\<MarginInline\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginInline\<string \| number\> \| readonly NonNullable\<MarginInline\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1679,7 +1679,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### marginInlineEnd?
 
-> `optional` **marginInlineEnd**: `ResponsiveStyleValue`\<MarginInlineEnd\<string \| number\> \| readonly NonNullable\<MarginInlineEnd\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginInlineEnd\<string \| number\> \| readonly NonNullable\<MarginInlineEnd\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **marginInlineEnd**: (`theme`) => `ResponsiveStyleValue`\<MarginInlineEnd\<string \| number\> \| readonly NonNullable\<MarginInlineEnd\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginInlineEnd\<string \| number\> \| readonly NonNullable\<MarginInlineEnd\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1689,7 +1689,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### marginInlineStart?
 
-> `optional` **marginInlineStart**: `ResponsiveStyleValue`\<MarginInlineStart\<string \| number\> \| readonly NonNullable\<MarginInlineStart\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginInlineStart\<string \| number\> \| readonly NonNullable\<MarginInlineStart\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **marginInlineStart**: (`theme`) => `ResponsiveStyleValue`\<MarginInlineStart\<string \| number\> \| readonly NonNullable\<MarginInlineStart\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginInlineStart\<string \| number\> \| readonly NonNullable\<MarginInlineStart\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1699,7 +1699,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### marginLeft?
 
-> `optional` **marginLeft**: `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **marginLeft**: (`theme`) => `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1709,7 +1709,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### marginRight?
 
-> `optional` **marginRight**: `ResponsiveStyleValue`\<MarginRight\<string \| number\> \| readonly NonNullable\<MarginRight\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginRight\<string \| number\> \| readonly NonNullable\<MarginRight\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **marginRight**: (`theme`) => `ResponsiveStyleValue`\<MarginRight\<string \| number\> \| readonly NonNullable\<MarginRight\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginRight\<string \| number\> \| readonly NonNullable\<MarginRight\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1719,7 +1719,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### marginTop?
 
-> `optional` **marginTop**: `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **marginTop**: (`theme`) => `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1729,7 +1729,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### marginX?
 
-> `optional` **marginX**: `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **marginX**: (`theme`) => `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1739,7 +1739,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### marginY?
 
-> `optional` **marginY**: `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **marginY**: (`theme`) => `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1749,7 +1749,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### maxHeight?
 
-> `optional` **maxHeight**: `ResponsiveStyleValue`\<MaxHeight\<string \| number\> \| readonly NonNullable\<MaxHeight\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MaxHeight\<string \| number\> \| readonly NonNullable\<MaxHeight\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **maxHeight**: (`theme`) => `ResponsiveStyleValue`\<MaxHeight\<string \| number\> \| readonly NonNullable\<MaxHeight\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MaxHeight\<string \| number\> \| readonly NonNullable\<MaxHeight\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1759,7 +1759,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### maxWidth?
 
-> `optional` **maxWidth**: `ResponsiveStyleValue`\<MaxWidth\<string \| number\> \| readonly NonNullable\<MaxWidth\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MaxWidth\<string \| number\> \| readonly NonNullable\<MaxWidth\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **maxWidth**: (`theme`) => `ResponsiveStyleValue`\<MaxWidth\<string \| number\> \| readonly NonNullable\<MaxWidth\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MaxWidth\<string \| number\> \| readonly NonNullable\<MaxWidth\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1769,7 +1769,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### mb?
 
-> `optional` **mb**: `ResponsiveStyleValue`\<MarginBottom\<string \| number\> \| readonly NonNullable\<MarginBottom\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginBottom\<string \| number\> \| readonly NonNullable\<MarginBottom\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **mb**: (`theme`) => `ResponsiveStyleValue`\<MarginBottom\<string \| number\> \| readonly NonNullable\<MarginBottom\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginBottom\<string \| number\> \| readonly NonNullable\<MarginBottom\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1779,7 +1779,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### minHeight?
 
-> `optional` **minHeight**: `ResponsiveStyleValue`\<MinHeight\<string \| number\> \| readonly NonNullable\<MinHeight\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MinHeight\<string \| number\> \| readonly NonNullable\<MinHeight\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **minHeight**: (`theme`) => `ResponsiveStyleValue`\<MinHeight\<string \| number\> \| readonly NonNullable\<MinHeight\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MinHeight\<string \| number\> \| readonly NonNullable\<MinHeight\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1789,7 +1789,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### minWidth?
 
-> `optional` **minWidth**: `ResponsiveStyleValue`\<MinWidth\<string \| number\> \| readonly NonNullable\<MinWidth\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MinWidth\<string \| number\> \| readonly NonNullable\<MinWidth\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **minWidth**: (`theme`) => `ResponsiveStyleValue`\<MinWidth\<string \| number\> \| readonly NonNullable\<MinWidth\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MinWidth\<string \| number\> \| readonly NonNullable\<MinWidth\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1799,7 +1799,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### ml?
 
-> `optional` **ml**: `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **ml**: (`theme`) => `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1809,7 +1809,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### mr?
 
-> `optional` **mr**: `ResponsiveStyleValue`\<MarginRight\<string \| number\> \| readonly NonNullable\<MarginRight\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginRight\<string \| number\> \| readonly NonNullable\<MarginRight\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **mr**: (`theme`) => `ResponsiveStyleValue`\<MarginRight\<string \| number\> \| readonly NonNullable\<MarginRight\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginRight\<string \| number\> \| readonly NonNullable\<MarginRight\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1819,7 +1819,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### mt?
 
-> `optional` **mt**: `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **mt**: (`theme`) => `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1829,7 +1829,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### mx?
 
-> `optional` **mx**: `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **mx**: (`theme`) => `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginLeft\<string \| number\> \| readonly NonNullable\<MarginLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -1839,7 +1839,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### my?
 
-> `optional` **my**: `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **my**: (`theme`) => `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<MarginTop\<string \| number\> \| readonly NonNullable\<MarginTop\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3547,7 +3547,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### order?
 
-> `optional` **order**: `ResponsiveStyleValue`\<Order \| readonly NonNullable\<Order \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<Order \| readonly NonNullable\<Order \| undefined\>\[\] \| undefined\>
+> `optional` **order**: (`theme`) => `ResponsiveStyleValue`\<Order \| readonly NonNullable\<Order \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<Order \| readonly NonNullable\<Order \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3557,7 +3557,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### overflow?
 
-> `optional` **overflow**: `ResponsiveStyleValue`\<readonly string\[\] \| Overflow \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| Overflow \| undefined\>
+> `optional` **overflow**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| Overflow \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| Overflow \| undefined\>
 
 #### Inherited from
 
@@ -3567,7 +3567,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### p?
 
-> `optional` **p**: `ResponsiveStyleValue`\<Padding\<string \| number\> \| readonly NonNullable\<Padding\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<Padding\<string \| number\> \| readonly NonNullable\<Padding\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **p**: (`theme`) => `ResponsiveStyleValue`\<Padding\<string \| number\> \| readonly NonNullable\<Padding\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<Padding\<string \| number\> \| readonly NonNullable\<Padding\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3577,7 +3577,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### padding?
 
-> `optional` **padding**: `ResponsiveStyleValue`\<Padding\<string \| number\> \| readonly NonNullable\<Padding\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<Padding\<string \| number\> \| readonly NonNullable\<Padding\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **padding**: (`theme`) => `ResponsiveStyleValue`\<Padding\<string \| number\> \| readonly NonNullable\<Padding\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<Padding\<string \| number\> \| readonly NonNullable\<Padding\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3587,7 +3587,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### paddingBlock?
 
-> `optional` **paddingBlock**: `ResponsiveStyleValue`\<PaddingBlock\<string \| number\> \| readonly NonNullable\<PaddingBlock\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingBlock\<string \| number\> \| readonly NonNullable\<PaddingBlock\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **paddingBlock**: (`theme`) => `ResponsiveStyleValue`\<PaddingBlock\<string \| number\> \| readonly NonNullable\<PaddingBlock\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingBlock\<string \| number\> \| readonly NonNullable\<PaddingBlock\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3597,7 +3597,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### paddingBlockEnd?
 
-> `optional` **paddingBlockEnd**: `ResponsiveStyleValue`\<PaddingBlockEnd\<string \| number\> \| readonly NonNullable\<PaddingBlockEnd\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingBlockEnd\<string \| number\> \| readonly NonNullable\<PaddingBlockEnd\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **paddingBlockEnd**: (`theme`) => `ResponsiveStyleValue`\<PaddingBlockEnd\<string \| number\> \| readonly NonNullable\<PaddingBlockEnd\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingBlockEnd\<string \| number\> \| readonly NonNullable\<PaddingBlockEnd\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3607,7 +3607,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### paddingBlockStart?
 
-> `optional` **paddingBlockStart**: `ResponsiveStyleValue`\<PaddingBlockStart\<string \| number\> \| readonly NonNullable\<PaddingBlockStart\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingBlockStart\<string \| number\> \| readonly NonNullable\<PaddingBlockStart\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **paddingBlockStart**: (`theme`) => `ResponsiveStyleValue`\<PaddingBlockStart\<string \| number\> \| readonly NonNullable\<PaddingBlockStart\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingBlockStart\<string \| number\> \| readonly NonNullable\<PaddingBlockStart\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3617,7 +3617,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### paddingBottom?
 
-> `optional` **paddingBottom**: `ResponsiveStyleValue`\<PaddingBottom\<string \| number\> \| readonly NonNullable\<PaddingBottom\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingBottom\<string \| number\> \| readonly NonNullable\<PaddingBottom\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **paddingBottom**: (`theme`) => `ResponsiveStyleValue`\<PaddingBottom\<string \| number\> \| readonly NonNullable\<PaddingBottom\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingBottom\<string \| number\> \| readonly NonNullable\<PaddingBottom\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3627,7 +3627,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### paddingInline?
 
-> `optional` **paddingInline**: `ResponsiveStyleValue`\<PaddingInline\<string \| number\> \| readonly NonNullable\<PaddingInline\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingInline\<string \| number\> \| readonly NonNullable\<PaddingInline\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **paddingInline**: (`theme`) => `ResponsiveStyleValue`\<PaddingInline\<string \| number\> \| readonly NonNullable\<PaddingInline\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingInline\<string \| number\> \| readonly NonNullable\<PaddingInline\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3637,7 +3637,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### paddingInlineEnd?
 
-> `optional` **paddingInlineEnd**: `ResponsiveStyleValue`\<PaddingInlineEnd\<string \| number\> \| readonly NonNullable\<PaddingInlineEnd\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingInlineEnd\<string \| number\> \| readonly NonNullable\<PaddingInlineEnd\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **paddingInlineEnd**: (`theme`) => `ResponsiveStyleValue`\<PaddingInlineEnd\<string \| number\> \| readonly NonNullable\<PaddingInlineEnd\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingInlineEnd\<string \| number\> \| readonly NonNullable\<PaddingInlineEnd\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3647,7 +3647,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### paddingInlineStart?
 
-> `optional` **paddingInlineStart**: `ResponsiveStyleValue`\<PaddingInlineStart\<string \| number\> \| readonly NonNullable\<PaddingInlineStart\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingInlineStart\<string \| number\> \| readonly NonNullable\<PaddingInlineStart\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **paddingInlineStart**: (`theme`) => `ResponsiveStyleValue`\<PaddingInlineStart\<string \| number\> \| readonly NonNullable\<PaddingInlineStart\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingInlineStart\<string \| number\> \| readonly NonNullable\<PaddingInlineStart\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3657,7 +3657,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### paddingLeft?
 
-> `optional` **paddingLeft**: `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **paddingLeft**: (`theme`) => `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3667,7 +3667,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### paddingRight?
 
-> `optional` **paddingRight**: `ResponsiveStyleValue`\<PaddingRight\<string \| number\> \| readonly NonNullable\<PaddingRight\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingRight\<string \| number\> \| readonly NonNullable\<PaddingRight\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **paddingRight**: (`theme`) => `ResponsiveStyleValue`\<PaddingRight\<string \| number\> \| readonly NonNullable\<PaddingRight\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingRight\<string \| number\> \| readonly NonNullable\<PaddingRight\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3677,7 +3677,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### paddingTop?
 
-> `optional` **paddingTop**: `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **paddingTop**: (`theme`) => `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3687,7 +3687,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### paddingX?
 
-> `optional` **paddingX**: `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **paddingX**: (`theme`) => `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3697,7 +3697,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### paddingY?
 
-> `optional` **paddingY**: `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **paddingY**: (`theme`) => `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3721,7 +3721,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### pb?
 
-> `optional` **pb**: `ResponsiveStyleValue`\<PaddingBottom\<string \| number\> \| readonly NonNullable\<PaddingBottom\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingBottom\<string \| number\> \| readonly NonNullable\<PaddingBottom\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **pb**: (`theme`) => `ResponsiveStyleValue`\<PaddingBottom\<string \| number\> \| readonly NonNullable\<PaddingBottom\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingBottom\<string \| number\> \| readonly NonNullable\<PaddingBottom\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3731,7 +3731,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### pl?
 
-> `optional` **pl**: `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **pl**: (`theme`) => `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3741,7 +3741,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### popover?
 
-> `optional` **popover**: `""` \| `"hint"` \| `"auto"` \| `"manual"`
+> `optional` **popover**: `""` \| `"auto"` \| `"hint"` \| `"manual"`
 
 #### Inherited from
 
@@ -3761,7 +3761,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### popoverTargetAction?
 
-> `optional` **popoverTargetAction**: `"toggle"` \| `"show"` \| `"hide"`
+> `optional` **popoverTargetAction**: `"hide"` \| `"show"` \| `"toggle"`
 
 #### Inherited from
 
@@ -3771,7 +3771,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### position?
 
-> `optional` **position**: `ResponsiveStyleValue`\<Position \| readonly NonNullable\<Position \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<Position \| readonly NonNullable\<Position \| undefined\>\[\] \| undefined\>
+> `optional` **position**: (`theme`) => `ResponsiveStyleValue`\<Position \| readonly NonNullable\<Position \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<Position \| readonly NonNullable\<Position \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3781,7 +3781,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### pr?
 
-> `optional` **pr**: `ResponsiveStyleValue`\<PaddingRight\<string \| number\> \| readonly NonNullable\<PaddingRight\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingRight\<string \| number\> \| readonly NonNullable\<PaddingRight\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **pr**: (`theme`) => `ResponsiveStyleValue`\<PaddingRight\<string \| number\> \| readonly NonNullable\<PaddingRight\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingRight\<string \| number\> \| readonly NonNullable\<PaddingRight\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3811,7 +3811,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### pt?
 
-> `optional` **pt**: `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **pt**: (`theme`) => `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3821,7 +3821,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### px?
 
-> `optional` **px**: `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **px**: (`theme`) => `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingLeft\<string \| number\> \| readonly NonNullable\<PaddingLeft\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3831,7 +3831,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### py?
 
-> `optional` **py**: `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **py**: (`theme`) => `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<PaddingTop\<string \| number\> \| readonly NonNullable\<PaddingTop\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3913,7 +3913,7 @@ If true, the component will be read-only.
 
 ### right?
 
-> `optional` **right**: `ResponsiveStyleValue`\<Right\<string \| number\> \| readonly NonNullable\<Right\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<Right\<string \| number\> \| readonly NonNullable\<Right\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **right**: (`theme`) => `ResponsiveStyleValue`\<Right\<string \| number\> \| readonly NonNullable\<Right\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<Right\<string \| number\> \| readonly NonNullable\<Right\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -3933,7 +3933,7 @@ If true, the component will be read-only.
 
 ### rowGap?
 
-> `optional` **rowGap**: `ResponsiveStyleValue`\<RowGap\<string \| number\> \| readonly NonNullable\<RowGap\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<RowGap\<string \| number\> \| readonly NonNullable\<RowGap\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **rowGap**: (`theme`) => `ResponsiveStyleValue`\<RowGap\<string \| number\> \| readonly NonNullable\<RowGap\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<RowGap\<string \| number\> \| readonly NonNullable\<RowGap\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -4025,7 +4025,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 ### textAlign?
 
-> `optional` **textAlign**: `ResponsiveStyleValue`\<TextAlign \| readonly NonNullable\<TextAlign \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<TextAlign \| readonly NonNullable\<TextAlign \| undefined\>\[\] \| undefined\>
+> `optional` **textAlign**: (`theme`) => `ResponsiveStyleValue`\<TextAlign \| readonly NonNullable\<TextAlign \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<TextAlign \| readonly NonNullable\<TextAlign \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -4035,7 +4035,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 ### textOverflow?
 
-> `optional` **textOverflow**: `ResponsiveStyleValue`\<readonly string\[\] \| TextOverflow \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| TextOverflow \| undefined\>
+> `optional` **textOverflow**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| TextOverflow \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| TextOverflow \| undefined\>
 
 #### Inherited from
 
@@ -4045,7 +4045,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 ### textTransform?
 
-> `optional` **textTransform**: `ResponsiveStyleValue`\<readonly string\[\] \| TextTransform \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| TextTransform \| undefined\>
+> `optional` **textTransform**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| TextTransform \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| TextTransform \| undefined\>
 
 #### Inherited from
 
@@ -4065,7 +4065,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 ### top?
 
-> `optional` **top**: `ResponsiveStyleValue`\<Top\<string \| number\> \| readonly NonNullable\<Top\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<Top\<string \| number\> \| readonly NonNullable\<Top\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **top**: (`theme`) => `ResponsiveStyleValue`\<Top\<string \| number\> \| readonly NonNullable\<Top\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<Top\<string \| number\> \| readonly NonNullable\<Top\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -4075,7 +4075,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 ### translate?
 
-> `optional` **translate**: `"yes"` \| `"no"`
+> `optional` **translate**: `"no"` \| `"yes"`
 
 #### Inherited from
 
@@ -4095,7 +4095,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 ### typography?
 
-> `optional` **typography**: `ResponsiveStyleValue`\<`undefined` \| `string`\> \| (`theme`) => `ResponsiveStyleValue`\<`undefined` \| `string`\>
+> `optional` **typography**: (`theme`) => `ResponsiveStyleValue`\<`string` \| `undefined`\> \| `ResponsiveStyleValue`\<`string` \| `undefined`\>
 
 #### Inherited from
 
@@ -4115,7 +4115,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 ### visibility?
 
-> `optional` **visibility**: `ResponsiveStyleValue`\<Visibility \| readonly NonNullable\<Visibility \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<Visibility \| readonly NonNullable\<Visibility \| undefined\>\[\] \| undefined\>
+> `optional` **visibility**: (`theme`) => `ResponsiveStyleValue`\<Visibility \| readonly NonNullable\<Visibility \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<Visibility \| readonly NonNullable\<Visibility \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -4135,7 +4135,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 ### whiteSpace?
 
-> `optional` **whiteSpace**: `ResponsiveStyleValue`\<readonly string\[\] \| WhiteSpace \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| WhiteSpace \| undefined\>
+> `optional` **whiteSpace**: (`theme`) => `ResponsiveStyleValue`\<readonly string\[\] \| WhiteSpace \| undefined\> \| `ResponsiveStyleValue`\<readonly string\[\] \| WhiteSpace \| undefined\>
 
 #### Inherited from
 
@@ -4145,7 +4145,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 ### width?
 
-> `optional` **width**: `ResponsiveStyleValue`\<Width\<string \| number\> \| readonly NonNullable\<Width\<string \| number\> \| undefined\>\[\] \| undefined\> \| (`theme`) => `ResponsiveStyleValue`\<Width\<string \| number\> \| readonly NonNullable\<Width\<string \| number\> \| undefined\>\[\] \| undefined\>
+> `optional` **width**: (`theme`) => `ResponsiveStyleValue`\<Width\<string \| number\> \| readonly NonNullable\<Width\<string \| number\> \| undefined\>\[\] \| undefined\> \| `ResponsiveStyleValue`\<Width\<string \| number\> \| readonly NonNullable\<Width\<string \| number\> \| undefined\>\[\] \| undefined\>
 
 #### Inherited from
 
@@ -4155,7 +4155,7 @@ The system prop that allows defining system overrides as well as additional CSS 
 
 ### zIndex?
 
-> `optional` **zIndex**: `ResponsiveStyleValue`\<`undefined` \| `string` \| `string` & `object` \| `number` & `object`\> \| (`theme`) => `ResponsiveStyleValue`\<`undefined` \| `string` \| `string` & `object` \| `number` & `object`\>
+> `optional` **zIndex**: (`theme`) => `ResponsiveStyleValue`\<`string` & `object` \| `number` & `object` \| `string` \| `undefined`\> \| `ResponsiveStyleValue`\<`string` & `object` \| `number` & `object` \| `string` \| `undefined`\>
 
 #### Inherited from
 

@@ -198,11 +198,11 @@ the slice of the initial data in accordance with the Store hierarchy. **Internal
 
 #### Get Signature
 
-> **get** **showAllValidationErrors**(): `undefined` \| `boolean`
+> **get** **showAllValidationErrors**(): `boolean` \| `undefined`
 
 ##### Returns
 
-`undefined` \| `boolean`
+`boolean` \| `undefined`
 
 true if all validation errors are to be displayed, false otherwise.
 
@@ -368,7 +368,7 @@ the action.
 
 ### getFirstComponentTypeWithRole()
 
-> **getFirstComponentTypeWithRole**(`componentRole`): `undefined` \| `string`
+> **getFirstComponentTypeWithRole**(`componentRole`): `string` \| `undefined`
 
 Returns the first type of component with the specified role.
 
@@ -382,7 +382,7 @@ the component role.
 
 #### Returns
 
-`undefined` \| `string`
+`string` \| `undefined`
 
 the first type of component with the specified role.
 
@@ -472,7 +472,7 @@ the Record with the localized properties.
 
 ### localizeErrorMessages()
 
-> **localizeErrorMessages**(`formData`, `componentStore`, `validationResults?`): `undefined` \| `string`[]
+> **localizeErrorMessages**(`formData`, `componentStore`, `validationResults?`): `string`[] \| `undefined`
 
 The function to localize the validation error message.
 
@@ -498,7 +498,7 @@ the results of the validation.
 
 #### Returns
 
-`undefined` \| `string`[]
+`string`[] \| `undefined`
 
 the result of localization or undefined.
 

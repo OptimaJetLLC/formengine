@@ -62,7 +62,7 @@ If true, the dropzone will show.
 
 ### getFilesFromEvent()?
 
-> `optional` **getFilesFromEvent**: (`event`) => `Promise`\<(`File` \| `DataTransferItem`)[]\>
+> `optional` **getFilesFromEvent**: (`event`) => `Promise`\<(`DataTransferItem` \| `File`)[]\>
 
 #### Parameters
 
@@ -72,7 +72,7 @@ If true, the dropzone will show.
 
 #### Returns
 
-`Promise`\<(`File` \| `DataTransferItem`)[]\>
+`Promise`\<(`DataTransferItem` \| `File`)[]\>
 
 #### Inherited from
 
@@ -356,7 +356,7 @@ If true, the children are in read-only state.
 
 ### validator()?
 
-> `optional` **validator**: \<`T`\>(`file`) => `null` \| `FileError` \| readonly `FileError`[]
+> `optional` **validator**: \<`T`\>(`file`) => readonly `FileError`[] \| `FileError` \| `null`
 
 #### Type Parameters
 
@@ -372,7 +372,7 @@ If true, the children are in read-only state.
 
 #### Returns
 
-`null` \| `FileError` \| readonly `FileError`[]
+readonly `FileError`[] \| `FileError` \| `null`
 
 #### Inherited from
 

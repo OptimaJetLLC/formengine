@@ -8,20 +8,20 @@ The annotations for generic CSS properties of a container component.
 
 ### alignItems
 
-> **alignItems**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"center"` \| `"start"` \| `"baseline"` \| `"end"` \| `"stretch"`\>
+> **alignItems**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"baseline"` \| `"center"` \| `"end"` \| `"start"` \| `"stretch"`\>
 
 ### flexDirection
 
-> **flexDirection**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"column"` \| `"row"` \| `"column-reverse"` \| `"row-reverse"`\>
+> **flexDirection**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"column"` \| `"column-reverse"` \| `"row"` \| `"row-reverse"`\>
 
 ### flexWrap
 
-> **flexWrap**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"wrap"` \| `"nowrap"` \| `"wrap-reverse"`\>
+> **flexWrap**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"nowrap"` \| `"wrap"` \| `"wrap-reverse"`\>
 
 ### gap
 
-> **gap**: [`TypedBuilder`](../classes/TypedBuilder.md)\<`undefined` \| `string`\> = `size`
+> **gap**: [`TypedBuilder`](../classes/TypedBuilder.md)\<`string` \| `undefined`\> = `size`
 
 ### justifyContent
 
-> **justifyContent**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"left"` \| `"right"` \| `"center"` \| `"start"` \| `"end"` \| `"flex-start"` \| `"flex-end"` \| `"space-between"` \| `"space-around"` \| `"space-evenly"`\>
+> **justifyContent**: [`OneOfBuilder`](../classes/OneOfBuilder.md)\<`"center"` \| `"end"` \| `"flex-end"` \| `"flex-start"` \| `"left"` \| `"right"` \| `"space-around"` \| `"space-between"` \| `"space-evenly"` \| `"start"`\>

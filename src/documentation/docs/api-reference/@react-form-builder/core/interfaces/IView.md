@@ -60,7 +60,7 @@ the array of component metadata filtered using the predicate function.
 
 ### find()
 
-> **find**: (`type`) => `undefined` \| [`Model`](../classes/Model.md)\<`any`\>
+> **find**: (`type`) => [`Model`](../classes/Model.md)\<`any`\> \| `undefined`
 
 Returns the component's metadata for the form viewer for the specified type.
 
@@ -74,7 +74,7 @@ the component type.
 
 #### Returns
 
-`undefined` \| [`Model`](../classes/Model.md)\<`any`\>
+[`Model`](../classes/Model.md)\<`any`\> \| `undefined`
 
 the component metadata for the form viewer for the specified type or undefined.
 

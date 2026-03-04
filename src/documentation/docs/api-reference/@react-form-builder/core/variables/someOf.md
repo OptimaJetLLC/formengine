@@ -10,7 +10,7 @@ Sets the property as a "multiple select" property.
 
 ### U
 
-`U` *extends* `string` \| `number`
+`U` *extends* `number` \| `string`
 
 ## Parameters
 

@@ -4,7 +4,7 @@ Props for the RsTimePicker component.
 
 ## Extends
 
-- `Omit`\<`DatePickerProps`, `"value"` \| `"onChange"`\>
+- `Omit`\<`DatePickerProps`, `"onChange"` \| `"value"`\>
 
 ## Properties
 
@@ -58,7 +58,7 @@ Calendar panel default presentation date and time
 
 ### caretAs?
 
-> `optional` **caretAs**: `null` \| `ElementType`\<`any`, keyof IntrinsicElements\>
+> `optional` **caretAs**: `ElementType`\<`any`, keyof IntrinsicElements\> \| `null`
 
 Custom caret component
 
@@ -118,7 +118,7 @@ A picker that can clear values
 
 ### container?
 
-> `optional` **container**: `HTMLElement` \| () => `HTMLElement`
+> `optional` **container**: () => `HTMLElement` \| `HTMLElement`
 
 Sets the rendering container
 
@@ -154,7 +154,7 @@ Initial open menu
 
 ### defaultValue?
 
-> `optional` **defaultValue**: `null` \| `Date`
+> `optional` **defaultValue**: `Date` \| `null`
 
 Initial value
 
@@ -1340,7 +1340,7 @@ Value of the time picker.
 
 ### weekStart?
 
-> `optional` **weekStart**: `0` \| `3` \| `1` \| `2` \| `4` \| `5` \| `6`
+> `optional` **weekStart**: `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6`
 
 The index of the first day of the week (0 - Sunday)
 If `isoWeek` is `true`, the value of `weekStart` is ignored.

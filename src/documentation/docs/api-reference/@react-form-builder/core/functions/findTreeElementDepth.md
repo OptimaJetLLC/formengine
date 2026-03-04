@@ -1,6 +1,6 @@
 # Function: findTreeElementDepth()
 
-> **findTreeElementDepth**\<`T`\>(`value`, `element?`, `depth?`): `undefined` \| `number`
+> **findTreeElementDepth**\<`T`\>(`value`, `element?`, `depth?`): `number` \| `undefined`
 
 Finds the depth of a given element in a tree. **Internal use only.**
 
@@ -32,6 +32,6 @@ the current depth of the tree (optional, default is 0).
 
 ## Returns
 
-`undefined` \| `number`
+`number` \| `undefined`
 
 the depth of the element in the tree, or undefined if the element is not found.

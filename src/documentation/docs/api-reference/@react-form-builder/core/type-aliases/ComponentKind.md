@@ -1,5 +1,5 @@
 # Type Alias: ComponentKind
 
-> **ComponentKind** = `"container"` \| `"component"` \| `"template"` \| `"repeater"`
+> **ComponentKind** = `"component"` \| `"container"` \| `"repeater"` \| `"template"`
 
 The component kind type.

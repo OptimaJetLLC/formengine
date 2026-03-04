@@ -80,7 +80,7 @@ The set of functions that validate the form data.
 
 ### getForm()?
 
-> `optional` **getForm**: (`name?`, `options?`) => `string` \| `Promise`\<`string`\>
+> `optional` **getForm**: (`name?`, `options?`) => `Promise`\<`string`\> \| `string`
 
 Loads the form.
 
@@ -100,7 +100,7 @@ the form options.
 
 #### Returns
 
-`string` \| `Promise`\<`string`\>
+`Promise`\<`string`\> \| `string`
 
 the string or Promise with the form.
 

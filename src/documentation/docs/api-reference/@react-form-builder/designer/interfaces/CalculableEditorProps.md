@@ -58,13 +58,13 @@ the code of the computed property.
 
 ### getComputeType()
 
-> **getComputeType**: () => `undefined` \| [`ComponentPropertyComputeType`](../../core/type-aliases/ComponentPropertyComputeType.md)
+> **getComputeType**: () => [`ComponentPropertyComputeType`](../../core/type-aliases/ComponentPropertyComputeType.md) \| `undefined`
 
 Returns the type of calculation for the property.
 
 #### Returns
 
-`undefined` \| [`ComponentPropertyComputeType`](../../core/type-aliases/ComponentPropertyComputeType.md)
+[`ComponentPropertyComputeType`](../../core/type-aliases/ComponentPropertyComputeType.md) \| `undefined`
 
 ***
 

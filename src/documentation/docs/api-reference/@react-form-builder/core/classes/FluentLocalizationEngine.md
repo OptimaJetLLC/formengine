@@ -124,7 +124,7 @@ the compatible ID.
 
 ### localizeErrorMessage()
 
-> **localizeErrorMessage**(`form`, `formData`, `language`, `componentStore`, `ruleKey`): `undefined` \| `string`
+> **localizeErrorMessage**(`form`, `formData`, `language`, `componentStore`, `ruleKey`): `string` \| `undefined`
 
 Localizes error messages for validation rules.
 
@@ -162,7 +162,7 @@ the validation rule key.
 
 #### Returns
 
-`undefined` \| `string`
+`string` \| `undefined`
 
 the localized error message or undefined.
 
@@ -224,7 +224,7 @@ the object with localized property values.
 
 ### testLocalization()
 
-> **testLocalization**(`localization`, `localizationStringId`, `language`, `formData`): `string` \| [`LocalizationError`](../interfaces/LocalizationError.md)[]
+> **testLocalization**(`localization`, `localizationStringId`, `language`, `formData`): [`LocalizationError`](../interfaces/LocalizationError.md)[] \| `string`
 
 #### Parameters
 
@@ -254,7 +254,7 @@ the data to use for variable substitution.
 
 #### Returns
 
-`string` \| [`LocalizationError`](../interfaces/LocalizationError.md)[]
+[`LocalizationError`](../interfaces/LocalizationError.md)[] \| `string`
 
 the array of errors or the formatted result string.
 

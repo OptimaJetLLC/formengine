@@ -72,13 +72,13 @@ Options for building an annotation.
 
 #### Get Signature
 
-> **get** **array**(): [`ArrayBuilder`](ArrayBuilder.md)\<`undefined` \| `T`[]\>
+> **get** **array**(): [`ArrayBuilder`](ArrayBuilder.md)\<`T`[] \| `undefined`\>
 
 Sets the property as a "array" property.
 
 ##### Returns
 
-[`ArrayBuilder`](ArrayBuilder.md)\<`undefined` \| `T`[]\>
+[`ArrayBuilder`](ArrayBuilder.md)\<`T`[] \| `undefined`\>
 
 the instance of the metadata property builder.
 
@@ -332,7 +332,7 @@ Sets the property as a "single select" property.
 
 ##### U
 
-`U` *extends* `string` \| `number`
+`U` *extends* `number` \| `string`
 
 #### Parameters
 
@@ -386,7 +386,7 @@ Sets the property as a "multiple select" property.
 
 ##### U
 
-`U` *extends* `string` \| `number`
+`U` *extends* `number` \| `string`
 
 #### Parameters
 
@@ -406,7 +406,7 @@ the instance of the metadata property builder.
 
 ### typed()
 
-> **typed**\<`T`\>(`type`): [`TypedBuilder`](TypedBuilder.md)\<`undefined` \| [`SchemaTypeMap`](../type-aliases/SchemaTypeMap.md)\[`T`\]\>
+> **typed**\<`T`\>(`type`): [`TypedBuilder`](TypedBuilder.md)\<[`SchemaTypeMap`](../type-aliases/SchemaTypeMap.md)\[`T`\] \| `undefined`\>
 
 Sets the field type for the component property.
 
@@ -426,7 +426,7 @@ the field type.
 
 #### Returns
 
-[`TypedBuilder`](TypedBuilder.md)\<`undefined` \| [`SchemaTypeMap`](../type-aliases/SchemaTypeMap.md)\[`T`\]\>
+[`TypedBuilder`](TypedBuilder.md)\<[`SchemaTypeMap`](../type-aliases/SchemaTypeMap.md)\[`T`\] \| `undefined`\>
 
 the instance of the metadata property builder.
 

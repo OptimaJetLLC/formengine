@@ -284,7 +284,7 @@ the component Store.
 
 ### hasValidationRule()
 
-> `static` **hasValidationRule**(`store`, `key`): `undefined` \| `boolean`
+> `static` **hasValidationRule**(`store`, `key`): `boolean` \| `undefined`
 
 Returns true if the component has a validation rule.
 
@@ -304,7 +304,7 @@ the validation key.
 
 #### Returns
 
-`undefined` \| `boolean`
+`boolean` \| `undefined`
 
 true if the component has a validation rule, otherwise false.
 

@@ -1,6 +1,6 @@
 # Function: debounce()
 
-> **debounce**\<`T`\>(`fn`, `wait`): (...`args`) => `void` \| `ReturnType`\<`T`\>
+> **debounce**\<`T`\>(`fn`, `wait`): (...`args`) => `ReturnType`\<`T`\> \| `void`
 
 Debounce function calls with a timeout.
 
@@ -28,7 +28,7 @@ the delay in ms.
 
 the debounced function.
 
-> (...`args`): `void` \| `ReturnType`\<`T`\>
+> (...`args`): `ReturnType`\<`T`\> \| `void`
 
 ### Parameters
 
@@ -38,4 +38,4 @@ the debounced function.
 
 ### Returns
 
-`void` \| `ReturnType`\<`T`\>
+`ReturnType`\<`T`\> \| `void`

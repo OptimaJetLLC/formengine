@@ -14,7 +14,7 @@ The React component that displays the value of a column.
 
 ### inputName?
 
-> `optional` **inputName**: `"InputCell"` \| `"CheckCell"` \| `"SelectCell"` \| `"ActionCell"`
+> `optional` **inputName**: `"ActionCell"` \| `"CheckCell"` \| `"InputCell"` \| `"SelectCell"`
 
 The name of the React component that displays the value of a column.
 

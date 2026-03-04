@@ -69,7 +69,7 @@ Options for building an annotation.
 
 ### values
 
-> **values**: (`string` \| `number`)[]
+> **values**: (`number` \| `string`)[]
 
 Possible values for the property.
 

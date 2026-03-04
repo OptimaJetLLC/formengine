@@ -1,5 +1,5 @@
 # Type Alias: ActionType
 
-> **ActionType** = `"common"` \| `"code"` \| `"custom"`
+> **ActionType** = `"code"` \| `"common"` \| `"custom"`
 
 Action type.

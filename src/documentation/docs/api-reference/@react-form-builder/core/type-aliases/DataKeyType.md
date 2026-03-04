@@ -1,5 +1,5 @@
 # Type Alias: DataKeyType
 
-> **DataKeyType** = `string` \| `number` \| `symbol`
+> **DataKeyType** = `number` \| `string` \| `symbol`
 
 The data key type.

@@ -158,11 +158,11 @@ the actions names array.
 
 #### Get Signature
 
-> **get** **formValidatorFunction**(): `undefined` \| [`FormValidator`](../type-aliases/FormValidator.md)
+> **get** **formValidatorFunction**(): [`FormValidator`](../type-aliases/FormValidator.md) \| `undefined`
 
 ##### Returns
 
-`undefined` \| [`FormValidator`](../type-aliases/FormValidator.md)
+[`FormValidator`](../type-aliases/FormValidator.md) \| `undefined`
 
 the form validator function.
 

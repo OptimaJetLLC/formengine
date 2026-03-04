@@ -22,7 +22,7 @@ Error message if upload failed.
 
 ### fileKey?
 
-> `optional` **fileKey**: `string` \| `number`
+> `optional` **fileKey**: `number` \| `string`
 
 File unique identifier.
 

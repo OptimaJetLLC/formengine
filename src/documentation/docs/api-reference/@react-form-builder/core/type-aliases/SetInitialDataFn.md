@@ -8,7 +8,7 @@ Sets the initial data.
 
 ### key
 
-`string` | `number`
+`number` | `string`
 
 ### value
 

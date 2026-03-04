@@ -10,7 +10,7 @@ The Rich text editor component properties.
 
 ### bounds?
 
-> `optional` **bounds**: `string` \| `HTMLElement`
+> `optional` **bounds**: `HTMLElement` \| `string`
 
 #### Inherited from
 
@@ -20,7 +20,7 @@ The Rich text editor component properties.
 
 ### children?
 
-> `optional` **children**: `ReactElement`\<`any`, `string` \| `JSXElementConstructor`\<`any`\>\>
+> `optional` **children**: `ReactElement`\<`any`, `JSXElementConstructor`\<`any`\> \| `string`\>
 
 #### Inherited from
 
@@ -242,7 +242,7 @@ Triggered after the content changed.
 
 ### toolbarOptions?
 
-> `optional` **toolbarOptions**: (`"block"` \| `"color"` \| `"direction"` \| `"font"` \| `"header"` \| `"script"` \| `"insert"` \| `"size"` \| `"list"` \| `"clean"` \| `"align"` \| `"decoration"` \| `"indent"`)[]
+> `optional` **toolbarOptions**: (`"align"` \| `"block"` \| `"clean"` \| `"color"` \| `"decoration"` \| `"direction"` \| `"font"` \| `"header"` \| `"indent"` \| `"insert"` \| `"list"` \| `"script"` \| `"size"`)[]
 
 Groups of buttons to be displayed on the toolbar.
 

@@ -1,6 +1,6 @@
 # Type Alias: Func()
 
-> **Func** = (...`arg`) => `void` \| `Promise`\<`void`\>
+> **Func** = (...`arg`) => `Promise`\<`void`\> \| `void`
 
 The type of arbitrary function that returns void or Promise&lt;void&gt;.
 
@@ -12,4 +12,4 @@ The type of arbitrary function that returns void or Promise&lt;void&gt;.
 
 ## Returns
 
-`void` \| `Promise`\<`void`\>
+`Promise`\<`void`\> \| `void`

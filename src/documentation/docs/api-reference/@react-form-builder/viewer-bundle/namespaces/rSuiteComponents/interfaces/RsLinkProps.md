@@ -66,7 +66,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"none"` \| `"list"` \| `"both"` \| `"inline"`
+> `optional` **aria-autocomplete**: `"both"` \| `"inline"` \| `"list"` \| `"none"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -121,7 +121,7 @@ aria-roledescription.
 
 ### aria-checked?
 
-> `optional` **aria-checked**: `boolean` \| `"true"` \| `"false"` \| `"mixed"`
+> `optional` **aria-checked**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
 
 Indicates the current "checked" state of checkboxes, radio buttons, and other widgets.
 
@@ -220,7 +220,7 @@ aria-owns.
 
 ### aria-current?
 
-> `optional` **aria-current**: `boolean` \| `"page"` \| `"date"` \| `"time"` \| `"true"` \| `"false"` \| `"step"` \| `"location"`
+> `optional` **aria-current**: `boolean` \| `"date"` \| `"false"` \| `"location"` \| `"page"` \| `"step"` \| `"time"` \| `"true"`
 
 Indicates the element that represents the current item within a container or set of related elements.
 
@@ -297,7 +297,7 @@ Indicates that the element is perceivable but disabled, so it is not editable or
 
 ### ~~aria-dropeffect?~~
 
-> `optional` **aria-dropeffect**: `"link"` \| `"none"` \| `"copy"` \| `"move"` \| `"execute"` \| `"popup"`
+> `optional` **aria-dropeffect**: `"copy"` \| `"execute"` \| `"link"` \| `"move"` \| `"none"` \| `"popup"`
 
 Indicates what functions can be performed when a dragged object is released on the drop target.
 
@@ -371,7 +371,7 @@ in ARIA 1.1
 
 ### aria-haspopup?
 
-> `optional` **aria-haspopup**: `boolean` \| `"grid"` \| `"true"` \| `"dialog"` \| `"menu"` \| `"false"` \| `"listbox"` \| `"tree"`
+> `optional` **aria-haspopup**: `boolean` \| `"dialog"` \| `"false"` \| `"grid"` \| `"listbox"` \| `"menu"` \| `"tree"` \| `"true"`
 
 Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 
@@ -399,7 +399,7 @@ aria-disabled.
 
 ### aria-invalid?
 
-> `optional` **aria-invalid**: `boolean` \| `"true"` \| `"false"` \| `"grammar"` \| `"spelling"`
+> `optional` **aria-invalid**: `boolean` \| `"false"` \| `"grammar"` \| `"spelling"` \| `"true"`
 
 Indicates the entered value does not conform to the format expected by the application.
 
@@ -471,7 +471,7 @@ Defines the hierarchical level of an element within a structure.
 
 ### aria-live?
 
-> `optional` **aria-live**: `"off"` \| `"assertive"` \| `"polite"`
+> `optional` **aria-live**: `"assertive"` \| `"off"` \| `"polite"`
 
 Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.
 
@@ -577,7 +577,7 @@ aria-setsize.
 
 ### aria-pressed?
 
-> `optional` **aria-pressed**: `boolean` \| `"true"` \| `"false"` \| `"mixed"`
+> `optional` **aria-pressed**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
 
 Indicates the current "pressed" state of toggle buttons.
 
@@ -610,7 +610,7 @@ aria-disabled.
 
 ### aria-relevant?
 
-> `optional` **aria-relevant**: `"all"` \| `"text"` \| `"additions"` \| `"additions removals"` \| `"additions text"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text additions"` \| `"text removals"`
+> `optional` **aria-relevant**: `"additions"` \| `"additions removals"` \| `"additions text"` \| `"all"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text"` \| `"text additions"` \| `"text removals"`
 
 Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified.
 
@@ -749,7 +749,7 @@ aria-posinset.
 
 ### aria-sort?
 
-> `optional` **aria-sort**: `"none"` \| `"ascending"` \| `"descending"` \| `"other"`
+> `optional` **aria-sort**: `"ascending"` \| `"descending"` \| `"none"` \| `"other"`
 
 Indicates if items in a table or grid are sorted in ascending or descending order.
 
@@ -813,7 +813,7 @@ Defines the human readable text alternative of aria-valuenow for a range widget.
 
 ### autoCapitalize?
 
-> `optional` **autoCapitalize**: `"none"` \| `string` & `object` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"` \| `"characters"`
+> `optional` **autoCapitalize**: `string` & `object` \| `"characters"` \| `"none"` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"`
 
 #### Inherited from
 
@@ -907,7 +907,7 @@ The content type (text or custom).
 
 ### contentEditable?
 
-> `optional` **contentEditable**: `"inherit"` \| `Booleanish` \| `"plaintext-only"`
+> `optional` **contentEditable**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
 
 #### Inherited from
 
@@ -961,7 +961,7 @@ The content type (text or custom).
 
 ### defaultValue?
 
-> `optional` **defaultValue**: `string` \| `number` \| readonly `string`[]
+> `optional` **defaultValue**: readonly `string`[] \| `number` \| `string`
 
 #### Inherited from
 
@@ -1009,7 +1009,7 @@ The filename for download when download is enabled.
 
 ### enterKeyHint?
 
-> `optional` **enterKeyHint**: `"search"` \| `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"send"`
+> `optional` **enterKeyHint**: `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"search"` \| `"send"`
 
 #### Inherited from
 
@@ -1121,7 +1121,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 ### inputMode?
 
-> `optional` **inputMode**: `"search"` \| `"none"` \| `"text"` \| `"email"` \| `"url"` \| `"tel"` \| `"numeric"` \| `"decimal"`
+> `optional` **inputMode**: `"decimal"` \| `"email"` \| `"none"` \| `"numeric"` \| `"search"` \| `"tel"` \| `"text"` \| `"url"`
 
 Hints at the type of data that might be entered by the user while editing the element or its contents
 
@@ -1203,7 +1203,7 @@ Specify that a standard HTML element should behave like a defined custom built-i
 
 ### key?
 
-> `optional` **key**: `null` \| `Key`
+> `optional` **key**: `Key` \| `null`
 
 #### Inherited from
 
@@ -2955,7 +2955,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### popover?
 
-> `optional` **popover**: `""` \| `"hint"` \| `"auto"` \| `"manual"`
+> `optional` **popover**: `""` \| `"auto"` \| `"hint"` \| `"manual"`
 
 #### Inherited from
 
@@ -2975,7 +2975,7 @@ Use `onKeyUpCapture` or `onKeyDownCapture` instead
 
 ### popoverTargetAction?
 
-> `optional` **popoverTargetAction**: `"toggle"` \| `"show"` \| `"hide"`
+> `optional` **popoverTargetAction**: `"hide"` \| `"show"` \| `"toggle"`
 
 #### Inherited from
 
@@ -3191,7 +3191,7 @@ The link text content.
 
 ### translate?
 
-> `optional` **translate**: `"yes"` \| `"no"`
+> `optional` **translate**: `"no"` \| `"yes"`
 
 #### Inherited from
 

@@ -280,7 +280,7 @@ Sets the icon of the component.
 
 the component icon or the icon name.
 
-`ComponentType` | `"Container"` | `"Repeater"` | `"Menu"` | `"Breadcrumb"` | `"Button"` | `"Card"` | `"Checkbox"` | `"CollectionEditor"` | `"Content"` | `"CustomBlock"` | `"CustomControl"` | `"DatePicker"` | `"Default"` | `"Dropdown"` | `"Dropzone"` | `"ErrorMessage"` | `"Grid"` | `"GridLayout"` | `"GridView"` | `"Image"` | `"Input"` | `"Label"` | `"Link"` | `"Footer"` | `"Header"` | `"Sidebar"` | `"Message"` | `"NumberFormat"` | `"PatternFormat"` | `"ProgressCircle"` | `"ProgressLine"` | `"RadioGroup"` | `"RichTextEditor"` | `"Search"` | `"Signature"` | `"Sparks"` | `"StaticContent"` | `"Tab"` | `"TextArea"` | `"TimePicker"` | `"Toggle"` | `"Tooltip"` | `"TreePicker"` | `"Uploader"`
+`"Breadcrumb"` | `"Button"` | `"Card"` | `"Checkbox"` | `"CollectionEditor"` | `ComponentType` | `"Container"` | `"Content"` | `"CustomBlock"` | `"CustomControl"` | `"DatePicker"` | `"Default"` | `"Dropdown"` | `"Dropzone"` | `"ErrorMessage"` | `"Footer"` | `"Grid"` | `"GridLayout"` | `"GridView"` | `"Header"` | `"Image"` | `"Input"` | `"Label"` | `"Link"` | `"Menu"` | `"Message"` | `"NumberFormat"` | `"PatternFormat"` | `"ProgressCircle"` | `"ProgressLine"` | `"RadioGroup"` | `"Repeater"` | `"RichTextEditor"` | `"Search"` | `"Sidebar"` | `"Signature"` | `"Sparks"` | `"StaticContent"` | `"Tab"` | `"TextArea"` | `"TimePicker"` | `"Toggle"` | `"Tooltip"` | `"TreePicker"` | `"Uploader"`
 
 #### Returns
 

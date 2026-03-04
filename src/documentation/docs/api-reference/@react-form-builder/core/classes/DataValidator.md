@@ -6,7 +6,7 @@ Binds all parts of the validation and performs the validation.
 
 ### getValidationResult()
 
-> **getValidationResult**(`value`): `Promise`\<`undefined` \| `string`[]\>
+> **getValidationResult**(`value`): `Promise`\<`string`[] \| `undefined`\>
 
 Returns the validation results without triggering an events and changing the state of the form.
 
@@ -20,7 +20,7 @@ the validated value.
 
 #### Returns
 
-`Promise`\<`undefined` \| `string`[]\>
+`Promise`\<`string`[] \| `undefined`\>
 
 the validation results.
 
@@ -48,7 +48,7 @@ the validated value.
 
 ### validate()
 
-> **validate**(`value`): `Promise`\<`undefined` \| `string`\>
+> **validate**(`value`): `Promise`\<`string` \| `undefined`\>
 
 Performs a validation of the value.
 
@@ -62,7 +62,7 @@ the validated value.
 
 #### Returns
 
-`Promise`\<`undefined` \| `string`\>
+`Promise`\<`string` \| `undefined`\>
 
 the Promise with the result of the validation.
 
@@ -110,7 +110,7 @@ the validation function factory arguments.
 
 ##### setter
 
-[`Setter`](../type-aliases/Setter.md)\<`undefined` \| `string`\>
+[`Setter`](../type-aliases/Setter.md)\<`string` \| `undefined`\>
 
 the callback function called to set a validation error.
 

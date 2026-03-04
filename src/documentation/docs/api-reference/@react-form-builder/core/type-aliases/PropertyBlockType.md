@@ -1,5 +1,5 @@
 # Type Alias: PropertyBlockType
 
-> **PropertyBlockType** = `"component"` \| `"tooltip"` \| `"modal"` \| `string`
+> **PropertyBlockType** = `"component"` \| `"modal"` \| `string` \| `"tooltip"`
 
 Represents the type of property block.

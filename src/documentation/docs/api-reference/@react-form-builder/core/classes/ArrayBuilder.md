@@ -119,13 +119,13 @@ the non-localizable component property.
 
 #### Get Signature
 
-> **get** **ofObject**(): `ArrayBuilder`\<`undefined` \| `object`[]\>
+> **get** **ofObject**(): `ArrayBuilder`\<`object`[] \| `undefined`\>
 
 Sets the component's value type to an array of objects.
 
 ##### Returns
 
-`ArrayBuilder`\<`undefined` \| `object`[]\>
+`ArrayBuilder`\<`object`[] \| `undefined`\>
 
 the modified instance of the builder.
 
@@ -135,13 +135,13 @@ the modified instance of the builder.
 
 #### Get Signature
 
-> **get** **ofString**(): `ArrayBuilder`\<`undefined` \| `string`[]\>
+> **get** **ofString**(): `ArrayBuilder`\<`string`[] \| `undefined`\>
 
 Sets the component's value type to an array of strings.
 
 ##### Returns
 
-`ArrayBuilder`\<`undefined` \| `string`[]\>
+`ArrayBuilder`\<`string`[] \| `undefined`\>
 
 the modified instance of the builder.
 

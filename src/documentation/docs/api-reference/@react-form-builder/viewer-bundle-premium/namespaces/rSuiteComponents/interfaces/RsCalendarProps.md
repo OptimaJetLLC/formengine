@@ -34,7 +34,7 @@ Show border
 
 ### cellClassName()?
 
-> `optional` **cellClassName**: (`date`) => `undefined` \| `string`
+> `optional` **cellClassName**: (`date`) => `string` \| `undefined`
 
 Custom cell classes base on it's date
 
@@ -46,7 +46,7 @@ Custom cell classes base on it's date
 
 #### Returns
 
-`undefined` \| `string`
+`string` \| `undefined`
 
 #### Inherited from
 
@@ -289,7 +289,7 @@ Controlled value
 
 ### weekStart?
 
-> `optional` **weekStart**: `0` \| `3` \| `1` \| `2` \| `4` \| `5` \| `6`
+> `optional` **weekStart**: `0` \| `1` \| `2` \| `3` \| `4` \| `5` \| `6`
 
 The index of the first day of the week (0 - Sunday)
 If `isoWeek` is `true`, the value of `weekStart` is ignored.

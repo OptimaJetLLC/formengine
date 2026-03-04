@@ -136,7 +136,7 @@ A picker that can clear values
 
 ### container?
 
-> `optional` **container**: `HTMLElement` \| () => `HTMLElement`
+> `optional` **container**: () => `HTMLElement` \| `HTMLElement`
 
 Sets the rendering container
 
@@ -172,7 +172,7 @@ Settings can create new options
 
 ### data
 
-> **data**: `InputItemDataType`\<`string` \| `number`\>[]
+> **data**: `InputItemDataType`\<`number` \| `string`\>[]
 
 The data of the component.
 

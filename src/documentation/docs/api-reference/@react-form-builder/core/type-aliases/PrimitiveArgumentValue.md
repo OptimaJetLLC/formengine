@@ -1,5 +1,5 @@
 # Type Alias: PrimitiveArgumentValue
 
-> **PrimitiveArgumentValue** = `string` \| `number` \| `boolean`
+> **PrimitiveArgumentValue** = `boolean` \| `number` \| `string`
 
 Primitive argument value type.

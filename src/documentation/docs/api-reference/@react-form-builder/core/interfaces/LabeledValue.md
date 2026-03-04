@@ -14,6 +14,6 @@ The label.
 
 ### value
 
-> **value**: `string` \| `number`
+> **value**: `number` \| `string`
 
 The value.

@@ -55,7 +55,7 @@ The markers collision behavior.
 
 ### colorScheme?
 
-> `optional` **colorScheme**: `"DARK"` \| `"LIGHT"` \| `"FOLLOW_SYSTEM"`
+> `optional` **colorScheme**: `"DARK"` \| `"FOLLOW_SYSTEM"` \| `"LIGHT"`
 
 The color scheme to use for the map.
 
@@ -63,7 +63,7 @@ The color scheme to use for the map.
 
 ### gestureHandling?
 
-> `optional` **gestureHandling**: `"none"` \| `"auto"` \| `"cooperative"` \| `"greedy"`
+> `optional` **gestureHandling**: `"auto"` \| `"cooperative"` \| `"greedy"` \| `"none"`
 
 This setting controls how the API handles gestures on the map.
 
@@ -189,7 +189,7 @@ The callback function called when a marker is clicked.
 
 ##### marker
 
-`null` | [`MapMarker`](../type-aliases/MapMarker.md)
+[`MapMarker`](../type-aliases/MapMarker.md) | `null`
 
 ##### element
 

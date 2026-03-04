@@ -124,7 +124,7 @@ A picker that can clear values
 
 ### container?
 
-> `optional` **container**: `HTMLElement` \| () => `HTMLElement`
+> `optional` **container**: () => `HTMLElement` \| `HTMLElement`
 
 Sets the rendering container
 
@@ -148,7 +148,7 @@ Set the padding of the container.
 
 ### data
 
-> **data**: (`string` \| `ItemDataType`\<`string` \| `number`\>)[]
+> **data**: (`ItemDataType`\<`number` \| `string`\> \| `string`)[]
 
 The data of the component.
 

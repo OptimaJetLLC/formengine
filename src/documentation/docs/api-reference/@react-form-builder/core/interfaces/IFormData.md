@@ -190,11 +190,11 @@ If true, then validation is in progress.
 
 #### Get Signature
 
-> **get** **parentData**(): `undefined` \| `Record`\<`string`, `unknown`\>
+> **get** **parentData**(): `Record`\<`string`, `unknown`\> \| `undefined`
 
 ##### Returns
 
-`undefined` \| `Record`\<`string`, `unknown`\>
+`Record`\<`string`, `unknown`\> \| `undefined`
 
 the object to read and modify parent data (available for array elements).
 

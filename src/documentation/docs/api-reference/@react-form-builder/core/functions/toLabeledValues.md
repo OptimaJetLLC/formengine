@@ -8,7 +8,7 @@ Converts the array of elements into the array of [LabeledValue](../interfaces/La
 
 ### items
 
-(`string` \| `number` \| [`LabeledValue`](../interfaces/LabeledValue.md))[]
+([`LabeledValue`](../interfaces/LabeledValue.md) \| `number` \| `string`)[]
 
 the array of elements.
 

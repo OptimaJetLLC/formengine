@@ -124,7 +124,7 @@ the new component key to replace the old component key.
 
 ### findLocalizationKey()
 
-> **findLocalizationKey**(`languageFullCode`): `null` \| `` `${string}-${string}` ``
+> **findLocalizationKey**(`languageFullCode`): `` `${string}-${string}` `` \| `null`
 
 Finds the best matching localization key for the given language code.
 Looks for exact match first, then match by language code only.
@@ -139,7 +139,7 @@ the requested language full code.
 
 #### Returns
 
-`null` \| `` `${string}-${string}` ``
+`` `${string}-${string}` `` \| `null`
 
 the best matching language full code or null if no match found.
 
@@ -173,7 +173,7 @@ all localization items.
 
 ### getLocalization()
 
-> **getLocalization**(`languageFullCode`, `componentKey`, `propertyName`, `type`): `undefined` \| `string`
+> **getLocalization**(`languageFullCode`, `componentKey`, `propertyName`, `type`): `string` \| `undefined`
 
 Returns value of localization constant.
 
@@ -205,7 +205,7 @@ the type of localization.
 
 #### Returns
 
-`undefined` \| `string`
+`string` \| `undefined`
 
 the value of localization constant.
 

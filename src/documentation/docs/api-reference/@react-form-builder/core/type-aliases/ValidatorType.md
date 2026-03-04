@@ -1,5 +1,5 @@
 # Type Alias: ValidatorType
 
-> **ValidatorType** = `"internal"` \| `"custom"`
+> **ValidatorType** = `"custom"` \| `"internal"`
 
 The type of validator.

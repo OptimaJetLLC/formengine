@@ -1,6 +1,6 @@
 # Function: findLanguage()
 
-> **findLanguage**(`languages`, `language`): `undefined` \| [`Language`](../classes/Language.md)
+> **findLanguage**(`languages`, `language`): [`Language`](../classes/Language.md) \| `undefined`
 
 Finds [Language](../classes/Language.md) by language code.
 
@@ -20,6 +20,6 @@ the language code.
 
 ## Returns
 
-`undefined` \| [`Language`](../classes/Language.md)
+[`Language`](../classes/Language.md) \| `undefined`
 
 found [Language](../classes/Language.md), or the default Language if no Language exists for the language code.

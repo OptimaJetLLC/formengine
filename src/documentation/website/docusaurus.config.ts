@@ -1,5 +1,6 @@
 import type * as Preset from '@docusaurus/preset-classic'
 import type {Config} from '@docusaurus/types'
+import {resolve} from 'node:path'
 import {env} from 'node:process'
 import {themes as prismThemes} from 'prism-react-renderer'
 
@@ -7,6 +8,7 @@ const docusaurusPluginTypedocConfig = [
   'docusaurus-plugin-typedoc',
   // Options
   {
+    plugin: [resolve(__dirname, './scripts/typedoc-union-sorter.js')],
     entryPoints: [
       '../../packages/core',
       '../../packages/designer',

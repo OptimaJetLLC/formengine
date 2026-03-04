@@ -1,9 +1,9 @@
 # Function: useTooltipType()
 
-> **useTooltipType**(): `undefined` \| `string`
+> **useTooltipType**(): `string` \| `undefined`
 
 ## Returns
 
-`undefined` \| `string`
+`string` \| `undefined`
 
 the type of React component used to display the tooltip. **Internal use only.**

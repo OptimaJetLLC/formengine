@@ -22,7 +22,7 @@ If `true`, the component is checked.
 
 ### color?
 
-> `optional` **color**: `OverridableStringUnion`\<`"error"` \| `"default"` \| `"success"` \| `"primary"` \| `"secondary"` \| `"warning"` \| `"info"`, `CheckboxPropsColorOverrides`\>
+> `optional` **color**: `OverridableStringUnion`\<`"default"` \| `"error"` \| `"info"` \| `"primary"` \| `"secondary"` \| `"success"` \| `"warning"`, `CheckboxPropsColorOverrides`\>
 
 The color of the component.
 It supports both default and custom theme colors, which can be added as shown in the
@@ -86,7 +86,7 @@ Callback fired when the checkbox state changes.
 
 ### size?
 
-> `optional` **size**: `OverridableStringUnion`\<`"small"` \| `"large"` \| `"medium"`, `CheckboxPropsSizeOverrides`\>
+> `optional` **size**: `OverridableStringUnion`\<`"large"` \| `"medium"` \| `"small"`, `CheckboxPropsSizeOverrides`\>
 
 The size of the component.
 `small` is equivalent to the dense checkbox styling.

@@ -84,7 +84,7 @@ Indicates whether assistive technologies will present all, or only parts of, the
 
 ### aria-autocomplete?
 
-> `optional` **aria-autocomplete**: `"none"` \| `"list"` \| `"both"` \| `"inline"`
+> `optional` **aria-autocomplete**: `"both"` \| `"inline"` \| `"list"` \| `"none"`
 
 Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be
 presented if they are made.
@@ -139,7 +139,7 @@ aria-roledescription.
 
 ### aria-checked?
 
-> `optional` **aria-checked**: `boolean` \| `"true"` \| `"false"` \| `"mixed"`
+> `optional` **aria-checked**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
 
 Indicates the current "checked" state of checkboxes, radio buttons, and other widgets.
 
@@ -238,7 +238,7 @@ aria-owns.
 
 ### aria-current?
 
-> `optional` **aria-current**: `boolean` \| `"page"` \| `"date"` \| `"time"` \| `"true"` \| `"false"` \| `"step"` \| `"location"`
+> `optional` **aria-current**: `boolean` \| `"date"` \| `"false"` \| `"location"` \| `"page"` \| `"step"` \| `"time"` \| `"true"`
 
 Indicates the element that represents the current item within a container or set of related elements.
 
@@ -315,7 +315,7 @@ Indicates that the element is perceivable but disabled, so it is not editable or
 
 ### ~~aria-dropeffect?~~
 
-> `optional` **aria-dropeffect**: `"link"` \| `"none"` \| `"copy"` \| `"move"` \| `"execute"` \| `"popup"`
+> `optional` **aria-dropeffect**: `"copy"` \| `"execute"` \| `"link"` \| `"move"` \| `"none"` \| `"popup"`
 
 Indicates what functions can be performed when a dragged object is released on the drop target.
 
@@ -389,7 +389,7 @@ in ARIA 1.1
 
 ### aria-haspopup?
 
-> `optional` **aria-haspopup**: `boolean` \| `"grid"` \| `"true"` \| `"dialog"` \| `"menu"` \| `"false"` \| `"listbox"` \| `"tree"`
+> `optional` **aria-haspopup**: `boolean` \| `"dialog"` \| `"false"` \| `"grid"` \| `"listbox"` \| `"menu"` \| `"tree"` \| `"true"`
 
 Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.
 
@@ -417,7 +417,7 @@ aria-disabled.
 
 ### aria-invalid?
 
-> `optional` **aria-invalid**: `boolean` \| `"true"` \| `"false"` \| `"grammar"` \| `"spelling"`
+> `optional` **aria-invalid**: `boolean` \| `"false"` \| `"grammar"` \| `"spelling"` \| `"true"`
 
 Indicates the entered value does not conform to the format expected by the application.
 
@@ -489,7 +489,7 @@ Defines the hierarchical level of an element within a structure.
 
 ### aria-live?
 
-> `optional` **aria-live**: `"off"` \| `"assertive"` \| `"polite"`
+> `optional` **aria-live**: `"assertive"` \| `"off"` \| `"polite"`
 
 Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.
 
@@ -595,7 +595,7 @@ aria-setsize.
 
 ### aria-pressed?
 
-> `optional` **aria-pressed**: `boolean` \| `"true"` \| `"false"` \| `"mixed"`
+> `optional` **aria-pressed**: `boolean` \| `"false"` \| `"mixed"` \| `"true"`
 
 Indicates the current "pressed" state of toggle buttons.
 
@@ -628,7 +628,7 @@ aria-disabled.
 
 ### aria-relevant?
 
-> `optional` **aria-relevant**: `"all"` \| `"text"` \| `"additions"` \| `"additions removals"` \| `"additions text"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text additions"` \| `"text removals"`
+> `optional` **aria-relevant**: `"additions"` \| `"additions removals"` \| `"additions text"` \| `"all"` \| `"removals"` \| `"removals additions"` \| `"removals text"` \| `"text"` \| `"text additions"` \| `"text removals"`
 
 Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified.
 
@@ -767,7 +767,7 @@ aria-posinset.
 
 ### aria-sort?
 
-> `optional` **aria-sort**: `"none"` \| `"ascending"` \| `"descending"` \| `"other"`
+> `optional` **aria-sort**: `"ascending"` \| `"descending"` \| `"none"` \| `"other"`
 
 Indicates if items in a table or grid are sorted in ascending or descending order.
 
@@ -843,7 +843,7 @@ You can use a custom element for this component
 
 ### autoCapitalize?
 
-> `optional` **autoCapitalize**: `"none"` \| `string` & `object` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"` \| `"characters"`
+> `optional` **autoCapitalize**: `string` & `object` \| `"characters"` \| `"none"` \| `"off"` \| `"on"` \| `"sentences"` \| `"words"`
 
 #### Inherited from
 
@@ -969,7 +969,7 @@ The prefix of the component CSS class
 
 ### contentEditable?
 
-> `optional` **contentEditable**: `"inherit"` \| `Booleanish` \| `"plaintext-only"`
+> `optional` **contentEditable**: `Booleanish` \| `"inherit"` \| `"plaintext-only"`
 
 #### Inherited from
 
@@ -1033,7 +1033,7 @@ The prefix of the component CSS class
 
 ### defaultValue?
 
-> `optional` **defaultValue**: `null` \| `string` \| `number`
+> `optional` **defaultValue**: `null` \| `number` \| `string`
 
 #### Inherited from
 
@@ -1083,7 +1083,7 @@ The prefix of the component CSS class
 
 ### enterKeyHint?
 
-> `optional` **enterKeyHint**: `"search"` \| `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"send"`
+> `optional` **enterKeyHint**: `"done"` \| `"enter"` \| `"go"` \| `"next"` \| `"previous"` \| `"search"` \| `"send"`
 
 #### Inherited from
 
@@ -1117,7 +1117,7 @@ The prefix of the component CSS class
 
 ### formAction?
 
-> `optional` **formAction**: `string` \| (`formData`) => `void` \| `Promise`\<`void`\>
+> `optional` **formAction**: (`formData`) => `Promise`\<`void`\> \| `void` \| `string`
 
 #### Inherited from
 
@@ -1177,7 +1177,7 @@ The prefix of the component CSS class
 
 ### getInputRef?
 
-> `optional` **getInputRef**: `Ref`\<`any`\> \| (`el`) => `void`
+> `optional` **getInputRef**: (`el`) => `void` \| `Ref`\<`any`\>
 
 #### Inherited from
 
@@ -1187,7 +1187,7 @@ The prefix of the component CSS class
 
 ### height?
 
-> `optional` **height**: `string` \| `number`
+> `optional` **height**: `number` \| `string`
 
 #### Inherited from
 
@@ -1255,7 +1255,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert
 
 ### inputMode?
 
-> `optional` **inputMode**: `"search"` \| `"none"` \| `"text"` \| `"email"` \| `"url"` \| `"tel"` \| `"numeric"` \| `"decimal"`
+> `optional` **inputMode**: `"decimal"` \| `"email"` \| `"none"` \| `"numeric"` \| `"search"` \| `"tel"` \| `"text"` \| `"url"`
 
 #### Inherited from
 
@@ -1391,7 +1391,7 @@ The label for the pattern format input.
 
 ### mask?
 
-> `optional` **mask**: `string` \| `string`[]
+> `optional` **mask**: `string`[] \| `string`
 
 #### Inherited from
 
@@ -1401,7 +1401,7 @@ The label for the pattern format input.
 
 ### max?
 
-> `optional` **max**: `string` \| `number`
+> `optional` **max**: `number` \| `string`
 
 #### Inherited from
 
@@ -1421,7 +1421,7 @@ The label for the pattern format input.
 
 ### min?
 
-> `optional` **min**: `string` \| `number`
+> `optional` **min**: `number` \| `string`
 
 #### Inherited from
 
@@ -3249,7 +3249,7 @@ Render the control as plain text
 
 ### popover?
 
-> `optional` **popover**: `""` \| `"hint"` \| `"auto"` \| `"manual"`
+> `optional` **popover**: `""` \| `"auto"` \| `"hint"` \| `"manual"`
 
 #### Inherited from
 
@@ -3269,7 +3269,7 @@ Render the control as plain text
 
 ### popoverTargetAction?
 
-> `optional` **popoverTargetAction**: `"toggle"` \| `"show"` \| `"hide"`
+> `optional` **popoverTargetAction**: `"hide"` \| `"show"` \| `"toggle"`
 
 #### Inherited from
 
@@ -3455,7 +3455,7 @@ A component can have different sizes
 
 ### step?
 
-> `optional` **step**: `string` \| `number`
+> `optional` **step**: `number` \| `string`
 
 #### Inherited from
 
@@ -3517,7 +3517,7 @@ Additional style
 
 ### translate?
 
-> `optional` **translate**: `"yes"` \| `"no"`
+> `optional` **translate**: `"no"` \| `"yes"`
 
 #### Inherited from
 
@@ -3527,7 +3527,7 @@ Additional style
 
 ### type?
 
-> `optional` **type**: `"text"` \| `"tel"` \| `"password"`
+> `optional` **type**: `"password"` \| `"tel"` \| `"text"`
 
 #### Inherited from
 
@@ -3557,7 +3557,7 @@ Additional style
 
 ### value?
 
-> `optional` **value**: `null` \| `string` \| `number`
+> `optional` **value**: `null` \| `number` \| `string`
 
 #### Inherited from
 
@@ -3587,7 +3587,7 @@ Additional style
 
 ### width?
 
-> `optional` **width**: `string` \| `number`
+> `optional` **width**: `number` \| `string`
 
 #### Inherited from
 

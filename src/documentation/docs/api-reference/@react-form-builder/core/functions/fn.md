@@ -1,6 +1,6 @@
 # Function: fn()
 
-> **fn**(`fnDescriptionBegin`, `fnDescriptionEnd`): [`TypedBuilder`](../classes/TypedBuilder.md)\<`undefined` \| `string`\>
+> **fn**(`fnDescriptionBegin`, `fnDescriptionEnd`): [`TypedBuilder`](../classes/TypedBuilder.md)\<`string` \| `undefined`\>
 
 The annotation builder for a component property with type 'function'.
 
@@ -20,7 +20,7 @@ the ending  of function description.
 
 ## Returns
 
-[`TypedBuilder`](../classes/TypedBuilder.md)\<`undefined` \| `string`\>
+[`TypedBuilder`](../classes/TypedBuilder.md)\<`string` \| `undefined`\>
 
 the annotation builder for a component property with type 'function'.
 

@@ -1,5 +1,5 @@
 # Type Alias: Rel
 
-> **Rel** = `"stylesheet"` \| `string`
+> **Rel** = `string` \| `"stylesheet"`
 
 Represents a relationship attribute value used in HTML.

@@ -136,7 +136,7 @@ A picker that can clear values
 
 ### container?
 
-> `optional` **container**: `HTMLElement` \| () => `HTMLElement`
+> `optional` **container**: () => `HTMLElement` \| `HTMLElement`
 
 Sets the rendering container
 
@@ -172,7 +172,7 @@ Settings can create new options
 
 ### data
 
-> **data**: `InputItemDataType`\<`string` \| `number`\>[]
+> **data**: `InputItemDataType`\<`number` \| `string`\>[]
 
 The data of the component.
 
@@ -1130,7 +1130,7 @@ You can use a custom element for this component
 
 ### trigger?
 
-> `optional` **trigger**: `TriggerType` \| `TriggerType`[]
+> `optional` **trigger**: `TriggerType`[] \| `TriggerType`
 
 Set the trigger for creating tags. only valid when creatable
 
