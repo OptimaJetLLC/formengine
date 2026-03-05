@@ -18,12 +18,12 @@
     "compress-image": "node scripts/compress-images.ts"
   },
   "dependencies": {
+    "@docsearch/docusaurus-adapter": "^4.6.0",
     "@docusaurus/core": "^3.8.1",
     "@docusaurus/faster": "^3.8.1",
     "@docusaurus/preset-classic": "^3.8.1",
     "@docusaurus/theme-live-codeblock": "^3.8.1",
     "@docusaurus/theme-mermaid": "^3.8.1",
-    "@easyops-cn/docusaurus-search-local": "^0.54.1",
     "@mdx-js/react": "^3.1.0",
     "@react-form-builder/components-mantine": "file:packages/react-form-builder-components-mantine.tgz",
     "@react-form-builder/components-material-ui": "file:packages/react-form-builder-components-material-ui.tgz",

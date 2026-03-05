@@ -138,6 +138,13 @@ const config: Config = {
         content: 'https://formengine.io/documentation/img/og-image.jpg',
       }
     },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'algolia-site-verification',
+        content: '9D8BD6B92E959FD6',
+      }
+    },
   ],
 
   themeConfig: {
@@ -275,6 +282,12 @@ const config: Config = {
         },
       },
     },
+    docsearch: {
+      appId: 'BSTQ9Y9FKD',
+      apiKey: '57c17069324f3e887215dc916098a63f',
+      indexName: 'FormEngine documentation crawler',
+      contextualSearch: false,
+    },
   } satisfies Preset.ThemeConfig,
   plugins: [
     [
@@ -294,21 +307,7 @@ const config: Config = {
       }
     ],
     require.resolve('docusaurus-plugin-image-zoom'),
-    [
-      require.resolve('@easyops-cn/docusaurus-search-local'),
-      {
-        docsRouteBasePath: '/',
-        docsDir: '../docs',
-        indexBlog: false,
-        // ... Your options.
-        // `hashed` is recommended as long-term-cache of index file is possible.
-        hashed: true,
-        // For Docs using Chinese, The `language` is recommended to set to:
-        // ```
-        // language: ["en", "zh"],
-        // ```
-      },
-    ],
+    '@docsearch/docusaurus-adapter',
   ],
 }
 
