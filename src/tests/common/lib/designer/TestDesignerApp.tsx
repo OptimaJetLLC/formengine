@@ -271,6 +271,29 @@ const TestDesignerApp = ({license, customization}: FormBuilderAppProps) => {
     onFormSchemaChange={(formSchema) => {
       if (logEvents) console.log('onFormSchemaChange', formSchema)
     }}
+    onFormElementAdd={(payload) => {
+      const sourceType = payload?.source && typeof payload.source === 'object' && 'model' in payload.source
+        ? (payload.source as { model?: { type?: string } }).model?.type
+        : undefined
+      const targetKey = payload?.target && typeof payload.target === 'object' && 'key' in payload.target
+        ? (payload.target as { key?: string }).key
+        : undefined
+      if (typeof globalThis !== 'undefined') {
+        const w = globalThis as { __formBuilderAddCalls?: Array<{ sourceType?: string; targetKey?: string }> }
+        w.__formBuilderAddCalls = w.__formBuilderAddCalls ?? []
+        w.__formBuilderAddCalls.push({sourceType, targetKey})
+      }
+    }}
+    onFormElementRemove={(payload) => {
+      const sourceKey = payload?.source && typeof payload.source === 'object' && 'key' in payload.source
+        ? (payload.source as { key?: string }).key
+        : undefined
+      if (typeof globalThis !== 'undefined') {
+        const w = globalThis as { __formBuilderRemoveCalls?: Array<{ sourceKey?: string }> }
+        w.__formBuilderRemoveCalls = w.__formBuilderRemoveCalls ?? []
+        w.__formBuilderRemoveCalls.push({sourceKey})
+      }
+    }}
     viewerRef={viewerRef}
     builderRef={builderRef}
     validators={customValidators}

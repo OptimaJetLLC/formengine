@@ -313,6 +313,66 @@ the [IFormData](../../core/interfaces/IFormData.md) with all the form data.
 
 ***
 
+### onFormElementAdd()?
+
+> `optional` **onFormElementAdd**: (`payload`) => `void`
+
+Callback invoked when a component is added to the form.
+
+#### Parameters
+
+##### payload
+
+the payload with information about the added component.
+
+###### insertPosition?
+
+`InsertPosition`
+
+###### slot?
+
+`string`
+
+###### slotCondition?
+
+`string`
+
+###### source
+
+[`ComponentData`](../../core/classes/ComponentData.md)
+
+###### target
+
+[`ComponentData`](../../core/classes/ComponentData.md)
+
+#### Returns
+
+`void`
+
+***
+
+### onFormElementRemove()?
+
+> `optional` **onFormElementRemove**: (`payload`) => `void`
+
+Callback invoked when a component is removed from the form.
+
+#### Parameters
+
+##### payload
+
+the payload with information about the removed component.
+
+###### source
+
+[`ComponentData`](../../core/classes/ComponentData.md)
+
+#### Returns
+
+`void`
+
+***
+
 ### onFormSchemaChange()?
 
 > `optional` **onFormSchemaChange**: (`formSchema`) => `void`

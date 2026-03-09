@@ -1,4 +1,11 @@
-import type {BuilderComponent, BuilderView, ComponentLibraryDescription, EditorType, FormViewerProps} from '@react-form-builder/core'
+import type {
+  BuilderComponent,
+  BuilderView,
+  ComponentData,
+  ComponentLibraryDescription,
+  EditorType,
+  FormViewerProps
+} from '@react-form-builder/core'
 import type {ComponentType, ForwardedRef} from 'react'
 import type {AnnotationEditorProps} from './features/annotation-editors/AnnotationEditorProps'
 import type {CustomizationMap} from './features/customization'
@@ -6,7 +13,7 @@ import type {FormBuilderI18n} from './features/localization/FormBuilderLanguage'
 import type {IPresetComponentOptions} from './features/preset-component/IPresetComponentOptions'
 import type {FormBuilderTheme} from './FormBuilderTheme'
 import type {IFormStorage} from './stores/IFormStorage'
-import type {IFormBuilder} from './utils/types'
+import type {IFormBuilder, InsertPosition} from './utils/types'
 
 /**
  * The JSON schema generator.
@@ -72,6 +79,24 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
    * @param formSchema the current form schema serialized to JSON.
    */
   onFormSchemaChange?: (formSchema: string) => void
+
+  /**
+   * Callback invoked when a component is added to the form.
+   * @param payload the payload with information about the added component.
+   */
+  onFormElementAdd?: (payload: {
+    source: ComponentData;
+    target: ComponentData;
+    insertPosition?: InsertPosition;
+    slot?: string;
+    slotCondition?: string
+  }) => void
+
+  /**
+   * Callback invoked when a component is removed from the form.
+   * @param payload the payload with information about the removed component.
+   */
+  onFormElementRemove?: (payload: { source: ComponentData }) => void
 
   /**
    * Indicates the theme preference.

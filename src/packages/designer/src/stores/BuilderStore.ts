@@ -686,26 +686,33 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
         : source.children
 
       orderedChildren.forEach((componentData, i) => {
-        result.push(this.insert({
+        const inserted = this.insert({
           source: componentData,
           target,
           insertPosition,
           slot,
           slotCondition,
-          selectAfterInsert: i === 0
-        }))
+          selectAfterInsert: i === 0,
+        })
+
+        this.props.onFormElementAdd?.({source: componentData, target, insertPosition, slot, slotCondition})
+        result.push(inserted)
       })
       return result
     }
 
-    return this.insert({
+    const added = this.insert({
       source,
       target,
       insertPosition,
       slot,
       slotCondition,
-      selectAfterInsert: true
+      selectAfterInsert: true,
     })
+
+    this.props.onFormElementAdd?.({source, target, insertPosition, slot, slotCondition})
+
+    return added
   }
 
   /**
@@ -826,6 +833,8 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     this.selected.delete(source)
     this.viewer.form.localization.removeLocalization(source.key)
     source.delete()
+
+    this.props.onFormElementRemove?.({source})
 
     return true
   }
