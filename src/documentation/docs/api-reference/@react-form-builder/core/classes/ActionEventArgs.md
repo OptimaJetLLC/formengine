@@ -78,6 +78,14 @@ The index of the component in the array, if the component is in the array.
 
 ***
 
+### refValue?
+
+> `readonly` `optional` **refValue**: `any`
+
+The ref value, if available.
+
+***
+
 ### renderedProps
 
 > `readonly` **renderedProps**: `Record`\<`string`, `any`\>

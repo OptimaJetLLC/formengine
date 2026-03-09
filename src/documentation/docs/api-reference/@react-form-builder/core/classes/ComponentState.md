@@ -393,6 +393,22 @@ the Record that contains the child components of a component.
 
 ***
 
+### getRefValue()
+
+> **getRefValue**(): `any`
+
+#### Returns
+
+`any`
+
+the object associated with this component in the viewer.
+
+#### Implementation of
+
+[`IComponentState`](../interfaces/IComponentState.md).[`getRefValue`](../interfaces/IComponentState.md#getrefvalue)
+
+***
+
 ### onDidMount()
 
 > **onDidMount**(): `void`
@@ -422,3 +438,25 @@ The method that is called when the component is unmounted.
 #### Implementation of
 
 [`IComponentState`](../interfaces/IComponentState.md).[`onWillUnmount`](../interfaces/IComponentState.md#onwillunmount)
+
+***
+
+### setRef()
+
+> **setRef**(`object`): `void`
+
+#### Parameters
+
+##### object
+
+`any`
+
+#### Returns
+
+`void`
+
+#### Inherit Doc
+
+#### Implementation of
+
+[`IComponentState`](../interfaces/IComponentState.md).[`setRef`](../interfaces/IComponentState.md#setref)

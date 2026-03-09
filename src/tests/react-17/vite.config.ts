@@ -12,6 +12,7 @@ const exclude = [
   // Mantine supports react >= 18
   '../component/tests/**/mantine-*.{test,spec}.?(c|m)[jt]s?(x)',
   '../component/tests/**/modal.{test,spec}.?(c|m)[jt]s?(x)',
+  '../component/tests/**/component-ref.spec.tsx',
 ]
 
 // TODO move common to base config
@@ -24,7 +25,6 @@ export default defineConfig((env) => mergeConfig(base(env), {
       'scheduler': path.resolve(__dirname, 'node_modules/scheduler'),
     },
   },
-  exclude,
   test: {
     environment: 'jsdom', // Use jsdom for testing in the browser
     include: [testDir],

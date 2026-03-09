@@ -9,6 +9,10 @@ const __dirname = path.dirname(__filename)
 const testDir = '../component/tests/**/*.{test,spec}.?(c|m)[jt]s?(x)'
 const configDir = '../component/config/setup.ts'
 
+const exclude = [
+  '../component/tests/**/component-ref.spec.tsx',
+]
+
 // TODO move common to base config
 // TODO https://github.com/facebook/react/issues/13991
 export default defineConfig((env) => mergeConfig(base(env), {
@@ -23,6 +27,7 @@ export default defineConfig((env) => mergeConfig(base(env), {
   test: {
     environment: 'jsdom', // Use jsdom for testing in the browser
     include: [testDir],
+    exclude,
     setupFiles: [configDir], // Optional: Set up file for tests
     globals: true, // Use global variables for testing
     coverage: {

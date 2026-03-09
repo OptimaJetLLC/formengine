@@ -222,7 +222,7 @@ Actions can be synchronous or asynchronous. FormEngine Core waits for each actio
 ## Action Parameters
 
 Actions can accept parameters through the [args](/api-reference/@react-form-builder/core/type-aliases/ActionData#args) property. Parameters
-can only be primitive values: strings, numbers, or booleans.
+can be primitive values (strings, numbers, booleans) and also function arguments.
 
 ### Primitive Parameters Example
 
@@ -236,8 +236,103 @@ can only be primitive values: strings, numbers, or booleans.
 }
 ```
 
+### Function Parameters Example
+
+If you need to pass logic into an action (for example, a callback), you can pass a function argument.
+
+In JSON, a function argument is stored as an object with `type: "fn"` and a `body` string:
+
+```json
+{
+  "name": "openModal",
+  "type": "common",
+  "args": {
+    "modalKey": "confirmationModal",
+    "beforeShow": {
+      "type": "fn",
+      "body": "  // You can access the action context through 'e'.\n  // You can access other arguments through 'args'.\n  e.data.modalOpenedAt = Date.now();\n"
+    }
+  }
+}
+```
+
+At runtime, FormEngine Core will convert this value into an async function and pass it to the action handler as `args.beforeShow`.
+
 For code actions with complex logic, you define the function body in the
 [actions](/api-reference/@react-form-builder/core/interfaces/PersistedForm#actions) section (see below), not in the args.
+
+## Accessing the component DOM element in actions
+
+Sometimes you need access to the rendered component that fired the event, for example to scroll it into view or measure
+its size.
+
+The FormEngine Core exposes the `ref` value to actions through the
+[`ActionEventArgs.refValue`](/api-reference/@react-form-builder/core/classes/ActionEventArgs#refvalue) property.
+
+In a custom action handler you can use it like this:
+
+```typescript
+const actions: FormViewerProps['actions'] = {
+  scrollToComponent: e => {
+    const element = e.refValue;
+    if (element) {
+      element.scrollIntoView({behavior: 'smooth', block: 'start'});
+    }
+  },
+};
+```
+
+:::warning
+`refValue` is only available when the rendered component actually supports `ref` (a DOM element or a component created with
+`forwardRef`/`useImperativeHandle`), and **FormEngine Core only attaches component refs when it is running with React 19 or newer**.
+
+In React 17 and 18, even if your component uses `forwardRef`, FormEngine does not pass a `ref` into the component, so `e.refValue` will
+always be `undefined`/`null`. You can still use refs inside your own application code, but you cannot rely on `refValue` in action
+handlers on those React versions.
+
+If you override `componentWrapper` with React 19+, make sure the wrapper supports refs and forwards the ref to a real element (do not use
+`React.Fragment` and do not use a non-`forwardRef` function component), otherwise `refValue` can be `null` and React may log warnings
+about refs.
+:::
+
+### Getting a DOM element in refValue (forwardRef)
+
+If you are defining your own component and want `refValue` to be the underlying DOM element (on React 19+), define the component with
+`forwardRef` and attach the `ref` to the DOM element:
+
+```tsx
+import {forwardRef} from 'react';
+
+const ButtonWithDomRef = forwardRef<HTMLButtonElement, any>((props, ref) => {
+  return <button {...props} ref={ref}>Scroll target</button>;
+});
+```
+
+Sometimes you may want to expose an **imperative API** instead of a DOM node. For example, a container component can use
+`forwardRef` and `useImperativeHandle` to provide methods that actions can call:
+
+```typescript jsx
+const ImperativeComponent = forwardRef<{ api: () => void }, any>((props, ref) => {
+  useImperativeHandle(ref, () => ({
+    api: () => {
+      // custom logic
+    },
+  }));
+  return <button {...props}>Click me</button>;
+});
+
+const imperative = define(ImperativeComponent, 'ImperativeComponentWithRef')
+  .props({
+    onClick: event,
+  });
+
+const actions: FormViewerProps['actions'] = {
+  callImperativeApi: e => {
+    const handle = e.refValue;
+    handle?.api?.();
+  },
+};
+```
 
 ## Practical Examples
 
