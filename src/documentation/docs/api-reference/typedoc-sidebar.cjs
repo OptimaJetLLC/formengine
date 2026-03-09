@@ -168,6 +168,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiDatePickerProps",
+              label: "MuiDatePickerProps"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiDialogProps",
               label: "MuiDialogProps"
             },
@@ -300,6 +305,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/muiDatePicker",
+              label: "muiDatePicker"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/variables/muiDeDeComponentsDescriptions",
               label: "muiDeDeComponentsDescriptions"
             },
@@ -407,6 +417,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/variables/muiListItem",
               label: "muiListItem"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/variables/MuiLocalizationProvider",
+              label: "MuiLocalizationProvider"
             },
             {
               type: "doc",

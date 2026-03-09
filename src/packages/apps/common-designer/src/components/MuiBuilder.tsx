@@ -1,6 +1,12 @@
 import {getFormFromJson, MuiForm} from '@react-form-builder/apps-common'
-import {builderView} from '@react-form-builder/components-material-ui'
-import {namedObserver} from '@react-form-builder/core'
+import '../utils/muiLocalizations'
+import {
+  components,
+  materialUiComponentsDescriptions,
+  MuiLocalizationProvider,
+  MuiViewerWrapper,
+} from '@react-form-builder/components-material-ui'
+import {BuilderView, namedObserver} from '@react-form-builder/core'
 import type {IFormBuilder} from '@react-form-builder/designer'
 import {FormBuilder} from '@react-form-builder/designer'
 import {useCallback, useEffect, useRef} from 'react'
@@ -8,6 +14,11 @@ import {licenseKey} from '../utils/licenseKey'
 import type {FormBuilderAppProps} from '../utils/types'
 import {useIndexedDbStorage} from '../utils/useIndexedDbStorage'
 import {useSetBuilderRef} from './BuilderRefContext'
+
+const builderView = new BuilderView(components)
+  .withViewerWrapper(MuiViewerWrapper)
+  .withViewerWrapper(MuiLocalizationProvider)
+  .withComponentLibraryDescription(materialUiComponentsDescriptions)
 
 const sampleFormName = 'MuiForm'
 const forms = {MuiForm}

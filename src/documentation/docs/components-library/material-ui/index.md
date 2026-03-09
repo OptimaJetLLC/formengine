@@ -28,15 +28,16 @@ Here is a list of the Material UI components available in the FormEngine library
 
 These components are used for data entry and user input:
 
-| Component                                                        | Description                                    | Material UI Documentation                                                         |
-|:-----------------------------------------------------------------|:-----------------------------------------------|:----------------------------------------------------------------------------------|
-| **[MuiTextField](/components-library/material-ui/text-field)**   | Text input field for single or multi-line text | <MaterialUIComponentsDocItem link="/react-text-field/" caption="TextField" />     |
-| **[MuiSelect](/components-library/material-ui/select)**          | Dropdown selection component                   | <MaterialUIComponentsDocItem link="/react-select/" caption="Select" />            |
-| **[MuiCheckbox](/components-library/material-ui/checkbox)**      | Checkbox for binary choices                    | <MaterialUIComponentsDocItem link="/react-checkbox/" caption="Checkbox" />        |
-| **[MuiRadioGroup](/components-library/material-ui/radio-group)** | Radio button group for single selection        | <MaterialUIComponentsDocItem link="/react-radio-button/" caption="Radio Group" /> |
-| **[MuiRadioItem](/components-library/material-ui/radio-item)**   | Single radio button option with label          | Custom component for individual radio items                                       |
-| **[MuiSwitch](/components-library/material-ui/switch)**          | Toggle switch for on/off states                | <MaterialUIComponentsDocItem link="/react-switch/" caption="Switch" />            |
-| **[MuiUploader](/components-library/material-ui/uploader)**      | File upload component with Material UI styling | Preset component (combines multiple MUI components)                               |
+| Component                                                        | Description                                        | Material UI Documentation                                                         |
+|:-----------------------------------------------------------------|:---------------------------------------------------|:----------------------------------------------------------------------------------|
+| **[MuiDatePicker](/components-library/material-ui/date-picker)** | The Date Picker component lets users select a date | [DatePicker](https://mui.com/x/react-date-pickers/date-picker/)                   |
+| **[MuiTextField](/components-library/material-ui/text-field)**   | Text input field for single or multi-line text     | <MaterialUIComponentsDocItem link="/react-text-field/" caption="TextField" />     |
+| **[MuiSelect](/components-library/material-ui/select)**          | Dropdown selection component                       | <MaterialUIComponentsDocItem link="/react-select/" caption="Select" />            |
+| **[MuiCheckbox](/components-library/material-ui/checkbox)**      | Checkbox for binary choices                        | <MaterialUIComponentsDocItem link="/react-checkbox/" caption="Checkbox" />        |
+| **[MuiRadioGroup](/components-library/material-ui/radio-group)** | Radio button group for single selection            | <MaterialUIComponentsDocItem link="/react-radio-button/" caption="Radio Group" /> |
+| **[MuiRadioItem](/components-library/material-ui/radio-item)**   | Single radio button option with label              | Custom component for individual radio items                                       |
+| **[MuiSwitch](/components-library/material-ui/switch)**          | Toggle switch for on/off states                    | <MaterialUIComponentsDocItem link="/react-switch/" caption="Switch" />            |
+| **[MuiUploader](/components-library/material-ui/uploader)**      | File upload component with Material UI styling     | Preset component (combines multiple MUI components)                               |
 
 ## Form Components
 

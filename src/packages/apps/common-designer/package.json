@@ -28,7 +28,8 @@
     "mobx-react": "^9.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "rsuite": "5.83.4"
+    "rsuite": "5.83.4",
+    "dayjs": "^1.11.19"
   },
   "scripts": {
     "update-release-date": "node ./scripts/update-release-date"

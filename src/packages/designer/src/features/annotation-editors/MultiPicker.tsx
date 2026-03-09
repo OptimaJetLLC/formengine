@@ -19,7 +19,7 @@ const prepareData = ({data}: PropertyAnnotation, values: string[]) => {
     } as ItemDataType
   })
 
-  values.forEach(v => {
+  values?.forEach(v => {
     if (!preparedData.find(d => d.value === v)) {
       preparedData.push({value: v, label: startCase(v)})
     }
@@ -40,6 +40,6 @@ export const MultiPicker = (props: AnnotationEditorProps) => {
 
   return <LabeledProperty {...props}>
     <STagPicker value={defaultValue} data={data} onChange={onChange} onClean={onClean}
-                cleanable creatable size={'xs'} placement={'auto'}/>
+                cleanable creatable size={'xs'} placement={'auto'} {...props.annotation.editorProps}/>
   </LabeledProperty>
 }
