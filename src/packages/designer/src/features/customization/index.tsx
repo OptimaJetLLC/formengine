@@ -28,7 +28,7 @@ export type Options = {
    * @param props the props that were sent to the component.
    * @returns the customized ReactElement.
    */
-  customRenderer?: (defaultElement: ReactElement, component: ComponentType<any>, props: any) => ReactElement
+  customRenderer?: (defaultElement: ReactElement, component: ComponentType<any>, props: any) => ReactElement | null
 }
 
 /**
@@ -70,6 +70,6 @@ export const customizable = <T = any>(key: CustomizableKey, component: Component
  * @template T the component property type.
  * @returns the customizable observer component.
  */
-export const customizableObserver = <T = any>(key: CustomizableKey, component: ComponentType<T>) => {
+export const customizableObserver = <T = any>(key: CustomizableKey, component: ComponentType<T>): ComponentType<T> => {
   return customizable(key, observer(component))
 }

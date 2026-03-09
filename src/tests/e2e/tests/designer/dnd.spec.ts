@@ -15,5 +15,5 @@ test('can drop component', {
   await page.locator('div').filter({hasText: /^one\/two\/three$/}).locator('div').first().hover()
   await page.mouse.up()
 
-  await expect(page.locator('div').filter({hasText: /^rsCalendar1 \(RsCalendar\)$/})).toBeVisible()
+  await expect(page.locator('.FE_Component_Toolbar').filter({hasText: /^rsCalendar1 \(RsCalendar\)$/})).toBeVisible()
 })

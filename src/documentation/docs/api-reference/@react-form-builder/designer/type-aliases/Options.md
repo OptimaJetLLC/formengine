@@ -16,7 +16,7 @@ The component className.
 
 ### customRenderer()?
 
-> `optional` **customRenderer**: (`defaultElement`, `component`, `props`) => `ReactElement`
+> `optional` **customRenderer**: (`defaultElement`, `component`, `props`) => `null` \| `ReactElement`
 
 The component custom renderer.
 
@@ -42,7 +42,7 @@ the props that were sent to the component.
 
 #### Returns
 
-`ReactElement`
+`null` \| `ReactElement`
 
 the customized ReactElement.
 

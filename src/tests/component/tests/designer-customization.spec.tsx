@@ -66,6 +66,22 @@ const customRenderer = () => {
 
 const isolate = false
 const only = isolate ? new Set(['Tree_Tab']) : undefined
+const editableWrapperTestId = 'comment-editable-wrapper'
+const toolbarZones = new Set<CustomizableKey>([
+  'Component_Toolbar',
+  'Component_Toolbar_Items',
+  'Component_Toolbar_Title',
+  'Component_Toolbar_AddButton',
+  'Component_Toolbar_CloneButton',
+  'Component_Toolbar_PresetComponentButton',
+  'Component_Toolbar_RemoveButton',
+])
+
+const activateToolbarZone = async (zone: CustomizableKey, findByTestId: (id: string) => Promise<HTMLElement>) => {
+  if (!toolbarZones.has(zone)) return
+  const editable = await findByTestId(editableWrapperTestId)
+  fireEvent.click(editable)
+}
 
 function createZoneStaticCustomization(): Array<[CustomizableKey, CustomizationMap]> {
   return Array.from(CustomizableZone)
@@ -89,6 +105,7 @@ describe.each(createZoneStaticCustomization())(`should apply all possible custom
 
     // ensure that the component is rendered
     expect(await findByTestId('reactVersion')).toBeInTheDocument()
+    await activateToolbarZone(zone, findByTestId)
 
     expect(container.querySelector(zoneClassName)).toBeInTheDocument()
   })
@@ -101,6 +118,7 @@ describe.each(createZoneStaticCustomization())(`should apply all possible custom
 
     // ensure that the component is rendered
     expect(await findByTestId('test-app')).toBeInTheDocument()
+    await activateToolbarZone(zone, findByTestId)
 
     expect(container.querySelector(zoneClassName)).not.toBeInTheDocument()
   })
@@ -110,6 +128,7 @@ describe.each(createZoneStaticCustomization())(`should apply all possible custom
 
     // ensure that the component is rendered
     expect(await findByTestId('reactVersion')).toBeInTheDocument()
+    await activateToolbarZone(zone, findByTestId)
 
     expect(container.querySelector(zoneClassName)).toHaveClass(zoneCustomClass)
   })
@@ -118,6 +137,7 @@ describe.each(createZoneStaticCustomization())(`should apply all possible custom
     const config = klona(customization)
     config[zone]!.customRenderer = customRenderer
     const {container, findByTestId} = render(<App customization={config}/>)
+    await activateToolbarZone(zone, findByTestId)
 
     // ensure that the component is rendered
     expect(await findByTestId('custom-renderer')).toBeInTheDocument()
@@ -129,6 +149,7 @@ describe.each(createZoneStaticCustomization())(`should apply all possible custom
     const config = klona(customization)
     config[zone]!.customRenderer = customRenderer
     const {container, findByTestId} = render(<App customization={config}/>)
+    await activateToolbarZone(zone, findByTestId)
 
     // ensure that the component is rendered
     expect(await findByTestId('custom-renderer')).toBeInTheDocument()
@@ -141,6 +162,7 @@ describe.each(createZoneStaticCustomization())(`should apply all possible custom
 
     // ensure that the component is rendered
     expect(await findByTestId('reactVersion')).toBeInTheDocument()
+    await activateToolbarZone(zone, findByTestId)
 
     expect(container.querySelector(zoneClassName)).toHaveStyle(targetStyle)
   })

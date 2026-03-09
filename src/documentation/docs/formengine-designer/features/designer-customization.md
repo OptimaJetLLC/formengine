@@ -75,6 +75,18 @@ const simpleCustomization: CustomizationMap = {
     </div>
   },
 
+  // Component toolbar (the toolbar on each selected component in the canvas): add a custom button and hide the default remove (trash) button.
+  Component_Toolbar: {
+    customRenderer: defaultElement => (
+      <div>
+        {defaultElement}
+        <span style={{marginLeft: 4, padding: '2px 6px', fontSize: 24}}>
+          Custom
+        </span>
+      </div>
+    )
+  },
+
   // Changing the "Toggle mode" button to a custom component.
   ToggleModeButton: {
     customRenderer: () => <CustomToggleModeButton/>
@@ -110,26 +122,33 @@ const FormBuilderApp = () => {
 
 ![Customization 01](/assets/customization/customization-01.png)
 
-| #  | Name               | className             |
-|:--:|:-------------------|-----------------------|
-| 1  | MainContainer      | FE_MainContainer      | 
-| 2  | LeftPanel          | FE_LeftPanel          | 
-| 3  | CentralPanel       | FE_CentralPanel       |
-| 4  | RightPanel         | FE_RightPanel         |
-| 5  | LeftPanel_Nav      | FE_LeftPanel_Nav      |
-| 6  | LeftPanel_Content  | FE_LeftPanel_Content  |
-| 7  | Header             | FE_Header             |
-| 8  | FormContainer      | FE_FormContainer      |
-| 9  | RightPanel_Nav     | FE_RightPanel_Nav     |
-| 10 | RightPanel_Content | FE_RightPanel_Content |
-| 11 | MainMenu_Dropdown  | FE_MainMenu_Dropdown  |
-| 12 | MainMenu_Button    | FE_MainMenu_Button    |
-| 13 | Header_Toolbar     | FE_Header_Toolbar     |
-| 14 | ToggleModeButton   | FE_ToggleModeButton   |
-| 15 | ResolutionSelect   | FE_ResolutionSelect   |
-| 16 | LocalizationSelect | FE_LocalizationSelect |
-| 17 | JsonViewButton     | FE_JsonViewButton     |
-| 18 | ToggleThemeButton  | FE_ToggleThemeButton  |
+| #  | Name                                    | className                                  |
+|:--:|:----------------------------------------|--------------------------------------------|
+| 1  | MainContainer                           | FE_MainContainer                           | 
+| 2  | LeftPanel                               | FE_LeftPanel                               | 
+| 3  | CentralPanel                            | FE_CentralPanel                            |
+| 4  | RightPanel                              | FE_RightPanel                              |
+| 5  | LeftPanel_Nav                           | FE_LeftPanel_Nav                           |
+| 6  | LeftPanel_Content                       | FE_LeftPanel_Content                       |
+| 7  | Header                                  | FE_Header                                  |
+| 8  | FormContainer                           | FE_FormContainer                           |
+| 9  | RightPanel_Nav                          | FE_RightPanel_Nav                          |
+| 10 | RightPanel_Content                      | FE_RightPanel_Content                      |
+| 11 | MainMenu_Dropdown                       | FE_MainMenu_Dropdown                       |
+| 12 | MainMenu_Button                         | FE_MainMenu_Button                         |
+| 13 | Header_Toolbar                          | FE_Header_Toolbar                          |
+| 14 | Component_Toolbar                       | FE_Component_Toolbar                       |
+| 15 | Component_Toolbar_Items                 | FE_Component_Toolbar_Items                 |
+| 16 | Component_Toolbar_Title                 | FE_Component_Toolbar_Title                 |
+| 17 | Component_Toolbar_AddButton             | FE_Component_Toolbar_AddButton             |
+| 18 | Component_Toolbar_CloneButton           | FE_Component_Toolbar_CloneButton           |
+| 19 | Component_Toolbar_PresetComponentButton | FE_Component_Toolbar_PresetComponentButton |
+| 20 | Component_Toolbar_RemoveButton          | FE_Component_Toolbar_RemoveButton          |
+| 21 | ToggleModeButton                        | FE_ToggleModeButton                        |
+| 22 | ResolutionSelect                        | FE_ResolutionSelect                        |
+| 23 | LocalizationSelect                      | FE_LocalizationSelect                      |
+| 24 | JsonViewButton                          | FE_JsonViewButton                          |
+| 25 | ToggleThemeButton                       | FE_ToggleThemeButton                       |
 
 ![Customization 02](/assets/customization/customization-02.png)
 
