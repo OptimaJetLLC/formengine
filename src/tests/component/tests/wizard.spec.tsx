@@ -1,0 +1,83 @@
+import {FormViewerProps} from '@react-form-builder/core'
+import {fireEvent, waitFor} from '@testing-library/react'
+import {renderForm} from '../util/renderForm'
+
+const wizardForm = {
+  form: {
+    key: 'Screen',
+    type: 'Screen',
+    children: [
+      {
+        key: 'wizard',
+        type: 'RsWizard',
+        children: [
+          {
+            key: 'rsWizardStep1',
+            type: 'RsWizardStep',
+            props: {
+              label: {
+                value: 'Step 1'
+              }
+            }
+          },
+          {
+            key: 'rsWizardStep2',
+            type: 'RsWizardStep',
+            props: {
+              label: {
+                value: 'Step 2'
+              }
+            }
+          }
+        ],
+        events: {
+          onNext: [
+            {
+              name: 'onButtonClick',
+              type: 'custom'
+            }
+          ],
+          onPrev: [
+            {
+              name: 'onButtonClick',
+              type: 'custom'
+            }
+          ],
+          onFinish: [
+            {
+              name: 'onButtonClick',
+              type: 'custom'
+            }
+          ]
+        },
+      }
+    ]
+  }
+}
+
+describe('RsWizard tests', () => {
+  it('Wizard buttons should provide an event and a container in button events', async () => {
+    const elements: HTMLButtonElement[] = []
+
+    const actions: FormViewerProps['actions'] = {
+      onButtonClick: (e) => {
+        const {args} = e
+        elements.push(args[0].target)
+      }
+    }
+    const {findByText} = renderForm(wizardForm, {actions})
+
+    fireEvent.click(await findByText('Next'))
+    fireEvent.click(await findByText('Previous'))
+    fireEvent.click(await findByText('Next'))
+    fireEvent.click(await findByText('Finish'))
+
+    await waitFor(() => {
+      expect(elements).toHaveLength(4)
+    })
+
+    elements.forEach((element) => {
+      expect(element).toBeInstanceOf(HTMLButtonElement)
+    })
+  })
+})
