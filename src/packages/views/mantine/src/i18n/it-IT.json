@@ -485,10 +485,6 @@
           "description": "Chiamato quando la proprietà open è impostata su true",
           "name": "onApri"
         },
-        "onOpenedChange": {
-          "description": "Chiamato quando la proprietà aperta viene modificata",
-          "name": "onOpenedChange"
-        },
         "opened": {
           "description": "Indica se la finestra di dialogo è aperta",
           "name": "Aprire"

@@ -56,9 +56,15 @@ Callback when step changes.
 
 ### onFinish()?
 
-> `optional` **onFinish**: () => `void`
+> `optional` **onFinish**: (`event`) => `void`
 
 Callback when finish button is clicked.
+
+#### Parameters
+
+##### event
+
+`SyntheticEvent`
 
 #### Returns
 
@@ -68,9 +74,15 @@ Callback when finish button is clicked.
 
 ### onNext()?
 
-> `optional` **onNext**: () => `void`
+> `optional` **onNext**: (`event`) => `void`
 
 Callback when next button is clicked.
+
+#### Parameters
+
+##### event
+
+`SyntheticEvent`
 
 #### Returns
 
@@ -80,9 +92,15 @@ Callback when next button is clicked.
 
 ### onPrev()?
 
-> `optional` **onPrev**: () => `void`
+> `optional` **onPrev**: (`event`) => `void`
 
 Callback when previous button is clicked.
+
+#### Parameters
+
+##### event
+
+`SyntheticEvent`
 
 #### Returns
 
@@ -122,17 +140,17 @@ Navigation mode for steps.
 
 ***
 
-### validateOnFinish
+### validateOnFinish?
 
-> **validateOnFinish**: `boolean`
+> `optional` **validateOnFinish**: `boolean`
 
 Whether to validate on finish.
 
 ***
 
-### validateOnNext
+### validateOnNext?
 
-> **validateOnNext**: `boolean`
+> `optional` **validateOnNext**: `boolean`
 
 Whether to validate on next.
 

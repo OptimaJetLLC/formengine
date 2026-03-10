@@ -485,10 +485,6 @@
           "description": "当open属性设置为true时调用",
           "name": "奥诺彭"
         },
-        "onOpenedChange": {
-          "description": "当opened属性更改时调用",
-          "name": "n.交换,交换"
-        },
         "opened": {
           "description": "对话框是否打开",
           "name": "开幕"

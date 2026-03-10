@@ -485,10 +485,6 @@
           "description": "Wird aufgerufen, wenn die Eigenschaft open auf true gesetzt ist",
           "name": "Bei geöffnetem Fenster"
         },
-        "onOpenedChange": {
-          "description": "Wird aufgerufen, wenn die geöffnete Eigenschaft geändert wird",
-          "name": "Bei geöffnetem Wechsel"
-        },
         "opened": {
           "description": "Ob der Dialog geöffnet ist",
           "name": "Öffnen"

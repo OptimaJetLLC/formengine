@@ -485,10 +485,6 @@
           "description": "Appelé lorsque la propriété open est définie sur true",
           "name": "ONOUVERT"
         },
-        "onOpenedChange": {
-          "description": "Appelé lorsque la propriété ouverte est modifiée",
-          "name": "Changement ouvert"
-        },
         "opened": {
           "description": "Indique si la boîte de dialogue est ouverte",
           "name": "Ouvert"

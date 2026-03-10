@@ -485,10 +485,6 @@
           "description": "Openプロパティがtrueに設定されたときに呼び出されます",
           "name": "onOpen（オンオープン）"
         },
-        "onOpenedChange": {
-          "description": "されたときに呼び出され開プロパティの変更",
-          "name": "onOpenedChange"
-        },
         "opened": {
           "description": "るかどうかのダイアログが開",
           "name": "オープンしました"

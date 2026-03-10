@@ -485,10 +485,6 @@
           "description": "وقتی که خاصیت باز به true تنظیم شده است فراخوانده می شود",
           "name": "اوناپن"
         },
-        "onOpenedChange": {
-          "description": "وقتی که ملک باز شده تغییر می کند فراخوانده می شود",
-          "name": "angeopenedchange"
-        },
         "opened": {
           "description": "اینکه دیالوگ باز است یا نه",
           "name": "باز شد"
