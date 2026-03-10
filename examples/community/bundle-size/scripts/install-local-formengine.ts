@@ -28,7 +28,7 @@ Example:
 
 This will:
 - Remove local RFB dependencies from the target package.json
-- Pack and install local core + rsuite packages
+- Pack and install local core + rsuite + material-ui + mantine packages
 `)
   process.exit(exitCode)
 }
@@ -46,11 +46,13 @@ function main(targetDir: string): void {
     removeFromPackageJson('@react-form-builder/core')
     removeFromPackageJson('@react-form-builder/components-rsuite')
     removeFromPackageJson('@react-form-builder/components-material-ui')
+    removeFromPackageJson('@react-form-builder/components-mantine')
 
     const packagesRoot = resolve(scriptRoot, '../../../../src/packages')
     installLocalPackage(targetDir, join(packagesRoot, 'core'))
     installLocalPackage(targetDir, join(packagesRoot, 'views/rsuite'))
     installLocalPackage(targetDir, join(packagesRoot, 'views/material-ui'))
+    installLocalPackage(targetDir, join(packagesRoot, 'views/mantine'))
   } finally {
     process.chdir(originalCwd)
   }

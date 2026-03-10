@@ -1,6 +1,6 @@
 <svg width="330" height="255" viewBox="0 0 330 255" xmlns="http://www.w3.org/2000/svg">
     <text x="165" y="18" text-anchor="middle" font-size="14" font-weight="600" fill="#333">VueForm - login (gzip)</text>
-    <path d="M 60.50000000000001 145 L 60.50000000000001 94.5 A 50.50000000000001 50.50000000000001 0 1 1 38.640162815015394 99.47640701519744 Z" fill="#4CAF50" stroke="#fff" stroke-width="2"/><path d="M 60.50000000000001 145 L 38.640162815015394 99.47640701519744 A 50.50000000000001 50.50000000000001 0 0 1 60.5 94.5 Z" fill="#2196F3" stroke="#fff" stroke-width="2"/>
+    <path d="M 60.50000000000001 145 L 60.50000000000001 94.5 A 50.50000000000001 50.50000000000001 0 1 1 38.7638959063475 99.41719865091765 Z" fill="#4CAF50" stroke="#fff" stroke-width="2"/><path d="M 60.50000000000001 145 L 38.7638959063475 99.41719865091765 A 50.50000000000001 50.50000000000001 0 0 1 60.5 94.5 Z" fill="#2196F3" stroke="#fff" stroke-width="2"/>
     <g>
       <rect x="151" y="45" width="16" height="16" fill="#4CAF50" rx="3"/>
       <text x="175" y="57" font-size="13" fill="#333">Code (92.9%)</text>

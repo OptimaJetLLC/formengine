@@ -15,6 +15,7 @@
     "generate-typedoc": "dotenv -v ENABLE_TYPEDOC=\"true\" docusaurus build",
     "copy-bundle-charts": "node scripts/copy-bundle-charts.ts",
     "compress-all-images": "node scripts/compress-images.ts ./static",
+    "compress-changed-images": "(git diff --name-only --relative -z master -- 'static/**/*.jpg' 'static/**/*.jpeg' 'static/**/*.png' 'static/**/*.gif' || true; git ls-files --others --exclude-standard -z -- 'static/**/*.jpg' 'static/**/*.jpeg' 'static/**/*.png' 'static/**/*.gif' || true) | xargs -0 -r -n1 node scripts/compress-images.ts",
     "compress-image": "node scripts/compress-images.ts"
   },
   "dependencies": {

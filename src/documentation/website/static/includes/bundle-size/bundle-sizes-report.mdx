@@ -4,20 +4,30 @@
 
 | App | login<sub>(raw/gzip)</sub> | booking<sub>(raw/gzip)</sub> |
 | --- | --- | --- |
-| FormEngine Rsuite | 1.04 MB / 245.07KB (+598.8 KB / +104.3 KB) | 1.25 MB / 317.58KB (+673.1 KB / +139.1 KB) |
-| RJSF | 597.91 KB / 175.64KB (+132.3 KB / +34.9 KB) | <span style={{backgroundColor: '#e8f5e9', padding: '2px 4px', borderRadius: '3px'}}><strong>607.27 KB / 178.48KB (0 KB / 0 KB)</strong></span> |
-| SurveyJS | 1.84 MB / 429.41KB (+1414.0 KB / +288.6 KB) | 1.84 MB / 431.44KB (+1279.6 KB / +253.0 KB) |
-| VueForm | <span style={{backgroundColor: '#e8f5e9', padding: '2px 4px', borderRadius: '3px'}}><strong>465.56 KB / 140.78KB (0 KB / 0 KB)</strong></span> | 716.41 KB / 198.99KB (+109.1 KB / +20.5 KB) |
+| FormEngine Rsuite | 1.04 MB / 245.15KB (+596.5 KB / +103.5 KB) | 1.25 MB / 317.70KB (+671.6 KB / +138.5 KB) |
+| RJSF | 600.28 KB / 176.39KB (+131.5 KB / +34.8 KB) | <span style={{backgroundColor: '#e8f5e9', padding: '2px 4px', borderRadius: '3px'}}><strong>609.67 KB / 179.22KB (0 KB / 0 KB)</strong></span> |
+| SurveyJS | 1.81 MB / 426.85KB (+1384.5 KB / +285.2 KB) | 1.82 MB / 428.87KB (+1250.9 KB / +249.6 KB) |
+| VueForm | <span style={{backgroundColor: '#e8f5e9', padding: '2px 4px', borderRadius: '3px'}}><strong>468.78 KB / 141.64KB (0 KB / 0 KB)</strong></span> | 719.85 KB / 199.86KB (+110.2 KB / +20.6 KB) |
 > **Legend:** Bold values indicate the smallest value in each comparison. Smaller is better.
 
 #### MUI (FormEngine MUI, RJSF, SurveyJS, VueForm)
 
 | App | login<sub>(raw/gzip)</sub> | booking<sub>(raw/gzip)</sub> |
 | --- | --- | --- |
-| FormEngine MUI | 622.40 KB / 189.44KB (+154.9 KB / +48.3 KB) | <span style={{backgroundColor: '#e8f5e9', padding: '2px 4px', borderRadius: '3px'}}><strong>651.00 KB / 200.17KB (0 KB / +1.0 KB)</strong></span> |
-| RJSF | 725.37 KB / 232.64KB (+257.9 KB / +91.5 KB) | 734.86 KB / 235.53KB (+83.9 KB / +36.4 KB) |
-| SurveyJS | 1.49 MB / 397.71KB (+1057.7 KB / +256.6 KB) | 1.74 MB / 461.73KB (+1133.0 KB / +262.6 KB) |
-| VueForm | <span style={{backgroundColor: '#e8f5e9', padding: '2px 4px', borderRadius: '3px'}}><strong>467.50 KB / 141.16KB (0 KB / 0 KB)</strong></span> | 716.06 KB / 199.16KB (+65.1 KB / 0 KB) |
+| FormEngine MUI | 625.36 KB / 189.86KB (+154.6 KB / +47.8 KB) | <span style={{backgroundColor: '#e8f5e9', padding: '2px 4px', borderRadius: '3px'}}><strong>654.18 KB / 200.56KB (0 KB / +0.5 KB)</strong></span> |
+| RJSF | 729.17 KB / 233.38KB (+258.5 KB / +91.4 KB) | 738.68 KB / 236.31KB (+84.5 KB / +36.3 KB) |
+| SurveyJS | 1.47 MB / 395.42KB (+1035.7 KB / +253.4 KB) | 1.72 MB / 460.49KB (+1111.7 KB / +260.5 KB) |
+| VueForm | <span style={{backgroundColor: '#e8f5e9', padding: '2px 4px', borderRadius: '3px'}}><strong>470.72 KB / 142.02KB (0 KB / 0 KB)</strong></span> | 719.50 KB / 200.03KB (+65.3 KB / 0 KB) |
+> **Legend:** Bold values indicate the smallest value in each comparison. Smaller is better.
+
+#### Mantine (FormEngine Mantine, RJSF, SurveyJS, VueForm)
+
+| App | login<sub>(raw/gzip)</sub> | booking<sub>(raw/gzip)</sub> |
+| --- | --- | --- |
+| FormEngine Mantine | <span style={{backgroundColor: '#e8f5e9', padding: '2px 4px', borderRadius: '3px'}}><strong>585.98 KB / 172.18KB (0 KB / 0 KB)</strong></span> | <span style={{backgroundColor: '#e8f5e9', padding: '2px 4px', borderRadius: '3px'}}><strong>912.53 KB / 245.26KB (0 KB / 0 KB)</strong></span> |
+| RJSF | 838.84 KB / 258.70KB (+252.9 KB / +86.5 KB) | 1015.70 KB / 285.08KB (+103.2 KB / +39.8 KB) |
+| SurveyJS | 1.39 MB / 361.00KB (+842.2 KB / +188.8 KB) | 1.88 MB / 473.09KB (+1016.8 KB / +227.8 KB) |
+| VueForm | N/A | N/A |
 > **Legend:** Bold values indicate the smallest value in each comparison. Smaller is better.
 
 ### Comparison by App
@@ -26,37 +36,43 @@
 
 | Variant | Total Size<sub>(raw/gzip)</sub> | Chunks | Code<sub>(raw/gzip)</sub> | CSS<sub>(raw/gzip)</sub> |
 | --- | --- | --- | --- | --- |
-| booking | 1.25 MB / 317.58KB | 2 | 842.18 KB / 265.16KB | 438.18 KB / 52.42KB |
-| booking-mui | 651.00 KB / 200.17KB | 2 | 650.82 KB / 200.00KB | 186.00 B / 169.00B |
-| login | 1.04 MB / 245.07KB | 2 | 626.23 KB / 192.65KB | 438.18 KB / 52.42KB |
-| login-mui | 622.40 KB / 189.44KB | 2 | 622.22 KB / 189.27KB | 186.00 B / 169.00B |
+| booking | 1.25 MB / 317.70KB | 2 | 843.10 KB / 265.27KB | 438.18 KB / 52.42KB |
+| booking-mantine | 912.53 KB / 245.26KB | 2 | 694.96 KB / 213.70KB | 217.56 KB / 31.56KB |
+| booking-mui | 654.18 KB / 200.56KB | 2 | 654.00 KB / 200.40KB | 186.00 B / 169.00B |
+| login | 1.04 MB / 245.15KB | 2 | 627.10 KB / 192.72KB | 438.18 KB / 52.42KB |
+| login-mantine | 585.98 KB / 172.18KB | 2 | 535.89 KB / 164.13KB | 50.09 KB / 8.05KB |
+| login-mui | 625.36 KB / 189.86KB | 2 | 625.18 KB / 189.70KB | 186.00 B / 169.00B |
 
 #### RJSF
 
 | Variant | Total Size<sub>(raw/gzip)</sub> | Chunks | Code<sub>(raw/gzip)</sub> | CSS<sub>(raw/gzip)</sub> |
 | --- | --- | --- | --- | --- |
-| booking | 607.27 KB / 178.48KB | 2 | 489.77 KB / 159.11KB | 117.50 KB / 19.38KB |
-| booking-mui | 734.86 KB / 235.53KB | 2 | 734.35 KB / 235.24KB | 518.00 B / 297.00B |
-| login | 597.91 KB / 175.64KB | 2 | 480.72 KB / 156.37KB | 117.18 KB / 19.27KB |
-| login-mui | 725.37 KB / 232.64KB | 2 | 725.19 KB / 232.47KB | 186.00 B / 169.00B |
+| booking | 609.67 KB / 179.22KB | 2 | 492.16 KB / 159.84KB | 117.50 KB / 19.38KB |
+| booking-mantine | 1015.70 KB / 285.08KB | 2 | 797.81 KB / 253.43KB | 217.89 KB / 31.65KB |
+| booking-mui | 738.68 KB / 236.31KB | 2 | 738.18 KB / 236.02KB | 518.00 B / 297.00B |
+| login | 600.28 KB / 176.39KB | 2 | 483.10 KB / 157.12KB | 117.18 KB / 19.27KB |
+| login-mantine | 838.84 KB / 258.70KB | 2 | 788.75 KB / 250.64KB | 50.09 KB / 8.05KB |
+| login-mui | 729.17 KB / 233.38KB | 2 | 728.99 KB / 233.21KB | 186.00 B / 169.00B |
 
 #### SurveyJS
 
 | Variant | Total Size<sub>(raw/gzip)</sub> | Chunks | Code<sub>(raw/gzip)</sub> | CSS<sub>(raw/gzip)</sub> |
 | --- | --- | --- | --- | --- |
-| booking | 1.84 MB / 431.44KB | 2 | 1.54 MB / 396.10KB | 305.64 KB / 35.34KB |
-| booking-mui | 1.74 MB / 461.73KB | 2 | 1.74 MB / 460.94KB | 2.22 KB / 808.00B |
-| login | 1.84 MB / 429.41KB | 2 | 1.54 MB / 394.07KB | 305.64 KB / 35.34KB |
-| login-mui | 1.49 MB / 397.71KB | 2 | 1.49 MB / 397.55KB | 186.00 B / 169.00B |
+| booking | 1.82 MB / 428.87KB | 2 | 1.52 MB / 394.41KB | 299.04 KB / 34.45KB |
+| booking-mantine | 1.88 MB / 473.09KB | 2 | 1.67 MB / 441.39KB | 218.11 KB / 31.70KB |
+| booking-mui | 1.72 MB / 460.49KB | 2 | 1.72 MB / 459.70KB | 2.22 KB / 808.00B |
+| login | 1.81 MB / 426.85KB | 2 | 1.52 MB / 392.40KB | 299.04 KB / 34.45KB |
+| login-mantine | 1.39 MB / 361.00KB | 2 | 1.35 MB / 352.95KB | 50.09 KB / 8.05KB |
+| login-mui | 1.47 MB / 395.42KB | 2 | 1.47 MB / 395.26KB | 186.00 B / 169.00B |
 
 #### VueForm
 
 | Variant | Total Size<sub>(raw/gzip)</sub> | Chunks | Code<sub>(raw/gzip)</sub> | CSS<sub>(raw/gzip)</sub> |
 | --- | --- | --- | --- | --- |
-| booking | 716.41 KB / 198.99KB | 2 | 581.98 KB / 181.59KB | 134.43 KB / 17.40KB |
-| booking-mui | 716.06 KB / 199.16KB | 2 | 581.98 KB / 181.59KB | 134.08 KB / 17.56KB |
-| login | 465.56 KB / 140.78KB | 2 | 388.14 KB / 130.75KB | 77.42 KB / 10.03KB |
-| login-mui | 467.50 KB / 141.16KB | 2 | 389.68 KB / 130.92KB | 77.82 KB / 10.23KB |
+| booking | 719.85 KB / 199.86KB | 2 | 585.41 KB / 182.46KB | 134.43 KB / 17.40KB |
+| booking-mui | 719.50 KB / 200.03KB | 2 | 585.42 KB / 182.47KB | 134.08 KB / 17.56KB |
+| login | 468.78 KB / 141.64KB | 2 | 391.36 KB / 131.61KB | 77.42 KB / 10.03KB |
+| login-mui | 470.72 KB / 142.02KB | 2 | 392.90 KB / 131.79KB | 77.82 KB / 10.23KB |
 
 ### Comparison by Variant
 
@@ -64,10 +80,10 @@
 
 | App | Total Size<sub>(raw/gzip)</sub> | Chunks | Code<sub>(raw/gzip)</sub> | CSS<sub>(raw/gzip)</sub> |
 | --- | --- | --- | --- | --- |
-| **SurveyJS** | 1.84 MB / 429.41KB (+1414.0 KB / +288.6 KB) | 2 | 1.54 MB / 394.07KB | 305.64 KB / 35.34KB |
-| **FormEngine Rsuite** | 1.04 MB / 245.07KB (+598.8 KB / +104.3 KB) | 2 | 626.23 KB / 192.65KB | 438.18 KB / 52.42KB |
-| **RJSF** | 597.91 KB / 175.64KB (+132.3 KB / +34.9 KB) | 2 | 480.72 KB / 156.37KB | 117.18 KB / 19.27KB |
-| **VueForm** | **465.56 KB / 140.78KB** | 2 | **388.14 KB / 130.75KB** | **77.42 KB / 10.03KB** |
+| **SurveyJS** | 1.81 MB / 426.85KB (+1384.5 KB / +285.2 KB) | 2 | 1.52 MB / 392.40KB | 299.04 KB / 34.45KB |
+| **FormEngine Rsuite** | 1.04 MB / 245.15KB (+596.5 KB / +103.5 KB) | 2 | 627.10 KB / 192.72KB | 438.18 KB / 52.42KB |
+| **RJSF** | 600.28 KB / 176.39KB (+131.5 KB / +34.8 KB) | 2 | 483.10 KB / 157.12KB | 117.18 KB / 19.27KB |
+| **VueForm** | **468.78 KB / 141.64KB** | 2 | **391.36 KB / 131.61KB** | **77.42 KB / 10.03KB** |
 > **Legend:** Bold values indicate the smallest value in each comparison. Smaller is better.
 
 
@@ -84,10 +100,10 @@ import performancelogin from '@site/static/includes/bundle-size/performance-logi
 
 | App | Total Size<sub>(raw/gzip)</sub> | Chunks | Code<sub>(raw/gzip)</sub> | CSS<sub>(raw/gzip)</sub> |
 | --- | --- | --- | --- | --- |
-| **SurveyJS** | 1.49 MB / 397.71KB (+1057.7 KB / +256.6 KB) | 2 | 1.49 MB / 397.55KB | **186.00 B / 169.00B** |
-| **RJSF** | 725.37 KB / 232.64KB (+257.9 KB / +91.5 KB) | 2 | 725.19 KB / 232.47KB | **186.00 B / 169.00B** |
-| **FormEngine MUI** | 622.40 KB / 189.44KB (+154.9 KB / +48.3 KB) | 2 | 622.22 KB / 189.27KB | **186.00 B / 169.00B** |
-| **VueForm** | **467.50 KB / 141.16KB** | 2 | **389.68 KB / 130.92KB** | 77.82 KB / 10.23KB |
+| **SurveyJS** | 1.47 MB / 395.42KB (+1035.7 KB / +253.4 KB) | 2 | 1.47 MB / 395.26KB | **186.00 B / 169.00B** |
+| **RJSF** | 729.17 KB / 233.38KB (+258.5 KB / +91.4 KB) | 2 | 728.99 KB / 233.21KB | **186.00 B / 169.00B** |
+| **FormEngine MUI** | 625.36 KB / 189.86KB (+154.6 KB / +47.8 KB) | 2 | 625.18 KB / 189.70KB | **186.00 B / 169.00B** |
+| **VueForm** | **470.72 KB / 142.02KB** | 2 | **392.90 KB / 131.79KB** | 77.82 KB / 10.23KB |
 > **Legend:** Bold values indicate the smallest value in each comparison. Smaller is better.
 
 
@@ -100,14 +116,33 @@ import performanceloginMui from '@site/static/includes/bundle-size/performance-l
 <VegaLite spec={performanceloginMui}/>
 
 
+#### LOGIN-MANTINE
+
+| App | Total Size<sub>(raw/gzip)</sub> | Chunks | Code<sub>(raw/gzip)</sub> | CSS<sub>(raw/gzip)</sub> |
+| --- | --- | --- | --- | --- |
+| **SurveyJS** | 1.39 MB / 361.00KB (+842.2 KB / +188.8 KB) | 2 | 1.35 MB / 352.95KB | **50.09 KB / 8.05KB** |
+| **RJSF** | 838.84 KB / 258.70KB (+252.9 KB / +86.5 KB) | 2 | 788.75 KB / 250.64KB | **50.09 KB / 8.05KB** |
+| **FormEngine Mantine** | **585.98 KB / 172.18KB** | 2 | **535.89 KB / 164.13KB** | **50.09 KB / 8.05KB** |
+> **Legend:** Bold values indicate the smallest value in each comparison. Smaller is better.
+
+
+##### Performance Comparison (using gzip sizes)
+
+
+import performanceloginMantine from '@site/static/includes/bundle-size/performance-login-mantine.json';
+
+
+<VegaLite spec={performanceloginMantine}/>
+
+
 #### BOOKING
 
 | App | Total Size<sub>(raw/gzip)</sub> | Chunks | Code<sub>(raw/gzip)</sub> | CSS<sub>(raw/gzip)</sub> |
 | --- | --- | --- | --- | --- |
-| **SurveyJS** | 1.84 MB / 431.44KB (+1279.6 KB / +253.0 KB) | 2 | 1.54 MB / 396.10KB | 305.64 KB / 35.34KB |
-| **FormEngine Rsuite** | 1.25 MB / 317.58KB (+673.1 KB / +139.1 KB) | 2 | 842.18 KB / 265.16KB | 438.18 KB / 52.42KB |
-| **VueForm** | 716.41 KB / 198.99KB (+109.1 KB / +20.5 KB) | 2 | 581.98 KB / 181.59KB | 134.43 KB / 17.40KB |
-| **RJSF** | **607.27 KB / 178.48KB** | 2 | **489.77 KB / 159.11KB** | **117.50 KB / 19.38KB** |
+| **SurveyJS** | 1.82 MB / 428.87KB (+1250.9 KB / +249.6 KB) | 2 | 1.52 MB / 394.41KB | 299.04 KB / 34.45KB |
+| **FormEngine Rsuite** | 1.25 MB / 317.70KB (+671.6 KB / +138.5 KB) | 2 | 843.10 KB / 265.27KB | 438.18 KB / 52.42KB |
+| **VueForm** | 719.85 KB / 199.86KB (+110.2 KB / +20.6 KB) | 2 | 585.41 KB / 182.46KB | 134.43 KB / 17.40KB |
+| **RJSF** | **609.67 KB / 179.22KB** | 2 | **492.16 KB / 159.84KB** | **117.50 KB / 19.38KB** |
 > **Legend:** Bold values indicate the smallest value in each comparison. Smaller is better.
 
 
@@ -124,10 +159,10 @@ import performancebooking from '@site/static/includes/bundle-size/performance-bo
 
 | App | Total Size<sub>(raw/gzip)</sub> | Chunks | Code<sub>(raw/gzip)</sub> | CSS<sub>(raw/gzip)</sub> |
 | --- | --- | --- | --- | --- |
-| **SurveyJS** | 1.74 MB / 461.73KB (+1133.0 KB / +262.6 KB) | 2 | 1.74 MB / 460.94KB | 2.22 KB / 808.00B |
-| **RJSF** | 734.86 KB / 235.53KB (+83.9 KB / +36.4 KB) | 2 | 734.35 KB / 235.24KB | 518.00 B / 297.00B |
-| **VueForm** | 716.06 KB / 199.16KB (+65.1 KB / 0 KB) | 2 | **581.98 KB / 181.59KB** | 134.08 KB / 17.56KB |
-| **FormEngine MUI** | **651.00 KB / 200.17KB (0 KB / +1.0 KB)** | 2 | 650.82 KB / 200.00KB | **186.00 B / 169.00B** |
+| **SurveyJS** | 1.72 MB / 460.49KB (+1111.7 KB / +260.5 KB) | 2 | 1.72 MB / 459.70KB | 2.22 KB / 808.00B |
+| **RJSF** | 738.68 KB / 236.31KB (+84.5 KB / +36.3 KB) | 2 | 738.18 KB / 236.02KB | 518.00 B / 297.00B |
+| **VueForm** | 719.50 KB / 200.03KB (+65.3 KB / 0 KB) | 2 | **585.42 KB / 182.47KB** | 134.08 KB / 17.56KB |
+| **FormEngine MUI** | **654.18 KB / 200.56KB (0 KB / +0.5 KB)** | 2 | 654.00 KB / 200.40KB | **186.00 B / 169.00B** |
 > **Legend:** Bold values indicate the smallest value in each comparison. Smaller is better.
 
 
@@ -138,6 +173,25 @@ import performancebookingMui from '@site/static/includes/bundle-size/performance
 
 
 <VegaLite spec={performancebookingMui}/>
+
+
+#### BOOKING-MANTINE
+
+| App | Total Size<sub>(raw/gzip)</sub> | Chunks | Code<sub>(raw/gzip)</sub> | CSS<sub>(raw/gzip)</sub> |
+| --- | --- | --- | --- | --- |
+| **SurveyJS** | 1.88 MB / 473.09KB (+1016.8 KB / +227.8 KB) | 2 | 1.67 MB / 441.39KB | 218.11 KB / 31.70KB |
+| **RJSF** | 1015.70 KB / 285.08KB (+103.2 KB / +39.8 KB) | 2 | 797.81 KB / 253.43KB | 217.89 KB / 31.65KB |
+| **FormEngine Mantine** | **912.53 KB / 245.26KB** | 2 | **694.96 KB / 213.70KB** | **217.56 KB / 31.56KB** |
+> **Legend:** Bold values indicate the smallest value in each comparison. Smaller is better.
+
+
+##### Performance Comparison (using gzip sizes)
+
+
+import performancebookingMantine from '@site/static/includes/bundle-size/performance-booking-mantine.json';
+
+
+<VegaLite spec={performancebookingMantine}/>
 
 
 ### Detailed Chunk Information
@@ -164,16 +218,47 @@ import pieformenginebookingGzip from '@site/static/includes/bundle-size/pie-form
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 842.18 KB / 265.16KB | 65.8% |
+| Code | 843.10 KB / 265.27KB | 65.8% |
 | CSS | 438.18 KB / 52.42KB | 34.2% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/booking-cLEyt4Rz.js | 842.18 KB |
+| assets/booking-DUAQ6otH.js | 843.10 KB |
 | assets/booking-BlfDlKZh.css | 438.18 KB |
-| **Total** | **1.25 MB / 317.58KB** |
+| **Total** | **1.25 MB / 317.70KB** |
+
+##### Variant: booking-mantine
+
+**Bundle Breakdown:**
+
+import pieformenginebookingMantine from '@site/static/includes/bundle-size/pie-formengine-booking-mantine.json';
+import pieformenginebookingMantineGzip from '@site/static/includes/bundle-size/pie-formengine-booking-mantine-gzip.json';
+
+
+
+<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap'}}>
+
+  <div style={{flex: '1', minWidth: '300px'}}><VegaLite spec={pieformenginebookingMantine}/></div>
+
+  <div style={{flex: '1', minWidth: '300px'}}><VegaLite spec={pieformenginebookingMantineGzip}/></div>
+
+</div>
+
+
+| Category | Size | Percentage |
+| --- | --- | --- |
+| Code | 694.96 KB / 213.70KB | 76.2% |
+| CSS | 217.56 KB / 31.56KB | 23.8% |
+
+**Chunks:**
+
+| Chunk | Size |
+| --- | --- |
+| assets/booking-mantine-B2hRX-7S.js | 694.96 KB |
+| assets/booking-mantine-C8f_dOzp.css | 217.56 KB |
+| **Total** | **912.53 KB / 245.26KB** |
 
 ##### Variant: booking-mui
 
@@ -195,16 +280,16 @@ import pieformenginebookingMuiGzip from '@site/static/includes/bundle-size/pie-f
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 650.82 KB / 200.00KB | 100.0% |
+| Code | 654.00 KB / 200.40KB | 100.0% |
 | CSS | 186.00 B / 169.00B | 0.0% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/booking-mui-8oUcs06n.js | 650.82 KB |
+| assets/booking-mui-LiU7y1Wu.js | 654.00 KB |
 | assets/booking-mui-DRllDmdv.css | 186.00 B |
-| **Total** | **651.00 KB / 200.17KB** |
+| **Total** | **654.18 KB / 200.56KB** |
 
 ##### Variant: login
 
@@ -226,16 +311,47 @@ import pieformengineloginGzip from '@site/static/includes/bundle-size/pie-formen
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 626.23 KB / 192.65KB | 58.8% |
-| CSS | 438.18 KB / 52.42KB | 41.2% |
+| Code | 627.10 KB / 192.72KB | 58.9% |
+| CSS | 438.18 KB / 52.42KB | 41.1% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/login-CZHp6lqC.js | 626.23 KB |
+| assets/login-Bd2nUmOs.js | 627.10 KB |
 | assets/login-BlfDlKZh.css | 438.18 KB |
-| **Total** | **1.04 MB / 245.07KB** |
+| **Total** | **1.04 MB / 245.15KB** |
+
+##### Variant: login-mantine
+
+**Bundle Breakdown:**
+
+import pieformengineloginMantine from '@site/static/includes/bundle-size/pie-formengine-login-mantine.json';
+import pieformengineloginMantineGzip from '@site/static/includes/bundle-size/pie-formengine-login-mantine-gzip.json';
+
+
+
+<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap'}}>
+
+  <div style={{flex: '1', minWidth: '300px'}}><VegaLite spec={pieformengineloginMantine}/></div>
+
+  <div style={{flex: '1', minWidth: '300px'}}><VegaLite spec={pieformengineloginMantineGzip}/></div>
+
+</div>
+
+
+| Category | Size | Percentage |
+| --- | --- | --- |
+| Code | 535.89 KB / 164.13KB | 91.5% |
+| CSS | 50.09 KB / 8.05KB | 8.5% |
+
+**Chunks:**
+
+| Chunk | Size |
+| --- | --- |
+| assets/login-mantine-pYNb_XLf.js | 535.89 KB |
+| assets/login-mantine-BI1Zzk3o.css | 50.09 KB |
+| **Total** | **585.98 KB / 172.18KB** |
 
 ##### Variant: login-mui
 
@@ -257,16 +373,16 @@ import pieformengineloginMuiGzip from '@site/static/includes/bundle-size/pie-for
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 622.22 KB / 189.27KB | 100.0% |
+| Code | 625.18 KB / 189.70KB | 100.0% |
 | CSS | 186.00 B / 169.00B | 0.0% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/login-mui-Ck_0wiA4.js | 622.22 KB |
+| assets/login-mui-CIvUxgLY.js | 625.18 KB |
 | assets/login-mui-DRllDmdv.css | 186.00 B |
-| **Total** | **622.40 KB / 189.44KB** |
+| **Total** | **625.36 KB / 189.86KB** |
 
 #### RJSF
 
@@ -290,16 +406,47 @@ import pierjsfbookingGzip from '@site/static/includes/bundle-size/pie-rjsf-booki
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 489.77 KB / 159.11KB | 80.7% |
+| Code | 492.16 KB / 159.84KB | 80.7% |
 | CSS | 117.50 KB / 19.38KB | 19.3% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/booking-DJqT1Azw.js | 489.77 KB |
+| assets/booking-rvyicNto.js | 492.16 KB |
 | assets/booking-DmSkEnsk.css | 117.50 KB |
-| **Total** | **607.27 KB / 178.48KB** |
+| **Total** | **609.67 KB / 179.22KB** |
+
+##### Variant: booking-mantine
+
+**Bundle Breakdown:**
+
+import pierjsfbookingMantine from '@site/static/includes/bundle-size/pie-rjsf-booking-mantine.json';
+import pierjsfbookingMantineGzip from '@site/static/includes/bundle-size/pie-rjsf-booking-mantine-gzip.json';
+
+
+
+<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap'}}>
+
+  <div style={{flex: '1', minWidth: '300px'}}><VegaLite spec={pierjsfbookingMantine}/></div>
+
+  <div style={{flex: '1', minWidth: '300px'}}><VegaLite spec={pierjsfbookingMantineGzip}/></div>
+
+</div>
+
+
+| Category | Size | Percentage |
+| --- | --- | --- |
+| Code | 797.81 KB / 253.43KB | 78.5% |
+| CSS | 217.89 KB / 31.65KB | 21.5% |
+
+**Chunks:**
+
+| Chunk | Size |
+| --- | --- |
+| assets/booking-mantine-DSAm6u4F.js | 797.81 KB |
+| assets/booking-mantine-C3yoQzbu.css | 217.89 KB |
+| **Total** | **1015.70 KB / 285.08KB** |
 
 ##### Variant: booking-mui
 
@@ -321,16 +468,16 @@ import pierjsfbookingMuiGzip from '@site/static/includes/bundle-size/pie-rjsf-bo
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 734.35 KB / 235.24KB | 99.9% |
+| Code | 738.18 KB / 236.02KB | 99.9% |
 | CSS | 518.00 B / 297.00B | 0.1% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/booking-mui-COUHI9qn.js | 734.35 KB |
+| assets/booking-mui-BZ1iJCb6.js | 738.18 KB |
 | assets/booking-mui-Bomwm_CU.css | 518.00 B |
-| **Total** | **734.86 KB / 235.53KB** |
+| **Total** | **738.68 KB / 236.31KB** |
 
 ##### Variant: login
 
@@ -352,16 +499,47 @@ import pierjsfloginGzip from '@site/static/includes/bundle-size/pie-rjsf-login-g
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 480.72 KB / 156.37KB | 80.4% |
-| CSS | 117.18 KB / 19.27KB | 19.6% |
+| Code | 483.10 KB / 157.12KB | 80.5% |
+| CSS | 117.18 KB / 19.27KB | 19.5% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/login-V6rgUKiK.js | 480.72 KB |
+| assets/login-N4AesXcT.js | 483.10 KB |
 | assets/login-nEkMQGGj.css | 117.18 KB |
-| **Total** | **597.91 KB / 175.64KB** |
+| **Total** | **600.28 KB / 176.39KB** |
+
+##### Variant: login-mantine
+
+**Bundle Breakdown:**
+
+import pierjsfloginMantine from '@site/static/includes/bundle-size/pie-rjsf-login-mantine.json';
+import pierjsfloginMantineGzip from '@site/static/includes/bundle-size/pie-rjsf-login-mantine-gzip.json';
+
+
+
+<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap'}}>
+
+  <div style={{flex: '1', minWidth: '300px'}}><VegaLite spec={pierjsfloginMantine}/></div>
+
+  <div style={{flex: '1', minWidth: '300px'}}><VegaLite spec={pierjsfloginMantineGzip}/></div>
+
+</div>
+
+
+| Category | Size | Percentage |
+| --- | --- | --- |
+| Code | 788.75 KB / 250.64KB | 94.0% |
+| CSS | 50.09 KB / 8.05KB | 6.0% |
+
+**Chunks:**
+
+| Chunk | Size |
+| --- | --- |
+| assets/login-mantine-B1suMfwM.js | 788.75 KB |
+| assets/login-mantine-BI1Zzk3o.css | 50.09 KB |
+| **Total** | **838.84 KB / 258.70KB** |
 
 ##### Variant: login-mui
 
@@ -383,16 +561,16 @@ import pierjsfloginMuiGzip from '@site/static/includes/bundle-size/pie-rjsf-logi
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 725.19 KB / 232.47KB | 100.0% |
+| Code | 728.99 KB / 233.21KB | 100.0% |
 | CSS | 186.00 B / 169.00B | 0.0% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/login-mui-ChXj5s7v.js | 725.19 KB |
+| assets/login-mui-HueaP7Oj.js | 728.99 KB |
 | assets/login-mui-DRllDmdv.css | 186.00 B |
-| **Total** | **725.37 KB / 232.64KB** |
+| **Total** | **729.17 KB / 233.38KB** |
 
 #### SurveyJS
 
@@ -416,16 +594,47 @@ import piesurveybookingGzip from '@site/static/includes/bundle-size/pie-survey-b
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 1.54 MB / 396.10KB | 83.8% |
-| CSS | 305.64 KB / 35.34KB | 16.2% |
+| Code | 1.52 MB / 394.41KB | 83.9% |
+| CSS | 299.04 KB / 34.45KB | 16.1% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/booking-BE-zW9Ik.js | 1.54 MB |
-| assets/booking-D3E-h4Sw.css | 305.64 KB |
-| **Total** | **1.84 MB / 431.44KB** |
+| assets/booking-DH81Y4an.js | 1.52 MB |
+| assets/booking-CsJwwvr9.css | 299.04 KB |
+| **Total** | **1.82 MB / 428.87KB** |
+
+##### Variant: booking-mantine
+
+**Bundle Breakdown:**
+
+import piesurveybookingMantine from '@site/static/includes/bundle-size/pie-survey-booking-mantine.json';
+import piesurveybookingMantineGzip from '@site/static/includes/bundle-size/pie-survey-booking-mantine-gzip.json';
+
+
+
+<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap'}}>
+
+  <div style={{flex: '1', minWidth: '300px'}}><VegaLite spec={piesurveybookingMantine}/></div>
+
+  <div style={{flex: '1', minWidth: '300px'}}><VegaLite spec={piesurveybookingMantineGzip}/></div>
+
+</div>
+
+
+| Category | Size | Percentage |
+| --- | --- | --- |
+| Code | 1.67 MB / 441.39KB | 88.7% |
+| CSS | 218.11 KB / 31.70KB | 11.3% |
+
+**Chunks:**
+
+| Chunk | Size |
+| --- | --- |
+| assets/booking-mantine-OFiMJmGe.js | 1.67 MB |
+| assets/booking-mantine-e9p_j4WA.css | 218.11 KB |
+| **Total** | **1.88 MB / 473.09KB** |
 
 ##### Variant: booking-mui
 
@@ -447,16 +656,16 @@ import piesurveybookingMuiGzip from '@site/static/includes/bundle-size/pie-surve
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 1.74 MB / 460.94KB | 99.9% |
+| Code | 1.72 MB / 459.70KB | 99.9% |
 | CSS | 2.22 KB / 808.00B | 0.1% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/booking-mui-tTf90JQr.js | 1.74 MB |
+| assets/booking-mui-Dnoa8x7M.js | 1.72 MB |
 | assets/booking-mui-DpJ2xjkN.css | 2.22 KB |
-| **Total** | **1.74 MB / 461.73KB** |
+| **Total** | **1.72 MB / 460.49KB** |
 
 ##### Variant: login
 
@@ -478,16 +687,47 @@ import piesurveyloginGzip from '@site/static/includes/bundle-size/pie-survey-log
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 1.54 MB / 394.07KB | 83.7% |
-| CSS | 305.64 KB / 35.34KB | 16.3% |
+| Code | 1.52 MB / 392.40KB | 83.9% |
+| CSS | 299.04 KB / 34.45KB | 16.1% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/login-qcT824kj.js | 1.54 MB |
-| assets/login-D3E-h4Sw.css | 305.64 KB |
-| **Total** | **1.84 MB / 429.41KB** |
+| assets/login-CXZS-vJd.js | 1.52 MB |
+| assets/login-CsJwwvr9.css | 299.04 KB |
+| **Total** | **1.81 MB / 426.85KB** |
+
+##### Variant: login-mantine
+
+**Bundle Breakdown:**
+
+import piesurveyloginMantine from '@site/static/includes/bundle-size/pie-survey-login-mantine.json';
+import piesurveyloginMantineGzip from '@site/static/includes/bundle-size/pie-survey-login-mantine-gzip.json';
+
+
+
+<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap'}}>
+
+  <div style={{flex: '1', minWidth: '300px'}}><VegaLite spec={piesurveyloginMantine}/></div>
+
+  <div style={{flex: '1', minWidth: '300px'}}><VegaLite spec={piesurveyloginMantineGzip}/></div>
+
+</div>
+
+
+| Category | Size | Percentage |
+| --- | --- | --- |
+| Code | 1.35 MB / 352.95KB | 96.5% |
+| CSS | 50.09 KB / 8.05KB | 3.5% |
+
+**Chunks:**
+
+| Chunk | Size |
+| --- | --- |
+| assets/login-mantine-BQ4km_Mi.js | 1.35 MB |
+| assets/login-mantine-BI1Zzk3o.css | 50.09 KB |
+| **Total** | **1.39 MB / 361.00KB** |
 
 ##### Variant: login-mui
 
@@ -509,16 +749,16 @@ import piesurveyloginMuiGzip from '@site/static/includes/bundle-size/pie-survey-
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 1.49 MB / 397.55KB | 100.0% |
+| Code | 1.47 MB / 395.26KB | 100.0% |
 | CSS | 186.00 B / 169.00B | 0.0% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/login-mui-BtJbERC0.js | 1.49 MB |
+| assets/login-mui-B6gS6llY.js | 1.47 MB |
 | assets/login-mui-DRllDmdv.css | 186.00 B |
-| **Total** | **1.49 MB / 397.71KB** |
+| **Total** | **1.47 MB / 395.42KB** |
 
 #### VueForm
 
@@ -542,16 +782,16 @@ import pievueformbookingGzip from '@site/static/includes/bundle-size/pie-vueform
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 581.98 KB / 181.59KB | 81.2% |
-| CSS | 134.43 KB / 17.40KB | 18.8% |
+| Code | 585.41 KB / 182.46KB | 81.3% |
+| CSS | 134.43 KB / 17.40KB | 18.7% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/booking-FMlCJeul.js | 581.98 KB |
+| assets/booking-C4FTwkKc.js | 585.41 KB |
 | assets/booking-MdY-dgU2.css | 134.43 KB |
-| **Total** | **716.41 KB / 198.99KB** |
+| **Total** | **719.85 KB / 199.86KB** |
 
 ##### Variant: booking-mui
 
@@ -573,16 +813,16 @@ import pievueformbookingMuiGzip from '@site/static/includes/bundle-size/pie-vuef
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 581.98 KB / 181.59KB | 81.3% |
-| CSS | 134.08 KB / 17.56KB | 18.7% |
+| Code | 585.42 KB / 182.47KB | 81.4% |
+| CSS | 134.08 KB / 17.56KB | 18.6% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/booking-mui-CYQUKf4s.js | 581.98 KB |
+| assets/booking-mui-DAJNHFw9.js | 585.42 KB |
 | assets/booking-mui-BnsU-ma9.css | 134.08 KB |
-| **Total** | **716.06 KB / 199.16KB** |
+| **Total** | **719.50 KB / 200.03KB** |
 
 ##### Variant: login
 
@@ -604,16 +844,16 @@ import pievueformloginGzip from '@site/static/includes/bundle-size/pie-vueform-l
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 388.14 KB / 130.75KB | 83.4% |
-| CSS | 77.42 KB / 10.03KB | 16.6% |
+| Code | 391.36 KB / 131.61KB | 83.5% |
+| CSS | 77.42 KB / 10.03KB | 16.5% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/login-DRWdQb0V.js | 388.14 KB |
+| assets/login-_PUgT0cv.js | 391.36 KB |
 | assets/login-x6SVVLFq.css | 77.42 KB |
-| **Total** | **465.56 KB / 140.78KB** |
+| **Total** | **468.78 KB / 141.64KB** |
 
 ##### Variant: login-mui
 
@@ -635,13 +875,13 @@ import pievueformloginMuiGzip from '@site/static/includes/bundle-size/pie-vuefor
 
 | Category | Size | Percentage |
 | --- | --- | --- |
-| Code | 389.68 KB / 130.92KB | 83.4% |
-| CSS | 77.82 KB / 10.23KB | 16.6% |
+| Code | 392.90 KB / 131.79KB | 83.5% |
+| CSS | 77.82 KB / 10.23KB | 16.5% |
 
 **Chunks:**
 
 | Chunk | Size |
 | --- | --- |
-| assets/login-mui-DB0MzmEj.js | 389.68 KB |
+| assets/login-mui-BH1ta_kh.js | 392.90 KB |
 | assets/login-mui-CWmCCSP1.css | 77.82 KB |
-| **Total** | **467.50 KB / 141.16KB** |
+| **Total** | **470.72 KB / 142.02KB** |

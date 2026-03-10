@@ -6,37 +6,37 @@
       {
         "framework": "SurveyJS",
         "metric": "3G LCP",
-        "value": 8832
+        "value": 8777
       },
       {
         "framework": "SurveyJS",
         "metric": "3G TTI",
-        "value": 11356
+        "value": 11269
       },
       {
         "framework": "SurveyJS",
         "metric": "4G LCP",
-        "value": 1066
+        "value": 1057
       },
       {
         "framework": "SurveyJS",
         "metric": "4G TTI",
-        "value": 3590
+        "value": 3549
       },
       {
         "framework": "SurveyJS",
         "metric": "Parse",
-        "value": 2525
+        "value": 2492
       },
       {
         "framework": "FormEngine Core",
         "metric": "3G LCP",
-        "value": 6621
+        "value": 6623
       },
       {
         "framework": "FormEngine Core",
         "metric": "3G TTI",
-        "value": 8103
+        "value": 8107
       },
       {
         "framework": "FormEngine Core",
@@ -46,62 +46,62 @@
       {
         "framework": "FormEngine Core",
         "metric": "4G TTI",
-        "value": 2387
+        "value": 2388
       },
       {
         "framework": "FormEngine Core",
         "metric": "Parse",
-        "value": 1482
+        "value": 1484
       },
       {
         "framework": "VueForm",
         "metric": "3G LCP",
-        "value": 4097
+        "value": 4114
       },
       {
         "framework": "VueForm",
         "metric": "3G TTI",
-        "value": 5037
+        "value": 5060
       },
       {
         "framework": "VueForm",
         "metric": "4G LCP",
-        "value": 515
+        "value": 517
       },
       {
         "framework": "VueForm",
         "metric": "4G TTI",
-        "value": 1455
+        "value": 1462
       },
       {
         "framework": "VueForm",
         "metric": "Parse",
-        "value": 940
+        "value": 945
       },
       {
         "framework": "RJSF",
         "metric": "3G LCP",
-        "value": 3678
+        "value": 3693
       },
       {
         "framework": "RJSF",
         "metric": "3G TTI",
-        "value": 4472
+        "value": 4490
       },
       {
         "framework": "RJSF",
         "metric": "4G LCP",
-        "value": 466
+        "value": 467
       },
       {
         "framework": "RJSF",
         "metric": "4G TTI",
-        "value": 1259
+        "value": 1264
       },
       {
         "framework": "RJSF",
         "metric": "Parse",
-        "value": 793
+        "value": 797
       }
     ]
   },

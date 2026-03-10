@@ -1,0 +1,142 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Performance Comparison: login-mantine (Slow 3G vs Average 4G)",
+  "data": {
+    "values": [
+      {
+        "framework": "SurveyJS",
+        "metric": "3G LCP",
+        "value": 7295
+      },
+      {
+        "framework": "SurveyJS",
+        "metric": "3G TTI",
+        "value": 9387
+      },
+      {
+        "framework": "SurveyJS",
+        "metric": "4G LCP",
+        "value": 797
+      },
+      {
+        "framework": "SurveyJS",
+        "metric": "4G TTI",
+        "value": 2889
+      },
+      {
+        "framework": "SurveyJS",
+        "metric": "Parse",
+        "value": 2092
+      },
+      {
+        "framework": "RJSF",
+        "metric": "3G LCP",
+        "value": 5249
+      },
+      {
+        "framework": "RJSF",
+        "metric": "3G TTI",
+        "value": 6457
+      },
+      {
+        "framework": "RJSF",
+        "metric": "4G LCP",
+        "value": 592
+      },
+      {
+        "framework": "RJSF",
+        "metric": "4G TTI",
+        "value": 1801
+      },
+      {
+        "framework": "RJSF",
+        "metric": "Parse",
+        "value": 1208
+      },
+      {
+        "framework": "FormEngine Core",
+        "metric": "3G LCP",
+        "value": 3519
+      },
+      {
+        "framework": "FormEngine Core",
+        "metric": "3G TTI",
+        "value": 4348
+      },
+      {
+        "framework": "FormEngine Core",
+        "metric": "4G LCP",
+        "value": 419
+      },
+      {
+        "framework": "FormEngine Core",
+        "metric": "4G TTI",
+        "value": 1248
+      },
+      {
+        "framework": "FormEngine Core",
+        "metric": "Parse",
+        "value": 829
+      }
+    ]
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusTopLeft": 2,
+    "cornerRadiusTopRight": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "framework",
+      "type": "nominal",
+      "axis": {
+        "labelAngle": -45
+      }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Time (ms)"
+    },
+    "xOffset": {
+      "field": "metric",
+      "scale": {
+        "paddingInner": 0.1
+      }
+    },
+    "color": {
+      "field": "metric",
+      "scale": {
+        "domain": [
+          "3G LCP",
+          "4G LCP",
+          "3G TTI",
+          "4G TTI",
+          "Parse"
+        ],
+        "range": [
+          "#2E7D32",
+          "#4CAF50",
+          "#1565C0",
+          "#2196F3",
+          "#FF9800"
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "framework",
+        "type": "nominal"
+      },
+      {
+        "field": "metric",
+        "type": "nominal"
+      },
+      {
+        "field": "value",
+        "type": "quantitative",
+        "format": ","
+      }
+    ]
+  }
+}
