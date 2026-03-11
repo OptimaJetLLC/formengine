@@ -51,6 +51,7 @@ npm-test:
 # npm-check-all performs all checks
 npm-check-all:
   FROM +sources
+  RUN npm install -D @biomejs/biome # fixes Error: Cannot find module '@biomejs/cli-linux-arm64/biome'
   RUN npm run check:all
 
 # npm-check-circular-deps checks for cyclic dependencies
