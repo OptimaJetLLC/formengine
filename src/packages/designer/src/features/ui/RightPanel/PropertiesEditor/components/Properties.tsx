@@ -274,7 +274,7 @@ const isStylesEditorVisible = (model: Model) => {
   if (model.kind === 'template' && disableWrapperStyles) return false
   if (model.kind === 'component' && disableStyles && disableWrapperStyles) return false
 
-  return disableStyles
+  return !disableStyles
 }
 
 const getDefaultActiveStyleTab = (model: Model) => {
