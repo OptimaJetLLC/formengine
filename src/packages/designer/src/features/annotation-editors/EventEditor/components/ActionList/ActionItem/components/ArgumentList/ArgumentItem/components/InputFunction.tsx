@@ -35,6 +35,8 @@ const useFnArgument = (name: string): [string | undefined, (src?: string) => voi
   return useMemo(() => [fnBody, setFnBody], [setFnBody, fnBody])
 }
 
+const getFunctionSource = (source: string) => `${beginContextLine}${source}${endContextLine}`
+
 const RawInputFunction = ({name}: InputProps) => {
   const builderStore = useBuilderStore()
   const [value, setFn] = useFnArgument(name)
@@ -53,14 +55,12 @@ const RawInputFunction = ({name}: InputProps) => {
 
   const onCompile = useCallback((source: string) => {
     try {
-      const compiled = new Function('e', 'args', '...userArgs', source)
-      const testEventArgs = {data: {}, errors: {}}
-      const result = compiled(testEventArgs, {result: 'ok'})
-      return {error: false, result}
+      new Function('e', 'args', '...userArgs', getFunctionSource(source))
+      return {error: false, result: t('testingEditor.compilationOk')}
     } catch (e) {
       return {error: true, exceptions: [e as Error]}
     }
-  }, [])
+  }, [t])
 
   const handleEdit = useCallback(() => {
     const editableFunction = new EditableFunction(

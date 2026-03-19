@@ -10,7 +10,13 @@ import form from './forms/event-arg.form.json'
 
 const view = new BuilderView(allComponentsBuilder)
 
-const getForm = (_?: string) => JSON.stringify(form)
+const defaultGetForm = (_?: string) => JSON.stringify(form)
+
+const getFormWithFnArgBody = (body: string) => (_?: string) => {
+  const nextForm = JSON.parse(JSON.stringify(form))
+  nextForm.form.children[0].events.onClick[0].args.fnArg.body = body
+  return JSON.stringify(nextForm)
+}
 
 const mockAssert = vi.fn()
 const mockLog = vi.fn()
@@ -24,6 +30,7 @@ if (!window?.ResizeObserver) {
     observe = vi.fn()
     unobserve = vi.fn()
     disconnect = vi.fn()
+
     constructor(callback: ResizeObserverCallback) {
       // Store callback if needed
     }
@@ -78,7 +85,7 @@ const actions = {
   }),
 }
 
-const App = ({throwAssert}: { throwAssert: boolean }) => {
+const App = ({throwAssert, getForm}: { throwAssert: boolean, getForm?: (_?: string) => string }) => {
   const [viewer, setViewer] = useState<IFormViewer | null>(null)
   const setRef = useCallback((viewer: IFormViewer | null) => {
     if (viewer) {
@@ -96,7 +103,8 @@ const App = ({throwAssert}: { throwAssert: boolean }) => {
     }
   }, [viewer])
 
-  return <FormBuilder view={view} getForm={getForm} formName={'foo'} licenseKey={testLicense} actions={actions}
+  return <FormBuilder view={view} getForm={getForm ?? defaultGetForm} formName={'foo'} licenseKey={testLicense}
+                      actions={actions}
                       initialData={{throwAssert}} viewerRef={setRef}/>
 }
 
@@ -189,11 +197,17 @@ const clickButton = async (app: RenderResult) => {
   })
 }
 
-const openCodeEditor = async (app: RenderResult, argName: string) => {
+const openCodeEditor = async (app: RenderResult, argName: string, functionArgumentName?: string) => {
   await asyncAct(async () => {
     const block = await getActionBlock(app, argName)
+    if (functionArgumentName) {
+      const functionArgumentLabel = await within(block).findByText(functionArgumentName)
+      const functionArgumentBlock = functionArgumentLabel.parentNode as HTMLElement
+      const button = await within(functionArgumentBlock).findByText('Edit code')
+      fireEvent.click(button)
+      return
+    }
     const button = await within(block.children[1] as HTMLElement).getAllByText('Edit code')
-
     fireEvent.click(button[0])
   })
 }
@@ -333,13 +347,26 @@ describe('Event args UI should display and pass arguments', () => {
   })
 
   it('should show function argument execution result in test output', async () => {
-    await openCodeEditor(app, 'funcArgs')
+    await openCodeEditor(app, 'funcArgs', 'fnArg')
 
     const runButton = await app.findByText('Run')
     fireEvent.click(runButton)
 
     const result = await app.findByTestId('test-result')
-    expect(result).toHaveTextContent('"result": true')
-    expect(result).not.toHaveTextContent('function')
+    expect(result).not.toHaveTextContent('Unexpected')
+    expect(result).not.toHaveTextContent('Has not returned value')
+  })
+
+  it('should show compile error in editor for invalid function body syntax', async () => {
+    app.rerender(<App throwAssert={false} getForm={getFormWithFnArgBody('  return {result: true')}/>)
+    await selectActions(app)
+    await toggleArguments(app, 'funcArgs')
+    await openCodeEditor(app, 'funcArgs', 'fnArg')
+
+    const runButton = await app.findByText('Run')
+    fireEvent.click(runButton)
+
+    const result = await app.findByTestId('test-result')
+    expect(result).toHaveTextContent('Unexpected')
   })
 })

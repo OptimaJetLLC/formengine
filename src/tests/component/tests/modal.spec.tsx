@@ -4,6 +4,7 @@ import {builderViewWithCss, viewWithCss} from '@react-form-builder/components-rs
 import {FormViewer} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {fireEvent, render, waitFor, within} from '@testing-library/react'
+import enUS from '../../../packages/designer/public/locales/en-US.json'
 import {addCustomEventHandler, getInputElement, togglePreview} from '../util/controls'
 
 type ModalLibraryName = 'rsuite' | 'mantine' | 'material-ui'
@@ -31,6 +32,8 @@ const modalTypeByLibrary: Record<ModalLibraryName, string> = {
   mantine: 'MtDialog',
   'material-ui': 'MuiDialog'
 }
+
+const compilationOkText = enUS.testingEditor.compilationOk
 
 const buttonTypeByLibrary: Record<ModalLibraryName, string> = {
   rsuite: 'RsButton',
@@ -636,7 +639,7 @@ describe('Modal tests', () => {
     fireEvent.click(runButton)
 
     const result = await findByTestId('test-result')
-    await waitFor(() => expect(result).toHaveTextContent('{}'))
+    await waitFor(() => expect(result).toHaveTextContent(compilationOkText))
     expect(result).not.toHaveTextContent('function')
   })
 
