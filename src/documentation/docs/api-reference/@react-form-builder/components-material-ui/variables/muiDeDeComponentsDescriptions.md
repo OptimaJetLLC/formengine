@@ -808,6 +808,406 @@
 
 > **components.MuiContainer.props.maxWidth.name**: `string` = `"Maximale Breite"`
 
+#### components.MuiDatePicker
+
+> **components.MuiDatePicker**: `object`
+
+#### components.MuiDatePicker.description
+
+> **components.MuiDatePicker.description**: `string` = `"Komponente zur Auswahl eines Datums"`
+
+#### components.MuiDatePicker.name
+
+> **components.MuiDatePicker.name**: `string` = `"Datumswahl"`
+
+#### components.MuiDatePicker.props
+
+> **components.MuiDatePicker.props**: `object`
+
+#### components.MuiDatePicker.props.autoFocus
+
+> **components.MuiDatePicker.props.autoFocus**: `object`
+
+#### components.MuiDatePicker.props.autoFocus.description
+
+> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"Wenn true, fokussiert die Datumsauswahl automatisch, wenn die Komponente montiert wird"`
+
+#### components.MuiDatePicker.props.autoFocus.name
+
+> **components.MuiDatePicker.props.autoFocus.name**: `string` = `"Autofokus"`
+
+#### components.MuiDatePicker.props.closeOnSelect
+
+> **components.MuiDatePicker.props.closeOnSelect**: `object`
+
+#### components.MuiDatePicker.props.closeOnSelect.description
+
+> **components.MuiDatePicker.props.closeOnSelect.description**: `string` = `"Schließt den Datumsauswahldialog automatisch, nachdem ein Datum ausgewählt wurde"`
+
+#### components.MuiDatePicker.props.closeOnSelect.name
+
+> **components.MuiDatePicker.props.closeOnSelect.name**: `string` = `"Bei Auswahl schließen"`
+
+#### components.MuiDatePicker.props.desktopModeMediaQuery
+
+> **components.MuiDatePicker.props.desktopModeMediaQuery**: `object`
+
+#### components.MuiDatePicker.props.desktopModeMediaQuery.description
+
+> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"CSS-Medienabfragezeichenfolge, die festlegt, wann in das Desktop-Modus-Layout gewechselt werden soll"`
+
+#### components.MuiDatePicker.props.desktopModeMediaQuery.name
+
+> **components.MuiDatePicker.props.desktopModeMediaQuery.name**: `string` = `"Medienabfrage im Desktop-Modus"`
+
+#### components.MuiDatePicker.props.disableFuture
+
+> **components.MuiDatePicker.props.disableFuture**: `object`
+
+#### components.MuiDatePicker.props.disableFuture.description
+
+> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"Wenn true, verhindert die Auswahl von Datumsangaben nach dem aktuellen Datum"`
+
+#### components.MuiDatePicker.props.disableFuture.name
+
+> **components.MuiDatePicker.props.disableFuture.name**: `string` = `"Zukunft deaktivieren"`
+
+#### components.MuiDatePicker.props.disableHighlightToday
+
+> **components.MuiDatePicker.props.disableHighlightToday**: `object`
+
+#### components.MuiDatePicker.props.disableHighlightToday.description
+
+> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"Wenn true, deaktiviert die visuelle Hervorhebung des aktuellen Datums im Kalender"`
+
+#### components.MuiDatePicker.props.disableHighlightToday.name
+
+> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"Highlight heute deaktivieren"`
+
+#### components.MuiDatePicker.props.disableOpenPicker
+
+> **components.MuiDatePicker.props.disableOpenPicker**: `object`
+
+#### components.MuiDatePicker.props.disableOpenPicker.description
+
+> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"Wenn true, verhindert das Öffnen des Auswahldialogs (nützlich für schreibgeschützte Anzeige)"`
+
+#### components.MuiDatePicker.props.disableOpenPicker.name
+
+> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"Offene Auswahl deaktivieren"`
+
+#### components.MuiDatePicker.props.disablePast
+
+> **components.MuiDatePicker.props.disablePast**: `object`
+
+#### components.MuiDatePicker.props.disablePast.description
+
+> **components.MuiDatePicker.props.disablePast.description**: `string` = `"Wenn true, verhindert die Auswahl von Datumsangaben vor dem aktuellen Datum"`
+
+#### components.MuiDatePicker.props.disablePast.name
+
+> **components.MuiDatePicker.props.disablePast.name**: `string` = `"Vergangenheit deaktivieren"`
+
+#### components.MuiDatePicker.props.displayWeekNumber
+
+> **components.MuiDatePicker.props.displayWeekNumber**: `object`
+
+#### components.MuiDatePicker.props.displayWeekNumber.description
+
+> **components.MuiDatePicker.props.displayWeekNumber.description**: `string` = `"Zeigt Wochennummern in der Kalenderansicht an"`
+
+#### components.MuiDatePicker.props.displayWeekNumber.name
+
+> **components.MuiDatePicker.props.displayWeekNumber.name**: `string` = `"Wochennummer anzeigen"`
+
+#### components.MuiDatePicker.props.fixedWeekNumber
+
+> **components.MuiDatePicker.props.fixedWeekNumber**: `object`
+
+#### components.MuiDatePicker.props.fixedWeekNumber.description
+
+> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"Feste Anzahl der anzuzeigenden Wochen (erzwingt konsistente Kalenderhöhe)"`
+
+#### components.MuiDatePicker.props.fixedWeekNumber.name
+
+> **components.MuiDatePicker.props.fixedWeekNumber.name**: `string` = `"Feste Wochennummer"`
+
+#### components.MuiDatePicker.props.format
+
+> **components.MuiDatePicker.props.format**: `object`
+
+#### components.MuiDatePicker.props.format.description
+
+> **components.MuiDatePicker.props.format.description**: `string` = `"Datumsformatzeichenfolge, die für die Anzeige und Analyse verwendet wird (z. B. 'JJJJ-MM-TT', 'MM / TT / JJJJ')"`
+
+#### components.MuiDatePicker.props.format.name
+
+> **components.MuiDatePicker.props.format.name**: `string` = `"Formatierung"`
+
+#### components.MuiDatePicker.props.formatDensity
+
+> **components.MuiDatePicker.props.formatDensity**: `object`
+
+#### components.MuiDatePicker.props.formatDensity.description
+
+> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"Steuert den Abstand bei der Datumsformatierung: dicht (kompakt) oder geräumig (mehr Abstand)"`
+
+#### components.MuiDatePicker.props.formatDensity.name
+
+> **components.MuiDatePicker.props.formatDensity.name**: `string` = `"Formatdichte"`
+
+#### components.MuiDatePicker.props.loading
+
+> **components.MuiDatePicker.props.loading**: `object`
+
+#### components.MuiDatePicker.props.loading.description
+
+> **components.MuiDatePicker.props.loading.description**: `string` = `"Wenn true, wird ein Lade-Drehfeld angezeigt, das angibt, dass Daten geladen werden"`
+
+#### components.MuiDatePicker.props.loading.name
+
+> **components.MuiDatePicker.props.loading.name**: `string` = `"Laden"`
+
+#### components.MuiDatePicker.props.maxDate
+
+> **components.MuiDatePicker.props.maxDate**: `object`
+
+#### components.MuiDatePicker.props.maxDate.description
+
+> **components.MuiDatePicker.props.maxDate.description**: `string` = `"Spätestes Datum, das ausgewählt werden kann (einschließlich)"`
+
+#### components.MuiDatePicker.props.maxDate.name
+
+> **components.MuiDatePicker.props.maxDate.name**: `string` = `"Maximales Datum"`
+
+#### components.MuiDatePicker.props.minDate
+
+> **components.MuiDatePicker.props.minDate**: `object`
+
+#### components.MuiDatePicker.props.minDate.description
+
+> **components.MuiDatePicker.props.minDate.description**: `string` = `"Frühestes Datum, das ausgewählt werden kann (einschließlich)"`
+
+#### components.MuiDatePicker.props.minDate.name
+
+> **components.MuiDatePicker.props.minDate.name**: `string` = `"Mindestdatum"`
+
+#### components.MuiDatePicker.props.monthsPerRow
+
+> **components.MuiDatePicker.props.monthsPerRow**: `object`
+
+#### components.MuiDatePicker.props.monthsPerRow.description
+
+> **components.MuiDatePicker.props.monthsPerRow.description**: `string` = `"Anzahl der anzuzeigenden Monatskalender pro Zeile in Monats- / Jahresansichten"`
+
+#### components.MuiDatePicker.props.monthsPerRow.name
+
+> **components.MuiDatePicker.props.monthsPerRow.name**: `string` = `"Monate pro Zeile"`
+
+#### components.MuiDatePicker.props.name
+
+> **components.MuiDatePicker.props.name**: `object`
+
+#### components.MuiDatePicker.props.name.description
+
+> **components.MuiDatePicker.props.name.description**: `string` = `"Das Namensattribut für das Formularfeld, das beim Senden von Formularen verwendet wird"`
+
+#### components.MuiDatePicker.props.name.name
+
+> **components.MuiDatePicker.props.name.name**: `string` = `"Name"`
+
+#### components.MuiDatePicker.props.onAccept
+
+> **components.MuiDatePicker.props.onAccept**: `object`
+
+#### components.MuiDatePicker.props.onAccept.description
+
+> **components.MuiDatePicker.props.onAccept.description**: `string` = `"Callback wird ausgelöst, wenn der Wert akzeptiert wird"`
+
+#### components.MuiDatePicker.props.onAccept.name
+
+> **components.MuiDatePicker.props.onAccept.name**: `string` = `"Einakzeptieren"`
+
+#### components.MuiDatePicker.props.onClose
+
+> **components.MuiDatePicker.props.onClose**: `object`
+
+#### components.MuiDatePicker.props.onClose.description
+
+> **components.MuiDatePicker.props.onClose.description**: `string` = `"Callback wird ausgelöst, wenn das Popup das Schließen anfordert"`
+
+#### components.MuiDatePicker.props.onClose.name
+
+> **components.MuiDatePicker.props.onClose.name**: `string` = `"Aufschließen"`
+
+#### components.MuiDatePicker.props.onError
+
+> **components.MuiDatePicker.props.onError**: `object`
+
+#### components.MuiDatePicker.props.onError.description
+
+> **components.MuiDatePicker.props.onError.description**: `string` = `"Callback wird ausgelöst, wenn sich der mit dem aktuellen Wert verknüpfte Fehler ändert"`
+
+#### components.MuiDatePicker.props.onError.name
+
+> **components.MuiDatePicker.props.onError.name**: `string` = `"onError"`
+
+#### components.MuiDatePicker.props.onMonthChange
+
+> **components.MuiDatePicker.props.onMonthChange**: `object`
+
+#### components.MuiDatePicker.props.onMonthChange.description
+
+> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"Rückruf bei Monatswechsel ausgelöst"`
+
+#### components.MuiDatePicker.props.onMonthChange.name
+
+> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"Im moNatswEchsel"`
+
+#### components.MuiDatePicker.props.onOpen
+
+> **components.MuiDatePicker.props.onOpen**: `object`
+
+#### components.MuiDatePicker.props.onOpen.description
+
+> **components.MuiDatePicker.props.onOpen.description**: `string` = `"Callback wird ausgelöst, wenn das Popup das Öffnen anfordert"`
+
+#### components.MuiDatePicker.props.onOpen.name
+
+> **components.MuiDatePicker.props.onOpen.name**: `string` = `"Bei geöffnetem Fenster"`
+
+#### components.MuiDatePicker.props.onSelectedSectionsChange
+
+> **components.MuiDatePicker.props.onSelectedSectionsChange**: `object`
+
+#### components.MuiDatePicker.props.onSelectedSectionsChange.description
+
+> **components.MuiDatePicker.props.onSelectedSectionsChange.description**: `string` = `"Callback wird ausgelöst, wenn sich die ausgewählten Abschnitte ändern"`
+
+#### components.MuiDatePicker.props.onSelectedSectionsChange.name
+
+> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"Anausgewähltenabschnitteändern"`
+
+#### components.MuiDatePicker.props.onViewChange
+
+> **components.MuiDatePicker.props.onViewChange**: `object`
+
+#### components.MuiDatePicker.props.onViewChange.description
+
+> **components.MuiDatePicker.props.onViewChange.description**: `string` = `"Rückruf bei Änderung der Ansicht ausgelöst"`
+
+#### components.MuiDatePicker.props.onViewChange.name
+
+> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"onViewChange"`
+
+#### components.MuiDatePicker.props.onYearChange
+
+> **components.MuiDatePicker.props.onYearChange**: `object`
+
+#### components.MuiDatePicker.props.onYearChange.description
+
+> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"Rückruf bei Jahreswechsel ausgelöst"`
+
+#### components.MuiDatePicker.props.onYearChange.name
+
+> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"Jahreswechsel"`
+
+#### components.MuiDatePicker.props.open
+
+> **components.MuiDatePicker.props.open**: `object`
+
+#### components.MuiDatePicker.props.open.description
+
+> **components.MuiDatePicker.props.open.description**: `string` = `"Wenn true, ist der Datumsauswahl-Dialog geöffnet; kann für die kontrollierte Statusverwaltung verwendet werden"`
+
+#### components.MuiDatePicker.props.open.name
+
+> **components.MuiDatePicker.props.open.name**: `string` = `"Öffnen"`
+
+#### components.MuiDatePicker.props.openTo
+
+> **components.MuiDatePicker.props.openTo**: `object`
+
+#### components.MuiDatePicker.props.openTo.description
+
+> **components.MuiDatePicker.props.openTo.description**: `string` = `"Die Ansicht, die geöffnet werden soll, wenn die Auswahl aktiviert ist"`
+
+#### components.MuiDatePicker.props.openTo.name
+
+> **components.MuiDatePicker.props.openTo.name**: `string` = `"Offen für"`
+
+#### components.MuiDatePicker.props.referenceDate
+
+> **components.MuiDatePicker.props.referenceDate**: `object`
+
+#### components.MuiDatePicker.props.referenceDate.description
+
+> **components.MuiDatePicker.props.referenceDate.description**: `string` = `"Datum, das zum Generieren der anfänglichen Kalenderansicht verwendet wird, wenn kein Wert ausgewählt ist"`
+
+#### components.MuiDatePicker.props.referenceDate.name
+
+> **components.MuiDatePicker.props.referenceDate.name**: `string` = `"Stichtag"`
+
+#### components.MuiDatePicker.props.showDaysOutsideCurrentMonth
+
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth**: `object`
+
+#### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description
+
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"Zeigt Tage aus dem vorherigen und nächsten Monat in der aktuellen Monatsansicht an"`
+
+#### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name
+
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name**: `string` = `"Tage außerhalb des aktuellen Monats anzeigen"`
+
+#### components.MuiDatePicker.props.view
+
+> **components.MuiDatePicker.props.view**: `object`
+
+#### components.MuiDatePicker.props.view.description
+
+> **components.MuiDatePicker.props.view.description**: `string` = `"Die anzuzeigende Anfangsansicht (Tages-, Monats- oder Jahreskalender)"`
+
+#### components.MuiDatePicker.props.view.name
+
+> **components.MuiDatePicker.props.view.name**: `string` = `"Blick"`
+
+#### components.MuiDatePicker.props.views
+
+> **components.MuiDatePicker.props.views**: `object`
+
+#### components.MuiDatePicker.props.views.description
+
+> **components.MuiDatePicker.props.views.description**: `string` = `"Die verfügbaren Ansichten (Tages-, Monats- und Jahreskalender)"`
+
+#### components.MuiDatePicker.props.views.name
+
+> **components.MuiDatePicker.props.views.name**: `string` = `"Hits"`
+
+#### components.MuiDatePicker.props.yearsOrder
+
+> **components.MuiDatePicker.props.yearsOrder**: `object`
+
+#### components.MuiDatePicker.props.yearsOrder.description
+
+> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"Sortierreihenfolge der Jahre: aufsteigend (älteste zuerst) oder absteigend (neueste zuerst)"`
+
+#### components.MuiDatePicker.props.yearsOrder.name
+
+> **components.MuiDatePicker.props.yearsOrder.name**: `string` = `"Jahre bestellen"`
+
+#### components.MuiDatePicker.props.yearsPerRow
+
+> **components.MuiDatePicker.props.yearsPerRow**: `object`
+
+#### components.MuiDatePicker.props.yearsPerRow.description
+
+> **components.MuiDatePicker.props.yearsPerRow.description**: `string` = `"Anzahl der anzuzeigenden Jahreselemente pro Zeile in der Jahresansicht"`
+
+#### components.MuiDatePicker.props.yearsPerRow.name
+
+> **components.MuiDatePicker.props.yearsPerRow.name**: `string` = `"Jahre pro Zeile"`
+
 #### components.MuiDialog
 
 > **components.MuiDialog**: `object`

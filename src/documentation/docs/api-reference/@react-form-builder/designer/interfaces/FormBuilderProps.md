@@ -327,7 +327,7 @@ the payload with information about the added component.
 
 ###### insertPosition?
 
-`InsertPosition`
+[`InsertPosition`](../type-aliases/InsertPosition.md)
 
 ###### slot?
 

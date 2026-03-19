@@ -808,6 +808,406 @@
 
 > **components.MuiContainer.props.maxWidth.name**: `string` = `"حداکثر عرض"`
 
+#### components.MuiDatePicker
+
+> **components.MuiDatePicker**: `object`
+
+#### components.MuiDatePicker.description
+
+> **components.MuiDatePicker.description**: `string` = `"جزء برای انتخاب تاریخ"`
+
+#### components.MuiDatePicker.name
+
+> **components.MuiDatePicker.name**: `string` = `"انتخاب کننده تاریخ"`
+
+#### components.MuiDatePicker.props
+
+> **components.MuiDatePicker.props**: `object`
+
+#### components.MuiDatePicker.props.autoFocus
+
+> **components.MuiDatePicker.props.autoFocus**: `object`
+
+#### components.MuiDatePicker.props.autoFocus.description
+
+> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"اگر درست باشد ، به طور خودکار بر روی انتخاب کننده تاریخ تمرکز می کند وقتی که قطعه نصب می شود"`
+
+#### components.MuiDatePicker.props.autoFocus.name
+
+> **components.MuiDatePicker.props.autoFocus.name**: `string` = `"تمرکز خودکار"`
+
+#### components.MuiDatePicker.props.closeOnSelect
+
+> **components.MuiDatePicker.props.closeOnSelect**: `object`
+
+#### components.MuiDatePicker.props.closeOnSelect.description
+
+> **components.MuiDatePicker.props.closeOnSelect.description**: `string` = `"دیالوگ date picker را به طور خودکار پس از انتخاب یک تاریخ بسته می کند"`
+
+#### components.MuiDatePicker.props.closeOnSelect.name
+
+> **components.MuiDatePicker.props.closeOnSelect.name**: `string` = `"بستن بر روی انتخاب کنید"`
+
+#### components.MuiDatePicker.props.desktopModeMediaQuery
+
+> **components.MuiDatePicker.props.desktopModeMediaQuery**: `object`
+
+#### components.MuiDatePicker.props.desktopModeMediaQuery.description
+
+> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"Css media query string که تعیین می کند چه زمانی به طرح حالت دسکتاپ تغییر دهید"`
+
+#### components.MuiDatePicker.props.desktopModeMediaQuery.name
+
+> **components.MuiDatePicker.props.desktopModeMediaQuery.name**: `string` = `"پرس و جو رسانه ای حالت دسکتاپ"`
+
+#### components.MuiDatePicker.props.disableFuture
+
+> **components.MuiDatePicker.props.disableFuture**: `object`
+
+#### components.MuiDatePicker.props.disableFuture.description
+
+> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"اگر درست باشد ، از انتخاب تاریخ ها پس از تاریخ فعلی جلوگیری می کند"`
+
+#### components.MuiDatePicker.props.disableFuture.name
+
+> **components.MuiDatePicker.props.disableFuture.name**: `string` = `"آینده را غیرفعال کنید"`
+
+#### components.MuiDatePicker.props.disableHighlightToday
+
+> **components.MuiDatePicker.props.disableHighlightToday**: `object`
+
+#### components.MuiDatePicker.props.disableHighlightToday.description
+
+> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"اگر درست باشد ، برجسته کردن بصری تاریخ فعلی در تقویم را غیرفعال می کند"`
+
+#### components.MuiDatePicker.props.disableHighlightToday.name
+
+> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"برجسته امروز را غیرفعال کنید"`
+
+#### components.MuiDatePicker.props.disableOpenPicker
+
+> **components.MuiDatePicker.props.disableOpenPicker**: `object`
+
+#### components.MuiDatePicker.props.disableOpenPicker.description
+
+> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"اگر درست باشد ، از باز کردن دیالوگ picker جلوگیری می کند (برای نمایش فقط برای خواندن مفید است)"`
+
+#### components.MuiDatePicker.props.disableOpenPicker.name
+
+> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"انتخاب کننده باز را غیرفعال کنید"`
+
+#### components.MuiDatePicker.props.disablePast
+
+> **components.MuiDatePicker.props.disablePast**: `object`
+
+#### components.MuiDatePicker.props.disablePast.description
+
+> **components.MuiDatePicker.props.disablePast.description**: `string` = `"اگر درست باشد ، از انتخاب تاریخ ها قبل از تاریخ فعلی جلوگیری می کند"`
+
+#### components.MuiDatePicker.props.disablePast.name
+
+> **components.MuiDatePicker.props.disablePast.name**: `string` = `"گذشته را غیرفعال کنید"`
+
+#### components.MuiDatePicker.props.displayWeekNumber
+
+> **components.MuiDatePicker.props.displayWeekNumber**: `object`
+
+#### components.MuiDatePicker.props.displayWeekNumber.description
+
+> **components.MuiDatePicker.props.displayWeekNumber.description**: `string` = `"نمایش شماره های هفته در نمایش تقویم"`
+
+#### components.MuiDatePicker.props.displayWeekNumber.name
+
+> **components.MuiDatePicker.props.displayWeekNumber.name**: `string` = `"نمایش شماره هفته"`
+
+#### components.MuiDatePicker.props.fixedWeekNumber
+
+> **components.MuiDatePicker.props.fixedWeekNumber**: `object`
+
+#### components.MuiDatePicker.props.fixedWeekNumber.description
+
+> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"تعداد ثابت هفته ها برای نمایش (ارتفاع تقویم ثابت)"`
+
+#### components.MuiDatePicker.props.fixedWeekNumber.name
+
+> **components.MuiDatePicker.props.fixedWeekNumber.name**: `string` = `"شماره هفته ثابت"`
+
+#### components.MuiDatePicker.props.format
+
+> **components.MuiDatePicker.props.format**: `object`
+
+#### components.MuiDatePicker.props.format.description
+
+> **components.MuiDatePicker.props.format.description**: `string` = `"رشته فرمت تاریخ برای نمایش و تجزیه استفاده می شود (به عنوان مثال ، yyyy-MM-dd، MM / dd/yyyy)"`
+
+#### components.MuiDatePicker.props.format.name
+
+> **components.MuiDatePicker.props.format.name**: `string` = `"فرمت"`
+
+#### components.MuiDatePicker.props.formatDensity
+
+> **components.MuiDatePicker.props.formatDensity**: `object`
+
+#### components.MuiDatePicker.props.formatDensity.description
+
+> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"کنترل فاصله در قالب بندی تاریخ: متراکم (جمع و جور) یا بزرگ (فاصله بیشتر)"`
+
+#### components.MuiDatePicker.props.formatDensity.name
+
+> **components.MuiDatePicker.props.formatDensity.name**: `string` = `"تراکم فرمت"`
+
+#### components.MuiDatePicker.props.loading
+
+> **components.MuiDatePicker.props.loading**: `object`
+
+#### components.MuiDatePicker.props.loading.description
+
+> **components.MuiDatePicker.props.loading.description**: `string` = `"اگر درست باشد ، یک اسپینر بارگذاری را نشان می دهد که نشان می دهد داده ها بارگذاری شده اند"`
+
+#### components.MuiDatePicker.props.loading.name
+
+> **components.MuiDatePicker.props.loading.name**: `string` = `"بارگیری"`
+
+#### components.MuiDatePicker.props.maxDate
+
+> **components.MuiDatePicker.props.maxDate**: `object`
+
+#### components.MuiDatePicker.props.maxDate.description
+
+> **components.MuiDatePicker.props.maxDate.description**: `string` = `"آخرین تاریخ که می تواند انتخاب شود (از جمله)"`
+
+#### components.MuiDatePicker.props.maxDate.name
+
+> **components.MuiDatePicker.props.maxDate.name**: `string` = `"حداکثر تاریخ"`
+
+#### components.MuiDatePicker.props.minDate
+
+> **components.MuiDatePicker.props.minDate**: `object`
+
+#### components.MuiDatePicker.props.minDate.description
+
+> **components.MuiDatePicker.props.minDate.description**: `string` = `"اولین تاریخ که می تواند انتخاب شود (از جمله)"`
+
+#### components.MuiDatePicker.props.minDate.name
+
+> **components.MuiDatePicker.props.minDate.name**: `string` = `"حداقل تاریخ"`
+
+#### components.MuiDatePicker.props.monthsPerRow
+
+> **components.MuiDatePicker.props.monthsPerRow**: `object`
+
+#### components.MuiDatePicker.props.monthsPerRow.description
+
+> **components.MuiDatePicker.props.monthsPerRow.description**: `string` = `"تعداد تقویم های ماه برای نمایش در هر ردیف در بازدید ماه / سال"`
+
+#### components.MuiDatePicker.props.monthsPerRow.name
+
+> **components.MuiDatePicker.props.monthsPerRow.name**: `string` = `"ماه در هر ردیف"`
+
+#### components.MuiDatePicker.props.name
+
+> **components.MuiDatePicker.props.name**: `object`
+
+#### components.MuiDatePicker.props.name.description
+
+> **components.MuiDatePicker.props.name.description**: `string` = `"ویژگی نام برای فیلد فرم ، که هنگام ارسال فرم ها استفاده می شود"`
+
+#### components.MuiDatePicker.props.name.name
+
+> **components.MuiDatePicker.props.name.name**: `string` = `"نام"`
+
+#### components.MuiDatePicker.props.onAccept
+
+> **components.MuiDatePicker.props.onAccept**: `object`
+
+#### components.MuiDatePicker.props.onAccept.description
+
+> **components.MuiDatePicker.props.onAccept.description**: `string` = `"وقتی ارزش پذیرفته شد ، دوباره تماس گرفته می شود"`
+
+#### components.MuiDatePicker.props.onAccept.name
+
+> **components.MuiDatePicker.props.onAccept.name**: `string` = `"اوناکسپت"`
+
+#### components.MuiDatePicker.props.onClose
+
+> **components.MuiDatePicker.props.onClose**: `object`
+
+#### components.MuiDatePicker.props.onClose.description
+
+> **components.MuiDatePicker.props.onClose.description**: `string` = `"وقتی درخواست های پاپ آپ بسته می شود ، تماس مجدد قطع می شود"`
+
+#### components.MuiDatePicker.props.onClose.name
+
+> **components.MuiDatePicker.props.onClose.name**: `string` = `"آنکلوز"`
+
+#### components.MuiDatePicker.props.onError
+
+> **components.MuiDatePicker.props.onError**: `object`
+
+#### components.MuiDatePicker.props.onError.description
+
+> **components.MuiDatePicker.props.onError.description**: `string` = `"تماس برگشت زمانی که خطای مرتبط با ارزش فعلی تغییر می کند"`
+
+#### components.MuiDatePicker.props.onError.name
+
+> **components.MuiDatePicker.props.onError.name**: `string` = `"rorerror"`
+
+#### components.MuiDatePicker.props.onMonthChange
+
+> **components.MuiDatePicker.props.onMonthChange**: `object`
+
+#### components.MuiDatePicker.props.onMonthChange.description
+
+> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"تماس برگشت به خاطر تغییر ماه"`
+
+#### components.MuiDatePicker.props.onMonthChange.name
+
+> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"angemonthchange"`
+
+#### components.MuiDatePicker.props.onOpen
+
+> **components.MuiDatePicker.props.onOpen**: `object`
+
+#### components.MuiDatePicker.props.onOpen.description
+
+> **components.MuiDatePicker.props.onOpen.description**: `string` = `"وقتی درخواست باز شدن پاپ آپ ها باز شد ، تماس برگشت قطع شد"`
+
+#### components.MuiDatePicker.props.onOpen.name
+
+> **components.MuiDatePicker.props.onOpen.name**: `string` = `"اوناپن"`
+
+#### components.MuiDatePicker.props.onSelectedSectionsChange
+
+> **components.MuiDatePicker.props.onSelectedSectionsChange**: `object`
+
+#### components.MuiDatePicker.props.onSelectedSectionsChange.description
+
+> **components.MuiDatePicker.props.onSelectedSectionsChange.description**: `string` = `"وقتی بخش های انتخاب شده تغییر می کنند ، Callback اخراج می شود"`
+
+#### components.MuiDatePicker.props.onSelectedSectionsChange.name
+
+> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"angeselectedsectionschange"`
+
+#### components.MuiDatePicker.props.onViewChange
+
+> **components.MuiDatePicker.props.onViewChange**: `object`
+
+#### components.MuiDatePicker.props.onViewChange.description
+
+> **components.MuiDatePicker.props.onViewChange.description**: `string` = `"تماس برگشت با تغییر نمایش"`
+
+#### components.MuiDatePicker.props.onViewChange.name
+
+> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"angeviewchange"`
+
+#### components.MuiDatePicker.props.onYearChange
+
+> **components.MuiDatePicker.props.onYearChange**: `object`
+
+#### components.MuiDatePicker.props.onYearChange.description
+
+> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"تماس برگشت به خاطر تغییر سال"`
+
+#### components.MuiDatePicker.props.onYearChange.name
+
+> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"angeyearchange"`
+
+#### components.MuiDatePicker.props.open
+
+> **components.MuiDatePicker.props.open**: `object`
+
+#### components.MuiDatePicker.props.open.description
+
+> **components.MuiDatePicker.props.open.description**: `string` = `"اگر درست باشد ، دیالوگ date picker باز است ؛ می تواند برای مدیریت کنترل شده دولت استفاده شود"`
+
+#### components.MuiDatePicker.props.open.name
+
+> **components.MuiDatePicker.props.open.name**: `string` = `"باز"`
+
+#### components.MuiDatePicker.props.openTo
+
+> **components.MuiDatePicker.props.openTo**: `object`
+
+#### components.MuiDatePicker.props.openTo.description
+
+> **components.MuiDatePicker.props.openTo.description**: `string` = `"منظره ای که وقتی انتخاب کننده فعال می شود باز می شود"`
+
+#### components.MuiDatePicker.props.openTo.name
+
+> **components.MuiDatePicker.props.openTo.name**: `string` = `"باز به"`
+
+#### components.MuiDatePicker.props.referenceDate
+
+> **components.MuiDatePicker.props.referenceDate**: `object`
+
+#### components.MuiDatePicker.props.referenceDate.description
+
+> **components.MuiDatePicker.props.referenceDate.description**: `string` = `"تاریخ مورد استفاده برای تولید نمای تقویم اولیه زمانی که هیچ ارزشی انتخاب نشده است"`
+
+#### components.MuiDatePicker.props.referenceDate.name
+
+> **components.MuiDatePicker.props.referenceDate.name**: `string` = `"تاریخ مرجع"`
+
+#### components.MuiDatePicker.props.showDaysOutsideCurrentMonth
+
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth**: `object`
+
+#### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description
+
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"نمایش روزها از ماه های قبل و بعد در نمایش ماه جاری"`
+
+#### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name
+
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name**: `string` = `"نمایش روزهای خارج از ماه جاری"`
+
+#### components.MuiDatePicker.props.view
+
+> **components.MuiDatePicker.props.view**: `object`
+
+#### components.MuiDatePicker.props.view.description
+
+> **components.MuiDatePicker.props.view.description**: `string` = `"نمای اولیه برای نمایش (روز ، ماه یا سال تقویم)"`
+
+#### components.MuiDatePicker.props.view.name
+
+> **components.MuiDatePicker.props.view.name**: `string` = `"مشاهده"`
+
+#### components.MuiDatePicker.props.views
+
+> **components.MuiDatePicker.props.views**: `object`
+
+#### components.MuiDatePicker.props.views.description
+
+> **components.MuiDatePicker.props.views.description**: `string` = `"دیدگاه های موجود (تقویم روز ، ماه و سال)"`
+
+#### components.MuiDatePicker.props.views.name
+
+> **components.MuiDatePicker.props.views.name**: `string` = `"دیدگاه ها"`
+
+#### components.MuiDatePicker.props.yearsOrder
+
+> **components.MuiDatePicker.props.yearsOrder**: `object`
+
+#### components.MuiDatePicker.props.yearsOrder.description
+
+> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"مرتب سازی سال ها: صعودی (قدیمی ترین اول) یا نزولی (جدید ترین اول)"`
+
+#### components.MuiDatePicker.props.yearsOrder.name
+
+> **components.MuiDatePicker.props.yearsOrder.name**: `string` = `"سال سفارش"`
+
+#### components.MuiDatePicker.props.yearsPerRow
+
+> **components.MuiDatePicker.props.yearsPerRow**: `object`
+
+#### components.MuiDatePicker.props.yearsPerRow.description
+
+> **components.MuiDatePicker.props.yearsPerRow.description**: `string` = `"تعداد آیتم های سال برای نمایش در هر ردیف در نمایش سال"`
+
+#### components.MuiDatePicker.props.yearsPerRow.name
+
+> **components.MuiDatePicker.props.yearsPerRow.name**: `string` = `"سال در هر ردیف"`
+
 #### components.MuiDialog
 
 > **components.MuiDialog**: `object`

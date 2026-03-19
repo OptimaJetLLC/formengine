@@ -168,6 +168,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiControlProps",
+              label: "MuiControlProps"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/components-material-ui/interfaces/MuiDatePickerProps",
               label: "MuiDatePickerProps"
             },
@@ -2980,6 +2985,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/designer/type-aliases/GenerateJsonFormSchemaOptions",
               label: "GenerateJsonFormSchemaOptions"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/designer/type-aliases/InsertPosition",
+              label: "InsertPosition"
             },
             {
               type: "doc",

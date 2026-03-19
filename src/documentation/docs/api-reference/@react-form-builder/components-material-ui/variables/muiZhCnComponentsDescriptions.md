@@ -808,6 +808,406 @@
 
 > **components.MuiContainer.props.maxWidth.name**: `string` = `"最大宽度"`
 
+#### components.MuiDatePicker
+
+> **components.MuiDatePicker**: `object`
+
+#### components.MuiDatePicker.description
+
+> **components.MuiDatePicker.description**: `string` = `"用于选择日期的组件"`
+
+#### components.MuiDatePicker.name
+
+> **components.MuiDatePicker.name**: `string` = `"日期选择器"`
+
+#### components.MuiDatePicker.props
+
+> **components.MuiDatePicker.props**: `object`
+
+#### components.MuiDatePicker.props.autoFocus
+
+> **components.MuiDatePicker.props.autoFocus**: `object`
+
+#### components.MuiDatePicker.props.autoFocus.description
+
+> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"如果为true，则在组件挂载时自动聚焦日期选取器"`
+
+#### components.MuiDatePicker.props.autoFocus.name
+
+> **components.MuiDatePicker.props.autoFocus.name**: `string` = `"自动对焦"`
+
+#### components.MuiDatePicker.props.closeOnSelect
+
+> **components.MuiDatePicker.props.closeOnSelect**: `object`
+
+#### components.MuiDatePicker.props.closeOnSelect.description
+
+> **components.MuiDatePicker.props.closeOnSelect.description**: `string` = `"选择日期后自动关闭日期选择器对话框"`
+
+#### components.MuiDatePicker.props.closeOnSelect.name
+
+> **components.MuiDatePicker.props.closeOnSelect.name**: `string` = `"关闭选择"`
+
+#### components.MuiDatePicker.props.desktopModeMediaQuery
+
+> **components.MuiDatePicker.props.desktopModeMediaQuery**: `object`
+
+#### components.MuiDatePicker.props.desktopModeMediaQuery.description
+
+> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"确定何时切换到桌面模式布局的CSS媒体查询字符串"`
+
+#### components.MuiDatePicker.props.desktopModeMediaQuery.name
+
+> **components.MuiDatePicker.props.desktopModeMediaQuery.name**: `string` = `"桌面模式媒体查询"`
+
+#### components.MuiDatePicker.props.disableFuture
+
+> **components.MuiDatePicker.props.disableFuture**: `object`
+
+#### components.MuiDatePicker.props.disableFuture.description
+
+> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"如果为true，则阻止选择当前日期之后的日期"`
+
+#### components.MuiDatePicker.props.disableFuture.name
+
+> **components.MuiDatePicker.props.disableFuture.name**: `string` = `"禁用未来"`
+
+#### components.MuiDatePicker.props.disableHighlightToday
+
+> **components.MuiDatePicker.props.disableHighlightToday**: `object`
+
+#### components.MuiDatePicker.props.disableHighlightToday.description
+
+> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"如果为true，则禁用日历中当前日期的视觉突出显示"`
+
+#### components.MuiDatePicker.props.disableHighlightToday.name
+
+> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"今天禁用高亮显示"`
+
+#### components.MuiDatePicker.props.disableOpenPicker
+
+> **components.MuiDatePicker.props.disableOpenPicker**: `object`
+
+#### components.MuiDatePicker.props.disableOpenPicker.description
+
+> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"如果为true，则阻止打开选取器对话框（对只读显示有用）"`
+
+#### components.MuiDatePicker.props.disableOpenPicker.name
+
+> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"禁用打开选取器"`
+
+#### components.MuiDatePicker.props.disablePast
+
+> **components.MuiDatePicker.props.disablePast**: `object`
+
+#### components.MuiDatePicker.props.disablePast.description
+
+> **components.MuiDatePicker.props.disablePast.description**: `string` = `"如果为true，则阻止选择当前日期之前的日期"`
+
+#### components.MuiDatePicker.props.disablePast.name
+
+> **components.MuiDatePicker.props.disablePast.name**: `string` = `"禁用过去"`
+
+#### components.MuiDatePicker.props.displayWeekNumber
+
+> **components.MuiDatePicker.props.displayWeekNumber**: `object`
+
+#### components.MuiDatePicker.props.displayWeekNumber.description
+
+> **components.MuiDatePicker.props.displayWeekNumber.description**: `string` = `"在日历视图中显示周数"`
+
+#### components.MuiDatePicker.props.displayWeekNumber.name
+
+> **components.MuiDatePicker.props.displayWeekNumber.name**: `string` = `"显示周数"`
+
+#### components.MuiDatePicker.props.fixedWeekNumber
+
+> **components.MuiDatePicker.props.fixedWeekNumber**: `object`
+
+#### components.MuiDatePicker.props.fixedWeekNumber.description
+
+> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"固定显示周数（强制日历高度一致）"`
+
+#### components.MuiDatePicker.props.fixedWeekNumber.name
+
+> **components.MuiDatePicker.props.fixedWeekNumber.name**: `string` = `"固定周数"`
+
+#### components.MuiDatePicker.props.format
+
+> **components.MuiDatePicker.props.format**: `object`
+
+#### components.MuiDatePicker.props.format.description
+
+> **components.MuiDatePicker.props.format.description**: `string` = `"用于显示和解析的日期格式字符串（例如，'yyyy-MM-dd'，'MM/dd/yyyy'）"`
+
+#### components.MuiDatePicker.props.format.name
+
+> **components.MuiDatePicker.props.format.name**: `string` = `"格式"`
+
+#### components.MuiDatePicker.props.formatDensity
+
+> **components.MuiDatePicker.props.formatDensity**: `object`
+
+#### components.MuiDatePicker.props.formatDensity.description
+
+> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"控制日期格式中的间距：密集（紧凑）或宽敞（更多间距）"`
+
+#### components.MuiDatePicker.props.formatDensity.name
+
+> **components.MuiDatePicker.props.formatDensity.name**: `string` = `"格式密度"`
+
+#### components.MuiDatePicker.props.loading
+
+> **components.MuiDatePicker.props.loading**: `object`
+
+#### components.MuiDatePicker.props.loading.description
+
+> **components.MuiDatePicker.props.loading.description**: `string` = `"如果为true，则显示一个加载微调器，指示正在加载数据"`
+
+#### components.MuiDatePicker.props.loading.name
+
+> **components.MuiDatePicker.props.loading.name**: `string` = `"装载量"`
+
+#### components.MuiDatePicker.props.maxDate
+
+> **components.MuiDatePicker.props.maxDate**: `object`
+
+#### components.MuiDatePicker.props.maxDate.description
+
+> **components.MuiDatePicker.props.maxDate.description**: `string` = `"可供选择的最新日期(包括)"`
+
+#### components.MuiDatePicker.props.maxDate.name
+
+> **components.MuiDatePicker.props.maxDate.name**: `string` = `"最大日期"`
+
+#### components.MuiDatePicker.props.minDate
+
+> **components.MuiDatePicker.props.minDate**: `object`
+
+#### components.MuiDatePicker.props.minDate.description
+
+> **components.MuiDatePicker.props.minDate.description**: `string` = `"可以选择的最早日期（包括）"`
+
+#### components.MuiDatePicker.props.minDate.name
+
+> **components.MuiDatePicker.props.minDate.name**: `string` = `"最短日期"`
+
+#### components.MuiDatePicker.props.monthsPerRow
+
+> **components.MuiDatePicker.props.monthsPerRow**: `object`
+
+#### components.MuiDatePicker.props.monthsPerRow.description
+
+> **components.MuiDatePicker.props.monthsPerRow.description**: `string` = `"在月/年视图中每行显示的月历数"`
+
+#### components.MuiDatePicker.props.monthsPerRow.name
+
+> **components.MuiDatePicker.props.monthsPerRow.name**: `string` = `"每行月份"`
+
+#### components.MuiDatePicker.props.name
+
+> **components.MuiDatePicker.props.name**: `object`
+
+#### components.MuiDatePicker.props.name.description
+
+> **components.MuiDatePicker.props.name.description**: `string` = `"表单字段的name属性，在提交表单时使用"`
+
+#### components.MuiDatePicker.props.name.name
+
+> **components.MuiDatePicker.props.name.name**: `string` = `"姓名"`
+
+#### components.MuiDatePicker.props.onAccept
+
+> **components.MuiDatePicker.props.onAccept**: `object`
+
+#### components.MuiDatePicker.props.onAccept.description
+
+> **components.MuiDatePicker.props.onAccept.description**: `string` = `"接受值时触发回调"`
+
+#### components.MuiDatePicker.props.onAccept.name
+
+> **components.MuiDatePicker.props.onAccept.name**: `string` = `"接受,接受"`
+
+#### components.MuiDatePicker.props.onClose
+
+> **components.MuiDatePicker.props.onClose**: `object`
+
+#### components.MuiDatePicker.props.onClose.description
+
+> **components.MuiDatePicker.props.onClose.description**: `string` = `"当弹出窗口请求关闭时触发回调"`
+
+#### components.MuiDatePicker.props.onClose.name
+
+> **components.MuiDatePicker.props.onClose.name**: `string` = `"n.锁,锁"`
+
+#### components.MuiDatePicker.props.onError
+
+> **components.MuiDatePicker.props.onError**: `object`
+
+#### components.MuiDatePicker.props.onError.description
+
+> **components.MuiDatePicker.props.onError.description**: `string` = `"当与当前值相关联的错误更改时触发回调"`
+
+#### components.MuiDatePicker.props.onError.name
+
+> **components.MuiDatePicker.props.onError.name**: `string` = `"n.错误,错误"`
+
+#### components.MuiDatePicker.props.onMonthChange
+
+> **components.MuiDatePicker.props.onMonthChange**: `object`
+
+#### components.MuiDatePicker.props.onMonthChange.description
+
+> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"月改时发出回调"`
+
+#### components.MuiDatePicker.props.onMonthChange.name
+
+> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"每月交换"`
+
+#### components.MuiDatePicker.props.onOpen
+
+> **components.MuiDatePicker.props.onOpen**: `object`
+
+#### components.MuiDatePicker.props.onOpen.description
+
+> **components.MuiDatePicker.props.onOpen.description**: `string` = `"当弹出窗口请求打开时触发回调"`
+
+#### components.MuiDatePicker.props.onOpen.name
+
+> **components.MuiDatePicker.props.onOpen.name**: `string` = `"奥诺彭"`
+
+#### components.MuiDatePicker.props.onSelectedSectionsChange
+
+> **components.MuiDatePicker.props.onSelectedSectionsChange**: `object`
+
+#### components.MuiDatePicker.props.onSelectedSectionsChange.description
+
+> **components.MuiDatePicker.props.onSelectedSectionsChange.description**: `string` = `"当所选部分更改时触发回调"`
+
+#### components.MuiDatePicker.props.onSelectedSectionsChange.name
+
+> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"选择的选择"`
+
+#### components.MuiDatePicker.props.onViewChange
+
+> **components.MuiDatePicker.props.onViewChange**: `object`
+
+#### components.MuiDatePicker.props.onViewChange.description
+
+> **components.MuiDatePicker.props.onViewChange.description**: `string` = `"视图更改时触发的回调"`
+
+#### components.MuiDatePicker.props.onViewChange.name
+
+> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"网上交换"`
+
+#### components.MuiDatePicker.props.onYearChange
+
+> **components.MuiDatePicker.props.onYearChange**: `object`
+
+#### components.MuiDatePicker.props.onYearChange.description
+
+> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"年变化的回调"`
+
+#### components.MuiDatePicker.props.onYearChange.name
+
+> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"[医]交换"`
+
+#### components.MuiDatePicker.props.open
+
+> **components.MuiDatePicker.props.open**: `object`
+
+#### components.MuiDatePicker.props.open.description
+
+> **components.MuiDatePicker.props.open.description**: `string` = `"如果为true，则日期选择器对话框处于打开状态；可用于受控状态管理"`
+
+#### components.MuiDatePicker.props.open.name
+
+> **components.MuiDatePicker.props.open.name**: `string` = `"打开"`
+
+#### components.MuiDatePicker.props.openTo
+
+> **components.MuiDatePicker.props.openTo**: `object`
+
+#### components.MuiDatePicker.props.openTo.description
+
+> **components.MuiDatePicker.props.openTo.description**: `string` = `"选择器激活时要打开的视图"`
+
+#### components.MuiDatePicker.props.openTo.name
+
+> **components.MuiDatePicker.props.openTo.name**: `string` = `"开放至"`
+
+#### components.MuiDatePicker.props.referenceDate
+
+> **components.MuiDatePicker.props.referenceDate**: `object`
+
+#### components.MuiDatePicker.props.referenceDate.description
+
+> **components.MuiDatePicker.props.referenceDate.description**: `string` = `"未选择值时用于生成初始日历视图的日期"`
+
+#### components.MuiDatePicker.props.referenceDate.name
+
+> **components.MuiDatePicker.props.referenceDate.name**: `string` = `"参考日期"`
+
+#### components.MuiDatePicker.props.showDaysOutsideCurrentMonth
+
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth**: `object`
+
+#### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description
+
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"在当前月份视图中显示前几个月和下几个月的天数"`
+
+#### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name
+
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name**: `string` = `"本月外的展览日"`
+
+#### components.MuiDatePicker.props.view
+
+> **components.MuiDatePicker.props.view**: `object`
+
+#### components.MuiDatePicker.props.view.description
+
+> **components.MuiDatePicker.props.view.description**: `string` = `"要显示的初始视图（日、月或年历）"`
+
+#### components.MuiDatePicker.props.view.name
+
+> **components.MuiDatePicker.props.view.name**: `string` = `"查看"`
+
+#### components.MuiDatePicker.props.views
+
+> **components.MuiDatePicker.props.views**: `object`
+
+#### components.MuiDatePicker.props.views.description
+
+> **components.MuiDatePicker.props.views.description**: `string` = `"可用视图（日、月和年日历）"`
+
+#### components.MuiDatePicker.props.views.name
+
+> **components.MuiDatePicker.props.views.name**: `string` = `"意见书"`
+
+#### components.MuiDatePicker.props.yearsOrder
+
+> **components.MuiDatePicker.props.yearsOrder**: `object`
+
+#### components.MuiDatePicker.props.yearsOrder.description
+
+> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"年的排序顺序：升序（最早的第一个）或降序（最新的第一个）"`
+
+#### components.MuiDatePicker.props.yearsOrder.name
+
+> **components.MuiDatePicker.props.yearsOrder.name**: `string` = `"年令"`
+
+#### components.MuiDatePicker.props.yearsPerRow
+
+> **components.MuiDatePicker.props.yearsPerRow**: `object`
+
+#### components.MuiDatePicker.props.yearsPerRow.description
+
+> **components.MuiDatePicker.props.yearsPerRow.description**: `string` = `"年视图中每行显示的年项数"`
+
+#### components.MuiDatePicker.props.yearsPerRow.name
+
+> **components.MuiDatePicker.props.yearsPerRow.name**: `string` = `"每行年数"`
+
 #### components.MuiDialog
 
 > **components.MuiDialog**: `object`

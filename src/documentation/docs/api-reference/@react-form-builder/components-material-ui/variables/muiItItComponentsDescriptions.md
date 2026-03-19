@@ -808,6 +808,406 @@
 
 > **components.MuiContainer.props.maxWidth.name**: `string` = `"Larghezza massima"`
 
+#### components.MuiDatePicker
+
+> **components.MuiDatePicker**: `object`
+
+#### components.MuiDatePicker.description
+
+> **components.MuiDatePicker.description**: `string` = `"Componente per la selezione di una data"`
+
+#### components.MuiDatePicker.name
+
+> **components.MuiDatePicker.name**: `string` = `"Selettore data"`
+
+#### components.MuiDatePicker.props
+
+> **components.MuiDatePicker.props**: `object`
+
+#### components.MuiDatePicker.props.autoFocus
+
+> **components.MuiDatePicker.props.autoFocus**: `object`
+
+#### components.MuiDatePicker.props.autoFocus.description
+
+> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"Se true, mette a fuoco automaticamente il selettore di date quando il componente si monta"`
+
+#### components.MuiDatePicker.props.autoFocus.name
+
+> **components.MuiDatePicker.props.autoFocus.name**: `string` = `"Autofocus"`
+
+#### components.MuiDatePicker.props.closeOnSelect
+
+> **components.MuiDatePicker.props.closeOnSelect**: `object`
+
+#### components.MuiDatePicker.props.closeOnSelect.description
+
+> **components.MuiDatePicker.props.closeOnSelect.description**: `string` = `"Chiude automaticamente la finestra di dialogo selezione data dopo aver selezionato una data"`
+
+#### components.MuiDatePicker.props.closeOnSelect.name
+
+> **components.MuiDatePicker.props.closeOnSelect.name**: `string` = `"Chiudi su seleziona"`
+
+#### components.MuiDatePicker.props.desktopModeMediaQuery
+
+> **components.MuiDatePicker.props.desktopModeMediaQuery**: `object`
+
+#### components.MuiDatePicker.props.desktopModeMediaQuery.description
+
+> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"CSS media query string che determina quando passare alla modalità desktop layout"`
+
+#### components.MuiDatePicker.props.desktopModeMediaQuery.name
+
+> **components.MuiDatePicker.props.desktopModeMediaQuery.name**: `string` = `"Modalità desktop media query"`
+
+#### components.MuiDatePicker.props.disableFuture
+
+> **components.MuiDatePicker.props.disableFuture**: `object`
+
+#### components.MuiDatePicker.props.disableFuture.description
+
+> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"Se true, impedisce la selezione delle date dopo la data corrente"`
+
+#### components.MuiDatePicker.props.disableFuture.name
+
+> **components.MuiDatePicker.props.disableFuture.name**: `string` = `"Disabilita futuro"`
+
+#### components.MuiDatePicker.props.disableHighlightToday
+
+> **components.MuiDatePicker.props.disableHighlightToday**: `object`
+
+#### components.MuiDatePicker.props.disableHighlightToday.description
+
+> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"Se true, disabilita l'evidenziazione visiva della data corrente nel calendario"`
+
+#### components.MuiDatePicker.props.disableHighlightToday.name
+
+> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"Disabilita evidenziazione oggi"`
+
+#### components.MuiDatePicker.props.disableOpenPicker
+
+> **components.MuiDatePicker.props.disableOpenPicker**: `object`
+
+#### components.MuiDatePicker.props.disableOpenPicker.description
+
+> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"Se true, impedisce l'apertura della finestra di dialogo selettore (utile per la visualizzazione in sola lettura)"`
+
+#### components.MuiDatePicker.props.disableOpenPicker.name
+
+> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"Disabilita selettore aperto"`
+
+#### components.MuiDatePicker.props.disablePast
+
+> **components.MuiDatePicker.props.disablePast**: `object`
+
+#### components.MuiDatePicker.props.disablePast.description
+
+> **components.MuiDatePicker.props.disablePast.description**: `string` = `"Se true, impedisce la selezione delle date prima della data corrente"`
+
+#### components.MuiDatePicker.props.disablePast.name
+
+> **components.MuiDatePicker.props.disablePast.name**: `string` = `"Disabilita passato"`
+
+#### components.MuiDatePicker.props.displayWeekNumber
+
+> **components.MuiDatePicker.props.displayWeekNumber**: `object`
+
+#### components.MuiDatePicker.props.displayWeekNumber.description
+
+> **components.MuiDatePicker.props.displayWeekNumber.description**: `string` = `"Mostra i numeri delle settimane nella vista calendario"`
+
+#### components.MuiDatePicker.props.displayWeekNumber.name
+
+> **components.MuiDatePicker.props.displayWeekNumber.name**: `string` = `"Mostra il numero della settimana"`
+
+#### components.MuiDatePicker.props.fixedWeekNumber
+
+> **components.MuiDatePicker.props.fixedWeekNumber**: `object`
+
+#### components.MuiDatePicker.props.fixedWeekNumber.description
+
+> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"Numero fisso di settimane da visualizzare (forza l'altezza del calendario coerente)"`
+
+#### components.MuiDatePicker.props.fixedWeekNumber.name
+
+> **components.MuiDatePicker.props.fixedWeekNumber.name**: `string` = `"Numero settimana fisso"`
+
+#### components.MuiDatePicker.props.format
+
+> **components.MuiDatePicker.props.format**: `object`
+
+#### components.MuiDatePicker.props.format.description
+
+> **components.MuiDatePicker.props.format.description**: `string` = `"Stringa di formato data utilizzata per la visualizzazione e l'analisi (ad esempio, 'aaaa-MM-gg', 'MM / gg/aaaa')"`
+
+#### components.MuiDatePicker.props.format.name
+
+> **components.MuiDatePicker.props.format.name**: `string` = `"Formato"`
+
+#### components.MuiDatePicker.props.formatDensity
+
+> **components.MuiDatePicker.props.formatDensity**: `object`
+
+#### components.MuiDatePicker.props.formatDensity.description
+
+> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"Controlla la spaziatura nella formattazione della data: densa (compatta) o spaziosa (più spaziatura)"`
+
+#### components.MuiDatePicker.props.formatDensity.name
+
+> **components.MuiDatePicker.props.formatDensity.name**: `string` = `"Densità formato"`
+
+#### components.MuiDatePicker.props.loading
+
+> **components.MuiDatePicker.props.loading**: `object`
+
+#### components.MuiDatePicker.props.loading.description
+
+> **components.MuiDatePicker.props.loading.description**: `string` = `"Se true, visualizza uno spinner di caricamento che indica che i dati vengono caricati"`
+
+#### components.MuiDatePicker.props.loading.name
+
+> **components.MuiDatePicker.props.loading.name**: `string` = `"Caricamento"`
+
+#### components.MuiDatePicker.props.maxDate
+
+> **components.MuiDatePicker.props.maxDate**: `object`
+
+#### components.MuiDatePicker.props.maxDate.description
+
+> **components.MuiDatePicker.props.maxDate.description**: `string` = `"Ultima data selezionabile (inclusa)"`
+
+#### components.MuiDatePicker.props.maxDate.name
+
+> **components.MuiDatePicker.props.maxDate.name**: `string` = `"Data massima"`
+
+#### components.MuiDatePicker.props.minDate
+
+> **components.MuiDatePicker.props.minDate**: `object`
+
+#### components.MuiDatePicker.props.minDate.description
+
+> **components.MuiDatePicker.props.minDate.description**: `string` = `"La prima data che può essere selezionata (inclusa)"`
+
+#### components.MuiDatePicker.props.minDate.name
+
+> **components.MuiDatePicker.props.minDate.name**: `string` = `"Data minima"`
+
+#### components.MuiDatePicker.props.monthsPerRow
+
+> **components.MuiDatePicker.props.monthsPerRow**: `object`
+
+#### components.MuiDatePicker.props.monthsPerRow.description
+
+> **components.MuiDatePicker.props.monthsPerRow.description**: `string` = `"Numero di calendari mensili da visualizzare per riga nelle viste mese / anno"`
+
+#### components.MuiDatePicker.props.monthsPerRow.name
+
+> **components.MuiDatePicker.props.monthsPerRow.name**: `string` = `"Mesi per riga"`
+
+#### components.MuiDatePicker.props.name
+
+> **components.MuiDatePicker.props.name**: `object`
+
+#### components.MuiDatePicker.props.name.description
+
+> **components.MuiDatePicker.props.name.description**: `string` = `"L'attributo name per il campo modulo, utilizzato durante l'invio dei moduli"`
+
+#### components.MuiDatePicker.props.name.name
+
+> **components.MuiDatePicker.props.name.name**: `string` = `"Nome"`
+
+#### components.MuiDatePicker.props.onAccept
+
+> **components.MuiDatePicker.props.onAccept**: `object`
+
+#### components.MuiDatePicker.props.onAccept.description
+
+> **components.MuiDatePicker.props.onAccept.description**: `string` = `"Callback attivato quando il valore è accettato"`
+
+#### components.MuiDatePicker.props.onAccept.name
+
+> **components.MuiDatePicker.props.onAccept.name**: `string` = `"onAccept"`
+
+#### components.MuiDatePicker.props.onClose
+
+> **components.MuiDatePicker.props.onClose**: `object`
+
+#### components.MuiDatePicker.props.onClose.description
+
+> **components.MuiDatePicker.props.onClose.description**: `string` = `"Callback attivato quando il popup richiede di essere chiuso"`
+
+#### components.MuiDatePicker.props.onClose.name
+
+> **components.MuiDatePicker.props.onClose.name**: `string` = `"onClose"`
+
+#### components.MuiDatePicker.props.onError
+
+> **components.MuiDatePicker.props.onError**: `object`
+
+#### components.MuiDatePicker.props.onError.description
+
+> **components.MuiDatePicker.props.onError.description**: `string` = `"Callback attivato quando l'errore associato al valore corrente cambia"`
+
+#### components.MuiDatePicker.props.onError.name
+
+> **components.MuiDatePicker.props.onError.name**: `string` = `"onError"`
+
+#### components.MuiDatePicker.props.onMonthChange
+
+> **components.MuiDatePicker.props.onMonthChange**: `object`
+
+#### components.MuiDatePicker.props.onMonthChange.description
+
+> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"Callback licenziato al cambio di mese"`
+
+#### components.MuiDatePicker.props.onMonthChange.name
+
+> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"onMonthChange"`
+
+#### components.MuiDatePicker.props.onOpen
+
+> **components.MuiDatePicker.props.onOpen**: `object`
+
+#### components.MuiDatePicker.props.onOpen.description
+
+> **components.MuiDatePicker.props.onOpen.description**: `string` = `"Callback attivato quando il popup richiede di essere aperto"`
+
+#### components.MuiDatePicker.props.onOpen.name
+
+> **components.MuiDatePicker.props.onOpen.name**: `string` = `"onApri"`
+
+#### components.MuiDatePicker.props.onSelectedSectionsChange
+
+> **components.MuiDatePicker.props.onSelectedSectionsChange**: `object`
+
+#### components.MuiDatePicker.props.onSelectedSectionsChange.description
+
+> **components.MuiDatePicker.props.onSelectedSectionsChange.description**: `string` = `"Callback attivato quando le sezioni selezionate cambiano"`
+
+#### components.MuiDatePicker.props.onSelectedSectionsChange.name
+
+> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"onSelectedSectionsCambia"`
+
+#### components.MuiDatePicker.props.onViewChange
+
+> **components.MuiDatePicker.props.onViewChange**: `object`
+
+#### components.MuiDatePicker.props.onViewChange.description
+
+> **components.MuiDatePicker.props.onViewChange.description**: `string` = `"Callback attivato alla modifica della vista"`
+
+#### components.MuiDatePicker.props.onViewChange.name
+
+> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"onViewChange"`
+
+#### components.MuiDatePicker.props.onYearChange
+
+> **components.MuiDatePicker.props.onYearChange**: `object`
+
+#### components.MuiDatePicker.props.onYearChange.description
+
+> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"Callback licenziato sul cambio di anno"`
+
+#### components.MuiDatePicker.props.onYearChange.name
+
+> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"onYearChange"`
+
+#### components.MuiDatePicker.props.open
+
+> **components.MuiDatePicker.props.open**: `object`
+
+#### components.MuiDatePicker.props.open.description
+
+> **components.MuiDatePicker.props.open.description**: `string` = `"Se true, la finestra di dialogo selezione data è aperta; può essere utilizzata per la gestione controllata dello stato"`
+
+#### components.MuiDatePicker.props.open.name
+
+> **components.MuiDatePicker.props.open.name**: `string` = `"Aprire"`
+
+#### components.MuiDatePicker.props.openTo
+
+> **components.MuiDatePicker.props.openTo**: `object`
+
+#### components.MuiDatePicker.props.openTo.description
+
+> **components.MuiDatePicker.props.openTo.description**: `string` = `"La vista da aprire quando il selettore è attivato"`
+
+#### components.MuiDatePicker.props.openTo.name
+
+> **components.MuiDatePicker.props.openTo.name**: `string` = `"Aperto a"`
+
+#### components.MuiDatePicker.props.referenceDate
+
+> **components.MuiDatePicker.props.referenceDate**: `object`
+
+#### components.MuiDatePicker.props.referenceDate.description
+
+> **components.MuiDatePicker.props.referenceDate.description**: `string` = `"Data utilizzata per generare la visualizzazione calendario iniziale quando non è selezionato alcun valore"`
+
+#### components.MuiDatePicker.props.referenceDate.name
+
+> **components.MuiDatePicker.props.referenceDate.name**: `string` = `"Data di riferimento"`
+
+#### components.MuiDatePicker.props.showDaysOutsideCurrentMonth
+
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth**: `object`
+
+#### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description
+
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"Visualizza i giorni dei mesi precedenti e successivi nella vista mensile corrente"`
+
+#### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name
+
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name**: `string` = `"Mostra giorni al di fuori del mese corrente"`
+
+#### components.MuiDatePicker.props.view
+
+> **components.MuiDatePicker.props.view**: `object`
+
+#### components.MuiDatePicker.props.view.description
+
+> **components.MuiDatePicker.props.view.description**: `string` = `"La visualizzazione iniziale da visualizzare (calendario giorno, mese o anno)"`
+
+#### components.MuiDatePicker.props.view.name
+
+> **components.MuiDatePicker.props.view.name**: `string` = `"Mostra"`
+
+#### components.MuiDatePicker.props.views
+
+> **components.MuiDatePicker.props.views**: `object`
+
+#### components.MuiDatePicker.props.views.description
+
+> **components.MuiDatePicker.props.views.description**: `string` = `"Le viste disponibili (calendario giorno, mese e anno)"`
+
+#### components.MuiDatePicker.props.views.name
+
+> **components.MuiDatePicker.props.views.name**: `string` = `"Mostra"`
+
+#### components.MuiDatePicker.props.yearsOrder
+
+> **components.MuiDatePicker.props.yearsOrder**: `object`
+
+#### components.MuiDatePicker.props.yearsOrder.description
+
+> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"Ordinamento degli anni: ascendente (prima il più vecchio) o discendente (prima il più nuovo)"`
+
+#### components.MuiDatePicker.props.yearsOrder.name
+
+> **components.MuiDatePicker.props.yearsOrder.name**: `string` = `"Anni ordine"`
+
+#### components.MuiDatePicker.props.yearsPerRow
+
+> **components.MuiDatePicker.props.yearsPerRow**: `object`
+
+#### components.MuiDatePicker.props.yearsPerRow.description
+
+> **components.MuiDatePicker.props.yearsPerRow.description**: `string` = `"Numero di elementi anno da visualizzare per riga nella vista anno"`
+
+#### components.MuiDatePicker.props.yearsPerRow.name
+
+> **components.MuiDatePicker.props.yearsPerRow.name**: `string` = `"Anni per riga"`
+
 #### components.MuiDialog
 
 > **components.MuiDialog**: `object`

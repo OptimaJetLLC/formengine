@@ -9,6 +9,7 @@
 - [MuiCardProps](interfaces/MuiCardProps.md)
 - [MuiCheckboxProps](interfaces/MuiCheckboxProps.md)
 - [MuiContainerProps](interfaces/MuiContainerProps.md)
+- [MuiControlProps](interfaces/MuiControlProps.md)
 - [MuiDatePickerProps](interfaces/MuiDatePickerProps.md)
 - [MuiDialogProps](interfaces/MuiDialogProps.md)
 - [MuiFormControlLabelProps](interfaces/MuiFormControlLabelProps.md)

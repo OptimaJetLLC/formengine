@@ -808,6 +808,406 @@
 
 > **components.MuiContainer.props.maxWidth.name**: `string` = `"अधिकतम चौड़ाई"`
 
+#### components.MuiDatePicker
+
+> **components.MuiDatePicker**: `object`
+
+#### components.MuiDatePicker.description
+
+> **components.MuiDatePicker.description**: `string` = `"तिथि चुनने के लिए घटक"`
+
+#### components.MuiDatePicker.name
+
+> **components.MuiDatePicker.name**: `string` = `"दिनांक पिकर"`
+
+#### components.MuiDatePicker.props
+
+> **components.MuiDatePicker.props**: `object`
+
+#### components.MuiDatePicker.props.autoFocus
+
+> **components.MuiDatePicker.props.autoFocus**: `object`
+
+#### components.MuiDatePicker.props.autoFocus.description
+
+> **components.MuiDatePicker.props.autoFocus.description**: `string` = `"यदि सही है, तो घटक के माउंट होने पर स्वचालित रूप से दिनांक पिकर को केंद्रित करता है"`
+
+#### components.MuiDatePicker.props.autoFocus.name
+
+> **components.MuiDatePicker.props.autoFocus.name**: `string` = `"ऑटो फोकस"`
+
+#### components.MuiDatePicker.props.closeOnSelect
+
+> **components.MuiDatePicker.props.closeOnSelect**: `object`
+
+#### components.MuiDatePicker.props.closeOnSelect.description
+
+> **components.MuiDatePicker.props.closeOnSelect.description**: `string` = `"दिनांक चुनने के बाद दिनांक पिकर संवाद स्वचालित रूप से बंद कर देता है"`
+
+#### components.MuiDatePicker.props.closeOnSelect.name
+
+> **components.MuiDatePicker.props.closeOnSelect.name**: `string` = `"चयन पर बंद करें"`
+
+#### components.MuiDatePicker.props.desktopModeMediaQuery
+
+> **components.MuiDatePicker.props.desktopModeMediaQuery**: `object`
+
+#### components.MuiDatePicker.props.desktopModeMediaQuery.description
+
+> **components.MuiDatePicker.props.desktopModeMediaQuery.description**: `string` = `"सीएसएस मीडिया क्वेरी स्ट्रिंग जो निर्धारित करती है कि डेस्कटॉप मोड लेआउट पर कब स्विच करना है"`
+
+#### components.MuiDatePicker.props.desktopModeMediaQuery.name
+
+> **components.MuiDatePicker.props.desktopModeMediaQuery.name**: `string` = `"डेस्कटॉप मोड मीडिया क्वेरी"`
+
+#### components.MuiDatePicker.props.disableFuture
+
+> **components.MuiDatePicker.props.disableFuture**: `object`
+
+#### components.MuiDatePicker.props.disableFuture.description
+
+> **components.MuiDatePicker.props.disableFuture.description**: `string` = `"यदि सही है, तो वर्तमान तिथि के बाद तिथियों के चयन को रोकता है"`
+
+#### components.MuiDatePicker.props.disableFuture.name
+
+> **components.MuiDatePicker.props.disableFuture.name**: `string` = `"भविष्य को अक्षम करें"`
+
+#### components.MuiDatePicker.props.disableHighlightToday
+
+> **components.MuiDatePicker.props.disableHighlightToday**: `object`
+
+#### components.MuiDatePicker.props.disableHighlightToday.description
+
+> **components.MuiDatePicker.props.disableHighlightToday.description**: `string` = `"यदि सही है, तो कैलेंडर में वर्तमान तिथि के दृश्य हाइलाइटिंग को अक्षम करता है"`
+
+#### components.MuiDatePicker.props.disableHighlightToday.name
+
+> **components.MuiDatePicker.props.disableHighlightToday.name**: `string` = `"आज हाइलाइट अक्षम करें"`
+
+#### components.MuiDatePicker.props.disableOpenPicker
+
+> **components.MuiDatePicker.props.disableOpenPicker**: `object`
+
+#### components.MuiDatePicker.props.disableOpenPicker.description
+
+> **components.MuiDatePicker.props.disableOpenPicker.description**: `string` = `"यदि सही है, तो पिकर संवाद खोलने से रोकता है (केवल पढ़ने के लिए उपयोगी)"`
+
+#### components.MuiDatePicker.props.disableOpenPicker.name
+
+> **components.MuiDatePicker.props.disableOpenPicker.name**: `string` = `"ओपन पिकर अक्षम करें"`
+
+#### components.MuiDatePicker.props.disablePast
+
+> **components.MuiDatePicker.props.disablePast**: `object`
+
+#### components.MuiDatePicker.props.disablePast.description
+
+> **components.MuiDatePicker.props.disablePast.description**: `string` = `"यदि सही है, तो वर्तमान तिथि से पहले तिथियों के चयन को रोकता है"`
+
+#### components.MuiDatePicker.props.disablePast.name
+
+> **components.MuiDatePicker.props.disablePast.name**: `string` = `"अतीत को अक्षम करें"`
+
+#### components.MuiDatePicker.props.displayWeekNumber
+
+> **components.MuiDatePicker.props.displayWeekNumber**: `object`
+
+#### components.MuiDatePicker.props.displayWeekNumber.description
+
+> **components.MuiDatePicker.props.displayWeekNumber.description**: `string` = `"कैलेंडर दृश्य में सप्ताह संख्या दिखाता है"`
+
+#### components.MuiDatePicker.props.displayWeekNumber.name
+
+> **components.MuiDatePicker.props.displayWeekNumber.name**: `string` = `"सप्ताह संख्या प्रदर्शित करें"`
+
+#### components.MuiDatePicker.props.fixedWeekNumber
+
+> **components.MuiDatePicker.props.fixedWeekNumber**: `object`
+
+#### components.MuiDatePicker.props.fixedWeekNumber.description
+
+> **components.MuiDatePicker.props.fixedWeekNumber.description**: `string` = `"प्रदर्शित करने के लिए हफ्तों की निश्चित संख्या (लगातार कैलेंडर ऊंचाई को बल देती है)"`
+
+#### components.MuiDatePicker.props.fixedWeekNumber.name
+
+> **components.MuiDatePicker.props.fixedWeekNumber.name**: `string` = `"निश्चित सप्ताह संख्या"`
+
+#### components.MuiDatePicker.props.format
+
+> **components.MuiDatePicker.props.format**: `object`
+
+#### components.MuiDatePicker.props.format.description
+
+> **components.MuiDatePicker.props.format.description**: `string` = `"प्रदर्शन और पार्सिंग के लिए उपयोग की जाने वाली दिनांक प्रारूप स्ट्रिंग (जैसे, 'वाईवाईवाई-एमएम-डीडी', 'एमएम/डीडी / वाईवाईवाई')"`
+
+#### components.MuiDatePicker.props.format.name
+
+> **components.MuiDatePicker.props.format.name**: `string` = `"प्रारूप"`
+
+#### components.MuiDatePicker.props.formatDensity
+
+> **components.MuiDatePicker.props.formatDensity**: `object`
+
+#### components.MuiDatePicker.props.formatDensity.description
+
+> **components.MuiDatePicker.props.formatDensity.description**: `string` = `"नियंत्रण दिनांक स्वरूपण में रिक्ति: घना (कॉम्पैक्ट) या विशाल (अधिक रिक्ति)"`
+
+#### components.MuiDatePicker.props.formatDensity.name
+
+> **components.MuiDatePicker.props.formatDensity.name**: `string` = `"प्रारूप घनत्व"`
+
+#### components.MuiDatePicker.props.loading
+
+> **components.MuiDatePicker.props.loading**: `object`
+
+#### components.MuiDatePicker.props.loading.description
+
+> **components.MuiDatePicker.props.loading.description**: `string` = `"यदि सही है, तो एक लोडिंग स्पिनर प्रदर्शित करता है जो दर्शाता है कि डेटा लोड किया जा रहा है"`
+
+#### components.MuiDatePicker.props.loading.name
+
+> **components.MuiDatePicker.props.loading.name**: `string` = `"लोड हो रहा है"`
+
+#### components.MuiDatePicker.props.maxDate
+
+> **components.MuiDatePicker.props.maxDate**: `object`
+
+#### components.MuiDatePicker.props.maxDate.description
+
+> **components.MuiDatePicker.props.maxDate.description**: `string` = `"नवीनतम तिथि जिसे चुना जा सकता है (समावेशी)"`
+
+#### components.MuiDatePicker.props.maxDate.name
+
+> **components.MuiDatePicker.props.maxDate.name**: `string` = `"अधिकतम तिथि"`
+
+#### components.MuiDatePicker.props.minDate
+
+> **components.MuiDatePicker.props.minDate**: `object`
+
+#### components.MuiDatePicker.props.minDate.description
+
+> **components.MuiDatePicker.props.minDate.description**: `string` = `"प्रारंभिक तिथि जिसे चुना जा सकता है (समावेशी)"`
+
+#### components.MuiDatePicker.props.minDate.name
+
+> **components.MuiDatePicker.props.minDate.name**: `string` = `"न्यूनतम तिथि"`
+
+#### components.MuiDatePicker.props.monthsPerRow
+
+> **components.MuiDatePicker.props.monthsPerRow**: `object`
+
+#### components.MuiDatePicker.props.monthsPerRow.description
+
+> **components.MuiDatePicker.props.monthsPerRow.description**: `string` = `"महीने/वर्ष के दृश्यों में प्रति पंक्ति प्रदर्शित करने के लिए महीने के कैलेंडर की संख्या"`
+
+#### components.MuiDatePicker.props.monthsPerRow.name
+
+> **components.MuiDatePicker.props.monthsPerRow.name**: `string` = `"प्रति पंक्ति महीने"`
+
+#### components.MuiDatePicker.props.name
+
+> **components.MuiDatePicker.props.name**: `object`
+
+#### components.MuiDatePicker.props.name.description
+
+> **components.MuiDatePicker.props.name.description**: `string` = `"प्रपत्र फ़ील्ड के लिए नाम विशेषता, फ़ॉर्म सबमिट करते समय उपयोग की जाती है"`
+
+#### components.MuiDatePicker.props.name.name
+
+> **components.MuiDatePicker.props.name.name**: `string` = `"नाम"`
+
+#### components.MuiDatePicker.props.onAccept
+
+> **components.MuiDatePicker.props.onAccept**: `object`
+
+#### components.MuiDatePicker.props.onAccept.description
+
+> **components.MuiDatePicker.props.onAccept.description**: `string` = `"मान स्वीकार किए जाने पर कॉलबैक निकाल दिया गया"`
+
+#### components.MuiDatePicker.props.onAccept.name
+
+> **components.MuiDatePicker.props.onAccept.name**: `string` = `"ओनसेप्ट"`
+
+#### components.MuiDatePicker.props.onClose
+
+> **components.MuiDatePicker.props.onClose**: `object`
+
+#### components.MuiDatePicker.props.onClose.description
+
+> **components.MuiDatePicker.props.onClose.description**: `string` = `"पॉपअप बंद होने का अनुरोध करने पर कॉलबैक निकाल दिया गया"`
+
+#### components.MuiDatePicker.props.onClose.name
+
+> **components.MuiDatePicker.props.onClose.name**: `string` = `"ओनक्लोज़"`
+
+#### components.MuiDatePicker.props.onError
+
+> **components.MuiDatePicker.props.onError**: `object`
+
+#### components.MuiDatePicker.props.onError.description
+
+> **components.MuiDatePicker.props.onError.description**: `string` = `"वर्तमान मान परिवर्तन से जुड़ी त्रुटि होने पर कॉलबैक निकाल दिया गया"`
+
+#### components.MuiDatePicker.props.onError.name
+
+> **components.MuiDatePicker.props.onError.name**: `string` = `"ओनर"`
+
+#### components.MuiDatePicker.props.onMonthChange
+
+> **components.MuiDatePicker.props.onMonthChange**: `object`
+
+#### components.MuiDatePicker.props.onMonthChange.description
+
+> **components.MuiDatePicker.props.onMonthChange.description**: `string` = `"महीने बदलने पर कॉलबैक निकाल दिया गया"`
+
+#### components.MuiDatePicker.props.onMonthChange.name
+
+> **components.MuiDatePicker.props.onMonthChange.name**: `string` = `"ऑनमहीनचेंज"`
+
+#### components.MuiDatePicker.props.onOpen
+
+> **components.MuiDatePicker.props.onOpen**: `object`
+
+#### components.MuiDatePicker.props.onOpen.description
+
+> **components.MuiDatePicker.props.onOpen.description**: `string` = `"जब पॉपअप खोलने का अनुरोध करता है तो कॉलबैक निकाल दिया जाता है"`
+
+#### components.MuiDatePicker.props.onOpen.name
+
+> **components.MuiDatePicker.props.onOpen.name**: `string` = `"ओनोपेन"`
+
+#### components.MuiDatePicker.props.onSelectedSectionsChange
+
+> **components.MuiDatePicker.props.onSelectedSectionsChange**: `object`
+
+#### components.MuiDatePicker.props.onSelectedSectionsChange.description
+
+> **components.MuiDatePicker.props.onSelectedSectionsChange.description**: `string` = `"चयनित अनुभाग बदलने पर कॉलबैक निकाल दिया गया"`
+
+#### components.MuiDatePicker.props.onSelectedSectionsChange.name
+
+> **components.MuiDatePicker.props.onSelectedSectionsChange.name**: `string` = `"एकचयनित अनुभाग परिवर्तन"`
+
+#### components.MuiDatePicker.props.onViewChange
+
+> **components.MuiDatePicker.props.onViewChange**: `object`
+
+#### components.MuiDatePicker.props.onViewChange.description
+
+> **components.MuiDatePicker.props.onViewChange.description**: `string` = `"दृश्य परिवर्तन पर कॉलबैक निकाल दिया गया"`
+
+#### components.MuiDatePicker.props.onViewChange.name
+
+> **components.MuiDatePicker.props.onViewChange.name**: `string` = `"ऑनव्यूचेंज"`
+
+#### components.MuiDatePicker.props.onYearChange
+
+> **components.MuiDatePicker.props.onYearChange**: `object`
+
+#### components.MuiDatePicker.props.onYearChange.description
+
+> **components.MuiDatePicker.props.onYearChange.description**: `string` = `"वर्ष परिवर्तन पर कॉलबैक निकाल दिया गया"`
+
+#### components.MuiDatePicker.props.onYearChange.name
+
+> **components.MuiDatePicker.props.onYearChange.name**: `string` = `"ओनइरचेंज"`
+
+#### components.MuiDatePicker.props.open
+
+> **components.MuiDatePicker.props.open**: `object`
+
+#### components.MuiDatePicker.props.open.description
+
+> **components.MuiDatePicker.props.open.description**: `string` = `"यदि सही है, तो दिनांक पिकर संवाद खुला है; नियंत्रित राज्य प्रबंधन के लिए इस्तेमाल किया जा सकता है"`
+
+#### components.MuiDatePicker.props.open.name
+
+> **components.MuiDatePicker.props.open.name**: `string` = `"खुला हुआ"`
+
+#### components.MuiDatePicker.props.openTo
+
+> **components.MuiDatePicker.props.openTo**: `object`
+
+#### components.MuiDatePicker.props.openTo.description
+
+> **components.MuiDatePicker.props.openTo.description**: `string` = `"पिकर सक्रिय होने पर खोलने का दृश्य"`
+
+#### components.MuiDatePicker.props.openTo.name
+
+> **components.MuiDatePicker.props.openTo.name**: `string` = `"के लिए खुला"`
+
+#### components.MuiDatePicker.props.referenceDate
+
+> **components.MuiDatePicker.props.referenceDate**: `object`
+
+#### components.MuiDatePicker.props.referenceDate.description
+
+> **components.MuiDatePicker.props.referenceDate.description**: `string` = `"जब कोई मान नहीं चुना जाता है तो प्रारंभिक कैलेंडर दृश्य उत्पन्न करने के लिए उपयोग की जाने वाली तिथि"`
+
+#### components.MuiDatePicker.props.referenceDate.name
+
+> **components.MuiDatePicker.props.referenceDate.name**: `string` = `"संदर्भ तिथि"`
+
+#### components.MuiDatePicker.props.showDaysOutsideCurrentMonth
+
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth**: `object`
+
+#### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description
+
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.description**: `string` = `"वर्तमान माह दृश्य में पिछले और अगले महीनों के दिन प्रदर्शित करता है"`
+
+#### components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name
+
+> **components.MuiDatePicker.props.showDaysOutsideCurrentMonth.name**: `string` = `"वर्तमान माह के बाहर दिन दिखाएं"`
+
+#### components.MuiDatePicker.props.view
+
+> **components.MuiDatePicker.props.view**: `object`
+
+#### components.MuiDatePicker.props.view.description
+
+> **components.MuiDatePicker.props.view.description**: `string` = `"प्रदर्शित करने के लिए प्रारंभिक दृश्य (दिन, महीना या वर्ष कैलेंडर)"`
+
+#### components.MuiDatePicker.props.view.name
+
+> **components.MuiDatePicker.props.view.name**: `string` = `"देखें"`
+
+#### components.MuiDatePicker.props.views
+
+> **components.MuiDatePicker.props.views**: `object`
+
+#### components.MuiDatePicker.props.views.description
+
+> **components.MuiDatePicker.props.views.description**: `string` = `"उपलब्ध दृश्य (दिन, महीना और वर्ष कैलेंडर)"`
+
+#### components.MuiDatePicker.props.views.name
+
+> **components.MuiDatePicker.props.views.name**: `string` = `"दृश्य"`
+
+#### components.MuiDatePicker.props.yearsOrder
+
+> **components.MuiDatePicker.props.yearsOrder**: `object`
+
+#### components.MuiDatePicker.props.yearsOrder.description
+
+> **components.MuiDatePicker.props.yearsOrder.description**: `string` = `"वर्षों का क्रम क्रमबद्ध करना: आरोही (सबसे पुराना पहला) या अवरोही (सबसे नया पहला)"`
+
+#### components.MuiDatePicker.props.yearsOrder.name
+
+> **components.MuiDatePicker.props.yearsOrder.name**: `string` = `"वर्षों का आदेश"`
+
+#### components.MuiDatePicker.props.yearsPerRow
+
+> **components.MuiDatePicker.props.yearsPerRow**: `object`
+
+#### components.MuiDatePicker.props.yearsPerRow.description
+
+> **components.MuiDatePicker.props.yearsPerRow.description**: `string` = `"वर्ष दृश्य में प्रति पंक्ति प्रदर्शित करने के लिए वर्ष आइटम की संख्या"`
+
+#### components.MuiDatePicker.props.yearsPerRow.name
+
+> **components.MuiDatePicker.props.yearsPerRow.name**: `string` = `"प्रति पंक्ति वर्ष"`
+
 #### components.MuiDialog
 
 > **components.MuiDialog**: `object`

@@ -35,6 +35,7 @@
 - [FormBuilderI18nData](type-aliases/FormBuilderI18nData.md)
 - [FormBuilderTheme](type-aliases/FormBuilderTheme.md)
 - [GenerateJsonFormSchemaOptions](type-aliases/GenerateJsonFormSchemaOptions.md)
+- [InsertPosition](type-aliases/InsertPosition.md)
 - [LocalizationComputeCodeParams](type-aliases/LocalizationComputeCodeParams.md)
 - [Options](type-aliases/Options.md)
 

@@ -7,7 +7,7 @@ export {BuilderView} from '@react-form-builder/core'
 export type {
   AnnotationEditorProps, CalculableEditorProps, ComputePropertiesParameters, ComputeTypeParams, LocalizationComputeCodeParams
 } from './src/features/annotation-editors/AnnotationEditorProps'
-export type {IFormBuilder} from './src/utils/types'
+export type {InsertPosition, IFormBuilder} from './src/utils/types'
 export type {CustomizationMap, Options} from './src/features/customization'
 export type {CustomizableKey} from './src/features/customization/types'
 export {CustomizableZone} from './src/features/customization/types'
