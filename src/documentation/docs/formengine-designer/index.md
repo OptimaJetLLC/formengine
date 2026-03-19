@@ -236,6 +236,35 @@ export const Designer = () => {
 
 </Tracking>
 
+Below is an example of how to connect the [form storage](/formengine-designer/features/form-storage) to the designer. A separate tab for
+managing forms and a save button appear in the designer.
+
+```tsx title='Designer with built-in form storage'
+import {buildForm} from '@react-form-builder/core'
+import {builderViewWithCss} from '@react-form-builder/components-rsuite'
+import {FormBuilder} from '@react-form-builder/designer'
+import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
+import {useEffect, useState} from 'react'
+
+const formStorage = new IndexedDbFormStorage('example-db', 'example-store')
+
+function MyDesignerApp() {
+  const [ready, setReady] = useState<boolean>(false)
+
+  useEffect(() => {
+    formStorage.init({
+      example: buildForm().json()
+    }).then(() => {
+      setReady(true)
+    }).catch(console.error)
+  }, [])
+
+  if (!ready) return null
+
+  return <FormBuilder view={builderViewWithCss} formStorage={formStorage} formName="example"/>
+}
+```
+
 When you launch the Designer, you'll see roughly the following:
 
 ![Form example](/assets/landing/landing-04.png)

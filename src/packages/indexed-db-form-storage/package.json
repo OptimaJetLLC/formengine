@@ -5,7 +5,6 @@
   "main": "index.ts",
   "type": "module",
   "description": "OptimaJet Form Builder IndexedDB form storage",
-  "sideEffects": false,
   "keywords": [
     "form-builder",
     "optimajet"
@@ -16,12 +15,16 @@
   "bugs": {
     "email": "support@optimajet.com"
   },
+  "sideEffects": false,
   "scripts": {
     "build": "vite build",
-    "clean": "rimraf dist temp"
+    "clean": "rimraf dist temp",
+    "pack": "npm-run-all -l clean build create-archive",
+    "create-archive": "node ./config/pack"
   },
   "files": [
-    "dist/*"
+    "dist",
+    "README.md"
   ],
   "dependencies": {
     "@react-form-builder/designer": "^7.13.0",

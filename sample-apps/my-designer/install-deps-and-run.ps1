@@ -64,6 +64,7 @@ try
 {
   RemoveFromPackageJson "@react-form-builder/core"
   RemoveFromPackageJson "@react-form-builder/designer"
+  RemoveFromPackageJson "@react-form-builder/indexed-db-form-storage"
   RemoveFromPackageJson "@react-form-builder/components-fast-qr"
   RemoveFromPackageJson "@react-form-builder/components-google-map"
   RemoveFromPackageJson "@react-form-builder/components-material-ui"
@@ -75,6 +76,7 @@ try
 
   InstallLocalPackage $PSScriptRoot/../../src/packages/core
   InstallLocalPackage $PSScriptRoot/../../src/packages/designer
+  InstallLocalPackage $PSScriptRoot/../../src/packages/indexed-db-form-storage
   InstallLocalPackage $PSScriptRoot/../../src/packages/views/fast-qr
   InstallLocalPackage $PSScriptRoot/../../src/packages/views/google-map
   InstallLocalPackage $PSScriptRoot/../../src/packages/views/material-ui

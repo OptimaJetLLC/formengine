@@ -16,10 +16,28 @@ the [formStorage](/api-reference/@react-form-builder/designer/interfaces/FormBui
 component.
 
 ```jsx title='Sample code'
-const formStorage = new MyFormStorage()
+import {buildForm} from '@react-form-builder/core'
+import {BuilderView, FormBuilder} from '@react-form-builder/designer'
+import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
+import {useEffect, useState} from 'react'
 
-return <FormBuilder formStorage={formStorage} ...
-/>
+const formStorage = new IndexedDbFormStorage('example-db', 'example-store')
+
+function MyDesignerApp() {
+  const [ready, setReady] = useState<boolean>(false)
+
+  useEffect(() => {
+    formStorage.init({
+      example: buildForm().json()
+    }).then(() => {
+      setReady(true)
+    }).catch(console.error)
+  }, [])
+
+  if (!ready) return null
+
+  return <FormBuilder view={view} formStorage={formStorage} formName="example"/>
+}
 ```
 
 ## Example of IFormStorage working with IndexedDB

@@ -16,11 +16,12 @@ import rsuiteSchema from '@react-form-builder/components-rsuite/schemas/rsuite-c
 import {signatureComponent} from '@react-form-builder/components-signature'
 import signatureSchema from '@react-form-builder/components-signature/schemas/signature-components.schema.json'
 import uploaderSchema from '@react-form-builder/components-uploader/schemas/uploader-components.schema.json'
-import {BiDi} from '@react-form-builder/core'
+import {BiDi, buildForm} from '@react-form-builder/core'
 import corePackageJson from '@react-form-builder/core/package.json'
 import schema from '@react-form-builder/core/schemas/persisted-form.schema.json'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
-import React from 'react'
+import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
+import {useEffect, useState} from 'react'
 
 // just to test import
 console.info('persisted-form.schema.json', schema)
@@ -44,8 +45,22 @@ const view = new BuilderView(components)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
   .withCssLoader('common', formEngineRsuiteCssLoader)
 
+const formStorage = new IndexedDbFormStorage('example-db', 'example-store')
+
 function MyDesignerApp() {
-  return <FormBuilder view={view}/>
+  const [ready, setReady] = useState<boolean>(false)
+
+  useEffect(() => {
+    formStorage.init({
+      example: buildForm().json()
+    }).then(() => {
+      setReady(true)
+    }).catch(console.error)
+  }, [])
+
+  if (!ready) return null
+
+  return <FormBuilder view={view} formStorage={formStorage} formName="example"/>
 }
 
 export default MyDesignerApp

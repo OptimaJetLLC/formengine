@@ -37,11 +37,29 @@ Below is sample code for embedding the `FormBuilder` component into your applica
 ```tsx title='App.tsx'
 import React from 'react'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
+import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
+import {useEffect, useState} from 'react'
+
+// optional
+const formStorage = new IndexedDbFormStorage('example-db', 'example-store')
 
 const builderView = new BuilderView([])
 
 function App() {
-  return <FormBuilder view={builderView}/>
+  const [ready, setReady] = useState<boolean>(false)
+
+  // optional
+  useEffect(() => {
+    formStorage.init({
+      example: buildForm().json()
+    }).then(() => {
+      setReady(true)
+    }).catch(console.error)
+  }, [])
+
+  if (!ready) return null
+  
+  return <FormBuilder view={builderView} formStorage={formStorage} formName="example"/>
 }
 
 export default App
