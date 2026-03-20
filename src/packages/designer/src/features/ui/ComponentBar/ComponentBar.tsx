@@ -103,6 +103,7 @@ interface ControlGroupsProps extends DraggableProps {
 const RawControlGroups = (props: ControlGroupsProps) => {
   const {availableComponents} = useBuilderStore()
   const t = useTranslationPart('componentsList.categories')
+  const tToolbar = useTranslationPart('toolbar')
   const getLibraryDescription = useComponentLibraryDescription()
   const {filter, ...componentProps} = props
 
@@ -151,7 +152,9 @@ const RawControlGroups = (props: ControlGroupsProps) => {
     )
   }
 
-  if (result.length === 0) return null
+  if (result.length === 0) {
+    return <Subheader>{tToolbar('notFound')}</Subheader>
+  }
 
   return <Content>{result}</Content>
 }
@@ -164,14 +167,12 @@ const ControlGroups = namedObserver('ControlGroups', RawControlGroups)
  * @returns the React element.
  */
 export const ComponentBar = (componentProps: DraggableProps) => {
-  const t = useTranslationPart('toolbar')
   const [filtered, setFiltered] = useState<string>()
-  const controls = <ControlGroups {...componentProps} filter={filtered}/>
 
   return <div className={componentBar}>
     <Header>
       <SearchForm style={searchFormStyle} onChange={setFiltered}/>
     </Header>
-    {controls || <Subheader>{t('notFound')}</Subheader>}
+    <ControlGroups {...componentProps} filter={filtered}/>
   </div>
 }
