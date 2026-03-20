@@ -40,10 +40,10 @@ const packageList = [
   'examples/premium/with-nextjs/with-nextjs-v16',
   'examples/premium/with-remix/with-remix-v2',
 
-  'examples/with-angular-forms/step1-reactive-forms',
-  'examples/with-angular-forms/step2-formengine',
-  'examples/with-angular-forms/step3-template-forms',
-  'examples/with-angular-forms/step4-designer',
+  'examples/premium/with-angular-forms/step1-reactive-forms',
+  'examples/premium/with-angular-forms/step2-formengine',
+  'examples/premium/with-angular-forms/step3-template-forms',
+  'examples/premium/with-angular-forms/step4-designer',
 ]
 
 const depsSections = ['dependencies', 'devDependencies', 'peerDependencies', 'bundleDependencies', 'optionalDependencies']
