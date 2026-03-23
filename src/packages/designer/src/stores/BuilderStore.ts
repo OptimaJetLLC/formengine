@@ -685,6 +685,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
         ? [...source.children].reverse()
         : source.children
 
+      const presetName = source.model.name
       orderedChildren.forEach((componentData, i) => {
         const inserted = this.insert({
           source: componentData,
@@ -695,7 +696,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
           selectAfterInsert: i === 0,
         })
 
-        this.props.onFormElementAdd?.({source: componentData, target, insertPosition, slot, slotCondition})
+        this.props.onFormElementAdd?.({source: componentData, target, insertPosition, slot, slotCondition, presetName})
         result.push(inserted)
       })
       return result

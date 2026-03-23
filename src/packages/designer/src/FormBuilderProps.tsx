@@ -89,7 +89,8 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
     target: ComponentData;
     insertPosition?: InsertPosition;
     slot?: string;
-    slotCondition?: string
+    slotCondition?: string;
+    presetName?: string;
   }) => void
 
   /**

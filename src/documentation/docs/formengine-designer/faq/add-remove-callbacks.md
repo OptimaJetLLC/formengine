@@ -35,6 +35,7 @@ function onFormElementAdd(payload: {
   insertPosition?: InsertPosition;
   slot?: string;
   slotCondition?: string;
+  presetName?: string;
 })
 ```
 
