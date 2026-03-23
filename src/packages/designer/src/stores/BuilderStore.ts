@@ -339,6 +339,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   readonly presetComponentOptions: BuilderPresetComponentOptions
   activeFormName?: string
   #availableComponents?: AvailableComponents
+  readonly #presetViewDisposer: IReactionDisposer
 
   /**
    * Creates the form builder settings.
@@ -353,6 +354,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
         selected: observable,
         formBuilderLanguage: observable.ref,
         localizationLanguage: observable.ref,
+        view: observable.ref,
         dispose: false,
         builderMode: true,
         viewMode: true,
@@ -379,6 +381,14 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
       builderComponent => this.view.addComponent(builderComponent),
       props.presetComponentOptions,
       props.localStoragePrefix
+    )
+
+    this.#presetViewDisposer = reaction(
+      () => this.view,
+      view => {
+        this.presetComponentOptions.registerPresetsOnView(view)
+      },
+      {fireImmediately: true},
     )
 
     const translationResolver: TranslationResolver = async language => {
@@ -545,6 +555,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    * Correctly clears allocated resources, the function must be called when destroying an instance of the class.
    */
   dispose() {
+    this.#presetViewDisposer()
     this.undoer.dispose()
     this.#availableComponents?.dispose()
   }

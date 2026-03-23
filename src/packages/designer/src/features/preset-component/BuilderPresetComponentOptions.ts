@@ -1,4 +1,4 @@
-import type {BuilderComponent} from '@react-form-builder/core'
+import type {BuilderComponent, BuilderView} from '@react-form-builder/core'
 import {definePreset} from '@react-form-builder/core'
 import {makeAutoObservable} from 'mobx'
 import type {IPresetComponentOptions} from './IPresetComponentOptions'
@@ -120,5 +120,18 @@ export class BuilderPresetComponentOptions implements IPresetComponentOptions {
 
     this.presets.push(builderComponent)
     this.afterAdd(builderComponent)
+  }
+
+  /**
+   * Registers every preset {@link BuilderComponent} on the given view instance.
+   *
+   * Call when the builder view instance is replaced so the form viewer can resolve preset component types
+   * (the {@link afterAdd} callback only ran against the view that was active when each preset was added).
+   * @param builderView the builder view that should expose preset models to the form viewer.
+   */
+  registerPresetsOnView(builderView: BuilderView): void {
+    for (const preset of this.presets) {
+      builderView.addComponent(preset)
+    }
   }
 }
