@@ -289,6 +289,26 @@ The prefix for localStorage keys.
 
 ***
 
+### onBuilderLanguageChange()?
+
+> `optional` **onBuilderLanguageChange**: (`language`) => `void`
+
+A callback invoked when the language is changed in the Builder.
+
+#### Parameters
+
+##### language
+
+[`Language`](../../core/classes/Language.md)
+
+the language.
+
+#### Returns
+
+`void`
+
+***
+
 ### onFormDataChange()?
 
 > `optional` **onFormDataChange**: (`data`) => `void`
@@ -328,6 +348,10 @@ the payload with information about the added component.
 ###### insertPosition?
 
 [`InsertPosition`](../type-aliases/InsertPosition.md)
+
+###### presetName?
+
+`string`
 
 ###### slot?
 
@@ -386,6 +410,26 @@ The event is called whenever a form schema changes.
 `string`
 
 the current form schema serialized to JSON.
+
+#### Returns
+
+`void`
+
+***
+
+### onViewerLanguageChange()?
+
+> `optional` **onViewerLanguageChange**: (`language`) => `void`
+
+A callback invoked when the form's language is changed.
+
+#### Parameters
+
+##### language
+
+[`Language`](../../core/classes/Language.md)
+
+the language.
 
 #### Returns
 

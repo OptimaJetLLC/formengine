@@ -74,4 +74,7 @@ configure({asyncUtilTimeout: 5000}) // 5 seconds
 
 afterEach(() => {
   cleanup()
+  localStorage.clear()
+  document.documentElement.removeAttribute('lang')
+  document.documentElement.removeAttribute('dir')
 })

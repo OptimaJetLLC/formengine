@@ -4,7 +4,8 @@ import type {
   ComponentData,
   ComponentLibraryDescription,
   EditorType,
-  FormViewerProps
+  FormViewerProps,
+  Language
 } from '@react-form-builder/core'
 import type {ComponentType, ForwardedRef} from 'react'
 import type {AnnotationEditorProps} from './features/annotation-editors/AnnotationEditorProps'
@@ -98,6 +99,18 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
    * @param payload the payload with information about the removed component.
    */
   onFormElementRemove?: (payload: { source: ComponentData }) => void
+
+  /**
+   * A callback invoked when the language is changed in the Builder.
+   * @param language the language.
+   */
+  onBuilderLanguageChange?: (language: Language) => void
+
+  /**
+   * A callback invoked when the form's language is changed.
+   * @param language the language.
+   */
+  onViewerLanguageChange?: (language: Language) => void
 
   /**
    * Indicates the theme preference.

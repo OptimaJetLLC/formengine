@@ -3,43 +3,61 @@ import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {isDesignerLocalStorageEnabled} from '@react-form-builder/designer/src/utils/isDesignerLocalStorageEnabled'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {expect} from 'vitest'
+import {renderBuilder} from '../util/renderBuilder'
 
 const view = new BuilderView(rSuiteComponents.map(c => c.build()))
 
-const getForm = () => {
-  return JSON.stringify({
-    'version': '1',
-    'form': {
-      'key': 'Screen',
-      'type': 'Screen',
-      'props': {},
-      'children': [
-        {
-          'key': 'rsButton1',
-          'type': 'RsButton',
-          'props': {},
-          'htmlAttributes': [
-            {
-              'name': 'data-testid',
-              'value': 'test-button'
-            }
-          ]
-        }
-      ]
-    },
-    'localization': {},
-    'languages': [
+const form = {
+  'version': '1',
+  'form': {
+    'key': 'Screen',
+    'type': 'Screen',
+    'props': {},
+    'children': [
       {
-        'code': 'en',
-        'dialect': 'US',
-        'name': 'English',
-        'description': 'American English',
-        'bidi': 'ltr'
+        'key': 'rsButton1',
+        'type': 'RsButton',
+        'props': {},
+        'htmlAttributes': [
+          {
+            'name': 'data-testid',
+            'value': 'test-button'
+          }
+        ]
       }
-    ],
-    'defaultLanguage': 'en-US'
-  })
+    ]
+  },
+  'localization': {},
+  'languages': [
+    {
+      'code': 'en',
+      'dialect': 'US',
+      'name': 'English',
+      'description': 'American English',
+      'bidi': 'ltr'
+    }
+  ],
+  'defaultLanguage': 'en-US'
 }
+
+const getForm = () => JSON.stringify(form)
+
+const deDELang = {
+  bidi: 'ltr',
+  code: 'de',
+  description: 'German',
+  dialect: 'DE',
+  name: 'Deutsch',
+}
+
+const enUSLang = {
+  code: 'en',
+  dialect: 'US',
+  name: 'English',
+  description: 'American English',
+  bidi: 'ltr',
+}
+
 
 describe(`Changing the designer's language`, function () {
   it('Changing the designer\'s language should switch the interface language and component language', async () => {
@@ -111,5 +129,68 @@ describe(`Changing the designer's language`, function () {
     // and make sure the current language is changed
     await waitFor(() => expect(currentLangItem).not.toHaveAttribute('aria-checked', 'true'))
     await waitFor(() => expect(nextLangItem).toHaveAttribute('aria-checked', 'true'))
+  })
+
+  it('Changing the designer\'s language should trigger onBuilderLanguageChange', async () => {
+    const onBuilderLanguageChange = vi.fn()
+    const {findByTestId, container} = await renderBuilder(form, {onBuilderLanguageChange})
+
+    expect(await findByTestId('test-button')).toBeInTheDocument()
+
+    const htmlElement = container.parentElement?.parentElement
+    const currentLang = htmlElement?.getAttribute('lang') ?? 'en-US'
+
+    const enItem = container.querySelector('li[data-event-key="en-US"]')
+    if (!enItem) throw new Error('Language "en-US" not found')
+
+    const deItem = container.querySelector('li[data-event-key="de-DE"]')
+    if (!deItem) throw new Error('Language "de-DE" not found')
+
+    const isEnglish = () => {
+      if (!isDesignerLocalStorageEnabled()) return true
+      return currentLang === 'en-US' || currentLang === 'en'
+    }
+
+    const nextLangItem = isEnglish() ? deItem : enItem
+    const expectedLanguage = isEnglish() ? deDELang : enUSLang
+
+    fireEvent.click(nextLangItem)
+
+    await waitFor(() => {
+      expect(onBuilderLanguageChange).toHaveBeenCalled()
+    })
+    const language = onBuilderLanguageChange.mock.calls[0][0]
+    expect(language).toEqual(expectedLanguage)
+  })
+
+  it('Changing the forms\'s language should trigger onViewerLanguageChange', async () => {
+    const onViewerLanguageChange = vi.fn()
+    const {findByTestId} = await renderBuilder(form, {onViewerLanguageChange})
+
+    const picker = await findByTestId('designer-form-language')
+    fireEvent.click(picker)
+
+    const popup = await findByTestId('picker-popup')
+    const currentFormLanguage = popup.querySelector('div[role="option"][aria-selected="true"]')
+    if (!currentFormLanguage) throw new Error('Current language is not found')
+
+    const fullCode = currentFormLanguage.getAttribute('data-key')
+    if (!fullCode) throw new Error('Cannot find current language code')
+
+    const isEnglish = fullCode === 'en-US'
+    const nextCode = isEnglish ? 'de-DE' : 'en-US'
+
+    const nextLanguageItem = popup.querySelector(`div[data-key="${nextCode}"]`)
+    if (!nextLanguageItem) throw new Error(`Language "${nextCode}" not found`)
+
+    const expectedLanguage = isEnglish ? deDELang : enUSLang
+
+    fireEvent.click(nextLanguageItem)
+
+    await waitFor(() => {
+      expect(onViewerLanguageChange).toHaveBeenCalled()
+    })
+    const language = onViewerLanguageChange.mock.calls[0][0]
+    expect(language).toEqual(expectedLanguage)
   })
 })

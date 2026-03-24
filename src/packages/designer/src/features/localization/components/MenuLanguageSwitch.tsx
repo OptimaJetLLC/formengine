@@ -22,7 +22,11 @@ const RawMenuLanguageSwitch = () => {
   const currentLanguageCode = builderStore.formBuilderLanguage.fullCode
 
   const handleLanguageSelect = useCallback((language: any) => {
-    return () => builderStore.changeLanguage(language)
+    return () => {
+       builderStore.changeLanguage(language).then(() => {
+         builderStore.props.onBuilderLanguageChange?.(language)
+       })
+    }
   }, [builderStore])
 
   const globeIcon = useMemo(() => <FaIcon icon={faGlobe}/>, [])

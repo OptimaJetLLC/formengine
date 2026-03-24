@@ -50,10 +50,11 @@ export class LocalStorageSynchronizer {
 
     const i18nextLngKey = withPrefix('i18nextLng')
     const i18nextLng = this.getItem<string>(i18nextLngKey)
-    if (i18nextLng) {
-      const i18nextLang = builderStore.availableLanguages.find(l => l.fullCode === i18nextLng)
-      builderStore.changeLanguage(i18nextLang ?? builderStore.defaultLanguage)
-    }
+    const lang = (
+      i18nextLng && builderStore.availableLanguages.find(l => l.fullCode === i18nextLng)
+    ) || builderStore.defaultLanguage
+
+    void builderStore.changeLanguage(lang)
 
     this.#disposers = [
       autorun(

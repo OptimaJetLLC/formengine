@@ -95,6 +95,11 @@ const useBuilderProviderData = (props: FormBuilderProps) => useCallback(() => {
   const localStorageSynchronizer = isDesignerLocalStorageEnabled()
     ? new LocalStorageSynchronizer(builderStore, props)
     : undefined
+
+  if (!localStorageSynchronizer) {
+    void builderStore.changeLanguage(builderStore.defaultLanguage)
+  }
+
   return new BuilderProviderData(store, builderStore, localStorageSynchronizer)
 }, [props])
 

@@ -483,10 +483,14 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
   /**
    * Changes the language in the form builder.
    * @param language the language to be set.
+   * @returns Promise<Language>
    */
-  changeLanguage(language: Language) {
-    this.builderI18n.changeWebDocumentLanguage(language)
-      .then(() => this.formBuilderLanguage = language)
+  async changeLanguage(language: Language) {
+    return this.builderI18n.changeWebDocumentLanguage(language)
+      .then(() => {
+        this.formBuilderLanguage = language
+        return language
+      })
       .catch(e => console.error(e))
   }
 
