@@ -25,7 +25,7 @@
     "build": "vite build",
     "clean": "rimraf dist temp",
     "pack": "npm-run-all -l clean build create-archive",
-    "create-archive": "node ./config/pack"
+    "create-archive": "node ./config/pack.ts"
   },
   "dependencies": {
     "@react-form-builder/core": "^7.14.0",

@@ -1,0 +1,11 @@
+{
+  "name": "html-embed",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "run-designer": "node ./run-designer.ts",
+    "run-viewer": "node ./run-viewer.ts"
+  }
+}
+

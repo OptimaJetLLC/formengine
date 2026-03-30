@@ -1,0 +1,16 @@
+{
+  "name": "github",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "create-release": "node ./create-release.ts ./release.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "octokit": "^4.1.4"
+  }
+}

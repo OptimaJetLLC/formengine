@@ -33,8 +33,8 @@
     "build": "vite build",
     "clean": "rimraf dist temp",
     "pack": "npm-run-all -l clean build create-archive",
-    "prebundle": "node ./scripts/update-assembly-date",
-    "create-archive": "node ./config/pack"
+    "prebundle": "node ./scripts/update-assembly-date.ts",
+    "create-archive": "node ./config/pack.ts"
   },
   "dependencies": {
     "@fortawesome/fontawesome-common-types": "^0.2.36",

@@ -129,7 +129,7 @@ prepare-documentation-archive:
 
 # prepare-github-formengine-archive creates an archive for the GitHub repository optimajet/formengine
 prepare-github-formengine-archive:
-  COPY --dir BuildScripts/includes/github-optimajet-formengine/ github-formengine
+  COPY --dir scripts/includes/github-optimajet-formengine/ github-formengine
   COPY --dir src/packages/core github-formengine/community/src/packages/core
   COPY --dir src/packages/json-schema-generator github-formengine/community/src/packages/json-schema-generator
   COPY --dir src/packages/views/rsuite github-formengine/community/src/packages/views/rsuite
@@ -203,13 +203,13 @@ prepare-github-formenginesupport-archive:
   SAVE ARTIFACT formenginesupport.tgz AS LOCAL .archives/formenginesupport.tgz
 
 prepare-version-archive:
-  COPY BuildScripts/version.txt version.txt
+  COPY scripts/version.txt version.txt
   SAVE ARTIFACT version.txt AS LOCAL .archives/version.txt
 
 prepare-github-release-notes-archive:
   RUN mkdir -p gh-release-notes
-  COPY --dir BuildScripts/github-release-notes ./gh-release-notes
-  COPY --dir BuildScripts/github ./gh-release-notes
+  COPY --dir scripts/github-release-notes ./gh-release-notes
+  COPY --dir scripts/github ./gh-release-notes
   RUN tar -czvf gh-release-notes.tgz -C gh-release-notes .
   SAVE ARTIFACT gh-release-notes.tgz AS LOCAL .archives/gh-release-notes.tgz
 

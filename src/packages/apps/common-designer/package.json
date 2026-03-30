@@ -32,6 +32,6 @@
     "rsuite": "5.83.4"
   },
   "scripts": {
-    "update-release-date": "node ./scripts/update-release-date"
+    "update-release-date": "node ./scripts/update-release-date.ts"
   }
 }

@@ -13,9 +13,11 @@
     "test:full": "node scripts/test-full.ts",
     "test:all": "node scripts/test-all.ts",
     "test": "npm run test:all",
-    "clean": "rm -rf ./dist"
+    "clean": "rm -rf ./dist",
+    "install-deps-and-run": "node ./install-deps-and-run.ts"
   },
   "dependencies": {
+    "@react-form-builder/core": "file:react-form-builder-core-7.14.0.tgz",
     "@types/node": "^24.10.1",
     "@types/react": "^18.2.23",
     "@types/react-dom": "^18.2.8",
