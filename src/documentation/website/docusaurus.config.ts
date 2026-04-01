@@ -296,6 +296,7 @@ const config: Config = {
         siteTitle: 'This is the documentation for the FormEngine packages.',
         siteDescription: 'It contains detailed manuals, components, and utilities for creating user interfaces.',
         depth: 2,
+        onRouteError: 'throw',
         content: {
           relativePaths: false,
           includeBlog: false,

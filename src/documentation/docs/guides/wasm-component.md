@@ -37,7 +37,7 @@ npm install
 npm run dev
 ```
 
-OK, now stop the application and install the FormEngine dependencies (see this [article](https://formengine.io/documentation/installation)
+OK, now stop the application and install the FormEngine dependencies (see this [article](/formengine-designer/getting-started/installation)
 for details):
 
 ```bash
