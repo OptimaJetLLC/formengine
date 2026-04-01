@@ -151,6 +151,7 @@ prepare-github-formengine-archive:
   COPY .gitignore github-formengine/
   COPY src/package.public.json github-formengine/community/src/package.json
   COPY src/package-lock.json github-formengine/community/src/
+  COPY CHANGELOG.md github-formengine
   RUN tar -czvf formengine.tgz -C github-formengine .
   SAVE ARTIFACT formengine.tgz AS LOCAL .archives/formengine.tgz
 
@@ -192,6 +193,7 @@ prepare-github-formenginesupport-archive:
   COPY src/.eslintignore $dst/
   COPY src/tsconfig.json $dst/
   COPY src/vite.config.ts $dst/
+  COPY CHANGELOG.md $dst/
 
   COPY .editorconfig $dst/
   COPY .gitignore $dst/

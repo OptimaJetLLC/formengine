@@ -1,3 +1,5 @@
+_May_ 15, 2025
+
 With this release, the following packages are distributed under the [MIT license](https://opensource.org/license/mit):
 
 - `@react-form-builder/core`
@@ -21,7 +23,7 @@ Commercial license keys now use a different format, and the licensing scheme has
 ### New
 
 - Added [FormJsonBuilder](https://formengine.io/documentation/api-reference/@react-form-builder/core/functions/buildForm#returns), a code-based tool for form creation.
-- [useBuilderMode](https://formengine.io/documentation/api-reference/@react-form-builder/core/functions/useBuilderMode) hook has been introduced.
+- [useBuilderMode](https://formengine.io/documentation/api-reference/@react-form-builder/core/variables/useBuilderMode) hook has been introduced.
 - [Tab](https://formengine.io/documentation/components-library/structure-components/tab) and [Menu](https://formengine.io/documentation/components-library/static-components/menu) components now supports `pill` display variant.
 
 ### Fixed bugs

@@ -1,5 +1,3 @@
-## 7.11.0
-
 _February 3, 2026_
 
 ## Overview

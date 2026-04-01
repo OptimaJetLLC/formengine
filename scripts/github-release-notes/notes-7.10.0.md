@@ -1,10 +1,11 @@
-## 7.10.0
-
 _January 16, 2026_
 
 ## Overview
 
 FormEngine 7.10.0 introduces integration with the **Material UI components library**, allowing you to build forms with one of the most popular React UI frameworks.
+
+![Material UI components](https://formengine.io/documentation/assets/release-notes/7.10.0-mui-components.png)
+
 Additionally, this release improves theming capabilities in FormViewer, including support for dynamic theme switching, making your applications more flexible and visually consistent.
 
 ### Why update
@@ -45,12 +46,12 @@ Update all packages to version **7.10.0**. No additional actions are required.
 
 * Fixed an error when no form storage was provided: `AlwaysRejectFormStorage.ts:8 Uncaught (in promise) Error: Not implemented`.
 * Fixed an issue where the Next.js example was broken with [@react-form-builder/core@7.9.0](https://www.npmjs.com/package/@react-form-builder/core/v/7.9.0).
-* Fixed the _`Module not found: Package path . is not exported from package`_ error in `premium/examples/with-nextjs/with-nextjs-v15` in FormViewer.
+* Fixed the `Module not found: Package path . is not exported from package` error in `premium/examples/with-nextjs/with-nextjs-v15` in FormViewer.
 
 ### Resources
 
 * Split the release notes in the documentation into separate pages so that each release can be read in detail.
-* Updated and extended the article with instructions on [how to generate a JSON schema](https://formengine.io/documentation/forms-json#json-schema).
+* Updated and extended the article with instructions on [how to generate a JSON schema](https://formengine.io/documentation/formengine-designer/features/forms-json#json-schema).
 
 ### Security
 

@@ -1,3 +1,5 @@
+_October_ 29, 2025
+
 ### Changed
 
 - After upgrading to **Zod v4**, some default validation error messages have changed.
@@ -6,8 +8,7 @@
 
 ### Fixed bugs
 
-- Fixed a bug that caused the following error to appear:  
-  `[MobX] Since strict-mode is enabled, changing (observed) observable values without using an action is not allowed.`
+- Fixed a bug that caused the following error to appear: `[MobX] Since strict-mode is enabled, changing (observed) observable values without using an action is not allowed.`
 
 ### Updated internal dependencies
 

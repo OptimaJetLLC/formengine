@@ -1,8 +1,10 @@
+_January_ 24, 2025
+
 ### Breaking changes
 
 - Added React 19 support.
 - Model.icon property moved to [Meta](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/Meta).
-- The initial value and value properties of the [Rich text editor](https://formengine.io/documentation/components-library/fields-components/rich-text-editor) are now of type string.
+- The initial value and value properties of the [Rich text editor](https://formengine.io/documentation/formengine-designer/components/rich-text-editor) are now of type string.
 - @emotion/cache updated to 11.14.0.
 - @emotion/css updated to 11.13.5.
 - @emotion/react updated to 11.14.0.
@@ -12,7 +14,7 @@
 ### New
 
 - Components can be deleted by pressing <kbd>Delete</kbd> button.
-- Added [upload server](https://github.com/optimajet/formengine/tree/master/examples/file-upload-server/README.md) example.
+- Added [upload server](https://github.com/optimajet/formengine/tree/master/community/examples/file-upload-server/README.md) example.
 
 ### Fixed bugs
 

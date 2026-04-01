@@ -1,9 +1,11 @@
+_November_ 8, 2024
+
 - Added the Map component and its [usage guide](https://formengine.io/documentation/enabling-google-maps-autocomplete).
 - Added a [sample application](https://formengine.io/documentation/usage-with-nextjs) for Next.js.
 - Added the option to select type attribute for RsInput component.
 
 ### Fixed bugs
 
-- Console errors that occur when a variable inside localization is not defined.
-- The calculated value for HTML attributes.
-- The display of simple values as calculated after rolling back from a calculated state.
+- Fixed console errors that occur when a variable inside localization is not defined.
+- Fixed the calculated value for HTML attributes.
+- Fixed the display of simple values as calculated after rolling back from a calculated state.

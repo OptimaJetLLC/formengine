@@ -1,6 +1,8 @@
+_April_ 25, 2025
+
 ### New
 
-- [Preset components](https://formengine.io/documentation/presets-components).
+- [Preset components](https://formengine.io/documentation/formengine-designer/features/presets-components).
 - License verification errors now log to the console.
 - The [IFormData.validate()](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/IFormData#validate) function now returns validation errors.
 

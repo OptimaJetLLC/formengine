@@ -1,3 +1,5 @@
+_December_ 21, 2023
+
 - Added `IFormData.getValidationResult()` method that returns validation results without changing the form state.
 - Added the user defined observable state - `IFormData.state`.
 - Added the `initialValue` to `RsUploader` component.

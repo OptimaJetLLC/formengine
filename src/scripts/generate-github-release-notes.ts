@@ -33,12 +33,94 @@ function toAbsoluteLinks(markdown: string): string {
   )
 }
 
+/**
+ * Collapses soft line wraps so GitHub release notes match documentation rendering.
+ * GitHub Flavored Markdown treats single newlines as hard breaks; CommonMark/Docusaurus
+ * collapses them inside paragraphs. List continuations (indented lines) are joined to
+ * the previous list item line.
+ * @param markdown source body after frontmatter removal
+ * @returns markdown with paragraph and list wraps merged onto single lines
+ */
+function collapseSoftLineBreaksForGitHub(markdown: string): string {
+  const lines = markdown.split('\n')
+  const out: string[] = []
+  let inFence = false
+
+  const isStructuralLine = (line: string): boolean => {
+    const t = line.trimStart()
+    if (t.startsWith('#')) {
+      return true
+    }
+    if (/^[-*+]\s/.test(t)) {
+      return true
+    }
+    if (/^\d+\.\s/.test(t)) {
+      return true
+    }
+    if (t.startsWith('>')) {
+      return true
+    }
+    if (t.startsWith('|')) {
+      return true
+    }
+    if (t === '---') {
+      return true
+    }
+    return false
+  }
+
+  for (const line of lines) {
+    if (line.trimStart().startsWith('```')) {
+      inFence = !inFence
+      out.push(line)
+      continue
+    }
+    if (inFence) {
+      out.push(line)
+      continue
+    }
+
+    if (line.trim() === '') {
+      out.push('')
+      continue
+    }
+
+    const prev = out.length > 0 ? out[out.length - 1] : ''
+    if (prev === '') {
+      out.push(line)
+      continue
+    }
+
+    const trimmedIndented = line.trimStart()
+    const isIndentedNestedListItem =
+      /^ {2,}\S/.test(line) && (/^[-*+]\s/.test(trimmedIndented) || /^\d+\.\s/.test(trimmedIndented))
+    if (/^ {2,}\S/.test(line) && !isIndentedNestedListItem) {
+      out[out.length - 1] = `${prev.trimEnd()} ${line.trim()}`
+      continue
+    }
+
+    if (isStructuralLine(line)) {
+      out.push(line)
+      continue
+    }
+
+    if (isStructuralLine(prev)) {
+      out.push(line)
+      continue
+    }
+
+    out[out.length - 1] = `${prev.trimEnd()} ${line.trimStart()}`
+  }
+
+  return out.join('\n')
+}
+
 function generateNotesForVersion(version: string): void {
   const docPath = join(DOCS_ROOT, `${version}.md`)
   const raw = readFileSync(docPath, 'utf8')
   const {body} = parseFrontmatterAndBody(raw)
 
-  const transformed = toAbsoluteLinks(body)
+  const transformed = collapseSoftLineBreaksForGitHub(toAbsoluteLinks(body))
   const outputPath = join(OUTPUT_DIR, `notes-${version}.md`)
   writeFileSync(outputPath, transformed, {encoding: 'utf8'})
 }

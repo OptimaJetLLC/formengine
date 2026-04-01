@@ -1,7 +1,9 @@
+_August_ 11, 2025
+
 ### New
 
-- Added support for using a [functional](https://formengine.io/documentation/api-reference/@react-form-builder/core/type-aliases/FunctionArgumentValue) [argument type](https://formengine.io/documentation/api-reference/@react-form-builder/core/type-aliases/ParameterType) in [custom actions](https://formengine.io/documentation/actions#custom-actions).
-- Added support for [passing CSS styles via the style property](https://formengine.io/documentation/component-styling#passing-styles-to-the-style-attribute) instead of className.
+- Added support for using a [functional](https://formengine.io/documentation/api-reference/@react-form-builder/core/type-aliases/FunctionArgumentValue) [argument type](https://formengine.io/documentation/api-reference/@react-form-builder/core/type-aliases/ParameterType) in [custom actions](https://formengine.io/documentation/formengine-designer/features/actions#custom-actions).
+- Added support for [passing CSS styles via the style property](https://formengine.io/documentation/formengine-designer/features/component-styling#passing-styles-to-the-style-attribute) instead of className.
 - Added support for [specifying a component role](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/Definer#componentrole) (e.g., label, tooltip, etc.).
 - Added the ability to [manage](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/Definer#addfeature) [component features](https://formengine.io/documentation/api-reference/@react-form-builder/core/type-aliases/ComponentFeature), including:
   - [cfComponentIsPreset](https://formengine.io/documentation/api-reference/@react-form-builder/core/variables/cfComponentIsPreset)

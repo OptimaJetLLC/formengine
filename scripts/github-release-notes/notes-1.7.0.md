@@ -1,3 +1,5 @@
+_July_ 24, 2024
+
 - Added validation for the format property in the `DatePicker` component.
 - Fixed a bug that prevented the string property editor from turning into a text area when inserting large text.
 - Fixed a bug in the "Key" property editor, due to which the key verification message was not updated when duplicating a component with the same key value.

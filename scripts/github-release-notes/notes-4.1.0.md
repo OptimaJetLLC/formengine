@@ -1,7 +1,9 @@
+_May_ 23, 2025
+
 ### New
 
-- Added [Conditional validation](https://formengine.io/documentation/validation#conditional-validation) that is performed only if certain conditions are met.
-- The form data has been added to the [Code validation](https://formengine.io/documentation/validation#code-validator) function so that the field can be validated based on other values from the form.
+- Added [Conditional validation](https://formengine.io/documentation/formengine-designer/features/validation#conditional-validation) that is performed only if certain conditions are met.
+- The form data has been added to the [Code validation](https://formengine.io/documentation/formengine-designer/features/validation#code-validator) function so that the field can be validated based on other values from the form.
 - Added a new method [allComponentFields](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/ComponentData#allcomponentfields) to `ComponentData` that returns an array of all component fields, including non-unique data keys.
 
 ### Fixed bugs

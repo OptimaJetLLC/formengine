@@ -1,15 +1,17 @@
+_November_ 10, 2025
+
 ### New
 
-- Added a new hook — [`useErrorMessage`](https://formengine.io/documentation/api-reference/@react-form-builder/core/functions/useErrorMessage) — for retrieving component errors.
+- Added a new hook [`useErrorMessage`](https://formengine.io/documentation/api-reference/@react-form-builder/core/functions/useErrorMessage) for retrieving component errors.
 - Introduced a new feature for commercial license holders: the Designer can now run inside an Electron application.
-- Added documentation for [displaying error messages](https://formengine.io/documentation/custom-components#displaying-errors-inside-a-custom-component) inside custom components.
+- Added documentation for [displaying error messages](https://formengine.io/documentation/formengine-designer/features/custom-components#displaying-errors-inside-a-custom-component) inside custom components.
 
 ### Changed
 
-- Component descriptions and localization have been moved to separate files. See the [documentation](https://formengine.io/documentation/custom-components#internationalization-of-components-for-the-designer) for details.
+- Component descriptions and localization have been moved to separate files. See the [documentation](https://formengine.io/documentation/formengine-designer/features/custom-components#internationalization-of-components-for-the-designer) for details.
 - `@react-form-builder/core` is now a required peer dependency for dependent packages.
 
 ### Internal Updates
 
 - **Node.js** updated from `20.19.4` to `24.11.0`.
-- **Fluent** updated from `0.18` to `0.19.1`.  
+- **Fluent** updated from `0.18` to `0.19.1`.

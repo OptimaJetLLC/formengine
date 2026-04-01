@@ -1,13 +1,8 @@
-## 7.12.0
-
 _February 17, 2026_
-
 
 ## Overview
 
-FormEngine 7.12.0 introduces **[Mantine components](https://formengine.io/documentation/components-library/mantine)** as a new option in the [component library](https://formengine.io/documentation/components-library/), alongside Material UI and RSuite. This release
-also adds **JSON schemas for component libraries**, improves configuration options with support for passing [user-defined context](https://formengine.io/documentation/formengine-core/storing-user-defined-data#accessing-your-environment-via-usercontext)
-and configuring [initial state](https://formengine.io/documentation/formengine-core/storing-user-defined-data#initializing-form-state-from-formviewer), and contains multiple bug fixes and dependency updates across the platform.
+FormEngine 7.12.0 introduces **[Mantine components](https://formengine.io/documentation/components-library/mantine)** as a new option in the [component library](https://formengine.io/documentation/components-library/), alongside Material UI and RSuite. This release also adds **JSON schemas for component libraries**, improves configuration options with support for passing [user-defined context](https://formengine.io/documentation/formengine-core/storing-user-defined-data#accessing-your-environment-via-usercontext) and configuring [initial state](https://formengine.io/documentation/formengine-core/storing-user-defined-data#initializing-form-state-from-formviewer), and contains multiple bug fixes and dependency updates across the platform.
 
 ### Why update
 
@@ -29,9 +24,9 @@ Update all packages to version **7.12.0**. No additional actions are required.
 
 ### Features
 
-* Added **Mantine components** to the [component library](https://formengine.io/documentation/components-library/mantine) as an alternative to Material UI and RSuite.
+* Added **[Mantine components](https://formengine.io/documentation/components-library/mantine)** to the [component library](https://formengine.io/documentation/components-library/) as an alternative to Material UI and RSuite.
 * Added **JSON schemas for component libraries** to improve tooling and validation.
-* Added support for passing **[user-defined context](https://formengine.io/documentation/formengine-core/storing-user-defined-data#accessing-your-environment-via-usercontext)** and **[initial state](https://formengine.io/documentation/formengine-core/storing-user-defined-data#initializing-form-state-from-formviewer)** so that advanced scenarios can inject additional data into forms at runtime.
+* Added support for passing **[user-defined context](https://formengine.io/documentation/formengine-core/storing-user-defined-data#accessing-your-environment-via-usercontext)** and **[initialState](https://formengine.io/documentation/formengine-core/storing-user-defined-data#initializing-form-state-from-formviewer)**  so that advanced scenarios can inject additional data into forms at runtime.
 
 ### Bug fixes
 

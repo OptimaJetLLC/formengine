@@ -1,9 +1,11 @@
+_July_ 17, 2025
+
 ### New
 
-- Added support for [functional type properties](https://formengine.io/documentation/custom-components#functional-properties).
+- Added support for [functional type properties](https://formengine.io/documentation/formengine-designer/features/custom-components#functional-properties).
 - Added the [formOptions](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/FormViewerProps#formoptions) property to pass custom options to the [getForm](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/FormViewerProps#getform) function.
-- Added the [options](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/TemplateProps#options) property for templates, similar to [formOptions](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/FormViewerProps#formoptions).
-- Added support for [one-way data binding](https://formengine.io/documentation/custom-components#one-way-data-binding) for component properties.
+- Added the [options](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/EmbeddedFormProps#options) property for templates, similar to [formOptions](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/FormViewerProps#formoptions).
+- Added support for [one-way data binding](https://formengine.io/documentation/formengine-designer/features/custom-components#one-way-data-binding) for component properties.
 - Added ability to create [computed](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/IComponentBuilder#computedprop) and [localized](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/IComponentBuilder#localizedprop) properties using the [form JSON builder](https://formengine.io/documentation/api-reference/@react-form-builder/core/functions/buildForm).
 - Added the [persistFormName](https://formengine.io/documentation/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#persistformname) property to disable form name persistence in localStorage.
 - Added the [AutoComplete](https://formengine.io/documentation/components-library/fields-components/autocomplete) component.

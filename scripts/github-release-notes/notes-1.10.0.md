@@ -1,4 +1,6 @@
-- Added a FormBuilder prop to [control the designer's theme](https://formengine.io/documentation/theme-manipulation).
+_August_ 19, 2024
+
+- Added a FormBuilder prop to [control the designer's theme](https://formengine.io/documentation/formengine-designer/faq/theme-manipulation).
 - Added an [hideEditor()](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/AnnotationBuilder#hideeditor) option that allows hide the component property editor when creating annotations (defining component properties).
 
 ### Fixed bugs

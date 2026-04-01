@@ -1,3 +1,5 @@
+_January_ 26, 2025
+
 ### Fixed bugs
 
 - Fixed incorrect import of `@rsuite/icons/esm/icons/status/RemindFill.js`.

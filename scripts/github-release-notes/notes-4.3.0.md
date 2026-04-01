@@ -1,7 +1,9 @@
+_June_ 12, 2025
+
 ### New
 
-- The [disabled and readOnly](https://formengine.io/documentation/disabled-and-read-only) properties have been added to the [Screen, Container, and Template](https://formengine.io/documentation/components-library/structure-components/container#main-properties) components. These properties allow you to make the entire form or part of it disabled or read-only. 
-- A [form validation editor](https://formengine.io/documentation/validation#form-validator-editor) has been added to the designer. It allows you to set a code that will check the entire form.
+- The [disabled and readOnly](https://formengine.io/documentation/formengine-designer/features/disabled-and-read-only) properties have been added to the [Screen, Container, and Template](https://formengine.io/documentation/components-library/structure-components/container#main-properties) components. These properties allow you to make the entire form or part of it disabled or read-only.
+- A [form validation editor](https://formengine.io/documentation/formengine-designer/features/validation#form-validator-editor) has been added to the designer. It allows you to set a code that will check the entire form.
 - Added localizations in **Hindi**, **Serbian**, **Japanese**, and **Korean**.
 - Now the required validation parameters are displayed above the optional ones.
 

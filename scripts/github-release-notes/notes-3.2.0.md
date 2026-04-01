@@ -1,3 +1,5 @@
+_March_ 19, 2025
+
 - The ability to enter values for calculated fields has been returned.
 - For properties that are declared as valued, you can now set an [uncontrolled value](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/Annotation#uncontrolledvalue) that will replace undefined. This is necessary to avoid the React error "A component is changing a controlled input to be uncontrolled".
 - Fixed a bug that caused the reset button in the numeric property editor to not work.

@@ -1,5 +1,3 @@
-## 7.8.0
-
 _December_ 1, 2025
 
 ### New
@@ -10,7 +8,7 @@ _December_ 1, 2025
 
 - Improved tree shaking support for the RSuite component package.
 - Removed the `required` flag from the `action` property of the RsUploader component.
-- Added guide for [usage Designer and RSuite components in React 19](https://formengine.io/documentation/using-designer-and-rsuite-components-in-react-19).
+- Added guide for [usage Designer and RSuite components in React 19](https://formengine.io/documentation/formengine-designer/faq/using-designer-and-rsuite-components-in-react-19).
 
 ### Fixed bugs
 

@@ -1,2 +1,4 @@
+_July_ 3, 2024
+
 - Fixed incorrectly set default values for DatePicker and Uploader components (the bug was introduced in the 1.5.0 release).
 - Fixed `closable` property for Message component.

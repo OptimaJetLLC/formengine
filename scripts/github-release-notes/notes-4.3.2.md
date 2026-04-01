@@ -1,3 +1,5 @@
+_June_ 16, 2025
+
 - Fixed a bug where the **Designer** application crashed trying to access the `process.env`.
 
 ### Updated internal dependencies

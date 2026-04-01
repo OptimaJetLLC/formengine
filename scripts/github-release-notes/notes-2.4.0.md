@@ -1,3 +1,5 @@
+_January_ 16, 2025
+
 - Components can now be added by double-clicking in Designer.
 - Updated internal dependencies:
   - braces from 3.0.2 to 3.0.3.

@@ -1,7 +1,9 @@
+_November_ 20, 2025
+
 ### New
 
 - Added new [`EmbeddedForm`](https://formengine.io/documentation/components-library/templates-components/embedded-form) component that allows embedding forms using the `formName` property instead of embedding the form name in the component type.
-- Introduced [`useBuilderTheme`](https://formengine.io/documentation/api-reference/@react-form-builder/core/variables/useBuilderTheme) hook for accessing the current BuilderStore theme from the core package and custom components.
+- Added [`useBuilderTheme`](https://formengine.io/documentation/api-reference/@react-form-builder/core/variables/useBuilderTheme) hook for accessing the current BuilderStore theme from the core package and custom components.
 
 ### Changed
 

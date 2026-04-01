@@ -1,6 +1,8 @@
-- The `readOnly` property that allows the user to view the form in read only mode has been added to the [FormViewerProps](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/FormViewerProps#readOnly) and to the [FormBuilderProps](https://formengine.io/documentation/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#readonly).
+_October_ 15, 2024
+
+- The `readOnly` property that allows the user to view the form in read only mode has been added to the [FormViewerProps](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/FormViewerProps#readonly) and to the [FormBuilderProps](https://formengine.io/documentation/api-reference/@react-form-builder/designer/interfaces/FormBuilderProps#readonly).
 - For all valued components, a `readOnly` property has been added.
 - Fixed and improved Drag and drop behavior for components.
-- The [ActionDefinition](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/ActionDefinition) and [Language](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/Language) classes were exported from [designer-bundle and viewer-bundle](https://formengine.io/documentation/installation#cdn).
+- The [ActionDefinition](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/ActionDefinition) and [Language](https://formengine.io/documentation/api-reference/@react-form-builder/core/classes/Language) classes were exported from [designer-bundle and viewer-bundle](https://formengine.io/documentation/formengine-designer/getting-started/installation#cdn).
 - The dependency on the `@emotion/styled` package has been removed from the core package.
-- Added documentation for the [Rich text editor](https://formengine.io/documentation/components-library/fields-components/rich-text-editor) and [TimePicker](https://formengine.io/documentation/components-library/fields-components/time-picker) components.
+- Added documentation for the [Rich text editor](https://formengine.io/documentation/formengine-designer/components/rich-text-editor) and [TimePicker](https://formengine.io/documentation/components-library/fields-components/time-picker) components.

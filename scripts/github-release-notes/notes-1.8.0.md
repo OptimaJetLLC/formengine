@@ -1,3 +1,5 @@
+_July_ 31, 2024
+
 - Now the entered value in the component key editor is also applied by pressing Enter.
 
 ### Fixed bugs

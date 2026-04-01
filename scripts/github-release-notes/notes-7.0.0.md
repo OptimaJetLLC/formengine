@@ -1,3 +1,5 @@
+_September_ 1, 2025
+
 ### Breaking changes
 
 - Multiple fields with the same `dataKey` are now updated in sync when form data changes.
@@ -30,11 +32,10 @@
 
 ### Changed
 
-- The [calculated value](https://formengine.io/documentation/computed-properties) button is no longer displayed for properties that are not `calculable` or `localizable`.
+- The [calculated value](https://formengine.io/documentation/formengine-designer/features/computed-properties) button is no longer displayed for properties that are not `calculable` or `localizable`.
 - Removed the incorrect hint suggesting camelCase usage in the HTML Attributes editor.
 
 ### Fixed bugs
 
-- Fixed a bug where deleting a validation rule did not remove its localized messages from the form JSON.  
-- Fixed an issue where [IFormData.getValidationResult](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/IFormData#getvalidationresult) returned unlocalized error messages.  
-
+- Fixed a bug where deleting a validation rule did not remove its localized messages from the form JSON.
+- Fixed an issue where [IFormData.getValidationResult](https://formengine.io/documentation/api-reference/@react-form-builder/core/interfaces/IFormData#getvalidationresult) returned unlocalized error messages.

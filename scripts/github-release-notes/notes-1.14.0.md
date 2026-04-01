@@ -1,3 +1,5 @@
+_October_ 25, 2024
+
 - Added the [Wizard](https://formengine.io/documentation/components-library/structure-components/wizard) component for creating step-by-step forms with the ability to transition between steps.
 - Containers now display their keys when dragging components to make it easier to navigate.
 - Fixed a bug that prevented events set in the useEffect of user components from being triggered.
