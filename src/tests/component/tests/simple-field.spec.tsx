@@ -166,6 +166,7 @@ describe(`SimpleField test`, function () {
     const form = createTestForm((input) => {
         input.props.value = {value: 'defaultValue', computeType: 'localization'}
       }, (form) => {
+        form.localization ??= {}
         form.localization[defaultLanguageCode] = {
           name: {component: {value: localeValue}}
         }
@@ -189,6 +190,7 @@ describe(`SimpleField test`, function () {
     const form = createTestForm((input) => {
         input.props.value = {value: 'defaultValue', computeType: 'localization'}
       }, (form) => {
+        form.localization ??= {}
         form.localization['de-DE'] = {
           name: {component: {value: randomString('de-DE')}}
         }
@@ -203,6 +205,7 @@ describe(`SimpleField test`, function () {
     const form = createTestForm((input) => {
         input.props.value = {value: 'defaultValue', computeType: 'localization'}
       }, (form) => {
+        form.localization ??= {}
         form.localization['de-DE'] = {
           name: {component: {value: randomString('de-DE')}}
         }
@@ -219,9 +222,11 @@ describe(`SimpleField test`, function () {
     const form = createTestForm((input) => {
         input.props.value = {value: 'defaultValue', computeType: 'localization'}
       }, (form) => {
+        form.localization ??= {}
         form.localization['de-DE'] = {
           name: {component: {value: localeValue}}
         }
+        form.languages ??= []
         form.languages.push(new Language('de', 'DE', 'German', 'German', BiDi.LTR))
         form.defaultLanguage = 'de-DE'
       }

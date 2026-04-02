@@ -152,8 +152,8 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
 
   it('Repeater should have a [NOT LOCALIZED] value', async () => {
     const modifyForm = (form: PersistedForm) => {
-      delete form.localization['en-US']['rsStaticContent1']
-      delete form.localization['de-DE']['rsStaticContent1']
+      delete form.localization!['en-US']['rsStaticContent1']
+      delete form.localization!['de-DE']['rsStaticContent1']
     }
     const initialData = {
       rooms: [{roomType: 'luxe'}]
@@ -165,7 +165,7 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
 
   it('Repeater should have a [NOT LOCALIZED] value (no default localization)', async () => {
     const modifyForm = (form: PersistedForm) => {
-      delete form.localization['en-US']['rsStaticContent1']
+      delete form.localization!['en-US']['rsStaticContent1']
     }
     const initialData = {
       rooms: [{roomType: 'luxe'}, {roomType: 'standard'}]
@@ -178,7 +178,7 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
   it('Repeater should have a [NOT LOCALIZED] value (de-DE default lang)', async () => {
     const modifyForm = (form: PersistedForm) => {
       form.languages = []
-      delete form.localization['en-US']['rsStaticContent1']
+      delete form.localization!['en-US']['rsStaticContent1']
       form.defaultLanguage = 'de-DE'
     }
     const initialData = {
@@ -192,7 +192,7 @@ describe.each(repeaterForms)(`RepeaterField '%s' test`, function (_, testForm) {
   it('Repeater should have a localized value (de-DE default lang)', async () => {
     const modifyForm = (form: PersistedForm) => {
       form.languages = [new Language('de', 'DE', 'German', 'German', BiDi.LTR)]
-      delete form.localization['en-US']['rsStaticContent1']
+      delete form.localization!['en-US']['rsStaticContent1']
       form.defaultLanguage = 'de-DE'
     }
     const initialData = {

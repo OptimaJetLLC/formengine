@@ -394,6 +394,7 @@ describe(`TemplateField test`, function () {
     })
 
     const modifyForm = (persistedForm: PersistedForm) => {
+      persistedForm.localization ??= {}
       persistedForm.localization[defaultLanguageCode] ??= {}
       const localization = persistedForm.localization[defaultLanguageCode]
 
@@ -431,6 +432,7 @@ describe(`TemplateField test`, function () {
   it('All input fields should have a [NOT LOCALIZED] value (no default localization)', async () => {
     const lang = 'de-DE'
     const modifyForm = (persistedForm: PersistedForm) => {
+      persistedForm.localization ??= {}
       persistedForm.localization[lang] ??= {}
       const localization = persistedForm.localization[lang]
 
@@ -458,6 +460,7 @@ describe(`TemplateField test`, function () {
     const lang = 'de-DE'
     const modifyForm = (persistedForm: PersistedForm) => {
       persistedForm.defaultLanguage = lang
+      persistedForm.localization ??= {}
       persistedForm.localization[lang] ??= {}
       const localization = persistedForm.localization[lang]
 
@@ -485,7 +488,9 @@ describe(`TemplateField test`, function () {
     const lang = 'de-DE'
     const modifyForm = (persistedForm: PersistedForm) => {
       persistedForm.defaultLanguage = lang
+      persistedForm.languages ??= []
       persistedForm.languages.push(new Language('de', 'DE', 'German', 'German', BiDi.LTR))
+      persistedForm.localization ??= {}
       persistedForm.localization[lang] ??= {}
       const localization = persistedForm.localization[lang]
 

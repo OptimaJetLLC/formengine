@@ -12,9 +12,9 @@ Represents a set of action definitions.
 
 ***
 
-### defaultLanguage
+### defaultLanguage?
 
-> **defaultLanguage**: `string`
+> `optional` **defaultLanguage**: `string`
 
 The default form language.
 
@@ -52,17 +52,17 @@ The form validator.
 
 ***
 
-### languages
+### languages?
 
-> **languages**: [`Language`](../classes/Language.md)[]
+> `optional` **languages**: [`Language`](../classes/Language.md)[]
 
 Form languages.
 
 ***
 
-### localization
+### localization?
 
-> **localization**: [`LocalizationValue`](../type-aliases/LocalizationValue.md)
+> `optional` **localization**: [`LocalizationValue`](../type-aliases/LocalizationValue.md)
 
 Localization of the form.
 
