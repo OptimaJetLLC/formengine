@@ -46,6 +46,7 @@ const config: Config = {
   title: 'Documentation | FormEngine',
   tagline: 'Lightweight, React-based, Drag&Drop, Customizable, JavaScript',
   favicon: 'img/favicon.ico',
+  trailingSlash: true,
 
   // Set the production url of your site here
   url: 'https://formengine.io',

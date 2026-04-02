@@ -498,6 +498,6 @@ Events are crucial for interactive components. Key points:
 
 **Next Steps:**
 
-- Explore [Advanced Patterns](advanced-patterns) for complex component scenarios
+- Explore [Advanced Patterns](/formengine-core/custom-components/advanced-patterns) for complex component scenarios
 
 Happy event handling! 🎉

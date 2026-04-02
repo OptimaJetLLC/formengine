@@ -242,5 +242,5 @@ Apply global CSS variables, custom fonts, or brand-specific styling.
 
 ## Related Topics
 
-- [Localization](../localization) - Learn about language and RTL/LTR support
-- [Styling](../styling-components-and-forms) - Form styling options
+- [Localization](/formengine-core/localization) - Learn about language and RTL/LTR support
+- [Styling](/formengine-core/styling-components-and-forms) - Form styling options

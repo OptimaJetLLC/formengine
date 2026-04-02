@@ -624,4 +624,4 @@ takeaways:
 
 By mastering container components, you can create flexible, reusable layout structures that can be configured entirely through JSON forms.
 
-For more advanced patterns, see [Advanced Patterns](../custom-components/advanced-patterns) documentation.
+For more advanced patterns, see [Advanced Patterns](/formengine-core/custom-components/advanced-patterns) documentation.

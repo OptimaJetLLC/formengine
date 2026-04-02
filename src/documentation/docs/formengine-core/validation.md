@@ -1386,7 +1386,7 @@ import DocCard from '@theme/DocCard';
 type: 'link',
 docId: 'formengine-core/custom-components/custom-error-component',
 label: 'How to add your own component to display the error',
-href: './custom-components/custom-error-component'
+href: '/formengine-core/custom-components/custom-error-component'
 }}/>
 
 ### Showing All Validation Errors

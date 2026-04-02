@@ -524,9 +524,9 @@ Congratulations! You've created your first custom component. Let's recap what we
 
 Now that you understand the basics, you can explore more advanced topics:
 
-- **[Simple Components](simple-components)** - Learn about different property types and static components
-- **[Valued Components](valued-components)** - Add data binding to make interactive form fields
-- **[Components with Events](component-with-events)** - Handle user interactions and trigger actions
+- **[Simple Components](/formengine-core/custom-components/simple-components)** - Learn about different property types and static components
+- **[Valued Components](/formengine-core/custom-components/valued-components)** - Add data binding to make interactive form fields
+- **[Components with Events](/formengine-core/custom-components/component-with-events)** - Handle user interactions and trigger actions
 
 ## Common Pitfalls
 

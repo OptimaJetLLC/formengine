@@ -503,5 +503,5 @@ Key takeaways:
 - Test components in isolation before using in forms
 - Keep components reusable and configurable
 
-Ready to add interactivity? Next, learn about [Valued Components](valued-components) to create components that can read and write form data!
-🚀
+Ready to add interactivity? Next, learn about [Valued Components](/formengine-core/custom-components/valued-components) to create components
+that can read and write form data! 🚀

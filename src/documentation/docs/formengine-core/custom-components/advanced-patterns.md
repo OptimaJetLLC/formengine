@@ -366,6 +366,6 @@ Key takeaways:
 
 **Next Steps:**
 
-- Explore [Styling Custom Components](styling-custom-components) for visual customization
+- Explore [Styling Custom Components](/formengine-core/custom-components/styling-custom-components) for visual customization
 
 Happy advanced component building! 🚀

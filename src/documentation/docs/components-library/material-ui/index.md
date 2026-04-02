@@ -96,7 +96,7 @@ Components for modal dialogs and overlays:
 | Component                                                                       | Description                   | Material UI Documentation                                                                    |
 |:--------------------------------------------------------------------------------|:------------------------------|:---------------------------------------------------------------------------------------------|
 | **[MuiDialog](/components-library/material-ui/dialog)**                         | Main dialog container         | <MaterialUIComponentsDocItem link="/react-dialog/" caption="Dialog" />                       |
-| **[MuiDialogTitle](/components-library/material-ui/dialog-title)**              | Dialog title component        | <MaterialUIComponentsDocItem link="/api/dialog-title/" caption="DialogTitle" />              |
+| **[MuiDialogTitle](/components-library/material-ui/dialog-title/)**             | Dialog title component        | <MaterialUIComponentsDocItem link="/api/dialog-title/" caption="DialogTitle" />              |
 | **[MuiDialogContent](/components-library/material-ui/dialog-content)**          | Dialog content container      | <MaterialUIComponentsDocItem link="/api/dialog-content/" caption="DialogContent" />          |
 | **[MuiDialogContentText](/components-library/material-ui/dialog-content-text)** | Dialog text content           | <MaterialUIComponentsDocItem link="/api/dialog-content-text/" caption="DialogContentText" /> |
 | **[MuiDialogActions](/components-library/material-ui/dialog-actions)**          | Dialog actions container      | <MaterialUIComponentsDocItem link="/api/dialog-actions/" caption="DialogActions" />          |

@@ -791,7 +791,7 @@ import DocCard from '@theme/DocCard';
 type: 'link',
 docId: 'formengine-core/custom-components/custom-modal-component',
 label: 'How to add your own modal component',
-href: './custom-components/custom-modal-component'
+href: '/formengine-core/custom-components/custom-modal-component'
 }}/>
 
 ## Best practices

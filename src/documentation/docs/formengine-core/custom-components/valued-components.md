@@ -1395,7 +1395,7 @@ Valued components are essential for creating interactive forms. Key points:
 
 **Next Steps:**
 
-- Learn about [Components with Events](component-with-events) to handle user interactions
-- Check out [Advanced Patterns](advanced-patterns) for complex scenarios
+- Learn about [Components with Events](/formengine-core/custom-components/component-with-events) to handle user interactions
+- Check out [Advanced Patterns](/formengine-core/custom-components/advanced-patterns) for complex scenarios
 
 Happy coding! 🎯
