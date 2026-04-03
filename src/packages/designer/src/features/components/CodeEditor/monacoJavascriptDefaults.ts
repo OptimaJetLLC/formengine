@@ -3,7 +3,7 @@ import {ActionEventArgsDeclaration, IFormDataDeclaration} from '@react-form-buil
 /**
  * The additional source file to the language service.
  */
-export type MonacoExtraLib = {
+type MonacoExtraLib = {
 
   /**
    * The file content.

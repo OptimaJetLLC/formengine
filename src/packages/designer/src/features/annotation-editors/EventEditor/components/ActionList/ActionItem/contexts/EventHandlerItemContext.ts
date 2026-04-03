@@ -3,7 +3,7 @@ import {createNonNullableContext} from '@react-form-builder/core'
 /**
  * The event handler (action) item.
  */
-export type EventHandlerItem = {
+type EventHandlerItem = {
   /**
    * The index in the array of event handlers.
    */

@@ -7,7 +7,7 @@ import {Hinted} from './Hinted'
 /**
  * The properties of the cross button.
  */
-export interface CrossButtonProps {
+interface CrossButtonProps {
   /**
    * The callback function called when the button is clicked.
    */
@@ -41,7 +41,7 @@ export const CrossButton = (props: CrossButtonProps) => {
 /**
  * The properties of the clean button.
  */
-export interface CleanButtonProps {
+interface CleanButtonProps {
   /**
    * The callback function called when the button is clicked.
    */

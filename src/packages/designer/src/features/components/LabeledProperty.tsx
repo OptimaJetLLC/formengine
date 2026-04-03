@@ -57,7 +57,7 @@ export interface LabeledPropertyProps extends CalculableEditorProps, HTMLAttribu
 /**
  * Represents the properties of a Code Button component.
  */
-export interface CodeButtonProps extends CalculableEditorProps {
+interface CodeButtonProps extends CalculableEditorProps {
   /**
    * The metadata for a React component property.
    */
@@ -232,6 +232,6 @@ const RawLabeledProperty = (props: LabeledPropertyProps) => {
  * @param props.props the other properties of the component.
  * @returns the React element.
  */
-export const LabeledProperty = customizable('LabeledProperty', RawLabeledProperty)
+const LabeledProperty = customizable('LabeledProperty', RawLabeledProperty)
 
 export default LabeledProperty

@@ -6,7 +6,7 @@ import type {MapMarker} from './MapMarker'
 /**
  * The properties of the markers component.
  */
-export interface MarkersProps {
+interface MarkersProps {
   /**
    * Coordinates of the markers
    */

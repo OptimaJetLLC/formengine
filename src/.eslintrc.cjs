@@ -116,6 +116,11 @@ module.exports = {
     'jsdoc/no-multi-asterisks': ['error', {
       'allowWhitespace': true
     }],
+    // Keep `typed: true` from `plugin:jsdoc/recommended-typescript-error`; add tool-specific tags.
+    'jsdoc/check-tag-names': ['error', {
+      typed: true,
+      definedTags: ['knipignore'],
+    }],
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'error'
   },

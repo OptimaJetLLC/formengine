@@ -6,7 +6,7 @@ import {PlaceAutocompleteClassic} from './AutoComplete'
 /**
  * The properties of the CustomAutocompleteControl component.
  */
-export interface CustomAutocompleteControlProps {
+interface CustomAutocompleteControlProps {
   /**
    * The position of the control on the map.
    */

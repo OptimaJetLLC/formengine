@@ -56,7 +56,7 @@ const Title = styled.label`
 /**
  * Toolbar React component properties.
  */
-export interface ToolbarProps {
+interface ToolbarProps {
   /**
    * Flag if true - the toolbar is displayed in compact mode, false otherwise.
    */

@@ -6,7 +6,7 @@ import {toAddress} from './toAddress'
 /**
  * Represents the address response.
  */
-export type AddressResponse = {
+type AddressResponse = {
   /**
    * The address of the location.
    */
@@ -20,7 +20,7 @@ export type AddressResponse = {
 /**
  * Retrieves the address of a location.
  */
-export type GetAddressFn = (location: google.maps.LatLngLiteral) => Promise<AddressResponse | undefined>
+type GetAddressFn = (location: google.maps.LatLngLiteral) => Promise<AddressResponse | undefined>
 
 /**
  * @returns the function that retrieves the address of a location.

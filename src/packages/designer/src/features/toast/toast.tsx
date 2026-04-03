@@ -6,7 +6,7 @@ import type {PlacementType} from 'rsuite/esm/toaster/ToastContainer'
 /**
  * Toast React component settings.
  */
-export interface ToastSettings {
+interface ToastSettings {
   /**
    * The message.
    */

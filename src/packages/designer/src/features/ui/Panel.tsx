@@ -10,7 +10,7 @@ import type {PanelPlacement} from './PanelPlacement'
 
 const transition = '200ms ease-in-out'
 
-export const ContentContainer = styled.div`
+const ContentContainer = styled.div`
   min-height: 0;
   display: flex;
   flex-direction: column;
@@ -31,7 +31,7 @@ export const ContentContainer = styled.div`
   }
 `
 
-export const HideButton = styled.div`
+const HideButton = styled.div`
   position: absolute;
   display: flex;
   overflow: hidden;

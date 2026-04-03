@@ -19,7 +19,7 @@ interface EmbeddedFormContext {
   embeddedFormProps: Record<string, any>
 }
 
-export const [
+const [
   /**
    * **Internal use only.**
    */
@@ -88,3 +88,5 @@ export const EmbeddedForm = (props: EmbeddedFormProps) => {
   )
 }
 EmbeddedForm.displayName = 'EmbeddedForm'
+
+export {useEmbeddedForm}

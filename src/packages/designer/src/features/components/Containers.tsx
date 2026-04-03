@@ -76,7 +76,7 @@ export const listStyle = css`
   }
 `
 
-export const clickableStyle = css`
+const clickableStyle = css`
   && > * {
     cursor: pointer;
 

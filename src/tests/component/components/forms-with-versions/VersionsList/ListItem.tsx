@@ -5,7 +5,7 @@ import {useCallback} from 'react'
 import {ButtonGroup, IconButton} from 'rsuite'
 import {FaIcon} from './Icons'
 
-export const itemStyle: CSSProperties = {
+const itemStyle: CSSProperties = {
   display: 'flex',
   backgroundColor: 'var(--rs-btn-default-bg)',
   borderRadius: 10,

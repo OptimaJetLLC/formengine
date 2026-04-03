@@ -9,7 +9,7 @@ import type {IFormBuilder} from '../../utils/types'
 /**
  * The form builder context provider props.
  */
-export interface FormBuilderContextProviderProps {
+interface FormBuilderContextProviderProps {
   /**
    * The React child node.
    */

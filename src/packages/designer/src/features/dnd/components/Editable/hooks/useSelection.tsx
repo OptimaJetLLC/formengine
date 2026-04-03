@@ -10,7 +10,7 @@ import {stopEvent} from '../../../../../utils/stopEvent'
 /**
  * Represents the selection state of the component.
  */
-export interface SelectionState {
+interface SelectionState {
   /**
    * Flag, if true then the component is hovered, false otherwise.
    */
@@ -24,7 +24,7 @@ export interface SelectionState {
 /**
  * Represents mouse event handlers for the selected component.
  */
-export interface SelectionHandlers {
+interface SelectionHandlers {
   /**
    * The callback function called when a component is clicked.
    * @param e the original mouse event.
@@ -44,7 +44,7 @@ export interface SelectionHandlers {
 /**
  * The type for the CSS class name.
  */
-export type ClassName = string
+type ClassName = string
 
 /**
  * @returns the array [{@link SelectionState}, {@link SelectionHandlers}, {@link ClassName}] with component selection data.

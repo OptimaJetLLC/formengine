@@ -22,7 +22,7 @@ const SCodeEditor = styled(CodeEditor)`
 /**
  * CSSEditor React component properties.
  */
-export interface CSSEditorProps {
+interface CSSEditorProps {
   /**
    * Display resolution type.
    */
@@ -52,8 +52,8 @@ const RawCSSEditor = ({device, useWrapperStyles, defaultActiveTab}: CSSEditorPro
 
   const onChange = useCallback((value: any) => {
     store[activeTab] ??= {}
-    store[activeTab]![device] ??= {}
-    store[activeTab]![device]!.string = value
+    store[activeTab][device] ??= {}
+    store[activeTab][device].string = value
   }, [store, activeTab, device])
 
   const handleSelect: RadioButtonsProps['onChange'] = useCallback(value => setActiveTab(value as CssPart), [setActiveTab])

@@ -32,7 +32,7 @@ export const renderLanguageItem = (language: Language) => {
 /**
  * LocalizationPicker React component properties.
  */
-export interface LocalizationPickerProps {
+interface LocalizationPickerProps {
   /**
    * The full code of the selected language.
    */

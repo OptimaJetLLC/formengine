@@ -92,7 +92,7 @@ export class EditableProperty implements CalculableEditorProps {
 /**
  * The callback function called when a component is selected in a modal window.
  */
-export type OnSelectCallback = (source: ComponentData) => void
+type OnSelectCallback = (source: ComponentData) => void
 
 /**
  * The function that checks if the component can be added.
@@ -164,7 +164,7 @@ export class EditableAction implements CodeActionEditorProps {
 /**
  * The state of the modal window of the component list.
  */
-export interface ComponentsModalState {
+interface ComponentsModalState {
   /**
    * The flag of modal window visibility, if true - the window is shown, if false - the window is hidden.
    */
@@ -184,7 +184,7 @@ export interface ComponentsModalState {
 /**
  * The state of the modal window for entering a value.
  */
-export interface PromptModalState extends PromptDialogProps {
+interface PromptModalState extends PromptDialogProps {
   /**
    * The flag of modal window visibility, if true - the window is shown, if false - the window is hidden.
    */
@@ -271,7 +271,7 @@ const initialModalState = {
 /**
  * Insert component options.
  */
-export type InsertComponentOptions = {
+type InsertComponentOptions = {
   /**
    * The component to be added to the component tree.
    */

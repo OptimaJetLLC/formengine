@@ -5,7 +5,7 @@ import {useRepeaterProps} from './RepeaterPropsContext'
 /**
  * The RepeaterItem component properties.
  */
-export interface RepeaterItemProps {
+interface RepeaterItemProps {
   /**
    * The React child node.
    */

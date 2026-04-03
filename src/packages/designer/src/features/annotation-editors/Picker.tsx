@@ -23,7 +23,7 @@ const addCustomValue = ({data}: PropertyAnnotation, value: string) => {
  * @param props the Annotation editor component properties.
  * @returns the React element.
  */
-export const RawPicker = (props: AnnotationEditorProps & { 'data-testid'?: string }) => {
+const RawPicker = (props: AnnotationEditorProps & { 'data-testid'?: string }) => {
   const {['data-testid']: testId, value, onChange, onClean, componentData, annotation} = props
   const calculatedEditorProps = useCalculatedEditorProps(annotation, componentData)
 

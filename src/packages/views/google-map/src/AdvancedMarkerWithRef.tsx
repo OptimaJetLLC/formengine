@@ -5,7 +5,7 @@ import {useCallback} from 'react'
 /**
  * The properties of the AdvancedMarkerWithRef component.
  */
-export interface AdvancedMarkerWithRefProps extends AdvancedMarkerProps {
+interface AdvancedMarkerWithRefProps extends AdvancedMarkerProps {
   /**
    * The callback function triggered when a marker is clicked.
    */

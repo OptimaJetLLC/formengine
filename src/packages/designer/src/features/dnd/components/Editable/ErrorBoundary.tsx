@@ -33,7 +33,7 @@ const ComponentRenderError = namedObserver('ComponentRenderError', RawComponentR
 /**
  * The ErrorBoundary component state.
  */
-export interface ErrorBoundaryState {
+interface ErrorBoundaryState {
 
   /**
    * Flag, if true, a rendering error occurred.
@@ -54,7 +54,7 @@ export interface ErrorBoundaryState {
 /**
  * The ErrorBoundary component properties.
  */
-export interface ErrorBoundaryProps {
+interface ErrorBoundaryProps {
   /**
    * The React child node.
    */

@@ -42,7 +42,7 @@ interface LabeledProps extends ComponentProps<any> {
  * @param props.passAriaToChildren if true, ARIA attributes will be passed automatically to children.
  * @returns the React element.
  */
-export const RawLabeled = ({label, children, passAriaToChildren, ...props}: LabeledProps) => {
+const RawLabeled = ({label, children, passAriaToChildren, ...props}: LabeledProps) => {
   const {id} = useComponentData()
   const aria = useAriaAttributes({labeled: !!label})
   return <Container {...props} role="group">

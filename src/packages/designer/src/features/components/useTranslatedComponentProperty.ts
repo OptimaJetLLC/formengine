@@ -8,7 +8,7 @@ import {useComponentLibraryDescription} from '../ui/ComponentBar/useComponentLib
 /**
  * The translated component property.
  */
-export type TranslatedComponentProperty = {
+type TranslatedComponentProperty = {
   /**
    * The property hint.
    */

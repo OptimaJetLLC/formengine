@@ -9,7 +9,7 @@ type MarkerType = google.maps.marker.AdvancedMarkerElement
 /**
  * The properties of the marker information component.
  */
-export interface MarkerInfoProps {
+interface MarkerInfoProps {
   /**
    * The selected marker.
    */

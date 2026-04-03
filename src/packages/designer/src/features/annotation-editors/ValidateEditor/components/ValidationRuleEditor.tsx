@@ -27,7 +27,7 @@ const WarningButton = (props: ComponentProps<any>) => {
 /**
  * The properties of the React {@link ValidationRuleEditor} component.
  */
-export interface ValidationRuleEditorProps {
+interface ValidationRuleEditorProps {
   /**
    * The validation rule settings.
    */

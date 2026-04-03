@@ -45,7 +45,7 @@ const SNodeItem = styled.div`
 /**
  * TreeNode React component properties.
  */
-export interface TreeNodeProps {
+interface TreeNodeProps {
   /**
    * The CSS class name.
    */

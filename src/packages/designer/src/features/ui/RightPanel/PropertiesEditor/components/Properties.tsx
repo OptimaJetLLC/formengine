@@ -79,7 +79,7 @@ const bySubSection = (section?: SubSection) => (annotation: Annotation) => SubSe
 /**
  * Represents the properties of PropertyBlock component.
  */
-export interface PropertyBlockProps {
+interface PropertyBlockProps {
   /**
    * The array of metadata properties of a React component.
    */

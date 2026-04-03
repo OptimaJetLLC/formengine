@@ -15,7 +15,7 @@ const stringify = (value: any, space?: number) => {
 /**
  * The JSON editor properties.
  */
-export interface JsonInputProps {
+interface JsonInputProps {
   /**
    * The editor value.
    */

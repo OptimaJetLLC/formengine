@@ -4,7 +4,7 @@ import type {LicenseFeatureDescription, Violations} from './license'
 /**
  * License check context.
  */
-export type LicenseContext = {
+type LicenseContext = {
   /**
    * Indicates whether the license key is valid (excluding feature checks).
    */

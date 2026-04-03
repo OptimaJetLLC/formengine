@@ -29,7 +29,7 @@ const SLabel = styled.label<{ hinted?: boolean }>`
 /**
  * React component properties for the {@link HintedLabel} component.
  */
-export interface HintedLabelProps {
+interface HintedLabelProps {
   /**
    * The value of the HTML "for" attribute.
    */
@@ -51,7 +51,7 @@ export interface HintedLabelProps {
 /**
  * React component properties for the {@link Hinted} component.
  */
-export interface HintedProps extends Omit<WhisperProps, 'speaker'> {
+interface HintedProps extends Omit<WhisperProps, 'speaker'> {
   /**
    * The tooltip value.
    */
@@ -102,7 +102,7 @@ export const HintedLabel = ({hint, children, ...labelProps}: HintedLabelProps) =
  * React component properties for the {@link HintedIconButton} component.
  * @internal
  */
-export interface HintedIconButtonProps {
+interface HintedIconButtonProps {
   /**
    * The tooltip text.
    */

@@ -39,7 +39,7 @@ const PropertyErrorMessage = ({children, error}: ErrorWrapperProps) => (
 /**
  * Represents a set of erroneous component properties.
  */
-export interface ErroneousProps extends WrapperProps, AnnotationEditorProps {
+interface ErroneousProps extends WrapperProps, AnnotationEditorProps {
   /**
    * The error message.
    */

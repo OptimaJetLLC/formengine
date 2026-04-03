@@ -3,7 +3,7 @@ import {act} from '@testing-library/react'
 /**
  * The async function type.
  */
-export type AsyncFn<T> = () => Promise<T>
+type AsyncFn<T> = () => Promise<T>
 
 /**
  * Executes the async function in the React testing library's act function.

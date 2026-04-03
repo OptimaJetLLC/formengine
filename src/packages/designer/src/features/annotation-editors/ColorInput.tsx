@@ -30,7 +30,7 @@ const SButton = styled(InputGroup.Button)`
  * @param value the object or string with a CSS color.
  * @returns the string containing the color in CSS format.
  */
-export function rgbToString(value: RgbaColor) {
+function rgbToString(value: RgbaColor) {
   const {r, g, b, a} = value
   return `rgba(${r}, ${g}, ${b}, ${a})`
 }
@@ -40,7 +40,7 @@ export function rgbToString(value: RgbaColor) {
  * @param value the string containing a rgba color.
  * @returns the object with properties '{r, g, b, a}'.
  */
-export function rgbFromString(value: string): RgbaColor {
+function rgbFromString(value: string): RgbaColor {
   const matchColors = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
   const [, r, g, b, a] = matchColors.exec(value) || []
   return {r: Number(r), g: Number(g), b: Number(b), a: Number(a)}

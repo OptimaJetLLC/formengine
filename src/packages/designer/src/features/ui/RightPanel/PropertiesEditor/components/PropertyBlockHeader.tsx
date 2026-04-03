@@ -9,7 +9,7 @@ const spanClassName = css`
 /**
  * The properties of the PropertyBlockHeader component.
  */
-export interface PropertyBlockHeaderProps {
+interface PropertyBlockHeaderProps {
   /**
    * The header hint.
    */

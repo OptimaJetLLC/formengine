@@ -14,7 +14,7 @@ export type SignaturePadHandle = {
 /**
  * The internal Signature pad properties.
  */
-export interface SignaturePadProps extends SignatureProps {
+interface SignaturePadProps extends SignatureProps {
   /**
    * The 'aria' attributes for internal Signature pad.
    */

@@ -42,7 +42,7 @@ const getEditor = (computeType: ComputeType, builderStore: BuilderStore) => {
 /**
  * ComputedPropertyEditor React component properties.
  */
-export interface ComputedPropertyEditorProps {
+interface ComputedPropertyEditorProps {
   /**
    * The editable computable property.
    */

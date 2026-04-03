@@ -43,7 +43,7 @@ function getWrappedMantineComponentTypes(packageJson: { exports?: PackageJsonExp
  * @param packageJson mantine package.json object (defaults to imported package.json)
  * @returns sorted list of component type names
  */
-export function getMantineComponentTypes(
+function getMantineComponentTypes(
   packageJson: { exports?: PackageJsonExports } = mantinePackageJson
 ): string[] {
   const wrappedComponentTypes = getWrappedMantineComponentTypes(packageJson)
@@ -74,7 +74,7 @@ export function getMantineComponentTypes(
  * @param type component type name
  * @returns human-readable label
  */
-export function componentTypeToLabel(type: string): string {
+function componentTypeToLabel(type: string): string {
   const withoutPrefix = type.replace(/^Mt/, '')
   return withoutPrefix
     .replace(/([A-Z])/g, (_m, _p1, offset) => (offset ? ' ' : '') + _m)
@@ -106,7 +106,7 @@ function buildDefaultTextProps(type: string): Record<string, { value: string }> 
  * @param componentTypes list of component type names (e.g. MtButton, MtTextInput)
  * @returns form JSON object
  */
-export function buildMantineFormJson(componentTypes: string[]): any {
+function buildMantineFormJson(componentTypes: string[]): any {
   const children: any[] = componentTypes.map((type, index) => ({
     key: `${type}-${index + 1}`,
     type,

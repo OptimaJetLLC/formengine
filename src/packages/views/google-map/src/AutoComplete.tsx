@@ -14,7 +14,7 @@ const SInput = styled.input`
 /**
  * The properties of the PlaceAutocompleteClassic component.
  */
-export interface PlaceAutocompleteClassicProps {
+interface PlaceAutocompleteClassicProps {
   /**
    * Callback function to handle place selection.
    * @param place the selected place.
