@@ -2,7 +2,7 @@
   "version": "1",
   "actions": {
     "WeatherRequest": {
-      "body": "try {\n  const request = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.62&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`, {signal: AbortSignal.timeout(10000)})\n  const value = await request.json()    \n  e.setUserDefinedProps({children: `Current weather is ${value.current_weather.temperature} °C`})\n} catch (error) {\n  e.setUserDefinedProps({children: `Current weather is not available`})\n}",
+      "body": "await new Promise((resolve) => setTimeout(resolve, 100));\nconst value = { current_weather: { temperature: 12 } };\ne.setUserDefinedProps({children: `Current weather is ${value.current_weather.temperature} °C`})",
       "params": {}
     }
   },
@@ -10,6 +10,12 @@
     "key": "screen 1",
     "type": "Screen",
     "props": {},
+    "htmlAttributes": [
+      {
+        "name": "data-testid",
+        "value": "mainScreen"
+      }
+    ],
     "children": [
       {
         "key": "RsButton 1",

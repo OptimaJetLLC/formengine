@@ -7,6 +7,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const testDir = '../component/tests/**/*.{test,spec}.?(c|m)[jt]s?(x)'
+const actEnvSetup = '../component/config/setup-act-environment.ts'
 const configDir = '../component/config/setup.ts'
 const exclude = [
   // Mantine supports react >= 18
@@ -29,7 +30,7 @@ export default defineConfig((env) => mergeConfig(base(env), {
     environment: 'jsdom', // Use jsdom for testing in the browser
     include: [testDir],
     exclude,
-    setupFiles: [configDir], // Optional: Set up file for tests
+    setupFiles: [actEnvSetup, configDir],
     globals: true, // Use global variables for testing
     coverage: {
       reporter: ['text', 'html'], // Report coverage in both text and HTML

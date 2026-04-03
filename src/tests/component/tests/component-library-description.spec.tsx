@@ -86,7 +86,10 @@ describe('Component library description test', () => {
     const {container, findByTestId} = await renderBuilder(form, {view})
 
     const component = await findByTestId('MyComponent')
-    fireEvent.click(component)
+
+    await asyncAct(async () => {
+      fireEvent.click(component)
+    })
 
     const prop1Wrapper = await findByTestId('prop1-labeled-wrapper')
     const prop2Wrapper = await findByTestId('prop2-labeled-wrapper')
