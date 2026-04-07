@@ -1,5 +1,4 @@
 import {
-  formEngineRsuiteCssLoader,
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
@@ -16,7 +15,6 @@ const builderView = new BuilderView(builderComponents)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 const divStyle = {height: '100vh'}
 

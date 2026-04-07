@@ -1,6 +1,5 @@
 import {ReactNode, useMemo} from 'react'
 import {
-  formEngineRsuiteCssLoader,
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
@@ -32,7 +31,6 @@ const view = createView(viewerComponents)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 const ViewerWrap = ({children}: { children: ReactNode }) => (
   <MessageProvider>

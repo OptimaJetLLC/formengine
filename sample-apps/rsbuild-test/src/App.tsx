@@ -1,7 +1,6 @@
 import {muiBox} from '@react-form-builder/components-material-ui/box'
 import {muiButton} from '@react-form-builder/components-material-ui/button'
 import {
-  formEngineRsuiteCssLoader,
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
@@ -24,7 +23,6 @@ const view = new BuilderView(components)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 function App() {
   return <FormBuilder view={view}/>

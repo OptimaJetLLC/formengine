@@ -1,4 +1,4 @@
-import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {BiDi, createView, FormViewer, LanguageFullCode} from '@react-form-builder/core'
 import {allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
 import {render, RenderResult} from '@testing-library/react'
@@ -28,7 +28,6 @@ const viewerView = createView(allComponentsViewer)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 const Viewer = ({language}: { language?: LanguageFullCode }) => {
   return <FormViewer view={viewerView} getForm={getForm} language={language} initialData={initialData}/>

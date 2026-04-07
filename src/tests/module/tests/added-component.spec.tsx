@@ -1,5 +1,5 @@
 import {ComponentData} from '@react-form-builder/core'
-import {createAddedComponentData} from '@react-form-builder/designer/src/stores/AvailableComponents'
+import {createAddedComponentData} from '@react-form-builder/designer'
 import {beforeAll} from 'vitest'
 import {createMockBuilderStore, createMockStore, mockComponent} from '../common/createMockBuilderStore'
 

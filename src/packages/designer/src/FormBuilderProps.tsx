@@ -9,7 +9,8 @@ import type {
 } from '@react-form-builder/core'
 import type {ComponentType, ForwardedRef} from 'react'
 import type {AnnotationEditorProps} from './features/annotation-editors/AnnotationEditorProps'
-import type {CustomizationMap} from './features/customization'
+import type {CustomizationMap} from './features/customization/CustomizationMap'
+import type {StylesProviderProps} from './features/localization/components/StylesProviderProps'
 import type {FormBuilderI18n} from './features/localization/FormBuilderLanguage'
 import type {IPresetComponentOptions} from './features/preset-component/IPresetComponentOptions'
 import type {FormBuilderTheme} from './FormBuilderTheme'
@@ -116,6 +117,11 @@ export interface FormBuilderProps extends Omit<FormViewerProps, 'view'> {
    * Indicates the theme preference.
    */
   theme?: FormBuilderTheme
+
+  /**
+   * The component that loads the CSS.
+   */
+  stylesProvider?: ComponentType<StylesProviderProps>
 
   /**
    * If true, the form name will be saved to localStorage and restored when the Form builder is reopened.

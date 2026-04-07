@@ -1,9 +1,8 @@
-import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {BiDi, BuilderView, createView, FormViewer, LanguageFullCode} from '@react-form-builder/core'
-import {CustomizationMap, FormBuilder} from '@react-form-builder/designer'
-import deDE from '@react-form-builder/designer/public/locales/de-DE.json'
-import enEN from '@react-form-builder/designer/public/locales/en-US.json'
-import {verifyDomain} from '@react-form-builder/designer/src/features/license/domain'
+import {CustomizationMap, FormBuilder, verifyDomain} from '@react-form-builder/designer'
+import deDE from '@react-form-builder/designer/locales/de-DE.json'
+import enEN from '@react-form-builder/designer/locales/en-US.json'
 import {allComponentsBuilder, allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
 import {
   license2030Enterprise,
@@ -47,7 +46,6 @@ const viewerView = createView(allComponentsViewer)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 const Viewer = ({language, formName}: { language?: string, formName?: string }) => {
   const lng: LanguageFullCode | undefined = language ? `${language.toLowerCase()}-${language.toUpperCase()}` : undefined
@@ -61,14 +59,12 @@ const viewAllComponents = new BuilderView(allComponentsBuilder)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 const viewNoComponents = new BuilderView([])
   .withTemplates(['agreement'])
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 export const simpleCustomization: CustomizationMap = {
   MainMenu_Dropdown: {

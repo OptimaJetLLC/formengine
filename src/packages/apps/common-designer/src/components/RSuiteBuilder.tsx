@@ -3,7 +3,6 @@ import {fastQrComponent, fastQrComponentsDescriptions} from '@react-form-builder
 import {googleMapComponent, googleMapComponentsDescriptions} from '@react-form-builder/components-google-map'
 import {richTextComponent, richTextEditorComponentsDescriptions} from '@react-form-builder/components-rich-text'
 import {
-  formEngineRsuiteCssLoader,
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
@@ -38,7 +37,6 @@ const view = new BuilderView(components)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
   .withComponentLibraryDescription(fastQrComponentsDescriptions)
   .withComponentLibraryDescription(googleMapComponentsDescriptions)
   .withComponentLibraryDescription(richTextEditorComponentsDescriptions)

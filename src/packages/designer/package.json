@@ -59,11 +59,12 @@
   },
   "devDependencies": {
     "@types/file-saver": "^2.0.5",
+    "postcss": "^8.5.8",
     "vite-inline-css-plugin": "^0.0.1"
   },
   "peerDependencies": {
-    "clsx": "^2.1.1",
     "@react-form-builder/core": "7.15.0",
+    "clsx": "^2.1.1",
     "mobx": "^6.13.5",
     "mobx-react": "^9.2.0",
     "react": ">=17.0.2 || ^18 || ^19",
@@ -78,5 +79,27 @@
   "files": [
     "dist/*",
     "README.md"
-  ]
+  ],
+  "exports": {
+    ".": {
+      "import": "./index.ts",
+      "require": "./index.ts",
+      "default": "./index.ts"
+    },
+    "./package.json": "./package.json",
+    "./assets/designer.ltr.min.css": "./public/css/designer.ltr.css",
+    "./assets/designer.rtl.min.css": "./public/css/designer.rtl.css",
+    "./locales/ar-EG.json": "./public/locales/ar-EG.json",
+    "./locales/de-DE.json": "./public/locales/de-DE.json",
+    "./locales/en-US.json": "./public/locales/en-US.json",
+    "./locales/es-ES.json": "./public/locales/es-ES.json",
+    "./locales/fa-IR.json": "./public/locales/fa-IR.json",
+    "./locales/fr-FR.json": "./public/locales/fr-FR.json",
+    "./locales/hi-IN.json": "./public/locales/hi-IN.json",
+    "./locales/it-IT.json": "./public/locales/it-IT.json",
+    "./locales/ja-JP.json": "./public/locales/ja-JP.json",
+    "./locales/ko-KR.json": "./public/locales/ko-KR.json",
+    "./locales/sr-RS.json": "./public/locales/sr-RS.json",
+    "./locales/zh-CN.json": "./public/locales/zh-CN.json"
+  }
 }

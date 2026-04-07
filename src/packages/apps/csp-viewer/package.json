@@ -1,0 +1,36 @@
+{
+  "name": "@react-form-builder/csp-viewer",
+  "version": "7.15.0",
+  "private": true,
+  "main": "src/index.tsx",
+  "type": "module",
+  "description": "OptimaJet Form Viewer Application (CSP version)",
+  "author": "Optimajet",
+  "homepage": "https://formengine.io/",
+  "license": "https://optimajet.com/products/formengine/eula/",
+  "bugs": {
+    "email": "support@optimajet.com"
+  },
+  "scripts": {
+    "start": "vite --open --host",
+    "dev": "vite --host"
+  },
+  "dependencies": {
+    "@react-form-builder/components-antd": "^7.15.0",
+    "@react-form-builder/components-fast-qr": "^7.15.0",
+    "@react-form-builder/components-google-map": "^7.15.0",
+    "@react-form-builder/components-rich-text": "^7.15.0",
+    "@react-form-builder/components-rsuite": "^7.15.0",
+    "@react-form-builder/components-rsuite-table": "^7.15.0",
+    "@react-form-builder/components-signature": "^7.15.0",
+    "@react-form-builder/core": "^7.15.0",
+    "monaco-editor": "^0.52.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "rsuite": "5.83.4"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.14",
+    "@types/react-dom": "^19.0.6"
+  }
+}

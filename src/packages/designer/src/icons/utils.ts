@@ -1,5 +1,5 @@
 import type {Meta} from '@react-form-builder/core'
-import {icons} from './index'
+import {icons} from './icons'
 
 /**
  * Gets an icon component from the icon name or returns the provided icon component

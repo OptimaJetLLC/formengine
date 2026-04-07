@@ -1,4 +1,4 @@
-import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {
   ActionDefinition,
   BiDi,
@@ -79,7 +79,6 @@ const view = new BuilderView(allComponentsBuilder)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 function localizer(componentStore: ComponentStore, language: Language): Record<string, any> {
   return componentStore.key === 'comment'

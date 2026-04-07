@@ -12,6 +12,7 @@ const matchHostnameWildcard = (wildcard: string, domain: string): boolean => {
  * @param domains the list of allowed domain wildcards.
  * @param hostname to check against.
  * @returns boolean check result.
+ * @ignore
  */
 export const verifyDomain = (domains: string[], hostname = globalThis.location.hostname): boolean => {
   if (domains.some(domain => domain === '*')) return true

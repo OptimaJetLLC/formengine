@@ -6,7 +6,7 @@ import {useCallback} from 'react'
 import {Button} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../../components/Icons'
-import {customizableObserver} from '../../../customization'
+import {customizableObserver} from '../../../customization/customizableObserver'
 import {useTranslationPart} from '../../../localization/hooks'
 import styles from './ToggleModeButton.module.css'
 

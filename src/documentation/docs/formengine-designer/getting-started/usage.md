@@ -27,7 +27,6 @@ You can simply copy and paste the below code into your project and use the `Desi
 
 ```tsx title='Designer.tsx'
 import {
-  formEngineRsuiteCssLoader,
   ltrCssLoader,
   rsErrorMessage,
   RsLocalizationWrapper,
@@ -49,7 +48,6 @@ const builderView = new BuilderView(componentsMetadata)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 // This is where you can define the custom storage for the designer
 const formStorage: IFormStorage | undefined = undefined
@@ -282,7 +280,6 @@ You can simply copy and paste the below code into your project and use the `View
 
 ```tsx title='Viewer.tsx'
 import {
-  formEngineRsuiteCssLoader,
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
@@ -302,7 +299,6 @@ const view = createView(componentsMetadata)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 // highlight-end
 
 // You can define custom validators for form fields

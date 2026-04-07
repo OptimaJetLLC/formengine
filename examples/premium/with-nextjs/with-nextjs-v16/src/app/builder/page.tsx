@@ -4,7 +4,6 @@ import {actions} from '@/app/common/actions'
 import form from '@/app/common/form.json'
 import {customValidators} from '@/app/common/validators'
 import {
-  formEngineRsuiteCssLoader,
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
@@ -36,7 +35,6 @@ const view = new BuilderView(components)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 // We're hiding the form panel because it's not fully functional in this example
 const customization = {

@@ -1,5 +1,28 @@
 {
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "types": "./dist/index.d.ts"
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json",
+    "./assets/designer.ltr.min.css": "./dist/assets/designer.ltr.min.css",
+    "./assets/designer.rtl.min.css": "./dist/assets/designer.rtl.min.css",
+    "./locales/ar-EG.json": "./dist/locales/ar-EG.json",
+    "./locales/de-DE.json": "./dist/locales/de-DE.json",
+    "./locales/en-US.json": "./dist/locales/en-US.json",
+    "./locales/es-ES.json": "./dist/locales/es-ES.json",
+    "./locales/fa-IR.json": "./dist/locales/fa-IR.json",
+    "./locales/fr-FR.json": "./dist/locales/fr-FR.json",
+    "./locales/hi-IN.json": "./dist/locales/hi-IN.json",
+    "./locales/it-IT.json": "./dist/locales/it-IT.json",
+    "./locales/ja-JP.json": "./dist/locales/ja-JP.json",
+    "./locales/ko-KR.json": "./dist/locales/ko-KR.json",
+    "./locales/sr-RS.json": "./dist/locales/sr-RS.json",
+    "./locales/zh-CN.json": "./dist/locales/zh-CN.json"
+  }
 }

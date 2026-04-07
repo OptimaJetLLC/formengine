@@ -2,7 +2,7 @@ import * as fastQrComponent from '@react-form-builder/components-fast-qr'
 import * as googleMapComponent from '@react-form-builder/components-google-map'
 import * as richTextComponent from '@react-form-builder/components-rich-text'
 import * as rSuiteComponents from '@react-form-builder/components-rsuite'
-import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import * as rSuiteTableComponents from '@react-form-builder/components-rsuite-table'
 import * as signatureComponent from '@react-form-builder/components-signature'
 import type {FormViewerProps} from '@react-form-builder/core'
@@ -31,11 +31,7 @@ export function renderFormViewerTo(container: HTMLElement, props: Partial<FormVi
 
   const view =
     props.view ??
-    createView(models)
-      .withViewerWrapper(RsLocalizationWrapper)
-      .withCssLoader(BiDi.LTR, ltrCssLoader)
-      .withCssLoader(BiDi.RTL, rtlCssLoader)
-      .withCssLoader('common', formEngineRsuiteCssLoader)
+    createView(models).withViewerWrapper(RsLocalizationWrapper).withCssLoader(BiDi.LTR, ltrCssLoader).withCssLoader(BiDi.RTL, rtlCssLoader)
 
   const formViewerProps: FormViewerProps = {
     ...props,

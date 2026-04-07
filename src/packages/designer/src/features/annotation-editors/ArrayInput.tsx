@@ -1,6 +1,7 @@
 import {namedObserver, useStore} from '@react-form-builder/core'
 import {useCallback, useMemo} from 'react'
-import {EditableTable, makeColumns} from '../components/EditableTable'
+import {EditableTable} from '../components/EditableTable/EditableTable'
+import {makeColumns} from '../components/EditableTable/utils'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 

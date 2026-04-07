@@ -4,7 +4,7 @@ import {useCallback, useMemo, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {IconButton, Modal, Tooltip, Whisper} from 'rsuite'
 import {FaIcon} from '../../../components/Icons'
-import {customizableObserver} from '../../../customization'
+import {customizableObserver} from '../../../customization/customizableObserver'
 import {JsonView} from '../../JsonView'
 import styles from './JsonViewButton.module.css'
 

@@ -64,7 +64,6 @@ Next, replace the contents of `App.tsx` with the following code to set up FormEn
 import React from 'react'
 import {BuilderView, FormBuilder, IFormStorage} from '@react-form-builder/designer'
 import {
-  formEngineRsuiteCssLoader,
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
@@ -89,7 +88,6 @@ const builderView = new BuilderView(componentsMetadata)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 // We're hiding the form panel because it's not fully functional in this example
 const customization = {
@@ -302,7 +300,6 @@ import {debounce} from '@react-form-builder/core';
 // <&new
 import {BuilderView, FormBuilder, IFormStorage} from '@react-form-builder/designer'
 import {
-  formEngineRsuiteCssLoader,
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
@@ -326,7 +323,6 @@ const builderView = new BuilderView(componentsMetadata)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 // We're hiding the form panel because it's not fully functional in this example
 const customization = {
@@ -520,7 +516,6 @@ import {useBookingForm} from './useBookingForm'
 import {debounce} from '@react-form-builder/core';
 import {BuilderView, FormBuilder, IFormStorage} from '@react-form-builder/designer'
 import {
-  formEngineRsuiteCssLoader,
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
@@ -548,7 +543,6 @@ const builderView = new BuilderView(componentsMetadata)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 // We're hiding the form panel because it's not fully functional in this example
 const customization = {

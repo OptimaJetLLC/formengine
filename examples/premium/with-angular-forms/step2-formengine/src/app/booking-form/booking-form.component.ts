@@ -3,7 +3,6 @@ import { CommonModule, JsonPipe } from "@angular/common";
 import { AngularReactModule } from "@bubblydoo/angular-react";
 import { createElement, ForwardedRef } from "react";
 import {
-  formEngineRsuiteCssLoader,
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
@@ -30,7 +29,6 @@ const viewerView = createView(viewerComponents)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader("common", formEngineRsuiteCssLoader);
 
 interface PersonInfo {
   email: string;

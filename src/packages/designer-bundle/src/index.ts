@@ -5,13 +5,7 @@ import {googleMapComponentsDescriptions} from '@react-form-builder/components-go
 import * as richTextComponent from '@react-form-builder/components-rich-text'
 import {richTextEditorComponentsDescriptions} from '@react-form-builder/components-rich-text'
 import * as rSuiteComponents from '@react-form-builder/components-rsuite'
-import {
-  formEngineRsuiteCssLoader,
-  ltrCssLoader,
-  RsLocalizationWrapper,
-  rSuiteComponentsDescriptions,
-  rtlCssLoader,
-} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, RsLocalizationWrapper, rSuiteComponentsDescriptions, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import * as rSuiteTableComponents from '@react-form-builder/components-rsuite-table'
 import {rSuiteTableComponentsDescriptions} from '@react-form-builder/components-rsuite-table'
 import * as signatureComponent from '@react-form-builder/components-signature'
@@ -48,7 +42,6 @@ export function renderFormBuilderTo(container: HTMLElement, props: Partial<FormB
       .withViewerWrapper(RsLocalizationWrapper)
       .withCssLoader(BiDi.LTR, ltrCssLoader)
       .withCssLoader(BiDi.RTL, rtlCssLoader)
-      .withCssLoader('common', formEngineRsuiteCssLoader)
       .withComponentLibraryDescription(fastQrComponentsDescriptions)
       .withComponentLibraryDescription(googleMapComponentsDescriptions)
       .withComponentLibraryDescription(richTextEditorComponentsDescriptions)

@@ -24,6 +24,7 @@
 - [IPresetComponentOptions](interfaces/IPresetComponentOptions.md)
 - [PresetComponent](interfaces/PresetComponent.md)
 - [SelectCellProps](interfaces/SelectCellProps.md)
+- [StylesProviderProps](interfaces/StylesProviderProps.md)
 
 ## Type Aliases
 

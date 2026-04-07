@@ -1,10 +1,4 @@
-import {
-  formEngineRsuiteCssLoader,
-  ltrCssLoader,
-  RsLocalizationWrapper,
-  rSuiteComponents,
-  rtlCssLoader,
-} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, RsLocalizationWrapper, rSuiteComponents, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import type {ComponentLocalizer, IFormViewer, Validators} from '@react-form-builder/core'
 import {ActionDefinition, BiDi} from '@react-form-builder/core'
 import type {IFormStorage} from '@react-form-builder/designer'
@@ -21,7 +15,6 @@ const builderView = new BuilderView(componentsMetadata)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 // This is where you can define the custom storage for the designer
 const formStorage: IFormStorage | undefined = undefined

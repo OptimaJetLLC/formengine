@@ -5,7 +5,6 @@ import {muiButton} from '@react-form-builder/components-material-ui'
 import materialUiSchema from '@react-form-builder/components-material-ui/schemas/material-ui-components.schema.json'
 import richTextSchema from '@react-form-builder/components-rich-text/schemas/rich-text-components.schema.json'
 import {
-  formEngineRsuiteCssLoader,
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
@@ -26,7 +25,7 @@ import {useEffect, useState} from 'react'
 // styles
 import '@react-form-builder/components-google-map/assets/styles.css'
 import '@react-form-builder/components-rich-text/assets/styles.css'
-import '@react-form-builder/components-rsuite/assets/styles.css'
+import '@react-form-builder/components-rsuite/assets/styles.ltr.css'
 import '@react-form-builder/components-signature/assets/styles.css'
 import '@react-form-builder/components-uploader/assets/styles.css'
 
@@ -50,7 +49,6 @@ const view = new BuilderView(components)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 const formStorage = new IndexedDbFormStorage('example-db', 'example-store')
 

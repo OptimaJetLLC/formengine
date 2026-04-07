@@ -486,6 +486,14 @@ If true, all validation errors will be displayed.
 
 ***
 
+### stylesProvider?
+
+> `optional` **stylesProvider**: `ComponentType`\<[`StylesProviderProps`](StylesProviderProps.md)\>
+
+The component that loads the CSS.
+
+***
+
 ### theme?
 
 > `optional` **theme**: [`FormBuilderTheme`](../type-aliases/FormBuilderTheme.md)

@@ -21,7 +21,6 @@
     } = window.FormEngineViewerBundle
 
     const {
-      formEngineRsuiteCssLoader,
       ltrCssLoader,
       RsLocalizationWrapper,
       rtlCssLoader
@@ -43,7 +42,6 @@
       .withViewerWrapper(RsLocalizationWrapper)
       .withCssLoader('ltr', ltrCssLoader)
       .withCssLoader('rtl', rtlCssLoader)
-      .withCssLoader('common', formEngineRsuiteCssLoader)
 
     window.viewerRoot = renderFormViewer('viewer', {
       getForm: () => form,

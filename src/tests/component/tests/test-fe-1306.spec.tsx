@@ -1,10 +1,4 @@
-import {
-  formEngineRsuiteCssLoader,
-  ltrCssLoader,
-  RsLocalizationWrapper,
-  rSuiteComponentsDescriptions,
-  rtlCssLoader,
-} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, RsLocalizationWrapper, rSuiteComponentsDescriptions, rtlCssLoader,} from '@react-form-builder/components-rsuite'
 import {BiDi, BuilderView} from '@react-form-builder/core'
 import {FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
@@ -95,7 +89,6 @@ const view = new BuilderView(allComponentsBuilder)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
   .withComponentLibraryDescription(rSuiteComponentsDescriptions)
 
 const TestApp = ({getForm}: { getForm: () => string }) => <FormBuilder view={view} getForm={getForm} formName={'foo'}

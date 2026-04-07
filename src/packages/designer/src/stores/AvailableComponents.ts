@@ -22,6 +22,7 @@ const createComponentData = (store: Store, componentStore: ComponentStore): Comp
  * @param componentMetadataProvider the component metadata provider.
  * @param store the viewer store.
  * @returns component data.
+ * @ignore
  */
 export const createAddedComponentData = (model: Model,
                                          componentMetadataProvider: IComponentMetadataProvider,

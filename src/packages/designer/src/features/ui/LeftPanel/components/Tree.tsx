@@ -7,8 +7,8 @@ import {useTranslation} from 'react-i18next'
 import {Button} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {Columns, Rows} from '../../../components/Containers'
-import {customizableObserver} from '../../../customization'
-import {DraggableTreeNode} from '../../../dnd'
+import {customizableObserver} from '../../../customization/customizableObserver'
+import {DraggableTreeNode} from '../../../dnd/components/DraggableTreeNode'
 import styles from './Tree.module.css'
 
 const RawTree = (props: ComponentProps<typeof Rows>) => {

@@ -1,5 +1,5 @@
 import {Icon} from '@rsuite/icons'
-import {icons} from '../../../icons'
+import {icons} from '../../../icons/icons'
 
 /**
  * Icon to mark the AI-generated content.

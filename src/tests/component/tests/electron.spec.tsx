@@ -1,10 +1,8 @@
 import '../config/setup'
-
-import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
+import {ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
 import {BiDi, BuilderView} from '@react-form-builder/core'
-import {CustomizationMap, FormBuilder} from '@react-form-builder/designer'
-import enEN from '@react-form-builder/designer/public/locales/en-US.json'
-import {isElectron} from '@react-form-builder/designer/src/features/license/isElectron'
+import {CustomizationMap, FormBuilder, isElectron} from '@react-form-builder/designer'
+import enEN from '@react-form-builder/designer/locales/en-US.json'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {license2030Enterprise, licenseBusiness,} from '@react-form-builder/tests-common/license'
 import {render, RenderResult, waitFor} from '@testing-library/react'
@@ -30,7 +28,6 @@ const viewAllComponents = new BuilderView(allComponentsBuilder)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 type DesignerProps = { license: string, customization?: CustomizationMap, view?: BuilderView, formName?: string }
 const Designer = ({license, customization, view = viewAllComponents, formName}: DesignerProps) => {

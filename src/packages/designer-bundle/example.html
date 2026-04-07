@@ -21,7 +21,6 @@
     } = window.FormEngineDesignerBundle
 
     const {
-      formEngineRsuiteCssLoader,
       ltrCssLoader,
       rsErrorMessage,
       RsLocalizationWrapper,
@@ -45,7 +44,6 @@
       .withViewerWrapper(RsLocalizationWrapper)
       .withCssLoader('ltr', ltrCssLoader)
       .withCssLoader('rtl', rtlCssLoader)
-      .withCssLoader('common', formEngineRsuiteCssLoader)
 
     window.designerRoot = renderFormBuilder('designer', {
       getForm: () => form,

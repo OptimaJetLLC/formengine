@@ -7,7 +7,7 @@ import {useMemo} from 'react'
 import {Tooltip, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../../components/Icons'
-import {customizableObserver} from '../../../customization'
+import {customizableObserver} from '../../../customization/customizableObserver'
 import {useTranslationPart} from '../../../localization/hooks'
 import styles from './ToggleTheme.module.css'
 

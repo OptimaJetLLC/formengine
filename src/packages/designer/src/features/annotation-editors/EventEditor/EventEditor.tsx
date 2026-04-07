@@ -1,6 +1,6 @@
 import type {AnnotationEditorProps} from '../AnnotationEditorProps'
-import {ActionList} from './components/ActionList'
-import {AddActionButton} from './components/AddActionButton'
+import {ActionList} from './components/ActionList/ActionList'
+import {AddActionButton} from './components/AddActionButton/AddActionButton'
 import styles from './EventEditor.module.css'
 
 /**

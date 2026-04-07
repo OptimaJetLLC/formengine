@@ -3,6 +3,7 @@ import {isProperty, isValidatorPropertyBlockType, namedObserver, useComponentDat
 import {createElement, useCallback, useEffect, useMemo, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps, CalculableEditorProps} from '../../annotation-editors/AnnotationEditorProps'
+import {useBuiltinPropertyEditors} from '../../ui/BuiltinPropertyEditorsProvider'
 import type {Section} from '../../ui/RightPanel/PropertiesEditor/Section'
 import {Erroneous} from './Erroneous'
 
@@ -23,7 +24,11 @@ const RawPropertyEditorWrapper = ({
                                   }: PropertyEditorWrapperProps) => {
   const store = useBuilderStore()
   const componentData = useComponentData()
-  const annotationEditor = useMemo(() => store.getPropertyEditor(annotation.editor), [annotation, store])
+  const builtinPropertyEditors = useBuiltinPropertyEditors()
+
+  const annotationEditor = useMemo(() => {
+    return store.getPropertyEditor(annotation.editor) ?? builtinPropertyEditors[annotation.editor]
+  }, [annotation.editor, builtinPropertyEditors, store])
 
   const [contextInitialized, setContextInitialized] = useState(false)
   const [error, setError] = useState<string>()

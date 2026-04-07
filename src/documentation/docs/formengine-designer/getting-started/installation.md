@@ -263,7 +263,6 @@ window.onload = function () {
   } = window.FormEngineDesignerBundle
 
   const {
-    formEngineRsuiteCssLoader,
     ltrCssLoader,
     rsErrorMessage,
     RsLocalizationWrapper,
@@ -287,7 +286,6 @@ window.onload = function () {
     .withViewerWrapper(RsLocalizationWrapper)
     .withCssLoader('ltr', ltrCssLoader)
     .withCssLoader('rtl', rtlCssLoader)
-    .withCssLoader('common', formEngineRsuiteCssLoader)
 
   window.designerRoot = renderFormBuilder('designer', {
     getForm: () => form,
@@ -428,7 +426,6 @@ window.onload = function () {
   } = window.FormEngineViewerBundle
 
   const {
-    formEngineRsuiteCssLoader,
     ltrCssLoader,
     RsLocalizationWrapper,
     rtlCssLoader
@@ -450,7 +447,6 @@ window.onload = function () {
     .withViewerWrapper(RsLocalizationWrapper)
     .withCssLoader('ltr', ltrCssLoader)
     .withCssLoader('rtl', rtlCssLoader)
-    .withCssLoader('common', formEngineRsuiteCssLoader)
 
   window.viewerRoot = renderFormViewer('viewer', {
     getForm: () => form,

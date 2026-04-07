@@ -3,7 +3,7 @@ import {useStore} from '@react-form-builder/core'
 import type {ComponentProps} from 'react'
 import {useCallback} from 'react'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
-import {customizableObserver} from '../../../customization'
+import {customizableObserver} from '../../../customization/customizableObserver'
 import {LocalizationPicker} from '../../../localization/components/LocalizationPicker'
 
 type DesignerLocalizationPickerProps = Omit<ComponentProps<typeof LocalizationPicker>, 'value' | 'onSelect'>

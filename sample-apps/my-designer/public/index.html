@@ -25,7 +25,20 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
 
-    <!--
+    <!-- Strict with enabled style-src -->
+<!--
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self';
+           script-src 'self';
+           style-src 'unsafe-inline';
+           img-src 'self' data:;
+           font-src 'self';
+           object-src 'none';
+           base-uri 'self';
+           form-action 'self';">
+-->
+
+    <!-- Strict with disabled style-src
     <meta http-equiv="Content-Security-Policy"
           content="default-src 'self';
            script-src 'self';

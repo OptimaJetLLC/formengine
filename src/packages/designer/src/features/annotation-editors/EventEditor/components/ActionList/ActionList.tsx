@@ -3,7 +3,7 @@ import {KeySymbol, namedObserver} from '@react-form-builder/core'
 import {useCallback, useMemo} from 'react'
 import {List} from 'rsuite'
 import type {AnnotationEditorProps} from '../../../AnnotationEditorProps'
-import {ActionItem} from './ActionItem'
+import {ActionItem} from './ActionItem/ActionItem'
 import {EventHandlerItemProvider} from './ActionItem/contexts/EventHandlerItemContext'
 import styles from './ActionList.module.css'
 

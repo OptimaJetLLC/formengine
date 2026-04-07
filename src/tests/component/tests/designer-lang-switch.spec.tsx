@@ -1,6 +1,5 @@
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
-import {BuilderView, FormBuilder} from '@react-form-builder/designer'
-import {isDesignerLocalStorageEnabled} from '@react-form-builder/designer/src/utils/isDesignerLocalStorageEnabled'
+import {BuilderView, FormBuilder, isDesignerLocalStorageEnabled} from '@react-form-builder/designer'
 import {fireEvent, render, waitFor} from '@testing-library/react'
 import {expect} from 'vitest'
 import {renderBuilder} from '../util/renderBuilder'

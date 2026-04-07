@@ -5,33 +5,14 @@ import {useCallback, useMemo, useState} from 'react'
 import {EmptyComponentCategory} from '../../../stores/EmptyComponentCategory'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {transformComponentNameToCssClass} from '../../../utils/transformComponentNameToCssClass'
-import {AddedComponent} from '../../dnd'
+import {AddedComponent} from '../../dnd/components/AddedComponent'
 import {useTranslationPart} from '../../localization/hooks'
 import styles from './ComponentBar.module.css'
 import {SearchForm} from './components/SearchForm'
+import type {DraggableProps} from './DraggableProps'
 import {useComponentLibraryDescription} from './useComponentLibraryDescription'
 
 const componentGroupStaticClassname = 'FE_Palette_ComponentGroup'
-
-/**
- * Properties of the draggable component.
- */
-export interface DraggableProps {
-  /**
-   * The flag of dragging the component, if true - the component is dragged, false - otherwise.
-   */
-  draggable?: boolean
-  /**
-   * The callback function called when a component needs to be added to a target component.
-   * @param source the component to be added.
-   */
-  onAdd?: (source: ComponentData) => void
-
-  /**
-   * The callback function called when a component is double-clicked.
-   */
-  onDoubleClick?: (source: ComponentData) => void
-}
 
 interface AddedComponentsProps extends DraggableProps {
   availableComponents: ComponentData[]

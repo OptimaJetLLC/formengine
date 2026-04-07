@@ -149,7 +149,9 @@
     "./components-descriptions": {
       "import": "./src/i18n/rSuiteComponentsDescriptions.ts"
     },
-    "./schemas/rsuite-components.schema.json": "./public/schemas/rsuite-components.schema.json"
+    "./schemas/rsuite-components.schema.json": "./public/schemas/rsuite-components.schema.json",
+    "./assets/styles.ltr.css": "./public/css/rsuite-ltr.css",
+    "./assets/styles.rtl.css": "./public/css/rsuite-rtl.css"
   },
   "bugs": {
     "email": "support@optimajet.com"
@@ -183,6 +185,7 @@
   ],
   "devDependencies": {
     "@react-form-builder/json-schema-generator": "^7.15.0",
+    "postcss": "^8.5.8",
     "vite-inline-css-plugin": "^0.0.1",
     "vite-node": "^5.2.0"
   }

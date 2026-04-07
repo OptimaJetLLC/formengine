@@ -1,1 +1,0 @@
-export {ComponentValidationSettingsEditor} from './ComponentValidationSettingsEditor'

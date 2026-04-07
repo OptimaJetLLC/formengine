@@ -1,6 +1,5 @@
 import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
-import {faBars} from '@fortawesome/free-solid-svg-icons'
-import {faSitemap} from '@fortawesome/free-solid-svg-icons'
+import {faBars, faSitemap} from '@fortawesome/free-solid-svg-icons'
 import * as faSave from '@fortawesome/free-solid-svg-icons/faSave.js'
 import * as faTrash from '@fortawesome/free-solid-svg-icons/faTrash.js'
 import {namedObserver} from '@react-form-builder/core'
@@ -20,13 +19,14 @@ import {uploadBinaryFile} from '../../../../stores/fileUpload'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {useCreateForm} from '../../../../utils/useCreateForm'
 import {FaIcon} from '../../../components/Icons'
-import {customizable} from '../../../customization'
-import {MenuLanguageSwitch} from '../../../localization'
+import {customizable} from '../../../customization/customizable'
+import {MenuLanguageSwitch} from '../../../localization/components/MenuLanguageSwitch'
 import {useTranslationPart} from '../../../localization/hooks'
 import {useShowMessage} from '../../../toast/toast'
 import {useSaveFormDialog} from '../../dialogs/useSaveFormDialog'
 import {exportForms, importForms} from './formUtils'
 import {useSaveForm} from './useSaveForm'
+
 import styles from './Menu.module.css'
 
 const RawExportFormsButton = () => {
@@ -148,11 +148,11 @@ const RawMenuItems = () => {
                    icon={trashIcon}>
       {t('clear')}
     </Dropdown.Item>
-      {builderStore.props.generateJsonFormSchema &&
-        <Dropdown.Item onSelect={handleGenerateSchema} icon={sitemapIcon}>
-          {t('exportJsonFormSchema')}
-        </Dropdown.Item>
-      }
+    {builderStore.props.generateJsonFormSchema &&
+      <Dropdown.Item onSelect={handleGenerateSchema} icon={sitemapIcon}>
+        {t('exportJsonFormSchema')}
+      </Dropdown.Item>
+    }
   </>
 }
 

@@ -315,16 +315,13 @@ Here are examples of how the withCssLoader function can be implemented:
 view
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 ```
 
 The first loader, [ltrCssLoader](/api-reference/@react-form-builder/components-rsuite/functions/ltrCssLoader), provides a CSS loader for
 left-to-right (LTR) text direction. This loader will be applied to the component when the text direction is LTR. Similarly, on the next line
 is a CSS loader for right-to-left (RTL) text
 direction, [rtlCssLoader](/api-reference/@react-form-builder/components-rsuite/functions/rtlCssLoader). This loader will be applied when the
-text direction is RTL. Finally, the last line specifies a CSS loader named
-[formEngineRsuiteCssLoader](/api-reference/@react-form-builder/components-rsuite/functions/formEngineRsuiteCssLoader), which is loaded
-regardless of the text direction.
+text direction is RTL.
 
 The following snippet showcases how the loaders can be implemented:
 
@@ -378,17 +375,11 @@ export const rtlCssLoader = async () => {
   await loadResource(resourceIds[BiDi.RTL], href, 'stylesheet')
   unloadResource(resourceIds[BiDi.LTR])
 }
-
-export const formEngineRsuiteCssLoader = async () => {
-  const href = (await import('../public/css/formengine-rsuite.css?url')).default
-  await loadResource('form-engine-css', href, 'stylesheet')
-}
 ```
 
 In the example above, the `ltrCssLoader` function loads the Left-To-Right (LTR) CSS for the React Suite library. It imports the CSS file and
 uses the `loadResource` function to load the CSS dynamically. Similarly, the `rtlCssLoader` function loads the Right-to-Left (RTL) CSS for
-the React Suite library. It imports the RTL CSS file and uses the `loadResource` function to load it. The `formEngineRsuiteCssLoader`
-function loads custom styles for the FormEngine over the React Suite library.
+the React Suite library. It imports the RTL CSS file and uses the `loadResource` function to load it.
 
 ## Setting the form language
 

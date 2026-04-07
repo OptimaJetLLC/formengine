@@ -7,7 +7,8 @@ import {Animation, Button} from 'rsuite'
 import {useComputed} from '../../../../../../../../utils/useComputed'
 import {Rows} from '../../../../../../../components/Containers'
 import {useActionData} from '../../contexts/ActionDataContext'
-import {ArgumentItem} from './ArgumentItem'
+import {ArgumentItem} from './ArgumentItem/ArgumentItem'
+
 import styles from './ArgumentList.module.css'
 
 // Delete arguments object on unmount if it is empty.

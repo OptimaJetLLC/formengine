@@ -3,9 +3,10 @@ import {namedObserver} from '@react-form-builder/core'
 import {useCallback, useEffect, useMemo, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps} from '../../annotation-editors/AnnotationEditorProps'
-import {annotationResolver} from '../../validation'
-import styles from './Erroneous.module.css'
+import {annotationResolver} from '../../validation/utils/annotationResolver'
 import {useDataValidator} from './useDataValidator'
+
+import styles from './Erroneous.module.css'
 
 const PropertyErrorMessage = ({children, error}: ErrorWrapperProps) => (
   <div className={styles.root}>

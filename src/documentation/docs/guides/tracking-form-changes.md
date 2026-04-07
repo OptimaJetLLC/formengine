@@ -27,9 +27,8 @@ The following provides an example that showcases how the `onFormDataChange` func
 Define the logic for the `onFormDataChange` function and define input fields, dropdown lists, or other form components that require
 interactions from users. The following snippet provides an example of implemented `onFormDataChange` and a simple form in JSON format:
 
-```tsx {62-66,92-95,104-108}
+```tsx {60-64,90-93,102-106}
 import {
-  formEngineRsuiteCssLoader,
   ltrCssLoader,
   RsLocalizationWrapper,
   rSuiteComponents,
@@ -47,7 +46,6 @@ const view = createView(componentsMetadata)
   .withViewerWrapper(RsLocalizationWrapper)
   .withCssLoader(BiDi.LTR, ltrCssLoader)
   .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
 
 // Example form, in JSON format
 const emptyForm = `

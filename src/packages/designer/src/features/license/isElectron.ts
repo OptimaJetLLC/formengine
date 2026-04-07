@@ -3,6 +3,7 @@
 /**
  * Checks if app running in Electron.
  * @returns true if app running in Electron, false otherwise.
+ * @ignore
  */
 export function isElectron() {
   //@ts-ignore Electron specific

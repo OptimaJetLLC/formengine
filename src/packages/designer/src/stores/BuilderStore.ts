@@ -33,9 +33,11 @@ import {
 } from '@react-form-builder/core'
 import type {IReactionDisposer} from 'mobx'
 import {action, makeAutoObservable, observable, reaction} from 'mobx'
-import {EditorMap} from '../features/annotation-editors'
 import type {CalculableEditorProps} from '../features/annotation-editors/AnnotationEditorProps'
-import type {CodeActionEditorData, CodeActionEditorProps} from '../features/annotation-editors/EventEditor/components/CodeActionEditor'
+import type {
+  CodeActionEditorData,
+  CodeActionEditorProps
+} from '../features/annotation-editors/EventEditor/components/CodeActionEditor/CodeActionEditor'
 import type {TranslationResolver} from '../features/localization/BuilderI18n'
 import {BuilderI18n} from '../features/localization/BuilderI18n'
 import type {FormBuilderI18nData} from '../features/localization/FormBuilderLanguage'
@@ -1128,7 +1130,6 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     if (CustomEditor) {
       return namedObserver(CustomEditor.displayName ?? editorType, CustomEditor)
     }
-    return EditorMap[editorType]
   }
 
   /**

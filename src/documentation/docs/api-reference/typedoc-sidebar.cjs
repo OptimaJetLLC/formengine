@@ -992,11 +992,6 @@ const typedocSidebar = {
           items: [
             {
               type: "doc",
-              id: "api-reference/@react-form-builder/components-rsuite/functions/formEngineRsuiteCssLoader",
-              label: "formEngineRsuiteCssLoader"
-            },
-            {
-              type: "doc",
               id: "api-reference/@react-form-builder/components-rsuite/functions/ltrCssLoader",
               label: "ltrCssLoader"
             },
@@ -2944,6 +2939,11 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/designer/interfaces/SelectCellProps",
               label: "SelectCellProps"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/designer/interfaces/StylesProviderProps",
+              label: "StylesProviderProps"
             }
           ]
         },
@@ -3680,11 +3680,6 @@ const typedocSidebar = {
                   items: [
                     {
                       type: "doc",
-                      id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/functions/formEngineRsuiteCssLoader",
-                      label: "formEngineRsuiteCssLoader"
-                    },
-                    {
-                      type: "doc",
                       id: "api-reference/@react-form-builder/designer-bundle/namespaces/rSuiteComponents/functions/ltrCssLoader",
                       label: "ltrCssLoader"
                     },
@@ -4299,11 +4294,6 @@ const typedocSidebar = {
                   type: "category",
                   label: "Functions",
                   items: [
-                    {
-                      type: "doc",
-                      id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/functions/formEngineRsuiteCssLoader",
-                      label: "formEngineRsuiteCssLoader"
-                    },
                     {
                       type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle/namespaces/rSuiteComponents/functions/ltrCssLoader",
@@ -4990,11 +4980,6 @@ const typedocSidebar = {
                   type: "category",
                   label: "Functions",
                   items: [
-                    {
-                      type: "doc",
-                      id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/functions/formEngineRsuiteCssLoader",
-                      label: "formEngineRsuiteCssLoader"
-                    },
                     {
                       type: "doc",
                       id: "api-reference/@react-form-builder/viewer-bundle-premium/namespaces/rSuiteComponents/functions/ltrCssLoader",
