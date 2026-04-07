@@ -1,6 +1,7 @@
 import {define, stringNode, useBuilderComponent} from '@react-form-builder/core'
 import {Table} from 'rsuite'
 import type {HeaderCellProps, RowDataType, RowKeyType} from 'rsuite/esm/Table'
+import {tableComponentsCategory} from './tableComponentsCategory'
 import {rsHeaderCellTypeName} from './typeNames'
 
 const HeaderCellIcon = () => (
@@ -30,6 +31,7 @@ const RsHeaderCell = (props: HeaderCellProps<RowDataType, RowKeyType>) => {
 
 export const rsHeaderCell = define(RsHeaderCell, rsHeaderCellTypeName)
   .name('Header cell')
+  .category(tableComponentsCategory)
   .icon(HeaderCellIcon)
   .props({
     children: stringNode,

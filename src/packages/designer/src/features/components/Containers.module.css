@@ -1,0 +1,65 @@
+.rows {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.columns {
+  display: flex;
+  gap: 5px;
+}
+
+.columnsStretch > * {
+  flex: 1;
+}
+
+.columnsSpaceBetween {
+  justify-content: space-between;
+}
+
+.labeledInput {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.labeledInput label {
+  width: 80px;
+  min-width: 80px;
+}
+
+.item {
+  background-color: var(--rs-btn-default-bg);
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.listItem {
+  display: flex;
+  position: relative;
+  background-color: var(--rs-btn-default-bg);
+  border-radius: 10px;
+  padding: 8px;
+  padding-inline-start: 12px;
+  align-items: center;
+  user-select: none;
+  justify-content: space-between;
+}
+
+.list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  overflow-y: auto;
+}
+
+.listClickable > * {
+  cursor: pointer;
+}
+
+.listClickable > *:hover {
+  background-color: var(--rs-btn-default-hover-bg);
+}

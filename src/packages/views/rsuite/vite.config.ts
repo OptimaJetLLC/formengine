@@ -1,3 +1,4 @@
+import react from '@vitejs/plugin-react-swc'
 import {normalize, resolve} from 'node:path'
 import type {ModuleFormat} from 'rollup'
 import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle'
@@ -38,7 +39,11 @@ if (missingInEntry.length > 0) {
 export default defineConfig(env =>
   mergeConfig(base(env), {
     // publicDir: false, // do not copy static files
-    plugins: [dts({rollupTypes: true, tsconfigPath: './bundle.tsconfig.json'}), inlineCssPlugin()],
+    plugins: [
+      react({jsxImportSource: '@emotion/react'}),
+      dts({rollupTypes: true, tsconfigPath: './bundle.tsconfig.json'}),
+      inlineCssPlugin(),
+    ],
     build: {
       sourcemap: true,
       assetsInlineLimit: 0, // don't inline
@@ -51,6 +56,7 @@ export default defineConfig(env =>
           }
           return `${entryName}.js`
         },
+        cssFileName: 'assets/styles',
       },
       rollupOptions: {
         plugins: [excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})],

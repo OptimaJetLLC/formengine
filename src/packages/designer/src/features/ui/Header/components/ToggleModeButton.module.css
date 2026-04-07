@@ -1,0 +1,22 @@
+.animatedButton {
+  min-width: 98px;
+  display: flex;
+  justify-content: center;
+  background-size: 200% 100%;
+  align-items: center;
+  background-image: linear-gradient(to right, var(--rs-btn-primary-bg) 50%, var(--rs-green-700) 50%);
+  transition:
+    background-position 200ms,
+    box-shadow 600ms !important;
+  box-shadow: 2px 5px 20px -5px var(--rs-btn-primary-bg);
+  gap: 10px;
+}
+
+.animatedButton :global(.rs-icon) {
+  margin-block-start: 2px;
+}
+
+.animatedButton:global(.viewer) {
+  background-position: 100% 0;
+  box-shadow: 2px 5px 20px -5px var(--rs-green-700);
+}

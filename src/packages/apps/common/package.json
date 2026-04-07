@@ -10,7 +10,9 @@
   "type": "module",
   "dependencies": {
     "@react-form-builder/core": "^7.15.0",
-    "react": "^19.0.0",
     "rsuite": "5.83.4"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
   }
 }

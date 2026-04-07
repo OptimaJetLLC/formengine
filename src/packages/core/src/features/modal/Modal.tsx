@@ -162,4 +162,3 @@ export const Modal = (props: ModalProps) => {
   const Component = useBuilderComponent(ModalBuilder, ModalViewer)
   return <Component {...props}/>
 }
-Modal.displayName = 'Modal'

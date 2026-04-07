@@ -1,0 +1,14 @@
+.item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.name {
+  white-space: break-spaces;
+}
+
+div.divider {
+  margin-top: 0;
+  margin-bottom: 0;
+}

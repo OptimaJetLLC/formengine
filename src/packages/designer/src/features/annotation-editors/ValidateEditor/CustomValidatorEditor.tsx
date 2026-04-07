@@ -5,6 +5,7 @@ import {Button} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import LabeledProperty from '../../components/LabeledProperty'
 import type {AnnotationEditorProps} from '../AnnotationEditorProps'
+import styles from './CustomValidatorEditor.module.css'
 
 const getFunctionSignature = (type?: string) => `/**
  * @param {${type}} value the validated value.
@@ -12,8 +13,6 @@ const getFunctionSignature = (type?: string) => `/**
  * @return {boolean} the validation result.
  */
 async (value, form) => {`
-
-const buttonStyle = {borderStyle: 'dashed'} as const
 
 const RawCustomValidatorEditor = (props: AnnotationEditorProps) => {
   const {annotation, componentData, value, onChange} = props
@@ -29,7 +28,14 @@ const RawCustomValidatorEditor = (props: AnnotationEditorProps) => {
 
   return (
     <LabeledProperty {...props}>
-      <Button name={annotation.key} onClick={handleEdit} size={'xs'} appearance={'ghost'} block style={buttonStyle}>
+      <Button
+        name={annotation.key}
+        onClick={handleEdit}
+        size="xs"
+        appearance="ghost"
+        block
+        className={styles.button}
+      >
         {label}
       </Button>
     </LabeledProperty>

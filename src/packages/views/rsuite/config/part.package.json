@@ -6,6 +6,7 @@
     "./css/formengine-rsuite.css": "./dist/css/formengine-rsuite.css",
     "./css/rsuite-no-reset.min.css": "./dist/css/rsuite-no-reset.min.css",
     "./css/rsuite-no-reset-rtl.min.css": "./dist/css/rsuite-no-reset-rtl.min.css",
-    "./schemas/rsuite-components.schema.json": "./dist/schemas/rsuite-components.schema.json"
+    "./schemas/rsuite-components.schema.json": "./dist/schemas/rsuite-components.schema.json",
+    "./assets/styles.css": "./dist/assets/styles.css"
   }
 }

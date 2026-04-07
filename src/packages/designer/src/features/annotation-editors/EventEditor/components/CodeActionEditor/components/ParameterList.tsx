@@ -5,6 +5,7 @@ import {Columns, Rows} from '../../../../../components/Containers'
 import {useTranslationPart} from '../../../../../localization/hooks'
 import type {Parameter} from '../../ActionList/ActionItem/components/ArgumentList/ArgumentItem/Parameter'
 import {ParameterItem} from './ParameterItem'
+import styles from './ParameterList.module.css'
 import {useArrayMapMemo} from './UseArrayMapMemo'
 
 let counter = 0
@@ -12,10 +13,6 @@ let counter = 0
 function generateUniqueId() {
   return ++counter
 }
-
-const rowsStyle = {maxWidth: 240} as const
-const columnsStyle = {alignItems: 'center', justifyContent: 'space-between', height: 34} as const
-const itemsStyle = {overflow: 'auto'} as const
 
 /**
  * The element in the list of action parameters.
@@ -119,13 +116,15 @@ export const ParameterList = ({value, onChange}: ParameterPanelProps) => {
   const items = useArrayMapMemo(params, toParameterItem)
 
   return (
-    <Rows style={rowsStyle}>
-      <Columns style={columnsStyle}>
+    <Rows className={styles.rows}>
+      <Columns className={styles.header}>
         <h6>{t('parameters')}</h6>
-        <Button onClick={handleCreateParam} appearance={'link'}><h6>{t('add')}</h6></Button>
+        <Button onClick={handleCreateParam} appearance="link">
+          <h6>{t('add')}</h6>
+        </Button>
       </Columns>
 
-      <Rows style={itemsStyle}>
+      <Rows className={styles.items}>
         {items}
       </Rows>
     </Rows>

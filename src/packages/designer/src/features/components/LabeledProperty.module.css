@@ -1,0 +1,17 @@
+.iconButton {
+  min-width: 24px;
+  margin-inline-end: -6px;
+}
+
+.leftButtonPlaceholder {
+  min-width: 18px;
+}
+
+.columns {
+  align-items: center;
+  gap: 10px;
+}
+
+.customizedInput {
+  width: 100%;
+}

@@ -29,7 +29,6 @@ const createFilePreview = ({lastModified, name, type, webkitRelativePath, size}:
   size: humanizeFileSize(size)
 })
 
-
 /**
  * Prepares data for JSON.stringify.
  * @param data the data for preparing.
@@ -70,7 +69,7 @@ export const prepareForJson = (data: any, options?: {
 
     if (isNumber(value)) {
       // displays NaN, Infinity, -Infinity
-      filtered[key] = value.toString()
+      filtered[key] = Number.isFinite(value) ? value : String(value)
       return
     }
 

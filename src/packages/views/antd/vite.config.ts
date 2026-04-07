@@ -1,12 +1,9 @@
 import path from 'path'
+import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle'
 import {fileURLToPath} from 'url'
-import {mergeConfig} from 'vite'
-import {defineConfig} from 'vite'
+import {defineConfig, mergeConfig} from 'vite'
 
 import base from '../../../vite.config'
-import packageJson from './package.json'
-
-const peerDependencies = (packageJson as any)['peerDependencies'] || {}
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -20,7 +17,7 @@ export default defineConfig((env) => mergeConfig(base(env), {
       fileName: 'index'
     },
     rollupOptions: {
-      external: Object.keys(peerDependencies),
+      plugins: [excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})],
     }
   },
 }))

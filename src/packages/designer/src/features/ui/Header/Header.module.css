@@ -1,0 +1,29 @@
+.leftPart {
+  .toolbar {
+    display: flex;
+  }
+}
+
+.rightPart {
+  justify-content: flex-end;
+}
+
+.centerPart {
+  justify-content: center;
+  flex: 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 15px;
+  gap: 10px;
+}
+
+.container > * {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}

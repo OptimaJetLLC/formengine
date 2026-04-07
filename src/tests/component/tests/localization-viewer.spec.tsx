@@ -34,8 +34,6 @@ const Viewer = ({language}: { language?: LanguageFullCode }) => {
   return <FormViewer view={viewerView} getForm={getForm} language={language} initialData={initialData}/>
 }
 
-Viewer.displayName = 'Viewer'
-
 describe('Viewer localization test', function () {
   it('should apply provided language', async () => {
     const app = render(<Viewer language={enUS}/>)

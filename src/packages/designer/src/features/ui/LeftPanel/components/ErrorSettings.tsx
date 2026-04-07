@@ -10,8 +10,7 @@ import {Rows} from '../../../components/Containers'
 import {LabeledWrapper} from '../../../components/LabeledProperty'
 import {PropertyBlock} from '../../RightPanel/PropertiesEditor/components/Properties'
 import {ErrorComponentPicker} from './ErrorComponentPicker'
-
-const inputStyle = {marginTop: 4, marginBottom: 4} as const
+import styles from './ErrorSettings.module.css'
 
 /**
  * React form builder component that displays the configuration properties of the validation error display component.
@@ -41,11 +40,11 @@ const RawErrorSettings = () => {
   }, [])
 
   return (
-    <Rows gap={10}>
+    <Rows className={styles.rows}>
       <LabeledWrapper label={label}>
         <SCheckbox onChange={handleCheckboxChange} checked={errorVisible}/>
       </LabeledWrapper>
-      {errorVisible && <Input style={inputStyle} onChange={setErrorMessage} value={errorMessage}/>}
+      {errorVisible && <Input className={styles.input} onChange={setErrorMessage} value={errorMessage}/>}
       <ErrorComponentPicker/>
       <ComponentDataProvider value={store.viewer.form.componentTree}>
         <PropertyBlock annotations={properties} context={context}/>

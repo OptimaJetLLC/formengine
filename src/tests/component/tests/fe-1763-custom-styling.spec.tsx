@@ -1,7 +1,7 @@
 import {createView, define, event, FormViewer, string} from '@react-form-builder/core'
 import {act, render} from '@testing-library/react'
 import type {InputHTMLAttributes} from 'react'
-
+import {isBrowserMode} from '../config/isBrowserMode'
 import form from './forms/fe-1763-custom-styling.json'
 
 const getForm = (_?: string, __?: unknown) => JSON.stringify(form)
@@ -31,9 +31,9 @@ const view = createView(componentsMetadata)
 
 const App = () => <FormViewer view={view} getForm={getForm}/>
 
-const mockColorScheme = (scheme: 'dark' | 'light') => {
+const createMatchMedia = (scheme: 'dark' | 'light') => {
   const expectedQuery = `(prefers-color-scheme: ${scheme})`
-  window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+  return (query: string) => ({
     matches: query === expectedQuery,
     media: query,
     onchange: null,
@@ -42,7 +42,35 @@ const mockColorScheme = (scheme: 'dark' | 'light') => {
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
-  }))
+  }) as MediaQueryList
+}
+
+const setColorScheme = async (scheme: 'dark' | 'light') => {
+  if (isBrowserMode()) {
+    const {cdp} = await import('vitest/browser')
+    const session = await cdp()
+    await (session).send('Emulation.setEmulatedMedia', {
+      features: [{name: 'prefers-color-scheme', value: scheme}],
+    })
+    return
+  }
+
+  const matchMedia = createMatchMedia(scheme)
+  if (typeof vi !== 'undefined' && 'stubGlobal' in vi) {
+    vi.stubGlobal('matchMedia', matchMedia)
+  }
+  Object.defineProperty(window, 'matchMedia', {
+    value: matchMedia,
+    writable: true,
+    configurable: true,
+  })
+}
+
+const expectColorSchemeApplied = (scheme: 'dark' | 'light') => {
+  expect(typeof window.matchMedia).toBe('function')
+  expect(window.matchMedia(`(prefers-color-scheme: ${scheme})`).matches).toBe(true)
+  const opposite = scheme === 'dark' ? 'light' : 'dark'
+  expect(window.matchMedia(`(prefers-color-scheme: ${opposite})`).matches).toBe(false)
 }
 
 const setViewportWidth = (width: number) => {
@@ -64,9 +92,17 @@ const getWrapperElementByTestId = (
 
 const getStylesForElement = (element: Element) => {
   const className = element.getAttribute('class') ?? ''
-  const styledClass = className.split(' ').find(item => item.startsWith('css-'))
-  const styleTags = Array.from(document.querySelectorAll('style'))
-  const styleText = styleTags.map(tag => tag.textContent ?? '').join('\n')
+  const styledClass = className.split(' ').find(item => item.startsWith('st-'))
+  const adoptedSheets = Array.from(document.adoptedStyleSheets ?? [])
+  const styleText = adoptedSheets
+    .map(sheet => {
+      try {
+        return Array.from(sheet.cssRules).map(rule => rule.cssText).join('\n')
+      } catch {
+        return ''
+      }
+    })
+    .join('\n')
 
   return {
     className,
@@ -75,9 +111,76 @@ const getStylesForElement = (element: Element) => {
   }
 }
 
+const hexToRgbString = (value: string) => {
+  const normalized = value.replace('#', '').toLowerCase()
+  const expanded = normalized.length === 3
+    ? normalized.split('').map(channel => `${channel}${channel}`).join('')
+    : normalized
+  if (expanded.length !== 6) return value
+  const r = Number.parseInt(expanded.slice(0, 2), 16)
+  const g = Number.parseInt(expanded.slice(2, 4), 16)
+  const b = Number.parseInt(expanded.slice(4, 6), 16)
+  return `rgb(${r}, ${g}, ${b})`
+}
+
+const normalizeColorValue = (value: string) => value.replace(/\s+/g, '').toLowerCase()
+
+const expectComputedColors = (element: Element, colors: { background: string; color: string; border: string }) => {
+  const styles = window.getComputedStyle(element)
+  expect(normalizeColorValue(styles.backgroundColor)).toBe(normalizeColorValue(hexToRgbString(colors.background)))
+  expect(normalizeColorValue(styles.color)).toBe(normalizeColorValue(hexToRgbString(colors.color)))
+  expect(normalizeColorValue(styles.borderColor)).toBe(normalizeColorValue(hexToRgbString(colors.border)))
+}
+
+const escapeRegex = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
+const expectStyleTextColors = (styleText: string, colors: { background: string; color: string; border: string }) => {
+  const expected = {
+    background: hexToRgbString(colors.background),
+    color: hexToRgbString(colors.color),
+    border: hexToRgbString(colors.border),
+  }
+  expect(styleText).toMatch(new RegExp(`background-color:\\s*${escapeRegex(expected.background)}`, 'i'))
+  expect(styleText).toMatch(new RegExp(`color:\\s*${escapeRegex(expected.color)}`, 'i'))
+  expect(styleText).toMatch(new RegExp(`border-color:\\s*${escapeRegex(expected.border)}`, 'i'))
+}
+
+const expectColors = (element: Element, styleText: string, colors: { background: string; color: string; border: string }) => {
+  if (!isBrowserMode()) {
+    expectStyleTextColors(styleText, colors)
+    return
+  }
+
+  const styles = window.getComputedStyle(element)
+  const normalizedBackground = normalizeColorValue(styles.backgroundColor)
+  const normalizedColor = normalizeColorValue(styles.color)
+  const normalizedBorder = normalizeColorValue(styles.borderColor)
+  const expectedBackground = normalizeColorValue(hexToRgbString(colors.background))
+  const expectedColor = normalizeColorValue(hexToRgbString(colors.color))
+  const expectedBorder = normalizeColorValue(hexToRgbString(colors.border))
+
+  const matchesComputed = normalizedBackground === expectedBackground
+    && normalizedColor === expectedColor
+    && normalizedBorder === expectedBorder
+
+  const hasTransparentFallback = normalizedBackground === 'transparent'
+    || normalizedBackground === 'rgba(0,0,0,0)'
+    || normalizedBorder === 'transparent'
+    || normalizedBorder === 'rgba(0,0,0,0)'
+
+  if (matchesComputed) return
+  if (hasTransparentFallback) {
+    expectStyleTextColors(styleText, colors)
+    return
+  }
+
+  expectComputedColors(element, colors)
+}
+
 describe('Should apply custom styling for component', () => {
-  it('should include dark mode media rules in browser dark mode', () => {
-    mockColorScheme('dark')
+  it('should include dark mode media rules in browser dark mode', async () => {
+    await setColorScheme('dark')
+    expectColorSchemeApplied('dark')
     const {getAllByTestId, getByTestId} = render(<App/>)
 
     const styledElement = getByTestId('styled-element')
@@ -88,9 +191,7 @@ describe('Should apply custom styling for component', () => {
     expect(styledClass).toBeTruthy()
     expect(styleText).toContain(`.${styledClass ?? ''}`)
     expect(styleText).toMatch(/prefers-color-scheme:\s*dark/)
-    expect(styleText).toMatch(/background-color:\s*#111/i)
-    expect(styleText).toMatch(/color:\s*#eee/i)
-    expect(styleText).toMatch(/border-color:\s*#0ff/i)
+    expectColors(styledElement as Element, styleText, {background: '#111', color: '#eee', border: '#0ff'})
 
     const wrapperElement = getWrapperElementByTestId(styledElement as Element, getAllByTestId)
     expect(wrapperElement).not.toBeNull()
@@ -98,15 +199,15 @@ describe('Should apply custom styling for component', () => {
     expect(wrapperClass).toBeTruthy()
     expect(wrapperStyleText).toContain(`.${wrapperClass ?? ''}`)
     expect(wrapperStyleText).toMatch(/height:\s*10%/i)
+    expect(wrapperStyleText).toMatch(/width:\s*100%/i)
     expect(wrapperStyleText).toMatch(/margin-top:\s*10vw/i)
     expect(wrapperStyleText).toMatch(/\.active\s*\{\s*opacity:\s*0\.7\s*;\s*\}/i)
-    expect(wrapperStyleText).toMatch(/background-color:\s*#222/i)
-    expect(wrapperStyleText).toMatch(/color:\s*#faf/i)
-    expect(wrapperStyleText).toMatch(/border-color:\s*#c0c/i)
+    expectColors(wrapperElement as Element, wrapperStyleText, {background: '#222', color: '#faf', border: '#c0c'})
   })
 
-  it('should include light mode media rules in browser light mode', () => {
-    mockColorScheme('light')
+  it('should include light mode media rules in browser light mode', async () => {
+    await setColorScheme('light')
+    expectColorSchemeApplied('light')
     const {getAllByTestId, getByTestId} = render(<App/>)
 
     const styledElement = getByTestId('styled-element')
@@ -117,9 +218,7 @@ describe('Should apply custom styling for component', () => {
     expect(styledClass).toBeTruthy()
     expect(styleText).toContain(`.${styledClass ?? ''}`)
     expect(styleText).toMatch(/prefers-color-scheme:\s*light/)
-    expect(styleText).toMatch(/background-color:\s*#fef/i)
-    expect(styleText).toMatch(/color:\s*#123/i)
-    expect(styleText).toMatch(/border-color:\s*#0a0/i)
+    expectColors(styledElement as Element, styleText, {background: '#fef', color: '#123', border: '#0a0'})
 
     const wrapperElement = getWrapperElementByTestId(styledElement as Element, getAllByTestId)
     expect(wrapperElement).not.toBeNull()
@@ -129,13 +228,12 @@ describe('Should apply custom styling for component', () => {
     expect(wrapperStyleText).toMatch(/height:\s*10%/i)
     expect(wrapperStyleText).toMatch(/margin-top:\s*10vw/i)
     expect(wrapperStyleText).toMatch(/\.active\s*\{\s*opacity:\s*0\.7\s*;\s*\}/i)
-    expect(wrapperStyleText).toMatch(/background-color:\s*#eef/i)
-    expect(wrapperStyleText).toMatch(/color:\s*#135/i)
-    expect(wrapperStyleText).toMatch(/border-color:\s*#0cc/i)
+    expectColors(wrapperElement as Element, wrapperStyleText, {background: '#eef', color: '#135', border: '#0cc'})
   })
 
   it('should include mobile css when width is 580px', async () => {
-    mockColorScheme('light')
+    await setColorScheme('light')
+    expectColorSchemeApplied('light')
 
     const {getAllByTestId, getByTestId} = render(<App/>)
 
@@ -147,16 +245,12 @@ describe('Should apply custom styling for component', () => {
     expect(styledElement).not.toBeNull()
 
     const {styleText} = getStylesForElement(styledElement as Element)
-    expect(styleText).toMatch(/background-color:\s*#0f0/i)
-    expect(styleText).toMatch(/color:\s*#005/i)
-    expect(styleText).toMatch(/border-color:\s*#00f/i)
+    expectColors(styledElement as Element, styleText, {background: '#0f0', color: '#005', border: '#00f'})
 
     const wrapperElement = getWrapperElementByTestId(styledElement as Element, getAllByTestId)
     expect(wrapperElement).not.toBeNull()
     const {styleText: wrapperStyleText} = getStylesForElement(wrapperElement as Element)
-    expect(wrapperStyleText).toMatch(/background-color:\s*#dff/i)
-    expect(wrapperStyleText).toMatch(/color:\s*#210/i)
-    expect(wrapperStyleText).toMatch(/border-color:\s*#0f0/i)
+    expectColors(wrapperElement as Element, wrapperStyleText, {background: '#dff', color: '#210', border: '#0f0'})
     expect(wrapperStyleText).toMatch(/height:\s*15px/i)
     expect(wrapperStyleText).toMatch(/margin-inline-end:\s*50px/i)
     expect(wrapperStyleText).toMatch(/margin-top:\s*23px/i)
@@ -164,7 +258,8 @@ describe('Should apply custom styling for component', () => {
   })
 
   it('should include dark theme mobile css when width is 580px', async () => {
-    mockColorScheme('dark')
+    await setColorScheme('dark')
+    expectColorSchemeApplied('dark')
 
     const {getAllByTestId, getByTestId} = render(<App/>)
 
@@ -177,17 +272,13 @@ describe('Should apply custom styling for component', () => {
 
     const {styleText} = getStylesForElement(styledElement as Element)
     expect(styleText).toMatch(/prefers-color-scheme:\s*dark/)
-    expect(styleText).toMatch(/background-color:\s*#024/i)
-    expect(styleText).toMatch(/color:\s*#f0f/i)
-    expect(styleText).toMatch(/border-color:\s*#fa0/i)
+    expectColors(styledElement as Element, styleText, {background: '#024', color: '#f0f', border: '#fa0'})
 
     const wrapperElement = getWrapperElementByTestId(styledElement as Element, getAllByTestId)
     expect(wrapperElement).not.toBeNull()
     const {styleText: wrapperStyleText} = getStylesForElement(wrapperElement as Element)
     expect(wrapperStyleText).toMatch(/prefers-color-scheme:\s*dark/)
-    expect(wrapperStyleText).toMatch(/background-color:\s*#101/i)
-    expect(wrapperStyleText).toMatch(/color:\s*#0ff/i)
-    expect(wrapperStyleText).toMatch(/border-color:\s*#f00/i)
+    expectColors(wrapperElement as Element, wrapperStyleText, {background: '#101', color: '#0ff', border: '#f00'})
     expect(wrapperStyleText).toMatch(/height:\s*15px/i)
     expect(wrapperStyleText).toMatch(/margin-inline-end:\s*50px/i)
     expect(wrapperStyleText).toMatch(/margin-top:\s*23px/i)

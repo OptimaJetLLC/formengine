@@ -4,8 +4,8 @@ import '@testing-library/jest-dom/vitest'
 import {Canvas} from 'skia-canvas'
 import {afterEach, beforeAll} from 'vitest'
 import failOnConsole from 'vitest-fail-on-console'
+import {mockAdoptedStyles} from './adoptedStylesheets'
 import {isBrowserMode} from './isBrowserMode'
-
 import {addMatchMediaFunctionToWindow} from './matchMedia'
 
 if (!isBrowserMode()) {
@@ -15,6 +15,8 @@ if (!isBrowserMode()) {
   vi.spyOn(global, 'getComputedStyle').mockImplementation((elem) => {
     return originalGetComputedStyle(elem)
   })
+
+  mockAdoptedStyles()
 }
 
 failOnConsole({

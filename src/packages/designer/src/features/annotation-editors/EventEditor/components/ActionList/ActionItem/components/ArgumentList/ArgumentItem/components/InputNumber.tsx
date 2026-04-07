@@ -7,7 +7,7 @@ import type {InputProps} from '../InputProps'
 
 const RawInputNumber = ({name}: InputProps) => {
   const data = useActionData()
-  const value = !isUndefined(data.args?.[name]) ? Number(data.args![name]) : ''
+  const value = !isUndefined(data.args?.[name]) ? Number(data.args[name]) : ''
 
   const handleChange = useCallback((value: string | number | null) => {
     const newArgs = Object.assign({}, data.args)

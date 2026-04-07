@@ -1,4 +1,3 @@
-import {css} from '@emotion/css'
 import {namedObserver} from '@react-form-builder/core'
 import type {ResizableProps} from 're-resizable'
 import {Resizable} from 're-resizable'
@@ -8,21 +7,12 @@ import {EditableFormValidator} from '../../../stores/EditableFormValidator'
 import {EditableFunction} from '../../../stores/EditableFunction'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {CodeActionEditor} from '../../annotation-editors/EventEditor/components/CodeActionEditor/CodeActionEditor'
+import styles from './BottomPanel.module.css'
 import {ComputedPropertyEditor} from './ComputedPropertyEditor'
 import {CustomValidationCodeEditor} from './CustomValidationCodeEditor'
 import {FormValidatorCodeEditor} from './FormValidatorCodeEditor'
 import {FunctionEditor} from './FunctionEditor'
 import {JsonCodeEditor} from './JsonCodeEditor'
-
-const resizableClass = css`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-width: 980px;
-  padding: 10px;
-  gap: 10px;
-  box-shadow: 0 -5px 20px 0 rgb(0 0 0 / 15%);
-`
 
 const RawBottomPanel = () => {
   const store = useBuilderStore()
@@ -54,7 +44,7 @@ const RawBottomPanel = () => {
   }
 
   const resizableProps: ResizableProps = useMemo(() => ({
-    className: resizableClass,
+    className: styles.resizable,
     enable: {top: true},
     onResizeStop: (e, direction, ref, delta) => store.bottomPanelHeight += delta.height,
     defaultSize: {width: 'initial', height: bottomPanelHeight},

@@ -1,0 +1,26 @@
+.list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  overflow-y: auto;
+  box-shadow: none;
+}
+
+div.listItem {
+  display: flex;
+  position: relative;
+  background-color: var(--rs-btn-default-bg);
+  border-radius: 10px;
+  padding: 0;
+  align-items: initial;
+  user-select: none;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: none;
+  flex-direction: column;
+}
+
+.listItem:global(.rs-list-item-helper) {
+  outline: 2px solid var(--rs-btn-primary-bg);
+}

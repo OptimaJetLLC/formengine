@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
 import type {editor} from 'monaco-editor'
 import {useCallback, useEffect, useMemo, useState} from 'react'
@@ -9,14 +8,7 @@ import type {RadioButtonsProps} from '../components/RadioButtons'
 import {RadioButtons} from '../components/RadioButtons'
 import {useTranslationPart} from '../localization/hooks'
 import {PropertyBlockHeader} from '../ui/RightPanel/PropertiesEditor/components/PropertyBlockHeader'
-
-const SCodeEditor = styled(CodeEditor)`
-  .suggest-widget {
-    width: 100% !important;
-    inset-inline-start: 0 !important;
-    overflow: hidden;
-  }
-`
+import styles from './StyleEditor.module.css'
 
 /**
  * The part of the style properties of a component.
@@ -86,9 +78,10 @@ const RawStyleEditor = ({device, useWrapperStyles, defaultActiveTab}: StyleEdito
     <Rows>
       <PropertyBlockHeader header={t('header.name')} hint={t('header.hint')}/>
       {useWrapperStyles && <RadioButtons value={activeTab} onChange={handleSelect} items={items}/>}
-      <SCodeEditor
+      <CodeEditor
         key={`${store.key}${activeTab}${device}`}
         language="css"
+        className={styles.editorWrapper}
         beginContextLine={`${activeTab} {`}
         endContextLine="}"
         initialValue={initialValue}

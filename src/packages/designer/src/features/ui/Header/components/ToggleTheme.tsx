@@ -1,8 +1,7 @@
-import {cx} from '@emotion/css'
-import styled from '@emotion/styled'
 import * as faMoon from '@fortawesome/free-solid-svg-icons/faMoon.js'
 import * as faSun from '@fortawesome/free-solid-svg-icons/faSun.js'
 import type {BuilderTheme} from '@react-form-builder/core'
+import cx from 'clsx'
 import type {ComponentProps} from 'react'
 import {useMemo} from 'react'
 import {Tooltip, Whisper} from 'rsuite'
@@ -10,32 +9,7 @@ import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../../components/Icons'
 import {customizableObserver} from '../../../customization'
 import {useTranslationPart} from '../../../localization/hooks'
-
-const IconButton = styled(FaIcon)`
-  cursor: pointer;
-  width: 24px;
-  height: 24px;
-  padding: 3px;
-  border-radius: 20px;
-  overflow: hidden;
-
-  & path {
-    transform: rotate(360deg);
-    transform-origin: 50% 200%;
-    transition: all 400ms cubic-bezier(1, 0, 0, 1);
-  }
-
-  transition: background-color 400ms linear;
-  background-color: var(--rs-primary-500);
-
-  &.dark {
-    path {
-      transform: rotate(0deg);
-    }
-
-    background-color: var(--rs-toggle-bg);
-  }
-`
+import styles from './ToggleTheme.module.css'
 
 const icons: Record<BuilderTheme, any> = {
   dark: faMoon,
@@ -56,14 +30,14 @@ const RawToggleTheme = ({className, ...props}: ToggleThemeProps) => {
     color: isDark ? 'var(--rs-yellow-300)' : 'white',
     size: 1.4,
     onClick: () => store.theme = isDark ? 'light' : 'dark',
-    className: cx(store.theme, className)
+    className: cx(styles.iconButton, store.theme, className)
   }), [className, icon, isDark, store])
   const speaker = useMemo(() => <Tooltip>{t('toggleTheme')}</Tooltip>, [t])
 
   return (
     <Whisper {...props} speaker={speaker} placement="bottom">
       <div>
-        <IconButton {...iconProps}/>
+        <FaIcon {...iconProps}/>
       </div>
     </Whisper>
   )

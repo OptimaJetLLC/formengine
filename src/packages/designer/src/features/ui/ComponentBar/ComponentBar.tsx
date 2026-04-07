@@ -1,58 +1,15 @@
-import {css, cx} from '@emotion/css'
-import styled from '@emotion/styled'
 import type {ComponentData, Model} from '@react-form-builder/core'
 import {ComponentDataProvider, namedObserver} from '@react-form-builder/core'
+import cx from 'clsx'
 import {useCallback, useMemo, useState} from 'react'
 import {EmptyComponentCategory} from '../../../stores/EmptyComponentCategory'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {transformComponentNameToCssClass} from '../../../utils/transformComponentNameToCssClass'
 import {AddedComponent} from '../../dnd'
 import {useTranslationPart} from '../../localization/hooks'
+import styles from './ComponentBar.module.css'
 import {SearchForm} from './components/SearchForm'
 import {useComponentLibraryDescription} from './useComponentLibraryDescription'
-
-const searchFormStyle = {maxWidth: 300} as const
-
-const componentBar = css`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-height: 0;
-`
-
-const ControlsGroup = styled.div`
-  display: flex;
-  flex-flow: wrap;
-  gap: 4px;
-  margin-top: 2px;
-`
-
-const Header = styled.div`
-  display: flex;
-  flex: 0;
-  justify-content: center;
-  align-items: center;
-  font-weight: normal;
-  padding-inline-start: 4px;
-
-  > * {
-    flex: 1;
-  }
-`
-
-const Subheader = styled.label`
-  padding-inline: 4px;
-  font-size: 16px;
-`
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  padding-inline: 4px 2px;
-  overflow-y: auto;
-`
 
 const componentGroupStaticClassname = 'FE_Palette_ComponentGroup'
 
@@ -82,7 +39,7 @@ interface AddedComponentsProps extends DraggableProps {
 
 const RawAddedComponents = ({availableComponents, ...componentProps}: AddedComponentsProps) => {
   return (
-    <ControlsGroup>
+    <div className={styles.controlsGroup}>
       {availableComponents.map(componentData => {
         return (
           <ComponentDataProvider key={componentData.id} value={componentData}>
@@ -90,7 +47,7 @@ const RawAddedComponents = ({availableComponents, ...componentProps}: AddedCompo
           </ComponentDataProvider>
         )
       })}
-    </ControlsGroup>
+    </div>
   )
 }
 
@@ -141,7 +98,7 @@ const RawControlGroups = (props: ControlGroupsProps) => {
 
   for (const category in filteredComponents) {
     const noCategory = category === EmptyComponentCategory
-    const header = noCategory ? null : <Subheader>{getCategoryName(category)}</Subheader>
+    const header = noCategory ? null : <label className={styles.subheader}>{getCategoryName(category)}</label>
     const className = noCategory ? 'top' : category
     result.push(
       <div key={category} className={cx([componentGroupStaticClassname, transformComponentNameToCssClass(className)])}
@@ -153,10 +110,10 @@ const RawControlGroups = (props: ControlGroupsProps) => {
   }
 
   if (result.length === 0) {
-    return <Subheader>{tToolbar('notFound')}</Subheader>
+    return <label className={styles.subheader}>{tToolbar('notFound')}</label>
   }
 
-  return <Content>{result}</Content>
+  return <div className={styles.content}>{result}</div>
 }
 
 const ControlGroups = namedObserver('ControlGroups', RawControlGroups)
@@ -169,10 +126,12 @@ const ControlGroups = namedObserver('ControlGroups', RawControlGroups)
 export const ComponentBar = (componentProps: DraggableProps) => {
   const [filtered, setFiltered] = useState<string>()
 
-  return <div className={componentBar}>
-    <Header>
-      <SearchForm style={searchFormStyle} onChange={setFiltered}/>
-    </Header>
-    <ControlGroups {...componentProps} filter={filtered}/>
-  </div>
+  return (
+    <div className={styles.componentBar}>
+      <div className={styles.header}>
+        <SearchForm onChange={setFiltered} className={styles.search}/>
+      </div>
+      <ControlGroups {...componentProps} filter={filtered}/>
+    </div>
+  )
 }

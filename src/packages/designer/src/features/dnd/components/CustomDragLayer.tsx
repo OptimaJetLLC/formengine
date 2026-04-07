@@ -1,59 +1,8 @@
-import {cx} from '@emotion/css'
-import styled from '@emotion/styled'
+import cx from 'clsx'
 import type {XYCoord} from 'react-dnd'
 import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
-
-const Layer = styled.div`
-  position: fixed;
-  pointer-events: none;
-  z-index: 100;
-  inset-inline-start: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-`
-
-const Container = styled.div`
-  box-shadow: 0 5px 20px 0 rgb(0 0 0 / 35%);
-  width: fit-content;
-
-  &, & > *, &::before, &::after {
-    background-color: white;
-    border-radius: 5px;
-  }
-
-  &.isMultiSelection {
-    & > *, &::before, &::after {
-      box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.15);
-    }
-
-    &::before, &::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-
-    &::before {
-      inset-inline-start: 7px;
-      top: 5px;
-      z-index: -1;
-    }
-
-    &::after {
-      inset-inline-start: 12px;
-      top: 10px;
-      z-index: -2;
-    }
-  }
-
-  .rs-theme-dark & {
-    &, & > *, &::before, &::after {
-      background-color: #414549;
-    }
-  }
-`
+import styles from './CustomDragLayer.module.css'
 
 function getItemStyles(
   initialOffset: XYCoord | null,
@@ -89,8 +38,8 @@ export const CustomDragLayer = () => {
     return null
   }
   return (
-    <Layer>
-      <Container className={cx({isMultiSelection})} style={getItemStyles(initialOffset, currentOffset)} id={'fb-drag-preview'}/>
-    </Layer>
+    <div className={styles.layer}>
+      <div className={cx(styles.container, {isMultiSelection})} style={getItemStyles(initialOffset, currentOffset)} id={'fb-drag-preview'}/>
+    </div>
   )
 }

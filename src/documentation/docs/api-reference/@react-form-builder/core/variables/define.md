@@ -1,6 +1,6 @@
 # Variable: define()
 
-> `const` **define**: \<`T`\>(`component`, `displayName?`) => [`Definer`](../interfaces/Definer.md)\<`T`\> = `Definer.define`
+> `const` **define**: \<`T`\>(`component`, `typeName?`) => [`Definer`](../interfaces/Definer.md)\<`T`\> = `Definer.define`
 
 Static method to create an instance of the component's metadata builder class.
 
@@ -18,11 +18,11 @@ Static method to create an instance of the component's metadata builder class.
 
 the React component.
 
-### displayName?
+### typeName?
 
 `string`
 
-the display name for the anonymous component.
+the type name for the anonymous component.
 
 ## Returns
 

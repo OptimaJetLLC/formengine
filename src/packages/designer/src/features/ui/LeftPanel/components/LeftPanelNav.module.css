@@ -1,0 +1,21 @@
+.navContent {
+  min-height: 0;
+  overflow: auto;
+  padding: 4px;
+}
+
+.componentsTab {
+  --nav-icon-item-color: var(--rs-green-600);
+}
+
+.treeTab {
+  --nav-icon-item-color: var(--rs-navs-selected);
+}
+
+.settingsTab {
+  --nav-icon-item-color: violet;
+}
+
+.formsTab {
+  --nav-icon-item-color: #f67f1f;
+}

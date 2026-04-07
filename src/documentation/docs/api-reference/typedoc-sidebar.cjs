@@ -1752,6 +1752,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/CSSObject",
+              label: "CSSObject"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/CssPart",
               label: "CssPart"
             },
@@ -2278,11 +2283,6 @@ const typedocSidebar = {
             },
             {
               type: "doc",
-              id: "api-reference/@react-form-builder/core/variables/emotionCache",
-              label: "emotionCache"
-            },
-            {
-              type: "doc",
               id: "api-reference/@react-form-builder/core/variables/emptyComponentStore",
               label: "emptyComponentStore"
             },
@@ -2724,6 +2724,11 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/functions/reactStylesToCss",
+              label: "reactStylesToCss"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/functions/startCase",
               label: "startCase"
             },
@@ -3016,11 +3021,6 @@ const typedocSidebar = {
               type: "doc",
               id: "api-reference/@react-form-builder/designer/variables/FormBuilder",
               label: "FormBuilder"
-            },
-            {
-              type: "doc",
-              id: "api-reference/@react-form-builder/designer/variables/SCell",
-              label: "SCell"
             },
             {
               type: "doc",

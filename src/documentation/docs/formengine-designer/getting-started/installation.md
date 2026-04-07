@@ -27,7 +27,7 @@ If your package manager does not support automatic installation of peer dependen
 npm, then you need to install peer dependencies manually.
 
 ```bash
-npm install @emotion/css@11.10.5 @emotion/react@11.10.5 @emotion/styled@11.10.5 mobx@6.9.0 rsuite@5.59.1 rsuite-table@5.10.3 --save-exact
+npm install @emotion/cache@11.13.5 @emotion/css@11.13.5 @emotion/react@11.14.0 @emotion/styled@11.14.1 mobx@6.13.5 mobx-react@9.2.0 rsuite@5.83.4 --save-exact
 ```
 
 :::
@@ -86,7 +86,7 @@ If your package manager does not support automatic installation of peer dependen
 npm, then you need to install peer dependencies manually.
 
 ```bash
-npm install @emotion/css@11.10.5 @emotion/react@11.10.5 @emotion/styled@11.10.5 @rsuite/icons@1.0.2 react-number-format@5.1.4 rsuite@5.59.1 --save-exact
+npm install @emotion/css@11.13.5 @emotion/react@11.14.0 @emotion/styled@11.14.1 @rsuite/icons@1.3.2 react-number-format@5.1.4 rsuite@5.83.4 --save-exact
 ```
 
 :::
@@ -131,7 +131,13 @@ If your package manager does not support automatic installation of peer dependen
 npm, then you need to install peer dependencies manually.
 
 ```bash
-npm install @emotion/cache@11.10.5 @emotion/css@11.10.5 @emotion/react@11.10.5 mobx@6.9.0 mobx-react@7.6.0 --save-exact
+npm install clsx@2.1.1 mobx@6.13.5 mobx-react@9.2.0 --save-exact
+```
+
+If you are using the React Suite component pack, install its peer dependencies as well:
+
+```bash
+npm install @emotion/css@11.13.5 @emotion/react@11.14.0 @emotion/styled@11.14.1 @rsuite/icons@1.3.2 react-number-format@5.1.4 rsuite@5.83.4 --save-exact
 ```
 
 :::
@@ -266,7 +272,7 @@ window.onload = function () {
   } = rSuiteComponents
 
   const filteredRSuiteComponents = rSuiteComponents.rSuiteComponents.filter(component => {
-    return component.data.component.displayName !== 'RsTimePicker'
+    return component.data.typeName !== 'RsTimePicker'
   })
 
   const myComponentsSet = [
@@ -300,6 +306,7 @@ Here's an example of the usage:
 <head>
   <meta charset="UTF-8">
   <title>FormEngine Viewer bundle embedding example</title>
+  <link rel="stylesheet" href="https://unpkg.com/@react-form-builder/viewer-bundle@latest/dist/viewer-bundle.css">
   <script src="https://unpkg.com/@react-form-builder/viewer-bundle@latest/dist/index.iife.js" async defer></script>
 </head>
 <body style="margin: 0">
@@ -428,7 +435,7 @@ window.onload = function () {
   } = rSuiteComponents
 
   const filteredRsuiteComponents = rSuiteComponents.rSuiteComponents.filter(component => {
-    return component.data.component.displayName !== 'RsTimePicker'
+    return component.data.typeName !== 'RsTimePicker'
   })
 
   const myComponentsSet = [

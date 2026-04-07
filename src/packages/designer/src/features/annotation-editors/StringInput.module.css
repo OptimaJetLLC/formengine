@@ -1,0 +1,34 @@
+.sizer {
+  display: inline-grid;
+  vertical-align: top;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.sizer::after,
+.sizer > textarea {
+  min-width: 1em !important;
+  width: auto !important;
+  height: 100% !important;
+  grid-area: 2 / 1;
+  resize: none !important;
+  max-height: 6em !important;
+}
+
+.sizer::after {
+  content: attr(data-contents) " ";
+  visibility: hidden;
+  font-size: inherit !important;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.sizer button {
+  position: absolute;
+  top: 4px;
+  inset-inline-end: 14px;
+  color: var(--rs-text-secondary);
+  width: 12px;
+  height: 12px;
+}

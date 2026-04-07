@@ -3,6 +3,7 @@ import type {ReactNode} from 'react'
 import {useMemo} from 'react'
 import type {CellProps} from 'rsuite'
 import {Table} from 'rsuite'
+import {tableComponentsCategory} from './tableComponentsCategory'
 import {rsCellTypeName} from './typeNames'
 
 const CellIcon = () => (
@@ -42,6 +43,7 @@ const RsCell = (props: CellProps<Record<string, unknown>>) => {
 
 export const rsCell = define(RsCell, rsCellTypeName)
   .name('Cell')
+  .category(tableComponentsCategory)
   .icon(CellIcon)
   .props({
     dataKey: string,

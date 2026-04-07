@@ -1,16 +1,11 @@
 import {namedObserver, useComponentData} from '@react-form-builder/core'
 import type {ErrorInfo, ReactNode} from 'react'
 import {Component} from 'react'
+import styles from './ErrorBoundary.module.css'
 
 interface ComponentRenderErrorProps {
   error?: Error
   info?: ErrorInfo
-}
-
-const preStyle = {
-  fontSize: 'small',
-  marginTop: '0',
-  marginLeft: 20,
 }
 
 const RawComponentRenderError = (props: ComponentRenderErrorProps) => {
@@ -19,11 +14,11 @@ const RawComponentRenderError = (props: ComponentRenderErrorProps) => {
     <p>Component <code>{componentData.key}</code> render error: </p>
     <p>
       <strong>{props.error?.message}:</strong>
-      <pre style={preStyle}>{props.error?.stack}</pre>
+      <pre className={styles.pre}>{props.error?.stack}</pre>
     </p>
     <p>
       <strong>Component stack</strong>:
-      <pre style={preStyle}>{props.info?.componentStack}</pre>
+      <pre className={styles.pre}>{props.info?.componentStack}</pre>
     </p>
   </div>
 }

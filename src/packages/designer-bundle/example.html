@@ -30,7 +30,7 @@
     } = rSuiteComponents
 
     const filteredRSuiteComponents = rSuiteComponents.rSuiteComponents.filter(component => {
-      return component.data.component.displayName !== 'RsTimePicker'
+      return component.data.typeName !== 'RsTimePicker'
     })
 
     const myComponentsSet = [

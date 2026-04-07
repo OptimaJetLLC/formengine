@@ -6,9 +6,9 @@ import {IconButton, Modal, Tooltip, Whisper} from 'rsuite'
 import {FaIcon} from '../../../components/Icons'
 import {customizableObserver} from '../../../customization'
 import {JsonView} from '../../JsonView'
+import styles from './JsonViewButton.module.css'
 
 const icon = <FaIcon icon={faCode as any}/>
-const modalBodyStyle = {height: '100vh'} as const
 
 type JsonViewButtonProps = Omit<ComponentProps<typeof Whisper>, 'placement' | 'speaker' | 'children'>
 
@@ -27,7 +27,7 @@ const RawJsonViewButton = (props: JsonViewButtonProps) => {
       <Modal.Header closeButton onClose={handleClose}>
         <Modal.Title>{t('editJson')}</Modal.Title>
       </Modal.Header>
-      <Modal.Body style={modalBodyStyle}>
+      <Modal.Body className={styles.modalBody}>
         <JsonView/>
       </Modal.Body>
     </Modal>

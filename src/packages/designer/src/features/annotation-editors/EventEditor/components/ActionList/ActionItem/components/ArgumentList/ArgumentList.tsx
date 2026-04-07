@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import {isEmpty, namedObserver, useStore} from '@react-form-builder/core'
 import {ArrowDownLine, ArrowUpLine} from '@rsuite/icons'
 import {t} from 'i18next'
@@ -9,18 +8,7 @@ import {useComputed} from '../../../../../../../../utils/useComputed'
 import {Rows} from '../../../../../../../components/Containers'
 import {useActionData} from '../../contexts/ActionDataContext'
 import {ArgumentItem} from './ArgumentItem'
-
-const ExpandButton = styled(Button)`
-  padding: 5px !important;
-  border-radius: 0 !important;
-  outline: 0 !important;
-  color: var(--rs-btn-subtle-text) !important;
-
-  &:focus {
-    box-shadow: none;
-    background-color: initial;
-  }
-`
+import styles from './ArgumentList.module.css'
 
 // Delete arguments object on unmount if it is empty.
 const useClearableArguments = () => {
@@ -34,9 +22,6 @@ const useClearableArguments = () => {
     }
   }, [data.args])
 }
-
-const rowStyle = {marginBlock: 8, paddingInline: 10}
-const expandStyle = {marginTop: -2}
 
 const RawArgumentList = () => {
   const store = useStore()
@@ -54,18 +39,17 @@ const RawArgumentList = () => {
   return (
     <div onMouseDown={preventClick}>
       <Animation.Collapse in={show} unmountOnExit>
-        <Rows gap={1} style={rowStyle}>
+        <Rows className={styles.rows}>
           {Object.entries(action.params).map((arg, index) =>
             <ArgumentItem key={index} data={arg}/>)}
         </Rows>
       </Animation.Collapse>
-
-      <ExpandButton block onClick={toggleShow}>
+      <Button block className={styles.expandButton} onClick={toggleShow}>
         <>
           {t('actions.arguments')}
-          <ExpandIcon style={expandStyle}/>
+          <ExpandIcon className={styles.expand}/>
         </>
-      </ExpandButton>
+      </Button>
     </div>
   )
 }

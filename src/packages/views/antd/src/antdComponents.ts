@@ -7,7 +7,7 @@ import {antRow} from './components/AntRow'
 import {antTable} from './components/AntTable'
 import {antTooltip} from './components/AntTooltip'
 
-const definitions = [
+export const antdComponents: Definer<any>[] = [
   antButton,
   antCol,
   antModal,
@@ -16,12 +16,3 @@ const definitions = [
   antTable,
   antTooltip
 ]
-
-const prefix = 'Ant'
-definitions.forEach(c => {
-  if (!c.getType().startsWith(prefix)) {
-    throw new Error(`The component type must start with '${prefix}', type: '${c.getType()}'`)
-  }
-})
-
-export const antdComponents: Definer<any>[] = definitions

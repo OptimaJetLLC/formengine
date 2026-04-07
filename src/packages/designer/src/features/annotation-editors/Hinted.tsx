@@ -1,30 +1,12 @@
-import styled from '@emotion/styled'
 import type {IconProps} from '@rsuite/icons/Icon'
+import cx from 'clsx'
 import type {ReactElement, ReactNode} from 'react'
 import {useMemo} from 'react'
 import type {WhisperProps} from 'rsuite'
 import {IconButton, Tooltip, Whisper} from 'rsuite'
 import type {TypeAttributes} from 'rsuite/esm/internals/types'
 import {useTooltipPlacement} from '../../utils/TooltipPlacementContext'
-
-const SLabel = styled.label<{ hinted?: boolean }>`
-  min-width: 80px;
-  cursor: pointer;
-  user-select: none;
-
-  ${({hinted}) => hinted && `
-    :hover {
-      text-decoration: underline;
-      text-decoration-style: dotted;
-    }
-  `};
-
-  &.required:after {
-    padding-inline-start: 3px;
-    content: "*";
-    color: red;
-  }
-`
+import styles from './Hinted.module.css'
 
 /**
  * React component properties for the {@link HintedLabel} component.
@@ -92,10 +74,13 @@ export const Hinted = ({hint, children, ...props}: HintedProps) => {
  * @internal
  */
 export const HintedLabel = ({hint, children, ...labelProps}: HintedLabelProps) => {
-  if (!hint) return <SLabel {...labelProps}>{children}</SLabel>
-  return <Hinted hint={hint}>
-    <SLabel {...labelProps} hinted>{children}</SLabel>
-  </Hinted>
+  const labelClassName = cx(styles.label, labelProps.className, hint && styles.hinted)
+  if (!hint) return <label {...labelProps} className={labelClassName}>{children}</label>
+  return (
+    <Hinted hint={hint}>
+      <label {...labelProps} className={labelClassName}>{children}</label>
+    </Hinted>
+  )
 }
 
 /**

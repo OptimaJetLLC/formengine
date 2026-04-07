@@ -3,6 +3,7 @@ import type {ColumnProps} from 'rsuite'
 import {Table} from 'rsuite'
 import {nonNegNumber} from './commonProperties'
 import {getRsColumnComponentStore} from './getRsColumnComponentStore'
+import {tableComponentsCategory} from './tableComponentsCategory'
 import {rsColumnTypeName} from './typeNames'
 
 const ColumnIcon = () => (
@@ -34,6 +35,7 @@ const initialJson = JSON.stringify(getRsColumnComponentStore())
 
 export const rsColumn = define(RsColumn, rsColumnTypeName)
   .name('Column')
+  .category(tableComponentsCategory)
   .icon(ColumnIcon)
   .initialJson(initialJson)
   .props({

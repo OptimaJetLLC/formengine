@@ -1,0 +1,36 @@
+.container {
+  position: absolute;
+  top: -5px;
+  inset-inline-start: 0;
+  height: calc(50% + 5px);
+  width: 100%;
+  z-index: 10;
+  display: flex;
+}
+
+.container:global(.isContainer) {
+  height: 36px;
+  z-index: 9;
+}
+
+.container:global(.isAfter) {
+  top: initial;
+  bottom: -5px;
+}
+
+.container:global(.isAfter):global(.isRoot) {
+  position: relative;
+  flex: 1;
+}
+
+:global(.horizontal) > * > .container {
+  top: 0;
+  inset-inline-start: -5px;
+  height: 100%;
+  width: calc(50% + 5px);
+}
+
+:global(.horizontal) > * > .container:global(.isAfter) {
+  inset-inline-start: initial;
+  inset-inline-end: -5px;
+}

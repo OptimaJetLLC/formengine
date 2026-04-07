@@ -24,6 +24,8 @@
     "create-archive": "node ./config/pack.ts"
   },
   "peerDependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.3.2",
     "@mui/x-date-pickers": "^7.29.4",
     "@react-form-builder/components-uploader": "^7.15.0",

@@ -99,8 +99,10 @@ describe('Validation', () => {
   it('validation should return the localized error messages', async () => {
     const getForm = () => JSON.stringify(validationLocalizationChildForm)
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
+    const initialData = {checkbox: true}
 
-    const {findByTestId, findByLabelText, rerender} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+    const {findByTestId, findByLabelText, rerender} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}
+                                                                         initialData={initialData}/>)
 
     expect(await findByTestId('child-date')).toBeInTheDocument()
     const formData = viewerRef.current?.formData
@@ -118,7 +120,7 @@ describe('Validation', () => {
     await waitFor(() => expect(JSON.stringify(returnedErrors)).toEqual(expectedErrors))
     expect(JSON.stringify(formData.errors)).toEqual(expectedErrors)
 
-    rerender(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} language="de-DE"/>)
+    rerender(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} language="de-DE" initialData={initialData}/>)
     expect(await findByLabelText('Current_lang_DE')).toBeInTheDocument()
 
     const returnedDeErrors = await asyncAct(async () => await formData.validate())
@@ -166,7 +168,7 @@ describe('Validation', () => {
     const getForm = () => JSON.stringify(formDataInValidation)
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
 
-    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef}/>)
+    const {findByTestId} = render(<FormViewer view={view} getForm={getForm} viewerRef={viewerRef} initialData={{checkbox: true}}/>)
 
     const formData = viewerRef.current?.formData
     if (!formData) throw new Error('FormData is not defined')

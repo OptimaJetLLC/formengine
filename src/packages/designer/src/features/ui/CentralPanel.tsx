@@ -1,65 +1,23 @@
-import {cx} from '@emotion/css'
-import styled from '@emotion/styled'
 import {BuilderModeProvider, BuilderThemeProvider, FormViewer, useStore, useViewerProps} from '@react-form-builder/core'
+import cx from 'clsx'
 import type {ComponentProps} from 'react'
 import {useMemo} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {customizable, customizableObserver} from '../customization'
 import {EditableWrapper} from '../dnd'
 import {TrialMessage} from '../license/TrialMessage'
+import styles from './CentralPanel.module.css'
 import {ErrorFormWrapper} from './ErrorFormWrapper'
 import {Header} from './Header/Header'
 import {PanelContainer} from './Panel'
 
-const SContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 0;
-  min-width: 550px;
-`
+const FormContainer = (props: ComponentProps<typeof PanelContainer>) => (
+  <PanelContainer {...props} className={cx(styles.formContainer, props.className)}/>
+)
 
-const SFormContainer = customizable('FormContainer', styled(PanelContainer)`
-  flex: 1;
-  z-index: 4;
-  flex-direction: column;
-  gap: 0.5em;
-  width: initial;
-  margin-inline: 15px;
-  overflow: hidden;
-  transition: max-width .2s ease, max-height .2s ease, border-radius .2s ease;
+const SFormContainer = customizable('FormContainer', FormContainer)
 
-  &.withForm {
-    padding: 0;
-    border: 2px solid var(--rs-gray-500);
-    border-radius: 10px;
-    box-shadow: 0 5px 20px 0 rgb(0 0 0 / 15%);
-  }
-
-  &.mobile {
-    width: 400px;
-    max-height: 800px;
-    align-self: center;
-
-    &.landscapeMode {
-      width: 800px;
-      max-height: 400px;
-    }
-  }
-
-  &.tablet {
-    width: 800px;
-    max-height: 1200px;
-    align-self: center;
-
-    &.landscapeMode {
-      width: 1200px;
-      max-height: 800px;
-    }
-  }
-`)
-
-const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
+const RawCentralPanel = (props: ComponentProps<'div'>) => {
   const builderStore = useBuilderStore()
   const {formLoadError} = useStore()
   const {viewMode, landscapeMode, builderMode, theme, formStorageEnabled} = builderStore
@@ -74,7 +32,7 @@ const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
   }, [builderStore, formStorageEnabled, viewerProps.getForm])
 
   return (
-    <SContainer {...props}>
+    <div {...props} className={cx(styles.container, props.className)}>
       <Header/>
       <BuilderModeProvider value={builderMode}>
         <BuilderThemeProvider value={theme}>
@@ -87,9 +45,8 @@ const RawCentralPanel = (props: ComponentProps<typeof SContainer>) => {
           </SFormContainer>
         </BuilderThemeProvider>
       </BuilderModeProvider>
-    </SContainer>
+    </div>
   )
 }
-
 
 export const CentralPanel = customizableObserver('CentralPanel', RawCentralPanel)

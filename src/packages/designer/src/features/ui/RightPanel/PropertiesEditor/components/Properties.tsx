@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import type {Annotation, ComponentStore, CssPart, Meta, Model, PropertyBlockType} from '@react-form-builder/core'
 import {
   cfDisableActionEditors,
@@ -17,6 +16,7 @@ import {
   useStore,
   useTooltipType
 } from '@react-form-builder/core'
+import cx from 'clsx'
 import {useCallback, useState} from 'react'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import type {Device} from '../../../../../utils/types'
@@ -31,26 +31,7 @@ import {dataKey} from '../annotations/dataKeyAnnotation'
 import {disableDataBinding} from '../annotations/disableDataBindingAnnotation'
 import {Section, SubSection} from '../Section'
 import {DevicePicker} from './DevicePicker'
-
-const PropertiesList = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 10px;
-`
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  overflow-y: auto;
-  padding-inline-end: 5px;
-  justify-content: space-between;
-
-  & > * {
-    margin-bottom: 5px;
-  }
-`
+import styles from './Properties.module.css'
 
 const useCssContextInitializer = (fieldKey: CssPart, store: ComponentStore, device: Device) =>
   useCallback(() => {
@@ -172,9 +153,8 @@ const RawStyleBlock = ({meta, store, device, cssPart, header, headerHint}: Style
 
 interface PropertiesProps {
   activeTab: Section
+  className?: string
 }
-
-const centeredLabelStyle = {height: '40%'} as const
 
 const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
   const builderStore = useBuilderStore()
@@ -184,9 +164,9 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
 
   if (!data) {
     return (
-      <Container>
-        <CenteredLabel style={centeredLabelStyle}>{getLabel('selectElementForEdit')}</CenteredLabel>
-      </Container>
+      <div className={cx(styles.container, props.className)}>
+        <CenteredLabel className={styles.emptyLabel}>{getLabel('selectElementForEdit')}</CenteredLabel>
+      </div>
     )
   }
 
@@ -203,8 +183,8 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
 
   return (
     <ComponentDataProvider value={data}>
-      <Container  {...props}>
-        <PropertiesList>
+      <div {...props} className={cx(styles.container, props.className)}>
+        <div className={styles.propertiesList}>
           {activeTab === Section.Main && <PropertyEditorWrapper annotation={key} context={data.store}/>}
           {!model.isFeatureEnabled(cfDisableMainComponentProperties) && <>
             {data.model.dataBindingType === 'oneWay' && activeTab === Section.Main && <>
@@ -224,7 +204,7 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
             <Styles meta={meta} store={data.store}/>
           }
           {modalActions && <PropertyBlock annotations={meta.modules} context={data.store.props} displayedSection={activeTab}/>}
-        </PropertiesList>
+        </div>
 
         {showTooltipProps && !model.isFeatureEnabled(cfDisableTooltipProperties) &&
           <PropertyBlock annotations={tooltipProps} context={data.store.props}/>
@@ -234,7 +214,7 @@ const RawProperties = ({activeTab, ...props}: PropertiesProps) => {
           <PropertyBlock annotations={additionalProperties} context={data.store.props}
                          header={getLabel('subSection.additionalProperties')}/>
         }
-      </Container>
+      </div>
     </ComponentDataProvider>
   )
 }

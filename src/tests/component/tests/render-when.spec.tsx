@@ -7,7 +7,7 @@ describe('RenderWhen test', () => {
   it('should render when renderWhen/itemRenderWhen condition is true', async () => {
     const getForm = () => JSON.stringify(renderWhenForm)
     const initialData = {
-      'repeater': [{}, {}, {'repeaterInput': '2'}]
+      'repeater': [{visible: true}, {visible: true}, {visible: true, 'repeaterInput': '2'}]
     }
     const {findByTestId, queryByTestId} = render(<FormViewer view={view} getForm={getForm} initialData={initialData}/>)
 

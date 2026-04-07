@@ -1,27 +1,19 @@
-import {css, cx} from '@emotion/css'
-import {CacheProvider} from '@emotion/react'
+import cx from 'clsx'
 import type {ComponentType, ReactNode} from 'react'
 import {useEffect} from 'react'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {namedObserver} from '../../utils/namedObserver'
 import type {FormViewerWrapperComponentProps} from '../define/utils/FormViewerWrapperComponentProps'
-import {BiDi} from './bidi'
-import {emotionCache} from './emotionCache'
 import type {Language} from './language'
+import styles from './ViewerLocalizationProvider.module.css'
 
 interface ViewerLocalizationProviderProps {
   children: ReactNode
 }
 
-const localizationProviderClass = css`
-  display: flex;
-  width: 100%;
-  height: 100%;
-`
-
 const viewerClassName = 'optimajet-formviewer'
 
-const viewerClass = cx(viewerClassName, localizationProviderClass)
+const viewerClass = cx(viewerClassName, styles.localizationProvider)
 
 const nestViewerWrappers = ([Wrapper, ...more]: ComponentType<FormViewerWrapperComponentProps>[],
                             language: Language, children: ReactNode) => {
@@ -33,7 +25,6 @@ const nestViewerWrappers = ([Wrapper, ...more]: ComponentType<FormViewerWrapperC
 const RawViewerLocalizationProvider = (props: ViewerLocalizationProviderProps) => {
   const viewerStore = useStore()
   const language = viewerStore.displayedLanguage
-  const selectedCache = language.bidi == BiDi.RTL ? emotionCache.RTL : emotionCache.LTR
 
   useEffect(() => {
     const loaders = viewerStore.formViewerPropsStore.view.getCssLoaders(language.bidi)
@@ -43,9 +34,7 @@ const RawViewerLocalizationProvider = (props: ViewerLocalizationProviderProps) =
   }, [language, viewerStore.formViewerPropsStore.view])
 
   const viewer = <div dir={language.bidi} lang={language.fullCode} className={viewerClass}>
-    <CacheProvider value={selectedCache}>
-      {props.children}
-    </CacheProvider>
+    {props.children}
   </div>
 
   return nestViewerWrappers(viewerStore.formViewerPropsStore.view.viewerWrappers, language, viewer)

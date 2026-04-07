@@ -26,7 +26,7 @@ const simpleHtmlInput = define(SimpleHtmlInput, 'SimpleHtmlInput')
   })
 
 const findUnderlyingComponent = (type: string) => {
-  const definer = rSuiteComponents.find(definer => definer.data.component.displayName === type)
+  const definer = rSuiteComponents.find(definer => definer.data.typeName === type)
   if (!definer) throw new Error('Calendar component not found')
   return definer.data.component
 }

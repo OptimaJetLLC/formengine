@@ -10,24 +10,25 @@ import {CustomizableTab, SNav} from '../../../../components/NavIconItem'
 import {customizableObserver} from '../../../../customization'
 import type {CustomizableKey} from '../../../../customization/types'
 import {Section} from '../Section'
+import styles from './NavTab.module.css'
 
 interface NavProps {
   activeTab: Section,
   setActiveTab: (activeTab: Section) => void
 }
 
-const tabsProps: Record<Section, [key: CustomizableKey, icon: any, color: string]> = {
-  [Section.Main]: ['Main_Tab', faCircle, 'var(--rs-navs-selected)'],
-  [Section.Style]: ['Style_Tab', faPaintBrush, '#f67f1f'],
-  [Section.Actions]: ['Actions_Tab', faBolt, 'violet'],
-  [Section.Rules]: ['Rules_Tab', faSpellCheck, 'var(--rs-green-600)']
+const tabsProps: Record<Section, [key: CustomizableKey, icon: any, className: string]> = {
+  [Section.Main]: ['Main_Tab', faCircle, styles.mainTab],
+  [Section.Style]: ['Style_Tab', faPaintBrush, styles.styleTab],
+  [Section.Actions]: ['Actions_Tab', faBolt, styles.actionsTab],
+  [Section.Rules]: ['Rules_Tab', faSpellCheck, styles.rulesTab]
 }
 
 const Tab = ({section, ...rest}: Record<string, unknown> & { section: Section }) => {
   const {t} = useTranslation()
   const title = t('propertiesEditor.sectionName.' + section)
-  const [key, icon, color] = tabsProps[section]
-  const props = useMemo(() => ({color, ...rest}), [color, rest])
+  const [key, icon, className] = tabsProps[section]
+  const props = useMemo(() => ({className, ...rest}), [className, rest])
 
   return <CustomizableTab eventKey={section} customizableKey={key} title={title} icon={icon} props={props}/>
 }

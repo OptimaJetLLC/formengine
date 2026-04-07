@@ -1,0 +1,17 @@
+.toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.columns {
+  min-height: 0;
+  flex: 1;
+}
+
+.rows {
+  min-height: 0;
+  flex: 1.5;
+  gap: 10px;
+}

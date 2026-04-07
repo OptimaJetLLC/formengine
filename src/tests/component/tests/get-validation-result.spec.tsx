@@ -138,7 +138,7 @@ describe('getValidationResult function test', () => {
   })
 
   it('should provide the current form data in the code validation function', async () => {
-    const {formData, findByTestId} = renderForm(formDataInValidation)
+    const {formData, findByTestId} = renderForm(formDataInValidation, {initialData: {checkbox: true}})
 
     const checkbox = await findByTestId('checkbox')
     fireEvent.click(checkbox)

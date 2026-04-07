@@ -1,12 +1,10 @@
-import {CacheProvider} from '@emotion/react'
-import {BiDi, emotionCache, loadResource, namedObserver, unloadResource} from '@react-form-builder/core'
+import {BiDi, loadResource, namedObserver, unloadResource} from '@react-form-builder/core'
+import {format} from 'date-fns'
 import type {ReactNode} from 'react'
-import {useCallback} from 'react'
-import {useEffect} from 'react'
+import {useCallback, useEffect} from 'react'
 import {CustomProvider} from 'rsuite'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {dateFnsLocales, defaultComponentsLocale} from '../languageUtils'
-import {format} from 'date-fns'
 
 const styles = {
   [BiDi.LTR]: () => import('../../../../public/css/rsuite-no-reset.min.css?url'),
@@ -34,7 +32,6 @@ const RawLocalizationProvider = (props: LocalizationProps) => {
   const builderStore = useBuilderStore()
   const {bidi} = builderStore.formBuilderLanguage
   const componentsLocale = builderStore.componentsLocale ?? defaultComponentsLocale
-  const selectedCache = builderStore.isRTL ? emotionCache.RTL : emotionCache.LTR
 
   // FE-1288 workaround
   const formatDate = useCallback((date: Date | number, formatStr: string, options?: any) => {
@@ -55,11 +52,9 @@ const RawLocalizationProvider = (props: LocalizationProps) => {
   }, [])
 
   return (
-    <CacheProvider value={selectedCache}>
-      <CustomProvider rtl={builderStore.isRTL} locale={componentsLocale} theme={builderStore.theme} formatDate={formatDate}>
-        {props.children}
-      </CustomProvider>
-    </CacheProvider>
+    <CustomProvider rtl={builderStore.isRTL} locale={componentsLocale} theme={builderStore.theme} formatDate={formatDate}>
+      {props.children}
+    </CustomProvider>
   )
 }
 

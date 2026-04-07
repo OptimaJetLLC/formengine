@@ -1,36 +1,9 @@
-import styled from '@emotion/styled'
 import type {LabeledValue} from '@react-form-builder/core'
+import cx from 'clsx'
 import {Radio, RadioGroup as RRadioGroup} from 'rsuite'
 import type {RadioGroupProps} from 'rsuite/esm/RadioGroup/RadioGroup'
 import {Hinted} from '../annotation-editors/Hinted'
-
-const Container = styled.div`
-  display: flex;
-  gap: 10px;
-  justify-content: space-between;
-  align-items: center;
-  flex: 1;
-
-  .rs-radio-group {
-    width: 100%;
-    justify-content: space-evenly;
-  }
-
-  .rs-radio-group-picker .rs-radio-inline {
-    padding: 0;
-  }
-
-  .rs-radio-checker {
-    min-height: 27px;
-    max-height: 27px;
-    margin: 0 7px !important;
-
-    label {
-      line-height: 14px !important;
-      padding: 4px 0 !important;
-    }
-  }
-`
+import styles from './RadioButtons.module.css'
 
 /**
  * The radio button group element.
@@ -70,13 +43,13 @@ export interface RadioButtonsProps extends RadioGroupProps {
  * @param props the React component properties.
  * @param props.label the label for the group.
  * @param props.items the array with radio button data.
- * @param props.style the style of the component.
+ * @param props.className the class of the component.
  * @param props.props the other properties of the component.
  * @returns the React element.
  */
-export const RadioButtons = ({label, items, style, ...props}: RadioButtonsProps) => {
+export const RadioButtons = ({label, items, className, ...props}: RadioButtonsProps) => {
   return (
-    <Container style={style}>
+    <div className={cx(styles.container, className)}>
       {!!label && <label>{label}</label>}
       <RRadioGroup {...props as any} size={'xs'} inline appearance={'picker'}>
         {items?.map(({value, label, hint}, i) => (
@@ -88,6 +61,6 @@ export const RadioButtons = ({label, items, style, ...props}: RadioButtonsProps)
         ))
         }
       </RRadioGroup>
-    </Container>
+    </div>
   )
 }

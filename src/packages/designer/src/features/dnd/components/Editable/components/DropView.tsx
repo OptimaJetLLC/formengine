@@ -1,36 +1,11 @@
-import styled from '@emotion/styled'
-import {forwardRef, useComponentData} from '@react-form-builder/core'
+import {useComponentData} from '@react-form-builder/core'
 import {Plus as PlusIcon} from '@rsuite/icons'
-import type {PropsWithoutRef, RefCallback} from 'react'
-import {useCallback, useMemo} from 'react'
+import cx from 'clsx'
+import type {HTMLAttributes, PropsWithoutRef} from 'react'
+import {forwardRef, useCallback, useMemo} from 'react'
 import {IconButton} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
-
-const InnerContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  min-height: 36px;
-  z-index: 12;
-  align-items: center;
-  justify-content: center;
-  outline: 1px solid var(--rs-btn-default-disabled-text);
-
-  &.isActive {
-    background-color: rgba(0, 116, 255, 0.15);
-    outline: 1px solid blue;
-  }
-
-  .selected > & {
-    outline: none !important;
-  }
-
-  &.isDragging:not(.canDrop) {
-    background-color: rgba(155, 0, 0, 0.15);
-  }
-`
+import styles from './DropView.module.css'
 
 interface DropViewProps extends PropsWithoutRef<any> {
   className?: string
@@ -61,61 +36,26 @@ const AddButton = ({slot, slotCondition}: { slot?: string, slotCondition?: strin
  * @returns the React element.
  */
 export const InnerDropView = forwardRef<any, DropViewProps>(({slot, slotCondition, className}, ref) => {
-  // TODO FE-1065
-  return <InnerContainer className={className} ref={ref as unknown as RefCallback<HTMLDivElement>} data-testid="inner-dropzone">
-    <AddButton slot={slot} slotCondition={slotCondition}/>
-  </InnerContainer>
+  return (
+    <div
+      ref={ref}
+      className={cx(styles.innerContainer, className)}
+      data-testid="inner-dropzone"
+    >
+      <AddButton slot={slot} slotCondition={slotCondition}/>
+    </div>
+  )
 })
+InnerDropView.displayName = 'InnerDropView'
 
 /**
  * The React form builder component that displays the container into which you can drag and drop a component.
  * @param props the React component properties.
  * @returns the React element.
  */
-export const DropView = styled.div`
-  position: absolute;
-  top: -6px;
-  height: 2px;
-  width: 100%;
-  inset-inline-start: 0;
-  opacity: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .isTree & {
-    top: 0;
+export const DropView = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+  ({className, ...props}, ref) => {
+    return <div {...props} ref={ref} className={cx(styles.dropView, className)}/>
   }
-
-  &.isAfter {
-    top: initial;
-    bottom: -6px;
-
-    .isTree & {
-      bottom: 0;
-    }
-  }
-
-  .horizontal.isContainer > * > & {
-    inset-block: 0;
-    inset-inline-start: -6px;
-    inset-inline-end: initial;
-    height: 100%;
-    width: 2px;
-
-    &.isAfter {
-      inset-inline-start: initial;
-      inset-inline-end: -6px;
-    }
-  }
-
-  &.isActive {
-    opacity: 1;
-    background-color: blue;
-
-    .isInner & {
-      background-color: rgba(0, 116, 255, 0.15);
-      outline: 1px solid blue;
-    }
-  }
-`
+)
+DropView.displayName = 'DropView'

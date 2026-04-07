@@ -10,12 +10,12 @@
     "install-deps-and-run": "node ./install-deps-and-run.ts"
   },
   "dependencies": {
-    "@react-form-builder/components-fast-qr": "file:react-form-builder-components-fast-qr-7.14.0.tgz",
-    "@react-form-builder/components-material-ui": "file:react-form-builder-components-material-ui-7.14.0.tgz",
-    "@react-form-builder/components-rsuite": "file:react-form-builder-components-rsuite-7.14.0.tgz",
-    "@react-form-builder/components-signature": "file:react-form-builder-components-signature-7.14.0.tgz",
-    "@react-form-builder/core": "file:react-form-builder-core-7.14.0.tgz",
-    "@react-form-builder/designer": "file:react-form-builder-designer-7.14.0.tgz",
+    "@react-form-builder/components-fast-qr": "file:react-form-builder-components-fast-qr-7.15.0.tgz",
+    "@react-form-builder/components-material-ui": "file:react-form-builder-components-material-ui-7.15.0.tgz",
+    "@react-form-builder/components-rsuite": "file:react-form-builder-components-rsuite-7.15.0.tgz",
+    "@react-form-builder/components-signature": "file:react-form-builder-components-signature-7.15.0.tgz",
+    "@react-form-builder/core": "file:react-form-builder-core-7.15.0.tgz",
+    "@react-form-builder/designer": "file:react-form-builder-designer-7.15.0.tgz",
     "react": "^19.2.1",
     "react-dom": "^19.2.1"
   },

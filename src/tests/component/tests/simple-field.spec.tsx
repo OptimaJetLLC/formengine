@@ -1,8 +1,23 @@
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
-import {BiDi, ComponentStore, createView, FormViewer, Language, PersistedForm, View} from '@react-form-builder/core'
+import {
+  BiDi,
+  buildForm,
+  ComponentStore,
+  createView,
+  define,
+  FormViewer,
+  isUndefined,
+  Language,
+  PersistedForm,
+  string,
+  useComponentData,
+  View
+} from '@react-form-builder/core'
 import {fireEvent, render} from '@testing-library/react'
 import {useEffect, useState} from 'react'
 import {expect} from 'vitest'
+import {renderForm} from '../util/renderForm'
+import {asyncAct} from './asyncAct'
 
 function randomString(prefix?: string) {
   return `${prefix ?? ''}${new Date().toISOString()}`
@@ -321,7 +336,7 @@ describe(`SimpleField test`, function () {
     expect(await findByTestId(dataTestId)).toHaveValue(defaultValue)
   })
 
-  it('Input should have a default value after clear', async () => {
+  it('Input should have an empty string value after clear', async () => {
     const defaultValue = randomString('default-')
     const form = createTestForm((input) => {
       input.props.value = {value: defaultValue}
@@ -343,7 +358,7 @@ describe(`SimpleField test`, function () {
     const clearButton = await findByText('Clear')
     fireEvent.click(clearButton)
 
-    expect(await findByTestId(dataTestId)).toHaveValue(defaultModelValue)
+    expect(await findByTestId(dataTestId)).toHaveValue('')
   })
 
   it('The value entered should override the default value', async () => {
@@ -374,5 +389,34 @@ describe(`SimpleField test`, function () {
     fireEvent.change(nameInput, {target: {value: enteredValue}})
     expect(await findByDisplayValue(enteredValue)).toBeInTheDocument()
     expect(nameInput).toHaveValue(enteredValue)
+  })
+
+  it('The clear function should set the field to undefined', async () => {
+    const TestComponent = ({value}: any) => {
+      const componentData = useComponentData()
+      const fieldValue = componentData?.field?.value
+      const text = isUndefined(fieldValue)
+        ? 'Value is undefined'
+        : `Current value '${fieldValue}'`
+      return <span data-testid="test-component">{text}</span>
+    }
+
+    const testComponent = define(TestComponent, 'TestComponent')
+      .props({value: string.valued})
+      .build()
+
+    const form = buildForm()
+      .component('testComponent', 'TestComponent')
+      .json()
+
+    const view = createView([testComponent.model])
+
+    const {findByTestId, formData} = renderForm(form, {view, initialData: {testComponent: '123'}})
+
+    expect(await findByTestId('test-component')).toHaveTextContent('123')
+
+    await asyncAct(async () => formData.clear())
+
+    expect(await findByTestId('test-component')).toHaveTextContent('Value is undefined')
   })
 })

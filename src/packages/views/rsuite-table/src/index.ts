@@ -6,31 +6,16 @@ import {rsHeaderCell} from './components/RsHeaderCell'
 import {rsTable} from './components/RsTable'
 import rSuiteTableEnUsComponentsDescriptions from './i18n/en-US.json'
 
-const categories = {
-  structure: [
-    rsColumn,
-    rsColumnGroup,
-    rsTable,
-    rsHeaderCell,
-    rsCell,
-  ],
-}
-
 /**
  * An array of rSuite table component metadata factories.
  */
-export const rSuiteTableComponents: Definer<any>[] = []
-
-const prefix = 'Rs'
-Object.entries(categories).forEach(([category, components]) => {
-  components.forEach(c => {
-    if (!c.getType().startsWith(prefix)) {
-      throw new Error(`The component type must start with '${prefix}', type: '${c.getType()}'`)
-    }
-    c.category(category)
-    rSuiteTableComponents.push(c)
-  })
-})
+export const rSuiteTableComponents: Definer<any>[] = [
+  rsColumn,
+  rsColumnGroup,
+  rsTable,
+  rsHeaderCell,
+  rsCell,
+]
 
 /**
  * An array of rSuite tables components metadata for use in FormBuilder.

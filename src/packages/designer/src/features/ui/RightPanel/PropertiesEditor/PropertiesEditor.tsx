@@ -1,21 +1,10 @@
-import styled from '@emotion/styled'
 import {namedObserver} from '@react-form-builder/core'
 import {useCallback, useState} from 'react'
 import {isDesignerLocalStorageEnabled} from '../../../../utils/isDesignerLocalStorageEnabled'
 import {NavTab} from './components/NavTab'
 import {Properties} from './components/Properties'
+import styles from './PropertiesEditor.module.css'
 import {Section} from './Section'
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  flex: 1;
-
-  .placement-left .rs-popover {
-    margin-inline-start: -14px;
-  }
-`
 
 const tabs: Record<Section, boolean> = {
   [Section.Main]: true,
@@ -48,10 +37,12 @@ const RawPropertiesEditor = () => {
     saveActiveTab(tab)
   }, [])
 
-  return <Container>
-    <NavTab activeTab={activeTab} setActiveTab={handleTabChange}/>
-    <Properties activeTab={activeTab}/>
-  </Container>
+  return (
+    <div className={styles.container}>
+      <NavTab activeTab={activeTab} setActiveTab={handleTabChange}/>
+      <Properties activeTab={activeTab}/>
+    </div>
+  )
 }
 
 const PropertiesEditor = namedObserver('PropertiesEditor', RawPropertiesEditor)

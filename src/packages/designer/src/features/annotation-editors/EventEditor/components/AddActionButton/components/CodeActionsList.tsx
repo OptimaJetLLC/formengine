@@ -5,10 +5,7 @@ import {Divider, Dropdown} from 'rsuite'
 import {useBuilderStore} from '../../../../../../utils/BuilderStoreContext'
 import {useTranslationPart} from '../../../../../localization/hooks'
 import type {ActionsMenuProps} from '../types'
-
-const itemStyle = {position: 'relative', display: 'flex', justifyContent: 'space-between'} as const
-const spanStyle = {whiteSpace: 'break-spaces'} as const
-const dividerStyle = {marginTop: 0, marginBottom: 0} as const
+import styles from './CodeActionsList.module.css'
 
 const addButtonIcon = <PlusIcon/>
 
@@ -37,8 +34,8 @@ const RawCodeActionsList = (props: ActionsMenuProps) => {
   const handleSelect = useCallback((name: string) => () => onSelect({name, type: 'code'}), [onSelect])
 
   const renderAction = useCallback((name: string) => (
-    <Dropdown.Item key={name} onClick={handleSelect(name)} style={itemStyle}>
-      <span style={spanStyle}>{name}</span>
+    <Dropdown.Item key={name} onClick={handleSelect(name)} className={styles.item}>
+      <span className={styles.name}>{name}</span>
     </Dropdown.Item>
   ), [handleSelect])
 
@@ -46,7 +43,7 @@ const RawCodeActionsList = (props: ActionsMenuProps) => {
     {actionNames?.map(renderAction)}
 
     {!!actionNames?.length && <Dropdown.Item disabled>
-      <Divider style={dividerStyle}/>
+      <Divider className={styles.divider}/>
     </Dropdown.Item>}
 
     <Dropdown.Item icon={addButtonIcon} onClick={addAction} data-testid={'dropdown-item-add-code-action'}>

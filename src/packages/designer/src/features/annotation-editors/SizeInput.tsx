@@ -1,10 +1,10 @@
-import {cx} from '@emotion/css'
-import styled from '@emotion/styled'
 import {isUndefined, toLabeledValues} from '@react-form-builder/core'
+import cx from 'clsx'
 import {useCallback} from 'react'
 import {Input, InputNumber, InputPicker} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
+import styles from './SizeInput.module.css'
 
 type InputValue = string | number | null;
 const OtherUnit = 'other'
@@ -49,22 +49,6 @@ const makeCSSValue = (value: InputValue, unit?: string) => {
   return `${isNeedValue(unit) ? number : ''}${unit === OtherUnit ? '' : unit}`
 }
 
-const Container = styled.div`
-  display: flex;
-  gap: 5px;
-  justify-content: space-between;
-  align-items: center;
-`
-
-const SPicker = styled(InputPicker)`
-  width: auto;
-
-  &.withValue {
-    width: min-content;
-    min-width: 78px;
-  }
-`
-
 /**
  * The property editor for the CSS size property type.
  * @param props the Annotation editor component properties.
@@ -88,19 +72,19 @@ const SizeInput = (props: AnnotationEditorProps) => {
 
   return (
     <LabeledProperty {...props}>
-      <Container>
+      <div className={styles.container}>
         {isNeedValue(unit) && input}
-        <SPicker
+        <InputPicker
           value={unit ?? ''}
           onChange={handleUnitChange}
           data={options}
-          className={cx({withValue: isNeedValue(unit)})}
+          className={cx(styles.picker, {withValue: isNeedValue(unit)})}
           creatable
           placement={'bottomEnd'}
           size={'xs'}
           onClean={onClean}
         />
-      </Container>
+      </div>
     </LabeledProperty>
   )
 }

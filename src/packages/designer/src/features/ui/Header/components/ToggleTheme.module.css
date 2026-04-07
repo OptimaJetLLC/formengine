@@ -1,0 +1,24 @@
+.iconButton {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: background-color 400ms linear;
+  background-color: var(--rs-primary-500);
+}
+
+.iconButton path {
+  transform: rotate(360deg);
+  transform-origin: 50% 200%;
+  transition: all 400ms cubic-bezier(1, 0, 0, 1);
+}
+
+:global(.dark) .iconButton path {
+  transform: rotate(0deg);
+}
+
+:global(.dark) .iconButton {
+  background-color: var(--rs-toggle-bg);
+}

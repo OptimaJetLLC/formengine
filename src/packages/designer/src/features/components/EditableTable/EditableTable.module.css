@@ -1,0 +1,20 @@
+.table :global(.rs-table-cell),
+.table :global(.rs-table-row) {
+  background-color: transparent !important;
+}
+
+.table:global(.hideHeader) {
+  margin-bottom: -40px;
+}
+
+.table:global(.hideHeader) :global(.rs-table-header-row-wrapper) {
+  display: none !important;
+}
+
+.table:global(.hideHeader) :global(.rs-table-body-row-wrapper) {
+  top: 0 !important;
+}
+
+.button {
+  margin-top: 10px;
+}

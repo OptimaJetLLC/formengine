@@ -1,12 +1,12 @@
 # Function: isTemplateType()
 
-> **isTemplateType**(`typeName`): `boolean`
+> **isTemplateType**(`typeName?`): `boolean`
 
 Returns true if typeName is the template type, false otherwise. **Internal use only.**
 
 ## Parameters
 
-### typeName
+### typeName?
 
 `string`
 

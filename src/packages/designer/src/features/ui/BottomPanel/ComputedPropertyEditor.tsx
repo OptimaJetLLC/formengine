@@ -9,6 +9,7 @@ import {CalculableCodeEditor} from '../../calculation/CalculableCodeEditor'
 import {RadioButtons} from '../../components/RadioButtons'
 import {useTranslationPart} from '../../localization/hooks'
 import {LocalizationEditor} from '../../localization/LocalizationEditor'
+import styles from './ComputedPropertyEditor.module.css'
 import {Header} from './Header'
 import {SimpleValueEditor} from './SimpleValueEditor'
 
@@ -49,8 +50,6 @@ interface ComputedPropertyEditorProps {
   property: EditableProperty
 }
 
-const buttonsStyle = {flex: 0}
-
 const RawComputedPropertyEditor = ({property}: ComputedPropertyEditorProps) => {
   const builderStore = useBuilderStore()
   const {t} = useTranslation()
@@ -69,7 +68,7 @@ const RawComputedPropertyEditor = ({property}: ComputedPropertyEditorProps) => {
     <Header>
       {`${t('bottomPanel.editProperty')}: ${componentKey}.${annotation.name}`}
       {toggleItems.length &&
-        <RadioButtons value={computeType} label={'Use'} items={toggleItems} style={buttonsStyle} onChange={handleComputeTypeChange}/>
+        <RadioButtons value={computeType} label={'Use'} items={toggleItems} className={styles.buttons} onChange={handleComputeTypeChange}/>
       }
     </Header>
     <Editor editableProperty={property} onClose={handleClose}/>

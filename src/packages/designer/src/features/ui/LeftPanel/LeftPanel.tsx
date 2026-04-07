@@ -6,11 +6,10 @@ import {customizableObserver} from '../../customization'
 import {Panel} from '../Panel'
 import {FormViewerState} from './components/FormViewerState'
 import {LeftPanelNav} from './components/LeftPanelNav'
-
-const rowsStyle = {marginTop: 55, paddingInlineStart: 5, minHeight: 80} as const
+import styles from './LeftPanel.module.css'
 
 const ViewerContent = () => (
-  <Rows style={rowsStyle}>
+  <Rows className={styles.viewerRows}>
     <FormViewerState/>
   </Rows>
 )

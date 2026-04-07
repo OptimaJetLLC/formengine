@@ -1,0 +1,55 @@
+.layer {
+  position: fixed;
+  pointer-events: none;
+  z-index: 100;
+  inset-inline-start: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  box-shadow: 0 5px 20px 0 rgb(0 0 0 / 35%);
+  width: fit-content;
+}
+
+.container,
+.container > *,
+.container::before,
+.container::after {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.container:global(.isMultiSelection) > *,
+.container:global(.isMultiSelection)::before,
+.container:global(.isMultiSelection)::after {
+  box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.container:global(.isMultiSelection)::before,
+.container:global(.isMultiSelection)::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.container:global(.isMultiSelection)::before {
+  inset-inline-start: 7px;
+  top: 5px;
+  z-index: -1;
+}
+
+.container:global(.isMultiSelection)::after {
+  inset-inline-start: 12px;
+  top: 10px;
+  z-index: -2;
+}
+
+:global(.rs-theme-dark) .container,
+:global(.rs-theme-dark) .container > *,
+:global(.rs-theme-dark) .container::before,
+:global(.rs-theme-dark) .container::after {
+  background-color: #414549;
+}

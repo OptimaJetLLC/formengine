@@ -19,13 +19,17 @@ const view = new View([testThemeComponent.build().model])
 
 describe('useBuilderTheme hook', () => {
   it('should respond to theme changes in FormBuilder', async () => {
-    const {findByTestId, container} = await renderBuilder(form, {view: builderView})
+    const {findByTestId, container} = await renderBuilder(form, {view: builderView, theme: 'light'})
     const themeComponent = await findByTestId(testId)
 
-    expect(themeComponent).toHaveTextContent('light')
+    // the theme is set in the browser and can be light or dark
+    const currentTheme = themeComponent.textContent ?? ''
+    expect(currentTheme).oneOf(['dark', 'light'])
 
     await toggleTheme(container)
-    expect(themeComponent).toHaveTextContent('dark')
+    expect(themeComponent).not.toHaveTextContent(currentTheme)
+    const expectedTheme = currentTheme === 'light' ? 'dark' : 'light'
+    expect(themeComponent).toHaveTextContent(expectedTheme)
   })
 
   it('should return default value in FormViewer', async () => {

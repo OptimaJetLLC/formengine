@@ -1,0 +1,72 @@
+.draggableBody {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 7;
+}
+
+.dragPreview {
+  padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.containerLabel {
+  position: absolute;
+  justify-self: center;
+  color: var(--rs-primary-300);
+  inset: 2px;
+  line-height: 13px;
+}
+
+:global(.rs-theme-dark) .containerLabel {
+  color: var(--rs-primary-400);
+  opacity: 0.4;
+}
+
+.defaultContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+:global(.horizontal) > .defaultContainer {
+  flex-direction: row;
+}
+
+.container {
+  position: relative;
+  transition: padding 200ms ease-in-out;
+}
+
+.container:global(.isDraggingCurrent) {
+  opacity: 0.4;
+}
+
+.container:global(.hovered) {
+  outline: 2px dashed #3498ff !important;
+  cursor: pointer !important;
+}
+
+.container:global(.selected) {
+  outline: 2px solid #3498ff !important;
+  cursor: move !important;
+}
+
+.container:not(:global(.isRoot)):not(:global(.isTree)):global(.isActive):global(.isContainer) {
+  outline: 1px dashed rgba(0, 116, 255, 0.25);
+}
+
+.container:not(:global(.isRoot)):not(:global(.isTree)):global(.isDragging):global(.isContainer) {
+  padding: 20px 10px;
+  background-color: rgb(from var(--rs-primary-200) r g b / 20%);
+  outline: 1px dashed rgba(0, 116, 255, 0.25);
+}
+
+:global(.rs-theme-dark) .container:not(:global(.isRoot)):not(:global(.isTree)):global(.isDragging):global(.isContainer) {
+  background-color: rgb(from var(--rs-primary-600) r g b / 10%);
+}
+
+:global(.horizontal) > .container:not(:global(.isRoot)):not(:global(.isTree)):global(.isDragging):global(.isContainer) {
+  padding: 10px 20px;
+}

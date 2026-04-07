@@ -27,8 +27,7 @@ import {useShowMessage} from '../../../toast/toast'
 import {useSaveFormDialog} from '../../dialogs/useSaveFormDialog'
 import {exportForms, importForms} from './formUtils'
 import {useSaveForm} from './useSaveForm'
-
-const menuStyle = {width: 'fit-content'} as const
+import styles from './Menu.module.css'
 
 const RawExportFormsButton = () => {
   const store = useBuilderStore()
@@ -166,7 +165,7 @@ const MenuItems = customizable('MainMenu_Items', RawMenuItems)
 export const Menu = () => {
   const t = useTranslationPart('leftMenu')
   return (
-    <MenuDropdown title={t('menu')} size={'sm'} renderToggle={renderToggle} menuStyle={menuStyle}>
+    <MenuDropdown title={t('menu')} size={'sm'} renderToggle={renderToggle} className={styles.menu}>
       <MenuItems/>
     </MenuDropdown>
   )

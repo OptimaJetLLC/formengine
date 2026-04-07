@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FormEngine bundle embedding example</title>
+  <script src="../../src/packages/viewer-bundle-premium/dist/index.iife.js" async defer></script>
+</head>
+<body style="margin: 20px">
+<div id="viewer"></div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    const {buildForm, renderFormViewer, rSuiteComponents, createView} = window.FormEngineViewerBundle;
+
+    const simpleForm = buildForm({errorType: 'RsErrorMessage'})
+      .component('container', 'RsContainer')
+      .style({flexDirection: 'row'})
+      .children((builder) =>
+        builder
+          .component('firstName', 'RsInput')
+          .prop('placeholder', 'Enter your first name')
+          .prop('label', 'First Name')
+          .validation('required')
+
+          .component('lastName', 'RsInput')
+          .prop('placeholder', 'Enter your last name')
+          .prop('label', 'Last Name')
+          .validation('required')
+      )
+
+      .component('birthDate', 'RsDatePicker')
+      .prop('label', 'Birth Date')
+      .prop('oneTap', true)
+      .validation('min').args({value: '1900-01-07T12:25:37.000Z'})
+
+      .component('submit', 'RsButton')
+      .prop('children', 'Submit')
+      .prop('color', 'blue')
+      .prop('appearance', 'primary')
+      .event('onClick')
+      .commonAction('validate').args({failOnError: true})
+      .customAction('onSubmit')
+      .json()
+
+    const props = {
+      view: createView(rSuiteComponents.models),
+      getForm: () => simpleForm,
+      actions: {
+        onSubmit: (e) => {
+          // submit the form to the backend
+          alert('Form data: ' + JSON.stringify(e.data))
+        }
+      }
+    }
+
+    window.viewerRoot = renderFormViewer('viewer', props)
+  }
+</script>
+</body>
+</html>

@@ -8,8 +8,7 @@ import {Columns} from '../components/Containers'
 import LabeledProperty from '../components/LabeledProperty'
 import {useTranslatedComponentProperty} from '../components/useTranslatedComponentProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
-
-const buttonStyle = {borderStyle: 'dashed'}
+import styles from './FunctionEditorInput.module.css'
 
 const fnPrologue = `/** @type {IFormData} */
 var form;
@@ -69,12 +68,20 @@ export const FunctionEditorInput = (props: AnnotationEditorProps) => {
     builderStore.editFunction(editableFunction)
   }, [beginContextLine, builderStore, endContextLine, saveCode, onClose, onCompile, title, value])
 
-  return <LabeledProperty {...props}>
-    <Columns>
-      <Button onClick={handleEdit} size={'xs'} appearance={'ghost'} block style={buttonStyle}>
-        {t('annotation.code.hint')}
-      </Button>
-      {!!value && <RemoveButton onClick={onClean} hintPlacement={'auto'}/>}
-    </Columns>
-  </LabeledProperty>
+  return (
+    <LabeledProperty {...props}>
+      <Columns>
+        <Button
+          onClick={handleEdit}
+          size="xs"
+          appearance="ghost"
+          block
+          className={styles.button}
+        >
+          {t('annotation.code.hint')}
+        </Button>
+        {!!value && <RemoveButton onClick={onClean} hintPlacement="auto"/>}
+      </Columns>
+    </LabeledProperty>
+  )
 }

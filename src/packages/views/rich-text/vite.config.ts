@@ -1,3 +1,4 @@
+import react from '@vitejs/plugin-react-swc'
 import path from 'path'
 import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle'
 import {fileURLToPath} from 'url'
@@ -11,6 +12,7 @@ const __dirname = path.dirname(__filename)
 
 export default defineConfig((env) => mergeConfig(base(env), {
   plugins: [
+    react({jsxImportSource: '@emotion/react'}),
     dts({rollupTypes: true, tsconfigPath: './bundle.tsconfig.json'})
   ],
   build: {
@@ -18,7 +20,8 @@ export default defineConfig((env) => mergeConfig(base(env), {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       formats: ['es'],
-      fileName: 'index'
+      fileName: 'index',
+      cssFileName: 'assets/styles',
     },
     rollupOptions: {
       plugins: [excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})],

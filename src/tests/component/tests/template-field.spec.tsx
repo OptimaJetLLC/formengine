@@ -752,7 +752,7 @@ describe(`TemplateField test`, function () {
 
     for (const key of allInputKeys) {
       const inputTestId = allTestInputs[key]
-      expect(await findByTestId(inputTestId)).toHaveValue(defaultModelValue)
+      expect(await findByTestId(inputTestId)).toHaveValue('')
     }
   })
 

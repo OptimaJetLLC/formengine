@@ -1,0 +1,18 @@
+.item {
+  display: flex;
+  background-color: var(--rs-btn-default-bg);
+  border-radius: 10px;
+  padding: 8px;
+  padding-inline-start: 12px;
+  align-items: center;
+  user-select: none;
+  justify-content: space-between;
+}
+
+.label {
+  color: var(--rs-text-secondary);
+}
+
+.labelActive {
+  color: var(--rs-navs-selected);
+}

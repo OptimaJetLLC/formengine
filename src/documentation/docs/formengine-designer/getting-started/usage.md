@@ -264,7 +264,13 @@ If your package manager does not support automatic installation of peer dependen
 npm, then you need to install peer dependencies manually.
 
 ```bash
-npm install @emotion/cache@11.10.5 @emotion/css@11.10.5 @emotion/react@11.10.5 @emotion/styled@11.10.5 mobx@6.9.0 mobx-react@7.6.0 @rsuite/icons@1.0.2 react-number-format@5.1.4 rsuite@5.59.1 --save-exact
+npm install clsx@2.1.1 mobx@6.13.5 mobx-react@9.2.0 --save-exact
+```
+
+If you are using the React Suite component pack, install its peer dependencies as well:
+
+```bash
+npm install @emotion/css@11.13.5 @emotion/react@11.14.0 @emotion/styled@11.14.1 @rsuite/icons@1.3.2 react-number-format@5.1.4 rsuite@5.83.4 --save-exact
 ```
 
 :::

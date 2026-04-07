@@ -1,90 +1,20 @@
-import {css, cx} from '@emotion/css'
-import styled from '@emotion/styled'
 import type {ComponentData} from '@react-form-builder/core'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
+import cx from 'clsx'
 import type {ComponentProps, RefObject} from 'react'
-import {useMemo, useRef} from 'react'
+import {forwardRef, useMemo, useRef} from 'react'
 import {useDragLayer, useDrop} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {AcceptDrop, ItemType} from '../../../consts'
 import {useDragWithPreview} from '../hooks/useDragWithPreview'
+import styles from './Draggable.module.css'
 import {DragPreview} from './DragPreview'
 import {DropZone} from './DropZone'
 
-const DraggableBody = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 7;
-`
-
-const SDragPreview = styled(DragPreview)`
-  padding: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`
-
-const ContainerLabel = styled.label`
-  position: absolute;
-  justify-self: center;
-  color: var(--rs-primary-300);
-  inset: 2px;
-  line-height: 13px;
-
-  .rs-theme-dark & {
-    color: var(--rs-primary-400);
-    opacity: 0.4;
-  }
-`
-
-const DefaultContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  .horizontal > & {
-    flex-direction: row;
-  }
-`
-
-const containerStyle = css`
-  position: relative;
-  transition: padding 200ms ease-in-out;
-
-  &.isDraggingCurrent {
-    opacity: 0.4;
-  }
-
-  &.hovered {
-    outline: 2px dashed #3498ff !important;
-    cursor: pointer !important;
-  }
-
-  &.selected {
-    outline: 2px solid #3498ff !important;
-    cursor: move !important;
-  }
-
-  &:not(.isRoot):not(.isTree) {
-    &.isActive.isContainer {
-      outline: 1px dashed rgba(0, 116, 255, 0.25);
-    }
-
-    &.isDragging.isContainer {
-      padding: 20px 10px;
-      background-color: rgb(from var(--rs-primary-200) r g b/20%);
-      outline: 1px dashed rgba(0, 116, 255, 0.25);
-
-      .rs-theme-dark & {
-        background-color: rgb(from var(--rs-primary-600) r g b/10%);
-      }
-    }
-
-    .horizontal > &.isDragging.isContainer {
-      padding: 10px 20px;
-    }
-  }
-`
+const DefaultContainer = forwardRef<HTMLDivElement, ComponentProps<'div'>>((props, ref) => (
+  <div ref={ref} {...props} className={cx(styles.defaultContainer, props.className)}/>
+))
+DefaultContainer.displayName = 'DefaultContainer'
 
 interface DndState {
   isDragging: boolean,
@@ -143,7 +73,7 @@ const RawDraggable = ({children, isInner, className, isTree, ...props}: Draggabl
   const clsName = useMemo(() => {
     const parentType = parent ? `parent-type-${parent?.model.type}` : ''
     const type = `type-${model.type}`
-    return cx(containerStyle, className, {
+    return cx(styles.container, className, {
       isActive,
       isContainer,
       isRoot,
@@ -155,16 +85,18 @@ const RawDraggable = ({children, isInner, className, isTree, ...props}: Draggabl
     }, parentType, type)
   }, [className, horizontal, isActive, isContainer, isDragging, isDraggingCurrent, isInner, isRoot, isTree, model.type, parent])
 
-  return <>
-    {isDraggingCurrent && <SDragPreview>{key}</SDragPreview>}
-    <Container ref={dnd} className={clsName} {...props}>
-      {showContainerHint && <ContainerLabel>{key}</ContainerLabel>}
-      {!isTree && <DraggableBody/>}
-      {beforeChildren && <DropZone/>}
-      {children}
-      {afterChildren && <DropZone isAfter={!isInner && true} isInner={isInner}/>}
-    </Container>
-  </>
+  return (
+    <>
+      {isDraggingCurrent && <DragPreview className={styles.dragPreview}>{key}</DragPreview>}
+      <Container ref={dnd} className={clsName} {...props}>
+        {showContainerHint && <label className={styles.containerLabel}>{key}</label>}
+        {!isTree && <div className={styles.draggableBody}/>}
+        {beforeChildren && <DropZone/>}
+        {children}
+        {afterChildren && <DropZone isAfter={!isInner && true} isInner={isInner}/>}
+      </Container>
+    </>
+  )
 }
 
 export const Draggable = namedObserver('Draggable', RawDraggable)

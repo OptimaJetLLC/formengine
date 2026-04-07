@@ -1,5 +1,3 @@
-import {css} from '@emotion/css'
-import styled from '@emotion/styled'
 import {Plus} from '@rsuite/icons'
 import {useCallback, useMemo} from 'react'
 import {Button} from 'rsuite'
@@ -7,29 +5,9 @@ import {Rows} from '../components/Containers'
 import LabeledProperty from '../components/LabeledProperty'
 import {useTranslationPart} from '../localization/hooks'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
+import styles from './ArrayOfObjectInput.module.css'
 import {CleanButton, CrossButton} from './CleanButton'
 import {JsonInput} from './JsonInput'
-
-const InputRows = styled(Rows)`
-  overflow-y: auto;
-  max-height: 160px;
-`
-
-const SDiv = styled.div`
-  display: flex;
-  margin-inline-start: 4px;
-  margin-bottom: 4px;
-  margin-top: 4px;
-`
-
-const CleanDiv = styled.div`
-  display: flex;
-  justify-content: end;
-`
-
-const crossButtonClass = css`
-  color: var(--rs-text-primary);
-`
 
 const valueIsObject = (value: string): void => {
   const parsed = JSON.parse(value)
@@ -37,14 +15,6 @@ const valueIsObject = (value: string): void => {
     throw new Error('The value must be an object')
   }
 }
-
-const buttonStyle = {marginTop: 10} as const
-
-const sDivInlineStyle = {
-  marginInlineStart: 4,
-  marginBottom: 4,
-  marginTop: 4
-} as const
 
 /**
  * The property editor for the array of objects property type.
@@ -78,26 +48,34 @@ export const ArrayOfObjectInput = (props: AnnotationEditorProps) => {
 
   const inputs = items.map((item, index) => {
     const editorTitle = `${props.componentData.key}.${annotation.name}[${index}]`
-    return <SDiv key={editorTitle} style={sDivInlineStyle}>
-      <JsonInput editorKey={editorTitle} editorTitle={editorTitle} value={item}
-                 onChange={changeHandlers[index]}
-                 onClean={cleanHandlers[index]}
-                 onValidate={valueIsObject}/>
-      <CrossButton onClick={removeHandlers[index]} hint={t('removeRow')} className={crossButtonClass}/>
-    </SDiv>
+    return (
+      <div key={editorTitle} className={styles.item}>
+        <JsonInput
+          editorKey={editorTitle}
+          editorTitle={editorTitle}
+          value={item}
+          onChange={changeHandlers[index]}
+          onClean={cleanHandlers[index]}
+          onValidate={valueIsObject}
+        />
+        <CrossButton onClick={removeHandlers[index]} hint={t('removeRow')} className={styles.crossButton}/>
+      </div>
+    )
   })
 
-  return <>
-    <LabeledProperty {...props}>
-      <CleanDiv>
-        <CleanButton onClick={onClean} className={crossButtonClass}/>
-      </CleanDiv>
-    </LabeledProperty>
-    <InputRows gap={0}>
-      {inputs}
-    </InputRows>
-    <Button appearance="default" size="sm" onClick={onAdd} style={buttonStyle} block>
-      <Plus/>
-    </Button>
-  </>
+  return (
+    <>
+      <LabeledProperty {...props}>
+        <div className={styles.cleanDiv}>
+          <CleanButton onClick={onClean} className={styles.crossButton}/>
+        </div>
+      </LabeledProperty>
+      <Rows className={styles.inputRows}>
+        {inputs}
+      </Rows>
+      <Button appearance="default" size="sm" onClick={onAdd} className={styles.button} block>
+        <Plus/>
+      </Button>
+    </>
+  )
 }

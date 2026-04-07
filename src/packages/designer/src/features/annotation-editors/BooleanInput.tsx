@@ -1,32 +1,20 @@
-import styled from '@emotion/styled'
+import cx from 'clsx'
 import {useCallback} from 'react'
 import {Checkbox} from 'rsuite'
 import type {CheckboxProps, ValueType} from 'rsuite/esm/Checkbox/Checkbox'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
+import styles from './BooleanInput.module.css'
 import {CleanButton} from './CleanButton'
 
-export const SCheckbox = styled(Checkbox)`
-  && {
-    height: 23px;
-    display: flex;
-    align-items: center;
-    width: 100%;
-
-    .rs-checkbox-checker {
-      padding-inline-start: 0;
-      margin-inline-start: -10px;
-    }
-  }
-`
-
-const SDiv = styled.div`
-  display: flex;
-
-  .rs-picker-clean.rs-btn-close {
-    color: var(--rs-text-secondary);
-  }
-`
+/**
+ * Styled checkbox component.
+ * @param props {@link CheckboxProps}
+ * @returns the React component.
+ */
+export const SCheckbox = (props: CheckboxProps) => (
+  <Checkbox {...props} className={cx(styles.checkbox, props.className)}/>
+)
 
 interface BooleanCheckboxProps extends AnnotationEditorProps {
   id?: string
@@ -38,10 +26,12 @@ const BooleanCheckbox = (props: BooleanCheckboxProps) => {
     onChange(checked)
   }, [onChange])
 
-  return <SDiv>
-    <SCheckbox id={id} checked={!!value} onChange={handleChange}/>
-    <CleanButton onClick={onClean}/>
-  </SDiv>
+  return (
+    <div className={styles.row}>
+      <SCheckbox id={id} checked={!!value} onChange={handleChange}/>
+      <CleanButton onClick={onClean}/>
+    </div>
+  )
 }
 
 /**

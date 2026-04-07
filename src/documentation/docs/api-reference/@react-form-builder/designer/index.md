@@ -43,7 +43,6 @@
 
 - [CustomizableZone](variables/CustomizableZone.md)
 - [FormBuilder](variables/FormBuilder.md)
-- [SCell](variables/SCell.md)
 - [useFormBuilder](variables/useFormBuilder.md)
 
 ## Functions

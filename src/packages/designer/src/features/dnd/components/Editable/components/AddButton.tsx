@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
 import {Plus as PlusIcon, SortDown, SortUp} from '@rsuite/icons'
 import {useCallback, useMemo, useRef} from 'react'
@@ -7,27 +6,7 @@ import {ButtonGroup, IconButton, Popover, Whisper} from 'rsuite'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import type {InsertPosition} from '../../../../../utils/types'
 import {useTranslationPart} from '../../../../localization/hooks'
-
-const SPopover = styled(Popover)`
-  transform: translateX(24px) !important;
-  padding: 8px !important;
-  border-radius: 14px !important;
-`
-
-const Container = styled.div`
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-`
-
-const Label = styled.p`
-  width: 48px;
-  font-weight: bolder;
-  line-height: 1.9;
-  text-align: center;
-  margin-inline-start: 8px;
-  color: var(--rs-text-primary);
-`
+import styles from './AddButton.module.css'
 
 const RawAddButton = () => {
   const builderStore = useBuilderStore()
@@ -51,17 +30,19 @@ const RawAddButton = () => {
   const handleClickAfter = useCallback(() => handleClick('after'), [handleClick])
 
   const popover = useMemo(() => {
-    return <SPopover arrow={false}>
-      <Container>
-        <Label>{t('add')}</Label>
-        <ButtonGroup vertical>
-          <IconButton onClick={handleClickBefore} icon={sortUpIcon} size={'xs'}
-                      appearance={'primary'}>{t('before')}</IconButton>
-          <IconButton onClick={handleClickAfter} icon={sortDownIcon} size={'xs'}
-                      appearance={'primary'}>{t('after')}</IconButton>
-        </ButtonGroup>
-      </Container>
-    </SPopover>
+    return (
+      <Popover className={styles.popover} arrow={false}>
+        <div className={styles.container}>
+          <p className={styles.label}>{t('add')}</p>
+          <ButtonGroup vertical>
+            <IconButton onClick={handleClickBefore} icon={sortUpIcon} size={'xs'}
+                        appearance={'primary'}>{t('before')}</IconButton>
+            <IconButton onClick={handleClickAfter} icon={sortDownIcon} size={'xs'}
+                        appearance={'primary'}>{t('after')}</IconButton>
+          </ButtonGroup>
+        </div>
+      </Popover>
+    )
   }, [t, handleClickBefore, handleClickAfter, sortUpIcon, sortDownIcon])
 
   return <>

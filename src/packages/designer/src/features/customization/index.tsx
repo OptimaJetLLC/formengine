@@ -1,8 +1,9 @@
-import {css, cx} from '@emotion/css'
-import type {CSSInterpolation} from '@emotion/serialize'
+import cx from 'clsx'
 import {observer} from 'mobx-react'
 import type {ComponentType, CSSProperties, ReactElement} from 'react'
+import {useEffect, useMemo} from 'react'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
+import {CustomizedStyleSheet} from './CustomizedStyleSheet'
 import type {CustomizableKey} from './types'
 
 /**
@@ -52,11 +53,20 @@ export const customizable = <T = any>(key: CustomizableKey, component: Component
     const builderStore = useBuilderStore()
     const settings = builderStore.props.customization?.[key]
 
+    const styleSheet = useMemo(() => new CustomizedStyleSheet(settings?.style), [settings?.style])
+
+    useEffect(() => {
+      styleSheet.insertStyleSheet()
+      return () => {
+        styleSheet.removeStyleSheet()
+      }
+    }, [styleSheet])
+
     if (!settings) return <CustomizableComponent {...props} className={cx(customizationStaticClassName, props.className)}/>
     if (settings.hidden) return null
 
-    const {style, customRenderer} = settings
-    const className = cx(customizationStaticClassName, props?.className, settings.className, css`${style as CSSInterpolation}`, key)
+    const {customRenderer} = settings
+    const className = cx(customizationStaticClassName, props?.className, settings.className, styleSheet.className, key)
     const result = <CustomizableComponent {...props} className={className}/>
 
     return customRenderer ? customRenderer(result, component, props) : result

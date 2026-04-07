@@ -1,0 +1,16 @@
+.treeContainer {
+  display: flex;
+  overflow: auto;
+}
+
+.subtleIconButton {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+}
+
+.root {
+  overflow: hidden;
+  flex: 1;
+  gap: 0;
+}

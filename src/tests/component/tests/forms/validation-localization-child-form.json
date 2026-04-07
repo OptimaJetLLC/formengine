@@ -31,7 +31,11 @@
       {
         "key": "checkbox",
         "type": "RsCheckbox",
-        "props": {},
+        "props": {
+          "checked": {
+            "value": true
+          }
+        },
         "schema": {
           "validations": [
             {

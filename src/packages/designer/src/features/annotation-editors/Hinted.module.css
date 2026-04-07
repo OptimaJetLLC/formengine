@@ -1,0 +1,16 @@
+.label {
+  min-width: 80px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.label.hinted:hover {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+.label:global(.required)::after {
+  padding-inline-start: 3px;
+  content: "*";
+  color: red;
+}

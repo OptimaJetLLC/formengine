@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import type {Annotation, SchemaType, ValidationRuleSettings} from '@react-form-builder/core'
 import {getValidatorPropertyBlockType, namedObserver, useComponentData, useStore} from '@react-form-builder/core'
 import {RemindFill} from '@rsuite/icons'
@@ -11,10 +10,7 @@ import {useTranslationPart} from '../../../localization/hooks'
 import {PropertyBlock} from '../../../ui/RightPanel/PropertiesEditor/components/Properties'
 import {convertValidationRuleParametersToAnnotations, validateWhen} from '../../../validation/utils/parameterConverter'
 import {HintedIconButton} from '../../Hinted'
-
-const SRuleName = styled.span`
-  font-size: medium;
-`
+import styles from './ValidationRuleEditor.module.css'
 
 const warningButtonIcon = <RemindFill color="#f5a623"/>
 
@@ -82,7 +78,7 @@ const RawValidationRuleEditor = ({rule, onRemove}: ValidationRuleEditorProps) =>
           {!annotations &&
             <WarningButton hintPlacement={'autoHorizontal'} disabled={true}/>
           }
-          <SRuleName>{t(`validation.rule.${rule.key}`, rule.key)}</SRuleName>
+          <span className={styles.ruleName}>{t(`validation.rule.${rule.key}`, rule.key)}</span>
         </div>
         <RemoveButton onClick={handleRemove} hintPlacement={'autoHorizontal'} data-testid={`${propertyBlockType}-remove-button`}/>
       </Columns>

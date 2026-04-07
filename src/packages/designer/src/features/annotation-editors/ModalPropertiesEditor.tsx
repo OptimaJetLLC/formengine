@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import type {BuilderComponent} from '@react-form-builder/core'
 import {ComponentDataProvider, namedObserver, useModalComponentData, useModalType} from '@react-form-builder/core'
 import {useCallback, useEffect, useMemo} from 'react'
@@ -8,12 +7,7 @@ import {PropertyBlock} from '../ui/RightPanel/PropertiesEditor/components/Proper
 import {Section} from '../ui/RightPanel/PropertiesEditor/Section'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 import {HintedLabel} from './Hinted'
-
-const SDiv = styled.div`
-  gap: 4px;
-  display: flex;
-  flex-direction: column;
-`
+import styles from './ModalPropertiesEditor.module.css'
 
 interface InnerModalPropertiesEditor extends AnnotationEditorProps {
   builderComponent: BuilderComponent
@@ -53,11 +47,11 @@ const RawSelectedModalPropertiesEditor = (props: InnerModalPropertiesEditor) => 
       <h6>{t('modalComponentProperties')}</h6>
     </HintedLabel>)}
     <ComponentDataProvider value={selectedModalComponentData}>
-      <SDiv>
+      <div className={styles.root}>
         <PropertyBlock propertyBlockType={'modal'} annotations={modalAnnotations} context={modalProps}
                        initContext={initContext}
         />
-      </SDiv>
+      </div>
     </ComponentDataProvider>
   </>
 }

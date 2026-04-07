@@ -21,6 +21,7 @@ export const RepeaterItem = (props: RepeaterItemProps) => {
   const {className} = useRepeaterProps()
   return <div className={className}>{props.children}</div>
 }
-RepeaterItem.displayName = 'RepeaterItem'
+const typeName = 'RepeaterItem'
 
-export const repeaterItemModel = new Model(RepeaterItem, 'RepeaterItem')
+export const repeaterItemModel = new Model(RepeaterItem, typeName, undefined, undefined,
+  undefined, undefined, undefined, undefined, typeName)

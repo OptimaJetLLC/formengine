@@ -1,0 +1,16 @@
+.columns {
+  justify-content: space-between;
+}
+
+input.control:global(.rs-input) {
+  max-width: 100%;
+}
+
+.removeButton {
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.paramName {
+  cursor: pointer;
+}

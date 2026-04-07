@@ -1,0 +1,15 @@
+.mainTab {
+  --nav-icon-item-color: var(--rs-navs-selected);
+}
+
+.styleTab {
+  --nav-icon-item-color: #f67f1f;
+}
+
+.actionsTab {
+  --nav-icon-item-color: violet;
+}
+
+.rulesTab {
+  --nav-icon-item-color: var(--rs-green-600);
+}

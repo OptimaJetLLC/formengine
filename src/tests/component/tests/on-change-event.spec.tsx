@@ -50,7 +50,7 @@ describe('OnChange Event', () => {
   it('Should modify the data correctly', async () => {
     const getForm = () => JSON.stringify(testForm)
     const viewerRef: FormViewerProps['viewerRef'] = {current: null}
-    const {findByTestId} = render(<FormViewer getForm={getForm} view={view} viewerRef={viewerRef}/>)
+    const {findByTestId} = render(<FormViewer getForm={getForm} view={view} viewerRef={viewerRef} initialData={{checkbox: true}}/>)
 
     const checkbox = await findByTestId('checkbox')
     expect(checkbox).toBeInTheDocument()

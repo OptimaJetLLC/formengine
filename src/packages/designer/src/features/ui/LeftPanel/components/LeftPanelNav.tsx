@@ -17,6 +17,7 @@ import type {DraggableProps} from '../../ComponentBar'
 import {ComponentBar} from '../../ComponentBar'
 import {FormList} from './FormList'
 import {FormSettings} from './FormSettings'
+import styles from './LeftPanelNav.module.css'
 import {Tree} from './Tree'
 
 type LeftPanelSection = 'tree' | 'forms' | 'components' | 'settings'
@@ -38,18 +39,18 @@ const ComponentsTab = (props: DraggableProps) => {
   return <Components {...props} draggable={true} onDoubleClick={handleDoubleClick}/>
 }
 
-const tabsProps: Record<LeftPanelSection, [content: ReactNode, key: CustomizableKey, icon: any, color: string]> = {
-  components: [<ComponentsTab key={'components'}/>, 'Components_Tab', faPlusCircle, 'var(--rs-green-600)'],
-  tree: [<Tree key={'tree'}/>, 'Tree_Tab', faSitemap, 'var(--rs-navs-selected)'],
-  settings: [<FormSettings key={'settings'}/>, 'Settings_Tab', faSliders, 'violet'],
-  forms: [<FormList key={'forms'}/>, 'Forms_Tab', faList, '#f67f1f']
+const tabsProps: Record<LeftPanelSection, [content: ReactNode, key: CustomizableKey, icon: any, className: string]> = {
+  components: [<ComponentsTab key={'components'}/>, 'Components_Tab', faPlusCircle, styles.componentsTab],
+  tree: [<Tree key={'tree'}/>, 'Tree_Tab', faSitemap, styles.treeTab],
+  settings: [<FormSettings key={'settings'}/>, 'Settings_Tab', faSliders, styles.settingsTab],
+  forms: [<FormList key={'forms'}/>, 'Forms_Tab', faList, styles.formsTab]
 }
 
 const Tab = ({section, ...rest}: Record<string, unknown> & { section: keyof typeof tabsProps }) => {
   const {t} = useTranslation()
   const title = t('leftPanel.sectionName.' + section)
-  const [_, key, icon, color] = tabsProps[section]
-  const props = useMemo(() => ({color, ...rest}), [color, rest])
+  const [_, key, icon, className] = tabsProps[section]
+  const props = useMemo(() => ({className, ...rest}), [className, rest])
 
   return <CustomizableTab eventKey={section} customizableKey={key} title={title} icon={icon} props={props}/>
 }
@@ -71,8 +72,6 @@ const getActiveTab = () => {
   return tabsProps[value] ? value : defaultTab
 }
 
-const navContentStyle = {minHeight: 0, overflow: 'auto', padding: 4} as const
-
 const RawLeftPanelNav = () => {
   const {formStorageEnabled} = useBuilderStore()
   const [activeTab, setActiveTab] = useState<LeftPanelSection>(getActiveTab())
@@ -90,7 +89,7 @@ const RawLeftPanelNav = () => {
       <Tab section="settings"/>
       {formStorageEnabled && <Tab section="forms"/>}
     </Nav>
-    <NavContent style={navContentStyle}>
+    <NavContent className={styles.navContent}>
       {tabsProps[activeKey][0]}
     </NavContent>
   </>

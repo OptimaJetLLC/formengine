@@ -1,10 +1,10 @@
-import styled from '@emotion/styled'
 import * as faDesktop from '@fortawesome/free-solid-svg-icons/faDesktop.js'
 import * as faMobile from '@fortawesome/free-solid-svg-icons/faMobile.js'
 import * as faTablet from '@fortawesome/free-solid-svg-icons/faTablet.js'
 import type {ViewMode} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
 import {Icon} from '@rsuite/icons'
+import cx from 'clsx'
 import type {ComponentProps} from 'react'
 import {useCallback, useMemo} from 'react'
 import {ButtonGroup, IconButton, Tooltip, Whisper} from 'rsuite'
@@ -14,12 +14,7 @@ import {customizableObserver} from '../../../customization'
 import {useTranslationPart} from '../../../localization/hooks'
 import {JsonViewButton} from './JsonViewButton'
 import {OrientationIcon} from './OrientationIcon'
-
-const SDiv = styled.div`
-  display: flex;
-  align-items: center;
-  width: max-content;
-`
+import styles from './ViewModes.module.css'
 
 const resolutions: [ViewMode, any][] = [
   ['desktop', faDesktop],
@@ -53,7 +48,7 @@ const RawResolutionButton = ({value, icon}: ResolutionButtonProps) => {
 
 const ResolutionButton = namedObserver('ResolutionButton', RawResolutionButton)
 
-const RawViewModes = (props: ComponentProps<typeof SDiv>) => {
+const RawViewModes = (props: ComponentProps<'div'>) => {
   const store = useBuilderStore()
   const {viewMode, landscapeMode} = store
   const toggleOrientation = useCallback(() => store.landscapeMode = !landscapeMode, [store, landscapeMode])
@@ -64,19 +59,21 @@ const RawViewModes = (props: ComponentProps<typeof SDiv>) => {
     return <ResolutionButton key={index} value={value} icon={icon}/>
   }), [])
   const t = useTranslationPart('rightMenu.modes')
-  const tooltipContent = useMemo(() => <Tooltip>{t("orientation")}</Tooltip>, [t])
+  const tooltipContent = useMemo(() => <Tooltip>{t('orientation')}</Tooltip>, [t])
 
-  return <SDiv {...props}>
-    {(viewMode === 'mobile' || viewMode === 'tablet') &&
-      <Whisper speaker={tooltipContent} placement={'bottom'}>
-        <IconButton onClick={toggleOrientation} icon={orientationIcon} size={'sm'}/>
-      </Whisper>
-    }
-    <ButtonGroup size={'sm'}>
-      {resolutionButtons}
-      <JsonViewButton/>
-    </ButtonGroup>
-  </SDiv>
+  return (
+    <div {...props} className={cx(styles.root, props.className)}>
+      {(viewMode === 'mobile' || viewMode === 'tablet') &&
+        <Whisper speaker={tooltipContent} placement={'bottom'}>
+          <IconButton onClick={toggleOrientation} icon={orientationIcon} size={'sm'}/>
+        </Whisper>
+      }
+      <ButtonGroup size={'sm'}>
+        {resolutionButtons}
+        <JsonViewButton/>
+      </ButtonGroup>
+    </div>
+  )
 }
 
 export const ViewModes = customizableObserver('ResolutionSelect', RawViewModes)

@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import type {ActionParameters, NamedActionDefinition} from '@react-form-builder/core'
 import {ActionDefinition, AsyncFunction, CalculableResult, useStore} from '@react-form-builder/core'
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
@@ -9,16 +8,9 @@ import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {GenericCodeEditor} from '../../../../calculation/GenericCodeEditor'
 import {Columns, Rows} from '../../../../components/Containers'
 import {Header} from '../../../../ui/BottomPanel/Header'
+import styles from './CodeActionEditor.module.css'
 import type {ParameterListItem} from './components/ParameterList'
 import {ParameterList, toParameterListItem} from './components/ParameterList'
-
-const Container = styled(Columns)`
-  gap: 20px;
-  flex: 1;
-  min-height: 0;
-`
-
-const controlStyle = {width: '100%'} as const
 
 const makeFunctionHeader = (params?: ParameterListItem[]) => {
   let types = '@param {} args - the action parameters arguments.'
@@ -149,24 +141,26 @@ export const CodeActionEditor = ({codeAction, onSave}: CodeActionEditorProps) =>
     updateFormState({actionParameters: value})
   }, [updateFormState])
 
-  return <>
-    <Header>
-      {t('bottomPanel.editCodeAction')}
-    </Header>
-    <Container>
-      <Rows gap={10}>
-        <Form model={model} checkTrigger={'change'} formValue={formState} ref={formRef}
-              onChange={handleNameChange}>
-          <Form.Control name={'name'} style={controlStyle}/>
-        </Form>
-        <GenericCodeEditor beginContextLine={functionHeader}
-                           endContextLine="}" source={initialBody ?? ''}
-                           onSave={save} onClose={close}
-                           onCompile={compile} compact
-        />
-      </Rows>
-      <ParameterList value={formState.actionParameters}
-                     onChange={handleParametersChange}/>
-    </Container>
-  </>
+  return (
+    <>
+      <Header>
+        {t('bottomPanel.editCodeAction')}
+      </Header>
+      <Columns className={styles.container}>
+        <Rows className={styles.rows}>
+          <Form model={model} checkTrigger={'change'} formValue={formState} ref={formRef}
+                onChange={handleNameChange}>
+            <Form.Control name={'name'} className={styles.control}/>
+          </Form>
+          <GenericCodeEditor beginContextLine={functionHeader}
+                             endContextLine="}" source={initialBody ?? ''}
+                             onSave={save} onClose={close}
+                             onCompile={compile} compact
+          />
+        </Rows>
+        <ParameterList value={formState.actionParameters}
+                       onChange={handleParametersChange}/>
+      </Columns>
+    </>
+  )
 }

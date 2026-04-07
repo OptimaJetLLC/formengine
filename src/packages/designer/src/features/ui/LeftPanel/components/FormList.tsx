@@ -1,3 +1,4 @@
+import cx from 'clsx'
 import type {ComponentProps} from 'react'
 import {useCallback, useEffect, useMemo, useState} from 'react'
 import {useTranslation} from 'react-i18next'
@@ -9,6 +10,7 @@ import {List, ListItem, Rows} from '../../../components/Containers'
 import {customizableObserver} from '../../../customization'
 import {useShowMessage} from '../../../toast/toast'
 import {SearchForm} from '../../ComponentBar/components/SearchForm'
+import styles from './FormList.module.css'
 
 function FormListItem({active, onLoadForm, onRemoveForm, name}: {
   active: boolean,
@@ -16,8 +18,6 @@ function FormListItem({active, onLoadForm, onRemoveForm, name}: {
   onLoadForm: (name: string) => void,
   onRemoveForm: (name: string) => void
 }) {
-  const labelStyle = useMemo(() => ({color: active ? 'var(--rs-navs-selected)' : 'var(--rs-text-secondary)'}), [active])
-
   const handleLoad = useCallback(() => {
     onLoadForm(name)
   }, [name, onLoadForm])
@@ -26,23 +26,17 @@ function FormListItem({active, onLoadForm, onRemoveForm, name}: {
     onRemoveForm(name)
   }, [name, onRemoveForm])
 
-  return <ListItem data-testid={`form-list-item-${name}`} data-active={active}>
-    <span style={labelStyle}>
-      {name}
-    </span>
-    <ButtonGroup>
-      <EditButton onClick={handleLoad} data-testid={`form-list-open-item-${name}`}/>
-      <RemoveButton onClick={handleRemove}/>
-    </ButtonGroup>
-  </ListItem>
-}
-
-const searchStyle = {
-  maxWidth: 300
-}
-
-const containerStyle = {
-  height: '100%'
+  return (
+    <ListItem data-testid={`form-list-item-${name}`} data-active={active}>
+      <span className={cx(active ? styles.activeForm : styles.inactiveForm)}>
+        {name}
+      </span>
+      <ButtonGroup>
+        <EditButton onClick={handleLoad} data-testid={`form-list-open-item-${name}`}/>
+        <RemoveButton onClick={handleRemove}/>
+      </ButtonGroup>
+    </ListItem>
+  )
 }
 
 const RawFormList = (props: ComponentProps<typeof List>) => {
@@ -80,8 +74,8 @@ const RawFormList = (props: ComponentProps<typeof List>) => {
     [formList, searchValue]
   )
 
-  return <Rows style={containerStyle} gap={10}>
-    <SearchForm style={searchStyle} onChange={setSearchValue}/>
+  return <Rows className={styles.container}>
+    <SearchForm onChange={setSearchValue} className={styles.search}/>
     <Button block onClick={showPromptDialog} data-testid={'add-new-form-button'}>{t('formsList.addNewForm')}</Button>
     <List {...props}>
       {filteredFormList.length

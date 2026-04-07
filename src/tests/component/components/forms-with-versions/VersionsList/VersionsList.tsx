@@ -1,20 +1,9 @@
-import type {CSSProperties, PropsWithChildren} from 'react'
+import type {PropsWithChildren} from 'react'
 import {useCallback, useEffect, useState} from 'react'
 import {Button} from 'rsuite'
 import {useFormsContext} from '../FormsProvider'
 import {ListItem} from './ListItem'
-
-const buttonStyle: CSSProperties = {
-  borderRadius: 10,
-  justifyContent: 'center',
-  padding: 16
-}
-
-const listStyle: CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 5
-}
+import styles from './VersionsList.module.css'
 
 const localizationPlaceholder = (key: string) => key
 
@@ -50,19 +39,26 @@ export const VersionsList = (props: PropsWithChildren<any>) => {
 
   if (!formName || !setFormVersion) return null
 
-  return <div style={{display: 'flex', flexDirection: 'column'}}>
-    {props.children}
-    <div style={{marginTop: 10}}>
-      <h6 style={{marginInlineStart: 5}}>{t('versions')}</h6>
-      <div style={listStyle}>
-        <Button onClick={addVersion} block style={buttonStyle}>
-          {t('addVersion')}
-        </Button>
-        {versionsList?.map((version, index) => (
-          <ListItem key={index} version={version} active={version === formVersion}
-                    onSelect={setFormVersion} onDelete={deleteVersion}/>
-        ))}
+  return (
+    <div className={styles.root}>
+      {props.children}
+      <div className={styles.header}>
+        <h6 className={styles.title}>{t('versions')}</h6>
+        <div className={styles.list}>
+          <Button onClick={addVersion} block className={styles.addButton}>
+            {t('addVersion')}
+          </Button>
+          {versionsList?.map((version, index) => (
+            <ListItem
+              key={index}
+              version={version}
+              active={version === formVersion}
+              onSelect={setFormVersion}
+              onDelete={deleteVersion}
+            />
+          ))}
+        </div>
       </div>
     </div>
-  </div>
+  )
 }

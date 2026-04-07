@@ -1,25 +1,8 @@
-import styled from '@emotion/styled'
 import {namedObserver, useAriaAttributes, useComponentData} from '@react-form-builder/core'
+import cx from 'clsx'
 import type {ComponentProps} from 'react'
 import {cloneElement} from 'react'
-
-const Container = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-
-  label {
-    margin-inline-start: 5px;
-    margin-bottom: 2px;
-    text-align: left;
-  }
-
-  &.required > label::after {
-    margin-inline-start: 3px;
-    content: "*";
-    color: #f44336;
-  }
-`
+import styles from './Labeled.module.css'
 
 interface LabeledProps extends ComponentProps<any> {
   label?: string
@@ -30,15 +13,23 @@ interface LabeledProps extends ComponentProps<any> {
  * @param props the React component properties.
  * @param props.label the component label.
  * @param props.children the children component.
+ * @param props.className the CSS class name.
  * @returns the React element.
  */
-const RawLabeled = ({label, children, ...props}: LabeledProps) => {
+const RawLabeled = ({label, children, className, ...props}: LabeledProps) => {
   const {id} = useComponentData()
   const aria = useAriaAttributes({labeled: !!label})
-  return <Container {...props} role="group">
-    {label && <label id={aria['aria-labelledby']} htmlFor={id}>{label}</label>}
-    {cloneElement(children, {id, ...aria})}
-  </Container>
+
+  return (
+    <div {...props} className={cx(styles.container, className)} role="group">
+      {label && (
+        <label id={aria['aria-labelledby']} htmlFor={id} className={styles.label}>
+          {label}
+        </label>
+      )}
+      {cloneElement(children, {id, ...aria})}
+    </div>
+  )
 }
 
 export const Labeled = namedObserver('Labeled', RawLabeled)

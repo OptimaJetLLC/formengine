@@ -1,4 +1,3 @@
-import {cx} from '@emotion/css'
 import type {Annotation, ComponentData, ComponentStore, WrapperProps} from '@react-form-builder/core'
 import {
   checkSlotCondition,
@@ -14,6 +13,7 @@ import {
   useComponentData,
   useStore
 } from '@react-form-builder/core'
+import cx from 'clsx'
 import {useDragLayer} from 'react-dnd'
 import type {BuilderStore} from '../../../../stores/BuilderStore'
 import {Draggable} from './components/Draggable'

@@ -23,6 +23,13 @@ import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useState} from 'react'
 
+// styles
+import '@react-form-builder/components-google-map/assets/styles.css'
+import '@react-form-builder/components-rich-text/assets/styles.css'
+import '@react-form-builder/components-rsuite/assets/styles.css'
+import '@react-form-builder/components-signature/assets/styles.css'
+import '@react-form-builder/components-uploader/assets/styles.css'
+
 // just to test import
 console.info('persisted-form.schema.json', schema)
 console.info('package.json', corePackageJson)

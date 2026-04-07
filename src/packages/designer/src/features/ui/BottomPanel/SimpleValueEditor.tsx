@@ -1,15 +1,8 @@
-import styled from '@emotion/styled'
 import {useTranslation} from 'react-i18next'
 import {Button, ButtonGroup} from 'rsuite'
 import type {CalculableCodeEditorProps} from '../../calculation/CalculableCodeEditor'
 import {Rows} from '../../components/Containers'
-
-const SDiv = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
+import styles from './SimpleValueEditor.module.css'
 
 /**
  * The React form builder component that displays a simple value editor for a property.
@@ -20,11 +13,13 @@ const SDiv = styled.div`
  */
 export const SimpleValueEditor = ({editableProperty, onClose}: CalculableCodeEditorProps) => {
   const {t} = useTranslation()
-  return <Rows>
-    <SDiv>{t('bottomPanel.simpleValueHint')}</SDiv>
-    <ButtonGroup size={'sm'}>
-      <Button appearance="ghost" onClick={editableProperty.disableCompute}>{t('common.save')}</Button>
-      <Button appearance="ghost" onClick={onClose}>{t('common.close')}</Button>
-    </ButtonGroup>
-  </Rows>
+  return (
+    <Rows>
+      <div className={styles.placeholder}>{t('bottomPanel.simpleValueHint')}</div>
+      <ButtonGroup size={'sm'}>
+        <Button appearance="ghost" onClick={editableProperty.disableCompute}>{t('common.save')}</Button>
+        <Button appearance="ghost" onClick={onClose}>{t('common.close')}</Button>
+      </ButtonGroup>
+    </Rows>
+  )
 }

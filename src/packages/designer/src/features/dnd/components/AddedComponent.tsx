@@ -1,6 +1,5 @@
-import {cx} from '@emotion/css'
-import styled from '@emotion/styled'
 import {cfComponentIsPreset, getTemplateName, isTemplateType, namedObserver, startCase, useComponentData} from '@react-form-builder/core'
+import cx from 'clsx'
 import type {FunctionComponent, MouseEventHandler, ReactNode, RefCallback, SVGProps} from 'react'
 import {useCallback, useMemo} from 'react'
 import {icons} from '../../../icons'
@@ -12,6 +11,7 @@ import {PresetIcon} from '../../preset-component/PresetIcon'
 import type {DraggableProps} from '../../ui/ComponentBar'
 import {useComponentLibraryDescription} from '../../ui/ComponentBar/useComponentLibraryDescription'
 import {ItemType} from '../consts'
+import styles from './AddedComponent.module.css'
 import {DragPreview} from './Editable/components/DragPreview'
 import {useDragWithPreview} from './Editable/hooks/useDragWithPreview'
 import {PresetToolbar} from './PresetToolbar'
@@ -19,61 +19,18 @@ import {useHovered} from './useHovered'
 
 type IconComponent = FunctionComponent<SVGProps<SVGSVGElement>>
 
-const Container = styled.div`
-  display: flex;
-  padding: 7px;
-  gap: 6px;
-  min-width: 150px;
-  flex: 1;
-  max-width: 125px;
-  border-radius: 6px;
-  background-color: var(--rs-btn-default-bg);
-  font-size: 13px;
-
-  & > svg {
-    color: #9CA3AF;
-  }
-
-  &:hover:not(.disabled) {
-    background-color: var(--rs-btn-default-hover-bg);
-  }
-
-  &:active:not(.disabled), &:focus:not(.disabled) {
-    outline: 2px solid var(--rs-btn-primary-bg);
-  }
-
-  &.disabled {
-    color: var(--rs-btn-default-disabled-text);
-  }
-
-  .rs-theme-dark & label {
-    opacity: 0.6;
-  }
-`
-
-const DraggableContainer = styled.div`
-  position: relative;
-  flex: 1;
-
-  * {
-    cursor: grab;
-  }
-
-  & > div {
-    height: 100%;
-    min-width: 123px;
-    max-width: initial;
-  }
-`
-
 const Draggable = ({children}: { children: ReactNode }) => {
   const [{isDragging}, drag] = useDragWithPreview(ItemType.AddedComponent)
 
-  return <>
-    {/* TODO FE-1065 */}
-    <DraggableContainer ref={drag as unknown as RefCallback<HTMLDivElement>}>{children}</DraggableContainer>
-    {isDragging && <DragPreview>{children}</DragPreview>}
-  </>
+  return (
+    <>
+      {/* TODO FE-1065 */}
+      <div className={styles.draggableContainer} ref={drag as unknown as RefCallback<HTMLDivElement>}>
+        {children}
+      </div>
+      {isDragging && <DragPreview>{children}</DragPreview>}
+    </>
+  )
 }
 
 const componentStaticClassname = 'FE_Palette_Component'
@@ -105,6 +62,7 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
   const canAddComponent = useCanAddComponent()
   const disabled = useMemo(() => !canAddComponent(data), [canAddComponent, data])
   const cls = useMemo(() => cx([
+    styles.container,
     disabled ? 'disabled' : '',
     componentStaticClassname,
     transformComponentNameToCssClass(data.model.typeName),
@@ -129,12 +87,17 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
   }, [data.model, hovered])
 
   const element = (
-    <Container onClick={onClick} onDoubleClick={handleDoubleClick} className={cls}
-               {...hoveredProps} data-testid={`${data.model.type}-palette-component`}>
+    <div
+      {...hoveredProps}
+      className={cls}
+      data-testid={`${data.model.type}-palette-component`}
+      onClick={onClick}
+      onDoubleClick={handleDoubleClick}
+    >
       <Icon width={18} height={18} viewBox="0 0 24 24"/>
       <label>{componentName}</label>
       {elementToolbar}
-    </Container>
+    </div>
   )
 
   return draggable

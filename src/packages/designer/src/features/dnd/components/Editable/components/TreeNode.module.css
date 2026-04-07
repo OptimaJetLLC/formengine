@@ -1,0 +1,36 @@
+.indent {
+  min-width: var(--tree-node-indent-width, 28px);
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-inline-end: 4px;
+}
+
+.nodeItem {
+  display: flex;
+  flex: 1;
+  justify-content: start;
+  flex-direction: row;
+  padding-block: 8px;
+  padding-inline-end: 8px;
+}
+
+.nodeItem label {
+  opacity: 0.4;
+  margin-inline-start: 6px;
+}
+
+.nodeItem.hovered {
+  background-color: var(--rs-listbox-option-selected-bg);
+  cursor: pointer !important;
+}
+
+.nodeItem.selected {
+  background-color: var(--rs-listbox-option-selected-bg);
+  color: var(--rs-listbox-option-selected-text);
+}
+
+.icon {
+  cursor: pointer;
+}

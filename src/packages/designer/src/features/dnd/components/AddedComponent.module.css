@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  padding: 7px;
+  gap: 6px;
+  min-width: 150px;
+  flex: 1;
+  max-width: 125px;
+  border-radius: 6px;
+  background-color: var(--rs-btn-default-bg);
+  font-size: 13px;
+}
+
+.container > svg {
+  color: #9ca3af;
+}
+
+.container:hover:not(:global(.disabled)) {
+  background-color: var(--rs-btn-default-hover-bg);
+}
+
+.container:active:not(:global(.disabled)),
+.container:focus:not(:global(.disabled)) {
+  outline: 2px solid var(--rs-btn-primary-bg);
+}
+
+.container:global(.disabled) {
+  color: var(--rs-btn-default-disabled-text);
+}
+
+:global(.rs-theme-dark) .container label {
+  opacity: 0.6;
+}
+
+.draggableContainer {
+  position: relative;
+  flex: 1;
+}
+
+.draggableContainer * {
+  cursor: grab;
+}
+
+.draggableContainer > div {
+  height: 100%;
+  min-width: 123px;
+  max-width: initial;
+}

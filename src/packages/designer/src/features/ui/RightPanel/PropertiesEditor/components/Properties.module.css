@@ -1,0 +1,23 @@
+.emptyLabel {
+  height: 40%;
+}
+
+.propertiesList {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  padding-inline-end: 5px;
+  justify-content: space-between;
+}
+
+.container > * {
+  margin-bottom: 5px;
+}

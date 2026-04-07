@@ -20,6 +20,7 @@ import {createElement, useMemo} from 'react'
 import {Table} from 'rsuite'
 import {createComponentStore} from './createComponentStore'
 import {getRsColumnComponentStore} from './getRsColumnComponentStore'
+import {tableComponentsCategory} from './tableComponentsCategory'
 import {rsCellTypeName, rsColumnGroupTypeName, rsColumnTypeName, rsHeaderCellTypeName, rsTableTypeName} from './typeNames'
 
 const TableIcon = () => (
@@ -144,6 +145,7 @@ const initialJson = JSON.stringify(getRsTableComponentStore())
 
 export const rsTable = define(RsTable, rsTableTypeName)
   .name('Table')
+  .category(tableComponentsCategory)
   .icon(TableIcon)
   .initialJson(initialJson)
   .props({

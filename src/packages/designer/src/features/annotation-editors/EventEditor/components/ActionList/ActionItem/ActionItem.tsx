@@ -5,6 +5,7 @@ import {ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../../../../../utils/BuilderStoreContext'
 import {EditButton, RemoveButton} from '../../../../../components/Buttons'
 import {Columns} from '../../../../../components/Containers'
+import styles from './ActionItem.module.css'
 import {ArgumentList} from './components/ArgumentList'
 import {ActionDataProvider} from './contexts/ActionDataContext'
 
@@ -13,9 +14,6 @@ interface ActionItemProps {
   onRemove: () => void
   eventName: string
 }
-
-const columnsStyle = {justifyContent: 'space-between', padding: 8} as const
-const nameStyle = {color: 'violet', marginLeft: 5} as const
 
 const RawActionItem = ({action, onRemove, eventName}: ActionItemProps) => {
   const builderStore = useBuilderStore()
@@ -34,8 +32,8 @@ const RawActionItem = ({action, onRemove, eventName}: ActionItemProps) => {
 
   return (
     <ActionDataProvider value={action}>
-      <Columns style={columnsStyle}>
-        <b style={nameStyle}>
+      <Columns className={styles.columns}>
+        <b className={styles.name}>
           {`${name || 'Action'}`}
         </b>
         <ButtonGroup size={'xs'}>

@@ -1,0 +1,128 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  transition:
+    width 200ms ease-in-out,
+    height 200ms ease-in-out;
+}
+
+.container:global(.right),
+.container:global(.left) {
+  max-height: 1200px;
+  width: 290px;
+}
+
+.container:global(.right) {
+  box-shadow: none;
+}
+
+.container:global(.bottom) {
+  height: 380px;
+  width: 100%;
+  margin-block: 0;
+}
+
+.container:global(.collapsed):global(.right),
+.container:global(.collapsed):global(.left) {
+  width: 5px;
+}
+
+.container:global(.collapsed):global(.bottom) {
+  height: 5px;
+}
+
+.contentContainer {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  transition:
+    opacity 200ms ease-in-out,
+    width 0ms 200ms;
+}
+
+:global(.right) .contentContainer,
+:global(.left) .contentContainer {
+  width: 280px;
+  overflow: hidden;
+}
+
+.contentContainer:global(.collapsed):global(.hideCollapsed) {
+  opacity: 0;
+}
+
+:global(.right) .contentContainer:global(.collapsed):global(.hideCollapsed),
+:global(.left) .contentContainer:global(.collapsed):global(.hideCollapsed) {
+  width: 0;
+}
+
+.hideButton {
+  position: absolute;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.hideButton :global(.icon) {
+  font-size: 2em;
+  opacity: 0.6;
+  position: absolute;
+}
+
+.hideButton:global(.right),
+.hideButton:global(.left) {
+  width: 20px;
+  height: 80px;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+}
+
+.hideButton:global(.right) :global(.icon),
+.hideButton:global(.left) :global(.icon) {
+  inset-inline-end: -5px;
+}
+
+.hideButton:global(.bottom) {
+  inset-inline-start: 50%;
+  width: 80px;
+  height: 20px;
+  justify-content: center;
+  inset-block-start: -10px;
+  transform: translateX(-50%);
+}
+
+.hideButton:global(.bottom) :global(.icon) {
+  inset-block-end: -5px;
+}
+
+.hideButton:global(.left) {
+  inset-inline-end: -15px;
+}
+
+.hideButton:global(.left) :global(.icon) {
+  transform: rotate(90deg);
+}
+
+.hideButton:global(.right) {
+  inset-inline-start: -15px;
+}
+
+.hideButton:global(.right) :global(.icon) {
+  transform: rotate(-90deg);
+}
+
+.hideButton:global(.collapsed):global(.left) :global(.icon) {
+  transform: rotate(-90deg);
+}
+
+.hideButton:global(.collapsed):global(.right) :global(.icon) {
+  transform: rotate(90deg);
+}
+
+.hideButton:global(.collapsed):global(.bottom) :global(.icon) {
+  transform: rotate(180deg);
+}

@@ -1,0 +1,12 @@
+.cell {
+  padding: 0;
+}
+
+.cell :global(.rs-table-cell-content) {
+  padding: 9px 3px;
+}
+
+.checkbox :global(.rs-checkbox-checker) {
+  inset-inline-start: 4px;
+  top: -4px;
+}

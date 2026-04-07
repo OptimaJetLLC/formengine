@@ -1,9 +1,8 @@
-import {cx} from '@emotion/css'
-import styled from '@emotion/styled'
 import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faClone from '@fortawesome/free-regular-svg-icons/faClone.js'
 import * as faTrash from '@fortawesome/free-regular-svg-icons/faTrashAlt.js'
 import {cfDisableComponentRemove, useComponentData} from '@react-form-builder/core'
+import cx from 'clsx'
 import type {MouseEventHandler, ReactNode} from 'react'
 import {useCallback, useEffect, useMemo, useRef} from 'react'
 import scrollIntoView from 'scroll-into-view-if-needed'
@@ -16,42 +15,7 @@ import {useTranslationPart} from '../../../../localization/hooks'
 import {useSelection} from '../hooks/useSelection'
 import {AddButton} from './AddButton'
 import {PresetComponentButton} from './PresetComponentButton'
-
-const ToolbarContainer = styled.div`
-  inset: initial;
-  inset-inline-end: 5px;
-  top: -13px;
-
-  &.compact {
-    top: 8px;
-  }
-
-  position: absolute;
-  z-index: 12;
-  color: var(--rs-btn-ghost-text);
-  cursor: pointer !important;
-  white-space: nowrap;
-  border-radius: 5px;
-  height: 20px;
-  width: fit-content;
-  padding-inline: 5px;
-  font-weight: 400;
-  font-size: 14px;
-  background-color: white;
-
-  .rs-theme-dark & {
-    background-color: #3b3f43;
-  }
-
-  & > .rs-icon {
-    cursor: pointer;
-  }
-`
-
-const Title = styled.label`
-  display: inline;
-  cursor: move;
-`
+import styles from './Toolbar.module.css'
 
 /**
  * Toolbar React component properties.
@@ -80,10 +44,10 @@ interface ToolbarItemProps extends ToolbarProps {
 }
 
 const RawToolbarTitle = ({compact, storeKey, storeType, className}: ToolbarItemProps) => {
-  return compact ? null : <Title className={className}>
+  return compact ? null : <label className={cx(styles.title, className)}>
     {storeKey}
     <label>{` (${storeType})`}</label>
-  </Title>
+  </label>
 }
 
 const ToolbarTitle = customizableObserver('Component_Toolbar_Title', RawToolbarTitle)
@@ -133,14 +97,8 @@ const RawToolbarRemoveButton = ({onRemove, removeHint, className}: ToolbarItemPr
 
 const ToolbarRemoveButton = customizableObserver('Component_Toolbar_RemoveButton', RawToolbarRemoveButton)
 
-const SItems = styled.div`
-  display: flex;
-  gap: 5px;
-  align-items: center;
-`
-
 const RawToolbarItems = ({children, className}: ToolbarItemProps & { children: ReactNode }) => {
-  return <SItems className={className}>{children}</SItems>
+  return <div className={cx(styles.items, className)}>{children}</div>
 }
 
 const ToolbarItems = customizableObserver('Component_Toolbar_Items', RawToolbarItems)
@@ -193,7 +151,7 @@ const RawToolbar = ({compact, className}: ToolbarProps) => {
     }
   }, [selected, compact])
 
-  return <ToolbarContainer ref={ref} className={cx(toolbarClassname, className)}>
+  return <div ref={ref} className={cx(styles.container, toolbarClassname, className)}>
     <ToolbarItems {...customizationProps}>
       <ToolbarTitle {...customizationProps}/>
       <ToolbarAddButton {...customizationProps}/>
@@ -203,7 +161,7 @@ const RawToolbar = ({compact, className}: ToolbarProps) => {
       </>}
       {!disableRemove && <ToolbarRemoveButton {...customizationProps}/>}
     </ToolbarItems>
-  </ToolbarContainer>
+  </div>
 }
 
 export const Toolbar = customizableObserver('Component_Toolbar', RawToolbar)

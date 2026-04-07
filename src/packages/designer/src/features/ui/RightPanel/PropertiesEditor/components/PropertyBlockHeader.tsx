@@ -1,10 +1,5 @@
-import {css} from '@emotion/css'
 import {Hinted} from '../../../../annotation-editors/Hinted'
-
-const spanClassName = css`
-  font-weight: bold;
-  font-size: 16px;
-`
+import styles from './PropertyBlockHeader.module.css'
 
 /**
  * The properties of the PropertyBlockHeader component.
@@ -27,7 +22,9 @@ interface PropertyBlockHeaderProps {
  */
 export const PropertyBlockHeader = (props: PropertyBlockHeaderProps) => {
   const {hint, header} = props
-  return <Hinted hint={hint}>
-    <span className={spanClassName}>{header}</span>
-  </Hinted>
+  return (
+    <Hinted hint={hint}>
+      <span className={styles.header}>{header}</span>
+    </Hinted>
+  )
 }

@@ -8,6 +8,7 @@ import {useTranslatedComponentProperty} from '../components/useTranslatedCompone
 import {useTranslationPart} from '../localization/hooks'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 import {SCheckbox} from './BooleanInput'
+import styles from './NodeInput.module.css'
 import {ResizableStringInput} from './StringInput'
 
 function getEditorType(annotation: Annotation, componentData: ComponentData) {
@@ -109,7 +110,7 @@ export const NodeInput = (props: AnnotationEditorProps) => {
 
   if (!show) return null
 
-  return <Rows gap={10}>
+  return <Rows className={styles.rows}>
     <UseDropzoneInput {...props} />
     {editorType === 'string' && <StringNodeEditor {...props} />}
   </Rows>

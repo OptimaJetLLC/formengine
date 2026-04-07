@@ -1,0 +1,7 @@
+.closeButton {
+  cursor: pointer;
+}
+
+.input :global(.rs-input-group-addon) {
+  padding: 1px 8px !important;
+}

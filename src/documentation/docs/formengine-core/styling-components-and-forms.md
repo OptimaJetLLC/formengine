@@ -367,7 +367,7 @@ The `style` and `wrapperStyle` properties follow the same JSON structure as `css
 :::info Important
 
 The `style` property applies directly to the component element, similar to React's inline styles, while `css` property uses
-emotion CSS-in-JS and generates class names.
+[adoptedStyleSheets](https://developer.mozilla.org/en-US/docs/Web/API/Document/adoptedStyleSheets) and generates class names.
 
 Styling with `style` only works for components that support the `style` property.
 

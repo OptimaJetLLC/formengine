@@ -1,4 +1,4 @@
-import {FormViewerProps} from '@react-form-builder/core'
+import {ComponentData, FormViewerProps} from '@react-form-builder/core'
 import {fireEvent, waitFor} from '@testing-library/react'
 import {renderForm} from '../util/renderForm'
 
@@ -10,6 +10,7 @@ const wizardForm = {
       {
         key: 'wizard',
         type: 'RsWizard',
+        dataKey: 'wizard',
         children: [
           {
             key: 'rsWizardStep1',
@@ -65,7 +66,7 @@ describe('RsWizard tests', () => {
         elements.push(args[0].target)
       }
     }
-    const {findByText} = renderForm(wizardForm, {actions})
+    const {findByText,formData} = renderForm(wizardForm, {actions})
 
     fireEvent.click(await findByText('Next'))
     fireEvent.click(await findByText('Previous'))
@@ -79,5 +80,10 @@ describe('RsWizard tests', () => {
     elements.forEach((element) => {
       expect(element).toBeInstanceOf(HTMLButtonElement)
     })
+
+    // FE-1562
+    const wizardFieldItem = (formData as unknown as ComponentData).allComponentFields?.find((f) => f.dataKey === 'wizard')
+    expect(wizardFieldItem).toBeDefined()
+    expect(typeof wizardFieldItem?.field?.value).toBe('number')
   })
 })

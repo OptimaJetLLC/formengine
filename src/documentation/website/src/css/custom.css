@@ -2,6 +2,7 @@
 
 @import "@mantine/core/styles.css" layer(mantine);
 @import "@mantine/dates/styles.css" layer(mantine);
+@import "@react-form-builder/core/assets/styles.css" layer(doc);
 
 @layer mantine {
   :root,

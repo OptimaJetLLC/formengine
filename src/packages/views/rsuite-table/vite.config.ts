@@ -18,7 +18,8 @@ export default defineConfig((env) => mergeConfig(base(env), {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       formats: ['es'],
-      fileName: 'index'
+      fileName: 'index',
+      cssFileName: 'assets/styles',
     },
     rollupOptions: {
       plugins: [excludeDependenciesFromBundle({dependencies: true, peerDependencies: true})],

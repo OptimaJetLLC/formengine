@@ -5,6 +5,7 @@ import {useCallback, useEffect, useMemo, useState} from 'react'
 import type {Address} from './Address'
 import {CustomMapControl} from './CustomMapControl'
 import type {GoogleMapProps} from './GoogleMapProps'
+import styles from './GoogleMapRenderer.module.css'
 import type {MapMarker} from './MapMarker'
 import {MarkerInfo} from './MarkerInfo'
 import {Markers} from './Markers'
@@ -164,7 +165,8 @@ export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region
   return (
     <Map id={id} mapId={mapId} zoom={zoom} center={center}
          onClick={handleMapClick} onZoomChanged={onZoomChanged} onCameraChanged={onCameraChanged}
-         colorScheme={colorScheme} gestureHandling={gestureHandling} mapTypeId={mapTypeId}>
+         colorScheme={colorScheme} gestureHandling={gestureHandling} mapTypeId={mapTypeId}
+         className={styles.map}>
       <Markers markers={markers} collisionBehavior={collisionBehavior} onMarkerClick={handleMarkerClick}/>
       {infoWindowShown && selectedMarker &&
         <MarkerInfo marker={selectedMarker} markerData={markerData} allowChangingMarkers={allowChangingMarkers}

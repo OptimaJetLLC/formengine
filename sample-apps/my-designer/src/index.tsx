@@ -1,6 +1,7 @@
+import './monaco-settings'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import MyDesignerApp from './MyDesignerApp'
+import {App} from './App'
 import reportWebVitals from './reportWebVitals'
 
 const root = ReactDOM.createRoot(
@@ -8,7 +9,7 @@ const root = ReactDOM.createRoot(
 )
 root.render(
   <React.StrictMode>
-    <MyDesignerApp/>
+    <App/>
   </React.StrictMode>
 )
 

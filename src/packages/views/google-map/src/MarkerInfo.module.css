@@ -1,0 +1,23 @@
+.infoWindowContent {
+  padding-inline: 10px;
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  margin-inline-start: -10px;
+}
+
+.country {
+  margin-bottom: 10px;
+}
+
+.deleteButton {
+  width: 100%;
+  margin-top: 10px;
+  background-color: white;
+  border: none;
+  color: #f44336;
+  padding: 0;
+  cursor: pointer;
+}

@@ -1,0 +1,13 @@
+.container {
+  flex: 1;
+  min-height: 0;
+  gap: 20px;
+}
+
+input.control:global(.rs-input) {
+  width: 100%;
+}
+
+.rows {
+  gap: 10px;
+}

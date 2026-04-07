@@ -1,4 +1,3 @@
-import react from '@vitejs/plugin-react-swc'
 import path from 'path'
 import type {ModuleFormat} from 'rollup'
 // @ts-ignore
@@ -41,7 +40,6 @@ export default defineConfig(env =>
     },
     plugins: [
       inlineCssPlugin(),
-      react({jsxImportSource: '@emotion/react'}),
       svgr({
         include: '**/*.svg',
       }),

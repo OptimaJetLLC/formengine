@@ -1,25 +1,8 @@
-import styled from '@emotion/styled'
 import {useCallback} from 'react'
 import type {Device} from '../../../../../utils/types'
 import {useTranslationPart} from '../../../../localization/hooks'
 import {FixedSelectPicker} from '../../../FixedSelectPicker'
-
-const SHeader = styled.h6`
-  margin-bottom: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-inline-start: 28px;
-  gap: 10px;
-`
-
-const SPicker = styled(FixedSelectPicker)`
-  margin-inline-end: 4px;
-
-  .rs-picker-toggle-value {
-    font-size: 15px;
-  }
-`
+import styles from './DevicePicker.module.css'
 
 /**
  * React component that select device for component styles editors.
@@ -36,10 +19,19 @@ export const DevicePicker = ({value, onChange}: { value: Device, onChange: (valu
   const handleChange = useCallback((val: any) => onChange(val as Device), [onChange])
 
   return (
-    <SHeader>
+    <h6 className={styles.header}>
       {t('forDevice')}
-      <SPicker value={value} data={translatedItems} onChange={handleChange} appearance={'subtle'} size={'xs'}
-               searchable={false} cleanable={false} width={100}/>
-    </SHeader>
+      <FixedSelectPicker
+        className={styles.picker}
+        value={value}
+        data={translatedItems}
+        onChange={handleChange}
+        appearance={'subtle'}
+        size={'xs'}
+        searchable={false}
+        cleanable={false}
+        width={100}
+      />
+    </h6>
   )
 }

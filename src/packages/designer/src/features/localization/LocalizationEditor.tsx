@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import type {IFormData} from '@react-form-builder/core'
 import {CalculableResult, getEditableFormData, namedObserver, useStore} from '@react-form-builder/core'
 import {action} from 'mobx'
@@ -13,15 +12,7 @@ import {TestingEditor} from '../ui/BottomPanel/TestingEditor'
 import {LocalizationPicker} from './components/LocalizationPicker'
 import {fluentLanguageId} from './consts'
 import {useTranslationPart} from './hooks'
-
-const SDiv = styled.div`
-  display: flex;
-  gap: 10px;
-  align-items: center;
-`
-
-const columnsStyle = {minHeight: 0, flex: 1} as const
-const rowsStyle = {minHeight: 0, minWidth: 0, flex: 1.5} as const
+import styles from './LocalizationEditor.module.css'
 
 const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditorProps) => {
   const t = useTranslationPart('common')
@@ -72,19 +63,19 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
     return CalculableResult.success(result)
   }, [locEngine, localizationStringId, value, language])
 
-  return <Columns style={columnsStyle}>
-    <Rows gap={10} style={rowsStyle}>
+  return <Columns className={styles.columns}>
+    <Rows className={styles.rows}>
       <CodeEditor key={`${editableProperty.annotation.key}_${language.fullCode}`} language={fluentLanguageId}
                   initialValue={initialValue}
                   beginContextLine={beginContextLine}
                   endContextLine={endContextLine} canEditBeginContextLine={true} onChange={setValue}/>
-      <SDiv>
+      <div className={styles.toolbar}>
         <ButtonGroup size={'sm'}>
           <Button appearance="primary" onClick={handleSave}>{t('save')}</Button>
           <Button appearance="ghost" onClick={onClose}>{t('close')}</Button>
         </ButtonGroup>
         <LocalizationPicker value={language.fullCode} onSelect={setLanguage}/>
-      </SDiv>
+      </div>
     </Rows>
     {locEngine.testLocalization &&
       <TestingEditor initialData={initialData} testingFunction={testingFunction} ref={testingEditor}/>

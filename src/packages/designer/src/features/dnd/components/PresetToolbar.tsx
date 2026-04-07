@@ -1,25 +1,10 @@
-import styled from '@emotion/styled'
 import {useComponentData} from '@react-form-builder/core'
 import {useCallback, useMemo} from 'react'
 import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {RemoveButton} from '../../components/Buttons'
+import styles from './PresetToolbar.module.css'
 import {useHovered} from './useHovered'
-
-const SToolbar = styled.span`
-  position: absolute;
-  height: auto !important;
-  inset-inline-end: 6px;
-  inset-block-start: 6px;
-
-  button {
-    padding: 4px !important;
-
-    * {
-      cursor: pointer;
-    }
-  }
-`
 
 /**
  * The preset toolbar component.
@@ -38,8 +23,10 @@ export const PresetToolbar = () => {
 
   if (isDragging || builderPresets.disableRemoving || !canRemove) return null
 
-  return <SToolbar {...hoveredProps}>
-    <RemoveButton onClick={handleClick} hintPlacement={'autoHorizontal'}
-                  className="remove-preset-button show"/>
-  </SToolbar>
+  return (
+    <span {...hoveredProps} className={styles.toolbar}>
+      <RemoveButton onClick={handleClick} hintPlacement={'autoHorizontal'}
+                    className="remove-preset-button show"/>
+    </span>
+  )
 }

@@ -1,11 +1,11 @@
 import '../config/setup'
 
 import {formEngineRsuiteCssLoader, ltrCssLoader, RsLocalizationWrapper, rtlCssLoader} from '@react-form-builder/components-rsuite'
-import {BiDi, BuilderView, createView, FormViewer, LanguageFullCode} from '@react-form-builder/core'
+import {BiDi, BuilderView} from '@react-form-builder/core'
 import {CustomizationMap, FormBuilder} from '@react-form-builder/designer'
 import enEN from '@react-form-builder/designer/public/locales/en-US.json'
 import {isElectron} from '@react-form-builder/designer/src/features/license/isElectron'
-import {allComponentsBuilder, allComponentsViewer} from '@react-form-builder/tests-common/lib/all-components'
+import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {license2030Enterprise, licenseBusiness,} from '@react-form-builder/tests-common/license'
 import {render, RenderResult, waitFor} from '@testing-library/react'
 import {useCallback} from 'react'
@@ -25,19 +25,6 @@ const designerReady = async ({findByTestId}: RenderResult) => {
   return expect(await findByTestId('picker-toggle-input')).toBeInTheDocument()
 }
 
-const viewerView = createView(allComponentsViewer)
-  .withViewerWrapper(RsLocalizationWrapper)
-  .withCssLoader(BiDi.LTR, ltrCssLoader)
-  .withCssLoader(BiDi.RTL, rtlCssLoader)
-  .withCssLoader('common', formEngineRsuiteCssLoader)
-
-const Viewer = ({language, formName}: { language?: string, formName?: string }) => {
-  const lng: LanguageFullCode | undefined = language ? `${language.toLowerCase()}-${language.toUpperCase()}` : undefined
-
-  return <FormViewer view={viewerView} getForm={getForm} language={lng} formName={formName}/>
-}
-Viewer.displayName = 'Viewer'
-
 const viewAllComponents = new BuilderView(allComponentsBuilder)
   .withTemplates(['agreement'])
   .withViewerWrapper(RsLocalizationWrapper)
@@ -50,7 +37,6 @@ const Designer = ({license, customization, view = viewAllComponents, formName}: 
   const formGet = useCallback((name?: string) => getForm(name ?? formName), [formName])
   return <FormBuilder view={view} getForm={formGet} licenseKey={license} customization={customization}/>
 }
-Designer.displayName = 'Designer'
 
 const trialMessage = `${enEN.license.mismatchMessage}`
 const electronMessage = `${enEN.license.errElectron}`

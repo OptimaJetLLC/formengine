@@ -1,11 +1,10 @@
-import {cx} from '@emotion/css'
-import styled from '@emotion/styled'
 import type {IconDefinition} from '@fortawesome/fontawesome-common-types'
 import * as faCode from '@fortawesome/free-solid-svg-icons/faCode.js'
 import * as faGlobe from '@fortawesome/free-solid-svg-icons/faGlobe.js'
 import * as faEdit from '@fortawesome/free-solid-svg-icons/faMarker.js'
 import type {Annotation, ComponentData} from '@react-form-builder/core'
 import {isEqual} from '@react-form-builder/core'
+import cx from 'clsx'
 import type {ComponentProps, HTMLAttributes, ReactNode} from 'react'
 import {cloneElement, useCallback, useMemo} from 'react'
 import {IconButton} from 'rsuite'
@@ -19,14 +18,8 @@ import {customizable, customizableObserver} from '../customization'
 import {useTranslationPart} from '../localization/hooks'
 import {Columns, LabeledInput} from './Containers'
 import {FaIcon} from './Icons'
+import styles from './LabeledProperty.module.css'
 import {useTranslatedComponentProperty} from './useTranslatedComponentProperty'
-
-const SIconButton = styled(IconButton)`
-  min-width: 24px;
-  margin-inline-end: -6px;
-`
-
-const columnsStyle = {alignItems: 'center'} as const
 
 /**
  * The properties of the React {@link LabeledProperty} component.
@@ -140,21 +133,26 @@ const RawCodeButton = (props: CodeButtonProps) => {
 
   const icon = useMemo(() => <FaIcon icon={buttonStyle.icon} color={buttonStyle.color}/>, [buttonStyle.icon, buttonStyle.color])
 
-  return <Hinted hint={buttonStyle.hint}>
-    <SIconButton onClick={handleClick} disabled={disabled}
-                 icon={icon}
-                 size={'xs'} appearance={'subtle'}/>
-  </Hinted>
+  return (
+    <Hinted hint={buttonStyle.hint}>
+      <IconButton
+        className={styles.iconButton}
+        onClick={handleClick}
+        disabled={disabled}
+        icon={icon}
+        size={'xs'}
+        appearance={'subtle'}
+      />
+    </Hinted>
+  )
 }
 
 const CodeButton = customizableObserver('PropertyCodeButton', RawCodeButton)
 
 const CustomizedLabel = customizable('PropertyLabel', HintedLabel)
 
-const customizedInputStyle = {width: '100%'} as const
-
 const RawCustomizedInput = (props: HTMLAttributes<HTMLDivElement>) => {
-  return <div style={customizedInputStyle} {...props}/>
+  return <div {...props} className={cx(styles.customizedInput, props.className)}/>
 }
 
 const CustomizedInput = customizable('PropertyInput', RawCustomizedInput)
@@ -168,10 +166,6 @@ interface LabeledWrapperProps extends ComponentProps<any> {
   inputTestId?: string
 }
 
-const LeftButtonPlaceholder = styled.div`
-  min-width: 18px;
-`
-
 /**
  * The LabeledWrapper
  * @param props the React component properties.
@@ -182,17 +176,19 @@ export const LabeledWrapper = (props: LabeledWrapperProps) => {
   const id = useUniqueId('id-')
   const labelClassName = cx({required})
 
-  return <LabeledInput style={style} className={className} data-testid={dataTestId}>
-    <Columns gap={10} style={columnsStyle}>
-      {leftButton ?? <LeftButtonPlaceholder/>}
-      <CustomizedLabel htmlFor={id} hint={hint} className={labelClassName}>
-        <>{label}</>
-      </CustomizedLabel>
-    </Columns>
-    {!!children && <CustomizedInput>
-      {cloneElement(children, {id, 'data-testid': inputTestId})}
-    </CustomizedInput>}
-  </LabeledInput>
+  return (
+    <LabeledInput style={style} className={className} data-testid={dataTestId}>
+      <Columns className={styles.columns}>
+        {leftButton ?? <div className={styles.leftButtonPlaceholder}/>}
+        <CustomizedLabel htmlFor={id} hint={hint} className={labelClassName}>
+          <>{label}</>
+        </CustomizedLabel>
+      </Columns>
+      {!!children && <CustomizedInput>
+        {cloneElement(children, {id, 'data-testid': inputTestId})}
+      </CustomizedInput>}
+    </LabeledInput>
+  )
 }
 
 const RawLabeledProperty = (props: LabeledPropertyProps) => {

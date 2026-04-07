@@ -1,18 +1,7 @@
-import styled from '@emotion/styled'
+import cx from 'clsx'
 import type {ComponentProps} from 'react'
 import {createPortal} from 'react-dom'
-
-const Container = styled.div`
-  display: flex;
-  width: 136px;
-  height: 34px;
-  align-items: center;
-  overflow: hidden;
-
-  .rs-theme-dark & {
-    background-color: #414549;
-  }
-`
+import styles from './DragPreview.module.css'
 
 const getDragPreview = () => document.getElementById('fb-drag-preview') || document.body
 
@@ -21,4 +10,7 @@ const getDragPreview = () => document.getElementById('fb-drag-preview') || docum
  * @param props the React component properties.
  * @returns the React element.
  */
-export const DragPreview = (props: ComponentProps<any>) => createPortal(<Container {...props}/>, getDragPreview())
+export const DragPreview = (props: ComponentProps<any>) => createPortal(
+  <div {...props} className={cx(styles.container, props.className)}/>,
+  getDragPreview()
+)

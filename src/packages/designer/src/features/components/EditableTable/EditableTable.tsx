@@ -1,36 +1,16 @@
-import {cx} from '@emotion/css'
-import styled from '@emotion/styled'
 import {Close, Plus} from '@rsuite/icons'
+import cx from 'clsx'
 import type {FormEventHandler, JSX} from 'react'
 import {cloneElement, useCallback, useEffect, useState} from 'react'
 import type {TableProps} from 'rsuite'
 import {Button, Form, Table} from 'rsuite'
 import type {RowDataType} from 'rsuite-table/lib'
 import {ActionCell} from './CustomCells'
+import styles from './EditableTable.module.css'
 
 const {ErrorMessage} = Form
 
 const {Column, HeaderCell} = Table
-
-const buttonStyle = {marginTop: 10} as const
-
-const STable = styled(Table)`
-  .rs-table-cell, .rs-table-row {
-    background-color: transparent !important;
-  }
-
-  &.hideHeader {
-    margin-bottom: -40px;
-
-    .rs-table-header-row-wrapper {
-      display: none !important;
-    }
-
-    .rs-table-body-row-wrapper {
-      top: 0 !important;
-    }
-  }
-`
 
 /**
  * The React component properties for the {@link EditableTable} component.
@@ -175,14 +155,16 @@ export const EditableTable = (props: EditableTableProps) => {
 
   return (<div>
     {!!label && <label>{label}</label>}
-    <STable data={data}
-            headerHeight={headerHeight}
-            rowHeight={rowHeight}
-            height={maxHeight}
-            autoHeight={autoHeight}
-            shouldUpdateScroll={shouldUpdateScroll}
-            className={cx({hideHeader})}
-            {...tableProps}>
+    <Table
+      data={data}
+      headerHeight={headerHeight}
+      rowHeight={rowHeight}
+      height={maxHeight}
+      autoHeight={autoHeight}
+      shouldUpdateScroll={shouldUpdateScroll}
+      {...tableProps}
+      className={cx(styles.table, {hideHeader}, tableProps.className)}
+    >
       {prepareColumns()}
       <Column width={34}>
         <HeaderCell>
@@ -190,12 +172,12 @@ export const EditableTable = (props: EditableTableProps) => {
         </HeaderCell>
         <ActionCell onAction={onRemoveColumn} icon={removeCellIcon}/>
       </Column>
-    </STable>
+    </Table>
     {!!errorMessage && <ErrorMessage show={!!errorMessage} placement="bottomStart">
       {errorMessage}
     </ErrorMessage>}
     {!autoAdd &&
-      <Button appearance="default" size="sm" onClick={onAddColumn} style={buttonStyle} block>
+      <Button appearance="default" size="sm" onClick={onAddColumn} className={styles.button} block>
         <Plus/>
       </Button>
     }

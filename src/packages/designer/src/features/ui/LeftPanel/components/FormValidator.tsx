@@ -6,8 +6,7 @@ import {RemoveButton} from '../../../components/Buttons'
 import {Columns} from '../../../components/Containers'
 import {LabeledWrapper} from '../../../components/LabeledProperty'
 import {useTranslationPart} from '../../../localization/hooks'
-
-const buttonStyle = {borderStyle: 'dashed'}
+import styles from './FormValidator.module.css'
 
 const RawFormValidator = () => {
   const builderStore = useBuilderStore()
@@ -19,7 +18,13 @@ const RawFormValidator = () => {
   return (
     <LabeledWrapper label={t('name')} hint={t('hint')}>
       <Columns>
-        <Button onClick={handleEdit} size={'xs'} appearance={'ghost'} block style={buttonStyle}>
+        <Button
+          onClick={handleEdit}
+          size="xs"
+          appearance="ghost"
+          block
+          className={styles.button}
+        >
           {t('hint')}
         </Button>
         {!!form.formValidator && <RemoveButton onClick={remove}/>}

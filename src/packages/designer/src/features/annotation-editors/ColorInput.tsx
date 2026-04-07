@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import {Close} from '@rsuite/icons'
 import {useCallback, useMemo} from 'react'
 import type {RgbaColor} from 'react-colorful'
@@ -6,24 +5,7 @@ import {RgbaColorPicker} from 'react-colorful'
 import {Input, InputGroup, Popover, Whisper} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
-
-const SInput = styled(Input)<{ color: string }>`
-  && {
-    background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill-opacity=".05"><path d="M8 0h8v8H8zM0 8h8v8H0z"/></svg>');
-    background-color: ${({color}) => color ?? 'var(--rs-btn-default-bg)'};
-  }
-`
-
-const SButton = styled(InputGroup.Button)`
-  && {
-    background-color: var(--rs-btn-default-bg) !important;
-    position: absolute;
-    inset-inline-end: 0;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    padding: 6px 8px;
-  }
-`
+import styles from './ColorInput.module.css'
 
 /**
  * Converts the value to a string containing the color in CSS format.
@@ -46,8 +28,6 @@ function rgbFromString(value: string): RgbaColor {
   return {r: Number(r), g: Number(g), b: Number(b), a: Number(a)}
 }
 
-const fullWidthStyle = {width: '100%'} as const
-
 /**
  * The property editor for the color property type.
  * @param props the Annotation editor component properties.
@@ -64,14 +44,20 @@ export const ColorInput = (props: AnnotationEditorProps) => {
     </Popover>
   ), [color, handleChange])
 
-  return <LabeledProperty {...props}>
-    <InputGroup inside style={fullWidthStyle} size={'xs'}>
-      <Whisper placement="auto" trigger="hover" speaker={speaker} enterable>
-        <SInput color={value} readOnly/>
-      </Whisper>
-      <SButton onClick={onClean}>
-        <Close/>
-      </SButton>
-    </InputGroup>
-  </LabeledProperty>
+  const style = useMemo(() => ({
+    backgroundColor: value,
+  } as const), [value])
+
+  return (
+    <LabeledProperty {...props}>
+      <InputGroup inside className={styles.fullWidth} size={'xs'}>
+        <Whisper placement="auto" trigger="hover" speaker={speaker} enterable>
+          <Input className={styles.input} style={style} readOnly/>
+        </Whisper>
+        <InputGroup.Button className={styles.button} onClick={onClean}>
+          <Close/>
+        </InputGroup.Button>
+      </InputGroup>
+    </LabeledProperty>
+  )
 }

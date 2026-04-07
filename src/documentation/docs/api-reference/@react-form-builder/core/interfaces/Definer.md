@@ -134,7 +134,7 @@ Sets the component CSS metadata.
 
 ##### css
 
-[`Annotations`](../type-aliases/Annotations.md)\<`CSSObject`\>
+[`Annotations`](../type-aliases/Annotations.md)\<[`CSSObject`](../type-aliases/CSSObject.md)\>
 
 the component CSS metadata.
 
@@ -515,17 +515,17 @@ the modified Definer class instance.
 
 ### type()
 
-> **type**(`type`): `Definer`\<`T`\>
+> **type**(`typeName`): `Definer`\<`T`\>
 
-Sets the type of the component.
+Sets the type name of the component.
 
 #### Parameters
 
-##### type
+##### typeName
 
 `string`
 
-the component type.
+the component type name.
 
 #### Returns
 
@@ -589,7 +589,7 @@ Sets the component wrapper CSS metadata.
 
 ##### css
 
-[`Annotations`](../type-aliases/Annotations.md)\<`CSSObject`\>
+[`Annotations`](../type-aliases/Annotations.md)\<[`CSSObject`](../type-aliases/CSSObject.md)\>
 
 the component wrapper CSS metadata.
 

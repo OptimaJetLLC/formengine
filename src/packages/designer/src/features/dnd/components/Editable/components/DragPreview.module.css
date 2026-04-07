@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  width: 136px;
+  height: 34px;
+  align-items: center;
+  overflow: hidden;
+}
+
+:global(.rs-theme-dark) .container {
+  background-color: #414549;
+}

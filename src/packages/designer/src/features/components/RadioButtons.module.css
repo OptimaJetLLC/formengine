@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+.container :global(.rs-radio-group) {
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.container :global(.rs-radio-group-picker .rs-radio-inline) {
+  padding: 0;
+}
+
+.container :global(.rs-radio-checker) {
+  min-height: 27px;
+  max-height: 27px;
+  margin: 0 7px !important;
+}
+
+.container :global(.rs-radio-checker label) {
+  line-height: 14px !important;
+  padding: 4px 0 !important;
+}

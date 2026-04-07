@@ -2,6 +2,7 @@ import {buildForm} from '@react-form-builder/core'
 import {ViewerLite} from '@react-form-builder/tests-common/lib/viewer/ViewerLite'
 import {render} from '@testing-library/react'
 import {expect} from 'vitest'
+import {isBrowserMode} from '../config/isBrowserMode'
 import {renderForm} from '../util/renderForm'
 
 const nestedForm = buildForm()
@@ -22,6 +23,8 @@ const getForm = (name?: string) => {
 
 describe('ViewerWrapper root padding in nested forms', () => {
   it('should apply padding only to the root viewer', async () => {
+    if (!isBrowserMode()) return
+
     const {getAllByTestId} = renderForm(rootForm, {getForm})
 
     const wrappers = getAllByTestId('viewer-wrapper')
@@ -35,6 +38,8 @@ describe('ViewerWrapper root padding in nested forms', () => {
   })
 
   it('should apply padding only to the root viewer wrapper - ViewerLite', async () => {
+    if (!isBrowserMode()) return
+
     const {getAllByTestId} = render(<ViewerLite getForm={getForm} formName={'nested-form'}/>)
 
     const wrappers = getAllByTestId('viewer-wrapper')

@@ -1,0 +1,9 @@
+.columns {
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.name {
+  color: violet;
+  margin-left: 5px;
+}

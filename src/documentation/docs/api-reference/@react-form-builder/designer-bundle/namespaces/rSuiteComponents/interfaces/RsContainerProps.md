@@ -12,6 +12,14 @@ Children elements of the container.
 
 ***
 
+### className?
+
+> `optional` **className**: `string`
+
+CSS class name.
+
+***
+
 ### disabled?
 
 > `optional` **disabled**: `boolean`

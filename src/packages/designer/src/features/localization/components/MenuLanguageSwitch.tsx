@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import {faGlobe} from '@fortawesome/free-solid-svg-icons'
 import {namedObserver} from '@react-form-builder/core'
 import {useCallback, useMemo} from 'react'
@@ -8,13 +7,7 @@ import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {FaIcon} from '../../components/Icons'
 import {AiIcon} from './AiIcon'
 import {renderLanguageItem} from './LocalizationPicker'
-
-const SDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 30px;
-`
+import styles from './MenuLanguageSwitch.module.css'
 
 const RawMenuLanguageSwitch = () => {
   const {t} = useTranslation()
@@ -34,14 +27,16 @@ const RawMenuLanguageSwitch = () => {
   const children = useMemo(() => builderStore.availableLanguages
     .map(language => {
       const isEnglish = language.fullCode === 'en-US'
-      return <Dropdown.Item key={language.fullCode} eventKey={language.fullCode}
-                            active={currentLanguageCode === language.fullCode}
-                            onSelect={handleLanguageSelect(language)}>
-        <SDiv>
-          {renderLanguageItem(language)}
-          {!isEnglish && <AiIcon/>}
-        </SDiv>
-      </Dropdown.Item>
+      return (
+        <Dropdown.Item key={language.fullCode} eventKey={language.fullCode}
+                       active={currentLanguageCode === language.fullCode}
+                       onSelect={handleLanguageSelect(language)}>
+          <div className={styles.row}>
+            {renderLanguageItem(language)}
+            {!isEnglish && <AiIcon/>}
+          </div>
+        </Dropdown.Item>
+      )
     }), [builderStore.availableLanguages, currentLanguageCode, handleLanguageSelect])
 
   return <Dropdown.Menu title={t('leftMenu.translation')} icon={globeIcon}>

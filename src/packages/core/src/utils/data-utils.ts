@@ -53,7 +53,7 @@ export const mergeData = (generatedData: Record<string, unknown>, initialData: R
       // with data from the initial data.
       if (isUndefined(generatedData[key])) return
 
-      result[key] = mergeValues(generatedData[key] as ValueType, initialData[key] as ValueType)
+      result[key] = mergeValues(generatedData[key] as ValueType, initialData[key])
       return
     }
 

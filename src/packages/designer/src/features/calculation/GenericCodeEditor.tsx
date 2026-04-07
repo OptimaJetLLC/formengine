@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import type {BaseCompilationResult, IFormData} from '@react-form-builder/core'
 import {useStore} from '@react-form-builder/core'
 import {action} from 'mobx'
@@ -10,16 +9,7 @@ import type {CodeEditorLanguage} from '../components/CodeEditor/CodeEditorProps'
 import {Columns, Rows} from '../components/Containers'
 import type {TestingEditorRef} from '../ui/BottomPanel/TestingEditor'
 import {TestingEditor, TestRunner} from '../ui/BottomPanel/TestingEditor'
-
-const SDiv = styled.div`
-  display: flex;
-  gap: 10px;
-  align-items: end;
-  justify-content: space-between;
-`
-
-const columnsStyle = {minHeight: 0, flex: 1} as const
-const rowsStyle = {minHeight: 0, flex: 1.5} as const
+import styles from './GenericCodeEditor.module.css'
 
 /**
  * Properties of the React component {@link GenericCodeEditor}.
@@ -94,18 +84,20 @@ export const GenericCodeEditor = (props: GenericCodeEditorProps) => {
 
   const handleClose = useCallback(() => props.onClose(), [props])
 
-  return <Columns style={columnsStyle}>
-    <Rows gap={10} style={rowsStyle}>
-      <CodeEditor beginContextLine={props.beginContextLine} endContextLine={props.endContextLine}
-                  initialValue={initialValue} language={props.language} onChange={setSourceCode}/>
-      <SDiv>
-        <ButtonGroup size={'sm'}>
-          <Button appearance="primary" onClick={handleSave} data-testid={'save-code-action-button'}>{t('common.save')}</Button>
-          <Button appearance="ghost" onClick={handleClose}>{t('common.close')}</Button>
-        </ButtonGroup>
-        {props.compact && <TestRunner testingFunction={testingFunction} ref={testingEditor} compact/>}
-      </SDiv>
-    </Rows>
-    {!props.compact && <TestingEditor initialData={formData.data} testingFunction={testingFunction} ref={testingEditor}/>}
-  </Columns>
+  return (
+    <Columns className={styles.columns}>
+      <Rows className={styles.rows}>
+        <CodeEditor beginContextLine={props.beginContextLine} endContextLine={props.endContextLine}
+                    initialValue={initialValue} language={props.language} onChange={setSourceCode}/>
+        <div className={styles.toolbar}>
+          <ButtonGroup size={'sm'}>
+            <Button appearance="primary" onClick={handleSave} data-testid={'save-code-action-button'}>{t('common.save')}</Button>
+            <Button appearance="ghost" onClick={handleClose}>{t('common.close')}</Button>
+          </ButtonGroup>
+          {props.compact && <TestRunner testingFunction={testingFunction} ref={testingEditor} compact/>}
+        </div>
+      </Rows>
+      {!props.compact && <TestingEditor initialData={formData.data} testingFunction={testingFunction} ref={testingEditor}/>}
+    </Columns>
+  )
 }

@@ -1,15 +1,7 @@
-import styled from '@emotion/styled'
 import {useMapsLibrary} from '@vis.gl/react-google-maps'
+import cx from 'clsx'
 import {useEffect, useRef, useState} from 'react'
-
-const SDiv = styled.div`
-  margin: 10px;
-`
-
-const SInput = styled.input`
-  min-width: 250px;
-  min-height: 40px;
-`
+import styles from './AutoComplete.module.css'
 
 /**
  * The properties of the PlaceAutocompleteClassic component.
@@ -55,10 +47,13 @@ export const PlaceAutocompleteClassic = ({onPlaceSelect, placeholder}: PlaceAuto
     const listener = placeAutocomplete.addListener('place_changed', () => {
       onPlaceSelect(placeAutocomplete.getPlace())
     })
+
     return () => listener.remove()
   }, [onPlaceSelect, placeAutocomplete])
 
-  return <SDiv className="autocomplete-container">
-    <SInput ref={inputRef} placeholder={placeholder}/>
-  </SDiv>
+  return (
+    <div className={cx(styles.container, 'autocomplete-container')}>
+      <input ref={inputRef} placeholder={placeholder} className={styles.input}/>
+    </div>
+  )
 }

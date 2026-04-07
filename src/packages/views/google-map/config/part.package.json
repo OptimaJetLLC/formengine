@@ -8,6 +8,7 @@
       "types": "./dist/index.d.ts",
       "require": "./dist/index.js"
     },
-    "./schemas/google-map-components.schema.json": "./dist/schemas/google-map-components.schema.json"
+    "./schemas/google-map-components.schema.json": "./dist/schemas/google-map-components.schema.json",
+    "./assets/styles.css": "./dist/assets/styles.css"
   }
 }

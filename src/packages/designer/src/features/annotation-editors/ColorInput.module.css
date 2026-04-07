@@ -1,0 +1,18 @@
+input.input {
+  background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill-opacity=".05"><path d="M8 0h8v8H8zM0 8h8v8H0z"/></svg>');
+  background-color: var(--rs-btn-default-bg);
+  border-radius: 5px 0 0 5px;
+}
+
+.button {
+  background-color: var(--rs-btn-default-bg) !important;
+  position: absolute;
+  inset-inline-end: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  padding: 6px 8px;
+}
+
+.fullWidth {
+  width: 100%;
+}

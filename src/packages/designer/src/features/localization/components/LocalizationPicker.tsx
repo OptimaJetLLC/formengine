@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import type {Language} from '@react-form-builder/core'
 import {namedObserver, toUpper} from '@react-form-builder/core'
 import type {ReactNode} from 'react'
@@ -7,17 +6,7 @@ import type {ItemDataType} from 'rsuite/esm/internals/types'
 import type {SelectProps} from 'rsuite/esm/SelectPicker'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {FixedSelectPicker} from '../../ui/FixedSelectPicker'
-
-const LanguageItem = styled.div`
-  display: flex;
-  gap: 10px;
-
-  label {
-    min-width: 20px;
-    text-align: center;
-    font-weight: bold;
-  }
-`
+import styles from './LocalizationPicker.module.css'
 
 /**
  * The function that renders the languages list item.
@@ -26,7 +15,12 @@ const LanguageItem = styled.div`
  */
 export const renderLanguageItem = (language: Language) => {
   const {name, code} = language
-  return <LanguageItem><label>{toUpper(code)}</label>{name}</LanguageItem>
+  return (
+    <div className={styles.languageItem}>
+      <label>{toUpper(code)}</label>
+      {name}
+    </div>
+  )
 }
 
 /**

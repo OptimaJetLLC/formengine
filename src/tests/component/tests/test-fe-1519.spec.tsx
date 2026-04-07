@@ -55,7 +55,7 @@ describe('RsNumberFormat infinity value test', () => {
     await switchToViewerMode(findByText)
 
     const dataPre = await findByTestId('form-viewer-state-json-data')
-    const expectedData = '{ "nfPositiveInfinity": "Infinity", "nfNegativeInfinity": "-Infinity", "nfNan": "NaN", "nfNormalNumber": "1.3" }'
+    const expectedData = '{ "nfPositiveInfinity": "Infinity", "nfNegativeInfinity": "-Infinity", "nfNan": "NaN", "nfNormalNumber": 1.3 }'
     expect(dataPre).toHaveTextContent(expectedData)
   })
 })

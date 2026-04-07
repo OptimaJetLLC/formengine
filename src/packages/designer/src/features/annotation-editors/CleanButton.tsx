@@ -1,5 +1,5 @@
-import {cx} from '@emotion/css'
 import {Close} from '@rsuite/icons'
+import cx from 'clsx'
 import {useMemo} from 'react'
 import {useTranslationPart} from '../localization/hooks'
 import {Hinted} from './Hinted'

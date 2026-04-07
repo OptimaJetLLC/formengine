@@ -1,0 +1,14 @@
+.toolbar {
+  position: absolute;
+  height: auto !important;
+  inset-inline-end: 6px;
+  inset-block-start: 6px;
+}
+
+.toolbar button {
+  padding: 4px !important;
+}
+
+.toolbar * {
+  cursor: pointer;
+}

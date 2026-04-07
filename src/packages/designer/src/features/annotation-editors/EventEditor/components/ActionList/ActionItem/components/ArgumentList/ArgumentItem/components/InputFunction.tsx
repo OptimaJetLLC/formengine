@@ -10,8 +10,7 @@ import {Columns} from '../../../../../../../../../components/Containers'
 import {useActionData} from '../../../../contexts/ActionDataContext'
 import {useEventHandlerItem} from '../../../../contexts/EventHandlerItemContext'
 import type {InputProps} from '../InputProps'
-
-const buttonStyle = {borderStyle: 'dashed'}
+import styles from './InputFunction.module.css'
 
 const beginContextLine = `/**
  * @param {ActionEventArgs} e the action arguments.
@@ -75,12 +74,20 @@ const RawInputFunction = ({name}: InputProps) => {
     builderStore.editFunction(editableFunction)
   }, [builderStore, onClose, onCompile, setFn, title, value])
 
-  return (<Columns>
-    <Button onClick={handleEdit} size={'xs'} appearance={'ghost'} block style={buttonStyle}>
-      {t('annotation.code.hint')}
-    </Button>
-    {!!value && <RemoveButton onClick={clear}/>}
-  </Columns>)
+  return (
+    <Columns>
+      <Button
+        onClick={handleEdit}
+        size="xs"
+        appearance="ghost"
+        block
+        className={styles.button}
+      >
+        {t('annotation.code.hint')}
+      </Button>
+      {!!value && <RemoveButton onClick={clear}/>}
+    </Columns>
+  )
 }
 
 export const InputFunction = namedObserver('InputFunction', RawInputFunction)

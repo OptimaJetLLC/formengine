@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import type {PropertyAnnotation} from '@react-form-builder/core'
 import {startCase} from '@react-form-builder/core'
 import {useMemo} from 'react'
@@ -6,10 +5,7 @@ import {TagPicker} from 'rsuite'
 import type {ItemDataType} from 'rsuite/esm/internals/types'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
-
-const STagPicker = styled(TagPicker)`
-  width: 100%;
-`
+import styles from './MultiPicker.module.css'
 
 const prepareData = ({data}: PropertyAnnotation, values: string[]) => {
   const preparedData = data.map(di => {
@@ -38,8 +34,20 @@ export const MultiPicker = (props: AnnotationEditorProps) => {
   const data = useMemo(() => prepareData(annotation as PropertyAnnotation, value), [annotation, value])
   const defaultValue = useMemo(() => value ?? [], [value])
 
-  return <LabeledProperty {...props}>
-    <STagPicker value={defaultValue} data={data} onChange={onChange} onClean={onClean}
-                cleanable creatable size={'xs'} placement={'auto'} {...props.annotation.editorProps}/>
-  </LabeledProperty>
+  return (
+    <LabeledProperty {...props}>
+      <TagPicker
+        className={styles.picker}
+        value={defaultValue}
+        data={data}
+        onChange={onChange}
+        onClean={onClean}
+        cleanable
+        creatable
+        size={'xs'}
+        placement={'auto'}
+        {...props.annotation.editorProps}
+      />
+    </LabeledProperty>
+  )
 }

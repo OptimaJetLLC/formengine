@@ -1,10 +1,12 @@
-import styled from '@emotion/styled'
+import cx from 'clsx'
+import type {HTMLAttributes} from 'react'
+import styles from './Labels.module.css'
 
-export const CenteredLabel = styled.label`
-  display: flex;
-  flex: 1;
-  height: 100%;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-`
+/**
+ * Centered label component.
+ * @param props HTMLLabelElement properties.
+ * @returns React component.
+ */
+export const CenteredLabel = (props: HTMLAttributes<HTMLLabelElement>) => (
+  <label {...props} className={cx(styles.centeredLabel, props.className)}/>
+)

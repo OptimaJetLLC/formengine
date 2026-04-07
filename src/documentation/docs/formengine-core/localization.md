@@ -724,7 +724,7 @@ Validation error messages can also be localized. Each validator can have its err
 
 ### Example: Validation Error Localization
 
-```json {103-108,111-113,131-136,139-141}
+```json {101-108,110-112,129-136,138-140}
 {
   "tooltipType": "MuiTooltip",
   "errorType": "MuiErrorWrapper",

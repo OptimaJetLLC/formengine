@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
 import {FluentLocalizationEngine, isUndefined, namedObserver, SuppressResizeObserverErrors, useMobxConfig} from '@react-form-builder/core'
+import cx from 'clsx'
 import type {ComponentProps, ReactNode} from 'react'
 import {Suspense, useEffect, useMemo} from 'react'
 import {Loader} from 'rsuite'
@@ -13,28 +13,9 @@ import {ComponentsModal} from './features/ui/ComponentBar/ComponentsModal'
 import {LeftPanel} from './features/ui/LeftPanel'
 import {PromptDialog} from './features/ui/PromptDialog'
 import {RightPanel} from './features/ui/RightPanel'
+import styles from './FormBuilder.module.css'
 import type {FormBuilderProps} from './FormBuilderProps'
 import {useBuilderStore} from './utils/BuilderStoreContext'
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow-y: auto;
-  background-color: white;
-
-  .rs-theme-dark & {
-    background-color: #303336;
-  }
-`
-
-const Content = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  min-height: 0;
-  padding-bottom: 15px;
-`
 
 const GlobalHotkeys = ({children}: { children: ReactNode }) => {
   const handleKeyDown = useHotkeys()
@@ -45,12 +26,12 @@ const GlobalHotkeys = ({children}: { children: ReactNode }) => {
     return () => globalThis.removeEventListener('keydown', handleKeyDown)
   }, [handleKeyDown])
 
-  return <Container>{children}</Container>
+  return <div className={styles.container}>{children}</div>
 }
 
 const loaderFallbackElement = <Loader center content="loading"/>
 
-const RawFormBuilderView = (props: ComponentProps<typeof Container>) => {
+const RawFormBuilderView = (props: ComponentProps<'div'>) => {
   const builderStore = useBuilderStore()
   const {checkLicense} = useLicense()
 
@@ -70,13 +51,13 @@ const RawFormBuilderView = (props: ComponentProps<typeof Container>) => {
     <SuppressResizeObserverErrors>
       <Suspense fallback={loaderFallbackElement}>
         <GlobalHotkeys>
-          <Content {...props}>
+          <div {...props} className={cx(styles.content, props.className)}>
             <LeftPanel/>
             <CentralPanel/>
             <RightPanel/>
             <ComponentsModal/>
             <PromptDialog/>
-          </Content>
+          </div>
           <BottomPanel/>
         </GlobalHotkeys>
       </Suspense>

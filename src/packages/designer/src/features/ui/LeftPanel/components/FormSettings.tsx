@@ -1,3 +1,4 @@
+import cx from 'clsx'
 import type {ComponentProps, HTMLAttributes} from 'react'
 import {TooltipPlacementProvider} from '../../../../utils/TooltipPlacementContext'
 import {Rows} from '../../../components/Containers'
@@ -6,6 +7,7 @@ import {useTranslationPart} from '../../../localization/hooks'
 import {ActionList} from './ActionList'
 import {ErrorSettings} from './ErrorSettings'
 import {FormLanguageSettings} from './FormLanguageSettings'
+import styles from './FormSettings.module.css'
 import {FormValidator} from './FormValidator'
 import {ModalSettings} from './ModalSettings'
 import {TooltipSettings} from './TooltipSettings'
@@ -14,20 +16,16 @@ interface BlockProps extends ComponentProps<any> {
   label: string
 }
 
-const blockStyle = {marginBottom: 4}
-
 const Block = ({label, children}: BlockProps) =>
   <div>
-    <h6 style={blockStyle}>{label}</h6>
+    <h6 className={styles.blockTitle}>{label}</h6>
     {children}
   </div>
-
-const rowsStyle = {paddingInline: 4}
 
 const RawFormSettings = (props: HTMLAttributes<HTMLDivElement>) => {
   const t = useTranslationPart('leftPanel.formSettings')
   return <TooltipPlacementProvider value={'autoVerticalStart'}>
-    <Rows style={rowsStyle} gap={10} {...props}>
+    <Rows {...props} className={cx(styles.rows, props.className)}>
       <Block label={t('actions')}>
         <ActionList/>
       </Block>

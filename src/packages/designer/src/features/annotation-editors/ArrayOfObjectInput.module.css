@@ -1,0 +1,32 @@
+.button {
+  margin-top: 10px;
+}
+
+.item {
+  display: flex;
+  margin-inline-start: 4px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.inputRows {
+  overflow-y: auto;
+  max-height: 160px;
+  gap: 0;
+}
+
+.row {
+  display: flex;
+  margin-inline-start: 4px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.cleanDiv {
+  display: flex;
+  justify-content: end;
+}
+
+.crossButton {
+  color: var(--rs-text-primary);
+}

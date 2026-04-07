@@ -1,0 +1,19 @@
+div.checkbox {
+  height: 23px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.checkbox :global(.rs-checkbox-checker) {
+  padding-inline-start: 0;
+  margin-inline-start: -10px;
+}
+
+.row {
+  display: flex;
+}
+
+.row :global(.rs-picker-clean.rs-btn-close) {
+  color: var(--rs-text-secondary);
+}

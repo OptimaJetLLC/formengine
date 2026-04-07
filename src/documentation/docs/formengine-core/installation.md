@@ -41,6 +41,20 @@ npm install @react-form-builder/components-material-ui @emotion/react @emotion/s
 
 ### Step 3: Create Your First Form
 
+:::info
+
+Starting with FormEngine Core 8.0.0, styles for Core components are not injected using the emotion library, but are packaged separately,
+so you should import the styles yourself.
+
+This is especially useful if you are in an environment with a
+strict [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP).
+
+```css
+@import "@react-form-builder/core/assets/styles.css"
+```
+
+:::
+
 Now for the fun part! Create a simple contact form by adding this code to your React component:
 
 ```jsx live

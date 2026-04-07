@@ -1,49 +1,14 @@
-import styled from '@emotion/styled'
 import {useEffect, useRef} from 'react'
 import {Input} from 'rsuite'
 import LabeledProperty from '../components/LabeledProperty'
 import type {AnnotationEditorProps} from './AnnotationEditorProps'
 import {CleanButton} from './CleanButton'
+import styles from './StringInput.module.css'
 
 // The idea here is to have an offscreen element with exactly the same styles
 // which can autoresize natively and stretch target the element via aligning
 // inside the parent container.
 // Sync styles via DOM api can cause lags with a lot of elements on the page.
-const STextareaSizer = styled.div`
-  display: inline-grid;
-  vertical-align: top;
-  align-items: center;
-  position: relative;
-  width: 100%;
-
-  &::after,
-  & > textarea {
-    min-width: 1em !important;
-    width: auto !important;
-    height: 100% !important;
-    grid-area: 2 / 1;
-    resize: none !important;
-    max-height: 6em !important;
-  }
-
-  &::after {
-    content: attr(data-contents) ' ';
-    visibility: hidden;
-    // text behaviour must match with textarea
-    font-size: inherit !important;
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
-  }
-
-  button {
-    position: absolute;
-    top: 4px;
-    inset-inline-end: 14px;
-    color: var(--rs-text-secondary);
-    width: 12px;
-    height: 12px;
-  }
-`
 
 interface ResizableStringInputProps extends AnnotationEditorProps {
   'data-testid'?: string
@@ -60,13 +25,6 @@ export const ResizableStringInput = (props: ResizableStringInputProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const container = containerRef.current
-    if (container) {
-      container.dataset.contents = value
-    }
-  }, [value])
-
-  useEffect(() => {
     const input = inputRef.current
     const container = containerRef.current
     if (input && container) {
@@ -76,11 +34,13 @@ export const ResizableStringInput = (props: ResizableStringInputProps) => {
     }
   }, [])
 
-  return <STextareaSizer ref={containerRef} data-testid={testId}>
-    <Input ref={inputRef} rows={1} name={annotation.key} value={value} onChange={onChange} size="xs" as="textarea"
-           {...props.annotation.editorProps}/>
-    <CleanButton onClick={onClean}/>
-  </STextareaSizer>
+  return (
+    <div ref={containerRef} className={styles.sizer} data-contents={value} data-testid={testId}>
+      <Input ref={inputRef} rows={1} name={annotation.key} value={value} onChange={onChange} size="xs" as="textarea"
+             {...props.annotation.editorProps}/>
+      <CleanButton onClick={onClean}/>
+    </div>
+  )
 }
 
 /**

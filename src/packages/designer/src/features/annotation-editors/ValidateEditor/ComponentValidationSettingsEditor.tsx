@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import type {ValidationRuleSettings} from '@react-form-builder/core'
 import {boolean, namedObserver} from '@react-form-builder/core'
 import {useCallback} from 'react'
@@ -7,6 +6,7 @@ import {PropertyEditorWrapper} from '../../components/PropertyEditorWrapper'
 import type {AnnotationEditorProps} from '../AnnotationEditorProps'
 import {AddRuleButton} from './components/AddRuleButton'
 import {ValidationRuleEditor} from './components/ValidationRuleEditor'
+import styles from './ComponentValidationSettingsEditor.module.css'
 
 interface RuleItemProps {
   rule: ValidationRuleSettings
@@ -46,12 +46,6 @@ const RawRulesList = ({validations, onRemove}: RulesListProps) => {
 
 const RulesList = namedObserver('RulesList', RawRulesList)
 
-const SWrapper = styled.div`
-  label {
-    min-width: max-content;
-  }
-`
-
 const autoValidate = boolean
   .setup({annotationType: 'Module', calculable: false})
   .hinted('Validate automatically by input change')
@@ -80,10 +74,10 @@ const RawComponentValidationSettingsEditor = (props: AnnotationEditorProps) => {
 
   return (
     <Rows>
-      <SWrapper>
+      <div className={styles.wrapper}>
         <PropertyEditorWrapper annotation={autoValidate} context={schema}
                                initContext={initValidationContext}/>
-      </SWrapper>
+      </div>
       <AddRuleButton/>
       <RulesList validations={validations} onRemove={handleRemove}/>
     </Rows>

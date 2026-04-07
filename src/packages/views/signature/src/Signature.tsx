@@ -1,20 +1,24 @@
 import {color, define, event, number, string, useAriaAttributes, useComponentData} from '@react-form-builder/core'
+import cx from 'clsx'
 import {useCallback, useMemo, useRef} from 'react'
 import {Button} from './Button'
 import {alignItems, nonNegNumber, readOnly} from './props'
+import styles from './Signature.module.css'
 import type {SignaturePadHandle} from './SignaturePad'
 import {SignaturePad} from './SignaturePad'
 import type {SignatureProps} from './SignatureProps'
-import {LabeledInput, LabelLeft, Rows} from './styled'
 import {useTouchOnEvent} from './useTouchOnEvent'
 
 const Signature = ({value, style, className, label, clearButtonText, readOnly, ...props}: SignatureProps) => {
   const padRef = useRef<SignaturePadHandle>(null)
   const {id} = useComponentData()
   const aria = useAriaAttributes({labeled: !!label})
-  const buttonStyle = useMemo(() => ({width: props.width, marginTop: 6}),
-    [props.width])
   const onChange = useTouchOnEvent(props, 'onChange')
+
+  const clearButtonStyle = useMemo(() => ({
+    width: props.width,
+    marginTop: 6,
+  }), [props.width])
 
   // SignaturePad does not display the data-testid attribute
   const dataTestId = (props as any)?.['data-testid']
@@ -24,20 +28,31 @@ const Signature = ({value, style, className, label, clearButtonText, readOnly, .
     onChange(undefined)
   }, [onChange])
 
-  return <LabeledInput style={style} className={className} data-testid={dataTestId}>
-    <Rows>
-      {label && <LabelLeft id={aria['aria-labelledby']} htmlFor={id}>{label}</LabelLeft>}
-      <SignaturePad {...props} id={id} readOnly={readOnly} value={value} ref={padRef} ariaAttributes={aria} onChange={onChange}/>
-    </Rows>
-    {!readOnly &&
-      <Button onClick={clear} disabled={!value} style={buttonStyle}>{clearButtonText}</Button>
-    }
-  </LabeledInput>
+  return (
+    <div
+      style={style}
+      className={cx(styles.container, className)}
+      data-testid={dataTestId}
+    >
+      <div className={styles.rows}>
+        {label && (
+          <label id={aria['aria-labelledby']} htmlFor={id} className={styles.label}>
+            {label}
+          </label>
+        )}
+        <SignaturePad {...props} id={id} readOnly={readOnly} value={value} ref={padRef} ariaAttributes={aria} onChange={onChange}/>
+      </div>
+      {!readOnly &&
+        <Button onClick={clear} disabled={!value} style={clearButtonStyle}>
+          {clearButtonText}
+        </Button>
+      }
+    </div>
+  )
 }
 
-export const signature = define(Signature, 'Signature')
+export const signature = define(Signature, 'RsSignature')
   .name('Signature')
-  .type('RsSignature')
   .category('fields')
   .props({
     value: string.valued,

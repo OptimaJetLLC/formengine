@@ -1,7 +1,6 @@
-import {cx} from '@emotion/css'
-import styled from '@emotion/styled'
 import type {ComponentData} from '@react-form-builder/core'
 import {isNull, namedObserver, useComponentData} from '@react-form-builder/core'
+import cx from 'clsx'
 import type {ComponentProps, RefCallback} from 'react'
 import {useCallback} from 'react'
 import {useDrop} from 'react-dnd'
@@ -9,6 +8,7 @@ import type {ConnectDropTarget, DropTargetMonitor} from 'react-dnd/dist/types/ty
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {AcceptDrop, ItemType} from '../../../consts'
 import {DropView, InnerDropView} from './DropView'
+import styles from './DropZone.module.css'
 
 const useDropZone = (isAfter?: boolean, isInner?: boolean, slot?: string, slotCondition?: string): [DropState, ConnectDropTarget] => {
   const store = useBuilderStore()
@@ -62,43 +62,6 @@ const useDropZone = (isAfter?: boolean, isInner?: boolean, slot?: string, slotCo
   return [{isActive, isOver, isDragging, canDrop}, drop]
 }
 
-const SContainer = styled.div`
-  position: absolute;
-  top: -5px;
-  inset-inline-start: 0;
-  height: calc(50% + 5px);
-  width: 100%;
-  z-index: 10;
-  display: flex;
-
-  &.isContainer {
-    height: 36px;
-    z-index: 9;
-  }
-
-  &.isAfter {
-    top: initial;
-    bottom: -5px;
-
-    &.isRoot {
-      position: relative;
-      flex: 1;
-    }
-  }
-
-  .horizontal > * > & {
-    top: 0;
-    inset-inline-start: -5px;
-    height: 100%;
-    width: calc(50% + 5px);
-
-    &.isAfter {
-      inset-inline-start: initial;
-      inset-inline-end: -5px;
-    }
-  }
-`
-
 interface DropZoneProps extends ComponentProps<any> {
   isAfter?: boolean
   isInner?: boolean
@@ -117,13 +80,15 @@ const RawDropZone = ({isAfter, isInner, ...props}: DropZoneProps) => {
   // TODO FE-1065
   const ref = drop as unknown as RefCallback<HTMLDivElement>
 
-  return <>
-    {inner
-      ? <InnerDropView ref={ref} className={className} {...props}/>
-      : <SContainer ref={ref} className={className} data-testid="dropzone"/>
-    }
-    {!inner && <DropView className={className}/>}
-  </>
+  return (
+    <>
+      {inner
+        ? <InnerDropView ref={ref} className={className} {...props}/>
+        : <div ref={ref} className={cx(styles.container, className)} data-testid="dropzone"/>
+      }
+      {!inner && <DropView className={className}/>}
+    </>
+  )
 }
 
 interface DropState {

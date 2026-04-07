@@ -4,6 +4,7 @@ import {Table} from 'rsuite'
 import {nonNegNumber} from './commonProperties'
 import {createComponentStore} from './createComponentStore'
 import {getRsColumnComponentStore} from './getRsColumnComponentStore'
+import {tableComponentsCategory} from './tableComponentsCategory'
 import {rsColumnGroupTypeName} from './typeNames'
 
 const ColumnGroupIcon = () => (
@@ -42,6 +43,7 @@ const initialJson = JSON.stringify(getRsColumnGroupComponentStore())
 
 export const rsColumnGroup = define(RsColumnGroup, rsColumnGroupTypeName)
   .name('Column group')
+  .category(tableComponentsCategory)
   .icon(ColumnGroupIcon)
   .initialJson(initialJson)
   .props({
