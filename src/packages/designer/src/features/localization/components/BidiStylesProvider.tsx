@@ -7,16 +7,16 @@ const styles = {
   [BiDi.RTL]: () => import('../../../../public/css/designer.rtl.css?url'),
 }
 
-const loadRsuiteCss = async (biDi: BiDi) => {
+const loadDesignerBidiCss = async (biDi: BiDi) => {
   const href = (await styles[biDi]()).default
-  await loadResource(`rsuite-${biDi}-css`, href, 'stylesheet')
+  await loadResource(`designer-${biDi}-css`, href, 'stylesheet')
   const previousBidi = biDi === BiDi.LTR ? BiDi.RTL : BiDi.LTR
-  unloadResource(`rsuite-${previousBidi}-css`)
+  unloadResource(`designer-${previousBidi}-css`)
 }
 
 const RawBidiStylesProvider = ({bidi, children}: StylesProviderProps) => {
   useEffect(() => {
-    loadRsuiteCss(bidi).catch(console.error)
+    loadDesignerBidiCss(bidi).catch(console.error)
   }, [bidi])
 
   return children
