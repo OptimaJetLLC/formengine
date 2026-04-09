@@ -4,6 +4,7 @@ import {useEffect} from 'react'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {namedObserver} from '../../utils/namedObserver'
 import type {FormViewerWrapperComponentProps} from '../define/utils/FormViewerWrapperComponentProps'
+import {AsyncQueue} from './AsyncQueue'
 import type {Language} from './language'
 import styles from './ViewerLocalizationProvider.module.css'
 
@@ -22,6 +23,8 @@ const nestViewerWrappers = ([Wrapper, ...more]: ComponentType<FormViewerWrapperC
     : children
 }
 
+const cssLoadersQueue = new AsyncQueue()
+
 const RawViewerLocalizationProvider = (props: ViewerLocalizationProviderProps) => {
   const viewerStore = useStore()
   const language = viewerStore.displayedLanguage
@@ -29,7 +32,7 @@ const RawViewerLocalizationProvider = (props: ViewerLocalizationProviderProps) =
   useEffect(() => {
     const loaders = viewerStore.formViewerPropsStore.view.getCssLoaders(language.bidi)
     loaders.forEach(loader => {
-      loader().catch(e => console.error(e))
+      cssLoadersQueue.add(loader).catch(console.error)
     })
   }, [language, viewerStore.formViewerPropsStore.view])
 
