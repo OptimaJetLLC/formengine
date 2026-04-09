@@ -36,12 +36,14 @@ class LocalizationObservable {
 
   #getLocalizationItems(componentsLocalization: ComponentsLocalization) {
     const localizationItems: Record<string, string> = {}
+    const {engine} = this.localizationStore
 
     Object.entries(componentsLocalization).forEach(([componentKey, allComponentsLocalizationConstants]) => {
       Object.entries(allComponentsLocalizationConstants ?? {}).forEach(([type, componentLocalizationConstants]) => {
         Object.entries(componentLocalizationConstants ?? {}).forEach(([propertyName, localizationConstant]) => {
           if (localizationConstant) {
-            localizationItems[`${componentKey}_${type}_${propertyName}`] = localizationConstant
+            const normalizedId = `${engine.getCompatibleId(componentKey)}_${type}_${engine.getCompatibleId(propertyName)}`
+            localizationItems[normalizedId] = localizationConstant
           }
         })
       })

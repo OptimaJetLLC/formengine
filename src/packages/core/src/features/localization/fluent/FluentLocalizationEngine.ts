@@ -166,7 +166,8 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
     componentStore: ComponentStore,
     type: LocalizationType = 'component'
   ) {
-    const messageIdPrefix = `${componentStore.key}_${type}_`
+    const normalizedKey = this.getCompatibleId(componentStore.key)
+    const messageIdPrefix = `${normalizedKey}_${type}_`
     const data = {} as Record<string, any>
     const requestedFullCode = language.fullCode
     const errors: Array<LocalizationError> = []
@@ -178,7 +179,7 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
         return
       }
 
-      const messageId = `${messageIdPrefix}${value}`
+      const messageId = `${messageIdPrefix}${this.getCompatibleId(value)}`
       const message = this.#getMessageWithFallback(messageId, formBundle, defaultBundle)
 
       if (!message) {
@@ -210,7 +211,8 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
     ruleKey: string
   ) {
     const type = getValidatorPropertyBlockType(ruleKey)
-    const messageId = `${componentStore.key}_${type}_message`
+    const normalizedKey = this.getCompatibleId(componentStore.key)
+    const messageId = `${normalizedKey}_${type}_message`
     const errors: Array<LocalizationError> = []
 
     const {defaultBundle, formBundle} = this.#setupBundles(form, language.fullCode, errors)

@@ -192,6 +192,22 @@ describe(`SimpleField test`, function () {
     expect(await findByTestId(dataTestId)).toHaveValue(localeValue)
   })
 
+  it('Should resolve localized value when component key has spaces (compatible ids)', async () => {
+    const localeValue = randomString('localeValue')
+    const form = createTestForm((input) => {
+      input.key = 'my field'
+      input.props.value = {value: 'defaultValue', computeType: 'localization'}
+    }, (form) => {
+      form.localization ??= {}
+      form.localization[defaultLanguageCode] = {
+        my_field: {component: {value: localeValue}}
+      }
+    })
+
+    const {findByTestId} = render(<SimpleFieldApp formJson={form}/>)
+    expect(await findByTestId(dataTestId)).toHaveValue(localeValue)
+  })
+
   it('Input should have a [NOT LOCALIZED] value', async () => {
     const form = createTestForm((input) => {
       input.props.value = {value: 'defaultValue', computeType: 'localization'}
