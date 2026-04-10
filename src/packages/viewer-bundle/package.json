@@ -53,11 +53,13 @@
     ]
   },
   "files": [
+    "dist/formengine-rsuite.css",
     "dist/index.iife.js",
     "dist/index.umd.js",
-    "dist/formengine-rsuite.css",
-    "dist/rsuite-no-reset.min.css",
     "dist/rsuite-no-reset-rtl.min.css",
+    "dist/rsuite-no-reset.min.css",
+    "dist/viewer-bundle-ltr.css",
+    "dist/viewer-bundle-rtl.css",
     "README.md",
     "LICENSE"
   ],

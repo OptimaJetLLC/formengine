@@ -1,6 +1,4 @@
-import {execSync} from 'node:child_process'
-import {existsSync} from 'node:fs'
-import {readdir, readFile, writeFile} from 'node:fs/promises'
+import {readdir, readFile, unlink, writeFile} from 'node:fs/promises'
 import {dirname, join, resolve} from 'node:path'
 import postcss from 'postcss'
 import excludeDependenciesFromBundle from 'rollup-plugin-exclude-dependencies-from-bundle'
@@ -18,10 +16,6 @@ const __dirname = dirname(__filename)
 
 const sourceMapCommentPattern = /\/\*# sourceMappingURL=.*?\*\/\s*$/gm
 
-const repoRoot = resolve(__dirname, '../..')
-const corePackageDir = join(repoRoot, 'packages', 'core')
-const coreCssPath = join(corePackageDir, 'dist', 'assets', 'styles.css')
-
 const readCss = async (cssPath: string) => {
   const css = await readFile(cssPath, 'utf8')
   return css.replace(sourceMapCommentPattern, '').trimEnd()
@@ -32,26 +26,10 @@ const composeCss = async (outputPath: string, parts: string[]) => {
   const result = await postcss([]).process(composedCss, {
     from: outputPath,
     to: outputPath,
-    map: {inline: false, annotation: true}
+    map: false
   })
 
   await writeFile(outputPath, result.css, 'utf8')
-  if (result.map) {
-    await writeFile(`${outputPath}.map`, result.map.toString(), 'utf8')
-  }
-}
-
-const getCoreCss = async () => {
-  if (!existsSync(coreCssPath)) {
-    execSync('npm run build', {cwd: corePackageDir, stdio: 'inherit'})
-  }
-
-  try {
-    return await readCss(coreCssPath)
-  } catch (error) {
-    const suffix = error instanceof Error && error.message ? ` ${error.message}` : ''
-    throw new Error(`@react-form-builder/core CSS was not generated at ${coreCssPath}.${suffix}`)
-  }
 }
 
 const cssModuleFilePatterns = {
@@ -101,14 +79,14 @@ const composeDesignerDistCssPlugin = (): Plugin => {
       const ltrRsuiteCssPath = join(cssDir, 'rsuite-no-reset.min.css')
       const rtlRsuiteCssPath = join(cssDir, 'rsuite-no-reset-rtl.min.css')
 
-      const coreCss = await getCoreCss()
+      // Read CSS that was already inlined by cross-module-css plugin
       const generatedCss = await readCss(generatedCssPath)
       const commonCss = await readCss(commonCssPath)
       const ltrRsuiteCss = await readCss(ltrRsuiteCssPath)
       const rtlRsuiteCss = await readCss(rtlRsuiteCssPath)
 
-      await composeCss(ltrOutputPath, [coreCss, generatedCss, commonCss, ltrRsuiteCss])
-      await composeCss(rtlOutputPath, [coreCss, generatedCss, commonCss, rtlRsuiteCss])
+      await composeCss(ltrOutputPath, [generatedCss, commonCss, ltrRsuiteCss])
+      await composeCss(rtlOutputPath, [generatedCss, commonCss, rtlRsuiteCss])
 
       // Keep dynamic imports in StylesProvider intact, but replace their generated URL modules
       // with data URLs produced from the final composed CSS outputs.
@@ -116,6 +94,12 @@ const composeDesignerDistCssPlugin = (): Plugin => {
       const rtlComposedCss = await readCss(rtlOutputPath)
       await replaceGeneratedCssUrlModule(outDir, 'ltr', toDataCssUrl(ltrComposedCss))
       await replaceGeneratedCssUrlModule(outDir, 'rtl', toDataCssUrl(rtlComposedCss))
+
+      // Remove the intermediate styles.css file after successful composition
+      await unlink(generatedCssPath)
+
+      await unlink(join(cssDir, 'designer.ltr.css'))
+      await unlink(join(cssDir, 'designer.rtl.css'))
     }
   }
 }

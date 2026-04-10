@@ -36,7 +36,7 @@ function main(): void {
     runCommand('npm install', viewerBundleDir)
     runCommand('npm run build', viewerBundleDir)
 
-    const htmlPath = join(scriptRoot, 'viewer.html')
+    const htmlPath = join(scriptRoot, 'viewer-bundle', 'viewer-bundle.html')
     console.log(`🌐 Opening ${htmlPath}`)
     openHtmlFile(htmlPath)
   } catch (error) {

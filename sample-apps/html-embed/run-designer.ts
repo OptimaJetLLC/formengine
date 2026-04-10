@@ -36,7 +36,7 @@ function main(): void {
     runCommand('npm install', designerBundleDir)
     runCommand('npm run build', designerBundleDir)
 
-    const htmlPath = join(scriptRoot, 'designer.html')
+    const htmlPath = join(scriptRoot, 'designer-bundle', 'designer-bundle.html')
     console.log(`🌐 Opening ${htmlPath}`)
     openHtmlFile(htmlPath)
   } catch (error) {

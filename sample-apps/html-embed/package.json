@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "run-designer": "node ./run-designer.ts",
-    "run-viewer": "node ./run-viewer.ts"
+    "run-viewer": "node ./run-viewer.ts",
+    "run-viewer-premium": "node ./run-viewer-premium.ts"
   }
 }
 

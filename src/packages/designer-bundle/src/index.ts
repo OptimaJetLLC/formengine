@@ -27,6 +27,26 @@ const components = [
   ...rSuiteTableComponents.rSuiteTableComponents,
 ].map(definer => definer.build())
 
+const defaultView = new BuilderView(components)
+  .withViewerWrapper(RsLocalizationWrapper)
+  .withCssLoader(BiDi.LTR, ltrCssLoader)
+  .withCssLoader(BiDi.RTL, rtlCssLoader)
+  .withComponentLibraryDescription(fastQrComponentsDescriptions)
+  .withComponentLibraryDescription(googleMapComponentsDescriptions)
+  .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
+  .withComponentLibraryDescription(signatureComponentsDescriptions)
+  .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
+  .withComponentLibraryDescription(rSuiteComponentsDescriptions)
+
+const noCssView = new BuilderView(components)
+  .withViewerWrapper(RsLocalizationWrapper)
+  .withComponentLibraryDescription(fastQrComponentsDescriptions)
+  .withComponentLibraryDescription(googleMapComponentsDescriptions)
+  .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
+  .withComponentLibraryDescription(signatureComponentsDescriptions)
+  .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
+  .withComponentLibraryDescription(rSuiteComponentsDescriptions)
+
 /**
  * Displays the FormBuilder component on the specified HTML element.
  * @param container the HTML element.
@@ -36,18 +56,7 @@ const components = [
 export function renderFormBuilderTo(container: HTMLElement, props: Partial<FormBuilderProps>) {
   const root = createRoot(container)
 
-  const view =
-    props.view ??
-    new BuilderView(components)
-      .withViewerWrapper(RsLocalizationWrapper)
-      .withCssLoader(BiDi.LTR, ltrCssLoader)
-      .withCssLoader(BiDi.RTL, rtlCssLoader)
-      .withComponentLibraryDescription(fastQrComponentsDescriptions)
-      .withComponentLibraryDescription(googleMapComponentsDescriptions)
-      .withComponentLibraryDescription(richTextEditorComponentsDescriptions)
-      .withComponentLibraryDescription(signatureComponentsDescriptions)
-      .withComponentLibraryDescription(rSuiteTableComponentsDescriptions)
-      .withComponentLibraryDescription(rSuiteComponentsDescriptions)
+  const view = props.view ?? defaultView
 
   const formBuilderProps: FormBuilderProps = {
     ...props,
@@ -81,3 +90,4 @@ export function renderFormBuilder(elementId: string, props: Partial<FormBuilderP
 
 export {rSuiteComponents, richTextComponent, signatureComponent, fastQrComponent, googleMapComponent, rSuiteTableComponents}
 export {ActionDefinition, buildForm, Language} from '@react-form-builder/core'
+export {noCssView, defaultView}

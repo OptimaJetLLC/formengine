@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FormEngine bundle embedding example (RTL)</title>
+  <script src="./viewer-bundle-form.js"></script>
+  <script src="../../../src/packages/viewer-bundle/dist/index.iife.js" async defer></script>
+</head>
+<body style="margin: 20px">
+<div id="viewer"></div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    const {renderFormViewer} = window.FormEngineViewerBundle;
+
+    const props = {
+      language: 'ar-EG',
+      getForm: () => window.viewerBundleForm,
+      actions: {
+        onSubmit: (e) => {
+          // submit the form to the backend
+          alert('Form data: ' + JSON.stringify(e.data))
+        }
+      }
+    }
+
+    window.viewerRoot = renderFormViewer('viewer', props)
+  }
+</script>
+</body>
+</html>

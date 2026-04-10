@@ -34,7 +34,7 @@
     "react-is": "^18.2.0"
   },
   "devDependencies": {
-    "vite-plugin-css-injected-by-js": "^3.5.2"
+    "vite-inline-css-plugin": "^0.0.1"
   },
   "peerDependencies": {
     "@react-form-builder/core": "7.15.0"
@@ -57,11 +57,13 @@
     ]
   },
   "files": [
+    "dist/formengine-rsuite.css",
     "dist/index.iife.js",
     "dist/index.umd.js",
-    "dist/formengine-rsuite.css",
-    "dist/rsuite-no-reset.min.css",
     "dist/rsuite-no-reset-rtl.min.css",
+    "dist/rsuite-no-reset.min.css",
+    "dist/viewer-bundle-premium-ltr.css",
+    "dist/viewer-bundle-premium-rtl.css",
     "README.md"
   ]
 }

@@ -20,6 +20,11 @@ const models = [
   ...rSuiteTableComponents.tableModels,
 ]
 
+const defaultView = createView(models)
+  .withViewerWrapper(RsLocalizationWrapper)
+  .withCssLoader(BiDi.LTR, ltrCssLoader)
+  .withCssLoader(BiDi.RTL, rtlCssLoader)
+
 /**
  * Displays the FormViewer component on the specified HTML element.
  * @param container the HTML element.
@@ -29,13 +34,9 @@ const models = [
 export function renderFormViewerTo(container: HTMLElement, props: Partial<FormViewerProps>) {
   const root = createRoot(container)
 
-  const view =
-    props.view ??
-    createView(models).withViewerWrapper(RsLocalizationWrapper).withCssLoader(BiDi.LTR, ltrCssLoader).withCssLoader(BiDi.RTL, rtlCssLoader)
-
   const formViewerProps: FormViewerProps = {
     ...props,
-    view,
+    view: props.view ?? defaultView,
   }
 
   root.render(createElement(FormViewer, formViewerProps, null))
