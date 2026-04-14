@@ -1,7 +1,7 @@
 import type {IFormData} from '@react-form-builder/core'
 import {CalculableResult, getEditableFormData, namedObserver, useStore} from '@react-form-builder/core'
 import {action} from 'mobx'
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
+import {useCallback, useMemo, useRef, useState} from 'react'
 import {Button, ButtonGroup} from 'rsuite'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import type {CalculableCodeEditorProps} from '../calculation/CalculableCodeEditor'
@@ -20,19 +20,21 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
   const locEngine = builderStore.viewer.form.localization.engine
   const localizationStringId = locEngine.getCompatibleId(`${editableProperty.componentKey}_${editableProperty.annotation.key}`)
   const testingEditor = useRef<TestingEditorRef>({})
+  const [language, setLanguage] = useState(builderStore.localizationLanguage)
   const {formData} = useStore()
   const initialData = useMemo(() => {
     return getEditableFormData(formData)
   }, [formData])
-
-  const [language, setLanguage] = useState(builderStore.localizationLanguage)
   const initialValue = useMemo(() => {
     return editableProperty.getComputeCode('localization', {langCode: language.fullCode})
   }, [editableProperty, language])
   const [value, setValue] = useState(initialValue)
-  useEffect(() => {
+  const [prevInitialValue, setPrevInitialValue] = useState(initialValue)
+
+  if (initialValue !== prevInitialValue) {
+    setPrevInitialValue(initialValue)
     setValue(initialValue)
-  }, [initialValue, language, editableProperty])
+  }
 
   const handleSave = useCallback(() => {
     const result = testingEditor.current.test?.()

@@ -37,8 +37,7 @@ const RsViewerCell = (props: CellProps<Record<string, unknown>>) => {
 }
 
 const RsCell = (props: CellProps<Record<string, unknown>>) => {
-  const Component = useBuilderComponent(RsBuilderCell, RsViewerCell)
-  return <Component {...props}/>
+  return useBuilderComponent(RsBuilderCell, RsViewerCell, props)
 }
 
 export const rsCell = define(RsCell, rsCellTypeName)

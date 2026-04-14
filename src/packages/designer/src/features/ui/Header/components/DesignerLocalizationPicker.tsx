@@ -1,5 +1,4 @@
 import type {Language} from '@react-form-builder/core'
-import {useStore} from '@react-form-builder/core'
 import type {ComponentProps} from 'react'
 import {useCallback} from 'react'
 import {useBuilderStore} from '../../../../utils/BuilderStoreContext'
@@ -10,13 +9,10 @@ type DesignerLocalizationPickerProps = Omit<ComponentProps<typeof LocalizationPi
 
 const RawDesignerLocalizationPicker = (props: DesignerLocalizationPickerProps) => {
   const builderStore = useBuilderStore()
-  const viewerStore = useStore()
 
   const handleSelect = useCallback((language: Language) => {
-    viewerStore.selectedLanguage = language
-    builderStore.localizationLanguage = language
-    builderStore.props.onViewerLanguageChange?.(language)
-  }, [builderStore, viewerStore])
+    builderStore.applyDesignerLanguageSelection(language)
+  }, [builderStore])
 
   return <LocalizationPicker {...props} data-testid={'designer-form-language'} value={builderStore.localizationLanguage.fullCode}
                              onSelect={handleSelect}/>

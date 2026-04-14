@@ -30,9 +30,11 @@ const RawFormLanguageSettings = () => {
 
   const onChange = useCallback((value: string) => {
     const found = languages.find(l => l.fullCode === value)
+    // eslint-disable-next-line react-hooks/immutability
     if (found) viewerStore.form.defaultLanguage = found
   }, [languages, viewerStore.form])
 
+  // eslint-disable-next-line react-hooks/immutability
   const onClean = useCallback(() => viewerStore.form.defaultLanguage = builderStore.defaultLanguage,
     [viewerStore, builderStore])
 

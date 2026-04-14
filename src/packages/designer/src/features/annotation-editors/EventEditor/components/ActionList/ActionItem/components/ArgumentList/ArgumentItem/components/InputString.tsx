@@ -6,12 +6,14 @@ import type {InputProps} from '../InputProps'
 
 const RawInputString = ({name}: InputProps) => {
   const data = useActionData()
-  const value = data.args?.[name]?.toString() ?? ''
+  const arg = data.args?.[name]
+  const value = !arg || typeof arg === 'object' ? '' : String(arg)
 
   const handleChange = useCallback((value: string) => {
     const next = Object.assign({}, data.args)
     next[name] = value
-    return (data.args = next as any)
+    // eslint-disable-next-line react-hooks/immutability
+    data.args = next as any
   }, [data, name])
 
   return (

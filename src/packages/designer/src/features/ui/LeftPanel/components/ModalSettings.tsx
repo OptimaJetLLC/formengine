@@ -24,6 +24,7 @@ const RawModalSettings = () => {
   const form = builderStore.viewer.form
 
   const onChange = useCallback((value?: string) => {
+    // eslint-disable-next-line react-hooks/immutability
     form.modalType = value
   }, [form])
 

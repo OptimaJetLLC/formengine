@@ -17,7 +17,9 @@ const hasComputeCode = () => false
 const RawTooltipSettings = () => {
   const builderStore = useBuilderStore()
 
+  // eslint-disable-next-line react-hooks/immutability
   const onChange = useCallback((value: string) => builderStore.viewer.form.tooltipType = value, [builderStore])
+  // eslint-disable-next-line react-hooks/immutability
   const onClean = useCallback(() => builderStore.viewer.form.tooltipType = undefined, [builderStore])
 
   const annotationEditorProps: AnnotationEditorProps = {

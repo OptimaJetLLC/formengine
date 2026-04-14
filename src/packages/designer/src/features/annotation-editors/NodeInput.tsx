@@ -49,6 +49,7 @@ const RawUseDropzoneInput = (props: AnnotationEditorProps) => {
 
   const onChange = useCallback((_: any, checked: boolean) => {
     const newEditorType = checked ? 'node' : 'string'
+    // eslint-disable-next-line react-hooks/immutability
     componentStore.props[annotation.key] = {editorType: newEditorType}
 
     if (!checked && componentStore.children) {

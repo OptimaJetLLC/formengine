@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useCallback} from 'react'
 import {Message, useToaster} from 'rsuite'
 import type {TypeAttributes} from 'rsuite/esm/internals/types'
 import type {PlacementType} from 'rsuite/esm/toaster/ToastContainer'
@@ -26,21 +26,17 @@ interface ToastSettings {
 }
 
 /**
- * Creates the function for changing {@link ToastSettings} settings.
- * @returns the function for setting the {@link ToastSettings} settings.
+ * Returns a stable function that shows a toast for the given {@link ToastSettings}.
+ * @returns the function that displays the toast
  */
 export const useShowMessage = () => {
-  const [settings, setSettings] = useState<ToastSettings>()
   const toaster = useToaster()
 
-  useEffect(() => {
-    if (!settings) return
+  return useCallback((settings: ToastSettings) => {
     const placement = settings.placement || 'bottomEnd'
     const type = settings.type || 'info'
     toaster.push(<Message type={type} title={settings.title}>{settings.message}</Message>, {
       placement: placement
     })
-    setSettings(undefined)
-  }, [settings, toaster])
-  return setSettings
+  }, [toaster])
 }

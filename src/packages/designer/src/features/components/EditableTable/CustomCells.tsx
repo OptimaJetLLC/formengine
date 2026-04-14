@@ -10,6 +10,10 @@ import styles from './CustomCells.module.css'
 
 const {Cell} = Table
 
+const setRowDataField = (rowData: RowDataType, dataKey: string | number, value: unknown) => {
+  rowData[dataKey] = value
+}
+
 const SCell = (props: InnerCellProps<RowDataType, string | number>) => (
   <Cell<RowDataType, string | number> {...props} className={cx(styles.cell, props.className)}/>
 )
@@ -30,7 +34,7 @@ export const InputCell = ({rowData, dataKey, rowIndex, onChange, type, ...props}
   const Input = type === 'number' ? InputNumber : RsInput
 
   const handleChange = useCallback((newValue: any) => {
-    rowData[dataKey] = newValue
+    setRowDataField(rowData, dataKey, newValue)
     onChange?.(newValue, dataKey, rowIndex)
   }, [dataKey, onChange, rowData, rowIndex])
 
@@ -55,7 +59,7 @@ export const CheckCell = ({rowData, dataKey, rowIndex, onChange, ...props}: Inpu
   const checked = rowData[dataKey] ?? false
 
   const handleChange = useCallback((_: any, checked: boolean) => {
-    rowData[dataKey] = checked
+    setRowDataField(rowData, dataKey, checked)
     onChange?.(checked, dataKey, rowIndex)
   }, [dataKey, onChange, rowData, rowIndex])
 
@@ -81,7 +85,7 @@ export const SelectCell = ({rowData, dataKey, rowIndex, options, onChange, ...pr
   const value = rowData[dataKey] ?? ''
 
   const handleChange = useCallback((value: any) => {
-    rowData[dataKey] = value
+    setRowDataField(rowData, dataKey, value)
     onChange?.(value, dataKey, rowIndex)
   }, [dataKey, onChange, rowData, rowIndex])
 

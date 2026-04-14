@@ -21,8 +21,7 @@ const RsBuilderColumn = (props: ColumnProps<any>) => {
 }
 
 const RsColumn = (props: ColumnProps<any>) => {
-  const Component = useBuilderComponent(RsBuilderColumn, Column)
-  return <Component {...props}/>
+  return useBuilderComponent(RsBuilderColumn, Column, props)
 }
 
 const rowSpanBeginContextLine = `/**

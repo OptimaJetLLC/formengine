@@ -1,7 +1,7 @@
 import {isNull, useComponentData} from '@react-form-builder/core'
 import type {MapCameraChangedEvent, MapMouseEvent} from '@vis.gl/react-google-maps'
 import {Map} from '@vis.gl/react-google-maps'
-import {useCallback, useEffect, useMemo, useState} from 'react'
+import {useCallback, useMemo, useState} from 'react'
 import type {Address} from './Address'
 import {CustomMapControl} from './CustomMapControl'
 import type {GoogleMapProps} from './GoogleMapProps'
@@ -68,6 +68,11 @@ export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region
   const [infoWindowShown, setInfoWindowShown] = useState(false)
   const [center, setCenter] = useState({lat: initialLatitude, lng: initialLongitude})
   const [zoom, setZoom] = useState(initialZoom)
+  const [initialSnapshot, setInitialSnapshot] = useState({
+    lat: initialLatitude,
+    lng: initialLongitude,
+    zoom: initialZoom,
+  })
 
   const {field} = useComponentData()
 
@@ -76,10 +81,15 @@ export const GoogleMapRenderer = (props: Omit<GoogleMapProps, 'apiKey' | 'region
     field?.setValue?.(value)
   }, [field])
 
-  useEffect(() => {
+  if (
+    initialSnapshot.lat !== initialLatitude
+    || initialSnapshot.lng !== initialLongitude
+    || initialSnapshot.zoom !== initialZoom
+  ) {
+    setInitialSnapshot({lat: initialLatitude, lng: initialLongitude, zoom: initialZoom})
     setCenter({lat: initialLatitude, lng: initialLongitude})
     setZoom(initialZoom)
-  }, [initialLatitude, initialLongitude, initialZoom])
+  }
 
   const handleMarkerClick = useCallback((id: string | null, marker?: google.maps.marker.AdvancedMarkerElement) => {
     if (marker) {

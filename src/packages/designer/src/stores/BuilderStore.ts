@@ -572,7 +572,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    */
   changeBuilderMode(value: BuilderMode) {
     this.builderMode = value
-    this.currentEditable = undefined
+    this.closeCurrentEditable()
   }
 
   /**
@@ -594,8 +594,7 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
    */
   parseForm(text: string) {
     this.viewer.applyStringForm(text)
-
-    this.currentEditable = undefined
+    this.closeCurrentEditable()
   }
 
   /**
@@ -1130,6 +1129,23 @@ export class BuilderStore implements IFormBuilder, IComponentMetadataProvider {
     if (CustomEditor) {
       return namedObserver(CustomEditor.displayName ?? editorType, CustomEditor)
     }
+  }
+
+  /**
+   * Closes the bottom panel editor.
+   */
+  closeCurrentEditable() {
+    this.currentEditable = undefined
+  }
+
+  /**
+   * Sets the designer localization preview language and viewer selection.
+   * @param language the selected language.
+   */
+  applyDesignerLanguageSelection(language: Language) {
+    this.viewer.selectedLanguage = language
+    this.localizationLanguage = language
+    this.props.onViewerLanguageChange?.(language)
   }
 
   /**

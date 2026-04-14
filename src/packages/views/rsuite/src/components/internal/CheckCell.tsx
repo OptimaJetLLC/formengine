@@ -16,6 +16,7 @@ import {SCell} from './SCell'
  */
 export const CheckCell = ({rowData, dataKey, rowIndex, onChange, ...props}: InputCellProps) => {
   const handleChange = useCallback((_: unknown, checked: boolean) => {
+    // eslint-disable-next-line react-hooks/immutability
     rowData[dataKey] = checked
     onChange?.(checked, dataKey, rowIndex)
   }, [dataKey, onChange, rowData, rowIndex])

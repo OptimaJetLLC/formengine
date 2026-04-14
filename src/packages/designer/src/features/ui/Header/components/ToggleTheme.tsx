@@ -29,6 +29,7 @@ const RawToggleTheme = ({className, ...props}: ToggleThemeProps) => {
     icon,
     color: isDark ? 'var(--rs-yellow-300)' : 'white',
     size: 1.4,
+    // eslint-disable-next-line react-hooks/immutability
     onClick: () => store.theme = isDark ? 'light' : 'dark',
     className: cx(styles.iconButton, store.theme, className)
   }), [className, icon, isDark, store])

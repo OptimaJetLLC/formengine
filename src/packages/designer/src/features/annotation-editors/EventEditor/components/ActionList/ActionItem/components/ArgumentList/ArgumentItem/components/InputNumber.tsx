@@ -15,6 +15,7 @@ const RawInputNumber = ({name}: InputProps) => {
     if (typeof value === 'string' || typeof value === 'number') {
       newArgs[name] = Number(value)
     }
+    // eslint-disable-next-line react-hooks/immutability
     data.args = newArgs
   }, [data, name])
 

@@ -128,7 +128,8 @@ const RawCodeButton = (props: CodeButtonProps) => {
   }, [buttonType, getLabel])
 
   const handleClick = useCallback(() => {
-    return store.currentEditable = new EditableProperty(disableCompute, setComputeCode,
+    // eslint-disable-next-line react-hooks/immutability
+    store.currentEditable = new EditableProperty(disableCompute, setComputeCode,
       getComputeCode, getComputeType, hasComputeCode, annotation, componentData.key)
   }, [annotation, componentData.key, disableCompute, getComputeCode, getComputeType, hasComputeCode, setComputeCode, store])
 

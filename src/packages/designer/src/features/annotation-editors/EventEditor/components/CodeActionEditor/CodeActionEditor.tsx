@@ -93,12 +93,9 @@ export const CodeActionEditor = ({codeAction, onSave}: CodeActionEditorProps) =>
     ...codeAction,
     actionParameters: paramsToParameterListItems(codeAction.params)
   }), [codeAction])
-
   const [formState, setFormState] = useState<FormModel>(initialFormModel)
   const [initialBody, setInitialBody] = useState(codeAction.body)
-
   const formRef = useRef<FormInstance>(null)
-
   const functionHeader = useMemo(() => makeFunctionHeader(formState.actionParameters), [formState.actionParameters])
 
   useEffect(() => {
@@ -120,7 +117,7 @@ export const CodeActionEditor = ({codeAction, onSave}: CodeActionEditorProps) =>
   }, [])
 
   const close = useCallback(() => {
-    builderStore.currentEditable = undefined
+    builderStore.closeCurrentEditable()
   }, [builderStore])
 
   const save = useCallback((source: string) => {

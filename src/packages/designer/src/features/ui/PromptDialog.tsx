@@ -17,6 +17,7 @@ const RawPromptDialog = () => {
   const cancelLabel = modalState.cancelText || t('cancel')
   const inputValid = !!Object.values(modalState.value ?? {})[0]?.trim() && !modalState.errors
 
+  // eslint-disable-next-line react-hooks/immutability
   const hide = useCallback(() => modalState.opened = false, [modalState])
 
   const handleClose = useCallback(() => {
@@ -35,6 +36,7 @@ const RawPromptDialog = () => {
   }, [hide, modalState])
 
   const handleChange = useCallback((value: Record<string, any>) => {
+    // eslint-disable-next-line react-hooks/immutability
     modalState.value = value
     modalState.validate?.(value)?.then(result => {
       modalState.errors = result

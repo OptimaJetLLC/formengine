@@ -5,7 +5,7 @@ import {CalculableResult, forwardRef, isUndefined, namedObserver} from '@react-f
 import cx from 'clsx'
 import type {editor} from 'monaco-editor'
 import type {RefObject} from 'react'
-import {useCallback, useEffect, useState} from 'react'
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import {Button, Checkbox, Message} from 'rsuite'
 import type {CheckboxProps, ValueType} from 'rsuite/esm/Checkbox/Checkbox'
 import type {TypeAttributes} from 'rsuite/esm/internals/types'
@@ -121,35 +121,41 @@ const RawTestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerPr
   const t = useTranslationPart('testingEditor')
   const builderStore = useBuilderStore()
   const [result, setResult] = useState<CalculableResult>()
+  const lastRunRef = useRef<{ data: string, fn: TestingFunction } | null>(null)
+  const columnsClassName = cx(styles.columnsStyle, compact ? styles.compact : undefined)
 
   const test = useCallback(() => {
-    const calculated = calculate(data ?? '{}', testingFunction)
+    const dataKey = data ?? '{}'
+    const calculated = calculate(dataKey, testingFunction)
     setResult(calculated)
+    lastRunRef.current = {data: dataKey, fn: testingFunction}
     return calculated
   }, [data, testingFunction])
 
-  useEffect(() => {
-    if (ref && typeof ref === 'object') {
-      ((ref as RefObject<TestingEditorRef>).current ?? {}).test = test
-    }
-
-    if (builderStore.testingAutorun) {
-      test()
-      return
-    }
-    setResult(undefined)
-  }, [test, builderStore.testingAutorun, ref])
+  const displayResult = useMemo(() => {
+    if (builderStore.testingAutorun) return result
+    const last = lastRunRef.current
+    const dataKey = data ?? '{}'
+    if (last && last.data === dataKey && last.fn === testingFunction) return result
+    return undefined
+  }, [builderStore.testingAutorun, result, data, testingFunction])
 
   const handleAutorunChecked: CheckboxProps['onChange'] = useCallback((_: ValueType | undefined, checked: boolean) => {
-    return builderStore.testingAutorun = checked
+    if (!checked) {
+      lastRunRef.current = null
+      setResult(undefined)
+    }
+    // eslint-disable-next-line react-hooks/immutability
+    builderStore.testingAutorun = checked
   }, [builderStore])
 
-  const handleCloseResult = useCallback(() => setResult(undefined), [])
-
-  const columnsClassName = cx(styles.columnsStyle, compact ? styles.compact : undefined)
+  const handleCloseResult = useCallback(() => {
+    lastRunRef.current = null
+    setResult(undefined)
+  }, [])
 
   const buttons = <Columns className={columnsClassName}>
-    {compact && result && <TestingResult compact result={result} onClose={handleCloseResult}/>}
+    {compact && displayResult && <TestingResult compact result={displayResult} onClose={handleCloseResult}/>}
     <Button onClick={test} size={'sm'} appearance={'ghost'} className={styles.buttons}>
       <FaIcon icon={faPlay as unknown as IconDefinition}/> {t('run')}
     </Button>
@@ -162,11 +168,21 @@ const RawTestRunner = forwardRef(({data, testingFunction, compact}: TestRunnerPr
     </Checkbox>
   </Columns>
 
+  useEffect(() => {
+    if (ref && typeof ref === 'object') {
+      ((ref as RefObject<TestingEditorRef>).current ?? {}).test = test
+    }
+
+    if (builderStore.testingAutorun) {
+      test()
+    }
+  }, [test, builderStore.testingAutorun, ref])
+
   return compact
     ? buttons
     : (
       <Rows className={styles.borderedRows}>
-        {result && <TestingResult result={result} onClose={handleCloseResult}/>}
+        {displayResult && <TestingResult result={displayResult} onClose={handleCloseResult}/>}
         {buttons}
       </Rows>
     )

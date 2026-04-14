@@ -30,7 +30,7 @@ export const FunctionEditorInput = (props: AnnotationEditorProps) => {
   const endContextLine = annotation.editorProps?.endContextLine ?? '}'
 
   const onClose = useCallback(() => {
-    builderStore.currentEditable = undefined
+    builderStore.closeCurrentEditable()
   }, [builderStore])
 
   const getFunctionSource = useCallback((source: string) => {

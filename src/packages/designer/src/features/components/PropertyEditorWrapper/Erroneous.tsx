@@ -1,12 +1,11 @@
 import type {ErrorWrapperProps, WrapperProps} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
-import {useCallback, useEffect, useMemo, useState} from 'react'
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import type {AnnotationEditorProps} from '../../annotation-editors/AnnotationEditorProps'
 import {annotationResolver} from '../../validation/utils/annotationResolver'
-import {useDataValidator} from './useDataValidator'
-
 import styles from './Erroneous.module.css'
+import {useDataValidator} from './useDataValidator'
 
 const PropertyErrorMessage = ({children, error}: ErrorWrapperProps) => (
   <div className={styles.root}>
@@ -34,35 +33,36 @@ const RawErroneous = (props: ErroneousProps) => {
   const {annotation, value, children} = props
   const builderStore = useBuilderStore()
   const [error, setError] = useState<string>()
-  const [mounted, setMounted] = useState(true)
+  const mountedRef = useRef(true)
   const dataValidatorArgs = useMemo(() => ({annotation, store: builderStore.viewer}),
     [annotation, builderStore.viewer])
+
+  const setErrorIfMounted = useCallback((message: string | undefined) => {
+    if (mountedRef.current) {
+      setError(message)
+    }
+  }, [])
 
   const schema = useDataValidator(
     builderStore.viewer,
     annotationResolver,
     dataValidatorArgs,
-    setError)
-
-  const updateErrorMessage = useCallback(async (value: any, propsError: string | undefined) => {
-    if (!mounted) return
-    if (propsError) return setError(propsError)
-    setError(undefined)
-    const validationResult = await schema.validate(value)
-    if (validationResult && mounted) setError(validationResult)
-  }, [mounted, schema])
+    setErrorIfMounted)
 
   useEffect(() => {
-    setMounted(true)
-    return () => setMounted(false)
+    mountedRef.current = true
+    return () => {
+      mountedRef.current = false
+    }
   }, [])
 
   useEffect(() => {
-    updateErrorMessage(value, props.error).catch(console.error)
-  }, [value, props.error, updateErrorMessage])
+    if (props.error) return
+    schema.validate(value).catch(console.error)
+  }, [value, props.error, schema])
 
   return (
-    <PropertyErrorMessage error={error}>
+    <PropertyErrorMessage error={props.error ?? error}>
       {children}
     </PropertyErrorMessage>
   )

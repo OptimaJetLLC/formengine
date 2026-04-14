@@ -37,6 +37,7 @@ export const CustomizableTab = ({eventKey, customizableKey, title, icon, props}:
   const NavItem = useMemo(() => customizable(customizableKey, SNavItem), [customizableKey])
 
   return (
+    // eslint-disable-next-line react-hooks/static-components
     <NavItem
       eventKey={eventKey}
       role="tab"

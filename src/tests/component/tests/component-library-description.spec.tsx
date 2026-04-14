@@ -97,14 +97,16 @@ describe('Component library description test', () => {
     expect(prop1Wrapper.querySelector('label')).toHaveTextContent('P1')
     expect(prop2Wrapper.querySelector('label')).toHaveTextContent('My prop2 EN')
 
-    await asyncAct(async () => await switchLanguage('de-DE', container))
+    await switchLanguage('de-DE', container)
+    await waitFor(() => {
+      expect(prop1Wrapper.querySelector('label')).toHaveTextContent('My prop1 DE')
+      expect(prop2Wrapper.querySelector('label')).toHaveTextContent('My prop2 DE')
+    })
 
-    expect(prop1Wrapper.querySelector('label')).toHaveTextContent('My prop1 DE')
-    expect(prop2Wrapper.querySelector('label')).toHaveTextContent('My prop2 DE')
-
-    await asyncAct(async () => await switchLanguage('en-US', container))
-
-    expect(prop1Wrapper.querySelector('label')).toHaveTextContent('P1')
-    expect(prop2Wrapper.querySelector('label')).toHaveTextContent('My prop2 EN')
+    await switchLanguage('en-US', container)
+    await waitFor(() => {
+      expect(prop1Wrapper.querySelector('label')).toHaveTextContent('P1')
+      expect(prop2Wrapper.querySelector('label')).toHaveTextContent('My prop2 EN')
+    })
   })
 })

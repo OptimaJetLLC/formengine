@@ -13,7 +13,7 @@ const RawCustomValidationCodeEditor = (props: CustomValidationCode) => {
   const beginContextLine = props.functionSignature
   const endContextLine = '}'
 
-  const handleClose = useCallback(() => builderStore.currentEditable = undefined, [builderStore])
+  const handleClose = useCallback(() => builderStore.closeCurrentEditable(), [builderStore])
   const handleCompile = useCallback((value: string) => {
     const source = `${beginContextLine}\n${value}\n${endContextLine}`
     try {

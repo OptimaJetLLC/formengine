@@ -1,6 +1,6 @@
 import {namedObserver} from '@react-form-builder/core'
 import type {ForwardedRef, ReactNode} from 'react'
-import {useEffect, useImperativeHandle, useState} from 'react'
+import {useImperativeHandle, useState} from 'react'
 import {FormBuilderImpl} from '../../stores/FormBuilderImpl'
 import {useBuilderStore} from '../../utils/BuilderStoreContext'
 import {FormBuilderProvider} from '../../utils/FormBuilderContext'
@@ -23,16 +23,15 @@ interface FormBuilderContextProviderProps {
 const RawFormBuilderContextProvider = ({children, builderRef}: FormBuilderContextProviderProps) => {
   const builderStore = useBuilderStore()
   const [formBuilder, setFormBuilder] = useState(() => new FormBuilderImpl(builderStore))
-  const [builderMode, setBuilderMode] = useState(formBuilder.builderMode)
+  const [builderMode, setBuilderMode] = useState(() => formBuilder.builderMode)
+  const storeMode = formBuilder.builderMode
 
   useImperativeHandle(builderRef, () => formBuilder, [formBuilder])
 
-  useEffect(() => {
-    if (builderMode !== formBuilder.builderMode) {
-      setFormBuilder(new FormBuilderImpl(builderStore))
-      setBuilderMode(formBuilder.builderMode)
-    }
-  }, [formBuilder.builderMode, builderMode, builderStore])
+  if (storeMode !== builderMode) {
+    setBuilderMode(storeMode)
+    setFormBuilder(new FormBuilderImpl(builderStore))
+  }
 
   return <FormBuilderProvider value={formBuilder}>{children}</FormBuilderProvider>
 }

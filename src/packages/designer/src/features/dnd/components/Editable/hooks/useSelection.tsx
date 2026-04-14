@@ -1,7 +1,7 @@
 import {useComponentData} from '@react-form-builder/core'
 import cx from 'clsx'
 import type {MouseEvent} from 'react'
-import {useCallback, useEffect, useMemo, useState} from 'react'
+import {useCallback, useMemo, useState} from 'react'
 import {useDragLayer} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {stopEvent} from '../../../../../utils/stopEvent'
@@ -51,9 +51,13 @@ type ClassName = string
 export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] => {
   const store = useBuilderStore()
   const data = useComponentData()
-  const {isDragging} = useDragLayer(monitor => ({isDragging: monitor.isDragging()}))
-  const [hovered, setHovered] = useState(false)
+
+  const {isDragging} = useDragLayer(monitor => ({
+    isDragging: monitor.isDragging()
+  }))
+
   const selected = store.selected.has(data)
+  const [hovered, setHovered] = useState(false)
 
   const onClick = useCallback((event: MouseEvent) => {
     stopEvent(event)
@@ -69,16 +73,16 @@ export const useSelection = (): [SelectionState, SelectionHandlers, ClassName] =
     setHovered(false)
   }, [])
 
-  useEffect(() => {
-    if (!isDragging) {
-      setHovered(false)
-    }
-  }, [isDragging])
+  const finalHovered = hovered && !isDragging
 
-  const className = useMemo(() => (cx({
-    hovered: hovered && !selected && !isDragging,
+  const className = useMemo(() => cx({
+    hovered: finalHovered && !selected,
     selected: selected && !isDragging,
-  })), [hovered, selected, isDragging])
+  }), [finalHovered, selected, isDragging])
 
-  return [{hovered, selected}, {onClick, onMouseOver, onMouseOut}, className]
+  return [
+    {hovered: finalHovered, selected},
+    {onClick, onMouseOver, onMouseOut},
+    className,
+  ]
 }

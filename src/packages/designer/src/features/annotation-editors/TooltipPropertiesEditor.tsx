@@ -27,6 +27,7 @@ const RawTooltipPropertiesEditor = () => {
 
   const handleToggle = useCallback((_: unknown, checked: boolean) => {
     if (selectedComponentStore) {
+      // eslint-disable-next-line react-hooks/immutability
       selectedComponentStore.tooltipProps = checked ? {} : undefined
     }
   }, [selectedComponentStore])

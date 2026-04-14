@@ -12,10 +12,12 @@ export const DataKeyInput = (props: AnnotationEditorProps) => {
   const value = componentData.store.dataKey
 
   const onChange = useCallback((value: string) => {
+    // eslint-disable-next-line react-hooks/immutability
     componentData.store.dataKey = value
   }, [componentData])
 
   const onClean = useCallback(() => {
+    // eslint-disable-next-line react-hooks/immutability
     componentData.store.dataKey = undefined
   }, [componentData])
 

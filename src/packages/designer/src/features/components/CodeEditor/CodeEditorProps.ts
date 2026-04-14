@@ -43,7 +43,8 @@ export interface UnconstrainedCodeEditorProps {
   /**
    * The theme for the monaco.
    */
-  theme?: Theme | string;
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+  theme?: Theme | string
   /**
    * Callback function called when the Monaco editor is mounted.
    */

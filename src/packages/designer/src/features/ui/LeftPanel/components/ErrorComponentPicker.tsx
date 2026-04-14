@@ -14,7 +14,9 @@ const RawErrorComponentPicker = () => {
   const viewerStore = useStore()
   const builderStore = useBuilderStore()
 
+  // eslint-disable-next-line react-hooks/immutability
   const onChange = useCallback((value?: string) => viewerStore.form.errorType = value, [viewerStore])
+  // eslint-disable-next-line react-hooks/immutability
   const onClean = useCallback(() => viewerStore.form.errorType = undefined, [viewerStore])
 
   const values = useMemo(() => {

@@ -78,6 +78,7 @@ export const EmbeddedForm = (props: EmbeddedFormProps) => {
   return (
     <EmbeddedFormProvider value={embeddedFormProviderValue}>
       <StoreProvider value={viewerStore}>
+        {/* eslint-disable-next-line react-hooks/static-components */}
         <EmbeddedFormViewer {...embeddedFormViewerProps}/>
       </StoreProvider>
     </EmbeddedFormProvider>

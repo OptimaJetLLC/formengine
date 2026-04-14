@@ -17,7 +17,8 @@ const RawComponentsModal = () => {
   const t = useTranslationPart('componentsModal')
 
   const closeModal = useCallback(() => {
-    return componentsModalState.opened = false
+    // eslint-disable-next-line react-hooks/immutability
+    componentsModalState.opened = false
   }, [componentsModalState])
 
   const onAdd = useCallback((source: ComponentData) => {

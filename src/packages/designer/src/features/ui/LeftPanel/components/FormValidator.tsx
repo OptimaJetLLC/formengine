@@ -13,6 +13,7 @@ const RawFormValidator = () => {
   const form = builderStore.viewer.form
   const handleEdit = useCallback(() => builderStore.editFormValidator(), [builderStore])
   const t = useTranslationPart('annotation.code')
+  // eslint-disable-next-line react-hooks/immutability
   const remove = useCallback(() => form.formValidator = undefined, [form])
 
   return (

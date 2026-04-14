@@ -25,14 +25,16 @@ const externalErrors = {
   }
 }
 
+const initialErrors = {
+  firstName: 'error'
+}
+
 const renderFormWithErrorsProp = async () => {
   const getForm = (name = 'testForm') => JSON.stringify(forms[name])
   const viewerRef: FormViewerProps['viewerRef'] = {current: null}
 
   const App = () => {
-    const [errors, setErrors] = useState<FormViewerProps['errors']>({
-      firstName: 'error'
-    })
+    const [errors, setErrors] = useState<FormViewerProps['errors']>(initialErrors)
     const externalValidate = () => setErrors(externalErrors)
     return <>
       <FormViewer view={view} getForm={getForm} viewerRef={viewerRef} formName={'testForm'}
@@ -67,7 +69,7 @@ const errorComponent = define(ErrorComponent, 'ErrorComponent').category('test')
 describe('Form errors prop', () => {
   it('should set errors after form load', async () => {
     const {formData} = await renderFormWithErrorsProp()
-    expect(formData.errors).toStrictEqual({firstName: 'error'})
+    expect(formData.errors).toStrictEqual(initialErrors)
   })
 
   it('should set errors for the form when changing its value', async () => {

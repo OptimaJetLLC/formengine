@@ -36,6 +36,7 @@ const RawResolutionButton = ({value, icon}: ResolutionButtonProps) => {
   const isActive = value === viewMode
 
   const t = useTranslationPart('rightMenu.modes')
+  // eslint-disable-next-line react-hooks/immutability
   const handleClick = useCallback(() => store.viewMode = value, [store, value])
   const tooltipContent = useMemo(() => <Tooltip>{t(value)}</Tooltip>, [t, value])
   const color = useMemo(() => getColor(isActive), [isActive])
@@ -51,6 +52,7 @@ const ResolutionButton = namedObserver('ResolutionButton', RawResolutionButton)
 const RawViewModes = (props: ComponentProps<'div'>) => {
   const store = useBuilderStore()
   const {viewMode, landscapeMode} = store
+  // eslint-disable-next-line react-hooks/immutability
   const toggleOrientation = useCallback(() => store.landscapeMode = !landscapeMode, [store, landscapeMode])
 
   const orientationIcon = useMemo(() => <Icon as={OrientationIcon} color={getColor(landscapeMode)}/>, [landscapeMode])

@@ -26,8 +26,7 @@ const RsBuilderColumnGroup = (props: ColumnGroupProps) => {
 }
 
 const RsColumnGroup = (props: ColumnGroupProps) => {
-  const Component = useBuilderComponent(RsBuilderColumnGroup, ColumnGroup)
-  return <Component {...props}/>
+  return useBuilderComponent(RsBuilderColumnGroup, ColumnGroup, props)
 }
 
 const getRsColumnGroupComponentStore = () => {

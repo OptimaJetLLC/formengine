@@ -25,8 +25,7 @@ const RsViewerHeaderCell = (props: HeaderCellProps<RowDataType, RowKeyType>) => 
 }
 
 const RsHeaderCell = (props: HeaderCellProps<RowDataType, RowKeyType>) => {
-  const Component = useBuilderComponent(RsBuilderHeaderCell, RsViewerHeaderCell)
-  return <Component {...props}/>
+  return useBuilderComponent(RsBuilderHeaderCell, RsViewerHeaderCell, props)
 }
 
 export const rsHeaderCell = define(RsHeaderCell, rsHeaderCellTypeName)

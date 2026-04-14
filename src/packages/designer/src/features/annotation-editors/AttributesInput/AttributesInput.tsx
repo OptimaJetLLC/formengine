@@ -36,10 +36,13 @@ const ConfirmButton = ({confirm}: { confirm: () => void }) => {
 const RawAttributesInput = (props: AnnotationEditorProps) => {
   const {store} = props.componentData
   const calculated = !!props.getComputeType()
-  const initialState = useMemo(() => store.htmlAttributes ? [...store.htmlAttributes] : store.htmlAttributes,
-    [store])
+  const initialState = useMemo(
+    () => store.htmlAttributes ? [...store.htmlAttributes] : store.htmlAttributes,
+    [store.htmlAttributes],
+  )
   const [value, setValue] = useState(initialState)
   const [changed, setChanged] = useState(false)
+
   const tableData = value ?? []
 
   const handleChange = useCallback((value: any) => {
@@ -48,6 +51,7 @@ const RawAttributesInput = (props: AnnotationEditorProps) => {
   }, [])
 
   const confirm = useCallback(() => {
+    // eslint-disable-next-line react-hooks/immutability
     store.htmlAttributes = value
     setChanged(false)
   }, [store, value])
@@ -57,12 +61,14 @@ const RawAttributesInput = (props: AnnotationEditorProps) => {
     setChanged(false)
   }, [initialState, store])
 
-  return <>
-    <LabeledProperty {...props}>
-      {changed && <ConfirmButton confirm={confirm}/>}
-    </LabeledProperty>
-    {!calculated && <EditableTable data={tableData} onChange={handleChange} columns={COLUMNS}/>}
-  </>
+  return (
+    <>
+      <LabeledProperty {...props}>
+        {changed && <ConfirmButton confirm={confirm}/>}
+      </LabeledProperty>
+      {!calculated && <EditableTable data={tableData} onChange={handleChange} columns={COLUMNS}/>}
+    </>
+  )
 }
 
 export const AttributesInput = namedObserver('RawAttributesInput', RawAttributesInput)

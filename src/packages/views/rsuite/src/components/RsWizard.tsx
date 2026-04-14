@@ -14,7 +14,7 @@ import {
 } from '@react-form-builder/core'
 import cx from 'clsx'
 import type {ForwardedRef, PropsWithChildren, SyntheticEvent} from 'react'
-import {forwardRef, useCallback, useEffect, useMemo, useState} from 'react'
+import {forwardRef, useCallback, useMemo, useState} from 'react'
 import type {StepItemProps} from 'rsuite'
 import {Button, ButtonToolbar, Steps} from 'rsuite'
 import {useArrayMapMemo} from '../hooks'
@@ -24,6 +24,7 @@ import {eventListeners} from './internal/RsWizard/eventListeners'
 import {SItem} from './internal/RsWizard/Item'
 import {RsWizardStepComponentType} from './internal/RsWizard/RsWizardStep'
 import {WizardIcon} from './internal/RsWizard/WizardIcon'
+
 import styles from './RsWizard.module.css'
 
 /**
@@ -87,7 +88,6 @@ export interface RsWizardProps extends PropsWithChildren<any> {
    */
   onFinish?: (event: SyntheticEvent) => void
 }
-
 
 const EmptyContent = () => <div className={styles.centered}>Missing content</div>
 
@@ -157,9 +157,9 @@ const RsWizard = forwardRef(function Wizard(wProps: RsWizardProps, ref: Forwarde
   const [visited, setVisited] = useState(activeIndex)
   const isBuilderMode = useBuilderMode() === 'builder'
 
-  useEffect(() => {
-    if (visited < activeIndex) setVisited(activeIndex)
-  }, [visited, activeIndex])
+  if (visited < activeIndex) {
+    setVisited(activeIndex)
+  }
 
   const componentData = useComponentData()
 
@@ -198,7 +198,6 @@ const RsWizard = forwardRef(function Wizard(wProps: RsWizardProps, ref: Forwarde
       })
       return
     }
-
     openStep(newIndex)
     onNext?.(event)
   }, [activeIndex, componentData.children, labels.length, onNext, openStep, validateOnNext])

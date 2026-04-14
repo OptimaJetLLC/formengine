@@ -127,8 +127,7 @@ const RsViewerTable = (props: RsTableProps) => {
 }
 
 const RsTable = (props: RsTableProps) => {
-  const Component = useBuilderComponent(RsBuilderTable, RsViewerTable)
-  return <Component {...props}/>
+  return useBuilderComponent(RsBuilderTable, RsViewerTable, props)
 }
 
 const getRsTableComponentStore = () => {

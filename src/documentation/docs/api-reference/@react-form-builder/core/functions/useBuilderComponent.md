@@ -1,8 +1,8 @@
 # Function: useBuilderComponent()
 
-> **useBuilderComponent**\<`T`\>(`builderComponent`, `viewerComponent`): `ComponentType`\<`T`\>
+> **useBuilderComponent**\<`T`\>(`builderComponent`, `viewerComponent`, `props`): `ReactElement`
 
-Returns a React component based on the current builder mode.
+Returns a React element for the builder or viewer component based on the current builder mode.
 
 ## Type Parameters
 
@@ -24,8 +24,14 @@ the component to use in the 'builder' mode.
 
 the component to use in the 'viewer' mode.
 
+### props
+
+`T`
+
+the props forwarded to the selected component.
+
 ## Returns
 
-`ComponentType`\<`T`\>
+`ReactElement`
 
-the React component based on the current builder mode.
+the React element for the selected component.

@@ -1,38 +1,39 @@
-import type {ParameterType} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
-import type {ComponentType} from 'react'
+import type {ReactNode} from 'react'
 import {Rows} from '../../../../../../../../components/Containers'
 import {InputBoolean} from './components/InputBoolean'
 import {InputFunction} from './components/InputFunction'
 import {InputNumber} from './components/InputNumber'
 import {InputString} from './components/InputString'
-import type {InputProps} from './InputProps'
 import type {Parameter} from './Parameter'
-
-const getArgumentInputByType = (type: ParameterType): ComponentType<InputProps> => {
-  switch (type) {
-    case 'string':
-      return InputString
-    case 'number':
-      return InputNumber
-    case 'boolean':
-      return InputBoolean
-    case 'function':
-      return InputFunction
-  }
-}
 
 interface ActionArgumentProps {
   data: Parameter
 }
 
-const RawArgumentItem = ({data}: ActionArgumentProps) => {
-  const [name, type] = data
-  const ArgumentInput = getArgumentInputByType(type)
+const RawArgumentItem = ({data: [name, type]}: ActionArgumentProps) => {
+  let input: ReactNode = null
+
+  switch (type) {
+    case 'string':
+      input = <InputString name={name}/>
+      break
+    case 'number':
+      input = <InputNumber name={name}/>
+      break
+    case 'boolean':
+      input = <InputBoolean name={name}/>
+      break
+    case 'function':
+      input = <InputFunction name={name}/>
+      break
+    default:
+      break
+  }
 
   return <Rows>
     <label>{name}</label>
-    <ArgumentInput name={name}/>
+    {input}
   </Rows>
 }
 

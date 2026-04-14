@@ -49,7 +49,7 @@ const RawInputFunction = ({name}: InputProps) => {
   const clear = useCallback(() => setFn(undefined), [setFn])
 
   const onClose = useCallback(() => {
-    builderStore.currentEditable = undefined
+    builderStore.closeCurrentEditable()
   }, [builderStore])
 
   const onCompile = useCallback((source: string) => {

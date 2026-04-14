@@ -17,7 +17,9 @@ const RawFormValidatorCodeEditor = (props: EditableFormValidator) => {
   const {t} = useTranslation()
   const builderStore = useBuilderStore()
 
-  const handleClose = useCallback(() => builderStore.currentEditable = undefined, [builderStore])
+  const handleClose = useCallback(() => {
+    builderStore.closeCurrentEditable()
+  }, [builderStore])
   const handleCompile = useCallback((value: string) => {
     const source = `${beginContextLine}\n${value}\n${endContextLine}`
     try {

@@ -85,12 +85,14 @@ const RichTextEditor = ({
   const valueRef = useRef(value)
   const quillRef = useRef<ReactQuill>(null)
 
+  /* eslint-disable react-hooks/refs -- valueRef must match value before useMemo; useMemo reads ref only when initialValue changes (defaultValue semantics) */
   valueRef.current = value
 
   const plainInitialValue = useMemo(() => {
     // we want to trigger the useEffect only when the initialValue changes
     return valueRef.current ?? initialValue
   }, [initialValue])
+  /* eslint-enable react-hooks/refs */
 
   useEffect(() => {
     setKey(uniqueId())

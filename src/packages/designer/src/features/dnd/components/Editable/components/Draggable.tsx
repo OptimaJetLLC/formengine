@@ -1,8 +1,8 @@
 import type {ComponentData} from '@react-form-builder/core'
 import {namedObserver, useComponentData} from '@react-form-builder/core'
 import cx from 'clsx'
-import type {ComponentProps, RefObject} from 'react'
-import {forwardRef, useMemo, useRef} from 'react'
+import type {ComponentProps} from 'react'
+import {forwardRef, useCallback, useMemo} from 'react'
 import {useDragLayer, useDrop} from 'react-dnd'
 import {useBuilderStore} from '../../../../../utils/BuilderStoreContext'
 import {AcceptDrop, ItemType} from '../../../consts'
@@ -23,8 +23,7 @@ interface DndState {
   canDrop: boolean,
 }
 
-const useDnd = (isRoot?: boolean): [DndState, RefObject<any>] => {
-  const dnd = useRef(null)
+const useDnd = (isRoot?: boolean): [DndState, (node: HTMLElement | null) => void] => {
   const data = useComponentData()
 
   const [dropProps, drop] = useDrop({
@@ -40,10 +39,15 @@ const useDnd = (isRoot?: boolean): [DndState, RefObject<any>] => {
   const [dragState, drag] = useDragWithPreview(ItemType.Component)
   const state: DndState = useMemo(() => ({...dropProps, ...dragState}), [dropProps, dragState])
 
-  if (!isRoot) drag(dnd)
-  drop(dnd)
+  const setDndRef = useCallback(
+    (node: HTMLElement | null) => {
+      if (!isRoot) drag(node)
+      drop(node)
+    },
+    [drag, drop, isRoot],
+  )
 
-  return [state, dnd]
+  return [state, setDndRef]
 }
 
 interface DraggableProps extends ComponentProps<any> {

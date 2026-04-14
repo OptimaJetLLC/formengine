@@ -1,8 +1,8 @@
 import type {ComponentPropertyComputeType} from '@react-form-builder/core'
 import {namedObserver} from '@react-form-builder/core'
-import {useCallback, useEffect, useState} from 'react'
+import {useCallback, useState} from 'react'
 import {useTranslation} from 'react-i18next'
-import type {BuilderStore, EditableProperty} from '../../../stores/BuilderStore'
+import type {EditableProperty} from '../../../stores/BuilderStore'
 import {useBuilderStore} from '../../../utils/BuilderStoreContext'
 import {withLocalization} from '../../../utils/withLocalization'
 import {CalculableCodeEditor} from '../../calculation/CalculableCodeEditor'
@@ -29,14 +29,24 @@ const NoopLocalizationStub = () => {
   return <h4>{t('localizationNotSet')}</h4>
 }
 
-const getEditor = (computeType: ComputeType, builderStore: BuilderStore) => {
+const ComputedPropertyEditorBody = ({computeType, property}: {
+  computeType: ComputeType
+  property: EditableProperty
+}) => {
+  const builderStore = useBuilderStore()
+  const handleClose = useCallback(() => {
+    builderStore.closeCurrentEditable()
+  }, [builderStore])
+
   switch (computeType) {
     case 'simpleValue':
-      return SimpleValueEditor
+      return <SimpleValueEditor editableProperty={property} onClose={handleClose}/>
     case 'localization':
-      return withLocalization(builderStore) ? LocalizationEditor : NoopLocalizationStub
+      return withLocalization(builderStore)
+        ? <LocalizationEditor editableProperty={property} onClose={handleClose}/>
+        : <NoopLocalizationStub/>
     case 'function':
-      return CalculableCodeEditor
+      return <CalculableCodeEditor editableProperty={property} onClose={handleClose}/>
   }
 }
 
@@ -56,22 +66,31 @@ const RawComputedPropertyEditor = ({property}: ComputedPropertyEditorProps) => {
   const initialComputeType = property.getComputeType() ?? 'simpleValue'
   const [computeType, setComputeType] = useState<ComputeType>(initialComputeType)
   const {annotation, componentKey} = property
-  const Editor = getEditor(computeType, builderStore)
   const localizable = annotation.localizable && withLocalization(builderStore)
   const toggleItems = getToggleItems(annotation.calculable, localizable, t)
-  const handleClose = useCallback(() => builderStore.currentEditable = undefined, [builderStore])
-  const handleComputeTypeChange = useCallback((value: string | number) => setComputeType(value as ComponentPropertyComputeType), [])
+  const withItems = toggleItems.length > 0
 
-  useEffect(() => setComputeType(initialComputeType), [initialComputeType])
+  const handleComputeTypeChange = useCallback((value: string | number) => {
+    setComputeType(value as ComputeType)
+  }, [])
 
   return <>
     <Header>
       {`${t('bottomPanel.editProperty')}: ${componentKey}.${annotation.name}`}
-      {toggleItems.length &&
-        <RadioButtons value={computeType} label={'Use'} items={toggleItems} className={styles.buttons} onChange={handleComputeTypeChange}/>
-      }
+      {withItems && (
+        <RadioButtons
+          value={computeType}
+          label={'Use'}
+          items={toggleItems}
+          className={styles.buttons}
+          onChange={handleComputeTypeChange}
+        />
+      )}
     </Header>
-    <Editor editableProperty={property} onClose={handleClose}/>
+    <ComputedPropertyEditorBody
+      computeType={computeType}
+      property={property}
+    />
   </>
 }
 

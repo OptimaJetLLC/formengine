@@ -18,6 +18,7 @@ const RawInputBoolean = ({name}: InputProps) => {
     if (!isUndefined(value)) {
       newArgs[name] = value
     }
+    // eslint-disable-next-line react-hooks/immutability
     data.args = newArgs
   }, [data, name])
 
