@@ -47,7 +47,8 @@
       "import": "./src/index-lite.ts"
     },
     "./package.json": "./package.json",
-    "./schemas/persisted-form.schema.json": "./public/schemas/persisted-form.schema.json"
+    "./schemas/persisted-form.schema.json": "./public/schemas/persisted-form.schema.json",
+    "./assets/styles.css": "./src/assets/styles.css"
   },
   "scripts": {
     "build": "vite build",

@@ -2,7 +2,7 @@ import {ActionDefinition, Arguments, BuilderView, type IFormViewer, ParameterTyp
 import {FormBuilder} from '@react-form-builder/designer'
 import {allComponentsBuilder} from '@react-form-builder/tests-common/lib/all-components'
 import {testLicense} from '@react-form-builder/tests-common/license/vaild'
-import {cleanup, fireEvent, render, RenderResult, within} from '@testing-library/react'
+import {cleanup, fireEvent, render, RenderResult, waitFor, within} from '@testing-library/react'
 import {useCallback, useEffect, useState} from 'react'
 import {MockInstance} from 'vitest'
 import {asyncAct} from './asyncAct'
@@ -350,11 +350,15 @@ describe('Event args UI should display and pass arguments', () => {
     await openCodeEditor(app, 'funcArgs', 'fnArg')
 
     const runButton = await app.findByText('Run')
-    fireEvent.click(runButton)
+    await asyncAct(async () => {
+      fireEvent.click(runButton)
+    })
 
-    const result = await app.findByTestId('test-result')
-    expect(result).not.toHaveTextContent('Unexpected')
-    expect(result).not.toHaveTextContent('Has not returned value')
+    await waitFor(() => {
+      const result = app.getByTestId('test-result')
+      expect(result).not.toHaveTextContent('Unexpected')
+      expect(result).not.toHaveTextContent('Has not returned value')
+    })
   })
 
   it('should show compile error in editor for invalid function body syntax', async () => {

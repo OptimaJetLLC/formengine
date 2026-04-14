@@ -1,7 +1,7 @@
 import './utils/monaco-settings'
 
 import type {ViewType} from '@react-form-builder/apps-common'
-import {usePersistentView, ViewProvider} from '@react-form-builder/apps-common'
+import {getViewStorageKey, usePersistentView, ViewProvider} from '@react-form-builder/apps-common'
 import {namedObserver} from '@react-form-builder/core'
 import type {FormBuilderProps, GenerateJsonFormSchemaOptions} from '@react-form-builder/designer'
 import {createSchema} from '@react-form-builder/json-schema-generator'
@@ -12,9 +12,11 @@ import {Header} from './components/Header'
 import {MantineBuilder} from './components/MantineBuilder'
 import {MuiBuilder} from './components/MuiBuilder'
 import {RSuiteBuilder} from './components/RSuiteBuilder'
+import {RSuiteBuilderImportCss} from './components/RSuiteBuilderImportCss'
 import {customization} from './utils/customization'
 import {licenseKey} from './utils/licenseKey'
 import type {FormBuilderAppProps} from './utils/types'
+
 import '@react-form-builder/apps-common/public/style.css'
 
 const generateJsonFormSchema = (options: GenerateJsonFormSchemaOptions) => {
@@ -29,21 +31,34 @@ const getBuilder = (view: ViewType, appName: string, props: Partial<FormBuilderP
       return <MantineBuilder {...props} appName={appName} />
     case 'mui':
       return <MuiBuilder {...props} appName={appName} />
+    case 'rsuite-import-css':
+      return <RSuiteBuilderImportCss {...props} />
+    case 'rsuite-inject-css':
+      return <RSuiteBuilder {...props} />
     default:
-      return <RSuiteBuilder />
+      return null
   }
 }
 
-const RawFormBuilderApp = ({appName = 'form-builder', ...props}: FormBuilderAppProps = {}) => {
+const RawFormBuilderApp = (builderProps: FormBuilderAppProps = {}) => {
+  const {appName = 'form-builder', viewPickerPreset = 'full', ...formBuilderPassThrough} = builderProps
   const [view, setView] = usePersistentView(appName)
-  const providerValue = useMemo(() => ({view, setView}), [view, setView])
-  const commonProps = useMemo(() => ({licenseKey, customization, generateJsonFormSchema, ...props}), [props])
+  const viewStorageKey = getViewStorageKey(appName)
+  const providerValue = useMemo(
+    () => ({
+      view,
+      setView,
+      viewStorageKey,
+    }),
+    [view, setView, viewStorageKey]
+  )
+  const commonProps = {licenseKey, customization, generateJsonFormSchema, ...formBuilderPassThrough}
   const builder = getBuilder(view, appName, commonProps)
 
   return (
     <ViewProvider value={providerValue}>
       <BuilderRefProvider>
-        <Header />
+        <Header viewPickerPreset={viewPickerPreset} />
         {builder}
         <Footer />
       </BuilderRefProvider>

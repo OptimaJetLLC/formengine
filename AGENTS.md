@@ -195,6 +195,7 @@ export type { ButtonProps };
 - Group imports: third-party libraries, internal modules, types
 - Use type imports for types
 - Do not use `import React from "react";`
+- Do not export or reexport any function, component or type if is not absolutely required.
 
 ```typescript
 // ✅ Correct

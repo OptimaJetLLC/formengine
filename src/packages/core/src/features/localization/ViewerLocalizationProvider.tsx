@@ -28,19 +28,20 @@ const cssLoadersQueue = new AsyncQueue()
 const RawViewerLocalizationProvider = (props: ViewerLocalizationProviderProps) => {
   const viewerStore = useStore()
   const language = viewerStore.displayedLanguage
+  const {view} = viewerStore.formViewerPropsStore
 
   useEffect(() => {
-    const loaders = viewerStore.formViewerPropsStore.view.getCssLoaders(language.bidi)
+    const loaders = view.getCssLoaders(language.bidi)
     loaders.forEach(loader => {
       cssLoadersQueue.add(loader).catch(console.error)
     })
-  }, [language, viewerStore.formViewerPropsStore.view])
+  }, [language, view])
 
   const viewer = <div dir={language.bidi} lang={language.fullCode} className={viewerClass}>
     {props.children}
   </div>
 
-  return nestViewerWrappers(viewerStore.formViewerPropsStore.view.viewerWrappers, language, viewer)
+  return nestViewerWrappers(view.viewerWrappers, language, viewer)
 }
 
 export const ViewerLocalizationProvider = namedObserver('ViewerLocalizationProvider', RawViewerLocalizationProvider)

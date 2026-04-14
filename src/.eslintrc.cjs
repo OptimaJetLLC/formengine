@@ -98,6 +98,7 @@ module.exports = {
       'js': 'always',
       'jsx': 'always',
       'json': 'always',
+      'css': 'always',
     }],
     'unused-imports/no-unused-imports': 'error',
     'jsdoc/require-jsdoc': ['error',

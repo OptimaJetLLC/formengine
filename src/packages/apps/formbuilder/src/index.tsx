@@ -7,6 +7,6 @@ const root = createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <React.StrictMode>
-    <FormBuilderApp appName="formbuilder" />
+    <FormBuilderApp appName="formbuilder" viewPickerPreset="rsuite-single" />
   </React.StrictMode>
 )

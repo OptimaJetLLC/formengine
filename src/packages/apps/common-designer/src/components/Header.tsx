@@ -1,20 +1,27 @@
+import type {ViewPickerPreset} from '@react-form-builder/apps-common'
 import {ViewPicker} from '@react-form-builder/apps-common'
 import docs from '../images/docs.svg?url'
 import logo from '../images/logo.svg?url'
 import {CopyPasteButtons} from './CopyPasteButtons'
 
+type HeaderProps = {
+  viewPickerPreset: ViewPickerPreset
+}
+
 /**
  * The app header.
+ * @param props header props
+ * @param props.viewPickerPreset which built-in view picker option set to show
  * @returns the React element.
  */
-export const Header = () => (
+export const Header = ({viewPickerPreset}: HeaderProps) => (
   <div className="navbar rs-theme-dark">
     <div className="navbar-container">
       <div className="left-menu">
         <a href="https://formengine.io" target="_blank" className="logo-1" aria-label="home" rel="noreferrer">
           <img width="Auto" height="32px" src={logo} alt="" />
         </a>
-        <ViewPicker />
+        <ViewPicker preset={viewPickerPreset} />
         <CopyPasteButtons />
       </div>
       <nav role="navigation" className="nav-menu">
