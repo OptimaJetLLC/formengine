@@ -45,3 +45,7 @@
   min-width: 123px;
   max-width: initial;
 }
+
+.componentIcon {
+  min-width: 18px;
+}

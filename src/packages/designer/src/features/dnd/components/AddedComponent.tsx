@@ -94,7 +94,7 @@ const RawAddedComponent = ({draggable = true, onAdd, onDoubleClick}: DraggablePr
       onClick={onClick}
       onDoubleClick={handleDoubleClick}
     >
-      <Icon width={18} height={18} viewBox="0 0 24 24"/>
+      <Icon width={18} height={18} viewBox="0 0 24 24" className={styles.componentIcon}/>
       <label>{componentName}</label>
       {elementToolbar}
     </div>
