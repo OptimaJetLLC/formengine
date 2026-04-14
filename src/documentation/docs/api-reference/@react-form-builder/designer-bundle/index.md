@@ -14,6 +14,11 @@
 - [ActionDefinition](classes/ActionDefinition.md)
 - [Language](classes/Language.md)
 
+## Variables
+
+- [defaultView](variables/defaultView.md)
+- [noCssView](variables/noCssView.md)
+
 ## Functions
 
 - [buildForm](functions/buildForm.md)

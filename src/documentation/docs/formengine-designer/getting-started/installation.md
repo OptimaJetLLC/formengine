@@ -27,18 +27,30 @@ If your package manager does not support automatic installation of peer dependen
 npm, then you need to install peer dependencies manually.
 
 ```bash
-npm install @emotion/cache@11.13.5 @emotion/css@11.13.5 @emotion/react@11.14.0 @emotion/styled@11.14.1 mobx@6.13.5 mobx-react@9.2.0 rsuite@5.83.4 --save-exact
+npm install clsx@2.1.1 mobx@6.13.5 mobx-react@9.2.0 rsuite@5.83.4 --save-exact
 ```
 
 :::
 
 Below is sample code for embedding the `FormBuilder` component into your application:
 
+:::info
+
+Starting with version 8.0.0, you have to also include CSS styles.
+
+```typescript
+import '@react-form-builder/core/assets/styles.css'
+```
+
+:::
+
 ```tsx title='App.tsx'
 import React from 'react'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useState} from 'react'
+
+import '@react-form-builder/core/assets/styles.css'
 
 // optional
 const formStorage = new IndexedDbFormStorage('example-db', 'example-store')
@@ -86,7 +98,7 @@ If your package manager does not support automatic installation of peer dependen
 npm, then you need to install peer dependencies manually.
 
 ```bash
-npm install @emotion/css@11.13.5 @emotion/react@11.14.0 @emotion/styled@11.14.1 @rsuite/icons@1.3.2 react-number-format@5.1.4 rsuite@5.83.4 --save-exact
+npm install clsx@2.1.1 @rsuite/icons@1.3.2 react-number-format@5.1.4 rsuite@5.83.4 --save-exact
 ```
 
 :::
@@ -98,6 +110,8 @@ import React from 'react'
 // highlight-next-line
 import {rSuiteComponents} from '@react-form-builder/components-rsuite'
 import {BuilderView, FormBuilder} from '@react-form-builder/designer'
+
+import '@react-form-builder/core/assets/styles.css'
 
 // highlight-next-line
 const components = rSuiteComponents.map(c => c.build())
@@ -112,6 +126,65 @@ export default App
 ```
 
 This is the minimal React component code with which you can add a form designer to your application.
+
+### Designer with a stricter Content-Security-Policy
+
+You can run Designer with stricter Content-Security-Policy. You need to disable CSS injection into page.
+
+If you want to also [embed Monaco code editor](/integration-with-electron/#monaco-settings).
+
+```html {9-21} showLineNumbers
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FormEngine Designer Content-Security-Policy Example</title>
+
+  <!-- Use https://cdn.jsdelivr.net to load Monaco if you're loading it from a CDN -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+           script-src 'self' 'unsafe-eval';
+           script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
+           style-src 'unsafe-inline' https://cdn.jsdelivr.net file:;
+           img-src 'self' data:;
+           font-src 'self' https://cdn.jsdelivr.net data:;
+           connect-src 'self' https://cdn.jsdelivr.net;
+           object-src 'none';
+           base-uri 'self';
+           worker-src 'self' blob:;
+           form-action 'self';">
+</head>
+
+<body>
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
+
+```
+
+```typescript {5,6,11,12,15} showLineNumbers
+import {rSuiteComponents} from '@react-form-builder/components-rsuite'
+import {BuilderView, FormBuilder} from '@react-form-builder/designer'
+import type {ReactNode} from 'react'
+
+import '@react-form-builder/core/assets/styles.css'
+import '@react-form-builder/designer/assets/designer.ltr.min.css'
+
+const components = rSuiteComponents.map(c => c.build())
+const builderView = new BuilderView(components)
+
+// disable CSS injection
+const StylesProvider = ({children}: { children: ReactNode }) => children
+
+function App() {
+  return <FormBuilder view={builderView} stylesProvider={StylesProvider}/>
+}
+
+export default App
+```
 
 ## Viewer
 
@@ -137,7 +210,7 @@ npm install clsx@2.1.1 mobx@6.13.5 mobx-react@9.2.0 --save-exact
 If you are using the React Suite component pack, install its peer dependencies as well:
 
 ```bash
-npm install @emotion/css@11.13.5 @emotion/react@11.14.0 @emotion/styled@11.14.1 @rsuite/icons@1.3.2 react-number-format@5.1.4 rsuite@5.83.4 --save-exact
+npm install clsx@2.1.1 @rsuite/icons@1.3.2 react-number-format@5.1.4 rsuite@5.83.4 --save-exact
 ```
 
 :::
@@ -151,6 +224,8 @@ Let's look at an example of a simple application using a `FormViewer` component 
 import React from 'react'
 import {view} from '@react-form-builder/components-rsuite'
 import {FormViewer} from '@react-form-builder/core'
+
+import '@react-form-builder/core/assets/styles.css'
 
 const form = `{
   "form": {
@@ -294,6 +369,54 @@ window.onload = function () {
 }
 ```
 
+
+### How to use Designer (FormBuilder) with a strict Content-Security-Policy
+
+You can set a stricter Content-Security-Policy and avoid automatically adding CSS styles to the page. The URL https://cdn.jsdelivr.net is
+used to download the Monaco code editor.
+
+```html {6,7,9-20} showLineNumbers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FormEngine Designer bundle embedding example (Strict CSP)</title>
+  <link rel="stylesheet" href="../../../src/packages/designer-bundle/dist/designer-bundle-ltr.css">
+  <script src="../../../src/packages/designer-bundle/dist/index.iife.js" async defer></script>
+
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+           script-src 'self' 'unsafe-eval';
+           script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
+           style-src 'unsafe-inline' https://cdn.jsdelivr.net file:;
+           img-src 'self' data:;
+           font-src 'self' https://cdn.jsdelivr.net data:;
+           connect-src 'self' https://cdn.jsdelivr.net;
+           object-src 'none';
+           base-uri 'self';
+           worker-src 'self' blob:;
+           form-action 'self';">
+
+</head>
+<body style="margin: 20px">
+<div id="designer"></div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    const {renderFormBuilder, noCssView} = window.FormEngineDesignerBundle;
+
+    const props = {
+      view: noCssView,
+      stylesProvider: ({children}) => children,
+    }
+
+    window.designerRoot = renderFormBuilder('designer', props)
+  }
+</script>
+</body>
+</html>
+```
+
 ### Using Viewer bundle
 
 Here's an example of the usage:
@@ -304,7 +427,6 @@ Here's an example of the usage:
 <head>
   <meta charset="UTF-8">
   <title>FormEngine Viewer bundle embedding example</title>
-  <link rel="stylesheet" href="https://unpkg.com/@react-form-builder/viewer-bundle@latest/dist/viewer-bundle.css">
   <script src="https://unpkg.com/@react-form-builder/viewer-bundle@latest/dist/index.iife.js" async defer></script>
 </head>
 <body style="margin: 0">
@@ -347,6 +469,72 @@ Here's an example of the usage:
   "defaultLanguage": "en-US"
 }
 `
+</script>
+</body>
+</html>
+```
+
+### How to use Viewer (FormViewer) with a strict Content-Security-Policy
+
+You can set a stricter Content-Security-Policy and avoid automatically adding CSS styles to the page:
+
+```html {6,7,9-18} showLineNumbers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FormEngine bundle embedding example (Strict CSP)</title>
+  <link rel="stylesheet" href="https://unpkg.com/@react-form-builder/viewer-bundle@latest/dist/viewer-bundle-ltr.css">
+  <script src="https://unpkg.com/@react-form-builder/viewer-bundle@latest/dist/index.iife.js" async defer></script>
+
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+           script-src 'self' 'unsafe-eval';
+           script-src-elem 'self' 'unsafe-inline';
+           style-src 'unsafe-inline' file:;
+           img-src 'self' data:;
+           font-src 'self';
+           object-src 'none';
+           base-uri 'self';
+           form-action 'self';">
+
+</head>
+<body style="margin: 20px">
+<div id="viewer"></div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    const {renderFormViewer, rSuiteComponents, createView} = window.FormEngineViewerBundle;
+    const view = createView(rSuiteComponents.models)
+
+    const form = `
+{
+  "form": {
+    "key": "Screen",
+    "type": "Screen",
+    "children": [
+      {
+        "key": "RsInput",
+        "type": "RsInput"
+      }
+    ]
+  }
+}
+`
+
+    const props = {
+      view,
+      getForm: () => form,
+      actions: {
+        onSubmit: (e) => {
+          // submit the form to the backend
+          alert('Form data: ' + JSON.stringify(e.data))
+        }
+      }
+    }
+
+    window.viewerRoot = renderFormViewer('viewer', props)
+  }
 </script>
 </body>
 </html>
@@ -453,4 +641,81 @@ window.onload = function () {
     view
   })
 }
+```
+
+### How to use Viewer (FormViewer) premium with a strict Content-Security-Policy
+
+You can set a stricter Content-Security-Policy and avoid automatically adding CSS styles to the page:
+
+```html {6,7,9-18} showLineNumbers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FormEngine bundle premium embedding example (Strict CSP)</title>
+  <link rel="stylesheet" href="https://unpkg.com/@react-form-builder/viewer-bundle-premium@latest/dist/viewer-bundle-premium-ltr.css">
+  <script src="https://unpkg.com/@react-form-builder/viewer-bundle-premium@latest/dist/index.iife.js" async defer></script>
+
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+           script-src 'self' 'unsafe-eval';
+           script-src-elem 'self' 'unsafe-inline';
+           style-src 'unsafe-inline' file:;
+           img-src 'self' data:;
+           font-src 'self';
+           object-src 'none';
+           base-uri 'self';
+           form-action 'self';">
+
+</head>
+<body style="margin: 20px">
+<div id="viewer"></div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    const {
+      renderFormViewer,
+      rSuiteComponents,
+      createView,
+      richTextComponent,
+      signatureComponent,
+      fastQrComponent
+    } = window.FormEngineViewerBundle;
+
+    const view = createView([
+      ...rSuiteComponents.models,
+      richTextComponent.richTextModel,
+      signatureComponent.signatureModel,
+      fastQrComponent.fastQrModel
+    ])
+
+    const form = JSON.stringify({
+      form: {
+        key: 'Screen',
+        type: 'Screen',
+        children: [
+          {
+            key: 'signature',
+            type: 'RsSignature'
+          }
+        ]
+      }
+    })
+
+    const props = {
+      view,
+      getForm: () => form,
+      actions: {
+        onSubmit: (e) => {
+          // submit the form to the backend
+          alert('Form data: ' + JSON.stringify(e.data))
+        }
+      }
+    }
+
+    window.viewerRoot = renderFormViewer('viewer', props)
+  }
+</script>
+</body>
+</html>
 ```

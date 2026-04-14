@@ -226,6 +226,8 @@ will use the ready-made React Suite, you can use your own components.
 import {builderViewWithCss} from '@react-form-builder/components-rsuite'
 import {FormBuilder} from '@react-form-builder/designer'
 
+import '@react-form-builder/core/assets/styles.css'
+
 /**
  * @returns the Designer element.
  */
@@ -245,6 +247,8 @@ import {builderViewWithCss} from '@react-form-builder/components-rsuite'
 import {FormBuilder} from '@react-form-builder/designer'
 import {IndexedDbFormStorage} from '@react-form-builder/indexed-db-form-storage'
 import {useEffect, useState} from 'react'
+
+import '@react-form-builder/core/assets/styles.css'
 
 const formStorage = new IndexedDbFormStorage('example-db', 'example-store')
 

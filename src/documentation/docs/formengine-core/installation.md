@@ -49,8 +49,8 @@ so you should import the styles yourself.
 This is especially useful if you are in an environment with a
 strict [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP).
 
-```css
-@import "@react-form-builder/core/assets/styles.css"
+```typescript
+import "@react-form-builder/core/assets/styles.css"
 ```
 
 :::
@@ -204,6 +204,8 @@ FormEngine Core is fully compatible with Next.js (both pages and app router):
    import { FormViewer } from '@react-form-builder/core';
    import { useCallback, useMemo } from 'react';
    
+   import "@react-form-builder/core/assets/styles.css";
+   
    export default function ContactForm() {
      const form = useMemo(() => ({
        // your form definition
@@ -243,6 +245,8 @@ FormEngine Core supports Remix seamlessly (Remix v2 is now part of the React Rou
    import { view } from '@react-form-builder/components-material-ui';
    import { FormViewer } from '@react-form-builder/core';
    import { useCallback, useMemo } from 'react';
+   
+   import "@react-form-builder/core/assets/styles.css";
    
    export default function MyForm() {
      const form = useMemo(() => ({

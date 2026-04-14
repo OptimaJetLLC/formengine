@@ -18,85 +18,127 @@ this [article](/formengine-designer/features/nested-components#slots).
 
 Let's create a custom component that will display tabs and different components depending on which tab is currently active.
 
-```typescript jsx {16,19,20,23-27,55-59} title='RsTab.tsx' showLineNumbers
-import styled from '@emotion/styled'
+```tsx {40,55-63,65-69,99-101} title='RsTab.tsx' showLineNumbers
 import {array, boolean, define, node, toLabeledValues, useComponentData} from '@react-form-builder/core'
+import cx from 'clsx'
 import type {ReactNode, SyntheticEvent} from 'react'
+import {useCallback} from 'react'
 import type {NavProps} from 'rsuite'
 import {Nav} from 'rsuite'
 import {navProps} from '../commonProperties'
+import {structureCategory} from './categories'
+import styles from './RsTab.module.css'
 
-type RsItem = {
+/**
+ * Tab item for RsTab component.
+ */
+export type RsTabItem = {
+  /**
+   * Label for the tab item.
+   */
   label: string
+  /**
+   * Value for the tab item.
+   */
   value: string
 }
 
-interface RsTabProps extends NavProps {
-  items?: RsItem[]
+/**
+ * Props for the RsTab component.
+ */
+export interface RsTabProps extends NavProps {
+  /**
+   * Items for the tab.
+   */
+  items?: RsTabItem[]
+  /**
+   * Whether to show navigation.
+   */
   showNavigation?: boolean
+  /**
+   * Pane content for the tab.
+   */
   pane: ReactNode
 }
 
-const RsTab = ({pane, onSelect, showNavigation, items, ...props}: RsTabProps) => {
-  const componentData = useComponentData()
-  if (!items?.length) return null
 
-  const onNavSelect = (eventKey: string, event: SyntheticEvent) => {
+/**
+ * Tab component with navigation and pane support.
+ * @param props the component props.
+ * @param props.pane the pane content for the tab.
+ * @param props.onSelect the callback when tab is selected.
+ * @param props.showNavigation whether to show navigation.
+ * @param props.items the items for the tab.
+ * @param props.className the CSS class name.
+ * @param props.props the additional tab props.
+ * @returns the React element.
+ */
+const RsTab = ({
+                 pane,
+                 onSelect,
+                 showNavigation,
+                 items,
+                 className,
+                 ...props
+               }: RsTabProps) => {
+  const componentData = useComponentData()
+
+  const onNavSelect = useCallback((eventKey: string, event: SyntheticEvent) => {
     componentData.userDefinedProps ??= {}
     componentData.userDefinedProps.activeKey = eventKey
     onSelect?.(eventKey, event)
-  }
+  }, [componentData, onSelect])
+
+  if (!items?.length) return null
 
   const activeKey = props.activeKey ?? items?.[0].value
 
   return <>
-    {showNavigation === true && <SNav onSelect={onNavSelect} {...props}>
-      {items.map((item, index) =>
-        <Nav.Item key={index} eventKey={item.value} active={item.value === activeKey}>
-          {item.label}
-        </Nav.Item>)}
-    </SNav>}
+    {showNavigation === true &&
+      <Nav onSelect={onNavSelect} activeKey={activeKey} {...props} className={cx(styles.tabs, className)}>
+        {items.map((item, index) => <Nav.Item key={index}
+                                              eventKey={item.value}
+                                              role="tab"
+                                              as="button"
+                                              type="button">
+            {item.label}
+          </Nav.Item>
+        )}
+      </Nav>
+    }
     <div>{pane}</div>
   </>
 }
 
-const SNav = styled(Nav)`
-  .builder & .rs-nav-item {
-    z-index: 7;
-  }
-`
-
-export const rsTab = define(RsTab)
-  .type('RsTab')
+export const rsTab = define(RsTab, 'RsTab')
   .name('Tab')
+  .category(structureCategory)
   .props({
     ...navProps,
     items: array.default(toLabeledValues(['Item1', 'Item2', 'Item3'])),
-    showNavigation: boolean.hinted('Show or hide navigation').default(true),
+    showNavigation: boolean.default(true),
     pane: node
-      .withSlotConditionBuilder(props => {
-        return `return parentProps.activeKey === '${props.activeKey?.value ?? props.activeKey}'`;
-      })
-      .calculable(false).hinted('A child component of the tab'),
+      .withSlotConditionBuilder(props => `return parentProps.activeKey === '${props.activeKey?.value ?? props.activeKey}'`)
+      .calculable(false),
   })
 ```
 
 Let's take an in-depth look at how this component works.
 
-- Lines 13-17 define the type of properties of the `RsTabProps` component. Line 16 shows that the `pane` property is of type `ReactNode`.
-- In lines 19-40, the React component `RsTab` is defined. It is a functional React component that receives properties of type `RsTabProps`.
-- In line 20, the `RsTab` component uses the Form
+- Lines 28-41 define the type of properties of the `RsTabProps` component. Line 40 shows that the `pane` property is of type `ReactNode`.
+- In lines 55-90, the React component `RsTab` is defined. It is a functional React component that receives properties of type `RsTabProps`.
+- In line 63, the `RsTab` component uses the Form
   Builder [useComponentData](/api-reference/@react-form-builder/core/variables/useComponentData) hook. This hook returns an instance of
   class [ComponentData](/api-reference/@react-form-builder/core/classes/ComponentData). The `ComponentData` class is responsible for storing
   all the data needed to render the component.
 - The `ComponentData` contains the [userDefinedProps](/api-reference/@react-form-builder/core/classes/ComponentData#userdefinedprops)
   property. You can set component properties in `userDefinedProps` to override component properties that have been computed by the Form
   Builder.
-- Lines 23-27 define the `onNavSelect` handler, which changes the `activeKey` property, the name of the active tab, when the tab is clicked.
+- Lines 65-69 define the `onNavSelect` handler, which changes the `activeKey` property, the name of the active tab, when the tab is clicked.
   The `activeKey` property is set via `userDefinedProps`.
-- Lines 48-60 define the metadata of the `RsTab` component for the Form Builder.
-- The `pane` property is defined on lines 55-59.
-- On lines 56-58,
+- Lines 92-102 define the metadata of the `RsTab` component for the Form Builder.
+- The `pane` property is defined on lines 99-101.
+- On line 100,
   the [withSlotConditionBuilder](/api-reference/@react-form-builder/core/classes/NodeAnnotationBuilder#withslotconditionbuilder) function is
   called. This is where the most entertaining part starts. The `withSlotConditionBuilder` function takes as input a function that should
   return a text with the source code of another function.

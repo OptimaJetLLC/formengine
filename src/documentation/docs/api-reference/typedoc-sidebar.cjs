@@ -3804,6 +3804,22 @@ const typedocSidebar = {
         },
         {
           type: "category",
+          label: "Variables",
+          items: [
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/designer-bundle/variables/defaultView",
+              label: "defaultView"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/designer-bundle/variables/noCssView",
+              label: "noCssView"
+            }
+          ]
+        },
+        {
+          type: "category",
           label: "Functions",
           items: [
             {

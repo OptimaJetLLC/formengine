@@ -206,18 +206,28 @@ This design allows FormEngine Core to optimize rendering performance while maint
 
 ### Example 1: Flex Layout Container
 
-```tsx
-import styled from '@emotion/styled'
-import {color, define, node, oneOf, size} from '@react-form-builder/core'
-
-const FlexContainer = styled.div`
+```css title='FlexContainer.module.css'
+.root {
   display: flex;
-`
+}
+```
 
-const FlexContainerComponent = ({children, className, style}: any) => (
-  <FlexContainer className={className} style={style}>
+```tsx title='FlexContainer.tsx'
+import cx from 'clsx'
+import {color, define, node, oneOf, size} from '@react-form-builder/core'
+import type {CSSProperties, ReactNode} from 'react'
+import styles from './FlexContainer.module.css'
+
+interface FlexContainerComponentProps {
+  children?: ReactNode
+  className?: string
+  style?: CSSProperties
+}
+
+const FlexContainerComponent = ({children, className, style}: FlexContainerComponentProps) => (
+  <div className={cx(styles.root, className)} style={style}>
     {children}
-  </FlexContainer>
+  </div>
 )
 
 export const flexContainer = define(FlexContainerComponent, 'FlexContainer')
@@ -237,7 +247,7 @@ export const flexContainer = define(FlexContainerComponent, 'FlexContainer')
     padding: size.default('0px'),
     backgroundColor: color.default('transparent')
   })
- .build()
+  .build()
 ```
 
 **Usage in JSON:**
