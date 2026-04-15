@@ -15,7 +15,7 @@ type HeaderProps = {
  * @returns the React element.
  */
 export const Header = ({viewPickerPreset}: HeaderProps) => (
-  <div className="navbar rs-theme-dark">
+  <div className="navbar">
     <div className="navbar-container">
       <div className="left-menu">
         <a href="https://formengine.io" target="_blank" className="logo-1" aria-label="home" rel="noreferrer">

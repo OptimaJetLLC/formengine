@@ -2,6 +2,7 @@ import {ViewPicker} from '@react-form-builder/apps-common'
 import {addToDefaultElement, customization as common} from '@react-form-builder/apps-common-designer'
 import {useComponentData} from '@react-form-builder/core'
 import type {CustomizationMap} from '@react-form-builder/designer'
+import styles from './customization.module.css'
 
 const customToolbar = false
 
@@ -24,6 +25,9 @@ const deleteStyle = {width: '10px', height: '10px'}
  */
 export const customization: CustomizationMap = {
   ...common,
+  Header: {
+    customRenderer: defaultElement => <div className={styles.header}>{defaultElement}</div>,
+  },
   Header_Toolbar: addToDefaultElement(<ViewPicker />),
   Component_Toolbar: componentToolbarCustomization,
   Component_Toolbar_RemoveButton: {

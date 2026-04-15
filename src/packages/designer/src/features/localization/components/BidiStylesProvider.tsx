@@ -17,6 +17,10 @@ const loadDesignerBidiCss = async (biDi: BiDi) => {
 const RawBidiStylesProvider = ({bidi, children}: StylesProviderProps) => {
   useEffect(() => {
     loadDesignerBidiCss(bidi).catch(console.error)
+
+    return () => {
+      unloadResource(`designer-${bidi}-css`)
+    }
   }, [bidi])
 
   return children

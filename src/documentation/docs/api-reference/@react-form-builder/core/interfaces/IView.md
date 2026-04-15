@@ -104,7 +104,7 @@ the component metadata for the form viewer for the specified type.
 
 ### getCssLoaders()
 
-> **getCssLoaders**: (`biDi`) => () => `Promise`\<`void`\>[]
+> **getCssLoaders**: (`biDi`) => [`CssLoaderFunction`](../type-aliases/CssLoaderFunction.md)[]
 
 Retrieves the CSS loaders for a given BiDi.
 
@@ -118,7 +118,7 @@ the BiDi object for which to retrieve the CSS loaders.
 
 #### Returns
 
-() => `Promise`\<`void`\>[]
+[`CssLoaderFunction`](../type-aliases/CssLoaderFunction.md)[]
 
 the array containing the CSS loaders for the specified BiDi.
 
@@ -152,9 +152,10 @@ the BiDi layout type, either 'common', 'ltr', or 'rtl'.
 
 ##### loader
 
-() => `Promise`\<`void`\>
+[`CssLoaderFunction`](../type-aliases/CssLoaderFunction.md)
 
-the function that returns a Promise to load CSS or other required localization resources.
+the function that returns a Promise to load CSS or other required localization resources,
+              optionally returning a cleanup function to be called on unmount.
 
 #### Returns
 

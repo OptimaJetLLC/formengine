@@ -7,10 +7,10 @@ export class AsyncQueue {
 
   /**
    * Adds an asynchronous task to the queue.
-   * @param task the asynchronous task.
+   * @param task the asynchronous task, optionally returning a cleanup function.
    * @returns the promise that will be resolved after the task is completed.
    */
-  add(task: () => Promise<any>): Promise<any> {
+  add(task: () => Promise<void | (() => Promise<void>)>) {
     return new Promise((resolve, reject) => {
       this.queue = this.queue.then(async () => {
         try {

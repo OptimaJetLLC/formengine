@@ -121,6 +121,8 @@
 - [ComponentStyle](type-aliases/ComponentStyle.md)
 - [ComputeChildren](type-aliases/ComputeChildren.md)
 - [Css](type-aliases/Css.md)
+- [CssCleanupFunction](type-aliases/CssCleanupFunction.md)
+- [CssLoaderFunction](type-aliases/CssLoaderFunction.md)
 - [CssLoaderType](type-aliases/CssLoaderType.md)
 - [CSSObject](type-aliases/CSSObject.md)
 - [CssPart](type-aliases/CssPart.md)

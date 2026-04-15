@@ -15,14 +15,14 @@ type ViewPickerItem = {
 export type ViewPickerPreset = 'full' | 'rsuite-single'
 
 const VIEW_PICKER_ITEMS_FULL: ViewPickerItem[] = [
-  {value: 'rsuite-inject-css', label: 'RSuite UI CSS inject'},
-  {value: 'rsuite-import-css', label: 'RSuite CSS import'},
+  {value: 'rsuite-inject-css', label: 'RSuite UI inject'},
+  {value: 'rsuite-import-css', label: 'RSuite UI import'},
   {value: 'mui', label: 'Material UI'},
   {value: 'mantine', label: 'Mantine UI'},
 ]
 
 const VIEW_PICKER_ITEMS_SINGLE_RSUITE: ViewPickerItem[] = [
-  {value: 'rsuite-inject-css', label: 'RSuite'},
+  {value: 'rsuite-inject-css', label: 'RSuite UI'},
   {value: 'mui', label: 'Material UI'},
   {value: 'mantine', label: 'Mantine UI'},
 ]
@@ -57,7 +57,7 @@ type ViewPickerProps = Omit<ComponentPropsWithoutRef<'select'>, 'value' | 'onCha
  */
 export const ViewPicker = ({preset = 'full', className, 'aria-label': ariaLabel, ...rest}: ViewPickerProps) => {
   const items = getViewPickerItemsForPreset(preset)
-  const {view, viewStorageKey} = useView()
+  const {view, setView, viewStorageKey} = useView()
   const selectClass = [styles.select, className].filter(Boolean).join(' ')
 
   const allowed = new Set(items.map(i => i.value))
@@ -70,9 +70,9 @@ export const ViewPicker = ({preset = 'full', className, 'aria-label': ariaLabel,
         return
       }
       localStorage.setItem(viewStorageKey, nextView)
-      window.location.reload()
+      setView(nextView)
     },
-    [view, viewStorageKey]
+    [view, setView, viewStorageKey]
   )
 
   return (

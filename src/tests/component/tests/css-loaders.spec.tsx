@@ -53,4 +53,30 @@ describe('CSS loaders tests', () => {
     await waitFor(() => expect(order).toHaveLength(4))
     expect(order).toStrictEqual(['ltr start', 'ltr end', 'rtl start', 'rtl end'])
   })
+
+  it('The CSS loader should be unloaded on unmount', async () => {
+    const order: string [] = []
+
+    const ltrLoader = async () => {
+      order.push('ltr loaded')
+      return () => {
+        return new Promise<void>(resolve => {
+          order.push('ltr unloaded')
+          resolve()
+        })
+      }
+    }
+
+    const view = createView([])
+      .withCssLoader(BiDi.LTR, ltrLoader)
+
+    const {unmount} = renderForm(form, {view, language: 'ar-EG'})
+
+    await waitFor(() => expect(order).toHaveLength(1))
+    expect(order).toStrictEqual(['ltr loaded'])
+
+    unmount()
+    await waitFor(() => expect(order).toHaveLength(2))
+    expect(order).toStrictEqual(['ltr loaded', 'ltr unloaded'])
+  })
 })

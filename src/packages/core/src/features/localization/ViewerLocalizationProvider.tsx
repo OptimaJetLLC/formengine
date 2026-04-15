@@ -1,9 +1,10 @@
 import cx from 'clsx'
 import type {ComponentType, ReactNode} from 'react'
-import {useEffect} from 'react'
+import {useEffect, useRef} from 'react'
 import {useStore} from '../../utils/contexts/StoreContext'
 import {namedObserver} from '../../utils/namedObserver'
 import type {FormViewerWrapperComponentProps} from '../define/utils/FormViewerWrapperComponentProps'
+import type {CssCleanupFunction} from '../define/utils/IView'
 import {AsyncQueue} from './AsyncQueue'
 import type {Language} from './language'
 import styles from './ViewerLocalizationProvider.module.css'
@@ -23,21 +24,39 @@ const nestViewerWrappers = ([Wrapper, ...more]: ComponentType<FormViewerWrapperC
     : children
 }
 
-const cssLoadersQueue = new AsyncQueue()
+const cssQueue = new AsyncQueue()
 
 const RawViewerLocalizationProvider = (props: ViewerLocalizationProviderProps) => {
   const viewerStore = useStore()
   const language = viewerStore.displayedLanguage
+  const bidi = language.bidi
+  const cleanupRef = useRef<CssCleanupFunction[]>([])
   const {view} = viewerStore.formViewerPropsStore
 
   useEffect(() => {
-    const loaders = view.getCssLoaders(language.bidi)
+    const loaders = view.getCssLoaders(bidi)
     loaders.forEach(loader => {
-      cssLoadersQueue.add(loader).catch(console.error)
+      cssQueue.add(async () => {
+        const result = await loader()
+        if (typeof result === 'function') {
+          cleanupRef.current.push(result)
+        }
+      }).catch(console.error)
     })
-  }, [language, view])
 
-  const viewer = <div dir={language.bidi} lang={language.fullCode} className={viewerClass}>
+    // Cleanup on unmount or bidi change
+    return () => {
+      const cleanupsToRun = cleanupRef.current
+      cleanupRef.current = []
+      cleanupsToRun.forEach(unloader => {
+        cssQueue.add(async () => {
+          await unloader()
+        }).catch(console.error)
+      })
+    }
+  }, [bidi, view])
+
+  const viewer = <div dir={bidi} lang={language.fullCode} className={viewerClass}>
     {props.children}
   </div>
 

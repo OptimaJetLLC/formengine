@@ -1742,6 +1742,16 @@ const typedocSidebar = {
             },
             {
               type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/CssCleanupFunction",
+              label: "CssCleanupFunction"
+            },
+            {
+              type: "doc",
+              id: "api-reference/@react-form-builder/core/type-aliases/CssLoaderFunction",
+              label: "CssLoaderFunction"
+            },
+            {
+              type: "doc",
               id: "api-reference/@react-form-builder/core/type-aliases/CssLoaderType",
               label: "CssLoaderType"
             },

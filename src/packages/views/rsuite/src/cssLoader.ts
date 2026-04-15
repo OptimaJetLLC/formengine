@@ -13,6 +13,13 @@ export const ltrCssLoader = async () => {
   const href = (await import('../public/css/rsuite-ltr.css?url')).default
   await loadResource(resourceIds[BiDi.LTR], href, 'stylesheet')
   unloadResource(resourceIds[BiDi.RTL])
+
+  return () => {
+    return new Promise<void>(resolve => {
+      unloadResource(resourceIds[BiDi.LTR])
+      resolve()
+    })
+  }
 }
 
 /**
@@ -23,4 +30,11 @@ export const rtlCssLoader = async () => {
   const href = (await import('../public/css/rsuite-rtl.css?url')).default
   await loadResource(resourceIds[BiDi.RTL], href, 'stylesheet')
   unloadResource(resourceIds[BiDi.LTR])
+
+  return () => {
+    return new Promise<void>(resolve => {
+      unloadResource(resourceIds[BiDi.RTL])
+      resolve()
+    })
+  }
 }
