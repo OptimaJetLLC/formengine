@@ -36,6 +36,34 @@ the object associated with this component in the viewer.
 
 ## Accessors
 
+### flatCss
+
+#### Get Signature
+
+> **get** **flatCss**(): `string`
+
+##### Returns
+
+`string`
+
+the flattened CSS for the component.
+
+***
+
+### flatWrapperCss
+
+#### Get Signature
+
+> **get** **flatWrapperCss**(): `string`
+
+##### Returns
+
+`string`
+
+the flattened CSS for the component wrapper.
+
+***
+
 ### get
 
 #### Get Signature
@@ -136,6 +164,32 @@ the className for the wrapper of component.
 the Record that contains the style property for the wrapper of component.
 
 ## Methods
+
+### applyStyles()
+
+> **applyStyles**(`cssPart`, `flatCss`): `void`
+
+Apply styles to the document.
+
+#### Parameters
+
+##### cssPart
+
+[`CssPart`](../type-aliases/CssPart.md)
+
+the CSS part to apply.
+
+##### flatCss
+
+`string`
+
+the flattened CSS.
+
+#### Returns
+
+`void`
+
+***
 
 ### onDidMount()
 

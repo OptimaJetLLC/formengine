@@ -62,7 +62,6 @@ const getView = (view: CurrentView) => {
 
 export const App = () => {
   const [currentView, setCurrentView] = useState<CurrentView>(readStoredView)
-  const [reload, setReload] = useState<boolean>(false)
   const view = useMemo(() => getView(currentView), [currentView])
 
   const switchView = useCallback(
@@ -72,14 +71,10 @@ export const App = () => {
           return
         }
         localStorage.setItem(VIEW_STORAGE_KEY, view || '')
-        if (reload) {
-          window.location.reload()
-        } else {
-          setCurrentView(view)
-        }
+        setCurrentView(view)
       }
     },
-    [currentView, reload]
+    [currentView]
   )
 
   return (
@@ -103,10 +98,6 @@ export const App = () => {
         <button type="button" onClick={switchView('none')} disabled={currentView === 'none'}>
           unload
         </button>
-      </div>
-      <div>
-        <input type="checkbox" id={'reload'} value={reload ? 'checked' : ''} onClick={() => setReload((r) => !r)}/>
-        <label htmlFor="reload">reload</label>
       </div>
       <Suspense fallback={<div>Loading view...</div>}>
         <div>{view}</div>

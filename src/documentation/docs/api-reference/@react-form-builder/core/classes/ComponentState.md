@@ -110,19 +110,15 @@ the values for all properties of the component, calculates the values of the cal
 
 #### Get Signature
 
-> **get** **className**(): `object`
+> **get** **className**(): `string`
 
 Calculates and returns className property.
 
 ##### Returns
 
-`object`
+`string`
 
 the Record that contains the className property for the component.
-
-###### className
-
-> **className**: `string`
 
 ***
 
@@ -151,6 +147,42 @@ the disabled property of a component if the component has a disabled flag.
 `Record`\<`string`, (...`args`) => `Promise`\<`void`\>\>
 
 the component event handlers that send events to the event bus.
+
+***
+
+### flatCss
+
+#### Get Signature
+
+> **get** **flatCss**(): `string`
+
+##### Returns
+
+`string`
+
+the flattened CSS for the component.
+
+#### Implementation of
+
+[`IComponentState`](../interfaces/IComponentState.md).[`flatCss`](../interfaces/IComponentState.md#flatcss)
+
+***
+
+### flatWrapperCss
+
+#### Get Signature
+
+> **get** **flatWrapperCss**(): `string`
+
+##### Returns
+
+`string`
+
+the flattened CSS for the component wrapper.
+
+#### Implementation of
+
+[`IComponentState`](../interfaces/IComponentState.md).[`flatWrapperCss`](../interfaces/IComponentState.md#flatwrappercss)
 
 ***
 
@@ -370,6 +402,36 @@ the Record that contains the style property for the wrapper of component.
 [`IComponentState`](../interfaces/IComponentState.md).[`wrapperStyle`](../interfaces/IComponentState.md#wrapperstyle)
 
 ## Methods
+
+### applyStyles()
+
+> **applyStyles**(`cssPart`, `flatCss`): `void`
+
+Apply styles to the document.
+
+#### Parameters
+
+##### cssPart
+
+[`CssPart`](../type-aliases/CssPart.md)
+
+the CSS part to apply.
+
+##### flatCss
+
+`string`
+
+the flattened CSS.
+
+#### Returns
+
+`void`
+
+#### Implementation of
+
+[`IComponentState`](../interfaces/IComponentState.md).[`applyStyles`](../interfaces/IComponentState.md#applystyles)
+
+***
 
 ### children()
 

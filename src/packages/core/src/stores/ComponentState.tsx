@@ -127,14 +127,22 @@ const computeEvents = (componentState: ComponentState) => {
   return events
 }
 
+type ComponentCssData = {
+  className: string
+  styleSheet?: CSSStyleSheet
+}
+
 /**
  * Calculates all the properties of the form view component.
  */
 export class ComponentState implements IComponentState {
-  #styleSheets = new Map<CssPart, CSSStyleSheet>()
-  #classNames: Record<CssPart, string> = {
-    css: generateClass(),
-    wrapperCss: generateClass('wc-')
+  #styles: Record<CssPart, ComponentCssData> = {
+    css: {
+      className: generateClass(),
+    },
+    wrapperCss: {
+      className: generateClass('wc-'),
+    }
   }
 
   /**
@@ -172,14 +180,14 @@ export class ComponentState implements IComponentState {
    */
   get get(): Record<string, any> {
     const propsWithoutChildren = this.propsWithoutChildren
-    return Object.assign({}, propsWithoutChildren, this.className, this.children(propsWithoutChildren))
+    return Object.assign({}, propsWithoutChildren, {className: this.className}, this.children(propsWithoutChildren))
   }
 
   /**
    * @inheritDoc
    */
   get ownProps() {
-    return {...this.propsWithoutChildren, ...this.className}
+    return {...this.propsWithoutChildren, className: this.className}
   }
 
   /**
@@ -291,19 +299,18 @@ export class ComponentState implements IComponentState {
    * @returns the Record that contains the className property for the component.
    */
   get className() {
-    const className = cx(
+    return cx(
       this.requiredClassName,
       this.propsWithoutChildren.className,
-      this.getClassNameFromCssPart('css')
+      this.#styles.css.className
     )
-    return {className}
   }
 
   /**
    * @inheritDoc
    */
   get wrapperClassName() {
-    return this.getClassNameFromCssPart('wrapperCss')
+    return this.#styles.wrapperCss.className
   }
 
   /**
@@ -346,14 +353,28 @@ export class ComponentState implements IComponentState {
   /**
    * @inheritDoc
    */
+  applyStyles(cssPart: CssPart, flatCss: string) {
+    if (flatCss) {
+      this.updateAdoptedStyleSheets(cssPart, flatCss)
+    }
+  }
+
+  /**
+   * @inheritDoc
+   */
   onWillUnmount() {
     this.executeLifecycleEvent(WillUnmountEvent)
 
-    const styleSheets = [...this.#styleSheets.values()]
+    const styleSheets: CSSStyleSheet[] = []
+    Object.values(this.#styles)
+      .forEach(item => {
+        if (item.styleSheet) styleSheets.push(item.styleSheet)
+        item.styleSheet = undefined
+      })
+
     if (styleSheets.length) {
       document.adoptedStyleSheets = document.adoptedStyleSheets
         .filter(existing => !styleSheets.includes(existing))
-      this.#styleSheets.clear()
     }
   }
 
@@ -386,7 +407,21 @@ export class ComponentState implements IComponentState {
     if (anyCss || viewModeCss) return {style: {...anyCss, ...viewModeCss}}
   }
 
-  private getClassNameFromCssPart(cssPart: CssPart) {
+  /**
+   * @inheritDoc
+   */
+  get flatCss() {
+    return this.computeFlatCssForPart('css')
+  }
+
+  /**
+   * @inheritDoc
+   */
+  get flatWrapperCss() {
+    return this.computeFlatCssForPart('wrapperCss')
+  }
+
+  private computeFlatCssForPart(cssPart: CssPart): string {
     const {model, store} = this.data
     const {viewMode} = this.store
 
@@ -416,21 +451,18 @@ export class ComponentState implements IComponentState {
       return ''
     }
 
-    const className = this.#classNames[cssPart]
+    const className = this.#styles[cssPart].className
     const css = `.${className}.${className} {`
       + cssData
         .join('\n')
       + '}'
 
-    const flatCss = flattenNestedCSS(css)
-    this.updateAdoptedStyleSheets(cssPart, flatCss)
-
-    return className
+    return flattenNestedCSS(css)
   }
 
   private updateAdoptedStyleSheets(cssPart: CssPart, flatCss: string) {
     try {
-      const existing = this.#styleSheets.get(cssPart)
+      const existing = this.#styles[cssPart].styleSheet
       if (existing) {
         existing.replaceSync(flatCss)
         return
@@ -438,7 +470,7 @@ export class ComponentState implements IComponentState {
 
       const sheet = new CSSStyleSheet()
       sheet.replaceSync(flatCss)
-      this.#styleSheets.set(cssPart, sheet)
+      this.#styles[cssPart].styleSheet = sheet
       document.adoptedStyleSheets.push(sheet)
     } catch (e) {
       console.error(e)
