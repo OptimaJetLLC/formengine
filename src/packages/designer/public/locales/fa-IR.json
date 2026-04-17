@@ -858,7 +858,8 @@
     "localizationNotSet": "موتور محلی سازی تنظیم نشده است",
     "simpleValue": "مقدار ساده",
     "simpleValueHint": "ویرایش ویژگی در صفحه راست",
-    "use": "استفاده"
+    "use": "استفاده",
+    "clearLocalization": "پاک کردن"
   },
   "codeActionEditor": {
     "actionNameExists": "عملیات با این نام از قبل وجود دارد",

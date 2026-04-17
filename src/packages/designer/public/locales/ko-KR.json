@@ -858,7 +858,8 @@
     "localizationNotSet": "현지화 엔진이 설정되지 않았습니다",
     "simpleValue": "단순 값",
     "simpleValueHint": "오른쪽 패널에서 속성 편집",
-    "use": "사용"
+    "use": "사용",
+    "clearLocalization": "지우기"
   },
   "codeActionEditor": {
     "actionNameExists": "이 이름의 작업이 이미 존재합니다",

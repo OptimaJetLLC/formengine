@@ -16,33 +16,37 @@ import styles from './LocalizationEditor.module.css'
 
 const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditorProps) => {
   const t = useTranslationPart('common')
+  const tPanel = useTranslationPart('bottomPanel')
   const builderStore = useBuilderStore()
   const locEngine = builderStore.viewer.form.localization.engine
   const localizationStringId = locEngine.getCompatibleId(`${editableProperty.componentKey}_${editableProperty.annotation.key}`)
   const testingEditor = useRef<TestingEditorRef>({})
   const [language, setLanguage] = useState(builderStore.localizationLanguage)
   const {formData} = useStore()
-  const initialData = useMemo(() => {
-    return getEditableFormData(formData)
-  }, [formData])
-  const initialValue = useMemo(() => {
-    return editableProperty.getComputeCode('localization', {langCode: language.fullCode})
-  }, [editableProperty, language])
-  const [value, setValue] = useState(initialValue)
-  const [prevInitialValue, setPrevInitialValue] = useState(initialValue)
+  const initialData = useMemo(() => getEditableFormData(formData), [formData])
+  const storeValue = editableProperty.getComputeCode('localization', {langCode: language.fullCode})
+  const [value, setValue] = useState(storeValue)
+  const [prevValue, setPrevValue] = useState(storeValue)
 
-  if (initialValue !== prevInitialValue) {
-    setPrevInitialValue(initialValue)
-    setValue(initialValue)
+  const applyLocalization = useCallback((next: string) => {
+    action(() => editableProperty.setComputeCode(next, 'localization', {langCode: language.fullCode}))()
+  }, [editableProperty, language.fullCode])
+
+  if (storeValue !== prevValue) {
+    setPrevValue(storeValue)
+    setValue(storeValue)
   }
 
   const handleSave = useCallback(() => {
     const result = testingEditor.current.test?.()
     if (result?.error || result?.exceptions) return
-    action(() => editableProperty.setComputeCode(value, 'localization', {langCode: language.fullCode}))()
-  }, [editableProperty, value, language.fullCode])
+    applyLocalization(value)
+  }, [applyLocalization, value])
 
-  const beginContextLine = `${localizationStringId} =`
+  const handleClear = useCallback(() => applyLocalization(''), [applyLocalization])
+
+  const beginContextLine = `${localizationStringId} = `
+  const codeEditorKey = `${editableProperty.annotation.key}_${language.fullCode}_${storeValue}`
   const endContextLine = ''
 
   const testingFunction = useCallback((formData: IFormData) => {
@@ -67,16 +71,20 @@ const RawLocalizationEditor = ({editableProperty, onClose}: CalculableCodeEditor
 
   return <Columns className={styles.columns}>
     <Rows className={styles.rows}>
-      <CodeEditor key={`${editableProperty.annotation.key}_${language.fullCode}`} language={fluentLanguageId}
-                  initialValue={initialValue}
+      <CodeEditor key={codeEditorKey}
+                  language={fluentLanguageId}
+                  initialValue={storeValue}
                   beginContextLine={beginContextLine}
-                  endContextLine={endContextLine} canEditBeginContextLine={true} onChange={setValue}/>
+                  endContextLine={endContextLine}
+                  canEditBeginContextLine={true}
+                  onChange={setValue}/>
       <div className={styles.toolbar}>
         <ButtonGroup size={'sm'}>
           <Button appearance="primary" onClick={handleSave}>{t('save')}</Button>
           <Button appearance="ghost" onClick={onClose}>{t('close')}</Button>
         </ButtonGroup>
         <LocalizationPicker value={language.fullCode} onSelect={setLanguage}/>
+        <Button appearance="ghost" data-testid="localization-editor-clear" size="sm" onClick={handleClear}>{tPanel('clearLocalization')}</Button>
       </div>
     </Rows>
     {locEngine.testLocalization &&

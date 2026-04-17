@@ -858,7 +858,8 @@
     "localizationNotSet": "本地化引擎未设置",
     "simpleValue": "简单值",
     "simpleValueHint": "在右侧面板中编辑属性",
-    "use": "使用方法"
+    "use": "使用方法",
+    "clearLocalization": "清除"
   },
   "codeActionEditor": {
     "actionNameExists": "具有此名称的操作已存在",

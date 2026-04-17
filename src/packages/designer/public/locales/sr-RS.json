@@ -858,7 +858,8 @@
     "localizationNotSet": "Механизам локализације није инсталиран",
     "simpleValue": "Једноставно значење",
     "simpleValueHint": "Уредите својство у десном окну",
-    "use": "Користите"
+    "use": "Користите",
+    "clearLocalization": "Обриши"
   },
   "codeActionEditor": {
     "actionNameExists": "Акција са овим именом већ постоји",

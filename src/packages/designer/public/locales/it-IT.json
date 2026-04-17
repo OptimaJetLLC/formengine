@@ -858,7 +858,8 @@
     "localizationNotSet": "Il motore di localizzazione non è impostato",
     "simpleValue": "Valore semplice",
     "simpleValueHint": "Modifica la proprietà nel pannello di destra",
-    "use": "Utilizzare"
+    "use": "Utilizzare",
+    "clearLocalization": "Cancella"
   },
   "codeActionEditor": {
     "actionNameExists": "L'azione con questo nome esiste già",

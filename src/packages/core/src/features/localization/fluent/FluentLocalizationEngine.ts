@@ -237,13 +237,13 @@ export class FluentLocalizationEngine implements ILocalizationEngine {
     }, errors, createFluentBundle(languageFullCode))
 
     const msg = testBundle.getMessage(localizationStringId)
-    if (!msg?.value) return [new LocalizationError('MessageError', 'Incorrect format')]
+    const value = msg?.value ?? ''
 
     const formatErrors: Error[] = []
     const data = getEditableFormData(formData)
     const missingProperties: string[] = []
     const fluentData = createLocalizationDataProxy(this.#getFluentData(data), missingProperties)
-    const result = restoreDots(testBundle.formatPattern(msg.value, fluentData, formatErrors))
+    const result = restoreDots(testBundle.formatPattern(value, fluentData, formatErrors))
 
     // Log missing properties only in testLocalization
     logFluentErrors(formatErrors, missingProperties, true)

@@ -1,0 +1,43 @@
+{
+  "form": {
+    "key": "screen 1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "locTextSingle",
+        "type": "RsTextArea",
+        "props": {
+          "placeholder": {
+            "computeType": "localization"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "localization-single-lang-textarea"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "locTextSingle": {
+        "component": {
+          "placeholder": "Only English"
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

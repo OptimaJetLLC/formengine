@@ -131,6 +131,16 @@ Variable names are case-sensitive and should match the property names available 
 
 :::
 
+:::tip note
+
+Fluent values and spaces:
+
+- **Leading spaces** — Use a placeable with a quoted run of spaces, for example `{"       "}`, when you need leading spaces in the rendered
+  text (adjust the number of spaces as needed).
+- **Trailing spaces** — Trailing spaces in the value are preserved.
+
+:::
+
 ### The languages Property
 
 The [languages](/api-reference/@react-form-builder/core/interfaces/PersistedForm#languages) array defines which languages are available for

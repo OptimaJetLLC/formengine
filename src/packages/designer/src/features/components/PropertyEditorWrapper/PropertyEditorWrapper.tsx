@@ -51,18 +51,24 @@ const RawPropertyEditorWrapper = ({
 
   const onClean = useCallback(() => delete context[annotation.key], [context, annotation])
 
+  const patchProperty = useCallback((patch: ComponentProperty) => {
+    context[annotation.key] = Object.assign(context[annotation.key] ?? {}, patch)
+  }, [context, annotation.key])
+
   const setComputedFunction = useCallback((value: string) => {
-    const newComponentProperty: ComponentProperty = {computeType: 'function', fnSource: value}
-    context[annotation.key] = Object.assign(context[annotation.key] ?? {}, newComponentProperty)
-  }, [context, annotation])
+    patchProperty({computeType: 'function', fnSource: value})
+  }, [patchProperty])
 
   const setComputedLocalization = useCallback((value: string, langCode?: LanguageFullCode) => {
     if (!langCode) return
-    store.viewer.form.localization.setLocalization(langCode, componentData.key, annotation.key, propertyBlockType, value)
+    const normalized = value.trimStart()
+    const loc = store.viewer.form.localization
+    loc.setLocalization(langCode, componentData.key, annotation.key, propertyBlockType, normalized)
     if (isValidatorPropertyBlockType(propertyBlockType)) return
-    const newComponentProperty: ComponentProperty = {computeType: 'localization'}
-    context[annotation.key] = Object.assign(context[annotation.key] ?? {}, newComponentProperty)
-  }, [context, annotation, store, componentData, propertyBlockType])
+
+    const hasAny = loc.hasLocalization(componentData.key, annotation.key, propertyBlockType)
+    patchProperty(hasAny ? {computeType: 'localization'} : {computeType: undefined})
+  }, [patchProperty, annotation.key, store.viewer.form.localization, componentData.key, propertyBlockType])
 
   const setComputeCode = useCallback<CalculableEditorProps['setComputeCode']>((value, type, params) => {
     switch (type) {
@@ -80,9 +86,7 @@ const RawPropertyEditorWrapper = ({
   const getComputedLocalization = useCallback((langCode: LanguageFullCode) => {
     const localization = store.viewer.form.localization
       .getLocalization(langCode, componentData.key, annotation.key, propertyBlockType)
-    const defaultLocalization = store.viewer.form.localization
-      .getLocalization(store.defaultLanguage.fullCode, componentData.key, annotation.key, propertyBlockType)
-    return localization ?? defaultLocalization ?? ''
+    return localization ?? ''
   }, [store, componentData, annotation, propertyBlockType])
 
   const getComputeCode = useCallback<CalculableEditorProps['getComputeCode']>((type, params) => {
@@ -99,9 +103,8 @@ const RawPropertyEditorWrapper = ({
       store.viewer.form.localization.removeLocalizationForType(componentData.key, propertyBlockType)
       return
     }
-    const newComponentProperty: ComponentProperty = {computeType: undefined}
-    context[annotation.key] = Object.assign(context[annotation.key] ?? {}, newComponentProperty)
-  }, [propertyBlockType, context, annotation.key, store.viewer.form.localization, componentData.key])
+    patchProperty({computeType: undefined})
+  }, [propertyBlockType, patchProperty, store.viewer.form.localization, componentData.key])
 
   const hasLocalization = useCallback(() => {
     return store.viewer.form.localization

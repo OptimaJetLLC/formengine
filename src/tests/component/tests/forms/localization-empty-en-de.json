@@ -1,0 +1,58 @@
+{
+  "version": "1",
+  "form": {
+    "key": "screen 1",
+    "type": "Screen",
+    "props": {},
+    "children": [
+      {
+        "key": "locText",
+        "type": "RsTextArea",
+        "props": {
+          "placeholder": {
+            "computeType": "localization"
+          }
+        },
+        "htmlAttributes": [
+          {
+            "name": "data-testid",
+            "value": "localization-empty-save-textarea"
+          }
+        ]
+      }
+    ]
+  },
+  "localization": {
+    "en-US": {
+      "locText": {
+        "component": {
+          "placeholder": "Localized placeholder"
+        }
+      }
+    },
+    "de-DE": {
+      "locText": {
+        "component": {
+          "placeholder": "DE Placeholder"
+        }
+      }
+    }
+  },
+  "languages": [
+    {
+      "code": "en",
+      "dialect": "US",
+      "name": "English",
+      "description": "American English",
+      "bidi": "ltr"
+    },
+    {
+      "code": "de",
+      "dialect": "DE",
+      "name": "Deutsch",
+      "description": "German",
+      "bidi": "ltr"
+    }
+  ],
+  "defaultLanguage": "en-US"
+}

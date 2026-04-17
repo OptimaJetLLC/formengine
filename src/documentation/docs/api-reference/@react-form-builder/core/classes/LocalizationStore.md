@@ -372,7 +372,7 @@ the type of localization.
 
 `string`
 
-the localization value.
+the localization value to persist.
 
 #### Returns
 

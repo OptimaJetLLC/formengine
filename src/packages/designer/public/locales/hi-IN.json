@@ -858,7 +858,8 @@
     "localizationNotSet": "स्थानीयकरण इंजन सेट नहीं है",
     "simpleValue": "सरल मूल्य",
     "simpleValueHint": "सही पैनल में संपत्ति संपादित करें",
-    "use": "उपयोग करें"
+    "use": "उपयोग करें",
+    "clearLocalization": "साफ़ करें"
   },
   "codeActionEditor": {
     "actionNameExists": "इस नाम के साथ कार्रवाई पहले से मौजूद है",

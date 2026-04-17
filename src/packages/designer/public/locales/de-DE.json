@@ -858,7 +858,8 @@
     "localizationNotSet": "Lokalisierungs-Engine ist nicht eingestellt",
     "simpleValue": "Einfacher Wert",
     "simpleValueHint": "Bearbeiten Sie die Eigenschaft im rechten Bereich",
-    "use": "Verwenden"
+    "use": "Verwenden",
+    "clearLocalization": "Leeren"
   },
   "codeActionEditor": {
     "actionNameExists": "Aktion mit diesem Namen ist bereits vorhanden",

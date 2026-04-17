@@ -858,7 +858,8 @@
     "localizationNotSet": "ローカリゼーションエンジンが設定されていません",
     "simpleValue": "単純な値",
     "simpleValueHint": "右側のパネルでプロパティを編集します",
-    "use": "使用"
+    "use": "使用",
+    "clearLocalization": "クリア"
   },
   "codeActionEditor": {
     "actionNameExists": "この名前のアクションは既に存在します",

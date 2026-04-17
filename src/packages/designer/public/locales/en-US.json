@@ -1096,7 +1096,8 @@
     "simpleValue": "Simple value",
     "simpleValueHint": "Edit the property in the right panel",
     "editProperty": "Edit property",
-    "editCodeAction": "Edit code action"
+    "editCodeAction": "Edit code action",
+    "clearLocalization": "Clear"
   },
   "codeActionEditor": {
     "actionNameExists": "Action with this name already exists",

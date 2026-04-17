@@ -858,7 +858,8 @@
     "localizationNotSet": "لم يتم تعيين محرك التعريب",
     "simpleValue": "قيمة بسيطة",
     "simpleValueHint": "تحرير الخاصية في اللوحة اليمنى",
-    "use": "استخدام"
+    "use": "استخدام",
+    "clearLocalization": "مسح"
   },
   "codeActionEditor": {
     "actionNameExists": "العمل مع هذا الاسم موجود بالفعل",
